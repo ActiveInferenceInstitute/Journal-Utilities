@@ -1,0 +1,2334 @@
+---
+title: "ActInf Livestream #044.0 ~ Therapeutic Alliance as Active Inference: The Role of Therapeutic Touch"
+category: "Livestream"
+series: "Livestream_044"
+episode: "0"
+speakers:
+  - "Therapeutic Alliance as Active Inference: The Role of Therapeutic Touch"
+duration: "1:27:28"
+url: "https://www.youtube.com/watch?v=yNubOHOJeIQ"
+views: 178
+exported_at: "2026-02-18T22:37:37.960570+00:00"
+format: markdown
+---
+
+# ActInf Livestream #044.0 ~ Therapeutic Alliance as Active Inference: The Role of Therapeutic Touch
+
+[Music]
+[Music]
+hello and welcome everyone it is actin
+flab live stream number 44.0
+it's may 13 2022.
+welcome to the actin flab
+we are a participatory online lab that
+is communicating learning and practicing
+applied active inference
+you can find more information at the
+links on the slide
+this is recorded in an archived live
+stream so please provide us with
+feedback so we can improve our work all
+backgrounds and perspectives are welcome
+and we'll be following video etiquette
+for live streams
+if you want to learn more about the live
+streams or other activities in the lab
+head to activeinference.org
+today in 44.0
+we are going to learn and discuss this
+awesome paper therapeutic alliance as
+active inference gurney from 2022
+by zoe mcparland francesco saratelli
+carl fristen
+and jorge estevez
+and the video is just an introductory
+review slash
+scoping and contextualizing
+we're going to have some discussions in
+the coming weeks on this paper with the
+authors and some non-authors so
+we're just going to be overviewing the
+paper
+opening up some threads getting excited
+about it covering what they said so that
+we can jump into the
+one
+and two discussions
+and let's just get right into it
+i'm
+daniel and i'm a researcher in
+california
+i was very
+curious about touch and active inference
+which is an area that hasn't been
+explored too much but it's something
+that
+is so critical to our daily experience
+so it sounds like a pretty important
+area to model or approach with active
+inference
+and i'll pass it to ian so thanks for
+joining and for all the contribution on
+the slides we'd love to
+hear any context
+and welcome
+hi daniel thanks very much for
+um having me
+in your lab
+so
+yeah i you know i was drawn to this
+paper for several reasons i first
+um saw the paper by some of the authors
+that got me uh
+joining the dots between their work and
+your lab
+which was that was called osteopathy and
+mental health and embodied predictive
+interceptive framework so i've got an
+interest in
+um how we sense what's going on inside
+our body
+from a research point of view and
+a personal point of view
+and then also you know my main
+what i spend most of my time doing
+work wise is hands-on therapy so manual
+therapy which involves touch
+when i saw the title of this paper which
+we're talking about today which is um
+part of their series on
+inactivism and active inference in the
+therapeutic alliance
+i you know what jumped out to me was
+the
+um the word synchrony
+in therapeutic alliance so
+you know this is something in the
+therapy world
+we often talk about synchrony um
+and
+i'm intrigued to see how that might fit
+in with
+free energy minimization
+just one thought on what you said there
+about interception which is
+something we've talked about i know
+you've had many conversations and works
+on it is
+touch
+it sometimes feels like it's out there
+like i'm touching objects on my desk
+it's how they are out there just like
+vision is something out there but then
+touch is actually
+inside
+the fingers and so it's actually like it
+is an interception about
+the external world so it's kind of like
+touch
+is something inside of us but again it's
+out it's about out external
+objects and so how does the brain and
+body do that and then what's the social
+dynamics of it and then what are the
+clinical implications i hope those are
+some questions we can approach
+with active inference and get some
+insight into
+yes yeah and the you know the other
+thing what you were saying then about um
+and i think in the interception
+researchers there is a little bit of
+debate over whether what types of touch
+might include as interreceptive or inner
+felt and there's
+low effective touch versus maybe
+different types of touch um but also
+when you were saying that i was just
+thinking you know
+when someone says i felt touched by that
+piece of music
+um
+the music didn't physically touch us
+apart from
+oscillating airwaves
+but touching our eardrums um but again
+it might be an interceptive experience
+if we were
+touched by some piece of music and it
+sent shivers up and down my spine
+so um yeah
+and can
+voice
+maybe in therapeutic uh alliance vocal
+auditory input touch people
+cool
+so we
+wrote out one view of a big question
+which is kind of like a curiosity or an
+openness that might approach somebody to
+this paper even without bringing active
+inference into it
+and it says within a therapeutic
+alliance can touch be used to help a
+patient usefully update their beliefs
+and then in the conclusion the authors
+are where we're going to get to is touch
+appears to be critical in initiating
+develop the salience of synchronous
+relationships touch can be used to infer
+and predict other states of mind which
+are crucial for developing dyadic and
+triadic
+relationships in general and in a
+clinical setting
+so
+what do you think about that big
+question or what
+drew you to it
+um
+yeah on the the surface of that question
+so
+can touch be used to
+you know help a patient
+so you know
+um
+it seems in
+kind of the obvious answers is yes it
+can you know you see a
+um if a child falls over and a parent
+comes up and it kind of
+soothes the child by
+stroking it or touching it or rubbing it
+better then then we can kind of see
+an archetypal
+version of that of a caregiver helping
+someone who's distressed so i'd say yeah
+you know yeah
+it looks quite obvious but then
+you know this usefully updating
+someone's beliefs i think that's where
+it gets
+maybe in dot
+1.2
+um
+we can explore that
+different uh more and you know what is
+what is an adaptive update and what is a
+maladaptive update and who's
+who's setting the pollings and where
+does synchrony come in so yeah um loads
+to explore
+um
+and you know dyadic they mentioned
+dialect and triadic so
+and it's therapeutic we don't have to
+just think in terms of a professional
+therapeutic setting so maybe in
+you know i can seek counsel from
+um anyone it doesn't have to be a
+professional practic a practitioner
+in a business type setting or a clinical
+setting it might be
+um
+with a stranger
+on a bus
+yes what are the top-down social
+scaffolds that
+facilitate or enable or constrain
+certain kinds of
+touch and
+clinical relationships so
+cool
+let's go to the aims and claims of the
+paper so as we mentioned the paper is
+mcparlin at all in frontiers in
+psychology from 2022
+and
+some of the aims the way that the
+authors represented what they set out to
+accomplish in the paper one of them was
+to present an empirical integrative
+account
+of the biobehavioral mechanisms that
+underwrite therapeutic relationships
+through the lens of active inference
+and then they're aiming to argue for the
+importance of therapeutic touch in
+establishing a therapeutic alliance and
+synchrony between the practitioner in
+the patient
+and i think this will be
+really interesting to explore in the
+context of
+explicitly manual and hands-on
+therapies and work as well as areas that
+are perhaps not seen like at in the same
+way as physical therapy or osteopathy
+but
+maybe the dentist just puts the hand
+somewhere in a way that is calming for
+example so even in not just the only
+manual areas
+and then
+some of the claims that they make and
+some that will go into a lot more
+in the
+paper
+is they're gonna argue that active
+inference provides insights into the why
+and the how of humans choosing to
+synchronize
+they're going to claim that touch is
+used to establish and also to
+continually develop
+synchrony
+in our
+lived world as social beings and those
+are some of the threads that they
+reference a lot of papers
+and uh kind of
+explore in the paper so
+anything that you thought about just the
+claims of the paper
+um
+yeah when i um
+first read this it
+created you know it seemed to um
+reminds me of
+what i hear in other sort of therapies
+so the importance of safety for example
+in a
+therapeutic setting so if a person feels
+safe then they're going to be more
+receptive to um therapeutic touch
+and
+i'm interested to see on you know to
+read and speak to the authors maybe
+about
+what things facilitate synchrony
+um
+and
+the uh what else have we got there so um
+yeah how just how the active inference
+framework kind of
+can potentially
+unify
+some of these different languages that
+we've got in different
+therapies
+that uh
+that that kind of
+maybe are saying very similar things
+um
+and can does the the the i think we
+spoke a few weeks ago the beautiful
+simplicity of active inference maybe
+helps to
+helps to
+unify those and help us understand them
+better
+awesome
+all right um on to the abstract
+perhaps you could read uh the first four
+lines and i'll read the second four
+lines
+okay
+so recognizing
+and aligning
+individuals unique
+adaptive beliefs or priors
+through cooperative communication
+is critical to establishing
+a therapeutic relationship and alliance
+next bullet points using active
+inference we present an empirical
+integrative account of the biobehavioral
+mechanisms that write therapeutic
+relationship
+third bullet point a significant mode of
+establishing cooperative alliances and
+potentially synchrony relationships
+is through
+extensive cues
+generated by repetitive coupling during
+dynamic touch
+and then
+established
+models speak to the unique role of
+affectionate touch
+in developing communication
+interpersonal interactions and a wide
+variety of therapeutic benefits for
+patients of all ages both
+neurophysiologically and behaviorally
+the purpose of this article is to argue
+for the importance of therapeutic touch
+in establishing a therapeutic alliance
+and ultimately
+synchrony between practitioner and
+patient
+we briefly a therapeutic alliance in
+pro-social and clinical interactions
+we then discuss how cooperative
+communication and mental state alignment
+in intentional communication are
+accomplished using active inference
+we argue that alignment through active
+inference facilitates synchrony and
+communication
+the ensuing account is extended to
+include the role of c tactile afferents
+in realizing the beneficial effects of
+therapeutic synchrony
+we conclude by proposing a method for
+synchronizing the effects of touch using
+the concept of active inference
+cool active inference as a descriptive
+integrative account
+and then towards the end
+potentially some unique predictions or
+implications
+or usages of active inference like what
+would be different about the therapeutic
+alliance
+if the practitioner and or the patients
+were to be aware
+of
+synchrony or
+be able to integrate some of these
+important qualitative ideas like
+consensual affectionate touch
+with potentially some of these ideas
+like priors and precision and synchrony
+um
+yeah and as you're saying that i'm
+thinking about you know um
+uh
+trauma for example which is you know
+when a a prior is so
+given so much waiting that it
+affects action and perception in a
+really strong way and as you said if if
+the
+both the the patients and the the
+clients in that alliance they're
+they're
+aware of it
+in terms of what the updating of that
+of those beliefs
+um in the whole process and aligned in
+their
+the the direction and the process
+that they're wanting to use
+to
+usefully update beliefs then
+um then yeah really interesting thought
+being aware of what your
+the process you're going through
+cool
+so that's where
+we're going to be
+going and the roadmap is how we're going
+to be traveling there
+the
+paper has three sections
+introduction with a bunch of subsections
+the second section is mechanisms
+increasing saliency within synchrony and
+the third section is a conclusion
+and within this
+very
+multi-part introduction section
+they talk about a range of topics
+from
+physical touch and the clinical
+and therapeutic setting
+there's a lot of discussion on the in
+utero initiation of synchrony and the
+way in which there's this transfer
+of the uterine environment to the
+postnatal
+scaffolding
+through the post-postnatal where i guess
+most of us are most of the time out
+there in society
+and the way that touch and communication
+and synchrony and all these other topics
+are
+sitting there
+in the therapeutic setting
+and
+striving for integration and so they
+they bring a lot onto the table with
+this paper so
+it's going to be great discussions and
+important lines of research and in this
+dot zero
+we're going to
+dive into mainly the keywords
+and give some background it'll be
+awesome to hear about the perspective
+that you have being a lot closer to this
+work than i am
+and um
+we'll just talk about the keywords
+and then be ready in the dot one and dot
+two to take it anywhere else
+sound good
+excellent
+okay the keywords are
+active inference
+therapeutic alliance
+affective touch
+synchrony predictive processing
+allostasis
+free energy principle
+and perinatal care
+so let's just jump right into the
+keywords and see where it goes so first
+therapeutic alliance
+what would you say about therapeutic
+alliance
+okay so um while reading the text here
+therapeutic alliance is a collaborative
+working relationship between clinician
+and patients and is cr a critical
+component of the person-centered care
+because it contributes to positive
+clinical outcomes outcomes across
+multiple healthcare disciplines so um
+what i like here is that they're sort of
+saying that it's a critical component
+and then you know if we um
+break down the
+that term therapeutic alliance then
+um
+therapeutic meaning you know
+helpful i suppose um
+that
+beneficial to the to the person
+and then alliance as they said it so
+it's
+um
+i think of you know being in agreement
+and
+working together um
+understanding each other which is you
+know
+i think sometimes when people are going
+to a healthcare provider
+it's um maybe
+the practitioner or the clinician
+is um
+fixing them or doing something to them
+and
+maybe they can be passive in receiving
+that whereas i think this term
+therapeutic alliance is coming
+for um for the person receiving
+the healthcare and it's the then the you
+know the active inference comes in so
+it's
+active for
+for both
+parties not just a passive thing
+and i see that uh
+yep so there's another text there which
+kind of says that similar things so it's
+um
+the therapy alliance is often modeled
+from a work the working alliance
+described by boarding in 1979 which
+includes the collaborative agreement on
+goals yep tasks and the development of
+successful relationships and cooperative
+communication
+yeah um
+yeah
+totally true about the alliance and
+working together as a team and they're
+also focused on the dyad but i thought
+of like maybe a hospital setting where
+there's a lot of people
+of many different specialties working
+together like truly is a big team the
+family
+and the
+the patients but also all these other
+people who come through that space
+and then just in terms of the way that
+this paper approached it they reference
+i guess a early critical citation board
+in 1979
+and then also
+they referenced two more recent
+citations um the
+makiak and ryu and so on the 2019 paper
+on the left
+that paper was looking at physiotherapy
+and just highlighted like acknowledging
+the individual
+the giving of self and using the body as
+a pivot point so seeing that alliance
+that's kind of like a constellation
+that's pivoting around
+the patient's body
+and
+also there being sort of a
+broader scale movement which i thought
+was really deep
+and then the ryu
+21 citation modeling therapeutic
+alliance in the age of telepsychiatry
+they just begin with something
+uh that maybe we've all experienced or
+seen occurred that things are online and
+remotely and that includes psychotherapy
+happening online
+and this paper is like a call
+for the investigation of the causes and
+consequences of successful psychotherapy
+augmented with computational tools and
+often carried out using computational
+means of communication
+so a little bit of a classic take
+on the therapeutic alliance as well as
+bringing it into the early 2020s
+phase that we're in where we're having
+conversations with computers but then
+where's touch and this disembodiment
+that could maybe occur
+if we don't
+have reminders to
+re-enter our body during these
+relationships
+um
+yes
+yeah
+re-entering our body um
+the other thing that
+i was thinking of then when you were
+sort of reading the
+early
+reference or the citation the
+acknowledging of the individual giving
+of the self and using body as a pivot
+thinking about that um
+and something that's coming up later in
+the in the
+definitions about this um
+expert sort of synchronizing to an
+expert and
+maybe there's is there any tension there
+between
+the alliance
+um
+and
+agreeing on goals and
+you know giving
+oneself to an expert um
+so
+yeah
+interested to explore that later
+great
+so on to synchrony
+what is synchrony and how is it being
+used here
+so the definition in the paper
+synchrony is defined as the
+interpersonal coordination
+of behavioral and neurophysiological
+rhythms
+that can aid in sensory processing
+learning emotion and arousal regulation
+self-regulation
+and the establishment of communicative
+relationship
+um
+so uh another extract from the paper
+therefore considering the therapeutic
+line principles of agreement on goals
+tasks and developing strong
+relationships a degree of
+biobehavioral synchrony will occur
+within this clinical setting so they
+seem to be saying that you know if if it
+involves agreeing on where we're heading
+together
+then
+synchrony has to occur
+um
+and
+additionally they're sort of saying that
+innate it is human nature to want to
+share physiological and emotional states
+with others
+through the structured pattern of
+communication between mother and infant
+um the increa the interaction
+synchronize and
+an individual's behavior hidden states
+of mind and biological rhythms
+resulting in an intertwined unit akin to
+a sophisticated waltz
+and i see you've
+put some diagrams there from
+some
+studies
+involving drumming
+yeah i was just looking
+to
+see how people were studying synchrony
+in the modern time where they were
+studying
+various aspects of of coordinated
+drumming
+and
+i also really like how the authors
+mentioned the sophisticated waltz
+or insert your own genre of dance or
+movement or coordination because
+synchrony is not just
+um lockstep
+metronome
+everyone doing the same thing
+synchrony can refer to turn taking or
+synchrony can refer to sort of joint
+improvisation
+and that's this notion of generalized
+synchrony that comes up again and again
+in active inference so what does it mean
+for there to be synchrony
+in the therapeutic alliance with people
+who have different
+expectations preferences priors
+bodies minds
+lives
+so what is being synchronized
+that can be measured the heart rate or
+some other
+biometric features and then what is that
+reflecting
+and are we looking for lockstep but then
+if we're not
+what is this synchrony
+with
+difference
+that we're going to be seeking and how
+is this related to positive clinical
+outcomes
+um
+yeah
+yes
+so much um
+i could could go down there and uh yeah
+maybe in the dot one dot dot two and
+yeah we will do evolution as well this
+uh
+the regimented waltz versus the
+the more
+playful
+jamming even
+cool yes we will go there all right so
+one of the ways in which synchrony is
+going to be engendered and one of the
+ways that is highlighted in this paper
+is affective touch
+so
+what is affective touch
+quoting from the paper effective touch
+via tactile stimulation can be viewed as
+an example of a particular embodied
+social behavior that maintains
+homeostasis and influences
+the perception of or inference about the
+mental states of self and other
+moreover it has been speculated that
+touch may cause a rapid reduction in the
+activity of prefrontal cortex before
+instantiating a sustained period of
+preemptive homeostatic regulation
+it has also been suggested that the use
+of social touch
+um
+decreases the level of effort needed to
+overcome stress
+so here you know from reading that um
+it's sort of saying that effective touch
+um is nice i guess uh compared to maybe
+a punch
+um which might have a different
+effect on our
+uh
+regulation autonomic regulation
+um
+and
+so and the next quote is an effective
+method for establishing this cooperative
+alliance and potential synchrony is
+through ostensive cues generated by
+repetitive coupling
+during physic physical touch
+affectionate touch is unique in its
+ability to foster communication
+interaction
+and various therapeutic benefits for
+example in the context of perinatal care
+it contributes to an infant's
+development both neurologically and
+behaviorally so again you know there's
+this assumption that um
+that the touch is gonna have
+a helpful outcome for the
+for the
+[Music]
+the party um that's receiving it
+or both maybe
+as opposed to other types of touch which
+might be um
+you know update someone's beliefs in a
+way that isn't about
+the part that really stood out to me is
+like
+social touch decreasing the level of
+effort needed to overcome stress
+like a pat on the back which is just one
+encultured touch that maybe in a
+different culture or different setting
+wouldn't be supportive but it's like
+there's effort needed to overcome some
+stress
+and then there's a pat on the back
+literally or figuratively and then it's
+like oh it's less stressful to bring the
+effort
+to
+do this
+and then
+that is not a punch
+like you said that effective
+touch and so what is happening when
+touch occurs in the body and in the mind
+what is decreasing the level of effort
+and just what is
+touch doing in that setting
+and then how is that related to
+synchrony what what is the belief that's
+being um
+reinforced through touch so is it you
+know something like i'm i'm doing okay
+um i'm
+able to cope here i'm
+i'm uh you know i
+i am um an organized being
+not a
+my
+free energy is minimizing not max not
+increasing
+and then at the social level like
+i'm there for you
+regardless of the outcome or something
+it could be many different things of
+course and it may not even be possible
+to translate it into
+language because that's
+this is its own language of touch
+so what is the grammar
+of that language of touch and
+how do we make that affective touch
+which sounds so endearing
+and intimate
+make sure that it is that way for
+everybody who's involved in that
+situation so that it's not like
+for one person like their intention is
+positive
+in giving or receiving but then for the
+other person it's like nails on a
+chalkboard you
+know
+cool
+okay
+well the setting that they
+uh mention as critical for affective
+touch is like the in utero and also the
+perinatal
+like post birth care so
+what's going on with perinatal care
+um
+yeah i thought it's uh really
+interesting that so much because you
+know when i first saw this paper i
+thought it was about
+as you said um
+post post post postnatal um people
+uh adults going for for some kind of
+touch therapy but you know it when you
+dive into the paper there's a lot of
+time spent on
+um
+looking at young how young people learn
+um
+so quoting from the paper effective
+touch is unique in its ability to foster
+communication
+interaction and various therapeutic
+benefits for example in the context of
+perinatal care it contributes to an
+infant's development both
+neurophysiologically
+and behaviorally so it's contributing to
+their development and you know i chair
+of
+um a potter
+molding a piece of clay
+um and you know thinking that
+infants are we if we think of a baby as
+being like a wild animal um that's born
+and the caregivers are really molding it
+into being
+something that fits in with
+the culture
+and society
+and neurophysiologically and
+behaviorally
+then how does touch contribute to that
+molding
+um
+second quote interpersonal synchrony
+between parent and infra infant is well
+documented through non-verbal behaviors
+such as touch gaze voice
+particularly mothers so they're
+acknowledging it's not necessarily all
+about touch um
+it's you know we've got these other cues
+face facial expressions
+tone of voice that
+um may
+facilitate or be involved in synchrony
+between the parent and infants in
+shaping their development
+the the clay
+metaphor is really interesting and it
+makes me think about
+how
+the baby the larva is born
+physically softer like a lot of the
+bones are not
+converted to their final hardness and
+the skull
+has some openings and some flexures that
+decrease throughout life
+but never go away
+and so it's like that also has an
+analogy with like a bayesian learning
+perspective where in the early
+phases there's like more plasticity and
+learning
+more softness and openness of that
+statistical distribution
+and then there's kind of a hardening or
+a sharpening
+of certain things
+to to oversimplify that situation
+um and then also one relevant paper that
+they cite is from sia unica at all
+and that's called the first prior from
+co-embodiment to co-homeostasis in early
+life and so that was like a very
+um
+a really rich contribution to thinking
+about co-embodiment
+and that is also moving
+the discussion of the clinical setting
+and bridging it with this ecological and
+evolutionary and physiological setting
+so this is a very interesting paper and
+and um
+something we'll talk about so on to part
+two of perinatal what what else can we
+share about this
+okay so some other quotes from the paper
+often the first communication and
+connection with one's mother occurs
+immediately after birth through skin to
+skin contact this skin skin contact is
+recommended because
+touch has been shown to help reset
+neural oscillators and align them with
+their parents oscillation patterns in
+the neocortex
+particularly in pre-janual
+aac
+which i guess is the anterior cingulate
+cortex all while reducing overall stress
+uh additionally okay a caregiver's touch
+frequently induces a state of calm
+alertness which
+frequently signals to the infant that
+the caregiver is attempting to
+communicate
+when newborn infants coordinate their
+limb movements to the rhythm
+of the adult speech this intention to
+communicate is reciprocated a strong
+bond between parent and child will
+amplify the parasympathetic response
+to
+affectionate touch
+um
+so yeah what i'm you know i'm noticing
+there is that there's
+they've chosen different examples of
+what might be oscillating or
+synchronizing so this the
+neural oscillations seem to be
+something
+back to your question about
+uh
+you know rigid patterns i think of
+neural oscillations of having a kind of
+relatively fixed tempos
+um whereas something like limb movements
+is
+you know it's not necessarily a certain
+amount of hurts
+um
+so it may be more
+playful but um
+or
+unstructured
+um so yeah that's interesting
+and and one interesting part here is a
+caregiver's touch
+is signaling to the infant that the
+caregiver is attempting to communicate
+and so from our
+adult perspective
+um we might be more familiar or remember
+more recently like a child tugging on
+our shirt
+with the child
+trying to signal that they would like to
+communicate that's like an ostentative
+cue
+from an active inference perspective
+it's like a signal that is
+directing attention
+but then this is actually looking at it
+the other way which is the touch from
+the caregiver
+signaling to the infant who may be in a
+pre-linguistic
+state that that they want to communicate
+and then also just this is a really
+transdisciplinary area to think about
+like the perinatal care in terms of
+touch which they're looking at here but
+also other mechanisms that they brought
+up like gaze body language but then
+there's other
+features that aren't even explored as
+much in this paper's regime of attention
+like the microbiome
+and the enculturation and
+so and then it's just funny again to
+think about like the the postnatal care
+does not end
+it just yeah kind of trails and develops
+yeah you've
+included two really kind of
+big topics there the the microbiome and
+you know the appreciation now that that
+that um
+passing on or
+the microbiome from mother to
+infants is is really really useful and
+then bioelectricity is that more sort of
+like the
+michael levin stuff and
+what i'm thinking there is that that
+from that change from co-embodiment to
+um what was the other phrase
+co-embodiment and something else yeah
+what's the
+co-homeostasis yeah uh-huh yeah
+yeah so yeah by bioelectricity there and
+can it return during touching a
+therapeutic
+setting
+yes
+okay
+on to allostasis
+so allostasis
+the authors
+define
+in the paper allostasis is a process by
+which the brain predictively regulates
+the body metabolic and energy needs
+using an internal model of that body in
+the world
+and so um the citation there is to bear
+it 2017
+with the work theory of constructed
+emotion an active inference account of
+interception and categorization
+so that's a really uh
+cited and
+impactful paper that
+defined allostasis as the regulation of
+the internal milieu by anticipating
+physiological needs and preparing to
+meet them before they arise
+so people might be more familiar with
+the uh more popular cousin of allostasis
+homeostasis which is sometimes seen as
+like the return to a target range
+when there are deviations occurring away
+from that range like when the blood
+sugar or the temperature gets too low
+a process kicks in that brings it back
+up
+allostasis
+is highlighting
+the way that sometimes that kind of
+physiological regulation
+cannot wait until something has already
+left a controlled range
+and in fact sometimes changes need to be
+taken in an anticipatory way to help
+meet expected changes that are upcoming
+and then also
+a kind of corollary of that is
+homeostasis would suggest that we would
+just be converging and staying within a
+target range but allostatic behavior can
+include
+for example
+taking deviations out of the range again
+in service of staying in that racket
+before one goes outside into the colds
+that's going to transiently be raising
+the body temperature in a way that
+wouldn't make sense unless the person
+was preparing to go outside but then in
+the sort of integral of action through
+time
+putting on the jacket before going out
+into the cold
+is going to keep that physiological
+system
+happy and healthy and meeting its
+expectations
+in a way that's tractable whereas
+being inside and not needing a jacket at
+that moment and then waiting until one
+was too cold and then putting it on then
+um
+that sounds like some
+childlike behavior perhaps in the way in
+which different physiological regulators
+work and then just one
+place where we've gone into a bit more
+on the technical side of allostasis was
+in live stream number 38
+where we looked at certain um
+cognitive and computational
+architectures
+and the way that they might evolve
+and the way that a simpler homeostatic
+system could elaborate over evolutionary
+time to include some allostatic features
+yeah um and what i'm thinking here is
+you you helped me when you came on the
+innocence channel to
+um
+i think about alastasis in a kind of uh
+use this um
+ant colonies and
+policy
+choices
+of uh what the ant colony might do
+and i was thinking back to the
+temperature example um
+not only do we think about putting coats
+on and
+building houses and control controlling
+our immediate environment but you're
+saying collectively
+we have weather forecasters and weather
+stations to help our whole
+world predict into the future about how
+to
+take take action on our temperature
+regulation
+another thing then i'm just thinking
+what came to mind is um
+we're going off the therapy
+the the film don't look up came to mind
+of um you know this uh
+impending
+pressures on humanity maybe climate
+change or
+whatever and you know what um
+what adaptive measures are we doing
+collectively
+for the future
+yeah like a like a global or a
+bioregional allostasis
+instead of waiting for some
+toxic chemical to exceed a threshold
+what is the anticipatory action
+that's going to avert that from
+happening how can we
+recognize and take effective allostatic
+action
+not just homeostatic for all the reasons
+why
+bodies do allostasis in addition to
+homeostasis
+and
+that concept of allostasis
+it does rely on this generative model
+that the entity is
+casting out into the future
+and
+very much in line with that is the
+framework of predictive processing and
+predictive coding
+we explored this more quite recently in
+live stream number 43
+and
+without going into all the details
+predictive processing brings together a
+few big ideas
+um first it is going to
+hinge around the idea
+that what the brain or another cognitive
+system is doing
+is not simply recognition of for example
+incoming stimuli but rather what's
+occurring is like a comp down
+predictions
+top is just a spatial metaphor here but
+the top-down predictions
+that are being met with the bottom-up
+sensory input that's a predictive coding
+or predictive processing architecture
+and that allows noisy or sparse or
+incomplete sensory data to kind of meet
+in the middle
+with
+rich generative models of the world so
+that action can be done effectively
+again even when there's only partial
+data like a dark room
+and then also
+especially when we think about action
+and how to include predictions about not
+just future stimuli but predictions of
+one's future actions and the the causes
+of one's actions and the outcomes of
+one's actions in the world
+this is going to return us to a core
+idea from active inference and this is a
+quote from that paper in 43
+where the minimization of a prediction
+error
+or surprise or free energy with some
+slight differences but more similar than
+not
+the minimization of those terms can be
+achieved through multiple ways
+the first two
+are through immediate inference about
+the hidden states of the world
+which is related to perception
+as well as updating one's world model to
+make better predictions which is
+learning this is pointing to the
+relationship and the similarity between
+perception and learning
+in the bayesian brain and active
+inference and related theories
+and so the way in which you can reduce
+your free energy
+through learning and inference and
+perception
+and
+also reducing your free energy or your
+prediction error through action to
+sample sensory data in a different way
+as well as to potentially like change
+the world and modify the niche
+so predictive processing brings together
+the anticipatory angle that we were just
+exploring with allostasis and connects
+it to specific
+computational and cognitive
+architectures that might actually be
+implementing that kind of an algorithm
+um
+yeah and
+where does touch
+fit into that
+yep and then just one more slide on
+predictive processing
+people can pause to read more or again
+check out 43
+but
+one thing that maria
+brought up and and we've continued to
+like think about is
+where do we use predictive coding and
+where are we thinking about predictive
+processing
+and so um maybe another way to think
+about the difference between these two
+for the formalisms and the
+implementations
+and predictive processing for a
+philosophical understanding that
+prediction is the basis of signal
+interpretation
+as opposed to description and
+recognition
+being the essence of signal
+interpretation or semiosis so i think
+it's uh um referring to
+taking the active stance
+not just with respect to action but also
+with respect to our own sensory
+experience
+which can
+feel or one can be encultured to feel
+like it is a receptive process i mean
+don't the photons hit the retina and
+don't the pebbles hit our skin and so on
+yet even that
+how can we see it in a generative and in
+a way potentially even with agency and
+so here's some books that are in the
+last several years that are reflecting
+the philosophical and the
+neurobiological work that's being done
+in this predictive area
+yeah and
+yeah i really like that difference there
+between coding and processing if i'm
+thinking about touch and your comment
+earlier about
+one person might feel like a pat on the
+back or
+is um
+is a pat on the back but for some one
+person
+the processing might be
+supportive for another person it might
+be like fingers down a chalkboard
+um
+and uh
+yeah with you know
+any type of some person might you know
+most people wouldn't like a punch but
+there might be some people who
+get pleasure
+from
+[Music]
+from a punch so the yeah the coding and
+the processing
+yeah
+creating and interpreting
+great point
+okay
+finally to active inference
+so the authors uh in this paper
+wrote active inference which they use
+the ai acronym for
+active inference is an empirical
+integrative model that has been proposed
+to explain the dynamics
+and biobehavioral mechanisms of
+cooperative communication
+so they cite the vassal at all paper
+from 2020 it's called a world unto
+itself human communication as active
+inference
+and this was actually discussed way back
+when in live stream number three
+this paper has
+many many interesting figures and
+formalisms
+the top figure
+is these two brains
+that are communicating and it's fun
+because it's kind of like an equation
+free version of active inference
+and
+an idea on the left side through
+behavior
+is invoking something in
+the communicative partner
+and that is updating their ideas their
+cognitive model which is reflected
+through their behavior and that is like
+a feedback so one can imagine this is
+like a conversation
+between two brains and bodies so it does
+bring in embodiment because there is the
+integration of behavior in the interface
+between these two communicating brains
+and it also opens up the door to
+thinking about like well how do we
+model ideas and cognition and things
+that we can't directly observe what
+would be different if it wasn't just
+behavior
+in the interface what if there was
+biofeedback or what if there was other
+kinds of interfaces so that's hinting at
+the flexibility
+of active inference and also the way in
+which it can hopefully be insightful
+qualitatively or formally and then we
+won't go into it right now but in figure
+one is where we start to see what that
+formal layer looks like
+all states could be an entity and the
+niche like an entity in the world or it
+could be two participants in a
+conversation and then what are some of
+the formalisms that help us model that
+situation and
+uh add in empirical data and ask what if
+questions in a really structured way
+yeah
+and as i was looking as you were talking
+through those two brains coming together
+i was um thinking back to a therapeutic
+alliance and then thought about other
+types of nervous systems that might come
+together therapeutically so
+domesticated animals i've if you've got
+a pet dog um
+then
+we might not be able to fully
+communicate like you and i can with
+words and
+actions as as uh
+indeed in such a understand walkies
+and come to the door um wagging its tail
+and there's a almost a therapeutic
+alliance if you know i'm stroking my dog
+and my
+parasympathetic nervous system is
+um there's an agreement there between me
+and the dog that there's an alliance
+that we're gonna soothe each other
+um but we're not fully
+you know compared to uh
+a wild beast that might attack me um
+there's a different you know very
+different coupling coupling going on
+yep
+the flexibility you mentioned
+yep um
+[Music]
+a little bit more on active inference
+which will hopefully unpack more in the
+dot one and two
+but the authors write about active
+inference referring to the inversion of
+bayesian generative models of the sensed
+world
+so we can talk more about the sort of
+recognition model and the generative
+model
+and then they also explore in
+their unpacking of active inference the
+ways in which perception and action
+are both
+in the common game of reducing surprise
+reducing expected free energy
+so lots to talk about but the big
+questions are pretty much as always
+what is active inference and how is
+active inference being applied in this
+paper
+and then
+this is the realism instrumentalism
+question
+are the bodies doing active inference
+do they have a choice to do it or not
+or is this an approach that we're taking
+to model these bodies
+so is active inference the territory
+of the clinical relationship
+and or
+is active inference a map
+of the clinical relationship that's
+constructed about that territory
+and so that's something that's always
+very rich to explore again is it
+something that the bodies are doing that
+the physical therapist and the clients
+are doing
+or is this how we're modeling what they
+are doing then what are they doing
+yes um
+oh so much to to possibly say about that
+yep won't go there quite yet perfect
+and then um
+what would you like to add about the
+free energy principle and about the
+bowline at all
+paper
+yeah so um
+uh
+i took a quote back from there the other
+some of the authors on this paper were
+on the other paper in the series on
+inactivism and active inference
+so there they said
+the free energy principle herein free
+energy is defined as the difference
+between
+system's predicted state and their
+actual state
+thus minimizing free energy means
+avoiding surprise to keep within
+physiological bands and the entropy
+of the system low
+and you know a prerequisite is that for
+this notion is that different states are
+separated by markov blankets which
+define the boundaries of a system
+statistically by separating the
+internal states from the external states
+however
+active and sensory states
+active states are governed by
+internal states
+but affect external states whereas
+sensory states are governed by external
+states but affect internal states
+free energy
+is minimized either by perception as you
+said on the earlier slides
+[Music]
+by updating the prediction based on the
+sensation or action changing the
+sensation through
+action to match prediction
+um
+so when i when i read these last bits
+and thinking about the markov blanket
+and touch
+and you know you sort of said um is the
+is the touch internal or external and
+then i'm thinking about this co-embodied
+baby inside the womb
+um where's the markov blanket there and
+where does the touch begin and end
+and
+you know touching
+someone physically in a therapy session
+or touching them with your words
+uh
+and when someone becomes synchronized
+and starts to minimize free energy as
+their new markov blanket formed between
+the coupled agent lots i'd like to
+have answers for
+awesome questions we'll go into it
+so that covers many of the keywords and
+background concepts
+let's jump to figure one and so the
+paper has
+just very clear and delightful figures
+and this is figure one the caption is an
+overview of the effects of touch and
+therapeutic alliance on the different
+networks of the brain so here in the
+sensor is a representation of a brain
+and then
+with the labeling
+of some different brain regions and
+networks and systems
+they're referencing different empirical
+work over the previous decade that has
+been connecting different brain region
+function and activation to all of these
+functions of
+bodies and brains and minds so what's
+one that's like interesting to you or
+what do you see or how do we think about
+this sort of um
+representation of brain regional
+function while also respecting the
+holistic and the integrity of like the
+brain as a unit and the brain and the
+body
+yeah i'm just gonna sort of pick out
+there the the person
+on the massage coach um
+being touched and the you know you've
+got the ct fibers there uh c tactile
+fibers which
+maybe are involved in this slow
+affectionate touch
+and the word insular there so
+um
+we talked before about that that picture
+of fascia on your your wall and um
+you know is the the connection between
+the seed tactile fibers
+uh and the insular um
+through the connective tissue
+uh that's you know joining the brain a
+region of the brain
+up to
+the person's fingers
+um that's that stood out to me cool yeah
+it'll be awesome like to hear from
+authors and others just
+what kind of work
+did
+draw these connections and what are the
+next steps for developing that
+connection and understanding how there's
+synchrony within and among brain regions
+and within and among brains
+anything else to add on figure one
+um
+yeah just that the hypothalamus word
+just jumped out to me there so um
+if we're talking about sort of
+minimizing free energy and
+um
+the autonomic nervous system
+so one question that sort of came up
+when i first read the paper was
+we
+what are we on what level are we
+agreeing where the set points are that
+we're synchronizing towards or staying
+within so
+the
+37 degrees c is the archetypal um
+temperature set point but not all
+members of a you know
+a duck egg has a slightly different
+preferred temperature than the chicken
+egg as it's been incubated and at what
+point in our evolution did
+we those those birds cooperatively
+agree within their therapeutic alliance
+to
+re
+to adjust
+their
+step points
+and maintain that through whatever
+active inference
+um
+yeah those sorts of questions
+cool
+so on this slide i
+picked out just a few words that were
+really jumping out
+like touch as a core
+term
+and then the authors talked a lot about
+uncertainty repetition
+safety empathy synchrony and salience
+and i found the paper of
+mason 2019
+and this safety and uncertainty
+framework which is kind of interesting
+because in active inference we often
+take a very
+formal approach to precision and
+certainty and confidence approaching
+those terms
+basically how they're used in bayesian
+statistics like confidence is a
+hyperparameter or precision is a
+parameter that reflects the variance of
+a distribution
+and here's like a two by two matrix
+that is just saying
+where are we
+from certainty to uncertainty
+and safety to unsafety and that can be
+the physical and the social and the the
+cognitive
+and so how do we find ourselves
+in safer situations
+while respecting the variation among
+situations and where do we want to be
+and something about seeing this
+matrix
+gave me some certainty and safety almost
+like actually it is okay to be uncertain
+and if it's harmful then unsafe is not
+where one might want to be most of the
+time
+but we also cannot only stay in the pure
+safety area
+100 of the time
+so how is the therapeutic alliance in
+our own lives outside of the doctor's
+office
+how are we
+in these quadrants and in this way
+and how does this qualitative and kind
+of personal way of relating to safety
+and certainty related to perhaps more
+formal representations that we would
+bring in active inference
+brilliant um yeah and that you know
+those axes
+remind me of the valence and affect um
+axes so
+uncertainty could be like
+uncertainty certainly could be like
+arousal and calmness and safety and
+unsafe could be
+pleasant and unpleasant
+and then you know it's might as you said
+it might be fine to be safe and
+uncertain it might be fine to be
+aroused and pleasant
+um in which is excited but i don't want
+to spend too much time excited because
+it's um is energy
+you know it's from a free energy
+minimization it's quite maybe costly so
+um
+yeah and where does
+the therapeutic alliance and
+co-regulation come into all of that what
+are we agreeing on is uh is a good
+balance
+and um safety and certainty are going to
+be
+very situational and related to that
+experience of the patient in this
+setting so how can we foster
+a setting where people with very
+different backgrounds and priors and
+expectations and preferences
+can feel
+and be where they want to be in that
+quadrant maybe they even have different
+preferences for safety or there might be
+different preferences for certainty
+itself
+okay so
+adaptation to experts based on
+hierarchical structure and you have um
+brought up this creation of atom
+painting by michelangelo so what made
+you share this art and what did you see
+in the section
+so um when i was thinking about touch i
+started to think and i thought i really
+liked this section the paper about
+the role of experts and i've not thought
+about it in
+what in that way in the therapeutic
+alliance so they used an example which
+was really helpful to me of um a child
+again going back to child and the parent
+is the expert and it's the
+through touch
+the
+child is
+learning how to maybe regulate itself or
+soothe itself um
+so that's one example and then i start
+to think okay as we grow older or in
+different environments who's the expert
+and who's
+regulating us and you could say it's you
+know
+peers it could be a boss at work is the
+expert or in the practitioner
+patient example it's assumed to be the
+the clinician or the practitioner
+but then i thought okay above that we've
+got governments and politicians and then
+i thought above that we've got these
+um
+symbolic maybe or from religion we've
+got the god is the expert and that's
+when i sort of googled this picture and
+interestingly um on wikipedia it says
+that got you know if you look at that
+picture the god touching adam is um
+the shape around him is
+looks like a brain and it's been
+supposed that that's uh you know um
+suppose the
+internal model of the the world's um
+held in the the brain and
+you know which which model
+we're held with inside us
+um and how is that playing out their
+active influence
+wow
+here's all the all the brain regions in
+figure one
+um
+all of these other um spirits and
+entities
+and then
+crossing the markov blanket
+tantalizingly close to touch but with
+that interface between them
+but is there a space between with the
+shared gaze
+and the shared regime of attention
+so it's very
+powerful interpretation we can
+do some more um art and meme
+interpretation because i it's just
+really awesome how you shared that here
+there's a section in the paper on
+adaption of priors to a ch
+and that's going to be something we'll
+go more into detail in but in this paper
+they wrote
+the canonical loop of coupled action
+perception cycles is the process by
+which dyads generate and modify cycles
+until they achieve the end goal of
+aligning their mental states and
+communicative exchanges this really
+highlights that we're not again talking
+about metronomes in lockstep synchrony
+can include a conversation with two
+people with different perspectives so
+synchrony is something a bit more
+general or looser than just
+the metronome and the paper that they
+cite first in 2015
+shows some of the interesting modeling
+that's been done around birdsong
+and so they model
+a birdsong conversation
+where
+there's a shared narrative
+or they're singing from the same hymn
+sheet and
+without going into any of the technical
+details there's an expectation of how
+the song should sound
+like i know how some songs sound
+and then a bird either finds itself
+engaging in the action of singing that
+part of the song
+and then
+stops singing after its turn duration
+has occurred and there's some reasons
+why it stops singing and then the other
+bird expecting the song to continue
+can reduce its uncertainty about the
+continuity of the song through two ways
+perception slash learning and action
+and so as long as your partner is
+singing you're reducing your uncertainty
+about the song or the conversation by
+listening actively
+and then when they stop
+you might continue to reduce your
+uncertainty about the conversation or
+the song by engaging in action and so
+that's exactly what happens with this
+generalized synchrony and the synchrony
+manifold that's happening within
+one bird among brain regions and then
+modeled in this paper of fristen and
+frith with between two birds engaging in
+this spurred song conversation
+um
+yeah and that's reminded me of something
+else that stood out to me in the paper
+about this
+um
+they mentioned a couple of times that um
+the basic one of the basic things that
+is being assumed in a therapeutic
+alliance or hopefully is an end point is
+that we are all identical or we're all
+alike
+that was mentioned a couple of times in
+the paper and as you're sort of talking
+about the birds you know that and their
+expectation that that song is something
+that they hear and that they're going to
+sing themselves
+you can see maybe why music and um
+language is helping us it's
+you know
+self-evidently
+perpetuate our identity
+um
+but then you know i think i heard
+somewhere it might not be true that
+um
+birdsong is soothing for humans as well
+so is it helping us
+remember that we're part of this
+community
+ecological community that's uh
+um
+not i'm not identical in the
+species sense but
+some other sort of a likeness
+or expectation
+the the inter-species alliance
+one other section that
+they have in the paper
+is increasing saliency within synchrony
+so some important questions that we'll
+discuss more what is salience
+how are salience and synchrony
+associated
+how is salience similar or different to
+observation or attention
+regime of attention
+and then they focus on a few different
+categories of mechanisms including
+physiological mechanisms
+social mechanisms that promote synchrony
+via salience
+and clinical mechanisms
+so if it's about synchrony again not in
+the lock-step way in this generalized
+synchrony way like a conversation
+therapeutic alliance as an improvised
+controlled novelty productive
+conversation
+how will synchrony occur
+and what is the relationship of salience
+to synchrony is it a precursor is it a
+an after effect are they one in the same
+and then what are some of the mechanisms
+that could be
+fostered to increase salience and
+synchrony or what are some of the rate
+limiting steps that one might look at if
+they wanted to promote like or heal
+synchrony and salience
+healing synchrony and salience yeah
+and um the
+you know the since the the free energy
+principle and a lot of the active
+inference work uses
+exploits mathematics it's um
+stephen strogatz's work on the maths of
+synchrony
+and
+uh i don't you know i don't profess to
+understand it
+um but it'll be interesting to see
+if um
+that
+mathematics
+could be integrated with the
+fep math to help understand how
+like you say synchrony in these
+in something like social mechanisms
+might occur mathematically so in figure
+two
+we have pulled back from the single
+brain figure one we were it was inside
+out we were in the one brain context and
+figure two
+takes us into the two brain
+communicating brains and bodies context
+and the caption is therapeutic alliance
+as active inference and there's a
+similar
+aesthetic genre where
+now instead of the one brain with the
+brain regions being highlighted in
+different functions
+now we're seeing at the dyad
+with this sort of handshake or touch
+occurring between them we're seeing
+different functions and facets of the
+therapeutic alliance that are labeled
+with a
+through j
+so
+what were one of these like functions
+that stood out to you or you think it's
+interesting
+hmm
+yeah um
+i'm looking at thee now so the
+the it looks like someone on some
+crutches and then there's
+um
+caregiver helping the person
+and then thinking back to the you know
+the alliance bits i'm um
+thinking what the shared goals might be
+there so
+you know it's um is the
+the
+the caregiver
+you know agreeing with the person on
+what they're gonna do rehab wise
+um
+and then how might that when it comes to
+touch
+help the person update their beliefs
+about how soon they can they can heal
+um so that it becomes uh
+a smoother process as possible
+yeah
+and what i'm really liking about this
+it's bringing in some aspects of
+the therapeutic alliance and process
+that
+at least from what i've seen or not
+discussed in such a holistic way like
+f what have i done
+like just the confusion and shock when
+something surprising is happening in the
+body and it's like
+am i gonna be able to use this finger
+again and
+how could i feel selfish about having
+injured my finger in this way when
+others are in this situation
+and some of these like metacognitive
+states like h anxiety over the injury
+the bark can be worse than the byte
+and then j
+previous priors so that could be
+consciously or experienced priors or
+just in a broader sense implicit
+statistical priors
+surrounding the injury including injury
+beliefs
+social expectations and family and
+injury history
+and so that kind of takes the
+predisposition family history
+epigenetic
+perpetuating cycles
+discussion
+and puts it into this prior
+expectation preference
+framework
+like what does one expect health to look
+like given the types of health that they
+saw
+in their family development
+yeah in their family and
+maybe
+culturally we've got
+these expectations about
+um uh obesity and then you know uh
+the
+what we're being
+um
+what types of products are available to
+us what types of foods are in our
+in our niche um
+and then when you get into epigenetics
+and all of that then it soon becomes uh
+very interesting
+great well i think this the figures are
+are very evocative and they'll be
+excellent for the discussions to just
+reflect on
+one other section just to leave a little
+footnote
+is they wrote about
+allostasis coordination attention and
+the stag hunt so they brought together
+all these very cool ideas
+and brought it to the setting of the
+stag hunt
+which is a classical
+game theory and philosophy setting and
+this is a matrix that can be read as
+like a payoff matrix
+and there's two participants
+who can either
+choose to hunt for rabbit hair
+which has a smaller
+possible payoff
+but one can hunt it alone
+however if they both engage in the stag
+hunt
+like the big prize
+they can have a higher payoff so if they
+both collaborate and work on the stag
+hunt they could both get you know half
+of a stag
+whereas if they both go for the hair
+then
+perhaps they could both be confident or
+sure or not sure about getting a hair
+but like it's like a smaller possible
+reward but it doesn't require
+coordination
+and this has explored some of the
+philosophical and social implications
+with the citation that they provide to
+skirms
+2001
+and this is just a very
+uh rich area for thinking about
+collaboration coordination
+public goods what kind of preplay
+helps people
+go for the stack again this isn't just
+about meat hunting this is like a model
+of generalized coordination like we
+could co-author an amazing paper or we
+could have two
+lesser papers that might take longer but
+of course we could also engage in the
+collaboration and get bogged down and
+then we could have no paper so how do we
+manage the risks and the reward of
+coordination and collaboration how is
+that related to shared attention
+and how is that related to allostasis
+where's touch
+so
+they're really just bringing in so many
+ threads and and i was not
+expecting the stag hunt to appear
+but then
+applying the stag hunt to the
+therapeutic alliance is quite
+interesting
+um
+yeah
+um
+yes and the you know the the kind of
+alliant that the working together
+for
+the benefits of the the alliance versus
+maybe giving someone some
+exercises to do on their own um
+or pursuing self-care on their own
+versus
+care in a in an alliance way is uh i've
+not thought about it in that way before
+in terms of the
+you know the the group benefit of group
+work versus self-care on one's own
+yeah like a regional emergency room
+what does it look like for us to
+be cooperating as best as we can with
+the health needs of this area
+how are we gonna be going for the stag
+together
+rather than
+succeeding or failing to get the rabbit
+alone
+um and then oh yeah go for it
+um no i think it's slightly slightly off
+topic i was just thinking about the you
+know the
+more related to the stag how we approach
+agriculture at the moment and um
+uh
+you know for the the benefit of being
+able to get lots of food for cheap but
+cheap and in abundance on our health
+seems immediately to be a
+a benefit but then for the overall
+health of um
+cheap abundant
+foods
+long term might not be that good if as
+opposed to going out and moving your
+body and um
+uh foraging on your own which takes more
+energy but you're
+um it's better for your health arguably
+cool
+and then just one other random note or
+reference to bring in
+this is a paper that i worked on in 2018
+with my partner alexandra
+and we were highlighting this
+communication and co-creation
+not from the clinical
+therapeutic alliance setting but from
+the joint
+drawing and joint improvisation setting
+but we touched on a lot of very similar
+topics
+about consensual and positive
+communication
+and controlled novelty and the narrative
+trajectory
+so i wondered
+where's art
+and aesthetics and beauty
+and some of these other ineffables or
+semi-effables
+in the therapeutic relationship you have
+a um a body
+on your wall behind you i have a body on
+the wall behind me
+the body is beautiful and where does art
+and culture and touch and healing come
+together
+well yeah the you know the art is the
+expressed outward kind of um
+output of
+some imagery or symbols that the artist
+has
+found within them
+um and therapeutically you know the use
+of visualization
+along with therapeutic touch to update
+someone's belief so you know i uh use
+with my clients sometimes ask them to
+depict how their
+their um
+injured shoulder what what image what
+vision vision do they get when they
+describe their injured shoulder compared
+to their healthy shoulder and
+you know one of them said um
+the the the bad shoulder feels like a
+rigid piece of
+guttering on a house that's gone frail
+in the sun whereas the good shoulder
+feels like
+gooey custard um it's nice and warm and
+then you know how can you transfer that
+belief about the injured the
+injured shoulder into the
+the gooey one so you know you've got
+some potential use of art therapy or
+even just visualization and symbols
+to um in combination with touch
+and movement and conversation
+um
+so yeah very awesome
+awesome
+and then um
+we have
+the open slide for 44.1 and 0.2 we're
+going to continue to add questions in
+the coming week and people can submit
+questions or
+participate live if they'd like
+i'm really interested to do some
+discussion of like what are the active
+inference entities that we're going to
+model
+is it the person okay then what are the
+sense states the action states what is
+the generative model that we're going to
+actually put on paper and so
+where does active inference come into
+play and how are we going to take the
+next step because so many threads have
+been brought together in this paper
+evidenced by the keywords and the
+bibliography and so on and then what is
+the next step who are the next
+audiences
+to update their cognitive model to think
+and act differently
+how does the clinical setting look
+different
+in
+the active hospital
+or in the active exercise area or
+whatever it happens to be like what does
+the therapeutic alliance look like in an
+active inference model
+and what are the next steps for those
+who want to be engaged in that work
+and yeah we'll just continue to explore
+um
+what are some of your any
+closing-ish thoughts
+um
+yeah wonderful paper i'm really
+interested in you know how other
+um so this is written by
+uh a group of sort of people who
+is interested in osteopathy um
+the way i see it it could be applied to
+um talking therapies other hands-on
+therapies so is this a useful common
+language to understand lots of different
+already successful
+therapeutic approaches and interventions
+um
+that's one thing the other thing is you
+know how do we begin to
+um
+use some of the
+jargon that we might have been using now
+um
+how do we
+find a way to
+take the active inference um language to
+people who've never heard of active
+inferences before
+and then you know
+finally the uh
+something that came up without reading
+it's kind of an alternative hypothesis
+about
+this um
+you know assumption that
+synchrony and the therapeutic alliance
+will always result in
+minimizing free energy and you know i
+just had this thought
+what if
+um a you know uh
+within the therapeutic alliance a
+caregiver and the the patient agreed
+that
+they synchronized their
+quantum reference frame or whatever to
+um to say okay we're going to
+choose medically assisted dying here
+um is that still minimizing free energy
+or not
+um and is it helpful for the person is
+it soothing them you know
+so is it
+is it always minimizing free energy
+wow
+very
+deep with the
+birth and life control
+and the
+vital nature of what
+the therapeutic alliance truly is
+so
+also thanks for just this awesome
+discussion and all the zero slide making
+that we got to engage in
+so
+looking forward to the coming weeks of
+discussion
+talk to you later
+thank you very much daniel
+excellent see you later see you next
+week bye
+you

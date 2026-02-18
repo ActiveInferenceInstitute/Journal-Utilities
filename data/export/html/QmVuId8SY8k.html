@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karl Friston "Active inference and deep temporal models" 23.09.19</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Karl Friston "Active inference and deep temporal models" 23.09.19</h1>
+<div class="meta">Duration: 1:44:00 &middot; Views: 1,000</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=QmVuId8SY8k">https://www.youtube.com/watch?v=QmVuId8SY8k</a></div>
+<article>
+<p>Please share with us today with our</p>
+<p>Please share with us today with our</p>
+<p>Kremlin and its museums.</p>
+<p>And I've never seen so many beautiful things in my life in one day before.</p>
+<p>So, to thank you, I'm going to show you my most beautiful formula, the mathematical equations.</p>
+<p>And we're going to spend the next two hours deconstructing them.</p>
+<p>I'm joking.</p>
+<p>I have been told that not everybody here is a mathematician.</p>
+<p>So, I will be showing you my favourite equations, but I'm using them as pictures to remind me what to say,</p>
+<p>and just to rehearse the formal structure of the arguments.</p>
+<p>This lecture is really an invitation for us to think about what the brain is doing.</p>
+<p>And I'm going to take the perspective that the brain is optimising something.</p>
+<p>The question is, what is it optimising?</p>
+<p>So, I'm going to ask you to stand back from psychology, or machine learning, or education, or artificial intelligence,</p>
+<p>and just ask a simple question.</p>
+<p>What is it that we want to achieve?</p>
+<p>What quantity do we want to optimise?</p>
+<p>And I'm going to offer an answer, which is indeed borrowed from statistical physics,</p>
+<p>a very interesting free energy, but it has a very different meaning and interpretation for us.</p>
+<p>And so what I want to do is to walk through the interpretations and the meanings of that from the psychological, cognitive, and sentiment perspective.</p>
+<p>Further to that, if we understand the mathematical principles of higher brain function, or indeed just perception and action,</p>
+<p>then it should be possible to shine a new light on message passing in the brain, on the aeronautonomics, on the anatomy of the brain,</p>
+<p>the functional anatomy or the computational anatomy.</p>
+<p>So much of my lecture will be trying to rehearse the general idea in some abstract terms,</p>
+<p>but illustrating how far one can take the formal principles in understanding the empirical brain responses that a lot of us measure.</p>
+<p>Say for example, the e-engine, electric magnetic brain responses, or indeed just our choices and our decisions on our behaviour.</p>
+<p>So if the agenda is ambitious, I'm going to address a very deep and big question,</p>
+<p>what do our brains do, and provide a potential answer, but use the answer to illustrate to you how far one can get in simulating or understanding</p>
+<p>quite high level of sophisticated behaviour.</p>
+<p>I want to eventually end with an example of reading and language understanding and its brain response correlates.</p>
+<p>So that's where we're going to try and go. If I take too long, you're going to stop me,</p>
+<p>and then we'll have a conversation, which is usually the best part of these lectures,</p>
+<p>because of the questions that that's is. So I'm not going to talk for more than an hour, thankfully,</p>
+<p>and then I look forward to having a conversation about some of these lectures.</p>
+<p>Now, have you all read this? I will be asking questions. This is what I'm going to be talking about.</p>
+<p>I'm going to introduce the question at hand, and then provide this answer in terms of something called active inference,</p>
+<p>closely related to things like active learning, machine learning, or active vision in visual world sciences.</p>
+<p>This is putting perception in an inactive context that we are actively perceiving, and we are in charge of the way that we palpate or sample the world,</p>
+<p>in order to optimize our perceptual synthesis. I'm going to show that mathematically that's just the same as gathering evidence for one's own existence.</p>
+<p>And I'll explain that connection in about five or six slides. All of this self-evidencing, this active perception, this active inference,</p>
+<p>rests upon predicting worlds actively, having a model of how the world works, and how the world supplies our sensory organs with sensations and stipulation and observable outcomes.</p>
+<p>And that's known as a generative model, a model that generates sensory consequences from the causes out there which we want to understand.</p>
+<p>So I'm going to spend some time illustrating the kinds of generative models that we use to simulate behaviors,</p>
+<p>either in animal studies or economic gains, and the resulting or ensuing belief updating that we can then look at as if we were electro-physiologists or brain-lackers.</p>
+<p>And that's from the principles to the process theory. So making a distinction between the principles of optimization that we're going to be talking about,</p>
+<p>active inference and self-evidencing, to the neuronal processes that are occurring in your head at the moment,</p>
+<p>that we can measure as neuroscientists and cognitive neuroscientists.</p>
+<p>I'll briefly rehearse some empirical predictions. I'll go through this quite quickly, because I want to get to the end,</p>
+<p>which is some of the most advanced applications of these ideas to understanding functional architectures of the brain,</p>
+<p>and that's the use of deep generative models that have a deep hierarchical structure, both in terms of abstraction,</p>
+<p>but also in terms of time. Exactly the sort of models that you would need to generate language.</p>
+<p>And I'm going to turn that on its head by saying, these are the models that we use to understand language.</p>
+<p>And I'm going to present some very simple simulations of reading and show that they produce the same electro-physiological responses</p>
+<p>that we use in classical paradigms like the mismatch negativity or P300 paradigm.</p>
+<p>So let me just start very abstractly and very simply. Imagine you are an owl, you are a bird of prey, and you're hungry.</p>
+<p>So what are you going to do?</p>
+<p>I'm going to search.</p>
+<p>Boris, what are you going to do?</p>
+<p>I'm going to search.</p>
+<p>Search. Perfect.</p>
+<p>In that one simple answer, search, there is a whole range of hidden truths about what we are trying to optimize.</p>
+<p>So here is the owl searching and there is the unhappy prey, who is about to be eaten by the searching owl.</p>
+<p>So clearly, if I'm hungry, the first thing I'm going to do is to resolve my uncertainty about where the prey exists, where here the mice exists.</p>
+<p>And it's that notion of searching, resolving uncertainty, that underwrites everything that I'm going to talk about for the next 50 minutes.</p>
+<p>It's important because there are two ways you can write down, and here are the first of the formula, but I repeat, please do not worry about the maths,</p>
+<p>so they're just here to remind me about different ways of thinking about things that you can write down in computer code or indeed mathematically.</p>
+<p>There are two ways you can write down the objective for living, for the owl, or for you, or for me.</p>
+<p>First of all, we could write down an expression for things that we do, controlled variables in engineering, which we'll call you at this point in time,</p>
+<p>as maximizing the value of some states of the world if I did that thing.</p>
+<p>And then what I would be able to do is to create a policy pie that for any given current state, if I apply this action, I will move to the next state,</p>
+<p>and then I will maximize the value of being in that next state.</p>
+<p>So this is the notion of a value function of states giving rise to a state action policy.</p>
+<p>It requires you to believe in and commit to the idea that for every state there is a label which tells you how valuable that state is,</p>
+<p>and then all you have to do is to choose the action that takes you from this state to the most valuable state.</p>
+<p>And that's not going to work to explain searching.</p>
+<p>For the simple reason that if searching is all about reducing uncertainty, then we know immediately, because uncertainty is an attribute of a belief,</p>
+<p>it's not an attribute of a thing, it's an attribute of a belief about something, then the function that we need to optimize has to be a function of a belief.</p>
+<p>And if the belief is about something, then that's a function of a function of something. Mathematically, that's called a function of.</p>
+<p>So what we actually need, or the alternative way of theory is, is that our best action at this point in time maximizes a function of beliefs about states of affairs,</p>
+<p>states of the world, if I did this action view here.</p>
+<p>And I'm going to describe this belief in terms of probability, posterior probability distribution over different states.</p>
+<p>Again, don't worry about the math, just remember that Q is a probability belief.</p>
+<p>And that gives a very different sort of optimization scheme.</p>
+<p>So we've moved from a value function of states of the world to a function of beliefs about the streams of the world.</p>
+<p>Furthermore, the notion of searching tells you something else very important.</p>
+<p>It means that it matters whether I search for my brain and then I eat it, or I try to eat it and then search for it.</p>
+<p>So time and order really does matter, which means that you can't just write down an objective function as a function of beliefs.</p>
+<p>You have to define a policy which is a sequence of actions in a particular order.</p>
+<p>So now what we have is a notion that there is a best policy that entails or prescribes a sequence of actions in a particular order.</p>
+<p>In machine learning or control theory of the sequential policy optimization.</p>
+<p>For us, all it means is we know that the best kind of policy, pi style, maximizes the sum of this functional, and I'll say that is the free energy functional, of beliefs given that particular policy.</p>
+<p>And then if I don't apply policy, I can select the right action.</p>
+<p>So these two contrasting ways of writing down formally what living things do emerge in many different guises, in many different contexts.</p>
+<p>So the notion that you can explain behaviour in terms of optimising value function rests upon the optimality principle.</p>
+<p>And from this you'll find lots of examples, optimal control theory, dynamic programming, deep reinforcement learning, utility theory and economics,</p>
+<p>apples induction, apples induction and so on and so forth.</p>
+<p>Some of these you may have heard of, some of which you don't, but they all have in common this commitment to a value function that can describe everything we do in terms of an optimisation.</p>
+<p>The other approach, which is the approach that we are going to pursue, is based upon the principle of least action.</p>
+<p>So action here is just basically a time integral or a time average of an energy, and I just said f is a free energy.</p>
+<p>So this path is an action, and we're going to maximise that action so that we choose the optimum action.</p>
+<p>And this is the free energy principle, also known as active inference.</p>
+<p>From this we will hopefully demonstrate later on how artificial curiosity and intrinsic motivation in robotics emerges.</p>
+<p>We can also cast this in terms of basic decision theory, and I mentioned before this is an aspect of sequential policy optimisation.</p>
+<p>Now I deliberately sort of contrasted classical value function with free energy functionals to highlight the fact that these approaches are belief based and these are not.</p>
+<p>But I'd actually show that they come out together again. So this becomes this when we remove uncertainty.</p>
+<p>So I'll try and describe how we get back to expected detail theory in a few slides.</p>
+<p>But for the moment, let's just focus on what this quantity is.</p>
+<p>And I'm going to give you one answer, and I'm not going to motivate it.</p>
+<p>There is a deep backstory here from statistical physics and phasing mechanics.</p>
+<p>But I'm not going to worry about that. I'm just going to tell you what it is, and then hopefully convince you it is a suitable objective function by a series of examples which will fill the rest of this lecture.</p>
+<p>So here's the basic idea. This quantity is known as a variation theory.</p>
+<p>It's an information-theoretical quantity.</p>
+<p>Quite closely related to something invented here, a common graph complexity or multiple complexity.</p>
+<p>It's also known as an evidence-low-bounded machine learning. In statistics, it's known as the log model evidence, also known as marginal likelihood.</p>
+<p>You can forget about all these different names. The reason I'm listing a four-week note is it's a very, very important quantity which you see in nearly every field.</p>
+<p>The fact that it's called basic model evidence gives me a license to describe this optimisation of self-evidence, and we'll see why that loads at the moment.</p>
+<p>From a statistician's point of view, this negative physical free energy here, this negative evidence or log evidence or evidence-low-bounded elbow in machine learning,</p>
+<p>is just the probability of getting these observations at this point in time given a model of how these outcomes were generated.</p>
+<p>And I'm going to read that one. From a statistician's point of view, you can always write this quantity, this evidence, as complexity,</p>
+<p>as negative evidence, as complexity minus accuracy, or log evidence as accuracy minus complexity.</p>
+<p>What that means is, we're going to consider the brain as a statistical organ, an organ that's trying to make inferences just in exactly the same way that human scientists tried to make inferences about</p>
+<p>differences between one group and another group using a T-specific or an analysis of covariance.</p>
+<p>The brain is doing exactly the same thing with its sensory data. It's trying to test different hypotheses, different beliefs about how those sensory data were caused.</p>
+<p>And it's doing so by maximising the basic moral evidence, which means that it is trying to find the simplest, minimally complex explanation that provides an accurate account of the sensory data.</p>
+<p>And that's going to be very important. So it's not just finding an accurate account of data, it has to be parsimonious and simple in the sense of what can phrase that.</p>
+<p>So this variation of free energy is just the mathematical expression of this mixture of complexity and accuracy. And we imagine the brain just organises, learns, infers, passes messages, all in the surface of minimising its complexity minus accuracy or maximising accuracy in minimising complexity.</p>
+<p>And if that's the way that it is, it's not just the way that it is, it's not the way that it is.</p>
+<p>And if that were the end, then that would be a perfectly suitable form or counter-perception.</p>
+<p>But what we're interested to hear is how the brain couples back and actively samples the data that it could use to infer a corporal structure in the outside world.</p>
+<p>And that's the way that it is. So we've already said that we have to define the column in terms of sequences of actions or policies.</p>
+<p>And what we're going to say is that we're going to select those policies that maximise the expected free energy after performing that sequence of behaviours.</p>
+<p>So what that means is that we're going to effectively choose policies that minimise complexity expected following an action and maximise accuracy following an action.</p>
+<p>But notice, now the outcomes are now random variables. They haven't yet occurred. They are in the future.</p>
+<p>So now we have to take an average over things that could happen in the future.</p>
+<p>So now we're talking about the average complexity and that turns out to be risk.</p>
+<p>Risk, and this is one of the equations in my meeting to provide the formal definition.</p>
+<p>So risk is really the needs about what will happen if I pursue this policy compared to what a priori I prefer to happen.</p>
+<p>So I'll say that again. Risk is the divergence or the difference between what I think will happen if I do this and what I prefer a priori to happen.</p>
+<p>So here my prior beliefs about the sorts of outcomes that I encounter define the sorts of outcomes that I expect to experience.</p>
+<p>Being rich, happy, warm, having my temperature within the physiological range.</p>
+<p>All the things that make me me and a good me and a happy me. They are a priori, my prior beliefs about the outcomes that I will attain if I pursue this policy.</p>
+<p>And the goodness of the policy corresponds to the minimum, reducing the difference between what I think is going to happen and my priori preferences.</p>
+<p>That must be that's called risk and we'll see another instance of that from an economic perspective at the moment.</p>
+<p>At the same time, I'm going to maximise my expected accuracy.</p>
+<p>So what would that look like? What does the expected accuracy look like if I haven't actually got the observations at hand?</p>
+<p>What it means is I'm going to deliberately choose policies that make the sensory data as unambiguous as possible.</p>
+<p>So for example, if I walk into a dark room, I'm going to turn the light on.</p>
+<p>Because that's a policy which means that I can unambiguously see what's going on out there.</p>
+<p>So to reduce the uncertainty about what would be causing those sensory pressures.</p>
+<p>There's a table in front of me, there's a light over there that I would not be able to see in an ambiguous sensory context if the lights weren't going off.</p>
+<p>So this is a little bit like the joke about the man who is drunk and is searching for his keys.</p>
+<p>And he's searching for his keys out of the lamp post or the street light.</p>
+<p>And then someone asks him, what are you doing? I am searching for my keys.</p>
+<p>Did you drop them there? No, I dropped them over there.</p>
+<p>So why are you searching here? Because I can't see over there.</p>
+<p>That's a perfectly Bayes optimal response.</p>
+<p>And it reflects about that we were part of the drives for our good policies and those which minimise ambiguity or maximise expected accuracy.</p>
+<p>And then once we've found a good policy, we'll sample an action from that.</p>
+<p>The actual change in the states of the world out there beyond our sensory Markov blanket.</p>
+<p>And that world will then supply new observations as they will redeem our perceptual synthesis again.</p>
+<p>Find the simplest accurate explanation of what's going on.</p>
+<p>Use our beliefs about states of the world to roll out a simulator.</p>
+<p>To another future, another policy, select the policy that minimises the risk of ambiguity, select the action.</p>
+<p>And so the perception of action or the action perception cycle continues on and on and on, all in the service of minimising risk of ambiguity,</p>
+<p>minimising expected surprise or negative free energy, which is just uncertainty.</p>
+<p>In physics it's also called entropy.</p>
+<p>But you can remember this as putting these two things together, it's just minimising uncertainty about the future.</p>
+<p>Where that uncertainty includes preferences that I feel familiar with.</p>
+<p>So that's the basic story in terms of what is this functional of beliefs that we want to optimise.</p>
+<p>This is a horrible slide if you don't do maths, but again, please ignore the equations.</p>
+<p>I just wanted to show you how easy it is to take away from these equations and end up with a formalism that people have been working with for centuries or at least decades and decades.</p>
+<p>So if you are a mathematician or a physicist, you will now recognise why this quantity is called free energy.</p>
+<p>It's basically an expected negative lot of probability here, which is called entropy.</p>
+<p>And then this quantity, if I put them together, is the energy.</p>
+<p>So it's basically the difference between an energy and an entropy.</p>
+<p>So it's the energy that's been able to do work, hence free energy.</p>
+<p>So just by shifting these things around or grouping them together in a different way, we can interpret it in terms of complexity and accuracy as we've just described.</p>
+<p>So all I'm saying here is that there are different ways of interpreting these quantities depending upon the words that you use, the constructs that you are taught and used in conversation with your colleagues.</p>
+<p>They're all equally viable.</p>
+<p>Another nice example of just switching things around here, taking this over here and this over here, means that there's another interpretation of splitting this uncertainty,</p>
+<p>minimising the capacity of good policies or expecting the energy G here.</p>
+<p>We can actually carve it or decompose it into another pair of quantities called epistemic value and expected value.</p>
+<p>So let me show you how that works, or more precisely, let me show you how people have already been using these constructs, these quantities in their work before.</p>
+<p>If we just focus on these two terms here, what this corresponds to is essentially the expected difference between beliefs about what's going on out there, if I had some observation in the future, relative to the beliefs about state of the world without those observations.</p>
+<p>So what that means is, this corresponds to the salience of the policy or the action.</p>
+<p>It tells me the amount of uncertainty I am reducing or the amount of information I have gained if I looked over there as opposed to looking over here.</p>
+<p>So this quantity has been used a lot in visual neuroscience, kind of standard visual searches and salience maps in terms of the best place to go and sample the world from.</p>
+<p>It's the place that minimises your uncertainty or the mass invites your information again, that has salience, epistemic performance.</p>
+<p>It's also mathematically exactly the same as the mutual information or the mutual predictability or the shared variance between the causes, states of the world, and the consequences, the outcomes that are generated by those states.</p>
+<p>So effectively what we are trying to do is to palpate our world, either visually with eye movements or literally with our skin receptors, by feeling for example the layout of a new hotel room in the dark.</p>
+<p>So you are testing hypotheses, you are testing hypotheses, you are sampling actively those sensations that tell you, ah, no, this is a table, not a bed.</p>
+<p>But you have to have those hypotheses in mind in order to reduce your uncertainty over the hypotheses that you are entertaining.</p>
+<p>And in doing that you are increasing the mutual information between what you feel and what caused those feelings.</p>
+<p>So that's a very important aspect of this uncertainty reducing imperative, this free energy functional beliefs.</p>
+<p>Let's make things a bit simpler.</p>
+<p>So now I'm doing what I promised before, I'm going to get back to the value function.</p>
+<p>But if you remember before I said the difference between the value function and the free energy functional is that one is belief based and the other is not.</p>
+<p>I can actually convert the belief based scheme into a value based scheme by removing uncertainty.</p>
+<p>So the first sort of uncertainty attribute is basically ambiguity.</p>
+<p>I'm going to assume there are creatures out there that can see every hidden state of the world.</p>
+<p>There's no sensory noise, there are no hidden states of the world.</p>
+<p>And what I see in my sensory organism, my observations, my boundaries are the states that I'm observing.</p>
+<p>So S's become O's and O's become S's.</p>
+<p>And what we are left with is just the divergence of the difference between the predicted and preferred outcomes.</p>
+<p>These are just our risk again.</p>
+<p>So this is risk sensitive control in economics.</p>
+<p>Also known as KL control because this is a KL or Black-Lieber divergence.</p>
+<p>So in optimal control theory, this is KL control economics, risk sensitive control.</p>
+<p>What it tells us is that this risk sensitive control is basically what is left if we remove ambiguity.</p>
+<p>Let's make the final move and actually take away ambiguity.</p>
+<p>So now not only, sorry, let's make the final move and take away the risk having taken away the ambiguity.</p>
+<p>So by taking away the risk, what I'm saying is that I am equally uncertain what will happen if I do that in the future.</p>
+<p>And if I take that away, we end up with just this term here.</p>
+<p>So I remove this now, and now I'm just left with this.</p>
+<p>So what is this? Well, it's just expected utility.</p>
+<p>So this is what economists use to score the probability of choosing this policy or that policy.</p>
+<p>In the absence of differential uncertainty, both in terms of ambiguity but also in terms of risk.</p>
+<p>There's a deep history to the expected utility, expected value, both in economics and of course in behaviourism,</p>
+<p>reinforcement measures based on exactly the same idea.</p>
+<p>And so reward, loss function that can ignore uncertainty and then you will see policy action selection being completely described by this value function.</p>
+<p>So the purpose of that was really to illustrate how a general belief based formulation of the thing that we are trying to optimize,</p>
+<p>namely maximizing evidence based on model evidence from models of the world or minimize our uncertainty through active palpation of that world.</p>
+<p>And our generalizations are things that we have all been working with for possible protection.</p>
+<p>But you only get these special cases if you remove uncertainty.</p>
+<p>So the belief aspect should be narrowed to the point that we talk about value functions.</p>
+<p>Just to make it very clear for those people who haven't come across information gain or epistemic value before,</p>
+<p>I just want to give you an intuitive example of what it means to reduce, to choose actions that dissolve uncertainty even before you know what's going to happen.</p>
+<p>So imagine you are driving a car and you are looking around in the night time and you don't have a choice.</p>
+<p>You are stopped at a traffic light and there is a filter on this traffic light and it could be pointing right or left.</p>
+<p>And you can choose to either look over here or you can choose to look exactly at the sign.</p>
+<p>Now if you are wondering about driving, you are going to have a 50-50 belief, posterior belief or prior belief before looking over here.</p>
+<p>That the sign is pointing to the left or to the right.</p>
+<p>And if you look over here, then you are not going to change that posterior belief.</p>
+<p>So it doesn't matter whether the sign is pointing to the right or to the left.</p>
+<p>Looking over here won't resolve any uncertainty.</p>
+<p>You will have a 50-50 posterior belief whether the sign is pointing this direction or in that direction.</p>
+<p>So this is an example of a policy that has no epistemic value at all.</p>
+<p>Contrast that with the situation where you are looking directly at the sign and resolving ambiguity and getting very precise sensory information.</p>
+<p>So now if the sign is pointing in this direction, then you will be 100% certain it is pointing in this direction.</p>
+<p>If the sign is pointing in this direction, then you will be 100% certain it is pointing in that direction.</p>
+<p>And you know that. And you know that before you even made an eye movement.</p>
+<p>So that's basically what this chaos divergence, this epistemic affordance, this salience, this information gain means.</p>
+<p>If you know the way the world works, and you know and have a judgment on what are the consequences of your practice sampling of that world,</p>
+<p>you can work out in advance what the best move is to make to reduce your uncertainty.</p>
+<p>And that's most of what I'm going to say from now on, rests upon that fundamental imperative, that epistemic imperative, that uncertainty-inducing self-evidence imperative.</p>
+<p>So that's all the hard work done. Now we're just going to see some pretty examples and simulations to show what it looks like in simulations.</p>
+<p>And hopefully convince you that you've seen a lot of this phenomenology in papers and possibly in your own research.</p>
+<p>I should say, you know I made a joke about the mathematics and the formula before.</p>
+<p>And perhaps I should excuse why we use the mathematics so much.</p>
+<p>There's a simple reason that if you really want to understand something, as Richard Feynman would say, you have to be able to build one.</p>
+<p>And to be able to build a little creature that does the paradigms that we ask our subjects or our experimental animals to do,</p>
+<p>you need to be able to write down the software and you need to be able to write down the mathematical formula upon which those software are generated.</p>
+<p>So that's our motivation. It's really to create little in silico, in silicon creatures, that we can expose to the same experimental paradigms or lesions as real creatures.</p>
+<p>And then see what this belief updated, this active infant self-emdency looks like.</p>
+<p>And then we can see the same kind of empirical phenomenology in real creatures.</p>
+<p>So that's the excuse or the motivation for it.</p>
+<p>But it does require you to commit to very particular and well-specified models that are used by creatures, living systems, when explaining their paradigm or their world.</p>
+<p>And a very general one, again please ignore the equation, we're going to walk you through with the graphics on the moral, is called a mark-off decision process.</p>
+<p>So with this single and same model, we have modelled an entire range of different kinds of behaviour, ranging from waiting games, to foraging a tea maze,</p>
+<p>and what sort of bats would do, through to reading, we'll see an example of that later, through to active curiosity and problem solving.</p>
+<p>So many, many different kinds of paradigms can be modelled with this one very general generative model.</p>
+<p>So I'm just going to briefly take you through to give you one worked example, just to give you a feel for simplicity, in case in your future work you want to use these kinds of models to simulate your paradigms.</p>
+<p>So the idea is, we need to generate outcomes, things that can be a creature or something like me, would be able to observe, see, hear, feel.</p>
+<p>And these outcomes, we're going to say, are going to be generated by hidden states of the world.</p>
+<p>They are hidden because they are not directly observable.</p>
+<p>We can only observe our sensations, we can't see directly the causes of those sensations.</p>
+<p>So they're often referred to as either latent or hidden states.</p>
+<p>And they have a narrative, they have dynamics, they have successions and transitions of hidden states.</p>
+<p>So if I'm in a particular hidden state at this point of time, I will be probabilistically in this state at the next point of time, and so on and so forth.</p>
+<p>So we have this cascade of hidden states, each of the states generating an outcome as time ticks along.</p>
+<p>And the mapping between the hidden states and the outcome is just a wide different map.</p>
+<p>It's the probability of getting this outcome given this particular state of the world.</p>
+<p>That's usually listed by a pain matrix.</p>
+<p>Now clearly, the way that the world informs these hidden states depends upon how I act upon it.</p>
+
+<p>The hidden state of where my eye is pointing determines what I actually see.</p>
+<p>So we imagine that some states of the world depend upon policies.</p>
+<p>In other words, the transitions between this state of the world and the next bit of the world at the next time point,</p>
+<p>encoded by a probability of transition matrix B, is a function of the policy.</p>
+<p>We've just said that policies are determined by our prior preferences and our end states.</p>
+<p>And we're going to do that as prior preferences by C, we can remember that like a cost function.</p>
+<p>And they will have some precision, some confidence associated with that.</p>
+<p>We've got a problem with a parameter called gamma.</p>
+<p>I won't talk about that very much, but it is interesting because it looks very much like dopamine responses in the brain.</p>
+<p>And I'll show you a brief example of that later.</p>
+<p>And finally, I just have to specify beliefs about the initial states or qualifiers in the initial states,</p>
+<p>and a few hyperparameters that statistically parameterize it.</p>
+<p>And with that model, I can model almost anything within reason.</p>
+<p>It's a toy model of almost anything.</p>
+<p>Further of all, if I make some simplifying assumptions about my beliefs about all the unknowns,</p>
+<p>the key unknowns of course being the hidden states of the world generating outcomes,</p>
+<p>and crucial in the policies.</p>
+<p>So these are the two things I need to infer for good beliefs about by minimizing that,</p>
+<p>by optimizing that free energy or that energy flow bound.</p>
+<p>I'm also going to think about optimizing the confidence of my policies.</p>
+<p>The important thing here, notice that we're casting behavior here in terms of forming beliefs about what I could do,</p>
+<p>and then just selecting action from the most likely, or the policy that I think I'm most likely to be pursuing at the moment.</p>
+<p>It's sometimes known as planning of inference.</p>
+<p>So it's casting action as a process of inference.</p>
+<p>So you actually, if you subscribe to this formulation, the choice or the selection of what to do next is an active inference.</p>
+<p>It's inferring this is the most likely thing that something like me would do in this belief set.</p>
+<p>So I'm going to try and resolve that kind of uncertainty.</p>
+<p>I'm going to work towards those sorts of preferences.</p>
+<p>And you can write all of these particular parameterizations as prize in this kind of objective model.</p>
+<p>If you then just apply something, this is called a mean field approximation, just parameterize these beliefs with normal forms of vulnerability distributions,</p>
+<p>you can then just go and get some flat-on-the-shelf mathematics to describe the belief updating and the message passing,</p>
+<p>that having that sort of gesture model, the obedience will be you as a brain.</p>
+<p>And from my perspective, even if you're not a mathematician, possibly from Milton, possibly not from your perspective,</p>
+<p>but from my perspective, the results are remarkably similar.</p>
+<p>And more importantly, look very, very similar to the dynamics of belief updating as you actually see in simplified versions of brackets.</p>
+<p>So remember before, I said there were just three things we don't know in this model.</p>
+<p>State of the world, policies pi, and the precision or confidence placed with those policies.</p>
+<p>And it turns out that the solutions that optimize that free energy functional can be expressed here as a non-media function</p>
+<p>of linear mixtures of beliefs about the past and the future and observations now.</p>
+<p>And this starts to look very much like a very simple neural network model.</p>
+<p>A sigmoid firing activation function operating upon linear mixtures of activities elsewhere in the brain.</p>
+<p>A very, very simple expression that now starts to provide a metaphor for neural responses and belief updated as encoded by neural fireworks.</p>
+<p>Here, the expectation of that reading in a particular state, one state or another state.</p>
+<p>Notice also, this implies expectations about the past and the future.</p>
+<p>So, written into this genetic model is an elemental form of memory and prospection.</p>
+<p>Post-fiction and prediction, memory for the past and the future.</p>
+<p>So there's a sense of time and progression implicit in this updating.</p>
+<p>If we look at policy selection, it's simply a softmax function of this expected free energy, not the goodness of a policy.</p>
+<p>And this is the classic softmax response rule used in economics and much of a reinforcement learning.</p>
+<p>Interesting that the confidence, one over gamma here, looks as though it's updated according to something that looks very similar to reward prediction error, which takes us off in a very different direction, in the direction of dopamine and the relationship with reward prediction errors.</p>
+<p>But I want to move on to optimising the parameters of this model itself.</p>
+<p>Again, it's very nice because the update rules and solutions that optimise this free energy function are not exactly like everything were.</p>
+<p>So you have these functions that have associated term here.</p>
+<p>Calcium is here, this is the D one, but if we were looking at the A one, you can see the outcomes and the states coming together as a product.</p>
+<p>And decay term here, and we just accumulate evidence by building connection strengths that then decay again as a function of time.</p>
+<p>And then finally we have our action selection here.</p>
+<p>And with these very simple rules you can start to engineer or propose a very crude or coarse function anatomy where observations come in, say, from the visual cortex.</p>
+<p>They are used to update beliefs about states and the world, so they hit a campus and a time.</p>
+<p>And these beliefs then used to evaluate the goodness of a policy in terms of the expected free energy, the risk and ambiguity,</p>
+<p>which are encoded in the front parts of the brace of basal ganglia corticothalamic loops,</p>
+<p>where the confidence in these policies may be mediated by self-domin, the ventral tech medical area,</p>
+<p>and then they generate the next action, that changes the world, that gives you the next observation, and so the cycle continues.</p>
+<p>They're very crude, but relatively simple understanding of the computational anatomy that you get to.</p>
+<p>So here's, I'll close now with two examples, one of a very simple examples of Origen in Amaze,</p>
+<p>and then we'll come to a brief survey of advances in deep gendered models of this sort that have been years trying to start things like language comprehension and reading.</p>
+<p>So this is an example. I don't need to go through it in detail.</p>
+<p>In brief, what we have is a little rat of our house in the teammates,</p>
+<p>and it likes rewards, and it's got two moons, it can make two moons,</p>
+<p>and it doesn't know whether the reward is on the right or on the left.</p>
+<p>What it also knows, though, is that there is an instructional cue at the bottom of the maze</p>
+<p>that tells it whether the reward is on the left or the right.</p>
+<p>So that presents an interesting choice for this brace.</p>
+<p>It can go to one arm, and once it goes to one of the two rewarding arms, it has to stay there.</p>
+<p>Which means that it can go there and get two rewards on 50 cents at a time,</p>
+<p>or it can go there and get nothing on 50 cents at a time.</p>
+<p>Or, it can go down here to find out where the reward is,</p>
+<p>and then get, with 100% probability, the reward for half the time.</p>
+<p>So the expected value is exactly the same.</p>
+<p>But, by going to the instructional cue, the epistemic cue,</p>
+<p>it can immediately reduce the epistemic part of expected free entry.</p>
+<p>which means that if this mouse was minimising its,</p>
+<p>it was optimising its expected free entry,</p>
+<p>or minimising its ambiguity, it should go,</p>
+<p>if we simulate those equations on the previous slide,</p>
+<p>with a genital problem which I've written down here to the appropriate for this paradigm,</p>
+<p>it should go and get the estenic cue, and then go and get its reward.</p>
+<p>And indeed, that's what it does.</p>
+<p>So, it starts off, what I'm showing here,</p>
+<p>is behaviour over 32 trials,</p>
+<p>in terms of where the reward was,</p>
+<p>whether it was on the left or the right,</p>
+<p>and the policy that it chose,</p>
+<p>the outcome, the amount of reward it got,</p>
+<p>and the leads about whether the reward is on the right or the left,</p>
+<p>in terms of the additional steps.</p>
+<p>What I've done here,</p>
+<p>is after switching the reward up to the first couple of presentations,</p>
+<p>I then left the reward on the left-hand side.</p>
+<p>And I want to see what's going to happen.</p>
+<p>So initially, as we might anticipate,</p>
+<p>the mouse goes and finds the epistemic cue,</p>
+<p>as long as there's uncertainty about what to do,</p>
+<p>and then indulges in its risk-perverse behaviour,</p>
+<p>so then chooses the pragmatic preferred option,</p>
+<p>by going straight to get the reward,</p>
+<p>and it's as happy as it could be.</p>
+<p>However, as time goes on,</p>
+<p>it now learns that, in fact,</p>
+<p>the reward is over there all the time.</p>
+<p>So now, the epistemic value of that instructional cue,</p>
+<p>gets less and less and less.</p>
+<p>It's resolving less and less uncertainty,</p>
+<p>because it's increasingly certain that the reward is on the left-hand side,</p>
+<p>due to this experience with helpful learning,</p>
+<p>learning about these initial states,</p>
+<p>through evidence accumulation,</p>
+<p>and that Hegelian-style plasticity.</p>
+<p>So at one point,</p>
+<p>it changes its preferred policy,</p>
+<p>and jumps to a pragmatic exploitative policy.</p>
+<p>So we've got this natural progression,</p>
+<p>from exploration to exploitation,</p>
+<p>that is purely a reflection of the fact</p>
+<p>that we are using a belief-based functional.</p>
+<p>Because the goodness, or the thing to choose,</p>
+<p>depends upon my beliefs and my uncertainty,</p>
+<p>whether I need to come right back to search or answer,</p>
+
+<p>It depends upon the need for search,</p>
+<p>and of course, in a very familiar way of the fact,</p>
+<p>there is no need to search,</p>
+<p>as we are straight for that expected value</p>
+<p>and engage in its plundative behaviour.</p>
+<p>This slide just summarises that,</p>
+<p>and it is exactly the same point that we are making.</p>
+<p>So basically, learning underwrites</p>
+<p>confident policy selection,</p>
+<p>and that confidence is reflected in this precision parameter,</p>
+<p>which we said much a lot.</p>
+<p>I don't mean that we can deeply simulate trial-to-trial updates</p>
+<p>of this parameter here,</p>
+<p>not that it's almost exactly like that,</p>
+<p>but we can also look at simulations of these peak updates</p>
+<p>during a particular trial,</p>
+<p>so it makes a move that sees this,</p>
+<p>makes another move,</p>
+<p>but as soon as it sees anything,</p>
+<p>it has to iterate these equations</p>
+<p>in order to find the Bayes-optimal solution,</p>
+<p>the self-evident solution,</p>
+<p>and that looks a lot like an event related potential</p>
+<p>in that general physiological research.</p>
+<p>And interesting, what happens is,</p>
+<p>it is less leap-up-dating</p>
+<p>when it's more familiar and confident about the environment,</p>
+<p>and you get an attenuation of these responses,</p>
+<p>but an increase in the confidence,</p>
+<p>because it knows exactly what's going to happen,</p>
+<p>and indeed what it expects to happen,</p>
+<p>does indeed happen,</p>
+<p>and it happily goes and extroits its knowledge</p>
+<p>about where the reward is.</p>
+<p>So using that particular example,</p>
+<p>you can tell all sorts of stories.</p>
+<p>You can tell a story about the representation of the future and the past,</p>
+<p>so this is the beginning of the trial,</p>
+<p>the first and second move,</p>
+<p>and of course, as these beliefs are updated,</p>
+<p>what are beliefs about the future consequences of action</p>
+<p>now become memories of our past.</p>
+<p>So there's an interesting shift of time and terrible frames of reference</p>
+<p>that means that things that were once predictions</p>
+<p>become post-pictions,</p>
+<p>and that becomes very interesting</p>
+<p>when you accumulate beliefs from trial to trial.</p>
+<p>It also allows you to think about the avocative responses</p>
+<p>to the things that you would ultimately choose,</p>
+<p>as opposed to things that you are not going to choose.</p>
+<p>There was a nice literature in the empirical papers</p>
+<p>showing exactly this form of saltatial divergence</p>
+<p>as time progresses in terms of selective responses</p>
+<p>shown by these expectation-encoded simulated neural populations</p>
+<p>that mirrors or reflects exactly the empirical results.</p>
+<p>We can even plot these responses as a function of where the mouse is.</p>
+<p>And what emerges from this kind of architecture are place cells</p>
+<p>that sometimes are very unambiguous, for example, in the two rewarding locations,</p>
+<p>sometimes they're a bit more unambiguous.</p>
+<p>We can also perform simulated on-board experiments,</p>
+<p>as much negativity experiments.</p>
+<p>So, these are the same results that I showed you before,</p>
+<p>but I'm now telling a different story about them using a different language</p>
+<p>as if I were an electric physiologist doing a lot of paradigms.</p>
+<p>So, what I can do is look at the belief updating</p>
+<p>where this will now seize the same stimulus</p>
+<p>when it's familiar with it and when it's not familiar with it</p>
+<p>and does the same response, selects the same policy.</p>
+<p>So, the only thing that's different between the perception and the action</p>
+<p>is its beliefs that it has accumulated through experience.</p>
+<p>And if I associate this with a standard stimulus</p>
+<p>and this with a novel or an old-born stimulus,</p>
+<p>we can compare the belief update and take the difference</p>
+<p>and indeed we can reproduce the phenomenology of less much negativity.</p>
+<p>Do the same thing with those simulated dopamine responses</p>
+<p>and show a classical phenomena in single unit</p>
+<p>in metaphysiology in dopamine cells,</p>
+<p>namely a transfer of phasing responses from the rewarding cue,</p>
+<p>the air-conditioned stimulus, to the structural, epistemic cue,</p>
+<p>which you can think of here as the conditioned stimulus.</p>
+<p>So, again, nothing's changed here,</p>
+<p>the other that I've told a slightly different story about the results</p>
+<p>that emerged from this simulated rat.</p>
+<p>And all of it lend a degree of constant validity to this overall thesis</p>
+<p>that everything is in the service of self-evidencing,</p>
+<p>maximising evidence from my turn to the model of the world</p>
+<p>and selecting actions that minimise uncertainty, namely this and that ambiguity.</p>
+<p>So I'm going to finish now with a very quick run-through of exactly the same technology and ideas</p>
+<p>that apply to slightly more sophisticated gerative models</p>
+<p>of the sort that people might use to understand language and generate language.</p>
+<p>Now, I like this graphic, not because it's educational,</p>
+<p>because I've probably spent a long time drawing it.</p>
+<p>No, again, that was a joke.</p>
+<p>It's a nice graphic because once you've written down formally</p>
+<p>what you think is driving message passing, belief updating and behaviour,</p>
+<p>you could now just extend that formalism by generalising it to hierarchical structures.</p>
+<p>And when you do that, you start to see lots of emerging behaviours</p>
+<p>that now look a lot more like the kind of behaviours that psychologists study in human beings.</p>
+<p>So what we've done here is taken our standard little MDP model,</p>
+<p>space kicking over time one, time two,</p>
+<p>generating through the light of the matrix A,</p>
+<p>an outcome here,</p>
+<p>the transitions included by the B matrix,</p>
+<p>the pent-pots and the policies pi,</p>
+<p>the cell that are informed by the expected</p>
+<p>energy gene that couldn't listen to those policies.</p>
+<p>What we've done is put another one of these on top.</p>
+<p>Crucially, it operates at a slower time scale.</p>
+<p>So the outcomes from the process at the higher hierarchical level</p>
+<p>now cause things that don't change on a faster time scale.</p>
+<p>There are lots of things we could have chosen.</p>
+<p>We could have chosen the likelihood of major seats,</p>
+<p>or we could have chosen the likelihood of a particular policy.</p>
+<p>We've actually chosen here just the initial state.</p>
+<p>But it means that the outcomes from the generative models point of view</p>
+<p>of the higher level are in play for the duration of the state transitions at the lower level.</p>
+<p>And you can imagine putting a faster level below this, and a faster and a faster one.</p>
+<p>So you're writing in, you're baking in to your generative model.</p>
+<p>Not only a high hierarchical depth of abstraction,</p>
+<p>but also a deep diachronic on time depth,</p>
+<p>a separation of temporal scalars over time.</p>
+<p>And of course that's what we need to understand language.</p>
+<p>You know, I will have a representation of a sentence, or a phrase, at one level,</p>
+<p>and that's the same sentence or phrase from the beginning of the first phoneme to the end of the last phoneme.</p>
+<p>It's the same object.</p>
+<p>But at a faster time scale, this current word will change.</p>
+<p>But this current word is the same word from the beginning of the words.</p>
+<p>First time frequency glide, phoneme possibly, to the last one.</p>
+<p>And as we keep going lower and lower and lower,</p>
+<p>we now generate faster and faster dynamics using this kind of model.</p>
+<p>So you may be asking, and that's all that these equations say,</p>
+<p>that they're just a hierarchical generalization of the first phoneme used in the rat into this deep diachronic structure.</p>
+<p>This is exactly the same model.</p>
+<p>And the reason I show this, and the reason I like this model,</p>
+<p>is you can generate this graph automatically from this graph,</p>
+<p>and this graph is known as a factograph.</p>
+<p>Now, it may not mean very much to psychologists,</p>
+<p>but if you're a computer scientist,</p>
+<p>and you want to design the message passing in the most efficient way,</p>
+<p>this is the design.</p>
+<p>So, what we're saying here, or what this figure says,</p>
+<p>if you can write down the form of your generative model,</p>
+<p>you have automatically written down the message passing graph,</p>
+<p>and at some level a brain must be used in terms of connections,</p>
+<p>and passing messages over these connections.</p>
+<p>For those of you who are interested,</p>
+<p>these factographs are interesting because they place the variables on the edges,</p>
+<p>and the probability distributions at the nodes.</p>
+<p>That's why they're called factor graphs, so the probability distributions are the factors of my generative model,</p>
+
+<p>You can forget that if it wasn't interesting.</p>
+<p>What is interesting to remember is you can generate these things automatically,</p>
+<p>and once you've done that, you can start to make little brains in software.</p>
+<p>They could actually be systems, or very large-scale silicon integrated chips, for example,</p>
+<p>or on classical computers, current computers.</p>
+<p>Anyway, so, once you've written down that factograph,</p>
+<p>and you've learned the architecture of the message passing,</p>
+<p>you can actually go to the neural anatomy and ask,</p>
+<p>where are the isomorphisms in terms of the structure of the dynamics,</p>
+<p>the temporal scheduling of those messages in real brains.</p>
+<p>And it's an interesting G-Saw problem to solve,</p>
+<p>but there are lots of immediate parallels that become evident when you just look at the factograph,</p>
+<p>and you look at the textbook neuronatomy.</p>
+<p>I've just sketched out some ideas here.</p>
+<p>We don't need to talk about this.</p>
+<p>The point is that there's a very interesting opportunity.</p>
+<p>Once you understand what has to be the computational anatomy,</p>
+<p>if you commit to this generative model approach and self-evidencing formulation of belief updating behaviour,</p>
+<p>if you commit to that, then you've got that necessary computation anatomy,</p>
+<p>you've got the empirical neural anatomy that we presume does this computation,</p>
+<p>so now you can start to look for parallels and assign different roles to different parts of the brain.</p>
+<p>So, for example, in this instance, it looks as if the Globus paladum contains labels for holocytes, for example,</p>
+<p>just on the basis of the connectivity in reference to that photograph of the previous stage.</p>
+<p>But let me finish now just by taking you through conceptually a generative model of a simulated agent</p>
+<p>who's doing a very simple form of pictographic reading.</p>
+<p>So here, there are no letters, but there are little icons.</p>
+<p>The position of these icons against a particular word.</p>
+<p>So, an icon comprises, each word, if you like, comprises two icons,</p>
+<p>therefore the seeds, a bird or a cat.</p>
+<p>And if the cat is next to the bird, that means the bird will flee, so that's the word, flee.</p>
+<p>If the seeds are next to a bird, that means the word, feed, the bird can feed on the seeds.</p>
+<p>If, however, there's nothing next to the bird, so the seeds are down here in the diagonal corner, that means wait.</p>
+<p>So it's a very simple little language that we've arbitrarily invented.</p>
+<p>And the reason for sort of using this pictographic form is that the agent has to decide where to look.</p>
+<p>If he wants to read this word, look at the letters in the word, it has to decide where to look.</p>
+<p>And I can look over here, over here, over here, over here, as denoted by the locations 1, 2, 3 and 4.</p>
+<p>From the point of view of the generative model, what does that mean?</p>
+<p>Well, these are the states, the hidden states that you would need to generate an outcome.</p>
+<p>So what would be a sensory outcome?</p>
+<p>Well, a sensory outcome would be feeling that I'm looking at positions 1, 2, 3 or 4,</p>
+<p>or what I'm actually sampling or foveating at that time, which can either do nothing, seeds, a bird or a cat.</p>
+<p>But to generate those outcomes, I have to know the configuration of these pictographic letters, where I am looking,</p>
+<p>and I've introduced another hidden state here, which is flipping,</p>
+<p>like presenting words in upper or lower case.</p>
+<p>So with those three causes, I can generate any particular outcome in a visual modality,</p>
+<p>and a pro-perceptive, or feeling where I am currently pointing my eyes, modality.</p>
+<p>And because I have written down the generative model, I can use that standard message passing scheme of previous slide to simulate inference.</p>
+<p>I can simulate what this creature would do in terms of foraging of information by trying to understand what word it is looking at.</p>
+<p>But what I really want to do is to do that with some deep temporal structure,</p>
+<p>sort of diachronic aspect.</p>
+<p>I want it to actually remember the words in C,</p>
+<p>and from the point of view of the generative model, generate sentences or sequences of words,</p>
+<p>from the point of view of self-evidency, inverting that genital model,</p>
+<p>to recognise what this word is in the context where beliefs about all the sentences.</p>
+<p>So to do that, I now have to put together four words on four different pages, if you like,</p>
+<p>and these four words are basically sequences of these three words here,</p>
+<p>to produce the sentence, feed, weight, feed, weight,</p>
+<p>and I classify those at an even higher level, which we actually did not want to show here.</p>
+<p>So now if I know the sentence, I know the sequence, one, you know,</p>
+<p>fleet weight, feed, weight, and I know where we are in terms of which page we're looking at,</p>
+<p>I can now generate the word, I can generate the word,</p>
+<p>if I am now reading the information about where I am looking and whether I've fixed or not,</p>
+<p>I can now generate the outcome.</p>
+<p>And if I can generate the outcome, that means I can invert the outcomes</p>
+<p>and make inferences and have beliefs about the sentence.</p>
+<p>So I'm going to take that factor graph, that computational anatomy,</p>
+<p>and this generative model, and then simulate reading in terms of where this agent looks</p>
+<p>to try and accumulate elements and build posterior beliefs about the sentence it is reading.</p>
+<p>And the actual sentence it is reading is,</p>
+<p>flee, wait, feed, wait, and these are the expectations at the lowest level</p>
+<p>about what is actually there at the lowest level.</p>
+<p>And the key point made in these simulations is you can have very precise beliefs</p>
+<p>about what you would see if you looked over there,</p>
+<p>even though you never actually looked there.</p>
+<p>And these precise beliefs come from this deep structure.</p>
+<p>So for example, you can see that in the first roof,</p>
+<p>the first sacral roof, to the second word.</p>
+<p>At no point, because it actually samples a stimulus that is either seeds or birds.</p>
+<p>It sees nothing on either sample.</p>
+<p>And yet it knows, because it knows what could possibly happen in terms of alternatives</p>
+<p>and the structure of the sentence.</p>
+<p>The solution has to be seeds up here and birds up here,</p>
+<p>and indeed its posterior beliefs is hallucinating effectively in a very positive and basal-optimal way.</p>
+<p>The existence of these percepts, even though we never looked there,</p>
+<p>and you see evidence of that if you look in detail,</p>
+<p>the sequence of sacanical eye movements as they form beliefs,</p>
+<p>they resolve uncertainty, they respond to any study affordance,</p>
+<p>and go and get the next sort of information that will resolve uncertainty about what this agent is looking at.</p>
+<p>I show the same results here, but in a different format, just to emphasize,</p>
+<p>the separation of temporal scales.</p>
+<p>So, these are beliefs at the higher level, about one of six sentences that this synthetic agent was looking at.</p>
+<p>And notice, it's going to be right at the end.</p>
+<p>It actually resolves uncertainty about the sentence, because these two sentences share anything apart from the last word.</p>
+<p>So, in no glossary reading, it must be looking at one of these two sentences,</p>
+<p>because the first word is unique to these two sentences, but the last word disambiguates.</p>
+<p>So, this uncertainty evolves slowly, and it's maintained slowly, and it's only resolved at the last word.</p>
+<p>In contrast, the beliefs about what particular word I am currently looking at develop much, much more quickly.</p>
+<p>So, these converge to the particular posterior belief,</p>
+<p>and then that is even evidence for the higher sentence-based belief,</p>
+<p>and then we start again, and we're going to get a new outcome, a new outcome, a new outcome,</p>
+<p>as we see how to select visual impressions.</p>
+<p>And I try to indicate that in terms of this separation of temporal time scales,</p>
+<p>dictated by, and only by, the belief updating.</p>
+<p>I just want to make a point again, that what you actually see in these in silico creatures,</p>
+<p>is very similar to what we see as an electrophysiologist.</p>
+<p>So, for example, pre-saccadic delay prodactivity in the prefrontal cortex,</p>
+<p>shown here in a raster format,</p>
+<p>looks very similar to the kind of responses that serves to the music recordings shown here in terms of the bar chart.</p>
+<p>Furthermore, if we look at the deflections associated with the belief updating on a stimulus-by-stimulus basis,</p>
+<p>we see something that looks very much like the peripsychotic evoked potentials during anti-vision in monkeys.</p>
+<p>And I just want to close by pursuing that, just by focusing on the responses to stimuli towards the end of the sentence.</p>
+<p>And I'm going to play a trick on this little creature.</p>
+<p>I'm going to introduce a violation, or two violations of a different sort,</p>
+<p>in the hope of reproducing canonical responses you find in cognitive neuroscience,</p>
+<p>namely, a pre-attemptive light this much negativity at about 100 to 170 milliseconds,</p>
+<p>and then a reorienting novelty-like response, a later more endogenous response,</p>
+<p>sometimes referred to as a P300, associated with somatic violations,</p>
+<p>by changing stimuli so that there's a surprising mean to the word.</p>
+<p>So I'm going to do that just by presenting it in upper case, I'm going to present it in low case.</p>
+<p>So this is, if you like, the steepest manipulation, the low level,</p>
+<p>and I've shown the results at the low level in blue, with or without the manipulation,</p>
+<p>and then plotting the difference here, and indeed it looks very much like a mismatch negativity</p>
+<p>of the sort that you would see if I played you a optimal stimulus in a screen of standard stimuli,</p>
+<p>without many differences, and the second level of the most semantic representations.</p>
+<p>If I now do the same trick, but this time, instead of just changing uppercase to lowercase,</p>
+<p>I now have to change the meaning of the word, but use the same stimuli,</p>
+<p>I now have got a much more semantic high level violation, and now the thing that recognises the surprise,</p>
+<p>or the free engine, here is both the first but also now the second semantic level.</p>
+<p>But of course, it's had to wait longer to get the evidence from the first level to beat surprise,</p>
+<p>to do its belief updating to respond to that surprise, which means that the difference weight from,</p>
+<p>and that are expressed in the peristinguist time, and a machine that would correspond to the P300.</p>
+<p>So it's a very particular and specific example.</p>
+<p>If I use this to illustrate how far you can get an understanding of classical results that are used,</p>
+<p>and have been used for decades, and cognitive neuroscience and lightrophysiology</p>
+<p>that can be understood in terms of the computational architecture and message passing,</p>
+<p>under the simple imperative to minimize uncertainty about the way the world works, and indeed,</p>
+<p>how can I work in that world.</p>
+<p>And this conclusion, I think, is nicely summarized in relation to our movements by Helmholtz,</p>
+<p>who was the father of many of the inferential interpretations of the scheme.</p>
+<p>So each movement we make by which we alter the appearance of objects shall be thought of as an experiment designed to test</p>
+<p>where we have understood correctly the invariant relations of the phenomena before us,</p>
+<p>that is their existence in definite spatial relations.</p>
+<p>And with that, it only remains for me to thank the people whose ideas I've been talking about,</p>
+<p>and, as of all, thank you for your attention. Thank you very much.</p>
+<p>...exactly to the biological reality.</p>
+<p>So, to clarify something, can we return to your first example with the old?</p>
+<p>And so I have two questions related to this first example.</p>
+<p>The first one is how in terms of how can you describe in your theory</p>
+<p>the hungerness of the old? Why is old hungry? And why the bird has a belief that the prey should be catched?</p>
+<p>It's the first question. And another one is related, and maybe it's how I'm trying to resolve this problem,</p>
+<p>is the question is how is active inference related to initial selection?</p>
+<p>And because testing hypothesis is risky, it's time and energy consuming,</p>
+<p>I mean that you are resolving uncertainty, you invest something in terms of your energy and your time and energy and so on.</p>
+<p>What do you think about how natural selection shapes these prior beliefs to make them more efficient in terms of survival,</p>
+<p>not only in terms of complete job work?</p>
+<p>...so, two excellent questions. I thought there were probably three questions there.</p>
+<p>But I think worthwhile to spend this in time.</p>
+<p>So the first question, how do I account for context-specific drives?</p>
+<p>What determines the best sort of behaviour for me when I'm very hungry as opposed to when I've just eaten?</p>
+<p>So, in this scheme, all of the answers usually result out reduced to the form of the Charity Model.</p>
+<p>So here, that would be a nice example of having a hierarchical Charity Model,</p>
+<p>where your prior preferences now become conditioned upon different states of evil.</p>
+<p>So, if I were to, and you know, now we're interested in that we are entering the interesting world of active inference,</p>
+<p>applied to homoestasis, balanced spaces, and interoception,</p>
+<p>then let's say I have evolved, creating the next question,</p>
+<p>to have a geriatric model under the gray that was able to recognise certain states of hymn.</p>
+<p>So, these were good explanations for particular gut feelings,</p>
+<p>particular parasympathetic, particular inputs from, say, receptors measuring your blood sugar,</p>
+<p>and also my beliefs about when I'd last have something to eat.</p>
+<p>Then, if I had those representations, I would be able to do two things.</p>
+<p>First of all, I would be able to contextualise my prior preferences about what I think I would be doing in half an hour,</p>
+<p>which could be being in a restaurant, or it could be continuing to work, or it could be continuing to socialise.</p>
+<p>So, you can contextualise any behaviour simply by conditioning a parameter of your geriatric model at one level,</p>
+<p>on both slowly context-dependent states at the higher level, if you have a sufficiently deep geriatric model.</p>
+<p>And that leads to all sorts of interesting issues, you know, the distinction between homeostasis and alostasis.</p>
+<p>So, I would imagine that a virus, unlike the alpha, doesn't worry about whether it's hungry or not.</p>
+<p>It would just, well, let us take an E. coli.</p>
+<p>I mean, E. coli doesn't worry about whether it's hungry or not.</p>
+<p>It just pursues chemotactic gradients.</p>
+<p>I'm not sure.</p>
+<p>You know, I apply that.</p>
+<p>It's a rather scepticism.</p>
+<p>Well, let's assume that...</p>
+<p>Why was it that?</p>
+<p>Let's use my thermostat.</p>
+<p>I mean, a thermostat doesn't care whether it's hot or warm.</p>
+<p>So, it just immediately minimises...</p>
+<p>It chooses policies of a very trivial sort, which is just the very best thing to do,</p>
+<p>based upon the fixed cries that then change to the homeostatic set point.</p>
+<p>That's very different from having another level above, which radicalises a different state,</p>
+<p>that would then actually change the set point.</p>
+<p>Now, at that point, we move from a homeostatic reflex to an alostasis,</p>
+<p>where we now start to anticipate the causes of our behaviour for our homeostasis.</p>
+<p>So, I will go and eat something before I need to have a glucocon autonomic reflex</p>
+<p>to fulfill my very, very low levels.</p>
+<p>So, I think it's a great question because what it speaks to is the fact that we're not dealing with simple</p>
+<p>injective molecules on the sort of appropriate for a thermostat or a virus.</p>
+<p>We're dealing with very deeply structured, if I repeat, diatronic in the sense of separation of temporal time scales,</p>
+<p>which are the kinds of models which would be necessary to be a new or me, and possibly even a bacteria.</p>
+<p>And then the question is, well, where did those come from?</p>
+<p>Because, and then I could answer that by answering your third question, the model is just a prize.</p>
+<p>So, the prize could be of a form or a structural sort, how many levels does my model have, how many hidden states.</p>
+<p>So, if you were doing machine learning and deep learning, so using a variational encoder,</p>
+<p>you have a prior belief, so you say, yes, there are 12 hidden layers, and hidden layer 6 has 270 hidden units.</p>
+<p>All of these are formed priors that you believe are fitting a purpose and appropriate to the kind of data that you want to classify.</p>
+<p>And then, of course, you actually have the parametric prize, the actual prior expectations, the dispersions,</p>
+<p>anything that you would normally associate with a prior belief.</p>
+<p>So, by model I mean prize.</p>
+<p>And obviously there is a likelihood, but that's usually by treatment,</p>
+<p>because the likelihood just lives at the bottom of these models.</p>
+<p>So, if we go to that, this graphic here, all of these are priors.</p>
+<p>The only time the light of it becomes evident is right in the bottom here.</p>
+<p>So, all the interesting structure in terms of its depth and conditioning and contextualization</p>
+<p>is in the prior structure, and the actual quantitative or parametric prize</p>
+<p>you apply to all of these variables.</p>
+<p>So, that brings you, me, to, or you, to your second question, where do they come from?</p>
+<p>And again, you appeal to hierarchical difference, but now over a more extended timeframe.</p>
+<p>So, from the point of view of a statistician, the way that you would learn the good priors</p>
+<p>for a particular environment or a particular sort of data via manifold learning, for example,</p>
+<p>of structure learning, which is based in model selection.</p>
+<p>So, now you are selecting the form of those models that maximizes model evidence for the average</p>
+<p>term of time.</p>
+<p>And if you look for the physiological model, lots of that, it could be things like life or</p>
+<p>sleep.</p>
+<p>I will be giving a lecture that illustrates that point towards the end at some point,</p>
+<p>this one, so there will be an opportunity to discuss this further.</p>
+<p>But probably more interesting, I think, is neural development, which is the next level,</p>
+<p>but as you've hinted, all of this takes place at an evolution timescale.</p>
+<p>So, the way that mathematically you would bring all of these things under the same principle</p>
+<p>is to interpret natural selection as Bayesian model selection.</p>
+<p>And that's actually very easy to do.</p>
+<p>And not only that, but in the past ten years people have now started to interpret in theoretical</p>
+<p>biology the models or the dynamics of natural selection in terms of Bayesian filtering.</p>
+<p>So, for example, the replicator dynamics or the replicator equation or price equation.</p>
+<p>These are commissioned fairly easily shown with a few simplified assumptions to be</p>
+<p>they can be shown to be Bayesian filters or carbon filters.</p>
+<p>So, what you're saying is that evolution is just nature's way of doing Bayesian model selection</p>
+<p>to change or to select those models, those prior structures, these phenotypes that have</p>
+<p>the greatest evidence.</p>
+<p>What do you mean by evidence?</p>
+<p>The likelihood that they aren't there.</p>
+<p>The likelihood that they are in fact born in that environment.</p>
+<p>So, from the environment's point of view, it is testing the hypothesis that this is a good fit for me,</p>
+<p>the environment, or this phenotype, or this phenotype.</p>
+<p>And the evidence that it is a good fit for me, the environment, corresponds to adaptive fitness,</p>
+<p>that is scored by the time interval of the variation of the energy, because that's the balance of the probability</p>
+<p>of that model being the right model given the experience provided by the environment.</p>
+<p>So, the answer is, it all comes down to evolution, but it's exactly the same process, it's operating very, very, very slowly.</p>
+<p>And in that context, you wouldn't think about the phenotype as being the individual, you think about</p>
+<p>cause specifics, the cycle of life, the body's eventually clearly over a developmental cycle.</p>
+<p>That sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it sounds amazing, it</p>
+<p>maybe in that tradition, fighting the theory, any hints that you think will have solved this problem? Thank you.</p>
+<p>Yes, that is a short question. Actually, I think it must be a short answer because I think it speaks very much to what we were just talking about.</p>
+<p>I think it's just the depth of the gender model that distinguishes the kinds of structures that you associate with me and you,</p>
+<p>as opposed to, say, a dog, as opposed to, say, a fish, as opposed to, say, an insect, as opposed to, say, a single-cell organism.</p>
+<p>So just the distinction between single-celled organism and multicellular organism immediately speaks to a sort of hierarchical aspect, a nesting aspect.</p>
+<p>But if you take that further, I just think, what kinds of hierarchical extensions would make you you as opposed to a bacterium?</p>
+<p>Or the me as opposed to a bacterium? I think the answer is the depth in time. I think that's basically it.</p>
+<p>I think it almost reduces to the very simple observation that you and I plan and the bacterium doesn't.</p>
+<p>And we can argue about whether the bean does or the dog does. But so the bacterium doing its chemotaxis does not plan.</p>
+<p>It does not plan to go to school or to buy birthday presents, whereas we do.</p>
+<p>So what does it mean to plan? To plan is to select amongst various policies, which means you have to have a geriatric model of the future,</p>
+<p>the consequences of those policies. So that's just simply a statement of the fact that we infer our world under geriatric models that have a temporal depth,</p>
+<p>that have a horizon that goes beyond the present, that enables us to plan and to think about what would happen if I did that.</p>
+<p>Now, of course, as soon as you have that capacity, you've now got to make a choice.</p>
+<p>So the bacteria doesn't have a choice about what it does, but you and I do.</p>
+<p>And I think that sort of qualitative distinction, which again is just a structural fire, is the thing that we distinguish higher local life from lower local life.</p>
+<p>It's not to say that we're better than the bacteria or the virus.</p>
+<p>So for any particular economic environment, there will be a free energy extreme.</p>
+<p>So viruses are great for fitting and inferring their environment, which is usually about a person's cell or another cell.</p>
+<p>We'd be very doubly that. I'd have to compress you down very, very small.</p>
+<p>You would not do very well outside a cell, but the virus would not do very well in the university.</p>
+<p>So it's all in relation to the way that you offer your censorship from your environment at your time scale.</p>
+<p>And once you acknowledge that, that there are lots of global minima or global acts of that,</p>
+<p>that correspond to all sorts of different ways of being, both in terms of species but also different phenotypes of inner species,</p>
+<p>then you can see now an easy taxonomy in terms of hierarchical depth and sophistication,</p>
+<p>and particularly temporal depth, that I think comfortably separates us from other animals,</p>
+<p>other animals from plants, cats from since other organisms.</p>
+<p>Thank you very much for the lecture again.</p>
+<p>I would like to put it a little bit away from, let me say, a scientific point of view towards a theoretical future prediction,</p>
+<p>whatever, do you think it is possible?</p>
+<p>First question, to fit a current state of psychological outlooks towards personal belief, motivations, and beliefs into the scheme that you're describing,</p>
+<p>I mean, like, saying that those beliefs that are, like, wrongly, you know, to lead to the person,</p>
+<p>and they could also be kind of hidden states of the person, which is not recognized in the area.</p>
+<p>And if so, is the responsibility, from your point of view, to create, like, a human impact software, which would be impossible to predict behavior of each kind of, like, certain person,</p>
+<p>and certain conditions, by that given kind of enormous power, I would say, you know, to manipulate those people. Thank you.</p>
+<p>Right. So, I think, a fascinating question. I just want to be more astray to focus on.</p>
+<p>Perhaps I'll just take the practical one, and take your question as a psychiatrist, because then it becomes very important in terms of understanding</p>
+<p>the main beliefs of false beliefs and the remediation of that false inference. That may or may not be a good thing or a bad thing, but certainly being able to do it and understand what you're doing is practically very relevant in a therapeutic context.</p>
+<p>So, the idea here is that most psychiatric syndromes can be thought of as a form of false or a buried inference.</p>
+<p>So, an elucidation would be basically believing a perspire, that something is there when there's no sensory evidence for it.</p>
+<p>A delusion is having a conviction in some state of affairs, usually interpersonal, for which there is no evidence that a normal person would accept as an elucidation.</p>
+<p>You could even take this through to things like anorexia and dysmorphophobia, holding beliefs about myself, which have no evidence when I look at myself in the mirror, for example.</p>
+<p>I see myself as fat, like a seam, like a firm, but I am fat even when you might be seen as everything very thin.</p>
+<p>So, you can certainly get an enormous variety of posterior beliefs.</p>
+<p>I would say that, like, countable, you could bring them to a certain number of fears, like death, hunger, whatever, which is actually, that's why I'm asking.</p>
+<p>So, those are beliefs, I know, but, um, uncountable to me, they're, like, can be brought to, like, maybe big but still final number of, uh, countable factors, you know?</p>
+<p>Yes?</p>
+<p>No, I agree, darling.</p>
+<p>There will be mathematical reasons, based on the precedent, I think, to make that true.</p>
+<p>I guess what I really meant was that the number of ways in which I can deviate from you are large, but the number of dimensions made quite straight, yeah.</p>
+<p>Um, so if that's the case, if there is an opportunity, and indeed there's clinical evidence for, again, a belief updating, um, then you, people have been focusing on how that could happen.</p>
+<p>Um, it seems that the most important synaptic mechanism that enables that sort of false inference is in the precision afforded to various sources of sensory evidence relative to prior beliefs.</p>
+<p>So, if you're a psychologist, you, you, you, you think of that in terms of attention.</p>
+<p>So, now, again, you become shifting from how we form our beliefs, or update our beliefs, to how we attempt to different things.</p>
+<p>And we were talking just before about, um, this being the same mathematical problem as, what is fake news versus non-fake news in the millennial society, and, uh, uh, uh, uh, where news and social media</p>
+<p>becomes big data, and the real problem is to select what you accredit or assign a precision that enables that sort of information to update your beliefs.</p>
+<p>So, I think in terms of understanding the mechanics of belief updating, and intervening in that, either therapeutically or for commercial reasons, like in advertising, for example,</p>
+<p>it's probably going to be all about how you need attention, and what you need by attention, and the physiological mechanisms of attention.</p>
+<p>And also, just gaining some high level control of attention to be able to mentalize it.</p>
+<p>So, there are certain forms of attention which we have known, not because of I don't have any control over,</p>
+<p>which is mainly possible to learn to control with suitable mindfulness training, for example.</p>
+<p>So, uh, saccadic suppression, so this is the phenomena that when I view my eyes as I look around the room,</p>
+<p>during the motion of the eyes, I do not see the optic flow. I don't see the world sweep past.</p>
+<p>All I see are the static samples that I then integrate into a coherent beam.</p>
+<p>So, that saccadic suppression is a very interesting example of temporarily ignoring or reducing the precision of the light level mapping here,</p>
+<p>in a very, very, um, temporary precise way, which you cannot affect by the least higher in the model.</p>
+<p>Now, imagine that you now had a connection in the genitive model.</p>
+<p>Say you had, you felt hungry, so we were talking about contextualizing before,</p>
+<p>say there was some higher level representation of self or myself, state of self, at this point in time,</p>
+<p>that can actually get even and then suspend that saccadic suppression.</p>
+<p>So, you can choose whether to see the world moving, whether you move your eyes or not.</p>
+<p>In fact, to a certain extent, you can. This is a real hell of a string.</p>
+<p>You can see what it would look like if you just push the side of your eyeball, and you see the world shift.</p>
+<p>So, there are ways of getting around it if you have a sufficiently deep genitive model.</p>
+<p>So, my answer to your question, I'm not sure what the implications were in terms of the ethics of it or the, um, the weaponization of that,</p>
+<p>which is another issue, of course. But just in terms of practically what you would be looking at,</p>
+<p>I think you would be looking at the processes, the medium, the precision, and the degree of message passing between these hierarchical levels,</p>
+<p>that would look very much like what you treat as newsworthy, or what you ignore.</p>
+<p>If you get control of that for yourself, and possibly for a patient, then you may not have an enormous therapy to do.</p>
+<p>Thank you. I wasn't talking exactly about the therapeutic effects, like improving the situation. I was talking about the prognostication of the system, which is still being bad.</p>
+<p>You know, so...</p>
+<p>Can you give me a copy of your time?</p>
+<p>Um... just...</p>
+<p>Say something about that.</p>
+<p>Well, it is the same thing, um, like, as you said, advertisement rates, it's not like kind of changing human aptitudes,</p>
+<p>explaining how they're fast or bad, or whatever, you know, not the advertising, that's right, but they just, um,</p>
+<p>predict what kind of, uh, disorder will react to this kind of, like, what will be the way that people with this or that kind of disorder,</p>
+<p>not psychiatric, like, at the, like, kind of, every time, or, you know, cutting down, um, to this certain message, uh, like, the,</p>
+<p>the, the, non-hidronized, that, so that, so will they still die? Will they still, like, will they say no? Will they say yes?</p>
+<p>Yes. I'm talking about kind of, like, prognostication model, not improvement.</p>
+<p>Yeah.</p>
+<p>But just improvement of the management, not improvement of agents themselves.</p>
+<p>So all this in economics context, then?</p>
+<p>Um, socially, politically, or whatever, like as you say, um, uh, meditizing, or, like, whatever I'm saying.</p>
+<p>Yeah, I, I don't know, because this, uh, this particular, uh, mathematical formulation hasn't really gotten that far.</p>
+<p>It's penetrated theoretical biology in terms of multi-agent gains, uh, of echinoconstruction and ethology.</p>
+<p>So there are simulations of how multiple agents echinoconstruct and constrained their own conversion behavior.</p>
+<p>Um, and there have been, sort of, multi-agent simulations of the level of cells organizing to form patterns and coalitions.</p>
+<p>But nobody, to my knowledge, has taken these variational free energy solutions, um, to model markets or advertising or geopolitical events.</p>
+<p>It's a really exciting opportunity.</p>
+<p>But, to my knowledge, it hasn't been done.</p>
+<p>It's only been an issue, I guess, in the past couple of years, in mythology and in, uh, evolutionary psychology and in the law of Genesis.</p>
+<p>Thank you.</p>
+<p>Yeah.</p>
+<p>Thank you.</p>
+<p>Thank you.</p>
+<p>Uh, thank you very much for your interest in the presentation.</p>
+<p>I would like to ask, uh, several questions concerning, uh, Markov, uh, processes.</p>
+<p>Uh, first of all, the principal feature of, uh, market processes is, uh, that the future is determined by the past only while the present.</p>
+<p>Is this fact resulted from the application barrier or is only the simplification, uh, to be able to solve mathematical, uh, problems associated with, uh, problems solved?</p>
+<p>Right.</p>
+<p>The second, uh, question is, uh, on the slide, devoted to, uh, activity and, uh, currents, uh, there is, uh, two magnets, uh, entropy, uh, and, uh, uh, energy.</p>
+<p>Uh, entropy is non-dimensional, uh, energy is dimensional.</p>
+<p>Uh, how do you explain the difference in the term?</p>
+<p>Uh, and the third, uh, question, uh, we really have solved, uh, solved, uh, uh, all the problems.</p>
+<p>So, uh, uh, all the differential equations to predict the area of, uh, Markov worlds.</p>
+<p>Thank you very much.</p>
+<p>Right, thank you.</p>
+<p>So, a few easy questions, though.</p>
+<p>Does anybody want to answer on my behalf?</p>
+<p>You're probably, you're probably a new physicist.</p>
+<p>So, can I answer as a physicist?</p>
+<p>Um, so, a really interesting question, the first one.</p>
+<p>Yet, to what extent, um, are Markovian independences or, um, Markovian process assumptions implicitly</p>
+<p>not of decision process for convenience?</p>
+<p>Or, how, or do we think, or is one thing, that these are the only kinds of geriatric morals</p>
+<p>that are fit for the universe in which we live?</p>
+<p>I think, um, technically, um, all of this maths inherits from a treatment of random democratic systems,</p>
+<p>cast it as a large democratic system, in which case the Markovian properties would be true and fundamental.</p>
+<p>that's where you start.</p>
+<p>So, um, my answer would be, they are not a device of that much of convenience.</p>
+<p>They are actually baked in to the underlying premise.</p>
+<p>Um, and that also enables me to, um, just to address the third question.</p>
+<p>Um, what we are basically solving here are not ordinary differential equations</p>
+<p>that we follow from a stochastic differential equation that you could treat a long shot for</p>
+<p>minutes and others.</p>
+<p>They could be applied to the density dynamics.</p>
+<p>For example, uh, Fokke-Pack, uh, equation on the density dynamics,</p>
+<p>or a straight wave equation, or a master equation.</p>
+<p>So, much of this really, all of these simulations are actually,</p>
+<p>up to, created a sense on functionals, where there's a functional probability distribution,</p>
+<p>very much like, uh, the Wokke-Pack equation.</p>
+<p>So, that's the belief-based aspect that we're giving away from gradient flows on functions of states,</p>
+<p>or gradient flows on functions of states.</p>
+<p>But, interpreting them now, in terms of gradient flows,</p>
+<p>you have functions of beliefs and coding-like states.</p>
+<p>So, it's a big technical review.</p>
+<p>If you, if you'd like to discuss that further in email,</p>
+<p>I'll send you something which I've never dared submit for peer review,</p>
+<p>that takes you through those arguments, uh, very precisely.</p>
+<p>Um, the interesting thing, um, though, is, is the, coming back to the first question,</p>
+<p>um, because clearly, this particular MDP is semi-Markovian.</p>
+<p>I have broken the Markovian property, because I've now got two timescales in place here.</p>
+<p>So, in practice, what happens with these immensely complicated itinerant captain sets,</p>
+<p>that we, uh, we use as a mathematical model of self-organizing systems, like biological systems.</p>
+<p>When you summarize it in terms of a Markovian-like process,</p>
+<p>with a discrete, uh, in the sweet states and in the sweet time,</p>
+<p>it looks like it has now required a semi-Markovian aspect.</p>
+<p>So, it is interesting that from the purely Markovian physics of it,</p>
+<p>due to the complicated nature of the systems that we like to study,</p>
+<p>when you find the free-engine optimizing models,</p>
+<p>they turn out to be high-mothical with that, um,</p>
+<p>breaking the symbol Markovian to make the same Markovian.</p>
+<p>Um, so, at that point, I think the deep, discrete model of decision process</p>
+<p>does become a mathematical approximation</p>
+<p>to what is actually a continuous-time Markovian process</p>
+<p>that looks as if it's lost its, uh, simple Markovian property,</p>
+<p>because it's just become so itinerant, so complicated,</p>
+<p>so structured, and so interesting from a biological, uh, perspective.</p>
+<p>Is that a reasonable answer?</p>
+<p>Thank you.</p>
+<p>Thank you.</p>
+
+</article>
+</body>
+</html>

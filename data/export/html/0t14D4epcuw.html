@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 118.1 ~ Tadahiro Taniguchi "Co-Creative Learning via Metropolis-Hastings..."</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 118.1 ~ Tadahiro Taniguchi "Co-Creative Learning via Metropolis-Hastings..."</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_118 &middot; Episode 1 &middot; Speakers: Tadahiro Taniguchi &middot; Duration: 1:10:59 &middot; Views: 191</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=0t14D4epcuw">https://www.youtube.com/watch?v=0t14D4epcuw</a></div>
+<article>
+<p>Hello, welcome everyone.</p>
+<p>It is August 20th at the stroke of zero UTC on the 21st in 2025 and it's Active Inference</p>
+<p>Guest Stream 118.1.</p>
+<p>We're here with Tadahiro Taniguchi and we'll see a presentation on co-creative learning</p>
+<p>via Metropolis Hastings' interaction between humans and AI.</p>
+<p>And then I will read any questions in the live chat and ask some things about this fascinating research.</p>
+<p>So thank you for joining again, Tadahiro, and to you for the presentation.</p>
+<p>Okay, thank you very much for inviting me to this great guest swim again.</p>
+<p>So I'm Tadahiro Taniguchi from Kyoto University.</p>
+<p>And today I'll be talking about co-creative learning via Metropolis Hastings' interaction between humans and AI.</p>
+<p>And this is based on our preprint, which is recently available on archive.</p>
+<p>So this is the co-creative learning.</p>
+<p>It's a new theory of human-in-the-loop machine learning method.</p>
+<p>So I'll also discuss collective predictive coding hypothesis, which I talked in the previous guest swim.</p>
+<p>Maybe you can check it later.</p>
+<p>But as a background of this work.</p>
+<p>Okay, let me start.</p>
+<p>So here is an overview of our main contributions of this paper.</p>
+<p>The first, we formally propose co-creative learning.</p>
+<p>This is a novel paradigm where humans and AI collaboratively achieve symbol emergence.</p>
+<p>In other words, the formation of the external representation</p>
+<p>by mutually integrating their partial perceptual information to build shared representation.</p>
+<p>So this fundamentally shifts the perspective of human-AI alignment or teaching process,</p>
+<p>moving beyond traditional unilateral approach.</p>
+<p>The second, we introduce an experimental framework based on the Metropolis Hastings naming game.</p>
+<p>Through this framework, we propose the comparing empirical evidence,</p>
+<p>demonstrating that human-AI pairs can effectively engage in this co-creative learning process.</p>
+<p>So the visual of this slide illustrates the idea of mutual interaction between the human and AI</p>
+<p>centering around the shared world.</p>
+<p>Okay, so let's consider why co-creative learning is so crucial currently in this phase.</p>
+<p>So the first one is limitations of unilateral alignment or teaching.</p>
+<p>Traditionally, unilateral alignment framework or teaching,</p>
+<p>typically supervised learning based on ground truth levels provided by human annotators,</p>
+<p>have significant limitations.</p>
+<p>For instance, AI systems already excel beyond average human performance in many areas.</p>
+<p>the possessing distinct and often superior domain knowledge.</p>
+<p>Furthermore, the human and AI inherently have heterogeneous knowledge.</p>
+<p>Our ways of understanding and processing information are fundamentally different.</p>
+<p>So when, and also when embodied AI agents start exploring the world autonomously,</p>
+<p>it becomes questionable whether we should enforce our existing human knowledge and values</p>
+<p>as a sole ground truth.</p>
+<p>So we should respect, in some sense, we should respect AI's perception and or knowledge</p>
+<p>to bring our knowledge better status.</p>
+<p>Okay, another thing is the bidirectional, the influence.</p>
+<p>So actually, the large language models, for example,</p>
+<p>actively impact the human language use and decision making,</p>
+<p>as shown by recent studies.</p>
+<p>This, the mutual influence clearly highlights the limitation of the perspective</p>
+<p>of purely one-side alignment strategy, teaching strategy.</p>
+<p>Therefore, looking beyond the current generative AI error,</p>
+<p>it is important that we establish a new system theory,</p>
+<p>the principle, and the learning method</p>
+<p>to achieve true human AI symbiosis,</p>
+<p>the symbiosis, considering bidirectional alignment or teaching.</p>
+<p>That can be called co-creative learning process.</p>
+<p>So, to position co-creative learning more intuitively,</p>
+<p>from the machine learning perspective,</p>
+<p>let's briefly and roughly review existing traditional</p>
+<p>unilateral machine learning frameworks.</p>
+<p>So, in the most common,</p>
+<p>the insupervised or the reinforcement learning,</p>
+<p>the human's perspective,</p>
+<p>the human's perspective can be written like that.</p>
+<p>The XN human is the human's observation,</p>
+<p>and SN is the kind of cross-label or description</p>
+<p>of the human's perception of information.</p>
+<p>So, we form the inner society,</p>
+<p>we form the relationship between the labels</p>
+<p>and the particular information, in some sense.</p>
+<p>So, and this is effectively serves as the ground truth</p>
+<p>or the target or reward,</p>
+<p>the source of reward for the AI to learn from.</p>
+<p>The AI's understanding is therefore fundamentally bounded</p>
+<p>by the human's perspective.</p>
+<p>So, in contrast,</p>
+<p>in unsupervised or self-supervised learning,</p>
+<p>the AI agents learns in isolation,</p>
+<p>inferring knowledge solely from its own observations.</p>
+<p>In this case,</p>
+<p>in this case,</p>
+<p>its understanding is bounded</p>
+<p>only by the limits of its own perceptual data.</p>
+<p>So, a key takeaway from both these traditional approaches</p>
+<p>is that the only partial information,</p>
+<p>either human or AI,</p>
+<p>is used for the learning process.</p>
+<p>So, this highlights a critical limitation.</p>
+<p>The NISA approach fully liberages</p>
+<p>the combined,</p>
+<p>potentially richer,</p>
+<p>the information available</p>
+<p>when humans and AI interact.</p>
+<p>So, this brings us to our proposal,</p>
+<p>the new bilateral framework,</p>
+<p>co-creative learning.</p>
+<p>Here, the goal is not for one agent to teach the other,</p>
+<p>but for both to engage in</p>
+<p>bidirectional message passing</p>
+<p>through language games and communication</p>
+<p>to integrate their partial observations.</p>
+<p>So, instead of trading one agent's</p>
+<p>perspective as a sole ground truth,</p>
+<p>the learning target for the dyad</p>
+<p>that becomes the true posterior distribution</p>
+<p>conditioned on the joint observation</p>
+<p>of both agents.</p>
+<p>Here, X and AI and X, the human.</p>
+<p>This is crucial distinction.</p>
+<p>So, by integrating their distinct</p>
+<p>and partial information,</p>
+<p>this approach allows</p>
+<p>emergent shared understanding</p>
+<p>to surpass the knowledge</p>
+<p>and perception</p>
+<p>that either the humans</p>
+<p>or the AI could have</p>
+<p>have formed along.</p>
+<p>The diagram on this slide</p>
+<p>illustrates this mutual interaction</p>
+<p>and the formation of a joint</p>
+<p>more complete understanding.</p>
+<p>So,</p>
+<p>and, but, you know,</p>
+<p>how can we do this?</p>
+<p>That is a question.</p>
+<p>And before diving into</p>
+<p>today's main topic,</p>
+<p>let me briefly introduce</p>
+<p>or review</p>
+<p>the collective predictive coding</p>
+<p>hypothesis,</p>
+<p>which I proposed last year.</p>
+<p>And we gave a talk</p>
+<p>in this guest stream last time.</p>
+<p>So,</p>
+<p>this hypothesis extends idea</p>
+<p>of well-known predictive coding</p>
+<p>to social and linguistic phenomena.</p>
+<p>So,</p>
+<p>it states that</p>
+<p>symbol systems,</p>
+<p>including language,</p>
+<p>are formed</p>
+<p>through collective</p>
+<p>predictive coding by humans.</p>
+<p>In other words,</p>
+<p>a human society,</p>
+<p>which can be regarded</p>
+<p>as symbol emergence system,</p>
+<p>the systems performing symbol emergence,</p>
+<p>that technically,</p>
+<p>can be understood</p>
+<p>as a social representation</p>
+<p>learning system.</p>
+<p>As a result,</p>
+<p>the information of the world</p>
+<p>may be encoded</p>
+<p>in the distributional semantics</p>
+<p>of our language.</p>
+<p>The hypothesis also suggests</p>
+<p>that this is why</p>
+<p>large language models</p>
+<p>appear to understand the world.</p>
+<p>They inherit</p>
+<p>this structure</p>
+<p>through vast amount</p>
+<p>of distributional,</p>
+<p>distributed human generated text.</p>
+<p>By the way,</p>
+<p>the diagram illustrates</p>
+<p>this complex process</p>
+<p>where</p>
+<p>the emergent,</p>
+<p>where the individual</p>
+<p>inference</p>
+<p>and action loop</p>
+<p>contribute to an emergent,</p>
+<p>the symbol system</p>
+<p>that in turn</p>
+<p>constrains</p>
+<p>the organized</p>
+<p>collective behavior.</p>
+<p>So,</p>
+<p>let me illustrate.</p>
+<p>So,</p>
+<p>maybe the</p>
+<p>explanation was too quick.</p>
+<p>So,</p>
+<p>let me illustrate</p>
+<p>the CPC hypothesis,</p>
+<p>collective predictive coding</p>
+<p>process,</p>
+<p>the bridging the idea</p>
+<p>of emergent communication</p>
+<p>and predictive coding</p>
+<p>or free energy principle.</p>
+<p>First,</p>
+<p>let's start from</p>
+<p>the predictive coding</p>
+<p>or word model learning.</p>
+<p>So,</p>
+<p>there is a person,</p>
+<p>the internally,</p>
+<p>the he,</p>
+<p>in turn,</p>
+<p>he or she</p>
+<p>internally has</p>
+<p>internal representation</p>
+<p>over world models.</p>
+<p>And we are</p>
+<p>living</p>
+<p>with</p>
+<p>action perception</p>
+<p>loop.</p>
+<p>So,</p>
+<p>this is very roughly</p>
+<p>speaking</p>
+<p>the inference process.</p>
+<p>But we humans,</p>
+<p>we are so many</p>
+<p>and through communication</p>
+<p>we form language.</p>
+<p>So,</p>
+<p>following</p>
+<p>the predictive</p>
+<p>coding hypothesis</p>
+<p>through language game</p>
+<p>we can form</p>
+<p>language-like</p>
+<p>social,</p>
+<p>the external</p>
+<p>representations</p>
+<p>through this</p>
+<p>learning,</p>
+<p>total learning</p>
+<p>process.</p>
+<p>I think</p>
+<p>through this process</p>
+<p>we model</p>
+<p>and adapt</p>
+<p>to the world</p>
+<p>collectively.</p>
+<p>So,</p>
+<p>but here</p>
+<p>let me take</p>
+<p>another view.</p>
+<p>Until now,</p>
+<p>we believe,</p>
+<p>we assume</p>
+<p>that each</p>
+<p>person</p>
+<p>is an independent</p>
+<p>and autonomous</p>
+<p>agent.</p>
+<p>Let's change</p>
+<p>and take</p>
+<p>another viewpoint.</p>
+<p>First,</p>
+<p>language is here.</p>
+<p>Language is a kind</p>
+<p>of autonomous</p>
+<p>system.</p>
+<p>And</p>
+<p>they have sensors</p>
+<p>and also actuators.</p>
+<p>That's us.</p>
+<p>The language uses,</p>
+<p>utilizes us</p>
+<p>to model</p>
+<p>the world</p>
+<p>through interaction.</p>
+<p>From this</p>
+<p>viewpoint,</p>
+<p>we are subordinate</p>
+<p>to the language</p>
+<p>system.</p>
+<p>So,</p>
+<p>this kind of view</p>
+<p>is often mentioned</p>
+<p>in sociology</p>
+<p>or other</p>
+<p>social science</p>
+<p>area</p>
+<p>or cultural</p>
+<p>psychology.</p>
+<p>So,</p>
+<p>I think</p>
+<p>this kind</p>
+<p>of dual</p>
+<p>viewpoint</p>
+<p>is very</p>
+<p>interesting</p>
+<p>to extend</p>
+<p>our view</p>
+<p>of cognition</p>
+<p>to the</p>
+<p>social</p>
+<p>viewpoint.</p>
+<p>And actually,</p>
+<p>this dual</p>
+<p>viewpoint</p>
+<p>actually</p>
+<p>gave us</p>
+<p>opportunity,</p>
+<p>gives us</p>
+<p>opportunity</p>
+<p>to formalize</p>
+<p>this process</p>
+<p>from the</p>
+<p>viewpoint</p>
+<p>of free</p>
+<p>energy</p>
+<p>principle.</p>
+<p>So,</p>
+<p>based on</p>
+<p>the generative</p>
+<p>model,</p>
+<p>representing</p>
+<p>CPC,</p>
+<p>I mean,</p>
+<p>this kind</p>
+<p>of the</p>
+<p>language model.</p>
+<p>Let's consider</p>
+<p>language</p>
+<p>is a kind</p>
+<p>of brain</p>
+<p>having these</p>
+<p>sensor motor</p>
+<p>systems.</p>
+<p>So,</p>
+<p>the following</p>
+<p>the</p>
+<p>graphical model,</p>
+<p>the</p>
+<p>pro-bisic</p>
+<p>generative model,</p>
+<p>the describing</p>
+<p>such kind</p>
+<p>of process,</p>
+<p>we can define</p>
+<p>the free</p>
+<p>energy</p>
+<p>in the same</p>
+<p>way</p>
+<p>as</p>
+<p>the normal,</p>
+<p>usual,</p>
+<p>the free</p>
+<p>energy</p>
+<p>principle.</p>
+<p>Interestingly,</p>
+<p>we can</p>
+<p>naturally</p>
+<p>derive</p>
+<p>this kind</p>
+<p>of</p>
+<p>formulation,</p>
+<p>and interestingly,</p>
+<p>the final</p>
+<p>form</p>
+<p>can be</p>
+<p>divided</p>
+<p>into two</p>
+<p>parts.</p>
+<p>of the</p>
+
+<p>So,</p>
+<p>the first one</p>
+<p>is an</p>
+<p>ordinary</p>
+<p>variation of</p>
+<p>free energy</p>
+<p>term.</p>
+<p>This is the</p>
+<p>sum of the</p>
+<p>variation of</p>
+<p>free energy</p>
+<p>of a number</p>
+<p>of agents.</p>
+<p>in addition to</p>
+<p>that,</p>
+<p>an interesting</p>
+<p>term pops</p>
+<p>up.</p>
+<p>We call</p>
+<p>this</p>
+<p>collective</p>
+<p>regularization</p>
+<p>term.</p>
+<p>This term</p>
+<p>tries to align</p>
+<p>agents'</p>
+<p>external</p>
+<p>representations,</p>
+<p>W,</p>
+<p>W,</p>
+<p>and</p>
+<p>with each</p>
+<p>agent's</p>
+<p>internal</p>
+<p>representation,</p>
+<p>Z.</p>
+<p>With this</p>
+<p>term,</p>
+<p>the problem</p>
+<p>of</p>
+<p>minimization</p>
+<p>individual</p>
+<p>free energy</p>
+<p>becomes</p>
+<p>the</p>
+<p>minimization</p>
+<p>of</p>
+<p>free energy</p>
+<p>of a</p>
+<p>single</p>
+<p>total</p>
+<p>system.</p>
+<p>I think</p>
+<p>this book</p>
+<p>can extend</p>
+<p>the free</p>
+<p>energy</p>
+<p>principle</p>
+<p>from the</p>
+<p>individual</p>
+<p>to the</p>
+<p>collective</p>
+<p>level</p>
+<p>with a</p>
+<p>clear</p>
+<p>relationship</p>
+<p>to</p>
+<p>the</p>
+<p>emergence</p>
+<p>of</p>
+<p>symbol</p>
+<p>systems</p>
+<p>or</p>
+<p>language.</p>
+<p>Okay.</p>
+<p>So,</p>
+<p>as a</p>
+<p>simplest</p>
+<p>instance</p>
+<p>of</p>
+<p>the</p>
+<p>theory</p>
+<p>of</p>
+<p>collective</p>
+<p>predicted</p>
+<p>coding,</p>
+<p>let me</p>
+<p>introduce</p>
+<p>the</p>
+<p>Metropolis</p>
+<p>Hastings</p>
+<p>naming</p>
+<p>game,</p>
+<p>which we</p>
+<p>previously</p>
+<p>proposed.</p>
+<p>It is a</p>
+<p>type of</p>
+<p>language</p>
+<p>game</p>
+<p>built on</p>
+<p>the</p>
+<p>solid</p>
+<p>mathematical</p>
+<p>foundations.</p>
+<p>This will</p>
+<p>serve as a</p>
+<p>basis</p>
+<p>of</p>
+<p>co-creative</p>
+<p>learning.</p>
+<p>I will</p>
+<p>introduce</p>
+<p>Delta.</p>
+<p>Okay.</p>
+<p>How does it</p>
+<p>work?</p>
+<p>So,</p>
+<p>here's the</p>
+<p>outline.</p>
+<p>First,</p>
+<p>in the</p>
+<p>perception</p>
+<p>phase,</p>
+<p>the</p>
+<p>speaker</p>
+<p>and</p>
+<p>listener,</p>
+<p>observe</p>
+<p>the</p>
+<p>same</p>
+<p>object</p>
+<p>and</p>
+<p>infer</p>
+<p>their</p>
+<p>internal</p>
+<p>representations.</p>
+<p>We assume</p>
+<p>joint attention</p>
+<p>here,</p>
+<p>which is</p>
+<p>crucial for</p>
+<p>human language</p>
+<p>acquisition.</p>
+<p>Next,</p>
+<p>in communication</p>
+<p>phase,</p>
+<p>the speaker</p>
+<p>provisically</p>
+<p>utter a name</p>
+<p>for the</p>
+<p>object.</p>
+<p>The listener</p>
+<p>then determine</p>
+<p>if it accepts</p>
+<p>the naming</p>
+<p>or not</p>
+<p>with a certain</p>
+<p>probability.</p>
+<p>The probability</p>
+<p>depends on</p>
+<p>its current</p>
+<p>belief state.</p>
+<p>Specifically,</p>
+<p>this probability</p>
+<p>show.</p>
+<p>Probability</p>
+<p>shown in the</p>
+<p>equation</p>
+<p>on the</p>
+<p>slide</p>
+<p>reflects how</p>
+<p>well the</p>
+<p>listener's</p>
+<p>belief matches</p>
+<p>the name</p>
+<p>proposed by</p>
+<p>the speaker.</p>
+<p>So,</p>
+<p>if the listener</p>
+<p>agent does not</p>
+<p>find the</p>
+<p>incoming sign</p>
+<p>believable,</p>
+<p>it can reject</p>
+<p>the proposed</p>
+<p>name.</p>
+<p>This ability</p>
+<p>to reject</p>
+<p>is crucial.</p>
+<p>Third,</p>
+<p>the learning</p>
+<p>phase.</p>
+<p>After the</p>
+<p>communication,</p>
+<p>the listener</p>
+<p>update</p>
+<p>its internal</p>
+<p>parameter</p>
+<p>related to</p>
+<p>representation,</p>
+<p>learning,</p>
+<p>and naming.</p>
+<p>Finally,</p>
+<p>the turn-taking</p>
+<p>step,</p>
+<p>the speaker</p>
+<p>and listener</p>
+<p>alternate</p>
+<p>as their role</p>
+<p>and the game</p>
+<p>continues.</p>
+<p>Overall,</p>
+<p>this is a</p>
+<p>very very</p>
+<p>simple game.</p>
+<p>But importantly,</p>
+<p>this game</p>
+<p>has a solid</p>
+<p>mathematical basis.</p>
+<p>So,</p>
+<p>let's dive into</p>
+<p>the data.</p>
+<p>If the</p>
+<p>acceptance</p>
+<p>decision</p>
+<p>is</p>
+<p>made</p>
+<p>according</p>
+<p>to this</p>
+<p>probability,</p>
+<p>we can</p>
+<p>mathematically</p>
+<p>prove</p>
+<p>that the</p>
+<p>naming game</p>
+<p>is equivalent</p>
+<p>to the</p>
+<p>metropolis</p>
+<p>haysing</p>
+<p>algorithm</p>
+<p>for</p>
+<p>Bayesian</p>
+<p>inference</p>
+<p>or</p>
+<p>the</p>
+<p>shared</p>
+<p>representation</p>
+<p>shown</p>
+<p>in</p>
+<p>this figure</p>
+<p>on the</p>
+<p>left.</p>
+<p>So,</p>
+<p>let's begin</p>
+<p>with this</p>
+<p>graphical</p>
+<p>model.</p>
+<p>So,</p>
+<p>here,</p>
+<p>OA</p>
+<p>and</p>
+<p>OB</p>
+<p>or</p>
+<p>we can</p>
+<p>rename</p>
+<p>this</p>
+<p>XA</p>
+<p>or XB</p>
+<p>that represents</p>
+<p>a visual</p>
+<p>observation</p>
+<p>of each</p>
+<p>agent.</p>
+<p>They are</p>
+<p>the agents</p>
+<p>with the</p>
+<p>visual input</p>
+<p>here,</p>
+<p>but any</p>
+<p>kind of input</p>
+<p>is okay,</p>
+<p>basically.</p>
+<p>Z is,</p>
+<p>ZA</p>
+<p>and ZB</p>
+<p>are the</p>
+<p>internal</p>
+<p>presentations,</p>
+<p>latent</p>
+<p>variables.</p>
+<p>We also</p>
+<p>assume</p>
+<p>the existing</p>
+<p>of a</p>
+<p>variable</p>
+<p>W,</p>
+<p>which serves</p>
+<p>as a</p>
+<p>prior</p>
+<p>for these</p>
+<p>two</p>
+<p>observations,</p>
+<p>two</p>
+<p>internal</p>
+<p>variables.</p>
+<p>So,</p>
+<p>if we</p>
+<p>treat</p>
+<p>W</p>
+<p>as a</p>
+<p>latent</p>
+<p>variable,</p>
+<p>this graphical</p>
+<p>model becomes</p>
+<p>very similar</p>
+<p>to the</p>
+<p>multi-modal</p>
+<p>or multi-view</p>
+<p>variational</p>
+<p>auto-encoder</p>
+<p>or latent</p>
+<p>variable</p>
+<p>models,</p>
+<p>and if the</p>
+<p>two agent's</p>
+<p>brains were</p>
+<p>directly connected</p>
+<p>and could be,</p>
+<p>could use</p>
+<p>both observations</p>
+<p>simultaneously,</p>
+<p>yes,</p>
+<p>this variable</p>
+<p>can be</p>
+<p>inferred</p>
+<p>in the</p>
+<p>natural way</p>
+<p>and would</p>
+<p>encode</p>
+<p>the combined</p>
+<p>information</p>
+<p>from both</p>
+<p>agents'</p>
+<p>input.</p>
+<p>However,</p>
+<p>in reality,</p>
+<p>they are</p>
+<p>independent</p>
+<p>cognitive</p>
+<p>systems.</p>
+<p>So,</p>
+<p>the algorithmic,</p>
+<p>so,</p>
+<p>let's introduce</p>
+<p>a trick.</p>
+<p>Algorithmically,</p>
+<p>we can decompose</p>
+<p>the model</p>
+<p>into two parts.</p>
+<p>So,</p>
+<p>left-hand side</p>
+<p>is agent</p>
+<p>A,</p>
+<p>and right-hand side</p>
+<p>is agent</p>
+<p>B.</p>
+<p>And we,</p>
+<p>let's consider</p>
+<p>the kind of</p>
+<p>alternative,</p>
+<p>the inference,</p>
+<p>the method</p>
+<p>for this</p>
+<p>W.</p>
+<p>Now,</p>
+<p>think about</p>
+<p>the sampling</p>
+<p>process.</p>
+<p>Agent A</p>
+<p>proposes</p>
+<p>a candidate</p>
+<p>of latent</p>
+<p>variable</p>
+<p>WD</p>
+<p>by sampling</p>
+<p>from its</p>
+<p>posterior</p>
+<p>distribution.</p>
+<p>And</p>
+<p>the</p>
+<p>proposed value</p>
+<p>is passed</p>
+<p>to agent</p>
+<p>B.</p>
+<p>The agent</p>
+<p>B can</p>
+<p>decide</p>
+<p>whether</p>
+<p>to accept</p>
+<p>the sample</p>
+<p>from</p>
+<p>a sample</p>
+<p>based on</p>
+<p>certain probability.</p>
+<p>So,</p>
+<p>this is,</p>
+<p>this process</p>
+<p>is,</p>
+<p>this process</p>
+<p>can be</p>
+<p>designed</p>
+<p>by using</p>
+<p>the</p>
+<p>Metropolis-Hastings</p>
+<p>algorithm,</p>
+<p>which is</p>
+<p>a kind of</p>
+<p>Marco</p>
+<p>J.</p>
+<p>Monte Carlo</p>
+<p>MCMC.</p>
+<p>So,</p>
+<p>actually,</p>
+<p>under certain</p>
+<p>conditions,</p>
+<p>this guarantee</p>
+<p>is that</p>
+<p>shared signs</p>
+<p>are formed</p>
+<p>and</p>
+<p>that</p>
+<p>categories</p>
+<p>emerge</p>
+<p>among</p>
+<p>the agent</p>
+<p>to approximate</p>
+<p>the posterior</p>
+<p>distribution</p>
+<p>based on</p>
+<p>the agent's</p>
+<p>observations.</p>
+<p>So,</p>
+<p>and importantly,</p>
+<p>this,</p>
+<p>what I</p>
+<p>explained here</p>
+<p>is</p>
+<p>completely</p>
+<p>equivalent</p>
+<p>to this</p>
+<p>naming game.</p>
+<p>So,</p>
+<p>it is</p>
+<p>proved that</p>
+<p>this naming game</p>
+<p>itself</p>
+<p>is</p>
+<p>Bayesian</p>
+<p>inference,</p>
+<p>approximate Bayesian inference</p>
+<p>procedure.</p>
+<p>So,</p>
+<p>this is a very</p>
+<p>important point.</p>
+<p>This is a very</p>
+<p>important point.</p>
+<p>So,</p>
+<p>in the previous</p>
+<p>paper,</p>
+<p>we tested</p>
+<p>this idea</p>
+<p>on some</p>
+<p>dataset</p>
+<p>and we</p>
+<p>showed that</p>
+<p>the agent,</p>
+<p>the two</p>
+<p>agent</p>
+<p>playing</p>
+<p>Metropolis-Hastings</p>
+<p>naming game</p>
+<p>can effectively</p>
+<p>integrate</p>
+<p>their</p>
+<p>perceptual</p>
+<p>information</p>
+<p>and form</p>
+<p>and share</p>
+<p>signs</p>
+<p>and signs</p>
+<p>I mean</p>
+<p>the categories</p>
+<p>across</p>
+<p>the agent</p>
+<p>and actually</p>
+<p>such kind</p>
+<p>of process</p>
+<p>even</p>
+<p>outperform</p>
+<p>the</p>
+<p>learning result</p>
+<p>achieved</p>
+<p>by a single</p>
+<p>agent.</p>
+<p>So,</p>
+<p>without any</p>
+<p>ground truth,</p>
+<p>this kind of</p>
+<p>method-point-hasting</p>
+<p>interaction</p>
+<p>can improve</p>
+<p>the</p>
+<p>representation</p>
+<p>learning</p>
+<p>process</p>
+<p>in some</p>
+<p>sense</p>
+<p>the</p>
+<p>knowledge</p>
+<p>the formation</p>
+<p>process.</p>
+<p>Okay,</p>
+<p>so this is the</p>
+<p>background</p>
+<p>and actually</p>
+<p>after</p>
+<p>this</p>
+<p>computation</p>
+<p>study</p>
+<p>you know,</p>
+
+
+<p>the</p>
+<p>we</p>
+<p>the</p>
+<p>as</p>
+<p>you see,</p>
+<p>as you saw</p>
+<p>in my talk,</p>
+<p>I always</p>
+<p>assume that</p>
+<p>this is</p>
+<p>something happening</p>
+<p>that in</p>
+<p>now society,</p>
+<p>human.</p>
+<p>So,</p>
+<p>to show that,</p>
+<p>we need to check,</p>
+<p>we need to validate</p>
+<p>that if</p>
+<p>this kind of</p>
+<p>things</p>
+<p>is happening</p>
+<p>in human</p>
+<p>interaction.</p>
+<p>So,</p>
+<p>we designed an experiment</p>
+<p>to test whether</p>
+<p>human</p>
+<p>participant</p>
+<p>when playing a game</p>
+<p>similar to the</p>
+<p>M.H.</p>
+<p>Metropolis-Haysing's</p>
+<p>naming game</p>
+<p>would follow</p>
+<p>the acceptance</p>
+<p>probability</p>
+<p>calculated</p>
+<p>by the</p>
+<p>algorithm.</p>
+<p>The results</p>
+<p>as shown</p>
+<p>in the</p>
+<p>graphs</p>
+<p>on the</p>
+<p>right</p>
+<p>are</p>
+<p>positive.</p>
+<p>We found</p>
+<p>that</p>
+<p>human</p>
+<p>acceptance</p>
+<p>behavior</p>
+<p>indeed</p>
+<p>are mostly</p>
+<p>aligned</p>
+<p>with</p>
+<p>theoretically</p>
+<p>derived</p>
+<p>M.H.</p>
+<p>acceptance</p>
+<p>probability.</p>
+<p>This is</p>
+<p>crucial</p>
+<p>finding</p>
+<p>because</p>
+<p>it suggests</p>
+<p>that</p>
+<p>humans</p>
+<p>to a certain</p>
+<p>extent</p>
+<p>follow</p>
+<p>similar</p>
+<p>patterns</p>
+<p>to the</p>
+<p>Metropolis-Haysing's</p>
+<p>naming game</p>
+<p>providing</p>
+<p>empirical</p>
+<p>support</p>
+<p>for the</p>
+<p>idea</p>
+<p>that</p>
+<p>human</p>
+<p>behavior</p>
+<p>on</p>
+<p>simple</p>
+<p>emergence</p>
+<p>might</p>
+<p>follow</p>
+<p>a CPC</p>
+<p>mechanism.</p>
+<p>This</p>
+<p>paves</p>
+<p>the way</p>
+<p>for our</p>
+<p>recent</p>
+<p>work</p>
+<p>integrating</p>
+<p>AI</p>
+<p>and</p>
+<p>human</p>
+<p>into</p>
+<p>this</p>
+<p>framework.</p>
+<p>So,</p>
+<p>this is</p>
+<p>the beginning</p>
+<p>of</p>
+<p>actually</p>
+<p>today's</p>
+<p>main</p>
+<p>topic.</p>
+<p>So,</p>
+<p>a simple</p>
+<p>way to</p>
+<p>introduce</p>
+<p>co-creative</p>
+<p>learning</p>
+<p>is to</p>
+<p>view</p>
+<p>it</p>
+<p>through</p>
+<p>the</p>
+<p>lens</p>
+<p>of</p>
+<p>a</p>
+<p>metropolis-haysing</p>
+<p>style</p>
+<p>interaction</p>
+<p>between</p>
+<p>human</p>
+<p>and</p>
+<p>AI.</p>
+<p>Like this.</p>
+<p>So,</p>
+<p>okay,</p>
+<p>let's jump</p>
+<p>into</p>
+<p>this section.</p>
+<p>So,</p>
+<p>given this insight,</p>
+<p>we then move to</p>
+<p>the core</p>
+<p>of our current</p>
+<p>work,</p>
+<p>the</p>
+<p>realisation</p>
+<p>of</p>
+<p>collective</p>
+<p>predictive</p>
+<p>coding</p>
+<p>within</p>
+<p>a</p>
+<p>human</p>
+<p>and AI</p>
+<p>collaborative</p>
+<p>system.</p>
+<p>As depicted</p>
+<p>in this</p>
+<p>graphical model,</p>
+<p>we envision</p>
+<p>the system</p>
+<p>where a</p>
+<p>human</p>
+<p>and AI</p>
+<p>agent,</p>
+<p>each with</p>
+<p>partial observations,</p>
+<p>engage in</p>
+<p>bilateral</p>
+<p>message passing</p>
+<p>through language</p>
+<p>game or</p>
+<p>communication.</p>
+<p>This interaction</p>
+<p>facilitates the formation</p>
+<p>and influence of shared representation.</p>
+<p>And represented by the Q, S, N.</p>
+<p>this is the kind of sign and shared latent variable.</p>
+<p>And X, A, X, AI and X, human.</p>
+<p>This means that AI's observations and human's observations.</p>
+<p>Okay.</p>
+<p>This is what we define as co-creative learning.</p>
+<p>The key idea here is that instead of one agent simply teaching the other,</p>
+<p>the both mutually integrated their partial perceptual information.</p>
+<p>The display process enabled by the mechanism like the MHNG, Metropolis-Haysynx naming game,</p>
+<p>allows them to jointly construct a richer shared external representation that neither could achieve alone.</p>
+<p>This is a direct instance,</p>
+<p>uh,</p>
+<p>uh,</p>
+<p>uh,</p>
+<p>instantiation</p>
+<p>of the CPC hypothesis</p>
+<p>in a human AI triad.</p>
+<p>So more formally,</p>
+<p>to be prepared,</p>
+<p>we formally define co-creative learning</p>
+<p>as an interactive decentralized</p>
+<p>major inference process.</p>
+<p>As shown in,</p>
+<p>in definition 1,</p>
+<p>uh, in our,</p>
+<p>in our,</p>
+<p>in our playprint.</p>
+<p>Through message-based update,</p>
+<p>like the Metropolis-Haysynx naming game,</p>
+<p>like the Metropolis-Haysynx naming game,</p>
+<p>jointly construct a local belief distribution.</p>
+<p>The crucial aspect is that this process ensures the expected</p>
+<p>of the collective free energy,</p>
+<p>FT,</p>
+<p>decreases over interaction steps.</p>
+<p>This means that the Amarco-Chain formed by their interactions</p>
+<p>converges to the true posterior distribution,</p>
+<p>conditioned on a joint observation of both AI and the humans.</p>
+<p>So what's the remarkable about this mechanism is that it allows for</p>
+<p>improvement of Monte Carlo estimates of the evidence P,</p>
+<p>XAI,</p>
+<p>X,</p>
+<p>human.</p>
+<p>Without requiring either agent to disclose their private observation or internal gradient.</p>
+<p>So this decentralized nature is a key advantage in enabling robust and private knowledge co-construction.</p>
+<p>Okay.</p>
+<p>So with this formal definition in mind,</p>
+<p>our primary objective for this experiment was to empirically test this concept.</p>
+<p>We conducted an experiment where joint attention naming game,</p>
+<p>this is a kind of, you know,</p>
+<p>the experiment,</p>
+<p>experiment with participants,</p>
+<p>asking to play the MH naming game like,</p>
+<p>you know, naming game.</p>
+<p>So this game was played between human participant and the computer agent.</p>
+<p>The central question we aim to answer was,</p>
+<p>can the human and the computer effectively integrate their respective partial observations</p>
+<p>through this naming game?</p>
+<p>So thereby,</p>
+<p>they engage in the decentralized Bayesian influence,</p>
+<p>or as we term it, co-creative learning.</p>
+<p>To ensure this,</p>
+<p>each agent was given only a partial missing subset of the full observational information.</p>
+<p>As you can see in this diagram,</p>
+<p>the human might have certain dimensions of features.</p>
+<p>while the agent has others,</p>
+<p>and some are missing for each.</p>
+<p>So this setup makes accurate categorization impossible,</p>
+<p>based on solely on individual information.</p>
+<p>Thus,</p>
+<p>the human might have certain information integration</p>
+<p>through the communication.</p>
+<p>We wanted to see if they could</p>
+<p>collaborateally fill in these missing pieces</p>
+<p>and reach shared understanding.</p>
+<p>So let's detail our material methods.</p>
+<p>The stimuli consisted of images depicting circles with a radial notch.</p>
+<p>So these were generated based on five-dimensional vectors,</p>
+<p>sampled from one of three ground truth Gaussian distribution.</p>
+<p>And using the CIE-lab color space,</p>
+<p>which is perceptually uniform.</p>
+<p>So the parameters were chosen.</p>
+<p>So that categories would overlap significantly in the partial observation space.</p>
+<p>Like this.</p>
+<p>But crucially, as shown in figure,</p>
+<p>this part,</p>
+<p>humans and computer agents receive different partial observations.</p>
+<p>human participants view a grayscale rendering based on the original figure.</p>
+<p>And the agent only can see the color information.</p>
+<p>This partial observability makes accurate categorization impossible,</p>
+<p>based solely on individual information.</p>
+<p>So making communication essential.</p>
+<p>So that DIA's task was to collaborateally categorize these stimuli</p>
+<p>into up to three categories.</p>
+<p>Yes, the ABC.</p>
+<p>By playing the naming game,</p>
+<p>this side, figure B,</p>
+<p>illustrates the experimental procedure flow</p>
+<p>involving initial categorization,</p>
+<p>initial categorization,</p>
+<p>and the naming game,</p>
+<p>turns and role switching.</p>
+<p>So this is actually very difficult task for human participants,</p>
+<p>human participants,</p>
+<p>human participants,</p>
+<p>as you can imagine.</p>
+<p>Okay.</p>
+<p>This is a very, this is a process.</p>
+<p>The, the slide shows a screenshot of the experimental interface</p>
+<p>that used in our experiment.</p>
+<p>First, participants were asked to categorize the given images by dragging</p>
+<p>then into rappelled boxes, as seen on the left.</p>
+<p>During the naming game,</p>
+<p>during the naming game,</p>
+<p>one image is presented on the right.</p>
+<p>On the right.</p>
+<p>And the naming agent propose a name or sign for the image by clicking the button.</p>
+<p>The listener then decides whether to accept the proposed proposed name by clicking and accept or reject.</p>
+<p>Sorry, the instruction is in Japanese.</p>
+<p>After this decision, the listener is prompted to revise their own categorization if needed.</p>
+<p>This intuitive interface supports the partial observation and sign exchange between the human and computer agent,</p>
+<p>facilitating the interactive process.</p>
+<p>Okay.</p>
+<p>So the experiment was conducted online by a web browser.</p>
+<p>We recruited 90 participants through CloudWorks,</p>
+<p>Cloud Sourcing Service,</p>
+<p>and after filtering for engagement and adherence to instruction,</p>
+<p>69 participants were included in our final analysis.</p>
+<p>The experiment typically lasted about 90 to 60,</p>
+<p>to 120 minutes,</p>
+<p>like 2 hours.</p>
+<p>The participants received compensation for their time.</p>
+<p>Okay.</p>
+<p>So for comparison,</p>
+<p>participants were divided into 3 distinct groups.</p>
+<p>So each interacting with computer agent,</p>
+<p>employing a different acceptance strategy for human proposal.</p>
+<p>Group one, the MH group, the Metropolis Hastings, engaged with an AI that accepted the proposals based on the Metropolis Hastings acceptance probability,</p>
+<p>serving as our primary co-creative learning condition.</p>
+<p>Group two, the Always Accept group.</p>
+<p>The Interactive with an AI that always accepts proposals,</p>
+<p>acting as a proxy for traditional supervised learning.</p>
+<p>The human suggestion is always true.</p>
+<p>You know, the human suggestion is always true.</p>
+<p>You know, the human suggestion is always true.</p>
+<p>Finally,</p>
+<p>Group three,</p>
+<p>the Always Reject group.</p>
+<p>The Always Reject group.</p>
+<p>The communicated with an AI that always reject human proposals,</p>
+<p>the mirroring and unsupervised learning scenario.</p>
+<p>So the AI just learned the form categories from their observation.</p>
+<p>These conditions allow us to systematically evaluate the effectiveness of the MHNG in facilitating co-creative learning.</p>
+<p>So, let's look at the result for clustering accuracy measured by adjusted land index, AI.</p>
+<p>Table one summarizes the initial and final mean AI score for both human and computer agents across all groups.</p>
+<p>A key finding is that participants in MH group achieve the highest categorization accuracy and sign agreement, particularly on the AI side.</p>
+<p>When compared to both the Always Accept and Always Reject group,</p>
+<p>the computer agent in MH condition,</p>
+<p>the computer agent in MH condition achieved a significantly higher final mean AI.</p>
+<p>This clearly indicates that the MH-based interaction most effectively facilitated shared understanding between human and AI,</p>
+<p>and AI engaging a more collaborative and accurate modeling of the world.</p>
+<p>So, while interacting generally helped the human improve,</p>
+<p>the MH mechanism was uniquely effective for the AI agent to leverage the interaction for super-spirial performance.</p>
+<p>Okay, to visualize this trend,</p>
+<p>this figure, figure 3,</p>
+<p>plus the mean AI over the 200 communication steps for both human and computer agents in the condition.</p>
+<p>You can clearly observe that both MH and AA are always acceptance conditions show a general trend to increase AI for both humans and computer,</p>
+<p>indicating successful information integration and learning from interaction.</p>
+<p>and in stark contrast,</p>
+<p>the AR,</p>
+<p>AR condition,</p>
+<p>always reject condition,</p>
+<p>whereas the AI always reject proposal,</p>
+<p>show a little to no improvement from the initial categorization accuracy,</p>
+<p>especially for the computer agent.</p>
+<p>This graph vividly demonstrate the superior performance and learning trajectory achieved under the Metropolis Hastings interaction,</p>
+<p>particularly for the AI agent.</p>
+<p>and the other is the same.</p>
+<p>Okay,</p>
+<p>Beyond the just categorization accuracy,</p>
+<p>we also evaluated the sine posterior distribution convergence.</p>
+<p>As highlighted in table 1,</p>
+<p>the MH group achieves the highest convergence between the agent's final sine distribution and the target posterior distribution derived from the combined model.</p>
+<p>This indicates that the MH-based interaction most effectively guided the diad towards the emergence of a shared informative sign system that truly reflects the integrated information.</p>
+<p>While human participants in the MH condition also showed the high agreement,</p>
+<p>the difference compared to the always accept condition was not statistically significant.</p>
+<p>So, however,</p>
+<p>the AI's performance in the MH group was significantly superior,</p>
+<p>demonstrating its ability to converge the interaction to align its understanding with the humans,</p>
+<p>leading to a richer shared representation as indicated by the convergence toward the S given XAI and Xhuman.</p>
+<p>To summarize our discussion,</p>
+<p>our experiments clearly showed that the human-AI pair can successfully engage in co-creative learning via the joint attention naming game.</p>
+<p>So, under partial observation,</p>
+<p>the Metropolis Hastings acceptance rule significantly improved categorization accuracy and agreement</p>
+<p>the same as compared to both always accept and always reject control conditions.</p>
+<p>This is evident in the AR-I graph and the sign agreement score we just discussed.</p>
+<p>The other way,</p>
+<p>the human-AI's acceptance behavior is that the human-AI's behavior aligns closely with the theoretically derived</p>
+<p>Metropolis Hastings probability as shown in this figure 4.</p>
+<p>This figure is shown in this figure.</p>
+<p>This reinforces the idea that the mechanism enhances perceptual integration and effectively facilitate decentralized Bayesian inference within human-AI diet.</p>
+<p>These findings collectively suggest a promising direction of designing truly symbiotic AI systems,</p>
+<p>systems that run with human by fostering the emergent,</p>
+<p>and the interaction-independent,</p>
+<p>and the interaction-driven alignment,</p>
+<p>moving beyond the limitation of traditional unilateral approach to the AI development.</p>
+<p>Okay, so while our findings are highly promising,</p>
+<p>we acknowledge several limitations in current studies,</p>
+<p>we utilized actually simple the artificial-generated visual stimuli and categorical signs.</p>
+<p>So this control setup was necessary for initial validation, I believe,</p>
+<p>but it naturally meets the generalizability of our findings to complex the complex real-world tasks involving richer semantics and natural language such as those handled by large language models.</p>
+<p>Additionally, our joint attention naming game,</p>
+<p>Paradigm assumes the perfect joint attention between agents.</p>
+<p>So in real-world interactions,</p>
+<p>so attentional alignment can fail,</p>
+<p>which is an important,</p>
+<p>important aspect for future research.</p>
+<p>And looking ahead, we identify several key future challenges.</p>
+<p>These include,</p>
+<p>scaling to richer modality and semantics,</p>
+<p>robustness to imperfect attention,</p>
+<p>designing real-time co-adaptive system,</p>
+<p>and understanding emerging dynamics in large-scale systems,</p>
+<p>and also ethical and interpretability concern is also important, I think.</p>
+<p>So, and actually,</p>
+<p>to build a truly symbiotic human AI society,</p>
+<p>how to integrate this kind of idea to the practical applications,</p>
+<p>that is also important topic.</p>
+<p>Okay,</p>
+<p>that's all from my side.</p>
+<p>Thank you very much for your attention.</p>
+<p>And I look forward to further discussion.</p>
+<p>Okay, thank you very much.</p>
+<p>Thank you for the talk.</p>
+<p>Awesome.</p>
+<p>All right.</p>
+<p>I will ask a few questions that I wrote,</p>
+<p>and I will copy them into the chat as well.</p>
+<p>And for anyone in the live chat,</p>
+<p>please feel free to write questions and I'll copy them in.</p>
+<p>All right.</p>
+<p>So first comment and question.</p>
+<p>The task focused on categorical discrete,</p>
+<p>as well as quantitative aspects of situational semantics,</p>
+<p>played via a language game,</p>
+<p>related to sharing information about a shape in a shared world.</p>
+<p>What kinds of AI human tasks do you think this kind of algorithm could be used for?</p>
+<p>For example,</p>
+<p>do you see it in the domain of the text chat or a robotic setting?</p>
+<p>Or just in other words,</p>
+<p>which application directions do you find promising or most able to demonstrate the differences and strengths of the framework compared with the unilateral supervised or unsupervised learning systems?</p>
+<p>Yes.</p>
+<p>Thank you very much for great questions.</p>
+<p>Actually, that I should ask,</p>
+<p>that I should add in our explanation.</p>
+<p>So actually,</p>
+<p>maybe this experiment itself looks very,</p>
+<p>I would say simple and categorical,</p>
+<p>categorical sign formation.</p>
+<p>And this,</p>
+<p>but what I want to show in this talk and in this paper is the kind of the very basic validation of this approach, co-creative learning.</p>
+<p>So,</p>
+<p>and this kind of this graphical model and this setting is not limited to the categorical setting.</p>
+<p>And also that, you know, the small number, I mean, the simple visual image.</p>
+<p>And actually,</p>
+<p>so as I mentioned,</p>
+<p>what I did is swapping the one agent in this kind of the naming language game.</p>
+<p>The swapping the by,</p>
+<p>swapped by a human participant.</p>
+<p>So actually this kind of approach,</p>
+<p>collective predictive coding based approach is now extending to many domains.</p>
+<p>So let me share the,</p>
+<p>okay,</p>
+<p>so it's a kind of appendix slide.</p>
+<p>So actually this approach was extended to the multiple agent.</p>
+<p>And also the multi agent repostment learning.</p>
+<p>And also the importantly,</p>
+<p>you know,</p>
+<p>this is also another preprint we recently shared.</p>
+<p>So this approach can be extended to the more complex tasks.</p>
+<p>So this is,</p>
+<p>for example,</p>
+<p>this,</p>
+<p>this paper is dealing with the kind of the captioning game,</p>
+<p>not naming game,</p>
+<p>captioning game.</p>
+<p>So between the two vision language model agent,</p>
+<p>you know,</p>
+<p>the one agent receives a natural image and describe it in natural language.</p>
+<p>Okay.</p>
+<p>So then they receive the another agent receive the text.</p>
+<p>Text is just a vector,</p>
+<p>you know,</p>
+
+<p>a sequence of categorical variables.</p>
+<p>And that can be treated in our framework in a similar way.</p>
+<p>So actually that we showed that this kind of process improve,</p>
+<p>I have to successfully integrate the two agents,</p>
+<p>the knowledge of the vision language models.</p>
+<p>So I think we are now,</p>
+<p>we are many researches now ongoing.</p>
+<p>So I think that we can,</p>
+<p>I believe we can extend this idea to the large language model setting.</p>
+<p>And also that we can say that now,</p>
+<p>as you know,</p>
+<p>currently in robotics field,</p>
+<p>vision language action model,</p>
+<p>vision language action model is gathering attention.</p>
+<p>So maybe we can consider the,</p>
+<p>how can we extend this idea to such kind of robotic scenario as well.</p>
+<p>Awesome.</p>
+<p>Um,</p>
+<p>okay.</p>
+<p>Next question.</p>
+<p>And then I'll read from the chat.</p>
+<p>Okay.</p>
+<p>How do you see this in terms of converging to a shared stable truth versus situations of novelty,</p>
+<p>like co-creation of art or research where there's not necessarily a preexisting ground truth,</p>
+<p>even of a latent kind to converge to.</p>
+<p>I'm thinking about situations where the agent models have overlapping information,</p>
+<p>but I'm thinking about the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+
+
+<p>the,</p>
+<p>the,</p>
+
+<p>the,</p>
+
+<p>the,</p>
+
+<p>the,</p>
+
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+
+<p>the,</p>
+
+
+<p>the,</p>
+<p>the,</p>
+
+<p>the,</p>
+
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>existing compromise versus move into a third space that might be different than what either agents</p>
+<p>has or knows thank you very much for your great question and actually that's very very very</p>
+<p>very uh interesting uh topic and uh interesting interesting uh discussion point so actually the</p>
+<p>mathematically speaking so if the if they don't have the shared information see I mean the you</p>
+<p>know the observation the contain does not contains shared the information so it's very difficult to</p>
+<p>uh I I expect that that it's very difficult to form the shared representations and reach</p>
+<p>agreement in some sense so and uh but uh the it's better and in but I didn't have I don't have the</p>
+<p>empirical evidence uh about that on the with some expense but I think that this is now it's very</p>
+<p>important uh step to conduct and constructive studies studies to analyze such kind of what kind of</p>
+<p>phenomena happens with uh this kind of the you know basic mechanism of symbol emergence and uh formation of</p>
+<p>shared the representation and also now maybe that this is a kind of the somehow a bit outside of</p>
+<p>today's topic and I think that this kind of scenario can be found in the democratic discussion in our</p>
+<p>society as well so the I think that one of my students is working on the the topic about the</p>
+<p>relationship between collective predictive coding and democracy and digital democracy so the if the two</p>
+<p>agents don't have the shared experience uh it's very difficult to have to reach or to reach agreement</p>
+<p>and also that you know the the the different if they have a very different belief system the it's it's the</p>
+<p>I'll say it will become very difficult to agree so that that's such kind of thing this this kind of</p>
+<p>mechanism is somehow existing the behind the curtain of the current the social division or system yeah I</p>
+<p>think that the currently I'm very interested in the connection between the you know this kind of</p>
+<p>computational research and the simple emergence for representation learning stuff things and the social</p>
+<p>science uh topics uh topics as well thank you very much yes that makes a lot of sense I guess just</p>
+<p>speculatively if two agents are in a shared environment with a simple optima to be reached or at least a gradient</p>
+<p>to be followed at least there's a norm to which the gradient could be followed or local or global optima</p>
+<p>could be reached but if you have agents that are in two different environments you kind of lose even</p>
+<p>the possibility of a guarantee because if it's like if two people are in two different rooms with two</p>
+<p>different temperatures there's no guarantee they would converge to the same air conditioning but if they</p>
+<p>were in the same room with a shared air conditioning at least they could</p>
+<p>yeah okay yeah go ahead I think it's very interesting to think over the kind of the how can we how</p>
+<p>uh should we in how can we improve the design of communication and how can we how uh should we</p>
+<p>uh consider the the environment the difference of environment uh to achieve the mutual and us to you</p>
+<p>know uh to how to say to understand the mutual understanding that between uh two or more agents</p>
+<p>something like that uh sorry yeah sorry first i'll read a question from the live chat if if anyone else has a</p>
+<p>live chat question they should write it so frederick kintanar wrote in your model how do you approach the</p>
+<p>difference between the way silicon agents and humans model the concept level of words and context ai is</p>
+<p>opaque how can this be improved for interpretability okay thank you very much that's also very much important</p>
+<p>point that in our framework the most important part of our framework is that we totally deal different</p>
+<p>to how say totally deal with the system a kind of decentralized system so the in the one of the most</p>
+<p>important part of this mechanism we that each agent need not to look into the the internal phenomena now of</p>
+<p>the counterpart agents so the even in the computer agent settings so what the agent do is just a kind of</p>
+<p>the uh utter the giving sign to speak something and listen and and determine the if it accept or not</p>
+<p>the by itself so so that there is no you know there is no need to uh kind of kind of look into the other</p>
+<p>agents variables you know so the so this you know that actually that in the similar studies in emergent</p>
+<p>communication some many studies uh how to say uh ask agent to pass the kind of the gradient of the</p>
+<p>parameter through agents you know so across agents it's impossible for human but uh but uh in this setting</p>
+<p>uh we don't need to do that so actually that in this uh system mechanism we just consider the counterpart</p>
+<p>agent as a black box so what we did in this framework is is in concrete planning is just swapping the black box</p>
+<p>by human agent and just expect the human human behavior follows the mh naming game based mechanism</p>
+<p>algorithm algorithm so actually so to that end uh to validate that so we did conducted this experiment</p>
+<p>previously and we somehow found that the human in this kind of setting human actually followed the mh</p>
+<p>algorithm to a some extent and also the in this experiment again again we checked that the human behavior</p>
+<p>is similar to the image algorithm and as a result that we can expect actually expect that the total the</p>
+<p>collective free energy can be decreased decreased through this interaction that is the scenario and</p>
+<p>regarding the explainability that is a very how to say the difficult question and we need to consider</p>
+<p>the problem and uh but uh you know the better in the in the uh how to say in the series of studies of</p>
+<p>explainable a a i so the definition of accessibility as is how say very somehow uncertain you know the</p>
+<p>uh how to say the uh how to say the uh how to say the uh how to say the uh how to say the uh</p>
+<p>the uh in the current large language model the explainability i mean the what happening inside of the</p>
+<p>neural network is a very challenging problem and uh how to say the human um i would say</p>
+<p>um in i think that the similar problem i can be found in this scenario as well but uh anyway so when we</p>
+<p>introduce this kind of idea idea to our society uh we assume that uh a a is not just a follower of</p>
+<p>or students or human so the human can be affected human decision can be affected uh by ai so maybe</p>
+<p>the of course that we need to reconsider the escalal issues and uh explainability based on such kind of</p>
+<p>assumptions uh that my answer is not perfect but yeah that's comment from my side great okay and one more</p>
+<p>question i wrote in the comment in the chat so you mentioned different ways of communication amongst ai</p>
+<p>human ai and human human dyads and groups and i think the relevance of understanding and modeling</p>
+<p>and creating high integrity settings for these communications is clear so what might these</p>
+<p>communication strategies look like for example let's assume that we can do real-time language translation</p>
+<p>between mother tongues like japanese or english from there what kinds of games might be possible for</p>
+<p>example with that high bandwidth communication still look like how are you doing what are you up to</p>
+<p>or could there be some structured communication games like captioning or joint classification which could</p>
+<p>engage shared attention in ways that were previously impossible and discover new global free energy optima</p>
+<p>uh thank you very much for your questions i'm now have to try to grasp the point we can do real-time</p>
+<p>language translation this is um mother tongue like uh from there what kind of game if everyone could speak and hear</p>
+<p>in the natural language that was most comfortable to them what would be the semantics of the language games</p>
+<p>that would support high bandwidth communication high bandwidth communication</p>
+<p>uh you mean the uh you mean the the i so what what what what does the real-time language translation</p>
+<p>means here so everyone can this this means everyone can understand so what is</p>
+<p>you can speak you can speak in japanese and hear what i'm saying in japanese</p>
+<p>and i'll hear what you say in english and i could speak in english so we're using some ai system to auto translate what we hear and say</p>
+<p>in close to real time so that so we can have a natural conversation with our mother tongues</p>
+<p>and we can speak in the language so then i'm just kind of curious and and wondering whether then we would have</p>
+<p>a sort of normal like on the street conversation or whether your work is providing some situations or</p>
+<p>more structured games like kind of like language chess where we could play a game together like captioning</p>
+<p>or classification that could be used to reduce the free energy on a joint distribution</p>
+<p>in a way that would be like faster or different than just asking about your day or your friends or your family</p>
+<p>all right thank you for your question and uh now i'm not still uh i'm not sure if i got get the</p>
+<p>uh the point clearly but uh basically the uh i know image naming game the naming game or captioning game uh this</p>
+<p>is kind of a very very small subset of what the what's happening in our total language game the inner</p>
+<p>society so that actually basically the our assumption is that our assumption or our idea is that uh</p>
+<p>the language the the formation of language or symbol emergence itself is a part of the adaptation</p>
+<p>to the environment and uh you know that's totally somehow same as uh collective uh predictive coding</p>
+<p>and uh active influence and uh so the the you know so i i i i don't have a clear answer to this</p>
+<p>uh question uh but uh uh how to say so you know the we share some task we share some task or some environment</p>
+<p>if you are human the that's task so maybe gradually the our way of communication uh gradually change and optimize</p>
+<p>uh to the uh to the uh to the shared task or shared environment that that's that's my idea and i don't know</p>
+<p>that kind of the i don't know the connection with the the real time translation uh i'll say the the discussion</p>
+<p>point so um is it okay yeah sorry i i think it's a a mystery for us</p>
+<p>and others to explore in the future like if we were fluent in hearing and speaking to everybody</p>
+<p>what would we talk about like if we knew every language perfectly and we could communicate to to</p>
+<p>everyone and everyone could be included in the conversation would that conversation look like</p>
+<p>just meeting somebody at the bus stop or i think your work provides some structured settings</p>
+<p>where the information content of communication could be quantitatively analyzed</p>
+<p>and different contributions and proposals could be understood in terms of how they contribute to</p>
+<p>co-alignment um okay and thank you yes last question so what are your next research directions or questions</p>
+<p>and what milestones or developments from your group and colleagues or in the broader ai space are you looking</p>
+<p>out for okay thank you very much in the relation with the development of my ai system so the one thing is that how can we</p>
+<p>integrate this idea into llm the agent systems and vlm and the vision language action model and actually so one of the you know the the for the basically the you know the</p>
+<p>the cpc the original idea is cpc and the symbol emergence systems so the i would like to jump out that from this kind of agent viewpoint but uh the i think that this is crucial to consider</p>
+<p>the how can we how can we how can we form the language system or shared the belief system together with other agent that i think it's crucial for human intelligence i think and cognition i think and uh the and from this viewpoint we can i think we can integrate</p>
+<p>the human and the human and the robot uh to this system so and that can bring us to the next step of</p>
+<p>ai human and ai the symbiotic society so that is important point and the first one step is to the make</p>
+<p>the this kind of the this kind of system work the with ai and robot i mean that you know i showed the vlm the image captioning game system so actually that actually</p>
+<p>input improve the performance of vlm and uh also that i can i think that llm that can can be uh let's say the you know the kind of the decentralized</p>
+<p>uh or multi-stated or multi-agent or multi-agent system can be uh reformulated from this viewpoint and also</p>
+<p>and we can put the human agent uh to such such kind of ecosystems you know so uh of course the human</p>
+<p>lrm interaction uh can take time uh can take time and uh and through that process so llm can learn from the</p>
+<p>human participants the you know adaptively but at the same time so inevitably human agents can be affected</p>
+<p>by lrm's output but in the in many discussions this kind of the phenomena is regarded as just a bias</p>
+<p>or bias somehow the bias is constant to be considered as a negative thing negative thing but uh you know</p>
+<p>the such kind of buyers it can be regarded as a kind of the knowledge the from ai agent as well so the we</p>
+<p>i think that the the most important one of the most important next step is to formalize this kind of</p>
+<p>interaction from the viewpoint of the collective free energy minimization and the language image like</p>
+<p>language game and you know produce the kind of qualitatively different the human ai ai the</p>
+<p>uh system and that hopefully guarantee the co-creative process and that is the most important uh step uh</p>
+<p>to forward yes thank you very much thank you a great way to end it i really appreciated the</p>
+<p>the presentation i think that the comparison of supervised or unsupervised learning makes it clear</p>
+<p>that both of the unilateral frameworks have fundamental limitations and that a co-creative path</p>
+<p>is a great joint distributional future thank you very much thank you okay till next time</p>
+<p>see you thank you very much</p>
+<p>um</p>
+<p>Thank you.</p>
+</article>
+</body>
+</html>

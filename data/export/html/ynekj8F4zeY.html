@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>William Gebhardt: “An Introduction to NGC-Learn: A Computational Neuroscience Library“</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>William Gebhardt: “An Introduction to NGC-Learn: A Computational Neuroscience Library“</h1>
+<div class="meta">Duration: 1:25:14 &middot; Views: 325</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=ynekj8F4zeY">https://www.youtube.com/watch?v=ynekj8F4zeY</a></div>
+<article>
+<p>welcome William Gart to the fourth</p>
+<p>active inference Symposium we're looking</p>
+<p>forward to your session titled an</p>
+<p>introduction to NGC learn a</p>
+<p>computational neuroscience libr Library</p>
+<p>over to you yeah so today I'm here to</p>
+<p>talk about um The Knack the nor adaptive</p>
+<p>Computing Labs uh python n Tool uh</p>
+<p>called NGC learn uh that is really</p>
+<p>focused on getting your ability to</p>
+<p>prototype your ideas and work with your</p>
+<p>ideas in the field of computational</p>
+<p>Neuroscience quickly and efficiently in</p>
+<p>Python um so before we're going to start</p>
+<p>off with all this first we kind of want</p>
+<p>to briefly cover what we mean when we</p>
+<p>talk about computational Neuroscience so</p>
+<p>this is just the study and investigation</p>
+<p>of brain function using mathematical</p>
+<p>computation and tools and theories um we</p>
+<p>have a focus on uh biologically</p>
+<p>plausible and biologically grounded</p>
+<p>systems and neur uh neurons and neuronal</p>
+<p>systems and we pay very high attention</p>
+<p>to the uh constraints Dynamics uh that</p>
+<p>are found in the real world when we talk</p>
+<p>about these uh for instance we model</p>
+<p>things like you know we have the</p>
+<p>resistance for membrane potentials we</p>
+<p>have currents we have a bunch of other</p>
+<p>various uh internal components to</p>
+<p>everything that make sure that we are</p>
+<p>modeling Faithfully uh all of the</p>
+<p>neurons and components that we can find</p>
+<p>inside NGC learn um and it we don't just</p>
+<p>take from humans uh in fact there's a</p>
+<p>couple of various things that we have</p>
+<p>that are based on uh findings uh for</p>
+<p>things like rat hippo cample neurons and</p>
+<p>whatnot for stuff like synaptic</p>
+<p>plasticity and</p>
+<p>transfers um and so yeah so we kind of</p>
+<p>look at this biological interpretation</p>
+<p>of the world and so one of the main</p>
+<p>things that we also like to look at is</p>
+<p>like what is realistic when we talk</p>
+<p>about an interpretation of our world and</p>
+<p>how biology looks at it and so like for</p>
+<p>instance our human eyes it's been</p>
+<p>studied that they process think</p>
+<p>information at about 60 frames a second</p>
+<p>we can certainly detect things that move</p>
+<p>through our visual field faster than</p>
+<p>that but as far as like visual updates</p>
+<p>and whatnot once you pass 60 frames a</p>
+<p>second or 60 updates per second we have</p>
+<p>a hard time</p>
+<p>distinguishing and then also processing</p>
+<p>for a lot of things in our brain is not</p>
+<p>just we see an image we process the</p>
+<p>image once and then we just sit around</p>
+<p>idle until a new image comes into our</p>
+<p>brain um a lot of the time what we'll</p>
+<p>end up with is we'll end up with a</p>
+<p>continuous stream of data coming into</p>
+<p>our brain and then we have to do</p>
+<p>continuous updates and processing on</p>
+<p>that and it's that continuous update and</p>
+<p>proc processing that we're really are</p>
+<p>trying to uh hone in on and identify</p>
+<p>here uh we also uh so we do all of this</p>
+<p>inside of a biological framing uh so we</p>
+<p>use neurons now these are not</p>
+<p>necessarily neurons like deep neural</p>
+<p>networks like to talk about neurons</p>
+<p>where it's just an abstract point in</p>
+<p>space uh we actually model them as uh</p>
+<p>physical objects uh that have things</p>
+<p>like internal States um and that also uh</p>
+<p>embody what they look like in brains and</p>
+<p>just other neural structures in the body</p>
+<p>um we have our uh we have our like the</p>
+<p>cell the center of the cell where we</p>
+<p>store a lot of our values we have</p>
+<p>synapses that connect these to other</p>
+<p>neurons later down and one of the key</p>
+<p>things that our library very much</p>
+<p>highlights is the use of spikes in</p>
+<p>spiking neural networks in order to</p>
+<p>actually achieve all of this happening</p>
+<p>um what this means is that instead of</p>
+<p>working in continuous values where you</p>
+<p>have a real valued image coming into</p>
+<p>your network um and then it passes</p>
+<p>through your entire network as a bunch</p>
+<p>of other real valued numbers uh images</p>
+<p>as they enter into our networks tend to</p>
+<p>be converted into what are known as</p>
+<p>Spike trains uh which are just a bunch</p>
+<p>of discret either ones or zeros on</p>
+<p>whether or not there is signal and then</p>
+<p>from uh from neurons to neurons in our</p>
+<p>systems we tend to transmit these things</p>
+<p>only as uh spikes so everything is dealt</p>
+<p>with with disc</p>
+<p>signals rather than continuous</p>
+<p>signals um and then the other thing that</p>
+<p>we really heavily rely on in NGC learn</p>
+<p>is stateful modeling uh so as we're</p>
+<p>dealing with these models that are</p>
+<p>constantly taking in signals over time</p>
+<p>um it's to be expected that we require</p>
+<p>many signals and many iterations over</p>
+<p>the signals uh before we will actually</p>
+<p>produce any given output what that means</p>
+<p>is that all of our neurons have internal</p>
+<p>States and are stateful and so we can</p>
+<p>for instance stop getting any input and</p>
+<p>we can actually still watch what happens</p>
+<p>to the neurons models as they basically</p>
+<p>return to their rest</p>
+<p>positions um and so we have our</p>
+<p>biological components that have our</p>
+<p>internal States and then these states do</p>
+<p>change over time and so we tend to think</p>
+<p>about all of the models that we build</p>
+<p>with NGC learn and just computational</p>
+<p>Neuroscience in general uh somewhat akin</p>
+<p>to State machines uh with the idea that</p>
+<p>we progress Through Time by changing the</p>
+<p>state over own model and then there's</p>
+<p>certain actions that happen that can</p>
+<p>affect our model and transform it from</p>
+<p>one state to</p>
+<p>another um and so that's kind of the</p>
+<p>basic framing behind what we're going</p>
+<p>for with this right we're not trying to</p>
+<p>be the next tensorflow we're not trying</p>
+<p>to be the next deep neural network</p>
+<p>library uh what we're trying to be is</p>
+<p>we're trying to be a library that is</p>
+<p>specifically catered to computational</p>
+<p>neuroscience and the biologically</p>
+<p>inspired biic</p>
+<p>systems um so why do we need this uh so</p>
+<p>build these complex systems has a lot of</p>
+<p>overhead if we need to make a system</p>
+<p>that tracks all of the different</p>
+<p>internal states of all models uh and can</p>
+<p>communicate between different components</p>
+<p>easily uh that can run efficiently um so</p>
+<p>at the bottom here you can see here so</p>
+<p>in one of these models that we built</p>
+<p>early on uh we had a pretty standard d</p>
+<p>uh spiking neural network uh that was</p>
+<p>not big by neural network standards uh</p>
+<p>that took about about eight hours to do</p>
+<p>an Epoch of amnest um just and that is</p>
+<p>due to the fact that when we are looking</p>
+<p>at an individual image in amnest we have</p>
+<p>to go over it uh I think this model was</p>
+<p>go it was doing 200 forward passes</p>
+<p>effectively over it basically we take</p>
+<p>the image and we convert it into a spike</p>
+<p>Train That's 200 time steps long and</p>
+<p>feed it through a model um in addition</p>
+<p>to this um because in our brain we don't</p>
+<p>have really the concept of mini batching</p>
+<p>you don't perceive 18 Different World</p>
+<p>Views at a time um and then update off</p>
+<p>of them uh or you know 8,000 or 500 or</p>
+<p>however many big batch sizes have gotten</p>
+<p>to these days uh we do everything in a</p>
+<p>continuous online updating um and so</p>
+<p>because of that we can only look at one</p>
+<p>image at a time so if we're doing</p>
+<p>roughly 200 forward passes per image one</p>
+<p>image at a time this can get really</p>
+<p>really really slow um and up to eight</p>
+<p>hours for us to do an epac over mnist um</p>
+<p>and so when we looked at some of the</p>
+<p>other existing libraries out there like</p>
+<p>Brian into bindet snn torch and whatnot</p>
+<p>they all worked and they all have their</p>
+<p>strengths uh to be able to implement</p>
+<p>these systems but some of them very much</p>
+<p>operate uh like black</p>
+<p>boxes with the idea that you can modify</p>
+<p>parameters on the outside um but then</p>
+<p>you're entrusting that your various</p>
+<p>existing Library uh is doing everything</p>
+<p>you expect it to mathematically inside</p>
+<p>um and what this also does is this makes</p>
+<p>it hard sometimes to actually either dig</p>
+<p>in and see what those Dynamics</p>
+<p>specifically are or even just want to</p>
+<p>modify some of those Dynamics and so</p>
+<p>what we wanted to focus on was building</p>
+<p>something that was incredibly modular uh</p>
+<p>but still fast right so you can usually</p>
+<p>you have this trade-off between you can</p>
+<p>have a system that's incredibly fast but</p>
+<p>incredibly Limited in what you can do</p>
+<p>with it or you can have a system that is</p>
+<p>incredibly modular and can do a bunch of</p>
+<p>things but GS to tr off speed and so we</p>
+<p>were kind of aiming for the middle of</p>
+<p>that with error more to while trying to</p>
+<p>expand it to make sure we didn't</p>
+<p>sacrific too much speed to be able to do</p>
+<p>all of the modular stuff that we wanted</p>
+<p>to be able to do um and so with that we</p>
+<p>have some highlights of NGC learn here</p>
+<p>so first off this is an open source</p>
+<p>project it's available on pip it's</p>
+<p>available on GitHub uh we are an active</p>
+<p>development base which means that if you</p>
+<p>write us messages on like if you put</p>
+<p>errors or mess notifications it GitHub</p>
+<p>we'll see them if you email us we will</p>
+<p>see them we will respond to them we can</p>
+<p>work with you on them um it is uh so NGC</p>
+<p>learn specifically uh is built using Jax</p>
+<p>uh which is basically built on the</p>
+<p>underlying Library called The</p>
+<p>Accelerated linear algebra library or</p>
+<p>xlaa which is a bunch of C of cpython</p>
+<p>bindings uh wrapped around um basically</p>
+<p>C functions for doing linear algebra and</p>
+<p>what that allows and so those are really</p>
+<p>fast because we get to use c um and then</p>
+<p>on so Jax is built on one step on top of</p>
+<p>that which basically creates a bunch of</p>
+<p>numpy bindings for said cpython</p>
+<p>functions um and so JX has this really</p>
+<p>really uh cool and uh component to it uh</p>
+<p>called Justin Time compilation and what</p>
+<p>this allows you to do is you can put a</p>
+<p>pure method uh into Jax's J in time</p>
+<p>compilation and it will give you a pure</p>
+<p>method out but when you run that method</p>
+<p>it runs entirely in C it does not</p>
+<p>actually do anything in Python and so</p>
+<p>the advantage of that is if we can take</p>
+<p>our giant models State transition</p>
+<p>functions and make them be pure</p>
+<p>functions where you give it an initial</p>
+<p>State and it gives back to you the final</p>
+<p>State we can pass that into Jax's J in</p>
+<p>time compilation and basically take the</p>
+<p>entire model and its entire State</p>
+<p>transformation and we can do it really</p>
+<p>efficiently in C um and actually as a</p>
+<p>matter of fact we can take that and we</p>
+<p>can do state transitions uh hundreds of</p>
+<p>times before we ever return to Python</p>
+<p>and so this is kind of how we get that</p>
+<p>speed up and in our testing that same</p>
+<p>model that took eight hours to do an</p>
+<p>Epoch over mnist uh we got down to</p>
+<p>roughly 15 minutes uh 12 to 15 running</p>
+<p>on the same Hardware um for to do an</p>
+<p>Epoch over mnist which is you know 40</p>
+<p>time speed up there uh there have been</p>
+<p>other examples that we've had that have</p>
+<p>gotten up to a 50 time speed up uh this</p>
+<p>is not me promising that you will</p>
+<p>achieve a 40 or 50 times speed up in</p>
+<p>your work this is just me saying that</p>
+<p>like sometimes you don't realize how</p>
+<p>fast it can be running um we also wrote</p>
+<p>this so that way if you want to be</p>
+<p>writing your own new components because</p>
+<p>we all know that you know P models are</p>
+<p>great we can work with those those are</p>
+<p>great but the fun part about science is</p>
+<p>actually getting to build new things and</p>
+<p>try out new ideas and new modules so we</p>
+<p>made it really easy to write new stuff</p>
+<p>uh write new components write new basic</p>
+<p>like write new learning rules write new</p>
+<p>you know neurons all of the stuff is</p>
+<p>really easy to write and they wire</p>
+<p>directly into the compilers without any</p>
+<p>problems um and then the one of the</p>
+<p>other things too that we have is that it</p>
+<p>interfaces with uh Intel's Lui 2's uh</p>
+<p>simulator uh now the Lui 2 is a</p>
+<p>neuromorphic chip</p>
+<p>uh developed by Intel for doing</p>
+<p>neuromorphic Computing uh this is</p>
+<p>basically taking spiking neural networks</p>
+<p>and putting them at purely a hardware</p>
+<p>level um which is where all of the</p>
+<p>Energy Efficiency that you've heard</p>
+<p>people talk about with spiking neural</p>
+<p>networks comes from uh is the fact that</p>
+<p>when you put it onto a neuromorphic chip</p>
+<p>it's really efficient um and having</p>
+<p>worked with physical Luis and whatnot it</p>
+<p>can be somewhat of a struggle uh to</p>
+<p>actually get those chips running and get</p>
+<p>them working well and so what that kind</p>
+<p>of comes down to is when you want and</p>
+<p>you actually get access to one of the</p>
+<p>physical pieces of Hardware you want to</p>
+<p>make sure that your model probably at</p>
+<p>least Works in their simulator that they</p>
+<p>provide um I will tell you that the</p>
+<p>simulator does not one toone match with</p>
+<p>reality but that is uh something that</p>
+<p>Intel knows and is aware of and I</p>
+<p>presume working on um but what we allow</p>
+<p>you to do is that we have a we have a</p>
+<p>sub project of NGC learn called NGC lava</p>
+<p>um and what that gives you is a couple</p>
+<p>changed object classes and a couple more</p>
+<p>restrictions that you have to follow</p>
+<p>while building things um and then after</p>
+<p>that you can run NGC models directly in</p>
+<p>the Lui 2 simulator um this means that</p>
+<p>you can take your model and you can run</p>
+<p>it on a GPU you can run it on a CPU and</p>
+<p>you can run it on the uh Lui simulator</p>
+<p>all without actually having to change</p>
+<p>any of your code base you're basically</p>
+<p>just like changing a flag somewhere on</p>
+<p>where it's running and that's all you</p>
+<p>have to do for</p>
+<p>that so how do we actually build models</p>
+<p>in NGC learn because now that I've</p>
+<p>pitched it to you is this great tool</p>
+<p>let's see if it holds up with how easy</p>
+<p>it is so overall it's a modular system</p>
+<p>right so the goal of NGC learn was to be</p>
+<p>incredibly plug and play and also it has</p>
+<p>to be effectively one giant State</p>
+<p>machine so we can see on the right here</p>
+<p>we have this context block now for us a</p>
+<p>context is generally our model uh but</p>
+<p>sometimes you'll have multiple models</p>
+<p>that you define or some models that are</p>
+<p>defined inside of one giant overarching</p>
+<p>context it's just the container that</p>
+<p>holds everything now the parts that</p>
+<p>we're the most interested in the things</p>
+<p>that actually do all of the updates and</p>
+<p>hold all of the fun bits of research are</p>
+<p>the components um and so components tend</p>
+<p>to be consist up of a couple of things</p>
+<p>so we have parameters uh and we have</p>
+<p>compartments and then there are the</p>
+<p>cables that connect them and we'll talk</p>
+<p>more in detail about what each one of</p>
+<p>those are in a little bit but that so</p>
+<p>but the components are the new things</p>
+<p>right if you build a new neuron if you</p>
+<p>build a new weight Matrix with a new</p>
+<p>learning rule or whatever those are what</p>
+<p>you're building you're just building</p>
+<p>those little tiny parts and because of</p>
+<p>the way that they interface with one</p>
+<p>another is you don't have to worry about</p>
+<p>oh does this have the right number of</p>
+<p>outputs to line up with the right number</p>
+<p>of inputs and whatnot if you build the</p>
+<p>components in such a way that uh you</p>
+<p>follow just the standard practice that</p>
+<p>we've set out all of the data will flow</p>
+<p>from component to component without any</p>
+<p>problems so if we want to actually talk</p>
+<p>about the components these are the</p>
+<p>backbone of what you're doing so on the</p>
+<p>so on the left here I have the Leaky</p>
+<p>integrate and fire neuron now this is</p>
+<p>one of the most common neurons to see</p>
+<p>when you're starting out in spiking</p>
+<p>neural networks uh it is the idea that</p>
+<p>you have uh an internal voltage that</p>
+<p>slowly builds up passes over a threshold</p>
+<p>and then depolarizes into msah Spike um</p>
+<p>and it does that by get taking in</p>
+<p>current and you know V equals ir and you</p>
+<p>do current times resistance and you get</p>
+<p>a voltage and it slowly builds up your</p>
+<p>voltage so inside of your LF neuron or</p>
+<p>our leaky integrating fire neuron we</p>
+<p>have a couple of fixed parameters now</p>
+<p>for us fixed parameters are values that</p>
+<p>don't change during runtime these are</p>
+<p>the static parts of your model but</p>
+<p>they're not but they're not fixed across</p>
+<p>all of your components and what I mean</p>
+<p>by that is that I can have a leaky</p>
+<p>Integra and fire neuron like with a</p>
+<p>voltage threshold of one and I can have</p>
+<p>another leaky Integra and fire on with a</p>
+<p>thrt threshold of two um and you can</p>
+<p>build both of those it works perfectly</p>
+<p>fine but the one and the two can't</p>
+<p>change um well it's running uh because</p>
+<p>just of the way that it all works out</p>
+<p>internally with the compiling but for</p>
+<p>instance here we have some fixed</p>
+<p>parameters we have neuronal units so</p>
+<p>when we talk about having a neuron or a</p>
+<p>component that is a neuron it is more in</p>
+<p>reality a layer of neurons so for us and</p>
+<p>neuronal units is just the number of</p>
+<p>leaky integrate and fire neurons that</p>
+<p>exist inside this little component or</p>
+<p>cluster of neurons uh they all have a</p>
+<p>voltage threshold um then we have to M</p>
+<p>RM a V reset and a VR test uh these are</p>
+<p>just all of the various parameters that</p>
+<p>you need to get a leaky integrate by</p>
+<p>neuron</p>
+<p>running and then below all of these we</p>
+<p>have the compartment values now this is</p>
+<p>where you actually store the stateful</p>
+<p>part of your component this these are</p>
+<p>the values that change over time these</p>
+<p>are the values that we are transmitting</p>
+<p>to from component to component and so</p>
+<p>for instance here in our leaky Integra</p>
+<p>and fire neuron on the left we can see</p>
+<p>that we have current coming in on the</p>
+<p>left we have this voltage value that</p>
+<p>kind of floats around in the middle</p>
+<p>because we're not expecting to put to</p>
+<p>have it as an output uh we have our</p>
+<p>output Spike which is just whether or</p>
+<p>not our voltage did Spike and then we</p>
+<p>have time of last Spike uh which is just</p>
+<p>well the last time step that it spikes</p>
+<p>because there's multiple learning rules</p>
+<p>that require that and so what this so</p>
+<p>what we can see here is that if you can</p>
+<p>kind of think about the various parts of</p>
+<p>your model that you like to build the</p>
+<p>neurons the weight matrices any other</p>
+<p>auxiliary system that you have in your</p>
+<p>model if you can kind of fit it to a</p>
+<p>component it's incredibly</p>
+<p>straightforward to get these to be built</p>
+<p>and then once you have them in component</p>
+<p>form you can then plug them into any</p>
+<p>part of any</p>
+<p>model so then uh what we're going to</p>
+<p>talk about here is we're going to talk</p>
+<p>about cables now cables can be a little</p>
+<p>bit confusing at first uh so cables are</p>
+<p>what actually connect our components</p>
+<p>together so if we look at the top we</p>
+<p>have component a and we have component B</p>
+<p>and basically what this is is that and</p>
+<p>then they're connected with the cable</p>
+<p>and so we have our output compartment</p>
+<p>which is the brown box that's on the</p>
+<p>right side of component a and then we</p>
+<p>have our input compartment that's on the</p>
+<p>left side of the compartment's box for</p>
+<p>component B and then they're connected</p>
+<p>with this cable and so the idea is that</p>
+<p>data will flow from the output</p>
+<p>compartment of component a and get</p>
+<p>copied into the input compartment of</p>
+<p>component B and so this is basically how</p>
+<p>we get data to move from one to the</p>
+<p>other without necessarily having it know</p>
+<p>where it comes from so this was one of</p>
+<p>the main things that we wanted to make</p>
+<p>sure you uh was a founding principle of</p>
+<p>kind of what we were going for when we</p>
+<p>looked at the component and cables is</p>
+<p>that uh a component downstreams so case</p>
+<p>component B it doesn't necessarily need</p>
+<p>to know and it shouldn't know where the</p>
+<p>incoming values are coming from so these</p>
+<p>cables are all oneway cables you cannot</p>
+<p>go backwards up the cable uh basically</p>
+<p>the components are just told hey this is</p>
+<p>the value that has been transmitted</p>
+<p>along this line and thus this is the</p>
+<p>value that you have and you don't get to</p>
+<p>know where it comes from now what this</p>
+<p>does mean though is that sometimes</p>
+<p>sometimes what we'll have is inside</p>
+<p>we'll have a component that knows that</p>
+<p>it's getting values from two places for</p>
+<p>instance in the bottom explanation we</p>
+<p>have component X and component y each</p>
+<p>one of them have an output but we're</p>
+<p>trying to put both of their outputs into</p>
+<p>the same compartment in component Z now</p>
+<p>if we were to do this without the</p>
+<p>summation that you can see what would</p>
+<p>happen is the value from component X</p>
+<p>would come down and it would get put</p>
+<p>into the compartment and component Z and</p>
+<p>then the output of component y would</p>
+<p>come down and it would also give put</p>
+<p>into the compartment of component Z</p>
+<p>effectively over writing component X and</p>
+<p>so but what we do have is we have this</p>
+<p>concept of operators which are just</p>
+<p>simple uh Transformations that can be</p>
+<p>done to the data that are being</p>
+<p>transmitted along cables so in this case</p>
+<p>summation uh this is you just have two</p>
+<p>you just have two pieces of data that</p>
+<p>all flow into this little summation</p>
+<p>operation that just flows into your</p>
+<p>output compartment um it's important to</p>
+<p>note that the value like the</p>
+<p>Intermediate values inside of things</p>
+<p>like summation are never stored anywhere</p>
+<p>they are purely just an inline operation</p>
+<p>that</p>
+<p>happens</p>
+<p>yeah so that's all you actually need to</p>
+<p>build a model right is you have</p>
+<p>components and you wire them together</p>
+<p>that pretty much talks about everything</p>
+<p>you need to know for the physical parts</p>
+<p>of your model and how they talk to one</p>
+<p>another but that doesn't get us anywhere</p>
+<p>if I just hand VI a model that has a</p>
+<p>bunch of wires around it and a bunch of</p>
+<p>values in it but I don't tell you how to</p>
+<p>actually change any of the values that's</p>
+<p>fairly useless um in addition to that</p>
+<p>it's not a particularly great you know</p>
+<p>just research project we all care about</p>
+<p>how do these models adapt over time we</p>
+<p>all care about that whole temporal and</p>
+<p>evolving nature of everything so with</p>
+<p>that in mind we want to talk now about</p>
+<p>how do we actually transition a model</p>
+<p>and uh what goes into</p>
+<p>that so for transitioning a models ACR</p>
+<p>so we have state transitions across just</p>
+<p>a component so if we just zoom in on</p>
+<p>what a component is we have component a</p>
+<p>here uh where we have our fixed</p>
+<p>parameters across the top here you can</p>
+<p>see we have four fixed parameters and</p>
+<p>then we have two different state</p>
+<p>transitions that we're going to allow we</p>
+<p>have the reset</p>
+<p>transition and then we have the advanced</p>
+<p>transition and so in this example here</p>
+<p>we can see that the reset transition</p>
+<p>takes two fixed parameters in and sets</p>
+<p>values via like the dash lines that we</p>
+<p>see sets values into all four</p>
+<p>compartments or we have the advanced</p>
+<p>transition that takes in again two fixed</p>
+<p>parameters but different fixed</p>
+<p>parameters than reset and then it also</p>
+<p>uses three of of the compartment values</p>
+<p>we can see the input compartment value</p>
+<p>on the far left and the two floating</p>
+<p>compartment values with their solid</p>
+<p>lines that go into advance and basically</p>
+<p>this is we have written an advance</p>
+<p>function so basically this is just we're</p>
+<p>doing a state transition called advance</p>
+<p>that requires two fixed parameters and</p>
+<p>three dynamically changing compartment</p>
+<p>values Advance internally does some</p>
+<p>transformation of this data and it</p>
+<p>outputs two values one of those values</p>
+<p>gets looped back into the floating</p>
+<p>compartment that we see on the right and</p>
+<p>the other one gets sent to the output</p>
+<p>compartment that's also on the far right</p>
+<p>and that's really all these State</p>
+<p>transitions across components are when</p>
+<p>we write them internally and we'll look</p>
+<p>at some of what this looks like in a</p>
+<p>little bit um what we'll notice is that</p>
+<p>each one of these uh</p>
+<p>transitions is relatively simple right</p>
+<p>it's just you just take values in do TR</p>
+<p>do something to them and send values out</p>
+<p>and that is really again you'll see this</p>
+<p>throughout all of NGC learn that is</p>
+<p>basically how it all works under the</p>
+<p>hood is that we just we take values in</p>
+<p>we transform them we send values out and</p>
+<p>we don't necessarily need to know where</p>
+<p>those values are going or where the</p>
+<p>input values came from that we just know</p>
+<p>how to move them</p>
+<p>around and it's important to note here</p>
+<p>again that the parameter parts are fixed</p>
+<p>uh it's only the compartment values that</p>
+<p>we can change so you couldn't see</p>
+<p>Advance draw a dotted Arrow up to one of</p>
+<p>the fixed parameters because they are</p>
+<p>once again</p>
+<p>fixed so now that we know how to do a</p>
+<p>transition across one component what if</p>
+<p>we wanted to do a transition across two</p>
+<p>components and I'm aware that the</p>
+<p>parameter little circles are missing</p>
+<p>their arrows the images got</p>
+<p>significantly too cluttered uh when I</p>
+<p>tried to draw those arrows in as the</p>
+<p>diagrams get smaller um but what we'll</p>
+<p>notice here is that we now can take a</p>
+<p>group of components and we can talk</p>
+<p>about taking the advance action across a</p>
+<p>group of components and so what this</p>
+<p>basically does is we will do the Advan</p>
+<p>operation or transition on along</p>
+<p>component a we will then transmit all of</p>
+<p>the data along all of the cables going</p>
+<p>between component a and component B the</p>
+<p>whatever that outputed value of advanced</p>
+<p>state was would get sent into its output</p>
+<p>compartment and then sent to component B</p>
+<p>and then component B would once again</p>
+<p>also do its Advanced transition in which</p>
+<p>it would take on all of its values and</p>
+<p>compute its own output value and you</p>
+<p>could chain these together at infinum</p>
+<p>there's no limit to how many of these</p>
+<p>you can chain together um I will say</p>
+<p>that eventually it's probably you know</p>
+<p>might want to look at making your model</p>
+<p>a little bit smaller but there's no</p>
+<p>actual limit to it uh there's also no</p>
+<p>limit to how complex you make these uh</p>
+<p>there's nothing that says that you can't</p>
+<p>have recurrent Connections in your uh</p>
+<p>cables uh there's also nothing that says</p>
+<p>that outputs or inputs need to actually</p>
+<p>have values you can clamp values to them</p>
+<p>um which is basically the process of we</p>
+<p>just set the value and then just let it</p>
+<p>go but there is one thing to note</p>
+<p>especially when talking about recurrent</p>
+<p>things and recurrent connections between</p>
+<p>neurons and groups of neurons and uh</p>
+<p>what that is is that the order of</p>
+<p>operations in a state transition is</p>
+<p>deterministic and</p>
+<p>thus it's also something that each one</p>
+<p>only goes once so if you have component</p>
+<p>a wire into component B and then</p>
+<p>component B wire into component a it</p>
+<p>will still only execute a transition</p>
+<p>across a and then across B it or across</p>
+<p>B and then across a it will never do it</p>
+<p>will never actually Loop itself um it</p>
+<p>will always do one and then the</p>
+<p>other and so now all of this really</p>
+<p>really works itself down to compiling so</p>
+<p>the compiler of NGC learn um is not</p>
+<p>actually found in the main repo of NGC</p>
+<p>learn so NGC learn is built on top of</p>
+<p>what is known as NGC stimulation library</p>
+<p>or NGC Sim lib for short um and that is</p>
+<p>where all of the I don't want to say</p>
+<p>messy or ugly but that is where all of</p>
+<p>this code behind the scenes that are</p>
+<p>making everything work exists um and</p>
+<p>that is all of that Library can be found</p>
+<p>in that little tiny compiling arrow that</p>
+<p>we see down</p>
+<p>here now what we for the way compiling</p>
+<p>works though is we have our state</p>
+<p>transition right we have the state</p>
+<p>transition that we talked about in the</p>
+<p>previous slide and we want to turn it</p>
+<p>into a pure operation and what we mean</p>
+<p>by that is that it uh the same inputs</p>
+<p>will always produce the same outputs and</p>
+<p>no value outside of the outputs of the</p>
+<p>method are ever</p>
+<p>modified and so what how we can do that</p>
+<p>is with the way that the transitions all</p>
+<p>work is we can just pass in the entire</p>
+<p>state of our model and then based on the</p>
+<p>transitions inside each component they</p>
+<p>know what compartments they have to be</p>
+<p>looking at and so they will look at</p>
+<p>those compartments and they will then</p>
+<p>update and modify the values in the</p>
+<p>model and then it'll move from that one</p>
+<p>into the next one and from the next one</p>
+<p>into the next one and so on and so forth</p>
+<p>until it's actually done and so these</p>
+<p>are these produce pure methods and if we</p>
+<p>think back to what I talked about with</p>
+<p>Jacks all along at the beginning uh that</p>
+<p>means that we can pass these compiled</p>
+<p>methods into Jax's just in time</p>
+<p>compilation and so this gives us is this</p>
+<p>allows us to basically call Advance or</p>
+<p>reset or any transition function that's</p>
+<p>defined across all of components at what</p>
+<p>like effectively at once uh in one</p>
+<p>operation uh here we have it as Advance</p>
+<p>the</p>
+<p>model and so this is truly where the</p>
+<p>speed up of NGC learn comes from um even</p>
+<p>if you do not use uh Jax Jax or if you</p>
+<p>don't use Jax's just in time compilation</p>
+<p>you're debugging um it is still a fairly</p>
+<p>large speed up just to go from python</p>
+<p>being written like the way it is into</p>
+<p>compiling into just running the compiled</p>
+<p>operation um so if you really want to</p>
+<p>look into and care about how are we</p>
+<p>getting the speed that we're getting</p>
+<p>look into the compilers um and once</p>
+<p>again the compilers are actually located</p>
+<p>in NGC learn NGC Sim lib which still can</p>
+<p>be found through all of The Knack laabs</p>
+<p>GitHub Pages it is also public</p>
+<p>so now what does this actually look like</p>
+<p>in code uh and so I wanted to take a</p>
+<p>brief look um because pretty pictures</p>
+<p>are really are you know a tool that</p>
+<p>helps us understand the thought process</p>
+<p>behind the models and they understand</p>
+<p>how the models actually work but</p>
+<p>sometimes people will show us really</p>
+<p>pretty pictures and then when you go to</p>
+<p>actually implement it in code it looks a</p>
+<p>whole lot different or things just don't</p>
+<p>quite or not quite as pretty of a</p>
+<p>picture uh so we do have a short section</p>
+<p>here where we're going to talk about all</p>
+<p>of the different code that we do</p>
+<p>have</p>
+<p>so here's an example of a component in</p>
+<p>NGC learn uh specifically we are going</p>
+<p>to be looking at the DSE synapse now all</p>
+<p>a dense synapse is is it is a weight</p>
+<p>Matrix uh that has both a resistant</p>
+<p>scale value on it so just a constant</p>
+<p>multiplication scale factor being</p>
+<p>applied to everything um as well as a</p>
+<p>bias term that is added to</p>
+<p>everything now so here we have some</p>
+<p>compartment values on the left so as you</p>
+<p>can see uh defining compartments is</p>
+<p>incredibly easy so now uh everything</p>
+<p>right here where you see self dot is all</p>
+<p>inside of the Constructor of our object</p>
+<p>um so here we have self. inputs is just</p>
+<p>compartment and then some values for us</p>
+<p>that's the prev Val so that's whatever</p>
+<p>we want that's a it's a matrix of all</p>
+<p>zeros of the correct shape and we have</p>
+<p>self. outputs which is just again</p>
+<p>another compartment defined with post</p>
+<p>vals and then we have our weights now</p>
+<p>weights are just our weight Matrix uh</p>
+<p>which is defined previously in the</p>
+<p>function um but it is just again simply</p>
+<p>compartment value and what this does a</p>
+<p>bunch of stuff under the hood but this</p>
+<p>basically actually Associates so when</p>
+<p>you build one of these objects when you</p>
+<p>build a DSE synapse and and construct it</p>
+<p>this will actually build a bunch of</p>
+<p>compart this will build three</p>
+<p>compartments under the hood and</p>
+<p>basically register them inside the D</p>
+<p>synapse and Link everything together</p>
+<p>correctly so that way we know that they</p>
+<p>exist and we can wire into them and it</p>
+<p>does a little bit more than just python</p>
+<p>knowing that the object has these fields</p>
+<p>in it they exist and they have their own</p>
+<p>set of properties um and then we have</p>
+<p>our fixed parameters which if look look</p>
+<p>exactly like just values that exist on a</p>
+<p>class right we have self. shape which</p>
+<p>and self. our scale which is just a</p>
+<p>resistance scaling and I'm sure</p>
+<p>everybody here who's worked with python</p>
+<p>is very familiar with what that looks</p>
+<p>like and so finally we have defining our</p>
+<p>state transitions now there's a couple</p>
+<p>things to note about this we'll notice</p>
+<p>that our state transition definitions</p>
+<p>are static methods and what they are</p>
+<p>really is they're just method these have</p>
+<p>to the pure methods to Define our state</p>
+<p>transitions um so here we have advanced</p>
+<p>State and we want to still be able to</p>
+<p>use our scale inputs weights and</p>
+<p>biases inside of advanced State and have</p>
+<p>them all correlate to the values that</p>
+<p>exist inside of our component but due to</p>
+<p>the way that the compiler works is we</p>
+<p>still need this to all be a peer method</p>
+<p>so how do we combat that well we combine</p>
+<p>that by just doing effectively pattern</p>
+<p>matching where as long as your names for</p>
+<p>the various inputs so r scale inputs</p>
+<p>weights biases whatever as long as those</p>
+<p>values are found inside of the component</p>
+<p>that this transition is acting on uh it</p>
+<p>will automatically grab those values out</p>
+<p>of those components when it's doing the</p>
+<p>transition and so here we can see this</p>
+<p>is a pretty straightforward matrix</p>
+<p>multiplication with a scaling and a bias</p>
+<p>term</p>
+<p>uh to compute outputs and we'll notice</p>
+<p>that once again outputs is something</p>
+<p>that is keyworded on the component and</p>
+<p>because when it's done resolving its</p>
+<p>transition it needs to know where to put</p>
+<p>the output value or in this case outputs</p>
+<p>of the state transition like what values</p>
+<p>are changed and so it knows how to put</p>
+<p>outputs back into self.</p>
+<p>outputs and so this is kind of the key</p>
+<p>to how all of NGC learns compilation and</p>
+<p>just plug-and playay models work with</p>
+<p>these State transitions is that you can</p>
+<p>Define these methods that can pull in</p>
+<p>values from the components that they are</p>
+<p>appi being applied to without actually</p>
+<p>having to have an instance of the</p>
+<p>component itself now there's one other F</p>
+<p>uh aspect of these that's not actually</p>
+<p>shown in this example and that is</p>
+<p>parameters at runtime so for instance</p>
+<p>let's just say that we wanted to add the</p>
+<p>current time to our output I don't know</p>
+<p>why we would want to be doing that but</p>
+<p>let's say we wanted to so if inside</p>
+<p>Advanced State inside the parameter list</p>
+<p>we had another value say time or T and T</p>
+<p>doesn't exist on the component that this</p>
+<p>transition is being applied to what</p>
+<p>we'll see with this then is that late it</p>
+<p>will and we'll see this a little bit</p>
+<p>later in an example what it will want to</p>
+<p>do is it will say hey I can found all of</p>
+<p>these values but this specific value T</p>
+<p>is not found in this component you need</p>
+<p>to give me T for whatever I need to do</p>
+<p>for this state transition and so this is</p>
+<p>how you can get runtime parameters to be</p>
+<p>passed into your state Transitions and</p>
+<p>modify them that</p>
+<p>way so now that we have a component and</p>
+<p>we kind of figured out how to define a</p>
+<p>component and I should note that we can</p>
+<p>Define as many of these State transition</p>
+<p>as we want because they're not bound to</p>
+<p>any specific</p>
+<p>component we need to do something so how</p>
+<p>do we actually Define these components</p>
+<p>in a model because generally we want</p>
+<p>multiple of them in a model a component</p>
+<p>is one piece of a model is not very</p>
+<p>useful so in order to do that we use wi</p>
+<p>blocks in Python uh for us we call them</p>
+<p>contexts uh so we do a with a context</p>
+<p>and then we give our context a name in</p>
+<p>this case we've named it model and so</p>
+<p>what we have here is this is a WID block</p>
+<p>and so what it what this does is this is</p>
+<p>just saying everywhere every time we</p>
+<p>Define a new NGC learn component or</p>
+<p>initialize a new NGC learn component</p>
+<p>inside of this width block it will</p>
+<p>automatically be added to the model so</p>
+<p>there's no model. register various built</p>
+<p>things no model. components list that</p>
+<p>you need to make sure is up to date</p>
+<p>nothing like that if we call heavy and</p>
+<p>synapse here inside of this WID block</p>
+<p>the heav synapse exists on your model</p>
+<p>now what this does mean though is that</p>
+<p>the names of all of our synapses are</p>
+<p>required to be unique uh but I feel like</p>
+<p>that shouldn't be super challenging</p>
+<p>because in our models just for clarity</p>
+<p>and human readability we try not to name</p>
+<p>things the same for instance it wouldn't</p>
+<p>really make sense if I have three</p>
+<p>different parts of my model that I've</p>
+<p>named</p>
+<p>Z1 so with that we can see that we can</p>
+<p>define components like this but what if</p>
+<p>we have complex models in which we have</p>
+<p>one overarching model with submodels</p>
+<p>that run maybe at different times or at</p>
+<p>a different frequency and we want to be</p>
+<p>able to have those still be a part of</p>
+<p>this bigger model the bigger scope of</p>
+<p>the model but run on their own well</p>
+<p>luckily for you we can do that so</p>
+<p>components are sorry contexts are fully</p>
+<p>nestable you can Nest them as deep as</p>
+<p>you want and when you actually look at</p>
+<p>the structure internally you'll notice</p>
+<p>that it follows very similar to a file</p>
+<p>structure where everything just ends up</p>
+<p>with paths based on context</p>
+<p>name and so you can Nest these as deep</p>
+<p>as you want generally in my own personal</p>
+<p>use I've never found really a need to go</p>
+<p>more than an extra layer deep but</p>
+<p>there's nothing that stops you from</p>
+<p>going three four five layers deep um and</p>
+<p>so as we can see here though it's</p>
+<p>incredibly straightforward to actually</p>
+<p>build the model uh this here has built a</p>
+<p>model with two heavy and synapses in it</p>
+<p>now I'll give you a brief note there's a</p>
+<p>bunch of other components that are</p>
+<p>defined below this to get the model to</p>
+<p>do something um but those all look</p>
+<p>pretty much exactly the same as this</p>
+<p>just with different objects and</p>
+<p>different components being built at</p>
+<p>every</p>
+<p>line so now we have our components we</p>
+<p>have our components defined inside of</p>
+<p>our context but they don't do anything</p>
+<p>they don't they don't interact with one</p>
+<p>another if we think back to the way that</p>
+<p>we get components to interact with</p>
+<p>another we have to wire them between</p>
+<p>each other right we have to get data to</p>
+<p>flow from a heavan synapse into an LF</p>
+<p>cell we have to get it to flow from an</p>
+<p>input placon neuron into a weight Matrix</p>
+<p>into an LF cell we have to get all of</p>
+<p>this data to flow so we do that with</p>
+<p>cables and luckily defining cables is</p>
+<p>incredibly straightforward so we have</p>
+<p>overridden the leftand bitshift operator</p>
+<p>basically uh to say hey</p>
+<p>if we're going to read the top here so</p>
+<p>unfortunately we end up reading right to</p>
+<p>left with this is we're going to take</p>
+<p>the ZZ outputs whatever is in the</p>
+<p>outputs of z0 and we want to wire it</p>
+<p>directly into W1 which is one of our</p>
+<p>weight matrices inputs or inp and we</p>
+<p>just write that line and that cable has</p>
+<p>been connected everything under the hood</p>
+<p>is</p>
+<p>done and then and I should not I should</p>
+<p>mention all of this is still inside the</p>
+<p>WID blocks that builds the Contex of our</p>
+<p>model anytime we're dealing with</p>
+<p>building parts of our model it is all</p>
+<p>done inside of the wi</p>
+<p>block uh and then on the next line we</p>
+<p>can take z1i spikes and we can output we</p>
+<p>can send that into W1 I's inputs and</p>
+<p>we'll notice that this pattern of just</p>
+<p>taking an output and wiring it into an</p>
+<p>input um is pretty easy to follow and so</p>
+<p>if you build your component with the</p>
+<p>inputs that you're expecting and the</p>
+<p>outputs You're Expecting and you make it</p>
+<p>and you make it really clear to yourself</p>
+<p>what you need to do with that when it</p>
+<p>comes to wiring up your model it should</p>
+<p>be incredibly</p>
+<p>straightforward but if we think also</p>
+<p>back to the wiring example there was a</p>
+<p>point where I put two outputs and wired</p>
+<p>them into one input so we can see that</p>
+<p>actually happening inside the second</p>
+<p>part of this where we connect two</p>
+<p>compartments into a single destination</p>
+<p>so we can do this with for us the</p>
+<p>operation summation and so what this</p>
+<p>will do is this will add together any</p>
+<p>number of compartments that we put here</p>
+<p>so in here we just have it as two but if</p>
+<p>we had four compartments that we wanted</p>
+<p>to wire into there uh it would be easy</p>
+<p>now one of the advantages of doing this</p>
+<p>instead of just having two input</p>
+<p>compartments inside of z1e is this</p>
+<p>allows for a variable number of</p>
+<p>connections so if inside of one model</p>
+<p>that you define you need Z1 to have</p>
+<p>three in</p>
+<p>or three values being added together or</p>
+<p>inside of a different model that you're</p>
+<p>defining you have Z1 needing to have</p>
+<p>seven inputs going into it you don't</p>
+<p>have to build new components there's no</p>
+<p>additional logic that you have to do you</p>
+<p>just add them to this list of parameters</p>
+<p>that are being passed in and you're done</p>
+<p>and another thing to note is that these</p>
+<p>parameter chains are entirely nestable</p>
+<p>as well so for instance if we wanted to</p>
+<p>invert or negate uh for W1 I's output</p>
+<p>value so it would effectively be W1 out</p>
+<p>minus W1 iie outputs you just put negate</p>
+<p>around it and you can just Nest them</p>
+<p>down so if you wanted to sum a bunch of</p>
+<p>things together and then negate it you</p>
+<p>can if you want to negate two of them</p>
+<p>and add them it all</p>
+<p>works um and I should also again mention</p>
+<p>it does not actually store these values</p>
+<p>anywhere so they are never actually</p>
+<p>inspectable outside of just looking at</p>
+<p>the value of the compartment</p>
+<p>so compiling so compiling an NGC learn</p>
+<p>we didn't want it to be a painful</p>
+<p>process we didn't want it to be</p>
+<p>something that you had to make sure that</p>
+<p>everything was like touched the specific</p>
+<p>right way where you're holding it in</p>
+<p>with all your fingers and then it</p>
+<p>happens to work so for compiling it's</p>
+<p>just a list of components and a key so</p>
+<p>if we think back to the example at the</p>
+<p>beginning where we had Advance State as</p>
+<p>the name of the transition method that</p>
+<p>we</p>
+<p>have that's all we need it's that name</p>
+<p>Advanced State and so what this will</p>
+<p>I'll do in this line of code here is</p>
+<p>we'll do model. compile by key and so</p>
+<p>this is on your context model the whole</p>
+<p>model uh we give it a bunch of</p>
+<p>components W1 W1 IE and so on and so</p>
+<p>forth and then we tell it compile Advan</p>
+<p>State and so what this will do is it</p>
+<p>we'll go through and this just if we</p>
+<p>think to the the thing where we like</p>
+<p>composition of functions of everything</p>
+<p>together it will go</p>
+<p>W1 goes through its Advanced State and</p>
+<p>then W1 IE goes through its Advanced</p>
+<p>State and then W1 eii goes through its</p>
+<p>Advanced State and it goes down the list</p>
+<p>now obviously if we reverse this whole</p>
+<p>list that will change the output it</p>
+<p>won't change what it's really doing but</p>
+<p>the order that the advances happen in</p>
+<p>does matter and it is dependent on the</p>
+<p>order that we find here</p>
+<p>and so and the other Advantage is is</p>
+<p>that we can compile many of these so in</p>
+<p>this case we can see that we go through</p>
+<p>all two layers of our model here uh and</p>
+<p>all of our neurons in our model</p>
+<p>everything that's a z is a</p>
+<p>neurons but let's just say we only</p>
+<p>wanted to go through the first chunk</p>
+<p>right we only wanted to do z0 and then</p>
+<p>we just wanted W1 and then we just</p>
+<p>wanted like z1e that's all we wanted to</p>
+<p>compute well we would have to do is we</p>
+<p>would just have to put those three</p>
+<p>values in a compile argument and it</p>
+<p>would just go we can we can comp we</p>
+<p>don't have to compile every component in</p>
+<p>our model and what this means is that we</p>
+<p>don't actually have to have every</p>
+<p>transition defined for every component</p>
+<p>for example when we're updating weight</p>
+<p>matrices we tend to call it evolving</p>
+<p>them right they're changing in time</p>
+<p>they're</p>
+<p>evolving we don't evolve neurons it's</p>
+<p>not something that we do it's not</p>
+<p>something that makes even doesn't make</p>
+<p>sense in the context of most models so</p>
+<p>from that standpoint we would only call</p>
+<p>evolve on the</p>
+<p>weights or we might only call reset on</p>
+<p>the neurons if our weights don't</p>
+<p>actually if our weights never have</p>
+<p>anything static in them I mean variable</p>
+<p>in them there's just like there's a</p>
+<p>bunch of different things where we can</p>
+<p>pick and choose which components and the</p>
+<p>Order of the components that these</p>
+<p>operations happen in and so in this</p>
+<p>again just to fully explain we do have</p>
+<p>two different output values coming out</p>
+<p>of this compiled key this model.</p>
+<p>compiled by key as well as one hidden</p>
+<p>aspect that comes out of this model.</p>
+<p>compiled by key so but first the AR the</p>
+<p>outputs we have this Advance now Advance</p>
+<p>here is the pure function returned by</p>
+<p>the compiler uh so this is the function</p>
+<p>that takes in the model State and all of</p>
+<p>the arguments it's expecting and will</p>
+<p>return to you the final model</p>
+<p>State advv ARS these are all the</p>
+<p>arguments it's expecting so as it goes</p>
+<p>through and it compiles down W1 W1 iie</p>
+<p>w1i and so on and so forth it's slowly</p>
+<p>collecting a list of all of the keyword</p>
+<p>arguments that it needs to actually</p>
+<p>compute this transition so a W1 requires</p>
+<p>T and z0 requires T and DT and Z2 e</p>
+<p>requires a j what that means is that it</p>
+<p>would end up you would have a list that</p>
+<p>is we need T DT and J it if if two</p>
+<p>things require the same parameter it</p>
+<p>does assume that they're the same</p>
+<p>parameter oh sorry the same yeah like</p>
+<p>the same keyword argument um so if you</p>
+<p>have t used across all of your</p>
+<p>components you only have to pass in t</p>
+<p>once so that's everything that's visibly</p>
+<p>returned by this function in addition</p>
+<p>what this function also does is we can</p>
+<p>now call model. Advance State whatever</p>
+<p>this compile key here or an optional</p>
+<p>name flag that's not currently being</p>
+<p>used we can take that advaned state and</p>
+<p>we can do model. Advan State and it's</p>
+<p>the same as calling model.</p>
+<p>advance and this just has its benefits</p>
+<p>so you don't have to necessarily keep</p>
+<p>track of the actual advanc function if</p>
+<p>you have a bunch of them you can just</p>
+<p>name</p>
+<p>them so that's everything on actually</p>
+<p>how we get the compilation to run</p>
+<p>so what if we want to perform many of</p>
+<p>these State transitions in a row and</p>
+<p>what I mean by that is if we think about</p>
+<p>a spiking neural network we have a</p>
+<p>forward pass where we take one look at</p>
+<p>an image but also in spiking neural</p>
+<p>networks usually we have to do many</p>
+<p>forward passes up our image before we</p>
+<p>actually can before we say we have an</p>
+<p>output and so when we look at that</p>
+<p>we're doing like 200 forward passes</p>
+<p>before we ever actually care what the</p>
+<p>output value is so because of that we</p>
+<p>don't want to just do a state transition</p>
+<p>from t0 to T1 get T1 plug it back in</p>
+<p>over here to get T2 what I want to do is</p>
+<p>I want to plug in t0 here and then do T1</p>
+<p>T2 until I get to</p>
+<p>T200 and so for that we have scanners</p>
+<p>now the NGC learn scanner is built on</p>
+<p>top of Jax's scan function uh which is</p>
+<p>effectively a method of doing a for Loop</p>
+<p>uh inside of their compiled uh so inside</p>
+<p>of their just in time</p>
+<p>operations and the way this works is we</p>
+<p>have our</p>
+<p>scanner we have an observe function for</p>
+<p>us but this is just whatever you want to</p>
+<p>name it there's no actual hard fast</p>
+<p>rules on what this needs to be called we</p>
+<p>have compartment values or the model</p>
+<p>State and then we have arcs</p>
+<p>and so what the arguments are is these</p>
+<p>are the keyword arguments for that</p>
+<p>specific Loop in time so t0 so at t0 we</p>
+<p>would have ar0 t is equal to zero and DT</p>
+<p>is equal to say one at T2 or the second</p>
+<p>Loop through so yeah at T1 or the second</p>
+<p>Loop through this R zero would be one</p>
+<p>and so on and so forth and we Define</p>
+<p>that down here in Loop ARs and we'll</p>
+<p>talk about that in a moment but then</p>
+<p>we'll notice that inside of this we're</p>
+<p>doing two actual transitions for every</p>
+<p>Loop we go through and we advance all of</p>
+<p>our state forward and then we do an</p>
+<p>evolve step over our model and this was</p>
+<p>done on an stdp or Spike timing</p>
+<p>dependent plasticity trained model um</p>
+<p>which means that we do an evolve Step at</p>
+<p>every single forward pass we do one for</p>
+<p>for every forward pass over an image we</p>
+<p>do an evolve step over the image and</p>
+<p>we'll notice that this gets a</p>
+<p>compartment values because this is a</p>
+<p>pure function that takes in the</p>
+<p>component the the model State and</p>
+<p>Returns the new model State evolve is</p>
+<p>another compiled method that takes in</p>
+<p>the current state and Returns the final</p>
+<p>State and then we just return the final</p>
+<p>State at the end of that Loop and it</p>
+<p>just loops and this will Loop over for</p>
+<p>however long you give it Arguments for</p>
+<p>so if we give it 20 200 Loops worth of</p>
+<p>arguments it will Loop 200</p>
+<p>times and this part right here at the</p>
+<p>end</p>
+<p>is just how you can actually get an</p>
+<p>output out so this will return the</p>
+<p>compartment value located it Sr the RW</p>
+<p>Spike output of z1e at every time step</p>
+<p>will be what underscore s is equal to</p>
+<p>and finally uh to call it we just call</p>
+<p>observe it's whatever the name of this</p>
+<p>function is so if you named this Fu it</p>
+<p>would just be model. Fu we Ted to use</p>
+<p>slightly more of that useful name so</p>
+<p>here we have observe and here we have</p>
+<p>observe then the loop arguments is a 2d</p>
+<p>Matrix where every row is uh for every</p>
+<p>row is just the list of arguments that</p>
+<p>are found here so this is a 2 by 200</p>
+<p>sorry a 200 by two Matrix</p>
+<p>basically and that gets us our state</p>
+<p>Transitions and so this is how we can</p>
+<p>look at a model many many this is how we</p>
+<p>can transition over many many many steps</p>
+<p>with without ever having to come back to</p>
+<p>Python and since this is</p>
+<p>so scanners automatically put things</p>
+<p>inside of just in time compilation just</p>
+<p>for the way that they work internally</p>
+<p>for JA but what this means is that we</p>
+<p>can go from an incredibly slow forward</p>
+<p>Passover one image to a compiled forward</p>
+<p>Passover one image to a just in time</p>
+<p>compiled pass over just like one pass</p>
+<p>over an image to a just in time compiled</p>
+<p>200 passes over an image and just do</p>
+<p>that in a single function that we have</p>
+<p>defined this is where all the speed</p>
+<p>comes from</p>
+<p>finally uh I just want to mention</p>
+<p>monitors uh so what a monitor is is</p>
+<p>sometimes we have a desire to actually</p>
+<p>look at well the internal state of our</p>
+<p>model as it's running and when we're</p>
+<p>doing things with just in time</p>
+<p>compilation we never get access to those</p>
+<p>internal States because they all exist</p>
+<p>in C and they never exist in Python and</p>
+<p>we can't look at them very easily uh</p>
+<p>again due to the way that just in time</p>
+<p>compilation works you can't put print</p>
+<p>statements in compiled code it does not</p>
+<p>work so what this means is that we have</p>
+<p>monitors and so the way this monitor</p>
+<p>works is it's it's just a component like</p>
+<p>any other component in NGC learn</p>
+<p>admittedly it does work differently</p>
+<p>under the hood but that's fine what we</p>
+<p>have is we have a monitor by name and</p>
+<p>then we have this default window length</p>
+<p>what this is doing is this will keep a</p>
+<p>rolling window of the last n values that</p>
+<p>you define so in this case 100 so it</p>
+<p>will keep the last 100 values of</p>
+<p>whatever you uh tell it to now this can</p>
+<p>now at some point you might say well why</p>
+<p>don't we just make this really long and</p>
+<p>do it for every</p>
+<p>value well that gets really big really</p>
+<p>fast if you're storing floating Point</p>
+<p>numbers and you're storing millions of</p>
+<p>them you can run out of memory in your</p>
+<p>computer um so you do have to be</p>
+<p>slightly careful with that but generally</p>
+<p>if you just keep the things that you're</p>
+<p>looking at to relatively small amounts</p>
+<p>you're be fine um and the use case for</p>
+<p>this we'll notice too is slightly</p>
+<p>different with the way we wire things</p>
+<p>into it so we'll notice that there isn't</p>
+<p>a compartment value right here this</p>
+<p>there's no m. compartment name we just</p>
+<p>wire directly into the Monitor and this</p>
+<p>is why I saying they work slightly</p>
+<p>differently um but as far as the outside</p>
+<p>user is concerned you just wire into</p>
+<p>them like any other compartment you can</p>
+<p>think of it as one giant compartment</p>
+<p>that stores</p>
+<p>everything so here we take the spike</p>
+<p>output of z1e and the spike output of</p>
+<p>z1i and we wire them both into the</p>
+<p>monitor now somewhere in between this we</p>
+<p>have run like the observe function that</p>
+<p>has gone through and done a forward</p>
+<p>Passover and image now we want to</p>
+<p>actually look at the states as we're</p>
+<p>running and so what we'll notice here is</p>
+<p>in view the contents of it we can just</p>
+<p>do m. View and we just give it the</p>
+<p>compartment that we want to look at and</p>
+<p>this will give us the concatenated</p>
+<p>Matrix of all the spikes so if Z p1e has</p>
+<p>10 neurons in it it will produce 1</p>
+<p>by1</p>
+<p>um like sets of neurons well basically</p>
+<p>just 10 by comma um spikes either zeros</p>
+<p>or ones and so as it goes through the</p>
+<p>output of the monitor will be 100 by 10</p>
+<p>because that'll be all of the compo all</p>
+<p>of the spikes for all 100 time steps and</p>
+<p>so that gets us the ability to look at</p>
+<p>models as after after they have run but</p>
+<p>the internal states of the models as</p>
+<p>they're running um I will say there are</p>
+<p>a couple future things coming with</p>
+<p>monitors about the ability to actually</p>
+<p>get them to print out and integrate with</p>
+<p>map plot lib and getting it so you don't</p>
+<p>even actually ever have to view you can</p>
+<p>just make plots of compartments and they</p>
+<p>will just plot nicely for you um it is</p>
+<p>currently working mostly in our</p>
+<p>development</p>
+<p>Branch finally how has this been used</p>
+<p>right I've been marketing this to you as</p>
+<p>like hey this is the thing that we have</p>
+<p>made and it's really cool and it's</p>
+<p>really fast and it works really well but</p>
+<p>let's see it actually work in action so</p>
+<p>the paper that started this all was this</p>
+<p>paper called neuroc coding Frameworks</p>
+<p>for learning generative models by Dr</p>
+<p>aoria and kefir and so this was kind of</p>
+<p>the founding idea for NGC learn this was</p>
+<p>built in the original version of NGC</p>
+<p>learn about two years ago um and it</p>
+<p>built this incredibly complicated</p>
+<p>looking model here uh that has both</p>
+<p>excitatory and inhibitory connections as</p>
+<p>well as a bunch of lateral connections</p>
+<p>every line that we see here is part of</p>
+<p>the weight matrices and sometimes</p>
+<p>depending on the way that the</p>
+<p>connections go it's multiple sets of</p>
+<p>weight matrices um this is a model that</p>
+<p>you can build in NGC learn and it will</p>
+<p>look no more complicated than a bunch of</p>
+<p>little brackets telling comp</p>
+<p>compartments where to wire</p>
+<p>to in addition to that we've reproduced</p>
+<p>a deal and Cooks paper um from 2015</p>
+<p>called unsupervised learning of Digit</p>
+<p>reconstruction using Spike timing</p>
+<p>dependent plasticity uh this is another</p>
+<p>model that we had this is more of a</p>
+<p>historic model that we have built uh</p>
+<p>inside mgc learn and gotten up and</p>
+<p>running without any problems at</p>
+<p>all we have uh one of my papers actually</p>
+<p>with my adviser Dr Aria called time</p>
+<p>integrated Spike timing dependent</p>
+<p>plasticity uh in which we built a</p>
+<p>patching model uh that does what it that</p>
+<p>basically is this whole structure where</p>
+<p>we have a sensory input layer an image</p>
+<p>um and it breaks up into a bunch of</p>
+<p>different sub components uh subm models</p>
+<p>basically that all learn small patches</p>
+<p>of our image and then we have one final</p>
+<p>part that Aggregates them all together</p>
+<p>uh this sort of model is also very easy</p>
+<p>to build an NGC learn and doesn't</p>
+<p>there's no actual time difference</p>
+<p>between running some of these um and so</p>
+<p>again this is just something that we can</p>
+<p>build and this is all able to be built</p>
+<p>with components that already exist in</p>
+<p>NGC learn if you wanted to build some of</p>
+<p>these models this one the tddp synapse</p>
+<p>isn't quite in there yet uh but this</p>
+<p>model is fully in there you can build</p>
+<p>this with every component that we have</p>
+<p>inside of NGC learn um and it doesn't uh</p>
+<p>without any without you having to write</p>
+<p>anything yourself uh but even if you</p>
+<p>wanted to rebuild this whole model</p>
+<p>inside NG Seer and writing everything</p>
+<p>yourself it still would not be that</p>
+<p>challenging um in addition to that we</p>
+<p>also have this contrasting signal</p>
+<p>dependent plasticity which is a</p>
+<p>self-supervised learning and Spike</p>
+<p>neural circuits Again by my adviser uh</p>
+<p>Dr Aria and this is again another model</p>
+<p>that like this whole thing gets expanded</p>
+<p>to this which does this and this model</p>
+<p>is actually inside NGC learn as well all</p>
+<p>of the components that are needed for it</p>
+<p>are inside NGC learn and you can build</p>
+<p>it and you can look at it and it's all</p>
+<p>linked to in his paper and what that</p>
+<p>kind of wraps me up to here is the NGC</p>
+<p>learn Museum or just NGC Museum um and</p>
+<p>so NGC museum is a public repository for</p>
+<p>NGC learn that houses the biomic the</p>
+<p>brain Inspire Computing and the</p>
+<p>computational Neuroscience models</p>
+<p>basically everything that we've built uh</p>
+<p>for all of our models can be found here</p>
+<p>um it makes a very convenient place for</p>
+<p>if you have code that you want to</p>
+<p>publish somewhere um you can publish it</p>
+<p>here as just a hey here's your paper you</p>
+<p>can it's all it is organized and it's</p>
+<p>working on being more organized um into</p>
+<p>uh different groupings of stuff there's</p>
+<p>an whole exhibitor section for it so if</p>
+<p>you have multiple pieces of work that</p>
+<p>are all done using NGC learn you can you</p>
+<p>you'll have your own you'll have your</p>
+<p>ability to have your own folder that you</p>
+<p>can all that you can organize however</p>
+<p>you want that will have all of your</p>
+<p>papers that you've built together uh</p>
+<p>which would mean that if somebody is</p>
+<p>looking for similar papers that you have</p>
+<p>done they can come here and they can see</p>
+<p>ah here is a spike timing dependent</p>
+<p>plasticity paper that you've done and</p>
+<p>here's four other Spike timing dependent</p>
+<p>plasticity papers that you have also</p>
+<p>worked on as well as here's just other</p>
+<p>Spike timing dependent plasticity works</p>
+<p>by other authors uh that would you know</p>
+<p>allow you to cross reference things and</p>
+<p>just have uh a good uh Community built</p>
+<p>platform for uh models because as I'm</p>
+<p>sure we're all aware it's really</p>
+<p>frustrating when you read a paper it has</p>
+<p>a really interesting method you go look</p>
+<p>to reproduce it yourself and the code is</p>
+<p>not available or it's in a git repo</p>
+<p>that's been deleted um I think we've all</p>
+<p>been there and so from that standpoint</p>
+<p>we're our goal is to make it so that</p>
+<p>that doesn't happen again and that</p>
+<p>everything built with NGC learn can be</p>
+<p>found all in one place so we can all see</p>
+<p>how much it can</p>
+<p>do uh and finally some upcoming features</p>
+<p>uh reinforcement learning uh so once</p>
+<p>again this is actually uh currently in</p>
+<p>our development Branch uh so we have</p>
+<p>grid-based environments uh technically</p>
+<p>you don't need to make them grid based</p>
+<p>it's just the easiest one to visualize</p>
+<p>uh so it's using components so with the</p>
+<p>way that components work uh if you can</p>
+<p>basically chunk your environment into</p>
+<p>its own individually Run State machine</p>
+<p>um you can display it and run it in NGC</p>
+<p>learn uh currently we have rat water</p>
+<p>maze rat te maze another model that I'm</p>
+<p>currently using for paper that's not</p>
+<p>publish yet uh that are all navigation</p>
+<p>based tasks that have to perceive the</p>
+<p>world around them and uh get updates I</p>
+<p>will say right now it is only limited to</p>
+<p>2D uh you would not stop you from using</p>
+<p>it in 3D you just might have to see how</p>
+<p>to visualize it differently um and since</p>
+<p>it is built up out of components it is</p>
+<p>fully compilable uh and what that means</p>
+<p>is that we can compile the rat T maze</p>
+<p>into a c function and integrate it</p>
+<p>directly with the compiled version of</p>
+<p>our um agent meaning that at the end of</p>
+<p>the day you can do your entire training</p>
+<p>over your RL environment in in C never</p>
+<p>having to touch ithon uh and I will say</p>
+<p>egocentric and World Views are both</p>
+<p>available so obviously these are</p>
+<p>rendering the world viiew and then the</p>
+<p>little highlighted section is your</p>
+<p>egocentric view both of them are very</p>
+<p>easily</p>
+<p>attainable um yeah and so with that uh</p>
+<p>there's some links to all everything and</p>
+<p>if anybody has any</p>
+<p>questions please don't hesitate to ask</p>
+<p>um slightly early on time but that was</p>
+<p>kind of the</p>
+<p>goal thank you William okay just while</p>
+<p>I'm getting back into the game here</p>
+<p>maybe just share a little bit of your</p>
+<p>journey to working on this like where</p>
+<p>are you at in grad school how how did</p>
+<p>you come on it yeah so I am a fourth</p>
+<p>year graduate student working under Dr</p>
+<p>Alexander Ria at the Rochester Institute</p>
+<p>of Technology um here in New York and so</p>
+<p>this kind of all started so my journey</p>
+<p>on spiking nlet started about two and a</p>
+<p>half years ago or so and very rapidly I</p>
+<p>found just like the speed problem to be</p>
+<p>incredibly annoying on like how do I</p>
+<p>actually get this to run in a way that's</p>
+<p>efficient um and as I started moving to</p>
+<p>bigger and bigger models specifically RL</p>
+<p>and some other models uh it started</p>
+<p>getting really really slow and so around</p>
+<p>that time so around like two years ago</p>
+<p>or three years ago or so uh Dr abbia had</p>
+<p>started uh working on the first</p>
+<p>iteration of NGC learn which is what his</p>
+<p>original</p>
+<p>paper this one was written using um and</p>
+<p>then I got a hold of it and it it works</p>
+<p>it works beautifully um but there since</p>
+<p>that Papo came out there were some</p>
+<p>pretty large advancements in the just</p>
+<p>computational things Jax had really</p>
+<p>taken off a little bit since that had</p>
+<p>come out um it was all originally built</p>
+<p>in</p>
+<p>tensorflow uh which works but it really</p>
+<p>felt like we were hammering a square peg</p>
+<p>through a circular Hole uh to get it to</p>
+<p>do what we wanted and so starting about</p>
+<p>a year and a half ago now uh we kind of</p>
+<p>set out to make NGC learn what it is</p>
+<p>today and then probably eight months ago</p>
+<p>it really kind of took off on where it</p>
+<p>is with its compiling and the speed and</p>
+<p>we've been using it and developing it</p>
+<p>ever</p>
+<p>since cool epic okay I'll start asking</p>
+<p>some questions from the live chat and if</p>
+<p>anybody wants to add more questions they</p>
+<p>can go for it</p>
+<p>okay okay I'm going to read a possibly</p>
+<p>unrelated comment but if you have a</p>
+<p>thought otherwise it's not necessarily A</p>
+<p>a direct question okay Scott wrote</p>
+<p>lawyers say that contracts are a meeting</p>
+<p>of the minds singers and choruses</p>
+<p>experience aesthetic amplification of</p>
+<p>group identity here the meeting the</p>
+<p>meeting of voices in storytelling equals</p>
+<p>a smart mirror for group</p>
+<p>identity that's</p>
+<p>that's</p>
+<p>okay it's interesting I do I do kind of</p>
+<p>uh thinking about it is like just my</p>
+<p>initial gut reaction to that is that uh</p>
+<p>I think especially when we're doing</p>
+<p>science sometimes we can get a little</p>
+<p>bit too bogged down in being scientists</p>
+<p>and not enough time in being like freeth</p>
+<p>thinking and actually just coming up</p>
+<p>with like new ideas right we get too</p>
+<p>ingrained in like ruts of how things</p>
+<p>have been done in the past and so I</p>
+<p>think I think that's something that we</p>
+<p>all do need to work towards more it's</p>
+<p>just being a little bit more embracing</p>
+<p>of just new ideas that might not</p>
+<p>work awesome okay first question mobina</p>
+<p>wrote does it only work with discreet</p>
+<p>value</p>
+<p>spiking no so I'm going to flip through</p>
+<p>a couple of slides here so when you go</p>
+<p>to these wires here there's nothing that</p>
+<p>says that the wires actually move</p>
+<p>discrete values but the advantage that</p>
+<p>we run into is that the fact that they</p>
+<p>can move discrete values so when we look</p>
+<p>at here so the weight outputs so like w</p>
+<p>like the weight weight outputs are</p>
+<p>actual Matrix multiplications of weight</p>
+<p>outputs we can see that here this is</p>
+<p>this is not a discret value but for us</p>
+<p>when we're dealing with spiking networks</p>
+<p>the input</p>
+<p>coming so the short answer to the</p>
+<p>question is no it works fine with</p>
+<p>floating Point values as well um it just</p>
+<p>also works with discreet values which</p>
+<p>many other systems do</p>
+<p>not</p>
+<p>okay to give you a breather I'm going to</p>
+<p>read an interesting quote that your last</p>
+<p>comment reminded me of it's from okay</p>
+<p>Henry David throw in Walden he wrote I</p>
+<p>had not lived there a week before my</p>
+<p>feet wore a path from my door to the pwn</p>
+<p>side and though it is 5 or six years</p>
+<p>since I Trot it it is still quite</p>
+<p>distinct it is true I fear that others</p>
+<p>may have fallen into it and so helped to</p>
+<p>keep it open the surface of the Earth is</p>
+<p>soft and impressible by the feet of men</p>
+<p>and so with the paths which the Mind</p>
+<p>travels how Warn and Dusty then must be</p>
+<p>the highways of the world how deep the</p>
+<p>ruts of tradition and</p>
+<p>Conformity it's a good quote it's a good</p>
+<p>quote I've seen his cabin I've been to</p>
+<p>I've been to that Lake cool like I had a</p>
+<p>sense that you would yeah yeah it's a</p>
+<p>it's a really cool place okay reading</p>
+<p>down viit your colleague and previous</p>
+<p>presenter wrote two questions so first</p>
+<p>question I saw that Jax also has a</p>
+<p>method. lower to lower the pure function</p>
+<p>down to machine code but not compiling</p>
+<p>do you see any fruitful exploitation of</p>
+<p>this function in the context of NGC</p>
+<p>simulation</p>
+<p>Library um</p>
+<p>possibly so that could get us definitely</p>
+<p>some of the beneficial parts so right</p>
+<p>now when you compile a function and then</p>
+<p>it throws an error debugging that error</p>
+<p>is a nightmare uh because it's all</p>
+<p>compiled under the hood I would have to</p>
+<p>look more into it but if we can just get</p>
+<p>to machine code that would be really</p>
+<p>cool uh like if it didn't end</p>
+<p>up like if it ended up skipping over</p>
+<p>like it's going into C but I'm not sure</p>
+<p>if it does um on top of that something</p>
+<p>else that would be kind of interesting</p>
+<p>is and I've actually spoken to my father</p>
+<p>who also does computer programming about</p>
+<p>this is if we can get it all written</p>
+<p>into C or machine code theoretically you</p>
+<p>should be able to pre-compile this which</p>
+<p>means that you could get your entire</p>
+<p>model and all of the state</p>
+<p>transitions as a program basically that</p>
+<p>sits on your computer without actually</p>
+<p>ever having to touch python which I also</p>
+<p>think would be a really cool place to NV</p>
+<p>direction to go yeah I think I think the</p>
+<p>presentation and the package</p>
+<p>architecture</p>
+<p>reflects it like many octaves of</p>
+<p>computer science you're really getting</p>
+<p>down into the compilation details but</p>
+<p>understanding those is critical because</p>
+<p>the point you mentioned sort of by The</p>
+<p>Bu that there's the possibility with</p>
+<p>only some constraints to run a model on</p>
+<p>CPU GPU and</p>
+<p>neuromorphic that that that's an</p>
+<p>incredible cross</p>
+<p>um deployment of of potentially</p>
+<p>identical models so you could have</p>
+<p>certain models deployed across Hardware</p>
+<p>to better understand the hardware forget</p>
+<p>the model or of course for sure inside</p>
+<p>yeah inside of sim so inside of the</p>
+<p>tutorial section of like the</p>
+<p>documentation for NGC learn there's a</p>
+<p>part with NGC lava and it actually will</p>
+<p>walk you through how to run it run the</p>
+<p>same model both on the the low he</p>
+<p>simulator and your computer like in the</p>
+<p>same time um and you can look and it</p>
+<p>will get the same output like it's got</p>
+<p>some Randomness to it so like your</p>
+<p>filter might be in a different spot but</p>
+<p>it will produce the same</p>
+<p>model yeah I mean what is it even like</p>
+<p>to or how is it similar and</p>
+<p>different to be programming on a</p>
+<p>neuromorphic</p>
+<p>simulator so the simulator is relatively</p>
+<p>straightforward actually going on to the</p>
+<p>physical Lei itself and this is why we</p>
+<p>have to stress Sim everywhere is a</p>
+<p>challenge so first off Intel's neurocore</p>
+<p>which is like their proprietary code for</p>
+<p>running on their Lei chips uh while it's</p>
+<p>proprietary code which means that I</p>
+<p>don't have easy access to it um like I</p>
+<p>have a couple working groups that I can</p>
+<p>have access to it through but it's not</p>
+<p>something that I can just put on my own</p>
+<p>machine and test um in addition to that</p>
+<p>I micro code is needed which is the</p>
+<p>basically what is usually used to like</p>
+<p>Pat CPUs and gpus and whatnot but the</p>
+<p>micro code it's the level between like</p>
+<p>machine code and it looks somewhat like</p>
+<p>assembly um you need to write a lot of</p>
+<p>your models in that which gets</p>
+<p>complicated so until we get a good</p>
+<p>translation layer between Python and</p>
+<p>either C and then C to that layer or</p>
+<p>between just python to that layer uh the</p>
+<p>physically putting it on the</p>
+<p>hardware still is a</p>
+<p>hurdle yeah again super interesting how</p>
+<p>this is really spanning the gamut with</p>
+<p>different layers of computer science and</p>
+<p>and bringing in sure all these</p>
+<p>unconventional um compute okay another</p>
+<p>question from vit have you also</p>
+<p>considered automatic operator such as</p>
+<p>when we add two compartments A and B</p>
+<p>together instead of summation of a comma</p>
+<p>B it is a plus b and the library would</p>
+<p>wire them to the summation operation</p>
+<p>yes uh so yeah we definitely have</p>
+<p>considered that uh you run</p>
+<p>into so it works so so the long story</p>
+<p>short is like that can work the problem</p>
+<p>that you can run into is it can become a</p>
+<p>little bit</p>
+<p>syntactically uh weird to look at when</p>
+<p>you have compartment plus compartment</p>
+<p>meaning one thing and compartment. Value</p>
+<p>Plus compartment. value being another</p>
+<p>thing like basically the problem is that</p>
+<p>if we start overloading those operators</p>
+<p>it's you now have to be careful like</p>
+<p>right now if you try and add two</p>
+<p>compartments together uh and you forget</p>
+<p>to do like compartment. value um it'll</p>
+<p>just error because compartments don't</p>
+<p>have an addition with one another but if</p>
+<p>we produce an addition with one another</p>
+<p>um it starts to make it's you have a lot</p>
+<p>more silent errors though until we find</p>
+<p>a good way to overcome that problem it's</p>
+<p>currently on</p>
+<p>pause but this brings in a lot of</p>
+<p>interesting category Theory type</p>
+<p>questions about concatenating nested</p>
+<p>systems and putting them in parallel in</p>
+<p>series and what are these operators what</p>
+<p>does it really mean when just to have a</p>
+<p>certain symbol and then what do you</p>
+<p>really want to do what are the</p>
+<p>operations supposed to do and that's</p>
+<p>kind of been why like we overrode the</p>
+<p>shifting Operator just because I wanted</p>
+<p>something there that was not just like</p>
+<p>do connect um but beyond that it's I've</p>
+<p>been a little bit hesitant to override</p>
+<p>them okay I'll read uh two comments from</p>
+<p>Professor orobia okay first first just</p>
+<p>my lab so far yeah but first first uh a</p>
+<p>historical not I guess the nod from will</p>
+<p>to the old many years ago NGC learn was</p>
+<p>nice wink the original NGC learn was</p>
+<p>written in tensorflow and started by</p>
+<p>offering generic customizable support</p>
+<p>for predictive coding first note and</p>
+<p>then second note um I posted a link to</p>
+<p>where we've curated uh many</p>
+<p>implementations of active inference and</p>
+<p>Alex we would love to have Community</p>
+<p>contributions translating these active</p>
+<p>inference models to NGC learn we would</p>
+<p>love to feature and maintain these in</p>
+<p>the NGC Museum I mean that was an</p>
+<p>incredible insight s to have a</p>
+<p>package Centric</p>
+<p>repository yeah yeah the the whole goal</p>
+<p>of this so all four of these models that</p>
+<p>are shown here are all in the museum</p>
+<p>already or on their way to being in the</p>
+<p>museum and yeah the goal is just so that</p>
+<p>way like if you guys have this</p>
+<p>repository if here's all the papers well</p>
+<p>what's better than here's all the papers</p>
+<p>then here's all the papers and the code</p>
+<p>to reproduce them all in one place</p>
+<p>yeah um okay you you you mentioned a few</p>
+<p>pieces of this but uh mobina wrote what</p>
+<p>improvements are currently being</p>
+<p>explored to enhance NGC</p>
+<p>learning yeah so uh again one of the</p>
+<p>main ones is just getting reinforcement</p>
+<p>learning up there and available for</p>
+<p>people to use easily um in addition to</p>
+<p>that there's an overhaul of our visualiz</p>
+<p>a tool tools that I've want to have so</p>
+<p>we already support um things like the</p>
+<p>raster plots uh all of like for like</p>
+<p>plotting Spike patterns uh we support</p>
+<p>obviously Matt plot lib does all of its</p>
+<p>stuff and since OB all of our NC learn</p>
+<p>stuff is built inside of numpy it all</p>
+<p>plugs and plays into that really easily</p>
+<p>um but we do have um a couple other just</p>
+<p>additions to all of this that we're</p>
+<p>trying to get up and running basically</p>
+<p>there's an overhaul to the visualization</p>
+<p>Library</p>
+<p>um in addition to that I'm sure there's</p>
+<p>other projects that I've been thinking</p>
+<p>about but I don't have my I don't have</p>
+<p>my notebook with my list of plans in</p>
+<p>front of me but those two are probably</p>
+<p>the first two on my list is the</p>
+<p>reinforcement learning and then</p>
+<p>visualizations cool and this is a</p>
+<p>question and the help section and the</p>
+<p>library built help section yes the lobby</p>
+<p>of the museum um yeah and then the art</p>
+<p>outside um here's a question that we've</p>
+<p>discussed with each of the previous</p>
+<p>package developers today uh active inf.</p>
+<p>JL and and the RX and fur like what was</p>
+<p>the most challenging part of developing</p>
+<p>this</p>
+<p>out</p>
+<p>um definitely the</p>
+<p>compiler and more and it's not the funny</p>
+<p>thing is it's not the compiler</p>
+<p>specifically that was the most</p>
+<p>challenging part of developing this out</p>
+<p>it was how did I want the user to</p>
+<p>actually interface with it because one</p>
+<p>of the most complicated things and I can</p>
+<p>go back</p>
+<p>to here right was getting this to all</p>
+<p>work in a way that didn't feel</p>
+<p>clunky so and it still isn't perfect</p>
+<p>it's just the best I've we've figured</p>
+<p>out so far but the the way to define</p>
+<p>your compartment in your fixed</p>
+<p>parameters and then write transition</p>
+<p>functions that can pull them into into</p>
+<p>into itself and do the operation getting</p>
+<p>that workflow down in a way that made it</p>
+<p>so that way if you want to build a new</p>
+<p>component it doesn't take very long was</p>
+<p>a challenge um that was probably the</p>
+<p>most challenging part</p>
+<p>um the next one's definitely just</p>
+<p>actually getting the simulator to plug</p>
+<p>andplay everything together um I could</p>
+<p>give another like 3our talk on how the</p>
+<p>simulator like the NGC simli actually</p>
+<p>works under the hood um because</p>
+<p>it's it does a lot of metaprogramming</p>
+<p>and pattern matching and function</p>
+<p>generation like your actual compiled</p>
+<p>method that you're running is like four</p>
+<p>step three steps of of like dynamically</p>
+<p>created functions deep basically and so</p>
+<p>getting that to all work without bugs</p>
+<p>was hard um and it's been doing pretty</p>
+<p>well uh it's all we've only had two very</p>
+<p>very minor bugs in the past like five</p>
+<p>months so I'll call that a success in</p>
+<p>anology we love minor</p>
+<p>bugs oh yeah of course um okay I'll read</p>
+<p>another question roric wrote is there an</p>
+<p>active outreach program to the museum as</p>
+<p>such treasure ought not to be buried</p>
+<p>so we're not actively going out and</p>
+<p>trying to seek things but it is open</p>
+<p>source and anybody can make poll</p>
+<p>requests into it um so and we are and</p>
+<p>whatever we for like our lab or like for</p>
+<p>our own personal research reproduce a</p>
+<p>model um for either a baseline or just</p>
+<p>as like as we're learning something new</p>
+<p>that also ends up in there but um I</p>
+<p>think as the going out to people</p>
+<p>specifically and being like Hey we're</p>
+<p>going to it's a lot of it is as we're</p>
+<p>we're trying to get the people that use</p>
+<p>our tool to just when they've published</p>
+<p>paper there that's a very humble answer</p>
+<p>also you're doing the active part now so</p>
+<p>that can't</p>
+<p>be okay I'm going to read another this</p>
+<p>is not a question from Scott but just if</p>
+<p>you have any thoughts okay he just wrote</p>
+<p>things get interesting as our new</p>
+<p>computational and information processing</p>
+<p>systems computers internet AI etc etc</p>
+<p>etc more Faithfully reflect human</p>
+<p>cognition active inference and</p>
+<p>biophysical models than are existing</p>
+<p>institutions and organizations the</p>
+<p>latter are historical artifacts not yet</p>
+<p>improved and socialized to new learnings</p>
+<p>about physics supported</p>
+<p>flows I mean I think I think this is</p>
+<p>just a my first thought of that is uh</p>
+<p>many yeah many many modern AI systems</p>
+<p>and giant structures that are made do</p>
+<p>not reflect well on how on like are not</p>
+<p>faithful to</p>
+<p>biology um and we</p>
+<p>definitely have a we should definitely</p>
+<p>have a goal on making them more faithful</p>
+<p>to biology and uh getting</p>
+<p>a basically there's a bunch of things</p>
+<p>that like biological models have uh can</p>
+<p>achieve for us uh with one of the</p>
+<p>biggest ones just being the Energy</p>
+<p>Efficiency of neuromorphic computing and</p>
+<p>the fact that we have things like chat</p>
+<p>GPT and whatnot that have uh you know</p>
+<p>use power draws of small cities to train</p>
+<p>uh kind of goes against all of that and</p>
+<p>so I do think that like this is</p>
+<p>definitely a way of the future I don't</p>
+<p>think it will ever beat out everything</p>
+<p>but I do think it's definitely something</p>
+<p>that we do need to continue pursuit</p>
+<p>of okay I I have a question what is the</p>
+<p>cutive or possible title or topic of</p>
+<p>your dissertation overall like is this</p>
+<p>one puzzle piece or is this the so so</p>
+<p>yeah so I've done my dissertation</p>
+<p>proposal I off the top of my head I do</p>
+<p>not remember what my proposal name was</p>
+<p>um but so I do uh spiking representation</p>
+<p>learning uh so I up until now most of my</p>
+<p>focus has been specifically on the uh</p>
+<p>learning rules in credit assignment</p>
+<p>plasticity rules of spiking neet</p>
+<p>specifically Spike timing dependent</p>
+<p>plasticity uh this is my paper um time</p>
+<p>time integrated Spike tying dependent</p>
+<p>plasticity um and then uh I wanted to do</p>
+<p>all of this with the direct goal of</p>
+<p>putting it into reinforcement learning</p>
+<p>uh which is why one of the reinforcement</p>
+<p>learning parts of NGC learn is on the</p>
+<p>way is because I need it for my research</p>
+<p>and since other people have also</p>
+<p>expressed an interest in it for their</p>
+<p>research I'm like let's all put it in</p>
+<p>the library together um and and so yeah</p>
+<p>so I've got that and then the actual uh</p>
+<p>reinforce and then all of this basically</p>
+<p>played together to go with the</p>
+<p>representation learning of how do humans</p>
+<p>actually represent stuff because I'm not</p>
+<p>a fan of directly going from like pixels</p>
+<p>to thought process I want to go pixels</p>
+<p>to representation to thought process and</p>
+<p>so that's kind of where I've been at</p>
+<p>right now in my career</p>
+<p>path cool okay another comment from Alex</p>
+<p>you wrote</p>
+<p>we should also mention that njc learn is</p>
+<p>going to offer support for dynamical</p>
+<p>systems and even more detailed support</p>
+<p>for differential equations beyond the</p>
+<p>basics we have now smiley face yes yes</p>
+<p>that is that is the thing too that we</p>
+<p>are on on track for we've got um</p>
+<p>currently a bunch of different</p>
+<p>integration methods that are in there um</p>
+<p>but they don't allow they allow for some</p>
+<p>complex dynamical systems but not every</p>
+<p>complex dynamical system that we want</p>
+<p>and so the goal is to be able to put all</p>
+<p>of those in there too um pretty much</p>
+<p>anything you think of that can be</p>
+<p>represented as a state machine is</p>
+<p>something that we would love to be able</p>
+<p>to support</p>
+<p>um machine moving pieces around and so</p>
+<p>while it works really well for spiking</p>
+<p>neural Nets it works really well for so</p>
+<p>many other things that use uh that are</p>
+<p>you know a dynamical system something</p>
+<p>that changes with time yeah from the</p>
+<p>active inference side when I see that</p>
+<p>well first the reinforcement learning</p>
+<p>and the ability to have the egocentric</p>
+<p>and the allocentric I think is very</p>
+<p>fascinating and and it makes me wonder</p>
+<p>how how do</p>
+<p>epistemic</p>
+<p>value inferences come into the</p>
+<p>picture when we zoom out Beyond utility</p>
+<p>or reward maximization and include these</p>
+<p>networks with structural fixity or with</p>
+<p>with a dynamic structure you're doing</p>
+<p>learning that's kind of just an</p>
+<p>interesting yeah for sure for sure I</p>
+<p>don't I don't have any great Insight on</p>
+<p>that right now other than it sounds</p>
+<p>really cool and I would love to be there</p>
+<p>working on it cool well I I I don't know</p>
+<p>if I should say that I do or don't hope</p>
+<p>your PhD ends before</p>
+<p>then do you have any uh I hope to get oh</p>
+<p>work on</p>
+<p>this I'm pretty sure even after my phdns</p>
+<p>I'm still going to be working on this so</p>
+<p>I it's all good cool do you have any uh</p>
+<p>last comments or thoughts to</p>
+<p>add uh not really just that if you are</p>
+<p>ever trying to set up NGC learn and it's</p>
+<p>you've you're struggling with anything</p>
+<p>don't do not hesitate to reach out um to</p>
+<p>either uh myself or my adviser Dr Oria</p>
+<p>both of us are the on the main Dev team</p>
+<p>of NGC learn and we would be more than</p>
+<p>happy to help okay I'll just read a</p>
+<p>closing comment from Dr Robia we really</p>
+<p>hope the active inference community and</p>
+<p>audience considers Community</p>
+<p>contributions to NGC learn especially if</p>
+<p>they want to go beyond using backprop</p>
+<p>slst standard deeplearning also consider</p>
+<p>using it in the classroom to teach</p>
+<p>computational</p>
+<p>Neuroscience cool all right excellent</p>
+<p>thank you William farewell</p>
+</article>
+</body>
+</html>

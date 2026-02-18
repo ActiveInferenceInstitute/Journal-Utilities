@@ -1,0 +1,2731 @@
+---
+title: "ActInf Livestream #013.1: "Cybernetic Big Five Theory with the Free Energy Principle...""
+category: "Livestream"
+series: "Livestream_013"
+episode: "1"
+duration: "1:51:16"
+url: "https://www.youtube.com/watch?v=QG2gOoX4XdA"
+views: 349
+exported_at: "2026-02-18T22:37:37.795585+00:00"
+format: markdown
+---
+
+# ActInf Livestream #013.1: "Cybernetic Big Five Theory with the Free Energy Principle..."
+
+hello everyone and welcome to the active
+inference Liv stream this is active
+inference Liv stream 13.1 and it is
+January 5th
+2021 happy New Year everyone welcome to
+the active inference lab the active
+inference lab is an experiment in online
+team communication learning and practice
+related to active
+inference feed back you can find us at
+our website Twitter email YouTube or
+keybase teams this is a recorded and an
+archived live stream so please provide
+us with feedback so we can improve our
+work all backgrounds and perspectives
+are welcome here and keep in mind video
+etiquette for live streams for 2021 we
+are going to be meeting every Tuesday
+regularly at 7: to 9:00 a.m. pafic time
+and then we'll plan other special
+sessions as things come up and for
+different time zones you can go to this
+link and see a spreadsheet and here we
+are in the first week with the first
+paper and next week we'll be discussing
+the same one so hello everyone thanks
+for coming on live and thanks everybody
+who's watching let's introduce ourselves
+please give a short introduction or
+check-in especially if it's your first
+time on the stream and then pass it to
+somebody who hasn't spoken so I'm Daniel
+I'm in Davis and I'll pass it to Colin
+I'm Colin D young and I'm in Minneapolis
+Minnesota um I'm a professor in the
+psychology department here at the
+University of
+Minnesota and excited to be here um I'll
+pass it on to
+Stephen oh hello I'm Stephen I'm based
+in Toronto um I'm doing my practice
+based PhD at Canary Christ Church
+University and uh pleased to be here as
+well pass it to
+Shannon hey I'm Shannon PRS I'm in South
+Dakota so also in the snow but I'm based
+at the University of California in
+Merced during my PhD also I'll pass it
+to
+Marco hi I'm Marco um I'm from Holland
+and used to work on active entrance in
+London but now I'm just um enjoying the
+progress from the sidelines
+I'll pass it to uh
+Ean thank you my name isan I'm from
+Russia from Moscow and I interested in
+free energy principal and as it related
+with systems engineering and I pass it
+to uh excuse me what is your name my
+friend
+Dave let's go to Dave hi Dave Douglas
+I'm retired from Information Technology
+I live in the Philippines and I did
+about equal amounts of graduate level
+work in computer science Linguistics and
+psychology but have only a lowly
+ba cool let's go to blue and then Adam
+hi good morning everyone my name is blue
+Knight and I am an independent research
+consultant based out of New
+Mexico and Adam
+welcome hi I'm Adam sorry I'm late I
+am based out of Bloomington
+Indiana uh I'm a postural
+researcher cool well welcome everyone
+thanks so much for coming on filling out
+the Hollywood Square that we have here
+for these warm-up questions it'll be
+great to hear from everyone just raise
+your hand if you have a thought I'll
+just put up the first two totally just
+raise your hand as you want to add
+something first would be what is
+something about human personality or
+emotions that you would want to see
+captured in a good model or
+understanding or
+education and then also what is
+something that you liked or remembered
+about the paper and um I think there was
+a few memorable parts of the paper just
+while people are raising their hand uh I
+think just the idea of going from a
+statistical understanding of the big
+five as principal component Dimensions
+to being the outputs of a cybernetic
+system is really an interesting topic
+so maybe if uh anyone wants to raise
+their hand on this one or
+Adam or Colin maybe how do you go about
+introducing uh the the need for your
+kind of paper to an audience like where
+do you start out with the interesting
+part about personality that you want to
+capture in your
+model well uh shall I jump in then um
+and when you say raise hand do you mean
+this little button here or you like
+actually just wave at the screen
+probably with the button all right well
+works that works um so uh one of the
+things that I noticed in your summary of
+the paper uh was something that I often
+encounter from people working in other
+scientific Fields uh which is a certain
+degree of skepticism about the big five
+because of their origin in uh natural
+language and um and because you know
+when you see a diagram that's like a
+hierarchy of personality traits I you
+know in the figure there I was careful
+to note that that is not supposed to be
+a diagram of causal structure in the
+individual because there's this
+interesting problem where we use the
+same visual language for causal models
+of you know boxes and circles and arrows
+uh and for statistical models in which
+we're looking at the relationships among
+variables but obviously those are not
+directly
+translatable and um so the way that I
+would pose the basic question that's of
+Interest here is uh why do certain
+traits of people tend to Cluster
+together I think that that's really the
+core of what I'm interested in and what
+we're interested in if we're talking
+about the sources of Personality a lot
+of Personality research in the last 40
+years or so since the big F emerged as
+kind of an organizing consensus
+framework has really been focused on
+questions of prediction like if we have
+these assessments of people's
+personality Tendencies what kind of
+outcomes does it predict for them
+um also potentially like what are
+trajectories of uh change and
+development of these things over time
+but I'm interested in a question that is
+a lot less studied which is where do
+these patterns come from in the first
+place um and so I think the way that to
+think about the kind of statistical
+element here is simply that there is an
+observation that if we have a large set
+of descriptions of uh people's
+personality and it doesn't have to be
+from the natural language that was just
+one good source for a relatively
+unbiased set of descriptions of people
+was to go into the dictionary and just
+pull out the adjectives that could
+describe people um but we see very
+similar pattern of factors like the big
+five if we start with a lot of say
+existing personality questionnaires that
+weren't designed to measure the big five
+you throw them all together you still
+get the big five um so as long as we
+have a sufficiently large set of
+descriptions of personality and we have
+ratings on them uh they tend to Cluster
+together in reliable ways and um as long
+as they are valid you know as long as
+when we say that somebody's talkative
+that really does mean that they talk
+more than other people do and there's a
+lot of evidence for the basic levels of
+validity of Personality
+ratings then the question is why is it
+that people who are talkative also tend
+to be uh more sociable also tend to
+experience more positive emotions also
+tend to be more physically active also
+tend to be uh let's say more interested
+in excitement and uh
+dangerous you know risky Pursuits so
+we've got a whole bunch of things that
+cluster together and the question is why
+and so you know that was a list of
+low-level traits that are grouped
+together within extra version and that's
+just a statistical observation those
+people who tend to have more of one of
+those things also tend to have more of
+another and so I see fundamentally the
+question that I'm interested in is what
+are the underlying mechanisms uh that
+vary from person to person um that drive
+these patterns of co-occurrence of
+particular
+characteristics thank you for that
+Shannon thanks for that um really nice
+sort of overview introduction um I was
+sort of wondering going through this
+paper you talk about what are the
+differences that are um can be ascribed
+to individuals and their individual
+personalities that lead to you know
+traits like extraversion or what have
+you um but what if there is nothing
+unique to any individual that gives rise
+to a personality trait and I wonder
+where does um culture and social
+interaction fit into this kind of model
+and that's just a question that I'm
+interested in throughout the next couple
+of hours that we're here
+today nice good question anyone I put up
+also the third one
+blue so something as I was wondering
+about like as I was reading the paper
+was you know the Big Five personality
+and like it's um you know grounded in
+genetic uh influences right um but like
+attachment Theory and like there's like
+a bunch of work that's been done in mice
+like showing like you know the nurturing
+of parents and you know whether you're
+attachment avoidant or attachment
+anxious or um you know attachment secure
+that's also something I think would be
+fun and interesting to um model in in
+the free energy kind of way like put
+into into this framework and I think it
+has like some cool um you know impacts
+for like team building and and how um
+you know like whether I don't know I
+just think it would be it would be
+interesting and maybe um impactful in in
+this kind of framework cool and blew to
+that point I just saw a paper this uh
+morning from Anna Cuna at all an axle
+constant the first prior from co-
+embodiment to co- homeostasis in early
+life about this transition from like a
+truly in utero embedded being to
+different types of physiological
+dependencies social and cultural so it
+is interesting to think about all right
+we have an individual orientation around
+the big five it's about the individual
+in relationship to different types of
+settings but then how do you capture
+that element of Niche construction or of
+group dynamics or of these other aspects
+that are relational I'm I'm just curious
+Colin or or Adam like where does the uh
+other how how does that enter into it
+this idea of the cultural influences in
+on personality because someone's
+personality might be manifested in a
+really specific setting because of their
+local
+context I could just say something about
+that that is relevant I think to both of
+the two questions that have just been
+asked uh which is just to keep in mind
+that U these personality traits are
+descriptions of uh you know persistent
+patterns of people people's behavior and
+we know that they are genetically
+influenced but we also know that they're
+not entirely determined by genetics they
+are also determined by environmental
+influences and so the way that I think
+about this is that you have these uh you
+know these mechanisms that are allowing
+people to function and some parameters
+of those mechanisms must be reasonably
+persistent to produce these persistent
+patterns of behavior but the the things
+that set those parameters and that tweak
+them if there's change in personality
+over time can be both
+genetically programmed and
+environmentally programmed right so
+there are things there are events that
+happen to people for example their
+relations to their primary caregiver and
+attachment um that shape what these
+settings are going to be persistently in
+life um and so I think there's
+definitely room for thinking about
+environmental inputs uh to these systems
+and shaping of these parameters uh as
+well as genetic
+ones cool
+and Colin this point you raised earlier
+about uh graphical models and just
+drawing a connection among different
+variables is that a causal model is that
+a statistical model are those different
+what if you're talking about causal
+entropy or you're doing a causal uh you
+know model like a structural equation
+modeling or even if it's a linear
+aggression it's going to be interpreted
+as a causal influence and they'll put in
+the discussion oh it could be a
+different way it could just be
+correlation but it's really hard to
+disentangle that um yeah
+Marco hi thanks um so first of all um I
+haven't fully read the paper I kind of
+recently got out of a pandemic um
+Slumber um but but it sounds very
+interesting from what I've read and
+heard so far and as far the first
+question about what I'd like to see it
+might be a bit um in the far future but
+I think ideally um this would all
+connect sooner or later to the work on
+neurop phenomenology the kind of Ideal
+Vision I have is for example now we
+talking about um genetic prior and
+environmental inputs but I think the
+beautiful part about cybernetics is the
+kind of reflex of action and so
+Consciousness or phenomenology is
+basically a mediator or moderator of the
+way that environmental inputs kind of
+influence or continuing progression of
+Personality or um traits and and
+characteristics and so ideally um I
+would love to see a well I would love to
+hear if it's possible to make a
+synthesis of for example the work from
+psychoanalysis Psychotherapy everything
+that kind of uh explores and navigates
+these particular mechanisms from a
+first- person kind of view how to
+navigate the experience of being engaged
+in the world and I'm just wondering
+about Adams or col someone else's
+thoughts on how to possibly connect that
+phenomological um description of
+mechanisms and processes with the more
+formal um basic models that we're now
+exploring in this kind of work
+if that makes sense yeah very nice Adam
+and then anyone
+else uh hello can you hear me yep great
+um so I guess to uh try to address a
+couple things
+um so yeah uh Marco just thrust us into
+like the deepest possible territory like
+right away um and so I guess I'll
+briefly comment on that uh Second but
+the I guess the first thing in terms of
+um social context and uh Niche
+construction and the more inter
+subjective aspects and context um
+sensitivity of
+Personality
+uh active inferential modeling is really
+well equipped to uh address all of that
+uh in this paper it was more uh the
+focus was just kind of exploring what K
+and I both perceive to be a very rich
+set of correspondences between between
+the free energy principle and active
+inference and uh his theory of
+cybernetic Big Five Theory but in um
+modeling work you can uh bring in all of
+those details and explore them in their
+particulars so I'm currently
+collaborating on a project where we're
+trying to model things like extroversion
+within these um social Choice tasks and
+so how you show up it's going to be a
+function of you know both the task
+environment and you
+and this interaction that's going to
+evoke a given style pattern but you'll
+have these um parameters uh these hyper
+priors are um over the different um
+aspects of the generative model which
+through iterated policy selection and uh
+updating will basically concentrate
+their probability mass in different ways
+and result in different
+parameterizations and then different
+emergent behavior and what you can see
+happen is you can get uh these basically
+attractors form as this process proceeds
+over time these behavioral attractors
+where you the concentration of your
+prior for engaging in the world in a
+certain way causes you to enact a given
+pattern which causes you to uh even more
+update in that direction like your your
+D Matrix like where am I in this
+environment uh you know what do you
+expect to be perceiving your a matrices
+all the different like components that
+You' use to try to
+model the parts of an agent these were
+all your prior over these all get
+updated will then cause the pattern of
+in action so on and so forth and that
+over time this could cause you to be in
+this attractor where you have this
+enduring stability um how enduring you
+know it would depend
+on a variety of things uh and but so I
+guess that's one so in this process uh
+the social context who you're
+interacting with that would make make
+all the difference in terms of like how
+the kind of ball rolls down this
+epigenetic landscape like how you end up
+like carving out a given pattern for
+this agent uh with respect to uh
+neurophenomenology and just the uh
+actually getting
+it the richness of
+experience there's a sense in which all
+active influential modeling is already
+in a way um kind of personality modeling
+it's like you're kind of getting into
+like um uh these enduring um you these
+cybernet what they're thinking them as
+these like cybernetic um parameters for
+this fundamental process um or just the
+your ability to describe um the essence
+of the system uh the it's its normal
+form description this this maximally
+encompassing uh description of the modes
+of where you expect Define the system as
+a kind of probabilistic density in some
+kind of multi-dimensional phase space um
+if you have such a a attracting Network
+structure that you can describe in a way
+you could call that the personality of
+the system um but cybern big five Theory
+um kind of goes further and and or it
+it's grounding this in terms of well why
+should we expect certain modes over
+others why should we expect this then
+relates it back to the fundamental
+cybernetic cycle of of goal Pursuit that
+any agent has to do um so with respect
+to neurop phenomenology and it seems
+like the attempts to get at this within
+active inference things like uh
+sophisticated effect of inference the
+the models of uh metacognition where
+they're beginning to Model A kinds of
+mindful processing of reflecting on your
+um your confidence and and then this
+influencing your uh
+you you have having an actual model of
+your epistemic status you reflect you
+reflecting on this and this influencing
+how you sample influencing uh how
+confident you are in different ways um
+influencing What policies you end up
+deploying uh these things to the extent
+that they allow for um phenomenological
+richness they could be brought into an
+agent model and you're beginning to do a
+connection between neurop phenomenology
+or a process theory of that would dock
+of phenomenology and personality
+modeling so those are some thoughts nice
+thanks and to add on that Adam because
+that was really well said it's almost
+like some of these past papers we've
+been discussing were the neutral
+infrastructure or the architecture or
+the tools to have agents that can have
+memory or can have affect or can
+perceive veillance or get worried so we
+talked that in a very neutral framework
+like it's a parameter in the model
+however in the real world as Colin was
+getting at there's these extremely deep
+correlations with different outcomes of
+systems people who like to text more
+also like to video chat more or
+something and that might not be
+surprising but it these Trends are very
+distinct and so we are getting at this
+generative model idea personality as a
+generator of outcomes in different
+niches so Inseparable from the niche
+and um it's just an interesting way to
+see how the cybernetic big five has come
+from a more psychological area so it has
+uh that sort of um toe of the neurop
+phenomenology and the real correlations
+in the world and then there's the
+neutral framework that sort of maps onto
+that we have Steph and then
+Colin yeah I like what's been said about
+neurophenomenology and I'd also say that
+one of the things that's good about the
+this this work with traits is it it's
+starting to bring work that's coming
+from um what you could say realist
+settings codifying it and then finding
+the patterns and it's given us more U
+material coming the other way we've had
+some work around a lot of work with
+affordances and niches and then
+obviously you've got the models which
+start to create Dynamics and show and
+then you start to see where these two
+things meet but I would also say micro
+I've been looking at lot of micr
+phenomenology and the actual structuring
+of experience and attention and I think
+that um what can be interesting is these
+traits if these traits can also get
+brought down into micr phenomenology and
+ways of like how is the
+structure of the environment body
+mind um happening and and where are
+their times because what I think with a
+lot of the trait works is it does have a
+normative assumption about the type of
+Life someone's in around which you then
+standardize and then get these patterns
+but you do find if you take people into
+some other types of space or other types
+of attentional State be it a more
+grounded State maybe a a performative
+state maybe a a space Which is less
+Western so to speak less goal
+orientated um that might shift so this
+might be like this is where that is when
+people are at this normative mediated
+sort of normative like calculated way of
+getting everyone at like the gold
+directed Norm for a
+Westerner um and then can these
+different components to that be sort of
+treated and also looked at how do they
+vary as we move like not just as the
+five but IND you know as as individual
+kind of um tap ways to tap into
+affordances when do these change more or
+less when we bring people into another
+type of way of a regime of attention or
+another set of affordances which is
+outside the normal for our
+cultural go driven way of being in the
+west okay
+Colin and then Marco I just had a couple
+of thoughts about phenomenology since
+that's been a a theme um recently um
+first of all I think one interesting
+thing to think about in relation to uh
+trait approaches is that when we do
+assessments of Personality using
+self-report questionnaires you know
+which is not the only way that you can
+do it of course you can have other
+people you know rate the personality of
+somebody and we tend to see very similar
+results if we use other people's ratings
+versus self- ratings um although there's
+also evidence that there's some
+incremental validity there in other
+words you know things about yourself
+that other people don't know so that
+there's some unique validity to your
+reports but other people also know
+things about you that you don't know so
+there's also some unique validity to
+other people's reports on your
+personality but as long as we're talking
+about the self-reports then that is at
+base a kind of you know crude
+phenomenological measure right because
+you're saying what are you like what is
+your experience of your s like are you
+the kind of person who's anxious are you
+the kind of person who likes art you
+know and we get a long list of people's
+responses on these things and then we uh
+infer their General patterns of uh
+behavior from them
+and so I do think you know one of the
+things that I've always been interested
+in is that personality is not just
+patterns of behavior from a third person
+perspective it's also patterns of
+experience from a firstperson
+perspective and so when we look at the
+contents of Personality questionnaires
+you know they involve descriptions of
+emotion and types of cognition and
+patterns of motivation that can all be
+experienced you know phenomenologically
+in the first person as well and so we're
+using this kind of first representation
+and understanding of ourselves to then
+try to infer these General patterns of
+behavior that have validity from an
+objective third person perspective as
+well and then just in terms of like
+drilling down to this kind of micr
+phenomenology idea we do know things
+about particular patterns of processing
+that are associated with different
+personality traits uh so for example we
+just published a paper showing that
+extraversion is associated with the
+tendency to be influenced by uh reward
+in an implicit learning context right so
+you're doing a task where you're making
+this like discrimination between two
+very similar options um and you're
+rewarded more for getting correct
+responses to one option relative to the
+other well what you see is that um
+people's behavior becomes biased toward
+that option but the degree it becomes
+biased is actually correlated with
+extroversion and that's part of how we
+you know have support for the theory
+that fundamentally what causes all of
+these different extroverted behaviors to
+cohere is sensitivity to reward um and
+so you can think of that from the third
+person as like here's a process of you
+know reward um mapping but you can also
+think well what is it like from for this
+individual this is the kind of person
+who's going to be more uh perceptive of
+possibilities for uh rewarding inter
+interactions for incentives in their
+environment so I think you can always
+sort of flip back and forth between
+taking the phenomenological and the more
+U third person perspective on these
+things cool thanks
+Marco yeah uh thanks actually um kind of
+ties into that because I was kind of
+wondering if you could share some
+thoughts on the relation between value
+systems such as pratic value or affect
+and epistemic sence and curiosity with
+this uh model of Personality for example
+I did read that you said the fundamental
+components are um the goal the
+interpretation and the strategy right um
+and and I would say that that value I
+mean I would guess that value is more
+about the interpretation right so that
+you have some kind of scaler or some
+other dimension by which you can compare
+certain current real States and expected
+States um and tying into that uh I guess
+it's a separate question but I think I
+guess I'm going back to the personality
+and phenomenology because maybe you
+could share some thoughts and to what
+extent personality can be seen as an as
+a natural consequence of the Cy IC
+imperative where conscience has
+basically instrumentalized to be the
+regulator of uh entire mind body system
+as it were um because I guess I have
+some image picture of uh reses of
+reflexive attention right so there must
+be some cyb active system or set of
+systems ecosystem if you will um that's
+regulating or controlling the entire
+mind body system or large portions of it
+um but that in itself then has has to
+necessarily buy free energy or back of
+inference have to have some kind of um
+uh imperative to decide or policies to
+pick on how to engage with that bigger
+mindbody ecosystem if that makes sense
+beautiful thank you Adam and then anyone
+else darn it Marco uh that was awesome
+yeah was that was epic it was epic Adam
+and then Sasha and then we'll leave the
+warm-up
+so I guess
+uh two things Com or a few things coming
+to mind
+um
+so I really like this idea of thinking
+of um your Consciousness as a as a kind
+of modeling for the sake of cybernetic
+control and uh with hopefully you know
+some degree of not perfect but some
+degree of fidelity for modeling that
+which is modeled uh good regulator
+theorem to regulate a system you have to
+have a decent enough model um
+the and so there's a sense in which um
+towards this end uh being able to uh
+have your modeling process reflect on
+itself and model itself uh that that
+could be a very useful thing uh if you
+get it right
+um and a very bad thing if you get it
+wrong um the and so related to things
+like and it could even be that you know
+these parameter Ts for
+these they might stripe it across like
+multiple levels of abstraction something
+like curiosity so you could have like a
+kind of um uh curiosity that has a
+phenomenology in terms of like the way
+like a physicist would describe it as
+like a phenomenological description of
+behavior that's just like showing the
+emerg behavior and this looks like a
+more Curious system in the way it's like
+sussing out State space then you might
+also get to like uh curiosity in terms
+of the uh what it feels like to be
+curious and what those those motivations
+those free energy gradients they going
+to try to annihilate those different
+sources of Desire of pull um what that's
+like
+experientially um and so yeah it seems
+like something like curiosity would be
+reflected at multiple levels of
+organization uh maybe even with some uh
+weird shifts in terms of like the way it
+shows up across uh levels of
+analysis um the GU a
+few other ideas are coming to mind would
+be um there seems to be a sense in which
+if so we're talking about you someone
+reporting on their experience um you can
+think of these reports both in terms of
+the uh perceptual inferences that are uh
+going into them and then the report is a
+kind of action as a kind of Act of
+inference and uh each of these aspects
+you know for in like you could set up a
+generative model for each of these and
+you would have for instance a given kind
+of uh you know Matrix to describe the
+perception like given a given set of
+observations what's the state that you
+then infer and so this could be like
+some aspects of like so what isn't
+agent what is a person uh noticing in
+different circumstances and so this is
+like what is what is it in particular
+that is entering into their experience
+where does their attention go you could
+also though have like their attention
+not just in terms of a sort of like uh a
+salience but a kind of like active
+curiosity and a a sampling from the
+environment as a kind of mental act and
+so this then will influence like what's
+getting fed into the stream of
+experience and what it's like to be uh a
+particular kind of agent particular kind
+of particular kind of person in a
+particular kind of
+situation
+um those are some thoughts cool we'll
+return to that idea about being in the
+niche for a particular kind of agent
+we'll do Sasha and then Colin with the
+last word on the
+intro awesome yeah thank you um really
+great conversation I've already reduced
+my uncertainty on a lot of the questions
+I came in with um uh than thank you
+Colin for explaining that um behavior is
+not the same thing as personality
+because that's something I was starting
+to wonder um so it's yeah relevant that
+personality uh contains as part of it
+the self-report of the um individual's
+experience um and then uh I like what
+you said about your most recent work
+that sounds really interesting and kind
+of Falls in line with um active
+inference uh as reducing uncertainty
+about our environment and so it seems
+that uh extroverts and introverts have a
+different sensitivity to
+um uh sens sensitivity to Precision
+about their world where extroverts are
+more sensitive to reward and um updating
+their generative model from the external
+inputs like mainly I'm thinking social
+but of course could be other things um
+so that's an interesting how it fits
+into into this model of of active
+inference as well and um I guess my last
+thought is is there another level up um
+here where we can talk about people who
+are also sensitive to
+Precision about personality tests and um
+others Quantified Self
+um whether there's a metric for that
+kind of like self-reflection part of it
+um and if that I think some sometimes
+that can seem a bit
+like a a self-fulfilling prophecy or
+like I know I'm the kind of person who
+does this so I expect this personality
+test to tell me this um where you're
+actually not sensitive to new
+information you just want uh kind of
+confirmation on what you already think
+so but yeah okay interesting stuff Colin
+and then we're going to move to the next
+section okay so quickly then just a
+couple of thoughts on the last couple of
+comments
+um so first of all you raised something
+Sasha that is important which is that
+personality tests are certainly fallible
+right they're not a great form of
+measurement they're just the best form
+of measurement we have for assessing
+people's personalities and the reason
+for that is that it's really hard to get
+at an assessment of people's persistent
+patterns in all of their you know
+different aspects of functioning uh with
+anything other than relying on people to
+tell you about it right you could try to
+come up with you know like some complex
+set of tasks and people come into the
+lab and do all these things and you
+videotape them and somehow that's going
+to you're going to extract all the
+information about their personality from
+that by a carefully chosen set of things
+that you have them go through you know
+it' be a huge amount of work and you'd
+be learning less about what they're like
+in general than just asking them a bunch
+of questions so you know this is always
+a perennial problem it's like well there
+are these difficulties with self-reports
+people have biases they uh you know they
+are motivated to think of themselves as
+being more desirable in various ways
+than they are from a you know social
+desirability perspective uh and so what
+what can you do about that and yeah
+there are certainly studies of you know
+the degree to which people are accurate
+in their personality assessment and like
+the degree to which if they assess their
+own personality how much does that agree
+with other people's assessments of their
+personality and larger discrepancies can
+be predictive of things sometimes of
+psychological problems um so there's a
+you know there's a whole area of
+studying that um but I think I like this
+idea of people who have curiosity about
+their own personalities um and that kind
+of leads into something I just wanted to
+say generally about personality which is
+that definitely uh extroversion is
+related to this kind of curiosity about
+things that are potentially rewarding
+but if we think about curiosity more
+generally as a sensitivity to the reward
+value of information per se so just
+essentially the motivation to improve
+the quality of our interpretations of
+the world in terms of that uh language
+of interpretations and goals and
+strategies then we have a there's a
+pretty clear sense that Curiosity of
+that sort of general form is the core of
+one of the big five traits so the
+openness to experience and intellect
+dimension of the big five is really
+focused on people's curiosity uh and
+hunger for information essentially
+whether that be more about aesthetic and
+perceptual information related to
+openness to experience or whether it's
+related to abstract information related
+to to intellectual issues um so that
+that seems to be one of the really core
+dimensions of people's personalities so
+I do think there's a there's a very
+clear way to connect that into this idea
+of you know foraging for uh for
+information and seeking out increased
+entropy for the sake of reducing entropy
+uh over time you know which is what
+learning is essentially so there there
+are good connections there
+definitely interesting and Adam just one
+quick last
+note uh so yeah quickly
+um guess before we temporarily close off
+the phenomenology thread um it's seems
+like there's a really uh Rich kind of
+biral relationship between uh
+personality science an active inference
+and that uh with personality science you
+actually have this
+like like they're all basically these um
+uh from the personality modelers I met
+they're all these very like integrative
+generalists approaching this hairball of
+a problem from as many ways as they can
+and basically bootstrapping their
+themselves to validity and reliability
+and so they've come up with uh a really
+rich literature of phenomena to populate
+the
+phenomenology and AC of inference
+provides the sort of like places where
+you want to kind of dig in deeper onto
+like well what is the exact like causal
+mechanism so like cybernetic Big Five
+theory was probably like best um
+impersonality science of getting at
+causal processes of like how you're
+uh what where are these traits coming
+from and what are they actually doing
+for the agent so now you can bring an
+act of inference and describe agents of
+cybernetic systems run simulations uh
+generate things that would correspond to
+different aspects of Personality like
+for instance the dopamine system and
+curiosity you now can modify your
+parameter over policy selection and see
+what then unfolds with respect to both
+over Acts or mental acts like
+attentional shifts um just one final
+thing before we go to the next part is
+uh there's some uh in the paper we start
+to talk about this idea of like a p
+struct um or like this kind of object
+that could be used in something like
+comput computational Psychiatry for um
+kind of pooling data over multiple
+multiple people to like come up with um
+basically a general personality model
+that you can deploy for different agents
+um we might want to go into the Weeds on
+that later um to the extent we can but
+the thing I want to get at is that uh
+the one thing to model an AC of
+inference is we are all personality
+modelers it's like we are all
+necessarily like super forecasters
+trying to predict the future we are all
+also personality modelers trying to
+predict each other and ourselves and
+part of this would be towards this end
+well what kind of agent do I think I am
+what do I think my personality is like
+what do I think is going to be either
+more situation like what's going to be
+enduring uh what's going to be you can
+have personality be enduring but
+variable so what's going to be uh how
+variable are these aspects of Me How
+likely are they to endure these are the
+questions you have to ask of yourself
+and other agents in order to govern the
+interactions in the best of your ability
+well said Adam it really just highlights
+how much people even though we say
+things like well we don't know even
+given someone's personality we don't
+know what they're going to do it's like
+yeah but you know what language they're
+going to speak and so in the broad
+scheme of things you've actually reduced
+your uncertainty quite a lot and if
+you're not 99.9% aligned with that agent
+who's like you in the niche sharing an
+interface with you that conflict or
+adversarial relationship or just risk
+surface is going to spiral and so it's
+all about this interface yeah Marco if
+you want to go
+ahead yeah thanks U sorry I I didn't get
+get that far in the paper but that sound
+really interesting I just briefly
+skimmed the section on it so so it
+sounds like the P structure is basically
+allowing for a heris contextual
+dependency so they have the generic
+generative models of your being and the
+and the P structure kind of uh links the
+current context to the generic uh kind
+of models and that allows for the
+variation over different situations I
+mean I'm emphasizing theistic nature of
+it because personality basically can be
+seen as a very useful theistic for how
+to act in the world does that make sense
+or should I just read more in the paper
+no I think that's really a great uh
+connection there and a setup I think in
+figure two or when we see the graphical
+model maybe let's think about where this
+structure would play in and then
+emphasize its role as a statistical
+construct that reduces our uncertainty
+about regularities in the world just
+like every other kind of statistical
+modeling framework does um and then I
+think we'll be able to come back to that
+P stru question but what a fun uh
+warm-up
+section good times so in today we did
+the introductions and warm-up and then
+we'll have the sections of this paper
+which maybe if you're listening you've
+read or not and that is the integrating
+cybernetic Big Five Theory with free
+energy principle a new strategy for
+modeling personalities as complex
+systems by saffron and D young both of
+whom are on this call so in this set of
+slides we do have a bunch of uh the
+abstract road map some other stuff but I
+think there are so many interesting
+threads we've raised let's just try to
+walk through all of them um in no
+specific order but really think about
+what topics do we want to highlight for
+next week when we talk about the same
+paper and how will we get deeper into
+some of these threads that we've raised
+today in the discussion so here's the
+ases and claims slide and Adam or Colin
+um what was just your intention with the
+paper and after doing it where do you
+see the next implications of the paper
+or the next research directions for what
+you kind of want to do in that direction
+and if that verges into some of the
+figures just me mention it and I'll go
+to that
+figure um well I think the our basic
+motivation for doing it was just that we
+had already been talking together about
+topics of mutual interest and and the
+opportunity to write this chapter came
+up and I thought oh this would be a
+really fun thing to uh a good excuse to
+do something with Adam and kind of get
+our thoughts together and you know
+actually
+written down and out there in the world
+um and so you know I think he and I
+probably have slightly different
+incentives for where this is going next
+um he's more interested in the process
+processes of modeling um whereas I'm
+more interested in you know generating
+knowledge about the specific mechanisms
+and uh you know brain processes that
+underly different personality traits and
+risks for different types of
+psychopathology that are tied to
+different personality traits um but um
+yeah I think I mean to me this is just a
+really nice way to kind of connect U my
+thinking about personality with this uh
+what seems to me to be a really
+generative perspective with the whole Fe
+framework and what's happening with that
+in science in
+general I'm sure Adam has some other
+thoughts about that
+too yeah go for it Adam but that was
+very interesting Colin thanks
+oh I mean for me that was primarily the
+thing like col and I were already kind
+of going into the weeds together and
+having fun with it and so it's then uh
+basically uh uh iarpa brought together
+this meeting of personality modelers to
+create this book um modeling persons and
+situations um basically seeing the
+extent to which personality science
+could do uh predictive modeling of
+Agents um basically they want to recapit
+the plot of westw world as far as I can
+tell um so I'm actually not joking but
+except I am uh but yeah so my primarily
+uh uh interest would be just uh what the
+heck our persons uh and uh what can they
+be and how can we understand them and uh
+who am I and what do I
+want yeah and also one thing we haven't
+raised is who or what is a person
+there's personality as being the
+statistic iCal regularities of agent in
+Niche so that's just uh like a person in
+an exoskeleton you could have some sort
+of model for that or a person with other
+types of constraints on or something
+like that but then there's the idea of
+like what is a person legally what is a
+person culturally and all these ideas
+are coming into play with modeling legal
+persons and physical persons and regul
+statistical regularities that include
+our digital affordances all of that is
+becoming integrated our digital Persona
+is that included in these uh emotive
+models there's just a lot of really
+interesting stuff to think about there
+so then just copied on the screen for
+people who are looking is the abstract
+you can pause the video there and here
+is the road map then we'll have the
+figures and then there's just one kind
+of interesting general question from an
+audience but in the road map just if you
+have any thoughts on the layout or the
+authors could give a point if they
+wanted to about why they arranged it the
+way they arranged it or which parts they
+thought were important if somebody was
+just going to read one section or any
+thoughts on that otherwise we can just
+go to the figures but okay let me know
+if you want to return to this otherwise
+it's just the headers of the paper all
+right so here's figure one and Colin
+this really returns to your point from
+earlier about the graphical models what
+do Connections in graphical models
+represent and that's very related to a
+general question of like what do
+variables repres represent principal
+component one what does that represent
+what English word are we going to put on
+that you know MX plus b linear model
+what are we going to call x what is the
+slope what is that going to be called
+and then how does that play out
+graphically whether in an equation or
+whether in a drawing like this so I
+would love to hear your thoughts and
+then anyone else can raise their hand on
+this one okay so I made the basic
+distinction earlier between a uh a St a
+statistical model of covariance like a
+structural equation model uh I think
+it's really important not to call
+structural equation models causal models
+because they're not that drives me crazy
+when people refer to causal modeling and
+all they're doing is a set of regression
+paths right what that is fundamentally
+is trying to U you know recreate
+patterns of covariance in data and if
+you have special kinds of data like with
+temporal priority or where some variable
+has actually been manipulated uh then
+you can actually interpret um you know
+causal effects from covariant structure
+but uh just in and of itself there's
+nothing inherently causal about
+structural equation modeling or
+regression um this model here however is
+different this is actually intended as a
+conceptual causal model so these are not
+just looking at correlations between
+different variables in a population this
+is thinking about the actual causal
+processes that produce the functions of
+a of an individual agent specifically a
+human being um and so what this is this
+is just sort of like a way to
+encapsulate an overview of the way that
+my theory uh defines personality traits
+and characteristic adaptations which are
+the two elements of exhaustive elements
+of Personality uh in the theory and so
+the idea is that you know we know from
+Decades of research that both genetics
+and the environment contribute to uh
+people's personality traits and the uh
+idea is
+that personality traits are patterns of
+behavor that's why they have their own
+separate box there there's sometimes a
+tendency in personality psychology to
+say well what the trait really is is
+some underlying thing that causes
+people's behavior um but I think that
+that leads to confusion because what we
+actually measure when we measure
+personality traits is a description of
+regularities in the person's behavior
+and experience uh so I think it's
+important to keep that clear but then
+the the middle box there the relatively
+stable parameters of cybernetic
+mechanisms is trying to say something
+about where those patterns of regularity
+come from and so the personality traits
+are not some underlying causal process
+that generates personality they are just
+the patterns now they themselves do have
+Downstream causal effects however
+because let's say I'm the kind of person
+who talks all the time well that's going
+to have consequences on the world around
+me right and that will maybe lead me to
+develop different patterns of adaptation
+to my environment to have different
+outcomes on the people around me it's
+going to lead to different outcomes and
+different adaptations so that's the
+final box there um and then there just
+you know there's identification of
+feedback loops here so the idea that
+you're generally speaking the flow is
+that your basic personality traits
+caused by these basic settings of
+parameters that have a strong genetic
+component to them influence how we adapt
+and how we you know what we pick up on
+and what habits we develop in any
+particular situations uh habits is a
+good synonym for characteristic
+adaptations um but sometimes there can
+actually be feedback so let's say for
+example that I'm an introvert but uh for
+whatever reason I get into a job that
+has a an important component is selling
+things right I get into sales somehow so
+I'm going to have to develop at least in
+that context the ability to act like an
+extrovert if I'm going to be successful
+in my job and maybe I get good at that
+right so I've got a characteristic
+adaptation to my particular Niche which
+is that at least in this context I'm
+good at acting like an
+extrovert but this acknowledges that
+there's the possibility for that to feed
+back and actually make me more sensitive
+to incentive reward words in general and
+so I may actually find that I'm not just
+more extroverted in this particular job
+context after five years of doing this
+maybe I'm more extroverted in my life as
+a whole in all these other contexts um
+so that's the one of those feedback
+loops and then so you see that there's a
+the environment can directly affect the
+kind of ways in which we adapt to our
+environment obviously but the
+environment um but genetics any effect
+of genetics on our specific adaptations
+must feed through the effects of
+genetics on these General mechanis isms
+these parameters that underly our
+functioning um and so you know if
+anybody has any other questions about
+that diagram I'm happy
+to respond that was a great explanation
+and just to um emphasize one point there
+and then we'll go to Stephen you said
+that the characteristic adaptations in
+life outcomes are exhaustive and so um
+that really is like we can partition
+them into the adaptations or the things
+that the agent carries with them the
+synapses that have changed or the scars
+they bear but basically what is not
+their surrounding and the life outcome
+is the niche so then there's this stigma
+G where the agent is doing Niche
+construction so this is from a different
+nonactive inference non- Niche
+construction framework but finding
+resonances and finding uh concordances
+here because that's kind of what we talk
+about like the learning of agents and
+then the way that influences their Niche
+and then you had this idea of acting as
+if like the example with the person
+who's um being forced by their Niche to
+implement uh I'm a kind of person who
+says hello in this way or things like
+that and then that also relates to what
+Steph was saying earlier about drama and
+about performance so maybe Stephen do
+you have a thought on
+that yeah I mean the the the thing I
+like about what was mentioned here is
+how personality traits can be adapted to
+context like someone's A salesperson I
+thought was a useful example and then
+how that obvious starts to then change
+your whole broader way of seeing things
+and one area I think might be
+interesting and I've been there's the
+work of Harry Hest who's revisiting this
+the work of Roger Barker from the 60s we
+did a lot of work on Behavior settings
+so he looked at a whole load of children
+across the US and he looked at how their
+behavior was when they were in a school
+or in the cafe or different places he
+found the difference in
+Behavior between settings for the same
+child was bigger than the difference in
+Behavior between personalities of
+children I the same child was changing
+its Behavior radically based on the
+settings um and that that work kind of
+got lost but Harry heft has sort of been
+really pushing that again I I think that
+can tie into this is maybe there's
+personality
+traits I suppose you you know how much
+stability there is but could Behavior
+settings be kind of like that kind of
+more Dynamic version personality traits
+and I think active
+inflence makes that more possible to
+even have that conversation rather than
+the more sort of static
+psychometric data which is kind of toped
+down and kind of you just have to accept
+it feels like this is M you can get in
+there and play with it a bit more from
+different
+directions thanks for assuring that
+Stephen we'll go Colin and then anyone
+else who raises their hand yeah so
+that's a really a really good point
+Stephen which is that
+uh there is there are differences that
+people have to specific situations that
+are distinct from their broad patterns
+of consistency and personality and
+that's a long running debate in
+personality psychology going back to the
+to the late 60s um and the resolution to
+it basically is that yes there are these
+relatively stable ways in which people
+respond to specific situations and
+that's what I'm trying to capture with
+the idea of characteristic adaptations
+but then if you go across a bunch of
+character a bunch of situations and you
+take the person's average there are also
+persistent averages that differ from
+person to person and that would
+correspond to the trait so you can have
+both of these things in the same set of
+data um andh will fleen is a personality
+psychologist who has really been
+instrumental in collecting the data to
+show this very basic feature of what are
+we measuring when we measure a
+personality trait with something like a
+questionnaire where we're just asking
+somebody for this sort of general
+impression of themselves and so what
+he's done is used experience sampling
+methods where you like you have
+somebody's smartphone and it you know
+pings them like five times a day and
+asks them like how have you been acting
+for the last you know half an hour or
+for the last hour and then you get them
+to rate their behavior on a set of uh
+you know on a set of descriptions or
+categories what you see is that uh as
+you said people have as much or even
+more variability within their own
+behavior as there is variability in
+terms of their average behavior from
+person to person and yet nonetheless
+those averages are quite stable so if
+you do this for one week you can get a
+whole you'll get a he calls them density
+distributions right you basically just
+get a you know and they're usually
+fairly normally shaped um and you do
+that for one week you get this whole
+pattern so sometimes the person's acting
+very introverted sometimes they're
+acting very extroverted you know at
+ranges um but there's there's a peak and
+that Peak is very stable if you do it
+again in another week so the person goes
+through another week of behavior and
+again they're varying very l in their
+behavior but if you look at their
+average level of that particular
+Behavior it's quite stable over time and
+so and then he's also shown that that
+correlates quite highly with the ratings
+that we get from these General
+personality questionnaires so the
+questionnaires really are tapping into
+this sort of General average tendency of
+specific behavior even though of course
+the behavior itself varies widely from
+situation to situation and over time
+both due to situational affordances and
+due to whatever is going on internally
+in terms of the goals that the person is
+pursuing at that moment awesome let's go
+Marco then
+Adam thanks it was actually really
+interesting I apologize I'm going to add
+another interesting thing to connect to
+so so so someone mentioned Steph
+mentioned the uh the kids in the
+classrooms and the context and I think
+development might be also very
+interesting here because um personality
+might be relatively stable across the
+lifetime but but I think hopefully we
+can agree that personality also enriches
+um and in in that process of enrichment
+and I would also say
+empowerment um there's I think you could
+say a shift between the balance of
+endogenous and exogenous influence on an
+agent's behavioral adaptation or to its
+to its niches um and so there's a
+there's a change in the scope in which
+the personality uh has a relatively
+large influence on the way they adapt
+and I guess I guess I'm just asking
+about thoughts on how you might picture
+that kind of process of how personality
+might actually in the beginning um
+largely concern itself with how to
+engage with the world such that it might
+internalize that which it normally
+co-ops from the environment so normally
+offload a lot of stuff to behaviorally
+adapt which might explain the the
+variation due to environments but then
+over time as it does so it internalizes
+certain heris certain patterns certain
+policies and learn from environments to
+kind of enrich its personality and then
+extend the scope uh of of influence from
+their personality um yeah I don't know
+if that makes sense but yeah cool
+thought Adam and than anyone
+else uh so few thoughts from before and
+then um some thoughts on Marco's
+thoughts um so the flee and description
+of uh personality as a kind of a density
+uh distribution um I think and the issue
+of um the stability of personality and
+the variance of it um with within
+individuals across context which is part
+of the reason the uh book that was this
+chapter was part of was called modeling
+persons and situations but uh taking
+these ideas together uh we're kind of in
+the same territory uh that of these
+fundamental questions in the free energy
+principle of like what is the
+ontological status of a non-equilibrium
+study State distribution bounded by a
+Markov blanket um what's the granularity
+over which we can find this this thing
+that we're identifying so it's you're
+uh and so um col will be able to speak
+more to this but this idea of like there
+are ways of describing that uh your
+degree of variability across context is
+itself something that can be stable and
+this could be itself part of your
+personality um to uh now kind of loop
+back uh to what you were just describing
+Marco
+um I really like that idea um so it's
+like you're you're starting
+out in a situation where through this
+interaction between you and this context
+um that you're entering into in certain
+ways based on your own expectations and
+the expectations of people in the
+environment and and the structures that
+are there
+built up from this there's a certain
+stability and then you Bo you
+uh this stability um ends up shaping you
+um both just as as a consequence of like
+this is the thing for you to predict but
+also in the active inferential sense and
+as you're saying empowerment this is
+what's going to help me get better
+purchase I'm reducing my uncertainty
+with respect to realizing the value of
+uh existing and so this um idea your
+personality being kind of um
+internalization of structure and maybe
+at a certain stage almost like a kind of
+amortized inference um in terms
+of I got from you
+uh yeah I really like that idea a lot
+cool Adam
+Shannon you're muted ch
+thank you um going on this developmental
+thread and um the paper that you brought
+up this morning Daniel and um Anna's
+newpaper on the the first priors when
+you're in ruro as a baby I haven't read
+it yet but
+um the idea that like when you're in a
+neonate in a body you're literally
+relying on someone
+else's interceptive States and
+biological states to regulate everything
+about your inceptive in biological
+States and then you're born and you're
+still kind of relying on um that
+caregivers inceptive States or their
+behavior when they're holding you or
+coming to comfort
+you um
+this I think could relate to what Marco
+was saying about how your personality de
+develops so first if you have if a
+personality is something like a
+collection of effective States and
+behaviors
+and an infant is completely sort of
+reliant on the environment and the
+social environment to regulate its own
+personalities and as you grow through
+toddlerhood you slowly are able to
+control this yourself like you can
+maintain your own body budget a little
+bit more um learn how to how to get your
+own blanket if you're cold or like self
+soothe and then you grow older and maybe
+you're taught how to make music and
+learning that this is a new way that you
+can explore your personality or create
+it um
+and I don't study development at all so
+sorry if this is wondering maybe Sasha
+can pick up on it but I I feel like this
+can kind of connect if if instead of
+looking or not instead of but in
+addition to looking at averages but
+looking at like a Time series of
+personality development over time and
+like you could do at any point in time
+or at any range of time some sort of um
+like what would be the the active
+interests model of your life in infancy
+in toddlerhood in you know Rowdy teenage
+years and as adult and you'll have you
+you'll find these like steady
+trajectories at the same time that a bit
+R Hope some can pick that up let me
+connect that to a few other points So
+Adam raised this question of what is the
+level of the thing or how do we identify
+things from empirical data specifically
+so that we can use it in active
+inference type or free energy principle
+type models do we use renormalization
+group or principal component analysis or
+some type of adjacency Matrix some type
+of marov blanket what are those things
+that we're actually going to be modeling
+and that reminds me a lot of a theory
+called ant uh actor Network Theory by
+Bruno Lor and then also on the ant
+wavelength Colin was mentioning how
+there's so much variation Within
+individuals but also St stable
+differences between and that reminded me
+a lot of my graduate school work with
+ant colonies where day-to-day the
+variation across all the ant colonies
+was extreme if it was raining they would
+do one thing if it was very dry versus
+if it had rained the day before those
+were massive determiners of colony
+behavior however across days and even
+across years there were stable markers
+of colony behavior and there were
+characteristic ways in which they
+responded to to the environment so it is
+possible to have a type of measurement
+and understanding of a system which my
+adviser established through long-term
+observation where you can actually model
+this development through time as well as
+within a population which doesn't erase
+individual differences it actually is
+the framework by which individual
+differences arise and then Shannon is so
+beautiful with music being introduce
+like a thread of personality and then
+that can be used to explore these
+regularities Adam then
+Stephen hi um what was the paper that
+people are mentioning uh about like
+first priors I'll post it in this jitsy
+and we'll put it in the YouTube chat but
+let's continue without worrying about
+this paper
+okay go on oh
+sorry should I go do you want to can I I
+just I was just going to put in one
+thing maybe I just um
+because I like when it mentions here
+relatively stable parameters of cyber
+cybernetic mechanisms sort of those kind
+of Dynamics and I think that links also
+to this idea of how that might change
+during our life and thinking about our
+lifetime and one thing that I'm very
+interested in is is when trauma comes
+into play PTSD and other types of
+situations and you know it's um it can
+really shift the state of someone and
+poly vagal Theory kind of talks to that
+where we've kind of got this sort of
+social co-regulation that we have as
+humans but we also have our kind of
+Primal kind of fight or flight or gut
+sort of sort of fear um responses and
+how those things are in a way they
+another type of like patent Behavior
+which becomes incredibly stable too
+stable like you can shut down or you
+might get into rage but then over the
+period of the day or life the challeng
+is they may it may be unregulated about
+when they appear so someone might sort
+of be a certain way and then they flash
+into rage you know and then they come
+come back into and their personality is
+radically different and I think this is
+so there they might be interesting to
+bring in that that that as a as a kind
+of a what happens when that relatively
+stable State itself flips you know um so
+the and it so your your your mechanism
+might not be cognitive but it might be
+in that kind of um polyal system yes the
+body influencing phase transitions in
+personality or behavior Adam and then
+Colin and then
+Marco we muted
+ad thanks um yes I think uh Colin should
+probably speak to what was just brought
+up in terms of like what actually
+happens with people um but in terms of
+uh like a high level of abstraction um
+so yeah it seems like there's this sense
+in which you can think of Personality as
+a kind of core screening but it's and a
+kind of renormalization and um in terms
+of it existing as a phenomenon and it's
+a and epistemically it's a kind of core
+straining um afforded by this
+renormalization um the this kind of
+throwing away a variability as you form
+these higher level attracting States um
+that you can uh ignore them uh with
+within the scope of a certain type of
+modeling that you're engaging in with
+respect to having certain objectives of
+trying to predict certain things um
+whether you're a personality modeler
+trying to predict someone else or trying
+to predict yourself or whatever um
+the So within this um looking for this
+like
+optimal level of epistemic grip in terms
+of like the granularity of your
+description um
+this there you could describe these
+cybernetic control parameters as being
+uh part of the causal process of what's
+responsible and then if you take the
+system and you perturb it there's going
+to be like a range where like the order
+parameter changes and you can get these
+nonlinear maybe phase shifts where the
+um you're now in a different regime and
+it may look like a very different kind
+of person because the personality
+structure as this stable attractor
+Network um can then become
+destabilized um and so that would be
+like a high level in colge probably
+speak to like what actually happens with
+people cool yeah call and go for it so
+you get these phase shifts in Behavior
+but they're often due to persistent
+sensitivities in the underlying
+mechanisms right so let's take um well
+so uh PTSD okay um what you have there
+essentially is some kind of traumatic
+event uh is an intervention that resets
+the sensitivity of the threat systems
+and so the that corresponds quite well
+to the big five dimension that's labeled
+as neuroticism which is an old-fashioned
+word but in this context basically just
+means sensitivity to all different kinds
+of negative emotion um and so obviously
+that's heightened in PTSD and what that
+means fundamentally is that you've gone
+through some kind of traumatic event
+that led to your your it wasn't just
+learning about a specific event right
+what it did was that it reset the
+sensitivity of your threat system as a
+whole so now you are perceiving threats
+and reacting with defensive negative
+emotion to much more minor situations
+than you would have
+previously um and of course even in
+terms of risk for PTSD we know that
+people who are higher in threat
+sensitivity to begin with are more
+likely to develop PTSD so it's not like
+it comes out of nowhere typically but
+nonetheless there obvious vious ly this
+change um and there was a a recent
+really nice meta analysis of Personality
+change following uh therapy and
+different types of psychotherapy whether
+it's pharmaceutical or talk therapy or
+cognitive behavioral therapy all of
+these lead to changes in personality and
+the the trait that changes the most as
+you might expect is reductions in
+neuroticism right so uh what we're
+talking about here is the ability to
+shift these underlying parameters that
+are not constantly manifest in the same
+way so when we say that somebody's high
+in trade anxiety for example we don't
+mean that they're experiencing anxiety
+at every minute of every day at a high
+level right we just mean that they're
+more likely to be anxious more intensely
+in more situations than somebody who is
+low in trade anxiety but nonetheless
+then if we really want to understand the
+Dynamics of the system we need to
+understand those phase shifts from like
+feelings of safety to feelings of
+anxiety at any given moment and I that's
+what you're talking about but in order
+to understand how that works for a given
+agent we also need to understand these
+persistent patterns of the sensitivities
+that lead them to have these shifts in
+different situations and to different
+degrees than other
+agents very cool thank you Marco then
+blue thanks um yeah this is really
+interesting so um trying to tie back to
+the earlier talk about um the role of a
+effect to this aspect of trauma so I
+think it's mentioned before by by the
+two authors that that um we could uh
+validly see these complex systems as
+composed of uh different micr
+personalities distributed over scale and
+levels um and and similarly for affect
+in the sense written about by KAS per
+has and others so um Adam safron Adam
+also mentioned renormalization right so
+so I think that ties in also to a lot of
+different things like Stig or
+equilibration and I think perhaps it's
+it's a had a thought or don't want to
+share is maybe maybe um the clustering
+phenomenon of personalities might be a
+natural consequence of something like
+renormalization or equilibration if
+there already is a certain heterogeneity
+if there already is a certain kind of a
+symmetry in certain factors certain
+basic mechanisms of the CTIC uh systems
+shed throughout uh then that naturally
+should cluster because then they are
+more likely to cooperate if it remains
+hetrogeneous and disordered or not
+co-organized uh then it's inefficient
+but then you have this thing with trauma
+which I think would disrupt that process
+right because if you go back to the
+component you pointed out interpretation
+goals and strategy then that's basically
+the key things about a trauma right
+you're in a certain situation that just
+demands an extreme change in your
+interpretational beliefs or models your
+goals for the particular situation and
+the extreme pressure to have the right
+strategy to get out of it
+and I I think maybe the the the the side
+effect right the byproduct of that
+momentary extremeness is that it
+basically expands it influence and so it
+it it becomes hypers sensitive by nature
+and so uh the ongoing the always ongoing
+process of equilibration of everything
+co-regulating um becomes disrupted by
+that one participant the traumatic
+complex um if that makes sense so inste
+of a lot of different not these kind of
+equilibrating with each other kind of
+polycentric it becomes a monocentric
+equilibration if that makes sense it's
+AIT rambly lots of very interesting
+points thank you blue and then
+Adam so just to kind of take the trauma
+aspect maybe to the other side of the
+spectrum and and just in thinking about
+um you know like our own perception of
+our self right like so how we hold on to
+our own like person person ality versus
+is it you know congruent with what
+others think of us so I've thinking you
+know as how does this really relate to
+um meditation right like so in in
+meditation there's like the idea of
+getting rid of the aita right like so
+where like that's the thing that builds
+the ego or like the construct of eye so
+as we like eliminate this like construct
+of eye and also like staying in the
+moment right like we're not necessarily
+trying to build an accurate predictive
+model in in a meditation state so so
+when we have this like it's like this
+dissolution of of like free energy or or
+or what is happening like in in the
+meditative State um that that can also
+bring about a drastic personality shift
+I think as we get get rid of the eye and
+learn to be non-reactive as opposed to
+like traumatic reaction that's nonlinear
+acceleration awesome Adam and then Marco
+then Colin and then anyone else who
+wants to raise your hand
+hi um so I I just try to address a
+couple of the threads
+um come to meditation uh at the end I
+think but the
+um it seems
+like a lot of the um principles of
+personality
+uh in terms of their generality uh could
+be really interestingly modeled um
+actually using things like an colonies
+uh like in Daniel's work um and you
+might even find interestingly like even
+similar mechanisms at play so like in a
+recent paper starting to do active
+inferential modeling of and Colony uh
+Behavior Uh decisions and foraging um
+Daniel mentions like you know there's
+like the was it the foragers have more
+dopamine
+so you could see things like um the
+functional significance of dopamine
+actually as it's way of parameterizing a
+cybernetic system as being potentially
+similar although potentially switching
+across scales where in the individual
+ant and maybe even in in the personality
+of the colony as a whole and uh there's
+would be actually this interesting
+interplay between the personalities of
+individual ants and the personalities of
+colonies and this interplay which might
+not be an exactly a one for one might
+actually even be a kind of um uh
+complimentarity where certain
+characteristics being present on um this
+broader level this this more
+encompassing marov blanket where the
+individuals are part of a superorganism
+or just the organism um from the
+perspective of natural selection because
+the colonies that which is selected uh
+as Daniel says um but so the person out
+of the colony
+let's say um would then interface and
+interact with the personality of the uh
+the individuals of which it's composed
+and uh potentially in an in training way
+but potentially not um to loop around um
+you might even be able to uh at the
+level of of colony talk about things
+like the aect of tendencies that it's
+you know it's what is its what is the
+affect the veillance the emotions
+experienced by the colonies is a whole
+in a given instance what is its
+um uh General mood and then what are its
+patterns of mood across different
+situations it's and you might now we're
+kind of going into what we more call
+personality territory and you could even
+think of things like um to kind of bring
+in some of like Marco's idea of the
+nature of trauma and this like dynamic
+system sense like you could traumatize
+The Colony and does it then at some
+point like
+there you would expect some sort of like
+elasticity or um what's the term like
+Hyer I don't know not that but it would
+be you perturbate and then it it would
+have some sort of adapt potential to
+come back from the peration because
+that's
+what we're trying to do is H keep
+existing in the way we are and so some
+adaptive potential but you push it too
+far uh and then you might not get back
+this um adaptive attracting structure
+you might get stuck in a different
+regime
+um and you could think of the same
+things uh similar
+things this could be a way of describing
+things that happen within the within uh
+individuals like so there's
+um you can think of that maybe on
+multiple levels of abstraction but stop
+for now thanks yep I just switched the
+slide to figure two so Colin and then
+Marco go for it and maybe we can
+introduce the p struct idea or just how
+does active inference specifically help
+us address some of these questions but
+go ahead call in and then Marco Okay
+well what I'm my thoughts are about a
+couple of the last comments so they're s
+more related to the to the previous
+slide and then go ahead then it's fine
+um so in terms of both this discussion
+of what's going on in trauma and what's
+going on in meditation I think one of
+the interesting things to think about
+again is the distinction between the
+personality traits and the
+characteristic adaptations um because in
+uh in both there's the capacity for both
+of them to be shifted so uh Marco was
+talking about the way in which in a
+traumatic event uh you basically
+pre-existing goals and interpretations
+and strategies are dramatically
+invalidated and and that uh you know
+then means that the system doesn't know
+how to pursue its goals in fact it may
+not even know what its goals should be
+and obviously that's extremely
+disruptive and disregulated and so one
+of the challenges in the immediate of
+course is to figure out uh what you
+should be doing what strategies you
+should be using but then there's also
+this capacity for that traumatic event
+uh to shift the underlying sensitivities
+of the system to what is perceived as
+disruptive in future right to sensitize
+to to things that disrupt um and that is
+you know obviously an adapted response
+to say like if you're in a in a
+dangerous environment you should become
+more sensitive to uh to danger and the
+traumatic event just basically taught
+you that the world was a much more
+dangerous place than you thought that's
+part of what is uh tragic about it right
+because you have this persistent sense
+that the world potentially is much is
+much more dangerous even than it is or
+that you should experience it as being
+but then you have the same kinds of
+Dynamics going on in um in meditation
+where trying to reduce your reactivity
+that's like trying to shift some of
+these basic parameters of the system so
+that you you know react less easily
+you're disrupted less easily and then
+the kind of non eye idea the recognition
+of the the elusory nature of the eye
+what that's about is basically not being
+overly attached to your uh model of
+yourself right because the the model is
+a model it's not yourself so if you are
+overly attached to your model then you
+have you're overly attached to your
+conscious understanding of what your
+goals and your strategies are and what
+you're like and meditation is basically
+trying to get you to recognize that
+those ideas that you have a they're just
+a they're just your model they're not
+actually the way that you are and B
+they're contingent on your situation and
+so you should be willing to let them go
+as your situation changes and as things
+evolve and so it's essentially creating
+both a pattern of Greater flexibility in
+the capacity to adapt uh but then also
+the attempt to uh downregulate the
+negative reaction to disruption right
+because if you have more confidence in
+your ability to adapt then you should uh
+be less defensively reactive to
+disruptions because you can be confident
+that you'll simply adapt to whatever the
+the new situation is thanks Marco
+yeah thanks um yeah just just
+piggybacking on that because that was
+really nice um so so so my thoughts on
+meditation and very good and important
+question I think um so so going back to
+the image of having all these different
+distributed micr personalities or sub
+personalities I think meditation can be
+seen as allowing them to manifest and
+arise as it often is called and manifest
+their the Expressions which are always
+going on to also reach as a were the
+global workspace or Consciousness or the
+uh conscious attention and so what
+you're doing then effectively is
+broadening the collective of sub agents
+or subpersonalities or subsystems such
+that that equilibrative process improves
+because then you have a bigger scope a
+bigger domain of possible inputs to an
+ongoing process of inference um and
+importantly this is then of course
+without need for explicit modeling
+you're don't need to explicitly label a
+certain um rationally or verbally
+explicated belief right it's an exercise
+in in in the in the deepest sense of it
+uh importantly it's it's it's
+effectively a reflexive Niche
+construction because meditation is
+systematically to basically dis
+attenuate to yeah to attenuate external
+inputs you sit in a very neutral
+position you you're in a calm
+environment external input is minimized
+and so all the inputs well it augments
+the inputs that is endogenous coming
+from within which of course um is then
+going to translate or transfer to normal
+waking States because those are all the
+endogenous or it concerns all the
+possible indulgist influences on your
+ongoing
+cybernetics and so it's it's it's a
+reflective shift right and yeah I don't
+know what I was going to say uh yeah so
+it's basically just a sertic game so
+from what I have seen my limit
+experience with meditation and reading
+upon it it's it's all systematic
+cybernetic games it puts you in a
+situation that that forces you to train
+the process that underly sonetics
+concerning the purely reflexive which is
+of course beautiful because there's
+almost no opportunity for that it's an
+extremely exclusive state of being that
+exclusively uh forces you to attend to
+these indous processes it's kind of the
+sbics of the sbics if that makes sense
+great points there it's why so much
+meditation begins with thankfulness and
+just to give actually one behavioral
+example um let's think about the example
+of a circus elephant where when it's
+young it has a heavy chain and it can't
+break away and then when it's older a
+simple thin rope can keep it connected
+so at a first pass one might say um well
+why doesn't it just break away why
+doesn't it engage in a policy of
+breaking away and the habits the E the
+priors over the policy the field of
+affordances may not even include that as
+an option so if certain types of actions
+are down regulated so to speak by 100x
+before any evidence comes in then it's
+going to be interpreted within a prior
+that downregulates or basically
+downweights the relevance or the
+likelihood of certain types of actions
+happening but also there's this element
+of the preferences where it may through
+whatever mechanism it's not an exact
+metaphor here the system kind of like a
+Stockholm syndrome situation the system
+can actually uh uh internalize a
+preference for certain States that may
+or may not be consciously available
+during regular States Of Consciousness
+that lead into the implicit processing
+of everything within a framework that
+results in Behavior that's not aligned
+with something else which could be
+external Niche pressure or peer pressure
+or it could be disconcordant with one's
+own narrative thems and then meditation
+is interesting to think about as far as
+isolating these different types of
+parameters in the model and different
+kinds of meditation lots of different
+ways to do it Adam
+hi
+um hard to follow up on all that the
+um some the way the threads came
+together for me uh
+was it seems like across varieties of
+meditation
+and why would you do such a thing um and
+ultimately like to bring back maros
+point about empowerment um it's you want
+to be more capable in some way having a
+better grip on existence and a
+particular kind of way uh you want to be
+you have more you want to have um more
+degrees of freedom uh with respect to
+the way you're engaging with the world
+and there's a sense in which you can
+think of different types of meditation
+as either as allowing you to uh navigate
+through
+cybernetically uh free free energy
+Landscapes which can uh and and and also
+adjust the nature of these Landscapes
+such that they are navigable so uh you
+can think of something like and to bring
+back in like something like trauma or
+something like uh the elephant getting
+stuck you can think of this as like a a
+getting stuck at a local Optimum um of
+of a potentially Jagged free energy
+landscape and so if you can uh let's say
+reduce the uh some emotional uh
+regulation capacity the ability to
+defuse from an experience and keep the
+gain on positive feedback loop cycles of
+thought and emotion from getting as high
+as they might uh you might be able to
+make the free energy landscape less
+Jagged the differen is from point to
+point it's going to be uh you're not g
+to have these wild swings and so this
+might give you greater latitude with
+respect to pursuing more complex uh
+policies and actually I hope at some
+point we start to discuss some of
+colins's work on well-being because I
+think it it docks uh there's a lot to be
+said there um but uh one thing uh on
+this one podcast con was mentioning like
+you can think of one of the benefits of
+mindfulness uh which is like in pursuing
+any kind of complex goal um there's
+going to be a sort of trading off you're
+going to have to do against different
+things on on road there and so if you
+can like temporarily uh let some of your
+characteristic adaptations slide um let
+some of your uh policies like not be as
+important if they're if they're not
+being you think they ought to be
+realized but they're not within some
+sort of like hierarchical hierarchical
+policy selection well then you can
+pursue uh you can hit targets you wouldn
+otherwise you can you're a mountain car
+you can get to the top of the mountain
+um and the mountain car problem um
+so yeah nice cool Colin and then anyone
+else I just wanted to to say to point
+out that that's that's the essence of
+non-attachment right you're not attached
+to particular policies and that means
+that you don't get hung up on a subg
+goal when you should be shifting
+policies because what you are trying to
+pursue is some larger goal there's sort
+of you know there's The Stereotype of uh
+meditation at least you know Zen
+meditation for example Buddhist
+meditation that you're eliminating your
+goals right you have no desires but
+that's not that is a that's a caricature
+right because it's not that you have no
+goals it's just that you're not attached
+to particular low-level goals you might
+be uh you know you probably remain
+attached to if you're a good Buddhist
+for example to eliminating suffering for
+all beings and so it's not like you're
+not go directed and you know you
+probably maintain maintain life by
+eating and things like this it's just
+that you're not attached to the
+particular policies that might be using
+uh to achieve these higher level goals
+because goals are are just nested I mean
+there's a way in which there's a goal
+but then the policy is also just a goal
+it's just there're nested goals all the
+way down to the terminals which are
+specific motor operations or specific
+cognitive operations and so
+non-attachment is basically becoming
+more flexible in which subg goals you
+are willing to consider and to
+use very nice blue
+so I wonder if it's like it's more that
+it's not attachment to the policy but
+that actually is the policy and it's not
+attachment to the specific generative or
+predictive model I wonder if that's like
+because the policy is then the policy of
+non-attachment to the model or or
+Ultimate model
+flexibility right you could call it a
+metap policy metap policy right and and
+so um and like secondly I wonder about
+uh you know the idea of staying in the
+in the present moment is this like some
+kind of free energy equilibrium like in
+and not necessarily minimization but
+like if we take the generative model and
+the predictive model if we take like the
+value to zero are we like is meditation
+like staying in the present moment just
+like this ultimate state of of
+equilibrium in in free energy like
+infodynamics well interesting point
+about the hyper prior the basian hyper
+prior and also that's why a lot of
+meditation processes involve rhythmic or
+the cessation of other inputs because it
+allows the interception potentially to
+proceed in a different way isolation
+tanks or uh other Altered States Of
+Consciousness so let's do keeping
+comment short because we only a few
+minutes left Adam and then
+Marco in terms of the there's this one
+paper actually that just came out
+recently about a model of meditation
+with respect to um the temporal depth
+and counterfactual richness of uh your
+generative modeling that just came out
+I'll try to find that and send that but
+I think that would speak to this idea of
+staying in the present moment also this
+idea of um staying in the present moment
+um also makes me think of this uh Mark
+was like kind of intimating that you can
+think of meditation as a kind of uh like
+game task or almost like a kind of like
+uh maybe maybe play even uh but it's
+this
+building
+capacity um that
+is building
+capacity okay we'll come back Marco for
+okay uh so so a building of capacity
+through relaxing some of your priors and
+so letting um you to be uh informed by
+uh policies with respect to mental acts
+that you might not normally deploy and
+you might not normally notice um what is
+entailed when you deploy certain types
+of mental act so things might come to
+mind uh that wouldn't normally uh that
+would place you now in into a different
+state of uh affective inference and so I
+think uh if we wanted to do uh modeling
+of this of something like meditation uh
+we would want to use this sort of
+imaginative policy selection described
+by something like sophisticated um
+effect of inference and that would begin
+to get us there um the exact way and one
+more thought before we move on is um one
+more thing I I was actually wondering
+with respect to meditation I've talked
+about this some with Colin is uh above
+the traits in the personality hierarchy
+you have these metat traits of stability
+and
+plasticity and um
+stability uh is this shared variance
+over and uh Colin actually named these
+um it's the shared variance over
+neuroticism inverse neuroticism
+agreeableness and conscientiousness and
+plasticity is the shared variance over
+extroversion and openness intellect and
+interestingly the stability seems to be
+basically the inverse of the general
+Psychopathology Factor P um by and large
+um but I I think thinking of mindfulness
+and meditation with resp back to um
+building capacities for both stability
+and plasticity which um helping to U um
+basically place this so you can think of
+stability as your ability to follow
+through on and protect your policies or
+characteristic adaptations and then
+plasticity would be your tendency to
+form new characteristic adaptations so
+like whether um so let's say you do
+encounter trauma um plasticity might be
+what makes the difference so stability
+would be how much it might make sense to
+the degree to which you're actually
+traumatized like you're very stable
+something might you know bounce right
+off you you're you're not traumatized
+but let's say you don't have a lot of
+plasticity and that instability is
+compromised plasticity is the thing that
+would let you update and uh create new
+strategies uh for being in the world and
+so they're kind of the state of dynamic
+tension in that they can like pull at
+each other
+um but they're both ultimately
+synergistic in that like you're not
+going to be particularly plastic unless
+you have this Foundation of stability
+and you're not going to be able to
+maintain your stability long unless
+you're metastable and so um part of with
+meditation mindfulness I'm wondering if
+one way of thinking of it is it's part
+of what's actually really letting you
+kind of like ride this Optimum of
+balance stability and plasticity and
+that could be one way of thinking about
+part of what um people get from it cool
+Marco then
+Colin yeah that's amazing that's it's a
+perfect setup yeah um I I I also fully
+agree with this theme of complimentarity
+right so stability and plasticity sounds
+really it resonates with picity sorry
+openness and focus which is a big
+complimentary Uhl yeah big po polarity
+in meditation practices right so if open
+meditation just feel everything let it
+all come in ETC Focus meditation you
+know focus on one point one
+Mantra um and that's has a bigger
+connection to the the more well-known
+complimentarity or polarity of
+exploration exploitation right but it's
+not about the polarities per se it's
+it's always about the balancing them Ma
+and for example Sussex had also a nice
+paper on that it's not about perfect
+thetical representations you can have
+some errors it's about how you balance
+everything off and so again we go back
+to the idea notion that that meditation
+can be games where you effectively
+practice and balancing that on cuz that
+balance is not something you can
+explicitly verbalize it's intrinsically
+preverbal because you can verbalize
+maybe the particular strategies or
+beliefs for Ability or for picity but to
+balance them off is more effective it's
+more flexible or fluid and so the the
+another interesting maybe Duality that
+that you can think of is also
+equilibriums and games or contexts right
+so in Game Theory you have an
+equilibrium for a particular game or
+setting and so what you said earlier
+about equilibrium and staying in the
+moment uh regarding meditation I think
+it's a very nice idea what what Adam
+already said is that um by being in that
+particular game which is that meditative
+practice um you will naturally by free
+energy minimization go to a particular
+kind of equilibrium but that NE
+necessitates change some updates and
+those updates might actually mean that
+your equilibrium seeking Behavior or
+your attractors will be different in the
+other context so the underlying
+assumption is that these particular
+changes in equilibriums or priors or
+attractors um are transferable so um
+yeah does that make sense as for your
+question on meditation presence in the
+presence yeah cool thoughts
+Colin I was just going to say a little
+bit more about stability and plasticity
+um I think that those can be seen as the
+two fundamental uh needs of any
+cybernetic or active inference system
+that exists in a complex or changing or
+unpredictable environment right so
+stability is in some sense just the the
+most fundamental requirement because the
+system must be able to pursue its goals
+effectively in order to be a cybernetic
+system right if it's an organism that's
+what it must have in order to persist
+and even an artificial system in order
+to persist as the system that it is it
+must be moving effectively toward it its
+goals um but then if you have any degree
+of unpredictability in the environment
+you can't just be satisfied with the
+same set of policies that you have at
+any given time you're going to have to
+be able to update your policies generate
+new policies and so then immediately in
+order to remain stable over time in a
+changing environment you also have to be
+somewhat adaptive or plastic and and so
+you have these uh inherent Necessities
+for the capacity to maintain a stable
+order of goal directed functioning and
+then the capacity to generate uh
+new components of the model right new
+policies or even new goals or new
+interpretations of the of the situation
+that you're in and then those so those
+are complimentary but they can also they
+are also in Dynamic tension as Adam
+mentioned because if you're massively
+exploratory it can be difficult to
+remain stable because you have so much
+new uh you know information coming in um
+similarly if you are well I mean we've
+essentially already covered what the the
+danger of being too inflexible and too
+unexplored as things change over time
+then you become unadapted to your
+situation so stability and plasticity
+aren't opposite to each other right
+stabil the opposite of stability is
+instability the opposite of plasticity
+is rigidity you can be uh stable and
+plastic or stable and rigid you can be
+unstable and plastic and unstable and
+rigid cool Adam go ahead
+hi
+um it seems like at some point it could
+be good to discuss connections of um
+narrative perspectives on personality
+because this idea of um narrative as
+active inference and the work trying to
+be done there I think there could be
+like a rich interchange because in some
+ways you can think of know selves as
+centers of narrative gravity and you can
+think of person as um styles and modes
+of narration and themes and motifs as
+you are this semi-reliable narr narrator
+telling your story and making and
+enacting it and making it so to degrees
+um and this being a source of to the
+degree you have stability and plasticity
+um this would be one source of it the
+ability of narratives to provide cross
+situational intertemporal common context
+and but also because of their richness
+to create this um Rich this kind of
+their combinatorics and Rich
+representative capacity also being a
+source of plasticity and so um narrative
+being a source of balance Dynamic
+balancing this Dynamic tension although
+the narrative itself can also not be a
+source of balance but imbalance if the
+style of naration becomes problematic so
+that kind of mindfulness enters in there
+again where um it might like your usual
+styles of narrative narrative I ation
+you might let that go a bit you go um
+this is this is the way in which you go
+naive Bays on your expectations um yep
+the stories provide the polls and the
+archetypes and then you can say okay
+it's like Goldilocks but for the
+internet of things or something like
+that and that gives you a vocabulary to
+communicate and design you might need a
+very different story in a very different
+context and kind of bring it back to
+trauma that might be all the difference
+between whether you get stuck or you
+experience post-traumatic growth yeah
+cool interesting and just um one closing
+uh slide that I want to put up while
+people prepare their thoughts this is a
+question just from uh audience member
+they wrote I have a question about what
+happens when blankets intersect blankets
+of blankets and so let's think about
+this in this kind of blankets of
+physiologically relevant States
+informationally relevant what what um
+think about what we're talking about
+here and at which nodes that would
+happen and then there's a link to a talk
+by Carl friston and a question about how
+nodes intersect and just while people
+are thinking about this or their last
+thoughts on the paper uh one note is
+about the scientist and the personality
+scientist as an informational forager as
+an active inference agent themselves and
+so our quest to reduce uncertainty about
+personality it shouldn't be about the
+optimal descriptor it should lead to a
+question of ourselves which is what is
+the optimal perturbation that we can
+design that will reduce our uncertainty
+the most about this individual's
+personality
+and so that takes into account
+population level Dynamics as a prior but
+personalized and um kind of dynamic
+testing so imagine having a baseline
+prior across knowledge architectures
+that people had and then having a
+dynamically updating online course that
+was optimally informative from both
+sides of the interface it was optimally
+informative for what kind of learner the
+person was and they were reducing their
+uncertainty optimally about the topic at
+hand and so that was like a
+co-evolutionary process
+amidst a prior that was population level
+but personalized in the individual
+trajectory so it's a really interesting
+framework in col and Adam thanks a lot
+for coming on the stream was like really
+helpful and we're excited that you'll
+come back for next week so in these last
+couple minutes anyone can raise your
+hand give a last thought what would be
+something that we would want to say to
+this slide about how nodes intersecting
+stories intersecting individuals
+intersecting how does that come into
+play and or what should we be thinking
+about for 13.2 that would be good to
+cover Shannon and then anyone else who
+raises their
+hand I guess I have a thought about um
+the question on this slide um so is um
+one node that's a sent state in one
+blanket the internal state of another
+blanket like that's totally the case
+because you basically choose a
+perspective and whichever you know
+blanket sort of internal State you want
+to describe or whichever thing that
+you're calling the agent separate from
+its environment then that's the internal
+state that you're going to describe and
+if you're looking at like if this blue
+node is a neuron and you want to
+actually know about this pink node this
+other neuron's internal State then
+that's going to be your internal State
+and these other guys are going to be the
+sent State the blanket around it and
+that's going to be the statistical
+boundary that you're using to explain
+the behavior of that neuron and then you
+can Aggregate and this collection of
+neurons will all be an internal State
+for the next collection of neurons so
+the answer is in the question that's
+exactly right perfect answer showing
+that the answer is in the question is
+the answer
+Adam uh in terms of uh loop around to a
+previous thought in terms of nested uh
+blankets um and where these different
+blankets might have different
+characteristics in their interaction
+um for personality uh there's some
+interesting work um colum might disagree
+on tight and loose cultures where you
+can think of like the personality of the
+culture you're within and this tightness
+and looseness seems to correspond to
+this stability plasticity Dynamic
+tension this fundamental cybernetic
+parameters showing up on the group level
+and you in theory can get this kind of
+complimentarity there where a tight
+culture might create more tight um
+individuals with respect to the degree
+to which you they let their their Pol
+whether they have a metap policy of
+letting their policy slide more um in
+different context but uh or instead of
+it being this sort of entrainment
+relation it could be a complimentary
+relation where the stability on the
+level of the group this broader um uhou
+attractor affords the fine grain the
+subsystems to actually have more
+latitude and vice versa um and I I
+imagine you might probably see similar
+things play out like with ant colonies
+um interesting point about multi-level
+systems and how they're associated with
+relative constraints in the last two
+three minutes let's think of a last you
+know if anyone who wants to raise their
+hand give a word or a sentence or few
+what is something that you took away or
+was exciting today and what was
+something that we could continue talking
+about in 13.2 and pick up where we left
+off Marco and then just anyone else who
+raises their
+hand yeah I just wanted to thank
+everyone this was like really amazing
+this my first this this kind of stream
+seminar uh in ages so thank you is
+innovating and I think in general what
+to be taken away I think is is uh
+excitement because it's kind ofing how
+many different domains and topics and
+questions have been successfully
+synthesized in this big discussion and I
+think that's a testament to the power of
+these kinds of Frameworks of invasion or
+Active inflence frean Energy C etics
+when it comes to understanding us people
+us persons personalities um as
+individuals as as collectives so thank
+you again for exciting me thank you well
+said and the group performance is uh
+only realized it's only in acted even
+digitally when the people show up and
+it's only relevant when there's the
+regime of attention and so there's so
+much you know fun and it's great to have
+you um multiple of you on your first
+time here that's always appreciated so
+any other thoughts in the last minute
+otherwise in the calendar invite is a
+feedback form so if you're just wanting
+to think a little bit more if you're
+live participant you want to think a
+little more about what we could cover
+next week just put it in that feedback
+form and then anyone who's watching it
+just leave a comment for something that
+we could address even if it's after 13.2
+maybe we can swoop back and return to
+some previous comments but this was a
+super fun discussion and a big thanks to
+all the participants so really good
+times everyone and thanks a
+lot so see you next week

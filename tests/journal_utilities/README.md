@@ -1,58 +1,52 @@
 # Journal Utilities Tests
 
-Tests for the WhisperX transcription pipeline.
+Tests for the download, transcription, and categorization pipeline.
 
 ## Test Files
 
 ### `test_categorizer.py`
 
-Pattern matching tests (35 tests):
-
-- Stream type categorization
-- Project meeting patterns
-- Textbook group patterns
-- Edge cases and unknown patterns
+Video categorization by stream type, project meetings, textbook groups, edge cases.
 
 ### `test_youtube.py`
 
-YouTube utilities tests (18 tests):
-
-- ID extraction from various URL formats
-- YouTube ID pattern validation
-- Private video detection
+YouTube URL parsing — ID extraction, format validation, private video detection.
 
 ### `test_database.py`
 
-Mock-based database tests (12 tests):
-
-- Connection management
-- Session operations
-- Import rollback
-- Audit trail creation
+Mock-based SurrealDB client tests — connection, session operations, rollback, audit trail.
 
 ### `test_importer.py`
 
-Session import tests (10 tests):
-
-- JSON parsing (dict and list formats)
-- Audit tracking
-- Error handling
+Session import tests — JSON parsing (dict/list), audit tracking, error handling.
 
 ### `test_audit_functions.py`
 
-Tests for import audit trail (requires DB):
-
-- `test_get_recent_import_runs` - List recent imports
-- `test_get_import_summary` - Import statistics
-- `test_get_failed_imports` - Failed operation retrieval
+Import audit trail tests (requires DB) — recent imports, summaries, failures.
 
 ### `test_transcribe.py`
 
-Tests for transcription output:
+Transcription output formatting — single speaker, multi-speaker, empty input.
 
-- Single speaker formatting
-- Multi-speaker formatting
-- Empty input handling
+### `test_channel.py`
+
+Channel enumeration and playlist discovery.
+
+### `test_downloader.py`
+
+Download logic — audio/video download, skip-existing, error handling.
+
+### `test_playlist.py`
+
+Playlist enumeration and video listing.
+
+### `test_renderer.py`
+
+Course scaffolding — module.md generation, directory structure.
+
+### `test_transcriber.py`
+
+Local Whisper transcription — model loading, audio processing.
 
 ## Running
 

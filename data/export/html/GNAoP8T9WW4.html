@@ -1,0 +1,2620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active InferAnt Stream 016.1 ~ Actionable Template-driven Research: Operational Meta-Science</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active InferAnt Stream 016.1 ~ Actionable Template-driven Research: Operational Meta-Science</h1>
+<div class="meta">Category: ActiveInferAntStream &middot; Series: ActiveInferAntStream_016 &middot; Episode 1 &middot; Speakers: Actionable Template-driven Research: Operational Meta-Science &middot; Duration: 1:34:25 &middot; Views: 156</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=GNAoP8T9WW4">https://www.youtube.com/watch?v=GNAoP8T9WW4</a></div>
+<article>
+<p>All right. Hello, welcome everyone. This is ActiveInference Stream number 16.1. It's</p>
+<p>December 2nd, 2025. I'm going to start the stream with a GitHub push. Everything is on</p>
+<p>the GitHub repo doxology template. We will reload that and we're live. Looking forward</p>
+<p>to your comments and any ideas or questions in the chat. Here is where we are going today.</p>
+<p>We are going to a test-driven development, configurable, end-to-end test suite operation,</p>
+<p>data analysis and visualization, validation steps, and PDF rendering, including with citations</p>
+<p>and clickable links and equations formatted as a scientific PDF, as well as a variety of</p>
+<p>other fun formats, including HTML files that can be opened for the web and slides for conversion</p>
+<p>to slides. That's the PDF rendering functionality. There is a LLM review output section that provides</p>
+<p>review and improvements and suggestions for the manuscript in English. There's a translation</p>
+<p>output using LLMs locally to translate. Then there are literature database search through APIs and PDF</p>
+<p>download and local LLM summarization, which we're going to use. So without getting too far ahead of</p>
+<p>ourselves, let's go to the agenda. Okay. The title of the stream is Actionable Template Driven Research,</p>
+<p>which is going to get at the core of what this template repo is. Operational Meta Scientific Arts</p>
+<p>and Crafts, which I guess is like the genre. The stream is live on YouTube on the Active Inference</p>
+<p>Institute channel. This will be a live stream interactive walkthrough, and we can also do some</p>
+<p>improvements and some other random stuff. See where it goes. Greetings Upcycle. Good to see you.</p>
+<p>Tools. I'm using a Mac computer. Cursor 2.146 with mostly the auto and the opus recently released,</p>
+<p>available at a discount, opus 4.5. And locally, Ollama will be using Llama 3 and Quan type models.</p>
+<p>Tools. Okay. Here in this, we can look at this on GitHub.</p>
+<p>There's a few big themes that are going to come up and I'm sure many more. This is just a first step.</p>
+<p>There's going to be a big focus on end-to-end configurability and ease of reproducibility.</p>
+<p>There's going to be the usage of a lot of thin orchestrators and articulated reference,</p>
+<p>which means that the modular flexible methods are underlying in a kind of single composable toolkit</p>
+<p>of the tool. And then, there's going to be a set of affordances and orchestration happens separated from</p>
+<p>those tools, which gives good ability to express different workflows and swap out different tool</p>
+<p>implementations. There's going to be a two-layer model to this repo overall, which I might as well</p>
+<p>describe here. The project folder is self-contained and is intended to be at the project level,</p>
+<p>like the specific research paper that's going to get generated. And this is going to be a test-driven</p>
+<p>package alongside a manuscript expressed in these modular markdown files, which are undergoing this</p>
+<p>internal coherence test suite, which could be zero tests or you could use it extensively, with the SRC code</p>
+<p>orchestrated through tests and scripts, which in the context of a certain formatting for the manuscripts</p>
+<p>in markdown, now pop out of the project, is going to be utilized by the template repo</p>
+<p>using the infrastructure modules and the scripts in the infrastructure and ultimately this top level</p>
+<p>run.sh at the top level, which is going to pop up this main menu where we can run the tests,</p>
+<p>we could render the manuscript, we could run the scientific review, we'll just start that one up now.</p>
+<p>So here we already, in this,</p>
+<p>I have these tabs here is one process going with the local LOM summarizing papers that were downloaded</p>
+<p>from a literature search. We'll look at that step. Here is the output of the translation into Chinese, Hindi, Russian.</p>
+<p>Here is the manuscript rendering, which includes the full test suite,</p>
+<p>test suite within the project level of the SRC here with respect to these tests within the project,</p>
+<p>and then the infrastructure level tests, which are in the top level test folder. So double test suite,</p>
+<p>then running the scientific analysis, which is the SRC orchestration within the project. So here it's like a</p>
+<p>template paper about optimization methods. Then section by section, going through the manuscript markdowns,</p>
+<p>that was the analysis and scientific figure generation. Then there's the discovery of manuscript sections.</p>
+<p>And for each manuscript section, they're generated into the PDF, the HTML, any other formats. Then the PDFs are concatenated to make project combined.</p>
+<p>Then there's validation of the subject. Then there's validation of the subject.</p>
+<p>Then there's validation of the subtypes.</p>
+<p>Then there's validation of the subtypes.</p>
+<p>The subtypes are copied from output within project, which is intended to be a kind of monophyletic, standalone, kind of briefcase.</p>
+<p>Then it gets copied for convenience to the top level, so we can always have the most recent version of the top level, just as a convenience.</p>
+<p>Then it will be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used to be used</p>
+<p>suggestions, beautiful hallucinations and all. So here is what that looks like when</p>
+<p>it's running. This is the English scientific review of the current</p>
+<p>manuscript. This one is on the translation step. We already have them so I'll just cancel</p>
+<p>it. And here's the summarization. So this is kind of the other branch. So you can, for</p>
+<p>this repo, you can use them together as I hope we will do so in the coming minutes.</p>
+<p>Or you could just use the keyword search and PDF download summarization pipeline, which</p>
+<p>looks like this. We'll make lit search. .slash run literature search and PDF download seven.</p>
+<p>This is going to search archive and semantic scholar for papers, download PDFs, add them</p>
+<p>to the Bibtex library, generate AI summary, and you can set how many parallel workers.</p>
+<p>We're going to do 30 papers per keyword. Search keywords, epistemic foraging. Resume previous</p>
+<p>run. No, start a fresh run. So this is going to search archive for epistemic foraging. Found</p>
+<p>30 results, 58 deduplicated from semantic scholar and archive. The literature output is saved into</p>
+<p>a top level folder called literature. The references.bib is kind of overleaf, latex style bibliography.</p>
+<p>And the PDFs are downloaded into PDFs folder. Then the summaries are made by the same name in the</p>
+<p>summaries folder. And we're going to use that to very fun effect, I believe. And that's kind of</p>
+<p>chugging away here. So especially with a possibly slightly better naming scheme or bibliographic</p>
+<p>reference system, there could be calculation, as I know some teams at the Institute and other teams</p>
+<p>have done to make sort of all of archive scale summarization or work with embeddings, other</p>
+<p>methods. But the overall spirit here is this sort of visible craft, arts and craft script style that</p>
+<p>it sits sits in a nice space in in Morpho space for programs.</p>
+<p>So we will use cursor as a pseudo rag to work with these summaries as context to write research based</p>
+<p>papers that are going to transform the package inside of project and a manuscript. And then we're going to</p>
+<p>bounce this off each other and get grounded, interpretable, step by step. Could be entirely manual or could be</p>
+<p>entirely AI orchestrated with some end to end literature based augmented research multi channel repo versioning.</p>
+<p>So let's go to some more themes. Yeah, two layer science is the top level of the repo with the</p>
+<p>infrastructure, which is kind of like the oven mitts. And then there's projects, which is like the dish coming out of the oven.</p>
+<p>So the two layer science is the meta science tools for operations in the repo of template. And then project could be plain text markdown for a purely prose philosophy paper.</p>
+<p>Or there could be simple coin flip and the insertion of the outputs of the coin flip or a visualization based upon data for a philosophy paper.</p>
+<p>Or it could be extremely technical could modularly compose all these kinds of reference across within sections, papers, all these different kinds of things.</p>
+<p>By knowing that we're going to use that state space or want to have those kinds of literature expression.</p>
+<p>So what kind of information in making a project pipeline that could be more software with sort of sloughing off documentation, or it could be more manual prose and AI never entered into it.</p>
+<p>So what kind of information is that we're going to use that in the future?</p>
+<p>So what kind of information is that we're going to use that in the future?</p>
+<p>Modular minds within and across nested blankets, what kinds of compositionality for agent tools?</p>
+<p>We can add a MCP or other tool layer. There's already a CLI.</p>
+<p>Meta science, open science, philosophy, second order science, all these kinds of questions about tool building.</p>
+<p>IDES wide open as opposed to the alternative using even cursor, other kilo code, other code, augmented approaches, and just more generally tools to think with and sense making and personal collective knowledge management, how that's related to file versioning.</p>
+<p>This idea that is big in the DSI and meta science spaces with version controlling and some of the work with claims graphs and different ways to parse and connect some of the entity reference and semantics and different granularities of analyzing and integrating research papers.</p>
+<p>And then we're going to use a pseudo make me a manuscript, basically role based access, including total root access to research projects for end to end configurable reproducibility, including the PDF rendering exactly a certain way.</p>
+<p>And blurring the line using formal allo reference as well as cursor shared contextualization, blurring the line with command, code, knowledge base, all these different kinds of synthetic intelligence semantics, which is sort of like the pragmatics and semantics within the augmented IDE,</p>
+<p>which can run code as well as use the softer language affordances.</p>
+<p>And blurring the line with the other way to use the modularity of the infrastructure level and the project level to make packages that are conceivably simpler as well as possibly just different or more modular by adding a module to either the infrastructure level or within the project level,</p>
+<p>which we can do during the project level, which we can do during this stream.</p>
+<p>And exploring, I think, a very creative tension with industrialization and regularization, normalization, automation.</p>
+<p>There's going to be some areas to explore about preparing one's workspace and operations in the niche and sort of to carve one spoon with a knife out of wood.</p>
+<p>It might be a different startup time or tool need rather than a wooden spoon or a metal spoon factory.</p>
+<p>But these are all just these different morphologies, different energy gradients, information gradients of production.</p>
+<p>And so what that looks like in a sort of cognitive semantic information, niche modification, multi-agentic setting.</p>
+<p>The potter's wheel, centering projects before shaping them and making small changes that radiate out through natural forces and these defined flows.</p>
+<p>The apprentice's advantage, learning by structured doing.</p>
+<p>So supporting a niche where a side folder like journal or field notes, other modular systems can be brought in and tested in a relatively standalone or in a very deeply integrated way.</p>
+<p>So with these kinds of niche artifacts as the trace, but also with their own activity and informativeness, intra activity in cases, as with others we encounter in the niche.</p>
+<p>So holding up and open that whole continuum from data-like to active-like, that kind of polycomputing relational feature.</p>
+<p>All right, let's go to the agenda.</p>
+<p>And meanwhile, if you're watching live, make a suggestion.</p>
+<p>I will wait to a first suggestion before including that in the research paper that we will search for and write and update the PDF.</p>
+<p>Maybe even go all the way to Zenodo at the end of the stream with a literature-based.</p>
+<p>So if somebody has a specific question or topic to research, write it.</p>
+<p>And I'll wait at least a few minutes for that.</p>
+<p>All right.</p>
+<p>The way to run this system is to open a terminal in the base layer of the repo.</p>
+<p>.slash run.sh.</p>
+<p>This is a single entry point.</p>
+<p>There's going to be an exit option and eight different options.</p>
+<p>There's a couple of different kind of partially overlapping functionalities.</p>
+<p>There's run the infrastructure tests, which is going to be, let's start with that one in this window.</p>
+<p>So this is just making sure that all of the modular functionality of the template repo, independent of the project, whether it's a prose journal, poetry book, or whether it's a simulation and data download and integration.</p>
+<p>That is the two-layer model.</p>
+<p>That is the two-layer model.</p>
+<p>The infrastructure is like the crust and the project is like the topping of this scientific pizza or analogous.</p>
+<p>So here it's about to finish.</p>
+<p>There are 1,654 infrastructure tests.</p>
+<p>It's a huge number of many very simple tests.</p>
+<p>And it has about 80% coverage of the code base of the infrastructure modules, which are the build system, which is the PDF composition and validation, the core methods of logging and interfacing, documentation and relationships between document parts,</p>
+<p>the literature search methods, the literature search methods, the literature search methods, the LLM methods, which here are only OLAMA local calls, possibly a vestigial file here, the publishing methods, which can be greatly extended with nanopubs, other kinds of on-chain, off-chain publishing, rendering,</p>
+<p>the materials that help go from the markdown with the defined style guide into the properly linked reference and checking for the equations, figures, sections, citations, etc.</p>
+<p>Possible scientific developer functionalities and validation methods that are called on by other packets.</p>
+<p>Every folder where it makes sense, I try to have a both readme, a human readable specific accounting of file function structure, etc.</p>
+<p>As well as an agents.md, which can describe similar overlapping, more technical, sometimes prioritized information for augmented coding, whether using kind of like a codex, cloud code, factory AI, terminal coding assistant or headless version, or using a cursor-like, which is doing something similar under the hood.</p>
+<p>So that's the infrastructure test function.</p>
+<p>That was option one.</p>
+<p>Option two is run project tests.</p>
+<p>So here, these are within project.</p>
+<p>This is 320 tests, which is still a vast relative number, but just as a starting point for modifying the project package.</p>
+<p>So this is using these SRC functions.</p>
+<p>So this is using these SRC functions, no modules, as not to overly bias what the format of the SRC is, just kind of a flat list of functionalities.</p>
+<p>That these tests within the project, again, flat, covering those file names, test.</p>
+<p>And then that is the functions that are going to be used within the package, for example, to generate simulation plots.</p>
+<p>So to simulate, visualize, check data in general.</p>
+<p>And that's what we're going to modify based upon semantics of literature-grounded research summaries.</p>
+<p>So that was option two, does this kind of, hey, that's just how we've always done it, with the high test coverage within the package and at the infrastructure level.</p>
+<p>Okay.</p>
+<p>Also at the top level of the repo is docs, which is documentation about the repo and the two-layer system.</p>
+<p>And just a bunch of modular footholds, searchable, indexable, useful, epistemic, signposting, information, a lot of modularity ways to improve that.</p>
+<p>So that is the, that was the second option from run.sh, which was running the test suite for the project.</p>
+<p>Three is the rendering of the whole PDF manuscript.</p>
+<p>Let's just do that one.</p>
+<p>So it discovers the project, runs the generation of the simulation and the visualization by running an orchestrated order of scripts within the project folder.</p>
+<p>So that the project folder, again, is kind of like this complete briefcase, unfoldable, source code, orchestratable DNA.</p>
+<p>Then each of these sections in the project manuscript folder are going to get generated slides.</p>
+<p>So I'm going to open up a, I'm going to open up a window and just so we can look at the dashboard.</p>
+<p>One second.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Here's the, um, rendering of the manuscript finished.</p>
+<p>So it renders into output and then it gets copied into the top level output folder.</p>
+<p>Here's the raw data from the simulation.</p>
+<p>Here are just the figures from the analysis generated by the scripts.</p>
+<p>Here are the LLM, local LLM based.</p>
+<p>Um, that's looking now at option five.</p>
+<p>The LLM scientific review in this case in English.</p>
+<p>Um, combined review.</p>
+<p>Let's look at these on.</p>
+<p>GitHub.</p>
+<p>So project output LLM.</p>
+<p>Project.</p>
+<p>Output.</p>
+<p>Here's combined review.</p>
+<p>So for context, the paper that we.</p>
+<p>Are.</p>
+<p>Reviewing.</p>
+<p>Is a sort of appropriately.</p>
+<p>Referential example, default project title.</p>
+<p>Subtitle example.</p>
+<p>By project author on today's date.</p>
+<p>And it is a red letter.</p>
+<p>Absolutely black, white and red all over.</p>
+<p>Document that's composed.</p>
+<p>Post.</p>
+<p>To.</p>
+<p>A.</p>
+<p>Sited.</p>
+<p>Linked.</p>
+<p>Interactive format.</p>
+<p>But also these other.</p>
+<p>Formats for web.</p>
+<p>So let's see if this will.</p>
+<p>Open and brave.</p>
+<p>HTML.</p>
+<p>For website use.</p>
+<p>The slides.</p>
+<p>Are saved.</p>
+<p>So probably some.</p>
+<p>Uh.</p>
+<p>Manuscript formatting is going to look.</p>
+<p>Uh.</p>
+<p>Look well structured or not.</p>
+<p>In.</p>
+<p>Uh.</p>
+<p>If you write short paragraphs.</p>
+<p>Or long paragraphs.</p>
+<p>Uh.</p>
+<p>It might look good in the slides.</p>
+<p>But not.</p>
+<p>In the.</p>
+<p>HTML.</p>
+<p>Maybe some of the.</p>
+<p>Formatting is a little off.</p>
+<p>Something like that.</p>
+<p>Webs.</p>
+<p>Slides.</p>
+<p>Simulation data.</p>
+<p>The.</p>
+<p>Um.</p>
+<p>Validated.</p>
+<p>Config.</p>
+<p>Parameter ejected.</p>
+<p>Reporting.</p>
+<p>Plain text.</p>
+<p>Composable reports.</p>
+<p>The PDF.</p>
+<p>LaTeX basis.</p>
+<p>Bibliography file.</p>
+<p>And final.</p>
+<p>Linked.</p>
+<p>PDF.</p>
+<p>PDF.</p>
+<p>So that's.</p>
+<p>And then.</p>
+<p>The.</p>
+<p>Translation.</p>
+<p>Maybe only goes to the top level.</p>
+<p>Not sure where those.</p>
+<p>Went.</p>
+<p>But.</p>
+<p>We'll.</p>
+<p>We'll.</p>
+<p>We'll run the translation.</p>
+<p>We'll do.</p>
+<p>So.</p>
+<p>Step six.</p>
+<p>Okay.</p>
+<p>So now in this.</p>
+<p>Rename that.</p>
+<p>Terminal to.</p>
+<p>Translation.</p>
+<p>Here.</p>
+<p>We have.</p>
+<p>Summarization.</p>
+<p>Happening.</p>
+<p>So with this.</p>
+<p>Step.</p>
+<p>Okay.</p>
+<p>Kill that one.</p>
+<p>Right.</p>
+<p>So that's.</p>
+<p>Some of the.</p>
+<p>Um.</p>
+<p>Hello.</p>
+<p>Gabriel.</p>
+<p>Export.</p>
+<p>That's some of the.</p>
+<p>Manuscript.</p>
+<p>Rendering.</p>
+<p>Project.</p>
+<p>Running.</p>
+<p>Project.</p>
+<p>Level.</p>
+<p>Deliverables.</p>
+<p>Within the context of.</p>
+<p>You could just.</p>
+<p>Be doing that.</p>
+<p>With all manual writing.</p>
+<p>Doesn't need any kind of literature.</p>
+<p>You could just delete the bibliography.</p>
+<p>Or have an old bibliography.</p>
+<p>You could just.</p>
+<p>So now.</p>
+<p>Um.</p>
+<p>Let's look at.</p>
+<p>The step seven.</p>
+<p>And not eight.</p>
+<p>Or literature search.</p>
+<p>PDF download.</p>
+<p>So.</p>
+<p>Here.</p>
+<p>Uh.</p>
+<p>I'll.</p>
+<p>See.</p>
+<p>A few more minutes.</p>
+<p>If anyone has a specific topic.</p>
+<p>That they want to.</p>
+<p>Suggest.</p>
+<p>For which topic.</p>
+<p>To.</p>
+<p>Research.</p>
+<p>Especially.</p>
+<p>If there's archive papers on it.</p>
+<p>And.</p>
+<p>Then.</p>
+<p>We will.</p>
+<p>Make a branch.</p>
+<p>Of the template repo.</p>
+<p>And.</p>
+<p>Go end to end.</p>
+<p>On making that.</p>
+<p>Well formatted PDF.</p>
+<p>With literature.</p>
+<p>Grounded.</p>
+<p>But.</p>
+<p>Here's the literature.</p>
+<p>Search.</p>
+<p>PDF download.</p>
+<p>Component.</p>
+<p>We'll just do.</p>
+<p>Ten.</p>
+<p>Papers per keyword.</p>
+<p>Expected free energy.</p>
+<p>Interoception.</p>
+<p>Electromagnetic.</p>
+<p>You don't want to resume.</p>
+<p>The existing run.</p>
+<p>Just picked a few.</p>
+<p>Keywords.</p>
+<p>Could be.</p>
+<p>Improvements to the.</p>
+<p>API call.</p>
+<p>Literature.</p>
+<p>Database.</p>
+<p>Methods.</p>
+<p>So.</p>
+<p>Just ten.</p>
+<p>Results from archive.</p>
+<p>I don't think.</p>
+<p>I entered any.</p>
+<p>Email.</p>
+<p>Or API.</p>
+<p>For semantics.</p>
+<p>Call or so.</p>
+<p>And it's probably.</p>
+<p>Why the.</p>
+<p>Rate limit.</p>
+<p>Is getting hit there.</p>
+<p>So it's going to.</p>
+<p>Search these three.</p>
+<p>Keywords.</p>
+<p>Separately.</p>
+<p>And maybe.</p>
+<p>Just doing archive.</p>
+<p>For certain topics.</p>
+<p>Would be.</p>
+<p>Would be a little faster.</p>
+<p>Let's keep watching.</p>
+<p>Some.</p>
+<p>There's several.</p>
+<p>There's about.</p>
+<p>600.</p>
+<p>PDFs.</p>
+<p>That I've already downloaded.</p>
+<p>That are.</p>
+<p>In.</p>
+<p>Get ignore.</p>
+<p>As a folder.</p>
+<p>So I don't go to the.</p>
+<p>GitHub.</p>
+<p>And then if the PDF.</p>
+<p>Of that exact.</p>
+<p>Compose name.</p>
+<p>Author.</p>
+<p>Year.</p>
+<p>Word.</p>
+<p>If.</p>
+<p>If it's not found.</p>
+<p>It tries to download it.</p>
+<p>For some of the papers.</p>
+<p>The current download methods.</p>
+<p>Work.</p>
+<p>But not for all.</p>
+<p>So.</p>
+<p>But for.</p>
+<p>For many.</p>
+<p>Let's see.</p>
+<p>14.</p>
+<p>Were already downloaded.</p>
+<p>For those topics.</p>
+<p>20.</p>
+<p>Were newly downloaded.</p>
+<p>6.</p>
+<p>Failed.</p>
+<p>So after.</p>
+<p>Downloading.</p>
+<p>The.</p>
+<p>Terms.</p>
+<p>It.</p>
+<p>Tries.</p>
+<p>To.</p>
+<p>Process.</p>
+<p>Those.</p>
+<p>PDFs.</p>
+<p>So let's look at.</p>
+<p>KOW.</p>
+<p>2023.</p>
+<p>So this is probably.</p>
+<p>Something from the.</p>
+<p>Epistemic foraging.</p>
+<p>Or something.</p>
+<p>We'll see.</p>
+<p>So.</p>
+<p>Okay.</p>
+<p>Top.</p>
+<p>Infrastructure level.</p>
+<p>Literature.</p>
+<p>PDF.</p>
+<p>Okay.</p>
+<p>Oh.</p>
+<p>W.</p>
+<p>W.</p>
+<p>2023.</p>
+<p>Information seeking.</p>
+<p>Okay.</p>
+<p>So this is by.</p>
+<p>Voter.</p>
+<p>How.</p>
+<p>Of.</p>
+<p>Institute.</p>
+<p>Discord fame.</p>
+<p>Information seeking.</p>
+<p>Polynomial.</p>
+<p>Narcs.</p>
+<p>Model predictive.</p>
+<p>Control through.</p>
+<p>Expected free energy.</p>
+<p>Minimization.</p>
+<p>So this is a.</p>
+<p>Archive paper.</p>
+<p>From.</p>
+<p>About.</p>
+<p>Two years ago.</p>
+<p>That right now.</p>
+<p>With the.</p>
+<p>Llama three.</p>
+<p>Gradient.</p>
+<p>Language model.</p>
+<p>V.</p>
+<p>O.</p>
+<p>Llama.</p>
+<p>Is getting.</p>
+<p>Summarized.</p>
+<p>So that's going to go into.</p>
+<p>We'll pin this one.</p>
+<p>That is going to output.</p>
+<p>In the coming.</p>
+<p>Seconds to minutes.</p>
+<p>A.</p>
+<p>Summarization.</p>
+<p>In the summaries.</p>
+<p>With the same.</p>
+<p>File name.</p>
+<p>So.</p>
+<p>Let's just look at the PDF.</p>
+<p>See what it's about.</p>
+<p>See what the.</p>
+<p>What the.</p>
+<p>What the list brought in.</p>
+<p>We'll just read the abstract.</p>
+<p>For.</p>
+<p>Epistemic value.</p>
+<p>We propose.</p>
+<p>An adaptive.</p>
+<p>Model.</p>
+<p>Predictive.</p>
+<p>Controller.</p>
+<p>That balances.</p>
+<p>Driving the system.</p>
+<p>To a goal state.</p>
+<p>And seeking.</p>
+<p>System observations.</p>
+<p>That are informative.</p>
+<p>With respect.</p>
+<p>To the parameters.</p>
+<p>Of a non-linear.</p>
+<p>Auto-regressive.</p>
+<p>Exogenous model.</p>
+<p>The controller's.</p>
+<p>Objective function.</p>
+<p>Is derived.</p>
+<p>From an expected.</p>
+<p>Free energy functional.</p>
+<p>And contains.</p>
+<p>Information.</p>
+<p>Theoretic terms.</p>
+<p>Expressing.</p>
+<p>Uncertainty.</p>
+<p>Over model parameters.</p>
+<p>And output predictions.</p>
+<p>Experiments.</p>
+<p>Illustrate.</p>
+<p>How parameter.</p>
+<p>Uncertainty.</p>
+<p>Affects the control objective.</p>
+<p>And evaluate.</p>
+<p>The proposed controller.</p>
+<p>For the pendulum.</p>
+<p>Swing up task.</p>
+<p>And that's getting.</p>
+<p>Summarized here.</p>
+<p>Greetings.</p>
+<p>Paradoxical.</p>
+<p>Ap.</p>
+<p>So.</p>
+<p>This.</p>
+<p>Uh.</p>
+<p>Here's the translation.</p>
+<p>Outputs.</p>
+<p>That is in.</p>
+<p>Template.</p>
+<p>Project.</p>
+<p>Output.</p>
+<p>LLM.</p>
+<p>Translation.</p>
+<p>And.</p>
+<p>Maybe not.</p>
+<p>Okay.</p>
+<p>Say lovey.</p>
+<p>Okay.</p>
+<p>So now.</p>
+<p>Here.</p>
+<p>456 word summary.</p>
+<p>Of this.</p>
+<p>Cow.</p>
+<p>Paper was written.</p>
+<p>That's going to be.</p>
+<p>In.</p>
+<p>Literature.</p>
+<p>Summaries.</p>
+<p>How.</p>
+<p>2023.</p>
+<p>That was previously.</p>
+<p>Not there.</p>
+<p>So this is just using.</p>
+<p>The.</p>
+<p>Olama.</p>
+<p>Local.</p>
+<p>LLM.</p>
+<p>To.</p>
+<p>Summarize.</p>
+<p>The.</p>
+<p>Paper.</p>
+<p>That we just read.</p>
+<p>Okay.</p>
+<p>So.</p>
+<p>Those are the two.</p>
+<p>Branches.</p>
+<p>Of.</p>
+<p>Functionality.</p>
+<p>That are.</p>
+<p>At the infrastructure level.</p>
+<p>That enable.</p>
+<p>Different kinds of project level work.</p>
+<p>So let's.</p>
+<p>Kill the processes.</p>
+<p>And then.</p>
+<p>Take the.</p>
+<p>Project.</p>
+<p>In a specific.</p>
+<p>Applied.</p>
+<p>Direction.</p>
+<p>So.</p>
+<p>Check in here.</p>
+<p>I'm going to make a new.</p>
+<p>Branch.</p>
+<p>That's going to use the tools.</p>
+<p>In their functioning state.</p>
+<p>For main.</p>
+<p>And this is going to be.</p>
+<p>Just.</p>
+<p>Live.</p>
+<p>Branch.</p>
+<p>So.</p>
+<p>Um.</p>
+<p>If someone has a research question.</p>
+<p>Or topic.</p>
+<p>That they want to.</p>
+<p>Write in the live chat.</p>
+<p>Then.</p>
+<p>I.</p>
+<p>I.</p>
+<p>Will.</p>
+<p>Prioritize that.</p>
+<p>Just.</p>
+<p>To.</p>
+<p>Give a fun.</p>
+<p>Direction.</p>
+<p>Injection.</p>
+<p>Of.</p>
+<p>Of randomness.</p>
+<p>But.</p>
+<p>What's going to happen.</p>
+<p>And we can start writing out the prompt.</p>
+<p>Here already.</p>
+<p>Is.</p>
+<p>Um.</p>
+<p>We are going to.</p>
+<p>Transform.</p>
+<p>Using cursor.</p>
+<p>As a planner.</p>
+<p>And IDE.</p>
+<p>Transform.</p>
+<p>The project folders.</p>
+<p>Source code.</p>
+<p>Manuscript.</p>
+<p>And summarization.</p>
+<p>Into a specific.</p>
+<p>Research project.</p>
+<p>While we use the literature search methods.</p>
+<p>To.</p>
+<p>Search archive.</p>
+<p>For research works.</p>
+<p>That get summarized.</p>
+<p>On that topic.</p>
+<p>Then we're going to use.</p>
+<p>The summarization.</p>
+<p>Of some key archive works.</p>
+<p>In our context window.</p>
+<p>To.</p>
+<p>Update.</p>
+<p>The manuscript.</p>
+<p>And cite.</p>
+<p>Those archive papers properly.</p>
+<p>So that we're going to go.</p>
+<p>Using cursor.</p>
+<p>Within this context.</p>
+<p>Of end-to-end.</p>
+<p>Reproducible.</p>
+<p>Configurable.</p>
+<p>PDFs.</p>
+<p>PDFs.</p>
+<p>We're going to.</p>
+<p>Go from.</p>
+<p>This.</p>
+<p>Template.</p>
+<p>Placeholder.</p>
+<p>PDF.</p>
+<p>Into.</p>
+<p>A.</p>
+<p>Research.</p>
+<p>Based.</p>
+<p>Document.</p>
+<p>Based.</p>
+<p>Open source.</p>
+<p>Software package.</p>
+<p>Unit driven.</p>
+<p>Development.</p>
+<p>Improvable.</p>
+<p>Modular system.</p>
+<p>With actual reference.</p>
+<p>To citations.</p>
+<p>That.</p>
+<p>Are.</p>
+<p>Of the topic.</p>
+<p>That.</p>
+<p>Someone can suggest.</p>
+<p>But we'll start the prompt.</p>
+<p>And just wait like.</p>
+<p>One more minute.</p>
+<p>If anyone.</p>
+<p>Does a prompt.</p>
+<p>Otherwise I'll.</p>
+<p>Make some.</p>
+<p>Random.</p>
+<p>Question.</p>
+<p>Okay.</p>
+<p>For the following topics.</p>
+<p>Make.</p>
+<p>Plan.</p>
+<p>To make.</p>
+<p>Any.</p>
+<p>And all.</p>
+<p>Changes.</p>
+<p>To only.</p>
+<p>The.</p>
+<p>Project.</p>
+<p>Okay.</p>
+<p>All right.</p>
+<p>Gabriel.</p>
+<p>Export.</p>
+<p>Wrote.</p>
+<p>Something about.</p>
+<p>Containment theory.</p>
+<p>Okay.</p>
+<p>I can kind of.</p>
+<p>Guess what it is.</p>
+<p>But I don't know.</p>
+<p>What it is.</p>
+<p>So.</p>
+<p>We will do.</p>
+<p>Actionable.</p>
+<p>Theory.</p>
+<p>Literature.</p>
+<p>Meta analysis.</p>
+<p>And.</p>
+<p>Some question.</p>
+<p>Add more details.</p>
+<p>If you want.</p>
+<p>About containment theory.</p>
+<p>But first.</p>
+<p>I'm going to start.</p>
+<p>The literature review.</p>
+<p>For containment theory.</p>
+<p>So.</p>
+<p>Run.sh.</p>
+<p>Step seven.</p>
+<p>Literature.</p>
+<p>Search.</p>
+<p>PDF download.</p>
+<p>We're going to do.</p>
+<p>50.</p>
+<p>Papers.</p>
+<p>Search.</p>
+<p>Keywords.</p>
+<p>Okay.</p>
+<p>Containment.</p>
+<p>Theory.</p>
+<p>Comma.</p>
+<p>And Gabriel.</p>
+<p>Rowe.</p>
+<p>Alternative.</p>
+<p>To set.</p>
+<p>Theory.</p>
+<p>Set.</p>
+<p>Theory.</p>
+<p>All right.</p>
+<p>All right.</p>
+<p>So.</p>
+<p>This is going to.</p>
+<p>You can imagine.</p>
+<p>Letting this run.</p>
+<p>Overnight.</p>
+<p>So.</p>
+<p>We'll just look at.</p>
+<p>Uh.</p>
+<p>This is actually going pretty fast.</p>
+<p>So.</p>
+<p>That is going to.</p>
+<p>Download.</p>
+<p>The PDFs.</p>
+<p>For.</p>
+<p>The search that we just made.</p>
+<p>For 157.</p>
+<p>Citations.</p>
+<p>And add them to our bibliography.</p>
+<p>So that's happening.</p>
+<p>Now.</p>
+<p>We're going to.</p>
+<p>Transform.</p>
+<p>The project.</p>
+<p>Folder.</p>
+<p>To be a project.</p>
+<p>About.</p>
+<p>Containment theory.</p>
+<p>And being an alternative.</p>
+<p>And implications to set theory.</p>
+<p>Um.</p>
+<p>We are completely.</p>
+<p>Transforming.</p>
+<p>The project.</p>
+<p>Folder.</p>
+<p>Within the.</p>
+<p>Constraints.</p>
+<p>And niche.</p>
+<p>Of template.</p>
+<p>Slash.</p>
+<p>Infrastructure.</p>
+<p>Methods.</p>
+<p>As documented.</p>
+<p>And tested.</p>
+<p>We are.</p>
+<p>Transforming.</p>
+<p>Completely.</p>
+<p>And only.</p>
+<p>The.</p>
+<p>Project.</p>
+<p>Configuration.</p>
+<p>Source.</p>
+<p>Testing.</p>
+<p>Documentation.</p>
+<p>Methods.</p>
+<p>Rules.</p>
+<p>Etc.</p>
+<p>To.</p>
+<p>Be.</p>
+<p>About.</p>
+<p>I'm writing down.</p>
+<p>What.</p>
+<p>Gabriel.</p>
+<p>Export.</p>
+<p>Has written in the chat.</p>
+<p>Containment.</p>
+<p>Theory.</p>
+<p>As.</p>
+<p>Alternative.</p>
+<p>To.</p>
+<p>Set.</p>
+<p>Theory.</p>
+<p>Also known.</p>
+<p>As.</p>
+<p>Boundary.</p>
+<p>Logic.</p>
+<p>Or.</p>
+<p>Iconic.</p>
+<p>Math.</p>
+<p>Math.</p>
+<p>Math.</p>
+<p>Comprehensive.</p>
+
+<p>Bibliographic.</p>
+<p>Based.</p>
+<p>This is where we.</p>
+<p>Point to the summaries.</p>
+<p>Because.</p>
+
+<p>Cursor.</p>
+<p>Because.</p>
+<p>Cursor.</p>
+<p>Can access.</p>
+<p>Across.</p>
+<p>These.</p>
+<p>Folders.</p>
+<p>For real.</p>
+<p>Summaries.</p>
+<p>Of.</p>
+<p>Ref.</p>
+<p>Specific.</p>
+
+<p>Comprehensive.</p>
+<p>Literature.</p>
+<p>Review.</p>
+<p>Sections.</p>
+<p>Technical.</p>
+<p>Analytical.</p>
+<p>And Gestalt.</p>
+<p>Overview.</p>
+<p>Unified.</p>
+<p>Notations.</p>
+<p>And Tables.</p>
+<p>Visualizations.</p>
+<p>Visualizations.</p>
+<p>Methods.</p>
+<p>Tests.</p>
+<p>What are the.</p>
+<p>What are the.</p>
+<p>Basis.</p>
+<p>Implication.</p>
+<p>Specific.</p>
+<p>Testable.</p>
+<p>Hypotheses.</p>
+<p>And explanations.</p>
+<p>Comprehensively.</p>
+<p>Okay.</p>
+<p>Plan.</p>
+<p>To.</p>
+<p>Transform.</p>
+<p>All.</p>
+<p>This is just.</p>
+<p>Speculative.</p>
+<p>And.</p>
+<p>Fun.</p>
+<p>But.</p>
+<p>These can be.</p>
+<p>Tuned as well.</p>
+<p>Transform.</p>
+<p>All.</p>
+<p>Sections.</p>
+<p>As.</p>
+<p>And.</p>
+<p>All.</p>
+<p>Downstream.</p>
+<p>This could be just.</p>
+<p>Entered in.</p>
+<p>Um.</p>
+<p>To a single.</p>
+<p>Run.</p>
+<p>Method.</p>
+<p>Inside.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Inside.</p>
+
+
+<p>Okay, here, using Opus 4.5, which within Cursor is available at Sonnet 4.5 cost during the first two weeks, which I guess we're still in.</p>
+<p>I should have enough usage to use Opus a bunch of times during the remainder of this stream.</p>
+<p>What's happening now, as we are on now the live branch,</p>
+<p>which, this is now, main is what I forked to make the branch that we're now on.</p>
+<p>So main is the one that you just check into, and then this is now where we're vectoring off from.</p>
+<p>We're adding in URLs, we're adding in, doing literature search to get new PDFs and summaries.</p>
+<p>What formulation of containment theory?</p>
+<p>Both.</p>
+<p>Since, how should we handle references?</p>
+<p>We could connect to existing active inference literature.</p>
+<p>Let's do it.</p>
+<p>Mathematical formalism, full spectrum.</p>
+<p>So the plan mode in Cursor, which some or most, but not all of the models have, but Opus 4.5 does,</p>
+<p>engages in a preliminary round of context iteration and refinement tool use internally,</p>
+<p>and will then write a plan, which is then sequentially with some</p>
+<p>very interestingly controlled kind of stubbornness.</p>
+<p>So here's what the plan looks like.</p>
+<p>We're going to transform project into rigorous research monograph on containment theory,</p>
+<p>an alternative to set theory based on G. Spencer Brown's laws of form.</p>
+<p>Let's just see if this top level point is like already way off the map.</p>
+<p>We'll let it finish right in.</p>
+<p>Oh.</p>
+<p>Containment theory replaces set membership with spatial containment.</p>
+<p>Okay.</p>
+<p>Let's just, let's let it cook.</p>
+<p>While we search.</p>
+<p>Little pre-dinner reading.</p>
+<p>Okay.</p>
+<p>Gabriel in the chat and this distinction network.</p>
+<p>So that was also, that was with, without containment theory summaries in the,</p>
+<p>without containment theory paper.</p>
+<p>So here we finished the 157.</p>
+<p>And then, 71 new papers were downloaded.</p>
+<p>Now, those are going to get iteratively processed by Olama,</p>
+<p>with Olama, Olama gradient, local LLM call.</p>
+<p>Yee 1997 variational.</p>
+<p>Yee.</p>
+<p>So, this is, this is going to start making a summary of this 1997 paper.</p>
+<p>So, this is, this is going to start making a summary of this 1997 paper.</p>
+<p>So, you can imagine that with a more powerful compute, which might be done one or a few times,</p>
+<p>at a few different lengths or formats, with all the PDFs, but that's done once per paper.</p>
+<p>So, that is going to be plugging away.</p>
+<p>It's not going to come into use, probably, in this stream.</p>
+<p>Because, only a few will come into play.</p>
+<p>Okay.</p>
+<p>Well, we'll, we'll, we'll see.</p>
+<p>Maybe we'll just let it run, and we'll get like 10 summaries.</p>
+<p>Then we could ask, okay, would these 10 new specific papers add to the paper to make it specifically in relation to this citation,</p>
+<p>that citation, that one.</p>
+<p>Okay.</p>
+<p>So, while we're thinking about this kind of meta, meta review, literature, summarization paradigm,</p>
+<p>the containment theory plan is underway.</p>
+<p>So, here, within project.</p>
+<p>So, here's the agent implementing that plan.</p>
+<p>So, it started by, this is all heavily signposted in the documentation and the cursor rules and, and everything.</p>
+<p>So, the config file of within the project was changed to containment theory, boundary logic,</p>
+<p>as alternative foundation to set theory.</p>
+<p>Name.</p>
+<p>And then just do.</p>
+<p>Stream.</p>
+<p>And I'll put real email.</p>
+<p>Alright.</p>
+<p>Some tests.</p>
+<p>Config.yaml.</p>
+<p>The full.</p>
+<p>So, here's configurable title.</p>
+<p>Here, it'll just be example, author information, publication, keywords, metadata, and which languages we want to translate the.</p>
+<p>Abstract to.</p>
+<p>In that language step.</p>
+<p>Then, in the SRC folder,</p>
+<p>it next implemented a 525, 524 line code,</p>
+<p>boundary logic forms.</p>
+<p>This module implements the fundamental structures of G. Spencer Brown's Laws of Form, 1969,</p>
+<p>providing a computational foundation for boundary logic as an alternative to traditional set theoretic foundation.</p>
+<p>The primary distinction, or mark,</p>
+<p>creates inside-outside relationships, replacing set membership with spatial containment.</p>
+<p>Possibly like a sort of discretization topology as in duality with a continuous information geometry.</p>
+<p>Key concepts.</p>
+<p>Form a recursive structure of nested boundaries.</p>
+<p>Very relevant.</p>
+<p>Mark the primary distinction creating inside-outside.</p>
+<p>Geometry.</p>
+<p>The bubbles.</p>
+<p>Trilogy by Slaughterdyke.</p>
+<p>Of course, synergetics.</p>
+<p>Tetrahedral as minimal space and closing system.</p>
+<p>Isotropic vector matrix.</p>
+<p>Void.</p>
+<p>Empty space.</p>
+<p>The absence of distinction.</p>
+<p>Cross.</p>
+<p>The mark state.</p>
+<p>True.</p>
+<p>So, that's kind of</p>
+<p>intra-activity.</p>
+<p>Fundamental relationality.</p>
+<p>Unity and duality.</p>
+<p>Interactionism.</p>
+<p>And</p>
+<p>to what extent this is true.</p>
+<p>Someone more</p>
+<p>specifically can tie to the literature.</p>
+<p>Or we could have primed with the PDFs</p>
+<p>of these textbooks and papers</p>
+<p>specifically.</p>
+<p>So, let's</p>
+<p>look up.</p>
+<p>Let's start another literature search.</p>
+<p>Run.</p>
+<p>Let's start another literature search.</p>
+<p>Let's start another literature search.</p>
+<p>Let's start another literature search.</p>
+
+<p>Literature search.</p>
+<p>PDF download.</p>
+<p>30 papers.</p>
+<p>G. Spencer Brown.</p>
+<p>So, then</p>
+<p>this is going to continue.</p>
+<p>But then you can imagine</p>
+<p>that in, let's say,</p>
+<p>10 to 15 minutes,</p>
+<p>we will be able to</p>
+<p>say,</p>
+<p>update the</p>
+<p>containment</p>
+<p>methods</p>
+<p>in light of</p>
+<p>the formalisms</p>
+<p>exactly like in these papers.</p>
+<p>And make sure you cite them.</p>
+<p>Okay.</p>
+<p>So, we'll just,</p>
+<p>we'll quit that process.</p>
+<p>And just focus on the,</p>
+<p>focus on just the search</p>
+<p>for G. Spencer Brown.</p>
+<p>So, that's the only literature</p>
+<p>search</p>
+<p>thread.</p>
+<p>Now,</p>
+<p>we have</p>
+<p>still</p>
+<p>the SRC methods</p>
+<p>getting written</p>
+<p>by the</p>
+<p>Opus 4.5</p>
+<p>agents</p>
+<p>in the</p>
+<p>project of</p>
+<p>pivoting project folder</p>
+<p>to be about this research question.</p>
+<p>So, meanwhile,</p>
+<p>just to get some information.</p>
+<p>So, in,</p>
+<p>so this one,</p>
+<p>this is</p>
+<p>containment</p>
+<p>lit.</p>
+<p>This one,</p>
+<p>manuscript</p>
+<p>end to end.</p>
+<p>Dot slash run.</p>
+<p>Run the full</p>
+<p>pipeline.</p>
+<p>So,</p>
+<p>this is going to</p>
+<p>first erase</p>
+<p>the output</p>
+<p>directories</p>
+<p>in the project level</p>
+<p>and at the repo</p>
+<p>level.</p>
+<p>Set up the environment</p>
+<p>and check all the</p>
+<p>needed</p>
+<p>package dependencies</p>
+<p>at the infrastructure</p>
+<p>and at the</p>
+<p>project level.</p>
+<p>first run</p>
+<p>the infrastructure</p>
+<p>test suite.</p>
+<p>This is just to</p>
+<p>get early warning</p>
+<p>before getting</p>
+<p>at all</p>
+<p>into the</p>
+<p>package</p>
+<p>making sure</p>
+<p>that all these</p>
+<p>like</p>
+<p>1600</p>
+<p>tests</p>
+<p>at the repo</p>
+<p>level</p>
+<p>are very strong.</p>
+<p>now we're going</p>
+<p>into the test suite.</p>
+<p>Now,</p>
+<p>the test suite</p>
+<p>failed because it</p>
+<p>didn't hit 70%</p>
+<p>coverage.</p>
+<p>That's another</p>
+<p>sort of</p>
+<p>early warning</p>
+<p>flag</p>
+<p>just to exit</p>
+<p>so that</p>
+<p>there's</p>
+<p>end to end</p>
+<p>viability.</p>
+<p>I'm sure</p>
+<p>there are</p>
+<p>as in</p>
+<p>this moment</p>
+<p>excursions</p>
+<p>from that</p>
+<p>end to end</p>
+<p>but it's kind of</p>
+<p>like stopping</p>
+<p>breathing.</p>
+<p>Seems good</p>
+<p>to keep it</p>
+<p>on the rails</p>
+<p>and then</p>
+<p>if you want</p>
+<p>to change</p>
+<p>some aspect</p>
+<p>or remove</p>
+<p>some aspect</p>
+<p>that can be</p>
+<p>easily done</p>
+<p>but there's</p>
+<p>something nice</p>
+<p>about that</p>
+<p>run</p>
+<p>halting</p>
+<p>at</p>
+<p>ordering</p>
+<p>which is</p>
+<p>configurable</p>
+<p>for that</p>
+<p>one option</p>
+<p>but you can</p>
+<p>run other</p>
+<p>options</p>
+<p>like if you</p>
+<p>don't want to</p>
+<p>render the</p>
+<p>manuscript</p>
+<p>if you just</p>
+<p>wanted literature</p>
+<p>search</p>
+<p>then</p>
+<p>the</p>
+<p>fact that</p>
+<p>the manuscript</p>
+<p>won't render</p>
+<p>doesn't halt</p>
+<p>the literature</p>
+<p>search</p>
+<p>download</p>
+<p>summarization</p>
+<p>still we have</p>
+<p>the agent</p>
+<p>plugging away</p>
+<p>on</p>
+<p>the code</p>
+<p>we can look</p>
+<p>at the plan</p>
+<p>and basically</p>
+<p>see if the</p>
+<p>next strategy</p>
+<p>okay so</p>
+<p>after so</p>
+<p>first the source</p>
+<p>module so that's</p>
+<p>what's happening</p>
+<p>diagrams.py</p>
+<p>is happening</p>
+<p>looks like that</p>
+<p>was not</p>
+<p>included in the</p>
+<p>original plan</p>
+<p>but I guess</p>
+<p>hey plans</p>
+<p>change</p>
+<p>we'll see</p>
+<p>after this</p>
+<p>um</p>
+<p>diagrams finishes</p>
+<p>maybe that</p>
+<p>will finish this</p>
+<p>first section</p>
+<p>of the source</p>
+<p>modules</p>
+<p>and then</p>
+<p>there will</p>
+<p>be</p>
+<p>these</p>
+<p>rewrites</p>
+<p>of the</p>
+<p>manuscript</p>
+<p>uh</p>
+<p>sections</p>
+<p>okay</p>
+<p>that was</p>
+<p>there was the</p>
+<p>thought there</p>
+<p>quote thought</p>
+<p>good progress</p>
+<p>now I need</p>
+<p>to update</p>
+<p>the init.py</p>
+<p>then create</p>
+<p>the test</p>
+<p>suite</p>
+<p>let me</p>
+<p>continue</p>
+<p>so</p>
+<p>completing</p>
+<p>the test</p>
+<p>suite</p>
+<p>confirming</p>
+<p>the functionality</p>
+<p>of the</p>
+<p>src that</p>
+<p>just</p>
+<p>happened</p>
+<p>will</p>
+<p>raise</p>
+<p>our</p>
+<p>test</p>
+<p>coverage</p>
+<p>to</p>
+<p>70%</p>
+<p>in a few</p>
+<p>minutes</p>
+<p>so we</p>
+<p>will get</p>
+<p>past this</p>
+<p>threshold</p>
+<p>so</p>
+<p>this</p>
+<p>that will</p>
+<p>be a good</p>
+<p>pace</p>
+<p>meanwhile</p>
+<p>let's check</p>
+<p>back in</p>
+<p>containment</p>
+<p>all right</p>
+<p>so we're</p>
+<p>let's look at</p>
+<p>a containment</p>
+<p>theory</p>
+<p>summary</p>
+<p>okay</p>
+<p>okay</p>
+<p>let's see</p>
+<p>there could</p>
+<p>have been</p>
+<p>citations in</p>
+<p>different fields</p>
+<p>that do or</p>
+<p>don't have</p>
+<p>primary relevance</p>
+<p>to what we're</p>
+<p>studying here</p>
+<p>or what are we</p>
+<p>studying here</p>
+<p>but</p>
+<p>let's see</p>
+<p>all right</p>
+<p>we have</p>
+<p>expected</p>
+<p>performance of</p>
+<p>the atlas</p>
+<p>experiment</p>
+<p>the atlas</p>
+<p>detector</p>
+<p>wow</p>
+<p>how relevant</p>
+<p>how cool</p>
+<p>many author</p>
+<p>paper</p>
+<p>title</p>
+<p>instability</p>
+<p>coupling</p>
+<p>p modes</p>
+<p>and g</p>
+<p>modes</p>
+<p>within</p>
+<p>neutron</p>
+<p>stars</p>
+<p>on gw</p>
+<p>1 7</p>
+<p>0 8</p>
+<p>1 7</p>
+<p>okay</p>
+<p>b</p>
+<p>particle</p>
+<p>mu</p>
+<p>decay</p>
+<p>high energy</p>
+<p>neutrinos</p>
+<p>not sure</p>
+<p>if these</p>
+<p>are the</p>
+<p>papers that</p>
+<p>we are</p>
+<p>looking for</p>
+<p>but</p>
+<p>again</p>
+<p>it's a</p>
+<p>example</p>
+<p>of what can</p>
+<p>be curated</p>
+<p>in this</p>
+<p>repo</p>
+<p>by anyone</p>
+<p>who would</p>
+<p>like to</p>
+<p>explore</p>
+<p>meanwhile</p>
+<p>let us</p>
+<p>remember</p>
+<p>that we</p>
+<p>have</p>
+<p>54</p>
+<p>percent</p>
+<p>with</p>
+<p>320</p>
+<p>let's run</p>
+<p>it again</p>
+<p>so we have</p>
+<p>54</p>
+<p>percent</p>
+<p>320</p>
+<p>we will</p>
+<p>expect</p>
+<p>homeostatically</p>
+<p>that the</p>
+<p>infrastructure</p>
+<p>1600</p>
+<p>tests</p>
+<p>fully</p>
+<p>pass</p>
+<p>and</p>
+<p>some of</p>
+<p>the slower</p>
+<p>ones</p>
+<p>could be</p>
+<p>skipped</p>
+<p>some of</p>
+<p>the</p>
+<p>LLM</p>
+<p>methods</p>
+<p>are</p>
+<p>skipped</p>
+<p>because</p>
+<p>they're</p>
+<p>long</p>
+<p>generation</p>
+<p>or maybe</p>
+<p>somebody</p>
+<p>doesn't even</p>
+<p>want to</p>
+<p>use the</p>
+<p>local</p>
+<p>LLM</p>
+<p>methods</p>
+<p>at all</p>
+<p>which are</p>
+<p>not required</p>
+<p>for the</p>
+<p>manuscript</p>
+<p>being</p>
+<p>generated</p>
+<p>but</p>
+<p>those</p>
+<p>passed</p>
+<p>so now</p>
+<p>we move</p>
+<p>into</p>
+<p>the</p>
+<p>okay</p>
+<p>then right</p>
+<p>off the</p>
+<p>bat</p>
+<p>we get</p>
+<p>we hit</p>
+<p>now</p>
+<p>the test</p>
+<p>errors</p>
+<p>within</p>
+<p>within</p>
+<p>the package</p>
+<p>so just</p>
+<p>to kind</p>
+<p>of keep</p>
+<p>things on</p>
+<p>the rails</p>
+<p>I'm gonna</p>
+<p>resync</p>
+<p>here are</p>
+<p>the</p>
+<p>current</p>
+<p>test</p>
+<p>results</p>
+<p>of the</p>
+<p>project</p>
+<p>replan it</p>
+<p>and</p>
+<p>okay</p>
+<p>so now</p>
+<p>the plan</p>
+<p>is being</p>
+<p>updated</p>
+<p>it's</p>
+<p>about</p>
+<p>PyTest</p>
+<p>so some</p>
+<p>files are</p>
+<p>gonna be</p>
+<p>updated</p>
+<p>at these</p>
+<p>specific</p>
+<p>planned</p>
+<p>locations</p>
+<p>then</p>
+<p>we will</p>
+<p>get to</p>
+<p>the</p>
+<p>manuscript</p>
+<p>getting</p>
+<p>written</p>
+<p>oh</p>
+<p>J1</p>
+<p>J2</p>
+<p>that's</p>
+<p>so</p>
+<p>funny</p>
+<p>let's</p>
+<p>do a</p>
+<p>little</p>
+<p>J1</p>
+<p>J2</p>
+<p>lore</p>
+<p>those are</p>
+<p>two</p>
+<p>of the</p>
+<p>lineages</p>
+<p>that need</p>
+<p>each other</p>
+<p>as it</p>
+<p>were</p>
+<p>of the</p>
+<p>poginomirmex</p>
+<p>southwest</p>
+<p>US</p>
+<p>species</p>
+<p>concept</p>
+<p>that I</p>
+<p>did my</p>
+<p>PhD</p>
+<p>dissertation</p>
+<p>in</p>
+<p>in</p>
+<p>this region</p>
+<p>so it's</p>
+<p>just funny</p>
+<p>because it</p>
+<p>was the</p>
+<p>J1</p>
+<p>and J2</p>
+<p>population</p>
+<p>so</p>
+<p>let's</p>
+<p>see</p>
+<p>what</p>
+<p>J1</p>
+<p>and J2</p>
+<p>do</p>
+<p>here</p>
+<p>um</p>
+<p>opus</p>
+<p>4.5</p>
+<p>improving</p>
+<p>the</p>
+<p>intra</p>
+<p>package</p>
+<p>test</p>
+<p>suite</p>
+<p>then</p>
+<p>once</p>
+<p>that</p>
+<p>happens</p>
+<p>we</p>
+<p>will</p>
+<p>get</p>
+<p>through</p>
+<p>that</p>
+<p>next</p>
+<p>step</p>
+<p>of</p>
+<p>running</p>
+<p>the</p>
+<p>manuscript</p>
+<p>end</p>
+<p>to</p>
+<p>end</p>
+<p>because</p>
+<p>we</p>
+<p>kind of</p>
+<p>don't</p>
+<p>even</p>
+<p>want</p>
+<p>to</p>
+<p>look</p>
+<p>at</p>
+<p>the</p>
+<p>manuscript</p>
+<p>if</p>
+<p>we</p>
+<p>don't</p>
+<p>even</p>
+<p>have</p>
+<p>the</p>
+<p>tests</p>
+<p>functional</p>
+<p>and</p>
+<p>once</p>
+<p>we</p>
+<p>do</p>
+<p>this</p>
+<p>initial</p>
+<p>pivot</p>
+<p>which</p>
+<p>is</p>
+<p>still</p>
+<p>in</p>
+<p>progress</p>
+<p>then</p>
+<p>we'll</p>
+<p>be</p>
+<p>kind</p>
+<p>of</p>
+<p>switched</p>
+<p>over</p>
+<p>all</p>
+<p>the</p>
+<p>way</p>
+<p>to</p>
+<p>this</p>
+<p>other</p>
+<p>vector</p>
+<p>but</p>
+<p>now</p>
+<p>we</p>
+<p>have</p>
+<p>these</p>
+<p>small</p>
+<p>edits</p>
+<p>which</p>
+<p>go</p>
+<p>relatively</p>
+<p>fast</p>
+<p>in</p>
+<p>phase</p>
+<p>one</p>
+<p>updating</p>
+<p>the</p>
+<p>source</p>
+<p>files</p>
+<p>now</p>
+<p>updating</p>
+<p>the</p>
+<p>imports</p>
+<p>definitely</p>
+<p>a fun</p>
+<p>way to</p>
+<p>see a</p>
+<p>lot</p>
+<p>of</p>
+<p>sample</p>
+<p>size</p>
+<p>and</p>
+<p>learn</p>
+<p>a</p>
+<p>lot</p>
+<p>about</p>
+<p>coding</p>
+<p>in</p>
+<p>python</p>
+<p>seeing</p>
+<p>it</p>
+<p>all</p>
+<p>even</p>
+<p>when</p>
+<p>it's</p>
+<p>not</p>
+<p>it's</p>
+<p>not</p>
+<p>100</p>
+<p>percent</p>
+<p>but</p>
+<p>it</p>
+<p>is</p>
+<p>vast</p>
+<p>and</p>
+<p>accurate</p>
+<p>in</p>
+<p>many</p>
+<p>ways</p>
+<p>not</p>
+<p>always</p>
+<p>in</p>
+<p>the</p>
+<p>only</p>
+<p>way</p>
+<p>or</p>
+<p>in</p>
+<p>the</p>
+<p>specific</p>
+<p>way</p>
+<p>unspecified</p>
+<p>but</p>
+<p>some</p>
+<p>of</p>
+<p>these</p>
+<p>coding</p>
+<p>practices</p>
+<p>are</p>
+<p>really</p>
+<p>interesting</p>
+<p>to see</p>
+<p>just</p>
+<p>flexible</p>
+<p>at</p>
+<p>this</p>
+<p>level</p>
+<p>and</p>
+<p>with</p>
+<p>Opus</p>
+<p>and</p>
+<p>a lot</p>
+<p>of</p>
+<p>other</p>
+<p>models</p>
+<p>right</p>
+<p>now</p>
+<p>okay</p>
+<p>all right</p>
+<p>back to</p>
+<p>the agenda</p>
+<p>while we</p>
+<p>give it a</p>
+<p>little time</p>
+<p>just you</p>
+<p>know give</p>
+<p>it like</p>
+<p>20-30</p>
+<p>minutes</p>
+<p>we've</p>
+<p>only given</p>
+<p>it a</p>
+<p>few</p>
+<p>all right</p>
+<p>so we</p>
+<p>ran</p>
+<p>run.sh</p>
+<p>talked about</p>
+<p>these two</p>
+<p>kind of</p>
+<p>branches</p>
+<p>of the</p>
+<p>project</p>
+<p>level</p>
+<p>test</p>
+<p>orchestration</p>
+<p>analysis</p>
+<p>rendering</p>
+<p>and then on</p>
+<p>the literature</p>
+<p>search</p>
+<p>branch</p>
+<p>the</p>
+<p>tools to</p>
+<p>do research</p>
+<p>summarization</p>
+<p>which then we</p>
+<p>can drag</p>
+<p>in and you</p>
+<p>can say</p>
+<p>okay now</p>
+<p>take this</p>
+<p>file into</p>
+<p>account</p>
+<p>when</p>
+<p>writing this</p>
+<p>manuscript</p>
+<p>which is</p>
+<p>going to</p>
+<p>be one</p>
+<p>of our</p>
+<p>next steps</p>
+<p>um</p>
+<p>project from</p>
+<p>scratch the</p>
+<p>topic was</p>
+<p>brought up</p>
+<p>to do this</p>
+<p>containment</p>
+<p>theory topic</p>
+<p>and we're</p>
+<p>able to</p>
+<p>touch upon</p>
+<p>in in</p>
+<p>this</p>
+<p>direct</p>
+<p>show and</p>
+<p>or tell</p>
+<p>strategy</p>
+<p>with</p>
+<p>live stream</p>
+<p>interactivity</p>
+<p>a lot of</p>
+<p>these different</p>
+<p>aspects of</p>
+<p>meta science</p>
+<p>or just</p>
+<p>science</p>
+<p>itself</p>
+<p>like</p>
+<p>structure</p>
+<p>and function</p>
+<p>and different</p>
+<p>ways to</p>
+<p>think about</p>
+<p>the science</p>
+<p>ecosystem</p>
+<p>as different</p>
+<p>kinds of</p>
+<p>organizing</p>
+<p>processes</p>
+<p>processes</p>
+<p>with</p>
+<p>difference</p>
+<p>information</p>
+<p>flows</p>
+<p>taking a</p>
+<p>systems</p>
+<p>view</p>
+<p>also a</p>
+<p>first person</p>
+<p>view</p>
+<p>as a</p>
+<p>navigator</p>
+<p>epistemic</p>
+<p>forger</p>
+<p>in that</p>
+<p>space</p>
+<p>and uh</p>
+<p>just</p>
+<p>modernity</p>
+<p>and it</p>
+<p>all</p>
+<p>motivating</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>ability</p>
+<p>to</p>
+<p>increase</p>
+<p>the</p>
+<p>quality</p>
+<p>and</p>
+<p>quantity</p>
+<p>and the</p>
+<p>reproducibility</p>
+<p>and integrity</p>
+<p>of scientific</p>
+<p>work</p>
+<p>and bridge</p>
+<p>and up</p>
+<p>skill</p>
+<p>and up</p>
+<p>niche</p>
+<p>and leave</p>
+<p>it better</p>
+<p>than we</p>
+<p>started</p>
+<p>with respect</p>
+<p>to open</p>
+<p>science</p>
+<p>and all</p>
+<p>that</p>
+<p>there's</p>
+<p>this</p>
+<p>two-layer</p>
+<p>architecture</p>
+<p>where</p>
+<p>infrastructure</p>
+<p>literature</p>
+<p>docs</p>
+<p>test</p>
+<p>scripts</p>
+<p>and run</p>
+<p>dot sh</p>
+<p>all apply</p>
+<p>to this</p>
+<p>infrastructural</p>
+<p>kind of</p>
+<p>oven glove</p>
+<p>handler</p>
+<p>level</p>
+<p>and then</p>
+<p>project</p>
+<p>is intended</p>
+<p>to be</p>
+<p>this</p>
+<p>standalone</p>
+<p>we'll just</p>
+<p>say</p>
+<p>um</p>
+<p>now</p>
+<p>just</p>
+<p>get to</p>
+<p>focusing</p>
+<p>on the</p>
+<p>manuscript</p>
+<p>updating</p>
+<p>can do</p>
+<p>code</p>
+<p>later</p>
+<p>keeping</p>
+<p>in</p>
+<p>mind</p>
+<p>using</p>
+<p>the</p>
+<p>very</p>
+<p>most</p>
+<p>relevant</p>
+<p>specific</p>
+<p>citations</p>
+<p>of</p>
+<p>so</p>
+<p>here's</p>
+<p>the project</p>
+<p>kind of</p>
+<p>reaching</p>
+<p>outside</p>
+<p>of its</p>
+<p>own</p>
+<p>folder</p>
+<p>and</p>
+<p>then</p>
+<p>using</p>
+<p>cursor</p>
+<p>like</p>
+<p>rag</p>
+<p>to</p>
+<p>softly</p>
+<p>access</p>
+<p>the</p>
+<p>information</p>
+<p>geometry</p>
+<p>of</p>
+<p>summaries</p>
+<p>or</p>
+<p>there</p>
+<p>could</p>
+<p>be</p>
+<p>another</p>
+<p>rag</p>
+<p>call</p>
+<p>or</p>
+<p>an</p>
+<p>olama</p>
+<p>call</p>
+<p>to</p>
+<p>this</p>
+<p>folder</p>
+<p>then</p>
+<p>use</p>
+<p>the</p>
+<p>bibliographic</p>
+<p>information</p>
+<p>and</p>
+<p>bibliographic</p>
+<p>format</p>
+<p>of</p>
+<p>enforced</p>
+<p>by</p>
+<p>and</p>
+<p>and</p>
+<p>acted</p>
+<p>upon</p>
+<p>by the</p>
+<p>infrastructure</p>
+<p>methods</p>
+<p>within</p>
+<p>the output</p>
+<p>within</p>
+<p>the project</p>
+<p>holder</p>
+<p>manuscript</p>
+<p>so</p>
+<p>then</p>
+<p>we'll</p>
+<p>have</p>
+<p>our</p>
+<p>library</p>
+<p>pdf</p>
+<p>downloaded</p>
+<p>papers</p>
+<p>other</p>
+<p>documents</p>
+<p>summarized</p>
+<p>however</p>
+<p>we</p>
+<p>want</p>
+<p>to</p>
+<p>llm</p>
+<p>summarize</p>
+<p>them</p>
+<p>done</p>
+<p>by</p>
+<p>community</p>
+<p>for</p>
+<p>thousands</p>
+<p>of</p>
+<p>papers</p>
+<p>or</p>
+<p>done</p>
+<p>by</p>
+<p>one</p>
+<p>person</p>
+<p>for</p>
+<p>even</p>
+<p>thousands</p>
+<p>of</p>
+<p>papers</p>
+<p>as</p>
+<p>it's</p>
+<p>going</p>
+<p>through</p>
+<p>dozens</p>
+<p>just</p>
+<p>on</p>
+<p>this</p>
+<p>laptop</p>
+<p>here</p>
+<p>within</p>
+<p>a</p>
+<p>end</p>
+<p>to</p>
+<p>end</p>
+<p>version</p>
+<p>ability</p>
+<p>setting</p>
+<p>so</p>
+<p>now</p>
+<p>we're</p>
+<p>going to</p>
+<p>run</p>
+<p>the</p>
+<p>full</p>
+<p>pipeline</p>
+<p>we</p>
+<p>expect</p>
+<p>to</p>
+<p>have</p>
+<p>the</p>
+<p>infrastructure</p>
+<p>tests</p>
+<p>pass</p>
+<p>and</p>
+<p>then</p>
+<p>the</p>
+<p>package</p>
+<p>tests</p>
+<p>fail</p>
+<p>and</p>
+<p>comprehensive</p>
+<p>!</p>
+
+
+
+
+<p>fix all</p>
+<p>project</p>
+<p>scale</p>
+<p>methods</p>
+<p>and</p>
+<p>tests</p>
+<p>documentation</p>
+<p>as we'll</p>
+<p>pass</p>
+<p>70% coverage.</p>
+<p>We expect the infrastructure 1600 to proceed.</p>
+<p>We expect to surface some of the errors</p>
+<p>from the project SRC</p>
+<p>in the coming few seconds. There we go.</p>
+<p>Two errors. Make sure that everything is synced.</p>
+<p>Now, with these two</p>
+<p>agents vectors</p>
+<p>which can kind of co-coordinate</p>
+<p>through the synced vector embedding</p>
+<p>of cursor.</p>
+<p>Coming up for error, I think, either at the prompt</p>
+<p>user interface level or in between these</p>
+<p>smaller steps.</p>
+<p>Now we have the tests</p>
+<p>which we want to get to 70% so then we can get to the manuscript rendering</p>
+<p>and the analysis</p>
+<p>and surface the next level of errors.</p>
+<p>Now we're already writing the paper.</p>
+<p>So, building on G. Spencer Brown's Laws of Form 1969, we develop a complete computational</p>
+<p>framework for boundary logic that demonstrates its equivalence to Boolean algebra while offering</p>
+<p>distinct advantage in parsimony, geometric intuition, and handling of self-reference.</p>
+<p>This work establishes containment theory as a viable alternative foundation for discrete</p>
+<p>mathematics with complete computational verification of its theoretical claims and open source implementation for further investigation.</p>
+<p>So, that sounds like something that would require that kind of theorem proving environment.</p>
+<p>We will find out whether that check written by the abstract is going to be upheld by the analysis.</p>
+<p>But we're chugging away.</p>
+<p>Or we could tone back whether it's a formal proof and just feed in, say, we want these seven papers to be included in a more of a literature meta-analysis paper.</p>
+<p>Or maybe we'll see what this literature review document looks like.</p>
+<p>Meanwhile, we have the fixing of test errors.</p>
+<p>Let's just more generally run the literature summarization step, just because we're not using the LLM otherwise.</p>
+<p>Generate summaries for download PDFs.</p>
+<p>So, first that's going to try to re-download missing PDFs.</p>
+<p>We have 922 papers, 167 need download, 583 need summaries.</p>
+<p>So, we'll just let that run.</p>
+<p>We have the...</p>
+<p>Now, it's iteratively running and re-ingesting the project level test suite.</p>
+<p>Which is going to give it a few rounds of being able to feed in the errors and the failing tests.</p>
+<p>We can also peep that button and look in...</p>
+<p>Sometimes you can't see it because of the piping command.</p>
+<p>But, um...</p>
+<p>We can see it kind of ticking away here.</p>
+<p>So, that's within this cursor infinity window.</p>
+<p>Here it's testing the algebra complexity.</p>
+<p>Then over on this one, we still have the...</p>
+<p>References.</p>
+<p>Here are the...</p>
+<p>Wow.</p>
+
+<p>Kaufman, C.S. Pierce.</p>
+<p>This is awesome.</p>
+<p>Say, excellent.</p>
+<p>Ensure that one of the supplemental sections is a comprehensive, vast, formal, concise representation and grounding in with the history of North American pragmatism and...</p>
+<p>Neo...</p>
+
+<p>Neo...</p>
+<p>Materialisms.</p>
+
+<p>Just to sort of mix it up.</p>
+<p>So, we'll see.</p>
+<p>Will it...</p>
+<p>Finish SO2...</p>
+<p>Then accept this queued message?</p>
+<p>Or will it finish a series more methods?</p>
+<p>And then...</p>
+<p>Okay.</p>
+<p>We'll just send that one now just so we kind of get through to it.</p>
+<p>Okay.</p>
+<p>TestSuite is ongoing.</p>
+<p>Run...</p>
+<p>Run...</p>
+<p>Run SH again.</p>
+<p>Run full pipeline.</p>
+<p>Or...</p>
+<p>We could just do...</p>
+<p>Run SH...</p>
+<p>To run project tests.</p>
+<p>Okay.</p>
+<p>So, we'll stop this one.</p>
+<p>Just to give it a re-context.</p>
+<p>Comprehensively fix all the project tests.</p>
+
+<p>Hope I can finish this in the next few minutes.</p>
+<p>Let's just review the...</p>
+<p>Um...</p>
+<p>Um...</p>
+
+<p>We'll look at that for sure.</p>
+<p>So, we have project tests.</p>
+<p>Developing.</p>
+<p>Plan in progress.</p>
+<p>Here is the philosophical...</p>
+<p>Technical...</p>
+
+<p>So...</p>
+
+<p>G. Spencer Brown.</p>
+<p>Distinction.</p>
+<p>Structure.</p>
+<p>Supplement 1 is like a technical code.</p>
+
+
+<p>So...</p>
+
+<p>AXIUM verification.</p>
+
+<p>Supplement 2 is...</p>
+<p>AXIUM verification.</p>
+<p>So...</p>
+<p>This...</p>
+
+<p>Pure...</p>
+<p>Equation play.</p>
+<p>Supplement 2 is...</p>
+
+
+<p>This...</p>
+<p>This...</p>
+
+<p>Pure...</p>
+<p>Equation play.</p>
+<p>With...</p>
+<p>With...</p>
+
+<p>Painting.</p>
+<p>That's the kind of recipes that you may or may not be able to...</p>
+<p>To...</p>
+<p>Come through on.</p>
+<p>And...</p>
+<p>Or...</p>
+<p>Can be...</p>
+<p>Injected or confirmed equivalent to...</p>
+<p>Formal theorem proving...</p>
+<p>And or numerical simulation steps in the SRC of the project.</p>
+<p>So...</p>
+<p>This...</p>
+<p>Can be...</p>
+<p>Injected or confirmed equivalent to...</p>
+<p>Formal theorem proving...</p>
+<p>And or numerical simulation steps in the SRC of the project.</p>
+<p>Then we have this...</p>
+<p>New...</p>
+<p>So this is the...</p>
+<p>Okay.</p>
+<p>CS Peirce...</p>
+<p>Developed existential graphs...</p>
+<p>A diagrammatic logic that anticipates Spencer Brown's calculus in fundamental ways.</p>
+<p>The connection is not merely superficial but structural.</p>
+<p>Very cool.</p>
+<p>Very knowledge graph pilled.</p>
+<p>Very computational semantics.</p>
+<p>William James.</p>
+<p>John Dewey.</p>
+<p>To exist is to be in a situation.</p>
+<p>Which is in the technical direction.</p>
+
+<p>Kind of...</p>
+<p>Minimum system.</p>
+<p>Start with universe.</p>
+<p>Two eyes open.</p>
+<p>Approach of...</p>
+<p>Synergetics.</p>
+<p>It's...</p>
+<p>Dean's sort of zoom in, zoom out.</p>
+<p>It on the performative side is more like situationism.</p>
+<p>Or all these other kind of...</p>
+<p>Math art.</p>
+<p>Or...</p>
+<p>Art...</p>
+<p>Related aesthetics.</p>
+<p>Alfred North.</p>
+<p>Whitehead.</p>
+<p>The category of the ultimate.</p>
+<p>Karen Barad.</p>
+<p>I know from the paper of Mao and Ali that...</p>
+
+<p>That...</p>
+<p>Barad's...</p>
+<p>Agential realism is related.</p>
+<p>Virtual and the actual.</p>
+<p>Deleuze.</p>
+<p>Anto power.</p>
+<p>Core commitments.</p>
+<p>So it's very long.</p>
+<p>Latour.</p>
+
+<p>Even to the limited...</p>
+<p>Donna Haraway.</p>
+<p>Even knowing this in the limited...</p>
+<p>Capacity.</p>
+<p>That seems to be Richard Rorty.</p>
+<p>Lot of crossover there.</p>
+<p>Right.</p>
+<p>So we have...</p>
+<p>Documentation getting updated at the level of the project.</p>
+<p>To reorient it towards being...</p>
+<p>Stably for this containment theory approach.</p>
+<p>Here...</p>
+<p>We have...</p>
+<p>Still...</p>
+<p>The thinking happening...</p>
+<p>With the test...</p>
+<p>We'll just say...</p>
+<p>We'll just say...</p>
+<p>Get going.</p>
+<p>But that part could range from...</p>
+<p>This is sort of now...</p>
+<p>The lower bar.</p>
+<p>Is that kind of thinking that was just being quote shown.</p>
+<p>Or quote thinking that was being shown.</p>
+<p>And that could include MCP...</p>
+
+<p>Or other orchestrated calls to doing more specific theorem proving methods.</p>
+<p>So...</p>
+<p>Ensure all...</p>
+<p>Project...</p>
+<p>Methods...</p>
+<p>And tests are...</p>
+<p>This is going to be a little bit of...</p>
+<p>These sometimes can...</p>
+<p>Can...</p>
+<p>Interfere with each other's work.</p>
+<p>With fixing...</p>
+<p>Different tests.</p>
+<p>But we'll just run these two.</p>
+<p>Because they'll probably be staggered.</p>
+<p>In how they run...</p>
+<p>Tests.</p>
+<p>So as long as we keep refreshing the context.</p>
+<p>We should be good there.</p>
+<p>And just...</p>
+<p>Let us...</p>
+<p>Check how many...</p>
+<p>Run project tests.</p>
+<p>So that's what it's running...</p>
+
+<p>Agentic...</p>
+<p>Tab.</p>
+
+<p>So...</p>
+<p>16 failed.</p>
+<p>And we will not...</p>
+<p>Move forward until those...</p>
+<p>We could also just ask...</p>
+<p>Is there a way to...</p>
+<p>Accept...</p>
+<p>Failing...</p>
+<p>Tests...</p>
+<p>And still...</p>
+<p>Proceed.</p>
+<p>So...</p>
+<p>Targeting...</p>
+<p>Test failure by test failure...</p>
+<p>Test failure...</p>
+<p>So...</p>
+<p>Targeting...</p>
+<p>Test failure by test failure...</p>
+<p>We're in the...</p>
+<p>Most proximal semantic context...</p>
+<p>To...</p>
+<p>The bibliography...</p>
+<p>And the claims...</p>
+<p>In the manuscript...</p>
+<p>For the SRC.</p>
+<p>So that's the sort of...</p>
+<p>Stand-alone, dual-channel...</p>
+<p>Semantics...</p>
+<p>Is the formal and the prose methods...</p>
+<p>As well as a secondary...</p>
+<p>Documentation layer...</p>
+
+<p>Connect any needed dots...</p>
+
+
+<p>Lab materials...</p>
+<p>To make an integrated...</p>
+<p>Unity...</p>
+<p>And coherent...</p>
+<p>Functionality...</p>
+<p>At the project...</p>
+<p>Level...</p>
+<p>The briefcase level...</p>
+<p>And then we're in the document...</p>
+<p>Factory...</p>
+<p>With the infrastructural layer...</p>
+<p>And so...</p>
+<p>Partially just to maintain...</p>
+<p>That end-to-end functionality...</p>
+<p>Whatever...</p>
+<p>Pattern...</p>
+<p>That name is...</p>
+<p>A high...</p>
+<p>Threshold...</p>
+<p>Is kept...</p>
+<p>For the tests...</p>
+<p>Just...</p>
+<p>So that there's minimal...</p>
+<p>Drift away...</p>
+<p>Into like a non-functional...</p>
+<p>Regime...</p>
+<p>Which might...</p>
+<p>Come through...</p>
+<p>A...</p>
+<p>A valley...</p>
+<p>Into...</p>
+<p>A new...</p>
+<p>Zone of...</p>
+<p>In...</p>
+<p>But then that should be...</p>
+
+<p>And then brought back in...</p>
+<p>Modularly...</p>
+<p>So...</p>
+<p>On this...</p>
+<p>Stream...</p>
+
+<p>We may...</p>
+<p>Only in the next few minutes...</p>
+
+<p>Get to that...</p>
+<p>PDF rendering...</p>
+<p>But suffice to say...</p>
+<p>That...</p>
+<p>I...</p>
+
+<p>Let it run...</p>
+<p>While I continue doing the rest of...</p>
+<p>Uh...</p>
+<p>Work and play...</p>
+<p>And arts and crafts today...</p>
+<p>And...</p>
+<p>Just upload the...</p>
+<p>The PDF...</p>
+<p>Which would go to the outputs...</p>
+<p>PDF folder...</p>
+<p>And...</p>
+<p>Gabriel export...</p>
+<p>I hope that...</p>
+
+<p>This...</p>
+<p>Gives...</p>
+<p>Some...</p>
+<p>Some idea...</p>
+<p>Of what the system can do for everyone...</p>
+<p>So...</p>
+<p>I appreciate the suggestion...</p>
+<p>We have abstract...</p>
+<p>The introduction...</p>
+<p>That we looked at...</p>
+<p>The methods...</p>
+<p>Theorems...</p>
+<p>Experimental...</p>
+<p>Computational...</p>
+<p>Kind of irreducible complexity...</p>
+<p>Rulliadian...</p>
+<p>Acknowledgements...</p>
+<p>Appendix...</p>
+<p>Yeah...</p>
+<p>I would love to see the output too...</p>
+<p>I want to stay a few minutes...</p>
+<p>Just...</p>
+<p>To...</p>
+<p>Get there...</p>
+<p>Appendix...</p>
+<p>Symbol glossary...</p>
+<p>And that...</p>
+<p>That can be checked...</p>
+<p>Between the names...</p>
+<p>Of the variables...</p>
+<p>And the SRC...</p>
+<p>And then within and across...</p>
+<p>Manuscript sections...</p>
+<p>References...</p>
+<p>Is a placeholder...</p>
+<p>For the bib...</p>
+<p>Yeah...</p>
+<p>Wow...</p>
+<p>Thought for...</p>
+<p>Four minutes and four...</p>
+<p>Eight...</p>
+<p>Okay...</p>
+<p>So...</p>
+<p>Wow...</p>
+<p>Okay...</p>
+<p>Let's run it again...</p>
+<p>And see how many...</p>
+<p>Failing tests...</p>
+<p>16...</p>
+<p>488...</p>
+<p>Run...</p>
+
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+<p>That will be 3...</p>
+
+
+
+
+
+
+<p>this is the most recent test run fix everything given the current state</p>
+<p>yeah just re-sync it</p>
+<p>let the other one also continue to run but let this one do a little plan</p>
+<p>actually stop that one just so that we're down to just a few failed six so finish these six tests</p>
+<p>that might take a minute to skip through so meanwhile</p>
+<p>comprehensively review</p>
+<p>all the manuscript sections it is making</p>
+<p>maximal compliant real use of all relevant citations from</p>
+<p>literature</p>
+<p>just let it run</p>
+<p>we'll just say mark them and remove the block for now we will fix later</p>
+<p>just so that we get to the manuscripts</p>
+<p>okay so now we have</p>
+
+<p>wow</p>
+<p>wow looking at the six remaining failures they all relate to a single issue the excluded middle</p>
+<p>how deep</p>
+<p>okay adding the decorators so that we can proceed hopefully through those</p>
+<p>tests</p>
+<p>now comprehensively proceed to</p>
+<p>one by one</p>
+<p>fix</p>
+<p>and confirm all those tests</p>
+<p>so now that's going to fix the six</p>
+<p>so that might fix these six once these okay now</p>
+<p>we will do run dot sh we'll just we'll just run the full pipeline and just hope that</p>
+<p>this is going to work meanwhile open up the cursor</p>
+<p>okay it's not going to show us until it finishes</p>
+<p>finishes</p>
+<p>so here we have</p>
+<p>close that</p>
+<p>here was from that background process of getting the pdfs looks like we didn't get any pdfs</p>
+<p>but it's about to</p>
+<p>but it's about to</p>
+<p>well maybe</p>
+<p>but then it's about to</p>
+<p>enter into the summarization phase of these 167</p>
+<p>all right</p>
+<p>meanwhile</p>
+<p>all right here we go</p>
+<p>so now we got further in</p>
+<p>now we're generating the slides</p>
+<p>so now we're in project</p>
+<p>output</p>
+<p>pdf</p>
+<p>and</p>
+<p>okay</p>
+<p>okay</p>
+<p>so now it's</p>
+<p>here are the slides</p>
+<p>now here's introduction</p>
+<p>so this is the auto-generated slides</p>
+<p>notation</p>
+<p>notation</p>
+<p>here's the</p>
+<p>here's the</p>
+<p>experimental results</p>
+<p>TOC text</p>
+<p>here's</p>
+<p>here's</p>
+<p>methodology</p>
+<p>slides</p>
+<p>Methodology, slides, then PDF, paper, boom.</p>
+<p>So, red, red letter, scarlet letter, text, font play, rubrication, document structure.</p>
+<p>There's a reference error, but these get flagged.</p>
+<p>So, you can fix.</p>
+<p>And then also, the iterative feedback is, okay, well, equation crossing is not proper.</p>
+<p>There's some visualizations, some tables.</p>
+<p>There's the citations.</p>
+<p>So, very cool.</p>
+<p>End of stream.</p>
+<p>I am going to end it there.</p>
+<p>I hope people enjoy and find it well.</p>
+<p>Till next time.</p>
+<p>Thank you.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

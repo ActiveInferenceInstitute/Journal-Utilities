@@ -1,0 +1,4304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 093.1 ~ Nassim Dehouche "Enhancing Population-based Search with Active Inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 093.1 ~ Nassim Dehouche "Enhancing Population-based Search with Active Inference"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_093 &middot; Episode 1 &middot; Speakers: Nassim Dehouche &middot; Duration: 50:51 &middot; Views: 159</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=GVsBiTn_E6o">https://www.youtube.com/watch?v=GVsBiTn_E6o</a></div>
+<article>
+<p>Hello and welcome. It's December 13th, 2024. We're in Active Inference Guest Stream 93.1</p>
+<p>with Nassim Dehoush. We're going to be discussing a paper we wrote together,</p>
+<p>Enhancing Population-Based Search with Active Inference. So thank you, Nassim, for joining.</p>
+<p>Looking forward to your presentation and the discussion.</p>
+<p>My pleasure. Thank you, Daniel. Very happy to be here and to share this joint work we did together a few months ago.</p>
+<p>Perhaps I could give a brief background information about how this work came to be.</p>
+<p>We did a podcast together and we had a few chats on Discord about Active Inference.</p>
+<p>And it was actually a way you used to explain Active Inference.</p>
+<p>You said that it's like the sense of touch, for example, wouldn't be really active unless you move your hand to really discover the texture.</p>
+<p>And it's the idea that indeed perception is not a passive process where you're just receiving data and processing it.</p>
+<p>It's that agents have an intent.</p>
+<p>And this is something that meditators can also experience.</p>
+<p>It's that even seeing, sight.</p>
+<p>If you are really empty inside, wouldn't you really be active unless you have some intent.</p>
+<p>So I thought about this in the context of a class of multi-agent systems that are used for optimization problems.</p>
+<p>So perhaps I'll give an overview of our work.</p>
+<p>So this is a kind of meta-heuristic methods that are used to solve all sorts of optimization problems.</p>
+<p>But we mainly focus on combinatorial optimization, so problems in graphs typically.</p>
+<p>And they use a population of agents to explore different solution paths.</p>
+<p>And one common feature, as I will highlight later, of these methods is that they, just like the naive perception we have of how even humans perceive,</p>
+<p>is that they consider that these agents have only reactive responses to the data they discover in the environment.</p>
+<p>We'll see it in more details later when I do a brief literature review.</p>
+<p>And so we try to incorporate predictive modeling, giving these agents an intent, which is to reduce their surprise and also update their belief.</p>
+<p>We'll talk about that as well.</p>
+<p>So the idea is to minimize the difference between the outcomes they observe and what they expect.</p>
+<p>And we try to integrate this to this class of methods known as population-based search methods</p>
+<p>with an instantiation on one method called the ant colony optimization.</p>
+<p>That's also inspired by you, Daniel, and your background working with ants.</p>
+<p>And so this would be applied to a problem which I think is famous enough,</p>
+<p>so I don't have to give a very detailed explanation of it,</p>
+<p>but perhaps for people who are not familiar with the traveling salesman problem.</p>
+<p>I will briefly explain it with this little app we put together for the paper.</p>
+<p>So it's a problem in graphs where you have typically a set of cities or locations.</p>
+<p>The problem consists in finding a route that visits all cities and goes back to your initial point.</p>
+<p>Okay.</p>
+<p>Now, with this kind of problems, there are two classes typically.</p>
+<p>Problems in P, which can be solved in polynomial time.</p>
+<p>One example would be finding the shortest route from one point to the other.</p>
+<p>That is very easy to solve, and it remains easy even for very large-scale graphs,</p>
+<p>very large numbers of cities.</p>
+<p>But this problem, the traveling salesman problem,</p>
+<p>the idea of visiting all cities and going back to your initial point,</p>
+<p>happens to be in a different class, NP-hard.</p>
+<p>So it is as hard as any computational problem you can think of.</p>
+<p>And here again, the difficulty comes with scale.</p>
+<p>It's that we don't have...</p>
+<p>Pretty much we don't have a better method than exhaustively listing all parts.</p>
+<p>So there are approximate solution methods known as heuristics and meta-heuristics.</p>
+<p>A very simple one, a very intuitive one,</p>
+<p>could be to visit the nearest city from your starting point</p>
+<p>and repeat this process until you go back to your initial point.</p>
+<p>So this is known as the nearest neighbor heuristic.</p>
+<p>So here I would start, for example, from this one,</p>
+<p>go to the next one, next one, next one, next one.</p>
+<p>And then with this, you can get stuck in very bad branches of the tree of possible solutions.</p>
+<p>For example, if the last city is very far here,</p>
+<p>you would need to waste a lot of distance in your solution.</p>
+<p>So nearest neighbor is not that great.</p>
+<p>And the diameters that try to improve on it.</p>
+<p>One of them is the one we will discuss in this presentation,</p>
+<p>the ant-colonial optimization method.</p>
+<p>So as I was saying, it's part of a large class of methods</p>
+<p>known as population-based search meta-heuristics.</p>
+<p>They are typically nature-inspired or biology-inspired.</p>
+<p>But one very good point you raised, Daniel,</p>
+<p>is that, well, can there be anything that is not nature-inspired?</p>
+<p>That's a good question to ponder.</p>
+<p>In any case, these are inspired by phenomena in nature.</p>
+<p>Initially, I think the first method in this class</p>
+<p>was invented in the 70s.</p>
+<p>It's the genetic algorithm that is inspired by evolution.</p>
+<p>And here again, there will be interesting bridges with active inference.</p>
+<p>Ant-colony optimization is also one of the most successful and oldest.</p>
+<p>But then there was a deluge of nature-inspired methods</p>
+<p>for about 30 years.</p>
+<p>Anything from honeybees to cuckoo to wolves to lions,</p>
+<p>dolphins, dolphins, what have you,</p>
+<p>even the way jazz players, human jazz players,</p>
+<p>you know, synchronize when they improvise,</p>
+<p>were used as inspiration for these methods.</p>
+<p>And just as a fun fact,</p>
+<p>artificial neural networks were considered</p>
+<p>as part of this class of methods</p>
+<p>up until the mid-2000s,</p>
+<p>when I was an undergrad myself.</p>
+<p>And they were usually listed in, you know,</p>
+<p>textbooks like,</p>
+<p>the two I have cited here,</p>
+<p>among these population-based meta-historics</p>
+<p>before taking, you know, life on their own.</p>
+<p>But because of this, you know,</p>
+<p>very large number of methods</p>
+<p>that offer very little innovation,</p>
+<p>some authors, notably Kenneth Sorensen here</p>
+<p>with this important paper</p>
+<p>that was published in 2013,</p>
+<p>called for, you know,</p>
+<p>a stop to these very superficial,</p>
+<p>you know, improvements in your innovations,</p>
+<p>just taking inspiration</p>
+<p>from the next, you know, natural process.</p>
+<p>And to go back to more abstract ways</p>
+<p>of seeing these methods.</p>
+<p>So more abstractly,</p>
+<p>we can break down</p>
+<p>these population-based search methods</p>
+<p>in, you know,</p>
+<p>by the fact that they have</p>
+<p>these three characteristics.</p>
+<p>First, there is, of course,</p>
+<p>a population of agents</p>
+<p>that cooperate.</p>
+<p>So each one of them</p>
+<p>is going to explore</p>
+<p>some solution paths</p>
+<p>since exploring, you know,</p>
+<p>exhaustively exploring</p>
+<p>the whole tree of possible solutions</p>
+<p>is not feasible.</p>
+<p>Agents would have some way</p>
+<p>to explore solutions themselves</p>
+<p>and they're going to cooperate,</p>
+<p>share information.</p>
+<p>Another common characteristics</p>
+<p>of these methods</p>
+<p>is that they usually</p>
+<p>include self-adaptation.</p>
+<p>The agents respond</p>
+<p>to their environment</p>
+<p>and we'll come back</p>
+<p>to this point later</p>
+<p>and modify their, you know,</p>
+<p>their search strategy accordingly.</p>
+<p>And there is also competition</p>
+<p>among the solutions</p>
+<p>discovered so far</p>
+<p>by the population of agents</p>
+<p>and we keep the best,</p>
+<p>you know, subset of solutions.</p>
+<p>So if we see it this way,</p>
+<p>many of the, you know,</p>
+<p>nature-inspired methods</p>
+<p>we have here</p>
+<p>come down to just ways</p>
+<p>to, you know,</p>
+<p>define these three characteristics, right?</p>
+<p>But one common thing</p>
+<p>among all methods pretty much</p>
+<p>is that they all assume,</p>
+<p>and I think it's a common bias</p>
+<p>we have in designing algorithms</p>
+<p>and multi-agent systems</p>
+<p>is that we assume</p>
+<p>that agents passively</p>
+<p>receive information</p>
+<p>and in the way</p>
+<p>they retrieve this information,</p>
+<p>they have no intent, right?</p>
+<p>And so that's one thing</p>
+<p>that we could possibly,</p>
+<p>you know, explore</p>
+<p>as a way to improve</p>
+<p>these meta-heuristics,</p>
+<p>particularly ant colony optimization.</p>
+<p>So to present the method briefly,</p>
+<p>the population is a population</p>
+<p>inspired by the behavior of ants.</p>
+<p>Each, you know,</p>
+<p>agent would be</p>
+<p>exploring one possible,</p>
+<p>you know,</p>
+<p>path</p>
+<p>of solutions.</p>
+<p>so it mimics how ants behave</p>
+<p>in that</p>
+<p>once</p>
+<p>an ant or agent</p>
+<p>finds</p>
+<p>a promising path,</p>
+<p>they're going to leave</p>
+<p>a trail of</p>
+<p>pheromones</p>
+<p>that is going to be</p>
+<p>more and more attractive</p>
+<p>to other agents</p>
+<p>as, you know,</p>
+<p>as it is explored</p>
+<p>by more ants.</p>
+<p>Okay,</p>
+<p>so the pheromone system</p>
+<p>is a way for agents</p>
+<p>to leave information</p>
+<p>for others</p>
+<p>and progressively</p>
+<p>reinforce,</p>
+<p>you know,</p>
+<p>the best solutions.</p>
+<p>And so</p>
+<p>one subtlety</p>
+<p>is that</p>
+<p>there is also</p>
+<p>a phenomenon</p>
+<p>of evaporation</p>
+<p>of these pheromones</p>
+<p>as would happen naturally,</p>
+<p>in fact,</p>
+<p>so that</p>
+<p>we don't get stuck</p>
+<p>in local minima</p>
+<p>and that,</p>
+<p>you know,</p>
+<p>we forget</p>
+<p>bad solutions</p>
+<p>over time.</p>
+<p>And the choice</p>
+<p>of the next node</p>
+<p>to explore</p>
+<p>in</p>
+<p>the application</p>
+<p>to the traveling</p>
+<p>seismic problem,</p>
+<p>for example,</p>
+<p>would be based</p>
+<p>on what</p>
+<p>trail of pheromone</p>
+<p>other ants left</p>
+<p>and also</p>
+<p>the intrinsic potential</p>
+<p>of that</p>
+<p>choice,</p>
+<p>you know,</p>
+<p>in finding</p>
+<p>a minimum</p>
+<p>length</p>
+<p>traveling route.</p>
+<p>Okay.</p>
+<p>And so</p>
+<p>this is the basic</p>
+<p>ant colony</p>
+<p>optimization,</p>
+<p>but here again,</p>
+<p>as you can see,</p>
+<p>agents</p>
+<p>are considered</p>
+<p>to be passive,</p>
+<p>you know,</p>
+<p>receptors,</p>
+<p>be it of pheromone</p>
+<p>or information</p>
+<p>in general.</p>
+<p>They don't have</p>
+<p>any intent</p>
+<p>in their exploration.</p>
+<p>And so</p>
+<p>ant colony optimization</p>
+<p>was a very successful</p>
+<p>method for</p>
+<p>the traveling seismic problem</p>
+<p>up until very recently.</p>
+<p>Now there are better</p>
+<p>approximate methods.</p>
+<p>And</p>
+<p>as I was</p>
+<p>briefly explaining,</p>
+<p>the way</p>
+<p>the ants</p>
+<p>are going to</p>
+<p>collectively</p>
+<p>construct</p>
+<p>a good route</p>
+<p>would be that</p>
+<p>each ant</p>
+<p>visits</p>
+<p>node by node</p>
+<p>until it completes</p>
+<p>one tool.</p>
+<p>And</p>
+<p>the most promising</p>
+<p>tools are going</p>
+<p>to have,</p>
+<p>you know,</p>
+<p>the most promising</p>
+<p>edges,</p>
+<p>in fact,</p>
+<p>between nodes</p>
+<p>are going to have</p>
+<p>a higher</p>
+<p>concentration of pheromone</p>
+<p>over time.</p>
+<p>And</p>
+<p>at the end,</p>
+<p>we keep the best</p>
+<p>encountered solution</p>
+<p>by the population</p>
+<p>as well.</p>
+<p>Now,</p>
+<p>on the other hand,</p>
+<p>active inference,</p>
+<p>and here I speak</p>
+<p>under your</p>
+<p>supervision,</p>
+<p>Daniel,</p>
+<p>it's a shift</p>
+<p>in the way</p>
+<p>we view</p>
+<p>perception</p>
+<p>itself</p>
+<p>from</p>
+<p>just</p>
+<p>reacting</p>
+<p>to data</p>
+<p>that is assumed</p>
+<p>to be received</p>
+<p>passively</p>
+<p>to</p>
+<p>considering</p>
+<p>that</p>
+<p>agents</p>
+<p>have</p>
+<p>an intent,</p>
+<p>which is</p>
+<p>to</p>
+<p>predict</p>
+<p>some outcome</p>
+<p>and also</p>
+<p>minimize</p>
+<p>their</p>
+<p>surprise</p>
+<p>when</p>
+<p>encountering</p>
+<p>real outcomes,</p>
+<p>the surprise</p>
+<p>compared to</p>
+<p>what they have</p>
+<p>predicted.</p>
+<p>So</p>
+<p>there could</p>
+<p>be</p>
+<p>interesting</p>
+<p>discussions</p>
+<p>to be had</p>
+<p>about</p>
+<p>the statistical</p>
+<p>models</p>
+<p>that you</p>
+<p>use</p>
+<p>for</p>
+<p>modeling</p>
+<p>this prediction</p>
+<p>and also</p>
+<p>the surprise.</p>
+<p>But</p>
+<p>speaking again</p>
+<p>abstractly</p>
+<p>and at a</p>
+<p>high level,</p>
+<p>he will</p>
+<p>assume that</p>
+<p>agents anticipate</p>
+<p>some future</p>
+<p>state,</p>
+<p>they build</p>
+<p>a belief</p>
+<p>about the</p>
+<p>current</p>
+<p>observations</p>
+<p>they are</p>
+<p>making,</p>
+<p>and the</p>
+<p>choices</p>
+<p>they make</p>
+<p>in the future</p>
+<p>are not</p>
+<p>just based</p>
+<p>on the</p>
+<p>immediate</p>
+<p>data they</p>
+<p>receive,</p>
+<p>but also</p>
+<p>on this</p>
+<p>belief</p>
+<p>that they</p>
+<p>have</p>
+<p>built</p>
+<p>and</p>
+<p>overall</p>
+<p>that their</p>
+<p>objective</p>
+<p>would be</p>
+<p>to minimize</p>
+<p>free energy.</p>
+<p>and so</p>
+<p>the way</p>
+<p>we implemented</p>
+<p>this in</p>
+<p>ant-colony</p>
+<p>optimization</p>
+<p>is that</p>
+<p>it is going</p>
+<p>to change</p>
+<p>the way</p>
+<p>we calculate</p>
+<p>the node</p>
+<p>selection</p>
+<p>probability</p>
+<p>which was</p>
+<p>initially</p>
+<p>just based</p>
+<p>on</p>
+<p>million</p>
+<p>feromones</p>
+<p>and here</p>
+<p>we are going</p>
+<p>to balance</p>
+<p>the</p>
+<p>feromone</p>
+<p>level</p>
+<p>available</p>
+<p>in that</p>
+<p>choice</p>
+<p>with the</p>
+<p>total</p>
+<p>distance</p>
+<p>of the</p>
+<p>route</p>
+<p>built</p>
+<p>so far</p>
+<p>and also</p>
+<p>the current</p>
+<p>belief</p>
+<p>of the</p>
+<p>agent</p>
+<p>the ant</p>
+<p>that is</p>
+<p>exploring it</p>
+<p>we also</p>
+<p>have a</p>
+<p>calculation</p>
+<p>of free</p>
+<p>energy</p>
+<p>the typical</p>
+<p>way</p>
+<p>with</p>
+<p>the logs</p>
+<p>of B</p>
+<p>in this</p>
+<p>case</p>
+<p>and we</p>
+<p>will adjust</p>
+<p>the belief</p>
+<p>or confidence</p>
+<p>level of</p>
+<p>the ant</p>
+<p>in its</p>
+<p>current</p>
+<p>exploration</p>
+<p>part</p>
+<p>based</p>
+<p>on</p>
+<p>the</p>
+<p>length</p>
+<p>of the</p>
+<p>current</p>
+<p>path</p>
+<p>compared</p>
+<p>to the</p>
+<p>best</p>
+<p>path</p>
+<p>encountered</p>
+<p>so far</p>
+<p>by the</p>
+<p>whole</p>
+<p>population</p>
+<p>and then</p>
+<p>the</p>
+<p>the</p>
+<p>feromone</p>
+<p>would be</p>
+<p>updated</p>
+<p>based</p>
+<p>on</p>
+<p>the</p>
+<p>typical</p>
+<p>way</p>
+<p>based</p>
+<p>on</p>
+<p>the</p>
+<p>length</p>
+<p>of</p>
+<p>the</p>
+<p>current</p>
+<p>path</p>
+<p>and so</p>
+<p>we're</p>
+<p>going to</p>
+<p>integrate</p>
+<p>this</p>
+<p>in</p>
+<p>the</p>
+<p>typical</p>
+<p>scheme</p>
+<p>for</p>
+<p>ant colony</p>
+<p>optimization</p>
+<p>with these</p>
+<p>changes</p>
+<p>in the</p>
+<p>way we</p>
+<p>update</p>
+<p>the way</p>
+<p>we calculate</p>
+<p>the probability</p>
+<p>of selecting</p>
+<p>the next</p>
+<p>node</p>
+<p>so the</p>
+<p>typical</p>
+<p>steps would</p>
+<p>be that</p>
+<p>we start</p>
+<p>with some</p>
+<p>uniform</p>
+<p>paramount levels</p>
+<p>for all</p>
+<p>choices</p>
+<p>the</p>
+<p>ants</p>
+<p>each one</p>
+<p>of them</p>
+<p>is going</p>
+<p>to</p>
+<p>update</p>
+<p>its</p>
+<p>belief</p>
+<p>based</p>
+<p>on</p>
+<p>its</p>
+<p>current</p>
+<p>exploration</p>
+<p>we calculate</p>
+<p>the free</p>
+<p>energy</p>
+<p>for each</p>
+<p>agent</p>
+<p>and then</p>
+<p>we're</p>
+<p>going to</p>
+<p>iteratively</p>
+<p>update</p>
+<p>both</p>
+<p>the</p>
+<p>beliefs</p>
+<p>and</p>
+<p>the</p>
+<p>best</p>
+<p>encountered</p>
+<p>solutions</p>
+<p>and</p>
+<p>at the</p>
+<p>end</p>
+<p>we keep</p>
+<p>the</p>
+<p>best</p>
+<p>route</p>
+<p>discovered</p>
+<p>by the</p>
+<p>population</p>
+<p>here again</p>
+<p>there will be</p>
+<p>some adjustments</p>
+<p>to be made</p>
+<p>about</p>
+<p>the number</p>
+<p>of</p>
+<p>agents</p>
+<p>in the</p>
+<p>population</p>
+<p>that you</p>
+<p>would like</p>
+<p>to consider</p>
+<p>the amount</p>
+<p>of computation</p>
+<p>time that you</p>
+<p>give yourself</p>
+<p>that could</p>
+<p>more or less</p>
+<p>influence</p>
+<p>the quality</p>
+<p>of the</p>
+<p>resulting</p>
+<p>solutions</p>
+<p>but again</p>
+<p>abstractly</p>
+<p>this is how</p>
+<p>we would</p>
+<p>structure</p>
+<p>the algorithm</p>
+<p>and so</p>
+<p>we have</p>
+<p>applied this</p>
+<p>to the</p>
+<p>traveling</p>
+<p>salesman</p>
+<p>problem</p>
+<p>the</p>
+<p>problem</p>
+<p>I have</p>
+<p>presented</p>
+<p>here</p>
+<p>let me</p>
+<p>clear the</p>
+<p>map</p>
+<p>to take</p>
+<p>another</p>
+<p>example</p>
+<p>and we</p>
+<p>compare</p>
+<p>this</p>
+<p>enhanced</p>
+<p>antcolony</p>
+<p>optimization</p>
+<p>as we call</p>
+<p>it</p>
+<p>or active</p>
+<p>antcolony</p>
+<p>optimization</p>
+<p>with</p>
+<p>both</p>
+<p>basic</p>
+<p>antcolony</p>
+<p>optimization</p>
+<p>and</p>
+<p>the</p>
+<p>nearest</p>
+<p>neighbor</p>
+<p>the very</p>
+<p>naive</p>
+<p>heuristic</p>
+<p>as</p>
+<p>baseline</p>
+<p>so we</p>
+<p>took</p>
+<p>random</p>
+<p>symmetric</p>
+<p>graphs</p>
+<p>of</p>
+<p>increasing</p>
+<p>sizes</p>
+<p>and</p>
+<p>one</p>
+<p>interesting</p>
+<p>thing</p>
+<p>we</p>
+<p>found</p>
+<p>a few</p>
+<p>interesting</p>
+<p>things</p>
+<p>it's that</p>
+<p>first</p>
+<p>this</p>
+<p>simple</p>
+<p>change</p>
+<p>in the</p>
+<p>way</p>
+<p>you</p>
+<p>calculate</p>
+<p>the</p>
+<p>probability</p>
+<p>of</p>
+<p>selecting</p>
+<p>the</p>
+<p>next</p>
+<p>node</p>
+<p>does</p>
+<p>improve</p>
+<p>the</p>
+<p>quality</p>
+<p>of</p>
+<p>the</p>
+<p>results</p>
+<p>significantly</p>
+<p>so it</p>
+<p>does</p>
+<p>give you</p>
+<p>shorter</p>
+<p>routes</p>
+<p>on average</p>
+<p>than</p>
+<p>basic</p>
+<p>antcolony</p>
+<p>optimization</p>
+<p>I don't</p>
+<p>know if we</p>
+<p>can see it</p>
+<p>over this</p>
+<p>example</p>
+<p>let's try</p>
+<p>so I</p>
+<p>will run</p>
+<p>the</p>
+<p>basic</p>
+<p>antcolony</p>
+<p>optimization</p>
+<p>here</p>
+<p>we find</p>
+<p>a route</p>
+<p>of this</p>
+<p>length</p>
+<p>11286</p>
+<p>with active</p>
+<p>inference</p>
+<p>seems to</p>
+<p>be the</p>
+<p>same</p>
+<p>so maybe</p>
+<p>we should</p>
+<p>add more</p>
+<p>nodes</p>
+<p>and here</p>
+<p>again</p>
+<p>the</p>
+<p>difference</p>
+<p>is really</p>
+<p>only appears</p>
+<p>when you have</p>
+<p>large enough</p>
+<p>graphs</p>
+<p>and complex</p>
+<p>enough</p>
+<p>graphs</p>
+<p>let's try</p>
+<p>again with</p>
+<p>this one</p>
+<p>maybe it</p>
+<p>would be</p>
+<p>luckier</p>
+<p>I'll give</p>
+<p>a comment</p>
+<p>on that</p>
+<p>while you're</p>
+<p>running the</p>
+<p>different</p>
+<p>ones</p>
+<p>yeah</p>
+<p>and this</p>
+<p>gives</p>
+<p>possibly an</p>
+<p>interesting</p>
+<p>case</p>
+<p>so first</p>
+<p>off</p>
+<p>there's</p>
+<p>many</p>
+<p>graphs</p>
+<p>where a</p>
+<p>number of</p>
+<p>heuristics</p>
+<p>could and</p>
+<p>would and</p>
+<p>should</p>
+<p>converge on</p>
+<p>the same</p>
+<p>simple</p>
+<p>output</p>
+<p>so there's</p>
+<p>never anything</p>
+<p>wrong with</p>
+<p>running multiple</p>
+<p>parallel</p>
+<p>meta-heuristics</p>
+<p>and so I</p>
+<p>was seeing</p>
+<p>that free</p>
+<p>energy</p>
+<p>calculation</p>
+<p>as</p>
+<p>counteracting</p>
+<p>with an</p>
+<p>entropic</p>
+<p>force</p>
+<p>the convergent</p>
+<p>tendency</p>
+<p>of the</p>
+<p>attractive</p>
+<p>pheromone</p>
+<p>so you have</p>
+<p>the ants</p>
+<p>laying down</p>
+<p>pheromones</p>
+<p>based upon</p>
+<p>shorter</p>
+<p>paths</p>
+<p>and prior</p>
+<p>success</p>
+<p>and then</p>
+<p>there's</p>
+<p>this</p>
+<p>kind</p>
+<p>of</p>
+<p>expansive</p>
+<p>force</p>
+<p>that's</p>
+<p>keeping</p>
+<p>an</p>
+<p>additional</p>
+<p>variance</p>
+<p>element</p>
+<p>around</p>
+<p>and so</p>
+<p>it's</p>
+<p>kind</p>
+<p>of</p>
+<p>like</p>
+<p>the</p>
+<p>ball</p>
+<p>is</p>
+<p>rolling</p>
+<p>to</p>
+<p>the</p>
+<p>bottom</p>
+<p>of</p>
+<p>the</p>
+<p>hill</p>
+<p>that's</p>
+<p>the</p>
+<p>standard</p>
+<p>ant</p>
+<p>colony</p>
+<p>optimization</p>
+<p>and then</p>
+<p>the free</p>
+<p>energy</p>
+<p>is</p>
+<p>keeping</p>
+<p>it</p>
+<p>a little</p>
+<p>bit</p>
+<p>off</p>
+<p>the</p>
+<p>bottom</p>
+<p>so</p>
+<p>then</p>
+<p>looking</p>
+<p>at</p>
+<p>huge</p>
+<p>numbers</p>
+<p>of</p>
+<p>replicates</p>
+<p>for</p>
+<p>graphs</p>
+<p>it was</p>
+<p>interesting</p>
+<p>that</p>
+<p>on</p>
+<p>many</p>
+<p>cases</p>
+<p>it would</p>
+<p>do</p>
+<p>a tiny</p>
+<p>bit</p>
+<p>worse</p>
+<p>but</p>
+<p>then</p>
+<p>in</p>
+<p>several</p>
+<p>cases</p>
+<p>keeping</p>
+<p>it</p>
+<p>lifted</p>
+<p>off</p>
+<p>the</p>
+<p>ground</p>
+<p>with</p>
+<p>that</p>
+<p>entropic</p>
+<p>force</p>
+<p>would</p>
+<p>actually</p>
+<p>let it</p>
+<p>explore</p>
+<p>a totally</p>
+<p>different</p>
+<p>neighborhood</p>
+<p>and find</p>
+<p>vastly</p>
+<p>better</p>
+<p>solutions</p>
+<p>so</p>
+<p>that</p>
+<p>overall</p>
+<p>it</p>
+<p>found</p>
+<p>shorter</p>
+<p>paths</p>
+<p>but</p>
+<p>that</p>
+<p>it</p>
+<p>found</p>
+<p>basically</p>
+<p>either</p>
+<p>the</p>
+<p>same</p>
+<p>or</p>
+<p>almost</p>
+<p>the</p>
+<p>same</p>
+<p>in</p>
+<p>most</p>
+<p>cases</p>
+<p>and</p>
+<p>then</p>
+<p>a few</p>
+<p>situations</p>
+<p>where</p>
+<p>it</p>
+<p>found</p>
+<p>something</p>
+<p>that</p>
+<p>was</p>
+<p>hugely</p>
+<p>shorter</p>
+<p>well</p>
+<p>well</p>
+<p>I have</p>
+<p>two</p>
+<p>comments</p>
+<p>on this</p>
+<p>that</p>
+<p>was</p>
+<p>actually</p>
+<p>going</p>
+<p>to</p>
+<p>be</p>
+<p>my</p>
+<p>conclusion</p>
+<p>for</p>
+<p>this</p>
+<p>presentation</p>
+<p>the way</p>
+<p>I see</p>
+<p>it</p>
+<p>is that</p>
+<p>at this</p>
+<p>point</p>
+<p>it is</p>
+<p>interesting</p>
+<p>and useful</p>
+<p>to do</p>
+<p>applied</p>
+<p>work</p>
+<p>like we</p>
+<p>do</p>
+<p>here</p>
+<p>to</p>
+<p>show</p>
+<p>in</p>
+<p>practice</p>
+<p>that</p>
+<p>this</p>
+<p>simple</p>
+<p>shift</p>
+<p>in</p>
+<p>the</p>
+<p>way</p>
+<p>you</p>
+<p>define</p>
+<p>the</p>
+<p>behavior</p>
+<p>of</p>
+<p>your</p>
+<p>agents</p>
+<p>does</p>
+<p>improve</p>
+<p>things</p>
+<p>and</p>
+<p>here</p>
+<p>we</p>
+<p>have</p>
+<p>an</p>
+<p>improvement</p>
+<p>actually</p>
+<p>with</p>
+<p>this</p>
+<p>graph</p>
+<p>so</p>
+<p>it</p>
+<p>is</p>
+<p>actually</p>
+<p>significant</p>
+<p>basic</p>
+<p>ant</p>
+<p>colony</p>
+<p>gives</p>
+<p>us</p>
+<p>something</p>
+<p>like</p>
+<p>17</p>
+<p>or</p>
+<p>and</p>
+<p>we</p>
+<p>get</p>
+<p>16</p>
+<p>something</p>
+<p>with</p>
+<p>active</p>
+<p>inference</p>
+<p>so</p>
+<p>there</p>
+<p>is</p>
+<p>definitely</p>
+<p>value</p>
+<p>in</p>
+<p>applied</p>
+<p>work</p>
+<p>like</p>
+<p>this</p>
+<p>and</p>
+<p>what</p>
+<p>I would</p>
+<p>be</p>
+<p>interested</p>
+<p>in</p>
+<p>exploring</p>
+<p>would</p>
+<p>be</p>
+<p>whether</p>
+<p>this</p>
+<p>also</p>
+<p>replicates</p>
+<p>for</p>
+<p>other</p>
+<p>population</p>
+<p>based</p>
+<p>meta-heuristics</p>
+<p>notably</p>
+<p>genetic</p>
+<p>algorithms</p>
+<p>or</p>
+<p>other</p>
+<p>approaches</p>
+<p>simulated</p>
+<p>and</p>
+<p>healing</p>
+<p>etc</p>
+<p>but</p>
+<p>the</p>
+<p>point</p>
+<p>you</p>
+<p>raise</p>
+<p>well</p>
+<p>it's</p>
+<p>little</p>
+<p>beyond</p>
+<p>my</p>
+<p>understanding</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>to be</p>
+<p>honest</p>
+<p>but</p>
+<p>I</p>
+<p>think</p>
+<p>there</p>
+<p>is</p>
+<p>definitely</p>
+<p>need</p>
+<p>for</p>
+<p>more</p>
+<p>theoretical</p>
+<p>grounding</p>
+<p>and</p>
+<p>it</p>
+<p>sounds</p>
+<p>very</p>
+<p>interesting</p>
+<p>it's</p>
+<p>that</p>
+<p>active</p>
+<p>inference</p>
+<p>just</p>
+<p>this</p>
+<p>change</p>
+<p>in</p>
+<p>the</p>
+<p>way</p>
+<p>you</p>
+<p>can</p>
+<p>create</p>
+<p>probability</p>
+<p>can</p>
+<p>allow</p>
+<p>you</p>
+<p>to</p>
+<p>escape</p>
+<p>minima</p>
+<p>that</p>
+<p>are</p>
+<p>not</p>
+<p>that</p>
+<p>permising</p>
+<p>so</p>
+<p>that</p>
+<p>would</p>
+<p>be</p>
+<p>definitely</p>
+<p>needed</p>
+<p>at</p>
+<p>some</p>
+<p>point</p>
+<p>of course</p>
+<p>when</p>
+<p>and if</p>
+<p>we</p>
+<p>get</p>
+<p>promising</p>
+<p>results</p>
+<p>with</p>
+<p>other</p>
+<p>methods</p>
+<p>is to</p>
+<p>justify</p>
+<p>it</p>
+<p>theoretically</p>
+<p>because</p>
+<p>right</p>
+<p>now</p>
+<p>it's</p>
+<p>just</p>
+<p>based</p>
+<p>on</p>
+<p>intuition</p>
+<p>indeed</p>
+<p>agents</p>
+<p>can be</p>
+<p>improved</p>
+<p>by having</p>
+<p>this</p>
+<p>intent</p>
+<p>in their</p>
+<p>exploration</p>
+<p>but</p>
+<p>I</p>
+<p>would</p>
+<p>be</p>
+<p>very</p>
+<p>interested</p>
+<p>in</p>
+<p>reading</p>
+<p>more</p>
+<p>about</p>
+<p>the</p>
+<p>relationship</p>
+<p>with</p>
+<p>entropy</p>
+<p>and</p>
+<p>how</p>
+<p>it</p>
+<p>can</p>
+<p>be</p>
+<p>seen</p>
+<p>in</p>
+<p>the</p>
+<p>graph</p>
+<p>of</p>
+<p>the</p>
+<p>tree</p>
+<p>of</p>
+<p>possible</p>
+<p>solutions</p>
+<p>that's</p>
+<p>one</p>
+<p>point</p>
+<p>and</p>
+<p>the</p>
+<p>second</p>
+<p>one</p>
+<p>is</p>
+<p>that</p>
+<p>indeed</p>
+<p>the</p>
+<p>complexity</p>
+<p>of the</p>
+<p>graph</p>
+<p>matters</p>
+<p>of course</p>
+<p>but</p>
+<p>even</p>
+<p>in</p>
+<p>the</p>
+<p>paper</p>
+<p>and</p>
+<p>let alone</p>
+<p>in</p>
+<p>my</p>
+<p>toy</p>
+<p>example</p>
+<p>here</p>
+<p>with</p>
+<p>this</p>
+<p>mini</p>
+<p>app</p>
+<p>we</p>
+<p>are</p>
+<p>still</p>
+<p>considering</p>
+<p>relatively</p>
+<p>small</p>
+<p>graphs</p>
+<p>the</p>
+<p>largest</p>
+<p>graph</p>
+<p>we</p>
+<p>have</p>
+<p>considered</p>
+<p>was</p>
+<p>500</p>
+<p>nodes</p>
+<p>which</p>
+<p>remains</p>
+<p>significant</p>
+<p>you see</p>
+<p>important</p>
+<p>improvements</p>
+<p>but</p>
+<p>of course</p>
+<p>the</p>
+<p>real value</p>
+<p>would come</p>
+<p>only with</p>
+<p>hundreds of</p>
+<p>thousands</p>
+<p>of nodes</p>
+<p>that's when</p>
+<p>you really</p>
+<p>need</p>
+<p>meta-heuristics</p>
+<p>so</p>
+<p>perhaps</p>
+<p>I didn't</p>
+<p>give</p>
+<p>I wanted</p>
+<p>to share</p>
+<p>this as</p>
+<p>well</p>
+<p>you know</p>
+<p>an overview</p>
+<p>of</p>
+<p>why this</p>
+<p>problem</p>
+<p>matters</p>
+<p>why</p>
+<p>the</p>
+<p>traveling</p>
+<p>salesman</p>
+<p>problem</p>
+<p>matters</p>
+<p>first</p>
+<p>theoretically</p>
+<p>it</p>
+<p>matters</p>
+<p>because</p>
+<p>as I</p>
+<p>said</p>
+<p>it</p>
+<p>is</p>
+<p>as</p>
+<p>hard</p>
+<p>as</p>
+<p>any</p>
+<p>problem</p>
+<p>you</p>
+<p>can</p>
+<p>think</p>
+<p>of</p>
+<p>computationally</p>
+<p>and</p>
+<p>all</p>
+<p>NP-hard</p>
+<p>problems</p>
+<p>reduce</p>
+<p>to each</p>
+<p>other</p>
+<p>so</p>
+<p>you</p>
+<p>could</p>
+<p>reduce</p>
+<p>you</p>
+<p>could</p>
+<p>express</p>
+<p>any</p>
+<p>NP-hard</p>
+<p>problem</p>
+<p>as</p>
+<p>a</p>
+<p>traveling</p>
+<p>salesman</p>
+<p>and</p>
+<p>also</p>
+<p>because</p>
+<p>it</p>
+<p>has</p>
+<p>well</p>
+<p>practical</p>
+<p>applications</p>
+<p>it</p>
+<p>could</p>
+<p>be</p>
+<p>literally</p>
+<p>determining</p>
+<p>routes</p>
+<p>for trucks</p>
+<p>or for</p>
+<p>drones</p>
+<p>but</p>
+<p>more</p>
+<p>it</p>
+<p>is</p>
+<p>being</p>
+<p>used</p>
+<p>in</p>
+<p>chip</p>
+<p>design</p>
+<p>in</p>
+<p>electronic</p>
+<p>chips</p>
+<p>design</p>
+<p>that's</p>
+<p>when</p>
+<p>you</p>
+<p>may</p>
+<p>have</p>
+<p>a</p>
+<p>very</p>
+<p>large</p>
+<p>number</p>
+<p>of</p>
+<p>nodes</p>
+<p>and</p>
+<p>you</p>
+<p>need</p>
+<p>methods</p>
+<p>that are</p>
+<p>progressively</p>
+<p>better</p>
+<p>at the</p>
+<p>limit</p>
+<p>for</p>
+<p>antending</p>
+<p>towards</p>
+<p>infinity</p>
+<p>so</p>
+<p>Daniel</p>
+<p>you</p>
+<p>have</p>
+<p>an</p>
+<p>idea</p>
+<p>about</p>
+<p>the</p>
+<p>theoretical</p>
+<p>grounding</p>
+<p>of</p>
+<p>the</p>
+<p>method</p>
+<p>well</p>
+<p>I</p>
+<p>mean</p>
+<p>just</p>
+<p>learning</p>
+<p>from</p>
+<p>you</p>
+<p>about</p>
+<p>this</p>
+<p>broader</p>
+<p>meta</p>
+<p>heuristic</p>
+<p>space</p>
+<p>and</p>
+<p>seeing</p>
+<p>how</p>
+<p>this</p>
+<p>builds</p>
+<p>on</p>
+<p>prior</p>
+<p>work</p>
+<p>in</p>
+<p>ants</p>
+<p>optimization</p>
+<p>and</p>
+<p>in</p>
+<p>active</p>
+<p>and</p>
+<p>for</p>
+<p>ants</p>
+<p>there</p>
+<p>was</p>
+<p>just</p>
+<p>a few</p>
+<p>interesting</p>
+<p>pieces</p>
+<p>and</p>
+<p>I</p>
+<p>agree</p>
+<p>that</p>
+<p>there</p>
+<p>could</p>
+<p>be</p>
+<p>theoretical</p>
+<p>and</p>
+<p>empirical</p>
+<p>exploration</p>
+<p>to</p>
+<p>flesh</p>
+<p>out</p>
+<p>some</p>
+<p>of the</p>
+<p>decisions</p>
+<p>that we</p>
+<p>made</p>
+<p>here</p>
+<p>like</p>
+<p>the</p>
+<p>bigger</p>
+<p>picture</p>
+<p>on</p>
+<p>these</p>
+<p>collective</p>
+<p>intelligence</p>
+<p>algorithms</p>
+<p>and the</p>
+<p>reason why</p>
+<p>there's so</p>
+<p>many</p>
+<p>species</p>
+<p>and so</p>
+<p>many</p>
+<p>different</p>
+<p>metaphors</p>
+<p>is because</p>
+<p>there's</p>
+<p>no</p>
+<p>free</p>
+<p>lunch</p>
+<p>if</p>
+<p>the</p>
+<p>collective</p>
+<p>behavioral</p>
+<p>algorithm</p>
+<p>recapitulates</p>
+<p>important</p>
+<p>features</p>
+<p>of the</p>
+<p>environment</p>
+<p>then</p>
+<p>it</p>
+<p>might</p>
+<p>be</p>
+<p>able</p>
+<p>to</p>
+<p>do</p>
+<p>well</p>
+<p>however</p>
+<p>if</p>
+<p>it</p>
+<p>doesn't</p>
+<p>recapitulate</p>
+<p>features</p>
+<p>of the</p>
+<p>environment</p>
+<p>then</p>
+<p>it</p>
+<p>won't</p>
+<p>necessarily</p>
+<p>do</p>
+<p>well</p>
+<p>so</p>
+<p>I'm</p>
+<p>thinking</p>
+<p>now</p>
+<p>about</p>
+<p>how</p>
+<p>each</p>
+<p>ant's</p>
+<p>nest mate</p>
+<p>knows</p>
+<p>the best</p>
+<p>solution</p>
+<p>several</p>
+<p>slides</p>
+<p>I think</p>
+<p>11</p>
+<p>they</p>
+<p>know</p>
+<p>their</p>
+<p>own</p>
+<p>path</p>
+<p>length</p>
+<p>and</p>
+<p>the</p>
+<p>best</p>
+<p>path</p>
+<p>length</p>
+<p>so</p>
+<p>that's</p>
+<p>an</p>
+<p>example</p>
+<p>of</p>
+<p>an</p>
+<p>abstraction</p>
+<p>or a</p>
+<p>calculation</p>
+<p>that a</p>
+<p>real</p>
+<p>ant</p>
+<p>nest</p>
+<p>mate</p>
+<p>wouldn't</p>
+<p>necessarily</p>
+<p>know</p>
+<p>however</p>
+<p>it might</p>
+<p>have</p>
+<p>expectations</p>
+<p>about</p>
+<p>path</p>
+<p>length</p>
+<p>from</p>
+<p>its</p>
+<p>own</p>
+<p>learned</p>
+<p>experience</p>
+<p>or</p>
+<p>from</p>
+<p>evolution</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>that</p>
+<p>this</p>
+<p>design</p>
+<p>space</p>
+<p>of</p>
+<p>how</p>
+<p>do</p>
+<p>we</p>
+<p>recognize</p>
+<p>natural</p>
+<p>history</p>
+<p>and</p>
+<p>understand</p>
+<p>what</p>
+<p>the</p>
+<p>cognitive</p>
+<p>constraints</p>
+<p>and what</p>
+<p>the</p>
+<p>cognitive</p>
+<p>functions</p>
+<p>are</p>
+<p>in</p>
+<p>nature</p>
+<p>for</p>
+<p>harvester</p>
+<p>ants</p>
+<p>and</p>
+<p>turtle</p>
+<p>ants</p>
+<p>and</p>
+<p>leaf</p>
+<p>cutter</p>
+<p>ants</p>
+<p>just</p>
+<p>going</p>
+<p>to</p>
+<p>nature</p>
+<p>understanding</p>
+<p>what</p>
+<p>kinds</p>
+<p>of</p>
+<p>problems</p>
+<p>are</p>
+<p>being</p>
+<p>solved</p>
+<p>and</p>
+<p>then</p>
+<p>being</p>
+<p>able</p>
+<p>to</p>
+<p>work</p>
+<p>and</p>
+<p>abstract</p>
+<p>that</p>
+<p>to</p>
+<p>find</p>
+<p>slightly</p>
+<p>more</p>
+<p>generic</p>
+<p>forms</p>
+<p>of those</p>
+<p>collective</p>
+<p>intelligence</p>
+<p>methods</p>
+<p>that</p>
+<p>can</p>
+<p>be</p>
+<p>transferred</p>
+<p>to</p>
+<p>other</p>
+<p>analogous</p>
+<p>situations</p>
+<p>like</p>
+<p>more</p>
+<p>generally</p>
+<p>collecting</p>
+<p>resources</p>
+<p>or</p>
+<p>information</p>
+<p>or</p>
+<p>finding</p>
+<p>short</p>
+<p>paths</p>
+<p>and</p>
+<p>then</p>
+<p>what</p>
+<p>other</p>
+<p>elements</p>
+<p>need</p>
+<p>to</p>
+<p>come</p>
+<p>into</p>
+<p>play</p>
+<p>and</p>
+<p>what</p>
+<p>can</p>
+<p>situationally</p>
+<p>supercharge</p>
+<p>the</p>
+<p>algorithms</p>
+<p>again</p>
+<p>like</p>
+<p>having</p>
+<p>each</p>
+<p>nestmate</p>
+<p>know</p>
+<p>at</p>
+<p>all</p>
+<p>times</p>
+<p>whether</p>
+<p>it's</p>
+<p>itself</p>
+<p>is</p>
+<p>on a</p>
+<p>short</p>
+<p>or</p>
+<p>long</p>
+<p>path</p>
+<p>yet</p>
+<p>paths</p>
+<p>of</p>
+<p>real</p>
+<p>ant</p>
+<p>colonies</p>
+<p>don't</p>
+<p>have</p>
+<p>that</p>
+<p>feature</p>
+<p>so</p>
+<p>I</p>
+<p>just</p>
+<p>see</p>
+<p>it</p>
+<p>as</p>
+<p>kind</p>
+<p>of</p>
+<p>like</p>
+<p>a</p>
+<p>mechanic</p>
+<p>shop</p>
+<p>with</p>
+<p>all</p>
+<p>these</p>
+<p>different</p>
+<p>options</p>
+<p>and</p>
+<p>meta</p>
+<p>heuristics</p>
+<p>how do</p>
+<p>we</p>
+<p>design</p>
+<p>that</p>
+<p>biological</p>
+<p>metaphor</p>
+<p>so</p>
+<p>that</p>
+<p>it</p>
+<p>captures</p>
+<p>relevant</p>
+<p>features</p>
+<p>of our</p>
+<p>task</p>
+<p>and</p>
+<p>domain</p>
+<p>because</p>
+<p>there</p>
+<p>could be</p>
+<p>some</p>
+<p>incredibly</p>
+<p>efficient</p>
+<p>algorithms</p>
+<p>which</p>
+<p>isn't</p>
+<p>even to</p>
+<p>say</p>
+<p>they</p>
+<p>would</p>
+<p>be</p>
+<p>super</p>
+<p>transfer</p>
+<p>but</p>
+<p>there</p>
+<p>might</p>
+<p>be</p>
+<p>some</p>
+<p>really</p>
+<p>specific</p>
+<p>algorithms</p>
+<p>that</p>
+<p>could</p>
+<p>have</p>
+<p>incredible</p>
+<p>interpretability</p>
+<p>or performance</p>
+<p>attributes</p>
+<p>if we</p>
+<p>can select</p>
+<p>appropriately</p>
+<p>among</p>
+<p>collective</p>
+<p>behavioral</p>
+<p>algorithms</p>
+<p>what could</p>
+<p>really help</p>
+<p>here</p>
+<p>to feed</p>
+<p>this</p>
+<p>reflection</p>
+<p>about</p>
+<p>what could</p>
+<p>be the</p>
+<p>underlying</p>
+<p>abstract</p>
+<p>principles</p>
+<p>that explain</p>
+<p>this improvement</p>
+<p>would be</p>
+<p>perhaps if</p>
+<p>we could</p>
+<p>visualize</p>
+<p>the tree</p>
+<p>of</p>
+<p>solutions</p>
+<p>being</p>
+<p>explored</p>
+<p>for</p>
+<p>small</p>
+<p>scale</p>
+<p>problems</p>
+<p>like we</p>
+<p>have</p>
+<p>here</p>
+<p>up to</p>
+<p>a few</p>
+<p>hundred</p>
+<p>nodes</p>
+<p>I think</p>
+<p>it would</p>
+<p>be very</p>
+<p>interesting</p>
+<p>to have</p>
+<p>perhaps</p>
+<p>some</p>
+<p>colorful</p>
+<p>visualization</p>
+<p>of</p>
+<p>basic</p>
+<p>ACO</p>
+<p>basic</p>
+<p>optimization</p>
+<p>versus</p>
+<p>the active</p>
+<p>version</p>
+<p>and I would</p>
+<p>really like</p>
+<p>to explore</p>
+<p>this idea</p>
+<p>you have</p>
+<p>mentioned</p>
+<p>which is</p>
+<p>that</p>
+<p>this</p>
+<p>small</p>
+<p>change</p>
+<p>you make</p>
+<p>to the</p>
+<p>way</p>
+<p>the</p>
+<p>probability</p>
+<p>of</p>
+<p>selecting</p>
+<p>the</p>
+<p>next</p>
+<p>node</p>
+<p>is</p>
+<p>calculated</p>
+<p>does</p>
+<p>allow</p>
+<p>you</p>
+<p>to</p>
+<p>escape</p>
+<p>potentially</p>
+<p>not</p>
+<p>very</p>
+<p>good</p>
+<p>neighborhoods</p>
+<p>so that's</p>
+<p>definitely</p>
+<p>something</p>
+<p>we'll keep</p>
+<p>in mind</p>
+<p>in any</p>
+<p>case</p>
+<p>for</p>
+<p>this</p>
+<p>paper</p>
+<p>and</p>
+<p>the</p>
+<p>so far</p>
+<p>limited</p>
+<p>experiments</p>
+<p>we have</p>
+<p>run</p>
+<p>one</p>
+<p>very</p>
+<p>consistent</p>
+<p>trend</p>
+<p>is that</p>
+<p>the</p>
+<p>larger</p>
+<p>the</p>
+<p>graph</p>
+<p>the</p>
+<p>higher</p>
+<p>the</p>
+<p>percentage</p>
+<p>of</p>
+<p>improvements</p>
+<p>so</p>
+<p>you</p>
+<p>only</p>
+<p>see</p>
+<p>the</p>
+<p>real</p>
+<p>value</p>
+<p>for</p>
+<p>large</p>
+<p>scale</p>
+<p>graphs</p>
+<p>there</p>
+<p>is</p>
+<p>a</p>
+<p>little</p>
+<p>hiccup</p>
+<p>here</p>
+<p>for</p>
+<p>100</p>
+<p>node</p>
+<p>for</p>
+<p>some</p>
+<p>reason</p>
+<p>and</p>
+<p>I</p>
+<p>think</p>
+<p>we</p>
+<p>had</p>
+<p>100</p>
+<p>graphs</p>
+<p>per</p>
+<p>node</p>
+<p>size</p>
+<p>so</p>
+<p>it</p>
+<p>may</p>
+<p>be</p>
+<p>because</p>
+<p>of</p>
+<p>the</p>
+<p>samples</p>
+<p>or</p>
+<p>in</p>
+<p>any</p>
+<p>case</p>
+<p>we</p>
+<p>can</p>
+<p>see</p>
+<p>the</p>
+<p>trend</p>
+<p>which</p>
+<p>is</p>
+<p>that</p>
+<p>the</p>
+<p>larger</p>
+<p>the</p>
+<p>size</p>
+<p>of</p>
+<p>the</p>
+<p>graph</p>
+<p>the</p>
+<p>higher</p>
+<p>the</p>
+<p>percentage</p>
+<p>of</p>
+<p>improvement</p>
+<p>but</p>
+<p>on</p>
+<p>the</p>
+<p>other</p>
+<p>hand</p>
+<p>and</p>
+<p>very</p>
+<p>interestingly</p>
+<p>the</p>
+<p>computation</p>
+<p>time</p>
+<p>does not</p>
+<p>increase</p>
+<p>proportionally</p>
+<p>to the</p>
+<p>size</p>
+<p>of the</p>
+<p>graph</p>
+<p>in fact</p>
+<p>it</p>
+<p>decreases</p>
+<p>so</p>
+<p>again</p>
+<p>it's</p>
+<p>not</p>
+<p>much</p>
+<p>adding</p>
+<p>new</p>
+<p>operations</p>
+<p>to</p>
+<p>the</p>
+<p>method</p>
+<p>new</p>
+<p>steps</p>
+<p>but</p>
+<p>simply</p>
+<p>changing</p>
+<p>the way</p>
+<p>one</p>
+<p>operation</p>
+<p>is</p>
+<p>done</p>
+<p>which</p>
+<p>is</p>
+<p>the</p>
+<p>probability</p>
+<p>of</p>
+<p>selecting</p>
+<p>the</p>
+<p>next</p>
+<p>node</p>
+<p>so</p>
+<p>obviously</p>
+<p>that's</p>
+<p>going</p>
+<p>to</p>
+<p>add</p>
+<p>some</p>
+<p>complexity</p>
+<p>but</p>
+<p>very</p>
+<p>interestingly</p>
+<p>this</p>
+<p>decreases</p>
+<p>with</p>
+<p>the</p>
+<p>size</p>
+<p>of</p>
+<p>the</p>
+<p>graph</p>
+<p>so</p>
+<p>it</p>
+<p>may</p>
+<p>even</p>
+<p>become</p>
+<p>neglectable</p>
+<p>for</p>
+<p>very</p>
+<p>large</p>
+<p>scale</p>
+<p>graphs</p>
+<p>where</p>
+<p>these</p>
+<p>kind</p>
+<p>of</p>
+<p>improvements</p>
+<p>matter</p>
+<p>so</p>
+<p>yes</p>
+<p>please</p>
+<p>yeah</p>
+<p>I think</p>
+<p>another</p>
+<p>design</p>
+<p>pattern</p>
+<p>or something</p>
+<p>to explore</p>
+<p>is</p>
+<p>having</p>
+<p>more</p>
+<p>simpler</p>
+<p>nest</p>
+<p>mates</p>
+<p>versus</p>
+<p>having</p>
+<p>fewer</p>
+<p>more</p>
+<p>cognitively</p>
+<p>sophisticated</p>
+<p>nest</p>
+<p>mates</p>
+<p>and</p>
+<p>that's</p>
+<p>something</p>
+<p>again</p>
+<p>that</p>
+<p>real</p>
+<p>colonies</p>
+<p>trade</p>
+<p>off</p>
+<p>in</p>
+<p>the</p>
+<p>wild</p>
+<p>too</p>
+<p>but</p>
+<p>now</p>
+<p>we can</p>
+<p>explore</p>
+<p>ranging</p>
+<p>from</p>
+<p>truly</p>
+<p>multi-threadable</p>
+<p>simple</p>
+<p>nest</p>
+<p>mates</p>
+<p>no</p>
+<p>information</p>
+<p>sharing</p>
+<p>not even</p>
+<p>finding out</p>
+<p>these</p>
+<p>colony</p>
+<p>level</p>
+<p>summary</p>
+<p>statistics</p>
+<p>super</p>
+<p>multi-thread</p>
+<p>super</p>
+<p>paralyzable</p>
+<p>all the</p>
+<p>way on</p>
+<p>through</p>
+<p>having</p>
+<p>more</p>
+<p>advanced</p>
+<p>nest</p>
+<p>mates</p>
+<p>at the</p>
+<p>per</p>
+<p>thread</p>
+<p>level</p>
+<p>but maybe</p>
+<p>they can</p>
+<p>send each</p>
+<p>other</p>
+<p>messages</p>
+<p>or they</p>
+<p>can plan</p>
+<p>ahead</p>
+<p>explicitly</p>
+<p>three</p>
+<p>time</p>
+<p>steps</p>
+<p>but if</p>
+<p>they're</p>
+<p>planning</p>
+<p>ahead</p>
+<p>explicitly</p>
+<p>three</p>
+<p>time</p>
+<p>steps</p>
+<p>and</p>
+<p>each</p>
+<p>of</p>
+<p>them</p>
+<p>is</p>
+<p>doing</p>
+<p>a</p>
+<p>little</p>
+<p>tree</p>
+<p>roll</p>
+<p>out</p>
+<p>at</p>
+<p>each</p>
+<p>time</p>
+<p>step</p>
+<p>then</p>
+<p>the</p>
+<p>computational</p>
+<p>complexity</p>
+<p>increases</p>
+<p>a lot</p>
+<p>and so</p>
+<p>that</p>
+<p>space</p>
+<p>of</p>
+<p>being</p>
+<p>able</p>
+<p>to</p>
+<p>do</p>
+<p>sweeps</p>
+<p>across</p>
+<p>more</p>
+<p>simpler</p>
+<p>to</p>
+<p>fewer</p>
+<p>more</p>
+<p>complicated</p>
+<p>nest</p>
+<p>mates</p>
+<p>or</p>
+<p>cuckoos</p>
+<p>or</p>
+<p>whatever</p>
+<p>the</p>
+<p>metaphor</p>
+<p>is</p>
+<p>and then</p>
+<p>understand</p>
+<p>where are</p>
+<p>we getting</p>
+<p>the most</p>
+<p>bang for</p>
+<p>the buck</p>
+<p>for a</p>
+<p>given</p>
+<p>type</p>
+<p>of graph</p>
+<p>maybe</p>
+<p>if it's</p>
+<p>a lattice</p>
+<p>like graph</p>
+<p>simpler</p>
+<p>colonies</p>
+<p>do better</p>
+<p>but if</p>
+<p>it's</p>
+<p>a small</p>
+<p>world</p>
+<p>graph</p>
+<p>topology</p>
+<p>or</p>
+<p>preferential</p>
+<p>attachment</p>
+<p>then</p>
+<p>having</p>
+<p>the</p>
+<p>planning</p>
+<p>capacity</p>
+<p>so that</p>
+<p>you can</p>
+<p>know</p>
+<p>that you're</p>
+<p>going to</p>
+<p>get out</p>
+<p>of a</p>
+<p>small</p>
+<p>neighborhood</p>
+<p>maybe</p>
+<p>that</p>
+<p>comes</p>
+<p>into</p>
+<p>play</p>
+<p>again</p>
+<p>so</p>
+<p>it</p>
+<p>just</p>
+<p>shows</p>
+<p>that</p>
+<p>like</p>
+<p>there</p>
+<p>isn't</p>
+<p>going</p>
+<p>to be</p>
+<p>a</p>
+<p>general</p>
+<p>approach</p>
+<p>other</p>
+<p>than</p>
+<p>this</p>
+<p>sort</p>
+<p>of</p>
+<p>meta</p>
+<p>heuristic</p>
+<p>design</p>
+<p>level</p>
+<p>of</p>
+<p>generality</p>
+<p>helping</p>
+<p>us</p>
+<p>articulate</p>
+<p>which</p>
+<p>collective</p>
+<p>behavioral</p>
+<p>methods</p>
+<p>and how</p>
+<p>they should</p>
+<p>be</p>
+<p>tuned</p>
+<p>to</p>
+<p>bring</p>
+<p>to</p>
+<p>a</p>
+<p>given</p>
+<p>problem</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>there</p>
+<p>are</p>
+<p>two</p>
+<p>points</p>
+<p>here</p>
+<p>that</p>
+<p>could</p>
+<p>be</p>
+<p>interesting</p>
+<p>definitely</p>
+<p>graph</p>
+<p>topology</p>
+<p>matters</p>
+<p>that's</p>
+<p>something</p>
+<p>we definitely</p>
+<p>need to</p>
+<p>explore</p>
+<p>whether</p>
+<p>the</p>
+<p>structure</p>
+<p>of the</p>
+<p>graph</p>
+<p>you know</p>
+<p>influences</p>
+<p>the quality</p>
+<p>of the</p>
+<p>results</p>
+<p>you get</p>
+<p>and I</p>
+<p>think</p>
+<p>for</p>
+<p>your</p>
+<p>first</p>
+<p>point</p>
+<p>which</p>
+<p>is</p>
+<p>basically</p>
+<p>what</p>
+<p>is</p>
+<p>the</p>
+<p>most</p>
+<p>bare</p>
+<p>bones</p>
+<p>population</p>
+<p>search</p>
+<p>method</p>
+<p>we</p>
+<p>could</p>
+<p>explore</p>
+<p>to</p>
+<p>really</p>
+<p>just</p>
+<p>pinpoint</p>
+<p>what</p>
+<p>is</p>
+<p>the</p>
+<p>improvement</p>
+<p>brought</p>
+<p>by</p>
+<p>active</p>
+<p>inference</p>
+<p>something</p>
+<p>we could</p>
+<p>also</p>
+<p>see</p>
+<p>would</p>
+<p>be</p>
+<p>I</p>
+<p>think</p>
+<p>genetic</p>
+<p>algorithms</p>
+<p>evolutionary</p>
+<p>genetic</p>
+<p>algorithms</p>
+<p>evolution</p>
+<p>is</p>
+<p>really</p>
+<p>the</p>
+<p>most</p>
+<p>general</p>
+<p>metaphor</p>
+<p>for</p>
+<p>behavior</p>
+<p>of</p>
+<p>populations</p>
+<p>and</p>
+<p>there</p>
+<p>you</p>
+<p>don't</p>
+<p>have</p>
+<p>information</p>
+<p>sharing</p>
+<p>across</p>
+<p>generations</p>
+<p>you</p>
+<p>just</p>
+<p>have</p>
+<p>message</p>
+<p>transmission</p>
+<p>in</p>
+<p>the</p>
+<p>genes</p>
+<p>you</p>
+<p>may</p>
+<p>also</p>
+<p>have</p>
+<p>some</p>
+<p>randomness</p>
+<p>introduced</p>
+<p>by</p>
+<p>random</p>
+<p>mutations</p>
+<p>that can</p>
+<p>happen</p>
+<p>and that</p>
+<p>can</p>
+<p>help</p>
+<p>you</p>
+<p>escape</p>
+<p>not</p>
+<p>the</p>
+<p>informizing</p>
+<p>neighborhoods</p>
+<p>and I</p>
+<p>think</p>
+<p>you wrote</p>
+<p>a paper</p>
+<p>with</p>
+<p>if I'm</p>
+<p>not</p>
+<p>mistaken</p>
+<p>about</p>
+<p>an</p>
+<p>application</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>to</p>
+<p>evolution</p>
+<p>Daniel</p>
+<p>right</p>
+<p>yes</p>
+<p>the</p>
+<p>variational</p>
+<p>synthesis</p>
+<p>for</p>
+<p>eco</p>
+<p>evo</p>
+<p>devo</p>
+<p>exactly</p>
+<p>and I</p>
+<p>found a</p>
+<p>very</p>
+<p>interesting</p>
+<p>idea</p>
+<p>there</p>
+<p>again</p>
+<p>without</p>
+<p>getting into</p>
+<p>your</p>
+<p>technicalities</p>
+<p>it's that</p>
+<p>what can</p>
+<p>explain</p>
+<p>the</p>
+<p>evolution</p>
+<p>of</p>
+<p>species</p>
+<p>or</p>
+<p>populations</p>
+<p>could also</p>
+<p>explain</p>
+<p>the</p>
+<p>evolution</p>
+<p>of</p>
+<p>individuals</p>
+<p>so</p>
+<p>I</p>
+<p>thought</p>
+<p>it's</p>
+<p>a</p>
+<p>very</p>
+<p>powerful</p>
+<p>idea</p>
+<p>that</p>
+<p>you</p>
+<p>have</p>
+<p>this</p>
+<p>multi-level</p>
+<p>insight</p>
+<p>and that's</p>
+<p>perhaps</p>
+<p>something</p>
+<p>we could</p>
+<p>also</p>
+<p>explore</p>
+<p>within</p>
+<p>the</p>
+<p>scope</p>
+<p>of</p>
+<p>genetic</p>
+<p>algorithms</p>
+<p>which are</p>
+<p>really just</p>
+<p>a simple</p>
+<p>model</p>
+<p>for evolution</p>
+<p>that does</p>
+<p>perform</p>
+<p>very well</p>
+<p>for</p>
+<p>problems</p>
+<p>like</p>
+<p>the</p>
+<p>TSP</p>
+<p>yeah</p>
+<p>just a</p>
+<p>short</p>
+<p>comment</p>
+<p>on that</p>
+<p>so</p>
+<p>in</p>
+<p>cognitive</p>
+<p>sciences</p>
+<p>the</p>
+<p>unifying</p>
+<p>imperative</p>
+<p>is kind</p>
+<p>of like</p>
+<p>well why</p>
+<p>should we</p>
+<p>have a</p>
+<p>separate</p>
+<p>theory</p>
+<p>of</p>
+<p>anticipation</p>
+<p>or memory</p>
+<p>or attention</p>
+<p>why not</p>
+<p>seek this</p>
+<p>unifying</p>
+<p>approach</p>
+<p>to model</p>
+<p>various</p>
+<p>cognitive</p>
+<p>phenomena</p>
+<p>so now</p>
+<p>applying that</p>
+<p>to</p>
+<p>ecology</p>
+<p>or to</p>
+<p>biology</p>
+<p>why</p>
+<p>would we</p>
+<p>have</p>
+<p>one</p>
+<p>method</p>
+<p>or</p>
+<p>analytical</p>
+<p>framework</p>
+<p>for</p>
+<p>studying</p>
+<p>dynamics</p>
+<p>and change</p>
+<p>within a</p>
+<p>lineage</p>
+<p>vertical</p>
+<p>transmission</p>
+<p>and then</p>
+<p>have a</p>
+<p>separate</p>
+<p>theory</p>
+<p>for</p>
+<p>change</p>
+<p>that happens</p>
+<p>across</p>
+<p>lineages</p>
+<p>or</p>
+<p>communication</p>
+<p>across</p>
+<p>lineages</p>
+<p>like in</p>
+<p>ecology</p>
+<p>so</p>
+<p>by</p>
+<p>unifying</p>
+<p>analogy</p>
+<p>how could</p>
+<p>we look</p>
+<p>at</p>
+<p>ecosystems</p>
+<p>as</p>
+<p>consisting</p>
+<p>of these</p>
+<p>composed</p>
+<p>interacting</p>
+<p>components</p>
+<p>that are</p>
+<p>changing</p>
+<p>and</p>
+<p>constituting</p>
+<p>of</p>
+<p>sub</p>
+<p>components</p>
+<p>as well</p>
+<p>how can</p>
+<p>we see</p>
+<p>all of</p>
+<p>those</p>
+<p>processes</p>
+<p>sometimes</p>
+<p>which look</p>
+<p>more like</p>
+<p>vertical</p>
+<p>lineage</p>
+<p>based</p>
+<p>transmission</p>
+<p>other</p>
+<p>times</p>
+<p>which look</p>
+<p>more like</p>
+<p>horizontal</p>
+<p>ecological</p>
+<p>message</p>
+<p>passing</p>
+<p>and start</p>
+<p>to look</p>
+<p>at those</p>
+<p>overall</p>
+<p>dynamics</p>
+<p>as part</p>
+<p>of a</p>
+<p>unified</p>
+<p>at least</p>
+<p>measurement</p>
+<p>observation</p>
+<p>modeling</p>
+<p>approach</p>
+<p>like</p>
+<p>let's</p>
+<p>just say</p>
+<p>we were</p>
+<p>to do</p>
+<p>two</p>
+<p>different</p>
+<p>colonies</p>
+<p>or two</p>
+<p>populations</p>
+<p>of colonies</p>
+<p>and then</p>
+<p>we have</p>
+<p>them doing</p>
+<p>different</p>
+<p>algorithms</p>
+<p>and then</p>
+<p>we start</p>
+<p>to let</p>
+<p>that whole</p>
+<p>thing play</p>
+<p>out</p>
+<p>we could</p>
+<p>be talking</p>
+<p>about the</p>
+<p>variational</p>
+<p>free energy</p>
+<p>of the</p>
+<p>nest</p>
+<p>mate</p>
+<p>within</p>
+<p>the</p>
+<p>colony</p>
+<p>the</p>
+<p>colony</p>
+<p>as a</p>
+<p>collective</p>
+<p>with its</p>
+<p>best</p>
+<p>solution</p>
+<p>the</p>
+<p>populations</p>
+<p>and</p>
+<p>so on</p>
+<p>will</p>
+<p>that</p>
+<p>yield</p>
+<p>better</p>
+<p>explanations</p>
+<p>predictions</p>
+<p>transferable</p>
+<p>methods</p>
+<p>that's</p>
+<p>the question</p>
+<p>but</p>
+<p>that's</p>
+<p>the</p>
+<p>setup</p>
+<p>it would</p>
+<p>be very</p>
+<p>interesting</p>
+<p>to find</p>
+<p>this</p>
+<p>I think</p>
+<p>that would</p>
+<p>be the</p>
+<p>most</p>
+<p>at least</p>
+<p>aesthetically</p>
+<p>and</p>
+<p>in terms</p>
+<p>of</p>
+<p>Occam's</p>
+<p>Razor</p>
+<p>simplest</p>
+<p>theory</p>
+<p>it's to</p>
+<p>have</p>
+<p>something</p>
+<p>that</p>
+<p>does</p>
+<p>apply</p>
+<p>indeed</p>
+<p>for</p>
+<p>both</p>
+<p>the</p>
+<p>individual</p>
+<p>agents</p>
+<p>as well</p>
+<p>as</p>
+<p>the</p>
+<p>whole</p>
+<p>population</p>
+<p>and</p>
+<p>here</p>
+<p>another</p>
+<p>in terms</p>
+<p>of</p>
+<p>elegance</p>
+<p>and</p>
+<p>beauty</p>
+<p>another</p>
+<p>thing</p>
+<p>that's</p>
+<p>also</p>
+<p>helpful</p>
+<p>is to</p>
+<p>have</p>
+<p>agents</p>
+<p>share</p>
+<p>as</p>
+<p>little</p>
+<p>information</p>
+<p>as</p>
+<p>possible</p>
+<p>between</p>
+<p>them</p>
+<p>and</p>
+<p>also</p>
+<p>as</p>
+<p>you</p>
+<p>mentioned</p>
+<p>before</p>
+<p>plan</p>
+<p>had</p>
+<p>as</p>
+<p>little</p>
+<p>as</p>
+<p>possible</p>
+<p>which</p>
+<p>also</p>
+<p>has</p>
+<p>of</p>
+<p>course</p>
+<p>practical</p>
+<p>computational</p>
+<p>implications</p>
+<p>you</p>
+<p>would</p>
+<p>consume</p>
+<p>less</p>
+<p>computation</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>that</p>
+<p>would</p>
+<p>be</p>
+<p>useful</p>
+<p>for</p>
+<p>that</p>
+<p>to</p>
+<p>have</p>
+<p>this</p>
+<p>unifying</p>
+<p>theory</p>
+<p>that</p>
+<p>will</p>
+<p>apply</p>
+<p>both</p>
+<p>for</p>
+<p>the</p>
+<p>behavior</p>
+<p>of</p>
+<p>individual</p>
+<p>agents</p>
+<p>as</p>
+<p>well</p>
+<p>as</p>
+<p>the</p>
+<p>population</p>
+<p>as</p>
+<p>a</p>
+<p>whole</p>
+<p>so</p>
+<p>perhaps</p>
+<p>something</p>
+<p>to</p>
+<p>explore</p>
+<p>with</p>
+<p>genetic</p>
+<p>algorithms</p>
+<p>!</p>
+<p>we</p>
+<p>can</p>
+<p>demonstrate</p>
+<p>it</p>
+<p>even</p>
+<p>more</p>
+<p>potently</p>
+<p>on</p>
+<p>larger</p>
+<p>scale</p>
+<p>graphs</p>
+<p>that</p>
+<p>active</p>
+<p>inference</p>
+<p>does</p>
+<p>improve</p>
+<p>the</p>
+<p>performance</p>
+<p>of</p>
+<p>recreation</p>
+<p>based</p>
+<p>meta</p>
+<p>heuristics</p>
+<p>with a</p>
+<p>very</p>
+<p>simple</p>
+<p>change</p>
+<p>again</p>
+<p>that</p>
+<p>is</p>
+<p>very</p>
+<p>cheap</p>
+<p>computationally</p>
+<p>that</p>
+<p>may</p>
+<p>even</p>
+<p>disappear</p>
+<p>become</p>
+<p>neglectable</p>
+<p>for</p>
+<p>very</p>
+<p>large</p>
+<p>scale</p>
+<p>graphs</p>
+<p>this</p>
+<p>additional</p>
+<p>computational</p>
+<p>cost</p>
+<p>and</p>
+<p>for</p>
+<p>future</p>
+<p>research</p>
+<p>directions</p>
+<p>I</p>
+<p>think</p>
+<p>we</p>
+<p>have</p>
+<p>mentioned</p>
+<p>the</p>
+<p>main</p>
+<p>ones</p>
+<p>it's</p>
+<p>that</p>
+<p>in</p>
+<p>my</p>
+<p>opinion</p>
+<p>the</p>
+<p>most</p>
+<p>important</p>
+<p>one</p>
+<p>and</p>
+<p>if</p>
+<p>there's</p>
+<p>someone</p>
+<p>to</p>
+<p>provide</p>
+<p>this</p>
+<p>I</p>
+<p>think</p>
+<p>it</p>
+<p>would</p>
+<p>be</p>
+<p>yourself</p>
+<p>Daniel</p>
+<p>we</p>
+<p>need</p>
+<p>better</p>
+<p>theoretical</p>
+<p>grounding</p>
+<p>for</p>
+<p>what</p>
+<p>is</p>
+<p>going</p>
+<p>on</p>
+<p>we</p>
+<p>could</p>
+<p>definitely</p>
+<p>of</p>
+<p>course</p>
+<p>inform</p>
+<p>that</p>
+<p>with</p>
+<p>visualizations</p>
+<p>like</p>
+<p>I</p>
+<p>mentioned</p>
+<p>of</p>
+<p>the</p>
+<p>tree</p>
+<p>of</p>
+<p>solutions</p>
+<p>and</p>
+<p>how</p>
+<p>it</p>
+<p>is</p>
+<p>explored</p>
+<p>in</p>
+<p>both</p>
+<p>methods</p>
+<p>but</p>
+<p>it</p>
+<p>understand</p>
+<p>how</p>
+<p>this</p>
+<p>enhancement</p>
+<p>occurs</p>
+<p>fundamentally</p>
+<p>in</p>
+<p>abstract</p>
+<p>terms</p>
+<p>we</p>
+<p>also</p>
+<p>need</p>
+<p>to</p>
+<p>apply</p>
+<p>to</p>
+<p>other</p>
+<p>meta</p>
+<p>heuristics</p>
+<p>I</p>
+<p>think</p>
+<p>the</p>
+<p>best</p>
+<p>candidates</p>
+<p>as I</p>
+<p>mentioned</p>
+<p>would</p>
+<p>be</p>
+<p>first</p>
+<p>genetic</p>
+<p>algorithms</p>
+<p>but</p>
+<p>also</p>
+<p>particle</p>
+<p>swarm</p>
+<p>optimization</p>
+<p>which</p>
+<p>has</p>
+<p>its</p>
+<p>own</p>
+<p>peculiarities</p>
+<p>we</p>
+<p>also</p>
+<p>need</p>
+<p>simpler</p>
+<p>and</p>
+<p>more</p>
+<p>bare bones</p>
+<p>methods</p>
+<p>this</p>
+<p>is</p>
+<p>just</p>
+<p>an</p>
+<p>engineered</p>
+<p>belief</p>
+<p>update</p>
+<p>mechanism</p>
+<p>but</p>
+<p>there</p>
+<p>is</p>
+<p>certainly</p>
+<p>a</p>
+<p>simpler</p>
+<p>and</p>
+<p>more</p>
+<p>elegant</p>
+<p>way</p>
+<p>to</p>
+<p>state</p>
+<p>the</p>
+<p>equation</p>
+<p>and</p>
+<p>to go</p>
+<p>even</p>
+<p>beyond</p>
+<p>population</p>
+<p>based</p>
+<p>search</p>
+<p>and</p>
+<p>I</p>
+<p>know</p>
+<p>that</p>
+<p>many</p>
+<p>people</p>
+<p>are</p>
+<p>working</p>
+<p>on</p>
+<p>this</p>
+<p>in</p>
+<p>the</p>
+<p>active</p>
+<p>inference</p>
+<p>discord</p>
+<p>what</p>
+<p>about</p>
+<p>other</p>
+<p>multi-agent</p>
+<p>systems</p>
+<p>right</p>
+<p>not</p>
+<p>just</p>
+<p>large</p>
+<p>language</p>
+<p>model</p>
+<p>systems</p>
+<p>but</p>
+<p>in</p>
+<p>general</p>
+<p>multi-agent</p>
+<p>systems</p>
+<p>for</p>
+<p>robotics</p>
+<p>etc</p>
+<p>could we</p>
+<p>also</p>
+<p>improve</p>
+<p>their</p>
+<p>collective</p>
+<p>behavior</p>
+<p>by</p>
+<p>including</p>
+<p>active</p>
+<p>inference</p>
+<p>that's</p>
+<p>something</p>
+<p>I would</p>
+<p>also</p>
+<p>love</p>
+<p>to</p>
+<p>explore</p>
+<p>and</p>
+<p>so</p>
+<p>some</p>
+<p>references</p>
+<p>if you</p>
+<p>are</p>
+<p>interested</p>
+<p>in</p>
+<p>taking</p>
+<p>it</p>
+<p>further</p>
+<p>first</p>
+<p>our</p>
+<p>paper</p>
+<p>which</p>
+<p>is</p>
+<p>on</p>
+<p>archive</p>
+<p>and</p>
+<p>also</p>
+<p>on</p>
+<p>preprints.</p>
+<p>IU</p>
+<p>but</p>
+<p>the</p>
+<p>advantage</p>
+<p>on</p>
+<p>preprints.</p>
+<p>is</p>
+<p>that</p>
+<p>you</p>
+<p>can</p>
+<p>listen</p>
+<p>to</p>
+<p>podcasts</p>
+<p>in</p>
+<p>layman's</p>
+<p>terms</p>
+<p>about</p>
+<p>the</p>
+<p>paper</p>
+<p>so</p>
+<p>enhancing</p>
+<p>is</p>
+<p>here</p>
+<p>you</p>
+<p>can</p>
+<p>download</p>
+<p>the</p>
+<p>AI</p>
+<p>generated</p>
+<p>podcast</p>
+<p>to</p>
+<p>get</p>
+<p>layman's</p>
+<p>overview</p>
+<p>of the</p>
+<p>paper</p>
+<p>we</p>
+<p>have</p>
+<p>also</p>
+<p>open</p>
+<p>sourced</p>
+<p>the</p>
+<p>whole</p>
+<p>code</p>
+<p>and</p>
+<p>process</p>
+<p>from</p>
+<p>the</p>
+<p>beginning</p>
+<p>in</p>
+<p>both</p>
+<p>our</p>
+<p>githubs</p>
+<p>so</p>
+<p>active</p>
+<p>aco</p>
+<p>is</p>
+<p>the</p>
+<p>name</p>
+<p>of</p>
+<p>the</p>
+<p>repo</p>
+<p>and</p>
+<p>we</p>
+<p>have</p>
+<p>this</p>
+<p>mini</p>
+<p>app</p>
+<p>active</p>
+<p>aco</p>
+<p>at</p>
+<p>dot</p>
+<p>replete</p>
+<p>dot</p>
+<p>app</p>
+<p>where</p>
+<p>you</p>
+<p>can</p>
+<p>experiment</p>
+<p>with</p>
+<p>different</p>
+<p>solutions</p>
+<p>different</p>
+<p>parts</p>
+<p>on</p>
+<p>real</p>
+<p>maps</p>
+<p>for</p>
+<p>example</p>
+<p>South</p>
+<p>America</p>
+<p>here</p>
+<p>both</p>
+<p>for</p>
+<p>neighborhood</p>
+<p>traveling</p>
+<p>salesman</p>
+<p>problems</p>
+<p>as well</p>
+<p>as</p>
+<p>global</p>
+<p>optimization</p>
+<p>problems</p>
+<p>and</p>
+<p>compare</p>
+<p>the</p>
+<p>outcomes</p>
+<p>of</p>
+<p>active</p>
+<p>aco</p>
+<p>with</p>
+<p>the</p>
+<p>baseline</p>
+<p>nearest</p>
+<p>neighbor</p>
+<p>so</p>
+<p>this</p>
+<p>is it</p>
+<p>for</p>
+<p>me</p>
+<p>thank you</p>
+<p>very much</p>
+<p>for</p>
+<p>the invitation</p>
+<p>Daniel</p>
+<p>and</p>
+<p>the</p>
+<p>listeners</p>
+<p>if</p>
+<p>any</p>
+<p>for</p>
+<p>their</p>
+<p>attention</p>
+<p>if</p>
+<p>you</p>
+<p>would</p>
+<p>like</p>
+<p>to</p>
+<p>chat</p>
+<p>about</p>
+<p>this</p>
+<p>paper</p>
+<p>or</p>
+<p>the</p>
+<p>integration</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>in</p>
+<p>general</p>
+<p>into</p>
+<p>operations</p>
+<p>research</p>
+<p>problems</p>
+<p>or</p>
+<p>theoretical</p>
+<p>CS</p>
+<p>here</p>
+<p>is</p>
+<p>my</p>
+<p>contact</p>
+<p>thank</p>
+<p>you</p>
+<p>awesome</p>
+<p>I'll</p>
+<p>make a</p>
+<p>comment</p>
+<p>and then</p>
+<p>read a</p>
+<p>question</p>
+<p>from the</p>
+<p>chat</p>
+<p>well</p>
+<p>I also</p>
+<p>really</p>
+<p>like</p>
+<p>all</p>
+<p>these</p>
+<p>accessory</p>
+<p>fractal</p>
+<p>all</p>
+<p>these</p>
+<p>accessory</p>
+<p>pieces</p>
+<p>to the</p>
+<p>work</p>
+<p>the</p>
+<p>preprints</p>
+<p>and also</p>
+<p>the</p>
+<p>replit</p>
+<p>app</p>
+<p>I</p>
+<p>think</p>
+<p>it</p>
+<p>also</p>
+<p>is</p>
+<p>like</p>
+<p>kind</p>
+<p>of</p>
+<p>building</p>
+<p>out</p>
+<p>this</p>
+<p>meta</p>
+<p>publication</p>
+<p>that's</p>
+<p>something</p>
+<p>I learned</p>
+<p>from you</p>
+<p>as well</p>
+<p>Daniel</p>
+<p>was that</p>
+<p>the PDF</p>
+<p>is just</p>
+<p>the beginning</p>
+<p>right</p>
+<p>of the</p>
+<p>life cycle</p>
+<p>of a</p>
+<p>research</p>
+<p>work</p>
+<p>which is</p>
+<p>absolutely</p>
+<p>true</p>
+<p>we tend</p>
+<p>to see</p>
+<p>it</p>
+<p>as you</p>
+<p>know</p>
+<p>the</p>
+<p>end</p>
+<p>game</p>
+<p>you</p>
+<p>got</p>
+<p>published</p>
+<p>you</p>
+<p>got</p>
+<p>the</p>
+<p>PDF</p>
+<p>posted</p>
+<p>somewhere</p>
+<p>but</p>
+<p>that's</p>
+<p>really</p>
+<p>just</p>
+<p>the</p>
+<p>beginning</p>
+<p>of</p>
+<p>you</p>
+<p>know</p>
+<p>and</p>
+<p>the</p>
+<p>real</p>
+<p>fruits</p>
+<p>may</p>
+<p>may</p>
+<p>only</p>
+<p>appear</p>
+<p>three</p>
+<p>five</p>
+<p>years</p>
+<p>later</p>
+<p>with</p>
+<p>the</p>
+<p>context</p>
+<p>you</p>
+<p>make</p>
+<p>the</p>
+<p>discussions</p>
+<p>the</p>
+<p>products</p>
+<p>you</p>
+<p>build</p>
+<p>on top</p>
+<p>of</p>
+<p>it</p>
+<p>so</p>
+<p>that's</p>
+<p>definitely</p>
+<p>important</p>
+<p>yeah</p>
+<p>I</p>
+<p>think</p>
+<p>that's</p>
+<p>super</p>
+<p>cool</p>
+<p>and</p>
+<p>and</p>
+<p>we</p>
+<p>can</p>
+<p>continue</p>
+<p>making</p>
+<p>that</p>
+<p>really</p>
+<p>multimedia</p>
+<p>and</p>
+<p>accessible</p>
+<p>and</p>
+<p>rigorous</p>
+<p>so</p>
+<p>it's</p>
+<p>it's</p>
+<p>like</p>
+<p>on</p>
+<p>that</p>
+<p>sort</p>
+<p>of</p>
+<p>DCI</p>
+<p>level</p>
+<p>that's</p>
+<p>really</p>
+<p>exciting</p>
+<p>okay</p>
+<p>I'll</p>
+<p>ask</p>
+<p>a</p>
+<p>question</p>
+<p>from</p>
+<p>the</p>
+<p>chat</p>
+<p>okay</p>
+<p>Burt</p>
+<p>wrote</p>
+<p>would</p>
+<p>this</p>
+<p>approach</p>
+<p>be</p>
+<p>suited</p>
+<p>for</p>
+<p>multivariable</p>
+<p>optimization</p>
+<p>like</p>
+<p>adding</p>
+<p>in</p>
+<p>travel</p>
+<p>time</p>
+<p>or</p>
+<p>time</p>
+<p>slots</p>
+<p>so</p>
+<p>multi</p>
+<p>objective</p>
+<p>right</p>
+<p>yeah</p>
+<p>what</p>
+<p>we're</p>
+<p>talking</p>
+<p>about</p>
+<p>and</p>
+<p>here</p>
+<p>I</p>
+<p>think</p>
+<p>well</p>
+<p>that's</p>
+<p>that's</p>
+<p>pretty</p>
+<p>much</p>
+<p>my</p>
+<p>PhD</p>
+<p>topic</p>
+<p>multi</p>
+<p>objective</p>
+<p>optimization</p>
+<p>so</p>
+<p>I</p>
+<p>feel</p>
+<p>very</p>
+<p>strongly</p>
+<p>about</p>
+<p>the</p>
+<p>kind</p>
+<p>of</p>
+<p>methods</p>
+<p>that</p>
+<p>can</p>
+<p>work</p>
+<p>there</p>
+<p>meta</p>
+<p>heuristics</p>
+<p>in</p>
+<p>general</p>
+<p>I</p>
+<p>mean</p>
+<p>there</p>
+<p>are</p>
+<p>different</p>
+<p>classes</p>
+<p>of</p>
+<p>meta</p>
+<p>heuristics</p>
+<p>that</p>
+<p>work</p>
+<p>better</p>
+<p>for</p>
+<p>multi</p>
+<p>objective</p>
+<p>optimization</p>
+<p>but</p>
+<p>this</p>
+<p>is</p>
+<p>definitely</p>
+<p>something</p>
+<p>to</p>
+<p>explore</p>
+<p>you</p>
+<p>know</p>
+<p>integrating</p>
+<p>active</p>
+<p>inference</p>
+<p>notably</p>
+<p>to</p>
+<p>generate</p>
+<p>the</p>
+<p>as</p>
+<p>you</p>
+<p>know</p>
+<p>multi</p>
+<p>objective</p>
+<p>optimization</p>
+<p>problems</p>
+<p>don't</p>
+<p>have</p>
+<p>one</p>
+<p>optimal</p>
+<p>solution</p>
+<p>but</p>
+<p>even</p>
+<p>the</p>
+<p>meaning</p>
+<p>of</p>
+<p>optimal</p>
+<p>is</p>
+<p>kind</p>
+<p>of</p>
+<p>mood</p>
+<p>for</p>
+<p>objective</p>
+<p>problems</p>
+<p>say</p>
+<p>for example</p>
+<p>that you</p>
+<p>have a</p>
+<p>car</p>
+<p>that is</p>
+<p>iterated</p>
+<p>on both</p>
+<p>its</p>
+<p>price</p>
+<p>its cost</p>
+<p>and its</p>
+<p>performance</p>
+<p>well</p>
+<p>what would</p>
+<p>you do</p>
+<p>if one</p>
+<p>is good</p>
+<p>the other</p>
+<p>is not</p>
+<p>that great</p>
+<p>you would</p>
+<p>only consider</p>
+<p>efficient</p>
+<p>solutions</p>
+<p>right</p>
+<p>so the</p>
+<p>main</p>
+<p>problem</p>
+<p>is to</p>
+<p>generate</p>
+<p>or explore</p>
+<p>this front</p>
+<p>this large</p>
+<p>potentially large</p>
+<p>set of</p>
+<p>solutions</p>
+<p>that are not</p>
+<p>dominated</p>
+<p>and</p>
+<p>I</p>
+<p>wouldn't</p>
+<p>make</p>
+<p>any</p>
+<p>guess</p>
+<p>about</p>
+<p>whether</p>
+<p>active</p>
+<p>inference</p>
+<p>would</p>
+<p>work</p>
+<p>there</p>
+<p>or</p>
+<p>whether</p>
+<p>this</p>
+<p>method</p>
+<p>would</p>
+<p>be</p>
+<p>translatable</p>
+<p>but</p>
+<p>as</p>
+<p>a</p>
+<p>research</p>
+<p>product</p>
+<p>it</p>
+<p>could</p>
+<p>be</p>
+<p>really</p>
+<p>a</p>
+<p>PhD</p>
+<p>or</p>
+<p>postdoc</p>
+<p>project</p>
+<p>to</p>
+<p>explore</p>
+<p>the</p>
+<p>use</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>in</p>
+<p>generating</p>
+<p>and</p>
+<p>exploring</p>
+<p>the</p>
+<p>part of</p>
+<p>front</p>
+<p>of</p>
+<p>multi</p>
+<p>objective</p>
+<p>optimization</p>
+<p>problems</p>
+<p>so</p>
+<p>perhaps</p>
+<p>the</p>
+<p>active</p>
+<p>inference</p>
+<p>institute</p>
+<p>could</p>
+<p>get</p>
+<p>something</p>
+<p>like</p>
+<p>that</p>
+<p>going</p>
+<p>cool</p>
+<p>yeah</p>
+<p>what</p>
+<p>comes</p>
+<p>to</p>
+<p>mind</p>
+<p>there</p>
+<p>one</p>
+<p>would</p>
+<p>be</p>
+<p>keeping</p>
+<p>the</p>
+<p>kernel</p>
+<p>method</p>
+<p>the</p>
+<p>same</p>
+<p>and</p>
+<p>using</p>
+<p>program</p>
+<p>logic</p>
+<p>to</p>
+<p>implement</p>
+<p>other</p>
+<p>constraints</p>
+<p>like</p>
+<p>adding</p>
+<p>some</p>
+<p>day</p>
+<p>night</p>
+<p>cycle</p>
+<p>so</p>
+<p>not even</p>
+<p>trying</p>
+<p>to</p>
+<p>make</p>
+<p>that</p>
+<p>part</p>
+<p>into</p>
+<p>active</p>
+<p>inference</p>
+<p>but</p>
+<p>just</p>
+<p>add</p>
+<p>some</p>
+<p>secondary</p>
+<p>logic</p>
+<p>or</p>
+<p>you</p>
+<p>know</p>
+<p>one</p>
+<p>one</p>
+<p>in</p>
+<p>every</p>
+<p>hundred</p>
+<p>nodes</p>
+<p>just</p>
+<p>randomly</p>
+<p>disappears</p>
+<p>or</p>
+<p>something</p>
+<p>like</p>
+<p>that</p>
+<p>and</p>
+<p>then</p>
+<p>see</p>
+<p>how</p>
+<p>these</p>
+<p>meta</p>
+<p>heuristics</p>
+<p>in a</p>
+<p>more</p>
+<p>changing</p>
+<p>constraint</p>
+<p>setting</p>
+<p>adapt</p>
+<p>to</p>
+<p>changes</p>
+<p>in the</p>
+<p>environment</p>
+<p>and then</p>
+<p>the</p>
+<p>more</p>
+<p>fully</p>
+<p>active</p>
+<p>inference</p>
+<p>approach</p>
+<p>would</p>
+<p>be</p>
+<p>develop</p>
+<p>more</p>
+<p>sophisticated</p>
+<p>generative</p>
+<p>models</p>
+<p>so</p>
+<p>more</p>
+<p>multi</p>
+<p>variable</p>
+<p>joint</p>
+<p>distributions</p>
+<p>for</p>
+<p>nest</p>
+<p>and</p>
+<p>colony</p>
+<p>perception</p>
+<p>cognition</p>
+<p>action</p>
+<p>impact</p>
+<p>and</p>
+<p>then</p>
+<p>explore</p>
+<p>okay</p>
+<p>as we</p>
+<p>bring in</p>
+<p>more</p>
+<p>joint</p>
+<p>variables</p>
+<p>into the</p>
+<p>distribution</p>
+<p>obviously</p>
+<p>it's taking</p>
+<p>more computational</p>
+<p>resources</p>
+<p>it's a</p>
+<p>higher</p>
+<p>dimensional</p>
+<p>front</p>
+<p>to</p>
+<p>explore</p>
+<p>so</p>
+<p>when</p>
+<p>and how</p>
+<p>should</p>
+<p>we</p>
+<p>pursue</p>
+<p>that</p>
+<p>full</p>
+<p>joint</p>
+<p>distribution</p>
+<p>and</p>
+<p>then</p>
+<p>what</p>
+<p>ways</p>
+<p>would</p>
+<p>there</p>
+<p>be</p>
+<p>factorize</p>
+<p>it</p>
+<p>down</p>
+<p>to</p>
+<p>solve</p>
+<p>that</p>
+<p>as</p>
+<p>a</p>
+<p>subset</p>
+<p>of</p>
+<p>linked</p>
+<p>problems</p>
+<p>and</p>
+<p>how</p>
+<p>do</p>
+<p>we</p>
+<p>find</p>
+<p>which</p>
+<p>subsetting</p>
+<p>and</p>
+<p>factorizing</p>
+<p>of</p>
+<p>linked</p>
+<p>problems</p>
+<p>allows</p>
+<p>the</p>
+<p>simplest</p>
+<p>possible</p>
+<p>nestmate</p>
+<p>to</p>
+<p>still</p>
+<p>have</p>
+<p>relevant</p>
+<p>performance</p>
+<p>and</p>
+<p>then</p>
+<p>we</p>
+<p>sketch</p>
+<p>out</p>
+<p>those</p>
+<p>subspaces</p>
+<p>with</p>
+<p>parameter</p>
+<p>sweeps</p>
+<p>and</p>
+<p>sampling</p>
+<p>the</p>
+<p>reason</p>
+<p>why</p>
+<p>I</p>
+<p>think</p>
+<p>active</p>
+<p>inference</p>
+<p>is</p>
+<p>honestly</p>
+<p>even</p>
+<p>more</p>
+<p>promising</p>
+<p>than</p>
+<p>for</p>
+<p>single</p>
+<p>objective</p>
+<p>problems</p>
+<p>like</p>
+<p>this</p>
+<p>in</p>
+<p>multi</p>
+<p>objective</p>
+<p>it's</p>
+<p>that</p>
+<p>another</p>
+<p>dimension</p>
+<p>if you</p>
+<p>have</p>
+<p>a car</p>
+<p>for</p>
+<p>example</p>
+<p>that</p>
+<p>costs</p>
+<p>a lot</p>
+<p>but</p>
+<p>is</p>
+<p>performance</p>
+<p>another</p>
+<p>one</p>
+<p>that</p>
+<p>is</p>
+<p>cheap</p>
+<p>but</p>
+<p>not</p>
+<p>that</p>
+<p>great</p>
+<p>is</p>
+<p>that</p>
+<p>there</p>
+<p>is</p>
+<p>no</p>
+<p>objectively</p>
+<p>optimal</p>
+<p>solution</p>
+<p>and</p>
+<p>there</p>
+<p>is</p>
+<p>a</p>
+<p>whole</p>
+<p>class</p>
+<p>of</p>
+<p>methods</p>
+<p>known</p>
+<p>as</p>
+<p>interactive</p>
+<p>methods</p>
+<p>where</p>
+<p>you</p>
+<p>try</p>
+<p>to</p>
+<p>integrate</p>
+<p>the</p>
+<p>preferences</p>
+<p>of</p>
+<p>decision</p>
+<p>maker</p>
+<p>into</p>
+<p>the</p>
+<p>exploration</p>
+<p>method</p>
+<p>so</p>
+<p>it</p>
+<p>is</p>
+<p>really</p>
+<p>a</p>
+<p>person</p>
+<p>guiding</p>
+<p>the</p>
+<p>exploration</p>
+<p>with</p>
+<p>their</p>
+<p>own</p>
+<p>preferences</p>
+<p>and</p>
+<p>here</p>
+<p>we</p>
+<p>are</p>
+<p>touching</p>
+<p>on</p>
+<p>something</p>
+<p>that</p>
+<p>neuroscience</p>
+<p>and</p>
+<p>active</p>
+<p>inference</p>
+<p>is</p>
+<p>familiar</p>
+<p>with</p>
+<p>which</p>
+<p>is</p>
+<p>how</p>
+<p>to</p>
+<p>integrate</p>
+<p>reasoning</p>
+<p>and</p>
+<p>perception</p>
+<p>so</p>
+<p>I</p>
+<p>would</p>
+<p>be</p>
+<p>very</p>
+<p>interested</p>
+<p>in</p>
+<p>exploring</p>
+<p>this</p>
+<p>reading</p>
+<p>about</p>
+<p>it</p>
+<p>if</p>
+<p>anyone</p>
+<p>is</p>
+<p>inspired</p>
+<p>to</p>
+<p>write</p>
+<p>about</p>
+<p>it</p>
+<p>how</p>
+<p>to</p>
+<p>integrate</p>
+<p>active</p>
+<p>inference</p>
+<p>in</p>
+<p>these</p>
+<p>interactive</p>
+<p>methods</p>
+<p>that</p>
+<p>are</p>
+<p>typically</p>
+<p>used</p>
+<p>for</p>
+<p>exploring</p>
+<p>large-scale</p>
+<p>parental prompts</p>
+<p>yeah</p>
+<p>one</p>
+
+<p>one</p>
+<p>I think</p>
+<p>footnote</p>
+<p>there</p>
+<p>for the</p>
+<p>the</p>
+<p>curious</p>
+<p>would</p>
+<p>be</p>
+<p>in</p>
+<p>the</p>
+<p>language</p>
+<p>model</p>
+<p>space</p>
+<p>we have</p>
+<p>these</p>
+<p>reward</p>
+<p>reinforcement</p>
+<p>driven</p>
+<p>models</p>
+<p>that</p>
+<p>then get</p>
+<p>tuned</p>
+<p>through</p>
+<p>human</p>
+<p>feedback</p>
+<p>rlhf</p>
+<p>with</p>
+<p>humans</p>
+<p>giving</p>
+<p>a</p>
+<p>rating</p>
+<p>or a</p>
+<p>preference</p>
+<p>score</p>
+<p>so you</p>
+<p>have</p>
+<p>the</p>
+<p>algorithm</p>
+<p>is</p>
+<p>focusing</p>
+<p>on</p>
+<p>maximizing</p>
+<p>satisfaction</p>
+<p>and then</p>
+<p>the</p>
+<p>human</p>
+<p>feedback</p>
+<p>has to</p>
+<p>do</p>
+<p>with</p>
+<p>do</p>
+<p>I</p>
+<p>like</p>
+<p>this</p>
+<p>more</p>
+<p>or</p>
+<p>less</p>
+<p>we</p>
+<p>could</p>
+<p>be</p>
+<p>exploring</p>
+<p>some</p>
+<p>interactive</p>
+<p>optimization</p>
+<p>methods</p>
+<p>with more</p>
+<p>expressivity</p>
+<p>like</p>
+<p>I'm</p>
+<p>interested</p>
+<p>in</p>
+<p>paths</p>
+<p>for the</p>
+<p>traveling</p>
+<p>salesman</p>
+<p>that have</p>
+<p>small</p>
+<p>turning</p>
+<p>angles</p>
+<p>and then</p>
+<p>that would</p>
+<p>adjust</p>
+<p>the</p>
+<p>decision</p>
+<p>making</p>
+<p>if there</p>
+<p>was a</p>
+<p>turning</p>
+<p>angle</p>
+<p>variable</p>
+<p>now</p>
+<p>we're</p>
+<p>focusing</p>
+<p>on making</p>
+<p>that</p>
+<p>small</p>
+<p>and then</p>
+<p>we say</p>
+<p>actually</p>
+<p>I care</p>
+<p>20%</p>
+<p>about the</p>
+<p>small</p>
+<p>turning</p>
+<p>angle</p>
+<p>and 80%</p>
+<p>about short</p>
+<p>path length</p>
+<p>overall</p>
+<p>and so</p>
+<p>be able</p>
+<p>to have</p>
+<p>this</p>
+<p>interactive</p>
+<p>blending</p>
+<p>and a</p>
+<p>more</p>
+<p>expressive</p>
+<p>epistemic</p>
+<p>toolkit</p>
+<p>for having</p>
+<p>interactive</p>
+<p>optimization</p>
+<p>co-optimization</p>
+<p>and that</p>
+<p>could be</p>
+<p>really</p>
+<p>cool</p>
+<p>or you know</p>
+<p>a path</p>
+<p>that is</p>
+<p>just</p>
+<p>aesthetically</p>
+<p>pleasing</p>
+<p>there are</p>
+<p>actually</p>
+<p>routing</p>
+<p>methods</p>
+<p>used in</p>
+<p>tourism</p>
+<p>that try</p>
+<p>to</p>
+<p>integrate</p>
+<p>both</p>
+<p>the</p>
+<p>length</p>
+<p>of the</p>
+<p>route</p>
+<p>but if</p>
+<p>you are</p>
+<p>designing</p>
+<p>tourists</p>
+<p>routes</p>
+<p>you also</p>
+<p>want it</p>
+<p>to be</p>
+<p>pleasant</p>
+<p>so there</p>
+<p>are</p>
+<p>definitely</p>
+<p>methods</p>
+<p>that</p>
+<p>are</p>
+<p>applied</p>
+<p>this</p>
+<p>way</p>
+<p>and</p>
+<p>here</p>
+<p>it's</p>
+<p>a remark</p>
+<p>in general</p>
+<p>about</p>
+<p>single</p>
+<p>objective</p>
+<p>optimization</p>
+<p>it's</p>
+<p>always</p>
+<p>an</p>
+<p>oversimplification</p>
+<p>where you</p>
+<p>say</p>
+<p>that</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>one</p>
+<p>objective</p>
+<p>that</p>
+<p>matters</p>
+<p>it's</p>
+<p>never</p>
+<p>fully</p>
+<p>the case</p>
+<p>and there</p>
+<p>are always</p>
+<p>other dimensions</p>
+<p>that can</p>
+<p>be</p>
+<p>integrated</p>
+<p>now</p>
+<p>are</p>
+<p>percentages</p>
+<p>or</p>
+<p>just a</p>
+<p>weighted</p>
+<p>sum</p>
+<p>of the</p>
+<p>objectives</p>
+<p>are</p>
+<p>they</p>
+<p>enough</p>
+<p>they</p>
+<p>are</p>
+<p>more</p>
+<p>often</p>
+<p>than</p>
+<p>not</p>
+<p>limiting</p>
+<p>because</p>
+<p>there's</p>
+<p>a whole</p>
+<p>part</p>
+<p>of the</p>
+<p>part of</p>
+<p>that you</p>
+<p>will be</p>
+<p>able to</p>
+<p>reach</p>
+<p>with</p>
+<p>a weighted</p>
+<p>sum</p>
+<p>so it's</p>
+<p>definitely</p>
+<p>interesting</p>
+<p>to</p>
+<p>you mentioned</p>
+<p>language models</p>
+<p>you mentioned</p>
+<p>reinforcement learning</p>
+<p>from human</p>
+<p>feedback</p>
+<p>so these are</p>
+<p>definitely</p>
+<p>interesting</p>
+<p>approaches</p>
+<p>to integrate</p>
+<p>in exploring</p>
+<p>this</p>
+<p>in general</p>
+<p>having</p>
+<p>multi-objective</p>
+<p>optimization</p>
+<p>2.0</p>
+<p>with all</p>
+<p>these</p>
+<p>recent</p>
+<p>advances</p>
+<p>I think</p>
+<p>is</p>
+<p>sorely</p>
+<p>needed</p>
+<p>cool</p>
+<p>okay</p>
+<p>do you</p>
+<p>have any</p>
+<p>closing</p>
+<p>comments</p>
+<p>or</p>
+<p>thoughts</p>
+<p>or</p>
+<p>well</p>
+<p>my</p>
+<p>last</p>
+<p>thoughts</p>
+<p>is that</p>
+<p>it was</p>
+<p>a very</p>
+<p>pleasant</p>
+<p>time</p>
+<p>I thank</p>
+<p>you very</p>
+<p>much</p>
+<p>for this</p>
+<p>invitation</p>
+<p>and</p>
+<p>honestly</p>
+<p>I thought</p>
+<p>it was</p>
+<p>just</p>
+<p>five</p>
+<p>minutes</p>
+<p>or</p>
+<p>ten</p>
+<p>minutes</p>
+<p>of</p>
+<p>presentation</p>
+<p>but</p>
+<p>I look</p>
+<p>at my</p>
+<p>clock</p>
+<p>and I</p>
+<p>see</p>
+<p>that</p>
+<p>we</p>
+<p>have</p>
+<p>spent</p>
+<p>almost</p>
+<p>an hour</p>
+<p>so it</p>
+<p>is really</p>
+<p>a rare</p>
+<p>pleasure</p>
+<p>to have</p>
+<p>this</p>
+<p>kind</p>
+<p>of</p>
+<p>experiences</p>
+<p>where</p>
+<p>you don't</p>
+<p>feel</p>
+<p>time</p>
+<p>anymore</p>
+<p>thank</p>
+<p>you</p>
+<p>very</p>
+<p>much</p>
+<p>Daniel</p>
+<p>thank</p>
+<p>you</p>
+<p>awesome</p>
+<p>okay</p>
+<p>looking</p>
+<p>forward</p>
+<p>to</p>
+<p>the</p>
+<p>next</p>
+<p>chapters</p>
+<p>until</p>
+<p>next</p>
+<p>time</p>
+<p>bye</p>
+<p>!</p>
+</article>
+</body>
+</html>

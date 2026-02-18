@@ -1,0 +1,999 @@
+---
+title: "ActInf GuestStream 083.1 ~ Simon Wardley"
+category: "GuestStream"
+series: "GuestStream_083"
+episode: "1"
+speakers:
+  - "Simon Wardley"
+duration: "1:28:30"
+url: "https://www.youtube.com/watch?v=15n6WN9jGrY"
+views: 198
+exported_at: "2026-02-18T22:37:37.669853+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 083.1 ~ Simon Wardley
+
+All right. Hello and welcome everyone. This is Active Inference Guest Stream 83.1 here
+with Susan Hastie and our guest Simon Wordley. So Susan will say a few words that will lead
+us in. Simon has many resources prepared and exciting perspectives to share. So thank
+you both for joining. Susan, to you.
+Okay. Are you ready for me? Go for it. Awesome. Okay. Thank you so much, Simon. I've been looking
+so forward to introducing you to the Active Inference Community and Wordly Mapping and
+what you have been able to accomplish. And it is amazing how much admiration that people
+have shown you there. And so I'm going to just... Oh, I'm British. You can't do this to me.
+Oh, we're not American. So is that... You know, that actually there's a connection between
+being the most strategic, brilliant minds that people know and the humility you bring to it,
+along with the jovial... It's a cultural thing. So there we are. So... I'll turn it over. I'll
+turn it over. And, and, but we would like to, I would like to you to share how you came about,
+you know, the, the, moving from the, you know, the experts on a stage to how do you, how did you
+tap into the need for Wordly Mapping? What was that? Where did that, where did that arise from?
+Well, it was obviously some fine day in the UK. And I was sitting down there with my enormous mind,
+thinking about these problems. And I, and actually the pure genius of myself, I, I, no, no, it was
+complete random accidents and everything else. I hadn't got a clue what I was doing. So I,
+I was running a company at the time. And, well, actually, I've got a, I've got some slides,
+and give you a bit of the, the sort of formal history, and I can show you the horror of it,
+if you wish. Can you, Daniel, is it possible for me to show my slides? Thank you very much.
+So I'm not going to go through this whole, well, it's 127 slight deck. I'm not going to do that.
+I mean, but what I will do is just talk about a couple. So I'm going to talk about the origin of mapping.
+And then we'll get on to, I may as well explain what a map is, what it isn't.
+And then I'll mention a little bit about patterns. And then we've got these other topics, change,
+gameplay, how you identify value, but rather we won't go down that path.
+We'll, we'll get into a different style of conversation. I can show you something called Miro.
+And because Susan, you were part of my education group, which I really, really appreciate it.
+Helping us map out that space. So let's start with the origin. Since you asked me that question.
+This is a company called Fatango that I used to work for. I got a,
+I got a photo of this, of the website, got seen the CEO.
+Um, and it was a very, uh, sort of successful company at the time.
+Uh, very, very profitable, uh, rapidly growing.
+Uh, but it had a problem. And that, that problem was the CEO.
+Uh, the Fat Captain Charge had absolutely no idea, uh, what they were doing.
+They were just making it up. Uh, I mean, um, they were totally,
+utterly clueless. And I know this for a fact because I was the CEO.
+I mean, I used to, um, come up with all these wonderful statements about what our future was.
+Uh, so this is 2004. Uh, our strategy is customer focus.
+We will lead an innovative effort in the market through our use of agile techniques and open source.
+Uh, it's become a leading behind the books. Oh, yeah. Horrible.
+But I literally pinched these words, uh, from another company and just changed a few things.
+Um, and I, I, I, I sort of was, you know, I had no idea what I was doing.
+I used to go around listening to other CEOs talking about strategy and I used to record all the words they would say.
+And I, I started aggregating these words and I called these, uh, aggregations business level abstractions of a healthy strategy or, or blast for short.
+And I used to publish these common blah lists where things like, these are the words that people are using digital, disruptive, innovative, collaborative, competitive advantage, ecosystem, open source, network, blah, blah, blah.
+And so then what I did was I created what's called the blah template.
+Our strategy is blah.
+We will lead a blah effort of the market through our use of blah, blah, blah, to build a blah by simply grabbing all these sorts of vision statements and smashing them together until I came up with a generalized form.
+And then I would just combine the blahs and the blah templates, uh, to, to auto generate strategies.
+So, uh, you know, um, last time I did this, uh, created 64 things like this.
+Our strategy is customer focus.
+We will lead a destructive effort of the market through our use of innovative platforms and data to build a collaborative ecosystem.
+Well, it sounds, it's complete garbage.
+Um, but I used to send these around to people.
+I get, I get three basic responses back, uh, which are the form.
+Well, here's another example.
+Our strategy is innovative digital business.
+And we load a growth effort of the market through our use of customer.
+And I can barely read it.
+It's that painful.
+Uh, the three basic forms I used to get back was this is the exact wording from our business plan.
+And I've seen two of these used already.
+And, uh, my favorite one was argue for life.
+Which, which I didn't want to tell the people, but I just also generated this garbage.
+Um, so I was no idea at all what I was doing completely clueless.
+I hadn't done an MBA.
+And of course I assumed back in those days, you learned all the secrets of how to understand what a business was, is, uh, from, uh, doing an MBA.
+I now teach, um, a couple of days here and there every year at different business schools.
+And I've realized the delusion that I had for what you actually learned.
+Um, so, you know, I knew I was clueless.
+I started to think maybe other people were struggling.
+Um, a friend of mine, by the way, if you ever want to, I don't think it's available anymore.
+This is a little bit of an old presentation.
+Um, he actually created, just automated this.
+Uh, there was a, uh, a lap that was built that would create you one of those generic sort of, it's much easier these days.
+You just go to chat GPT and just say, give me a scratch in it.
+It'll give you some garbage and you're away.
+Um, so I ended up reading every book I could find.
+I was getting nowhere.
+And by pure luck, I was in a bookshop in Charing Cross in London.
+And I was talking to the bookseller and I was talking about all these stretchy books I'd read and how none of them made sense.
+And she asked me, had I ever read, um, The Art of War by Sun Tzu?
+And I hadn't.
+And so she persuaded me being a fantastic bookseller, and to buy two different versions of the book, because they're all translations.
+But say, I am so grateful, uh, for that because it was in the reading of the second version.
+And so I noticed a particular path.
+So Sun Tzu talked about five factors that mattered in competition.
+Now, when we talk about competition, competition is the acts of a group of people seeking something.
+Um, whether it's knowledge resource or whatever it happens to be.
+And there are many different forms of competition.
+So sometimes we will conflict with each other.
+That's we'll fight each other over something.
+Sometimes we will cooperate with each other, helping each other.
+Sometimes we will collaborate.
+So laboring with each other.
+So sometimes fighting, working or laboring.
+So those are multiple different forms of competition.
+Uh, they're all competition.
+They're all part of the acts.
+And normally, uh, we will possibly collaborate with one group over here in order to cooperate with another group over there in order to conflict with another group over there.
+So you can have many, many different forms, combinations of this.
+I often hear people talk, uh, try and create new words for this.
+I mean, um, mostly because they want competition just to mean conflict.
+And then for, they can have different words like collaborate, which, which is no, no longer competition because they define competition as only conflict and then cooperate.
+And so then they get to things.
+Well, if we collaborating and conflict, but we don't call it conflict, we call it competition.
+We're co-competing, collaborating.
+And then you get into these large, horrible spaghetti words, just meaningless.
+But it's really simple though.
+Competition is the act of seeking in multiple groups and they're multiple different forms.
+So when you look to the, um, Sun Tzu's work, talk about five factors that mattered.
+One, have a purpose, a moral imperative to what you're trying to do.
+Secondly, understand the landscape that you're competing in.
+Uh, uh, and then third, understand the climatic, so the heavens, the weather.
+So how the landscape is changing.
+And then you get into, uh, principles of how you organize yourself doctrine.
+And then you get into the sort of gameplay and leadership.
+And I, I was like fascinated by this.
+And then I came across John Boyd, the mad major, uh, famous for creating the OODA loop.
+And so the first O of the OODA loop is to observe the environment.
+So that's what landscape and climatic patterns are about.
+Observation of a space.
+Then you orientate yourself around the space.
+That's what the principles are about.
+And then you need to decide where you're going to act.
+And this is where we get into the gameplay and all those sorts of leadership choices.
+And the heart of this are fundamentally two Y's.
+The Y of purpose and the Y of movement.
+Why do I make this decision over, over that decision?
+So this became for me, the, the, the, you know, the strategy cycle.
+It's cause it sort of made sense.
+Uh, you know, I remember I hadn't done the MBA.
+So, so I didn't know the official things to talk about.
+And I got really fascinated by this idea of observing the landscape.
+And so that's what brought me into maps.
+Because I used to read everything I could find on sort of military history.
+And one of my favorite battles is the, uh, battle of Thermopylae.
+So the ancient politicians, well, um, uh, Themistocles, uh, ancient politician, Greek general, had a problem.
+Um, uh, they, they had the, the Persians were invading.
+And then we don't know quite the number of Persians.
+There are about a hundred.
+Well, we think somewhere between a hundred thousand, a hundred to seventy thousand roughly.
+Um, and so the Greeks were independent city states.
+And Themistocles was I believe it's Athenian.
+And so what they decided to do was, you know, how are we going to cope, uh, with this invasion force?
+Uh, what they decided to do was to block off the streets of Artemisia, force the Persians along a coastal road into a narrow pass called Thermopylae.
+Uh, where, uh, you know, a small number of troops could defend against a larger force.
+And in fact, the number of troops there, there were about 4,000 Greeks, uh, there, and they were independent city states, but they, they came together at times.
+Um, and within those 4,000 with 300 funds.
+And this is where we got the story of the 300 from, uh, the 300 defending for a considerable amount of time against a much larger force.
+Now, my fascination with this map was, um, I could use it as, you know, we could use it as a way of discussing what we're going to do.
+What do we need to move?
+Where do we need to defend?
+Uh, who do we need to work with?
+It's a vehicle for communication.
+And I started looking at my own business and thinking about how do we communicate and make decisions?
+And back in those days, I was using something called a SWAT diagram.
+Strengths, weaknesses, opportunities, threats.
+I used to think, well, ah, that's a mistake, you know?
+Um, so I created a SWAT diagram for this battle.
+So strengths, a well-trained Spartan army, a high level of motivation not to become a Persian slave.
+Weaknesses, the ephors might stop the Spartans turning up.
+A truckload of Persians are turning up.
+Opportunities, get rid of the Persians.
+Um, and also get rid of the Spartans where we happen to be Athenian.
+We don't actually like the Spartans, as I say, independent city states, and the threats and the Persians get rid of us.
+And the Oracle says a really dodgy film might be produced a few thousand years later.
+Obviously, I did that one a bit later.
+Um, but I simply put these against each other and I asked myself, you know, what would you communicate and, you know, use to communicate and determine strategy in battle?
+In the same case for what would you do in saying competition?
+Um, you could either use position and movement through an understanding of the landscape that you're competing in, or you can use some sort of magic framework like a SWAT.
+I'm just thinking, well, cranky, it would be obvious.
+You would try to understand the landscape before you make a decision.
+And here I was making all these decisions using a magic framework.
+So at that point I said, right, I need to understand the landscape that my business is operating.
+I need a map.
+I went looking for maps of business and I couldn't find any.
+Um, well, interestingly, I can find, well, I found lots of things called maps.
+So I, I asked, for example, in my company, everybody to send me any maps they had and they said would send me loads.
+Like things like systems maps or business process maps and mind maps, lots of stuff like that.
+But when I took one of these maps, and this is a map of a circle map of the online photo service.
+And I looked at one component CRM, which stands for customer relationship management.
+And I simply moved it across the screen, but kept the links the same.
+So I went from there to there and asked, how has the map changed?
+Well, the answer is it hasn't changed.
+And for me, that was immediately odd because I know if I take a geographical map of the world and I take Australia and put it next to the UK, that has fundamentally changed the meaning of the map.
+So why is the meaning of the map not changed here?
+Well, it's because it's not a map.
+It's because it's not a map, it's a graph.
+And that's what all these maps that I had had in common.
+None of them were maps.
+They were all graphs, business process graphs, mine graphs.
+So they're all nodes and connections between nodes rather than maps of the landscape.
+So just to really spell that out.
+These are three graphs and they are identical.
+There are three places in the UK, Nottingham, London, Dover, connected by two roads, M1 and M2.
+Now, the thing about a graph, all that really matters in a graph is the nodes and the connections and the waiting on the nodes.
+That's it.
+The difference between that and a map is the reason why the three maps of the bottom are all completely different.
+While the three graphs of the top are identical is the, in a map space has meaning.
+You can't actually just move a component without changing the fundamental meaning of the map itself.
+So that's the distinction between a graph and a map and everything I had, which was called a map was in fact a graph.
+So I sort of assumed at that point, well, this must be what you learned at MBA schools, because obviously you learn how to do the mapping and there are no books on the subject.
+So it must be like really secretive and really useful or maybe completely useless.
+And there'd been abandoned long ago.
+I sort of didn't know, but nonetheless, I had no access to those resources.
+So I couldn't find any examples.
+So I thought, well, I've somehow got to create a map.
+So I looked at a map and then basically three components you need.
+You need in order to give landscape the space meaning.
+You've got to have an anchor such as magnetic north.
+You've got to have position of pieces.
+So this is north, south, east or west of that.
+And then you've got to have something known as consistency of movement.
+So if I'm going north, I'm going north.
+I'm not going south.
+There's no sort of teleportation.
+There's got to be some sort of consistency.
+So, um, I thought, right, let's try and map something.
+And so I did and I mapped my business, but I'll show you a tea shop only because my business was a bit dull and tea shops I find more fascinating.
+Don't know why.
+So what's my anchor going to be?
+So I thought, well, I'm going to focus around the users and immediately, well, who are the users?
+I've got my consumers and I've got the business.
+I've also got regulators.
+I've got many users.
+Okay.
+Well, first, we better identify who the users are.
+So we'll start.
+So we'll start off with the public and the business.
+Okay.
+Well, they have needs and hopefully the public has a need for a cup of tea.
+If I'm doing a tea shop and the business has a need to sell cups of tea because that's where it's going to get its money from.
+All right.
+So my anchors are going to be public and business.
+I can put regulators here.
+Okay.
+So what?
+What next?
+And I was thinking about this when I thought a cup of tea has needs itself.
+It needs a cup, but it needs tea and it needs hot water.
+And of course, hot water needs cold water needs kettle.
+And a kettle needs power.
+So what I've got is a chain of needs.
+This needs that.
+And the further I go down that chain, the less visible something becomes.
+So if I'm a member of the public drinking my cup of tea, the power that went into the sort of kettle, that's quite far removed from me.
+So I've got this notion of position through how visible something is.
+How and it's described itself in the chain.
+Okay.
+But this is a graph.
+How do I turn this into a map?
+Well, it turns out because I was looking at this stuff and thinking about, well, kettle and power.
+I realized, you know, power hasn't been uniform.
+It's changed over time.
+Well, the kettle, you know, the electric kettle, for example, obviously somebody is now a commodity, but at some point somebody invented it.
+So all of these components turned out to be different forms of capital and they all seem to be evolving.
+And so I did a piece of work looking into how things evolved.
+And I eventually stumbled in the British Library after six months of working on this problem.
+I had a whole bunch of data and it came together.
+It just fell in place.
+A lot of accidents.
+And it turned out that was a fairly simple process by which things evolved.
+You start off with the genesis of novel and new items.
+Then you get custom built examples of things.
+Then you get products and rental services.
+And then you get commodity and utility services.
+Now, these are just labels for different stages.
+One, two, three and four, because it turns out you can map things like data, knowledge, ethical values, all sorts of things.
+But what I've got on this map is I've got the anchor at the top business and public.
+I've got position described through a chain of needs.
+And I've got this concept of movement or evolution in terms of how evolved the forms of capital are.
+So this was the sort of first map that I produced back in.
+Well, actually it was because I'd actually mapped my own business.
+So I was just finding a way of explaining to somebody else how to do mapping.
+So it wasn't quite the first, but one of the first maps that I produced in 2005.
+And I was looking at this and I realized what I'm actually doing is I'm exposing my assumptions about how to make a tea shop in a way that other people can look at those assumptions and challenge and question what I'm doing.
+Because you might go, why is kettling custom built?
+Surely kettles more of a commodity.
+You might get aware of staff.
+You might go, hey, we're a business.
+We've got to take payment.
+And we're missing till as we're missing somewhere for people to see.
+You know, we to sit, sorry, you know, we're missing, you know, what about cakes?
+There's all sorts of things.
+What I'm doing is I'm exposing my assumptions in a way that people can see what they're doing.
+I'm using a way that people can see the sort of knowledge I have around a space and they can add to it.
+And there's something bizarre I realized is that in most of the organizations I'd ever worked in, we were all very much story led organizations.
+And in fact, there's an entire industry which tends to go around telling people that to be a good leader, you've got to be a good storyteller.
+Well, the problem with that is if I give you a story and if you challenge my story, you're challenging my ability to lead.
+So I tend to get very defensive.
+But if I put my story in a map, you're not challenging me.
+You're telling me there's something wrong with the map.
+So suddenly I found a lot of their sort of tensions, which we would have around discussing something just just disappear.
+Because we could discuss the problem through the medium of the map.
+And I've done this with things like Brexit and remain in the UK to all sorts of really thorny issues getting quite difficult groups to find ways of actually talking to each other through the medium of a map.
+And it's it's it's it's not it's an old architecture trick.
+It's why they use models, models of buildings as a as a way of getting people to to to look at and describe that, you know, their feelings about things and their assumptions about things.
+So I started using these maps and I used to go into all sorts of organizations and I was working with these maps and I ended up doing all sorts of interesting things in government as well.
+So this is a friend of mine, Liam Maxwell, we wrote something called the with several others, the better for less paper Francis Maud, which led to a whole bunch of transformations in UK government.
+And just simply by mapping out one particular project, this was back in about 2014.
+I mean, they saved about 425 million.
+And they estimate about 1.5 billion in its lifetime.
+Now this is my set by some ridiculously huge figure.
+How can this possibly be true?
+I mean, my maps have been used to put up a NASA and planet work together through through my full mapping, used it to put up the interestingly carbon map a satellite.
+And just to show you why this sort of stuff.
+In these impact big impacts become possible.
+This is an insurance company.
+This was back in roughly 2011, 2012 ish.
+This is a business process flow for putting servers into their data center.
+So they would, they needed compute, they'd order a server server would go into goods in modify mountain racket.
+And they had a bottleneck in this process flow.
+And so they'd invested time about six months, got various vendors in and worked out a way of using robotics to get rid of this bottleneck.
+So it would accelerate the speed at which they could, you know, rack service basically.
+And it was quite impressive work, return on investment calculations of one year, several million of capital expenditure in terms of the robotics.
+They're just about go for it.
+And I was asked to come and have a look at this problem.
+It was a friend of mine just asked me to just go and have a look, just make sure it makes sense.
+And so the problem is, it's been six months working on the problem.
+They got all their vendors, they got all their business case, they got all their calculations.
+I mean, I'm just turning up.
+I'm nobody.
+If I challenge the story, you know, it's game over.
+So I said, well, I don't really know what you're doing.
+Do you mind if we just map it?
+And they were like, oh, we don't really want to map it.
+And I think we spent about 20 minutes arguing about whether we should map it and then about 15 minutes actually mapping it.
+And so this is the map they came up with.
+There we are 2010 slightly earlier than I thought.
+User needs compute.
+I wish they put in product order server very commodity servers.
+bizarrely enough, they thought service were commodity, but compute was slightly less.
+Okay, it's 2010.
+It's surprising only because of clouds 2006 goods in very commodity.
+And then they had rack mount modify.
+I was able to look at this map and simply go, why have you got rack in custom built?
+And they said, oh, we have custom built racks.
+Ah.
+So what are the modifications you're making to service?
+Well, the service don't fit into our custom built racks.
+So we have to take cases off, true new holes, add new plates.
+Ah.
+And that's the bottleneck.
+And that's why they need robotics.
+And somebody in the room simply just went, why don't we use standard racks?
+Um, now what you've got to remember, of course, when somebody said that everybody's looking at them.
+Yeah, why don't we?
+Uh, why, why are we doing all this customization?
+It just doesn't make any sense at all.
+Now what you have to remember, these people aren't daft.
+These people are simply trapped by a story.
+Um, so at some point in the past, it made sense, uh, to have custom built racks because there was no such thing as standard racks.
+But they never evolved from that point.
+So obviously what you want to do is evolve that component.
+What they'd actually been doing all of this time is improving the process flow.
+So you often see these people focusing on process flow rather than evolutionary flow.
+So, you know, they literally do the wrong things.
+I mean, I had one organization.
+Well, actually I've got another one.
+Actually, this is another particular organization.
+They were, they had weighing scale.
+So, uh, we, this particular group had so many paper forms, um, that it was actually cheaper to weigh the number of paper forms.
+They used to come in, Alex, to calculate the number of paper forms there were than to, to manually count them.
+And, and they need to do this to quickly report a specific number to another group.
+Um, so they literally had weighing scales for this and they had some mathematicians who worked on algorithms that determine, you know, how many, uh, how much weight went to how many paper forms.
+And so simply mapped it out at the top.
+And of course, then you look at where the paper forms coming from goods in, uh, you go and talk to people in goods in and the paper forms are coming from distribution sites all over the country.
+Fair enough.
+Fair enough.
+And they're in this sort of digital program.
+They want to basically make the weighing scales connect to their computer systems.
+So, uh, uh, that's their digital transformation.
+But you go down to a distribution site and ask them, what are they doing?
+And then they've got big printing presses because they're printing out paper forms and you go, well, where are you printing them out from?
+So you map that out and it turns out that users are filling in an online website to which they print out these forms and then they ship them to this other group.
+And they don't know why they ship them, but they ship them to this other group who then weighs the forms to work out how many users filled in an online website.
+So the entire process, because no one understands the whole picture makes no sense whatsoever.
+So this sort of stuff is typical.
+People don't think about evolutionary flow.
+And one of the things, once you start doing this, um, you start discovering, uh, you start using maps before we do something to do what we call pre-mortem challenge.
+So before we start an act like investing in robotics, we'll map out the space and then we'll ask ourselves, you know, does it make sense with challenge?
+And then we'll go and do something.
+And then once we've done something, we'll do post-mortem learning using exactly the same vehicle for that.
+And from that we learn patterns.
+Now there are so many patterns, um, which, uh, there are, uh, what we call climactic patterns.
+There's about 30 of these principles.
+We found about 40, about a hundred different forms of gameplay.
+Most people are oblivious to all of this stuff.
+And I've used it, um, myself.
+Um, so I used to run strategy for a company called Canonical.
+They provide something called Ubuntu.
+Uh, in 2008, we were two to 3% of the operating system market up against Microsoft and Red Hat.
+They had all the money, everything, all the people.
+Um, we had half a million pounds and we had 18 months and we went from 3% of the operating system market to 70% of all cloud computing.
+So, um, if you understand the landscape, it can have a devastating effect against those you compete with.
+But this is, uh, James Finley, a good friend.
+He used to be the CIO for HS2 high speed rail, big heavy engineering project.
+And James had a problem.
+Uh, I think this was about 2012, um, that he, um, well, they wanted to build a virtual world of the railway.
+Um, because it's cheaper to dig up a virtual world and go, whoops, we've got that wrong.
+Then it is the English countryside.
+So this is a systems graph for the system building a virtual world of the railway.
+And James's problem was he wanted to know how to manage this.
+So typically in government in those days, we used to break it into small contracts, uh, like, uh, lot one engineering, lot two user experience.
+We're group common things into those contracts and then would outsource it to some supplier.
+And the net result was almost always the same massive cost overruns, massive delays, and this sort of stuff.
+So James wanted to find a different way.
+Now I'd be mapping from 2005 and some of the patterns I'd learned directly applied to this model.
+So, um, I was very fortunate in that James had spent Sunday afternoon, um, creating a map.
+And I said, well, send me what you mapped.
+What you've got.
+So this was the map.
+And this was in 2012.
+I said, well, it's quite easy now to work out how to manage this sort of stuff.
+The reason why it's quite easy is that as things evolve, their characteristics change.
+So on the left hand side is very uncharted, chaotic, uncertain.
+And on the right hand side, it's very industrialized.
+It's doesn't matter whether it's money, penicillin, computing, it all evolves from that sort of genesis to more commodity.
+And because of that, we'd learned back in 2006, there's no such thing as one size fits all management methods.
+So things like agile extreme programming were very good.
+Um, on the left hand side where your focus had to be about reducing the cost of change because change was normal.
+Um, where on the right hand side of the map, you want to be all about reducing deviation.
+So things like six sigma outsourcing.
+Good.
+And in the middle of the map, you want to be about lean off the shelf products because you're all about learning and reducing waste.
+So we simply took that and you apply it to the map and you go, right, we're going to build in house with agile techniques over here.
+We're going to use off the shelf products in the middle, and we're going to outsource to utility providers on the right hand side.
+And if we want to, we can now break it into small contracts where we bring together things which are similar in terms of nature of how we manage them,
+rather than just random grouping of words because they sound similar.
+So that's what James did.
+And that project delivered way ahead of schedule, way under budget, ended up in front of the public accounts committee.
+Um, quite an exceptional thing.
+But one of the patterns we learned, well, in this case, a principle was use appropriate methods.
+It didn't matter whether we were doing financing or project management.
+There's no such thing as a one size fits all method because the characteristics change and therefore,
+the way you treat it has to change as well.
+Of course, there's a world of difference between using agile like extreme program and being agile.
+Being agile means basically using appropriate methods.
+I mean, if you try and use Six Sigma across the lot, you'll be good on the right hand side, you'll suffer on the left.
+If you try to use agile across the lot, you'll go on the left and suffer on the right.
+So if we go back to the original contract structure and I take one of those contracts, Lot 1 Engineering,
+I simply take that and look at the mapping format.
+So exactly the same contract.
+But now I'm looking at the map.
+I can tell you this contract is going to fail before we even sign the paperwork.
+And it's going to fail because the stuff on the right hand side might be efficiently treated.
+We can define it in a contract, but the stuff on the left hand side will always incur excessive change control costs.
+We've doomed ourselves by trying to define that which we're still learning about.
+So, I mean, that's a gentle introduction.
+I'm not going to go through all the patterns and everything else.
+But even at this stage, I mean, the most common problems I find with business is one,
+they don't actually understand the users, which of course you have to do in order to map.
+That's the anchor.
+Secondly, they don't understand their user needs, which is fairly terrifying.
+Thirdly, they don't understand their components,
+say the supply chain of all the things which go into making up what they're actually doing.
+And I think that's become extremely clear over the last 10 years that so few companies actually understand that supply chain.
+But worse than that, you can't just treat every component of the same.
+So they don't even understand how evolved those components are,
+which is why we always end up with these fads of one size fits all.
+Let's agile everything.
+Let's six sigma everything or whatever it happens to be.
+None of them work because you have to use appropriate methods because the components evolve.
+So their characteristics change.
+So along with not understanding users, user needs, not understanding the supply chain components,
+not understanding how evolved components are using inappropriate methods.
+It turns out that most organizations, their structures are fundamentally flawed,
+because again, that needs to change with the context.
+And they also don't have any mechanism to effectively challenge each other without landing in that dreadful world of stories,
+which is highly political.
+And so you learn the lesson pretty quickly.
+You don't challenge the executive story.
+Well, we want to, but there is no mechanism to do so without causing that confrontation.
+So that I learned those lessons probably about 2007.
+And it's just grown, grown since then.
+And as I say, there's about 30 common economic patterns, which are useful for anticipation.
+There's about 40 principles like use appropriate methods is just one.
+And then you start to learn, you can manipulate the space and there's about a hundred different forms of gameplay.
+So I suppose that's my as easy as I can make it introduction into mapping.
+At that point, I'll stop.
+I won't stop sharing because Daniel can do that for me.
+There we are. Susan, was that a good nothing train?
+Absolutely. Absolutely.
+Actually, you, uh, yeah, despite I was actually in three of your projects,
+um, education, um, and, uh, and so, you know, despite actually being in the midst of it,
+um, what you've showed me today is, is that it's, you know, when we talk about components,
+um, that may need some clarification, uh, to be able to translate that into active inference.
+But, but the, yeah, the, this is also showing the internal, um, representation, the resource, uh, utilization,
+which is very important in active inference.
+We refer to that as, you know, our free energy.
+Um, and, um, and so it's not just about, you know, what is out here, what I'm trying to, you know,
+either avoid a threat or go after an opportunity, um, exploration, exploitation.
+Um, but it's also about how I'm, um, actually organizing or how to look at the organization,
+the internal composition or configuration in terms of that utilization.
+So utilization of opportunity.
+And how do you, how do you actually think about that?
+So, so it, to help me bring that home for active inference, Daniel.
+So, so there's a couple of points I can run off that.
+Um, and cause I, I, I love the practical examples actually.
+Um, because that's where I sort of come from.
+I, um, I mean, we can talk about organizational structures.
+I, I, I developed a cell based structure, which used to be called Pioneer Settlers Town Planners.
+Those words are very problematic.
+Some of these days we call it explorers, villagers, and town planners.
+It, it, it, it, uh, uh, basically a structure you break using a match.
+You break into small, uh, groups, uh, very much explorers on the left hand side.
+It turns out that people have different attitudes and work well in different areas.
+Uh, they have, um, um, also different aptitudes.
+So you get explorer engineers, explorers, marketers, explorers in terms of finance.
+And it's good to bundle those people together.
+Um, and, uh, what we do is then, uh, we introduce, uh, uh, villages in the middle and town planners.
+They have different characteristics.
+We allow people to self select, and then we create what's known as a system of theft.
+So the town plan is still from the villages, which forces the villages to still the work of the explorers and the explorers.
+Therefore have to get on with exploring.
+And this enforces evolution into a system.
+So I introduced that in all 2006, 2007.
+There's a wonderful paper by, uh, GCHQ, which is our intelligence services, which, uh, called boiling frogs.
+You'll see a lot of those concepts, uh, within that paper as well.
+I'm cited in it.
+So, um, um, but, um, I can talk about organization, but I, I wanted to talk about that sort of value.
+And, um, they're the, um, how you use, uh, maps to ask questions.
+So let me just jump to something else.
+Hang on a second.
+Um, mirror.
+All right.
+So this is a group.
+Uh, they built a system.
+And like many groups, they built the system, the system gone live.
+And then somebody said, you know, ask the question, what's the return investment?
+And of course, um, at some point in the past, somebody created some sort of plan, which had a return on investment calculation.
+But if you dig into it, what really happened is an executive read an article in some magazine.
+Or hope talk to a friend.
+Thought this was a good idea.
+We should do some AI or whatever.
+Um, had commissioned a group internally, who then gone and talk to another group to find out how much would be the cost of implementing this.
+Then, then taken that figure to another group to work out what the return on investment calculation needed to look like.
+And finally gone to marketing and say, well, look, can we have some evidence to justify building this?
+And so the entire exercise was an exercise, um, in justifying building what the executive wanted on a whim.
+And that's probably normal, as in the vast majority of things that go on terrifying because there is no process of challenge.
+And so eventually somebody said, you know, we spent all this money on this thing.
+What is the value?
+What is the value?
+And, and there is obviously some business case, which gives a bloody blah.
+And of course it's meaningless.
+Um, so they asked me, well, how do we work out the value of the system?
+So I simply said, and this took two hours in total.
+Um, first of all, tell me what you think the system provides.
+And what do we mean by, you know, what is the value?
+And so creating opportunities to add value quickly, being able to provide synchronized environments.
+That's apparently what this system was doing being user centric.
+Okay, cool.
+Out of the box solution for developers management of complicated.
+All right, fine.
+So you got a whole bunch of words.
+And then what you do is I normally get them to group those words into themes or perspectives.
+So some of these words were about speed.
+Uh, some of them were about cost and value.
+Some of them about removal of heavy weight assurance processes.
+Some about simplification, some about confidence in the environment.
+Now I often do these with research groups of, you know, sometimes fairly small, 20, 30 people.
+More recently, there's usually 80 or 90 people.
+So we'll get huge amounts of words and also these themes as well.
+And then we'll choose a number of themes.
+In a small group, we might just pick one.
+Um, if we've got a large enough group, we can break into smaller groups to, to look at many.
+So in this case, they pick the removal of heavy weight assurance processes, which was not something they'd been thinking of beforehand, but something which came up in this discussion.
+So we immediately went to mapping out from the perspective of our common platform for assurance.
+Um, and dated 2023.
+Uh, so a couple of things.
+Maps have no concept of time on them.
+Any more than geographical maps have.
+What happens is that over time, the map changes.
+Okay.
+Secondly, all maps are imperfect representations of space.
+Uh, a perfect map of, uh, France would be, or Paris even would be the size of Paris, which means as a map that's useless.
+So all maps are imperfect representations in order to be useful.
+Uh, you know, but they are representations of the landscape.
+They are not the landscape.
+Um, the third thing is that all maps have a perspective.
+So if no one had mapped Paris and you sent a group of people to map Paris and they came back and you asked them a question, like, what's the most important thing in Paris?
+They might go Pierre's pizza parlor because they mapped it from the perspective of nice places to eat pizza.
+So if you want to map a space, you send normally multiple groups to map from different perspectives.
+And then what you can do is aggregate those perspectives together.
+So you go, you basically ask the same question on each map and then you aggregate the answers together.
+So in this case, they built a map with a common assurance, uh, platform.
+And they talked about what's involved engineering teams, end users.
+And once they have a map, we simply ask the question, you know, um, value or assumes we're going to be able to measure something.
+What is it that we're going to be able to measure with this map?
+And so they came up with a whole bunch of things like bugs between environments, possible transaction, time for a new service, uh,
+a decrease in negative press stories, speed of assurance approval.
+And once you've got those answers, um, you simply say, how easy are they to implement?
+And what's the value to the sponsor end users?
+And you, they just put them on here.
+And of course it's done in mirror.
+This entire process takes about two hours and now they've got a whole bunch of, you know, fairly easy to implement high value things that they can actually go and build metrics for.
+And they had no idea beforehand what cost per transactional percent of, uh, policy implemented or time to fix for bug issues.
+These are really simple things which they can now go and fix.
+Let's show you a slightly more, uh, demanding one.
+So let me have a look agriculture.
+Let's look at sustainability.
+Sustainability.
+Okay.
+Yes.
+Um, are you into sustainability or healthcare or?
+Well, we'll do sustainability.
+Okay.
+Um, are you into sustainability or healthcare or?
+Um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um, are we, um
+security, protecting biodiversity. Great. So this is the list here. Apparently it all
+matters. So you got to do all of this stuff, green skills, middle impact on resources,
+loads of things. So the next thing you do is you get people to group it into themes.
+And so the first bit takes about an hour, this bit takes about an hour. So they create a whole
+bunch of themes or perspectives, so policy standards and legislation, some were connected
+to secular economy, some connected to leadership and governance, organizational governments, social,
+all sorts of things. And then what they do is you self organize into small groups, and each of those
+groups now goes and maps out the industry from a particular perspective. So this one is doing
+sustainability. Oh, that's just the example. Sorry. This one is doing modeling and complexity.
+There's different people in the group, and Tiani and Ben have taken the role as lead mappers,
+and modeling and understanding complexity within the sustainability field. So they start adding
+components, and then they usually start shifting to a tool like online maps. And so they're going
+through having a discussion about what components matter, where they matter, etc. Until they end up with
+what they think is a good enough map. And the next question you ask is, well, if you've got a good
+enough map, which is all you can ever have, where could you invest on the map? Not where should we invest,
+but where could you invest? So they come up with a list of different areas that we could invest on the
+map. And you do that. But each of these maps, you can see picking different areas. Great. And then what you're
+doing is you aggregate this all together.
+So you ask them a question. So once they pick the different areas, you ask them to highlight in their
+groups, what are the most important areas for and it could be improving society or return on investment,
+making money. And so they highlight in this case, it's for improving society, they've got different
+ideas. So you've got one group collaborative finance, patterning, characterisation, one's all about
+measurement and surprisingly, supply chain, audible tool chains. And what you find is on the different
+maps, similar themed areas have come up. So now you can aggregate across all the different maps.
+And what you end up with something that looks like this.
+So when we ask people, and this took 10 hours to get to, starting from, you know, what do we do need
+to do about sustainability? It turns out, and these are all people who work in the sustainability industry,
+and there are about 60 of them for all sorts of different parts. Turns out the things that we
+really need to focus on are civic engagement, compliance and auditing measurement. And then after
+that manufacturing practices, government policies, financial. Now interestingly, when you ask the
+question, or you go and do analyst reports, so you aggregate analyst reports, you tend to get the
+answers on the right hand side. So the high priorities technology innovation, we're always in the
+sustainability bill, investing in looking for we've been doing it for 40 years, looking for the magic
+technology that will solve sustainability problems. At the same time, of course, CA2 has gone up through the
+roof, or it's going to be financial instruments like carbon offsets, whatever. Again, we've been doing this for
+40 years, getting nowhere. And again, the marketing message or the markets message is the stuff on the
+right. And but you see a real difference once you once you map a landscape and ask people to focus on
+from the purpose of improving society, where would you focus is very different from where would you focus
+in terms of making money. And you see that across so many different industries, healthcare, agriculture,
+defense and all the rest of it. And if you look at something like healthcare,
+you end up with this. So if you get a whole bunch of doctors and nurses together, and you get them to
+map out the space and everything else. And of course, they have to break into small groups, because
+you only have eight people are mapping a group, but most usually, so we try and break into small groups,
+and then you aggregate them together. What you discover is that if we want to improve healthcare,
+from the focus on benefits society, it's all about measuring health outcomes, auditing against prompts,
+patient reported outcome measures, which we don't do we measure against clin arrows, which is clinician
+reported outcomes. So symptoms, we don't really have a healthcare system, we have a sick care system,
+we're very good at treating symptoms, not making people healthy. So we should really focus on
+measurement health outcomes, sharing a better data, and that's the list over there. But if you look at it
+from the market, it's all about personalized do it yourself medicine, education, well being,
+industrialized AI, that's quite a high priority thing, where of course, you know, and things like
+measurement health outcomes is right at the bottom of the list. So you often find those sorts of things.
+So one of the things I do the maps is, it's not just when you want to look at a landscape,
+if I can, I will get a large group of people together, we'll come up with some general themes
+by asking the question of what matters, and then consolidate it. And then we'll break into small
+groups like multiple sensors, and we'll go and map out the space, then we can ask each group what's
+important. And then we can take all those answers, and we aggregate it together. And this is what gives
+us a signal for what matters. So if you go back to the Paris example, if you sent out a dozen groups
+to map from different perspectives, rather than getting Pierre's Pizza Parlour, if you aggregated,
+you're likely to find the Eiffel Tower, for example.
+And point I will stop. Did that help? Oh, and Susan, you did the the education one, which was always great,
+because the mapping exercises themselves were always fun. Because the education group had a bunch of
+people who worked in the education profession, obviously. And they always started from a focus of
+whenever we were mapping, it was all benefit to students and opportunity. And every time we map,
+we were forced to basically recreate the map, because there was the realization through the process,
+the entire education system doesn't work. But students works for the benefit of government and
+social cohesion, and the educational institutes. I mean, it was the same with the sort of healthcare,
+everybody thought, wow, healthcare obviously is there for the benefit of the patients. If you look at
+most of the maps, it's actually there for the benefit of medical institutions, and pharmaceutical companies,
+and patients are right down the bottom of the list. So yes, we could expand that one. I will,
+I was also on the gaming one. Oh, yes. What was interesting was that, I think you mentioned that
+that was the only one that there was symmetry between what the, what was good for culture,
+and what was good for industry. It was a wise investment, as well as that, which, yeah, I want to
+come back to because I think this kind of pulls this back into the, you know, the free energy.
+So if I look at the map for the gaming one, so Daniel, I don't know if you've popped up the map,
+but just to go through it, we start off with this huge amount of noise of stuff that matters. We go
+and go through this process of categorizing into themes, and generating the maps, breaking into small
+groups, mapping out the areas, identifying on each of the maps, what matters. I'm not actually showing
+you that, I can show you it, it's the stuff above. Oh, here we are, that's the all the groups doing their
+work, identifying different themes and everything else. It's even more messy than that. There we are.
+But basically, what we end up with, if I can find where it was, there we are, we end up with all this
+noise. And we end up with this little table at the end. But yeah, brocated all together. And it turned
+out, yes, you're actually right. They're quite light. I mean, probably the only example I've ever
+found, where if you focus on what's important to society, and if you focus what's on important in
+making a return on capital, there's pretty good alignment between the two. I mean, obviously,
+AI content, quite high in terms of making a return on capital, but not too bad. Community is quite
+important for both. It's slightly more important, but it's the highest priority for benefit to society.
+But it's not bad alignment at all. Certainly, healthcare, defense, agriculture are way different,
+really distorted. Well, and I do want to point out that all of this is in GitHub. It's all open source.
+Yes. Yes. Yes. Yes. Yes.
+The results of the maps. And it's all free.
+Yeah. And so that speaks to what, I'm going to point out what was top of mind and then I want to hear
+what Daniel has to say. But specifically going back to what you said about the value
+value versus the ease of implementation. And so when you're aggregating collective intelligence,
+then that's actually giving you predictive power in terms of where is the likelihood things are going to
+move. And so the tapping into that, the self organization, the power of self organization
+to enable that emergence of what is going to be the most powerful, least variational energy
+that we're going to be able to mobilize. So it's mobilization.
+You know, whether you're, you know, you're in the midst of it now, you know, with active inference,
+we're, you know, we're talking about an ecosystem with very, very diverse,
+different professions. And, and so, you know, they organize chaos, but yeah, I'm kind of seeing some
+routes in how to actually orchestrate those to find that, you know, that sweet spot. What do you think?
+I think there, there is another form of mapping, which is created by a friend of mine, Dave Snowden.
+So Dave Snowden, we meet up regularly, like every week. And we were talking a few hours ago, actually,
+before this, this event. So, of course, Dave's taken a sort of long interest in sort of mapping stuff
+that I've done, he's got a, a different way of looking at it. It's something called S-dry mapping.
+And that really looks at, um, uh, because his focus is on, you know, if we've got a whole range of
+things we can do, what are the things which are within the realm of what we can possibly do?
+What, what, what in terms of energy input in terms of time, uh, becomes, uh, are possible. And so he's
+got some really interesting stuff, but it's dry mapping. I mean, there are, uh, there are very few
+forms of mapping that I'm aware of. There's another one called, uh, Berger mapping, which
+is really interesting. If you're looking at stakeholders and political play in the organization,
+there's S-dry mapping as well. And then there's my former Walkley maps, which, um, you know, this,
+this stuff is almost 20 years old now, ridiculous, but, uh, and it, this stuff, by the way, is all
+creative comments. So it's interesting because once you create a map of space and you might
+then use the map to identify where you could invest and then you aggregate, um, and to see
+in this case, we're aggregating them in terms of what should we, what is a high priority? This isn't
+actually answering the question, uh, can we actually do this? So, um, if you go back to the, if I go back to
+the value one, um, so that was, uh, to do not education gaming, let's have a look. Um, no, I don't
+want to open that one. Perhaps just common development here. You've got, um, we're actually
+having identified different areas. We're now asking that question of ease to implement versus, uh, uh,
+value to the sponsor. So this is the point where, you know, you use the maps to identify different
+areas. And, um, you're now asking, you know, these are things we could easily change. This helps you
+make that decision on what you should change. I think SRI mapping is a better form of doing that
+a bit here. I mean, I would use the maps to try and understand the landscape as much as possible
+as possible and use the maps to sort of, uh, my form maps to identify the areas you could change,
+help you develop the questions. Uh, but then in days form, uh, which is SRI mapping map, which is not
+this, um, really ask that question about the energy and the time. I think that's a really interesting
+way of looking at the problem. Hmm. Yeah. And, and, uh,
+I think that's a, uh, you compare that to the typical cost benefit analysis. Oh, God, no.
+Which it's like, you might as well use a SWOT diagram. Um,
+okay. I, I remember I've been doing this for 20 years. So, I mean, I see, uh, well, it's almost 20
+years. I, the insurance example is typical example that I will see a group of people who've spent a
+six months working at a problem with no actual understanding of the landscape. And they've come
+up with a plan to invest millions into robotics. And, uh, they've got all the business case, all the
+calculations, all the vendors they've had in, they've done all their due diligence, the whole
+thing's ready to go. Um, and beyond what, once we got over the 20 minutes of arguing, it took 15
+minutes of mapping and then about five or 10 minutes of discussing the map to realize the entire
+thing was a waste of time. That is incredibly common. I, um, that, you know, look before you leap. I am
+always stunned. Um, uh, it's a constant source of merit, uh, of amusement, uh, how many people make
+decisions without, um, understanding of the landscape. And I do get myself into hot water. So I better warn
+your listeners, um, mapping will tend to get you fired. Uh, the, the reason being is that whilst I say
+it is possible, you know, to, to, once you understand a landscape and you can challenge and ask questions
+and all the rest of it, um, you do get, you know, you do get these moments where you, you map out the
+environment and you realize the entire strategy of the company is to walk the people off the edge of a
+cliff and you want to point out that's really bad, but it is really, it is something the executive
+have been totally sold on. Uh, and so they, people get, you know, despite the fact they can see it
+clearly in front of them now, it's almost, they go into a sense of denial and, and the solution is
+obviously you're a trouble maker. So I've seen loads and loads of people, uh, well, not loads, quite a few
+people get fired as a result of mapping, pointing out the insanity of something that is actually,
+actually going on. So I have to give you a, a big, healthy warning, uh, but on a personal note, I, I am
+seeing, I've seen so many projects and I have got myself in trouble. Um, I had one particular project,
+uh, they'd asked me over to the U S and I was sitting in this boardroom and, uh, this was about 2010
+and they'd taken me through their $1.2 billion plan to build a private cloud. And I'd map this out
+during this meeting. In the end, I'd turn around. And, uh, I said, I can build the entire lot for you
+with the same effect, the 25 million. And they were like, how is that possible? How would you do that?
+And I said, it was very simple. You pay me 25 million. I will sit on a beach for five years
+drinking margaritas. Then you phone me up and I will say we failed. And that way you'll save all
+the rest of the money. Now this went down like a lit balloon. Uh, I immediately got kicked out of a
+meeting and all that sort of stuff. It's spectacular. Um, but what I, what I most remember about this
+story is about seven years later, when execs phoned me up and basically said, we wish we paid you 25
+million. Um, of course I've wished they'd pay me 25 million as well, but, um, this stuff is
+frighteningly common, I'm afraid. Um, I think that's actually where we can help because what you just
+said is what we're modeling. It's called belief updating. And so just look, instead of, instead of, um,
+focusing on behaviors, you know, we're, we're actually looking at the justifications. Um,
+and it's quite revealing. So, well, that, that, that, that, that's an entirely different side.
+And, and, um, it leads into, I should say entirely different threat. Um, uh, which is the whole sort
+of, because you can map culture as well. I mean, I, I, I get into, um, so I keep a lot of my maps on
+get up. Uh, they're easy to find. There's a worldly mapping repository. There's a tool called online
+WaterBatch. You can just take the code and throw it in there. Again, this is all creative, some comments,
+open stuff. You just help yourself. Um, but I also, um, do a lot of mapping of, uh, different
+environments. So if you think about, uh, the concept of defense, so mapping out the defense space, um,
+there are multiple landscapes, uh, on which sovereignty has a meaning. And the one that
+most people know about is territorial sovereignty. So this is our land. Um, but there's also economic
+sovereignty, uh, technological sovereignty, uh, social sovereignty and political sovereignty. And
+they're all important landscapes, which you can map. Now, most countries, uh, I say most, uh, not all are
+the same, should we say, um, do a reasonably good job of territorial, uh, um, um, pretty poor job of
+economic, uh, actually understanding their economic landscape. Uh, very few actually understand their
+supply chains. Uh, there's a wonderful piece of work on in Hungary, which was looking at, um,
+I used VAT records, uh, sales tax records to, to basically graph out, not even that, but graph out the,
+uh, Hungarian economic system. And of course they discovered there were a little bit of these
+checkpoints with these companies within that. It's pretty terrifying. It was a very small number of
+companies, which if they failed would take out 25% of the GDP of the country, which is like, um,
+but, but of course, most people are oblivious to this. And of course, technological, I mean, we're now
+finally talking about spawns, but these are just graphs. I said that software bill of materials,
+but they're not even maps of the space. So we still don't have maps about technological landscape
+and political and cultural. I mean, most people are nowhere me and, um, and, and no,
+political, I should say it's a social. And of course that's masses from the point of view of, um,
+sovereignty. I mean, uh, uh, yeah, if we cut back on foreign office aid and all this sort of stuff,
+you have to buy more bullets. The two, the two are not, um, independent. They're correlated. What
+you do in one landscape can affect another landscape. So if you, you decline, you reduce soft power,
+um, you might have to exert more kinetic force in a, in a territorial. Um, this, this whole sort of
+area led me to, um, discussions, uh, where I was looking at how to map culture.
+And that was fascinating. Um, mostly because when I looked into culture, I was thinking culture,
+I mean, well, you know, it's a really simple concept, foolish, foolish man. And I, I, I found, um,
+I think it was Kruber. He basically said anthropologists who are the experts on culture
+have been arguing over what culture means, uh, for over 150 years or something. It was a ridiculous
+length of time. Uh, and of course there was no actual agreement on what culture, uh, meant,
+which was for me quite shocking and, um, blah, blah, blah, blah. Yeah. There this one too.
+And then I came across a really, really wonderful anthropologist, Margaret Mead,
+really incredible stuff. And, um, one of the statements of Margaret Mead was that, um,
+the language was part of culture. And that's interesting because if language is part of culture,
+culture, um, and we, we, we, we therefore probably can't describe culture in terms of language,
+uh, that's something called Goethe, Goethe's incompleteness theorem. Uh, so no, no model can be
+true and complete within itself. So if language is part of it, we've got to find a different way.
+So what I started doing was, well, can we map out cultural systems? Um, so what I use a map,
+I better just show you a couple of bits. The, the axis at the bottom, I always say Genesis,
+custom product commodity, uh, when I'm looking at activities, but there's really, you should say
+stage one, two, and three, and four, but you know, that doesn't mean anything to anybody.
+And this piece of work came from a whole bunch of, um, a text analysis of 9730, no, 9231 documents back in
+2005, 2006, very manual process back then. And it turns out there's these different stages and they
+have different labels, um, different characteristics as well. So the different labels are when we talk about
+practices novel emerging could invest data model, divergent, convergent model, knowledge, concept,
+hypothesis theory, and then something comes up center. And I can pick any label from stage one
+and mix it with stage two and three and four. So I started mapping out things like ethical values.
+So looking at, you know, was it a concept? What's an emerging concept? Was it sort of converging?
+Was it accepted? So he's doing a lot of stuff on, um, sexual identity and mapping out in that space as well.
+Uh, so when you look at,
+turns out, you start looking at a collective and you will have various beliefs in a collective.
+It might be universal basic income, paid holiday, unionization.
+Uh, and those beliefs themselves will have different stages of evolution and they'll be based upon,
+um, underlying concepts, workers' rights, anti-discrimination, civil rights, both of those
+extend from the abolition of slavery and underneath that are concepts like reciprocity and fairness.
+Um, so you, you can see how these, you know, these components themselves have evolved.
+We have a fairly good idea or used to, I should say, a fairly good idea of concepts like reciprocity.
+Um, that's being a little bit challenged at the moment.
+But if you take this, this map and you just say, well, okay, so we've got some values beliefs.
+And we start off with this point here.
+Yeah.
+Can you, I don't know if you can see my mouth, um, it's values in the middle.
+Yeah.
+Okay.
+So what I did was I had a blank map with concept emerging, converging, accepted at the bottom.
+Uncharted industrialized and put values as, you know, there's this map of values in the middle,
+put that as a square box.
+And then I got a group of people who couldn't agree on anything.
+Uh, these were Brexiteers and Remainers in the UK.
+Brexiteers were like leave Europe.
+Remainers wanted to remain.
+And these group were incredibly hostile to each other.
+So if the Brexiteers said, we'll have a cup of tea, the Remainers would go, well, having coffee.
+And if the Remainers went, we'll have biscuit, the Brexiteers would go, no, we're not having biscuits.
+We'll have cake.
+I mean, these people would just not agree on anything whatsoever.
+Um, so I had them in the room and I said, well, look, I'm trying to explore the concept of culture
+and I know I can't do it through the use of a word or words alone.
+So I've got this concept of values and that's a, that's a map itself.
+And I've put that in the middle.
+I want to think about what are the components that make up culture?
+And they were able to discuss this rather complicated issue.
+And they, uh, through the meeting, the map, and this is where they end up with.
+So at the very top, the anchors are we and me, we're all a bit, we were all a bit me as the individual
+and collective.
+Uh, the, we is all about control of the environment.
+Me is all about individuality, which is about agency, which is connected to concepts like power
+and control courses.
+Uh, you know, connected to the collectives that we belong to.
+We belong to many forms of collectives and all collectives want to succeed in the spread of their
+values, a church, a football club, a family or whatever, you know, they all want to succeed.
+Um, and of course our behaviors are a combination of the values that we have
+and the doctrine or the principles we apply.
+So for example, um, a principle is focus on user needs.
+Well, that sounds good.
+But if your belief is that people with blue eyes and blonde hair are somehow
+better than everybody else, then the behavior, uh, focusing on user needs and the belief that
+blonde-eyed blue-eyed people are somehow superior is not a very appealing behavior.
+Um, but, um, then you get into concepts of safety, which depends upon behavior and sense of belonging,
+which depends upon behavior.
+And so you start getting cycles within this and you can actually use this to, to form groups and
+also destabilize groups as well.
+Because you, and that's one of the things you do, you can do with maps as well.
+But that's how I, many, many moons ago, gosh, this must be about eight years ago.
+Um, I got into, to mapping or, uh, maybe less seven years ago, uh, mapping into cultural systems.
+And this turns out to be a, a, a very imperfect but interesting definition of culture.
+So when I say, when people say, what is culture?
+I go, well, that's culture.
+And, um, my particular interest and the reason why we did the video gaming one
+is because if you want to change the behaviors of a collective,
+what we did, well, the principles are universally useful principles.
+So as long as people are aware, there's a list of about 40 of those,
+what we need to really do is change the values and the beliefs.
+And one of the ways of doing that is through memory.
+So symbols, rituals, and heroes, um, or in other words, art.
+Art is one of the most powerful forces there is to changing the values and beliefs in the
+collective and the single largest form of art today is immersive video games,
+which is why we were doing that research project.
+Because I have a particular interest.
+If we want to change the behaviors of, uh, you know, national collectives,
+um, from the best way of attacking the problem is through immersive video games.
+That all makes sense.
+Yeah.
+Thank you.
+I mean, there, there's so many places to jump in, but I want to respect your time.
+Perhaps we can close the session there.
+And then Susan and I could stay for a few minutes and read some of the thoughts
+that we had about active inference.
+Oh, my apologies.
+I didn't see what the time was.
+Ah,
+Oh, sorry.
+I've talked for far too long.
+I have a terrible habit.
+I can do this for days.
+Um, I hope I haven't bored your rigid.
+Um,
+You said what you wanted to say.
+Oh, no.
+It was fantastic.
+Fantastic.
+And, uh,
+Well, I thought, would you like to continue a bit longer?
+Yeah.
+Yeah.
+I can just mention a few of the points that Susan and I had like thought about and prepared
+just more to footnote it for just thinking about it.
+No, in everyone's own time.
+Um,
+Yeah.
+There's so much here that, uh, that, you know, there is so many different crossovers between,
+uh, these, these two directions.
+Yeah.
+Um, and, uh, and, and so, you know, that, I mean, I've got so many that I'm all that turn it over to,
+uh, to Daniel to kind of pull these threaded all together so we can, um, mine this, uh, the brilliance.
+This is just going to be reading from the document that we already prepared.
+So not just to connect and notes being taken.
+So it's not in any order.
+This isn't any specific synthesis.
+Um, but the, the, the ideas of cognitive mapping, worldly mapping as a cognitive activity,
+strategy or behavior being separated from the landscape.
+This is like the agent on the niche, the pheromone distribution and the nest mate.
+And the pheromone distribution can't be changed instantly.
+That's actually something happening that's separate from the control of like any navigation
+path and landscape.
+And so being able to have real specific practices and all of this fractal diversity and practices
+as well, just like there's tools in a workshop in the path, finding way, finding areas.
+This is mapping technique.
+And then underneath cartographic technique is cartographic research and measurement and signal
+processing control theory, all these other areas.
+Um, however, more specification or formalization is not always the rate limiting step or the step
+that's aligned with any particular outcome.
+That's kind of like the recognition that actually, I think just from what I have heard,
+helps the participation go beyond just sourcing information
+and words.
+If you just wanted all the words, you could download a dictionary,
+but there's actually something in the process and the time and the attention as that feeds back
+upon itself that is qualitatively different than just like the playbook. The playbook in the kitchen
+is different from the restaurant changing through time. So those are just the kind of general. Then
+just a little bit more on the specifics with active inference. Really interesting how this
+is like a snapshot that has position and then a first derivative or second derivative, like how
+fast is it changing? What vector is it changing in? How fast is that changing? That could be taken
+very far formally with active inference. That's basically Bayesian mechanics. Then separation of
+consideration with the OODA loop and a connection to the principles. Also previously we've connected
+the OODA functions and cycle to action perception, basically describing the same territory. They're
+different maps. So having a pluralism of approaches and actually mapping them at a higher level,
+like systems engineering maps or active inference ecosystems of shared intelligence,
+complex systems, all of these being recognized as maps helps have the epistemic humility and the
+pluralism. And it's also like arguably a correct formalism that takes mapping to like its logical
+completeness as a method of pragmatic inquiry. And then separation of the sense-making of the landscape
+from the actions that can be taken. And then in active inference, like the equations have all those
+kinds of considerations, like how the world states change through time, the perceptions, the actions,
+the affordances, like all of these different terms. However, that equation is very silent on how to do it
+procedurally through time with a group. Obviously the equation can be used in every single possible way.
+So even if like this were more accurate, that you could make a decision with this or that consequence
+on this map, or you could have chosen the other way on a different one. And so then that brings in some
+really interesting considerations of inquiry, which I think just to kind of conclude speaks to the
+different ways that some of the theory of cognitive systems and all of like the connections that people
+will see who study the formalisms and act-dimph, that theory and how that co-informs and co-creates with
+the practice and the methods and the use of maps, all these different areas in a new domain in time.
+Mm. Now I definitely think we should end there because that was fantastic.
+Great. Thank you, Simon. This was really awesome. Thank you again, Susan.
+Thank you. This has been remarkable. Same with people, you know, thinking how they get involved. So
+thank you. Bye. Awesome. Bye.
+Bye.

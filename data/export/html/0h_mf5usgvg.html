@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 116.1 ~ Max Aifer: "Solving the compute crisis with physics-based ASICs"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 116.1 ~ Max Aifer: "Solving the compute crisis with physics-based ASICs"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_116 &middot; Episode 1 &middot; Speakers: Max Aifer &middot; Duration: 1:11:03 &middot; Views: 287</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=0h_mf5usgvg">https://www.youtube.com/watch?v=0h_mf5usgvg</a></div>
+<article>
+<p>Hello, welcome everyone. It is August 6th, 2025. We're live in active guest stream number 116.1</p>
+<p>with returning guest Max Afer, who will be discussing this paper,</p>
+<p>solving the compute crisis with physics-based basics. Max will go over the paper, talk about a</p>
+<p>few different things, then I will check in the live chat and read any questions that people have.</p>
+<p>So looking forward to people's questions. And Max, thank you again for joining. Looking forward to</p>
+<p>the presentation. All right. Thank you for the introduction. Yes, I'm Max Afer, and I work with</p>
+<p>normal computing. And as Daniel mentioned, this is my second time on the stream with the Active</p>
+<p>Inference Institute, the first time I was talking about a paper called Thermodynamic Bayesian Inference,</p>
+<p>which is an example of one of our algorithms we've been developing in thermodynamic computing.</p>
+<p>And this time I'm going to be talking about this new perspective article we've written called</p>
+<p>Solving the Compute Crisis with Physics-Based ASICs. And just a little word about the background on this.</p>
+<p>This kind of emerged out of an industry workshop that Normal Computing, the company I work at,</p>
+<p>we hosted at our office in New York, because we had been focusing up to that point on, and still are,</p>
+<p>on the ideas of thermodynamic computing and applying those to machine learning, and in particular,</p>
+<p>you know, probabilistic machine learning. But we noticed that there's a lot of other people,</p>
+<p>both in industry and academia, working on different approaches to unconventional computing. And we</p>
+<p>figured, well, there must be something that we can learn from each other. So we hosted this workshop.</p>
+<p>And it turned out, I think, that a kind of more, a larger, like unifying framework started to emerge,</p>
+<p>that there's a bigger picture of something that these different approaches have in common. Even though,</p>
+<p>even though when we move beyond the standard digital paradigm we're familiar with, we get kind of a zoo of</p>
+<p>strange, exotic new components and circuits that we're using, there is still some kind of pattern or structure</p>
+<p>that we can identify and categorize to think about these things. And so that's kind of where this paper</p>
+<p>came out of, that us and the other people who were at that workshop thought it was worth writing a paper on.</p>
+<p>And so I'm going to, after I kind of finish, you know, giving a little bit of the background and overview,</p>
+<p>I'll kind of scroll through the paper and give more detailed explanations and commentary on it.</p>
+<p>And also, of course, I encourage, you know, anyone to go and check it out for yourself.</p>
+<p>So this is a perspective article and we're not going to be presenting new, like, theoretical results in here,</p>
+<p>per se, or simulation results. But it's more our view of the connections between these different</p>
+<p>computing paradigms and where we see the field going. But in a nutshell, I guess it's the reason why I</p>
+<p>think we see so many of these new exotic computing paradigms starting to take off now is because</p>
+<p>there's kind of a new challenge for computing, which is the amount of compute that's required for AI is</p>
+<p>just a very large amount of compute and it requires a very large amount of energy. And that's not, you know,</p>
+<p>not, I guess, a new challenge for computing in a way and that there have always been new algorithms</p>
+<p>that demanded more compute. But there is something different about it, which I'll get into when I talk</p>
+<p>about the end of Denard scaling in that we'll have to solve it in a different way than it was solved</p>
+<p>before. And so I guess that at a high level, you can kind of think of it as instead of just trying</p>
+<p>to make chips bigger or cram more transistors onto a chip. People are now looking into ways of</p>
+<p>using a different kind of fundamental structure for computing or replacing, you know, using something</p>
+<p>else instead of a transistor to do computing logic gates or storing information or taking those</p>
+<p>transistors we have and using them in a different way, modeling their behavior in a more complicated</p>
+<p>way. And of course, there's also ways we can rethink the architecture of a chip, something like a GPU</p>
+<p>or a CPU. There are a lot of kind of things in common in the circuit architecture from one to another,</p>
+<p>and that hasn't been changed very much in a long time, at least in, you know, big commercial platforms.</p>
+<p>And so people are also thinking of new kind of novel architectures. And the kind of family of</p>
+<p>approaches I'm going to be talking about are what we call physics-based ASICs, which we've kind of</p>
+<p>introduced this term and given a bit of a definition in this paper. But what you can think of it as is</p>
+<p>saying instead of trying to abstract the physics away and treating my circuit as something that behaves</p>
+<p>like an ideal model of computation, like a Turing machine or finite state machine, I'm going to</p>
+<p>actually model the physics of the components of a circuit and use those in an algorithm somehow.</p>
+<p>So I'm going to use, you know, physical components on my chip and pay attention to what kind of physical</p>
+<p>processes they undergo and trying to exploit those to do some kind of useful computation.</p>
+<p>So and then, of course, we can get into like the idea of hardware algorithm co-design, where we kind of</p>
+<p>look at two different things. We look at like what are the kinds of physical processes that this device</p>
+<p>can do? And then on the other hand, we look at what kinds of processes are useful for my algorithm or</p>
+<p>what kind of primitive operations are needed by the algorithm I'm trying to run. And we try to kind of</p>
+<p>find the overlap between those two categories, basically. And that's basically what a lot of us are</p>
+<p>working on more or less right now, including at normal computing, is this approach to hardware</p>
+<p>algorithm co-design. So that's kind of the high level overview, I guess, of the ideas in the paper.</p>
+<p>And so now I guess I'll go into a little bit more detail. So I had mentioned earlier that the problem</p>
+<p>of having applications, algorithms that require a lot of compute is not a new problem per se.</p>
+<p>But the thing that is different is that we are now kind of firmly in the like post-Denard scaling era,</p>
+<p>and arguably in the post-Mohr's Law era. So I guess I'll say a little bit about what that means.</p>
+<p>So what Denard scaling was about was that for a long time, you know, decades up until the early 2000s,</p>
+<p>when people made new microprocessors, made new CPUs and I guess GPUs towards the end of that time period,</p>
+<p>they would shrink the transistors, you know, they'd make the transistors smaller so they could fit more</p>
+<p>transistors on a chip, right? And this is how Moore's Law, which is maybe a little bit more,</p>
+<p>more people are a little bit familiar with Moore's Law than Denard scaling. But both were driven by that</p>
+<p>trend, that people would make transistors smaller, and so they could fit more transistors on a chip of</p>
+<p>the same size. But what Denard noticed is that when you make a transistor smaller, that also changes</p>
+<p>the amount of power that you need to operate it, because the supply voltage is also reduced by the</p>
+<p>same factor when you make that transistor smaller. So this was really great, right? You know, in</p>
+<p>engineering, it's not so often you get something that's like a kind of a free lunch, but this was maybe the</p>
+<p>closest thing you could get for a free to a free lunch is that we make the transistors smaller, and not only</p>
+<p>can we have more on the chip, but they consume less power, they are also going to dissipate less heat, so that</p>
+<p>helps us out with cooling, right? And one way of kind of summarizing that, that idea is that</p>
+<p>independent of how small your transistors are, in the Denard scaling era, the density of power consumed per unit</p>
+<p>area was constant. So in other words, if I have a chip that's, you know, a centimeter by a centimeter, doesn't matter how</p>
+<p>many transistors are on it, a million, a billion, or a trillion, or whatever, we would assume that they would all consume the</p>
+<p>same amount of power. And so that was, in a nutshell, like how the challenges of more and more demanding</p>
+<p>applications was met historically, was that we would make the transistor smaller, put more on the chip,</p>
+<p>and we would also have better energy efficiency because of Denard scaling. But the reason that,</p>
+<p>so I guess, yeah, Denard scaling ended in like around, you know, people will say different years, maybe 2005,</p>
+<p>something around there, maybe a little earlier. But the reason it ended is that there are actually not</p>
+<p>every, not every electrical, electrical property of the transistor scales in the same way when you</p>
+<p>make it smaller. And in particular, it was without going, you know, too deep into detail here, it ended</p>
+<p>up being, turning out that the leakage current and the threshold voltage don't scale in that way.</p>
+<p>And so we could only kind of make them so small and keep reducing the power consumption. And then so</p>
+<p>once transistors were small enough that the leakage current became, you know, very important,</p>
+<p>that that trend ended. And so after that, you know, we could still make transistors smaller to some</p>
+<p>extent, but that wouldn't really change the power, or they would still consume, you know, roughly the</p>
+<p>same amount of power. And so that started to create problems for cooling, right? Because we can</p>
+<p>cram more and more transistors in a small area. But that means the power, the density of power per</p>
+<p>unit area is now going to start increasing after the end of Denard scaling. And so people would do</p>
+<p>things like say, we're only going to turn on part of the chip at a time, because otherwise, there would</p>
+<p>just be too much heat, stuff like that. And that was really what I think kicked off kind of like the</p>
+<p>multi core era, where people then started to say, well, because we can't really get much more mileage by</p>
+<p>just making the transistor smaller and putting more on the on the chip, what we're going to start doing</p>
+<p>is, well, we're gonna have multiple processors, basically. And so when we need more compute,</p>
+<p>we'll just get more processors, we'll get more chips, and then we'll try to parallelize our algorithms,</p>
+<p>we'll try to make our algorithms into, we'll try to solve our problem using an algorithm that can</p>
+<p>efficiently, effectively be parallelized across multiple chips that with a minimal amount of</p>
+<p>communication between them. And that basically brings us to where we are today, where, you know,</p>
+<p>the GPU, general purpose GPU is the dominant paradigm for, you know, some of the most important</p>
+<p>algorithms, particularly in AI now. So yeah, I guess that's kind of the starting point. And then the</p>
+<p>question is, well, what are the, you know, what are the problems with this GPU paradigm? Or is this,</p>
+<p>is this way of scaling things up, just getting more and more GPUs, going to work? Or if not,</p>
+<p>you know, why are we considering these physics based ASICs instead? Well, so basically, the issue</p>
+<p>is that right now, the, because of this situation where we can't reduce power consumption just by</p>
+<p>making the transistor smaller, if you have, you know, twice as many GPUs, they're going to be consuming</p>
+<p>twice the amount of power. And so there's, you know, a huge increase in the amount of energy that's</p>
+<p>consumed due to like AI that's anticipated with people putting power plants in their data centers</p>
+<p>or data centers in their power plants, or however you want to look at it, just because you need a huge</p>
+<p>amount of energy to power, you know, training, particularly training, maybe even inference to some</p>
+<p>extent to us now. And then also, there's just the sheer cost of getting all that hardware, right?</p>
+<p>The cost of buying all the GPUs that you need to do a training run for a foundation model. And so</p>
+<p>that's why you have the, you know, the big companies like OpenAI, and etc, saying that they're literally,</p>
+<p>you know, melting, their GPUs are melting, because there's just too much throughput, basically,</p>
+<p>for them to handle. So that's why we're there. That's basically the summary of the problem that</p>
+<p>we're trying to solve, or that we're, we're talking about different solutions to that problem in this</p>
+<p>perspective article. Okay, so I think that's also a good point to transition into talking about</p>
+<p>the idea of hardware algorithm co-design. So I mentioned that, because the way that we're scaling</p>
+<p>up compute now is getting more chips, and we need to parallelize our algorithms, the dominant algorithms</p>
+<p>that we see in the model architectures that we see in AI, are ones that can be parallelized very</p>
+<p>effectively. And that's something that was pointed out in a well, you know, a well-known paper called</p>
+<p>the hardware lottery. And it was talking about how model architectures like transformers, and so on,</p>
+<p>which are powering, you know, the large language models, are not necessarily better than many other</p>
+<p>approaches, different approaches from a first principles, like algorithmic standpoint. But the</p>
+<p>reason why they're so successful, and these algorithms have kind of won out, is because they</p>
+<p>they are more suitable for the hardware paradigm, they parallelize better on GPUs. And so that's</p>
+<p>something that in many now have kind of come around to that view, that the transformer, the reason why</p>
+<p>it's so successful and prevalent, I guess, is not because it's better than, you know, other solutions,</p>
+<p>like recurrent neural networks, or LSDM, or whatever, but just because it parallelizes better on GPUs.</p>
+<p>Now, we can kind of take this line of thinking and generalize it a little bit further, in that,</p>
+<p>so clearly, it's not just the question of like, how good is the hardware, or how good is the algorithm,</p>
+<p>but the question of how suitable is the, are the algorithms and hardware for each other,</p>
+<p>is kind of equally important. So that's kind of maybe a slightly more general way of thinking about</p>
+<p>that idea of the hardware lottery. And if we think about, you know, how does it make sense for us to</p>
+<p>design better algorithms and hardware, from that perspective, I think there's a good case to be</p>
+<p>made that we don't want to treat it as two separate optimization problems of either, on the one hand,</p>
+<p>we'll consider the algorithm fixed, and we'll try to make the hardware as fast as possible for running</p>
+<p>that algorithm. Or on the other hand, we'll consider the hardware fixed, and we'll design the algorithm to</p>
+<p>run as fast as possible on that hardware. But instead of either of those, we approach it as a</p>
+<p>joint optimization problem, as how do we design the best combination of hardware and an algorithm</p>
+<p>to solve this problem, you know, as efficiently as possible. And so that approach is hardware algorithm</p>
+<p>co-design. And in many of, you know, the ideas in this paper on physics-based ASICs are taking a</p>
+<p>co-design approach like that, I guess.</p>
+<p>So I guess that with that said, I'll start to jump into like, what is a physics-based ASIC?</p>
+<p>And how do we even define that? So I'll start out with kind of an observation about why we think that</p>
+<p>using the physics of devices can give us more, you know, more computational power, basically.</p>
+<p>So we give an example in the Perspective article of the problem of simulating the behavior of a single</p>
+<p>transistor, right? So you would think of it as, well, if I have, you know, software like SPICE or</p>
+<p>Cadence or something, they have some models, behavior models of how a transistor behaves, or like, you know,</p>
+<p>given the input signals, what are the output signals and so on. But to have like a really detailed</p>
+<p>physical model of a transistor that kind of totally explains all of its observable behavior, you would</p>
+<p>need to, well, one way to do it is you could solve a system of partial differential equations for the</p>
+<p>transistor with, you know, many variables, many degrees of freedom. And if you wanted to like run</p>
+<p>that simulation on a standard like digital computer, you would end up using, you know, billions of</p>
+<p>transistors at least or more to simulate this one transistor. And you'd be doing, you know, a huge number</p>
+<p>of, of flops, you know, floating point operations just for a single time step to simulate that one</p>
+<p>transistor. And so once we kind of realize that, we can say, well, if it turned out that the behavior of a</p>
+<p>single transistor, kind of the detailed physical behavior was actually useful for some application,</p>
+<p>then instead of running this very costly simulation, we could just use that single transistor</p>
+<p>as kind of its own, its own model of its own behavior, basically, instead of, you know, some</p>
+<p>simulation of it, basically. So that's kind of the intuition for why we think that like hidden in the</p>
+<p>physics of common, like, common, like circuit components, there's a lot of computation in there</p>
+<p>that's, that's hidden in there somewhere. But then the question is, well, is that computation useful?</p>
+<p>So then we need to say, well, what are the primitive operations that are useful for the algorithms that</p>
+<p>we want to run? Is there some way for us to map them on to the physics of, you know, circuit</p>
+<p>components? Okay, so now that I've got to kind of cover that intuition, I'll start to walk through</p>
+<p>more of a, more of a definition, I guess, or maybe as close as we come to a definition in the</p>
+<p>perspective article for physics based ASICs. And the way we think we're thinking about it is that,</p>
+<p>so first of all, all integrated circuits use physics to do computing, there's no, you know,</p>
+<p>there's no such thing as a, as a circuit that doesn't use physics, because that ultimately the</p>
+<p>physics of the circuit and Kirchhoff's laws, and etc, are going to govern the behavior. So what do we</p>
+<p>really mean when we say a circuit that is using physics to compute? Well, for one thing, in, in any</p>
+<p>kind of common, like run-of-the-mill integrated circuit, that you'll find, there are a lot of,</p>
+<p>well, they, they basically kind of abstract away from the physics, so that it's possible to treat</p>
+<p>the circuit as an idealized model of computation, like a finite state machine, or a Turing machine,</p>
+<p>or something like that. And in order to make that possible, so that you can kind of ignore the</p>
+<p>physics and design algorithms on a higher level of abstraction, we need to suppress a lot of kind</p>
+<p>of messy behaviors that you would see, that you would find in systems in, in nature, and, you know,</p>
+<p>kind of generic, you know, dynamical systems in physics, but you don't really observe these behaviors</p>
+<p>in circuits that we've designed. And so here are some examples of those, those messy behaviors that</p>
+<p>we tried to design integrated circuits to suppress. So one is like statefulness. So in a, in an integrated</p>
+<p>circuit, there is a clear separation between memory and compute. You know, you have some transistors</p>
+<p>that, and, and capacitors, etc, that are responsible for storing bits of information, for storing data,</p>
+<p>and other ones that are in logic gates that are responsible for processing that data.</p>
+<p>And now more recently, people are kind of starting to merge the two. And that's, I think, kind of starts</p>
+<p>to fall within the realm of physics based ASICs. But in the conventional paradigm, you have this clear</p>
+<p>separation between, you know, logical operations and memory. And what that means is that the, the circuits</p>
+<p>that are responsible for the logical operations are supposed to behave statelessly. And so as an example</p>
+<p>of that, let's say that I have like a not gate, and I input a zero, it outputs a one, I input a one,</p>
+<p>it outputs a zero. It's only, its output is only supposed to depend on the input it's getting at any</p>
+<p>given time. It's not supposed to, its output isn't supposed to depend on previous inputs that it's</p>
+<p>gotten. Or in other words, it's not supposed to be kind of maintaining some internal state that keep that</p>
+<p>keeps track of its history, basically, it's supposed to behave statelessly. So that's one way in which circuits are</p>
+<p>designed to suppress kind of a common, like generic physical behavior, because most dynamical systems in nature, of</p>
+<p>course, are stateful in the way that they behave will depend on on their history. So that's one example. Another one is</p>
+<p>unidirectionality of the flow of information. So I'll take the example of a not gate, again, if I change</p>
+<p>the voltage at the input, the voltage at the output is supposed to change in response to that. But we're not</p>
+<p>supposed to have information going back the other way, it shouldn't, if I applied a voltage, change the</p>
+<p>voltage at the output, that shouldn't affect the voltage at the input. And that's designing logic gates and, you know,</p>
+<p>components that satisfy this kind of unidirectionality makes the like engineering of circuits a lot easier,</p>
+<p>because you can treat logic gates as blocks in a feed forward network, where information propagates</p>
+<p>through one block and then through the next one. And you don't have to worry about like kind of unwanted</p>
+<p>feedback loops, where information, you know, just kind of spontaneously goes propagates back through to</p>
+<p>the beginning of the circuit. And of course, you can design circuits with feedback loops, and many circuits do</p>
+<p>have feedback loops, like the one illustrated here. But the point being, though, the feedback loop has to be</p>
+<p>built in explicitly. So here you have, you know, logic gates processing bits, a memory device, a flop is</p>
+<p>updated, and then a signal is taken back to the beginning by some some wire. And this is the way that,</p>
+<p>you know, feedback loops are created in digital circuits, because you're not supposed to have</p>
+<p>information shouldn't flow back through the same logic gate. Okay, so and then again, if you compare</p>
+<p>this to how like, physical systems in nature behave, they often don't have like unidirectional flow of</p>
+<p>information, they have bidirectional flow of information. So you think of, for example, Newton's law,</p>
+<p>you know, for every action, there's an equal and opposite reaction. If you were if you have two masses on a</p>
+<p>spring, if mass A is connected to mass B, if if B is pulled in one direction by A, then A is, you know,</p>
+<p>pulled in the other direction by B. And analogously, if we think of like an analog circuit, where you have</p>
+<p>different capacitors coupled to each other in some, you know, resistive network or something, they'll both,</p>
+<p>you know, be sharing charge with each other, and will their voltages will will both be changing at the same</p>
+<p>time with information flowing in both directions. So okay, so unidirectionality was another example of how</p>
+<p>conventional ASICs suppress a kind of a generic physical behavior to make them conform to some</p>
+<p>like ideal model of computation. Another important one is determinism. So a circuit is</p>
+<p>given if you give the same input multiple times, it should give the same output each time. And of</p>
+<p>course, you can use, you know, deterministic circuit for randomized algorithms if you want. And that'll</p>
+<p>generally be done using a pseudo random number generator, which is, you know, still going to be</p>
+<p>implemented by the deterministic algorithm on a deterministic circuit. But the point being,</p>
+<p>the circuit itself is supposed to, you know, to a very good approximation behave in a deterministic</p>
+<p>way where you give it the same input in the same, you get the same output. And so that's another,</p>
+<p>you know, thing that is not, well, it's not perfect, it's not possible to realize that perfectly.</p>
+<p>It's only possible to realize it to a good approximation, because, of course, all systems in</p>
+<p>nature have fluctuations, they have noise, which is guaranteed by thermodynamics. And so in order to</p>
+<p>suppress those fluctuations, or at least make them or protect against them so that you don't have</p>
+<p>random bit flips all the time, that's always going to cost some amount of energy. And there's going to</p>
+<p>need to be some kind of safeguards for errors, correction, or whatever, built in to enable this</p>
+<p>idealized deterministic behavior. So that was a third example of a kind of a behavior that</p>
+<p>is suppressed in conventional ASICs. And then I think the last example we gave here was</p>
+<p>synchronization. So when we have, you know, some very large circuit on a chip that with many different,</p>
+<p>you know, many different parts all doing something at the same time, there is typically going to be</p>
+<p>like a global clock that is sending out a clock pulse signal to, you know, all different parts of</p>
+<p>the chip at the same time. And so all parts of the chip are synchronized with each other and with the</p>
+<p>centralized clock. Now, this is another kind of behavior that we don't often see in systems we</p>
+<p>find in nature. There are many systems that exhibit synchronization to some extent, but often</p>
+<p>synchronization happens in a distributed way. So, you know, or if you have something like a</p>
+<p>Kuramoto model, for example, which can be used to model how, I believe it's used to model how neurons</p>
+<p>synchronize with each other in the brain or things like that, often models of synchronization that</p>
+<p>are supposed to be realistic or ones that are supposed to model how synchronization actually</p>
+<p>happens in nature are using a kind of distributed model of synchronization where different, um,</p>
+<p>different kind of components will talk to each other, but they're not all talking to one centralized</p>
+<p>clock. Of course, there are exceptions to that. Uh, but that's probably the more like generic physical</p>
+<p>situation where you have, uh, if you have synchronization, it happens in a distributed way.</p>
+<p>And then often in arbitrary dynamical systems, you won't really have any synchronization at all. Um,</p>
+<p>so this was another behavior that where we're kind of building in something, uh, where we, we're going</p>
+<p>through some effort to give our system a property that is kind of uncommon to find in nature is, is</p>
+<p>somewhat unnatural somehow. And so for all of these properties that allow us to treat integrated circuits</p>
+<p>as idealized models of computation, we're going to pay some costs in order to make them, to realize</p>
+<p>these properties approximately, uh, and they can generally, they can only be realized approximately,</p>
+<p>not perfectly. Uh, and in general, we're going to incur some additional costs in terms of dissipation,</p>
+<p>uh, you know, how much, yeah, how much energy is dissipated, um, and in terms of speed. So,</p>
+<p>uh, in order to make these approximately true, we're going to have to accept some limitation on how fast</p>
+<p>we can run our circuit. Uh, a good example probably being like synchronization. If you imagine that</p>
+<p>every part of the chip needs to be synchronized, that global clock pulse, well, it takes some amount</p>
+<p>of time for that clock pulse to reach all the different parts of the chip. So that could be a</p>
+<p>limitation on how fast you can make your clock cycles, right? Because you need to allow enough time,</p>
+<p>uh, for the clock pulse to reach all different parts of the chip. Um, similarly, determinism is going to</p>
+<p>incur some cost because we need to suppress noise or, or make our signals large enough that the noise</p>
+<p>is like negligible relative to the signals, which is a common, uh, way of, of making circuits deterministic.</p>
+<p>Um, and so this observation that these idealized properties all incur some cost in terms of energy</p>
+<p>or time or something like that, uh, generally energy and time, uh, because of that, we started to say,</p>
+<p>well, what if we design circuits without worrying about these properties or saying we're going to relax</p>
+<p>these requirements that they, they have these properties and then maybe our circuits will be more energy efficient</p>
+<p>and maybe they'll run faster. Uh, but then we'll have to kind of think in a more complicated way when</p>
+<p>we design our algorithms because we can no longer, or when we, even when we design our circuit, both the</p>
+<p>circuits and the algorithms, because it's not as easy to, uh, for example, to compose operations, uh,</p>
+<p>because now instead of treating each component as a, a block, you know, element that, uh, feeds</p>
+<p>information for that, you know, has unidirectional information flow and is stateless and deterministic.</p>
+<p>Now we, each component is kind of a little bit more messy and we have these messy behaviors that we</p>
+<p>need to, uh, you know, deal with somehow when we design our algorithms. Um, so that's kind of, I guess,</p>
+<p>how I would think about like defining, um, what a physics-based ASIC is, is an ASIC that is designed,</p>
+<p>uh, which is not designed to satisfy all of these properties approximately, um, and, uh, violates,</p>
+<p>you know, at least one of them or in, in oftentimes more. Uh, and as a result, we hope to be able to,</p>
+<p>um, make circuits more energy efficient, uh, you know, and faster that way. Um, so now I've kind of</p>
+<p>given, you know, a model for, like, how to think about what a physics-based ASIC is. Um, I guess I</p>
+<p>can talk a little bit about like some examples to, uh, approaches here. Um, but actually, I guess before</p>
+<p>I go into the examples of hardware paradigms, maybe I'll pause and see if there were any, um,</p>
+<p>any questions that came up in, in the chat and if there were, I can, I can take some of those.</p>
+<p>Um, I'll just read two helpful comments by your colleague Patrick Coles, who wrote,</p>
+<p>joint optimization, optimizing the hardware and algorithms together can be more powerful</p>
+<p>than individually optimizing them independently. And in a sense, the more properties on this list</p>
+<p>that you assume, the more you move away from physics, what physics does naturally. Sorry</p>
+<p>about the audio, by the way. Oh, no worries. Great. Yeah. I thought those were great comments.</p>
+<p>Thanks. Thanks for the comments, Patrick. Okay. Um, all right, great. Well, so I guess I'll,</p>
+<p>I'll keep, uh, you know, pressing forward and talk about a few examples of like kind of</p>
+<p>hardware paradigms that start to, um, abandon some of these properties, I guess, in, in various ways.</p>
+<p>Uh, so one of course, uh, is analog circuits. Um, here we have an example of like an RL or RC,</p>
+<p>uh, kind of, uh, uh, RC circuit. Um, and you could have many little RC circuits like this that are all</p>
+<p>coupled to each other. You know, in general that, you know, these can be noisy. Uh, they could have,</p>
+<p>you know, more or less noise, or they could even have extra noise sources included in them. Um,</p>
+<p>and when we have a bunch of these coupled together, what, how they behave is modeled by some</p>
+<p>kind of differential equation or some stochastic differential equation, uh, that describes how all</p>
+<p>the voltages and currents change the function of time. Uh, and so when we have a system like that,</p>
+<p>well, for one thing, it's not deterministic if there's, you know, thermal noise. Uh, for another,</p>
+<p>um, it, uh, has information that flows in both directions across all the couplings. Um, and it has</p>
+<p>components that are, that behave in a stateful way like these capacitors. Their voltages are, are actually</p>
+<p>playing kind of an algorithmically important role of storing state. Um, and so you have kind of somehow,</p>
+<p>you know, memory and processing happening in the same place. Um, I think, I wonder if there's any other</p>
+<p>properties that, that, that, well, I guess it was all four of them just with that, you know,</p>
+<p>the simple example of the, um, you know, stochastic analog, you know, coupled RC, uh, network. Um,</p>
+<p>and, and now there's other kinds of circuits that are, uh, you know, use, um, that do processing using,</p>
+<p>uh, kind of similar like networks, uh, like, like resistive crossbar arrays are, you know, can be used for</p>
+<p>matrix vector multiplication using, uh, you know, an array of, uh, of resistors. Uh, now I'm not sure</p>
+<p>if I would exactly consider this like analog computing, although maybe it is in some way in</p>
+<p>that you're, you're doing addition using Kirchhoff's, you know, current law, instead of using addition in</p>
+<p>binary, uh, using, um, a bunch of, uh, you know, a bunch of logic gates. Uh, and so we're somehow</p>
+<p>using kind of the analog, uh, current signals in order to do the addition of, uh, you know, of our</p>
+<p>numbers. Um, and so I guess, well, another example of, of circuits that violate determinism would be</p>
+<p>like, uh, stochastic magnetic tunnel junctions where you can have, um, stochastic switching, uh,</p>
+<p>which happens when the magnetization direction in one of the ferromagnetic layers, uh, can spontaneously</p>
+<p>switch, uh, the magnetization can switch direction as a result of thermal fluctuations.</p>
+<p>Um, and so now we have like non-determinism baked in at kind of the, the smallest level of,</p>
+<p>of the circuit instead of building our circuits out of, um, building blocks that are deterministic,</p>
+<p>we're building it out of building blocks that behave in a stochastic way. Uh, and that can be used</p>
+<p>for like stochastic computing, for example, or it can be used for like, for computing based on like</p>
+<p>P, uh, P bits or probabilistic bits. Uh, people commonly like use things like this for, um, like, uh,</p>
+<p>Bolson machines, uh, would be one example. Um, and then I guess, uh,</p>
+<p>uh, other kinds of like non-deterministic behavior in, in circuits would be like, uh, stochastic</p>
+<p>digital circuits, which can still be built without using any like more exotic components like MTJs,</p>
+<p>but just with standard, uh, you know, CMOS transistors. Um, but, uh, in, in this kind of</p>
+<p>paradigm of computing, uh, stochastic digital circuits, we encode numbers in, uh, random bits,</p>
+<p>uh, bits that are Bernoulli random variables like coin flips. Um, and the probability that the bit</p>
+<p>is one is kind of encoding a number. And so different numbers are encoded by random bits with</p>
+<p>different probabilities. Um, and so you can imagine that using this way of like, of formatting or</p>
+<p>encoding numbers is more robust to errors than, um, it is if, if we just formatted all our numbers in</p>
+<p>binary, uh, in, if I have a binary number, if I accidentally flipped, uh, you know, the least</p>
+<p>significant bit that causes us pretty small error. But if I accidentally flipped, uh, the most significant</p>
+<p>bit that creates a potentially like a catastrophic error. And so that's kind of the reason that</p>
+<p>standard like binary encoding is not the most resilient to error, uh, to like bit flip errors.</p>
+<p>And so when we use instead, uh, stochastic digital circuits, uh, because our processing is resilient</p>
+<p>to bit flip errors, we can, in some sense, like cut corners with the design and not build in as many</p>
+<p>guard rails that, uh, prevent bit flip errors. Uh, and one example of that would be, um,</p>
+<p>well, I mentioned earlier how synchronized, like global centralized synchronization is often assumed</p>
+<p>in, uh, integrated circuits. But if you have some resilience against bit flip errors,</p>
+<p>you can often, uh, use some kind of trick so that you don't have to have a global, uh, clock that</p>
+<p>everything is synchronized to, or instead you could have, you know, many local clocks and, and each,</p>
+<p>you know, different parts of the chip are just kind of locally synchronized, uh, but not perfectly.</p>
+<p>Those local clocks can drift or skew a little bit relative to each other, which is called polysynchronous</p>
+<p>clocking. Um, and, and using methods like that, that take advantage of the error resilience of this</p>
+<p>paradigm, uh, can allow you to, uh, you know, drive your circuit faster or to, uh, use less energy,</p>
+<p>basically. Um, and then of course there's, uh, approach, there's other kind of physics-based</p>
+<p>approaches that, uh, like optical, optical computing or, uh, you know, integrated photonics, for example,</p>
+<p>which I won't get into, uh, very much. Um, but, uh, yeah, some of our coauthors, uh, in particular,</p>
+<p>you know, like Peter McMahon is more of an expert on that kind of stuff. But, um, I guess in general,</p>
+<p>I just wanted to emphasize that there are a lot of different kind of building blocks that you could</p>
+<p>use to build circuits, uh, you know, make chips that, um, start to do away with some of these</p>
+<p>assumptions. Um, oh, I guess another good example of a computing platform or, you know, device that, uh,</p>
+<p>does away with one of those assumptions would be memristors, which are, of course, intended to behave</p>
+<p>statefully. So the, the way a memristor behaves should depend on kind of its history of what</p>
+<p>voltages have been applied to it before. Uh, so it kind of gets rid of this assumption of</p>
+<p>statelessness. Uh, and then you could also make like an emulator of a, a memristor, uh, using,</p>
+<p>you know, transistors and capacitors and so on. Uh, so you can, you can even without having, uh,</p>
+<p>you know, memristor device per se, you can still build circuits that kind of behave in the same way</p>
+<p>of behaving statefully. Um, so I've talked about kind of a few different, you know, platforms and</p>
+<p>building blocks that can be used, um, to make like physics-based ASICs. Uh, and so now, uh, you may</p>
+<p>be starting to wonder, well, how do we know that, uh, these devices are actually going to be useful?</p>
+<p>Right? What kind of problems will we be able to solve? You know, even if we build a chip that is,</p>
+<p>you know, is, isn't, doesn't have statelessness or determinism or unidirectional information flow</p>
+<p>and so on, uh, what's it going to be good for? Um, so this is where, uh, we need to think about that,</p>
+<p>um, like hardware algorithm co-design approach I was talking about. Uh, so we, we have some device</p>
+<p>which has some, you know, physical processes that occur on it. Uh, and we think of that as, as kind</p>
+<p>of this circle over here in this Venn diagram, um, or, and as we put it here is like what physics</p>
+<p>wants to compute. Uh, and because when you have like some, um, for example, some network of electrical</p>
+<p>devices like, you know, transistors and capacitors and so on, uh, there's going to be some, you know,</p>
+<p>some mathematical function that relates its inputs to its outputs, you know, potentially some</p>
+<p>complicated function, uh, which includes a lot of, you know, physics that happens. Uh, but we don't know</p>
+<p>that that's useful per se. So that's kind of what the physics wants to compute. And there's also like</p>
+<p>what, uh, functions are useful in our algorithms, uh, what, you know, what are kind of the primitive</p>
+<p>building blocks of our algorithms. Um, and so what we want to do is we want to find like the overlap of</p>
+<p>these two sets basically, and find the operations that are performed efficiently on a device due to</p>
+<p>the physics of how the device works and are also useful in, uh, you know, in some algorithm basically.</p>
+<p>Um, so that's kind of the idea of hardware algorithm co-design. Um, and so then I guess I'll talk a</p>
+<p>little bit about like examples of how that might work. Um, so I think like one good example of a class</p>
+<p>of algorithms where we would expect these like physics-based ASICs to perform well is in, uh, well, in</p>
+<p>machine learning in general, where you have a function that is parameterized by a set of like learned weights.</p>
+<p>Um, because, uh, one thing that's useful about this is that a, you know, a neural network is adaptable</p>
+<p>in some way. And that if you make some change to its activation function, for example, and then retrain</p>
+<p>it, uh, it will, you know, often, you know, in general be able to modify the weights so that it still</p>
+<p>computes the, the correct function, uh, but just does it in a slightly different way because now it,</p>
+<p>you've changed the activation functions and also changed the weights to somehow compensate for that.</p>
+<p>So, um, similarly when, if we have some physics-based ASIC that has, uh, some kind of intricate</p>
+<p>physical processes that are used to evaluate functions, uh, we don't necessarily get to choose</p>
+<p>what those functions are. Um, they might be, you know, very complicated functions, uh, and they're not</p>
+<p>necessarily, you know, immediately useful, but if we use, if we, um, combine those functions that are</p>
+<p>natural to perform on the hardware with a learning algorithm and trainable weights, then in some</p>
+<p>sense, we expect the, uh, the model to be able to adapt to the, um, the functions that it is given,</p>
+<p>basically. So you can kind of think of that as analogous to the idea of training a model for some,</p>
+<p>you know, different, for, for different kinds of activation functions, and you could also train</p>
+<p>a model for, uh, that can take advantage of the physics on a, you know, of the operations that are</p>
+<p>naturally performed on some physics-based ASIC. Um, so that's kind of one general class is like training,</p>
+<p>uh, or in running, you know, training and inference for neural networks on physics-based ASICs. Um,</p>
+<p>in fact, a lot of the, uh, you know, hardware paradigms that, uh, we've talked about are being used or,</p>
+<p>or, or have been proposed to be used for exactly that. Uh, so we have this area of like training</p>
+<p>and inference for neural networks. Um, another good example is, uh, like scientific computing. So</p>
+<p>a lot of the time, you know, some of the most demanding, um, computations that are done</p>
+<p>are simulating actual physical systems. So as one example, you could think of like, uh, molecular</p>
+<p>dynamics, uh, where you have some large, uh, molecule, which is basically a network of atoms</p>
+<p>that are, you know, connected to each other, you know, of course by, you know, bonds and so on.</p>
+<p>Um, and then there are the laws of motion that govern, you know, how all those atoms move, right?</p>
+<p>And in general, like, you know, the way that people report kind of performance for molecular</p>
+<p>dynamics simulation, I believe is, is often quoted in like nanoseconds per day. Like how long do you</p>
+<p>have to run your, uh, or like how many days do you have to run your simulation to simulate a molecule</p>
+<p>evolving for like a nanosecond is a relevant question in molecular dynamics. And so that kind of</p>
+<p>goes to show that somehow the physical system itself, the molecule is much more efficient at running its</p>
+<p>own dynamics than the, uh, you know, then, uh, digital computer is. And so then we could ask, well,</p>
+<p>is there some circuit that behaves more like the actual molecule physically, or that has like similar</p>
+<p>equations of motion to a molecule? Uh, that would be a lucky coincidence, right? If we could find a</p>
+<p>circuit that has very similar equations of motion to some molecule and could use it to simulate the</p>
+<p>molecular dynamics or, you know, more generally, um, we can look at some of the properties of the</p>
+<p>physical system in, you know, that's, that's there in molecular dynamics and say, well, can we, um,</p>
+<p>do we really need all of these properties in our circuit that we talked about before,</p>
+<p>like, you know, statelessness and unit directionality, et cetera, uh, in order to</p>
+<p>build some, you know, build some algorithm for simulating the molecule. Uh, and that's kind of a</p>
+<p>more general approach of like, we're not necessarily looking for an exact mapping between the dynamics of</p>
+<p>the circuit and the dynamics of the molecule, but we're kind of looking at a more abstract level, like</p>
+<p>what are the properties of the physical system we're trying to simulate? What are the properties of the</p>
+<p>circuit? And is there some, uh, kind of, um, agreement between those in some way? Uh, so as a good</p>
+<p>example would be, uh, determinism, uh, in molecular dynamics simulations, of course, there's, there's</p>
+<p>generally noise that's added, uh, which represents the influence of the heat bath. Uh, you, you offer,</p>
+<p>well, you'll simulate a molecule, not just in a vacuum, but typically in some, you know, solvent.</p>
+<p>And, uh, that solvent could be simulated in different ways, uh, either, you know, by explicitly simulating</p>
+<p>a bunch of water molecules or by adding a kind of noise terms in to, uh, simulate the effects of random</p>
+<p>impacts from water molecules or et cetera. Uh, and because we're running an algorithm where in some way</p>
+<p>there's like random behavior, uh, which again, modeling the heat bath, uh, we could, we start to</p>
+<p>wonder if, if we need to make, if it's actually necessary for our circuit to behave in a totally</p>
+<p>deterministic way, or if it's okay if our circuit has, uh, random errors at some rate. Uh, so I think</p>
+<p>that's a good example of kind of connecting the properties of the circuit we're using for the</p>
+<p>confusion for computing to the application that's required by some like scientific computing task.</p>
+<p>Um, and, and there may be, uh, you know, other ways to do this as well. You know, for example,</p>
+<p>if I have a molecule, the, there, um, there isn't necessarily like, uh, kind of something that behaves</p>
+<p>like a global clock that's, you know, talking to every single atom and synchronizing their motions,</p>
+<p>right? Only, you know, there's only kind of local, uh, interaction and local connectivity in, in typically</p>
+<p>in, in molecules. And so there might be a way of using a, um, a computing architecture that doesn't</p>
+<p>have a global clock or has something more like that polysynchronous clocking I was talking about,</p>
+<p>uh, and maps onto the molecular dynamics problem somehow. And, and similar kind of arguments could</p>
+<p>apply for these, these other properties as well, even if the details of how that would work isn't,</p>
+<p>uh, exactly worked out. Um, and so in general, uh, you know, as, as we were talking about earlier,</p>
+<p>when we kind of get rid of those idealized properties, we are allowing our circuit to behave</p>
+<p>more like a generic physical system that we might find in nature. And so it might end up that it's well</p>
+<p>suited to simulating physical systems that occur in nature, uh, like, like molecules, for example.</p>
+<p>Um, so another kind of class of algorithms where we expect like physics-based ASICs to be useful</p>
+<p>is, um, well, one thing in randomized algorithms in general, uh, because I was talking about how,</p>
+<p>um, well, if we don't require our circuit to be deterministic, we can cut some corners and make it</p>
+<p>more energy efficient and fast. And so in a lot of algorithms that actually require randomness, like,</p>
+<p>uh, MCMC, for example, or, or, uh, like sampling and, you know, Bayesian inference, um, there,</p>
+<p>you know, the algorithm is naturally resilient to errors because, uh, randomness is required by the</p>
+<p>algorithm. And so we expect, you know, physics-based ASICs that get rid of properties like determinism to</p>
+<p>be, uh, well suited to these kinds of algorithms. Uh, and, and by a similar, a very similar argument in a lot of,</p>
+<p>you know, generative AI, like, uh, you know, image generation, video generation, materials discovery,</p>
+<p>which is, you know, for an example, like generating new molecules, uh, often these are solved using,</p>
+<p>like, diffusion models, which are also like randomized algorithms because they're basically</p>
+<p>simulations of a stochastic differential equation, uh, which is actually similar to the,</p>
+<p>you know, molecular dynamics that the way that we model a molecule evolving under a heat bath</p>
+<p>is like a differential equation that, that is, uh, based on all of the forces, uh, between atoms and</p>
+<p>Newton's laws. And then we add noise, uh, and similarly with the diffusion model, the way that</p>
+<p>we sample an image is by running a stochastic differential equation, you know, which is,</p>
+<p>has some drift velocity and then some noise term. Uh, so in some sense there, there's even a similarity</p>
+<p>between, you know, diffusion models and, and molecular dynamics at some, like, algorithmic level. Uh,</p>
+<p>and then that's actually one of the applications we're, uh, very interested in, I would say, is,</p>
+<p>is diffusion models in particular because that's, uh, rapidly growing in kind of its usefulness,</p>
+<p>uh, and its, like, computational cost. Um, and then there's also some work, uh, on,</p>
+<p>we'll see, you know, we, we had an earlier paper, thermodynamic linear algebra, where we talked about how</p>
+<p>you could use a, a kind of thermodynamic, uh, processor to solve problems in linear algebra,</p>
+<p>like, linear systems of equations or inverting matrices, matrix exponentials. Um, and if you're</p>
+<p>interested in that, you can check out the paper, uh, thermodynamic linear algebra. And then, um,</p>
+<p>there's, yeah, our other paper that I actually talked about last time I was on this, uh, um,</p>
+<p>was the, uh, thermodynamic Bayesian inference, where we talked about how to use a thermodynamic</p>
+<p>processing device for, uh, like sampling from Bayesian posteriors. Uh, so those were some examples of,</p>
+<p>like, different applications area, different application areas. And I tried to give a little</p>
+<p>bit of intuition for like why we think different application areas might map well to like physics</p>
+<p>based ASICs and more kind of, I guess, even more broadly, like why we expect that general purpose</p>
+<p>digital architectures are kind of overbuilt, uh, for a lot of these applications, or at least they are</p>
+<p>built to at great expense to guarantee certain properties, which are not needed for, for many of</p>
+<p>these applications. Um, so I think that's, you know, basically what I wanted to say about, um,</p>
+<p>kind of what physics based ASICs are and, uh, you know, how we're thinking about algorithm co-design</p>
+<p>and what, what we think they're going to be useful for. I guess we also talked a little about in this</p>
+<p>paper about, uh, kind of where we see the field going and what are some of the next steps, I guess,</p>
+<p>in this cause to action. So, uh, I'll say a few words about that. Um, so for one thing, uh, there,</p>
+<p>there are going to be, uh, you know, algorithms that the GPU is very good at, um, and are probably</p>
+<p>not going to benefit from, or not, or at least not going to benefit as much from, you know, very new</p>
+<p>unconventional computing paradigms. Uh, but there's also going to be some applications where that are</p>
+<p>not, you know, very naturally suited to GPUs. Uh, and so that's one of the most, or yeah, one of the</p>
+<p>first and fundamental things, uh, to do in our calls to action is to kind of identify the set of</p>
+<p>applications that don't map well to GPUs or that GPUs aren't well optimized for, um, and kind of</p>
+<p>identify, you know, why they are not well optimized, uh, why the GPU isn't well optimized for those</p>
+<p>applications. Um, and how, you know, have a good understanding of that. Uh, so, so that's one kind</p>
+<p>of, uh, call to action. And then another one, uh, of course is actually like co-designing the</p>
+<p>algorithms and hardware, uh, for physics based ASICs. Uh, so yeah, and we give the example of</p>
+<p>here of how like transformers have been designed, you know, to run well on GPUs. Um, and so similarly,</p>
+<p>like what, what's kind of the equivalent of the transformer for, um, uh, for physics based ASICs.</p>
+<p>Well, you know, maybe we don't know yet. Uh, maybe it's these, uh, energy based transformers</p>
+<p>we're looking at. Well, either way, I think there's a lot of room to, um, you know, explore new</p>
+<p>algorithms and hardware, uh, that will, you know, have a good agreement between the algorithm</p>
+<p>and physics based ASICs, uh, and can be used for, you know, AI. Um, and then, uh, well,</p>
+<p>there's going to be, yeah. So we talked about like developing the full stack for physics based ASICs.</p>
+<p>So there's basically just a lot of new kinds of layers of software that are going to be needed,</p>
+<p>uh, like simulation, uh, of, so yeah, like first, like how can we, can we use like a GPU to simulate</p>
+<p>how our physics based ASIC would perform, uh, so that we can kind of solve design problems before</p>
+<p>we actually build it. Uh, and can we take, you know, existing machine learning algorithms and</p>
+<p>compile them so that they'll run efficiently using our physical primitives on the physics</p>
+<p>based ASIC. That's another thing, like kind of a compilation layer. Uh, so that would be,</p>
+<p>you know, a significant amount of work. Um, and then I, I think we also have a note about like,</p>
+<p>yeah, explaining goals, uh, you know, in a way explaining the field basically in a way that's</p>
+<p>easy to understand for people in different, uh, from different backgrounds, like electrical engineering</p>
+<p>or computer science and so on. Uh, just because this is a very like interdisciplinary field at the</p>
+<p>moment. Um, which is one of the things that's so, uh, exciting and fun about it, I think is that it's</p>
+<p>very, very truly like interdisciplinary and combining physics and, you know, uh, engineering,</p>
+<p>circuit design and theoretical computer science in a very, in math and kind of very interesting</p>
+<p>combination. Um, so yeah, I think that that covers everything I wanted to say about the paper. And,</p>
+<p>um, I guess at this point I'll take any, any questions if there were any other questions.</p>
+<p>Awesome. Awesome. All right. Okay.</p>
+<p>Here's where that took me the three uncertainties. What is a unifying framework for</p>
+<p>cognitive science? What is a unifying framework for computer science? And how are those questions</p>
+<p>related, especially in the context of cognition as inference slash compute as cognition? Like what are</p>
+<p>those sort of domain or discipline scale syntheses in the cognitive science and the computer science</p>
+<p>department, so to speak? And what does that look like as we increasingly see those two</p>
+<p>used by and forward with each other? So if you have any thoughts, go forward, but that was just my,</p>
+<p>where it took me. Interesting. Okay. So, right. Okay. So you're asking like, what is</p>
+<p>a unifying framework for cognitive science or, and, or yeah, and I guess a unifying framework for</p>
+<p>computer science. And are you also kind of like, like, uh, like gesturing at like a unifying framework</p>
+<p>that would unify both of those unifying frameworks as well? Kind of? Or?</p>
+<p>Yeah. It's like all these branches coming together that you brought together with the authorship and</p>
+<p>the perspectives in this paper. And then over here in cognitive sciences and active inference,</p>
+<p>that's the quest of the unifying cognitive model that attention, memory, anticipation, all these</p>
+<p>different cognitive phenomena would be approached in a unifying handling. And we're using those</p>
+<p>probabilistic compute tools along the way and even interpreting what the materials, classical</p>
+<p>computers and unconventional computers, what they do as this kind of like material intelligence.</p>
+<p>So it is getting very hot and heavy in that area.</p>
+<p>Yeah. I see. Yeah. No, I definitely like, yeah, thinking about things like that as well. I would say</p>
+<p>that I haven't explored as much like the, uh, kind of interactions with the cognitive side,</p>
+<p>you know, cognitive science side of things. Although, although I know there's a lot of kind</p>
+<p>of rich, interesting things to think about there, uh, as like, you know, for example, like some, some,</p>
+<p>uh, you know, things in this paradigm people do are things like spiking neural networks and things like</p>
+<p>that, that are at least inspired by and arguably, you know, behaving in a similar way, perhaps to</p>
+<p>think, you know, things in the brain. Um, and, and that was also something we thought about a little</p>
+<p>bit in our, in our, you know, thermo Bayesian inference paper was, uh, can this, can this somehow</p>
+<p>be mapped onto ideas about like how, you know, people reason, uh, under, or, you know, how, yeah, we,</p>
+<p>yeah, how people reason under uncertainty, things like that. Um, so, yeah, I think there probably is</p>
+<p>a lot to explore there. Also, yeah, just goes to show just how kind of like interdisciplinary this</p>
+<p>field is. Um, another thing I think about in terms of like unification, which is, is a little bit,</p>
+<p>uh, different from that, but may, you know, have some overlaps is like, unified is like, uh, kind of</p>
+<p>unifying computer science, or at least, uh, computational complexity theory with, uh, thermodynamics</p>
+<p>in some way, which I think is a kind of interesting idea. I'm not sure like how realistic it is at this</p>
+<p>point, but, um, there are, uh, basically the reason I think that there is going to be some overlap</p>
+<p>there and perhaps like some unification is that these are like kind of some of the two, two important</p>
+<p>theories that give us estimates of how much, uh, you know, basically how much work it takes to do</p>
+<p>something. Uh, so computational complexity theory gives us estimates of, you know, how does the amount</p>
+<p>of time, uh, or you could also think of it as like, or, well, the amount of space or even the amount of</p>
+<p>energy required scale with, uh, the size of your computation that you have to do basically. And</p>
+<p>similarly in thermodynamics, you can derive results that tell you how much like physical work you have</p>
+<p>to do, uh, in, meaning like literally the amount of energy, uh, that you spend or dissipate in order to,</p>
+<p>uh, perform some, uh, you know, perform some change in the system state. And there already are some</p>
+<p>small like overlaps where this becomes more explicit, like of course, Landauer's principle</p>
+<p>and similar like generalizations of Landauer's principle that, uh, make a link between thermodynamic</p>
+<p>work and computational operations. But in general, I think that there's a larger kind of like program</p>
+<p>that could be pursued of, um, mapping statements and computational complexity theory somehow into</p>
+<p>thermodynamic statements about how much work is required to bring about some change in state of</p>
+<p>the system basically. Uh, so I think that's kind of another, and that could even perhaps overwrap</p>
+<p>with like the idea you were mentioning of like unifying, uh, kind of these not, you know, exotic</p>
+<p>computing architectures with, with cognitive science and stuff like that. So yeah, I think that's kind</p>
+<p>of an exciting idea. Cool. I'll ask one more question, then read the questions that people have added in</p>
+<p>the chat. So how do you see biology and biological materials in the scheme? Figure three seems to be mainly</p>
+<p>abiotic focused. Uh, figure three. Um, sorry, what was the last phrase you said? It was, it was something</p>
+<p>focused? Abiotic. Abiotic? Where's that? Sorry, what does that mean? These, uh, are not arising from a living</p>
+<p>system. They're machines or engineered, though there's some analogy with biological systems, but just how did that</p>
+<p>come up or where do you see biological processes and materials generation in this scheme that the</p>
+<p>paper lays out? I see. Okay. Yeah. Okay. So I'm going to kind of, I'm going to venture a little bit</p>
+<p>outside of my, uh, wheelhouse here because I, I'm not, uh, you know, an expert in biology by any means.</p>
+<p>Um, and so that's why I'm a little bit more comfortable kind of drawing analogies between the</p>
+<p>behaviors of these circuits and like generic dynamical systems, like a molecule, for example.</p>
+<p>Uh, but of course, uh, you know, organisms are also made out of molecules. Um, and even at a higher</p>
+<p>level of, you know, even at a higher structural level organisms might have some similarities, uh,</p>
+<p>you know, in, in terms of those properties I was mentioning before, I guess, um,</p>
+<p>um, in general, yeah, I guess, yeah, one example might be good was that Kuramoto model thing I was</p>
+<p>just talking about. Uh, so there, I've seen that there's some work on using the Kuramoto model,</p>
+<p>which is a model of how a bunch of different oscillators can synchronize with each other</p>
+<p>to model how, um, synchronization, uh, can occur in the brain, uh, which I think has to do with, uh,</p>
+<p>you know, brain waves that are, that are, you know, happening with different frequencies, although I don't</p>
+<p>know much about that. Um, but I, I think that general, like the, and I'm not sure if people know</p>
+<p>whether the Kuramoto model is actually a good, uh, or whether it's a well-justified model of that,</p>
+<p>but at any rate, the Kuramoto model is a decentralized model of synchronization, where you</p>
+<p>have a bunch of things that have, you know, have pairwise interactions talking to each other</p>
+<p>instead of one global clock that's coordinating everything. And so there we see, uh, a physics-based</p>
+<p>ASIC that kind of gets, gets rid of assumption four might be more similar in</p>
+<p>architecture to a biological system than it is to something like a GPU. Um, so I think that that's</p>
+<p>like one way of answering your question is that I would expect that physics-based ASICs may have more</p>
+<p>similarities in architecture to biological systems being, uh, you know, decentralized. And, uh, although</p>
+<p>I don't, I don't really know enough about, you know, kind of typical biological systems to probably</p>
+<p>give a very good answer, but, uh, yeah, I think that's one thought I have on it. Cool. Okay. From the live chat,</p>
+<p>Gorto68 wrote, Cubism is my jam. That was just a comment. And then a question. Max, have you noticed</p>
+<p>a trend in the last eight years in a new physics of geometry and ultra high frequency applications to</p>
+<p>metamaterials and nanomachines? Um, let's see. Okay. Try the last eight years of, um,</p>
+<p>metamaterials and nanomachines. Wait, what was the first part? Something relating to nanomaterials and</p>
+<p>metamaterials? New physics of geometry and ultra high frequency applications to metamaterials and nanomachines.</p>
+<p>I would say I have not noticed that, but I haven't been very focused on those fields. Uh, so yeah, I</p>
+<p>haven't noticed it, but that doesn't mean it isn't happening. Uh, but yeah, it sounds, sounds interesting.</p>
+<p>Yeah. What has changed over the last eight years or months or days? Why is this coming to fruition</p>
+<p>in your research and development at this time? That's a good question. So one thing that's changed,</p>
+<p>I guess, and yeah, let's say the last decade or something is that, uh, quantum computing turned</p>
+<p>out to be like harder than a lot of people thought it was going to be, I think. Um, and, uh, so I, I</p>
+<p>remember like early on when I was beginning grad school, uh, there were a lot of people, uh,</p>
+<p>who were, and I was, well, not quite well, I was kind of, I was kind of working more on the theory,</p>
+<p>I guess, of like thermodynamics of quantum computers. But there were a lot of people at that time who</p>
+<p>were working on like quantum compilers, uh, things like that, that they were supposed to make the,</p>
+<p>they were supposed to solve the problems of like software engineering for a quantum computer.</p>
+<p>And that just kind of goes to show how optimistic people were at that point, I think, because people</p>
+<p>already kind of treated the engineering challenge of building a quantum computer as like a foregone</p>
+<p>conclusion that would happen in, you know, the next decade or something. And then we would run into</p>
+<p>this problem of needing to be able to design scalable software for it. But as you know, as far as I know,</p>
+<p>it, it didn't quite turn out that way. And the problem is still, uh, we're still stuck with the</p>
+<p>problem of actually building, you know, the large, uh, quantum computers. And so now people are thinking</p>
+<p>more about like error correction codes and things like that, that, uh, that, you know, will basically</p>
+<p>allow us to scale them more easily. But I guess that that's one reason why, at least in the story of</p>
+<p>how I became interested in these kinds of approaches to computing, that these are unconventional,</p>
+<p>classical approaches to computing that, you know, don't have their, well, they, they still, you know,</p>
+<p>have some scalability and engineering challenges associated with them. They're not the same kinds</p>
+<p>of challenges that, uh, were so hard and still are so hard in quantum computing, I guess. Uh, that would</p>
+<p>be one answer. Uh, and the other answer, I guess, is, uh, is kind of related to what I was talking about</p>
+<p>with the end of Denard scaling, although that happened, you know, more like two decades ago.</p>
+<p>Um, but arguably it's now is when it started, it's kind of being acutely, most acutely felt,</p>
+<p>I guess, uh, the end of Denard scaling, because we're finally getting to the point where, um,</p>
+<p>the energy costs are just kind of accelerating massively, uh, due to our, you know, rapidly</p>
+<p>expanding compute needed for AI. So those are kind of the two things I would point to, I guess.</p>
+<p>Cool. Yeah. Where did the paper take you all and the authors? Like, where do you,</p>
+<p>where do you go from here? What, what milestones are you looking for next?</p>
+<p>Right. Well, yeah. So, so at normal computing, uh, you know, we're making our own</p>
+<p>chips. Um, and so we have, you know, milestones for those, for the development of those chips,</p>
+<p>uh, which have to do with like specific AI, generative AI algorithms that we want to run on</p>
+<p>them. Uh, so that involves like simulating how the chips are going to perform and, and getting out</p>
+<p>kind of estimates of their performance from our simulations, uh, building the chips. We've already</p>
+<p>made, uh, a lot of progress on, on that. Um, and, uh, and then kind of thinking through like how these</p>
+<p>chips are actually going to be used like commercially. Uh, so that's what I, when I, uh, think about kind of</p>
+<p>like my piece of this puzzle of, um, physics-based ASICs, it really has to do with our, uh, stochastic</p>
+<p>digital kind of thermodynamic stochastic digital processors we're making at, uh, at normal computing</p>
+<p>to solve some of these problems in AI.</p>
+<p>Very cool. Uh, I guess one sort of last question, and then feel free to make any comments. Like, what is the</p>
+<p>educational trajectory? How do people learn up on this? Is it going to look like type theory and</p>
+<p>programming languages and computer science undergrad, or what kinds of background are useful to be</p>
+<p>learning and getting familiar with to kind of skate to where the puck is going?</p>
+<p>Right. So I would say that for one thing, uh, you know, definitely, uh, people experienced in,</p>
+<p>you know, silicon engineering, uh, you know, if, if people who have a skill set in designing</p>
+<p>conventional ASICs and have a deep knowledge of, you know, of integrated circuits from that,</p>
+<p>well, you know, that knowledge will absolutely, I think, transfer over to, um, kind of more</p>
+<p>unconventional architectures. And it might be even more, uh, might be even more fun to think about</p>
+<p>because you, it's kind of throwing away some of the rules that are, uh, it's kind of like you,</p>
+<p>you know, solving some of the same kinds of problems, but where many of the rules have been thrown away,</p>
+<p>I guess. So it becomes kind of a different game. Uh, so that's one background, one way of getting there.</p>
+<p>Uh, another, which is more, which is the way that I kind of got here is the, uh, kind of more, uh,</p>
+<p>theoretical physics and in particular, like statistical physics and thermodynamics end up being very</p>
+<p>relevant, uh, especially because a lot of algorithms and AI have some algorithms and AI have been</p>
+<p>designed, uh, inspired by, or based on, uh, uh, ideas in statistical physics. So like, for example,</p>
+<p>diffusion models, um, or more generally in like machine learning, uh, there's like Bayesian inference</p>
+<p>models and Monte Carlo methods that are deeply, deeply related to, uh, things in statistical physics.</p>
+<p>Uh, and so in general, like having both knowledge of the algorithms and of the physical pictures that</p>
+<p>those algorithms map onto kind of puts you in, I think a good position to think about like what</p>
+<p>might the ideal piece of hardware look like to run this algorithm, uh, because you can kind of think</p>
+<p>about like what physical models map onto an algorithm, I guess. So that's another background</p>
+<p>that's, that I think is a good kind of route to this, uh, this way of thinking is like statistical physics,</p>
+<p>uh, et cetera. Um, and then of course, uh, people with like, yeah, people with math, math backgrounds,</p>
+<p>uh, you know, math, statistics, uh, computer science, um, and AI in general, uh, are of course all</p>
+<p>important. And especially, uh, when we get into things like, um, performance bottlenecks, like, uh, knowing,</p>
+<p>you know, knowing the answers to the questions, like what's the most costly part of running this, uh,</p>
+<p>pipeline, if I'm running a diffusion model or I'm running a large language model, where is the</p>
+<p>majority of the computation being done, uh, which is kind of related to like theoretical computer</p>
+<p>science and complexity theory, but isn't quite the same. It's more of like a practical question of</p>
+<p>like, where are the actual bottlenecks in practice? Um, so, and, and so, you know, that would be the</p>
+<p>skillset more of people who do like, you know, large scale machine learning, infrastructure,</p>
+<p>or training and inference and stuff like that. Um, and so I think all those like skillsets are, you know,</p>
+<p>people, uh, are in a very good position to kind of move into this field. I do hope that more and more</p>
+<p>people do start to get involved in this. Yeah. Cool. I'm going to read a very interesting related</p>
+<p>comment, but then feel free to make any last additions there. Okay. Talal Zahid wrote,</p>
+<p>how digital education will advance with AI systems running on special chips,</p>
+<p>ASICs using probabilistic models to personalize learning over time as digital education platforms</p>
+<p>scale globally, delivering personalized and adaptive learning, which requires low latency AI computation.</p>
+<p>This research explores the deployment of stochastic AI models on ASICs to achieve real-time</p>
+<p>adaptation and user learning paths, reducing energy consumption while maximizing student outcomes.</p>
+<p>I see that, that does sound like really interesting research. And what I like about it is it's like,</p>
+<p>it's an example of like kind of connecting the full stack and end in the sense that like it talks about</p>
+<p>the end application. What are some properties of that application, like requiring low latency and</p>
+<p>adaptive behavior, although I'm not, I, you know, I haven't read up very much on the application,</p>
+<p>but it's, it sounds plausible that those are requirements. And then connecting that to like,</p>
+<p>what algorithms we're going to use for it. And in particular, like, you know, large language models</p>
+<p>or, or, uh, Bayesian, uh, reasoning models, and then like what hardware would be required to accelerate</p>
+<p>those algorithms. So kind of connecting the, all the way from the application to the algorithms,</p>
+<p>to the hardware is exactly the right way of thinking in order to do something meaningful,</p>
+<p>I think. So I really liked that comment. Yeah. Cool. And yes, closing the loop with the improvements</p>
+<p>and the improving improvements. Uh, any other comments? Um, no, I think, yeah, I think I</p>
+<p>covered everything. Uh, and yeah, just again, I really enjoyed coming on. Uh, so yeah, always,</p>
+<p>always a pleasure. Uh, and yeah, thanks for having me on. Cool. Looking forward to the next episode.</p>
+<p>All right. Sounds good. Thanks. See you later.</p>
+<p>All right.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

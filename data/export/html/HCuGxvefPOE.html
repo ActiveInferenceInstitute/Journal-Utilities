@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Textbook Group ~ Cohort 1 ~ Meeting 21 (Chapter 9, part 1)</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Textbook Group ~ Cohort 1 ~ Meeting 21 (Chapter 9, part 1)</h1>
+<div class="meta">Category: TextbookGroup/ParrPezzuloFriston2022/Cohort_1 &middot; Series: Meeting_021 &middot; Speakers: Cohort 1 ~ Meeting 21 (Chapter 9, part 1) &middot; Duration: 53:22 &middot; Views: 20</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=HCuGxvefPOE">https://www.youtube.com/watch?v=HCuGxvefPOE</a></div>
+<article>
+<p>Hey everyone, it is October 21st, 2022.</p>
+<p>We're in Cohort 1 of the textbook group.</p>
+<p>It's Meeting 21, and we're having our first discussion on Chapter 9.</p>
+<p>Chapter 9 is Model-Based Data Analysis.</p>
+<p>Let's look at what the section headers are.</p>
+<p>There's a short introduction, a discussion of meta-Bayesian methods, which is going to be very interesting,</p>
+<p>and in some ways is even like an entry point to thinking about entity modeling in active inference.</p>
+<p>And so that'll be kind of fun.</p>
+<p>We'll return to Variational Laplace, resonating with our just-completed discussion on Chapter 4 and Laplace.</p>
+<p>Then, Section 9.4 and 9.5 are going to help us see where data, in terms of like gigabytes of actual,</p>
+<p>good day, Jakob, actual data from measurements and so on, where these come into play with models.</p>
+<p>So how does one go from a furnished, trainable model to a parameterized, specified model,</p>
+<p>which actually is explaining variance in real-world datasets.</p>
+<p>And then there's some examples of GMs and some models of false inference.</p>
+<p>Well, I added only one general question from a lighter reading.</p>
+<p>I think as we all here move through this, we can generate a lot of other key points and questions.</p>
+<p>Ultimately, the models described in this book are only useful if they can answer scientific questions.</p>
+<p>Let's just, we could rehearse the introduction again, but let's just go into it.</p>
+<p>So, Meta-Bayesian Methods.</p>
+<p>This chapter deals with the utility of active inference formulations in analyzing data from behavioral experiments.</p>
+<p>So, one could imagine all kinds of bodily, verbal, digital behavior.</p>
+<p>This goes beyond proof of principle simulations we've seen in previous chapters and instead,</p>
+<p>exploits active inference in answering scientific questions.</p>
+<p>Broadly speaking, there's two related reasons for fitting a computational model to observe behavior.</p>
+<p>The first is to estimate parameters of interest.</p>
+<p>The second is to compare alternative hypotheses.</p>
+<p>So, to parameterize from data is one opportunity.</p>
+<p>That is to make some model of brain function and then understand within one person or one group or two groups</p>
+<p>how you can consider those parameterizations to be phenotypes.</p>
+<p>Phenotype is something of a biological organism or system that's measurable.</p>
+<p>So, like, femur length is a phenotype.</p>
+<p>But also, a phenotype doesn't have to just be something that's measurable on the body with a ruler.</p>
+<p>Like, phenotype might be distance ran in the first 50 seconds after the hawk flies through the sky on a cloudy day.</p>
+<p>And so then, that is still a measurement that could be inferred or discussed or made.</p>
+<p>And we're talking about computational phenotyping because the data and observations for sure are like a basal phenotype.</p>
+<p>Like, the button being clicked was measurable.</p>
+<p>Pheno means to show.</p>
+<p>But also, we could talk about, like, the precision variables in our cognitive model as being phenotypic.</p>
+<p>And also, model comparison can be used.</p>
+<p>So, whereas this first modality of parameterization is like, the dataset is fixed.</p>
+<p>We collected 240 fMRI datasets.</p>
+<p>Now, we're going to parameterize.</p>
+<p>So, we're going to give some plasticity to our model.</p>
+<p>And we're going to fit parameters so that our model is, like, the best resembling it can to these 240 fMRI datasets we have.</p>
+<p>In the second modality, we're treating, in some ways, the models as fixed.</p>
+<p>And then, evaluating to what extent different models stack up.</p>
+<p>And that can be used at a very fine scale to look for different models that fit better to a given dataset.</p>
+<p>But also, this is where we can talk about, like, actual biological explanations and predictions.</p>
+<p>So, like, to give an example from SP...</p>
+<p>Oh, yes, please, Ali, first.</p>
+<p>Sorry, a related question to this whole discussion is...</p>
+<p>I think it was in section 9.2.</p>
+<p>It says, this goes beyond the proof-of-principle simulations we have seen in previous chapters,</p>
+<p>and instead exploits active inference in answering scientific questions.</p>
+<p>I didn't quite understand this statement here, because in the previous chapters,</p>
+<p>we were also engaged with modeling the real scientific phenomena, right?</p>
+<p>So, what does proof-of-principle simulation here exactly mean,</p>
+<p>and how does it differ from the approach...</p>
+<p>I mean, from answering the real scientific questions?</p>
+<p>Yeah, good question.</p>
+<p>Does anyone want to give a thought, or I can give a thought, too?</p>
+<p>I mean, literally, just these...</p>
+<p>Following that, the first and second reasons to use active inference in this way,</p>
+<p>is, like, instead of just modeling something and saying,</p>
+<p>oh, that looks like what we intended to model,</p>
+<p>or, oh, gosh, it looks really predictive, or whatever,</p>
+<p>getting more rigorous with it to specifically, you know,</p>
+<p>enumerate parameters for a particular model, right?</p>
+<p>And then compare multiple models, like, trying to say which one is, you know,</p>
+<p>more precise.</p>
+<p>That's a different thing than what was being done in the book previously.</p>
+<p>Like, we're just building up the model and seeing how it kind of worked before.</p>
+<p>And now we're, like, talking about putting it into, like, a machinery</p>
+<p>that's going to, you know, select on models, like, which one's best fit or whatever.</p>
+<p>Well said.</p>
+<p>Yeah, I totally agree.</p>
+<p>Preview...</p>
+<p>Although, arguably, like, the Chapter 5, Neurobiology,</p>
+<p>the tables of examples were answering scientific questions,</p>
+<p>but those generative models were not largely presented.</p>
+<p>But in the papers, one could have gone in.</p>
+<p>But yes, the previous generative models were, like, built from the ground up.</p>
+<p>And then, like, oh, look at this interesting behavior.</p>
+<p>Now we're building the machinery to take in real data and fit that.</p>
+<p>And then there's the two uses of parameterization,</p>
+<p>or the two uses of data fitting.</p>
+<p>To find the best parameters for a given data set and model.</p>
+<p>And also to compare models.</p>
+<p>Model comparison.</p>
+<p>All right.</p>
+<p>Now we get to the very excellent figure 9.1.</p>
+<p>So.</p>
+<p>Oh.</p>
+<p>9.1 is the meta-Bayesian inference.</p>
+<p>What does anyone see in this figure?</p>
+<p>Ali.</p>
+<p>Ali.</p>
+<p>Ali.</p>
+
+
+<p>Well, as pointed out in the text,</p>
+<p>the inner box somehow represents the generative model of the phenomena we're trying to...</p>
+<p>we're observing.</p>
+<p>But the outer dashed box is somehow our generative model as the observers.</p>
+<p>So the term meta-Bayesian, I think, used here to denote this kind of change of perspective to a higher...</p>
+<p>to a higher level of viewpoint.</p>
+<p>I mean, to add another layer of hierarchy to the already hierarchical generative models we had before.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Great.</p>
+<p>Well said.</p>
+<p>And this outer...</p>
+<p>So we could have had an arbitrarily nested...</p>
+<p>Well, just to make a simple point,</p>
+<p>this is the discrete time formulation,</p>
+<p>POMDP,</p>
+<p>figure 4.3.</p>
+<p>And that can be nested in an arbitrary way and composed.</p>
+<p>And meta-Bayesian is like putting the wrapping paper on the gift.</p>
+<p>Because this outermost layer is us.</p>
+<p>Brock?</p>
+<p>So the last time this came up was in the context...</p>
+<p>I think it was in the other cohort,</p>
+<p>but we were talking about...</p>
+<p>the provenance of the model,</p>
+<p>the impetus for it being...</p>
+<p>as a tool for...</p>
+<p>diagnosis of patients,</p>
+<p>for non-typical sort of neurons.</p>
+<p>So...</p>
+<p>I guess I'm curious,</p>
+<p>maybe,</p>
+<p>if there's a simple way to understand it from that perspective.</p>
+<p>But I also have...</p>
+<p>a...</p>
+<p>another question, I guess,</p>
+<p>which is...</p>
+<p>if this is...</p>
+<p>us modeling...</p>
+<p>It seems like it would be, like,</p>
+<p>infinite, really recursive,</p>
+<p>because every time you add another layer,</p>
+<p>like, then there's another layer that's not being modeled</p>
+<p>of how we're actually modeling it.</p>
+<p>And therefore, we would have to...</p>
+<p>But then if we...</p>
+<p>accounted for that,</p>
+<p>then...</p>
+<p>then there would be another outer...</p>
+<p>you know,</p>
+<p>I don't know if that's just...</p>
+<p>infinite regression,</p>
+<p>towards the hidden state,</p>
+<p>one or the other,</p>
+<p>or...</p>
+<p>but...</p>
+<p>or I'm just...</p>
+<p>that's nonsense, but...</p>
+<p>Yeah.</p>
+<p>No, no, it's not.</p>
+<p>I think...</p>
+<p>let's...</p>
+<p>let's...</p>
+<p>talk about the...</p>
+<p>setting of...</p>
+<p>the clinical neuroimaging.</p>
+<p>So...</p>
+<p>the inner model...</p>
+<p>is going to be...</p>
+<p>the cognitive behavioral model...</p>
+<p>of the patient.</p>
+<p>Just speaking of this...</p>
+<p>the participant...</p>
+<p>the recipient of action...</p>
+<p>as the patient.</p>
+<p>They're selecting...</p>
+<p>green or blue coins...</p>
+<p>or whatever.</p>
+<p>They're doing some behavioral paradigm...</p>
+<p>isolating...</p>
+<p>or choice...</p>
+<p>or decision-making.</p>
+<p>We're modeling...</p>
+
+
+
+<p>attention...</p>
+<p>attention...</p>
+<p>and so on.</p>
+<p>Whether we...</p>
+<p>formalize it or not...</p>
+<p>the experimenter's behavior...</p>
+<p>is influencing...</p>
+<p>the parameterization...</p>
+<p>of the patients.</p>
+<p>Like...</p>
+<p>we are choosing populations...</p>
+<p>and sampling patients.</p>
+<p>Here is like...</p>
+<p>the parameterization...</p>
+<p>of the experiment.</p>
+<p>We'll have 20 people...</p>
+<p>they'll come in for two sessions.</p>
+<p>We're going to do...</p>
+<p>11...</p>
+<p>you know...</p>
+<p>of this.</p>
+<p>And here's like...</p>
+<p>the data coming out of...</p>
+<p>So this O here...</p>
+<p>is the observation...</p>
+<p>that the patient sees...</p>
+<p>and their inference...</p>
+<p>on what they're seeing.</p>
+<p>Experimental stimuli...</p>
+<p>are actually an action...</p>
+<p>from the experimenter.</p>
+<p>We're pushing the O...</p>
+<p>to their screen.</p>
+<p>So this O tilde...</p>
+<p>is their O sequence.</p>
+<p>We're getting...</p>
+<p>data...</p>
+<p>data...</p>
+<p>from the experiment.</p>
+<p>We could choose to...</p>
+<p>be...</p>
+<p>ignorant...</p>
+<p>or implicit...</p>
+<p>about our...</p>
+<p>parameterization.</p>
+<p>Or...</p>
+<p>maybe even this...</p>
+<p>is a nested model.</p>
+<p>We made a...</p>
+<p>governance decision...</p>
+<p>in the lab...</p>
+<p>to decide...</p>
+<p>to decide...</p>
+<p>who gets to decide...</p>
+<p>this...</p>
+<p>and the constraints...</p>
+<p>were the cost...</p>
+<p>and the availability.</p>
+
+<p>the availability...</p>
+<p>nested...</p>
+
+<p>of the outer loop...</p>
+<p>And...</p>
+
+<p>and what about...</p>
+<p>infinite recursion?</p>
+<p>And I think...</p>
+<p>one...</p>
+<p>silver lining...</p>
+<p>or saving grace...</p>
+<p>or whatever...</p>
+<p>or just...</p>
+<p>strength of the...</p>
+
+<p>or active inference...</p>
+<p>framework...</p>
+<p>is...</p>
+<p>we know...</p>
+<p>we know...</p>
+<p>we can always...</p>
+<p>dive in...</p>
+<p>and...</p>
+<p>like...</p>
+<p>build from a node...</p>
+<p>or we can just...</p>
+<p>treat...</p>
+<p>the edges...</p>
+<p>of our base graph...</p>
+<p>as like...</p>
+<p>a Markov blanket...</p>
+<p>with the unknown.</p>
+<p>unknown.</p>
+<p>So we could say...</p>
+<p>we made a simple...</p>
+<p>model of decision making...</p>
+
+<p>And then we could...</p>
+<p>this could be...</p>
+<p>a multi-agent simulation...</p>
+<p>and each of those...</p>
+<p>could have another...</p>
+<p>nested model.</p>
+<p>And then we could...</p>
+<p>Like if it fits...</p>
+<p>then maybe it's irrelevant...</p>
+<p>or...</p>
+<p>maybe we want to know...</p>
+<p>anyways...</p>
+<p>but...</p>
+<p>what...</p>
+<p>good will it...</p>
+<p>I don't know...</p>
+<p>Yeah...</p>
+<p>or it doesn't fit...</p>
+<p>or...</p>
+<p>Yeah...</p>
+<p>let's just say that...</p>
+
+<p>the...</p>
+<p>the pragmatic value for us...</p>
+<p>is...</p>
+<p>um...</p>
+<p>high statistical power...</p>
+<p>and sensitivity...</p>
+<p>for diagnosis...</p>
+<p>of a...</p>
+<p>neuro...</p>
+<p>condition.</p>
+<p>So like...</p>
+<p>we want the inner loop...</p>
+<p>to be...</p>
+<p>in the point...</p>
+<p>we...</p>
+<p>we don't want to be like...</p>
+<p>spending money beyond...</p>
+<p>diminishing returns...</p>
+<p>on our experiment...</p>
+<p>we want to actually...</p>
+<p>like diagnose and help...</p>
+<p>people...</p>
+
+<p>limited situation...</p>
+<p>um...</p>
+<p>then one could do...</p>
+<p>model comparison...</p>
+<p>with...</p>
+
+<p>I'm ignoring all of this...</p>
+<p>I'm just gonna...</p>
+<p>parameterize...</p>
+<p>just...</p>
+
+<p>I'm gonna call it...</p>
+<p>like I see it...</p>
+
+<p>one could have another...</p>
+<p>but...</p>
+<p>but if one were to...</p>
+<p>engage in a research program...</p>
+<p>where we...</p>
+<p>we collected one...</p>
+<p>data set...</p>
+<p>then...</p>
+<p>yeah...</p>
+<p>let's just call it...</p>
+<p>like we see it...</p>
+<p>the opportunity...</p>
+<p>to design a second...</p>
+<p>cohort of...</p>
+<p>fMRI experiments...</p>
+<p>should we do...</p>
+<p>two people...</p>
+<p>for a hundred sessions...</p>
+<p>or a hundred people...</p>
+<p>for two sessions...</p>
+<p>who should those...</p>
+<p>hundred people be?</p>
+<p>so...</p>
+<p>at that point...</p>
+<p>having...</p>
+<p>a...</p>
+<p>policy selection...</p>
+<p>outer loop...</p>
+<p>enabling...</p>
+<p>seems...</p>
+<p>pretty relevant...</p>
+<p>now...</p>
+<p>we could make that...</p>
+<p>simple...</p>
+<p>maybe it's...</p>
+<p>we always pick...</p>
+<p>30 participants...</p>
+<p>maybe it's...</p>
+<p>we either do...</p>
+<p>a small experiment...</p>
+
+<p>or we do a big one...</p>
+<p>with 30...</p>
+<p>it's just simpler...</p>
+<p>those are the two...</p>
+<p>pathways we have...</p>
+<p>or maybe it's a...</p>
+<p>you know...</p>
+<p>etc...</p>
+<p>but then...</p>
+<p>you could do...</p>
+<p>model comparison...</p>
+<p>and evaluation...</p>
+<p>on those...</p>
+<p>increasingly complex...</p>
+<p>outer loop models...</p>
+<p>none of that...</p>
+<p>would be...</p>
+<p>influencing...</p>
+<p>the structure...</p>
+<p>of the cognitive...</p>
+<p>model...</p>
+<p>of the patient...</p>
+<p>so...</p>
+<p>for all you...</p>
+<p>blockference...</p>
+<p>heads...</p>
+<p>in the chat...</p>
+<p>one could imagine...</p>
+<p>that...</p>
+<p>there's...</p>
+<p>human...</p>
+<p>fMRI...</p>
+<p>cognitive model...</p>
+<p>this is a...</p>
+<p>versionable...</p>
+<p>cognitive model...</p>
+<p>open source...</p>
+<p>and then...</p>
+<p>different lab groups...</p>
+<p>could have...</p>
+<p>open or closed...</p>
+<p>models...</p>
+<p>with open or closed...</p>
+<p>data...</p>
+<p>around their...</p>
+<p>decision making...</p>
+<p>about how...</p>
+<p>they're using...</p>
+<p>a core model...</p>
+<p>model...</p>
+<p>this is also...</p>
+<p>just a...</p>
+<p>on a...</p>
+<p>more...</p>
+<p>qualitative point...</p>
+<p>and then...</p>
+<p>like...</p>
+<p>this is where...</p>
+<p>we can start...</p>
+<p>to talk about...</p>
+<p>moving beyond...</p>
+<p>implicit biases...</p>
+<p>not just like...</p>
+<p>parching...</p>
+<p>implicit biases...</p>
+<p>or anything like that...</p>
+<p>it's just like...</p>
+<p>we're doing...</p>
+<p>investigation...</p>
+<p>and exploration...</p>
+<p>we're externalizing...</p>
+<p>and exteriorizing...</p>
+<p>our priors...</p>
+<p>and...</p>
+<p>we're working...</p>
+<p>such that...</p>
+<p>the relevant features...</p>
+<p>that are in the box...</p>
+<p>are all...</p>
+<p>externalized...</p>
+<p>in terms of...</p>
+<p>the scientific...</p>
+<p>apparatuses...</p>
+<p>parameterization...</p>
+<p>and...</p>
+<p>that's at least...</p>
+<p>something where...</p>
+
+<p>move towards...</p>
+<p>and someone can say...</p>
+<p>well...</p>
+<p>you haven't made your...</p>
+<p>hyper hyper hyper...</p>
+<p>priors...</p>
+<p>explicit...</p>
+
+<p>isn't that a better...</p>
+<p>conversation to have...</p>
+<p>than...</p>
+<p>say...</p>
+
+<p>this many people...</p>
+<p>for the experiment...</p>
+<p>it could be like...</p>
+<p>you didn't...</p>
+<p>state...</p>
+<p>the meta governance...</p>
+<p>of how you came...</p>
+<p>to the decision...</p>
+<p>to do 30 participants...</p>
+<p>I mean...</p>
+<p>it makes it...</p>
+<p>it sounds like...</p>
+<p>it makes it...</p>
+<p>really...</p>
+<p>a lot easier...</p>
+<p>to...</p>
+<p>think about...</p>
+<p>comparing...</p>
+<p>and accounting...</p>
+<p>showing that you...</p>
+<p>accounted for...</p>
+<p>you're doing...</p>
+
+<p>experiment...</p>
+<p>right...</p>
+<p>um...</p>
+<p>might...</p>
+<p>be able to move...</p>
+<p>the needle...</p>
+<p>a little bit...</p>
+<p>on some of the...</p>
+<p>reproducible...</p>
+<p>earth...</p>
+<p>replication crisis...</p>
+<p>things like...</p>
+<p>in that vein...</p>
+<p>yeah...</p>
+<p>great...</p>
+<p>point...</p>
+<p>um...</p>
+<p>um...</p>
+<p>I think...</p>
+<p>um...</p>
+<p>what...</p>
+<p>uh...</p>
+<p>what...</p>
+<p>uh...</p>
+
+<p>mentioned...</p>
+
+<p>as a side note...</p>
+<p>uh...</p>
+<p>I think...</p>
+<p>approaching...</p>
+<p>uh...</p>
+
+<p>kind of...</p>
+<p>I mean...</p>
+
+<p>to...</p>
+<p>uh...</p>
+<p>model-based...</p>
+<p>or...</p>
+<p>better...</p>
+<p>the model-based...</p>
+<p>data analysis...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>takes...</p>
+<p>the...</p>
+<p>infinitism...</p>
+<p>stance...</p>
+<p>uh...</p>
+<p>as an implicit...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>somehow...</p>
+<p>the philosophical...</p>
+<p>stance...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>somehow...</p>
+<p>the philosophical...</p>
+
+<p>because...</p>
+
+<p>if we...</p>
+<p>uh...</p>
+
+<p>in terms of...</p>
+<p>infinitism...</p>
+<p>I don't think...</p>
+<p>we were able...</p>
+<p>to...</p>
+<p>uh...</p>
+<p>model...</p>
+<p>adequately...</p>
+<p>these kinds of...</p>
+<p>metabasean reasoning...</p>
+<p>uh...</p>
+<p>because...</p>
+<p>we'll get...</p>
+<p>at some point...</p>
+<p>to...</p>
+<p>uh...</p>
+<p>as Brock...</p>
+<p>said...</p>
+<p>just...</p>
+<p>uh...</p>
+<p>infinite regressive reason...</p>
+<p>so...</p>
+<p>uh...</p>
+<p>at least in my opinion...</p>
+<p>it's somehow...</p>
+<p>implicitly...</p>
+<p>uh...</p>
+<p>takes the infinitism...</p>
+<p>uh...</p>
+<p>stance here...</p>
+<p>as...</p>
+<p>uh...</p>
+<p>proposed by Peter Klein...</p>
+<p>uh...</p>
+<p>at least...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>will need...</p>
+
+<p>somehow...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>the...</p>
+<p>subjectively...</p>
+<p>and objectively...</p>
+<p>available...</p>
+<p>reasons...</p>
+<p>uh...</p>
+<p>uh...</p>
+<p>to...</p>
+<p>model...</p>
+<p>or...</p>
+<p>to construct...</p>
+<p>our...</p>
+<p>justified...</p>
+<p>true beliefs...</p>
+<p>uh...</p>
+<p>in other words...</p>
+<p>non-repeating...</p>
+<p>and infinitely...</p>
+<p>available...</p>
+<p>to us...</p>
+<p>in order for us...</p>
+<p>to be able to...</p>
+<p>uh...</p>
+<p>construct that true belief...</p>
+<p>so...</p>
+<p>uh...</p>
+<p>I'm not...</p>
+<p>quite...</p>
+<p>sure about it...</p>
+<p>but...</p>
+
+<p>looks...</p>
+<p>very similar...</p>
+<p>to infinitism's tense...</p>
+<p>yeah...</p>
+<p>interesting...</p>
+<p>um...</p>
+<p>introduction...</p>
+<p>I wasn't...</p>
+<p>familiar with this area...</p>
+<p>um...</p>
+<p>like...</p>
+<p>approximate Bayesian computation...</p>
+<p>bounded rationality...</p>
+<p>the composability of Bayes graphs...</p>
+<p>these are...</p>
+<p>we get to...</p>
+<p>eat our slice of cake...</p>
+<p>and recognize...</p>
+<p>that there's the rest of the cake...</p>
+<p>and the table...</p>
+<p>and the world outside of the restaurant...</p>
+<p>and so on...</p>
+<p>like...</p>
+<p>we can just say...</p>
+
+<p>the GM that we made...</p>
+<p>was the thermometer...</p>
+<p>and a temperature value...</p>
+<p>and someone can say...</p>
+<p>but what about humidity...</p>
+<p>and it's like...</p>
+<p>there's a composability...</p>
+<p>but...</p>
+<p>um...</p>
+<p>we're not within the...</p>
+<p>positivist...</p>
+<p>or the falsificationist...</p>
+<p>like...</p>
+<p>well...</p>
+<p>my model of temperature...</p>
+<p>and thermometer...</p>
+<p>is positive evidence...</p>
+<p>that that's all that's happening...</p>
+<p>or...</p>
+<p>it's the best model we have...</p>
+<p>we're just waiting for it to be disproven...</p>
+<p>we can have like...</p>
+<p>a Bayesian...</p>
+<p>portfolio...</p>
+<p>of models...</p>
+<p>and all of them...</p>
+<p>can be understood as...</p>
+<p>maps...</p>
+<p>as composable maps...</p>
+<p>could this lead...</p>
+<p>to...</p>
+<p>Bayes Optimal...</p>
+<p>experimental design...</p>
+<p>of research programs...</p>
+<p>like...</p>
+<p>statistical power...</p>
+<p>the famous...</p>
+<p>statistics quotation is like...</p>
+<p>something about an autopsy...</p>
+<p>like...</p>
+<p>the statistician is not gonna diagnose it...</p>
+<p>it's...</p>
+<p>they come in...</p>
+<p>and they tell you what went wrong...</p>
+
+<p>but that's also...</p>
+<p>that's not fundamental...</p>
+<p>to statistics...</p>
+<p>that's actually just a little bit...</p>
+<p>of like a joke...</p>
+<p>about the practice of research...</p>
+<p>which is like...</p>
+<p>the biostatistician...</p>
+<p>just...</p>
+<p>speaking from my own research experience...</p>
+<p>they're called in...</p>
+<p>for assistance...</p>
+<p>on a complex...</p>
+<p>already collected data set...</p>
+<p>and so it's like...</p>
+<p>well...</p>
+<p>we had three mice...</p>
+<p>in March...</p>
+<p>and then we had six mice...</p>
+<p>in April...</p>
+<p>how do we balance this...</p>
+<p>versus the upfront...</p>
+<p>conversation...</p>
+<p>to help design...</p>
+<p>a high statistical power experiment...</p>
+<p>and so like...</p>
+<p>statistics upfront...</p>
+<p>it's gonna...</p>
+<p>increase the reproducibility...</p>
+<p>and alignability of experiments...</p>
+<p>it...</p>
+<p>is a sanity check...</p>
+<p>if not a formal verification...</p>
+<p>that the experiment...</p>
+<p>is gonna tell you something...</p>
+<p>and...</p>
+<p>it...</p>
+<p>it allows for...</p>
+<p>replicating experiments...</p>
+<p>selecting experiments...</p>
+<p>based upon like...</p>
+<p>their statistical power...</p>
+<p>Okay...</p>
+<p>following sections...</p>
+<p>unpack...</p>
+<p>an example of generic inference...</p>
+<p>that may be used...</p>
+<p>for metabasean inference...</p>
+<p>the variational...</p>
+<p>Laplace...</p>
+<p>with hierarchical models...</p>
+<p>then there's gonna be...</p>
+<p>a simple recipe...</p>
+<p>that's related to the...</p>
+<p>one of the other questions...</p>
+
+<p>okay...</p>
+<p>!</p>
+<p>variational...</p>
+
+<p>may be used...</p>
+<p>used for more...</p>
+<p>generic likelihood functions...</p>
+<p>than those encountered earlier...</p>
+<p>which were defined as...</p>
+<p>Gaussian...</p>
+<p>so previously...</p>
+<p>the family...</p>
+<p>of functions...</p>
+<p>that we were doing...</p>
+<p>variational inference with...</p>
+<p>was...</p>
+<p>Gaussian's...</p>
+<p>now...</p>
+<p>we can generalize beyond...</p>
+<p>using only...</p>
+<p>Gaussian distributions...</p>
+<p>by saying...</p>
+<p>whatever it is...</p>
+<p>we're going to do...</p>
+<p>a Laplacian approximation...</p>
+<p>so even if it's like...</p>
+
+<p>something very strange...</p>
+<p>and as...</p>
+<p>mentioned...</p>
+
+<p>cohort two...</p>
+<p>discussion...</p>
+<p>just an hour ago...</p>
+<p>Laplace approximation...</p>
+<p>has two parameters...</p>
+<p>the...</p>
+
+<p>the...</p>
+<p>the...</p>
+<p>the...</p>
+
+<p>the...</p>
+<p>the...</p>
+
+
+<p>it's guaranteed to capture...</p>
+<p>some of the...</p>
+<p>variance of the distribution...</p>
+<p>for distributions...</p>
+<p>with a central tendency...</p>
+<p>Gaussian or otherwise...</p>
+<p>it can do well...</p>
+<p>for distributions...</p>
+<p>that are like...</p>
+<p>multimodal...</p>
+<p>it does not do well...</p>
+<p>because it gets tricked...</p>
+<p>to finding the mode...</p>
+<p>which may only capture...</p>
+<p>like a minority...</p>
+<p>of the overall bulk...</p>
+<p>and again...</p>
+<p>the SPM textbook...</p>
+<p>lays out...</p>
+<p>side by side...</p>
+<p>Laplace...</p>
+<p>variational Bayes...</p>
+<p>non-parametric...</p>
+<p>sampling approaches...</p>
+<p>from those...</p>
+<p>Laplacian approximations...</p>
+<p>we're going to do...</p>
+<p>variational inference...</p>
+<p>so...</p>
+<p>the real distribution...</p>
+<p>might be...</p>
+<p>unfactorizable...</p>
+<p>or...</p>
+<p>we don't know...</p>
+<p>what family of...</p>
+
+<p>it even is...</p>
+<p>but...</p>
+<p>we know that...</p>
+<p>the Laplace approximations...</p>
+<p>that we make...</p>
+<p>on those distributions...</p>
+<p>for sure...</p>
+<p>will be amenable...</p>
+<p>to variational inference...</p>
+<p>and because of the...</p>
+<p>quadratic nature...</p>
+<p>we can do...</p>
+<p>gradient ascent...</p>
+<p>so...</p>
+<p>just like the ball...</p>
+<p>going to the bottom of the bowl...</p>
+<p>this is just an inverted...</p>
+
+<p>parabola...</p>
+<p>so it's just gradient...</p>
+
+<p>on...</p>
+<p>the mountain...</p>
+<p>alright...</p>
+<p>parametric...</p>
+
+<p>base...</p>
+<p>this...</p>
+<p>usage...</p>
+<p>of...</p>
+<p>a matrix...</p>
+<p>to represent...</p>
+<p>the experimental...</p>
+<p>layout...</p>
+<p>is heavily...</p>
+<p>used...</p>
+<p>in SPM...</p>
+<p>this is looking...</p>
+<p>a lot like...</p>
+<p>like a regression...</p>
+<p>this is actually...</p>
+<p>a little bit of a short...</p>
+<p>section 9.4...</p>
+<p>this part here...</p>
+<p>is...</p>
+<p>a little bit of a short...</p>
+<p>section 9.4...</p>
+<p>section...</p>
+<p>this is actually...</p>
+<p>a little bit of a short...</p>
+<p>section 9.4...</p>
+<p>this part here...</p>
+<p>comparing the evidence...</p>
+<p>for a model...</p>
+<p>where the second...</p>
+<p>element is allowed to deviate...</p>
+<p>from zero...</p>
+<p>or the precise belief...</p>
+<p>it's zero...</p>
+<p>that is actually...</p>
+<p>very much...</p>
+<p>again...</p>
+<p>like regression...</p>
+<p>testing...</p>
+<p>like...</p>
+<p>if you're gonna...</p>
+<p>if you have...</p>
+<p>if you're testing...</p>
+<p>for...</p>
+<p>for the effect...</p>
+<p>of a given...</p>
+<p>factor...</p>
+<p>on...</p>
+<p>height...</p>
+<p>that is related to...</p>
+<p>the p-value...</p>
+<p>you get...</p>
+<p>for height...</p>
+<p>is related to...</p>
+<p>the model that includes height...</p>
+<p>and the model that...</p>
+<p>doesn't include height...</p>
+<p>and then...</p>
+<p>their...</p>
+<p>sum of squares...</p>
+<p>is compared...</p>
+<p>within the appropriate...</p>
+<p>statistical test family...</p>
+<p>t-test...</p>
+
+<p>f-score...</p>
+<p>all giving you...</p>
+<p>a p-value...</p>
+<p>so...</p>
+
+<p>is very much like...</p>
+<p>statistics...</p>
+<p>on...</p>
+<p>regressions...</p>
+<p>one thing...</p>
+<p>maybe there...</p>
+<p>there's a deeper reading...</p>
+<p>where this is...</p>
+<p>clearer...</p>
+<p>but...</p>
+<p>one way to talk about...</p>
+<p>empirical bays...</p>
+<p>is that like...</p>
+<p>well...</p>
+<p>first off...</p>
+<p>it is...</p>
+<p>it's parametric...</p>
+<p>you're dealing with parameters...</p>
+
+<p>sometimes that's not too helpful...</p>
+<p>but...</p>
+<p>the empirical part...</p>
+<p>means like...</p>
+<p>the way we're gonna get...</p>
+<p>our D matrix...</p>
+<p>our prior...</p>
+<p>is from...</p>
+<p>the data...</p>
+<p>so like...</p>
+<p>let's just say that we have...</p>
+<p>we're measuring height...</p>
+<p>in the classroom...</p>
+<p>we might be able to use...</p>
+<p>chapter 6...</p>
+<p>to specify...</p>
+<p>and furnish...</p>
+<p>the model...</p>
+<p>but then...</p>
+<p>as soon as we make that...</p>
+
+<p>and then we might set...</p>
+<p>our prior...</p>
+<p>we'll say...</p>
+<p>well...</p>
+<p>let's have a super loose prior...</p>
+<p>let's say that...</p>
+
+<p>uniform...</p>
+<p>across all...</p>
+<p>you know...</p>
+<p>but of course...</p>
+<p>who knows...</p>
+<p>what the maximum height is...</p>
+<p>maybe it's not a human classroom...</p>
+<p>so we can't just specify...</p>
+<p>a uniform distribution...</p>
+<p>across...</p>
+<p>you know...</p>
+<p>every finite value...</p>
+<p>and so...</p>
+<p>a way to kind of...</p>
+<p>break that...</p>
+<p>a priori...</p>
+<p>challenge...</p>
+<p>where like...</p>
+
+<p>your...</p>
+<p>prior...</p>
+<p>to be loose enough...</p>
+<p>to accommodate...</p>
+<p>the full range...</p>
+<p>of the possible data...</p>
+<p>but also...</p>
+<p>sharp enough...</p>
+<p>so that you're not just like...</p>
+<p>starting like...</p>
+<p>on like...</p>
+<p>it's just an absurdly...</p>
+<p>uninformative prior...</p>
+<p>all priors are informative...</p>
+<p>even a uniform prior...</p>
+<p>is still informative...</p>
+<p>the thing that matters...</p>
+<p>is to strengthen...</p>
+<p>the weakness of the prior...</p>
+<p>and the family of the prior...</p>
+<p>so what you could do instead...</p>
+<p>would be...</p>
+<p>you could measure...</p>
+<p>10 heights...</p>
+<p>or even one...</p>
+<p>and then...</p>
+<p>use the mean...</p>
+<p>and the variance...</p>
+<p>of that sample...</p>
+<p>empirically...</p>
+<p>to set your prior...</p>
+<p>so set just the mean...</p>
+<p>of the prior...</p>
+<p>on height...</p>
+<p>as the mean...</p>
+<p>that you got from 10...</p>
+<p>and then you could just...</p>
+<p>over disperse the variance...</p>
+<p>so...</p>
+<p>if there's somebody...</p>
+<p>who's outside of that bound...</p>
+<p>now it's like...</p>
+<p>you know...</p>
+<p>you can be more confident...</p>
+
+<p>so this is widely used...</p>
+<p>to take an empirical data set...</p>
+<p>and then use...</p>
+<p>the data set's...</p>
+<p>empirical values...</p>
+<p>and summary statistics...</p>
+<p>to parameterize...</p>
+<p>the generative model...</p>
+<p>and then...</p>
+<p>the ball goes from there...</p>
+<p>and also...</p>
+<p>the expectation...</p>
+<p>maximization algorithm...</p>
+<p>where you have...</p>
+<p>a given data set...</p>
+<p>and you update the parameters...</p>
+<p>in the generative model...</p>
+<p>and then you generate data...</p>
+<p>compatible with that model...</p>
+<p>and continue...</p>
+<p>that is...</p>
+<p>very close to PEB...</p>
+<p>okay...</p>
+<p>9.5...</p>
+<p>instructions for model-based analysis...</p>
+<p>so let's copy these out...</p>
+<p>because the question was like...</p>
+<p>how is this...</p>
+<p>oh...</p>
+<p>figure 9.2...</p>
+<p>I guess...</p>
+<p>section 9.5...</p>
+<p>and it's summarized...</p>
+<p>in 9.2...</p>
+<p>here's the six steps...</p>
+<p>and it's summarized...</p>
+<p>in 9.2...</p>
+<p>here's the six steps...</p>
+
+
+<p>wait...</p>
+
+
+<p>this is a little bit of a...</p>
+
+<p>review of the textbook. But we're starting with data collection. Maybe the data already have been</p>
+<p>collected. So we're putting aside the situation where we're doing the meta-modeling on ourselves</p>
+<p>and then doing experimental design and then collecting the data. We're just going to take</p>
+<p>it from the data are collected. A POMDP, again discrete time in this case, is structurally</p>
+<p>prepared according to the recipe in chapter 6. POMDPs, would we say, are equivalent to specifying a</p>
+<p>likelihood function? Or they embody or they entail a likelihood function? What is the arrow between 2 and 3?</p>
+<p>Does merely constructing a POMDP in this format uniquely identify a likelihood function?</p>
+<p>Or what work has to happen right here?</p>
+<p>Just a thought. We can learn.</p>
+<p>Ali, go ahead.</p>
+<p>I don't think these arrows necessarily mean that this particular component of the</p>
+<p>modeling process necessarily translates perfectly to the other stage. I think they're more likely to be</p>
+<p>to show the dependencies among each steps. So in the case of the third stage or the likelihood function,</p>
+<p>the construction of the likelihood function, obviously it depends on what our POMDP model</p>
+<p>functions. So I'm not sure if we can. I mean, if it were, I mean, if they were 100%</p>
+<p>isomorphic, I guess they would be redundant, right? So yeah, I think those arrows show dependencies rather than</p>
+<p>translating into each other.</p>
+<p>Thanks. I think I broadly agree.</p>
+<p>I think that's a good idea.</p>
+<p>I think that's a good idea.</p>
+<p>I think that's a good idea.</p>
+<p>And there might also be some other ways to draw it, like the prior beliefs.</p>
+<p>Is this theta?</p>
+<p>I think this is using the figure 9-1 ontology.</p>
+<p>This theta is big theta.</p>
+<p>This is the experimenter's parameters.</p>
+<p>The model</p>
+<p>is the cognitive model of the entity.</p>
+<p>Italic U tilde is the observed data.</p>
+<p>So here's the observed data getting passed.</p>
+<p>The POMDP and associated likelihood function.</p>
+<p>We can't, the likelihood, okay.</p>
+<p>The POMDP describes variables in their relationships.</p>
+<p>The likelihood function allows us to create P, which is the distribution of observed behavior,</p>
+<p>U tilde, conditioned upon experimental parameters data.</p>
+<p>Observations, which are in this case, the ones that are provided the stimuli, experimental stimuli,</p>
+<p>and the model.</p>
+<p>Then the parametric empirical base comes in when we actually get the data.</p>
+<p>It comes in in six, but we're getting there.</p>
+<p>We're on the path when we have the data flowing from the experiment.</p>
+<p>We can then do the model inversion.</p>
+<p>Rather than describing the distribution of behavior that would be generated by theta O M,</p>
+<p>we're going to invert it so we can talk about the distribution of parameters,</p>
+<p>experimental parameters, conditioned upon MOU.</p>
+<p>Bayesian equation allows us to have a proportionality between what we really want to know,</p>
+<p>this top line, and a, I don't know if I can call it a joint distribution,</p>
+<p>but these two multiplied distributions, which is the probability of the experimental parameters given</p>
+<p>the model and separating out the probability of U, conditioned on all the rest.</p>
+<p>So this is leveraging the sparsity of the inverted model to facilitate a form</p>
+<p>that is amenable to linear regression type equations.</p>
+<p>This is like Y equals MX plus B.</p>
+<p>It's not, but it is.</p>
+<p>This is like the same structure.</p>
+<p>Y, M, X plus B.</p>
+<p>But then these bars and their associated variances, which come from Laplace,</p>
+<p>this is the p-value and the effect size.</p>
+<p>So for this third modality, the effect size is zero and the variance is such and such.</p>
+<p>And then for this one, we could say the p-value or the Bayes factor for this factor mattering,</p>
+<p>it's high.</p>
+<p>The evidence for this mattering is extremely high.</p>
+<p>So this is like, if this were a bar chart and we're, if we were in frequentist statistics land,</p>
+<p>and it were like 10 plus or minus one, then we have a Z-score of 10.</p>
+<p>We're 10 standard deviations away from zero.</p>
+<p>So the p-value of the effect size being greater than zero is</p>
+<p>whatever it is for a p-value of a Z-score of 10.</p>
+<p>Very low.</p>
+<p>So again, this is like where the real</p>
+<p>data collection</p>
+<p>is going to be happening and interfacing.</p>
+<p>So now here's their description.</p>
+<p>Collect behavioral data.</p>
+<p>Formulate the POMDP.</p>
+<p>It takes parameters as input outputs a fully specified but not yet solved POMDP.</p>
+<p>Specify likelihood function.</p>
+<p>Specify prior beliefs.</p>
+<p>Often these will be centered on zero with precisions reflecting plausible ranges.</p>
+<p>That's interesting note.</p>
+<p>Solve for posterior and model evidence.</p>
+<p>Newton is probably a reference there to some gradient,</p>
+<p>derivative-based gradient method.</p>
+<p>I'm not exactly sure.</p>
+<p>Group level analysis.</p>
+<p>Treating the estimated parameters for each individual as if they were generated by a second level model.</p>
+<p>This is exactly structurally ANOVA.</p>
+<p>The group level analysis of variance.</p>
+<p>Like, we had people throw the ball.</p>
+<p>There was type one and type two a person.</p>
+<p>And then the weather type two.</p>
+<p>Is there an effect of type?</p>
+<p>You make two models.</p>
+<p>One of them is a model without type.</p>
+<p>One of them is a model with two categories of type.</p>
+<p>Then those two models can be compared in terms, in the frequentist world,</p>
+<p>in terms of their hierarchical likelihood.</p>
+<p>In the Bayesian world, however, a limitation of the hierarchical likelihood ratio test</p>
+<p>is that the models must be strictly structurally nested.</p>
+<p>They have to reflect direct simplifications or elaborations of each other.</p>
+<p>In contrast, Bayesian modeling allows us to use the Bayes factor,</p>
+<p>which can compare models that don't need to be strictly nested.</p>
+<p>So you could test very structurally different models against each other.</p>
+<p>It's kind of like information as a common currency</p>
+<p>in the Bayesian approach.</p>
+<p>I considered variable one, two, and three.</p>
+<p>And then someone else could compare variable four, five, six.</p>
+<p>And you can be like, well, how good are those two different models against what we care about?</p>
+<p>In terms of informational criterion, AIC, BIC, the Bayes factor.</p>
+<p>Whereas if somebody said, well, I did model with one, two, three,</p>
+<p>three, and the P value is 0.01.</p>
+<p>And I did this with four, five, six, and the P value is 0.01.</p>
+<p>Those can't be directly compared because the P value is against like a local null hypothesis.</p>
+<p>And there's just like probably other issues.</p>
+<p>So that's one huge advantage of the Bayesian.</p>
+<p>Like we're kind of, we're past, we're 50 years past the Rubicon or 400 or whatever on Bayes.</p>
+<p>But like Bayesian formulations allow for the generative recognition model, the tail of two densities.</p>
+<p>So you can specify something that generates and recognizes data.</p>
+<p>That's one advantage.</p>
+<p>Another advantage is that you have access to all the statistical tools of frequentist statistics.</p>
+<p>And you can also access this like informational statistics.</p>
+<p>I'm sure there's like way, way, way more rabbit holes there, but like broadly speaking,</p>
+<p>instead of taking experimental observations in frequentism and then mapping them onto a T distribution</p>
+<p>only, and then saying, well, now because of the P value, let me publish this paper.</p>
+<p>In the Bayes world, there are like richer comparisons and like more nuanced penalization</p>
+<p>functions of how many parameters versus how much variance explained.</p>
+<p>You know, just for example, if anyone thought Bayesians were too confident or if it wasn't the</p>
+<p>leading modern strategy for dealing with uncertainty.</p>
+<p>So let's see.</p>
+<p>This design matrix for a linear model.</p>
+<p>The SPM design matrices are like very interesting looking.</p>
+<p>So the book, the textbook has many, many, many of these matrices.</p>
+<p>They're encoded on a gray scale.</p>
+<p>So like what's happening here, here are images through time.</p>
+<p>Each row is an image.</p>
+<p>Could be an image in a time series.</p>
+<p>Could be like different static images.</p>
+<p>Here, third column is time.</p>
+<p>So this is time point 0, 1, 2, 3, 4, 5, 6.</p>
+<p>And then here's condition 1 and 2.</p>
+<p>First condition, whether one is white and black, it doesn't matter.</p>
+<p>Here, condition, let's just say white is 1.</p>
+<p>Condition 1 was in effect.</p>
+<p>Condition 2 is not.</p>
+<p>And vice versa.</p>
+<p>But you could have overlapping conditions.</p>
+<p>So it's like a graphical representation.</p>
+<p>And like this is also common to see this kind of like waterfall.</p>
+<p>Here's patient 1, 2, 3, 4, 5.</p>
+<p>Here's the three conditions in a randomized order for the 1, 2, 3, 4, 5 patients.</p>
+<p>Here's their global blood flow.</p>
+<p>Here's some other measurements, etc.</p>
+<p>But it turns out with this, so this summarizes the total design of the experiment.</p>
+<p>And it turns out like you just smash it like a matrix multiplication.</p>
+<p>Like the design matrix multiplied by the observations.</p>
+<p>And one can imagine like if the observations have no relationship with the design matrix,</p>
+<p>there's a null hypothesis that you could get from random matrix theory.</p>
+<p>If the experimental design strongly influences the observations,</p>
+<p>there's some informational outcome.</p>
+<p>9.6 in our final few minutes, examples of generative models.</p>
+<p>Two experiments outlined in 9.5.</p>
+<p>The details are not important.</p>
+<p>Oh.</p>
+<p>But it's two, um,</p>
+<p>eye-secating models.</p>
+<p>This is a continuous time.</p>
+<p>The second time.</p>
+<p>Left.</p>
+<p>Tracking a moving target.</p>
+<p>Right.</p>
+<p>Was a categorical eye tracking.</p>
+<p>As we've mentioned and discussed, like,</p>
+<p>doing some kind of a webcam,</p>
+<p>eye-tracking cognitive model</p>
+<p>would be massive.</p>
+<p>It's also a very, you know,</p>
+<p>sensitive technology, I think.</p>
+<p>Because it would be able to determine somebody's cognitive model</p>
+<p>and their attention in different ways.</p>
+<p>But it would be interesting.</p>
+<p>I was going to say,</p>
+<p>they actually already do that in,</p>
+<p>specifically for, uh,</p>
+<p>like, championship, like, first-person shooter games.</p>
+<p>To try to catch people, uh, using aim bots.</p>
+<p>Like, so they try to predict,</p>
+<p>you know, where your eyes are going to be based on the data in the game.</p>
+<p>And if you are shooting, you know,</p>
+<p>or you're acquiring the target faster than your eyes,</p>
+<p>you know, acquire, could have acquired the target then.</p>
+<p>Wow.</p>
+<p>Yeah.</p>
+<p>Well, yeah, interesting.</p>
+<p>Maybe even some of the, um, behaviors already</p>
+<p>are out there.</p>
+<p>So it's not like this is, yeah.</p>
+<p>Like, maybe the data already exists.</p>
+<p>It's like that moving, moving target one.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>And like,</p>
+<p>interpreting this as like an occupancy density,</p>
+<p>but then having a cognitive model</p>
+<p>where that is like an uncertainty reduction or a salience</p>
+<p>or relevance observation,</p>
+<p>which is implicitly what these usages are.</p>
+<p>Disney trailers.</p>
+<p>Um,</p>
+<p>models of false inference.</p>
+<p>Julius Caesar.</p>
+<p>We had the Obama.</p>
+<p>Now we have the Caesar.</p>
+<p>Um, discussion of Bayes optimality and disorders.</p>
+<p>Different pathological and neurodiverse conditions.</p>
+<p>Addiction, impulsivity, compulsivity,</p>
+<p>delusions, hallucinations,</p>
+<p>interpersonal personality disorders,</p>
+<p>ocular motor syndromes.</p>
+<p>Pharmacotherapy, prefrontal syndromes, visual neglect,</p>
+<p>disorders of interoceptive inference.</p>
+<p>So,</p>
+<p>if there's a parameters set that works well,</p>
+<p>there's going to be various parameter sets that exhibit different outcomes.</p>
+<p>And then as per Foucault, society is the definer of madness and all of that, and the DSM.</p>
+<p>And so, you know, asterisk, asterisk, asterisk.</p>
+<p>But broadly speaking, these are models of pathology.</p>
+<p>Hmm.</p>
+<p>Um, we outlined an approach that uses theoretical models described in previous chapters to pose</p>
+<p>questions to empirical data.</p>
+<p>So, this lets us use active inference as a non-invasive tool to probe the computational processes that individuals use to make decisions.</p>
+<p>So funny.</p>
+<p>Well, the model is not invasive.</p>
+<p>Okay.</p>
+<p>I don't think any model is invasive.</p>
+<p>Ultimately, the six steps in figure 9.1</p>
+<p>is not.</p>
+<p>But it's not.</p>
+<p>That's an error.</p>
+<p>It's figure 9.2.</p>
+
+<p>Six steps in figure 9.2 provide a generic method for designing experiments</p>
+<p>to non-invasively interrogate implicit generative models, people,</p>
+<p>or other systems used to drive behavior.</p>
+<p>That's an opportunity to answer questions about the function of the nervous system in health and indices.</p>
+<p>All right.</p>
+<p>Thank you, fellows.</p>
+<p>Looking forward to the conversation next week as well.</p>
+<p>Thank you.</p>
+<p>Peace.</p>
+<p>Bye.</p>
+<p>Thank you.</p>
+</article>
+</body>
+</html>

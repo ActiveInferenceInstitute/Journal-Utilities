@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MLDawn "Brain in the Dark Design Principles for Neuromimetic Inference under Free Energy Principle"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>MLDawn "Brain in the Dark Design Principles for Neuromimetic Inference under Free Energy Principle"</h1>
+<div class="meta">Duration: 1:03:55 &middot; Views: 107</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=1ZJBJGzOn0g">https://www.youtube.com/watch?v=1ZJBJGzOn0g</a></div>
+<article>
+<p>hello welcome back it's the fourth</p>
+<p>applied active inference Symposium day</p>
+<p>two part two on November 14th</p>
+<p>2024 we're kicking off this session in</p>
+<p>the darkness of the preon on the west</p>
+<p>coast appropriately with Maron Hussein</p>
+<p>Zade</p>
+<p>bagani ml Dawn brain in-the-dark design</p>
+<p>principles for the neuromatic inference</p>
+<p>under the free energy principle so thank</p>
+<p>you Maron for joining looking forward to</p>
+<p>your</p>
+<p>presentation thank you very much it's a</p>
+<p>pleasure to be here</p>
+<p>um so today I'm going to be talking</p>
+<p>about uh the design principles for</p>
+<p>neuromatic inference under the free</p>
+<p>energy principle namely the methods that</p>
+<p>are inspired by the brain um in order to</p>
+<p>model human</p>
+<p>perception um just um want to preface</p>
+<p>this by saying that this is a</p>
+<p>collaboration with my colleague Simon</p>
+<p>orbas from Manu University and Professor</p>
+<p>friston from UCL and this work has</p>
+<p>recently been accepted at the neuro AI</p>
+<p>workshop at neurs</p>
+<p>2024 so let's just get</p>
+<p>started the content is going to be as</p>
+<p>follows we're going to be talking about</p>
+<p>first the motivation behind this work</p>
+<p>why we got started started with this</p>
+<p>idea anyway to to introduce the design</p>
+<p>principles particularly for these models</p>
+<p>and then I'm going to do a quick</p>
+<p>refresher on the math side just so we</p>
+<p>all get comfortable with the you know</p>
+<p>the upcoming derivations that I'm going</p>
+<p>to be uh expanding on which covers the</p>
+<p>math behind free the free energy</p>
+<p>principle particularly a variational</p>
+<p>free</p>
+<p>energy then I'll do a brief discussion</p>
+<p>on what free energy principle is I'm</p>
+<p>presume Knows by now because we we' had</p>
+<p>so many talks uh since uh the beginning</p>
+<p>of the Symposium but I'm going to do a</p>
+<p>quick run at that then we'll be talking</p>
+<p>about the beian brain hypothesis that</p>
+<p>furnishes the foundation for the idea of</p>
+<p>modeling human perception as a kind of</p>
+<p>inference namely basan inference next we</p>
+<p>dive into dejos between the generative</p>
+<p>model and a generative process what do</p>
+<p>we mean by each one of them knowing the</p>
+<p>distinction is crucial for understanding</p>
+<p>the free energy principle because Fe</p>
+<p>lies on this um notion that there is a</p>
+<p>boundary that separates an entity from</p>
+<p>uh the environment and separating uh</p>
+<p>basically my internal state from the</p>
+<p>external State beyond my marov blanket</p>
+<p>next we'll talk about variational free</p>
+<p>energy and how it's driven how it's</p>
+<p>derived basically and then we jump into</p>
+<p>the design principles in terms of the</p>
+<p>experiments not the things that you need</p>
+<p>to consider the things that you need to</p>
+<p>Define and how you should go about doing</p>
+<p>that in order to model human perception</p>
+<p>as a kind of online inference</p>
+<p>problem we'll go through some final</p>
+<p>thoughts some lessons learned and then</p>
+<p>I'll introduce some of the resources for</p>
+<p>those of you who are interested in uh</p>
+<p>you know pursuing free energy principle</p>
+<p>more seriously and delving into the</p>
+<p>theory and the Practical side of it and</p>
+<p>then we're going to wrap it up with uh a</p>
+<p>demonstration um using the GitHub</p>
+<p>repository that that is publicly</p>
+<p>available by um by by the way</p>
+<p>so the motivation is this so you said</p>
+<p>deep learning has revolutionized</p>
+<p>artificial intelligence um because it</p>
+<p>has automated the process of feature</p>
+<p>extraction from raw data however it</p>
+<p>actually faces a lot of problems for for</p>
+<p>example lack of outof distribution</p>
+<p>generalizability catastrophic forgetting</p>
+<p>and poor interpretability it is known as</p>
+<p>a black box basically and the</p>
+<p>catastrophic forgetting is basically</p>
+<p>when the new knowledge overwrites the</p>
+<p>previous knowledge the weights are</p>
+<p>getting overwritten so while the network</p>
+<p>learns the concept of a cat it might</p>
+<p>momentarily forget the concept of a dog</p>
+<p>because the paths are shared between</p>
+<p>different Concepts that are to be</p>
+<p>learned you see in contrast to deep</p>
+<p>learning biological neural networks in</p>
+<p>your brain and a my brain they do not</p>
+<p>suffer from these issues and this</p>
+<p>inspires the AI researchers to actually</p>
+<p>explore this interesting and intriguing</p>
+<p>area called The neuromatic Deep learning</p>
+<p>that is all about replicating the brain</p>
+<p>mechanisms namely the neuronal message</p>
+<p>passing and belief updating within the</p>
+<p>AI models purely sprayed by our best</p>
+<p>knowledge about how the brain works um a</p>
+<p>foundational theory for this approach is</p>
+<p>the free energy principle um Fe which</p>
+<p>unfortunately despite its potential is</p>
+<p>often considered too complex to</p>
+<p>understand and to implement an AI simply</p>
+<p>because one would need a myriad of</p>
+<p>disciplines um under their belt</p>
+<p>knowledge about disciplines under their</p>
+<p>belt to be able to understand the free</p>
+<p>and principle namely you need to know</p>
+<p>things for example about dynamical</p>
+<p>systems random</p>
+<p>processes you need to know about basian</p>
+<p>mechanics some Neuroscience some maybe</p>
+<p>computational neuroscience and so on and</p>
+<p>so forth so as a as a result it's not</p>
+<p>it's an intimidating topic let's say for</p>
+<p>anybody who wants to just get started</p>
+<p>with it so we seek to demystify FP and</p>
+<p>basically provide a comprehensive</p>
+<p>framework for Designing neuromatic</p>
+<p>models within well where we are actually</p>
+<p>trying to mimic humanlike perception</p>
+<p>capabilities um so here we present a</p>
+<p>road map for implementing these models</p>
+<p>and by the way a pytorch code repository</p>
+<p>for applying FP in a predictive coding</p>
+<p>network is going to be introduced here</p>
+<p>the link is here that that's a code it's</p>
+<p>publicly available and also as I said</p>
+<p>the paper will soon be available um by</p>
+<p>the neuro AI Workshop um and so</p>
+<p>hopefully you guys will have a chance to</p>
+<p>take a look at that as</p>
+<p>well now let's get started with the ref</p>
+<p>refresher of the math so first foremost</p>
+<p>the idea of a PDF so it it's an acronym</p>
+<p>for a probability density function which</p>
+<p>is a function that describes the</p>
+<p>likelihood of a continuous random</p>
+<p>variable taking on a particular value it</p>
+<p>has two conditions it has to be positive</p>
+<p>so for a given parameter theta0 for</p>
+<p>example the mean of a gaan let's say for</p>
+<p>any input X it's always positive and</p>
+<p>second we have this normalizer uh sort</p>
+<p>of condition that if you integrate a PDF</p>
+<p>across the support space of of the input</p>
+<p>name the all possible values of X you</p>
+<p>will inevitably must receive get to the</p>
+<p>actual value of one what this means is</p>
+<p>the probability of X the</p>
+<p>input getting any value in a in any</p>
+<p>range within its support is always one</p>
+<p>which means that X will always fall in</p>
+<p>in a range in that in its own accepted</p>
+<p>range of values so that's 100% so you</p>
+<p>need these two if you want to have a</p>
+<p>PDF next is the idea of an expectation I</p>
+<p>just want to remind you that the reason</p>
+<p>I'm going through this math is because</p>
+<p>later on when I introduced the steps of</p>
+<p>deriving um you know variational free</p>
+<p>energy these concepts are absolutely</p>
+<p>crucial so hopefully um I'm not going</p>
+<p>too fast but um yeah just bear that in</p>
+<p>mind that these are very important and</p>
+<p>for those of you who are you know math</p>
+<p>Savvy and these are two Basics my</p>
+<p>apologies now the idea of expectation is</p>
+<p>actually the weighted average of all the</p>
+<p>possible values that the variable</p>
+<p>consume weighted by their probability so</p>
+<p>you have the in the first line um the</p>
+<p>expected value of x over the probability</p>
+<p>distribution the PDF PX so as you notice</p>
+<p>we're integrating all possible values of</p>
+<p>X multiplied by or weighted by their</p>
+<p>corresponding</p>
+<p>probability and it's important to note</p>
+<p>that you don't you're not limited to you</p>
+<p>know calculating the um the expected</p>
+<p>value with respect to a variable but you</p>
+<p>can also do this exactly the same thing</p>
+<p>with a function so the expected value of</p>
+<p>function is again the same thing but you</p>
+<p>are summing up a weight you're basically</p>
+<p>calculating a weighted average of a</p>
+<p>function where the weights are the</p>
+<p>probability of the input to that</p>
+<p>function which is</p>
+<p>X now some key Pro probability</p>
+<p>components here now we have this idea of</p>
+<p>a joint</p>
+<p>probability um so a joint distribution</p>
+<p>between two variable X X and Y you can</p>
+<p>divide it up between like like some</p>
+<p>conditional term which is the</p>
+<p>probability of x given y multipli by the</p>
+<p>probability of Y in the first place or</p>
+<p>you can go the other way around the</p>
+<p>probability of Y given x times the</p>
+<p>probability of X you notice that if X</p>
+<p>and Y are independent this conditional</p>
+<p>term reduces to probability of X or this</p>
+<p>conditional term would reduce the</p>
+<p>probability of Y so either way on both</p>
+<p>sides you're going to have the</p>
+<p>probability of x given y um if X and Y</p>
+<p>are indeed</p>
+<p>independent next if want to move from a</p>
+<p>joint distribution to a marginalized</p>
+<p>distribution where you're actually</p>
+<p>marginalizing one of the variables out</p>
+<p>this is how you can do it so in this</p>
+<p>case if you integrate P of XY across all</p>
+<p>possible possible values of X in other</p>
+<p>words like you literally break this down</p>
+<p>and you know basically write it down in</p>
+<p>in this you know um constituent terms if</p>
+<p>you do this integration you're inev what</p>
+<p>basically what you're doing is you're</p>
+<p>getting rid of X and then you end up</p>
+<p>with a term with a probability</p>
+<p>distribution that is only a function of</p>
+<p>um</p>
+<p>Y and that's what you call a</p>
+<p>marginalized probability distribution or</p>
+<p>PDF again this is key where will this</p>
+<p>come in handy it's going to come in</p>
+<p>handy when when I'm going to be talking</p>
+<p>about the basium brain hypothesis and</p>
+<p>base Rule and so on and so forth so keep</p>
+<p>these two equations in mind</p>
+<p>please now some properties of logarithms</p>
+<p>so this is basically just the definition</p>
+<p>of a log so log of a with base b equals</p>
+<p>c the definition says that it just means</p>
+<p>a equals B to the power C right so for</p>
+<p>example the log of 8 base 2 equals 3</p>
+<p>because 2 to^ 3 is 8 so the log of</p>
+<p>multiplication is some of the logs of</p>
+<p>individual terms the log of a division</p>
+<p>is the subtraction of individual log</p>
+<p>terms that log of denominator minus the</p>
+<p>log of the</p>
+<p>denominator um the log of a fraction is</p>
+<p>literally minus the log of the swapped</p>
+<p>fraction literally swap b and a together</p>
+<p>from like you know you end up with just</p>
+<p>a negative of the of the new loog</p>
+<p>term um the power law the log of B to</p>
+<p>the power C so basically C drops down as</p>
+<p>a coefficient so you end up with this</p>
+<p>term C * log of B with base a log of a</p>
+<p>with base a if the value</p>
+<p>and the base are both the same you end</p>
+<p>up with value one and by extension if</p>
+<p>you have this term C drops down as a</p>
+<p>coefficient and this term equals one so</p>
+<p>you end up with C log of one with any</p>
+<p>base is always equal to zero why because</p>
+<p>a whatever it is to the power zero is</p>
+<p>one and last but not least this one is</p>
+<p>again very</p>
+<p>important Ln of a is basically just a</p>
+<p>logarithm a logarithm with you know</p>
+<p>where the Bas is natural number e or</p>
+<p>it's called the natural log and E is</p>
+<p>basically the oiler Oiler number so you</p>
+<p>got log of a with base e it's called</p>
+<p>just the natural log so when in in</p>
+<p>Python when you say numpy do log is</p>
+<p>basically the natural</p>
+<p>log now the free energy</p>
+<p>principle it is a theoretical framework</p>
+<p>in Neuroscience it's been developed by</p>
+<p>Carl friston</p>
+<p>so basically things that persist over</p>
+<p>time especially living systems look as</p>
+<p>if they are minimizing a certain</p>
+<p>quantity it's called free energy it is</p>
+<p>as if they're uh sort of maintaining</p>
+<p>this boundary that is called a mark of</p>
+<p>blanket to persist in the face of random</p>
+<p>fluctuations in the uh in the</p>
+<p>environment um and this really connects</p>
+<p>well with the beian brain hypothesis you</p>
+<p>as you will see shortly</p>
+<p>so the brain from the perspective of</p>
+<p>beian brain</p>
+<p>hypothesis it's actually in the game of</p>
+<p>inferring the hidden causes behind its</p>
+<p>Sensations so namely if you have if you</p>
+<p>let's say y to denote the sensations and</p>
+<p>X as the hidden State and then this</p>
+<p>inference basically means that given my</p>
+<p>observation why I want to estimate the</p>
+<p>probability distribution over</p>
+<p>X right it's basically called a</p>
+<p>posterior probability which means that</p>
+<p>after having seen an</p>
+<p>observation um what is causing in the</p>
+<p>world beyond my Markov blanket this</p>
+<p>particular sensation or</p>
+<p>observation inevitably this requires</p>
+<p>having a generative model GM of the</p>
+<p>world and this actually connects really</p>
+<p>well with Helm hold's um concept of</p>
+<p>unconscious inference and it is defined</p>
+<p>like that perception is kind of</p>
+<p>unconscious inference which means that</p>
+<p>we are in the game of you know inferring</p>
+<p>the hidden cause behind our our</p>
+<p>Sensations for example right now you're</p>
+<p>looking at the Monitor and the photons</p>
+<p>but the light is hitting the your</p>
+<p>sensory epithelia on your eyes those</p>
+<p>excitations those those hits those are</p>
+<p>your sensation and when you realize that</p>
+<p>I'm I'm watching this presentation at at</p>
+<p>at active inference Institute um and</p>
+<p>this guy is talking his name is mean</p>
+<p>this is the slide of a of a face Helm</p>
+<p>holes pictures here these are the</p>
+<p>inferences that your brain is making</p>
+<p>given that particular Sensation that is</p>
+<p>hitting the the neurons on the surface</p>
+<p>of your eyes right so it's estimating</p>
+<p>this probability distribution about</p>
+<p>what's happening beyond your markup</p>
+<p>blanket now let's talk about the idea of</p>
+<p>generative model versus generative</p>
+<p>process this is actually very very</p>
+<p>important on the right hand side you see</p>
+<p>this IDE this generative model as a box</p>
+<p>and it has some internal States let's</p>
+<p>call them hidden</p>
+<p>States this represents the neuronal</p>
+<p>activities in your brain um the</p>
+<p>excitabilities</p>
+<p>um different you know the the voltage</p>
+<p>the voltage level let's say of your</p>
+<p>neurons that are keep changing all the</p>
+<p>time they fluctuate all the</p>
+<p>time and these guys I BAS basically</p>
+<p>holding information about what's</p>
+<p>happening beyond your Markov blanket</p>
+<p>right remember what's happening beyond</p>
+<p>your Markov blanket is out of your reach</p>
+<p>you have absolutely no way of observing</p>
+<p>exactly what's happening</p>
+<p>right and here we have the generative</p>
+<p>process where xstar denotes the actual</p>
+<p>things that are happening in the world</p>
+<p>which are completely out of reach to you</p>
+<p>now if you imagine here you have the</p>
+<p>face of a person let's say steep job is</p>
+<p>standing in front of me but this is no</p>
+<p>like I'm I'm not going to see the truth</p>
+<p>what I'm going to see is some sort of a</p>
+<p>um a map some sort of a noisy</p>
+<p>transformation of the truth xstar right</p>
+<p>let's call it why this is what I'm going</p>
+<p>to be experiencing this is what's going</p>
+<p>to hit and uh induce excitation at my</p>
+<p>sensory epithelia on my eyes and then if</p>
+<p>you want to look at like um basically</p>
+<p>dig deep into the idea of perception as</p>
+<p>um unconscious inference the G the game</p>
+<p>is this your brain the generative model</p>
+<p>in your brain predicts a sensation like</p>
+<p>I'm expecting this sensation to be felt</p>
+<p>or received at my sensory epithelia on</p>
+<p>my Markov blanket and then the actual</p>
+<p>sensation why is received so the</p>
+<p>difference between the actual sensation</p>
+<p>and my prediction is called the</p>
+<p>prediction error so using that</p>
+<p>prediction error I will update my G</p>
+<p>model about the world namely I will</p>
+<p>update my belief about what's happening</p>
+<p>in the world so this is where my</p>
+<p>internal States will change to reflect a</p>
+<p>better image of the unknown World beyond</p>
+<p>my markof blanket or the parameters of</p>
+<p>my generative model are going to</p>
+<p>change um to again do a better estimate</p>
+<p>of what's happening in the world so that</p>
+<p>I will have a better prediction about</p>
+<p>the sensations that that world is going</p>
+<p>to cause right so generative process</p>
+<p>again is not directly</p>
+<p>observable and the internal uh States X</p>
+<p>this is very important carry information</p>
+<p>about the invisible external States xar</p>
+<p>beyond my mark of blanket this is where</p>
+<p>this connects to the IDE the discipline</p>
+<p>of information Theory this is a very</p>
+<p>important link by the</p>
+<p>way so the generative model what do we</p>
+<p>mean by that mathematically speaking now</p>
+<p>in a dynamical world a generative model</p>
+<p>has belief about the Dynamics of the</p>
+<p>world what it means is how fast is the</p>
+<p>world changing for example or how is it</p>
+<p>changing now if the world is at a given</p>
+<p>State X right what does its Dynamics</p>
+<p>look like for example it's velocity or</p>
+<p>acceleration or even higher temporal</p>
+<p>derivatives are like jerk basically all</p>
+<p>sorts of rates of changes the rates of</p>
+<p>change about the world that's what what</p>
+<p>I mean by Dynamics so in a generative</p>
+<p>model your generative model will have an</p>
+<p>understanding has to have a belief about</p>
+<p>how the world is changing Beyond a smart</p>
+<p>C blanket so in other words if I'm in</p>
+<p>the game of estimating the Dynamics of</p>
+<p>the world it means I'm chasing a moving</p>
+<p>Target what it means is at any given</p>
+<p>time when I want to infer what's</p>
+<p>happening in the world by the time I've</p>
+<p>made that inference the world has</p>
+<p>already moved so that basically makes</p>
+<p>inference uh a tricky task especially if</p>
+<p>I'm in a in a you know highly dynamical</p>
+<p>World it makes it more</p>
+<p>challenging the second thing that in a</p>
+<p>Gena of model we should have is the Gena</p>
+<p>of model has a belief about how the</p>
+<p>world causes its</p>
+<p>Sensations namely if the world is at any</p>
+<p>given state that by my estimation beyond</p>
+<p>my Markov blanket what is the most</p>
+<p>likely sensation why that I will be</p>
+<p>experiencing right so these two are the</p>
+<p>key components of a generative model so</p>
+<p>like mathematically this is how you show</p>
+<p>it x dot is literally the velocity of uh</p>
+<p>the world how fast it's changing</p>
+<p>mathematically it's just DX over DT and</p>
+<p>then you have some function of the</p>
+<p>states X and causes new and Theta the</p>
+<p>parameters of my generative model plus</p>
+<p>some random fluctuation Omega X so that</p>
+<p>equation is called a state Dynamics</p>
+<p>equation but what it basically is</p>
+<p>telling you is that the Dynamics of the</p>
+<p>world is driven by X by the position of</p>
+<p>the world basically and these are all my</p>
+<p>belief about how the world is changing</p>
+<p>DX over DT the velocity of the</p>
+<p>world and technically speaking f is</p>
+<p>called the flow of the state Dynamics</p>
+<p>it's the deterministic part of the state</p>
+<p>Dynamics Omega X random fluctuation is</p>
+<p>what encodes your un certainty about</p>
+<p>your belief about how the world is</p>
+<p>changing yeah the second equation uh</p>
+<p>basically connects to the second concept</p>
+<p>that I introduced here it's basically</p>
+<p>telling you that my belief about my</p>
+<p>sensation about like what's the most</p>
+<p>likely um Sensation that I'm going to be</p>
+<p>receiving is encoded in this equation</p>
+<p>where my</p>
+<p>observation is equal to the G of the</p>
+<p>function of again</p>
+<p>hidden States the causes new and the</p>
+<p>parameters some parameters plus some</p>
+<p>random fluctuation Omega y it's called</p>
+<p>the observation model again Omega y</p>
+<p>encodes your uncertainty about your</p>
+<p>belief about the most likely Sensation</p>
+<p>that you will be experiencing a</p>
+<p>sensation that is caused by the world</p>
+<p>you notice that we have this these again</p>
+<p>your hidden saer X and then uh the cause</p>
+<p>is new now if you're wondering so</p>
+<p>you know what the thetas are these are</p>
+<p>just the parameters of the functional</p>
+<p>form of FNG G but if you're wondering</p>
+<p>what causes are this is something that</p>
+<p>I'm not going to be focusing in this um</p>
+<p>particular talk but just imagine that if</p>
+<p>you have a hierarchical generative model</p>
+<p>these causes are just a subset of the</p>
+<p>Hidden States these are like the hidden</p>
+<p>states that do not have Dynamics but</p>
+<p>they're the tools that different levels</p>
+<p>in the hierarchy use to be able to talk</p>
+<p>to each other so interlayer</p>
+<p>communication is done using these news</p>
+<p>or the</p>
+<p>causes these are the ones that basically</p>
+<p>Drive the Dynamics you notice that</p>
+<p>that's why we have x. equals f of x and</p>
+<p>new they they drive they drive the</p>
+<p>Dynamics without them the layers cannot</p>
+<p>talk to each other</p>
+<p>basically now if you want to like turn</p>
+<p>this into a belief-based</p>
+<p>system where you have probabilities in</p>
+<p>play you you just need to assume a</p>
+<p>gussan distribution over your random</p>
+<p>fluctuation namely with mean mean zero</p>
+<p>and some Precision uh over your random</p>
+<p>variable X and your observation y just</p>
+<p>my you know Open brackets Precision is</p>
+<p>just inverse</p>
+<p>uncertainty um and close brackets that's</p>
+<p>just a notion in</p>
+<p>statistics Now using this if you</p>
+<p>literally replace um you know this um</p>
+<p>notion of a Galan distribution into</p>
+<p>your original equation you end up with</p>
+<p>this probabilistic sort of um uh you</p>
+<p>know notion that the probability of X do</p>
+<p>given all of these three</p>
+<p>elements is distributed according to our</p>
+<p>normal distribution where again the</p>
+<p>Precision is the same as the Precision</p>
+<p>of your random fluctuation but you</p>
+<p>notice that because we're summing up f</p>
+<p>with this guy over here the the mean of</p>
+<p>that Gan distribution becomes this F</p>
+<p>term same story for the your belief</p>
+<p>about your why your your observations</p>
+<p>and that is why I'm saying that f of x</p>
+<p>and new and Theta is the expected your</p>
+<p>expected um Dynamics about X do because</p>
+<p>it's literally the expected value of the</p>
+<p>gussian distribution same story here G</p>
+<p>of X new and Theta is your expectation</p>
+<p>about your observation your sensation</p>
+<p>again it is the sort of expected value</p>
+<p>of this gussan distribution the value</p>
+<p>that is most likely to occur</p>
+<p>so that's generative model two things we</p>
+<p>know the Dynamics of the world we have</p>
+<p>beliefs let's say we don't know it we</p>
+<p>have beliefs about the Dynamics of the</p>
+<p>world and we have belief about uh</p>
+<p>basically the most likely Sensation that</p>
+<p>we will be experiencing if such and such</p>
+<p>was the State of Affair of the world</p>
+<p>let's say x was the State of Affairs in</p>
+<p>the</p>
+<p>world now we talked about inference</p>
+<p>let's talk about Bas rule really quickly</p>
+<p>now here this is base Rule and the</p>
+<p>components of Base rule are as follows</p>
+<p>we have the likelihood term which is the</p>
+<p>probability of my observation given uh</p>
+<p>the state of the world we have a prior</p>
+<p>belief which means that before observing</p>
+<p>why this is my belief about what the</p>
+<p>world looks like we have the model</p>
+<p>evidence which is probability of data</p>
+<p>and these two together is called</p>
+<p>basically the the generative model again</p>
+<p>like this is in line with what what we</p>
+<p>discussed here this is basically your</p>
+<p>prior belief about the Dynamics and this</p>
+<p>is literally the mapping between X and Y</p>
+<p>which is your likelihood term so I'm not</p>
+<p>saying anything new here these two</p>
+<p>together are your generative model and</p>
+<p>this is your model evidence this is a</p>
+<p>devil right this is intractable you</p>
+<p>notice that in a real life scenario we</p>
+<p>will not be able to calculate this and</p>
+<p>this term on the left hand side is</p>
+<p>called posterior probability it's your</p>
+<p>belief about the distribution over</p>
+<p>hidden state of the world</p>
+<p>X and when you map your generative model</p>
+<p>using base rule to uh this posterior</p>
+<p>distribution we call this model</p>
+<p>inversion right so if whenever you hear</p>
+<p>model inversion in the context of FP</p>
+<p>that's what we mean by</p>
+<p>that so this evidence again going back</p>
+<p>to our idea of marginalizing a variable</p>
+<p>out if you again just remind yourself</p>
+<p>that this is how you marginalize the</p>
+<p>hidden State hit or X out you just end</p>
+<p>up with probability of let's say</p>
+<p>sensation why you notice that this</p>
+<p>integration could get really nasty</p>
+<p>really fast which means that if you have</p>
+<p>you you could have basically any number</p>
+<p>of hidden States X and for each X you</p>
+<p>would have a range of possible values so</p>
+<p>this thing could turn into a potentially</p>
+<p>like potentially in infinite number of</p>
+<p>nested integrals basically it can it can</p>
+<p>become intractable really really quickly</p>
+<p>so what this means is we will not be</p>
+<p>able to calculate this posterior</p>
+<p>probability um exactly so what should we</p>
+<p>do the answer is variational</p>
+<p>inference so because U you you see</p>
+<p>probability of data your model evidence</p>
+<p>is intractable but at the same time</p>
+<p>ironically it's the true measure of how</p>
+<p>good your generative model is um which</p>
+<p>means that we call this also marginal</p>
+<p>likelihood right so if it is high it</p>
+<p>means</p>
+<p>whatever sensation you're experiencing</p>
+<p>right now under your model of the world</p>
+<p>under your generative model of the world</p>
+<p>the probability of that particular</p>
+<p>sensation is very high it means under</p>
+<p>your model of the world everything that</p>
+<p>you're sensing you already expected to</p>
+<p>to sense it so it means you have such a</p>
+<p>strong and uh you know and precise</p>
+<p>belief and precise yeah belief about the</p>
+<p>Dynamics of the world and how the</p>
+<p>sensations are generated from those uh</p>
+<p>those dynamics that whatever you're</p>
+<p>receiving is not surprising that that's</p>
+<p>why model evidence is such a strong</p>
+<p>metric for evaluating how good a</p>
+<p>generative model is but unfortunately</p>
+<p>it's intractable so can we find a bound</p>
+<p>to this namely a lower bound and the</p>
+<p>answer is yes I'm going to introduce the</p>
+<p>idea of a evidence lower bound and the</p>
+<p>next slide so by doing this I'm turning</p>
+<p>the problem on its head so I'm turning a</p>
+<p>converting let's say a an intractable</p>
+<p>exact calculation of the</p>
+<p>posterior and I'm replacing that with a</p>
+<p>tractable</p>
+<p>approximation um well basically a</p>
+<p>tractable approximate estimation of the</p>
+<p>posterior and that's called variational</p>
+<p>inference and I'll tell you what why we</p>
+<p>call this variational by the way because</p>
+<p>the objective function that we're going</p>
+<p>to be minimizing to do that is VAR free</p>
+<p>energy is actually a function of a</p>
+<p>function it's a functional so where</p>
+<p>wherever you're dealing with functionals</p>
+<p>and optimizing functionals U that's</p>
+<p>where the calculus of variation comes</p>
+<p>into play that's what what it means by</p>
+<p>variational</p>
+<p>inference now on the right hand side I'm</p>
+<p>just going to put some reminders the</p>
+<p>expected value and the this particular</p>
+<p>particular law of logarithms and in the</p>
+<p>middle this is called genon inequality</p>
+<p>just keep keep them keep an eye on this</p>
+<p>one it just says that the expected value</p>
+<p>of a log of something is always a lower</p>
+<p>bound to the log of the expected value</p>
+<p>of that thing right so this is going to</p>
+<p>come in handy so</p>
+<p>let's study the this U amazing concept</p>
+<p>of evidence lower bound remember P of Y</p>
+<p>is intractable we want to find the bound</p>
+<p>to</p>
+<p>it so this is log of probability of data</p>
+<p>um this is how we mark marginalized X</p>
+<p>out and you can multiply and divide by</p>
+<p>this by by by something right whatever</p>
+<p>it is so here QX is we call this</p>
+<p>surrogate the surrogate posterior over</p>
+<p>the hidden State this is going to be a</p>
+<p>representative or your approximation to</p>
+<p>the true unknown posterior belief right</p>
+<p>so let's call it QX and it's by the way</p>
+<p>it's really a key factor in variational</p>
+<p>inference and Fe so keep that in mind</p>
+<p>this Q um um variable this Q</p>
+<p>function so moving on you you do a</p>
+<p>little bit of play here so this this</p>
+<p>sort of Cu moves to the denominator and</p>
+<p>you notice that this is the definition</p>
+<p>of expectation with respect to this</p>
+<p>particular distribution Q right just</p>
+<p>getting the definition from uh from</p>
+<p>here and according to jens's</p>
+<p>inequality um this term has a lower B</p>
+<p>and this is the lower bound to it so the</p>
+<p>expected of of this term the expected</p>
+<p>value of this term over this probability</p>
+<p>distribution you have the joint here and</p>
+<p>you have the surrogate distribution here</p>
+<p>and you see so this right hand side</p>
+<p>again remind yourself this is your log</p>
+<p>model evidence and we found the lower</p>
+<p>bound to it using jens's inequality</p>
+<p>right so the lower bound is found this</p>
+<p>guy is your evidence lower</p>
+<p>bound um and that that's a key finding</p>
+<p>that by maximizing this evidence lower</p>
+<p>band you're actually maximizing uh your</p>
+<p>your log model evidence and you're</p>
+<p>getting closer and closer to the true</p>
+<p>posterior now elbow and vfe just want to</p>
+<p>make sure that we're clear on this we</p>
+<p>have elbow here um but VF or variational</p>
+<p>inference is just negative of your elbow</p>
+<p>so if you multiply NE minus one by both</p>
+<p>sides of this you end up with this term</p>
+<p>always bigger than minus log probability</p>
+<p>of data this is called surprisal and</p>
+<p>this is called variational fre energy</p>
+<p>that's why we say VF is always an upper</p>
+<p>bound to surprise so maximizing elbow or</p>
+<p>minimizing VF they they both mean the</p>
+<p>same</p>
+<p>thing and um this is basically called</p>
+<p>variational free energy and that's why</p>
+<p>we call this a functional because this</p>
+<p>thing is a function of a of another</p>
+<p>function and this called surprisal or</p>
+<p>surprise and just shows you in a plot</p>
+<p>that here you've got variational free</p>
+<p>energy that's always an upper bound to</p>
+<p>the true unknown surprisal or by</p>
+<p>extension you got your elbow here that's</p>
+<p>always a lower bound to the true um log</p>
+<p>model evidence so VF has multiple</p>
+<p>incarnations it comes in different form</p>
+<p>by playing with the math so if this is</p>
+<p>your this is your vfe just expand you</p>
+<p>can just expand the joint and the</p>
+<p>denominator and then literally use the</p>
+<p>log rule of the you know uh the division</p>
+<p>turned into the subtraction and then you</p>
+<p>can distribute the expectation across</p>
+<p>the two different terms and this um this</p>
+<p>basically results into like just</p>
+<p>basically swapping these two terms uh by</p>
+<p>each other you end up with this equation</p>
+<p>right and these terms have names so this</p>
+<p>one actually this expected value between</p>
+<p>your belief about the the hidden State</p>
+<p>and the true unknown posterior this</p>
+<p>expectation is called a a</p>
+<p>a KL Divergence it measures how</p>
+<p>different your belief about X QX is from</p>
+<p>the true unknown posterior that's why</p>
+<p>it's called an approximate error</p>
+<p>approximation error and the second term</p>
+<p>is your surprise</p>
+<p>right um so um if I want to like show</p>
+<p>you like what this actually means</p>
+<p>visually this is really interesting so</p>
+<p>this is your surprisal right and on top</p>
+<p>of surprisal you're adding thex imation</p>
+<p>error this is this sort of length over</p>
+<p>here and then this constitutes your free</p>
+<p>energy what this means is like free</p>
+<p>energy is always an upper bound on</p>
+<p>surprisal and the error the that Gap is</p>
+<p>your approximation error is how far your</p>
+<p>belief about X is from the true</p>
+<p>posterior so by tuning your generative</p>
+<p>model your variational free energy goes</p>
+<p>down and when it goes down this Gap is</p>
+<p>reducing so which means that your Q gets</p>
+<p>closer and closer to the true true</p>
+<p>posterior which means a better and</p>
+<p>better perception about the world and</p>
+<p>this doesn't end here your free energy</p>
+<p>will get closer and closer to the</p>
+<p>surprisal um basically by extension to</p>
+<p>the model evidence which is the metric</p>
+<p>that we're going to be use using for you</p>
+<p>know comparing different models with one</p>
+<p>another a second incarnation of vfe is</p>
+<p>again we're going to expand the</p>
+<p>denominator again into this joint so</p>
+<p>previously was P of x given y times</p>
+<p>probity of y now we go pro y given x</p>
+<p>times P of X and again Distributing um</p>
+<p>the log and then we distribute the uh</p>
+<p>you know the</p>
+<p>expectation and then just you know uh</p>
+<p>swapping the terms again you have this</p>
+<p>scale Divergence over here and you have</p>
+<p>this negative negative expectation now</p>
+<p>this thing over here is called accuracy</p>
+<p>it means how accurate am I under my</p>
+<p>belief of the world the expect the</p>
+<p>expected value of observing why under my</p>
+<p>estimation of where the world is X so</p>
+<p>the higher this is it means the more</p>
+<p>accurate your belief about the world is</p>
+<p>that is that is basically causing your</p>
+<p>observations but at the same time this</p>
+<p>term over here is called complexity it</p>
+<p>means that if you have some prior belief</p>
+<p>about the world you you will not be able</p>
+<p>to just move your queue wherever you</p>
+<p>want it is it has to stay close to your</p>
+<p>prior belief over here so this is</p>
+<p>basically a reg regularizer if you</p>
+<p>will um and the third</p>
+<p>Incarnation is um basically again here</p>
+<p>this is the definition of vfe again you</p>
+<p>know the log rule um so we end up with</p>
+<p>these two terms so this guy over here is</p>
+<p>called expected</p>
+<p>sorry it's called expected internal</p>
+<p>energy and this guy is your entropy so</p>
+<p>this the expected value of log of QX we</p>
+<p>call this entropy</p>
+<p>um how do we minimize raal free energy</p>
+<p>we have to maximize our entropy and we</p>
+<p>have to maximize our internal energy now</p>
+<p>this term makes sense that we need to</p>
+<p>maximize it but what does this one mean</p>
+<p>it means that your Q will stay as smooth</p>
+<p>as possible as simple as possible this</p>
+<p>connects really well with aom's Razer if</p>
+<p>you're from machine learning background</p>
+<p>that your the best model is the one that</p>
+<p>provides the most accurate account of</p>
+<p>the data but at the same time the</p>
+<p>simplest explanation for that data this</p>
+<p>Simplicity is enforced by this entropy</p>
+<p>term it it states</p>
+<p>smooth so this is very interesting so</p>
+<p>these were just three incarnations of</p>
+<p>variational free energy and the goal of</p>
+<p>inverting the generative model is</p>
+<p>basically we the GM strives to minimize</p>
+<p>this vfe um this achieves two things I</p>
+<p>hinted this uh just a little bit</p>
+<p>previously but it means that the actual</p>
+<p>uh value of VF will approach the</p>
+<p>intractable minus log probability of</p>
+<p>data this is going to be used for model</p>
+<p>comparison and the surrogate</p>
+<p>distribution will approach the unknown</p>
+<p>posterior belief remember that was the</p>
+<p>goal of um you know perception in the</p>
+<p>first place and once you reach that</p>
+<p>basically minimize your variational free</p>
+<p>energy you can use the actual value of</p>
+<p>free energy as the metric as a proxy for</p>
+<p>the unknown model evidence to compare</p>
+<p>different generative models together</p>
+<p>right so the model with the lowest</p>
+<p>rational free energy is going to be the</p>
+<p>best model yeah I think I've explained</p>
+<p>that one now just to let you know that</p>
+<p>the true form of the posterior is</p>
+<p>unknown and you see the the the terms</p>
+<p>like the the probability distribution</p>
+<p>The Joint distribution here um it is not</p>
+<p>guaranteed that um you know they're</p>
+<p>analytically simple you know to to</p>
+<p>derive and and you know work with</p>
+<p>because of that um there is this idea</p>
+<p>that we can actually use llas</p>
+<p>approximation to break down each one of</p>
+<p>the distributions and basically</p>
+<p>approximate them using a tailor</p>
+<p>expansion um particularly up to the</p>
+<p>third term which means that I'm</p>
+<p>providing a quadratic approximation</p>
+<p>using tailor expansion for each one of</p>
+<p>the components um within variational fee</p>
+<p>energy um unfortunately I don't have the</p>
+<p>time to go over the detailed derivation</p>
+<p>but suffice it to say that the result of</p>
+<p>you know s approximating all the</p>
+<p>components is that the variational free</p>
+<p>energy simplifies the dise equation for</p>
+<p>those of you who are interested at to</p>
+<p>know the details I encourage you to look</p>
+<p>at the primer on variational plusus</p>
+<p>paper which is an amazing paper um it</p>
+<p>goes through all the details of</p>
+<p>derivation so basically free energy um</p>
+<p>reduces to log of the joint</p>
+<p>distribution and you have the posterior</p>
+<p>um covariance and then yeah n is</p>
+<p>basically the number of parameters and</p>
+<p>the states that you have and so on and</p>
+<p>so</p>
+<p>forth now predictive coding this this is</p>
+<p>basically where it gets even more</p>
+<p>interesting it is a basically a</p>
+<p>hierarchical generative model that we're</p>
+<p>going to be using to model human</p>
+<p>perception and the goal is to invert</p>
+<p>this hierarchical model so it's a</p>
+<p>powerful framework to describe how the</p>
+<p>cortex accumulates evidence from noisy</p>
+<p>stimuli um it's an application of the</p>
+<p>free energy principle it focuses on how</p>
+<p>this literally fantastic organ can</p>
+<p>perform probabilistic inference about</p>
+<p>the most likely hidden cause that has</p>
+<p>caused the sensory signal um it assumes</p>
+<p>that the brain has a generative model of</p>
+<p>the world through which it constantly</p>
+<p>infers the hidden states of the world</p>
+<p>and it can also learn the parameters</p>
+<p>while inferring the hidden state of the</p>
+<p>world so model inversion happens by</p>
+<p>minimizing variational free energy again</p>
+<p>even though it's hierarchical but the</p>
+<p>concept is stays the same so in</p>
+<p>predictive coding we have this concept</p>
+<p>of top- down predictions where</p>
+<p>predictions go from inside out about</p>
+<p>your Sensations right and then the</p>
+<p>prediction error is calculated like what</p>
+<p>I described before and then this these</p>
+<p>errors if I want to be more precise the</p>
+<p>Precision weighted prediction errors are</p>
+<p>sent back from outside in uh or they</p>
+<p>call it some up sort of Direction so</p>
+<p>that the the estimations of the world</p>
+<p>the estimation of the posterior beliefs</p>
+<p>about the world are corrected basically</p>
+<p>that's what model inversion that's when</p>
+<p>model inversion happens when the</p>
+<p>posterior estimates get adjusted and it</p>
+<p>looks like something like this we have</p>
+<p>this</p>
+<p>hierarchical model that we have the same</p>
+<p>story of State Dynamics and observation</p>
+<p>model but here we have this happening at</p>
+<p>each level and then you notice that</p>
+<p>these news these causes are the ones</p>
+<p>that link layer I to I minus one that's</p>
+<p>the important part that without these</p>
+<p>news without these causes the layers</p>
+<p>cannot talk to each other you notice</p>
+<p>that it is a hierarchical dynamical</p>
+<p>system uh</p>
+<p>basically</p>
+<p>um now how do we design an experiment um</p>
+<p>for you know for for for this kind of</p>
+<p>perception neuromatic modeling using the</p>
+<p>free energy principle I just want to</p>
+<p>give you the sort of ingredients here</p>
+<p>you the designer you first have to</p>
+<p>Define your generative process that's X</p>
+<p>that's the true uh hidden stat I should</p>
+<p>have maybe said xar yeah xstar would</p>
+<p>have been a better notion then you will</p>
+<p>generate the observations this is some</p>
+<p>sort of some transformation of the X's</p>
+<p>you can add noise to it you can</p>
+<p>transform it the way you want but that's</p>
+<p>going to be the observations that's</p>
+<p>going to hit the Markov blanket this</p>
+<p>these are what this uh this is basically</p>
+<p>where the sensory state observ and</p>
+<p>receive those</p>
+<p>Sensations you have to Define your</p>
+<p>generative model this this part is the</p>
+<p>tricky part right the fs and G's in your</p>
+<p>dynamical system that's where uh</p>
+<p>everything gets really tricky how would</p>
+<p>you define them if it's hierarchical how</p>
+<p>many layers should it have basically</p>
+<p>these are the big</p>
+<p>questions you have to define the</p>
+<p>evaluation metric that how would you</p>
+<p>define different Genera of models um</p>
+<p>with each other and then you uh you have</p>
+<p>to design the online State inference</p>
+<p>Loop now this is by the way just for</p>
+<p>this case for this presentation is just</p>
+<p>about State inference and then you have</p>
+<p>to compare different gen of models this</p>
+<p>is where beian model comparison comes</p>
+<p>into play now here um you basically use</p>
+<p>a dynamical system here I'm just using a</p>
+<p>lotka voltera process that you know</p>
+<p>captures the Dynamics between uh Hunter</p>
+<p>and and the prey together it's a</p>
+<p>two-dimensional sort of world if you</p>
+<p>will so by solving the trajectories by</p>
+<p>solving the differential equations you</p>
+<p>get to this sort of trajectory so you</p>
+<p>have 1,000 data points here each which</p>
+<p>is two-dimensional so this is the</p>
+<p>unknown states of the world right this</p>
+<p>is the unknown dynamics of the world to</p>
+<p>gener a</p>
+<p>process again it's unknown it's beyond</p>
+<p>the mark of</p>
+<p>blanket again so this is the figure that</p>
+<p>we saw before now you can assume that</p>
+<p>you got the brain here and you've got uh</p>
+<p>the generative process xstar on the left</p>
+<p>hand side the observations why are</p>
+<p>basically a noisy version of the same</p>
+<p>hidden states that you notice that this</p>
+<p>this is really noisy here right so the</p>
+<p>brain has to receive that and then infer</p>
+<p>the true States here</p>
+<p>right so for a one layer predictive</p>
+<p>coding Network for these particular</p>
+<p>experiments you have just s a simple</p>
+<p>sort of generative model it's just one</p>
+<p>layer and then uh I'm sort of comparing</p>
+<p>two generative models here where the</p>
+<p>flow of the of the state Dynamics are</p>
+<p>different on the left hand side you have</p>
+<p>something that we call just it's just</p>
+<p>just a pullback attractor uh we have</p>
+<p>this 2 by two Matrix here and we have</p>
+<p>this sort of point of Attraction which</p>
+<p>assumes that everything collapses into</p>
+<p>this world just just to be clear it</p>
+<p>means that my generative model of the</p>
+<p>world assumes that the world Beyond The</p>
+<p>Mark of blanket is attracted to a</p>
+<p>particular Center called saigh right</p>
+<p>that's what I mean by believing</p>
+<p>something about the world whereas the</p>
+<p>second flow the second generative model</p>
+<p>is a sinusoidal sort of belief it means</p>
+<p>that I believe there is something</p>
+<p>periodic about the world beyond my</p>
+<p>Markov blanket and the G's I just kept</p>
+<p>them as identity which means that</p>
+<p>whatever new is is going to be my</p>
+<p>prediction about my sensation right so I</p>
+<p>kept the G's identical now the</p>
+<p>evaluation metric this is very</p>
+<p>important as the inference is happening</p>
+<p>online for every observation you have to</p>
+<p>make an inference um and then predict</p>
+<p>the sensation and then calculate the</p>
+<p>prediction error and then eventually</p>
+<p>calculate variational free energy</p>
+<p>because it's happening online you can</p>
+<p>actually literally accumulate your free</p>
+<p>energy variational free energy across</p>
+<p>the entire inference period so at the</p>
+<p>end you will end up with one scalar</p>
+<p>value it's called the time integral of</p>
+<p>of your variational free energy they</p>
+<p>call it free action right it's just a</p>
+<p>fancy way of summing up variational free</p>
+<p>energy across the entire infer inference</p>
+<p>period in basically it's time</p>
+<p>integral and it is</p>
+<p>it's an upper bound to the accumulated</p>
+<p>surprise so variational free energy is</p>
+<p>an upper bound to surprise and um free</p>
+<p>action is an is an upper bound to the</p>
+<p>accumulat surprise because free action</p>
+<p>is in and out of itself an accumulation</p>
+<p>of variational free energy and this is</p>
+<p>you have to also then Define the online</p>
+<p>State inference Loop uh I don't want to</p>
+<p>go into too much detail here but um</p>
+<p>basically for each observation you will</p>
+<p>make predictions and you Cal the</p>
+<p>prediction errors you calculate your</p>
+<p>free energy you calculate the gradient</p>
+<p>of free energy with respect to your</p>
+<p>estimations of the posterior that's the</p>
+<p>key part and then this is where you have</p>
+<p>to update your beliefs about the world</p>
+<p>and you notice you notice that it's a</p>
+<p>differential equation because the way</p>
+<p>you're going to update your um your</p>
+<p>belief about the world it's</p>
+<p>continuous it happens in continuous time</p>
+<p>it means between each two observations</p>
+<p>Yi and Yi + one I have to integrate over</p>
+<p>this update rule to move from my</p>
+<p>previous belief about the world mux to a</p>
+<p>new mux at the next time step and that's</p>
+<p>why the integration happens here and</p>
+<p>just so you know this equation is</p>
+<p>basically saying that the amount by</p>
+<p>which I'm going to change my belief</p>
+<p>about the world mux is first of all the</p>
+<p>gradient of free energy with respect to</p>
+<p>mux right that's typical gradient</p>
+<p>descent but the second term it serves as</p>
+<p>a momentum it means that if I'm going to</p>
+<p>update my belief about where the world</p>
+<p>is I'm going to consider the velocity of</p>
+<p>the world as well right if I'm going to</p>
+<p>estimate the velocity of the world I'm</p>
+<p>going to consider the acceleration of</p>
+<p>the world as well it's it's similar to</p>
+<p>the idea of momentum in optimization</p>
+<p>algorithms this is the bit that helps</p>
+<p>you you know catch up with the chasing</p>
+<p>Target that is the world that I talked</p>
+<p>about in the beginning and then by you</p>
+<p>integrate this differential equation to</p>
+<p>to update your belief about the world</p>
+<p>and then the next observation happens so</p>
+<p>this continues for all the observations</p>
+<p>and you're accumulating your free energy</p>
+<p>as time goes by and the result will be</p>
+<p>your ve your free action so the result</p>
+<p>is this so this is the first generative</p>
+<p>model with the pullback</p>
+<p>attractor um so this is the uh infert</p>
+<p>state right and this is the this is</p>
+<p>interesting this is the accumulated free</p>
+<p>action right um very very interesting</p>
+<p>you notice that free action um is having</p>
+<p>these regular jumps it means</p>
+<p>periodically I'm getting surprised about</p>
+<p>my Sensations remember that if you note</p>
+<p>here the this is where these</p>
+<p>nonlinearities happen it means that my</p>
+<p>simple pullback attractor fails to</p>
+<p>capture those Dynamics so it gets</p>
+<p>surprise but interestingly where things</p>
+<p>are linear and simple I'm not getting</p>
+<p>much surprise so it's almost constant</p>
+<p>here so I'm good at capturing simple</p>
+<p>Dynamics but not highly not the ones</p>
+<p>that are nonlinear whereas the</p>
+<p>sinusoidal one you notice that we are</p>
+<p>capturing the magnitudes much better we</p>
+<p>have a steady increase in free action we</p>
+<p>don't get surprise for some Dynamics and</p>
+<p>less surprise for other Dynamics we are</p>
+<p>always equally surprised for everything</p>
+<p>which is interesting that like here we</p>
+<p>are getting surprised consistently for</p>
+<p>everything but here we are not getting</p>
+<p>much surprise for these particular</p>
+<p>Dynamics so one is good Capt good in</p>
+<p>capturing nonlinear Dynamics periodic</p>
+<p>Dynamics the other one is better in</p>
+<p>capturing simpler linear Dynamics which</p>
+<p>is interesting and notice that the</p>
+<p>reaction here is much lower than the</p>
+<p>freeaction here so basically this means</p>
+<p>that this model is much better now</p>
+<p>looking at the Gen the generative power</p>
+<p>of these uh GMS so this is the G</p>
+<p>function if you remember G of X and mu</p>
+<p>that's the prediction of your one layer</p>
+<p>predictive coding Network about the</p>
+<p>sensation that's the bit that gets</p>
+<p>compared with the true sensation and the</p>
+<p>prediction error is calculated remember</p>
+<p>that observations just like hden say are</p>
+<p>two-dimensional so this is the first</p>
+<p>dimension of why the true sensation and</p>
+<p>why had the predicted sensation you</p>
+<p>notice that they're almost close and</p>
+<p>also with the second um Dimension they</p>
+<p>it's not doing a bad job right but for</p>
+<p>the second generative model again it's</p>
+<p>doing a much better job in capturing the</p>
+<p>magnitudes of this of the system again</p>
+<p>you notice that it's not so good in</p>
+<p>generating these bits whereas this the</p>
+<p>first model is better in generating</p>
+<p>prediction more accurate predictions of</p>
+<p>the of the first</p>
+<p>St now these are the results the</p>
+<p>pullback attractor and trigonometric the</p>
+<p>sinos soidal um sort of flow you notice</p>
+<p>that the freeaction of the second model</p>
+<p>is lower it's better and M loss which</p>
+<p>basically comp uh compares the estimated</p>
+<p>X and the true X the inferred X and true</p>
+<p>X together is is also slightly lower so</p>
+<p>free action shows that the second model</p>
+<p>is good and this is where beijia model</p>
+<p>comparison uh comes into play where we</p>
+<p>use base factor for comparison it</p>
+<p>basically says that we take the the</p>
+<p>model evidence for each one of the</p>
+<p>models and we divide them now because</p>
+<p>these are intractable we're using free</p>
+<p>action as a proxy and when you put the</p>
+<p>values of free action you get to this</p>
+<p>value because it's higher than one it</p>
+<p>basically means that you have to pick</p>
+<p>the second model because it has a lower</p>
+<p>free action it doesn't get as surprised</p>
+<p>as the first one and at some point of</p>
+<p>caution free action versus MSE MSE as a</p>
+<p>measure of accuracy should never and I</p>
+<p>repeat never be consulted on its own</p>
+<p>because it ignores complexity so for</p>
+<p>example what if the freeaction of model</p>
+<p>one and model two the model one had a</p>
+<p>lower freeaction but what if the MSE of</p>
+<p>the first model was actually higher than</p>
+<p>M than the second model which one would</p>
+<p>you choose again you have to choose</p>
+<p>model one because this has higher power</p>
+<p>of generalizability to the Unseen data</p>
+<p>so it has less chances of overfitting to</p>
+<p>the data we call that free action again</p>
+<p>as complexity minus accuracy so what if</p>
+<p>we remove complexity again we will</p>
+<p>overfit but that was important some</p>
+<p>final thoughts you can definitely learn</p>
+<p>the parameters and also estimate</p>
+<p>uncertainty about the world so these are</p>
+<p>the things that are not covered in this</p>
+<p>presentation but you can do that this is</p>
+<p>where the separation of time scales um</p>
+<p>will come into play the demm algorithm</p>
+<p>does exactly that this is dynamic</p>
+<p>expectation maximization I encourage you</p>
+<p>guys to take a look at that algorithm</p>
+<p>it's you using that you can solve the</p>
+<p>triple estimation</p>
+<p>problem now can I go beyond x dot yes</p>
+<p>you can that's where you jump into the</p>
+<p>world of the generalized coordinates of</p>
+<p>motion where you're not only using X</p>
+<p>estimating X do but you're also</p>
+<p>estimating higher temporal derivatives</p>
+<p>of uh of the world you have a a system</p>
+<p>of couple differential equations rather</p>
+<p>than having just two equations which is</p>
+<p>very very interesting</p>
+<p>actually um also remember that active</p>
+<p>inference is not the same as predictive</p>
+<p>coding um particularly in the philosophy</p>
+<p>um you know um communities I've heard</p>
+<p>that people use active inference when</p>
+<p>they're talking about predictive coding</p>
+<p>remember that in predictive coding we</p>
+<p>are simply doing um making sense of the</p>
+<p>world there is no concept of planning or</p>
+<p>action in play um the ml Community</p>
+<p>unfortunately um does not work with the</p>
+<p>Dynamics of the world and AI uh um</p>
+<p>basically is going to the opposite</p>
+<p>direction instead of uh using smart data</p>
+<p>we're just going bigger and bigger data</p>
+<p>so we would like a world that chat GPT</p>
+<p>would also ask you a question and</p>
+<p>becomes curious about you to to receive</p>
+<p>information that it selects basically so</p>
+<p>where should you start with with the</p>
+<p>free energy principle these are the</p>
+<p>resources that I strongly recommend you</p>
+<p>some videos on YouTube hopefully you can</p>
+<p>later on pause this video and go through</p>
+<p>these links some papers that I'm</p>
+<p>recommending here and the last one the</p>
+<p>two books that I believe the red one the</p>
+<p>predictive minus for philosophy</p>
+<p>community and the first one goes through</p>
+<p>the math extensively it's a beautiful uh</p>
+<p>book yeah the uh and the videos I I I</p>
+<p>recommend that you guys start with the</p>
+<p>videos in the first place and I would</p>
+<p>like to just acknowledge our funding</p>
+<p>from the maryury and also my colleagues</p>
+<p>Simon bbus and professor priston and</p>
+<p>also acknowledge the folks that UCL UC</p>
+<p>UCD and monach University who have</p>
+<p>always supported uh uh our work and</p>
+<p>here's the link to the the code that</p>
+<p>everybody can just take a look and run</p>
+<p>the read me file is self-explanatory</p>
+<p>unfortunately I ran out of time and I</p>
+<p>won't be able to show a demo but yeah</p>
+<p>that's it so thank you Maron that was</p>
+<p>great and and uh we have 10 minutes if</p>
+<p>you want to show anything or I can ask</p>
+<p>some questions but but we have till five</p>
+<p>minutes after if you want to show</p>
+<p>anything or even just scanning the repo</p>
+<p>could be cool okay sure sure sure that's</p>
+<p>great thank you for that but just wanted</p>
+<p>to comment your your educational</p>
+<p>material and the YouTube channel are</p>
+<p>great and and they are they're an</p>
+<p>excellent supplement to the textbook and</p>
+<p>to the math</p>
+<p>learning I appreciate that yes um</p>
+<p>absolutely uh so yeah I also have a</p>
+<p>YouTube channel mlon feel free to take a</p>
+<p>look I'm actually reading the active</p>
+<p>inference book on that channel so</p>
+<p>hopefully it would be of interest to you</p>
+<p>guys and this is the repository that is</p>
+<p>publicly available um the read me file</p>
+<p>is pretty self-explanatory and this is</p>
+<p>just a one predictive coding Network for</p>
+<p>the task of inference and modeling human</p>
+<p>perception as a task of inference these</p>
+<p>are the same pluss that you've seen um</p>
+<p>so basically all the functions are here</p>
+<p>right everything you need is here so the</p>
+<p>main function is the one that you're</p>
+<p>going to be dealing with and the yaml</p>
+<p>file is where you actually choose the</p>
+<p>parameters uh of your experiment just to</p>
+<p>show you in action what it looks like so</p>
+<p>if you actually clone this repository on</p>
+<p>your machine you just have to go to the</p>
+<p>yaml file and just do a quick scan of</p>
+<p>the readme file but basically uh using</p>
+<p>this is where you define your generative</p>
+<p>process for example you can say I want</p>
+<p>it to be a lotka vola process and this</p>
+<p>is how I'm going to be picking the DT</p>
+<p>and the total time uh to actually solve</p>
+<p>the trajectories of my generative</p>
+<p>process you can Define your generative</p>
+<p>model here you can Define the Dynamics</p>
+<p>to be like a pullback attractor or a</p>
+<p>trigonometric one the likelihood for</p>
+<p>example is identity here these are the</p>
+<p>dimensions of your X and Y two and one</p>
+<p>you might wonder why it's two for X is</p>
+<p>because you have x and x dot together</p>
+<p>where the world is and how fast the</p>
+<p>world is changing and this is just Why</p>
+<p>in your generative model you can</p>
+<p>increase them uh that's where you jump</p>
+<p>into the world of generalized</p>
+<p>coordinates of motion but this is beyond</p>
+<p>the scope of my talk today again this</p>
+<p>these bits are beyond the the scope of</p>
+<p>our talk today this is where uh you</p>
+<p>basically C talk about the correlation</p>
+<p>between the noise process across</p>
+<p>different levels of the generalized</p>
+<p>coordinates so the noise on the velocity</p>
+<p>how does it correlate with the noise</p>
+<p>process on the acceleration your belief</p>
+<p>about the acceleration of the world so</p>
+<p>how do they interact with one another</p>
+<p>that's where these um values come into</p>
+<p>play and then this is the kind of noise</p>
+<p>that you will use to alter the true</p>
+<p>states of the world and generate your</p>
+<p>observations for example you can use a</p>
+<p>colored noise here you define the mean</p>
+<p>and uh basically the standard deviation</p>
+<p>of noise and this is we're using the</p>
+<p>sort of Kernel here that convolves with</p>
+<p>the white noise to actually generate a</p>
+<p>more smooth noise the reason being that</p>
+<p>um the biological systems are believed</p>
+<p>to be uh working with uh you know to so</p>
+<p>all all the signals that you work with</p>
+<p>in biological and organic systems are</p>
+<p>believed to have been generated by some</p>
+<p>sort of dynamics that that's why we keep</p>
+<p>them as smooth noises infinitely</p>
+<p>differentiable noises rather than just</p>
+<p>white</p>
+<p>noise and uh if you actually run this so</p>
+<p>this is basically a pullback attractor</p>
+<p>this is the first uh sort of generative</p>
+<p>model that we worked in so you just run</p>
+<p>this main</p>
+<p>function so we have 1,000 observations</p>
+<p>noisy observations right</p>
+<p>and immediately this happens so for</p>
+<p>every 10 observations we are</p>
+<p>accumulating free action you notice that</p>
+<p>free action is ever increasing because</p>
+<p>it just accumulates free energy and on</p>
+<p>the right hand side you have VF or</p>
+<p>variational free energy um again if you</p>
+<p>look at the definitions inside uh the</p>
+<p>functions folder of how we calculate or</p>
+<p>compute varation of free energy you</p>
+<p>notice that um it's a far more simp</p>
+<p>simplified version of what you would see</p>
+<p>about energy is because everything is</p>
+<p>under llas approximation and you end up</p>
+<p>with far more simpler terms and the</p>
+<p>final result is reaction is this much</p>
+<p>and basically your final MSE loss is0 53</p>
+<p>and if you want to see the final output</p>
+<p>you just have to go into the results</p>
+<p>folder and these are the folders that</p>
+<p>are generated just so that you have two</p>
+<p>dimensions in x one dimension in y lot</p>
+<p>voltera is a generative process for</p>
+<p>example do generative model follows a</p>
+<p>pullback attractor scheme and then your</p>
+<p>G is just identity this is your free</p>
+<p>action and then that is your Ms Loss and</p>
+<p>if you open it all the plots that I</p>
+<p>showed you in the presentation are saved</p>
+<p>as PDF here just to give you an idea</p>
+<p>like this is your X this is your true</p>
+<p>invisible uh states of the world right</p>
+<p>and if you want to look at exat this is</p>
+<p>the inferred states of the world and</p>
+<p>these are for example the the noisy</p>
+<p>observations of the world yeah so I hope</p>
+<p>that the repository would be um of help</p>
+<p>and of interest to all of you thank you</p>
+<p>very</p>
+<p>much great what kinds of problems or</p>
+<p>settings do you feel that this could be</p>
+<p>adapted to or useful</p>
+<p>for um I would say first foremost this</p>
+<p>could be used for um basically it's it's</p>
+<p>all about any kind of problem that's</p>
+<p>about inference you have some noisy</p>
+<p>observations that you want to infer the</p>
+<p>hidden state but in terms of</p>
+<p>adaptability you can build on that by</p>
+<p>introducing parameter learning as well</p>
+<p>as uncertainty estimation so our goal is</p>
+<p>to develop this into a triple estimation</p>
+<p>sort of package predictive coding</p>
+<p>Network and add more layers to it so to</p>
+<p>have a hierarchical predictive coding uh</p>
+<p>capable of solving the triple estimation</p>
+<p>problem yeah that's the ultimate thing</p>
+<p>that you can actually adapt this</p>
+<p>cool</p>
+<p>um what are your uh what are you excited</p>
+<p>about for ML Dawn or for your learning</p>
+<p>or research in next</p>
+<p>year um I'm very much excited in</p>
+<p>embedding these kinds of calculations</p>
+<p>into the world of AI because as I said</p>
+<p>AI is moving in my opinion and my humble</p>
+<p>opinion is moving to the towards a wrong</p>
+<p>direction instead of bombarding models</p>
+<p>with all sorts of data that the model</p>
+<p>should be able to choose its data so I'm</p>
+<p>very excited in you know developing this</p>
+<p>framework into a hierarchical predictive</p>
+<p>coding Network and then sort of compare</p>
+<p>the performance of such a model with</p>
+<p>other traditional aib based generative</p>
+<p>models and basically show its</p>
+<p>superiority um that I believe it has in</p>
+<p>different scenarios and ultimately this</p>
+<p>model is going to be used for in my</p>
+<p>grant proposal and a project I'm working</p>
+<p>on is going to be used for modeling</p>
+<p>hallucinations as a kind of false</p>
+<p>inference about the world um and it's</p>
+<p>going to be used as a proxy to for us to</p>
+<p>understand what happens in uh</p>
+<p>Neuropsychiatric disorders when people</p>
+<p>actually suffer from hallucinations in</p>
+<p>the brain so this predictive coding</p>
+<p>network is going to be a brain inspired</p>
+<p>AI model for us to understand what goes</p>
+<p>wrong in in the skull of a human being</p>
+<p>when they suffer from hallucinations</p>
+<p>about the world so that's what I'm</p>
+<p>really really excited about and really</p>
+<p>hoping to achieve cool it's like</p>
+<p>inspired by the brain for the</p>
+<p>brain absolutely thank youon great great</p>
+<p>presentation and good luck with the</p>
+<p>continuation of the work appreciate it</p>
+<p>thank you for having me okay till next</p>
+<p>time e</p>
+</article>
+</body>
+</html>

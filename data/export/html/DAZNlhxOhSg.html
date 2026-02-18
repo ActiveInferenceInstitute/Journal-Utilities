@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 092.1 ~ Max Aifer: "Thermodynamic Linear Algebra"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 092.1 ~ Max Aifer: "Thermodynamic Linear Algebra"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_092 &middot; Episode 1 &middot; Speakers: Max Aifer &middot; Duration: 1:23:32 &middot; Views: 453</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=DAZNlhxOhSg">https://www.youtube.com/watch?v=DAZNlhxOhSg</a></div>
+<article>
+<p>Hello and welcome. It's November 11th, 2024. We're in Active Inference Guest Stream</p>
+<p>number 92.1 with Max Eifer. We're going to be discussing a variety of thermodynamic and Bayesian</p>
+<p>topics. It should be very exciting. If you're watching live, feel free to write any questions</p>
+<p>in the live chat. Max will go through some sections of several papers and I will read questions and</p>
+<p>ask questions. So thank you, Max, for joining. Looking forward to hearing about this. Take it away.</p>
+<p>Great. Yeah, thank you for the introduction and thanks for having me on. Really excited to</p>
+<p>talk about this stuff. So there are a few papers I want to talk about. One called Thermodynamic</p>
+<p>Linear Algebra about kind of a novel hardware approach to solving linear algebra problems.</p>
+<p>Another one called Thermodynamic Bayesian Inference, which is similarly about using these new</p>
+<p>thermodynamic hardware devices for Bayesian inference problems. But before I get into that, I just wanted</p>
+<p>to make a note on kind of like the story of this work and how it evolved because I think it's pretty</p>
+<p>interesting. So I'm working at a company, a startup called Normal Computing. And where we started off</p>
+<p>was just thinking about what's kind of the best hardware paradigm for AI and especially probabilistic</p>
+<p>machine learning, because these are some of the most challenging tasks computationally and seen as</p>
+<p>some of the most necessary to be able to do kind of robust AI without hallucinations. And a big approach</p>
+<p>to that is probabilistic machine learning. And a lot of our approach was inspired by this report that came out</p>
+<p>of a workshop in 2019 called Thermodynamic Computing. And I'm sharing it. Can you see my screen here,</p>
+<p>what I'm sharing? Okay. Yeah. So there's this one quote here in the introduction that I think really</p>
+<p>summarized the point. It says, somewhat paradoxically, while avoiding stochasticity in hardware, we are</p>
+<p>generating it in software for various machine learning techniques at substantial computational and energetic</p>
+<p>cost. So one of the big kind of takeaways from the work they did in this workshop was there was kind</p>
+<p>of a consensus that emerged that we're working so hard to suppress the randomness that comes up naturally</p>
+<p>in our hardware. And then we need randomness actually to run various randomized algorithms,</p>
+<p>especially in probabilistic machine learning. And so if there were some way to just use the randomness</p>
+<p>that's naturally there that we know about due to thermodynamics to achieve those algorithmic goals,</p>
+<p>maybe we would save a lot of energy basically. So that was kind of one of the ideas we were inspired by.</p>
+<p>But the first step along this journey was, so there was an earlier paper where we basically proposed</p>
+<p>circuits that are capable of sampling from a normal distribution. And I'll get more into the math of</p>
+<p>why that happens. You know, why do circuits that look like this allow you to sample from a multivariate</p>
+<p>Gaussian? But so this was kind of the first work that was published at Normal actually before I started</p>
+<p>working there called Thermodynamic AI and the fluctuation frontier. But how you can think of this</p>
+<p>is this is the electronic analog of a system of coupled harmonic oscillators. So you can just think</p>
+<p>about a bunch of masses that are coupled together by springs and that are also damped. So they have friction</p>
+<p>acting on them and there's also noise acting on them. So kind of damped system of harmonic oscillators</p>
+<p>driven by noise. That's the kind of system that we're talking about in these works. And we're just</p>
+<p>kind of looking at this electronic analog, which is completely analogous, completely isomorphic to that</p>
+<p>picture in terms of masses on springs.</p>
+<p>So one of the first problems we were interested in solving was solving a linear system of equations.</p>
+<p>So you can think of this as if I have a few planes in an n dimensional space. Here I have three planes</p>
+<p>in a three dimensional space. And in general, I'll have n planes in an n dimensional space. And I want</p>
+<p>to find the one point where they all intersect, assuming that there is such a point. And you can think of that</p>
+<p>mathematically as I'm giving a matrix A and a vector B. And I want to find the point X that satisfies this</p>
+<p>equation, X equals B. So solving this kind of problem has tons of applications in economics,</p>
+<p>you know, engineering, but also in AI for, you know, training neural networks more efficiently.</p>
+<p>You know, if you can solve linear systems quickly, then there's benefits to training, etc. So that's one</p>
+<p>of the first problems that we decided to look at. And well, so I think that it's interesting to compare</p>
+<p>our approach with earlier approaches to analog computing, basically, because it's something</p>
+<p>that people have actually tried to do for quite a while is build analog computers. In other words,</p>
+<p>where the signals are not stored as binary numbers, ones and zeros, but can take values in between. And so</p>
+<p>you're kind of using the capacity of the hardware to represent more precise numbers than just a one and</p>
+<p>zero. And in theory, that seems to make sense. But the big problem that analog computing ran into is</p>
+<p>basically that there's a lot of noise that's present. And noise and imprecision kind of prevents you from</p>
+<p>answering from solving these problems like like when your systems of equations with the accuracy that you</p>
+<p>that is needed by the application. So I guess the big insight of this work in this thermodynamic linear algebra</p>
+<p>paper is that if you model the noise, if you understand the noise in your system well enough and you model</p>
+<p>that noise, then you can actually predict the behavior of the system on the distribution level, even if</p>
+<p>the system is unpredictable on their trajectory level. And the way we describe that modeling the noise is</p>
+<p>using what's called a stochastic differential equation. So here, equation two here I've written</p>
+<p>is a stochastic differential equation where I'm saying that dx, the change in the state of the system,</p>
+<p>which is really a collection of voltages on capacitors in the circuit, the way it changes in time has two</p>
+<p>components. The first is this term, which you can think, which is called the drift term. And you can</p>
+<p>think of that as kind of the predictable part of the change in the state. And it's the gradient of this</p>
+<p>quadratic function. And then the second term is the noise term. So that's the result of kind of the</p>
+<p>random forces from the environment. And what this actual potential energy function here corresponds to</p>
+<p>is exactly that system of coupled masses on springs or harmonic oscillators, which we've kind of drawn</p>
+<p>here, illustrated in a way that like you can basically think of the system as being a bunch of</p>
+<p>little balls coupled together by springs that are all being jostled around by noise.</p>
+<p>And so the problem we wanted to solve, right, is that we have this matrix A and a vector B,</p>
+<p>and we wanted to find the point X such that AX equals B, right? And the way we're going to do that</p>
+<p>using this physical system is by allowing it to come to equilibrium, meaning that after it's kind of run</p>
+<p>for enough time under these dynamics, eventually the state will be uncertain, but the state will be</p>
+<p>described by a probability distribution that is the, you know, the Boltzmann distribution, the exponential</p>
+<p>of the negative potential energy. And so because the potential energy here is a quadratic function,</p>
+<p>the distribution of this form where you have E to the minus V of X, where V of X is this quadratic,</p>
+<p>is just a Gaussian. And it turns out that the mean of that Gaussian is A inverse B, which is exactly</p>
+<p>the solution to that system of linear equations. And the covariance matrix is actually A inverse.</p>
+<p>So there's, I guess, two things to notice here. The first is that if we want the mean of the linear</p>
+<p>system, if we want the answer to the linear system of equations, we can just allow this system of coupled</p>
+<p>harmonic oscillators to come to equilibrium and then estimate the mean of its state. And if we actually,</p>
+<p>if we wanted something else, if we wanted the inverse of the matrix A, then what we could do</p>
+<p>is we could allow the system to come to equilibrium and then estimate all of the second moments of its</p>
+<p>state, or in other words, estimate its covariance matrix, which turns out to be this A inverse here.</p>
+<p>So I also, I want to expand a little bit on this idea of like, what do I mean when I say that we can</p>
+<p>model the system and we can predict its behavior at the distribution level, even though it's</p>
+<p>unpredictable at the trajectory level, right? So when I wrote that, when I showed that equation,</p>
+<p>this equation two on, on earlier slide, what I mean by when I say it's unpredictable at the</p>
+<p>trajectory level is that if I know X of T, I can't predict like X of T plus one with certainty,</p>
+<p>right? Because there's this noise that acts as a force on, on the state. And so you would need to,</p>
+<p>you know, the, what those, the values of those random numbers are going to determine what the</p>
+<p>state is at time T plus one. But if I know, like initially, if I have some probability distribution</p>
+<p>for the state at time T one, and I want to know what's the probability distribution of the state at</p>
+<p>time T two, that is a question I can answer using this equation. And just for an illustration of this,</p>
+<p>on the left-hand side here, this kind of blue twisting path is a trajectory of the system where</p>
+<p>I've initialized it at this point over here, and then I've run it for a long amount of time.</p>
+<p>And the state of the system that here, there's only two variables, X one and X two kind of orbits</p>
+<p>around in this, in this ellipse. But if I, instead of just running one of these simulations, running this</p>
+<p>one trajectory, if I ran many of these simulations, and sampled the initial state from kind of a,</p>
+<p>from a normal distribution centered on this point, and then I look at the distribution over time for</p>
+<p>that collection of, you know, many thousands of trajectories, I would get this plot here on the right.</p>
+<p>And so what you see, the big, there's a big difference between these two pictures in that the</p>
+<p>left one, we have this trajectory which is behaving in kind of an unpredictable and random way, but the</p>
+<p>distribution itself is behaving in a very predictable and nice kind of smooth way. And one, another way</p>
+<p>to think about this is that the equation I showed earlier is a stochastic differential equation called</p>
+<p>a Langevin equation, and it describes the dynamics in terms of the left picture, in terms of the</p>
+<p>trajectory or at the trajectory level. But if I want an equation that describes what is happening in</p>
+<p>the right picture, that would be the Fokker-Planck equation, which describes the dynamics at the</p>
+<p>distribution level. And so it's basically, it's nice to be able to have these two pictures in mind</p>
+<p>at the same time. On the one hand, we're thinking about the trajectory level, and on the other hand,</p>
+<p>we're thinking about the distribution level picture of the dynamics. And so when we go up to higher</p>
+<p>dimensions, it's not as easy to make, you know, to make this plot. I can't make, I have no way to</p>
+<p>easily draw, you know, a 10 dimensional hyper ellipsoid the way I can do it in two dimensions, but there is</p>
+<p>still a way we can visualize it. And the way we can visualize it is by looking at the covariance matrices.</p>
+<p>So it's, I guess, just to go back here, like what really are these ellipses? Well, these ellipses really,</p>
+<p>each of these ellipses really represents a whole distribution, a normal distribution. And this ellipse is</p>
+<p>kind of the typical place where you would expect to find points that are drawn from that distribution.</p>
+<p>But another way of describing the properties of that distribution is by its covariance matrix, which describes all of the kind</p>
+<p>of parallel, pairwise correlations between all of the different variables. For here, we only have two</p>
+<p>variables, so it would be two by two. But if we had 10 variables, it would be 10 by 10. Here we have it for,</p>
+<p>you know, eight variables, so it's eight by eight. And what we're looking at here is really, over time,</p>
+<p>as we go from kind of this black circle on the left side to this red ellipse on the right side, you can think</p>
+<p>of that process in higher dimensional, in higher dimensions in this eight dimensional case, as how</p>
+<p>this matrix here is changing over time. So it's kind of the same, the same thing, but now we're just</p>
+<p>watching a video of how the covariance matrix changes over time, instead of plotting many ellipses at</p>
+<p>different moments in time. Now, another interesting thing about this video here is that this isn't a</p>
+<p>simulation. This is actually experimental demonstration that we did on the hardware that we</p>
+<p>we created that normal computing on circuits that look essentially like this. So these are just</p>
+<p>electron, as I mentioned earlier, these are just electronic implementations or realizations of kind</p>
+<p>of coupled harmonic oscillators that happen to come to this equilibrium state, which is a multivariate</p>
+<p>normal distribution, and which has these properties that you can use it to solve linear systems of</p>
+<p>equations and get the inverse of a matrix. I guess, yeah, just one more word of detail here. So this</p>
+<p>input matrix here is the matrix A, and then target inverse, this is the actual inverse of A that you</p>
+<p>can do just, you know, numerically, you can compute the inverse. And then what these hopefully, and in</p>
+<p>fact, do kind of arrive to are the estimates, close estimates of the inverse of the matrix A,</p>
+<p>because that's the covariance matrix is supposed to be proportional to the inverse. So you may be</p>
+<p>wondering at this point, you know, this seems interesting, but why is it that we would go to</p>
+<p>all this effort to actually try to solve linear systems and or invert matrices in a completely new</p>
+<p>way, right? What about this approach is promising? So one thing that's promising about it is that we have</p>
+<p>kind of theoretical results that show that we get better asymptotic scaling as the problem size increases</p>
+<p>with this thermodynamic architecture than the state of the art digital algorithms do to solve the same</p>
+<p>problem. So without, yeah, I can talk more about like the difference between the over damped and the</p>
+<p>under damped at some point. But just the headline here, if we look at this one row linear system, what</p>
+<p>this is saying is that basically, on the digital state of the art methods, take like order of d squared, you</p>
+<p>know, the amount of time scales with the square of dimension to solve a linear system using something</p>
+<p>like the conjugate gradient method, for example. Whereas with our kind of thermodynamic approach,</p>
+<p>you get an amount of time scaling with d. So like order of n instead of order of n squared. So you have</p>
+<p>some kind of like polynomial speed up there. And we proposed a number of like other algorithms in that</p>
+<p>paper too. So the one for inverting matrix, I basically explained how that one works. It's just,</p>
+<p>you end up estimating like the second moments instead of estimating the mean of the state.</p>
+<p>And there you also get like a polynomial advantage because instead of taking like order of n cubed,</p>
+<p>you get order of n squared. And we also have algorithms for getting the determinant of a matrix</p>
+<p>or solving something called the Lyapunov equation, which is a matrix, you know, matrix equation that kind</p>
+<p>of generalizes the idea of the inverse. So one other thing I wanted to show actually is just kind of an</p>
+<p>animation or like maybe a more vivid illustration of what's going on here. So if we, this, this,</p>
+<p>what you're seeing here is just like a simulation of a two dimensional coupled harmonic oscillator system</p>
+<p>where right now the matrix A is just the identity matrix. And so in other words, there's no coupling</p>
+<p>between the two harmonic oscillators. We have two separate harmonic oscillators that aren't coupled</p>
+<p>together. And the coordinate of one is plotted as the x-axis and the coordinate of the other is plotted</p>
+<p>as the y-axis. So because they're not coupled, we wouldn't expect to see any correlation between them</p>
+<p>and we don't in fact. And there's also noise being added. So I can kind of change the amount of noise</p>
+<p>here by increasing the temperature. And I can change, you know, the resistance to change the amount of</p>
+<p>damping and, and change the inductance, which is essentially like changing the mass of the mass on a</p>
+<p>spring. And by kind of tuning these parameters, I can get something that looks more or less like I'm</p>
+<p>getting a bunch of samples from this multivariate normal distribution. And in fact, I am, and I can</p>
+<p>look here at the marginals and see these are samples from these, you know, these are the histogram,</p>
+<p>basically it looks like a normal distribution. Although just because all of the samples seem to be to have</p>
+<p>the right distribution, that doesn't mean that the samples are independent from each other. They could all</p>
+<p>be, you know, highly correlated. And so we can also look at kind of the auto correlation function here,</p>
+<p>where basically the, you know, the more you crank up the noise, the faster the correlation decays.</p>
+<p>In other words, it's, if you want to predict where will the next sample be based on the current sample,</p>
+<p>if there's very little noise, that's kind of easy to do. But if there's a lot of noise,</p>
+<p>that's really hard to do. And I can also just take samples less frequently if I don't want as much</p>
+<p>correlation. So that's what I'm doing here is I'm kind of cranking up the amount of the interval</p>
+<p>between samples. And now that will, you know, suppress correlation between samples quite a bit.</p>
+<p>But at this point, this is, there's something a little bit trivial about this example, because</p>
+<p>they're just two harmonic oscillators that aren't coupled to each other at all. So really what we're</p>
+<p>interested in is, is when we couple them together. So I think, yeah, we would change this kind of term.</p>
+<p>And so what this ellipse now is, the ellipse has changed, and it's predicting, you know, where we expect</p>
+<p>to see the samples now that there's a coupling between these two masses on springs. And I think</p>
+<p>it's nice just to think intuitively about why does it happen? Why do we expect to see the distribution</p>
+<p>look like this when we turn on a coupling between the springs? Well, it's basically just that, like,</p>
+<p>we, instead of having two separate masses on springs that are oscillating by themselves,</p>
+<p>now there's another spring that's pulling them together. And so they want to be close together,</p>
+<p>right? And so that means that we're likely to see points where the position of x1 is similar to the</p>
+<p>position of x2, whether they're both positive or both negative. And that's kind of exactly what we're</p>
+<p>seeing as we see samples kind of filling in this this ellipse. So yeah, I just wanted to show that</p>
+<p>kind of animation. That's a, this is just a kind of some JavaScript code I wrote a while ago as kind</p>
+<p>of a visualization tool for that. And I also, yeah, I have the paper pulled up here,</p>
+<p>and I can talk more about like, how do we, there are a few things I can talk more about. So for</p>
+<p>example, like how do we derive these complexity results of the asymptotic scaling? Or how do these</p>
+<p>other algorithms work, like the determine estimation? But yeah, I want to maybe at this point, pause and</p>
+<p>see if there were any questions either from the audience or Daniel or anything. Yeah.</p>
+<p>Awesome. Okay. Anyone can write questions in the chat. Yeah. Hearing more though, about how do you</p>
+<p>pull out different analytically useful values from</p>
+<p>heat? And what does that mean? I take you to stab at it now, but revisiting it. I mean, how is it that</p>
+<p>there are these tractable useful quantities arising out of physical objects like this?</p>
+<p>Right. Yeah. I think that's a good question. I mean, to, to go back to kind of, yeah, the history of like,</p>
+<p>so first off, like the first thing people tried to do was just pure analog computing, where they didn't</p>
+<p>really consider, you know, the noise or assume you could suppress the noise enough. And that analog</p>
+<p>computing approach is based on a system that physically solves a differential equation.</p>
+<p>So whereas our approach is a system that physically solves a stochastic differential equation,</p>
+<p>but you can still, it's still useful to think about the analog case where there's no noise and where</p>
+<p>you're just trying to solve a differential equation. Because, you know, one thing you might think to do</p>
+<p>is if you want to solve a differential equation, instead of just solving it numerically on a computer,</p>
+<p>you could actually just try to build a system that actually evolves according to the differential</p>
+<p>equation you want. Right. So that's like one perspective on why do these physical objects</p>
+<p>do useful computations? Because it's kind of like saying, we're going to build the physical system</p>
+<p>that behaves in that way, instead of trying to simulate it. And I guess, yeah, another perspective is</p>
+<p>that, well, so with the linear systems, right, like you can, in theory, you can solve linear systems</p>
+<p>on an analog computing device as well, that doesn't have any noise. And what's kind of going on there</p>
+<p>is that you're basically doing very efficient multiply and accumulate operations, in a sense,</p>
+<p>in that if you want to add together like n things digitally, that's going to basically take order of n</p>
+<p>steps. But if you want to add together n things, kind of using some analog device, there are ways</p>
+<p>to do it that are more more like constant time. So for example, if I have n wires that all converge</p>
+<p>at one point, and I send a current into each one of those n wires, then the current that comes out is</p>
+<p>the sum of those currents. So it's kind of a way of doing like adding together all of those n things in</p>
+<p>constant time. So I think those two perspectives are kind of useful that one, we get very efficient</p>
+<p>analog, multiply and accumulate operations. And the other is that we're kind of building the system</p>
+<p>instead of simulating it in some sense. What is the transferability of these shapes? Like,</p>
+<p>do you have it work really well on this five by five matrix, but then you need to go back to square</p>
+<p>zero for six by six? Or how do you deal with making on the fly changes or adapting to specific problems?</p>
+<p>Right? Yeah, that's a very good question. Right? Like, how you know, how does it? How do these things</p>
+<p>work? In particular, when we go up to like, the limit of like, much larger matrices, which is relevant</p>
+<p>for you know, the big kind of AI and industrial applications? What we what we found is that generally,</p>
+<p>these algorithms behave pretty well, as we increase dimension over a large range of different dimensions,</p>
+<p>we can go up to 1000s of dimensions, and still get the answer very accurately. But there are other</p>
+<p>properties of the matrix that are relevant to that can make it hard to solve the problem. One that's</p>
+<p>very important, for example, is the condition number of the matrix. So if you think about those ellipses,</p>
+<p>well, I guess I can just go, yeah, scroll down here. If for a matrix that will the condition number is</p>
+<p>the ratio of like the largest singular value to the smallest singular value of a matrix. And what the</p>
+<p>singular values are, is there the length of like, this kind of this long axis here and this short axis</p>
+<p>here. And so an ellipse that's very long and skinny has a very large condition number, basically, the</p>
+<p>condition number basically describes how long and skinny the ellipse is, or if it's in high dimensions,</p>
+<p>it's like some kind of n dimensional pancake, if it has an n, it has a large condition number. And</p>
+<p>basically, yeah, matrices with harder with larger condition numbers end up being harder to invert,</p>
+<p>or to solve a linear system for if matrix A has a large condition number. But you know, there's still</p>
+<p>there's still ways to do it. But it's that's, I would say, one of the bigger challenges to</p>
+<p>generalization is that like, as you go up to higher dimensions, it's kind of easier to get matrices that</p>
+<p>end up having very large condition numbers, so more can go wrong, I guess.</p>
+<p>And you, to what extent rely on repeated, decorrelated, long term sampling of single objects,</p>
+<p>versus parallelized, or replicated sampling across objects? And then what does that have to do with</p>
+<p>ergodicity?</p>
+<p>Yeah, so I think I'll first answer the question about ergodicity, actually. Because, yeah, I think</p>
+<p>that that's a, that's a very good question. That's, that's a very good way to phrase the question,</p>
+<p>actually. Because if I look at this plot on the left, I, this is just a single trajectory,</p>
+<p>right, that I've run for a very long amount of time. And it turns out that if I just take enough</p>
+<p>samples of this single trajectory, that even if, even if those samples are kind of correlated with</p>
+<p>each other, it still, you know, will work. But if, if, if I have n samples, it's better to have</p>
+<p>n uncorrelated samples than n correlated samples. But I don't need to actually run many trajectories</p>
+<p>in parallel, I can just run one. And it turns out that that one trajectory has the same statistics,</p>
+<p>the same mean and covariance as if I had run a thousand, you know, or a thousand or a million</p>
+<p>separate trajectories. And that doesn't happen for every, you know, for every stochastic differential</p>
+<p>equation, but it does happen for this one. And that property is called ergodicity, right? The</p>
+<p>property of ergodicity is that the ensemble averages and the time averages are, you know, are the same,</p>
+<p>they're the same statistics. So on the right hand side here, this is kind of looking at the ensemble</p>
+<p>picture, which would be more like if I had used parallelization and built many of the devices and</p>
+<p>kind of random and parallel. So I guess the answer to the question of like, which one do we do</p>
+<p>or which one, you know, in practice is more useful, you can do either one. I think that it's kind of a</p>
+<p>knob or a lever you have to turn. If you can pay more for more hardware and you can pay more energy,</p>
+<p>then you can solve the problem faster by running many trajectories in parallel. Whereas if you only</p>
+<p>want, you know, one device that only runs one of these trajectories, you can just take samples at</p>
+<p>different points in time. And because of ergodicity, it's the same as the ensemble statistics, basically.</p>
+<p>Cool. Carry on. Cool. Okay. Yeah, I thought those were all great questions. So thanks. Yeah, I guess</p>
+<p>there was one other thing I wanted to say just at a kind of a high level about like, how do we go about</p>
+<p>getting these complexity results? Because you can imagine there might be something subtle about it,</p>
+<p>just because this algorithm, for example, is never actually guaranteed to give you the right answer,</p>
+<p>because it's based on randomness. You know, the state is not guaranteed, the mean is not guaranteed to</p>
+<p>converge to the, you know, to the solution to the linear system, it's just very likely to do that.</p>
+<p>And so you need basically, I think of it as it's, yeah, it was this term that was coined by,</p>
+<p>I forget his name, a computer scientist, Leslie, I think, or what was his name? Yeah, I forgot his</p>
+<p>name. But it's called probably approximately correct, is the idea that you have a computation</p>
+<p>that with a high probability will be within a certain radius, you know, within a certain error</p>
+<p>tolerance of the correct solution. And so that's kind of the approach we take to quantifying like</p>
+<p>the runtime analysis for these algorithms. And I guess an example of that is down here in the appendix,</p>
+<p>where you can kind of find, we have bounds on, let's see, where is this?</p>
+<p>Yeah, so it'll be down here.</p>
+<p>Right.</p>
+<p>Yeah, so we basically have a bound on how long do you need the time to be in order to have the</p>
+<p>state close, small closer than epsilon to the solution with probably with probability at least</p>
+<p>p basically. And so all of our results are formulated in that framework of you choose the success</p>
+<p>probability, you choose the relative error tolerance, and then you get out a time basically that you need</p>
+<p>to run your system for you need to average for. And those kind of results are quoted up here in these</p>
+<p>tables, basically. But yeah, so I think that's really what I had to say on the thermo linear algebra</p>
+<p>paper, unless there are any other questions about that. And I think otherwise, I'll move on to talking</p>
+<p>about this thermodynamic Bayesian inference paper, I guess.</p>
+<p>Let me ask one question about that last bound. How do you get there? Did you build different objects and</p>
+<p>then back cast the formal relationships? Or do you play around with the formalisms and then ask if or how</p>
+<p>a physical object could realize it? Right, so yeah, so all these mathematical results are derived within</p>
+<p>a pretty abstract framework, which is the abstract framework is just the stochastic differential equation.</p>
+<p>So in other words, in order to derive these complexity results, we just start by assuming that the</p>
+<p>the system evolves according to the stochastic differential equation. And once we've made that</p>
+<p>assumption, we can completely forget about the physical implementation, whether it's actual masses</p>
+<p>on springs or capacitors and inductors or whatever, those details become irrelevant. And so we're just</p>
+<p>talking about the kind of mathematical properties of how quickly the distribution converges under these</p>
+<p>dynamics to the stationary distribution of this equation, basically.</p>
+<p>Okay, cool. So yeah, so one thing that we noticed basically when we were doing that,</p>
+<p>that when you're writing that thermo linear algebra paper is that we noticed that while we've gotten</p>
+<p>these very nice and satisfying polynomial speed ups that we predicted, it seems like we could some,</p>
+<p>we somehow should be able to get even better speed ups. And the reason for that was that much of the</p>
+<p>run time of running those thermo linear algebra algorithms was actually dominated by just taking</p>
+<p>averages of the state of the system. In other words, if we go back to this picture</p>
+<p>here, it turned out that we start, we initialize the system out of equilibrium, it very rapidly comes to</p>
+<p>its equilibrium distribution. And then we have to take a long time, we have to spend a long time drawing</p>
+<p>samples from this equilibrium distribution and averaging those samples in order to get the estimate</p>
+<p>of the mean. And so we started to think about, well, what if there are applications where we don't need</p>
+<p>to take averages, where we just want to draw samples from the equilibrium distribution? Because if that</p>
+<p>were the case, then we would probably, we might be able to get a much better speed up because we</p>
+<p>wouldn't even have to do this, this long, you know, the longest or the hardest part of our algorithm,</p>
+<p>which is moment decimation. And so that was basically the genesis of this thermo Bayesian</p>
+<p>inference paper, because we started thinking, like, what kind of problems is the output sample from a</p>
+<p>distribution? What kind of problem you're you don't want something that's a deterministic function of</p>
+<p>the input, but you want to sample. And one thing that came up is sampling from the Bayesian posterior</p>
+<p>of some model. So, so that's kind of a pretty common task that that, you know, people want to do is they</p>
+<p>have some parameter, theta, say, and then some data observed data, why like different samples,</p>
+<p>why one, why two, so on. And you want to condition your you have some prior distribution for your</p>
+<p>your hidden variable, or your, yeah, you have some prior distribution for your parameter theta,</p>
+<p>and then you have a likelihood, which is like a theory of how the parameter theta determines the</p>
+<p>observed data, why, and given those two things, you given your data and your prior and your likelihood,</p>
+<p>you want to condition the parameter theta on the data, right? And then often you want to sample from</p>
+<p>that posterior distribution, the distribution that's kind of been revised by the presence of your data.</p>
+<p>And so we basically started thinking about whether there's a way we could use a</p>
+<p>similar approach based on a physical realization of like noisy management dynamics in order to do</p>
+<p>Bayesian inference. And then we wouldn't have to do moment estimation or averaging, and so we might get</p>
+<p>much better speed ups. And so that's basically what we did in this paper. And I guess at a higher level,</p>
+<p>there's kind of a nice formalism for how you can think about, yeah, just what what is going on at a</p>
+<p>higher level and how we're doing Bayesian inference using a physical system here. And so what it is,</p>
+<p>it's, it's, it's related to the idea of an energy based model, that one way of parameterizing the</p>
+<p>probability distribution P is to write that the probability distribution P is the exponential of</p>
+<p>some energy function. So some, or each of the minus, E to the minus V, right? So this is just a way of, of writing. So any distribution you can, you can write in this form.</p>
+<p>You can write in this form, but also importantly, this is the form a distribution will take in statistical mechanics.</p>
+<p>When you allow a system to come to equilibrium and it has some energy V, this is the form of its kind of equilibrium distribution.</p>
+<p>And so this, when you talk about probability distributions in those terms, it's often called like an energy based model approach.</p>
+<p>And there's something convenient about using energy based models for Bayesian inference, basically,</p>
+<p>which is that when you take the log of your probability density function, instead of like multiplying together probability density functions,</p>
+<p>you end up adding together energy functions, because we're now talking about the logs of the probabilities instead of the probabilities.</p>
+<p>And so that's what's going on with this equation here. It says U1 of theta equals minus ln of P theta minus ln of Py given theta.</p>
+<p>So here, P theta is the prior. That's our assumption of, you know, the distribution for the parameters theta before we've gotten any measurements.</p>
+<p>P of Py given theta is our theory or model of how, how Y depends on theta. In other words, how does the data that we can observe depend on the parameter that we, that we can't observe?</p>
+<p>And so what you would do in Bayes' theorem is, you know, you multiply together or you, or not even Bayes' theorem, just the definition of the joint distribution is P of theta and Y is P of theta times P of Y given theta.</p>
+<p>But now instead of multiplying these things together, we're going to be adding them together because we're talking about the energy, right?</p>
+<p>So this energy kind of represents the joint distribution somehow because it includes the contributions from the prior and the likelihood.</p>
+<p>And what, so what you do in these thermobasian inference problems is you start out with one energy, one potential energy, which can be thought of as like kind of a box that, you know, you can think of the system as some, well, like in thermodynamics, we might think of it as like a gas inside of a box.</p>
+<p>And then you can change the potential energy by moving a piston in or out or something like that.</p>
+<p>Or sometimes we think of it as like a marble in a bowl, and then you can reshape the bowl, changing the potential energy, which is maybe closer to like this picture here, where when we change the potential energy, we're like changing the shape of this bowl, basically.</p>
+<p>So go back here.</p>
+<p>What's plotted in this panel A is what happens when we vary, when we change the potential energy function over time.</p>
+<p>So between time zero and time one, we're going to change the potential energy from a potential energy that's associated with the prior to which is U zero.</p>
+<p>So U zero equals minus log of P theta, and that's like this, this blue curve is the probability density when we're in that prior distribution.</p>
+<p>And then we slowly change the potential or slowly or quickly, we change the potential energy to U one, which is the distribution that corresponds to the posterior basically for theta.</p>
+<p>In other words, it's the distribution where you've conditioned theta on all of your observed data basically.</p>
+<p>And so what we're seeing in this plot is that as we change the potential over time, the distribution of the system changes and it goes from this Gaussian distribution to this kind of asymmetric distribution, which in this case is the posterior for like Bayesian logistic regression.</p>
+<p>And another view of that is in panel B where we're looking at how the thermodynamic quantities change over time.</p>
+<p>So whenever you're changing the potential energy of a system, the potential energy function of a system, you can be doing work on the system.</p>
+<p>And so this orange curve here is beta times work.</p>
+<p>It's beta is one over K T.</p>
+<p>And we see that the potential energy changes between time zero and time one.</p>
+<p>And during that window of time, we're doing work.</p>
+<p>But then at time one, the potential energy stops changing.</p>
+<p>And so no work is being done there.</p>
+<p>And so we can see how much work is being done on the system.</p>
+<p>And then there's also heat, which is the change in energy that's not associated with the work being done, which you can compute just kind of using the first law that DE equals DW minus DQ.</p>
+<p>So we have work and heat, which are kind of the two most fundamental thermodynamic quantities, I guess.</p>
+<p>And then we also have the free energy.</p>
+<p>We'd also, you know, a quantity of great importance.</p>
+<p>And there's there's kind of two different versions of free energy that are that are plotted here.</p>
+<p>So one is this dashed line, which is the equilibrium free energy.</p>
+<p>And what that means is that at each instant in time, the potential energy is changing.</p>
+<p>But we could imagine a system that was in equilibrium at that instant in time.</p>
+<p>And if we did have a system that was in equilibrium at that instant in time, its free energy would be the equilibrium free energy.</p>
+<p>So that's kind of the definition of the equilibrium free energy is the free energy of a system at equilibrium with the instantaneous potential.</p>
+<p>And then there's kind of the non equilibrium free energy, which can be which can basically be larger than that.</p>
+<p>And the reason it can be larger than that is that the system is not in equilibrium at all times, that if you're quickly changing the potential energy, the system is driven out of equilibrium.</p>
+<p>And so you can kind of look at the gap between these like the gap between the dotted black line and the solid black line as the extent to which the system is out of equilibrium at each moment in time.</p>
+<p>And what happens is when when we quickly change the potential from times you're at a time one, the system is coming out of equilibrium.</p>
+<p>These these two lines are getting farther apart.</p>
+<p>And then at time one, we stop changing the potential and the system starts to come back into equilibrium, basically.</p>
+<p>And just another note on this is a nice interpretation of the difference between these F minus F equilibrium is that it's actually the KL divergence or the callback liveware divergence of between the distribution of the system at any time and the equilibrium distribution.</p>
+<p>So that's just another way of saying that it characterizes how to what extent the system is out of equilibrium, because this KL divergence is basically a way of of quantifying the distance.</p>
+<p>So it's not technically a distance measure, but a kind of distance between probability distributions.</p>
+<p>And so it turns out that this like F minus F equilibrium is equal to the KL divergence between the distribution and the equilibrium distribution.</p>
+<p>So that's kind of the general framework of like what we're doing in thermobasian inference is that we're setting up a system so that we can change its potential energy.</p>
+<p>And we turn on we have a potential energy term that represents the prior and we have another kind of coupling term that represents the likelihood.</p>
+<p>And then we have like physical degrees of freedom that represent the observed data that we have.</p>
+<p>And when we turn on this interaction between data and all of these observational degrees of freedom, then you then the equilibrium distribution becomes the Bayesian posterior.</p>
+<p>And if we wait for a long enough time, then we can measure the state data and get samples from the Bayesian posterior.</p>
+<p>So let's see, I say a little bit more about that just in theory and how that plays out.</p>
+<p>But you might notice here that this kind of is the key to the algorithm is this stochastic differential equation here, which is similar to the form of the stochastic differential equation.</p>
+<p>And then I showed on this slide equation two.</p>
+<p>And in that it has kind of this drift term, which is like the predictable change in the state of the system.</p>
+<p>And then this this noise term, which is like the unpredictable change in the state.</p>
+<p>And so let's see.</p>
+<p>Yeah, I think that. Oh, yeah. OK, so I guess what I'll talk a little bit about the examples we did in this paper.</p>
+<p>We what we did was we tried this out for two kinds of Bayesian inference, like two examples of Bayesian inference, one of which is a Gaussian Gaussian model.</p>
+<p>So where you have a Gaussian prior and a Gaussian posterior and the other is Bayesian logistic regression.</p>
+<p>So we have like a Gaussian prior and logistic likelihood.</p>
+<p>So so this plot here is for the Gaussian Gaussian model.</p>
+<p>And we see the basically the the prior is is one of these, you know, green ellipses.</p>
+<p>And then the likelihood is, you know, the red ellipse or might be the other way around.</p>
+<p>But then you get the posterior, which is kind of in the middle somehow.</p>
+<p>And it turns out that you can use this circuit over here in order to sample from that that blue ellipse, that blue distribution, which we've actually simulated this circuit in spice, which, you know, popular library, popular software package for simulating circuits.</p>
+<p>And so what you do is you you use one kind of you have one set of resistors that's used to input the prior covariance matrix and another set of resistors that's used to put in kind of the likelihood covariance matrix.</p>
+<p>And then once you do that, you can measure the currents like through these inductors and measuring those currents gives you a sample from the desired posterior distribution.</p>
+<p>OK, so, yeah, I guess that's at a high level what I want to say about this Gaussian Gaussian model case.</p>
+<p>Were there any questions about either the overview, like the general picture of thermobayesian inference or about like this Gaussian Gaussian model?</p>
+<p>Yeah, a few questions.</p>
+<p>How do you know that you aren't too confident or not confident enough with respect to the posterior?</p>
+<p>Like your precision or your attention?</p>
+<p>What makes you not just how do you get confidence in your confidence level?</p>
+<p>Such that you can draw a useful Bayesian credible interval rather than, for example, making it much wider or much tighter.</p>
+<p>I see. Right. Like in other words, like how do we test that we're actually drawing from the right posterior kind of?</p>
+<p>Yeah. If you can compare it with the exact compute, then you've already done that computation.</p>
+<p>So then when do you feel like it's OK to get out without the guide rails and take the thermodynamic estimate as it is without doing secondary calibrations?</p>
+<p>Yeah, that's a good question. Right. So one of the nice things about the Gaussian Gaussian model is it is one of these very few cases where there is an analytical solution.</p>
+<p>So you can compute exactly what the posterior like the posterior is a Gaussian again and you can compute exactly what the mean and covariance matrix of that Gaussian are.</p>
+<p>And so we can compare them. But I think you're also alluding to the fact that, you know, eventually we aren't going to have that guardrail and we're just going to say we're now confident enough that this system can sample from the true posterior and we're kind of done with with testing it.</p>
+<p>And yeah, I think the question of like when exactly do we become confident enough that it gets the right posterior is maybe not completely solved yet.</p>
+<p>But I would say that because in the Gaussian Gaussian case, there's an analytical solution.</p>
+<p>I feel pretty confident that like we can do enough testing, even at pretty high dimensions, that we'll be able to assure ourselves basically that it works.</p>
+<p>But where that becomes more difficult is for cases where there is no analytical solution to compare to, like in the case of the Bayesian logistic regression, which we also do here.</p>
+<p>And in that case, the best thing you can do is just kind of run a Monte Carlo simulation digitally and compare that to the results that we would predict with SPICE or compare to experimental results, which also works.</p>
+<p>It's just much, much more expensive computationally.</p>
+<p>But on the other hand, the fact that it's much more expensive computationally means that there's that we're solving a really hard problem, which is good.</p>
+<p>But yeah, I guess, yeah, the to make a long story short, that's still kind of something we're going to have to figure out, you know, in complete detail is like, how do we do enough tests and what tests we have to do to assure ourselves that it gets to the right posterior.</p>
+<p>Another interesting piece was that changing differential between the equilibrium free energy and the non-equilibrium.</p>
+<p>So do you experiment with like different speeds and find a trade-off between moving it too fast, but taking you too far out of equilibrium?</p>
+<p>But then is there any downside to just moving it super fast or do you get better accuracy or performance in the kind of infinitesimal movement case, keeping it close to equilibrium all along the way?</p>
+<p>Right. So that's a really good question.</p>
+<p>And actually something that we're probably that's a focus, like a current kind of research focus is like, what is the, like, given that we have this freedom of like how quickly we want to turn on the potential, how quickly we want to turn on the interactions, what should we do with that freedom basically?</p>
+<p>And there's like this really interesting literature on like energy time trade-offs in stochastic thermo.</p>
+<p>So let me see if real quick, I can pull up this paper.</p>
+<p>Wasserstein.</p>
+<p>Well, just while you're looking for it, you mentioned probably approximately correct.</p>
+<p>That's Leslie Valiant.</p>
+<p>That's right. Leslie Valiant. That's right. Exactly. Yeah. Thanks.</p>
+<p>Yeah. So, okay. So I can't find exactly the reference I'm looking for, but basically what it says is that one.</p>
+<p>So I talked about the KL divergence, which is one way of quantifying the difference between two probability distributions.</p>
+<p>Another way of quantifying the difference between two distributions is the Wasserstein distance, which is kind of has this very deep and elegant theory in kind of optimal transport theory.</p>
+<p>And where Wasserstein distance came from originally was, was optimal transport problems.</p>
+<p>And in particular, how do I transform one configuration of some material, say into another configuration?</p>
+<p>Or if I have like a mound of dirt and I want to move the mound of dirt and also reshape it, how, how many shovels full of dirt am I going to have to take basically?</p>
+<p>And that's kind of the classical Kantorovich problem, or there's, there's another guy who, well, I think it's the, it's the other guy who the problem I'm thinking of, but there, there are these two dual optimal transport problems that are basically the same thing that are that problem of transforming one mound of dirt into another.</p>
+<p>And the Wasserstein distance is the amount of shovels of dirt you need basically to carry to transform one distribution into another.</p>
+<p>So you can think of it as like accounting for, it accounts for like not just assigning low probability to high probability events with one distribution versus the other, but also like if the mean of one distribution is very different than the other, then you can think of it as like having to move a lot of mass from one place to another.</p>
+<p>And the kind of cool result that there is in statistical mechanics and in particular like stochastic thermo around this Wasserstein distance is that if you want to change a system state over time, then there's like this trade-off you need to pay between the amount of work that you dissipate and the amount of time that you take.</p>
+<p>And it ends up the form of that trade-off is that the product of the dissipated work and the time duration of your protocol is lower bounded by something times the Wasserstein distance.</p>
+<p>So I guess you can think of that as like, given that I have two distributions that are a certain distance away from each other, I can either transform from one to the other really quickly, but dissipating a lot of work.</p>
+<p>In other words, paying a lot of energy, or I can do it really slowly without paying really any work at all.</p>
+<p>Or I can take some trade-off, do something in between where I kind of slowly change from one to the other and spend a medium amount of work.</p>
+<p>And what we're interested in doing is applying these, you know, this formulation, this theory of Wasserstein distance and trade-off between energy and time to solving problems like this one, like doing Bayesian inference.</p>
+<p>And kind of saying there's like this optimal frontier of, there's not just one optimal solution because you might be in a situation where you care more about speed than you care about energy, or you might be in a situation where you care more about energy than about speed.</p>
+<p>But there is a set of solutions that are optimal with respect to kind of your disposition towards how you value energy and time.</p>
+<p>And I think it's basically related to these like energy time trade-offs.</p>
+<p>That's kind of a classic, pure slash meta Bayesian approach.</p>
+<p>Anytime you have a free parameter, treat that as another kind of variable to do inference on.</p>
+<p>What is the work reservoir?</p>
+<p>As we're not exactly picking up weights and lifting them to a higher elevation or anything.</p>
+<p>So the heat reservoir makes sense in terms of standard thermodynamics, heat bath, and all of that.</p>
+<p>But what's happening with the work reservoir and what is it touching or doing with the device?</p>
+<p>Yeah, yeah.</p>
+<p>That's a great question too.</p>
+<p>So if I go back to this picture for a second here, you can visualize these systems.</p>
+<p>Again, it's like a collection of masses coupled together on springs.</p>
+<p>And then what we're doing when we're changing the potential energy is we're like changing the spring constants of some of these springs.</p>
+<p>So like maybe each of these springs has like a little screw on it that you can turn with a screwdriver to make it like more or less stretchy basically.</p>
+<p>But you need to like draw a boundary between the system and what's outside the system somewhere.</p>
+<p>And where we draw that boundary is that whatever is turning that screw that's tightening, you know, that's changing the spring constant is not part of our system.</p>
+<p>And so that if you need to do work, if it costs energy in order to turn the screw, then that needs to come from somewhere.</p>
+<p>And we're calling that a work reservoir.</p>
+<p>And so we might actually be like lifting weights up and down if that's where the energy comes from in order to change the parameters of the potential energy function.</p>
+<p>We're just kind of saying that wherever that energy comes from, if we have some battery or some, you know, flywheel or whatever, that's kind of outside of our system.</p>
+<p>And we're not really going to not really going to worry about it beyond just quantifying how much energy it interchanges with the system, basically.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>It's interesting that the device almost has these dual reservoirs.</p>
+<p>It's like one of those toothpastes with a dividing line in the middle and squirting out both kinds because on one hand, it's interfacing with heat defined as that which does not do work, just the thermal dissipative.</p>
+<p>And then on the other hand, it's connected into the work reservoir, which is sort of the complement of heat.</p>
+<p>And then the device is interfacing with both of them.</p>
+<p>And as you described, seeking to find a path or a trajectory for itself that isn't leave, that's not either dissipating extra heat unnecessarily or leaving work, convertible work on the table either.</p>
+<p>Because it's sort of able to interface or mediate between the work and the heat here.</p>
+<p>Right.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>And there's a really a nice interpretation of that, too, I think.</p>
+<p>The way you put it is like a toothpaste tube where you can come in one in and out the other or something like that.</p>
+<p>And it is it's it's we see a lot of diagrams like this where you have a heat, you know, you have your interchanging both heat and work with an environment in the context of like heat engines.</p>
+<p>Right.</p>
+<p>Because you have a heat engine that.</p>
+<p>Well, often there will be three reservoirs in that case, like you'll take in heat from a hot reservoir, dump out heat to a cold reservoir and then do work or something.</p>
+<p>But here we have two things.</p>
+<p>We have just have a heat reservoir and a work reservoir.</p>
+<p>But there is a way of thinking about this as a kind of heat engine like thing.</p>
+<p>But it's more of a refrigerator than a heat engine, I guess, because the goal of a heat engine is to take heat and then output work.</p>
+<p>Of course, you also have to output heat somewhere.</p>
+<p>But that's that's the goal is to use heat as a resource in order to output work.</p>
+<p>But what we want to do here is we're actually going to input work and then we're going to output heat.</p>
+<p>And as a result, the entropy of our system decreases.</p>
+<p>And this is just kind of a general thing that happens when you condition one random variable on another.</p>
+<p>The entropy on average of the variable you conditioned decreases because the mutual information has to be positive.</p>
+<p>So this is just one of these fundamental like information theory things because of the positivity of the mutual information conditioning on a random variable decrease the entropy.</p>
+<p>And you can think of in some sense like decreasing the entropy of your system as the operation of a refrigerator, even though it's not necessarily decreasing the temperature per se, but it is decreasing the entropy.</p>
+<p>And so there's kind of this nice way of looking at this as like a heat engine, but really a refrigerator where you have this flow of work in and heat out and decreasing the entropy, basically.</p>
+<p>But just one quick note on that.</p>
+<p>Of course, you can't decrease the entropy of the whole universe.</p>
+<p>So the entropy has to be increased somewhere to compensate for that.</p>
+<p>And that's what's happening where we have heat flowing out into the heat reservoir.</p>
+<p>So the entropy of the heat reservoir is increasing to compensate.</p>
+<p>Could you maybe give a little detail?</p>
+<p>How do real empirical measures, Y1, Y2, etc. come in?</p>
+<p>Like in active inference, we're often thinking about perception as inference or action selection as inference, but just on the perception side.</p>
+<p>So some perceptual prior, new observation comes in, new photon hits the retina or whatever it may be, new thermometer reading comes in for the IoT.</p>
+<p>And how does that feed into this?</p>
+<p>And how do you schedule or bring that empirical measurement in?</p>
+<p>Right.</p>
+<p>Right.</p>
+<p>Yeah.</p>
+<p>So we think of the measured data, these observations, Y1, Y2, Yn, as representing constraints on the system somehow.</p>
+<p>And so when you get new data, you introduce kind of another one of these constraints by writing down your observation and then coupling that,</p>
+<p>and then those physical degrees of freedom that store the observation then get coupled to your subsystem theta.</p>
+<p>But like just to make it kind of concrete of like, yeah, how does that actually happen?</p>
+<p>So in this circuit here, the degrees of freedom that represent data are the currents going through these inductors, L1 and L2.</p>
+<p>And the degrees of freedom that represent an observed data point, Y, are the currents that are provided by these current sources, I1 prime and I2 prime.</p>
+<p>And so what you do when you get data is you turn on these current sources and set the current that they're programmed output as equal to the components of the data that you got.</p>
+<p>But you could also maybe something you said actually I thought was really interesting, which was in terms of like thinking about observation as like perception or learning from perception.</p>
+<p>And you maybe could even think of these, it may be if we got rid of these current sources and just had the environment kind of coupled to these wires.</p>
+<p>And somehow it's like taking a measurement of the environment directly, more or less, and then conditioning on those.</p>
+<p>I think that that's also like kind of a valid interpretation, which I hadn't really thought of before.</p>
+<p>But I think that's an interesting way to think about this as being kind of having these perception inputs here that are coupled to the environment and then conditioning its internal state based on those somehow.</p>
+<p>Cool. Yeah, I mean, a neurological analogy to these circuits are like there's some neural manifold and spiking patterns or neural electrical fields are traversing and they're itinerating around this manifold describing the pre-observation state.</p>
+<p>Then a new observation comes in.</p>
+<p>If it's not attended to, it's like an uncoupled oscillator.</p>
+<p>Like the observation that isn't attended to, it's as if it didn't happen.</p>
+<p>Tree falling in the forest and all that.</p>
+<p>Whereas if the observation is strongly attended to and there's a strong coupling between the observation and the resonating state of the prior,</p>
+<p>then it moves more to be influenced by that observation more strongly.</p>
+<p>And then hierarchical systems just have series of layers with possibly different attentions to layers with resonating information coming from the environment in towards the deeper priors like of the organism.</p>
+<p>And then more on the outbound action selection is when it opens up to, well, maybe the prior from the higher levels cascades out and gets reflected as action,</p>
+<p>modifying the environment to be more like the priors of the organism.</p>
+<p>That's the change the world direction of active inference ongoing with the change your mind direction, updating the priors to be more aligned with what the environment is giving.</p>
+<p>I see. Yeah. I think that's a really cool way of looking at, of looking at this in, in that like, yeah, exactly.</p>
+<p>As you said that like, if you're not, if there's no coupling between the degrees of freedom representing the parameters you're estimating,</p>
+<p>if those are coupled to some source of information in the environment, then yeah, it's like you're paying attention to it in some way.</p>
+<p>Whereas if there's no coupling, it's yeah, it's, it's for the purpose of your, of your Bayesian inference.</p>
+<p>It didn't happen or information just isn't there.</p>
+<p>And so somehow like the conditioning on a piece of information is represented is like embodied physically as a physical coupling between kind of your latent,</p>
+<p>your description of the latent variable and the actual physical encoding of, of the observed data, I think.</p>
+<p>And then the other thing, yeah. The other piece you mentioned about like, what about kind of some feedback effect where like you.</p>
+<p>As a result of your knowledge of this variable, you come up with some policy for like how to behave or something like that.</p>
+<p>And then that will actually change. Maybe that will have an influence on the next observations you get.</p>
+<p>And that's a really interesting direction as well. I think like for the purpose of this paper, we've just assumed like all the observations are independent of each other.</p>
+<p>And that would kind of break down if you assume that like, if you are using some kind of decision, you know, decision strategy or policy to make decisions based on the data you get and your estimate of the state,</p>
+<p>your estimate of the parameters data to inform your, your future decisions in like maybe like a reinforcement learning setup.</p>
+<p>But definitely like figuring out how to use this hardware in that context is something of interest, you know, current interest for us now.</p>
+<p>So I'll definitely, you know, keep, keep people posted as, as that progresses for sure.</p>
+<p>Yeah.</p>
+<p>Cool. Feel free to keep going if there's any other pieces you want to explore and then people watching live can write any questions in the chat.</p>
+<p>Cool. Okay.</p>
+<p>So I think that, yeah.</p>
+<p>So one thing I haven't talked about yet with this paper is our results on complexity, which is, of course, is a really important part of it because that's what motivates us in the end is like why we go to this effort of building this totally new kind of device in order to solve problems.</p>
+<p>We already have a way to solve them, but it's just really hard.</p>
+<p>It's, you know, intractable a lot of the time to sample from Bayesian posteriors.</p>
+<p>If you have to run some very long, you know, Markov process or, you know, some Monte Carlo simulation.</p>
+<p>So we have some results.</p>
+<p>Oh yeah.</p>
+<p>And I also kind of hinted at this earlier that we expected that we might get better speed ups in this case than in the case of the TLA, the thermo linear algebra algorithms,</p>
+<p>because in this case we don't have to do moment estimation.</p>
+<p>We just want to output samples.</p>
+<p>And so that did kind of turn out to be true that we got pretty significant like predicted speed ups.</p>
+<p>So just for this case of the Gaussian Gaussian model where we're given like a Gaussian prior and a Gaussian likelihood and some data,</p>
+<p>and then we want a sample from the Gaussian posterior, we found that the amount of time that it takes,</p>
+<p>the amount of time you have to wait between when you input the problem and when you output the samples scales logarithmically</p>
+<p>with the size of the matrices involved basically, which is pretty good time scaling.</p>
+<p>Because if you think about like what you would have to do digitally to accomplish this,</p>
+<p>you would have to like get the inverse of a matrix.</p>
+<p>You have to get the inverses of two matrices and then like add those together and take an inverse again.</p>
+<p>That's essentially the process you need to do when you want to do conditioning for Gaussians.</p>
+<p>And so that's something that would basically be N cubed time, maybe, you know,</p>
+<p>somewhere between N squared and N cubed using state-of-the-art algorithms.</p>
+<p>And so if we can do that in the amount of time that scales with log N, that sounds really good.</p>
+<p>It almost sounds too good to be true in a way because, you know,</p>
+<p>how is it that we went from polynomial to logarithmic?</p>
+<p>It almost sounds like an exponential speed up.</p>
+<p>And it's, I think, like, well, I think that this result is really cool.</p>
+<p>I don't, it's not quite that cool in that it's not like fundamentally changing a polynomial operation to a logarithmic.</p>
+<p>And the reason is because we also have to look at the energy cost.</p>
+<p>And when you look at the amount of energy that goes, the energy consumed by the algorithm basically scales linearly with the size of the problem.</p>
+<p>So we got this scaling where we have logarithmic time in dimension and linear energy in dimension,</p>
+<p>which is still like a pretty significant improvement.</p>
+<p>And then we also did some analysis of the, like, time complexity for the Bayesian logistic regression scenario.</p>
+<p>And we found there, we were able to show that you also get, like, logarithmic scaling with dimension.</p>
+<p>But we weren't, we haven't yet figured out the, like, energy scaling analysis for the logistic regression.</p>
+<p>Because that circuit ended up being a bit more complicated.</p>
+<p>And it uses these, like, differential pairs of transistors to get kind of logistic functions.</p>
+<p>And it's a little bit involved to, like, try to estimate all the energy.</p>
+<p>But those were the two kind of circuits we gave in the paper.</p>
+<p>And then we found that, like, the first one we found was this one for doing the Gaussian-Gaussian model.</p>
+<p>And this one for doing the Bayesian logistic regression.</p>
+<p>And we have some promising results on, like, the time and energy complexity of those operations.</p>
+<p>So I guess one other just kind of interesting note about, like, the interpretation,</p>
+<p>and that also informs, like, how we derive these scaling results,</p>
+<p>is that there's kind of this interesting literature on, like, Wasserstein gradient flows,</p>
+<p>which is basically, you can think of, like, when the probability distribution is changing over time here,</p>
+<p>you can think of that probability distribution as a vector in, like, a very high dimensional space,</p>
+<p>or really an infinite dimensional space.</p>
+<p>And the dynamics of that vector can be thought of as actually a gradient descent on some objective function.</p>
+<p>And it turns out that what that objective function is,</p>
+<p>is actually that callback library divergence,</p>
+<p>or the difference in free energy between, you know, F and FEQ.</p>
+<p>And then it's, and then the distance that, kind of the step size of that gradient descent</p>
+<p>is measured in terms of the Wasserstein distance,</p>
+<p>which is that distance between distributions I talked about earlier.</p>
+<p>So you can think of this as, like, the dynamics of the probability distribution</p>
+<p>as, like, an ordinary differential equation in an infinite dimensional space,</p>
+<p>where it's, like, going in the line of gradient descent,</p>
+<p>of steepest descent in KL divergence with respect to changes in Wasserstein distance.</p>
+<p>But yeah, so those were the main things I wanted to talk about in this paper, I guess.</p>
+<p>And maybe, yeah, at this point, we can see if there's any questions from the audience or something.</p>
+<p>Cool. Yeah, I think people will definitely be interested in that connection with free energy,</p>
+<p>where the KL divergence comes up in both the variational free energy,</p>
+<p>bounding the Bayesian surprise, and expected free energy,</p>
+<p>which is when considering policy inference as a computation,</p>
+<p>as a cognitive process, and looking over expected observations,</p>
+<p>asking what policy-dependent sequence of expected observations</p>
+<p>would have what epistemic and pragmatic value.</p>
+<p>So these circuits aren't planning.</p>
+<p>They're in the variational free energy, kind of, mode.</p>
+<p>But it's interesting that, again, we see KL divergence popping up in both,</p>
+<p>and different divergences and distances between distributions</p>
+<p>being basically the crux of the question,</p>
+<p>and which measurements about which distributional distances</p>
+<p>and which properties of distributional distances and divergences</p>
+<p>can be enacted,</p>
+<p>or how costly is it to emulate them</p>
+<p>when those are the calculations that it's important to know.</p>
+<p>And the most classic of all being basically prior going to posterior.</p>
+<p>How much should you update?</p>
+<p>Right.</p>
+<p>Yeah, yeah, I really like what you were just saying,</p>
+<p>because I think, yeah, I'm kind of aware of these.</p>
+<p>I've read, I heard a little bit about,</p>
+<p>like, kind of these interpretations of KL divergence</p>
+<p>as, like, in terms of games,</p>
+<p>and, like, how much do you expect to, kind of, lose or win</p>
+<p>if you have some assumption about the distribution of a parameter</p>
+<p>that if, kind of, your distribution for a parameter</p>
+<p>isn't the actual distribution or something like that,</p>
+<p>and how well or badly do you do in this game</p>
+<p>based on your, kind of, estimate of a distribution.</p>
+<p>And I think that, I really like that,</p>
+<p>that characterization of it,</p>
+<p>because it gets it, kind of, a more, like,</p>
+<p>end-to-end measure of quality.</p>
+<p>Because if you, yeah, if you, if you use some system</p>
+<p>to accelerate the computations you need to power an agent,</p>
+<p>and then you want to estimate, like, quantify</p>
+<p>how good is your system really doing,</p>
+<p>then what people will care more about at the end of the day</p>
+<p>isn't necessarily, like, what's the, like,</p>
+<p>you know, what's the relative error</p>
+<p>between these two matrices or vectors,</p>
+<p>but more, like, what, how much, you know,</p>
+<p>how, how, how often will I make the right decision</p>
+<p>or something like that, basically,</p>
+<p>or what's my expected reward based on decisions I make.</p>
+<p>And so I think that, yeah, if we can,</p>
+<p>if we can somehow introduce the KL divergence</p>
+<p>in, in, on that end as well,</p>
+<p>that'll be a really nice way to, kind of, formulate things.</p>
+<p>How do you see these elements playing a role</p>
+<p>in systems engineering and design?</p>
+<p>Like, is it something that gets brought in,</p>
+<p>like, another kind of GPU or CPU?</p>
+<p>We've talked about processing,</p>
+<p>but not really about memory or storage.</p>
+<p>So how do you see this playing a role</p>
+<p>in whether specialized inference pipelines</p>
+<p>or consumer hardware or what?</p>
+<p>Right.</p>
+<p>Yeah, that's a great question.</p>
+<p>I think there's really two ways to look at it.</p>
+<p>One is, like, what, what,</p>
+<p>how do the theoretical results matter</p>
+<p>in terms of the future of computing hardware?</p>
+<p>And I think that, like,</p>
+<p>these theoretical results can be pretty influential.</p>
+<p>Like, things like scaling laws,</p>
+<p>like, you know, like, like Moore's law</p>
+<p>and stuff like that,</p>
+<p>or like how Landauer's principle</p>
+<p>informs how people think about</p>
+<p>what's the minimum amount of energy</p>
+<p>that you can achieve with a computation.</p>
+<p>And I think that there's one, like, impact</p>
+<p>of, you know, these theoretical results</p>
+<p>is that it kind of gives you a bar to aim for.</p>
+<p>And that if we can say, like,</p>
+<p>this is the energy time trade-off</p>
+<p>for Bayesian inference,</p>
+<p>you can do it this fast</p>
+<p>if you pay this much energy.</p>
+<p>But if you go a little bit slower,</p>
+<p>then you can save some energy.</p>
+<p>Then that kind of sets the benchmark</p>
+<p>for, like, what people should hope</p>
+<p>to achieve with new hardware,</p>
+<p>whether or not they're using our paradigm.</p>
+<p>But then there's the other kind of way</p>
+<p>of looking at it,</p>
+<p>which is just a more kind of literal level</p>
+<p>is, like, what's the path</p>
+<p>from these designs we presented</p>
+<p>in this paper</p>
+<p>to actually building hardware</p>
+<p>and where would that hardware go</p>
+<p>and what will it do?</p>
+<p>So I guess the exciting news</p>
+<p>kind of on that front</p>
+<p>is that, yeah,</p>
+<p>we talked a little bit about</p>
+<p>on Twitter recently</p>
+<p>how we got funding</p>
+<p>from an agency in the UK called ARIA</p>
+<p>that's, like, their new,</p>
+<p>more or less their version of DARPA,</p>
+<p>kind of,</p>
+<p>that they recently created</p>
+<p>and is really interested</p>
+<p>in bringing down the costs of AI,</p>
+<p>like, in terms of</p>
+<p>the hardware production costs</p>
+<p>and also, like, the energy</p>
+<p>and time costs of training</p>
+<p>and even inference as well.</p>
+<p>And so they've kind of funded</p>
+<p>our project on a timeline of,</p>
+<p>you know, let's say, like,</p>
+<p>we're aiming to have hardware</p>
+<p>in the next, you know,</p>
+<p>three, four, five years,</p>
+<p>basically,</p>
+<p>at kind of varying level</p>
+<p>of kind of increasing</p>
+<p>the dimension that it will</p>
+<p>increase in the size</p>
+<p>of the problems</p>
+<p>it'll be able to solve.</p>
+<p>But in terms of, yeah,</p>
+<p>like, where exactly</p>
+<p>that hardware will go</p>
+<p>or who will end up using it,</p>
+<p>I think that there's still, like,</p>
+<p>there's still some open questions</p>
+<p>around that.</p>
+<p>And more, like,</p>
+<p>I'm more working on, yeah,</p>
+<p>the side of, like,</p>
+<p>designing the algorithms</p>
+<p>and trying to figure out</p>
+<p>what, you know,</p>
+<p>what error mitigation</p>
+<p>or error correction techniques</p>
+<p>we can come up with</p>
+<p>to make it work better</p>
+<p>and make it more robust.</p>
+<p>But, yeah, hopefully,</p>
+<p>you know, yeah,</p>
+<p>maybe next time,</p>
+<p>you know,</p>
+<p>I'll have a more detailed</p>
+<p>answer on that.</p>
+<p>But I think, yeah,</p>
+<p>at the moment,</p>
+<p>it's not totally set in stone.</p>
+<p>Yeah.</p>
+<p>What else do you think</p>
+<p>is out there</p>
+<p>in terms of Landauer?</p>
+<p>You know,</p>
+<p>what bounds</p>
+<p>are you scraping up against</p>
+<p>or what big patterns</p>
+<p>of information</p>
+<p>and work and heat</p>
+<p>do you think might be</p>
+<p>out there</p>
+<p>and touched upon</p>
+<p>by this line of inquiry?</p>
+<p>Right.</p>
+<p>So I guess, like,</p>
+<p>one kind of historical note</p>
+<p>is that, like,</p>
+<p>for a long time,</p>
+<p>people have focused a lot</p>
+<p>on just kind of</p>
+<p>Landauer's principle</p>
+<p>as, like,</p>
+<p>the fundamental bound</p>
+<p>for computing.</p>
+<p>And just for, you know,</p>
+<p>the audience</p>
+<p>and people who aren't</p>
+<p>necessarily familiar,</p>
+<p>what Landauer's principle</p>
+<p>says is that</p>
+<p>to erase a bit</p>
+<p>of information,</p>
+<p>you need to dissipate</p>
+<p>an amount of heat,</p>
+<p>which is log 2 times kt.</p>
+<p>So in other words,</p>
+<p>if you can run your computer</p>
+<p>at a very low temperature,</p>
+<p>then you don't have</p>
+<p>to dissipate</p>
+<p>as much information.</p>
+<p>But there's still,</p>
+<p>you know,</p>
+<p>amount of work that,</p>
+<p>I'm sorry,</p>
+<p>did dissipate heat.</p>
+<p>There's still amount</p>
+<p>of energy</p>
+<p>that you have to pay</p>
+<p>that's proportional</p>
+<p>to the amount of erasure</p>
+<p>that you have to do.</p>
+<p>Now, the issue</p>
+<p>with Landauer's principle,</p>
+<p>one issue is that</p>
+<p>it's something</p>
+<p>that we haven't really</p>
+<p>been able to achieve.</p>
+<p>There's a nice kind of plot</p>
+<p>on one of these slides</p>
+<p>about it,</p>
+<p>like showing how</p>
+<p>while we are still getting,</p>
+<p>you know,</p>
+<p>more and more efficiency,</p>
+<p>we're still well above</p>
+<p>this thermodynamic limit,</p>
+<p>which is Landauer's bound</p>
+<p>in terms of how much energy</p>
+<p>we pay.</p>
+<p>And so I think the trend</p>
+<p>more recently is to say,</p>
+<p>well, we need to also</p>
+<p>account for time</p>
+<p>because Landauer's principle</p>
+<p>doesn't really account for time.</p>
+<p>It, you know,</p>
+<p>assumes you can do</p>
+<p>what you're doing</p>
+<p>like infinitely slow.</p>
+<p>And in reality,</p>
+<p>you know,</p>
+<p>we don't want to do</p>
+<p>computations infinitely slowly.</p>
+<p>And so that's kind of,</p>
+<p>yeah,</p>
+<p>the angle I'm thinking</p>
+<p>about when I'm saying,</p>
+<p>like,</p>
+<p>let's try using these</p>
+<p>kind of these results</p>
+<p>from stochastic thermo</p>
+<p>that bound like energy,</p>
+<p>the product of energy</p>
+<p>and time using</p>
+<p>the Wasserstein distance.</p>
+<p>But I think that,</p>
+<p>like,</p>
+<p>I've just kind of dipped,</p>
+<p>you know,</p>
+<p>a finger into that literature.</p>
+<p>And there's a lot of work</p>
+<p>on that stuff</p>
+<p>in terms of like speed limits,</p>
+<p>especially in like quantum systems,</p>
+<p>quantum speed limits</p>
+<p>and classical speed limits.</p>
+<p>And so,</p>
+<p>yeah,</p>
+<p>that's like,</p>
+<p>I guess the line,</p>
+<p>the pattern I'm most excited about</p>
+<p>is using these bounds</p>
+<p>on like the product</p>
+<p>of energy and time</p>
+<p>in terms of,</p>
+<p>you know,</p>
+<p>distance measures</p>
+<p>between distributions.</p>
+<p>But there may be,</p>
+<p>you know,</p>
+<p>maybe other patterns as well.</p>
+<p>So definitely curious to hear,</p>
+<p>yeah,</p>
+<p>if any other ideas</p>
+<p>I think come to mind.</p>
+<p>But yeah.</p>
+<p>Yeah,</p>
+<p>that's exciting</p>
+<p>to bring time</p>
+<p>into the equation,</p>
+<p>literally.</p>
+<p>And,</p>
+<p>and for,</p>
+<p>for real embodiment,</p>
+<p>systems that have existence</p>
+<p>in space and time,</p>
+<p>that their material properties</p>
+<p>and the propagation,</p>
+<p>maybe even coming down to,</p>
+<p>um,</p>
+<p>speed of sound,</p>
+<p>speed of light,</p>
+<p>deformation,</p>
+<p>velocities,</p>
+<p>and,</p>
+<p>and these sorts of things</p>
+<p>could become dominant</p>
+<p>in terms of whether,</p>
+<p>um,</p>
+<p>the bulldozer moves a few</p>
+<p>large amounts of earth</p>
+<p>with great cost</p>
+<p>or whether it's very fine grains of sand,</p>
+<p>which might be very efficient,</p>
+<p>but then it might take so long</p>
+<p>that for,</p>
+<p>for a practical situation,</p>
+<p>it doesn't really</p>
+<p>have utility.</p>
+<p>Yeah,</p>
+<p>yeah,</p>
+<p>absolutely.</p>
+<p>And,</p>
+<p>and I think like one,</p>
+<p>the one reason I'm,</p>
+<p>I'm really excited about,</p>
+<p>yeah,</p>
+<p>as you put it,</p>
+<p>like bringing time into the equation</p>
+<p>is kind of at a higher level,</p>
+<p>like big picture.</p>
+<p>I think that where things are going</p>
+<p>in terms of the theory</p>
+<p>is like some kind of unification</p>
+<p>between like computational complexity theory</p>
+<p>and stochastic thermo,</p>
+<p>because like we've,</p>
+<p>we've been approaching</p>
+<p>some of the same problems</p>
+<p>of,</p>
+<p>of like,</p>
+<p>yeah,</p>
+<p>how fundamentally does your resource costs</p>
+<p>of like energy and time scale</p>
+<p>with the size of a system</p>
+<p>kind of as it scales.</p>
+<p>But so far,</p>
+<p>like we,</p>
+<p>we haven't like,</p>
+<p>I think fully broken through</p>
+<p>to see the shape</p>
+<p>that connection takes.</p>
+<p>And,</p>
+<p>and yeah,</p>
+<p>the approach that I'm,</p>
+<p>that I kind of take to that</p>
+<p>is like first go for the low hanging fruit,</p>
+<p>like not,</p>
+<p>you know,</p>
+<p>we're not necessarily going to</p>
+<p>see it all at once.</p>
+<p>Like what is this relationship</p>
+<p>between stochastic thermo</p>
+<p>and complexity theory?</p>
+<p>But the more we can like build up</p>
+<p>these little results</p>
+<p>of like,</p>
+<p>well,</p>
+<p>you can,</p>
+<p>by looking,</p>
+<p>by building,</p>
+<p>constructing kind of a thermodynamic system</p>
+<p>that you're going to change the parameters</p>
+<p>and do work on</p>
+<p>and see it as this kind of heat engine</p>
+<p>or refrigerator,</p>
+<p>you can achieve a certain computational complexity</p>
+<p>of this operation.</p>
+<p>I think these like smaller results</p>
+<p>are,</p>
+<p>are helping to,</p>
+<p>you know,</p>
+<p>bring,</p>
+<p>bring those two fields</p>
+<p>a little closer together</p>
+<p>or maybe,</p>
+<p>yeah.</p>
+<p>Interesting.</p>
+<p>also with time,</p>
+<p>it's almost like,</p>
+<p>it's like with a body,</p>
+<p>there's a baseline,</p>
+<p>a basal metabolic rate</p>
+<p>and then exercise</p>
+<p>is doing extra activity</p>
+<p>on top of that.</p>
+<p>So it's like,</p>
+<p>if you have to pay the upkeep</p>
+<p>on the energy</p>
+<p>of the circuit,</p>
+<p>even if it only is using</p>
+<p>a little bit of extra activity</p>
+<p>to do the target computation,</p>
+<p>you're still paying</p>
+<p>for a large block of time</p>
+<p>the baseline level</p>
+<p>and so when we get</p>
+<p>to the thermal limit,</p>
+<p>then the baseline</p>
+<p>is free</p>
+<p>because it's happening</p>
+<p>at a temperature</p>
+<p>that's,</p>
+<p>it's,</p>
+<p>it's happening</p>
+<p>at an ambient temperature.</p>
+<p>so it's not needing</p>
+<p>to be powered</p>
+<p>to give some</p>
+<p>of the sampling dynamics</p>
+<p>in the same way</p>
+<p>the,</p>
+<p>the,</p>
+<p>the informative sampling</p>
+<p>and that's the part</p>
+<p>that,</p>
+<p>that I think</p>
+<p>there's still so much</p>
+<p>learning and,</p>
+<p>and interest</p>
+<p>in.</p>
+<p>How,</p>
+<p>how do these higher moments</p>
+<p>arise</p>
+<p>with,</p>
+<p>with no extra work?</p>
+<p>That seems like</p>
+<p>good information</p>
+<p>vibration</p>
+<p>and yet it's falling</p>
+<p>out of what seems</p>
+<p>to be powered</p>
+<p>just from thermal vibration.</p>
+<p>Yeah,</p>
+<p>no,</p>
+<p>I,</p>
+<p>I definitely like</p>
+<p>think about it</p>
+<p>in,</p>
+<p>in those terms</p>
+<p>as in like,</p>
+<p>what are the sources,</p>
+<p>like fundamentally</p>
+<p>the sources of energy</p>
+<p>we have,</p>
+<p>energy takes the form</p>
+<p>of work or heat</p>
+<p>and work,</p>
+<p>and heat is like cheap</p>
+<p>and work is expensive,</p>
+<p>right?</p>
+<p>Because heat just kind</p>
+<p>of comes from a reservoir</p>
+<p>and comes from anywhere</p>
+<p>and it's not organized</p>
+<p>and yeah,</p>
+<p>and work you have to,</p>
+<p>you have to go to,</p>
+<p>some trouble</p>
+<p>to actually get a,</p>
+<p>a source of work.</p>
+<p>So yeah,</p>
+<p>I definitely think about it</p>
+<p>like that,</p>
+<p>like how can we</p>
+<p>optimize a computation</p>
+<p>so that more of the energy</p>
+<p>comes from heat</p>
+<p>as opposed to work</p>
+<p>basically,</p>
+<p>but yeah.</p>
+<p>Yes,</p>
+<p>I think that's,</p>
+<p>that's exactly</p>
+<p>it.</p>
+<p>Having,</p>
+<p>having something</p>
+<p>rather than</p>
+<p>needing to</p>
+<p>add energy</p>
+<p>from the wall</p>
+<p>so that</p>
+<p>the energy</p>
+<p>gets pushed</p>
+<p>through a system,</p>
+<p>does some computation</p>
+<p>and dissipates</p>
+
+<p>the extra as heat,</p>
+<p>it's almost like</p>
+<p>there's another</p>
+<p>avenue</p>
+<p>where the heat</p>
+<p>in the room</p>
+<p>vibrates the system</p>
+<p>to functionally</p>
+<p>implement that computation</p>
+<p>or cognitive process,</p>
+<p>it's,</p>
+<p>it's all about</p>
+<p>arbitraging</p>
+<p>heat and work</p>
+<p>in new ways</p>
+<p>and seeing</p>
+<p>Bayesian</p>
+<p>and</p>
+<p>equilibrium</p>
+<p>and far from</p>
+<p>equilibrium</p>
+<p>processes</p>
+<p>as happening</p>
+<p>as sort of</p>
+<p>a first principle</p>
+<p>of intelligent matter.</p>
+<p>Yeah,</p>
+<p>yeah,</p>
+<p>yeah,</p>
+<p>I think that's</p>
+<p>really cool,</p>
+<p>really cool way</p>
+<p>to see it actually.</p>
+<p>Yeah,</p>
+<p>absolutely.</p>
+<p>Yeah,</p>
+<p>and I guess,</p>
+<p>yeah,</p>
+<p>one,</p>
+<p>one other thing</p>
+<p>I'll say,</p>
+<p>I guess,</p>
+<p>that I was thinking</p>
+<p>is in terms of,</p>
+<p>yeah,</p>
+<p>like,</p>
+<p>like,</p>
+<p>how,</p>
+<p>where,</p>
+<p>where do we look</p>
+<p>for kind of</p>
+<p>fundamental constraints</p>
+<p>on computation</p>
+<p>in terms of</p>
+<p>the resource costs?</p>
+<p>I think that</p>
+<p>a lot of people,</p>
+<p>some,</p>
+<p>some people have taken</p>
+<p>the view that,</p>
+<p>like,</p>
+<p>really,</p>
+<p>the land hours principle</p>
+<p>is kind of,</p>
+<p>what,</p>
+<p>what's the most,</p>
+<p>is the most fundamental thing</p>
+<p>and then the reason</p>
+<p>we aren't achieving it</p>
+<p>is just kind of practical</p>
+<p>considerations on some level,</p>
+<p>it's just that it's hard</p>
+<p>to engineer,</p>
+<p>but yeah,</p>
+<p>my outlook is more</p>
+<p>that like,</p>
+<p>well,</p>
+<p>maybe there's a fundamental</p>
+<p>reason that it is hard</p>
+<p>to engineer something,</p>
+<p>you know,</p>
+<p>maybe there's a fundamental</p>
+<p>trade-off that we just</p>
+<p>haven't discovered yet</p>
+<p>that if we knew about</p>
+<p>would actually very well</p>
+<p>explain why we're still</p>
+<p>a thousand or three</p>
+<p>or four orders of magnitude</p>
+<p>above land hours principle.</p>
+<p>So yeah,</p>
+<p>I'm hoping that it's,</p>
+<p>that maybe just considering</p>
+<p>time will get us there.</p>
+<p>If not,</p>
+<p>then yeah,</p>
+<p>there's,</p>
+<p>there's more to think about,</p>
+<p>but yeah,</p>
+<p>who knows,</p>
+<p>I guess at this point,</p>
+<p>but yeah.</p>
+<p>Cool.</p>
+<p>Do you have any final riddles</p>
+<p>or thoughts or comments?</p>
+<p>Yeah,</p>
+<p>I can't think of anything else.</p>
+<p>Yeah,</p>
+<p>I think this is,</p>
+<p>I think I really covered</p>
+<p>everything that,</p>
+<p>yeah,</p>
+<p>I was hoping to get across.</p>
+<p>I think so far it's been</p>
+<p>really good.</p>
+<p>It's been really great.</p>
+<p>But yeah,</p>
+<p>if there was any,</p>
+<p>any questions from the audience,</p>
+<p>we of course be happy</p>
+<p>to take those.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>No specific questions.</p>
+<p>This was very informative,</p>
+<p>Max.</p>
+<p>I think it's,</p>
+<p>it's a,</p>
+<p>been a topic coming up again</p>
+<p>and again with these,</p>
+<p>not just similarities and differences</p>
+<p>and analogies,</p>
+<p>but implementations of information,</p>
+<p>geometries,</p>
+<p>and information processes</p>
+<p>processes on embodiments,</p>
+<p>on physical embodiments,</p>
+<p>biological design,</p>
+<p>and all of this.</p>
+<p>And so it certainly feels like</p>
+<p>there's a lot of threads</p>
+<p>swimming around</p>
+<p>and,</p>
+<p>and exciting opportunities</p>
+<p>for synthesis.</p>
+<p>so thank you for this exciting</p>
+<p>research</p>
+<p>and,</p>
+<p>and the empirical connections</p>
+<p>and everything.</p>
+<p>Absolutely.</p>
+<p>Thanks for having me.</p>
+<p>And yeah,</p>
+<p>as I,</p>
+<p>as I mentioned earlier,</p>
+<p>like when we first started out</p>
+<p>on this research,</p>
+<p>we definitely had no idea</p>
+<p>or,</p>
+<p>or didn't anticipate at all</p>
+<p>that it would lead us</p>
+<p>to kind of these,</p>
+<p>these things that can be interpreted</p>
+<p>in terms of like active inference</p>
+<p>and connections to that</p>
+<p>and,</p>
+<p>and like free energy.</p>
+<p>But yeah,</p>
+<p>it's just been really exciting</p>
+<p>for me that,</p>
+<p>yeah,</p>
+<p>we work on something</p>
+<p>I think is,</p>
+<p>is both a practical approach</p>
+<p>to improving our landscape</p>
+<p>of hardware for AI,</p>
+<p>but also has these interesting</p>
+<p>and deep,</p>
+<p>you know,</p>
+<p>thermodynamic interpretations.</p>
+<p>So yeah,</p>
+<p>definitely,</p>
+<p>definitely I'm,</p>
+<p>I'm happy to,</p>
+<p>to come back anytime</p>
+<p>and chat more.</p>
+<p>I thought this was really,</p>
+<p>really fun.</p>
+<p>Cool.</p>
+<p>Let's check back</p>
+<p>in a couple months</p>
+<p>in a couple,</p>
+<p>in a couple trillion oscillations</p>
+<p>of the cesium,</p>
+<p>as they say.</p>
+<p>All right.</p>
+<p>Thank you, Max.</p>
+<p>Farewell.</p>
+<p>Yeah.</p>
+<p>Bye.</p>
+<p>Have a good one.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+<p>Thank you.</p>
+</article>
+</body>
+</html>

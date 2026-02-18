@@ -1,0 +1,5213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf MathStream 011.1 ~ "Structured Active Inference", Toby St Clere Smithe</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf MathStream 011.1 ~ "Structured Active Inference", Toby St Clere Smithe</h1>
+<div class="meta">Category: MathStream &middot; Series: MathStream_011 &middot; Episode 1 &middot; Speakers: Toby St Clere Smithe &middot; Duration: 1:29:53 &middot; Views: 450</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=IPiazKlNZ4g">https://www.youtube.com/watch?v=IPiazKlNZ4g</a></div>
+<article>
+<p>Hello and welcome. It is August 12th, 2024, and we are in ActInf Math Stream number 11.11111111</p>
+<p>and with repeat friend Toby Smythe. Today we're going to talk about structured active inference.</p>
+<p>There will be a presentation followed by a discussion. So thank you Toby for joining and everybody for watching and asking questions and looking forward to learning more here. So go for it.</p>
+<p>Cool. Great. Thanks, Daniel. Thanks for having me on again. So as Daniel says, this is going to be a talk about structured active inference, which is really my account of the structure of active inference systems.</p>
+<p>And really it kind of extends beyond active inference to any kind of system that you could think of as being kind of agential and that has some kind of compositional structure in particular.</p>
+<p>But we'll get to that. Okay. The way I like to begin thinking about structure and active inference is at the moment it's kind of like,</p>
+<p>if you wanted to model in active inference, an agent or a person getting onto a bicycle or getting into a car,</p>
+<p>then I think as things stand, it might be a bit tricky because that process involves like changing the agent's Markov blanket or how I like to think of it is changing the agent's interface.</p>
+<p>And to be able to talk about that precisely, you need to have a good notion of what interface is.</p>
+<p>So, you know, you, as you're, you know, getting into the, getting onto the bike, let's say, you move, you change from, you know,</p>
+<p>walking by taking steps one after another to, you know, like changing your direction by like leaning and pedaling.</p>
+<p>So the kind of type of actions you can take and the things that you pay attention to change, yes,</p>
+<p>because you're now this kind of composite system, you and the bicycle.</p>
+<p>And it's a similar story when you get into the car.</p>
+<p>So that, that really, that means that you don't just have like one like set of observations and like one set of actions you can take.</p>
+<p>This, this kind of composing process means that you have to have a bit more flexibility.</p>
+<p>And in particular, you need to say precisely what those sets of observations and sets of actions should be.</p>
+<p>So the basic idea behind structure, structured active inference is really just to put the ideas of active inference into categorical systems theory.</p>
+<p>And so categorical systems theory is just an account of how dynamical systems of very general kind.</p>
+<p>are made up of parts and how those parts compose together.</p>
+<p>And it separates out the notion of the system from the notion of its interface.</p>
+<p>And so this allows us to be very precise about what is the kind of agent Markov blanket and how does that change?</p>
+<p>So we inherited a number of features of categorical systems theory in this notion of structured active inference.</p>
+<p>In particular, we inherit this kind of idea of structured interface.</p>
+<p>And that means not only do we have to be precise about what the interfaces are, but we also are able to say what the structure in some sense of the interface is and how does it change?</p>
+<p>And how does it interact with other kinds of interface?</p>
+<p>I'll say a lot more about that in the next few slides.</p>
+<p>Because categorical systems theory is all about the composition of systems and their interfaces, so is structured active inference.</p>
+<p>And that means that we get a nice kind of modular account of active inference.</p>
+<p>And we can compare active inference with other accounts of agency.</p>
+<p>And we can compare active inference systems of various different kinds in a nice precise way.</p>
+<p>And so that means we could sort of translate between continuous time and discrete time systems or various different kinds of continuous time or stochastic systems.</p>
+<p>Those are all different systems theories of their own.</p>
+<p>And active inference has lots to say about how to do inference and policy selection on those different kinds of systems.</p>
+<p>But categorical systems theory means that we're very precise about what those different systems and how that inference process works.</p>
+<p>And so this kind of comparability comes into, is formalized by the notion of morphism of systems.</p>
+<p>So these morphisms, they come into two kinds in systems theory.</p>
+<p>We get morphisms of interface.</p>
+<p>Those are the things that allow you to sort of plug yourself into another sort of bigger system in some sense.</p>
+<p>That is, as you get onto the car, you get onto the bicycle, you're sort of wiring yourself into this composite human bicycle system.</p>
+<p>But they also, these morphisms, they also encompass changing the model, that is changing the model of system, but also changing an individual model itself.</p>
+<p>So doing things like structure learning, parameter change, so normal learning, meta learning, or things that we might think of in neuroscience as effective connectivity.</p>
+<p>These are all kinds of morphisms of system.</p>
+<p>And all of this stuff comes out of packaging active inference into this categorical systems theory language.</p>
+<p>So with this, we gain a lot of things.</p>
+<p>Not only do we sort of inherit these features, but we gain some nice new capabilities as well.</p>
+<p>So I've already talked about what we get from structured interfaces.</p>
+<p>So that means that we get systems where you can, like, the kinds of actions you take might depend on the situation or context or mode that you're in,</p>
+<p>or that can act on very sort of precisely defined structured interfaces like computer APIs.</p>
+<p>We get notions of agents that manage agents in a precise compositional way or sort of meta agents that can use active inference itself to change their structure.</p>
+<p>There seems to be an interesting link between structure learning, as in within one model, and planning, as in choosing your sort of policy, your series of actions.</p>
+<p>Both of those seem to be about composing sequences of morphisms.</p>
+<p>And another thing that comes out of putting active inference into the language of categorical systems theory is that we can also make contact with categorical logic,</p>
+<p>which can also be applied to categorical systems theory.</p>
+<p>And that means that we can do things like, or in principle, can do things like specify systems goals as logical predicates,</p>
+<p>talk about contracts that might have to hold between agents or sort of on their behaviors that you might,</p>
+<p>something you might care about if you're interested in safety of artificial intelligences.</p>
+<p>And this logic, because it's in this systems theoretic framework, has to be compatible with the patterns of interaction of the systems.</p>
+<p>Now, I'm not going to say very much about this, because there's really quite a big and open problem,</p>
+<p>like spelling out all of the details here, but I've got a couple of slides at the end about it.</p>
+<p>And in that same kind of vein, and similar to this notion of policies as kind of being sequences of morphisms,</p>
+<p>structured active inference, because we give some kind of typing or context information to the actions that are available,</p>
+<p>that means that we can do things like type checking in principle on policies.</p>
+<p>And that's a kind of rudimentary way to verify the safety of a policy, i.e. just that it makes sense.</p>
+<p>So the basic idea of categorical systems theory, this is the math stream, so I'm going to be quite mathematical here.</p>
+<p>So there are two ingredients, as I mentioned.</p>
+<p>One is that we have a category of interfaces, so that is just something very syntactic.</p>
+<p>It says, okay, here are the interfaces and marker blankets of all my different systems.</p>
+<p>And those interfaces form the object of this category.</p>
+<p>And then here are all the ways that these interfaces could sort of link up or connect.</p>
+<p>And these these wirings, they become the morphisms of this category of interfaces.</p>
+<p>But there's no information in the category of interfaces about the systems themselves.</p>
+<p>It's really just a sort of syntactic gadget for talking about how things connect up.</p>
+<p>And so to attach systems to interfaces, we have what's known as an index category.</p>
+<p>So we have for each possible interface, there's a whole category of systems that might somehow like fill that interface with a system.</p>
+<p>So we think of the interfaces like a box.</p>
+<p>And then the index category of systems over that category of interfaces fills that box with an actual system.</p>
+<p>It sort of brings it to life.</p>
+<p>And it being index category means that these categories of systems over interfaces have to be compatible with wiring up.</p>
+<p>So if you have an interface, one box and another box side by side, and you connect them together using one of the morphisms,</p>
+<p>you're also able to connect the systems in this way compatibly.</p>
+<p>That is, you know, once you've plugged your boxes together, the systems sort of interact in this way accordingly.</p>
+<p>So that allows us to do this kind of connection of systems.</p>
+<p>It's not normally just a category.</p>
+<p>We also typically have what's known as the monoidal structure on the category of interfaces.</p>
+<p>And that means that we can place systems side by side.</p>
+<p>We don't just plug systems like one into another.</p>
+<p>We can have like two systems next to each other and then sort of connect them into a bigger system.</p>
+<p>That is like, you know, your body is made of lots and lots of cells next to each other, but they're all sort of interconnected in parallel.</p>
+<p>And that's sort of formalized by this monoidal structure, which is sometimes called tensor and represented with this symbol here.</p>
+<p>And so the systems theory, again, has to be compatible with this tensor, which means if you put two boxes side by side and systems in them,</p>
+<p>then you also get a system in the sort of composite, like sort of double box system.</p>
+<p>And so to do wiring, really often what happens is you have one box.</p>
+<p>I've written it as P here and another box written as P prime.</p>
+<p>You put them together into this P tensor P prime.</p>
+<p>That means that you can connect these, a system over this and a system over this into a system over the joint interface.</p>
+<p>And then say you've got some some wiring.</p>
+<p>So wiring would be amorphism P tensor P prime to Q.</p>
+<p>Then the system theory allows you to take that wiring and wire the systems together accordingly.</p>
+<p>And then that means you've got a system on this like Q interface.</p>
+<p>And so often you see diagrams and systems theory, which are a bit like this.</p>
+<p>This is P, this is P prime, this is Q.</p>
+<p>And then this is like some like way of wiring the systems together.</p>
+<p>And then this is, you know, this is your wiring.</p>
+<p>And then you've got the systems and you get a sort of composite system like this.</p>
+<p>So I've got very fast.</p>
+<p>This is the basics of categorical systems theory.</p>
+<p>As I say, it's a language for talking about building complex systems from their parts in a nice sort of formal compositional mathematical way.</p>
+<p>And so what we're going to do is put active inference into this language in a way that generalizes active inference in this sort of quite big new direction that allows for things like mode dependence of actions.</p>
+<p>And so to do that, I want to introduce a particular category of interfaces, the category of polynomial functors.</p>
+<p>If you know the work of David Spivak and his colleagues, he's a big proponent of this category for talking about things like systems and dynamics.</p>
+<p>And so I'm going to adopt his notation in talking about this category.</p>
+<p>He calls it poly.</p>
+<p>And there's a nice book about this by David and Nelson New that you can read.</p>
+<p>It's freely available online.</p>
+<p>So a polynomial, it's really, again, as I say, it's like a syntactic gadget to talk about the interface of a system.</p>
+<p>And it has kind of two key ingredients.</p>
+<p>And it's really just like a polynomial that you see in high school algebra.</p>
+<p>So it has like a set of summands, which are these like y to the somethings.</p>
+<p>And they're indexed by this p of one set.</p>
+<p>This is a set.</p>
+<p>And each summand has another set attached to it, which is the exponent.</p>
+<p>So it's really just like y squared plus 3y plus one.</p>
+<p>This is a polynomial.</p>
+<p>And this could be like sum over i, y to the xi.</p>
+<p>If we think of the three y as like y plus y plus y.</p>
+<p>And so this is a sort of general representation of a polynomial.</p>
+<p>And we think of the indexing set p of one as the set of the system's outputs or the configurations that it could adopt or an active inference language like the observable states of a generative model.</p>
+<p>And then to each possible configuration of the system, as I say, you have this set which represents the inputs or the actions that a system might take in that corresponding configuration.</p>
+<p>And so that's just what how we think of a polynomial.</p>
+<p>And then there are some things you can do with polynomials.</p>
+<p>In particular, there's one like trivial polynomial, one that has just sort of one configuration and one possible input.</p>
+<p>So there's no possible variation in its configurations and no interesting actions that it can take.</p>
+<p>We can put polynomials side by side using this tensor product.</p>
+<p>And this has the kind of expected effect on the polynomials.</p>
+<p>A configuration of a tensor is like a configuration of each part.</p>
+<p>And an input is or an action is an action or an input of the corresponding part like that.</p>
+<p>And mathematically, we can translate between this kind of polynomial representation and what's known as a bundle, which is just a function.</p>
+<p>So these are all sets, the P of I's and the P of one.</p>
+<p>And so we can do the co-product or disjoint union of these sets by summing over the I's.</p>
+<p>And this means that the elements of this big set here are pairs of an I, an indexing I in P of one and an element of the corresponding exponent set.</p>
+<p>And this bundle is just a function that maps I X down to I.</p>
+<p>And this is useful for defining the morphisms of polynomials, which will do the things that I think of as wiring.</p>
+<p>And I'll talk about that in a moment.</p>
+<p>But before I do so, I want to introduce one important example of polynomial, which are the monomials, because they don't have interesting.</p>
+<p>They don't have many interesting sort of non-trivial summands.</p>
+<p>They're just like one term.</p>
+<p>So and we write these as O Y to the A.</p>
+<p>And these are going to be familiar because they capture a kind of classical active inference.</p>
+<p>So here I think of the O as like the set of observations of an agent and the exponent A as the set of actions.</p>
+<p>And so these actions are like the inputs to a generative model that makes it transition.</p>
+<p>And the observations are like the sort of data that the generative model or the environment produces that the agent receives.</p>
+<p>And this is a polynomial because you're just summing over the A, the O's of each O, you have the same A.</p>
+<p>And the bundle just takes a pair of O and A and projects down to O.</p>
+<p>OK, cool.</p>
+<p>So let me talk about how these things sort of wire up briefly.</p>
+<p>This is done using the morphisms of polynomials, which are otherwise known as dependent lenses, if you know about functional programming, for instance.</p>
+<p>So.</p>
+<p>Amorphism is going to represent taking a system and putting inside a bigger system.</p>
+<p>That is like if you've got two small boxes and you wire them together to bigger to build a big box or you take two cells and you put them or take multiple cells and you put them together to sort of make a multicellular organism.</p>
+<p>So if we've got polynomials P and Q, morphism from P to Q is given by two things.</p>
+<p>One sort of goes forward from P to Q and one sort of goes backwards.</p>
+<p>And the forward one sort of takes the outputs of the inner systems and turns them into an output of the big system.</p>
+<p>And the backwards one takes the inputs to the big system and the outputs of the inner systems and uses them to produce inputs to the small systems.</p>
+<p>So like one of them sort of goes from inside the box to the out.</p>
+<p>That's the the five one map.</p>
+<p>And then the other one sort of goes in.</p>
+<p>But it might take into account the sort of internal inputs as well.</p>
+<p>So it can be used for like feedback.</p>
+<p>So that is to say we've got this outputs map.</p>
+<p>So we take outputs of the inner box to the outer box and for the corresponding inputs in the outer box.</p>
+<p>So that's these wise.</p>
+<p>We go backwards, but we have to account for this like mode dependence, which is a bit sort of funky.</p>
+<p>But this just says that if we've got an output corresponding to position or configuration I of the inner box, then we're allowed to look at the inputs that correspond to the corresponding output.</p>
+<p>And then we sort of back propagate those to the inputs again in configuration I.</p>
+<p>So there's a bit of sort of accounting you have to do to keep track of these like the sort of of the configurations of all the systems.</p>
+<p>But that just means that, you know, there's some like mode dependence or some like, you know, you might have some.</p>
+<p>If you think of the sort of multicellular organism thing, then you might have some like, you know, ion channels which are open or closed on the on the membranes of the cells.</p>
+<p>And what they do sort of depends on the state of all of those cells.</p>
+<p>And so you have to account for that in these morphisms.</p>
+<p>But in the monomial case where you don't have this like context or configuration dependence,</p>
+<p>the morphisms become a little bit simpler.</p>
+<p>They just become like a forwards thing.</p>
+<p>So here we've got an A and an S going forwards.</p>
+<p>And we have to figure out a way of giving an X.</p>
+<p>And in the backwards direction, we have an A and an S on the inside and a Y as well coming in.</p>
+<p>And we have to figure out a way of giving a B and a T.</p>
+<p>So this really just encodes the wiring of these two boxes into the bigger box, like I said.</p>
+<p>So using this category poly, whose morphisms are the dependent lenses and objects of the polynomials,</p>
+<p>we can give a system theory which captures generative models.</p>
+<p>I'm going to just talk about discrete time ones in the traditional sense on the monomials,</p>
+<p>but also has some kind of more complicated mode dependent structure that I think could be useful in general as well.</p>
+<p>And so this is going to be an index category, like I said.</p>
+<p>It maps the polynomial, i.e. an interface of the kind that I was just talking about,</p>
+<p>to a category whose objects are generative models on that interface.</p>
+<p>So that means that they are going to be a quadruple like this.</p>
+<p>So that is a state space, S.</p>
+<p>I'm just going to think of it as a set.</p>
+<p>A prior on the state space, which we could think of as like a goal or just prior beliefs about the agent states.</p>
+<p>So that's a likelihood, which is a sort of stochastic output morphism.</p>
+<p>In the case that this is just a monomial OY to the A, then that's just like P of O given S.</p>
+<p>And then there's also this transition map, which says, OK, well, given that I am in this state,</p>
+<p>I sort of can sample an input that has to correspond to the configuration that I'm in.</p>
+<p>So I sample from my pi and then, OK, I'm allowed to receive an input in this corresponding configuration P of 1,</p>
+<p>which is given by my likelihood.</p>
+<p>And then, OK, I receive an input and I've got a state and I get a new state.</p>
+<p>So that's like the transition function.</p>
+<p>Again, in the sort of monomial case, this is exactly what we normally have in active inference.</p>
+<p>We have a state S and an action in A and we get a new state.</p>
+<p>It's just that now we're allowed to have the possible inputs for the system, i.e.</p>
+<p>the possible actions that you could take on this generative model to be dependent on the state that the system or the state that the environment is in,</p>
+<p>according to that model. And so that that captures this idea that, you know, say if I have my eyes closed,</p>
+<p>I can't like receive visual signals anymore or, you know, if I open my eyes and I can.</p>
+<p>So there's a difference in the sort of input signals that I can receive.</p>
+<p>Or if I'm sort of plugged into my computer, I can't sort of easily get up and walk around because, you know,</p>
+<p>I might like have to like unplug a wire or something.</p>
+<p>So it captures this mode dependence.</p>
+<p>There are sort of important sort of mathematical bookkeeping duties we have to do, which I'm not going to do,</p>
+<p>but it's easy to check that it's like functorial, which means that it's indexed in the right way,</p>
+<p>and that it's monoidal, which means we can put systems side by side.</p>
+<p>And I've only just told you what the objects of this category, gen of P, are, but it also has morphisms.</p>
+<p>And these are ways of like comparing systems that are known in computer science as co-algebra homomorphisms.</p>
+<p>So this captures the notion of generative model that we're used to in active inference,</p>
+<p>but it allows for a lot more structure, in particular, this kind of mode dependent structure and this compositional structure.</p>
+<p>So just to sort of say like what kind of thing I mean by structured interface,</p>
+<p>I'm taking an example from computer science because there are lots of uses of polynomial science in polynomials in computer science.</p>
+<p>And one of them is for defining like domain-specific programming languages.</p>
+<p>And I think that one use of this could be for defining like artificial agents that behave nicely with respect to sort of computer interfaces.</p>
+<p>And so we can encode the data of a sort of domain-specific language into a polynomial,</p>
+<p>because say we've got a little calculator language that has like two binary operations,</p>
+<p>like plus and times that each take in an input, take in two inputs.</p>
+<p>We've got a sort of unary operation that just takes in one thing and it negates it.</p>
+<p>And like we've got some constants, like uncountably many that represent the real numbers,</p>
+<p>then we can encode the data of this as like, you know, two y squared plus y plus r,</p>
+<p>because we've got these two little operations, two binary operations.</p>
+<p>They've got two possible inputs, one unary operation has got one input,</p>
+<p>and like these constants which don't take in inputs.</p>
+<p>And then we can, you know, represent the set of all terms of this language as like a set by applying the polynomial to like some x.</p>
+<p>Those x terms, those x elements represent the inputs.</p>
+<p>And then we can think, okay, well, what would be a machine that like takes in terms of my little domain-specific language and returns values?</p>
+<p>It's something like r, y to the p of x, which is again another polynomial.</p>
+<p>And you can do lots of things like this.</p>
+<p>Basically, you can encode like any small programming language or any sort of abstract syntax tree into a polynomial.</p>
+<p>It's not just examples from computer science that are relevant, but they have a lot of structure.</p>
+<p>And so I wanted to show off those examples.</p>
+<p>I think you could do a lot of things in biology as well using this language.</p>
+<p>But it's kind of more sophisticated than we can do with just sort of a set of observations and a set of actions.</p>
+<p>Another thing that I wanted to mention is that in this context, it's quite natural to think of the actions or that an agent takes as morphisms in a category.</p>
+<p>And this is where this typing information or this typing idea comes from.</p>
+<p>Because, you know, in categories, morphisms have to compose.</p>
+<p>And so we can check that they are sort of compatible before we compose them.</p>
+<p>And so to give you an idea of how this works, we can think of categories as like little state machines.</p>
+<p>So here I've drawn a little category.</p>
+<p>It's got objects x, y, and z.</p>
+<p>And it's got these morphisms.</p>
+<p>It's got two morphisms from x to y, f and f prime.</p>
+<p>And, you know, we've got g from y to z.</p>
+<p>And we can go along f and then along g to go from x to y to z.</p>
+<p>And that takes us from x to z.</p>
+<p>Or we can go, you know, f prime to z and blah, blah, blah.</p>
+<p>But these are like steps or paths in a little space.</p>
+<p>And so, you know, we go from x to y and then y to z.</p>
+<p>But it doesn't sort of doesn't make sense.</p>
+<p>You know, if we had another object over here that wasn't connected to z, we could go over here.</p>
+<p>But then we wouldn't immediately be able to go over z.</p>
+<p>That's to say, like, if we had an island or a peninsula or an island with just one bridge onto it,</p>
+<p>we could go onto the island.</p>
+<p>But then to go somewhere else, we'd have to go back along the bridge.</p>
+<p>Sometimes the places you can go depend on where you are.</p>
+<p>And this encodes that data into the notion of action.</p>
+<p>And indeed, every category is itself can be turned into a polynomial.</p>
+<p>The configurations of the polynomial are the objects of the category.</p>
+<p>And then the sort of inputs to a system would be the morphisms of that category out of each object.</p>
+<p>That is to say, all the steps you could take out of each object.</p>
+<p>And then a policy would have to be like a composable sequence of morphisms.</p>
+<p>Or, you know, in active inference, you might have something more stochastic.</p>
+<p>So you have a belief over such sequences.</p>
+<p>But because you have this typing information, it means you can check that your policies make sense.</p>
+<p>Like, you don't try to go somewhere and then somewhere from that destination, that intermediate destination, you don't try to go somewhere that is not connected or take an action that doesn't make sense in some other way.</p>
+<p>And so we can use this to start to think about, like, safety of policies using the logic that comes with category theory.</p>
+<p>This isn't something that I've elaborated, but I think it's a sort of starting step to talk about safe active inference systems in a very rigorous way.</p>
+<p>And I already mentioned that other kinds of important notion are also morphisms in structured active inference, like changes of interface or changes of structure.</p>
+<p>And that means I think that we can rigorously apply active inference to itself to do things like structure learning or to choose how you, you know, like connect yourself into a bigger unit, like into an organization.</p>
+<p>And on that note, let me tell you about how in this setting we talk about systems that manage systems.</p>
+<p>This is a generalization or will become a generalization of what is known in the active inference literature as D4 hierarchical active inference.</p>
+<p>And so the sort of formal gadget that we use to talk about this is known as the closure of the category of interfaces.</p>
+<p>That is to say, it has what's known as an internal harm harm because morphism is otherwise known as homomorphism.</p>
+<p>And the category of polynomials and also the category of lenses has one of these internal harm.</p>
+<p>That is a way to refer to the category within itself.</p>
+<p>And that internal harm has to be given a polynomial form.</p>
+<p>And so the sort of configurations of this polynomial are from, say, from P to Q.</p>
+<p>They are the ways of wiring P into Q, i.e. the set of lenses from P to Q.</p>
+<p>And then, you know, we have to give as well exponents to provide a polynomial.</p>
+<p>And these exponents are going to be all the sort of data that the inputs to these sort of P systems,</p>
+<p>if we think of the P as like the inner systems that they require.</p>
+<p>And so they require outputs from P and inputs from Q.</p>
+<p>And that's exactly what this like input data is here.</p>
+<p>So if we so we've got the polynomial that represents how P's connected to Q's.</p>
+<p>And we can think about what generative models would be over such a polynomial.</p>
+<p>That is just like systems that control the wiring of P's into Q's.</p>
+<p>Or as I've done in this example, control the wiring of a P1 and a P2 into Q.</p>
+<p>And so what would these systems be?</p>
+<p>Well, they would observe the outputs of P1 and P2 and then the inputs of Q.</p>
+<p>And they would update their states accordingly, having made these observations.</p>
+<p>And then they would output ways to connect P1 and P2 into Q.</p>
+<p>And that really is like what a manager does in an organization or sort of high level system does</p>
+<p>in a sort of hierarchical structure.</p>
+<p>And there's a sort of nice fact that I'll use later on that if you have a sort of trivial inner system,</p>
+<p>i.e. just with this polynomial Y, then the generative models on this HOM polynomial</p>
+<p>are just the same as generative models on the outer polynomial.</p>
+<p>So we can use this to capture not only these hierarchical systems, but just kind of regular systems as well.</p>
+<p>There's an interesting sort of side fact or reason why this is known as the closed structure</p>
+<p>is that this is the same as something that's known in computer science as currying.</p>
+<p>You might have seen this, but if you have a function that takes like inputs in A and B and produces C,</p>
+<p>like this is maps A, B to like F of A and B, we could also write this as like a function that maps from A</p>
+<p>to maps from B to C.</p>
+<p>And that says, okay, well, this maps A to F of A something, which is a map from B to C.</p>
+<p>So this is the same idea.</p>
+<p>It says, okay, well, the like ways of like mapping into this HOM polynomial</p>
+<p>are the same as like mappings of the joint systems.</p>
+<p>It's an important structure that gets used a lot in this context.</p>
+<p>Okay.</p>
+<p>So I spent a lot of time talking about structured generative models.</p>
+<p>In particular, I introduced this hierarchical structure and I talked about the structure of,</p>
+<p>you know, mode dependence in an sort of abstract and general way.</p>
+<p>But it was always about generative models.</p>
+<p>And I haven't really talked much about like doing action selection or state inference,</p>
+<p>which is of course a very important part of active inference.</p>
+<p>And in some sense, it's kind of what active inference is all about.</p>
+<p>But those processes fit very naturally into the same framework.</p>
+<p>They're something that you attach to a generative model.</p>
+<p>Active inference always starts from a generative model.</p>
+<p>And then describes the process for providing a policy to control it.</p>
+<p>And so an active inference agent, or I think an agent more generally,</p>
+<p>is made up of two things.</p>
+<p>It's made up of the generative model.</p>
+<p>And then something that I call a controller,</p>
+<p>which basically chooses the policy to provide to the generative model.</p>
+<p>It's a way to sort of take this generative model, which is an open system,</p>
+<p>and like sort of render it closed.</p>
+<p>It sort of takes the observations that are produced by the generative model,</p>
+<p>and then turns them into actions that can go into the generative model.</p>
+<p>And so there's some sort of nice duality between the generative model and the controller.</p>
+<p>And it's this duality that allows us to formalize active inference in a nice compositional way.</p>
+<p>One way I sort of started to like to think about this,</p>
+<p>and I don't really know much about this subject,</p>
+<p>so I won't make any claims that it's rigorous or sensible,</p>
+<p>but I think of the sort of generative model as somehow like the consciousness of the agent.</p>
+<p>It represents how the agent perceives the world,</p>
+<p>and then the policy part is it's sort of the subconscious processes,</p>
+<p>which will drive the agent in that generative model.</p>
+<p>I mean, this is just sort of my thinking.</p>
+<p>I don't know if it's very sensible.</p>
+<p>But as I say, we can fit all of this into the same framework</p>
+<p>by kind of taking poly and this category of generative models</p>
+<p>and the home structure and sort of putting them all together</p>
+<p>into a sort of nice bundle or nice mix.</p>
+<p>So I had this two category called GenPoly made up of all of these ingredients.</p>
+<p>The objects are the interfaces, the polynomials.</p>
+<p>You can think of them as generalized Markov blankets.</p>
+<p>And then now it's a two category.</p>
+<p>So instead of between one object and another having a set of morphisms,</p>
+<p>now we have a whole category of morphisms.</p>
+<p>So we have both one cells and two cells.</p>
+<p>So it's a two-dimensional structure.</p>
+<p>But the home category from P to Q is just the systems on the home interface.</p>
+<p>So that is generative models on the structured interface</p>
+<p>that sort of takes P systems and turns them into Q systems.</p>
+<p>So they're sort of hierarchical manager systems.</p>
+<p>And then the two cells are ways of comparing these systems.</p>
+<p>And I haven't really talked much about that,</p>
+<p>and they won't feature much in this talk.</p>
+<p>And they don't feature in the paper either.</p>
+<p>But they're important if you want to talk about things like structure learning or logic.</p>
+<p>And then the composition of systems is, as I've been saying all along,</p>
+<p>we take a system over one sort of home polynomial</p>
+<p>and a system over another home polynomial,</p>
+<p>and then we wire them together.</p>
+<p>So then we have like a sort of high-level manager here</p>
+<p>and a sort of lower-level manager,</p>
+<p>and they talk to each other to produce what we could think of as like a hierarchical organization,</p>
+<p>which takes sort of very low-level things and turns them into high-level things.</p>
+<p>And yeah, so we're allowed to tensor polynomials,</p>
+<p>and that makes this gen poly two category into monoidal two categories,</p>
+<p>so we can put systems side by side in the way you'd expect.</p>
+<p>And it means we can draw an active inference system</p>
+<p>in this kind of string diagram way that category theory people like.</p>
+<p>So the generative model is something like this.</p>
+<p>It takes in nothing, and it produces p things.</p>
+<p>That is, produces, well, I guess this is a bi-directional thing.</p>
+<p>So it sort of is a morphism from a trivial object into p,</p>
+<p>and it produces p outputs and takes p inputs.</p>
+<p>And then the policy is like it's dual.</p>
+<p>So it takes in p inputs, and it produces what the generative model expects as output.</p>
+<p>And then as I may have mentioned that, no, I didn't mention yet,</p>
+<p>that this, as I've said before, at least in the case of just a single system,</p>
+<p>just on p, the hum from y to p is just the same as p, so that's good.</p>
+<p>This captures what I was saying before about generative models on an interface.</p>
+<p>And then the controller is the model from p to y.</p>
+<p>That means it produces a sort of closed system when you compose it,</p>
+<p>with p.</p>
+<p>And so that is to capture this picture that I drew before,</p>
+<p>where you have like a box, which is the generative model,</p>
+<p>which is open, and then this controller, which sort of closes it off.</p>
+<p>And that's encoded in this sort of formality.</p>
+<p>Okay, and so now we've got this definition of the controller of a generative model</p>
+<p>as like being dual to it.</p>
+<p>We can sort of unwind or decompress what that means mathematically.</p>
+<p>So the home polynomial from p to y has this particular form.</p>
+<p>It's just something that you can work through if you write down that expression</p>
+<p>and figure out what it means.</p>
+<p>The outputs or configurations of this polynomial are what are known as sections of p.</p>
+<p>So a section of this p taken as a bundle is a way of going from the outputs</p>
+<p>and for each output giving an input that matches the corresponding configuration.</p>
+<p>So it's just a way of sort of making this diagram commute,</p>
+<p>as we would say in category theory.</p>
+<p>That is to say, okay, we're in an output or a configuration</p>
+<p>and we say, okay, well, I need to provide an input.</p>
+<p>And yes, that's nice.</p>
+<p>It matches what configuration I'm in.</p>
+<p>And we think of this as like being the data that the world supplies to the system.</p>
+<p>So the system or like we think of the system as producing outputs,</p>
+<p>the environment takes those outputs and then turns them into inputs.</p>
+<p>And so that's exactly what these sections do.</p>
+<p>So those sections are the things that are outputted by the policy part.</p>
+<p>And then the inputs to the policy part are the outputs produced by the p system.</p>
+<p>And so as I say, it's exactly dual.</p>
+<p>So the outputs are the inputs that p needs</p>
+<p>and the inputs are the things that p produces.</p>
+<p>And so we can unravel this in the case of this monomial interface,</p>
+<p>which is going to give us what we get in classical active inference.</p>
+<p>The output path of one of these systems is going to do action selection.</p>
+<p>So it has a little state space, which I just called R here.</p>
+<p>It takes an observation and it produces an action.</p>
+<p>And this is exactly what the sort of action selection process</p>
+<p>and active inference does.</p>
+<p>It takes a state and an observation and produces an action</p>
+<p>that is to be taken in the generative model.</p>
+<p>And it also has this part which does state inference</p>
+<p>or you might see it called the recognition model</p>
+<p>or it computes the Bayesian posterior over the states.</p>
+<p>So we're in a state and we have an observation</p>
+<p>and then we get a new state.</p>
+<p>So these sort of four things,</p>
+<p>these two parts of the policy system</p>
+<p>and then the transition model</p>
+<p>and the likelihood in the generative model</p>
+<p>are basically all of what an active inference system is.</p>
+<p>You might include the prior in that as well, I suppose.</p>
+<p>And so that means that we've got all the data</p>
+<p>of an active inference system in this very neat little package.</p>
+<p>It's a generative model and it's dual and that's kind of it.</p>
+<p>There are obviously some ways you can extend this</p>
+<p>and that's not something I'm doing in this paper</p>
+<p>or in this talk,</p>
+<p>but basically you can do things like consider trajectories</p>
+<p>over actions or continuous time models</p>
+<p>or do lots of other things like this.</p>
+<p>But I'm going to try to keep it as simple as I can.</p>
+<p>I know I've introduced a lot of mathematical detail so far.</p>
+<p>And then, okay,</p>
+<p>so then there are three further generalizations</p>
+<p>that kind of crop up pretty immediately from this.</p>
+<p>that I think are quite important</p>
+<p>and I want to just introduce to you all.</p>
+<p>The first of them is that now we've got this home structure</p>
+<p>and this nice two category.</p>
+<p>We can think about, as I've indicated already,</p>
+<p>think about hierarchical deep systems.</p>
+<p>and that really corresponds to nesting small systems</p>
+<p>and bigger systems.</p>
+<p>And that formally means going from generative models</p>
+<p>with trivial inner boundary</p>
+<p>to generative models</p>
+<p>which have a sort of non-trivial inner boundary.</p>
+<p>And now, unfortunately,</p>
+<p>I've swapped my direction of my home.</p>
+<p>So it goes from Q to P.</p>
+<p>The story still holds.</p>
+<p>I've just changed P and Q round.</p>
+<p>And I'll say in a moment</p>
+<p>how this unwinds</p>
+<p>so you can get a sense of what it does.</p>
+<p>And then we do the same to the policy.</p>
+<p>It just does the same thing</p>
+<p>in the opposite direction.</p>
+<p>Now it's a system from P to Q.</p>
+<p>But they're still like dual.</p>
+<p>So the intuitions are still good, I think.</p>
+<p>That's one thing we can do.</p>
+<p>This produces a sort of bi-category,</p>
+<p>a two-category,</p>
+<p>or what ultimately becomes a double-category</p>
+<p>where the arrows are pairs of a system and a controller.</p>
+<p>And so the next thing we can do to this</p>
+<p>is to think about how do we model</p>
+<p>in a sort of rigorous way</p>
+<p>the changes of model,</p>
+<p>changes of interface</p>
+<p>that I introduced at the beginning.</p>
+<p>That corresponds to adding</p>
+<p>yet another dimension to this structure.</p>
+<p>And that formally encodes changes of model</p>
+<p>as extra morphisms categorically.</p>
+<p>And that makes them kind of accessible</p>
+<p>to this formalism.</p>
+<p>Not something that I'm going to talk about today</p>
+<p>because I've introduced enough stuff here</p>
+<p>just to sort of whet your appetite, I think.</p>
+<p>But in this formalism,</p>
+<p>even in this sort of just</p>
+<p>sort of two-dimensional setting,</p>
+<p>because it's quite general,</p>
+<p>because it says that active inference</p>
+<p>is really made up of two key ingredients,</p>
+<p>a system and a controller,</p>
+<p>it allows us to ask precisely</p>
+<p>how active inference relates</p>
+<p>to other theories of agency</p>
+<p>or other notions of system.</p>
+<p>And of course,</p>
+<p>lots of people have thought about</p>
+<p>the relationship between active inference</p>
+<p>and other accounts</p>
+<p>like reinforcement learning.</p>
+<p>But I think this framework</p>
+<p>allows us to make those relationships</p>
+<p>very, very precise indeed.</p>
+<p>And to say, okay, well,</p>
+<p>there is, say,</p>
+<p>one might hope,</p>
+<p>a particular,</p>
+<p>like possibly universal way</p>
+<p>of mapping any reinforcement learning system</p>
+<p>into an active inference system</p>
+<p>in a compositional way.</p>
+<p>So that is,</p>
+<p>you could do it for the parts</p>
+<p>and also for the complex system,</p>
+<p>and you get something that makes sense.</p>
+<p>And possibly one could go,</p>
+<p>and I think it's quite likely</p>
+<p>that one could also go</p>
+<p>in the other direction,</p>
+<p>and there would be nice sort of,</p>
+<p>we might expect</p>
+<p>like nice formal results</p>
+<p>like these two processes</p>
+<p>were adjoint</p>
+<p>or something like that.</p>
+<p>But I would like to highlight</p>
+<p>at this point</p>
+<p>that active inference,</p>
+<p>I think,</p>
+<p>in this setting</p>
+<p>is really not just</p>
+<p>one theory of agency,</p>
+<p>but really it's a whole family</p>
+<p>of theories of agency</p>
+<p>parameterized by things</p>
+<p>like whether or not</p>
+<p>you take continuous time</p>
+<p>or discrete time systems,</p>
+<p>because those,</p>
+<p>of course,</p>
+<p>give you different systems theories,</p>
+<p>or whether you do planning</p>
+<p>by sophisticated inference</p>
+<p>or inductive inference</p>
+<p>or just one time step,</p>
+<p>or whether you,</p>
+<p>or whether you think about</p>
+<p>like multiple time steps,</p>
+<p>or whether you take</p>
+<p>the expected free energy</p>
+<p>or the free energy</p>
+<p>of the expected future.</p>
+<p>So there are all</p>
+<p>these different variations</p>
+<p>and they give you</p>
+<p>like different like notions</p>
+<p>of active inference</p>
+<p>and so probably different theories</p>
+<p>of agency in this sense.</p>
+<p>And I think that's important</p>
+<p>for like making sense</p>
+<p>of the whole active inference landscape</p>
+<p>and in particular,</p>
+<p>the sort of landscape</p>
+<p>of theories of agency itself,</p>
+<p>because it means</p>
+<p>that we can have</p>
+<p>like a nice rigorous map</p>
+<p>of all of these things</p>
+<p>and like connect them</p>
+<p>from, you know,</p>
+<p>from, you know,</p>
+<p>connect one thing</p>
+<p>into another quite nicely.</p>
+<p>Again, I'm not going to say</p>
+<p>very much about this,</p>
+<p>but I just wanted</p>
+<p>to flag it up,</p>
+<p>but that's something</p>
+<p>that you get out of</p>
+<p>making precise these structures.</p>
+<p>So I mentioned</p>
+<p>that I wanted to highlight</p>
+<p>how this captures</p>
+<p>D for hierarchical</p>
+<p>active inference.</p>
+<p>And this happens</p>
+<p>in, I think,</p>
+<p>quite a natural way.</p>
+<p>I mean,</p>
+<p>I've introduced</p>
+<p>an awful lot of formalism here,</p>
+<p>but once you get used to it,</p>
+<p>I think it works okay.</p>
+<p>But hierarchical,</p>
+<p>active inference</p>
+<p>just corresponds</p>
+<p>to a sequence</p>
+<p>of composite arrows</p>
+<p>in this two category</p>
+<p>whose arrows</p>
+<p>are made up of,</p>
+<p>you know,</p>
+<p>a generative model</p>
+<p>and a controller</p>
+<p>actually is upside down,</p>
+<p>but it doesn't matter.</p>
+<p>So in this setting,</p>
+<p>again,</p>
+<p>as I've mentioned,</p>
+<p>the monomial interfaces</p>
+<p>correspond to the</p>
+<p>kind of normal marker</p>
+<p>blankets that are just</p>
+<p>made up of a set</p>
+<p>of observations</p>
+<p>and a set of actions,</p>
+<p>but we get this</p>
+<p>hierarchical structure</p>
+<p>in the one cells</p>
+<p>of this two category.</p>
+<p>And if we think</p>
+<p>of the sort of</p>
+<p>composition in this two category</p>
+<p>as basically by nesting,</p>
+<p>then, you know,</p>
+<p>we could,</p>
+<p>I sort of draw it</p>
+<p>schematically like this.</p>
+<p>I'm indexing</p>
+<p>like the higher levels</p>
+<p>of the sort of interior</p>
+<p>levels of the system</p>
+<p>as like higher</p>
+<p>in this context.</p>
+<p>So like I plus one</p>
+<p>is kind of more</p>
+<p>inside the system</p>
+<p>than I.</p>
+<p>Often that corresponds</p>
+<p>to like a higher level</p>
+<p>of like explanation</p>
+<p>in active inference,</p>
+<p>but because there's</p>
+<p>this duality</p>
+<p>between like</p>
+<p>the genitive model</p>
+<p>and the controller</p>
+<p>or the policy part,</p>
+<p>I don't like to say</p>
+<p>high level or low level</p>
+<p>because it gets confusing.</p>
+<p>I prefer to sort of</p>
+<p>think about</p>
+<p>how deep you are</p>
+<p>inside your agent</p>
+<p>and how sort of,</p>
+<p>or how close you are</p>
+<p>to the exterior world</p>
+<p>when I'm talking</p>
+<p>about the direction</p>
+<p>of this kind of</p>
+<p>hierarchy.</p>
+<p>And so to the left</p>
+<p>we go sort of more interior</p>
+<p>and to the right</p>
+<p>we go more exterior.</p>
+<p>And these areas point</p>
+<p>sort of in the exterior</p>
+<p>direction like this.</p>
+<p>And so a sort of</p>
+<p>hierarchical active</p>
+<p>inference system</p>
+<p>goes from interior</p>
+<p>to exterior.</p>
+<p>It's a sort of,</p>
+<p>it's an arrow</p>
+<p>of this kind</p>
+<p>that unwinds</p>
+<p>to the following data.</p>
+<p>It's a state F,</p>
+<p>a likelihood</p>
+<p>that is, you know,</p>
+<p>parameterized by the state</p>
+<p>and the interior</p>
+<p>belief about observations.</p>
+<p>So which you could think</p>
+<p>of as like</p>
+<p>high level</p>
+<p>in some contexts,</p>
+<p>observations.</p>
+<p>And it produces</p>
+<p>a prediction</p>
+<p>about the more</p>
+<p>exterior observations.</p>
+<p>There's a prior</p>
+<p>on the more interior</p>
+<p>actions,</p>
+<p>which again,</p>
+<p>you could possibly</p>
+<p>think of as</p>
+<p>high level,</p>
+<p>that this is parameterized</p>
+<p>by the,</p>
+<p>or conditioned</p>
+<p>on the state</p>
+<p>and the,</p>
+<p>and the sort of</p>
+<p>interior observations</p>
+<p>actions and the exterior,</p>
+<p>sort of more exterior</p>
+<p>actions,</p>
+<p>or the system's belief</p>
+<p>about the more exterior</p>
+<p>actions.</p>
+<p>And then a transition</p>
+<p>model,</p>
+<p>which again,</p>
+<p>depends on the actions</p>
+<p>taken at this kind</p>
+<p>of exterior level,</p>
+<p>sort of high level,</p>
+<p>in this case,</p>
+<p>this is the sort of high</p>
+<p>level actions,</p>
+<p>and it gives us</p>
+<p>a new state</p>
+<p>on the basis</p>
+<p>of the old state.</p>
+<p>And then there's</p>
+<p>this other part,</p>
+<p>which is dual,</p>
+<p>which is the controller.</p>
+<p>So the control,</p>
+<p>here I've written</p>
+<p>that the state space</p>
+<p>is like beliefs</p>
+<p>over the,</p>
+<p>over the generative model</p>
+<p>state space.</p>
+<p>So that says,</p>
+<p>it takes,</p>
+<p>it has this,</p>
+<p>again,</p>
+<p>these three parts.</p>
+<p>So one is like</p>
+<p>a generative process,</p>
+<p>which takes the,</p>
+<p>in the sort of</p>
+<p>exterior observations,</p>
+<p>the signals</p>
+<p>which impinge</p>
+<p>on the sort of</p>
+<p>outer Markov blanket</p>
+<p>and translates them</p>
+<p>onto the inner</p>
+<p>Markov blanket.</p>
+<p>So it goes</p>
+<p>in the other direction</p>
+<p>like this.</p>
+<p>There's a sort of</p>
+<p>policy part,</p>
+<p>which does action selection.</p>
+<p>So it takes in</p>
+<p>a belief over</p>
+<p>the state space</p>
+<p>and like a high level</p>
+<p>or a more interior</p>
+<p>belief about</p>
+<p>over the actions</p>
+<p>and it produces</p>
+<p>what we could think</p>
+<p>of as more</p>
+<p>exterior choice</p>
+<p>of actions.</p>
+<p>So that could be</p>
+<p>like passing down</p>
+<p>a sort of</p>
+<p>high level motor</p>
+<p>signal into</p>
+<p>like low level</p>
+<p>sequence of like</p>
+<p>muscle contractions</p>
+<p>because I think</p>
+<p>of the sort of</p>
+<p>closer to the</p>
+<p>exterior systems</p>
+<p>as like the ones</p>
+<p>being made of</p>
+<p>lots of say</p>
+<p>cells rather</p>
+<p>than the,</p>
+<p>the,</p>
+<p>the interior</p>
+<p>model of myself</p>
+<p>as just a body</p>
+<p>with arms that</p>
+<p>move.</p>
+<p>And then finally</p>
+<p>there's this</p>
+<p>component which</p>
+<p>does,</p>
+<p>Bayesian inference</p>
+<p>over the states,</p>
+<p>it takes in a state</p>
+<p>and an exterior</p>
+<p>observation,</p>
+<p>that is the signals</p>
+<p>which they impinge</p>
+<p>on my retina</p>
+<p>and it updates</p>
+<p>the internal state.</p>
+<p>And that's,</p>
+<p>you know,</p>
+<p>the part that does</p>
+<p>like,</p>
+<p>you know,</p>
+<p>that gives you</p>
+<p>your posterior</p>
+<p>over states.</p>
+<p>this is a lot of data.</p>
+<p>In the literature</p>
+<p>it sometimes</p>
+<p>comes out</p>
+<p>in a slightly</p>
+<p>less</p>
+<p>or maybe</p>
+<p>slightly more</p>
+<p>familiar way</p>
+<p>or a slightly</p>
+<p>less detailed way</p>
+<p>where the,</p>
+<p>you don't have</p>
+<p>the interior</p>
+<p>observations,</p>
+<p>which I think</p>
+<p>was like sort of</p>
+<p>beliefs about</p>
+<p>high level</p>
+<p>patches of</p>
+<p>information,</p>
+<p>like the object</p>
+<p>rather than the</p>
+<p>sort of individual</p>
+<p>like retinal</p>
+<p>ganglion data</p>
+<p>or something</p>
+<p>like that.</p>
+<p>And if you</p>
+<p>imagine not</p>
+<p>having these</p>
+<p>OIs,</p>
+<p>OI plus ones</p>
+<p>in this model,</p>
+<p>then you wouldn't</p>
+<p>have like this</p>
+<p>generative process</p>
+<p>and you would</p>
+<p>only have a</p>
+<p>likelihood which</p>
+<p>takes a state</p>
+<p>to an observation,</p>
+<p>but you still get</p>
+<p>this like hierarchical</p>
+<p>action selection</p>
+<p>process.</p>
+<p>So it just takes</p>
+<p>like high level</p>
+<p>action,</p>
+<p>like high level</p>
+<p>beliefs about</p>
+<p>sort of actions</p>
+<p>like I'm moving</p>
+<p>my arm into</p>
+<p>sort of lower</p>
+<p>level sort of</p>
+<p>signals that I</p>
+<p>pass to my</p>
+<p>muscles.</p>
+<p>But I think</p>
+<p>it's nice to</p>
+<p>allow for this</p>
+<p>hierarchy in the</p>
+<p>opposite direction</p>
+<p>on the</p>
+<p>observations as</p>
+<p>well.</p>
+<p>Okay, so the</p>
+<p>final thing I</p>
+<p>want to mention</p>
+<p>is that the</p>
+<p>categorical systems</p>
+<p>theory lets us</p>
+<p>talk about,</p>
+<p>lets us use</p>
+<p>categorical logic</p>
+<p>for talking</p>
+<p>about goals</p>
+<p>and behaviors</p>
+<p>of systems.</p>
+<p>And formally,</p>
+<p>it's quite easy</p>
+<p>to say what we</p>
+<p>need to do</p>
+<p>that, it's</p>
+<p>not something</p>
+<p>that I've done</p>
+<p>because actually</p>
+<p>there's a lot</p>
+<p>of details,</p>
+<p>but formally</p>
+<p>like it's</p>
+<p>relatively simple,</p>
+<p>all you need</p>
+<p>is the ability</p>
+<p>to define</p>
+<p>what's known</p>
+<p>as the</p>
+<p>fibrations.</p>
+<p>And a</p>
+<p>fibrations is</p>
+<p>just like a</p>
+<p>collection of</p>
+<p>things indexed</p>
+<p>by the other</p>
+<p>things.</p>
+<p>So again,</p>
+<p>the sort of</p>
+<p>index category</p>
+<p>notion that I</p>
+<p>introduced at the</p>
+<p>beginning is</p>
+<p>basically equivalent</p>
+<p>to fibrations.</p>
+<p>But the idea</p>
+<p>is now that</p>
+<p>over each</p>
+<p>system,</p>
+<p>we have</p>
+<p>a fibrations</p>
+<p>of predicates</p>
+<p>of logical</p>
+<p>statements</p>
+<p>about those</p>
+<p>systems that</p>
+<p>is indexed</p>
+<p>by the</p>
+<p>systems and</p>
+<p>the systems</p>
+<p>indexed by</p>
+<p>interfaces.</p>
+<p>And it's</p>
+<p>compatible with</p>
+<p>all the changes</p>
+<p>of system and</p>
+<p>changes of</p>
+<p>interface and</p>
+<p>things like</p>
+<p>that.</p>
+<p>But one</p>
+<p>notion,</p>
+<p>one sort of</p>
+<p>simple idea</p>
+<p>of like logical</p>
+<p>structure or</p>
+<p>predicate you</p>
+<p>might attach to</p>
+<p>systems is just</p>
+<p>notion of goal</p>
+<p>for a system.</p>
+<p>So these priors</p>
+<p>on the state</p>
+<p>space.</p>
+<p>And I</p>
+<p>haven't</p>
+<p>elaborated this,</p>
+<p>but once you've</p>
+<p>got this,</p>
+<p>we can kind of</p>
+<p>use the</p>
+<p>structures of</p>
+<p>category theory</p>
+<p>to do things</p>
+<p>like define</p>
+<p>quantifiers or</p>
+<p>logical connectives</p>
+<p>and sort of</p>
+<p>build up</p>
+<p>statements about</p>
+<p>goals out of</p>
+<p>sort of more</p>
+<p>primitive statements</p>
+<p>and compare</p>
+<p>systems goals</p>
+<p>and to say</p>
+<p>possibly things</p>
+<p>like, oh,</p>
+<p>now if I've</p>
+<p>got a bunch of</p>
+<p>systems connected</p>
+<p>together,</p>
+<p>maybe they</p>
+<p>work together</p>
+<p>to achieve</p>
+<p>their goal</p>
+<p>possibly like</p>
+<p>by some</p>
+<p>process of</p>
+<p>consensus.</p>
+<p>This allows</p>
+<p>us to talk</p>
+<p>about that</p>
+<p>kind of thing</p>
+<p>in a mathematically</p>
+<p>rigorous way.</p>
+<p>Or now</p>
+<p>we've got</p>
+<p>this formal</p>
+<p>logic to</p>
+<p>talk about</p>
+<p>the goals</p>
+<p>of systems.</p>
+<p>Can we use</p>
+<p>this to</p>
+<p>talk about</p>
+<p>notions of</p>
+<p>safety or</p>
+<p>to guarantee</p>
+<p>that the</p>
+<p>goals will</p>
+<p>be achieved</p>
+<p>within certain</p>
+<p>bounds or</p>
+<p>that they</p>
+<p>won't try</p>
+<p>to do</p>
+<p>this thing</p>
+<p>or this</p>
+<p>other thing</p>
+<p>which we</p>
+<p>don't like.</p>
+<p>I think</p>
+<p>this is</p>
+<p>important</p>
+<p>again</p>
+<p>as I</p>
+<p>mentioned</p>
+<p>at the</p>
+<p>beginning</p>
+<p>for thinking</p>
+<p>about</p>
+<p>safe</p>
+<p>artificial</p>
+<p>systems.</p>
+<p>That's all</p>
+<p>I wanted</p>
+<p>to talk</p>
+<p>about.</p>
+<p>It was</p>
+<p>a lot.</p>
+<p>I think</p>
+<p>we can go</p>
+<p>back and</p>
+<p>elaborate on</p>
+<p>any of</p>
+<p>this.</p>
+<p>And I'm</p>
+<p>sure we'll</p>
+<p>come back</p>
+<p>to it in</p>
+<p>the future</p>
+<p>as well.</p>
+<p>Thank you</p>
+<p>so much</p>
+<p>for having</p>
+<p>me.</p>
+<p>I hope</p>
+<p>it wasn't</p>
+<p>too</p>
+<p>bamboozling.</p>
+<p>But I'm</p>
+<p>always willing</p>
+<p>to answer</p>
+<p>questions.</p>
+<p>If people</p>
+<p>have more</p>
+<p>questions,</p>
+<p>please feel</p>
+<p>free to</p>
+<p>get in</p>
+<p>touch</p>
+<p>afterwards</p>
+<p>as well.</p>
+<p>Thank you,</p>
+<p>Toby.</p>
+<p>Wow.</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>While people</p>
+<p>are asking</p>
+<p>some questions</p>
+<p>in the</p>
+<p>live chat</p>
+<p>which I'll</p>
+<p>read to</p>
+<p>you,</p>
+<p>could you</p>
+<p>reiterate,</p>
+<p>how does</p>
+<p>what you</p>
+<p>refer to as</p>
+<p>classic</p>
+<p>active</p>
+<p>inference</p>
+<p>with</p>
+<p>Markov</p>
+<p>blanket,</p>
+<p>Bayesian</p>
+<p>graphical</p>
+<p>formalism,</p>
+<p>how does</p>
+<p>that</p>
+<p>overall</p>
+<p>literature</p>
+<p>relate to</p>
+<p>what you</p>
+<p>discussed</p>
+<p>today in</p>
+<p>terms of</p>
+<p>applied</p>
+<p>category</p>
+<p>theory?</p>
+<p>Right.</p>
+<p>Okay.</p>
+<p>So I</p>
+<p>think the</p>
+<p>very concise</p>
+<p>way of</p>
+<p>putting it,</p>
+<p>let me see</p>
+<p>if I can</p>
+<p>go back</p>
+<p>to a</p>
+<p>slide</p>
+<p>where it's</p>
+<p>relatively</p>
+<p>or not</p>
+<p>too</p>
+<p>intimidating.</p>
+<p>The</p>
+<p>concise</p>
+<p>way of</p>
+<p>putting it</p>
+<p>is that</p>
+<p>the</p>
+<p>systems</p>
+<p>in active</p>
+<p>inference</p>
+<p>that I</p>
+<p>call</p>
+<p>classical</p>
+<p>that we're</p>
+<p>more familiar</p>
+<p>with</p>
+<p>heretofore</p>
+<p>are</p>
+<p>basically</p>
+<p>like</p>
+<p>sub</p>
+<p>theory</p>
+<p>or a</p>
+<p>sub</p>
+<p>category</p>
+<p>of this</p>
+<p>whole</p>
+<p>structure</p>
+<p>that is</p>
+<p>spanned</p>
+<p>we would</p>
+<p>say</p>
+<p>in</p>
+<p>mathematics</p>
+<p>by these</p>
+<p>monomial</p>
+<p>interfaces.</p>
+<p>These are</p>
+<p>the ones</p>
+<p>that don't</p>
+<p>have this</p>
+<p>complicated</p>
+<p>state</p>
+<p>dependence</p>
+<p>on the</p>
+<p>actions.</p>
+<p>They just</p>
+<p>have a</p>
+<p>space of</p>
+<p>possible</p>
+<p>observations</p>
+<p>and a</p>
+<p>space of</p>
+<p>actions.</p>
+<p>And in</p>
+<p>particular,</p>
+<p>if you</p>
+<p>don't think</p>
+<p>about these</p>
+<p>hierarchical</p>
+<p>or deep</p>
+<p>systems,</p>
+<p>then it's</p>
+<p>relatively simple</p>
+<p>to see that</p>
+<p>those systems,</p>
+<p>those kind of</p>
+<p>generative models</p>
+<p>are captured</p>
+<p>by this</p>
+<p>formalism</p>
+<p>because you</p>
+<p>get</p>
+<p>over one</p>
+<p>of these</p>
+<p>monomials,</p>
+<p>the monomial</p>
+<p>represents the</p>
+<p>Markov blanket,</p>
+<p>the</p>
+<p>coefficient</p>
+<p>here is</p>
+<p>the</p>
+<p>observations,</p>
+<p>the</p>
+<p>exponent</p>
+<p>is the</p>
+<p>actions,</p>
+<p>we have a</p>
+<p>state space,</p>
+<p>we have a</p>
+<p>prior,</p>
+<p>we have a</p>
+<p>likelihood,</p>
+<p>and we have</p>
+<p>a transition</p>
+<p>model.</p>
+<p>And that's</p>
+<p>kind of the</p>
+<p>whole deal</p>
+<p>with a</p>
+<p>generative</p>
+<p>model.</p>
+<p>The</p>
+<p>policy part,</p>
+<p>the thing</p>
+<p>that I</p>
+<p>call the</p>
+<p>controller,</p>
+<p>it kind</p>
+<p>of remains</p>
+<p>like I</p>
+<p>said,</p>
+<p>it's the</p>
+<p>thing that's</p>
+<p>dual,</p>
+<p>it does,</p>
+<p>let's see if I</p>
+<p>can go back</p>
+<p>to the</p>
+<p>slide,</p>
+<p>it does,</p>
+<p>yeah,</p>
+<p>it does</p>
+<p>action</p>
+<p>selection,</p>
+<p>i.e.</p>
+<p>planning,</p>
+<p>and it</p>
+<p>does base</p>
+<p>and inference,</p>
+<p>i.e.</p>
+<p>it produces</p>
+<p>the posterior.</p>
+<p>Here,</p>
+<p>R is just</p>
+<p>like a</p>
+<p>placeholder,</p>
+<p>usually this,</p>
+<p>at least in</p>
+<p>the story</p>
+<p>that I've</p>
+<p>told in</p>
+<p>the paper,</p>
+<p>this would</p>
+<p>be like</p>
+<p>beliefs</p>
+<p>over states,</p>
+<p>D here</p>
+<p>means</p>
+<p>distributions.</p>
+<p>So this</p>
+<p>is distributions</p>
+<p>over states.</p>
+<p>It's just</p>
+<p>aware of</p>
+<p>packaging all</p>
+<p>of that</p>
+<p>up into</p>
+<p>a nice</p>
+<p>compositional</p>
+<p>framework,</p>
+<p>so that</p>
+<p>we can,</p>
+<p>because you</p>
+<p>see a lot</p>
+<p>of,</p>
+<p>if you</p>
+<p>look at</p>
+<p>complicated</p>
+<p>hierarchical</p>
+<p>active</p>
+<p>inference,</p>
+<p>pictures,</p>
+<p>they often</p>
+<p>have</p>
+<p>really</p>
+<p>complicated</p>
+<p>structure,</p>
+<p>but actually</p>
+<p>these structures</p>
+<p>typically have</p>
+<p>some kind</p>
+<p>of common</p>
+<p>repeating</p>
+<p>elements,</p>
+<p>that in</p>
+<p>principle</p>
+<p>should just</p>
+<p>be able</p>
+<p>to be</p>
+<p>boxed up</p>
+<p>and repeated</p>
+<p>and plugged</p>
+<p>in in a</p>
+<p>nice way</p>
+<p>that is</p>
+<p>mathematically</p>
+<p>sound and</p>
+<p>reusable</p>
+<p>and kind</p>
+<p>of,</p>
+<p>you know,</p>
+<p>I like</p>
+<p>category</p>
+<p>theory</p>
+<p>because it's</p>
+<p>a kind</p>
+<p>of</p>
+<p>lingua</p>
+<p>franca</p>
+<p>and it</p>
+<p>means that</p>
+<p>you don't</p>
+<p>have</p>
+<p>small</p>
+<p>variations</p>
+<p>in</p>
+<p>formalism</p>
+<p>like</p>
+<p>what does</p>
+<p>message</p>
+<p>passing</p>
+<p>mean?</p>
+<p>Well,</p>
+<p>it means</p>
+<p>lots of</p>
+<p>different</p>
+<p>things,</p>
+<p>lots of</p>
+<p>different</p>
+<p>people.</p>
+<p>In this</p>
+<p>setting,</p>
+<p>you can be</p>
+<p>very precise</p>
+<p>about what</p>
+<p>your theory</p>
+<p>of agency</p>
+<p>is,</p>
+<p>what the</p>
+<p>notion of</p>
+<p>Markov</p>
+<p>blanket</p>
+<p>is.</p>
+<p>One of</p>
+<p>the things</p>
+<p>I often</p>
+<p>find a bit</p>
+<p>tricky</p>
+<p>about the</p>
+<p>active</p>
+<p>inference</p>
+<p>literature</p>
+<p>is the</p>
+<p>notion</p>
+<p>of</p>
+<p>Markov</p>
+<p>blanket</p>
+<p>is</p>
+<p>intuitively</p>
+<p>quite easy</p>
+<p>to graph,</p>
+<p>but in</p>
+<p>this kind</p>
+<p>of</p>
+<p>dynamical</p>
+<p>setting,</p>
+<p>it doesn't</p>
+<p>quite</p>
+<p>correspond</p>
+<p>to the</p>
+<p>notion of</p>
+<p>Markov</p>
+<p>blanket</p>
+<p>that</p>
+<p>originally</p>
+<p>came out</p>
+<p>of</p>
+<p>statistics.</p>
+<p>Unless you</p>
+<p>do some</p>
+<p>kind of</p>
+<p>maneuvers</p>
+<p>that</p>
+<p>unwind</p>
+<p>your</p>
+<p>dynamics</p>
+<p>into</p>
+<p>a big</p>
+<p>graphical</p>
+<p>model</p>
+<p>and</p>
+<p>draw</p>
+<p>certain</p>
+<p>boxes</p>
+<p>around</p>
+<p>some</p>
+<p>repeating</p>
+<p>elements,</p>
+<p>then you</p>
+<p>can say</p>
+<p>that the</p>
+<p>Markov</p>
+<p>blanket</p>
+<p>of the</p>
+<p>system</p>
+<p>is the</p>
+<p>parents,</p>
+<p>children,</p>
+<p>co-parents,</p>
+<p>like you</p>
+<p>would say</p>
+<p>in statistics.</p>
+<p>But it's</p>
+<p>kind of</p>
+<p>not really</p>
+<p>what the</p>
+<p>job of</p>
+<p>the Markov</p>
+<p>blanket</p>
+<p>is.</p>
+<p>Not in</p>
+<p>active</p>
+<p>inference</p>
+<p>and not</p>
+<p>in</p>
+<p>statistics.</p>
+<p>They</p>
+<p>play</p>
+<p>different</p>
+<p>roles.</p>
+<p>In</p>
+<p>active</p>
+<p>inference,</p>
+<p>the</p>
+<p>Markov</p>
+<p>blanket</p>
+<p>is</p>
+<p>the</p>
+<p>agent</p>
+<p>interface.</p>
+<p>It's</p>
+<p>like</p>
+<p>the</p>
+<p>boundary</p>
+<p>of</p>
+<p>the</p>
+<p>agent</p>
+<p>how</p>
+<p>it</p>
+<p>interacts</p>
+<p>with</p>
+<p>the</p>
+<p>world.</p>
+<p>I</p>
+<p>think</p>
+<p>it's</p>
+<p>nice</p>
+<p>to</p>
+<p>be</p>
+<p>precise</p>
+<p>about</p>
+<p>that.</p>
+<p>It's</p>
+<p>nice</p>
+<p>to</p>
+<p>say</p>
+<p>that</p>
+<p>when we</p>
+<p>say</p>
+<p>Markov</p>
+<p>blanket</p>
+<p>we</p>
+<p>mean</p>
+<p>interface</p>
+<p>and</p>
+<p>our</p>
+<p>interfaces</p>
+<p>come</p>
+<p>together</p>
+<p>and</p>
+<p>they</p>
+<p>can</p>
+<p>connect</p>
+<p>up</p>
+<p>and</p>
+<p>they</p>
+<p>can</p>
+<p>produce</p>
+<p>bigger</p>
+<p>systems</p>
+<p>with</p>
+<p>interfaces</p>
+<p>and</p>
+<p>that</p>
+<p>has</p>
+<p>a</p>
+<p>particular</p>
+<p>grammar</p>
+<p>to</p>
+<p>it</p>
+<p>which</p>
+<p>is</p>
+<p>not</p>
+<p>the</p>
+<p>same</p>
+<p>as</p>
+<p>the</p>
+<p>grammar</p>
+<p>of</p>
+<p>Markov</p>
+<p>blankets</p>
+<p>and</p>
+<p>statistics</p>
+<p>it</p>
+<p>might</p>
+<p>be</p>
+<p>in</p>
+<p>certain</p>
+<p>cases</p>
+<p>but</p>
+<p>if</p>
+<p>we</p>
+<p>want</p>
+<p>to</p>
+<p>talk</p>
+<p>about</p>
+<p>the</p>
+<p>whole</p>
+<p>world</p>
+<p>of</p>
+<p>different</p>
+<p>kinds</p>
+<p>of</p>
+<p>dynamical</p>
+<p>systems</p>
+<p>from</p>
+<p>these</p>
+<p>discrete</p>
+<p>time</p>
+<p>ones</p>
+<p>that</p>
+<p>I</p>
+<p>was</p>
+<p>talking</p>
+<p>about</p>
+<p>to</p>
+<p>various</p>
+<p>different</p>
+<p>models</p>
+<p>of</p>
+<p>continuous</p>
+<p>time</p>
+<p>ones</p>
+<p>then</p>
+<p>it's</p>
+<p>not</p>
+<p>so</p>
+<p>easy</p>
+<p>to</p>
+<p>make</p>
+<p>the</p>
+<p>connection</p>
+<p>back</p>
+<p>to</p>
+<p>Markov</p>
+<p>blanket</p>
+<p>and</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>to</p>
+<p>some</p>
+<p>people</p>
+<p>who</p>
+<p>come</p>
+<p>from</p>
+<p>statistics</p>
+<p>this</p>
+<p>terminology</p>
+<p>can</p>
+<p>be</p>
+<p>a</p>
+<p>bit</p>
+<p>confusing</p>
+<p>and</p>
+<p>one</p>
+<p>of</p>
+<p>how</p>
+<p>we</p>
+<p>can</p>
+<p>be</p>
+<p>precise</p>
+<p>about</p>
+<p>this</p>
+<p>it</p>
+<p>says</p>
+<p>okay</p>
+<p>well</p>
+<p>we</p>
+<p>have</p>
+<p>this</p>
+<p>notion</p>
+<p>of</p>
+<p>interface</p>
+<p>it</p>
+<p>can</p>
+<p>be</p>
+<p>whatever</p>
+<p>you</p>
+<p>want</p>
+<p>as</p>
+<p>long</p>
+<p>as</p>
+<p>it</p>
+<p>behaves</p>
+<p>like</p>
+<p>we</p>
+<p>think</p>
+<p>of</p>
+<p>as</p>
+<p>interface</p>
+<p>and</p>
+<p>I</p>
+<p>just</p>
+<p>told</p>
+<p>you</p>
+<p>about</p>
+<p>one</p>
+<p>story</p>
+<p>of</p>
+<p>interfaces</p>
+<p>and</p>
+<p>basically</p>
+<p>one</p>
+<p>story</p>
+<p>of</p>
+<p>systems</p>
+<p>over</p>
+<p>the</p>
+<p>interface</p>
+<p>but</p>
+<p>categorical</p>
+<p>systems</p>
+<p>theory</p>
+<p>is</p>
+<p>very</p>
+<p>general</p>
+<p>and</p>
+<p>let</p>
+<p>you</p>
+<p>talk</p>
+<p>about</p>
+<p>lots</p>
+<p>of</p>
+<p>different</p>
+<p>kinds</p>
+<p>of</p>
+<p>interface</p>
+<p>lots</p>
+<p>of</p>
+<p>systems</p>
+<p>and</p>
+<p>this</p>
+<p>is</p>
+<p>why</p>
+<p>I</p>
+<p>think</p>
+<p>that</p>
+<p>this</p>
+<p>story</p>
+<p>of</p>
+<p>structured</p>
+<p>active</p>
+<p>inference</p>
+<p>whilst</p>
+<p>it</p>
+<p>captures</p>
+<p>the</p>
+<p>kinds</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>systems</p>
+<p>that</p>
+<p>we're</p>
+<p>familiar</p>
+<p>with</p>
+<p>it's</p>
+<p>really</p>
+<p>a</p>
+<p>theory</p>
+<p>of</p>
+<p>the</p>
+<p>structure</p>
+<p>of</p>
+<p>agents</p>
+<p>generally</p>
+<p>and</p>
+<p>I</p>
+<p>think</p>
+<p>active</p>
+<p>inference</p>
+<p>wants</p>
+<p>to</p>
+<p>be</p>
+<p>that</p>
+<p>and</p>
+<p>that's</p>
+<p>why</p>
+<p>I</p>
+<p>think</p>
+<p>that</p>
+<p>here</p>
+<p>we</p>
+<p>might</p>
+<p>want</p>
+<p>to</p>
+<p>expect</p>
+<p>that</p>
+<p>there's</p>
+<p>like</p>
+<p>canonical</p>
+<p>ways</p>
+<p>of</p>
+<p>relating</p>
+<p>other</p>
+<p>theories</p>
+<p>of</p>
+<p>agency</p>
+<p>to</p>
+<p>active</p>
+<p>inference</p>
+<p>inference</p>
+<p>and</p>
+<p>that</p>
+<p>we</p>
+<p>can</p>
+<p>make</p>
+<p>those</p>
+<p>mappings</p>
+<p>precise</p>
+<p>not</p>
+<p>just</p>
+<p>for</p>
+<p>an</p>
+<p>individual</p>
+<p>model</p>
+<p>or</p>
+<p>an</p>
+<p>individual</p>
+<p>system</p>
+<p>but</p>
+<p>for</p>
+<p>all</p>
+<p>systems</p>
+<p>of</p>
+<p>a</p>
+<p>particular</p>
+<p>kind</p>
+<p>and</p>
+<p>that's</p>
+<p>the</p>
+<p>kind</p>
+<p>of</p>
+<p>universality</p>
+<p>that</p>
+<p>I</p>
+<p>think</p>
+<p>we</p>
+<p>should</p>
+<p>be</p>
+<p>aiming</p>
+<p>for</p>
+<p>I</p>
+<p>can</p>
+<p>explain</p>
+<p>what</p>
+<p>these</p>
+<p>arrows</p>
+<p>on</p>
+<p>this</p>
+<p>page</p>
+<p>mean</p>
+<p>but</p>
+<p>I</p>
+<p>think</p>
+<p>you</p>
+<p>get</p>
+<p>the</p>
+<p>idea</p>
+<p>that</p>
+<p>this</p>
+<p>is</p>
+<p>to</p>
+<p>say</p>
+<p>if</p>
+<p>you've</p>
+<p>got</p>
+<p>an</p>
+<p>agent</p>
+<p>it's</p>
+<p>a</p>
+<p>system</p>
+<p>and</p>
+<p>a</p>
+<p>controller</p>
+<p>you</p>
+<p>can</p>
+<p>forget</p>
+<p>the</p>
+<p>controller</p>
+<p>and</p>
+<p>you've</p>
+<p>just</p>
+<p>got</p>
+<p>a</p>
+<p>system</p>
+<p>active</p>
+<p>inference</p>
+<p>is</p>
+<p>a</p>
+<p>way</p>
+<p>of</p>
+<p>saying</p>
+<p>okay</p>
+<p>given</p>
+<p>my</p>
+<p>system</p>
+<p>I've</p>
+<p>got</p>
+<p>a</p>
+<p>story</p>
+<p>about</p>
+<p>how</p>
+<p>to</p>
+<p>attach</p>
+<p>controllers</p>
+<p>to</p>
+<p>it</p>
+<p>how</p>
+<p>to</p>
+<p>do</p>
+<p>policy</p>
+<p>how</p>
+<p>to</p>
+<p>do</p>
+<p>planning</p>
+<p>how</p>
+<p>to</p>
+<p>do</p>
+<p>action</p>
+<p>selection</p>
+<p>how</p>
+<p>to</p>
+<p>do</p>
+<p>state</p>
+<p>inference</p>
+<p>active</p>
+<p>inference</p>
+<p>is</p>
+<p>a</p>
+<p>recipe</p>
+<p>to</p>
+<p>take</p>
+<p>a</p>
+<p>generative</p>
+<p>model</p>
+<p>and</p>
+<p>provide</p>
+<p>a</p>
+<p>controller</p>
+<p>and</p>
+<p>reinforcement</p>
+<p>learning</p>
+<p>is</p>
+<p>the</p>
+<p>variance</p>
+<p>other</p>
+<p>direction</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>the</p>
+<p>thing</p>
+<p>to</p>
+<p>take</p>
+<p>away</p>
+<p>is</p>
+<p>that</p>
+<p>you</p>
+<p>know</p>
+<p>if</p>
+<p>you're</p>
+<p>just</p>
+<p>interested</p>
+<p>in</p>
+<p>simple</p>
+<p>models</p>
+<p>with</p>
+<p>like</p>
+<p>one</p>
+<p>set</p>
+<p>of</p>
+<p>actions</p>
+<p>and</p>
+<p>one</p>
+<p>set</p>
+<p>of</p>
+<p>observations</p>
+<p>then</p>
+<p>you</p>
+<p>don't</p>
+<p>have</p>
+<p>to</p>
+<p>worry</p>
+<p>about</p>
+<p>this</p>
+<p>but</p>
+<p>if</p>
+<p>you're</p>
+<p>interested</p>
+<p>in</p>
+<p>building</p>
+<p>big</p>
+<p>complex</p>
+<p>models</p>
+<p>of</p>
+<p>big</p>
+<p>complex</p>
+<p>systems</p>
+<p>like</p>
+<p>organizations</p>
+<p>or</p>
+<p>if</p>
+<p>you're</p>
+<p>interested</p>
+<p>in</p>
+<p>talking</p>
+<p>about</p>
+<p>systems</p>
+<p>whose</p>
+<p>interfaces</p>
+<p>can</p>
+<p>be</p>
+<p>dependent</p>
+<p>or</p>
+<p>whose</p>
+<p>actions</p>
+<p>might</p>
+<p>that</p>
+<p>themselves</p>
+<p>are</p>
+<p>like</p>
+<p>dynamical</p>
+<p>and</p>
+<p>changing</p>
+<p>then</p>
+<p>we</p>
+<p>need</p>
+<p>stronger</p>
+<p>mathematical</p>
+<p>tools</p>
+<p>for</p>
+<p>describing</p>
+<p>those</p>
+<p>systems</p>
+<p>and those</p>
+<p>processes</p>
+<p>and those</p>
+<p>kinds</p>
+<p>of</p>
+<p>agents</p>
+<p>and</p>
+<p>that's</p>
+<p>what</p>
+<p>this</p>
+<p>framework</p>
+<p>and that's</p>
+<p>what</p>
+<p>categorical</p>
+<p>systems</p>
+<p>theory</p>
+<p>gives</p>
+<p>us</p>
+<p>awesome</p>
+<p>so</p>
+<p>so many</p>
+<p>great</p>
+<p>points</p>
+<p>and things</p>
+<p>I'll</p>
+<p>just</p>
+<p>highlight</p>
+<p>two</p>
+<p>pieces</p>
+<p>that I</p>
+<p>think</p>
+<p>really</p>
+<p>hit</p>
+<p>you</p>
+<p>called</p>
+<p>it</p>
+<p>a</p>
+<p>particular</p>
+<p>grammar</p>
+<p>that</p>
+<p>knowingly</p>
+<p>or</p>
+<p>unknowingly</p>
+<p>plays on</p>
+<p>the</p>
+<p>particular</p>
+<p>partition</p>
+<p>splitting</p>
+<p>things</p>
+<p>into</p>
+<p>particles</p>
+<p>and</p>
+<p>being</p>
+<p>that</p>
+<p>partitioning</p>
+<p>and</p>
+<p>this</p>
+<p>is</p>
+<p>also</p>
+<p>a</p>
+<p>grammar</p>
+<p>of</p>
+<p>particles</p>
+<p>and</p>
+<p>it's</p>
+<p>a</p>
+<p>particular</p>
+<p>grammar</p>
+<p>like</p>
+<p>there</p>
+<p>are</p>
+<p>sentences</p>
+<p>that</p>
+<p>are</p>
+<p>syntactically</p>
+<p>or</p>
+<p>grammatically</p>
+<p>correct</p>
+<p>so that's</p>
+<p>this</p>
+<p>kind</p>
+<p>also</p>
+<p>there</p>
+
+
+
+
+
+
+<p>is</p>
+<p>this</p>
+
+<p>there</p>
+<p>is</p>
+<p>this</p>
+
+<p>conceptual</p>
+<p>connection</p>
+<p>that is</p>
+<p>the</p>
+<p>semantics</p>
+<p>that</p>
+<p>separates</p>
+<p>from</p>
+<p>the</p>
+<p>strong</p>
+<p>typing</p>
+<p>of</p>
+<p>the</p>
+<p>syntax</p>
+<p>so it</p>
+<p>brings up</p>
+<p>a lot</p>
+<p>of</p>
+<p>linguistic</p>
+<p>and</p>
+<p>then</p>
+<p>also</p>
+<p>you</p>
+<p>said</p>
+<p>it's</p>
+<p>a</p>
+<p>recipe</p>
+<p>for</p>
+<p>how</p>
+<p>to</p>
+<p>do</p>
+<p>action</p>
+<p>and</p>
+<p>that</p>
+<p>is</p>
+<p>like</p>
+<p>if</p>
+<p>we</p>
+<p>were</p>
+<p>to</p>
+<p>do</p>
+<p>dynamical</p>
+<p>systems</p>
+<p>modeling</p>
+<p>of</p>
+<p>a</p>
+<p>predator</p>
+<p>prey</p>
+<p>system</p>
+<p>or</p>
+<p>of</p>
+<p>temperature</p>
+<p>in a</p>
+<p>room</p>
+<p>but</p>
+<p>then</p>
+<p>to</p>
+<p>bring</p>
+<p>in</p>
+<p>the</p>
+<p>upstairs</p>
+<p>control</p>
+<p>section</p>
+<p>can</p>
+<p>open</p>
+<p>up</p>
+<p>multiple</p>
+<p>possible</p>
+<p>like</p>
+<p>cascading</p>
+<p>state</p>
+<p>space</p>
+<p>ramifications</p>
+<p>especially</p>
+<p>if you</p>
+<p>allow</p>
+<p>for</p>
+<p>the</p>
+<p>heading</p>
+<p>in</p>
+<p>and</p>
+<p>out</p>
+<p>of</p>
+<p>the</p>
+<p>nested</p>
+<p>system</p>
+<p>that</p>
+<p>opens</p>
+<p>up a</p>
+<p>lot</p>
+<p>of</p>
+<p>dependencies</p>
+<p>that</p>
+<p>at</p>
+<p>least</p>
+<p>need</p>
+<p>to</p>
+<p>be</p>
+<p>accounted</p>
+<p>for</p>
+<p>or</p>
+<p>just</p>
+<p>go</p>
+<p>with</p>
+<p>a</p>
+<p>special</p>
+<p>case</p>
+<p>where</p>
+<p>it's</p>
+<p>nothing</p>
+<p>other than</p>
+<p>just</p>
+<p>like</p>
+<p>a</p>
+<p>fixed</p>
+<p>situation</p>
+<p>which</p>
+<p>is</p>
+<p>kind</p>
+<p>of</p>
+<p>where</p>
+<p>the</p>
+<p>buck</p>
+<p>stops</p>
+<p>ultimately</p>
+<p>for</p>
+<p>any</p>
+<p>hyper</p>
+<p>hyper</p>
+<p>hyper</p>
+<p>prior</p>
+<p>yeah</p>
+<p>I</p>
+<p>like</p>
+<p>those</p>
+<p>reflections</p>
+<p>so I</p>
+<p>think</p>
+<p>yeah</p>
+<p>there's</p>
+<p>a</p>
+<p>this</p>
+<p>like</p>
+<p>particles</p>
+<p>idea</p>
+<p>you know</p>
+<p>I tried</p>
+<p>to</p>
+<p>capture</p>
+<p>in</p>
+<p>this</p>
+<p>very</p>
+<p>feeble</p>
+<p>way</p>
+<p>I'm</p>
+<p>not</p>
+<p>very</p>
+<p>good at</p>
+<p>drawing</p>
+<p>here</p>
+<p>you've</p>
+<p>got</p>
+<p>this</p>
+<p>kind</p>
+<p>of</p>
+<p>nesting</p>
+<p>of</p>
+<p>systems</p>
+<p>and</p>
+<p>I'm</p>
+<p>trying</p>
+<p>to</p>
+<p>capture</p>
+<p>that</p>
+<p>in</p>
+<p>this</p>
+<p>formalism</p>
+<p>so</p>
+<p>you</p>
+<p>could think</p>
+<p>of</p>
+<p>these</p>
+<p>outer</p>
+<p>boundary</p>
+<p>as being</p>
+<p>like</p>
+<p>your body's</p>
+<p>boundary</p>
+<p>or</p>
+<p>boundary</p>
+<p>or</p>
+<p>the</p>
+<p>boundary</p>
+<p>of</p>
+<p>a</p>
+<p>whole</p>
+<p>organization</p>
+<p>or</p>
+<p>society</p>
+<p>or</p>
+<p>ecosystem</p>
+<p>and</p>
+<p>then</p>
+<p>the</p>
+<p>sort</p>
+<p>of</p>
+<p>outer</p>
+<p>like</p>
+<p>the</p>
+<p>job</p>
+<p>of</p>
+<p>the</p>
+<p>outer</p>
+<p>system</p>
+<p>is</p>
+<p>to</p>
+<p>pass</p>
+<p>messages</p>
+<p>into</p>
+<p>the</p>
+<p>inner</p>
+<p>parts</p>
+<p>which</p>
+<p>are</p>
+<p>your</p>
+<p>organs</p>
+<p>or</p>
+<p>units</p>
+<p>of</p>
+<p>an</p>
+<p>organization</p>
+<p>or</p>
+<p>departments</p>
+<p>or</p>
+<p>something</p>
+<p>like</p>
+<p>that</p>
+<p>or</p>
+<p>lower</p>
+<p>level</p>
+<p>but</p>
+<p>the</p>
+<p>smaller</p>
+<p>scale</p>
+<p>or</p>
+<p>interior</p>
+<p>systems</p>
+<p>one</p>
+<p>thing</p>
+<p>that's</p>
+<p>not</p>
+<p>so</p>
+<p>easy</p>
+<p>is</p>
+<p>to</p>
+<p>talk</p>
+<p>about</p>
+<p>the</p>
+<p>birth</p>
+<p>and</p>
+<p>death</p>
+<p>of</p>
+<p>these</p>
+<p>things</p>
+<p>I haven't</p>
+<p>really</p>
+<p>thought</p>
+<p>much</p>
+<p>about</p>
+<p>how</p>
+<p>systems</p>
+<p>are</p>
+<p>created</p>
+<p>from</p>
+<p>others</p>
+<p>but</p>
+<p>I'm</p>
+<p>trying</p>
+<p>to</p>
+<p>get</p>
+<p>at least</p>
+<p>some</p>
+<p>framework</p>
+<p>for</p>
+<p>talking</p>
+<p>about</p>
+<p>what</p>
+<p>it</p>
+<p>means</p>
+<p>to</p>
+<p>be</p>
+<p>one</p>
+<p>before</p>
+<p>we</p>
+<p>talk</p>
+<p>about</p>
+<p>how</p>
+<p>to</p>
+<p>split</p>
+<p>them</p>
+<p>up</p>
+<p>you</p>
+<p>said</p>
+<p>some</p>
+<p>things</p>
+<p>about</p>
+<p>grammar</p>
+<p>yes</p>
+<p>and</p>
+<p>I</p>
+<p>think</p>
+<p>it's</p>
+<p>I'm</p>
+<p>trying</p>
+<p>to</p>
+<p>use</p>
+<p>this</p>
+<p>very</p>
+<p>sort</p>
+<p>of</p>
+<p>in</p>
+<p>some</p>
+<p>sense</p>
+<p>quite</p>
+<p>sparse</p>
+<p>mathematical</p>
+<p>grammar</p>
+<p>of</p>
+<p>category</p>
+<p>theory</p>
+<p>but I'm</p>
+<p>trying to</p>
+<p>do so</p>
+<p>in a</p>
+<p>way</p>
+<p>that</p>
+<p>is</p>
+<p>quite</p>
+<p>general</p>
+<p>and</p>
+<p>it</p>
+<p>ends up</p>
+<p>being</p>
+<p>inherently</p>
+<p>alien</p>
+<p>in</p>
+<p>but I</p>
+<p>think</p>
+<p>the</p>
+<p>thing</p>
+<p>you</p>
+<p>gain</p>
+<p>from</p>
+<p>that</p>
+<p>is</p>
+<p>this</p>
+<p>ability</p>
+<p>to</p>
+<p>talk</p>
+<p>about</p>
+<p>lots</p>
+<p>of</p>
+<p>different</p>
+<p>kinds</p>
+<p>of</p>
+<p>things</p>
+<p>and</p>
+<p>hopefully</p>
+<p>this is</p>
+<p>just the</p>
+<p>beginning</p>
+<p>of this</p>
+<p>project</p>
+<p>that it</p>
+<p>becomes</p>
+<p>we get</p>
+<p>tools and</p>
+<p>stories for</p>
+<p>how to</p>
+<p>express</p>
+<p>things in</p>
+<p>this</p>
+<p>kind of</p>
+<p>language</p>
+<p>it's</p>
+<p>I think</p>
+<p>most suited</p>
+<p>for</p>
+<p>trying to</p>
+<p>understand</p>
+<p>complex</p>
+<p>systems</p>
+<p>so</p>
+<p>as I</p>
+<p>say</p>
+<p>I think</p>
+<p>if you're</p>
+<p>happy with</p>
+<p>normal</p>
+<p>active</p>
+<p>inference</p>
+<p>then it's</p>
+<p>probably</p>
+<p>fine</p>
+<p>great</p>
+<p>and also</p>
+<p>I'm wearing</p>
+<p>an appropriate</p>
+<p>embroidered</p>
+<p>onion</p>
+<p>shirt</p>
+<p>on the</p>
+<p>birth and</p>
+<p>death</p>
+<p>even though</p>
+<p>from each</p>
+<p>nucleus's</p>
+<p>or core's</p>
+<p>perspective</p>
+<p>it is</p>
+<p>like being</p>
+<p>at the</p>
+<p>center of</p>
+<p>a bullseye</p>
+<p>from where</p>
+<p>it is</p>
+<p>taking</p>
+<p>another</p>
+<p>view</p>
+<p>might look</p>
+<p>more like</p>
+<p>a chocolate</p>
+<p>chip cookie</p>
+<p>or like</p>
+<p>multiple</p>
+<p>nested</p>
+<p>organs</p>
+<p>so it's</p>
+<p>not that</p>
+<p>it's</p>
+<p>like</p>
+<p>just a</p>
+<p>bullseye</p>
+<p>even though</p>
+<p>that's just</p>
+<p>the two</p>
+<p>layers</p>
+<p>that's just</p>
+<p>the motif</p>
+<p>of nesting</p>
+<p>and then</p>
+<p>when you</p>
+<p>described how</p>
+<p>the systems</p>
+<p>can be put</p>
+<p>side by</p>
+<p>side</p>
+<p>then you</p>
+<p>could have</p>
+<p>a situation</p>
+<p>where it's</p>
+<p>like the</p>
+<p>cookie has</p>
+<p>two chocolate</p>
+<p>chips and</p>
+<p>then the</p>
+<p>next time</p>
+<p>step there's</p>
+<p>a third</p>
+<p>one but</p>
+<p>it's</p>
+<p>disconnected</p>
+<p>so it's</p>
+<p>the island</p>
+<p>and then</p>
+<p>another</p>
+<p>kind of</p>
+<p>actor comes</p>
+<p>in and</p>
+<p>changes the</p>
+<p>wiring</p>
+<p>secondarily</p>
+<p>so one</p>
+<p>thing I</p>
+<p>wanted to</p>
+<p>I haven't</p>
+<p>really talked</p>
+<p>about at</p>
+<p>all but</p>
+<p>one thing I</p>
+<p>want to be</p>
+<p>able to talk</p>
+<p>about and</p>
+<p>it's kind</p>
+<p>of related</p>
+<p>to this</p>
+<p>question of</p>
+<p>like when</p>
+<p>the systems</p>
+<p>dissolve into</p>
+<p>other systems</p>
+<p>or how can</p>
+<p>we see</p>
+<p>things as</p>
+<p>like a</p>
+<p>chocolate chip</p>
+<p>cookie or a</p>
+<p>bullseye or</p>
+<p>something like</p>
+<p>this or a</p>
+<p>group of</p>
+<p>trees or a</p>
+<p>forest or</p>
+<p>something</p>
+<p>this thing</p>
+<p>reduces</p>
+<p>systems in</p>
+<p>category</p>
+<p>theory so</p>
+<p>it turns</p>
+<p>systems into</p>
+<p>arrows</p>
+<p>but really</p>
+<p>this structure</p>
+<p>wants to be</p>
+<p>what's known</p>
+<p>as a double</p>
+<p>category so</p>
+<p>here the</p>
+<p>arrows would</p>
+<p>be like the</p>
+<p>changes of</p>
+<p>interface and</p>
+<p>then we would</p>
+<p>maybe have</p>
+<p>some other</p>
+<p>structure down</p>
+<p>here which</p>
+<p>represents another</p>
+<p>system and</p>
+<p>then we have</p>
+<p>like what are</p>
+<p>known as</p>
+<p>squares and</p>
+<p>these squares</p>
+<p>would represent</p>
+<p>how we could</p>
+<p>see like this</p>
+<p>like this</p>
+<p>system up</p>
+<p>here as a</p>
+<p>composite or</p>
+<p>as a different</p>
+<p>kind of system</p>
+<p>how we could</p>
+<p>see the forest</p>
+<p>as trees or</p>
+<p>something like</p>
+<p>that so it</p>
+<p>allows us to</p>
+<p>represent these</p>
+<p>kinds of like</p>
+<p>dissolving or</p>
+<p>these kinds of</p>
+<p>changes I</p>
+<p>haven't explained</p>
+<p>in detail how</p>
+<p>this works but</p>
+<p>it's a step</p>
+<p>towards that</p>
+<p>kind of process</p>
+<p>yeah cool and</p>
+<p>then of course</p>
+<p>all the great</p>
+<p>juxtapositions with</p>
+<p>more topologically</p>
+<p>stable systems</p>
+<p>neural networks</p>
+<p>and then more</p>
+<p>like the ant</p>
+<p>nest mates okay</p>
+<p>I'll ask a</p>
+<p>question from</p>
+<p>the live chat</p>
+<p>math for</p>
+<p>wisdom wrote</p>
+<p>I wonder if</p>
+<p>it is possible</p>
+<p>to interpret it</p>
+<p>in the opposite</p>
+<p>way that the</p>
+<p>policy is the</p>
+<p>consciousness</p>
+<p>so speculation</p>
+<p>yeah what</p>
+<p>what led you</p>
+<p>to see or</p>
+<p>identify one</p>
+<p>with the other</p>
+<p>yeah because</p>
+<p>really I always</p>
+<p>found that the</p>
+<p>generative model</p>
+<p>encapsulates</p>
+<p>like the</p>
+<p>world as I</p>
+<p>perceive it</p>
+<p>there's nothing</p>
+<p>really that I</p>
+<p>can do to</p>
+<p>change like</p>
+<p>we think of</p>
+<p>so the</p>
+<p>generative model</p>
+<p>is a system</p>
+<p>yeah so</p>
+<p>there's one</p>
+<p>peculiarity about</p>
+<p>this which is</p>
+<p>that</p>
+<p>the key</p>
+<p>ingredient is</p>
+<p>like a</p>
+<p>system whose</p>
+<p>outputs are</p>
+<p>observations</p>
+<p>and that</p>
+<p>seems a bit</p>
+<p>weird sometimes</p>
+<p>to me and</p>
+<p>it may seem</p>
+<p>weird to</p>
+<p>people who</p>
+<p>use</p>
+<p>interactive</p>
+<p>inference</p>
+<p>where you</p>
+<p>could think</p>
+<p>of the</p>
+<p>outputs of</p>
+<p>an agent</p>
+<p>should surely</p>
+<p>be the</p>
+<p>actions</p>
+<p>but the</p>
+<p>generative</p>
+<p>model</p>
+<p>the agent's</p>
+<p>beliefs about</p>
+<p>the world</p>
+<p>is a</p>
+<p>dynamical</p>
+<p>system</p>
+<p>which outputs</p>
+<p>observations</p>
+<p>that the</p>
+<p>agent receives</p>
+<p>and so</p>
+<p>that seems</p>
+<p>like the</p>
+<p>wrong way</p>
+<p>around</p>
+<p>but it</p>
+<p>is just</p>
+<p>how the</p>
+<p>mathematics</p>
+<p>requires it</p>
+<p>to be</p>
+<p>and so</p>
+<p>this thing</p>
+<p>being so</p>
+<p>crucial in</p>
+<p>the structure</p>
+<p>says to me</p>
+<p>that this is</p>
+<p>like the</p>
+<p>sort of</p>
+<p>this is</p>
+<p>when we see</p>
+<p>active inference</p>
+<p>text is</p>
+<p>often like</p>
+<p>S</p>
+<p>given O</p>
+<p>and M</p>
+<p>so it's</p>
+<p>like conditioned</p>
+<p>on a</p>
+<p>particular</p>
+<p>kind of</p>
+<p>model</p>
+<p>this</p>
+<p>gamma</p>
+<p>is M</p>
+<p>and this M</p>
+<p>doesn't typically</p>
+<p>change in</p>
+<p>active inference</p>
+<p>unless it's</p>
+<p>by some</p>
+<p>process of</p>
+<p>evolution</p>
+<p>for an</p>
+<p>individual</p>
+<p>agent</p>
+<p>this model</p>
+<p>is fixed</p>
+<p>and this</p>
+<p>thing</p>
+<p>represents</p>
+<p>everything</p>
+<p>that I</p>
+<p>see</p>
+<p>and it</p>
+<p>represents</p>
+<p>how I</p>
+<p>set the</p>
+<p>world to</p>
+<p>change</p>
+<p>given the</p>
+<p>actions</p>
+<p>I take</p>
+<p>and it's</p>
+<p>like it is</p>
+<p>in some</p>
+<p>sense</p>
+<p>the agent's</p>
+<p>world</p>
+<p>in active</p>
+<p>inference</p>
+<p>there is</p>
+<p>no</p>
+<p>like</p>
+<p>the agent</p>
+<p>can't access</p>
+<p>what the real</p>
+<p>world is like</p>
+<p>only has the</p>
+<p>generative</p>
+<p>model</p>
+<p>and so that's</p>
+<p>why I think</p>
+<p>this is like</p>
+<p>my world</p>
+<p>this is like</p>
+<p>my conscious</p>
+<p>experience</p>
+<p>and then</p>
+<p>so what</p>
+<p>actions I</p>
+<p>take</p>
+<p>I mean maybe</p>
+<p>so maybe this</p>
+<p>includes some</p>
+<p>self-model</p>
+<p>and I think</p>
+<p>you know</p>
+<p>I'm doing</p>
+<p>planning</p>
+<p>or I think</p>
+<p>I'm you know</p>
+<p>behaving in a</p>
+<p>way that's</p>
+<p>reasoned</p>
+<p>but actually</p>
+<p>I'm just</p>
+<p>acting on</p>
+<p>instinct</p>
+<p>according to</p>
+<p>these subconscious</p>
+<p>processes</p>
+<p>I mean I don't</p>
+<p>know much</p>
+<p>about consciousness</p>
+<p>science</p>
+<p>but I think</p>
+<p>that that kind</p>
+<p>of story</p>
+<p>is possible</p>
+<p>and so this</p>
+<p>stuff seems</p>
+<p>to be</p>
+<p>the things</p>
+<p>that</p>
+<p>I don't</p>
+<p>necessarily</p>
+<p>directly</p>
+<p>experience</p>
+<p>in the same</p>
+<p>way that I</p>
+<p>directly</p>
+<p>experience</p>
+<p>like my</p>
+<p>visual</p>
+<p>signals</p>
+<p>but they</p>
+<p>are the</p>
+<p>things that</p>
+<p>make me</p>
+<p>like me</p>
+<p>they are the</p>
+<p>things that</p>
+<p>provide my</p>
+<p>input to the</p>
+<p>world</p>
+<p>and again</p>
+<p>that's all</p>
+<p>like dynamics</p>
+<p>and it's maybe</p>
+<p>stuff that I</p>
+<p>observe but</p>
+<p>maybe I only</p>
+<p>observe it</p>
+<p>because it</p>
+<p>forms like</p>
+<p>an interior</p>
+<p>part of this</p>
+<p>model which</p>
+<p>might have</p>
+<p>some complex</p>
+<p>structure of</p>
+<p>the kind</p>
+<p>that I was</p>
+<p>talking about</p>
+<p>so that's</p>
+<p>why I</p>
+<p>thought of</p>
+<p>it that</p>
+<p>way round</p>
+<p>and of course</p>
+<p>maybe there</p>
+<p>is some</p>
+<p>deliberative</p>
+<p>planning process</p>
+<p>or some</p>
+<p>internal</p>
+<p>reasoning that</p>
+<p>goes on in</p>
+<p>my conscious</p>
+<p>experience and</p>
+<p>I do have an</p>
+<p>inner monologue</p>
+<p>and often it</p>
+<p>does seem like</p>
+<p>that so I</p>
+<p>think there is</p>
+<p>some interplay</p>
+<p>between these</p>
+<p>but possibly</p>
+<p>that stuff is</p>
+<p>borne out by</p>
+<p>having some</p>
+<p>complex structure</p>
+<p>in this rather</p>
+<p>than in these</p>
+<p>things that I</p>
+<p>think of as</p>
+<p>subconscious</p>
+<p>processes</p>
+<p>I don't</p>
+<p>experience my</p>
+<p>own Bayesian</p>
+<p>inference</p>
+<p>processes except</p>
+<p>in the cases</p>
+<p>that they go</p>
+<p>wrong or I</p>
+<p>have some</p>
+<p>illusion</p>
+<p>sometimes I'm</p>
+<p>in a building</p>
+<p>that's particularly</p>
+<p>symmetrical and I</p>
+<p>go out of a</p>
+<p>lift and I go</p>
+<p>into one place</p>
+<p>and I'm on the</p>
+<p>wrong side and it</p>
+<p>all feels really</p>
+<p>weird but that's</p>
+<p>not the same</p>
+<p>kind of</p>
+<p>conflict that's</p>
+<p>kind of an</p>
+<p>unusual</p>
+<p>experience</p>
+<p>anyway that's</p>
+<p>my feeling</p>
+<p>there</p>
+<p>what an</p>
+<p>unusual</p>
+<p>experience</p>
+<p>I'll read</p>
+<p>from math</p>
+<p>for wisdom</p>
+<p>he wrote</p>
+<p>I think that</p>
+<p>makes sense</p>
+<p>and now I</p>
+<p>understand the</p>
+<p>distinction</p>
+<p>better</p>
+<p>the generative</p>
+<p>model creates</p>
+<p>beliefs</p>
+<p>the policy</p>
+<p>creates</p>
+<p>actions</p>
+<p>but our</p>
+<p>actions are</p>
+<p>fated</p>
+<p>we are only</p>
+<p>free to</p>
+<p>choose our</p>
+<p>beliefs</p>
+<p>so our</p>
+<p>consciousness</p>
+<p>has to do</p>
+<p>with the</p>
+<p>beliefs we</p>
+<p>take</p>
+<p>our will</p>
+<p>did I</p>
+<p>understand</p>
+<p>the</p>
+<p>distinction</p>
+<p>correctly</p>
+<p>I think</p>
+<p>so I</p>
+<p>think that</p>
+<p>sounds like</p>
+<p>a good</p>
+<p>way of</p>
+<p>putting it</p>
+<p>I mean</p>
+<p>this is</p>
+<p>this is</p>
+<p>really just</p>
+<p>my</p>
+<p>basically</p>
+<p>this is</p>
+<p>like my</p>
+<p>answer</p>
+<p>philosophizing</p>
+<p>I don't</p>
+<p>know</p>
+<p>I mean</p>
+<p>it would</p>
+<p>be nice</p>
+<p>if this</p>
+<p>matched</p>
+<p>like</p>
+<p>what people</p>
+<p>think is</p>
+<p>actually</p>
+<p>going on</p>
+<p>but it's</p>
+<p>just what</p>
+<p>the sort</p>
+<p>of mathematics</p>
+<p>seem to be</p>
+<p>saying to</p>
+<p>me at</p>
+<p>least</p>
+<p>towards the</p>
+<p>applied</p>
+<p>side</p>
+<p>what</p>
+<p>kinds</p>
+<p>of</p>
+<p>programming</p>
+<p>languages</p>
+<p>or</p>
+<p>approaches</p>
+<p>or</p>
+<p>open source</p>
+<p>software</p>
+<p>or methods</p>
+<p>can people</p>
+<p>use to</p>
+<p>start</p>
+<p>exploring</p>
+<p>this</p>
+<p>that is</p>
+<p>a great</p>
+<p>question</p>
+<p>and you</p>
+<p>know what</p>
+<p>at the</p>
+<p>moment</p>
+<p>that doesn't</p>
+<p>have a</p>
+<p>great answer</p>
+<p>the best</p>
+<p>answer</p>
+<p>for now</p>
+<p>is that</p>
+<p>I mean</p>
+<p>at least</p>
+<p>for like</p>
+<p>modeling</p>
+<p>is that</p>
+<p>in</p>
+<p>Julia</p>
+<p>Julia</p>
+<p>the guys</p>
+<p>at the</p>
+<p>Topos</p>
+<p>Institute</p>
+<p>have been</p>
+<p>producing</p>
+<p>a collection</p>
+<p>of packages</p>
+<p>in the</p>
+<p>sort of</p>
+<p>milieu</p>
+<p>of their</p>
+<p>project</p>
+<p>algebraic</p>
+<p>Julia</p>
+<p>which is all</p>
+<p>about</p>
+<p>representing</p>
+<p>categorical</p>
+<p>structures</p>
+<p>and doing</p>
+<p>compositional</p>
+<p>modeling</p>
+<p>in</p>
+<p>Julia</p>
+<p>but</p>
+<p>Julia</p>
+<p>itself</p>
+<p>is not</p>
+<p>like</p>
+<p>necessarily</p>
+<p>well suited</p>
+<p>to</p>
+<p>describing</p>
+<p>things</p>
+<p>describing</p>
+<p>the</p>
+<p>world</p>
+<p>in this</p>
+<p>particular</p>
+<p>kind of</p>
+<p>compositional</p>
+<p>way</p>
+<p>it has</p>
+<p>its nice</p>
+<p>compositional</p>
+<p>features</p>
+<p>but basically</p>
+<p>in algebraic</p>
+<p>Julia</p>
+<p>they've</p>
+<p>written</p>
+<p>like a</p>
+<p>little</p>
+<p>sub</p>
+<p>language</p>
+<p>in</p>
+<p>Julia</p>
+<p>itself</p>
+<p>that</p>
+<p>encodes</p>
+<p>these</p>
+<p>categorical</p>
+<p>structures</p>
+<p>one of</p>
+<p>the things</p>
+<p>that's quite</p>
+<p>nice about</p>
+<p>category</p>
+<p>theory</p>
+<p>is that</p>
+<p>it's</p>
+<p>very</p>
+<p>like</p>
+<p>you know</p>
+<p>it's about</p>
+<p>composition</p>
+<p>so it's</p>
+<p>very modular</p>
+<p>and it</p>
+<p>gives you</p>
+<p>a lot</p>
+<p>of</p>
+<p>things</p>
+<p>that you</p>
+<p>can</p>
+<p>change</p>
+<p>I'll</p>
+<p>let me</p>
+<p>go back</p>
+<p>to where</p>
+<p>I talked</p>
+<p>about</p>
+<p>systems</p>
+<p>theory</p>
+<p>right at</p>
+<p>the very</p>
+<p>beginning</p>
+<p>yeah</p>
+<p>so you</p>
+<p>know</p>
+<p>I just</p>
+<p>write down</p>
+<p>this arrow</p>
+<p>and it</p>
+<p>maps from</p>
+<p>my category</p>
+<p>of interfaces</p>
+<p>to the</p>
+<p>category</p>
+<p>of</p>
+<p>categories</p>
+<p>and in</p>
+<p>principle</p>
+<p>I could</p>
+<p>just</p>
+<p>this should</p>
+<p>be</p>
+<p>like</p>
+<p>a</p>
+<p>little</p>
+<p>program</p>
+<p>which</p>
+<p>takes</p>
+<p>in</p>
+<p>which</p>
+<p>where</p>
+<p>I</p>
+<p>just</p>
+<p>like</p>
+<p>write</p>
+<p>I</p>
+<p>provide</p>
+<p>it</p>
+<p>with</p>
+<p>a</p>
+<p>polynomial</p>
+<p>and it</p>
+<p>gives</p>
+<p>me</p>
+<p>back</p>
+<p>this</p>
+<p>other</p>
+<p>data</p>
+<p>structure</p>
+<p>this</p>
+<p>category</p>
+<p>of</p>
+<p>systems</p>
+<p>and</p>
+<p>then</p>
+<p>I</p>
+<p>should</p>
+<p>yeah</p>
+<p>I</p>
+<p>should</p>
+<p>be</p>
+<p>able</p>
+<p>to</p>
+<p>talk</p>
+<p>about</p>
+<p>more</p>
+<p>systems</p>
+<p>between</p>
+<p>these</p>
+<p>things</p>
+<p>and</p>
+<p>I</p>
+<p>could</p>
+<p>be</p>
+<p>a</p>
+<p>map</p>
+<p>like</p>
+<p>this</p>
+<p>or</p>
+<p>make</p>
+<p>changes</p>
+<p>to</p>
+<p>this</p>
+<p>and</p>
+<p>have</p>
+<p>my</p>
+<p>computer</p>
+<p>automatically</p>
+<p>do</p>
+<p>it</p>
+<p>but</p>
+<p>that</p>
+<p>is</p>
+<p>just</p>
+<p>not</p>
+<p>possible</p>
+<p>with</p>
+<p>any</p>
+<p>kind</p>
+<p>of</p>
+<p>computational</p>
+<p>tools</p>
+<p>that</p>
+<p>we</p>
+<p>have</p>
+<p>right</p>
+<p>now</p>
+<p>and</p>
+<p>I</p>
+<p>often</p>
+<p>feel</p>
+<p>that</p>
+<p>it</p>
+<p>should</p>
+<p>be</p>
+<p>possible</p>
+<p>to</p>
+<p>do</p>
+<p>this</p>
+<p>in</p>
+<p>a</p>
+<p>way</p>
+<p>that's</p>
+<p>not</p>
+<p>necessarily</p>
+<p>like</p>
+<p>tied</p>
+<p>to</p>
+<p>a</p>
+<p>single</p>
+<p>programming</p>
+<p>language</p>
+<p>like</p>
+<p>like</p>
+<p>algebraic</p>
+<p>Julia</p>
+<p>is</p>
+<p>to</p>
+<p>Julia</p>
+<p>there</p>
+<p>are</p>
+<p>also</p>
+<p>like</p>
+<p>dependently</p>
+<p>type</p>
+<p>programming</p>
+<p>languages</p>
+<p>for</p>
+<p>proof</p>
+<p>assistance</p>
+<p>but</p>
+<p>if</p>
+<p>you</p>
+<p>write</p>
+<p>in</p>
+<p>those</p>
+<p>then</p>
+<p>you</p>
+<p>are</p>
+<p>stuck</p>
+<p>in</p>
+<p>that</p>
+<p>world</p>
+<p>one</p>
+<p>of</p>
+<p>the</p>
+<p>get</p>
+<p>compiled</p>
+<p>to</p>
+<p>web</p>
+<p>assembly</p>
+<p>and</p>
+<p>we</p>
+<p>can</p>
+<p>interact</p>
+<p>in</p>
+<p>a</p>
+<p>sort</p>
+<p>of</p>
+<p>language</p>
+<p>agnostic</p>
+<p>way</p>
+<p>and</p>
+<p>this</p>
+<p>this</p>
+<p>mathematics</p>
+<p>should</p>
+<p>be</p>
+<p>language</p>
+<p>agnostic</p>
+<p>but</p>
+<p>we</p>
+<p>don't</p>
+<p>have</p>
+<p>any</p>
+<p>languages</p>
+<p>or</p>
+<p>tools</p>
+<p>to</p>
+<p>talk</p>
+<p>about</p>
+<p>it</p>
+<p>yet</p>
+<p>it's</p>
+<p>something</p>
+<p>that I</p>
+<p>think</p>
+<p>should</p>
+<p>change</p>
+<p>people</p>
+<p>who are</p>
+<p>interested</p>
+<p>in</p>
+<p>changing</p>
+<p>it</p>
+<p>should</p>
+<p>talk</p>
+<p>to</p>
+<p>the</p>
+<p>top</p>
+<p>people</p>
+<p>or</p>
+<p>talk</p>
+<p>to</p>
+<p>me</p>
+<p>and</p>
+<p>I</p>
+<p>would</p>
+<p>like</p>
+<p>to</p>
+<p>see</p>
+<p>tools</p>
+<p>which</p>
+<p>are</p>
+<p>really</p>
+<p>nicely</p>
+<p>compositional</p>
+<p>for</p>
+<p>now</p>
+<p>but</p>
+<p>they're</p>
+<p>not</p>
+<p>like</p>
+<p>optimal</p>
+<p>thank</p>
+<p>you</p>
+<p>well</p>
+<p>it's</p>
+<p>an</p>
+<p>optimal</p>
+<p>agenda</p>
+<p>so</p>
+<p>that's</p>
+<p>very</p>
+<p>cool</p>
+<p>and</p>
+<p>to</p>
+<p>be</p>
+<p>able</p>
+<p>to</p>
+<p>connect</p>
+<p>even</p>
+<p>potentially</p>
+<p>in</p>
+<p>the</p>
+<p>coming</p>
+<p>months</p>
+<p>between</p>
+<p>the</p>
+<p>algebraic</p>
+<p>Julia</p>
+<p>and</p>
+<p>rx</p>
+<p>infer</p>
+<p>dot</p>
+<p>JL</p>
+<p>could</p>
+<p>already</p>
+<p>offer</p>
+<p>some</p>
+<p>cool</p>
+<p>opportunities</p>
+<p>yes</p>
+<p>I</p>
+<p>think</p>
+<p>that</p>
+<p>would</p>
+<p>be</p>
+<p>a</p>
+<p>great</p>
+<p>project</p>
+<p>cool</p>
+<p>um</p>
+<p>over</p>
+<p>the</p>
+<p>last</p>
+<p>years</p>
+<p>like</p>
+<p>working</p>
+<p>on</p>
+<p>this</p>
+<p>from</p>
+<p>your</p>
+<p>dissertation</p>
+<p>which</p>
+<p>we</p>
+<p>discussed</p>
+<p>in</p>
+<p>the</p>
+<p>live</p>
+<p>stream</p>
+<p>54</p>
+<p>series</p>
+<p>all</p>
+<p>the</p>
+<p>other</p>
+<p>fun</p>
+<p>and</p>
+<p>learnings</p>
+<p>that</p>
+<p>we've</p>
+<p>had</p>
+<p>um</p>
+<p>how</p>
+<p>have</p>
+<p>you</p>
+<p>seen</p>
+<p>like</p>
+<p>the</p>
+<p>process</p>
+<p>of</p>
+<p>going</p>
+<p>about</p>
+<p>that</p>
+<p>recipe</p>
+<p>evolve</p>
+<p>from</p>
+<p>like</p>
+<p>the</p>
+<p>chapter</p>
+<p>six</p>
+<p>in</p>
+<p>the</p>
+<p>2020</p>
+<p>textbook</p>
+<p>how</p>
+<p>do</p>
+<p>you</p>
+<p>feel</p>
+<p>like</p>
+<p>as</p>
+<p>more</p>
+<p>and</p>
+<p>more</p>
+<p>of</p>
+<p>the</p>
+<p>applied</p>
+<p>category</p>
+<p>theory</p>
+<p>developments</p>
+<p>are</p>
+<p>formalized</p>
+<p>and</p>
+<p>then</p>
+<p>also</p>
+<p>like</p>
+<p>operationalized</p>
+<p>how</p>
+<p>is</p>
+<p>that</p>
+<p>trajectory</p>
+<p>of</p>
+<p>like</p>
+<p>what</p>
+<p>it</p>
+<p>looks</p>
+<p>like</p>
+<p>to</p>
+<p>apply</p>
+<p>active</p>
+<p>inference</p>
+<p>yeah</p>
+<p>I think</p>
+<p>it's</p>
+<p>been</p>
+<p>very</p>
+<p>interesting</p>
+<p>and very</p>
+<p>exciting</p>
+<p>I would</p>
+<p>say</p>
+<p>for a</p>
+<p>long</p>
+<p>time</p>
+<p>I</p>
+<p>was</p>
+<p>also</p>
+<p>like</p>
+<p>quite</p>
+<p>I guess</p>
+<p>relatively</p>
+<p>confused</p>
+<p>about</p>
+<p>things</p>
+<p>in</p>
+<p>some</p>
+<p>way</p>
+<p>and</p>
+<p>this</p>
+<p>is</p>
+<p>something</p>
+<p>that I</p>
+<p>haven't</p>
+<p>yet</p>
+<p>been able</p>
+<p>to</p>
+<p>resolve</p>
+<p>and</p>
+<p>I'm</p>
+<p>sure</p>
+<p>some</p>
+<p>people</p>
+<p>know</p>
+<p>how</p>
+<p>it</p>
+<p>could</p>
+<p>be</p>
+<p>resolved</p>
+<p>but</p>
+<p>I'm</p>
+<p>just</p>
+<p>not</p>
+<p>one</p>
+<p>of</p>
+<p>them</p>
+<p>which</p>
+<p>is</p>
+<p>that</p>
+<p>active</p>
+<p>inference</p>
+<p>has</p>
+<p>come</p>
+<p>out</p>
+<p>of</p>
+<p>the</p>
+<p>free</p>
+<p>energy</p>
+<p>principle</p>
+<p>world</p>
+<p>where</p>
+<p>the</p>
+<p>idea</p>
+<p>is</p>
+<p>that</p>
+<p>actions</p>
+<p>are</p>
+<p>selected</p>
+<p>in</p>
+<p>the same</p>
+<p>kind</p>
+<p>of</p>
+<p>way</p>
+<p>that</p>
+<p>you</p>
+<p>do</p>
+<p>perceptual</p>
+<p>inference</p>
+<p>by</p>
+<p>minimizing</p>
+<p>surprise</p>
+<p>or free</p>
+<p>energy</p>
+<p>but</p>
+<p>the</p>
+<p>formal</p>
+<p>structure</p>
+<p>of</p>
+<p>pure</p>
+<p>perceptual</p>
+<p>inference</p>
+<p>is</p>
+<p>it has</p>
+<p>a similar</p>
+<p>feeling</p>
+<p>so it</p>
+<p>has</p>
+<p>something</p>
+<p>that goes</p>
+<p>from</p>
+<p>inside</p>
+<p>to</p>
+<p>outside</p>
+<p>and</p>
+<p>then</p>
+<p>something</p>
+<p>that</p>
+<p>goes</p>
+<p>back</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>thing</p>
+<p>that</p>
+<p>does</p>
+<p>prediction</p>
+<p>and</p>
+<p>then</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>thing</p>
+<p>that</p>
+<p>does</p>
+<p>inference</p>
+<p>and</p>
+<p>so</p>
+<p>the</p>
+<p>structure</p>
+<p>of</p>
+<p>these</p>
+<p>two</p>
+<p>things</p>
+<p>by no</p>
+<p>surprise</p>
+<p>obviously</p>
+<p>has this</p>
+<p>similar</p>
+<p>bidirectional</p>
+<p>feel</p>
+<p>but I</p>
+<p>haven't</p>
+<p>yet</p>
+<p>shown</p>
+<p>that</p>
+<p>this</p>
+<p>action</p>
+<p>selection</p>
+<p>process</p>
+<p>is</p>
+<p>exactly</p>
+<p>of the</p>
+<p>same</p>
+<p>type</p>
+<p>as</p>
+<p>basic</p>
+<p>inference</p>
+<p>for</p>
+<p>perception</p>
+<p>and I</p>
+<p>would</p>
+<p>like</p>
+<p>it</p>
+<p>to be</p>
+<p>it's</p>
+<p>kind</p>
+<p>of</p>
+<p>frustrating</p>
+<p>to</p>
+<p>me</p>
+<p>that</p>
+<p>so</p>
+<p>I</p>
+<p>thought</p>
+<p>for</p>
+<p>a long</p>
+<p>time</p>
+<p>how do</p>
+<p>I</p>
+<p>get</p>
+<p>action</p>
+<p>when</p>
+<p>I</p>
+<p>was</p>
+<p>writing</p>
+<p>my</p>
+<p>thesis</p>
+<p>how do</p>
+<p>I</p>
+<p>get</p>
+<p>action</p>
+<p>into</p>
+<p>this</p>
+<p>and</p>
+<p>that's</p>
+<p>what</p>
+<p>this</p>
+<p>project</p>
+<p>really</p>
+<p>has</p>
+<p>been</p>
+<p>about</p>
+<p>getting</p>
+<p>action</p>
+<p>into</p>
+<p>the</p>
+<p>story</p>
+<p>finally</p>
+<p>but the</p>
+<p>relationship</p>
+<p>between</p>
+<p>them</p>
+<p>isn't</p>
+<p>as neat</p>
+<p>as I</p>
+<p>would</p>
+<p>like</p>
+<p>and</p>
+<p>so</p>
+<p>if</p>
+<p>anybody</p>
+<p>wants</p>
+<p>to</p>
+<p>talk</p>
+<p>about</p>
+<p>that</p>
+<p>I'm</p>
+<p>always</p>
+<p>interested</p>
+<p>in</p>
+<p>trying</p>
+<p>to</p>
+<p>show</p>
+<p>that</p>
+<p>action</p>
+<p>selection</p>
+<p>really</p>
+<p>is</p>
+<p>a</p>
+<p>surprise</p>
+<p>minimization</p>
+<p>or</p>
+<p>approximate</p>
+<p>inference</p>
+<p>so far</p>
+<p>it's</p>
+<p>only</p>
+<p>vaguely</p>
+<p>in</p>
+<p>the</p>
+<p>structure</p>
+<p>and</p>
+<p>this</p>
+<p>reminds</p>
+<p>me</p>
+<p>of</p>
+<p>something</p>
+<p>I</p>
+<p>wanted</p>
+<p>to</p>
+<p>say</p>
+<p>in</p>
+<p>response</p>
+<p>to</p>
+<p>your</p>
+<p>remarks</p>
+<p>at</p>
+<p>the</p>
+<p>end</p>
+<p>when</p>
+<p>I</p>
+<p>just</p>
+<p>that</p>
+<p>I've</p>
+<p>said</p>
+<p>here</p>
+<p>roughly</p>
+<p>the</p>
+<p>data</p>
+<p>of</p>
+<p>an</p>
+<p>active</p>
+<p>inference</p>
+<p>is like</p>
+<p>a</p>
+<p>hierarchical</p>
+<p>active</p>
+<p>inference</p>
+<p>system</p>
+<p>it has</p>
+<p>these</p>
+<p>components</p>
+<p>it's</p>
+<p>got</p>
+<p>like</p>
+<p>a</p>
+<p>likelihood</p>
+<p>model</p>
+<p>a</p>
+<p>transition</p>
+<p>model</p>
+<p>a</p>
+<p>policy</p>
+<p>thing</p>
+<p>a</p>
+<p>state</p>
+<p>inference</p>
+<p>thing</p>
+<p>and</p>
+<p>maybe</p>
+<p>it's</p>
+<p>got</p>
+<p>this</p>
+<p>genitive</p>
+<p>process</p>
+<p>part</p>
+<p>and</p>
+<p>this</p>
+<p>action</p>
+<p>prior</p>
+<p>part</p>
+<p>as</p>
+<p>well</p>
+<p>but</p>
+<p>this</p>
+<p>is</p>
+<p>all</p>
+<p>just</p>
+<p>structured</p>
+<p>this</p>
+<p>is</p>
+<p>structured</p>
+<p>active</p>
+<p>inference</p>
+<p>is</p>
+<p>all</p>
+<p>just</p>
+<p>about</p>
+<p>structure</p>
+<p>none</p>
+<p>of</p>
+<p>this</p>
+<p>yet</p>
+<p>is</p>
+<p>about</p>
+<p>how</p>
+<p>do</p>
+<p>you</p>
+<p>actually</p>
+<p>choose</p>
+<p>this</p>
+<p>likelihood</p>
+<p>or</p>
+<p>how</p>
+<p>do</p>
+<p>you</p>
+<p>actually</p>
+<p>do</p>
+<p>action</p>
+<p>selection</p>
+<p>or</p>
+<p>how</p>
+<p>do</p>
+<p>you</p>
+<p>actually</p>
+<p>do</p>
+<p>state</p>
+<p>inference</p>
+<p>the</p>
+<p>work that I was doing</p>
+<p>in my thesis</p>
+<p>was about</p>
+<p>various different ways</p>
+<p>that we actually do</p>
+<p>inference</p>
+<p>particularly</p>
+<p>inference in the brain</p>
+<p>using the</p>
+<p>variational inference</p>
+<p>under the</p>
+<p>Laplace</p>
+<p>approximation</p>
+<p>but</p>
+<p>what</p>
+<p>I</p>
+<p>want</p>
+<p>is</p>
+<p>to</p>
+<p>say</p>
+<p>that</p>
+<p>active</p>
+<p>inference</p>
+<p>or a</p>
+<p>particular</p>
+<p>flavor of</p>
+<p>active</p>
+<p>inference</p>
+<p>is</p>
+<p>in some</p>
+<p>sense</p>
+<p>universal</p>
+<p>and that</p>
+<p>means</p>
+<p>there</p>
+<p>is</p>
+<p>a</p>
+<p>canonical</p>
+<p>choice</p>
+<p>for a</p>
+<p>given</p>
+<p>system</p>
+<p>so</p>
+<p>we</p>
+<p>assume</p>
+<p>that</p>
+<p>somebody</p>
+<p>comes</p>
+<p>along</p>
+<p>and</p>
+<p>gives</p>
+<p>you</p>
+<p>the</p>
+<p>data</p>
+<p>of</p>
+<p>your</p>
+<p>generative</p>
+<p>model</p>
+<p>it</p>
+<p>could</p>
+<p>be</p>
+<p>you</p>
+<p>Daniel</p>
+<p>or</p>
+<p>it</p>
+<p>could</p>
+<p>be</p>
+<p>evolution</p>
+<p>science</p>
+<p>or</p>
+<p>something</p>
+<p>like</p>
+<p>that</p>
+<p>and</p>
+<p>then</p>
+<p>it</p>
+<p>says</p>
+<p>okay</p>
+<p>well</p>
+<p>active</p>
+<p>inference</p>
+<p>says</p>
+<p>there's</p>
+<p>a</p>
+<p>canonical</p>
+<p>way</p>
+<p>of</p>
+<p>choosing</p>
+<p>actions</p>
+<p>that</p>
+<p>is</p>
+<p>as</p>
+<p>optimal</p>
+<p>as</p>
+<p>you</p>
+<p>can</p>
+<p>be</p>
+<p>and</p>
+<p>there's</p>
+<p>a</p>
+<p>canonical</p>
+<p>way</p>
+<p>of</p>
+<p>doing</p>
+<p>inference</p>
+<p>that</p>
+<p>is</p>
+<p>as</p>
+<p>optimal</p>
+<p>as</p>
+<p>you</p>
+<p>can</p>
+<p>be</p>
+<p>and</p>
+<p>this</p>
+<p>story</p>
+<p>that</p>
+<p>I've</p>
+<p>told</p>
+<p>is</p>
+<p>agnostic</p>
+<p>to</p>
+<p>that</p>
+<p>a lot</p>
+<p>of</p>
+<p>people</p>
+<p>have</p>
+<p>spent</p>
+<p>time</p>
+<p>saying</p>
+<p>here</p>
+<p>are</p>
+<p>proposals</p>
+<p>this</p>
+<p>framework</p>
+<p>although</p>
+<p>being</p>
+<p>agnostic</p>
+<p>allows</p>
+<p>you</p>
+<p>to</p>
+<p>state</p>
+<p>what</p>
+<p>are</p>
+<p>known</p>
+<p>in</p>
+<p>category</p>
+<p>theory</p>
+<p>as</p>
+<p>universal</p>
+<p>properties</p>
+<p>and</p>
+<p>so</p>
+<p>those</p>
+<p>are</p>
+<p>ways</p>
+<p>of</p>
+<p>saying</p>
+<p>that</p>
+<p>this</p>
+<p>is</p>
+<p>in</p>
+<p>some</p>
+<p>sense</p>
+<p>canonical</p>
+<p>or</p>
+<p>optimal</p>
+<p>in</p>
+<p>some</p>
+<p>mathematically</p>
+<p>precise</p>
+<p>way</p>
+<p>and</p>
+<p>it</p>
+<p>would</p>
+<p>be</p>
+<p>nice</p>
+<p>to</p>
+<p>have</p>
+<p>those</p>
+<p>stories</p>
+<p>about</p>
+<p>the</p>
+<p>universality</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>i.e.</p>
+<p>the ways</p>
+<p>of spelling</p>
+<p>out</p>
+<p>these</p>
+<p>functions</p>
+<p>to be</p>
+<p>expressed</p>
+<p>in</p>
+<p>that</p>
+<p>language</p>
+<p>so</p>
+<p>yeah</p>
+<p>that's</p>
+<p>my</p>
+<p>answer</p>
+<p>two</p>
+<p>answers</p>
+<p>one</p>
+<p>was</p>
+<p>about</p>
+<p>this</p>
+<p>annoying</p>
+<p>thing</p>
+<p>with</p>
+<p>inference</p>
+<p>and</p>
+<p>here</p>
+<p>about</p>
+<p>the</p>
+<p>universality</p>
+<p>yeah</p>
+<p>there's</p>
+<p>so much</p>
+<p>to go</p>
+<p>into</p>
+<p>and you</p>
+<p>mentioned</p>
+<p>like</p>
+<p>dual</p>
+<p>a lot</p>
+<p>and the</p>
+<p>interface</p>
+<p>can be</p>
+<p>seen</p>
+<p>it's</p>
+<p>like</p>
+<p>two</p>
+<p>onions</p>
+<p>where</p>
+<p>you</p>
+<p>could</p>
+<p>peel</p>
+<p>off</p>
+<p>the</p>
+<p>interface</p>
+<p>and</p>
+<p>associate</p>
+<p>it</p>
+<p>with</p>
+<p>one</p>
+<p>but</p>
+<p>that</p>
+<p>would</p>
+<p>be</p>
+<p>a</p>
+<p>symmetry</p>
+<p>break</p>
+<p>because</p>
+<p>you</p>
+<p>could</p>
+<p>also</p>
+<p>see</p>
+<p>it</p>
+<p>as</p>
+<p>being</p>
+<p>peeled</p>
+<p>off</p>
+<p>with</p>
+<p>the</p>
+<p>other</p>
+<p>because</p>
+<p>it's</p>
+<p>an</p>
+<p>interface</p>
+<p>and</p>
+<p>this</p>
+<p>gets</p>
+<p>into</p>
+<p>systems</p>
+<p>engineering</p>
+<p>what is</p>
+<p>the</p>
+<p>interface</p>
+<p>and</p>
+<p>it's</p>
+<p>a very</p>
+<p>interesting</p>
+<p>topic</p>
+<p>so</p>
+<p>I'll see</p>
+<p>if anyone</p>
+<p>else has</p>
+<p>any</p>
+<p>final</p>
+<p>questions</p>
+<p>like</p>
+<p>what are</p>
+<p>your next</p>
+<p>steps</p>
+<p>on the</p>
+<p>research</p>
+<p>how do</p>
+<p>you see</p>
+<p>it being</p>
+<p>applied</p>
+<p>and</p>
+<p>continued</p>
+<p>okay</p>
+<p>right</p>
+<p>so</p>
+<p>my</p>
+<p>next</p>
+<p>steps</p>
+<p>are</p>
+<p>really</p>
+<p>to</p>
+<p>produce</p>
+<p>a</p>
+<p>longer</p>
+<p>or</p>
+<p>more</p>
+<p>detailed</p>
+<p>paper</p>
+<p>about</p>
+<p>this</p>
+<p>than</p>
+<p>the</p>
+<p>abstract</p>
+<p>that</p>
+<p>is</p>
+<p>available</p>
+<p>at the</p>
+<p>moment</p>
+<p>in</p>
+<p>particular</p>
+<p>the</p>
+<p>abstract</p>
+<p>that's</p>
+<p>available</p>
+<p>at the</p>
+<p>moment</p>
+<p>it</p>
+<p>doesn't</p>
+<p>really</p>
+<p>spell</p>
+<p>out</p>
+<p>some</p>
+<p>of</p>
+<p>this</p>
+<p>stuff</p>
+<p>in</p>
+<p>particularly</p>
+<p>nice</p>
+<p>detail</p>
+<p>like</p>
+<p>to</p>
+<p>keep</p>
+<p>things</p>
+<p>as</p>
+<p>simple</p>
+<p>as</p>
+<p>I</p>
+<p>could</p>
+<p>I</p>
+<p>didn't</p>
+<p>really</p>
+<p>explain</p>
+<p>like</p>
+<p>how</p>
+<p>you</p>
+<p>can</p>
+<p>have</p>
+<p>this</p>
+<p>kind</p>
+<p>of</p>
+<p>mode</p>
+<p>dependence</p>
+<p>transition</p>
+<p>model</p>
+<p>that</p>
+<p>is</p>
+<p>stochastic</p>
+<p>as well</p>
+<p>as</p>
+<p>having</p>
+<p>likelihoods</p>
+<p>that are</p>
+<p>stochastic</p>
+<p>for technical</p>
+<p>reasons</p>
+<p>it's a lot</p>
+<p>easier</p>
+<p>if you</p>
+<p>just</p>
+<p>have</p>
+<p>the</p>
+<p>outputs</p>
+<p>of your</p>
+<p>systems</p>
+<p>be</p>
+<p>deterministic</p>
+<p>this</p>
+<p>notation</p>
+<p>right</p>
+<p>like</p>
+<p>some</p>
+<p>with</p>
+<p>a</p>
+<p>sampling</p>
+<p>is</p>
+<p>not</p>
+<p>something</p>
+<p>that</p>
+<p>is</p>
+<p>I</p>
+<p>think</p>
+<p>canonical</p>
+<p>or</p>
+<p>widely</p>
+<p>known</p>
+<p>so</p>
+<p>I'd</p>
+<p>have</p>
+<p>to</p>
+<p>spell</p>
+<p>that</p>
+<p>out</p>
+<p>so</p>
+<p>there</p>
+<p>are</p>
+<p>lots</p>
+<p>of</p>
+<p>mathematical</p>
+<p>details</p>
+<p>so</p>
+<p>that's</p>
+<p>the</p>
+<p>first</p>
+<p>thing</p>
+
+<p>and the</p>
+<p>second</p>
+<p>thing</p>
+<p>I think</p>
+<p>is to</p>
+<p>get people</p>
+<p>using</p>
+<p>this</p>
+<p>framework</p>
+<p>actually</p>
+<p>talking</p>
+<p>about</p>
+<p>building</p>
+<p>complex</p>
+<p>systems</p>
+<p>or</p>
+<p>actually</p>
+<p>building</p>
+<p>tools</p>
+<p>for</p>
+<p>building</p>
+<p>complex</p>
+<p>systems</p>
+<p>using</p>
+<p>it</p>
+<p>and</p>
+<p>relating</p>
+<p>to</p>
+<p>the</p>
+<p>tools</p>
+<p>that</p>
+<p>people</p>
+<p>already</p>
+<p>use</p>
+<p>for</p>
+<p>doing</p>
+<p>that</p>
+<p>kind</p>
+<p>of</p>
+<p>thing</p>
+<p>like</p>
+<p>Pi</p>
+<p>MDP</p>
+<p>or</p>
+<p>just</p>
+<p>like</p>
+<p>you</p>
+<p>said</p>
+<p>Daniel</p>
+<p>RX</p>
+<p>and</p>
+<p>Thur</p>
+<p>it</p>
+<p>would</p>
+<p>be</p>
+<p>great</p>
+<p>to</p>
+<p>actually</p>
+<p>turn</p>
+<p>this</p>
+<p>into</p>
+<p>something</p>
+<p>that</p>
+<p>people</p>
+<p>can</p>
+<p>use</p>
+<p>rather</p>
+<p>than</p>
+<p>just</p>
+<p>a</p>
+<p>mathematical</p>
+<p>theory</p>
+<p>I</p>
+<p>like</p>
+<p>this</p>
+<p>although</p>
+<p>it's</p>
+<p>kind</p>
+<p>of</p>
+<p>often</p>
+<p>people</p>
+<p>think</p>
+<p>it's</p>
+<p>quite</p>
+<p>an</p>
+<p>alien</p>
+<p>language</p>
+<p>because</p>
+<p>it's</p>
+<p>unfamiliar</p>
+<p>but</p>
+<p>it</p>
+<p>is</p>
+<p>in</p>
+<p>some</p>
+
+<p>ways</p>
+<p>quite</p>
+<p>ergonomic</p>
+<p>it</p>
+<p>is</p>
+<p>quite</p>
+<p>demanding</p>
+<p>because</p>
+<p>to</p>
+<p>prove</p>
+<p>that</p>
+<p>something</p>
+<p>is</p>
+<p>an</p>
+<p>index</p>
+<p>category</p>
+<p>you</p>
+<p>have</p>
+<p>to</p>
+<p>check</p>
+<p>all</p>
+<p>of</p>
+<p>these</p>
+<p>annoying</p>
+<p>conditions</p>
+<p>and</p>
+<p>by</p>
+<p>God</p>
+<p>they</p>
+<p>are</p>
+<p>often</p>
+<p>really</p>
+<p>annoying</p>
+<p>and</p>
+<p>I</p>
+<p>would</p>
+<p>love</p>
+<p>as</p>
+<p>a</p>
+<p>test</p>
+<p>case</p>
+<p>to</p>
+<p>build</p>
+<p>an</p>
+<p>artificial</p>
+<p>proof</p>
+<p>assistant</p>
+<p>or</p>
+<p>system</p>
+<p>that</p>
+<p>can</p>
+<p>help</p>
+<p>me</p>
+<p>do</p>
+<p>these</p>
+<p>checks</p>
+<p>because</p>
+<p>as I</p>
+<p>said</p>
+<p>doing</p>
+<p>policies</p>
+<p>action</p>
+<p>selection</p>
+<p>is</p>
+<p>very</p>
+<p>much</p>
+<p>like</p>
+<p>choosing</p>
+<p>a</p>
+<p>series</p>
+<p>of</p>
+<p>morphisms</p>
+<p>and</p>
+<p>it's</p>
+<p>well</p>
+<p>known</p>
+<p>in</p>
+<p>mathematics</p>
+<p>that</p>
+<p>proof</p>
+<p>is</p>
+<p>also</p>
+<p>choosing</p>
+<p>a</p>
+<p>series</p>
+<p>of</p>
+<p>morphisms</p>
+<p>so</p>
+<p>I'm</p>
+<p>pretty</p>
+<p>sure</p>
+<p>that</p>
+<p>we</p>
+<p>can</p>
+<p>use</p>
+<p>this</p>
+<p>for</p>
+<p>doing</p>
+<p>things</p>
+<p>like</p>
+<p>proof</p>
+<p>in</p>
+<p>a</p>
+<p>way</p>
+<p>that's</p>
+<p>nicer</p>
+<p>than</p>
+<p>large</p>
+<p>language</p>
+<p>models</p>
+<p>so</p>
+<p>once</p>
+<p>we've</p>
+<p>got</p>
+<p>tools</p>
+<p>I</p>
+<p>want</p>
+<p>to</p>
+<p>actually</p>
+<p>start</p>
+<p>applying</p>
+<p>them</p>
+<p>to</p>
+<p>things</p>
+<p>complicated</p>
+<p>structured</p>
+<p>models</p>
+<p>that</p>
+<p>are</p>
+<p>probably</p>
+<p>beyond</p>
+<p>the</p>
+<p>systems</p>
+<p>that</p>
+<p>we</p>
+<p>have</p>
+<p>right</p>
+<p>now</p>
+<p>!</p>
+<p>okay</p>
+<p>the</p>
+<p>Toby</p>
+<p>signal</p>
+<p>has</p>
+<p>gone</p>
+<p>out</p>
+<p>I'll</p>
+<p>ask</p>
+<p>one</p>
+<p>more</p>
+<p>question</p>
+<p>from</p>
+<p>the</p>
+<p>chat</p>
+<p>math</p>
+<p>for</p>
+<p>wisdom</p>
+<p>wrote</p>
+<p>Toby</p>
+<p>it</p>
+<p>sounds</p>
+<p>like</p>
+<p>you</p>
+<p>want</p>
+<p>to</p>
+<p>set</p>
+<p>up</p>
+<p>a</p>
+<p>free</p>
+<p>functor</p>
+<p>so</p>
+<p>that</p>
+<p>suggests</p>
+<p>considering</p>
+<p>the</p>
+<p>adjoint</p>
+<p>functor</p>
+<p>what is</p>
+<p>it</p>
+<p>that</p>
+<p>you</p>
+<p>want</p>
+<p>to</p>
+<p>forget</p>
+<p>if</p>
+<p>he</p>
+<p>could</p>
+<p>define</p>
+<p>a</p>
+<p>functor</p>
+<p>what</p>
+<p>he</p>
+<p>wants</p>
+<p>to</p>
+<p>forget</p>
+<p>then</p>
+<p>mathematically</p>
+<p>that</p>
+<p>could</p>
+<p>yield</p>
+<p>the</p>
+<p>functor</p>
+<p>that</p>
+<p>freely</p>
+<p>optimally</p>
+<p>constructs</p>
+<p>the</p>
+<p>canonical</p>
+<p>way</p>
+<p>to</p>
+<p>choose</p>
+<p>the</p>
+<p>action</p>
+<p>or</p>
+<p>do</p>
+<p>the</p>
+<p>inference</p>
+<p>yeah</p>
+<p>what do</p>
+<p>I want</p>
+<p>to</p>
+<p>forget</p>
+<p>in</p>
+<p>some</p>
+<p>sense</p>
+<p>what I</p>
+<p>want</p>
+<p>to</p>
+<p>forget</p>
+<p>is</p>
+<p>like</p>
+<p>all</p>
+<p>the</p>
+<p>stuff</p>
+<p>that</p>
+<p>I</p>
+<p>might</p>
+<p>have</p>
+<p>learned</p>
+<p>that</p>
+<p>confuses</p>
+<p>me</p>
+<p>but the</p>
+<p>thing</p>
+<p>is</p>
+<p>it's</p>
+<p>very</p>
+<p>hard</p>
+<p>to</p>
+<p>distinguish</p>
+
+<p>the</p>
+<p>stuff</p>
+<p>that</p>
+<p>is</p>
+<p>confusing</p>
+<p>from</p>
+<p>the</p>
+<p>stuff</p>
+<p>that</p>
+<p>is</p>
+<p>not</p>
+<p>confusing</p>
+<p>until</p>
+<p>you've</p>
+<p>done</p>
+<p>all</p>
+<p>the</p>
+<p>work</p>
+<p>so</p>
+<p>it</p>
+<p>may</p>
+<p>be</p>
+<p>the</p>
+<p>case</p>
+<p>that</p>
+<p>you</p>
+<p>have</p>
+<p>to</p>
+<p>construct</p>
+<p>that</p>
+<p>adjoint</p>
+<p>in order</p>
+<p>to see</p>
+<p>that</p>
+<p>you've</p>
+<p>got</p>
+<p>the</p>
+<p>forgetful</p>
+<p>funct</p>
+<p>in</p>
+<p>the</p>
+<p>first</p>
+<p>place</p>
+<p>and</p>
+<p>that's</p>
+<p>unfortunately</p>
+<p>I think</p>
+<p>the</p>
+<p>situation</p>
+<p>that I'm</p>
+<p>in</p>
+<p>part</p>
+<p>like</p>
+<p>a lot</p>
+<p>of</p>
+<p>this</p>
+<p>process</p>
+<p>I</p>
+<p>think</p>
+<p>has</p>
+<p>really</p>
+<p>been</p>
+<p>about</p>
+<p>figuring</p>
+<p>out</p>
+<p>the</p>
+<p>essence</p>
+<p>of</p>
+<p>these</p>
+<p>systems</p>
+<p>like</p>
+<p>in</p>
+<p>before</p>
+<p>the</p>
+<p>essence</p>
+<p>of</p>
+<p>the</p>
+<p>structure</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>really</p>
+<p>distilling</p>
+<p>it down</p>
+<p>into</p>
+<p>something</p>
+<p>quite</p>
+<p>abstract</p>
+<p>and</p>
+<p>really</p>
+<p>just to</p>
+<p>say</p>
+<p>something</p>
+<p>about</p>
+<p>forgetful</p>
+<p>functions</p>
+<p>this</p>
+<p>where has</p>
+<p>it gone</p>
+<p>yep</p>
+<p>this arrow</p>
+<p>here</p>
+<p>that</p>
+<p>goes</p>
+<p>from</p>
+<p>agents</p>
+<p>the category</p>
+<p>of agents</p>
+<p>which has</p>
+<p>these</p>
+<p>bidirectional</p>
+<p>genital</p>
+<p>model</p>
+<p>policy</p>
+<p>things</p>
+<p>as its</p>
+<p>morphisms</p>
+<p>and</p>
+<p>just</p>
+<p>goes</p>
+<p>down</p>
+<p>to</p>
+<p>systems</p>
+<p>this</p>
+<p>is</p>
+<p>a</p>
+<p>forgetful</p>
+<p>function</p>
+<p>it</p>
+<p>forgets</p>
+<p>the</p>
+<p>controller</p>
+<p>the</p>
+<p>thing</p>
+<p>that</p>
+<p>is</p>
+<p>the</p>
+<p>policy</p>
+<p>and</p>
+<p>possibly</p>
+<p>hopefully</p>
+<p>the</p>
+<p>way to</p>
+<p>see</p>
+<p>active</p>
+<p>inference</p>
+<p>is</p>
+<p>universal</p>
+<p>is</p>
+<p>to</p>
+<p>say</p>
+<p>that</p>
+<p>it's</p>
+<p>like</p>
+<p>adjoint</p>
+<p>in a</p>
+<p>particular</p>
+<p>way</p>
+<p>or</p>
+<p>at</p>
+<p>least</p>
+<p>it</p>
+<p>has</p>
+<p>like</p>
+<p>at</p>
+<p>least</p>
+<p>it</p>
+<p>is</p>
+<p>a</p>
+<p>section</p>
+<p>we</p>
+<p>would</p>
+<p>say</p>
+<p>of</p>
+<p>this</p>
+<p>thing</p>
+<p>so</p>
+<p>yeah</p>
+<p>it's</p>
+<p>true</p>
+<p>what</p>
+<p>I'm</p>
+<p>trying</p>
+<p>to</p>
+<p>do</p>
+<p>is</p>
+<p>find</p>
+<p>out</p>
+<p>what</p>
+<p>those</p>
+<p>adjoints</p>
+<p>are</p>
+<p>but</p>
+<p>it's</p>
+<p>it's</p>
+<p>hard</p>
+<p>to</p>
+<p>know</p>
+<p>what</p>
+<p>to</p>
+<p>forget</p>
+<p>until</p>
+<p>you've</p>
+<p>forgotten</p>
+<p>it</p>
+<p>and then</p>
+<p>it's</p>
+<p>gone</p>
+<p>I don't</p>
+<p>know</p>
+<p>you</p>
+<p>don't</p>
+<p>know</p>
+<p>what</p>
+<p>you</p>
+<p>got</p>
+<p>till</p>
+<p>it's</p>
+<p>gone</p>
+<p>then</p>
+<p>there's</p>
+<p>the</p>
+<p>reconstructed</p>
+<p>trace</p>
+<p>and</p>
+<p>our</p>
+<p>niche</p>
+<p>is</p>
+<p>becoming</p>
+<p>increasingly</p>
+<p>capable</p>
+<p>from a</p>
+<p>perception</p>
+<p>and action</p>
+<p>standpoint</p>
+<p>which</p>
+<p>is bringing</p>
+<p>up so</p>
+<p>many</p>
+<p>fascinating</p>
+<p>topics</p>
+<p>so</p>
+<p>do you</p>
+<p>have</p>
+<p>any</p>
+<p>final</p>
+<p>comments</p>
+<p>not</p>
+<p>today</p>
+<p>I'm</p>
+<p>sure</p>
+<p>there'll</p>
+<p>be</p>
+<p>other</p>
+<p>opportunities</p>
+<p>then</p>
+<p>I</p>
+<p>hope</p>
+<p>so</p>
+<p>I</p>
+<p>do</p>
+<p>it's</p>
+<p>been</p>
+<p>a</p>
+<p>pleasure</p>
+<p>thank</p>
+<p>you</p>
+<p>thank</p>
+<p>you</p>
+<p>toby</p>
+<p>this</p>
+<p>was</p>
+<p>an</p>
+<p>awesome</p>
+<p>presentation</p>
+<p>it's</p>
+<p>like</p>
+<p>big</p>
+<p>structural</p>
+<p>evolution</p>
+<p>and development</p>
+<p>in active</p>
+<p>inference</p>
+<p>and so</p>
+<p>there's so</p>
+<p>many pieces</p>
+<p>for people</p>
+<p>to</p>
+<p>to pick</p>
+<p>up</p>
+<p>and</p>
+<p>and work</p>
+<p>in</p>
+<p>always</p>
+<p>developing</p>
+<p>like the</p>
+<p>background</p>
+<p>needed to</p>
+<p>get to</p>
+<p>some</p>
+<p>of these</p>
+<p>cliffs</p>
+<p>and</p>
+<p>then</p>
+<p>the</p>
+<p>better</p>
+<p>structures</p>
+<p>to</p>
+<p>jump</p>
+<p>off</p>
+<p>them</p>
+<p>with</p>
+<p>yeah</p>
+<p>please</p>
+<p>everybody</p>
+<p>get in</p>
+<p>touch</p>
+<p>if you</p>
+<p>have</p>
+<p>questions</p>
+<p>or</p>
+<p>projects</p>
+<p>in mind</p>
+<p>I'm</p>
+<p>always</p>
+<p>interested</p>
+<p>to</p>
+<p>have</p>
+<p>them</p>
+<p>cool</p>
+<p>and I</p>
+<p>hope</p>
+<p>that</p>
+<p>we</p>
+<p>can</p>
+<p>like</p>
+<p>reactivate</p>
+<p>some</p>
+<p>category</p>
+<p>theory</p>
+<p>act</p>
+<p>in</p>
+<p>the</p>
+<p>rx</p>
+<p>infer</p>
+<p>project</p>
+<p>or</p>
+<p>just</p>
+<p>in</p>
+<p>some</p>
+<p>other</p>
+<p>standalone</p>
+<p>project</p>
+<p>I'm</p>
+<p>sure</p>
+<p>it'll</p>
+<p>happen</p>
+<p>so</p>
+<p>thank</p>
+<p>you</p>
+<p>peace</p>
+<p>toby</p>
+<p>thanks</p>
+<p>everybody</p>
+<p>in</p>
+<p>live</p>
+<p>tsch</p>
+<p>tsch</p>
+<p>tsch</p>
+<p>to</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

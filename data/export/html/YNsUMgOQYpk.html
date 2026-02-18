@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream 055.1 ~ "Realising Synthetic Active Inference Agents” Part I & Part II</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream 055.1 ~ "Realising Synthetic Active Inference Agents” Part I & Part II</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_055 &middot; Episode 1 &middot; Speakers: Part I & Part II &middot; Duration: 1:43:43 &middot; Views: 441</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=YNsUMgOQYpk">https://www.youtube.com/watch?v=YNsUMgOQYpk</a></div>
+<article>
+<p>Hello and welcome. It is November 1st, 2023, and we're here in ActInf Livestream 55.1 discussing</p>
+<p>realizing synthetic active inference agents. Really excited and honored to have Magnus here</p>
+<p>for this first discussion session. We're going to have an interactive presentation,</p>
+<p>and then looking towards the dot to have a bit more open-endedness and maybe some</p>
+<p>code execution, maybe some message passing live. So thank you for joining, Magnus. Very excited for</p>
+<p>your presentation and for this discussion. Thanks. Very, very happy to be here. Been looking forward</p>
+<p>with this for quite a while now. So should I just get into it? Yes. Right. Amazing. So hi, everybody.</p>
+<p>I'm Magnus. I'm a machine learning research engineer at Versus and in a couple of months,</p>
+<p>also a PhD graduate from Bios Lab in Eindhoven. I'm here to talk about these two papers,</p>
+<p>realizing synthetic active inference agents, parts one and two, that we did together with me and</p>
+<p>the ever brilliant, Thijs van der Lahr and Bert de Vries.</p>
+<p>All right. So one thing ahead of time, if you have questions in the chat or anything,</p>
+<p>I can't see them, but I encourage people to interrupt me as much as possible,</p>
+<p>because it's more fun for everybody if we can still have a bit of a dialogue going,</p>
+<p>if we have our own action perception loop. All right. And with that out of the way,</p>
+<p>I clicked on my slides and they changed. So I think that part is working.</p>
+<p>Excellent. So this is like the battle plan for what I want to go through today.</p>
+<p>I want to start by covering the problem state and what are we trying to do with these two papers?</p>
+<p>What is sort of the whole idea and sort of serve you up the point, as it were, right at the offset?</p>
+<p>Then we're going to cover a bit of background material. And then we start to get into the meat of</p>
+<p>the actual papers, which are mainly two things. It is what we call CFFG notation, a constrained</p>
+<p>phonestyle factor graph notation, and deriving messages based on local generalized free energy</p>
+<p>functional so that we can do this efficiently and scalably at all these nice things that we want.</p>
+<p>And then at the end, we're going to look at some experiments that are in the two papers</p>
+<p>to see whether this is all just a nice theoretical exercise or whether we actually have something</p>
+<p>that works. All right, let's get into it. So the main thing that I want to do</p>
+<p>is we want to figure out how do we put active inference on graphs?</p>
+<p>It's sort of the big question that we're trying to get at with these two papers.</p>
+<p>Because active inference is awesome. I think you can say that in this crowd.</p>
+<p>And graphs are really, really nice and have some nice properties that we would like for active</p>
+<p>inference. So let's get a little bit deeper into what this actually means.</p>
+<p>Right, so I sort of put up two things side by side here. One being the active inference book,</p>
+<p>and the other being like a foreign style factor graph of a state space model.</p>
+<p>We're going to try and compare sort of what we want out of each formalism.</p>
+<p>So active inference, great, does a lot of things.</p>
+<p>But one thing that it doesn't, in the very, very classical 2015 original formulations,</p>
+<p>is what I'm mostly going to be referring to. If we go really by the books,</p>
+<p>usually this is tied to a POMDP model structure. So that means we have these discrete state space</p>
+<p>models, we define them with A, B, C, D matrices. And everything is sort of, as we all know,</p>
+<p>on a lot. And this is great, we can do a lot of stuff with it. But it is still a choice that we make</p>
+<p>a priori most of the time. The other thing is, if we go strictly by sort of the original planning</p>
+<p>algorithm, there's a scaling problem in the planning horizon. That follows from us having to do these</p>
+<p>large search trees. There's excellent work trying to address this, either branching time active</p>
+<p>inference, parts of the sophisticated inference program, and all these really, really interesting</p>
+<p>developments using Monte Carlo Tree Search. But sort of, this isn't really a solved problem yet.</p>
+<p>On the plus side, what we do get, that we really, really want, is that if we design an active</p>
+<p>inference agent, and we go by all the nice things that we know and love, we get agents that are curious.</p>
+<p>We get agents that have this epistemic drive to go and explore their world,</p>
+<p>which is a really, really handy thing to have. Because if our agent can gather its own information,</p>
+<p>it will learn efficiently, it will sort of figure out how to navigate and do things. And it's much</p>
+<p>easier to have the agent do that, rather than have us as engineers, designers of the agent do that.</p>
+<p>Right. So to compare that to building an agent using box standards,</p>
+<p>racial free engine minimization on a graph,</p>
+<p>we end up with an agent that doesn't have exploration. If I take this type of formalism and I minimize</p>
+<p>free energy and I can use that to construct a controller, I end up with a KL control</p>
+<p>objective. And this is something that doesn't give us this exploratory drive.</p>
+<p>We can get all sorts of other nice things, but we don't get this information seeking behavior that is</p>
+<p>like a hallmark of active inference that we really want.</p>
+<p>The upside what we get is a lot more flexibility. I can write factor graphs for free-form models</p>
+<p>and by using message parsing tools. We'd also do inference in these models really, really efficiently.</p>
+<p>That means we scale better. Again, we have more flexibility in our model. We can do a lot of things,</p>
+<p>but what we don't get is this epistemic drive. So ideally what we would like is we want to take</p>
+<p>the best of both worlds. We want to take all the good parts of active inference and all the good parts of</p>
+<p>sort of factor graph message parsing based free entry minimization and squash them together to get one</p>
+<p>unified framework for doing all the stuff that we want. So that we get to get all the thumbs up and</p>
+<p>another thumbs down. Everybody still with me? Excellent. Okay. So to set this up, because these papers can get a</p>
+<p>little bit heavy. I'm going to try to walk through all the different parts, but to sort of set up the whole</p>
+<p>frame of how this is going to work, I'm going to start by reviewing a little bit of background material.</p>
+<p>It's not going to be too heavy, I promise. And we're going to start with our favorite functional,</p>
+<p>the variational free energy. Again, I think in this crowd, most of you will have seen something that looks like</p>
+<p>this before. And this is a fine way of writing it. We have some observations, x, we have some latents,</p>
+<p>z. I'm going to use x for observations and z for latents throughout. And we're interested in minimizing</p>
+<p>this type of divergence. This is great. However, if we're in a position where we have, say, multiple</p>
+<p>latents combined in different ways and some parameters and maybe a couple of different states and things going on,</p>
+<p>this particular way of writing things doesn't really sort of intuitively capture all of that.</p>
+<p>This doesn't represent the underlying graph structure of our model.</p>
+<p>So if we go up a little bit and look at this guy here, for instance, there's a lot of structure in this</p>
+<p>way of writing a generative model. See, some things are not connected to each other. Some things are.</p>
+<p>There's a lot of things going on here that we can't really capture if we just stick with this way of</p>
+<p>writing our free energy. So the first thing we're going to do is we're going to try and figure out</p>
+<p>how do we write free energy in graphs?</p>
+<p>And to do that, we're going to have some graphs.</p>
+<p>And I like this particular way of writing my probabilistic graphical models. There are others.</p>
+<p>So this particular way is called a Forney-style factor graph. And basically, we have three building blocks.</p>
+<p>We have squares, which can represent factors in a generative model. So this is going to be, say,</p>
+<p>p of x given z. We have edges that we stick between squares. And they're going to represent variables.</p>
+<p>This is a bit different to what you would see if you do something like a Bayesian network,</p>
+<p>where a node would be a variable and you connect it to all the variables that depend on it.</p>
+<p>Here, the nodes are the factors and the edges are the variables. It's a little bit of mental gymnastics,</p>
+<p>if you're not used to thinking in this way.</p>
+<p>And then, once we get into doing inference with message parsing, I'll use these little arrows to denote messages</p>
+<p>as they are flowing around on a graph. And all of these three building blocks is really</p>
+<p>most of what I'm going to use until we get into the meat of the two papers.</p>
+<p>So let's look at an example of what this could look like.</p>
+<p>So I have a pretty simple model here.</p>
+<p>This has three variables, x, y, and z.</p>
+<p>And they factorize like this.</p>
+<p>So we have p of y gets its own factor, variable y, z given y, this factor, variable z, and x given z,</p>
+<p>this factor, variable x. So far, so good.</p>
+<p>So again, this is just a simple graph. Now we're going to try and see if we can figure out how to do,</p>
+<p>distribute our free energy in this graph. How can we turn this general formulation that we had</p>
+<p>of just some latent relations into something that we can put all over this graph?</p>
+<p>And this is the hairiest slide, I promise. We're going to do that by simply saying, well, I have</p>
+<p>my free energy, and I'm going to basically pick a term associated with each node. So I'm going to have</p>
+<p>a q for each node, and I'm going to have this, I'm using f for just a generic factor. You can also think of it as</p>
+<p>like the p argument in a normal free energy. And then we have this sum. So this sum here sums over all</p>
+<p>the nodes in our model. If you look here, we have one, two, three nodes. So that's going to be one term for each node.</p>
+<p>And that's really all that's happening here.</p>
+<p>So far, so good. This is not quite there yet. Because we're going to need another term, which is</p>
+<p>going to be this guy. And what this basically says is subtract the entropy of, add the entropy of each</p>
+<p>edge that is connected to more than two nodes back in. So why would we do this?</p>
+<p>I promise you there's a reason, but this term, if you haven't gone through the ideas, seems a little</p>
+<p>ad hoc. Because now we have a free energy for each node, and we have this extra entropy term for each</p>
+<p>edge. So what's going on there? I want to sort of illustrate how that comes about, and we get to</p>
+<p>this form of the free energy, which is a Bethy approximation to the free energy. We can look at this</p>
+<p>graph. You say, well, if we look at this node here, z given y, we're going to have a free energy term.</p>
+<p>And that free energy term includes two variables. This node is connected to two edges, so the free</p>
+<p>energy around this node will involve the variables that are connected to that node. That means we get</p>
+<p>terms for y and get terms for z. But if we look at the other node here, this x given z,</p>
+<p>that's also connected to two variables. It's connected to x on the one side and z on the other.</p>
+<p>So if we do this summing up, do a free energy term for each node,</p>
+<p>this z is going to get counted twice. It appears once in the blue circle and once in the red circle.</p>
+<p>So how do we get around counting our variables twice? That's easy. We just subtract it again.</p>
+<p>So that's why we get this extra entropy term coming in. That's why we get</p>
+<p>this guy. Because for each variable that is connected to two nodes,</p>
+<p>we're going to have this situation, because z is connected to two nodes,</p>
+<p>and therefore it gets counted twice. So we simply get rid of one of them.</p>
+<p>Does this make sense? Beautiful. It's the same thing as saying that when we define</p>
+<p>q in our free energy functional, we have this q log q over p. We have a q that looks like this.</p>
+<p>We say q of x, y, and z is going to be equal to all these terms, one for each node. There's one here</p>
+<p>for x and z, there's one here for y and z, that's one here for y, matching the three nodes, over these</p>
+<p>terms for the edges. And one for z, because it's connected to two variables, and one for y, because</p>
+<p>it's connected to two factors, and one for y, because it's connected to two factors.</p>
+<p>So that's really all that's going on here. But if we do this, and take this Bethi approximation to</p>
+<p>the free energy, now we can put the whole thing on a graph.</p>
+<p>Because we have free energy terms for every node, and we have entropy terms for every edge.</p>
+<p>So that means now I can take my free energy functional, and I can distribute it all over</p>
+<p>my graph. And I can work with everything locally. Because if I'm interested in updating z here,</p>
+<p>for instance, check down here, z appears here, q of x and z, it appears here, q of y and z, and then</p>
+<p>has its own marginal. So basically, if the graph were longer, I can throw away everything else. Imagine</p>
+<p>we have an l variable here, for instance, connected to y, that doesn't influence z in the slightest.</p>
+<p>They're completely separate on the graph, they've got a y in between, sort of Markov blanketing</p>
+<p>everything off. So I can take what would be large, unwieldy problems involving lots of variables,</p>
+<p>and just turn them into lots of small little local free energy minimization problems.</p>
+<p>It's really nice, because we can solve them locally. And we don't have to deal with the whole thing,</p>
+<p>we can just worry about all the little problems, we can string them together,</p>
+<p>and get back reasonably good solutions to the thing we started with.</p>
+<p>So that is sort of the main procedure for how we would put free energy on graphs.</p>
+<p>Take the free energy, split it into terms for each node and each edge,</p>
+<p>and then subtract whatever is double counted.</p>
+<p>It gives the better free energy, really, really nice.</p>
+<p>The other thing this allows us to do, which is something that</p>
+<p>we go into more in depth in part two of the papers, is that we can do some variational calculus tricks</p>
+<p>to derive algorithms that minimize this constraint Béthe free energy.</p>
+<p>And that allows us to say, set up the functional, formal Lagrangian, and get, excuse me,</p>
+<p>belief propagation, or variational message parsing, or flash propagation, all these different algorithms</p>
+<p>that we know and love, just as like from a general method.</p>
+<p>And the spoiler is that when we go to part two, and we start to derive messages based on local</p>
+<p>generalized free energy, we're just going to use the same trick.</p>
+<p>And because as an engineer, I'm kind of a lazy person.</p>
+<p>I don't want to remember 80 different algorithms.</p>
+<p>I want to have one trick.</p>
+<p>I want to do free energy minimization.</p>
+<p>And I want to do it by message parsing.</p>
+<p>And I want to have this method sort of on lockdown.</p>
+<p>Because then my task is just to set up the right generative model and make sure that the</p>
+<p>inference problems are right.</p>
+<p>And then I can use that to do my smoothing or control my robots, or do my regression or</p>
+<p>classification or whatever kind of thing that I'm interested in.</p>
+<p>Again, I only have to learn one tool, which is really nice.</p>
+<p>All right.</p>
+<p>So, you are the only person on this call, Daniel.</p>
+<p>So I'm going to be asking you, what's missing from this picture here of this graph?</p>
+<p>If you think about your free energy functional, what's missing?</p>
+<p>Art, hands, full, the list goes on and on, doesn't it?</p>
+<p>There's a lot of, there's not a lot of humanity in these graphs.</p>
+<p>This is like pure, pure engineering.</p>
+<p>Like the thing that this graph represents really well is the generative model.</p>
+<p>Now you can write your P really, really well.</p>
+<p>You can't really write your Q.</p>
+<p>Daniel Zeissner 1 No Q here.</p>
+<p>Daniel Zeissner 1 Exactly.</p>
+<p>Like this guy here, which is the other sort of half of the picture.</p>
+<p>Think about your free energy functional Q over P.</p>
+<p>You have a Q and you have a P, but we can only write one of them down.</p>
+<p>The other half of the picture, the thing that actually specifies our inference problem,</p>
+<p>isn't really on this graph.</p>
+<p>Daniel Zeissner 1</p>
+<p>So, if I want to write this on my graph, I want to make sure that my graph is</p>
+<p>accurate representation of my inference problem.</p>
+<p>I don't have to go and work out some equations or read through like a paragraph of text to figure out</p>
+<p>what's going on.</p>
+<p>How do I do that?</p>
+<p>Daniel Zeissner 1 And this is where we start in part one of the two papers.</p>
+<p>So, one way you can think of defining your Q is that you can think of putting constraints on it.</p>
+<p>It has to factorize in this way and it has to have this functional form and these things have to normalize.</p>
+<p>Daniel Zeissner 1 There's a whole sort of set of mechanics that we can get into,</p>
+<p>but I haven't planned to, for how these can work.</p>
+<p>Daniel Zeissner 1 Adding this to your factor graph</p>
+<p>effectively allows you to specify the inference problem.</p>
+<p>Daniel Zeissner 1 Because you can write out the full functional with all the constraints and</p>
+<p>everything and minimizing that is going to give you the solution to the problem that you're interested in.</p>
+<p>Daniel Zeissner 1 Okay, so have a generic graph</p>
+<p>Daniel Zeissner 1 And we don't really have a way to put Q on it.</p>
+<p>Daniel Zeissner 1 Write P, write my model, everything's great, but I can't really write Q.</p>
+<p>I only have arrows, I have squares, and I have lines.</p>
+<p>Those are the only things that I'm allowed to work with.</p>
+<p>So to write Q, we need to introduce another piece of notation.</p>
+<p>Daniel Zeissner 1 And the piece that we've chosen is this little guy,</p>
+<p>it's a little bead, a little circle.</p>
+<p>And so I'll put variational marginal here in air quotes,</p>
+<p>just to see this represents some entry in Q.</p>
+<p>So there's going to be one of these for every node, because we're using this best</p>
+<p>the approximation where everything gets distributed over the graph.</p>
+<p>Daniel Zeissner 1 For every node and 1 For every edge.</p>
+<p>Because we remember we had terms that involved marginals around nodes.</p>
+<p>The model with x, y and z, we had one for x and z and for y and z.</p>
+<p>And we're going to have little beads for every edge marginal, one for x, one for y and one for z.</p>
+<p>t because these are the things that we need to compute these double counting terms.</p>
+<p>So if we take this generic graph from here.</p>
+<p>And let's just add in beads that denote all the little parts of Q that we want.</p>
+<p>We're going to be left with something that looks like this.</p>
+<p>So again, what this is saying is I have a marginal here around this node.</p>
+<p>node, this little guy, one on this edge, this little guy, and so on and so forth. And this</p>
+<p>just repeats for every node and edge in my graph. I want to be really explicit about</p>
+<p>it. And towards the end of part two, we do like a compression step because this gets</p>
+<p>unwieldy for large graphs, but this is sort of the idea.</p>
+<p>A clarifying question here, Magnus. What values do the beads and or nodes and edges take on?</p>
+<p>Like, we see the structural topological layout, and then is each bead going to be like</p>
+<p>taking on a number? Or is each bead taking on a variable that doesn't have to be simply a number?</p>
+<p>So each bead here is going to represent a posterior belief. So the easiest way to think about it,</p>
+<p>there's going to be an entry in Q. So if we go back to this model here, for instance,</p>
+<p>we would have a bead that represents Qz that sits here. So that would be this term,</p>
+<p>which could, for instance, be like a categorical or a Gaussian or a gamma or what have you,</p>
+<p>dependent on what falls out of your inference procedure. We have the same thing here,</p>
+<p>and we would have the same thing around here. Again, joint of X and Z, for instance,</p>
+<p>could be like a joint Gaussian. But these are going to be probability distributions most of the time.</p>
+<p>Okay. So beads take on the semantics of the node or the edge that they're overlaid on,</p>
+<p>and the beads give us a little bit of a space between P and Q, quite literally, because it allows</p>
+<p>us to have this parallel Q-bead construction that inherits the structure and the relationships of</p>
+<p>the generative model drawn as a factor graph.</p>
+<p>Exactly. And that's because we start by factorizing our Q over the graph. We split it into these nodes</p>
+<p>and edge-specific posterior marginal beliefs. That follows from the approximation, like the Betti</p>
+<p>thing we did initially. So that's where the structure sort of follows from. That's why we can put this</p>
+<p>across the graphs, because we started by saying, well, I'm going to distribute my free energy over my graph,</p>
+<p>and that's going to be my starting point. So then once we get into actually writing out the free energy,</p>
+<p>it would only consist of terms that are local to bits and pieces on the graph.</p>
+<p>I don't know who asked that question, but that's a good one.</p>
+<p>And again, I encourage people to interrupt me. If there are any more questions, let's just hit me now.</p>
+<p>I'll be watching the live chat, but yeah, thank you.</p>
+<p>All right. Excellent. Right. So the cool things about having these beads explicitly represented is</p>
+<p>that now we can start to do stuff to them. Like for instance, we can start to factorize things in</p>
+<p>different ways. We can start to talk about, well, should Q be forced to have a particular form? Like,</p>
+<p>should we force it to be a Gaussian, for instance? And that's sort of a lot of the meat of the part of</p>
+<p>one paper is just showing different ways you can do this if you want to write out, again, Q as well</p>
+<p>in your graph. Because if you have P and you have Q with the constraints, that tells you everything you</p>
+<p>need to know about the inference problem that you're trying to solve. That's the important part. Because</p>
+<p>now instead of having to write out stuff, text on equations, you can literally draw your inference</p>
+<p>problem as a picture. And to me, one of the most intuitive and sort of most practical set of moves</p>
+<p>we do to Q is that we mean field factorize things. The mean field just means we say, well, I have my</p>
+<p>joint Q, where we say here, X, Y, Z, and V. And I'm just going to set it to be equal to the product</p>
+<p>of all the individual modules. So I turn this thing, joined over four variables, into this thing,</p>
+<p>with the product of four individual modules. That's literally all it is. And I want to represent that</p>
+<p>graphically. That means I take one beat for one queue, just the single one here. And I just split it into</p>
+<p>four beats, one for each queue. Because now it's really, I mean, to me at least, it's really easy to</p>
+<p>see that I have four different things going on. Otherwise, all the same rules apply. We stay inside</p>
+<p>the node because this is the node marginal, four connected variables. So these stay inside the node.</p>
+<p>And yeah, that's one thing we could do. But a full mean field in this way is also a bit aggressive</p>
+<p>sometimes. So maybe you don't want to factorize everything independently. Maybe you want to</p>
+<p>retain some joint structure in your marginals, which you can do. To do that, then you end up doing</p>
+<p>structured mean field, which I have two examples of here. So this is the same node that we had earlier.</p>
+<p>One giant queue joined over all the variables. But now I can, for instance, split it into two sets of two.</p>
+<p>I have a joint of X and Y and have a joint of Z and V.</p>
+<p>So that'll be a joint of Y and a joint over Z and V. The trick here is that the edges that represent</p>
+<p>the variables, they protrude through the node border and sort of on that edge, we put the queue</p>
+<p>inside the node.</p>
+<p>Does this make sense?</p>
+<p>Yeah, I'll just restate it because I think it's one of the key contributions of the graphical notation.</p>
+<p>So let's just say we were going to be drawing four variables, like rolling four die.</p>
+<p>One way to analyze that statistically is treat all of them as being drawn like all at once from a</p>
+<p>four dimensional distribution that's unfactorized. And another extreme approach, aggressive approach,</p>
+<p>would be treat them as statistically independent or fully factorized. And so that was what was shown on the previous slide.</p>
+<p>And now also there's nuance where you can say, actually, I think two of the die have a loose</p>
+<p>tether. So I want to infer the joint distribution of these two, but leave these two independent.</p>
+<p>So now we can see and clarify, articulate all of the space between unfactorized and mean field factorized.</p>
+<p>And then we can generate different graphs and asks like, well, which structural partitioning</p>
+<p>has what kind of computational or runtime complexity, what kind of accuracy? And so then you can engage in</p>
+<p>model selection across these different partitionings. However, seeing them all visually, as opposed to</p>
+<p>analytically, usually people are forced to just represent either the unfactorized or the fully factorized,</p>
+<p>because if you try to represent things analytically with all these partial factorizations on a large graph,</p>
+<p>it gets very unwieldy. Yeah, that's beautifully put. The idea is that we can treat some things as being</p>
+<p>joined and some things as being independent in queue. So the underlying generative model here is going</p>
+<p>to be the same. It's just how do we factorize our belief we want to do inference? That was beautifully put.</p>
+<p>Right. So that's one thing we can do once we have an explicit representation for queue.</p>
+<p>We can draw the beads that correspond to the structure in our aerational distribution.</p>
+<p>But we can also put stuff inside the beads. I have like an empty circle. Same way I can write</p>
+<p>something inside a node on my factor graph. I can write something inside my bead.</p>
+<p>So what happens when we do that is we enforce different form constraints on queue.</p>
+<p>Here I just picked one where I'm saying, well, the queue on this edge has to be a delta distribution.</p>
+<p>So that basically means that when I do inference, I'm doing like the map estimate, the arc max</p>
+<p>of the variable on this edge.</p>
+<p>And again, if you go through a bunch of derivations, you'll find out that that's what falls out from here.</p>
+<p>So that means that now if I want to say,</p>
+<p>you map estimate over my actions, if I have an agent, I can put that into my graph.</p>
+<p>I don't have to write somewhere in my paragraph text, oh, and then we do this kind of thing and</p>
+<p>we factor this way and then we take the map estimate. You'll know at a glance, just from looking at the</p>
+<p>graph that this particular variable on this particular edge has this functional form and therefore it has to be a map estimate.</p>
+<p>You could do this with other things as well. You could say for it to be Gorshin or Wishart or something else if you wanted.</p>
+<p>But this idea of using deltas is probably the most common that I know of.</p>
+<p>Yeah, this is also very nice and very consolidating. The delta distribution is just a spike at one location.</p>
+<p>And so it's basically a single data point or a value. So it's like a distribution that's kind of like a</p>
+<p>distribution as a handle on a data point. So the delta constraint is basically passing one data point</p>
+<p>rather than a full distribution through. It's actually a little, there's a little subtlety here.</p>
+<p>Because you're completely right that if you have a, you know, a delta distributed variable center at some</p>
+<p>point, that's a way you can enter data. But that also means you need to fix the position of the delta</p>
+<p>distributed variable, which we do by calling it black. This is how you would represent data.</p>
+<p>Otherwise, the position of the delta spike becomes a thing you can optimize. And that's why it becomes a map</p>
+<p>estimate because it is still a point, but you can put the point in the best possible place, which ends up being the map.</p>
+<p>So you're completely right. The form of the data point will also be a delta. But then you also have to fix where</p>
+<p>this delta is positioned. To distinguish between the two, we do data points, data constraints,</p>
+<p>as filled black nodes, and delta constraints, i.e. map estimates, as these unfilled nodes.</p>
+<p>Does that make sense?</p>
+<p>Yeah. Free delta versus a fixed delta.</p>
+<p>Yeah, exactly. It's like saying you have to be only here. Or you have to be a point, but you can put the</p>
+<p>point wherever you want.</p>
+<p>All right. Sorry.</p>
+<p>Sorry about that.</p>
+<p>Okay. So question. And once again, it's going to be on you, Daniel.</p>
+<p>Daniel. Now we can put free energy on graphs.</p>
+<p>And we can write out, you know, Q, we can write out the entire inference problem, including constraints.</p>
+<p>So we're almost there.</p>
+<p>What is the thing that we're still missing if we want to do active inference on graphs? Like,</p>
+<p>we want to go back to the original question, put the whole thing on a graph. What are we missing?</p>
+<p>The environment?</p>
+<p>Yeah, that's one thing. Usually we would like blanket that off from our model. So that would</p>
+<p>live somewhere on the outside of our graph. But you're right, that would be somewhere</p>
+<p>that we would have to interface with an environment.</p>
+<p>Daniel. But just in terms of the functionals that we want to optimize, there's still something missing.</p>
+<p>Expected free energy or anything prospective.</p>
+<p>Daniel. Exactly. That's the whole deal. We've only been talking about variational free energy so far,</p>
+<p>and you can get really, really far with that. But one of the core things that we want out of active</p>
+<p>inference is we want to do planning. We want this information seeking, all this good stuff that we</p>
+<p>started with, the curiosity and the sort of interest in the world around you. So how do we put that on a graph?</p>
+<p>And that's the next thing that we're going to look at. How do we put this type of planning epistemic functional on a graph?</p>
+<p>What do you know?</p>
+<p>What do you know?</p>
+<p>What do you know?</p>
+<p>And to do that, we're going to look a little bit at how the EFE actually works.</p>
+<p>So usually we denote an EFE by G, right?</p>
+<p>That's like the common notation.</p>
+<p>And we write that as a function of a policy.</p>
+<p>So we write pi, or in this case, I use u for my control variables.</p>
+<p>So I have u from some time step T up until some planning horizon capital T.</p>
+<p>So that means if I want to plan two steps in the future, capital T would be two and I would have</p>
+<p>two actions at either time step.</p>
+<p>Does that make sense?</p>
+<p>Awesome.</p>
+<p>All right.</p>
+<p>So the first thing we're going to say is, well,</p>
+<p>we compute that by taking a sum of the free energy at every time step.</p>
+<p>That's the standard way to do it.</p>
+<p>If we expand that a little bit,</p>
+<p>we get a sum over risk term and an ambiguity term, just like we all know and love.</p>
+<p>So I have to worry about that.</p>
+<p>But the key part,</p>
+<p>the one that usually doesn't get as much attention in this part here, usually we like to</p>
+<p>look at here.</p>
+<p>I have the sum.</p>
+<p>Because the sum tells us something important about the expected free energy.</p>
+<p>It says that it's the sum of a bunch of independent terms. So this function actually factorizes.</p>
+<p>Now, if you think about it, it means we have one term for each time step,</p>
+<p>or if you write out the full graph, there would be one node on our graph.</p>
+<p>And to compute the whole thing that we're interested in, we just sum them up.</p>
+<p>So the actual objective factorizes over the graph.</p>
+<p>And that's kind of neat, because it means that when we look at the way this is constructed,</p>
+<p>like from the get-go, there's already sort of a hint of how we can go about putting it on a graph.</p>
+<p>And what we would need to do is figure out, well, if I want to do this around one node on my graph,</p>
+<p>how do I do it? And do it in a way that everything is consistent and we recover all these nice</p>
+<p>objectives and everything that we've already seen before. So how do we do that? How do we make</p>
+<p>a functional that's local to a node that inherits all the nice properties that we want out of an</p>
+<p>expected or, spoiler alert, a generalized free energy?</p>
+<p>And we're just going to go through and construct it.</p>
+<p>So we're going to start, because we're working under the umbrella of the free energy principle,</p>
+<p>with a variation of free energy. It's going to be our first term here.</p>
+<p>And it's going to be for some node that's connected to two variables, x and z.</p>
+<p>And then we also know that a lot of the nice epistemic</p>
+<p>drive that we see in active inference agents, it follows from some information gain term.</p>
+<p>So we're simply going to bolt on an information gain term that's local to our node.</p>
+<p>And if we do that, we can do something quite interesting then.</p>
+<p>So are you up for going through the duration?</p>
+<p>Yeah.</p>
+
+<p>All right. So the first thing we're going to do is we're just going to pull everything into the same</p>
+<p>integral. So both of these guys integrating over q of x and z, q of x and z. That means we can put them</p>
+<p>together, just do it once.</p>
+<p>Then we look inside these brackets and go, wait a minute, we've got two logs.</p>
+<p>We can pull all this inside the log.</p>
+<p>I think nothing fancy here.</p>
+<p>But then we look at this guy and we go, wait, I have a q like either side of my line.</p>
+<p>These two guys are going to cancel.</p>
+<p>Divide something by itself.</p>
+<p>That's really, doesn't really give you much.</p>
+<p>And if we do that, then we're actually left with the generalized free energy.</p>
+<p>Local to a node, similar to what Thomas Parr and Fristen introduced in this 2019 paper.</p>
+<p>So that means if we take our free energy around a node, which we can do because we've already gone</p>
+<p>through all the rationale for why that's a good idea, and we bolt on a negative information gain term,</p>
+<p>we actually end up with the same functional that was already proposed in this amazing paper like four years ago.</p>
+<p>That's kind of nice.</p>
+<p>Could you maybe express what is it about the negative information gain that's doing the work, the epistemic work?</p>
+<p>Right.</p>
+<p>So the way I like to think of it, first of all, it's negative because we're minimizing.</p>
+<p>We really want to maximize information gain, but we're minimizing our free energy or EFE or whatever.</p>
+<p>So we flip the slide.</p>
+<p>The other thing is you can rewrite this into, say, a marginal entropy over your states, your Z,</p>
+<p>minus a conditional entropy over Z after you've seen X.</p>
+<p>So what does this mean?</p>
+<p>It means one of these terms is going to encode how much uncertainty is in your latent variable,</p>
+<p>your latent state Z before you do anything.</p>
+<p>How uncertain are you right now about something?</p>
+<p>And what you subtract from that is the uncertainty after you've seen some observation X.</p>
+<p>And the bigger that difference, the larger your uncertainty before getting an observation,</p>
+<p>and the lower it is after, the higher the information gain.</p>
+<p>So that's how I like to think of why information gain sort of gives us this exploration thing.</p>
+<p>Because when we allow our agents to pick out observations,</p>
+<p>we allow them to pick what we should condition on when we calculate the information gain.</p>
+<p>And we tell them this is what you're supposed to optimize.</p>
+<p>They're going to go look for the places in the world where they are most uncertain about what's</p>
+<p>happening and where they predict that if they observe something, they're going to be the most certain.</p>
+<p>And how would you contrast this expression with the decomposition of expected free energy as pragmatic value plus epistemic value?</p>
+<p>So that's the beauty of it, right? I don't actually have to.</p>
+<p>I don't think so.</p>
+<p>Because what they, what Paul and Fristen also showed in this paper is that if I do this</p>
+<p>functional on the same POMDP model that we use for everything else, it actually evaluates the exact same thing as the expected free energy.</p>
+<p>So for all intents and purposes, it is exactly the same.</p>
+<p>So all the intuitions about EFE are going to map.</p>
+<p>Maybe this is looking a little ahead, but do you foresee that generalized free energy will come to rule them all?</p>
+<p>And that we won't talk so much about VFE and EFE? Or do you see those as still holding down important semantic space?</p>
+<p>I think it's an open question.</p>
+<p>I'm not confident enough in any of this, and especially not about the future, to know how things are going to turn out.</p>
+<p>But I do know that if I take this maneuver, if I have a variational free energy, which I can use to recover something like KL control,</p>
+<p>and I bolt on an information gain term that gives me this exploration that I like, I can end up with a generalized free energy.</p>
+<p>And if you go through the proofs in part two, you also see that this makes it easier to derive messages</p>
+<p>compared to an expected free energy because we tried the expected free energy as well, and it didn't really work.</p>
+<p>So for this particular application, the generalized free energy works better.</p>
+<p>As for any sort of ontological status, I'm just going to be an engineer.</p>
+<p>What about explicitly pragmatic aspects of future time steps?</p>
+<p>So if we have the VFE embodying the real-time pragmatism, and then we have an explicit future-oriented epistemic component,</p>
+<p>where would we find that kind of classical EFE flavor of pragmatic value of future states as well?</p>
+<p>Can I come back to that in a few slides?</p>
+<p>Oh, of course.</p>
+<p>Because I actually have an example of what this construction gives you if you want to add in,</p>
+<p>say, a goal prior. So you want to add C vector in the standard nomenclature,</p>
+<p>or basically like a prior over future desired observations.</p>
+<p>Yeah.</p>
+<p>And that's the thing that's going to power the goal-directed behavior and the experiments as well.</p>
+<p>So the spoiler version is that this ends up, if you work through it and you cover, like,</p>
+<p>take this node construction that we came up with, and you work out the corresponding energy term</p>
+<p>that you would use to calculate, say, a pathy free energy, you end up with the exact expression</p>
+<p>that you usually get for expected free energy.</p>
+<p>So you can actually recover one-to-one the standard sort of 2015 algorithm</p>
+<p>by writing this in your graph and doing these manipulations, and then doing it in a particular</p>
+<p>way. You will get the exact same thing back.</p>
+<p>But yeah, hold on to that thought, because in a minute or two, we'll get back to it.</p>
+<p>So, okay, yeah, this is another thing. So there are a couple of ways to go through this.</p>
+<p>And to make it exactly like, I was saying, to make it exactly like the thing we find in,</p>
+<p>say, classical active inference papers, we need to do this kind of substitution here. So here,</p>
+<p>I've basically gone to the same, get to the same results, but in a different way,</p>
+<p>where I mean field factorize, and then we exchange this Q for this P. That's important.</p>
+<p>So usually, if you read an active inference paper, you see this P of usually O and S and Q of S.</p>
+<p>This joint here denoted with something like Q with a tilde above it.</p>
+<p>And it just means we substitute in this particular part of our generative model.</p>
+<p>So if you go through the standard tutorial type things, this would be substituting in your A matrix,</p>
+<p>for instance.</p>
+<p>But we call this move a P substitution, because we're literally substituting a P for a Q.</p>
+<p>And we do this because, not because we need to, in order to derive all the messages that we need to</p>
+<p>be able to do this in a nice distributed way, and get to our end goal of putting active inference on graphs.</p>
+<p>So I just want to introduce this move here, because it's the last bit of notation that we're going to need</p>
+<p>to cover basically everything that's in part one. And the way we write this is literally,</p>
+<p>if Qs are circles, and Ps are squares, we are going to swap a circle for a square.</p>
+<p>So we take the little bead here that represents a Q, and we swap it for a square. And this square means,</p>
+<p>in the expectation of your node local free energy, substitute P of this variable,</p>
+<p>conditioned on everything else that's connected.</p>
+<p>So you can see if we have a mean field factorization here, Qx, Qc, Qx, Qc, and then we do a P substitution,</p>
+<p>we are left with the same generalized free energy function. Just a different way of getting there.</p>
+<p>Does this make sense?</p>
+<p>Awesome.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>And that is like the main meat of what we introduced in part one.</p>
+<p>So sort of to recap everything we've done so far, because we're moving at quite a high pace.</p>
+<p>We've taken our free energy, and we put it on graphs. We did that by using a Bethy approximation,</p>
+<p>so we have a Bethy free energy.</p>
+<p>Okay.</p>
+<p>Then we realized that we can't write down everything that we need to, in order to specify everything in</p>
+<p>our inference problem. We can't write down Q, and we can't write down our constraints on Q.</p>
+<p>So we came up with CFFG constrained for a new style factor graph notation,</p>
+<p>to write down the entire inference problem graphically.</p>
+<p>Then we figured out that the EFE factorizes, which is great,</p>
+<p>because that means we can also treat it as something that's local on our graph.</p>
+<p>And if we take node local free energy, the kind of thing that would give us KL control if we did it</p>
+<p>everywhere, and we bolt on an information gain term, we recover something that looks an awful lot like</p>
+<p>generalized free energy that Friston and Parr derived in 2019, which numerically ends up,</p>
+<p>I got to break the ends up evaluating to the same thing as the expected free energy.</p>
+<p>So we have a version of expect for these pumpy P models, I should say. So we have a version of the</p>
+<p>expected free energy that is also distributed over our graph.</p>
+<p>Is there anything that is relevant to mention about discrete versus continuous time models?</p>
+<p>Yes, so we haven't done any of this work on continuous time models, like these large generalized</p>
+<p>coordinate filters with LaPrasse approximations. We haven't done that here, because the base</p>
+<p>representation we're using is a graph. So when we want to do planning, we literally have to write out</p>
+<p>explicit time steps for the future. You could probably do something like this for the whole continuous</p>
+<p>time active inference as well. But that's a whole other can of worms that we haven't dug into.</p>
+<p>Yeah. So, so far, this is only something that's been worked out for the discrete time case. It doesn't have to be discrete</p>
+<p>state spaces. You could work this out, because we get the general form of all the messages. You could work</p>
+<p>this out for continuous variables if you want. But yeah, continuous time is not something we've done yet.</p>
+<p>All right. I mean, if there are any other questions, I think this is a good time to pause,</p>
+<p>because we're going to get into the next sort of meaty section in a minute.</p>
+<p>I'll ask one question from live chat. Upcycle Club wrote,</p>
+<p>how can synthetic active inference agents be integrated with other intelligence paradigms,</p>
+<p>such as deep learning or evolutionary algorithms?</p>
+<p>So, the beauty of how this ends up working is that this becomes another message-passing algorithm.</p>
+<p>Not even another message-passing algorithm becomes like literally one sort of local message out of the nodes</p>
+<p>that we do these operations to. Everything else is going to function like box standard, VMP, or</p>
+<p>belief propagation, some product, sort of classical machine learning tools.</p>
+<p>So, anyway, you can usually combine your probabilistic graphical model with a deep neural net. Like,</p>
+<p>you'd have a deep neural net powering your transition dynamics, for instance, if you wanted.</p>
+<p>And that wouldn't change anything here, because we're still only doing stuff locally on a graph.</p>
+<p>So, if we still actually have a graph here that shows something.</p>
+<p>I'm just going to go back to one of the early graphs, because it's probably the easiest way to illustrate.</p>
+<p>Yeah, this guy here. Let's say that we wanted to do all these operations around this node here,</p>
+<p>where we have like a latent Z, and we connect to some outside world that we call X, where we get all</p>
+<p>observations. All operations are going to happen inside the blue circle.</p>
+<p>Everything that we do is actually only going to affect the variables that are connected to this</p>
+<p>node and around this node. So, everything else, everything that's over here, is going to work</p>
+<p>exactly the same way as with any other message-passing algorithm. So, you could hook this up to, say,</p>
+<p>a deep neural network, if you've trained it right, and use that to, say, be a node function somewhere.</p>
+<p>I suppose you could also use it with evolutionary optimizers. It's not something I've seen done a lot,</p>
+<p>but it's a cool idea. And I don't see any reason in principle why it shouldn't work. Because what</p>
+<p>we're doing really is just changing the objective functional around one of our nodes a little bit.</p>
+<p>Does that answer your question, Upcycle?</p>
+<p>Cool. Continue.</p>
+<p>All right. Let me get back to where we were.</p>
+<p>Whoops. Here. Right. Okay. So, this is where we're going to look at how we add in something like a</p>
+<p>goal prior. Because we had this like a little while ago. How do you get your goals and your constraints and</p>
+<p>your objectives and your desires and your agents' desires and life, as it were, into the model? How do we do that?</p>
+<p>And the way we came up with doing it is that we defined this composite node.</p>
+<p>So, this is going to be, again, hold on to your butts. This looks nastier than it is.</p>
+<p>Really, what we're saying is we have a box on our factor graph. Because again, all we're allowed to do</p>
+<p>our lines and boxels and arrows and beads. But we have a box on our factor graph. And inside this box,</p>
+<p>there's going to be two other boxes. We're going to have this guy here called P, which could, for</p>
+<p>instance, represent a likelihood model. And we're going to have this guy here called P tilde, which is going to represent our goal.</p>
+<p>And that means when we go through the motions of defining</p>
+<p>Q around this composite node with all our modifications and everything, we end up with a model, like a P,</p>
+<p>that is not normalized. It's going to be P of X given Z, right?</p>
+<p>Yeah, P of X given Z, it's going to be this node, times P tilde of X given W, in this case, if it has any parameters.</p>
+<p>What it basically means is that we can add in a goal prior to our model, at the cost of it being not normalized.</p>
+<p>It turns out that it's not really a problem that's not normalized.</p>
+<p>But the basic idea is that if we want to add in goals, what we do is simply we wrap our goals and</p>
+<p>our likelihood into one box on our graph. And we just go through the motions.</p>
+<p>You just sit down, you calculate, you work through all the little bits, pieces, and you push all your</p>
+<p>symbols around. And at the end, the result you're going to get is going to be something useful.</p>
+<p>So this is the way to adding goals. You simply just bolt on an extra factor to your model that</p>
+<p>encodes your goals.</p>
+<p>Yeah, I don't know if this is helpful, but check me on this. It's almost in like a racing game,</p>
+<p>when the high score has the ghost that is leading the pack. So we have like the goal prior is kind of</p>
+<p>like the ghost in the midst, and then there's all the actual P, but then there's the shadow and perfect</p>
+<p>alignment or perfect fulfillment is when the actual, there's no space between the actual and the</p>
+<p>preference. So in the textbook, analytical representation, that would be like P of O</p>
+<p>conditioned on C.</p>
+<p>Yeah. So we have the same, it's just P of X conditioned on W.</p>
+<p>But it works exactly the same. I think that's also what we call it in the experiments. If you go</p>
+<p>through it, it ends up just being the normal C vector. But you're right, you're completely right.</p>
+<p>If you're doing a racing game and you have say an idealized perfect run as your ghost,</p>
+<p>that would be going in here. And you would sort of map out the whole trajectory of where the ghost</p>
+<p>is at all the time points you want to plan over. And then from here, from the top, from the Z's,</p>
+<p>is going to be your attempt to recreate the perfect run.</p>
+<p>Yeah. Which is actually an interesting idea. You could have some kind of expert trajectory,</p>
+<p>define your goals, and then use that to learn the parameters of your model,</p>
+<p>then do your planning from that. That would actually be a cool thing to try and do.</p>
+<p>But yeah. I think so far, the intuitions are like on point.</p>
+<p>All right. So I'm just going to keep going, I think.</p>
+<p>Because one of the questions that came up during the .zero livestream</p>
+<p>was pull up a lemma and be like, what does this mean? Pull up a lemma, be like, what does this</p>
+<p>mean? And so on and so forth. So I'm taking the liberty of just putting on this graph what all the</p>
+<p>lemmas mean. Because then we can talk about what they mean. And if you want to go through the nitty</p>
+<p>gritty derivations, they're there in the paper. Because, again, as I mentioned earlier, I'm a</p>
+<p>laser engineer, I really only have one trick. That is, I can write out my free energy and I can</p>
+<p>solve for stationary points and that gives me message passing algorithms. And that's all I do.</p>
+<p>So if you look at this graph here, this node, there's basically three things that we need to</p>
+<p>solve for. We need to solve for x. What's the stationary point here? We need to solve for z.</p>
+<p>And by symmetry, that also applies to theta. If this likelihood node has any parameters, for instance.</p>
+<p>So you could think of this as being like a latent state and an A matrix with like a Dirichlet prior.</p>
+<p>So we need to solve for w, which is the parameters of our expert run, like our c vector in the standard</p>
+<p>nomenclature. And if this node has any parameters, like whatever they may be, usually the standard form,</p>
+<p>it doesn't. But you could. So really, there's three things we need to solve for.</p>
+<p>This guy in the middle, stuff going out of this node, and stuff going out of this node.</p>
+<p>And it just so happens that there's three lemmas in the paper. There's one that solves for this guy.</p>
+<p>How do we update our predicted observation? Which ends up coinciding with how we would</p>
+<p>usually do it if we're computing EFE, which is nice. There's another lemma that says,</p>
+<p>what should the backwards message towards our state be?</p>
+<p>And this is going to be the important one. This is what allows us to do a lot of the really cool stuff.</p>
+<p>Because this basically says, if I'm optimizing GFE, EFE, and I want to reason backwards from the best</p>
+<p>possible outcome in terms of balancing all epistemics and everything, what should that be?</p>
+<p>That's basically what comes out here.</p>
+<p>And we have a third lemma that deals with the stuff coming out the other way.</p>
+<p>Let's say you want to update your goals. Let's say when you drive your run,</p>
+<p>the ghost sort of reacts to what you do.</p>
+<p>That's kind of the thing that would be coming out here.</p>
+<p>And then we have two theorems that show that the messages coming out here and here,</p>
+<p>if you iterate them, the stationary points can actually be found by fixed point duration schemes,</p>
+<p>i.e. you can solve this by message passing.</p>
+<p>So to recap, the lemmas are what should these guys look like? And that's where you find the messages.</p>
+<p>And the theorem states that if you do this, you can actually solve your problem and find these</p>
+<p>stationary points by fixed point iterations. And this is a little technical. And if you want to get</p>
+<p>into it, I encourage you to go and read the paper.</p>
+<p>But the point being, I'm still a laser engineer. I still only have one tool. I can only solve for</p>
+<p>stationary points of my free energy and my graph. And if I do that, I have three things to solve for.</p>
+<p>And I have to make sure that if iterated, I also get something sensible out. And that's what the</p>
+<p>three lemmas and the two theorems are about.</p>
+<p>Very nice. So factor graph, not just as telecommunications, message passing, infrastructure,</p>
+<p>but as research agenda and conveyance heuristic.</p>
+<p>Yeah. Once you're in the space, sort of this way of writing things like graphically,</p>
+<p>you can write your problem graphically and it's easy to see how two things are different.</p>
+<p>And you can also write something where you don't know the solution yet.</p>
+<p>If you don't know the solution, that's a research problem.</p>
+<p>Yeah. And the dash lines and then it's a great palette.</p>
+<p>Thanks.</p>
+<p>Okay. So this is the first thing that I hope is also going to end up being useful. Because again,</p>
+<p>what I'm doing really here is that we're presenting tools. We're building stuff for</p>
+<p>other people to hopefully use. And sort of the litmus test as to whether this is going to be</p>
+<p>actually practical for people who are interested in building active inference systems and reasoning</p>
+<p>about active inference systems is whether the people that are interested in this actually end up using it.</p>
+<p>Otherwise, it's a neat idea that just ends up living in a drawer.</p>
+<p>So I have an open invitation to everyone. If you're interested in using this kind of notation,</p>
+<p>I'll be happy to help you with your graphs. Because I think it would be a benefit if we can all agree</p>
+<p>in a unified way of specifying our problem. And it should be one that is not just geared towards</p>
+<p>experts. I should be able to write out all the equations and everything. Now, that should also be</p>
+<p>something for us. But if you are interested in applying active inference, you should also have an easy</p>
+<p>sort of intuitive syntax for how to write down exactly what it is you're doing.</p>
+<p>Because if you do that, then everyone knows. And then communication becomes easy. And</p>
+<p>writing out your algorithm becomes easy. And so making sure that everyone knows at all times what's</p>
+<p>going on becomes straightforward because you can literally read it all from the picture. So again,</p>
+<p>an open invitation to anyone who's interested in this, hit me up. I'll be happy to</p>
+<p>take a look at your stuff. That's awesome. I think one more piece I'll add. That's a very prospective,</p>
+<p>very pragmatic point to make. And also, I believe that there's a great opportunity for meta analysis</p>
+<p>of literature and re-derivation of these kinds of graphs for the figures that we've seen over the last</p>
+<p>15 years. And then that will make a lot of continuity because we can then bring the factor</p>
+<p>graph motifs from models that are widely discussed and kind of bring those into the next generation.</p>
+<p>That's the hope. And it's funny that you say that out of all things,</p>
+<p>because if you look at what goes on the next slide, that's actually what we do.</p>
+<p>Next. So this is a way of drawing a standard, you know,</p>
+<p>anno 2015 active inference EFE evaluation as a constraint for an style factor graph.</p>
+<p>So let's break this down and see what it does.</p>
+<p>Because I mean, I've been talking for like an hour already and I've been talking about nothing.</p>
+<p>Most of what I've been talking about is what all these boxes and little bits and pieces mean.</p>
+<p>So if we start at the very end, and I hope I'm pointing in the right direction. I don't know how I'm</p>
+<p>mirrored in the screen, but otherwise it's that end. One of the things we would use to define is a prior</p>
+<p>over where our agent starts, which we denote by a D vector. That's the standard way of doing it.</p>
+<p>So we want to add in a D vector. We put this little square because there's a variable that's</p>
+<p>clamped in P. There's like a parameter that we don't mess with.</p>
+<p>You could update it and you could indicate that in a graph, but here we don't.</p>
+<p>And we have this little guy. That's because</p>
+<p>these two are going to be different. We don't have a joint of D and Z. We just have a Z.</p>
+<p>We move on. Now we have this node, which I've labeled with T. And T is for transition. This indicates</p>
+<p>a discrete state transition, i.e. a multiplication by a B matrix. The B matrix is what we find here.</p>
+<p>So what this is saying is we have fixed an action at time T</p>
+<p>in order to move from Z at time T to Z at T plus one. It's just like a multiplication by transition matrix.</p>
+<p>Then we have this thing. This is an equality node. Why do we have an equality in the middle of everything?</p>
+<p>And that's because we're using edges to represent variables. And an edge is a line. I can only connect</p>
+<p>an edge to two things. So if I need my variable to connect to more than two things, I need to create</p>
+<p>copies of my variable. If I want to create copies, that's the same as saying I have two things,</p>
+<p>three things, and they're all going to be the same. They're all going to be equal. So this equality</p>
+<p>node says this edge here and this edge here and this edge here are all going to be the same. That's all</p>
+<p>it does. And we can keep going here from Z at T plus one with a new action, new transition, Z at T plus</p>
+<p>two and so on and so forth. That basically just applies these transition matrices. But the really</p>
+<p>interesting part is happening down here around what would be a likelihood node. Again, we have this</p>
+<p>multiplication by a matrix. In this case, it's going to be a likelihood, our A matrix. We have this</p>
+<p>composite node construction where we have a goal prior, it's a categorical parameterized by Z.</p>
+<p>And we have our observations here. And so this construction here is what, oh yeah, we have this</p>
+<p>P substitution, we have these two guys factorizing separately. So we have all the constructions</p>
+<p>necessary to do our local GFE, which in this case equals the VFE, sorry, the EFE. We have our goal prior,</p>
+<p>we have all the little ingredients and bits and pieces. So how do we write, given that we have all</p>
+<p>this, the exact same algorithm as people are using 2015? We do that by adding in arrows. Remember, I had</p>
+<p>arrows as the last thing way back when we started. And arrows in this case describe the schedule, i.e.</p>
+<p>Which messages do you pass? And you can sort of follow these along and see that you're kind of</p>
+<p>you're rolling forwards through time.</p>
+<p>So this is like creating a rollout and saying, well, what would happen if I did that at this time?</p>
+<p>Well, go here. Then what would happen if I did that? Go here and so on and so forth. So you get</p>
+<p>this sort of forward to roll as a function of a policy, i.e. the series of matrices you fix up here.</p>
+<p>And this composite node, energy term of that node ends up being exactly equal to</p>
+<p>one term of the EFE, GFE, this model that we already established factorizes over time.</p>
+<p>So you roll this thing out, do your forward rollout, take all the energy terms of these composite nodes and</p>
+<p>sum them up. And that gives you back the exact algorithm that's used to evaluate EFE in like the</p>
+<p>very original first types of papers.</p>
+<p>So just to make a clarifying point and then a question. So for comparison to the Bayes graph and</p>
+<p>the 2022 textbook, people might want to check out figure 4.3 or figure 7.3.</p>
+<p>So here we have already clamped B. So here we're just evaluating one policy because we see B as a black square.</p>
+<p>Right. Because we need to go by the sort of standard version. We need to evaluate</p>
+<p>the EFE as a function of a policy. So we put in a policy, we do this rollout and we read off our EFE number.</p>
+<p>And then we take the soft max of all EFE's and it gives us a distribution over</p>
+<p>policies that we can select from.</p>
+<p>And it's this rollout thing that makes the scaling hard because every time you add a new step,</p>
+<p>you just go through all your possible actions and the search tree branches and to get into all these</p>
+<p>things that people are trying to solve in a whole host of different interesting ways.</p>
+<p>But you're right. We're treating policy as something that's fixed because we're evaluating EFE as a</p>
+<p>function of a policy.</p>
+<p>Yeah. And then of course you iterate over your affordances, over your policies to calculate EFE</p>
+<p>for each. And then you get policy posterior and then you can do what you will with the posterior.</p>
+<p>Yeah. So then it basically becomes like a model comparison problem. Given this policy, this rollout,</p>
+<p>and I get this energy terms, which one is the best?</p>
+<p>But it's funny that you say that because one of the things that we also do now that we have</p>
+<p>backwards messages is that we don't have to fix the policy.</p>
+<p>All right. Think about it. All the stuff we're doing happens down here in the little sort of dashed box.</p>
+<p>But the policy lives up here. We've already established that if everything is local in the</p>
+<p>graph, I can do whatever I want down here. It's not really going to impact anything up here.</p>
+<p>So if I now turn these black squares into random variables,</p>
+<p>I can still do inference.</p>
+<p>And I can still do inference in a way that gives me back a policy.</p>
+<p>However, now this policy is going to be one that optimizes GFE or EFE</p>
+<p>locally in these nodes. Otherwise, everything is going to work</p>
+<p>as if you were doing like a forwards, backwards, KL control type thing.</p>
+<p>And what we need to do then is we need to take all our candidate matrices</p>
+<p>and we put them into this mixture model.</p>
+<p>And that basically says, if I have my indicator variable, the indicator variable picks out</p>
+<p>one of the transitions.</p>
+<p>And then you want to infer the posterior of your indicator variable such that</p>
+<p>that it becomes a good approximation for the probability of selecting each particular matrix at this point in time.</p>
+<p>So that did not come out clear.</p>
+<p>So that makes sense at all.</p>
+<p>So that makes sense at all.</p>
+<p>Yeah.</p>
+<p>Maybe explain that in the context of why it's called TM.</p>
+<p>It's TM for transition mixture.</p>
+<p>So it's like you have, instead of saying, I do either, you know,</p>
+<p>action one, action two or action three, I sort of do a mixture of all of them.</p>
+<p>And then I weigh them according to, well, where I should be going,</p>
+<p>which is going to be informed by these composite nodes down here.</p>
+<p>The composite nodes based tell you, where should you be going?</p>
+<p>If you're looking for stationary points of your generalized free energy.</p>
+<p>Uh, and these nodes, I'm going to say, all right, if this is where I'm going,</p>
+<p>this is the, the transitions I should take with this and this, this probability.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>Maybe just to, to clarify and emphasize that what is the policy selection mechanism</p>
+<p>in direct policy inference?</p>
+<p>So that's actually one of the things that I really like about this way of doing it.</p>
+<p>You can pick whatever you want.</p>
+<p>So we do two here in the paper, one, which is this one,</p>
+<p>the one that I have on screen here, where you just, you get a posterior</p>
+<p>out over your policy and you can read off, you know, the posterior reactions at every time step.</p>
+<p>And then it's up to you whether you want to sample, what you want to do with it.</p>
+<p>But what we also show is that you can add these delta constraints</p>
+<p>on these edges here that are labeled U.</p>
+<p>And if you do, what you get back is a series of map estimates over your policy.</p>
+<p>And the trick being that is now something you've write as part of your inference problem.</p>
+<p>So as for the, the, the policy selection mechanism, what I'm going to say is we, we should,</p>
+<p>my opinion, we should be patient about it.</p>
+<p>So if we get a distribution over possible policies, that's, that's the way it should be.</p>
+<p>And then, you know, you can do what, what you think is right with your distribution.</p>
+<p>Yeah, this is a very nice point that the outcome of the EFE iterated across policies is a distribution</p>
+<p>on policy. And so then you can simply choose the best one. You could choose the worst one. You could</p>
+<p>cut the deck in the middle. You could do any number of then secondary policy selection policies.</p>
+<p>And one that feels natural and makes sense is just to take the first order interpretation of the distribution</p>
+<p>and then sample directly from that distribution.</p>
+<p>You could do that. Or I think a very common thing to do is just say the argmax are either best policy</p>
+<p>at all time steps, but yeah, either one works. The point being really that, as you said, instead of</p>
+<p>doing this compute EFE and then construct a distribution of our policies, you just infer the distribution of our</p>
+<p>policies directly as part of your inference.</p>
+<p>Cool.</p>
+<p>Yeah. And this actually allows us to do something. We don't really explore too much in the paper,</p>
+<p>but which I'm hoping to explore in the future, which is that we get rid of this combinatorial explosion.</p>
+<p>Because if you look at the kind of things you would have to do, there's a lot of messages going on here,</p>
+<p>but basically what you should take away is that everything goes back and forth on every edge.</p>
+<p>And when these two guys collide, they give you the posterior distribution over your policy or over the action</p>
+<p>at that time step is what it is to say. But because we're reasoning backwards and we don't have to do this for every policy,</p>
+<p>we scale linearly in time rather than getting this large explosion.</p>
+<p>Like with the caveat that there's some iterations going on and there's some root finding to get these</p>
+<p>red messages going the right way. There's some extra computation here and there, but this whole procedure</p>
+<p>pretty much scales linearly in the planning horizon rather than this giant exponential explosion, which to me</p>
+<p>is really nice because it hints at us being able to do something that's quite a lot bigger than what we have done so far.</p>
+<p>Right here on this slide, I'll ask a question from Ryan who wrote,</p>
+<p>are we guaranteed convergence after a single forwards backwards sweep of the messages?</p>
+<p>No. So this is an iterative procedure. This function is closer to what you would get with a variational</p>
+<p>message parsing thing where you have to iterate it a couple of times.</p>
+<p>So no, we're not guaranteed convergence after a single forwards backwards pass. Usually that's</p>
+<p>probably wouldn't be enough. You would have to do like two or three or something.</p>
+<p>Ryan Duffy And those iterations, you use some other heuristic, like how much improvement you're</p>
+<p>getting and is that a monotonic iteration or do you ever...</p>
+<p>Ryan Duffy So there's some work still to be done on this.</p>
+<p>So I can't claim like 100% mathematical assurity, but this seems to function a lot like a variational</p>
+<p>message parsing algorithm where things just nicely decrease as you do more iterations. So therefore,</p>
+<p>more iterations is always better. But it's going to hit like a convergence thing at some point where</p>
+<p>the gain of running more iterations is going to be marginal. That's how I'm confident this actually</p>
+<p>works. But because we changed the functional, I'm not sure whether all the convergence proof</p>
+<p>supplies. I'm not... I can't be 100%. I'm going to put it at like 98.</p>
+<p>Ryan Duffy Yeah. You'll never iterate worse. You ratchet and improve. But I guess my question is,</p>
+<p>could there be drop-offs where you're monotonically improving and then you enter a new regime of another</p>
+<p>improvement phase?</p>
+<p>Ryan Duffy Yeah, I don't see why not. I haven't seen it, but the models we've</p>
+<p>tested this on have been variations of the T-Maze. They've been quite small.</p>
+<p>Ryan Duffy Yeah. So there's still work to be doing actually exploring exactly how this algorithm</p>
+<p>behaves.</p>
+<p>Ryan Duffy Yeah. Not like from theoretical, also from theoretical standpoint, but also just from</p>
+<p>like the practical, what actually happens if you start running things and you build out models and</p>
+<p>sort of getting a feel for how these things work. Because doing it in this way is not something that</p>
+<p>has been done before. At least to my knowledge. Again, I'm going to hedge my bets a little bit here.</p>
+<p>Ryan Duffy All right. Are there any more questions?</p>
+<p>Ryan Duffy No. Good to carry on.</p>
+<p>Ryan Duffy Keep going. Right. Because this is what you actually get out if you run this for a couple of</p>
+<p>iterations on the T-Maze. So the T-Maze environment is the classic one that we all know and love, but we have</p>
+<p>a mouse or agent that starts in this position in the middle here.</p>
+<p>And it's looking for a piece of cheese. Piece of cheese is going to be either in this left arm</p>
+<p>or on this right arm.</p>
+<p>However, at the back here is a Q.</p>
+<p>And the Q tells the mouse whether the cheese is to the left or to the right.</p>
+<p>So the optimal thing to do is to go and visit the queue first and then go check out the correct arm.</p>
+<p>And that's sort of the hello world of this epistemic drive that we like with active inference.</p>
+<p>Because an active inference agent is going to go and collect information and then go either left or</p>
+<p>right. Whereas if you just do some greedy, fully goal-directed agent, it's just going to gamble and</p>
+<p>going either left or right and hoping for the best. So if we do this sort of direct policy inference</p>
+<p>with this form Lagrange and drive station in point Lagrange and active inference type thing,</p>
+<p>these are the posteriors we're going to get out. And you see that the agent does actually,</p>
+<p>in planning only, replicate this nice policy that we want where it first goes and samples the queue.</p>
+<p>And afterwards, it's indifferent as to which side to go to, but it knows it's going to go to either</p>
+<p>of the two sides. And this is something that's done only using planning. So the agent doesn't actually</p>
+<p>get to execute anything and go and actually sample the queue and update its beliefs.</p>
+<p>So in the absence of all that, it can still figure out that, hey, maybe I should go and check the queue</p>
+<p>first before I go find my snack.</p>
+<p>My queue is telling me to find the queue.</p>
+<p>Yeah, I mean, pretty much.</p>
+<p>So again, when I saw these results, I was very, very happy because this shows that</p>
+<p>all the sort of heavy duty theoretical work actually paid off and yield something that</p>
+<p>replicates the standard experiments. That sort of is the baseline that we should be able to do.</p>
+<p>All right, what are the next thing we got? Right, yeah. So in part two, we also extend this</p>
+<p>to do parameter learning. And what that means is we want to learn the A matrix, the likelihood matrix.</p>
+<p>And we do that by replicating the standards sort of EFE type algorithm where we inference all of this</p>
+<p>model and then we compare free energy of the model, which includes these EFE terms for each policy. So we</p>
+<p>can sort of get the same type of thing with the policy evaluation and evaluating expected free energy and</p>
+<p>all the things that we like. And the task is whether we can figure out, like we can solve the task and we</p>
+<p>can learn this A matrix, what is the actual mapping, the likelihood mapping that we want.</p>
+<p>And that's interesting because the first experiment relied mainly on this message, the one flowing out</p>
+<p>and the output back towards the state. Whereas this one also has a component of this message flowing towards</p>
+<p>a likelihood matrix. Ideally, this should correspond to something like a novelty term in like the classical</p>
+<p>Schartenbeck formulation, which should drive our agent to go and explore its environment and figure out</p>
+<p>what's up. Then as we iterate this back and forth a couple of times, we should learn the mapping.</p>
+<p>And we see very nicely that free energy decreases the minimum as we learn.</p>
+<p>It gets lower and lower and lower. Except for these spikes here. This is when the agent actually gets its</p>
+<p>its observation when it gets its reward, its piece of cheese. That's because there is some noise in</p>
+<p>the reward probabilities. It's not 100%. So you can see every time it predicts a win but it gets a loss,</p>
+<p>the free energy spikes.</p>
+<p>Which is consistent. If your model predicts something and you get something else, your free energy is going</p>
+<p>to be off. And if we compare to an agent that does just box standard</p>
+<p>Béthi free energy, a variational free energy under the Béthi approximation, we can see that nothing</p>
+<p>really happens and it loses all the trials because it's greedy. It doesn't go and gather the information</p>
+<p>like the information at the Q. Furthermore, if we look at the actual sort of matrices that gets learned.</p>
+<p>These are the different locations that means the origin, the left arm, the right arm and the Q location.</p>
+<p>And this row here indicates whether the Q says go left, Q is go right. And this is whether the</p>
+<p>reward is on the left or the right. And this is whether you get a reward or whether you get no reward.</p>
+<p>Okay. So basically what we can see is that if</p>
+<p>the Q is on the right, we also predict that we're going to get the reward on the right.</p>
+<p>Get a reward on the right, we predict the reward is on the right.</p>
+<p>Get a reward on the right, and so on and so forth.</p>
+<p>Get a reward on the left, so on the left.</p>
+<p>Basically what this shows is that we are able to accurately learn</p>
+<p>the mapping in the environment, which is kind of nice because again, this means that our agent</p>
+<p>will go and figure things out and actually learn how to navigate an environment that it doesn't know.</p>
+<p>Okay. So this is the final slide that I have and I've been talking forever now.</p>
+<p>And the main sort of take home message that I like to leave everyone with is</p>
+<p>we can put active inference on graphs.</p>
+<p>But we can do that and that is awesome.</p>
+<p>And once we do, we are left with sort of this Lego block approach to constructing active inference</p>
+<p>agents. Because everything is local on the graph, I can do my local manipulation to get my EFE, my GFE</p>
+<p>down here. And then I can build out whatever graph I want in all other directions. I can have hierarchies,</p>
+<p>I can have temporal depth, I can do smoothing, filtering, I can do control, I can do any combinations of variables that I like.</p>
+<p>As long as I can figure out the inference, it all works.</p>
+<p>And we can get the classical things that we all know and love as special cases.</p>
+<p>And we can solve inference on these using standard tools from belief propagation or variational message parsing,</p>
+<p>combined with these new messages that flow out of nodes that up to my GFE.</p>
+<p>So this gives us, at least in my mind, a flexible way to construct these large, sprawling freeform models.</p>
+<p>Which in the end gets us the best of both worlds as we started with.</p>
+<p>So we got the epistemics, we get freeform models, and we have a recipe for doing efficient inference.</p>
+<p>And that is everything I got.</p>
+<p>Excellent. Well, let's have a little bit more conversation and kind of ask a few questions</p>
+<p>as we land the plane on the dot one. And then next time in the dot two, we'll return with maybe a little</p>
+<p>code, a little bit of drawing, and hopefully some more people on the stream.</p>
+<p>Okay. So what does synthetic mean to you?</p>
+<p>In this case, it was sort of to underline that this is from an engineering point of view.</p>
+<p>You know, I didn't really talk anything about brains or Bayesian mechanics or</p>
+<p>individuation and niche construction, all these other really, really interesting things that people</p>
+<p>are doing with active inference. This is purely like, how do you build a system that does this?</p>
+<p>So the synthetic came out of trying to say, well, this is us trying to build engineering tools for</p>
+<p>active inference.</p>
+<p>Very fascinating. Just in how you framed it there, it made me think about the engineer of a bridge. And on</p>
+<p>one hand, they have colleagues in physics and metallurgy and gravity and the basic physical phenomena.</p>
+<p>And then on the other hand, they have colleagues who have bodies, may care about the ergonomics,</p>
+<p>the cultural components of the architecture. And so it's like engineering actually intermediates</p>
+<p>between, in this case, the Bayesian mechanics, and on the other hand, biological systems of interest</p>
+<p>for active inference.</p>
+<p>Yeah, you could say that, right? Because this is just a way of doing active inference on graphs.</p>
+<p>If you want to come along and be like, okay, I think I can use this to model something about the brain,</p>
+<p>or I think I use this to model something about interpersonal relationships or whatever. That's amazing.</p>
+<p>That is awesome. All the power to you. But what you choose to do with the tools is different to the tools itself.</p>
+<p>Like if you have a hammer, you can use it to carve out a beautiful sculpture, you can use it to build a bridge.</p>
+<p>But a good hammer is still going to be a good hammer. And all we're doing here is building hammers.</p>
+<p>Cool. Okay, another question. You mentioned these sprawling graphs. So how could you connect what is enabled with this work to ecosystems of shared intelligence,</p>
+<p>and maybe even like the internet of things like IoT?</p>
+<p>So that's one of the things that I would like to see happen at some point. Because if you have</p>
+<p>the representation of inference problem as being distributed over a graph, and you can do things</p>
+<p>asynchronously when you pass messages, you can run these nodes anywhere. This is just an abstract thing.</p>
+<p>So I can have, say, a drone flying around that runs its own generative model and sends messages back to some other thing.</p>
+<p>That then sends messages back to some other thing that communicates with my phone and my fridge and my pacemaker.</p>
+<p>But as long as all the messages sort of are taken care of and all the little local computations work,</p>
+<p>then effectively, it's going to be like just doing inference on a really, really big model.</p>
+<p>So one of the things that we wanted to do with the designing ecosystems of intelligence paper is sort of</p>
+<p>try and push this idea that intelligence is something that does inference and react, probably to its environment.</p>
+<p>In nature, it's a distributed thing.</p>
+<p>The whole of humanity is way more intelligent than I will ever be. Many, many people are.</p>
+<p>And we're trying to, scientists, put stuff into this shared pool of knowledge.</p>
+<p>But even the intelligence that I claim is inside my head is really made up of a network of neurons that are</p>
+<p>interacting and doing things together. And each neuron is made up of a whole bunch of component parts and so</p>
+<p>on and so forth. Or, you know, like ants doing interesting things when they swarm around to coordinate.</p>
+<p>Most of the types of intelligence that we see in nature is actually distributed already.</p>
+<p>And moving to this idea of distributed inference and distributed message parsing on very, very large graphs that do things asynchronously,</p>
+<p>is sort of our attempt to saying, well, if intelligence is inherently distributed,</p>
+<p>we can cast intelligence as this type of inference problem.</p>
+<p>We should build our architects, we should build our intelligences in a way that matches this.</p>
+<p>We should build them as big distributed systems. And once they are big distributed systems,</p>
+<p>we should get all the, I mean, then we can use all these tools to figure out what all the local parts do and make sure that you don't have to write out a schematic for the whole system.</p>
+<p>Just take care of everything locally around your little bit and all the communications. And if everybody does that, then we're good.</p>
+<p>Well, I heartily concur with the distributed intelligence. And when I see this kind of engineering work, it's like the idea that all intelligence is distributed. It's not the end point. It's not a hot take. It's not where the discussion ends. It's like the first rays of light of the discussion beginning.</p>
+<p>And so that's why there's so much to do on the formal side, but obviously on the application side.</p>
+<p>Okay. Next questions from the chat.</p>
+<p>Wotter asks, how straightforward is it to develop algorithms along this perspective? Can I build an agent within a day?</p>
+<p>Yes, you can. Because we put this in RxNFIR so far.</p>
+<p>It's not in the mainline branch, but the constructions, like the nodes that we used to do our experiments are publicly available.</p>
+<p>There's a repo at github.com slash bioslab slash live, L-A-I-F, where you can find these things in the interface with RxNFIR, the toolbox that's developed in BiosLab.</p>
+<p>So, yeah, the tools are there. They need to be polished a little bit, but they're there.</p>
+<p>You can build an agent in a day if you know how to work with RxNFIR.</p>
+<p>Otherwise, it might take you two because you spend one work through the demos.</p>
+<p>Yeah. I mean, could you maybe go into a little more about what BiosLab is doing with Julia and reactive message passing RxNFIR?</p>
+<p>Yeah, of course. So, caveat, there are people who are better at RxNFIR than I am.</p>
+<p>Dmitry Bagaiev is sort of the main architect behind it and is a beast of a programmer.</p>
+<p>So, the majority of the grunt work has been done by other really, really talented people in BiosLab.</p>
+<p>So, RxNFIR is a toolbox for doing message passing based inference, minimizing constraint, battery-free energy, and factor graphs.</p>
+<p>And it does so by marrying message passing and reactive programming.</p>
+<p>Reactive programming is the idea that instead of you...</p>
+<p>Actually, we can do this a little bit here.</p>
+<p>Instead of doing something like this, where I pre-specify a schedule, where I write out all the messages that flow on my graph,</p>
+<p>I can say, well, any node is just going to listen to all the incoming edges and say, if I can send a message, I will send a message.</p>
+<p>If I can send a message, I'll just wait for all the information to be available until I say something.</p>
+<p>And if you do that, and you can do that in sort of a reactive way, that basically gives you a way to specify a problem as your inference problem with your constraints and your factor graph and everything.</p>
+<p>Hook it up to a sensor in the ideal world.</p>
+<p>Hook it up to a sensor.</p>
+<p>And then whenever you get observations coming in, that will trigger your inference just when it happens.</p>
+<p>And the sort of way that things flow on the graph will be data-driven rather than something that I, as an engineer, specify.</p>
+<p>But again, it's something that I like because the less work I have to do, it is for me to get stuff done.</p>
+<p>Yeah.</p>
+<p>Even as a non-Julia expert, I believe this is a massive step for active inference.</p>
+<p>Even with message passing, you're going to be in a situation, if you can't use reactive message passing,</p>
+<p>where if you have two sensors of different frequency, you either choose to basically have to waste clock cycles calculating updates at a faster rate than the slower sensor,</p>
+<p>or coarse-grain or throwaway samples from the faster sensor.</p>
+<p>So having this kind of just-in-time logistical information supply chain has very, very large performance improvements with some or all of the same formal guarantees.</p>
+<p>And it's going to be especially important if there's an ecosystem of shared intelligence where components are active at different times or have asynchronous or that kind of concurrency in effect, which is just basically real systems.</p>
+<p>Yeah, exactly.</p>
+<p>Because you and I don't have a set schedule and a set way that inference is done.</p>
+<p>And we react to what comes in and then we plan and then we do things sort of in real time.</p>
+<p>And the beauty of doing it in this way and when everything is local is that even as you go to larger graphs with things happening asynchronously, you inherit a lot of the same convergence guarantees.</p>
+<p>So basically, as you run more messages, your inference or your free energy is never going to get worse.</p>
+<p>It might, you know, something might happen like we saw these spikes if you get information, data that's not predicted.</p>
+<p>But as you run more inference, it's never going to get any worse.</p>
+<p>So you can run this part a little faster and this part a little slower.</p>
+<p>And, you know, so it's still going to end up having this nice, nice smooth curve.</p>
+<p>Yeah, it's kind of like a net that ratchets everywhere.</p>
+<p>Yeah, like it's a large distributed system that reacts to data and reacts to the world as things happen.</p>
+<p>And an RxInfer is just being an engineering tool for building that.</p>
+<p>If you have that as your vision, you need something that does it.</p>
+<p>And that's what RxInfer is attempting to be.</p>
+<p>Cool.</p>
+<p>So maybe one more question and then we'll close for that one.</p>
+<p>Okay.</p>
+<p>Upcycle Club writes,</p>
+<p>Simulated annealing, including quantum simulated annealing, is considered a meta-heuristic.</p>
+<p>Do you use any types of meta-heuristics in synthetic active inference agents?</p>
+<p>Not yet.</p>
+<p>Not yet.</p>
+<p>I'm not familiar with quantum simulated annealing, so I can't really speak to what it does.</p>
+<p>But the thing that's different about this approach to active inference as opposed to many other approaches</p>
+<p>is basically that we can do things locally on the graph and we have these backwards messages.</p>
+<p>I'm sure you can combine that with a quantum simulated annealing approach somehow.</p>
+<p>And if you find a nice way of doing it, I would love to see it.</p>
+<p>But it's not something we've done yet now.</p>
+<p>Cool.</p>
+<p>Well, this was awesome.</p>
+<p>It was very relaxing and even-handed.</p>
+<p>Even though it builds on so much.</p>
+<p>So it was an epic presentation and I think sets us up really well for .2 when we talk about what happens next</p>
+<p>now that the .1 is in the books.</p>
+<p>Yeah, I had a great time.</p>
+<p>And I'm glad you found it relaxing because I think it was a bit more stressful over here.</p>
+<p>Maybe receiving the messages is easier than sending them maybe.</p>
+<p>Yeah, but I thank you.</p>
+<p>This was great.</p>
+<p>I thoroughly enjoyed this.</p>
+<p>Cool.</p>
+<p>So thank you everybody for watching and leave a comment if you have a question.</p>
+<p>Or if you're around in time, then maybe get in touch and join 55.2.</p>
+<p>So thank you, Magnus.</p>
+<p>Farewell.</p>
+<p>Thank you.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

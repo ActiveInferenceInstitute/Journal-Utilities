@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 085.1 ~ David Bloomin: "[Deep] Learning Active Inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 085.1 ~ David Bloomin: "[Deep] Learning Active Inference"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_085 &middot; Episode 1 &middot; Speakers: David Bloomin &middot; Duration: 1:23:56 &middot; Views: 645</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=UB-TIIlmwlU">https://www.youtube.com/watch?v=UB-TIIlmwlU</a></div>
+<article>
+<p>All right, hello and welcome. It's August 5th, 2024. This is Active Inference Guest</p>
+<p>Stream 85.1, Deep Learning Active Inference with Love with David Blumen. So thank you,</p>
+<p>David, for the presentation and we'll look forward to the discussion.</p>
+<p>How we can use Active Inference to make an intelligent agent and some of the advantages</p>
+<p>and disadvantages and some issues with Active Inference and how I think we can overcome them.</p>
+<p>And you'll see why with Love in a little bit. But my background is I'm a software</p>
+<p>engineer and an AI researcher. I've worked for a long time at the intersection of scalable</p>
+<p>systems and machine learning. And I've been working on this project for about three years</p>
+<p>now. And I'm really excited to talk about it. So I think the holy grail of AI research right</p>
+<p>now is how do we make an AI agent that's both generally intelligent and doesn't destroy humanity.</p>
+<p>And pretty much I think most people are working on some facet of these two. And I'm really excited</p>
+<p>about the generally intelligent part and also not destroying humanity. So here's how I think</p>
+<p>we can do it. But first I want to talk about just like get our definitions. So what's an agent? And</p>
+<p>there's lots of people arguing about definitions. I'm going to use a really simple one, which is an agent</p>
+<p>is something that given a set of past observations produces the next action. So basically given what</p>
+<p>you're seeing now and what you've seen and experienced in the past, what should you do next? So a very</p>
+<p>simple formulation of an agent as a function. And by generally intelligent, I don't have a rigorous</p>
+<p>definition of general intelligence. I don't actually think there is one. But as an observer observing this</p>
+<p>agent, we should be able to say, hey, it's it's acting smart in a wide variety of environments that it</p>
+<p>hasn't seen before. And what that means is that it's able to figure out the environment dynamics,</p>
+<p>it's able to make mistakes and learn from them. It doesn't get stuck in the local optima, like knows</p>
+<p>when to explore, but then when it figures out regularities about the environment, it knows how</p>
+<p>to use them. It does this efficiently. It's not just like trying the same dumb thing over and over again.</p>
+<p>It makes plans, it can communicate and track with other complex intelligent entities in the environment.</p>
+<p>So it's a bunch of different behaviors. And I don't think there's a really clear way to quantify or like,</p>
+<p>talk about exactly what they look like, because different spaces in different environments are</p>
+<p>going to have a different idea of what an intelligent agent is doing there. So for now, just like think</p>
+<p>of it as this grab bag of capabilities. So where does active inference come in? Well, active inference</p>
+<p>in the environment is a way of thinking about an agent interacting with its environment as essentially a,</p>
+<p>it's a formulation where any agent can be seen as if it was acting in a self evidencing way. And what</p>
+<p>that means is that you can treat any object that maintains homeostasis over time, as if the inside of</p>
+<p>that object was minimizing free energy, meaning that it had some, some, you can think of it as having some</p>
+<p>generative model of its environment around it from an agent's perspective, its boundary, and it is trying</p>
+<p>to update its prior beliefs or its posterior beliefs over the boundary in order to minimize surprise. And so</p>
+<p>the way it does that is when it receives evidence from the environment, it adjusts its set of beliefs to</p>
+<p>concord with what it thinks it's gonna, what the environment is and what it's doing and where it is</p>
+<p>in that environment. But it's also actively navigating the environment in order to both get, gather more</p>
+<p>knowledge and improve its set of beliefs, as well as to move into parts of the environment that it thinks it's</p>
+<p>going to be occupying. And so this is a really beautiful way to capture what any agent is doing</p>
+<p>at any scale. So this formulation allows us to think about a biological cell or a robot or a person or an</p>
+<p>organization, a corporation, a country, anything that we want to draw a boundary around, we can basically</p>
+<p>say, hey, this thing is kind of acting as if it was doing Bayesian inference over its input data and</p>
+<p>kind of beliefs over a set of states that it's going to be occupying and it's trying to act in accordance</p>
+<p>with that. So the problem with that formulation, so the nice thing about that formulation is it's very</p>
+<p>general, it's very beautiful, it is able to generalize what we see at different scales. One thing that it</p>
+<p>doesn't let us do is actually tell us how do we build such an agent. And there are two reasons that I think</p>
+<p>that this theory is not useful for actually building an agent. One is that it treats every agent as</p>
+<p>trying to approximate Bayesian inference. So as the agent observes evidence, it's trying to infer what</p>
+<p>that means for its generative model and trying to update its posterior. The problem with Bayesian</p>
+<p>inference is that it is computationally intractable. And the active inference recognizes this and it</p>
+<p>basically says the agent is trying to approximately do Bayesian inference by sticking a variational</p>
+<p>inference bound on it. But in reality, what approximately means is different in every situation.</p>
+<p>So all agents that we see, all systems that we see, they're doing some kind of computation,</p>
+<p>and that computation can be viewed as approximate Bayesian inference. But in reality, it's a set of</p>
+<p>heuristics and hacks that have been discovered by evolution, by natural selection, by software engineers,</p>
+<p>whatever it is, that can be thought of as approximately doing this. But really, they're running some</p>
+<p>algorithm, it's just some set of heuristics. And active inference doesn't really tell us how to</p>
+<p>discover that it just says, hey, anything it's doing can be viewed as approximately doing this</p>
+<p>intractable problem. The other problem around trying to productionize active inference is that it says,</p>
+<p>well, the agent is going to be occupying a set of states that its prior beliefs said it's going to be</p>
+<p>occupying. So, you know, why does an animal eat? Well, because evolution has filtered animals down to</p>
+<p>only the animals that believe that they're going to be fed. And so then the animal is going to be a</p>
+<p>self evidencing way go seek out food. And again, this is a really beautiful way to capture</p>
+<p>both the action and inference in one formulation. But it doesn't tell you what are the priors over</p>
+<p>states for a given environment. So if you want to build a robot or an agent that has to interact with</p>
+<p>some environment, what what are its prior beliefs? What states should it be occupying? Does it believe that</p>
+<p>it's going to get energy? Or does it believe it's going to go repair? You know, the car that you</p>
+<p>want it to repair? How does it balance between those two? We don't know. Active inference doesn't</p>
+<p>really tell us it just says some process will give you a set of priors. And so with active inference,</p>
+<p>typically the approach is, well, as a software engineer, you build a generative model, you basically</p>
+<p>code up what you think the environment requires and the agent in the environment requires and you give it</p>
+<p>some priors like you will be fed and you will repair this car. And here's some parameters about how</p>
+<p>the environment works that are simple enough that you can then do a variational inference over it and get</p>
+<p>something done. And then you have a more generic free energy minimized minimizing algorithm that that</p>
+<p>given that generative model actually controls the robot. The approach I want I'm taking is, well,</p>
+<p>instead of someone trying to design this general model, can we learn it? And I think that's really the</p>
+<p>only way forward because any environment that we care about is going to be so complex that I just don't</p>
+<p>believe humans are going to be able to specify a generative model for it that's at all interesting.</p>
+<p>So why do I think we can learn it? Well, one evolution has. And what does learning it mean? Learning means</p>
+<p>that we want to use some learning system and neural nets are a really good one. And we want to figure out</p>
+<p>what are the sets that we basically want to have some approximate active inference agents, some</p>
+<p>approximate generative model that is able to do all the things we want, which is that grab bag of</p>
+<p>generally intelligent behaviors. And the reason we can do that is that neural networks are universal</p>
+<p>function approximators. So rather than building an algorithm, we took a neural network, we fed it,</p>
+<p>we fed it pairs of text and images and outcomes, DALI that given text is just able to generate images.</p>
+<p>And also generated all the slides for this presentation.</p>
+<p>So the way to think about neural networks is rather than programming an algorithm, you figure out the</p>
+<p>training data and a loss function, and then you take a big blob of learning, learnable parameters, and you</p>
+<p>keep nudging that blob until it does what you want it to do. And this technique is really powerful. As we know,</p>
+<p>we're working language models that everyone is using now. We're also trained this way, you took a data set that</p>
+<p>was a set of prompts, and a set and then a completion, basically the next word. And you trained a neural network to</p>
+<p>predict the next word and you got chat GPT. So this technique is extremely powerful, it is very slow, it requires a lot of data and a lot of</p>
+<p>training examples. But over time, you're able to learn a really complicated function approximator. So the question then is,</p>
+<p>okay, well, if we want to train a function approximator for a generally intelligent agent, what's the training data that we need to use?</p>
+<p>And basically, I think if we discover the training data, and we throw a large neural network at it with a lot of compute, we should be able to in the same way that we got</p>
+<p>chat GPT or Dolly, get a model that's like a foundational general intelligent agent model. So to do that, we need an environment. And what an</p>
+<p>environment, so the reason we need an environment is that we're trying to train an agent, not say a language model. So for a language model, you give it a prefix, it gives you the completion, and you can train it on, say, all of the internet text. What we're trying to do is we're trying to learn a function that given a set of fast observations, know what action to do next. And that's a more complicated</p>
+<p>problem, because sometimes the action it takes should be done because it's trying to accomplish something, sometimes it's because it's trying to learn something, sometimes it's trying to</p>
+<p>explore. And so what we need is a world for the agent to interact with, that it can then learn its behaviors from. And so the properties we need for that environment is one, we want it to provide continuous learning opportunities. So there should always be something that the agent is a new thing for the model to learn. And then when it learns it, when it does something that it's</p>
+<p>intelligent, one of these behaviors that we associate with intelligence, we want we need a feedback signal. So we need the environment to essentially reward it. And it needs to be an environment that cannot be mastered. Because if it can ever be mastered, then there's nothing new to learn, and the model stops learning. So the way to set that up is, or one way to set that up is via multi</p>
+<p>agent. So if you have an agent. So if you have an environment, even if it's a relatively simple one, like say, a go game, where the rules of the game are really simple, just by having other agents in that environment, gives it a really important property, as the agent gets smarter, so do the competitors. And so the environment essentially adapts to your capabilities. So this is a way where you can automatically get an environment that always gets</p>
+<p>something new for you to do. And so as soon as you learn some exploit or some way of being better than your competition, the competition changes, and now you have to learn something new.</p>
+<p>And so I think, so my approach is leveraging this characteristic, and essentially training AI is in a multi agent competitive environment. There is a problem though, which is if the environment is entirely competitive, you very quickly end up in this killer be killed dynamic. So you can imagine an agent learn some behavior policy, and you can</p>
+<p>see and then the other agent learn some counter strategy and then they kind of explore the area around the strategies and figure out the best way to be competitive and other stuff because if any agent ever tries to do anything that is not that it gets exploited by its adversary. So this setup makes it really hard to avoid local maxima, you kind of find something that works and you're stuck there. And that's not quite true. If you have many agents, you might get</p>
+<p>some unstable symmetry breaking and get some unstable symmetry breaking and things get smoothed out a little bit. But I think the solution to that is actually cooperation. And what's cool about cooperation is there are many ways to cooperate the space of effective behaviors when it comes to cooperation just explodes.</p>
+<p>And so you end up with a much denser more higher dimensional behavior space where it's harder to ever get stuck at some Nash equilibrium of behaviors.</p>
+<p>And this also gives rise to complex group dynamics, like coalition building cooperation, cooperating to compete, figuring out who you're going to cooperate with and who you're going to compete with building trust.</p>
+<p>And it's just like the set of behaviors that are available in cooperative environments explodes. And the problem with cooperation is it's really hard to learn if all the agents are selfish. It's not impossible. You can have things like reciprocal altruism or even just non-aggression.</p>
+<p>You can learn that always picking a fight is not great because even if you win the fight, now you're weaker and someone else can take advantage of you.</p>
+<p>But in general, learning cooperation when everyone is not cooperative is also full of these Nash equilibrium of local optima.</p>
+<p>And nature solves this using kinship. So when an animal is born into a world, it is not surrounded by other selfish organisms.</p>
+<p>It's surrounded by a lot of kin. So for cellular organisms, it's surrounded by more or less identical genetic clones of it.</p>
+<p>For animals, it's surrounded by organisms that have half of its genes. And this kinship via genetic evolution gives rise to organisms that are not selfish because from a gene's perspective, having a copy of you in one organism or in another organism doesn't matter.</p>
+<p>And so what that does is it gives rise to organisms that basically care about the success of other organisms almost as much as they care about the success of their own organism.</p>
+<p>And there's a whole spectrum in nature from hive insects like ants where from a soldier's ant's perspective, the only way for those genes to make it into the next generation is for the queen to reproduce.</p>
+<p>And so you end up with ants that care a lot more about the hive and the queen than they care about their own safety and well-being.</p>
+<p>And you get a whole spectrum from fully altruistic hive insects to a few perfectly selfish sociopaths.</p>
+<p>But most animals fall somewhere in the middle and being in the middle where you're partially selfish and partially altruistic gives rise to all of these social behaviors that we associate with being an intelligent being.</p>
+<p>So animals coordinate, they negotiate, they build trust, they love each other, they show kindness, they show jealousy, they have social emotions like shame, they learn how to exchange knowledge with each other via gossip and reputation building, they do division of labor.</p>
+<p>And all of these things happen again at every layer of complexity, animals do it, biological cells do it, organizations do it.</p>
+<p>These set of sets of behaviors are present in pretty much all entities that we think are intelligent.</p>
+<p>And so my proposal back to this AGI recipe is that if we can have the right training data and enough compute, we can train a large model on an environment that essentially balances cooperation competition.</p>
+<p>And so I've been trying to build and design these environments, this environment and the training infrastructure for it.</p>
+<p>And that's been essentially my research direction.</p>
+<p>So this is the current version of the environment.</p>
+<p>And I'll just talk through some of the components.</p>
+<p>So you can see there's a few agents here and they're they're parameterized by a neural network.</p>
+<p>So all of this was trained from scratch using reinforcement learning.</p>
+<p>There is this heart altar in the middle.</p>
+<p>And the only source of reward that these agents have is they can walk up to the heart altar and they can use it, which requires energy.</p>
+<p>And if they do that, they get a reward.</p>
+<p>And what that means is that these agents have to get more energy out of their environment that they're using for interaction with the environment.</p>
+<p>And they can extract more energy than they need.</p>
+<p>And they can essentially waste it by putting it into this heart altar, then they get a reward.</p>
+<p>So this is the competitive dynamic that's set up.</p>
+<p>So everything doing everything in this environment requires energy to get energy.</p>
+<p>You collect these resources.</p>
+<p>So you walk up to a green or yellow crystal and you collect the resource.</p>
+<p>You then have to walk up to these converter stations that look like little batteries.</p>
+<p>And then you put the right set of resources in there and you get energy out.</p>
+<p>You can also attack each other.</p>
+<p>And if you get shot, you turn into this egg where you're stationary for a while.</p>
+<p>You lose some time and people can steal whatever resources you're carrying.</p>
+<p>But you can also turn on a shield, which also costs energy.</p>
+<p>But then it deflects the attacks.</p>
+<p>So these agents have to from scratch learn how do you navigate the space?</p>
+<p>Where are the resources?</p>
+<p>How do you manage your energy budget?</p>
+<p>Who do you fight with?</p>
+<p>Who do you not fight with?</p>
+<p>When do you need to keep your shield on?</p>
+<p>So a lot of like relatively intelligent behaviors that are learned from scratch.</p>
+<p>And all of this is done via this competitive dynamic.</p>
+<p>And then on top of that is a whole system for kinship where every agent shares its reward</p>
+<p>with some other agents based on some reward sharing system.</p>
+<p>And so what that means is whatever, say, this red agent gets a reward, the green agent might get 10% of that reward.</p>
+<p>And so this environment allows you to train agents in very different environments.</p>
+<p>So I'm going to pause this and switch over to this other tab.</p>
+<p>So yeah, here.</p>
+<p>So you can train in larger maps, you can set up different game rules and different game scenarios.</p>
+<p>And you can also set up different kinship environments where you can train fully selfish agents,</p>
+<p>you can train fully cooperative agents, you can train complex non symmetric social dynamics.</p>
+<p>And once you train an agent, you can actually start treating it like an intelligence.</p>
+<p>And you can do behavioral studies on it.</p>
+<p>So here, we take a trained agent that was trained in this environment, and we just like put it in an empty room.</p>
+<p>And we're like, well, what what is this agent doing?</p>
+<p>And you can see it's like it's exploring its environment.</p>
+<p>It's not getting close to any walls, because it knows that there's not a lot to be seen, and it doesn't want to waste its movement.</p>
+<p>You can put it in an environment where, you know, you give it some energy and you give it and you put it in a world where there's nothing except this heart alter.</p>
+<p>And you'll see that it like searches the world until it finds the heart alter, and then it puts energy in there.</p>
+<p>And so you can start doing, you can essentially study it and do experiments on it.</p>
+<p>It's like, what will it do under this circumstances?</p>
+<p>And you can start approaching some of this as an observer observing an intelligent entity.</p>
+<p>This is all early days.</p>
+<p>So this is just a few evals and experiments that I've been setting up.</p>
+<p>But this environment allows you to do all of these things.</p>
+<p>And I think what's cool about this whole approach, and I'll switch back to this slide, is that the idea is that you end up with an environment that is unlearnable, because anytime some agent gets some competitive advantage, the environment around it changes since all the other agents now arbitrage away that advantage.</p>
+<p>It's also highly, highly dense in behavior space because there's so many different ways to cooperate and compete with each other that there's always some new trick that you can discover.</p>
+<p>And so as this neural network learns to achieve fitness to this environment, and the environment is always changing, it's also learning how to learn.</p>
+<p>It's learning this set of adaptive behaviors of exploring, forming theories, testing things out, because that's the behavior that gives it an advantage when the environment is always changing.</p>
+<p>And so the hope is to end up with an agent that you can drop into a new environment that it hasn't seen before.</p>
+<p>And the thing it'll do is first figure out the dynamics of the environment, start exploring it, figure out how different things work, and then what it needs to do, and then start doing it.</p>
+<p>The other cool thing about this setup is because these agents are trained in a cooperative setting, they have to cooperate with, they have to learn how to cooperate with other agents.</p>
+<p>And that means they have to learn how to communicate.</p>
+<p>So there's a signaling and a language component.</p>
+<p>So if you are surrounded by kin and you have to compete with another group, you have to learn what information is necessary to communicate to your allies in order to effectively organize.</p>
+<p>So these agents are developing a language that we can then be able to reverse engineer because we have a fully instrumented world and we can do experiments on them.</p>
+<p>So we can basically figure out what it is that they're saying and we can then talk to them.</p>
+<p>And they're learning a policy that's conditioned on this kinship score.</p>
+<p>So they know how to cooperate with close kin, which means they are capable of cooperating.</p>
+<p>They're learning to be capable of cooperation.</p>
+<p>They're essentially learning to care for other agents.</p>
+<p>And so the hope of this research program is to build a model organism of an active inference agent, essentially an agent that is performing active inference in a complex environment that you can talk to and</p>
+<p>that cares about other agents in that environment.</p>
+<p>And if that works, we should be able to take these same ideas and take it out of this simple 2D grid world environment and essentially do the same thing, but in complex 3D world physics environments, get something that is smart, that cares about other entities and that we can talk to.</p>
+<p>So that's basically what I'm trying to do.</p>
+<p>I'm calling this project Meta learning.</p>
+<p>Meta is the poly word for love and kindness, because I think that love is love.</p>
+<p>What I think I'm building here are agents that are capable of love in the same way that genetic evolution, the selfishness of a gene being expressed in a multitude of other organisms gave rise to organisms that love and care for each other, especially their kin.</p>
+<p>I think that similar dynamic is what's necessary to create an environment that's complex enough to learn generalized intelligent behavior and also is going to create agents that are alignable, that basically care for other agents that we can get along with.</p>
+<p>So I'll stop talking here and take questions and happy to dive into anything that I've talked about or if you have questions about active inference or how or free energy or deep learning, basically anything that this made you think about.</p>
+<p>I'm so happy to take questions.</p>
+<p>Awesome.</p>
+<p>All right.</p>
+<p>Anyone in the live chat, please feel free to ask a question.</p>
+<p>Just meanwhile, maybe just how did you come to be applying the neural network approaches in this project?</p>
+<p>Just what led you want to explore this project?</p>
+<p>And then how do you see active inference playing a role?</p>
+<p>Yeah.</p>
+<p>I mean, it's funny because I've moved in and out of machine learning my entire career.</p>
+<p>And the experience I've had was I would go into AI.</p>
+<p>I would spend a bunch of time working on it and then I'd be like, okay, the field is not ready.</p>
+<p>Like, we don't know what we're doing.</p>
+<p>And I took a long pause and worked at a startup for 10 years.</p>
+<p>And after leaving that startup, I came across Carl Fristen's free energy work and had been out of AI for almost a decade, missed the last two revolutions.</p>
+<p>And reading it, it just kind of clicked for me.</p>
+<p>I was like, okay, like I can see how because this describes intelligence at every scale and just very naturally falls out of what it means for objects to maintain homeostasis in an entropic environment.</p>
+<p>And I can see what the math looks like.</p>
+<p>The math looks like essentially the math from reinforcement learning.</p>
+<p>It's trying to do basing and inference on your evidence to kind of compute a posterior and navigating the environment in order to balance exploration exploitation.</p>
+<p>And that's kind of what the reinforcement learning community came up with bottoms up, just like trying to be like, hey, how do we train an entity that learns in its environment?</p>
+<p>And when I saw just how close those two approaches were to each other, it really made me feel like, okay, there's no secret sauce.</p>
+<p>It's like there's not something that we're missing that's key to intelligence that we just like haven't been able to capture.</p>
+<p>Really, it is like this kind of exploration, exploitation, inference combination.</p>
+<p>And now it's just like, how do we build it?</p>
+<p>And the more I started thinking about this, the more I was like, well, active inference doesn't tell you how to build it.</p>
+<p>It tells you that a bunch of these things have to be either filtered for or discovered.</p>
+<p>And reinforcement learning kind of starts out with the idea of like, well, we don't know what we're doing.</p>
+<p>How do we build it? How we discover it?</p>
+<p>And so then I started exploring the whole spectrum between the two.</p>
+<p>You know, do you start out with a world model that you learn, but then you have a set of algorithms that use that world model in some predictable way?</p>
+<p>Or do you learn the entire thing as a behavioral policy end to end?</p>
+<p>And I see these as essentially pragmatic, pragmatic engineering decisions.</p>
+<p>But just like having the confidence that this approach is essentially what all intelligent entities are doing really pulled me back into this field.</p>
+<p>And once I realized that what an agent is really doing is not some idealized version of active inference, because the idealized version is computationally intractable, that really led me to be like, okay, it's not doing this perfect thing.</p>
+<p>It's doing this approximate thing.</p>
+<p>So if everything is doing an approximate thing, and we have the technology to learn an approximator, we should just be able to do that.</p>
+<p>Just like have a thing that learns the set of hacks and heuristics that any actual agent is going to have to discover.</p>
+<p>And we have the existence proof of being able to do this in other problem spaces like language.</p>
+<p>Awesome.</p>
+<p>Awesome.</p>
+<p>That's super informative.</p>
+<p>I'll just let you have a sip of water and kind of restate a few of the key pieces because I think these are really key.</p>
+<p>So because free energy principle and active inference describe like any slash every scale, it has come across some of the same issues that reinforcement learning has come across on the low road.</p>
+<p>That's why active inference is like between the high road and the low road because of how the architectures are.</p>
+<p>It's not just a specific architecture.</p>
+<p>It's almost like as you're pointing out because of the fact that it's already an approximation because even the analytical part is an approximation.</p>
+<p>The analytical part is variational inference.</p>
+<p>So already talking about an approximation to a perfect map.</p>
+<p>So at that point, it really is pragmatic.</p>
+<p>Like you described, whether you approach this in like a well-structured way.</p>
+<p>And there are often an active inference.</p>
+<p>People like talk about like structure learning and adding and shrinking parameters and hooking up different things, doing combinatorics with base graphs.</p>
+<p>And that may be super promising for certain pieces and like keeping it well typed and well defined.</p>
+<p>And then the other approach, which is resonating with with how you're saying big problems and other domains have been solved, is like actually an interestingly open ended approach, which is the like you said, reinforcement universal function approximator.</p>
+<p>So it's a complimentary approach to try to use a statistical approximator of the variational inference.</p>
+<p>So my first question is, how about that reward function?</p>
+<p>Can you specify different ways or have you specified different ways?</p>
+<p>For example, the reward could be when two people interact and don't have a conflict or different things, because just from a sort of predictability perspective, it's like it's it's actually a power preference centralization.</p>
+<p>So you've taken a really flat, uniform, informative approach to any distribution except for one and loaded all the hopes and dreams on one.</p>
+<p>So what do you think that does with the architecture?</p>
+<p>Yeah, great question. I want to respond to that.</p>
+<p>First, I want to respond to something you just said a little bit earlier in terms of like structure models as the generative model for active inference.</p>
+<p>And I think what's cool about the free energy principle is that it just like lets you rephrase anything that a system is doing as if it was it had some generative model and it's minimizing free energy on it.</p>
+<p>So any any behavior can be rephrased as a as the energy minimization over some set of some generative model over some set of beliefs.</p>
+<p>And so it's like a really nice way to just go between two two ways of formulating a problem.</p>
+<p>And I think the people that try to take the more principle, less design a generative model for it, the challenges they run into is, well, whatever model they're designing, whatever graph they're designing has for in order to be computationally tractable with variational minimization is some sparse graph of random variables with some sparsity constraints.</p>
+<p>And then they're like, well, what what are the what does this graph look like?</p>
+<p>And either they're making it up or they're trying to learn it.</p>
+<p>But if you're trying to learn it, you're kind of back to this thing of like, well, we don't know what the generative model is.</p>
+<p>Let's try to learn it.</p>
+<p>But so I see these approaches as kind of being equivalent is just like how much prior structure do you force onto the system.</p>
+<p>And then when you actually use so when you do say variational base, what you have what you're saying is, look, I have this structure and I'm not saying this structure represents reality.</p>
+<p>But I think this can represent reality to some error.</p>
+<p>And then I have this inference mechanism that I'm applying to this structure.</p>
+<p>And together we are representing reality, some approximation of reality with some error.</p>
+<p>And what's cool about being able to do doing an end to end thing where you're just like, throw your hands up and be like, I want to learn the whole thing is that the set of the set of inference algorithms that you get to explore are also more powerful.</p>
+<p>So for example, you can imagine parts of the model where it's like really important to get some detail right.</p>
+<p>Whereas other parts of the model is like, it's not that important.</p>
+<p>You know what this random variable says, it's like it doesn't have a lot of effect on the downstream task.</p>
+<p>So when you're doing free energy minimization, you are you don't get to choose which part of your model is important, how much compute to spend on different parts of it.</p>
+<p>Whereas when you're learning an algorithm end to end, part of the thing you're learning is when to do how much inference and how much your inference matters.</p>
+<p>So I think this is another kind of way in which the more principled approaches pull in an assumption that maybe is a reasonable assumption, maybe is not, but is definitely limiting.</p>
+<p>Yeah, if I can just reiterate, I think that's very farsighted of a way to understand this, because let's just say we're using an rx infer.jl strongly typed Julia language model.</p>
+<p>So if you're using a rx infer.jl, the decisions about when and how to optimize the message passing timing and when it would itself, maybe it's irrelevant to the question or maybe you don't need the most efficient.</p>
+<p>But if you need open endedness on how the graph is orchestrated, then it just shows that in realistic, even small settings, the structured method is embedded within an unstructured method.</p>
+<p>Now that's either a manual curation, like which might happen for small scale.</p>
+<p>But if you're talking large scale generative model, then even that outer orchestrative level is essentially statistical.</p>
+<p>So that's, that's a really important thing to remember.</p>
+<p>And all these other like kind of pragmatic considerations about the data infrastructure and all these types of things, which are like, again, they're not in the textbook, but to get above even a small size run, they start coming into play.</p>
+<p>And now I want to talk about the reward question that you asked.</p>
+<p>And I think that's a really great question.</p>
+<p>This is actually so right now, and this is early days for this project, but right now the reward is this heart alter and plus kinship.</p>
+<p>And the thing that I wanted to do with reward is we need some reinforcement signal from the environment to essentially reinforce the policy.</p>
+<p>So the policy needs to learn from something.</p>
+<p>It needs some learning signal.</p>
+<p>And what I wanted to do was make a system where you don't have to keep messing with the system, you just get to scale things up.</p>
+<p>And so you make an environment and then you just scale up the size of the models in the environment.</p>
+<p>And as we do that, the environment gets more and more complex in an open ended way because the environment is really the minds of the other learning agents, not the physical game.</p>
+<p>And so the thing I wanted out of the reward was something that binds the agents to each other and to the environment.</p>
+<p>And so it has to be some kind of competitive dynamic.</p>
+<p>Essentially, there has to be something that when one agent is doing better than another agent, essentially there's some zero sum finite reward to go around so that there's pressure on the agents to be smarter.</p>
+<p>And by smarter, meaning figure out a way to behave that gives it an advantage over some counterfactual other agent.</p>
+<p>So that's the idea behind this reward.</p>
+<p>The other thing I wanted from the reward is I wanted it to be really sparse so that you're not constantly tinkering around like, oh, I want to, you know, I want these agents to do something more interesting.</p>
+<p>I want them to cooperate more.</p>
+<p>Let me add a reward for cooperation or like for this interaction.</p>
+<p>I basically I don't want to be in the in the game of environment design and reward tinkering.</p>
+<p>I want something that's just and I think it's this is a really beautiful reward.</p>
+<p>It's essentially free energy.</p>
+<p>It's, you know, from an agent's perspective, their job is to extract energy from the environment and then use it to compete with each other.</p>
+<p>And then if you ever find yourself with excess of energy, that's your reward.</p>
+<p>This is you get this in evolution where it's like, hey, you can get enough energy to reproduce.</p>
+<p>If you can muster enough energy to make a copy of yourself, that is the reward for the genes.</p>
+<p>That's how the gene gets into the next generation.</p>
+<p>So you can think of this as a reproduction reward.</p>
+<p>You can think of this.</p>
+<p>Partially what I'm doing is kind of re trying to pull the ideas from biological natural selection into reinforcement learning.</p>
+<p>And so this is from a genetic perspective, when you make a copy of yourself, it means you got enough energy out of the environment, you made a copy of yourself.</p>
+<p>And so the genes get reinforced.</p>
+<p>Those are the genes that then persist.</p>
+<p>Similarly here, when you got more energy than the competition and you went to put that into the heart alter.</p>
+<p>It means that the policy is reinforced.</p>
+<p>And so those are the policies that you're going to see.</p>
+<p>Originally, I didn't even have the heart alter.</p>
+<p>I just had an action that an agent could take that burns energy and gives that reward.</p>
+<p>So it was essentially self rewarding.</p>
+<p>And I did the heart alter just because it was like easier to visualize as a human watching it.</p>
+<p>It's like, oh, yeah, they walk over there.</p>
+<p>They do the thing.</p>
+<p>You can think of it as like laying an egg essentially.</p>
+<p>And so the other aspect of the reward is the kinship.</p>
+<p>So when you get a reward, other agents are getting some of that reward as well.</p>
+<p>So your source of reward is not just walking up to the heart alter.</p>
+<p>It's also helping other agents do it and learning who those agents are and under what circumstances you should help one agent and not the other.</p>
+<p>And at what point should a resource go to some other agent and not to you.</p>
+<p>So the reward function is actually really complex from an agent's perspective because it is this social reward rather than just a selfish one.</p>
+<p>And then one more thing I'll add, which is like really inspired by active inference that I haven't yet implemented, but is very close on my roadmap is one problem with a sparse reward is it's really hard for agents to learn because a lot of times you're doing stuff and you're not getting any feedback.</p>
+<p>And then sometimes you get a reward, but it's not even something you did.</p>
+<p>It's something some other agent did that's your kid.</p>
+<p>And so this is a really hard learning problem in reinforcement learning.</p>
+<p>And one thing that active inference gave us is this idea of surprise minimization as an auxiliary reward.</p>
+<p>So a reward that I plan to add to an agent is that there is going to be some small amount of reward that you get just from being able to predict your observation at the next time step.</p>
+<p>And what that allows you to do is and it's going to be a really small reward because you don't want to overwhelm the competitive landscape.</p>
+<p>You don't want the agent to just be, you know, all I care about is predicting, you know, hiding in a hole and predicting my environment.</p>
+<p>You wanted to engage with the rest of the world.</p>
+<p>But what this gives you is a very dense learning signal essentially at every time step, even if you're not getting some reward from the environment, you're able to learn some environment dynamics because there's this reward signal about just like figuring out how the world is working.</p>
+<p>And I actually think that at the limit, you don't need this because at the limit being able to learning a policy that is able to get this competitive reward requires that you learn a policy that's also a good world model that is always predicting what's going to happen with more weight on the things that actually matter.</p>
+<p>So it's like a pragmatic world model instead of just like, you know, I want to predict all of my observations world model, which is why you can't really give it give the predictive reward too much of a weight because not all the things that you're observing matter.</p>
+<p>There's an infinity of things you can predict about your environment and you don't want the agent to be trying to predict them all.</p>
+<p>You want to be trying to predict the things that matter.</p>
+<p>But I do think that it'll make agents that learn faster, at least initially when they don't know how the environment is behaving.</p>
+<p>Yeah. Again, a huge point. Even epistemic value, you at some level have to do statistics to figure out the right balancing between epistemic and pragmatic.</p>
+<p>All right. There's a bunch of questions in the chat, so I'm just going to give you these questions in the order.</p>
+<p>So feel free just to give a response as you see it. OK.</p>
+<p>Board guy one one two wrote in systems that lock the architectural capabilities for temporal or counterfactual depth.</p>
+<p>How does the process of minimizing free energy relate to their form of epistemic foraging behavior?</p>
+<p>How is collective epistemic foraging different with increasing like agent level sophistication in terms of not being able to plan just like one step planners versus like being able to do more planning?</p>
+<p>Yeah, I think this is an interesting question.</p>
+<p>And I think maybe I missed the first part of it, but I can definitely respond to the second part.</p>
+<p>I don't know if there is much of a difference.</p>
+<p>An agent is something that takes its past observations and then produces the next action.</p>
+<p>And I don't think there is a lot of difference between an agent that is planning versus an agent that is not planning.</p>
+<p>The question is, how sophisticated is the action going to be?</p>
+<p>So and you can think about this, you know, you can have let's say you have a thermostat.</p>
+<p>Right. People don't even want to call a thermostat an agent.</p>
+<p>Like you have something that's trying to control, you know, maintain temperature in the room and you can have a planning thermostat that says, OK, actually, you know, I'm going to make a plan.</p>
+<p>If I increase the heat by this many that here's my differential equation.</p>
+<p>You know, here's my model of how that's going to change the condition.</p>
+<p>So I'm going to instead or you can have a thermostat that just like learned a really good function that has that essentially it unrolled the planning.</p>
+<p>It's just like, you know what, in this case, I'm just going to increase the temperature by this much because that effectively is going to turn into the right homeostasis maintenance.</p>
+<p>So the way I like to think about it is you have a system and it has some compute available to it and it has past observations and it's going to produce the next action and it's going to use that compute in some way to figure out what that action is.</p>
+<p>And planning is a way that we can kind of characterize what is it doing with that with that compute?</p>
+<p>Does it have some world model that we can understand and it's doing some future rollouts on it or we don't know what it's doing.</p>
+<p>We can treat it as if it was planning, but really is just like, is it able to leverage the computer?</p>
+<p>How much compute does it have?</p>
+<p>And is it able to leverage that compute into achieving its goals better or worse?</p>
+<p>So I kind of think of an agent that is making decisions of just for the next time interval as not that different than an agent where you can explicitly say, oh, it has a world model and it's doing planning on it.</p>
+<p>It's just, it's doing some computation and it results in some confidence in achieving its goals.</p>
+<p>Yeah.</p>
+<p>Great points.</p>
+<p>It projects onto the next action.</p>
+<p>However you see it and however it's done.</p>
+<p>Okay.</p>
+<p>Courtney wrote really cool work reminds me of things like the Sims without humans messing up their lives.</p>
+<p>Might the agents eventually have some kind of introspection in their model in a more advanced simulation?</p>
+<p>I suspect that I can look at the more and more of a bigger and bigger part as we train bigger and bigger networks.</p>
+<p>works. So an agent that's trying to do something needs to essentially have some trajectory.</p>
+<p>If an agent is trying to get food, it needs to keep, it's going to do a step towards the food,</p>
+<p>and then it's going to have to do the next step towards the food. So it already has some kind of</p>
+<p>internals that give it consistent behaviors. It has some set of beliefs around, or it can be</p>
+<p>modeled as having some set of beliefs around what its state is, what its goal state is. In order to</p>
+<p>pursue that goal, it has to have theory of mind of other agents, right? The environment it works in,</p>
+<p>like whether or not it's going to get its food depends on what all the other agents around it</p>
+<p>are going to do. Like, is it going to get shot or not when it's trying to go over there? Does it need</p>
+<p>to turn on its shield? Does it need to turn off its shield? So a lot of the things that the agent</p>
+<p>is modeling are the states of other agents, and the states of other agents depend on its state.</p>
+<p>Maybe if it has a shield on, it's going to get shot, but if it has a shield off, it's not going</p>
+<p>to get shot. So it has to be, in order to predict what's going to happen to it, it has to know what</p>
+<p>other agents are going to do, which is a function of what it's doing. So I think that's key to just</p>
+<p>like the whole thing working at all. So I think introspection is there. The real question is,</p>
+<p>how do we, as external observers, start characterizing it having introspective abilities?</p>
+<p>And what experiments can we perform to start quantifying? How much introspection does it have?</p>
+<p>And I think that's really a challenge, is not what is it doing, but how do we figure out what</p>
+<p>it's doing? How do we distinguish an agent that has introspection from one that doesn't,</p>
+<p>or has more introspection or not? And that's like a whole research agenda that I think is like</p>
+<p>really interesting, and I would love help with. Awesome. All right. John Klippinger wrote,</p>
+<p>can you have cooperative learning and reward rather than zero sum a la Martin Novak Shapley value?</p>
+<p>I mean, yeah, I think cooperative learning is what's happening here, because no agent's reward</p>
+<p>is a zero sum reward. I mean, there is a zero sum reward over the whole system, because there's</p>
+<p>finiteness of resources. And I think you can't get away from that. All of existence, all of reality</p>
+<p>is essentially allocating finite energy to infinite potential compute. So there is a zero sumness</p>
+<p>nature to everything. What's cool about this cooperative learning dynamic is that from every agent's</p>
+<p>perspective, it's not an individual agent, it is some smeared agent over other agents, what it cares</p>
+<p>about what it's trying to maximize is some linear combination of other agents, including itself. So</p>
+<p>all of the learning is essentially cooperative learning. From an agent's perspective, a close skin</p>
+<p>agent doing something that gets it a reward is the same as it doing it. So we're kind of blurring the</p>
+<p>line between, you know, is this other agent just your left hand versus your right hand? Or is this your</p>
+<p>child, brother, parent? Or is this a complete stranger? And I think the learning gets smeared across</p>
+<p>all of those regimes?</p>
+<p>Yeah, there's so many more things. I'll just make a short comment and ask one or two more questions. I see it as you're using modern methods to bring in a kind of mixed or multi game theory, because there might be some Nash theory or clean analytical solution to like some single dimensional game, like just this kind of game or just that kind of game. But when there's like tools, you know, you're going to be able to</p>
+<p>use opportunity cost, co visibility, it's not as simple as just like, as like, just buying and selling on one uncertainty. So it then also when you consider the niche and niche modification through pheromones, as well as through the collective defense, in like you social insects and naked mole rats, and all of that kind of convergent ecologies, leading to evolutionary transitions in the multi scale system.</p>
+<p>And then the further like, and then the further like, canalization of that, for example, the nest mate workers who don't develop ovaries at all. So at that point, calculating these partial reproductive scores is is non functional.</p>
+<p>Okay, I'm just gonna read a few of the comments and then um, but first just what, what are your last or I mean, sorry, what are your next moves? And then I'll just read you these the rest of the comments and you can respond anything but just where does this go slash what where do you where do you hope people can participate in everything?</p>
+<p>Yeah, great.</p>
+<p>Yeah, great. Thanks for that question. And I'll just throw out like I don't have a hard end time. So I'm happy to go for okay, because you're down.</p>
+<p>Yeah, so my general plan is I'm approaching this as an engineering problem. And it's an open source project. And what I want to do is iterate on the environment, iterate on the training infrastructure and iterate on the agent architecture, and iterate on the evaluations. And I'm kind of approaching this like very improvisationally, I'm just like, okay, what's the</p>
+<p>what's the current bottleneck? Where do I think I can get progress? And I would love collaborators. So part of where this like part of how I think this project is going to work is based on who I can get to help along with it. But the surface area of the project is huge. It's every every aspect of it is a bunch of open ended research direction,</p>
+<p>like, like, it's really exciting, it's like, it's full of low hanging fruit, it's like, for every one of these directions, I have a bunch of ideas that are all relatively easy that I'm pretty confident are gonna lead to really cool results. So there's a bunch of stuff with environment design that is really fun. So</p>
+<p>the environment you saw is really complex, really simple is just like a few little game objects, I have a whole library of new game objects that I want to add, that will really change the dynamics. So the new version of the environment that I've been building is entirely editable. So the agents can build and destroy all objects while preserving total energy in the environment.</p>
+<p>I have objects around like long range communication. I mean, there's just like so many little game objects that you can add that really alter the nature of the environment. There's also because everything that you do costs energy. You can get so right now when you train every training episode, the energy costs for all the actions are sampled from some distribution. So sometimes movement is really</p>
+<p>expensive and you have to learn how to live in that world. Sometimes attack is cheaper than defense, sometimes it's more expensive. But one thing that I'm really excited is to actually give different energy profiles, essentially different bodies to different agents so that the environment then becomes heterogeneous where different agents have different capabilities.</p>
+
+<p>hey, they want to reward share with you and not some other agent, which gives rise to signaling</p>
+<p>and counter signaling and lying. And I think was also like really instrumental to runaway</p>
+<p>intelligence and human and primate evolution. So there's, that is to say, there's a lot to do</p>
+<p>on the environment side with like lots of really low hanging fruit there. Right now, I'm working</p>
+<p>on environment performance and rewriting the environment and using a much more performant</p>
+<p>architecture. So currently, I'm training my models that around 40,000 steps per second,</p>
+<p>which is pretty huge on a single machine for reinforcement learning for people that are not</p>
+<p>really involved. The new environment, I'm hoping to get more like a million steps per second. So</p>
+<p>it's just going to mean that we can train bigger models faster and really improve the iteration</p>
+<p>speed for a lot of these experiments. I have, so that's on the environment side, there's the training</p>
+<p>infrastructure, there's a few really cool algorithms that I want to implement for distributed training,</p>
+<p>so we can train over many machines. Again, just trying to ramp up the training.</p>
+<p>Evaluations is another thing that I'm trying to develop is like, how do we, once we have an agent,</p>
+<p>how can we tell, you know, is it smarter than the last agent we built? Is it smarter than an agent</p>
+<p>that has more or less world experience? How do we quantify that? So there's a bunch of stuff around</p>
+<p>evaluations and cognitive tests and behavioral tests for these agents that I'm working on.</p>
+<p>And I'm just kind of picking out from this giant collection of low-hanging fruit and going after</p>
+<p>them in not a very principled way. That's epic. That sounds so cool. Okay. Sriharsha wrote,</p>
+<p>are there any scalable solutions like with model-based RL for inferring actions using deep active</p>
+<p>inference instead of evaluating many policies, which might be computationally intractable?</p>
+<p>It's related to what we discussed. What would you say?</p>
+<p>Yeah. Well, one thing that I'll say is I'm not evaluating many policies. If you think of a neural</p>
+<p>network as a function approximator, you're like, well, what function is it approximating?</p>
+<p>So when someone has a model-based architecture, essentially they're giving you a function. They're</p>
+<p>saying, I have two functions. I have the model function and I have a planning function. So the</p>
+<p>model function is going to produce rollouts in some hypothetical environment. And that's a function</p>
+<p>that's like modeling the environment. And then a planning function is an algorithm that says,</p>
+<p>given a model function, how do I decide what to do next? And so with model-based RL,</p>
+<p>you've partitioned the function into two components. And then you try to either learn or engineer them</p>
+<p>separately. So typically model-based RL, you try to learn the model function, but you keep the</p>
+<p>inference function algorithmically fixed. In an end-to-end model free RL, you're like, look,</p>
+<p>I'm not even going to bother separating the two functions. Because if you think about it,</p>
+<p>keeping them separate, having them separate might give you an easier learning problem. It's easier to</p>
+<p>learn a decomposed function, to decompose functions than a joint one. Learning a composed function gives</p>
+<p>you a lot more degrees of freedom. So it's harder to learn, but it also means that sometimes you do more</p>
+<p>planning, sometimes you do less planning, sometimes as you're planning, you might decide, oh, actually,</p>
+<p>in this part of the planning space, I want to do a lot more, I want to focus a lot more on rollout. So</p>
+<p>I'm pretty agnostic to whether the right architecture is model-based versus model-free,</p>
+<p>and my framework allows you to play with both. And that's a whole research direction of like,</p>
+<p>okay, what is the right agent architecture? Right now, it's a model-free single neural network</p>
+<p>that's essentially internally in ways that we don't understand is doing whatever modeling and planning</p>
+<p>that we want to do. I think it would be really cool to say, hey, will we get better architectures if we</p>
+<p>break it up into a modeler, like a model and a planner? Can we actually get better performance?</p>
+<p>But I think these are all empirical questions. I don't think there's an a priori, you know,</p>
+<p>better architecture for it. I want to play with both. And I think either way, what you're trying to</p>
+<p>learn is a bunch of heuristics. Awesome. Great points. And super interesting. And so, again,</p>
+<p>it's the flexibility of active inference as the topology of the compute goes from the sparser,</p>
+<p>more interpretable, more kind of single node semantic, more definable, etc. on through the dense</p>
+<p>universal function approximator, open-endedness, many, many, many architectures already existing</p>
+<p>and many to come in that area. And then together they're approximating an approximator. And then you</p>
+<p>have to engineer it pragmatically either way. So then in practice, these considerations like are</p>
+<p>empirical because they just relate to how you build it. And so it's on your GitHub, like what</p>
+<p>repo should people look at just to be like clear with that answer? What repos should people look at?</p>
+<p>What will happen when they just get started with it?</p>
+<p>Yeah. Let me show it if you can. Thank you. Yeah.</p>
+<p>So can you see this? So the repo is under GitHub slash baby slash meta. And there is</p>
+<p>there are links to the Discord. Probably the best way to get, I mean, so there is an overview and</p>
+<p>getting started. I'm in the middle of a big environment rewrite. So some of these things are</p>
+<p>going to change soon. And if you're actually seriously thinking about working on this, I urge you to reach</p>
+<p>out to me on Discord or email me because I can help you get started more quickly. There's also a research</p>
+<p>roadmap here where I just have like a bunch of ideas of things that people can play with that are</p>
+<p>kind of low hanging fruit. But yeah, the repo is on GitHub, Davy meta.</p>
+<p>That's epic. Thank you. Okay. Next questions. Courtney has two questions. First one.</p>
+<p>Regarding the question about how you test whether or not has introspection and that you would like</p>
+<p>help with that research, what skillset are you looking for in collaborators?</p>
+<p>I mean, I can use collaborators with a lot of different skill sets. I mean, what I would really</p>
+<p>love is someone like at like a co-founder collaborative level, someone that thinks about this stuff</p>
+<p>day and night like I do that would want to basically be like a deep collaborator. So like software engineer,</p>
+<p>ML experience. So that's like on the most intense like co-founder level. But then there's so much other research to be done.</p>
+<p>So I shared this like behavior gallery here. So this, you know, here, you know, these agents are trained under different scenarios.</p>
+<p>And then we take them out of context. And we're like, okay, what do they do in an empty room? What do they do in a bigger empty room?</p>
+<p>What happens if we, you know, took the take two agents and stick them in a room with finite resources? Like, how do they behave?</p>
+<p>Doing this kind of research is requires almost no technical skills. You basically have to think about like, what kind of environment do I want to design? And then you edit some configuration files to be like, okay, let's make, you know, five empty rooms, put two agents in there, put some food, run the simulation, and then measure this thing. So that can be someone with very low technical skills.</p>
+<p>Like someone with very low technical capabilities, but just like someone that wants to think critically about like, hey, how do we study this new life form? Or this new intelligence?</p>
+<p>I can also use people that are excited to be like technical communicators and like, write and share these ideas and get them into written form to be shared more broadly.</p>
+<p>I can use help with people that want to do like find collaborators or do like outreach to other developers around getting these environments used or getting people to help with them.</p>
+<p>So I think just like a broad set of skills, but the ones that are the easiest for me to leverage are going to be people with coding and software experience that want to actually help build some of these components.</p>
+<p>And that could be just like that. That does not need to be like AI experience, just software being excited to write software is sufficient.</p>
+<p>Thank you. Great answer. What over this process has surprised you the most slash what have you learned in this journey so far?</p>
+<p>Like about the model output or how it related to some of the other engineering, just any aspect about it.</p>
+<p>Yeah, I mean, one thing that and this shouldn't be surprising, but things are hard.</p>
+<p>Things take way longer than you think they're going to take.</p>
+<p>And it's usually the hard stuff is not some like complex algorithm.</p>
+<p>It's just like building stuff, getting it to work.</p>
+<p>Before I dove into the world of reinforcement learning, I had no idea how nascent that field is.</p>
+<p>Pretty much everyone working on RL is like RL is really hard.</p>
+<p>It almost doesn't work.</p>
+<p>It's just like it's a very young field.</p>
+<p>And so on the one hand, like that was surprising.</p>
+<p>It's also really surprising how much of mainstream RL is working on stuff that I have a hard time getting excited about.</p>
+<p>Like most of RL is trying to play Pong.</p>
+<p>They're trying to, you know, be like, can we play Atari games better than we played than these other algorithms played Atari games?</p>
+<p>And that's not fair to the entire field.</p>
+<p>But there's very little research going into using reinforcement learning in these complex open-ended environments.</p>
+<p>It's like almost no one is working on that.</p>
+<p>And RL and then, yeah, I guess those are some surprises for me.</p>
+<p>This is just like a green pastures.</p>
+<p>Very interesting.</p>
+<p>It relates to something I've heard many times in the kind of active area is what are the benchmarks?</p>
+<p>So other than just the computational resourcing and all those kinds of performance, like how do you think about benchmarking when arguably that will have open-endedness in certain ways or conditionalities or impossibilities?</p>
+<p>Yeah, great question.</p>
+<p>And I've given this a lot of thought and I don't have like a perfect answer, but I have a direction.</p>
+<p>So I would say two things.</p>
+<p>One, I think what I started with is behavior catalog.</p>
+<p>But I think one, there's like a behaviorist empirical study that you could do to these agents.</p>
+<p>So you could be like, okay, we trained these agents in these open-ended worlds.</p>
+<p>Now, if we take them out of their context and actually try to do cognitive tests on them, how well do they do?</p>
+<p>You know, can we offer it poison berries in addition to normal berries and will it learn to avoid them?</p>
+<p>Can you, in the same way that we try to quantify the intelligence of animals, it's like, okay, can you train it?</p>
+<p>Can you talk to it?</p>
+<p>Can you convince it?</p>
+<p>How much training does it need?</p>
+<p>Can it solve, like, does it have memory?</p>
+<p>Like if you set it up in a situation where it needs to remember five things, does it work?</p>
+<p>What about 10 things?</p>
+<p>What about 50?</p>
+<p>And so a lot of this is up to the researcher's intelligence rather than the entity's intelligence is like, can we be smart enough to figure out how to test for cognitive ability?</p>
+<p>So that's one direction.</p>
+<p>And then the other direction is pure competitive fitness.</p>
+<p>So if you have two policies, you know, you have two different brains and you have one control 10 agents and the other one control 10 agents, which ones will get more free energy?</p>
+<p>So essentially like an ELO style competitive evaluations of policies is the other direction.</p>
+<p>And that gets tricky because maybe, you know, in a world where brain A controls one agent and brain B controls 10 agents is going to have a different outcome where brain A controls 10 agents and brain B controls one agent.</p>
+<p>So there's still some settings.</p>
+<p>You got to test head to head competition under a variety of different settings.</p>
+<p>And you can imagine that some do better in resource rich environments where others do better in resource poor environments.</p>
+<p>So you have to be careful around trying to quantify superiority.</p>
+<p>But I think overall we should get to a point where you can say, Hey, look under a lot of conditions, this new brain that we trained is able to outperform this old brain that we trained in a competitive setting.</p>
+<p>And then we have a bunch of evals that are measuring things like memory, trainability, ability to solve problems and not get stuck at local optima.</p>
+<p>And it's performing better on this set of evals.</p>
+<p>So I think it is a quantifiable approach.</p>
+<p>It's just, it's not, it's not trivial.</p>
+<p>Yeah.</p>
+<p>Great answer.</p>
+<p>How do they do it in other systems?</p>
+<p>Okay.</p>
+<p>Here's a question from board guy.</p>
+<p>Do you make, there's a few pieces of clarification.</p>
+<p>Do you make a distinction between concepts of piecewise versus nonlinear learning in the context of emergence?</p>
+<p>More specifically, do you think of these types of measures as a lack of knowledge about what the system is doing on our end?</p>
+<p>As in the nonlinearity is simply the piecewise measure not tested, right?</p>
+<p>Do you think of these two measures, the continuous nonlinear and the piecewise?</p>
+<p>Do you think of these two measures as representative as two surely different learning rules?</p>
+<p>Or are we simply testing the model in the wrong ways?</p>
+<p>I don't know if I followed all of that, but feel free to rephrase the question if I'm not answering what you're asking.</p>
+<p>But the part that really resonated for me is, and I've moved really heavy in this direction.</p>
+<p>A lot of what we're talking about is not, I don't think there is, you know, what is the system doing?</p>
+<p>What is its learning rule?</p>
+<p>There is, what are our beliefs about its learning rule?</p>
+<p>So a lot of what we're talking about is as observers, what do we, how do we model the system?</p>
+<p>And we could model it as having a learning rule A with like a lot of competence or learning rule B with less competence or a set of learning rules that are interacting in nonlinear ways.</p>
+<p>So partially this is the way we, we would talk about the model rather than what is the model doing itself.</p>
+<p>And so I think with that formulation, I'm, I'm not that, I guess, interested in like, what is, like, what is the model actually doing?</p>
+<p>I'm more interested in like, what can we measure about this model's behavior?</p>
+<p>So what, when we look at the behavior of an agent, is it acting in a way that we think is intelligent?</p>
+<p>And maybe that's what you're asking rather than, you know, what is the neural network doing internally and how much?</p>
+<p>And it's interesting because the dynamics are highly nonlinear.</p>
+<p>What the network is doing is reacting to what the other agents are doing, which is also what the network is doing.</p>
+<p>So it's essentially conditioned on its own conditioning.</p>
+<p>So I don't think there is any kind of like tractable linear way to decouple these behaviors.</p>
+<p>It's highly recurrent and highly nonlinear.</p>
+<p>That's a great answer.</p>
+<p>A few other aspects is that the concept of figure and ground, kind of like agent-based modeling in an environment that is like a grid world environment.</p>
+<p>That is one topology.</p>
+<p>And so there's kind of that statistical dense click that is the input output, whether that's trained end to end or in the two separate sections.</p>
+<p>And then there's that's like a bumper car with either the niche read and write and or the long scale communications like you brought in later.</p>
+<p>So then then especially when you bring in all these fluctuating knobs, like let's just say that we learn certain behavioral policies when we're in a bright room versus when we can't see.</p>
+<p>Then environmental discontinuity, which is something that the experimenter has done.</p>
+<p>So again, reflect that relational piece.</p>
+<p>It would discontinuously change it.</p>
+<p>But then it's just like, yes, but the neural networks, continuous value numbers, et cetera.</p>
+<p>It's like that's like a deflationary account because we already know what structure our map approximator is.</p>
+<p>It's just the statistics.</p>
+<p>So it's like interesting about is this like applying active inference with reinforcement learning or one or the other.</p>
+<p>And then it's like, but you just look at the open source code and there's like and then it could be composed another way.</p>
+<p>And having the ability to swap out different kinds of methods for each other helps highlight like that flexibility.</p>
+<p>He wrote, I guess the way you think about these has implications about whether you can simply scale it up if you add more variables.</p>
+<p>I guess more variables.</p>
+<p>There's two places to add variables.</p>
+<p>One place is in the complexity of the environment.</p>
+<p>So as we add more behavior, like more objects and more diversity into the environment, there is essentially the environment becomes more complex.</p>
+<p>But really the main source of variables is the number of parameters in the models.</p>
+<p>And I assume that's what you're mostly talking about.</p>
+<p>And really, again, from the agent's perspective, the environment is all of the other models on the other side of you.</p>
+<p>So for every agent, you have a neural network with, say, 10 million parameters.</p>
+<p>But your environment is 50 other agents, each of which has 10 million parameters.</p>
+<p>And what you do and what you perceive is going to depend on what those networks are doing.</p>
+<p>And so, yeah, the idea is to scale this by training larger and larger neural networks.</p>
+<p>And the larger the neural network, the more parameters your neural network has, the more it's capable, the more complexity it's capable of representing.</p>
+<p>But the harder it is for you to train it and the more compute you need.</p>
+<p>So, yeah, the whole point of this project is so in RL, typically the models we train are a few hundred thousand to maybe a few million parameters.</p>
+<p>And language models were training, you know, 70 billion, a hundred billion parameter networks.</p>
+<p>And the idea is to try to make infrastructure and an environment that is so fast for generating training data that we can train of these really large high parameter neural networks so that they can generalize over dealing with really complex environmental spaces.</p>
+<p>And essentially so that they can learn complex learning algorithms themselves themselves.</p>
+<p>So, yeah, the whole point is to add more and more variables to the neural network.</p>
+<p>Great point.</p>
+<p>And that highlights that in the agent versus the niche situation is averted because the resourcing of the niche is so much greater.</p>
+<p>Because it's only 10 versus versus if there's a hundred other agents or something, then it's only 1% of the resources per agent.</p>
+<p>So that even that kind of structurally prepares a very different environment than a dyadic, even dyadic collaborative stationary training paradigm.</p>
+<p>So there's a lot there with the movement and also the very cool.</p>
+<p>So any last comments?</p>
+<p>Otherwise, I hope this has been exciting for people to learn more and to look at the GitHub and get involved.</p>
+<p>Anything else?</p>
+<p>Oh, sorry.</p>
+<p>Are you asking me or are you asking me?</p>
+<p>Do you have anything else?</p>
+<p>Oh, no.</p>
+<p>Thank you so much for your time.</p>
+<p>Feel free to join the Discord.</p>
+<p>Here, I'll bring the link back up.</p>
+<p>And also feel free to message me if you want to chat or collaborate in any way.</p>
+<p>Yeah.</p>
+<p>I mean, for me, this has been a really fun project and I'm just like excited to keep working on it and finding other people that want to work on it with me.</p>
+<p>Epic.</p>
+<p>Okay.</p>
+<p>Thank you, David.</p>
+<p>Bye.</p>
+<p>Yeah.</p>
+<p>Thank you, Daniel.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

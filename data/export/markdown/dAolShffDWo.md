@@ -1,0 +1,639 @@
+---
+title: ""Physics as Information Processing" ~ Ander Aguirre ~ Discussion 6"
+category: "Courses/PhysicsAsInformationProcessing_ChrisFields"
+speakers:
+  - "Ander Aguirre ~ Discussion 6"
+duration: "1:01:51"
+url: "https://www.youtube.com/watch?v=dAolShffDWo"
+views: 575
+exported_at: "2026-02-18T22:37:37.867995+00:00"
+format: markdown
+---
+
+# "Physics as Information Processing" ~ Ander Aguirre ~ Discussion 6
+
+Hello and welcome everybody. This is Physics as Information Processing. It's October 28th,
+2023 and we're in discussion six. So we'll see where and how and when we go. But to begin with,
+thank you for watching. If you're watching live, please feel free to write any questions or
+comments in the live chat as this is our last discussion. We're going to be probably ranging
+broadly. So looking forward to people's comments there. Otherwise, perhaps we can all go around
+first and say hello or just give any thoughts or reflections to get things going.
+And then we'll jump into some of the questions and answers and look at some of these great
+thoughts that have been sent and responded to. So perhaps Dean and then Harrison David,
+any just overall thoughts or comments to get us going?
+Dean and Harrison David, Ph.D.: Thanks, Daniel. I guess my overall impression was that I think
+that the way that the entire series was organized and structured allowed for these kinds of conversations
+that we're having today, which I think are really, really valuable. As you can see on the slide
+here, I think a lot of a lot of question and answer tends to be focused around what is
+whereas the conversations that we've had, we can sort of tease that apart a little bit and ask questions
+around what if and get into the counterfactual piece of it and interact around that. And I've really,
+really appreciated that. So that's my overall sense that we haven't left it sort of on the page.
+We've actually been able to sort of breathe some life into it through these conversations.
+Daniel Pérez, Ph.D.:
+Cool. Harris?
+Harris B.: Yeah. I just wanted to say that it was a great series. We all learned a lot and we got the
+opportunity to even ask questions to Chris and get back some very insightful answers that they are very
+helpful in order to, let's say, push the envelope forward. Overall, this has been a great series.
+I've enjoyed it a lot. And while conversing with some of my colleagues, they also enjoyed it. So
+the feedback is great. And thanks to Active Inference Institute for facilitating this and to you guys.
+Thank you.
+Thank you. And welcome. David, if you want to just begin with any thoughts or what brought you into
+the game in the bottom of the ninth?
+Harris B.: Well, in school, I was actually trying to use free energy to develop some sort of a network of
+agents that were deciding what information to send and what states to be in based on each other's
+Harris B.: And so I registered at the beginning, but then I guess life happened. I didn't really
+crash the page.
+But, um,
+Harris B.: Yeah, so now I'm just kind of opening up to things and participating more in the world that I
+exist in. And this is a natural, um, this is really tied to the work that I was doing in school.
+I don't know if this is a place to ask a question, so I'm not gonna ask any questions, but that's like the
+first.
+David P.: Let's begin with that.
+Harris B.: Okay. Oh yeah. So I was thinking about, I was, I was, I'm still confused about like Markov blankets
+and non localism.
+Harris B.: How would those two things work together?
+Harris B.: Oh, well, like non localism seems to me that an entity could be distributed arbitrarily in
+like in whatever is, I don't know if the universe is like space time is what is, or if that's just
+a construction that we create through the information processing and like putting relation like
+Harris B.: enunciating or like uh rendering the information in a way where it's like all the
+related components can be mutually distinguished.
+Harris B.: But the mark off blank it seems to be highly local.
+Harris B.: I don't know, maybe this is what like i'm confused about this, it seems to be highly local
+and like, uh, it seems like everything is connected with everything.
+Harris B.: So I i'm kind of confused about how
+Harris B.: An entity could be defined with a mark off blanket while at the same time.
+Harris B.: What is seems to be completely intertwined non local mutually like defined.
+David Pricey- Yes, Dean, please.
+David Pricey- So can I just do just clarification.
+David Pricey- Are you thinking that local and non local is.
+David Pricey- Somehow similar to maybe arbitrary.
+David Pricey- I'm thinking local is like within a volume and non local is like.
+David Pricey- Distributed complete a look like a sphere,
+David Pricey- Like a small sphere where all the information is like within a sphere.
+David Pricey- And everything within that sphere is causally relevant everything without is
+causally irrelevant, but then.
+David Pricey- Like i'm thinking of a mark off blanket is a sphere and everything on the inside is
+David Pricey- Like independent statistically from everything on the outside.
+David Pricey- I guess i'm asking around when where where do you play where do you see that being placed do you see that being placed arbitrarily.
+David Pricey- Like when you when you set that up whenever you do whenever you decide where that boundary exists,
+David Pricey- Are you asking because it's local or it's non local because it's wherever inside and outside.
+David Pricey- Is present is is it is that is the.
+David Pricey- Is the.
+David Pricey- What's the word i'm looking for.
+David Pricey- Are you are you are you wondering about how the how that doesn't seem to be consistent that.
+David Pricey- One minute, it can be here and then the next minute, it can change an arbitrarily end up being in a different place.
+David Pricey- Not not that i'm not that it doesn't seem to me that that's the confusion is more like.
+David Pricey- Like.
+David Pricey- Like you know David bones implicate an explicate order and they do the explicate orders like.
+David Pricey- One hologram there's like the hollow movement or each layer affects each layer and it's all the explicate is all at once explicated in mutual relatedness I don't know.
+David Pricey- um.
+David Pricey- I don't know if these words are incoherent completely.
+David Pricey- Like and.
+David Pricey- um.
+David Pricey- And then, but then the markup blanket like i'm i'm taking the example of my skin is like.
+David Pricey- Like I don't know if that's even.
+David Pricey- um.
+David Pricey- An example, but my skin is like a markup blanket but then if everything is mutually related and explicate like this whole body is submerged in the same field that everything else is submerged in.
+David Pricey- And in that sense, everything is linked everything there's no I don't know like.
+David Pricey- um.
+David Pricey- um.
+David Pricey- let me try adding a few pieces here.
+David Pricey- So welcome welcome and her and and Chris will hopefully join to.
+David Pricey- Here we go.
+David Pricey- Okay, opening act.
+David Pricey- Just to catch up.
+David Pricey- Chris and enter.
+David Pricey- David asked about the markup blanket and about if slash how everything is connected to everything and how we associate markup blanket or the holographic screen with localism and non locality.
+David Pricey- Do you want to give any quick thoughts on this or.
+David Pricey- Are you asking me.
+David Pricey- If you want to either of you could.
+David Pricey- Um, I don't know.
+David Pricey- Let's wait a minute for Chris to show up.
+David Pricey- Yeah, I'm here now.
+David Pricey- Yeah, I'm glad you found the way finally.
+David Pricey- So.
+David Pricey- Question, did you guys go through the slides of last time the lecture on biology.
+David Pricey- No, no, we just began and started with a markup blanket question.
+David Pricey- Yeah, I mean, I think.
+David Pricey- I think you wouldn't hurt to talk about that because.
+David Pricey- A big part of that last lecture was the copy and diversify notion.
+David Pricey- As a universal feature in nature.
+David Pricey- And I mean naively I think that you know the creation of new.
+David Pricey- boundaries is implicit in there so maybe maybe Chris can comment, but I.
+David Pricey- I also thought it was very worthy of mentioning today that you know the cycle of error correction memory and so on.
+David Pricey- Those would be my only two comments in.
+David Pricey- In the agenda for today.
+David Pricey- Maybe Chris can say a few words, but I didn't mean to interrupt.
+David Pricey- So markup blankets, we can pivot it to biology, I'm sure.
+David Pricey- Okay, okay.
+David Pricey- I think I'm seeing this question.
+David Pricey- Is this a question about the definition of markup blankets?
+David Pricey- There's something about.
+David Pricey- I can't actually see the entire.
+David Pricey- No, it's not a question on my screen.
+David Pricey- Oh, it's not a question on your screen.
+David Pricey- Okay.
+David Pricey- So I didn't get.
+David Pricey- It's a question on your screen.
+David Pricey- Right.
+David Pricey- But could you tell me what the question is again?
+David Pricey- Yeah, David, just restate it how you see it.
+David Pricey- Well, the question was if.
+David Pricey- If everything is like mutually connected and mutually
+David Pricey- defined and interconnected and there's non localism in the sense that everything
+David Pricey- is mutually connected and mutually defined.
+David Pricey- And I'm kind of implicitly
+David Pricey- working with the assumption that the implicate explicate order makes sense and the
+David Pricey- explicate is like one hologram and it's.
+David Pricey- Oh, it's all together now.
+David Pricey- Oh, I still hear him.
+David Pricey- Oh, the audio.
+David Pricey- Chris?
+
+David Pricey- Is the audio okay?
+David Pricey- Yeah, I lost at least half of that audio just dropped out altogether.
+David Pricey- Oh yeah, so i'll try to sorry about that.
+David Pricey- Just like so if everything is kind of explicated like if it's information
+David Pricey- in the brain is kind of rendering it all at once together.
+David Pricey- I'm just confused as and the whole body is submerged in the same like in the same
+David Pricey- like the whole body is submerged in it.
+David Pricey- Like if I look in the mirror, the whole body is submerged in it.
+David Pricey- And it's all non local.
+David Pricey- I mean by that I mean it's all like connected together and mutually defined and mutually
+David Pricey- necessary to even make sense of any piece of it.
+David Pricey- If there is any even such a thing as a piece.
+David Pricey- And i'm wondering, I mean not so that's one that's one way of looking at it,
+David Pricey- And then the other way is like the local to me, it seems like there's like this
+David Pricey- skin mark off blanket and it's kind of local and i'm kind of.
+David Pricey- Like confused as to how those things kind of worked like how those things.
+David Pricey- Like it seems like all the information in this sphere,
+David Pricey- The sphere could be a mark off blanket and then the.
+David Pricey- On the inside and the outside they're statistically independent is
+David Pricey- Like the whole movement on the inside and the outside.
+David Pricey- Because of the mark off blanket separates those.
+David Pricey- But then if everything is this whole body is submerged in this thing that's mutually
+David Pricey- related i'm just confused as to how.
+David Pricey- Like.
+David Pricey- I don't know I just i'm confused as to how those things work together.
+David Pricey- I suspect the i'm not sure I understand your question but i suspect the answer
+has to do with whose point of view we're talking about.
+David Pricey- So if if you are the system that's in so let's fix a mark off blanket someplace.
+David Pricey- If you're the system on the inside then all you can see is what's encoded on the blanket
+David Pricey- And you have no independent access to what the dynamics is on the outside.
+David Pricey- So you don't actually know what the dynamics is on the outside.
+David Pricey- And similarly if you're on the outside.
+David Pricey- Now if you're somehow able to view the whole system you can see the whole system is having
+some joint dynamics. But if the if the whole system is is isolated then there isn't anybody on the outside
+kind of by definition. So the idea of a whole dynamics is just a theoretical postulate
+David Pricey- That we make to make the mathematics make sense.
+David Pricey- Now if you move to
+a move from the classical formulation to the quantum formulation then it's possible to prove a very nice
+theorem which is that if you're inside a holographic screen
+David Pricey- You can't measure the entanglement entropy across the screen.
+David Pricey- What that means is that you can't know that your state is conditionally independent of
+what's going on outside. So you if if you're inside a holographic screen you can't know that you're not
+entangled with with whatever's outside. So you can't even know whether you have a well-defined state in a sense.
+David Pricey- And
+David Pricey- Sort of
+David Pricey- I think the same thing would probably hold true from the point of view inside a Markov blanket
+David Pricey- That you wouldn't be able to know whether your Markov blanket had holes in it or something like that.
+David Pricey- I mean the problem is in the classical formulation
+David Pricey- You assume there's no analog of entanglement. So there's no analog of entanglement entropy.
+David Pricey- So I think the strongest thing you can say is you don't actually know your
+statistical relationship to what's going on outside, but you still can only see what's encoded on the blanket.
+David Pricey- Thank you, Chris. If I could add a few more pieces. So David, you described everything
+David Pricey- connected to everything. David Pricey- For a system with that kind of a base graph,
+David Pricey- there aren't Markov blankets because a Markov blanket is the set of nodes
+David Pricey- that make two other sets of nodes conditionally independent. So in a fully connected
+David Pricey- setting, again leading to the question what is outside of that, but in a fully connected
+David Pricey- setting you don't have a blanket as such. David Pricey- in fact, the Bayesian graph
+David Pricey- describes the factorization or the articulation and the sparsity of the system. So it is a
+connectedness that is usually much, much, much sparser than everything connected to everything.
+David Pricey- But that's not to say that differences can't make a difference at a distance.
+David Pricey- it's just that they propagate through a local causal structure. And then
+space-time is constructed by certain kinds of cognitive agents. That was one of the key
+aspects of this course. And so we can take as primary the topology of the active inference agent
+environment relation. And then Markov blanket is just the sensorium on the inbound and the action capacity
+on the outbound. One question though I do have to that is what about the non-zero gravitational effect,
+for example, of something that's distant in space and time?
+Of course, Markov blankets don't have to be spatial temporal. They can be in arbitrary state spaces.
+But how do we deal with those kinds of long-range influences?
+That's my question.
+Yeah. Well, here I think it's useful to contrast Newtonian gravity with Einsteinian gravity.
+I think it's useful to say, Newtonian gravity is infinite range and instantaneously acting.
+Whereas Einsteinian gravity is infinite range, but it's locally encoded.
+So the Einsteinian gravity that you feel is your local measurement of the curvature
+of your local bit of space-time. So that is very much happening on your Markov blanket, right? It's a local measurement,
+local in space-time. So let's assume there's a space-time that's objective and characterizes everything.
+Then you're locally measuring it on your blanket, and that's what you feel as gravitational attraction or your mass.
+Whereas in Newtonian or Laplacian gravity,
+you don't have that sense of locality, right? As soon as something changes anywhere in the universe, it affects you.
+So Einstein was struggling, of course, to make gravity consistent with
+electromagnetism, where it was clear that forces are transmitted at finite speed, the speed of light.
+And he didn't have the idea of a graviton moving at the speed of light.
+But he did have this idea of local measurement. So non-locality was anathema to Einstein, and that's
+basically why he spent so much trouble removing it from physics. And that's why he hated the idea of
+entanglement so much, because it seemed to him that from a space-time point of view, it had to be non-local.
+Daniel, can I bring up a point at this point? So I think this is somewhat relevant to a question I
+really wanted to ask Chris, which is in lecture six, I remember minute 23. I wish I had written it down,
+but I can roughly remember. There was that phylogenetic graph and you see life growing in a
+self-similar way, just like the genealogical tree of species, same thing happens at the individual
+level with growth and so on. Anyways, I found that fascinating in the sense that the degrees of
+freedom of life as a whole grow, right? And around that minute 23, you made a comment,
+well, then the environment must be shrinking. And you tie this with space-time and something about
+space-time, you know, we, from the physics side, we also have that, you know, we have cosmological
+inflation and whatnot. Are any of those things related? That remark, I feel like was made in passing,
+and I think there's a lot there to be said. It also maybe shed some light on
+the emergent space-time issue. If it does emerge from a more basic ontological object like the
+tensor network and the degrees of freedom in the tensor network, is it fair to say that life as it grows
+gets more of those degrees of freedom, but then somehow anything that happens to space-time is an
+illusion in that sense? I don't even know if I'm formulating that question right, but I think
+Chris knows what I'm talking about. Yeah, the comment makes the most sense in
+the context of the state space itself leaving aside space-time. So if you think of
+think of a Hilbert space and draw a boundary someplace that separates what we're going to call life from
+what we're going to call non-life. Yeah. And essentially what, you know, life has done over the past 3 billion years
+is incorporate bits of the non-life part of the state space into life. Right. So, you know, total biomass is increasing. Right.
+So, more and more of the available mass is getting incorporated into living things. And so, if we
+we can kind of heuristically fold space-time in and say, you know, in the locality, in the locale of Earth and over this fairly short time period,
+we can kind of the expansion of space-time is more or less negligible. So, life is actually taking up more space now than it did, certainly at the time of Luca, when all of us weren't around, but there is just one probably population of cells that we're descendants of.
+Mm-hmm.
+
+Mm-hmm.
+Mm-hmm.
+But the point about the Hilbert space is just the point that if you have one, if you've divided it in two and you move the boundary, then one system gets bigger at the expense of the other system, which now has less of the Hilbert space.
+Mm-hmm.
+Mm-hmm.
+So, that's all that remark really is.
+Right.
+As the system, in a sense, takes over degrees of freedom of the environment.
+Mm-hmm.
+So, that's, in that case, so…
+So, it becomes a different system at every time step from the point of view of it has now a different Hilbert space and different internal dynamics. So, physically, it's a different thing.
+Yeah.
+Yeah.
+So, when we look at it, we say, oh, this thing is continuous through time. It is expanding, it's growing, it's developing, evolving, whatever.
+Right.
+Right.
+And so, then, I guess, a comment, just a question that just occurred as you were talking. That begs the question, you know, does that biomass come to dominate all the degrees of freedom in the universe?
+Is that there's all… Presumably, there's a tension with the rate at which those degrees of freedom are growing and the rate at which the space-time is growing.
+Does the growth of space-time, in terms of those degrees of freedom, that may be more fundamental, amount to loss in error correction capacity? How do we not… I mean, and maybe more speculatively, how do you reconcile this with loss of thermodynamics?
+Like, do we know… Are you implying that life is going to come to dominate everything and fill up the entirety of the known universe?
+Yeah, I think that's a stretch. But…
+I would say at this point that until we have a mature theory of quantum gravity that makes enough empirical predictions to be testable, it's not clear, at least to me,
+how the whole emergent space-time picture fits together with the inflationary picture or the expanding space-time picture.
+I mean, in some sense, taking a strict Hilbert space view, if the universe is an isolated system, then its Hilbert space is fixed.
+And so, your question, in a sense, becomes, what's the relationship between space-time and this Hilbert space?
+Are what we think of as space-time degrees of freedom real degrees of freedom or not?
+And…
+It seems to me that question really isn't resolved. And I'm not sure at this point how to resolve it.
+I mean, Paris, do you want to…
+Yeah, I just have something small to add. Overall, this is very interesting and these questions are very deep.
+What I wanted to add is that I was thinking the initial question regarding Markov blankets.
+And I also have some… a question that… it's related with it. But I will ask Chris later.
+What I wanted to add now is that… basically, Markov blankets are a way of describing the boundaries of a system in terms of statistical mechanics or statistics, let's say.
+And essentially, from what I understand, they are paramount in order to define observers and also the systems under observation.
+So, any physical system that can be seen as an observer with a Markov blanket, let's say.
+So, now trying to tie it all up with active inference.
+Well, active inference, as I understand it, implies that the system is actively referring to its external states from its internal states.
+In an effort to both learn, let's say, and adapt to the environment.
+So, this goes back and ties with this metaphorical link, let's say, with the skill.
+This is how I understand it.
+And it actually means that the system with a Markov blanket can actually be seen as performing physics as information processing, which is the bulk of this series that Chris is offering to us.
+And a final comment in terms of non-locality.
+Non-locality can actually be seen as a form of information processing.
+So, this is what I wanted to add.
+Could you say how non-locality is a form of information processing?
+Yes.
+Yes.
+This is how I understand it.
+What do you think about that, Chris?
+If we put it in terms of entanglement, entanglement is a useful resource for information processing, but it's only a usable resource.
+If it's combined with classical communication either across time or across space.
+So, entanglement is only useful as a resource if different observers can act locally, i.e. without interfering with each other, on the quantum resource.
+So, if you think of entanglement as non-locality, if you embed it in space-time in that way, then it is useful as a computational resource.
+But the observers also have to transmit classical communications in a way that fully complies with locality.
+So, in a Bell-EPR type experiment, for example, if you have Alice in one lab and Bob in the other lab making measurements of some entangled state, then at some point, to know that the state is entangled, they have to send their classical records to each other as classical communication and then deal with those records locally.
+So, in a sense, non-locality in that sense is useful for computation.
+But it's only useful if you also have locality.
+
+
+
+
+Great.
+
+
+
+
+Great.
+Great.
+Thank you.
+Actually, I'm working on a novel notion, let's say.
+That is something like takes the notion of entanglement and transform it in the following sense.
+I'm actually thinking of maximum entanglement as a resource for classical computation.
+So, that's something I am actually exploring.
+
+
+Yes.
+I find it to be a nice concept.
+
+Yes.
+Maximum separability.
+Yeah.
+Maximum separability.
+
+That makes sense.
+I mean, we need maximum separability.
+Yeah.
+Okay.
+
+So, I'm going to ask you to talk about two different observers.
+So, to talk about conditional independence.
+Yeah.
+In my head, this maximum entanglement as a resource can actually be expanded to perform a classical computation or even to increase the coherence of a quantum system.
+So, I'm playing with that notion a bit.
+Cool.
+Thank you.
+Can I ask something really quick about...
+Yeah.
+There is...
+Okay.
+So, apparently, like, from what I don't understand very much, but from Boer, apparently the...
+The whole experimental setup was one, like, entity that couldn't be broken down into, like, constituent pieces that are interacting, but had to be taken as one entity, from what I understand.
+And apparently Einstein's view was...
+Well, I really don't know what his view was, but apparently, like, it's not one entity.
+It can be broken down into localized pieces that are interacting.
+And I'm kind of...
+Apparently, they couldn't get along, like, Boer and Einstein.
+Apparently, there was, like, a party or something, and then they all congregated to separate parts of the room and didn't really interact.
+And apparently, it was because they had these, like, opposing views on...
+The same thing of, like, breaking down the interconnectedness into separate constituent subsystems.
+And even, like, taking the partial trace...
+I mean, partial...
+There was one universal function, taking the partial trace, which wisely defined the subsystems whenever perfectly.
+So, like...
+It's all tied together, but I can't really explain it.
+I'm trying to say, like...
+Well, how do you...
+I'm asking...
+I'm asking...
+To everyone, like...
+These seem like two very opposed views.
+They seem like very alternative views.
+Like, on one side, you have, like...
+Kind of, like...
+An indivisible whole.
+On the other side, you have, like, locality, where it's almost like there's, like, a sequence of measurements leading up to an ego, an I, that then measures as, like, a real entity.
+As in another one, it's like, the observer and the observed are one thing.
+They cannot be meaningfully separated.
+Maybe functionally, they can be separated, but, like, as actually...
+As actually existing subcomponents that cannot be defined strictly.
+That's two different...
+From what I understand, one of them is saying, yes, you can define these subsystems, and they really do exist as separate entities.
+The other one is saying, that's just kind of like a...
+Like a useful notion, like a useful way to organize information as to operate on that information, deposit a subject in an object.
+And to have the subject operate on the object is a useful way for thinking to separate itself.
+And it seems like this is closer to Bohr than the other one is closer...
+Well, apparently that's a distinction of, like, Bohr and Einstein from what I understand.
+From what I understand, which is...
+Please correct me if it's wrong.
+And so, yeah, I just wanted to put that out there.
+And I don't know what that's going to spawn in terms of responses, but yes.
+Well, I think that's a fair characterization of the Bohr-Einstein debate, actually.
+So, to add a response there, whether it actually exists, it seems like in one of those framings, you had an observer looking at something.
+And if we define actually existing in a relational observed setting, then to the observer, it actually...
+The measurement actually exists.
+Prepare, measure, prepare, measure.
+And then, from another perspective, viewing that setup, then it's the observer of a setup.
+Mm-hmm.
+And so, it's just, again, to Chris's first point about what perspective...
+And this is one of the most essential pieces that the blanket screen relationality brings into play, is there isn't a view from nowhere, but there is a perspective that may have a definite answer, and yet there are multiple perspectives that have complementary answers in our scenario.
+Daniel, can I speak for a minute?
+Oh, yeah.
+I was muted earlier.
+I didn't realize.
+I meant to ask David, I don't have an answer to your question, but I was wondering if you could reformulate, it would be fair to reformulate your question as saying, are blankets objective or not?
+Is the Bohr-Einstein debate equivalent to that?
+And then, second, and I guess this may be for Chris, I was skimming through the answers, and one of them was talking about how the main...
+One of the big tensions between general relativity and quantum theory is the idea of object persistence.
+And I don't know how to articulate it either, but I feel like it was more or less what you were getting at, David.
+Is that correct?
+Yeah, I think that's another way to put it.
+And also the thing you said about the third person looking at those systems, if there's multi-agent communication, that's kind of the thing that I'm kind of stuck on in terms of trying to understand this.
+Because if there's a third agent looking, those two are subsumed in the information on the holographic screen.
+And then, I don't know, anyways, so that's where I'm kind of...
+I think a delightful thing to read here is Gene Wigner's paper where he introduces the Wigner's friend thought experiment.
+And I think it's from...
+There's a book called The Scientist Speculates.
+The editor is someone named Goode, G-O-O-D.
+And it's also...
+And Wigner has a paper in this book.
+I think it's 1961.
+And it's also the paper where Wigner talks about consciousness being an essential concept in quantum theory.
+But the thought experiment is that Wigner's friend is doing an experiment in his laboratory and making observations.
+And Wigner's outside the laboratory.
+And Wigner has to regard his friend as in some sort of superposition with his instrument.
+He has to regard his friend as entangled with his friend's instruments.
+Until Wigner can actually interact locally with the friend and make a measurement of the friend's state.
+And so it makes Wigner's friend and his apparatus look like an entangled pair.
+And Wigner now looks like an experimenter who's operating on just one part of an entangled pair.
+But Wigner himself tells the story very nicely.
+And it's just...
+That sort of historical text, I think, is always useful to have a look at and see how the people themselves were responding to this idea.
+And Wigner is quite perplexed by this thought experiment.
+And I think all of those people were quite, you know, they were quite honestly mystified with what observation actually is and what consciousness is and all of these other questions that people are a little bit scared to talk about in the ensuing several decades.
+So that's a good point.
+Self reference.
+Yeah, you can go ahead.
+Self reference seems to be like there's this ancient symbol of the Uroboros.
+Self reference.
+The output is the input.
+It feeds on itself.
+Even like consciousness, I have to contextualize my...
+I have to contextualize to contextualize.
+Like it's self referential.
+I have to...
+Everything refers to itself.
+And then at the end, self reference is where all the paradoxes are.
+Like this sentence is false.
+Or all I know is that I know nothing.
+These are all paradoxical statements.
+So there's some sort of mystery.
+Self division is self reference.
+Like that ancient view is that it's like embryogenesis, cosmogenesis, same thing.
+I don't know.
+There's...
+Yeah, there's...
+It seems to me that there's some sort of mystery that's so...
+It's like the mind just alludes.
+Like, I don't know.
+Thinking tries to make these thought systems, but it just slips out.
+Like, I know, I just...
+It can't grasp it.
+I don't know.
+I mean, but that's already a conclusion, which I don't necessarily want to even make.
+Because if it's self reference, I just thinking, okay, then maybe it goes all the way to the bottom.
+But I don't know.
+Daniel, can I ask a question before we run out of time?
+Actually, I have two.
+Maybe one is a bit longer.
+The second one, I'm sure.
+So the first one, Chris, is...
+I was very intrigued and looking forward to hear you talk a little bit about that.
+Cycle of error correction and memory and persistence and so on.
+And in particular, I was wondering if it relates at all to the main other thing you talked about in that lecture six.
+The copy and diversify business.
+Because intuitively, if that cycle is something that an organism has to implement.
+I'm talking about that slide with the error correction and whatnot.
+Then it pays the thermodynamic price for it.
+So I...
+Presumably, there is an anabolic process of trying to grow so you can feed degrees of freedom into this error correcting scheme.
+If, you know, thinking like a physicist, something like that might be happening.
+So is the copy and diversify feature a necessity of having to run this cycle?
+That's my first question.
+That's a good question.
+I don't know whether it's necessary.
+I think one could think of a fairly small scale heat engine or metabolic system that can pull just enough free energy out of its environment to store a one-bit memory.
+And you can think of something like a flip-flop, right?
+These things aren't alive.
+So it's not quite as complex as an organism.
+But it is using energy to maintain a memory.
+And its memory does influence its behavior.
+So I think we have these limiting cases like this that don't have to grow.
+But when you think about organisms,
+organisms have the problem of being made out of very delicate parts that need to be replaced.
+And it's that degradation that I think is driving this need for constant copying.
+Mm-hmm.
+And from a physics point of view, I think what that boils down to is that the organisms living right at the edge of an interaction with its environment,
+that's too strong to maintain.
+So the environmental interaction is constantly at risk of spinning out of control and having too large an energy transfer, which basically tears the Markov blanket apart.
+Mm-hmm.
+And exposes too many of the internal degrees of freedom to the outside.
+So this may be one way of saying what characterizes life, that it's interacting with its environment right on the edge of an interaction that's too strong.
+Mm-hmm.
+And it's great to have a strong interaction because then you have big eigenvalues and so you have large bandwidth.
+Mm-hmm.
+Mm-hmm.
+Mm-hmm.
+But the risk is that the environment tears you apart.
+Close to the fire, but don't get burnt.
+Become the fire and then control the redox balance and gain that autopoetic, regulative capacity.
+Yeah.
+Which works when it works.
+Yeah.
+Until something comes along with bigger teeth.
+You know.
+So another comment, if I may, is as the course comes to an end, one, two of the, two themes I realized associated to classicality that we've talked a lot about in this class are object persistence and boundaries, right?
+persistence and boundaries right so classicality being a feature intrinsically boundary related
+and having a lot to do with object persistence and so so so artists just things completely dual
+from from an FEP point of view because you want to maintain the integrity of the boundary
+you want to you know you want to preserve that classical information presumably I'm not sure I
+guess my question to to everyone is our object persistence and and uh and uh well in the topic
+of uh classicality object persistence and boundaries like are these basically completely dual dual pictures
+that's my question yeah I wouldn't be surprised
+and we also need object persistence to define space so
+this idea of object persistence is is
+a very key idea that that has to be dealt with and physics has largely ignored this idea which is
+uh kind of objects are taken for granted
+but but I think I think what Carl says in that 2019
+free energy principle for a particular physics paper is fairly clear on this I mean he basically says
+uh the free energy principle tells systems to persist that's basically what a system has to do
+by by maintaining the integrity of its markup blanket I think that's very insightful
+if it doesn't it's not yeah it's not a system anymore
+well as we
+we
+this now measured outcome how do we prepare individually at the institute scale ecosystem
+scale and what are we going to do coming out of this are we talking about that right now
+or any thoughts yeah just keep learning bro
+ecosystem scale like the active inference ecosystem and our own ecosystems
+going beyond our own scale i guess the only thing i can comment on this is i echo
+the view that or not view or rather remark that chris made in the lecture
+about quantum biology as a field it's in a nascent stage right now but i mean i think you know there
+will be a non-trivial interaction between the active inference community and
+and quantum biology that i'm i'm making that surmised right now
+so let's talk about quantum biology for a second
+i'll open up the pandora's box here let's think of it as a parable as opposed or maybe even fan
+fiction because chris has shared so much with us i want to kind of build off of it
+if you'll um indulge me for a second i'll read you a little story just hear the story out
+so quantum biology sounds like more than up or down without saying that it is more
+up or down as what information can be counterfactually is looking at carrying capacity as in
+quotes can be and from that carrying capacity comes orientation things like direction and scale
+things like the ability to plan appear to fit better in the
+in the orientation category relative to the carrying capacity category, which is non-communativity
+in action. So if this is a big if we agree that orientation is to follow, should our
+recognizing of planning affordances follow as well? So from the session slide, there
+was a quote, living systems are genetic quantum systems that the FEP has driven to a high
+level of computational complexity. And here the in quotes computation is baked in as something
+plannable. With this as a reference frame to make plans, we need carrying capacity. Check. Agreed.
+But in order to learn, where does the carrying capacity plus orientation relationship insist
+that we start with a received plan? This perspective is compared to say actively
+inferring our way to the plan falls out of carrying capacity. Just making this explicit,
+we can then ask, should we first apply a received plan or apply active inference?
+That helps clarify when the strategy is one more based on exploitation versus a strategy more
+based on bias to exploration. In summary, when did information delivery, things like product or
+package, packaging, begin to trump information carrying capacity, which is essentially information processing,
+rather than we need this paired relationship to carrying capacity plus the orientation as a minimum of two,
+so that we can compare, identify change and no change, model patterns, etc. This is another way of asking,
+when did subject matter expertise come to be seen as more valuable than prediction matter expertise,
+when it seems like we need both capacities, if we want independency? And here's the kicker.
+If not given time to reflect on what's being asked here, and I know Chris oftentimes has a nice long pause
+to reflect, but if not given the time to reflect, people will take their subject matter expertise strategy,
+which clearly is a next move perspective over one that holds up next move plus all moves, meaning that
+they bring prediction matter expertise in to follow, to parameterize, to unlock, to unring, to unbound what's in and what's out.
+Of course, without prediction matter expertise, what is quantum biology?
+Wow, can you just post that someplace so we can think about it?
+I'll just email it to you, Chris.
+Cool.
+That was great.
+Yeah, I think you're asking about the
+fundamental question of what does Carl call it? Epistemic value and the role of curiosity and
+that whole cluster of issues.
+Well, I think I need to give you the credit that you deserve on this. I think it's the fact that you
+have allowed us to interact with you that's given us that kind of courage and confidence
+to be able to put things out there. I don't know how much of it sticks or how much of it, I'm not
+sure that it requires disciples, but I do think it provides what you've done is provided that medium.
+So again, I guess that's my way of saying thank you.
+Well, thank you.
+That's...
+Yeah, thank you, Chris. I have learned so much this year, more than ever before.
+Okay, well, great. This has been a great class. And hopefully...
+Hopefully various things will come out of it. I mean, certainly just from looking at the questions
+that have been in the question forum, lots of people are thinking about these issues. And
+that's what I think AI needs going forward is people thinking and talking about stuff.
+I think AI needs to be a little bit more. And I think AI needs to be a little bit more.
+Thank you, Chris. Yeah, a few outcomes that we know will transcribe the lectures,
+the discussions, add in screenshots, add in the Q&A, and publish those proceedings as a book.
+We will pick back up in 2024 with potentially having the recorded and written contents as
+part of a curriculum. So not just replicating, but now continuing on with another quantum flow
+across this now classical artifact, because it's quantum in the moment. And then once it's communicated,
+it becomes a classic.
+And we have most to prepare that state.
+All right. Great. I'm gonna have to sign off. But thank you very much.
+Thank you, Chris.
+Thank you. Thank you, Chris.
+All right. Ciao.
+Bye-bye.
+Does anyone else...
+Does anyone else want to make any reflection or comments?
+Chris
+I just thank everybody that's helped organize, participated in all of the discussions,
+even the people who showed up at the very end of the discussions, because I really appreciate that.
+Again, I can't emphasize enough, when we get a chance to interact with this stuff,
+when we get to manipulate it, when we're able to get asked questions, even though we feel vulnerable.
+I think that that's when a lot of the really good stuff tends to get consolidated. So thank you to all of you.
+I'll read some fun comments from the live chat. Just the last several, just to recognize some of our great
+colleagues.
+Lucrative Leadership
+wrote
+Yes, more on affordances. Ian wrote, would love for this series to continue. Joanne wrote, thank you. This was a wonderful learning experience.
+Mills 8102 wrote, the probable and the possible.
+There are some emojis. Pablo sent a heart.
+Paul, the probable and the possible.
+I don't speak this language, but I can definitely hear, understand and feel it.
+So thank you everybody who's watching along. These were all great. And
+we prepare and measure every day at the Institute. So I really do hope that people from all backgrounds,
+all vectors, all preference and prior sets come engage and not presuppose too much about us or
+themselves or what can happen when we really do interact. And when we take it into
+the kinds of spaces and timelines that we know we want to be on.
+All right. Thank you. Bye.
+Bye.
+Thank you everyone. Bye.

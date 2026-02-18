@@ -7,7 +7,7 @@ import pytest
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 
-from journal_utilities.youtube import (
+from journal_utilities.youtube.youtube import (
     YOUTUBE_ID_PATTERN,
     extract_youtube_id,
     is_video_private,
@@ -124,7 +124,7 @@ class TestIsVideoPrivate:
     def test_video_not_private_no_file(self, tmp_path, monkeypatch):
         """Test returns False when private_videos.json doesn't exist."""
         # Point the function to a non-existent file
-        with patch("journal_utilities.youtube.Path") as mock_path:
+        with patch("journal_utilities.youtube.youtube.Path") as mock_path:
             mock_file = MagicMock()
             mock_file.exists.return_value = False
             mock_path.return_value.__truediv__.return_value = mock_file
@@ -141,7 +141,7 @@ class TestIsVideoPrivate:
         }))
         
         with patch.object(Path, "__new__", return_value=tmp_path / "youtube.py"):
-            with patch("journal_utilities.youtube.Path") as mock_path:
+            with patch("journal_utilities.youtube.youtube.Path") as mock_path:
                 mock_file = tmp_path / "private_videos.json"
                 mock_path.return_value.__truediv__.return_value = mock_file
                 mock_path.return_value.parent.__truediv__.return_value = mock_file

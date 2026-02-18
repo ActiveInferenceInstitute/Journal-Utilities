@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream 014.1: Ran Wei, Value of Information and Reward Specification in Active Inference</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream 014.1: Ran Wei, Value of Information and Reward Specification in Active Inference</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_014 &middot; Episode 1 &middot; Duration: 1:15:44 &middot; Views: 299</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=Me3BitlU6Vs">https://www.youtube.com/watch?v=Me3BitlU6Vs</a></div>
+<article>
+<p>Hello and welcome. It's September 13th, 2024 and we're in Active Inference Model Stream 14.1</p>
+<p>with Ranwei talking about value of information and reward specification in Active Inference.</p>
+<p>There will be a presentation then we'll have a discussion and looking forward to people's</p>
+<p>comments and questions. Thank you again for joining and looking forward to the presentation.</p>
+<p>Yeah sure so I'll just dive into it. Yeah so thanks again for the invitation and</p>
+<p>so this paper is about the value of information and then some aspects about reward specification</p>
+<p>in Active Inference but it also touches on PAMDPs.</p>
+<p>And so the motivation is very simple so I was simply trying to understand the expected free</p>
+<p>energy objective for action planning in Active Inference. And the nice thing about the EFE objective</p>
+<p>which makes it an appealing objective for a variety of people in a variety of domains is that it has a</p>
+<p>very intuitive decomposition as the sum of the expected value term and epistemic value term.</p>
+<p>And then so the expected value term is this term that encourages the agent to obtain reward or achieve</p>
+<p>their preferred state of the world because it's simply the cross entropy between the predicted</p>
+<p>future observations given some actions and the preferred observations P-tilde.</p>
+<p>The second term epistemic value is what makes active inference or make it what makes EFE very interesting.</p>
+<p>So the epistemic value term is defined as the expected KL divergence between future</p>
+<p>future posterior so belief about future states given future observations and the predicted</p>
+<p>distribution of future states. So what this term does is it quantifies how far is the future posterior</p>
+<p>from the future prior which essentially quantifies the amount of belief update. So if you optimize this term,</p>
+<p>then it essentially encourages the agent to take actions that would lead to a higher amount of belief update.</p>
+<p>So a higher amount of information obtained about the environment.</p>
+<p>So experimentally, people have found that optimizing this objective led to some very interesting behavior.</p>
+<p>So on the left hand side here, we have an example from one of Alex's papers where he compared the</p>
+<p>what we call the state coverage of reward maximizing agents versus active inference agents</p>
+<p>in this simple environment called the mountain car, where the state of the agent is represented by its</p>
+<p>position and velocity. So we see that active inference agents has a much larger coverage of the state</p>
+<p>space. So it spreads more territory of the state space versus the reward maximizing agents.</p>
+<p>So what this potentially allows the agent to do is to learn a better and more comprehensive model of the environment,</p>
+<p>which it also turns out that having such a model enables better action selection and actually achieving higher reward.</p>
+<p>So on the right hand side, we have an example from one of my papers. So I did a lot of study on</p>
+<p>modeling human driving behavior. And this is one of the examples where we have a car called the Eagle vehicle driving down the road.</p>
+<p>And then on the side of the road, we have a large truck, which potentially obscures the view of a pedestrian.</p>
+<p>But we don't actually know whether the pedestrian exists or not exists. But if the pedestrian does exist, we assume</p>
+<p>or rather the Eagle vehicle believes that it's going to cross the road. So we don't want to cause any</p>
+<p>conflict with the pedestrian who's trying to cross the road. So what this Eagle vehicle does as a consequence</p>
+<p>of optimizing EFV is that it will nudge slightly to the left of the road to gain view of the pedestrian.</p>
+<p>And if it sees that the pedestrian doesn't exist, then it will return to the center of the road and carry on with the optimal</p>
+<p>speed without ever having to stop for the pedestrian. So these behaviors are very interesting.</p>
+<p>And it highlights the value of encouraging agent to explore and gain information about the environment.</p>
+<p>And this is usually understood as the main differentiator between active inference and some of the other</p>
+<p>frameworks for decision making, such as reinforcement learning. But one somewhat contradictory fact</p>
+<p>is that actually Bayesian and meta-reinforcement learning are already known to ultimately trade off</p>
+<p>exploration and exploitation. So here we have an example from one of the more recent meta-RL surveys</p>
+<p>where, um, uh, so this is actually a very common benchmark in meta-RL where we would start an agent</p>
+<p>in the center of the circle and in the goal position, which is unknown to the agent will be somewhere along the</p>
+<p>circle. But again, it's never known to the agent. So the, what the agent has to do is to</p>
+<p>explore along the circle to find the goal. So basically what it does is it'll pick a position</p>
+<p>along the circle and it will just trace along the circle until it arrives at the goal position. So this is the,</p>
+<p>uh, the optimal strategy for this setting. And we see that it's already being demonstrated by meta-RL.</p>
+<p>So this begs the question even more of what is the relationship between active inference and Bayesian-RL.</p>
+<p>So, um, and the main idea of the paper, or rather the main insight that we're trying to offer is that EFE</p>
+<p>can be understood as an approximation to the base optimal RL policy and specifically by the information</p>
+<p>reward shaping of the EFE objective. So to unpack this, I will, uh, do a very brief review of, uh, some</p>
+<p>preliminary, preliminary annotations on MDPs and active inference. And then we will introduce a few</p>
+<p>analysis tools from MDP theory, which will allow us to better understand and appreciate the notion of</p>
+<p>value of information, which then will allow us to derive the main results of the paper. And then we'll</p>
+<p>just close up with some discussion and more, and in some other interactive activities. Um, yeah, so,</p>
+<p>so the preliminaries will be very brief because most people, uh, in the Institute, I believe, are the</p>
+<p>experts in these topics. Um, so this is the, uh, regular formalism for MDPs. And then, um,</p>
+<p>the objective of an agent in MDP is usually to maximize discounted, uh, cumulative rewards. So I have</p>
+<p>chosen to use the infinite horizon, uh, setting with discounting because it makes the analysis a bit easier.</p>
+<p>But one, so the, so the only thing I wanted to highlight on this page is that, uh, the classic MDP</p>
+<p>theory says that for a given MDP with known transition probabilities and known reward function,</p>
+<p>there always exists at least one deterministic stationary Markovian policy. And then the value</p>
+<p>function of the policy, which is the value accrued by the policy in MDP, can be computed from the Bellman</p>
+<p>equations. Um, and then, so another ingredient that we need is going to, is partially observable MDP,</p>
+<p>which is just an extension of MDPs, uh, where, uh, the state variable now is no longer directly</p>
+<p>observable to the agent, but the agent can observe another signal O that's usually correlated with the</p>
+<p>states. Um, but because the agent can no longer observe the state, then if you condition your policy</p>
+<p>only on the most recent observation, you don't really have, um, sufficient information for, uh, taking</p>
+<p>optimal actions. So in general for POMDPs, the, uh, optimal policy has to be conditioned on the entire</p>
+<p>history, which, uh, as accumulates can tend to an infinite length. Um, so here we need to, uh, recall</p>
+<p>another very, uh, important, uh, result from POMDP theory, which is that the belief state, which can</p>
+<p>be computed from the Bayesian belief update, is a sufficient statistic of the entire history, which</p>
+<p>means that if you condition your policy on a belief state, then you don't have to condition your policy on</p>
+<p>the entire history. And then once you do that, you can define the value function also in terms of the</p>
+<p>belief. So we have what's called the belief action value function, the belief value function. Um, so this</p>
+<p>belief state view of POMDPs is very interesting because it says that for any given POMDP, you have</p>
+<p>an equivalent, uh, MDP that's defined on the space of belief, uh, beliefs, uh, equivalent in the sense that</p>
+<p>it would yield the same optimal policy for the belief MDP and the POMDP. And then, uh, this belief MDP would</p>
+<p>have its corresponding belief action reward and belief transition dynamics. So the belief action reward is</p>
+<p>defined simply as the weighted average of the state action reward by the beliefs. And what's interesting</p>
+<p>about this belief MDP is how the belief transition dynamics is defined. Um, so you can understand this</p>
+<p>by looking at this, uh, these two terms on the right-hand side. So this basically says that in order to</p>
+<p>transition, um, the belief from one time step to the next time step to get B prime, the first thing you're</p>
+<p>going to do is to draw, uh, a future observation, um, or sometimes I call it counterfactual future</p>
+<p>observation O prime from the posterior predictive of the observation distribution under the current belief.</p>
+<p>And you're gonna, you, you then you're going to perform a Bayesian update on this counterfactual</p>
+<p>observation to get, uh, the next belief. And so because the marginal distribution over the observation</p>
+<p>is in general stochastic, this makes the belief transition dynamics also stochastic. Um, so this is</p>
+<p>the belief MDP, the equivalent belief MDP for the POMDP. And then we, I will refer to this as the</p>
+<p>base optimal belief MDP because the policy computed from such a belief MDP would be, would be the base</p>
+<p>optimal policy for the POMDP. Um, so then we have active inference, which similar to the canonical POMDP</p>
+<p>framework has an inference step and a planning step. And then, so the difference between active inference</p>
+<p>and POMDP and the regular POMDP is instead of performing, um, exact Bayesian update, we'll perform</p>
+<p>variational updates. But, um, because from the variational inference literature, we know that if</p>
+<p>the variational distribution QFS is chosen appropriately, then it would have to be equal to the exact Bayesian</p>
+<p>update. So this doesn't really introduce too much difference from the classic, um,</p>
+<p>POMDP framework. The main difference between active inference, uh, and the classic POMDP is that the agent</p>
+<p>would, um, instead of optimizing reward, the agent optimizes expected free energy. Uh, and, uh, I, I wrote</p>
+<p>the, uh, this form of EFE here, which I believe is more general. Um, sometimes it's sometimes referred to</p>
+<p>as the energy entropy, uh, decomposition. Um, so something I want to remark on this page is that</p>
+<p>whenever we talk about EFE, we need to be very precise about the definition of different Qs, because</p>
+<p>there are too many Qs, uh, in active inference and in EFE. Um, and here I define the Q over future states</p>
+<p>as the product of, uh, uh, future marginal state distributions. Um, this is not because I invented it.</p>
+<p>I'm just, uh, writing this, um, uh, writing this, the usual, the, the usual definition of, uh, EFE in a</p>
+<p>more formal way and explicitly call out that this is the product of future marginal states. Um, and then,</p>
+<p>so one more step to get the pragmatic and epistemic value decomposition of EFE is that we would have to</p>
+<p>define the energy function or the preference distribution to have preference only on the</p>
+<p>observations. And then we can split up the energy entropy decomposition into the pragmatic and epistemic</p>
+<p>value decomposition. Um, so what this characterization allows us to do is that we can now see EFE</p>
+<p>as the specific type of belief MDP where, um, it, it would be different from the Bayes optimal belief MDP,</p>
+<p>but it would still have its own belief action reward and belief transition dynamics. So if we look at the</p>
+<p>belief action reward, it's simply the sum of the one-step pragmatic value, which I denote with R-tilde</p>
+<p>data and the one-step epistemic value. And if we unpack the one-step, uh, pragmatic value, we can actually</p>
+<p>write it as a linear combination of a state action reward. And this is because of the linearity of the</p>
+<p>expectation, uh, which is used to define, uh, the pragmatic value. Um, but the linearity doesn't hold for the</p>
+<p>epistemic value. And in fact, the epistemic values concave in the beliefs. Um, another interesting</p>
+<p>aspect about the belief transition dynamics for EFE is that it doesn't, so different from the</p>
+<p>Bayes optimal belief transition dynamics, it doesn't contain the counterfactual observation O prime.</p>
+<p>So what it means is that, uh, instead of drawing a counterfactual observation from the current, uh,</p>
+<p>posterior predictive marginal and doing a counterfactual update, you would just directly</p>
+<p>propagate your current belief to the next, uh, state marginal. And so this, uh, is sometimes called</p>
+<p>the open loop belief updating in a literature in a way that's analogous to open loop control,</p>
+<p>so that you would update your belief without taking into account of the next observation, but only during</p>
+<p>planning, not during execution, which we'll come back to later. Um, but the belief MDP view of EFE, uh, would</p>
+<p>tell us that, uh, there exists an optimal deterministic Markovian policy simply due to the characterization as</p>
+<p>an MDP. Um, so this, with all of these, um, precise characterizations, we can also make our main question, uh, more precise.</p>
+<p>Um, and so we saw that EFE uses the open loop belief dynamics with an added information reward,</p>
+<p>whereas the Bayes optimal, uh, belief MDP uses the regular, uh, cannot, the regular linear combination</p>
+<p>of state action rewards and a closed loop belief dynamics. So can we understand, uh, these modifications in EFE</p>
+<p>as an approximation to the Bayes optimal belief MDP and in turn the Bayes optimal pulse? So that's the question</p>
+<p>we're trying to pursue, uh, in this paper. Um, and then, so in order to answer that, we need to introduce some tools from</p>
+<p>MDP theory. Um, so the first set of concepts we'll introduce are the policy advantage and the model advantage.</p>
+<p>And for the sake of discussion for now, we'll just understand them as some abstract notion of error measures</p>
+<p>of, uh, the policy and the model. And the reason why I say that is that if you look at the definition</p>
+<p>of the policy advantage, for example, so it's defined as the difference between two value functions.</p>
+<p>So for the first value function, the action is, uh, taken from the argument of, uh, the advantage function,</p>
+<p>whereas in the second value function, the action is taken from, uh, this policy pi, which is used to</p>
+<p>define the value function. So the reason why I say this can be understood as an error measure is that if</p>
+<p>the action a is more or less the same as the action drawn from the policy pi, then the advantage function</p>
+<p>will be zero. So there will be no difference between, between them. So this essentially</p>
+<p>characterizes how much is action a different from an action that would have been chosen by, uh, the policy</p>
+<p>that's used to define the value function. And then basically more or less the same idea holds for model</p>
+<p>advantage. But instead of measuring the difference in the actions, we're measuring the difference in</p>
+<p>the two dynamics by saying that if I draw a next state S prime from dynamics P prime and another next state</p>
+<p>S double prime from dynamics P, how is the value of S prime different from S double prime? So if P prime is</p>
+<p>actually equal to P, then there is no model advantage. So this thing measures the difference between the two models.</p>
+<p>Um, two other concepts we need to know, uh, one is effective horizon. So this is basically introduced, uh, uh, as an analog of, uh, planning horizon for infinite horizon discounted problem.</p>
+<p>So it's defined as one over one minus the discount, uh, discount factor gamma. So it's basically saying how many time steps do I need to accumulate until the geometric discounting that's usually used in, uh,</p>
+<p>uh, in the RL setting, uh, is zero. And then the normalized occupancy measure is essentially</p>
+<p>the, uh, stationary for marginal state action distribution along the Markov chain of rolling out a policy in a dynamics.</p>
+<p>So this kind of essentially characterizes the equilibrium behavior of the system.</p>
+<p>Um, and then so with these concepts, we have our first analysis tool, uh, which I call</p>
+<p>performance difference in mismatched MDPs. So what we're trying to do in this lemma is the following.</p>
+<p>So we're, we say that we're going to look at two policies, pi and pi prime, and then both policies are optimal with, with, with respect to their own MDPs, which we denote as M and M prime.</p>
+<p>And we, we're going to say that these two MDPs would share the same state and action space,</p>
+<p>same initial state distribution, and the same discount factor, but they could potentially have different rewards and different dynamics.</p>
+<p>So this is, this, this is very similar to the comparison of, uh, the EFE policy and the base optimal policy where, um, they share the same spaces,</p>
+<p>but they have different rewards and different dynamics. So this is basically our tool to quantify their difference.</p>
+<p>And then, so what this lemma said, move on to say is that, um, we're going to look at the performance difference between these two policies,</p>
+<p>but both of them will be evaluated in environment M.</p>
+<p>And because, uh, policy pi is by definition, the optimal policy for, uh, MDP or environment M,</p>
+<p>then there's no way that pi prime is going to do better than pi.</p>
+<p>Uh, so that's why this quantity is also called the regret.</p>
+<p>Uh, so we're, we're going to interchange with calling it regret or performance difference.</p>
+<p>But, um, basically this relationship here shows that the regret can be decomposed into three terms.</p>
+<p>So the first term is the advantage of the actions drawn from, uh, uh, policy pi,</p>
+<p>which I would, uh, I call it the expert distribution because it's the better policy in this setting.</p>
+<p>And then the second and third term, um, are defined in terms of the model advantage.</p>
+<p>And I've used, um, notation or abuse labeling to call it also the reward advantage.</p>
+<p>And then, so you can understand this relationship, uh, by, um, saying that if R and R prime are equal,</p>
+<p>and then P and P prime are equal, then there's no reward model advantage or disadvantage</p>
+<p>between the two policies.</p>
+<p>And because of that, then there's also no policy advantage, then the regret would be zero.</p>
+<p>Um, so, and, and so the nice thing about this relationship is that if we put an absolute value</p>
+<p>sign, uh, over it, and then we, uh, do some algebra, then we can actually obtain an upper bound on the regret.</p>
+<p>That's defined in terms of the policy advantage, reward advantage, and, uh, the difference between the two dynamics.</p>
+<p>So from now on, I will actually call reward and policy advantage, um, reward and policy error, because that's to some extent what they represent.</p>
+<p>So what we see here on the right hand side is that the coefficients for these different terms are different.</p>
+<p>So the coefficients for the reward and policy error are linear in the planning horizon, one over one minus gamma,</p>
+<p>whereas the coefficient for the, uh, dynamics difference is quadratic or squared in the planning horizon.</p>
+<p>So it says that if we're, uh, making errors or mistakes along all of these dimensions,</p>
+<p>then the rate at which the dynamics model error accumulate is going to be much faster than the rate at which, uh, policy and reward error accumulates.</p>
+<p>Another thing to remark about this relationship is that it can be a little bit conservative because, um, sometimes even if you make mistakes with your choice of dynamics,</p>
+<p>you can actually make it up by, uh, choosing the reward function to be different from the optimal reward.</p>
+<p>So basically whatever, if, if you incur some disadvantage in the dynamics, then you can choose to gain some advantage in the reward so that it can cancel out.</p>
+<p>And so basically I'm going to show that this is what happens with, uh, the EFE policy, EFE policy compared to the base optimal policy.</p>
+<p>Um, yeah, so that's with this, let's refine our main question a little bit more.</p>
+<p>So we're trying to understand EFE as an approximation to the base optimal, uh, belief MDP.</p>
+<p>And then specifically the way in which, um, it approximates that is via this reward shaping term to cancel out the disadvantage, uh, due to using open loop belief dynamics.</p>
+<p>So before we do that, we, um, we should review the notion of value of information, uh, which will give us a clue, uh, and also make better connections between, uh, these two topics.</p>
+<p>So the value of information, uh, the most popular definition was given by Ronald Howard 1966, where he defines it as the reward that a decision maker is willing to give away.</p>
+<p>So, um, if they could have their uncertainty resolved, um, by some magician, for example, and if you commit to this definition, then you can quantify the value of information simply as the difference between the expected value given perfect information.</p>
+<p>And then one very appealing fact about this is that because an optimal decision maker cannot do worse by having more information than the expected value of perfect information is always not negative, at least in the single agent setting.</p>
+<p>Um, but the thing about palm DP is that in general, you cannot just provide agents with perfect information.</p>
+<p>Um, usually what happens is, um, the environment provides the agent with an observation that provides indirect information about the environment.</p>
+<p>Um, so we need to essentially make an extension of the expected value of perfect information for the palm DP setting.</p>
+<p>And, uh, and, uh, and it's basically very straightforward.</p>
+<p>Uh, and I would just label it as the expected value of perfect observation, because we can make, uh, an observation rather than be given perfect information.</p>
+<p>And this is sometimes, uh, called, uh, the value of imperfect information, uh, from the decision theory literature.</p>
+<p>And the definition again is just the difference between the expected value given the perfect observation versus without the perfect observation.</p>
+<p>And, uh, and, uh, the non-negativity, uh, result apply again in the setting.</p>
+<p>And then, so to apply the expected value of perfect observation to the palm DP setting, we then have to take into account the sequential nature of decision making.</p>
+<p>And once we add that, it actually turns out that, uh, the definition of EV in the setting is, um, the expected value using the canonical linear combination rewards plus the open loop belief updating.</p>
+<p>Whereas the expected value given perfect observation, uh, is the same as the base optimal value function.</p>
+<p>So, so this is very interesting.</p>
+<p>And, um, it also, so because, uh, the definition of the expected value uses open loop dynamics.</p>
+<p>It sort of serves as a bridge between the base optimal policy, um, the active inference, well, actually maybe I'll put it here, the active inference, um, policy, whereas the open loop policy is in the middle.</p>
+<p>Um, because this open loop value function takes one term from the base optimal policy and takes another term, the belief transition dynamics term from active inference policy.</p>
+<p>Um, so again, the non-negativity of, uh, the value of perfect observation apply in a setting because, uh, as you increase the planning horizon, you're basically accruing the non-negativity of value of information along your planning horizon.</p>
+<p>Um, so this is great, but, uh, the problem with this proposition is that it doesn't really tell us how much, uh, is the closed loop or base optimal policy better than the base optimal policy.</p>
+<p>Uh, and it also doesn't take into account of the fact that usually, uh, in applications, even though we would plan a policy in open loop, when we deploy the policy, we usually still deploy the policy in closed loop by allowing the agent to observe the environment and update their belief.</p>
+<p>Um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um</p>
+<p>between the two policies is due to model advantage.</p>
+<p>And specifically in this case,</p>
+<p>it's due to the disadvantage of using open loop policy,</p>
+<p>open loop dynamics and open loop policy planning.</p>
+<p>So what exactly is the advantage</p>
+<p>or disadvantage of being open loop?</p>
+<p>So here we have a proposition that quantifies that.</p>
+<p>And it turns out that the advantage of being closed loop</p>
+<p>is exactly related to the information gain.</p>
+<p>So how did we get this?</p>
+<p>So basically we start with a one step decision making.</p>
+<p>And in that setting,</p>
+<p>the advantage of being closed loop</p>
+<p>is basically the expected value of perfect observation,</p>
+<p>which is the difference between the expected value</p>
+<p>given perfect observation and without.</p>
+<p>And then we can rewrite this as a linear combination</p>
+<p>of the difference between the updated belief</p>
+<p>and the prior belief.</p>
+<p>And if we apply some balance here,</p>
+<p>then we can rewrite, we can upper bound this</p>
+<p>as the expected information gain.</p>
+<p>And that's how we got this.</p>
+<p>And if we accrue this along the planning horizon,</p>
+<p>then we basically multiply this</p>
+<p>by the effective planning horizon,</p>
+<p>one over one minus gamma.</p>
+<p>So that's how this is obtained.</p>
+<p>So this is actually very interesting</p>
+<p>because it gives us a clue that</p>
+<p>if we want to improve the open loop policy,</p>
+<p>while still committing to open loop dynamics,</p>
+<p>then one very reasonable thing we can do</p>
+<p>is to change its reward.</p>
+<p>And a very obvious choice for changing its reward</p>
+<p>is to simply add,</p>
+<p>is to simply make up for the information gain</p>
+<p>that it loses by using the open loop dynamics</p>
+<p>and add that back to the reward function.</p>
+<p>And once you do that,</p>
+<p>then basically you got the EFE objective function in here.</p>
+<p>So to be able to formally show that the EFE policy,</p>
+<p>which is simply the open loop policy</p>
+<p>plus an information reward,</p>
+<p>and show that how much it improves</p>
+<p>on top of the open loop policy,</p>
+<p>we need to make a few assumptions.</p>
+<p>So the first assumption we make here</p>
+<p>is on the preference specification,</p>
+<p>so basically we need to,</p>
+<p>what this assumption says is that</p>
+<p>we need to make sure that</p>
+<p>if we still want the EFE agent to be goal-directed,</p>
+<p>then we need to set the preference in such a way</p>
+<p>so that the gain in pragmatic value</p>
+<p>after a belief update</p>
+<p>is always greater than the loss in information gain</p>
+<p>after a belief update.</p>
+<p>So this way we make sure that the agent focus on a task</p>
+<p>and doesn't get distracted by collecting information</p>
+<p>that's potentially not useful for the task.</p>
+<p>And then the second set of assumptions are introduced</p>
+<p>to make us able to compare the open loop policy</p>
+<p>and EFE policy on more of equal ground.</p>
+<p>So the first assumption is that</p>
+<p>the, we're going to assume that the EFE policy commits</p>
+<p>no more, or rather it does no worse</p>
+<p>in terms of policy advantage</p>
+<p>compared to the open loop policy.</p>
+<p>And the second assumption says that</p>
+<p>the information gain value along the horizon</p>
+<p>is always going to be greater than some values.</p>
+<p>So again, these things are introduced just for us</p>
+<p>to better compare the two policies.</p>
+<p>And with all of these assumptions</p>
+<p>and the previous insights, we have our main result here,</p>
+<p>which gives the regret bounds for the open loop</p>
+<p>and the EFE policies.</p>
+<p>And so we see here that for both the open loop</p>
+<p>and EFE policies, we have a term that's linear</p>
+<p>in the policy error and quadratic in the information gain.</p>
+<p>But the difference between the EFE policy</p>
+<p>and the open loop policy is that the EFE policy</p>
+<p>has an additional term, which is a minus something</p>
+<p>that is linear in the information gain.</p>
+<p>So basically the upper bound is being reduced</p>
+<p>by this linear, this term that's linear</p>
+<p>in the information gain.</p>
+<p>So that's how much the EFE policy</p>
+<p>improves upon the open loop policy,</p>
+<p>which makes it a better approximation</p>
+<p>to the base optimal policy than open loop policy.</p>
+<p>Yeah, so that's the main results</p>
+<p>and the main idea in the paper.</p>
+<p>So we'll just close up with some discussions</p>
+<p>that might be interesting to people</p>
+<p>from different communities.</p>
+<p>So the first interesting observation is that</p>
+<p>this view of EFE as an approximation</p>
+<p>to the base optimal policy actually connects back</p>
+<p>to a lot of work people have done in POMDP planning.</p>
+<p>So the thing about POMDP planning that's very tricky</p>
+<p>is that even though MDP policies are very easy to compute,</p>
+<p>as soon as we introduce partial observation,</p>
+<p>it just becomes extremely difficult to compute the optimal policy</p>
+<p>that would optimally trade off exploration and exploitation.</p>
+<p>So people have explored a bunch of heuristics</p>
+<p>and one of them is called the dual mode controller,</p>
+<p>where you would design an ad hoc rule to switch between exploration mode</p>
+<p>and exploitation mode.</p>
+<p>So for the explore and that switch is being determined</p>
+<p>by the entropy of your belief with some chosen threshold.</p>
+<p>And so for the exploration mode,</p>
+<p>you essentially take the argmax of the current belief.</p>
+<p>So that's the state that you believe is most likely to be the current state.</p>
+<p>And you would simply choose an action from the MDP policy,</p>
+<p>which we know is easier to compute.</p>
+<p>But if the belief entropy is higher than your threshold,</p>
+<p>then you would take an action to minimize the entropy of the next belief.</p>
+<p>So you can read this as something that's very similar</p>
+<p>to maximizing the gain of information in the next period.</p>
+<p>Another interesting framework, again, from the POMDP literature,</p>
+<p>is that some people have realized that there are just,</p>
+<p>there's certain types of behavior that just cannot be modeled</p>
+<p>as obtaining, as reward driven.</p>
+<p>And usually what happens here is that you want these agents</p>
+<p>to actually minimize the entropy of their beliefs</p>
+<p>or maximize the information gain.</p>
+<p>So this is usually called RO-POMDP or active sensing.</p>
+<p>So the objective function in this framework</p>
+<p>usually is just to minimize entropy of belief,</p>
+<p>but not the one step belief entropy,</p>
+<p>rather the cumulative belief entropy</p>
+<p>along the entire planning horizon.</p>
+<p>So something very interesting about this is that</p>
+<p>this term, if we introduce</p>
+<p>a uniform prior belief that doesn't change over time steps,</p>
+<p>then minimizing belief entropy is actually proportional</p>
+<p>to maximizing the expected KL divergence</p>
+<p>between the updated belief and a uniform prior belief.</p>
+<p>So this looks really similar</p>
+<p>to the information gain objective in EFE.</p>
+<p>And usually what people do is that instead of just minimizing belief entropy,</p>
+<p>depending on whether we have any requirements or getting rewards,</p>
+<p>we would do a weighted sum of the reward term</p>
+<p>and the belief entropy term.</p>
+<p>And when you do that, that objective is essentially the belief action reward</p>
+<p>in the EFE case.</p>
+<p>So the one final thing is that actually goes back to active inference.</p>
+<p>So the formulation of active inference that I have introduced,</p>
+<p>I call it vanilla active inference.</p>
+<p>And it's also the active inference,</p>
+<p>the version of active inference that's currently in the main branch of MDP.</p>
+<p>But in 2021, people have proposed a variation of active inference called the sophisticated inference.</p>
+<p>And basically what it does is that it maintains the reward plus information gain as the belief action reward.</p>
+<p>But it actually uses the closed loop belief dynamics.</p>
+<p>I think there's a sentence somewhere in the paper that says that the difference between sophisticated inference</p>
+<p>and the vanilla active inference is that the agent would plan not for future states, but for future beliefs.</p>
+<p>So if that's the case, then it's essentially using the same belief transition dynamics as the base optimal belief MDP.</p>
+<p>So for practitioners, then there's a potential problem with sophisticated inference, which is that now you're basically being based optimal with your belief dynamics,</p>
+<p>but you're adding an additional term in your reward, which means that if the behavior that's supposed to be produced by the base optimal policy,</p>
+<p>you are now ruining it with the additional information gains.</p>
+<p>So basically the concern is that agents, sophisticated inference agent would try to get too much information at the detriment of getting less reward,</p>
+<p>because you would spend more, basically you would spend more time collecting information than focusing on a task.</p>
+<p>But essentially what comes to the rescue is our old friend, the temperature parameter.</p>
+<p>So depending on how you set the precision of your preference distribution, for example, using a temperature parameter of a softmax distribution,</p>
+<p>then you essentially construct weighted, essentially a weighting of the reward term versus the information gain term.</p>
+<p>So if your preference is very precise with a very low temperature, then in this case, a very high value of lambda,</p>
+<p>then you're essentially saying that I only care about the reward. I don't care about the information gain.</p>
+<p>So if you do this, then sophisticated inference just becomes exactly equivalent to the base optimal policy.</p>
+<p>So essentially the lambda, temperature term lambda, interpolates base optimal policy for reward seeking behavior versus information seeking behavior,</p>
+<p>if you have low lambda. And this essentially makes sophisticated EFE, a strict generalization of the base optimal policy.</p>
+<p>So that's everything I wanted to discuss. I think, so the final slide is for people who are interested in more the basics of active inference</p>
+<p>and also the connection between active inference and RL. I have two blog posts.</p>
+<p>I have two blog posts to offer that some people perhaps find helpful.</p>
+<p>Yeah. Thanks again.</p>
+<p>Awesome. Thank you.</p>
+<p>All right. I'll read a first question from the live chat and then I'll read some questions I wrote and some other questions from the live chat.</p>
+<p>So Andrew wrote,</p>
+<p>You mentioned that we should set preferences such that the pragmatic value outweighs the information value lost after the agent has already achieved that information value so that the agent does not become too focused on seeking information rather than achieving a goal.</p>
+<p>Can this strategy risk the agent getting stuck in a local optimum by setting preferences which mitigate information seeking?</p>
+<p>Okay, I think something slipped my mind because it appears to me that the question is somewhat reversed.</p>
+<p>So if I'm getting the idea right, so you're saying that if the agent somehow gets stuck in a local minima along a trajectory to get reward,</p>
+<p>then one thing you can do is to change, for example, the weighting between the reward term and the information gain term.</p>
+<p>So that it essentially switches the mode to focus on getting information and hopefully balances itself out of the local optimum.</p>
+<p>Is that right?</p>
+<p>It could be.</p>
+<p>And then is the question whether that's a reasonable thing to do, whether there's a way to automatically do it?</p>
+<p>Or is that what you're looking for?</p>
+<p>I don't know.</p>
+<p>Yeah.</p>
+<p>Where and how does preference learning and scaling come into play to keep these kinds of epistemic and pragmatic dualities?</p>
+<p>If there is going to be a unified imperative for policy selection that's projecting onto a set of EFE values,</p>
+<p>then how do you weight the epistemic and pragmatic value in training and in deployment?</p>
+<p>Yeah, I think this is an open question.</p>
+<p>I don't think anyone has done very convincing work on this topic specifically.</p>
+<p>So I know about one thread of work from Carl's people.</p>
+<p>Essentially, they have a way to define an update rule for the temperature parameter or the precision parameter.</p>
+<p>So basically what happens there is that if you end up in a situation where your variational free energy,</p>
+<p>which quantifies the accuracy and essentially the accuracy of your predictive model,</p>
+<p>if variational free energy decreases,</p>
+<p>which means that you're starting to observe signals that constantly violates your model of the environment,</p>
+<p>then you would choose actions in a way that's more stochastic.</p>
+<p>So there are ways to derive such rules from the view where of this notion of free energy unifies perception and action.</p>
+<p>So people from Carl's lab has derived rules like this.</p>
+<p>And then there's also work from Noor,</p>
+<p>and I think it's called,</p>
+<p>I can't remember what it's called,</p>
+<p>but basically what that work does is it's trying to use Bayesian updating</p>
+<p>to learn the preference as the agent interacts with the environment.</p>
+<p>So basically the agent would start by having some preferences</p>
+<p>about what states or observations to achieve in the environment.</p>
+<p>And as the agent interacts with the environment,</p>
+<p>it would actually refine its own model,</p>
+<p>its own preference model,</p>
+<p>rather than its model of the dynamics of the environment.</p>
+<p>But something very tricky that happens there is that,</p>
+<p>so she did the experiment in this environment called frozen lake.</p>
+<p>So basically you're walking on a frozen lake and there are holes on a lake.</p>
+<p>And if you somehow step into that hole,</p>
+<p>you would fall or die.</p>
+<p>And then an agent that learns the preference in that environment</p>
+<p>basically learns that it prefers to fall into holes.</p>
+<p>So that doesn't really make a lot of sense.</p>
+<p>If your goal is to maximize reward or stay in the life,</p>
+<p>but it makes sense in a sense that agent just builds a preference model</p>
+<p>that is essentially in compliance with what actually happens in the environment.</p>
+<p>So it's kind of self-evidencing in the wrong way.</p>
+<p>So do either of these two approaches provide a practical way</p>
+<p>to automatically tune a temperature parameter</p>
+<p>to balance yourself out of a local optima, like you said?</p>
+<p>I don't think either of them do that.</p>
+<p>So I don't think I have a comment that firmly addresses this at the moment.</p>
+<p>I do know that people who actually work more on the Bayesian RL side,</p>
+<p>they have done some work to derive approximations to exact Bayesian RL.</p>
+<p>And in doing so,</p>
+<p>they were able to derive some automatic temperature tuning rules to achieve that.</p>
+<p>So if you're interested, I believe the person's is Ian Allsband.</p>
+<p>But I can be wrong.</p>
+<p>But just look for Bayesian RL literature.</p>
+<p>It's a paper that essentially derives a Bayesian RL version of soft active critic.</p>
+<p>Awesome.</p>
+<p>Thank you.</p>
+<p>And another way to address that is to avert slash avoid structurally</p>
+<p>so that like a blood sugar distribution could be loaded with high pragmatic value.</p>
+<p>An I-secade distribution could be driven by high epistemic value in hierarchical models.</p>
+<p>So it isn't that every single model is just loosely describing all of this cluster of undefined processes.</p>
+<p>This is really getting to the distributional level.</p>
+<p>And then if a distribution really does have such a challenging situation</p>
+<p>that it has to be tight and refined and then make a large jump to an area it's never been.</p>
+<p>I mean, those are the challenging situations.</p>
+<p>And that's where these other techniques and methods can be brought into play.</p>
+<p>However, those are the challenging ones.</p>
+<p>And that is not even necessarily needed for simpler settings.</p>
+<p>Well, thanks again for the really instructive and informative presentation.</p>
+<p>To kind of just restate, I saw the big move as grounding in the full observability conditions</p>
+<p>and the analytic situation for the Markov decision process for the MDP.</p>
+<p>So certain kinds of guarantees exist that are, as they should be,</p>
+<p>slightly weakened with the partial observability introduction of observables</p>
+<p>and latent states.</p>
+<p>So how is it possible to use some of the techniques, patterns, guarantees, etc.</p>
+<p>for full observability on a partially observable situation?</p>
+<p>And the move is kind of to consider the parameterization of the generative model</p>
+<p>as a fully observable setting,</p>
+<p>which is what it is in the programming environment.</p>
+<p>Whereas if even part of it were obscured,</p>
+<p>then even that would be a partially observable setting.</p>
+<p>So by treating the ABCDE partially observable MDP</p>
+<p>that we see in the textbook and all this work,</p>
+<p>by treating that as fully observable,</p>
+<p>essentially to the proof finder,</p>
+<p>exactly, thank you,</p>
+<p>by treating the full state updating of the POMDP,</p>
+<p>now the bottom-up semantics of those variables</p>
+<p>might be the probability that this happens</p>
+<p>or the probability that this maps to that.</p>
+<p>So still it is about partial observability,</p>
+<p>but then considering that object in its fully observable condition to itself,</p>
+<p>then you can see that no-regret situation</p>
+<p>where there's no policy advantage</p>
+<p>and one's own sensemaking didn't have a disadvantage</p>
+<p>and an expert evaluating one's sensemaking didn't have a disadvantage.</p>
+<p>So in those situations,</p>
+<p>the learner's heuristic is zero regret</p>
+<p>on the policy and on the sensemaking side.</p>
+<p>And then there's a kind of imperative,</p>
+<p>which is the distance from the expert sensemaking</p>
+<p>and policy selection.</p>
+<p>Because it's basically like,</p>
+<p>what would have been the expert policy and sensemaking</p>
+<p>if it would have been fully observable?</p>
+<p>And then the POMDP reduces to an MDP.</p>
+<p>Yeah, that's precisely the strategy.</p>
+<p>So planning in POMDPs</p>
+<p>can be turned into planning in MDP.</p>
+<p>It's just a much more difficult MDP.</p>
+<p>You don't get away with any of the difficulty</p>
+<p>of planning in a belief MDP</p>
+<p>because now the state space</p>
+<p>essentially has countably infinite cardinality,</p>
+<p>which means that there's no way</p>
+<p>for you to compactly represent</p>
+<p>your beliefs over multiple steps</p>
+<p>or your value functions.</p>
+<p>So it doesn't make any of that</p>
+<p>or any practical applications simpler,</p>
+<p>but it does offer a very nice theoretic technique</p>
+<p>to better understand the different kinds of tweaks</p>
+<p>you can do to the theoretically optimal,</p>
+<p>base optimal policy.</p>
+<p>Cool.</p>
+<p>And then another connection</p>
+<p>is with the dual mode switching.</p>
+<p>So in like chapter five of the textbook,</p>
+<p>in their neuroanatomy,</p>
+<p>they show one schema</p>
+<p>of how dopamine level</p>
+<p>regulates sort of a system one,</p>
+<p>system two,</p>
+<p>thinking fast, thinking slow shift.</p>
+<p>In the thinking fast mode,</p>
+<p>observations expected or otherwise</p>
+<p>don't even need to be considered.</p>
+<p>You can just sample directly</p>
+<p>from the policy prior,</p>
+<p>from habit.</p>
+<p>And then even to engage</p>
+<p>expected free energy,</p>
+<p>use G to update the policy prior</p>
+<p>into a policy posterior.</p>
+<p>So even to consider</p>
+<p>possible future actions</p>
+<p>and observations,</p>
+<p>that's a deliberative mode.</p>
+<p>It's dealing with intangibles</p>
+<p>and doing computations</p>
+<p>that where habit will suffice</p>
+<p>can just be done.</p>
+<p>So then by proxy,</p>
+<p>you can use the observation entropy</p>
+<p>and just say,</p>
+<p>if the observations are within</p>
+<p>this acceptable threshold,</p>
+<p>there's no reason to step outside</p>
+<p>of habit.</p>
+<p>And then where observations</p>
+<p>start to become surprising</p>
+<p>in this way,</p>
+<p>then a deliberative execution</p>
+<p>per policy can happen.</p>
+<p>Yeah, so I think this is very interesting.</p>
+<p>So mode switching</p>
+<p>or essentially self-selection</p>
+<p>of how much compute resources</p>
+<p>you put into at test time</p>
+<p>or at runtime</p>
+<p>is a very interesting topic.</p>
+<p>I know Alec has done some work</p>
+<p>on like once you amortize a policy,</p>
+<p>you can still choose</p>
+<p>to refine your policies online</p>
+<p>and so on and so forth.</p>
+<p>And it also makes a nice connection</p>
+<p>between what's happening</p>
+<p>with like large language models.</p>
+<p>Now that you have like so-called</p>
+<p>like post-training,</p>
+<p>you can do a lot of stuff.</p>
+<p>So for example,</p>
+<p>in what's called best of end sampling,</p>
+<p>where you sample a ton of outputs</p>
+<p>from the policy</p>
+<p>and then you use a reward function</p>
+<p>to score which one is better</p>
+<p>and then choose the output that</p>
+<p>instead of all the other completions</p>
+<p>that you have sampled.</p>
+<p>And then basically,</p>
+<p>the more completions you sample,</p>
+<p>the more likely you'll get a completion</p>
+<p>that's going to be scored higher</p>
+<p>by the test time reward function.</p>
+<p>And then you can basically decide,</p>
+<p>okay, what's the trade-off</p>
+<p>I'm going to make</p>
+<p>between my test time compute</p>
+<p>that's been used to do a ton of sampling,</p>
+<p>which is very expensive,</p>
+<p>versus the potential improvement</p>
+<p>in reward that I'm going to get.</p>
+<p>So this is very interesting.</p>
+<p>But I don't think</p>
+<p>like in the active inference community,</p>
+<p>people have done enough principled work</p>
+<p>or come up with a principled framework</p>
+<p>to allow an agent</p>
+<p>to dynamically adjust</p>
+<p>their computational resource</p>
+<p>and time on the fly.</p>
+<p>So I would actually encourage,</p>
+<p>and also I don't really understand it myself,</p>
+<p>so I would encourage people</p>
+<p>to do more work</p>
+<p>along this direction</p>
+<p>to figure out</p>
+<p>what is the generative model</p>
+<p>that allow people</p>
+<p>to do test time adaptation</p>
+<p>of compute resources</p>
+<p>and so on.</p>
+<p>Cool.</p>
+<p>Yeah, that's very interesting</p>
+<p>and gets into like system design.</p>
+<p>Like, is it the agent</p>
+<p>that's estimating</p>
+<p>how much resources</p>
+<p>would be useful for it?</p>
+<p>Or is there an estimator</p>
+<p>that's making a secondary judgment?</p>
+<p>I'll read a question from the chat.</p>
+<p>Sriharsha wrote,</p>
+<p>thanks for the talk, Rand.</p>
+<p>In your expertise</p>
+<p>from an engineering perspective,</p>
+<p>what are your comments</p>
+<p>on building a deep</p>
+<p>active inference agent</p>
+<p>versus a deep RL agent</p>
+<p>like Dreamer?</p>
+<p>Yeah, so I think</p>
+<p>the word deep</p>
+<p>sometimes mean different things.</p>
+<p>in different communities.</p>
+<p>So in,</p>
+<p>so early in the days,</p>
+<p>deep active inference</p>
+<p>used to mean</p>
+<p>using like deep networks</p>
+<p>to approximate</p>
+<p>certain distributions</p>
+<p>or amortize certain distributions</p>
+<p>in active inference agents.</p>
+<p>I think over,</p>
+<p>and then over the years,</p>
+<p>the meaning of deep</p>
+<p>has shifted.</p>
+<p>So now I think</p>
+<p>within the active inference community,</p>
+<p>deep means</p>
+<p>means having</p>
+<p>multiple levels</p>
+<p>of hierarchy.</p>
+<p>Sometimes it also means</p>
+<p>planning a long,</p>
+<p>a longer</p>
+<p>temporal depth.</p>
+<p>Yeah, so,</p>
+<p>so I think,</p>
+<p>I think</p>
+<p>being hierarchical</p>
+<p>is actually pretty difficult.</p>
+<p>I, again,</p>
+<p>I don't know of a very</p>
+<p>nicely principled</p>
+<p>and still</p>
+<p>working way</p>
+<p>to make agents</p>
+<p>hierarchically deep</p>
+<p>and also</p>
+<p>it's first principle</p>
+<p>in the sense</p>
+<p>that it can be</p>
+<p>automatically discovered</p>
+<p>from data.</p>
+<p>I've tried to do some work,</p>
+<p>but I haven't</p>
+<p>found a way</p>
+<p>in which</p>
+<p>the hierarchy</p>
+<p>doesn't</p>
+<p>collapse.</p>
+<p>Usually what I've found</p>
+<p>is hierarchies</p>
+<p>tend to collapse</p>
+<p>and things actually,</p>
+<p>like anything</p>
+<p>that you can</p>
+<p>portray as hierarchical</p>
+<p>can also</p>
+<p>be</p>
+<p>represented</p>
+<p>in a flat way.</p>
+<p>So I would,</p>
+<p>again,</p>
+<p>encourage people</p>
+<p>to do more</p>
+<p>work in that direction.</p>
+<p>but in terms</p>
+<p>of just comparing</p>
+<p>the various</p>
+<p>tools</p>
+<p>and also</p>
+<p>way to hybrid</p>
+<p>active inference</p>
+<p>with,</p>
+<p>with neural nets</p>
+<p>that people have done</p>
+<p>versus agents.</p>
+<p>So I think</p>
+<p>basically</p>
+<p>a lot of people's</p>
+<p>view of Dreamer</p>
+<p>versus,</p>
+<p>you know,</p>
+<p>deep active inference</p>
+<p>that many people</p>
+<p>have implemented</p>
+<p>is that</p>
+<p>Dreamer</p>
+<p>is</p>
+<p>so similar</p>
+<p>to active inference,</p>
+<p>especially,</p>
+<p>I can't remember</p>
+<p>which version</p>
+<p>of Dreamer</p>
+<p>and if it does</p>
+<p>use an information</p>
+<p>gain term</p>
+<p>in a planning objective.</p>
+<p>And if it does,</p>
+<p>then</p>
+<p>you basically</p>
+<p>cannot tell</p>
+<p>whether there's</p>
+<p>any difference</p>
+<p>between Dreamer</p>
+<p>and deep active inference.</p>
+<p>So,</p>
+<p>so in a sense,</p>
+<p>even</p>
+<p>Carl has mentioned</p>
+<p>sometimes that</p>
+<p>Dreamer</p>
+<p>is basically</p>
+<p>like</p>
+<p>some</p>
+<p>variations</p>
+<p>of an active</p>
+<p>inference agent.</p>
+<p>I would,</p>
+<p>I would point,</p>
+<p>but I would still</p>
+<p>point out</p>
+<p>that there's</p>
+<p>one aspect</p>
+<p>of Dreamer</p>
+<p>which makes</p>
+<p>it a little bit</p>
+<p>theoretically</p>
+<p>suboptimal,</p>
+<p>but it might</p>
+<p>work well</p>
+<p>in practice</p>
+<p>because,</p>
+<p>because of</p>
+<p>that suboptimality</p>
+<p>is that</p>
+<p>Dreamer</p>
+<p>doesn't perform</p>
+<p>belief-states planning</p>
+<p>as most</p>
+<p>deep RL systems</p>
+<p>don't perform</p>
+<p>belief-based planning.</p>
+<p>They perform</p>
+<p>state-based planning</p>
+<p>because if you look</p>
+<p>at the</p>
+<p>policy architecture</p>
+<p>of Dreamer,</p>
+<p>the policy</p>
+<p>is not</p>
+<p>conditioned</p>
+<p>on a</p>
+<p>representation</p>
+<p>of belief,</p>
+<p>it's conditioned</p>
+<p>on a single</p>
+<p>or multiple</p>
+<p>particles</p>
+<p>sample from</p>
+<p>the posterior.</p>
+<p>So that</p>
+<p>in theory</p>
+<p>would lead</p>
+<p>to a</p>
+<p>slightly</p>
+<p>different</p>
+<p>exploration</p>
+<p>behavior,</p>
+<p>but I'm</p>
+<p>not sure</p>
+<p>how that</p>
+<p>actually behaves</p>
+<p>and the</p>
+<p>difference</p>
+<p>it makes</p>
+<p>in practice.</p>
+<p>So if you're</p>
+<p>interested in that</p>
+<p>and if you want</p>
+<p>to make a deep</p>
+<p>RL agent</p>
+<p>actually do</p>
+<p>belief-based planning</p>
+<p>which I personally</p>
+<p>have some</p>
+<p>interest in,</p>
+<p>I would encourage</p>
+<p>you to look at</p>
+<p>some of the work</p>
+<p>from</p>
+<p>Shimon Whiteson's</p>
+<p>lab</p>
+<p>from Oxford.</p>
+<p>They have done</p>
+<p>a lot of</p>
+<p>belief-based</p>
+<p>planning</p>
+<p>of deep</p>
+<p>RL agents.</p>
+<p>So for people</p>
+<p>who,</p>
+<p>I think</p>
+<p>some people</p>
+<p>in the institute</p>
+<p>might know</p>
+<p>this,</p>
+<p>there's an</p>
+<p>algorithm</p>
+<p>called</p>
+<p>VeryBAT</p>
+<p>that</p>
+<p>the active</p>
+<p>influence folk</p>
+<p>has cited</p>
+<p>multiple times</p>
+<p>so that</p>
+<p>essentially</p>
+<p>came out</p>
+<p>of</p>
+<p>Shimon Whiteson's</p>
+<p>lab.</p>
+<p>And in</p>
+<p>that architecture</p>
+<p>the agent's</p>
+<p>policy is</p>
+<p>conditioned</p>
+<p>on a</p>
+<p>belief</p>
+<p>representation</p>
+<p>as a</p>
+<p>supposed</p>
+<p>to</p>
+<p>state</p>
+<p>representation.</p>
+<p>Awesome.</p>
+<p>Thank you.</p>
+<p>Yeah.</p>
+<p>A kind of</p>
+<p>short comment</p>
+<p>and thought</p>
+<p>on this</p>
+<p>theory and</p>
+<p>practice,</p>
+<p>like you</p>
+<p>mentioned</p>
+<p>multiple</p>
+<p>namespaces</p>
+<p>that collide</p>
+<p>with deep</p>
+<p>active</p>
+<p>inference.</p>
+<p>Sometimes</p>
+<p>people are</p>
+<p>using neural</p>
+<p>network</p>
+<p>approximators,</p>
+<p>sometimes</p>
+<p>that's called</p>
+<p>amortized</p>
+<p>inference.</p>
+<p>And then</p>
+<p>there's</p>
+<p>sort of</p>
+<p>in terms</p>
+<p>of model</p>
+<p>depth,</p>
+<p>people could</p>
+<p>be talking</p>
+<p>about</p>
+<p>hierarchical</p>
+<p>like</p>
+<p>hierarchical</p>
+<p>Bayesian</p>
+<p>models.</p>
+<p>They could</p>
+<p>also be</p>
+<p>talking</p>
+<p>about</p>
+<p>temporal</p>
+<p>depth.</p>
+<p>So whether</p>
+<p>it's</p>
+<p>more</p>
+<p>layers</p>
+<p>of the</p>
+<p>cake</p>
+<p>on this</p>
+<p>time</p>
+<p>slice</p>
+<p>or whether</p>
+<p>it's</p>
+<p>however</p>
+<p>many</p>
+<p>layers</p>
+<p>of the</p>
+<p>cake</p>
+<p>with</p>
+<p>more</p>
+<p>time</p>
+<p>slices.</p>
+<p>And then</p>
+<p>you kind</p>
+<p>of brought</p>
+<p>in a</p>
+<p>twist</p>
+<p>with</p>
+<p>however</p>
+<p>hierarchies</p>
+<p>can be</p>
+<p>flattened.</p>
+<p>We see</p>
+<p>that all</p>
+<p>the time</p>
+<p>in matrix</p>
+<p>operations</p>
+<p>where</p>
+<p>sub</p>
+<p>matrices</p>
+<p>are used</p>
+<p>to</p>
+<p>flatten</p>
+<p>all kinds</p>
+<p>of things.</p>
+<p>And then</p>
+<p>similarly</p>
+<p>in</p>
+<p>planning</p>
+<p>there can</p>
+<p>be a</p>
+<p>thicker</p>
+<p>presence</p>
+<p>or</p>
+<p>habit</p>
+<p>and</p>
+<p>heuristics</p>
+<p>can be</p>
+<p>learned</p>
+<p>such that</p>
+<p>planning</p>
+<p>like</p>
+<p>behavior</p>
+<p>can be</p>
+<p>emulated</p>
+<p>with</p>
+<p>less</p>
+<p>depth.</p>
+<p>So</p>
+<p>that's</p>
+<p>just so</p>
+<p>interesting</p>
+<p>like</p>
+<p>the</p>
+<p>fact</p>
+<p>that</p>
+<p>these</p>
+<p>formalisms</p>
+<p>can</p>
+<p>go</p>
+<p>and</p>
+<p>deep</p>
+<p>in</p>
+<p>space</p>
+<p>and</p>
+<p>time</p>
+<p>is</p>
+<p>really</p>
+<p>just</p>
+<p>like</p>
+<p>an</p>
+<p>initial</p>
+<p>surveying</p>
+<p>of</p>
+<p>spaces</p>
+<p>and</p>
+<p>just</p>
+<p>saying</p>
+<p>within</p>
+<p>the</p>
+<p>infinite</p>
+<p>policy</p>
+<p>horizon</p>
+<p>situation</p>
+<p>this</p>
+<p>and this</p>
+<p>and this</p>
+<p>will be</p>
+<p>the</p>
+<p>case</p>
+<p>and</p>
+<p>then</p>
+<p>it's</p>
+<p>a</p>
+<p>purely</p>
+<p>empirical</p>
+<p>engineering</p>
+<p>question</p>
+<p>whether</p>
+<p>time</p>
+<p>horizon</p>
+<p>of</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>has</p>
+<p>what</p>
+<p>computational</p>
+<p>trade-offs</p>
+<p>and needs</p>
+<p>so</p>
+<p>it's</p>
+<p>just</p>
+<p>like</p>
+<p>so</p>
+<p>amazing</p>
+<p>how</p>
+<p>the</p>
+<p>math</p>
+<p>has</p>
+<p>already</p>
+<p>sketched</p>
+<p>out</p>
+<p>some</p>
+<p>of the</p>
+<p>dimensions</p>
+<p>and</p>
+<p>then</p>
+<p>within</p>
+<p>the</p>
+<p>space</p>
+<p>of</p>
+<p>what</p>
+<p>is</p>
+<p>sketched</p>
+<p>out</p>
+<p>it's</p>
+<p>an</p>
+<p>engineering</p>
+<p>question</p>
+<p>almost</p>
+<p>alone</p>
+<p>and</p>
+<p>there's</p>
+<p>still</p>
+<p>theoretical</p>
+<p>differences</p>
+<p>to clarify</p>
+<p>this</p>
+<p>entangle</p>
+<p>but</p>
+<p>even</p>
+<p>those</p>
+<p>alone</p>
+<p>don't</p>
+<p>map</p>
+<p>obviously</p>
+<p>to</p>
+<p>performance</p>
+<p>adequacy</p>
+<p>or</p>
+<p>advantage</p>
+<p>in the</p>
+<p>real world</p>
+<p>or for</p>
+<p>any</p>
+<p>given</p>
+<p>data</p>
+<p>set</p>
+<p>so</p>
+<p>it's</p>
+<p>kind</p>
+<p>of</p>
+<p>like</p>
+<p>fun</p>
+<p>to</p>
+<p>research</p>
+<p>and</p>
+<p>discuss</p>
+<p>this</p>
+<p>underlying</p>
+<p>layer</p>
+<p>which</p>
+<p>gives</p>
+<p>rise</p>
+<p>to</p>
+<p>those</p>
+<p>engineering</p>
+<p>results</p>
+<p>at</p>
+<p>the</p>
+<p>same</p>
+<p>time</p>
+<p>though</p>
+<p>imagining</p>
+<p>that a</p>
+<p>certain</p>
+<p>graph</p>
+<p>or</p>
+<p>equation</p>
+<p>has</p>
+<p>a</p>
+<p>certain</p>
+<p>output</p>
+<p>on</p>
+<p>a</p>
+<p>certain</p>
+<p>data</p>
+<p>set</p>
+<p>is</p>
+<p>hopeful</p>
+<p>and</p>
+<p>then</p>
+<p>also</p>
+<p>I</p>
+<p>think</p>
+<p>it</p>
+<p>connects</p>
+<p>to</p>
+<p>the</p>
+<p>low</p>
+<p>and</p>
+<p>the</p>
+<p>high</p>
+<p>road</p>
+<p>like</p>
+<p>with</p>
+<p>different</p>
+<p>architectures</p>
+<p>that</p>
+<p>recapitulate</p>
+<p>and get</p>
+<p>to</p>
+<p>their</p>
+<p>own</p>
+<p>syntheses</p>
+<p>and</p>
+<p>combinations</p>
+<p>of</p>
+<p>what we</p>
+<p>call</p>
+<p>pragmatic</p>
+<p>and</p>
+<p>epistemic</p>
+<p>value</p>
+<p>or</p>
+<p>maybe</p>
+<p>what</p>
+<p>in</p>
+<p>the</p>
+<p>energy</p>
+<p>based</p>
+<p>learning</p>
+<p>energy</p>
+<p>based</p>
+<p>models</p>
+<p>that</p>
+<p>they</p>
+<p>might</p>
+<p>use</p>
+<p>more</p>
+<p>like</p>
+<p>you</p>
+<p>presented</p>
+<p>with</p>
+<p>energy</p>
+<p>and</p>
+<p>entropy</p>
+<p>decomposition</p>
+<p>it's</p>
+<p>like</p>
+<p>those</p>
+<p>are</p>
+<p>constructions</p>
+<p>along</p>
+<p>the</p>
+<p>low</p>
+<p>road</p>
+<p>they</p>
+<p>are</p>
+<p>model</p>
+<p>architectures</p>
+<p>that</p>
+<p>get</p>
+<p>to</p>
+<p>this</p>
+<p>common</p>
+<p>nexus</p>
+<p>of</p>
+<p>being</p>
+<p>able</p>
+<p>to</p>
+<p>have</p>
+<p>an</p>
+<p>imperative</p>
+<p>which</p>
+<p>unifies</p>
+<p>both</p>
+<p>epistemic</p>
+<p>and</p>
+<p>pragmatic</p>
+<p>value</p>
+<p>the</p>
+<p>free</p>
+<p>energy</p>
+<p>principle</p>
+<p>coming</p>
+<p>from</p>
+<p>the</p>
+<p>high</p>
+<p>road</p>
+<p>on</p>
+<p>the</p>
+<p>other</p>
+<p>hand</p>
+<p>has</p>
+<p>no</p>
+<p>architectural</p>
+<p>suggestion</p>
+<p>it's</p>
+<p>a</p>
+<p>partition</p>
+<p>in</p>
+<p>the</p>
+<p>mathematical</p>
+<p>physics</p>
+<p>state</p>
+<p>space</p>
+<p>and so</p>
+<p>it's</p>
+<p>unsurprising</p>
+<p>that there</p>
+<p>are</p>
+<p>models</p>
+<p>that</p>
+<p>are</p>
+<p>similar</p>
+<p>on</p>
+<p>through</p>
+<p>further</p>
+<p>to</p>
+<p>simplified</p>
+<p>low</p>
+<p>road</p>
+<p>constructions</p>
+<p>like</p>
+<p>POMDP</p>
+<p>because</p>
+<p>we're</p>
+<p>all</p>
+<p>talking</p>
+<p>about</p>
+<p>the</p>
+<p>same</p>
+<p>setting</p>
+<p>agent</p>
+<p>or</p>
+<p>interface</p>
+<p>input</p>
+<p>and</p>
+<p>output</p>
+<p>with</p>
+<p>pragmatic</p>
+<p>and</p>
+<p>epistemic</p>
+<p>component</p>
+<p>and so</p>
+<p>just</p>
+<p>interesting</p>
+<p>how</p>
+<p>all</p>
+<p>of</p>
+<p>those</p>
+<p>architectures</p>
+<p>even</p>
+<p>though</p>
+<p>they</p>
+<p>might</p>
+<p>not</p>
+<p>be</p>
+<p>able</p>
+<p>to</p>
+<p>make</p>
+<p>API</p>
+<p>calls</p>
+<p>to</p>
+<p>each</p>
+<p>other</p>
+<p>or</p>
+<p>hot</p>
+<p>swap</p>
+<p>different</p>
+<p>components</p>
+<p>they</p>
+<p>have</p>
+<p>comparability</p>
+<p>against</p>
+<p>the</p>
+<p>high</p>
+<p>road</p>
+<p>understanding</p>
+<p>of</p>
+<p>their</p>
+<p>belief</p>
+<p>updating</p>
+<p>for</p>
+<p>the</p>
+<p>next</p>
+<p>observation</p>
+<p>coming</p>
+<p>in</p>
+<p>and</p>
+<p>action</p>
+<p>going</p>
+<p>out</p>
+<p>in</p>
+<p>a</p>
+<p>fitness</p>
+<p>context</p>
+<p>yeah</p>
+<p>I</p>
+<p>don't</p>
+<p>have</p>
+<p>much</p>
+<p>comments</p>
+<p>on</p>
+<p>high</p>
+<p>road</p>
+<p>stuff</p>
+<p>I</p>
+<p>personally</p>
+<p>would</p>
+<p>label</p>
+<p>myself</p>
+<p>as</p>
+<p>a</p>
+<p>lower</p>
+<p>road</p>
+<p>person</p>
+<p>that's</p>
+<p>that's</p>
+<p>awesome</p>
+<p>but</p>
+<p>both roads</p>
+<p>must be</p>
+<p>built</p>
+<p>yeah</p>
+<p>um</p>
+<p>I'll ask</p>
+<p>another</p>
+<p>question</p>
+<p>in the</p>
+<p>live</p>
+<p>chat</p>
+<p>and then</p>
+<p>we'll</p>
+<p>see</p>
+<p>if</p>
+<p>there's</p>
+<p>any</p>
+<p>final</p>
+<p>questions</p>
+<p>upcycle</p>
+<p>club</p>
+<p>wrote</p>
+<p>are</p>
+<p>there</p>
+<p>any</p>
+<p>potential</p>
+<p>benefits</p>
+<p>of</p>
+<p>implementing</p>
+<p>sparse</p>
+<p>coding</p>
+<p>techniques</p>
+<p>in</p>
+<p>this</p>
+<p>framework</p>
+<p>hmm</p>
+<p>yeah</p>
+<p>so</p>
+<p>I'm</p>
+<p>not</p>
+<p>super</p>
+<p>familiar</p>
+<p>with</p>
+<p>that</p>
+<p>let me</p>
+<p>let me</p>
+<p>google</p>
+<p>that</p>
+<p>real</p>
+<p>quick</p>
+<p>because</p>
+<p>I</p>
+<p>do</p>
+<p>want</p>
+<p>to</p>
+<p>see</p>
+<p>if</p>
+<p>I</p>
+<p>can</p>
+<p>address</p>
+<p>that</p>
+<p>question</p>
+<p>and</p>
+<p>I</p>
+<p>know</p>
+<p>about</p>
+<p>sparse</p>
+<p>coding</p>
+<p>and I</p>
+<p>know</p>
+<p>the</p>
+<p>connection</p>
+<p>between</p>
+<p>that</p>
+<p>and</p>
+<p>VAE</p>
+<p>stuff</p>
+<p>let me</p>
+<p>look that</p>
+<p>up</p>
+<p>real</p>
+<p>quick</p>
+<p>okay</p>
+<p>so</p>
+<p>I'm</p>
+<p>looking</p>
+<p>at a</p>
+<p>tutorial</p>
+<p>on</p>
+<p>sparse</p>
+<p>coding</p>
+<p>says</p>
+<p>sparse</p>
+<p>coding</p>
+<p>is</p>
+<p>a</p>
+<p>class</p>
+<p>of</p>
+<p>unsupervised</p>
+<p>models</p>
+<p>for</p>
+<p>learning</p>
+<p>over</p>
+<p>complete</p>
+<p>representations</p>
+<p>yeah</p>
+<p>so</p>
+<p>I'm</p>
+<p>not sure</p>
+<p>if there's</p>
+<p>a way</p>
+<p>to interact</p>
+<p>with</p>
+<p>the</p>
+<p>viewer</p>
+<p>but</p>
+<p>does</p>
+<p>that</p>
+<p>mean</p>
+<p>that</p>
+<p>you're</p>
+<p>trying</p>
+<p>to</p>
+<p>so</p>
+<p>basically</p>
+<p>learn</p>
+<p>more</p>
+<p>representations</p>
+<p>than</p>
+<p>what's</p>
+<p>sufficient</p>
+<p>in a way</p>
+<p>that's</p>
+<p>kind of</p>
+<p>similar</p>
+<p>to how</p>
+<p>people</p>
+<p>are</p>
+<p>training</p>
+<p>sparse</p>
+<p>auto</p>
+<p>encoders</p>
+<p>for</p>
+<p>interpreting</p>
+<p>language</p>
+<p>models</p>
+<p>nowadays</p>
+<p>I'm</p>
+<p>not</p>
+<p>sure</p>
+<p>that's</p>
+<p>maybe I</p>
+<p>should</p>
+<p>read on</p>
+<p>a little</p>
+<p>bit</p>
+<p>more</p>
+<p>to see</p>
+<p>what</p>
+<p>benefits</p>
+<p>it</p>
+<p>offered</p>
+<p>yeah</p>
+<p>I'll</p>
+<p>let</p>
+<p>you</p>
+<p>know</p>
+<p>if</p>
+<p>any</p>
+<p>other</p>
+<p>information</p>
+<p>comes</p>
+<p>in</p>
+<p>it's</p>
+<p>an</p>
+<p>interesting</p>
+<p>connection</p>
+<p>between</p>
+<p>the</p>
+<p>matrix</p>
+<p>flattening</p>
+<p>and the</p>
+<p>sparse</p>
+<p>coding</p>
+<p>because</p>
+<p>sometimes</p>
+<p>when the</p>
+<p>matrices</p>
+<p>get flattened</p>
+<p>and fused</p>
+<p>together</p>
+<p>using the</p>
+<p>submatrix</p>
+<p>representations</p>
+<p>then they</p>
+<p>have</p>
+<p>sparsity</p>
+<p>and then</p>
+<p>that</p>
+<p>actually</p>
+<p>just from</p>
+<p>an</p>
+<p>engineering</p>
+<p>perspective</p>
+<p>enables</p>
+<p>sparse</p>
+<p>matrix</p>
+<p>methods</p>
+<p>and</p>
+<p>compression</p>
+<p>to be</p>
+<p>used</p>
+<p>so</p>
+<p>again</p>
+<p>whether</p>
+<p>the</p>
+<p>hierarchical</p>
+<p>representation</p>
+<p>and with</p>
+<p>a lower</p>
+<p>density</p>
+<p>or a</p>
+<p>sparser</p>
+<p>flattened</p>
+<p>representation</p>
+<p>for a</p>
+<p>given</p>
+<p>like</p>
+<p>language</p>
+<p>etc</p>
+<p>has</p>
+<p>this or</p>
+<p>that</p>
+<p>performance</p>
+<p>that's</p>
+<p>just</p>
+<p>an</p>
+<p>empirical</p>
+<p>question</p>
+<p>but</p>
+<p>it's</p>
+<p>interesting</p>
+<p>that</p>
+<p>flattening</p>
+<p>gives</p>
+<p>you</p>
+<p>a</p>
+<p>constructed</p>
+<p>sparsity</p>
+<p>even</p>
+<p>for</p>
+<p>non</p>
+<p>sparse</p>
+<p>information</p>
+<p>and then</p>
+<p>there's</p>
+<p>the</p>
+<p>angle</p>
+<p>you</p>
+<p>mentioned</p>
+<p>about</p>
+<p>the</p>
+<p>interpretability</p>
+<p>sparsity</p>
+<p>and</p>
+<p>methods</p>
+<p>to pull</p>
+<p>out</p>
+<p>fewer</p>
+<p>interpretable</p>
+<p>characteristics</p>
+<p>like</p>
+<p>for example</p>
+<p>yeah</p>
+<p>did</p>
+<p>the</p>
+<p>viewer</p>
+<p>respond</p>
+<p>there</p>
+<p>no</p>
+<p>but</p>
+<p>how about</p>
+<p>just</p>
+<p>upcycle</p>
+<p>better</p>
+<p>handling</p>
+<p>of missing</p>
+<p>data</p>
+<p>would be</p>
+<p>one</p>
+<p>benefit</p>
+<p>I can</p>
+<p>think</p>
+<p>of</p>
+<p>so</p>
+<p>maybe</p>
+<p>we'll</p>
+<p>research</p>
+<p>and learn</p>
+<p>14.2</p>
+<p>what</p>
+<p>are</p>
+<p>your</p>
+<p>current</p>
+<p>research</p>
+<p>or</p>
+<p>development</p>
+<p>directions</p>
+<p>so</p>
+<p>I'm</p>
+<p>interested</p>
+<p>in</p>
+<p>pursuing</p>
+<p>this</p>
+<p>view</p>
+<p>of</p>
+<p>principal</p>
+<p>planning</p>
+<p>and</p>
+<p>active</p>
+<p>infants</p>
+<p>a little</p>
+<p>more</p>
+<p>so</p>
+<p>basically</p>
+<p>the</p>
+<p>reason</p>
+<p>why</p>
+<p>I</p>
+<p>did</p>
+<p>the</p>
+<p>study</p>
+<p>and</p>
+<p>wrote</p>
+<p>this</p>
+<p>is</p>
+<p>that</p>
+<p>I</p>
+<p>was</p>
+<p>trying</p>
+<p>to</p>
+<p>understand</p>
+<p>if</p>
+<p>there's</p>
+<p>way</p>
+<p>to</p>
+<p>develop</p>
+<p>better</p>
+<p>planning</p>
+<p>algorithms</p>
+<p>for</p>
+<p>agents</p>
+<p>and</p>
+<p>specifically</p>
+<p>belief</p>
+<p>space</p>
+<p>planning</p>
+<p>for</p>
+<p>agents</p>
+<p>in</p>
+<p>a</p>
+<p>more</p>
+<p>principled</p>
+<p>way</p>
+<p>and</p>
+<p>initially</p>
+<p>I was</p>
+<p>doing</p>
+<p>some</p>
+<p>experiments</p>
+<p>and</p>
+<p>then</p>
+<p>it</p>
+<p>occurred</p>
+<p>to me</p>
+<p>that</p>
+<p>I had</p>
+<p>doing</p>
+<p>experiments</p>
+<p>for</p>
+<p>belief</p>
+<p>space</p>
+<p>planning</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>agents</p>
+<p>and</p>
+<p>I</p>
+<p>realized</p>
+<p>that</p>
+<p>if</p>
+<p>I</p>
+<p>want</p>
+<p>to</p>
+<p>design</p>
+<p>better</p>
+<p>algorithms</p>
+<p>for</p>
+<p>active</p>
+<p>inference</p>
+<p>agents</p>
+<p>I</p>
+<p>actually</p>
+<p>need</p>
+<p>to</p>
+<p>have</p>
+<p>a</p>
+<p>very</p>
+<p>precise</p>
+<p>understanding</p>
+<p>of</p>
+<p>what</p>
+<p>the</p>
+<p>active</p>
+<p>inference</p>
+<p>agents</p>
+<p>is</p>
+<p>supposed</p>
+<p>to</p>
+<p>do</p>
+<p>in</p>
+<p>a</p>
+<p>way</p>
+<p>that's</p>
+<p>not</p>
+<p>susceptible</p>
+<p>to</p>
+<p>all the</p>
+<p>holes</p>
+<p>in</p>
+<p>active</p>
+<p>inference</p>
+<p>theory</p>
+<p>currently</p>
+<p>so</p>
+<p>this</p>
+<p>paper</p>
+<p>essentially</p>
+<p>contributes</p>
+<p>to</p>
+<p>filling</p>
+<p>up</p>
+<p>some</p>
+<p>of</p>
+<p>holes</p>
+<p>in</p>
+<p>the</p>
+<p>theory</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>agent</p>
+<p>planning</p>
+<p>but</p>
+<p>just</p>
+<p>more</p>
+<p>like</p>
+<p>planning</p>
+<p>and</p>
+<p>approximate</p>
+<p>belief</p>
+<p>space</p>
+<p>planning</p>
+<p>in</p>
+<p>general</p>
+<p>so</p>
+<p>what</p>
+<p>I</p>
+<p>want</p>
+<p>to</p>
+<p>do</p>
+<p>as</p>
+<p>the</p>
+<p>next</p>
+<p>step</p>
+<p>for</p>
+<p>the</p>
+<p>stuff</p>
+<p>presented</p>
+<p>in</p>
+<p>this</p>
+<p>paper</p>
+<p>is</p>
+<p>to</p>
+<p>see</p>
+<p>if</p>
+<p>there</p>
+<p>are</p>
+<p>better</p>
+<p>ways</p>
+<p>to</p>
+<p>improve</p>
+<p>planning</p>
+<p>capabilities</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>agents</p>
+<p>and</p>
+<p>belief</p>
+<p>space</p>
+<p>planning</p>
+<p>for</p>
+<p>agents</p>
+<p>in</p>
+<p>general</p>
+<p>that</p>
+<p>might</p>
+<p>depends</p>
+<p>on</p>
+<p>better</p>
+<p>leveraging</p>
+<p>tools</p>
+<p>from</p>
+<p>variational</p>
+<p>inference</p>
+<p>for</p>
+<p>planning</p>
+<p>and</p>
+<p>my</p>
+<p>leverage</p>
+<p>tools</p>
+<p>from</p>
+<p>temporal</p>
+<p>abstraction</p>
+<p>and my</p>
+<p>leverage</p>
+<p>tools</p>
+<p>from</p>
+<p>essentially</p>
+<p>sparsity</p>
+<p>or sparsification</p>
+<p>or inducing</p>
+<p>more structures</p>
+<p>in a</p>
+<p>generative</p>
+<p>model</p>
+<p>but</p>
+<p>what I</p>
+<p>really</p>
+<p>want</p>
+<p>to</p>
+<p>do</p>
+<p>is</p>
+<p>just</p>
+<p>make</p>
+<p>better</p>
+<p>planning</p>
+<p>algorithms</p>
+<p>for</p>
+<p>agents</p>
+<p>any</p>
+<p>algorithms</p>
+<p>that</p>
+<p>actually</p>
+<p>work</p>
+<p>that</p>
+<p>doesn't</p>
+<p>require</p>
+<p>a lot</p>
+<p>of</p>
+<p>tuning</p>
+<p>that</p>
+<p>you</p>
+<p>can</p>
+<p>just</p>
+<p>grab</p>
+<p>and</p>
+<p>run</p>
+<p>it</p>
+<p>or</p>
+<p>any</p>
+<p>ideas</p>
+<p>you</p>
+<p>have</p>
+<p>in</p>
+<p>mind</p>
+<p>you</p>
+<p>don't</p>
+<p>have</p>
+<p>to</p>
+<p>look</p>
+<p>for</p>
+<p>very</p>
+<p>specific</p>
+<p>tools</p>
+<p>on</p>
+<p>the</p>
+<p>internet</p>
+<p>and</p>
+<p>try</p>
+<p>it</p>
+<p>and</p>
+<p>realize</p>
+<p>it</p>
+<p>doesn't</p>
+<p>it</p>
+<p>doesn't</p>
+<p>really</p>
+<p>work</p>
+<p>that</p>
+<p>well</p>
+<p>awesome</p>
+<p>I'll</p>
+<p>ask</p>
+<p>one</p>
+<p>last</p>
+<p>question</p>
+<p>in</p>
+<p>theory</p>
+<p>or</p>
+<p>in</p>
+<p>practice</p>
+<p>how</p>
+<p>is</p>
+<p>planning</p>
+<p>for</p>
+<p>overt</p>
+<p>action</p>
+<p>embodied</p>
+<p>movement</p>
+<p>similar</p>
+<p>and</p>
+<p>different</p>
+<p>than</p>
+<p>planning</p>
+<p>for</p>
+<p>covert</p>
+<p>mental</p>
+<p>action</p>
+
+<p>selection at the higher level of the hierarchy or rather well so basically casting that as</p>
+<p>covert action selection. So this doesn't really, at least if you approach it from the view of</p>
+<p>action as interface between the agent and the environment, then in that sense action always</p>
+<p>have to exist at the lowest level of the hierarchy right at interface between the agent and environment.</p>
+<p>So it will never be an overt action that exists inside of the agent at the higher level.</p>
+<p>So that's part of the reason why I say that people should do more work on hierarchical models and</p>
+<p>hierarchical planning because even though a lot of the existing techniques work, so for example in</p>
+<p>hierarchical planning we have the options framework from hierarchical RL. So what that does is basically</p>
+<p>decompose planning at the planning of primitive actions at the lowest level to planning at the</p>
+<p>higher level over more extended periods of time. So basically the higher level will say execute this</p>
+<p>task which then gets translated to a sequence of lower level actions such as going to the kitchen,</p>
+<p>grab coffee, right? That's a single movement at the higher level even though it's a bunch of lower</p>
+<p>level primitive movements. So I think these techniques people have been using in hierarchical planning are</p>
+<p>very appealing and they actually work pretty well. And now with like using language models to do the option</p>
+<p>selection, they work very well in practice. But in theory, I feel like there's still a gap of how</p>
+<p>hierarchical perception model arise automatically from the environment and how planning can just automatically be a</p>
+<p>part of that. And then how overt mental actions play a role after you have obtained or learned hierarchical representation of the environment.</p>
+<p>So all of these, in my opinion, are open questions. I think people need to continue to address them. I don't think people have addressed them to a satisfactory extent at the moment.</p>
+<p>Cool. All right. Thank you. This was a great stream. So till next time.</p>
+<p>Yeah. Awesome.</p>
+<p>Bye.</p>
+<p>Yeah.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

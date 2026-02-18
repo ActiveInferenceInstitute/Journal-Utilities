@@ -1,0 +1,641 @@
+---
+title: "Active Inference BookStream #001.2 ~ "Governing Continuous Transformation""
+category: "BookStream"
+series: "BookStream_001"
+episode: "2"
+duration: "56:35"
+url: "https://www.youtube.com/watch?v=DQhPABvJBFk"
+views: 256
+exported_at: "2026-02-18T22:37:37.728427+00:00"
+format: markdown
+---
+
+# Active Inference BookStream #001.2 ~ "Governing Continuous Transformation"
+
+Hello, welcome to ActInf Bookstream number 1.2. It's February 15th, 2023. Welcome to the Active
+Inference Institute. We're a participatory online institute that's communicating, learning,
+and practicing applied active inference. This is recorded and archived live stream,
+so please provide us with feedback so we can improve our work. All backgrounds and perspectives
+are welcome and we'll be following video etiquette for live streams. Check out activeinference.org
+to get involved with live streams and other projects. Blue, to you.
+Great. Well, this is our second discussion of the book, Governing Continuous Transformation.
+We are here with the author, Bijan Kezri, today, and we will be discussing part two of the textbook.
+So I think we want to maybe go around and introduce ourselves. I am Blue Knight and
+independent research consultant in New Mexico, and I will pass it off to Tyler.
+My name is Tyler. I'm a protocol designer and DAO researcher in California.
+Pass it to Bijan.
+Pass it to Daniel.
+Daniel. I'm a researcher in California and pass it to Bijan.
+Okay. So, obviously, an author really coming much more from the practical side of the world,
+having been serving on the boards and eventually taking a strong interest in the theory and being
+inspired by active inference and in particular the free energy minimization principle to adopt that and apply it to the world of corporate governments.
+So, hence the book. I very much appreciate that you invited me today and hopefully being in a,
+having another stimulating discussion. I always love to see how, you know, there's so much work which goes into writing a book.
+It's a very lonely journey. And when it's once out and you see actually such a gifted group of people looking at it, reading it,
+critically reviewing it and engaging in the dialogue, it's a great gift for an author. So I'm, I'm very, very happy to be here. Thank you.
+Awesome. Well, carry it forward, Blue.
+So we are here discussing part two of free energy governance. So over the last four weeks, we have discussed these last four chapters.
+And so today's discussion is going to just encompass those sections. So a bit of a roadmap. We had some kind of category questions
+of the role of empathy and free energy governance, the role of artificial intelligence and free energy governance,
+and also on duality management. So starting off with empathy, we got here.
+So I just actually was, I think, looking up a photo for like top down, bottom up, like, what does that look like?
+Top down, bottom up organization and communication. And so like in my photo scrolling, I found this, this old paper, right?
+So it's from 2008. And it's about, it's really about empathy and emotional resonance. So this picture I thought was a great picture.
+And it had perception action coupling and shared representation and kind of like the self and other distinction.
+And I don't know, Bajan, if you've read this paper, but, but for me, like it was a figure that kind of encompassed all these things that we've been talking about in the book all along.
+And so to quote Bajan's book, he says, cognition in the form of world enactment is the purpose directed action centric and social construction of shared meaning and shared expectations.
+Anchored in the understanding that a firm's environment is a matter of environmental engagement in the form of interaction, revealing significance and assigning probabilities to a bounded set of external unknown states.
+And, and I just was wondering like about maybe the role of empathy in like gaining a shared representation or a shared understanding.
+So I don't know if you want to flip to the next, there we go.
+And so like here is empathy required for this shared meaning and shared expectations.
+And I'm curious to know Bajan, what your thoughts are maybe on, on either this, or maybe I know we hear also a lot about the role of emotional intelligence in business success.
+And so where does maybe emotional intelligence come in to free energy governance?
+Like is that also essential or what are your thoughts here?
+Okay.
+No, I think it's a very good question.
+First of all, I did not come across the paper.
+I think it is a brilliant illustration.
+Having said so, it's interesting to see it puts perception and then action.
+I put it the other way around.
+I see the action is really determining our, our perceptions, but I, I think it's a very, very good question, because what you're doing is you're opening something which I think, as part of my work, I consider the black box.
+Because when you look at, you know, I don't like really bottom, I think I said this in one of our previous discussions.
+I prefer frontline workers.
+I mean, people are really in the front line having said this, the, the top down bottom up dynamic you have at every hierarchical level.
+And effectively, sometimes it's a question of how you naturally work together.
+So then you open up the black box of teamwork of how do you, how do you engage actually, which is, how do you understand each other?
+And I think that's where empathy plays a very important role.
+I think that's where, um, in emotional intelligence starts playing a very important role.
+What I have done for the purposes of the book, for the purposes of the free energy governance concept, I really focused on, I think, communication.
+But there is a lot in communication, which is also empathy related, you could argue, um, to make sure that actually people hear what you're saying.
+And, uh, and, and obviously sometimes there needs to be an empathetic dimension in it.
+But what I, I think the, the, the waterfall here is you start really with a purpose.
+When you don't have a purpose, then it becomes a little bit fuzzy.
+But if the purpose is very clear that we want to go to Rome, then there's many ways that are leading to Rome.
+But as you're going on this journey and keeping actually the team together, keeping the team energized, motivated of going through a lot of hazards, maybe crossing the Alps from, from Europe, uh, uh, to, to, uh, on the way to Rome.
+Um, communication becomes very essential.
+And when you look at the practical side of the work, um, even when you take a publication like Harvard Business Review, which in my view is one really of the leading business publications, which addresses.
+Really current issues managers, company leaders, but including frontline workers are focusing on, and you see that empathy, emotional intelligence, and communication are really critical things.
+And, um, in making the most complex strategies work, because there is no point, um, of being very smart about analyzing where the world is going.
+If you're not able to align and motivate all the resources, all the dots of intelligence in the firm to join this.
+So I stayed away as part of the work of looking now into the microcosm of communication of what's happening between, you know, let's say a leader and a frontline worker, how much empathy you show in certain situations to ensure that actually the whole flow is going to work.
+So I think to summarize the answer, when you look at emotional intelligence, when you look at empathy, there are dimensions you would consider, uh, more on a micro level in the way things are being translated.
+which I stayed away from and really considered it as a black box of how the how probably
+the communication is best done in very specific circumstances
+it's clear because it's a it's a very unusual I think it's a very good question because it's a
+question which really strikes the heart of management and has become obviously in recent
+years a very popular theme and nobody has ever asked me that question in this context so I really
+appreciate it and I do remember I mean I'm not sure if you've read human communication as active
+inference that was like one of the very first papers that we did at the institute in our live
+streams but you know it's it's still as communication as like a necessary tool and how
+communication is used to kind of establish that that shared meaning and shared expectation
+um but as for like the nuts and bolts of it it's still um oh and then we didn't we did another
+recent um paper dealing with communication as active inference kind of like the follow-up but
+by a different author like the counterpoint to that paper I can't remember the name of it
+um that was interesting too I would really appreciate if you could send me the links to those papers
+sure sure um Daniel I'm sure remembers and I can go back through the live streams if uh I don't remember
+um I appreciate it thank you cool um and so just do you think that um in human cognition we have we
+have empathy in in human cognition and it plays a role do you think that there's an analog in
+organizational cognition like do you think when a firm has cognition that there's what what would be
+what would take like the equivalent role of empathy in a firm if if anything or or maybe that's kind of
+esoteric or or what what are your thoughts there no I do think um you know I mean what what is a firm
+a firm is a legal fiction and it's it's really a bunch of people and a bunch of assets
+and sometimes actually the only asset could be the people let's say in a services business where
+there's no machinery or anything so um I think it really comes down to people I think it comes down
+to leadership it comes down to the identity it comes down to the culture and in recent years you've seen
+that many many companies rip I mean through their leaders have paid a lot of lip service to
+being an empathetic organization having understanding for the needs of the workers um of the frontliners of
+the asset really of the company so I do think that today
+I cannot imagine that a firm which is not empathetic and or or integrates empathy
+as a as an important pillar of the values and the culture uh it lives it doesn't have a great chance
+to survive and when you look at at culture what is culture in a corporate uh in an organizational setting
+it's really behavioral benchmarks which determine really what we would expect of people in this particular
+setting you know and uh um and and and I and I think this uh uh empathy today is incredibly important
+and by the way I do think that the concept of empathy has gained an entirely new dimension following the
+pandemic you know when you start seeing um people being locked up uh having to when you have two working
+parents kids sitting at home all of a sudden there's so many things to juggle where a company an employer
+needs to show empathy and understanding for the very particular challenges people face and if you don't
+um you you will eventually lose
+sometimes even the best of your people
+um so that follow up question on that and maybe just to pose the question in a slightly different way
+so a lot so far we've been talking about empathy in terms of like an individual human cognition right
+and like hey that should be an important part of your culture because it allows communication to flow
+within and without the form the firm but I'm curious if there's an analog on the the firm organizational
+level scale so in the same way that on an individual scale you're mirroring the motions of another
+person of an external um individual is there a way in which the organization as its own entity mirrors
+the outside world um and mirrors kind of its own perception of the environment and we could call
+the emotions of other firms or other processes happening in this external environment it's a very
+like maybe strange question but I'm kind of curious in what way do you think that the firm under
+free energy governance is receptive and can integrate information in its external environment uh and is that
+different in a way to how people traditionally think of like gathering data about the environment
+well when you look at actually if you were to dissect empathy and what is it really I think there's two
+two there's two two three dimensions I could instantly think of you you a you say a person matters so somebody
+matters secondly you respect that person and certainly you really um you listen I think the listening part is
+an incredibly important part how can you be empathetic if you haven't listened in the first place so when you look at
+all these three dimensions respect listening um the idea that some some somebody and what somebody has to say
+matters is an essential foundation of free energy governance because free energy governance effectively
+and what somebody says even the weak signals bear the transformative potential we need to listen to so first of all you need to open all your senses in free energy governance
+to listen to what actually frontliners have to say and
+and start with the working assumption that what they have to say matters doesn't matter what in in what area
+they address it um to be able to read in between the lines so that's the only way
+i could stretch the the concept the dimension of empathy and really link it into um into free energy governance by
+dissecting it into let's say these three dimensions what empathy stands for
+and then pull it back into the free energy governance framework which effectively says
+the strategy fundamentally is a generative process of prediction error minimization and so
+you may articulate predictions at the top but they are only as good as you can challenge them with bottom-up data
+and the bottom-up data to access it to make it flow from the bottom to the top probably requires an element of empathy
+because my personal experience is the more you go the closer you go to the front lines in an organization
+the stronger is actually the resistance to sharing valuable information and the reason
+the reason is not that people don't want to share the reason is that people prefer not to stick out
+people prefer not necessarily to assume responsibility now for for something they say
+uh or even if it becomes a project in its own right that they may have to execute it but they wouldn't want to execute it so what you find is unlocking the valuable intelligence which is at the front
+the front lines of an organization is a management challenge in its own right and i think it requires very strong communication and it certainly requires empathy and the empathy
+and maybe now i can i can close the circle here to your question tyler and what blue was referring to before
+maybe it has to be more than just an empathetic leader maybe it has to be trust in processes in an entire culture
+that i feel comfortable about for this to work on a continuous and sustainable basis because when we look at free energy governance
+this is not like a one-off project this is ingrained into the dna of the firm of saying the future of the firm is best ascertained
+and if we continuously generatively minimizing prediction error so predictions at the top
+but possibly sometimes at the bottom and we want to challenge those predictions with frontline intelligence
+so um just a quick follow-up as you were um talking bijan about especially about like the pandemic and i
+i was there like thinking about empathy and leadership um you know i was just directed back to the task
+positive network versus the direct default default mode network and and so i think maybe like empathy is
+is the central um component in the default mode network like empathy like the default mode network is like the
+people-centered part of that um and and i was i think like now with the pandemic like
+just like jarred me into like we're now so i feel like we're so off task like like i mean maybe not
+in every organization but i think as a society like we're so much more centered we're flipped into heavy
+on the dmn um as opposed to the tpn uh just just culturally because of the the greater amount of empathy that
+everyone was just required to drum up for um people and and um their circumstances right absolutely
+and i do think what has reinforced it's a very good way of looking actually at the um task specific uh
+network or in the default mode network you're absolutely right the empathy is part of the
+default mode when you look now at the pandemic it was all about the default mode i mean because there was
+so much misery so much tragedy certainly in the first waves and uncertainty unpredictability and our models
+were overwhelmed because our world models were not prepared to deal with this it took a year year and
+a half and we integrated the pandemic perfectly well into an adjusted a further evolved model and we
+developed new strategies of how to deal with this but one element is for example home office and when you
+think about how hard it has become for many firms to bring people back to the office and you could
+almost say the office is maybe the physical representation of the task specific network you know you go because
+you're really executing a specific task in in in a building and then you leave it and then you know you're
+you're out of it so almost there was a there was a certain link in the brain between office and task
+specificity um i do recall another example which is kind of interesting in that context but i don't
+want to drift up too far but i do recall that banks introduced um you know it was kind of only in the 90s
+i think that they introduced that you can have a casual friday so normally it was really just you wear a
+suit and then you come on fridays you can wear casual smart and i remember somebody was telling me
+actually uh when you go on the goldman sachs trading floor the person who has a hole in the sweater and
+all of this on the friday that's probably the guy who makes most of the money because he shows like
+i don't even have to wear a smart killer but a lot of people said when the financial crisis hit in 2008
+and which was really exuberance of you know all that cheap money uh putting a lot of people into misery
+uh with with debts and and mortgages that this was partly related to the fact that the casual friday
+became almost a casual whole week and it had an impact on on how uh people were performing actually
+their tasks and their their attitude towards risk so i do think that form and informality are very very
+critical aspects of of you know how an organization works and sometimes the informal organization which
+is obviously a function of the formal one can be much more important and sometimes it can be much more
+important how information is flowing most of the time in organizations coming back to the free energy
+governance framework the most valuable information does not come through the formal channels it comes
+through informal channels it may come through a conversation at the water cooler all these things which
+are not necessarily documented in the traditional forms of corporate communication so i think these are
+probably also the channels where empathy can be best communicated and i think the big loss of um during
+the pandemic was that while the the office work and the office space was maybe very formal and very um task specific i think it was at the same time underestimated how important it is to provide to frontliners to even to leaders a source of empathy and exchange because i think most people were confronted with the terrible loneliness and so we shouldn't
+we shouldn't underestimate and we shouldn't bash too much the physical office space as a very important uh place not only where um uh uh where you perform your task but could be also a source of of being energized and receiving understanding for issues which have nothing to do with your job and more importantly it's really the the side of learning uh i do recall when morgan's
+stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stanley stan
+concept of empathy in the context of free energy governance is not an obvious one but i think this
+is an interesting very interesting conversation and i do think that we um we need to dissect
+the what really empathy means for and then we need to look at what is a firm a firm consisting
+of people of assets but also of the physical space and i think the space is a is a very important
+dimension to consider and that's where the pandemic is an interesting example of how it can be a source
+of um of whatever positive we associate with empathy to provide
+awesome so we'll move now into talking a little bit more about artificial intelligence um and you say in
+the book you say in fact we are challenged not to allow for the human brain's computational limits
+to solely determine perception and sense making instead outsourcing some of the heavy information
+lifting to the environment in form of extended cognition is the essence of optimizing prediction
+error minimization the more exponential and hence discontinuous a market environment the more we need
+self-organizing mechanisms that leverage the world as a supervisory signal challenging and circular
+causality the very perceptual content of our predictions um and in reading this i um have been having lots
+of fun working with gpt chat as i'm sure you have and many others have have been um and really as as
+just kind of a like a platform or a standing like a springboard for like where we what we already know
+like it's a very big cognitive synthesis of like you know the whole internet circa 2021 or or something
+like that and so like this is really a cognitive extension like our smartphone and many other things
+um and so i just was wondering what role you might see for chat gpt or other automated artificial
+intelligence i mean like the you know there's no limit to um assist us with free energy governance because
+i really see like an assisting with the synthesis and integration of information like at a very large
+scale even just now compared to a year ago so do you see a role um for ai in free energy governance or
+helping us to kind of springboard our leadership platforms yeah very good question so let let me um
+there's many dimensions to it number one um free energy governance strictly speaking does not consider
+making use of ai at the board level now when you look and let's briefly talk about an organization
+applications of ai you have today i mean so many examples from credit cards where you have ai i mean
+which used to be which has been now automated in in a massive way of how credit checks are happening on
+the spot it's no longer left to the retailer but there's a central system which can authorize the
+credit card transaction instantly or refuse it so there has been predictive algorithms um
+being centralized and changing the way certain tasks have been done in an organization so i would say
+the application of ai today is very much at the front lines whereas it's probably a little bit further
+up the chain also is if you look at healthcare so a radiologist is possibly redundant today but if you
+make the radiologist redundant because the machine can maybe possibly read the images much better it may
+have repercussions of how you're going to start organizing the whole hospital because who's assuming
+now what role and maybe the role of the nurse is going to be upskilled because on the basis of the machine
+output there will be direction to the right doctor to to look really for treatment whatever is the reading
+the reading from um from the images so i think we need to um see now that ai starts first of all in a very
+task specific way but moves up and all of a sudden has very systemic changes applying ai at the board level um
+um i don't see this at this moment you know information processing uh will not be done at the board level
+with ai tools i i doubt this at this point when i look now specifically at free energy governance well free
+energy governance if you look at free energy principle for me that is an artificial active inference and the way
+karl fristen has been even applying it to neuroimaging is a machine learning algorithm so for me free energy
+governance is really a machine learning logic in its entirety now when you look at what is happening
+uh chat gpt is not as smart as a lot of people think at the end it's just a language model and
+uh it it it makes statistically very plausible language it produces which it doesn't understand
+itself so uh it poses obviously great challenges so i think that has been a little bit misleading having
+said this i think it's not misleading to the extent that chat gpt is an indication that generative intelligence
+automated augmented augmented is the future and this is going to come and i think we will have a hard
+time as humans to catch up how fast it can evolve and the things it's doing because it's getting better
+every day because it's training on the back of massive training knowledge now what is happening and that is
+definitely a challenge for the board you could ask how can the board continue fulfilling its most basic
+fiduciary duty of monitoring company and management if itself the board has no means of understanding what
+the algorithms do because algorithms can be potentially very damaging so i do see that there will be a safety
+and ethical um a regulatory dimension which will probably need to be addressed at the board level when
+you look at it from an ai point of view now so that's a little bit to the question of artificial intelligence
+and free energy governance i specifically specifically have not considered any tools at the board level
+now when you look at what is artificial intelligence really about it allows you to separate
+two components which make up a decision it's a predictive component and it's a judgment component
+i think the predictive component can be more and more done the prediction element by machines on the back
+of data but i do think that it revalues the judgment component of the human now it could be that
+it's it's no longer really the top let's say leaders which are best positioned to make the judgment component
+maybe people on the front lines now being empowered by artificially intelligence fueled prediction models and
+prediction tools can place a much better position to make the right judgment call so i think the impact of
+artificial intelligence on the company will be more distributed decision making to be really more in real time
+now coming back to the quote you originally were reading out the the most important element of that quote is
+what you see today is that most people in leadership positions will tell you the world has become uncertain and it's unpredictable
+and my answer to this is always first of all uncertainty and unpredictability is a very subjective concept
+it's not an objective reality and your perception of uncertainty or unpredictability is really a function of how good is your world model how good is your prediction model so if you're telling me the world is uncertain you're effectively telling me
+your model is not good enough of modeling it and in a generative actively inferential way going step by step forward to improve it and make the world less uncertain
+by the way i do believe also for the pandemic was a brilliant example if you if you had a world model which maybe bill gates said that pandemics are going to come they're going to be massive
+and they're going to be global there's no way you're going to contain in today's world something which started in china it's going to stay in wuhan but it's going to be global but if you think about it started off in 2019 november december
+and people until january february in the western hemisphere still thought this was a chinese problem and they weren't prepared at all now think about it some people were smart enough
+and they exploited the business opportunity by going up front into producing a massive amount of face masks so when all of a sudden the pandemic hit in march april
+they were the ones making fortunes because governments didn't have the right prediction model and they didn't have enough masks i know actually the guys
+who did take advantage of this in switzerland i think they made 250 million dollars or something like this
+and they because they caught really the government naked so you see the discrepancy even governments where you suppose with all the resources they have at hand
+all the information they have they have bad prediction models so your prediction model determines
+how uncertain and how unpredictable the world is and a big problem you have today in companies is
+that companies do not embrace uncertainty but they bury uncertainty
+a book which puts this brilliantly into perspective is from agarwal and avifa up um it's called power and
+prediction and it shows very clearly how companies have developed as agiri said back in the 60s it's skilled
+incompetence where you act in a way which is really contrary to your intentions or what you really want to achieve
+and what has happened is that companies have created rules best practices um you could even argue that
+putting the ceo in a super dominant position controlling everything is a form of bearing uncertainty because you
+look now to one person and you say that person is going to give me all the answers of the world instead what we
+need to do is we need to make our models available to testing in the marketplace in a generative inferential way
+by acting and generating new data points that make our model in a generative fashion better and better and as a result of it
+our predictions models get better the predictions they produce get better and the world will be perceived as less uncertain and that's really the
+a sense of the quote you started off with so we have two elements here one is really the the uncertainty um
+element i i i think we need to really highlight is a subjective concept and it's a question of world
+modeling or prediction modeling and prediction testing the second uh dimension you addressed is the one of artificial intelligence
+i do think artificial intelligence uh or augmented intelligence you could argue is it really that
+artificial um uh is is is is just at the very beginning it's going to be exponential it's going to be
+faster evolving and spreading than anybody can expect and i do believe that in around within 10 years 70 to 80 percent of
+knowledge workers will disappear and only those people will survive working in any organization that can
+understand manage and complement artificial intelligence
+and by the way there's so many examples you can see how artificial intelligence allowed in an
+incredible way to get rid of i mean millions of jobs you know already and even if you think about a radiologist
+has a very uh intense training and medical education and in the book power prediction is a really good example
+i think it is in that book other there is another great book i recommend on the topic it's all in on ai
+by devonport and metall which gives you a really good overview good structure a few good case studies
+and you can see that the the the the the job of a radiologist can be divided into i think roughly 35 or 38 tasks
+and when you look at each of the tasks a machine can do this today so that job is gone
+um yeah it's interesting the level of synthesis so so how much of our so for me the essence of that quote
+was cognitive offloading into systems
+that can synthesize and integrate information.
+How much of that task is what is done by AI?
+And I do agree with you that we will need to be able
+to work with the AI, like to understand that synthesize,
+synthesis and integration of information
+that's provided by augmented intelligence systems
+in order to be functional in the workplace going forward.
+Yeah.
+You see, the big weaknesses, what people don't understand.
+By the way, that quote, when I recall, it's Howie.
+You guys know Howie?
+He wrote a brilliant book, The Predictive Brain.
+And Howie is probably more a structural Bayesian guy.
+But he's really brilliant in the way he shows
+that actually what the Bayesian brain is about is
+is really you use the world as a feedback loop.
+So you can come up with any predictions you want.
+Let the world, you know, give you all the feedback you need.
+And that's a very powerful way of how you start in a generative way reducing uncertainty.
+So I don't know. I guess we should maybe go on to our last set of questions on duality management.
+So here, Bijan, is it only critical for the board to understand duality management?
+I think at every level of the hierarchy from the front line workers up to top tier management and the board.
+Does everyone need to understand duality management and practice this?
+Or is it only necessarily at the top?
+Well, I don't think you would explain to anyone in the front line that you have to engage in duality.
+But because it's a certain degree, it's an abstract concept.
+And I developed duality management really at the very, very top level, almost.
+You know, dynamic capabilities, the concept of dynamic capabilities in strategy management
+is defined a dynamic capability as a non-operational capability.
+So you say it's a, some call it also a meta capability.
+So it's not a task specific capability.
+So you would almost say when we talk about duality management,
+you move very quickly into the default mode side of the brain.
+And what it really is about, I used it in the context,
+and I think I said it in our last discussion,
+you can really reduce everything about a company about two dimensions.
+One is exploiting today's cash flow and making the money.
+That's really the business you have.
+And developing the future cash flow stream, which is the exploration.
+So you have exploitation, exploration.
+And there have been so many theories about and case studies about,
+can you do both at the same time?
+How does it work?
+And sometimes people said, oh, you do exploitation here,
+but you create a whole different new thing over there and you don't mix them.
+And sometimes they don't mix that easily.
+I don't think companies have that luxury any longer.
+And I think exploitation focusing on today's cash flow and doing something new.
+Is it really that radical?
+Is it more incremental?
+It's happening kind of in real time.
+But it requires very strong leadership.
+Because when you think about exploiting today's cash flow is a very hardcore operational activity.
+So CEOs usually immerse very, very strongly in the exploitative activity.
+When they're really good, they can also do exploration.
+And they need to make sure how they switch between the default mode,
+which is probably more for exploration, thinking creatively about innovation projects,
+and at the same time managing and optimizing an existing cash generating business.
+My idea was behind duality management to say the board is actually uniquely positioned
+because it's not involved in any operational activities really of the company.
+The board is not involved in running today's business.
+It can have a great super view of saying where should actually maybe the CEO be guided towards
+of maybe emphasizing right now more exploitation or exploration where people see as a board,
+when they analyze the business, they can see the problems.
+That concerns one complex.
+Second complex I have is financial and strategic control.
+And they really stand for in-house innovation and innovation you buy through by buying other companies
+or certain things.
+And I, the view of the free or the way free energy governance,
+and this is how the whole section to structure it,
+you have the structural component, which is really how you connect the top of the button.
+The cognition component is really related to how you have an ability to enact your world,
+create a model.
+And I always like the Googles, the Facebooks, all these companies have created massive businesses,
+but they really created this in an active way.
+They did not copy someone.
+They did not do a market research or that, but they had a vision of their own,
+which I think is essential.
+And the third dimension are the capabilities.
+And in the capabilities, I developed this duality management as a dynamic capability.
+And dynamic capability is really a specific meta capability in strategy management.
+So I think when you look at these two complexes, how much do I focus on the business I have?
+How much do I focus on the business I would like to have tomorrow?
+How much of it is done in-house and how much of this is done possibly by buying it?
+Forces which sometimes are going against or going in line.
+And I think the board in its meta position, supervisory position,
+being above the executive leadership, has a unique position to practice this.
+So that indirectly answers your question.
+I think duality management, the more you go down in the hierarchy of a business,
+which means the closer you go to the front lines where hard tasks are being performed,
+the less you have a duality management.
+You shouldn't have a duality management at all,
+because people are really focused on very specific tasks.
+And the further you move up and the more you have to decide,
+are you going to do one of this or more of this,
+you may find the duality management challenge.
+So it may not be just on the board,
+but it's certainly on the board when it comes to exploitation,
+exploration and financial and strategic control.
+Now, that's a long answer I gave.
+I hope you could follow me.
+That's great.
+Thank you so much.
+I try to make it simple because obviously when you look at the very origins of this book,
+it was originally a dissertation which started off really in strategy management.
+And I'm so happy that I found it all the way to the more neuroscientific dimension.
+And we're talking in the context of the Active Inference Institute.
+But obviously, when you talk specifically about the duality management side,
+we are really pretty much in business school.
+So going from maybe a more thoughtful to the more practical,
+can you give an example of how you can reduce organizational friction
+through this top-down, bottom-up hierarchical coupling?
+It gets very fuzzy for me.
+I mean, even as we're talking about what levels need to understand duality management,
+I mean, I get that the communication between the levels is key to organizational maintenance
+or the persistence of a firm.
+But translating that into some kind of practical terms that I could apply at my firm,
+for instance, is maybe a little bit more difficult.
+So do you have any advice for us that are down here in the nitty-gritty of it all?
+So I do think what tools you apply that are practically of relevance
+is maybe a function also of the size of the organization.
+So let's start with a really big organization.
+Take a big insurance company.
+And you have the board of an insurance company,
+which will be very respectable people who have probably jobs as CEOs
+on many different other companies.
+They come together four or five times a year.
+They take major decisions.
+How can such a board better understand,
+independently of CEO framing as a filter,
+what overall is going on?
+How can the board make the CEO stronger
+to ensure that the CEO actually is properly connected
+with what's really going on in the front lines?
+And one concept I like a lot,
+I think I've talked about it before,
+but I think the concept is a good concept to bring as an example again
+because it highlights,
+and then you can think creatively
+of what other things you can think of.
+But they are shadow boards.
+So having a group of young, high potential people
+who are quite far removed from the very top,
+that they form a board themselves
+and have board meetings with very similar agenda items
+and can discuss what should be maybe the future agenda items.
+And that can serve as a tremendous source of inspiration
+from the front lines to the main board,
+which is sitting on the very top.
+And that is a wonderful way I see
+as connecting the top and the bottom
+and leading the information flow.
+Companies which have done this is like Total Energy,
+one of the French, one of the biggest energy companies
+in the fashion business, Prada, Gucci.
+And when you think about it,
+Prada and Gucci are obviously companies
+which are living off young talent.
+People, young designers, something edgy, something new.
+Because think about it, in fashion,
+you've got to come up every season
+with something which is setting a trend.
+So you're really dependent
+on being connected to the front line
+and from creative people picking up what is the next.
+So I like the fashion houses
+because they show how important it is
+to be connected to the very front lines.
+A big insurance company may not see it,
+but a big insurance company may be missing
+what could be the next big thing
+maybe young people will be asking for
+as a business model
+for as an interesting insurance market.
+And so I think that is a really good tool.
+Now, let's go into small organizations.
+Let's take the Active Inference Institute as an example.
+And you're saying,
+look, we have this wonderful scientific advisory board.
+You have a wonderful board
+who is advising you
+and guiding you how to make,
+how to increase.
+I mean, you have,
+I think you have one purpose
+to increase the impact
+of the Active Inference Institute
+in the marketplace.
+And you're looking at various tools.
+You're looking at various engagement platforms.
+Our dialogue is one of them.
+You're reaching out through channels
+to at every juncture optimize that.
+And I'm trying to support this as well
+because I really truly believe
+in the mission of the Active Inference Institute.
+And I do believe
+that it is the very beginning
+of a great movement
+because I see that as the future.
+I'm absolutely convinced of that.
+So in that regard,
+you're definitely pioneers.
+Our community is still very small.
+Now, here's the question
+of how you connect the top,
+which is you guys now,
+with the frontline.
+And the frontline
+may have really interesting
+weak signals,
+which could give you
+some really inspirational input
+where you say,
+we should take it on.
+And I think you're doing it.
+You're doing it with a newsletter.
+You're reaching out.
+You obviously want to make sure
+people read it.
+They engage with this.
+And you have internship programs.
+You have a number of ways
+of how to bring in
+really the marketplace
+to challenge you,
+to improve you
+with one and only one mission
+and purpose in mind,
+to make sure that the products,
+the output
+from the Active Inference Institute
+has impact,
+represents the aspirations you have
+for high quality intelligence
+that more and more people
+should connect to.
+And I think you're doing
+quite a great job
+with the limited resources you have
+by doing all these tools,
+creating these dialogues.
+You are acting, actually,
+to generate great data points,
+including our conversations,
+and the way you then package
+the output to reach out
+and collect input
+from people we may not know
+at this point
+who may connect to the content.
+And I think this is a form
+of structure
+in a very distributed environment
+when you look at
+how the Active Inference Institute
+is working,
+of connecting, actually,
+the top,
+which is you guys,
+the front lines,
+are possibly people like myself
+giving feedback.
+So front line is not always,
+you know,
+it doesn't imply
+it's somebody,
+that's why I don't like
+the word bottom.
+sometimes your most intelligent people
+in the network
+may be your front liners
+giving you the right feedbacks
+and data points.
+I hope that answers the question
+and puts it a little bit more tangibly
+into your perspective.
+Most definitely.
+And I think,
+thank you for all the nice things
+you have to say
+about the Active Inference Institute.
+That's always,
+it's always nice
+to get a compliment.
+And I think that
+that's it for today,
+unless there's any more
+like burning thoughts
+or questions.
+Thank you.
+Well, thanks.
+I always enjoy
+the conversations.
+Yeah, yeah.
+And hopefully,
+we can have you back
+as we wrap up the book.
+We're going to come around the bend
+and maybe we'll see you back
+in a few weeks
+if you have time
+to come discuss
+the end of the book with us.
+That'd be great.
+I will always try for you.
+It becomes a little bit more,
+I think,
+towards the end,
+it becomes a little bit
+more philosophical.
+So this was a hard part.
+I think the next chapter
+goes a little bit more
+into the corporate governance side.
+I think we've covered
+quite a bit of this.
+So when you,
+I think the next one
+is three,
+conclusion.
+And I think 13,
+chapter 13,
+which is outperformance
+and survival
+as a matter of self-organization
+is quite philosophical.
+I think as a topic
+and I look forward to it.
+And thank you so much
+for also taking interest
+in my work.
+It means a lot to an author.
+Thank you.
+We'll see you next time.
+Okay.
+All the best.
+Peace.
+Peace.

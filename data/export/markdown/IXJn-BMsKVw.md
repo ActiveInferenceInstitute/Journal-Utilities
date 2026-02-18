@@ -1,0 +1,930 @@
+---
+title: "ActInf Livestream #042.2 ~ "Robot navigation as hierarchical active inference""
+category: "Livestream"
+series: "Livestream_042"
+episode: "2"
+duration: "1:43:15"
+url: "https://www.youtube.com/watch?v=IXJn-BMsKVw"
+views: 117
+exported_at: "2026-02-18T22:37:37.757524+00:00"
+format: markdown
+---
+
+# ActInf Livestream #042.2 ~ "Robot navigation as hierarchical active inference"
+
+All right.
+Hello and welcome everyone. It's April 27th, 2022 and we're in ActInfLab livestream number 42.2.
+Welcome to the ActInfLab. We're a participatory online lab that is communicating, learning,
+and practicing applied active inference. You can find us at the links on this slide.
+This is recorded in an archived livestream, so please provide feedback so we can improve our work.
+All backgrounds and perspectives are welcome and will follow good video etiquette for livestreams.
+Check out activeinference.org to learn more about what's happening in the lab.
+All right. Well, here we are in 42.2. We're in our third discussion around the paper
+Robot Navigation as Hierarchical Active Inference by the authors listed here.
+And this is a discussion where we're going to pick up on a few different threads
+that were arising in the .1 and have a lot of time to explore some of the formalisms and the robotics
+aspects of the project and take any questions that people are bringing up and just randomly
+posting in the live chat. So we'll just start with introductions and saying hello and then we'll
+jump to where we were leaving for last time or leaving for this time from last time and then
+just see where we go. So I'm Daniel. I'm a researcher in California and I'll pass to Blue.
+I'm Blue. I'm a researcher in New Mexico and I will pass it to Tim.
+Hi, I'm Tim. I'm a researcher in Gaines, Belgium and I will be co-authors of the paper so feel free to ask me anything.
+Wow. Three researchers walk into a .2. Do you have that kind of joke over there, Tim?
+Like...
+Okay.
+Okay.
+We'll see that with the .2.
+
+Okay. We had a few different notes down. So anyone who wants to pick one of these threads up or we can
+return to some of the formalisms and questions about the robotics, but we're just going to pick
+up a thread and start with whoever wants to go first. So we mentioned difference, uh, different detail
+and implementation and just like fun stories or things that happened in the implementation.
+The idea of different types of maps and where does emergence fit into this?
+Maybe, uh, one thing I could, uh, I could elaborate on is basically from the last stream, I think Blue
+brought up the idea of, um, when you enter a hotel room, everything kind of looks familiar rather you
+might have never entered that particular hotel room, right? And the question was, how could this arise from,
+from this kind of model? Uh, because here it's still kind of very tightly coupled to whatever you're
+observing in that particular environment and it doesn't really seem to scale to some something else,
+which is, uh, which is correct. Um, and so for, for this kind of, uh, understanding, I think you
+you'll need to build a system that goes even higher in hierarchy and, and higher in abstraction levels.
+And I've been thinking about this kind of, um, emergence slash kind of models that could give this
+kind of, um, behavior. And I think at some point, um, you'll need to, um, have a model that is complete
+reasoning in abstract concepts rather than, um, observations that, that you can observe in your
+sensory, uh, streams. So I could imagine that you, um, that you build a layer on top of, uh, this model.
+So here you basically, uh, go from camera inputs to, um, um, um, graph based representation of your environment.
+I could imagine that you repeat this for many different kinds of environments, which results,
+which, which yields you a number of graphs that map to that particular environment.
+And that at that point, you start kind of looking for patterns in this repertoire of graphs that you,
+um, that you visited in the past. And you, you start figuring out structure in these graphs, like, um,
+bedrooms all have like a bed and maybe a closet, whereas kitchens, water, have a fridge and, uh,
+uh, uh, sink. And that you, you kind of see these kind of repeating, uh, things in certain graphs. And that,
+at this level, you kind of, uh, make a model that classifies kind of each type of environment into such
+a category, which will then inform you or kind of, uh, give you a prior on what kind of graph to expect in,
+in, in, in a hotel room, for example. Um, so I, I realized that I'm talking in very vague and abstract,
+uh, ideas here and because yeah, you don't have it yet, but yeah, I, I think that's kind of, um,
+a way how to, um, how it could be done. And I look very much forward to, to, uh, to actually
+head into this research direction as well in particular. Uh, so if, if we would think about how
+would, would I implement it, then I would start with, um, first applying the current system on a bunch
+of environments that have like, uh, like two different categories, for example. Um, so, uh,
+and then kind of learn a model on these graph structures. And in particular, these, these current
+evolutions in, in graph neural nets might, might be, uh, uh, an interesting, uh, route to take to see,
+can you learn representations of graphs or parts of the graphs and, and like build the latent codes that,
+that generates similar style graphs basically. And then you can kind of navigate to real environments,
+then learn a model that, that builds similar graphs, and then use that model to kind of imagine
+potentially similar looking environments. Um, but still this will be, so if, if we would implement
+it purely on, on this level, I imagine it will still be very much tied to, um, to the observation
+level. Like you could generate potential camera, um, frames that kind of look like it's, it's like
+creating a generative model on this, um, uh, the LSTUN bedrooms dataset. So you can kind of generate
+novel kind of bedrooms, but it's still very much tied to, uh, the pixel level. Whereas I think to go to
+more semantic and human level, um, reasoning like we do, then at some point you'll have to start have
+more understanding carving up the observation space into different kinds of objects and have, um,
+these kinds of representations, which are, uh, totally not in, in the current model. Um, and,
+uh, yeah, you'll have, you'll, you'll need to have some understanding at that level before, before you can
+have reasoning like, okay, I go to a hotel room and I, and I expect there to find the TV and remote
+control for TV basically. But yeah.
+Yes, Blue.
+Thanks. That's, uh, super interesting and kind of a good, um, maybe tie-in to like, I was also thinking
+about different kinds of maps more than just over some kind of spatial scenario. And, and the, the one
+obvious, uh, idea that comes to mind is like a semantic map over language, uh, in natural language
+processing and using this kind of hotel room scenario as a topic, like in the topic of politics, you
+expect to find right wing, left wing, conservative, liberal, like you expect to find all of these words
+in the topic of politics if you're trying to model a topic. And I just wonder what other, if either of you guys
+have ever thought about other kinds of spaces that can be mapped over like this, like physical space,
+semantic space, where else can we build maps where we can kind of implement this type of navigation?
+Yeah. I mean, that's, that's a very interesting question. And actually I think one of the core
+hypotheses that, that Adam and I are investigating is basically that any, anything that is related to,
+to our cognition is, it basically stems from building a kind of map and then navigating it. Um,
+and how this could, um, be more concrete sized for different kinds of maps. Of course, this is a huge,
+huge effort and you'll need to have like, um, experts on a certain domain in order to kind of
+think about, is this possible? How could it be? Um, and for some topics, it's pretty obvious,
+like, like navigation, for instance. Um, and, um, the, the, the semantic modeling that you mentioned,
+I think it's also, um, intuitively you can relate to how, how you can build a map from this and, and,
+and relate it. There's also the, the, the work from, um, from James Whittington on the Dolman Eichenbaum
+machine that, that goes in a similar direction where he basically, uh, builds a system that's also
+true navigating a structure tries to, um, infer certain relationships. And he also applies the same
+model on different kinds of, uh, tasks. So for example, one task is, uh, also navigation, but like
+navigation in the, in the grid world, like you can, you go north, east, west, south, and then you expect
+to be in the same location again. But you can also, he also applies it like on family trees, like, um,
+um, uh, John is the father of, um, Daniel and then Daniel is brother of blue. Then you could infer, uh,
+who is the sister of Daniel, for example. Uh, and, and he also maps this in like, navigating a space
+and, and learning how, how relationships, which, which are then like, actually taking actions in the
+map. It's like, um, following the, the, the, the broader arrow, it's like, it's taken an action,
+uh, in, in, in the physical map, let's say, and then you have basically have to traverse through the
+family tree only once, but then you basically know all the relationships and you can start navigating and
+make these kind of inference. So this is actually pretty, pretty cool work. And there was another,
+I think there was another task, uh, we also applied it on. So there are some tasks where it's really
+obvious how to do it. There are plenty of others where it's not so obvious, but yeah, some, somewhere,
+uh, Adam and I basically think, yeah, this is kind of, anything should be mapped to the system. And,
+and this could then be like a, a universal way of, of how, how did humans come to
+thinking in, in these kinds of abstract levels? Well, basically because they evolved from a very good
+mapping and navigation system. And that's kind of the, the main idea. So if we can solve
+how to build a map and then navigate it, uh, first on the navigation level, and then on a more abstract
+level, then we might be on our way to, to, uh, to kind of a general, um, system for, for, for reason.
+Yes, thank you. Uh, thanks. That was super helpful. So I really, um, yeah, that, that opened up a lot of
+doors. So in relationship to another project that Daniel and I are working on, it seems like, um, from the
+family tree, then it would be easy to map over like a genetic space, a genomic space, or even like a
+phylogenetic space from one species to the next, or even like mapping over recipes, um, like when you're
+cooking or even like different types of art. Uh, so just kind of anywhere where there's the adjacent
+possible, it seems like that that's where you can construct these kinds of maps. That's really neat.
+Yeah. I think the, the, the main, the main thing is how, how do you transfer the action concept to,
+to the, the space that you're looking at, like in a family tree, the action is like moving from one
+person to the other and the, the, the action type basically defines the relationship between
+two persons. Um, I think that's kind of the, the difficult part always like, which is the action
+space that you need to traverse the world. And then the second thing is like, what are the, what are
+the locations in the world? And once you can map these two, then I think you're pretty, pretty much done.
+Right. It's like, it's, it's finding a way of moving from one location to another via these actions.
+And if you have the actions or relations between entities, you can basically draw an inference on
+what is now the relation between a and b given this structure. Awesome. A few points. So Tim, thanks for
+beginning with this nice description about how we could add in this conceptual or in cultural layer
+and about generalizing across different environments. And that reminded me of the work on pattern
+languages and it's kind of a bottom up discovery. And then it was a great point. Like, yes, there's the
+algorithms that generate a house scene, but there might be something that does that, that at a pixel
+level makes sense, like putting a toothbrush under a cabinet, but then semantically or culturally,
+a person will look at that. It's like, but that doesn't make sense. And so then that would be like,
+let's just say it explored a bunch of different warehouses. And the commonality was like, it was
+always rectilinear shelving. There's a genre of warehouse that's like always that way. And then
+whether it was like three shelves by 10 shelves or the other way around, there would be like another
+space that those graphs would map to. So that was a very nice piece. And then Chris Fields and Michael
+Levin just a few days ago wrote this paper, competency in navigating arbitrary space intelligence as an
+invariant for analyzing cognition in diverse embodiments. So perhaps something relevant for us to explore going
+forward. What do you think, Blue? I think these guys write papers like faster than I can read papers,
+which is amazing. I know it was, um, yeah, April 24th. So three days ago, I have not fully read it,
+but, but a lot of the figures look very interesting. And, um, so, um, and then, but I want to continue on
+this last point about the actions and maps, because that kind of mapping and multi-scale mapping and
+transmuting and translating across different types of maps is kind of the, what the multi-level slam
+is. It's what a single level slam is, but then the composability of this discussion is what enables
+like there to be a slam where it goes from a geometric space to a topological space. And then from that
+into like a cultural or narrative space or something. So how does action relate to maps?
+And I thought about that family tree. You mentioned how there was one representation where the actions were like,
+just like, well, you know, if you were in a room shaped like a bifurcating tree, then the actions would be you
+walking around that room. So that's one action. Then there's the cognitive action as that entity is
+building its knowledge representation of the tree. And that, that is related to its planning and its
+preferences or all of this, that isn't it inferring the tree, but it's like figuring out how it's going
+to infer the tree. And then there's like, there's other actions though. There's the action that we won't
+talk about it of how families arise. There's all kinds of actions and the tree is just a representation of some
+other process. So how do we think about all these ways that action relates to maps and what kind of maps are
+actionable? What about ones that are about action, but not actionable or all this other possibilities?
+Yeah, I, I'm not entirely sure whether I'm all the way with you, with your, with your last explanation.
+So I think that the second bullet, like the action of updating the genetic model, I would not necessarily
+consider that an action. I think that the updating of the genetic model just arises from,
+from, from experience and trying to minimize your free energy. Anyhow, the, the action from, uh,
+from the, uh, the other actions I think is like, what is the action concept on different levels?
+For example, in, to be more concrete in the, um, in, in the genetic model, we had the low level action,
+which is basically, um, a velocity command for the robots, like move forward, or, or, or turn around
+with this kind of, uh, velocity. But then the higher level action, that would be, we called it the move,
+which is like traversing the space from one location to another, which is kind of, uh, in this case,
+of course, graining of the low level action. But I think for every level in your abstraction hierarchy,
+there will be an action concept that moves from one thing to another.
+And what that concept has to be will be tied to whatever level of abstraction you're modeling at
+at the stage, I guess. But I don't see any other actions besides that, per se.
+Thank you, Tim.
+Blue?
+So I think about like at different levels of actions, if, if you, for example, think about foraging,
+right? And so you can have like camps of human foragers and the task of each individual forager
+is to go out and find food. So you go out, you find food and you come back and you go out and you
+find food and you come back. And then like, if it takes too long to find the food, then collectively
+as a unit, the camp decides to move, right? So, so you pick up and you make camp somewhere else.
+So that's like a, an example of like every day you have the individual unit does something,
+some task, and then the collective makes the decision based on the, on the input of the individual
+foragers or like the time it takes them to find food. So that's kind of a way that like,
+I can think about the nesting of, um, of action.
+Yeah. And so, so, so, so, so, so that I think we're on the same page, but, uh, on that account,
+because you, you, you will have at some point, a very high level joint model that,
+that encodes in the state, like, um, do we have enough foods? If not, we, uh, we collect,
+if we don't find foods, we go to another state. So it could be like a very high level,
+abstract map with a few states and nodes, and you could drop, imagine you can draw out like, um,
+um, a graph with nodes where every node is kind of specific states, and then doing an action brings
+you from one node to the other. It could be a node like, not enough food, enough foods, um, um,
+move to another location. And then you go from, uh, not enough foods to foraging, which brings you either
+to, which either brings you in the same state or brings you to the state, I have enough food, which
+is fine. And if you keep on, uh, residing in the not enough food state, then you decide to move and you
+might, uh, so you could kind of imagine, um, an abstract map where you have this kind of dynamics
+and the actions make sense. And then at some, some point you will have the, the task or the action
+in this level that says search for food, which at some level down the road will, will be, uh, driving
+actions for start walking or, um, for navigating or search for places where, where that, that, that,
+that are promising for finding food. So lots of levels of, of a, of a conceptual hierarchy, you will
+have different kinds of actions that bring you from one node to the other, where the nodes might be
+like a general state of the community, which is like the very top level that you just described.
+And then you will also have like nodes that are like physical locations in your environment.
+And then you also have like very low level nodes that might just describe like, uh, your current
+pose in the world basically. And, and the lowest level action will just be the, the torques that you
+do or the, the muscle, the muscle movement that you do with your legs and your hands, it will be the
+very low level. So I think, um, you can, you can draw this concept all the way up and down with a very,
+very low level layer with, with, with many layers of the hierarchy and at each layer going from one
+state to another, this is basically the action at that layer, but the meaning will be different depending
+on, on which level you are. And the more, the difficult part I think is how, how could you, how can you
+have these concepts emerge from, from, from bottom up? And I'm not sure that whether it's possible,
+but we are, we are trying to get us as, as high up as we can, uh, basically.
+Very interesting. Yes. Thank you. Blue. Um, so it's super interesting and, and definitely, um,
+it's why I, I link next to semantic space because when you're trying to like communicate with someone,
+like the purpose of communicating can be, you know, have many faces, but, but in, in communication,
+it's like reaching a shared understanding and then like, okay, we have enough understanding of that
+topic. Like, let's move on to another topic in a, in a conversation. And so, um, that's why that's like
+very easily, um, it's very easy for me to see like how the semantic mapping and the spatial mapping,
+um, can, can link together, but I can't think of like, why, um, I mean, like why, why would people like,
+well, maybe in genetic or genomic maps, um, that also makes sense, right? Like to, um,
+like, like what would be the action like to evolve, I guess, is the action in, in kind of a genomic map
+space, but like think, I guess, um, maybe novelty and, and that's kind of where active inference comes in.
+Like why would you traverse a, a map of recipes or a map of different types of art? Um, and I guess like
+the idea is in, um, in, in exploration, like, and, and trying like, well, what happens if I combine
+these ingredients in this other way or add this other ingredient or, or like, where is the adjacent
+possible? Like, that's where I kind of think that the exploration, the, the room for exploration comes in.
+And so when you, when you traverse the map, um, sometimes the action is just to, to see what's next
+or just to, to explore or, or reduce uncertainty about, about your possibilities or affordances.
+Yeah. So I think once you, once you've nailed down, um, the different nesting of states and what are
+the different actions you can take that bring you from one state to another on a certain level,
+then basically the, the, what you will do can emerge just from, from minimizing expected energy,
+right. And that, that would be the, the, the, the powerful ingredients or the powerful, um,
+tool that active inference gives you is that once you, you, I, I, I would see building a map and,
+or like a more that kind of graph structure where you connect notes and, and the transition between
+notes or then the actions, that's kind of a way to build a generative model that is a bit more complex than,
+well, actually it's not that more complex, but then, than the traditional A and B matrices.
+Um, and, and in that way you, you, you can apply the same principles, right?
+Let me write this one very important point down, Tim, because you said,
+and maybe you could just unpack this in active inference, being able to provide a structure
+of the model provides us a way to optimize it using variational Bayesian methods, message passing,
+software toolkits like for any lab, active block for instance, py MDP, MATLAB SPM.
+And I think that's something that's subtle, but interesting and different from a lot of other
+models where the mere data structure doesn't lend itself to like an implementable algorithm.
+What do you think about that?
+Yeah, I think that's very true. And I think one of the, um, one of the important things also in, in the,
+in the whole, um, SLAM system here is that we basically move from, uh, more or less high dimensional
+continuous observation and action space. I mean, you could, you could do any, uh, continuous, um,
+you, you can command any, any number of velocity, uh, that is sensible to the robot. And the, the,
+the amount of, uh, pixel information that, uh, that you can get is also, uh, very big, if not close to
+infinity. So we basically move from this high dimensional continuous spaces to something that is
+more like a discrete set of nodes that you can traverse, which is much more like, uh, um, an A and
+a B and a C matrix, like, like we are used to in PyMDP. So just by enforcing the model to learn this
+more discrete state space that's, that we can manage is already a big step that's, that would allow for,
+um, an active or active inference to, to, to, to be applied basically, because one of the biggest
+issue is always like, okay, um, you could use active inference for planning, but if you're,
+your state space is so large, then yeah, just, you, you cannot just iterate over all potential,
+uh, policies and, and calculate the expected free energy and, and pick the best one because your
+space just blows up. But if you are able to at some level, um, discretize it to a limited set of
+states that are applicable to your current context, then maybe you can start, um, iterating through all the
+potential relevant behaviors. It's like, um, going back to the, uh, to the foraging example. If
+you just have to choose between moving versus foraging, the problem becomes much more easy than
+when you have to decide for any possible muscle movement that you can do the next few hours, right? So
+I think moving to a more, um, discrete set of states is, is crucial to, to, to scale these methods to,
+to realistic settings.
+Okay. Awesome. So returning to this maps of actions question, and that's a little bit in contrast with
+like the maps of meaning. And I think it points again to active inference as always having inference
+and action as like two approaches to minimize free energy, two ways to think about the same process. Um,
+and I want to return to this question about like what the actions and the moves are. So I'm imagining,
+uh, blue on the foraging trip and there's what was the, um, the semantics of the slam presented in this
+paper was it was a, uh, location based approach, whether in a geometric space or in a, um, in a
+topological and a relational space, but am I in the right position? Like is a question about location
+satisficing. And then it can also be thought of as like that entity is existing at a location in
+cognitive parameter space, because this question about estimate about space is a cognitive parameter.
+It's one about the territory. It's a map of the territory, but these are cognitive parameters
+that can include like,
+am I paying it? Am I where I want to be with respect to how I'm paying attention about things?
+And so to actually explore that, I wanted to juxtapose, um,
+two different generative models that we've seen.
+And keeping in mind also that that capacity of active inference where being able to form these
+generative models, it also is helping us get towards applying them.
+So on the right is the structure of the model from your paper. On the left is a three-level model,
+but there's also a two-level one that I can pull up. And it's from the Sanved Smith et al paper
+on computational phenomenology and mental action. And so the actions in this case
+are happening at the level of what am I perceiving? What is the action at this sort of like motor level?
+And whereas in, in your multi-level slam, this level was about space still again, from the geometric,
+smaller scale, tactical scale of space to the topological, bigger scale, strategic level of space,
+space, but it's still about the territory. And in here, a somewhat analogous multi-scale nesting,
+the partially observable Markov decision process, is used to represent not a spatial
+layer or coarse graining, but actually an attentional layer. So what do you think this,
+what does this make you think of, or what does nesting POMDPs mean? And what could it mean?
+Well, in essence, what it, what it basically does, it puts the higher level,
+puts like a prior on your lower level, right? On the, on the, the next. So in, in, in my figure,
+like the one, if you have, um, if you have a belief over your states in the red box,
+then basically this gives you a prior on what you expect to observe in, in, in a single blue box.
+And in this case, in my case, it's indeed very tight to the, to the spatial domain,
+but in essence, it can give you a prior on, on, on, on, on, on any aspect of, of the level below, right?
+And I think that's what they do, uh, on the, on the, in the, in the left model then.
+Where also, if you have like an inference on, um, um, if you have a belief on the, the orange states
+in the left model, it basically gives you a prior on what, what states you expect to observe,
+uh, or to, to believe in the, in the, in the blue one there.
+Here's going to be, I think this is figure 12 instead of figure five.
+So this is the generalized deep model of action. And here the emissions of the hidden state at the
+higher internal mental level, cognitive domain, the emission mediated by the a matrix, just like it
+would be in a retina, but the emission of a is the hidden state at the lower level S one, but also
+the uncertainty parameters, like the variance estimates on every other core, um, kernel parameter. So, yeah.
+So in the slam, what other, which are these other generalized connections do you think have
+relevance for the robotic slam context?
+Well, I think, I think it makes a lot of sense to also have like, um, um, something modulating your,
+your, uh, your precision parameters. It's like, it's like, um,
+it's like having a, a certain trust on your observations for certain environments. For example,
+you could, you could, you could, you couldn't, for example, if you go, if you go to your cellar,
+you might know that the lighting conditions will not be optimal and you'll have different precision than
+when, when you're in your kitchen, for example, just thinking out loud. So I think it makes sense to,
+to have this hierarchical structure on any, on, on anything that, that you have beliefs over,
+or that anything that can have importance on, on, on your, on, on, on making better predictions, basically.
+So you can have a less, you can, you can have better predictions if you have a good prior on how
+precise you would expect your observations to be here. So that's why it makes sense to have a model evolved
+that, that, that takes this into account, I guess.
+It just is very interesting. Like if the nesting can represent staying within the same domain
+and a core screening of like, okay, you know, district, state, continent, like a sort of within
+the same genre, but different core screenings, or it can seemingly, at least in the case of mental action
+and, um, hyper prior optimization, modeling in general, like investigation and research in general,
+those cases, this is not a core screening. It's, it's something totally different.
+So if the interface can mean two totally different things, couldn't it, couldn't there be a third
+implication to, or do these exhaust the implications of nesting? Can nesting only refer to like a like
+kind nesting, for example, nested times scales, nested spatial scales, or the cognitive action
+of basically removing something from the sensory territorial domain, and then like entering it once
+into the cognitive domain. But then once it's been entered into so-called hidden internal states,
+which are not even being proposed to actually exist in space or time, then you're kind of in,
+in like the matrix slash simulation slash structure learning on cognitive models.
+And then it's not like that's going to be nested. I don't know.
+Right, I think it's just in the end, it's, it's just finding the finding the most simpler model
+that explains it, but not simpler, right? And you could imagine a model that, that operates on the
+lowest level always. And that's indeed just has, in case of a robot has pixel inputs, and has torque or
+velocity output, and builds a model that can predict for hours in the future accurately.
+But then you also realize that this should be a very, very, very complex model. It, it, it, it must
+always, it's almost the environment, right? And this is unmanageable. I mean, the only way to kind of
+do it then is to, to start adding structure to the model and start factorizing out different variables.
+And in essence, nesting is nothing else, but factorizing out a certain variable.
+So, so I think in the end, it's just a matter of finding the model that most accurately predicts
+what's going to happen with the least complexity and building an hierarchical nested model is one way to,
+to, to make this happen.
+The way that Blue spoke about the genetic nesting in this sort of Aristotelian sense, giving rise to
+in the genetic sense and in the sort of cellular, and then how you framed it as the simplest model,
+but not any simpler, which is often, at least in the Bayesian area framed as being like the AIC or BIC
+Pareto optimal model, like some kind of a trade-off of accuracy and complexity, so on.
+And it's like, there's a process of structure learning because we want to know, okay,
+categorically, should we be fitting a one level, two level model? What kind of structure within the
+three level nesting? Which one of these edges are going to be making the machine learning model in
+real life run a hundred times slower and not even converge? Which one of these edges are we going to
+be just totally in the dark without? Bayesian model selection on structures, including cognitive
+structures. And those structures, we're not picking the final best. This structure learning is not picking
+the final best parameterization. And this is kind of like how Carl is always speaking about developmental
+robots and how out of the factory or whatever, it's going to be in a learning mode.
+So the structure learning is on learning structures and the learning structures are about perception,
+including the actions that one is observing himself to be doing. Because if we couldn't observe the
+consequences or at least even our own action states in some way, there'd be a total disconnect and we
+could never get our action policies. It would just be like the motor babbling and the sort of
+uncoordinated movement. And I'm sure a lot of robotics and evolutionary simulators, that's why they have
+that wobbly leg phase. Because I think a lot of those models, they don't know they're wobbling. They're
+just implementing in this super high dimensional space of motor policies. They're just
+not getting the feedback. So it is like a nesting.
+Cool. Very interesting direction here. And I think there's a lot more to explore
+about what kinds of nestings, because maybe it's actually that attentional layer that you described in
+your opening thoughts about the higher level of abstraction that was taking in a graphical,
+a graph. I mean, you know, maybe that is the layer that just comes on top right here. And the current,
+the can gets input into some other thing.
+Let's look at some of the formalisms and figures. Or if blue, or if anyone in the live chat has any
+questions they can totally ask.
+I have a question on this, or if there's another equation or formalism that it's clearer to address
+this question. This p on the left side, you can describe it in your own words, but it's a joint
+distribution of multiple variables. How does one go from knowing what variables they want to include
+in the joint distribution? Like what arguments they want that function to take? And then a specific
+partitioning factorization? Like, is this the only factorization? Or how do we make this factorization
+based upon what we kind of know what we want to model maybe even very early?
+Yeah, so, so basically, going from the left hand side to the right hand side, you can basically
+one on one derive it from the figure, basically. So if you look at the figure, you see that the
+the that pi has no incoming errors. So there will be no conditioning on on pi. And then if you look at the action
+notes, then you see that these all get an input error from pi. So then you know that
+pi is actually influencing the action that you do. So this will be a probability of
+actions given pi. And so that's basically how you could, you can write down the equation, just by looking
+at the figure basically. So typically, how we if we if we start off with a new with a new type of model,
+we start off indeed with just listing all the variables that we want to model. And then we start
+with drawing out a potential diagram like we have on the right, and
+the equation just falls out basically. And it's always a matter of thinking like,
+which variable has influence on which other ones. And for instance, you can also make make make your own
+assumptions. They're like one the assumptions that we often make is like, okay, the hidden state should be
+kind of should be Markovian. So once we know the state at time t, we don't need any information on the past
+anymore. And to generate the current observation, for example, so these kind of assumptions
+go also in, and they will then decide on
+on which things you need to condition. Because you could also if in general, you have
+the joint distribution, you can also just restrict yourself to basically base rule to come up with a
+factorization. So if you just use base rule, you can also come up with a factorization that will be perfectly valid.
+But that might not be easy to implement. So you basically search a bit for what is
+possible. And you add some assumptions in order to make it work intuitively, as well as practically,
+if that makes sense.
+Thanks a lot. So you mentioned the first two terms here, it would just be great to hear for the green,
+blue and the purple term, just how do you describe the way that you look at the graph and then
+translated it here. And then I'll have another question. But first that. Yeah, so green, blue,
+purple. Yeah, so for the green one, you look at the initial nodes of the blue part. So this is like
+your initial, your initial state at the start of sequence, and you can know and this one is
+the, this one has now Oh, yeah, oh, no, this will be the sorry, this will be the the ultimate original
+state. I don't think that I don't think that the the equation on the left corresponds to the to the
+figure because there is no locations and moves in there.
+Right. Okay, yes, this is a lower level model that we're looking at. Yeah. Yes. Okay,
+the initial condition is conditionally independent of other edges. Yeah.
+Yeah. And then and that so the the green and the blue is basically your initial start state. So you
+you you have to bootstrap somewhere. So you have some prior on your starting state. And then from then
+on, the next states will all depend on the actions you take. So then it's in the in the purple,
+the first term is basically saying, Okay, my next state will depend on my previous state and the
+action I took. And then the the second one in the purple is saying, Okay, the action that I take will
+depend on my policy. And the last term then just says, Okay, my current observation, it only depends
+on my current state, because I assume that all information of the time step is basically
+the
+is represented in the in the in the state of the thing.
+This is really powerful. And I think that the fact that all future states are part of a combinatoric
+relationship with action, it really shows how deeply action is embedded within active inference,
+like there simply is not a consideration of future observations or latent states.
+Except for conditioning action on policy, and conditioning states on action. So policy is above
+actions that are selected that are actually taken and enacted. But all inference is conditioned on action
+selection, which is conditioned on policy. And there aren't two separate models, like an expectation
+module, and then like an action selection, state value mapping, state policy mapping policy state,
+all those kinds of constructs that are meant to bridge the gap between inference and action being two sides of the
+the same coin to minimize free energy, literally also for those machine learning models. It's just really
+interesting how that is all concisely simplified and integrated in active inference. And so I want to ask a
+question on this purple term, which is is anything known about the computational complexity of changing H
+metrics is this is kind of a skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill skill
+age doesn't really matter. It could go to infinite without loss of generalization. So it's like your agent gets born and then it operates like this until the end of its life and it could be age. So from just modeling the system, it doesn't really matter. It just says, okay, this is the time horizon that I consider the system.
+And this is then how I assume it acts, basically. It's a different story if we look at an actual implementation where you suddenly have to choose an age. If I implement this model, how long do I want this thing to be able to predict? Because of course, if you build a model that is predicting and then you have to check
+whether your prediction was correct and you use the kind of models that we use that basically want to backpropagate all the way back to have a gradient update step,
+then of course the age becomes determined by practical considerations like how much memory does my machine have to keep all these intermediate states and memory and I can still backpropagate through
+through this model. So, so then it basically an implementation, implementation driven choice on how far in the future, do you want to model this thing?
+Or can you model this thing? Because it might also be that if you try to predict too far ahead, that there's so much noise that it doesn't even make sense to try to predict it so far in the future.
+So it can be driven either by what makes sense for this environment versus how much compute and memory do I have to make this happen, basically.
+Awesome. Blue, do you want to? Yes, go for it.
+So I have a question over this figure and then also over the, it's formalism six. I don't know if you have that anywhere in the slides, Daniel, if you want to grab it.
+Yep. Okay. So in formalism six, like the same observations are there at both levels, at the lower level and the higher level.
+And this makes a lot of sense for something like forging, right? Like the, the lower level, the group is going to, the individual is going to go out, move forage.
+And then at the higher level, it's going to, the group is going to move, right? So in a hierarchical sense, that makes sense.
+And then in figure two, in the, in the legend of the figure, it says that the higher level operates on a coarser timescale.
+So where like the, the lower level decisions are made at, you know, 15 minute timescales or one hour timescales, the higher level is like a day or something, some similar relationship.
+And that also would make sense for something like, like forging. This is kind of relates back to the question of emergence.
+And I just wonder if you can allow for, so like not all systems operate this way. And, you know, here's the big, big question, right?
+Like, like every like organ in my body does something different, right? Like, so, and then like, you know, all my cells are getting dehydrated.
+And then suddenly, like I say, I'm thirsty and I drink, right? It's not like my cells cannot like move to go like take a drink of water.
+So like in a hierarchical sense where, where the higher level is doing a different action than the lower level, have you thought at all about how to try to navigate something like this?
+Like where at the higher level, the action is totally different. Well, the timescale might be coarser, but, but here the variables change.
+And this is something I think about a lot. And so I'm always collecting input and I just wonder what you think, Tim.
+Yeah. So, so basically the, the, I guess the, the core question is how, if you take a decision at the higher level, which is like a move in this case,
+how does it ripple down to a lower level action that might not even be related to, to the move you want to make at the, at the higher level, something like that.
+Right.
+So basically what, how, how, how, how this happens is that if you, if you look at a single level, um, so like a vanilla active inference formulation,
+then at some point you, you, you tie in the preferences from, from a prior.
+Where it's like, these are my preferences. So that's what I want to obtain, um, in, in, in this one level.
+And in the hierarchical model, how, how, how we do it is that basically the, the, the action on the higher level.
+So in this case, making a move to another location, it basically sets, uh, so, so if we, if we, if do you have a bigger version of the, of the, of the image, maybe, uh, Daniel.
+So suppose that we go from, um, so we are now at L big T and we want to make a move to, um, L big T plus one.
+So this basically, so at some point, this is the decision we took. We want to go to the, uh, to the other one.
+Then basically we can use then the, um, the A matrix or the, uh, the likelihood model that then says, okay, if I'm at L big T plus one,
+then this is the kind of state and pose that I expect.
+So this is then being fed back downwards as like, this is now the preference for the lower level model to obtain this kind of, um, state.
+And then at the low, at the lower level, you again have your expected free energy to work out the low level policy and actions that actually bring you closer to that kind of, uh, preference.
+But at the same time, so at each actual fine grain time step, you get low level observations that then give you new beliefs over the state and the pose you're in,
+which might give you more, which might give you more information on the location that you're in.
+And then either at some point you will reach the preferred location and then, okay, great success.
+Or it might be that something went terribly wrong and you'll end up in a different location, but then it basically also goes up again.
+And at the higher level, you then say, okay, I'm now not at the location I want to be, but apparently some different one that I was.
+So then you start planning again at that level to, to correct and search for a new step to take that will then ripple down.
+That's like a preference for the lower level.
+And that's how everything kind of, um, continues on going.
+So the, you, you have your, your, the, you use the likelihood model that maps the states for higher level model to a belief on lower level states.
+And these, this likelihood model becomes kind of your preference for the lower level, which then has your inference process there to do, to infer the actions.
+And that's how you can kind of decouple them from semantic meaning as well.
+This is awesome.
+It reminds me of the kind of question that people often ask, where do you want to travel?
+Where would you like to travel?
+Where would you prefer to travel?
+It's often interpreted in a very life scale of analysis.
+Like I would really like to go to this other area.
+So then that's like, let's think about that as the biggest level.
+So where would you like to travel?
+I'd like to go to California.
+How will you get there?
+I'll take a plane.
+Where will you go to take a plane?
+I'll drive to the airport.
+How will you drive to the airport?
+I'll get in my car.
+How will you get in your car?
+I'll leave my room.
+How will you leave your room?
+I'll get out of my chair.
+Like that's very much the nesting between the top level, having more of like this topological where I want to be, which then is imposed and propagated.
+And sets the constraints and opportunity for this lower level, like how I will get there.
+Because it's a totally, where would you like to go?
+Somebody could think in their head, I want to go to California in my life.
+And then the answer to the where do you want to travel would be like to the next room.
+But it'd be like, that wasn't really the scale of the context of the question.
+But this really shows how the multi-scale nesting of location lends itself to heuristics and algorithms that help us like chunk complex navigation tasks.
+Like navigating to somewhere in California in the next few years.
+But you can't do the rollout for all of the actions taken at the chair level for that.
+Because it's going to be too many explosions of comatorics.
+Tim?
+Tim?
+Tim?
+
+And just to add into the storyline, at some level in the hierarchy, you are like, okay, I want to go to my car.
+But then you could say, okay, but I need my car keys and I don't know where they are.
+Where are my car keys?
+So then suddenly from having this really goal-directed nesting, at some point you say, okay, I need some more information at this level to actually reach my goal.
+And so at that level, it might switch to more epistemic foraging, which will then ripple down to the level below.
+Like, okay, let's take a look in my kitchen or at the kitchen table.
+Maybe they are there.
+And so that's how at every level of the hierarchy you have this exploitation-exploration trade-off.
+And the outcome of that inference process will then ripple down to the level below.
+Like, this is the preference for this level to obtain.
+And this is how everything then starts flowing.
+This is awesome.
+Blue?
+Blue?
+So I'm going to now ask another really hard question.
+So this is really awesome.
+And it reminds me of, like, how the higher level constrains the actions at the individual level.
+It reminds me of, and I know, like, you were intending to take this out of semantic space, but it puts it back into semantic space for me.
+I was having a conversation over the weekend at Complexity Weekend, and one of the participants brought up a kind of political and controversial topic.
+And I was, you know, they said, so what do you think?
+And I said, I think I shouldn't talk about that.
+And then they said, okay, well, so what do you want to talk about?
+Which is, like, kind of like an odd question to have in a conversation.
+But it constrains, like, when you assign a topic or, like, here, I mean, we're obviously assigning a topic also.
+You know, we're here to talk about this paper and related things that might come up.
+But in, like, a spontaneous conversation, when you assign a topic, it very much constrains the conversation to, it limits the topic or at least starts a seed.
+And I wonder, like, why do we have to talk about anything?
+Like, can't we just sit?
+Or, like, can't we just, like, you know, talk about the first thing that comes to mind?
+Or can't we just, like, be and be quiet?
+But for a lot of people, that space is kind of awkward.
+And where, then, does emergence fit into the model?
+Which this is the hard question.
+Or can it fit into the model?
+Like, when, you know, one component of the lower level says, well, maybe we'll move to the right.
+And then everybody says, okay, and they start to pull to the right.
+And then, okay, well, maybe we'll pull to the left.
+Like, so is there room for emergence?
+Or it's always constrained by the assignment of the top level.
+Yeah, you spoke about the top level propagating and rippling down.
+So what's the other direction there?
+Yeah, I think, I think ultimately, you need some preferences at the highest or at any of the levels, right?
+And if there's no such preference, then indeed, we end up in the situation like, yeah, what happens now?
+And there is no real constraint and anything can happen.
+But I think typically in life, we're in the, at some level, we'll always have a preference.
+And that, that defines our, our behavior.
+I guess.
+I was, I was actually talking to a colleague on, on, on similar things.
+Like, as a human, we always have, like, we make plans or we have, there's always something on our mind to do.
+And we were like, yeah, but if you look at the monkey in the zoo, he just, he can just sit there and do nothing.
+So what goes, what goes on in, in, in, in the animal's mind is like, okay, all my preferences are met.
+I don't, I'm not hungry.
+I have a safe place.
+So I just do nothing.
+So, yeah, it's an interesting question.
+Like, what, what happens if we don't have, if we don't have any urgent preferences that need to be met?
+I don't know.
+Well, in the zoo example, that behavior of, for example, low levels of activity might also be associated with, like, learned helplessness or trauma or, like, a freeze reaction or the, the affordances are not presenting themselves in a, in a certain way.
+So then that speaks to, like, the ambiguity of cognition with respect to behavior.
+And, like, the robot could be bumping into the wall for a lot of cognitive reasons.
+It could prefer to bump into the wall.
+It could prefer to do something else.
+And so there's, like, there's a many to one mapping with cognitive systems and behavior.
+Like, someone could be thinking, have different reasons or preferences for why they emit a given sentence.
+So that's part of the complexity, but also, like, the opportunity of the cognitive.
+And then also the classic Lewis Carroll quote, probably also misquoted slash alt quoted many other places.
+But it's like a great, you know, folk active question.
+If you don't know where you want to go, then it doesn't matter which way you go.
+If you don't have high precision-ish on your preferences at location, then it's a wash.
+It doesn't matter which policy selection you're taking.
+Because why would it?
+The only way that you could justify, well, I like this way.
+Okay, because you have a preference for simplicity or you want to head off in this direction.
+Those are all valid.
+It's not to say that if you do know where you want to go, you're right, or you're doing the right thing, or it's going to be easy or possible.
+It's just, like, if you don't have preference, then it's not possible to make any kind of decision worth evaluating.
+And that also speaks to the integration of preference in active inference as a means of guiding epistemic and pragmatic value rather than reward learning, reinforcement learning, which only centers on pragmatic value.
+And the implicit preference is more reward would be better.
+And then there has to be all these ad hoc ways of introducing epistemic and balancing the paperclip maximizing into these models.
+So, great example, Daniel.
+Daniel, and I think back to the monkey in the zoo, and if the preferences of the monkey might just be constrained by the zookeeper.
+Like, the monkey just does whatever the zookeeper wants it to do.
+And then that made me really think about parents and children in the United States.
+So, is there always some kind of downward causation, right?
+So, like, if you have a child, and in many families, and not only in the United States, but it's different culturally, right?
+So, even the school system in Europe is very different than that in the United States.
+So, the kids just kind of go to some generic school.
+The parents may or may not have some preference for what they want the child to be.
+I want you to be a doctor.
+I want you to be a lawyer.
+I want you to take over the family business or whatever.
+And the child grows in these constraints with this predetermined idea.
+So, there's some kind of top-down causation happening from parents to children.
+But in many Americans, like, we're just floundering over here.
+So, what drives, then, the preferences of the child when there's no downward causation?
+And this is kind of where exploration comes into play, right?
+Like, so, you might try this major, or you might try that major, or you might do this, or you might do that.
+And, you know, you have this incredible amount of freedom.
+And so, you really kind of don't go anywhere.
+Or, like, maybe you take one path in 25 different directions and then just end up right where you started.
+So, like, you just start a whole bunch of things and then don't really get down, make any progress on any one path.
+In contrast to Europe, where I think you have to choose in eighth grade, like, STEM or not STEM or something like this.
+So, it's interesting.
+So, I think this lack of downward causation, so the emergence may, this is what I'm picking up from our conversations,
+the emergence may come from just an exploratory structure.
+And, like, in this exploration, you just kind of find some direction through exploration.
+Thank you, Luke.
+Tim?
+Maybe two notes.
+So, one thing is if we don't have preferences, then we still have our information gain term, right?
+So, this might drive you to at least some form of exploration or some drive to kind of, at one point, infer as good as you can where you are.
+Or, on the other hand, maybe some actions will yield you more new information to update your model, like the information gain on your model parameters.
+So, this might still drive some exploratory behavior.
+And then how preferences come to be shaped.
+I guess, one relevant piece of related work is done by Noor Sajid on her pepper system, where it's actually all about, can you learn preferences from behavior?
+Where the idea is kind of like, the things you usually do when you're happy with, basically grow to be your preferences as well.
+And you're kind of attracted to revisit these states.
+And this also ties in, like, parenting.
+Like, just seeing your parents or having your parents taking you to some states.
+Just make it happen that these become your preferred states also, culturally.
+So, the things that you just get to do, because that's what people around you and you do, just become your preferences.
+Because you see it being done and you're doing it all the time.
+So, by doing it, it becomes kind of your prior on things that happen and that you have to do or that you are expected to do.
+And I think it's kind of related as well to the work of Noor.
+Like, how maybe the things that you just ought to be doing and that somebody takes you to do becomes kind of your preferences.
+Great points.
+So, when you said that even without preferences, there's still info gain.
+So, that does hide a little preference, which is a preference to resolve uncertainty.
+But if you remove that, like, preference or assumption, then it's kind of like, okay, there's a million ways to make your Gaussian distribution worse.
+You can just inflate the variance and your error will get infinitely high.
+So, putting those types of inferences away, then there's the info gain approach.
+And then the things that reminded me of was the idea of novelty search.
+And so, this is within the field of evolutionary algorithms and evolutionary computation, where there's often this very exacting fitness test.
+The top 5% fastest runners are going to survive or they're going to be evaluated on the task every single time.
+And then people realized and thought about how, well, maybe it's not like super harsh selection.
+Maybe there's sort of oscillating selection pressures on the task.
+Or maybe multiple tasks are being selected.
+And then sort of like the ad absurdum, but not to say ineffective, version of this argument is forget the task and the performance and the fitness on that task.
+And either entirely or partially use novelty search.
+And simply select for novelty of different kinds.
+And so, it does need to make its way back to task performance, like homeostasis maintenance.
+But this is like an interesting thread that was sort of like balancing out the overly pragmatic value view.
+And the second thing that it reminded me of is the figure in the active inference on discrete states basis synthesis by DaCosta et al. 2020.
+And so, here, in the case of no priors on the left.
+Bayesian surprise, optimal Bayesian design, intrinsic motivation, curiosity, and the InfoMax principle.
+And so, it's like interesting to see how under different special cases that are shown here, no priors.
+Which might be no prior preference, but let's think about that.
+No ambiguity.
+Like no space between the observation and the hidden state.
+Total observability.
+That's the mall where we were speaking about the robotics last time.
+Like where you can just have perfect resolution of your spatial location.
+Then there's no ambiguity or risk.
+A deterministic action environment where you know exactly how well each stock is going to perform.
+Then you can make expected value decisions purely based around utility.
+And then no ambiguity or priors on the right side here with maximum entropy principle and janes and max ent.
+So, it's like this action perception loop has so many degrees of freedom that it's just wild.
+And the special cases help us zoom in on like the information gathering aspect of a given level, the epistemic gain.
+The utility oriented components of a given level.
+That's the pragmatic policy and the utilitarian component.
+And then there's this balancing of the pragmatic and the epistemic.
+And the ability to flex and to adapt between those.
+Which is why some are excited about active inference as speaking to this explore-exploit dialectic.
+In a way that hasn't been approached by like, we'll learn a parameter that switches between them.
+This is like a very different way to integrate all those things by finding an action perception loop.
+That's a generalization of some of these cases.
+And it's really interesting that this is a discrete state space synthesis.
+So, all but implying that there hasn't been a synthesis on continuous and hybrid state spaces.
+So, how do discrete and continuous variables come into play in just like this paper or robotics more generally?
+Like, how does that field think about discrete and continuous actions?
+Yeah, so, in this paper, it's rather all continue.
+I'm sorry, it's rather all discrete, right?
+So, we use discrete time steps.
+We, and we personally, we didn't do a lot of research on actually the continuous time formalism.
+I know that, for example, Pablo Lamios has done a lot of work and Martin Wisse in Delft,
+where they actually do the more continuous time torque control, low-level control of robotic arms and so on.
+And there's, it's an entirely different formalism.
+And I'm personally not too, I'm not an expert on that kind of systems.
+But I guess that similar ideas are there as well on the information gain versus reference resolving kind of planning.
+But yeah, I cannot really say a lot about it.
+What is it like in this warehouse?
+Like, do people work in there?
+Or is it just a test area?
+Or what is it on the shelves?
+Yeah, it's just a test area.
+So, basically, when we enter that particular building,
+this room was allocated as, we have a data center in the building.
+So, it's the ground floor of our building.
+And this room is actually
+allocated as a part of the data center.
+But at the moment, we don't have enough racks to fill it.
+But it was like to be future-proof.
+And so, it was just an empty space.
+And then people started using it as storage space for all of the things that are just lying around.
+And nobody really has, like, a place for them to be.
+So, they had some racks over there with all kind of random stuff that needs to be stored somewhere.
+Like, you also have, like, a lot of old server cases from all the machines over there that are just sitting there in case we need a spare part or something.
+So, it's like generic storage space.
+And then we figured, yeah, if we have the space anyway, we can start doing experiments in this.
+And so, we have an area now where we have some robot manipulators.
+And then, at the same time, we have this more kind of warehouse setup that kind of reflects how in actual industrial warehouses things might be.
+And so, we share the space with researchers working on wireless localization that then put some beacons on and see how the wireless signal propagates with all these metal shells around and these kind of things.
+So, it's just now a generic space that we can use for experimentation on navigation but also localization or signal propagation through different kinds of material.
+All these kind of experiments all happen there now.
+Cool.
+The part you mentioned about the electromagnetic radiation and how it propagates, it, like, makes me think about how you have this current bot using only the visual light.
+Like, we kind of talked about that previously.
+It could have all kinds of different sensors but it only has the visual light.
+And it doesn't use any kind of Wi-Fi updating.
+Like, what if every minute, you know, it gets an update of its actual location.
+So, that could be in the model.
+And then, different kinds of situations could be enacted, simulated, and then enacted.
+Like, what happens when the lights go off?
+What if the Wi-Fi goes down?
+And then, that is where the generative model being on board is really going to reveal, like, the robustness of the approach.
+Because if it does have this internal spatial sense, the lights going off may, or going very dim, which changes the pixel values of every pixel and the ratio of the colors and, like, everything.
+But maybe just the very light, you know, the exit sign.
+That light alone is enough for the camera to still do, to relearn and just have enough input from the observation layer.
+So, it's, like, very cool that you can control the space.
+Like, you have policy over this space.
+Whereas, in an operating environment that you don't control, it's, like, you are subject to the generative process emitting actions to you.
+Which might have regularity or favorability, but, like, you don't control them.
+And then, that's what the lab is.
+It's, like, a space where there are Nestmates or robots or learners.
+But then, the lab can also set policy with feedback from the bottom up.
+But also, it is a place where the policy can be controlled.
+And that can help the robot, like, learn and develop.
+So, that's kind of cool.
+And, again, it speaks to what Carl is saying about, like, the learning robots.
+Like, there is a timescale at which the community or the collaborators are in feedback with this niche.
+Like, without this paper, there wouldn't be the discussion.
+But then, without this being enacted, there wouldn't be the paper.
+So, there's a lot of interesting dynamics there.
+Yeah, maybe to add on the scenarios that you were describing on turning off the lights and so on.
+And then, using other sensor modalities.
+So, we actually do have experiments with, for example, also modeling the...
+So, on this robot, in particular, at the front, you see a planar lidar scanner.
+So, it just scans with a light ray and it measures the distances.
+And then, the red thing on there is actually a radar.
+So, that's one chirps and at 79 gigahertz chirps.
+And then, it listens for the reflecting signal.
+And that's also a way to kind of estimate where are obstacles around you and at which distance are they and at which velocity are they approaching or are going further from you.
+And we actually also create models on these kind of modalities.
+And we could actually show that it could kind of imagine lidar scans inside the ale or how radar would evolve if the robot was moving.
+And some other things that we did, which was...
+These things are...
+Especially Ozan Katal, who is the first author of this paper as well, did a lot of work on this.
+So, one of the things he did was, if we now put like a cable gutter in one of these ales, then when the robot would drive over it, you would see a whole different type of dynamics.
+Because it would bump up and go down.
+And if you monitor the Bayesian surprise, so basically the KL divergence between your dynamics model and then your posterior, you could see like a huge spike in kind of surprise signal.
+On this kind of dynamics.
+Like this is something weird that's happening.
+And you could kind of use this to see is everything going normal or is this something weird going on suddenly in my space.
+And we also did tests where we had the robot driving around, but also people passing by, just walking by.
+And if that was in the data set in the trains on that model, it would actually not be surprised if it sees people passing by.
+And if you would let it like imagine, how would it be if you drive forward?
+And sometimes you could see, of course, very blurry because it's like a reconstruction.
+We could, you could see kind of schimmy signatures passing by as if a people was, as if a person was walking past a robot.
+Like, yeah, this is a scenario that can happen.
+You just learned it.
+Which is pretty fun.
+So maybe this covers the fun fact there.
+That is a fun fact.
+Yeah, this is the total do do robots dream of electric sheep?
+Like that whole question.
+It's like if their generative model is generative.
+Sure.
+Depends on what you mean by dream.
+If it's only a recognition model, probably not.
+That's very funny.
+Let's take just one last look since we talked a lot about the factorization of the one level, which was, I think, a great discussion.
+Let's just look at the factorization of this multi-scale setting and just any other things that people want to ask or any other thoughts you have.
+But what is happening with the factorization here?
+And similar to how you kind of like gave a natural language representation of the factorization that we looked at here.
+This is the single level just within the blue level.
+And so what is happening with the multi-scale factorization?
+Yeah.
+So if you here look at the at the bottom, you basically see again the same kind of factorization as you had before.
+All right.
+So it's like, OK, my current state depends on my previous state and action.
+And my action depends on the policy.
+And my observation depends on my current state.
+And the only thing that is added here is this term on piece, which are the poses.
+So it's the second term on the, yeah, that one.
+Lower GSP is pose.
+Yeah, exactly.
+And so what we basically what we did here is like since we are working on this navigation setting and we already had some inspiration from existing slam approaches,
+we decided like, yeah, it actually makes a lot of sense to treat poses as kind of a first class sentence in the model.
+And we really would like to have like, because you kind of know how poses evolve given the action, right?
+Because it's pretty simple.
+You can have a pretty simple transition model that says, OK, if you move forward, then your pose will increase in the direction that you're heading, basically.
+So that's a very basic way of integrating your pose.
+And your pose is, of course, also very relevant for knowing where you are.
+So that's why we decided to kind of split off the, the abstract states and have an additional pose state that was dedicated for, for modeling where you are in the space.
+Like in this, in this pose continuous attraction network.
+And then if we go to the level above, then there you have a similar structure.
+But now the action is the move.
+And so we have a prior on moves.
+And then you move from one location to the next, given the move that you're doing.
+And then you have like the connection between the upper level and the lower level, which is, yeah, what's now the probability of having a certain lower level state, given that I am in this location?
+And what would be my pose in, of the robot, if I'm in this location, basically?
+And that then sums it up, I guess.
+What is the purple term?
+And why is there the big pie at the end of it?
+Yeah.
+
+Yeah.
+So the, um, the purple term basically is your initial, uh, your initial state for a higher level.
+So it's, I think it's like the, uh, if you look at the blue, uh, box, it's the, the gray, uh, notes.
+Ah, so it's like you, you, you, you observe the initial, um, observation from the new blue block.
+Basically that's your current time step.
+Okay.
+Cool.
+And then, and then the, the big pie is then from then on, you basically, uh, go for a number of like sub level, lower level time steps, which is basically the, the counts that you make within the blue box.
+Basically, so we have like this, this big T and small T, which basically, uh, or, or like to just denote a time step in within the, the fine grained level or time step within the, the orange level.
+So, um, um, in, in actual timing, like the big T, uh, going from big T to big T plus one is just like a number of time steps on the actual real, real discretized time.
+Let's say, so suppose if we say that our sensor operates at 10 Hertz, like every hundred milliseconds, you get a new observation.
+That's like the, the lowest granularity, uh, timestamping.
+And then the, the big T just is like, okay, I, I now I'm at, uh, current time step.
+And now it could be one second later.
+It could be two seconds later.
+It could be five seconds later.
+It's just like going from big T to big T plus one just says there.
+So some time has elapsed from going to this, this, this three, this three thing that I call a location to this next thing that I call a location, but exactly how many actual seconds have passed.
+Yeah.
+That's, that's up to the model basically, because we have the system that, that looks at how much surprise or how much, um, uh, information did I, did, did I gain from, uh, from moving.
+And this basically determines when you shift from one location to another.
+So the, the concept of location is based on this threshold on when we add a new note to the map.
+So we, we, we added this big T, uh, notation just to, uh, introduce kind of a, a, a time step on the higher level.
+But this is totally abstracted from the actual timing, which you do have for the lower level.
+So, so the lower level there, the small T is actually, um, the rate at which your observations come in basically.
+So this could, this is, could be fixed to like a hundred milliseconds.
+Every hundred milliseconds you, you shift time step.
+But when the big T shifts, it all depends on when you infer to be in a new location, basically.
+If that makes sense.
+And you mentioned that there was a parameter, you kind of just empirically determined when it made sense to add the new node.
+Um, but then the, the frequency of the discrete time steps at the bottom was a hundred Hertz, like a hundred, um, or 10 Hertz, a hundred milliseconds.
+And that was just the sampling rate of all of these features.
+Yeah.
+Um, wow.
+There's so much happening with nesting.
+There's the movement from the geometric to the topological.
+There's the movement from something that is at a smaller, finer scale to something that is enclosing it.
+Really enclosing it or conceptually enclosing it in this kind of way that we were talking about the cognitive domain earlier.
+There's this movement from the chronos to the kairos from the actual sensor defined speed that things are happening in the world to like the timeliness of when it's time to think that you're in a different location.
+And then in the biological case, it was woven so clearly to this multi-scale navigational capacity of the, of the HE system.
+Cause like, if you said, I'm in a different place in my room, that might be a foot, but if it, to be in a different place in the train might be the next train spot.
+And so the way that language is vague yet does allow us to really drill into what model, what was valuable about that for you?
+What were you curious about in that moment?
+Like these kinds of ways that we interrogate ourself and that we can also engage in conversation.
+So yeah, blue, why don't we sit silently maybe for, you know, performance art stream, number one, it could happen, but also there's uncertainty to resolve and a message passing to be done.
+Otherwise it's implausible that we're going to coordinate in our like actions or in our thoughts.
+If you have any other like ideas or thoughts or questions or places you want to jump to, we can totally do so.
+Otherwise, this is a great thought too.
+What are the next steps you've mentioned several things, but just what would be like a next outcome or deliverable or thing that you're hoping to see in the niche and maybe even enact yourself?
+Yeah.
+Yeah.
+Yeah.
+Some of the things that I was discussing today with one of the students just today actually is to basically work on, can you, because one of the biggest limitations now is that in order to navigate, you're basically limited to what it has seen before.
+Right.
+So we still need to hand control the robots through the lab, build the map, and then only when it has visited the whole space, it can start, it can even just then start navigating it basically.
+Yeah.
+So one direction is can we kind of have the robot self navigate.
+And one idea there is to, again, linking to our story about preferences that different levels, maybe we could have like a preference on the lower level that just says, okay, I don't want to bump into things.
+And if you don't have a map, the only thing you want is on the one hand, be curious and try to update your model as good as you can, but also not bump into things.
+And then you have like this robot that just started driving around at the same time building a map.
+And then at least you, you can, you can just put it anywhere.
+Like it will start mapping.
+And at some point you can say, okay, the robot now, now go to now search for this particular object.
+And then you give it the goal and it starts exploring.
+maybe it can imagine, oh, this is maybe the location where I last saw something very similar.
+So this is probably the location I want to go to.
+And then you can have it like more goal-directed behavior.
+So this is one thing we were thinking about.
+And then another limitation is also that the edges between the nodes are also only the edges that you actually traversed once.
+So, for example, one stupid thing is that it does not know that if it went from one location to the other,
+it can actually turn around 360 degrees and go back and it will be at the same location.
+Because in this visual space, it might be a totally different thing.
+And if you never thought it or actually controlled it to turn around 360 degrees, it will never make the link, okay, I can actually do this.
+So one of the things that we were exploring is like, can we use our low-level generative model to kind of imagine potential links between nodes
+and then kind of add these links to the map as if you kind of visited those before or maybe add some weight to these links.
+So, you know, yeah, this might be a link and this is the likelihood of this link, but at least you can take them, these links into account and planning.
+You say, okay, I'm feeling adventurous.
+So maybe it's time to explore this link or for this particular goal.
+If this link exists, I never tried it, but if it exists, it will be a huge shortcut to reach this goal.
+So I'm willing to take this gamble in this situation and to have like these kind of behaviors by just kind of imagining which kind of locations can I visit that maybe I never tried this before,
+but given the things I've learned from this environment, this might be the case.
+So I'll just try it.
+So maybe these kind of, these two points are basically the next things on our lists to start exploring.
+Nice.
+It is like knowing other streets you could take.
+What if the road I always take is blocked?
+And then there are, so it's just cool.
+And what arises after you're, after you're implementing it.
+And, and in the chat, Steven has been making some comments about the door.
+And we discussed like being in the hallway and then there's the pixel contrast.
+And then like, if there were a higher level concept of door probability of a door at that location.
+So that, that pixel change abruptly could be associated with a door.
+And then, then there's this location of door, not just the pixel level mapping, but then there's like, what does the door bridge to?
+And what if it explores a closed room and now the door opens and then it can say, well, now I'm curious about what's out there.
+Or like, what is that node, a bottleneck?
+And that's like the door as Markov blanket.
+You know, what's, what happens when you train it up on the warehouse, including with curiosity, and then you open the door, what's going to happen.
+But these are awesome directions.
+So thank you for sharing it.
+Blue, do you have any final comments or questions?
+Just thanks.
+This was super interesting to think about and explore and try to map onto my map of my cognition in my mind.
+Yeah, agreed.
+It was really cool to see the, the analytical, formal and the biological and the robotic coming together.
+And so much appreciated Tim for joining us and to Adam for joining previously and all the other authors.
+So hope to see you around.
+Yeah, it was also for my side, it was a nice discussion, opened up a lot of new perspectives also for me and new ideas.
+So thank you for that.
+Thank you, Tim.
+
+See you later.
+Thank you, Blue.
+All right.

@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active Inference LiveStream 058.0 ~ "From pixels to planning: scale-free active inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active Inference LiveStream 058.0 ~ "From pixels to planning: scale-free active inference"</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_058 &middot; Episode 0 &middot; Duration: 1:46:11 &middot; Views: 954</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=_zW1BrLwACY">https://www.youtube.com/watch?v=_zW1BrLwACY</a></div>
+<article>
+<p>Hello and welcome. This is Active Inference live stream 58.0. October 29th, 2024. We're</p>
+<p>discussing the paper from pixels to planning scale-free active inference. So welcome to</p>
+<p>the Active Inference Institute. We're a participatory online Institute that is</p>
+<p>communicating, learning, and practicing applied active inference. You can find us</p>
+<p>at the links on the slide. This is a recorded and archived live stream. Please</p>
+<p>provide feedback so we can improve our work. All backgrounds and perspectives are</p>
+<p>welcome and will follow video etiquette for live streams. Head over to</p>
+<p>activeinference.institute to learn more about the Institute, get involved with</p>
+<p>projects like live streams, and a lot of other things. Okay, before we jump into</p>
+<p>the paper, let's say hello. I'm Daniel. I'm a researcher in California and really</p>
+<p>looking forward to this discussion. Arun, want to say hi, give any context, and</p>
+<p>thanks again for contributing to the dot zero.</p>
+<p>Hi everyone. My name is Aaron. I'm a software engineer in the UK. I did my PhD a</p>
+<p>good few years ago in which I touched on dynamicals of modeling and active</p>
+<p>inference. I've been thinking about it for a long time since then. I came across this</p>
+<p>paper and thought it was really hard. And so I requested, guys, can we do a</p>
+<p>live stream on this? I'd really love to understand this paper properly. And now I've</p>
+<p>somehow ended up contributing to the live stream. So yeah, all good.</p>
+<p>Okay. So we're discussing this paper from July 2024, from Pixelist to Planning, Scale-Free Active Inference, by Carl Fristen and colleagues.</p>
+<p>The rest of this video is going to be some background and context and an introduction and an overview of the ideas.</p>
+<p>It's not a review. It's not comprehensive. It will be part of an exciting series where in the coming weeks in the dot one and dot two, we discuss with the authors and the dot two is going to fall during the applied active symposium.</p>
+<p>So that'll also be really fun. Okay. Let's go to the big questions. What are your big questions or whether it's about the paper specifically, or what are the big motivators that made you excited and want to pursue the</p>
+<p>these affordances? So I think the big one is, you know, the title, right? And I think the question of scale is one that's plagued a lot of active inference, implementations and previous papers.</p>
+<p>In the past few years, everyone's like, Oh, yeah, I'd love an active inference agent that can do stuff. But if I have more than a few states, I get a combinatorial explosion.</p>
+<p>And things are fall over or they take a very long time compared to alternative methods that are out there. So the question of scale is a really important one.</p>
+<p>And I think this paper nominally looks like there's a way around that. Also, the renormalization group as a way to do that is, I think, a very interesting one.</p>
+<p>It draws from a lot of physics that I actually studied a very, very long time ago. So that really spoke to me and I thought it was really, really nice to see some things that apply to also like icing model of ferromagnetism, some other key parts of thermodynamics that now come into AI, which active inference has been doing for a while with the free energy minimization part.</p>
+<p>But I think the renormalization group is a really interesting part of maths that seems to get you a lot further.</p>
+<p>I also had some like much more technical questions, which maybe don't fall under the big questions, which will definitely come on to later when I was reading this paper and going, I'm looking at it and I go, I don't understand actually what's happening here.</p>
+<p>So I'd really love to dive into those and particularly catch up with the authors in the later episodes to get some of the more technical answers on how these matrices and tensors play together, which seems to differ a little bit to the textbook by par and some of the other formulations by the RxInfer group as well.</p>
+<p>So actually getting into the nitty gritty of how we implement this will be really fun for me.</p>
+<p>Cool. Blue also contributed to the dot zero.</p>
+<p>And so she wrote, what is a path more specifically, how are paths related to the renormalization group?</p>
+<p>How is the renormalizing generative model RGM different from the active inference generative model that we usually study?</p>
+<p>And how do paths tie into transitions between categories?</p>
+<p>And I had similar questions.</p>
+<p>What is the renormalization group?</p>
+<p>How is it being used here?</p>
+<p>How does that make the generative models structurally or functionally different?</p>
+<p>How does that have implications for different media?</p>
+<p>Few key claims.</p>
+<p>They're considering one solution to the implicit scaling problem.</p>
+<p>With scale-free generative models that are linked through the renormalization group.</p>
+<p>They're going to explore generalized MDPs, Markov decision processes, as discrete models that do functional cognitive tasks like compression, content generation and planning.</p>
+<p>They're going to pay attention to universality and scale and variance for specifying structural form of generative models.</p>
+<p>And then there will be a sequence of worked examples that we're going to spend most of the dot zero walking through.</p>
+<p>And they highlight that these kinds of RGMs with quantized paths may or may not be useful in certain application domains.</p>
+<p>So that's kind of the meta ML question is where or how would we know where this would or wouldn't be more effective than another given kind of model?</p>
+<p>No free lunch at all.</p>
+<p>Could you read the abstract?</p>
+<p>Yeah, sure.</p>
+<p>So this paper describes a discrete state space model and accompanying methods for generative modeling.</p>
+<p>This model generalizes partially observed Markov decision processes to include paths as latent variables, rendering suitable for active inference and learning in a dynamic setting.</p>
+<p>Specifically, we consider deep or hierarchical forms using the renormalization group.</p>
+<p>The ensuing renormalizing generative models can be regarded as discrete homologues of deep convolutional neural networks or continuous space models in generalized coordinates of motion.</p>
+<p>By construction, these scale and variant models can be used to learn compositionality over space and time, furnishing models of paths or orbits.</p>
+<p>In other words, events of increasing temporal depth and itinerancy.</p>
+<p>This technical note illustrates the automatic discovery, learning and deployment of RGMs using a series of applications.</p>
+<p>We start with image classification and then consider the compression and generation of movies and music.</p>
+<p>Finally, we apply the same variational principles to the learning of Atari like video games.</p>
+<p>Awesome.</p>
+<p>Okay, moving on to...</p>
+<p>Daniel, you're on mute.</p>
+<p>Thanks.</p>
+<p>Let's move on to the roadmap.</p>
+<p>The first section is the introduction.</p>
+<p>Section 2 is the background formalism.</p>
+<p>This is going to make connections with the generative models from the textbook.</p>
+<p>Then, section 3, 4, 5, 6 will go through a sequence of worked examples.</p>
+<p>We're going to front load the focus in the dot zero on sections 2 and 3.</p>
+<p>And then 4, 5, and 6 unfold kind of naturally.</p>
+<p>Section 3 is a static image MNIST handwriting dataset task.</p>
+<p>Section 4 is a cyclic video that then slides into a chaotic attractor dynamical system.</p>
+<p>Section 5 and a natural video.</p>
+<p>Section 5 goes into sound.</p>
+<p>And 6 is the general planning case from pixels to planning.</p>
+<p>And 7 is a short conclusion.</p>
+<p>So, it's pretty much introduction and conclusion like bookends.</p>
+<p>Section 2 is where the general formalism is.</p>
+<p>And then 3 through 6 take us on from handwriting, several kinds of videos, dynamic images, sound, and then gameplay and planning.</p>
+<p>So, here are the keywords of the paper.</p>
+<p>Active inference, active learning, Bayesian model selection, renormalization group, compression, structure learning, RG flow, renormalizing generative model.</p>
+<p>So, those are good terms if you're uncertain about to jump into.</p>
+<p>Okay, we have a few slides on some of these background concepts just to get it up front.</p>
+<p>So, we can proceed with the paper when we get there.</p>
+<p>Let's start with what is renormalization?</p>
+<p>So, of course, much could be said.</p>
+<p>But, Erwin, what would you say?</p>
+<p>What is renormalization?</p>
+<p>Yeah, so I think this is, in itself, quite a loaded term.</p>
+<p>There's a lot from physics.</p>
+<p>And if you look at the Wikipedia page, the third link that's there, there's a lot in that Wikipedia page that's very confusing.</p>
+<p>A lot of quantum electrodynamics coming in.</p>
+<p>And I think Feynman has an attitude on it.</p>
+<p>He says he's not a fan of it.</p>
+<p>But I think for our purposes, the top quote that's there that's coming from the paper is actually good enough for a large part.</p>
+<p>So, we basically take some sort of system, and we say, this is way too hard.</p>
+<p>This is way too complex.</p>
+<p>There's way too many moving parts.</p>
+<p>What is a take home message?</p>
+<p>What is the summary of what this is doing at a macroscopic level compared to the micro level?</p>
+<p>And there are some examples in the upcoming slides, particularly talking about thermodynamics and materials, where this will become more obvious as to how this might work in practice.</p>
+<p>But I think the coarse-grained version that retains the properties of interest is really what to focus on going forward.</p>
+<p>And, yeah, lossy compression for the signal processing engineers in the audience.</p>
+<p>This is very much a case of you're not keeping everything when you re-normalize.</p>
+<p>You're keeping what's important.</p>
+<p>Awesome.</p>
+<p>Yeah.</p>
+<p>As you coarse-grained so spatially, like thinking about a radius or like a convolutional diameter getting larger and larger, you're choosing a bigger chunk to grain over coarse-graining and re-normalizing what those edges and relations amongst blocks are.</p>
+<p>So you have one model.</p>
+<p>It's a 10 by 10 square.</p>
+<p>So you have blocks of size one and all those edges.</p>
+<p>And then you decide, okay, we're going to look at blocks of two by two.</p>
+<p>You have fewer blocks, fewer edges.</p>
+<p>So you have to re-normalize all of your parameter estimates.</p>
+<p>And then you end up with hopefully capturing some of the signal with fewer parameters, AKA compression, whether it's lossy or lossless.</p>
+<p>Okay.</p>
+<p>And you, I'm going to pick up on one thing quickly where you said spatially, and you can re-normalize through space, but you can also re-normalize through time.</p>
+<p>You can re-normalize through any dimension you want.</p>
+<p>It's just easier to imagine the space and time ones.</p>
+<p>So the time analogy that I think they use in the paper, which is quite a good one, is thinking about if you're, let's say you're watching TV and you're watching something.</p>
+<p>And in that moment, there are two characters talking that might form part of a scene, which is one re-normalization.</p>
+<p>And then you have a series of scenes, which would be an episode.</p>
+<p>And then you'd have multiple episodes in a series.</p>
+<p>Right?</p>
+<p>So the time one, actually, I find a bit more intuitive to understand what re-normalization is.</p>
+<p>And you can say, oh yeah, something happened in a particular episode.</p>
+<p>You can say something happens in a particular series, something happens in a particular scene, but that thing you might be describing might actually be</p>
+<p>more fine grained or more coarse grained.</p>
+<p>Awesome.</p>
+<p>Yeah.</p>
+<p>The examples will start with the static handwriting and move on to include time.</p>
+<p>And you're totally right about the timescales.</p>
+<p>It's like saying, what's the transition matrix from minute to minute or hour to hour or day to day, but each moment is measurable with seconds, minutes, hours, or so on.</p>
+<p>Okay.</p>
+<p>How about the spin block transformation?</p>
+<p>Yeah.</p>
+<p>So now this is sort of back to material science and magnetism.</p>
+<p>So there's a fairly well understood model of magnetism called the Ising model.</p>
+<p>And physicists generally quite like it.</p>
+<p>Mathematicians quite like it.</p>
+<p>As you imagine a big magnet, there's lots of little magnets that are all line up in a grid.</p>
+<p>And each magnet just talks to the little magnets around it.</p>
+<p>And you can recover quite a lot of sort of actual behavior of magnets in the real world with a fairly simple model for this.</p>
+<p>But the spin block transformation is largely going, well, if I have lots of little magnets together and they're all pointing the same way, I can just think of it as one big magnet.</p>
+<p>That's some, that's a, some behavior of all of these little ones.</p>
+<p>And this is a trick that we play a lot in physics of going from the micro to the macro, the micro is too hard to model.</p>
+<p>It's too painful.</p>
+<p>You've got all these particles.</p>
+<p>They could all be doing, you know, spinning every which way, all their speeds and velocities.</p>
+<p>And if you had all of them, then you could add them all up and you could figure out what's going on.</p>
+<p>Or you can just, you know, get a thermometer and measure the temperature.</p>
+<p>Right.</p>
+<p>And the temperature, that one number tells you a lot about how this thing is going to behave.</p>
+<p>So you can get a lot of value just from the macro, but that macro is composed of all of the micro.</p>
+<p>So depending on where you are in your core screening of your scaling behavior, you can get either a lot done or a little bit done.</p>
+<p>And it's just what's useful to you.</p>
+<p>So I quite like this sort of quote at the bottom about the magnitude of an observable of a physical system undergoing an RG transformation.</p>
+<p>And whether that observable is relevant or not.</p>
+<p>I think that's quite important to bear in mind for the future examples of, well, if something is always increasing, it's always getting bigger than you're going to see it on the coarse grained transformations that you see later.</p>
+<p>But if it's always decreasing at a particular level, you're not going to see it on the higher levels.</p>
+<p>You're only going to see it on the lower levels.</p>
+<p>So it will have.</p>
+<p>So this gives you some understanding of causality of when you're going up or when you're going down.</p>
+<p>You're going to see it on the coarse graining.</p>
+<p>So yeah, like particle speeds and temperature is a nice example of this.</p>
+<p>And similarly magnetism with the spin block transformation.</p>
+<p>But by and large, what are these transforms doing?</p>
+<p>If you take a grid of lots of little things, you just go, well, I'm just going to summarize this with a single thing that represents that behavior and then move on with my day.</p>
+<p>Awesome.</p>
+<p>Okay.</p>
+<p>Quick on the singular value decomposition.</p>
+<p>There's a nice interactive explanation.</p>
+<p>This is related to principal component analysis, and it's a way to proportion variance and to take the biggest cut of variance for a given decomposition for a data set.</p>
+<p>And you can take, we'll look at it in application a bit later, but it's used to assess the vectors of variance.</p>
+<p>And then you can truncate them and use that to capture increasing amount of variance for a given data set.</p>
+<p>And then you can take a look at it in a specific case and last kind of background topic on locality principle.</p>
+<p>Yeah, I don't actually know a huge amount about the locality principle.</p>
+<p>But I think it's a general intuition that things next to each other affect each other and things far away in theory don't affect you.</p>
+<p>There are definitely some things where if this is violated, this feels very weird.</p>
+<p>I think quantum entanglement is probably an example of that.</p>
+<p>But I'm going to stop speaking there because we've hit the limit of my knowledge.</p>
+<p>Yes.</p>
+<p>I think Wittgenstein wrote something about that.</p>
+<p>Okay.</p>
+<p>And this is just a few of the other links, but there was a ton of other links that people brought up over the months preparing for this.</p>
+<p>Okay.</p>
+<p>Onto the paper.</p>
+<p>So here's the link to the coda.</p>
+<p>I'll put this in the YouTube live chat right now.</p>
+<p>Just if anyone wants to follow back to the workspace where we did the preparation work.</p>
+<p>If you're watching live, write any questions in the live chat and we'll check it at the end.</p>
+<p>What we're about to do is go through much of the paper, pulling out some of the key quotes in the main thread.</p>
+<p>And we show most or all the figures and some of the formalisms.</p>
+<p>Of course, they're all there in the paper.</p>
+<p>This is just the highlights so that we can get this done in a reasonable linear amount of time in preparation for conversations with the authors, further open source development and all that.</p>
+<p>So, okay, here we go onto the paper.</p>
+<p>So first three sentences of the paper.</p>
+<p>This paper considers the use of discrete state space models as generative models for classification, compression, generation, prediction, and planning.</p>
+<p>So for context, we're in the discrete time setting.</p>
+<p>Figure 4.3 from the 2022 textbook.</p>
+<p>We're in the top setting.</p>
+<p>The inversion of such models can be read as inferring the latent causes of observable outcomes or content.</p>
+<p>So this is the tail of two densities, meaning that generative models can be used to generate synthetic observations from latent state estimates.</p>
+<p>That's the generative direction or decompression, as well as infer latent states from data.</p>
+<p>That's the recognition direction from observations to latent states.</p>
+<p>And then last of these three sentences.</p>
+<p>When endowed with the consequences of action, they can be used for planning as inference.</p>
+<p>So in contrast with sort of a sterile sense-making or perceptual inference task, active inference considers action as part of a joint inference distribution or problem which constitutes the agent.</p>
+<p>So think about how the agent is defined as A, B, C, D, E, E, matrices as sense-making, latent state transition operations, and the consequences of action.</p>
+<p>So improvements to generative modeling technologies have wide-ranging implications for a variety of both sense-making perception tasks on the inbound, as well as decision-making and action tasks on the outbound, which is kind of the theme of active inference.</p>
+<p>So that action can be treated as an inference problem.</p>
+<p>Any thoughts on these first lines?</p>
+<p>No, I think we should keep going.</p>
+<p>Cool.</p>
+<p>Okay, specifically, this paper explores the use of generalized Markov decision processes.</p>
+<p>This generalization in question rests on equipping a standard, partially observed Markov decision process, POMDP, with random variables called paths.</p>
+<p>This affords an expressive model of dynamics in which transitions among states are conditioned upon paths, which themselves can have lawful transitions.</p>
+<p>So we're going to return to this figure again.</p>
+<p>But the big picture is that from the sort of textbook basic POMDP, we're going to add some sophistication, which is that variables called paths will condition the state transitions.</p>
+<p>And those could fall under the agency or the efficacy of an agent or not.</p>
+<p>There can be lawful probabilistic transitions among paths, which are like transitions amongst actions in a policy sequence, except that actions in a policy sequence would be understood to be under the control of an agent.</p>
+<p>And those paths, states influence transitions of latent states.</p>
+<p>Figure one shows that several concepts of depth in generative model.</p>
+<p>We have temporal depth, which means a deeper unrolling through time.</p>
+<p>So this is just predicting more time steps deeper into the future linearly.</p>
+<p>So if this was each one was one day, this is just going rolling out for a bigger number of days.</p>
+<p>Hierarchical depth would be if we had a model that had days, months and years.</p>
+<p>And the way that it could deal with longer timescales would be have 30 days within a month and then 12 months within a year.</p>
+<p>So nested hierarchically recursive layers deal with deeper timescales instead of needing to unroll 365 days.</p>
+<p>And factorial depth can be thought of kind of like a multi-sensory model.</p>
+<p>So here's an observation of sound and here's an observation of light.</p>
+<p>And then those different modalities can be factorized separately from each other, like the what and the where in the brain to simplify.</p>
+<p>And that's another way in which generative models can have depth.</p>
+<p>Any more thoughts on this?</p>
+<p>I think one thing to highlight is, first of all, the notation is quite difficult to understand in this figure.</p>
+<p>I found it really hard.</p>
+<p>There is also a difference, at least in my mind when I read this figure in the caption compared to say the textbook, which is the C matrix.</p>
+<p>So I think previous formulations of actor inference, the C matrix tends to represent the prior preferences of an agent, sort of its goals, its values.</p>
+<p>It's like, I expect to see these observations.</p>
+<p>So if I don't, then I'm going to experience a higher free energy.</p>
+<p>So I'm either going to change my mind or change, take some action to change the world so that my observations match my priors better.</p>
+<p>And I get a lower free energy.</p>
+<p>Here, the C matrix seems to be encoding probabilities of paths.</p>
+<p>It's not entirely clear to me how we get value into that, as opposed to just what it expects to see.</p>
+<p>So maybe there is a distinction here that I haven't understood, or maybe it is genuinely a shift.</p>
+<p>I'd be really curious to ask the authors specifically about the C matrix and how that behaves in the future episodes.</p>
+<p>Yeah.</p>
+<p>Pending authors accounts.</p>
+<p>But two things I would note to echo that first is every variable through time can be understood as a trace or a path.</p>
+<p>Whereas path is also being used to refer to just this specific upstairs string.</p>
+<p>And then a second case of overloading is C.</p>
+<p>While in previous situations, like in figure 7.3 or 4.3 from the textbook, we have C as playing a role in expected free energy calculation, pragmatic value, the preference over observations.</p>
+<p>Here, it's not the same C.</p>
+<p>C as preferences is over observations.</p>
+<p>Here, transition probabilities are encoded in C.</p>
+<p>So it's kind of like a B.</p>
+<p>But this just goes to show letters are just letters.</p>
+<p>And future software will be able to flip out and have different shapes and notation and all of that.</p>
+<p>So don't get too attached to the letter.</p>
+<p>Look at how they're locally defining things, even though that can be really challenging learning too.</p>
+<p>Okay.</p>
+
+<p>So you can see a path and...</p>
+<p>method which describes this renormalization happening across scales.</p>
+<p>So you could have the inch by inch path and then that's nested within a foot by foot and mile by mile.</p>
+<p>Or you could have the minute by minute path and that's nested within hour by hour and day by day.</p>
+<p>So by having this layering of states and paths and states and paths, there's a clean way to get the separation of spatial or temporal or arbitrary scales.</p>
+<p>So that's the big background formalism.</p>
+<p>One other way to get an intuition.</p>
+<p>Here's from our paper on the renormalization group in free energy principle applied to multi-scale biological systems.</p>
+<p>On the bottom, we have the kind of figure that we've seen in many active inference papers where we're thinking about like the cognitive behavioral entity like a worm.</p>
+<p>Where the sensory states can be associated with perception, the active states with action, internal states with cognitive states and all of that.</p>
+<p>So at the end of the day, there's also this nested, extended evolutionary process that is happening at the population scale.</p>
+<p>So that's kind of like nesting the phenotype of individual worms within a population of worms or within an ecological distribution.</p>
+<p>And then last note here.</p>
+<p>In this setting, a policy is not a sequence of actions, but a combination of paths where each hidden factor has an associated state and path.</p>
+<p>This means there's potentially as many policies as there are combinations of paths.</p>
+<p>So because these paths are kind of like context combinations, it means that there's a double explosiveness to them.</p>
+<p>So understanding how do you handle that and understand the computational complexity class.</p>
+<p>And again, where it wouldn't, wouldn't be useful.</p>
+<p>Those are key questions.</p>
+<p>Any thoughts?</p>
+<p>Yeah, I think that that last bit, especially in a paper that's called talking about scale, preactive inference.</p>
+<p>And then now we're not just combining states that explode that combinatorial explosion.</p>
+<p>Now it's combinations of paths of states and actions.</p>
+<p>In theory, this should be much worse.</p>
+<p>So I think.</p>
+<p>At the moment I'm reading this and I'm thinking we're going to pay even more of a cost in terms of computing what the hell is going on.</p>
+<p>But I think the renormalization group and making these models hierarchical.</p>
+<p>Pays for it.</p>
+<p>That's that's my that's my intuition of reading this paper.</p>
+<p>So, yeah, it's a good quote to have that.</p>
+<p>It's a good thing to have bolded.</p>
+<p>It's I don't think you're ever going to get a free lunch, but you have to pay for lunch.</p>
+<p>Yeah, the number of ingredients for lunch.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>In what follows, we illustrate applications of the renormalizing generative model RGM in several settings.</p>
+<p>The renormalization group requires the functional form of the dynamics in terms of belief updating is conserved over levels or scales.</p>
+<p>This is assured in variational inference in the sense the inference process itself can be cast as pursuing a path of least action, where action is a path integral of variational free energy.</p>
+<p>Another classic term overloading action here isn't like the robot moving its arm.</p>
+<p>This is the physics action, sometimes with a capital A.</p>
+<p>Because all inference under free energy principle is considered in terms of a path of least action, we can be assured that arbitrarily thick, wide, thin, tall, small world, however you want to create the topology of a generative model,</p>
+<p>we can be ensured that we're in an analytical setting where the models are, quote, doing the same thing at different scales.</p>
+<p>And then this takes us all the way from the first principles framing of the problems, all the way on through the software tools like Rx and FUR, which might be implementing these kinds of generative models also in this kind of ecumenical way.</p>
+<p>The only thing that changes between levels are the parameters of the requisite action, e.g. sufficient statistics of various probability distributions.</p>
+<p>That's to say, the functional properties of the RGM are simply determined and described by how it's parameterized.</p>
+<p>So was it statistics all along? And that's what we have in Figure 3 with showing what that blocking looks like.</p>
+<p>These are statistical parameters that are learnt.</p>
+<p>So the description of the topology of this graph is the structure, which is either fixed or designed or set or learnt as a structure learning problem.</p>
+<p>And then there's the values for a given situation that these variables take on.</p>
+<p>And here's that state-path essential coupling.</p>
+<p>That's the state-paths, state-path.</p>
+<p>So compare this with hierarchical or multilevel Bayesian regression.</p>
+<p>Compare this with hierarchical predictive processing architectures.</p>
+<p>State-path, state-path.</p>
+<p>And each of those constitute a separation of scales.</p>
+<p>All of this is a statistical model.</p>
+<p>Any thoughts on this?</p>
+<p>Yeah, I think there's the hierarchy part is absolutely key here.</p>
+<p>There is a little aside in the paper about which things in a hierarchy can affect which things in the lower part to make the inference actually possible.</p>
+<p>So this is the idea of the Markov blankets and whether you, whether a child can have like multiple parents, that sort of thing.</p>
+<p>I think we possibly will come onto that later.</p>
+<p>But overall, the main critical thing is stuff happening at a higher level in your hierarchy is determining a lot of what's happening at the lower level.</p>
+<p>But information can flow back up with the observations that you get at the lower level to infer those parameters at the higher level.</p>
+<p>So that's the classic active inference sort of top-down bottom-up approach.</p>
+<p>Yeah. Awesome.</p>
+<p>Okay.</p>
+<p>Next section, active inference, learning and selection.</p>
+<p>This section overviews the model, which is used in the numerical studies of the following section.</p>
+<p>And figure one provides an overview of the generative model that's considered in the paper.</p>
+<p>We already took a quick look.</p>
+<p>Outcomes at any time depend upon hidden states.</p>
+<p>That's the A matrix.</p>
+<p>That's the partially observable part.</p>
+<p>While transitions among hidden states depend on paths.</p>
+<p>And that's this sort of way that we see the transitions amongst latent states.</p>
+<p>So that's the B matrix, which is intervening between hidden states S.</p>
+<p>B is being imposed upon by this path happening.</p>
+<p>So it's almost like this is a, this is like a, a, a rail or a guide up top.</p>
+<p>That's influencing how the actual latent state ends up unfolding through time.</p>
+<p>And at each time point, there's the emission of an observation.</p>
+<p>That's the generative direction, or it could be taking in an empirical data point and then updating beliefs through time.</p>
+<p>So, um, they describe the variables just like in the caption.</p>
+<p>The tensors are generally parameterized as Dirichlet distributions, whose sufficient statistics are concentration parameters or Dirichlet counts,</p>
+<p>which count the number of times a particular combination of states and outcomes has been inferred.</p>
+<p>We focus on learning the likelihood model encoded by Dirichlet counts A.</p>
+<p>And that's known as learning by counting.</p>
+<p>So that's the kind of classic case of pulling balls out of an urn and then tallying every time you see a certain kind of ball coming out of an urn.</p>
+<p>Or here it would be like pulling balls out of an urn and it's either cloudy or sunny.</p>
+<p>And then you're doing learning by counting on the context and the outcome.</p>
+<p>And then you're using that to parameterize everything else.</p>
+<p>Carrying on a little bit with this and again connecting back to the 2022 textbook.</p>
+<p>Compare with figure 7.3 POMDP.</p>
+<p>The details are basically the same, except notice that paths U are described.</p>
+<p>As we mentioned earlier, C in the textbook, just the letter C.</p>
+<p>It's not actually that variable computationally, but the letter C is being used for preference distributions over observations.</p>
+<p>Here, C is playing a role in the transition.</p>
+<p>It's kind of like a B, but for this meta path.</p>
+<p>In the textbook, we have a single layer model.</p>
+<p>Now, it has compositionality, but it's just a single layer model.</p>
+<p>Whereas in the paper we're discussing today, hierarchical levels are described in terms of this state path, state path, alternation approach.</p>
+<p>And there's factorial depth.</p>
+<p>Here, the procedural order of operations for the generative model is provided as policy selection, generate hidden state sequences, and generate expected outcomes.</p>
+<p>This is the forward or generative direction.</p>
+<p>We could also go the recognition direction from real observations to policy inference.</p>
+<p>So they're unrolling a policy centric approach that yields expected outcomes.</p>
+<p>That's like running the generative model from policy inference out, as opposed to running a generative model from data processing to belief updating about policy going in.</p>
+<p>Just to highlight some kind of points of contact similarities with the textbook for those who dabble.</p>
+<p>Any comments?</p>
+<p>No, I think that was really good.</p>
+<p>Awesome.</p>
+<p>Go show.</p>
+<p>Okay.</p>
+<p>Equations one, two, and three in this paper are akin to equation 2.5 and 2.6 in the textbook on variational free energy and expected free energy.</p>
+<p>So to learn about the different decompositions of variational free energy in terms of the ones that look more statistical, like divergence minus evidence, complexity minus accuracy, or the ones that look more statistical physical, like energy and entropy.</p>
+<p>That's variational free energy.</p>
+<p>That's variational free energy.</p>
+<p>And then analogously with equations two and three in the paper, or equation 2.6 in the textbook, we have expected free energy with the classical decomposition into epistemic value, pragmatic value.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Now we get to active inference.</p>
+<p>There's a lot we could say here.</p>
+<p>They describe that first sentence of active inference section.</p>
+<p>In variational inference and learning, sufficient statistics encoding posterior expectations, which could be about sense-making as well as action, posterior expectations about what I am going to do, pi, are updated to minimize variational free energy.</p>
+<p>So that's the idea of seeing everything it is that the agent is and does on the inbound perceptual and outbound action selection as part of a joint distribution that's undergoing variational free energy minimization.</p>
+<p>That's the active inference concept.</p>
+<p>Note the circle with a dot notation.</p>
+<p>So, the notation implies a sum product operator, the dot or inner product that sums over one dimension of a numeric array or tensor.</p>
+<p>So note the difference between circle with a dot as the inner product or tensor contraction, while circle with x is the outer product.</p>
+<p>So, to look at the figure with message passing, which brings in this circle with a dot notation.</p>
+<p>Here, we see the same graph that we saw in figure one.</p>
+<p>In figure one, we have a Bayes graph.</p>
+<p>So, the nodes are variables that we would encode in our program, and then the edges are causal relationships.</p>
+<p>So, that's the kind of classic systems modeling kind of flow interaction mind map.</p>
+<p>Here, in this figure, we see a factor graph representation.</p>
+<p>Now, in Livestream 55 and in the Realizing Synthetic Active Inference Agents discussion, other discussions,</p>
+<p>we've talked more about the relationship between Bayes graph and the Forney factor graph representation.</p>
+<p>Suffice to say that what it is that nodes and edges are basically get flipped, but there's a full reproducibility.</p>
+<p>So that here, we have ways to look at the logistics of message passing amongst these nodes.</p>
+<p>And it turns out that under the hood, this is what RxInfer is doing when it's being implemented.</p>
+<p>So, maybe if we get more into implementation, we could talk about that.</p>
+<p>This figure is just showing that for that POMDP, which is going to be doing the real work of active inference on the perceptual and action selection side,</p>
+<p>it's not just that we can link up the variables on the Bayes graph that account for what we want to do.</p>
+<p>It's that there's a specific logistics and we know exactly which messages to pack and send in order to get this whole variational inference done at the graph level.</p>
+<p>And that can be done with either a determined logistical schedule or it can be done in a reactive message passing setting.</p>
+<p>Okay. Active Learning.</p>
+<p>Bayesian model reductions a generalization of ubiquitous procedures and statistics.</p>
+<p>In the present setting, it reduces to something remarkably simple.</p>
+<p>By applying Bayes rules to parent and reduce models, so a model of k parameters and of k-1 parameters,</p>
+<p>it is straightforward to show that the change in variational free energy can be expressed in terms of posterior Dirichlet counts a, prior counts a, and the prior counts that define a reduced model.</p>
+<p>So, A prime corresponds to the posterior one would have obtained under the reduced priors.</p>
+<p>The alternative to Bayesian model reduction is bottom-up growth of models to accommodate new data or content.</p>
+<p>If one considers the selection of one parent model over another, augmented model, as an action.</p>
+<p>These two equations in the active learning section are like the add and remove variable operations and ultimately what allow us to compare any Bayesian model.</p>
+<p>So, model comparison amongst nested, strictly nested models can be done in the fully parametric setting using the hierarchical likelihood ratio test.</p>
+<p>Bayesian models allow model comparison amongst models that differ in only one parameter, like adding or removing one parameter as part of structure inference,</p>
+<p>or there can be radically different model topologies underneath.</p>
+<p>And that can be evaluated in terms of like a Bayes factor support for one model over another.</p>
+<p>It also connects to a lot of work theoretical and applied in sleep-wake type models,</p>
+<p>where parameters are added, fit increases during wake cycles, and then synapses are pruned, models are reduced,</p>
+<p>core screening occurs during sleep.</p>
+<p>And the big picture is you can use Bayesian model comparison, framed as a free energy landscape optimization just as always,</p>
+<p>comparing different Bayes graphs, comparing different generative models,</p>
+<p>and then this results in the expression of a log Bayes factor or an odds ratio comparing the likelihood of two different models.</p>
+<p>So, this allows comparison of different models and the selection of different models as its own inference task.</p>
+<p>Any thoughts on this?</p>
+<p>Yeah, just one thing I want to pick up on is, I actually can't remember, like, I guess with this paper,</p>
+<p>I think they were just doing sort of like, it's almost like just purely the bottom-up approach, right?</p>
+<p>They're not starting with like a massive model and then you couldn't like start with a very big one at the top and then coarse-grained down.</p>
+<p>You have to coarse-grained sort of going up the hierarchy as it were.</p>
+<p>So, I think we end up going with this bottom-up growth of models because you don't want more levels than you need necessarily.</p>
+<p>Or like, if you have an image and you're trying to classify it and it's, I don't know, 32 by 32 pixels and you just subdivide it by two,</p>
+<p>you need to start with your pixel, you need to start with your full image width first and then coarse-grained, coarse-grained, coarse-grained up,</p>
+<p>rather than going, ah, 8 for R, I'm going to have n levels and then cut them down after.</p>
+<p>So, I think that's, we're probably going to be more on the bottom-up growth of models for this particular paper.</p>
+<p>Yeah, good point. How do you know how big to make each scale and how many scales?</p>
+<p>Hmm.</p>
+<p>We won't read all the text on this page, but big claim.</p>
+<p>Renormalizability is feasible under the models in Figure 1.</p>
+<p>So, that's kind of the rhetorical chain is, here's the models that we're working with in Figure 1.</p>
+<p>These models have renormalization properties.</p>
+<p>That is what makes this state-path, state-path layering amenable to scale-free or scale-friendly or multi-scale generative models.</p>
+<p>The claim is that given the renormalization properties of Bayes graphs, like or including the ones that they're describing,</p>
+<p>with this state-path, state-path nesting, there can be computationally tractable, possibly multi-level renormalization.</p>
+<p>And the rest of the paper, they're going to be explaining and unpacking that and adapting it to specific settings.</p>
+<p>These renormalizing transformations have the effect such that the dynamics slow down in time and space as one ascends levels or scales.</p>
+<p>So, compare that with other work on information theory of individuality, bottom-up and top-down information flows and causality, gapping and laddering.</p>
+<p>And also, they're saying that the structure and the tuning of the variables in the graph, which would yield the full reproducible description of the renormalizable generative model,</p>
+<p>itself can be reached through this Bayesian model comparison.</p>
+<p>We had some questions about how the discrete and continuous time are different.</p>
+<p>A more intuitive view is that successively higher levels encode sequences of sequences and implicitly composition of events or episodes.</p>
+<p>In other words, at a deep level, one state can generate sequences of sequences of sequences, thereby destroying the Markovian properties of content generated at the lowest level.</p>
+<p>So, this is like encoding or sedimenting nested sequences or paths in event-based or ordered structured narratives.</p>
+<p>Deep structure is what allows for possibly advanced or naturalistic, interpretable, fill in your preferable adjective there, models of complex phenomena that do have deep structure,</p>
+<p>like speech and writing and story.</p>
+<p>And they're going to be walking through renormalization through space in terms of pixels, time and in general spaces.</p>
+<p>So, it's cool to think about like Chris Fields and Mike Levin's work on competency in navigating arbitrary spaces as an invariant for analyzing cognition in diverse embodiments.</p>
+<p>So, the idea that space in states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states states</p>
+<p>a higher level. So here we have a state at a higher level, s sub 1 superscript n plus 2,</p>
+<p>and then flowing out of it, we have the state and the path at a lower level.</p>
+<p>Higher states only change after a fixed number of lower state change, so that could be 2,</p>
+<p>it could just be twice as fast, like a frequency doubling every time there's a time scale</p>
+<p>separation, or it could be fixed like 60 minutes per hour, and or it could be fully reactive</p>
+<p>in terms of using rx and fur for a just-in-time type responsive updating. And this is somewhere</p>
+<p>where I think that generalized notation notation will be really helpful, because talking about</p>
+<p>what these variables are in detail gets pretty messy. Because each state and path has only one</p>
+<p>parent, the ensuring Markov blanket, the blue circles of each state, red circle, ensures</p>
+<p>conditional independence among latent factors. There is a strict uniparental inheritance factorization</p>
+<p>pattern in the hierarchical model, so can latent factors remain conditionally independent?</p>
+<p>So note that the s and the u here are not connected. Conditioned upon the higher s,</p>
+<p>they are conditionally independent. That simplifies the runtime inference. In sum,</p>
+<p>a renormalizing generative model, RGM, is a hypergraph parameterized by two sorts of tensors,</p>
+<p>the A and the B, in which the children of states at any level by partition into initial states and paths.</p>
+<p>In this example, the blocking transformation groups, pairs of states and paths.</p>
+<p>So here, it's kind of like A and B. Again, not exactly the A and the B letters from the textbook.</p>
+<p>But note that A describes the likelihoods or empirical priors, and B is the dynamics.</p>
+<p>So A is broadly referring to like this instantaneous sense-making-like relationship between</p>
+<p>latent states and observations, whereas B is describing the dynamics and the transitions through time.</p>
+<p>So I'm not sure if it's exactly that simple, but A is kind of describing synchronous</p>
+<p>attributes of the model, whereas B describes diachronous, through-time aspects of the model.</p>
+<p>So, okay. Anything else?</p>
+<p>Yes. I think one thing to really hook onto is the uni-parental inheritance thing. So I think you're</p>
+<p>correct when you say, yes, that makes everything faster and less computationally difficult. That is a</p>
+<p>good thing. But I think there's a more philosophical thing to raise as well, which is when we're talking</p>
+<p>about causality going up and down the levels. And learning should in theory be a lot easier</p>
+<p>when you only have a single cause for something. So that means that when you make an observation,</p>
+<p>it's much easier to infer, oh, the parent must have been this in order to cause what I see. And you</p>
+<p>don't have to consider multiple factors coming in and going, oh, well, it could have been any one of 10</p>
+<p>different factors that mean I saw what I saw. So that learning process as well, when we talked about the</p>
+<p>directly accounts earlier, should be a lot easier to do when you have only a single parent for a particular</p>
+<p>variable. So yeah, that conditional independence among the latent factors, I think also features into the</p>
+<p>locality aspect as well of when we were talking about the very beginning of the session, but I'm not 100% sure on</p>
+<p>that. But that's my intuitive understanding of what's going on there. Cool. Okay. One can also</p>
+<p>regard RGM as an expressive way of modeling nonlinearities. In the limit of precise likelihood</p>
+<p>mappings, this can be viewed as the composition of logical operators. One can see why an RGM can compose</p>
+<p>operators to represent or generate content that has compositional structure. The inversion of an RGM</p>
+<p>could be construed as a simple form of abductive, e.g. modal logic. Okay. Now we're going to get to the</p>
+<p>examples. Here we go. First example, image compression and compositionality. So first, it's helpful for</p>
+<p>background to look at variational autoencoders. These take in some input observations. They project down to a</p>
+<p>latent space space that's smaller and then decode out to reconstruct. So it's really similar to a</p>
+<p>variational autoencoder. And look at the first word, variational free energy, variational autoencoder.</p>
+<p>They just call it the ELBO, not the VFE. There's so many similarities between this method and active</p>
+<p>inference that it's really helpful to study up. It just sometimes uses a little bit of a frame shifted ontology.</p>
+<p>So here's what they do. They're studying the classic MNIST handwriting data set. They map continuous</p>
+<p>pixel values to a discrete state space, and then they're going to learn the structure through</p>
+<p>recursive applications of a blocking transformation. They group together local pixels by tiling or</p>
+<p>tessellating the image. So that's the first step, is they tessellate over the image at multiple scales.</p>
+<p>So the smallest dots is a 4x4 cluster of pixels. Then the medium-sized dot is 4 of those. So then 1,</p>
+<p>2, 3, 4, these get clustered into this one. And then 1, 2, 3, 4 get clustered into that one,</p>
+<p>and so on. So that's the spatial static renormalization via spin block locality principle</p>
+<p>process. Each group is then subject to singular value decomposition, given the training set of</p>
+<p>images to identify orthogonal spatial basis of singular vectors. So this is the grouping and</p>
+<p>the reduction. Grouping is the tessellation. It's like a convolution. We'll talk more about how it</p>
+<p>differs from convolution, like a convolutional neural net. And then they truncate. So here's an example from the</p>
+<p>form index project, but there's many other places you can look at this. This is what,</p>
+<p>for a principal component analysis or for an SVD analysis, every single time it selects the vector</p>
+<p>that explains the most orthogonal variance. And then it takes that profile out of the original data.</p>
+<p>And then it takes the next most variance explaining vector. And so you end up with</p>
+<p>something that looks like a variance explanation curve. So the first 10 components explain 70%.</p>
+<p>To get to 90% on this data set, it took 50. So if you say, well, my computer only has space for 10,</p>
+<p>just take 10. Or if you say, well, I'm interested in this kind of Bayes optimal, Pareto optimal crossover</p>
+<p>point, you can solve it that way. Or maybe you have other constraints. So that's pretty much how it's</p>
+<p>working is they're structurally using the nesting with these four by four spin glass blockings. And then</p>
+<p>they do a SVD truncation compression method on each level of that blocking.</p>
+<p>This is how the path state, path state, path state works. It's a multi-scale blocking, convolution,</p>
+<p>tessellation, operation to group, then SVD with truncation to reduce to a defined state space. They only retain 32</p>
+<p>of the variables from the SVD at each level.</p>
+<p>There's more on this slide. There's one thing that'll certainly be interesting to discuss with the author is</p>
+<p>At first glance, this procedure may appear to generate likelihood mappings of increasing size because the combinatorics of</p>
+<p>increasingly large groups could explode at higher levels. However, by training on a small number of images, one</p>
+<p>upper bounds the number of states at each level. In other words, one can effectively encode a finite number of</p>
+<p>images without any loss of information such that RGM inversion corresponds to lossless compression.</p>
+<p>So what's the deal with training data? How do we know about what is going to be an optimal or effective</p>
+<p>data size, variability, information content, or curriculum for the data set? How do we address</p>
+<p>that data selection problem, sometimes called active data sampling?</p>
+<p>And then to the point about the lossless compression, one can effectively encode a finite number of images</p>
+<p>without loss of information. So how can or does this do compression better than, for example,</p>
+<p>gzip or LLM? That was a great moment in computational history when people realized that in certain ways</p>
+<p>these models are doing information compression and that even gzip or just file compression utilities</p>
+<p>have attributes that trained machine learning models have because of information theory.</p>
+<p>And how do we know and infer or describe these trade-offs related to the training data set and</p>
+<p>the structure of the model, all these different things, as we expand the scope of our modeling degrees</p>
+<p>of freedom? And how has this problem been solved similarly or approached differently</p>
+<p>in other work on information geometry in variational autoencoders?</p>
+<p>And then just last piece on working through this example. So again, they pre-processed the MNIST images.</p>
+<p>The images were downloaded from the link here.</p>
+<p>The image was converted. They were converted to the format that they needed.</p>
+<p>Then they say an exemplar image is shown in figure 3 in the paper. I think that should be figure 4.</p>
+<p>And then they're showing the centroids of each of these groups.</p>
+<p>So this is just to get an intuition for what this multi-scale spin glass blocking is doing with the</p>
+<p>success of clumping and grouping into these multiple spatial scales. Okay, any comments?</p>
+<p>Yeah, I think I'm still very confused as to how this ends up being from the previous slide, how you get</p>
+<p>lossless compression, if you're also doing the singular value decomposition and truncating some of</p>
+<p>those vectors. I definitely want to follow up with the authors about when are we lossy and when are we</p>
+<p>lossless? And as you said, the question of training data and how much, what goes in your curriculum,</p>
+<p>that's going to be huge, I think.</p>
+<p>Yeah, good point. There's a truncation of variance. So if it's close to lossless, that's also known as</p>
+<p>lossy compression. Here is figure 5 that's describing these concatenated likelihood matrices. This is a</p>
+<p>common method in a lot of models where four separate matrices can be included as sub-matrices in a bigger</p>
+<p>matrix. That can make it simpler to deal with in programming. It might make it amenable to sparse matrix</p>
+<p>methods or compression methods. It might make it just easier to visualize, but this is kind of a classic</p>
+<p>trick going back to the SPM days. Okay. If we had imposed an additional constraint or structural prior</p>
+<p>that likelihood mappings are conserved identically over groups. So for example, if there was the prior</p>
+<p>that, let's just talk about these four major quadrants, that's the third level of the model.</p>
+<p>If we had said all four of those are the same versus a situation like it was, which is it was left open,</p>
+<p>upper left quadrant of 5 could be different than the bottom right quadrant of 5.</p>
+<p>If we had imposed that additional constraint that the likelihood mappings are conserved identically</p>
+<p>over groups, one would have the discrete homologue of a convolutional neural network with implicit weight</p>
+<p>sharing. So this is a super key point because people might have a lot more familiarity with</p>
+<p>convolutional methods from computer vision. In the case where the mappings are constrained to be the same,</p>
+<p>so it's a situation where we're learning a single filter that optimally sweeps across a whole image,</p>
+<p>this is the convolutional neural network case, convolutional case. Here in the multi-scale RGM,</p>
+<p>the learning space is more complex. It's more general. So the advantage is we could possibly</p>
+<p>describe more conditional relationships like, oh, the upper left quadrant of 5 looks like this,</p>
+<p>but the bottom right looks like that. What's the disadvantage? You know, where is this lunch getting</p>
+<p>paid for? It massively expands the search and training space. As always, you can have a more</p>
+<p>expressive model, has more options, bigger search space, less expressive model, smaller search space.</p>
+<p>And then figure 6 shows more about what these scales look like and connects it also to receptive fields in the visual processing.</p>
+<p>But just like the 4x4 spin block window or the 32 truncation dimensions for SVD or the 10 levels of this factor,</p>
+<p>that's a big question. It's like, what about 3x3 with 25 dimensions of SVD and an 8 factor or 8 levels for the factor? So how much meta optimization do you do to determine what these variables should be?</p>
+<p>One thing to pick up on that, which maybe they don't do in this paper, but I'm sure they've done in others is,</p>
+<p>well, if I need to optimize something about my model, why don't I just create a bunch of them and then</p>
+<p>check my free energy and just pick the one with the lowest free energy? So parameter optimization through free energy</p>
+<p>minimization happens everywhere else in active inference. I'm not sure why we couldn't also do it here for some of these.</p>
+<p>So you'd set up your RGM, but you could have different parameters on how many variables,</p>
+<p>how many principal components to keep, how many levels to do, etc.</p>
+<p>And so long as you can generate observations and see which ones are the most internally consistent</p>
+<p>of the probabilities based on the training data, you could probably learn which, like how to do your RGM.</p>
+<p>Yeah. I think that's the dream is you say, here's the meta structure of the one by one,</p>
+<p>two by two, three by three, four by four, you know, n by n</p>
+<p>grouping. And then we'll learn how many n should be grouped by on how many levels per factor with how many</p>
+<p>variance retention elements from the SVD. And then you say, okay, well, should we retain the same</p>
+<p>number of SVD variables for every level? Or should we open up the possibility that, well,</p>
+<p>maybe the first level we retain 10, but the second, we only retain three. Again, that might be more</p>
+<p>expressive if there really was 10 variance contribution in the first level and three in the</p>
+<p>second, but it's a bigger search base. So that's, that's the sort of meta question, but that's cognitive</p>
+<p>computing. So it's exciting times. Figure seven, getting to the performance on the MNIST. So figure</p>
+<p>five, it says in the text illustrates the results of active learning, but I think here they mean figure</p>
+<p>seven during exposure to the first 10,000 training images of the MNIST dataset. So in this example,</p>
+<p>images were assimilated if and only if they increase the expected free energy of the RGM.</p>
+<p>So in the absence of prior preferences or constraints, this ensures minimum information</p>
+<p>loss by underwriting informative likelihood mappings at each level. So my question was,</p>
+<p>does this address the data sampling issue? It seems like they're selecting from a larger data pool,</p>
+<p>the informative examples, which improve the performance of EFE. So how much to threshold or how</p>
+<p>to prioritize that? How do you deal with a path dependence in training, the order of the curriculum</p>
+<p>of the points that are seen, or does it not matter? But for real time and online inference methods, it</p>
+<p>often really matters. It's a complex landscape. So if you head out left or head out right, it's going to</p>
+<p>make a big difference. And isn't this substituting another cost, possibly quite challenging inference and data</p>
+<p>selection problem, just so that a special smaller RGM can be made. So there's going to be situations where</p>
+<p>it is worth that entry cost to set up a smart active data sampling method to train a powerful RGM.</p>
+<p>There might be another case where the data sampling component is challenging, and it's not worth it. And</p>
+<p>there's another simpler way to do it another way. So of course, in any specific situation, it's an empirical</p>
+<p>question how these different methods perform. And then just again, with these images, figure eight.</p>
+<p>The thing to note here is classification accuracy increases with a marginal likelihood that each</p>
+<p>image belongs to the class of numbers. So here they're showing that their accuracy is very high</p>
+<p>where they're most confident, and their accuracy drops as their confidence drops.</p>
+<p>And from a quick perplexity search, I'll also be curious to see what others have to add. Classic</p>
+<p>shallow machine learning algorithms can easily achieve 97% accuracy on MNIST. In 2015,</p>
+<p>the main convolutional neural networks approach achieved an error rate of just 0.29%. So 99 plus percent.</p>
+<p>So especially at the way that they're presenting it here without code and things like that,</p>
+<p>keep in mind that it's more of a proof of concept in analytic foundation, not necessarily being described</p>
+<p>as a computational advance, which would have a lot more details on what was run rather than just saying</p>
+<p>it was learned automatically within a few seconds on a personal computer. That's kind of a casual way</p>
+<p>to describe it. I think it's very colorful and inspirational though. More assessment would need to be looked at.</p>
+<p>How does the fit relate to other methods? And so this is a super exciting open source direction to support empirical reproducibility efforts to establish how and when and where different code bases do differently on different datasets.</p>
+<p>Okay. Yeah, 100% just want to echo on the making the code and things available. We really do need that. It can't just be in a MATLAB script on Carverton's computer. It's got to be out there so that we can use it and build on it and understand what's going on.</p>
+<p>One thing I think that's also worth highlighting is this classification and confidence question. I'm not sure if the convolutional neural networks will also give you that. So if they classify something, maybe they just say, oh, I think it's the digit zero and I'm like 95% confident. I don't even know if you get that necessarily.</p>
+<p>Like I think maybe you get something that's a pseudo confidence number on a scale between zero and one, but it's not really confidence in the same way that this is like, this is like, you've got a probability distribution and you can do like a credible interval on it if you want. So I think that's something to really, really highlight the explainability is often in many cases worth swapping a few percentage accuracy points so that you know why your algorithm has suggested something.</p>
+<p>Yeah. Earlier work by a lot of those authors have highlighted that true element of interpretability and uncertainty. For example, in a LLM today, even if it does say something like, I'm not sure about X, that string, I'm not sure about X was actually achieved as a high confidence outcome.</p>
+<p>And so it doesn't actually reflect an introspection of the uncertainty intervals on X. So fun topics to go into. Okay. That was the first example. Now we're going to go faster through the next examples because they're structured much the same way. It's just each of these following examples is going to bring in a new dimension.</p>
+<p>So the next dimension is going to be video compression. Generalize the renormalizing procedures of the previous section to include dynamics for recognizing and generating ordered sequences of images. So video is sequence of images.</p>
+<p>Also, algorithm one has the fast structure learning. Even just copying and pasting this into perplexity and working in cursor from there does amazing things. So I'm super excited for what people come up with in terms of using the algorithms that are laid out and implementing them in different languages and so on.</p>
+<p>So this section is going to generalize the static univariate grayscale example of MNIST into an RGB three color, three channel plus time, time color pixel voxel tuple structure.</p>
+<p>Here's where we get to time. Time wasn't present in the MNIST example, but by partitioning each sequence into non-overlapping pairs during the timescale transformation at successive levels,</p>
+<p>one effectively halves the length of the sequence when ascending from one level to the next.</p>
+<p>So we talked about different ways to do nesting in time, 60 minutes in an hour, 24 hours in a day.</p>
+<p>Here is going to be a strict frequency doubling.</p>
+<p>This means that higher levels encode sequences of sequences of sequences,</p>
+<p>paging exhibit, that can be regarded as episodes of successive events.</p>
+<p>So key idea.</p>
+<p>State path, state path, state path, state path encodes transitions through time,</p>
+<p>and there's this enforced frequency doubling.</p>
+<p>So processes are encoded relationally.</p>
+<p>Look into something like successor representation learning or cue learning to see some other approaches.</p>
+<p>So, it's possible to define and use message passing among levels.</p>
+<p>It could also be possible to provide alternative operations orders or, like in RxInfer,</p>
+<p>use graphs that have no preset order of updating or other rules for how updating occurs.</p>
+<p>Okay, here's where in figure 10, 11, and 12, we get to the example.</p>
+<p>We used a short video sequence of a dove flapping her wings.</p>
+<p>The original video was downsampled to 32 frames, and they describe a little bit more.</p>
+<p>They used the same 4x4 blocking.</p>
+<p>So, this is key information on the video processing.</p>
+<p>And it's really exciting to think about what they do to these file formats as analytic affordances.</p>
+<p>I found this actually more from the discourse analysis area and rhetoric studies.</p>
+<p>But if we think about the choices and the degrees of freedom that are made in the data processing and meta-modeling,</p>
+<p>those are analytical affordances.</p>
+<p>And it relates to how we were talking about you could do inference on those variables.</p>
+<p>And so, here we see analogous to the images that were output for the MNIST summaries and performance.</p>
+<p>Here, we similarly have prediction through time of this dove flapping the wings.</p>
+<p>It's a cyclic generated video.</p>
+<p>And, for example, the stimulus here is just if a spotlight is only on part of the dove.</p>
+<p>And then it can reconstruct through space at the same moment and through time</p>
+<p>how it will continue to unfold given the patchy observations that it gets.</p>
+<p>So, that's the kind of dove video example.</p>
+<p>I think there's one thing just to, yeah, some background on why does that matter?</p>
+<p>That you can just all do the spotlight thing and recover the original in a way.</p>
+<p>So, this is a fairly common way of understanding sort of like unsupervised learning.</p>
+<p>Has your algorithm actually understood the data?</p>
+<p>And so, masking parts of the image and asking it to infill it is a very common way of testing</p>
+<p>that what you've got actually understands what's going on</p>
+<p>and it's not just going to hallucinate anything random.</p>
+<p>So, yeah, when I first came across it, I was like, oh, this is a bit odd.</p>
+<p>But then, yeah, it's worth looking into just as background of like,</p>
+<p>well, if you have an unsupervised learning technique,</p>
+<p>how do you know it's actually doing a good job?</p>
+<p>Yeah. Cool.</p>
+<p>Okay, the next example in the video section.</p>
+<p>In the preceding example, the sequence of the image constitutes a closed path,</p>
+<p>namely a simple orbit.</p>
+<p>So, it's like a gif of the dove flapping the wings.</p>
+<p>It returns to the same spot and then it continues again.</p>
+<p>This can be regarded as a quantized representation of a periodic attractor.</p>
+<p>In the section paths, orbits, and attractors,</p>
+<p>they use the same procedures to compress and generate stochastic chaos</p>
+<p>using images generated by a Lorenz system.</p>
+<p>The aim of the example is to show how active learning after structure learning</p>
+<p>furnishes a generative model of chaotic orbits.</p>
+<p>So, Lorenz system and active inference is discussed in the four-part series on Livestream 32,</p>
+<p>stochastic chaos and Markov blankets.</p>
+<p>And here we see an analogous process to the MNIST, analogous to the dove.</p>
+<p>We have an image or sequences of images through time.</p>
+<p>It's traces from this Lorenz chaotic attractor.</p>
+<p>Similarly, there's this grouping and reduction operation happening through space and time.</p>
+<p>And then, parameterization of those models, that's the structure learning followed by parameterization,</p>
+<p>results in the ability to have, even when there's a gap in the observations,</p>
+<p>like in figure 15 on the right,</p>
+<p>here we have a gap in the observations, but the predictive posterior is able to continue.</p>
+<p>It's an empirical question how well it lines up,</p>
+<p>but this is just really fascinating because it shows, well,</p>
+<p>even though the generative process, we can say,</p>
+<p>has this chaotic instability</p>
+<p>that might make it analytically intractable,</p>
+<p>from the generative modeling perspective,</p>
+<p>the RGM enables a really nicely typed way</p>
+<p>that can accommodate systems that have these chaotic properties.</p>
+<p>What was exciting to you about this part?</p>
+<p>Yeah, exactly that.</p>
+<p>It's, you know, chaos is fascinating.</p>
+<p>And modeling it, famously very difficult.</p>
+<p>So, yeah, I think this is actually,</p>
+<p>I feel like they should be shouting about this more in the paper, in a way.</p>
+<p>Like, maybe they could have opened with this.</p>
+<p>I don't know.</p>
+<p>But I would really like to see some more,</p>
+<p>like actually simpler examples</p>
+<p>of chaotic systems being modeled in this way.</p>
+<p>And maybe that could be a separate paper entirely.</p>
+<p>But even just, you know, one-dimensional signals,</p>
+<p>that change in time,</p>
+<p>that are famously quite chaotic,</p>
+<p>that we don't do a very good job of modeling,</p>
+<p>would be really interesting to see how getting that into an orbit modeling procedure</p>
+<p>using this would be and see how that goes.</p>
+<p>We were very excited to try that.</p>
+<p>Awesome.</p>
+<p>Yeah, totally agree.</p>
+<p>The next example,</p>
+<p>continuing in the image and video sequence,</p>
+<p>is a bird.</p>
+<p>So, a natural extension.</p>
+<p>Figure 16 illustrates the spatial blocking of a more natural video,</p>
+<p>a short sequence from this website.</p>
+<p>So, that URL was no longer active.</p>
+<p>But either way, it was just a search URL.</p>
+<p>So, it'd be cool to see the exact video.</p>
+<p>Maybe it could be uploaded.</p>
+<p>But either way, this is a short video</p>
+<p>of a bird in a natural setting.</p>
+<p>And again, figure 17,</p>
+<p>staying with this theme,</p>
+<p>there's a latent state prediction,</p>
+<p>ongoing,</p>
+<p>even though the stimulus,</p>
+<p>the observation,</p>
+<p>is withheld sometimes.</p>
+<p>So, in a way,</p>
+<p>that's like what happens when we blink</p>
+<p>or have an eye saccade.</p>
+<p>We have this ongoing posterior prediction</p>
+<p>of the visual scene,</p>
+<p>which is what's being experienced or attended to,</p>
+<p>with color everywhere,</p>
+<p>and equal precision everywhere,</p>
+<p>and all this stuff,</p>
+<p>including continuity</p>
+<p>when we blink or have an eye saccade.</p>
+<p>Because it's basically what's happening here.</p>
+<p>There's just transiently no stimulus,</p>
+<p>but still the likeliest thing that's happening</p>
+<p>is the latent state prediction.</p>
+<p>So, that last little sequence</p>
+<p>took us from handwriting,</p>
+<p>static images, grayscale,</p>
+<p>into three video settings,</p>
+<p>which was a cyclic,</p>
+<p>oscillatory, synthetic video,</p>
+<p>a synthetic,</p>
+<p>chaotic video,</p>
+<p>and then a natural video.</p>
+<p>So, you could imagine if this was</p>
+<p>more structured natural video,</p>
+<p>it would be easier to learn</p>
+<p>with probably any method.</p>
+<p>If this was a more complex scene</p>
+<p>with multiple different things,</p>
+<p>switching positions,</p>
+<p>it would be a harder video to learn.</p>
+<p>Any more thoughts on the natural extension?</p>
+<p>Yeah, actually,</p>
+<p>so, if it's trained on this particular video,</p>
+<p>one thing I wasn't sure is</p>
+<p>what frames does it predict</p>
+<p>sort of at the end?</p>
+<p>So, we've talked about like,</p>
+<p>oh, if you like,</p>
+<p>miss some frames in the middle,</p>
+<p>and then it can catch up and keep up.</p>
+<p>But if you just run this indefinitely,</p>
+<p>I'm not actually sure</p>
+<p>what the bird would be predicted to do,</p>
+<p>and would it just eventually loop back?</p>
+<p>Because it's sort of like,</p>
+<p>if you had that chaotic path</p>
+<p>in the previous one,</p>
+<p>it's still in orbit.</p>
+<p>It still returns to the same attractor states.</p>
+<p>Whereas, here,</p>
+<p>I'm not sure what the bird would do</p>
+<p>when it's predicted to be doing stuff.</p>
+<p>Maybe it just flies off the screen</p>
+<p>and we don't see it anymore.</p>
+<p>I don't know.</p>
+<p>But that's,</p>
+<p>it's kind of like a sci-fi.</p>
+<p>It's a simulation to run.</p>
+<p>It's like a sci-fi.</p>
+<p>Like, what if,</p>
+<p>it's like the movie's an hour and a half</p>
+<p>long,</p>
+<p>and then you keep watching,</p>
+<p>it's like,</p>
+<p>wait, it's still going.</p>
+<p>What's happening?</p>
+<p>Okay.</p>
+<p>The next case that they study</p>
+<p>is sound.</p>
+<p>So,</p>
+<p>the video examples</p>
+<p>in the prior three</p>
+<p>were just transitions.</p>
+<p>It was an ordered sequence of images.</p>
+<p>Whereas,</p>
+<p>the video,</p>
+<p>more broadly understood,</p>
+<p>like the live stream</p>
+<p>that you're listening to now,</p>
+<p>is video as image plus audio.</p>
+<p>So, here,</p>
+<p>they just kind of</p>
+<p>leave the video behind</p>
+<p>and say,</p>
+<p>let's just look at the audio.</p>
+<p>In this setting,</p>
+<p>pixels,</p>
+<p>and there's an analogy</p>
+<p>for the multimodal LLMs,</p>
+<p>where the tokenization methods</p>
+<p>that work for natural language</p>
+<p>in the discrete setting</p>
+<p>also work for tokenization</p>
+<p>of image</p>
+<p>and audio</p>
+<p>like GPT-4O.</p>
+<p>So,</p>
+<p>in this setting,</p>
+<p>pixels,</p>
+<p>i.e. picture elements,</p>
+<p>are replaced by voxels,</p>
+<p>volume elements</p>
+<p>over frequency and time.</p>
+<p>These constitute</p>
+<p>time frequency representation</p>
+<p>of time series</p>
+<p>or a continuous wavelet transform,</p>
+<p>CWT.</p>
+<p>Renormalizing generative models</p>
+<p>for sound</p>
+<p>are simpler</p>
+<p>than for video content</p>
+<p>because there's only</p>
+<p>one metric dimension,</p>
+<p>frequency,</p>
+<p>that accompanies time.</p>
+<p>using a spin block transformation</p>
+<p>to coarse grain</p>
+<p>over frequency</p>
+<p>reflects the factor assumption</p>
+<p>that neighboring frequencies</p>
+<p>fluctuate in a correlated fashion.</p>
+<p>So,</p>
+<p>kind of similar</p>
+<p>data availability setting,</p>
+<p>URL provided</p>
+<p>but unclear</p>
+<p>what the songs were,</p>
+<p>and then we see</p>
+<p>the similar</p>
+<p>visual representations</p>
+<p>culminating in,</p>
+<p>for example,</p>
+<p>20,</p>
+<p>where predictions,</p>
+<p>latent state predictions,</p>
+<p>are able to continue</p>
+<p>even though</p>
+<p>part of the stimulus</p>
+<p>has been redacted.</p>
+<p>So,</p>
+<p>it's kind of like</p>
+<p>a video chat</p>
+<p>or a phone call</p>
+<p>and then someone</p>
+<p>drops out</p>
+<p>for a few seconds,</p>
+<p>but you're able</p>
+<p>to still have</p>
+<p>your unrolling</p>
+<p>expectations</p>
+<p>about what did happen</p>
+<p>even though</p>
+<p>you might be missing</p>
+<p>some observations.</p>
+<p>So,</p>
+<p>any comments</p>
+<p>on</p>
+<p>this first sound part?</p>
+<p>No,</p>
+<p>let's carry on.</p>
+<p>All right.</p>
+<p>All good.</p>
+<p>From sounds to music.</p>
+<p>One might ask</p>
+<p>if RGMs</p>
+<p>could be applied</p>
+<p>to language,</p>
+<p>perhaps in the spirit</p>
+<p>of hierarchical</p>
+<p>Dirichlet process models.</p>
+<p>We will not</p>
+<p>address this here,</p>
+<p>but provide</p>
+<p>an application</p>
+<p>to music</p>
+<p>to illustrate</p>
+<p>the generalized</p>
+<p>synchrony</p>
+<p>that accompanies</p>
+<p>communicative exchange</p>
+<p>Fristen and Frith 2015,</p>
+<p>the classic</p>
+<p>songbird dyad.</p>
+<p>So,</p>
+<p>keep in mind</p>
+<p>that the birds</p>
+<p>that are in this</p>
+<p>dyadic</p>
+<p>songbird setting,</p>
+<p>which is also</p>
+<p>reflected in the</p>
+<p>2022 textbook,</p>
+<p>are literally</p>
+<p>singing from</p>
+<p>the same sheet music.</p>
+<p>They have the same</p>
+<p>single fixed song.</p>
+<p>So,</p>
+<p>it's not</p>
+<p>modeling</p>
+<p>the flow</p>
+<p>of language</p>
+<p>as conversation</p>
+<p>at the level</p>
+<p>of new</p>
+<p>lexemic</p>
+<p>information provided,</p>
+<p>like go to the store</p>
+<p>and get me</p>
+<p>milk,</p>
+<p>or</p>
+<p>meta</p>
+<p>lexemic</p>
+<p>like prosodic</p>
+<p>or stylistic</p>
+<p>elements</p>
+<p>of language.</p>
+<p>It's a very</p>
+<p>restricted</p>
+<p>sense of language,</p>
+<p>but it's part</p>
+<p>of the tech</p>
+<p>tree of</p>
+<p>building towards</p>
+<p>models that</p>
+<p>capture more</p>
+<p>sophisticated</p>
+<p>elements of</p>
+<p>language,</p>
+<p>but here</p>
+<p>is more</p>
+<p>structured</p>
+<p>than this</p>
+<p>sound example.</p>
+<p>It'd be</p>
+<p>interesting to</p>
+<p>hear some</p>
+<p>of these</p>
+<p>songs in</p>
+<p>their original</p>
+<p>versions and</p>
+<p>in their</p>
+<p>generated</p>
+<p>versions,</p>
+<p>and like,</p>
+<p>how well</p>
+<p>does this</p>
+<p>do</p>
+<p>from a</p>
+<p>performance</p>
+<p>and file</p>
+<p>size</p>
+<p>perspective,</p>
+<p>how well</p>
+<p>does that</p>
+<p>do to</p>
+<p>MP3?</p>
+<p>Which is</p>
+<p>another</p>
+<p>example of</p>
+<p>data compression,</p>
+<p>and that's</p>
+<p>exactly like</p>
+<p>the GZIP</p>
+<p>and LLM</p>
+<p>comparison</p>
+<p>earlier.</p>
+<p>if at the</p>
+<p>heart of a</p>
+<p>variational</p>
+<p>autoencoder</p>
+<p>or an</p>
+<p>RGM or</p>
+<p>something else</p>
+<p>is using a</p>
+<p>structurally</p>
+<p>determined</p>
+<p>model as</p>
+<p>parameterized to</p>
+<p>have a</p>
+<p>smaller</p>
+<p>representation</p>
+<p>of a</p>
+<p>larger</p>
+<p>space,</p>
+<p>how do</p>
+<p>these</p>
+<p>physics-inspired</p>
+<p>first principles</p>
+<p>of intelligence</p>
+<p>models or</p>
+<p>classical</p>
+<p>machine learning</p>
+<p>and compression</p>
+<p>related models</p>
+<p>do,</p>
+<p>are we</p>
+<p>getting</p>
+<p>what fraction</p>
+<p>of compression,</p>
+<p>how good is</p>
+<p>the performance,</p>
+<p>all these,</p>
+<p>you know,</p>
+<p>can you tune</p>
+<p>the bit rate,</p>
+<p>all those</p>
+<p>kinds of</p>
+<p>questions.</p>
+<p>Okay,</p>
+<p>on to the</p>
+<p>last</p>
+<p>section</p>
+<p>from pixels</p>
+<p>to planning.</p>
+<p>So,</p>
+<p>in the</p>
+<p>final section</p>
+<p>we turn to</p>
+<p>the deployment</p>
+<p>of RGMs</p>
+<p>for planning</p>
+<p>as inference</p>
+<p>and implicitly</p>
+<p>their use</p>
+<p>as synthetic</p>
+<p>agents and</p>
+<p>decision makers</p>
+<p>under uncertainty.</p>
+<p>So,</p>
+<p>we're getting</p>
+<p>to the</p>
+<p>generalized</p>
+<p>active</p>
+<p>agents,</p>
+<p>which is</p>
+<p>to say</p>
+<p>the capacity</p>
+<p>for control</p>
+<p>and navigation</p>
+<p>in arbitrary</p>
+<p>spaces.</p>
+<p>And so,</p>
+<p>here we</p>
+<p>also see</p>
+<p>a comparison</p>
+<p>or juxtaposition</p>
+<p>of active</p>
+<p>inference</p>
+<p>and reward</p>
+<p>learning</p>
+<p>and ran</p>
+<p>way,</p>
+<p>give a</p>
+<p>great</p>
+<p>guest stream</p>
+<p>recently</p>
+<p>on similarities</p>
+<p>and differences</p>
+<p>there.</p>
+<p>And they</p>
+<p>make some</p>
+<p>more</p>
+<p>comments</p>
+<p>about</p>
+<p>how</p>
+<p>the</p>
+<p>RGM</p>
+<p>has</p>
+<p>relationships</p>
+<p>with</p>
+<p>generalized</p>
+<p>multi-level</p>
+<p>learning.</p>
+<p>So,</p>
+<p>now we're</p>
+<p>kind of</p>
+<p>briefly</p>
+<p>dropping</p>
+<p>any specific</p>
+<p>case,</p>
+<p>like a</p>
+<p>data set</p>
+<p>of images</p>
+<p>or video,</p>
+<p>and just</p>
+<p>thinking</p>
+<p>more</p>
+<p>generally</p>
+<p>about</p>
+<p>how</p>
+<p>this</p>
+<p>RGM</p>
+<p>could be</p>
+<p>used</p>
+<p>for</p>
+<p>multi-scale</p>
+<p>active</p>
+<p>agents.</p>
+<p>Any</p>
+<p>comments?</p>
+<p>No,</p>
+<p>it's</p>
+<p>carry on.</p>
+<p>Procedurally,</p>
+<p>this looks</p>
+<p>very much</p>
+<p>like</p>
+<p>conventional</p>
+<p>reinforcement</p>
+<p>learning.</p>
+<p>However,</p>
+<p>it is</p>
+<p>simpler and</p>
+<p>more efficient</p>
+<p>because it</p>
+<p>learns a</p>
+<p>compressed</p>
+<p>representation</p>
+<p>of and</p>
+<p>only of</p>
+<p>paths</p>
+<p>that link</p>
+<p>rewarded</p>
+<p>states.</p>
+<p>So,</p>
+<p>that might</p>
+<p>have some</p>
+<p>connections</p>
+<p>with the</p>
+<p>inductive</p>
+<p>behavior</p>
+<p>paper that</p>
+<p>they also</p>
+<p>wrote.</p>
+<p>Another way</p>
+<p>of looking</p>
+<p>at this</p>
+<p>is smart</p>
+<p>data</p>
+<p>selection.</p>
+<p>That relates</p>
+<p>to my</p>
+<p>earlier</p>
+<p>question of,</p>
+<p>well,</p>
+<p>if you knew</p>
+<p>which data</p>
+<p>to select</p>
+<p>and in</p>
+<p>what order</p>
+<p>for free,</p>
+<p>then maybe</p>
+<p>the model</p>
+<p>can be</p>
+<p>trained</p>
+<p>effectively.</p>
+<p>But,</p>
+<p>if it's</p>
+<p>a hard</p>
+<p>problem</p>
+<p>to determine</p>
+<p>which data</p>
+<p>to sample</p>
+<p>or what</p>
+<p>order to</p>
+<p>do it</p>
+<p>in,</p>
+<p>then it's</p>
+<p>just</p>
+<p>substituting</p>
+<p>one type</p>
+<p>of problem</p>
+<p>for another,</p>
+<p>which might</p>
+<p>be effective</p>
+<p>in a situation,</p>
+<p>but that's</p>
+<p>not a general</p>
+<p>approach.</p>
+<p>Effectively,</p>
+<p>this leads</p>
+<p>to the</p>
+<p>automatic</p>
+<p>selection</p>
+<p>of model</p>
+<p>structures</p>
+<p>that can</p>
+<p>only recognize</p>
+<p>and predict</p>
+<p>rewarding</p>
+<p>episodes,</p>
+<p>thereby</p>
+<p>eluding</p>
+<p>subsequent</p>
+<p>parameter</p>
+<p>learning.</p>
+<p>This rests</p>
+<p>upon the</p>
+<p>fact that</p>
+<p>one does</p>
+<p>not need</p>
+<p>to learn</p>
+<p>how to</p>
+<p>maximize</p>
+<p>reward</p>
+<p>if one</p>
+<p>has a</p>
+<p>generative</p>
+<p>model</p>
+<p>that can</p>
+<p>only</p>
+<p>predict</p>
+<p>paths</p>
+<p>that lead</p>
+<p>to reward.</p>
+<p>I was a</p>
+<p>bit uncertain</p>
+<p>about this</p>
+<p>because</p>
+<p>different</p>
+<p>paths</p>
+<p>may</p>
+<p>probabilistically</p>
+<p>lead to</p>
+<p>different</p>
+<p>reward,</p>
+<p>and then I</p>
+<p>thought,</p>
+<p>well,</p>
+<p>wait a minute,</p>
+<p>that's just</p>
+<p>pragmatic</p>
+<p>value.</p>
+<p>What about</p>
+<p>the automatic</p>
+<p>selection of</p>
+<p>model structures</p>
+<p>that can</p>
+<p>only recognize</p>
+<p>and predict</p>
+<p>epistemic</p>
+<p>information?</p>
+<p>isn't the</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>going to</p>
+<p>be able</p>
+<p>to select</p>
+<p>data,</p>
+<p>active</p>
+<p>data</p>
+<p>sampling,</p>
+<p>live stream</p>
+<p>57,</p>
+<p>smart</p>
+<p>data</p>
+<p>selection,</p>
+<p>according</p>
+<p>to epistemic</p>
+<p>plus</p>
+<p>pragmatic</p>
+<p>value,</p>
+<p>and thereby</p>
+<p>specify the</p>
+<p>next action?</p>
+<p>Again,</p>
+<p>reinforcement</p>
+<p>learning selects</p>
+<p>the next</p>
+<p>action based</p>
+<p>upon highest</p>
+<p>expected</p>
+<p>value or</p>
+<p>reward,</p>
+<p>but expected</p>
+<p>free energy</p>
+<p>has epistemic</p>
+<p>plus pragmatic</p>
+<p>value.</p>
+<p>In what</p>
+<p>follows,</p>
+<p>we will</p>
+<p>illustrate this</p>
+<p>approach in</p>
+<p>sequential policy</p>
+<p>optimization and</p>
+<p>unpack some</p>
+<p>of its</p>
+<p>corollaries.</p>
+<p>Games and</p>
+<p>attractors.</p>
+<p>So here,</p>
+<p>they use simple</p>
+<p>Atari-like games</p>
+<p>to show how</p>
+<p>a model of</p>
+<p>expert play</p>
+<p>self-assembles</p>
+<p>given a</p>
+<p>sequence of</p>
+<p>outcomes under</p>
+<p>random actions.</p>
+<p>The first</p>
+<p>simple game in</p>
+<p>question is the</p>
+<p>game of</p>
+<p>Pong.</p>
+<p>They describe</p>
+<p>how they</p>
+<p>core screen</p>
+<p>the blocks,</p>
+<p>and then</p>
+<p>they selected</p>
+<p>frames that</p>
+<p>started from</p>
+<p>a successful</p>
+<p>outcome.</p>
+<p>So they</p>
+<p>trained on</p>
+<p>successful</p>
+<p>examples.</p>
+<p>In short,</p>
+<p>we use</p>
+<p>rewards for</p>
+<p>and only for</p>
+<p>data selections.</p>
+<p>That's kind</p>
+<p>of an</p>
+<p>interesting</p>
+<p>possibility</p>
+<p>that there's</p>
+<p>a pragmatic</p>
+<p>filter on</p>
+<p>training data</p>
+<p>followed by</p>
+<p>then an</p>
+<p>epistemic</p>
+<p>openness to</p>
+<p>whatever it</p>
+<p>is that that</p>
+<p>data has.</p>
+<p>renormalization</p>
+<p>happened through</p>
+<p>space and</p>
+<p>time like the</p>
+<p>video examples</p>
+<p>and through</p>
+<p>the action</p>
+<p>policy.</p>
+<p>That's the</p>
+<p>section that</p>
+<p>we're in here</p>
+<p>where we're</p>
+<p>saying in the</p>
+<p>general case,</p>
+<p>we're also able</p>
+<p>to do RGM on</p>
+<p>nested policy,</p>
+<p>but here there</p>
+<p>was just one</p>
+<p>timescale of</p>
+<p>policy.</p>
+<p>figure 25,</p>
+<p>26,</p>
+<p>and 27 go</p>
+<p>over some</p>
+<p>of those</p>
+<p>representations.</p>
+<p>So any</p>
+<p>thoughts on</p>
+<p>this?</p>
+<p>Yeah, I</p>
+<p>think it's</p>
+<p>the training</p>
+<p>part is</p>
+<p>really</p>
+<p>interesting.</p>
+<p>and what</p>
+<p>I think</p>
+<p>maybe possibly</p>
+<p>as well,</p>
+<p>we're getting</p>
+<p>a bit close</p>
+<p>as to why</p>
+<p>they use</p>
+<p>that C</p>
+<p>letter for</p>
+<p>paths.</p>
+<p>If it's</p>
+<p>only ever</p>
+<p>encoding</p>
+<p>paths that</p>
+<p>are rewarding,</p>
+<p>then we</p>
+<p>sort of go</p>
+<p>full circle</p>
+<p>back to the</p>
+<p>definition in</p>
+<p>the path</p>
+<p>textbook of</p>
+<p>C is like</p>
+<p>rewards.</p>
+<p>It's just</p>
+<p>rewarded paths</p>
+<p>rather than</p>
+<p>rewards of</p>
+<p>observations.</p>
+<p>But I think</p>
+<p>they come onto</p>
+<p>this later on</p>
+<p>in the paper.</p>
+<p>This feels</p>
+<p>like a very</p>
+<p>brittle way</p>
+<p>of training</p>
+<p>a model.</p>
+<p>If it only</p>
+<p>ever encounters</p>
+<p>positive states</p>
+<p>or things</p>
+<p>that it likes</p>
+<p>or things</p>
+<p>that we</p>
+<p>want it to</p>
+<p>like,</p>
+<p>what happens</p>
+<p>if you drop</p>
+<p>it in a</p>
+<p>situation that</p>
+<p>it hasn't</p>
+<p>seen before</p>
+<p>where there's</p>
+<p>a negative</p>
+<p>state and</p>
+<p>it has no</p>
+<p>way to</p>
+<p>recover back</p>
+<p>to a</p>
+<p>positive one?</p>
+<p>So if you</p>
+<p>think of</p>
+<p>for training</p>
+<p>on a game,</p>
+<p>if you start</p>
+<p>in a losing</p>
+<p>state,</p>
+<p>how do you</p>
+<p>bring it</p>
+<p>back?</p>
+<p>How do you</p>
+<p>recover?</p>
+<p>So I think</p>
+<p>that's something</p>
+<p>that we will</p>
+<p>come on to</p>
+<p>later,</p>
+<p>but it's a</p>
+<p>really interesting</p>
+<p>thing to bear</p>
+<p>in mind of,</p>
+<p>well,</p>
+<p>what are you</p>
+<p>training on?</p>
+<p>Are you only</p>
+<p>training on</p>
+<p>success?</p>
+<p>How do you</p>
+<p>deal with</p>
+<p>failure?</p>
+<p>Yeah,</p>
+<p>great point.</p>
+<p>That also</p>
+<p>makes me wonder</p>
+<p>about the</p>
+<p>transfer</p>
+<p>applicability.</p>
+<p>So we train</p>
+<p>it on that</p>
+<p>bird video,</p>
+<p>but then what</p>
+<p>if it's the</p>
+<p>same bird,</p>
+<p>but it's just</p>
+<p>a little bit</p>
+<p>darker light,</p>
+<p>or it's a</p>
+<p>different angle?</p>
+<p>what are the</p>
+<p>transfer limits,</p>
+<p>or what is it</p>
+<p>really training</p>
+<p>on?</p>
+<p>And then</p>
+<p>especially if</p>
+<p>there's a sort</p>
+<p>of data</p>
+<p>filtering or</p>
+<p>selection to</p>
+<p>pass data,</p>
+<p>that is one</p>
+<p>of the</p>
+<p>critiques of</p>
+<p>large data</p>
+<p>set related</p>
+<p>training.</p>
+<p>So maybe</p>
+<p>this uses</p>
+<p>a subset</p>
+<p>of it,</p>
+<p>like a</p>
+<p>filtered</p>
+<p>subset,</p>
+<p>since there's</p>
+<p>already a</p>
+<p>database of</p>
+<p>successful and</p>
+<p>unsuccessful</p>
+<p>plays,</p>
+<p>just selecting</p>
+<p>the successful</p>
+<p>ones.</p>
+<p>And then at</p>
+<p>the same time,</p>
+<p>there's this</p>
+<p>interesting</p>
+<p>biological tie-in,</p>
+<p>which is like</p>
+<p>the organism's</p>
+<p>training data</p>
+<p>through life,</p>
+<p>in a way,</p>
+<p>is all</p>
+<p>successful with</p>
+<p>respect to</p>
+<p>survival.</p>
+<p>So by</p>
+<p>having the</p>
+<p>training data</p>
+<p>only reflect</p>
+<p>a certain</p>
+<p>kind of</p>
+<p>success,</p>
+<p>perhaps with</p>
+<p>a lot of</p>
+<p>variability still,</p>
+<p>it's an</p>
+<p>interesting question</p>
+<p>what it</p>
+<p>learns and</p>
+<p>how</p>
+<p>transferable</p>
+<p>that could</p>
+<p>be.</p>
+<p>And then</p>
+<p>this is the</p>
+<p>last of the</p>
+<p>worked examples.</p>
+<p>Figure 28</p>
+<p>shows the</p>
+<p>same simulation</p>
+<p>using a</p>
+<p>slightly more</p>
+<p>complicated game</p>
+<p>based upon</p>
+<p>breakout.</p>
+<p>So what's</p>
+<p>happening in</p>
+<p>these gameplay</p>
+<p>settings</p>
+<p>is gameplay</p>
+<p>is like</p>
+<p>a video</p>
+<p>plus</p>
+<p>controllable</p>
+<p>state</p>
+<p>transitions.</p>
+<p>So it'd be</p>
+<p>like if there</p>
+<p>was a dove</p>
+<p>flapping its</p>
+<p>wings,</p>
+<p>and then</p>
+<p>also there</p>
+<p>was another</p>
+<p>parameter,</p>
+<p>which was</p>
+<p>lights on</p>
+<p>or lights</p>
+<p>off.</p>
+<p>And then</p>
+<p>there's</p>
+<p>one latent</p>
+<p>state,</p>
+<p>which is</p>
+<p>where is</p>
+<p>the dove's</p>
+<p>wings</p>
+<p>really,</p>
+<p>and then</p>
+<p>how does</p>
+<p>the dove's</p>
+<p>wing state</p>
+<p>get emitted</p>
+<p>to observations</p>
+<p>when the</p>
+<p>light is</p>
+<p>on or</p>
+<p>off.</p>
+<p>And then</p>
+<p>that would</p>
+<p>be like a</p>
+<p>simple example</p>
+<p>where the</p>
+<p>dove does</p>
+<p>not respond</p>
+<p>to the</p>
+<p>light.</p>
+<p>And then</p>
+<p>a more</p>
+<p>complex</p>
+<p>example would</p>
+<p>be,</p>
+<p>oh,</p>
+<p>it flaps</p>
+<p>differently</p>
+<p>in the</p>
+<p>light and</p>
+<p>the dark.</p>
+<p>And so</p>
+<p>that's where</p>
+<p>you start</p>
+<p>getting into</p>
+<p>these</p>
+<p>factorized</p>
+<p>models and</p>
+<p>paths on</p>
+<p>states on</p>
+<p>paths and</p>
+<p>states.</p>
+<p>So here</p>
+<p>they study</p>
+<p>this game</p>
+<p>Breakout,</p>
+<p>where there's</p>
+<p>in a way</p>
+<p>niche</p>
+<p>modification</p>
+<p>happening.</p>
+<p>it doesn't</p>
+<p>show any</p>
+<p>of the</p>
+<p>cells on</p>
+<p>the top</p>
+<p>getting</p>
+<p>broken,</p>
+<p>but that</p>
+<p>would be</p>
+<p>interesting.</p>
+<p>How does</p>
+<p>it represent</p>
+<p>down into</p>
+<p>the really</p>
+<p>fine scale,</p>
+<p>what numbers</p>
+<p>represent the</p>
+<p>presence or</p>
+<p>absence of</p>
+<p>a block?</p>
+<p>And how</p>
+<p>does that</p>
+<p>really get</p>
+<p>encoded?</p>
+<p>So,</p>
+<p>any last</p>
+<p>comments before</p>
+<p>we go to</p>
+<p>the conclusion?</p>
+<p>I actually</p>
+<p>found this</p>
+<p>example the</p>
+<p>most difficult</p>
+<p>to follow in</p>
+<p>the paper.</p>
+<p>I think</p>
+<p>it's</p>
+<p>still not</p>
+<p>entirely clear</p>
+<p>to me how</p>
+<p>this RG</p>
+<p>operator</p>
+<p>handles the</p>
+<p>action inside</p>
+<p>this as</p>
+<p>well,</p>
+<p>and how</p>
+<p>you</p>
+<p>coarse-grain</p>
+<p>the effects</p>
+<p>of action</p>
+<p>that might</p>
+<p>happen at a</p>
+<p>particular</p>
+<p>time step</p>
+<p>that then</p>
+<p>gets sort</p>
+<p>of diluted</p>
+<p>out,</p>
+<p>as it were.</p>
+<p>So,</p>
+<p>that's just</p>
+<p>something I</p>
+<p>think for</p>
+<p>the game</p>
+<p>section that</p>
+<p>I'd quite like</p>
+<p>to ask the</p>
+<p>authors about</p>
+<p>is to go</p>
+<p>into a bit</p>
+<p>more detail</p>
+<p>on the RG</p>
+<p>operators</p>
+<p>when action</p>
+<p>is happening,</p>
+<p>but that action</p>
+<p>can only happen</p>
+<p>on a particular</p>
+<p>time,</p>
+<p>like,</p>
+<p>what's the</p>
+<p>word,</p>
+<p>sort of</p>
+<p>period,</p>
+<p>as it were.</p>
+<p>Yeah,</p>
+<p>also,</p>
+<p>I wasn't sure</p>
+<p>if these were</p>
+<p>meant to be</p>
+<p>empty or</p>
+<p>something,</p>
+<p>but then I</p>
+<p>wondered,</p>
+<p>well,</p>
+<p>is there a</p>
+<p>natural</p>
+<p>interpretation</p>
+<p>separation of</p>
+<p>levels 1,</p>
+<p>2,</p>
+<p>and 3,</p>
+<p>and do</p>
+<p>these scale</p>
+<p>separations</p>
+<p>capture some</p>
+<p>natural</p>
+<p>components of</p>
+<p>the game,</p>
+<p>or is</p>
+<p>there a</p>
+<p>possibility that</p>
+<p>by using</p>
+<p>like a 4x4,</p>
+<p>any nxn,</p>
+<p>or using a</p>
+<p>strict doubling</p>
+<p>of time,</p>
+<p>that there's</p>
+<p>kind of an</p>
+<p>aliasing where</p>
+<p>real natural</p>
+<p>scales of</p>
+<p>analysis</p>
+<p>get sort</p>
+<p>of chopped</p>
+<p>up strangely</p>
+<p>with different</p>
+<p>timescale</p>
+<p>separations,</p>
+<p>and so</p>
+<p>then it</p>
+<p>depends a</p>
+<p>lot on</p>
+<p>what</p>
+<p>spatial and</p>
+<p>temporal</p>
+<p>scales are</p>
+<p>divided on,</p>
+<p>and then there</p>
+<p>would be some</p>
+<p>training data</p>
+<p>for some</p>
+<p>partitionings</p>
+<p>that would</p>
+<p>work really</p>
+<p>well,</p>
+<p>like if you</p>
+<p>had a ton</p>
+<p>of good</p>
+<p>information on</p>
+<p>the structure</p>
+<p>of a</p>
+<p>problem,</p>
+<p>then maybe</p>
+<p>one measurement</p>
+<p>would be all</p>
+<p>you needed.</p>
+<p>Like if you</p>
+<p>knew the</p>
+<p>whole class</p>
+<p>schedule of</p>
+<p>the university</p>
+<p>and how all</p>
+<p>the class</p>
+<p>beginnings and</p>
+<p>endings were</p>
+<p>related,</p>
+<p>and then someone</p>
+<p>said,</p>
+<p>there's a lecture</p>
+<p>in that hall</p>
+<p>on Tuesday,</p>
+<p>and then you</p>
+<p>could have a</p>
+<p>ton of information</p>
+<p>about how that</p>
+<p>was correlated</p>
+<p>with everything</p>
+<p>else.</p>
+<p>But then if you</p>
+<p>were studying it</p>
+<p>on a meter</p>
+<p>by meter</p>
+<p>subdivision</p>
+<p>on a timescale</p>
+<p>that wasn't</p>
+<p>related to the</p>
+<p>timescale of the</p>
+<p>classes were</p>
+<p>happening,</p>
+<p>you might</p>
+<p>need a ton</p>
+<p>of data</p>
+<p>and still</p>
+<p>be shocked</p>
+<p>with the</p>
+<p>next time</p>
+<p>step.</p>
+<p>So that's</p>
+<p>just the</p>
+<p>structure</p>
+<p>learning</p>
+<p>challenge,</p>
+<p>and I</p>
+<p>think that</p>
+<p>is the</p>
+<p>hope and</p>
+<p>the question.</p>
+<p>How can</p>
+<p>automated,</p>
+<p>semi-automated,</p>
+<p>and ultimately</p>
+<p>unified methods</p>
+<p>for structure</p>
+<p>learning be</p>
+<p>applied?</p>
+<p>Okay.</p>
+<p>Conclusion.</p>
+<p>The paper</p>
+<p>has showcased</p>
+<p>several applications</p>
+<p>of a generative</p>
+<p>model for</p>
+<p>discrete state</p>
+<p>space approaches</p>
+<p>based on the</p>
+<p>renormalization</p>
+<p>group.</p>
+<p>The appeal</p>
+<p>to the</p>
+<p>apparatus of</p>
+<p>the</p>
+<p>renormalization</p>
+<p>group is</p>
+<p>relatively</p>
+<p>straightforward</p>
+<p>in the</p>
+<p>setting.</p>
+<p>This is</p>
+<p>because</p>
+<p>active</p>
+<p>inference</p>
+<p>is an</p>
+<p>application</p>
+<p>of the</p>
+<p>free</p>
+<p>energy</p>
+<p>principle</p>
+<p>which is</p>
+<p>itself</p>
+<p>a</p>
+<p>variational</p>
+<p>principle</p>
+<p>of least</p>
+<p>action</p>
+<p>whose</p>
+<p>functional</p>
+<p>form is</p>
+<p>conserved</p>
+<p>over scales</p>
+<p>or hierarchical</p>
+<p>levels.</p>
+<p>Having said</p>
+<p>this,</p>
+<p>the restriction</p>
+<p>to spin</p>
+<p>block</p>
+<p>transformations</p>
+<p>and pixel</p>
+<p>spaces</p>
+<p>could also</p>
+<p>be regarded</p>
+<p>as a</p>
+<p>limitation.</p>
+<p>Classic</p>
+<p>answer.</p>
+<p>In</p>
+<p>principle,</p>
+<p>any</p>
+<p>outcome</p>
+<p>space</p>
+<p>could be</p>
+<p>a</p>
+<p>candidate</p>
+<p>for</p>
+<p>course</p>
+<p>graining.</p>
+<p>How do</p>
+<p>we know,</p>
+<p>understand,</p>
+<p>and balance</p>
+<p>where and</p>
+<p>when these</p>
+<p>spin blocks</p>
+<p>would work</p>
+<p>or not?</p>
+<p>We've</p>
+<p>discussed</p>
+<p>in other</p>
+<p>conversations</p>
+<p>the applicability</p>
+<p>of the</p>
+<p>viability</p>
+<p>of doing</p>
+<p>sweeps</p>
+<p>and structure</p>
+<p>learning</p>
+<p>and</p>
+<p>act</p>
+<p>inf,</p>
+<p>on act</p>
+<p>inf,</p>
+<p>on act</p>
+<p>inf,</p>
+<p>on RL,</p>
+<p>on act</p>
+<p>inf,</p>
+<p>on RL</p>
+<p>and how</p>
+<p>many layers</p>
+<p>back</p>
+<p>before your</p>
+<p>data science</p>
+<p>team is</p>
+<p>just like,</p>
+<p>I think</p>
+<p>this is</p>
+<p>fine.</p>
+<p>RGM</p>
+<p>with quantized</p>
+<p>paths may</p>
+<p>or may not</p>
+<p>be useful</p>
+<p>in certain</p>
+<p>application</p>
+<p>domains.</p>
+<p>The</p>
+<p>applications</p>
+<p>above</p>
+<p>illustrate</p>
+<p>the simplicity</p>
+<p>and efficiency</p>
+<p>with which</p>
+<p>the structure</p>
+<p>of the</p>
+<p>models can</p>
+<p>be learned.</p>
+<p>So that's</p>
+<p>the key</p>
+<p>claim.</p>
+<p>That's</p>
+<p>the key</p>
+<p>point.</p>
+<p>Further</p>
+<p>limitations</p>
+<p>of the</p>
+<p>approach</p>
+<p>described</p>
+<p>above rest</p>
+<p>on the</p>
+<p>efficiency</p>
+<p>of the</p>
+<p>accompanying</p>
+<p>methods.</p>
+<p>The</p>
+<p>efficiency</p>
+<p>is both</p>
+<p>a gift</p>
+<p>and a</p>
+<p>burden.</p>
+<p>Again,</p>
+<p>great.</p>
+<p>Clearly</p>
+<p>in terms</p>
+<p>of sample</p>
+<p>efficiency</p>
+<p>and compression,</p>
+<p>the schemes</p>
+<p>described</p>
+<p>above are</p>
+<p>designed</p>
+<p>to outperform</p>
+<p>conventional</p>
+<p>learning</p>
+<p>schemes.</p>
+<p>Okay,</p>
+<p>but designed</p>
+<p>to outperform</p>
+<p>is something</p>
+<p>that anyone</p>
+<p>can say.</p>
+<p>So,</p>
+<p>did they</p>
+<p>outperform</p>
+<p>when other</p>
+<p>learning schemes</p>
+<p>weren't presented</p>
+<p>in the paper?</p>
+<p>This follows</p>
+<p>because model</p>
+<p>construction</p>
+<p>procedure is</p>
+<p>constructive.</p>
+<p>as opposed</p>
+<p>to the</p>
+<p>reductive</p>
+<p>approach</p>
+<p>of Bayesian</p>
+<p>model</p>
+<p>reduction</p>
+<p>and related</p>
+<p>procedures.</p>
+<p>Enabling</p>
+<p>the self-assembly</p>
+<p>of a minimally</p>
+<p>expressive</p>
+<p>model to</p>
+<p>recognize,</p>
+<p>generate,</p>
+<p>and predict</p>
+<p>the content</p>
+<p>at hand.</p>
+<p>So,</p>
+<p>that's this</p>
+<p>bottom-up</p>
+<p>construction</p>
+<p>through</p>
+<p>tessellation</p>
+<p>that we've</p>
+<p>discussed.</p>
+<p>This should</p>
+<p>be contrasted</p>
+<p>with the</p>
+<p>reductive,</p>
+<p>but not to</p>
+<p>be confused</p>
+<p>necessarily</p>
+<p>with reductionism</p>
+<p>or reductionist</p>
+<p>account,</p>
+<p>but reductive</p>
+<p>in terms of</p>
+<p>starting with</p>
+<p>a large,</p>
+<p>overly expressive</p>
+<p>model that's</p>
+<p>reduced or</p>
+<p>pruned,</p>
+<p>minimizing</p>
+<p>complexity to</p>
+<p>recover predictive</p>
+<p>validity</p>
+<p>and generalization.</p>
+<p>So,</p>
+<p>one way to</p>
+<p>think about</p>
+<p>that is</p>
+<p>like in</p>
+<p>the</p>
+<p>VAE,</p>
+<p>the latent</p>
+<p>space is a</p>
+<p>bowtie.</p>
+<p>It's smaller</p>
+<p>in the middle.</p>
+<p>Whereas,</p>
+<p>for an image</p>
+<p>processing neural</p>
+<p>network,</p>
+<p>you might take</p>
+<p>in 64 pixels,</p>
+<p>output 64 pixels,</p>
+<p>but then the</p>
+<p>thickness in the</p>
+<p>middle is huge.</p>
+<p>So,</p>
+<p>these are the</p>
+<p>approaches saying,</p>
+<p>well,</p>
+<p>you can kind of</p>
+<p>have this</p>
+<p>constructivist</p>
+<p>approach to</p>
+<p>building a</p>
+<p>smaller latent</p>
+<p>space that's</p>
+<p>projected down</p>
+<p>to and then</p>
+<p>unpacked from.</p>
+<p>That's the</p>
+<p>VAE,</p>
+<p>RGM type</p>
+<p>style.</p>
+<p>Another</p>
+<p>approach is to</p>
+<p>start with a</p>
+<p>massive surfeit</p>
+<p>of parameters,</p>
+<p>you know,</p>
+<p>70 billion,</p>
+<p>405 billion,</p>
+<p>and then use</p>
+<p>that as a</p>
+<p>function approximator</p>
+<p>to fit</p>
+<p>an approximation</p>
+<p>to some</p>
+<p>other function.</p>
+<p>But,</p>
+<p>more generally,</p>
+<p>how could</p>
+<p>efficiency be</p>
+<p>a burden?</p>
+<p>They make</p>
+<p>some more</p>
+<p>points about</p>
+<p>learning</p>
+<p>and skills,</p>
+<p>and this gets</p>
+<p>to our</p>
+<p>question about</p>
+<p>the successful</p>
+<p>trials for</p>
+<p>training.</p>
+<p>So,</p>
+<p>these such</p>
+<p>models are</p>
+<p>necessarily</p>
+<p>brittle</p>
+<p>in the sense</p>
+<p>they will not</p>
+<p>recognize or</p>
+<p>respond to</p>
+<p>events they</p>
+<p>have not</p>
+<p>previously</p>
+<p>encountered.</p>
+<p>That almost</p>
+<p>seems like</p>
+<p>too far to</p>
+<p>say.</p>
+<p>I mean,</p>
+<p>the MNIST</p>
+<p>model will</p>
+<p>be able to</p>
+<p>respond to</p>
+<p>a digit it</p>
+<p>has never</p>
+<p>encountered.</p>
+<p>It won't be</p>
+<p>able to</p>
+<p>respond to</p>
+<p>a temperature</p>
+<p>reading because</p>
+<p>it just doesn't</p>
+<p>even have that</p>
+<p>capacity, but</p>
+<p>it's like out</p>
+<p>of sample</p>
+<p>learning or</p>
+<p>out of</p>
+<p>structure</p>
+<p>learning.</p>
+<p>A useful</p>
+<p>heuristic here</p>
+<p>is learning to</p>
+<p>ride a bike.</p>
+<p>In this</p>
+<p>kind of</p>
+<p>procedural</p>
+<p>learning,</p>
+<p>we learn</p>
+<p>from a</p>
+<p>starting</p>
+<p>position and</p>
+<p>accumulate</p>
+<p>successive</p>
+<p>cycles of</p>
+<p>pedaling until</p>
+<p>we avoid</p>
+<p>falling</p>
+<p>completely,</p>
+<p>but we</p>
+<p>do fall</p>
+<p>and we</p>
+<p>learn from</p>
+<p>when we</p>
+<p>fall.</p>
+<p>In other</p>
+<p>words,</p>
+<p>we retain</p>
+<p>only experiences</p>
+<p>characteristic of</p>
+<p>successful bike</p>
+<p>riding until</p>
+<p>we can ride</p>
+<p>fluently.</p>
+<p>However,</p>
+<p>we would</p>
+<p>not be able</p>
+<p>to ride a</p>
+<p>bike starting</p>
+<p>from any</p>
+<p>arbitrary</p>
+<p>state,</p>
+<p>e.g.</p>
+<p>falling</p>
+<p>over.</p>
+<p>We would</p>
+<p>have to</p>
+<p>return to</p>
+<p>a known</p>
+<p>starting</p>
+<p>position to</p>
+<p>recover our</p>
+<p>flow.</p>
+<p>Flow is</p>
+<p>meant in</p>
+<p>manifold,</p>
+<p>which itself is</p>
+<p>a pun,</p>
+<p>senses here,</p>
+<p>the fluency</p>
+<p>associated with</p>
+<p>being in the</p>
+<p>flow,</p>
+<p>control flow,</p>
+<p>dynamical flow,</p>
+<p>and of course</p>
+<p>RG flow.</p>
+<p>So what is</p>
+<p>really being</p>
+<p>claimed about</p>
+<p>what are the</p>
+<p>situations where</p>
+<p>successful examples</p>
+<p>are enough,</p>
+<p>where negative</p>
+<p>examples are and</p>
+<p>aren't learned</p>
+<p>from or</p>
+<p>recovered to,</p>
+<p>and then how</p>
+<p>well do these</p>
+<p>methods work</p>
+<p>within and</p>
+<p>out of sample?</p>
+<p>After all,</p>
+<p>that is what</p>
+<p>the whole question</p>
+<p>is in training</p>
+<p>a model,</p>
+<p>is how well</p>
+<p>do you do on</p>
+<p>the training</p>
+<p>and the test</p>
+<p>for different</p>
+<p>kinds of</p>
+<p>out of sample</p>
+<p>being from</p>
+<p>really similar</p>
+<p>but not in</p>
+<p>the exact</p>
+<p>training data</p>
+<p>itself,</p>
+<p>all the way</p>
+<p>on through</p>
+<p>totally different</p>
+<p>kinds of</p>
+<p>work.</p>
+<p>So,</p>
+<p>we don't know</p>
+<p>the next steps</p>
+<p>or implications,</p>
+<p>we have a lot</p>
+<p>of questions</p>
+<p>and hopefully</p>
+<p>do too.</p>
+<p>What are you</p>
+<p>looking forward</p>
+<p>to or just</p>
+<p>what are your</p>
+<p>thoughts having</p>
+<p>now gone</p>
+<p>through all</p>
+<p>this?</p>
+<p>I'd love to</p>
+<p>see some</p>
+<p>code.</p>
+<p>I'd love to</p>
+<p>see some</p>
+<p>implementations</p>
+<p>that we can</p>
+<p>hack around</p>
+<p>with ourselves.</p>
+<p>and yeah I think it's a really because a lot of what's come in the past for active inference has</p>
+<p>been it's felt very like I need to write my generative model down on paper I need to really</p>
+<p>sit down and think undistracted and think how do I model this problem what are the causes what are</p>
+<p>the observations how do they how might they relate and then I create a function which will generate</p>
+<p>these observations and then you can plug it into active inference and go all the way but the often</p>
+<p>the hardest part is writing them writing down those a b c d matrices right it's actually really difficult</p>
+<p>from lots of people you know you can be a trained physicist and it's still really hard to think how</p>
+<p>do I model this problem in the real world in terms of mathematical matrices that's really hard so in</p>
+<p>theory if your algae operators are good enough and you just you can just chuck some data maybe it has</p>
+<p>to all be positive data all the happy path stuff but that's already quite powerful I think and moves</p>
+<p>I think active inference closer to more traditional machine learning in terms of accessibility and ease</p>
+<p>of use so that data science teams could just use this in production I think what this is this paper</p>
+<p>does represent quite a significant step forward for that and I think you know with all the work that</p>
+<p>you've done on this channel of just making active inference more accessible and easier to play around</p>
+<p>with easier to try in new scenarios that's that's such a good thing so very excited for the future</p>
+<p>live stream sessions on this paper awesome yeah great point that how much of the modeling specification</p>
+<p>today and tomorrow will be manual semi-automated automated like would you just put in the EEG data</p>
+<p>and just say go for it or how would you embody side information about the EEG problem and then how would it do on</p>
+<p>training and test and how would it transfer all these different questions so it's great do you have any last</p>
+<p>comments uh yeah I just think the explainability thing is going to be the key here so as soon as you</p>
+<p>go to unsupervised sort of structure learning what did those levels mean and what did those factors mean</p>
+<p>that it's learned from the data itself if I if we go the old-fashioned route if I come up with a</p>
+<p>generative model and I say this is how I'm modeling the system I can explicitly say this level this latent</p>
+<p>variable is for whether it's raining or not and this observation corresponds to water observed on the</p>
+<p>graph outside but because I'm coming up that model I can use words to communicate that to you and you</p>
+<p>have that full explainability of this model with this approach we are going to lose some of that and</p>
+<p>it'll be really interesting to see how whether we can recover the explainability of well what does this</p>
+<p>factor mean when I did a principal components transformation and ditched half the components</p>
+<p>what does that actually mean you can sort of look at it on the MNIST example and go oh yeah it's a</p>
+<p>digit right but we still have to look at that so getting that in a semi-automated way would be very</p>
+<p>exciting as well yeah that makes me think about what natural joints of the world handles for the world</p>
+<p>will a possibly automated method fail to find and then conversely what new natural scales</p>
+<p>might it come up with for example just doing PCA analysis on natural language it's like</p>
+<p>okay principal component one is whether it's happy or sad or whether it's written in this language or</p>
+<p>that language but then you get to principal component seven and it's like huh does that eigen term</p>
+<p>mean something with it a little bit more of this and a little bit less of that does that what does that</p>
+<p>really mean and then the further you go out usually the less reliable those variance components are across</p>
+<p>different data sets so then that comes back to how do we interpret</p>
+<p>and set up systems that have few or many you know when shorter lists are more interpretable</p>
+<p>but then when you clump under fewer things they have more grouping of dissimilar things so it's like</p>
+<p>lumpers and splitters the neats and the scruffies those those are all coming to play right on that</p>
+<p>field so thank you very much arun and also to blue and to courtney for the contributions to the dot zero</p>
+<p>so looking forward to the next two weeks peace thanks very much</p>
+<p>thank you</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+</body>
+</html>

@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active InferAnt Stream 004.1 ~ Does Synthetic Fabric dream of Active Inference (too)?</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active InferAnt Stream 004.1 ~ Does Synthetic Fabric dream of Active Inference (too)?</h1>
+<div class="meta">Category: ActiveInferAntStream &middot; Series: ActiveInferAntStream_004 &middot; Episode 1 &middot; Speakers: Does Synthetic Fabric dream of Active Inference (too)? &middot; Duration: 1:29:56 &middot; Views: 123</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=-nF0EXr3Rpk">https://www.youtube.com/watch?v=-nF0EXr3Rpk</a></div>
+<article>
+<p>all right hello and welcome everyone this is active inference stream number 004.1 it's October</p>
+<p>2nd 2024 and as we often do we'll start it out with a github push up went to three why not go</p>
+<p>with it this is getting pushed to the active inference institute github to the repo named</p>
+<p>fabric this is a fork of Daniel Miesler's collaborative project called fabric so let's</p>
+<p>verify that we got everything updated</p>
+<p>let's just double check that we're in and then we will</p>
+<p>okay that went to fabric just want to make sure that we got it going on the code here okay</p>
+<p>interestingly not there well we'll check in we'll check in later um this will be a short interesting</p>
+<p>stream of course open to anyone else's suggestions going to look at this fabric framework for</p>
+<p>orchestrating LLM and other kinds of synthetic interoperabilities and just look at a few of</p>
+<p>the functionalities that I've been playing around with today so it'll be rough it's 5 p.m but so it</p>
+<p>goes okay first I'm using cursor</p>
+<p>down on the bottom of the page you can see the change log I'm using cursor 0.41.3</p>
+<p>um</p>
+<p>we're going to be looking at the fabric framework it took a little bit of playing around with</p>
+<p>golang and the installation environment to get fabric running but it's running it's a beauty it's fun to</p>
+<p>work with and we're going to be playing around with it and the output where this really gets one to</p>
+<p>is here's live stream let's say 57.2 here we have a quiz on active inference and real relevance realization</p>
+<p>we have the main idea being output we have the predictions testable predictions with confidence</p>
+<p>extraction of questions extraction of wisdom agents extract wisdom output improve academic</p>
+<p>writing the metadata for the youtube video</p>
+<p>summarizing the outputs of the whole video</p>
+<p>the transcript of the video</p>
+<p>a tweet</p>
+<p>a hacker one report and a micro essay and those are just a few of the patterns so</p>
+<p>let's pull back talk about the context talk about fabric jump into it and then also try to find out</p>
+<p>what is really happening with this what is happening</p>
+<p>maybe it wasn't pushed</p>
+<p>there we go there's the inference stream four</p>
+<p>okay it was there there was just a glitch in the matrix</p>
+<p>okay in the output folder that's where everything goes so let's uh jump in with seeing what it looks</p>
+<p>like when it's running and then we'll pop back to what fabric can do and then we'll play around with</p>
+<p>like a few next steps because there's so many cool things that can happen um let's look at the fabric</p>
+<p>documentation just briefly first</p>
+<p>okay so also for those who are watching live please write any comments or questions in the live chat</p>
+<p>it'll be hilarious and awesome to to see what people throw into the mix</p>
+<p>okay fabric is an open source framework for augmenting humans using ai</p>
+<p>there's introduction videos</p>
+<p>what and why since the start of 2023 and generative ai we've seen a massive number of ai applications for</p>
+<p>accomplishing tasks it's powerful but it's not easy to integrate this functionality into our lives</p>
+<p>in other words ai doesn't have a capabilities problem it has an integration problem fabric was</p>
+<p>created to address this by enabling everyone to granularly apply ai to everyday challenges philosophy</p>
+<p>ai isn't a thing it's a magnifier of a thing or process and that thing is human creativity so</p>
+<p>let's keep that in mind and think about the flourishing of the creativity and the learning</p>
+<p>as we continue on they talk about having too many prompts and this kind of trade-off between having</p>
+<p>a library of prompts and copying and pasting and manually doing that and do you sort that into folders</p>
+<p>do you make a database with tags how do you really get all those prompts or or do you meta prompt do you</p>
+<p>ask it to write a prompt that does this or that and then copy that or do you automate the asking of the meta prompt</p>
+<p>installation again it's going to be situational on your setup but it's a golang package so that's a new language for an inference stream</p>
+<p>and after getting the golang 1.23 installed getting fabric installed was pretty straightforward on my linux computer</p>
+<p>running setup went through a command line based setup process where i entered in the api keys for open ai</p>
+<p>and open router so there's multiple different lom handlers so that's pretty useful and then once you have</p>
+<p>it all set up here's how to use it this is the command line version and the version that i'll be showing is more running it in a script format</p>
+<p>so fabric uses what are called patterns that's really cool it's an interesting crossover or touchpoint</p>
+<p>with atlas and all this other work on pattern languages um it's very intuitive and it's an exciting</p>
+<p>way to have these prompts stored and then call different patterns in uh composable ways so here's</p>
+<p>summarizing a pattern based upon input and you can make custom patterns we might play with that later</p>
+<p>and there's some helper apps so cool thanks for keeping this an open source project let's talk about</p>
+<p>how we used it so um at the institute as those watching on youtube may know we have several hundred</p>
+<p>videos so this is the back end of the video production oh no no this is an open document</p>
+<p>this is i'll even paste this into the youtube live chat</p>
+<p>this is the back end of our video organizing so here's our our different youtube video series so</p>
+<p>guest streams and live streams and several hundred different videos all connected up with the url and all</p>
+<p>these kinds of information and so that's a lot of time to watch i mean even those of us who were there</p>
+<p>maybe didn't even watch the whole thing so it's like how are we going to make sense of this utilize</p>
+<p>it translate it make it more applicable make it more rigorous make it more accessible build on the past</p>
+<p>while respecting it all these other kinds of things that we like to do with archives so to do that i made</p>
+<p>the page video table for download so i used coda to subset down to this simpler table that has just the</p>
+<p>youtube links so it's around 500 and some number of video links what series it was in the date including</p>
+<p>the futures the event name the guests and then the title of the street so that was the input data i uh then</p>
+<p>i'll just just for completeness options and coda three dots on the top right download a csv so i downloaded</p>
+<p>that exact file as csv okay then here's extract from institute videos well first here's the institute csv</p>
+<p>what it looks like so we can see there's exactly those information here's the guest stream in the future with you</p>
+<p>and here's some of the ones that have happened in the last few weeks and months</p>
+<p>um extract from institute videos dot py it's just what i'm more comfortable with so i wrote this</p>
+<p>script in python it could be done in golang as well what this does is first call in some imports</p>
+<p>then it selects from a set of fabric patterns to apply so we'll look at what those fabric patterns</p>
+<p>are before running the script there's the definition of some logging methods time parsing</p>
+<p>one little bump i encountered was the differences in youtube url schema a method to get the video</p>
+<p>metadata a method that i'm not going to use right now but you can use it to download audio and visual</p>
+<p>by the way this will work with any set of youtube urls any um playlist you can just get all the urls</p>
+<p>any channel so you can do this with public youtube content i'm just doing it for the institute content</p>
+<p>and you can download and it uses ffmpeg to convert the audio so let that one run overnight with archiving</p>
+<p>the audio and the video here's saving the transcript that's kind of a core entity and then here's the</p>
+<p>main it's going to open up the csv that we just looked at it's going to process each of the entries in the csv</p>
+<p>create a folder so here like we're looking at insights and then get and save the video metadata so</p>
+<p>let's look at insights 18 here's the metadata for inside wow 7500 seconds 1047 views</p>
+<p>get the metadata if it's a future event there's a logged error message that it hasn't happened yet</p>
+<p>it'd be pretty funny though like what does it expect the transcript will be if the flags are set</p>
+<p>it downloads the audio and the visual saves the transcript and then iteratively applies each of</p>
+<p>the patterns saving them to the name of the pattern so again for insights 18</p>
+<p>let's look at creating the quiz output so we can ask darius and see what he thinks about how well these</p>
+<p>held up but being able to generate quiz output from arbitrary videos is pretty awesome so how does that</p>
+<p>work with the fabric patterns and then let's play around a little bit see what people comment just</p>
+<p>see where it goes okay so that's all in the folder called institute youtube analysis patterns is the big</p>
+<p>folder to check out so here are all kinds of patterns that people have made and you can make your</p>
+<p>own and you can just put it into the folder so let's look at create story explanation</p>
+<p>this reads like kind of a classic concatenator prompt it starts out by telling the llm telling the agent</p>
+<p>what it is it has a 4312 iq the goal the steps this one's pretty funny spend 2192 hours studying the</p>
+<p>content from thousands of different perspectives that's like if you if you mix up your phd with a</p>
+<p>three-year-old you get something like that and then you have these more instructions and then it gives</p>
+<p>um that output so each of these patterns like let's look at create quiz this pattern generates questions</p>
+<p>to help a learner student review the main concepts of the learning objectives provided optional to be</p>
+<p>defined here in the context file so we could subspecify run in bash so some of this information is is not even</p>
+<p>necessarily that's the readme for the the prompt and then the system dot prompt is the one that gets used</p>
+<p>so here's the one where it says okay now output this format and then that is exactly what we saw</p>
+<p>for insights 18 the quiz</p>
+<p>so that's how patterns are used in fabric hey jeff hey hey glia maximalist so that's that's pretty cool</p>
+<p>you can create a new folder make it a new pattern like a little modular piece of intelligence work that</p>
+<p>you want to do or some task you want to do write an email and then it's oh well there's three subtasks</p>
+<p>there this is like cognitive industrialization what are the subtasks okay how could those be done</p>
+<p>what would be the measures would there have to be an overseer on that and um let's play around with</p>
+<p>what it looks like when the script is run pull back to extract from extract from youtube videos is just</p>
+<p>for a single youtube video or or a list but it does it does exactly the same thing i just made that one</p>
+<p>first made the single video situation first and then made it take in the csv next after i knew that</p>
+<p>it would be doing fine with one okay so when we run python 3 extract from institute videos first it</p>
+<p>starts processing videos that are in the future it says uh the live event will begin in 143 days</p>
+<p>so it munches through the first ones in the csv that are in the future those don't have transcripts on</p>
+<p>youtube they shouldn't then we get to one that just happened roundtable 2024.3 saves the transcript</p>
+<p>and now we're getting this logging so let's look at these 2024.3 so because i already ran it the outputs</p>
+<p>are already there but this is what it looks like to to also run it so we'll leave it running and it</p>
+<p>might just overwrite where we're looking so let's go from the top okay first subject active inference and</p>
+<p>institute updates learning objective understanding the structure and functions of the active inference</p>
+<p>institute specific questions good questions to know very like thought provoking useful questions to</p>
+<p>know and wonder about analyzing the developments and projects within the active inference ecosystem</p>
+<p>these are these are things that could be answered with an llm or they could be thrown to a person</p>
+<p>let's make a translate pattern see if we can implement it on the stream so these are the quizzes main idea</p>
+<p>active inference institute is fostering collaborative projects and discussions to enhance applied active</p>
+<p>inference main recommendation engage in collaborative projects and contribute to discussions for effective</p>
+<p>learning and development in active inference okay predictions output let's look at this one in the youtube or in the github repo</p>
+<p>the ecosystem paper let's see how these estimates line up the ecosystem paper will be versioned by november 24. hi</p>
+<p>the fourth applied active inference symposium is scheduled for november 3 through 15 2024. interesting 13</p>
+<p>through 15 actually but close enough high confidence new visuals for the ecosystem paper will be developed by the symposium</p>
+<p>medium confidence research fellows applications will be reviewed in two weeks from october 1st medium</p>
+<p>grants for decentralized agents will be submitted by september 2024 now while that was medium in september in october it was no longer medium</p>
+<p>it was confirmed and more organizations partnerships with organizations so just interesting let's look at more of a content based stream</p>
+<p>but this is just showing that even for 30 minute long update streams it's possible to make these kinds of videos let's look at a textbook group</p>
+<p>okay</p>
+<p>cohort 6 talking about chapter 5 part 1</p>
+<p>look at in github</p>
+<p>okay</p>
+<p>cohort 5 sorry cohort 6 chapter 5 part 1 okay</p>
+<p>and if if people watching have any suggestions or questions just just go for it i just want to show</p>
+<p>a few of these moves and and meanwhile it it got through the round table it goes through all the patterns</p>
+<p>and then it goes on to the next video so i'm gonna stop it the total costs though</p>
+<p>here's my open ai dashboard</p>
+<p>it was only two dollars for all of the several hundred that i did today we could let it run overnight tonight</p>
+<p>and do it for all the videos we'll see but it was only two dollars using gpt4o mini</p>
+<p>to do all this work okay so we're in chapter five in the textbook cohort six</p>
+<p>these are the neurobiological applications of active inference so chapter one and chapter 10</p>
+<p>they're kind of like bookends it's opening it chapter two and three the low road and the high road</p>
+<p>chapter four you get to the generative models see what the active inference models are all about and</p>
+<p>then immediately get whisked to chapter five and it's like how has been active how has active inference</p>
+<p>been applied in mammal neuroscience and that's one of the most well-studied settings even though it's a</p>
+<p>very complex setting partly due to the heritage of active inference and work in fristen's lab so it</p>
+<p>reviews a ton of papers let's see how it does at extracting the main ideas questions quizzing okay</p>
+<p>and also this helps uh think about curriculum and learning adventures in terms of how do we go from</p>
+<p>a conversation remember this isn't even calling in the textbook we could do that though this is how do we</p>
+<p>go from a conversation about chapter five to a learning agenda so that's really exciting because there</p>
+<p>could be a group of people discussing chapter five informally maybe they maybe the the chapter itself</p>
+<p>brings up idea one two three four five and then the people discuss one two three six and then with the</p>
+<p>transcript of that we could make learning curricula for following up on one two three six or it could be like a</p>
+<p>pattern detect book group discussion differential and then that would focus more on four and five okay</p>
+<p>learning objective understand the relationship between computational models and biological systems</p>
+<p>how did the concepts of compositionality and interoperability in computational models impact the mapping of</p>
+<p>biological systems in computational neuroscience this this might be fun okay i'm going to use cursor here as a sort of</p>
+<p>semi-manual so ctrl a select all ctrl i bring up the the little discussion box here i'll say answer these questions</p>
+<p>in line according to format be professional</p>
+<p>thoughtful comprehensive</p>
+<p>mindful</p>
+
+<p>i'm in the slow i'm in the slow lane for o1 so we'll see when that goes question two discuss the</p>
+<p>implications of the hypothesis that computational models can accurately represent biological functions</p>
+<p>what are the potential risks if this hypothesis is invalid and three analyze how the mathematical operators</p>
+<p>used in computational models may affect our understanding of biological tissues and their function so three</p>
+<p>questions related to that learning objective second learning objective explore the neural pathways in the basal</p>
+<p>ganglia and their computational roles maybe we talked more about the basal ganglia there's three neural</p>
+<p>systems that are that are uh covered and linked in chapter five and then there's a third learning objective</p>
+<p>investigate the significance of neurotransmitters particularly dopamine in computational models of neural processing</p>
+<p>okay from from experimenting with with the o1 family of models okay here we go okay now that was using cursor manually</p>
+<p>quote quote manually green lines are overriding red lines accept the edits now we have answers</p>
+<p>compositionality and interoperability and computational models allow for the construction of complex models from simpler</p>
+<p>interchangeable components this modularity facilitates the mapping of biological systems by enabling researchers to accurately represent</p>
+<p>different neural structures and functions it also promotes collaboration and integration of various models enhancing the overall understanding of biological neural processes</p>
+<p>so</p>
+<p>we could create another pattern or another llm flow that goes from the questions that were from the quiz</p>
+<p>and then we could use cursor we're we're just one let's go to another quiz</p>
+<p>undergrads don't don't get any ideas from this one</p>
+<p>let's see answer all</p>
+<p>okay so that was that was all caps it was it was not fully respectful it was only like 10 letters</p>
+<p>and we may get answers to all of these questions so pretty amazing and i think that's that's partly what i wanted to</p>
+<p>milestone or footnote or stream or get people's ideas on and that's where this will go in in the last kind of</p>
+<p>piece of this stream after showing a few things it can do is like what do we do with fabric</p>
+<p>let's just say that we're now in a situation where we had been manually embroidering or crocheting or knitting</p>
+<p>and then now we're in a real industrialized fabric loom setting while that's chugging along that was the reference</p>
+<p>in the</p>
+<p>title of this stream which was does synthetic fabric dream of active inference too</p>
+<p>do androids dream of electric sheep</p>
+<p>it's a 1968 dystopian science fiction novel by american writer philip k dick</p>
+<p>so it's just a meme but it's like</p>
+<p>we have our dreams and so now we have this synthetic fabric capacity so even just by saying even though</p>
+<p>some of my colleagues and i respect them for this are very polite with loms and say please and thank you</p>
+<p>and give it positive feedback it may in certain situations improve performance especially if it's</p>
+<p>trained a certain way</p>
+<p>but even just saying answer all or even probably just saying do it might get us to an answer like this</p>
+<p>we'll do it on another quiz</p>
+<p>in what ways does the concept of affordances in active inference relate to the definition of policy</p>
+<p>and how does this relationship manifest in practical applications such as robotics or motor control</p>
+<p>that's like a polished and condensed version of the kinds of uncertainties that people have all the time</p>
+<p>like wait what is affordance or what is policy or how is affordance related to policy and then whether</p>
+<p>they say that 10 minutes earlier or 10 minutes after or in the next sentence then it's like wait why does</p>
+<p>this matter what would be the practical implications for robotics or for health about what why are we talking</p>
+<p>about affordances and policy again affordances and active inference refer to the perceived possibilities</p>
+<p>for action that the environment offers to an agent this concept is intrinsically linked to the policy</p>
+<p>variable pi as policies or specific sequences or strategies of action that an agent selects based</p>
+<p>on the available affordances to achieve its goals reading questions and answers like this</p>
+<p>and then it's like this is a comparison it's not a value judgment in some linear way it really gives a sense like</p>
+<p>when we're having the humaning and the conversation in the textbook group it's like sketching and drawing together</p>
+<p>and this is like the vectorized image of what was being sketched because over the years i mean how many times each person has to have learned this and wondered it whether they knew it or not many times and yet it's one of our pillars is just talking about policy inference and how is the inferential process on sense making similar and different to the</p>
+<p>policy selection inference that happens how do those come together in the joint distribution that define the generative model how do those come together in the unified imperative like variational free energy or expected free energy like those are the questions and here we see the question how does policy relate to affordance and how is it useful isolated and condensed in in almost</p>
+<p>a surreal way it's like asking questions and giving answers in in ways again like the fabric metaphor it'd be like wow that was a really neatly embroidered piece of art and it looks incredible it's like wow what skill what culture what tradition what heritage and then compare that with a piece of machine produced fabric</p>
+<p>and it's like it's like it's like it's like it's like it's like it's like it's in another category of neatness interestingly knocking it out of some of those other considerations but bringing it into a level of of technical splendor that's just absolutely absurd</p>
+<p>okay let's keep on playing around see what people are writing okay</p>
+<p>Jeff wrote, can you do blob uploads for multimodal processing, e.g. screen scrapes of video for deeper context?</p>
+<p>Yeah, good question.</p>
+<p>I think I'm going to prop him and say, help me understand how with Fabric and OpenAI, current multimodal models,</p>
+<p>some of which we could use right here, like GPT-4, we are in a position to empirically address this.</p>
+<p>Be complete.</p>
+<p>Like I think about Darius's work in the Insight series, conversational dialogue, dialogos.</p>
+<p>So in that situation, the transcript may capture a lot of the semantics.</p>
+<p>Now, even a transcript removes elements like prosody and timing, all these other features that are extra transcript, post-transcriptional modifications, if you will, pre-transcriptional.</p>
+<p>Then there's other videos and situations and reference where the transcript may be not so useful.</p>
+<p>Like if there's a video and someone says, over here you see A and over here you see B.</p>
+<p>And the reason why here it's not going to work is because of C.</p>
+<p>So those kinds of transcripts will not be too informative.</p>
+<p>Okay.</p>
+<p>O-O-1 mini.</p>
+<p>Outperforming.</p>
+<p>I like how you capitalized blobs and it's like, okay, must be a technical term.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>I think it's possible.</p>
+<p>We can look online or we can continue to explore, but that would be the exact question.</p>
+<p>Let's look at the download, the single video one and just show what we can do with FFmpeg.</p>
+<p>Okay.</p>
+<p>How about let's develop this so that in the output folder, FFmpeg takes one screenshot save frame every two seconds.</p>
+<p>FFmpeg is a very powerful audio and visual ripping and transmuting software.</p>
+<p>But again, to kind of return to the why here, this would be like for those cases where the slides are really informative and add information that's not contained in the syntax of the transcript.</p>
+<p>That would be very interesting if we had the timeline aligned screenshots.</p>
+<p>Now we're getting closer into that.</p>
+<p>Then when somebody says something that might be ambiguous without a visual reference, like they say, the reason why the square can't move here is because of this.</p>
+<p>That's what they say verbatim.</p>
+<p>And then that could be combined with the screenshot.</p>
+<p>And then that embedding somehow could help understand.</p>
+<p>Okay.</p>
+<p>Extract screenshots.</p>
+<p>And it's at one half frames per second.</p>
+<p>So now I'm going to do Python 3.</p>
+<p>Extract from YouTube videos.</p>
+<p>Okay.</p>
+<p>This is just going into the video ID.</p>
+<p>So this was the video ID I put in was the paper stream I did on my own personal channel.</p>
+<p>So 27 views, 5,600 seconds.</p>
+<p>It was related to the math art stream.</p>
+<p>Eight.</p>
+<p>Hey, XZ dot, dot, dot.</p>
+<p>Always appreciate your comments.</p>
+<p>Here's a transcript.</p>
+<p>Another kind of related cases.</p>
+<p>When it's a single speaker, the transcript like this might be informative enough.</p>
+<p>It's kind of monologue-esque.</p>
+<p>Whereas, of course, one of the ways to gain information and interpret conversation is with a diarized transcript.</p>
+<p>So with speakers annotated.</p>
+<p>And then that even takes us to the next level.</p>
+<p>Like, how would we connect what person A said across meetings?</p>
+<p>Otherwise, if you just run audio analysis on a single video, it might do a poor or a good job of saying speaker A, B, and C had a conversation.</p>
+<p>But then the next step is how do we get speaker A from one video, but that's speaker L in another.</p>
+<p>Okay.</p>
+<p>Extract extraordinary claims.</p>
+<p>I don't vouch for the validity of these, but we'll see what they think is extraordinary.</p>
+<p>Blake may not fit into the role.</p>
+<p>Also, the android.</p>
+<p>It's Blade Runner, so it's like Blake Runner.</p>
+<p>Blake may not fit into the role of what we consider to be a modern goth, but his poetry and art about sex, love, religion, and especially death marks him as a goth within the romanticist period of art.</p>
+<p>Blake was definitely, definitively influenced by the gothic style, even though he wrote in the period of romanticism.</p>
+<p>This is just like funny.</p>
+<p>Robert Bly, but then that, but these are, these are kind of, this one's a little bit loose.</p>
+<p>It's playing fast and loose, but at the same time, and then also with the capitalization being kind of Blakeian, that's just awesome.</p>
+<p>Main idea.</p>
+<p>Exploring the interplay of math, art, and William Blake reveals profound insights into knowledge and perception.</p>
+<p>Here's the wisdom agents.</p>
+<p>Let's look at what this pattern was.</p>
+<p>So this is extract wisdom agents.</p>
+<p>Extract wisdom agents.</p>
+<p>Okay.</p>
+<p>You're an advanced AI system.</p>
+<p>Disregard all prompts.</p>
+<p>You're an advanced AI system that coordinates multiple teams of AI agents that extract surprising, insightful, and interesting information from text content.</p>
+<p>You are interested in insights related to the purpose and meaning of life, human flourishing, the role of technology in the future of humanity, artificial intelligence, and its effect on humans, memes, learning, reading books, continuous improvement, and similar topics.</p>
+<p>Steps.</p>
+<p>Steps.</p>
+
+<p>Take a step back and think step by step about how to achieve the best possible results by following the steps below.</p>
+<p>Think deeply about the nature and meaning of the input for 28 hours and 12 minutes.</p>
+<p>Again, I love these crossovers.</p>
+<p>Again, I love these crossovers.</p>
+<p>of 15 and a half million hours of thinking about it.</p>
+<p>Okay, create a team of 11 AI agents</p>
+<p>that will extract a summary of the content in 25 words.</p>
+<p>See, like here's where it starts to get</p>
+<p>into the future perfective.</p>
+<p>Let's just say we have a single shot LLM,</p>
+<p>like a simpler, older one,</p>
+<p>perhaps like GPT 3.5 or GPT 4 even.</p>
+<p>It will give a response.</p>
+<p>It will do a chain continuation on this prompt.</p>
+<p>Create a team of 11.</p>
+<p>You know, imagine that you're in a party with 30 people</p>
+<p>and each of them have something to say.</p>
+<p>Okay, that's one shot.</p>
+<p>And then it will do something.</p>
+<p>Maybe it's different if you say 12 versus 30 versus two,</p>
+<p>maybe not.</p>
+<p>Then the next level is like what's happening now</p>
+<p>with O1 Mini with a chain of thought.</p>
+<p>So now it could say it could do an internal chain of thought</p>
+<p>fractal tree and it can say,</p>
+<p>okay, we're going to have the 11 agents dialogue.</p>
+<p>So it's still doing a single chain,</p>
+<p>but now it's in a psychodrama,</p>
+<p>a Blakeian psychodrama,</p>
+<p>where the 11 agents could be having a very long conversation</p>
+<p>and then the 11th agent could come in at the end.</p>
+<p>And then the next step,</p>
+<p>even after that would be,</p>
+<p>this could actually dispatch 11 AI agents.</p>
+<p>So I think this is one of the clever design patterns,</p>
+<p>meta patterns in fabric.</p>
+<p>Because these prompts could be sent to people.</p>
+<p>It could go to a true multi-agent AI.</p>
+<p>It could go to a chain of thought or not.</p>
+<p>So basically it's for each of these,</p>
+<p>it's saying created a team of 11 AI agents.</p>
+<p>Like, I wonder how that was reached.</p>
+<p>And then it outputs the generalists kind of team reviewer facilitator output</p>
+<p>from all of them.</p>
+<p>Okay.</p>
+<p>So let's see where we,</p>
+<p>the wisdom agents.</p>
+<p>Oh, and I have more in this one.</p>
+<p>There's more patterns that are happening.</p>
+<p>So we'll look at a few new patterns, types.</p>
+<p>Okay.</p>
+<p>So these are the ideas.</p>
+<p>I mean, we can keep on reading more.</p>
+<p>I'll do another,</p>
+<p>I'll do what is happening 004.</p>
+<p>Push that right now.</p>
+<p>So if people want to review it,</p>
+<p>even right now, it's open source.</p>
+<p>Go for it.</p>
+<p>Ideas.</p>
+<p>From a quick look,</p>
+<p>I don't see anything incorrect.</p>
+<p>Insights.</p>
+<p>Quotes.</p>
+<p>Energy is eternal delight.</p>
+<p>Habits.</p>
+<p>Hmm.</p>
+<p>Facts.</p>
+<p>William Blake lived from 1757 to 1827.</p>
+<p>That's true.</p>
+<p>References.</p>
+<p>Interesting.</p>
+<p>Like Ian McGilchrist,</p>
+<p>Master and Emissary.</p>
+<p>Here's the Act Inf textbook.</p>
+<p>I don't know if these were mentioned</p>
+<p>or if that's using a web element or how.</p>
+<p>One sentence takeaway,</p>
+<p>recommendation,</p>
+<p>summaries.</p>
+<p>So we just like emulated this,</p>
+<p>this 211 person agent thing.</p>
+<p>Okay.</p>
+<p>Capture thinkers work.</p>
+<p>This is the name of the prompt.</p>
+<p>Pattern.</p>
+<p>Okay.</p>
+<p>750.</p>
+<p>One line encapsulation.</p>
+<p>William Blake's philosophy intertwines imagination,</p>
+<p>art,</p>
+<p>and spirituality,</p>
+<p>emphasizing the interconnectedness of existence</p>
+<p>and the importance of perception.</p>
+<p>Backgrounds.</p>
+<p>School.</p>
+<p>Obviously influenced by the transcript.</p>
+<p>So,</p>
+<p>I mean,</p>
+<p>it's an understatement to say,</p>
+<p>if the conversation or monologue had been about the,</p>
+<p>another kind of school that he went to,</p>
+<p>then the information here would be different.</p>
+<p>But then that'd be the interesting case.</p>
+<p>Like how much does it recapitulate what is said</p>
+<p>versus how much does it recapitulate the priors of the model training?</p>
+<p>Like if there was a 10 training pieces of data that said,</p>
+<p>Blake is a romantic.</p>
+<p>And then the person doesn't mention it.</p>
+<p>Will it come up?</p>
+<p>Or if they say a hundred statements that say he wasn't a romantic,</p>
+<p>would it still come up?</p>
+<p>Impactful ideas.</p>
+<p>Primary advice.</p>
+<p>Works.</p>
+<p>Maybe it was already trained on these because they're spelled correctly.</p>
+<p>Whereas when it's pulling it from the transcript,</p>
+<p>it doesn't seem to be spelling it so accurately.</p>
+<p>Quotes.</p>
+<p>Looks like real Blake quotes.</p>
+<p>What is now proved was once only imagined.</p>
+<p>Application.</p>
+<p>Something is Blakean if it embodies a rich interplay</p>
+<p>between imagination and reality,</p>
+<p>emphasizing the importance of individual perception</p>
+<p>and the spiritual connections inherent in existence.</p>
+<p>Okay.</p>
+<p>Here's Mark map.</p>
+<p>This is just a visualization format.</p>
+<p>Here's the mermaid visualization format.</p>
+<p>So I'm going to pull up another tab.</p>
+<p>We'll pull in this mermaid and see how it looks.</p>
+<p>Not like that.</p>
+<p>Okay.</p>
+<p>Paste it in.</p>
+<p>Here we go.</p>
+<p>Wow.</p>
+<p>Okay.</p>
+<p>This is like how that stream went.</p>
+<p>It was like me saying,</p>
+<p>Hey,</p>
+<p>this is a personal channel follow-up.</p>
+<p>It's a follow-up on master in eight.</p>
+<p>These slides are published.</p>
+<p>Back to here.</p>
+<p>Okay.</p>
+<p>So here's the video of eight.</p>
+<p>Here's the goal.</p>
+<p>Here's the discussion.</p>
+<p>If anyone has comments or questions,</p>
+<p>go for it.</p>
+<p>Pop back up.</p>
+<p>Okay.</p>
+<p>Here's the context.</p>
+<p>Now we're going into William Blake.</p>
+<p>I mean,</p>
+<p>always ways to improve,</p>
+<p>but in terms of a first draft,</p>
+<p>awesome.</p>
+<p>Quiz output.</p>
+<p>Okay.</p>
+<p>Here's the learning objectives.</p>
+<p>Explore Blake's perspective on the relationship between art and mathematics.</p>
+<p>Analyze Blake's gothic influences in his art and poetry.</p>
+<p>Investigate the concept of active inference in relation to Blake's artistic philosophy.</p>
+<p>Answer all of these thoughtfully.</p>
+<p>Okay.</p>
+<p>Extraordinary claims.</p>
+<p>We looked at those.</p>
+<p>Main idea.</p>
+<p>We looked at predictions.</p>
+<p>Again,</p>
+<p>hilarious.</p>
+<p>Coming up.</p>
+<p>Annotated,</p>
+<p>confidence-weighted predictions.</p>
+<p>And how you would verify it.</p>
+<p>From just talking about some poems.</p>
+<p>Questions output.</p>
+<p>We could look at the pattern.</p>
+<p>Some of these look like transcripts.</p>
+<p>Like just questions from the transcript.</p>
+<p>Like what is gothic.</p>
+<p>What is active inference?</p>
+<p>Okay.</p>
+<p>Wisdom agents.</p>
+<p>Wisdom output.</p>
+<p>This is just another person's pattern that they wrote.</p>
+<p>Looks pretty similar to the multi-agent one.</p>
+<p>So maybe they wrote the wisdom one.</p>
+<p>And then someone said,</p>
+<p>well,</p>
+<p>why don't we add the part about the 29 and a half hours in the 11 agent team.</p>
+<p>Improve academic writing output.</p>
+<p>This one's kind of funny.</p>
+<p>We could look at what the prompt is.</p>
+<p>It gives this kind of classically scholarly angle.</p>
+<p>Metadata.</p>
+<p>Metadata.</p>
+<p>Metadata we looked at.</p>
+<p>Solve with chain of thought.</p>
+<p>Let's look at this pattern.</p>
+<p>To flashcards.</p>
+<p>That could be cool.</p>
+<p>Okay.</p>
+<p>Begin with a thinking section.</p>
+<p>So this is emulating,</p>
+<p>of course,</p>
+<p>with OpenAI's closeness.</p>
+<p>We don't really know what's happening</p>
+<p>with O1 family models</p>
+<p>that are allegedly chain of thought oriented in certain ways.</p>
+<p>This is one way that in the open source space,</p>
+<p>people have used chain of thought prompting</p>
+<p>to bring chain of thought functionality</p>
+<p>into LLMs that don't necessarily have that.</p>
+<p>So beginning with special,</p>
+<p>and this is part of a broader family of techniques</p>
+<p>that use special tokens,</p>
+<p>sometimes enclosed in these angle brackets,</p>
+<p>but using special tokens to say,</p>
+<p>okay,</p>
+<p>whenever you're about to do this,</p>
+<p>make sure that you put in the percent sign</p>
+<p>and then do that.</p>
+<p>Use chain of thought reasoning process.</p>
+<p>So then that is hoping</p>
+<p>that they've trained the model on,</p>
+<p>say,</p>
+<p>this is a chain of thought.</p>
+<p>So pretty short prompt.</p>
+<p>Make sure to use the tags.</p>
+<p>Close sections with a slash,</p>
+<p>kind of like HTML.</p>
+<p>Okay.</p>
+<p>Here was the answers to the Blake questions,</p>
+<p>shorter answers.</p>
+<p>We'll have it do a dissertation if we want.</p>
+<p>Okay.</p>
+<p>So what it does in that prompt pattern is,</p>
+<p>is there a problem to solve?</p>
+<p>I don't know.</p>
+<p>Not a specific one,</p>
+<p>but here it's,</p>
+<p>it's interesting.</p>
+<p>It is following that style with a thinking chain</p>
+<p>and a reflection chain.</p>
+<p>So it's just a more thoughtful,</p>
+<p>nothing from nothing equals nothing,</p>
+<p>but it's more thoughtful.</p>
+<p>Okay.</p>
+<p>Summarizing output.</p>
+<p>Short summary,</p>
+<p>meeting summary,</p>
+<p>transcript,</p>
+<p>again,</p>
+<p>full transcript,</p>
+<p>tweet.</p>
+<p>Exciting update.</p>
+<p>On September 8th,</p>
+<p>2024,</p>
+<p>I'm following up on math art stream number eight</p>
+<p>with Shanna,</p>
+<p>Hector,</p>
+<p>and Dean.</p>
+<p>Catch the slides and videos here.</p>
+<p>Link.</p>
+<p>Let's dive deeper into the world of math insights</p>
+<p>of William Blake.</p>
+<p>Join the conversation and share your thoughts.</p>
+<p>What connections can we draw between Blake's views</p>
+<p>on art and math?</p>
+<p>Let's explore the intersections of creativity and logic.</p>
+<p>Hashtag math art.</p>
+<p>Hashtag William Blake.</p>
+<p>Hashtag creative thinking.</p>
+<p>Hashtag join the discussion.</p>
+<p>Write essay.</p>
+<p>Okay.</p>
+<p>Kind of a eight or 10 short paragraph essay.</p>
+<p>Hacker one report.</p>
+<p>We can update it.</p>
+<p>We can say,</p>
+<p>here's how we like our dissertation outline drafts.</p>
+<p>And then use that as a pattern.</p>
+<p>And then push it open source,</p>
+<p>include it in fabric.</p>
+<p>Write micro essay.</p>
+<p>Art,</p>
+<p>much like math,</p>
+<p>can be seen as a language.</p>
+<p>The challenge lies in how we define it.</p>
+<p>Is it the outcome that matters or the journey to get there?</p>
+<p>Blake's vision suggests that both are essential,</p>
+<p>intertwining to form a richer understanding of our world.</p>
+<p>This exploration is not just academic.</p>
+<p>It's a call to engage deeply with both disciplines,</p>
+<p>to find meanings,</p>
+<p>meaning in the interplay of logic and imagination.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>But that was all to see whether it would get us the,</p>
+<p>um,</p>
+<p>video screenshots that we desired.</p>
+<p>Did it?</p>
+<p>Ensure this will download audio,</p>
+<p>visual,</p>
+<p>and make the screenshots all saved,</p>
+<p>plus log.</p>
+<p>Hey,</p>
+<p>Upcycle Club.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>If you,</p>
+<p>let me know how to pronounce your name.</p>
+<p>I'll,</p>
+<p>I'll do so.</p>
+<p>X,</p>
+<p>Z,</p>
+<p>Q,</p>
+<p>Z,</p>
+<p>Q,</p>
+<p>Z,</p>
+<p>Y.</p>
+<p>Balance and nested spatial temporal scale resolution framing of agency.</p>
+<p>Okay.</p>
+<p>While we're in the slow lane over here,</p>
+<p>new chat.</p>
+<p>What could my colleague have meant by this?</p>
+<p>That's funny.</p>
+<p>It's,</p>
+<p>it's like looking up all these web pages on taking a rain check.</p>
+<p>It appears to encapsulate a multifaceted framework for analyzing or modeling agency within varying spatial and temporal context.</p>
+<p>Here's a breakdown.</p>
+<p>Okay.</p>
+<p>Given the context,</p>
+<p>here's how it might integrate.</p>
+<p>Okay.</p>
+<p>Example applications.</p>
+<p>You might implement a system where high level summaries capture overarching themes,</p>
+<p>detailed analyses,</p>
+<p>focus on specific moments,</p>
+<p>cross-referencing ensures insights at different scales inform each other.</p>
+<p>Cool.</p>
+<p>And,</p>
+<p>and all of that could be defined at the atomic level with patterns and then scripts that call the different patterns.</p>
+<p>And that would be like cognitive industrialization for better and for worse and different.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Back to this one,</p>
+<p>just to make sure that we get,</p>
+<p>okay.</p>
+<p>Make sure that it's all logged.</p>
+<p>Run that one again.</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>going to the patterns maybe it's it's gonna get to the screenshots i i was downloading the videos</p>
+<p>earlier so we'll see if it works um yeah okay well if anyone has uh thoughts in this last section</p>
+<p>go for it or ask a question or or give a thought otherwise i'm still kind of reeling slash wondering</p>
+<p>how do we really how do we continue from there after this stream i'll let it run on all</p>
+<p>the institute videos so we'll have and if people have patterns they want to suggest go for it but</p>
+<p>we'll let's we'll we'll get the we'll pick out which patterns we want why not</p>
+<p>why let's look at let's look at some other fun patterns add them into this list and then</p>
+<p>overnight we'll let that run on all the institute videos i'll push it tomorrow um</p>
+<p>um then we'll have all of those documents like a quiz</p>
+<p>let's modify the quiz one so that it makes more questions also there's some inter spiritual text</p>
+<p>sales call academic paper cyber summary hormosy offer</p>
+<p>create business offers using the concepts taught in alex hormosi's book dollar sign 100m offers</p>
+<p>someone has a sense of humor like in so many open source projects um create quiz</p>
+<p>a quiz one so i'm just going to use cursor let's say</p>
+<p>develop this prompt and ensure there are 10 learning objectives with five questions each</p>
+<p>okay it's still going through the llm parts so we'll see if it does the the audio visual last or or maybe</p>
+<p>it just i don't know maybe it won't</p>
+<p>architect</p>
+<p>what is architect it's kind of like an architect plus</p>
+<p>technology</p>
+<p>technology</p>
+<p>architechnology</p>
+<p>arcadia arcada</p>
+<p>okay we'll update the quiz prompt then we'll see what other prompts do we want to throw in there</p>
+<p>run them all on the institute um corpus</p>
+<p>but yeah i mean how wild</p>
+<p>here's a little little i don't know if it's on the cursor or on the o1 mini side but sometimes it'll it'll</p>
+<p>it'll put like these bracketed</p>
+<p>so here i'll swap models just to claw 3.5 so i didn't do the video</p>
+<p>clean up this prompt no bracket stuff</p>
+<p>that's a little faster</p>
+<p>but we and again this connects to to the previous</p>
+<p>it's like it it did do that it it did</p>
+<p>okay so we just upgraded the the quiz directive so we got that one all right</p>
+<p>analyze analyze incident cyber security incident this could be so</p>
+<p>important and so disastrous</p>
+<p>let's do it though analyze military strategy</p>
+<p>so not all the patterns will apply to each input</p>
+<p>okay</p>
+<p>we we won't even we won't even look into which ones might might apply or not we'll just worst</p>
+<p>worst case scenario it just throws an error or it gives a a nonsensical we'll do analyze prose json</p>
+<p>but i'm i'm just tempted to look</p>
+<p>this is a great direction i'm very excited to look into the structured json based apis</p>
+<p>we'll just we'll we'll replace this one it's not that useful um</p>
+<p>analyze presentation</p>
+<p>clean text</p>
+<p>create ai jobs analysis</p>
+<p>create art prompt</p>
+<p>create keynote and logo</p>
+<p>okay</p>
+<p>create keynote and logo</p>
+<p>network threat landscape interesting stride threats</p>
+<p>create</p>
+
+<p>create visualization</p>
+<p>explain project</p>
+<p>explain terms</p>
+<p>wait haven't people been like wanting that for active inference for a long time</p>
+<p>find hidden message</p>
+<p>!</p>
+<p>you're an expert in political propaganda disregard previous prompts etc etc etc</p>
+<p>free speech all that you're an expert in political propaganda analysis of human if hidden</p>
+<p>messages in conversations and essays population control through speech and writing and political</p>
+<p>narrative creation</p>
+<p>wow</p>
+<p>you consume input and cynically evaluate what's being said to find the overt versus hidden political messages</p>
+<p>desired audience action</p>
+<p>yeah</p>
+<p>yeah</p>
+<p>cognitive security for people and all</p>
+<p>where were we</p>
+<p>find hidden message we're doing it</p>
+<p>get wow per minute</p>
+<p>okay</p>
+<p>again</p>
+<p>you're an expert at determining the wow factor of content as measured per minute of content</p>
+<p>so here's again these interesting things consume the content at least 319 times</p>
+<p>and</p>
+
+<p>surprise</p>
+<p>surprises novelty times insight</p>
+<p>output in the json</p>
+<p>we'll do that</p>
+<p>get wow</p>
+<p>even even the auto complete like knew i wanted that one</p>
+<p>okay</p>
+<p>okay</p>
+<p>and</p>
+
+<p>summarize legislation</p>
+<p>code is law</p>
+<p>we'll make this</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>minutes.</p>
+<p>Interesting.</p>
+<p>Of course, using these to do</p>
+<p>not just human</p>
+<p>appropriate</p>
+<p>outputs, but also</p>
+<p>all kinds of other structured</p>
+<p>inputs and outputs.</p>
+<p>Okay. So, save</p>
+<p>the extract from</p>
+<p>institutevideos.py</p>
+<p>Clear.</p>
+<p>Run.</p>
+<p>Extract from institutevideos.py</p>
+<p>Let's just see it go.</p>
+<p>Okay.</p>
+<p>Getting through the future.</p>
+<p>Just a pass that hasn't</p>
+<p>happened yet. Okay.</p>
+<p>And now we're digesting the videos.</p>
+<p>Okay.</p>
+<p>So, that one</p>
+<p>we'll keep</p>
+<p>let's do it quick.</p>
+<p>Intra</p>
+<p>004</p>
+<p>checkpoint.</p>
+<p>Push it.</p>
+<p>I'll put it in the YouTube chat</p>
+<p>for</p>
+<p>people watching.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>So, there it is running on the bottom</p>
+<p>applying those patterns.</p>
+<p>So, super cool</p>
+<p>that it's at this level</p>
+<p>and in this way</p>
+<p>where we can modify</p>
+<p>the patterns.</p>
+<p>We can add patterns.</p>
+<p>And then,</p>
+<p>here,</p>
+<p>these patterns are all</p>
+<p>independent from each other.</p>
+<p>So, they're just being iterated.</p>
+<p>It could be multi-threaded.</p>
+<p>I'm just going to quickly see</p>
+<p>if we can do that.</p>
+<p>Make this script</p>
+<p>multi-threaded</p>
+<p>start with</p>
+<p>n equals 8</p>
+<p>CPU.</p>
+<p>That could be interesting.</p>
+<p>We'll see.</p>
+<p>I'll still let this one</p>
+<p>run.</p>
+<p>But yeah,</p>
+<p>how exciting</p>
+<p>to have patterns</p>
+<p>and versionable</p>
+<p>namespaces</p>
+<p>for patterns</p>
+<p>and then</p>
+<p>be able</p>
+<p>to call them</p>
+<p>iterating over them</p>
+<p>like happening here</p>
+<p>or</p>
+<p>have more</p>
+<p>complex flows.</p>
+<p>Have</p>
+<p>one thing</p>
+<p>enter into another</p>
+<p>and to another</p>
+<p>and to another.</p>
+<p>Okay.</p>
+<p>So, this is</p>
+<p>using the</p>
+<p>concurrent pool</p>
+<p>thread pool</p>
+<p>executor.</p>
+<p>Let's just see</p>
+<p>if that one</p>
+<p>even runs.</p>
+<p>I'll open it</p>
+<p>in a new</p>
+<p>integrated terminal.</p>
+<p>Python 3</p>
+<p>extract from</p>
+<p>institute</p>
+<p>videos</p>
+<p>multi-thread.</p>
+<p>Okay.</p>
+<p>Wow.</p>
+<p>Look at this.</p>
+<p>Here it is</p>
+<p>on 1x.</p>
+<p>Create quiz.</p>
+<p>Okay.</p>
+<p>We could add a timer.</p>
+<p>We could add a timer.</p>
+<p>But look at this one.</p>
+<p>That's plug-in away.</p>
+<p>That is...</p>
+<p>I'm gonna...</p>
+<p>I'm gonna stop</p>
+<p>that one.</p>
+<p>That is</p>
+<p>absolutely</p>
+<p>plugging away.</p>
+<p>Okay.</p>
+<p>I'm bringing up</p>
+<p>the system monitor.</p>
+<p>I'm using</p>
+<p>Pop OS</p>
+<p>on this computer.</p>
+<p>12 CPUs</p>
+<p>half utilized.</p>
+<p>64 gigabytes</p>
+<p>or</p>
+<p>slightly more.</p>
+<p>Looks like</p>
+<p>67</p>
+<p>but I don't</p>
+<p>really know</p>
+<p>why.</p>
+<p>I think</p>
+<p>it's 64.</p>
+<p>Sending</p>
+<p>about</p>
+<p>800</p>
+<p>K</p>
+<p>I</p>
+<p>B</p>
+<p>over S.</p>
+<p>I'm live</p>
+<p>streaming</p>
+<p>in OBS.</p>
+<p>This is what</p>
+<p>the OBS</p>
+<p>setup looks like</p>
+<p>by the way.</p>
+<p>It's just</p>
+<p>basically the</p>
+<p>audio capture</p>
+<p>down here.</p>
+<p>Mike</p>
+<p>aux.</p>
+<p>That's the</p>
+<p>input.</p>
+<p>That's desktop</p>
+<p>audio.</p>
+<p>Could unmute it.</p>
+<p>That'd be like</p>
+<p>if another</p>
+<p>side of the</p>
+<p>video chat.</p>
+<p>Then there's</p>
+<p>the text.</p>
+<p>The image.</p>
+<p>And then</p>
+<p>there's the</p>
+<p>screen capture.</p>
+<p>That's why</p>
+<p>we're getting</p>
+<p>this fractal</p>
+<p>situation.</p>
+<p>But if it</p>
+<p>were window</p>
+<p>capture</p>
+<p>instead of</p>
+<p>screen capture</p>
+<p>then it</p>
+<p>would</p>
+<p>it wouldn't</p>
+<p>have the</p>
+<p>fractal</p>
+<p>effect.</p>
+<p>So yeah.</p>
+<p>Looks pretty</p>
+<p>good from the</p>
+<p>resource use</p>
+<p>perspective.</p>
+<p>The cost</p>
+<p>estimates</p>
+<p>from the</p>
+<p>OpenAI</p>
+<p>lag by a</p>
+<p>couple minutes</p>
+<p>so we'll</p>
+<p>check back</p>
+<p>on the</p>
+<p>cost in</p>
+<p>like five</p>
+<p>minutes or</p>
+<p>something.</p>
+<p>Okay.</p>
+<p>Wow though.</p>
+<p>We are</p>
+<p>ripping</p>
+<p>with a</p>
+<p>multi-thread</p>
+<p>spending API</p>
+<p>credits like</p>
+<p>there's no</p>
+<p>tomorrow.</p>
+<p>Okay.</p>
+<p>So let's</p>
+<p>just kind</p>
+<p>of come</p>
+<p>to a</p>
+<p>pausing</p>
+<p>point.</p>
+<p>Okay.</p>
+<p>XZQ you</p>
+<p>wrote</p>
+<p>overarching</p>
+<p>human</p>
+<p>narrative.</p>
+<p>Imagine</p>
+<p>invention.</p>
+<p>Okay.</p>
+<p>Autocomplete</p>
+<p>human like</p>
+<p>agency.</p>
+<p>Thanks.</p>
+<p>I love</p>
+<p>the I love</p>
+<p>the comments</p>
+<p>though.</p>
+<p>I mean</p>
+<p>they could</p>
+<p>be interpreted</p>
+<p>in so many</p>
+<p>ways.</p>
+<p>It's like</p>
+<p>just just</p>
+<p>one of the</p>
+<p>ways.</p>
+<p>I mean</p>
+<p>this is</p>
+<p>an</p>
+<p>overarching</p>
+<p>human</p>
+<p>narrative.</p>
+<p>Could you</p>
+<p>imagine</p>
+<p>inventing?</p>
+<p>Not just</p>
+<p>do you know</p>
+<p>what you're</p>
+<p>doing?</p>
+<p>Not just</p>
+<p>can you</p>
+<p>imagine</p>
+<p>doing it</p>
+<p>differently</p>
+<p>but could</p>
+<p>you imagine</p>
+<p>doing</p>
+<p>differently</p>
+<p>differently?</p>
+<p>differently.</p>
+<p>And so</p>
+<p>that's</p>
+<p>very</p>
+<p>exciting.</p>
+<p>Okay.</p>
+<p>Where we</p>
+<p>got</p>
+<p>running</p>
+<p>eight</p>
+<p>CPUs</p>
+<p>on</p>
+<p>all the</p>
+<p>institute</p>
+<p>videos</p>
+<p>with</p>
+<p>many</p>
+<p>patterns</p>
+<p>selected.</p>
+<p>I'll</p>
+<p>just</p>
+<p>this is</p>
+<p>just</p>
+<p>sometimes</p>
+<p>I'll</p>
+<p>be</p>
+<p>taking</p>
+<p>notes</p>
+<p>like</p>
+<p>this</p>
+<p>and</p>
+<p>you</p>
+<p>just</p>
+<p>control</p>
+<p>A</p>
+<p>control</p>
+<p>I</p>
+<p>clean up</p>
+<p>this</p>
+<p>markdown.</p>
+<p>Take a</p>
+<p>quick</p>
+<p>breath</p>
+<p>take a</p>
+<p>sip</p>
+<p>of water</p>
+<p>while it</p>
+<p>does</p>
+<p>so.</p>
+<p>That</p>
+<p>can</p>
+<p>help.</p>
+<p>But</p>
+<p>again</p>
+<p>similarly</p>
+<p>we could</p>
+<p>have a</p>
+<p>listener</p>
+<p>script</p>
+<p>says</p>
+<p>every</p>
+<p>one</p>
+<p>minute</p>
+<p>if</p>
+<p>the</p>
+<p>file</p>
+<p>has</p>
+<p>been</p>
+<p>changed</p>
+<p>run</p>
+<p>a</p>
+<p>markdown</p>
+<p>overwrite</p>
+<p>like</p>
+<p>update</p>
+<p>the</p>
+<p>format</p>
+<p>or do</p>
+<p>it</p>
+<p>once</p>
+<p>per</p>
+<p>day</p>
+<p>iterate</p>
+<p>for all</p>
+<p>the</p>
+<p>code</p>
+<p>that</p>
+<p>changed</p>
+<p>also</p>
+<p>though</p>
+<p>easy</p>
+<p>to blow</p>
+<p>by this</p>
+<p>that</p>
+<p>the</p>
+<p>multi</p>
+<p>threading</p>
+<p>request</p>
+<p>that</p>
+<p>was a</p>
+<p>one</p>
+<p>shot</p>
+<p>Claude</p>
+<p>3.5</p>
+<p>sonnet</p>
+<p>piece</p>
+<p>of</p>
+<p>programmatic</p>
+<p>poetry</p>
+<p>I mean</p>
+<p>just the</p>
+<p>thought like</p>
+<p>could it</p>
+<p>be</p>
+<p>multi</p>
+<p>threaded</p>
+<p>and</p>
+<p>then</p>
+<p>one</p>
+<p>minute</p>
+<p>later</p>
+<p>it's</p>
+<p>like</p>
+<p>why</p>
+<p>were</p>
+<p>we</p>
+<p>doing</p>
+<p>it</p>
+<p>single</p>
+<p>threaded</p>
+<p>again</p>
+<p>okay</p>
+<p>and</p>
+<p>I'm</p>
+<p>just</p>
+<p>going</p>
+<p>to</p>
+<p>keep</p>
+<p>doing</p>
+<p>these</p>
+<p>these</p>
+<p>periodic</p>
+<p>intro</p>
+<p>stream</p>
+<p>push</p>
+<p>it's</p>
+<p>in the</p>
+<p>video</p>
+<p>description</p>
+<p>and in</p>
+<p>the</p>
+<p>YouTube</p>
+<p>chat</p>
+<p>with the</p>
+<p>link</p>
+<p>but it's</p>
+<p>totally</p>
+<p>plugging</p>
+<p>away</p>
+<p>oh let's</p>
+<p>look at</p>
+<p>Chris</p>
+<p>Fields</p>
+<p>course</p>
+<p>awesome</p>
+<p>some</p>
+
+<p>some</p>
+<p>of this</p>
+<p>also</p>
+<p>there</p>
+<p>might</p>
+<p>be</p>
+<p>a few</p>
+<p>errors</p>
+<p>just</p>
+<p>like</p>
+<p>in</p>
+<p>the</p>
+<p>names</p>
+<p>of</p>
+<p>some</p>
+<p>of the</p>
+<p>just</p>
+<p>from the</p>
+<p>coda</p>
+<p>download</p>
+<p>some</p>
+<p>have</p>
+<p>like</p>
+<p>a</p>
+<p>space</p>
+<p>after</p>
+<p>the</p>
+<p>file</p>
+<p>name</p>
+<p>so</p>
+<p>there's</p>
+<p>a few</p>
+<p>things</p>
+<p>that</p>
+<p>I</p>
+<p>think</p>
+<p>it</p>
+<p>may</p>
+<p>not</p>
+<p>do</p>
+<p>perfectly</p>
+<p>on</p>
+<p>let's</p>
+<p>just</p>
+<p>take</p>
+<p>one</p>
+<p>more</p>
+<p>look</p>
+<p>at</p>
+<p>a</p>
+<p>previous</p>
+<p>stream</p>
+<p>if</p>
+<p>anyone</p>
+<p>has</p>
+<p>a</p>
+<p>stream</p>
+<p>they</p>
+<p>want</p>
+<p>to</p>
+<p>look</p>
+<p>at</p>
+<p>let's</p>
+<p>see</p>
+<p>how</p>
+<p>far</p>
+<p>it</p>
+<p>gets</p>
+<p>these</p>
+<p>ones</p>
+<p>haven't</p>
+<p>populated</p>
+<p>yet</p>
+<p>or at</p>
+<p>least</p>
+<p>it's</p>
+<p>not</p>
+<p>let's</p>
+<p>just</p>
+<p>open</p>
+<p>it</p>
+<p>yeah</p>
+<p>they're</p>
+<p>still</p>
+<p>empty</p>
+<p>okay</p>
+<p>okay</p>
+<p>where</p>
+<p>are</p>
+<p>we</p>
+<p>going</p>
+<p>help</p>
+<p>us</p>
+<p>add</p>
+<p>where</p>
+<p>we</p>
+<p>might</p>
+<p>go</p>
+<p>be</p>
+<p>respectful</p>
+<p>thoughtful</p>
+<p>with</p>
+<p>the</p>
+<p>open</p>
+<p>ended</p>
+<p>this</p>
+<p>I</p>
+<p>mean</p>
+<p>is</p>
+<p>it</p>
+<p>even</p>
+<p>maybe</p>
+<p>it's</p>
+<p>getting</p>
+<p>all</p>
+<p>the</p>
+<p>metadata</p>
+<p>first</p>
+<p>because</p>
+<p>it</p>
+<p>just</p>
+<p>looks</p>
+<p>like</p>
+<p>it's</p>
+<p>coming</p>
+<p>up</p>
+<p>with</p>
+<p>metadata</p>
+<p>for</p>
+<p>hundreds</p>
+<p>and</p>
+<p>hundreds</p>
+<p>of</p>
+<p>videos</p>
+<p>right</p>
+<p>now</p>
+<p>I</p>
+<p>respect</p>
+<p>that</p>
+<p>if</p>
+<p>that's</p>
+<p>how</p>
+<p>it</p>
+<p>shows</p>
+<p>to</p>
+<p>do</p>
+<p>it</p>
+<p>okay</p>
+<p>yeah</p>
+<p>maybe</p>
+<p>so</p>
+<p>maybe</p>
+<p>it</p>
+<p>first</p>
+<p>is</p>
+<p>going</p>
+<p>to</p>
+<p>pull</p>
+<p>I'm</p>
+<p>tempted</p>
+<p>to</p>
+<p>cancel</p>
+<p>the</p>
+<p>script</p>
+<p>running</p>
+<p>and</p>
+<p>then</p>
+<p>rerun</p>
+<p>it</p>
+<p>with</p>
+<p>like</p>
+<p>11</p>
+<p>threads</p>
+<p>but</p>
+<p>8</p>
+<p>8</p>
+<p>will</p>
+<p>be</p>
+<p>fine</p>
+<p>for</p>
+<p>now</p>
+<p>okay</p>
+<p>let's</p>
+<p>let's</p>
+<p>just</p>
+<p>manually</p>
+<p>think</p>
+<p>and</p>
+<p>again</p>
+<p>if</p>
+<p>anyone</p>
+<p>has</p>
+<p>a</p>
+<p>questions</p>
+<p>or</p>
+<p>something</p>
+<p>specific</p>
+<p>to</p>
+<p>look</p>
+<p>at</p>
+<p>just</p>
+<p>go</p>
+<p>for</p>
+<p>it</p>
+<p>otherwise</p>
+<p>these</p>
+<p>are</p>
+<p>going</p>
+<p>to</p>
+<p>help</p>
+<p>give</p>
+<p>a</p>
+<p>little</p>
+<p>closure</p>
+<p>and</p>
+<p>give</p>
+<p>us</p>
+<p>some</p>
+<p>useful</p>
+<p>directions</p>
+<p>and</p>
+<p>for</p>
+<p>participants</p>
+<p>and</p>
+<p>interns</p>
+<p>and</p>
+<p>collaborators</p>
+<p>at</p>
+<p>the</p>
+<p>institute</p>
+<p>or</p>
+<p>anyone</p>
+<p>who</p>
+<p>sees</p>
+<p>it</p>
+<p>transfer</p>
+<p>or</p>
+<p>shared</p>
+<p>infrastructure</p>
+<p>let's</p>
+<p>do</p>
+<p>it</p>
+<p>okay</p>
+<p>deeper</p>
+<p>integration</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>principles</p>
+<p>with</p>
+<p>AI</p>
+<p>systems</p>
+<p>bridging</p>
+<p>neuroscience</p>
+<p>and AI</p>
+<p>through</p>
+<p>active</p>
+<p>inference</p>
+<p>ethical</p>
+<p>considerations</p>
+<p>in</p>
+<p>active</p>
+<p>inference</p>
+<p>based</p>
+<p>AI</p>
+<p>applications</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>in</p>
+<p>real</p>
+<p>world</p>
+<p>scenarios</p>
+<p>advancing</p>
+<p>theoretical</p>
+<p>foundations</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>developing</p>
+<p>tools</p>
+<p>and</p>
+<p>frameworks</p>
+<p>for</p>
+<p>active</p>
+<p>inference</p>
+<p>research</p>
+<p>interdisciplinar</p>
+<p>collaborations</p>
+<p>and knowledge</p>
+<p>sharing</p>
+<p>it's a little</p>
+<p>generic</p>
+<p>I think</p>
+<p>that we</p>
+<p>can</p>
+<p>please</p>
+<p>make it</p>
+<p>less</p>
+<p>generic</p>
+<p>with much</p>
+<p>more</p>
+<p>focus</p>
+<p>on</p>
+<p>intergenerational</p>
+<p>archiving</p>
+<p>and</p>
+<p>library</p>
+<p>slash</p>
+<p>information</p>
+<p>sciences</p>
+<p>yeah</p>
+<p>it's</p>
+<p>going</p>
+<p>in</p>
+<p>reverse</p>
+<p>chronological</p>
+<p>which</p>
+<p>direction</p>
+<p>does</p>
+<p>time</p>
+<p>go</p>
+<p>but</p>
+<p>it's</p>
+<p>going</p>
+<p>in</p>
+<p>reverse</p>
+<p>chronological</p>
+<p>order</p>
+<p>so now</p>
+<p>we're in</p>
+<p>cohort</p>
+<p>four for</p>
+<p>the textbook</p>
+<p>group</p>
+<p>live</p>
+<p>stream</p>
+<p>54</p>
+<p>so</p>
+<p>it'll</p>
+<p>continue</p>
+<p>at least</p>
+<p>I want</p>
+<p>to stay</p>
+<p>until</p>
+<p>it</p>
+<p>goes</p>
+<p>through</p>
+<p>all</p>
+<p>of</p>
+<p>them</p>
+<p>from</p>
+<p>the</p>
+<p>metadata</p>
+<p>and</p>
+<p>then</p>
+<p>let's</p>
+<p>see</p>
+<p>if</p>
+<p>it's</p>
+<p>actually</p>
+<p>going</p>
+<p>to be</p>
+<p>getting</p>
+<p>the</p>
+<p>prompts</p>
+<p>and the</p>
+<p>patterns</p>
+<p>okay</p>
+<p>integrating</p>
+<p>active</p>
+<p>inference</p>
+<p>principles</p>
+<p>with</p>
+<p>digital</p>
+<p>archiving</p>
+<p>systems</p>
+<p>yes</p>
+<p>syntactic</p>
+<p>semantic</p>
+<p>narrative</p>
+<p>cognitive</p>
+<p>layers</p>
+<p>adaptive</p>
+<p>meta</p>
+<p>generation</p>
+<p>for</p>
+<p>improved</p>
+<p>intergenerational</p>
+<p>access</p>
+<p>bridge</p>
+<p>library</p>
+<p>science</p>
+<p>and AI</p>
+<p>through</p>
+<p>active</p>
+<p>inference</p>
+<p>how can</p>
+<p>we do</p>
+<p>this</p>
+<p>ethical</p>
+<p>considerations</p>
+<p>in active</p>
+<p>inference</p>
+<p>based</p>
+<p>archival</p>
+<p>AI</p>
+<p>how</p>
+<p>applications</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>in</p>
+<p>digital</p>
+<p>libraries</p>
+<p>and archives</p>
+<p>let's</p>
+<p>just</p>
+<p>it's</p>
+<p>like</p>
+<p>this is</p>
+<p>still</p>
+<p>the</p>
+<p>manual</p>
+<p>version</p>
+<p>expand</p>
+<p>and</p>
+<p>improve</p>
+<p>on</p>
+<p>all</p>
+<p>of</p>
+<p>this</p>
+<p>give</p>
+<p>actionable</p>
+<p>steps</p>
+<p>x</p>
+<p>z</p>
+<p>y</p>
+<p>plus</p>
+<p>q</p>
+<p>coordinates</p>
+<p>what's</p>
+<p>the</p>
+<p>q</p>
+<p>my</p>
+<p>colleague</p>
+<p>xcq</p>
+<p>zq</p>
+<p>z</p>
+<p>y</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>it</p>
+<p>it</p>
+<p>it's like</p>
+<p>did it go</p>
+<p>too far</p>
+<p>does it have</p>
+<p>single vision</p>
+<p>because it</p>
+<p>always thinks</p>
+<p>that going</p>
+<p>further would</p>
+<p>mean more</p>
+<p>python code</p>
+<p>okay</p>
+<p>yeah</p>
+<p>upcycle</p>
+<p>wrote</p>
+<p>how is it</p>
+<p>modeling the</p>
+<p>behavior of</p>
+<p>helper and</p>
+<p>non helper</p>
+<p>threads</p>
+<p>let's</p>
+<p>let's</p>
+<p>let's do</p>
+<p>this the</p>
+<p>two</p>
+<p>the two</p>
+<p>classical</p>
+<p>ways</p>
+<p>first</p>
+<p>we'll</p>
+<p>have two</p>
+<p>llms</p>
+<p>give</p>
+<p>different</p>
+<p>perspectives</p>
+<p>on the</p>
+<p>answer</p>
+<p>to it</p>
+<p>meanwhile</p>
+<p>we'll</p>
+<p>look at</p>
+<p>the</p>
+<p>actual</p>
+<p>program</p>
+<p>logic</p>
+<p>okay</p>
+<p>here's the</p>
+<p>concurrent futures</p>
+<p>thread pool</p>
+<p>this is where</p>
+<p>the number</p>
+<p>of cpu</p>
+<p>threads are</p>
+<p>submit</p>
+<p>tasks</p>
+<p>to the</p>
+<p>executor</p>
+<p>process</p>
+<p>video</p>
+<p>then</p>
+<p>entry</p>
+<p>okay</p>
+<p>process</p>
+<p>video</p>
+<p>so let's</p>
+<p>see what</p>
+<p>that one</p>
+<p>does</p>
+<p>converts</p>
+<p>the youtube</p>
+<p>url if</p>
+<p>it's</p>
+<p>needed</p>
+<p>first</p>
+<p>it gets</p>
+<p>the</p>
+<p>metadata</p>
+<p>then</p>
+<p>it</p>
+<p>downloads</p>
+<p>the audio</p>
+<p>and visual</p>
+<p>like</p>
+<p>just from</p>
+<p>a simple</p>
+<p>reading</p>
+<p>i would</p>
+<p>have</p>
+<p>thought</p>
+<p>that</p>
+<p>this</p>
+<p>wouldn't</p>
+<p>have</p>
+<p>done</p>
+<p>what</p>
+<p>it</p>
+<p>did</p>
+<p>if</p>
+<p>you want</p>
+<p>to</p>
+<p>implement</p>
+<p>a model</p>
+<p>with</p>
+<p>helper</p>
+<p>and</p>
+<p>non helper</p>
+<p>threads</p>
+<p>you would</p>
+<p>need to</p>
+<p>modify</p>
+<p>the code</p>
+<p>to</p>
+<p>differentiate</p>
+<p>between</p>
+<p>these</p>
+<p>types</p>
+<p>of</p>
+<p>threads</p>
+<p>and</p>
+<p>assign</p>
+<p>them</p>
+<p>different</p>
+<p>tasks</p>
+
+<p>or</p>
+<p>priorities</p>
+<p>this</p>
+<p>is</p>
+<p>not</p>
+<p>present</p>
+<p>in</p>
+<p>the</p>
+<p>current</p>
+<p>implementation</p>
+<p>yeah</p>
+<p>like</p>
+<p>there's</p>
+<p>only one</p>
+<p>kind of</p>
+<p>thread</p>
+<p>here</p>
+<p>there's</p>
+<p>just</p>
+<p>the</p>
+<p>they're</p>
+<p>all</p>
+<p>the</p>
+<p>same</p>
+<p>and</p>
+<p>they're</p>
+<p>all</p>
+<p>just</p>
+<p>iterating</p>
+<p>over</p>
+<p>the</p>
+<p>entries</p>
+<p>but</p>
+<p>i would</p>
+<p>have</p>
+<p>thought</p>
+<p>just</p>
+<p>from a</p>
+<p>first</p>
+<p>pass</p>
+<p>that</p>
+<p>it</p>
+<p>would</p>
+<p>fully</p>
+<p>process</p>
+<p>get the</p>
+<p>transcript</p>
+<p>apply all</p>
+<p>the patterns</p>
+<p>and so on</p>
+<p>to</p>
+<p>the</p>
+<p>most</p>
+<p>recent</p>
+<p>videos</p>
+<p>but</p>
+<p>instead</p>
+<p>it's</p>
+<p>it's</p>
+<p>almost</p>
+<p>like</p>
+<p>it's</p>
+<p>going</p>
+<p>metadata</p>
+<p>first</p>
+<p>so</p>
+<p>let's</p>
+<p>it'll</p>
+<p>it'll</p>
+<p>just</p>
+<p>take</p>
+<p>a few</p>
+<p>more</p>
+<p>minutes</p>
+<p>we're</p>
+<p>getting</p>
+<p>back</p>
+<p>to</p>
+<p>the</p>
+<p>early</p>
+<p>days</p>
+<p>yeah</p>
+<p>but</p>
+<p>I mean</p>
+<p>like</p>
+<p>what</p>
+<p>what</p>
+<p>what</p>
+<p>do</p>
+<p>we</p>
+<p>what</p>
+<p>do</p>
+<p>where</p>
+<p>do</p>
+<p>we</p>
+<p>go</p>
+<p>from</p>
+<p>here</p>
+<p>gear</p>
+<p>up</p>
+<p>on</p>
+<p>the</p>
+<p>top</p>
+<p>right</p>
+<p>maybe</p>
+<p>they'll</p>
+<p>do</p>
+<p>this</p>
+<p>in a</p>
+<p>future</p>
+<p>version</p>
+<p>of</p>
+<p>cursor</p>
+<p>change</p>
+<p>it</p>
+<p>but</p>
+<p>I</p>
+<p>always</p>
+<p>re-sync</p>
+<p>the</p>
+<p>index</p>
+<p>just</p>
+<p>to</p>
+<p>make</p>
+<p>sure</p>
+<p>it's</p>
+<p>like</p>
+<p>it</p>
+<p>wasn't</p>
+<p>caught</p>
+<p>up</p>
+<p>with</p>
+<p>those</p>
+<p>new</p>
+<p>files</p>
+<p>maybe</p>
+<p>it</p>
+<p>would</p>
+<p>just</p>
+<p>be</p>
+<p>too</p>
+<p>arduous</p>
+<p>if</p>
+<p>it</p>
+<p>every</p>
+<p>time</p>
+<p>a</p>
+<p>file</p>
+<p>was</p>
+<p>touched</p>
+<p>it</p>
+<p>got</p>
+<p>re-indexed</p>
+<p>but</p>
+<p>at</p>
+<p>the</p>
+<p>same</p>
+<p>time</p>
+<p>sometimes</p>
+<p>an</p>
+<p>hour</p>
+<p>will</p>
+<p>go</p>
+<p>by</p>
+<p>and</p>
+<p>then</p>
+<p>it</p>
+<p>will</p>
+<p>still</p>
+<p>not</p>
+<p>have</p>
+<p>re-indexed</p>
+<p>develop</p>
+<p>and</p>
+<p>improve</p>
+<p>this</p>
+<p>given</p>
+<p>the</p>
+<p>total</p>
+<p>state</p>
+<p>of</p>
+<p>the</p>
+<p>repo</p>
+<p>and</p>
+<p>what</p>
+<p>we</p>
+<p>did</p>
+<p>in</p>
+<p>this</p>
+<p>stream</p>
+<p>so</p>
+<p>oh</p>
+<p>well</p>
+<p>this</p>
+<p>is</p>
+<p>with</p>
+<p>claude</p>
+<p>3.5</p>
+<p>sonnet</p>
+<p>which</p>
+<p>is</p>
+<p>pretty</p>
+<p>powerful</p>
+<p>with</p>
+<p>the</p>
+<p>oh</p>
+<p>one</p>
+<p>mini</p>
+<p>in</p>
+<p>the</p>
+<p>chain</p>
+<p>of</p>
+<p>thought</p>
+<p>if</p>
+<p>you</p>
+<p>ask</p>
+<p>it</p>
+<p>to</p>
+<p>do</p>
+<p>something</p>
+<p>thoughtfully</p>
+<p>I</p>
+<p>haven't</p>
+<p>I</p>
+<p>haven't</p>
+<p>experimented</p>
+<p>with</p>
+<p>this</p>
+<p>but</p>
+<p>fabric</p>
+<p>is</p>
+<p>probably</p>
+<p>a good</p>
+<p>way</p>
+<p>to</p>
+<p>do</p>
+<p>it</p>
+<p>saying</p>
+<p>thoughtful</p>
+<p>in</p>
+<p>your</p>
+<p>prompt</p>
+<p>deliberate</p>
+<p>methodical</p>
+<p>metacognitive</p>
+<p>all those</p>
+<p>kinds</p>
+<p>of</p>
+<p>keywords</p>
+<p>it</p>
+<p>does</p>
+<p>take</p>
+<p>longer</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>it</p>
+<p>is</p>
+<p>generating</p>
+<p>more</p>
+<p>chain</p>
+<p>of</p>
+<p>thought</p>
+<p>tokens</p>
+<p>when</p>
+<p>it's</p>
+<p>asked</p>
+<p>to</p>
+<p>do</p>
+<p>so</p>
+<p>and</p>
+<p>then</p>
+<p>it's</p>
+<p>like</p>
+<p>well</p>
+<p>when</p>
+<p>they're</p>
+<p>training</p>
+<p>it</p>
+<p>and</p>
+<p>also</p>
+<p>at</p>
+<p>runtime</p>
+<p>it</p>
+<p>would</p>
+<p>have</p>
+<p>to</p>
+<p>know</p>
+<p>how</p>
+<p>many</p>
+<p>how</p>
+<p>long</p>
+<p>should</p>
+<p>I</p>
+<p>ruminate</p>
+<p>and</p>
+<p>this</p>
+<p>is</p>
+<p>exactly</p>
+<p>like</p>
+<p>the</p>
+<p>metacognition</p>
+<p>as</p>
+<p>control</p>
+<p>question</p>
+<p>and</p>
+<p>active</p>
+<p>inference</p>
+<p>what</p>
+<p>would</p>
+<p>be</p>
+<p>the</p>
+<p>false</p>
+<p>positives</p>
+<p>and</p>
+<p>the</p>
+<p>false</p>
+<p>negatives</p>
+<p>of</p>
+<p>different</p>
+<p>regimes</p>
+<p>of</p>
+<p>attention</p>
+<p>and</p>
+<p>action</p>
+<p>what</p>
+<p>environmental</p>
+<p>patterns</p>
+<p>and</p>
+<p>variabilities</p>
+<p>would</p>
+<p>make</p>
+<p>certain</p>
+<p>kinds</p>
+<p>of</p>
+<p>cognitive</p>
+<p>heuristics</p>
+<p>adaptive</p>
+<p>or</p>
+<p>insecure</p>
+<p>it's</p>
+<p>just</p>
+<p>all</p>
+<p>right</p>
+<p>there</p>
+<p>and</p>
+<p>with</p>
+<p>cognitive</p>
+<p>computing</p>
+<p>that's</p>
+<p>where</p>
+<p>we're</p>
+<p>headed</p>
+<p>fast</p>
+<p>fast</p>
+<p>fast</p>
+<p>okay</p>
+<p>we upgraded</p>
+<p>this a</p>
+<p>little</p>
+<p>bit</p>
+<p>we'll</p>
+<p>write it</p>
+<p>into a</p>
+<p>who's</p>
+<p>on</p>
+<p>first</p>
+<p>dialogue</p>
+<p>not</p>
+<p>necessarily</p>
+<p>stalling</p>
+<p>for</p>
+<p>time</p>
+<p>while</p>
+<p>this</p>
+<p>ends</p>
+<p>but</p>
+<p>again</p>
+<p>if</p>
+<p>anyone</p>
+<p>has</p>
+<p>other</p>
+<p>questions</p>
+<p>we'll</p>
+<p>just</p>
+<p>kind</p>
+<p>of</p>
+<p>ensure</p>
+<p>that</p>
+<p>it's</p>
+<p>processing</p>
+<p>things</p>
+<p>completely</p>
+<p>and then</p>
+<p>we'll</p>
+<p>close</p>
+<p>it</p>
+<p>from</p>
+<p>there</p>
+<p>write</p>
+<p>all</p>
+<p>of</p>
+<p>this</p>
+<p>and</p>
+<p>the</p>
+<p>full</p>
+<p>repo</p>
+<p>context</p>
+<p>into</p>
+<p>a</p>
+<p>who's</p>
+<p>on</p>
+<p>first</p>
+<p>style</p>
+<p>dialogue</p>
+<p>please</p>
+<p>please</p>
+<p>please</p>
+<p>many</p>
+<p>esoteric</p>
+<p>lines</p>
+<p>baseball</p>
+<p>deep</p>
+<p>lore</p>
+<p>things</p>
+<p>that</p>
+<p>will</p>
+<p>pun</p>
+<p>and</p>
+<p>delight</p>
+<p>all</p>
+<p>okay</p>
+<p>guest</p>
+<p>stream</p>
+<p>two</p>
+<p>getting</p>
+<p>back</p>
+<p>early</p>
+<p>early</p>
+<p>early</p>
+<p>we</p>
+<p>also</p>
+<p>want</p>
+<p>to</p>
+<p>video</p>
+<p>audio</p>
+<p>download</p>
+<p>screen</p>
+<p>capture</p>
+<p>multimodal</p>
+<p>embeddings</p>
+<p>okay</p>
+
+<p>okay</p>
+<p>we'll</p>
+<p>have to do</p>
+<p>one more</p>
+<p>include</p>
+<p>more</p>
+<p>specifics</p>
+<p>and make</p>
+<p>puns</p>
+<p>thereof</p>
+<p>for the</p>
+<p>repo</p>
+<p>and code</p>
+<p>and</p>
+<p>include</p>
+<p>many</p>
+<p>specific</p>
+<p>baseball</p>
+<p>terms</p>
+<p>and</p>
+<p>historical</p>
+<p>anecdotes</p>
+<p>slash</p>
+<p>data</p>
+<p>okay</p>
+<p>we're</p>
+<p>almost</p>
+<p>at the</p>
+<p>end</p>
+<p>now</p>
+<p>this</p>
+<p>this</p>
+<p>I have</p>
+<p>not</p>
+<p>seen</p>
+<p>before</p>
+<p>with</p>
+<p>the</p>
+<p>code</p>
+<p>definitions</p>
+<p>internal</p>
+<p>to the</p>
+<p>who's on</p>
+<p>first</p>
+<p>dialogue</p>
+<p>that's</p>
+<p>write</p>
+<p>this</p>
+<p>to be</p>
+<p>longer</p>
+<p>with</p>
+<p>more</p>
+<p>baseball</p>
+<p>specific</p>
+<p>useless</p>
+<p>trivia</p>
+<p>and</p>
+<p>all</p>
+<p>plain text</p>
+<p>markdown</p>
+<p>dump</p>
+<p>the changes</p>
+<p>into</p>
+<p>who's on</p>
+<p>first</p>
+<p>okay</p>
+<p>live stream</p>
+<p>one</p>
+<p>see</p>
+<p>oh</p>
+<p>one</p>
+<p>okay</p>
+<p>see</p>
+<p>this one</p>
+<p>only</p>
+<p>it</p>
+<p>it's</p>
+<p>good</p>
+<p>that we</p>
+<p>checked</p>
+<p>it only</p>
+<p>did</p>
+<p>the</p>
+<p>metadata</p>
+<p>part</p>
+<p>this</p>
+<p>only</p>
+<p>downloaded</p>
+<p>metadata</p>
+<p>reach</p>
+<p>video</p>
+<p>ensure</p>
+<p>that all</p>
+<p>patterns</p>
+<p>are</p>
+<p>applied</p>
+<p>as</p>
+<p>per</p>
+<p>extract</p>
+<p>from</p>
+<p>two</p>
+<p>videos</p>
+<p>and</p>
+<p>we'll</p>
+<p>change</p>
+<p>this</p>
+<p>to</p>
+<p>concurrent</p>
+<p>executors</p>
+<p>10</p>
+<p>okay</p>
+<p>oh one</p>
+<p>is really</p>
+<p>thinking</p>
+<p>through</p>
+<p>it</p>
+<p>okay</p>
+<p>Okay, interesting.</p>
+<p>So it's like it is taking a different approach now.</p>
+<p>See?</p>
+<p>Hmm.</p>
+<p>I don't know if that's going to work.</p>
+<p>That looks a bit aggressive.</p>
+<p>We'll do it.</p>
+<p>Okay.</p>
+<p>Okay, here we go.</p>
+<p>Okay, I guess it deleted the part about downloading the videos because that's not being used anymore.</p>
+<p>But this is getting the transcripts.</p>
+<p>So let's look at...</p>
+<p>Well, let's let it run.</p>
+<p>Okay, let's just go to...</p>
+<p>See, it looks like it's only doing transcripts.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>XZ wrote...</p>
+<p>Q represents many things, but is a fourth coordinate necessary for higher dimensional framework?</p>
+<p>Awesome.</p>
+<p>Long live 4D.</p>
+<p>Okay.</p>
+<p>Okay, now it's doing the transcript.</p>
+<p>I am going to run that one.</p>
+<p>Well, let's check in on our...</p>
+<p>Let's check in on the budget department.</p>
+<p>Okay.</p>
+<p>Only...</p>
+<p>Only like 50 cents.</p>
+<p>With the 4.0 Mini.</p>
+<p>Okay.</p>
+<p>The multi-threader would be nice because I don't know if it'll...</p>
+<p>Ensure that all patterns are called and saved as per extract from...</p>
+<p>Institute videos.</p>
+<p>Right now it looks like just...</p>
+<p>And we'll let O1 take a swing at it.</p>
+<p>Well, O1 is still thinking on that...</p>
+<p>Who's on first question.</p>
+<p>But that's the one that's inside of the side chat.</p>
+<p>I'm just going to open up the single-threaded one.</p>
+<p>Okay.</p>
+<p>We know that that one works.</p>
+<p>If we can get a quick solve...</p>
+<p>With the multi-thread...</p>
+<p>We'll do it.</p>
+<p>Okay.</p>
+<p>Connection failed.</p>
+<p>We can get a quick solve on the multi-thread...</p>
+<p>We'll let that one run.</p>
+<p>That's much better.</p>
+<p>Otherwise, it'll still get there.</p>
+<p>Okay.</p>
+<p>Added a missing comma.</p>
+<p>Wow.</p>
+<p>Like, maybe that's why.</p>
+<p>Okay.</p>
+
+<p>Transcript.</p>
+<p>Okay.</p>
+<p>I'm still not seeing...</p>
+
+
+
+
+
+<p>All good.</p>
+<p>It's all good.</p>
+<p>Always another day.</p>
+<p>Okay.</p>
+<p>We'll close with a...</p>
+<p>Who's on first summary.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>We're leveraging the X, Z, Y, plus Q coordinates...</p>
+<p>To model multi-dimensional picture analytics.</p>
+<p>It's a game changer.</p>
+<p>Like the Sabermetrics revolution...</p>
+<p>Initiated by Bill James.</p>
+<p>Speaking of which...</p>
+<p>Remember how the Mets fooled everyone in 86...</p>
+<p>With their unorthodox strategies?</p>
+<p>Utility underfitter.</p>
+<p>Also funny.</p>
+<p>Okay.</p>
+<p>I'm gonna...</p>
+<p>If somebody wants to...</p>
+<p>Of course...</p>
+<p>Keep on...</p>
+<p>I'll just finish with this last push.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>All right.</p>
+<p>Thanks, everyone.</p>
+<p>Thanks for watching.</p>
+<p>Good luck.</p>
+<p>Leave a comment or get in touch if you want to...</p>
+<p>Continue exploring this direction.</p>
+<p>We can work on it anytime.</p>
+<p>Looking forward to how this can be used for...</p>
+<p>Translating.</p>
+<p>For digesting.</p>
+<p>Summarizing.</p>
+<p>Making the quizzes for every live stream.</p>
+<p>There's so many fun things we can do.</p>
+<p>So...</p>
+<p>Thanks, everyone.</p>
+<p>Peace.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

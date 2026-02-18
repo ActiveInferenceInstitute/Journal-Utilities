@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #006.2 ~ "A tale of two densities: active inference is enactive inference" (2020)</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #006.2 ~ "A tale of two densities: active inference is enactive inference" (2020)</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_006 &middot; Episode 2 &middot; Speakers: (2020) &middot; Duration: 1:10:11 &middot; Views: 260</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=HQadNEGAtbY">https://www.youtube.com/watch?v=HQadNEGAtbY</a></div>
+<article>
+<p>in behavioral ecology and</p>
+<p>pathology and evolutionary biology with</p>
+<p>with models that sort of</p>
+<p>[Music]</p>
+<p>having some sort of empirical conflict</p>
+<p>cool anyone else want to share something</p>
+<p>they're working on</p>
+<p>or i can also just raise the second</p>
+<p>warm-up question</p>
+<p>just in case people want to answer that</p>
+<p>one which is what is something that</p>
+<p>you'd like to have resolved by the end</p>
+<p>of today's discussion</p>
+<p>whether it's a thought about the paper</p>
+<p>specifically or</p>
+<p>something general um sure</p>
+<p>fellow jitzer i'm not sure that is</p>
+<p>shannon go ahead</p>
+<p>hey um i wonder</p>
+<p>whether the uh like structural</p>
+<p>representation</p>
+<p>that we might be defending later today</p>
+<p>um whether that structure could just be</p>
+<p>a set of attractor</p>
+<p>dynamics like is that enough to be a</p>
+<p>structure</p>
+<p>um so i think</p>
+<p>alex might be raising his hand to have</p>
+<p>something to say</p>
+<p>yep alex oh yeah i mean i was gonna</p>
+<p>speak anyway</p>
+<p>i mean i would say yes to that question</p>
+<p>probably</p>
+<p>um it's not just my opinion but um i was</p>
+<p>gonna answer</p>
+<p>both questions i guess so um apart from</p>
+<p>trying to figure out the free energy</p>
+<p>principle still uh lots of conversations</p>
+<p>with people i've been trying to um</p>
+<p>i've been working up to trying to</p>
+<p>implement a variational autoencoder to</p>
+<p>figure out how that actually works</p>
+<p>so um been doing a lot of sort of more</p>
+<p>technical work um something i'd like to</p>
+<p>have resolved is just</p>
+<p>to figure out exactly where um</p>
+<p>in activism or the version of an</p>
+<p>activism that's defended in this paper</p>
+<p>is inconsistent with representationalism</p>
+<p>if it is um</p>
+<p>so like it's not i don't need there to</p>
+<p>be residual disagreement but</p>
+<p>i just want to figure it out</p>
+<p>sounds good any last thoughts on these</p>
+<p>warm-ups before we</p>
+<p>jump into it we have a lot of very</p>
+<p>interesting slides kate go for it</p>
+<p>yeah i guess the biggest thing that i</p>
+<p>want to resolve by the end of the</p>
+<p>session is i'm still not</p>
+<p>really clear on the status of the</p>
+<p>generative model because at some points</p>
+<p>it sounds as if</p>
+<p>that's something that's almost causal</p>
+<p>that it's controlling the animal's</p>
+<p>behavior or</p>
+<p>the organism or the system's behavior</p>
+<p>and at other points it's</p>
+<p>a model it sounds more like it's a model</p>
+<p>that we use to describe the systems</p>
+<p>dynamics rather than</p>
+<p>something that is including beliefs or</p>
+<p>being causal and that's something i'm</p>
+<p>still not entirely clear on so i think</p>
+<p>that's</p>
+<p>a big thing cool</p>
+<p>all really interesting topics thanks for</p>
+<p>sharing and we're gonna</p>
+<p>jump into it because a lot of these are</p>
+<p>on the slides ahead</p>
+<p>so the paper that we're going to be</p>
+<p>coming back to today is</p>
+<p>a tale of two densities active inference</p>
+<p>is an active inference by</p>
+<p>ramstead kirchhoff and fristen and just</p>
+<p>to rehearse the goal of this paper</p>
+<p>they aimed to clarify how best to</p>
+<p>interpret some of the central constructs</p>
+<p>that underwrite the free energy</p>
+<p>principle</p>
+<p>and its corollary active inference in</p>
+<p>theoretical neuroscience and biology</p>
+<p>namely the role that the generative</p>
+<p>models and the recognition densities</p>
+<p>play in this theory</p>
+<p>aiming to unify life and mind and so</p>
+<p>last week we talked about what these two</p>
+<p>densities are</p>
+<p>and we talked about the tail that</p>
+<p>integrates the densities</p>
+<p>we also walk through the road map how</p>
+<p>they build from a to z</p>
+<p>by talking about statistical models and</p>
+<p>representations</p>
+<p>introducing active inference and then</p>
+<p>combining that with an</p>
+<p>active inference in this sort of</p>
+<p>inactivism 2.0</p>
+<p>framework before building towards</p>
+<p>multi-disciplinary research heuristics</p>
+<p>for cognitive science</p>
+<p>so that was last week let's get into the</p>
+<p>new and exciting parts</p>
+<p>so this was one of the feedback comments</p>
+<p>from a participant</p>
+<p>last week and what they wrote was a key</p>
+<p>learning goal for me in building my</p>
+<p>understanding of active inference is to</p>
+<p>develop</p>
+<p>intuitive examples for the critical</p>
+<p>concepts that can act as the basis for</p>
+<p>abstraction later on</p>
+<p>it seems to me like there is probably</p>
+<p>something like a logical sequence in</p>
+<p>which this should be done but i don't</p>
+<p>necessarily always know which concepts</p>
+<p>and ideas from active inference to</p>
+<p>prioritize</p>
+<p>as an example coming from a cognitive</p>
+<p>linguistics background i tend to think</p>
+<p>of beliefs as either causal reasoning</p>
+<p>or the underlying sensory motor</p>
+<p>simulations that connect to linguistic</p>
+<p>concepts</p>
+<p>i've been trying to find new intuitive</p>
+<p>examples that can help me to understand</p>
+<p>beliefs as probability distributions as</p>
+<p>clearly this is the key for making</p>
+<p>progress in understanding active</p>
+<p>inference</p>
+<p>so my question for all of you is what is</p>
+<p>a system</p>
+<p>or a metaphor that helps you understand</p>
+<p>active inference</p>
+<p>and why and while people are raising</p>
+<p>their hand on the bottom we have</p>
+<p>just a few of the systems that we've</p>
+<p>been discussing over the last weeks</p>
+<p>we have a brain the technical and the</p>
+<p>artistic parts of the brain</p>
+<p>we have insect colonies we have dance</p>
+<p>and embodiment and movements and then on</p>
+<p>the right i guess it reflects</p>
+<p>something like the economy or changes in</p>
+<p>dynamical systems but</p>
+<p>what is a system that helps you</p>
+<p>understand</p>
+<p>through specifics something about active</p>
+<p>inference</p>
+<p>any thoughts on this</p>
+<p>i mean i hate to be that guy but like i</p>
+<p>started</p>
+<p>understanding active inference when i</p>
+<p>went into the math</p>
+<p>uh like it's it's a formal theory and i</p>
+<p>i think we can actually be misled by</p>
+<p>uh metaphor uh</p>
+<p>yeah uh some of my some of my</p>
+<p>reservations about the philosophical</p>
+<p>work that's been done on active</p>
+<p>inference is that</p>
+<p>it it operates on the basis of you know</p>
+<p>um kind of unformal</p>
+<p>intuitive conceptual understandings</p>
+<p>rather than trying to</p>
+<p>see what the math that says so i hate to</p>
+<p>be that guy though</p>
+<p>no that's perfect we'll go to alex</p>
+<p>fiatkin and then</p>
+<p>to kate go ahead alex</p>
+<p>yeah for me most important changed</p>
+<p>my views was uh taking seriously</p>
+<p>approach from like for process</p>
+<p>and understanding uh</p>
+<p>concepts about states and steady states</p>
+<p>of possible processes and the later on</p>
+<p>all this concept with markov blanket as</p>
+<p>a border</p>
+<p>and underlying structure like</p>
+<p>generative models in links with</p>
+<p>cybernetics it's bringing me</p>
+<p>some kind of top-level picture and now</p>
+<p>i'm trying to</p>
+<p>focus on different parts to have more</p>
+<p>detailed understanding</p>
+<p>cool kate and then mel</p>
+<p>yeah i was also going to say cybernetics</p>
+<p>i think i only really started to</p>
+<p>understand what was going on once i</p>
+<p>started seeing the links with like ashby</p>
+<p>and accounts of survival as stability</p>
+<p>um that was when things started to make</p>
+<p>sense for me um</p>
+<p>and there's also just like a nice</p>
+<p>metaphor i quite liked and i think it's</p>
+<p>brilliant</p>
+<p>it's a paper by ellie bruneberg i think</p>
+<p>with the union keemstar</p>
+<p>right with the crooked scientist</p>
+<p>metaphor the way the scientist is trying</p>
+<p>to</p>
+<p>obtain the result that it's looking for</p>
+<p>so it has to have some sort of</p>
+<p>latch on the world in order to bring</p>
+<p>about that result but it's still trying</p>
+<p>to obtain</p>
+<p>the result that it wants in the first</p>
+<p>place rather than passively</p>
+<p>find out what will happen i thought it</p>
+<p>was quite a nice metaphor</p>
+<p>so do you think they are helpful cool</p>
+<p>mel</p>
+<p>so i remember i'm i'm remembering um</p>
+<p>my first sort of aha moment with the fpp</p>
+<p>and active entrance</p>
+<p>um i was i was explaining this stuff</p>
+<p>to my friend who works on on similar</p>
+<p>things but in a very different framework</p>
+<p>um in the mit media lab and he had like</p>
+<p>papers</p>
+<p>strewn everywhere scribbling all over</p>
+<p>them and</p>
+<p>my realization in explaining this</p>
+<p>framework to him was that</p>
+<p>um that there is</p>
+<p>fundamentally at the at the lowest level</p>
+<p>at the at the level of the simplest sort</p>
+<p>of systems</p>
+<p>or at their kind of lowest scale</p>
+<p>right um no difference between</p>
+<p>belief updating and action so</p>
+<p>a a change in the system is a change in</p>
+<p>the system</p>
+<p>right and that is both</p>
+<p>a belief update and an action right</p>
+<p>um and once you build in</p>
+<p>further levels of of hierarchical</p>
+<p>organization and complexity you get this</p>
+<p>strong differentiation between them but</p>
+<p>at the lowest level of this the same</p>
+<p>thing</p>
+<p>[Music]</p>
+<p>cool and kate did that</p>
+<p>okay had you raised your hand there and</p>
+<p>also i'm just</p>
+<p>going to yeah alex kiefer go ahead</p>
+<p>oh um yeah i mean i was gonna</p>
+<p>that's i like that point that at least</p>
+<p>at the lowest level we'll leave updating</p>
+<p>an action or kind of</p>
+<p>same thing i guess um that's one reason</p>
+<p>that's one reason that i'm skeptical</p>
+<p>that we need to explicitly i think</p>
+<p>implicitly</p>
+<p>more traditional bayesian brain stories</p>
+<p>kind of</p>
+<p>are built on that claim as well but um i</p>
+<p>was going to say what got me into what</p>
+<p>got me into active inference also</p>
+<p>sort of a technical point was just that</p>
+<p>you really can't you can't optimize the</p>
+<p>thing you can't minimize surprisal</p>
+<p>just by ingesting adjusting and</p>
+<p>at least not okay the surprise</p>
+<p>depends in part on the sensory</p>
+<p>observations right so you can't minimize</p>
+<p>that</p>
+<p>just by changing your generative model</p>
+<p>um you have to</p>
+<p>change the observations so that's that's</p>
+<p>the technical thing that got me into it</p>
+<p>um cool and yeah</p>
+<p>thanks everyone for being flexible and</p>
+<p>fun on the tech</p>
+<p>maxwell i really agree that the metaphor</p>
+<p>as always with metaphors it's a question</p>
+<p>about</p>
+<p>compression of semantics and meaning and</p>
+<p>at the end of the day we're talking</p>
+<p>about</p>
+<p>something specific and so we can think</p>
+<p>about different systems</p>
+<p>that help us understand how active</p>
+<p>inference is deployed in the real world</p>
+<p>but often metaphors will take off</p>
+<p>take us off the mark uh because it</p>
+<p>removes us from the real</p>
+<p>underlying details so let's return and</p>
+<p>the details are really where the devil's</p>
+<p>at</p>
+<p>uh in this case uh i think</p>
+<p>but yep i i agree hopefully in the end</p>
+<p>with the figures we're gonna be able to</p>
+<p>look</p>
+<p>at those details really specifically and</p>
+<p>i think that the way that figure 2 3 and</p>
+<p>4</p>
+<p>lead into each other helped me</p>
+<p>understand a lot about the system</p>
+<p>so just to take another look at these</p>
+<p>two</p>
+<p>cities the two cities that are being</p>
+<p>linked the densities</p>
+<p>on the left we have the bayesian</p>
+<p>structural representationalist</p>
+<p>and alex freely added any details here</p>
+<p>but bayesian models move between the</p>
+<p>data parameters the observations and</p>
+<p>hyper parameters or higher order</p>
+<p>parameters and</p>
+<p>from the data to the hyper parameters we</p>
+<p>call it a recognition model</p>
+<p>and to go from hyper parameters to a set</p>
+<p>of data or observations</p>
+<p>that is a generative model and the</p>
+<p>outcome is a statistical convergence of</p>
+<p>a multi-level model that represents</p>
+<p>structures of the world</p>
+<p>for example through an expectation</p>
+<p>maximization scheme</p>
+<p>we can contrast this with the inactivist</p>
+<p>school of thought</p>
+<p>which has linked rather than data and</p>
+<p>hyper data</p>
+<p>but rather has focused on the world and</p>
+<p>agents and how they're linked through</p>
+<p>perception</p>
+<p>and action so a lot more adjacencies to</p>
+<p>areas</p>
+<p>like niche construction and ecological</p>
+<p>psychology</p>
+<p>and we remember hearing from maxwell</p>
+<p>last week about how it was the desire to</p>
+<p>mathematically rigorize some of the</p>
+<p>inactivism</p>
+<p>that led him to the bayesian approach</p>
+<p>and let's now think about how these two</p>
+<p>densities</p>
+<p>are linked with a little bit more</p>
+<p>feedback from one of our</p>
+<p>participants they wrote the domino</p>
+<p>metaphor</p>
+<p>finally makes sense the physical</p>
+<p>dominoes are the physical state of the</p>
+<p>system</p>
+<p>corresponding to the recognition model</p>
+<p>and the falling of the dominoes</p>
+<p>is like the process or the dynamics of</p>
+<p>the system reflecting the generative</p>
+<p>model so here we've kind of combined</p>
+<p>these two</p>
+<p>different ways of thinking and we're</p>
+<p>looking at the relationship</p>
+<p>of the world and the agent or the system</p>
+<p>and the system's surroundings</p>
+<p>and directly went ahead and combined</p>
+<p>perception with the recognition model</p>
+<p>and action with the generative model and</p>
+<p>then also just to combine that with what</p>
+<p>kate was just talking about with</p>
+<p>cybernetics</p>
+<p>this is a quote from the paper that says</p>
+<p>on this view active inference can be</p>
+<p>read as a new take on the good regulator</p>
+<p>theorem proposed by content and rosh</p>
+<p>ashby in 1970.</p>
+<p>active inference tells us about the</p>
+<p>relation between a control system</p>
+<p>the generative model with priors over</p>
+<p>action policies</p>
+<p>and a system being controlled the</p>
+<p>organism and its adaptive behavior</p>
+<p>the actual actions undertaken in and</p>
+<p>part of the world</p>
+<p>so what what exactly does this clarify</p>
+<p>about active inference</p>
+<p>or what do people think about this</p>
+<p>metaphor um or at least way to think</p>
+<p>about how</p>
+<p>if not necessarily a metaphor how would</p>
+<p>we apply active inference to this</p>
+<p>system what are we getting at here with</p>
+<p>these similarities and differences</p>
+<p>between the two</p>
+<p>models</p>
+<p>sure well mel</p>
+<p>the the good regulator theorem the idea</p>
+<p>is that um</p>
+<p>any good control structure for some</p>
+<p>larger system has to</p>
+<p>be a model of that system it has to</p>
+<p>contain</p>
+<p>in it all of the the key variables</p>
+<p>for that system and basically what this</p>
+<p>says</p>
+<p>to me about active inference is that um</p>
+<p>in order for a system</p>
+<p>in an environment to be able to</p>
+<p>adequately</p>
+<p>react to whatever kinds of perturbations</p>
+<p>are happening in the environment</p>
+<p>it has to contain all of the key</p>
+<p>existence i call them existential</p>
+<p>variables and</p>
+<p>the the variables in the environment</p>
+<p>that would lead to the system</p>
+<p>continuing to exist or not continuing to</p>
+<p>place</p>
+<p>cool and so how exactly i'm just curious</p>
+<p>um does the system come to embody all</p>
+<p>the key variables of the outside world</p>
+<p>like</p>
+<p>don't the models of the organism reflect</p>
+<p>a simplified</p>
+<p>version of the outside world otherwise</p>
+<p>there kind of is a abortion story about</p>
+<p>the map that represents the territory</p>
+<p>exactly</p>
+<p>so how does a good regulator arise in</p>
+<p>the context of an environment like that</p>
+<p>um shannon and then maxwell</p>
+<p>well i don't think the key is to be an</p>
+<p>exact</p>
+<p>like imitative model of the world or an</p>
+<p>exact map even of the world</p>
+<p>but just a model that is good enough to</p>
+<p>enable you to act and</p>
+<p>adjust in the world</p>
+<p>cool maxwell and then mel</p>
+<p>yeah i mean uh so formally speaking</p>
+<p>there's a difference between</p>
+<p>external states and hidden states um</p>
+<p>and i mean when everything is going well</p>
+<p>uh the external states that are modeled</p>
+<p>by the system coincide with</p>
+<p>the hidden states that are actually out</p>
+<p>there</p>
+<p>um and this is more of this it's not</p>
+<p>i'm not i'm not sure if it's guaranteed</p>
+<p>but</p>
+<p>it it is strongly implied by the fact</p>
+<p>that we're minimizing</p>
+<p>uh variational free energy uh</p>
+<p>that you know it if if we're if we're</p>
+<p>not generating a lot of</p>
+<p>free energy then uh the external beliefs</p>
+<p>that we have</p>
+<p>about the environment tend to reflect uh</p>
+<p>you know the causal structure of that</p>
+<p>environment</p>
+<p>but i mean manuel baltierri and chris</p>
+<p>buckley have done some interesting work</p>
+<p>showing that actually</p>
+<p>the there isn't a necessary kind of</p>
+<p>entailment relation</p>
+<p>um you can have uh</p>
+<p>you can have the the system can be</p>
+<p>acting</p>
+<p>that don't actually exist and i mean</p>
+<p>this makes sense also</p>
+<p>just evolutionarily uh perceptual</p>
+<p>systems don't track truth they enable</p>
+<p>adaptive</p>
+<p>uh behavioral loops so if you're a prey</p>
+<p>item like a bunny</p>
+<p>it's adaptive to generate a lot of false</p>
+<p>positives</p>
+<p>uh compared to you know allowing for</p>
+<p>false negatives and in terms of like</p>
+<p>predator detection</p>
+<p>it's it's more advantageous to you know</p>
+<p>make a few</p>
+<p>less costly mistakes than make a big one</p>
+<p>so uh</p>
+<p>i mean yellow breenenberg and eric rivel</p>
+<p>make make that point in the</p>
+<p>paper that kate was mentioning just</p>
+<p>earlier but uh</p>
+<p>yeah the it doesn't actually have to</p>
+<p>hook up</p>
+<p>to anything in the real world though</p>
+<p>usually it will end up</p>
+<p>doing so cool mel and sasha</p>
+<p>yeah so the the key term in what i said</p>
+<p>is key actually um so the key variables</p>
+<p>right</p>
+<p>that's that's just what keeps the system</p>
+<p>alive and we can imagine</p>
+<p>that we first get a system on the scene</p>
+<p>that</p>
+<p>needs just basically one parameter</p>
+<p>in its environment to be correct in</p>
+<p>order to continue to exist as a system</p>
+<p>and then we build up from there to</p>
+<p>systems that are progressively</p>
+<p>more and more complex and need</p>
+<p>progressively more and more</p>
+<p>complex sort of environmental scenarios</p>
+<p>to survive</p>
+<p>and then they themselves in order to</p>
+<p>survive in those</p>
+<p>more complex regimes need to build in</p>
+<p>complexity</p>
+<p>right in in terms of their their the</p>
+<p>models</p>
+<p>of the world that they enact right and i</p>
+<p>think it says something</p>
+<p>interesting about um how we</p>
+<p>conceptualize a</p>
+<p>cognition and the onset of cognitive</p>
+<p>complexity</p>
+<p>um as sort of um and this is</p>
+<p>peter godfrey smith's line on subject is</p>
+<p>is it's a response to a complexifying</p>
+<p>environmental circumstance right</p>
+<p>cool sasha then alex keefer</p>
+<p>um yeah uh one key phrase that really</p>
+<p>helped me better</p>
+<p>understand um active inference</p>
+<p>um is uh good enough and that's what</p>
+<p>really</p>
+<p>um kind of put it all together that um</p>
+<p>while we're</p>
+<p>going about and reducing uncertainty</p>
+<p>about our system</p>
+<p>it just has to be good enough to make</p>
+<p>the next action</p>
+<p>or in the evolutionary sense to survive</p>
+<p>and</p>
+<p>that metaphor has really helped me go</p>
+<p>through all this</p>
+<p>um all these high level concepts so i</p>
+<p>thank you for mentioning that</p>
+<p>alex kiefer then alex fiatkin thanks um</p>
+<p>yeah i just wanted to just note that</p>
+<p>there's there's you don't need</p>
+<p>to contrast accuracy or you know</p>
+<p>answerable to the truth-ness with um</p>
+<p>uh enabling adaptive behavior uh as as</p>
+<p>like a dichotomy</p>
+<p>um i'm not sure if that's what was</p>
+<p>intended or not but this one reason i've</p>
+<p>had trouble getting into</p>
+<p>understanding the sort of</p>
+<p>anti-representationalist</p>
+<p>viewpoint is that um you know structural</p>
+<p>similarity is a matter of degree</p>
+<p>accuracy is a matter of degree in this</p>
+<p>sense so um</p>
+<p>i mean yes your hidden state</p>
+<p>representation doesn't have to map</p>
+<p>completely</p>
+<p>accurately onto reality it doesn't have</p>
+<p>to capture every detail but if it</p>
+<p>doesn't do that to any degree</p>
+<p>you're screwed so you know maybe we need</p>
+<p>systematically sort of simpler or</p>
+<p>biased representations in order to do</p>
+<p>the job but i think there's still a</p>
+<p>implied relationship to the truth</p>
+<p>there cool alex</p>
+<p>yeah thanks uh i want to change</p>
+<p>the system's level of consideration of</p>
+<p>possible application of active inference</p>
+<p>and for me interesting</p>
+<p>on a personal level in terms of</p>
+<p>day phenomenology and especially</p>
+<p>professional and or working day</p>
+<p>phenomenology</p>
+<p>how it works what is a generative model</p>
+<p>and like an example</p>
+<p>and what i won't discuss if i get it</p>
+<p>correctly or</p>
+<p>how it's good possible develop to think</p>
+<p>about it</p>
+<p>but if for example some doctor</p>
+<p>he know different disciplines</p>
+<p>and with different ontologies</p>
+<p>and when he met the patient he</p>
+<p>started his actions by his generative</p>
+<p>model which activates with</p>
+<p>recognition models to serve</p>
+<p>as a doctor depends on exact situation</p>
+<p>and exact case</p>
+<p>and if it's so from for example from</p>
+<p>another</p>
+<p>level from team level if person</p>
+<p>behave professionally in some discipline</p>
+<p>it</p>
+<p>became like a perception model</p>
+<p>for a generative model of the team</p>
+<p>and what does it mean in terms of</p>
+<p>learning and education of team members</p>
+<p>because</p>
+<p>if we can how</p>
+<p>some in some way to link recognition</p>
+<p>models with ontologies</p>
+<p>and starting to work with it more again</p>
+<p>cybernetically it's possible could be</p>
+<p>very interesting</p>
+<p>at least for me cool agreed the the</p>
+<p>ontologies that how we think about the</p>
+<p>world</p>
+<p>definitely influences our perception</p>
+<p>and sasha's do you have something else</p>
+<p>otherwise okay shannon go ahead</p>
+<p>um i was just going back to alex</p>
+<p>keefer's point that</p>
+<p>your model like there has to be some</p>
+<p>truth relationship with the world and if</p>
+<p>we're going</p>
+<p>to the dominoes and the process needs to</p>
+<p>be that the dominoes fall to make some</p>
+<p>cool pattern</p>
+<p>if there's an interruption like so now</p>
+<p>this domino can't reach</p>
+<p>the next domino like that's akin to a</p>
+<p>disruption and</p>
+<p>how truthy the model is of the world</p>
+<p>and it disrupts the action that you're</p>
+<p>able to take or it disrupts the</p>
+<p>um you die instead of being able to</p>
+<p>survive</p>
+<p>because your model isn't accurate at</p>
+<p>that stage for the processes to continue</p>
+<p>happening to</p>
+<p>do the next action or to survive</p>
+<p>cool cool discussion on this domino</p>
+<p>system let's talk about counter factuals</p>
+<p>and also return</p>
+<p>to some of the great questions alejandra</p>
+<p>raised in previous</p>
+<p>weeks this is from another participant's</p>
+<p>feedback</p>
+<p>they wrote what i'd like to clarify if</p>
+<p>possible is the following</p>
+<p>am i right in understanding the</p>
+<p>generative model as a control system</p>
+<p>that is dynamically instantiated</p>
+<p>between an organism and an affordance in</p>
+<p>the context</p>
+<p>and the recognition density as a</p>
+<p>relation between the sensory inputs and</p>
+<p>the possibilities for action policies</p>
+<p>encoded in the organism</p>
+<p>if so how does this work when action is</p>
+<p>instantiated by counter factual</p>
+<p>forms of cognition or simulation i.e</p>
+<p>those that do not rely on affordances in</p>
+<p>the current external context</p>
+<p>and so on the bottom right there's a</p>
+<p>younger person</p>
+<p>looking into the mirror or maybe vice</p>
+<p>versa and seeing an older</p>
+<p>person and this is reflecting how not</p>
+<p>only is there a deep temporal</p>
+<p>aspect to our action in the current</p>
+<p>moment</p>
+<p>meaning that there's often affordances</p>
+<p>that aren't available to us at the</p>
+<p>second that we're</p>
+<p>actually making the decision but also</p>
+<p>that we think</p>
+<p>about future possible affordances that</p>
+<p>don't exist based upon the sensory data</p>
+<p>that we're getting</p>
+<p>or do they and then on the right side i</p>
+<p>have a few bacteria</p>
+<p>because this is like an example of a</p>
+<p>system</p>
+<p>that we might not think of as having a</p>
+<p>simulation or</p>
+<p>counterfactual based mechanism of action</p>
+<p>often bacterial behavior can be</p>
+<p>summarized quite concisely by just the</p>
+<p>short term</p>
+<p>gradients that it's ascending or</p>
+<p>descending so</p>
+<p>for anyone to raise their hand and chime</p>
+<p>in</p>
+<p>how how do counter factuals play into</p>
+<p>this and how do we make sense of</p>
+<p>affordances</p>
+<p>that aren't in a current ecosystem but</p>
+<p>are still important for behavior maxwell</p>
+<p>well i just want to comment on the first</p>
+<p>part of that question</p>
+<p>um so i mean i think it's a bit simpler</p>
+<p>than that in terms</p>
+<p>of the relationship between the</p>
+<p>recognition and the generative</p>
+<p>models or densities um so your</p>
+<p>recognition model is just</p>
+<p>your post your posterior the all of your</p>
+<p>posteriors basically all of the</p>
+<p>all of your posterior estimates over</p>
+<p>states</p>
+<p>and precision it's like my best guess</p>
+<p>as to you know what the value of all</p>
+<p>these states</p>
+<p>are um and</p>
+<p>i mean you can think of that as uh the</p>
+<p>system's current</p>
+<p>physical state uh so under under the act</p>
+<p>of inference</p>
+<p>um formalism the current physical state</p>
+<p>of the organism encodes uh</p>
+<p>basically the the specific parameters</p>
+<p>of these uh beliefs over external states</p>
+<p>the</p>
+<p>the actual physical states of the system</p>
+<p>encode these parameters which</p>
+<p>so yeah you embody a best guess</p>
+<p>the the generative model is the point of</p>
+<p>reference for the free energy gradients</p>
+<p>so you can think of one as like you know</p>
+<p>uh</p>
+<p>the inference model and the other is the</p>
+<p>control</p>
+<p>model in the sense that the inference</p>
+<p>model of the recognition density is sort</p>
+<p>of like my best guess right now</p>
+<p>and the generative model is is</p>
+<p>essentially you know a model of what my</p>
+<p>phenotypic preferences are</p>
+<p>and uh it's the tandem between the two</p>
+<p>that kind of gets you behavior</p>
+<p>as in um the generative model provides</p>
+<p>the point</p>
+<p>uh the point of reference uh for the</p>
+<p>definition of the variational free</p>
+<p>energy gradients i.e</p>
+<p>how close am i um to</p>
+<p>my you know desired sensory distribution</p>
+<p>and the recognition model tells you</p>
+<p>where you are effectively</p>
+<p>so it's like where i am where i want to</p>
+<p>be and the free energy</p>
+<p>is sort of the difference between the</p>
+<p>two effectively um</p>
+<p>so i mean the first part of that</p>
+<p>question</p>
+<p>yes you're right in understanding the</p>
+<p>generative model as a control system</p>
+<p>um the recognition density is just the</p>
+<p>best guess</p>
+<p>it's the posterior uh so i mean it yes</p>
+<p>it is harnessing these relations that</p>
+<p>are being described here</p>
+<p>uh but that's precisely because it's a</p>
+<p>posterior estimate</p>
+<p>of uh you know states and precisions and</p>
+<p>all that</p>
+<p>cool and one more thought on that is</p>
+<p>for an agent who knows about for example</p>
+<p>how hammers and nails are related</p>
+<p>through their internal models they might</p>
+<p>look at hammers and nails and pieces of</p>
+<p>wood</p>
+<p>and think you know later on i could</p>
+<p>build a house with this</p>
+<p>and so it's actually a future affordance</p>
+<p>but it's based upon sensory input at the</p>
+<p>current moment</p>
+<p>um cool i'm gonna just</p>
+<p>move on to the next slide and just a</p>
+<p>short little quote by buckminster fuller</p>
+<p>because sometimes i just have to he</p>
+<p>wrote rope may not be much like water</p>
+<p>but not is like the wave and this is</p>
+<p>from the synergetics framework</p>
+<p>and it's getting at this notion that</p>
+<p>there's a difference between structural</p>
+<p>integrity</p>
+<p>which is like the rope and the water</p>
+<p>which are quite different they're both</p>
+<p>static and stable</p>
+<p>to pattern integrity and knots and waves</p>
+<p>can travel</p>
+<p>through a medium and so by virtue of</p>
+<p>traveling through medium</p>
+<p>kind of like that domino wave there's</p>
+<p>something similar</p>
+<p>about these traveling waves that goes</p>
+<p>beyond the</p>
+<p>mere structural integrity of their media</p>
+<p>and so i just a thought question for</p>
+<p>later is really</p>
+<p>is active inference a structural</p>
+<p>integrity or a pattern integrity</p>
+<p>i would say that it's a pattern</p>
+<p>integrity and just bringing up this</p>
+<p>notion that many far from equilibrium</p>
+<p>systems</p>
+<p>though their mechanisms are extremely</p>
+<p>different for example the bacteria</p>
+<p>and the person there's going to be</p>
+<p>similarities because</p>
+<p>of the way that they're needing to</p>
+<p>persist from a cybernetic perspective</p>
+<p>enough there let's get to that question</p>
+<p>about structural</p>
+<p>aspects of attractors so here</p>
+<p>a participant provided feedback and</p>
+<p>wrote why can't</p>
+<p>the recognition and generative models be</p>
+<p>considered as structural representations</p>
+<p>so they're coming from a structural</p>
+<p>representationalist perspective</p>
+<p>they wrote in which case the dynamics of</p>
+<p>the structure are taken into account as</p>
+<p>part of the representation</p>
+<p>even if we're appealing to dynamical</p>
+<p>systems the states of any particular</p>
+<p>dynamical system</p>
+<p>over time make up the structural</p>
+<p>representation</p>
+<p>take the lorenz attractor the lorenz</p>
+<p>attractor has a specific approximate</p>
+<p>structure around two attractor states</p>
+<p>but the states and the trajectory of any</p>
+<p>point are sensitive to initial</p>
+<p>conditions</p>
+<p>so any two initial points will lead to</p>
+<p>different precise physical states and</p>
+<p>dynamics</p>
+<p>but will still travel through a very</p>
+<p>similar trajectory which hovers around</p>
+<p>these attractor basins</p>
+<p>the states and the dynamics of a set of</p>
+<p>points over time</p>
+<p>can be taken as a whole and be</p>
+<p>identified as embodying structural</p>
+<p>representations of the lorenz</p>
+<p>system so this is something from the</p>
+<p>realm of chaos and complexity theory</p>
+<p>and the lorenz attractor is an attractor</p>
+<p>that describes a simplified system of</p>
+<p>equations</p>
+<p>describing the flow of fluid and it's a</p>
+<p>fluid of uniform depth</p>
+<p>and there are also parameters for the</p>
+<p>imposed temperature difference</p>
+<p>the gravity parameters the buoyancy the</p>
+<p>thermal diffusivity and the kinematic</p>
+<p>viscosity</p>
+<p>and the simple physical analogy here is</p>
+<p>like heating up a pot of water there's</p>
+<p>heat coming from the bottom</p>
+<p>and there's cooling coming from the top</p>
+<p>and there's this churning happening and</p>
+<p>it goes around these two different</p>
+<p>attractor states</p>
+<p>so in this case maybe alex uh</p>
+<p>or anyone else who raises their hand</p>
+<p>what is structure</p>
+<p>and what is representation and if we</p>
+<p>agree on what this system is then what</p>
+<p>is this representation debate that's</p>
+<p>happening</p>
+<p>mel</p>
+<p>mel unmuted mel</p>
+<p>or maxwell go ahead all right okay let's</p>
+<p>go to alex</p>
+<p>yeah mel if you want to speak yourself</p>
+<p>it's raised then we'll go to alex keefe</p>
+<p>and they'll raise their hand first i</p>
+<p>think yeah i was going to say i like</p>
+<p>alex okay perfect</p>
+<p>okay well i was going to say hey let me</p>
+<p>talk</p>
+<p>i don't have much to say about the</p>
+<p>lorenz attractor um</p>
+<p>it looks like a i mean what's i'm not</p>
+<p>sure what's supposed to be represented</p>
+<p>in this case</p>
+<p>like it i have an intuition in the case</p>
+<p>of we're dealing with like</p>
+<p>a biological system because you know</p>
+<p>we're</p>
+<p>intuitively representing some kind of</p>
+<p>environment i'm just not sure</p>
+<p>i'm not sure how to begin with this</p>
+<p>example</p>
+<p>um right we've got the state space</p>
+<p>and this nice graphical representation</p>
+<p>of the states of this of the state space</p>
+<p>but</p>
+<p>um unless we interpret this entire</p>
+<p>system as representing something i don't</p>
+<p>know what to say about</p>
+<p>its sort of content</p>
+<p>okay cool mel</p>
+<p>i don't know what a recommendation</p>
+<p>is and so i</p>
+<p>for that reason i guess i think that the</p>
+<p>question of</p>
+<p>what a representation is and</p>
+<p>what in the world is a representation is</p>
+<p>is maybe too ambitious only because i</p>
+<p>haven't solved it</p>
+<p>but there's a related question that's</p>
+<p>less ambitious which is</p>
+<p>what is the difference between a</p>
+<p>biological</p>
+<p>function and a representation</p>
+<p>um and that i think is more manageable</p>
+<p>in some respects um</p>
+<p>in phil biomind cogside we</p>
+<p>speak of the disjunction problem so we</p>
+<p>speak of and i know</p>
+<p>maxwell like hates this framing and</p>
+<p>thinks it's updated and we don't need it</p>
+<p>anymore</p>
+<p>um the idea is that in order for</p>
+<p>representation to be a representation it</p>
+<p>needs to have the capacity to represent</p>
+<p>and we have a similar idea in biological</p>
+<p>function which is</p>
+<p>that in order for a function to be a</p>
+<p>function it needs to have</p>
+<p>the capacity to malfunction right so you</p>
+<p>need malfunction dab function you need</p>
+<p>misrepresentation that representation</p>
+<p>um but how do we differentiate</p>
+<p>a function from a representation</p>
+<p>good question maxwell then alex</p>
+<p>cool um well so regarding the question</p>
+<p>what is a representation</p>
+<p>we targeted a very specific account of</p>
+<p>representation</p>
+<p>i mean in the philosophy of cognitive</p>
+<p>science a representation is basically an</p>
+<p>internal thing within an organism that</p>
+<p>stands for</p>
+<p>uh some feature of the environment or</p>
+<p>the organism's own body</p>
+<p>in a way that the organism can leverage</p>
+<p>to you know do something interesting</p>
+<p>we focus more specifically on the claim</p>
+<p>that</p>
+<p>generative models are structural</p>
+<p>representations</p>
+<p>so uh i mean this has</p>
+<p>been an account that's been uh you know</p>
+<p>opium o'brien first worked on this in</p>
+<p>the mid-2000s</p>
+<p>uh and then glazievsky and milkowski in</p>
+<p>the context of predictive coding</p>
+<p>and then generative models um i mean</p>
+<p>yeah it i i think alex and i are gonna</p>
+<p>still</p>
+<p>disagree about this even after talking</p>
+<p>about it for like dozens of hours at</p>
+<p>this point but</p>
+<p>um yeah the main</p>
+<p>the main reason why uh in this paper we</p>
+<p>argue that they're not</p>
+<p>is that the generative model isn't</p>
+<p>encoded in anything</p>
+<p>uh and this is like um one of the main</p>
+<p>differences between more traditional</p>
+<p>bayesian</p>
+<p>brain architectures and active inference</p>
+<p>as dan was pointing out really early on</p>
+<p>uh in traditional architectures well the</p>
+<p>recognition and generative</p>
+<p>models are just inverse the ones of the</p>
+<p>others the the recognition model is a</p>
+<p>mapping from the data to states</p>
+<p>and uh the generative uh model is a</p>
+<p>mapping from states to data</p>
+<p>so it's really just the same kind of set</p>
+<p>of connections and everything but it's</p>
+<p>just like which direction are you</p>
+<p>considering it</p>
+<p>like from the top down flow or</p>
+<p>from the from the uh the top down floor</p>
+<p>or the bottom up flow of information</p>
+<p>um</p>
+<p>yeah well i mean that was a really a</p>
+<p>nice explanation of what structural</p>
+<p>representationalism is so</p>
+<p>uh i don't have much to argue about</p>
+<p>there um</p>
+<p>and in general i don't i don't want to</p>
+<p>argue more than is necessary</p>
+<p>but you know that about me but um i</p>
+<p>think um the</p>
+<p>the reason i want to insist on some of</p>
+<p>this stuff is just to for my own basic</p>
+<p>sanity to just feel like i have an</p>
+<p>understanding of what's going on with</p>
+<p>this stuff</p>
+<p>right um so the reasons despite i</p>
+<p>understand</p>
+<p>i think i understand exactly why from an</p>
+<p>active inference perspective</p>
+<p>um you wouldn't want to say that the</p>
+<p>generative model is a</p>
+<p>is encoded um let me just say first i</p>
+<p>think</p>
+<p>the question of whether or how it's</p>
+<p>encoded is maybe a slightly distinct</p>
+<p>question from whether it's a</p>
+<p>representation and the reason i think</p>
+<p>that it has to be a representation</p>
+<p>well there are many reasons here one</p>
+<p>argument the recognition model was an</p>
+<p>approximation to the generative model</p>
+<p>right</p>
+<p>and so that's one example of like a</p>
+<p>rational or probabilistic relationship</p>
+<p>between these models and i don't think</p>
+<p>that</p>
+<p>that makes any sense if the generative</p>
+<p>model is not a representation also</p>
+<p>um so that's how that works under active</p>
+<p>inference</p>
+<p>i i agree that in in a more traditional</p>
+<p>bayesian brain sense the recognition</p>
+<p>model is trying to</p>
+<p>approximate uh the generative model i</p>
+<p>mean that's that's essentially how it's</p>
+<p>working</p>
+<p>um it's an approximate posterior</p>
+<p>approximately</p>
+<p>it's an approximate posterior but it</p>
+<p>isn't approximating</p>
+<p>the generative model well it's</p>
+<p>approximating the posterior under the</p>
+<p>genitive model</p>
+<p>right so so right</p>
+<p>and both both the generative and the</p>
+<p>recognition models are concerned</p>
+<p>their distributions in part over uh</p>
+<p>i have to be careful here not the actual</p>
+<p>external states necessarily</p>
+<p>but over hidden hidden states i don't</p>
+<p>know</p>
+<p>how on earth you get those into the</p>
+<p>picture if it's not a representation</p>
+<p>that you're talking about because the</p>
+<p>hip states are</p>
+<p>environmental states they're not necess</p>
+<p>right we have to be</p>
+<p>as you point out in the paper we have to</p>
+<p>be careful to distinguish the generative</p>
+<p>model from the generative process</p>
+<p>we can't just identify what actually</p>
+<p>happens with the generative model</p>
+<p>we i think we need to have this is one</p>
+<p>of the fundamental questions that i</p>
+<p>think an activism</p>
+<p>often is faced with is how do we deal</p>
+<p>with yeah i mean mel brought up</p>
+<p>misrepresentation</p>
+<p>um so the fact that the fact the point</p>
+<p>is</p>
+<p>the way that you see the world the</p>
+<p>organism or creature system sees the</p>
+<p>world is not necessarily the way it is</p>
+<p>but we still have that distribution over</p>
+<p>external states as</p>
+<p>essentially part of the generative model</p>
+<p>let me just say one more thing here</p>
+<p>about</p>
+<p>encoding so the reason i think if you</p>
+<p>look under the hood a little bit so</p>
+<p>the generative model in under active</p>
+<p>inference as i understand it</p>
+<p>can roughly be identified with the</p>
+<p>non-equilibrium steady state density</p>
+<p>right</p>
+<p>something like that um so</p>
+<p>i i mean i would just say right the</p>
+<p>dynamics</p>
+<p>the dynamics sort of instantiate the</p>
+<p>generative model i think that's a really</p>
+<p>cool point and i actually think that</p>
+<p>structural representationalists didn't</p>
+<p>do quite enough to</p>
+<p>emphasize the fact that the generative</p>
+<p>model is used as a control system</p>
+<p>um but i think if you look under the</p>
+<p>hood there will be some features of the</p>
+<p>system like stable</p>
+<p>structural features in virtue of which</p>
+<p>it has that nest density</p>
+<p>um so in fact you will find some stable</p>
+<p>thing that you could think of as</p>
+<p>encoding</p>
+<p>the generative model maybe at least</p>
+<p>that's why i still have</p>
+<p>you know i'm still attached to my views</p>
+<p>on this cool</p>
+<p>let's do alejandra and then mel</p>
+<p>yeah um i think i i</p>
+<p>i agree with alex or where are</p>
+<p>i'm kind of confused how</p>
+<p>the generative model can be conceived</p>
+<p>um just like this</p>
+<p>inactive process um</p>
+<p>really i was like reading the paper</p>
+<p>all over again and um</p>
+<p>i actually don't get it um for me it was</p>
+<p>um the recognition density is the</p>
+<p>inversion of the generative model</p>
+<p>so uh if it is not encoded</p>
+<p>like anywhere it's</p>
+<p>i i feel kind of uh lost</p>
+<p>there um</p>
+<p>for me yeah these top-down connections</p>
+<p>this is the generality model</p>
+<p>talking about the brain specifically and</p>
+<p>the recognition density</p>
+<p>is related with this button up</p>
+<p>connection</p>
+<p>so you can recognize um your best</p>
+<p>guess right so if it is not encoded</p>
+<p>um what can be said about these top-down</p>
+<p>connections um</p>
+<p>i don't know yeah maybe i can jump in</p>
+<p>here and just</p>
+<p>provide some points of clarification</p>
+<p>sure that about the generation wall if</p>
+<p>that's okay</p>
+<p>yep um okay</p>
+<p>so uh is screen sharing activated um</p>
+<p>you could share your screen if you</p>
+<p>yeah you probably should be able to</p>
+<p>okay let me try this</p>
+<p>okay so this is from a paper called uh</p>
+<p>the graphical brain</p>
+<p>and this is what the generative models</p>
+<p>look like all right uh can everyone see</p>
+<p>my screen</p>
+<p>yep also we're gonna be returning to</p>
+<p>this in the center um</p>
+<p>yeah so the generative model is defined</p>
+<p>as a joint probability density</p>
+<p>over all of the variables of interest in</p>
+<p>the system right so</p>
+<p>uh in this case uh the variables of</p>
+<p>interest are the states that we're</p>
+<p>trying to infer which are here</p>
+<p>s uh the policies that i'm trying to</p>
+<p>pursue</p>
+<p>which is here pi and the data that i'm</p>
+<p>observing at any given time step</p>
+<p>which is here denoted o um</p>
+<p>just so everyone uh is clear time flows</p>
+<p>from left to right so this is the first</p>
+<p>state this is the second state this is</p>
+<p>the third state</p>
+<p>and essentially uh the model you only</p>
+<p>have access to this data point these are</p>
+<p>counter factual data points</p>
+<p>uh and the whole thing is updated</p>
+<p>basically at every time step</p>
+<p>um and so look it the the generative</p>
+<p>model itself like i said is just a joint</p>
+<p>probability density it's like the</p>
+<p>probability of all these variables</p>
+<p>connected with ands effectively and</p>
+<p>when we say that the generative model is</p>
+<p>not present in the system i mean that</p>
+<p>this</p>
+<p>density here this joint probability</p>
+<p>density is never encoded anywhere in the</p>
+<p>system</p>
+<p>uh because the generative model itself</p>
+<p>is factorized so uh basically</p>
+<p>you take this joint probability density</p>
+<p>and then using some</p>
+<p>uh you know bayes rule and other uh you</p>
+<p>know</p>
+<p>chain rule etc uh manipulations</p>
+<p>you can write this joint density as the</p>
+<p>product</p>
+<p>of a bunch of uh likelihoods and priors</p>
+<p>and it's these likelihoods and priors</p>
+<p>that are uh updated uh constantly as</p>
+<p>part of the recognition</p>
+<p>density so this this prior uh</p>
+<p>you know about your your data given your</p>
+<p>states and this other prior about your</p>
+<p>states given the next date and the</p>
+<p>policy and all this</p>
+<p>these are updated uh dynamically</p>
+<p>and their current value uh like all of</p>
+<p>them together</p>
+<p>can collectively comprise the generative</p>
+<p>model</p>
+<p>uh yeah that's right uh sorry the</p>
+<p>recognition model</p>
+<p>the uh generative model is how these</p>
+<p>quantities are all connected the ones to</p>
+<p>the others so like if you want to think</p>
+<p>about it heuristically</p>
+<p>uh you know this uh all of these</p>
+<p>specific parameters like the s the pi</p>
+<p>the o</p>
+<p>all that like they're all of those</p>
+<p>values together</p>
+<p>as they're being updated uh comprise the</p>
+<p>recognition</p>
+<p>density and the generative density</p>
+<p>or the generative model is really just</p>
+<p>these relations</p>
+<p>between uh the different quantities</p>
+<p>as they change so it's it's literally</p>
+<p>that</p>
+<p>the um the</p>
+<p>inference process itself</p>
+<p>is what holds all these quantities</p>
+<p>together and the generative model is</p>
+<p>just a description of how those</p>
+<p>quantities flow together uh</p>
+<p>yeah so again it's like the domino's uh</p>
+<p>falling over</p>
+<p>thing uh you know the the the wave of</p>
+<p>dominoes only exists in that motion</p>
+<p>and and similarly the generative model</p>
+<p>only exists</p>
+<p>in that kind of coordinated inference or</p>
+<p>update dynamics</p>
+<p>of the quantities that are part of the</p>
+<p>recognition density</p>
+<p>um yeah and the reason it's called the</p>
+<p>generative model at all is just because</p>
+<p>it's borrowed</p>
+<p>it's a terminology borrowed from machine</p>
+<p>learning uh</p>
+<p>in machine learning um the the joint</p>
+<p>probability density over all of your</p>
+<p>variables is known as a generative model</p>
+<p>so it's it's called that way</p>
+<p>just because that's the that's the</p>
+<p>technical</p>
+<p>term uh it's it's also called that way</p>
+<p>because if you're starting from a joint</p>
+<p>density over all of your variables you</p>
+<p>can actually generate</p>
+<p>fictive data that you would expect under</p>
+<p>this configuration</p>
+<p>um of different uh parameters</p>
+<p>oh thanks for that clarification maxwell</p>
+<p>will have those middles</p>
+<p>we'll have mel and then we'll carry on</p>
+<p>with that sounds pretty good to me</p>
+<p>go for it mel</p>
+<p>i think kate and mill have yeah yeah</p>
+<p>okay kate and then mel oh i just wanted</p>
+<p>to um</p>
+<p>follow up to what maxwell was saying</p>
+<p>about structural representation</p>
+<p>can you hear me yep go for it</p>
+<p>can people hear me yes yes yes we can</p>
+<p>hear beautiful</p>
+<p>awesome yeah just to follow up to what</p>
+<p>maxwell was saying about</p>
+<p>um structural representations uh</p>
+<p>the the sort of detachability of the</p>
+<p>representation right that's</p>
+<p>that's what should get us the</p>
+<p>distinction between um</p>
+<p>a biological function and uh at least a</p>
+<p>structural representation right because</p>
+<p>um my feet</p>
+<p>and legs and knees are um a</p>
+<p>representation</p>
+<p>of ground in some</p>
+<p>very minimal sense in the same way that</p>
+<p>fish fins</p>
+<p>are representations of of fish sins and</p>
+<p>bird wings or representations of fluid</p>
+<p>dynamics right um</p>
+<p>but this isn't detachable from immediate</p>
+<p>environmental circumstance for offline</p>
+<p>use</p>
+<p>right um so that's what should get us</p>
+<p>the difference between</p>
+<p>uh function representation but i'm i'm</p>
+<p>curious to see what role that plays</p>
+<p>in in the ftp and active interest um</p>
+<p>if any do we want to do we want to is</p>
+<p>there is there merit and retaining a</p>
+<p>distinction between</p>
+<p>function eruption patients under under</p>
+<p>active infants in the sap or are they</p>
+<p>just</p>
+<p>sort of continues with one another nice</p>
+<p>very</p>
+<p>good question kate did you have</p>
+<p>something there</p>
+<p>okay okay i'm gonna just continue with</p>
+<p>the slides because i'm not sure</p>
+<p>i think kate's up next yeah oh sorry i</p>
+<p>wasn't first just wanted to apply um</p>
+<p>i think i'm still with the</p>
+<p>in the case of the the paper was really</p>
+<p>useful for me in like</p>
+<p>helping me understand what the</p>
+<p>generation model was in the fep almost</p>
+<p>all the way like when</p>
+<p>it's described as like a statistical</p>
+<p>description of the generative process</p>
+<p>the way you've explained it here</p>
+<p>all of that makes sense to me um</p>
+<p>but then there's also parts in the paper</p>
+<p>where it says</p>
+<p>where is like the generative model sort</p>
+<p>of</p>
+<p>um is what the organism expects and it</p>
+<p>guides what the organism does</p>
+<p>which makes it sound like the generative</p>
+<p>model is playing this kind of</p>
+<p>causal role like not just the generative</p>
+<p>model itself</p>
+<p>um and i find that kind of confusing if</p>
+<p>the given the generative model isn't</p>
+<p>something encoded by the organism</p>
+<p>um or by the system um</p>
+<p>but i'm still i get the idea of it as a</p>
+<p>statistical description of the dynamics</p>
+<p>that</p>
+<p>sounds i just don't understand how in</p>
+<p>that</p>
+<p>how if that's all it is that it's</p>
+<p>something the organism uses it seems</p>
+<p>like it's something we use</p>
+<p>to describe the organism rather than</p>
+<p>something organism itself is in any way</p>
+<p>using um that's a good point i i've</p>
+<p>proposed in a recent paper um</p>
+<p>that came out in entropy not too long</p>
+<p>ago that uh</p>
+<p>both are correct so the you basically</p>
+<p>the</p>
+<p>the correct way to interpret the fep is</p>
+<p>as instrumentalism next nested within</p>
+<p>instrumentalism</p>
+<p>meaning that we can have a model</p>
+<p>theoretic</p>
+<p>uh philosophy of science reading of the</p>
+<p>fep</p>
+<p>and you know for that matter any other</p>
+<p>theory of cognition</p>
+<p>as this is a model that we as scientists</p>
+<p>are using to explain</p>
+<p>the behavior of organisms</p>
+<p>what i've been trying to argue is that</p>
+<p>the fep itself at the theory level</p>
+<p>is also saying the organism is</p>
+<p>exploiting</p>
+<p>the statistical structure of its body</p>
+<p>and movement aka the generative model</p>
+<p>to guide adaptive behavior so the model</p>
+<p>really is</p>
+<p>uh these harnessed relations between the</p>
+<p>variables that have to</p>
+<p>obtain for survival to persist</p>
+<p>uh and you know so it's it's sort of</p>
+<p>this idea that once the system kind of</p>
+<p>gets</p>
+<p>moving then there's kind of a an</p>
+<p>inertial</p>
+<p>dynamic thing kind of keeping it moving</p>
+<p>so like you know my core body</p>
+<p>temperature is 36 and a half degrees</p>
+<p>and the fact that it is keeps a bunch of</p>
+<p>other processes in play</p>
+<p>that in turn keep me preserving my</p>
+<p>temperature</p>
+<p>you know by initiating uh adaptive</p>
+<p>behavior like putting on a parko when it</p>
+<p>gets cold and so on</p>
+<p>uh so uh</p>
+<p>yeah i mean both both kinds of</p>
+<p>generative models are used</p>
+<p>separately in dynamical causal modeling</p>
+<p>uh of the kind that the fristen group</p>
+<p>used to model the spread of covid we're</p>
+<p>not assuming</p>
+<p>that the process that we're modeling is</p>
+<p>itself an active inference agent</p>
+<p>um and it so you can do that</p>
+<p>uh but you can also make the additional</p>
+<p>assumption that it is</p>
+<p>and then you're in the game of active</p>
+<p>inference proper</p>
+<p>cool thanks max oh go ahead kate</p>
+<p>the thing the kind of way i get there</p>
+<p>then it sort of seems</p>
+<p>like you're losing the distinction</p>
+<p>between the vehicle of the model and the</p>
+<p>target of the model such that</p>
+<p>i worry it sounds a bit like just saying</p>
+<p>everything is a model of itself</p>
+<p>essentially um i mean effectively that</p>
+<p>is what we're saying</p>
+<p>um and that's where it gets a little</p>
+<p>hazy for me like you know</p>
+<p>that's probably the point of</p>
+<p>disagreement between alex and i also i</p>
+<p>want to say the generative model just</p>
+<p>is the organism in the sense that like</p>
+<p>this</p>
+<p>this specific you know statistical</p>
+<p>structure</p>
+<p>that harnesses all of these different</p>
+<p>you know existential variables as</p>
+<p>mel was saying like this really just is</p>
+<p>the organism</p>
+<p>like this kind of statistical structure</p>
+<p>that keeps kind of</p>
+<p>reiterating itself and coming</p>
+<p>into existence that just is the organism</p>
+<p>and that's one of the reasons</p>
+<p>why i don't want to say that this model</p>
+<p>is a representation of anything</p>
+<p>you could just call it you know the</p>
+<p>phenotype</p>
+<p>we call it a generative model because</p>
+<p>formally speaking</p>
+<p>the same construct is borrowed from a</p>
+<p>field where in which it's called a</p>
+<p>generative model but</p>
+<p>you can think of it as the organism's</p>
+<p>phenotype and precisely because it's a</p>
+<p>bit weird</p>
+<p>to think of the model as modeling itself</p>
+<p>i kind of resist</p>
+<p>that interpretation and say well you</p>
+<p>know if anything is a model really in</p>
+<p>the more traditional sense it's this</p>
+<p>recognition density that's performing</p>
+<p>posterior state inference</p>
+<p>and i'm sure that alex will tell me why</p>
+<p>i'm wrong</p>
+<p>in a second it's it's a great</p>
+<p>response let's just move on through a</p>
+<p>few more of the slides because there's a</p>
+<p>lot in the figures that i think</p>
+<p>gets at this um mel has their hand</p>
+<p>though i'm sorry</p>
+<p>go ahead i just want to i just wanted to</p>
+<p>introduce it i think</p>
+<p>i think maxwell is possibly mismodeling</p>
+<p>himself i think he's</p>
+<p>i think he's actually a tad bit more</p>
+<p>realist</p>
+<p>than he's letting on oh maxwell</p>
+<p>a realist at heart on my bad days</p>
+<p>exactly if you can't if you can't uh</p>
+<p>take care of me</p>
+<p>at my most real so in this next slide</p>
+<p>one of the feedback just from a</p>
+<p>participant just to give an</p>
+<p>example and we won't spend too much time</p>
+<p>here</p>
+<p>but i like this idea that the beliefs</p>
+<p>don't have to be verbal</p>
+<p>uh that the physical therapy context</p>
+<p>shows us how the range of movements that</p>
+<p>the body does not</p>
+<p>want to go to for example due to a</p>
+<p>traumatic experience or injury</p>
+<p>embodies a belief that doesn't involve</p>
+<p>language and this was a paper with uh</p>
+<p>liminowski</p>
+<p>and fristen from 2020 where a person's</p>
+<p>hand was opening and closing</p>
+<p>and then they were getting a vr visual</p>
+<p>that was delayed or was inaccurate and</p>
+<p>so there's so much here about how our</p>
+<p>sensory feedback our proprioceptive</p>
+<p>as well as our visual feedback</p>
+<p>multimodal systems</p>
+<p>are being used and that's the mess that</p>
+<p>would take us you know so many</p>
+<p>hours and more to clarify this is what</p>
+<p>the representation questions are about</p>
+<p>so it's like the person what is the</p>
+<p>representation of the current state of</p>
+<p>their hand being closed</p>
+<p>at that just pure phenotype level maybe</p>
+<p>somebody with a ruler says well it's</p>
+<p>whether the hand is closed or not</p>
+<p>but it's not just that because if you're</p>
+<p>getting visual input that's messing with</p>
+<p>you</p>
+<p>it changes your behavior so there's</p>
+<p>something else happening and that's</p>
+<p>really</p>
+<p>a lot of what we're talking about um</p>
+<p>i think going through the figures two</p>
+<p>three four</p>
+<p>are going to be really helpful before we</p>
+<p>have closing</p>
+<p>thoughts and thanks everyone for bearing</p>
+<p>with this was sort of a</p>
+<p>weirdly technically altered stream</p>
+<p>briefly the bayesian networks</p>
+<p>so bayesian networks are from bayesian</p>
+<p>statistical</p>
+<p>sciences and in these diagrams</p>
+<p>the nodes are variables they're like</p>
+<p>random variables stochastic variables or</p>
+<p>parameters</p>
+<p>the edges are statistical relationships</p>
+<p>they're probabilistic relationships and</p>
+<p>they can be undirected</p>
+<p>or directed these models are quite</p>
+<p>common in statistics</p>
+<p>and also there's some really nice</p>
+<p>aspects about them</p>
+<p>in that you can bring prior knowledge to</p>
+<p>the table with your priors and you can</p>
+<p>also estimate it directly from the data</p>
+<p>with a parametric empirical base</p>
+<p>and to give an example about what this</p>
+<p>looks like here on the top right</p>
+<p>we can see how like an accident</p>
+<p>increases the likelihood that you'll</p>
+<p>hear</p>
+<p>sirens an accident also increases the</p>
+<p>likelihood of</p>
+<p>having a traffic jam bad weather can</p>
+<p>increase the likelihood of accidents or</p>
+<p>traffic jams</p>
+<p>so these bayesian networks are pretty</p>
+<p>commonly used in a lot of statistical</p>
+<p>areas</p>
+<p>and we can contrast that with what are</p>
+<p>called forney factor graphs</p>
+<p>and working through this devries and</p>
+<p>first and paper was definitely</p>
+<p>quite an experience this is a complex</p>
+<p>paper and there's a lot in it</p>
+<p>but in a forney factor graph as they</p>
+<p>write in the paper it's a type of</p>
+<p>graphical model that shares qualities</p>
+<p>with bayesian networks and markov random</p>
+<p>fields</p>
+<p>for any factor graphs afford a visually</p>
+<p>insightful representation of generative</p>
+<p>models</p>
+<p>especially beneficial for complex models</p>
+<p>underlying hierarchical active inference</p>
+<p>in a forney factor graph each factor is</p>
+<p>represented by a node</p>
+<p>and each variable by an edge so it's</p>
+<p>like a flip of the bayesian</p>
+<p>an edge attaches to a node if the edge</p>
+<p>variable is an argument of the node</p>
+<p>and so here on the right is a table from</p>
+<p>the paper of devry's and fristen</p>
+<p>and it shows how we can think about</p>
+<p>these functions like addition</p>
+<p>subtraction multiplication</p>
+<p>as having variables coming in and out</p>
+<p>and</p>
+<p>just to really quickly summarize the</p>
+<p>similarities and differences in the</p>
+<p>bayesian networks the nodes are</p>
+<p>variables</p>
+<p>whereas in the forney graph the nodes</p>
+<p>are the factors or the functions</p>
+<p>in the bayesian networks the edges are</p>
+<p>the probabilistic relationships amongst</p>
+<p>variables</p>
+<p>whereas in the forney factor graphs the</p>
+<p>edges are the variables themself</p>
+<p>a cool trick about bayesian networks is</p>
+<p>this model inversion</p>
+<p>which is that the model can be gleaned</p>
+<p>from the data</p>
+<p>and also the data can be generated from</p>
+<p>a model another cool trick of forney</p>
+<p>graphs</p>
+<p>is that they specify a specific order</p>
+<p>for factorizable computation</p>
+<p>making extremely massive models</p>
+<p>tractable</p>
+<p>and then a last cool fact about a</p>
+<p>bayesian network is that's where the</p>
+<p>markov blanket formalism comes from</p>
+<p>which is it's the set of nodes that</p>
+<p>insulates one part of the network from</p>
+<p>each other</p>
+<p>from a probabilistic perspective though</p>
+<p>there's a there's a lot of nuance in how</p>
+<p>it's used in the free energy principle</p>
+<p>framework and the cool fact about the</p>
+<p>forney graphs is that it's</p>
+<p>linked to information theory and message</p>
+<p>passing computation and other math</p>
+<p>so in figure 2 we see</p>
+<p>this generative model in active</p>
+<p>inference and this is actually the model</p>
+<p>that maxwell had</p>
+<p>on his screen earlier and i annotated</p>
+<p>all the pieces</p>
+<p>so just as maxwell was saying time flows</p>
+<p>from the left to the right</p>
+<p>and in this is a again a bayesian</p>
+<p>network representation</p>
+<p>so the the boxes or the circles and</p>
+<p>there's different types of them which</p>
+<p>are described in the caption</p>
+<p>the boxes in the circles are like</p>
+<p>variables so the initial state is a</p>
+<p>vector</p>
+<p>the hidden states are variables the</p>
+<p>state transition matrix is</p>
+<p>how the hidden states map to each other</p>
+<p>that's b a</p>
+<p>is the map between the states and the</p>
+<p>observations</p>
+<p>and then figure three is the same thing</p>
+<p>as a for any factor graph and so this is</p>
+<p>showing that there's this equivalence</p>
+<p>with representing something as a</p>
+<p>bayesian net</p>
+<p>and a forney factor graph and the forney</p>
+<p>factor graph</p>
+<p>allows for these extremely large scale</p>
+<p>hierarchical models</p>
+<p>to get factorized and then computed in a</p>
+<p>tractable</p>
+<p>way and so i should say like the</p>
+<p>advantage of using a forney style factor</p>
+<p>graph is that the message passing</p>
+<p>is just you can just read it directly</p>
+<p>off the thorny style factor graph</p>
+<p>and there's an algorithmic way of moving</p>
+<p>from a bayes net to a 40 style factor</p>
+<p>graph</p>
+<p>so typically intuitively the bayes net</p>
+<p>is easier to write</p>
+<p>because you can you know you can just</p>
+<p>literally write down</p>
+<p>the the dependencies between all of your</p>
+<p>factors</p>
+<p>like this uh so you know like i don't</p>
+<p>this state depends on this other state</p>
+<p>and you know there are these transitions</p>
+<p>and etc blah blah</p>
+<p>and so you know from this you can move</p>
+<p>to the 40 style factor graph and that</p>
+<p>tells you</p>
+<p>just directly how that will be</p>
+<p>implemented in</p>
+<p>active inference i should say that the</p>
+<p>reason why i</p>
+<p>we discuss these at all is really just</p>
+<p>to show in the next figure how the in</p>
+<p>figure 4 how the generative model</p>
+<p>and the generative process kind of link</p>
+<p>up uh</p>
+<p>i mean to me this is where the the</p>
+<p>interesting stuff happens where</p>
+<p>like literally the the generative</p>
+<p>process</p>
+<p>and this is a model of the generative</p>
+<p>process right like how we think it's</p>
+<p>structured</p>
+<p>it's in this little box here um and then</p>
+<p>the 40 style factor graph represents the</p>
+<p>message passing</p>
+<p>that is ongoing yeah outside the box</p>
+<p>uh to keep all the the quantities within</p>
+<p>you know phenotypic bounds</p>
+<p>thanks maxwell and yeah i know that was</p>
+<p>a little bit of a</p>
+<p>rapid sprint through these figures but</p>
+<p>it's so cool that there's a formal way</p>
+<p>to relate the bayesian and the factor</p>
+<p>graph</p>
+<p>models and just as you specified it's</p>
+<p>easy to specify sometimes the</p>
+<p>bayesian network just like oh well the</p>
+<p>traffic jam depends on the weather and</p>
+<p>the weather depends on this other</p>
+<p>feature</p>
+<p>and then the factor graph allows us to</p>
+<p>have</p>
+<p>an order of computation and a really uh</p>
+<p>implementable way to compute it</p>
+<p>and also it has some similarities with</p>
+<p>message passing for example in neural</p>
+<p>network systems</p>
+<p>so it's it's an interesting question</p>
+<p>that i've been having is okay we talk</p>
+<p>about this is as a bayesian</p>
+<p>theory but if it can also be represented</p>
+<p>in another way</p>
+<p>is it is it really a uniquely bayesian</p>
+<p>theory or what do we</p>
+<p>gain by saying that it's a bayesian</p>
+<p>theory it's uh within the domain of</p>
+<p>bayesian inter-transformability uh or</p>
+<p>interoperability</p>
+<p>but that doesn't uniquely disambiguate</p>
+<p>it and that's why i think some of these</p>
+<p>philosophical questions that we're</p>
+<p>talking about here like about</p>
+<p>representation and about</p>
+<p>cause are so open because</p>
+<p>uh it's it's not uniquely specified by</p>
+<p>the free energy principle or by active</p>
+<p>inference like how exactly we should</p>
+<p>answer these</p>
+<p>philosophical questions because in the</p>
+<p>end as maxwell said</p>
+<p>it's the technical details this is what</p>
+<p>we're talking about</p>
+<p>when we're talking about the the free</p>
+<p>energy minimization and how that bears</p>
+<p>upon the policy selection</p>
+<p>this is what's happening and also one</p>
+<p>more point before if anyone</p>
+<p>raises their hand to provide a comment</p>
+<p>is um</p>
+<p>notice that the free energy is linking</p>
+<p>to the policy selection</p>
+<p>pi p for policy and that means that</p>
+<p>the organism isn't just minimizing the</p>
+<p>free energy of the observations given a</p>
+<p>sort of neutral representation</p>
+<p>actually the policy representation</p>
+<p>specifically how it bears</p>
+<p>upon how states transition into each</p>
+<p>other</p>
+<p>that's what the actual computation is</p>
+<p>being done</p>
+<p>upon so the observations are being used</p>
+<p>to run then</p>
+<p>upstream through the hidden states</p>
+<p>and their transitions into the policy</p>
+<p>that ultimately dictates what's going to</p>
+<p>be done by being selected by the</p>
+<p>organism or the system as the most</p>
+<p>likely so this is really how deeply</p>
+<p>action is embedded in these models</p>
+<p>it's not that there's a latent</p>
+<p>representation of the external states</p>
+<p>and then you're doing a best guess on</p>
+<p>what you should do it's actually like</p>
+<p>action is at the top here the policy is</p>
+<p>at the top and so i think that's really</p>
+<p>a nice</p>
+<p>feature of these models and it becomes</p>
+<p>graphically clear and then if somebody</p>
+<p>wants to have philosophical framework a</p>
+<p>or philosophical framework be on top of</p>
+<p>this structure</p>
+<p>or if they want to propose a different</p>
+<p>structure for how observations and</p>
+<p>policies are linked</p>
+<p>that's something great it's something</p>
+<p>tractable that we can talk about</p>
+<p>but this also returns to the metaphor</p>
+<p>discussion this is the real</p>
+<p>thing as it is um cool i know we had to</p>
+<p>sprint through there but it's just um</p>
+<p>coming near the end of our time so any</p>
+<p>thoughts on these</p>
+<p>images or are people ready to sort of go</p>
+<p>to our</p>
+<p>closing thoughts i was just saying the</p>
+<p>equations are more interesting but</p>
+<p>yep the equations are interesting and</p>
+<p>and the 2017 de verizon fristen and this</p>
+<p>model it just reminds uh me that if we</p>
+<p>can write down that bayesian</p>
+<p>relationship the probabilistic</p>
+<p>relationship between variables</p>
+<p>then there's going to be a process model</p>
+<p>that is going to be how we can link it</p>
+<p>and uh these captions are very</p>
+<p>informative and there's really a lot to</p>
+<p>say here but enough for today</p>
+<p>let's close it out um we can hear any</p>
+<p>last thoughts but</p>
+<p>while people are preparing their last</p>
+<p>thoughts and raising their hand if</p>
+<p>they'd like</p>
+<p>i would just like to thank everyone for</p>
+<p>participating we're learning</p>
+<p>and developing each time figuring out</p>
+<p>the tech each time</p>
+<p>we provide follow-up forms to the live</p>
+<p>participants so just check the calendar</p>
+<p>invitation</p>
+<p>and it would be really helpful to have</p>
+<p>feedback we also</p>
+<p>request feedback suggestions and</p>
+<p>questions from</p>
+<p>the participants live in the comments or</p>
+<p>otherwise</p>
+<p>and uh just stay in communication we</p>
+<p>really appreciate everyone's engagement</p>
+<p>here and it's been</p>
+<p>such a great learning experience so if</p>
+<p>anyone wants to raise their hand</p>
+<p>alejandra first and then followed up by</p>
+<p>anyone else who wants to</p>
+<p>let's just have some closing thoughts</p>
+<p>[Music]</p>
+<p>well i was wondering if</p>
+<p>if it's possible to like model updating</p>
+<p>if</p>
+<p>when you are doing offline cognition</p>
+<p>um without without like an explicit</p>
+<p>policy you are not doing</p>
+<p>something online when this interaction</p>
+<p>bodily interaction you are thinking</p>
+<p>about something and then you have like</p>
+<p>this</p>
+<p>uh like you know said like this eureka</p>
+<p>uh feeling</p>
+<p>so this this is kind of a model updating</p>
+<p>um without action</p>
+<p>um i don't know the short answer is yes</p>
+<p>i just linked the paper to it</p>
+<p>we uh we've created a ruminating</p>
+<p>agent um so basically this agent</p>
+<p>combines the affective</p>
+<p>inference uh scheme that we</p>
+<p>uh have developed over the last two</p>
+<p>years where you're effectively</p>
+<p>inducing a new hierarchical layer of</p>
+<p>state inference</p>
+<p>based on state and precision estimates</p>
+<p>at the lower level</p>
+<p>and these are affective states that then</p>
+<p>guide lower level precision estimation</p>
+<p>so we combine that with what's called</p>
+<p>sophisticated inference</p>
+<p>which is the new generation of active</p>
+<p>inference agents</p>
+<p>um you know vanilla</p>
+<p>formulation current vanilla um</p>
+<p>you could see that in the generative</p>
+<p>models that we just showed</p>
+<p>they include uh beliefs about</p>
+<p>counterfactual observations that we</p>
+<p>would make as we propagate states into</p>
+<p>the future</p>
+<p>sophisticated inference is about</p>
+<p>propagating your beliefs</p>
+<p>about the observations that you would</p>
+<p>make in counter-factual futures</p>
+<p>and so by combining these two things we</p>
+<p>have an agent that isn't acting</p>
+<p>uh but that ends up ruminating um</p>
+<p>and catastrophizing about</p>
+<p>uh its own cognition um so</p>
+<p>i just linked uh the paper in the chat</p>
+<p>um</p>
+<p>we we submitted it to the uh the</p>
+<p>international workshop on active</p>
+<p>inference</p>
+<p>uh so the it's a little poster now but</p>
+<p>we're we're</p>
+<p>slowly expanding that into a full</p>
+<p>manuscript but the the kind of summary</p>
+<p>six pager</p>
+<p>uh that just does what you were</p>
+<p>suggesting</p>
+<p>is uh this is it yeah</p>
+<p>thank you um but this is kind of</p>
+<p>confusing with the an active uh</p>
+<p>view of cognition well this is why we're</p>
+<p>not we're not like uh</p>
+<p>classical and activists so uh yeah we</p>
+<p>reject the equal partners principle</p>
+<p>it's just not the case that uh the body</p>
+<p>uh the brain and the cultural</p>
+<p>like mealier are gonna be involved in</p>
+<p>the same way</p>
+<p>for every task so like for rumination</p>
+<p>you know you could you could i guess you</p>
+<p>know appeal to a history of interaction</p>
+<p>which is you know the reason why agents</p>
+<p>are able to entertain beliefs about</p>
+<p>other agents at all</p>
+<p>and so on and so forth but yeah you're</p>
+<p>right there isn't much</p>
+<p>in action here and that's fine i think</p>
+<p>uh</p>
+<p>cool alex kiefer and then anyone else</p>
+<p>who wants to raise their hand</p>
+<p>uh yeah so i guess in lieu of a proper</p>
+<p>closing</p>
+<p>statement i just wanted to point out</p>
+<p>that maxwell has some really cool new</p>
+<p>work on</p>
+<p>how the toronto population sort of can</p>
+<p>be seen as an acting</p>
+<p>uh inference on their own level and that</p>
+<p>this is one way you could see</p>
+<p>uh structural representations being sort</p>
+<p>of realized so</p>
+<p>like that one thing we didn't have time</p>
+<p>to get into um but i just wanted to say</p>
+<p>in general like</p>
+<p>i think um yeah there is i think</p>
+<p>regardless of the precise philosophical</p>
+<p>take that you have on all this stuff</p>
+<p>like</p>
+<p>it's cool to disagree on that level but</p>
+<p>this is this this literature has</p>
+<p>produced some really amazing</p>
+<p>work and i think it's it's pushing</p>
+<p>forward in a really interesting way</p>
+<p>and um one one advantage of active</p>
+<p>difference certainly is that</p>
+<p>you can actually write down the</p>
+<p>generative model and and sort of</p>
+<p>transparently see how it works</p>
+<p>and you don't get that out of just</p>
+<p>unsupervised learning</p>
+<p>cool any other thoughts</p>
+<p>awesome well thanks so much for the</p>
+<p>discussion we're gonna</p>
+<p>um re-watch understand technologically</p>
+<p>what did</p>
+<p>didn't work and for next week provide</p>
+<p>all of you</p>
+<p>plus anyone else who wants to</p>
+<p>participate with more of a specific spec</p>
+<p>sheet for how</p>
+<p>you can prepare and make sure that it</p>
+<p>will be a really like seamless</p>
+<p>experience</p>
+<p>and as far as the timing goes as well</p>
+<p>next week we will move on to actin</p>
+<p>7 which is going to be about variational</p>
+<p>ecology</p>
+<p>which is a really awesome paper close to</p>
+<p>my heart as a biologist</p>
+<p>as well and we would really appreciate</p>
+<p>anyone who wants to participate in</p>
+<p>these conversations next tuesday at 7</p>
+<p>a.m pacific or the following</p>
+<p>tuesday both of these discussions will</p>
+<p>be really great</p>
+<p>and it's quite a complex paper so i'm</p>
+<p>sure we'll have a lot to go</p>
+<p>into again so once again thanks so much</p>
+<p>everyone</p>
+<p>for your participation really brought up</p>
+<p>some awesome ideas and</p>
+<p>i hope we conveyed to those within and</p>
+<p>without of the field</p>
+<p>that there's a lot of discussion ongoing</p>
+<p>by no means are these questions resolved</p>
+<p>and it's an opportunity for people to</p>
+<p>bring their unique perspectives to the</p>
+<p>table</p>
+<p>so thank you all again for your</p>
+<p>participation</p>
+<p>really appreciate</p>
+</article>
+</body>
+</html>

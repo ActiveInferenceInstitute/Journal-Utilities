@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 056.1 ~ Grégoire Sergeant, "Agency with structured latent state-spaces"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 056.1 ~ Grégoire Sergeant, "Agency with structured latent state-spaces"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_056 &middot; Episode 1 &middot; Speakers: Grégoire Sergeant &middot; Duration: 1:16:36 &middot; Views: 389</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=h0Tfm2lw6PQ">https://www.youtube.com/watch?v=h0Tfm2lw6PQ</a></div>
+<article>
+<p>Hello and welcome. It's September 15th, 2023, and we're at the Active Inference Institute in</p>
+<p>ACTINF Guest Stream number 56.1. Today we have Gregory Sargent-Petri, and we'll be hearing a talk</p>
+<p>followed by a discussion on Geometry of World Model Influences Behaviors. First, there'll be a</p>
+<p>presentation, and then any comments that people have in the live chat or any other questions,</p>
+<p>it'll be great to talk. So thank you a lot for coming. Really looking forward to this. So please,</p>
+<p>to you. Thank you very much, Daniel, for the invitation. First, I'm really very happy to</p>
+<p>be able to present this work here. So it's a work around some models of consciousness,</p>
+<p>at least some computational models of consciousness, some part of consciousness,</p>
+<p>and how it can help to generate different kind of behaviors, especially when we think about, let's say,</p>
+<p>artificial agents. So it's a work in collaboration with David Rudroff, Kenneth Williford, Daniel Benquin.</p>
+<p>In fact, it's not just one work. It's a collection of works that have been on for like already around</p>
+<p>10 years. So if you want to know more about like this group and the work that we're doing, you can go</p>
+<p>on the page on my personal web page, and there's a link to PCM.html. And there's a summary of all the</p>
+<p>work we've been doing and some summary of the work we've been doing and also of some articles that can</p>
+<p>be relevant on this subject. So today, we'll focus more particularly on two articles. So one that is</p>
+<p>accepted and will appear very soon, the other one which we submit, which give the formulation of,</p>
+<p>let's say, autonomous agents, or like, let's say, mathematical formulation of agents that have a world</p>
+<p>model that is structured geometrically in such a way that this world model captures some features of</p>
+<p>consciousness. So the first article is, let's say, the review of the experimental results that we have,</p>
+<p>and the like most recent formalism that we have on our work, which is the literature on POMD</p>
+<p>for terrible monitoring process, which is optimal control, stochastic optimal control. And we just</p>
+<p>try to tweak a bit this formalism to introduce the ideas with how you can include inside of the world</p>
+<p>model of the agent, some ideas on consciousness, and still continue to have algorithms to do</p>
+<p>inference to find optimal policies and everything. And the second article focuses more particularly</p>
+<p>on how changing the world model of the agents can change its behavior, in particular, the relationship,</p>
+<p>the geometry of the world model, the way that it perceives its environment, and the way it acts with</p>
+<p>respect to for agent strategy. So the way that it looks for something, so it will change its behavior in</p>
+<p>looking for something. So I will start by presenting a bit what are all these terms, so world model, what you need it,</p>
+<p>what it is, what is a foraging strategy, what it is to, how you, how can you define an agent that is looking</p>
+<p>for a certain object, in particular, what is an exploration based on curiosity, or let's say, more</p>
+<p>technically epistemic value. So let's consider the setting where you have, let's say, a real world,</p>
+<p>so the space that's around us, 3D space, you do a setup where you have an agent, which is, let's say,</p>
+<p>a solid, it has a solid frame. So it has a center, three axis, what is in front, what is on its side,</p>
+<p>what's above, above it. And it's looking for an object O, which is itself a solid inside of R3.</p>
+<p>And all the configuration of the agents and the objects, they are defined by, let's say, a reference</p>
+<p>frame that is external and that they find that characterizes completely their configuration inside of</p>
+<p>this world. Now the agent A, what it wants to do is to find for the object O, but it doesn't, it can only</p>
+<p>have like some noisy observation of where the object O is. So to be able to find O, it needs to have some</p>
+<p>a priori on where O should be, to be able to plan the consequences of its actions with respect to</p>
+<p>where O will be once it has moved and to update and to be able to plan what the, how the observation</p>
+<p>can act with respect to updating its prior. So in another word, so you have, have an agent and the</p>
+<p>agent is looking for O and thinks that O is, for example, in this direction on the right. So it's</p>
+<p>going to move towards the right and makes an observation. If it doesn't see O, it's going to</p>
+<p>change its belief on where O is. So this is a very standard formalism that you can find, like in POMDP,</p>
+<p>stochastic optimal control. But the one other point we want to, to, to really emphasize is the</p>
+<p>fact that the agent A has its own frame of reference and the way that it's going to</p>
+<p>give the coordinates, coordinates of the object, the way that it will trace where the object is,</p>
+<p>is using its own way of computing the, the coordinates of O. So it has its own way to measure where</p>
+<p>O is. So it doesn't have to refer to a global frame, a global coordinate system to be able to know</p>
+<p>where O is. So for example, I am always centered on myself. When I move, I see the object. I don't</p>
+<p>think about me moving, but I think about the object moving. And this is because when I move,</p>
+<p>I change my frame. So the way I'm going to reference the object is going to change accordingly.</p>
+<p>And the point we want to introduce is the fact that you can have several ways of define, for the agent</p>
+<p>to define its own coordinate system with respect to its environment. And this is a key feature of,</p>
+<p>uh, that we want to capture, like in terms of modeling, but there's also, we think that it is</p>
+<p>something that is very structuring with respect to models of consciousness, because when you consider</p>
+<p>like more generally an agent, uh, that, that had, that is a, let's say that has a world model, uh,</p>
+<p>in which it has its own, let's say, uh, it has its own point of view perspective on this world model.</p>
+<p>You kind of had to start tackling the problem of how to introduce a point of view on the environment</p>
+<p>of the agent. How can you introduce in the way that it's, uh, it is going to, uh, encode its environment,</p>
+<p>a certain point of view. And in particular, if you think like about it in terms of, uh, the role of</p>
+<p>space to be able to take into account your own perspective on the environment, you can see that</p>
+<p>if you take away this, like everything that fills up the space, you keep just the space itself.</p>
+<p>It's, it's, uh, the space allows you to, uh, let's say to, uh, structure the way that you are going to</p>
+<p>fill in, uh, some information about the environment and it's centered on your own point of view in a way</p>
+<p>that when you're going to act, you're still going to keep the still, this, the, the, like the unfilled</p>
+<p>space, the still, you're still going to keep the stay same way of modeling this space. The space will</p>
+<p>stay the same when you move, when I move, the space is the same, but I talk into account the fact that I</p>
+<p>can move from one point to another in this space without changing the space. And something that is</p>
+<p>also very important is that with respect to any movement that I can do, the space doesn't change.</p>
+<p>So there's no particular point in space, with respect to the movements that I do.</p>
+<p>Another way, another property that is very similar is that instead of considering just my actions and</p>
+<p>the way that I can change my frame while I'm doing an action, you can also imagine taking the frame of</p>
+<p>somebody else. So it means that you can, you see that the space that you, you, you use to be able to</p>
+<p>structure your environment doesn't change when you take the perspective of somebody else. For example,</p>
+<p>if you imagine yourself as a solid agent changing by a rotation, your own like coordinate, your own</p>
+<p>solid frame and translating. Okay. So this is, uh, something that we will use in fact, as a definition for</p>
+<p>the state space, the, the way that the agent encodes its environment. And you will see that there's a</p>
+<p>natural notion to be able to, that encodes this idea that you can change perspective on your environment</p>
+<p>and the world model that you have of your environment, simply by introducing something</p>
+<p>that's very well known, which is the notion of a group acting on a certain space. So this is just to</p>
+<p>sum up a bit the, what we're trying to do. So we're just trying and trying to do like exploration</p>
+<p>inside of an environment, but we're adding an additional information, which is that the way</p>
+<p>the agents is going to encode its environment takes into consideration the fact that it can</p>
+<p>change its reference frame on this space without singling out any point. Okay. So what do we mean</p>
+<p>by perspective taking in like more precisely? So how do we go from the real world? So the, let's say the</p>
+<p>world encode the world described by the external like a frame that allows you to say the agent is</p>
+<p>here and the object is here from the internal world of the agents. So you just define a map that will take</p>
+<p>into consideration that the agent can have a first perspective on its environment. The simplest case</p>
+<p>in the Euclidean case is just rewriting the coordinates of O inside of the frame of the agent,</p>
+<p>reference frame of the agent. And then once the agent moves its frame, solid frame in the real world</p>
+<p>changes. And this induces indeed the transformation inside of its internal world, which will be an</p>
+<p>defined transformation. Okay. But you could imagine also having other transformations. I don't know if</p>
+<p>you can see my mouse, probably. Can you see my mouse or not? No. Okay. So, yeah. So the map C,</p>
+<p>can also be something else than an affine transformation. It could be like any kind of</p>
+<p>transformation. For example, in a fine case, the apparent volume of the object doesn't change.</p>
+<p>But if you change this map and consider, for example, the projective transformation,</p>
+<p>as we will describe later, you can have that the size apparent size of the object changes.</p>
+<p>So we, we, we went from something that is a bit like, uh, already like very well known and not, not</p>
+<p>very innovative, which is that, uh, you can rewrite, uh, like motions, like the motions depends in the way,</p>
+<p>it depends on the frame that you choose to describe them into saying that you can in fact change some</p>
+<p>frames to be able to account for some, uh, like perceptive property. And what we ask also for the</p>
+<p>agents that we consider is that they can imagine the consequences of their moves, which on their, uh,</p>
+<p>future observations. So this is something just to say that the agents that we consider have a notion of</p>
+<p>agency, which is that they can plan the consequences of their actions so that they can choose the best</p>
+<p>action with respect to a certain reward. In particular, the reward that we consider is the</p>
+<p>trying to maximize a certain surprise.</p>
+<p>So to sum it up, we have an agent that is looking for certain objects. So it has belief</p>
+<p>of where the subject is in the beliefs lives on, uh, um, um,</p>
+<p>in an internal state space. So in the world model of the environment, it can make observation, which</p>
+<p>allows it to update, uh, its, uh, beliefs, and then it can predict the consequences of its actions</p>
+<p>so that it can plan the way that it should act with respect to a certain objective. So formally,</p>
+<p>this is simply the notion of Markov decision process, or more generally like notion of partially</p>
+<p>observable Markov decision process, because we do not have a complete information of the environment,</p>
+<p>but also, but only some observations that are, that are limited. And, uh, it's very related. And let's</p>
+<p>say, I mean, uh, there, there's a strong duality between POMDP and active inference. So there's really</p>
+<p>a strong link between both. So now what I did in the way that I presented it, so I presented it a bit,</p>
+<p>the idea, I tried to present the idea of what we're doing. So the general context POMDPs, agents that are</p>
+<p>planning, uh, their action with respect to a certain objective, here the objective is to find a certain</p>
+<p>object. And, uh, I give, uh, the formal setting for defining it, which are NDP POMDP. And now we'll,</p>
+<p>I will go one step further and define it explicitly. And I will continue like this approach for the second</p>
+<p>part where I will also present our results and our specificity, where else with the general statement</p>
+<p>and a bit more precise, and then really digging, digging into the results. So here, the classical</p>
+<p>way to define the Markov decision process is to consider that you have a set of configurations of</p>
+<p>the environment, which is the state space of the world model in the way, or at least the way that</p>
+<p>you encode your environment. So this is something, uh, on which you can act because the agent, when it makes</p>
+<p>an action, it changes the state of the environment and the actions, the way that the actions change</p>
+<p>the environment is with respect to a certain, uh, uh, Markov, uh, kernel, uh, probability kernel.</p>
+<p>So it's stochastic, which means that each actions changes the state of the environment, but you don't</p>
+<p>know completely, like it's not deterministic. If you allow some errors in the way that it acts on the</p>
+<p>environment and you have a reward for a function that is associated to the actions that you can do at</p>
+<p>time t and also the state of the agent at time t. A partial observable, partially observable Markov</p>
+<p>decision process is the same thing that a Markov decision process, but you authorize to say that</p>
+<p>your observation on your environment are only partial, which means that you do not have a</p>
+<p>precise information on the states of the environment. So the way that you need to relate observation and</p>
+<p>states is through also a probability kernel, which tells you that, uh, if you're at state, for example,</p>
+<p>s, you would expect to make a certain observation. Let's say if you, if you think the object is at x,</p>
+<p>you expect to see the object attacks, but with a certain error, because you know that your sensors</p>
+<p>are also random. They have some, they have, they can make some mistakes and you keep similarly a reward</p>
+<p>function. So it's the same thing that an MDP mark of decision process, but you just allow to have some</p>
+<p>to get information on your environment through observations that are not complete.</p>
+<p>And in fact, there's a formulation in terms of partially observable Markov decision processes,</p>
+<p>our particular case of Markov decision processes, which is called belief Markov and belief MDPs,</p>
+<p>belief Markov decision process. And the only difference that you have between Markov process and belief MDP</p>
+<p>is the fact that the state space is necessarily continuous in the second case. So POMDPs can be</p>
+<p>seen as a particular case of MDPs. So we said that the actions of a POMDP act on the state space and</p>
+<p>you have, you account for the consequences of the actions only through observations. So graphically,</p>
+<p>it means that you have the state space of yours. So the world model of your environment X on which you,</p>
+<p>you like you reference, for example, where the object is, so the position of the object.</p>
+<p>And then when you act, it induces a consequence on the position of the objects at time t plus one. And</p>
+<p>then you can make an observation of where you think the object will be, or you can make an observation</p>
+<p>with respect to where the object is, depending if you're planning into the future, or if you're really</p>
+<p>doing the action, you're implementing the consequence of the actions in the real world.</p>
+<p>So the thing that we're trying to do in our setting is to replace simply the actions by a change of</p>
+<p>perspective. Like I told you, like when the agent acts, its coordinate system on the environment</p>
+<p>changes. So you can always see it as in a way passively where you just see it as a change of coordinates.</p>
+<p>So we want to say that instead of considering actions on the environment,</p>
+<p>we have a space on which there's a natural notion of changing of reference frame and actions are</p>
+<p>simply certain kind of changes of frames. We also allow to have some actions that are, do not</p>
+<p>correspond to changes of frames. We just say that we include the possibility that some actions are</p>
+<p>changes of frames and the changes of frames are, have something that is related to all the</p>
+<p>transformations that are internal of the, for the agents. So for example, things that it knows that</p>
+<p>a priori, it knows it's encoded in the way the agents will interact with the environment.</p>
+<p>So the way that we do it a bit more formally is that we say that changing perspective is simply</p>
+<p>through the action of the group. So for example, in the affine case, when the, the agent moves,</p>
+<p>it changes our frame is an affine transformation. And we say that the world model, so the state space</p>
+<p>is simply a space on which the group acts. So formally, uh, what did, what does it mean that the</p>
+<p>group acts on the space? It's just saying that, uh, you for, you have space, uh, s, uh, group g,</p>
+<p>there's an application that goes, that takes an element from g and s and that sends back s. In other</p>
+<p>words, for every g you have, you can associate a function from s to s and you assume also that it</p>
+<p>has good properties, which is that, uh, it satisfies equation one. And that, uh, if you don't move,</p>
+<p>you stay at the same place. So this is like, just the notion of a g space, a space, a group acting on</p>
+<p>the space. But now if we want to include this in NDPs and POMDPs, we just assume that the state space is a</p>
+<p>g space, that some actions are, uh, some elements of the group and that when we choose the actions</p>
+<p>that corresponds to the element of the group, it corresponds to the way that the group acts on the</p>
+<p>element. So it's very like, uh, there, there's nothing like a very convoluted. It's just saying</p>
+<p>that you define the collection of functions, which you see as changes of frames and the way that they</p>
+<p>act. So the property kernel from the state space to the states, for the state space, that time t</p>
+<p>t to time t plus one after the action, uh, after the change of perspective is simply through the, uh,</p>
+<p>way that the function changes the state space. So it's just kind of a way of reformulation. But</p>
+<p>what is really hidden behind here is that we have the structure of the group and that we don't consider</p>
+<p>any kind of actions. We assume that there's more structure in the actions that we can consider. And</p>
+<p>then it's defined that is, that it's, uh, in like in the way that is, uh, it's it, that it's encoded</p>
+<p>inside of the geometry of the space that we have. So we don't separate any more action and state space.</p>
+<p>We say that the state space in its geometry encodes already certain kinds of actions, which are its</p>
+<p>change of perspectives. So there are two cases that we consider. The first case is where the state s</p>
+<p>is the occlidean space and GDF and transformation. It corresponds to the like I find transformations,</p>
+<p>translations and rotations of the agents and changing, uh, rewriting the coordinates of the</p>
+<p>objects inside of the ref solid reference frame of the agent. And the second case where, uh, the first,</p>
+<p>the state space is a projected space and the group is a projected transformation.</p>
+<p>You know, the, we described how, what are the generative models that we consider and how we can</p>
+<p>include. So the, inside of the classical theory of POMDPs, the fact that you can take a perspective</p>
+<p>inside on your world, uh, on your, on your environment. Now we will introduce, uh, like a classical notion of</p>
+<p>epistemic value, which will allow us to define what is a behavior, what is an exploratory behavior with</p>
+<p>respect to curiosity. So how, what it is for an agent to, uh, explore some environment based on curiosity.</p>
+<p>So curiosity, or let's say the drive for exploration is, uh, uh, uh, quantity that will, it's a, it's a quantity</p>
+<p>that, uh, you will, um, okay. So it's, uh, okay. It's, so how, how do you define it just with like,</p>
+<p>very generally. So you start with the agent has a prior on the state of its environments. Then it</p>
+<p>plans the consequence of one of its move, uh, at the next time and then, uh, uh, at the next time</p>
+<p>step. So this changes the prior that it has on the environment because there's an action on the</p>
+<p>environment. So we get a new prior and now it's going to make an observation once. So it, it, it</p>
+<p>imagines that it's going to make an observation. Once it makes an observation, it's, there's an</p>
+<p>a posteriori, the, the prior is updated. So you get an a posteriori, the way that you define</p>
+<p>curiosity or let's say epistemic value is how informative is the observation that you will do.</p>
+<p>How far is the a posteriori from the a priori, but this, you cannot do it for one given observation</p>
+<p>because the way that you compute it is by planning what will happen at the next step. So you need to</p>
+<p>consider all the possible observation that you will make. So the observations are themselves</p>
+<p>stochastic with respect to the way that you consider, which is that you are a priori</p>
+<p>on the state space of, uh, uh, at time t.</p>
+<p>As we said, for us actions are changes of frame. So we can also define epistemic value for frames,</p>
+<p>for changes of frames. And in particular, something that we gained that is, I think,</p>
+<p>interesting is that now we have a function that is defined on the, on the group that can be a</p>
+<p>continuous group. So you can allow it. You have, for example, if you want to, uh, maximize it,</p>
+<p>you, you can, or minimize it. And it depends how you see it. You can want, you, you could do gradient</p>
+<p>descent, for example. So you can have more analytical tools because you're on the space that</p>
+<p>is continuous and has some structure. So now to give the formal definition of epistemic value.</p>
+<p>So as I said, uh, it's based on the quantity C, C that I will define now. So if you have yourself,</p>
+<p>if you give yourself a prior on a space X and you give yourself a probability curve,</p>
+<p>also stochastic map from X to Y stochastic map is simply saying that for any X,</p>
+<p>you will associate the measure on Y.</p>
+<p>Then you can get a joint distribution on X and Y, which is simply given by the product</p>
+<p>P Y doing X times the prior. And in fact, the quantity C is simply the mutual information</p>
+<p>between X and Y, which is saying how far is the joint distribution with respect to the, uh,</p>
+<p>the independent, uh, distribution, uh, the product of, uh, the marginal distribution of X and Y.</p>
+<p>But this is like, you see it, uh, it appears everywhere, the mutual information. So this formulation</p>
+<p>is based on the paper that is, uh, from a Friston and all, uh, active influence and the pessimism value.</p>
+<p>So mutual information is something that appears everywhere, but I think that there's a very nice</p>
+<p>re-expression of the mutual information, which allows to give a better interpretation of this</p>
+<p>quantity, which is the input interpretation that I was discussing in the previous slide.</p>
+<p>So if you rewrite mutual information, you can always see it as the coolback</p>
+<p>linear distance between the posterior for a given observation and the prior</p>
+<p>coolback distance being a way of computing how far you are, how far the two distributions are,</p>
+<p>but you need to look at the expectation with respect to the observation that you make.</p>
+<p>So it's exactly what I was discussing before.</p>
+<p>So then, uh, this is like for any kernel, any kernel from X, from Y, X to Y with a prior on X.</p>
+<p>But as we were discussing here, you have to take into con- so this would be the kernel,</p>
+<p>but you have to take into consideration that you can do actions and that your prior are on X.</p>
+<p>So the way to compute epistemic value in for this kernel here, when having only your,</p>
+<p>the prior on X is that you propagate the prior by the action on X1, then you get a prior on X1,</p>
+<p>and you can define the epistemic value for this prior and a Markov kernel, which responds to the,</p>
+<p>like the randomness of your sensors, which is always fixed. And this is very important. This one</p>
+<p>doesn't change. Even if you change frames, the kernel that you have relating your prior,</p>
+<p>what you think about the state space and relating the state space and the observation never changes.</p>
+<p>And so explicitly, this means that we, after a certain action or after a certain change of frame,</p>
+<p>we get the joint distribution on X and Y, which is the following one here. So this corresponds to the</p>
+<p>prior propagated on X1. And then the epistemic value is simply the mutual information of this joint</p>
+<p>distribution. So now how does the algorithm work? So how the algorithm that corresponds to</p>
+<p>defining an exploratory behavior for an agent that is looking for it?</p>
+<p>So we said, it started with a prior of where O should be. Then you maximize curiosity based on some</p>
+<p>changes of frames that are around the identity elements, which corresponds to not changing frame.</p>
+<p>Then you get an action that you can apply, you propagate the prior to the next step with this</p>
+<p>action. And then you just update your a priori with respect to a certain observation. And then it loops</p>
+<p>back. So this is the algorithm that we consider in the second paper that I, that was listed in the,</p>
+<p>in the presentation. So which corresponds to having an agent that is looking for a certain object,</p>
+<p>his, its behavior is defined by an exploratory, is, is driven by exploration, driven by curiosity,</p>
+<p>taking into account that its state space is structured by the action of the group. So that</p>
+<p>the state space is structured by the fact that it, it corresponds to all the possible ways of</p>
+<p>like changing frames. So it has inside of the state space, inside of the geometry of the state space,</p>
+<p>all the possible ways of changing frames.</p>
+<p>Uh, and, uh, this is, this is like explicitly what we do. So, I mean, in this context, this is the</p>
+<p>algorithm that we consider and nothing else. Then we get a very interesting result, at least I find.</p>
+<p>I mean, it's not, it's, it's interesting in like, in the way that it's presented here, I find it</p>
+<p>interesting. And then, I mean, if you go more into detail and it's, it's because the Euclidean case</p>
+<p>is very particular, but what you get is that if you look at the behavior of an agent that is driven</p>
+<p>by exploration, by curiosity, uh, who, ha the, but that has a state space structured by, uh,</p>
+<p>occlusion transformation, occlusion transformation. So the first case where the agent is simply</p>
+<p>encoding its environment in its reference frame, but nothing else, then it doesn't need to move.</p>
+<p>In the second case where, uh, the, uh, changes of charts are given by projective transformations.</p>
+<p>So the way it encodes to its transformation, they take into account, uh, uh, perspective,</p>
+<p>a projective, uh, deformation of its environment, then it will always try to get closer to the object.</p>
+<p>So you have two very separate behaviors. So this is something that is, I think is, uh,</p>
+<p>very interesting to, to note. So before going into the details of, uh, how you can prove the statement,</p>
+<p>I will say a bit more about why it's more, it's an interesting perspective point of view on the,</p>
+<p>on this subject because, uh, and how it goes a bit further than simply considering this very simple</p>
+<p>setting. What you could imagine is that encoding the fact that the agent, uh, encoding the actions of</p>
+<p>the agent directly inside of the state space of the agent through geometry could be a way to stabilize</p>
+<p>the representations of the agent. And this is something that we're working on now. And there's</p>
+<p>already, already literature in this direction. Okay. So now let us proof, uh, the statement and to</p>
+<p>proof the statement, we need to give a formal, like a precise, uh, statement. So what more particularly,</p>
+<p>what we were able to show is that if you assume that the agent has as move staying still, so it's</p>
+<p>allowed to stay still, then if, uh, it's, it's, uh, changes of frame are given by a clear, by a fine</p>
+<p>transformation, the agent stays still. Now in the projective case, if you assume</p>
+<p>that the agent is always looking in the direction of the object, it will always try to get closer to the object.</p>
+<p>Okay. So the idea of the proof is that, uh, in the, what, what plays the, the role for discriminant,</p>
+<p>for, for drive of the agent is how big the agent is appearing to, uh, in the reference, uh, what the,</p>
+<p>how is the size of the object in the reference frame of the agent. And it's how big it is.</p>
+<p>It appears to be to the agent. So in the first case, the volume of the, of the object in the</p>
+<p>internal space of the agent doesn't change. So it doesn't need to move. In the second case,</p>
+<p>if it makes a move, uh, what is informative is to try to make the object bigger because once it's</p>
+<p>bigger, the app will be further from the prior with respect to a certain observation. So it will always</p>
+<p>privilege moves that allow you to make the object look bigger. And in this case, what you can do is,</p>
+<p>um, uh, you can, uh, you can show that this corresponds in fact to actions or change of</p>
+<p>frames that gets you closer to the object. Okay. So how do you prove the results?</p>
+<p>So, as we said, we consider a change of frame from the real world to the internal world. Here,</p>
+<p>I didn't consider changes of perspectives with respect to moves. Here is simply how you relate</p>
+<p>the real world to the internal world. In the Euclidean case, it's clear. It's clear. It's just that the</p>
+<p>way that you write the coordinates of the object in the solid frame in the projective case, it's clearly</p>
+<p>not, it's not obvious because there are several ways that you can relate the side frame of the</p>
+<p>agent to the projective frame. So one way that we decided to do it is we give some set of axioms</p>
+<p>that we consider to be, let's say, uh, coherent with our own experience of, uh, of space, which is</p>
+<p>that we feel that we're always centered on ourself, that the axis of the side frame of the agent</p>
+<p>inside of the, uh, like three space. So what is in front of it, or what is on the right, what is</p>
+<p>top are preserved, that there's no point in front of the object that appears to be at infinity</p>
+<p>and that that near to the center of the object, the volumes are preserved.</p>
+<p>So when you do this, so this, uh, this formulation, like this, uh, result is in, in this article here.</p>
+<p>So the way that we, uh, relate some, uh, solid frames, like some, uh, solid, uh, reference</p>
+<p>frame of the agent to some, uh, projective transformations are in this article, in particular</p>
+<p>in proposition A1, where we show that this set of axioms limits the set of projective transformation</p>
+<p>we can consider, and we will only have this projective transformation. And so the change of frames from the</p>
+<p>external world to the internal world is given by rewriting the coordinates of the agent,</p>
+<p>of the object in the solid frame of the agent, and then applying this projective transformation.</p>
+<p>So now, uh, what we defined here is, uh, are the maps that relate the observation of the agents.</p>
+<p>So the, we, we defined the maps in the Euclidean and projective case that relate the observation of the agent,</p>
+<p>the observation of the object to the way that it represents this, this object inside of its internal world.</p>
+<p>So here, so this is simply like the POMDP that we defined before. And now once the old agent doesn't move,</p>
+<p>it changes its Euclidean reference frame. So there is a solid reference frame. So that from going from</p>
+<p>one side reference frame to another side reference frame, you can, by applying the projective</p>
+<p>transformation we had before, define another one that we call psi, that goes from the state space</p>
+<p>at time zero to the state space after action, after moving. Very, what is very important is that we</p>
+<p>consider, uh, the Markov kernel associated to a noisy observation to be of this shape here, which is that</p>
+<p>if you know that the object, if you think the object is at point X, then you believe that the observation</p>
+<p>will be around X, uh, in the ball, uh, around X for a ball of a certain radius, which is a small radius, epsilon.</p>
+<p>Okay. And I need to charge my computer. So sorry.</p>
+<p>Okay. So now press, uh, epistemic value as defined. Uh, uh, uh, curve, uh, uh,</p>
+<p>uh, within the, uh, from my limit.</p>
+<p>With, oh, in fact, that it has a very simple expression.</p>
+<p>So the epistemic value of the prior propagated after the transformation,</p>
+<p>Phi after this changes of frame, Phi. So you have a prior here, you propagate it on X one through Phi,</p>
+<p>and you compute the epistemic value for this, uh, joint, for the joint distribution over X one and Y</p>
+<p>Y is given by this formula here. Well, simply integrating overall the possible places where</p>
+<p>the object could be times the probabilistic volume of, uh, the ball, um, of size epsilon,</p>
+<p>uh, for the propagated, uh, measure and, uh, logarithmic of the same quantity.</p>
+<p>Okay. So this is very direct to right. You can just, uh, compute it and you, you find this expression,</p>
+<p>uh, but what you have already here is that if you consider an occlusion transformation,</p>
+<p>then the quantity Q side minus one B epsilon Y doesn't change. So then you have the epistemic</p>
+<p>value that is a, that is constant. So basically if you try to maximize epistemic value, maximize</p>
+<p>this quantity, you can do anything. You have always one move, which is not, which is not you move.</p>
+<p>So you don't move. It's okay. It's perfectly fine. Now, in the second case, we have the projective,</p>
+<p>where you consider that, uh, the way you relate environment and the internal world is through a</p>
+<p>projective transformation, then it's more complicated. And so you need to, uh, uh, use a</p>
+<p>trick, which is that, you know, that once an observation has been made, the support of the prior</p>
+<p>will be smaller. And so after one step, if you suppose that your epsilon, so the size of, uh, let's</p>
+<p>say noisiness of your sensor is small enough, uh, you have a support that is, uh, of the distribution</p>
+<p>that's sufficient, uh, small enough so that you can do an asymptotic development of the quantity</p>
+<p>in the internal. So this is an equality, but this is an approximation here.</p>
+<p>And now this is very useful because now that you know, we're like doing this in a way, uh, you can,</p>
+<p>uh, say that you just need to develop this quantity at the point where the object is really.</p>
+<p>So if you do it, you get this expression here. And what appears to play a role is only the determinant</p>
+<p>of, uh, the Jacobian or the projective transformation, which here in the case will be one,</p>
+<p>when in projective case can be many things. So here also, it's not very clear because how do you</p>
+<p>define CM? So CM is defined as a composition of several maps. I didn't go into the details, but it's</p>
+<p>corresponds to the map that are given by the changes of frame. So if you have the Euclidean space and the</p>
+<p>internal spaces, after moving, you have a change of frame in the Euclidean space, but it corresponds to</p>
+<p>also a change of frame in the internal space. So if you, the way you define psi is simply saying that</p>
+<p>you inverse the projective transformation from internal world to external world to go at time</p>
+<p>zero, then you apply the change of frames and then you apply the projective transformation to go from</p>
+<p>external to internal. And so it's exactly this formula that you have here, and which is very nice</p>
+<p>with this. And then you have the first term that doesn't depend on the actions that you do. So you</p>
+<p>don't need to take into account. This one will be one. And then you just need to compute this one.</p>
+<p>In fact, this one has very simple expression. So it's expression 23. And then here you can</p>
+<p>directly see which moves correspond to increasing this quantity and decreasing this quantity</p>
+<p>because we want to increase epistemic value. And so this, this is the results. This allows to prove</p>
+<p>the result that we said in the first day, like in the several slides before that in the projective</p>
+<p>case, if you have enough movements, if you look at the object, then you're always going to go closer</p>
+<p>to the object. The way to interpret it is as if the agent, it was a bit paranoiac or paranoid, a bit like</p>
+<p>he's very uncertain on its own beliefs. So it knows the object might be over there, but it's always uncertain.</p>
+<p>So it needs to go check. And once it's checked, it's more certain, but still, as it can always be even</p>
+<p>more certain, it will always try to get more and more certainty.</p>
+<p>And so I only presented like in this, in this presentation, all the aspects which are more</p>
+<p>computational and the algorithm and some like analysis of the algorithm we considered. But we also</p>
+<p>have like some experiments on how this setting can allow to generate different behaviors, behaviors</p>
+<p>that we would expect, explain, for example, some illusions like the moon illusions. And I invite</p>
+<p>you if you're interested in this to listen on to the like online talk of like the MOC4 conference that</p>
+<p>was in Oxford last week, or to check out one of these three papers. And I would like to thank you very much for your attention.</p>
+<p>All right, awesome. Wow. Very interesting and different ways than how we've seen the</p>
+<p>POMDP and related works. So, okay, let's just start off with a little context, and then I'll read some</p>
+<p>questions and read some questions from live chat. So what brought you to study this question this way?</p>
+<p>What question? The question of, okay. Did you come from a math side and find consciousness and</p>
+<p>geometries to be interesting or vice versa? What kind of brought you to want to make this contribution?</p>
+<p>So at the beginning, so when I did my PhD in maths, I was more interested, I was interested in, let's say,</p>
+<p>I call this idea of critical brain hypothesis. So the way that the trying to understand the way that the</p>
+<p>brain processes information and makes it something that is, can be like exploited. And so they,</p>
+<p>one of the, so the critical brain hypothesis tells you that the activity of the neurons is basically</p>
+<p>close to a certain criticality, criticality in the source of statistical physics, if you, because you can</p>
+<p>model the activation of the neurons as a, let's say a statistical system, like an Ising model.</p>
+<p>But the, so I worked a lot on this. Then I, there's another hypothesis that is</p>
+<p>like very common, which is the Bayesian brain hypothesis. And so the Bayesian brain hypothesis</p>
+<p>led me to active inference, to learning more about optimal control Bayesian, Bayesian perspective on</p>
+<p>optimal control. And, uh, there was a, so, uh, my advisor was a PhD advisor was working with David and they</p>
+<p>still work together on, uh, uh, trying to, uh, implement some aspects of consciousness,</p>
+<p>uh, and how it can influence inference, especially with their article in the moon illusion. So, uh,</p>
+<p>I w I was interested in knowing how, uh, how, uh, this, uh, kind of, uh, let's say, uh, ideas, uh,</p>
+<p>simply like in a very naive way, they interact with the Bayesian brain hypothesis.</p>
+<p>And then I continued in fact, like one of the lines of my research is, uh, structured,</p>
+<p>like algebraically structured, uh, statistics or machine learning. And so the way that they</p>
+<p>see it like very geometrically, in fact, or let's say geometrically or algebraic, it's not the same</p>
+<p>thing. It's very related. It's something that I, I wanted to, uh, to, to, uh, understand a bit</p>
+<p>better, let's say to, to make it in a formal setting so that, uh, it's simply a particular</p>
+<p>case of what are, what is in the literature. So it's specifying what exists in the literature.</p>
+<p>And this took some time because, uh, I was more on the active inference, like the free energy</p>
+<p>principle side. So I had to read more about like, uh, optimal control, so classic optimal control,</p>
+<p>POMDPs, and understand that, uh, if that, what we're doing is simply adding more structure on the</p>
+<p>latent space of, uh, of, uh, of the agent and the state space of the agent and, uh, doing this allows</p>
+<p>to ask the question, like, why is it useful? Why having a state space that encodes different</p>
+<p>perspectives? So the motivation comes from the consciousness study, cognitive sciences,</p>
+<p>but why it can be useful for robotics. And it's always been like my motivation study,</p>
+<p>uh, some, uh, statistical models, more structured models with more a priori that can be, uh, useful,</p>
+<p>uh, for understanding the behavior of a closed system, like an agent, like a collection of, uh,</p>
+<p>neurons, like even like, um, molecular machines. Okay. So it's a very long answer, but it's, uh, okay.</p>
+<p>Cool. So you focused on the spatial movement, epistemic foraging case. Is there something special</p>
+<p>about space or can we also think about this perspective taking in terms of, for example,</p>
+<p>semantic or a narrative reference frame? So the, this is, I think it's a very, very important</p>
+<p>question because up to now, uh, all the work, a reference only to space. So the thing is space</p>
+<p>in terms of a 3d space and not space in terms of geometry. And the fact of writing it as geometry</p>
+<p>allows to get out from the classical point of view, a space as a 3d space, because you see that there's</p>
+<p>more and more like, for example, in the, in, uh, geometric deep learning, there's more and more</p>
+<p>the use of, uh, space to encode in variants of certain objects. And these objects are not necessarily,</p>
+<p>uh, have the three, the three dimensional structures. You can have objects that have</p>
+<p>higher groups of environments. So I think that it's, it's indeed using geometry for other contexts.</p>
+<p>And it's really the aim of trying to go to this more general formulation is to be able to apply it</p>
+<p>to real world models. What I mean by real world models, it means the ones that are learned to be</p>
+<p>able to have an agent in an open environment that will learn the way, uh, it would learn its generative</p>
+<p>model, but with the app priori that it can take a perspective on its environment and see what it</p>
+<p>can do. So we really want to get out from the 3d, at least for me, go out from 3d space and go to,</p>
+<p>uh, like implementing it completely, uh, in autonomous agents.</p>
+<p>Okay. To kind of follow on that. There's a question in the chat chat. Great talk. I also</p>
+<p>wonder whether it applies to any modality, not just visual spatial, but also text.</p>
+<p>Yeah. So it's, it's for other modalities like sound, for example, but I don't know for applying</p>
+<p>to text there. So there's a lot of work now on, uh, large language models and like, uh,</p>
+<p>of this idea of prompting and being, having these models, being able to have some kind of imagination.</p>
+<p>So you would like to have this kind of, these ideas applied in this context, but for now, I mean,</p>
+<p>it's not the line that we're trying to, that I'm trying to do. So I'm trying to stay on deep learning.</p>
+<p>So basically take standard data set without considering, uh, uh, uh, like texts and just</p>
+<p>try to see how these ideas like in geometric deep learning can stabilize representations.</p>
+<p>So it's not the same that is in others. It's clearly other modalities, especially if we consider</p>
+<p>like a multimodal integration, like you, you try to rebuild the state space and you don't want to see</p>
+<p>it only as a vector space, but you wanted to see it with more structure because you want to force the</p>
+<p>way like you have constraints be, you know, a priori the constraints that you're going to have</p>
+<p>on the way that you can take a perspective on one modality or the other, but it's not for text.</p>
+<p>At least not, but I think it maybe it could be used for text, but, but it's not what I'm doing now.</p>
+<p>Can I have something to say about this question?</p>
+<p>Yeah.</p>
+<p>Sorry. I just want to rebound on that.</p>
+<p>I have the luck of collaborating with a real mathematician.</p>
+<p>I'm just some guy with intuition that I found the right people to do the work.</p>
+<p>Regarding multimodality, this is important to understand that this is not about vision.</p>
+<p>This is about spatial cognition. It's supramodal. The claim is that vision is just</p>
+<p>one particular way of integrating information indeed in an obviously projective manner,</p>
+<p>but that's integrated in a much larger field of experience than the field of view or the visual</p>
+<p>field and obviously proprioception touch when you build a representation just by touching something</p>
+<p>and you get this 3D representation of that thing automatically in your mind, hearing to the extent</p>
+<p>that it's about source localization and building spatial representation. All of that stuff,</p>
+<p>that's the claim of the theory, is integrated in this projective space. There are priors from</p>
+<p>memories, there are stuff from visions, stuff from audition, stuff from proprioception, interoception,</p>
+<p>you name it. All senses contribute to it. So it's not vision. The claim is that 3D projective</p>
+<p>geometry in that case is beyond vision. Vision is just actually a slave to that supramodal</p>
+<p>representation. That's the claim. Awesome. Yeah, please.</p>
+<p>That's important because we do, I think we, like we, so we work like a group. There are several,</p>
+<p>like different perspectives for me. I'm more on the computational side, so it's important to have</p>
+<p>that color because clearly something I won't be able to answer. Cool. Here's a nice following question</p>
+<p>from Vladimir in the chat. They wrote, if the e.g. visual sensors have variable resolution, for example,</p>
+<p>higher resolution in the center, this can naturally lead to curiosity-based change of orientation</p>
+<p>response within your framework. So is it the question or an affirmation? So it's for e.g., right?</p>
+<p>So it's... If there's variable, if there's variable sensor precision, for example, higher precision in the</p>
+<p>center, might you see any resulting curiosity-associated change merely based upon the asymmetry or the</p>
+<p>structure of the sensor fields? Okay. So I shouldn't say it, but I will still say it because I don't know</p>
+<p>if the paper will go out one day or another. This is more attention. This is more attention than curiosity.</p>
+<p>So it's more like, so you can act on your sensor so that you can change the way that you integrate them.</p>
+<p>And this really acts as a form of attention. So I really went into it.</p>
+<p>What do you think that... What is the interplay between attention and curiosity?</p>
+<p>Uh... I mean...</p>
+<p>It's the way you're going to move, basically. On the... The way... The way that... It deforms the way that you move.</p>
+<p>And you... So the consequences of your actions are not the same. So basically curiosity is what...</p>
+<p>What drives actions? And the way that you... So you choose your action with respect to reward,</p>
+<p>which is epistemic value. And now attention, or let's say changing the sensors, is a way to change</p>
+<p>the consequences of your action with respect to, let's say, optimizing this value. So it's like...</p>
+<p>Um... Yeah. I mean, it's... It's... Yeah. I... I don't know if I should say yes or not. But okay. Okay.</p>
+<p>Let's say it's okay. That's it. I think it's a metric, basically. It's... It acts like a sort of metric on the space,</p>
+<p>on the... The group directly. So it means that it's going to... So when you have the function,</p>
+<p>you want to do gradient descent, you need to choose a metric. And the metric is... So the attention will act as a metric.</p>
+<p>And so the metric will allow you to deform, in fact, the... The steps that you will do. And so I think this is how it acts.</p>
+<p>So it's very known that... I mean, it's known that the fact that changing the sensors is... Is related to attention.</p>
+<p>That's not something much new. But the fact that you can directly, in our setting, relate it to groups.</p>
+<p>And you can relate it to... Like changing the metric on the group is something that... That can be done.</p>
+<p>And I think it's... You know, it's interesting.</p>
+<p>All right. Another question in the chat.</p>
+<p>What is a formal framework for learning geometry from data?</p>
+<p>How do we move from empirical data sets, the files on our computers, and the things that we do deep</p>
+<p>learning on, take into machine learning pipelines? And how do we utilize geometric approaches and</p>
+<p>formalize to the kind of analytical precision that we saw here, some of these geometric relationships?</p>
+<p>So there's a very like... There are several different fields of how to use geometry on data. So there's</p>
+<p>already like... I mean, depends how you see geometry. But one way is a TDA, topological data analysis.</p>
+<p>So which is basically trying to... Let's say... Do you want to provide learning by geometric...</p>
+<p>Like stability property of your data? And try to interpret it as a certain kind of space. And</p>
+<p>then you look at the whole of your space. And this is something that defines your data set. So this is</p>
+<p>one approach. Another one is that people doing... Like they try to learn the... So they know that you're...</p>
+<p>That the... That the data lives in the low dimensional manifold. And they try to learn this manifold.</p>
+<p>So that's another perspective... Another way of doing it. So that's a lot of work in this direction.</p>
+<p>There are people who are interested in variance and equiviance. So more in the geometric deep learning.</p>
+<p>There are people who are interested in the same setting on a priori. How to use the geometric a priori</p>
+<p>and included in learning for deep learning reinforcement learning. And this is what we do. In fact, this is</p>
+<p>one of... Many people do this. Not just us. But we like for us, we try to focus on this idea of how to</p>
+<p>exploit it for reinforcement learning. Hmm. So in this setting, epistemic value was the only driver of action?</p>
+<p>Is that...? Yeah.</p>
+<p>So it's kind of like expected free energy, except without pragmatic value. So we only have the epistemic term remaining.</p>
+<p>Exactly. Exactly. In fact, if you look at it in terms of optimal control and not by Asian,</p>
+<p>because you know that there's this duality that is most of the time stated in like active inference,</p>
+<p>where you have basically a duality between the, let's say, like stochastic value function and the</p>
+<p>probabilistic version of value function. So you can encode like on priors, you can encode all your drives</p>
+<p>with priors or with the value function directly. So rewards. And so both are kind of dual and they're</p>
+<p>dual in a way. You can make like this duality. I mean, it's... I don't know if it's explicitly dual.</p>
+<p>Like in some contexts, this sentence makes sense. For active inference, for me, I'm not completely aware</p>
+<p>if the duality is exactly formal, but at least the idea is here. So there's no big difference,</p>
+<p>at least the way I see it as with value function and seeing it probabilistically. But the terms of</p>
+<p>epistemic value is an exploration drive, which you also find in reinforcement learning,</p>
+<p>maybe not in this exact expression. I think that the exact expression that was given in the paper of</p>
+<p>Frissan and Hall is... I think it's Pezzoulo and Onibélé. Onibélé for sure, I know it is on the paper.</p>
+<p>It's very canonical way to define epistemic value. So it's an exploratory drive. You can always add to the value function.</p>
+<p>You know, but there's a lot of problem of trying to explore. In fact, like your environment,</p>
+<p>you find the good policies. Because if you're in a state space that is continuous, it's really difficult</p>
+<p>to result to result in P1EP.</p>
+<p>Yes. It's like if you knew which curiosities you could get rewarded from, you would have already known</p>
+<p>the answer to the search. So that's one of the challenges with pragmatic value. It converges well to</p>
+<p>expectations, but then this work really focuses in on epistemic value and shows what it can do alone as a</p>
+<p>driver. So how would you bring pragmatic value into this formalism?</p>
+<p>You just added. It's really... You can put the value function, so some of rewards in some way,</p>
+<p>and then you add the epistemic value. In fact, when you look at the formulation in terms of belief MDP</p>
+<p>for POMDP, the curiosity epistemic value is simply a value function, nothing more. It's a one-step</p>
+<p>value function. But I mean, this is like just playing with definitions. But so you can always</p>
+<p>add a drive for exploration. And this is something that's really often done in reinforcement learning.</p>
+<p>I mean, like...</p>
+<p>I think it's even standard in... Not this way, not exactly this expression, but there's a book</p>
+<p>that's called Reinforcement Learning State of the Art, and they introduced this exploratory drive.</p>
+<p>Like this book maybe that has 10 years or something like this.</p>
+<p>So it's something that you add up. You can put... The way we will do it now is like we can put some</p>
+<p>drives with respect to preferences, and then you add, for example, an epistemic value. And you try to</p>
+<p>just solve the optimization problem. But in terms of formalism, if you look at the belief MDP,</p>
+<p>it's nothing more than a certain value function. So it's not...</p>
+<p>So space remains when we translate through it, or when we...</p>
+<p>Yeah.</p>
+<p>So space is basically the... What is not changed through action. Is that the case? Okay.</p>
+
+<p>Yeah. And so...</p>
+<p>It's just the way... So the thing is that... So... Okay.</p>
+<p>So there's a bit of technicality. So the way that we use is we use a chart, so we take a...</p>
+<p>For the projective plane. So we need to use homogeneous coordinates. So we need to take away</p>
+<p>like a lower dimensional plane. So that's why we always have the same like in the way that we encoded,</p>
+<p>we always are in R3. Because we chose a chart. I mean, we chose homogeneous coordinates. And we did</p>
+<p>projective transformations from one homogeneous coordinate to another homogeneous coordinate,</p>
+<p>but it always lifts to a projective transformation. So what is hidden in the way that we write it is,</p>
+<p>in fact, we don't have the same space. In the first case, we have Euclidean. In the second,</p>
+<p>we have projective. So... But the way as we use charts, and we like... I mean, we don't put all the</p>
+<p>details of the fact that, for example, you can compose two projective transformations in...</p>
+<p>Even if you write it in charts in terms of homogeneous coordinates, and it stays a projective</p>
+<p>transformation, this is something that is okay, but it's... We just don't write it this way. We</p>
+<p>stay in charts. And so that's why there's a similarity between... Because we want to implement</p>
+<p>it. There's a similarity between the Euclidean... Euclidean space... Projective case. Euclidean</p>
+<p>case and projective case have the same state space R3. But the space of transformation is really</p>
+<p>different. And in fact, they are not the same space. But what is important for us in terms of space is just</p>
+<p>to tell yourself that if you take away everything that's inside the space, all the... Like everything</p>
+<p>that populates space, you take it away. What you're left with is with this kind of concepts, which</p>
+<p>already takes into account the fact that when you act, you're not changing... You're not changing the</p>
+<p>space. And there's no single point that is singled out. So this is very important because it's a very</p>
+<p>typical... Like it types a lot of the object you're looking at. If you move, there's no point in the space</p>
+<p>that is changing. There's no point that is singled out. And when you move, the space is not changing. So you know that you...</p>
+<p>You already have inside of your space a change of charts that is encoded. And even more when you</p>
+<p>can imagine that you take the perspective of somebody else. And this is like really something</p>
+<p>that is at the basis of the space we consider is that the space is simply a way to support the fact</p>
+<p>that you can change charts, you can change perspectives. And so it's including this idea inside of</p>
+<p>agency that we're trying to do. So maybe I was not clear in the way that I did it first, but I think this is really...</p>
+<p>What do you do?</p>
+<p>What do you do?</p>
+<p>It's the water we're in. So it's a very interesting way to approach it. And it reminds me way back when,</p>
+<p>actually almost three years ago, when we discussed the projective consciousness model</p>
+<p>and phenomenal selfhood in live stream number nine. And we talked a lot about flipping between the</p>
+<p>Euclidean and the projective modes, how an agent could have on one hand, a space in which</p>
+<p>a book is a rectangle, and yet also be seeing it very close to their face so that its visual projection</p>
+<p>was different. And yet here, there was different behavior associated with the frame alone. So what's</p>
+<p>going on there where even though they apparently can be reconstructed from each other,</p>
+<p>what flips can we flip from thinking more Euclidean and then in that situation,</p>
+<p>um, you know, I'm a plane 30,000 feet above my city, so there's nowhere I need to go. But then in the</p>
+<p>projective setting, we do have this kind of inbuilt epistemic drive to be near.</p>
+<p>So I think it's a hard code. So the idea is, one of the things that it can be useful for is</p>
+<p>communication. So using space as a way to communicate, taking on as a priori that we have very different</p>
+<p>architectures, like the way that we treat information are not the same, we don't have exactly the same</p>
+<p>connection, the loans and everything. But we still have like a common framework in which we can discuss,</p>
+<p>for example, visual information is something that is very immediate for us, which is not obvious if</p>
+<p>you take the perspective, the point of view, if you go from the idea that it's rebuilt, and it's not</p>
+<p>the environment you're living on, it's not in, it's not exactly the space that we see, there's</p>
+<p>something that we constructed like, for like, functional reasons, and that is one of them could be that</p>
+<p>we can communicate very directly with it. So I think it's hard coded that the state space needs</p>
+<p>to have this action. And that all the agents share this action, but they don't share the same</p>
+<p>architecture. So it gives a common base for discussion like through actions, for example,</p>
+<p>change of perspective. So it is like the so it's just to answer the question Euclidean projective,</p>
+<p>we're not going in the direction in terms of research where we're trying to say that you can go from</p>
+<p>the clean projective for the same agent, we so agents are hard coded with the latent space, which</p>
+<p>is as some structure. And then we try to exploit it for function for communication for multi agent,</p>
+<p>like behavior so that they can collaborate. This is it.</p>
+<p>Okay, so each agent is within its own projective setting, and then the Euclidean</p>
+<p>sets the stage and allows that multi perspective.</p>
+<p>Yeah, the Euclidean space, which is the outside world, just here in this toy model, because we</p>
+<p>it's a way to reference the configuration of the world. But for network, this would be, for example,</p>
+<p>the configuration of its sensors. So it's just here, there's a there's this kind of ambiguity between</p>
+<p>space and space. So outside space, which is Euclidean and inside, which is projective. But the outside</p>
+<p>space is just a way to discuss configurations of something that is related to the environment.</p>
+<p>So it can be like your your sensors, the configuration of your sensors or something like</p>
+<p>this information coming from your sensors. So you just give a state a space from it. And the geometry</p>
+<p>is really in the reconstructed world that is internal. But the being able that you do networks that do this</p>
+<p>is somewhere that we're working on now. And it's not that obvious because you need to,</p>
+<p>there's a lot of algorithms, the problem algorithmic problems that we try to solve</p>
+<p>and that we need to solve. So in this toy model is really like the ambiguity comes only from the fact</p>
+<p>that it's a toy model. And but what is space is inside it, what is reconstructed is the thing that we</p>
+<p>perceive space from sensors as being a whole as being something that structures the information.</p>
+<p>And so David wants to say something else. Well, I mean, yes, indeed, in the talk that you are referring to,</p>
+<p>I was giving and also, Kenneth Relieford, if I remember well, yeah, indeed, the toy models encoded a certain</p>
+<p>world model in an Euclidean way. And then using homogeneous coordinate and this kind of stuff to do the projective</p>
+<p>transformation, we just transform the Euclidean space into a projective space.</p>
+<p>And you can go, of course, it's in, you can invert it. I mean, there is an online division, but you can invert it.</p>
+<p>Anyway, so you can go from one to the other. But Grégoire is right that it was a choice of modeling.</p>
+<p>It was a bit motivated by my experience as a brain scientist. You know, there are reasons to believe that memory,</p>
+<p>for instance, play cells and grid cells that then, though there are new hypotheses about their hyperbolic</p>
+<p>characters, but they, you know, usually they are thought as encoding space in an Euclidean manner.</p>
+<p>So since when we project, you know, future action, we use sometimes and we have to use memory or even if we</p>
+<p>do a remembrance of the past and we project yourself in the scenes in the past, there is this access to</p>
+<p>memory systems that, you know, we used to think and probably this is still the case on code information</p>
+<p>in an Euclidean manner. So it would make sense that then for the conscious access, there would be some</p>
+<p>operation that would allow us to go from Euclidean to projective, which, you know, was implemented that</p>
+<p>way. At the same time, but this is way beyond my, my abilities in math. So Grégoire will correct me.</p>
+<p>There is a way of seeing projective geometry as being more general, as an extension of a fine space by adding</p>
+<p>point at infinity. So if now you think about the projective space with a metric, basically the</p>
+<p>projective space is an extension of Euclidean space. Am I saying something completely false?</p>
+<p>No, I mean, it's one way to seeing it. And there are also a lot of operations that use dialogues, I would</p>
+<p>say, or exchange between projective and Euclidean. If you think about multi-view reconstruction of 3D</p>
+<p>Euclidean space from multiple shots in your camera, you take several shots of a building from different</p>
+<p>perspectives. And then you can use a deterministic algorithm, I mean, approach using epipolar geometry to</p>
+<p>kind of infer under some priors that basically all lines that converge at point at infinity are</p>
+<p>actually parallel. Then you reconstruct, you go from projective to Euclidean. So there is a, you know,</p>
+<p>a deep relationship between the two that is possible and probably functional.</p>
+<p>Yeah, that's, that's about it. So, and epipolar geometry is a, is a subset of projective geometry.</p>
+<p>So, yeah, so just to give some context.</p>
+<p>David has a better intuition on projective spaces than me. This is like, so when he says stuff,</p>
+<p>I mean, I, I, I, I, like, I, I know he really has a very, uh, I mean, this is crazy, like,</p>
+<p>a very intuitive, like physical, personal, like visualization. And most of the time he's right. So,</p>
+<p>are we experiencing a projective geometry or what is it like to experience a projective geometry?</p>
+<p>So when, one problem that there's this, with this model is the fact that you have,</p>
+<p>so you need to force the point that infinity to be, um, so the plane you take away from the</p>
+<p>projected face space has to be behind. And so you, you're not really working with real maps when,</p>
+<p>in the, uh, no, you can always extend them. That's okay. But I mean, the thing is, if you want to see</p>
+<p>it in the way that we see it, us, which is, we have something in front of us, I find it a bit</p>
+<p>restrictive to say that you cannot see what's behind you. I mean, you never see it, right?</p>
+<p>I mean, you can imagine it, but which is not the same thing because you change your frame. So</p>
+<p>I can't answer really this question. I'm just pointing out the fact that for me, it's very</p>
+<p>perturbating to think that I have a plane that corresponds to, uh, this continuity, uh, I mean,</p>
+<p>with respect to, I mean, I have a plane that destroys completely the way that I can think about</p>
+<p>movement behind me, which is that if I had to imagine, I had a whole space in that is around me</p>
+<p>and not just in front of me, things would be very, very weird in terms of transformation.</p>
+<p>But it's not something that is not possible. I mean, it's, uh, this is what happens when you take</p>
+<p>psychedelic. You basically, uh, allows the projective transformation to have all its degrees of</p>
+<p>freedom, but in the perception, like in sensory motor processes, this is calibrated. This is restricted.</p>
+<p>So we have to choose certain subset of the group, basically. It's only certain projective</p>
+<p>transformation that will be used in practice. But now if you go into mystical experience or you take drugs,</p>
+<p>you're going to mess precisely. That's the hypothesis with those, with those parameters.</p>
+<p>And now you have the full fledged 15 degrees of freedom transformation. And you see things that</p>
+<p>are very weird, like that looks like mandalas or things like that. So that's something you can get</p>
+<p>when you, when you leave too much freedom to the projective action.</p>
+<p>What is it? What if what we're seeing quote in front of us is behind us or something like that?</p>
+<p>What do you mean?</p>
+<p>What was the, what was the issue with not being able to see behind us?</p>
+<p>Yeah. The issue is, so, uh, if you want to see the project, this space as a 3d space, as a way that we</p>
+<p>see it now, you need to take away a plane and basically projective transformation. So there's</p>
+<p>a sort of plane at infinity on which you can, I mean, it doesn't exist in the projective space. It exists</p>
+<p>only in the way you define an Ecclidian chart, like a 3d, like a R3 chart, uh, with the plane that is</p>
+<p>taken away. And so this plane that is behind you, if you apply a projective transformation, like in</p>
+<p>front of you, everything will seem fine. You're, you're expecting like it's things that you experience,</p>
+<p>but then once what happened is that it can send things at infinity back behind you. And so this is</p>
+<p>something that is a bit, I mean, for me, I'm very on, on, I mean, it's if I, so you can write it</p>
+<p>explicitly, there's no problem mathematically, but if it's really the way that we experience it, it's</p>
+<p>extremely weird to think about. So I prefer not thinking about it. So this is the only thing I,</p>
+<p>and I don't take drugs. So I leave it to other people. I mean, it's, it's really, it could, it's</p>
+<p>true that taking drugs in this context makes complete, like you can, you could model it in the projective</p>
+<p>framework and not in the Euclidean framework, because you have a huge amount of projective</p>
+<p>transformations that make sense more than the one that are related to actions in there. So</p>
+<p>in the presentation I gave, there was a way to relate that like Euclidean frames to protected</p>
+<p>frames under certain axioms. And in fact, you have a huge, much bigger space of projective</p>
+<p>transformations than the one that are restricted through by, uh, the actions of the agents. So</p>
+<p>the action of the agents inside of the real space. So the Euclidean space induced projective</p>
+<p>transformation in its internal world, but there are much more projective transformation than these</p>
+<p>actions. And so you can imagine in this setting, having like very confusing states, uh, of your mind</p>
+<p>in a way, which you cannot in the opinion case. So I wonder if, if a creature with, or a robot</p>
+<p>with 360 degree cameras, would it not be so perplexed as it wouldn't necessarily have a visual</p>
+<p>before or a visual in front and behind? And the thing is, how do you glue them together?</p>
+<p>Hmm. You still have to pick a point. You still have to pick a point of convergence, right?</p>
+<p>I mean, you need to, you need to find a way to do multimodal integration. Like if you,</p>
+<p>if you want to have a camera, that's 360, uh, you have, you have the space to represent it. So maybe</p>
+<p>you can represent it as a sphere. And in this case, the sensors, the sensors are different. So it's,</p>
+<p>it's not necessarily the same, the same robot than the models that we're considering, but there might</p>
+<p>be also another homogeneous space. So a G space, it's a space acting like, which corresponds to the</p>
+<p>rotations of the, uh, of, uh, of, uh, like if you say that it can look 360 and then you can rotate</p>
+<p>and the space of observation stays the same. So you can always imagine acting on it. And so you can</p>
+<p>imagine like having another G space structure. And the good thing about it is, is just with respect to</p>
+<p>the perspective. If you have an agent that can take a different perspective on this environment,</p>
+<p>which depends on its sensors and its actions and the kind of data you have, then you can define G space</p>
+<p>and you can do exactly the same setting, everything like it's, it's, it's made in the moral general,</p>
+<p>more general context, so you can apply it. And so it's not limited only to the projective case. I,</p>
+<p>like we come from the PCM projective consciousness model, but, uh, I mean the, the framework now,</p>
+<p>or at least the way to replace this framework inside of, uh, uh, optimal control is, uh, well adapted for</p>
+<p>any change of perspective and not in certain, not just projective.</p>
+<p>Awesome. Well, where are you gonna go to next? Where will the epistemic drive take you carrying forward?</p>
+<p>So there are two projects now. So the first one is to be able to be like, have a, maybe David can talk,</p>
+<p>uh, but it's to be able to, uh, to get, uh, so to implement it so that it can be used, uh, for, uh, monitoring</p>
+<p>behaviors or to be able to predict behaviors or to analyze it. So you have model of behaviors of agents</p>
+<p>like maladative behaviors, think that we already published, but then more limited context now to make</p>
+<p>it inside of the computational framework so that we can use it to analyze like experiments with humans.</p>
+<p>So this is the first project, which is ongoing with several students. So on the page that I put on my,</p>
+<p>on the first slide, there's all the work that we're doing, the people are working with us and we're</p>
+<p>very grateful for them working with us and all the ongoing work in this direction. And there's the</p>
+<p>second one, which is more like, uh, say, uh, machine learning. And so for me, it's very important to</p>
+<p>have effective algorithms, things, I mean, like things that you can really use in practice, things that</p>
+<p>you can really implement and implementing when you have group structures, there are many, many problems</p>
+<p>that appear. How do you do stochastic optimal control when the latent space is a homogeneous space</p>
+<p>is, I think a completely open question. And I start to have answers in this direction. So I hope,</p>
+<p>hopefully the, the, the work will go out to come out soon. And let's say, uh, January or something</p>
+<p>like this, but it's, there's a huge work in this direction. Cool. Anything else you want to add?</p>
+<p>Thank you very much for the invitation.</p>
+<p>A lot to think about slash mentally rotate slash project. I mean, after all, as you even alluded to</p>
+<p>with communication, this is a perspective taking question. Technology is adding some new flavors and</p>
+<p>methods, for example, asynchronous communication, but it's synchronous for the agent when they perceive it,</p>
+<p>but all these different modalities of communication. And it's quite interesting to think about and just</p>
+<p>really cool that you and colleagues are pursuing that from empirical data analytic and from theoretical</p>
+<p>mathematical approaches. I mean, on this side for communication, I think, and so it's something</p>
+<p>I find extremely interesting. Like more generally, if some people want to, some people want to work on</p>
+<p>the project, please tell us, and I will be very happy. And if you, and even if you have money, please</p>
+<p>tell us and who we're very happy. So I agree. Great. Great. We were very open. You can always send us a</p>
+<p>mail. We'll be very happy to discuss about this. Cool. Okay. Well, thank you again to, to, um, all</p>
+<p>till next time. Okay. See ya. Bye. Bye. Bye. Bye.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+</article>
+</body>
+</html>

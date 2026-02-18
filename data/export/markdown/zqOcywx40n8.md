@@ -1,0 +1,2252 @@
+---
+title: "ActInf GuestStream 082.4 ~ Robert Worden "Assessment of the Brain Wave Hypothesis""
+category: "GuestStream"
+series: "GuestStream_082"
+episode: "4"
+speakers:
+  - "Robert Worden"
+duration: "1:37:56"
+url: "https://www.youtube.com/watch?v=zqOcywx40n8"
+views: 515
+exported_at: "2026-02-18T22:37:37.963457+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 082.4 ~ Robert Worden "Assessment of the Brain Wave Hypothesis"
+
+hello and welcome everyone this is
+active inference guest stream number
+82.4 on July 29th
+20124 We are continuing this series of
+presentations and discussions with
+Robert Warden and friends so today we'll
+be discussing assessment of the brain
+wave hypothesis thank you Rober and
+everyone else for joining so please for
+the
+presentation okay um this talk is about
+a hypothesis that we've had previous
+live streams about the hypothesis is
+that there is a wave in the brain and
+this talk is assessing the likelihood of
+that being true basically and so if you
+want to see the previous talks which one
+of which was about the link between the
+wave and Consciousness then you can
+follow this link here to an active
+inference web page so what I'm going to
+in this talk is firstly try and describe
+to you what the wave hypothesis is and
+secondly in point two give some of the
+evidence which I think points towards
+there being a wave in the brain and some
+of the evidence against it uh now the
+question then arises we've got different
+lines of evidence how do we combine
+those lines of evidence to make some
+overall estimate of How likely it is
+that there is a wave in the brain and so
+what I do in point three stage three is
+at an overall basian assessment of the
+probability that there is this wave and
+the answer I come to is about 0.5 is the
+probability the detailed number doesn't
+matter what matters is that it's not a
+tiny probability in other words we can't
+just dismiss this wave hypothesis out of
+hand we need to think seriously about
+what it might mean for the brain If
+there is a wave and at that point for um
+we will break for discussion and and
+feedback from people on the court
+and after point 4 we'll go on to discuss
+possible future tests of the wave
+hypothesis in five and finally after
+five further discussion again so that's
+the plan of the talk roughly um and the
+first part is to describe what the wave
+hypothesis is so wave hypothesis says
+that there is some region of the brain
+which is approximately round in which
+there are waves going in all three
+Direction c s and there's a round region
+shown with a couple of waves and these
+waves represent objects in space so the
+long wavelength wave Lambda 2 the green
+one represents an object at R2 a small
+distance and the Red Wave with shorter
+wavelength represents an object at
+longer distance so that is the
+hypothesis that there is this wave
+region in the brain and neurons couple
+to the wave as transmitters and
+receivers so a wave acts as a kind of
+working memory for a 3D model of space
+and all the models around the animal in
+space at the time so that in essence is
+the wave hypothesis but the important
+thing about it is how well would a wave
+based spatial memory
+perform and you do some Elementary Mass
+the number of waves you can get in this
+round region it's approximately if
+there's some minimum wave length which I
+call Lambda in then the number of waves
+you can get in the in the space is D
+over Lambda Cub roughly so that's quite
+a lot of things you can represent in the
+wave and the spatial Precision you can
+get is of the order of Lambda Min over D
+and that can be quite small so the
+benefits of this wave storage are you
+can get high precision and that I claim
+you can't get out of neurons you can get
+high capacity to represent lots of
+different objects you get low spatial
+distortion
+and generally it is a very simple and
+direct physical representation of 3D
+space it really acts like a hologram so
+the question is is there any evidence
+that there is such a wave in the brain
+and I think there are three kinds of
+three main pieces of
+evidence the first one comes from the
+mum Thalamus and the second one comes
+from the central body of the insect
+brain now the pamus is shown in the left
+in green for three
+mammals the point about the thus is it's
+approximately round so it's well suited
+to hold a wave and it has all the right
+connections to hold a representation of
+space it has all the sense data coming
+in pretty much all the sense data and it
+has connections to all the cortical
+regions that are making sense of that
+sense
+data so there are more specific reasons
+about the phalus but I'll come to those
+later so that's why the thalamus is a
+likely can holding the wave and
+similarly in insects there's a central
+body of the insect brain which is a
+small part of the center of the insect's
+brain which its shape is remarkably
+preserved across all insect species and
+it's nearly round so the central body
+like the phus is well suited to hold the
+wave and it's connected has all the
+right neural connections to holder
+representation of space so those are the
+first two pieces of evidence now the
+third line of evidence comes from
+building neural computational models and
+it's a thing that I think has not been
+much remarked
+upon um 3D spatial com cognition is very
+fundamental it's the first thing an
+animal has to do to understand the space
+around it in order just to
+move now I've tried building 3D models
+of space at M David marah's level too
+and the point is that to build a model
+of space in the brain it has to be
+fairly precise a approximately 1% and
+you can see this because vision and
+other sense data is fairly precise and
+there be no point in getting that
+precise sense data if you didn't make a
+a fairly precise model of space out of
+it however it's very difficult to do
+that with neurons because in a fifth of
+the second which is approximately the
+time an animal has to have to construct
+his model of space a typical neuron
+Spike train has only about 10 spikes in
+it and so this can represent a real
+number such as a dimension in space with
+a Precision of approximately square root
+one in square root 10 parts in other
+words 1 and three or 30% and that
+Precision is very far out from the
+Precision which I think you need to
+represent 3D space I think why this has
+not been recognized or not been spotted
+is that we've done neural modeling of
+the brain for years and years but
+everybody models neurons as highly
+precise
+reproducible uh units with outputs of
+real variables as is shown in the top of
+this figure the output of a neural
+neuron is usually model as a real
+variable with very high Precision so you
+can get high spatial Precision out of
+that whereas real neurons they have
+Spike trains and in a short time a spike
+train doesn't represent a number
+precisely at all so this I think has not
+been spotted
+uh and I think it makes a huge gap in
+neural models of the
+brain and as I've just said the wave
+storage can get much better Precision so
+wave storage might fill this Gap and
+that is the third piece of evidence for
+a wave in the brain so in summary three
+pieces of three main pieces of evidence
+beamus the insect central body and these
+neural computational models which
+haven't model model 3D space properly
+and I think that's a bit of an
+embarrassment for the neural model of
+the brain really so uh if you have those
+pieces of evidence and some evidence
+against the wave which I'll come to uh
+how do you assess the overall
+probability that the wave is there well
+it's a binary hypothesis either there is
+a wave or there's not a wave and we want
+to estimate the probability that there
+is one based on several pieces of
+evidence and this in analogy is like a
+biased coin in other words How likely is
+that coin going to turn up heads on the
+next time we toss it and you do various
+experiments one experiment is toss the
+coin M times and you get heads end
+times so what you do is several
+different experiments you might toss
+with your left hand might toss the coin
+from an airplane and you might build a
+special coin tossing machine and with
+each one you do some experiments and so
+the best estimate coming out of all
+those experiments is the sum of all the
+heads over the sum of all the coin
+tosses
+and so this is the way you the basian
+way that you combine the evidence from
+different lines of evidence on the same
+hypothesis you a lot a weight to each
+one which has a certain subjective
+element to it and then you sum them all
+according to their weights and that's
+what I'm going to do to make a basin
+combination of the different lines of
+evidence about the wave hypothesis and I
+just what you do is you
+simply you a lot coin tosses to each
+line of evidence and you SU the coin
+toses
+together that I think is uh how people
+do science roughly and it is if you like
+it's in the textbooks as the basian
+philosophy of
+science so when we do this assessment
+what answer do we get and I've
+summarized the answers in this little
+table and I've put red rows for things
+that are mainly against the wave
+hypothesis and green rows for things
+that are mainly for it and the two red
+rows you'll find are prior
+considerations our prior prejudices and
+the idea and biophysical mechanisms and
+I've given those large negative
+weights I've done that deliberately to
+show that the overall result is not too
+sensitive to those negative weights you
+can adjust them a bit and you won't
+change the result much and the positive
+lines of evidence are the three things I
+talked about the thalamus the insect
+central body and computational models
+and a couple of others there is some
+evidence from phenomenal Consciousness
+and there are some other
+considerations so what I'm going to do
+quite briefly is go through those
+different rows in the table summarizing
+basically what the considerations are I
+won't spend too long on them because the
+tables are not that interesting but you
+can come back to anyone or you can stop
+me on anyone ask questions if you like
+or come back to anyone in discussion so
+so what is the prior considerations that
+go against the wave hypothesis first one
+I've put in a big weight of 20 for oam's
+razor in other words it's an extra
+hypothesis we just don't want an extra
+hypothesis so let's put a weight against
+it and so I've put a big weight of 20
+against that it's bigger than I think is
+realistic but I've done so purely to
+make it clear that the eventual answer
+is quite robust against that
+and there's a couple of other arguments
+I've put in which people might make one
+is the classical neural model of the
+brain has served as well so why do we
+need anything else but I think that's a
+weak line of argument because the
+classical neural model of the brain
+hasn't worked that well that we're ready
+to that we've described all the brain
+there's still massive number of things
+we don't know about the brain so that's
+a weak argument and the second argument
+is well we never seen a wave so surely
+that means they're not one but that that
+again as a weak argument I think because
+we just don't know how to look for this
+wave and it probably has very low
+intensitive reasons I'll come to later
+so those are weak arguments but
+nevertheless I come up with 25 points
+against the wave 25 Point against the
+wave from prior
+considerations so now we move on to
+positive in evidence for the wave and
+the first one of these is the mamalian
+thalamus there is both General evidence
+which I've talked about in other words
+the phalus has the right shape and it's
+in the right connect has the right
+connections to all the three 3D model
+ens and there's what I call Smoking Gun
+gun evidence something that's much more
+specific about the thalamus which points
+to their being a waven now I'm going to
+come to that later in the talk so I
+won't go into that detail in detail now
+but in summary I think Thalamus offers
+quite a lot of positive support 14
+against two for the
+wave then we come on to the insect
+central body there is again the general
+evidence that the insect central body
+has the right shape and it's highly
+conserved across all insect species now
+I think that is quite significant in
+other words every insect in the world
+has the same shape pretty much the same
+shape of its central body so the shape
+must mean something whereas you compare
+that with other parts of the insect
+brain like the mushroom bodies for
+instance they have very variable
+shapes and they just have to make neural
+connections but this is a clue that the
+central body of the insect brain is
+doing something other than making neural
+connections and the idea of a wave in it
+fits it quite
+well um and I think there's other
+evidence from the from the insect brain
+mainly that the insect brain has very
+few neurons in it so there are probably
+not any neurons to make a decent
+representation of 3D space but we knew
+know that insects do it rather well so
+that's the central
+body next is the computational
+modeling as I said 3D spatial cognition
+is a vital function of the brain but
+that as far as I know Carl can put me
+right on this there is no working neural
+computational model of it especially
+when you ask for a model Which models
+Spike trains rather than idealized
+theoretical
+neurons and in any subsec time intervals
+neurons give a big error rate about 30%
+whereas we really need 1% or something
+to con construct decent spatial
+model so the evidence yeah may I ask
+just a Precision here the the point here
+I think if I follow you well that we
+should all bear in mind is the model
+that is
+needed performance in real time so what
+you are saying is the lack of precision
+make come also because of some time
+pressure that for the to be valid should
+be able to build and update this 3D
+model of space in quote unquote real
+time correct yeah very short time when
+you need that model of space to be
+really up to date so you only have a in
+mammals you have a third of a second and
+insects you have even less time and in
+that time neurons real neurons are very
+imprecise that's the
+argument okay so that's the three lines
+of evidence for the wave um one line of
+evidence I think that goes against is
+biophysical mechanisms in other words
+how does this wave work and as far as I
+know no biophysical model for the wave
+has ever been proposed and we make again
+the rather pessimistic assumption that
+the chances that we'll find one are
+small will come to that later but we've
+put 10 points against the chances of
+finding a decent biophysical model of
+the wave now I think that is very
+pessimistic especially in view of the
+the point that evolution is clever than
+we are and so even if we can't think of
+it Evolution may be able to think of it
+and there in in this table there's some
+other biophysics evidence which
+approximately balances out so the
+biophysics evidence is taken to go
+against the wave
+broadly uh uh finally the last thing
+I'll consider is phenomenal
+Consciousness and this was on the last
+live stream that if there is a wave in
+the brain it leads to a new theory of
+how Consciousness works and you can see
+that on on that live stream and this
+theory is I think is quite nice it
+solves a lot of the problems of neural
+theories of Consciousness but we don't
+want to put too much weight on it
+because Consciousness theories are so
+controversial but I think what we can do
+is that speci
+Consciousness the the conscience that we
+have right now of the space around us
+must come from something happening in
+the
+brain and our spatial Consciousness is
+quite detailed and precise and so that
+tells us however it's done that the
+model of space in the in the human brain
+is quite detailed and
+precise and so that again if you come
+back to the point neurons can't do it
+but way might be able to do it that is
+further evidence in favor of the wave
+but again because Consciousness is
+controversial I haven't given it big
+weight at all I've given it four points
+so when we and there's some other
+evidence that I W don't think I'll go
+into so when we combine all the all the
+evidence here's the scores we've been
+keeping been adding up here's the coin
+tosses which came out heads here's the
+coin tosses which came out tails and we
+have a total of 91 coin tosses of which
+47 came out heads so the basically we
+were deliberately pessimistic in
+stacking up the negative evidence
+against the wave but in spite of that
+the positive evidence is
+one and quite literally the many pieces
+of positive evidence add up and so we
+get to probability 0.52 or if we take a
+simpler view that we just give
+every line every piece of evidence one
+vote we get 31 votes and 24 of those are
+in favor of the way so we get a more
+positive number out of that and my main
+point is not the number 0.5 or whatever
+it is but the the main point is it would
+take very strong NE negative evidence to
+change this and I don't know of that
+evidence and so my main point is really
+you can't easily dismiss this wave
+hypothesis and if you can't dismiss it
+then it raises some big questions
+I think if the wave exists we need to
+really rethink how the brain works it's
+a very different model of the brain we
+have um and if not by the way there's
+still a huge unsolved problem because
+how do these imprecise neurons do 3D
+spatial
+cognition so
+um um what I'm doing the trouble with
+the one trouble with the wave hypothesis
+is it really rests on the work of one
+person at the moment that's just me
+that's been interested in it but science
+requires reproducibility and debate
+between lots of people so what I'm
+asking people to do watching this live
+stream and asking you to do is please
+look at these ideas and assess them for
+yourselves uh please provide some
+commentary of your own on the wave
+whether it's Specialized or generalized
+or whatever please challenge the ideas
+please get a hold of the spreadsheet you
+can download the spreadsheet and and
+change the way Waits and see what you
+end up with or please bring new evidence
+to Bear there may be some evidence
+against the wave for it that I don't
+know about and please agree or disagree
+and what I'd like to do is to collect
+that commentary and to make that
+commentary available when people want uh
+on this website you can get the
+spreadsheet and please therefore send
+your comments to my
+email so that's the call for commentary
+and we come on now oh by the way this is
+very important Carl friston has endorsed
+the call for commentary I hope you're on
+the call Carl um based on this short
+description of the wave which I'll leave
+you to read Carl writes this is the
+basian waves in a brain hypothesis and
+it challenges conventional views of
+belief updating in the basian brain and
+it offers a perspective on neuromorphic
+computation that's supported not only by
+theoretical accounts of functional brain
+architectur but receiving empirical
+evidence that speaks to a fatic
+mechanisms but the important part to me
+is it would he says at the end it would
+be very useful to see other people's
+take on this proposal for Mortal
+computation in the brain so please send
+in your
+comments but on the next slide just
+before
+discussion
+um a few words of explanation of mortal
+computation this was introduced by Jeff
+Hinton in
+2022 mainly in the context of neural net
+learning and the paper I'm mainly
+referring to is by Alex and Carl in 2023
+where they relate mortal computation
+particularly to markof blankets but also
+to a lot of other things there are so
+many ideas in that paper I I can't
+possibly summarize them but basically
+these are proposal for brain inspired my
+biometic Computing I'll summarize I'll a
+quote from that paper summarizes what
+moral Computing means to Alex car
+software is Immortal because it can be
+copied to different hardware and still
+be executable mortal computation means
+that once the hardware medium upon which
+a program is implemented fails or dies
+the knowledge behavior and functionality
+will cease to exist so that's model
+computation um my take on it is that
+direct physical computation which is the
+kind of computation the wave does is
+simpler and more efficient than a
+universal Computing machine like a
+universal touring machine or a universal
+Von nman
+computer and in particular Immortal
+software needs very reproducible
+Hardware but that doesn't work out in
+the brain for two reasons two big
+reasons firstly no two neurons are
+identical in the brain I believe and
+second secondly even one neuron never
+does the same thing
+twice so coming on to the relationship
+between wave-based cognition and Mortal
+computation I think wave based spatial
+competition is mortal and it's morphic
+to use a word from this paper in other
+words it depends on the physical shape
+of the thing holding a wave in terms of
+their 5es model it is Elemental because
+I think spatial cognition is a very
+basic thing that any animal needs it's
+embodied because embodied in space we're
+all embodied in space and it is inactive
+because we have to move in space in
+order to understand 3D
+space so wave computation is tied to a
+visible wave and I will claim that we
+need to understand 3D space before we
+need to learn things and that's why way
+spatial cognition is really very
+Elemental and an interesting consequence
+of this if you believe there's a wave in
+the brain and if the the wave is the
+source of Consciousness then you get the
+conclusion that Consciousness is Mortal
+I think we knew that but I think it's
+quite
+interesting so onto discussion and um
+these are some of the points I would
+like to hear about in discussion perhaps
+you can take them in any order but um
+Dan do you want to take
+over thank you steering the discussion
+yeah how about Alex if you'd like to
+give a first comment and then anyone
+else can can start to jump
+in can you hear me okay let me know if
+the background noise is really bad
+because I'm in like a cafe so first of
+all I think this is very interesting I
+did read Robert uh your call for
+commentary paper uh before as well I did
+have a few notes I mean there's a lot of
+things that we could talk about but I I
+do really appreciate the connections to
+mortal computation thesis uh which is a
+corlar of the free energy principle so I
+think this is really nice and uh I did I
+did like the argument about that waves
+are morphic thus you know that they fit
+in the framework because we kind of need
+that uh otherwise we're just dealing
+with Immortal computation so I had
+actually some questions I'll just throw
+at you that might they might even just
+be for further information so one one
+comment question is I don't know if
+you're aware of Robert West at uh Carl
+tin University in Canada uh who has
+worked on holographic declarative memory
+uh one of your comments earlier about uh
+things being holographic and are there
+neur models that try to explain or try
+to model things that are wavelike but
+these aren't really wavelike uh
+holographic declarative memory comes
+into play where they use complex numbers
+and complex number representations which
+complex numbers are often used to model
+waves um so I was curious if you had
+known about that work or if you did uh
+why would that be insufficient or how
+that might play in the framework and
+I'll lump with this another body of
+works that way I don't break this up
+into too many questions uh resonator
+networks or resonating fire neurons have
+a wave like construction about them uh
+uh what is his name Eugene zovich in
+computational neuroscience proposed uh
+the zovich neuronal model which is a
+very complex spiking neural model and
+those Dynamics can be uh constructed
+such that they emulate resonate in fire
+Dynamics or wav like Dynamics and I was
+wondering how that if you were aware of
+that if not that might be very relevant
+in a potential neural model that could
+be a step in the right direction since
+you said that we don't really have the
+neuronal models or neural computational
+models that get at this notion of wave
+like comp computation um they might not
+be completely relevant so I was kind of
+curious about that I'll stop there
+because then I have like one or two
+other questions so I was curious if you
+had any comments on that thank thanks a
+lot for that the quick answer is no I'm
+not familiar with either of those and I
+will go and look at them as soon as I
+can uh they may well have insights uh
+what I'd say about the wave hypothesis
+is it
+is the key thing about the wave and I
+didn't emphasize this enough is it's got
+to be a working memory so it's got to
+hold information for a fraction of a
+second
+and that makes it rather different from
+anything that is Neuron oriented but I
+will certainly read those to with great
+interest thanks a lot yeah I'll try to
+uh send Daniel or you some links to some
+of those papers to point you into those
+directions and then I guess I'll um ask
+my other question uh I mean I can also
+lump in chrysiasis work on spawn because
+there are lots of neuronal models that
+try to get at modeling the Dynamics
+through spikes and again maybe this goes
+into that spikes just don't give us
+enough Precision because in the paper I
+didn't quite see that but in your talk I
+did um which was why why do you claim
+that we don't model spikes well as we
+have a long history of spiking neuronal
+models and computational Neuroscience
+and brain inspired computing that do
+work very well now again I don't want to
+claim that there this is where Carl
+could chime in as you mentioned him
+earlier uh if there was any that have
+been used to model aspects of complex
+spatial cognition that I think might be
+lacking but like we have hjin Huxley
+model again I mentioned the isovic model
+uh fiton nagumo there's a lot of these
+complex Dynamics uh that can actually be
+used to engage in very complex machine
+intelligence tasks uh that for example
+you can train simple robotic Control
+Systems uh with like modulated forms of
+Spike timing dependent plasticity which
+is also a very rich and long history in
+Neuroscience for plasticity of course
+and this is where we're now we encoding
+in synapses I'm not sure that this feels
+at odds uh with the wave hypothesis but
+rather could be tools uh that you could
+be used to build wav like models and
+again I was just curious to know if
+there's still something about those
+particular spiking neuronal dynamics of
+which we have decades and Decades of
+work that are just lacking to give you
+what you seek um and again is it just
+because we can't really represent things
+with 10 spikes in five milliseconds that
+even if we represent them Faithfully to
+the neurophysiological data uh that's
+still insufficient for representing what
+you want and you're just saying we need
+another mechanism that's the part where
+I was a little confused yeah I I think I
+please send the references I love to see
+those papers I think specifically what
+I'm saying is in I haven't seen a
+detailed 3D model of space to the level
+of resolution like a B's eyes or our
+eyes that's actually built with neurons
+firing there may be lots of uh neural
+models built with Spike trains I'm not
+aware of like I'm not aware of any
+models within the Fe active inference
+work I'm not aware any models outside
+like Edmund rolls biset or um Jeff
+Hawkins stuff and so on I believe that
+all of those use precise theoretical
+abstract
+neurons okay that's fair um I think
+uh yeah I think I I think I get what
+you're trying to say I do I do feel like
+there might be some interesting work out
+there like for example I'm sure you've
+heard of the recent model computational
+models in the OS for like grid cells
+which is used as an important part of oh
+yeah no I think looking at grid cells is
+an important thing we have to
+do okay that might be complementary
+rather than an opposition as I I do like
+the way hypothesis I don't necessarily
+think that this is data that would
+necessarily refute it and this is where
+Carl might chime in uh because again if
+he's aware of any good neuronal models
+or computational neuron models that
+actually get at this that I'm not sure
+that great
+thanks Carl or Kenard jid feel
+free perhaps I'll take the lead and just
+um respond to those those comments I
+think um you could argue both ways um
+but it does rest very
+sensitively on whether the wave is a
+description of neuronal Dynamics under
+the neuron
+Doctrine or whether the wave hypothesis
+commits to some divorce between the wave
+however instantiated and the uh neuronal
+activity so certainly
+um the
+the if you
+say that the wave um is an appropriate
+description of Ensemble
+Dynamics um on the cortex or in the
+hippocampus or in the
+thalamus um then one could easily argue
+that um it will be difficult to disprove
+the wave of hypothesis and indeed there
+are people's uh whose entire career is
+built about uh built upon understanding
+um spatial cognition and Beyond in terms
+of cortical field theory for example so
+we just look at the uh oh there are many
+examples here
+but the sort of U classical example that
+comes to mind is the work of Peter
+Robinson Australia um and developing
+quite sophisticated wave likee models of
+um neuronal Dynamics idealized can I
+come in there car ju just briefly I mean
+the key thing about this wave hypothesis
+it's got be working memory so it's got
+to store information for um and and it
+is a separate non-neural wave that's
+basically the way it's
+pitched and it has to be a wave which
+can store information for a fifth of a
+second or a third of a second or
+something like that and so it's not just
+electric Fields passively caused by
+neurons yes so that speaks to you know
+what what does the the wave hypothesis
+um commit to uh and you're giving a very
+clear answer that uh it is not merely
+articulating um Ensemble dynamics that
+will could transcend neurons we could be
+talking about G cells we could be
+talking about Quantum coherence you know
+but the the key thing is that you're
+summarizing spatial extended Collective
+dynamics of active matter in the brain
+um yeah in terms of uh INF frequency
+space basically so you could you could
+say what this is exactly the same move
+that quantum physics makes it's instead
+of yes absolutely yeah um you basic I
+mean at its simplest you can regard
+quantum physics as basically
+articulating Dynamics um be specific
+about this sorry articulating density
+probability density Dynamics in
+frequency Space by appeal to complex
+numbers and for transforms
+um and um what's what's the benefit of
+doing that well you can use foro
+transforms and all the orthogonalization
+and all the linearization of various
+problems that ensues um what's the
+difficulty well the slight problem with
+um modeling probability waves is that
+once you take a forer transform there is
+no natural way to uh impose a su tow
+constraint that you would need in order
+to interpret as a Poss a probability so
+what do you do you have to invoke a born
+Rule and then think about probability
+amplitudes but the message here is that
+there is a great utility in taking any
+arbitrary
+Dynamics in some Metric space and
+specifically density Dynamics and
+projecting them into the space of waves
+um and from that point of view you know
+one could argue that this the wave
+hypothesis is not a hypothesis it's
+actually a principle or a proposal for a
+better way of understanding Collective
+Dynamics and in that sense I think there
+are lots of examples of that and I come
+back to cortical field theories Quantum
+field theories of um um applied to um
+sort of the brain um that have the right
+kind of damic will have exactly the
+right kind of um um working memory so
+I'll just give you a couple of examples
+there is work um looking at um Chimera
+States in cortical field Theory um where
+um one can find things like solons which
+are you know brings us back to last
+year's conversation condensates and the
+like more interestingly more recently um
+there's been empirical evidence from
+both EEG and
+fmri of vortices on the cortex um which
+are if you you know one way of
+understanding um classical like Dynamics
+um in the space of waves that have the
+kind of
+itinerancy and
+um solenoidal aspects that do remember
+things by returning to the same state um
+so if you know I think there's lots of
+empirical evidence U that and thereby um
+meaning that they have memory in the
+sense of say a konari map um and these
+are explicitly articulated in terms of
+traveling waves that have this circular
+noal aspect that can be empirically
+detected however so I you I think your
+answer the question is there any
+empirical evidence for a formulation of
+um brain Dynamics Beyond um a commitment
+to particular the neuron Doctrine um
+that can be articulated in the space of
+waves that fulfills the the uh
+requirements of precision for memory and
+representation I would say yes but that
+does not answer the question
+is are these waves mere descriptions or
+of one or many kinds of descriptions of
+some
+underlying um some underlying
+Dynamics um or does the spatial wave uh
+the wave hypothesis of the brain say
+that the actual substrate the Mortal
+substrate cannot be just limited to uh
+message passing among uh among neurons
+and that's what I meant by the neuron
+doctrine that I think is
+yeah yeah that I think that is my view
+it cannot be reduced to neurons
+basically yeah that's what I understood
+from your previous talk in the slide you
+shared before of course there is there
+are a lot of waves in the brain for
+instance related to electromagnetic
+induction and there are a lot of old and
+very powerful models go back to nun
+years you know to connect with SCS
+discussion of EG Dynamics but I think
+one of your points is that the wave
+whatever that is uh cannot be just an
+epip phenomenon and it has to have an
+inductive power on neuronal Dynamics in
+return um there is some model I think
+that are emerging uh or some theories
+that are emerging about electromagnetic
+induction uh uh like electromagnetic
+wave in the brain that with inductive
+power on current in the in thees um I
+haven't followed that literature for a
+while as I told you before I give up
+gave up on Neuroscience uh but um so
+what you require is really something
+that has a you know bottom up and top
+down quote unquote sort of mechanism to
+begin with this wave has to be sustained
+and it has to be in in of itself a form
+of computation that can then feed back
+to the noral network that's
+question yeah
+Ken would you like to give any
+comments uh just to maybe a one for
+everybody a question for everybody might
+it reveal some of my ignorance here but
+um is are there any sort of General
+results about the capacities of waves
+for computation relative to other types
+of computation it's it's a kind of
+analog in computation isn't it it is
+analog is very appropriate term for it
+but I I would say the the role of the
+wave is more information storage than
+computation but it it actually may be
+involved in both but the key thing is
+it's got to neurons May compute 3D space
+there got to be some way of storing it
+with adequate precision and that's what
+the wave is supposed to
+do but I should add if I may that
+Computing 3D space in particular in an
+active in C kind of a realistic
+biological uh context for you know
+animals that's not just representing
+space it's also acting upon it through
+Transformations that are not just about
+change of coordinate for instance under
+hypothesis there is the projective uh
+group that is acting on a projective
+space but then you have the space that
+is itself filled with features that
+themsel as their own operators like
+different groups for and spaces colors
+and how all these things like perhaps
+through models of fiber
+bundle interact is very key so the the
+computation of um space as you think of
+it and I think is perfectly correct and
+and talks to me uh is much more than
+just uh you know represented
+representing three coordinate at one
+point in time I agree I
+agree just to speak to um Ken's question
+about are there any laws that would be
+applicable under the wave
+hypothesis just going back to the
+analogy with quantum mechanics if one
+thinks of the wave as a
+probabilistic um representation or
+memory um then you'd certainly be
+looking to Heisenberg and certainty
+principle and the de brogly
+relationships so I perhaps this could be
+a question for Robert you know H how
+would you unpack the spatial Precision
+in relation to the temporal Precision
+because you talk about memory but the
+the uncertainty principle would mean
+that you can um you can have a certain
+um spatial Precision at the expense of a
+temporal precision and vice versa indeed
+that is one if you like gift of a wave
+hypotheses certainly as read from the
+point of view of Elementary uh qu Quant
+quantum theory um the the other so
+question i' reflect to you in terms of
+the deoy relationship what what what
+what is the analogy of say energy and
+mass in in these in these ways you know
+how would you in how would you interpret
+this to a sort of 101 physics student um
+when it comes to with great difficulty
+um I let me first speak to the spatial
+Precision I think the uncertainty
+principle is basically a property of the
+fer transform a wave that's confined in
+a certain distance has a certain
+uncertainty in its wavelength and
+wavelength is momentum in quantum
+mechanics and and position is position
+so that's the UN that's the the origin
+of Heisenberg uncertainty principle is
+simply the Freer transform of a bounded
+wave that speaks to the spatial
+Precision but as to the actual
+biophysics of the wave and there is some
+relationship between wave vector and
+frequency I don't know what that
+relationship is but the the gr as you
+recall
+uh which way does it go frequency over
+wavelength is Phase velocity and the
+derivative of
+wavelength with respect to frequency is
+the group velocity now all those
+questions about what the group velocity
+is what the rest mass of these if there
+are Quasi particles what's their rest
+Mass I don't know but uh for instance
+one of the more far out hypotheses I
+consider is as we discussed it last time
+was that the W is actually held in a
+Bose Einstein condensate and in a Bose
+Einstein condensate there are particles
+called roons that haven't phonons
+normally have zero rest Mass but there
+are particles uh called Rons and others
+which have nonzero rest M and that may
+be something to do with their
+persistence in time but nonzero rest
+Mass gets you into the whole question of
+what's the frequencies of this wave what
+are the wave vectors
+and as far as I'm concerned it's all the
+Wild West it's all to play for really I
+I I'm only making suggestions at the
+moment thanks I'll make a few short
+comments so thank you all for the
+discussion and Robert also for making
+the basian epistemology very clear I
+think it's really cool also that was
+very insightful discussion on one
+possibility the wave is epip phenomenal
+like David said plays more of like a
+memory possibly even a memory with no
+causal
+efficacy no I'm sorry I did not mean
+that I mean according to what I
+understand and is necessary
+for Rob model the wave must not be a p
+phenomenal yeah and that's right what we
+know about EG except some models for
+instance now there's some models of
+electromagnetic propagation with notion
+of feedback induction that should be
+looked into but overall the way we model
+EG for instance from the neuronal
+current is EP phenomenal it's just you
+know summation at the level of an
+electrode and so the wave itself is an
+epiphenomenon and the the model of
+Robert does not want that I totally that
+agree and that that's where I was going
+was sorry to attribute it to you that
+way but it was yes to to a more active
+computational role kind of like this
+Reservoir
+Computing area um also a general Point
+kind of summed up by figure 4.3 in the
+2022 textbook is there's like continuous
+and there's discret models in space and
+in time
+so given the continuity of space and
+time just at a first pass a continuous
+representation or model like a wave may
+have certain advantages over holding it
+in a discret way and then um in the act
+of inference does not contradict folks
+ology work there's the continuous time
+model on the lower scale and then a
+discrete more switching slower model
+that could be like an intentional
+context oh so so there is precedent in
+terms of having a lower level continuous
+model higher level discreet models and
+uh then more to taking that to the
+bigger
+questions there's also some natural
+empirical correlations with bigger
+slower things and faster smaller things
+so to the discussion of well multiple
+things are represented like space and
+time some of that is doesn't need to be
+an open-ended representation it can be
+like evolutionarily tuned or
+developmentally tuned or learned um and
+then last comment just on the insects it
+was a great point a a line of evidence
+that's very promising because there's a
+lot of neurophysiology and neuroanatomy
+available in insects and just to say
+that the
+visual region of the the brain this is
+arthropods and insects and the old
+factory as well as the mushroom body
+have more like stereotypical units and
+they do have more change in size and
+more variation in evolutionary whereas
+some of the interesting evidence from
+what you presented from the insect brain
+is that the actual geometric volume and
+size of the central body is relatively
+conserved even as other parts of the
+brain have a lot of allometry so that
+suggests that one way or another either
+it doesn't need to be explained in terms
+of fulfilling a adaptive function it
+could just be oh it's contrain or
+something like this but if it is going
+to be playing a a role which is a fair
+assumption in an energy limited system
+then part of its role can't necessarily
+be improved by making it bigger or
+smaller yeah I agree I
+agree you mean relatively bigger or
+smaller right because I mean it the
+central body does scale a little bit
+with with the insect brain size but it
+it scales less rapidly than the total
+insect brain
+size the interesting to hypothesis see
+whether it scales with the visual Acuity
+of the
+insect yeah how the different regions
+size and other attributes this could be
+in mammal Andor arthropods power the
+empirical psychophysics and the just
+noticeable
+differences described or explained by
+like for example just geometric volume
+of the old factory L whereas if the or
+is there some other variance to be
+explained
+yeah well but there will be a lot of
+correlations between you know neuronal
+population densities and and volume so
+if volume increase you may have more
+neurons
+uh obviously you know that's basic
+neuros psychology 101 and vision
+Neuroscience one1 you know if you lose
+the neurons you acity diminishes so
+there seems to be a strong correlation
+between your angular Precision or acity
+for many other things and the number of
+of neurons and connections that those
+neuron makes but after a while if you
+lose twoo many neurons you have a de
+differentiations like think about neurod
+degenerative diseases like you know take
+alimer for instance where everything get
+disconnected and there is not enough
+neurons to represent stuff so that I it
+would be hard in the C you know given
+what is fairly know in Neuroscience to
+reject the importance of the I'm
+simplifying here the number of neurons
+the number of neuronal units in your
+brain and your uh resolutions capacities
+thank you yeah how about Robert continue
+with uh part two should I I bash on yeah
+great well thanks everybody for
+that uh so here's what we've got to on
+the road map we've described the
+hypothesis evidence for thre against
+we've done the assessment and we're now
+on to Future tests how can how can we
+test this way hypothesis and I'll divide
+this roughly into what can we tell from
+aonomus from the insect central body
+from computational models from
+biophysics and from other sources of
+evidence so I'll just go through some of
+those um so um this probability 0.5 is
+an unsatisfactory place to be we really
+want to drive the probability up or down
+and so the first thing to do is to
+stress test the three main groups of
+evidence that we have already and then
+we look at other evidence for and
+against and there are a lot of possible
+tests described in this paper which I've
+given the link to the P tests are all um
+in this table here now I'm not going to
+go through all the table uh I'll just
+say the paper allows you to sample the
+particular area that may interest you so
+you can just pick out the section that
+speaks to whatever test you're most
+interested in and I'll just do some
+dipping in sampling
+myself so the first first thing is the
+so-called What I Call The Smoking Gun
+the specific evidence in the thalamus
+and what this specific ele evidence is
+is there's a picture of Thalamus here on
+the right and so Thalamus is a round
+thing at the center of the cortex which
+is like a hemisphere around it and what
+you have to notice is the thalamus in
+mammals has lots of different nuclei
+thalamic
+nuclei and the thalamic nuclei are only
+very weakly connected to each other
+but they are strongly connected both
+ways to the cortex so the question is
+why don't the thalamic nuclei move out
+of the thalamus towards the cortex
+they're going away from each other there
+only weak connection with other nuclei
+they're getting closer to the cortex so
+they're reducing the length of mated
+axons and that would save a lot of
+energy so that's the problem with athus
+under the nuclear model if the nuclei
+exists just to have neural connections
+to each other they're very weak neural
+connections and energy could be saved by
+moving out each nucleus towards the
+cortex whereas if the thus has a wave in
+it there's a good reason for all the
+nuclei clustering together the nuclei
+have to be together in the same
+wave now I've tested this energy
+argument by
+actually uh modeling what happens when
+you move theic nuclear
+and approximately I obviously it was
+very approximate test on the human
+Thalamus and the answer was yes you can
+save energy that way so there is a
+mystery of why the phalus stays together
+but that was an approximate test I think
+now that test could be done much more
+precisely using connectone data brain
+connectone data so you could use brain
+connectone data you could have a
+computer program that tries out various
+moves of nuclei to see if they save
+energy so that that is the test that you
+could make this argument about the
+Smoking Gun much more
+precise and there's a similar test for
+the thalamic particular nucleus which I
+won't go into I would
+say sorry sorry to interrupt I would
+have kind of is it possible to interact
+Slide by slide or do you prefer that we
+yeah absolutely
+yeah so I I get your uh energy argument
+in term of neuro development or neuro
+evolution of anatomy and you know
+anatomical relationships though I would
+argue I mean I would not argue I would
+you know ask you but you know what if in
+this uh energy model you take into
+consideration all the inputs and the
+outputs uh from Sensory neurons for
+instance from sensory organs the eyes
+for through the optic nerve uh and of
+course then the output toward the cortex
+but also the you know motor input uh I'm
+not sure uh that if you think about all
+this wiring then your energy model not
+forgetting all the white matter that you
+have you know and connectivity that you
+have between the cortex and the thalamus
+not sure that the energy model would
+fair that well that's the course um well
+the basic point is that when I did the
+approximate calculations I did
+take account of the
+upcoming you know the sensory neurons
+coming into Thalamus the point is if the
+phalam was is just a relay pushing data
+on from sens dat to Cortex then moving
+the thalamic nuclei would be neutral
+whereas because there's feedback
+camic connections you actually gain an
+energy by moving out towards cortex so
+this calculation has been done albe it
+very proximately and I think the
+opportunity is to do it much more
+precisely taking account of all thalamic
+connections from connectome
+data uh but you you know of course and
+that's really a bit uh old for me I
+haven't been into this literature for a
+long time but there are B models
+connectivity it's yeah thalamic nuclei
+kind of lives in CEO but they actually
+have Silo I don't know you know there
+mod but they actually have bodal or
+triod uh uh interactions that are kind
+of fine some of them are modulated by
+the reticular nucleus is that with each
+other I understood from maray Sherman
+there's a quote from him that says there
+are no connections he puts it very
+strongly when was that published remind
+me um well I mean he publishes book
+about Thalamus in 2006 but yeah since
+then he's written a lot of papers about
+Thalamus and and he's
+well yeah sometime people are very
+assertive but you have a great all that
+neuroanatomist that I've met in the past
+like G vanen uh uh they look at the
+brain in very very very very small in
+minute details you know they they do
+real microscopic Anatomy and the way
+they see the brain universe is quite
+different from uh I don't know if this
+nor anatomist you are talking
+about work with these methods uh I would
+be
+very prudent with connectomic
+data I think they are useless but anyway
+that's another so you suspicious of
+connect home data yeah hold the DWI I
+mean DTI data and function okay that's
+my personal opinion but I'm radical I'm
+almost you know I think they are useless
+lot I think they are useless but anyway
+we can have another discussion about
+that
+yeah anyway to me there's quite a close
+analogy between this argument about the
+thalamus staying together and the
+argument from Galaxies for dark matter
+in other words when people looked at
+galaxies a long time ago they found
+there wasn't enough mass in stars to
+hold the Galaxy together by its gravity
+so they invented Dark Matter so I think
+when we look at Thalamus there's not
+enough neural Connections in the
+thalamus to hold it together against the
+pull outwards towards the cortex and and
+so the wave is a bit like dark matter in
+the thalamus
+so that's the analogy anyway but I think
+the connectome test should be a precise
+way of uh stress testing this
+hypothesis right the in central body um
+as I said the gross anatomy suggests a
+wave but you can't make the same Smoking
+Gun argument but I think there's a lot
+of detailed Anatomy that you look at of
+detailed neural connectivity where the
+synapses are distributed and where what
+happens in the compound synapses I think
+they're very
+suggestive and there may be not a simple
+connectone test using nuclei because I
+don't think there are nuclei in the in
+central body but there may be some
+connectone test
+that can reveal whether the Neuron model
+actually is sufficient to account for
+the shape of the central body so this I
+think is a very open area for
+investigation I personally like it
+because I think science should be done
+on simple things and there's this quote
+from Ramon kahal that said the melan
+brain is like a grandfather clot the
+insect brain is like a Swiss watch I
+like that so I think we should look at
+them so the Third
+argument we should stress test is neural
+computational
+models uh I make this claim that
+understanding 3D space is very Elemental
+it comes before learning I think because
+animals have to do that before they can
+start
+learning and I've built a model of 3D
+spatial cognition at level two and that
+needs High precision and had this
+argument before new or Spike
+trains only give much less Precision in
+short time so what we need to do I think
+is to stress test this argument by
+really trying to build a model of a
+neural model of spatial computation
+using mortal fible neural neurons and
+one good framework to do this is is the
+free energy principle because it's got
+well established neural process model
+and if we can make this work with
+neurons then maybe a wave is not
+necessary but if we can't make it work
+with neurons then that that strengthens
+the case for the wave just another slide
+on this I think we should try and build
+two models say in the F
+Fe um perhaps using the level two model
+as a starting
+point but in the moral neural
+model we have to model do we model Spike
+trains or do we model just a variable
+neural Precision there must be some
+neural in prision we model if we model
+neural in Precision how do we do
+gradient descent because you'll see I've
+struck out here if you do naive
+calculation of gradients in other words
+you compute a quantity and then you
+shift some input variable small amount
+and you compute the quantity again to
+compute the
+derivative if there are lots of Errors
+you don't that doesn't work because the
+imprecision overwhelms the
+gradient so there's an issue there about
+how you do gradient calculation I'm not
+sure
+how you tackle that obviously you can
+compute gradients explicitly but it's a
+more complex computation than Computing
+a
+quantity next question how do you do a
+gradient descent in
+space and I think in the FP a gradient
+of a free energy is a three vector and
+Precision in the F sense is a tensor
+probably how do you what coordinate
+system do you use do you use cartisian
+coordinates I don't know I mean seems to
+me cartisian coordinates in the brain is
+a bit
+unrealistic so the key question I think
+is I expect that the naive Precision of
+neurons from Spike trains is not going
+to do the job so the question is can we
+have some clever neural Micro Design
+which gives us High precision and high
+speed and the final question is do we
+use a spatial hierarchy as is common in
+the F or do we use a Blackboard
+uh again I would prefer using both but
+the issue of what are the mark of
+blankets arises there so that's the
+issues we' have in a pure neural
+model in a wave neural model how do we
+model a wave do we build a physical wave
+now that suggestion is not quite so
+stupid um one could build it um in the
+very early days of computing there was a
+thing called a Mercury delay line memory
+which actually used a way for storage in
+one dimension and we could build
+something like in three dimensions but I
+think that would be very expensive not
+as expensive as building a quantum
+computer but very expensive anyway so do
+we simulate a physical wave or do we
+just simulate the memory parameters that
+we get so simulate the Precision and the
+capacity and so on I would prefer to
+start with a simple simulating of the
+memory parameters and in other words I'd
+like to move down from level two to
+level three in successive
+stages so that's um the Active Vision in
+Exploration another area we can look at
+is if there is a wave in the brain it
+should show up in genomics and
+proteomics
+somewhere and there should be some genes
+which express only in certain places
+like in the thalamus or in the insect
+central
+body or those genes May the proteins may
+be particularly affected by anesthetics
+because
+on the hypothesis that anesthesia
+disables spatial cognition disables a
+wave you might expect a a link between
+those proteins and anesthetic
+molecules and we're looking for proteins
+which not only sustain the wave but also
+proteins involved in neural transmitters
+and receivers which exchange information
+with
+neurons and I
+think that's a promising line of
+Investigation if we find any possible
+proteins they could help to constrain
+the biophysics which I think comes
+next biophysics of the brain is
+absolutely wide open I have no idea
+really there are some very preliminary
+Clues and I think most of the ideas are
+probably wrong but the key thing is the
+wave needs to store information it must
+persist for fractions of a second so
+it's probably not purely
+electromagnetic uh because as David said
+that's an EP epiphenomenon activity so
+could it be a coherent Quantum
+effect uh the problem about quantum
+mechanics of course is
+decoherence removes it very quickly and
+you have to somehow conquer
+decoherence there are ways to combat
+decoherence I'm particularly inclined to
+interested in looking at nuclear spins
+there's a chap called Fisher who's
+looked at spins of the phosphorus
+molecule which he claims can have
+coherence times as long as seconds or
+even minutes
+um there is
+this possibly attractive idea that the
+wave could be in a Bose Einstein
+condensate or a Fric
+condensate um so there all these
+questions all these possibilities I
+haven't really any strong direction or
+other but we have to answer the question
+a how does the wave persist and B how do
+neurons couple to it and we might get a
+clue in that respect from single celled
+animals we'll come to that in the next
+slide
+but I'm saying this is a tremendously
+difficult problem and just because we
+can't think of an answer we shouldn't
+underestimate
+Evolution and I think broadly we need to
+find some possible me before we can
+start looking for it
+experimentally
+um this is intriguing to me um there are
+single- celled animals like eroid is I
+can't pronounce it it's a single cell
+animal it's kind of vanav and it has
+complex Behavior it hunts and eats
+crustation eggs and it has something in
+it which looks suspiciously like a lens
+of an eye and something which might well
+be a retina so does it have a lens and a
+retina if so how does it use that
+information if it hasn't got any neurons
+how does it guide its own
+behavior can there be a brain without
+any neurons and could that be a
+precursor for all the brains could it
+arrive evolv in prean Era and and
+persisted through the caman era so I
+think there is something to be learned
+by looking at these single cell
+animals may I comment again yeah sure I
+totally agree with you if you look at
+paramia obviously they are very
+sophisticated sensory motor schemes they
+have some there's some evidence that
+they can have some memory they have can
+be conditioned they have potentiation
+some of them like spir spirostomum if I
+remember well and obviously the
+computation quote unquote or the analog
+analog computation if you prefer is
+going through molecular networks but
+works exactly as well as a as a
+collection of
+neural animals uh so that's also is
+telling that computation again quote
+unquote memory and active inference uh
+can go through many type of biological
+networks uh and so we shouldn't think
+that because the neurons are the most
+appearent and they are very very
+sophisticated and complex that uh there
+are no other kind of unknown for us
+mechanism of computations that go
+through biological network of protein
+network if you wish that I think it's a
+very interesting hypothesis and that the
+multiscale interaction between all those
+things is also kind of an entire
+universe that we you know barely
+understand mro
+gal cells are now we understand better
+that they have not just a trophic hole
+but a very sophisticated computational
+role so anyway uh I think that's that's
+a very important thing to consider in
+know for the future of
+Neuroscience great thanks David yeah so
+I've really finished my talk um over to
+discussion again um so some of the
+topics we might touch on with the
+connecto ISS
+or particularly the computational model
+very interested to hear Carl and Alex on
+that and insect brain studies and even
+the biophysics so um over to you
+please
+naughty um is preparing his um revealing
+answers and commentary I'll talk rubbish
+for a moment um so I I just pick up on
+the sort of practical issue of the
+connect term I think I I think um David
+was showing an understandable allergic
+um response to connector based upon
+diffusion weighted Imaging using
+non-invasive magnetic resonance imaging
+um I think what you're talking about is
+this connectivity that could be tracing
+studies it could be um supplemented with
+problemistic trap toogy but you know so
+if you just don't use the word connector
+I think I think um uh you'll be fine
+just talk about connectivity studies um
+which are usually definitively um based
+upon sort of you know staining and
+tracing um at a microscopic uh level as
+opposed to right
+reconstructions um for me um well you
+know the tests of the hypothesis
+um there for me the ones that you've
+offered um they do um invite rather um
+if like deflation responses so for
+example the arguments that a single
+neuron firing um over a 256 millisecond
+um period cannot um contain the
+sufficient statistics required re ired
+for spatial temporal Precision of the of
+the sort required for um spatial
+navigation at a certain space-time
+scale you know one simple way of
+counting that well that's true but if
+you give me 10 to the three of these
+spiking neurons and I can now just write
+down um the um Ensemble average then
+they do um so the whole Precision
+argument can be I think almost dissolved
+without making any iral moves or any
+tests can I come in on that I I think if
+the test You' you've had your chance
+fromer no no no this is
+no just briefly just briefly the test of
+the Precision argument is to build a
+model that works and by the way do it
+for an
+insect yeah um so I think we're getting
+pretty close to that but and in so doing
+um you actually appeal explicitly to
+mean field approximation which is
+exactly modeling
+the probability distribution of
+populations or ensembles in the S
+mechanics sense so you know you know the
+I I'm reminded now of um Rodney
+Douglas's ambition for the EU to build a
+b uh I think if you look at certain um
+drone rumber applications of Slam
+simultaneous localization and mapping in
+Industry actually out there um you will
+find that the you know not perhaps to
+the level of a bumblebee but certainly
+to sufficient to um clean up the airport
+floor amidst moving uh passengers that
+kind of technology is already there um
+and you know I would imagine in about 3
+years you will have um the same kind of
+Technology um operating at the level of
+drones and and at that point I think you
+can say yeah we can do this without
+without a wave hypothesis um yeah but
+drones with respect have perfect
+theoretical accurate neurons they don't
+have mortal
+neurons that's yeah the point being that
+you can simulate a population of mortal
+neurons such that the random uncertainty
+averages to zero so this is what is
+meant by mean field approximation so
+that all of stochastic and Cal
+thermodynamics rests upon this so the
+density Dynamics itself now becomes
+deterministic you are still modeling
+something which can be quite noisy with
+lots of random fluctuations and
+thermodynamics underneath them but the
+density dynamics of the kind that
+quantum physics would appeal to is
+actually deterministic but I'm not I'm
+not you know reason I sort of was
+teasing you said you can't respond
+because it's our turn now was I don't
+think I don't think these are important
+arguments to me the important argument
+is something which came out in the last
+discussion and you I think Daniel
+summarize very nicely is is there any
+top down causation between the wave and
+the neurons that are controlling my body
+and my eyes um and um you know because I
+could argue that it's all bottom up
+causation and just rewriting neuronal
+density Dynamics or population Dynamics
+in Foria space yeah everybody does that
+even to the extent of um focusing on the
+relevant variables as the rate of change
+of phase which Robert you were you
+saying that a really interesting
+interpretation yeah that is the kuramoto
+model of neurodynamics uh you know this
+has been around for decades people do
+work in this space but the assumption is
+that you are basically appealing to a
+bottomup causation from some underlying
+neur mortal computation at level of
+neurons and then you're just lifting it
+to a level of description in the in in a
+in a poror space or in a phase space
+with the right kind of Dynamics making
+all the arguments that you have made in
+favor of the wave hypothesis it seems to
+me the important thing is a top down
+causation that destroys theological
+thing so I'm just trying to think about
+tests of top down causality of course
+not easy to do but I'm just wondering
+you know if I squash your Thalamus would
+you have different spatial cognition so
+I preserve the connectivity but I
+actually changed the shape of your
+Thalamus things like that I think would
+be more compelling demonstrations of the
+top down causation which I think is at
+the heart of your spatial wave
+hypothesis that it's not just an
+epiphenomenal bottomup consequence it
+actually matters this wave my neurons
+have to be immersed in this wave to
+function properly and it matters where
+they are and in that mortal sense it
+matters um that these anatomical
+constraints afforded that support this
+wave will have an influence on
+neurodynamics and subsequent belief
+updating and movements and sense making
+and projective geometries um so I don't
+don't have an answer but I would love
+look into you at at those things that if
+you like address the notion of circular
+causality from the point of view of
+physics and in particular drill down on
+what would it be mean to demonstrate
+empirically top- down causation in the
+sense or the spirit of George Ellis um
+that that's what I took from that
+conversation that exchange I I agree
+hard
+problem honestly I think even though
+Carl you said you're just gonna you know
+Babble or say rubbish I think that was
+the most important point because that
+touches on the things that we even
+discussed in the in the Mortal
+computation thesis framework um and that
+was actually so I don't know if I have
+the wonderful insightful answer that you
+claimed I might produce but uh just to
+speak to what you said and uh and what
+Robert was discussing I think that is
+what were lies the most important if
+we're going to build computational
+models which obviously appeal to me
+quite a bit
+uh in the moral computation thesis said
+well okay the real way to do this is we
+would take actual substrate like for
+example a neuromorphic chip if we were
+doing
+artificial or we would work with
+xenobots or anthr robots and build you
+know little systems of these actual
+biotic or chimeric type of systems but
+we did discuss virtual morphology so I
+think you could just go down to the
+simulation route which touches on what
+you said Robert about well we could
+build waves we have examples of those
+but those come with some difficulties we
+could just simulate them and I think the
+answer to answering the question how do
+neurons couple to the waves and what
+does that look like and how do we build
+those computational might be one of the
+most important questions I think in
+building any testable computational
+model and any useful simulation I do
+think probably what I was saying in the
+earlier discussion about looking at
+resonator neurons or resonating Dynamics
+uh which has some history and as well as
+the cognitive math learner and the stuff
+I've talk about holographic memory which
+kind of Builds on the complex number
+representation and the wave
+representation and how do you encode
+that in spiking Dynamics I think that
+might be an interesting and useful
+building block and I will send Daniel
+and you some information and then you
+could look and see if that's rubbish or
+if that might be useful but I think that
+might might be important building blocks
+to actually building a workable
+computational model I do think
+simulating the wave could be interesting
+to from a different direction I was
+another thought that you produced was
+from nature inspired metah huris
+computation or optimization where we
+model things like bumblebees and
+beehives and ants and ant colonies and I
+know Daniel has done work with ants as
+well and likes them quite a bit um and
+also we've done things with bats
+echolocation and wave transmission so if
+we model mathematical waves at least we
+could use that or Frameworks for metah
+heuristic computation and sort of
+backwards build that let's say derive
+the computational mechanisms that could
+allow us to couple neurons to use that
+information and then we could do actual
+simulations of different wavs of
+different properties we can model the
+frequencies we can kind of control those
+hyper parameters and then in doing so we
+could then look at
+what Carl was then bringing up which is
+the one of the key Essences of mortal
+computation which is that spatial
+Arrangement that anatomical organization
+of uh neurons and their particular
+components um then you could also do
+tests like okay if we build them in a
+spherical kind of construct or we build
+them in such an anatomical construct
+that um is conducive to those simulated
+waves then you could do what Carl said
+computationally which is we could change
+the the shape of these anatom these
+computational Thalamus models right we
+can make them cubic or you know other
+types of weird shapes and see if
+squashing them changes for example how
+these neurons respond on simple
+cognitive tasks that we can emulate
+again we could use very simple spatial
+cognition tasks that we could simulate
+and then we could start manipulating the
+actual uh virtual morphology as Coler
+would call it or just the virtual
+anatomy and then that could give you
+some at least computational tests of the
+effect in value of wave computation um I
+think that's the key and I'm not even
+sure if what I just said mostly is
+rubbish and uh just me kind of
+generating what I would do if I had to
+build something like that and I think
+that might be one of the single most
+important questions because I think it
+answers both neuron models without waves
+and neurons plus waves as you said we
+need to build both those models and I
+think that kind of coupling and that
+modeling of that relationship is a first
+step and then of course then you could
+then start to look at actual physical
+constructs that ulate that computation
+kind of like a reverse we're using
+computation to drive what we think the
+structure should be and then say are
+there actual structures that we find and
+then we can constrain our models a
+little bit better as we do have anatomic
+or we do have computational models of
+phalic structures like Chris alus group
+has a phalus structure in their nango
+framework uh again spawn I think has
+like a Thalamus Arch component um so the
+and those are very biophysically
+grounded like they use anatomical values
+things that are actually grounded from
+neurophysiological data so that could be
+an interesting starting point and that
+could allow us to then actually test and
+uh simulate what Carl was saying about
+squishing and stretching and uh changing
+the form of the thalamus so that's
+something I thought might be worth
+mentioning and that's where the Mortal
+computation theis really comes in play
+because again it's that specific
+morphological Arrangement that actual
+construction and relationship between
+your owns that's really important and
+changing that would change the
+computation that's what another
+byproduct of our framework was basically
+saying is that you're not going to get
+the same computation if you change the
+anatomy if you change this um so that's
+that's an important part and then just
+quickly I wanted your last slide before
+this one I don't know how to pronounce
+the name of that uh that entity either
+um but I thought that was really
+interesting because it you were saying
+it has essentially like a little eye but
+it doesn't have any known neurons or
+anything that we can perceive directly
+so could that be neurons without
+cognition and I think that gets at to
+what uh uh Michael Levan and again Carl
+and I site and talk with him a lot which
+is the idea of Basil cognition and I
+think that's kind of where we don't
+really have that quite right from a
+computational point of view so I do
+think that's even more important to try
+to model these uh Elementary cognitive
+systems and again looking at these
+building computational models I think of
+like that single cell organism could be
+valuable and maybe give us some insights
+as to well okay what is it that we need
+to get this thing to actually solve very
+very simple tests like follow gradients
+of chemicals which we do that in
+chemotaxis and phototaxis experiments
+and we do build little models uh of for
+example Eola trying to Traverse these
+little uh little in niches and I think
+that's the other part that you're going
+to need in building uh even simulated
+versions of what you seek which is
+you're going to need that virtual Niche
+because again and you point out Robert
+which I was happy to see that that you
+know your what you're thinking is that
+it's Elemental embodied but I think the
+other part that can't be ignored if
+you're going to properly uh examine and
+simulate mortal Computing systems is you
+need a niche need that more uh virtual
+environment to actually and those
+physical properties need to be very
+explicit um when you build it so I think
+that that was something that I think is
+going to be also very difficult uh but
+probably the most important to make the
+next step for Mortal computation and bi
+intelligence hopefully some of that made
+sense no thanks Alex I I agree with you
+that the simple animals the simple comp
+simple brains are the place to look I I
+was recall that quantum mechanics
+started with the hydrogen atom not with
+the uranium
+atom I'll I'll actually kind of add a
+complimentary view I was wondering to
+what extent will the kind of
+representationalist form and context for
+the wave that you described in humans be
+of maybe even a slightly different kind
+in a single cellular or in an insect so
+for example there's the outfielder
+catching a Fly ball who yes you might be
+able to describe that in terms of the
+spatial temporal frequency of the
+baseball moving through space and the
+body moving through space there also may
+be a horis such as following a gradient
+of shade that also gives a behavioral
+solution or even an indistinguishable
+approach so th that may speak to again
+the variety of possible substrates of
+mortal computers because the insects
+central
+body and this is the to the empirical
+Point how can we differentiate the
+situation where spatial representation
+is happening with or without a causality
+closure from where behavioral strategies
+are integrated like moving away from a
+shadow for a fly it may not require the
+spatial Precision on the object so
+actually just determining where and how
+variation across different species and
+with across individuals and settings how
+would we differentiate that from a null
+hypothesis where neural or wave wave
+particle or both or neither we don't
+even need to invoke space we just invoke
+reflexive
+Behavior I agree that's a very important
+question it's addressed a little bit in
+the paper but what we need is tests of
+insect behavior for instance which
+depend on the 3D spatial model which
+don't depend on just as you say
+detecting a shadow or detecting a
+looming thing uh and it's quite
+difficult to devise those
+tests yeah I'll read a question from the
+live chat and anyone can can give a
+thought okay Courtney writes thank you
+for the interesting talk could this
+Theory be used to test whether or not
+someone in the ICU with brain damage is
+conscious and if so to what degree could
+it be tested similarly to integrated
+information Theory or are we far away
+from something like
+that I'd say we're far away because even
+experimentally finding the wave
+is far away we have to work out what the
+biophysics of of it is before we can
+build detectors for it and that may be
+as far away as as detection of dark
+matter or for the neutrino for instance
+that was theoretically predicted it took
+25 years to find it experiment I think
+it may take a long time to find a wave
+experimentally so in terms of measures
+of Consciousness I'd say we're a long
+way
+off thanks um Ken deid any please go for
+it well I just wanted to mention one
+thing um that this whole discussion
+reminded me of a long time ago I think I
+was in graduate school I read a
+book by Ralph D Ellis not to be confused
+with the George Ellis that um that Carl
+mentioned but it's called a book called
+an ontology of Consciousness and if if
+my memory serves it defends just the
+general idea that Consciousness is a
+wave um and defends the kind of w wave
+medium model for thinking about the Mind
+Body problem and I I just remember it
+being very interesting but I don't but
+that's so long ago that you might read
+it I might read it now and be totally
+disappointed but just something to throw
+out there send me the reference that be
+great yeah yeah Ralph DL I can send you
+that an ontology of Consciousness but I
+do remember being being struck by it as
+being sort of plausible but you know how
+those things go it's like it's
+metaphysics it's
+ontology you know yeah you're pretty far
+away from physical testing but in terms
+of some of the sort of theoretical
+advantages of thinking about it that way
+it might be worth a
+look I'll put it in the chat thank you
+de any thoughts and then anyone watching
+can write any last questions and then
+otherwise Robert let's hear like what
+are your next moves and just kind of
+summarize the commentary
+affordance maybe I I can you know I
+I this is a kind of question that you
+know anybody interested in topic
+struggle with in kind of okay what is
+the sort
+of Integrative mechanism uh that is
+required to understand things like
+Consciousness uh or does it relate to
+the brain with all the limitation of
+both you know theoretically and
+methodologically of of contemporary
+Neuroscience uh I'm totally open now at
+this point to the possibilities that
+yeah there is you know some form of
+physics that we haven't understood about
+the brain or that is related to the
+brain or interact with the brain and
+becoming like even open to some form of
+you know physical dualism I don't know
+you would call that uh I'm sure that
+it's it's going to be very hard to
+progress with that that we are still at
+a sort of metaphysical age of this type
+of Science and discoveries uh we don't
+have the principle yet maybe uh I doubt
+but I'm not a physicist so it's really
+like you know talking that Einstein
+condensate will address the question I
+mean think about the the size that has
+been achieve the maximal size of both
+Einstein condensate and under what
+circumstances irrespective of you know
+okay uh temperature issue you know but
+it's what like a picol lit like billion
+atoms um so you would have like billions
+and billions of bosen shin condensate
+that would have I mean it's it seems as
+I I don't I I don't have a good gut
+feeling about it
+but uh there is also more mundane things
+like you know we had this discussion
+about uh electromagnetic wave in the
+brain at the kind of micro scale or
+mesoscale as EP phenomenon but as I said
+before although I don't recall the names
+of the authors working on that but there
+is a bunch of labs and researcher
+working on that uh there is now or at
+least there's some theoretical well
+formulated ated theoretical ground and
+some empirical evidence for inductive
+mechanism in the brain basically you
+have you know currents going through uh
+um your axon bundles of fibers uh you
+know your action potential if you wish
+that are associated with those currents
+that induce electromagnetic wave that
+propagate and may have a role of for
+instance synchronization with another
+bundle just next to it so are those
+things are very minute as effects
+apparently uh they don't have a very
+very large long range uh um effect
+that's because of biophysical constraint
+if I recall well but it talks about the
+possibility that you know we may not
+want to throw the baby out of the bath
+water classical electrom magnetism may
+still have something to say and in
+particular if this kind of induction
+mechanism uh which is literally top down
+I mean the downward cation if you wish
+you know there is a fiber bundle that
+generate electromagnetic waves that then
+affect currents in another fiber bundle
+we could say well you know then you
+could imagine something quite
+sophisticated and in which the role of
+anatomy the grow Anatomy the shape of
+the brain the organization then might
+become uh very important to understand
+because of course the relationships if
+those electromagnetic wav induction are
+short range you know how you bring
+anatomically things closer in order to
+make them interact becomes very
+important and maybe that connects back
+to your thalamic hypothesis but again
+what I'm talking about is very very very
+speculative thanks
+yeah I agree um my my feeling is the
+biophysics is wide open so
+electromagnetism May well be a part of
+it and you used Mars levels earlier it's
+possible the wave is has different
+implementations like I think this
+conversation brought up a lot of
+different
+dimensions and also even begets bigger
+questions
+like do scientific hypotheses have for
+and against is there only one hypothesis
+chosen or could there be
+functionality distributed across
+multiple biophysical systems such that
+something being a AR true or false which
+is kind of predicated the whole basian
+epistemology that doesn't necessarily
+need to be true there could be utility
+continua for a theory and a predictive
+continua yeah I I
+guess the hint is that since there's
+ever a hint of the wave in both the
+thalamus and insects and opposite ends
+of the animal tree evolutionary tree
+that the wave hypothesis might carry
+across the whole lot and in which case
+you ask is it convergent evolution and
+different species different branches or
+did it go right back to the pre
+primordial Branch before the Cambrian
+era I would like it to go right back
+yeah in that case you can consider like
+arthropods or look how far back but
+insects are only one kind of arthropod
+and they have yeah enough homology that
+you might be able to extend this
+argument
+and do ancestral State
+reconstruction on neuroanatomy at
+different levels and these analyses may
+have already been done and then the
+allometry of those reconstructions can
+be compared
+to yeah any last comments or um Robert
+with last
+word yeah well many thanks to all of you
+for for your comments
+um it's been most useful and I
+guess I just finally request if I I
+would like to have to get some
+commentary from all sorts of people on
+this hypothesis so if you would send me
+some comments just initial ones and gut
+reaction comments if you like uh on this
+core question of can we dismiss the wave
+hypothesis or do we need to take it
+seriously then that would uh kind of
+kick off some of the commentary anyway
+many thanks
+thank you to all the guests and thank
+you Robert all right farewell thank you
+bye everyone bye thank you

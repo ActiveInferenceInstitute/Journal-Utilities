@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 123.1 ~ Marcelo Guzman: "Learning in Physical Systems"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 123.1 ~ Marcelo Guzman: "Learning in Physical Systems"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_123 &middot; Episode 1 &middot; Speakers: Marcelo Guzman &middot; Duration: 1:17:24 &middot; Views: 167</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=No0GIVMujik">https://www.youtube.com/watch?v=No0GIVMujik</a></div>
+<article>
+<p>Hello, welcome. It is November 5th, 2025, and we're in Active Inference Guest Stream</p>
+<p>123.1 with Marcelo Guzman, learning with physical networks. So Marcelo will give a presentation</p>
+<p>and then I will read some questions from the live chat. So thank you for joining. To you</p>
+<p>for the presentation. All right. Thank you, Daniel. Thank you for the invitation. So</p>
+<p>I'm Marcelo Guzman. I'm a postdoc at the University of Pennsylvania. Today I want to talk about</p>
+<p>learning with physical networks. So one such example is the one that you're seeing to your</p>
+<p>left in your video. This is an electronic circuit. Okay. Seems kind of complicated, but this electronic</p>
+<p>circuit has the property that's able to self-adapt. And by doing that, it can learn machine learning</p>
+<p>tasks like a computer, like an artificial neural network. The topic of my talk is going to be</p>
+<p>centered around two papers that appear this year. One is microscopic imprints of learn solutions</p>
+<p>in two novel networks, open source in PRX. And the other one is physical networks become</p>
+<p>what they learn, which is in physical review letters. And in a nutshell, what I want to tell</p>
+<p>you is how physics shapes the way these machines learn. All right. And hopefully by the end of</p>
+<p>this talk, you're going to understand this picture that is appearing to your right. And I'm going</p>
+<p>to explain it to you later. So let's begin with, with learning. So when we think about learning,</p>
+<p>we have these two big paradigms. Right now we have this very trendy paradigm of machine learning. Okay.</p>
+<p>And on the other hand, we have our brain or what happens in biology, what I call biological learning.</p>
+<p>And these two paradigms are very powerful, although they are very, very different. Okay. And so here I'm</p>
+<p>listing some of the differences that, that, that, that are in between these two. For example, in artificial</p>
+<p>lunar network, what you usually do is to modify the weight parameters, current technologies, current,</p>
+<p>uh, large language models have around 10 to 12 parameters. Everything is digital. Everything</p>
+<p>is happening in your computer or, uh, in, and digital centers. It's very energy demanding. Everything is</p>
+<p>centralized by CPUs or GPUs, and it lives in the virtual world. There is no physics. Okay. On the other hand,</p>
+<p>if you consider the brain, what you do with learning is you modify this synaptic strength. You have around 10 to the</p>
+<p>14 synapses. Everything is analog. And from time to time, you go to the, to the digital domain. You have these spikes,</p>
+<p>very, you know, efficient. Okay. So to operate the brain, you just spend as much power as a light bulb. It's distributed.</p>
+<p>So, that is, you don't have any, uh, any CPU or DPU and it's subject to physical loss. So, but learning is a much broader phenomenon. Okay.</p>
+<p>And what I want to introduce now is a third paradigm that we call physical learning. So these are two,</p>
+<p>these are, this is one example of a physical learning system. So this is a resistor network. Okay. So all the</p>
+<p>edges are resistors. This is the experimental realization. And what this resistor network does</p>
+<p>is to modify its own contact lenses. All right. And there, and therefore by that learning, uh, machine</p>
+<p>learning task, it has around 10 to the two parameters. This is a very novel technology. Uh, it's</p>
+<p>completely analog. It's energy efficient. It's fast. It's distributed. And what I want to highlight is that</p>
+<p>it is also subject to physical loss. All right. You cannot circumvent those. So why do we want to study</p>
+<p>this kind of third paradigm? And there are two main reasons in the community. One reason, which is more on</p>
+<p>the engineering side is to improve the current technologies of machine learning. Can we make, uh,</p>
+<p>artificial neural networks more energy efficient? Uh, can we increase the speed? Can we make it more</p>
+<p>robust to damage, but there's a fundamental part of it. And this is, uh, what, uh, what I'm interested in</p>
+<p>is that maybe by studying this kind of systems, we can understand some more complex biological</p>
+<p>phenomena. These physical learning systems are simpler than biology, and yet they are complex enough</p>
+<p>to display learning. All right. So let me begin by introducing a dictionary. So what is what in this</p>
+<p>learning physical network? So I am going to take as a starting point, an artificial neural network.</p>
+<p>Okay. And I'm going to compare side by side with this learning resistor network. So the nodes in an</p>
+<p>artificial neural network are basically the neuron activations in the resistor networks. These are</p>
+<p>going to be voltage nodes. The edges in an artificial neural network has the weight parameters in the</p>
+<p>resistor network. It's going to contain the conductances of my edges. And the external inputs are fed as input</p>
+<p>current. All right. So how do we convert inputs to outputs? That is what is the forward problem or what</p>
+<p>is the input to output relation on? What is the inference problem? So in an artificial neural network,</p>
+<p>what you do is you take some inputs, you multiply them by a weight matrix W1, for example, and then you</p>
+<p>apply a non-linear transformation, let's say a signal function. And then that result, you multiply it by</p>
+<p>the next matrix, weight matrix layer, and then you apply a final non-linear transformation. So that's why</p>
+<p>you go from X to Y, the output. In the resistor network, what you do is you are going to apply the</p>
+<p>current. Okay. And then you're going to let the system do its thing. Let physics work. That is the</p>
+<p>equilibration part. So currents are going to be reaccommodated in the network, et cetera, et cetera.</p>
+<p>You wait till it reaches the steady state. And you're going to select one of the nodes or a handful</p>
+<p>of the nodes, and you're going to read out the voltage that you obtain. And of course, the voltage is</p>
+<p>going to be a function of the conductances and the currents. So notably, this is where the key difference</p>
+<p>is alive. This process of equilibration must obey physical laws. And for example, in a resistor network,</p>
+<p>there are two laws, one that is called the Kirchhoff's current law. That is, at every single node in this</p>
+<p>network, all the current in must equal the current out. And also, for every loop, the voltage across the</p>
+<p>loop must be zero. That's Kirchhoff's voltage law. So this is a physical constraint. No matter how your</p>
+<p>circuit is designed, you have to buy this. The inference in this problem is defined by physics.</p>
+<p>And now we have also the inverse problem, which is basically learning. So what you're doing in</p>
+<p>artificial neural network is that you want to update the weights such that you decrease the cost. And</p>
+<p>the cost is basically a distance between the output y and the desired output y hat.</p>
+<p>In learning for resistor networks, you basically update the conductances k to decrease the distance</p>
+<p>between what you obtain as a voltage output and what your desired voltage output is. All right.</p>
+<p>And these networks are built in lab. So here, what I'm showing you is an experimental learning resistor</p>
+<p>network built by my colleague, Sam de Lavoie at UPenn. Here I'm highlighting in red one resistor.</p>
+<p>Okay. So this is one adaptive resistor. And each of these resistors is able to update its conductance</p>
+<p>value based on pure local information, just based on the voltages across its terminals. And it learns</p>
+<p>through a learning rule called couple learning. So if you want to know more details about this</p>
+<p>experimental circuit, you can check these two references. Just for this presentation, I'm going</p>
+<p>to show you a video of a classification task performed by this machine. So this is a very simple</p>
+<p>task, but it's helpful for visualization. Basically, you have two axes here, the horizontal and the vertical</p>
+<p>axis representing inputs one and two. All these data points are training data points,</p>
+<p>and the goal of the of this task is to place a decision boundary right in between these two classes of</p>
+<p>points. The background color is the prediction of the network at the very beginning of training.</p>
+<p>So it's basically everything is blue. But as training progresses, and this is experiments,</p>
+<p>the network is able to correctly place this decision boundary in a couple of seconds. Okay.</p>
+<p>So these networks work. Now, what we have to understand here is that physical learning in</p>
+<p>this system is a double optimization problem. So let me explain this for the forward problem that is</p>
+<p>from input to output, we have this process of equilibration. And let me take the simplest kind</p>
+<p>of systems we can consider linear resistors, that is, you have to be on slow. But it's basically the</p>
+<p>statement that the current at each edge is basically the conductance of the edge times the voltage drop</p>
+<p>of that edge. But if we consider that kind of system, then equilibration is basically the minimization of the</p>
+<p>electrical power. That is, whatever you get as a physical response minimizes this power. And the electrical power is</p>
+<p>basically the energy per unit of time that you are consuming. So this is mathematically is the sum of all the edges of the conductance times the voltage drop square.</p>
+<p>Such that the response is basically the minimizer of the power minus the input control.</p>
+<p>Geometrically, you can think about this power as a physical landscape. All right, as a physical landscape in a very high dimensional space of voltages. So here I just</p>
+<p>put a cartoon at the bottom, each axis represents the voltage of one of the nodes. So for this picture, I have four by four nodes, that is 16 dimension.</p>
+<p>And over this land, over this space, I'm going to define the power. And under the physical response, the voltage response is one is going to be the one that minimizes this.</p>
+<p>So that's one minimization. Where's the second minimization? Well, the second minimization is learning itself. All right, to solve the inverse problem, you have to update the conductance to decrease the cost.</p>
+<p>And so you can see that learn solutions are the minima of this cost landscape. Now notice that this is another landscape that lives in a completely different space, which is the space of parameters that the adaptive parameters, the space of conductance and learning solutions, learn solutions about the bottom of this.</p>
+<p>Very, very well. So let me just zoom out a little bit. So this is the fundamental difference between an artificial neural network, but only minimizes the cost. And a learning resistance that has to minimize the cost and the power.</p>
+<p>So you may say, well, this seems like a more complicated problem. So instead of one minimization, you have to do two minimizations.</p>
+<p>But it turns out that the minimization of power is automatic. This is just nature doing its own thing.</p>
+<p>And I'm going to show you further that because of this double optimization problem, we can get some very nice results and intuition of the inner workings of learning in this resistor.</p>
+<p>All right. And also, let me mention that this physical learning as a double optimization is very general. It is regardless of the architecture you use. You can use the grid network that my colleagues built in the lab, or you can use a completely disordered network.</p>
+<p>It is independent on the learning. It is independent on the learning role, whether you use gradient descent, stochastic gradient descent, capital learning, heavy learning, it does not matter.</p>
+<p>And it is independent on the learning task, whether you use specification, regression, or you name it. So it's a property of these physical learning systems.</p>
+<p>So what are the consequences? What are the consequences of this double optimization problem?</p>
+<p>And to walk you through this talk, I want to introduce a very simple example, which is learning one data point.</p>
+<p>So some people may say, oh, but this is not learning. This is just fitting one data point.</p>
+<p>Maybe, but I think this is going to be, it's going to fix some ideas. It's going to be very intuitive.</p>
+<p>So consider the following. Consider a disorder resistor network of 300 nodes, like you see in the picture, and roughly 700 edges.</p>
+<p>And consider the following task. Imagine that I input current I, such that at these nodes blue and red, the voltage is going to be fixed at 0 and 1.</p>
+<p>And the goal of this is, and the goal of the task is that very far away at these two nodes, I would like to have a precise voltage value of 0, 9, 9 and 0, 0, 1.</p>
+<p>All right. So let's say we begin with all the conductances being equal to 1.</p>
+<p>So here the conductances are colored, here the edges are colored according to the conductance value.</p>
+<p>You can see that they are all 1. You apply the input current, you let the system equilibrate, and what happens is that the voltage response is going to minimize the power.</p>
+<p>All right. So here what you're seeing is the voltage value.</p>
+<p>All right. The voltage value of every single node in the background as the response of the system.</p>
+<p>You can see that where I input 0 and where I input 1, I have blue and red.</p>
+<p>But as you go far away from these two nodes, everything goes in between to the gray area in which the voltage is 0.5.</p>
+<p>Let me give you a little bit of more detail to the forward problem.</p>
+<p>So I told you that the power is the sum of over the edges of the conductance times the voltage drop.</p>
+<p>Mathematically speaking, you can always write this down as a vector of voltages times a matrix H times the vector of voltages.</p>
+<p>This is a quadratic form.</p>
+<p>And this matrix H is what we know as the physical Hessian.</p>
+<p>All right. That's a good Hessian. It's just the second derivative of the power with respect to the voltages.</p>
+<p>And this is where all the conductances get into play.</p>
+<p>So this H matrix depends on two matrices, delta and K.</p>
+<p>K is a diagonal matrix of all the conductances and delta.</p>
+<p>It is known in network literature as the incidence matrix.</p>
+<p>So it's basically telling you the connectivity of your network.</p>
+<p>It is going to be one if an edge is connected to a node, if it is incoming, minus one if it is outgoing and zero if it is not connected.</p>
+<p>So the power can be written in terms of the Hessian, of the physical Hessian.</p>
+<p>And therefore, the response of the system, it can be written in terms of the physical Hessian.</p>
+<p>It is the inverse of the physical Hessian times the input current.</p>
+<p>So that's exactly how you get the voltage response of the system.</p>
+<p>And then once you get the voltage response, you measure at these two nodes of interest and you see what you obtain.</p>
+<p>So here, this measurement, I put it in terms of a projector, meaning that out of all the voltages that I obtain from my response,</p>
+<p>I will only project into the two voltages of interest, two nodes of interest.</p>
+<p>And what you get according to this color bar scale is that everything is roughly 0.50.</p>
+<p>All right.</p>
+<p>But this is not what we wanted.</p>
+<p>What we wanted was like a voltage output very precise of 0.99 and 0.01.</p>
+<p>So what you have to do is to modify all the conductances to begin with.</p>
+<p>All right.</p>
+<p>So I'm not going to consider a specific learning rule, but I'm going to show you one possible result, a solution to this problem.</p>
+<p>In particular, I obtain this result by using coupled learning on simulations.</p>
+<p>But this is a possible solution, which is kind of interesting.</p>
+<p>So you can see that to the left, the network developed a crack, a line of very, very low conductances, as you can see by the color.</p>
+<p>This line is basically separating the system into two sides.</p>
+<p>One side that remains with very high voltage in the voltage response in red, the other side with very low voltage and in such a way that the output nodes are just on one side of the other of this crack and therefore achieving this function.</p>
+<p>So, at the end of training, whether for this task or another task, what happens is that you are at the minimum of two different landscapes in two different spaces.</p>
+<p>Minima of the power, one minimum of the power, one minimum in the cost.</p>
+<p>Minima of the power, one HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM HIM</p>
+<p>the first or the contribution is going to be the gradient but since we're at a minimum that</p>
+<p>great in this here and therefore the next non-negligible contribution comes for from</p>
+<p>this second order term which is k minus the solution k times a matrix H which is also a</p>
+<p>Hessian although a different Hessian times k minus k solution and this calligraphic H</p>
+<p>is what we call the cost Hessian that is the second derivative of the cost with respect to</p>
+<p>the parameters evaluated at the solution and since we are at the minimum this is a symmetric and</p>
+<p>positive semi-definite matrix and it has a very nice geometric geometric interpretation the eigenvalues</p>
+<p>of this matrix are the curvatures in this high dimensional landscape along the directions</p>
+<p>defined by the eigenvectors so let's take the the previous example so we found this learn</p>
+<p>solution let's compute the cost Hessian spectrum evaluated the solution and what we find is</p>
+<p>the following so here what you're seeing are all the eigenvalues</p>
+<p>are all the eigenvalues you have as many eigenvalues as edges in your network so around 700</p>
+<p>this is a log scale and you can see that out of the 700 eigenvalues 699 are extremely close to zero</p>
+<p>are very very small so what that means is that you are in this very high dimensional space and in 699</p>
+<p>directions the landscape looks flat and there is one direction there is one eigenvalue that is way</p>
+<p>larger than the next eigenvalue by seven order of magnitudes that is in this high dimensional space</p>
+<p>there is one direction in which the curvature is just huge it's gigantic all right meaning if you take</p>
+<p>if you move along this direction you can think about this as the great canyon rim to rim you take a step</p>
+<p>into this direction and you climb up the cost by a lot all right by the way this phenomenon is also</p>
+<p>observed in deep learning so this is a property of learning in general okay you have a few stiff</p>
+<p>eigenmodes so what is this direction what is the direction in which the curvature is extremely huge</p>
+<p>that's what we call the stiff eigenvector the stiff cos eigenvector so remember that um this stiff eigenvector lives in</p>
+<p>conductance space so i can assign each entry of this eigenvector to its corresponding edge and here I'm plotting the</p>
+<p>eigenvector over the graph you can see that most of the entries are zero or yellow except for this crack</p>
+<p>along this crack the entries are huge meaning that if you perturb any of these edges in black you're</p>
+<p>going to basically climb up the cost and you're going to destroy the function and this is a very</p>
+<p>sensitive it makes total sense because if you look at the solution itself the solution is a crack of low</p>
+<p>inductance if you're going to increase any conductance along this crack you're basically going to</p>
+<p>short circuit your network are you going to lose the function so um the take-home message here is that</p>
+<p>the large entries of these stiff cost eigenvectors are the key components for your learned solution</p>
+<p>minimum in conductance space and what we did with uh with my colleagues was to basically relate</p>
+<p>the geometry of this god's cost landscape to the geometry of the physical landscape so we have</p>
+<p>started the following so I told you that the cost question describes the curvature around the lower</p>
+<p>minimum in conductance space in the same sense the physical session describes the curvature of the</p>
+<p>physical landscape the power in voltage space and what we observe is that this stiff cost eigenvector</p>
+<p>the direction in which the curvature is the largest matches very well the soft physical eigenvector</p>
+<p>that is the direction of my physical landscape in which the curvature along which the curvature is the</p>
+<p>smallest all right but you can see that here this crack in which the edges are in black are basically</p>
+<p>the line separating the red from the blue bridge not only that but we run more over 2 000 uh simulations</p>
+<p>of different networks with different initial conditions and when we plot the cost eigenvalue the</p>
+<p>stiff cost eigenvalue with the softest physical eigenvalue we have this need power law power</p>
+<p>to the minus 4. and so this was a first suggestion and and this first suggestion was that it is</p>
+<p>possible to know the function from pure physical information but it's to hand them you handle me a</p>
+<p>network I can measure the Hessian this is a physical property of the network which is regardless of</p>
+<p>training data regardless of a task I can measure the Hessian and by measuring the Hessian the physical Hessian I get</p>
+<p>information about the cost landscape about what it was trained for so uh so and then we get we got</p>
+<p>very excited and we call this people physical networks become what they learn because at the end of the day</p>
+<p>you train the network and everything gets imprinted into the physical landscape and we can measure that</p>
+<p>physical so these are uh just a few properties that I'm highlighting here we also studied the dynamics of</p>
+<p>learning but I'm not going to touch on on that subject uh today but all right let's let's continue</p>
+<p>so we had this relation sorry we had this relation between stiff cosine vectors soft physical eigenvectors</p>
+<p>but it turns out that the relation is much more complex when you have more than one data okay so</p>
+<p>the first thing uh I showed you was for specific example of one data point but learning is about more than</p>
+<p>that right and we realized that stiff cosine eigenvectors are not simply the soft physical eigenvectors but there is still a relation</p>
+<p>uh just to give you a simple example uh in which the relation is more complicated consider this network here you have two sources in red two inputs in red and two outputs</p>
+<p>in blue and this network was trained to perform a linear regression that is I want the voltages at the output to be a linear function of my voltages at the end</p>
+<p>with precise very precise coefficients okay so the network was trained in silico and it found a solution</p>
+<p>and for these cases for example the simple relation between stiff eigenvectors and soft eigenvectors does not hold anymore</p>
+<p>you can also consider more more complicated tasks in which you have to classify data into three classes</p>
+<p>and so these are two examples of systems uh which are more complicated and we needed to understand</p>
+<p>and so we have to dig deeper and this is the context of the second paper microscopic imprints of</p>
+<p>learned solutions in tunable networks um i'm going to spur you all the tedious math and i'm going to give you just</p>
+<p>the high level results um but at the end of the day we showed we demonstrated mathematically and confirmed</p>
+<p>numerically uh that for any any uh double optimization problem physical learning you have a structure</p>
+<p>function we can find a structure function relations and this is what i mean by that we show that the cost</p>
+<p>hessian at the end of learning decomposes into two parts one that's pure training and the other one</p>
+<p>that's pure physics to be more precise so if i write down the ij component of the cost hessian i can write</p>
+<p>it down as the contraction of two tensors two high order tensors tensor l and tensor s to avoid all the index</p>
+<p>notation i'm going to just write this as four dots in here so what is l l is what we call the training</p>
+<p>tensor all right so let's consider i have r data points the l tensor is going to be the sum over all</p>
+<p>the data points of the projector q times the input data i times the projector q times the input data i</p>
+<p>think about it um so this funny symbol here is just an outer product uh symbol and you can see that this</p>
+<p>doesn't contain any physics it's just input data okay this is the information you train your network on</p>
+<p>and on the other side you have what we call the tuning susceptibility tensor this is also higher order</p>
+<p>tensor um it's the outer product of the same vector four times and this vector is what we call the</p>
+<p>susceptibility vector here is where the physical hessian appears the inverse of the physical hessian</p>
+<p>and this again is only physical information all right so where is the function and where is the</p>
+<p>structure i told you structure function relation well the function is encoded into the hessian into the</p>
+<p>cost session by this geometric picture and the structure is encoded into the tuning susceptibility this is</p>
+<p>all the information of the network the connectivity and the conduct you can even go you can even go</p>
+<p>to a deeper level and show the same relation not only at the level of the hessians but at the level of</p>
+<p>the stiff cost eigenvectors you can show that the stiff directions that i show you in these landscapes</p>
+<p>can be written down in terms of this susceptibility the normal susceptibility and the unit vector susceptibility</p>
+<p>and this matrix a is basically what contains the learning information would be the analog of the matrix l in here</p>
+<p>so next question is well what is this susceptibility and how much information it contains about the function</p>
+<p>so i told you the susceptibility is the outer product of the same vector four times</p>
+<p>uh you can see it four times that means that the physical hessian inverse appears four times and that's basically what i explained the previous observation</p>
+<p>that the scaling relation is power to the minus four the susceptibility is also a physical observable it's a</p>
+<p>physical property in fact si alpha that is the alpha entry of si is the voltage drop at its i due to a unit current at not alpha</p>
+<p>here i'm showing you one example here i'm showing you employing the susceptibility of this green edge</p>
+<p>so there is a voltage drop at this green edge when i supply voltages currents i'm sorry at different node</p>
+<p>locations you can see that near the edge the susceptibility is large but as you go far away the susceptibility</p>
+<p>is very low and for each edge you can compute its total susceptibility and you can plot it in</p>
+<p>over over the graph and what you see is this structure emerging so uh so let me let me let me show you what</p>
+<p>we can do with this uh so consider the two by two regression example that i showed you before let me show</p>
+<p>you the cost landscape picture before training before everything the cost eigenvalues are just distributed all</p>
+<p>over the place but after training the cost eigenvalues become degenerate almost all eigenvalues are close</p>
+<p>to zero and in this case you have four stiff eigendirections four stiff eigenvalues these are the four</p>
+<p>stiff eigenvectors okay and what we obtain from the physical landscape that is i only measure the</p>
+<p>susceptibility is a pattern that resembles a lot the stiff eigenvector in fact if you compare them one to one</p>
+<p>here i have four different colors indicating the four different eigenvectors you can see that large</p>
+<p>susceptibilities that is edges with large fi correspond to large to edges with large entries of eigenvectors</p>
+<p>so the large susceptibilities reveal the key components okay and this is for one example but you can do it for</p>
+<p>two by five regressions and once again large susceptibilities correspond to the large entries you</p>
+<p>can do it for classification tasks and in all these cases you observe the same trend all right now notice</p>
+<p>that this is not perfect because i don't have the complete information this is what we can infer by doing</p>
+<p>physical measurements and then we also run a lot of simulations and we observe a lot of properties</p>
+<p>for example we observe that in across all our systems highly susceptible edges tend to block current so</p>
+<p>here to the left what you're seeing what you're looking at is the susceptibility so white means low</p>
+<p>susceptibility black means large susceptibility of a train network and when you compare this large</p>
+<p>um susceptibility edges which are highlighted in green and you compare it to the current that it</p>
+<p>flows through them you can see that high susceptibility corresponds to very very low current all right</p>
+<p>so here to the right what you're seeing is a vector field plot the direction of the arrow</p>
+<p>indicates indicates the direction of the current the magnitude of the current is in color from white to</p>
+<p>black and precisely in the same regions in the same green regions you see zero current</p>
+<p>um we also observe that susceptibility is dominated by soft physical modes so here in the y-axis forget</p>
+<p>this notation in the white axis when i'm plotting is the susceptibility computed with the first n physical</p>
+<p>modes over the susceptibility computed with all the modes so you can see that by considering only a</p>
+<p>handful of modes i quickly reach one right meaning that susceptibility is governed by these soft modes</p>
+<p>um and so in summary what we have is the following we have that learning in these resistor networks</p>
+<p>is a double optimization process all right minimization of power and minimization of cost</p>
+<p>we showed that uh in these two papers that because of this double optimization process we have a general</p>
+<p>structure function relation we can measure the key components from the most susceptible edges and that's</p>
+<p>the picture that you are seeing here if error mode is basically the fifth cost eigenvector and on the</p>
+<p>other side you obtain what you measure from the tuning susceptibility and these are the two head the two</p>
+<p>sides of one coin and we have basically a new tool to study and interpret learn solutions in physical</p>
+<p>networks uh so everything i told you was in the context of linear resistor networks but it turns out</p>
+<p>that this is way more general so in fact this is applicable to any system with a double optimization</p>
+<p>it's applicable to any continuum non-linear system what we did at the end of the day was tailor expand</p>
+<p>around the minima of two different landscapes and one such example are mechanical networks so</p>
+<p>mechanical networks minimize energy you have an elastic network it has its physical response minimizes</p>
+<p>energy or free energy if you're adding temperature um and you can turn you can tune the network you can</p>
+<p>tune the stiffness you can do the rest length and you can turn the the network to do to perform a desired</p>
+<p>behavior in fact non-linear non-linear elastic networks even though you have cooking springs can be</p>
+<p>non-linear in the energy here just to give you the translation the dictionary the nodes are displacements</p>
+<p>the edges contain stiffness and the extra inputs are the input forces so this is also a kind of system</p>
+<p>in which you can apply this formalism of physical learning and you can even go beyond what is actually</p>
+<p>considered learning so consider for example protein allostery so i want to show you that protein</p>
+<p>allostery can be seen as a double optimization process so what is protein allostery consider consider</p>
+<p>a protein here in green a regulatory molecule comes to bind to the protein that binding induces a long</p>
+<p>range deformation that then allows a ligand to uh an extra molecule to couple to it all right so in</p>
+<p>order for this uh confirmation uh conformational deformation to be useful you need to have the</p>
+<p>right set of parameters this is a very precise deformation and evolution once i uh has minimized the</p>
+<p>error has maximized the fitness in terms of these parameters now the parameters can be</p>
+<p>the sequence of amino acids or uh or the dna sequence so this is one optimization problem just evolution</p>
+<p>but physics obliges you to minimize the free energy as a function of the formations but once again double</p>
+<p>optimization and it turns out that proteins are studied as elastic network models today so the question is</p>
+<p>can the susceptibility predicts the most important amino acids for all of the study the most important</p>
+<p>parameters and this is a problem that i would say uh in a more canonical sense it's not considered</p>
+<p>learning but it turns out that you can frame it as a learning problem all right uh so this is my last</p>
+<p>slide let's zoom out a little bit everything i told you was about physical constraints everything i told you</p>
+<p>was it came from the fact that these systems might minimize power or energy in addition to minimizing</p>
+<p>the cost this is only one type of physical constraint there are many many others for example when you</p>
+<p>actually build the systems these are analog systems you try to build the system you try to build it as</p>
+<p>neat and cleanly as possible but inevitably you have imperfect components that's a reality of our physical</p>
+<p>a physical world you have imperfect components it turns out that when you learn with these imperfect</p>
+<p>components you get some very interesting behavior we get that our learning rules are being modified</p>
+<p>uh if you want to know more about this uh we have this archive paper on understanding and embracing</p>
+<p>perfection in physical learning in which we show how these physical imperfections like um unexpected bias</p>
+<p>can impact the learning dynamics of these systems when you have power and energy minimization and you</p>
+<p>couple that with noise and non-linearities you can actually devise out of electric circuits restricted</p>
+<p>pulse machines a very similar behavior as the restrictable machine and with that you can have unsupervised</p>
+<p>and probabilistic learning with contrastive local learning networks so that's the name of this network</p>
+<p>contrasting local learning uh you can also check that out in the on the archive and also another</p>
+<p>property of real systems is that they have limited sensitivity that is they cannot respond to any tiny</p>
+<p>minute gradient all right it turns out that if you apply if you consider this ingredient into these</p>
+<p>physical networks that in addition take space they take real space this limited sensitivity can be</p>
+<p>beneficial and can avoid it can help overcome what's known in the literature as catastrophic forgetting</p>
+<p>this is soon uh going to be on the archive so stay tuned um and with that let me thank you my</p>
+<p>collaborators uh that took part on these two papers felipe martins and nahi stern vj bala sabramanian and</p>
+<p>and andrea lio uh who is in the chat now and also thank my funding sources um and let me take any</p>
+<p>questions you may have thank you awesome thank you people can write any questions in the live chat</p>
+<p>andrea would you like to give any any comments or any questions</p>
+<p>um well uh maybe just to say i mean marcelo i'm sorry i had to miss the beginning because i was teaching</p>
+<p>but um and probably marcelo made this point but i think it can't be made strongly enough that um you know</p>
+<p>when when you use physical networks to learn things of course there are disadvantages compared to neural</p>
+<p>networks on the computer but they're also really significant advantages um you know you know in</p>
+<p>that in addition to practical advantages for example a lower energy consumption and stuff like that i think</p>
+<p>um the there's a huge advantage in terms of our ability to understand the nature of the solutions</p>
+<p>um and and this because we have this double optimization process so we can just look at the</p>
+<p>physical aspects and they tell us so much it gives us a really nice handle into how the system is learning things</p>
+<p>the kind of solutions the system learns</p>
+<p>the way that we can do is we can do that in terms of our ability to understand the system</p>
+<p>cool all right i will read some questions from the live chat and some questions that i wrote down so</p>
+<p>first question from bert very clear presentation question how do you experimentally measure the</p>
+<p>susceptibility in a real electrical network oh yeah uh</p>
+<p>let me go back</p>
+<p>here so let's say you want to measure the susceptibility of the green edge here what you basically want to do</p>
+<p>is to apply a unit current at a given node and you will and by measuring the voltage drop</p>
+<p>of the green edge due to the unit current at this voltage node you are going to measure the susceptibility</p>
+<p>that's the physical interpretation and so and so and so so yes so here what i'm plotting</p>
+<p>are several measurements so for each node i'm plotting the voltage drop of the green edge due to a unit current there</p>
+<p>so here i'm representing as many measurements as number of nodes so that's one way of measuring then there is the second way of measuring which is by adding some noise to the system and just measuring the</p>
+<p>the eigen the the behavior of your noisy dynamics from that you can also infer the information of the susceptibility</p>
+<p>and maybe that's a more more like a meaningful way of measuring instead of doing one by one because then you have to do it for every single edge one by one</p>
+<p>uh but that that's basically it it's a measure of voltage drop due to unit currents at different nodes</p>
+<p>why does the inverse hessian appear four times</p>
+<p>uh yeah</p>
+<p>this is this has to do with the mathematical derivation</p>
+<p>um</p>
+<p>um</p>
+<p>let me see if i can find uh</p>
+<p>um</p>
+<p>oh yes so</p>
+<p>well it's part of the mathematical formulation so basically this here's the thing</p>
+<p>uh</p>
+<p>uh let me go</p>
+<p>here</p>
+<p>okay</p>
+<p>this is the i want you to focus i can you see my mouse</p>
+<p>yes okay here uh you can see that the physical response is the physical hessian inverse</p>
+<p>times the input card so that's one physical head now how do you measure the error</p>
+<p>uh the error usually is the response minus what you want squared okay so when you measure the the gradient</p>
+<p>uh what you will have to take the derivative of this quantity with respect to k that is the derivative of the inverse of the physical hessian but when you take the hessian</p>
+<p>the the cost session what will appear is the derivative of the inverse of the physical hessian</p>
+<p>to the power of two</p>
+<p>turns out that the derivative of the physical the inverse of the physical hessian</p>
+<p>is basically the physical hessian multiplies twice and so when you when you do all the math you will realize that naturally the physical hessian inverse is going to appear four times</p>
+<p>okay</p>
+<p>and by the way uh i think i i didn't argue why we call it susceptibility all right and we call it susceptibility</p>
+<p>the probability for a very important reason uh is because uh the quantity here s</p>
+<p>i i wrote basically the final expression of this mathematical derivation but the initial expression of</p>
+<p>this mathematical derivation is that s is basically the derivative of the physical hessian with respect to the conductances</p>
+<p>the conductances and basically what is telling you that this is measuring how much your response is going to change</p>
+<p>when you change a little bit the conductances so it's literally a notion of susceptibility how susceptible</p>
+<p>is your response when you tweak certain conductances and it turns out that the end result of that</p>
+<p>is this four vectors that appear in here</p>
+<p>thank you i think maybe it's a little bit easier to understand not why there are four powers but why</p>
+<p>stiff modes of the cost session are related to soft modes of the physical hessian right if you</p>
+<p>if you go back to yeah exactly yeah you want to explain that myself</p>
+<p>uh sure that picture uh yeah</p>
+<p>so i guess what you have in mind is uh that the softest modes are the easiest to excite</p>
+<p>yeah exactly yeah exactly all right so um so we found this as stiff as cost eigenvector</p>
+<p>in the cost landscape all right in this very high dimensional cost landscape these are the most important</p>
+<p>parameters and so what's the meaning of this soft physical eigenvectors turns out that your physical</p>
+<p>response you can decompose it as a linear combination of all the physical eigenvectors</p>
+<p>all right and the magnitude of the eigenvalue indicates how easy is to activate those eigenvectors</p>
+<p>and basically what this is telling me is that the network learned by virtue of the easiest to actuate mode</p>
+<p>so it didn't it didn't uh it doesn't have to activate the last mode which is the most energetic one</p>
+<p>it doesn't have to activate the next one or the next one it just simply activates the easiest mode the</p>
+<p>one with the softest or the smallest physical eigenvalue and that's how these networks learn they learn by</p>
+<p>softening by softening in their right ways by becoming basically what they actually learned</p>
+<p>very cool yeah like a physical object shaking the softest thing is going to start vibrating first or</p>
+<p>the the the the weakest link in the chain is going to break otherwise it would have been a different</p>
+<p>chain uh and then it's the stiff cost and these visualizations make it really clear though there's</p>
+<p>clearly a lot of math with it too that that uh stiff cost is in the gap between the two soft parts</p>
+<p>so it's kind of like a a cake that got um with with a uh cut or with a hard chocolate or something like separating two parts that have</p>
+<p>different resonant modes</p>
+<p>and then yeah and that makes it makes it clear as well like if a ligand bound in an amino acid didn't move</p>
+<p>that non-movement couldn't be a difference for making a difference for allostery because it wouldn't be</p>
+<p>responsive whereas something that's that binds to low concentration or you know moves a lot with another</p>
+<p>ligand binding it's gonna start like a rising tide with the susceptibilities in a ranked way depending on the</p>
+<p>the modulator yeah and and this is uh yeah that you're you're correct but and this</p>
+<p>is surprising this is surprising because this is there are many many solutions there are many</p>
+<p>configurations that could lead to solving this problem this is only one of them and what we find</p>
+<p>is that through these learning rules okay we seem to systematically find this kind of solutions in which</p>
+<p>you soften you actually work by the softest mode uh and that's fascinating but that doesn't have to be the</p>
+<p>case right uh you could you could make a contrived example in which you function because of the</p>
+<p>hardest mode of your physical action but that does not appear in any case and and but what's beautiful</p>
+<p>also is that no matter how it works this relation holds no no matter whether you work by your softest mode</p>
+<p>which is why what we actually observe or you work by by a very contrived way of working</p>
+<p>this relation stays the same this is a very general uh mathematical framework for this double optimization</p>
+<p>problems okay thank you a lot a lot of other questions i'll read one from live chat so tucker wrote</p>
+<p>will science build effective proteomic computers using allosteric input output</p>
+<p>uh or maybe a kind of more general variant of that that i think arises and you touch upon is what kinds of</p>
+<p>computational or cognitive systems could be designed with a better grasp of what you're researching</p>
+<p>uh that's uh a very speculative question i don't know how to answer that uh i i think the value of this</p>
+<p>kind of research is that we can actually understand how they work how they learn what the what type of</p>
+<p>solutions we're getting at i i i don't know yet where this uh could lead us i mean that's why we are</p>
+<p>doing research in the first place but andrea i don't know if you want to add something to uh to this</p>
+<p>question um uh just to say that probably not for proteins because they're just not big enough to be</p>
+<p>highly over parameterized to do really complex tasks so the number of tunable parameters that you have</p>
+<p>in a protein well you have a choice of 20 amino acids at each side in the sequence so it's determined by</p>
+<p>the length of the protein and this is why proteins can be multi-functional they can have more than one</p>
+<p>function but they tend not to have more than that most of them have basically one and some some have a</p>
+<p>few you know they're just not very many that that can solve very complex tasks so i think the answer for</p>
+<p>proteins is really no because they also have to fold into their structure um</p>
+<p>um you know for the circuits um can these ideas help us make better circuits yeah i i think so because</p>
+<p>um because one of the things it says is that okay well if you have an imperfect imperfect circuit</p>
+<p>you don't want to tend to have very many high susceptibility edges where it really depends on that edge</p>
+<p>doing the right thing and so you know low susceptibility solutions might be more robust</p>
+<p>and um to these sort of imperfections and so then this gives a way of perhaps training for</p>
+<p>lower susceptibility solutions</p>
+<p>as a biologist that's really fascinating about enzymes because they have</p>
+<p>many constraints that they function and evolve under many many cellular constraints and protein production</p>
+<p>kinds that that aren't necessarily related to their enzymatic function and they do have a they do have a lot of</p>
+<p>allosteric and and all these kinds of incredible structural events however those are like many fingers on the scale of usually</p>
+<p>several but kind of a core activity even if it's a transcription factor activity or some epigenomic</p>
+<p>functionality that still can have very complex causal role but it comes down to kind of like a train on a track</p>
+<p>accelerating or decelerating or increasing or decreasing within kind of one constrained mode of action</p>
+<p>which may be a solution which may be a solution to the evolvability so then that leads me to to ask like the physical device you were simulating the what what what are the like the kind of ram cpu gpu</p>
+<p>analogies like does different or improved functionality in the regression task come from</p>
+<p>more nodes is it important to build those systems to have different connectivity patterns</p>
+<p>or like what what physical parameters relate to their ability to perform that regression</p>
+<p>or how large of a regression could the object that you were working with do</p>
+<p>yeah all right that's a very good question i mean there are several aspects of this question like</p>
+<p>the question of the architecture for example what is the best architecture for the circuits uh i showed you that</p>
+<p>uh i showed you this picture of the square grid which is basically what we what my colleague built in the in the lab</p>
+<p>uh then i worked out the example of a disorder network short answer is that in general like for the most</p>
+<p>general case the i don't think there is a clear understanding of what the best architecture should</p>
+<p>be and it's the same problem in artificial lunar networks all right um actually for that being said for</p>
+<p>simple for simple networks like linear system networks the ones that we have actually uh discussed today</p>
+<p>uh there is the best architecture and the best architecture turns out to be a cross bar right</p>
+<p>that is all the inputs connected to all the outputs that's it with all all wires that's the best you</p>
+<p>can do in a linear system network and and that's also that's that's maybe that's a starting point to</p>
+<p>start understanding what the best architects are um uh also we have some general properties uh that we share</p>
+<p>with artificial lunar networks meaning that the more parameters that you have when you are non-linear</p>
+<p>the better you are at learn okay that gives you expressivity if you can tune if you can just tune more</p>
+<p>knobs that's better but also you come with a price on the price we have to pay well the system is larger</p>
+<p>learning takes longer you have to spend more energy so there are these series of trade-offs</p>
+<p>uh that we have in these physical learning systems um uh and that we are currently investigating</p>
+<p>yeah very interesting it reminds me of the the physical and thermal energetic or other other sources of</p>
+<p>energy it's striking that they have that formal relationship to artificial neural networks that</p>
+<p>you just mentioned having a more if compute were free having more parameters barring secondary issues</p>
+<p>learns better or or at least in certain ways but then as soon as you start taking different constraints</p>
+<p>into effect then that's why there is no best model size just even evidence narrowly by the different</p>
+<p>numbers of parameters in generative ai families because they kind of cover that spectrum allowing you to say</p>
+<p>if you have this much compute you need this done at this speed this is the computing cost whereas if you have a</p>
+<p>a wired up physical system it's using the the constraints of or just the unfolding of physical systems</p>
+<p>it in this kind of like free compute mode so do they take longer to equilibrate or is it just get into</p>
+<p>the questions of like having a laboratory or that can measure it or no no no i think if anything the</p>
+<p>advantage of having this physical systems is that it equilibrates like this is an electronic circuit it is</p>
+<p>extremely fast i think um what is uh what is a pity is that for us the theorists it's extremely hard to</p>
+<p>to model when this circuit gets a little bit more complicated so but it's just uh i think it's a</p>
+<p>complication for us people doing research on on this on these systems but the actual physical system</p>
+<p>equilibrates very quickly it's a it's very very fast and very energy efficient when you compare it to</p>
+<p>to a computer for example there's one point that i i didn't discuss much which is the topic of learning</p>
+<p>roles because everything i told you is was regardless of learning role but the main advantage of this uh</p>
+<p>uh of of this kind of object here this experimental object is that all the learning rules are local</p>
+<p>that is if you want to update this resistor you only need to know the state of that resistor</p>
+<p>and nothing else whereas if you compare this to gradient descent on artificial neural networks each</p>
+<p>parameter each edge on your artificial neural network needs to know all the other states of of edges in</p>
+<p>your network so you have this gathering of information okay that you have to gather at the cpu level and</p>
+<p>then do the computations and then transfer back to all the edges that costs a lot of energy but here</p>
+<p>everything is decentralized it's distributed network and that's a lot of saving even when you scale when</p>
+<p>you scale up yeah a few a few comments on that that is sometimes a point that the biomimetic or</p>
+<p>neuromorphic computing communities also discuss or like the ngc learn biological learning package of</p>
+<p>professor auroria and then also this is more on the computational side it's something that software</p>
+<p>packages like rx infer or ultimately just like the graphical models that we're exploring in active</p>
+<p>inference where there can be node local computation of local message passing and update rules</p>
+<p>and that constraint for having a procedure that can be locally performed kind of</p>
+<p>prevents the need for the moving around of information that uh abstract kind of turing von neumann</p>
+<p>yep like server farm with infinite resources metaphor like turing tape with infinite space metaphor</p>
+<p>kind of has and then and then another i think really striking point to explore is that</p>
+<p>when it um well first you mentioned free energy so maybe you could give a comment on that but the</p>
+<p>way that planning works in active inference agents in discrete or in continuous time and in discrete time</p>
+<p>it's sort of a chess algorithm like tree search with with secondary branching or secondary evaluations but</p>
+<p>kind of like deep policy search uh in that machine learning uh tradition but then in the continuous</p>
+<p>time planning setting it's a taylor expansion and so then that allows for these different</p>
+<p>generalized coordinates different orders or or degrees of expansion of a taylor approximation</p>
+<p>and then that connects to like hierarchical bayesian modeling with a taylor series expansion</p>
+<p>so maybe could you make any other points on the taylor series or the free energy and the temperature</p>
+<p>sure yeah</p>
+<p>just to as quick comment basically on your thing about the von neumann bottleneck um</p>
+<p>um yeah so people talk about in memory compute and our systems are definitely that because the memory is in the</p>
+<p>resistances in the state of the tunable resistors um which is where the computation is done that right</p>
+<p>um and but this is also because there's self-tuning um by the local rule um it's also in memory learning</p>
+<p>okay the tuning is occurring on exactly the objects that are carrying the memory which is the tunable resistors</p>
+<p>yeah yeah okay sorry go back yeah um so so so i comment on on the taylor expansion yes so uh so the talk i</p>
+<p>explicitly use linear resistor networks that don't have to be the case uh just for simplicity but basically</p>
+<p>what you want are two landscapes i mean that's that's the general description of physical of physical of</p>
+<p>this physical learning system and around the minimum of these two landscapes you perform this taylor expansion</p>
+<p>all right and what we are connecting is this second order description of these two landscapes in</p>
+<p>different spaces the cost section and the physical action now during this talk i use power as the physical</p>
+<p>landscape it doesn't have to be power it could be energy and it could be free energy all right uh you</p>
+<p>it has has to be a lot or it can be any liapunov function to be to be fair all right so you have a</p>
+<p>system that minimizes all the app on a function a physical by its own physical dynamics and then you</p>
+<p>want in addition to tune the parameters such that you minimize the cost you have that set up and then you</p>
+<p>can apply all of this reasoning all right and the only the and that's those are the only conditions</p>
+<p>two landscapes you minimize or maximize what these landscapes um and you want your system to be</p>
+<p>continuous meaning that the parameters and the to have the description the parameters and the physical</p>
+<p>degrees of freedom like the voltages or the positions of your beads have to be continuous and as soon as you</p>
+<p>have that you have all these results for free all for free you have to do some math but</p>
+<p>yeah that's it thank you i'll ask another question from live chat bert wrote in mobility</p>
+<p>corridors and barriers are varied for example a navigable river by boat or car could you capture something like travel modes</p>
+<p>i think that we could capture uh we can capture with this formalism these travel modes</p>
+<p>travel modes I think that we could capture we can capture with this formalism these travel modes</p>
+<p>uh for these systems these are a station stationary systems that reach steady state</p>
+<p>uh that's a fixed point okay but we are currently investigating the case in which the steady state</p>
+<p>the response is not a fixed point but could be a limit cycle so the system in time the response</p>
+<p>in time is changing and if you do that we think that if you if you do this Taylor approximation</p>
+<p>of the Lyapunov function that you are actually minimizing then you will obtain the same kind</p>
+<p>of behavior in which you link the properties of the cost session and the properties of the</p>
+<p>passion of this Lyapunov function thank you for that comment it reminds me a lot of the</p>
+<p>Lyapunov exponents role in chaotic systems and complex systems and determining divergences it's it's</p>
+<p>again a similar nexus with like a laminar flow and then what are the disturbabilities</p>
+<p>and then is that steady state just one static approximation or does that steady state have</p>
+<p>these limit cycle or other kinds of chaotic properties</p>
+<p>I think for the circuits in in question we I don't think we have observed chaotic properties</p>
+<p>I think what we can do are fixed points or limit cycles well we can tune now more general behaviors</p>
+<p>okay yeah we could tune to I mean we can use local rules now to tune limit cycles or or whatever kind</p>
+<p>of dynamical behavior you want to build in and the nice thing is that these ideas can be generalized</p>
+<p>this you know this what Marcello talked about was all for reciprocal interactions but the ideas can be</p>
+<p>generalized for non-reciprocal interactions too so maybe kind of a research practical question like what</p>
+<p>software or methods do you use to design those problems and how do you set out to when you're making it</p>
+<p>other than for research explorations like how would somebody adapt these methods to a given functionality</p>
+<p>or computation they were thinking of or wanting to model</p>
+<p>uh so on the experimental side I don't think I can talk that much I think those uh the thumb is building</p>
+<p>the experiment I can tell you on the theory side we have I mean if people want to play with this kind</p>
+<p>of code it's they are fully available all right to simulate the learning of these physical systems</p>
+<p>there are some github repositories you can look at the other two papers</p>
+<p>uh uh this open source paper microscopic imprint of learn solutions with general networks has a link</p>
+<p>to the to the to a public github repository which you can play uh uh with with this with simulating</p>
+<p>these networks you can train them to do different things you can train them to recognize images</p>
+<p>the to mnist uh we also have uh let's see a more powerful um tool now so this is a project I didn't</p>
+<p>have the time to talk about which is the second uh the third project noise and non-linearities in which</p>
+<p>we basically endowed this resistor networks the senior system networks with noise and non-linearities and we</p>
+<p>devise what we call a restricted curve machine and these are unsupervised and probabilistic models this</p>
+<p>this networks that you can simulate and again you can look at the paper and you will find the github</p>
+<p>repository public um you can simulate the circuits learning uh unsupervised tasks learning to to to</p>
+<p>learn in the distribution that gets from from some input data uh so if people are interested</p>
+<p>so those are the things and at the level of the more engineering level there are simulations today</p>
+<p>about the all the actual circuit components uh i think the software is called spice you can simulate</p>
+<p>all these kind of uh learning networks it's kind of it's smaller than the effective modeling that we have</p>
+<p>in our public uh um repositories but it's also a play where you can actually simulate this at the end of</p>
+<p>the day uh there is no black magic in here it's just electronic components cool any other comments or</p>
+<p>anything else you want to share um andrea maybe well maybe just um such a interest in the biological</p>
+<p>thing and somebody asked about proteins um um uh there's another post talk in my group um farshid mohammed</p>
+<p>and rapha is looking at um uh global epistasis in proteins so the idea is you know epistasis was where</p>
+<p>you do mutation a do mutation b and if you do both of them what you get is not the effect on the function</p>
+<p>is not the same as if you did them each separately and then added them together and in global epistasis these things are</p>
+<p>correlated um globally you know the non-additivity of the mutations um and um you know what we think</p>
+<p>this is coming from is from being over parameterized and so the nice thing about what the susceptibility</p>
+<p>analysis gives you is that it gives you a way of finding out what are the key amino acids that are</p>
+<p>that you don't want to mess with if you want to maintain function those are the key edges that</p>
+<p>marcel is talking about uh without doing things like deep mutational scans and stuff like that</p>
+<p>you can get it just from the physical properties of the protein itself</p>
+<p>well wow what's what's very fascinating about that is i'm thinking about a protein physical</p>
+<p>epistasis or allostery case with like by physics quote physically transferred vibrational on molecule modes</p>
+<p>then i'm thinking about other multi-omics data sets like gene expression and genome variation for like a</p>
+<p>gwas so both of those we might make networks that have additivity like super or sub linear additivity</p>
+<p>aka epistasis so we have statistical epistasis in quantitative genetics gwas gene expression so just again it's that striking parallel that</p>
+<p>there's a similar susceptibility framework for thinking about the abstract quote non-physical</p>
+<p>the two loci being co-expressed up and down across tissues it doesn't mean that they physically interact</p>
+<p>or the changing one changes the other so there's all these different networks</p>
+<p>and they they and then by overlaying them it'd be like okay so what transcript levels or there could be things that would be biologically relevant with with</p>
+<p>the transcript level could be very sensitive to phenotype or not and they all kind of project down to to the biological system being what it is</p>
+<p>with a phenotype as that kind of um single register for all of those statistical susceptibilities</p>
+<p>so single ohmich analyses can tell part of the story but then they're only part of the the susceptibility</p>
+<p>and some of that would get revealed by single molecule protein other other epistasis don't get revealed</p>
+<p>at that at that scale</p>
+<p>so it's like it brings a lot of unity to how those different data sets even the past ones that were</p>
+<p>single ohmich still have some degrees of variability reflected but it was just one experiment so it didn't pin down every</p>
+<p>axis of variability</p>
+<p>right but this is where the susceptibility analysis could be really useful</p>
+<p>yeah all right i'm very biased i always say this but i find this topic fascinating because i truly think</p>
+<p>that this could be a very tool and framework to understand more biological systems um i'm my next</p>
+<p>steps career-wise i'm going to the ens in paris i want to continue doing research on physical learning</p>
+<p>also moving a little bit closer to biological systems uh and just i think there is a lot of things to do</p>
+<p>about how physical constraints actually shape the learning of real systems embedded in the real world</p>
+<p>unlike unlike virtual systems but in which you are free to do anything you want here we have rules we</p>
+<p>have constraints how do these constraints affect the learning of actual physical systems and biological</p>
+<p>systems i think these are just fundamental questions and now likely physicists are just turning their</p>
+<p>attention to this kind of problems so that's it i encourage a lot of people doing this uh like</p>
+<p>reading this kind of uh of papers and and just contacting us because i think this is this is truly fascinating</p>
+<p>awesome andrea any last comment all right thank you both good luck with your research bye</p>
+<p>bye</p>
+<p>all right thank you daniel yeah</p>
+<p>it does right</p>
+</article>
+</body>
+</html>

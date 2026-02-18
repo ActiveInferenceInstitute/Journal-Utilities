@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthew Brown: “Real-Time Active Inference for Adaptive Robotic Control“</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Matthew Brown: “Real-Time Active Inference for Adaptive Robotic Control“</h1>
+<div class="meta">Duration: 58:19 &middot; Views: 520</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=P3h51-J4g8M">https://www.youtube.com/watch?v=P3h51-J4g8M</a></div>
+<article>
+<p>hello welcome back we're here with</p>
+<p>Matthew Brown discussing realtime active</p>
+<p>inference for adaptive robotic control</p>
+<p>so put away the memories that you</p>
+<p>haven't had yet and let's talk about</p>
+<p>robotics thank you Matt yeah thank you</p>
+<p>Daniel yeah this is going to be a bit of</p>
+<p>a change in Direction although that was</p>
+<p>that was a really great talk I'm looking</p>
+<p>forward to reviewing a lot of the talks</p>
+<p>from the last um last day um but that</p>
+<p>was pretty pretty amazing from China um</p>
+<p>so yeah I'm Matt uh great great to be</p>
+<p>here um super excited to share updates</p>
+<p>about what we're doing um just to give a</p>
+<p>little bit of background on myself uh I</p>
+<p>I've been working in uh artificial</p>
+<p>intelligence for a little over 20 years</p>
+<p>um including time in the defense</p>
+<p>industry writing AI for video games</p>
+<p>things like Halo Bioshock Splinter Cell</p>
+<p>those franchises and over the last 10</p>
+<p>years been working in more serious AI uh</p>
+<p>particularly uh in deep re enforcement</p>
+<p>learning and now in active inference uh</p>
+<p>notably uh built the first commercially</p>
+<p>available deep enforcement learning</p>
+<p>platform which was bought by Microsoft</p>
+<p>in 2018 is now the autonomous systems</p>
+<p>platform there um currently I'm at a a</p>
+<p>startup at TH for I began about five</p>
+<p>years ago uh thought forge's technology</p>
+<p>started as a personal research project</p>
+<p>back in 2007 that never really ended</p>
+<p>exploring um biologically plausible</p>
+<p>alternate approaches to machine learning</p>
+<p>uh and in the over the last couple years</p>
+<p>have been applying it to Adaptive</p>
+<p>real-time control for robotics so that's</p>
+<p>what I'm going to be going through today</p>
+<p>um just a Qui quick uh brief agenda on</p>
+<p>on what what I'll be talking about and</p>
+<p>go through a quick uh well not so quick</p>
+<p>I'll go through an introduction a lot</p>
+<p>about the highle concepts uh then dig</p>
+<p>into uh briefly the history of the</p>
+<p>project uh and the implementation uh and</p>
+<p>then go into some of the more</p>
+<p>interesting topics in depth here um</p>
+<p>Network self models embodiment</p>
+<p>synchronization a lot of the tools that</p>
+<p>we're using um to get these um robots to</p>
+<p>do interesting things and then um spent</p>
+<p>some time talking about uh what we've</p>
+<p>been doing with robotics so show some</p>
+<p>videos uh perhaps um and just uh explain</p>
+<p>a little bit about the direction that</p>
+<p>we're going over the next uh couple</p>
+<p>years so I'm not going to spend very</p>
+<p>long on this slide as is probably</p>
+<p>redundant uh you know as the topic toour</p>
+<p>I will just briefly emphasize the last</p>
+<p>point on the slide here um which is</p>
+<p>about um how the free energy principle</p>
+<p>provides a unifying framework that</p>
+<p>explains how adaptive Behavior Uh</p>
+<p>perception and action can emerge from</p>
+<p>the drive to maintain a stable internal</p>
+<p>state in a constantly changing</p>
+<p>environment this is going to be a a</p>
+<p>theme throughout the talk so I figured</p>
+<p>point that out uh and this one as well I</p>
+<p>probably not going to go into too much</p>
+<p>but it's worth um noting the last two</p>
+<p>points here uh about organisms don't</p>
+<p>passively respond to sensory input but</p>
+<p>also actively shape their environment</p>
+<p>through actions that fulfill their</p>
+<p>predictions about their sensory</p>
+<p>experience and then also about how</p>
+<p>active reference explains how uh</p>
+<p>organisms achieve complex self-directed</p>
+<p>Behavior by combining sensory processing</p>
+<p>processing with active exploration um</p>
+<p>this is also uh going to be a common</p>
+<p>theme throughout the uh the talk um now</p>
+<p>we're going to go a little bit deeper uh</p>
+<p>into what we're specifically using for</p>
+<p>our robotic uh models uh and the roots</p>
+<p>in cybernetics uh um in particular the</p>
+<p>relationship between the free energy</p>
+<p>principle active inference and</p>
+<p>cybernetics which might be obvious to</p>
+<p>many people um uh at the Symposium um</p>
+<p>cybernetics here being pioneered in the</p>
+<p>1940s um also describes self-regulating</p>
+<p>systems that adapt to their environments</p>
+<p>uh and also kind of uh views agents as</p>
+<p>directed systems seeking to main</p>
+<p>maintain equilibrium through feedback</p>
+<p>loops uh the goal here being to minimize</p>
+<p>free energy or surprisal in uh the FP</p>
+<p>and active inference uh and you know</p>
+<p>active inference kind of operationalizes</p>
+<p>this through continuous adjustment of</p>
+<p>beliefs and actions um and these</p>
+<p>cybernetic ideas are foundational I</p>
+<p>believe to how the free energy principle</p>
+<p>and active view organisms as systems</p>
+<p>that maintain their states within a</p>
+<p>predictable range uh and also resists</p>
+<p>entropy and disorder by adjusting</p>
+<p>internal and external variables um over</p>
+<p>time now digging One Step deeper into</p>
+<p>the approaches that we're taking here um</p>
+<p>I'm going to talk a little bit about um</p>
+<p>the cybernetics of Ross Ashby in</p>
+<p>particular um uh cybernet Ross aspy he</p>
+<p>formalized many key ideas um homeostasis</p>
+<p>in particular as the process by which an</p>
+<p>organism regulates internal conditions</p>
+<p>uh within a narrow optimal range uh in</p>
+<p>the face of environmental changes and</p>
+<p>disturbance</p>
+<p>um he's known for um these are probably</p>
+<p>the two biggest things he's known for</p>
+<p>the good regulator theorem and the law</p>
+<p>of requisite variety uh the good</p>
+<p>regulator theorem commonly is quoted is</p>
+<p>every good regulator of a system must be</p>
+<p>a model of that system um or more</p>
+<p>accurately every good regulator must</p>
+<p>contain a model of that system um and</p>
+<p>with the law of requisite variety the</p>
+<p>the common quote is only variety can</p>
+<p>destroy variety and you know another way</p>
+<p>of thinking about this is a system must</p>
+<p>be as complex or more complex than its</p>
+<p>envir in order to manage it effectively</p>
+<p>or if if one system wants to effectively</p>
+<p>uh manage or control another system it</p>
+<p>must be at least as expressive and at</p>
+<p>least as complex as the system is</p>
+<p>controlling um in the active inference</p>
+<p>framework an agent maintains homeostasis</p>
+<p>by minimizing prediction error</p>
+<p>effectively predicting and compensating</p>
+<p>for uh environmental fluctuations uh so</p>
+<p>this is how Ash's ideas uh really kind</p>
+<p>of come into play here as's emphasis on</p>
+<p>adaptive regulation through internal</p>
+<p>models aligns very closely with active</p>
+<p>inferences process of continuously</p>
+<p>updating beliefs and taking actions to</p>
+<p>minimize prediction error and maintain</p>
+<p>uh desired States um Ash's view of</p>
+<p>homeostasis as a self-regulating</p>
+<p>feedback system is effectively a form of</p>
+<p>active inference both involve an agent</p>
+<p>using internal models to anticipate in</p>
+<p>counteract environmental changes uh</p>
+<p>preserving stability and adaptability</p>
+<p>through continuous self-correction uh</p>
+<p>and Ashby's law of requisite vary here</p>
+<p>highlights the you know a lot of the</p>
+<p>successes of active uh when active is</p>
+<p>successful uh and of maintaining ostasis</p>
+<p>here um relying on the system's capacity</p>
+<p>to generate a diverse and precise range</p>
+<p>of predictions and actions uh without</p>
+<p>sufficient variety of responses the</p>
+<p>system would fail to adapt leading to a</p>
+<p>breakdown in homeostasis and an increase</p>
+<p>of prediction eror predictive error</p>
+<p>um uh to exemplify these ideas uh Ross</p>
+<p>as Ross asby constructed a device known</p>
+<p>as the homeostat this was uh back in the</p>
+<p>1940s um this was a demonstration of</p>
+<p>learning as adaptation as as stability</p>
+<p>uh and he believed that behavior is</p>
+<p>adaptive it contributes to the</p>
+<p>maintenance of these essential variables</p>
+<p>uh and there's some various ways of</p>
+<p>looking at what he was doing here um</p>
+<p>some called it an isomorphism generating</p>
+<p>machine uh using feedback to generate</p>
+<p>distributed homeostasis via Ultra</p>
+<p>stability and and I I'll get more into</p>
+<p>that in a little bit um but that's kind</p>
+<p>of the approach that we've taken here at</p>
+<p>thorge uh and then there's kind of a</p>
+<p>long description here from one of his</p>
+<p>books about um what the homeostat was</p>
+<p>and how to construct it um and all talk</p>
+<p>a bit more about how do you construct a</p>
+<p>homeostat in a in in a moment here um</p>
+<p>here's kind of a quick highlevel</p>
+<p>abstract view of home uh sorry Ashby's</p>
+<p>original homeostat uh and this is</p>
+<p>abstracted away in in a way that uh</p>
+<p>reflects kind of modern views of um</p>
+<p>mathematical networks here where you you</p>
+<p>can define a network as a set of nodes</p>
+<p>with connections and weights um and then</p>
+<p>he he defined uh Ultra stability as kind</p>
+<p>of the the the mechanism that powers the</p>
+<p>race of State space B exploration uh</p>
+<p>which is used as part of this law of</p>
+<p>requisite variety uh and I'll talk uh in</p>
+<p>the next slide a bit about that um the</p>
+<p>network as a whole creates a dynamic</p>
+<p>attractor Set uh as a kind of</p>
+<p>self-consistent self-reinforcing uh</p>
+<p>model uh and the network can be seen as</p>
+<p>kind of a network of reciprocal</p>
+<p>constraints um the original the original</p>
+<p>homeostat only had four nodes here um</p>
+<p>constructed from recycled World War II</p>
+<p>bomb parts so this is pre- digital</p>
+<p>computer era uh and this uh there a</p>
+<p>diagram here kind of conceptually</p>
+<p>explaining you know how how it worked um</p>
+<p>the original H homeostat itself I think</p>
+<p>is is I think at the University right</p>
+<p>now but the the the um description of of</p>
+<p>how it actually works is uh somewhat</p>
+<p>abstract uh I we used uh at ffor we used</p>
+<p>a lot of his um technical journals which</p>
+<p>were released by his family I Believe In</p>
+<p>online in um in the last 15 years or so</p>
+<p>um to kind of get more detailed um</p>
+<p>information about the properties and how</p>
+<p>they're constructed to get a more</p>
+<p>accurate uh reconstruction of the</p>
+<p>homeostatic um briefly I'm just going to</p>
+<p>talk a little bit about Ultra stability</p>
+<p>Ultra stability is the property of the</p>
+<p>individual node in this network that</p>
+<p>enables um the group property of</p>
+<p>homeostasis um the ultra stability here</p>
+<p>uh is talked about in in Ashby's books</p>
+<p>and papers um so I I I don't think it's</p>
+<p>necessary to go through a deep deep</p>
+<p>analysis of it um but it the ultra</p>
+<p>stability mechanism is kind of the the</p>
+<p>local the local mechanism within a node</p>
+<p>that drives the active process of</p>
+<p>self-organization and criticality across</p>
+<p>the network uh and it's it's core to the</p>
+<p>function of how the homeostat works uh</p>
+<p>and it is uh constructed by a double</p>
+<p>feedback loop with a low-level feedback</p>
+<p>loop that performs like a linear</p>
+<p>transformation then a highle feedback</p>
+<p>loop um that updates or changes that</p>
+<p>linear transformation uh over</p>
+<p>time um this is just uh I love I I like</p>
+<p>concluding this this this letter uh this</p>
+<p>was a letter from um Alan Turing to Ross</p>
+<p>Ashby uh way back in when they were kind</p>
+<p>of debating on whether or not to go with</p>
+<p>analog Computing or or digital Computing</p>
+<p>here being uh Ashby being supportive of</p>
+<p>the analog Computing Paradigm uh and uh</p>
+<p>this letter from tiing is basically</p>
+<p>saying that his uh his computer the AC</p>
+<p>was more General and more Universal than</p>
+<p>Ash's computer because uh you could</p>
+<p>Implement Ashby's computer on turing's</p>
+<p>machine um and it's just kind of a fun</p>
+<p>little piece of History here I I like</p>
+<p>including it um just to provide some</p>
+<p>context about the time when Ashby was</p>
+<p>kind of considering these ideas uh and</p>
+<p>why they were kind of lost to time in a</p>
+<p>lot of Senses at least within the you</p>
+<p>know Computer Science World um and I</p>
+<p>also like to bring this up because uh I</p>
+<p>think it's the first at at least in my</p>
+<p>mind it's the first time um that we</p>
+<p>really started conflating uh computation</p>
+<p>with cognition here uh and where where</p>
+<p>tiing had a universal comp computation</p>
+<p>machine uh while Ashby was kind of</p>
+<p>envisioning like a a universal uh</p>
+<p>adaptation machine you know something</p>
+<p>closer to cognition uh and it feels very</p>
+<p>similar to a lot of the debate we're</p>
+<p>seeing today uh with whether or not deep</p>
+<p>learning machines are intelligent or you</p>
+<p>know if they can get to AGI uh I think</p>
+<p>that a lot of the conflation of</p>
+<p>computation and cognition goes all the</p>
+<p>way back to the origins of the analog</p>
+<p>versus digital debate uh within computer</p>
+<p>science um so the next question is how</p>
+<p>do you actually build a homeostat uh and</p>
+<p>I took turing's advice uh and simulated</p>
+<p>we built a simulation of the homeostat</p>
+<p>and the reason why simulation is useful</p>
+<p>as opposed to like an analytical</p>
+<p>solution is because of the chaotic</p>
+<p>nature of U of how these systems reach</p>
+<p>equilibrium um uh and I used to have a</p>
+<p>quote here from ILO P but um essentially</p>
+<p>you can't account for a lot of the</p>
+<p>chaotic interactions in the systems uh</p>
+<p>with loops algebraically uh the</p>
+<p>circularities and the the the the cha</p>
+<p>the chaos that's necessary for for these</p>
+<p>to stabilized require that you do this</p>
+<p>iter and that means um building a a a a</p>
+<p>simulation that you can kind of step</p>
+<p>forward uh</p>
+<p>and on the Fly generate the the the uh</p>
+<p>chaotic um interactions essentially uh</p>
+<p>as opposed to analytically um there's</p>
+<p>there's lots of references here with um</p>
+<p>you know the three body problem um uh a</p>
+<p>mapping of a line onto itself this this</p>
+<p>kind of concept of uh uh deterministic</p>
+<p>systems when you once you have three</p>
+<p>determin deterministic systems</p>
+<p>interacting with each other uh you</p>
+<p>inevitably get chaotic behavior um that</p>
+<p>is kind of leveraged as the</p>
+<p>creative uh creative energy that drives</p>
+<p>the the um the learning process in this</p>
+<p>kind of a system um the techniques that</p>
+<p>we use to actually simulate this uh and</p>
+<p>this is oops getting ahead of myself</p>
+<p>here um it come from a field known as</p>
+<p>software radio uh we started out by uh</p>
+<p>going through Ashby's technal journals</p>
+<p>uh and his writings about how the</p>
+<p>homeostat was constructed uh and we</p>
+<p>started out by building out uh accurate</p>
+<p>analog level digital simulations um and</p>
+<p>then from there we kind of abstracted</p>
+<p>out all the mechanism specific Machinery</p>
+<p>in the analog systems that are not</p>
+<p>necessary for the actual function of</p>
+<p>ultra stability and homeostasis so kind</p>
+<p>of going from this kind of very very</p>
+<p>precise analog system to uh kind of</p>
+<p>abstracted implementation um of these</p>
+<p>four nodes um once functional uh and</p>
+<p>this was simple enough to kind of</p>
+<p>uh further abstract into more kind of</p>
+<p>modern-day Network Theory</p>
+<p>implementations where we can kind of</p>
+<p>build out very very large networks</p>
+<p>similar to how it's done with deep</p>
+<p>learning uh that can be connected into</p>
+<p>arbitrary Network topologies as opposed</p>
+<p>to the original for node Network here uh</p>
+<p>and again you just to kind of reiterate</p>
+<p>here the network as a whole can be seen</p>
+<p>as a self model um each node in this</p>
+<p>network is effectively trying to predict</p>
+<p>its neighbors as it seeks equilibrium uh</p>
+<p>and the the local Ultra stability</p>
+<p>process Tunes anodes local connections</p>
+<p>and the resulting positive and negative</p>
+<p>feedback loops uh that uh that Define it</p>
+<p>uh and these overlapping Loops become</p>
+<p>self-reinforcing or self-repairing over</p>
+<p>time once once you reached kind of um</p>
+<p>convergence with these feedback loops uh</p>
+<p>the final self-producing set of Loops is</p>
+<p>a kind of self- model where each node is</p>
+<p>trying to predict all the others and so</p>
+<p>once all the nodes kind of reach a</p>
+<p>global consensus uh this model this can</p>
+<p>be Ed selfconsistent and uh reaches</p>
+<p>homeostatic equilibrium um this gener</p>
+<p>this can also be seen as kind of like a</p>
+<p>generative model uh composed of emergent</p>
+<p>self-stabilizing homeostatic feedback</p>
+<p>loops uh and these Loops uh are</p>
+<p>maintaining this homeostatic equilibrium</p>
+<p>in a critical State and this is kind of</p>
+<p>an important note for why it is</p>
+<p>incredibly sample efficient which is</p>
+<p>going to be very important for robotic</p>
+<p>applications here um the idea here is</p>
+<p>that maintaining this homeostatic</p>
+<p>equilibrium at a critical State uh makes</p>
+<p>it very sensitive to prediction error</p>
+<p>you know the smallest predictive error</p>
+<p>uh can trigger a a global structural</p>
+<p>change you know um uh so you don't need</p>
+<p>to back propagate with a large data set</p>
+<p>in order to change the the the model uh</p>
+<p>the behavior of the model um a single</p>
+<p>misprediction can effectively trigger a</p>
+<p>cascading uh set of of redefinitions</p>
+<p>where the whole you know the whole</p>
+<p>network destabilizes and then Recon</p>
+<p>converges on a new attracting set Um</p>
+<p>this can also be seen as a form of</p>
+<p>synchronization and we'll get into that</p>
+<p>uh a little bit later um and the</p>
+<p>prediction error reaching zero kind of</p>
+<p>marks the establishment of an of a new</p>
+<p>adaptive synchronization manifold uh and</p>
+<p>the synchronization first starts with</p>
+<p>immediate neighbors uh at each node and</p>
+<p>then spreads through the entire network</p>
+<p>uh as a set of like compound hierarchies</p>
+<p>of feedback loops um looking at the time</p>
+<p>here</p>
+<p>I sometimes I can I could show actually</p>
+<p>uh I could switch screens and show</p>
+<p>demonstrations of this but maybe I'll</p>
+<p>I'll share some of I I'll wait a bit</p>
+<p>later to do uh demonstrations of the</p>
+<p>original homeostat or kind of larger</p>
+<p>homeostat um just so that we're not</p>
+<p>switching screens too much um in case</p>
+<p>that's useful um all right now we're</p>
+<p>getting into some of the more</p>
+<p>interesting stuff Le uh less talking</p>
+<p>about history uh of cybernetics um so</p>
+<p>the the homeostatic Network itself seems</p>
+<p>like a lot of work uh in terms of you</p>
+<p>know um there's there's a lot going on</p>
+<p>there and it's not connected to an</p>
+<p>environment it's just learning itself in</p>
+<p>coming reaching to convergence without</p>
+<p>kind of any um sensory or motor actions</p>
+<p>so um we have this model that can adapt</p>
+<p>to its internal structure to reach</p>
+<p>homeostatic equilibrium through a kind</p>
+<p>of self- synchronization process next</p>
+<p>step is how do we actually get this to</p>
+<p>drive uh Behavior Uh and this took you</p>
+<p>know a couple years to kind of work out</p>
+<p>the engineering uh conceptually it's</p>
+<p>pretty simple um but it will get very</p>
+<p>complicated very quickly um the short</p>
+<p>version is that the sensors and the</p>
+<p>motors uh um basically we Define sensors</p>
+<p>of motors uh and they Define how an</p>
+<p>agent is embedded into an environment uh</p>
+<p>and the network topology separately kind</p>
+<p>of defines the Adaptive capacity of the</p>
+<p>homeostatic agents model uh the sensor</p>
+<p>definitions themselves here um are are</p>
+<p>uh kind of defined externally from the</p>
+<p>model itself uh they provide a mechanism</p>
+<p>to influence the behavior of the system</p>
+<p>by providing priors in the form of</p>
+<p>preferred sensory States or preferred</p>
+<p>environmental States uh and these act as</p>
+<p>te teody dnamic priors uh kind of</p>
+<p>externally find uh Dynamic set points</p>
+<p>for the homeostatic adaptation and these</p>
+<p>sensors can be seen as input attracting</p>
+<p>sets which can even be modified in real</p>
+<p>time or animated in real time to</p>
+<p>generate you know different kinds of</p>
+<p>behavior from the same model um at</p>
+<p>runtime without having to change the</p>
+<p>model structure or anything like that uh</p>
+<p>the motor definitions then provide you</p>
+<p>know kind of critical affordances for</p>
+<p>how the agent can modify the environment</p>
+<p>to help provide a basis for future</p>
+<p>sensory predictions um and the thir</p>
+<p>states of the sensors become the</p>
+<p>preferred outcomes of the motors through</p>
+<p>the this reaching equilibrium State and</p>
+<p>the model's Behavior ends up being</p>
+<p>biased as desired so this is how we get</p>
+<p>it to do useful behavior in a robot for</p>
+<p>example um from something that is</p>
+<p>seemingly just reaching</p>
+<p>equilibrium and I guess one one</p>
+<p>important or Salient note here is that</p>
+<p>in a real world environment the you know</p>
+<p>there it's reaching pure homoy</p>
+<p>equilibrium is is actually quite</p>
+<p>difficult unless you're um unless you're</p>
+<p>in very special circumstances um so to</p>
+<p>expand a bit more on on that um the</p>
+<p>network diagram here is is kind of an</p>
+<p>overly simplified version of our</p>
+<p>homeostatic network but meant to kind of</p>
+<p>visually explain how to think about</p>
+<p>these uh in a particular here um</p>
+<p>embodiment of of of these models in kind</p>
+<p>of an environment here um coupling it</p>
+<p>coupling a model like this to an</p>
+<p>environment through sensors and Motors</p>
+<p>is kind of a form of embod here meaning</p>
+<p>there's a kind of a specific time place</p>
+<p>that this model is operating uh and</p>
+<p>there is um the there is kind of a</p>
+<p>temporal component here where um the the</p>
+<p>uh the model's sequence of sensory</p>
+<p>Behavior actually is is relevant you the</p>
+<p>the um the the inputs to the system are</p>
+<p>not independent which is kind of</p>
+<p>different than traditional what you</p>
+<p>would imagine back propagation based</p>
+<p>perceptrons how they function uh and one</p>
+<p>thing that's interesting about this uh</p>
+<p>and and and it's worth pointing out here</p>
+<p>is that there's no forward or backward</p>
+<p>no feed forward or feed backward um uh</p>
+<p>directions in this kind of network</p>
+<p>there's no front or back or top to</p>
+<p>bottom um the only thing you can really</p>
+<p>kind of uh Direction you can kind of</p>
+<p>take from a model like this is distance</p>
+<p>from sensors or Motors or or how close</p>
+<p>to the environment a particular node is</p>
+<p>um otherwise relative location is pretty</p>
+<p>much everything you know where as as an</p>
+<p>individual node where am I relative to</p>
+<p>the rest of the network uh and it's it's</p>
+<p>common for people to think of of machine</p>
+<p>learning models these days especially if</p>
+<p>you're used to to think about deep</p>
+<p>learning or traditional perceptron based</p>
+<p>back propagation models uh to think of</p>
+<p>it as a sequential flow of processing</p>
+<p>like uh I take in an input I perceive or</p>
+<p>I do planning on that input and then I</p>
+<p>generate an action um that's not how</p>
+<p>these Network networks uh function uh</p>
+<p>instead um everything kind of happens</p>
+<p>all the time and everything's</p>
+<p>overlapping uh what I mean by that is um</p>
+<p>this is not a sandwich model I guess is</p>
+<p>is the term time simply advances and</p>
+<p>information moves from one node to</p>
+<p>another um all in parallel you know so</p>
+<p>in in traditional deep learning it's</p>
+<p>kind of an atemporal process where</p>
+<p>information goes from the inputs to the</p>
+<p>outputs instantaneously uh and uh</p>
+<p>there's no internal time unless you're</p>
+<p>working with recurrent neural networks</p>
+<p>and there are ways of adding a temporal</p>
+<p>aspect of it but the temporal aspect is</p>
+<p>really a fundamental feature of of these</p>
+<p>types of notes um what that means is um</p>
+<p>the the network itself the the</p>
+<p>homeostatic feedback loops come to be</p>
+<p>dependent on expected sensory signals u</p>
+<p>meaning the the deeper parts of the</p>
+<p>network are generating predictive</p>
+<p>signals forward to the sensors uh and so</p>
+<p>um in order for this to function you the</p>
+<p>the deeper parts of the model have to be</p>
+<p>actually actively predicting the sensory</p>
+<p>inputs that that are coming in um this I</p>
+<p>believe also means that it ends up</p>
+<p>becoming grounded in the embodied</p>
+<p>experience itself meaning the the</p>
+<p>homeostatic self-maintenance of this</p>
+<p>network is composed of environmental</p>
+<p>signals from the Environ from from The</p>
+<p>Real World or whatever whatever</p>
+<p>embodiment you you you you've put this</p>
+<p>model in um and as part of its kind of</p>
+<p>predictions and expectations meaning the</p>
+<p>the actual sensory experience is what</p>
+<p>what is being predicted and so what the</p>
+<p>models actually generated is um</p>
+<p>generating is is derived originally from</p>
+<p>this uh essentially embodied experience</p>
+<p>um the expectations and predictions for</p>
+<p>the consequences of motor actions are</p>
+<p>kind of embedded in the behaviors uh</p>
+<p>that are being generated embedded in the</p>
+<p>signals sent this uh to the sensors from</p>
+<p>deeper in the network at the same time</p>
+<p>as these kind of predictive signals are</p>
+<p>being sent to the to to the sensory</p>
+<p>regions actions are being sent to the</p>
+<p>motors um and these actions at any</p>
+<p>moment are not based on the latest input</p>
+<p>but based on predictions about what the</p>
+<p>model believes is going on in the world</p>
+<p>world and how best to to kind of satisfy</p>
+<p>the sensory inputs or get the the model</p>
+<p>into a preferred state or a lower energy</p>
+<p>state or or lower surprisal State um</p>
+<p>these kind of these motor actions are</p>
+<p>accompanied in parallel by sensory</p>
+<p>predictions that are all moving kind of</p>
+<p>to the to the to the this the uh</p>
+<p>the I don't want to say the front of the</p>
+<p>network but the the abstraction that</p>
+<p>defines the embodiment you know to the</p>
+<p>sensors and Motors um in kind of in</p>
+<p>parallel um this is this may be familiar</p>
+<p>to people who are who are um have read</p>
+<p>about perceptual control theory and</p>
+<p>predictive processing and very much uh</p>
+<p>along those same exact lines in terms of</p>
+<p>what's going on here in terms of uh</p>
+<p>actively generating predictions to</p>
+<p>counteract sensory uh sensory input um</p>
+<p>the mo the the motors here end up being</p>
+<p>kind of um a critical part of making</p>
+<p>those sensory the future sensory</p>
+<p>experiences um easier to predict or um</p>
+<p>as part of this whole</p>
+<p>process another way to look at this this</p>
+<p>homeostatic process is through uh</p>
+<p>synchronization um the the homeostatic</p>
+<p>process can be seen as generating an</p>
+<p>Adaptive synchronization manifold</p>
+<p>between the agent and the environment um</p>
+<p>based around minimization of prediction</p>
+<p>error basically uh minimizing the</p>
+<p>difference between what I'm predicting</p>
+<p>the environment is doing and what the</p>
+<p>environment is actually doing this is</p>
+<p>kind of a synchronization as prediction</p>
+<p>uh process uh where when the two systems</p>
+<p>are synchronized they can be thought of</p>
+<p>as predicting each other you know um you</p>
+<p>know anticipating the other individual</p>
+<p>nodes are using uh Ultra stability uh</p>
+<p>predict their neighbors and then when at</p>
+<p>equilibrium all the nodes are</p>
+<p>synchronized through these feedback</p>
+<p>loops uh the synchronization between the</p>
+<p>noes spreads to whole network</p>
+<p>synchronization at this point uh</p>
+<p>ultimately uh this synchronization</p>
+<p>spreads across this this sensory and</p>
+<p>motor abstraction uh between the</p>
+<p>environment and and and uh an agent so</p>
+<p>you kind of get a um agent environment</p>
+<p>synchronization process uh through this</p>
+<p>um looking at another way uh these</p>
+<p>overreacting feedback loops interact and</p>
+<p>synchronize with each other as part of</p>
+<p>the homeostatic self-maintenance as</p>
+<p>these feedback loops extend from Motors</p>
+<p>through an environment back into the</p>
+<p>sensors the model gains the ability to</p>
+<p>anticipate the consequences of its own</p>
+<p>actions uh and the the the capacity to</p>
+<p>synchronize internal states with</p>
+<p>something in the external World um you</p>
+<p>know without direct communication is is</p>
+<p>kind of critical to this the</p>
+<p>synchronization means that the internal</p>
+<p>States become uh uh they they they come</p>
+<p>to resemble internal states of the other</p>
+<p>system um when and when at this kind of</p>
+<p>synchronized homeostatic State it's also</p>
+<p>in this kind of critical State sensitive</p>
+<p>to local prediction errors um and this</p>
+<p>like I mentioned before this is kind of</p>
+<p>critical because that allows internally</p>
+<p>the model to to completely restructure</p>
+<p>itself or redefine how it predicts</p>
+<p>Century experience um at the very</p>
+<p>slightest misprediction um and uh this</p>
+<p>is this is very very critical for sample</p>
+<p>efficiency um uh with to contrast this</p>
+<p>with you know deep learning models or</p>
+<p>deep reinforcement learning models you</p>
+<p>need um a a very large amount of data to</p>
+<p>kind of change um The Domain the or the</p>
+<p>way in which the the models are are</p>
+<p>behaving in the world while in these</p>
+<p>kind of models it can kind of change at</p>
+<p>the uh with the slightest slightest uh</p>
+<p>one piece of data can kind of trigger</p>
+<p>Global uh Global</p>
+<p>restructuring um so one interesting</p>
+<p>aspect here is that in order to maintain</p>
+<p>a synchronization manifold the network</p>
+<p>must be able to converge to equilibrium</p>
+<p>faster than the environment can</p>
+<p>destabilize it and so this kind of goes</p>
+<p>back to um as's theory of uh the good</p>
+<p>regulator theorem or the law of</p>
+<p>requisite variety where the model has to</p>
+<p>be ex more complex than the environment</p>
+<p>is trying to to control um and has to be</p>
+<p>at least as expressive as the as the as</p>
+<p>the uh the environment is in terms of</p>
+<p>coming up with Solutions um and you know</p>
+<p>uh yeah actually I was going to go a bit</p>
+<p>more into synchronization uh and how</p>
+<p>once once the network is synchronized</p>
+<p>with an environment um once two elements</p>
+<p>internal to those systems are</p>
+<p>synchronized they can kind of coordinate</p>
+<p>without direct communication and this is</p>
+<p>kind of important to the whole process</p>
+<p>as so that the sensor and motors abstra</p>
+<p>don't have to be the direct link between</p>
+<p>uh an aspect of the model and an aspect</p>
+<p>of the environment once synchronized</p>
+<p>those two pieces can coordinate in terms</p>
+<p>of their behaviors will be coordinated</p>
+<p>without direct communication between the</p>
+<p>two um so now on to some more fun stuff</p>
+<p>um the killer application of all this is</p>
+<p>robotics uh other early Avenues we</p>
+<p>looked into is uh for example applying</p>
+<p>this for anomaly detection um where you</p>
+<p>can of use the network as a a</p>
+<p>thermometer for surprisal um the other</p>
+<p>way you can kind of use this applied to</p>
+<p>like modern deep learning is for like a</p>
+<p>model dri drift detection where you can</p>
+<p>kind of uh use the model to um detect</p>
+<p>when a deep Learning System is being</p>
+<p>used on a uh if if the input stream to a</p>
+<p>deep Learning System is being is</p>
+<p>diverging from the model uh domain so</p>
+<p>like if the sorry the the trading domain</p>
+<p>so if the data set you used to train it</p>
+<p>on is starting to differ from how it's</p>
+<p>actually being used uh this could kind</p>
+<p>of uh be useful for that um but really I</p>
+<p>feel like robotics is really the killer</p>
+<p>application for this especially when you</p>
+<p>consider the embodied nature of it um</p>
+<p>you know this the embodiment is kind of</p>
+<p>a requirement for how this model Works</p>
+<p>in terms of having to be embedded in an</p>
+<p>environment with uh this could be a</p>
+<p>virtual environment as well but it has</p>
+<p>to have some sort of uh sensory motor</p>
+<p>coupling um to something external to</p>
+<p>itself um also the the ability to kind</p>
+<p>of understand context over time and</p>
+<p>understand that um even for a sensory</p>
+<p>input that is the same as some other uh</p>
+<p>uh a sensory input at another time the</p>
+<p>the the the things that have happened</p>
+<p>previous to it are relevant you know um</p>
+<p>and so building up this context</p>
+<p>awareness uh through interaction with</p>
+<p>environment is kind of critical to how</p>
+<p>our models work um but also very</p>
+<p>important for for robotics uh and then</p>
+<p>real-time adaptation um of the model</p>
+<p>being able to update the model in real</p>
+<p>time as actions are being performed um</p>
+<p>is kind of a really useful technique in</p>
+<p>robotics in order to enable many uh</p>
+<p>dexterity uh and and adaptation in the</p>
+<p>moment um that is missing from a lot of</p>
+<p>robotic applications here uh and</p>
+<p>specific to deep reinforcement learning</p>
+<p>and deep learning ways of doing robotic</p>
+<p>control there's this uh field known as</p>
+<p>Sim toore and so uh Sim toore problems</p>
+<p>come from uh deep reinforcement learning</p>
+<p>is is where they're commonly referred to</p>
+<p>but it's where the models are sensitive</p>
+<p>to simulation Fidelity uh the idea being</p>
+<p>you've trained a model in some in</p>
+<p>simulation um and how the model behaves</p>
+<p>is very sensitive to the specifics of</p>
+<p>the the physics in that simulation or</p>
+<p>you know the actual Fidelity of that s</p>
+<p>uh that simulation and so moving to the</p>
+<p>real world often shifts the input domain</p>
+<p>uh and deep reinforcement learning and</p>
+<p>deep learning models are not usually</p>
+<p>robust for these kinds of changes uh</p>
+<p>unless you you drastically increase the</p>
+<p>amount of data through domain</p>
+<p>randomization uh which causes other</p>
+<p>problems such as the cursive</p>
+<p>dimensionality there's all sorts of</p>
+<p>solutions to the Sy the real problem for</p>
+<p>us we sidestep all this by leveraging</p>
+<p>real-time learning and adaptation so um</p>
+<p>when the model is in presented with</p>
+<p>something new or unusual in the moment</p>
+<p>we we don't we don't separate the the</p>
+<p>training phase from the deploy you know</p>
+<p>the the inference phase it it as it's</p>
+<p>inferring it's doing the updating and</p>
+<p>the learning um and this this kind of</p>
+<p>solves a lot of the centore problems um</p>
+<p>as the model is able to adapt to</p>
+<p>whatever differences uh happen in the</p>
+<p>real world that were not represented in</p>
+<p>simulation um so this is a lot of re uh</p>
+<p>a longwinded explanation of why we went</p>
+<p>after robotics for applying these these</p>
+<p>kinds of models um to get into more kind</p>
+<p>of robotic side of things in terms of</p>
+<p>technical detail in terms of how we're</p>
+<p>actually implementing this um for a lot</p>
+<p>of our interoperability between a lot of</p>
+<p>different robots um the model itself</p>
+<p>doesn't really care what kind of robot</p>
+<p>you apply this to uh so you get a lot of</p>
+<p>Hardware agnosticism where you can take</p>
+<p>a model built for one arm uh the robot</p>
+<p>arm and apply it to another robot arm</p>
+<p>for example uh and the model will adapt</p>
+<p>to any kind of kinematic differences</p>
+<p>between the two that kind of thing um</p>
+<p>this is a diagram of how we fit into</p>
+<p>Ross Ross is the Robot Operating System</p>
+<p>and it's it's the it's the open- source</p>
+<p>uh</p>
+<p>academic uh software framework that is</p>
+<p>used uh across that supports a lot of</p>
+<p>robots it's not used in a lot of</p>
+<p>industrial settings um but it's</p>
+<p>incredibly flexible in its ability to</p>
+<p>experiment and try new things and so</p>
+<p>we've kind of used this as our kind of</p>
+<p>beach head uh robotic stack</p>
+<p>implementation um these uh homeostatic</p>
+<p>models are particularly small uh so they</p>
+<p>only operate like the uh typically about</p>
+<p>30k of memory so uh they they can</p>
+<p>operate on edge devices you know no TPU</p>
+<p>needed uh no Cloud needed uh in fact you</p>
+<p>you want to run it as close to the robot</p>
+<p>as possible to minimize latency in the</p>
+<p>control um phase uh and just runs in in</p>
+<p>a single CPU um because of our our</p>
+<p>implementation of ultra stability and</p>
+<p>this homeostatic networks are are quite</p>
+<p>efficient uh model update times our sub</p>
+<p>millisecond so this enables us to um</p>
+<p>update the model and update the the uh</p>
+<p>that synchronization manifold um as a</p>
+<p>task is being performed you know uh</p>
+<p>We've clocked the networks being able to</p>
+<p>run up to 80 khz um but for most robotic</p>
+<p>control algorithms 500 htz or th000 or 1</p>
+<p>khz is typically fantastic and most</p>
+<p>robots don't support anything above that</p>
+<p>um and there's you know there's Al also</p>
+<p>some other interesting aspects to the mo</p>
+<p>the the the technical side of things</p>
+<p>where the models are small enough we're</p>
+<p>talking 30k here where um analytical</p>
+<p>explainability is possible where we can</p>
+<p>take a look at a robotics action and</p>
+<p>actually analyze the homeostatic Network</p>
+<p>to figure out um which sensory inputs or</p>
+<p>which you know which motor out uh which</p>
+<p>sensory inputs led to a particular</p>
+<p>decision um and because the models are</p>
+<p>small enough we can kind of use</p>
+<p>different kinds of network analysis</p>
+<p>approaches uh to figure that out uh on</p>
+<p>the more technical detail side in case</p>
+<p>it's useful the our models are built in</p>
+<p>C++ and we have a python wrapper so that</p>
+<p>gives us a lot of integration to</p>
+<p>capabilities to lots of different robots</p>
+<p>um which is is is useful and</p>
+<p>fun um so just going to go through some</p>
+<p>of the applications that we've done in</p>
+<p>the past uh and I could I could bring up</p>
+<p>a demonstration and and do it live uh</p>
+<p>this this was a uh a use case we did uh</p>
+<p>for a company for uh adaptive inspection</p>
+<p>so they had a use case where uh they</p>
+<p>have autonomous vehicles going through</p>
+<p>um going through a field and they needed</p>
+<p>a robotic arm to kind of uh compensate</p>
+<p>for um movement or unexpected you know</p>
+<p>orientations and and configurations of</p>
+<p>of the of the uh autonomous vehicle base</p>
+<p>um without knowing ahead of time what it</p>
+<p>was going to encounter uh and so yeah</p>
+<p>this was kind of a a fun interesting uh</p>
+<p>pretty simplistic model that we built</p>
+<p>for them uh and you can see kind of a</p>
+<p>fun video here of it in our lab kind of</p>
+<p>tracking this this QR code um and uh</p>
+<p>going one step further in terms of uh of</p>
+<p>difficulty this was another use case um</p>
+<p>from a different customer um they had a</p>
+<p>challenge of um they they were seeing an</p>
+<p>injury with um turning high pressure gas</p>
+<p>valves and uh they wanted to automate</p>
+<p>this with robots the problem was that</p>
+<p>they never have a good accounting for</p>
+<p>what kind of valve or what kind of uh</p>
+<p>you know thing that needs to be turned</p>
+<p>what it was going to look like what the</p>
+<p>shape of it was going to be if it was</p>
+<p>going to be rusty and difficult to turn</p>
+<p>or if it was going to be covered in oil</p>
+<p>and slippery or if the edges were going</p>
+<p>to be worn off um so they needed</p>
+<p>something that can adapt to this high</p>
+<p>level of variability um uh in real time</p>
+<p>um without access to the internet</p>
+<p>because this was on you know remote</p>
+<p>locations uh and so we built this model</p>
+<p>for them um and you this is just kind of</p>
+<p>a fun little video of it um we've turned</p>
+<p>this into an interactive demo that we've</p>
+<p>brought to conferences which is um kind</p>
+<p>of fun here this is uh this is just</p>
+<p>recorded on a cell phone you can tell it</p>
+<p>was it's it's real based on the</p>
+<p>production qualities um but this was</p>
+<p>that that that valve turning model that</p>
+<p>we we created before um except we've</p>
+<p>just kind of adapted it here so that we</p>
+<p>can you know show off people torturing</p>
+<p>it um in real time live as it tries to</p>
+<p>kind of turn these bolts of various</p>
+<p>shapes uh and sizes um you know some</p>
+<p>interesting things to note here the</p>
+<p>original model that we built for this um</p>
+<p>only took about uh 15 seconds to train</p>
+<p>three examples essentially uh and it was</p>
+<p>only it was only trained on a single um</p>
+<p>bolt shape here uh the square in fact uh</p>
+<p>and then what we do is we kind of show</p>
+<p>how it can kind of generalize to all the</p>
+<p>these other different cases here in real</p>
+<p>time without having seen any of these</p>
+<p>examples before uh and at the beginning</p>
+<p>of the video there you can kind of see</p>
+<p>on the screen um uh our our internal</p>
+<p>it's our internal debugger but it's a</p>
+<p>fun visualization because you can see</p>
+<p>the the homeostatic Network um learning</p>
+<p>in real time as you kind of move this um</p>
+<p>this uh panel of bolts around um I'm</p>
+<p>just stalling a little bit there we go</p>
+<p>so you can see those little those little</p>
+<p>squiggly lines there on on the on the</p>
+<p>screen um that's the that's kind of a</p>
+<p>view into the 30 of the nodes of the</p>
+<p>network kind of um updating in real time</p>
+<p>as we're as we're kind of having it turn</p>
+<p>these knobs</p>
+<p>here um getting into the less</p>
+<p>interesting stuff but just to kind of</p>
+<p>show uh where we are as as a technology</p>
+<p>um this is a platform we're building uh</p>
+<p>currently this is used internally um to</p>
+<p>develop new models uh and we have um</p>
+<p>some some interesting tools here that</p>
+<p>allow you to um effectively search</p>
+<p>ranges of topologies to to experiment</p>
+<p>with different kinds of uh Network</p>
+<p>topologies for particular task um and</p>
+<p>then see what the performance looks like</p>
+<p>in in simulation and kind of iterate on</p>
+<p>this uh eventually you'll also be able</p>
+<p>to uh connect your robot to the platform</p>
+<p>and download the model directly um so</p>
+<p>that you can go straight from um</p>
+<p>designing uh a goal specification we</p>
+<p>call a goal specification but really</p>
+<p>what is what you're doing is you're</p>
+<p>defining those T Dynamic priors in the</p>
+<p>sensor uh sensor definitions as part of</p>
+<p>that embodiment uh definition uh and</p>
+<p>then you go and you evaluate what</p>
+<p>topology is optimal for the you for that</p>
+<p>for that definition and then you can</p>
+<p>deploy this directly onto your robot uh</p>
+<p>in the real world and try it out</p>
+<p>um next steps or the direction that</p>
+<p>we're heading um is is kind of</p>
+<p>interesting um right now a lot of the</p>
+<p>models that we're building are very kind</p>
+<p>of small and uh task specific um but</p>
+<p>we're building them in a way that is</p>
+<p>recomposed of building one model that</p>
+<p>does a task like turning the valves this</p>
+<p>that that task is actually composed of</p>
+<p>three smaller models and the here is</p>
+<p>we're building up a library of</p>
+<p>recomposed submodels uh so that we can</p>
+<p>kind of recompose them in uh in in</p>
+<p>simple ways to go after new tasks uh so</p>
+<p>the idea here is we can take um right</p>
+<p>now we only have a handful of submodels</p>
+<p>but over the next year or two're</p>
+<p>building out this larger library of</p>
+<p>submodels that can be recomposed to go</p>
+<p>after a much wider variety of tasks uh</p>
+<p>and um so this this diagram here is is</p>
+<p>meant to show how we're kind of looking</p>
+<p>at um building up this framework of Rec</p>
+<p>composable models uh eventually that</p>
+<p>platform you saw this one here um</p>
+<p>eventually will'll probably open this up</p>
+<p>for the public uh to go and compose</p>
+<p>their own models from these recomposing</p>
+<p>submodels uh and um then we can even</p>
+<p>string together you know many models</p>
+<p>together and and um have a framework for</p>
+<p>deciding when to use which model um</p>
+<p>because they're only about 30k of memory</p>
+<p>uh you can really kind of load up uh a</p>
+<p>robot with you know let's say a thousand</p>
+<p>models for example uh and you can kind</p>
+<p>of get a lot of generality just from um</p>
+<p>a collection of sub problems being</p>
+<p>solved individually in in a robust</p>
+<p>manner um so I went through this talk</p>
+<p>pretty quickly I fig I'll just end with</p>
+<p>some current work that we're looking at</p>
+<p>uh right now we're working on a um this</p>
+<p>is just kind of an early look in</p>
+<p>simulation of of an insertion task um</p>
+<p>we're working on uh what's interesting</p>
+<p>about this is that we can't use vision</p>
+<p>for a lot of this because once the</p>
+<p>insertion process happens um the the arm</p>
+<p>kind of includes the view of it so we're</p>
+<p>incorporating uh four sensors uh so that</p>
+<p>we can kind of Wiggle you know tight</p>
+<p>fitting pieces into a um a housing for</p>
+<p>example uh and you really kind of need</p>
+<p>to build in um uh this kind of nuanced</p>
+<p>uh feeling of you know wiggling</p>
+<p>something into place this comes very</p>
+<p>naturally to humans you know um in terms</p>
+<p>of like filling your way through a</p>
+<p>problem uh and so we're we're kind of um</p>
+<p>working on building out the submodels</p>
+<p>needed here for high frequency Force</p>
+<p>torque sensors for wiggling uh things</p>
+<p>into place um to to kind of broaden the</p>
+<p>amount kind applications that we can we</p>
+<p>can start attacking with this approach</p>
+<p>um so that's that's kind of uh some</p>
+<p>current work that we're working on um I</p>
+<p>kind of blazed through that really</p>
+<p>quickly I could show some live</p>
+<p>simulation demos but um maybe questions</p>
+<p>maybe it makes sense to just move on to</p>
+<p>questions thanks Matt that was awesome</p>
+<p>I'll ask some of the questions in the</p>
+<p>chat maybe we'll we'll still have time</p>
+<p>to to see the demo but that was that was</p>
+<p>really</p>
+<p>exciting um okay I'll start with black</p>
+<p>cat who wrote very cool how would you</p>
+<p>say</p>
+<p>interoperability challenges change from</p>
+<p>software to</p>
+<p>Hardware that that's inter a question</p>
+<p>there's different ways to think about it</p>
+<p>um moving to software things I think get</p>
+<p>a lot easier um as Hardware is always</p>
+<p>hard uh and always timec consuming um</p>
+<p>for us we're using Ross to get a lot of</p>
+<p>interoperability between different kinds</p>
+<p>of robots but Ross is nonoptimal for for</p>
+<p>a lot of lot of situations and so there</p>
+<p>is going to be some sort of low-level</p>
+<p>drivers that we we'll have to to write</p>
+<p>that are kind of going to be Hardware</p>
+<p>specific but for the most part most</p>
+<p>robot uh uh manufacturers or oems they</p>
+<p>have an interface that is that provides</p>
+<p>some sort of joint control so the models</p>
+<p>right now are uh generating effort-based</p>
+<p>controls uh that we then convert into</p>
+<p>you know positional based controls</p>
+<p>because that's the most common most</p>
+<p>robots do not support effort-based</p>
+<p>controls um but pretty much all robotic</p>
+<p>arms in particular have some sort of</p>
+<p>joint space control uh interface so we</p>
+<p>can</p>
+<p>basically all we need is kind of a</p>
+<p>driver to translate the output of the</p>
+<p>model into uh joint Space controls for</p>
+<p>that particular robot um the other thing</p>
+<p>that's kind of interesting and you don't</p>
+<p>get this with deep enforcement learning</p>
+<p>is that um we don't actually</p>
+<p>specifically tell the model um what each</p>
+<p>motor output does we we we do have we do</p>
+<p>specify how many motor outputs there are</p>
+<p>from the model um uh although I guess we</p>
+<p>could overestimate we can give it more</p>
+<p>more actions larger action space than it</p>
+<p>actually has and will just kind of learn</p>
+<p>to ignore or it will just there will</p>
+<p>become no correlations between the</p>
+<p>unused actions and the sensory space so</p>
+<p>it ends up being unnecessary um but</p>
+<p>because we don't actually specify what</p>
+<p>each motor action is doing um it learns</p>
+<p>that uh meaning like it it will in the</p>
+<p>first couple uh of milliseconds of</p>
+<p>interacting uh with the it considers the</p>
+<p>robot part of the environment let me put</p>
+<p>it that way so in the first couple</p>
+<p>milliseconds of of controlling this</p>
+<p>robot it will build up those</p>
+<p>correlations of oh if I apply a positive</p>
+<p>effort on this joint it moves me away</p>
+<p>from my target or if I move apply a</p>
+<p>negative it gets me closer to it kind of</p>
+<p>figures out those correlations and as</p>
+<p>you know as a process of it learning how</p>
+<p>to get to equilibrium if that makes</p>
+<p>sense um and as a result of that we get</p>
+<p>a lot of um Hardware agnosticism so with</p>
+<p>that that valve turning model for</p>
+<p>example it was originally built for a</p>
+<p>different robot it was originally built</p>
+<p>for a he heavy six degree of Freedom arm</p>
+<p>um the customer ended up deploying it on</p>
+<p>actually a different heavy robot with</p>
+<p>with an additional actuator um and the</p>
+<p>model can kind of you know we basically</p>
+<p>added an output to it um but the model</p>
+<p>can kind of adapt to that situation</p>
+<p>there um for those videos you just saw</p>
+<p>and and at that conference we then took</p>
+<p>that same model and deployed it on a</p>
+<p>different manufacture uh with a six</p>
+<p>degree Freedom arm uh and it kind of</p>
+<p>just figured out you know what it needs</p>
+<p>to do differently uh that robot is</p>
+<p>really nice because it fits in a</p>
+<p>suitcase so it's really great to travel</p>
+<p>with so from from the uh moving to</p>
+<p>software and especially moving to this</p>
+<p>particular way of looking at the</p>
+<p>interface um it buys you a lot of</p>
+<p>interruptibility bonuses that you don't</p>
+<p>get with other approaches um but there</p>
+<p>is still you're still dependent on the</p>
+<p>hardware orem's driver level interfaces</p>
+<p>um but generally those are all the same</p>
+<p>uh with they the interfaces are all the</p>
+<p>same even if spinning up the robot might</p>
+<p>have different</p>
+<p>mechanisms awesome Six Degrees of</p>
+<p>ACM I'm I'm going to Cluster two</p>
+<p>questions together so erun asked how</p>
+<p>much of this is or will be open source</p>
+<p>and Alexander Robbia asked wonderful</p>
+<p>talk Matt I'm a huge fan of the</p>
+<p>homeostat as you know have you given</p>
+<p>thought to perhaps translating the</p>
+<p>homeostat to its core set of equations</p>
+<p>dynamics and contributing them to open-</p>
+<p>Source projects like NGC learn so others</p>
+<p>can appreciate its</p>
+<p>value oh great question um</p>
+<p>and great great I'm glad to hear Alex is</p>
+<p>on the call um these are both great</p>
+<p>questions</p>
+<p>um I I'm always torn in terms of like</p>
+<p>what to open source and what not to open</p>
+<p>source um I think eventually we are</p>
+<p>going to open source a lot of this um</p>
+<p>right now the intellectual property of</p>
+<p>of this approach</p>
+<p>is one of the things that is most</p>
+<p>valuable about our current business so</p>
+<p>from a business perspective in the short</p>
+<p>term we're probably not going to open</p>
+<p>source a lot of this we are expecting to</p>
+<p>open up our platform to to a wider</p>
+<p>audience um over over time</p>
+<p>um I and actually I should follow up</p>
+<p>with Alex I we have actually kind of</p>
+<p>distilled down um our implementation of</p>
+<p>the homeostat at least you know there's</p>
+<p>a lot of inter interpretations I want to</p>
+<p>say there have been five or six</p>
+<p>implementations of the homeostat over</p>
+<p>the last 80 years or so uh and they're</p>
+<p>all different which is kind of</p>
+<p>interesting uh there's a lot of room for</p>
+<p>interpretation but at least our</p>
+<p>implementation of it we have kind of</p>
+<p>distilled down to a relatively simple</p>
+<p>set of equations and they they they are</p>
+<p>very very similar to kind of the the</p>
+<p>um equations using the perceptron with a</p>
+<p>couple of very subtle changes the the</p>
+<p>the subtle changes here having drastic</p>
+<p>effects one one is that we've added</p>
+<p>state to the to the to the node um which</p>
+<p>really changes how how you think about</p>
+<p>these things as perceptrons are</p>
+<p>generally stateless and so the adding of</p>
+<p>the state there kind of adds that</p>
+<p>temporal notion so even though it's a</p>
+<p>subtle change it has drastic</p>
+<p>implications for how how the actual</p>
+<p>model Works um but uh and actually I</p>
+<p>might I was trying to see if I have it</p>
+<p>as an extra slide here in in the top</p>
+<p>um I might follow up with Alex and and</p>
+<p>share uh share those the equations I'm</p>
+<p>I'm less concerned about um sharing kind</p>
+<p>of you know the approach and and the and</p>
+<p>the uh the uh equations for for our</p>
+<p>definition of the hom stat just because</p>
+<p>these are very very difficult to</p>
+<p>implement uh and I would kind of Welcome</p>
+<p>more ideas and activity in the space and</p>
+<p>I need to take a closer look at ngtc</p>
+<p>learn uh I've I've been I keep seeing uh</p>
+<p>uh things being added to NGC learn uh</p>
+<p>and it's it's relatively new package but</p>
+<p>there's a ton in there uh and I really</p>
+<p>kind of need to take a look at what's in</p>
+<p>there um and if we do open source it</p>
+<p>does make sense to maybe integrate that</p>
+<p>as potentially an option in NGC learn um</p>
+<p>a lot of it depends on whether or not</p>
+<p>the interface is compatible with what</p>
+<p>we're doing and I I say that not because</p>
+<p>as a as a limitation of NGC learn but</p>
+<p>more of as a limitation of how people</p>
+<p>think about machine learning models as</p>
+<p>kind of um most most Frameworks that are</p>
+<p>built around deep learning um their</p>
+<p>interfaces kind of assume uh a temporal</p>
+<p>you know uh Behavior where each input is</p>
+<p>kind of independent uh each input output</p>
+<p>relationship is independent of the</p>
+<p>others um but I think it's just it's a</p>
+<p>matter of me just taking a look at NGC</p>
+<p>learn and how it how it's structured and</p>
+<p>how to actually interface with it but I</p>
+<p>think if we do eventually open source um</p>
+<p>the code um that might be the the best</p>
+<p>Avenue to do it just because that way it</p>
+<p>would be alongside a lot of this other</p>
+<p>great ideas for nonb back propagation</p>
+<p>based machine learning thank you Matt</p>
+<p>and and also really appreciate like</p>
+<p>sharing that Insight it isn't a uh open</p>
+<p>and shut and just because we can open</p>
+<p>source something doesn't mean we could</p>
+<p>or could in that way or should tomorrow</p>
+<p>or whatever happens to be so so hearing</p>
+<p>your your well-worn experience about all</p>
+<p>of this is is really insightful um okay</p>
+<p>another question from Alex he wrote how</p>
+<p>do you go about designing the structure</p>
+<p>of your homeostat net is it a random</p>
+<p>graph that you instantiate or some other</p>
+<p>graph type type does it depend on the</p>
+<p>robotic control</p>
+<p>problem that is a great question and</p>
+<p>just right off the St off the start I</p>
+<p>I'll mention that it's unsolved like</p>
+<p>it's something that we're still working</p>
+<p>on um in terms of how we do it now um so</p>
+<p>longer term I would love to start with</p>
+<p>like a random graph and then have some</p>
+<p>sort of um metric for evaluating what</p>
+<p>graph is better than another graph for</p>
+<p>particular use case and and we're</p>
+<p>probably pretty close to there and then</p>
+<p>we could have some sort of mutation</p>
+<p>function and that that way you could</p>
+<p>kind of evolve what the right to is for</p>
+<p>a particular graph I think that actually</p>
+<p>has a lot of promise and I'd really love</p>
+<p>to get into that kind of stuff right now</p>
+<p>um what we're doing is a half step in</p>
+<p>that direction um we have found that the</p>
+<p>topology has a big impact on how good</p>
+<p>the model is at performing particular</p>
+<p>task meaning you can take a random model</p>
+<p>and then try to have it turn vs for</p>
+<p>example um but often it'll do a pretty</p>
+<p>poor job or um it'll be slow or it'll be</p>
+<p>a little wobbly um and and so really</p>
+<p>kind of fine-tuning what the topology is</p>
+<p>for a particular task is is critical if</p>
+<p>you actually want a really effective</p>
+<p>robotic control model uh and so way that</p>
+<p>we've been solving this is um for for</p>
+<p>specifically robotic control we've come</p>
+<p>up with a a way of parameterizing the</p>
+<p>topology um and this kind of constrains</p>
+<p>the search process for what is finding</p>
+<p>the right topology and then what we do</p>
+<p>is in that platform you saw in this</p>
+<p>platform the primary thing that this</p>
+<p>platform is doing is providing an</p>
+<p>interface to do that topology search so</p>
+<p>in the back end here uh when you</p>
+<p>actually are trying to find what is the</p>
+<p>optimal topology for a particular use</p>
+<p>case what's actually going on is that</p>
+<p>it's using that um that kind of</p>
+<p>parameterized search space and doing</p>
+<p>doing a big search uh and so we're</p>
+<p>actually leveraging some Cloud compute</p>
+<p>here for this not a ton uh it's not</p>
+<p>particularly expensive the training</p>
+<p>process only takes about 15 seconds for</p>
+<p>per model so um so what we're we're</p>
+<p>using any scale which is built on an</p>
+<p>open source technology called Ray uh</p>
+<p>which is uh really good at spinning up</p>
+<p>let's say of CPUs at once uh and so the</p>
+<p>idea here is we can go and spin up uh</p>
+<p>20,000 different topologies uh and then</p>
+<p>evaluate of those 20,000 which one is</p>
+<p>optimal for a particular use case and</p>
+<p>this process takes about five minutes uh</p>
+<p>and so uh we're trying to get that as as</p>
+<p>short as possible so that this is kind</p>
+<p>of a compilation time interaction as</p>
+<p>opposed to you know training the model</p>
+<p>for a day and then coming back and</p>
+<p>seeing how it performs you can go and</p>
+<p>like explore 20,000 different topologies</p>
+<p>and figure out which one is optimal for</p>
+<p>your particular use case so that's our</p>
+<p>current approach which is kind of like a</p>
+<p>brute Force approach um but longer term</p>
+<p>I would love to get to that evolutionary</p>
+<p>uh approach where we kind of start with</p>
+<p>a random model maybe we can estimate</p>
+<p>what a good starting size is or maybe we</p>
+<p>have some sort of um uh some you know uh</p>
+<p>heuristic for deciding whether or not to</p>
+<p>strength the model or or grow the model</p>
+<p>um but you know the to contrast it with</p>
+<p>deep learning um this is one of the</p>
+<p>downsides of the approach is that the</p>
+<p>topology itself is uh is very critical</p>
+<p>for good good performance as opposed</p>
+<p>with deep learning you can often just go</p>
+<p>with a larger model and just give it</p>
+<p>more data and you can kind of get the</p>
+<p>same performance as a smaller model um I</p>
+<p>think this makes sense uh from a</p>
+<p>biologic biological standpoint in the</p>
+<p>sense that our our brains are not just</p>
+<p>randomly connected they are evolved over</p>
+<p>time you know uh and you can imagine how</p>
+<p>some brains might perform better at</p>
+<p>certain tasks than other brains um and</p>
+<p>so I think this this topology dependent</p>
+<p>behavior is not necessarily</p>
+<p>um problematic or or wrong uh this just</p>
+<p>something we have to deal with awesome</p>
+<p>I'll read a comment from Scott David</p>
+<p>this is as most emissions from Scott's</p>
+<p>language model it's not necessarily a</p>
+<p>question so if you have a response scope</p>
+<p>for it and then I do have a question</p>
+<p>that that also connects with Ian and</p>
+<p>little interception so Scott</p>
+<p>wrote it is interesting to consider the</p>
+<p>hardware software question of</p>
+<p>application of active inference in light</p>
+<p>of the historical counter of Claude</p>
+<p>Shannon with Von noyman when Shannon was</p>
+<p>encouraged to apply the second law of</p>
+<p>Thermodynamics to his quantitative</p>
+<p>theory of information thermodynamics at</p>
+<p>the edge of tangible and intangible</p>
+<p>information domains the ubiquity of the</p>
+<p>expression of the second law results in</p>
+<p>it being a foundational Vector for</p>
+<p>interoperability including across</p>
+<p>tangible hard and intangible soft</p>
+<p>domains there's a lot there I might I</p>
+<p>might need to take a look at that in</p>
+<p>text form and and come up with a</p>
+<p>coherent response um textually um but</p>
+<p>there's a lot there um there's there are</p>
+<p>a lot of information you know Shannon</p>
+<p>level information constraints in the</p>
+<p>you're right in at the hardware level</p>
+<p>especially when you're talking about um</p>
+<p>update rates you know for example um the</p>
+<p>model the model as a part of its</p>
+<p>embodiment has a temporal aspect to it</p>
+<p>too in terms of um the frequency of</p>
+<p>updates of the model has to be</p>
+<p>consistent like you can't update it you</p>
+<p>know 100 times per second you know for</p>
+<p>one second and then a million times per</p>
+<p>second for the next second so there is</p>
+<p>um there are kind of interesting</p>
+<p>information Theory do you know problems</p>
+<p>here with you know nyis theorem like uh</p>
+<p>as the sensory inputs are coming in um</p>
+<p>are are you getting sensory inputs at a</p>
+<p>high enough frequency to</p>
+<p>actually makes make interesting</p>
+<p>inferences about them or is on the</p>
+<p>robotic side there are absolutely uh</p>
+<p>control constraints you know if you're</p>
+<p>only able to take an action once per</p>
+<p>second there's you're very limited in</p>
+<p>terms of what you can do with a robot as</p>
+<p>opposed to if you can take an action</p>
+<p>every 500 every you know 2 milliseconds</p>
+<p>uh there's a lot more Nuance uh in in</p>
+<p>the feedback process that of in the</p>
+<p>control so there's absolutely some</p>
+<p>information theoretic stuff um on on</p>
+<p>that interface in that embodiment you</p>
+<p>know definition um for the most part I</p>
+<p>haven't I I don't want to say we've done</p>
+<p>anything particularly Innovative on that</p>
+<p>side it's just these are all things that</p>
+<p>you kind of have to understand as part</p>
+<p>of like the constraints of of the</p>
+<p>implementation um but uh definitely send</p>
+<p>me the text for that uh that question</p>
+<p>and I'll try to come up with a more</p>
+<p>coherent and thorough response um there</p>
+<p>was a lot in there cool and the</p>
+<p>historical part was was was epic um okay</p>
+<p>here's a a question so Ian not sure</p>
+<p>which parts you listen to from prior</p>
+<p>maybe Matt give a first pass but I was</p>
+<p>really interested when you mentioned the</p>
+<p>difference between the position sensors</p>
+<p>and the effort</p>
+<p>sensors so how does that play out in</p>
+<p>robotics and then like Ian to the</p>
+<p>interception</p>
+<p>an introspection</p>
+<p>angle in what ways do does our postural</p>
+<p>adjustment relate to</p>
+<p>positional inference and effort</p>
+<p>inference that's a fun question um</p>
+<p>unfortunately I haven't feeling my</p>
+<p>answer is going to be not part not too</p>
+<p>interesting um in terms of we're not</p>
+<p>doing anything particularly Innovative</p>
+<p>here either um the the outputs of the</p>
+<p>model are almost unitless uh in the</p>
+<p>sense that they'll they'll kind of adapt</p>
+<p>to their embodiment in terms of like so</p>
+<p>we've kind of been interpreting them as</p>
+<p>efforts or like you can think of this as</p>
+<p>like torque controls um the for robotics</p>
+<p>this is problematic though because first</p>
+<p>of all like I want to say 90% of robots</p>
+<p>or 90 not five% of robots don't support</p>
+<p>torque based controls that requires</p>
+<p>there there are just a few robots out</p>
+<p>there that require that and for the most</p>
+<p>part they're they're confined to</p>
+<p>research applications um the reason but</p>
+<p>you know the reason why they exist and</p>
+<p>the reason why there's a lot of interest</p>
+<p>in it especially with deep reinforcement</p>
+<p>learning is is there's if you can go to</p>
+<p>effort-based controls or Torque based</p>
+<p>control contrs directly to the robot</p>
+<p>there's a lot of nuanced Behavior you</p>
+<p>can get you can get really kind of uh</p>
+<p>compliant Behavior where the robot's</p>
+<p>applying just enough Force to perform a</p>
+<p>Tas that way if you bump into it it's</p>
+<p>it's not going to hurt anything and</p>
+<p>it'll it'll be compliant and you can</p>
+<p>kind of get a lot of nuanced Behavior</p>
+<p>with torque base controls but the</p>
+<p>reality is that 95% of robots don't</p>
+<p>support that they just support either</p>
+<p>velocity controls or or you know</p>
+<p>positional controls of some kind uh and</p>
+<p>so to to solve that you know we're we</p>
+<p>basically convert the effort output of</p>
+<p>the model into a relative positional</p>
+<p>change and then we basically integrate</p>
+<p>that relative positional change over</p>
+<p>time to get an absolute positional</p>
+<p>control um so not particularly</p>
+<p>interesting on that side but uh it is</p>
+<p>kind of a technical note that's that's a</p>
+<p>bit challenging on the robotic side of</p>
+<p>things um it does I you know I hadn't</p>
+<p>really thought about it enough from an</p>
+<p>active inference perspective in terms of</p>
+<p>like what does that mean for um you know</p>
+<p>the the attracting set that you're</p>
+<p>you're you're bringing and a lot of it</p>
+<p>is because it's it's somewhat</p>
+<p>disconnected from the sensory inputs</p>
+<p>like um you know you know what I mean</p>
+<p>like the positional controls end up</p>
+<p>impacting the environment in some way</p>
+<p>and then you know connecting the dots</p>
+<p>kind of indirectly that affects your</p>
+<p>sensory inputs um but they're the it's</p>
+<p>not like a direct it it's not like the</p>
+<p>the positional versus effort outputs of</p>
+<p>the robot are directly changing how our</p>
+<p>sensory experience happens it's more</p>
+<p>that like it might change the the</p>
+<p>effectiveness of or the capabilities of</p>
+<p>your robot uh to it to to alter the</p>
+<p>environment if that makes sense um but</p>
+<p>maybe I need to think a bit more about</p>
+<p>that because that is kind of an</p>
+<p>interesting aspect that I I hadn't</p>
+<p>really considered</p>
+<p>enough how does that play out in the</p>
+<p>body Ian oh yeah that's really</p>
+<p>interesting I've joined this</p>
+<p>conversation late but thanks for</p>
+<p>including me Daniel um so yeah I was</p>
+<p>kind of listening to that with interest</p>
+<p>and thinking</p>
+<p>of you know how we as a human something</p>
+<p>simple like the the concept of being</p>
+<p>hungry hungry and angry at the same time</p>
+<p>and how that affects our behavior when</p>
+<p>you've got complete competing kind of um</p>
+<p>uh interests or physiological variables</p>
+<p>that you're trying to deal with and then</p>
+<p>thinking about okay a robot something</p>
+<p>simple to start off with like maybe a um</p>
+<p>one of these robotic lawnmowers that</p>
+<p>needs to go back to its docking station</p>
+<p>to charge up for</p>
+<p>fuel um so it you know it needs to end</p>
+<p>the task it's doing and move back to its</p>
+<p>docking station and charge up but as</p>
+<p>robots get more sophisticated and</p>
+<p>they're trying to please humans more but</p>
+<p>there will be some kind of you know I</p>
+<p>don't know some limit to its um</p>
+<p>capabilities its internal processing or</p>
+<p>power that's and maybe at some point it</p>
+<p>will say it's you know absolutely have</p>
+<p>to weigh up all of these and come to</p>
+<p>some computation about what it needs to</p>
+<p>do next to satisfy its own and this</p>
+<p>honestly I think ties into some of the</p>
+<p>stuff that Alex has been talking to</p>
+<p>about with like moral competition as</p>
+<p>well um if I'm GNA be honest the robot</p>
+<p>control bottles were making are far less</p>
+<p>complex than an actual biological entity</p>
+<p>like a human um but you're absolutely</p>
+<p>right because you're going to have all</p>
+<p>sorts of here right now we're kind of</p>
+<p>having these kind of first layer sensory</p>
+<p>inputs kind of defining the tele damic</p>
+<p>PRI but you can imagine like a hierarchy</p>
+<p>where you have like other models that</p>
+<p>are feeding outputs that feed into your</p>
+<p>motor controls because these motor</p>
+<p>controls are are kind of the the end</p>
+<p>point for for modifying the environment</p>
+<p>but you can imagine why you would be</p>
+<p>reaching for a a cup of water is is</p>
+<p>driven by some other network that's</p>
+<p>saying oh you're thirsty um and uh and</p>
+<p>so we just you know I'm just not nearly</p>
+<p>there in of complexity yet but I think</p>
+<p>you're right eventually we will be</p>
+<p>especially if you want to have robots</p>
+<p>that are fully self self-sufficient</p>
+<p>fully autonomous know when they need to</p>
+<p>repair themselves and then going out and</p>
+<p>Performing those repairs uh whatever</p>
+<p>that might be maybe it's charging um I</p>
+<p>think you're absolutely right I think</p>
+<p>that's the future uh longer term I love</p>
+<p>it thank you Matt great times till next</p>
+<p>time yeah likewise</p>
+<p>bye e</p>
+</article>
+</body>
+</html>

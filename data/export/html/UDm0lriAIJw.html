@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream #002.1 ~ Noor Sajid & Philip Ball</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream #002.1 ~ Noor Sajid & Philip Ball</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_002 &middot; Episode 1 &middot; Speakers: Noor Sajid & Philip Ball &middot; Duration: 1:15:43 &middot; Views: 624</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=UDm0lriAIJw">https://www.youtube.com/watch?v=UDm0lriAIJw</a></div>
+<article>
+<p>hello</p>
+<p>and welcome everyone to the active</p>
+<p>inference lab</p>
+<p>this is the model stream number 2.1</p>
+<p>on april 16 2021</p>
+<p>and today is going to be an awesome</p>
+<p>model stream we're just going to</p>
+<p>briefly go around and introduce</p>
+<p>ourselves and then</p>
+<p>i'll just mention how the session will</p>
+<p>be run today and then we'll pass it to</p>
+<p>noor for a presentation so i'm daniel</p>
+<p>and i'm a postdoctoral researcher in</p>
+<p>california i'll pass to</p>
+<p>philip</p>
+<p>hi yeah i'm currently a phd student at</p>
+<p>oxford</p>
+<p>in my second year and yeah i guess this</p>
+<p>is work i did kind of before i started</p>
+<p>my phd</p>
+<p>um alongside nor and i've currently more</p>
+<p>focusing on</p>
+<p>data efficiency within specifically</p>
+<p>reinforcement learning but</p>
+<p>i guess on that topic like a knowledge</p>
+<p>of active inference</p>
+<p>is obviously useful for approaching such</p>
+<p>research problems</p>
+<p>who and or hi</p>
+<p>hi i'm noah i'm a third year phd student</p>
+<p>in the theoretical neurobiology group at</p>
+<p>the welcome center for human</p>
+<p>neuroimaging</p>
+<p>um at ucl um so that's university</p>
+<p>college london</p>
+<p>um so my phd supervised by cars focused</p>
+<p>on these ideas</p>
+<p>pertaining to adaptation one of which</p>
+<p>i'll be focusing on today which is</p>
+<p>behavioral adaptation in non-stationary</p>
+<p>environments using active inference</p>
+<p>so thank you awesome thanks both for</p>
+<p>joining and for this presentation we're</p>
+<p>going to be</p>
+<p>hearing a who knows how long</p>
+<p>presentation from nor</p>
+<p>and then i'm gonna be compiling</p>
+<p>questions from the chat</p>
+<p>so please just type questions as they</p>
+<p>come to you</p>
+<p>and then we'll address them at the end</p>
+<p>so thanks again and nor please</p>
+<p>take it away perfect thank you</p>
+<p>um so today i'll be presenting some work</p>
+<p>um</p>
+<p>that i did in collaboration with philip</p>
+<p>who you've just heard from</p>
+<p>thomas parr and carl fristan um</p>
+<p>so it's titled active inference uh</p>
+<p>demystified and compared</p>
+<p>okay okay perfect okay so the</p>
+<p>presentation structured as follows</p>
+<p>can you hear the screens</p>
+<p>i think it's sharing or was it are you</p>
+<p>not able to see it i'm not seeing it</p>
+<p>could you just re-share it</p>
+<p>yep sure</p>
+<p>um technology i tell you</p>
+<p>there we go and i'll crop it so go for</p>
+<p>it thanks</p>
+<p>perfect thank you so the presentation</p>
+<p>structured as well as</p>
+<p>first i'll briefly motivate the problem</p>
+<p>setting and provide</p>
+<p>details of a particular active inference</p>
+<p>instantiation under consideration today</p>
+<p>which is the discrete state space</p>
+<p>setting</p>
+<p>and the second half of the presentation</p>
+<p>is going to be focused on some</p>
+<p>particular examples comparing</p>
+<p>the active influence formulation with</p>
+<p>reinforcement learning</p>
+<p>specifically q learning and bayesian</p>
+<p>model based</p>
+<p>algorithm and then what i'm going to do</p>
+<p>is provide some face validity of</p>
+<p>particular aspects of why you would want</p>
+<p>to even use active inference</p>
+<p>okay um so what is active inference</p>
+<p>um it's a first principles account of</p>
+<p>how biological</p>
+<p>or artificial agents may operate in</p>
+<p>dynamic non-stationary settings</p>
+<p>it stipulates that these agents in order</p>
+<p>to maintain homeostasis</p>
+<p>reside in attracting states that</p>
+<p>minimize their entropy or their surprise</p>
+<p>so if you take this particular example</p>
+<p>that we're seeing of this past</p>
+<p>little hungry agent opening the fridge</p>
+<p>the way it would work is like you would</p>
+<p>need to why would you open the fridge</p>
+<p>right so you want to make a particular</p>
+<p>choice between</p>
+<p>eating at home or outside and in order</p>
+<p>to do that you</p>
+<p>have to decide what is the optimal</p>
+<p>action that would allow you to resolve</p>
+<p>your own uncertainty about the current</p>
+<p>stage of affairs</p>
+<p>so um and that would help you then</p>
+<p>decide whether you want to cook at home</p>
+<p>or you want to walk to the restaurant</p>
+<p>and this particular instance this has</p>
+<p>led to the agent opening the fridge to</p>
+<p>check whether it even has food at home</p>
+<p>and what's nice about active inference</p>
+<p>is that it allows you to</p>
+<p>think about these problem settings in a</p>
+<p>more formal way by specifying that</p>
+<p>optimal behavior</p>
+<p>is determined by evaluating the evidence</p>
+<p>that is the sensory input</p>
+<p>under the agent's gender model of</p>
+<p>observations that it</p>
+<p>is being exposed to and in this</p>
+<p>particular</p>
+<p>presentation what we'll do is focus on</p>
+<p>just the process theory that underwrites</p>
+<p>active inference and not talk through</p>
+<p>the biological</p>
+<p>on the neural plausibility of the active</p>
+<p>inference message passing scheme</p>
+<p>um but to properly uh motivate why we</p>
+<p>would want to even use</p>
+<p>um active inference in comparison to</p>
+<p>generic reinforcement learning</p>
+<p>algorithms</p>
+<p>we need to first start off with this</p>
+<p>understanding that with an active</p>
+<p>inference there's this commitment to a</p>
+<p>pure belief based scheme</p>
+<p>which means that reward functions are</p>
+<p>not always necessarily um</p>
+<p>sorry unnecessary because any policy</p>
+<p>that you would have</p>
+<p>has epistemic value even in the absence</p>
+<p>of preferences</p>
+<p>additionally active inference agents can</p>
+<p>also learn their own reward functions</p>
+<p>and this helps the agent describe the</p>
+<p>type of behavioral</p>
+<p>that it expects to see it himself as</p>
+<p>opposed to something that it would get</p>
+<p>uh from the environment and these two</p>
+<p>particular points are really important</p>
+<p>in contrast to</p>
+<p>reinforcement learning because under</p>
+<p>standard rl settings the reward function</p>
+<p>uh would define how the agent interacts</p>
+<p>or behaves</p>
+<p>within a particular environment setting</p>
+<p>um but</p>
+<p>defining that reward function in the</p>
+<p>first place is quite difficult because</p>
+<p>it assumes that there is a specific</p>
+<p>signal that's being</p>
+<p>given from the environment that can be</p>
+<p>unanimously good or bad</p>
+<p>for the agent which wouldn't necessarily</p>
+<p>hold true</p>
+<p>in a real setting where these um</p>
+<p>environment signals can change depending</p>
+<p>on the setting for example</p>
+<p>eating ice cream is not always going to</p>
+<p>be rewarding if you're</p>
+<p>ill and it might make you worse um and</p>
+<p>that's why</p>
+<p>constructing these reward functions in</p>
+<p>the first place is extremely difficult</p>
+<p>and if you're not constructing them in</p>
+<p>appropriate way even with an rl setting</p>
+<p>it can result in sub-optimal behavior</p>
+<p>for your agents</p>
+<p>um an active inference is really good in</p>
+<p>the sense because we are actually</p>
+<p>um replacing or bypassing the</p>
+<p>traditional reward function that you</p>
+<p>would have</p>
+<p>in the rl setting with prior beliefs</p>
+<p>about</p>
+<p>preferred outcomes so the sort of</p>
+<p>desired states of affairs that you want</p>
+<p>to see yourself</p>
+<p>be in and this becomes important</p>
+<p>in settings where there's no reward or</p>
+<p>there's really imprecise</p>
+<p>understanding of what a reward or</p>
+<p>preference setting should look like</p>
+<p>and in this scenario within the standard</p>
+<p>active influence</p>
+<p>discrete state formulation what we can</p>
+<p>do is learn the empirical prior</p>
+<p>distribution over these</p>
+<p>preferred outcomes um and intrinsic uh</p>
+<p>sorry the internal reward function of</p>
+<p>that</p>
+<p>agent and this sort of brings me to like</p>
+<p>the first</p>
+<p>distinct um conceptualization between</p>
+<p>rl setting and active inference because</p>
+<p>within active inference rewards are</p>
+<p>nothing distinct they're just a standard</p>
+<p>observation that the agent is</p>
+<p>getting from the environment whereas in</p>
+<p>rl they're quite</p>
+<p>necessary to have appropriate action</p>
+<p>um that the agent is going to learn</p>
+<p>um the second point i we want to make</p>
+<p>sorry we wanted to make was that active</p>
+<p>influence provides a principal account</p>
+<p>of epistemic</p>
+<p>exploration and intrinsic motivation as</p>
+<p>minimizing uncertainty</p>
+<p>and again within the rl setting this is</p>
+<p>quite crucial because</p>
+<p>the whole uh premise of like lots of new</p>
+<p>algorithms that</p>
+<p>we see in our nrl is to try and find the</p>
+<p>right</p>
+<p>trade-off for the balance between</p>
+<p>exploration and exploration so</p>
+<p>what are the right set of actions that</p>
+<p>the agent should make at a given point</p>
+<p>in time</p>
+<p>should i carry on choosing all the</p>
+<p>different ice cream flavors that it's</p>
+<p>been</p>
+<p>never been exposed to um like mustard</p>
+<p>etc</p>
+<p>or should it always use this oh sorry</p>
+<p>always have the same</p>
+<p>ice cream flavor that's been exposed to</p>
+<p>in the past that it</p>
+<p>really likes like for example hazelnut</p>
+<p>or nutella for instance</p>
+<p>um so this um is it's an outstanding</p>
+<p>problem</p>
+<p>with an rl and under a bayesian</p>
+<p>framework active inference deals with it</p>
+<p>naturally um using um the expected free</p>
+<p>energy formulation that i'll come to in</p>
+<p>a moment</p>
+<p>um and the last bit that you can see</p>
+<p>within the active inference framework is</p>
+<p>that it naturally accounts for</p>
+<p>uncertainty as part of the belief</p>
+<p>updating</p>
+<p>process okay</p>
+<p>so now that i've sort of um laid out the</p>
+<p>three things that are super interesting</p>
+<p>about the active influence scheme in</p>
+<p>comparison to rl i'm going to</p>
+<p>provide some intuitions as to why um</p>
+<p>you can sorry some motivations as to</p>
+<p>why we can even formulate the active</p>
+<p>influence formulation the way we do</p>
+<p>okay so um</p>
+<p>sorry i just realized i like skipped</p>
+<p>ahead um</p>
+<p>no no sorry great presentation</p>
+<p>yep thank you so much and let me just</p>
+<p>scroll down to um</p>
+<p>okay so i previously stated that with an</p>
+<p>active inference</p>
+<p>it stipulates that agents are</p>
+<p>maintaining their homostasis</p>
+<p>by residing in attracting states that</p>
+<p>minimize surprise</p>
+<p>so you must have been thinking what is</p>
+<p>surprise well um</p>
+<p>how we define surprise as a negative log</p>
+<p>probability of outcomes</p>
+<p>and for this we introduce one random</p>
+<p>variable which is</p>
+<p>o that corresponds to a particular</p>
+<p>outcome that's received by an</p>
+<p>agent and this um exists within a finite</p>
+<p>set of</p>
+<p>all possible outcomes and that's o here</p>
+<p>so um</p>
+<p>first equation that we have just um</p>
+<p>formally states that out</p>
+<p>and here p denotes the probability</p>
+<p>distribution over</p>
+<p>outcomes</p>
+<p>um okay so in active inference the way</p>
+<p>the agent will actually</p>
+<p>minimize this surprise quantity that we</p>
+<p>just walked through is by maintaining a</p>
+<p>gender model of the world</p>
+<p>um and this is important because at any</p>
+<p>given point in time the agent wouldn't</p>
+<p>necessarily have access to</p>
+<p>the true measurements of the current</p>
+<p>state of the world so in this particular</p>
+<p>graphic that you see here</p>
+<p>you've got the environment and the agent</p>
+<p>um interacting with the environment in a</p>
+<p>particular way</p>
+<p>it's being exposed to the sensory signal</p>
+<p>but it doesn't know what the</p>
+<p>outcome of the o was regenerated by</p>
+<p>so it can only perceive itself and the</p>
+<p>world around it</p>
+<p>through only the o and it needs to make</p>
+<p>inferences about what type of states</p>
+<p>or um the true causes um</p>
+<p>were um responsible for the particular</p>
+<p>sensory input that it's being exposed to</p>
+<p>and this is why um in active inference</p>
+<p>when we formulate the problem we</p>
+<p>formulate it as a partially observable</p>
+<p>markov decision process</p>
+<p>because um in this way we are able to</p>
+<p>formulate a gender model that it defines</p>
+<p>this</p>
+<p>internal distribution over the internal</p>
+<p>states that the agent</p>
+<p>would use in order to infer the outcome</p>
+<p>so he doesn't have access to the true</p>
+<p>state</p>
+<p>but it can make hypothesis or beliefs</p>
+<p>about the states that could have given</p>
+<p>ris</p>
+<p>rise to a particular sense uh outcome</p>
+<p>space that is being exposed to</p>
+<p>um and using this the agent will make</p>
+<p>inferences about the true state</p>
+<p>using a process of reverse mapping</p>
+<p>specifically bayesian model inversion</p>
+<p>and to make this a little bit more</p>
+<p>concrete what you can do is think about</p>
+<p>the hidden states as locations or color</p>
+<p>for example and the observation space</p>
+<p>that the agent would be exposed to would</p>
+<p>be</p>
+<p>um for example the the velocity of the</p>
+<p>movement</p>
+<p>or a particular reward uh or like a</p>
+<p>happy face that they're being exposed to</p>
+<p>um okay so if we were to think about</p>
+<p>this a little bit more formally so</p>
+<p>what is the gentle model so as we um</p>
+<p>described before a gentleman is a</p>
+<p>partially observable</p>
+<p>mdp within this active and friends</p>
+<p>formulation</p>
+<p>which rests on a simplified setting that</p>
+<p>we're considering here where we only</p>
+<p>have two random variables</p>
+<p>the first one is o that we've discussed</p>
+<p>and the second one</p>
+<p>is s where s denotes um a random</p>
+<p>variable representing hidden or latent</p>
+<p>states and they exist within a finite</p>
+<p>set of all possible</p>
+<p>hidden states which is denoted by</p>
+<p>capital s here</p>
+<p>and this joint probability that we get</p>
+<p>over o and</p>
+<p>s can be factorized into the likelihood</p>
+<p>function</p>
+<p>which is p of o given s and then you</p>
+<p>have the prior over the internal states</p>
+<p>which is pss</p>
+<p>so this gives you a very nice</p>
+<p>formulation um</p>
+<p>that we're going to use in a few</p>
+<p>next couple of slides and i just wanted</p>
+<p>to ask</p>
+<p>are you able to see my mouse when i</p>
+<p>highlight or when i</p>
+<p>or is that not there i can see it yes oh</p>
+<p>yeah perfect</p>
+<p>so we know that for an agent to minimize</p>
+<p>its surprise we would need to</p>
+<p>marginalize out all the possible hidden</p>
+<p>states that could have led to a given</p>
+<p>outcome</p>
+<p>and this can be achieved by using the</p>
+<p>factorization that i just mentioned the</p>
+<p>likelihood</p>
+<p>and the prior um but the</p>
+<p>the problem is that um this is not a</p>
+<p>trivial task because the dimensionality</p>
+<p>of the hidden states</p>
+<p>um can be extremely large and if you're</p>
+<p>considering additional random variables</p>
+<p>that we're going to</p>
+<p>introduce in a bit this becomes even</p>
+<p>more problematic</p>
+<p>um and that's why we use uh another</p>
+<p>quantity a variational approximation of</p>
+<p>this quantity</p>
+<p>uh p of i which is more attractable and</p>
+<p>allows us to estimate the quantities of</p>
+<p>interest um so</p>
+<p>so this will um be a natural step to</p>
+<p>talk about the variation free energy</p>
+<p>which is this variational approximation</p>
+<p>of the quantity of</p>
+<p>interest um so what is variational free</p>
+<p>energy so variation free energy is</p>
+<p>defined as the upper bound on surprise</p>
+<p>so the first definition</p>
+<p>sorry first definition that we</p>
+<p>considered is derived using jensen's</p>
+<p>inequality and</p>
+<p>is commonly known as negative evidence</p>
+<p>lower bound in the variational inference</p>
+<p>literature so we get this from the</p>
+<p>equation 4 that we just saw</p>
+<p>by introducing negative log on both</p>
+<p>sides</p>
+<p>and then um multiplying this term</p>
+<p>by 1 which is essentially q of s over q</p>
+<p>of s so we're assuming that</p>
+<p>q of s cannot be equal to zero and</p>
+<p>with that um we then apply jensen's</p>
+<p>inequality and we move the log inside</p>
+<p>the function</p>
+<p>and we end up with our expectation with</p>
+<p>respect to t of s</p>
+<p>for log of the joint over the</p>
+<p>approximate or the variational</p>
+<p>uh quantity of interest here and then we</p>
+<p>take the negative inside and we can flip</p>
+<p>it around</p>
+<p>and we get our first</p>
+<p>nice quantity of interest here where we</p>
+<p>get</p>
+<p>the the bound that we're interested in</p>
+<p>and</p>
+<p>in terms of tail between the approximate</p>
+<p>and the joint that we have</p>
+<p>so to make this a little bit more</p>
+<p>concrete what we can do now is to</p>
+<p>further manipulate the variational free</p>
+<p>energy</p>
+<p>summons um into uh the kill between the</p>
+<p>approximate and the true posterior</p>
+<p>minus the the log evidence that we the</p>
+<p>model evidence that we had</p>
+<p>and we can re arrange the last equation</p>
+<p>to really hone in on the connection</p>
+<p>between</p>
+<p>surprise and variational free energy um</p>
+<p>so</p>
+<p>if you remember that kl is a divergence</p>
+<p>which means that it cannot be less than</p>
+<p>zero so</p>
+<p>um it's always strictly uh greater than</p>
+<p>or equal to zero which means that</p>
+<p>when our approximate is equal to the</p>
+<p>true posterior</p>
+<p>we end up with the variation free energy</p>
+<p>equal to the model</p>
+<p>evidence which means that minimizing</p>
+<p>free energy is essentially equivalent to</p>
+<p>maximizing the gender model evidence</p>
+<p>um okay</p>
+<p>um we can rewrite the the previous</p>
+<p>equation that we had</p>
+<p>um equation 10 to express the</p>
+<p>variational free energy</p>
+<p>as a function of posterior beliefs in</p>
+<p>multiple different forms</p>
+<p>so i'm just going to focus on equation</p>
+<p>12 here which is the complexity</p>
+<p>minus accuracy so this is a trade-off uh</p>
+<p>that's normally used when</p>
+<p>the papers that essentially says um the</p>
+<p>complexity tam</p>
+<p>or complexity cost is essentially um</p>
+<p>your kale between your approximate um</p>
+<p>of s given pi with respect to</p>
+<p>uh your p of s given um pi and here pi</p>
+<p>is just your policies and these can be</p>
+<p>regardless of hypothesis of</p>
+<p>how uh the agent is going to act</p>
+<p>but i'll come back to what policies</p>
+<p>really entail but for now</p>
+<p>just consider them as a term that allows</p>
+<p>us to condition the free energy</p>
+<p>on a sequence of trajectories of</p>
+<p>interest</p>
+<p>and the second term that we have is the</p>
+<p>log probability</p>
+<p>of o given s so the likelihood uh</p>
+<p>with a with respect to the key of s</p>
+<p>that gives you the accuracy so a simple</p>
+<p>way to think about it is that</p>
+<p>um this is just um um how accurate the</p>
+<p>model is and this is some</p>
+<p>regularization term that's a penalty</p>
+<p>term to make sure that it's not</p>
+<p>diverging too far away from our</p>
+<p>initial priors</p>
+<p>okay so this particular quantity</p>
+<p>variational free energy</p>
+<p>are there any questions at this point</p>
+<p>about the variation for energy</p>
+<p>not yet thank you okay perfect okay so</p>
+<p>the variation for energy is giving us</p>
+<p>this way of perceiving the environment</p>
+<p>and addresses one part of the active</p>
+<p>influence formulation which is making</p>
+<p>inferences</p>
+<p>about the given world that the agent is</p>
+<p>interacting with at a given point in</p>
+<p>time</p>
+<p>however we have not actually accounted</p>
+<p>for the</p>
+<p>active part whereas like this particular</p>
+<p>agent</p>
+<p>that we have under the active inference</p>
+<p>formulation can</p>
+<p>take series of actions or interact with</p>
+<p>the environment in such a way that it</p>
+<p>affects that environment in the future</p>
+<p>um</p>
+<p>so to motivate this a little bit further</p>
+<p>what we can think about is that not only</p>
+<p>do we want to minimize our variation</p>
+<p>free energy we also want to minimize a</p>
+<p>quantity called expected free energy</p>
+<p>which depends on anticipated</p>
+<p>observations about the future</p>
+<p>in the future or about the future and</p>
+<p>minimization of this</p>
+<p>particular terms allows the agent to</p>
+<p>influence the future by taking</p>
+<p>particular actions in the present</p>
+<p>which are selected from a set of</p>
+<p>policies so i mentioned policies a few</p>
+<p>times now</p>
+<p>so what are they um so policies can be</p>
+<p>defined as a sequence of actions at time</p>
+<p>tau</p>
+<p>that enable an agent to transition</p>
+<p>between hidden states</p>
+<p>and tau here is essentially as a</p>
+<p>sequence of trajectories up to a</p>
+<p>particular horizon</p>
+<p>uh cap which is um considering the total</p>
+<p>number of</p>
+<p>time steps that you are considering in a</p>
+<p>particular setup</p>
+<p>and for us to properly define uh</p>
+<p>policy we need to introduce two</p>
+<p>additional random variables</p>
+<p>so the first one is an action that's</p>
+<p>conditioned</p>
+<p>on tau which is denoted by utau here</p>
+<p>and this exists within a finite set of</p>
+<p>all possible actions that the agents can</p>
+<p>take</p>
+<p>and the second random variable that we</p>
+<p>introduce is uh</p>
+<p>policy which is the pi that we've</p>
+<p>discussed</p>
+<p>and this exists within a finite set of</p>
+<p>all possible</p>
+<p>uh policies um or sequence of actions</p>
+<p>in a sense of like the sequential policy</p>
+<p>optimization that we're interested</p>
+<p>in here so to make it a little bit more</p>
+<p>concrete chi</p>
+<p>hair the random variable can be</p>
+<p>decomposed into</p>
+<p>a series of actions over a particular</p>
+<p>time time horizon tau</p>
+<p>so u1 u2 and um going up to utah would</p>
+<p>denote the action from</p>
+<p>uh action at time point one action of</p>
+<p>time point two and so on</p>
+<p>and the link is explicit when you</p>
+<p>consider that</p>
+<p>if you consider a policy at a particular</p>
+<p>time point so tau then the action that</p>
+<p>you get would be that action</p>
+<p>okay cool um so</p>
+<p>i also wanted to highlight that this</p>
+<p>definition of policy is actually quite</p>
+<p>different to</p>
+<p>or distinct to how it's considered in rl</p>
+<p>which is</p>
+<p>um when they say policy that means state</p>
+<p>action policies</p>
+<p>so as i just mentioned an act of</p>
+<p>inference a policy is simply a sequence</p>
+<p>of choices for actions through time that</p>
+<p>is a sequential policy</p>
+<p>and this is different to a state action</p>
+<p>policy in reinforcement learning which</p>
+<p>is mapping of states to</p>
+<p>actions so your rl policy which takes in</p>
+<p>account</p>
+<p>the action and the state is probability</p>
+<p>of your</p>
+<p>action given the state and under</p>
+<p>um our mdp formulation</p>
+<p>the definition of action oh sorry</p>
+<p>definition of policies in</p>
+<p>rl and active inference become exactly</p>
+<p>the same when we consider the setting</p>
+<p>where tau is equal to one so you're only</p>
+<p>considering one step ahead</p>
+<p>okay okay so um i'm going to move a</p>
+<p>little bit</p>
+<p>and consider uh the quantitative</p>
+<p>interest they expected free energy which</p>
+<p>is how do we even derive it so in order</p>
+<p>to derive it we first need to extend</p>
+<p>the variational free energy definition</p>
+<p>that we had before so</p>
+<p>a few slides ago and now make it</p>
+<p>dependent on both</p>
+<p>time so tau and policy and what we're</p>
+<p>doing essentially</p>
+<p>is taking that same equation and just</p>
+<p>decomposing it for previous</p>
+<p>sorry previous and current time step</p>
+<p>under a particular policy so that way</p>
+<p>this is why we have the conditioning and</p>
+<p>then we're decomposing it in a</p>
+<p>specific way um in equation 15</p>
+<p>and then writing out the matrix</p>
+<p>formulation in equation 16.</p>
+<p>so we can come back to this if there are</p>
+<p>any questions</p>
+<p>but the key thing to take away from the</p>
+<p>slide is that now we're including a</p>
+<p>functional dependency on time</p>
+<p>um for the variation for energy um</p>
+<p>and this is allowing us to now move to</p>
+<p>the expected free energy formulation</p>
+<p>um but the key thing to note here is</p>
+<p>that we're only considering time points</p>
+<p>um the previous time point and the</p>
+<p>present</p>
+<p>not the future at all</p>
+<p>so using the free energy equation before</p>
+<p>we can derive</p>
+<p>uh the expected free energy um</p>
+<p>and what is the expected free energy</p>
+<p>then so expected free energy</p>
+<p>is um the free energy function of future</p>
+<p>trajectories</p>
+<p>g and it effectively values the evidence</p>
+<p>for plausible policies</p>
+<p>based on outcomes that have not been</p>
+<p>observed yet so that's the key thing so</p>
+<p>you're making</p>
+<p>inferences about the polls the set of</p>
+<p>future trajectories that you haven't</p>
+<p>observed um</p>
+<p>and there's a two heuristics that are</p>
+<p>introduced here</p>
+<p>in order to get to the g formulation</p>
+<p>that we see</p>
+<p>in equation 17. the first</p>
+<p>one is to include beliefs about future</p>
+<p>outcomes</p>
+<p>in the expectation that is we're</p>
+<p>supplementing expectation</p>
+<p>under the approximate posterior with the</p>
+<p>likelihood here</p>
+<p>which results in a predictive</p>
+<p>distribution given by these first two</p>
+<p>terms here</p>
+<p>and the second one is that we're</p>
+<p>implicitly or</p>
+<p>i guess explicitly conditioning on the</p>
+<p>joint probabilities of states</p>
+<p>and observations in the gender model um</p>
+<p>sorry in the gender model um dependent</p>
+<p>on</p>
+<p>the desired state of affairs as opposed</p>
+<p>to a particular policy now so this</p>
+<p>constrains the type of preferences that</p>
+<p>the agent</p>
+<p>would have and what's helpful with these</p>
+<p>two</p>
+<p>moves that we're making is that we can</p>
+<p>now evaluate this quantity</p>
+<p>before actually having the observations</p>
+<p>and the second one</p>
+<p>is that the minimization of g would</p>
+<p>actually encourage polity</p>
+<p>policies to be consistent with uh the</p>
+<p>desired state of affairs that the agent</p>
+<p>expects itself to be in</p>
+<p>um i'm just going to briefly mention</p>
+<p>that this is not the only way to derive</p>
+<p>expected free energy and there's been</p>
+<p>some work um that's looked at other</p>
+<p>formulations</p>
+<p>uh including work by carl um where</p>
+<p>the formulation of the expected free</p>
+<p>energy can be decomposed into different</p>
+<p>um structures so if anyone's interested</p>
+<p>in that we can go through it later</p>
+<p>um but this free energy expected free</p>
+<p>energy that</p>
+<p>i just introduced can be decomposed in</p>
+<p>certain ways um so equation 20 and 21</p>
+<p>give</p>
+<p>two different decompositions of the</p>
+<p>first one being the epistemic and the</p>
+<p>extrinsic value trader and the second</p>
+<p>one being the expected and the</p>
+<p>uh cost and ambiguity term so if we just</p>
+<p>consider the</p>
+<p>um the first equation we can say that if</p>
+<p>we're minimizing this equation</p>
+<p>then we're capturing this imperative to</p>
+<p>maximize</p>
+<p>the information gain that you would have</p>
+<p>from observing the environment</p>
+<p>um about particular hidden states</p>
+<p>while maximizing the expected value</p>
+<p>which is scored by the</p>
+<p>log preferences or the extrinsic value</p>
+<p>here so</p>
+<p>this particular formulation actually</p>
+<p>gives us a very clear trade-off between</p>
+<p>the</p>
+<p>um the first component which is the</p>
+<p>epistemic value that promotes</p>
+<p>curious behavior so that's what you want</p>
+<p>with exploration encouraged as the agent</p>
+<p>seeks out</p>
+<p>these new states that minimize</p>
+<p>uncertainty about the environment</p>
+<p>and the latter bit is more pragmatic and</p>
+<p>it encourages</p>
+<p>exploitative behavior through um this</p>
+<p>understanding of the type of</p>
+<p>uh policies that the agent would prefer</p>
+<p>to reach</p>
+<p>um in other words like this expected</p>
+<p>free energy formulation</p>
+<p>and that we're seeing in equation 20 is</p>
+<p>essentially treating</p>
+<p>exploration and exploitation as two</p>
+<p>different ways of tackling the same</p>
+<p>problem</p>
+<p>so minimizing uncertainty that mentioned</p>
+<p>at the start of the presentation</p>
+<p>okay um we can also think about the</p>
+<p>second equation</p>
+<p>here which is just offering us an</p>
+<p>alternative perspective on the</p>
+<p>free expected frequency which is an</p>
+<p>agent wishes to minimize the ambiguity</p>
+<p>and the degree to which outcomes under a</p>
+<p>particular policy deviate from</p>
+<p>prior preferences thus ambiguity here is</p>
+<p>the expectation of the conditional</p>
+<p>entropy or the uncertainty about</p>
+<p>outcomes under the current policy in</p>
+<p>this particular setting</p>
+<p>low entropy would suggest that outcomes</p>
+<p>are quite salient and uniquely</p>
+<p>informative about the hidden states</p>
+<p>so for example the visual cues that you</p>
+<p>might see if the room is actually</p>
+<p>completely tough</p>
+<p>in comparison to if it's quite dark</p>
+<p>you're not going to make out anything</p>
+<p>important from that in addition um the</p>
+<p>agent will like to pursue policy</p>
+<p>dependent</p>
+<p>outcomes that resemble its preferred</p>
+<p>outcomes</p>
+<p>so it's the donated by c here and this</p>
+<p>is achieved when the care divergence</p>
+<p>between the predicted</p>
+<p>and the preferred outcomes is minimized</p>
+<p>by a particular policy</p>
+<p>okay um and these prior beliefs about</p>
+<p>the future</p>
+<p>outcomes equip the agent with</p>
+<p>goal-directed behavior</p>
+<p>which is one of the i guess the</p>
+<p>instances that</p>
+<p>is really important in active influence</p>
+<p>um okay so once we have the expected</p>
+<p>free energy we can derive</p>
+<p>um the the policies um so</p>
+<p>um and this is realized by deriving the</p>
+<p>probability of any policy</p>
+<p>by applying a soft max function over the</p>
+<p>expected free energy</p>
+<p>and this sort of illustrates the</p>
+<p>self-evidencing behavior of active</p>
+<p>inference</p>
+<p>because any sort of policy or action</p>
+<p>sequence that results in lower expected</p>
+<p>free energy are more likely</p>
+<p>and intuitively this would uh make</p>
+<p>sense because the expected free energy</p>
+<p>is sort of</p>
+<p>encapsulating all the types of things</p>
+<p>that you want to include</p>
+<p>or consider when you're interacting with</p>
+<p>the world so you want to explore you</p>
+<p>want to exploit but you want to have</p>
+<p>a balance of that um and then</p>
+<p>when you're selecting your policy um</p>
+<p>it's just a matter of determining the</p>
+<p>set of</p>
+<p>actions which get you closest to this</p>
+<p>particular core</p>
+<p>um and this can be defined by an</p>
+<p>attractive state that's defined by your</p>
+<p>c matrix that we</p>
+<p>described before um and if you don't</p>
+<p>have that then</p>
+<p>it's just random exploration that you</p>
+<p>would get</p>
+<p>um sometimes you can also include a</p>
+<p>temperature parameter beta here</p>
+<p>um and by having a hyper prime on this</p>
+<p>you introduce an</p>
+<p>additional complexity cost into the</p>
+<p>expected free energy</p>
+<p>uh formulation which allows you to</p>
+<p>account for um how flat</p>
+<p>or how</p>
+<p>confident or precise you want your</p>
+<p>preferences</p>
+<p>to be over the policy space</p>
+<p>um the key thing to note is that um</p>
+<p>for a sake of simplicity i'm not going</p>
+<p>to go through a lot of the</p>
+<p>the details about how these are</p>
+<p>optimized</p>
+<p>but you can do that in multiple</p>
+<p>different ways for example in active</p>
+<p>inference</p>
+<p>we can optimize expectation about the</p>
+<p>hidden states of interest the policies</p>
+<p>the precisions that are inferenced</p>
+<p>and then we can also optimize the model</p>
+<p>parameters through</p>
+<p>um through the learning procedures</p>
+<p>involved</p>
+<p>um but those sort of differ depending on</p>
+<p>the setup you're looking at for example</p>
+<p>if you're using variation base you would</p>
+<p>just iterate</p>
+<p>this uh these functions or objective</p>
+<p>functions until convergence</p>
+<p>or an active inference um you do a</p>
+<p>gradient ascend</p>
+<p>um to find the sufficient statistics of</p>
+<p>interest again this depends on</p>
+<p>exactly which formulation and setup</p>
+<p>you're looking at</p>
+<p>but the key thing to note here is that</p>
+<p>um that there's</p>
+<p>three particular aspects to the active</p>
+<p>inference algorithm that are useful and</p>
+<p>can be</p>
+<p>uh taken from this particular uh</p>
+<p>framework</p>
+<p>and applied to uh other settings</p>
+<p>um so i'm just gonna reiterate and</p>
+<p>summarize them briefly</p>
+<p>so we first have the gender model that's</p>
+<p>crucial so in order for an agent to</p>
+<p>interact and minimize its surprise it</p>
+<p>needs a gentle model of the world</p>
+<p>and that's described as simply i'm not</p>
+<p>i'm not including any of the model</p>
+<p>parameters here but you can have</p>
+<p>your outcomes your states and your</p>
+<p>policies and this</p>
+<p>um these are decomposed into um</p>
+<p>yes sorry there's a arrow with the</p>
+<p>brackets here but</p>
+<p>these are decomposed into your prior</p>
+<p>your likelihood and your transition</p>
+<p>function</p>
+<p>and then you set once you have this</p>
+<p>genital model the objective the agent</p>
+<p>is to fit the model to sample</p>
+<p>observations to reduce the price</p>
+<p>and that is through variational free</p>
+<p>energy optimization so this particular</p>
+<p>trade-off that we have between</p>
+<p>the complexity and the accuracy cost and</p>
+<p>then</p>
+<p>the second oh sorry the last part of</p>
+<p>this algorithm is to plan</p>
+<p>so select actions that minimize</p>
+<p>uncertainty</p>
+<p>that um that is the expected free energy</p>
+<p>and the way you do that is by having a</p>
+<p>soft max</p>
+<p>over that this uh g negative of g the</p>
+<p>quantity we have here</p>
+<p>and then sampling from that in order to</p>
+<p>select the next specs</p>
+<p>best action okay</p>
+<p>so that's a quick and deep dive into</p>
+<p>a massive amount of active inference</p>
+<p>literature but i just wanted to</p>
+<p>highlight that</p>
+<p>those are the three core ingredients</p>
+<p>that if you are interested in</p>
+<p>implementing these algorithms yourself</p>
+<p>okay so now i'm just going to switch</p>
+<p>gears a little bit and walk through</p>
+<p>comparisons with</p>
+<p>reinforcement learning so in our work we</p>
+<p>considered a modified version of the</p>
+<p>open ai</p>
+<p>gyms frozen lake environment so frozen</p>
+<p>lake has a grid-like structure</p>
+<p>with four distinct patches so it has a</p>
+<p>starting point which is</p>
+<p>s um so we can see it here um apologies</p>
+<p>but it's super</p>
+<p>tiny so s is here and you've got the</p>
+<p>frozen</p>
+<p>surface which is f so again i don't</p>
+<p>think i can differentiate because i'm</p>
+<p>just moving my mouth</p>
+<p>um i'm zooming in they can see it</p>
+<p>perfect so you've got the frozen f and</p>
+<p>then you've got the whole</p>
+<p>and then lastly you have the goal so g</p>
+<p>here</p>
+<p>where the first b is located and all</p>
+<p>patches in this particular setup</p>
+<p>are safe except for hall where if the</p>
+<p>agent goes</p>
+<p>to h it gets a negative reward um</p>
+<p>the agent starts each episode at the</p>
+<p>first</p>
+<p>um position which is the starting</p>
+<p>position and from there it needs to</p>
+<p>reach the frisbee location</p>
+<p>in um in the least amount of steps</p>
+<p>possible</p>
+<p>and the way you can do that is by</p>
+<p>performing uh four different types of</p>
+<p>actions so either going</p>
+<p>left right down or up and</p>
+<p>the agent is allowed to carry on moving</p>
+<p>through the frozen lake</p>
+<p>uh with multiple revisits so you can go</p>
+<p>back to the starting position having</p>
+<p>like on in other places</p>
+<p>but each episode will end when either</p>
+<p>reaches the</p>
+<p>hall or the goal location and</p>
+<p>these locations differ depending on the</p>
+<p>setup that we'll</p>
+<p>um have in our simulations so</p>
+<p>in one set up um the position of the</p>
+<p>whole is</p>
+<p>eight and the goal is six and another</p>
+<p>set up the position of the whole</p>
+<p>is six and um</p>
+<p>the goal is eight and the objective is</p>
+<p>as i said to reach the goal</p>
+<p>in ideally as few steps as possible</p>
+<p>while avoiding the whole because that</p>
+<p>would end the episode</p>
+<p>uh if it reaches the goal it gets a</p>
+<p>positive reward of 100</p>
+<p>and negative otherwise um</p>
+<p>the key thing to note here is that this</p>
+<p>query metric actually allows us a way to</p>
+<p>compare the active inference</p>
+<p>algorithms to reinforcement learning</p>
+<p>algorithms but it's not really</p>
+<p>important for the active inference</p>
+<p>algorithm to</p>
+<p>um have the reward function as a get-go</p>
+<p>because it can still move around</p>
+<p>and using just the information game tab</p>
+<p>so not having the extrinsic value</p>
+<p>component</p>
+<p>um and that that's quite interesting</p>
+<p>because we'll see the ramifications of</p>
+<p>that in our assimilations</p>
+<p>and for this particular setup we limited</p>
+<p>the maximum number of time steps for</p>
+<p>each episode</p>
+<p>to 15. okay</p>
+<p>so what i'm going to do is first talk</p>
+<p>through the genital model that we use</p>
+<p>for the active inference formulation</p>
+<p>um so here what you're seeing on the</p>
+<p>slide is a graphical representation of</p>
+<p>the active and for instance model</p>
+<p>so this model contains four action</p>
+<p>states so right</p>
+<p>down up and left and</p>
+<p>these control the ability to transition</p>
+<p>between hidden states</p>
+<p>uh location fact so for example if you</p>
+<p>are in position</p>
+<p>one and you take the action right then</p>
+<p>you'll end up</p>
+<p>in position two or if you're in location</p>
+<p>five and you take um the up action</p>
+<p>you'll end up in position two</p>
+<p>as well um</p>
+<p>in this particular setting both</p>
+<p>positions</p>
+<p>six and eight are absorbing states</p>
+<p>because if you'll remember</p>
+<p>once the agent goes to that location</p>
+<p>they're not able to move</p>
+<p>out so that's when the episode ends um</p>
+<p>and if an agent makes an improbable move</p>
+<p>in this particular maze for example if</p>
+<p>it tries</p>
+<p>to go from position one to left it will</p>
+<p>just stay in that location it won't move</p>
+<p>in this particular um gender model so</p>
+<p>i'm just looking at the hidden states</p>
+<p>now</p>
+<p>we have a chronic um transfer product</p>
+<p>between the two factors so we have</p>
+<p>location and context here um</p>
+<p>the context cannot be changed by the</p>
+<p>agent</p>
+<p>that we have um because this is</p>
+<p>something that's determined by the</p>
+<p>environment and</p>
+<p>this determines where the goal of the</p>
+<p>whole locations are whereas the location</p>
+<p>is something that the agent has control</p>
+<p>over and that's where we have the action</p>
+<p>states</p>
+<p>over this um so with the context we have</p>
+<p>two contexts</p>
+<p>the first one is where the goal is in</p>
+<p>your location eight and the hallways in</p>
+<p>location six</p>
+<p>and the second context is where the goal</p>
+<p>is in location</p>
+<p>six and the hall is in location eight</p>
+<p>um at each time point the agent will</p>
+<p>observe uh two outcomes one would be its</p>
+<p>own position in this particular maze</p>
+<p>and the second would be the score that</p>
+<p>the agent would get</p>
+<p>um the likelihood for the grid position</p>
+<p>is entirely determined by the location</p>
+<p>of the agent</p>
+<p>and the score um is determined by</p>
+<p>both the location and the context in</p>
+<p>place so</p>
+<p>if the agent is in location six</p>
+<p>and it's in context two then it will</p>
+<p>receive a positive reward</p>
+<p>otherwise it will re receive a negative</p>
+<p>or mutual reward</p>
+<p>depending on where it is um</p>
+<p>based on um trying to make that</p>
+<p>comparison with reinforcement learning</p>
+<p>what we're doing here is we</p>
+<p>are introducing uh prime preferences</p>
+<p>where</p>
+<p>the agent has plus four um for</p>
+<p>um positive reward negative four four</p>
+<p>sorry minus four for negative reward and</p>
+<p>otherwise and it</p>
+<p>at the first stage it expects itself to</p>
+<p>be in the</p>
+<p>first location</p>
+<p>so we compared um this particular</p>
+<p>gender model and the active inference</p>
+<p>agent to</p>
+<p>two reinforcement learning algorithms so</p>
+<p>the first one was the q learning using</p>
+<p>epsilon greedy exploration</p>
+<p>and the second one was the bayesian</p>
+<p>model based reinforcement learning</p>
+<p>algorithm using standard thompson</p>
+<p>sampling</p>
+<p>and thompson sampling is appropriate</p>
+<p>procedure here because it entails the</p>
+<p>optimization of dual objectives</p>
+<p>reward maximization and information gain</p>
+<p>and this is achieved by having this</p>
+<p>distribution over a particular function</p>
+<p>that we primarize by</p>
+<p>a prior just by having a prior</p>
+<p>distribution over it that we sample from</p>
+<p>okay um</p>
+<p>so for the two q lining algorithms we um</p>
+<p>have two epsilon greedy uh parameters</p>
+<p>so one where it's fixed exploration set</p>
+<p>to 0.1</p>
+<p>and then another one where we have</p>
+<p>decaying exploration that starts from</p>
+<p>one and decays down to zero</p>
+<p>so first we assessed um this um how the</p>
+<p>agents interacted in a stationary</p>
+<p>setting where the</p>
+<p>reward wasn't changing uh such that the</p>
+<p>goal location was always at six and the</p>
+<p>whole location was</p>
+<p>always that age and then we evaluate the</p>
+<p>performance of the agents um the key</p>
+<p>thing to take away from here is that</p>
+<p>both the</p>
+<p>bayesian rl and the active inference</p>
+<p>agents are able to</p>
+<p>quickly learn um where the reward</p>
+<p>location is and just maximize it out</p>
+<p>and this is um this is performance is</p>
+<p>consistent denoted by the really tight</p>
+<p>confidence bounds that we see</p>
+<p>in comparison the q learning agents are</p>
+<p>um so for the one where we have uh fixed</p>
+<p>exploration</p>
+<p>it's fairly um fairly good and is able</p>
+<p>to land where the reward</p>
+<p>is located but there is um some</p>
+<p>deviation denoted by that</p>
+<p>ten percent of selecting a random action</p>
+<p>um whereas the q learning where we have</p>
+<p>epsilon is equal to one to gain to zero</p>
+<p>um the performance isn't the greatest</p>
+<p>and for the null model the active</p>
+<p>inference where there is no reward here</p>
+<p>the agent randomly goes to the hall and</p>
+<p>randomly goes to the goal</p>
+<p>50 of the time but the key thing to note</p>
+<p>is that apart from the non-model</p>
+<p>all the models are doing fairly well and</p>
+<p>seem to be</p>
+<p>performing okay within the stationary</p>
+<p>setting</p>
+<p>so the next thing no could i just make a</p>
+<p>point about these experiments as well</p>
+<p>just because</p>
+<p>they also do veer away slightly from</p>
+<p>like the traditional rl like</p>
+<p>which is yeah great so basically</p>
+<p>like usually in ro what happens is you</p>
+<p>kind of have this ambiguation between</p>
+<p>like training time and test time</p>
+<p>performance and you usually especially</p>
+<p>in something like q learning</p>
+<p>like you just hit the max over the q</p>
+<p>function or you have a policy</p>
+<p>that tries to do like some search over</p>
+<p>the q function</p>
+<p>and takes that max like given a state um</p>
+<p>but there's kind of an artificial</p>
+<p>distinction which is</p>
+<p>like obviously as you're acquiring data</p>
+<p>you're making mistakes in the</p>
+<p>environment you're interacting with the</p>
+<p>real environment so in order to kind of</p>
+<p>make that</p>
+<p>fair comparison between here and active</p>
+<p>inference where you don't really have</p>
+<p>this distinction between like training</p>
+<p>time and test time it's all</p>
+<p>just interaction the that's the reason</p>
+<p>why the q learning agent</p>
+<p>especially when epsilon is fixed to say</p>
+<p>0.1 never achieves the optimal policy</p>
+<p>simply because</p>
+<p>we're also with 0.1 probability taking a</p>
+<p>random action</p>
+<p>so we're not making this distinction</p>
+<p>like you sometimes would with normal rl</p>
+<p>between</p>
+<p>train and test time we're all saying</p>
+<p>train and test some are basically the</p>
+<p>same thing</p>
+<p>so however you're choosing to interact</p>
+<p>with the world is how you should be</p>
+<p>assessed</p>
+<p>so that's that's why initially looking</p>
+<p>at these girls you might be like hang on</p>
+<p>like why isn't q learning solving this</p>
+<p>but um</p>
+<p>yeah that's just to clear something up</p>
+<p>if you're more familiar with say some of</p>
+<p>the like dprl</p>
+<p>uh experimental procedure</p>
+<p>perfect thank you okay</p>
+<p>um and then um just following on from</p>
+<p>that so we</p>
+<p>changed the environment a little bit to</p>
+<p>make it a little bit more difficult to</p>
+<p>see whether</p>
+<p>um the bayesian and the active inference</p>
+<p>agents might struggle</p>
+<p>when we start having the relocation</p>
+<p>change after every few</p>
+<p>episodes so specifically we swapped the</p>
+<p>goal and the whole location</p>
+<p>at um at time point 21</p>
+<p>at time 121 141</p>
+<p>251 and 451 so you can see that</p>
+<p>in these figures where the line the gray</p>
+<p>lines are shown so these points</p>
+<p>they're all location flipped so like the</p>
+<p>stationary setting for the first</p>
+<p>20 trials all the asians seem to be</p>
+<p>doing</p>
+<p>as you would expect so both the bayesian</p>
+<p>rl and the active inference agents are</p>
+<p>doing</p>
+<p>fairly okay uh the q landing with</p>
+<p>um the fixed exploration sector 0.1 is</p>
+<p>doing fairly okay</p>
+<p>as we saw before and the acute learning</p>
+<p>with the</p>
+<p>decaying exploration is is doing as it</p>
+<p>was doing before</p>
+<p>but when you flip it around um such that</p>
+<p>the goal locations</p>
+<p>change um what you notice is that with</p>
+<p>the</p>
+<p>bayesian rl agent the the amount of</p>
+<p>reward or the score it gets</p>
+<p>is quite low and then we we see a phase</p>
+<p>where</p>
+<p>it then transitions and becomes um to</p>
+<p>the optimal policy again</p>
+<p>in comparison to the active inference</p>
+<p>agent where</p>
+<p>it instantly after the first trial of</p>
+<p>doing the incorrect is able to switch</p>
+<p>over to the active and sorry the</p>
+<p>appropriate policy</p>
+<p>and the reason for that is for these uh</p>
+<p>rl settings where we're considering it</p>
+<p>as a learning problem</p>
+<p>you need to first do reverse and</p>
+<p>learning of where the reward location</p>
+<p>is and then we learn the new reward</p>
+<p>location so you're seeing that for</p>
+<p>q learning uh for both the different</p>
+<p>epsilon greedy parameterizations and</p>
+<p>also for the bayesian rl and we're</p>
+<p>seeing that consistently</p>
+<p>whereas for the active inference agent</p>
+<p>because we're treating it as a planning</p>
+<p>as an inference problem where the</p>
+<p>posteriors from the previous state are</p>
+<p>moved over to the prize and moved over</p>
+<p>as priors</p>
+<p>and the agent is able to instantly</p>
+<p>um realize that the current policy that</p>
+<p>was following</p>
+<p>the this time step is an appropriateness</p>
+<p>which is its policy to the next</p>
+<p>um to the the other one again</p>
+<p>um the null model as expected doesn't</p>
+<p>really do much because it's just</p>
+<p>exploring doesn't really care</p>
+<p>where the reward or the whole location</p>
+<p>are</p>
+<p>okay um phil do you want to add</p>
+<p>something to this or</p>
+<p>no i think the same point applies to</p>
+<p>this one</p>
+<p>yep definitely okay um</p>
+<p>so just to wrap up with these two</p>
+<p>comparisons and</p>
+<p>i with the non welder stationary setting</p>
+<p>um all types of agents um including the</p>
+<p>bayesian rl and the q-learning would be</p>
+<p>reasonable frameworks to use whereas</p>
+<p>with the uh with a non-stationary</p>
+<p>stochastic setting</p>
+<p>having an active inference agent might</p>
+<p>be appropriate way of handling changing</p>
+<p>dynamics</p>
+<p>um but the key caveat with that is that</p>
+<p>you can</p>
+<p>introduce a lot more additional</p>
+<p>complexity into the bayesian rl or the q</p>
+<p>learning or the rl framework in general</p>
+<p>to allow</p>
+<p>uh for a way to handle uncertainty but</p>
+<p>it wouldn't be</p>
+<p>a natural way of adding it you would</p>
+<p>have to sort of uh augment the</p>
+<p>function or the algorithm in particular</p>
+<p>ways to justify it</p>
+<p>um okay so so once we have done this</p>
+<p>comparison we were interested in is um</p>
+<p>why would you even want to use active</p>
+<p>inference um</p>
+<p>when um you don't have an understanding</p>
+<p>about the world</p>
+<p>or you don't have sort of a preference</p>
+<p>over the type of things that could be</p>
+<p>done because as we saw the active</p>
+<p>inference model the null model is just</p>
+<p>exploring it's not really doing much</p>
+<p>um and that's brings us to one of the</p>
+<p>initial points that i introduced</p>
+<p>at the start of the presentation which</p>
+<p>is that within an active influence</p>
+<p>framework we don't really care about</p>
+<p>having a reward function</p>
+<p>we can learn we can learn that based on</p>
+<p>some interaction with the environment</p>
+<p>um so for that um</p>
+<p>what we did was we carried out a few</p>
+<p>different simulations to see how the</p>
+<p>active inference agent can select</p>
+<p>different types of policies in the</p>
+<p>absence of prior preferences</p>
+<p>and for this we we did three different</p>
+<p>experiments</p>
+<p>um where we allowed either or the</p>
+<p>likelihood</p>
+<p>and all the outcome preferences to be</p>
+<p>learned</p>
+<p>over time and saw how the agent</p>
+<p>interacted when</p>
+<p>this learning over the different um</p>
+<p>preferences uh took place and the the</p>
+<p>way we did it was using</p>
+<p>uh the conjugacy models where uh because</p>
+<p>these are discrete state models we have</p>
+<p>categorical distributions over our model</p>
+<p>parameters</p>
+<p>and we're introducing directional</p>
+<p>distributions on top</p>
+<p>as a hybrid price and learning those</p>
+<p>hyper price</p>
+<p>um we can go into the details of this if</p>
+<p>anyone has any questions but</p>
+<p>just for simplicity um just assume that</p>
+<p>all the dirichlet distributions uh were</p>
+<p>set to flat completely flat and</p>
+<p>the agents were all given an opportunity</p>
+<p>to land</p>
+<p>based on different interactions they had</p>
+<p>so the first set of</p>
+<p>experiments like the simulations that we</p>
+<p>ran were to understand how</p>
+<p>um the agent would reduces uncertainty</p>
+<p>about the</p>
+<p>environment that is interacting with so</p>
+<p>if it doesn't know the</p>
+<p>the the the frozen lake</p>
+<p>how would it interact or explore that</p>
+<p>lake</p>
+<p>um and what we see is that um</p>
+<p>in this particular instance the agent um</p>
+<p>was just interested in exploring it</p>
+<p>didn't particularly care about</p>
+<p>the where the goal or the whole location</p>
+<p>was</p>
+<p>um and this is highlighted in</p>
+<p>a series of different exploration um</p>
+<p>trajectories that we see so the first</p>
+<p>one was where the agent falls in the</p>
+<p>hall</p>
+<p>um and then another one where it goes</p>
+<p>around</p>
+<p>and ends up at the second in the second</p>
+<p>episode at the goal location</p>
+<p>and in somewhere it just ends the</p>
+<p>episode by</p>
+<p>just going back and forth so this is</p>
+<p>just floor exploration</p>
+<p>nothing more to hear um</p>
+<p>the next um set of analysis or</p>
+<p>simulations that we ran was to see what</p>
+<p>would happen if the agent knew about the</p>
+<p>world but had no preferences of the type</p>
+<p>of outcomes they</p>
+<p>expected itself to be in and for this um</p>
+<p>we ran multiple different simulations</p>
+<p>and saw that in the absence of</p>
+<p>um any sort of preferences</p>
+<p>um the whole could actually become</p>
+<p>really attractive</p>
+<p>if it's encountered first so we see that</p>
+<p>in the</p>
+<p>first figure where the agent learns to</p>
+<p>prefer to hide in halls</p>
+<p>and in the second type of trial that we</p>
+<p>saw was where the agent</p>
+<p>uh exhibited the preference to actually</p>
+<p>go to the goal location so this is</p>
+<p>entirely dependent on the</p>
+<p>instantiation or the type of stimulus</p>
+<p>that the agent is exposed to</p>
+<p>initially that determines the type of</p>
+<p>preferences it would</p>
+<p>learn to have</p>
+<p>okay and then the last set of</p>
+<p>simulations that we ran was just to</p>
+<p>check what would happen when we</p>
+<p>interacted with the</p>
+<p>epistemic imperatives actually resolve</p>
+<p>uncertainty about the</p>
+<p>environment that the agent was</p>
+<p>interacting with specifically the</p>
+<p>likelihood mapping between the outcomes</p>
+<p>given the states and</p>
+<p>the uncertainty about the desired state</p>
+<p>of affairs that the agent expected</p>
+<p>herself to be in</p>
+<p>and what we saw was that um if we</p>
+<p>allowed um a sufficient number of trials</p>
+<p>to pass the agent</p>
+<p>in this particular setting learn to</p>
+<p>prefer to ride sorry hiding holes</p>
+<p>after x number of episodes but it had a</p>
+<p>very distinct</p>
+<p>um preference over the type of outcomes</p>
+<p>it</p>
+<p>expected itself to be in depending on</p>
+<p>the particular</p>
+<p>uh a sorry particular time point</p>
+<p>um so that brings me to the last</p>
+<p>simulation so i'm just going to wrap up</p>
+<p>which is um in active inference</p>
+<p>i started the presentation was saying</p>
+<p>it's a particular algorithm that gives</p>
+<p>us</p>
+<p>very nice um things to consider when</p>
+<p>we're</p>
+<p>operating in a bayesian or belief based</p>
+<p>setting which is</p>
+<p>firstly the principal account of</p>
+<p>epistemic exploration and intrinsic</p>
+<p>motivation that we get from the</p>
+<p>particular expected free energy</p>
+<p>decomposition that we went through the</p>
+<p>second thing</p>
+<p>that i wanted to highlight was that um</p>
+<p>under an active inference setting we</p>
+<p>don't have to explicitly</p>
+<p>specify a reward function which we saw</p>
+<p>in the last</p>
+<p>uh the second set of simulations where</p>
+<p>the agent can also learn its own reward</p>
+<p>and prefer to become something that is</p>
+<p>quite counter-intuitive</p>
+<p>from an rl setting where the signal from</p>
+<p>the environment is saying something is</p>
+<p>bad but the</p>
+<p>agent's internal motivations of</p>
+<p>preference allow it to then</p>
+<p>do something that's quite uh at odds</p>
+<p>with what the environment is expecting</p>
+<p>it to do</p>
+<p>and lastly because of this belief um</p>
+<p>invasion setting uncertainty is a</p>
+<p>natural part of the belief</p>
+<p>updating um so within the</p>
+<p>stationary settings active inference</p>
+<p>agents perform as well as reinforcement</p>
+<p>learning agents</p>
+<p>however in non-stationary settings they</p>
+<p>outperformed due to their ability to</p>
+<p>carry out this planning as</p>
+<p>inference and that's i think that holds</p>
+<p>um this is not a conclusive statement</p>
+<p>but</p>
+<p>it's a nice way to start thinking about</p>
+<p>how</p>
+<p>um if you're scaling up active inference</p>
+<p>agents to interact on the same type of</p>
+<p>environments</p>
+<p>as reinforcement learning agents that</p>
+<p>might be</p>
+<p>a little bit hard to resolve because</p>
+<p>there is some</p>
+<p>non-stationarity or some weird</p>
+<p>fluctuations happening in the</p>
+<p>environment</p>
+<p>and active inference agents could</p>
+<p>potentially perform quite nicely if we</p>
+<p>have this planning as inference set up</p>
+<p>um and that brings me to the end of the</p>
+<p>presentation so i just want to thank</p>
+<p>everyone who was involved with this work</p>
+<p>so</p>
+<p>called tom and phil and everyone who's</p>
+<p>helped me think through these</p>
+<p>interesting ideas that i presented</p>
+<p>so and everyone also for listening thank</p>
+<p>you</p>
+<p>thank you awesome talk</p>
+<p>so you can maybe unshare and we can ask</p>
+<p>a few questions</p>
+<p>and if anyone who's watching live would</p>
+<p>like to ask questions they're</p>
+<p>more than welcome so maybe i'll start</p>
+<p>with just um</p>
+<p>a general point that it was awesome to</p>
+<p>see how clearly you differentiated</p>
+<p>between</p>
+<p>the reinforcement learning and the</p>
+<p>active inference paradigm</p>
+<p>and just one question i had was you</p>
+<p>mentioned that</p>
+<p>in the case of a time step of one a time</p>
+<p>horizon of one</p>
+<p>there was like an equivalence between</p>
+<p>the reinforcement learning approach and</p>
+<p>the active inference approach</p>
+<p>now people are using reinforcement</p>
+<p>learning to do</p>
+<p>planning for the future amidst</p>
+<p>uncertainty</p>
+<p>so how are they accomplishing those</p>
+<p>kinds of planning</p>
+<p>and where are some situations where</p>
+<p>active inference</p>
+<p>might be able to step into those um</p>
+<p>settings and</p>
+<p>potentially do better i think that's</p>
+<p>already a question</p>
+<p>a good question and feel free for you to</p>
+<p>jump in if i miss something but um</p>
+<p>so within the url setting from what i</p>
+<p>know if they are considering</p>
+<p>temporal horizons greater than one then</p>
+<p>they have hierarchical rl</p>
+<p>or they have options where they're</p>
+<p>considering trajectories that are</p>
+<p>greater than</p>
+<p>one that allow them to consider a whole</p>
+<p>sequence of play</p>
+<p>um before they like um that's rolled out</p>
+<p>if they select a particular policy</p>
+<p>instead of like that actually</p>
+<p>one single action to state mapping um</p>
+<p>but i i'm not i haven't really worked</p>
+<p>with options that much maybe</p>
+<p>phil do you know um yeah so options are</p>
+<p>like one way to</p>
+<p>achieve this kind of multi-step sort of</p>
+<p>um like i guess oversized almost like</p>
+<p>this inductive bias right that</p>
+<p>you will like your choices will be kind</p>
+<p>of contiguous blocks of like</p>
+<p>more than one step whereas a kind of</p>
+<p>policy kind of it's just like i'm going</p>
+<p>to take one step and then i'll have this</p>
+<p>kind of</p>
+<p>next state i exist in um but i think</p>
+<p>what's important to disambiguate is</p>
+<p>actually you can do sort of planning the</p>
+<p>model style things because</p>
+<p>you can view active inference as a sort</p>
+<p>of model based like</p>
+<p>in the kind of you know rl paradigm and</p>
+<p>indeed like within model based</p>
+<p>like you can have</p>
+<p>um like planning methods similar to what</p>
+<p>is done</p>
+<p>in active inference however i guess like</p>
+<p>the key distinction here is</p>
+<p>when you do planning in model based rl</p>
+<p>you're</p>
+<p>simply just trying to take you tend to</p>
+<p>take some sort of</p>
+<p>suit like kind of mini evolutionary</p>
+<p>method usually something like</p>
+<p>the cross entropy method and what you're</p>
+<p>doing is this kind of search over all</p>
+<p>actions that you take</p>
+<p>at a certain point in time that</p>
+<p>maximizes your kind of reward</p>
+<p>over say a horizon of say 20 steps um</p>
+<p>and you can do some clever stuff you can</p>
+<p>terminate with a q value function</p>
+<p>um but fundamentally like it doesn't</p>
+<p>take you away from this sort of</p>
+<p>definitional difference which is</p>
+<p>in active inference you're doing this</p>
+<p>sort of planning over actions even</p>
+<p>though they might seem superficially</p>
+<p>similar like kind of</p>
+<p>basically like drawing lots of actions</p>
+<p>and seeing which ones maximize some sort</p>
+<p>of utility</p>
+<p>in the case of active inference all the</p>
+<p>useful kind of information and the</p>
+<p>desired rata about um</p>
+<p>like exploration and it's and um</p>
+<p>exploitation are wrapped up in that</p>
+<p>maximization whereas in rl it's kind of</p>
+<p>it's a bit harder to understand um like</p>
+<p>in the classical sense we're just trying</p>
+<p>to maximize reward but um</p>
+<p>you can have heuristics where you say oh</p>
+<p>but maybe i want to also maximize some</p>
+<p>notion of</p>
+<p>model uncertainty and you know it kind</p>
+<p>of gets a bit</p>
+<p>um more difficult to naturally integrate</p>
+<p>all these approaches into the same thing</p>
+<p>um because like in the example of active</p>
+<p>influence because everything's a</p>
+<p>distribution</p>
+<p>you just put a hyper prior over if you</p>
+<p>want to you just integrate it out if you</p>
+<p>don't want to deal with</p>
+<p>kind of tuning it so yeah that's kind of</p>
+<p>where i feel like</p>
+<p>there is this kind of difference</p>
+<p>cool and what what kinds of settings</p>
+<p>do you think that those types of of uh</p>
+<p>action as inference and planning as</p>
+<p>inference could be</p>
+<p>utilized like what kind of data sets or</p>
+<p>questions or contexts</p>
+<p>are people currently using another type</p>
+<p>of method but then you're excited to see</p>
+<p>active inference play a role</p>
+<p>i think mostly open-ended problems where</p>
+<p>you don't really have a reward function</p>
+<p>i think because</p>
+<p>the way the rl agent is learning how to</p>
+<p>interact with the environment is through</p>
+<p>a reward function</p>
+<p>um so anything where you don't really</p>
+<p>have that or you have</p>
+<p>um an environment that that is changing</p>
+<p>um but i know that there's like a whole</p>
+<p>host of</p>
+<p>uh people within the rl community</p>
+<p>working on like</p>
+<p>intrinsic motivation or internal</p>
+<p>motivation</p>
+<p>so those sort of things do overlap with</p>
+<p>the</p>
+<p>active influence formulation um</p>
+<p>but particular paradigms i think for me</p>
+<p>the more interesting aspect of active</p>
+<p>influence comes from the fact</p>
+<p>when you start thinking about um</p>
+<p>biological agents and if you're modeling</p>
+<p>a patient</p>
+<p>or someone with schizophrenia you can</p>
+<p>with this bayesian framework you can</p>
+<p>change um the priors to try and see</p>
+<p>how the person is interacting</p>
+<p>where i guess it's it could be that</p>
+<p>their policy</p>
+<p>like the way they're valuing their</p>
+<p>policies are broken or it just could be</p>
+<p>other parts that are different but</p>
+<p>i think within the rl setting if you</p>
+<p>are stepping outside the um</p>
+<p>the standard the game mode right so like</p>
+<p>magic or</p>
+<p>gym environments and start going into</p>
+<p>ones which are more open-ended and you</p>
+<p>don't have any rewards then</p>
+<p>active influence could be potentially</p>
+<p>useful but</p>
+<p>i i'm a little bit hesitant to say</p>
+<p>whether it will be</p>
+<p>better because if you start</p>
+<p>augmenting bayesian rl with all sorts of</p>
+<p>interesting components</p>
+<p>then to a certain extent it will be</p>
+<p>active in front scaled up um</p>
+<p>which which is potentially a contentious</p>
+<p>point</p>
+<p>um but i i think it it depends on</p>
+<p>exactly what you were incorporating and</p>
+<p>that's why for this particular</p>
+<p>presentation and our work we were quite</p>
+<p>careful in defining what</p>
+<p>reinforcement learning meant which is</p>
+<p>that you have to have this reward</p>
+<p>function in play and you want to</p>
+<p>maximize this reward function</p>
+<p>and anything you include into the rl</p>
+<p>framework has to have</p>
+<p>that uh that like the object that</p>
+<p>objective has to be there but if you</p>
+<p>if you sort of bypass them say okay i'm</p>
+<p>just going to add in all sorts of</p>
+<p>interesting components</p>
+<p>to make the algorithm or the way um the</p>
+<p>agent</p>
+<p>interacts with the environment um</p>
+<p>i i guess as similar to a active</p>
+<p>inference framework</p>
+<p>or even perhaps even better then you</p>
+<p>don't</p>
+<p>that fine distinction between where rl</p>
+<p>is better or where active influence</p>
+<p>is better sort of it's not really there</p>
+<p>for me</p>
+<p>um because i think both communities from</p>
+<p>my</p>
+<p>perspective are working from similar</p>
+<p>things which is sequential decision</p>
+<p>making</p>
+<p>um and with our work is mostly</p>
+<p>with uh sequential decision making in</p>
+<p>the face of uncertainty</p>
+<p>whereas some of our work my rl work</p>
+<p>might not be</p>
+<p>focused on that so i think it's when you</p>
+<p>start</p>
+<p>drawing the boundaries it becomes a</p>
+<p>little bit hazy where like</p>
+<p>things are separate or not and i think i</p>
+<p>went up on a little tangent</p>
+<p>um but phil do you want to add</p>
+<p>anything to that in terms of the</p>
+<p>environments and the paradigms that</p>
+<p>might be</p>
+<p>useful yeah i think if</p>
+<p>one of your aims is say you're given an</p>
+<p>environment that you just have no prior</p>
+<p>knowledge about</p>
+<p>how you ought to behave you could argue</p>
+<p>that you could deploy an rl agent that</p>
+<p>uses some sort of curiosity or epistemic</p>
+<p>uncertainty reduction mechanism but</p>
+<p>i mean i know i know there is like a</p>
+<p>tiny bit of work about learning priors</p>
+<p>over reward functions and learning those</p>
+<p>but</p>
+<p>i'm not hugely like aware but um</p>
+<p>i think what's important to understand</p>
+<p>is in the limit of like exploring the</p>
+<p>entire environment</p>
+<p>your epistemic uncertainty is going to</p>
+<p>go to zero right like you um</p>
+<p>you will have observed everything and</p>
+<p>then it's unclear what your rl agent is</p>
+<p>going to do at that point especially you</p>
+<p>say you have a</p>
+<p>deep neural network that parameterizes</p>
+<p>um how you take actions</p>
+<p>whereas in the case and i think what</p>
+<p>this paper was really interesting</p>
+<p>for me to see like when we ran these</p>
+<p>experiments was</p>
+<p>actually you just put a prior over your</p>
+<p>prior preferences and eventually you</p>
+<p>learn</p>
+<p>a mode of behavior it may not be optimal</p>
+<p>but your agent eventually</p>
+<p>learns to adopt a behavior that is</p>
+<p>self-fulfilling because it reduces</p>
+<p>epidemic uncertainty</p>
+<p>and then all that's left is says well i</p>
+<p>think these are kind of</p>
+<p>useful behaviors or at least these are</p>
+<p>behaviors for me to do in the world and</p>
+<p>eventually</p>
+<p>you get quite a repetitive behavior and</p>
+<p>it might be a more kind of accurate</p>
+<p>simulation of</p>
+<p>in the absence of any information like</p>
+<p>how something intelligent might actually</p>
+<p>behave</p>
+<p>in a world whereas in the rl paradigm</p>
+<p>it's less clear you know once you reduce</p>
+<p>all that epistemic and certainly about</p>
+<p>where the value is</p>
+<p>and you haven't found any like what is</p>
+<p>your agent really doing at that point</p>
+<p>but i think my problem at the moment</p>
+<p>with like the acting from</p>
+<p>formulation is that this works on like a</p>
+<p>discrete state formulation right we saw</p>
+<p>really nice results in that setting</p>
+<p>but i think if you scale it up active</p>
+<p>inference agents are going to have the</p>
+<p>same</p>
+<p>issues if you're using like amortized</p>
+<p>inference or something to actually</p>
+<p>uh approximate your likelihood</p>
+<p>transition functions which means that</p>
+<p>you might not get these nice properties</p>
+<p>that we're seeing at the</p>
+<p>this small scale um so scaling it up is</p>
+<p>like a</p>
+<p>it's a interesting and open-ended</p>
+<p>problem at the moment scaling up in the</p>
+<p>right way that you can</p>
+<p>include like these conjugating models</p>
+<p>that we have</p>
+<p>in um the discrete state formulation and</p>
+<p>that's how we're</p>
+<p>like do the last set of simulations</p>
+<p>where we introduce the conjugate priors</p>
+<p>to do the</p>
+<p>learning over the the prior preferences</p>
+<p>but also the likelihood</p>
+<p>um so it becomes a little bit hazy how</p>
+<p>to learn</p>
+<p>like i have a hyper prior over an entire</p>
+<p>neural network if you're scaling it up</p>
+<p>that way</p>
+<p>um so they must like a little work needs</p>
+<p>to be done that area</p>
+<p>and in order to actually show that it's</p>
+<p>appropriate</p>
+<p>um that you can have these interesting</p>
+<p>components then you need to</p>
+<p>start thinking about how you would</p>
+<p>include these hyper priors</p>
+<p>uh because it is not reasonable to say</p>
+<p>that you're gonna have a hybrid prior</p>
+<p>over the the parameter space such</p>
+<p>like the the beta hyper so that hyper</p>
+<p>prior over the gamma that that would be</p>
+<p>sufficient in those settings</p>
+<p>um hyper prior for the way the agent is</p>
+<p>selecting his actions</p>
+<p>it has to be over the model parameters</p>
+<p>and if</p>
+<p>scaling up means that you're losing that</p>
+<p>nice way to disentangle the particular</p>
+<p>model parameters then it becomes very</p>
+<p>uncertain i</p>
+<p>i don't know it's it's an open-ended</p>
+<p>problem for me</p>
+<p>cool yeah i think high high-dimensional</p>
+<p>problems</p>
+<p>still represent something that um is</p>
+<p>relatively difficult especially</p>
+<p>just due to the kind of you know you</p>
+<p>know the further we stray from bays</p>
+<p>like um the less principle it becomes</p>
+<p>and um you know</p>
+<p>it's like it's it's quite a fine line</p>
+<p>very interesting about how whether</p>
+<p>within the rl</p>
+<p>or active inference paradigm there's</p>
+<p>sort of the</p>
+<p>sparse skeleton the bare bones at the</p>
+<p>core</p>
+<p>and then sometimes these other layers</p>
+<p>or tweaks are needed</p>
+<p>and pretty interesting to learn about</p>
+<p>and also what you had said earlier</p>
+<p>about how the challenge is planning for</p>
+<p>sequential action</p>
+<p>when you're in feedback whether just by</p>
+<p>moving around an environment so your</p>
+<p>local environment changes or you're</p>
+<p>playing a game</p>
+<p>with a board game is going to change or</p>
+<p>you're trading on a market</p>
+<p>sequential action you can't just plan</p>
+<p>steps one through 100</p>
+<p>without at least thinking about some</p>
+<p>what-ifs</p>
+<p>and then only having access to limited</p>
+<p>observational data and planning amidst</p>
+<p>fundamental</p>
+<p>uncertainty so i think a lot of those</p>
+<p>points of contact with the motivations</p>
+<p>of reinforcement learning and machine</p>
+<p>learning will</p>
+<p>maybe bring some more light into active</p>
+<p>inference and</p>
+<p>um push some of those frontiers you just</p>
+<p>mentioned</p>
+<p>so i have a question and anyone else in</p>
+<p>the chat can ask a question too um</p>
+<p>let's say somebody is wanting to learn</p>
+<p>about</p>
+<p>this and they're actually in a lucky</p>
+<p>beginner's mind perspective</p>
+<p>because they might not have been enticed</p>
+<p>by learning reinforcement learning but</p>
+<p>they've gotten curious</p>
+<p>in active inference and excited by your</p>
+<p>presentation</p>
+<p>and so what what kinds of computer</p>
+<p>languages or</p>
+<p>skills might they want to learn or what</p>
+<p>kinds of approaches or mindsets would be</p>
+<p>helpful</p>
+<p>if somebody let's say weren't coming</p>
+<p>from a</p>
+<p>classical machine learning perspective</p>
+<p>and learning active inference but rather</p>
+<p>kind of upskilling into active inference</p>
+<p>what would you recommend either of you</p>
+<p>to them</p>
+<p>bill do you want to go first with that</p>
+<p>yeah i mean i think</p>
+<p>it's an interesting way to view a kind</p>
+<p>of this kind of potential person because</p>
+<p>i kind of felt like</p>
+<p>i was somewhat like this person like way</p>
+<p>back when</p>
+<p>like nora and i was starting to have</p>
+<p>these conversations about active</p>
+<p>inference um</p>
+<p>and i like the the this paper started</p>
+<p>off basically as a</p>
+<p>tutorial i was writing having spent two</p>
+<p>three months kind of</p>
+<p>in the evenings reading about trying to</p>
+<p>like sift through</p>
+<p>the act of inference literature and i</p>
+<p>think um you know i think it's fair to</p>
+<p>say that at times it's unapologetically</p>
+<p>dense</p>
+<p>and quite difficult to read so you know</p>
+<p>without trying to you know</p>
+<p>self-endorse but i do think reading this</p>
+<p>manuscript in particular like the whole</p>
+<p>aim</p>
+<p>philosophy when we like when we started</p>
+<p>writing this was to</p>
+<p>really understand like what is what is</p>
+<p>happening here like what is this kind of</p>
+<p>expected free energy quantity like why</p>
+<p>do we care about it</p>
+<p>so i know from a kind of theoretical</p>
+<p>perspective i think this is a very</p>
+<p>lucid presentation of the concept so at</p>
+<p>least</p>
+<p>you can get some sort of intuition as to</p>
+<p>what's happening um as for the</p>
+<p>kind of coding side i can't really speak</p>
+<p>to that i'm sure i'm sure nor</p>
+<p>kind of has has worked it works with it</p>
+<p>quite a bit</p>
+<p>um i i was going to say it sort of</p>
+<p>depends on</p>
+<p>what the primary objective of the person</p>
+<p>is is it for a</p>
+<p>sort of get an understanding of</p>
+<p>the the high-level conceptual ideas or</p>
+<p>treat it as an algorithm because if</p>
+<p>you're going coming from a free energy</p>
+<p>principle too active inference is a</p>
+<p>different story or if you if you're</p>
+<p>taking active inferences of siloed</p>
+<p>a specific kind of sequential</p>
+<p>decision-making</p>
+<p>uh scheme right um so depending on that</p>
+<p>is</p>
+<p>sort of differs uh but as phil was</p>
+<p>saying i think this paper definitely</p>
+<p>is really nice in the sense like it does</p>
+<p>try and define all the different</p>
+<p>concepts and goes through</p>
+<p>the different formulations maybe not in</p>
+<p>as much detail um with the assumptions</p>
+<p>in play it gives you</p>
+<p>the the layout of how you might be able</p>
+<p>to derive it</p>
+<p>um but certain things like what</p>
+<p>what the approximate density even really</p>
+<p>entails those are very uh difficult</p>
+<p>questions</p>
+<p>where you would have to like dive into</p>
+<p>variational inference literature to</p>
+<p>understand so</p>
+<p>i guess from that perspective someone</p>
+<p>who's coming into the field</p>
+<p>should spend some time thinking about</p>
+<p>variational inference and how that</p>
+<p>really</p>
+<p>ties back to the act of influence</p>
+<p>formulation</p>
+<p>because the perception part of active</p>
+<p>inference is</p>
+<p>in most instances exactly the same as</p>
+<p>variational</p>
+<p>uh inference literature and optimizing</p>
+<p>uh the model evidence</p>
+<p>uh or the maximizing the evidence law</p>
+<p>abound</p>
+<p>um this is the second thing that i was</p>
+<p>going to add</p>
+<p>is um that the paper</p>
+<p>with lancelot de costa is really good</p>
+<p>for someone who wants to drill down</p>
+<p>into deriving everything themselves</p>
+<p>uh sometimes it's super technical so</p>
+<p>this</p>
+<p>art that the paper that i walked through</p>
+<p>today uh the one with phil and tom and</p>
+<p>carl</p>
+<p>is it's a nice introduction for someone</p>
+<p>who's not familiar with the mathematics</p>
+<p>and just wants to</p>
+<p>get a layman's summary uh whereas this</p>
+<p>the paper the the paper where lance's</p>
+<p>first author gives like the</p>
+<p>detailed derivations and a lot of the</p>
+<p>assumptions</p>
+<p>in place so that's from like</p>
+<p>understanding the theory part</p>
+<p>um from the coding perspective it</p>
+<p>entirely depends what the end objective</p>
+<p>is so if they want</p>
+<p>someone wants to work with discrete</p>
+<p>state formulations</p>
+<p>then the matlab code carl has written</p>
+<p>and it's years of work with lots of</p>
+<p>um nice simulations and examples that</p>
+<p>you can use</p>
+<p>and also our code is online and you can</p>
+<p>access it</p>
+<p>so there's a link in the paper um in</p>
+<p>the software um section that gives where</p>
+<p>exactly</p>
+<p>the code is and you can look through</p>
+<p>that and see how the simulations were</p>
+<p>done</p>
+<p>if someone is interested in um</p>
+<p>more i guess um high-dimensional</p>
+<p>formulations of active inference that</p>
+<p>um there's some recent work with uh</p>
+<p>zephyr zephyrus um so zeff fontes</p>
+<p>as first author uh where we've got a</p>
+<p>nice again we have a</p>
+<p>git reaper for that work as well which</p>
+<p>uh</p>
+<p>gives uh a breakdown of how you would</p>
+<p>implement a simple</p>
+<p>active inference agent using uh very</p>
+<p>short encoders and a simple</p>
+<p>transition network so there's lots of</p>
+<p>like different</p>
+<p>areas but for someone starting out they</p>
+<p>sort of have to understand whether they</p>
+<p>want to focus on the</p>
+<p>theoretical side or whether they want to</p>
+<p>focus on the implementation side</p>
+<p>theoretical side</p>
+<p>would be drilling down into the</p>
+<p>variational influence and the maths</p>
+<p>behind it and if they want to focus on</p>
+<p>the</p>
+<p>the coding aspect then they want to</p>
+<p>figure out whether it's continuous or</p>
+<p>discrete state formulations are</p>
+<p>interested interested in and then</p>
+<p>sort of break down into if it's</p>
+<p>continuous then</p>
+<p>most of it would either be writing the</p>
+<p>the coordinates of motions themselves or</p>
+<p>they would have to use like some sort of</p>
+<p>like um um a neural network to</p>
+<p>approximate that continuous distribution</p>
+<p>of interest</p>
+<p>out or the discrete state which carl's</p>
+<p>written out</p>
+<p>um and if if they have questions about</p>
+<p>the discrete state</p>
+<p>um i'm i'm happy to take emails as well</p>
+<p>so</p>
+<p>if anyone has or the the continuous</p>
+<p>state state</p>
+<p>um state space as well thanks for the</p>
+<p>distinction and um it's such a large</p>
+<p>difference between the</p>
+<p>matlab code which we got to walk through</p>
+<p>with</p>
+<p>ryan smith and christopher white which</p>
+<p>is doing</p>
+<p>matrix multiplication and such and then</p>
+<p>here comes the neural networks</p>
+<p>and it's offering sounds like new</p>
+<p>opportunities with high dimensionality</p>
+<p>and continuous variables but also a lot</p>
+<p>of new</p>
+<p>challenges so what is</p>
+<p>the essence that's shared</p>
+<p>by the matrix form and by this more</p>
+<p>machine learning style</p>
+<p>because for some people um it might be</p>
+<p>splitting a hair</p>
+<p>quite literally the difference between</p>
+<p>two computer languages</p>
+<p>when they're thinking about active</p>
+<p>inference from a</p>
+<p>ecological psychology or in an active</p>
+<p>philosophical or an embodied performance</p>
+<p>perspective</p>
+<p>all backgrounds that converge on active</p>
+<p>inference and so</p>
+<p>to somebody outside the the strand of</p>
+<p>hair</p>
+<p>what is it that we can really distill</p>
+<p>that is</p>
+<p>core active inference and i wrote down a</p>
+<p>few things so</p>
+<p>that you had said what are those core</p>
+<p>pieces that allow us to</p>
+<p>dive into the matrix mode with matlab or</p>
+<p>into the neural network mode with like</p>
+<p>python</p>
+<p>um so i think it comes down to my</p>
+<p>summary slide the way i think about it</p>
+<p>so the active inference the core</p>
+<p>ingredients are formulating the gender</p>
+<p>model</p>
+<p>and here formulating the general model</p>
+<p>is the parameterization of the general</p>
+<p>model so either you can use the</p>
+<p>discrete stage categorical distributions</p>
+<p>or you can use</p>
+<p>a more continuous state formulation and</p>
+<p>again</p>
+<p>the neural network formulation is a</p>
+<p>specific instantiation of that</p>
+<p>so that would be one way of sort of</p>
+<p>differentiating</p>
+<p>that the second one is the</p>
+<p>optimization of the objective functions</p>
+<p>in play</p>
+<p>so in the the matlab code</p>
+<p>we're doing gradients to send using mean</p>
+<p>field message passing algorithm so</p>
+<p>specific formulation that's been</p>
+<p>introduced in a couple of papers</p>
+<p>and i specifically didn't walk through</p>
+<p>that or</p>
+<p>uh you're doing back propagation to</p>
+<p>actually</p>
+<p>calculate the or lambda distributions</p>
+<p>and then you're just</p>
+<p>solving those distributions that you</p>
+<p>have so it sort of depends on</p>
+<p>which formulation you're um</p>
+<p>like um it depends on how you optimize</p>
+<p>those objectives either you're like</p>
+<p>taking the implicit forward model</p>
+<p>or you're taking an explicit gender</p>
+<p>model um</p>
+<p>and one thing i forgot to mention is</p>
+<p>that um</p>
+<p>alex shams and connor hines they've been</p>
+<p>working on a discrete state formulation</p>
+<p>of um active inference in python</p>
+<p>which might be in of interest for people</p>
+<p>who want to like focus on one specific</p>
+<p>language</p>
+<p>that can do like the more high end or</p>
+<p>high dimensional stuff</p>
+<p>and the discrete state formulation that</p>
+<p>carl has um</p>
+<p>i i know they're also looking for people</p>
+<p>to work on the code base if anyone's</p>
+<p>interested so it's called</p>
+<p>infer activity i think um but that's on</p>
+<p>github as well if anyone's interested</p>
+<p>cool um any sort of last</p>
+<p>thoughts or comments from either of you</p>
+<p>um no i think i'm okay</p>
+<p>so what do you reckon</p>
+<p>um</p>
+<p>i think we're kind of noticing a bit of</p>
+<p>a</p>
+<p>um an increase in interest in active</p>
+<p>inference like</p>
+<p>just to give you an example like maybe</p>
+<p>areas where</p>
+<p>even active inference would have been</p>
+<p>considered before like robotics</p>
+<p>um you're now beginning to see more and</p>
+<p>more of it so i think if you do want to</p>
+<p>get involved in it now is a particularly</p>
+<p>good time</p>
+<p>great call philip and i'll</p>
+<p>um just re-recommend the excellent paper</p>
+<p>that we're discussing it's in the</p>
+<p>description of this video really</p>
+<p>appreciate both of you</p>
+<p>for joining you're always welcome to</p>
+<p>come on to be</p>
+<p>speaking about a paper you've authored</p>
+<p>or not but</p>
+<p>again thanks a lot uh to nora and</p>
+<p>phillip and i hope to see you again on a</p>
+<p>future</p>
+<p>active inference stream thank you</p>
+<p>thank you for inviting us bye-bye see</p>
+<p>you daniel</p>
+<p>peace bye</p>
+<p>awesome stop the stream great</p>
+<p>conversation thanks a lot to philip and</p>
+<p>noor really</p>
+</article>
+</body>
+</html>

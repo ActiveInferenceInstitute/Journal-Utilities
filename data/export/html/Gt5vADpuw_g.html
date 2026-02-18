@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Textbook Group ~ Cohort 6 ~ Session 6 (Chapter 4, Part 1) ~ 3/18/2024</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Textbook Group ~ Cohort 6 ~ Session 6 (Chapter 4, Part 1) ~ 3/18/2024</h1>
+<div class="meta">Category: TextbookGroup/ParrPezzuloFriston2022/Cohort_6 &middot; Series: Meeting_006 &middot; Speakers: Cohort 6 ~ Session 6 (Chapter 4, Part 1) ~ 3/18/2024 &middot; Duration: 56:50 &middot; Views: 58</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=Gt5vADpuw_g">https://www.youtube.com/watch?v=Gt5vADpuw_g</a></div>
+<article>
+<p>okay welcome back cohort 6 we're in our</p>
+<p>first discussion of chapter 4 so</p>
+<p>Andrew however you'd like to begin and</p>
+<p>for everyone else any questions in the</p>
+<p>chat or raise your hand or however and</p>
+<p>let's jump into</p>
+<p>four</p>
+<p>perfect um yeah welcome everyone we're</p>
+<p>going going over chapter 4 for the first</p>
+<p>time with cohort 6 um for warning uh for</p>
+<p>anyone new to active inference this</p>
+<p>chapter is a bit more mathematically</p>
+<p>involved than the preceding chapters um</p>
+<p>but this is where we actually start to</p>
+<p>relate a lot of the concepts and kind of</p>
+<p>uh overview ideas that we've already</p>
+<p>been introduced to we begin to kind of</p>
+<p>map these uh more mathematically to</p>
+<p>understand the computations involved</p>
+<p>inactive inference</p>
+<p>models um so more specifically this</p>
+<p>chapter goes through the typical forms</p>
+<p>of active inference uh generative models</p>
+<p>will'll see both in discret and</p>
+<p>continuous time um the relationship</p>
+<p>between those models and uh the Dynamics</p>
+<p>of minimizing their free</p>
+<p>energy um at the very end we're also</p>
+<p>briefly introduced to other things that</p>
+<p>we'll see in later chapters including</p>
+<p>inferential message passing so um I</p>
+<p>would like to I I think this chapter</p>
+<p>does well at highlighting the importance</p>
+<p>of approximate inference um we've seen</p>
+<p>before that the a lot of the underlying</p>
+<p>assumptions in active inference uh</p>
+<p>involves uh the minimization of free</p>
+<p>energy now really the idea is that</p>
+<p>agents would want to quote unquote want</p>
+<p>to</p>
+<p>uh minimize</p>
+<p>surprise but because uh we need to</p>
+<p>actually render the computation</p>
+<p>tractable we instead are minimizing a</p>
+<p>quantity known as free energy</p>
+<p>um quick note that the mathematics</p>
+<p>involved here draw from different</p>
+<p>mathematical Fields primarily linear</p>
+<p>algebra differentiation in in</p>
+<p>multivariate calculus and the use of</p>
+<p>tailor series expand</p>
+<p>and some others um there's some nice</p>
+<p>appendices in the back of the textbook</p>
+<p>for anyone who's either new to those uh</p>
+<p>areas of maths or need some kind of</p>
+<p>refresher and would like to get a closer</p>
+<p>look on their relationships specifically</p>
+<p>with the computations involved here um</p>
+<p>and so sort of the core here is that</p>
+<p>we're introduced with a CA equation 4.1</p>
+<p>we already know from previous chapters a</p>
+<p>generative model in a in a certain way</p>
+<p>can be reduced to a prior and a</p>
+<p>likelihood um those fit right into basis</p>
+<p>theorem that's equation 4.1 and so it</p>
+<p>relates the prior and the likelihood on</p>
+<p>the left hand side which you could just</p>
+<p>replace with you know uh oftentimes</p>
+<p>there's a notation the letter M to</p>
+<p>denote a model and then on the right</p>
+<p>side um those end up equaling a</p>
+<p>posterior distribution which is your</p>
+<p>your hidden States conditioned on your</p>
+<p>observations</p>
+<p>times um why or your your observations</p>
+<p>so your your evidence and so you can</p>
+<p>imagine whenever the agent basically</p>
+<p>takes in new observations all these</p>
+<p>quantities can be updated um and and</p>
+<p>that's the kind of nice easier kind of</p>
+<p>introductory view of how how this works</p>
+<p>um as far as</p>
+<p>rendering uh everything track</p>
+<p>[Music]</p>
+<p>um we also exploit something called</p>
+<p>Jensen's</p>
+<p>inequality um put in simple terms</p>
+<p>Jensen's inequality says the log of an</p>
+<p>average is always greater than or equal</p>
+<p>to the average of a log um so we we can</p>
+<p>exploit that and rewrite basis theorem</p>
+<p>using</p>
+<p>logs um and we use a different notation</p>
+<p>rather than a capital P that might be</p>
+<p>used to denote</p>
+<p>an exact distribution we can use a q</p>
+<p>which is used to denote an approximate</p>
+<p>distribution um and and replace that in</p>
+<p>there and so the whole idea is by</p>
+<p>minimizing free energy as a kind of</p>
+<p>proxy that is always greater than or</p>
+<p>equal to surprise the agent again quote</p>
+<p>unquote once to minimize free energy in</p>
+<p>order to minimize its surprise if you</p>
+<p>can get those two Quant ities to be</p>
+<p>virtually zero and</p>
+<p>virtually uh equal to one another that</p>
+<p>that would be kind of the general</p>
+<p>overall goal um and to kind of Zoom</p>
+<p>through a bit more of the rest of what</p>
+<p>happens in this chapter we get a further</p>
+<p>breakdown of what comprises free energy</p>
+<p>um it involves um using</p>
+<p>Kack uh colak leer Divergence between</p>
+<p>that approximate distribution the Q I</p>
+<p>mentioned earlier and uh an exact</p>
+<p>inference uh p and then subtracting uh</p>
+<p>log model evidence from that um figure</p>
+<p>4.3 excuse me 4.2 were introduced to uh</p>
+<p>the kind of factor graph notation that's</p>
+<p>often used in act building active</p>
+<p>inference models um these are not yet</p>
+<p>active inference models there're simpler</p>
+<p>static perception models but they give a</p>
+<p>nice kind of quick view of here are the</p>
+<p>kind of things we'll be getting into we</p>
+<p>have variables uh every single one of</p>
+<p>these involves something we're already</p>
+<p>familiar with which is a for a</p>
+<p>generative model we have a prior we have</p>
+<p>a likelihood so all of those models</p>
+<p>involve the core components of a of a</p>
+<p>generative model or agent right so um</p>
+<p>from there we it it shifts into figure</p>
+<p>4.3</p>
+<p>um which will have very similar</p>
+<p>components but we're now introduced to</p>
+<p>active inference in that uh we now have</p>
+<p>actions that the agent takes which then</p>
+<p>impact uh State transitions right so</p>
+<p>we've moved from figure 4.2 of just none</p>
+<p>of the models in 4.2 have action</p>
+<p>involved none of them have like</p>
+<p>necessarily show some kind of temp</p>
+<p>temporal sequence of things playing out</p>
+<p>over time you know it's simply just</p>
+<p>these more static perceptual models that</p>
+<p>there's a nice example there where the</p>
+<p>one in the top left can be modeled as</p>
+<p>like um um a</p>
+<p>disease and uh taking a diagnostic test</p>
+<p>that then computes like the the result</p>
+<p>of you know if if you uh administer a</p>
+<p>test on a person who has a hit we're</p>
+<p>trying to uh derive a hidden State here</p>
+<p>marked as X do they have disease like</p>
+<p>what is it or or do they have it or not</p>
+<p>why is the result of the test right so</p>
+<p>that's that's kind of a way of looking</p>
+<p>at how these things are linked together</p>
+<p>we have a prior which is the prevalence</p>
+<p>of the disease we have a likelihood</p>
+<p>which is um you know what is the result</p>
+<p>of the test given the disease we can use</p>
+<p>bases theorem</p>
+<p>and what could be called Model inversion</p>
+<p>to switch around see okay what is the is</p>
+<p>there a disease given the particular</p>
+<p>result of the test um strongly recommend</p>
+<p>uh just kind of reading through those</p>
+<p>couple of paragraphs to get a better</p>
+<p>sense of what's going on there because</p>
+<p>it's much more descriptively clear than</p>
+<p>probably how I'm describing it here but</p>
+<p>uh in any case yeah it's good resource</p>
+<p>for getting started on these things um</p>
+<p>and then yeah</p>
+<p>4.3 the difference where we now have</p>
+<p>active inference models is that we</p>
+<p>actually have a temporal Dimension which</p>
+<p>is we're now including State transitions</p>
+<p>over time so you can read those graphs</p>
+<p>in figure 4.3 from left to right you</p>
+<p>know T minus one to T the current time</p>
+<p>step to t + one which is the next time</p>
+<p>step uh so the agent is basically taking</p>
+<p>in those obser ations at the bottom of</p>
+<p>that particular graph that that Daniel</p>
+<p>has zoomed in on um you know we have</p>
+<p>these linkages with the hidden States as</p>
+<p>we saw before but now we have policies</p>
+<p>impacting the state transition as the</p>
+<p>agent uh engages in actions or sequences</p>
+<p>of actions which is another way of</p>
+<p>saying what a policy is in order to try</p>
+<p>and uh the agent tries to impact the</p>
+<p>changes in the states so that is kind of</p>
+<p>the active part of active inference</p>
+<p>right</p>
+<p>um and then from there section 4.4 it's</p>
+<p>a little bit more involved uh we can</p>
+<p>take all of these ideas that we've been</p>
+<p>introduced to</p>
+<p>likelihoods um Transitions and so on we</p>
+<p>can map those out to different uh</p>
+<p>components of our models so now a</p>
+<p>likelihood model um is now called an a</p>
+<p>matrix or a tensor um a trans the</p>
+<p>transitions model is now the B Matrix or</p>
+<p>B</p>
+<p>tensor the prior Over States are now a</p>
+<p>vector called D um we also now have</p>
+<p>preferences that the model has uh which</p>
+<p>are uh in a c Vector super important for</p>
+<p>um the agent actually realizing its</p>
+<p>preferences or expected observations</p>
+<p>which is an idea we're already</p>
+<p>introduced to in uh previous chapters so</p>
+<p>the idea here is that we're able to just</p>
+<p>kind of map a lot of the more uh</p>
+<p>verbally described ideas that we've</p>
+<p>already seen in preceding chapters to</p>
+<p>these different components of a model</p>
+<p>and then seeing how computationally we</p>
+<p>can and uh minimize free energy over</p>
+<p>time couple other ideas that are brought</p>
+<p>up but I won't go into too strongly</p>
+<p>right now because I want to allow time</p>
+<p>for questions</p>
+<p>uh in in discussion are expected free</p>
+<p>energy or otherwise known as G um that's</p>
+<p>related to planning this is where uh the</p>
+<p>the agent ju doesn't just look at past</p>
+<p>observations or current observations to</p>
+<p>minimize its free energy but it also</p>
+<p>wants to realize its preferences and so</p>
+<p>it has to kind of plan what it will do</p>
+<p>in order to realize those preferences or</p>
+<p>goals that it already has</p>
+<p>right so G plays in in that that the</p>
+<p>agent actually wants to kind of plan</p>
+<p>ahead of time what what should it do um</p>
+<p>so the C Vector of preferences plays</p>
+<p>into that um you can look at the way</p>
+<p>that the agent chooses different actions</p>
+<p>or policies to take as um it's actually</p>
+<p>Computing expected free energy for each</p>
+<p>policy and then it scores the policy see</p>
+<p>should I do X should I do y or let me</p>
+<p>revise that because that the the</p>
+<p>notation I don't want to get mixed up</p>
+<p>should I do policy number one policy</p>
+<p>number two policy number three well</p>
+<p>let's score the expected free energy for</p>
+<p>each of those policies and whichever one</p>
+<p>has the lowest expected free energy at</p>
+<p>the end you go with that policy and you</p>
+<p>go with the actions that that policy</p>
+<p>entails um and order to impact the</p>
+<p>environment in order to impact the state</p>
+<p>transitions based on your transitions</p>
+<p>model which basically is how do you</p>
+<p>think your actions are going to impact</p>
+<p>the environment around you</p>
+<p>um even more quickly some other Topline</p>
+<p>topics that were introduced to Markov</p>
+<p>blankets we've already seen some</p>
+<p>references to those uh in previous</p>
+<p>chapters um there's a nice box uh that</p>
+<p>descri rpes more on Mark of blankets and</p>
+<p>not just how Mark of blankets are a kind</p>
+<p>of</p>
+<p>conceptual concept that separates an</p>
+<p>agent from its environment but</p>
+<p>furthermore kind of the maths uh</p>
+<p>underlying what a Markov blanket is</p>
+<p>about statistical independencies and</p>
+<p>dependencies between variables and so on</p>
+<p>we get more on continuous time models</p>
+<p>which are frankly much more</p>
+<p>mathematically involved I would say um</p>
+<p>involves more uh in the way of</p>
+<p>differentiation in looking at temporal</p>
+<p>derivatives and applying tailor series</p>
+<p>expansions uh a concept called</p>
+<p>generalized coordinates of motion that's</p>
+<p>involved as well as the Plass</p>
+<p>approximation and uh finally at the very</p>
+<p>end of the chapter we're briefly</p>
+<p>introduced to what's called basy and</p>
+<p>message passing just kind of how um if</p>
+<p>we think about these models as graphs as</p>
+<p>we've already seen um messages are being</p>
+<p>passed around between nodes via edges um</p>
+<p>and that has uh significant amount of</p>
+<p>neurobiological plausibility behind it</p>
+<p>theoretically and and and through</p>
+<p>continued empirical study and so that's</p>
+<p>kind of the that's the kind of</p>
+<p>neuroscientific or</p>
+<p>neurobiological uh backing to to being</p>
+<p>able to say how a lot of this works and</p>
+<p>for anyone's especially interested in</p>
+<p>message passing we we'll see a lot more</p>
+<p>of that in chapter</p>
+<p>five um I would also recommend to anyone</p>
+<p>more interested in uh planning in these</p>
+<p>discrete time models with the A and B</p>
+<p>and C and D components and so on if you</p>
+<p>want to skip ahead to chapter 7 um there</p>
+<p>that chapter is entirely centered on</p>
+<p>discrete time models um it'll have more</p>
+<p>breakdowns of these different terms that</p>
+<p>are involved in Computing G like we see</p>
+<p>terms like like expected ambiguity and</p>
+<p>risk in this chapter there are other</p>
+<p>ways that you can break down how we</p>
+<p>compute G and it's it's nice to have</p>
+<p>these kind of words like risk or</p>
+<p>expected ambiguity that maybe gives a</p>
+<p>better intuitive sense of the maths</p>
+<p>involved and how it's useful how it</p>
+<p>plays into the explore exploit tradeoff</p>
+<p>uh Model Behavior anyway I I I feel like</p>
+<p>I've already covered the gist of of</p>
+<p>what's going on this chapter and maybe</p>
+<p>even overs spoken so uh if anyone has</p>
+<p>any questions um thoughts on any of this</p>
+<p>or any other particular topic they want</p>
+<p>to get into um please feel free to uh to</p>
+<p>raise your hand or just unmute yourself</p>
+<p>and go for</p>
+<p>it yeah I have a couple questions</p>
+<p>related to the statistical side how</p>
+<p>would this relate to calculating</p>
+<p>something like the r not like we look at</p>
+<p>in epidemiology where you're looking at</p>
+<p>a predictive state with an N value of</p>
+<p>zero I'll give a short answer there</p>
+<p>there's probably multiple ways you could</p>
+<p>do it but I mean one way to handle it</p>
+<p>would be treat the true AR not as a</p>
+<p>hidden State and then you make</p>
+<p>observations so you have an</p>
+<p>epidemiological infant trying to</p>
+<p>estimate an underly Ling parameter that</p>
+<p>could be the temperature in the room</p>
+<p>with the thermometer it could be the rot</p>
+<p>with the sampling from the noisy</p>
+<p>tests that's kind of the general</p>
+<p>approach it's it's what SPM does you</p>
+<p>have the underlying neural activity</p>
+<p>unobserved and then you have</p>
+<p>neuroimaging data which is being caused</p>
+<p>by very um nonlinear relationship with</p>
+<p>neural activity like with the blood flow</p>
+<p>that's a general process of perceptual</p>
+<p>inference is pretty much separate where</p>
+<p>you're really the underlying variable</p>
+<p>hidden state that you're trying to</p>
+<p>estimate and then separate that out from</p>
+<p>the observations you're getting and then</p>
+<p>you load up onto the a how the hidden</p>
+<p>state is related to the observation</p>
+<p>synchronously then you load up onto the</p>
+<p>B how that hidden State changes through</p>
+<p>time and then you can layer in the</p>
+<p>policy okay can you do that recursively</p>
+<p>with elliptic curve then so would you</p>
+<p>step back over so you would have to do</p>
+<p>linear step function back over through</p>
+<p>right again not sure how the curve you</p>
+<p>mean</p>
+<p>like the so I'm just thinking in terms</p>
+<p>of the math with like the heavy side</p>
+<p>step function so if you're going down</p>
+<p>from a three state to a two</p>
+<p>State see how you have like you're</p>
+<p>almost jumping that zero state but</p>
+<p>really what you're doing is sinusoidally</p>
+<p>passing through it with an elliptic</p>
+<p>curve in a way but you're passing</p>
+<p>through a negative with a positive</p>
+<p>direction sketch out an agent that's</p>
+<p>doing that or having it done to them and</p>
+<p>then try to make it look like figure 4.3</p>
+<p>and then you'll probably be close to an</p>
+<p>answer</p>
+<p>okay</p>
+<p>thanks for the summary Andrew this is</p>
+<p>one of this is the dense</p>
+<p>chapter</p>
+<p>um</p>
+<p>yeah spending time</p>
+<p>with yeah chapter one introduction two</p>
+<p>and three low and high road getting two</p>
+<p>active inference chapter four it's</p>
+<p>active inference chapter five</p>
+<p>neurobiology case studies of active</p>
+<p>inference that's the first half of the</p>
+<p>book and then chapter six recipe for</p>
+<p>making it yourself chapter 7 and 8</p>
+<p>revisit sections 4.4 to</p>
+<p>4.5 nine bringing in data chapter 10</p>
+<p>summary</p>
+<p>so we get a significant amount of kind</p>
+<p>of back and forth between kind of more</p>
+<p>verbal descriptions of the the ideas and</p>
+<p>Concepts but we have to come back to the</p>
+<p>maths right that's That's essential and</p>
+<p>that's I think that's what chapter 4</p>
+<p>does is just quickly like give you a</p>
+<p>broad stroke of here are the maths</p>
+<p>underlying a lot of these ideas and how</p>
+<p>the Dynamics play out</p>
+<p>um Jr made a really nice comment in the</p>
+<p>Discord a few days ago this is the a new</p>
+<p>paper active data selection information</p>
+<p>seeking and here there's a slightly new</p>
+<p>and</p>
+<p>different uh</p>
+<p>notation Lambda operator introduced to</p>
+<p>indicate either summation or integration</p>
+<p>depending on whether we're dealing with</p>
+<p>continuous or discreet</p>
+<p>variables so here we're approaching that</p>
+<p>in the time setting but it's kind of</p>
+<p>like this comes up a lot like whether</p>
+<p>the variable is continuous or discrete</p>
+<p>and then whether time is being treated</p>
+<p>continuously or discreetly those are</p>
+<p>Options under the umbrella of active</p>
+<p>inference</p>
+<p>models so the actual kind of pseudo code</p>
+<p>is not predicated on the variables being</p>
+<p>continuous or discret M</p>
+<p>that to me intuitively just</p>
+<p>seems really nice and allows for a more</p>
+<p>direct</p>
+<p>relationship between the continuous and</p>
+<p>discreet variables because yeah this</p>
+<p>chapter 4 here as well as comparing</p>
+<p>chapter 7 and chapter eight it's like</p>
+<p>this book The Textbook kind of presents</p>
+<p>discreet and continuous I mean of course</p>
+<p>free energy minimization is an in lot of</p>
+<p>other concepts are shared between the</p>
+<p>two but I mean we get a kind of sharp</p>
+<p>distinction between using discret and</p>
+<p>continuous variables all the way down to</p>
+<p>the very notation being different your</p>
+<p>S's and O's for discret versus x's and</p>
+<p>Y's for for continuous and so on so it's</p>
+<p>nice to see an equation that can kind of</p>
+<p>relate or or compound the two to where</p>
+<p>you just need to kind of know if it's</p>
+<p>discret continuous and then similar</p>
+<p>process for each while knowing of course</p>
+<p>that discrete variables you're working</p>
+<p>with Point masses and summations as</p>
+<p>opposed to Integrations and so on with</p>
+<p>continues that's another point to be</p>
+<p>taken for the ontology</p>
+<p>sure</p>
+<p>um Peter or or anyone sure thank you</p>
+<p>Daniel um so I loved this chapter I</p>
+<p>thought it was really cool um I'm uh</p>
+<p>pretty excited by the uh the Lambda</p>
+<p>notation that was just described I was I</p>
+<p>was unaware of that and uh there's a lot</p>
+<p>to think about there um in some ways</p>
+<p>this was the chapter that uh I was</p>
+<p>personally like least comfortable with</p>
+<p>in terms of my my ability to sort of</p>
+<p>grock everything that I need to get um</p>
+<p>my personal background is mostly on the</p>
+<p>neurobo side and I have much less in the</p>
+<p>way of mathematics um I was wondering so</p>
+<p>I haven't checked out the um the</p>
+<p>references at the back yet so maybe</p>
+<p>maybe that's actually going to answer my</p>
+<p>question but I was wondering does the</p>
+<p>active infant group have any kind of</p>
+<p>like a learning path for the supporting</p>
+<p>mathematics uh that you would need to</p>
+<p>really be able to be really um kind of</p>
+<p>fluent with this chapter and like for</p>
+<p>example be able to plug in values and</p>
+<p>and do things with the model like do we</p>
+<p>have any kind of a guide of like hey if</p>
+<p>you want to learn you know um the Taylor</p>
+<p>series expansion here's where to get it</p>
+<p>if you want to learn linear algebra like</p>
+<p>here's a particularly good text um</p>
+<p>because I'd be interested to sort of</p>
+<p>take that stuff on over</p>
+<p>time thanks yeah um in the math learning</p>
+<p>kind of</p>
+<p>subsection this is you know quiescent</p>
+<p>till um or when</p>
+<p>people don't want to do it but then as</p>
+<p>people want to do it like anyone's</p>
+<p>welcome to just say this time UTC I'm</p>
+<p>going to do this uh like in Discord or</p>
+<p>however or just make the edits directly</p>
+<p>here this math learning and</p>
+<p>resources has it at least</p>
+<p>many</p>
+<p>um I think the language models are</p>
+<p>really good at this right now this kind</p>
+<p>of like um like undergraduate level math</p>
+<p>which is hard that is a good specialty</p>
+<p>of them and just put and then another</p>
+<p>possibility for with the learning is</p>
+<p>from the um</p>
+<p>equations here all the equations have</p>
+<p>been put into</p>
+<p>latch then this can just be so even if</p>
+<p>you're working with a language model</p>
+<p>that doesn't have the ability to put in</p>
+<p>a screenshot you can just put in this or</p>
+<p>look at what we have here and then look</p>
+<p>at the explanation why would a high</p>
+<p>schooler be interested what's the pseudo</p>
+<p>code where is it important what are the</p>
+<p>variables these are just tenative but</p>
+<p>they do um even where they contain like</p>
+<p>some like I guess factual you know</p>
+<p>omissions or or</p>
+<p>errors they they give it the</p>
+<p>style of what information is in the</p>
+<p>equation and just like 1 plus 1 equals 2</p>
+<p>1 plus one equals question mark like you</p>
+<p>could spend the rest of your life truly</p>
+<p>pondering it so there's never going to</p>
+<p>be a moment okay I'm done with B</p>
+<p>equation I finally you know don't need</p>
+<p>to wonder about it anymore but then</p>
+<p>knowing that it will never be fully</p>
+<p>resolved getting to kind of just like a</p>
+<p>stopping point with feeling like you</p>
+<p>don't know at all what it</p>
+<p>does and then just seeing a bunch of</p>
+<p>related natural language um descriptions</p>
+<p>and then also our</p>
+<p>handwritten natural language</p>
+<p>descriptions which anyone can ALS so add</p>
+<p>to sometimes just seeing it written out</p>
+<p>linguistically instead of only</p>
+<p>symbolically can help especially because</p>
+<p>then you can replace x with hidden State</p>
+<p>and Y with</p>
+<p>observation and then from there that can</p>
+<p>translate to other languages but also</p>
+<p>you could replace okay hidden state with</p>
+<p>temperature observation with</p>
+<p>thermometer and then this starts to look</p>
+<p>more like the probability of the</p>
+<p>temperature times the the thermometer</p>
+<p>given the temperature</p>
+<p>and so then it's like easier to jump</p>
+<p>between a tangible example um and all</p>
+<p>these other like kind of aspects of the</p>
+<p>holistic math understanding and like</p>
+<p>Jonathan shock and Ali blue others have</p>
+<p>um like also thought about how</p>
+<p>to what what kind of math is important</p>
+<p>to lead up to the textbook group and in</p>
+<p>the in the appendices they do mention</p>
+<p>what they see as the important</p>
+<p>background</p>
+<p>areas I think it's</p>
+<p>a linear algebra so doing operations on</p>
+<p>matrices um adding and multiplying</p>
+<p>products on matrices tailor series</p>
+<p>approximations this is important for the</p>
+<p>continuous time this is where you take a</p>
+<p>point and then you try to extrapolate a</p>
+<p>continuation around that point</p>
+<p>variational calculus and stochastic</p>
+<p>Dynamics</p>
+<p>like this</p>
+<p>appendix may still not be the perfect</p>
+<p>resource to learn those four topics but</p>
+<p>the fact that they listed them out as</p>
+<p>the four topics than going to any like</p>
+<p>highly rated online course</p>
+<p>or like popular videos on these topics</p>
+<p>is probably pretty helpful linear</p>
+<p>algebra very much is and stochastic</p>
+<p>Dynamics or just statistics</p>
+<p>I think also is critically</p>
+<p>important it's fantastic thank you it's</p>
+<p>uh Beyond helpful really appreciate</p>
+<p>it Peter I'm in the process of learning</p>
+<p>all of this myself so I'd be willing to</p>
+<p>work with you if you wanted to do um</p>
+<p>something as well um within Discord or</p>
+<p>something through</p>
+<p>Cota sure that'd be great</p>
+<p>thanks are you uh sorry go good are you</p>
+<p>on the Discord just so I can uh yeah I</p>
+<p>just joined a couple days ago okay</p>
+<p>great there is a textbook group</p>
+<p>Channel um you can you can try to join</p>
+<p>in or just post somewhere if you can't</p>
+<p>find it or anything but then we can just</p>
+<p>kind</p>
+<p>of keep that discussion alive and</p>
+<p>um like yeah</p>
+<p>knowing knowing what this</p>
+<p>symbolizes</p>
+<p>helps there probably is a point of</p>
+<p>diminishing return with learning any of</p>
+<p>the background maths but also they're</p>
+<p>their own reward so they're fun to</p>
+<p>learn I might throw this into the um</p>
+<p>Kota as well but just sharing if anyone</p>
+<p>is familiar with um like corsera courses</p>
+<p>for you know for me I I've had to do a</p>
+<p>lot of learning async SL from The</p>
+<p>Institute and I I really like this one</p>
+<p>um just because um you know it has a</p>
+<p>couple courses there it's very intuitive</p>
+<p>and uh especially for anyone who wants</p>
+<p>to move in the direction of like</p>
+<p>implementing and learning with um python</p>
+<p>it mainly focuses on that but yeah the</p>
+<p>first course is linear algebra but in</p>
+<p>the context of like we're learning</p>
+<p>matrices we're learning how to multiply</p>
+<p>them and so on um and then by time we</p>
+<p>get to the second course it's multi very</p>
+<p>at calculus and so all of a sudden</p>
+<p>you're learning about like gradient</p>
+<p>descent uh with multiple variables</p>
+<p>involved so just the first two courses</p>
+<p>of of that link I shared um I find</p>
+<p>immensely helpful for at least as a</p>
+<p>starting point it just walks you through</p>
+<p>everything</p>
+<p>so</p>
+<p>yeah depending on where someone's at</p>
+<p>with their programming or engineering or</p>
+<p>anything it can help just to think of</p>
+<p>these as variables like s can be kind of</p>
+<p>H treated with one handle as like a</p>
+<p>mathematical variable and if you want to</p>
+<p>go into the um like the abstraction and</p>
+<p>the analysis and the category Theory</p>
+<p>then it is going to be helpful to just</p>
+<p>pick up S of t with one handle but then</p>
+<p>at the same time when you actually write</p>
+<p>the pmdp code s is going to be like a</p>
+<p>matrix of a defined shape so then going</p>
+<p>to the pmdp documentation and examples</p>
+<p>and just seeing like okay what shape is</p>
+<p>AB c d okay that's the whole agent</p>
+<p>that's the active inference agent that</p>
+<p>can help ground it that's not the</p>
+<p>general case but seeing how um</p>
+<p>minimal a small case can be is helpful</p>
+<p>to know like what a complete um</p>
+<p>generative model is and kind of</p>
+<p>calibrate how challenging different</p>
+<p>kinds of phenomena might be to model</p>
+<p>yeah pmdp open source package discreet</p>
+<p>time but this is a good um package</p>
+<p>that's really focused to like getting as</p>
+<p>fast as possible to the discreet time</p>
+<p>agents whereas RX infer as we're</p>
+<p>exploring week after week um is en and</p>
+<p>continuous and all these other things</p>
+<p>PDP gets you really fast to the PDP like</p>
+<p>chapter 7 model um there are</p>
+<p>great demos including that you can just</p>
+<p>open it up in a</p>
+<p>notebook you can copy the notebook or</p>
+<p>use this version and just like run it</p>
+<p>right here and see the full active</p>
+<p>inference model you can also clone it</p>
+<p>locally</p>
+<p>into like cursor.</p>
+<p>sh with a code enabled development</p>
+<p>environment and then you can chat with</p>
+<p>the code base and ask questions about</p>
+<p>like pmdp or any other</p>
+<p>package so this can be extremely</p>
+<p>helpful</p>
+<p>yeah I think that's great um I would say</p>
+<p>for for people who are just getting into</p>
+<p>this and thinking about how to set up a</p>
+<p>model as well some things uh if you want</p>
+<p>to start with pmdp or</p>
+<p>otherwise um and again if if you want to</p>
+<p>jump to modeling I would strongly</p>
+<p>recommend having a and you have the time</p>
+<p>for it have a look at Chapters seven and</p>
+<p>eight that'll definitely go over more</p>
+<p>like more specifically how to construct</p>
+<p>models um for anyone who's thinking like</p>
+<p>okay I have a particular project how do</p>
+<p>I map the variables to these different</p>
+<p>components of a a pomdp for example you</p>
+<p>could have a look at chapter 7 it it'll</p>
+<p>get into things like okay uh we have</p>
+<p>States we have observations like two</p>
+<p>crucial parts of of a model um well</p>
+<p>maybe I have different forms of data</p>
+<p>that I'm bringing in like for example</p>
+<p>someone doing something um more</p>
+<p>physiological and clinically uh based in</p>
+<p>a lab or something maybe you're</p>
+<p>collecting neuroimaging data in addition</p>
+<p>to heart monitor data so suddenly you</p>
+<p>have two different data streams coming</p>
+<p>in um you can map those as different</p>
+<p>like observation modalities is what</p>
+<p>they'd be called and basically you'll</p>
+<p>just be constructing your your matrices</p>
+<p>the A and the B and so on that account</p>
+<p>for like these different data streams</p>
+<p>that account for different hidden States</p>
+<p>that you're trying to inferring uh</p>
+<p>trying to infer so on um pmdp is great</p>
+<p>for that too uh if you are wanting to</p>
+<p>use python or at least using it as a</p>
+<p>learning tool um because all of these</p>
+<p>examples there's the T one that Daniel</p>
+<p>scrolling through there's another one</p>
+<p>that sets up a two armed um Bandit model</p>
+<p>which is like uh an agent who um you</p>
+<p>know picks from one of two like kind of</p>
+<p>slot conceptually what are like slot</p>
+<p>machines and um so you have it it shows</p>
+<p>you how to like oh you have multiple</p>
+<p>forms of data or observations that are</p>
+<p>coming in you have multiple hidden</p>
+<p>states that the agent is trying to infer</p>
+<p>you will set those up as like matrices</p>
+<p>or tensors um and that's kind of where</p>
+<p>the the linear algebra plays in and</p>
+<p>being familiar with Matrix um operations</p>
+<p>becomes really important but uh it's</p>
+<p>it's really nice yeah David you have</p>
+<p>your hand up uh yeah in regards to the</p>
+<p>choice function there would that apply</p>
+<p>to what we covered earlier in terms of</p>
+<p>the Lambda function or the Lambda</p>
+<p>operator rather</p>
+<p>see um okay we can we can look back at</p>
+<p>the lamba but about like the behavioral</p>
+<p>selection itself let's find like kind of</p>
+<p>exactly where it comes into</p>
+<p>play</p>
+<p>um okay okay so um in this this is the</p>
+<p>uh tutorial</p>
+<p>one there's going to be</p>
+<p>uh they they first have a simpler</p>
+<p>version with no</p>
+<p>planning so here's an active inference</p>
+<p>loop with no</p>
+<p>planning then planning comes into play</p>
+<p>so big big question um like AR ing when</p>
+<p>doing the modeling is like are we</p>
+<p>working with something that</p>
+<p>plants um and even behavior that kind of</p>
+<p>like seems plan likee might be</p>
+<p>underpinned by simply heris sixs like a</p>
+<p>flock of birds you might not need to</p>
+<p>appeal to it doing a long-term planning</p>
+<p>for its coordinated movement you might</p>
+<p>just be able to explain that with single</p>
+<p>time step behavior of the birds so just</p>
+<p>because something is like acting</p>
+<p>adaptively through multiple time scales</p>
+<p>doesn't mean that it needs to be planned</p>
+<p>that's a um but you may still model</p>
+<p>something from the outside as if it's</p>
+<p>doing</p>
+<p>planning um whether or not it is map and</p>
+<p>territory and all that okay now given</p>
+<p>that here's here's where when you're in</p>
+<p>um the planning setting here's where the</p>
+<p>the choice comes into play</p>
+<p>calculate expected free energy of</p>
+<p>actions so here we we actually are using</p>
+<p>expected free energy G and it it is</p>
+<p>calculating the expected free energy</p>
+<p>based upon essentially all the variables</p>
+<p>that come into</p>
+<p>play and then they um so it takes in the</p>
+<p>policy prior which is like e or habit</p>
+<p>which is just your your before thinking</p>
+<p>about</p>
+<p>what is your habit so if you're doing</p>
+<p>like a fair teas rat it might just be</p>
+<p>50/50 or if it's a um if it's a teamas</p>
+<p>rat but it has like an 8020 bias for One</p>
+<p>Direction um then each of the</p>
+<p>policies get um</p>
+<p>reweighted the policy the policy</p>
+<p>variable sums up to one and then here</p>
+<p>they're reweighted to update to a policy</p>
+<p>posterior and then here chosen action is</p>
+<p>sampled from the posterior</p>
+<p>earlier Andrew also said you could just</p>
+<p>pick the lowest one or you can sample</p>
+<p>from this distribution and there's other</p>
+<p>things you can do so expected free</p>
+<p>energy isn't a choice function itself</p>
+<p>it's a reweighting of the likelihood of</p>
+<p>policies that then enables you to take</p>
+<p>different kinds of choice functions</p>
+<p>secondarily so would policy Q be in</p>
+<p>essence the quiescent point of</p>
+<p>Pi which one so the the so where you</p>
+<p>have</p>
+<p>qore Pi is the soft Max at negative</p>
+<p>G so would that be like a horizon Point</p>
+<p>essentially where you're measuring</p>
+<p>at um not or measuring to a distance at</p>
+<p>soft Max the the time Horizon is Big T</p>
+<p>that so here this is a five time step</p>
+<p>simulation and here policy length is</p>
+<p>considering all um combin ations of</p>
+<p>policies of two affordances so if you</p>
+<p>can go up down left right four</p>
+<p>affordances then there's 16 policies of</p>
+<p>length too and you have a range of four</p>
+<p>values with the N actions as the okay</p>
+<p>yeah the actions at each moment are the</p>
+<p>affordances policies are sequences of</p>
+<p>affordances for a given</p>
+<p>time</p>
+<p>um and then playing around with these</p>
+<p>variables is sweeping across them making</p>
+<p>like summary diagnostic statistics about</p>
+<p>portfolios of</p>
+<p>simulations is when you start to see</p>
+<p>interesting things okay great yeah I've</p>
+<p>been kind of modeling similar to this</p>
+<p>and I've been seeing similar things so</p>
+<p>I'll start working with this a bit more</p>
+<p>to solidify things perfect thank</p>
+<p>you</p>
+<p>cool and yeah as uh as Daniel mentioned</p>
+<p>earlier for anyone who's more directly</p>
+<p>interested in in modeling um again I'm</p>
+<p>I'm personally trying to learn both PDP</p>
+<p>as well as our RX infer at the same time</p>
+<p>uh two different programming languages</p>
+<p>because RX infer is based in Julia but</p>
+<p>uh we do have an ongoing Institute</p>
+<p>project Thursday mornings um it's the RX</p>
+<p>infer project and with great is that um</p>
+<p>one of the folks from bias Labs who's</p>
+<p>developing the RX infer package um is</p>
+<p>actually directly involved with that</p>
+<p>group so we we have some some nice uh</p>
+<p>communication with one of the developers</p>
+<p>basically um and there we are um going</p>
+<p>through different examples right now</p>
+<p>that ARX infer like those folks have</p>
+<p>directly made available just like we</p>
+<p>were going through an example for PDP so</p>
+<p>they've done the same for ARX and fur um</p>
+<p>there's a nice kind of reci reciprocal</p>
+<p>relationship going on because we have</p>
+<p>the opportunity to tell the</p>
+<p>representative from bias Labs like hey</p>
+<p>we think you should you know maybe</p>
+<p>update your documentation to make it</p>
+<p>clear on this particular point or</p>
+<p>something like that and then they help</p>
+<p>us with with the learning but yeah</p>
+<p>anyone who wants to kind of get more</p>
+<p>involv with that um not to mention the</p>
+<p>the ARX and fur package seems to offer</p>
+<p>some capability ilities Beyond uh maybe</p>
+<p>what other methods allow for so um we</p>
+<p>were able to look more at like</p>
+<p>continuous time models which are</p>
+<p>certainly uh in certain ways more</p>
+<p>mathematically involved with all the</p>
+<p>Integrations and so on so yeah this is a</p>
+<p>nice um example here like this is trying</p>
+<p>to model um a car that needs to have the</p>
+<p>it needs to take the right actions to</p>
+<p>exploit um like its velocity and</p>
+<p>acceleration in order to move up a hill</p>
+<p>landscape to reach a goal that it</p>
+<p>otherwise couldn't if it just put the</p>
+<p>the pedal to the floor so to speak um</p>
+<p>and so the agent like learns what um</p>
+<p>what it should do in order to reach that</p>
+<p>goal um but yeah so they're just like</p>
+<p>toy examples but um yeah super cool yeah</p>
+<p>stuff and I think useful for yeah if you</p>
+<p>have your own project that you under</p>
+<p>want to undertake using this as kind of</p>
+<p>like a foundation for that Daniel you're</p>
+<p>going to say yeah yeah yeah this this is</p>
+<p>a different syntax different language</p>
+<p>Julia um than python but with with many</p>
+<p>similarities and again like even with</p>
+<p>limited code familiarity it helps</p>
+<p>calibrate like where someone is at like</p>
+<p>this is just a coin toss this isn't even</p>
+<p>like it's not a coin tossing Quantum</p>
+<p>agent this is just like literally a coin</p>
+<p>being tossed but this can help calibrate</p>
+<p>learning in terms of</p>
+<p>like what does it take to make a coin</p>
+<p>toss</p>
+<p>and then okay here's a slightly more</p>
+<p>involved example with a hidden Markov</p>
+<p>model but um you know then this this is</p>
+<p>um and then we're also going to bring</p>
+<p>this back into the um textbook Group by</p>
+<p>looking to</p>
+<p>replicate PDP and textbook examples in</p>
+<p>RX and</p>
+<p>fur because like although it can feel</p>
+<p>and and it is true on one hand that it's</p>
+<p>like more more more flavors or like more</p>
+<p>material or more variants it's actually</p>
+<p>a very important decision that they took</p>
+<p>in the textbook to have like figure</p>
+<p>4.3 like they're not in they don't</p>
+<p>introduce just the discreet time and</p>
+<p>then later go to continuous time they</p>
+<p>introduced them jointly to emphasize</p>
+<p>that there isn't only one way to treat</p>
+<p>time in active inference so then that's</p>
+<p>how I've been approaching it too so</p>
+<p>that's awesome cool yeah I mean it's</p>
+<p>like there's I I don't know if there's</p>
+<p>any um any oneway streets like if</p>
+<p>there's one there's another one and so</p>
+<p>having there be multiple</p>
+<p>languages it's like not about one person</p>
+<p>being able to generate all the scripts</p>
+<p>for all the languages for all the cases</p>
+<p>you know in a moment but basically code</p>
+<p>models can already do that first off and</p>
+<p>then so we're just able to look at that</p>
+<p>and then try to um connect the dots and</p>
+<p>and think what's this deeper space</p>
+<p>that's able to have multiple Julia and</p>
+<p>multiple Python scripts corresponding to</p>
+<p>a</p>
+<p>teas and then how do we make sure that</p>
+<p>that kind of like broader latent or dark</p>
+<p>space that we're thinking about is</p>
+<p>active</p>
+<p>inference and what makes something</p>
+<p>actually an active inference model as</p>
+<p>opposed to just like any other kind of</p>
+<p>broader input output cybernetic or</p>
+<p>control or reinforcement model which</p>
+<p>might be totally valid and adequate for</p>
+<p>a setting so there's nothing wrong with</p>
+<p>like not making an active inference</p>
+<p>model it's just that there is a</p>
+<p>difference between it being an active</p>
+<p>inference model versus being like a</p>
+<p>reward learning</p>
+<p>model and right so I kind of see that</p>
+<p>sorry no go ahead so I kind of see that</p>
+<p>also as like being a parameter of the</p>
+<p>time frame or the frame that that</p>
+<p>constraint is set in and so if you're</p>
+<p>using the language in that sense as a</p>
+<p>filter it would be applicable to that</p>
+<p>model for example in that discrete time</p>
+<p>range where it may not fit to another</p>
+<p>model with the same kind of parameters</p>
+<p>due to you know other other separate</p>
+<p>constraints for</p>
+<p>example you mean like kind of using the</p>
+<p>um validity of the active inference</p>
+<p>ontology</p>
+<p>to kind of check whether the script is</p>
+<p>an octave inference model yeah but in a</p>
+<p>way by being able to apply it as a</p>
+<p>filtering model without energy it it</p>
+<p>kind of reduces the friction on the</p>
+<p>surface doesn't</p>
+<p>it so if the if the language that you're</p>
+<p>using within that frame works with the</p>
+<p>frame um without it adding too much</p>
+<p>context because of you know the</p>
+<p>parameterization versus dragging</p>
+<p>dropping that filter into another model</p>
+<p>where the Lang which doesn't fit um you</p>
+<p>would have to use a different model but</p>
+<p>that doesn't make the first model not</p>
+<p>valid would that be a correct statement</p>
+<p>in that</p>
+<p>context I I think so I mean I I don't</p>
+<p>know this too broad but making model two</p>
+<p>cannot make model one invalid model two</p>
+<p>can yes and it might be be yeah it might</p>
+<p>be fewer parameters or more or more or</p>
+<p>less accurate but but it can't</p>
+<p>invalidate it's just merely another</p>
+<p>addition like into the blockchain of</p>
+<p>everything and then in terms of the</p>
+<p>ontology and the</p>
+<p>variables I mean you can just look at</p>
+<p>the</p>
+<p>variables</p>
+<p>oh added more comments here but um if</p>
+<p>you've defined if you've looked at</p>
+<p>figure</p>
+<p>4.3 and this is the rough setup of your</p>
+<p>set you then you can ask I is there</p>
+<p>something that is here that I don't</p>
+<p>don't</p>
+<p>have and then is there something else</p>
+<p>that I have and that and either of those</p>
+<p>if you make it simpler than</p>
+<p>this um you might be dealing with a</p>
+<p>special reduced</p>
+<p>case if you add more things I mean that</p>
+<p>is pretty much all of like the research</p>
+<p>advances in active inference is like</p>
+<p>well what if we added a variance um you</p>
+<p>know parameter here or what if we added</p>
+<p>a nesting here so it's like more can be</p>
+<p>add added um and and hence the textbook</p>
+<p>just like try to throw the fast ball</p>
+<p>down the middle and show it in its like</p>
+<p>plain way and then to be able to map</p>
+<p>anything to the plane</p>
+<p>version if you can bring it back and if</p>
+<p>it's a valid return to the to the kernel</p>
+<p>you know then it's like oh it's a</p>
+<p>heavily modified Linux kernel but not</p>
+<p>everything is a heavily modified Linux</p>
+<p>kernel something else might just be a</p>
+<p>totally different construction so it</p>
+<p>might be compliment it might be better</p>
+<p>might work well with in a computer</p>
+<p>system but it it wouldn't make sense to</p>
+<p>say that it was a modified Linux kernel</p>
+<p>unless you had started with either</p>
+<p>pruning down or adding to the Linux</p>
+<p>kernel okay perfect yeah you don't want</p>
+<p>to end up in Temple OS when you're</p>
+<p>looking at</p>
+<p>Linux I would just also briefly add to</p>
+<p>that that point if like just for</p>
+<p>inspiration or otherwise but if you</p>
+<p>wanted to kind of just literally just</p>
+<p>flip through not even necessarily read</p>
+<p>but for the time being flip through</p>
+<p>chapters seven and eight and just look</p>
+<p>at the other figures going on in there</p>
+<p>they give um many more ideas of like how</p>
+<p>you could construct this from the</p>
+<p>standpoint of like looking directly at</p>
+<p>these this kind of like graphical</p>
+<p>notation um we've been talking the RX</p>
+<p>and for how it seems great to be able to</p>
+<p>use graphical notation in the first</p>
+<p>place one just for being able to track</p>
+<p>all the different variables and how</p>
+<p>you're setting up the model but then</p>
+<p>also two just like steeming on like what</p>
+<p>what do you need how does the model need</p>
+<p>to be changed or or otherwise um like in</p>
+<p>seven chapters seven and eight we get</p>
+<p>more into discret and continuous time</p>
+<p>models we also are introduced to</p>
+<p>hierarchical models you can add a second</p>
+<p>level um probably one of the most</p>
+<p>involved graphs is yeah these um like</p>
+<p>Daniel has pulled up I would say</p>
+<p>especially figure</p>
+<p>8.6 um is is pretty great what it does</p>
+<p>is that you have a hierarchical model at</p>
+<p>the top level you have the PDP like</p>
+<p>discreet uh time uh model setup and then</p>
+<p>the the bottom half of that graph is</p>
+<p>actually um using continuous variables</p>
+<p>so so it's not just hierarchical it's</p>
+<p>also like a hybrid model so you're in</p>
+<p>including both types of variables in</p>
+<p>there uh you could almost think of this</p>
+<p>as like at the lower level that bottom</p>
+<p>half you could have something like um uh</p>
+<p>continuous time neuroimaging data and</p>
+<p>then at the higher level there's some</p>
+<p>kind of discret uh hidden state that</p>
+<p>you're using that that real time</p>
+<p>observational data to then uh infer like</p>
+<p>you know so it's um yeah it's just</p>
+<p>steaming modeling doing the mapping from</p>
+<p>uh you know reality to to variables on a</p>
+<p>graph um awesome yeah this all uh all</p>
+<p>fits together so yeah I might have to uh</p>
+<p>join you guys on Thursdays that'll be</p>
+<p>interesting thank you yeah or or um or</p>
+<p>the the RX in foras in the chat also on</p>
+<p>the math background so the SPM</p>
+<p>statistical parametric mapping this is</p>
+<p>what Carl friston at all were working on</p>
+<p>in the neuro image group at UCL in the</p>
+<p>preac and FP days and continuing um it's</p>
+<p>a Matlab toolkit it continues to be</p>
+<p>developed and the documentation is all</p>
+<p>online that being said this 2007</p>
+<p>textbook is very informative it has like</p>
+<p>40 or 50 chapters but they're Standalone</p>
+<p>short</p>
+<p>chapters um that that don't really</p>
+<p>reference each other it doesn't Focus so</p>
+<p>much on the ACT and control theory side</p>
+<p>because they're focused on like the</p>
+<p>neuroimaging setting of taking in um</p>
+<p>multi- sensor data doing the Sensor</p>
+<p>Fusion doing the dynamic caal</p>
+<p>modeling I find it really informative</p>
+<p>because it it quickly reviews and and</p>
+<p>uses parametric statistics</p>
+<p>non-parametric statistics and basian</p>
+<p>statistics so it's very very strong for</p>
+<p>learning about this setting which is</p>
+<p>where you have a prior on a hidden</p>
+<p>variable and then you're getting</p>
+<p>observations and then the hidden</p>
+<p>variables changing through time like</p>
+<p>neural</p>
+<p>activity control theory then then</p>
+<p>injects into selects out a slice of B to</p>
+<p>control how the system evolves and so</p>
+<p>that's why that was brought into play</p>
+<p>because if you're only observing the</p>
+<p>neural system then you only need this</p>
+<p>but then if you're going to be selecting</p>
+<p>behavioral um stimuli or you're going to</p>
+<p>be doing like transcranial stimulation</p>
+<p>or something like that you need to have</p>
+<p>um a bir directional interface but in</p>
+<p>terms of like the basic</p>
+<p>statistics and weaving together</p>
+<p>parametric non-parametric basian this is</p>
+<p>like one of the best textbooks okay</p>
+<p>awesome I think I've read some</p>
+<p>selections from it but I definitely need</p>
+<p>to uh I might pick up a copy of it I</p>
+<p>don't know how much the physical version</p>
+<p>costs but um I'm sure that there's a PDF</p>
+<p>of this one we we probably have it and</p>
+<p>also the online documentation is is more</p>
+<p>updated okay and there's and there's</p>
+<p>also tutorials for</p>
+<p>SPM um so even if you don't do</p>
+<p>neuroimaging I've never I've never been</p>
+<p>in an MRI um slash analyze the data but</p>
+<p>still just reading through this because</p>
+<p>these machines are creating a lot of</p>
+<p>data and it's a very transferable</p>
+<p>setting okay great yeah I'm interested</p>
+<p>in the noise parameters on that</p>
+<p>too yeah and comparisons the kinds of um</p>
+<p>the kinds of Statistics that you need to</p>
+<p>account for like within and among</p>
+<p>participants in a clinical study and</p>
+<p>statistical power calculations like</p>
+<p>that's really where it comes down to it</p>
+<p>like trying to understand the</p>
+<p>statistical</p>
+<p>formalisms in their nals 1 setting is</p>
+<p>almost like I don't know if ironic is</p>
+<p>the right word but the whole point is</p>
+<p>we're using distributions so that we can</p>
+<p>take in multiple data points so it's not</p>
+<p>meant to just be like kind of looked at</p>
+<p>on the</p>
+<p>Shelf it's meant to be like played</p>
+<p>around with different priors and testing</p>
+<p>how different observation sequences lead</p>
+<p>to different updates so that's kind of</p>
+<p>how I've been approaching it as well is</p>
+<p>testing as n equals z is equivalent to</p>
+<p>one which is why I asked the question in</p>
+<p>regards to the Lambda is a choice</p>
+<p>function of Z or one um but that would</p>
+<p>so I've kind of been approaching in</p>
+<p>terms of like at t0 n zero at T1 And1</p>
+<p>and you have expansion from that set</p>
+<p>back to and will always still be the N1</p>
+<p>Plus or n minus 2 and that sends back to</p>
+<p>just what we had started talking about</p>
+<p>earlier but</p>
+<p>yeah there's a lot there that's kind of</p>
+<p>like when when the when the when the</p>
+<p>mouse is</p>
+<p>planning it's it's now it's t equals z</p>
+<p>but also it's the next time step but</p>
+<p>also it's an arbitrary time step but to</p>
+<p>get lost in the fact that it could be an</p>
+<p>arbitrary time</p>
+<p>step it also has to be through other</p>
+<p>frames</p>
+<p>right well um next time later in the day</p>
+<p>let's just begin with whatever questions</p>
+<p>people have or other added questions to</p>
+<p>the table and upvote the questions that</p>
+<p>you like and we'll start from the top</p>
+<p>next</p>
+<p>week</p>
+<p>okay thank you all awesome thanks</p>
+<p>everybody thank you byee thanks folks</p>
+<p>take</p>
+<p>care</p>
+</article>
+</body>
+</html>

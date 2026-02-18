@@ -1,0 +1,2857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream 016.1: Eli Sennesh and Tommaso Salvatori "Divide-and-Conquer Predictive Coding"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream 016.1: Eli Sennesh and Tommaso Salvatori "Divide-and-Conquer Predictive Coding"</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_016 &middot; Episode 1 &middot; Duration: 1:14:02 &middot; Views: 397</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=pNfQqKXUdic">https://www.youtube.com/watch?v=pNfQqKXUdic</a></div>
+<article>
+<p>Hello and welcome. This is Active Inference Model Stream 16.1. It's December 6th, 2024.</p>
+<p>We're here with Eli Sinesh and Tomaso Salvatore discussing divide and conquer predictive coding.</p>
+<p>So thank you both for joining. Eli, to you for the presentation.</p>
+<p>All right. Hi, everyone. So I recall being here once before, you know, presenting that old paper, Interoceptionist Modeling Allostasis as Control.</p>
+<p>And I think at the time I even mentioned that there wasn't really an inference algorithm that, like, I could just go and apply to all of these kinds of, like, active inference and predictive coding problems.</p>
+<p>And over roughly the last year, let's say, you know, we've started work, this whole team of myself, Hao Wu, who is unfortunately not on the stream due to having a nine to five.</p>
+<p>And Tomaso Salvatore, who's here with us. You know, we've actually been working on this, you know, like, how would we take these theories and, you know, this predictive coding idea and just turn it into a Bayesian inference algorithm you can use for stuff.</p>
+<p>So, you know, as background, like, to really refresh ourselves.</p>
+<p>This is the super short, you know, NeurIPS version of our talk.</p>
+<p>You know, there's, like, basically theoretical neuroscience, neuro AI, or now, I don't know, Tomaso, like, what keyword do you guys use it versus? I should have asked you maybe.</p>
+<p>Or, we do use neuro AI, actually, bioplausible deep learning. That's a sentence I often use.</p>
+<p>Yeah, so...</p>
+<p>I think that that dates back from even, like, before my versus times, I guess.</p>
+<p>Yeah, so the broad theory is that, you know, predictive coding sort of solves two tasks for the brain, and that's credit assignment and Bayesian inference.</p>
+<p>Now, like, predictive coding is also a thing in machine learning now.</p>
+<p>They do a lot of it at versus. Tomaso's done a bunch with it.</p>
+<p>You know, but it doesn't always...</p>
+<p>For various reasons we can go into, like, it sometimes doesn't always scale as well as backprop, basically.</p>
+<p>And so, we basically started over again, I guess you could say, with the concept of predictive coding to build our divide-and-conquer PC algorithm.</p>
+<p>And we basically find that you can use this at roughly the same scale you would with VAEs.</p>
+<p>So, of course, in order to, you know, test it out, we had this deep latent Gaussian model.</p>
+<p>It's actually the same one from, I think, the Monte Carlo predictive coding paper out this year.</p>
+<p>We really did this a lot, like, leaning on, you know, comparing to other predictive coding papers rather than to some arbitrary baseline.</p>
+<p>Because, you know, we figured, let's...</p>
+<p>If we pitch this as being about bioplausibility, then we can sort of maybe actually get results that are good enough to publish.</p>
+<p>Any...</p>
+<p>Any...</p>
+<p>Yeah.</p>
+<p>So, you know, we racked up our first win there.</p>
+<p>You know, we went and compared to other algorithms that were related or inspired us.</p>
+<p>So, you know, basically we would say, all right, you have...</p>
+<p>Yeah.</p>
+<p>Oh.</p>
+<p>You know, after, you know, demonstrating that this quote-unquote wins, like, okay, it works well enough.</p>
+<p>The...</p>
+<p>Which...</p>
+<p>Oh.</p>
+<p>Oh.</p>
+<p>This entire slide, yes.</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>So, our DCPC, in addition to being a predictive coding algorithm, is a particle algorithm.</p>
+<p>So, it's training a particle cloud, so to speak, to approximate the posterior distribution in a Bayesian inference problem.</p>
+<p>So, as such, we compared it to this algorithm particle gradient descent, PGD, from which we were drawing pretty direct inspiration.</p>
+<p>And then we also compared it to, you know, Langevin predictive coding out at ICML this year.</p>
+<p>And so, we compared on, you know, the pressure inception distance that people use in deep learning, rather than on, you know, the variational bound to the surprise.</p>
+<p>You know, we didn't compare on log evidence, because that's, you know, you can often get very bad visual samples from a model that has a very good log evidence, actually.</p>
+<p>So, in order to, you know, sort of say, like, okay, that, you know, log evidence is not the only thing that counts, we, you know, compared on this fresh at inception distance.</p>
+<p>Over here, we've got some samples from our pseudo-posterior predictive distribution.</p>
+<p>So, it's a proper predictive distribution, but constructed from a pseudo-posterior.</p>
+<p>Pseudo in the sense that, like, we're fitting, I think, a small Gaussian mixture model to our big particle cloud of the actual posterior distribution.</p>
+<p>And then, having done that, we say, all right, now we'll draw samples from this GMM as a pseudo-posterior, you know, then pass those latents through the generative model again to generate samples.</p>
+<p>And, you know, the actual neural architecture here is basically a one-level VAE.</p>
+<p>Like, you just chop off the encoder from a one-level VAE that would be used in these baseline papers, use the same neural architecture in PyTorch, and then basically just got, you know, slightly better results visually by just improving the environment.</p>
+<p>So, you know, the reference algorithm and the training.</p>
+<p>Okay, did you manage not to lose that?</p>
+<p>Cool.</p>
+<p>Okay, so sort of the interesting stuff about it, you know, especially compared to previous work, is how this actually works.</p>
+<p>As I said, it's a particle algorithm, so we're actually drawing samples.</p>
+<p>I think I said before we went live, you know, this is sort of the year of Monte Carlo predictive coding methods.</p>
+<p>We're one of maybe, you know, three or four that are out this year.</p>
+<p>So after you've, like, initialized your graphical model by just doing, you know, ancestor sampling to get yourself some initial, you know, cloud,</p>
+<p>what you can do during, you know, every inference pass is start from the bottom up.</p>
+<p>So that's, you know, the right over here would be the quote-unquote bottom of the hierarchy.</p>
+<p>You can calculate, you know, your prediction errors, which are the same kind of thing as in previous predictive coding work.</p>
+<p>You know, there's score functions with respect to the latent variable.</p>
+<p>And the thing that we actually do differently from other work is that rather than just taking, like, a score function as a local gradient of the, of,</p>
+<p>let's say, rather than taking a score function as, like, a direct gradient of the variational free energy,</p>
+<p>we take score functions with respect to the log complete conditional distribution.</p>
+<p>So, like, a coordinate update distribution.</p>
+<p>If you have, you know, this variable Z1, then its complete conditional is the distribution of this variable Z1 given its entire Markov blanket.</p>
+<p>So given both, you know, the predictions coming in from above it and the observations coming in from below.</p>
+<p>So that's why rather than one, you know, error unit we hear, we have an error unit that connects, you know, Z1 to the observation below it.</p>
+<p>We also have an error unit that sort of recurrently tries to draw Z1 back towards its local prior until that prior is changed by an update at Z2.</p>
+<p>So if you think about, you know, Bayesian inference works, you know, Bayesian inference is just what you get when you have one distribution and it has to be normalized.</p>
+<p>But you're trying to fit it as closely as you can to both the likelihood and the prior at the same time.</p>
+<p>And so when you try to do that locally within a big structured graphical model, you know, the logical posterior to go after is the complete conditional.</p>
+<p>And that's what we actually did.</p>
+<p>And I want to shout out Hal here because he's not on the stream, but his previous work on amortized population Gibbs samplers</p>
+<p>is really what showed that this kind of sampling from the complete conditionals could work at scale and, you know, like inspired this project pretty directly.</p>
+<p>Like this is kind of follow up work to, you know, his paper on that.</p>
+<p>And the way that we, you know, sort of make this work in terms of constructing a free energy</p>
+<p>or in terms of making sure we target the correct joint distribution</p>
+<p>is that we can use Langevin proposals.</p>
+<p>So, you know, if you have a prediction error from E sub zero and another, you know, E down sub one, add them together.</p>
+<p>You have the gradient of the log complete conditional.</p>
+<p>Now it's the log unnormalized complete conditional, but that's fine because, you know, the gradient doesn't,</p>
+<p>like, you know, when you take a gradient of a log density, the normalizing constant falls out.</p>
+<p>And so you can target that with, you know, a Langevin dynamics proposal,</p>
+<p>which just says take your previous prediction,</p>
+<p>you know, multiply your prediction error by a learning rate,</p>
+<p>add the prediction error to the previous prediction, and then add some Gaussian noise.</p>
+<p>You know, you have to balance, like, the,</p>
+<p>you have to balance the magnitude of the Gaussian noise with the learning rate in a certain way,</p>
+<p>but, like, that's a detail.</p>
+<p>Really, it's saying let's be in the latent space,</p>
+<p>then let's follow the gradient, and then let's inject a little bit of noise</p>
+<p>so we explore most of the time.</p>
+<p>Or rather, sorry, so we explore some of the time while exploiting</p>
+<p>whenever the gradient signal is strong enough.</p>
+<p>And then, you know, I note that we use sequential Monte Carlo here,</p>
+<p>and what that's actually for is that sequential Monte Carlo algorithms</p>
+<p>give you a whole set of rules for how you can start from,</p>
+<p>you know, the proposal that you sample from,</p>
+<p>then go to the local target that you are actually trying to,</p>
+<p>you know, that you're trying to sample from,</p>
+<p>and then combine those in, you know, a neat way to get</p>
+<p>samples from the complete joint distribution.</p>
+<p>So you would do this, you know, start here from the data on the right,</p>
+<p>do this predictive coding step for Z1,</p>
+<p>be done with it,</p>
+<p>repeat the same predictive coding step for Z2,</p>
+<p>but now with a new prediction error from Z1 down here,</p>
+<p>repeat all the way up here,</p>
+<p>and then you have a bunch of samples from different complete conditionals,</p>
+<p>and you have to come up with some way to say,</p>
+<p>well, what's my free energy?</p>
+<p>Or in SMC terms, what's my importance weight?</p>
+<p>And that's really where, you know,</p>
+<p>that's really where, like, the SMC technique becomes helpful,</p>
+<p>is for proving the whole thing is correct.</p>
+<p>So if you think, you know, we named it divide and conquer,</p>
+<p>because, you know, what we're essentially doing</p>
+<p>is we divide the graphical model</p>
+<p>into these complete conditional units,</p>
+<p>then we conquer each of them</p>
+<p>with, you know, basically a Monte Carlo predictive coding proposal,</p>
+<p>and then we conquer the whole thing by recombining them.</p>
+<p>So it really is like a divide and conquer algorithm</p>
+<p>in the classic sense.</p>
+<p>Also, the reviewers wanted us to name it something</p>
+<p>clearer than the old name.</p>
+<p>All right, so then, you know,</p>
+<p>that's a summary of the talk, really,</p>
+<p>and then we can go into, like, details of the paper</p>
+<p>and, you know, anything else we want to talk about.</p>
+<p>But broadly, the idea here is that, you know,</p>
+<p>predictive coding as a theory, you know,</p>
+<p>enjoys biological plausibility</p>
+<p>for approximate Bayesian inference,</p>
+<p>which is, you know, actually this really hard task.</p>
+<p>Like, you know, in deep learning world,</p>
+<p>people use all of these awkward neural network</p>
+<p>arrangements to try and amortize inference.</p>
+<p>And then the people who are real purists</p>
+<p>are just doing Markov chain Monte Carlo</p>
+<p>because amortized inference isn't good enough for them.</p>
+<p>And to be fair, it's often not very good</p>
+<p>if you don't, you know,</p>
+<p>structure your amortized posterior,</p>
+<p>like, just so.</p>
+<p>And more to the point,</p>
+<p>in neuroscience, you know,</p>
+<p>like, predictive coding theories</p>
+<p>have often been, you know,</p>
+<p>built on, like, mean field assumptions</p>
+<p>about the approximate posterior.</p>
+<p>So then you just have a coordinate-wise representation</p>
+<p>of the approximate posterior.</p>
+<p>And it's pretty well known</p>
+<p>that, like, this can't actually get you</p>
+<p>a very close approximation</p>
+<p>to a correlated structured posterior.</p>
+<p>So that was where the trouble was.</p>
+<p>That was the problem that we took a first step on solving.</p>
+<p>You know, and we got it to work well enough</p>
+<p>that you can substitute it for neural networks</p>
+<p>in some of these cases</p>
+<p>where people use neural networks.</p>
+<p>And we're going to be at the poster session</p>
+<p>next Friday at NeurIPS</p>
+<p>if anyone wants to come and talk to us.</p>
+<p>You know, and of course,</p>
+<p>we have to mention the places that we work</p>
+<p>and our affiliations.</p>
+<p>Awesome.</p>
+<p>Thank you.</p>
+<p>Thank you.</p>
+<p>I'll stop the screen share.</p>
+<p>Yeah, I'll ask some questions.</p>
+<p>And if anyone in the live chat has questions,</p>
+<p>they can write.</p>
+<p>Maybe just starting with the structured part.</p>
+<p>What do you mean that</p>
+<p>it's a structured problem?</p>
+<p>Oh, yeah.</p>
+<p>So, like, this is the experiment,</p>
+<p>you know, originally,</p>
+<p>I looked at this and said,</p>
+<p>well, how do we actually replicate</p>
+<p>house results from advertised population Gibbs?</p>
+<p>And that was like a full-on time series model</p>
+<p>in which there were, you know,</p>
+<p>like some local variables</p>
+<p>that were updated at each time step,</p>
+<p>but also some global random variables</p>
+<p>that were standing, you know,</p>
+<p>at the hierarchical level above.</p>
+<p>So, you know, that was really,</p>
+<p>like, I thought,</p>
+<p>okay, we need to tackle</p>
+<p>these kinds of structured problems.</p>
+<p>Because, you know, if you,</p>
+<p>I mean, go look at,</p>
+<p>I'm trying to think, like,</p>
+<p>you know, honestly, most of the time,</p>
+<p>most interesting generative models</p>
+<p>are going to be kind of structured.</p>
+<p>If there's more than one latent variable,</p>
+<p>and it's not just IID sampling,</p>
+<p>so any kind of hierarchical bays,</p>
+<p>you know, time series structure,</p>
+<p>dynamical system structure,</p>
+<p>like, all of this stuff that you find</p>
+<p>in cognitive science and neuroscience</p>
+<p>so, so commonly,</p>
+<p>and yet, which is often,</p>
+<p>you know, we've often sort of</p>
+<p>given up on doing anything</p>
+<p>better than particle filtering</p>
+<p>or amortized inference</p>
+<p>if you look in the machine learning world.</p>
+<p>Okay, and the graphical structure</p>
+<p>you showed was a linear hierarchical model,</p>
+<p>or it was going from side to side,</p>
+<p>but that's just graphical convention.</p>
+<p>So, do you ever need to account</p>
+<p>for branching</p>
+<p>or any other kinds of structures,</p>
+<p>or how do you divide and conquer</p>
+<p>when there's also splitting and merging?</p>
+<p>Okay.</p>
+<p>So, I mentioned about Markov blankets, right?</p>
+<p>As long as you're in a directed</p>
+<p>acyclic graphical model,</p>
+<p>then there's still a notion</p>
+<p>of a Markov blanket</p>
+<p>for every single random variable.</p>
+<p>That's the thing that you divide,</p>
+<p>you know, the graphical model into,</p>
+<p>is variables with their Markov blankets.</p>
+<p>And, you know, this is sort of</p>
+<p>intended to be a bit free energy principle.</p>
+<p>Perhaps bringing the notebook up</p>
+<p>would help.</p>
+<p>I'll ask the two questions,</p>
+<p>so return to them as you see fit.</p>
+<p>The first is,</p>
+<p>how do you specify the model?</p>
+<p>What does it look like before training?</p>
+<p>And what does get updated during training?</p>
+<p>And the second question is,</p>
+<p>how do you take that step as a modeler</p>
+<p>between the structure of a given problem,</p>
+<p>like the handwriting digits,</p>
+<p>and adapting that to what?</p>
+<p>Is that something more generic?</p>
+<p>Or does that graph need to already,</p>
+<p>from some other source,</p>
+<p>have structure that's amenable to the target?</p>
+<p>So the target density</p>
+<p>that we would try to sample from</p>
+<p>is defined by the graphical model structure.</p>
+<p>And like that, yeah,</p>
+<p>that has to come from somewhere.</p>
+<p>So conventionally,</p>
+<p>you know,</p>
+<p>if you're doing machine learning engineering,</p>
+<p>then that's sort of up to your choice</p>
+<p>as the user of our algorithm.</p>
+<p>You know,</p>
+<p>it depends on what,</p>
+<p>like,</p>
+<p>domain knowledge you have</p>
+<p>about your application.</p>
+<p>And if we were talking about brains,</p>
+<p>then that structure of the generative model</p>
+<p>is something that evolved.</p>
+<p>You know,</p>
+<p>and there could be,</p>
+<p>you know,</p>
+<p>and I should mention,</p>
+<p>you know,</p>
+<p>the recent versus work,</p>
+<p>like,</p>
+<p>of course,</p>
+<p>you can also have,</p>
+<p>you know,</p>
+<p>structure learning problems,</p>
+<p>you know,</p>
+<p>throughout,</p>
+<p>like,</p>
+<p>development,</p>
+<p>but,</p>
+<p>you know,</p>
+<p>throughout development</p>
+<p>and through certain behavioral tasks.</p>
+<p>But like,</p>
+<p>that gets you a bit beyond the realm</p>
+<p>of just graphical models.</p>
+<p>And so,</p>
+<p>you know,</p>
+<p>we,</p>
+<p>we basically aimed at</p>
+<p>just a given graphical model.</p>
+<p>Take a graphical model</p>
+<p>as given</p>
+<p>and try to do inference in it.</p>
+<p>You can work your way up</p>
+<p>to the harder stuff later.</p>
+<p>In practice,</p>
+<p>we often use deep neural networks</p>
+<p>because we,</p>
+<p>we try to replicate</p>
+<p>the experiments</p>
+<p>of other papers.</p>
+<p>So we had like multi layers</p>
+<p>and the convolutional models.</p>
+<p>Yeah,</p>
+<p>maybe share the notebook</p>
+<p>and or the repo.</p>
+<p>Working out.</p>
+<p>Yeah.</p>
+<p>Oh,</p>
+<p>the GitHub repo is like,</p>
+<p>yeah,</p>
+<p>we can share that pretty easily.</p>
+<p>Yeah.</p>
+<p>I'm going to put this</p>
+<p>first in the Zoom chat,</p>
+<p>then share my screen.</p>
+<p>Yeah.</p>
+<p>So in the GitHub repo,</p>
+<p>we try,</p>
+<p>we attempt.</p>
+<p>Just zoom in a little bit.</p>
+<p>That's actually like,</p>
+<p>sure.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>So in the GitHub repo,</p>
+<p>minus a requirements file,</p>
+<p>we try to share enough</p>
+<p>that you could hypothetically</p>
+<p>download and run this</p>
+<p>like just from your command line.</p>
+<p>You would need,</p>
+<p>you know,</p>
+<p>a Python environment</p>
+<p>that's got the necessary stuff installed,</p>
+<p>but all of that is standard stuff.</p>
+<p>So if you wanted to just rerun</p>
+<p>the MNIST experiment,</p>
+<p>you would literally run this command</p>
+<p>on your command line.</p>
+<p>And then you could also,</p>
+<p>you know,</p>
+<p>start your tensor board</p>
+<p>and watch it train.</p>
+<p>You know,</p>
+<p>then we include,</p>
+<p>like,</p>
+<p>evaluation notebooks</p>
+<p>that,</p>
+<p>you know,</p>
+<p>basically would help you</p>
+<p>to replicate the figures</p>
+<p>from the paper.</p>
+<p>And,</p>
+<p>yeah,</p>
+<p>we actually have</p>
+<p>yeah,</p>
+<p>we also share,</p>
+<p>you know,</p>
+<p>some pre-trained,</p>
+<p>like,</p>
+<p>weights and particles.</p>
+<p>I know that's</p>
+<p>probably a bit</p>
+<p>of a colliding name</p>
+<p>with,</p>
+<p>like,</p>
+<p>weights and biases.</p>
+<p>In this case,</p>
+<p>you know,</p>
+<p>the weights include the biases.</p>
+<p>Weights would mean</p>
+<p>neural network weights</p>
+<p>and then particles</p>
+<p>would mean,</p>
+<p>you know,</p>
+<p>the frozen samples</p>
+<p>from the posterior distribution</p>
+<p>for random variables.</p>
+<p>And then,</p>
+<p>of course,</p>
+<p>we just give,</p>
+<p>you know,</p>
+<p>the paper,</p>
+<p>or sorry,</p>
+<p>the table of results.</p>
+<p>And as a small bonus</p>
+<p>to everyone else</p>
+<p>who has to try</p>
+<p>and replicate our results,</p>
+<p>we include</p>
+<p>an implementation</p>
+<p>of the discretized</p>
+<p>Gaussian distribution,</p>
+<p>which is otherwise,</p>
+<p>like,</p>
+<p>buried in the</p>
+<p>diffusion models literature.</p>
+<p>Thank you very much.</p>
+<p>Yeah,</p>
+<p>and it's,</p>
+<p>you know,</p>
+<p>under MIT license,</p>
+<p>so, you know,</p>
+<p>you can pretty much</p>
+<p>go ahead and,</p>
+<p>like,</p>
+<p>fork this,</p>
+<p>contribute that.</p>
+<p>It's in the</p>
+<p>universal probabilistic</p>
+<p>programming language,</p>
+<p>Pyro,</p>
+<p>since that's basically,</p>
+<p>like,</p>
+<p>the largest</p>
+<p>deep probabilistic</p>
+<p>programming language.</p>
+<p>Let's take a look</p>
+<p>at some of the notebooks.</p>
+<p>Let's see.</p>
+<p>That one's</p>
+<p>going to look</p>
+<p>like garbage.</p>
+<p>This one's</p>
+<p>going to look</p>
+<p>like not garbage.</p>
+<p>Yeah,</p>
+<p>so,</p>
+<p>what this does</p>
+<p>is,</p>
+<p>you know,</p>
+<p>it's basically,</p>
+<p>like,</p>
+<p>PyTorch</p>
+<p>and PyTorch</p>
+<p>Lightning,</p>
+<p>you know,</p>
+<p>so you're going to,</p>
+<p>like,</p>
+<p>read some JSON</p>
+<p>file,</p>
+<p>and that's going</p>
+<p>to give you,</p>
+<p>you know,</p>
+<p>your data,</p>
+<p>your model,</p>
+<p>and your trainer.</p>
+<p>Then,</p>
+<p>you know,</p>
+<p>you're going to remind</p>
+<p>the trainer</p>
+<p>to just load</p>
+<p>the weights</p>
+<p>and particles</p>
+<p>from a checkpoint.</p>
+<p>You know,</p>
+<p>the random variables</p>
+<p>are saved as part</p>
+<p>of the PyTorch</p>
+<p>Lightning</p>
+<p>and checkpoints.</p>
+<p>Yeah.</p>
+<p>It loads them,</p>
+<p>blah,</p>
+<p>blah,</p>
+<p>blah,</p>
+<p>blah,</p>
+<p>blah.</p>
+<p>Right there,</p>
+<p>when it says</p>
+<p>357,000 trainable</p>
+<p>parameters,</p>
+<p>what is that</p>
+<p>number</p>
+<p>coming from?</p>
+<p>That is the number</p>
+<p>of neural network</p>
+<p>weight.</p>
+<p>Like,</p>
+<p>that's the number</p>
+<p>of float 64s</p>
+<p>in the neural</p>
+<p>network weights.</p>
+<p>So that's actually</p>
+<p>a relatively small</p>
+<p>number because</p>
+<p>this was sort</p>
+<p>of a toy problem,</p>
+<p>and normally</p>
+<p>it would be</p>
+<p>more in the</p>
+<p>millions.</p>
+<p>And where</p>
+<p>were those</p>
+<p>combinatorics</p>
+<p>specified?</p>
+<p>Right here</p>
+<p>in the</p>
+<p>architecture</p>
+<p>specification.</p>
+<p>That's after</p>
+<p>it,</p>
+<p>though.</p>
+<p>Yeah,</p>
+<p>because you have</p>
+<p>to load the</p>
+<p>thing to print</p>
+<p>the thing.</p>
+<p>Okay,</p>
+<p>okay,</p>
+<p>that's just</p>
+<p>printing it out.</p>
+<p>But you specified</p>
+<p>it elsewhere,</p>
+<p>what the structure</p>
+<p>would actually be,</p>
+<p>loaded it in,</p>
+<p>printed it out.</p>
+<p>Okay.</p>
+<p>Yeah,</p>
+<p>the JSON</p>
+<p>file,</p>
+<p>you know,</p>
+<p>it tells you</p>
+<p>like which</p>
+<p>modules in the</p>
+<p>Python code</p>
+<p>that you have</p>
+<p>to load</p>
+<p>and all of</p>
+<p>that.</p>
+<p>So if we</p>
+<p>go look at,</p>
+<p>you know,</p>
+<p>what is the</p>
+<p>actual training</p>
+<p>file that we</p>
+<p>were loading</p>
+<p>here,</p>
+<p>it tells you,</p>
+<p>you know,</p>
+<p>load this</p>
+<p>model,</p>
+<p>module,</p>
+<p>pass it these</p>
+<p>hyperparams,</p>
+<p>checkpoint this</p>
+<p>often,</p>
+<p>you know,</p>
+<p>load this</p>
+<p>data set</p>
+<p>with like</p>
+<p>this hyperparam</p>
+<p>parameter and</p>
+<p>batch size.</p>
+<p>You know,</p>
+<p>here's like</p>
+<p>learning rates</p>
+<p>and the</p>
+<p>number of</p>
+<p>particles,</p>
+<p>you know,</p>
+<p>the number</p>
+<p>of sweeps,</p>
+<p>meaning like</p>
+<p>passes over</p>
+<p>the graphical</p>
+<p>model,</p>
+<p>you know,</p>
+<p>that you do</p>
+<p>per training</p>
+<p>step.</p>
+<p>Yeah,</p>
+<p>this is like</p>
+<p>relatively standard</p>
+<p>deep learning</p>
+<p>type stuff.</p>
+<p>yeah,</p>
+<p>and when we've</p>
+<p>loaded the</p>
+<p>architecture,</p>
+<p>we actually</p>
+<p>print it out.</p>
+<p>You know,</p>
+<p>so it's a</p>
+<p>simple like</p>
+<p>isotropic</p>
+<p>Gaussian prior,</p>
+<p>and then we're</p>
+<p>running it</p>
+<p>through,</p>
+<p>you know,</p>
+<p>a linear</p>
+<p>layer,</p>
+<p>an activation</p>
+<p>function,</p>
+<p>you know,</p>
+<p>a</p>
+<p>deconvolution</p>
+<p>layer,</p>
+<p>some batch,</p>
+<p>you know,</p>
+<p>the,</p>
+<p>you know,</p>
+<p>each layer</p>
+<p>includes</p>
+<p>batch</p>
+<p>normalization,</p>
+<p>you know,</p>
+<p>two more</p>
+<p>convolutional</p>
+<p>layers with</p>
+<p>their batch</p>
+<p>normalization</p>
+<p>and nonlinearity,</p>
+<p>two more</p>
+<p>convolutional</p>
+<p>layers again,</p>
+<p>and then</p>
+<p>finally a</p>
+<p>deconvolutional</p>
+<p>layer that</p>
+<p>gives you the</p>
+<p>correct image</p>
+<p>size and</p>
+<p>channel number.</p>
+<p>well,</p>
+<p>that's rude.</p>
+<p>Anyway,</p>
+<p>yeah,</p>
+<p>so then</p>
+<p>we have</p>
+<p>this method</p>
+<p>we call</p>
+<p>load</p>
+<p>particles,</p>
+<p>which just</p>
+<p>tells you</p>
+<p>that's really</p>
+<p>for loading</p>
+<p>the particles</p>
+<p>into GPU</p>
+<p>memory,</p>
+<p>once you</p>
+<p>know which</p>
+<p>data items</p>
+<p>you're testing</p>
+<p>on,</p>
+<p>again,</p>
+<p>like relatively</p>
+<p>standard,</p>
+<p>you know,</p>
+<p>deep learning</p>
+<p>stuff,</p>
+<p>you know,</p>
+<p>then here</p>
+<p>we say</p>
+<p>we're going</p>
+<p>to open</p>
+<p>a Python</p>
+<p>context</p>
+<p>handler</p>
+<p>by,</p>
+<p>you know,</p>
+<p>clamping</p>
+<p>the graphical</p>
+<p>model</p>
+<p>to the</p>
+<p>pre-trained</p>
+<p>particles</p>
+<p>that we</p>
+<p>loaded</p>
+<p>from disk.</p>
+<p>disk.</p>
+<p>So,</p>
+<p>you know,</p>
+<p>if you</p>
+<p>load</p>
+<p>your</p>
+<p>posterior</p>
+<p>particle</p>
+<p>cloud</p>
+<p>from disk,</p>
+<p>then you</p>
+<p>have to</p>
+<p>say to</p>
+<p>the graphical</p>
+<p>model,</p>
+<p>I'm testing</p>
+<p>right now,</p>
+<p>don't do</p>
+<p>any additional</p>
+<p>inference</p>
+<p>steps,</p>
+<p>just use</p>
+<p>these</p>
+<p>samples,</p>
+<p>you know,</p>
+<p>as your</p>
+<p>distribution.</p>
+<p>So,</p>
+<p>then we</p>
+<p>run,</p>
+<p>we average</p>
+<p>over</p>
+<p>particles</p>
+<p>to get</p>
+<p>our</p>
+<p>reconstructions</p>
+<p>of,</p>
+<p>you know,</p>
+<p>training</p>
+<p>images.</p>
+<p>Now we're</p>
+<p>going to</p>
+<p>plot them.</p>
+<p>Here's the</p>
+<p>actual</p>
+<p>reconstructions,</p>
+<p>so like</p>
+<p>they're,</p>
+<p>you know,</p>
+<p>kind of blurry</p>
+<p>like you expect</p>
+<p>from a VAE,</p>
+<p>but it</p>
+<p>shows that,</p>
+<p>you know,</p>
+<p>things did</p>
+<p>actually work.</p>
+<p>Then you</p>
+<p>say,</p>
+<p>okay,</p>
+<p>I don't</p>
+<p>want to</p>
+<p>look at</p>
+<p>reconstructions</p>
+<p>of training</p>
+<p>images,</p>
+<p>you know,</p>
+<p>I want to</p>
+<p>know,</p>
+<p>do I</p>
+<p>have a</p>
+<p>trained</p>
+<p>generative</p>
+<p>model?</p>
+<p>So you</p>
+<p>clear all</p>
+<p>that stuff</p>
+<p>out,</p>
+<p>and you're</p>
+<p>going to</p>
+<p>get all</p>
+<p>of the</p>
+<p>training</p>
+<p>and validation,</p>
+<p>you know,</p>
+<p>particles</p>
+<p>from</p>
+<p>disk</p>
+<p>for</p>
+<p>training</p>
+<p>your,</p>
+<p>you know,</p>
+<p>for fitting</p>
+<p>your pseudoposterior,</p>
+<p>and you're</p>
+<p>going to</p>
+<p>predict some</p>
+<p>new images,</p>
+<p>you know,</p>
+<p>using the</p>
+<p>pseudoposterior.</p>
+<p>Then,</p>
+<p>lo and</p>
+<p>behold,</p>
+<p>you know,</p>
+<p>you plot</p>
+<p>out the</p>
+<p>samples from</p>
+<p>the pseudoposterior.</p>
+<p>They're kind</p>
+<p>of blurry,</p>
+<p>and they're</p>
+<p>not as</p>
+<p>varied as</p>
+<p>you would</p>
+<p>sort of</p>
+<p>like them</p>
+<p>to be,</p>
+<p>but that</p>
+<p>is what</p>
+<p>happens when</p>
+<p>you have</p>
+<p>a very</p>
+<p>simple</p>
+<p>generative</p>
+<p>model.</p>
+<p>Like,</p>
+<p>you know,</p>
+<p>if you go</p>
+<p>back to this</p>
+<p>neural</p>
+<p>architecture</p>
+<p>here,</p>
+<p>this is</p>
+<p>nothing like</p>
+<p>a state-of-the-art</p>
+<p>diffusion model</p>
+<p>or whatever</p>
+<p>that you would</p>
+<p>use for image</p>
+<p>generation.</p>
+<p>It's really</p>
+<p>just a bunch</p>
+<p>of neural</p>
+<p>layers stuck</p>
+<p>together,</p>
+<p>mapping a</p>
+<p>latent</p>
+<p>variable to</p>
+<p>an observation.</p>
+<p>variation.</p>
+<p>Yeah.</p>
+<p>And then</p>
+<p>we're going</p>
+<p>to,</p>
+<p>you know,</p>
+<p>having</p>
+<p>generated</p>
+<p>those,</p>
+<p>we go</p>
+<p>through,</p>
+<p>we calculate,</p>
+<p>you know,</p>
+<p>some metrics</p>
+<p>across the</p>
+<p>validation data</p>
+<p>under a</p>
+<p>series of</p>
+<p>different random</p>
+<p>seeds.</p>
+<p>We can also</p>
+<p>sample from</p>
+<p>the prior</p>
+<p>rather than</p>
+<p>the pseudoposterior,</p>
+<p>and that</p>
+<p>gives us</p>
+<p>lower visual</p>
+<p>quality but</p>
+<p>more variation,</p>
+<p>more realistic</p>
+<p>variation.</p>
+<p>And then,</p>
+<p>you know,</p>
+<p>we calculate</p>
+<p>the statistics</p>
+<p>that we reported</p>
+<p>in the paper.</p>
+<p>Plus some</p>
+<p>statistics we</p>
+<p>don't report</p>
+<p>in the paper</p>
+<p>now that I</p>
+<p>think of it.</p>
+<p>Like the</p>
+<p>effective</p>
+<p>sample size,</p>
+<p>that one's a</p>
+<p>good one for</p>
+<p>inference nerds.</p>
+<p>You know,</p>
+<p>you divide that</p>
+<p>by the number</p>
+<p>of particles</p>
+<p>you're using</p>
+<p>and it gives</p>
+<p>you a sort</p>
+<p>of percentage</p>
+<p>that tells</p>
+<p>you,</p>
+<p>you know,</p>
+<p>how well</p>
+<p>are you</p>
+<p>actually fitting</p>
+<p>the true</p>
+<p>posterior</p>
+<p>distribution</p>
+<p>with this</p>
+<p>batch of</p>
+<p>samples.</p>
+<p>And in</p>
+<p>our case,</p>
+<p>the answer</p>
+<p>is,</p>
+<p>yeah,</p>
+<p>about 92%</p>
+<p>effective</p>
+<p>samples.</p>
+<p>Thanks.</p>
+<p>Maybe</p>
+<p>could we</p>
+<p>walk through</p>
+<p>a similar</p>
+<p>logic for</p>
+<p>the MNIST</p>
+<p>handwriting?</p>
+<p>Yeah,</p>
+<p>totally.</p>
+<p>Let's see.</p>
+<p>I think it</p>
+<p>would be</p>
+<p>almost equivalent.</p>
+<p>It's just</p>
+<p>that we use</p>
+<p>a different</p>
+<p>model.</p>
+<p>Yeah,</p>
+<p>it's pretty</p>
+<p>much the</p>
+<p>same,</p>
+<p>but with,</p>
+<p>you'll notice</p>
+<p>there's</p>
+<p>quote-unquote</p>
+<p>three decoders</p>
+<p>here.</p>
+<p>So each</p>
+<p>of these</p>
+<p>is actually</p>
+<p>performing,</p>
+<p>you know,</p>
+<p>a random</p>
+<p>Gaussian sampling</p>
+<p>step</p>
+<p>in between.</p>
+<p>So this</p>
+<p>is a</p>
+<p>proper</p>
+<p>hierarchical</p>
+<p>Bayesian</p>
+<p>problem.</p>
+<p>So you</p>
+<p>have a</p>
+<p>prior,</p>
+<p>then you</p>
+<p>have a</p>
+<p>forward</p>
+<p>conditional</p>
+<p>and a</p>
+<p>forward</p>
+<p>conditional.</p>
+<p>So you</p>
+<p>have three</p>
+<p>levels of</p>
+<p>latent</p>
+<p>variables,</p>
+<p>and then</p>
+<p>finally you</p>
+<p>have your</p>
+<p>likelihood.</p>
+<p>What</p>
+<p>leads you</p>
+<p>to use</p>
+<p>those</p>
+<p>here?</p>
+<p>Like,</p>
+<p>do you</p>
+<p>sweep</p>
+<p>or scan</p>
+<p>over</p>
+<p>two,</p>
+<p>three,</p>
+<p>four layers?</p>
+<p>Do you</p>
+<p>explore out</p>
+<p>features equals</p>
+<p>other</p>
+<p>multipliers?</p>
+<p>Or what</p>
+<p>led you to</p>
+<p>this</p>
+<p>specification</p>
+<p>for the</p>
+<p>Lightning</p>
+<p>DCPC?</p>
+<p>So</p>
+<p>in this</p>
+<p>case,</p>
+<p>we took</p>
+<p>this exact</p>
+<p>specification</p>
+<p>from</p>
+<p>Monte Carlo</p>
+<p>predictive</p>
+<p>coding,</p>
+<p>which is</p>
+<p>over</p>
+<p>here.</p>
+<p>So we</p>
+<p>wanted to</p>
+<p>compare</p>
+<p>inference</p>
+<p>algorithms</p>
+<p>head to</p>
+<p>head.</p>
+<p>So we</p>
+<p>picked</p>
+<p>exactly the</p>
+<p>same</p>
+<p>generative</p>
+<p>model</p>
+<p>structure</p>
+<p>and</p>
+<p>replicated</p>
+<p>it.</p>
+<p>Awesome.</p>
+<p>Yeah,</p>
+<p>that makes</p>
+<p>a lot of</p>
+<p>sense and</p>
+<p>it helps</p>
+<p>with the</p>
+<p>continuity</p>
+<p>and</p>
+<p>isolating</p>
+<p>the</p>
+<p>inference</p>
+<p>algorithmic</p>
+<p>component.</p>
+<p>is there</p>
+<p>methods</p>
+<p>or</p>
+<p>procedural</p>
+<p>step</p>
+<p>anywhere</p>
+<p>other</p>
+<p>than</p>
+<p>these</p>
+<p>or</p>
+<p>all</p>
+<p>that</p>
+<p>are</p>
+<p>needed,</p>
+<p>these</p>
+<p>JSON</p>
+<p>configs</p>
+<p>and the</p>
+<p>notebooks</p>
+<p>like this?</p>
+<p>So this</p>
+<p>is runnable,</p>
+<p>like this</p>
+<p>should be</p>
+<p>runnable</p>
+<p>if you</p>
+<p>actually</p>
+<p>just</p>
+<p>download</p>
+<p>it and</p>
+<p>follow the</p>
+<p>links to</p>
+<p>download the</p>
+<p>pre-trained</p>
+<p>weights,</p>
+<p>put them</p>
+<p>in the</p>
+<p>path that</p>
+<p>the notebook</p>
+<p>expects</p>
+<p>here,</p>
+<p>then you</p>
+<p>should just</p>
+<p>be able to</p>
+<p>run this.</p>
+<p>It should</p>
+<p>be point</p>
+<p>and click.</p>
+<p>I say</p>
+<p>should</p>
+<p>because</p>
+<p>you know,</p>
+<p>like I've</p>
+<p>tried it,</p>
+<p>but I've</p>
+<p>tried it</p>
+<p>once.</p>
+<p>Cool.</p>
+<p>Definitely</p>
+<p>opportunities for</p>
+<p>people to</p>
+<p>explore.</p>
+<p>And then what</p>
+<p>about the</p>
+<p>training</p>
+<p>step?</p>
+<p>So that</p>
+<p>would be</p>
+<p>done from</p>
+<p>the command</p>
+<p>line as</p>
+<p>the repo</p>
+<p>readme</p>
+<p>tells us.</p>
+<p>that's</p>
+<p>this step.</p>
+<p>And you</p>
+<p>watch on</p>
+<p>TensorBoard</p>
+<p>and make</p>
+<p>a manual</p>
+<p>call based</p>
+<p>on diagnostics</p>
+<p>or how</p>
+<p>else do</p>
+<p>you determine?</p>
+<p>I mean,</p>
+<p>I would</p>
+<p>generally say</p>
+<p>let it run,</p>
+<p>at least for</p>
+<p>these experiments,</p>
+<p>let it run</p>
+<p>to completion.</p>
+<p>Like,</p>
+<p>you know,</p>
+<p>I know that</p>
+<p>if I'm</p>
+<p>stopping</p>
+<p>something</p>
+<p>partway in</p>
+<p>because of</p>
+<p>the diagnostics</p>
+<p>I see on</p>
+<p>TensorFlow,</p>
+<p>you know,</p>
+<p>like for</p>
+<p>instance,</p>
+<p>a very</p>
+<p>noisy,</p>
+<p>staticky,</p>
+<p>like,</p>
+<p>loss curve,</p>
+<p>well,</p>
+<p>that's how</p>
+<p>I know</p>
+<p>when it's</p>
+<p>not working.</p>
+<p>You know,</p>
+<p>the experiments</p>
+<p>that are</p>
+<p>mentioned in</p>
+<p>the paper</p>
+<p>are actually,</p>
+<p>you know,</p>
+<p>known to</p>
+<p>work.</p>
+<p>Like,</p>
+<p>you can just</p>
+<p>leave that</p>
+<p>running until</p>
+<p>it's done</p>
+<p>and you</p>
+<p>will get,</p>
+<p>you know,</p>
+<p>subject to</p>
+<p>differences in</p>
+<p>your random</p>
+<p>number generator</p>
+<p>more or</p>
+<p>less the</p>
+<p>result be</p>
+<p>got in</p>
+<p>the paper.</p>
+<p>I actually</p>
+<p>want to say,</p>
+<p>like,</p>
+<p>this is one</p>
+<p>of the nice</p>
+<p>things about</p>
+<p>the,</p>
+<p>like,</p>
+<p>sort of the</p>
+<p>culture of</p>
+<p>machine learning</p>
+<p>these days,</p>
+<p>is that</p>
+<p>everything is</p>
+<p>really expected</p>
+<p>to be</p>
+<p>not just</p>
+<p>replicable,</p>
+<p>but,</p>
+<p>like,</p>
+<p>idiot-proof</p>
+<p>replicable.</p>
+<p>As in,</p>
+<p>if you</p>
+<p>cannot just</p>
+<p>run this</p>
+<p>by rote</p>
+<p>and get</p>
+<p>the same</p>
+<p>result,</p>
+<p>then reviewers</p>
+<p>don't believe</p>
+<p>the result</p>
+<p>is real.</p>
+<p>Which is,</p>
+<p>you know,</p>
+<p>very much for,</p>
+<p>like,</p>
+<p>replicability</p>
+<p>of science</p>
+<p>the way</p>
+<p>it actually</p>
+<p>should be.</p>
+<p>So we</p>
+<p>looked at</p>
+<p>faces and</p>
+<p>digits.</p>
+<p>Let's say</p>
+<p>somebody were</p>
+<p>looking at</p>
+<p>another kind</p>
+<p>of image</p>
+<p>classification</p>
+<p>problem,</p>
+<p>cats and</p>
+<p>dogs.</p>
+<p>so what</p>
+<p>would need</p>
+<p>to be</p>
+<p>adapted?</p>
+<p>What kind</p>
+<p>of data</p>
+<p>would be</p>
+<p>in for</p>
+<p>the training</p>
+<p>step?</p>
+<p>And then</p>
+<p>to what</p>
+<p>extent do</p>
+<p>these same</p>
+<p>Lightning</p>
+<p>DCPC</p>
+<p>specs,</p>
+<p>structures</p>
+<p>work?</p>
+<p>Or to</p>
+<p>what extent</p>
+<p>do the</p>
+<p>first or</p>
+<p>the secondary</p>
+<p>layers need</p>
+<p>to be</p>
+<p>adapted to</p>
+<p>alternative</p>
+<p>cases?</p>
+<p>So this</p>
+<p>thing that</p>
+<p>gets called</p>
+<p>a graph</p>
+<p>inside the</p>
+<p>Lightning</p>
+<p>DCPC,</p>
+<p>you'd have</p>
+<p>to write</p>
+<p>a new</p>
+<p>one of</p>
+<p>these</p>
+<p>classes</p>
+<p>for a</p>
+<p>new</p>
+<p>problem.</p>
+<p>So let's</p>
+<p>say,</p>
+<p>for instance,</p>
+<p>that you</p>
+<p>want to</p>
+<p>do</p>
+<p>semi-supervised</p>
+<p>Bayesian</p>
+<p>learning.</p>
+<p>My old</p>
+<p>advisor from</p>
+<p>my PhD</p>
+<p>had a</p>
+<p>paper about</p>
+<p>that.</p>
+<p>So if</p>
+<p>you're doing,</p>
+<p>say,</p>
+<p>cats or</p>
+<p>dogs,</p>
+<p>then you're</p>
+<p>going to</p>
+<p>want to</p>
+<p>specify a</p>
+<p>new graphical</p>
+<p>structure that's</p>
+<p>rooted in a</p>
+<p>prior</p>
+<p>latent</p>
+<p>embedding.</p>
+<p>And then it</p>
+<p>should have</p>
+<p>a pair of</p>
+<p>likelihoods,</p>
+<p>essentially,</p>
+<p>one being to</p>
+<p>the class</p>
+<p>label,</p>
+<p>which is</p>
+<p>going to</p>
+<p>be semi-supervised.</p>
+<p>So let's</p>
+<p>say you only</p>
+<p>get class</p>
+<p>labels on</p>
+<p>about half</p>
+<p>the samples.</p>
+<p>And the</p>
+<p>other is</p>
+<p>going to</p>
+<p>be for the</p>
+<p>actual image,</p>
+<p>which is going</p>
+<p>to be fully</p>
+<p>observed.</p>
+<p>after writing</p>
+<p>a</p>
+<p>high-torch</p>
+<p>lightning data</p>
+<p>module for</p>
+<p>your data</p>
+<p>set,</p>
+<p>which</p>
+<p>tells you</p>
+<p>when,</p>
+<p>which,</p>
+<p>sorry,</p>
+<p>it handles</p>
+<p>figuring out</p>
+<p>which data</p>
+<p>points are</p>
+<p>supervised</p>
+<p>versus</p>
+<p>unsupervised,</p>
+<p>because it's a</p>
+<p>semi-supervised</p>
+<p>problem.</p>
+<p>And then,</p>
+<p>yeah, you would</p>
+<p>put that</p>
+<p>together and</p>
+<p>run it more</p>
+<p>or less,</p>
+<p>you know, you</p>
+<p>would write</p>
+<p>another little</p>
+<p>JSON file and</p>
+<p>just run it.</p>
+<p>And hopefully</p>
+<p>you would get,</p>
+<p>hopefully, if</p>
+<p>your, you know,</p>
+<p>architecture for the</p>
+<p>generative model is</p>
+<p>rich enough,</p>
+<p>then your latent</p>
+<p>embedding space</p>
+<p>should begin to</p>
+<p>capture, you</p>
+<p>know, differences</p>
+<p>between the</p>
+<p>supervised classes</p>
+<p>and be, you</p>
+<p>know, and give</p>
+<p>you good prediction</p>
+<p>on classification.</p>
+<p>And then if you</p>
+<p>wanted to do</p>
+<p>classification-style</p>
+<p>testing or</p>
+<p>evaluation,</p>
+<p>you know, you</p>
+<p>would present a</p>
+<p>whole new image</p>
+<p>as the</p>
+<p>observation</p>
+<p>and then just</p>
+<p>perform joint</p>
+<p>Bayesian inference</p>
+<p>on both the</p>
+<p>latent embedding</p>
+<p>and the</p>
+<p>class label</p>
+<p>and then check</p>
+<p>that your class</p>
+<p>labels are</p>
+<p>good, so to</p>
+<p>speak.</p>
+<p>You know, for an</p>
+<p>unobserved class</p>
+<p>label, you're not</p>
+<p>getting a one-hot</p>
+<p>vector, you're</p>
+<p>getting, you</p>
+<p>know, a series</p>
+<p>of logits or</p>
+<p>like an element</p>
+<p>on the simplex</p>
+<p>that specifies</p>
+<p>probabilities of</p>
+<p>class membership.</p>
+<p>so hence my</p>
+<p>saying good</p>
+<p>rather than</p>
+<p>absolutely</p>
+<p>correct.</p>
+<p>You never get a</p>
+<p>completely absolute</p>
+<p>yes-no answer out</p>
+<p>of a classifier</p>
+<p>at test time,</p>
+<p>at least.</p>
+<p>I think in</p>
+<p>general, you could</p>
+<p>also generalize it</p>
+<p>to different kinds</p>
+<p>of data, of data</p>
+<p>types.</p>
+<p>So it does not</p>
+<p>have to be, for</p>
+<p>example, continuous</p>
+<p>data as images.</p>
+<p>You could be, you</p>
+<p>could generate</p>
+<p>discrete distribution</p>
+<p>distribution or you</p>
+<p>could also generate</p>
+<p>time series</p>
+<p>distribution.</p>
+<p>This is something</p>
+<p>that has not been</p>
+<p>tested in this</p>
+<p>paper, but in</p>
+<p>theory, the</p>
+<p>theoretical framework</p>
+<p>would allow to</p>
+<p>do so.</p>
+<p>Yeah, like we</p>
+<p>have an appendix in</p>
+<p>the paper that</p>
+<p>extends the math</p>
+<p>to discrete</p>
+<p>distributions.</p>
+<p>You know, that</p>
+<p>does take a</p>
+<p>mathematical</p>
+<p>extension and</p>
+<p>then that, you</p>
+<p>know, would</p>
+<p>take some more</p>
+<p>coding.</p>
+<p>So like we</p>
+<p>don't, you</p>
+<p>know, make any</p>
+<p>promises there.</p>
+<p>So in, in</p>
+<p>past dreams and</p>
+<p>journeys, Eli, as</p>
+<p>you mentioned, we</p>
+<p>discussed with</p>
+<p>Dean and others</p>
+<p>the anticipatory</p>
+<p>allostasis.</p>
+<p>And then</p>
+<p>we discussed the</p>
+<p>causal modeling.</p>
+<p>So where, where</p>
+<p>would you</p>
+<p>triangulate this</p>
+<p>work?</p>
+<p>Or how do you</p>
+<p>see it as sort</p>
+<p>of drawing</p>
+<p>on or</p>
+<p>complimenting or</p>
+<p>not?</p>
+<p>But it's just</p>
+<p>interesting that</p>
+<p>it's, it's not a</p>
+<p>homeostatic model.</p>
+<p>Often in the</p>
+<p>organismal,</p>
+<p>ethological active</p>
+<p>inference, there's a</p>
+<p>lot of focus on</p>
+<p>organismal behavior</p>
+<p>in these kinds of</p>
+<p>topics, homeostasis,</p>
+<p>allostasis being</p>
+<p>critical there.</p>
+<p>And then in the</p>
+<p>Bayesian modeling</p>
+<p>space, often</p>
+<p>there's a focus on</p>
+<p>the interpretability</p>
+<p>of smaller</p>
+<p>models and</p>
+<p>carving nature at</p>
+<p>the joints and</p>
+<p>all of that, not</p>
+<p>this more</p>
+<p>machine learning</p>
+<p>sort of specify</p>
+<p>it in a</p>
+<p>sequence of</p>
+<p>convolutional</p>
+<p>layers.</p>
+<p>So how do you</p>
+<p>see all, just,</p>
+<p>just having worked</p>
+<p>on those different</p>
+<p>areas, how do</p>
+<p>each of you see,</p>
+<p>I mean, because</p>
+<p>clearly this is a</p>
+<p>relevant contribution</p>
+<p>and advance.</p>
+<p>So in what</p>
+<p>direction or how do</p>
+<p>you relate it with</p>
+<p>those prior pieces?</p>
+<p>I think it depends</p>
+<p>in which direction</p>
+<p>you want to, you</p>
+<p>want to push this</p>
+<p>work a little bit</p>
+<p>forward.</p>
+<p>So for example, if</p>
+<p>we're looking at the</p>
+<p>machine learning</p>
+<p>side and we want to</p>
+<p>scale it up to</p>
+<p>larger models, larger</p>
+<p>convolutional</p>
+<p>networks, you don't</p>
+<p>get interpretability</p>
+<p>because of this</p>
+<p>method.</p>
+<p>I think the same</p>
+<p>interpretability you</p>
+<p>would have with the</p>
+<p>old algorithms, you</p>
+<p>have them with this</p>
+<p>one.</p>
+<p>What you gain</p>
+<p>apparently, what this</p>
+<p>work shows, is that</p>
+<p>you get better</p>
+<p>performance.</p>
+<p>But then of course,</p>
+<p>if you apply to, for</p>
+<p>example, directed</p>
+<p>graphical models or</p>
+<p>Bayesian networks that</p>
+<p>have a specific</p>
+<p>causal structure that</p>
+<p>you can observe, in</p>
+<p>that case, you're</p>
+<p>able to state, you</p>
+<p>can do, for</p>
+<p>example, the</p>
+<p>intervention kind</p>
+<p>queries that I</p>
+<p>presented here like a</p>
+<p>year ago or</p>
+<p>something like that.</p>
+<p>But I think that's</p>
+<p>not in the</p>
+<p>algorithm, it's more</p>
+<p>in the kind of</p>
+<p>model you pick up.</p>
+<p>Yeah, it's the kind</p>
+<p>of task that you</p>
+<p>want to solve.</p>
+<p>And whether you</p>
+<p>care about it or</p>
+<p>not.</p>
+<p>So let's say maybe</p>
+<p>for generating</p>
+<p>phases for now, we</p>
+<p>did not care about</p>
+<p>having an interpretable</p>
+<p>model.</p>
+<p>What would you</p>
+<p>say?</p>
+<p>Yeah, Eli.</p>
+<p>I would sort of</p>
+<p>compare it to</p>
+<p>something like a</p>
+<p>car engine.</p>
+<p>You know, you</p>
+<p>need to design a</p>
+<p>car engine of a</p>
+<p>certain size and</p>
+<p>power in order to</p>
+<p>put in a certain,</p>
+<p>you know,</p>
+<p>in order to put in</p>
+<p>a certain like weight</p>
+<p>class of vehicle.</p>
+<p>But that doesn't</p>
+<p>actually determine,</p>
+<p>you know, whether</p>
+<p>that vehicle is a</p>
+<p>Honda or a Jaguar.</p>
+<p>If it's the same</p>
+<p>size and, you know,</p>
+<p>weight class, then you</p>
+<p>can actually use a</p>
+<p>very similar engine</p>
+<p>inside both of</p>
+<p>them.</p>
+<p>And I think that's</p>
+<p>sort of on the one</p>
+<p>hand, the both the</p>
+<p>beauty and the pain</p>
+<p>in the ass of working</p>
+<p>with Bayesian</p>
+<p>methods, is that,</p>
+<p>you know, the</p>
+<p>promise on the</p>
+<p>sticker is that</p>
+<p>here's Bayesian</p>
+<p>methods and you're</p>
+<p>going to solve a</p>
+<p>very broad range of</p>
+<p>problems with, by</p>
+<p>reducing them to the</p>
+<p>same problem, which</p>
+<p>is Bayesian</p>
+<p>inference.</p>
+<p>And that's, you</p>
+<p>know, sort of what</p>
+<p>the free energy</p>
+<p>principle is all</p>
+<p>about, is saying</p>
+<p>it's all really just</p>
+<p>reducible to</p>
+<p>variational inference,</p>
+<p>right?</p>
+<p>But now what you</p>
+<p>do find, if you go</p>
+<p>look at like Pi</p>
+<p>MDP or a lot of,</p>
+<p>you know, free</p>
+<p>energy type papers,</p>
+<p>is that they'll</p>
+<p>design a model for</p>
+<p>the paper in order</p>
+<p>to model some piece</p>
+<p>of interesting</p>
+<p>organismic behavior,</p>
+<p>but they'll include</p>
+<p>some real</p>
+<p>restrictions on the</p>
+<p>expressivity of that</p>
+<p>model, which is that</p>
+<p>it has to be</p>
+<p>solvable by something</p>
+<p>like, say,</p>
+<p>variational message</p>
+<p>passing.</p>
+<p>So then there's</p>
+<p>the question of,</p>
+<p>well, how do you</p>
+<p>stop restricting</p>
+<p>the model class</p>
+<p>according to what</p>
+<p>inference algorithm</p>
+<p>you're going to</p>
+<p>use?</p>
+<p>And that was really</p>
+<p>like the dirty</p>
+<p>secret of Bayesian</p>
+<p>methods that I</p>
+<p>learned in grad</p>
+<p>school was you're</p>
+<p>always restricting</p>
+<p>the model class</p>
+<p>to what you have a</p>
+<p>good inference</p>
+<p>algorithm for.</p>
+<p>Or at absolutely</p>
+<p>last resort,</p>
+<p>you know, running</p>
+<p>something like</p>
+<p>plain old</p>
+<p>Metropolis Hastings</p>
+<p>with a Gaussian</p>
+<p>random walk</p>
+<p>proposal and</p>
+<p>just waiting for</p>
+<p>like three weeks</p>
+<p>of compute and</p>
+<p>hoping.</p>
+<p>So, you know,</p>
+<p>what we actually</p>
+<p>want to do here</p>
+<p>is to say we</p>
+<p>have a better</p>
+<p>engine.</p>
+<p>Like, literally,</p>
+<p>we have a better</p>
+<p>inference engine.</p>
+<p>You don't have</p>
+<p>to, you know,</p>
+<p>now structure an</p>
+<p>entire neural</p>
+<p>network architecture</p>
+<p>of inference</p>
+<p>proposals.</p>
+<p>You know, you</p>
+<p>don't have to</p>
+<p>play graduate</p>
+<p>student descent</p>
+<p>with your</p>
+<p>inference algorithm</p>
+<p>too much.</p>
+<p>You know,</p>
+<p>let's, assuming</p>
+<p>that, you know,</p>
+<p>brains have</p>
+<p>some kind of</p>
+<p>wondrous generic</p>
+<p>inference algorithm</p>
+<p>that solves so</p>
+<p>many different</p>
+<p>Bayesian</p>
+<p>problems all at</p>
+<p>once.</p>
+<p>you know,</p>
+<p>let's try to</p>
+<p>model that and</p>
+<p>then just use</p>
+<p>it because it'll</p>
+<p>be more powerful</p>
+<p>and more efficient</p>
+<p>than, you know,</p>
+<p>customizing to the</p>
+<p>particular generative</p>
+<p>model you want.</p>
+<p>and, you know,</p>
+<p>really it's like</p>
+<p>first baby steps</p>
+<p>but it is</p>
+<p>encouraging that,</p>
+<p>you know,</p>
+<p>if you,</p>
+<p>I think we show</p>
+<p>in the table,</p>
+<p>yes, like we</p>
+<p>trained a</p>
+<p>variational auto</p>
+<p>encoder, you</p>
+<p>know, as a</p>
+<p>baseline to say,</p>
+<p>well, what if</p>
+<p>you're doing</p>
+<p>variational inference</p>
+<p>by actually, you</p>
+<p>know, training a</p>
+<p>neural network to</p>
+<p>do it for you</p>
+<p>and it's</p>
+<p>encouraging to</p>
+<p>show that we</p>
+<p>can do a</p>
+<p>little bit better</p>
+<p>with like a</p>
+<p>generic inference</p>
+<p>algorithm that</p>
+<p>doesn't need a</p>
+<p>separate neural</p>
+<p>architecture, you</p>
+<p>know, compared</p>
+<p>to like build a</p>
+<p>second neural</p>
+<p>network and</p>
+<p>train it jointly</p>
+<p>with the first</p>
+<p>one.</p>
+<p>I think</p>
+<p>something that</p>
+<p>is also</p>
+<p>exciting about</p>
+<p>this, I mean,</p>
+<p>at least for me,</p>
+<p>is that we,</p>
+<p>like, we've</p>
+<p>been, we've</p>
+<p>been working a</p>
+<p>lot with</p>
+<p>predictive coding</p>
+<p>algorithms for</p>
+<p>machine learning</p>
+<p>in, and I</p>
+<p>guess you can</p>
+<p>clearly separate</p>
+<p>them in like</p>
+<p>supervised learning</p>
+<p>and unsupervised</p>
+<p>learning.</p>
+<p>And in</p>
+<p>supervised learning,</p>
+<p>for example,</p>
+<p>you train like</p>
+<p>large convolutional</p>
+<p>models on C410,</p>
+<p>C4100, or</p>
+<p>timing image net,</p>
+<p>it seems that</p>
+<p>we've kind of</p>
+<p>like hit a</p>
+<p>momentary wall.</p>
+<p>So it's, up to a</p>
+<p>certain point, it's</p>
+<p>becoming really hard</p>
+<p>to scale up those</p>
+<p>algorithms.</p>
+<p>things.</p>
+<p>And I think like the</p>
+<p>whole community, and</p>
+<p>it's not only</p>
+<p>predictive coding, like</p>
+<p>when I talk with, for</p>
+<p>example, the</p>
+<p>equilibrium propagation</p>
+<p>pre people with the</p>
+<p>bio plausible deep</p>
+<p>learning community,</p>
+<p>there's a kind of</p>
+<p>similar problem that</p>
+<p>is when the model is</p>
+<p>more than seven,</p>
+<p>eight layers deep, it</p>
+<p>doesn't perform well.</p>
+<p>And for example,</p>
+<p>scaling it up to</p>
+<p>image net is a</p>
+<p>pain.</p>
+<p>So a lot of people are</p>
+<p>taking a step back and</p>
+<p>say, okay, let's do a</p>
+<p>little bit more research</p>
+<p>to find out why and</p>
+<p>generalize and try to</p>
+<p>improve the performance.</p>
+<p>When using, for</p>
+<p>example, predictive</p>
+<p>coding for generative</p>
+<p>AI, so to generate</p>
+<p>images to sample</p>
+<p>data points in an</p>
+<p>unsupervised way, the</p>
+<p>first problem that we</p>
+<p>had is that like in</p>
+<p>machine learning, we</p>
+<p>had a couple of</p>
+<p>until like two years</p>
+<p>ago, it was a</p>
+<p>mostly a deterministic</p>
+<p>algorithm.</p>
+<p>So we were taking</p>
+<p>mostly Rao and</p>
+<p>Ballard's version,</p>
+<p>which was the</p>
+<p>classification one,</p>
+<p>there was no</p>
+<p>stochasticity.</p>
+<p>So a bunch of</p>
+<p>people, including me,</p>
+<p>started publishing</p>
+<p>like associative memory</p>
+<p>papers.</p>
+<p>It's like I give it</p>
+<p>a data set and I</p>
+<p>can, by giving it a</p>
+<p>little bit of</p>
+<p>information, you can</p>
+<p>regenerate exactly the</p>
+<p>same data points.</p>
+<p>And then in the last</p>
+<p>year and a half, as</p>
+<p>I said, some people</p>
+<p>started developing</p>
+<p>sampling algorithms</p>
+<p>and they've been</p>
+<p>basically the papers</p>
+<p>before hours a little</p>
+<p>bit, either they do</p>
+<p>it on MNIST and</p>
+<p>fashion MNIST or</p>
+<p>they do it on like</p>
+<p>colored images like</p>
+<p>C410, C4100, but</p>
+<p>they use some kind</p>
+<p>of gradient descent.</p>
+<p>So it's not a</p>
+<p>completely local</p>
+<p>message passing</p>
+<p>algorithm.</p>
+<p>And what we did in</p>
+<p>our paper is that we</p>
+<p>have a local message</p>
+<p>passing algorithm and</p>
+<p>we compare against</p>
+<p>theirs by using</p>
+<p>basically exactly the</p>
+<p>same architectures,</p>
+<p>exactly the same</p>
+<p>number of epochs.</p>
+<p>I think in some cases</p>
+<p>even exactly the same</p>
+<p>learning rate and</p>
+<p>things like that.</p>
+<p>message passing</p>
+<p>algorithm.</p>
+<p>And as a small</p>
+<p>correction, we aren't</p>
+<p>actually a message</p>
+<p>passing algorithm.</p>
+<p>Yes.</p>
+<p>We're not technically</p>
+<p>any form of some</p>
+<p>product message</p>
+<p>passing.</p>
+<p>No, that's a local</p>
+<p>algorithm, let's say.</p>
+<p>Yes.</p>
+<p>A local algorithm,</p>
+<p>yes.</p>
+<p>And we do well.</p>
+<p>Like, for example, the</p>
+<p>images of faces you've</p>
+<p>seen may not seem</p>
+<p>perfect, but they are,</p>
+<p>at least from my</p>
+<p>perspective, better than</p>
+<p>expected.</p>
+<p>And the thing is, we</p>
+<p>haven't, I don't, I</p>
+<p>don't feel like we have</p>
+<p>reached a wall in terms</p>
+<p>of performance.</p>
+<p>Like we've tested only</p>
+<p>on the architectures that</p>
+<p>other people have used</p>
+<p>before and we do well.</p>
+<p>And for now there's a</p>
+<p>little knowledge on how</p>
+<p>much this can, this can</p>
+<p>scale up.</p>
+<p>Maybe you scale it up</p>
+<p>like two, yeah, two</p>
+<p>layers more and doesn't</p>
+<p>work anymore.</p>
+<p>That's something that we</p>
+<p>don't know yet.</p>
+<p>But potentially it would</p>
+<p>be interesting to, for</p>
+<p>example, something I was</p>
+<p>messaging with Eli</p>
+<p>earlier this week is, can</p>
+<p>we scale it up to large,</p>
+<p>larger decoder only</p>
+<p>transformer models, for</p>
+<p>example, not like of</p>
+<p>course, LLMs or things</p>
+<p>like that, but for</p>
+<p>example, something that</p>
+<p>is, uh, like a four or</p>
+<p>five, six, uh, layers, the</p>
+<p>transformer model that</p>
+<p>would already be an, uh,</p>
+<p>like a quite an interesting</p>
+<p>result.</p>
+<p>Definitely not an easy one,</p>
+<p>but I think there is, there</p>
+<p>is definitely room to</p>
+<p>improve what's in the, the</p>
+<p>results of this paper.</p>
+<p>Could you also maybe</p>
+<p>highlight how, how do you</p>
+<p>see local update rules as</p>
+<p>superset subset, what have</p>
+<p>you of message passing?</p>
+<p>What differentiates the</p>
+<p>local locality of</p>
+<p>connectivity from something</p>
+<p>that you would explicitly</p>
+<p>Eli call a message as</p>
+<p>passed.</p>
+<p>Ah, that's an interesting</p>
+<p>question.</p>
+<p>I guess is, uh, I think</p>
+<p>for message passing, you, you</p>
+<p>could call like all the, uh,</p>
+<p>belief propagation</p>
+<p>algorithms, or at least</p>
+<p>basically some kind of this</p>
+<p>class of algorithms where you</p>
+<p>clearly state which</p>
+<p>information has to be</p>
+<p>passed.</p>
+<p>uh, from, uh, from</p>
+<p>basically one latent</p>
+<p>variable to the other.</p>
+<p>While, uh, local message</p>
+<p>passing and, and there are,</p>
+<p>in those kinds of</p>
+<p>algorithms, they're all</p>
+<p>local.</p>
+<p>So it's, uh, since, since</p>
+<p>you define them to be this</p>
+<p>way, they, they, they must</p>
+<p>have local information.</p>
+<p>Well, probably if you</p>
+<p>generalize to local message</p>
+<p>passing in general, there are</p>
+<p>some proposals, maybe</p>
+<p>including this one in which</p>
+<p>maybe things are not</p>
+<p>supposed to be local.</p>
+<p>Like maybe you can like,</p>
+<p>since it's a structured</p>
+<p>learning algorithm, you may</p>
+<p>in theory get information</p>
+<p>from other, from light and</p>
+<p>variables that are more far</p>
+<p>away, but is a, but then</p>
+<p>when you actually do the</p>
+<p>computation, they are local,</p>
+<p>but that's a, that's an</p>
+<p>answer I'm giving now to the</p>
+<p>spot.</p>
+<p>Maybe like as a better thought</p>
+<p>on this.</p>
+<p>So I would say that message</p>
+<p>passing algorithms differ from</p>
+<p>ours in both their means and</p>
+<p>their goal.</p>
+<p>And really it's the goals</p>
+<p>actually that they're starting</p>
+<p>from.</p>
+<p>So that family of algorithms,</p>
+<p>you know, when, when people</p>
+<p>were working on it, maybe, I</p>
+<p>don't know, 20 years ago, what</p>
+<p>they were really trying to do was</p>
+<p>to get a summary of a posterior</p>
+<p>marginal distribution.</p>
+<p>So they just wanted to be able to</p>
+<p>pick out one latent variable for</p>
+<p>an inference query or a decision</p>
+<p>they needed to make.</p>
+<p>Say, what is the posterior on this</p>
+<p>variable, given the data, not given</p>
+<p>any settings for all the other latent</p>
+<p>variables?</p>
+<p>variables.</p>
+<p>And that sort of restricts, you</p>
+<p>know, the space of tasks that you</p>
+<p>can really address with message</p>
+<p>passing.</p>
+<p>And it also, you know, does end up</p>
+<p>meaning that, you know, what you're</p>
+<p>basically doing is some form of some</p>
+<p>product or really integral product, you</p>
+<p>know, algorithm.</p>
+<p>And that gets you all the way out to,</p>
+<p>I think, probabilistic circuits are the</p>
+<p>most current and advanced form of some</p>
+<p>product based, like exact inference</p>
+<p>algorithm.</p>
+<p>And they only support tree shaped, you</p>
+<p>know, generative models rather than</p>
+<p>those that are, you know, directed</p>
+<p>acyclic graphs in general.</p>
+<p>So trees rather than forests.</p>
+<p>And we said, well, let's try targeting,</p>
+<p>you know, the full joint distribution of</p>
+<p>all the latent variables together.</p>
+<p>Partly because that's the most general</p>
+<p>form of evasion inference problem.</p>
+<p>And partially because, you know, if you</p>
+<p>have something like a hierarchical time</p>
+<p>series model from the active inference</p>
+<p>literature, you might need several levels</p>
+<p>of the hierarchy.</p>
+<p>You might need the latent variables</p>
+<p>across those levels in order to make,</p>
+<p>you know, an action decision.</p>
+<p>You know, several levels of hierarchy</p>
+<p>might actually parameterize your policy</p>
+<p>or the thing that defines the inference</p>
+<p>problem you care about solving, you know,</p>
+<p>as a modeler.</p>
+<p>That's very interesting.</p>
+<p>Interesting.</p>
+<p>Again, to the sort of settings that a lot of</p>
+<p>active inference literature has tackled.</p>
+<p>In these cases, it's like digit in pixel intensities, etc.</p>
+<p>Digit classification, generativity of digits out.</p>
+<p>How would it be similar or different with something like digit pixels in,</p>
+<p>TMA's behavior out, or robot arm out?</p>
+<p>Are you leveraging this identity or at least structural congruence</p>
+<p>with the recognition and the generativity?</p>
+<p>Or like a VAE, can you have something different coming in and have the output be something that's</p>
+<p>categorically different than the type that was used as input?</p>
+<p>Like action.</p>
+<p>So I think one of the advantages of defining anything as a Bayesian inference problem</p>
+<p>is that it really changes your conception of what's an input versus an output variable.</p>
+<p>You know, for a Bayesian inference problem, you start with a graphical model.</p>
+<p>You clamp several variables to be observed data.</p>
+<p>Those observed data are now your inputs.</p>
+<p>You know, your output is any aspect of the posterior distribution that you care to examine.</p>
+<p>So we don't have to be outputting, you know, classification logits.</p>
+<p>We could also be outputting, you know,</p>
+<p>yeah, we could be outputting, you know, functions.</p>
+<p>You know, you could have, say, an active inference time series module</p>
+<p>where your agent sort of gets some data</p>
+<p>at every step of computation,</p>
+<p>performs a full sweep over the entire, you know, history of latent variables,</p>
+<p>and then and only then actually,</p>
+<p>you know, makes a decision about what action it's going to take.</p>
+<p>Which really highlights the importance of being able to specify the full joint distribution</p>
+<p>and then clamp down with nuance</p>
+<p>on what you want to be taking as observable,</p>
+<p>but kind of clamping down from the full joint</p>
+<p>and then just specifying and then having an inference algorithm</p>
+<p>that will facilitate that locally, operationally,</p>
+<p>rather than trying to</p>
+<p>amidst the constraints of which inference procedures you can perform,</p>
+<p>work within subclasses of graphical models that abide by those constraints.</p>
+<p>It's almost like it's a far cry in some ways from 2022 textbook,</p>
+<p>figure 4.3,</p>
+<p>the kind of POMDPs</p>
+<p>and the matrix multiplication</p>
+<p>that gets implemented in PyMDP,</p>
+<p>the sorts of pedagogical cases</p>
+<p>that do highlight certain key moves.</p>
+<p>this, though,</p>
+<p>looks and feels so much more like a</p>
+<p>machine learning work,</p>
+<p>and</p>
+<p>it's</p>
+<p>really interesting, though,</p>
+<p>what this enables.</p>
+<p>I think you also shape the work</p>
+<p>with respect to the venue you want to submit to.</p>
+<p>Yes, I was just going to say,</p>
+<p>now that I've found a figure 4.3.</p>
+<p>When we were discussing which experiments to run,</p>
+<p>the first question is,</p>
+<p>are we going to submit a new RIPs?</p>
+<p>Yes.</p>
+<p>It's going to be okay.</p>
+<p>Then it's going to be</p>
+<p>mostly image generation.</p>
+
+<p>also a little bit the venue</p>
+<p>and a little bit what did prior work do?</p>
+<p>Right.</p>
+<p>The image generation.</p>
+<p>We picked out image generation</p>
+<p>because</p>
+<p>predictive coding networks</p>
+<p>had</p>
+<p>not yet been used</p>
+<p>to get,</p>
+<p>you know,</p>
+<p>this quality of result</p>
+<p>on unconditional image generation.</p>
+<p>So what,</p>
+<p>other than</p>
+<p>the conference next week,</p>
+<p>what ways</p>
+<p>might you be</p>
+<p>taking it?</p>
+<p>I think maybe</p>
+<p>the,</p>
+<p>I mean,</p>
+<p>probably there are many future directions.</p>
+<p>I guess</p>
+<p>from the,</p>
+<p>from the perspective</p>
+<p>that interests me the most,</p>
+<p>I would be really curious</p>
+<p>about doing what,</p>
+<p>what I mentioned earlier</p>
+<p>about scaling it up.</p>
+<p>So for example,</p>
+<p>what's the,</p>
+<p>what's the,</p>
+<p>how much can we push</p>
+<p>this kind of algorithm?</p>
+<p>So it's,</p>
+<p>I think at some point</p>
+<p>if we're going to have enough compute</p>
+<p>and maybe a faster,</p>
+<p>it is,</p>
+<p>this is like</p>
+<p>some fast training,</p>
+<p>but probably like</p>
+<p>if it's implemented</p>
+<p>in a,</p>
+<p>in a parallelizable library</p>
+<p>or things like that</p>
+<p>is a,</p>
+<p>you can run</p>
+<p>larger models,</p>
+<p>you can run</p>
+<p>a huge number</p>
+<p>of hyper parameter search</p>
+<p>and,</p>
+<p>and you can see</p>
+<p>at some point</p>
+<p>where it scales up.</p>
+<p>Cause it's also true</p>
+<p>like we didn't do,</p>
+<p>I mean,</p>
+<p>yeah,</p>
+<p>there is a,</p>
+<p>like we didn't do</p>
+<p>a huge hyper parameter</p>
+<p>search at the end.</p>
+<p>Like we need some,</p>
+<p>but it's not,</p>
+<p>but like definitely</p>
+<p>not comparable</p>
+<p>to what standard</p>
+<p>in a machine learning paper</p>
+<p>in which they try</p>
+<p>like thousands</p>
+<p>of combination</p>
+<p>of hyper parameters.</p>
+<p>No,</p>
+<p>we did not do</p>
+<p>grid sweeps</p>
+<p>of like hyper parameters.</p>
+<p>Yeah,</p>
+<p>yeah,</p>
+<p>exactly.</p>
+<p>So,</p>
+<p>so I think there's,</p>
+<p>there's room</p>
+<p>for pushing this</p>
+<p>for sure.</p>
+<p>We have a little bit more</p>
+<p>and may hopefully</p>
+<p>much more,</p>
+<p>but this is a,</p>
+<p>I think scalability</p>
+<p>is something</p>
+<p>that is really hard</p>
+<p>to,</p>
+<p>to intuitively predict.</p>
+<p>Like why some models</p>
+<p>work well on seven layers</p>
+<p>and then on 10</p>
+<p>they collapse</p>
+<p>is a,</p>
+<p>you just,</p>
+<p>you just do it</p>
+<p>and notice that.</p>
+<p>And then I guess</p>
+<p>you can do some</p>
+<p>interpretability afterwards</p>
+<p>and understand the reason</p>
+<p>but doing it before</p>
+<p>is always a,</p>
+<p>a tricky thing.</p>
+<p>And so I guess</p>
+<p>trying it is probably the,</p>
+<p>yeah,</p>
+<p>if you have a method</p>
+<p>that allows you</p>
+<p>to try fast</p>
+<p>and fail fast</p>
+<p>is the best way</p>
+<p>of scaling it up,</p>
+<p>I guess.</p>
+<p>Yeah.</p>
+<p>So I would also say,</p>
+<p>you know,</p>
+<p>based on some</p>
+<p>of the not so</p>
+<p>publishable results</p>
+<p>that I've seen</p>
+<p>in,</p>
+<p>for instance,</p>
+<p>you know,</p>
+<p>trying to replicate</p>
+<p>how's work</p>
+<p>with like bouncing</p>
+<p>MNIST digits,</p>
+<p>you know,</p>
+<p>how well this works</p>
+<p>often does seem</p>
+<p>to depend</p>
+<p>on exactly</p>
+<p>how much</p>
+<p>structure</p>
+<p>the generative</p>
+<p>model provides</p>
+<p>you,</p>
+<p>you know,</p>
+<p>to give like</p>
+<p>prediction errors</p>
+<p>that point</p>
+<p>in the right direction</p>
+<p>rather than,</p>
+<p>well,</p>
+<p>in exactly</p>
+<p>the right direction</p>
+<p>rather than just</p>
+<p>vaguely</p>
+<p>the right direction.</p>
+<p>Right?</p>
+<p>So,</p>
+<p>you know,</p>
+<p>what is sort of</p>
+<p>how smooth</p>
+<p>versus how peaked,</p>
+<p>tightly peaked</p>
+<p>is the landscape</p>
+<p>of your,</p>
+<p>like,</p>
+<p>is your free energy</p>
+<p>landscape.</p>
+<p>And when it's</p>
+<p>more tightly peaked,</p>
+<p>this algorithm</p>
+<p>seems to work,</p>
+<p>you know,</p>
+<p>significantly better</p>
+<p>versus when it's</p>
+<p>not so tightly peaked,</p>
+<p>it'll often</p>
+<p>sort of get</p>
+<p>into the region</p>
+<p>of valid solutions</p>
+<p>and then get</p>
+<p>very noisy</p>
+<p>as it becomes,</p>
+<p>like,</p>
+<p>unable to decide</p>
+<p>which of the</p>
+<p>potentially valid</p>
+<p>solutions</p>
+<p>is really</p>
+<p>the best one</p>
+<p>to converge on.</p>
+<p>You know,</p>
+<p>I would say</p>
+<p>it's not so good</p>
+<p>yet at dealing</p>
+<p>with, like,</p>
+<p>multimodal</p>
+<p>posterior distributions</p>
+<p>once a good</p>
+<p>generative model</p>
+<p>has been learned.</p>
+<p>So they're scaling</p>
+<p>it up to that.</p>
+<p>You know,</p>
+<p>I'm also interested</p>
+<p>to see, like,</p>
+<p>how far could we</p>
+<p>take this on a</p>
+<p>fairly standard</p>
+<p>machine learning</p>
+<p>problem</p>
+<p>by just saying,</p>
+<p>you know,</p>
+<p>every time we have</p>
+<p>more layers</p>
+<p>than would be</p>
+<p>biologically plausible</p>
+<p>to differentiate,</p>
+<p>just insert</p>
+<p>a random variable.</p>
+<p>Like,</p>
+<p>parameterize a</p>
+<p>Gaussian right there</p>
+<p>and then just say,</p>
+<p>okay,</p>
+<p>now,</p>
+<p>you know,</p>
+<p>the amount of</p>
+<p>gradient calculation</p>
+<p>you have to do</p>
+<p>between layers</p>
+<p>is biologically</p>
+<p>plausible</p>
+<p>and we'll use</p>
+<p>the predictive</p>
+<p>coding math</p>
+<p>to actually,</p>
+<p>you know,</p>
+<p>effectively solve,</p>
+<p>like,</p>
+<p>the,</p>
+<p>we'll have</p>
+<p>the random</p>
+<p>variables substitute</p>
+<p>for backpropagation</p>
+<p>in a certain way.</p>
+<p>What do you</p>
+<p>mean by that?</p>
+<p>So,</p>
+<p>if you have,</p>
+<p>like,</p>
+<p>a,</p>
+<p>you know,</p>
+<p>12-layer,</p>
+<p>I think,</p>
+<p>Tommaso,</p>
+<p>you said,</p>
+<p>like,</p>
+<p>a 12-layer</p>
+<p>energy-based</p>
+<p>transformer</p>
+<p>or something?</p>
+<p>So,</p>
+<p>I think</p>
+<p>the general</p>
+<p>concept about</p>
+<p>biologically</p>
+<p>plausibility</p>
+<p>is that</p>
+<p>you have a latent</p>
+<p>variable,</p>
+<p>another latent</p>
+<p>variable,</p>
+<p>and you want</p>
+<p>anyone that</p>
+<p>is basically</p>
+<p>computing the</p>
+<p>gradients of the</p>
+<p>parameters to</p>
+<p>depend on both</p>
+<p>latent variables</p>
+<p>and not on</p>
+<p>other stuff that</p>
+<p>are in between.</p>
+<p>So,</p>
+<p>for example,</p>
+<p>if you consider</p>
+<p>the function that</p>
+<p>goes from one</p>
+<p>latent variable</p>
+<p>to the first,</p>
+<p>from the first to</p>
+<p>the second,</p>
+<p>to be a three-layer</p>
+<p>network,</p>
+<p>the gradients of</p>
+<p>the weights of</p>
+<p>the intermediate</p>
+<p>layer or of the</p>
+<p>first,</p>
+<p>they would depend</p>
+<p>on the last latent</p>
+<p>variable,</p>
+<p>and this would</p>
+<p>basically make you</p>
+<p>break the</p>
+<p>locality assumption</p>
+<p>and biological</p>
+<p>plausibility.</p>
+<p>While if you</p>
+<p>consider the</p>
+<p>function to be a</p>
+<p>single feedforward</p>
+<p>or convolutional</p>
+<p>layers,</p>
+<p>it means that for</p>
+<p>every weight,</p>
+<p>you have a latent</p>
+<p>variable before it,</p>
+<p>so you have a</p>
+<p>presynaptic neuron</p>
+<p>and a postsynaptic</p>
+<p>neuron actually</p>
+<p>in practice,</p>
+<p>and this will</p>
+<p>basically allow</p>
+<p>you to,</p>
+<p>once you compute</p>
+<p>the gradients</p>
+<p>of the free</p>
+<p>energy,</p>
+<p>to have everything</p>
+<p>that depends on</p>
+<p>presynaptic and</p>
+<p>postsynaptic neurons.</p>
+<p>So this is the</p>
+<p>concept with</p>
+<p>biological</p>
+<p>plausibility.</p>
+<p>The problem</p>
+<p>that, for example,</p>
+<p>I'm noticing</p>
+<p>when you do</p>
+<p>classification</p>
+<p>is that</p>
+<p>doing this</p>
+<p>allows you to</p>
+<p>propagate the</p>
+<p>error a little</p>
+<p>bit less</p>
+<p>regularly than</p>
+<p>backprop does,</p>
+<p>because backprop</p>
+<p>is sequential,</p>
+<p>so it shines a</p>
+<p>little bit for</p>
+<p>very deep models,</p>
+<p>especially if you</p>
+<p>have the right</p>
+<p>activation function.</p>
+<p>So I guess</p>
+<p>that's what</p>
+<p>Eli was</p>
+<p>mentioning when</p>
+<p>he was saying</p>
+<p>about...</p>
+<p>Yeah, so if</p>
+<p>you have, for</p>
+<p>instance,</p>
+<p>12...</p>
+<p>If you have,</p>
+<p>for instance,</p>
+<p>image, 12</p>
+<p>layers,</p>
+<p>classification,</p>
+<p>right,</p>
+<p>then,</p>
+<p>roughly speaking,</p>
+<p>you know,</p>
+<p>getting a gradient</p>
+<p>for the activations</p>
+<p>of the middle</p>
+<p>layer of the</p>
+<p>neural network</p>
+<p>depends on</p>
+<p>all the way</p>
+<p>on the final</p>
+<p>observation.</p>
+<p>Now, what</p>
+<p>we'd like to</p>
+<p>say is,</p>
+<p>well, how</p>
+<p>much, you</p>
+<p>know,</p>
+<p>ultimately,</p>
+<p>like, you</p>
+<p>know, it's</p>
+<p>been proved</p>
+<p>that predictive</p>
+<p>coding in the</p>
+<p>limit implements</p>
+<p>backprop just</p>
+<p>very slowly,</p>
+<p>but what we'd</p>
+<p>kind of like to</p>
+<p>do is to</p>
+<p>calculate gradients</p>
+<p>a bit more</p>
+<p>quickly, and so</p>
+<p>what I was saying</p>
+<p>is that, you</p>
+<p>know, what you</p>
+<p>could do is</p>
+<p>sort of take</p>
+<p>the middle</p>
+<p>layer and</p>
+<p>just say,</p>
+<p>well, this is</p>
+<p>going to be a</p>
+<p>random variable</p>
+<p>now.</p>
+<p>Like, instead</p>
+<p>of, you</p>
+<p>know, a single</p>
+<p>deterministic</p>
+<p>activation that</p>
+<p>has to be</p>
+<p>exactly right</p>
+<p>in order to</p>
+<p>pass gradients</p>
+<p>through, this</p>
+<p>is now going</p>
+<p>to be a</p>
+<p>Gaussian</p>
+<p>distribution</p>
+<p>over activations.</p>
+<p>And having</p>
+<p>done that, you</p>
+<p>can then use,</p>
+<p>you know, our</p>
+<p>predictive coding</p>
+<p>algorithm to</p>
+<p>say, I'll</p>
+<p>try and, you</p>
+<p>know, propagate</p>
+<p>through the</p>
+<p>latent space</p>
+<p>of possible,</p>
+<p>you know,</p>
+<p>weights, or</p>
+<p>actually, no,</p>
+<p>sorry,</p>
+<p>I'll try to</p>
+<p>propagate through</p>
+<p>the latent</p>
+<p>space of, like,</p>
+<p>layer activations,</p>
+<p>find, you</p>
+<p>know, a</p>
+<p>relatively good</p>
+<p>solution, or</p>
+<p>rather a, you</p>
+<p>know, particle</p>
+<p>cloud of</p>
+<p>relatively good</p>
+<p>solutions for</p>
+<p>those, and</p>
+<p>then update the</p>
+<p>weights in</p>
+<p>order to make,</p>
+<p>you know, those</p>
+<p>activations more</p>
+<p>likely without</p>
+<p>depending on the</p>
+<p>final classification.</p>
+<p>So without</p>
+<p>depending on the</p>
+<p>entire, like,</p>
+<p>backwards</p>
+<p>computation tape</p>
+<p>of backcrop.</p>
+<p>very, but at</p>
+<p>the cost of</p>
+<p>being a little</p>
+<p>bit random,</p>
+<p>let's say.</p>
+<p>What's wrong</p>
+<p>with that?</p>
+<p>well, nothing</p>
+<p>say probabilistic</p>
+<p>machine learners</p>
+<p>and say free</p>
+<p>energy principle</p>
+<p>people and,</p>
+<p>you know,</p>
+<p>active inference</p>
+<p>people, but,</p>
+<p>you know,</p>
+<p>currently,</p>
+<p>currently the</p>
+<p>machine learning</p>
+<p>world doesn't like</p>
+<p>it very much.</p>
+<p>They say Bayes</p>
+<p>doesn't scale.</p>
+<p>We're going to</p>
+<p>teach them they're</p>
+<p>wrong about that.</p>
+<p>well, it's</p>
+<p>super cool.</p>
+<p>If you have</p>
+<p>any other</p>
+<p>things you want</p>
+<p>to add,</p>
+<p>otherwise, good</p>
+<p>luck with the</p>
+<p>conference and</p>
+<p>with proceeding.</p>
+<p>It's super</p>
+<p>exciting, and I</p>
+<p>hope people</p>
+<p>watching this</p>
+<p>go to the</p>
+<p>repo,</p>
+<p>continue on</p>
+<p>some of the</p>
+<p>explorations that</p>
+<p>you've mentioned</p>
+<p>and explore it</p>
+<p>in their own</p>
+<p>ways, too.</p>
+<p>Yeah, I mean,</p>
+<p>feel free to send</p>
+<p>questions to our</p>
+<p>email addresses that</p>
+<p>are listed on the</p>
+<p>paper if you are</p>
+<p>not able to get</p>
+<p>the repo to</p>
+<p>work.</p>
+<p>Or if you</p>
+<p>make the repo</p>
+<p>work and you</p>
+<p>have ideas for</p>
+<p>follow-ups.</p>
+<p>Yes, that too.</p>
+<p>Yeah, we've got a</p>
+<p>few ideas already.</p>
+<p>Like, you know,</p>
+<p>I think I was</p>
+<p>talking to Tomaso</p>
+<p>and saying, like,</p>
+<p>I've been meaning</p>
+<p>to write some</p>
+<p>code that will</p>
+<p>allow you to</p>
+<p>sort of pass a</p>
+<p>deterministic output</p>
+<p>between random</p>
+<p>variables so that</p>
+<p>we would, you</p>
+<p>know, not just be</p>
+<p>able to do, like,</p>
+<p>graphical models,</p>
+<p>but proper</p>
+<p>stochastic</p>
+<p>computation graphs.</p>
+<p>Divide and</p>
+<p>contribute.</p>
+<p>Exactly.</p>
+<p>Yes.</p>
+<p>Cool.</p>
+<p>Thank you,</p>
+<p>fellows.</p>
+<p>Until next time.</p>
+<p>Thank you very</p>
+<p>much, Daniel.</p>
+<p>for organizing</p>
+<p>this.</p>
+<p>Yeah.</p>
+<p>Yeah, thanks for</p>
+<p>running, Lise.</p>
+<p>Like, every time a</p>
+<p>new one comes out,</p>
+<p>it goes on my</p>
+<p>watch later list,</p>
+<p>which admittedly I</p>
+<p>never work through,</p>
+<p>but they do go on</p>
+<p>it, and sometimes,</p>
+<p>sometimes, one or</p>
+<p>two videos.</p>
+<p>Cool.</p>
+<p>Cool.</p>
+<p>When I get the</p>
+<p>opportunity to binge,</p>
+<p>you are what I'm</p>
+<p>binging.</p>
+<p>Thank you.</p>
+<p>See you guys.</p>
+<p>Bye.</p>
+<p>Have a nice day.</p>
+<p>Bye-bye.</p>
+<p>Bye-bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

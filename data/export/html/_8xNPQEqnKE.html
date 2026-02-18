@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf MathStream 013.1 ~ Alexis Toumi: "DisCoPy: Monoidal Categories for Active Inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf MathStream 013.1 ~ Alexis Toumi: "DisCoPy: Monoidal Categories for Active Inference"</h1>
+<div class="meta">Category: MathStream &middot; Series: MathStream_013 &middot; Episode 1 &middot; Speakers: Alexis Toumi &middot; Duration: 1:06:48 &middot; Views: 208</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=_8xNPQEqnKE">https://www.youtube.com/watch?v=_8xNPQEqnKE</a></div>
+<article>
+<p>Hello, welcome everyone. It is May 20th, 2025. We're in ACTIMPH Math Stream number 13.1</p>
+<p>with Alexi Toomey discussing DiscoPy, monoidal categories for active inference.</p>
+<p>This should be a very exciting and useful presentation and stream. So thank you very much for joining and looking forward to learning more.</p>
+<p>Yeah, thanks a lot. Thanks a lot for the invite. And yeah, I guess, as I was saying just a couple of minutes ago,</p>
+<p>I'm very much looking forward to this talk. And it's a bit of a challenge for me, I guess, in a sense that I'm no expert in active inference.</p>
+<p>So I'll do my best at explaining what I think active inference is about. And I also try to, yeah, convince the audience here that</p>
+<p>DiscoPy, this Python library for string diagrams, is a promising way to experiment with active inference.</p>
+<p>So I guess most of the references I'll be using for today would be this main DiscoPy paper.</p>
+<p>You can also check out the documentation on GitHub. It's quite extensive. We've got plenty of examples and notebooks to play around with.</p>
+<p>And then I'll give a small glimpse of what the DiscoPy software is used for. So this idea of QNLP, quantum natural language processing,</p>
+<p>which is what motivated the library in the first place, what I wrote my PhD thesis about.</p>
+<p>And I guess I'll give some introduction to category theory, which is the sort of mathematical foundations on which DiscoPy is built.</p>
+<p>And then I'll be using mostly this recent paper from Toh, Kleiner, and Smyth on active inference in string diagrams,</p>
+<p>where essentially they use the same mathematics that I was using for quantum NLP and apply that to active inference.</p>
+<p>And in a sense, that's where I learned all I know about active inference. So I'll be giving a summary of the sort of theoretical background.</p>
+<p>And then I'll be mostly showing some screenshots from that paper to try and show how that theory applies to active inference in particular.</p>
+<p>And then we can discuss how DiscoPy could be used to implement active inference experiments.</p>
+<p>So yeah, let's get going.</p>
+<p>So I guess the main theoretical concept in DiscoPy is a box.</p>
+<p>So like we draw these boxes a lot.</p>
+<p>And I guess I don't roast coffee every morning, but I grind coffee, I brew coffee every morning.</p>
+<p>And I guess that's something that you can understand in terms of a black box where you put a bunch of inputs like green coffee beans,</p>
+<p>electricity, roast level, start signal.</p>
+<p>It could be physical, it could be information.</p>
+<p>And these boxes are sort of abstract conceptual operations that just have a name, a designated list of inputs and outputs.</p>
+<p>So you've got two sets, the objects, so the things that are on the wires and the boxes have names too.</p>
+<p>And then you have these two maps from boxes to lists of wires.</p>
+<p>So that gives you all the processes that you can talk about in your theory.</p>
+<p>And then you can translate one theory into another using these morphisms of signatures.</p>
+<p>So first, if you have a box from X to Y, you draw it with an arrow in this way.</p>
+<p>And then if you have morphism of signature, what it means is you can translate wires of one into lists of wires in the second.</p>
+<p>And then you can translate a box in one into a box in the appropriate thing in the other.</p>
+<p>So if you have, so this should be Sigma prime, I guess it's a typo, but you translate boxes in a way that respects the inputs and outputs.</p>
+<p>And so that's very useful because if you have different kinds of processes and you want to translate between them, that concept of morphism of signature is going to be the key one.</p>
+<p>And so I guess with that, you can define the set of diagrams.</p>
+<p>So that's going to be the main, the main definition for this thought.</p>
+<p>And you start with a signature and then you define diagrams by induction, where every box is a diagram.</p>
+<p>The identity is a diagram and you draw it with just a bunch of parallel wires.</p>
+<p>The composition of a diagram from X to Y and Y to Z is also a diagram.</p>
+<p>So you can have two diagrams, you can plug them one after the other.</p>
+<p>And then the tensor of two diagrams is also a diagram.</p>
+<p>So if you have F and F prime, you can put them side by side and you get something that goes from XX prime to Y, Y prime.</p>
+<p>And that's it. So you can put diagrams in sequence and in parallel and you can also do nothing.</p>
+<p>So this identity diagram.</p>
+<p>And then I guess the subtlety that we'll use here is that, well, I guess first you need to put some axioms on these.</p>
+<p>So I guess you want tensor and composition to be associative.</p>
+<p>You want them to be unital.</p>
+<p>So if you compose with the identity, it doesn't do anything.</p>
+<p>If you tensor with the empty diagram, so the identity on nothing on the empty list, that's also doing nothing.</p>
+<p>And then you want just these two equations that tell you that you can switch identity and tensor.</p>
+<p>So ID of tensor or tensor of ID is ID of tensor.</p>
+<p>And similarly for the composition, the tensor of two compositions is going to be the composition of the tensors.</p>
+<p>And we'll see what that looks like in terms of diagrams in a second.</p>
+<p>But as I was saying, there's this sort of nice that you get is that if you take a signature and you look at all the diagrams that you generate from it, that makes a new signature.</p>
+<p>And you can use that as a signature where essentially now the boxes have diagrams inside them.</p>
+<p>And so that's a way of formalizing an idea of hierarchical diagrams where essentially a sub diagram will contain or a sub diagram is a box that contains a diagram inside it.</p>
+<p>So we'll use a lot of these hierarchical diagrams where we'll see the boxes serve to encode normalization.</p>
+<p>And so, yeah, to get back to this main equation, I guess that's the only equation you need to remember.</p>
+<p>And you don't actually need to remember it because essentially you got it built into your visual system.</p>
+<p>So that's the sort of main argument for why you should use string diagrams is that essentially they encode this very natural way of looking at processes as things on the plane,</p>
+<p>where the axioms become just manipulation of these diagrams geometrically.</p>
+<p>So for example, this axiom of naturality where you exchange the composition and the tensor, this amounts to having either the boxes composed first sequentially and then in sequence or first in sequence and then sequentially.</p>
+<p>And that gives you the same diagrams in the end.</p>
+<p>So the only thing that counts is how things are connected, I guess, is the main idea for that axiom.</p>
+<p>And so you can apply that to cooking.</p>
+<p>The ingredients are going to be your wires.</p>
+<p>The steps, the cooking steps are going to be your boxes.</p>
+<p>And now anything that you can compose with these cooking steps will be a recipe.</p>
+<p>It takes a bunch of inputs like eggs and gives you a bunch of outputs like whites and yolks.</p>
+<p>Right.</p>
+<p>And yeah, I guess this this axiom of exchanging tensor and composition essentially it amounts to formalizing what we mean by independence.</p>
+<p>So if we have two boxes that are not connected like tracking here and parking here, we can perform them in any order.</p>
+<p>If it doesn't matter how we decompose this tensor of composition.</p>
+<p>So yeah, I guess let's look at what this diagram looks like in Python.</p>
+<p>So as the main feature of this copay is you get this very nice syntax for expressing any such string diagram as essentially as a Python function.</p>
+<p>So you start by declaring some types for the ingredients of your recipe like egg, white and yolk.</p>
+<p>You have a box for cracking an egg and giving white and yolk.</p>
+<p>You have these parameterized boxes.</p>
+<p>So merge, you can merge anything.</p>
+<p>So any X and that takes two X's and gives you an X.</p>
+<p>And now to define the diagram on the right, you'll just define a Python function, declare its inputs and its outputs.</p>
+<p>And now if you take X and Y for the two eggs, you crack them, you get a B is a white yolk pair.</p>
+<p>CD is a white yolk pair.</p>
+<p>So you can merge the whites together, merge the yolks together and return.</p>
+<p>So you get your diagram and you can draw it.</p>
+<p>So this output on the right is actually what this copay gives you as a drawing.</p>
+<p>And you can also write it in terms of purely pure operations of tensor and composition.</p>
+<p>So this at symbol is how you do the tensor, the parallel composition.</p>
+<p>And these chevrons do the sequential composition.</p>
+<p>And here you notice that we need this special box for the swap, right?</p>
+<p>Like at first with just tensor and composition, you can only do planar processes.</p>
+<p>So here you need this special swap box that takes yolk and white and gives you white and yolk.</p>
+<p>So yeah, I guess that's the sort of simplest example of how to use this copay is you can define a bunch of types, define a composite model, composite diagram out of these basic steps, basic boxes and types.</p>
+<p>And then you can draw the results.</p>
+<p>I guess drawing the result would be the first step.</p>
+<p>And in a second, we'll look at what else you can do with diagrams.</p>
+<p>So a more interesting example, I guess, in our context will be a generative model as a diagram.</p>
+<p>So on the left, you have the sort of basic example of a probabilistic model where you have random variables numbered x1 to x5.</p>
+<p>And then you have these arrows.</p>
+<p>I guess here some arrows are designated as sort of input arrows.</p>
+<p>Here on the left, x2 and x3 are sort of variables that I guess you get to control or you can choose some distributions over these.</p>
+<p>Then you have some hidden variables like this x1, x2 and x4.</p>
+<p>And you have observed variables, right?</p>
+<p>The x5 and x3 would be the things that you can actually observe in the end.</p>
+<p>And then sort of implicitly in every such probabilistic model or graphical model, you would have conditional probability distribution for every variable given the variables that point to it.</p>
+<p>Right?</p>
+<p>And so in the world of string diagrams, these conditional probability distributions become the important thing in a sense.</p>
+<p>Like I guess here the labels, you could almost forget about these labels x1 to x5.</p>
+<p>They help to make the correspondence here.</p>
+<p>But the actual important operations are these conditional distributions.</p>
+<p>So x1, well, you need a distribution on it.</p>
+<p>It's this latent variable.</p>
+<p>That's going to be your a is going to be a prior on x1.</p>
+<p>And then you need a distribution for b that gives you x4 based on x1, x2.</p>
+<p>You need distribution c that gives x5 given x4, x2, x3 and so on.</p>
+<p>And then here you also need this important operation that does copying, right?</p>
+<p>So here the variable x2 will be used in the conditional distribution for x4 and for x5.</p>
+<p>So you'll feed it to b and you'll feed it to c.</p>
+<p>So you need to copy it, right?</p>
+<p>You need to broadcast this whatever input you feed in here, right?</p>
+<p>And so if you take a distribution that's non-trivial, well, this will create some correlation between those distributions, right?</p>
+<p>And so at the end, what you get are the observed variables, which are these outputs of your diagram.</p>
+<p>And so you get this whole mechanical translation where every probabilistic model can be faithfully encoded as such a string diagram.</p>
+<p>The wires are the random variables.</p>
+<p>I guess the sort of here is like the wires up to this copying, right?</p>
+<p>So here the variable x2 appears twice.</p>
+<p>So you need to split the wire in some formal sense.</p>
+<p>The boxes are conditional probability distributions that define your model.</p>
+<p>And the diagrams are the generative models themselves, right?</p>
+<p>So here's what the same code would look like in this code pipe.</p>
+<p>Again, you're going to instantiate a bunch of types for x1 to x5.</p>
+<p>And then you're going to have these boxes, ABC, and you can define your model as a Python function that takes a bunch of variables and just does the usual thing.</p>
+<p>And I guess the magic of these Python decorators is that your function here is not going to be interpreted as an actual function.</p>
+<p>It's going to be executed symbolically.</p>
+<p>And these variables x2 and x3 are going to be turned into the input wire of your diagram.</p>
+<p>And then these x5, x3 will be the output wires of your diagram.</p>
+<p>And so in a sense, what this copay gives you is a sort of domain-specific language where you can write any such</p>
+<p>generative model and you will get a data structure for it.</p>
+<p>So I guess today I won't have much time to get into the data structure underlying these, but I guess there's sort of two main ones, two main ways of understanding these diagrams is the first one is as a sort of sequence of layers where each layer of your diagram is like, for example, this first layer, you've got a box A in parallel with copying, in parallel with another copying.</p>
+<p>The second layer would be B in parallel with a bunch of identities and the last layer would be C.</p>
+<p>So this sort of list-like representation is very convenient for drawing.</p>
+<p>And I guess if we go back to our cooking example, this is why you get to see these sort of stacking of boxes is essentially it's more convenient to have one box at each layer.</p>
+<p>So you just get a list of these guys, a list of operations that you perform.</p>
+<p>And then there's sort of the graph-like representation, which is the more natural one when you think of a graphical model.</p>
+<p>They're called graphical because it's a graph, right?</p>
+<p>So I guess this copay gives you this ability of going back and forth between graph-like and sort of list-like.</p>
+<p>And the list-like operation is also how you define the evaluation of these diagrams.</p>
+<p>So we'll get to see that in a minute.</p>
+<p>These diagrams, you can draw them, you can store them as combinatorial representations of graphs.</p>
+<p>And I guess the main point is you can evaluate them and you can do experiments with them.</p>
+<p>So let's get to that.</p>
+<p>I guess the theory we need behind this is that of strict monoidal categories.</p>
+<p>So I'll just say category for sure, because I guess they'll all be strict and monoidal in this talk.</p>
+<p>And essentially, once you know what a signature is, so this set of wires and boxes with domain co-domain,</p>
+<p>you can define a category as a signature with a way of evaluating diagrams, essentially.</p>
+<p>So a way of taking a composition of boxes and wires to give a single box.</p>
+<p>So first you need a way of interpreting identity for each object.</p>
+<p>You need a way of interpreting composition.</p>
+<p>And you need a way of sequential and parallel composition, right?</p>
+<p>So now essentially a category will be a concrete way of interpreting these diagrams.</p>
+<p>And I guess the key sort of structural theorem for...</p>
+<p>Well, okay, let's first look at some examples.</p>
+<p>So I guess the main example we've seen so far of a category is the category of</p>
+<p>the wires and diagrams where the objects are these wires, the lists of inputs or outputs.</p>
+<p>And the diagrams are this composition of boxes that you can represent combinatorially as graphs.</p>
+<p>And then the...</p>
+<p>I guess the most natural interpretation of these, if you come from some sort of mathematical background, would be to think of sets and functions, right?</p>
+<p>So every box will be a function of its input wires into its output wires.</p>
+<p>So you think of Cartesian product, or you get multiple inputs and you get multiple outputs.</p>
+<p>I guess sets and relations are super interesting too, instead of...</p>
+<p>So I guess in that case, you can do a lot of fancier diagrams if you think of relations.</p>
+<p>So you don't have inputs and outputs anymore, but you can essentially think of them going both ways.</p>
+<p>Then I guess, yeah.</p>
+<p>The main example of these monoidal categories was to do linear algebra to sort of formalize things that physicists were already doing, drawing diagrams, linear maps as diagrams.</p>
+<p>So I guess that's the main example.</p>
+<p>And in our case, what we're interested in will be more something like the category of measurable spaces and stochastic maps.</p>
+<p>So we'll think of each wire as a measurable space with the product space being the tensor, the operation that puts wires side by side.</p>
+<p>And then a box will be essentially a stochastic map that takes a product space and gives you a new product space.</p>
+<p>And so I guess with this interpretation in mind, essentially a graphical model, a generative model is precisely a diagram with an interpretation in stoch.</p>
+<p>So I guess, yeah.</p>
+<p>Then the main way to formulate this idea is essentially to define what's called the functor is going to be a morphism of categories.</p>
+<p>So something that translates a signature into another and also preserves identity, composition, and tensor.</p>
+<p>And then you have this sort of main theorem that tells you that diagrams are the free monoidal category.</p>
+<p>So what this means intuitively is that if you want to define a functor from the category of diagrams, the only thing you need to do is to define an interpretation for each wire and interpretation for each box.</p>
+<p>So on the left-hand side, you've got all the functions.</p>
+<p>So on the left-hand side, you've got all the functors from C sigma to D.</p>
+<p>And here you've got all these sort of much smaller objects where essentially you just need measurable space for each of the wires and a stochastic map for each of the boxes and conditional probability.</p>
+<p>And now you get an interpretation for each composition of these.</p>
+<p>So that's sort of the structural theorem, the sort of foundational theorem that justifies why are string diagrams the right data structure when you're looking at composition in sequence and in parallel.</p>
+<p>So any composition, any such composition is a diagram.</p>
+<p>And so I guess with that theorem in mind, like on the right-hand side, you've got something that you can represent as a small data structure that is, you just need the representation for a stochastic map for each of the boxes in your diagram.</p>
+<p>And on the left-hand side, you've got the sort of algorithm that's going to take these diagrams and compute their meaning by plugging these distributions together and essentially performing inference.</p>
+<p>So on the right-hand side, you've got something that is sort of data-like.</p>
+<p>On the left-hand side, you've got the algorithm that's going to compute that data to give you inference algorithms.</p>
+<p>And I guess, yeah, I was promising some short detour into quantum natural language processing.</p>
+<p>So I guess here it's just a small code snippet to show, I guess, how concise you can make a particular model if you write it as a functor.</p>
+<p>So here we've got boxes are worlds. So we've got a box for Alice, a box for love and a box for Bob.</p>
+<p>We're going to compose them together according to their grammatical structure.</p>
+<p>So here the, the, the, the word Alice is connected to love via this cup and the word Bob is connected to love via that cup.</p>
+<p>And overall you get a sentence.</p>
+<p>So that's the sort of natural language side of things.</p>
+<p>And then you get the quantum side of things by saying, look, every noun, I'm just going to interpret it as a qubit.</p>
+<p>So as a quantum system that I can control.</p>
+<p>The noun Alice is going to be one state of the qubit, the state zero, the word Bob is going to be the state one.</p>
+<p>And now the world love is going to be where interesting stuff happens where I'm going to entangle or correlate my inputs and my outputs, my subject and my object.</p>
+<p>So here you represent it as a quantum circuit.</p>
+<p>That's going to be some, some hard amount gate and some controlled gate.</p>
+<p>So essentially a bunch of quantum gates represented as boxes that you compose in sequence and in parallel.</p>
+<p>So I won't get into much quantum theory here, but I guess the, the main punchline is that you can replace quantum by probabilistic circuits.</p>
+<p>And the same theory applies in a sense that you get this compositional way of interpreting, well, natural language, but interpreting any sort of compositional system in general.</p>
+<p>So here you take your sentence, you apply the functor to it, you will get a circuit, a quantum circuit.</p>
+<p>And then essentially this eval is going to be a second step of the functor.</p>
+<p>That's going to take your quantum circuit and turn it into a bunch of matrices.</p>
+<p>So it's going to turn it into vector spaces and linear maps and compute the meaning of that circuit, compute the meaning of that sentence.</p>
+
+<p>So I guess that's one QNLP experiment in, in a few lines of Python.</p>
+<p>And I guess, yeah, the argument for this talk would be that we can replace quantum with, with active inference here and, and get a very similar recipe for how to build a larger active inference systems from smaller ones and then interaction.</p>
+<p>So, yeah, I guess that's one of the, I guess, three years of PhD thesis in one slide.</p>
+<p>So let's, let's move on.</p>
+<p>Yeah, I guess I'll try and give some of the sort of necessary theory to, to look at active inference formally, but give it all in terms of diagrams rather than complicated formally.</p>
+<p>So now that you've seen a bunch of diagrams.</p>
+<p>You can, you've noticed that you, if you only have tensor in parallel and in sequence, you can only do planar diagrams.</p>
+<p>If you want, if you want arbitrary diagrams, you need this special swap.</p>
+<p>And the swap is going to just satisfy these four actions you see here.</p>
+<p>If you swap with nothing, it doesn't do anything.</p>
+<p>If you swap and swap back, it doesn't do anything.</p>
+<p>If you swap F and G, it's the same as doing G and F and then swap.</p>
+<p>And finally, you can decompose a complex swap in terms of basic swaps.</p>
+<p>So that's all you need to get a symmetric monoidal category.</p>
+<p>And essentially in a symmetric category, you don't care about the order of wires because you can permute them.</p>
+<p>So in the case of probability theory, you don't care about the order of your probabilistic model.</p>
+<p>You can permute the variables.</p>
+<p>What matters is what's connected to what via boxes, not the order of the inputs and the outputs.</p>
+<p>And yeah, I guess in natural language, you do care about the order of world.</p>
+<p>So in that case, you are not symmetric.</p>
+<p>But another kind of category once you have symmetric is the idea of a compact category.</p>
+<p>And that's where you have the ability of bending wires.</p>
+<p>So I guess in a normal string diagram, the wires are going to flow from the inputs to the outputs.</p>
+<p>In a compact diagram, you can flow backward.</p>
+<p>And in the first paper applying category theory to Bayesian inference,</p>
+<p>that was the technical apparatus to formalize the idea of Bayesian inversing.</p>
+<p>So I guess with these cups and caps, you can take a joint distribution on A times B and bend one of the legs to get a stochastic map from A to B.</p>
+<p>And similarly, if you have a stochastic map, you can bend the output and get a joint distribution.</p>
+<p>And now if you have a stochastic map from A to B and you have a prior on A,</p>
+<p>so I guess that's the little trick that they had to hide is this little box, this little black box on the cup here.</p>
+<p>Then you can invert.</p>
+<p>You can perform Bayesian inversion and you will get a stochastic map from B to A.</p>
+<p>And I guess, yeah, there are many ways of formalizing this caveat of you need a prior if you want to be able to do Bayesian inversion.</p>
+<p>And yeah, I guess I won't get too much into the literature of how you formalize categories of stochastic processes are very big topic.</p>
+<p>But in that context, having a compact category means essentially every object, every wire comes with a prior.</p>
+<p>And now when you invert, you use that prior.</p>
+<p>So, yeah, I guess in quantum, it's got a very different interpretation where these wires are going to represent</p>
+<p>Bell states, entangled states and entangled measurements.</p>
+<p>And then this equation amounts to teleportation.</p>
+<p>In the context of Bayesian probability, this equation is just the Bayesian inversion of a trivial probabilistic channel is itself.</p>
+<p>So I guess not very interesting in quantum.</p>
+<p>It's like, wow, we can teleport things in Bayesian.</p>
+<p>It's just the inverse of the identity is the identity.</p>
+<p>So that's, yeah, that's a compact category.</p>
+<p>You can bend things around.</p>
+<p>So if you have symmetric plus compact, you can truly talk about a graph structure for your diagrams</p>
+<p>because you can connect any input to any output in a graph like way.</p>
+<p>So now I guess an important ingredient we've seen for defining a generative model is the ability to use the same variable in multiple places.</p>
+<p>So that's formalized in terms of these co-monoids.</p>
+<p>So you have an operation that splits a wire and it's co-commutative.</p>
+<p>So if you split and then you swap, it's the same thing as just splitting.</p>
+<p>It's got a unit which is discarding.</p>
+<p>So if you split and then you, if you copy something and then you discard, or if you split and then you terminate the wire, you haven't done anything.</p>
+<p>And it's co-associative.</p>
+<p>So it doesn't matter if you, if you copy the left-hand copy or the right-hand copy, you get three identical copies.</p>
+<p>And yeah, I guess the main two axioms for being a Cartesian category are these two.</p>
+<p>So the second one, I guess you can call normalization.</p>
+<p>So essentially in terms of stochastic maps, what this means is that if you apply a stochastic map and then take the weight of the results,</p>
+<p>take the mass of the results for any distribution coming in here, it's the same as the mass of the result, as the mass of the input.</p>
+<p>So essentially, if you have a normal, it takes a normalized distribution to a normalized distribution.</p>
+<p>And so on the left-hand side is more controversial, is not going to be true in the category of stochastic maps.</p>
+<p>This says that F is deterministic. So if you perform F and then copy the results, it's the same as copying the inputs and performing F twice.</p>
+<p>And I guess if you take the special case where F has no inputs, this means that essentially F can be copied,</p>
+<p>means that it's deterministic in a sense that performing F, if F was a TOS coin, right?</p>
+<p>So you would take F through a coin and then copy the results.</p>
+<p>You would get a different result as if you just two coins, right?</p>
+<p>So the second one is going to hold in terms of Bayesian probability theory, if you have normalized processes.</p>
+<p>And it's this idea of essentially you can also formalize it as causality.</p>
+<p>So if you discard the output, it cannot influence the input.</p>
+<p>And yeah, the first one is essentially what brings you back to the world of deterministic processes.</p>
+<p>So it's a good way of characterizing which stochastic map is in fact a deterministic one.</p>
+<p>And so if you have these two axioms, you're called the Cartesian category.</p>
+<p>If you don't have them, you're called the copy-discard category.</p>
+<p>And so I guess in our context, we are really interested in copy-discard categories where these two are different processes.</p>
+<p>And yeah, I guess what can you prove at this abstract level of generality is a really nice no-cloning theorem where you don't need to assume any complex numbers or any quantum stuff.</p>
+<p>And in fact, it holds as well in the context of probability theory.</p>
+<p>And it's like, I think it's called the no-broadcasting theorem in that case.</p>
+<p>But the idea is that you cannot have both cups and caps and copying.</p>
+<p>So here, I guess you assume that you have cups.</p>
+<p>And then because you have copying, then the copy of a cup is also going to be two cups, right?</p>
+<p>But you can also do some shenanigans where you bend the wires because copying is co-commutative.</p>
+<p>So on one side, you're going to swap the wires.</p>
+<p>And now you've essentially proved that two cups like this side by side are actually equal to two cups nested inside out.</p>
+<p>And then you bend all the legs and you get that a swap is equal to the identity, which is basically, yeah, it means you've done something wrong, right?</p>
+<p>Like if you can't even distinguish swapping stuff from not doing anything, your category is very much trivial.</p>
+<p>So I guess that's the main thing.</p>
+<p>The no-cloning theorem is that if you're both compact, so you have cups and caps and copying,</p>
+<p>now you have to be a trivial category in the sense that everything is essentially a scalar multiple of the identity.</p>
+<p>So that's not the case in probability theory.</p>
+<p>So probability theory also has this no-cloning feature.</p>
+<p>And that's essentially what you can't copy.</p>
+<p>You can't copy something if it's a non-trivial distribution.</p>
+<p>You can't copy a correlated state, right?</p>
+<p>The same way you can't copy an entangled state in quantum.</p>
+<p>So, yeah, I guess the last ingredient we need in order to talk about active inference is the idea of normalization.</p>
+<p>And in the context of string diagrams, that's going to be represented, as I was saying, by hierarchical diagrams,</p>
+<p>where you have a sub-diagram that's in dotted lines, will just represent the normalization of it with some caveat</p>
+<p>if there's no support for the particular state.</p>
+<p>So here you have a stochastic map from X to Y, and you put it inside of a dotted line, and you get its normalization.</p>
+<p>So I guess the guy inside is not really a stochastic map anymore.</p>
+<p>It's more of just any measurable function, not necessarily normalized.</p>
+<p>And the thing outside becomes a proper stochastic map.</p>
+<p>And that means for any measurable function, you can decompose it in terms of something that's normalized,</p>
+<p>and then something that you discount. So these three lines are the discounting operation that we drew as a white dot before.</p>
+<p>But so essentially here, that equation tells you that every measurable function is going to be a normalized one up to some renormalization.</p>
+<p>So I guess it's sort of intuitive. And also, normalization behaves nicely with respect to parallel composition.</p>
+<p>So if you have f and g, and then parallel, you normalize them, you get the normalization of f,</p>
+<p>and so the normalization of g. It behaves well with respect to copying a particular variable of your generative model.</p>
+<p>But the thing it doesn't behave well with is the composition.</p>
+<p>So it's not true that the normalization of composition is the composition of normalization.</p>
+<p>And that's essentially what gives you the difference between a Jeffrey update and a Perl update in the context of Bayesian inference.</p>
+<p>So on the left hand side, you've got a Jeffrey update, where you first normalize and then pre-compose with the prior.</p>
+<p>And so I guess here on the left, if you want to obtain something normalized overall, you will need to renormalize.</p>
+<p>So like you get two normalizations on the right hand side, you only get one.</p>
+<p>And that's sort of the difference. That's the fact that normalization is not a functor.</p>
+<p>In a sense, it doesn't commute with the composition.</p>
+<p>So then another kind of bubble we'll need is taking the logarithm of a function.</p>
+<p>So if we have a function from x to the reals, the positive reals, we can take its logarithm.</p>
+<p>This function is just going to be if we think of the category of measurable functions.</p>
+<p>Well, it's it's the empty diagram is going to correspond to the real numbers to the one dimensional space.</p>
+<p>And so such a function will just be a box, an effect which takes something and gives you just a renormalization factor.</p>
+<p>Right. And now if you have such an effect, you can put it into a green box and you'll get the the negative log of it.</p>
+<p>So that's sort of a mere sort of notational gadget.</p>
+<p>And essentially, yeah, it only becomes interesting if you start using it inside a more complex diagram where this this green box will not in will not commute past the composition and will give some interesting hierarchical structure to your to your diagram.</p>
+<p>And I guess here I'm just copying some caveats from from the to paper.</p>
+<p>And yeah, I guess they they give some some pointers to some interesting category theory that could be formalized to to explore these log boxes further.</p>
+<p>But in our context where we need them to is essentially we yeah, we just want the nice properties of logarithms.</p>
+<p>So if this copying operator acts like essentially a product, then we want that the log of a product is the sum of the logs.</p>
+<p>So you get this sort of nice nice operation nice homomorphism property of the log.</p>
+<p>The discarding operator acts like the unit of this multiplication.</p>
+<p>So the log of the units will be zero and then you get this nice product rule.</p>
+<p>The sort of lightness rule for the logarithm of of a tensor product in that sense will be the sum of two tensor products.</p>
+<p>So that's also the kind of equation you'll find in a sort of automatic differentiation framework where the gradient of D tensor E is going to be the gradient of D plus the gradient of E.</p>
+<p>And finally, if X is deterministic, so that's what they call sharp states, then you also commutes past the log.</p>
+<p>So you get these nice property of the logarithm which allows to take a diagram with these green boxes and sort of massage them into a sum of diagrams.</p>
+<p>And finally, you can define this notion of open vibrational free energy.</p>
+<p>Instead of looking at the free energy of a closed model, so something that wouldn't have an input I here.</p>
+<p>So just joint distribution of a state's internal states and observed variables.</p>
+<p>So here's the formula.</p>
+<p>So I guess that was sort of the main point of the paper was to build all this categorical approach.</p>
+<p>So you have this idea of an open model.</p>
+<p>So you have some of the inputs that you can control.</p>
+<p>And now you can define the free energy of this model with respect to joint distribution on the inputs with respect to the internal state.</p>
+<p>So you can put a prior on the observed variables.</p>
+<p>So I guess that was sort of the main point of the paper was to build all this categorical apparatus to get to the point where you can just draw the definition of free energy as diagram.</p>
+<p>of free energy as diagram.</p>
+<p>And then the main theorem being that essentially,</p>
+<p>this gives you a compositional definition</p>
+<p>in a sense that the free energy for composition,</p>
+<p>so it's the tensor composition,</p>
+<p>the free energy of the tensor will be some composition</p>
+<p>of the individual thing.</p>
+<p>So I guess in the case of tensor is the simplest case,</p>
+<p>I won't show the case for sequential composition</p>
+<p>where you need to take a more complicated operation</p>
+<p>to compose the subsystems.</p>
+<p>But I guess that's sort of the main theorem</p>
+<p>of that categorical active inference framework</p>
+<p>is that you get this idea that the free energy</p>
+<p>for the whole is composition of the free energy of its parts.</p>
+<p>And essentially, yeah, mono-edal category theory gives you</p>
+<p>the sort of the high level layer of abstraction</p>
+<p>to describe these sorts of compositional phenomenon.</p>
+<p>And yeah, I guess with this sort of foundational theory,</p>
+<p>you want to turn it into application.</p>
+<p>And so I guess that's what this copy was built for.</p>
+<p>So what we already have to support this sort</p>
+<p>of active inference implementation in terms of diagrams,</p>
+<p>well, we have most of the finite dimensional case</p>
+<p>implemented already in the sense that</p>
+<p>if your random variable span categorical distribution,</p>
+<p>is a categorical distribution,</p>
+<p>and you can turn this Bayesian inference problem</p>
+<p>into a tensor network contraction problem.</p>
+<p>We have a bunch of automatic</p>
+<p>and diagrammatic differentiation algorithms implemented</p>
+<p>with some compilation with the JAX library.</p>
+<p>So essentially, you can take your diagram</p>
+<p>and compile it into a bunch of GPU code</p>
+<p>for very fast execution.</p>
+<p>And finally, the sort of more experimental,</p>
+<p>more speculative part of the library</p>
+<p>is this idea of the geometry of interaction,</p>
+<p>where you formalize bi-directional processes.</p>
+<p>So sadly, I won't have much time</p>
+<p>to get into that side of things,</p>
+<p>but there's this very interesting idea of a Bayesian lens,</p>
+<p>where you have these bi-directional operations</p>
+<p>that also have some stochastic side to them.</p>
+<p>So essentially, you can talk about updates,</p>
+<p>about the forward part of your process being some inference</p>
+<p>and the backward part being some update.</p>
+<p>And this geometry of interaction will give you a way</p>
+<p>of composing these updates together</p>
+<p>in a compositional structure of Bayesian inference.</p>
+<p>So we already have the sort of purely abstract implementation</p>
+<p>of this geometry of interaction.</p>
+<p>What's missing is sort of plugging these two things together.</p>
+<p>So just looking at how, if you take finite dimensional</p>
+<p>as a first step, and you look at how it updates,</p>
+<p>you should be able to implement it</p>
+<p>in a purely compositional way with DiscoPy,</p>
+<p>and also be able to draw the results in the end.</p>
+<p>And I guess what's missing would be</p>
+<p>a more continuous implementation,</p>
+<p>where I guess to go beyond finite dimensional,</p>
+<p>you need some sort of more involved implementation</p>
+<p>based on monads, I guess.</p>
+<p>It's a very well-developed theory on the category side.</p>
+<p>And there's one thing we've started working on,</p>
+<p>which is this idea of delayed interaction,</p>
+<p>where essentially you can represent discrete time processes.</p>
+<p>So they have a very natural way of talking about time series.</p>
+<p>And yeah, I guess the main ingredient that's missing</p>
+<p>to develop this library further</p>
+<p>would be having experimentalists ready</p>
+<p>to take the challenge to build their experiments</p>
+<p>in a way that you can compose them</p>
+<p>with other experiments in the future</p>
+<p>and build it upon a theory</p>
+<p>of how to compose processes together.</p>
+<p>So I guess that was sort of the main objective of DiscoPy</p>
+<p>was to sort of lower the entry to the cost of entry</p>
+<p>to understanding string diagrams</p>
+<p>so that any experimentalists from quantum computing</p>
+<p>or active inference can pick up</p>
+<p>just enough abstract mathematics</p>
+<p>to turn these experiments into something</p>
+<p>you can compose together.</p>
+<p>And yeah, I guess I'd be happy</p>
+<p>to get some questions from the audience</p>
+<p>and looking forward to more interactions</p>
+<p>with the active inference community.</p>
+<p>Thanks a lot.</p>
+<p>Thank you.</p>
+<p>Great talk.</p>
+<p>Okay.</p>
+<p>Anyone watching live can write a question in a live chat</p>
+<p>and I wrote down some questions as well.</p>
+<p>So first though, just to kind of pull back,</p>
+<p>like how did you get into writing DiscoPy?</p>
+<p>What brought you to wanting to build this toolkit</p>
+<p>and what made you interested in the area?</p>
+<p>Yeah, I mean, so I guess it started</p>
+<p>with the master's thesis in Oxford</p>
+<p>was mostly quantum stuff</p>
+<p>with the course that Bob Kirk was teaching there.</p>
+<p>And I was interested in AI already</p>
+<p>and NAP in particular at the time.</p>
+<p>And I guess, yeah, there was this program</p>
+<p>of bridging the two together</p>
+<p>and making quantum NLP.</p>
+<p>And so I got involved in that.</p>
+<p>And when it came to implementing it,</p>
+<p>it felt like it would be a shame</p>
+<p>to implement quantum NLP</p>
+<p>as a one-shot thing</p>
+<p>where you build your experiment</p>
+<p>and throw it away.</p>
+<p>And I guess we took it as an excuse</p>
+<p>to develop something</p>
+<p>that we thought was much more broadly applicable</p>
+<p>where you take this general theory</p>
+<p>of mono-edal categories</p>
+<p>and implement that</p>
+<p>and use QNLP as a sort of proof of concept</p>
+<p>that it can do something useful</p>
+<p>and then hope that other people</p>
+<p>will start formalizing more stuff</p>
+<p>as mono-edal categories.</p>
+<p>So I guess this paper from Tao et al</p>
+<p>came after the thesis.</p>
+<p>And I guess they took active inference</p>
+<p>as something that you could formalize</p>
+<p>with diagrams too.</p>
+<p>So yeah, I guess QNLP was a bit of an excuse</p>
+<p>to get into some very cool maths</p>
+<p>and to develop some cool software</p>
+<p>to back it up.</p>
+<p>And now I'm sort of, yeah,</p>
+<p>looking forward to seeing other ways</p>
+<p>to apply this software.</p>
+<p>Awesome.</p>
+<p>Okay.</p>
+<p>I'm going to read and answer one question</p>
+<p>from the live chat</p>
+<p>and then I'll ask you a question.</p>
+<p>So Divital wrote,</p>
+<p>is this under a specific group project</p>
+<p>at Active Inference Institute</p>
+<p>like Ontology or other project?</p>
+<p>So just to briefly address that,</p>
+<p>it could be super relevant for Ontology.</p>
+<p>We could use the Active Inference Ontology</p>
+<p>to extract natural language descriptions</p>
+<p>of generative models, for example,</p>
+<p>represent them in Discopy.</p>
+<p>So it could be a tool used in Ontology Project</p>
+<p>or it could be spun up</p>
+<p>as a category theory project</p>
+<p>as we've done in the past</p>
+<p>when we, for example,</p>
+<p>focused on some of Toby St. Clair Smith's work.</p>
+<p>So everyone's welcome to get involved</p>
+<p>and reactivate projects</p>
+<p>as they are excited by it.</p>
+<p>This is definitely something exciting.</p>
+<p>So let me ask you this question.</p>
+<p>How do we connect the properties of diagrams?</p>
+<p>For example, the ability to swap,</p>
+<p>capture causality in the era of time,</p>
+<p>cups and caps and all that,</p>
+<p>with the features of cognitive systems</p>
+<p>which we're interested in?</p>
+<p>like, how do we know which kinds of formal constraints</p>
+<p>are overkill, non-sequitur?</p>
+<p>How do we really like reconcile</p>
+<p>and build with the right formal systems</p>
+<p>when we're dealing with embodied cognitive systems</p>
+<p>that don't, on a first pass,</p>
+<p>have those kinds of constraints?</p>
+<p>Yeah, I think that's a super interesting question</p>
+<p>and in a sense,</p>
+<p>like not being an expert in active inference,</p>
+<p>I don't feel entitled to really say</p>
+<p>what are the properties</p>
+<p>that you guys are interested in.</p>
+<p>But I guess as a sort of parallel</p>
+<p>to other ways diagrams have been applied</p>
+<p>in particularly in quantum,</p>
+<p>I felt like one interesting way</p>
+<p>to look at diagrams</p>
+<p>is to look at them</p>
+<p>in terms of combinatorial structures</p>
+<p>that have some structural properties</p>
+<p>that you can exploit</p>
+<p>to turn the computational problems</p>
+<p>associated with them</p>
+<p>into tractable problems.</p>
+<p>So I guess maybe as a bet,</p>
+<p>I would say that characterizing</p>
+<p>which models are efficiently simulatable,</p>
+<p>simulatable or not,</p>
+<p>it's sort of a key question</p>
+<p>that you ask yourself</p>
+<p>when you get to build a model</p>
+<p>of cognition in general</p>
+<p>in a sense that if you cannot simulate it,</p>
+<p>if you cannot build</p>
+<p>an efficient implementation for it,</p>
+<p>then it's likely that the brain</p>
+<p>isn't going to be working that way.</p>
+<p>In a sense, the brain is efficiently</p>
+<p>solving this cognition problem.</p>
+<p>So behind it,</p>
+<p>there must be some sort of</p>
+<p>tractable algorithm.</p>
+<p>And I guess there's a way</p>
+<p>of characterizing which problems</p>
+<p>will be tractable</p>
+<p>by the shape of the diagrams</p>
+<p>associated with them.</p>
+<p>So one particular way this happens</p>
+<p>is when you look at tensor networks,</p>
+<p>if you can bound the width</p>
+<p>of your diagram</p>
+<p>and make it look like</p>
+<p>it's almost a tree</p>
+<p>and you have this idea</p>
+<p>of bounded tree width</p>
+<p>where you can show</p>
+<p>that your network</p>
+<p>has some sort of hierarchical structure to it</p>
+<p>where it's shaped</p>
+<p>in terms of a main root</p>
+<p>that splits into branches.</p>
+<p>Even if these branches are thick,</p>
+<p>in a sense,</p>
+<p>it's not necessarily a tree,</p>
+<p>then this bounded tree width</p>
+<p>will give you a bound</p>
+<p>on how hard it will be</p>
+<p>to compute this tensor network.</p>
+<p>So in a sense,</p>
+<p>from the sort of graph structure</p>
+<p>of your diagram,</p>
+<p>from the fact that this graph</p>
+<p>has a nice decomposition,</p>
+<p>you can exploit that fact</p>
+<p>and turn it into an efficient algorithm</p>
+<p>to solve inference on that model</p>
+<p>or to contract the tensor network</p>
+<p>in the case of physicists.</p>
+<p>But I think this general principle</p>
+<p>applies in a very broad range of cases</p>
+<p>and there's some very deep intersections</p>
+<p>with complexity theory</p>
+<p>where I guess this P and NP question</p>
+<p>is all about</p>
+<p>how do you separate</p>
+<p>between things</p>
+<p>that you can solve efficiently or not.</p>
+<p>So diagrams give you</p>
+<p>an interesting way</p>
+<p>of looking at this P versus NP question</p>
+<p>where I guess you can try</p>
+<p>and tell apart these two classes</p>
+<p>by looking at the shape of diagrams</p>
+<p>that represent these problems.</p>
+<p>Awesome.</p>
+<p>Okay.</p>
+<p>So what makes the variational free energy</p>
+<p>open or not open?</p>
+<p>And then some more VFE-related questions.</p>
+<p>How did you connect that</p>
+<p>to the log properties</p>
+<p>since, of course,</p>
+<p>the free energy is used</p>
+<p>as a bound on log probabilities</p>
+<p>as surprise?</p>
+<p>And then what does it mean</p>
+<p>that the VFE is compositional</p>
+<p>since from a numerical perspective,</p>
+<p>the compositionality</p>
+<p>is kind of trivial?</p>
+<p>Like, of course,</p>
+<p>I could calculate the free energy</p>
+<p>for two different situations</p>
+<p>and just add those numbers together.</p>
+<p>So what do we really get</p>
+<p>with the semantics of composition</p>
+<p>that go beyond just calculating two numbers</p>
+<p>and then adding those two numbers?</p>
+<p>Yeah.</p>
+<p>So I guess to go back</p>
+<p>to that definition</p>
+<p>of open free energy,</p>
+<p>I guess the main difference here</p>
+<p>compared to the standard definition</p>
+<p>is this extra wire I, right?</p>
+<p>So I guess</p>
+<p>the idea is that</p>
+<p>if this wire is empty,</p>
+<p>if there's no particular input,</p>
+<p>you get back to the usual definition</p>
+<p>and it's the idea of</p>
+<p>instead of trying to compute</p>
+<p>the free energy</p>
+<p>of a big monolithic system</p>
+<p>that represents the overall thing</p>
+<p>you want to study,</p>
+<p>you first decompose that</p>
+<p>into a composition</p>
+<p>of different things</p>
+<p>being independent</p>
+<p>and being composed in sequence.</p>
+<p>so that's where you get</p>
+<p>the correlation</p>
+<p>and this decomposition</p>
+<p>of your problem</p>
+<p>will give you a formula</p>
+<p>to compute</p>
+<p>the composition</p>
+<p>of the corresponding</p>
+<p>free energies.</p>
+<p>And I guess</p>
+<p>this example</p>
+<p>wasn't necessarily</p>
+<p>the best one to pick.</p>
+<p>So here it's the fact</p>
+<p>that it's compositional</p>
+<p>with respect</p>
+<p>to independent</p>
+<p>parallel composition.</p>
+<p>Well, I guess, yeah,</p>
+<p>it's a bit of a trivial property</p>
+<p>of free energy</p>
+<p>that the free energy</p>
+<p>of the tensor</p>
+<p>of two things</p>
+<p>will be the sum</p>
+<p>of the free energies.</p>
+<p>And I guess, yeah,</p>
+<p>I should have included</p>
+<p>the more interesting case</p>
+<p>where you have</p>
+<p>a sequential composition</p>
+<p>of things</p>
+<p>and where this sequential composition</p>
+<p>gives you a non-trivial way</p>
+<p>of decomposing the formula</p>
+<p>for your free energy.</p>
+<p>So I guess that would be</p>
+<p>the place where you can get</p>
+<p>some traction</p>
+<p>in a particular experiment</p>
+<p>where essentially</p>
+<p>you can, yeah,</p>
+<p>I guess the same way</p>
+<p>that an automatic</p>
+<p>differentiation framework</p>
+<p>would use the structure</p>
+<p>of your program</p>
+<p>to compute the structure</p>
+<p>of its derivative.</p>
+<p>Well, here you could have,</p>
+<p>yeah, I guess,</p>
+<p>automatic free energy idea</p>
+<p>of the structure</p>
+<p>of your model</p>
+<p>informs the structure</p>
+<p>of the formula</p>
+<p>for its free energy</p>
+<p>and potentially implying</p>
+<p>some algorithmic speedup.</p>
+<p>So I guess here,</p>
+<p>obviously,</p>
+<p>there isn't any speedup</p>
+<p>to be found</p>
+<p>in this particular</p>
+<p>instance of compositionality.</p>
+<p>and, yeah,</p>
+<p>I guess I'm,</p>
+<p>yeah,</p>
+<p>I don't feel qualified enough</p>
+<p>to advance any conjecture</p>
+<p>on how the non-trivial case</p>
+<p>would give you algorithmic speedups,</p>
+<p>but I guess that's the sort of promise.</p>
+<p>And there's the idea of a speedup,</p>
+<p>there's also the idea</p>
+<p>of having software</p>
+<p>that's more modular,</p>
+<p>so having software</p>
+<p>that for one experiment</p>
+<p>that you can potentially reuse</p>
+<p>to compose</p>
+<p>with a later experiment.</p>
+<p>Yeah,</p>
+<p>like where that kind of lands</p>
+<p>for me is</p>
+<p>we can use</p>
+<p>these nested box structures</p>
+<p>to reflect</p>
+<p>the articulations</p>
+<p>of different</p>
+<p>causal</p>
+<p>and spatial</p>
+<p>and temporal</p>
+<p>systems</p>
+<p>in sequence</p>
+<p>and in parallel</p>
+<p>and also proposed</p>
+<p>cognitive mechanisms,</p>
+<p>so not necessarily related</p>
+<p>to the material connections</p>
+<p>on substrate,</p>
+<p>but related to</p>
+<p>different kinds of interactions</p>
+<p>amongst like attention,</p>
+<p>memory,</p>
+<p>all these kinds of</p>
+<p>cognitive features.</p>
+<p>So,</p>
+<p>first,</p>
+<p>there's the benefit</p>
+<p>of the interpretability,</p>
+<p>legibility,</p>
+<p>modularity,</p>
+<p>reuse,</p>
+<p>angle,</p>
+<p>and then</p>
+<p>getting to that speedup,</p>
+<p>if it's possible</p>
+<p>to have</p>
+<p>strong</p>
+<p>decomposition</p>
+<p>composition type rules,</p>
+<p>large boxes</p>
+<p>with a lot of stuff</p>
+<p>in them,</p>
+<p>whether that's</p>
+<p>100 nestmates</p>
+<p>in a multi-agent simulation</p>
+<p>or 100 different</p>
+<p>cognitive systems</p>
+<p>in a complex</p>
+<p>single-agent simulation,</p>
+<p>those can be</p>
+<p>brought down</p>
+<p>to their most</p>
+<p>atomic</p>
+<p>computational rules</p>
+<p>and possibly</p>
+<p>certain kinds</p>
+<p>of</p>
+<p>calculations</p>
+<p>will have</p>
+<p>certain methods</p>
+<p>that would be</p>
+<p>like the most</p>
+<p>effective for</p>
+<p>this kind of</p>
+<p>distribution</p>
+<p>or for this</p>
+<p>size.</p>
+<p>So,</p>
+<p>that gives</p>
+<p>a unified</p>
+<p>way</p>
+<p>to look at</p>
+<p>the topology</p>
+<p>of information</p>
+<p>flows</p>
+<p>and calculations</p>
+<p>in a</p>
+<p>notational</p>
+<p>disco-pi</p>
+<p>framework</p>
+<p>rather than</p>
+<p>those connections</p>
+<p>being kind of</p>
+<p>semi-implicit</p>
+<p>in the control</p>
+<p>flow</p>
+<p>of a Python</p>
+<p>script</p>
+<p>or maybe</p>
+<p>scattered across</p>
+<p>different files</p>
+<p>with different</p>
+<p>functions calling</p>
+<p>each other,</p>
+<p>not necessarily</p>
+<p>in a unified</p>
+<p>way.</p>
+<p>For example,</p>
+<p>a common</p>
+<p>approach is like</p>
+<p>to have an</p>
+<p>agent class</p>
+<p>and then have</p>
+<p>them be</p>
+<p>communicating back</p>
+<p>and forth with</p>
+<p>an environment</p>
+<p>and that could</p>
+<p>still be really</p>
+<p>well structured</p>
+<p>but it leads</p>
+<p>to kind of a</p>
+<p>fundamental</p>
+<p>division between</p>
+<p>what's happening</p>
+<p>within the agent</p>
+<p>and within</p>
+<p>the environment</p>
+<p>and that's</p>
+<p>understandable</p>
+<p>and a useful</p>
+<p>design pattern.</p>
+<p>However,</p>
+<p>the stronger</p>
+<p>direction to</p>
+<p>kind of steer</p>
+<p>towards would</p>
+<p>be unifying</p>
+<p>systems for</p>
+<p>notation,</p>
+<p>possibly like</p>
+<p>disco-pi,</p>
+<p>that could get</p>
+<p>us like the</p>
+<p>best of both</p>
+<p>worlds with</p>
+<p>well structured</p>
+<p>interfaces and</p>
+<p>unification across</p>
+<p>really different</p>
+<p>representations.</p>
+<p>Yeah,</p>
+<p>I think also</p>
+<p>one important</p>
+<p>aspect is</p>
+<p>this idea of</p>
+<p>separation of</p>
+<p>concern between</p>
+<p>syntax and</p>
+<p>semantics where</p>
+<p>you want the</p>
+<p>ability to</p>
+<p>describe your</p>
+<p>models in a</p>
+<p>syntactic way</p>
+<p>that will be</p>
+<p>reused in</p>
+<p>different cases</p>
+<p>with different</p>
+<p>semantics in</p>
+<p>mind,</p>
+<p>different ways of</p>
+<p>computing inference</p>
+<p>on the same</p>
+<p>diagram,</p>
+<p>right?</p>
+<p>And so with</p>
+<p>this idea of</p>
+<p>separating,</p>
+<p>you have the</p>
+<p>diagrams on one</p>
+<p>side that</p>
+<p>represent the</p>
+<p>description of</p>
+<p>your model</p>
+<p>itself and</p>
+<p>then you have</p>
+<p>the functors</p>
+<p>that describe</p>
+<p>the computation</p>
+<p>you do on</p>
+<p>that model and</p>
+<p>I think the</p>
+<p>separation of</p>
+<p>concern means</p>
+<p>that well you</p>
+<p>can compose the</p>
+<p>syntax together</p>
+<p>and compose these</p>
+<p>descriptions to</p>
+<p>form a larger</p>
+<p>description and</p>
+<p>then that way of</p>
+<p>building your</p>
+<p>model will inform</p>
+<p>the computation</p>
+<p>side of things</p>
+<p>and I guess</p>
+<p>yeah,</p>
+<p>speedups are</p>
+<p>sort of the</p>
+<p>one of the</p>
+<p>theoretical</p>
+<p>results or</p>
+<p>experimental</p>
+<p>results you</p>
+<p>could get out</p>
+<p>of this and</p>
+<p>I guess I</p>
+<p>mean other</p>
+<p>ways of thinking</p>
+<p>about it,</p>
+<p>I think when</p>
+<p>you're talking</p>
+<p>about topology</p>
+<p>it really</p>
+<p>feels like</p>
+<p>there's some</p>
+<p>connection to be</p>
+<p>made there in</p>
+<p>a sense that a</p>
+<p>lot of what</p>
+<p>people do with</p>
+<p>these diagrams is</p>
+<p>try and embed</p>
+<p>them onto some</p>
+<p>topological space</p>
+<p>where your</p>
+<p>computation</p>
+<p>doesn't live in</p>
+<p>the abstract</p>
+<p>anymore and is</p>
+<p>actually embedded</p>
+<p>in a particular</p>
+<p>space and I</p>
+<p>I guess for</p>
+<p>physicists this</p>
+<p>will be like</p>
+<p>embedded into</p>
+<p>space-time you</p>
+<p>know so you</p>
+<p>will have like</p>
+<p>these relativistic</p>
+<p>quantum mechanics</p>
+<p>ideas where you</p>
+<p>have quantum</p>
+<p>processes on a</p>
+<p>manifold for your</p>
+<p>space-time but I</p>
+<p>think a similar</p>
+<p>idea can be used</p>
+<p>to take your</p>
+<p>abstract description</p>
+<p>of a generative</p>
+<p>model and embed</p>
+<p>it onto an actual</p>
+<p>topological space</p>
+<p>which is the</p>
+<p>sort of space-like</p>
+<p>organization of</p>
+<p>a particular</p>
+<p>brain or a</p>
+<p>particular machine</p>
+<p>right</p>
+<p>cool yeah I</p>
+<p>think of the</p>
+<p>saying slow is</p>
+<p>smooth and smooth</p>
+<p>is fast like the</p>
+<p>speed up sounds</p>
+<p>like it's going to</p>
+<p>be the pot of</p>
+<p>gold at the end</p>
+<p>of the rainbow but</p>
+<p>actually the</p>
+<p>modularity and the</p>
+<p>legibility of the</p>
+<p>software is what</p>
+<p>is going to get</p>
+<p>that infrastructure</p>
+<p>grade long-term</p>
+<p>templated reuse of</p>
+<p>cognitive models and</p>
+<p>if those take</p>
+<p>slightly longer to</p>
+<p>run than some</p>
+<p>super special case</p>
+<p>optimized situation</p>
+<p>first off we're</p>
+<p>only going to get</p>
+<p>to that optimized</p>
+<p>runtime from the</p>
+<p>modular design and</p>
+<p>then in the end I</p>
+<p>think it's going to</p>
+<p>be the</p>
+<p>compositionality that</p>
+<p>leads to</p>
+<p>ecosystems of</p>
+<p>components that are</p>
+<p>effective and then</p>
+<p>speed can be sort</p>
+<p>of a secondary</p>
+<p>consideration that's</p>
+<p>runtime and</p>
+<p>situation specific</p>
+<p>but like the</p>
+<p>benefits of</p>
+<p>bringing category</p>
+<p>theory to active</p>
+<p>inference I hope we</p>
+<p>can draw out over</p>
+<p>the coming months</p>
+<p>and years because</p>
+<p>it really represents</p>
+<p>a upgrade in how</p>
+<p>these models are</p>
+<p>are represented and</p>
+<p>communicated and</p>
+<p>they kind of bring</p>
+<p>an aesthetic</p>
+<p>possibility with its</p>
+<p>own grammar that</p>
+<p>is clearly to be</p>
+<p>learned and also a</p>
+<p>really strong machine</p>
+<p>readability so I</p>
+<p>hope that people</p>
+<p>who view this are</p>
+<p>excited to try</p>
+<p>disco pi and that</p>
+<p>we can continue to</p>
+<p>like look back at</p>
+<p>the models that have</p>
+<p>been built and bring</p>
+<p>them into these</p>
+<p>notation systems to</p>
+<p>demonstrate how they</p>
+<p>can exactly recapitulate</p>
+<p>and give reproducibility</p>
+<p>to past examples and</p>
+<p>I think that act</p>
+<p>alone is going to</p>
+<p>reveal a sort of</p>
+<p>adjacent possible and</p>
+<p>it would be awesome if</p>
+<p>that could all be</p>
+<p>happening in a</p>
+<p>flexible environment</p>
+<p>like disco pi.</p>
+<p>Yeah I can't agree</p>
+<p>more I mean I think</p>
+<p>there's a similar</p>
+<p>effort that's been</p>
+<p>going on on the</p>
+<p>machine learning side</p>
+<p>where people have</p>
+<p>taken category theory</p>
+<p>to formalize existing</p>
+<p>models and it's always</p>
+<p>the question of okay I</p>
+<p>mean you can do</p>
+<p>existing stuff but</p>
+<p>what's the new stuff</p>
+<p>you can do with it and</p>
+<p>I feel like yeah</p>
+<p>active inference is</p>
+<p>definitely a place where</p>
+<p>you can look for</p>
+<p>these new models where</p>
+<p>potentially there's</p>
+<p>something there that</p>
+<p>you can describe in a</p>
+<p>succinct elegant way</p>
+<p>using categories and</p>
+<p>show has some</p>
+<p>experimental value in</p>
+<p>practice and I guess</p>
+<p>software is going to</p>
+<p>be key to turn these</p>
+<p>theoretical insights</p>
+<p>into experimental</p>
+<p>experimental value and</p>
+<p>and I think yeah this</p>
+<p>this ability of</p>
+<p>category theory to make</p>
+<p>bridges between</p>
+<p>different topics and to</p>
+<p>to make metaphors</p>
+<p>become formal is also a</p>
+<p>good way to get</p>
+<p>inspiration from other</p>
+<p>fields into active</p>
+<p>inference and back so I</p>
+<p>think I guess yeah it</p>
+<p>would be super exciting</p>
+<p>that the same library</p>
+<p>gets used by quantum</p>
+<p>natural language</p>
+<p>processing people and</p>
+<p>active inference that have</p>
+<p>a priori nothing to do</p>
+<p>with each other</p>
+<p>cool well do you have</p>
+<p>any last comments and</p>
+<p>also like what</p>
+<p>directions are you</p>
+<p>taking it now with the</p>
+<p>package or just in your</p>
+<p>own work</p>
+<p>yeah I mean I guess I</p>
+<p>we're looking very much</p>
+<p>for contributors</p>
+<p>especially people who</p>
+<p>can bring projects to</p>
+<p>apply the library in new</p>
+<p>directions and so please</p>
+<p>get in touch on github or</p>
+<p>otherwise and we'll be</p>
+<p>very happy to to welcome</p>
+<p>new people to the the</p>
+<p>disco pipe contributors</p>
+<p>and in terms of new</p>
+<p>directions we're pushing</p>
+<p>it in I guess yeah the</p>
+<p>sort of education effort</p>
+<p>is something we're trying</p>
+<p>to invest a lot of time</p>
+<p>in so we spend a lot of</p>
+<p>time writing documentation</p>
+<p>examples notebooks</p>
+<p>hopefully will lower the</p>
+<p>barrier to entry to</p>
+<p>something that's quite</p>
+<p>scary at first I mean</p>
+<p>category theory is one of</p>
+<p>the most intimidating</p>
+<p>topics out there so</p>
+<p>making it more childish</p>
+<p>and talk about snakes</p>
+<p>and spiders and sort of</p>
+<p>making it fun is a part</p>
+<p>of it and I guess yeah in</p>
+<p>terms of developments I</p>
+<p>think there's a lot of</p>
+<p>work on category theory</p>
+<p>for probabilities and I</p>
+<p>think that has a very</p>
+<p>strong connection with</p>
+<p>functional programming</p>
+<p>like I guess there's</p>
+<p>this monad base library</p>
+<p>in high school that</p>
+<p>implements a lot of</p>
+<p>Bayesian inference in terms</p>
+<p>of monads and very</p>
+<p>elegantly in terms of</p>
+<p>category theory I think</p>
+<p>some of that could be</p>
+<p>ported to to python and</p>
+<p>built into disco pi so</p>
+<p>that you could potentially</p>
+<p>yeah go beyond the sort of</p>
+<p>toy examples or you have</p>
+<p>a bunch of categorical</p>
+<p>distributions and go into</p>
+<p>something where it's yeah a</p>
+<p>very powerful system that</p>
+<p>can handle all kinds of</p>
+<p>Bayesian inference problems</p>
+<p>and in the same same sort of</p>
+<p>nice looking diagram world</p>
+<p>the future is diagrammed</p>
+<p>yeah that's I mean matrices</p>
+<p>were the maths of the 20th</p>
+<p>century diagrams will be the</p>
+<p>maths of the 21st</p>
+<p>cool thank you very much</p>
+<p>looking forward to learning</p>
+<p>more and appreciate all the</p>
+<p>work and the outreach that you</p>
+<p>all do so yeah thanks a lot for</p>
+<p>the invite and hope get in touch</p>
+<p>very soon thank you bye take</p>
+<p>care</p>
+<p>thank you</p>
+<p>thank you</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+</body>
+</html>

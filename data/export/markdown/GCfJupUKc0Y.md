@@ -1,0 +1,136 @@
+---
+title: "Active Inference ~ Parr, Pezzulo, Friston ~ Chapter 9 ~ BookStream #002.03"
+category: "BookStream"
+series: "BookStream_002"
+episode: "03"
+speakers:
+  - "Parr"
+  - "Pezzulo"
+  - "Friston ~ Chapter 9 ~ BookStream #002.03"
+duration: "19:12"
+url: "https://www.youtube.com/watch?v=GCfJupUKc0Y"
+views: 93
+exported_at: "2026-02-18T22:37:37.741110+00:00"
+format: markdown
+---
+
+# Active Inference ~ Parr, Pezzulo, Friston ~ Chapter 9 ~ BookStream #002.03
+
+Hello. This video is going to be an overview and introduction to Chapter 9 on model-based analysis in Par, Pizzullo, and Friston Active Inference 2022 textbook.
+So, I'll read the opening quote, and then, Ali, feel free to give a first thought or overview on the chapter.
+Just because we have the best hammer does not mean that every problem is a nail. Barack Obama.
+So, what is your overview on Chapter 9?
+Okay. So, Chapter 9, as the title suggests, is about introducing an approach to data analysis, specifically model-based data analysis, because, as we know, there are multiple different approaches to do any kind of analysis and data.
+So, there are approaches that are basically model-free or model without any specific models, and we just do some techniques on data wrangling and data directly.
+But in this chapter, there is this approach that is inspired by Active Inference Framework, that basically is about how to organize or how to interpret, basically, the data we have at hand using Active Inference Framework.
+So, this kind of model-based data analysis can be used on many different scenarios involving empirical research, in which some raw data has been gathered,
+and we need to make sense of what active inference models can be used on many different models.
+So, this is a very important model, and we need to make sense of those data in terms of what Active Inference models can be applied, or can be appropriate to organize those data, and what kind of inference can we get by developing a kind of Active Inference model,
+and basically treating the input to the model, and then to see what kind of inference we can get using those data.
+Great, thank you.
+In this chapter, we focus on the ways in which Active Inference can be applied in understanding empirical data, and the point you ended with is exactly the point that I like to highlight, which is that up to this point in the textbook, the examples have all been proposed, basically, from scratch, like the rat in the tea maze or the frog jumping out of the hand.
+And so, first, there was the conceptualization of a generative model here in this textbook to kind of demonstrate some feature of Active Inference framework, and then data could be generated from the model.
+Whereas in Chapter 9, we're thinking a lot more about the generative model and the data, including situations where we begin with a given data structure, and then construct a generative model to analyze that in different ways that we'll cover.
+Okay, Section 9.2, Meta-Bayesian methods.
+What would you say about Meta-Bayesian methods?
+Right, so this particular figure on this page, Figure 9.1, tends to be one of the figures that we come time and time again when we refer to kind of meta-modeling of active, meta-modeling aspect of Active Inference.
+So basically, in this kind of view of Active Inference, it is, I mean, it can be used to model a kind of nested hierarchical models of different sorts.
+So basically, it's a kind of self-referential way of modeling situation of interest.
+In other words, instead of just modeling a system of interest, we can also apply the same mathematical technology and the same theoretical framework to model the observer of that phenomenon or, let's say, the scientist or the agent that intends to study that phenomenon.
+In other words, it's a kind of, it's a way to kind of formalize a specific way of doing scientific research in terms of doing this kind of self-reflective or recursional way of meta-modeling.
+So in this section of chapter 9, there are some discussions and also references to many different papers that use this kind of process, this self-referential process of meta-Basian modeling to model many, many different scenarios.
+So as we see in figure 9.1, if we take the subjective model as the kind of graph, basing graph that we've seen before in previous chapters, and then take that exact same model and put it in as the input to the system,
+we can, on the other level of this nested hierarchy, look at this as the subject of interest, and then apply the exact same mathematical formalism to model this phenomenon as well.
+Great.
+Great.
+Inside of the box here is the system of interest.
+This is the subject of interest.
+This is the subject of the experiment.
+This is the rat in the maze, whose generative model describes observations and hidden states through time and policy conditioned upon the parameterization of the model.
+And then outside of that cognitive model, which may well be a map of its surrounding, we have the experimenter's room with the stimuli that is being passed in.
+It's a policy selection from the experimenter, but it's an observation coming in from the perspective of the subject.
+And then the actions coming out of the generative model at the heart of this image is taken up to be objective behavioral data by the experimenter.
+And there's a really interesting point that they make about two reasons why you might want to fit a computational model to observe behavior.
+The first is to estimate parameters of interest that explain a given particular things behavior or differentiate groups or subtypes of similar things.
+That's computational phenotyping.
+So that is conditioning upon a structural model looking to differentiate individuals or an individual through time or across contexts.
+And conversely, you might fix upon one individual or a group of individuals and be interested to test different hypotheses about the underlying cognitive structures.
+That sounds from a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be used with a large group of factors that will be
+the same state space. So in this way, CMAP and FEP duality can be mapped onto this
+self-referential way of metabasian modeling. Because on the one hand, if we are,
+if we look at the environment or the system of interest from the viewpoint of the system,
+we are basically dealing with FEP. But if we flip that logic around, we're dealing with CMAP
+or constraint maximum entropy principle. So yeah, that was also, I think, relevant to
+metabasian or phenotypic computation as well. Cool. Anything to say on 9.3 variational Laplace
+and 9.4 parametric empirical days? Okay. So these two sections are pretty technical,
+but there's this recent paper, I think it was published a couple of weeks ago by Riston et al.,
+which provides a tutorial on variation on Laplace variational techniques, which I think can
+greatly help to understand or to unpack some of the dense technicalities of this section,
+this particular section 9.3. So I highly recommend looking at that paper before or alongside reading
+this section as well. Yeah, exactly. So, yes.
+Those are two technical sections as you brought up.
+Exactly. 9.5, the instructions for model-based analysis. Here, they're going to outline some steps
+to analyze empirical behavioral data, choice data using active inference. Step one, collect behavioral
+data. Step two, formulate a POMDP, partially observable Markov decision process. Step three,
+specify a likelihood function. Step four, specify prior beliefs. Step five, solve for posterior probability
+and model evidence. And step six, perform group level analysis. This is summarized in figure 9.2.
+What would you say about this process?
+Okay. So I believe this is a kind of common process used in SPM 12. So, well, it helps to look at this
+process in terms of the recipe provided in chapter 6 and also used extensively in modeling the behavior,
+modeling the cases in chapters 7 and 8. But basically, those, I mean, this kind of routine, again, is not
+something I believe that needs to be followed precisely in every detail, but it can be modified based on
+the scenario we're interested in. So at least that's my understanding of these routines or recipes or
+whatever we want to call them. So, but it provides a helpful starting point which can
+help to at least begin to sketch some routes through our modeling task without losing the forest for the
+trees. So, yep. I would describe this figure as connecting the empirical structure of the data. So,
+in this case, it'd be the location of the animal in the TMAs through time, connecting the empirical data
+structure to a generative model that graciously receives that data without any false positives or
+false negatives. That's where we get the kind of nice fitting design and the category theory,
+plus specification of some of the accessory machinery that's required for the Bayesian statistical model.
+And then stage 6 here is like a figure that you'd see in a paper. If there was some parameter in the
+POMDP that described the mouse's skittishness or its boldness, and that parameter was going to be
+identified, and then to go from the parameter to generated data, that would be the kind of generative
+direction or in the recognition direction with the inverted model. You could go from empirical data
+to identification of parameters. And so maybe this graph in 6 represents 10 mice per replicate,
+and the parameterization of each of their parameters related to some personality trait or performance on a
+task. And then these bar charts could be straightforwardly compared using an ANOVA or a T-test,
+and that would basically be the paper. We designed the experiment. We designed the generative model.
+We did statistics. Here's the statistical outcomes that we identified in terms of here group differences from these five groups.
+Section 9.6 provides examples of generative models. They provide in figure 9.3 an overview.
+These are two different generative models of I-saccade motor behavior epistemically driven.
+And there's more that could be said, but this highlights to me that there's always a plurality
+of generative models that can be drawn even for the same behavior. And this point is made especially clear because
+on the left the experiment of atoms at all is performed with a continuous time continuous space model,
+whereas the Mirza on the right was in a categorical space and discrete time.
+Anything else to say about this setting other than that it was used to cite these papers and give examples
+of what it looks like to connect a generative model here of I-sacades and vision to empirical data?
+So I think that's pretty much all there is to it. Again, there are some subtle differences
+between those two examples in terms of how those generative models are conceived. So it's helpful to see
+two related examples. I mean, they're both about studying the eye movement, but different aspects of it. So these
+kinds of subtleties can rise in real world situations when we want to, when we deal with empirical data of
+various types. So I believe these two examples are very cleverly chosen to
+point some of the subtleties of modeling here.
+Cool. Section 9.7, Models of False Inference. This section, among other things, contains a table
+of various settings that have been studied using active inference in the computational pathology space.
+And the pathologies listed here with citations and a little bit of a note are addiction, impulsivity,
+and compulsivity, delusions, hallucinations, interpersonal and personality disorders,
+ocular motor syndromes, pharmacotherapy, and prefrontal syndromes, visual neglect, and disorders of interoceptive
+inference under the section header of models of false inference. What would you say about this?
+Okay, so I believe it links to recent developments in this new area of computational psychiatry,
+because unlike the traditional psychiatry, in this new way of studying some abnormal behavior,
+behavior, researchers try to develop computational models in order to model the normal human behavior,
+and then study how quote unquote false inferences can arise from those normal models,
+and then try to map this kind of behavior onto various types of abnormal behavior,
+behavior, abnormal psychiatric disorders. So this can be a kind of introduction to this new research
+discipline. And also, I'd like to point to Fristen's review paper, I think it was published in Nature a few
+months ago, about computational psychiatry. So in that paper, there are many more examples and
+other more, many more details about how exactly those kinds of computation models are constructed
+in order to study those disorders. Great. And then, and the interesting discussion we always have about
+what is the relationship between Bayes optimal generative models, the ball rolling downhill,
+things unfolding as they do in a setting, and pathology, and what does pathology mean? What is an
+aberrant? What's a false belief for a hallucination in this setting? And then 9.8, it's a very short
+summary. They provide the six steps in figure 9.1, providing a generic method for designing experiments.
+And there's a lot of opportunities to ask different sorts of questions, analogously to chapter five,
+studying the mammalian nervous system. Here they highlighted their most active area of work,
+which is on human computational pathology. Any other comments on chapter nine?
+Nothing particular comes to mind, currently, so...

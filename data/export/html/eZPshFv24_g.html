@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 101.1 ~ Autonomous Vehicles, Diffusion-Based Motion Prediction, Active Inference</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 101.1 ~ Autonomous Vehicles, Diffusion-Based Motion Prediction, Active Inference</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_101 &middot; Episode 1 &middot; Speakers: Autonomous Vehicles, Diffusion-Based Motion Prediction, Active Inference &middot; Duration: 57:54 &middot; Views: 175</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=eZPshFv24_g">https://www.youtube.com/watch?v=eZPshFv24_g</a></div>
+<article>
+<p>All right. Hello and welcome. It is April 8th, 2025, and we're on active guest stream</p>
+<p>101.1 with Nosan Jafari and Yuli Lee. So thank you both for joining and looking forward</p>
+<p>to this presentation and discussion.</p>
+<p>Well, Daniel, thank you so much for having us here. It's really great pleasure. What I'm</p>
+<p>going to do is I'll have, I have few slides for you. I'll present my slides and it's an</p>
+<p>open discussion. So please stop me whenever you have questions. And that's about it. So</p>
+<p>let me start. Again, my name is Nosan Jafari. I am professor at Rutgers University of Engineering.</p>
+<p>This work, we have been working in this area for the last, I would say four to five years.</p>
+<p>And this is a joint work with Professor Andrea Mata from Polytechnical Milano. There are four</p>
+<p>PhD students currently working on this. Actually, one of them, Yu Fei Hong, the last one, he graduated</p>
+<p>about a year ago. But the rest are in the program. They are working in the program.</p>
+<p>So what I'm going to do, well, again, it took us a while to understand active influencing.</p>
+<p>I am myself coming from automation background. I have computer science, half engineering. So I'm very</p>
+<p>familiar with the modeling, with the stochastic systems and so on and so forth. But definitely,</p>
+<p>in terms of active influencing, it was a little bit different for me to get acquainted with. But</p>
+<p>that's why it took a while to basically understand the terms, the jargons and the underlying assumptions</p>
+<p>and so on. But we feel that we are quite comfortable with the theory and the framework.</p>
+<p>Dr.</p>
+<p>Dr.</p>
+
+<p>Dr.</p>
+
+<p>Dr.</p>
+<p>Dr.</p>
+
+<p>Dr.</p>
+
+<p>Dr.</p>
+<p>community i'm sure many of us have heard about this where you have some buildings each building</p>
+<p>has zones and and then you have the community which has many buildings in it and these communities are</p>
+<p>part of a larger network sometimes called distribution network if you are looking at from</p>
+<p>energy perspective then you can connect to the power grid or any other type of network so they're</p>
+<p>different you know there's a hierarchy of hierarchy of different layers in the system</p>
+<p>and it's quite complex it's the way that information is being and passed up and down and being processed</p>
+<p>there are many issues in terms of privacy confidentiality abstraction of abstraction</p>
+<p>of information and so on so that's one example and i'm going to talk more about this as we move on</p>
+<p>another example is in the top in the production systems the production systems manufacturing</p>
+<p>systems are usually complex systems there are many many stations robotics and you name it and in in</p>
+<p>there are many examples where you have hundreds or thousands of this machinery in the same same</p>
+<p>uh you know same uh area and of course these systems interact with the environment with outside and</p>
+<p>there are lots of complex interactions inside the system another system of the same complexity that</p>
+<p>involves again machinery and human is is roadways you know navigation in the roadways you have cars and</p>
+<p>and these days we have mixed traffic you have smart cars you have not so smart cars and and of course the</p>
+<p>interaction between all this you know vehicles in the system uh in terms of navigation is a quite complex problem</p>
+<p>um along the same line you can look at the simpler systems but you can look at very complex dynamics in the</p>
+<p>system i'm borrowing this picture from from the literature but basically think about this table</p>
+<p>with a robot that tries to push the ball but the table has a complex dynamics in terms of tilting in</p>
+<p>terms of friction on the table so exactly what you do and what you see may not be exactly what you are</p>
+<p>trying to do and this is another type of system that we are we are trying to to look into and study and</p>
+<p>again if time allows we will discuss this let me just go back a little bit uh the whole idea of</p>
+<p>looking at degenerative modeling is not new for us uh i would say uh about 15 to 20 years ago i i have i i</p>
+<p>did some work in this in this topic again for large complex systems the whole problem there is that to build this</p>
+<p>uh like in this case this automata models for distributed systems and our work research was to build algorithms where you can actually generate this the automata model for the whole system in some smart in some automated way so this is a this is something that we have been doing for for some time and it did not directly relate to active</p>
+<p>inferencing but again the whole idea of creating generative models for the purpose of creating</p>
+<p>the whole perception of how the system works has been there in the past you know in in the past this is</p>
+<p>another example of a manufacturing system actually this is a real manufacturing system where the idea is you</p>
+<p>want to build this graph model on the right hand side which happens to be a petri petri net uh and you want to be able to develop this petri net based on the information that you know you collect from the system and</p>
+<p>again this could be a very complex system and again this could be a very complex system and the problem of interest here becomes okay how do i create this graph model that describes the logic of how the system works in some smart automated way</p>
+<p>this is a very complex system and the system works in some smart automated way</p>
+<p>this is another example we did in the past here you have a simple chemical process you are receiving sensory information from the process and the idea is to build a state transition model</p>
+<p>Daniel i know that one of you know in your email to me you asked the question how do you incorporate the sensory information to building your your your models and actually this is one example of it that you directly use the</p>
+<p>the sensory data to uh create the uh create the transition state transition model and these state transition models basically describe the the behavior of the process again i'm not going to go into detail of it but what i'm trying to the point i'm trying to make is that you know the whole idea of generative modeling and automation has been around for some time but not within the context of active influencing</p>
+<p>um so when we are looking at this type of you know human machine systems we are talking about really</p>
+<p>complexity in terms of the physical systems there is a lot of physics uh behind the systems and of course there is human</p>
+<p>and all the you know complexities that comes with the human behavior usually with this system state spaces are very large</p>
+<p>and especially if you shuffle the states together because of the dependencies then the problem becomes quite complex</p>
+<p>in many cases uh you have hybrid systems in in terms of some of the activities functions are time-based so you have to have a continuous model for it</p>
+<p>and some of the activities are event-based so you have time-based and event-based dynamics</p>
+<p>and that definitely makes the problem more interesting and more complex</p>
+<p>again we have many sources of uncertainties in these systems usually what you do and this is this practice</p>
+<p>this has been the practice in the past and now is to create some layer by layer decomposition of this type of</p>
+<p>systems in terms of states variables outcomes data and so on and of course nowadays we have all the issues</p>
+<p>with the data confidentiality and privacy and so on that you need to consider in these systems so before we</p>
+<p>get into too much of detail let's just look at a very simple case suppose i have this building and suppose</p>
+<p>that this building has only a single zone and what i'm trying to do is i want to basically control the</p>
+<p>the temperature in this building so the or in this zone so the problem of interest here is</p>
+<p>how can i build an active inference model to do this so i want to create an agent that can actually control this</p>
+<p>this this zone and for that reason what you need to do is you need to create of course your hidden states</p>
+<p>your controls actions your observations outcomes and preferences all of it together i'm not going to go</p>
+<p>through details of it but in a zone like this it makes a lot of sense to assume that the occupancy level</p>
+<p>in the zone is hidden from the controller because either you have to have very sophisticated sensory network</p>
+<p>in the zone to know exactly how many people are there because as you know the occupancy impacts the</p>
+<p>temperature humidity in the in the zone and also infiltration external infiltration if you somebody</p>
+<p>keeps the window open or the door open it will definitely impact the quality temperature inside the zone</p>
+<p>so these could be you can consider these as hidden variables and in terms of actions excuse me in terms of</p>
+<p>actions the amount of air that you supply to the zone as well as the um uh the the the flow rate</p>
+<p>and the temperature both in terms of rate and the temperature is something that you can control so</p>
+<p>and and for the observations suppose that you have the thermostat or some sort of sensor that you can see the</p>
+<p>temperature in the zone or average temperature in the zone and let's show it by phi t so basically i have</p>
+<p>my hidden states i have my outcomes or phi t and i have my actions now within this context you can actually</p>
+<p>build uh an active continuous active inference model for this without getting it too much into the dynamics of</p>
+<p>the of the of the system actually it's a quite complex dynamics in terms of you know the thermal flow</p>
+<p>but by using the active inference you basically avoid test and you use this probabilistic model</p>
+<p>to control to basically build your model i'm not going to go through the details of this but</p>
+<p>you can actually do it you can create your your um the elements of your active influencing and and one</p>
+<p>thing that i like to to mention is that let me just go through this and basically explain the details of it</p>
+<p>we said that the temperature in the zone is phi but we define a g function that describes the outcome in</p>
+<p>terms of the hidden states and actions very normal very regular inactive influencing literature right</p>
+<p>and we are going to assume that it is gaussian with some sort of a noise level</p>
+<p>now from thermodynamics we know that we can describe the temperature in the zone through this time series</p>
+<p>function and it just happens that here that this time series function is a function of control actions</p>
+<p>as well as hidden states that makes life much easier so that basically describes your g function through</p>
+<p>which you can describe your outcomes in terms of the hidden states and actions</p>
+<p>you can continue the formulation and active influencing on this formulate your variational free energy and one idea</p>
+<p>that you may want to have here is that you define a target the target is very interesting here because</p>
+<p>as a as a owner of the zone you may actually set some the band gap for the temperature and what you want</p>
+<p>this active influencing agent to to make sure that the temperature stays within within this target band gap so</p>
+<p>it is very doable and again that is what i'm showing here and of course you can use your uh</p>
+<p>variational free energy you can look at the gradients in terms of the</p>
+<p>inferencing and in terms of control so again i'm not going to go through these details we can always come</p>
+<p>back to this if you have questions later on but i'm just following the normal literature in active</p>
+<p>inferencing to do this formulation of course you can generalize this to much more</p>
+<p>complex and more general and here i have some general formulation of it in terms of different</p>
+<p>variables that has to go to this type of continuous active inferencing function and and and and how you</p>
+<p>define the targets because usually the target for an active inferencing agent in this type of systems</p>
+<p>comes from a higher level and the way this target is defined depends on the dynamics that's at the</p>
+<p>higher level and the lower level and definition of this type of target is very interesting in this type</p>
+<p>of system that is one of the areas that right now we are doing some research on to see how we can actually</p>
+<p>do that type of formulation and build this hierarchical model in this context</p>
+<p>um again i'm not i'm just not going to go through the details let me move to another layer suppose that</p>
+<p>you have a community now so within the community you have different agents each agent could be a zone or</p>
+<p>a building i just showed you how you can do the zone but you can extend it to a building assuming that the</p>
+<p>zones are independent if the zones are dependent of course it just makes your model much more complex but</p>
+<p>it's still very doable now when you are looking at the from the community level of course there are</p>
+<p>lots of confidentiality and the privacy issues and the active influencing agents at the lower level</p>
+<p>are not going to give all the detailed information about their what's going on there to the higher level</p>
+<p>so there is some abstraction of information that will go from the lower level to the higher level</p>
+<p>and that is exactly what we are trying to model in this case again let's move on with the and if you</p>
+<p>have questions we can always come back to the to the uh form the detailed formulation but but without any</p>
+<p>going through details you can actually define the hidden states in some abstract level you can define</p>
+<p>observations in some abstract level you can define actions in sub-abstract level at the community layer</p>
+<p>remember you have the building you have the zone you have the building you have community and as you move on</p>
+<p>the abstraction level becomes more and more and you can form all the matrices and all the relationship</p>
+<p>at the community level we are assuming that your active inference model is discrete so at the zone level</p>
+<p>we are trying to control temperature clearly it is time based whereas in the in the community level we</p>
+<p>are trying to basically set some commands between the or define some commands to the lower levels so we deal</p>
+<p>with it in discrete way let me just add here that if if i may go back to here when you are looking at this</p>
+<p>higher level community layer or level you are dealing with the distribution network much you know another</p>
+<p>higher level i am assuming that the distribution layer is going to set some targets and also it is going</p>
+<p>to give some information to the community for example market price and or the day head plan which is very</p>
+<p>usual in the sense that you define your schedule of how you are going to consume energy for tomorrow</p>
+<p>so this is the target that the community level active influence has to has to respect so you you can set</p>
+<p>all these targets at different levels and our formulation again we are going through the same active</p>
+<p>influencing formulation you can use markov blankets you can use different forms of it to to do</p>
+<p>the formulation here i'm just showing you some simple examples and again you will have my slides but</p>
+<p>active influencing is doing amazing it is at the community level it is able to to follow the target</p>
+<p>very well it is able to minimize the pricing system and also the use of i am assuming that your community</p>
+<p>for example has solar panels and energy storage and it tries to optimize the usage of all this together so</p>
+<p>that is really very exciting and very interesting to see that without truly understanding the inner dynamics</p>
+<p>of these complex systems i can actually employ active influencing to come out with with the controls</p>
+<p>which otherwise you have to either use some reinforcement learning or some exact models which sometimes is not even</p>
+<p>possible because the flow of information and the flow of the physical elements such as you know thermal flow and</p>
+<p>all that is is very complex so let's move on and now this brings us to another example in the production system and i'll tell you where</p>
+<p>where is it that we bring the probabilistic diffusion to this and where it is we are expanding our research to and how it came about</p>
+<p>first of all i showed you a hierarchical system in terms of community the fact is that if you really want to do this for a real complex system the number of states and and the models will be very very complex</p>
+<p>and we know that in active influencing one of the issues there is to compute expected free energy for the future to define your uh you know plans strategies optimize your strategies that's a major issue in large complex systems</p>
+<p>because computation of these expected free energies is not easy if not impossible is not easy we tried it for this production system actually this is a work we are doing in italy and it's huge</p>
+<p>if you are using montcala search all that and creating this habitual networks and so on in order to calculate the</p>
+<p>the expected free energy the expected free energy problem becomes extremely difficult so that was one reason for us to start looking for</p>
+<p>maybe different solutions to deal with expected free energy problem now i'm not going to go through this but i'm just showing you some of the elements of how you can use the traditional active</p>
+<p>active influencing in terms of montcala search and all of it for expected free energy but again when you go for large complex systems these become really big issues so</p>
+<p>let me just stop here for a sec what i did was i basically showed you some examples of</p>
+<p>real uh complex human machine systems i would say i showed you community we have done some work in that you know in that</p>
+<p>area we are trying to expand our work and really bring to more uh real problems we also did in production</p>
+<p>systems um quite complex problem in terms of state space explosion and so on so forth</p>
+<p>so we have been searching for some different ways of dealing with with this expected free energy problem</p>
+<p>how do you really do this what is the organic way of really doing it i feel that as human</p>
+<p>we don't do it that way we don't search for different solutions for the future uh</p>
+<p>uh active influencing is really it has its roots in predictive mind so to me it is very organic</p>
+<p>so we we have been trying to find some organic ways of dealing with expected free energy so let me put it</p>
+<p>that way so this brought us to the problem of probabilistic diffusion what is it well i don't know if you are familiar</p>
+<p>Daniel with probabilistic diffusion but basically the problem is that you start from initial data in this case</p>
+<p>image of a cat you bring noise and perturbation to it until you make a total noise</p>
+<p>and then you basically recreate the image from that right sounds very simple it just happens that</p>
+<p>when you go from your initial data in this case again the image of this cat to total noise you are</p>
+<p>basically going through this markovian step and in each step you have this Gaussian approximations</p>
+<p>for your state variables now in this case your state variables are you know pixels of the image and</p>
+<p>you just keep on applying it to these pixels until you can create this total noise so it's fully corrupted</p>
+<p>and then you create a reverse process which is also Gaussian but then you have to use some sort of</p>
+<p>approximation neural net approximation or any other sort of approximation to build the original image the</p>
+<p>original data set so this has been in the literature i would say for five six years now this is called probabilistic diffusion</p>
+<p>looking at it from engineering perspective i'd like to call it reverse engineering because what it tells me is that</p>
+<p>i can start from some order the structure i can totally uh destroy it which is my noise totally corrupted</p>
+<p>and then from total disorder i can recreate order again right so this is basically what this diffusion is about</p>
+<p>is that is the real is that is the real is that is the real is that is the real is that is the real is that</p>
+
+<p>through the whole process of how you do this. Again, this is a Markovian. In each step, you have</p>
+<p>Gaussian assumptions as you're going forward. As you're going backward, again, you have Gaussian.</p>
+<p>It's Markovian. But you really have to compute your noise levels as you're going backward.</p>
+<p>And it just happens that, again, there are a number of papers, recent papers in the literature,</p>
+<p>that going back, you can look at this score function, which I have it here as the gradient</p>
+<p>of log of q. Now, one point here, when you are going forward, you can assume that you are using</p>
+<p>the original distribution, even though you have to approximate it. And when you are going backward,</p>
+<p>you are trying to get to that original distribution. So when you are going forward, I have q. I'm using</p>
+<p>q for my transitions. And when I'm going backward, I'm going to introduce some parameter theta.</p>
+<p>I use p because I want to come back to this original distribution. And it just happens that usually</p>
+<p>backwards, reverse or the backward process, you have to use some sort of a neural net. But it is based on</p>
+<p>this score function, which is gradient of this log of qt xt given x0. It's a very important point here,</p>
+<p>where for my reverse process, it is important that I keep my original data set, my original painting</p>
+<p>accessible, because without that information, this reverse may not be tractable. Again, we can always</p>
+<p>go back to details of it. But this is already in the literature, there is nothing new on that one.</p>
+<p>And the beauty of this methodology is that you can actually do sampling, conditional sampling.</p>
+<p>And by this conditional sampling, you can actually define where you want to go back,</p>
+<p>because you may not actually go back to the same origin, you may add few things to it,</p>
+<p>or you may actually change your original design. And that is very useful when you are looking at</p>
+<p>reverse engineering problems. There is a discrete version of it. And to us,</p>
+<p>this is very interesting, because we think many engineering processes can be described by graphs.</p>
+<p>And this graph diffusion is, it has been around again for a few years, only a few years.</p>
+<p>And there are a number of works on this. We are also trying to use this for engineering processes.</p>
+<p>And the way you use the graph diffusion is, again, you start from a graph, you totally destroy it,</p>
+<p>and then you build it back. There are some very interesting applications of this in the literature.</p>
+<p>In the literature, there are two ways that people have used so far, in terms of using the diffusion,</p>
+<p>together with reinforcement learning, in control actions.</p>
+<p>They don't use active influencing, they use the diffusion with reinforcement learning.</p>
+<p>Here is one example. This is by a group from 2022.</p>
+<p>So basically, think about this. You define your control actions, you have control actions,</p>
+<p>you have your states, as I have done here, like A's are your control actions, S are your states.</p>
+<p>So if you look at the combination of actions and states, you have that, you know, the small square or rectangle there.</p>
+<p>And then you put them next to each other. So you have the whole sequence going from time zero to whatever time it is.</p>
+<p>So if I create this table, this looks more like an image.</p>
+<p>And then, of course, actions are states, there are multi variables, there are many elements inside each.</p>
+<p>So I have this like a image type structure.</p>
+<p>And then I apply a noising and denoising to it.</p>
+<p>And when I am going back, when I am doing my reverse process,</p>
+<p>I can apply reinforcement learning in terms of some reward function to find the best sequence of actions, the best trajectories.</p>
+<p>This is a very interesting concept and quite useful or close to what we are trying to do.</p>
+<p>There is another example of this.</p>
+<p>By the way, we have taken this methodology and done some improvement on this.</p>
+<p>Because when this, the number of time steps increases, this problem may not actually converge.</p>
+<p>So we are looking at some, what we call window stitching and some adaptive planning of doing the same thing.</p>
+<p>And we have some preliminary results on that.</p>
+<p>Again, I'm not going to go into the details.</p>
+<p>Another work of the similar sort, rather than looking at the actions and the states together,</p>
+<p>they apply the same methodology to the states.</p>
+<p>And then they use inverse dynamics to define the actions.</p>
+<p>Okay.</p>
+<p>But pretty much it is the same approach.</p>
+<p>And with this, you can use reinforcement learning to try to optimise, you know, your trajectory.</p>
+<p>Now, I call these model one, these two model one, because they are not actually using, they use reinforcement learning.</p>
+<p>They have some reward function, but they are not actually formalising how this optimization or optimal control should be.</p>
+<p>The model two, which is our model, actually puts active influencing and diffusion together.</p>
+<p>In the following sense.</p>
+<p>So think about it this way.</p>
+<p>The diffusion is going to teach me how to go from point A to point B.</p>
+<p>Okay.</p>
+<p>So from diffusion, I can create many different samples of going from point A to point B, avoiding many obstacles and all of it.</p>
+<p>So I already learned how to go from one point to another point.</p>
+<p>I look at it as a predictor.</p>
+<p>So actually, probabilistic diffusion creates a motion prediction for me.</p>
+<p>Very organic.</p>
+<p>And then I can actually use active influencing together with this to find my best sequence of motions going from one point to another point.</p>
+<p>So that is basically the whole, you know, this is the whole theme or whole philosophy behind our methodology of combining active influencing and diffusion.</p>
+<p>So the forward process is the same as exactly the same as diffusion.</p>
+<p>But the backward process.</p>
+<p>So the backward process, every time that you start from a state in the reverse process, diffusion process, you start from a, you know, state.</p>
+<p>And you have, you have, you have all these different samples of going from this point to this point.</p>
+<p>But for each of them, you can apply the expected free energy from active influencing to find which one of them will give you the best sequence of actions.</p>
+<p>And that is the overall model that we have here.</p>
+<p>Let me show you this in terms of, let me just jump through this for a sec.</p>
+<p>To this parking model, a lot model.</p>
+<p>So here, suppose I have in the first, in the top graph on the left hand side, I have only five, six parking slots.</p>
+<p>In the other one, I have more.</p>
+<p>So you have some parked cars.</p>
+<p>I want to teach these cars how to go and park themselves in the best possible way.</p>
+<p>So there are some empty slots.</p>
+<p>And these cars, starting from some random place, they should go and park.</p>
+<p>Okay.</p>
+<p>So there are two problems here.</p>
+<p>One is that, of course, I have to know how to drive in such an environment, going from point A, which is some random point, to a parking slot.</p>
+<p>That is one problem.</p>
+<p>The second problem is that I have to go to the best slot, to the best place.</p>
+<p>Right.</p>
+<p>So what we do is, the first problem, we solve it with probabilistic diffusion.</p>
+<p>How do I do it?</p>
+<p>I start, suppose that I take a car, one of these green cars.</p>
+<p>I take it from there.</p>
+<p>Suppose it is parked in a slot, in a parking slot.</p>
+<p>I take it from there.</p>
+<p>And I apply this forward process to it until I bring it to total noise, somewhere out there.</p>
+<p>Then I reverse this process.</p>
+<p>And I create different samples of this reverse process.</p>
+<p>So basically, by doing so, I know how to start from a, how to go from some random location to a parking slot.</p>
+<p>So I have learned that through my diffusion process.</p>
+<p>Now that I have that, then I apply my active inferencing to see which one of them is going to be my best choice.</p>
+<p>One thing here is that, as I am doing my probabilistic diffusion, at any point that I am using what I have learned to find my, you know, to find my projection for the future,</p>
+<p>I can use variational free energy to inject what I am observing to my diffusion process.</p>
+<p>So in a way, we are updating our diffusion process by the observations that I am actually receiving in real time.</p>
+<p>Again, I have applied my diffusion.</p>
+<p>I have set up samples of how to go from some random point to a parking slot.</p>
+<p>I have many samples.</p>
+<p>But now that I am doing active inferencing, I am actually applying in real time.</p>
+<p>So now I make an observation.</p>
+<p>Diffusion tells me go this way.</p>
+<p>For the next step, it gives me an estimate.</p>
+<p>But when I actually apply it, the result is a little bit different.</p>
+<p>So I am going to use variational free energy to make a correction, find a new point, and apply my diffusion again until I get to my best location.</p>
+<p>So that is basically the whole idea behind this.</p>
+<p>Now, in here, the inverse dynamics is, you know, bicycle model.</p>
+<p>It's very, say, from the literature.</p>
+<p>There is nothing new about it.</p>
+<p>So given that I have my actions or states, I can find the other one.</p>
+<p>In this example, we are applying the diffusion to the actions.</p>
+<p>But you can do both again.</p>
+<p>But remember, actions and states are related through this inverse dynamics model.</p>
+<p>So that's not an issue.</p>
+<p>So one last item here is that really a contribution that we are making here is actually I would say there are two contributions.</p>
+<p>One is how to deal with expected free energy in really complex systems in some organic way.</p>
+<p>That's number one.</p>
+<p>And again, reverse engineering is something that we do a lot in engineering.</p>
+<p>Number two is that how to integrate the elements of active influencing, especially the variational free energy to update my diffusion process.</p>
+<p>And in this work that we did for the parking model, we were actually able to demonstrate that.</p>
+<p>Before getting into any and maybe ULINK can help me here.</p>
+<p>Now we are trying to use this idea for many different applications.</p>
+<p>And we are also trying to expand our parking model to more navigation on the road by looking at stitching these windows together.</p>
+<p>And one of the areas that we are trying to work on is how to actually navigate a ball.</p>
+<p>For example, on a table, which is very dynamic.</p>
+<p>So it is tilting.</p>
+<p>There are frictions.</p>
+<p>And it has to be able to find its way.</p>
+<p>So we are thinking that this ball is looking for food.</p>
+<p>But we don't know if there is a food or not.</p>
+<p>So the ball has to go or this organism has to go and find, has to survive.</p>
+<p>But in order to survive, it has to find food.</p>
+<p>But it doesn't know if there is a food.</p>
+<p>So it has to explore this in a very dynamic environment.</p>
+<p>And again, ULINK, is there anything you want to mention here before we start our conversation about all this?</p>
+<p>ULINK, are you there?</p>
+<p>Can you say a few words on this, ULINK?</p>
+<p>Sorry, I just lost audio for a second.</p>
+<p>Sure.</p>
+<p>So this is the most recent work we're doing.</p>
+<p>So again, as Dr. Jafar described, this is similar to Tien Snyder, Dr. Snyder's work about active exploration for robotic manipulations.</p>
+<p>Right.</p>
+<p>And as Dr. Jafar described, this environment is extremely challenging and almost impossible for reinforcement learning.</p>
+<p>And we add extra layer of challenge, just tilting the table such that the table is dynamic during the learning exploration task.</p>
+<p>So our idea is to solve this problem with a hierarchical setting.</p>
+<p>Right.</p>
+<p>So right now we're experimenting with three layers.</p>
+<p>So the top layer is a high-level planner using active inference.</p>
+<p>So using the active inference controller, this layer updates belief using variational free energy and performs planning using the expected free energy.</p>
+<p>So where does the expected free energy, all those information comes?</p>
+<p>We need to sample many different possible trajectories.</p>
+<p>Right.</p>
+<p>So that's how we move to the second layer, the diffusion projector.</p>
+<p>Our diffusion projector learns from from dataset and from past experience to generate possible paths.</p>
+<p>The high-level active inference layer, we select a preferred region, right?</p>
+<p>Some kind of points or area or distribution as we refer to G-distribution.</p>
+<p>That belief gets passed on to the diffusion planner.</p>
+<p>And the diffusion planner generates many possible trajectories to that region.</p>
+<p>And at this point, the actual goal hasn't been found yet.</p>
+<p>We are still looking for the goal.</p>
+<p>But we are generating diverse trajectory towards that most probable region.</p>
+<p>Right.</p>
+<p>And these trajectories consist of a sequence of waypoints and corresponding states that represent the possible paths.</p>
+<p>And then obviously we calculate the expected free energy and then select the best possible trajectory.</p>
+<p>And once we have the trajectory, now we have the low-level controller.</p>
+<p>Right.</p>
+<p>The low-level controller is just a lightweight, small-scale reinforcement learning controller that generates actions to connect the small waypoints.</p>
+<p>So by having this hierarchical structure, we believe we can solve this problem much faster than the original literature.</p>
+<p>Where Dr. Snyder solved this problem with model predictive control with active inference.</p>
+<p>If you run that, it takes tremendous amounts of planning time and learning time.</p>
+<p>And we believe because of the nature of the diffusion process, we can make this learning process and planning process much faster.</p>
+<p>Thank you, Yulin.</p>
+<p>Well, Daniel, I think we are done.</p>
+<p>Sorry.</p>
+<p>I don't know how long it took, but it was long.</p>
+<p>I'm sorry.</p>
+<p>That was awesome.</p>
+<p>Yeah.</p>
+<p>I'll ask some questions.</p>
+<p>Is that okay?</p>
+<p>Is that okay?</p>
+<p>Yes.</p>
+<p>Well, I think there is some sort of back echo.</p>
+<p>I know.</p>
+<p>I think it might be on your side.</p>
+<p>Oh.</p>
+<p>It sounds cool, though.</p>
+<p>It sounds cool, though.</p>
+<p>Okay.</p>
+<p>But is there any way to, like, maybe mute?</p>
+<p>But it's minimal when you're talking.</p>
+<p>It's okay.</p>
+<p>Okay.</p>
+<p>All right.</p>
+<p>I'll read some of the pre-submitted questions.</p>
+<p>Some of them are cool to maybe get your short takes on.</p>
+<p>Should I keep the...</p>
+<p>Should I share or should I just...</p>
+<p>You can keep it up.</p>
+<p>It's...</p>
+<p>Yeah, you can keep it up.</p>
+<p>And I'll just...</p>
+<p>In case you want to show a slide.</p>
+<p>How did you incorporate physics, like friction, forces, or air resistance into the model?</p>
+<p>So when you're...</p>
+<p>And just thinking from your engineering expertise more broadly, how do you bring in these physical</p>
+<p>features and constraints into the model's dynamics?</p>
+<p>To what extent do you encode them symbolically?</p>
+<p>Core screen them?</p>
+<p>How do you include those in the model?</p>
+<p>Well, again, there are two aspects of the model here.</p>
+<p>So let me just go back.</p>
+<p>One thing I want to make sure that we are on the same page.</p>
+<p>There are two things we are looking at.</p>
+<p>One is this hierarchical models, right?</p>
+<p>Large, complex hierarchical models.</p>
+<p>And one example is here.</p>
+<p>This is one example.</p>
+<p>This is physics.</p>
+<p>This is a time series model from the temperature in a zone.</p>
+<p>And in this case, for a given zone, we have this type of physics model, right?</p>
+<p>And it is easy to incorporate it, both in terms of states and actions and so on.</p>
+<p>But in all honesty, when you enlarge the system, if you look at the complex zones, if you look</p>
+<p>at many different factors, it will be very difficult to find a physics-based factable model</p>
+<p>to actually to use, in which case you have to use some sort of neural nets or some sort</p>
+<p>of approximation.</p>
+<p>So this is one example where you bring physics.</p>
+<p>Another example, which I showed you, is here, where this is it.</p>
+<p>This is the bicycle model.</p>
+<p>Again, this comes from physics in terms of doing the inverse dynamics, kinematics.</p>
+<p>So I think that's a great question.</p>
+<p>We have done some of it.</p>
+<p>I don't know the answer to all of it, how it is going to be done, how it can be done.</p>
+<p>But depending on the system, I think it is very possible to incorporate physics.</p>
+<p>But again, when the system becomes complex, it may not be very attractive.</p>
+<p>So I think that's a good point.</p>
+<p>So I think that's a good point.</p>
+<p>I think that's a good point.</p>
+<p>I think that's a good point.</p>
+<p>In training the diffusion model, we are using the data from the physical simulation.</p>
+<p>So I think that was incorporated as a noise to the physical simulation where the diffusion</p>
+<p>model learns from data.</p>
+<p>frictions and the physical properties.</p>
+<p>And that was a very good point, Yulin, because there is another point.</p>
+<p>For example, when you are training it for buildings, for instance, you use some digital twin of the</p>
+<p>building, right?</p>
+<p>And for that, again, that digital twin incorporates many of the physics elements of that building</p>
+<p>in the back end, not directly using the active influencing or diffusion, but in the back end,</p>
+<p>it is using it.</p>
+<p>So there are different ways of using physics, but again, assuming that it is tractable.</p>
+<p>Awesome.</p>
+<p>How did you handle perception through sensors and sensor fusion and feature extraction of</p>
+<p>the data from these sensors?</p>
+<p>So how do you do structure learning on everything from which of the kind of layers of the system</p>
+<p>to model on through which kinds of model architectures you used for the neural network mediated steps?</p>
+<p>Well, let's step back on it.</p>
+<p>So if you are looking at from active influencing perspective, well, if you have a continuous</p>
+<p>systems, then again, you look at the dynamics, continuous dynamics of the system.</p>
+<p>If it is too complex, of course, you use this probabilistic framework to describe it.</p>
+<p>If it is discrete, more than likely you are using some sort of a Markov or state transition</p>
+<p>behavior.</p>
+<p>So having said that, let me just go back to this.</p>
+<p>I'm glad that first of all, let me also stop here.</p>
+<p>There are many engineering systems that can be described by graphs.</p>
+<p>Perhaps you can call them automata in terms of the if you look at it from computer science</p>
+<p>perspective, but the graph models are very usual.</p>
+<p>But let me go back to this to answer that question.</p>
+<p>And I'm glad that I have that slide in here.</p>
+<p>Actually, I kept that slide looking at the questions that you have.</p>
+<p>This is one good example of how I can use the sensor information.</p>
+<p>So if I'm looking at these tables, you can think about lambda.</p>
+<p>So think about it this way, that you define a time unit.</p>
+<p>And again, I'm talking very engineering.</p>
+<p>Define a time unit, one second, two seconds, five seconds, whatever, milliseconds.</p>
+<p>And if you don't receive any information or any data, you call it lambda.</p>
+<p>T arrow up could be that temperature is going up.</p>
+<p>Arrow down means temperature is coming up, coming down, and so on, so forth.</p>
+<p>The same for the P pressure and so on.</p>
+<p>So basically, what you see on this table, that's a process data.</p>
+<p>These are actual data you're receiving from the process.</p>
+<p>But there is a methodology that you can take this.</p>
+<p>And from that, you can create the automata or the state transition graph on the right-hand side.</p>
+<p>And as this sensor information or data is increasing and becoming more and more,</p>
+<p>you can keep on updating your model.</p>
+<p>So there are already ways of creating this type of structures.</p>
+<p>Now, again, in active influencing, the underlying assumption is that if you are using a discrete model,</p>
+<p>it is some sort of state transition diagram.</p>
+<p>Okay?</p>
+<p>You use markup blankets or you use state transition diagrams.</p>
+<p>And there are ways to build it.</p>
+<p>I mean, it's not our...</p>
+<p>We have done a lot of work on this in the past.</p>
+<p>This is an existing work in the literature for almost from 20 years ago.</p>
+<p>So there are ways to build that.</p>
+<p>But when you come to the active influencing or diffusion,</p>
+<p>you already assume that you have that structure.</p>
+<p>Okay?</p>
+<p>So to us, it's not part of active influencing.</p>
+<p>Active influencing, you already have it in there.</p>
+<p>But again, of course, you can combine all of them together.</p>
+<p>Yeah, that was a really interesting angle with the noising process as sequential...</p>
+<p>Sorry, I'm getting a little bit of an echo from you still.</p>
+<p>Could you just mute, Wilson?</p>
+<p>Okay, thank you.</p>
+<p>Thank you.</p>
+<p>Yeah, the sequential application of the Gaussian process,</p>
+<p>which also has kind of analogy in if you're 90% confident each time step,</p>
+<p>then there's a decay in the confidence.</p>
+<p>So it's kind of like projecting out through time.</p>
+<p>And then planning backwards in time with increasing precision</p>
+<p>is like moving forward in reducing uncertainty about a path to take</p>
+<p>in a planning space.</p>
+<p>But it was the other direction from a diffusive information neutralizing direction.</p>
+<p>And so it's an algorithmic way to kind of talk about the forward and the backwards</p>
+<p>aspect of gaining and removing information.</p>
+<p>And how do you plug this into existing engineering tools?</p>
+<p>Or what kinds of toolkits are you using for specifying and for running these models?</p>
+<p>Unmute.</p>
+<p>Two models that we have tried so far.</p>
+<p>One is that parking lot model in a simulated environment.</p>
+<p>We have created the simulated environment for it.</p>
+<p>We are planning to expand it, of course.</p>
+<p>And so that is one model.</p>
+<p>And again, the diffusion there, as you said, it's a predictor.</p>
+<p>It predicts.</p>
+<p>And first, by going forward, it tries to lose information totally.</p>
+<p>And then by going backward, it tries to gain the information.</p>
+<p>And by doing so, it finds its way of how to go from one random location in this parking</p>
+<p>area, whatever that is, to a specific parking spot.</p>
+<p>And by doing so, then you use this into your optimization because you want to find which spot is really your best spot.</p>
+<p>And you have to go and park there.</p>
+<p>Honestly, it is so organic in engineering system because the engineering system works like this.</p>
+<p>In engineering system, you always have some organic.</p>
+<p>If you look at the human-like systems, and that is why I'm so interested in active inferencing, because it's so organic.</p>
+<p>We always do it that way.</p>
+<p>You always have a process defined.</p>
+<p>Okay.</p>
+<p>There is always a structure.</p>
+<p>And you want to always use that structure to find the solution.</p>
+<p>So, to me, it is very organic in engineering-like systems.</p>
+<p>And as I said, many engineering systems, you can use graphs to describe them.</p>
+<p>Many engineering systems are hierarchical.</p>
+<p>You can decompose it and look at the, you know, simpler cases.</p>
+<p>You can create abstractions.</p>
+<p>But to me, it is very natural that you organically learn how to do things.</p>
+<p>And then you use your expertise to find the best way of doing it.</p>
+<p>You don't mix the two.</p>
+<p>You basically, well, you integrate the two.</p>
+<p>But you understand that first you have to know how to build one piece.</p>
+<p>But then you think about, okay, how am I going to optimize this?</p>
+<p>So, you use that knowledge to optimize it.</p>
+<p>And that's exactly what we are trying to do.</p>
+<p>Awesome.</p>
+<p>All right.</p>
+<p>In closing, just give your thoughts on this.</p>
+<p>It'll be awesome.</p>
+<p>And thanks again for this great work.</p>
+<p>So, what would be the obstacles to advancing this approach to more complex autonomous navigation scenarios and agents?</p>
+<p>Well, honestly, I don't know.</p>
+<p>This may, again, see, there are two elements here.</p>
+<p>One is the diffusion or the projector.</p>
+<p>And the other one is the optimizer, which is active influencing.</p>
+<p>So, we have a projector, we have an optimizer.</p>
+<p>These two are integrated together.</p>
+<p>I'm sure there will be complexities.</p>
+<p>And, you know, this, as we move on in this direction, I'm sure we will find many complexities.</p>
+<p>But let's just look at the projector.</p>
+<p>The projector, which is a diffusion, it has to, I forgot to say that the two examples I showed you on the diffusion from the literature,</p>
+<p>they both assume that the initial data sample is there is an expert.</p>
+<p>So, there is some expert information sitting there, meaning that on the driving in the parking lot example,</p>
+<p>I already know where I should be going.</p>
+<p>I am expert in going from one point to a parking spot.</p>
+<p>We don't want to make that assumption.</p>
+<p>We are looking at cases that there is no expert information on this.</p>
+<p>So, you really have to learn from almost nothing.</p>
+<p>When you do it that way, then you have to somehow find ways of doing a lot of sampling.</p>
+<p>Well, the sampling with diffusion is much, much easier than and much more efficient than doing Monte Carlo searches.</p>
+<p>Much, much easier than that.</p>
+<p>But still, you have to create that type of knowledge base.</p>
+<p>And then you use that knowledge base in your optimization.</p>
+<p>So, I personally think that that may be an area that needs some attention.</p>
+<p>And the second area is, of course, the complexity of active influencing in the engineering system itself.</p>
+<p>Because, you know, engineering systems are big.</p>
+<p>It's huge.</p>
+<p>I mean, if you want to look at real applications, you're really looking at large systems.</p>
+<p>I mean, a production system, there may be hundreds, thousands of machines and processes that you have to integrate all together.</p>
+<p>How do you incorporate all this into this fusion, diffusion, and active influencing framework?</p>
+<p>Well, it remains to be seen.</p>
+<p>But definitely a very interesting problem.</p>
+<p>Awesome.</p>
+<p>Yulin, do you have any last words?</p>
+<p>Or what stage are you in your project?</p>
+<p>Where are you going with that?</p>
+<p>Well, just to answer your last question, I think the biggest challenge is growing state space.</p>
+<p>If the driving navigation problem gets extremely complex, if we introduce a bigger map, then state space will just explode.</p>
+<p>It will introduce a very big computational challenge.</p>
+<p>That's why we want to use diffusion.</p>
+<p>And we want to use the window stitch method to separate a big problem into smaller problems.</p>
+<p>Awesome.</p>
+<p>Awesome.</p>
+<p>Thank you again for joining.</p>
+<p>Looking forward to hearing more about this work in due time.</p>
+<p>Thank you so much.</p>
+<p>Thank you.</p>
+<p>Thanks so much.</p>
+<p>Bye-bye.</p>
+<p>Bye.</p>
+<p>Bye-bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

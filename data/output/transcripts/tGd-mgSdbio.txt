@@ -1,0 +1,1311 @@
+Hello everyone.
+We're in Active Inference livestream number 50.1 on October 20th, 2022.
+We're discussing the paper Interoception as Modeling Allostasis as Control.
+Welcome to the Active Inference Institute.
+We're a participatory online institute that is communicating, learning, and practicing applied active inference.
+This is a recorded and archived livestream, so please provide feedback so we can improve our work.
+All backgrounds and perspectives are welcome and will be following video etiquette for livestreams.
+Head over to activeinference.org to learn more about how to get involved with different learning groups and projects like the livestreams and otherwise.
+We're here in livestream number 50.1 with our second discussion of the paper Interoception as Modeling Allostasis as Control.
+Previously, we had number 50.0 where Dean and I provided some background and context.
+And now we're really appreciative that we'll have some authors joining for the .1 and .2 to unpack and explore some ideas.
+And today it'll be great to hear from multiple authors, see a little presentation, and dive into the middle of things, the thick of things as we do in the .1.
+And so we'll begin with introductions, then we will have a presentation, and then discussion.
+So we'll begin with introductions with non-authors first, and they can feel free to introduce, say hi, and anything that they're excited to explore today.
+So I'm Daniel, I'm a researcher in California, and I'm looking forward to understanding some of the formalisms in the model, and how they connect to active inference and Bayesian mechanics.
+And I'll pass to Dave.
+Hi, I'm Dave.
+I'm a discourse curator, a student of Yak Pongset and Mark Solms.
+I live in the mile-high academic city of Baguio, 200 kilometers north of Manila.
+Dean.
+Thanks, Dave.
+I'm Dean, I'm in Calgary.
+What's interesting to me is that on a metaphorical level, this started out me in an open field, and I got into a forest, and that forest got denser and denser.
+And by the time I got to Section 4 of this paper, I started reading it over and over again, which is a fantastic sign, because if I have to read something many, many times to really get my head around it, that's good.
+Because I don't question things unless I don't get them.
+And that doesn't mean that it wasn't spelled out correctly.
+It just means that you got my attention.
+So I'm not sure which author to pass it to first.
+Maybe Eli, if you'd like to say hi.
+Hello, everyone.
+I am Eli.
+I'm the first author on this paper.
+So a bit before the livestream started, Jordan was mentioning that this work comes out of what we were sort of studying together in our lab at an energetics working group, brain energetics reading group before the pandemic really hit us.
+And so when I was confined, you know, I effectively started reading and rereading, you know, everything that we had gone through and trying to come up with some way to think about allostasis.
+Because in our group and in our previous publications as a group, the interdisciplinary affective science lab, we've referenced allostasis a lot.
+And every time I would ask, you know, how can we give a mathematical or computational characterization of allostasis?
+I would basically be told, well, you know, we thought Peter Sterling had one.
+And then I would go look at Peter Sterling and he's the originator of the concept of allostasis, by the way.
+So there's numerous works by him on the subject, probably the longest form, let's say, non expert treatment would probably be his book.
+What is hell?
+Peter Sterling is known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known
+And yet, on the other hand, if you ask him, well, how is this done?
+He would effectively say, this is done by reinforcement learning via the dopaminergic
+systems in the brain.
+Now the dopaminergic systems in the brain don't track a shifting signal over time.
+They just maximize reward.
+And so actually, in my view, at least as a computationalist, they were more homeostatic
+than allostatic.
+And from that contradiction and what followed on from it really came this whole paper.
+But to reemphasize, I would say, and before we jump into slides, material inside the paper,
+I think it's really worth emphasizing, just based on watching the 50.0 livestream, that
+our group are more, let's say, biologists and physiologists in orientation than physicists.
+So Bayesian, the paper on Bayesian mechanics came out while we were writing this.
+And I don't think we really managed to integrate the two sets of material yet together, or together
+yet.
+That's not to say they can't or shouldn't be integrated.
+So to speak.
+We don't always have the physics and dynamical systems expertise of someone like Thomas Parr
+or Maxwell Ramstead, let alone Carl Tristan.
+On the other hand, we have very concrete notions of what biology and physiology we need to
+fit to fit to.
+Awesome.
+And really, the bulk of this paper, you know, the reason it's not just a short section for,
+with some math, is because we have to fit to the physiology and anatomy that we know about.
+Thank you.
+Thank you.
+Jordan, feel free to intro, and then Eli, off to you for some presentation.
+For sure.
+So, I'm a postdoc in the lab here.
+So I think maybe I'll just give some context of where we're both working to and how we've
+got here.
+So, for me, I've had a bit of a weird path to get to this point in that I did my PhD in
+social psychology and moral psychology.
+It's been sort of trans, got really, really interested in predictive processing perspectives
+and active inference, and then really wanted to dig into that and find someone who's working
+on it around here in Boston.
+So I'm working with Lisa Feldman Barrett and Karen Quigley, who co-direct the Interdisciplinary
+Affective Sciences Lab here.
+And like you guys saying, the perspective that we have is really more of a biologically grounded
+one or more of one that's based in physiology and neuroscience.
+So Lisa and Karen will joke that Lisa sort of handles everything from the neck up and Karen
+handles everything from the neck down.
+So together they form a whole person.
+And what I was really lucky to do was I stumbled into an existing collaboration that had been
+going on for about a decade here, which we call the Psychology Engineering Neuroscience
+Group or the Penn Group.
+Where there's been an ongoing collaboration with professors in the electrical engineering
+department.
+Probably most importantly, Dana Brooks has really helped run it a lot.
+But Dennis Odogmas and Jennifer Dee have both also been like really, really involved in this.
+And so what they would do is they'd meet every week and they would sort of pour through active
+inference papers, predictive processing papers, information theory.
+They'd sort of catch all of us neuroscientists up to speed on understanding engineering.
+And we try to bring them up to speed on a sort of biological understanding of neuroscience too.
+So what we've been really interested in doing is thinking about some of the abstractions
+that had come up in the active inference literature and thinking about how to ground those biological
+processes and how to really make this tractable at an empirical biological level.
+And so the interest that I've had in brain energetics has been a way to apply some of that traction
+onto my original interest, which is sort of moral and social norms.
+So I've done a bit of work on thinking about how we can think about energetic costs of information
+processing as a way of how individuals exercise control over a social environment by conforming
+to expectations within it.
+And then at the same time, I've been interested in going to the other end and thinking about
+some of the details of brain metabolism and brain glucose metabolism that are associated
+with the bold fMRI signal so that we can really dig down deeper into the metabolism that's
+underlying the neuroimaging literature.
+But in the process of basically performing this or forming this energetics reading group,
+where you've been digging into all of those topics to try to understand the brain biology,
+Eli and I really ended up working together in this paper to try to apply some of that energetics
+and biological work.
+Again, with a ton of help from Karen and Lisa, who really know the details of the neuroscience
+and the actual physiology.
+I think Karen, especially, Eli, would probably say has been really, really, really critical
+for understanding these physiological systems.
+But basically, yeah, how we can have some of the parameters and assumptions of these active
+inference models grounded in real biological terms so that we can start to look to the
+empirical literature, the biological literature, and sort of gain some more inspiration from
+that rather than just living entirely at an abstract level.
+Cool.
+And with that, I'll hand it over to Eli.
+Excellent.
+Excellent.
+All right.
+I've unshared.
+Feel free to go for it.
+Thanks for that context.
+And just of note, this paper does bring in some topics that we haven't discussed on any
+of the preceding 50 papers, many of which were also motivators of what you set out to explore.
+So I'll just crop in, resize, and so on.
+And Eli, please go for it.
+All right.
+So before I really get into the material of the paper, I think it might be useful to follow
+on from what Jordan said in order to additionally motivate sort of our turn towards biology and
+physiology here, which is that most of the time inactive inference modeling, note that I
+say modeling or in active inference physics, so to speak, you need a term in your expected free energy or in your joint density.
+That is, sorry, the generative joint density, not the recognition one, which you would call often.
+I've heard it called the prior preferences, essentially a probability density over sensory outcomes that describes what.
+It's hard to avoid anthropomorphic language here, but oh well, what you want to observe.
+Now, in real biological systems that, you know, as we sort of can hear from Peter Sterling or numerous other authors that cannot be fixed.
+The that is, you know, prior preferences can't be fixed.
+It's I do I prefer different observations when I'm about to go to sleep versus when I am waking up.
+And the assumption that usually gets baked into.
+Principles like say the free energy principle.
+Is that.
+Actually, let me moderate that a little bit based on conversations with some free energy principle folks.
+If you have a non path based, a state based formulation of the free energy principle, then you will typically assume something called ergodicity.
+And you'll note that we have an appendix about ergodicity.
+I saw that you discussed it last week in the point zero episode.
+Thank you for catching on to that.
+And thank you to anyone in the audience and the listenership who caught on to that.
+And the ergodicity assumption essentially allows you to exchange uncertainty about time or over time for uncertainty in the moment.
+So you can just say there's a Gaussian prior preference density.
+It has this much precision or this much variance, depending on which which way you prefer to put your division sign.
+And then it's the same for all time.
+Now, if you're doing a path based formulation, then you lose the tie between the free energy principle and conventional physiological notions of homeostasis.
+Because now, after all, can't the set point be anything or everything?
+You need to know something about physiology, anatomy to tie it back.
+And so that's really the motivation we're coming from in this paper is what if you have to acquire or learn prior preferences throughout development?
+How little can you bake in?
+How little is this?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+And so we start by sort of reviewing in the paper and in these slides, the sort of perspectives
+that we study from, study the nervous system, study the brain. One of them is predictive
+processing. I think that's probably going to be the important one for this audience.
+And in predictive processing, we talk about the perceptual systems of the brain, really,
+the sensory systems as performing approximate Bayesian inference. So then you'll have top-down
+prediction signals, bottom-up prediction error signals, and there's this notion of active inference,
+which says that we essentially treat motor outputs as parameters to the recognition model
+in one of the earliest formulations, before there was any expected free energy.
+But ultimately, it still says in any new or recent formulation, we have some notion of prediction
+error between densities. And this is an information theoretic quantity. So really, we're talking about
+a divergence or an entropy or a cross-entropy. We want to minimize that. And we're not only going to
+minimize that by changing the top-down predictions that flow through, say, the sensory cortex, we're also
+going to change these extra parameters that correspond to motor predictions, motor commands,
+motor references, depending on the terminology you want to use to refer to them.
+So then in our lab, where we are sort of biologists of emotion, we often study interoception.
+And that's really, it's given a fairly vague definition on the slide here, because there's a lot of debate
+among neuroanatomists about sort of where interoception ends and exteroception begins, which exact
+modalities should be classified which way or another. But really, interoception is still a set of, or category
+of sensory modalities. And when I say sensory modalities, I am mentioning that specifically because
+the literature on interoception is the literature on interoceptive active inference, then tends to take
+what we might call the earliest form of active inference. It takes the road of the earliest form of active
+inference saying, I have a generative density, I have a recognition density. Action becomes effectively a
+parameter to fit the recognition density to the generative density. And there isn't really a notion of
+an internal generative model that is separate, that separates belief and desire.
+So in a lot of the literature on interoceptive active inference,
+you'll find references to having very precise priors, or even, you know, innate priors about interoceptive parameters.
+And you'll see this notion that you use active inference in the interoceptive domain more than you use it in
+the somatic domain, because you're trying to fit your internal physiology to a notion of
+a priori set points that are determined by evolution.
+Do you think you could give an example of that, Eli? Of what sort of set points people might think
+are innate? Yeah, so, let's see, I've seen carbon dioxide levels in the blood mentioned, glucose levels,
+core body temperature is really the one that I tend to go back to, because it really does remain constant
+most of the time. It can vary, but really that's an in extremis type of situation.
+So if you think about core body temperature, there's a circuit in, I believe, Jordan, correct me if I'm wrong,
+but this is the NTS again, isn't it? The nucleus tractus solitarius? Yeah, okay.
+Essentially, in the brainstem, there's a circuit that codes the
+typical set point for core body temperature. And from an active inference perspective, you could say
+that is a fixed likelihood. It can't be parameter, re-parameterized by some prediction flowing from
+higher up. Or rather, most of the time, it is not re-parameterized. So that flows down as a prediction,
+and then every temperature sensor in the body can compare actual temperature to desired temperature,
+calculate a precision-weighted prediction error between them, send those errors back up,
+and then the brain can say, aha, I need to find a way to minimize these errors. And doing so will
+effectively keep you in an environment where you can maintain your core body temperature around,
+you know, I think it's 98.6 Fahrenheit is the stereotype. It varies for individuals.
+Now, the reason my next slide was about allostasis is because while there are bodily parameters,
+the parameters, like core temperature, that usually behave according to a set point,
+really, physiologically, most parameters do not have a set point.
+They move. The regulated levels move all the time. So that includes heart rate,
+blood pressure, blood sugar, blood oxygen levels, various hormone levels in the endocrine systems,
+inflammation levels shift over time. And I mentioned inflammation because, you know, from the body's
+perspective, there is, you know, inflammation is not something with a set point of zero.
+Inflammation is sometimes appropriate. And actually, if you want to think, you know,
+what is the situation in which adapting all of these core parameters is physiologically adaptive,
+then I think heavy exercise and sickness are probably the two largest examples.
+So for heavy exercise, we could talk about, say, arousal levels. And that refers to the balance
+of cooperative activity in the branches of the autonomic nervous system.
+But essentially, if you're going to go for a run, say, from a predator, or after some food,
+you're going to go for a run, say, you know, in your good old fashioned, you know, evo-psych ancestral environment,
+you're going to need to decrease the activity in some organ systems, increase the activity in other organ systems,
+and adjust physiological parameters to be regulated to the new levels.
+So this is a pretty well observed fact of physiology.
+You know, informally, Peter Sterling, I would say, having invented allostasis as an observation that gets made,
+he then editorializes a little bit about it and says it should replace homeostasis as a mode of regulation.
+So rather than having set points, you should be comparing to something like a set trajectory.
+And in the ideal case, when you're theorizing, you should assume that there is no global set point of any parameter.
+And of course, as we mentioned before, in extremis, this is true.
+If you get ill, your body does actually override that circuit in the brainstem to raise the core temperature.
+That's why you'll get chills.
+You're at the same temperature, but the regulated level has been shifted up.
+There's also an interesting point to make, if you go back for one second,
+you're glad to just that in the way that the sort of language of science evolves here too.
+And it's worth pointing out because some people might be listening and might be thinking,
+you know, well, homeostasis doesn't have to include set points either.
+You can have sort of hierarchical notion of homeostasis.
+You can have, you know, sort of multiple levels of control involved in that.
+And some people have made the same criticism of allostasis as an ocean.
+So there's a paper by Carpenter.
+Oh, yeah.
+There's some, yeah, there's some, there's a paper we cite by Carpenter that does exactly this, right?
+And so it's, but the problem is, is that even if that's like, that's technically true and people
+who really know what they're doing and are using a concept of homeostasis in that way
+might already understand that you don't necessarily need set points.
+But the reality is, is that the way homeostasis tends to get used in the way that it tends to be
+understood is it's come to have some of this association with set points or with the simple
+thermostat model, as opposed to something broader that includes multiple levels of control.
+And so some people who might be, some people might be curmudgeony and want to say that homeostasis
+already includes all of these notions.
+So we should just reclaim the term homeostasis for that.
+I think we're more of the perspective that we're willing to just give that up and it might be time
+to just start using a different term to remind people of those other associations.
+So we're, we're ceding ground a little bit when we're using the term allostasis to just
+not have to fight with people about what homeostasis really means.
+Dr. Justin Marchegiani
+Yes.
+So Jordan is completely correct there, but I would actually even recommend that, you know,
+everyone listening, if you can go find the paper, homeostasis, a plea for a unified approach
+by RHS Carpenter. It's in our citations, and you should be able to type the name into Google Scholar.
+Go look at it, because it'll really explain where our paper is coming from.
+As a short summary of what's relevant, what Carpenter says in his paper is that back in the
+good old days, they taught control theory and controls engineering to physiologists, and that included
+research physiologists and also clinicians. And by back in the day, he really means back in like the
+1940s to the 1960s, before another new approach took over.
+Dr. Justin Marchegiani
+And he says, hey, if you're an educated, mathematically mature and fluent controls engineer,
+then you don't need, you know, then these awkward names are all really just different ways of cutting
+the same cake. You know, it's all a control system. It's a hierarchical control system. This is very
+evident, he says in the anatomy and physiology that you'll look at. He's even writing for a physiology
+education journal. And then he effectively starts complaining that, you know, everyone's sort of
+strawman homeostasis down to this thermostat model. And he has to complain like this in 2004, because
+indeed, everyone really has sort of associated the word homeostasis with this thermostat model,
+global set points, things like body temperature rather than blood glucose.
+Dr. Justin Marchegiani
+And as a result, there's, as a result, much of the actual control theory got simplified away.
+Dr. Justin Marchegiani
+So even as someone who is housed in a computer science department took a class on reinforcement learning
+and can work the equations of optimal control theory,
+Dr. Justin Marchegiani
+I was not introduced to the concept of a reference signal as a time varying function
+until Carpenter. And that was actually pretty revelatory for me, that rather than having an error
+function, whose, you know, minimum, whose global minimum is fixed for all time, you can have an error
+function that measures the difference between your actual trajectory and a desired trajectory.
+You can do trajectory tracking control when you have the mathematics.
+So we could say, for our paper, for our purposes, if homeostasis refers to this thermostat
+thermostat style point tracking control, then allostasis refers to trajectory tracking control.
+So moving on a little bit and getting back on the main track, from our perspectives,
+informed by physiology and anatomy, and a little bit of evo-devo,
+Dr. Justin Marchegiani
+Interoception and allostasis have both pretty well demonstrated themselves to be
+really central to how the nervous system is actually structured, and seemingly largely concerned with
+the metabolism and efficient functioning of the viscera. So for anyone who wants, you know,
+citations for this, I think it's, Jordan, it would be Barrett and who, 2015.
+Oh, Barrett and Simmons, 2015.
+Yes, Barrett and Simmons, 2015.
+Nature Reviews Neuroscience paper, yeah.
+Nature Reviews Neuroscience, Interoceptive Predictions in the Brain.
+There's a more recent review written by Karen Quigley, our other senior author on interoception, came out in 2021.
+And so you can really go check for yourself, and I would advise it, just how central interoception
+and visceral regulation are empirically to the nervous system. You could possibly design a nervous
+system for a robot that worked differently, but the ones that evolved are ubiquitously
+centered on keeping the internal milia of the body efficient.
+So, yes, Dan Tickles?
+Dean. Dean.
+Yeah, do you mind if I have a quick question here?
+Of course.
+Yeah.
+Because the two authors here maybe can just confirm that my parachute is packed properly.
+That's what I'm basically wanting to be comfortable with.
+So, just stepping back for a second, in that slide that you just had up there,
+the warp and the weft here, the kind of the weave that you guys were working on on this paper,
+was the allostasis and the interoception. Those were your focal points, right?
+And then you've spent quite a bit in sort of prepping us for the difference between the discrete
+time aspect of what you're looking at and the global capture rate, because you say,
+we can't get fixed. And this is what I'm saying, I want to make sure my my chute is packed properly.
+And then you're talking about biology and physiology. So just on that, on that great big,
+am I going to go splat or am I going to be able to land this relatively softly? Can you,
+can you maybe just tell me whether or not that is in fact, is it a comparison? Is it an intersection?
+Are these things running in parallel? How much of this is risk management versus how much of this
+is strategic? I would think of it more as an intersection. Okay. And when we're specifically
+referring to quantities like the global capture rate, those are intended to be strategic rather
+than risk management or epistemic value. Okay. So specifically there, there's a whole book on this,
+let's say, Vigor, the Neuroeconomics of Movement Control by Reza Shadmir. And it chronicles in very
+long form extensively the empirical evidence that real organisms will time average their reward rate.
+So in order to move from an episodic setting to a continual control set, you know, to a continual
+lifelong setting, you need some notion of indefinite time control. Obviously you're not going to live
+until T, you know, T reaches infinity, but in the limit, you do need to have a coherent control problem,
+at least for modeling purposes, because you can't fix the end of say a bird's life in the lab on a laptop.
+And there's two ways conventionally to do that. One is this notion of quote unquote, the global capture
+rate. So the time average, the sum of all benefits minus the sum of all costs divided by the total amount
+of time. And the other is exponential discounting. Now for engineering purposes, exponential discounting
+makes the math and the computations much more tractable. And so in the early 2000s, they essentially
+found that the real, you know, real brains like basal ganglia, you know, and dopaminergic firing
+are best fitted by time averaging. And then on the computational side, everyone ignored that and
+did exponential discounting. And so really, when we talk about something like a global capture rate,
+we're just saying, we're going with the biological evidence, and writing down a model that accounts
+best for the empirical findings. You know, if you want to quote unquote, try this at home,
+you are perfectly welcome to go ahead and switch to exponential discounting. It's fine. Or the machine
+learning community is starting to come out with papers on time averaging, you know, lately, the past
+couple of years.
+Can I ask one more quick question then?
+Of course. Yeah.
+Dr. Michael B. Thank you for that for that explanation. So if we're if we're raising the
+question around tractability that assumes that there's some sort of slipperiness or some fluidity
+piece to this, this thing that we're looking at, what, what is that? What is that thing? That's fluid,
+that's slippery, that's causing us to not normally be able to model? Is that a feature? Or is that a flaw?
+Dr. Michael B. I would say the slipperiness is the slipperiness is the slip between map and territory.
+Okay.
+Dr. Michael B. So when talking about real brains,
+we know that we observe time averaging in the territory.
+Dr. Michael B. What we don't know how to do is write an algorithm
+that provably produces correct time averaging and works in practice in engineering.
+Dr. Michael B. Okay.
+Dr. Michael B. So let's even say rather than map and territory, because a scientist has a map as well,
+let's say the slippage is between empirical science and engineering.
+Dr. Michael B. And when we write out our model, we are really trying to address the empirical science,
+and we don't mind if engineers, you know, want to make their little slippage and use something that
+just makes the algorithmics easier. That's fine. You know, and in fact, that is what the deep active
+inference community does. Okay. So heading back a little more towards active inference, when we read
+all of this stuff, this is sort of a bit of a Bible for our lab, Sterling and Laughlin.
+So Simon Laughlin was involved in some of the earliest publications on predictive coding
+in the fly retina. Peter Sterling is the originator of the concept of allostasis.
+And what we actually notice, as mentioned a bit earlier, is this sort of slippage, another slippage
+or contradiction. So they say, when you get a reward, some dopamine is released. This invokes a reinforcement
+learning principle algorithm, you know, let's be careful with neural circuits that we're not
+studying in detail for the moment. That is, let's be careful how strong a statement we make about their
+function. And then most of the empirical evidence they review in the book is about the energy efficiency
+of sensory firing. So we're really trying to say, we want to move from something grounded in minimizing
+a prediction error, variational inference, to something grounded, ideally with an optimality principle in
+control. So then there are some arguments for neuroscientists, which are more or less intended to convince
+the Ewing neuroscientists that people studying interoception and people studying motor neuroscience
+to need to work together on studying the viscera. You can't study the viscera and ignore the motor branch of
+the visceral nervous system and the functions of that motor branch.
+Now, regarding, you know, our statement of you can't just minimize prediction error,
+one might ask, what about active inference? And there we have to start being careful with the term active
+inference, because, you know, as I have had it personally explained to me at length, there are at least the
+two different kinds of active inference. There's this very old, I think it was Adams 2013, you know,
+motor active inference, predictions, not commands active inference in the motor, you know, in the motor system.
+And then there's this notion of decision active inference, where you have an expected free energy,
+explicit prior preferences, and so on and so on. And if you talk to the active inference community,
+you know, read the papers that they can write for their own community.
+Mark Benthien, M.D.: I would particularly recommend, you know, the International Workshop on Active Inference,
+which I believe is going to be a conference next year. They have three years of very good papers,
+where many authors sketch out the explicit connections between active inference, control as inference,
+optimal control, etc. So really, when we bang on saying, you know, don't use active inference to reduce motor
+function to sensory function, we're talking to some psychologists and philosophers who have been,
+let's say, quite enthusiastic about predictive processing, but a bit eliminativist about some of the
+mathematical constructs that are actually used in active inference.
+So then, for our psychologist audience, we have once again the argument that we are basically
+showing that you can and should do a fully probabilistic notion of optimal control
+in order to sort out what is going on with allostatic regulation. And we're going to take some inspiration from
+motor neuroanatomy and doing it.
+Mark Benthien, M.D.:
+So, looking at a simple model system, and this is getting into figures from the paper,
+we have our baroreflex afferent response curve. You have a carotid baroreceptor. It's in the carotid
+artery in the neck. It measures blood pressure, projects to a circuit in the NTS, in the brainstem.
+Mark Benthien, M.D.: And we bring this up here because the baroreceptor is often used as a model
+interoceptor. When I talked to Karen and asked for model systems of interoception, she actually said,
+you know, well, let's think about the baroreceptor first. And again, with contradiction,
+what we actually find looking at the anatomy is that the baroreceptor, the carotid baroreceptor
+is the sensory branch of a low-level control circuit. So the NTS will then have
+not, I believe the middle inflection point is coded in the NTS here and doesn't really change much.
+Mark Benthien, M.D.: But what does happen is that you can get top-down commands flowing into the NTS
+and then changing the gain of this circuit. So the slope of the curve. And if you widen that slope
+so that the curve is shallower, then you're preserving responsiveness.
+Mark Benthien, M.D.: You're widening the approximately linear portion of the curve
+while allowing for the blood pressure to rise and fall.
+And so again, we see for the interoception people that you really need to think about,
+you know, what is the role of this interoceptor in control of the body and of the viscera.
+You can't just look at it and say, it's a sensor. Well, okay, it's a sensor. Where does it project to?
+Mark Benthien, M.D.: Interoceptive cortex. No, no, not necessarily. Like, you know, the error,
+the prediction error signals that reach interoceptive cortex to say, you know,
+I can't pump enough blood or something like that might actually have already been processed by
+what I believe in the motor active inference literature is called a reflex arc.
+So there might already be a reflex controller that has operated on that signal by the time
+it reaches the higher portions of the brain.
+Mark Benthien, M.D.: So in our paper, we set out some vocabulary for people to use if they want to,
+don't have to. Capacity curve in particular, we're going to tie it to the notion of a cumulative
+distribution function later on. There's some physiology terminology for people who want to learn it.
+Mark Benthien, M.D.: And then we note the same thing that Carpenter does.
+Carpenter and a number of other papers, which is that this is a massively hierarchical control system.
+Lots of regulated substances, let's say, or regulated variables are going to have multiple controllers
+influencing them. So for instance, blood nutrient levels, not just glucose, but I believe like salt,
+fat, water are regulated by pairs of hormones. Sometimes there will be multiple pairs of hormones
+per nutrient that has to be in the blood. And this isn't a convex fade off. So that's not antagonistic
+competitive regulation. They can appear to compete sometimes, but actually it's cooperative regulation
+based on the fact that, so to speak, chemical species can't encode negative numbers the way a digital
+signal can. So when you do things with chemical signals, having these pairs turns out to be the way to
+monitor and control the dynamic range with the greatest sensitivity.
+Mark Benthien, M.D.:
+So then using this example of glucagon and insulin, we can see that sort of normal glycemia
+is really more of a range. And it's a range where you're going to have approximately linear response
+of insulin activity.
+Mark Benthien, M.D.:
+And you're going to have saturated out or really you're going to have thresholded out
+glucagon activity. So at a normal level of blood sugar, glucagon does not have to
+retrieve additional blood sugar from the intestines or the liver. It doesn't have to call for burning fat
+reserves. You essentially, you've eaten enough for the day, you're fine. Insulin is responsive
+in a highly responsive mode where it can give a linear response to a linear change
+in order to compensate for noise.
+Mark Benthien, M.D.:
+So now we can actually get towards, you know, and now that we have a controls way to think about
+physiology, we can get more towards these notions of active inference.
+Mark Benthien, M.D.:
+And here we're going to go back to some of the sources
+on that gave us motor active inference. One way to think about motor active inference is
+the brain sends a prediction, the reflex arc in the spinal cord attempts to minimize prediction error
+by comparing the prediction with the value read off of a proprioceptor.
+So again, one way to think about that is having a few extra ways to minimize
+prediction error, really entropy.
+Mark Benthien, M.D.:
+Another way to think about that is to think of having a very elementary control system
+at the reflex arc level.
+And then the brain prescribes the reference length, that is the reference signal for that controller,
+and it just tries to minimize the difference between what it gets off a proprioceptor,
+what it reads, the actual muscle length and tension,
+Mark Benthien, M.D.: and the reference signal.
+Mark Benthien, M.D.: And this is actually a very, I'd almost call it a fun circuit to study,
+because of just how well documented it is that there's something very much like,
+I would almost say like a precision weighted PID controller in there.
+Mark Benthien, M.D.: You know, if you're a math person, then a muscle is kind of like a spring.
+A spring can be, you know, the dynamics for a spring,
+metal spring, stretch it and crunch it, you know, can be linearized around certain points.
+Mark Benthien, M.D.: And you, so you can just about write down an LTI PID controller for a muscle,
+for an individual muscle spindle.
+Mark Benthien, M.D.: And you'll get two parameters coming down from the brain,
+one of which says the reference length,
+and the other of which says, you know, what's the sensitivity or gain against perturbation
+Mark Benthien, M.D.: that you should exercise.
+Mark Benthien, M.D.: And this is actually how your voluntary movements are engaged.
+Mark Benthien, M.D.: So really,
+all of this stuff about references that we're talking about here
+is just putting forward to the hypothesis that maybe visceromotor control works on the same
+computational and anatomical principles as voluntary somatomotor control.
+Mark Benthien, M.D.: Of course, instead of the commands coming down from, say,
+somatomotor cortex, they might be coming from ganglia in the autonomic nervous system.
+Mark Benthien, M.D.: With the higher level central nervous system,
+basically just prescribing rough levels of activity, activation or deactivation for the two
+different sides of the autonomic nervous system.
+Mark Benthien, M.D.: Which then, again, in this opponent fashion, semi-opponent,
+fully cooperative fashion,
+allow us to avoid encoding digital negative numbers and thereby give you very finely balanced control
+over the internal milieu.
+Mark Benthien, M.D.: So we eventually get to our figure, which essentially says,
+if I know what resource supplies, metabolic resource supplies,
+nutrients, oxygen, carbon dioxide, that sort of thing,
+Mark Benthien, M.D.: I'm going to have in the future, then my goal is going to be,
+let's not say to maximize uncertainty, nor to minimize uncertainty, but really to maximize resilience or freedom.
+Mark Benthien, M.D.: To stay in the linear portion of a cumulative distribution function,
+where you can be responsive to any remaining or upcoming perturbation.
+Mark Benthien, M.D.: And so we draw here that you can have this capacity estimator,
+close the loop, and start directing motor actions via active inference,
+in order to follow this preference for resilience against perturbation of the internal milia,
+which is then tied to interoceptive state estimation, your other state estimators, your actual sensory
+services, surfaces, and this whole wiring diagram.
+Mark Benthien, M.D.: And maybe one thing just to add to, right, just to underscore a point is that
+what I think, if you go back one slide here,
+and so how this relates to the sort of adaptive range of the settling point too, and what I think
+is really interesting about this, right, is that you're not defining, like when we started out talking
+about how you might traditionally think about set points for homeostasis in like a very traditional
+thermostat model, right? What you're talking about here is that there's actually, if the overall goal of
+the brain, if the brain is essentially there to help regulate and adapt the sort of entire biological
+system of the body to circumstances outside of it that are constantly going to be changing different
+challenges that it's going to have to be responsive to, then you don't necessarily have a set point,
+but you have a range where the physiology can be most adaptable to those perturbations and challenges,
+right? And so even just, I think to simplify, to the sort of, I think that that idea is really at the
+core of what we're trying to talk about, right? That you essentially want to have a range where the
+physiology can be adaptive. And you would imagine that if the physiology is, if some of these parameters
+are pushed way, way, way far outside of the center of that sigmoid, then you're going to have a problem
+in that they will not be able to adapt to changes. You're not going to be able to be at that linear
+point of maximum adaptability. If you're down here near the threshold and you get, you know,
+some random white noise that pushes you over that threshold, obviously there isn't a discrete
+catastrophic failure, but also obviously you can no longer mount a proportional response.
+Yeah. Your body is made of, you know, physical instruments which have a limited range of responsiveness.
+Yeah. And so our notion of allostasis is to say, when you can widen the range of responsiveness
+rather than narrowing it, or rather widen the range of responsiveness when possible,
+while narrowing the set of states or the distribution of states that you actually fall into.
+Yeah. Yeah. And so you look like doing somewhat opposite things.
+And so would it be the case too, right? That you could have, there's different ways that you can
+have these systems become sort of maladaptive. And that if that's, if that linear, if that sigmoid
+becomes steeper and steeper and steeper, where you basically have, it's just a very, very narrow range
+where you can actually have an adaptive response, that can be one potential problem. Another potential
+problem can be when the sort of baseline level, like you're saying, is pushed far outside of that
+threshold. Then also you're going to require a lot more work and a lot more controls or a lot more
+control of that system needed to really push it far outside of that range to actually adapt.
+Or to push it back really.
+Or to push it back again. Yeah. Which could cause other problems downstream as well. Right. But, but the
+point is just that you, the sort of range that you want the system to settle into is a range where
+it can be adaptive to changes and prepare for, for fluctuating sorts of circumstances. Right.
+Yeah. So I think a good intuition to leave with, since we are drawing towards the end of the hour,
+is that if you were to try to minimize interoceptive uncertainty, then what you might do is just stay
+home all the time. Your heart rate will never vary too much up and down. And we're living in the modern
+world where you don't have to run away from tigers. So, you know, why deal with the uncertainty of going
+out and exercising or the perturbation of going out and exercising. And what our notion of allostasis here
+might tell you in reply is to say, when you go out and exercise, the curve gets wider. And so the
+adaptive range where you can mount a proportional response gets wider. So go out and exercise because
+it actually increases your resilience to physiologic, to future physiological challenge.
+So it's still within the active inference set of intuitions, but we're really baking in this
+assumption that you should preemptively prepare yourself against possible challenge rather than
+effective, rather than acting to avoid possible challenge. We've moved the handling of challenge
+into the body. Dean, go ahead. As you get to those extremes of those crisis moments, we talked
+about a little bit about this in the dot zero. How does the interplay or the instructional proportion
+change between something that's interactive and range seeking to range reentering? I'm curious if
+that if the formalisms change as those extremes are reached, because as you said, things don't always
+become irreversibly catastrophically set. So what could you like, based on what you guys have obviously
+looked at, what's your sense about how that relationship between interaction and instruction
+shifts as we get to those really hard limits? Jordan, you're often a little better on physiology than me.
+Do you want to take this or? Oh, no. I'm not sure. I think you might have it.
+Do you want to take this or? I'm not sure. I'm not sure. I'm not sure. I'm not sure.
+I'm honestly not so great on physiology because I rely on Karen for it.
+I would almost say that there's a map territory failure here
+where we were trying to model, so to speak, normal function under normal function with that intuition
+about resilience against challenge. Okay.
+And there's several possible responses to an extreme circumstance. One is that some high up control
+mechanism can start overriding these operating points, pushing them away from where they normally
+are. And then that allows you to deal with extreme circumstances by no longer treating them as errors
+at all. So say if you're sick, your core body temperature is modulated upwards. That puts you in a fever state.
+This is expensive metabolically, and it feels bad compared to how you normally function, but it should cook the germs.
+And then when the extreme state, you know, when that emergency is over, supposedly, hopefully, usually, you'll be able to go back to normal function.
+There are, of course, exceptions such as, say, long COVID.
+Okay. Right.
+Just to make sure though, do you see a change in the amount of literally commands and the amount of back and forth as you approach those limits?
+Or do you think they kind of just realize that they're getting closer and closer to a fall off point?
+Yeah.
+I think that's actually an open and empirical question.
+Yeah.
+So one of the reasons that we went as far as writing a full mathematical model in this paper
+is because there often, there isn't that much empirical neurocomputational work on interoception at all.
+So if you ask very basic questions like, is interoception predictively
+encoded below the neck?
+That's still an open question.
+Okay.
+It could be that peripheral interoceptors are just
+transducing a stimulus signal,
+and then it's only predictably encoded when it hits the brain.
+We don't know yet.
+Okay.
+So we'd rather have some...
+Briefly lost, Eli.
+It could be the last one.
+
+
+While Eli is rejoining.
+Okay.
+Very interesting.
+I think that's a different path through the same material.
+Dave, if your question is for Eli, we can wait a few seconds.
+Not necessarily.
+I have just a side comment.
+You don't necessarily have to respond to this.
+The discussion reminds me of two different fallacies.
+One is the dark room fallacy.
+You know, if you want to minimize it, it's a kind of a parody of active inference.
+If you don't want to be surprised, then just stay in a dark room where nothing changes,
+which has been dismissed pretty thoroughly by active inference activists.
+Right.
+Also, there was a fallacy, kind of a social Darwinist, tinged interpretation of the observation that
+every species has a fixed number of heartbeats, and therefore valuable people, members of parliament,
+and clergymen, should not work because you're eating up your lifetime.
+
+Right.
+Which, of course, isn't true because your heart beats more slowly, so it's stretched out more if you're in good shape.
+Right.
+But more relevant, the steepness of the reflex curve.
+I sometimes feel that folks working in active inference cover maybe too much with the notion of precision.
+That this is just one quantity.
+And it looks like that slope in the blood pressure curve, but that might, is that something that would tend to be covered by the term precision?
+And if so, should that be approached in a more differentiated way rather than just being a single number that applies in lots and lots of areas of control and perception?
+That's interesting.
+So normally the precision, right, is normally applied to the predictions.
+So there's an idea of the precision of the predictions being applied.
+And in this case, I think the idea is more of,
+so it comes back to where the,
+you might talk about prior preferences being targeted in active inference models.
+And I think the slope, the response curve there is instead trying to target that use of prior preferences, right?
+So it's trying to target specifically where is,
+where is the system trying to be navigated?
+It's been,
+yeah, when people talk about prior preferences, they've talked about it sometimes in terms of
+the system having a sort of strong prior,
+strong, precise priors being encoded,
+like a priori priors being encoded
+to be targeted.
+And in this case, I think it's,
+we're trying to give an account of where some of those priors can come from and how the system
+and how sort of opponent processes can, or opponent chemicals can help regulate the physiology.
+And we're trying to get a more natural approach of where those can come about from.
+So, but I think,
+if it is replaced, I'm just trying to think, to talk aloud, to think through the question.
+So, if it is replacing basically a prior preference,
+and if normally that prior preference would be handled by a sort of precision account of it,
+then to some extent, the steepness of that curve is trying to tackle,
+is somewhat of a replacement of the precision, but...
+But yeah, it's...
+It's giving a different way of...
+Yeah, maybe it is a replacement for the precision in that case.
+Eli's back, so maybe I can try to answer your question.
+Eli, do you want to complete your presentation?
+Um, sure, but if...
+Just to answer the question, if we're talking about the gain on one of these signoid curves,
+then...
+Yeah, that's sort of a replacement for the precision, but it's really thinking about...
+It's thinking about it the other way around.
+So, a variance quantifies your tolerance for error.
+A precision or a gain quantifies response to error.
+Yes.
+So...
+Yeah.
+So, when you're talking about purely sensory,
+these exteroceptive signals,
+the ones that aren't prescribing references to you in any way,
+then, of course, you know, you want to save the neural response, which is metabolically expensive,
+for precise signals.
+If you're talking about an internal, you know, physiological curve,
+say, reaction to a change in blood pressure,
+then you want to try and make the gain shallower.
+You want to tolerate variance.
+Sorry about getting...
+My...
+My home modem, I think, just restarted itself for Noah Paraphason.
+We call that a sleep-wake cycle.
+Yeah.
+It did some sleep phase gradient updates.
+But it's simpler, it's refreshed, it's ready for you to complete the presentation,
+and then we'll return.
+Very interesting, though.
+So...
+Okay.
+See...
+Share screen.
+Here we are.
+All right.
+Continue.
+Yeah.
+So now we start getting into
+really what scant visual material is available for Section 4,
+which I think we'll have to go over in detail in a more Q&A format a little bit.
+But...
+So if we then want to talk about how do we integrate decision-active inference
+into this allostatic view,
+then we can say decision-making is this notion of optimal control.
+Control subject to a set of expectations about the future.
+So we'll have to write an objective function.
+And then we'll have our wiring diagram back.
+And we'll note that motor references issued top-down are now conditioned upon or subject to
+predictions about the future.
+So if we're going to get into what this objective function is actually made up out of,
+is to first take the intuition that we start from neural circuits that can only do predictive
+processing as we know it,
+then one thing we can do with them is simulate some ensemble or population
+of potential state trajectories or really state action trajectories
+starting from some initial state.
+Then given an objective function, we can estimate the time average
+given our ensemble.
+We can turn that into feedback control, getting the stability in control theory,
+the closed loop stability derived from using feedback,
+by then having a recognition model.
+And then we can say, ah, I'm going to update my entire ensemble or population of simulations
+by taking them from the recognition model,
+which is conditional upon observed sensory outcomes.
+And then having predictions from the recognition density,
+which we're superscripting here with superscript parentheses two
+in comparison to superscript parentheses one here.
+We can then penalize a notion of distance.
+So really we can penalize the quote unquote size of the update
+in information theoretic terms.
+And if you've seen a free energy or an expected free energy written out term by term before,
+you should have seen one of these.
+So it's a KL divergence.
+But what that gives us is feedback stabilized control using probability models.
+And that actually gets to more or less the end of the slides per se.
+So as a few summary points,
+our computational model gives us a useful notion of affordance competition.
+Basically run a bunch of forward simulations,
+pick the ones that are going to have good expected values over time averaging
+to actually enact as motor references.
+The sigmoidal curves,
+after we've taken their derivatives to convert them to probability densities,
+then taken the logarithm of those to convert to log densities,
+which is much more typical for active inference,
+like a log prior preference.
+Those actually provide a notion of common currency.
+Because now we've normalized,
+you know,
+all notion of probability mass to one.
+So a density over one variable and a density over the other variable have the same units.
+We don't need any more notion of a reward currency in this model.
+We don't need any more.
+
+We don't need any more.
+We don't need any more.
+Then there's some encouragement for the anatomists and physiologists to say,
+hey,
+let's go look at autonomic and visceromotor regulation
+and see if we can understand it
+in terms of these motor control circuits at the low level.
+And that just brings us to,
+you know,
+some very overall conclusions.
+Ideally,
+our work should be placed in dialogue with,
+you know,
+active inference as control work by other authors.
+And of course,
+acknowledgements.
+You can really see here how much work went into this on behalf of absolutely everyone in the team.
+And references.
+So I'll stop sharing and we can shift to a more interactive format.
+Awesome.
+Well,
+thanks for sharing that.
+And so where was that previously shared?
+In what context?
+Just in the context of our lab group.
+All right.
+Cool.
+So the slides.
+The college of engineering group.
+You're talking.
+Yeah.
+Yeah.
+Yeah.
+So the slides are really made for this,
+like biologist psychology with a few engineers group.
+Cool.
+Okay.
+Well,
+many,
+
+many ways,
+many paths to go.
+Just to kind of highlight a few pieces.
+Under this broad umbrella of physiology,
+one important point you raised,
+was how much homeostasis,
+same stasis,
+is in effect versus a mechanism of actually,
+is that stabilization,
+sometimes empirically of stasis,
+and even homeostasis,
+is that underlain by a drive to a set point,
+as it has been simplified or understood as in that simple thermometer model.
+And then to what extent do we bring in allostasis,
+hormesis,
+arousal,
+and different physiological phenomena,
+and consider these all part of just the dynamic and multimodal homeostatic engagement
+of complex bodies versus discard the old and with the new,
+and how much to lump and split physiology,
+when even at the single cellular life form level,
+they're engaging from a computational or control or information theoretic perspective
+in processes that are analogous to some of these.
+That's one point that we can explore.
+Another area to explore is on that theme of what are these systems doing,
+and how do we model it,
+the map territory or the engineering basic research question.
+We could talk about a given physiological process,
+body temperature stabilization,
+or the baroreceptor,
+the glucose,
+and so on.
+Is there the minimization of a difference,
+for example,
+between preferred and observed?
+Is there a maximization of reward,
+according to some reward function?
+Is there a maximization of precision?
+Precision on what?
+Is there a maximization of responsivity,
+which corresponds in the sigmoidal curve family to the linearized region?
+Are there cases where all four of these things are going to be happening indistinguishably?
+Is there a case where some of these phenomena are occurring at the detriment of others?
+Can we differentiate models and actually make unique predictions,
+explanations,
+and control systems
+if we move our emphasis
+from one of these lenses to another lens?
+And how should we think about different physiological systems,
+ranging from the implicit and very ancient mechanisms
+to those which consciously may even feel like,
+for example,
+error minimization,
+reward maximization,
+precision maximization,
+responsivity maximization?
+So I'll pause there,
+and either authors may make some remarks,
+or anyone may raise a question or thought.
+I wanted to ask you maybe just to direct within this,
+because you talked at the end about
+that this gets us away from
+having to have a reward currency.
+Oh, yeah.
+And maybe I'd be interested if you can elaborate on that a little bit.
+So just what would the typical role of reward currency would be,
+and how does the framework that you're proposing change that?
+Right?
+Yeah.
+So really, I'd back off and say,
+you know,
+what changes this is the active inference point of view.
+Right?
+So, quote unquote,
+typically,
+if you're doing something like,
+if you're someone like Yael Neve or Sam Gershman,
+then you think about reward as,
+in a reinforcement learning terms,
+as something that the brain has to maximize.
+And then you would say,
+all right,
+well,
+I want the uncertainty of my beliefs to be minimized
+while I maximize reward.
+So those are then two separate modular computations
+that have almost opposite goals.
+One of them is to minimize uncertainty right now,
+and the other is to maximize reward over the long term.
+And in comes,
+you know,
+active inference,
+and really says,
+no, no,
+if you phrase this as a variational optimization problem,
+then you can get a unified objective for this.
+Where,
+you know,
+the common currency is,
+so to speak,
+evidently,
+evidence,
+
+really,
+you know,
+evidence that you're following the correct trajectory,
+evidence that you're executing a behavior correctly,
+and evidence varies,
+you know,
+in terms of,
+I guess we would call them Nats or bits,
+are the units in information theory.
+So if you're using,
+you know,
+E as the basis of your logarithm,
+then it's Nats.
+If you're using a log2 base,
+it's bits.
+My dogs are getting picked up for their walks.
+So.
+Yes,
+this is a very interesting,
+complimentary perspective,
+where we'll get reward maximization over time.
+When we increase our precision.
+Now,
+everybody agrees on that.
+And is it going to be the cart before the horse or the horse before the cart?
+And which one's the horse and which one's the cart?
+And framing the unified objective function in information theoretic terms as a surprisal bounding heuristic,
+as has been done in Bayesian evidence,
+and the lower bounds for a long time.
+By framing surprise minimization bounding as the unified objective function and currency,
+then there is the realized maintenance of homeostasis,
+or however we want to call that,
+without needing a traditionally structured maximization of reward as defined by a reward or time discounted reward function.
+And it's also very interesting,
+like we're not trying to accumulate body temperature.
+We're not trying to accumulate glucose.
+If we were playing a game where simply more points were better,
+like some social and sub-social games,
+then a unilateral optimization via maximization paradigm makes a lot of sense.
+But for the kind of physiological infinite games that we play,
+as you highlighted with the infinite horizon,
+then it may make more sense to have a bounded responsivity
+and an emphasis on controllability under inherited priors that those controllable ranges are the survivable ranges.
+Otherwise, how could one have existed for generations
+rather than try to stack up glucose?
+Yeah, so I think it's always really interesting to go back and read Peter Sterling in this light,
+because beyond just the formal physiological material,
+there are these stories that he can tell of, for instance,
+people living in long-term stressful situations,
+and they develop what we would now call the diseases of civilization,
+which Sterling sort of implies are the diseases of homeostasis,
+living too much the same too much of the time.
+And indeed, speaking of not wanting to stack up glucose,
+this is an actual disease that happens to people that is called diabetes.
+It is considered a pathology.
+And so there's almost an interesting misfit between that intuitive notion of reward,
+or at least let's sneer slightly and say that economic notion of reward,
+which has to be a form of accumulable wealth in a common currency,
+versus physiology in which too much of a good thing is actually a bad thing again.
+Right.
+Right.
+And that actually comes back to if you,
+there's a part of what this is contributing then, right,
+in one way is a sort of shift in metaphor, right?
+Or it's, I think that point about an economic conception of value and of reward is,
+it's useful to have a counterpoint to that because as Eli is saying,
+there is no upper limit to economic reward.
+There's a benefit to accumulating it.
+You think about sort of accumulating capital to spend it.
+In this case, right, what we're focusing on is how to basically keep balanced and adaptable
+so that future challenges can be actually encountered and dealt with.
+And that sometimes means packing light,
+not keeping so much glucose on hand so that you can like deal with the reward
+or deal with changing circumstances and adapt to them.
+But you can't, it's actually, it's maybe, yeah,
+it's maybe been a pretty serious problem to have this completely abstracted notion of value
+that is endlessly accumulatable and doesn't actually,
+doesn't interface with any of the biological realities of what systems are actually doing, right?
+There's, it's, it's, it's so, it's so abstract that it's,
+it's, it's going to have a really hard time interfacing with biology.
+Yeah.
+Before we go to the question, let's say, let's sum that up by saying bank accounts are unbounded
+and they're useful because they're unbounded.
+You know, the, like an economist can conceive of trillions of dollars in assets in a way that my body cannot.
+Bodies are bounded.
+If you, you know, they are physically bounded.
+They are made of a finite amount of matter at once.
+If you try to put too much more into them, something bad will happen.
+Actually, after sending us off on that channel of discussion,
+I've got to duck off a little bit early,
+but I'm going to try to be back for 50.2 next week.
+And I'm really interested to see where this conversation goes.
+So I'll catch up on the, the rehab.
+Thank you.
+All right.
+Thanks.
+If nobody minds, I'd like to ask Dave his question first,
+just because I was about to, when I got kicked off.
+Yep.
+Go for it, Dave.
+Or, um, is that one that I said?
+Um, yeah, I know which one that was.
+Um, if you have a new question is fine.
+Oh yeah.
+Yeah.
+That's probably better.
+Um, yeah.
+Just per, per to what we were speaking of just now, the, the diseases of civilization,
+there is the rumor, and maybe this was just a fallacy or a misunderstanding that people
+who managed to stay in London during the blitz under conditions that you would expect would
+produce massive amount of psych, um, psychosomatic disease, hysteria, conversion syndromes, that
+it didn't happen.
+People were just preposterously sane because they didn't have time to be sick.
+They didn't have time to be crazy.
+Did that really happen?
+Did the sense of mission override what otherwise would have been general stress syndrome causing
+breakdowns?
+Um, does someone know the detailed history of the London blitz in World War II?
+Because I really don't.
+It's, it's a perfect, uh, not English.
+Not English.
+Dot 1.5, um, journey for us to explore, but to, to speak to it generally, it's an interesting
+question as well.
+To what extent by comforting and regularizing we even work against that and let alone neglect
+other trade-offs and incur externalities?
+Um, Dean?
+Dean Mitchell- Yeah, this has been fantastic.
+I, so here's, here's my thing.
+Um, and I, maybe in the, in the, in the dot two, we'll, we'll get into the, I mentioned at the end of the dot zero, I was, I was hoping you really had some really velvet gloves to walk me through the 4.4.
+Because, and especially after the context you've been able to provide us today around the idea that, um, you know, engineers and psychologists came into a room.
+Now, I don't know if that, once you got into that room, it became an intersection with red light, green light, and you guys kind of played a red Rover, come on over thing or weather.
+And I'm so well,
+Dean Mitchell- Well, here's the thing, because I actually did work with CFOs and engineers.
+Dean Mitchell- And, and so what you discover is there's a bit of an isomorphist.
+Dean Mitchell- I want to be able to diagram this out for you view that, that tends to be biased for engineers.
+Dean Mitchell- And then there's the spatially enveloped view of the psychologist, right?
+Dean Mitchell- Like they're in their phenomenological space.
+Dean Mitchell- And what you've done is you've tried to say what, what, when those two worlds come together, I don't know if it's a collision.
+Dean Mitchell- I don't know if it's a cooperation.
+Dean Mitchell- It's a variety of things, right?
+Dean Mitchell- It's complicated.
+Dean Mitchell- We'll just leave it there.
+Dean Mitchell- But my, my question is this.
+Dean Mitchell- As I got to 4.4.
+Dean Mitchell- It felt like if I was skiing, I went from a beautiful powder field to some sparsely
+Dean Mitchell- Distance trees to tighter and tighter.
+Dean Mitchell- And finally, I was like, I don't know how it can keep going because there doesn't seem to be any more gaps here.
+Dean Mitchell- It's just getting too tight for me.
+Dean Mitchell- And the reconciliation, like when you're skiing as a metaphor, is you're not looking at the trees.
+Dean Mitchell- You're looking at the, at the non things, the non objects, it's a reconciliation.
+Dean Mitchell- And when we're talking about dodgeball as your metaphor, or whether we're talking about.
+Dean Mitchell- glucagon control these to me what you were describing up until that point.
+Dean Mitchell- Was essentially you were saying.
+Dean Mitchell- For us to know what's going on we're going to look at the risk management.
+Dean Mitchell- We're going to look at the coordination we're going to look at those things that are essentially backwards facing.
+Dean Mitchell- We can say that in order for the process to carry forward to continue.
+Dean Mitchell- There has to be some addressing of those factors and then.
+Dean Mitchell- There has to be the reconciliation just like when the engineers and the psychologists are proximal to one another it's an entanglement.
+Dean Mitchell- And it's not a the engineers get to tell the psychologist what to do any more than the psychologist get to tell the engineers what to do right so.
+Dean Mitchell- If if the behavioral piece if the idea of the biology and the physiology is if I do this now.
+Dean Mitchell- In real terms.
+Dean Mitchell- I have to look at that and you guys had an l4 different time frames.
+Dean Mitchell- Right.
+Dean Mitchell- I can manage that you spoke clearly to that I read that and it was clear to me I was I got it.
+Dean Mitchell- I can coordinate that.
+Dean Mitchell- And again, that was very, very clear and then I got to 4.4 and I simply lost the thread because what I was looking for was the reconciliation.
+Dean Mitchell- I will align this next move with the range recapitulator.
+Dean Mitchell- That's what I was expecting next.
+Dean Mitchell- And then so I went okay so where is the strategy because that's there when when psychologists and engineers get into a room they don't just abandon.
+Dean Mitchell- Their strategy it comes with them it follows them into that space and carries them to that question of I reconcile.
+Dean Mitchell- An advantage and all of the above until I choose this choice while always keeping all the above.
+Dean Mitchell- So you guys talked about that in other parts of it, you said we can't just abandon it.
+Dean Mitchell- But I couldn't understand how the formalism reconciled it.
+Dean Mitchell- So I'm sorry that's such a long winded question but but your paper.
+Dean Mitchell- Oh, it's been six hours of my life going these guys have got to be much closer to answering this because I've never been able to answer it.
+Dean Mitchell- But then I got lost.
+Dean Mitchell- I just felt like oh man, what am I missing.
+Dean Mitchell- Okay, so I'm going to disappoint you slightly and say, you know what you're missing is that.
+Dean Mitchell- I think what's missing from our writing.
+Dean Mitchell- Is really being clear that we're working under a very unusual set of constraints in how we formulated this model.
+Dean Mitchell- So specifically, unlike, say, Sam Gershman or Yael Neve.
+Dean Mitchell- Or unlike the literature on deep active inference in computers.
+Dean Mitchell- We're assuming that you essentially don't need
+Dean Mitchell- An extra set of computational ingredients for reinforcement learning.
+Dean Mitchell- So we're saying, assuming that you can do only the computational operations known to be involved in predictive processing.
+Dean Mitchell- What can you come up with that will handle a control problem.
+Dean Mitchell- And the answer is this very specific thing with these nastily involved derivations called path integral control.
+Dean Mitchell- And you'll notice that when I was going over those slides, I basically said, let's just say you can simulate,
+Dean Mitchell- You know, possible futures, like possible episode length courses of, you know, courses of future activity.
+Dean Mitchell- And you can evaluate them in terms of your objective function.
+Dean Mitchell- And then you can update them by means of a recognition model or by integrating prediction errors and using predictive coding.
+Dean Mitchell- Then how do we build a formalism out of just those?
+Dean Mitchell- And the upside is that this does let us look at the controls literature and say, all right, this is actually optimal feedback stabilized control.
+Dean Mitchell- We can look at some of the bounded rationality literature in cognitive science and neuroscience.
+Dean Mitchell- And say, our objective function is a free energy.
+Dean Mitchell- That is, if you have to penalize how much you change neural firing over time, or how much you change your mind and update your beliefs over time,
+Dean Mitchell- Because you only have so much metabolic power in your head, then we include a penalty term for that.
+Dean Mitchell- And we can say, this can all just be done by embodied simulation and referent configuration motor control.
+Dean Mitchell- Does that mean this is how the brain actually does things?
+Dean Mitchell- Of course not.
+Dean Mitchell- You know, it does mean that if you want to do your modeling with, I think, Andy Clark tends to quote, you know, Quine and say, if you want to do,
+Dean Mitchell- If you have a taste for desert landscapes, then we've given you a computational model
+Dean Mitchell- that is basically just sand and rocks.
+Dean Mitchell- And as such, yes, it's something of a hostile environment.
+Dean Mitchell- You know, walk without rhythm, you won't attract the worm.
+Dean Mitchell- In the plains of Act-Inf.
+Dean Mitchell-
+Dean Mitchell- Yeah, if you want to live behind the shield wall where we have
+Dean Mitchell- TD estimated value functions, good for you.
+Dean Mitchell- In the stretched sigmoid with broad variability, so stretched that it is flat and plain like,
+but still highly controllable within large bounds. That's where we're oscillating.
+Dean Mitchell- Yep.
+Dean Mitchell- Very interesting. It'll be, I think, great in our lab to pick up a few points from-
+Dean Mitchell- Am I the one cutting out again?
+Dean Mitchell- I still see you.
+Dean Mitchell- Yeah, Dan, you're back.
+Dean Mitchell- All right.
+Dean Mitchell- You flickered a bit.
+Dean Mitchell- Okay.
+Dean Mitchell- In the last minutes, we can talk about some ideas from earlier in the paper,
+look at any of the figures, and then in the dot two, that'll be awesome to really approach the formalism
+Dean Mitchell- And help Dean on that ski journey.
+Dean Mitchell- What would be something to go to in these last minutes?
+Dean Mitchell- Yes, Dean.
+Dean Mitchell- And just, and Eli, maybe you'll be able to get a chance to elaborate with this bit more with Jordan in the next one.
+Dean Mitchell- But I'm curious, you took pains at great lengths to say, look, this doesn't map directly onto all the complexities that we know exist.
+Dean Mitchell- But what, because you said you started this in 2019, you had a bit of time on your hands,
+Dean Mitchell- And Dan did kind of alluded to this at the beginning.
+Dean Mitchell- Were there discoveries that you made that you didn't anticipate?
+Dean Mitchell- Because you were very, also very respectful in who you acknowledged as sort of laying the groundwork here, you had a bit of stability to work off of.
+Dean Mitchell- But did you find yourself
+Dean Mitchell- being introduced to things that weren't there prior to you guys coalescing around this?
+Dean Mitchell- And do you think it continues to evolve or does it just stay on a theoretical level?
+Dean Mitchell- So actually, I'd say for me personally, the big unanticipated discovery was just how little we know
+Dean Mitchell- about interoceptive neuroanatomy and neurophysiology.
+Dean Mitchell- Wow.
+Dean Mitchell- And I mean in the periphery.
+Dean Mitchell- Right.
+Dean Mitchell- So you know, our lab with Lisa and Karen, Lisa handles the stuff above the neck.
+Dean Mitchell- And so we've got, you know, Barrett and Simmons 2015, there's a number of other good papers saying essentially,
+Dean Mitchell- You look at the brain architecture and it looks like the, at least in cortex,
+Dean Mitchell- You know, the interoceptive and visceromotor cortices are fairly central to the architecture.
+Dean Mitchell- And then you ask, okay, so what kinds of signals are coming in from the periphery
+Dean Mitchell- to then be subjected to predictive processing in cortex?
+Dean Mitchell- And you basically get told, well, interoceptive signals, obviously.
+Dean Mitchell- So there was that moment when I was working with Karen and realized, oh, okay, so
+Dean Mitchell- So it looks like there's actually this close analogy that we could hypothesize between
+Dean Mitchell- the known function of a somatomotor circuit for voluntary motor control
+Dean Mitchell- and this way of handling baroreflex function.
+Dean Mitchell- And it looks like for the baroreflex, you know, you can voluntarily change the gain
+Dean Mitchell- or the tolerance, those being inverses of each other, changing the operating point,
+Dean Mitchell- you know, voluntarily doesn't seem to happen, but it does seem to shift.
+Dean Mitchell- And it does begin to look as though, ah, we can just, we can stop just saying,
+Dean Mitchell- you know, there are interoceptive signals, we don't know anything about them.
+Dean Mitchell- Right.
+Dean Mitchell- And instead ask, how could we break down the autonomic
+Dean Mitchell- nervous system and the interoceptive periphery into these, you know, control circuits
+Dean Mitchell- where there's a reference that flows from above or is possibly built in as a prior
+Dean Mitchell- and then a sensor and then a motor neuron or an effector?
+Dean Mitchell- That again, total speculating.
+Dean Mitchell- One could imagine that loop could be ultra local or even cellular electrical junctions.
+Dean Mitchell- So as local as could be to close the motor control loop.
+Dean Mitchell- And then there would be potentially a more meso scale purely within the periphery.
+Dean Mitchell- Maybe some sort of motor coordination or vasoconstriction type actions that are being
+inactive through local neural networks and other systems.
+Dean Mitchell- And then when you gotta make the call to the central nervous system
+Dean Mitchell- And engage at that level, it's the highest capacity of like intermodal memory,
+Dean Mitchell- computation, all these other complex phenomena, which then can be seen to have their
+Dean Mitchell- Rightful place, maybe even in a specific brain region.
+Dean Mitchell- But the entire integrated dodgeball performance is not going to be located to a brain
+region any more than it would be located to a fingertip because it all needs to be coordinated.
+Dean Mitchell- And not every call can be local.
+Dean Mitchell- And not every call can be global.
+Dean Mitchell- So finding out how bodies as territories and our models as maps
+Dean Mitchell- Wire things up is going to make models that are more interpretable,
+Dean Mitchell- better aligned with empirical data, making more useful predictions and explanations.
+Dean Mitchell- Yeah.
+Dean Mitchell- It's a very interesting angle.
+Dean Mitchell- And I would say just to piggyback a little,
+you know, as a modeling paradigm, I think this is one of the real strengths of active inference
+is that once you're dealing with these probability densities and log probability densities,
+Dean Mitchell- You are able to start sketching out these hierarchical structures.
+Dean Mitchell- And that doesn't mean that every hierarchical active inference model is
+automatically a map of the nervous system, but it does mean that you have a language that is at
+least minimally capable of expressing what we so abundantly find in the empirical evidence.
+Dean Mitchell- Yeah.
+Dean Mitchell- One part of the paper that was very interesting, we, in reading it, remarked how,
+although most papers are written in words, this one was very word forward. Each section had a
+preamble content summary sandwiching technique, as did the paper at a higher scale. The nomenclature was
+upfront and clear. And then the relationship between the cumulative distributions and the classical PDF
+type probability densities was made clear. But this exactly connects something that has a, in the generic case,
+a guaranteed inflection point, interpretable thresholded values. This is why sigmoid functions
+are used as activation functions in artificial neural networks with a optimizable Laplacian approximation, like
+inverted quadratic form that is able to be used as a log probability. And so really, like, especially with figure nine,
+the stepwise relationship, opens the door to like, hey, if you've seen a sigmoid somewhere,
+now you can think about that as like a PDF, hiding a PDF bell curve. And then where you have seen a
+Gaussian or bell curve or a Laplacian approximation, you can go the other direction and think about that
+that in terms of a sigmoidal response action. And so they're rarely connected. So clearly, though, those with
+familiarity, it's almost the water that they swim in. And those without familiarity wouldn't see the
+connection. And the challenge and the opportunity is like to stick in the middle and stay in the
+connection space to raise attention to some of these relationships, which again, otherwise,
+you could have a whole subfield of physiology working on the sigmoid response curve and a whole
+subfield of hierarchical predictive processing models working in the PDF space or log PDF space.
+And it's just a derivative and log or an exponentiation and a derivation away from those two fields being
+formally connected, not just as like a speculative review paper, someone could or should do this,
+but like, it's done. We just didn't know.
+Cool. So I think regarding the writing, I really have to hand credit to Lisa and Karen for a lot of things
+where, you know, speaking of more speaking of dialectical processes, you know, we have a very
+simple writing dialectic on these papers, which is junior author knows math, senior authors
+did not specialize in math in their undergrad or master's degree or or even PhD, however good they
+are with it now. And the result ends up being, you know, you're always told to go back and explain
+every single step. And of course, Jordan, you know, who was here before was helping a lot with the
+writing and the structuring and the signposting. And then I think the the actual insight that you can
+take one of these sigmoids and turn it into a PDF, I think came after hammering our heads on
+some of the embodied predictive processing literature a bunch of times.
+Because it's really, it is one of those things that is literally embodied.
+Dean?
+Yeah, I just wanted to get this in. I, I, what attracted me to the paper in the first place was,
+was the, the allostasis and the, and the interoception. What kept me going back to it was,
+was, and we talked about this in the dot zero was wayfinder, that rule, perfect perspective swaps,
+versus our way finder. When I first started reading this paper, I saw the metamorphosis from
+identifying a way to find things. And now after having this conversation with you today, and Jordan,
+and of course, the usual suspects, it's, it's clearer to me, that this paper is trying to play that role of
+being wayfinder, perspective identifier, as opposed to, we found the way or this is, this is our way to
+solve all the world's ills, which, of course, I don't think it was ever your intention. But when you
+pull things that are seemingly quite far apart, like allostasis, and interoception,
+I get excited. But I don't want to as you pointed out, pump the brakes, Dean, don't get too excited here.
+I mean, we're doing the best we can. So on that level, my amygdala is still functioning correctly.
+In our closing thoughts with a driving example, are we accumulating speed or minimizing the amount
+of time? Or are speed limits even set as exteriorized norms and stigmatic marks on the niche, such that
+a variety of cars, from a sports car to an 18-wheeler, can be within a zone of optimal controllability,
+taking into account the presence of crosswalks and so on. And so alongside, as we think about what we
+want to explore in the DOT 2, alongside diving into formalisms, trying to do some excavation and
+interoception on how and where the economic optimization as maximization is implicitly used,
+and where some of these other notions that were being raised, without needing to be polemical or replace
+value maximization, but where we can see these other survivability criterion as potentially different
+decompositions of unified objective functions that are informational and so on, I think that's going to
+be quite far ranging. Because there's more situations I would venture where we would rather have controllability
+and expectation bounding and meeting rather than point stacking. So final comments. Eli?
+Yeah, so I just really want to close by re-emphasizing that we don't, you know, we're not,
+I think I have this joke on my Twitter profile, abolish the value function. And that's really just a pun
+for the people who can get it. But, you know, we're not trying to tell people, contrary to their
+subjective experience, oh, you don't really have, you know, value in your brain. There's actually just,
+you know, trying to track your reference trajectory. So in the point two, we can talk about, you know,
+which specific kinds of feedback control, what kinds of feedback mechanisms are really being spoken of
+in this paper. And I think as, you know, preview, it's negative, both negative in the sense of avoiding
+negative reinforcement and in the sense of trying to flatten out a response function and be able to
+proportionally respond. So, you know, with the benefit of hindsight, this paper is going to have a pretty
+limited, you know, domain of application. But it's helpful in that it gives us a language to turn around
+to the, to the empiricists and say, this is what we want to actually look for.
+Any closing comments? Otherwise, that's a great note.
+Well, Eli and Jordan as well, thanks for coming out and for engaging in .1ary. And we'll see you
+next week. Thanks, guys. See you next week.
+Bye.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.

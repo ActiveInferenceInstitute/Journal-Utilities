@@ -1,0 +1,1398 @@
+---
+title: "ActInf Livestream #040.0 ~ "A free energy principle for generic quantum systems""
+category: "Livestream"
+series: "Livestream_040"
+episode: "0"
+duration: "1:47:19"
+url: "https://www.youtube.com/watch?v=-qZYxSbJ38E"
+views: 450
+exported_at: "2026-02-18T22:37:37.657945+00:00"
+format: markdown
+---
+
+# ActInf Livestream #040.0 ~ "A free energy principle for generic quantum systems"
+
+All right.
+Hello and welcome. This is ActInfLab livestream number 40.0. It's March 10th, 2022.
+Welcome to the ActInfLab. We're a participatory online lab that is communicating, learning,
+and practicing applied active inference. You can find us at the links here on the slide.
+This is recorded in an archived livestream, so please provide us with feedback so that we
+can improve our work. All backgrounds and perspectives are welcome and we'll be following video etiquette
+for livestreams. Check out activeinference.org to learn more about the lab.
+All right. In today's number 40.0, the goal is to learn and discuss this very cool paper that was
+published on Archive on December 30th, 2021, A Free Energy Principle for Generic Quantum Systems,
+by Chris Fields, Carl Friston, James F. Glazebrook, and Michael Levin. And just like every video,
+it's going to be just a conversation going over some parts of the paper. It's not a review or a final
+word. And if anything, it's a cry for help or at least a cry for participation because there's so many
+areas where somebody with different experience or more knowledge about any of these domains could
+connect some dots or give some useful comments or critiques. So especially with this video,
+though Blue and I had help from our colleague Jason Larkin with many of the details, there's just so
+much to unpack. So we'll try to make this a useful dot zero and then we're really looking forward to the
+dot one and dot two and so on when we'll be able to really go into some of these directions. So I hope
+if you're watching live or between now and the dot one, check out the paper and listen to this discussion
+that we'll have now and ask some questions because this is just the beginning of a few new threads,
+probably more than the answering of questions, especially to any desired level of like completeness
+or applicability. So it's just the beginning. That's what the dot zero is about. It's a new decade,
+40.0. So we'll just introduce yourself and then go through a bunch of the paper. And yeah,
+thanks again to Jason for a lot of help and Blue for awesome work on the slides too. Okay, so
+I'm Daniel. I'm a researcher in California and I'll pass to Blue as facilitator.
+I'm Blue Knight. I'm a researcher in New Mexico and I have to shout out to Daniel too because you're always
+saying thank you to me, but you know, we all have to say thank you to you for providing the affordances to be here and,
+you know, discuss these awesome questions. Big paper. I am excited to delve into this. I think it will, you know, start a lot of new trails. So I think, and also,
+to bring back Mike Levin and to bring back Chris Fields and to bring back Carl Friston back to the active lab to discuss the dot one with us, hopefully.
+Okay. So is there anything particular that you are excited about, Daniel, or do you want to just power through it?
+Daniel
+Let's jump in.
+All right. So this paper really was trying to unite the quantum principles and the free energy principles. So
+quantum mechanics and kind of delving into that. And we will see some threads carry over from the last time that we had Chris Fields on here. Maybe the last time we had Mike Levin on here also.
+So how is the free energy principle related to quantum mechanics? What does the FEP gain from quantum? What does quantum gain from the FEP? Are we using the FEP now to model quantum systems?
+And why are we pursuing this intersection? So this was kind of like the big questions kind of maybe we can start to answer with this paper.
+So we are here. Daniel, what's this map about?
+Daniel, what's this map about?
+So it's a question we are going to probably ask ourselves multiple times so we can insert it like a little emoji, but we can think of among the axes of variation or variability that we are going to explore or where are we are going to tune
+our regime of attention or what perspectives we're going to take, it's going to be like along
+two axes, ranging from on the right side, FEP, ACT, INF, like, to the left side, which is like
+pre or non ACT, INF, slash FEP. It's the x-axis. And then the y-axis is the continuum between
+quantum, which we'll probably nuance and hear many perspectives of what is and isn't quantum,
+but just to summarize it by saying quantum and not quantum, like pre or non quantum approaches.
+And so quantum FEP is in the upper right corner. And we can think of it as being like connected
+in different ways to quantum non FEP in the top left, the blue, and then FEP, but from a non quantum
+perspective, like all pre now FEP, ACT, INF in green. And then what are all the other connections?
+And so who's right, who's wrong, who's useful? Where's their pragmatic value? Where's their
+epistemic value? What are we really talking about? Do we agree on the phenomena? Where,
+where is their agreement or disagreement? Where are we in this complex landscape?
+So I think in mechanics, we refer to it as classical mechanics and quantum mechanics. So now we will be,
+this is like the dividing point maybe between classical FEP and quantum FEP, perhaps. Let's see where it
+goes. So the aims and claims of the paper, there are pretty much three and we'll revisit these at the
+summary because we're going to just give you a broad overview of the summary of results right now.
+Given the standard free choice assumption, the intuitive ideas of an agent or information
+gathering and using system, IGUS, can be fully formulated within background independent scale-free
+quantum information theory. The second claim is that FEP can be a quantum theoretic formulation
+that renders it applicable to generic quantum systems. And do you want to read the last one,
+Daniel?
+Three. When formulated as a generic principle of quantum information theory, the FEP is asymptotically
+equivalent to the principle of unitarity.
+Cool. Do you want to read the first section of the abstract?
+All right. The free energy principle or FEP states that under suitable conditions of weak coupling,
+random dynamical systems with sufficient degrees of freedom will behave so as to minimize an upper bound
+formalized as a variational free energy on surprisal, also known as self-information. This upper bound can
+be read as a Bayesian prediction error. Equivalently, its negative is a lower bound on Bayesian model evidence,
+also known as marginal likelihood. In short, certain random dynamical systems evince a certain kind of self-evidencing.
+So here, we reformulate the FEP in the formal setting of space-time, background-free, scale-free quantum information theory.
+We show how generic quantum systems can be regarded as observers, which with the standard freedom of choice
+assumption, become agents capable of assigning semantics to observational outcomes. We show how
+such agents minimize Bayesian prediction error in environments characterized by uncertainty,
+insufficient learning, and quantum contextuality. We show that in its quantum theoretic formulation,
+the FEP is asymptotically equivalent to the principle of unitarity. Based on these results,
+we suggest that biological systems employ quantum coherence as a computational resource and implicitly
+as a communication resource. We summarize a number of problems for future research, particularly involving
+the resources required for classical communication and for detecting and responding to quantum context
+states that we make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known
+They give us a good roadmap.
+So there's five sections, the introduction,
+physical interaction as information exchange
+and several subsections within that,
+repeated measurements and system identification
+and subsections, the FEP for generic quantum systems,
+and the discussion.
+And I think that they actually outline
+what's in each section.
+So we'll give you that outline overview
+as we go through the paper as well.
+So just, we're gonna use,
+we're gonna actually reuse some slides
+from active stream number 17.
+That was when we had Chris Fields presenting information flow
+in context dependent hierarchical Bayesian inference.
+I think contextuality is like an underlying thread
+that's pretty important here today.
+So Chris kind of lays that out in that paper.
+And so if you want to get into that
+and dive deeper into two spaces and channel theory,
+which we'll talk about a little bit,
+but yeah, that's there.
+So use that for resource.
+Just one foreshadowing here.
+The two pieces that they claimed in this paper
+as their goals was to connect contextuality
+to category theory and two spaces,
+and then connect that yellow formulation
+to hierarchical Bayesian inference
+more looking like the statistical models.
+And so this paper is kind of building
+a category theory bridge with Bayesian graphs
+and statistics and category theory.
+And then that's probably gonna hinge over
+to a few other areas.
+Cool.
+So we can jump right into the introduction here.
+And we're just gonna highlight some keywords
+as we go through.
+The authors didn't really give keywords for the paper,
+which I'm kind of grateful for
+because there's so many other things to unpack here.
+So they highlight some things about the FUP
+in the words of the authors.
+Since its introduction is a theory of brain function,
+the variational free energy principle
+has been extended into an explanatory framework
+for systems at all scales.
+The FUP is the statement that any measurable,
+bounded and macroscopically consistent system
+will behave to satisfy these requirements.
+What else, Daniel?
+It was just cool how they brought in the FUP
+as being the overarching level,
+as describing how these particles do two things,
+which is possess internal dynamics
+that are conditionally independent from the environment
+and performing this self-evidencing feature
+by returning to some non-equilibrium steady state.
+And so just which parts of the FUP
+they entered in at or emphasized,
+which we can assume are setting the stage up
+in their mind best for the interfacing
+or the on-ramping into quantum,
+whereas somebody interested in like a system
+or integration other than quantum
+might take a different approach.
+Cool.
+I think that they borrow also from our particular physics.
+We're going to talk about particles
+and they talk more about particles in the discussion.
+And maybe we can have a deeper conversation
+about those in the dot one and dot two,
+but they say the Markov boundary of any particle
+that's an open exchange with external states
+via its Markov boundary underwrites conditional independence
+between its internal states
+and the external states of its environment
+by localizing and thereby restricting information exchange.
+So the Markov boundary separates internal and external states
+by mediating their exchange.
+We've seen that before.
+Cool.
+So what is active inference, Daniel?
+Can you break it down for us?
+Two sentence overview.
+That blanket that Blue just described
+with the insulation,
+incoming statistical dependencies
+can be interpreted as perception
+and outgoing statistical dependencies
+can be interpreted as control.
+And depending on the situation
+and what's zero and what's not zero,
+that can have a lot of dynamics that are similar
+to some other classic settings
+in decision-making, gambling, experimentation,
+quantum measurement in this paper.
+So what is quantum theory?
+This is cool.
+Just some pictures and it's connected
+in many, many different fields.
+So there's a cool kind of concept map
+of where quantum theory intersects.
+quantum theory here is the idea that all physical systems
+can, including the environment,
+can be considered observers that act on their surroundings
+to prepare them for subsequent observations.
+That's become common in quantum theory,
+replacing the wave function collapse postulate
+of traditional quantum mechanics
+with interaction-induced decoherence,
+which is like the dissipation of quantum coherence.
+This is like the thing that generates classical information.
+And they say,
+indeed, while quantum theory was originally developed
+and it's still widely regarded
+as a theory specifically applicable
+at the atomic scale and below,
+since the work of Wheeler, Feynman and Doosch,
+Dutch, Doosch,
+it has over the past few decades been reformulated
+as a scale-free information theory
+and is increasingly viewed
+as a theory of the process of observation itself.
+So, yeah, I think like when we think about quantum,
+we think about the observer.
+At least I do.
+Like I think about the observer phenomenon,
+just the act of observing a system changes the system.
+So that's kind of a fundamental thing
+that comes to my mind.
+What comes to your mind, Daniel,
+when you think about quantum theory?
+Reading that leaves me uncertain
+whether we're talking about like organic chemistry
+and the pi orbitals and covalent bonding
+and emission and all of those things that particles do,
+which is what it sounds like they're talking about
+in this orange part,
+a theory specifically applicable
+to the atomic scale and below.
+And then this blue part makes it sound like
+they're opening it up into a much larger space.
+So I think we'll probably learn a lot about that.
+What does quantum mean here?
+Are we talking about electrons and protons
+or is this something that is like Bayesian inference
+in that it's scale free or scale a priori
+or scale friendly or something like that?
+Nice, scale independence.
+So we're gonna jump right in.
+So section two,
+they talk a lot about physical interaction
+as information exchange.
+And that's something I wonder also,
+like is we have the classical mechanics
+and do the laws of quantum always apply
+or at some scale are they not applicable
+or can we extend them into some theory of everything?
+Like are we getting there maybe?
+But here in this section,
+they say that they use the category theoretic formalism
+of channel theory to formalize
+the operational semantics of natural languages.
+So they develop a generic formal representation
+of quantum reference frames
+and show how the non-commutativity
+of quantum reference frames
+induces quantum contextuality.
+And I had fun really digging into this
+at a level that I felt comfortable explaining it at.
+So I'm excited to see if I bungle it or how it goes.
+Let's see.
+Okay.
+What is quantum?
+Ah, when physical interaction is viewed
+as information exchange, why is it quantum?
+It becomes obvious.
+The fundamental quantum of information is one bit,
+one unit of entropy that one system exchanges for another.
+So one bit, one quantum of information
+is the answer to one yes or no question.
+That is quantum.
+Do you want to add anything here, Daniel?
+Okay.
+Okay.
+This is the block text is from the paper.
+And just one piece that will be interesting to explore
+is just how does time and temperature come together?
+Like I had just heard or thought more about the space required
+for storage and not really seen it as much connected
+to the speed of obtaining that yes or no answer
+at different temperatures
+and what that might mean for biological or for digital systems.
+But I'm sure that's a very
+foregone conclusion, maybe working with a quantum device,
+but new to me and Jason was like,
+oh yeah, of course that's the case.
+And they talk a lot.
+So foreshadowing, they're going to, you know,
+really present this within like a space time independent context,
+which is kind of cool.
+And then like link it back to time,
+which that kind of gets a little interesting.
+All right.
+So moving on,
+Hilbert spaces.
+So Daniel,
+do you want to say a bunch about this or what do you want to say about this?
+And then I'm going to highlight some stuff.
+I'll just read what they wrote.
+Oh, here's the red part is our,
+was our comments on what they wrote.
+People can pause it to read what they wrote.
+The Hilbert spaces contain all states described as a vector.
+And this is one way that qubits are constructed.
+By relating two levels of a system,
+like electrons in a ground or excited superposition,
+and then the collapse into one or those other bands.
+And so that's more of like a uncertainty to discrete transition.
+But then in the limit of high temperature,
+there's a lot of blur or experimental factors that can be modeled as blur that
+results in a smoother distribution of outcomes.
+And here,
+this Hilbert space is describing how the experiment is set up and the information that's being modeled
+at a given time.
+So the state of that,
+this space consists of the options for is like the,
+just the experiments space,
+including the total target system and the observer.
+Maybe.
+Maybe.
+So I like this quote at the end that,
+as Fuchs put it,
+infinite dimensional Hilbert spaces are from an information perspective,
+merely a useful artifice permitting computation with differential equations.
+And they,
+they contain all this possible states in an experiment as vectors.
+So,
+there's more to read about that.
+And also the mathematical notation,
+if you're curious about cats and bras and some of these brackets that we have.
+had to,
+to dig through to find solid ground.
+Yeah.
+Okay.
+So the principle of unitarity is the principle that observable information like energy
+is neither created nor destroyed by physical processes.
+And I thought that this was interesting.
+So time reversal symmetry is essential for the conservation of information.
+So a system is time reversal symmetric,
+if it's equations of motion allow perfect prediction of the starting point,
+based on knowing the state of the system at any given time.
+So like,
+if you know a time,
+whatever X time steps,
+you can still say something about the starting system because you can run it
+forward and backward in time.
+And there were some cool things like about if you build up a mirror,
+that's,
+that's like enables the time reversal.
+So some things go forward,
+but like the spin of an electron is spun backwards in time.
+Right.
+So,
+so it's like those kinds of things like are,
+some things are parallel and some things are opposite in time reversal symmetry.
+But anyway,
+I thought that was interesting and fundamental to kind of the principle of unitarity.
+And also because we're going to talk about time in a cool way,
+I think.
+Um,
+okay.
+So,
+yeah,
+unitarity.
+What do you want to say about unitarity,
+Daniel?
+I said a little bit,
+so let me pick out some things here that you want to talk about.
+Okay.
+This was all with just Jason helping us.
+And again,
+it's like an opportunity for anyone who's familiar with these to,
+uh,
+formalisms to help us a little bit more through,
+but just to pick up on one point,
+just as you mentioned,
+like we're doing experiments where it doesn't matter what time we started at.
+In a sense,
+like it may matter in the sense that the different times lead to different
+results,
+but a statistical framework for observation that can cut through some of the
+parts of the experimental context that are not relevant to compare different
+events that happen at different time in a unified statistical framework.
+And so that was what led to this principle of unitarity,
+that the total probability distribution is preserved with like a mass of one
+so that there can be information evolution,
+that it's happening in a certain space where there are certain invariants that
+allows useful computation to happen.
+Cool.
+Well, yeah.
+Conservation of probability.
+So that's something that maybe came up,
+um,
+like the probability that a particle is somewhere,
+like it's somewhere.
+There's a hundred percent probability that the particle is somewhere.
+So it didn't disappear.
+So that was another kind of interesting point.
+We were talking,
+um,
+like,
+before this,
+
+I mean,
+that's kind of what,
+how you get the conservation of observable information as well.
+Um,
+okay.
+Separability and holographic coding.
+Okay.
+This one,
+just to,
+uh,
+briefly look at a previous slide.
+I think this was from 32.
+We were looking at sparsely coupled systems from a matrix perspective.
+And so the dense coupling of like subunits one through six with each other was mainly like within the click of the red or the blue.
+But then there's these off diagonals that reflect the sparse coupling of denser clicks.
+And so in section 2.3 of this paper,
+they're also talking about coupling patterns in systems,
+specifically ones that have a separability.
+So like one of those blocks could be the experimental system,
+the quantum computer,
+and the other one of the blocks could be the experimenter.
+And then there could be sparse connectivity reflecting the experimental apparatus.
+But that was being approached from a quantum holographic angle,
+also setting up for a Markov blanket.
+Take.
+Cool.
+So one sentence on this,
+um,
+page that I think is important is underlined here.
+The entanglement entropy,
+um,
+is a mutual information measure that detects quantum correlation or coherent between A and B.
+Um,
+and,
+and so that defines separability and either a system is separable or it's entangled.
+So separable states are also called decoherent and entangled states are also called coherent.
+So just,
+just to find out as we go forward and kind of dive a little bit deeper into the math.
+It's kind of like if it was parametric classical statistics,
+we would say uncorrelated or correlated.
+If it was information theory,
+we'd say no information or yes,
+it gives information.
+Bayesian graph.
+Yes,
+it has causal influence or no,
+it doesn't.
+And then this is the quantum take.
+Yes,
+it's entangled or no,
+it's not entangled.
+Also,
+don't forget conditional dependence or conditional independence.
+So where,
+where is it conditionally dependent?
+Um,
+and we know that,
+that like the Markov blanket can help to define conditional dependence.
+Um,
+when,
+when we've looked at active inference in the past.
+Yep.
+Um,
+okay,
+cool.
+So where,
+do you want to talk about the Hamiltonian or not at all?
+Or what do you want to say?
+Not at all.
+Okay.
+Not sure.
+So there's one cool thing that I want to point out here.
+Um,
+you know,
+we talked about like,
+we see interactions,
+strong interaction,
+different timeframes and how these are going to vary as we go forward.
+Um,
+but,
+but here,
+I really just wanted to point out that,
+that this H of AB is like the Hamiltonian.
+So we're talking about matrices,
+separability,
+interacting matrices,
+conditional dependence,
+just on the last slide.
+Um,
+and so the interaction between the Hamiltonian of the matrix can be decomposed,
+um,
+into this H AB where this is like the interaction between a and B.
+So H AB can be looked at as we go forward,
+um,
+as the energetic interaction between matrix a and matrix B state,
+a state B position,
+a position B,
+or,
+um,
+they,
+they give it to us in a very generic form.
+So I didn't really know how to apply that going forward,
+but maybe if the authors are listening,
+they'll,
+they'll come in and rescue us.
+Um,
+that's the only thing I really wanted to point out from,
+from that side.
+And then this is kind of cool.
+So this,
+this equation six,
+which we just looked at,
+um,
+which is the energetic interaction between a and B.
+Um,
+this is physical interaction,
+which I guess is,
+that could be physical interaction between a and B.
+That could also be energy,
+right?
+Matter equals MC squared.
+Um,
+physical interaction equals,
+thermodynamics times yes or no questions.
+So it's cool.
+The authors say this formulation emphasizes what quantum theory is about.
+The process of obtaining information,
+obtaining information from B requires in particular that a acts on B by asking
+questions as Wheeler puts it,
+no question,
+no answer.
+All inference in this framework is active inference.
+Equation six does not allow passive perception to be a physical process.
+Super interesting.
+Agreed.
+Agreed.
+From a lot of angles.
+Angles.
+It almost takes it to a level.
+We haven't seen from just saying,
+
+perceptual inference,
+even the generative type.
+So not just the signal processing,
+but even a predictive processing generative framework for perception that
+doesn't take action into account is incomplete.
+hence the motivation for active inference. And this is somehow escalating that into
+saying that all inference in this framework is active inference. And I wonder if that's because
+like a frame is always needed, some kind of generative models always needed as a recognition
+model dual for any observation. So if you're in the business of making observations, you're in
+the business of generative model modification one way or another, or you're not the kind of thing
+that does either of those, but they might come into play in the minimal active entity or the thing
+that can be modeled as a minimal active entity. And so there's a lot of interesting areas. And I
+think it's also quite interesting with the natural language equation. So how should we read that dot
+operator? Thermodynamics? What? Yes, no questions. And then times? Or what does it mean?
+Yeah, there's the category theory like that, that dot operator, I forget how to read it.
+So hopefully, it's being rescued. But yeah, I read it as times because, you know, I'm old school.
+So going back to that same equation, I thought that this was important. It involves no assumptions
+about space, time, objects, or motions. It is strictly topological. Given separability,
+it identifies a boundary, fancy B, between A and B, at which the energy interaction, physical
+interaction between A and B is defined. So I guess that would be like a space. Well, I guess it's not
+space. It's not space. It's not time. It's a physical, it's an energy interaction, HAB. Anyway, yeah.
+And this is the Markov blanket, fancy B holography connection, which is that all the information
+that is making the sparse connectivity of A and B, we're talking about systems that have like this
+screen slash blanket slash experimental apparatus, fancy B, and the properties of it for a system that
+might be making classical-like measurements, or maybe it's making quantum measurements. So
+implicitly, the prior work had been thinking about what was on the other side of that
+experimental apparatus from a classical or from a non-quantum perspective. We'll see.
+And this is taking it more into asking what kind of mathematics would be needed to look at it if it
+were a quantum system that were being investigated. Cool. And I think that takes us into figure one.
+So here, Daniel was foreshadowing, doing a great job of the holographic screen. So this is a
+holographic screen, fancy B, separating systems A and B with an interaction, HAB, given by equation six.
+And so this says that this screen can be realized by an ancillary array of non-interacting qubits that
+are alternately prepared by A and then measured by B. Qubits are depicted as the spheres here,
+and there's no requirement that A and B share preparation and measurement bases. So these are
+quantum reading or quantum reference frames. So this is like they share the ability to prepare or
+measure. That would be like quantum reference frame. And we're going to get into the quantum
+reference frames just here in a couple of slides. I think with a pretty good example.
+Cool. Anything to add, or do you want to like unpack it with the next couple of slides?
+Just thinking about this as like a quantum holograph is sort of the generalization, maybe,
+of thinking about this in the classical information. What if this were the chat between
+Blue and I? So we could have different perspectives, different reference frames, different semantics.
+But if we're not in the same chat room, then we're not in the same chat room. That's like the
+holographic screen or the observable that's getting passed between these two systems A and B.
+And they don't have to be two people. It could be like a person and some other system on the other
+side of the holograph slash information channel. And the whole question is what kind of math describes
+that classical information channel case? And how is that similar or different or compatible or
+whatever with thinking about it not as an information bit from a standard probability distribution,
+but like a quantum information bit with a complex statistical distribution?
+Nice. So they describe the holographic screen, actually, as they say, the holographic screen,
+Fancy B, has an obvious interpretation in the language of the free energy principle and
+active inference. It implements the Markov blanket that separates from B. So we've seen the Markov
+blanket before and, you know, mentioned it here, but I think that they are going to, you know,
+implement this holographic screen of this Markov blanket. Yeah. Perfect. Cool.
+Oh, and then the quantum reference frame. Fun. So here they say, we show in particular that
+the FEP emerges naturally in any setting in which an agent or particle deploys quantum reference frames,
+namely physical systems that give observational outcomes and operational semantics to identify
+and characterize the states of other systems in this environment. And so this was kind of a cool
+figure that I pulled down. So it's like a man on the train to the man, the train is moving,
+and to the person on the train, the man is moving, right? And so it depends on your perspective.
+And this is kind of what a quantum reference frame is getting at here. So this says,
+quantum features such as quantum superposition are only defined relative to an observer.
+When we look at the train from the point of view of an observer standing on the platform,
+the train looks in a quantum superposition of different positions.
+However, an observer sitting on the train sees the observer on the platform and the ball in a
+quantum superposition. So it was a cool illustration of just kind of how things look differently,
+depending where you're standing.
+Okay. This is awesome. I like how you brought in the art and the images are a little subtly
+different, but then in a way that really makes one think. And the classical case would be,
+what if both of them were moving or still, and then they only got to get a frame update once every
+two seconds or once every five seconds. So then there'd be like still an uncertainty distribution,
+but it'd be a classical parametric statistics or information theory, uncertainty about location.
+And that's going to be the big question. How is that variance estimation that we've already
+been exploring and that type of inference related to quantum information where there's something a
+little bit bigger and more complex or different than just simply low sampling rate leading to
+positional uncertainty of a massive train that's not subject to so-called quantum effects?
+Cool. Did you want to, what, so this is kind of cool. Do you want to unpack this slide here,
+Daniel? I'm just looking forward to what the free choice assumption means in quantum setting,
+but we just highlighted, what is this all going to say about free choice, this specific slide,
+but also the broader discussion. So I agree too. I think the free choice aspect is cool.
+Here the authors say, provided A and B are separable, assuming that there are no super determinist
+a priori correlations. ZA and ZB, what is the Z? I'm not sure what the Z is. Oh, choices of Z.
+So the Z is the choice. The choice of A and the choice of B are uncorrelated. This is the free
+choice assumption. Free choice is often claimed to be essential to science as a practice. If it
+characterizes any bounded system, consistency with quantum theory and special relativity
+relativity together requires that it must characterize all systems. So free choice of a basis introduces
+quantum noise that is indistinguishable observationally from classical noise. And
+noise is going to become important here as we move toward the end of the A and ZB.
+So, yeah. Anyway, that's cool.
+Okay.
+Nice.
+So here they talk about the Z axis in figure one. I should have pasted figure one in here.
+They say that the Z axis is a reference frame. Free choice of the axis generalizes the free
+choice of the reference frame, encoding each qubit on the holographic screen fancy B, right? So, yeah.
+And the part in red, looking forward to unpacking.
+A QRF cannot therefore be fully specified by any finite bit string. It is non-fungible in the
+terminology of citation 40. It's the quantum act-inf NFT crossover that we all needed.
+We have it, but we need to explore it and find out what it means.
+Super cool. And they say that they consider A and B to be isolated during the time interval between
+preparation and measurement steps. And I think that we'll get into that
+in a little bit more like preparation and measurement as we talk about time and memory encoding.
+Yeah.
+And that's what this nine formalism is roughly describing. Something like that.
+There's...
+Yes.
+Yeah.
+What is happening with it?
+So, it says the idea of a computation is this. So, you have bits at one time step going to bits at
+another time step. And then you have the Markov blanket at one time step going to another Markov
+blanket at T plus one. And then this, is it ZA? Is that free choice that's in there?
+Ooh. No, it's IF. So, I'm not sure what that one is, but yeah. We can unpack that more. I will
+unpack some of the later math, but this, I think it's just important to establish the quantum reference
+frame. Anyway. Yeah.
+That's good.
+Cool. Okay. Next. Where are we? Ah, here we go. See, I'm going to start to unpack some math now.
+When I start to roll out the variables, here we go. Okay.
+So, we will be interested in what follows in quantum systems considered to be observers that
+deploy one or more distinct quantum reference frames to measure particular subsets of the bits
+encoded on their boundaries slash markup blankets. And yeah, these will effectively decompose the
+holographic screen fancy B into disjoint sectors that we will label E for the observed environment,
+F for the unobserved environment, and Y for the memory sector, respectively. So, yeah, we're going to
+we're going to break that out. I think. Yeah. Attention also, so they really talk about the sectors
+as a sense, right? Like, so I have like my vision sector, my hearing sector, my taste sector, right?
+And so like I'm making observations of my environment with all of these, like my temperature
+sensing sector. So there's all of these different ways, you know, to observe the environment with
+different sectors. So yeah, cool. It's kind of like saying you win some, you lose some, you don't play
+every game. It's kind of like whatever space we're talking about here, which happens to be this boundary
+that has all these interesting properties. There's some that are being observed, some that are being
+unobserved and a special sector that gives continuity of information in some way through time.
+Yeah. So this is cool here. Free choice of a decomposition of a holographic screen fancy B
+into sectors with different quantum reference frame induced semantics is indicative of agency. So I like
+that and I'm curious to unpack that maybe a little bit more something for to ask the authors about in
+the dot one. Yeah. Or also all non-trivial agents are cognitive systems that engage in active inference.
+What is non-trivial to who? Like how do we escape or how do we escape this infinite multi-perspective
+multi-scenario universe or do we just have a way of working with that?
+I do think that they get into non-trivial here in a little while. But yeah, they say a non-trivial
+agent is a system with internal dynamics that breaks the swap symmetry of its boundary markup blanket
+holographic screen. However, they're going to start to use these things interchangeably. So I'm just going to
+keep saying holographic screen fancy B. But I guess if your internal dynamics don't break the swap symmetry
+or right, like if your internal dynamics are trivial or like not relevant or if you don't,
+they don't have an effect on the boundary maybe that becomes trivial.
+Yeah. Wondering if that's the mirror versus adaptive active inference boundary that we've discussed or
+what this maps to, where does this kick in or not? So we'll explore it though.
+It totally seems like it's definitely the mirror versus active inference. That's how I interpreted it
+as I was reading it. So it sounds like that to me. Oh, and okay. Now we're going to head into some 17
+related information because they're going to turn this discussion from QRFs as reference frames
+to channel theory, which is going to enable this context switching discussion that's important
+later. So this is brought up in number 17 and 17.1 is where we had Chris Fields and a great discussion
+there. So continue, Blue. Cool. Yeah. So channel theory of quantum reference frames.
+So I think we've said channel theory is an application of category theory to two spaces.
+And I'm not going to read the paper here, but I'm going to go back to some of the slides that we used
+from 17 because I think that we kind of unraveled it there in a way that was maybe digestible more so
+than reading equations off of a paper. So this is the two space. Daniel, what's a two space? So K is a set,
+A are objects, X are attributes. A two space, fancy A over the set K is the relationship between the objects,
+A and their attributes, X.
+I thought of it just like a computer function, like in Python or any language that's just taking in three
+kinds of data, the set, the objects and the attributes. So describing a large variety of things,
+but it's just kind of integrating those three types of data in a principled way and enabling
+transformations between different representations that might look very different or allow for different
+implementations, but also commonly use like all of this information or even just a subset of the
+information, because that just throws out information, which you can always do.
+I really like the Python example. So like if K is the Python dictionary, A are the keys and X are the
+values. Like you can describe the relationship between the keys and the values with a two space.
+Like that is what the two space does. So like you could say, you know, your keys are apple, orange,
+banana, and your values are red, orange, yellow. And so then the two spaces, how do you describe
+that relationship? Color approved, something like that. Cool. Okay. So going into channel theory and how
+two spaces work, how channel theory works. So it says in channel theory, two transforms become isomorphisms,
+which are natural maps between classifiers. So classifiers link tokens to types that encompass them.
+Like for a stoplight, a set of tokens would be red, green, and yellow. So that is the set of tokens.
+I think this just builds one level on what you described, which is instead of just the data
+structure of just saying, this is what the function is requesting, or this is what is being stored in
+memory. This is like saying, we're going to interpret some of these edges and relationships
+as classifier mappings or infomorphisms like information sharing or statistical dependencies
+or some other type of informational edge, but on that space that we've been discussing.
+Yes. So they take it to a diagrammatic level where at the center, it almost looks like a pyramid. So
+there's a C and this core C is the information channel. This is the infomorphism that allows
+semantic information. And this, I thought it was very cool that it's very different from Shannon
+information. It's not just bits. It's like the meaning behind the bits. Like you can say, you know,
+you can see the word bank and are they talking about a river bank, the bank that holds your money
+or like a bank shop in pool. Like there's some underlying, I would dare to say context, that is
+important for not just the letters B, A, N, K in that order. So it's not just the tokens in the
+particular order, but it's like the semantic context that allows transmission between classifiers. So I look
+at this like a shared memory. So like, if we look at the classifier A1 here, which would be stoplight,
+the tokens are red, green, and yellow. Classifier A2 would be motorist actions. The tokens would be
+stop, go forward, or I say proceed slowly, but it's really get out of the intersection, right? Like
+that's what yellow means. And then there's other classifier types could be like pedestrian actions,
+child's game actions. Like when you're playing red light, green light, do you run? Do you stop? Like
+freeze. So, or do you walk, right? So there's all these different classifiers that can then map via a
+core information channel C, shared memory, semantic information between those classifiers. Cool. Okay.
+So going on, they build from this pyramid, they invert the pyramid to form this cone-cone diagram.
+So they say that a commuting finite cone-cone diagram is made of a cone, which is the upright pyramid and a
+co-cone, which is the inverted pyramid on a finite set of classifiers. It illustrates commutativity. So
+specifically these operators, G12, G23, like you can go all the way out to the set. Like there's a
+commutativity or like a superimposability, commutativity between, with a shared infomorphism,
+if that makes sense. It also captures a more subtle duality between processes. It enables object files,
+tokens, and histories to be viewed, not as tokens, but as types that organize, respectively, trajectory
+components, features, and feature-based singular categories, and make them mutually consistent
+collections. So like where you have all of those classifiers, they're consistent across the board.
+So you can use them to map and unmap, right?
+If I can just give a take on this. So G12 is saying that there's a relationship between
+A1 and A2. It could be like appending by one row, or maybe changing one little bit through time,
+or having some ability to translate like a state machine or something like that. Let's just say that
+there's some relationship. And then there's also these F functions that allow the A's to be part of a
+shared context, like the pedestrian scene that makes sense. And then that is shaped like a cone.
+And then that is kind of like sense-making, that semantics is making sense. And then this co-cone
+or the diamond shape is where there's C and D, who are both like cognitive sense-making frames.
+And then now they're having a shared holograph A, or shared access. And then it's, that is a different
+object with a different geometry.
+Yeah, that would be like, I'm looking at the same set of classifiers that you're looking at,
+and we both see, we both know what they mean. We both know that red means stop and green means go.
+Semantically, exactly. Right, right. Or red could mean apple, depending on where you're going with
+that, right? So it could be, it could be an inside joke. Yeah. Okay, cool. So there's the cone-cocone.
+Hopefully that was unpacked with some level of intelligibility. So now we can move into figure two,
+where they attach this cone-cocone diagram to measurement operators, any set of measurement
+operators that are used to measure the states on the boundary that defines the relationship between A and B,
+this HAB, between system A and system B. We're the scientists, we cared about our context C,
+we're system A, we're making measurements from our perspective of a screen, and we're setting the
+context of interpreting those observations in this situation. Totally. I could definitely be standing on
+the other side of that holographic screen, making my measurements from D, from the inverted, from the
+upside down pyramid, but they would be left and right pointing, measuring onto the same screen, if I was
+system B and you were system A in that kind of context. Cool. Anything else to add? No. Awesome.
+Okay. So this is just some more, I think, this slide talking about the cone-cocone diagram, but
+something that's to point out that there's the dual construction, that is when it commutes. I think I
+did say that already. So when the infomorphisms on the same classifiers, where all the arrows are
+reversed, when it's reversible, then that's a commuting cone-cocone diagram. So non-community is
+the opposite of that, right? So we're going to talk about non-community as we go forward.
+And here, what's one thing that I think is happening, hopefully, is like we have been discussing this
+in the context of two different observers having the same semantics from the same screen, C and D.
+And then they say if C equals D or C prime equals D prime, then you can sort of draw another
+consistent world, and this is sort of like a recognition semantics, and then the out cone is like
+an operational or generative semantics in a different way, because it's like generating
+the observations or something like that. But there's going to be like a dual between the diamond
+and the hourglass.
+Nice. Cool. Okay.
+All right, here we go. More of this commutativity. So here they talk about commutativity as
+Bayesian coherence. And we talked a little bit about quantum coherence earlier, but they're bringing
+this notion of Bayesian coherence up. So viewing commutativity and Bayesian coherence as fundamental
+to the definition of measurement, like if I measure the length of the salamander and Daniel measures the
+length of the salamander, we could get the same answer or not. And hence also to the definition of
+preparation or action on the environment. So this suggests this foreign rule, which is that's what you blew up, Daniel.
+Don't know what it is. Let's start about it.
+Yeah.
+Okay.
+Yeah, that was that one's right.
+Let's let the authors unpack that one for us.
+Yeah.
+Oh, yeah, that's the rule.
+So here, blow it up again for me. Oh, I'll blow it up actually myself.
+So, ah, too far.
+So they say the probability of obtaining
+X, the state X is the sum of observations over states. Is that observations over states? I should
+have defined these. And the probability of obtaining a measurement, is it a measurement? As an observational
+outcome? In the description for coherently assigning amplitudes to components. Okay. So anyway, we can
+let the authors unpack that one for us. I can't, I can't do it.
+All right. Repeated measurements and system identification. So this is section three, moving on.
+We develop in section three, a generic formal description of how one quantum system identifies
+another quantum system as a persistent entity, a thing. So here they're going to talk about
+thingness and measures records and compares its states by deploying specific sequences of quantum
+reference frames. And so like, how do I know that Daniel is a different thing than me? Right?
+Yeah, that's cool. Sometimes I think we're the same thing. So we're doing the same thing at the same
+time. Is there a thing? Is there a group thing? That's a group thing.
+Consensus. We're having a thing at my house. That's it. All right.
+So they break this section. So these sections get really awesome. So memory, time, and coarse graining.
+The idea that a system must possess a quasi non-equilibrium steady state solution to its density
+dynamics and hence be restricted to trajectories in its classical configuration space that do not
+diverge exponentially over time in order to be observable as a thing immediately raises the
+issues of time as a measurable duration and of memory as persistent over measurable time.
+So that they show in this figure that the agent A can only detect changes in the nest density and employ
+them as bases for inference if actions and actions if A can write time ordered records to subsequently read
+from the memory sector Y. So here the memory sector is Y. The environment is E. And this G-I-J.
+Here, I think it's better done in the next one. Oh yeah. Perfect. We have the next screen right here.
+So G-I-J is this a time clock, a time step from one memory that's the dynamics of internal time.
+Internal clock. That's what it is of the agent. We talked already about the different parts of the
+screen and how some are being observed, some are unobserved, and then there's the memory sector.
+And here like the unobserved environment is the biggest set. I think it's like mostly, at least in
+this image. And so one question is just, what does this represent in terms of our computers or our
+sensory apparatus? And how is it related to some of the work that they like cited and some related
+work about attention and Bayesian graphs? This is a cool representation also. Like notice that
+your observations are different and not overlapping from your memory. Like if you're all memory,
+the new information isn't coming in. If you're not paying attention to anything, it can't have an
+effect like that type of thing. Right. And so this is an illustration of quantum reference frames
+required to write a readable memory of an observed environmental state, E. So E and Y read the state
+from E and write it to Y respectively. And the clock is a time quantum reference frame that
+defines the time coordinate A. So at the time step, you read the environment and then you write it to
+memory Y. Cool. And there's papers. A little perception action loop with memory.
+Yeah. Okay. Yeah. Yep. In a loop. Sorry. Cool. Awesome. The figure four
+is a memory read write cycle defining one tick from I to J of the environment. So here it's like you
+read from the environment, measure or read measure, and then write prepare. So like you prepare for the
+next time step. All quantum reference frames and the comparison functions are implemented by the quantum
+dynamics PA, which is the big block arrow. So if this were like a EEG headset that was measuring at
+a hundred Hertz, a hundred times per second, that would be like a hundred classical information reads
+per second. And then you could do signal processing. I think this is kind of like the time step is the
+sampling frequency of the experimental apparatus that's defined by this partitioning
+of the blanket fancy B slash holograph and then subsectors with these different interpretations
+of being like observed, unobserved or memory components.
+And the authors say here, they say, formally, we think of this PA as the weighted sum of all possible
+paths from the boundary, the fancy B at one state to the boundary, the fancy B at the next state.
+So that is the internal dynamics are how the holographic screen is shifted from T to T plus one.
+And also this is where there's the cone. So the B are like those, that line of A's that are all lined
+up and then now it's bottlenecking. This is the hourglass and then going back out.
+Yes. Yes. Superpose those figures for next time.
+Yep. Yeah. All right. Then memory, time and core screening. So the internal dynamics that operate
+on those states to maintain a non-equilibrium steady state density are spatially localized inside of the
+boundary. And the boundary represents a Hilbert space where we talked earlier. And it's not a physical
+space time decomposition. So the boundary B is all those little spheres.
+Yeah. Still.
+What is memory? We'll discuss it.
+Yeah. And importantly, they say figure four illustrates an important
+distinguishing distinction between classical and quantum representations of dynamics.
+Classical physics assumes a space time embedding and the quantum does not.
+Interesting.
+Yeah. I'm curious about the self evidencing that they mentioned here also. I'll have to ask them about that.
+Okay. Okay, cool. Learning and generative models. I'll let you take this one away.
+Um, this kind of took us almost briefly out of the quantum, but just to give an example of a simpler
+thing that this is like an elaboration or a generalization of a Bayesian approach like Kalman filtering,
+which is just taking, it's like a dragging in estimate through time as new information comes in.
+And so that's what's happening in a sense here with formalism 27. There's a prior and a posterior
+and that's moving forward. So it's kind of like using this dragging filter through time.
+If that were classical information, and then there's something different happening with quantum.
+And that's that, that piece that we're going to keep on returning to, but this is like a Bayesian
+analog. And now the math is being used to describe these quantum systems.
+Yes. Okay. Moving on. Section 3.3, identifying and measuring systems embedded in E.
+So we've so far considered only observers A that measure the states of their observed environments E
+without decomposing E into systems that have their own specific states. And the question of how an
+observer distinguishes a system from the environment in which S is embedded is central to classical
+cybernetics. So I think that that's important. Like are the other agents, do they matter? Are they just
+part of the environment? Like there's always that question of, of, you know, is, is it its own thing,
+that other person over there, or it's just my perception of my environment?
+And the second part there is like, it's that sort of entity niche differentiation or delineation. And then
+under the rubric of object persistence, the conceptuality of thingness to cognitive and
+developmental psychology. So that's like children with peekaboo. And so it's like, what connects the
+child playing peekaboo to the cybernetic entity differentiating causes? And how does quantum with
+its observer based relationality connect those areas?
+So here they use a special delineation for an environment that indicates the remainder of E when
+other systems in the environment are removed. And the question of how an observer distinguishes an
+external system from its surrounding environment prior to and as a precondition for measuring some
+state of interest is not something that people traditionally address because it is thermodynamically and
+computationally difficult demanding special requirements on those servers.
+Cool. All right. So figure five shows us a system. I think it just shows us like,
+pretty much where we are systems s. You know, here you have a and b. Identify the system.
+Requires identifying some proper component are that maintains a constant state or a density of time
+average samples as the pointer state of PI, right? So you need a pointer to point to the system.
+Or density of time average samples of interest varies. Oh, so like as this goes to attention,
+right? So what is your, what are you pointing to?
+Oh, another way I was kind of seeing this one was, um, this, the, the, it's like a clock hand. So this could
+be like a time scenario, or it could be quantum with like the spin or with the angle in a complex field
+or something like that. But you can decompose the total system s into the time invariant part,
+which is like your Python data structure. And that's like saying, here's the, the structure of
+the variables. And then just like the variables themselves that are time variants, which is like the
+clock hands. So there'd be like the body of the clock. That's time variants. And then there's the
+parts that are time varying. I don't know how that, um, R and P and S partitioning connects back, but
+that's what this kind of looks like. Yeah. I'm also kind of unsure about the pointer states and, but I
+think it's the interest varies, right? So, um, yeah, which I think, I think that points to attention,
+like as your interest, as your point of focus shifts, like what are you pointing to? Because
+like, as you look here in one direction, there's a set of variables that are there in that direction,
+like this wall, that corner, this refrigerator or whatever. And then as you shift here,
+your interest or attention is shifting to a new set of variables, but you still know that that other set
+of variables is there that goes to the object permanence that we were just talking about before.
+So like, I know that the refrigerator was in my first point of view, but it's not in my second
+point of view, but I know that it's still there. Um, that, that to me kind of is how, how I think
+about this, the pointer. Cool. Uh, it'll be cool for the authors to maybe unpack this one a little bit
+more for us. Um, oh, okay. We did talk about the Markov kernel versus the Markov blanket. Daniel,
+you, you so eloquently explained it to me.
+Daniel, just one possibility is the blanket is the set of states that insulate the internal and
+the external, making them conditionally independent. And then the Markov kernel could be like that
+applied through time. And it's kind of like a, a REMA model. You could have like a temporal depth of an
+auto regression. And then the temporal depth of the Markov kernel through time would be like,
+what time steps are able to carry forward. But let's discuss that with people who know better.
+Yes. Cool. Okay. Good. Um, all right. So non-communativity, uh, context switching. So
+we talked about non-communativity. We talked about what commutativity means. And so non-communativity would be
+the opposite of that. Um, so here they say, as emphasized by Bohr, a hundred years ago, a finite
+quantum of action partitions the set of all possible quantum measurement operators into a set of
+complementary non-commuting pairs, the most well-known being position and momentum. So if you're trying to
+measure the position of a particle, you can't simultaneously measure the momentum of the particle
+at the same time. So that's non-communativity. Um, yes. And so why does context switching matter?
+Um, they say an observer, an observer, a capable of switching between non-commuting quantum reference
+frames must to maintain an operable memory, implement a clock that is invariant under basis rotations
+on the energy between a and B or the physical interaction between a and B. If measurements
+made at clock ticks, I and J do not commute. However, the corresponding clock operations will not commute.
+Um, so non-commutativity forces TA, which is time or the time step that it takes to record a memory to be unidirectional and hence memory records to be
+encoded irreversibly with an accompanying expenditure of free energy. So the internal clock thus defines TA as
+entropic time. I thought that was super interesting. So it's not like actual time, but it's like time that you paid entropy for, like time that entropy was expended for.
+Time on the clock.
+Time requiring work, right? Or, or over time. Over time. Okay.
+Something to that end. All right. Uh, cool. So context switching between non-commuting quantum reference
+frames, like position and momentum while holding the other quantum reference frame constant. So that's the one
+that's constant is here. The one that's rough in this figure 34 or equation. What is this thing? It's a diagram. That's what it is. So in this diagram, number 34, um, these different pointer sectors, you and V could be like the different, um, non-commuting.
+And then you have overlapping, but mutually communicating operators in a canonical, canonical context switch. So that's like someone could be standing, not at the train platform or on the train and be observing both of those people. I suppose different frame.
+A bigger, a bigger, a bigger context. They each have their own local coherence, but it's interoperable. So it's part of a bigger umbrella, which is like the big C at the top.
+Cool. Okay. Okay. Good. So that's diagram 34. If it fails to commute, then the observables are non-co-deployable.
+So that's like position and momentum. Those are non-co-deployable observables. So non-commutativity in the, in diagram 34, um, has been specified in terms of non-existence of a consistently definable joint probability distribution of conditionals.
+So that's like the conditional independence, right? This non-co-deployable co-deployability of observables amounts to the occurrence of intrinsic quantum contextuality in relationship to that diagram.
+So this goes really back. It speaks a lot to what, um, Chris talked to us about when we did number 17.
+So let's get notes on this stuff.
+Yeah, for sure. Um, so they say in 4.2 below that context watching increases variational free energy by generating prediction errors.
+Um, and like if you're in one context and you have a prediction and then you move to another context with the same prediction, your outcome's going to be different.
+So it increases very variational free energy, um, which makes minimizing very variational free energy and complying with the FEP more difficult.
+So like going from my same generative model from one context to another context to another context makes it hard, um, but can lead to radically better generative models.
+So you're always updating your, your model becomes more generalized, generalizable under different contexts.
+So yes, context switching poses a fundamental challenge to any classical formulation of the FEP and a fundamental explanatum.
+I've not heard that before for a quantum formulation.
+Um, I wonder if this provides like some evidence for us having a shared reality.
+And I, I've, um, brought that up a couple of different times too here.
+Cool.
+It's the fact thing or expression, which is to be explained or explicated.
+Nice.
+Okay.
+Now let's get to the paper.
+What do you think, Lou?
+We're finally here.
+We made it.
+This is the best part.
+Uh, yeah.
+The FEP for generic quantum systems.
+Um, so all that background was to lead you here to the, um, to this place where we are now.
+So how the FEP emerges in this setting.
+Um, and we're going to look at its asymptotic behavior, um, considering how it addresses the fundamental problem that's posed by quantum context switches.
+Whew.
+All right.
+We're getting there.
+All right.
+You want to take this one?
+We're going to go into more detail so that we can get a lot more into this dot zero, but we've seen the variational free energy in the context of perceptual inference, where there's a surprisal and a divergence term that gets bounded.
+So this is kind of like the snapshot question, given the incoming sensory observations, how should I update my generative model?
+It's learning.
+It's like a perceptual common filter.
+Yes.
+It doesn't have action involved.
+Nice.
+Um, they have this formulation of prediction error.
+Um, and they, this is actually from, um, section 3.2.
+It's a representation of the prediction error of system a or agent a.
+So this E R E K.
+So K let's go through these black ones first.
+So K is the internal time clock.
+So agent a's internal time clock TA.
+It counts it.
+It ticks it up.
+So fancy B is the holographic screen.
+PB is the dynamics of the interaction partner B.
+Um, and then this M sub E with respect to K is the observable behavior of the holographic screen.
+Fancy B localized to the sector E up to time TA equals K.
+So like up to up leading up into this point.
+Um, so.
+And E is the observed environment.
+Just to connect it to the previous formalism.
+E is the observed environment.
+That is it.
+So here, this M A E, this is the agent A's generative model of the action of the unknown dynamics PB with respect to time, I think.
+Oh yeah.
+On the Markov or the Markov boundary holographic screen fancy B in sector E, the environment that we looked at.
+Okay.
+Which is kind of like saying you only need to have a generative model on where you're expecting to find observations.
+If you're going to measure just the thermometer, you make a generative model with just a thermometer.
+And that's how you get the cone, co-cone, diamond, hourglass that isn't like with extraneous or redundant or incompatible elements.
+So here, this, um, equation prediction error, it's like ER sub E parentheses K.
+Um, this is the agents, agent A's total reducible uncertainty about agent or system B at time TA equals K.
+Okay. So, so this is like the uncertainty about another system within the environment.
+That's why the system separation that we saw in figure five was important.
+So if we're going to define a system, we're going to look at how other systems interact on the holographic screen.
+And then we're going to think about what can we predict what that system is doing or not?
+Like the environment's not doing anything because it's just sitting there.
+It's the environment, but that's at any given time step snapshot.
+So it is therefore an upper bound on surprise, unsurprisable analogous to F of pi that we just looked at earlier that Daniel mentioned, the upper bound on surprise.
+Cool. Okay. Here we go. Getting into how the quantum does the FEP.
+All right. So a generic quantum system A will act so as to minimize ER sub X for each deployable quantum reference frame F.
+So a system A has different deployable quantum reference frame.
+That's analogous to a sense. I have hearing, vision, taste, smell, temperature sensing, et cetera, many different deployable quantum reference frames.
+And I will minimize my total reducible uncertainty at each time step for each quantum reference frame.
+Yes. So there. Cool. Okay.
+Okay. So a trivial agent can be viewed as executing a trivial quantum reference frame as only exercising choice of basis for writing to and reading from the holographic screen Fancy V as a whole.
+And so satisfies the FEP trivially.
+Okay.
+Let's have a round table on what that means. We should do it.
+Yeah.
+4.2.
+That's it. Or 40.1.
+Maybe there's equation 40. Nice.
+There it is.
+All right. So the authors say uncertainty and prediction error and hence variational free energy is generated in the current formalism by system A's in principle ignorance of both the state of B and the dynamics P of B of its interaction partner B.
+As the bits A reads from B are written by P B.
+This is like the agent or system B is writing to the boundary.
+So A's ability to predict the future states of its observable sectors and hence to minimize that ER sub X for each quantum reference frame X through equation 40, which we just looked at and we're going to look at it again, depends on its ability to predict the behavior of PB locally on each observable sector.
+So I have to be able to predict how Daniel's going to smell, how he's going to look.
+So my ability, if I'm looking at my other agents in the environment over each, what temperature he's going to be, is he going to have cold hands or cold feet or something like that?
+But my ability to minimize my variational free energy over another system in the environment depends on my ability to predict their behavior writing to the environment on all of those quantum reference sectors.
+Good enough. Good enough.
+Okay.
+An animal, for example, must employ its available senses, hence its observable sectors to predict the nutritional value of food.
+Okay.
+Here we go.
+So this is where I go.
+It gets a little fuzzy for me.
+So I was good up until this point.
+They say the weak interaction limit that allows separability between A and B is significant.
+So HAB, which is the physical interaction between A and B, and hence the boundary, the holographic screen between A and B,
+must have significantly lower dimension than the physical location of B, and hence the observable dynamics of B,
+if the weak interaction limit is to hold.
+And my brain is melting now, all the way down.
+So, yeah.
+Anyway, what do you think?
+Do you have any thoughts on that, Daniel?
+I'm not sure if it means that the sparse coupling has to be sufficiently sparse.
+It has to be a lot lower dimension than the system.
+Otherwise, it's not appropriately bottlenecked.
+So there's a lower dimensional interface.
+That's like sparse coupling.
+It's physical interaction in the H frame, and it's the holograph slash Markov blanket with the fancy B.
+But if the interaction is with the H, and that's kind of what we'll discuss.
+Like, are we talking about physical interactions of quantum systems?
+Are we talking about any mechanistic interaction between any mechanistic system?
+Or are we talking about statistical edges, statistical interactions, like an interaction term between two different systems?
+And so just what I've written down here kind of paraphrases what they said up there.
+So the ability for a system A to predict the dynamics of system B depends on the dynamic complexity of the interaction between system B, which is PB, on the holographic screen.
+So what is B writing to the holographic screen?
+Like, what is my refrigerator writing to the holographic screen?
+I would say that's a trivial system, right?
+It's like outputting a little bit of heat.
+It keeps my food a little bit cold most of the time.
+So I can, with pretty good reliability, predict the dynamics of my refrigerator.
+I have less ability to predict the dynamics of Daniel or my children, who are like total agents of chaos, right?
+So, but, like, I want to minimize my uncertainty.
+I'm pretty certain about what my refrigerator is doing.
+I don't know what my kids are doing when I leave the room.
+Yeah.
+So that kind of made sense to me.
+The Schrodinger's cat to Blue's children pipeline.
+We just got there.
+Anything else to add here, Dana?
+No.
+Let's...
+Moving forward.
+Okay.
+So here is a little diagram of what it looks like for me to predict the dynamics of my refrigerator.
+So this is figure 6A.
+It says the trivial agent in figure 6 panel A looks like a noise source to A.
+So, yes, my refrigerator is a source of noise.
+It just, like, it actually literally makes noise and, you know, puts out a little bit of heat.
+So it says emission of blocking radiation from a black hole provides perhaps the most pure example of such a noise source.
+While the dimension inside the black hole can be arbitrarily large, the internal dynamics are uncoupled from the classical information encoded on the horizon and hence have no classical computational power.
+Yes.
+Okay.
+Maybe my refrigerator has more computational power than a black hole.
+I don't know.
+Okay.
+Okay.
+We move on.
+Here we go forward.
+So the more interesting parts of A's option space for prediction are shown in panel B, C, and D, where B is nontrivial.
+If B is nontrivial, it deploys at least one quantum reference frame, X of B, like so that's sector X of B, acting on sector X of B.
+As discussed in section 2.5, B sectors must be mutually decoherent.
+So the action of the dynamics on the sector of B is independent of action elsewhere.
+It is this independence that makes prediction possible.
+If X of B does not overlap any sector for A, B will appear trivial.
+So if their green cone is totally removed from where the red cone is, it's a trivial thing.
+Like if, you know, my kids aren't here right now, they're not immediately acting on my environment.
+So they're trivial, I guess.
+This made me think about like if someone was speaking a language that you didn't understand semantically, not even in the cues and in the metadata.
+Like there's kind of speaking past each other, even though you're sharing a screen.
+But that's like an attentional informational interpretation.
+And this is in a quantum interpretation about the shared semantic frame ranging from identical to overlapping to disjoint.
+So in a disjoint way, I'm trying to think of what else would be there.
+So like a different language is good.
+But like what about something like radiation emission?
+Right. Like so something's emitting radiation, but I can't perceive that radiation.
+So like the thing emitting radiation doesn't appear like it's impacting my environment at all.
+So maybe something like that.
+And that'd be like maybe unobserved.
+The part of B, the holograph, that's not in the observed or memory sector.
+Yeah, like that.
+Okay, cool.
+So the interesting cases are the ones in which A and B's observable sectors overlap.
+In this case, intuitively, in which A and B can see each other and hence interact in the ordinary non-technical sense of that term.
+In panel B, sector XB fully contains XA.
+Okay.
+Yeah.
+Okay.
+So let's look at the whole figure now.
+So we saw all the ones trivial and non-trivial.
+Okay.
+So A is a trivial agent.
+So they're not putting out any code.
+B encodes a sector that contains XA, but is bigger.
+So I like to think about this as like a teacher.
+So we're going to get into like teaching and learning.
+So this is like a teacher that knows more than the student can pick up maybe.
+In that kind of way.
+So the bits on XB, but outside XA encode non-local hidden variables for A.
+And then in diagram C, the sectors of XA and XB overlap.
+The areas of non-overlap become noise sources.
+So here it's like, you know, I can understand you when you speak English, but not when you speak Chinese.
+So like when you're speaking Chinese, we have this non-overlapping frame.
+Anyway, how do you think of that, Dan?
+This is just speculative, but in the case of B, so we're the observer investigator A.
+So in the case of frame B, there's so much information like in the linear regression data set, but quantum, that there's basically anywhere we look, we can totally get all the information.
+So it looks like there's non-local hidden variables because it's like super determined.
+In the case of C, the regression has like an R squared of 0.5 or something or 0.6.
+And so some of it lines up semantically.
+But if we, of course, had the perfect attention or the perfect observation, we would be able to make a better regression.
+But then like, I'm just trying to take the linear regression, normal information framework.
+And then that's where having people familiar with quantum will be really helpful.
+And I hope they find this discussion and the upcoming .1 and .2 as like just the introduction of hopefully some bidirectional exchange.
+Because this may be something where active inference is complementary, isomorphic, incompatible.
+So let's not lose touch with the active inference thread.
+And then also how is this relating to quantum?
+And that's how we're going to get up in that quadrant where they both are.
+Yeah.
+So in D, where the sector of X is equal to the sector of, or sorry, the sector X of A is equal to the sector X of B.
+So that means that the quantum reference frame is identical.
+It's an identical frame.
+Like we are sharing a quantum reference.
+We're both standing on the platform or we're both on the train.
+And so that sector A is equal to sector B.
+Any variational free energy there between A and B is generated by insufficient learning.
+It's not like we both can't see the train or we both can't see the platform because we're in the same place.
+But so there's somebody there is doing some insufficient learning.
+If this is the case, then you just simply need to sample more.
+But you already have the right scope and you're not at risk of oversampling.
+But it's a little bit more quantum.
+Cool.
+And that brings us to this beautiful formulation in equation 41.
+Variational free energy equals noise plus insufficient learning.
+So noise is capturing that bottom left part that we just discussed.
+And insufficient is capturing the D case.
+And so if it was more and more overlapping, then you want more and more sampling.
+But less and less overlapping is going to require less and less learning or learning will be less and less helpful.
+So how is this compatible, incompatible with the ACTIM framings that we've seen for VFE and EFE?
+And then how is this compatible or similar to some of the formalisms and the framings that are really familiar to statisticians and to quantum information scientists?
+And I would also like to know what teachers think.
+So if you're a teacher and you're watching this, what is your take on that?
+Do you minimize free energy by minimizing noise and maximizing learning or?
+Yeah, like that.
+Okay.
+Cool.
+So asymptotic behavior of the FVP.
+So we have these two formulations, surprise-alone divergence, which we've seen before in a similar way many times, and then noise plus insufficient learning.
+So now we want to say, how is it minimized?
+How does an agent act in accordance with the FVP?
+What do you want to add here?
+Yeah, just they wrote, comparing equations 35 and 41, it becomes clear what this amounts to.
+A system self-evidences by behaving in a way that minimizes noise while improving learning.
+And so here they're juxtaposing the F of pi on surprise-alone divergence decomposition of variational free energy with this noise plus insufficient learning framing.
+So we'll have time to unpack that and hopefully connect it to some systems, but it's just a very interesting way that they've reached this trade-off.
+Learning requires seeking.
+It's like, how do we get there?
+Well, that goes back to the context switching.
+Like, if you're always in the same context, like, if you're always, you know, listening to the same music, you're never going to learn any new music that someone else might know.
+Like, or so you have to kind of change, change your context, maybe.
+Take someone else's perspective.
+But, you know, seeking what?
+But we'll get there.
+Yes.
+Okay.
+Okay.
+So.
+Let's also save this.
+Let's save this for dot one.
+But the asymptotic behavior of the FEP.
+Let's just say, why does it matter?
+Why are we studying asymptotic systems?
+What is happening with the FEP asymptotically?
+Asymptotically meaning what?
+But I think that that's a large discussion about entanglement and where everything is going.
+And how it relates to the principle of unitarity.
+Yes.
+Okay.
+Cool.
+Just, we'll get there in dot one.
+Unitarity asymptotic behavior.
+Yeah.
+That's a good, and so, yeah, there's only one more slide.
+Is the, how, yeah, the FEP drives, it becomes the principle of unitarity.
+So, we can discuss that in dot one better.
+How does it?
+Does it?
+Why does it matter?
+Why would it matter?
+Cool.
+Okay.
+Discussion?
+Drive us home, please.
+Okay.
+We're just going to, we're not going to discuss any of the discussion here.
+We're going to look at the summary of the results as they give it.
+And then we're going to have a bunch of slides that will just be like a topic.
+And then with the dot one and the dot two, we're just going to go to that topic and probably start with just reading a quote from that paragraph or hearing the authors or the participants' perspective on like each of those topics.
+Cool.
+Cool.
+Okay.
+Do you want to, you can go for the summary.
+Come on.
+Help me out.
+Okay.
+You, you, you read the three, just the three big texts at the very beginning.
+But the first summary of the results that the authors say is that they can formulate this agent or information gathering and using system, not just within the classical information theory context that we've been talking about informational and strategic agents, but in the context of quantum information theory.
+Point two is not just using a generic agent or information gathering using system, but specifically connecting the FEP to its quantum theoretic formulation or generic quantum systems.
+Insert all the asterisks and other symbols about what that really means and about how active inference plays in, et cetera.
+And then three, the part that we didn't really go into in this discussion, when formulated as a generic principle of quantum information theory, the FEP is asymptotically equivalent to the principle of unitarity.
+And Ander asked in the chat, asymptotically in what parameter, just exactly to what ends in what parameter.
+So that's the summary of the results, but the authors then embark on an awesome series of kind of like standalone paragraph vignettes related to a wide set of other ideas.
+So for each of these ideas, I'll ask the question on the top.
+And then if you want to give a thought on that topic or not.
+Okay.
+So the first topic is, yeah, let me answer the question.
+So it says actually asymptotically perfect learning.
+So that's the asymptotically perfect learning that drives to unitarity on what access.
+So anyway, okay.
+Go ahead.
+What is observation?
+That's deep.
+Okay.
+Several paragraphs they wrote about that.
+And this quote, the idea of a metaphysically solipsistic or solipsist theory of observation is self-contradictory.
+What?
+But we'll discuss.
+Okay.
+What is an agent?
+And again, we'll keep in mind classical physics, classical FEP, non-classical FEP, that where are we?
+Bigger from earlier.
+I'll copy that one back in.
+Because this is definitely like a where are we?
+Like what are the similarities and differences in the agent model for FEP and not and for quantum and not?
+Any thoughts or things that you'll want to ask about this?
+What is free choice?
+I think that was cool.
+Yeah.
+So, yeah.
+Yeah.
+And like, do you get degrees of freedom or free choice over cognitive parameters, action parameters?
+Which one do you want choice over or all them preferences?
+Okay.
+What is self-evidencing?
+So we've talked in several other discussions about classical or Bayesian inference as self-evidencing.
+Like finding oneself in likely states, expected and preferred states.
+How is that different in active than other physics?
+That's like going from the bottom left to the bottom right.
+And then how is this different within active inference with this quantum integration and boost?
+Yes.
+Okay.
+What of asymptotic behavior?
+Yeah.
+So I think here it's the asymptotically perfect learning.
+Like what is a gauge theoretic perspective?
+I don't even want to open that can of worms at all.
+Yeah.
+Also, this is like the quantum formulation.
+The quantum formalism is background free.
+Space is simply an observable represented by a QRF that a system may or may not deploy.
+It can therefore play no ontic role in maintaining distinctions between systems.
+This reflects the general role of physical 3D space and quantum field theories.
+Space is there to enforce separability.
+C68 for general discussion from a gauge theoretic perspective.
+So like the space between is what?
+I'm going to put it in the video.
+I'm going to copy in a comment that Onda wrote in the live chat.
+Just anyone who asks questions, you know, just put it in live chat or put it as a comment under the video or email us.
+but it helps us and it's awesome questions that people ask okay we will definitely look at this
+before we do the one and so you you're welcome to join us get in touch if you want to participate
+live but um also like we will ask these questions if you leave them in the chat yeah okay let's go
+to close out almost kind of getting their applications to biological cognition um and
+then they wrote in this paper in addition to the results listed above the current framework
+so the paper we've been discussing has a variety of more specifically biological consequences
+some of which have been discussed already in citation 13. and here's citation 13 fields glaze
+brooke levin minimal physicalism as a scale-free substrate for cognition and consciousness and
+here's the sections of that paper and so it's just kind of cool to connect back to the basal
+cognition computational boundaries of a self discussion that we've been having live stream
+number 39 just today um and we also have uh neurons as hierarchies of quantum reference frames which i
+haven't read yet um that this was just published in january of 22 i think that was co-released with
+this paper so i'm i'm excited to read that work also awesome so yeah what are the biological implications
+okay um quantum frames for foraging so unique explanations and predictions it predicts for
+example that moving in ordinary 3d space does not require a qrf for euclidean space and hence does not
+require an experience of space so like the fish could swim without knowing 3d
+and then from a classical perspective okay so i guess that means non-fep or and or non-quantum
+this is certainly true evidenced by place and grid cells in mammalian brains etc
+and then what happens when we integrate fep in the classical well the coarse graining would then be
+mandated by etc etc etc we'll explore okay then what happens if we go from classical to classical fep and then
+now go from fep to quantum fep still thinking about like foraging or information seeking and processing
+okay contextuality we talked about that a lot in 17.1 but just what is context environment surrounding
+is this what people mean when they say set the context for the dinner party or give context for
+a video that they sent what is that everyday sense of context and what is this sense of context
+okay next steps so these are the last two lines of the paper and they wrote in closing we hope that we have shown to readers familiar with the fep and active inference framework that quantum effects are worth considering both theoretically and in experimental design for readers not familiar with the classical fep but literate in quantum theory or vice versa
+we hope this paper has gone some way to contextualizing your qrfs in sense making
+the markov blankets and their underlying holographic screens so this is like saying if you were familiar with either
+quantum not fep or classical fep or classical fep or maybe bottom left neither
+then this paper hopefully brought you towards that upper right corner of quantum fep
+and just like the classical classical way to end an fep paper was like we expect and prefer that this reduces your uncertainty
+this is like the classical quantum way to end the paper by saying we hope it's contextualized your qrf
+the clever ending to a very complex paper and
+it was really fun to work on this for a couple weeks leading up to these discussions and
+what else would you say as we now head into the dot one and two
+states is known to be known to be known to be known to be known to be known to be known to be known to be known
+
+
+We tried.
+Yeah.
+If you know more or would like to contribute to helping others know more about these topics,
+that's what we're working on all the time in ACT and FLAP.
+So if you've made it this far and you're riled up or curious about something,
+then get in touch and let's try to make all of this more handleable
+and able to be translated and learned and applied.
+Let's try to align our quantum reference frames.
+With respect to ACT-M.
+What else can we say?
+All right.
+So see you all soon.
+Thanks a lot, Blue.
+Thanks also, Jason.
+And thanks to everybody who will participate in the upcoming ones too.
+So see you later.
+Bye.
+Bye.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.

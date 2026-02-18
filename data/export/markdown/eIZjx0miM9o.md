@@ -1,0 +1,525 @@
+---
+title: "Active Inference BookStream #001.010 ~ "Governing Continuous Transformation""
+category: "BookStream"
+series: "BookStream_001"
+episode: "010"
+duration: "48:38"
+url: "https://www.youtube.com/watch?v=eIZjx0miM9o"
+views: 32
+exported_at: "2026-02-18T22:37:37.872487+00:00"
+format: markdown
+---
+
+# Active Inference BookStream #001.010 ~ "Governing Continuous Transformation"
+
+Hello and welcome. It's March 14th, 2023, and we're in Acton Bookstream 1.010. Off to you, Blue.
+Hi. Today we are going to be discussing this Governing and Continuing Transformation book.
+We're moving into the third and final section of the text. And so we're going to kick it off today and next week, and we will wrap up our discussion of the book over these next couple of weeks.
+So we are the Active Inference Institute, a participatory online institute that is communicating, learning, and practicing applied active inference. These are all of our social media links.
+This live stream is recorded and archived, so please provide us with feedback so that we can improve on our work.
+All backgrounds and perspectives are welcome, and we will be following good video etiquette for live streams.
+If you would like to get involved in this project or any of the ongoing projects at the institute, get in touch. Reach out at activeinference.org.
+I think we're actually active inference.institute now, too, so either one works.
+Okay, so we are in the 10th chapter of this Governing Continuous Transformation book.
+We're going to actually discuss chapters 10 and 11 today.
+This final section really is just a conclusion and wrap-up of the information that's been presented in sections 1 and 2.
+So we can just introduce ourselves briefly.
+I am Blue Knight, an independent researcher in New Mexico, and I will pass it off.
+Hi, I'm Tyler. I'm a DAO researcher and particle designer in California.
+I'm Daniel.
+I'm Daniel. I'm a researcher in California.
+Cool. Okay.
+So doing this third part, the conclusion part, the chapters today.
+So chapter 10 is really just an abstract, which we'll read, and then it's like a giant table summarizing the free energy governance model versus traditional corporate governance.
+And so we'll just cover that and just summarize how these are the same and different.
+And then we'll get into chapter 11 and some of the content, the conclusion content that is presented there.
+Okay.
+Tyler, do you want to read this one for us?
+And I'll take the next part.
+Sure.
+So through the lens of the theoretical concepts developed in this book, FEG and traditional corporate governance, PCG, are assessed in a comparative perspective.
+PCG models are predominantly characterized by a compliance mentality centered around board effectiveness as a matter of managing agency conflicts of interest through optimizing stereotypical board diversity, enforcing director independence.
+So this is the real skill to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this is to make this
+this second part. Public policy prescribed best practices guiding corporate governance is an
+anachronism of modern business, reinforcing upper echelons risk aversiveness, i.e. compromising
+epistemic foraging, and consequently entrapment in the incapacitating perception of the world
+as volatile, uncertain, complex, and ambiguous, or VUCA. Free energy governance embraces any
+dimension of VUCA as information rich input for top-down bottom-up prediction error minimization
+in pursuit of minimizing surprise. An over-reliance on CEO framed information flows and analysis which
+is so characteristic of traditional corporate governance is as good as flipping a coin.
+The very processes that explain success equally breed failure.
+And this table 10.1, there's a little bit in the chapter, but this table 10.1 is like one of the
+very few figures or tables presented in the entire text, if not the only one. And here we can just
+see like there's three columns. The first is the logic, and then the second is free energy governance,
+like how it relates to that logic. And then the third column is traditional corporate governance,
+and how that relates to the logic. So for example, so here the structure or hierarchy is the logic
+where the free energy governance method is top-down bottom-up, top-down belief propagation and bottom-up
+message passing.
+In circular causality, unidirectional upper echelon belief propagation only. So there's not that
+bi-directional information flow. And the process for free energy governance is generative or continuous
+and traditional corporate governance is static or agenda-driven. Capabilities are metadynamic,
+cognitive in free energy governance and operational or domain-centric in traditional corporate governance.
+And then the traditional corporate governance is task-positive network-centric. So this is interesting
+to me. Like I thought that when we were talking about these neural networks, it was really like the
+conjunction of the two networks that I thought was characteristic of free energy governance as
+opposed to like one neural network being more dominant than another. Did you guys get that too?
+Or is this like, I don't know, to me, like, I think that this is kind of like weird. This took me by surprise.
+I think when they say like DMN-centric, they're not saying that one is limited to free energy governance or
+for TGG. They're just saying that there's more of an emphasis on this kind of exploratory default mode
+processing with free energy governance. But you still like have to, you know, switch between explore and
+exploit or actually not switch between but pursue them both simultaneously. And so both are happening in
+parallel is my understanding at least. Yep. Agreed with that, Tyler. And also, is it the case that the
+normal operating function is task oriented and then we pull back to review? Or is it the case that we're
+pulled back in review and then we drop into the task? That's like DMN-centric, but in both cases,
+you still would want the effective oscillation.
+And then the learning for free energy governance is double loop learning and single loop prevails in
+the traditional corporate governance. And then there's different performance metrics and performance
+variables and corporate purpose, which I don't know that we like got too into that.
+And then the text, like this is kind of maybe, it was like lacking. So I was surprised to see this here,
+the corporate purpose. So he says, in free energy governance, it's existential and axiomatically
+integral to the free energy minimizing governance mandate, like the purpose is that, where in traditional
+corporate governance, it's diffuse and opportunistic with no relevance to governance. So maybe I like just
+skimmed over that or like blanked it from the text, but this is like,
+Yeah, it was from like the very, the very first chapter. So this is like, you know, what, 13 live
+streams ago that they're just linking like corporations want to survive, linking that very much into
+like calling out the corporate purpose is to survive and continue on.
+Cool. So then the second part of this table, we talked about strategic and financial control, like the
+dual mandate management in FG, where traditional corporate governance is focused on financial
+environmental engagement. We talked about in free energy governance as an act with traditional corporate
+governance is adaptation, digital transformation, which is like, that's interesting. Like, it's an
+interesting logic, like the logic of digital transformation, where FG is holistic, wholesale
+reinvention and traditional corporate governance is selective transformation or domain specific.
+But like, I'm like having a hard time relating to this digital transformation logic.
+I don't know if you guys are going to shed more light on that.
+I think what he potentially might mean is like, say that you're a business that like
+sells something and like, so you sell it over the counter, right? The selective transformation would
+be like, okay, well, now we have like a web checkout flow. But the digital, like the wholesale reinvention
+could be like, you know, using AI to take your bottoms up input to transform those into top down
+predictions, right? Like really doing something fundamentally different with your digital tools,
+rather than just like mapping physical processes into a digital model, is my understanding.
+And then strategic renewal is autonomous under free energy governance, proactive,
+and it's like this dual information flow again, where in traditional corporate governance,
+it's induced or reactive top down mandates driven by belief propagation.
+Laurence M. The machine learning logic.
+Laurence M. I thought this was cool.
+Laurence M. Maybe, I don't know, maybe Daniel wants to speak more to this.
+Laurence M. As we've been talking about the need for free energy minimization in active
+inference or not. So the machine learning logic in free energy governance is optimizing
+the principle of least action to resist dissipation in order to persist.
+Laurence M. In traditional corporate governance, it's like supervised or rule based,
+maximizing predetermined reward functions. I don't know, Daniel, do you want to speak
+any more to that? Just as you, I know you've been like thinking about it.
+Daniel C. Okay. The first thought was free energy bounds,
+surprisal. We would minimize our surprisal if we had the perfect generative model.
+So minimizing surprisal is like having the most model evidence. And we're going to
+bound surprisal with free energy minimization. And so in this machine learning logic,
+it's almost like we're going to bound our surprisal so that we can persist and thrive in our niche.
+On the other side, it's almost like we're going to be following best practices and compliance,
+getting to the governance mandate below. We're going to be bounding and staying within lines
+on all of the checklists and then question mark, question mark, question mark,
+we will have impact in the niche. Whereas in free energy governance, surprisal minimization slash bounding
+as a first imperative ends up taking on some of those outcomes that under the traditional corporate
+governance column would be seen as consequences of reducing mismatch with compliance and regulation.
+Amy Quinton, Ph.D.:
+Cool. Thank you.
+Amy Quinton, Ph.D.: And then finally, the final item in the table, the logic is the governance mandate
+under free energy governance is continuous strategic renewal, firm outperformance and firm survival.
+Amy Quinton, Ph.D.: So like optimizing governance and operational coupling,
+environmental enactment and dynamic duality management of exploration exploitation, as well
+as financial and strategic control, all powered by inactive inference.
+Amy Quinton, Ph.D.: And then traditional corporate governance is regulatory compliance,
+board effectiveness, firm performance,
+Amy Quinton, Ph.D.: By monitoring, advising, challenging, boundary,
+spanning networking, all guided by CEO centric and principally upper echelon dominated frames.
+And so this like table in a nutshell, like really sums up a lot of the concepts that we've
+discussed throughout the text and what we are kind of looking for in this new governance model.
+Tyler, do you want to read the first half of this abstract for chapter 11?
+Tyler, Ph.D.: So how can one possibly redefine the board strategic meta-role when traditional
+governance modes are ridiculously entrenched in cognitive capabilities so poorly developed
+or non-manifest? To be practice relevant, theory must be intuitive and inspire upper echelon
+questioning. It's very happens in mind. You can see strategic renewal is continuous and during the
+process of top-down predictions, bottom-up stimuli, surprise minimization urges upper echelon to
+consequently optimize the multi-intelligence sources of stimuli, redesign processes as well as incentive
+structures, develop a new language to empower an active inference. Indeed, to date, corporate
+governance research and practice are more concerned with defining behavioral responsibilities rather than
+addressing its very capability needs.
+Tyler, Ph.D.: Thanks. I'll take the second part. There is no one-size-fits-all best practices catalog,
+but FEG's nexus of structure, cognition, and capabilities provides the building blocks for
+fundamentally new governance logic. In a discontinuous world, the essential governance challenge is to
+ensure the self-organizing optimization of top-down, bottom-up prediction error minimization,
+learning to infer. Once we embrace FEG as a novel organizational framework and early detector of
+firms' impending entropic decay, we must reckon that unless replaced with an FEG-inspired logic,
+traditional corporate governance is likely to continue relegating the board of directors to
+strategic irrelevance, reinforce financial control at the expense of strategic control,
+prioritize top-down content over top-down, bottom-up processes, cultivate inertia, and inhibit the full
+growth and survival potential of firms as self-organizing systems.
+Tyler, Ph.D.: This chapter had some sections in it that I just tried to summarize here. He talks about
+the dimensions of the theory and the relevance. He says, the relevance of theory to the practice of
+strategy management and governance is essentially determined by three dimensions. Theory must first be
+intuitive as well as problem or opportunity driven. Second, establish new metaphors or give new meaning
+to existing language that empowers purposeful sensing, sense-making, and strategic renewal.
+And third, inspire upper echelon questioning its very habits of mind, i.e. provide a new and enriching
+perspective around doing things differently.
+Tyler, Ph.D.: And this, like, I brought up the theory particularly because, like, what's not here
+in the dimension of, like, a theory or, like, the relevance of theory to the practice of strategy
+management. And, like, I don't have any background in this, so maybe, Tyler, you want to say some more
+about it. But, like, I feel like the relevance of theory to the practice of strategy management, like,
+for me, what's missing through this text and, like, we get, like, I think we're getting a little bit more
+into it now and we've uncovered it, but it's, like, not very obvious. It's, like, how do you find a
+practice that's grounded in this theory? Like, what are specific practices that this theory is imploring
+us as a firm to do? So, I don't know, Tyler, do you want to speak maybe to that and just in terms of
+strategy management overall? Like, do all theories do that or am I just, like, where is the hard evidence?
+Maybe I'm just being a stickler.
+Tyler Lundgren- Well, first off, like, a good grounding in, like, economics and corporate
+theory is that most of it is wrong, like, completely bullshit. Like, a lot of, like,
+even, like, microeconomics theory is, like, totally debunked, never was correct in the first place.
+And so, there's a very low bar for, like, having a good theory, like, economics or corporate governance.
+With that said, like, I'm trying to think of what makes free energy governance, like, different to
+process than, like, other kind of businessman theories from the past. And, like, usually with other
+business management theories, like, there's do these 15 steps or here's your best practice guide
+to what this looks like. Whereas with free energy governance, it's, like, not that at all because
+it has to be receptive to your environment. So, it really demands, like, a spiritual embodiment of
+these principles to, like, really do or even understand at all. Like, it really is, like, a spiritual,
+I keep coming back to that, like, that's what it feels like. And you have to, like, really own this,
+internalize it for it to be used. Whereas, like, you don't have to understand, you don't have to
+feel that with anything else in economics or corporate governance, you can just, like, follow
+the steps. But here, like, a lot of the same things we talk about, you know, free energy governance are
+the same ways we talk about, like, creativity, for example, and a lot of, like, spiritual practices.
+It's, like, a very, like, receptive, dynamic environmental practice, which, like, you really can't just put down to a
+series of concrete steps. And so that's why I feel like I think this is both so powerful and also so
+frustrating at the same time, because it's just, like, it's, like, how do you be creative? Well, like,
+I don't know, like, this is something you figure out by in conversation with your environment, right?
+It's the same thing with free energy governance, like, the most powerful things you can get from
+this theory, no one's going to, like, be able to directly teach you. You have to kind of just live it.
+So, yeah. So calling this a theory is, like, even though it is grounded in, like, hardcore maths,
+at least for, like, the way a lot of, like, business people, including myself, will practice it,
+does not feel that way at all. It feels much more of, like, a spiritual, like, mindset.
+And that's very new for, like, a lot of these kind of... I've had an experience that before in a business context.
+I'll give a few other notes. Thank you, Tyler. Very interesting. The first point that theory
+should be problem or opportunity oriented. I think, Blue, that's where we would feel like we were
+getting our hands dirty with the theory. And free energy governance gives a continuity between what
+might be happening in the analytics department with the actual generative models and in the communication
+department and the tools they use and in the boardroom. Whereas one thing that we could say about
+the traditional corporate governance theories is whether they were more mindset-based or more
+behavioral and practice-based, their limitation in relevance was that they were doing these three points,
+but then what would the work actually be about? What would the machine learning engineer actually be doing
+something totally ad hoc? So there's always this, like, disarticulation between the narratives and the
+values and the broader purpose of the organization and then the implementation. So here we're coming from
+the upper echelon to the front line and part of FEG is I think that by being imbued in theory,
+even if this book was not heavily equation or simulation based yet, it can provide a continuity
+within the organism within the corporation.
+So I like here that you brought in spirituality, Tyler, and I'm sorry, like, it says my internet
+connection is unstable, so I'll apologize in advance if I'm cutting in and out. But I like how you brought
+in spirituality to this and also creativity because here it's like the job of the theory is to inspire
+upper echelon, like questioning their own habits, right? And so, like, in this way, it's very, like,
+it's like a koan, right? Like, like, it's like, you know, some puzzle that you sit down to just, like,
+think about and solve and reflect upon. So, like, the job of the theory is to be, like, a spiritual
+koan, like, to just think about it. And then, secondly, like, the creativity part, you're talking
+about creativity, Tyler, and also, like, interaction with the environment, like, the, what it's brought
+about literally by, like, interacting with the environment. And there's a really cool book that I
+don't know if either of you guys have read or heard about. It's called The Artist's Way. And,
+like, literally, it's just, like, a series of tasks that, like, get you into your environment so that
+you're, like, inspired to be more creative. It's, like, a series of just, like, it's in its own way,
+like, its own riddle or puzzle to be reflected on. And that's what they lead you through in that book.
+So it's just...
+And that's actually, that's actually why I mention it, because I'm simultaneously reading The Artist's Way
+and also Rick Rubin, he's, like, famous producer, he just released a book about creativity. And,
+like, the way that they were talking about creativity in both these books is very much about, like,
+bottoms up sense making and, like, listening to your environment. I was like, wow, like, a lot of
+even, like, the language is the same with free energy governance, because, like, at some level,
+we're talking about, like, the same thing. And so it's just, like, again, that's one of the things I
+love about free energy governance is that it is so broad and can encompass all these different
+disciplines from creativity, corporate governance, you know, ant colonies, whatever.
+Just a few short notes. Receptivity is not passivity. It's the opposite. It's the sentient
+engagement and the receptivity with the generative process that fine-tunes our generative model so that
+we can be who we expect and prefer to be. So receptive and engaged with the niche does not mean
+sitting back. That's probably been clear. And then also, the framework shouldn't be providing specifics.
+I know that's a normative claim, but it's like if somebody said, I have a linear regression machine
+and it always comes up with positive linear aggressions, it'd be like, well, let's maybe
+separate that. Let's have the neutral linear aggressor and then we can have a second-order
+preference for ones that are positive or let's filter out the ones that are positive only. So, in a way,
+because it is a framework or a theory for this strategic renewal discussion, which is the positioning
+of the book, it is at a level above any specific practice because just like you couldn't say, well,
+a wing or a tooth or a poison is like simply a high-fitness adaptation of an organism outside of
+its context and niche, there's no practice or any pattern that would apply to all different organisms
+or organizations in their niche. So, the discussion had to be moved back to this not ultimately neutral
+space, in fact, a very principled space, but one that gave the expressivity to then specialize
+according to the dimensions that we basically looked at in the parts of the book and in this table from
+today.
+Awesome. Thanks. Okay. So, moving on from the dimensions of theory, I think Bijan goes through
+like a very good summary of like all of the things up until this point, I think. So, he says,
+free energy governance provides rich and new meaning to existing concepts and establishes new relationships.
+First, top-down, bottom-up prediction processing is applied to strategic management and defined in
+form of a generative process. Integrating circular causality, in circular causality, top-down belief
+propagation and bottom-up message passing in pursuit of one objective, minimize surprise to resist entropy
+to persist, powered by one first-order principle of least action, i.e. free energy minimization. A
+purpose-directed firm is the foundation for free energy governance's top-down, bottom-up circular causality
+to come and stay alive. And he goes on to say in this same context that upper echelon communication is
+centered around four dimensions, dynamically linked in FPG's circular causality. Purpose, prediction models,
+predictions, and stimuli. The simplicity and plasticity of the language are critical to ensure
+that reach and inclusion of team members are optimized. More importantly, firm members must be
+incentivized to stimuli challenge predictions. Underlying prediction models, according to the
+first-order free energy minimization principle, will self-evidently evolve by the way of unsupervised
+self-organization. And he refers back to the structure, cognition, and capabilities that we've been
+linking through this entire text. So this I like, but I'm not sure how to...
+I'm not sure how to do that. Right? Like, how do you make language simple and plastic to, you know, ensure
+optimal reach and inclusion, inclusivity? I don't know if you guys have thoughts on that. Like, I'm like, where
+are my step-by-step procedures that I'm supposed to follow to make this happen?
+I think there's many angles on it. Just a few comments. One, a starting point would be making
+sure that the language are in the native or preferred tongue of that person or augmented entity. So
+having the active inference ontology translated into multiple language is one first step. But then there's
+some second-order considerations about still using language. And then the self-organization. I thought,
+well, just pouring water on a mountain landscape, the water is going to self-organize, but it might not
+follow the path of least action to organize the way you want. Okay, so then you modify the generative
+model or the generative process and you put a ditch here and a wall here. And again, it follows a path of
+least action and it self-organizes given the constraints. So it's like a combination of
+whatever will be, will be. However it unfolds is how it is going to unfold. We can't really
+descent from that level of tautology. However, that is the space which modifications of the niche and of
+the generative model can then self-organize to be whatever it will be.
+That speaks a lot too to the receptivity and action or interaction. Active inference is interactive
+right with the environment and the niche. The inability to separate those things.
+Okay, so he says, so this is back here, free energy governance provides rich and new meaning to existing
+concepts and establishes new relationships. So this is another one of the new relationships that Bijan
+claims. He says, enactment coined by Carl Wick and astutely applied by Smirchich and Stubart to
+strategy process has conceptually inspired free energy governance. And he goes on to say,
+enactment is redefined as an active inference. Essentially, free energy governance is liberating
+upper echelon from the overwhelming cognitive distortion that their biggest challenge is
+taming or taming uncertainty when instead they should be really surfing it. And like this is kind
+of these cool two references he throws in here. Unless environment is redefined as a purpose directed
+and action centric generative prediction challenge in the form of prediction error minimization,
+firms will continue being incapacitated by the faithful pursuit of adaptive fitness. More importantly,
+redefining strategy as top down bottom up predictive coding lays the foundation to optimally leverage and
+co evolve the human machine potential cognition. I don't know if you guys have comments here on this,
+or we can move on if not.
+Okay. And then the third relationship that Bijan describes is he says, dynamic board capabilities in
+the form of duality management are an entirely new genre of upper echelon capabilities that
+FEG establishes. He goes on to say that inactive prediction processing becomes manifest in duality
+management in the form of balancing financial and strategic control as well as exploitation and
+exploration. Duality management is all about probabilistic resource reconfigurations in superposition
+waiting to be enacted. Duality stewardship is FEG's essential governance mandate. And then he continues
+later. The R&D or research and development percentage share of total revenues is potentially a good
+indicator of a looming financial control trap. Within each industry, there is a rough percentage benchmark
+for R&D investment for organic reinvention. Once a firm operates year on year below industry R&D
+investment standards, financial control is likely to be the only control left and describes that as the
+capabilities. And so here, like I really appreciate the section of the book because I think that we're
+starting to get some good, like how do we know if we're minimizing free energy? How do we know if we're
+adapting free energy governance? Like what are we doing a good job? What are the benchmarks? Like
+these are the kinds of things that I'm looking for. And so here, I liked this, like you have to be
+investing at least the minimum industry industry standard into research and development to ensure that
+like that's you're doing the strategic part and not just like going for financial exploit exploitation.
+Like the R&D is the exploration part. And so I thought that this is kind of a concrete application
+of what we've been looking at so far. Daniel? Yes, thank you. The superposition, it's a quantum
+shout out and it made me think about some tasks that needs to be done. We need to vectorize some images
+and then print stickers. There's a superposition of plans. We could upskill, we could hire somebody,
+we could acquire the company, we could do all of these different plans, including crossovers with
+the different plans. And those pure plans, maybe in their extreme form, are never even on the table.
+But the organization can think of its strategy as this mixed state that is truly quantum and it's doing
+like quantum optimization over those pathways, maybe not even needing to brute force through them,
+but rather just letting the quantum annealing work its magic. So that's one interesting. And then the
+other piece is, like you mentioned, Blue, once the firm is below a critical point in its research and
+development, only financial control is left. And so it's almost like, if there's still wiggle room to turn
+left and right, it's still a very maneuverable car. But if you're in a position where only one of those
+sides wiggle can only happen to one direction, like, okay, well now we need to be cutting costs.
+That's our only degree of freedom is cutting costs now. It doesn't even say that's not going to be a
+functional strategy, just that that is on that pathway to entropic decline, because by having a
+reduction of affordances, you are on the pathway to the ultimate reduction of affordances, which is
+the failure to persist. And as long as you have options on the table and the expectation of future
+options on the table, if not more, you're in the game of persisting.
+Well, thank you for those thoughts.
+Okay. Bijan says, how to make it all work in practice is a daunting task. There is no best practices
+catalog. First of all, best practices should be considered a potential source of inertia. Like,
+throw those things out the window. We don't need them. We need first principles to empower structural
+organization, formal and informal throughput, environmental engagement, and capability to foster
+self-organizing processes. Free energy governance does exactly this. And Tyler, you had spoken
+earlier to like the throwing away best practices also, or like there is not enough to do that here
+in free energy governance. So we don't have a 15 step book.
+But though it's also the case too, if you like make this analogy between like free energy governance
+and creativity, spirituality, like it's always the case where they can't say like, okay, here's all of
+these steps. And this is exactly how it's going to work out for you. But I think what's effective
+a lot of times to say like, Hey, well, this is what doesn't look like. Like, for example, if you find
+yourself kind of enslaved to your addictions, for example, you may not be on like the spiritual,
+the spiritual path, or you may be kind of like off course a little bit, right? So there are things
+that you can point to say, okay, well, I can't say define what it is, but I can define what it isn't.
+And I think we have some like good clues to that from this book, even though it might not be as
+prescriptive as we might like.
+All right. And speaking of persisting, I wanted to, I almost wanted to like skip to the slide
+directly. Like, why should this business exist and prevail in the first place? Like Bajan asked this
+question in the middle of the book. And like, I don't know why do any of us exist or prevail in
+the first place? Like, we're all just hanging out minimizing free energy, taking the path of least
+action, I guess. It's just interesting, like, why do you exist and prevail? And he encourages people to
+like, ask themselves this, as part of like, the governance mandate? Like, why should we exist
+and prevail? For what? For what reason? I think that's always a good question.
+Yeah, one thought on that. We can always take the, how did things come to be question, and just whether
+we take that descriptively or as a mystery. But given where we are, or how we recognize ourselves,
+it's a little bit like a stay or leave question. We can stay on our path of least action,
+or we can push the trim tab a little bit, push the rudder a little bit, and then be on a different
+path of least action. So again, we don't get to dissent from being on a path of least action,
+but we have affordances, which are our space of local adjacencies. And this claim, as I think
+you're pointing to, it's something that the individual employee could ask themselves. It's something
+that the team could ask themselves, or the department, and the organization. And maybe
+the organization's level conversation is happening in the boardroom for certain kinds of organizations.
+And it's like, should we make the next six months look a lot like the last six months? Should we pivot
+in this direction, or should we just shut it down? And having a space for those kinds of multi-level
+questions and meaning finding, I think part of the subtext is that's not a waste of time. That's not
+a distraction from the work itself. This is like the fountain that the work performance or alignment
+on any given scale actually flows from.
+Adam Werner 1 Yeah, just to add on that, I think the context of this book has been
+like large corporations that there's like a legal mandate for this thing to exist and for you to
+like meet the obligations of your people who are financing the business. Whereas like there might be
+more of like lifestyle businesses you might have, or there might be a nonprofit or something where like
+the free energy governance mandate to like survive at all costs may not make as much sense. Like maybe
+this business organization is more of an extension of like your personal passion, rather than being
+this own entity that needs to survive on its own terms, right? So I think it's also important to
+reflect like, okay, like free energy governance is this useful frame for thinking about it. But like,
+am I really trying to create this larger entity that exists independently of myself? Or is this,
+like what am I actually trying to do here? And is this a relevant framework?
+Adam Werner 1 One other thought on that, with the organism, organization conversation in mind,
+are we a seasonal grass? Are we a 17 year cicada? And then have that conversation, even if that's
+playful or in the beginning stages of team formation or of DAO formation, so that if some people think that
+they're going to be building the 100,000 year Arctic vaults and some other group of people think that
+they're doing a one-time concert, that those can be like recognized and integrated in a way that isn't
+just as much of just like keep things going, which is how maybe this question can seem at first pass,
+that it's just about existence and prevalence. But existence and prevalence in the biological
+space is so rich and complex that it would make sense, it would be that way for organizations too.
+Definitely. Okay. And then here, Bijan quotes like, and this is part of a long quote, and we're going to
+carry over these over across the next two slides. But he says, Jan Stahlberg's practice relevant
+statements from Stahlberg 2021, the reference, if anybody wants to look it up concerning transparency,
+communication, and reaching out to the bottom should inspire management practice.
+The first of these statements is everyone is informed in real time about everything. And then
+Stahlberg goes on to say, I believe looking at some of the core propositions of free energy governance,
+this is free energy governance, connecting top and bottom in circular causality of sense making
+with the least friction and optimal response time. So this is like something that I've wondered about,
+like, how do you prioritize information flow, top down, bottom up belief propagation and message passing.
+And like, they're saying like, full transparency, everybody knows everything all of the time. And that to
+me was kind of like mind blowing, because it's not how I would ever think to run a company like not at all.
+Daniel? Okay, I hear you on that. I have a slightly different reading here.
+Um, I'm just imagining starting with this agreement, wherever you are, there you are. So whatever you're
+informed about, that's what you're informed about. Whatever your situational awareness is, that's what it
+is. And then that's the part that's been infuriating. There's no suggestions for who should be in what
+messaging channel or who should be on what email thread or who should be in what video chat.
+But whatever we do decide with the chats and the emails and the meetings, that will be your local
+message passing, your information environment, your capacity of for inference and action. So I don't
+think this means that every single employee or contractor has the full dashboard. I think everyone's
+dashboard is respected, though, as their dashboard, which helps bring the discussion to like, what
+function, what accessibility do they need, and so on.
+Daniel? Yeah, I think this is part one, but John was talking about a management theory called like
+open governance, I think it was called, which is like the extreme version of everyone knows everything
+all the time. And he was criticizing that because he was saying, well, if you give everybody all the
+information all the time, that doesn't necessarily give them tools for making meaning of that, or
+having that be relevant to like their specific context. So I think what he's implying here is like,
+yes, like you give everyone access to information as well as tools for processing the information and
+like a locally relevant way. I don't think he means just like pure chaos information dump,
+but could be reading into it.
+Daniel? Okay, blues pause, but I hear you on that father.
+Cool. I think her internet may have cut out.
+Yes. Cool. What other parts have you found interesting so far? Oh, there you go. You're back blue.
+Maybe you can disable your video.
+I'm going to.
+I'm sorry.
+I'm going to.
+Link.
+You can disable your video blue.
+I want to give a thought on some synchronous and asynchronous things, but you never really know
+when it will be now and real for blue, but we're in a different now and real moment, Tyler.
+I think she's back. I think she's back in, in our now.
+I think I got it.
+Okay. Continue blue. Thank you. It was, it was fine. It's all fine.
+Okay. Um, okay. So, um, this is again, to continue quoting Stelberg value creation in my experience has
+been usually determined by a combination of the following governance imperatives. First, you must
+start with a clear purpose and long-term goal. Prepare to invest for the long-term and into
+structure. Second, you need to continuously question yourself. Paranoia is key. Third,
+team decisions are critical. Create a culture that empowers and encourages people to contribute,
+to take decisions and not to be risk averse. In summary, it really comes down to three things,
+communication, transparency, and respect. Um, and so like reading this whole quote in context is kind
+of what made me think that like, they're encouraging open channels of communication,
+everything flows to all the people all the time. Um, but that was just, it might not be, um, the read,
+the correct reading. Um, and, and I do think that in more in what you're saying, Daniel, like you have
+your information channel and like you live in that river and like, that is where everything comes to you
+in real time and whatever, like you're just in the river that you can sense me about, right? Like you don't
+necessarily need to be in the ocean when you live in a river. Um, and then that makes more sense to me
+in terms of, of information flow. Um, do you guys have more thoughts here on value creation?
+Transparency, respect, communication? No? Okay. Um, all right. So,
+So, Bajan says, the essential governance challenge in a discontinuous and
+distributive world is now a matter of setting free the self-organizing optimization of top-down,
+bottom-up prediction error minimization, learning to infer. The firm is the generative model. The
+continuous nature of strategic renewal makes prediction modeling as well as prediction error
+minimization an integral and direct default modes network-centric dimension of traditional monitoring,
+advisory, and boundary-spanning board responsibilities. Effectively, in the absence of board-level
+meta-capabilities as developed in this book, the board can no longer fulfill even its most basic
+and traditional responsibilities. Um, and I think that maybe Bajan here is calling out like
+the discontinuous nature of the world and how like disruptions are regular, um, and like things move
+fast. Like change is always happening and, um, you know, the board needs to get on board or not. Um,
+but that's the wrap up of this chapter. Do you guys have any thoughts on this?
+Well, one thing is whatever is working in the niche today, if you expect the niche to remain the same,
+you can keep your strategy the same and it will be the same. However, biological ecosystems have
+variability and patterns over different timescales, and also organisms and organizations develop.
+So it'd be like saying if the two-year-old baby can't fulfill its meta capability to learn and to change,
+it will eventually no longer be able to fulfill even its most basic and traditional responsibilities.
+And so that is where we start to see general claims about system operation and development and
+evolution and potentially the ways those are linked in the FEP with the kinds of conversations that today
+can happen by differently framing the upper echelon frontline dialectic.
+Cool. I think that that's it. So we're gonna get in next week to discuss the last two, um, sections of the book and then hopefully bring
+Bajan and maybe you, if you're interested, anyone else who's interested in maybe discussing this material,
+hopefully we'll get some new voices and perspectives. Um, that would really be great.
+So thanks guys. Nice to see you.
+Thank you. Bye.
+Bye.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.

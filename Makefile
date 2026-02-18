@@ -1,4 +1,4 @@
-.PHONY: help install install-dev clean test lint format db-start db-stop transcribe fetch-coda import-sessions fetch-metadata copy-to-journal extract-entities
+.PHONY: help install install-dev clean test lint format db-start db-stop transcribe fetch-coda import-sessions fetch-metadata copy-to-journal extract-entities enumerate-channel download-transcripts download-audio download-video download-all
 
 # Load .env file if it exists
 ifneq (,$(wildcard .env))
@@ -31,6 +31,13 @@ help:
 	@echo ""
 	@echo "Entity Extraction Pipeline:"
 	@echo "  make extract-entities - Extract entities from transcripts (Cohere AI)"
+	@echo ""
+	@echo "YouTube Channel Download:"
+	@echo "  make enumerate-channel    - Enumerate all videos on the channel"
+	@echo "  make download-transcripts - Download transcripts for all channel videos"
+	@echo "  make download-audio       - Download audio (MP3) for all channel videos"
+	@echo "  make download-video       - Download video for all channel videos"
+	@echo "  make download-all         - Download transcripts, audio, and video"
 
 install:
 	uv sync
@@ -93,3 +100,23 @@ extract-entities:
 		exit 1; \
 	fi
 	. .venv/bin/activate && python -m journalrag.main
+
+enumerate-channel:
+	@echo "Enumerating videos on the Active Inference channel..."
+	. .venv/bin/activate && python scripts/download_channel.py --enumerate-only
+
+download-transcripts:
+	@echo "Downloading transcripts for all channel videos..."
+	. .venv/bin/activate && python scripts/download_channel.py --transcripts --resume
+
+download-audio:
+	@echo "Downloading audio (MP3) for all channel videos..."
+	. .venv/bin/activate && python scripts/download_channel.py --audio --resume
+
+download-video:
+	@echo "Downloading video for all channel videos..."
+	. .venv/bin/activate && python scripts/download_channel.py --video --resume
+
+download-all:
+	@echo "Downloading transcripts, audio, and video for all channel videos..."
+	. .venv/bin/activate && python scripts/download_channel.py --transcripts --audio --video --resume

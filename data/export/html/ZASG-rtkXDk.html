@@ -1,0 +1,5365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #051.0 ~ “Canonical neural networks perform active inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #051.0 ~ “Canonical neural networks perform active inference"</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_051 &middot; Episode 0 &middot; Duration: 1:22:11 &middot; Views: 383</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=ZASG-rtkXDk">https://www.youtube.com/watch?v=ZASG-rtkXDk</a></div>
+<article>
+<p>All right.</p>
+<p>Welcome. It is ActInf livestream number 51.0. This is the background and context first discussion for Canonical Neural Networks Perform Active Inference by Isomura et al. It's October 26, 2022.</p>
+<p>Welcome to the Active Inference Institute. We're a participatory online institute that is communicating, learning, and practicing applied active inference. You can find us at some of the links on the page.</p>
+<p>This is a recorded and an archived livestream, so please provide us with feedback so we can improve our work. All backgrounds and perspectives are welcome and will be following video etiquette for solo livestreams.</p>
+<p>Head to activeinference.org to learn how to get involved with Active Inference Institute projects.</p>
+<p>Today, it's the first of several discussions that we'll have on the paper, Canonical Neural Networks Perform Active Inference, 2022, by Takuya Isomura, Hideaki Shimizaki, and Carl Fristen.</p>
+<p>The video is just an introduction to some of the ideas. It's not a review or final word. There will be an overview of the structure of the paper, and then we'll go through many of the key points.</p>
+<p>Also, just to disclaim, there's many, many other and better resources to learn about neural networks. So I would very much welcome those with a technical understanding of neural networks and or some of the more applied computational or otherwise aspects of neural networks.</p>
+<p>It would be awesome to have them on for the dot one and dot two because it was not an area I was familiar with.</p>
+<p>And so hope that I can hear more from the authors in our coming weeks and others.</p>
+<p>I'm Daniel. I'm a researcher in California, and this will just be a solo dot zero, which I guess hasn't happened in a while.</p>
+<p>So, in the making of this, here's some of the generated art prompts. Area 51 active inference, Area 51 neural network, Area 51 active inference, and Area 51 active inference neural network.</p>
+<p>Just some interesting images coming out of stable diffusion.</p>
+<p>So as to some big questions that the paper is addressing and that one might be interested in to come to the paper.</p>
+<p>How can artificial neural networks be understood as generic optimization processes?</p>
+<p>And what is the correspondence between neural dynamics and modern statistical inference methods?</p>
+<p>Other big questions are about the history and next steps of the enmeshment of natural intelligence,</p>
+<p>e.g. neuroscience and artificial intelligence, as well as, of course, whether to even play into this kind of distinction at all and have different integrated intelligence frameworks.</p>
+<p>And one paper where any of the authors or anyone who has kind of resonated with this work is recent by Zador et al, 2022,</p>
+<p>Towards Next Generation Artificial Intelligence Catalyzing the Neuro-AI Revolution.</p>
+<p>And so this is a bunch of authors. And so it's interesting just to quote in terms of what some areas of discourse are saying right now,</p>
+<p>which is neuroscience has long been an important driver of progress in artificial intelligence, AI.</p>
+<p>We propose that to accelerate progress in AI, we must invest in fundamental research in neuro AI.</p>
+<p>So that's one way to lead some of the developments that are happening in the paper we'll discuss.</p>
+<p>What does it mean to be particular but generic?</p>
+<p>That's a phrase used in the paper. So maybe that's kind of a jumping off point.</p>
+<p>And then how can active inference help us understand the past, present and future?</p>
+<p>Here of the interface with neural networks, statistics and neuro AI.</p>
+<p>Here's the abstract.</p>
+<p>This work considers a class of canonical neural networks comprising rate coding models,</p>
+<p>where neural activity and plasticity minimize a common cost function.</p>
+<p>And plasticity is modulated with a certain delay.</p>
+<p>We show that such neural networks implicitly perform active inference and learning to minimize the risk associated with future outcomes.</p>
+<p>Mathematical analyses demonstrate that this biological optimization can be cast as maximization of model evidence,</p>
+<p>or equivalently minimization of variational free energy, under the well-known form of a partially observed Markov decision process model.</p>
+<p>This equivalence indicates that the delayed modulation of Hebbian plasticity accompanied with adaptation of firing thresholds is a sufficient neuronal substrate to attain Bayes optimal inference and control.</p>
+<p>We corroborated this proposition using numerical analysis of Bayes tasks.</p>
+<p>This theory offers a universal characterization of canonical neural networks in terms of Bayesian belief updating and provides insight into the neuronal mechanisms underlying planning and adaptive behavioral control.</p>
+<p>Here is the roadmap.</p>
+<p>I'll be driving on the right side of the road.</p>
+<p>Here is the known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known</p>
+<p>Bayesian methods and start with a more theoretical and mathematical background and then eventually</p>
+<p>present some maze simulations that are in MATLAB. Then there's a discussion and then the methods</p>
+<p>section is following the discussion and it has the subsections generative model, variational free</p>
+<p>energy, inference and learning, neural networks, simulations, and data analysis. And I think that I</p>
+<p>have kept to the right color codes consistently from here on forward. The black quotes are the</p>
+<p>direct quotes from the paper. Blue quotes are related to perception, orange for action, complete</p>
+<p>class theorems and neural networks together in purple. And then red is commentary. And then the</p>
+<p>highlighting for red is related to the variational methods, but it's kind of red-ish.</p>
+<p>Okay. The paper's canonical neural networks perform active inference by the authors listed previously.</p>
+<p>It's in communications biology from 2022. And the key aims of the paper are laid out well in the first</p>
+<p>paragraph. So that's in black and other colors. And here the red is just kind of getting into initial</p>
+<p>conversation with the paper and connecting a little bit more to some previous streams before we go more</p>
+<p>into the specifics of the paper. The sentient behavior of biological organisms is characterized</p>
+<p>by optimization. Biological organisms recognize the state of their environment by optimizing internal</p>
+<p>representations of the external environmental dynamics generating sensory inputs. So that's the</p>
+<p>sensory recognition model. In addition, they optimize their behavior for adaptation to the</p>
+<p>environment, thereby increasing their probability of survival and reproduction. So that is bringing the</p>
+<p>entire active and inactive control theory, formal theories of action, action selections, planning,</p>
+<p>and planning as inference. All of these action-oriented, pragmatic turn-type ideas come into play when this</p>
+<p>action orange aspect is brought in. And it is slash must be slash should be, etc. oriented towards</p>
+<p>survival and persistence. Otherwise, we don't see that kind of thing for long over appropriate definitions for</p>
+<p>thing and long, etc. And this few sentences that the paper begins with summarizes a common theme in act</p>
+<p>imp, which is that there's basically two pathways towards proficiency in the niche. There's changing the mind, which is the</p>
+<p>perceptual and learning, and then there's changing the world through action. And that kind of integration of</p>
+<p>inference, cognitive inference, whether it's perceptual or learning or other, and action as enacted is part of the</p>
+<p>act imp, formulism, and shared with other areas. This biological self-organization is typically formulated as the</p>
+<p>minimization of cost functions wherein a gradient descent on a cost function furnishes neural dynamics and synaptic</p>
+<p>plasticity. So they are working with a framework where the way that this perception action flow is</p>
+<p>tractable computationally, either just for our current computers so that we can implement simulations and</p>
+<p>data fitting, or whether more fundamentally like this is the computational context of action, they're suggesting</p>
+<p>there's a way to think of it in terms of a cost function minimization. And also note like minimization</p>
+<p>maximization in a way they're interchangeable because there's just sometimes negative signs that can flip</p>
+<p>them. So it's the same energy and fitness landscape that is being navigated, whether you're minimizing to</p>
+<p>the bottom of the bowl and thinking of action selection that way and inference, or whether you're climbing to the top of</p>
+<p>the hill, gradient descent, gradient ascent, they're both kind of two sides of the same coin.</p>
+<p>Two fundamental issues remain to be established, namely, so this is what the paper is saying,</p>
+<p>they're filling the gap in literature, the characterization of the dynamics of an arbitrary</p>
+<p>neural network as a generic optimization process, and the correspondence between such neural dynamics</p>
+<p>and statistical inference found in applied mathematics and machine learning. The present work addresses these</p>
+<p>issues by demonstrating that a class of canonical neural networks of rate coding models is functioning as,</p>
+<p>and thus universally characterized in terms of, variational Bayesian inference under a particular</p>
+<p>but generic form of the generative model. This is maybe the only slide that has resources from</p>
+<p>the neural networks. This is the only slide that has resources that are available to the top of the</p>
+<p>neural networks. This is the only slide that has a little bit of a little bit of a little bit of a</p>
+<p>neural network. This is the only slide that has a little bit of a little bit of a little bit of a</p>
+<p>search on a very common search tool resulted in 5-plus million results for what are neural networks.</p>
+<p>And the first one was 3Blue1Brown from 2017, which is just a nice YouTube video as they very often make with these</p>
+<p>beautiful renditions. And it's a very great video and there's many many others. A neural network is a</p>
+<p>network or circuit of biological neurons and that is variously purely computational and or biological</p>
+<p>map territory stuff. And they can be thought of as nodes and edges which are the firing rates</p>
+<p>of the nodes. And the connections between the biological neurons being modeled as weights between nodes.</p>
+<p>A positive weight reflects an excitatory connection while negative values mean inhibitory connections.</p>
+<p>And here is data coming in and ending up activating different neurons in this final layer.</p>
+<p>So this is kind of doing inference in a neural net work and then there's an action part. Okay.</p>
+<p>The paper says, Variational Bayesian Inference offers a unified explanation for inference, learning, prediction,</p>
+<p>decision making, and the evolution of biological form, which can be considered over multiple timescales.</p>
+<p>So this returns to the earlier theme of like perception, action, and persistence within and among generations.</p>
+<p>And the citations that are provided here for this are Friston Kilner Harrison, 2006 and Friston 2010.</p>
+<p>Both very classic ACDEMF slash FEP papers, just to show one figure from each. Here's from the first citation</p>
+<p>that's a question with a winged snowflake where if the snowflake ends up being somewhere that's too warm,</p>
+<p>that's not able for it to maintain the structure, then it melts, melts into a dew, etc.</p>
+<p>And it must be acting as if in one way or another, it's staying above that phase boundary.</p>
+<p>That's how it's statistically identified. It's how it's ontogenetically identified, functionally identified.</p>
+<p>And then here is one of the kind of path setting figures in the Friston 2010 paper with a tree</p>
+<p>of many different areas to connect to and formalisms to represent as, including probabilistic neural coding,</p>
+<p>Bayesian brain, optimal control and value learning.</p>
+<p>These three and others can be really seen at play in this 2022 paper.</p>
+<p>The kind of inference variational Bayesian methods use rests upon a generative model that expresses a</p>
+<p>hypothesis about the generation of sensory input. Perception and behavior can then be read as optimizing</p>
+<p>the evidence for a generative model inherent in sensory exchanges for the environment. And that's</p>
+<p>the integration of perception and action within a single imperative in terms of if only computation.</p>
+<p>And that is described more on this slide, which one can pause and read, but the rest of the quotes are from the paper.</p>
+<p>One key formalism that I had no familiarity with before this paper and associated readings and conversations with Ali</p>
+<p>was the complete class theorem. So it would be great for anyone who's familiar with complete class theorem to</p>
+<p>help a little bit here, but here's some interesting things that I came across.</p>
+<p>Crucially from the paper, as a corollary of the complete class theorem, citations 19 through 21,</p>
+<p>any neural network minimizing a cost function to be viewed as performing variational Bayesian inference</p>
+<p>under some prior beliefs. Here are the citations 19 through 21 from 1947, 1981, 2013.</p>
+<p>And also found some interesting resources. So quoting from this less wrong post linked here.</p>
+<p>Dutch book defines belief as willingness to bet and money pump defines preference as willingness to pay.</p>
+<p>This is in terms of the foundational arguments for a Bayesian epistemological</p>
+<p>worldview. Hope that's correct. Again, it'd be good to hear from anyone who knows more here.</p>
+<p>But in terms of different ways that one can consider the Bayesian proposition, which perhaps these are even</p>
+<p>better to use than referencing any person's last name, because the interesting thing will be the different</p>
+<p>lenses that these different framings on Bayesian probabilities are interpreted as, just like what a</p>
+<p>p-value is interpreted as in the frequentist world, kind of analogously, like a Bayes factor interpretation.</p>
+<p>So Dutch book defines belief as willingness to bet and money pump defines preference as willingness to pay.</p>
+<p>In doing so, both arguments put the justification of decision theory into hypothetical exploitation</p>
+<p>scenarios, which are not quite the same as the actual decisions we face. If these were the best</p>
+<p>justifications for consequentialism we could muster, I would be somewhat dissatisfied, but would likely leave</p>
+<p>it alone. Fortunately, a better alternative exists, the complete class theorem.</p>
+<p>So here's an image from that post. Possible world states, observation likelihood maps to the possible observations,</p>
+<p>hashtag A matrix. Then decision-making rule, maybe probabilistic, action selection as inference,</p>
+<p>A possible actions, and here we commonly see the loop being closed from actions to world states like through</p>
+<p>the B matrix, changing how the world changes through time. And here, these are both going to be mapped to a loss</p>
+<p>function, L, a real valued score from taking an action A when the world turned out to be theta, realized theta.</p>
+<p>So that's quite an interesting framing. And there were some other useful posts online.</p>
+<p>And from this ZHAT blog, the argument boils down to, if you agree with expected utility as your objective,</p>
+<p>then you have to be Bayesian. In a nutshell, a strategy is inadmissible if there exists another strategy that is as good in all</p>
+<p>situations and strictly better in at least one. If you want your strategy to be admissible,</p>
+<p>it should be equivalent to a Bayes estimator. Complete class theorems. Only Bayes strategies are admissible,</p>
+<p>and admissible strategies are Bayes.</p>
+<p>So there's probably a lot of interpretations of this, but it seems kind of related to optimal control or Bayes optimal</p>
+<p>inference, perhaps a little bit more keenly. So these are some next two slides were contributed by Ali.</p>
+<p>So if you or if anyone familiar in this area wants to come on in the discussion to be great.</p>
+<p>But Ali pointed me to this book, Fundamentals of Bayesian Epistemology by Teitelbaum 2022, table of contents shown here.</p>
+<p>And some challenges and objections to Bayesian epistemology are listed, which can be read.</p>
+<p>And then also there's some quite interesting logical structures, which can be read here in terms of their premise,</p>
+<p>theorem and conclusion in the areas of arguments for Bayesianism being representation theorem, argument for probabilism,</p>
+<p>the Dutch book argument for probabilism, and the gradational accuracy argument for probabilism.</p>
+<p>So pretty interesting. Back to the paper. They wrote,</p>
+<p>We have previously introduced a reverse engineering approach that identifies a class of biologically</p>
+<p>plausible cost functions for neural networks. Citation 22. Previous paper of Isomura and Friston.</p>
+<p>2020. The paper was reverse engineering neural networks to characterize their cost functions.</p>
+<p>The abstract shown here, but this letter considers a class of biologically plausible cost functions</p>
+<p>for neural networks. Using generative models based on partially observable Markov decision processes,</p>
+<p>POMDP. We show that neural activity and plasticity perform Bayesian inference and learning,</p>
+<p>respectively by maximizing model evidence. So this is a precursor paper from 2020 that is cited and</p>
+<p>foundational for the 2022 paper. Here's some figures from that paper.</p>
+<p>They have comparisons among a Markov decision process scheme and a neural network.</p>
+<p>For example, a Markov decision process scheme expressed as a Forney factor graph</p>
+<p>based on the formulation in Friston. So here is the Markov decision process as a Forney factor graph. And on the right side is the neural network with the hidden state sensory inputs and neural activity and some figures and concordances.</p>
+<p>And they wrote,</p>
+<p>In this context, the neural network can in principle be used as a dynamic causal model to estimate threshold constants and implicit priors.</p>
+<p>This reverse engineering speaks to estimating the priors used by real neuronal systems under ideal Bayesian assumptions, sometimes referred to as meta Bayesian inference.</p>
+<p>So they're laying out their research agenda and much of the work is going to reference this earlier paper and other work.</p>
+<p>And then there's also some new integrations and especially the maze simulation in this paper and probably more.</p>
+<p>So let's find out.</p>
+<p>Referring to the earlier paper,</p>
+<p>This foundational work identified a class of cost functions for single layer feed forward neural networks of rate coding models with a sigmoid or logistic activation function.</p>
+<p>We subsequently demonstrated that mathematical equivalence between the class of cost functions for such neural networks and variational free energy under a particular form of the generative model,</p>
+<p>which is similar broadly to what the 22 paper does too.</p>
+<p>This equivalence licenses variational Bayesian inference as a fundamental optimization process that underlies both the dynamics and function of such neural networks.</p>
+<p>However, it remains to be established whether the active inference is an apt explanation for any given neural network that actively exchanges with its environment.</p>
+<p>In this paper, we address this inactive or control aspect to complete the formal equivalence of neural network optimization and the free energy principle.</p>
+<p>So this earlier work was not including action.</p>
+<p>And so this paper's key addition, as I understand it, hopefully, is that they bring action more formally into the model.</p>
+<p>And it'd be interesting to know, like, what else is that change associated with or what else happens or doesn't.</p>
+<p>Here's some more text about the approach that they're going to take, and many of these details are going to be addressed later on.</p>
+<p>Here's Table 1, Glossary of Expressions.</p>
+<p>So these will also be broadly addressed later on.</p>
+<p>Maybe it's useful, though, just to read the first one, a canonical neural network.</p>
+<p>In this work, a canonical neural network is defined by differential equations of neural activity</p>
+<p>derived as a reduction of realistic neuron models through some approximations,</p>
+<p>which give a network of rate-coding neurons with a sigmoid activation function.</p>
+<p>In particular, we consider networks comprising a middle layer that involves recurrent connections</p>
+<p>and the output layer that provides feedback responses to the environment.</p>
+<p>So some category of neural network architectures or anatomies, physiologies, whatever,</p>
+<p>with sensory, cognitive, and action-like features in an environment or a generative process.</p>
+<p>So the results section.</p>
+<p>They write,</p>
+<p>In Overview of Equivalence Between Neural Networks and Variational Bayes,</p>
+<p>First, we summarize the formal correspondence between neural networks and variational bayes.</p>
+<p>A biological agent is formulated here as an autonomous system comprising a network of rate-coding neurons,</p>
+<p>figure 1a.</p>
+<p>So here's a small figure 1a.</p>
+<p>We'll see it larger.</p>
+<p>Based upon the assumptions, which will be brought up later on in a different fuller form,</p>
+<p>the update rule for the ith component of phi,</p>
+<p>which is the internal states, so the cognitive states,</p>
+<p>and the output layer, y.</p>
+<p>So middle layer, x, and output layer, y.</p>
+<p>These can be seen as the cognitive and the action-selective aspects,</p>
+<p>which are the autonomous states,</p>
+<p>in contrast to the particular states of the active inference entity,</p>
+<p>which is the whole blanket,</p>
+<p>and the cognitive states, so including the sensory states.</p>
+<p>But the sensory states can't be directly controlled.</p>
+<p>However, action can influence them.</p>
+<p>And so that's what closes the causal loop.</p>
+<p>And that set of the particular states,</p>
+<p>comprising the autonomous states,</p>
+<p>the update rule for the ith component of phi</p>
+<p>is derived as the gradient descent on the cost function.</p>
+<p>So the change in that, phi sub i,</p>
+<p>is proportional to a derivative on the loss function.</p>
+<p>This determines the dynamics of neural networks,</p>
+<p>including their activity and plasticity.</p>
+<p>So L, common loss function.</p>
+<p>O, observations, sensory states.</p>
+<p>Phi, internal states comprising the middle and output layer,</p>
+<p>neural activity, that's the rate coding part,</p>
+<p>and synaptic strengths, W, the parameterization.</p>
+<p>And other free parameters, including that,</p>
+<p>that characterize L.</p>
+<p>Then there's the output layer activity,</p>
+<p>Y, is determining the network's actions or decisions,</p>
+<p>delta.</p>
+<p>O, X, and Y.</p>
+<p>Y is the outputting action, environment,</p>
+<p>generative process, hidden state,</p>
+<p>passing observations to the sensory, cognitive,</p>
+<p>active layers of the neural network.</p>
+<p>And that is analogous topologically</p>
+<p>to the variational Bayesian formulation</p>
+<p>in figure 1b.</p>
+<p>And so, left side, gradient descent</p>
+<p>on a neural network cost function L</p>
+<p>determines the dynamics of neural activity and plasticity.</p>
+<p>Thus, L is sufficient to characterize</p>
+<p>the neural network.</p>
+<p>And then, being shown next to,</p>
+<p>on the right side,</p>
+<p>variational free energy minimization</p>
+<p>allows an agent to self-organize,</p>
+<p>to encode the hidden states of the external milieu,</p>
+<p>and to make decisions minimizing future risk.</p>
+<p>Here, variational free energy F</p>
+<p>is sufficient to characterize the inferences</p>
+<p>and behaviors of the agent.</p>
+<p>So, sentence structure, parallelism,</p>
+<p>and these two schemes or approaches</p>
+<p>being linked and applied</p>
+<p>is a focus of this area.</p>
+<p>So, neural networks are minimizing the cost function L.</p>
+<p>In contrast, variational Bayesian inference</p>
+<p>depicts a process of updating</p>
+<p>the prior distribution of external states,</p>
+<p>P of theta,</p>
+<p>to the corresponding posterior distribution,</p>
+<p>Q of theta,</p>
+<p>based upon a sequence of observations.</p>
+<p>And we see other familiar terms</p>
+<p>from discussions on variational Bayes,</p>
+<p>like minimization of surprise.</p>
+<p>And there's some more model details</p>
+<p>shown here.</p>
+<p>A few points are about</p>
+<p>choosing the family of distributions</p>
+<p>that one is doing variational inference with.</p>
+<p>And that allows for the gradient update rules</p>
+<p>in that family of distributions</p>
+<p>to be made simpler.</p>
+<p>For example, choosing a linear regression</p>
+<p>with an L2 norm,</p>
+<p>at the very least,</p>
+<p>you can say that it has a simple decision rule</p>
+<p>for being fit.</p>
+<p>I'm sure there's like also counter arguments</p>
+<p>and other algorithms that are better and so on.</p>
+<p>But just to say that</p>
+<p>a simple decision rule</p>
+<p>in a known family of distributions</p>
+<p>can often be good enough</p>
+<p>as an approximation,</p>
+<p>if not more.</p>
+<p>Crucially, according to the complete class theorem</p>
+<p>from earlier,</p>
+<p>a dynamical system</p>
+<p>that minimizes its cost function</p>
+<p>can be viewed as performing</p>
+<p>Bayesian inference</p>
+<p>under some generative model</p>
+<p>and prior beliefs.</p>
+<p>The complete class theorem</p>
+<p>just goes on to describe it</p>
+<p>ensures the presence</p>
+<p>of a generative model</p>
+<p>that formally corresponds</p>
+<p>to the above-defined neural network</p>
+<p>characterized by L.</p>
+<p>Hence, this speaks to the equivalence</p>
+<p>between the class of neural network</p>
+<p>cost functions</p>
+<p>and variational free energy</p>
+<p>under such a generative model.</p>
+<p>Equation 1.</p>
+<p>Loss function</p>
+<p>on the time series of observations</p>
+<p>comma parameters</p>
+<p>three lines</p>
+<p>is defined as</p>
+<p>F</p>
+<p>the free energy function</p>
+<p>on</p>
+<p>the same</p>
+<p>O</p>
+<p>through time</p>
+<p>comma parameters.</p>
+<p>So there's a</p>
+<p>parallel being</p>
+<p>shown</p>
+<p>slash defined</p>
+<p>wherein the</p>
+<p>internal states</p>
+<p>of a network</p>
+<p>phi</p>
+<p>encode</p>
+<p>or parameterize</p>
+<p>the posterior expectation</p>
+<p>theta.</p>
+<p>This mathematical equivalence</p>
+<p>means that an arbitrary</p>
+<p>neural network</p>
+<p>in the class</p>
+<p>under consideration</p>
+<p>is implicitly</p>
+<p>performing active inference</p>
+<p>through variational</p>
+<p>free energy minimization</p>
+<p>and more is written</p>
+<p>but this is one of many</p>
+<p>statements</p>
+<p>that will be</p>
+<p>made</p>
+<p>corresponding</p>
+<p>to</p>
+<p>correspondences</p>
+<p>between</p>
+<p>neural network</p>
+<p>loss function</p>
+<p>generative model</p>
+<p>active</p>
+<p>free energy</p>
+<p>minimization</p>
+<p>and associated</p>
+<p>formalisms.</p>
+<p>Note that being able</p>
+<p>to characterize</p>
+<p>the neural network</p>
+<p>in terms of</p>
+<p>maximizing model evidence</p>
+<p>lends it</p>
+<p>an explainability</p>
+<p>in the sense that</p>
+<p>internal neural network</p>
+<p>states</p>
+<p>and parameters</p>
+<p>encode</p>
+<p>Bayesian beliefs</p>
+<p>or expectations</p>
+<p>about the causes</p>
+<p>of observations.</p>
+<p>In other words</p>
+<p>the generative model</p>
+<p>explains how outcomes</p>
+<p>were generated.</p>
+<p>However</p>
+<p>the complete class</p>
+<p>theorem</p>
+<p>does not specify</p>
+<p>the form</p>
+<p>of a generative model</p>
+<p>for any given</p>
+<p>neural network.</p>
+<p>To address this issue</p>
+<p>in the remainder</p>
+<p>of the paper</p>
+<p>we formulate</p>
+<p>active inference</p>
+<p>using a particular</p>
+<p>form of partially</p>
+<p>observable</p>
+<p>Markov decision</p>
+<p>processes</p>
+<p>POMDP</p>
+<p>models</p>
+<p>whose states</p>
+<p>take binary values.</p>
+<p>So this is one</p>
+<p>of several</p>
+<p>simplifications</p>
+<p>is one way to see it</p>
+<p>or areas for</p>
+<p>later generalization.</p>
+<p>Figure 2</p>
+<p>In this section</p>
+<p>we define a generative</p>
+<p>model and ensuing</p>
+<p>variational free energy</p>
+<p>that corresponds</p>
+<p>to a class of</p>
+<p>canonical neural networks</p>
+<p>that will be considered</p>
+<p>in the subsequent section.</p>
+<p>The external milieu</p>
+<p>is expressed</p>
+<p>as a discrete state space</p>
+<p>in the form</p>
+<p>of a POMDP</p>
+<p>figure 2.</p>
+<p>So</p>
+<p>to make</p>
+<p>figure 2</p>
+<p>larger</p>
+<p>there's a lot</p>
+<p>to probably say</p>
+<p>about this</p>
+<p>figure.</p>
+<p>I'll just</p>
+<p>note</p>
+<p>that the</p>
+<p>caption</p>
+<p>is informative</p>
+<p>and</p>
+<p>some of the</p>
+<p>highlighted lines</p>
+<p>it'll be awesome</p>
+<p>to have the author</p>
+<p>and other</p>
+<p>people who's familiar</p>
+<p>with some</p>
+<p>of the differences</p>
+<p>and symmetries</p>
+<p>between the</p>
+<p>for example</p>
+<p>bottom</p>
+<p>and top</p>
+<p>above and below</p>
+<p>the observations</p>
+<p>and also</p>
+<p>about the</p>
+<p>role of time</p>
+<p>and what</p>
+<p>these two risks</p>
+<p>are</p>
+<p>what is</p>
+<p>fictive causality</p>
+<p>here's more</p>
+<p>details on that</p>
+<p>POMDP</p>
+<p>then</p>
+<p>equation 2</p>
+<p>this is in the</p>
+<p>section</p>
+<p>active inference</p>
+<p>formulated using</p>
+<p>a postdiction</p>
+<p>of past decisions</p>
+<p>so if it was a</p>
+<p>prediction of</p>
+<p>future decisions</p>
+<p>it's the</p>
+<p>opposite</p>
+<p>a postdiction</p>
+<p>of past decisions</p>
+<p>hence</p>
+<p>we define</p>
+<p>the generative</p>
+<p>model as follows</p>
+<p>P</p>
+<p>O</p>
+<p>delta</p>
+<p>S</p>
+<p>gamma</p>
+<p>theta</p>
+<p>which is</p>
+<p>the model</p>
+<p>of</p>
+<p>observations</p>
+<p>decisions</p>
+<p>observations</p>
+<p>decisions</p>
+<p>hidden states</p>
+<p>risk</p>
+<p>and theta</p>
+<p>theta</p>
+<p>equals</p>
+<p>a</p>
+<p>b</p>
+<p>and c</p>
+<p>constitutes</p>
+<p>the set of</p>
+<p>parameters</p>
+<p>and</p>
+<p>more details</p>
+<p>are provided</p>
+<p>this is</p>
+<p>the familiar</p>
+<p>notation</p>
+<p>with</p>
+<p>some</p>
+<p>slight</p>
+<p>differences</p>
+<p>that'll be</p>
+<p>described</p>
+<p>and equation</p>
+<p>2</p>
+<p>reflects</p>
+<p>the</p>
+<p>factorizability</p>
+<p>and the</p>
+<p>dimensions</p>
+<p>and the</p>
+<p>kind of</p>
+<p>computational</p>
+<p>tractability</p>
+<p>expression</p>
+<p>so</p>
+<p>that would be</p>
+<p>interesting to</p>
+<p>also learn</p>
+<p>about</p>
+<p>like</p>
+<p>under what</p>
+<p>conditions</p>
+<p>can</p>
+<p>this</p>
+<p>joint</p>
+<p>distribution</p>
+<p>be</p>
+<p>factorized</p>
+<p>under what</p>
+<p>simplifications</p>
+<p>or</p>
+<p>constructions</p>
+<p>the</p>
+<p>agent</p>
+<p>is</p>
+<p>making</p>
+<p>decisions</p>
+<p>to</p>
+<p>minimize</p>
+<p>a</p>
+<p>risk</p>
+<p>function</p>
+<p>capital</p>
+<p>gamma</p>
+<p>that's</p>
+<p>on the</p>
+<p>bottom</p>
+<p>of</p>
+<p>figure</p>
+<p>two</p>
+<p>fictive</p>
+<p>causality</p>
+<p>leading to</p>
+<p>this</p>
+<p>gamma</p>
+<p>coming</p>
+<p>from</p>
+<p>that</p>
+<p>gamma</p>
+<p>equation</p>
+<p>three</p>
+<p>is</p>
+<p>shown</p>
+<p>and</p>
+<p>to</p>
+<p>characterize</p>
+<p>the</p>
+<p>optimal</p>
+<p>decisions</p>
+<p>as</p>
+<p>minimizing</p>
+<p>expected</p>
+<p>risk</p>
+<p>in our</p>
+<p>POMDP</p>
+<p>model</p>
+<p>we use</p>
+<p>a</p>
+<p>fictive</p>
+<p>mapping</p>
+<p>from</p>
+<p>the</p>
+<p>current</p>
+<p>risk</p>
+<p>gamma</p>
+<p>to</p>
+<p>past</p>
+<p>decisions</p>
+<p>that's</p>
+<p>that</p>
+<p>retroactive</p>
+<p>fictive</p>
+<p>causality</p>
+<p>although</p>
+<p>this is</p>
+<p>not</p>
+<p>the</p>
+<p>true</p>
+<p>causality</p>
+<p>in</p>
+<p>the</p>
+<p>real</p>
+<p>generative</p>
+<p>process</p>
+<p>that</p>
+<p>generates</p>
+<p>sensory</p>
+<p>data</p>
+<p>here</p>
+<p>we</p>
+<p>intend</p>
+<p>to</p>
+<p>model</p>
+<p>the</p>
+<p>manner</p>
+<p>that</p>
+<p>an</p>
+<p>agent</p>
+<p>subjectively</p>
+<p>evaluates</p>
+<p>its</p>
+<p>previous</p>
+<p>decisions</p>
+<p>after</p>
+<p>experiencing</p>
+<p>their</p>
+<p>consequences</p>
+<p>this</p>
+<p>fictive</p>
+<p>causality</p>
+<p>is</p>
+<p>expressed</p>
+<p>in</p>
+<p>the</p>
+<p>form</p>
+<p>of</p>
+<p>a</p>
+<p>categorical</p>
+<p>distribution</p>
+<p>so</p>
+<p>it</p>
+<p>could</p>
+<p>be</p>
+<p>other</p>
+<p>families</p>
+<p>hypothetically</p>
+<p>but</p>
+<p>this</p>
+<p>equation</p>
+<p>3</p>
+<p>is</p>
+<p>describing</p>
+<p>fictive</p>
+<p>causality</p>
+<p>and</p>
+<p>this</p>
+<p>interesting</p>
+<p>sign</p>
+<p>indicates</p>
+<p>the</p>
+<p>element-wise</p>
+<p>division</p>
+<p>operator</p>
+<p>also</p>
+<p>note</p>
+<p>throughout</p>
+<p>the</p>
+<p>manuscript</p>
+<p>the</p>
+<p>overlying</p>
+<p>variable</p>
+<p>indicates</p>
+<p>1</p>
+<p>minus</p>
+<p>that</p>
+<p>variable</p>
+<p>so</p>
+<p>gamma</p>
+<p>bar</p>
+<p>equals</p>
+<p>1</p>
+<p>minus</p>
+<p>gamma</p>
+<p>or</p>
+<p>it can</p>
+<p>be</p>
+<p>understood</p>
+<p>as</p>
+<p>the</p>
+<p>complement</p>
+<p>of</p>
+<p>a</p>
+<p>statistical</p>
+<p>probability</p>
+<p>probability</p>
+<p>of</p>
+<p>a</p>
+<p>happening</p>
+<p>and</p>
+<p>the</p>
+<p>probability</p>
+<p>of</p>
+<p>not</p>
+<p>a</p>
+<p>happening</p>
+<p>in</p>
+<p>that</p>
+<p>one</p>
+<p>way</p>
+<p>importantly</p>
+<p>the</p>
+<p>agent</p>
+<p>needs</p>
+<p>to</p>
+<p>keep</p>
+<p>selecting</p>
+<p>good</p>
+<p>decisions</p>
+<p>while</p>
+<p>avoiding</p>
+<p>bad</p>
+<p>decisions</p>
+<p>to</p>
+<p>this</p>
+<p>end</p>
+<p>equation</p>
+<p>3</p>
+<p>supposes</p>
+<p>that</p>
+<p>the</p>
+<p>agent</p>
+<p>learns</p>
+<p>from</p>
+<p>the</p>
+<p>failure</p>
+<p>of</p>
+<p>decisions</p>
+<p>by</p>
+<p>assuming</p>
+<p>that</p>
+<p>the</p>
+<p>bad</p>
+<p>decisions</p>
+<p>were</p>
+<p>sampled</p>
+<p>from</p>
+<p>the</p>
+<p>opposite</p>
+<p>of</p>
+<p>the</p>
+<p>optimal</p>
+<p>policy</p>
+<p>mapping</p>
+<p>some</p>
+<p>more</p>
+<p>details</p>
+<p>and</p>
+<p>then</p>
+<p>by</p>
+<p>convention</p>
+<p>active</p>
+<p>inference</p>
+<p>uses</p>
+<p>c</p>
+<p>to</p>
+<p>denote</p>
+<p>the</p>
+<p>prior</p>
+<p>preference</p>
+<p>that's</p>
+<p>how</p>
+<p>we've</p>
+<p>seen</p>
+<p>the</p>
+<p>c</p>
+<p>variable</p>
+<p>in</p>
+<p>many</p>
+<p>models</p>
+<p>as</p>
+<p>preferences</p>
+<p>prior</p>
+<p>preference</p>
+<p>this</p>
+<p>work</p>
+<p>uses</p>
+<p>c</p>
+<p>to</p>
+<p>denote</p>
+<p>a</p>
+<p>mapping</p>
+<p>to</p>
+<p>determine</p>
+<p>a</p>
+<p>decision</p>
+<p>depending</p>
+<p>on</p>
+<p>the</p>
+<p>previous</p>
+<p>state</p>
+<p>herein</p>
+<p>the</p>
+<p>prior</p>
+<p>preference</p>
+<p>is</p>
+<p>implicit</p>
+<p>in</p>
+<p>the</p>
+<p>risk</p>
+<p>function</p>
+<p>due</p>
+<p>to</p>
+<p>construction</p>
+<p>c</p>
+<p>does</p>
+<p>not</p>
+<p>explicitly</p>
+<p>appear</p>
+<p>in</p>
+<p>the</p>
+<p>inference</p>
+<p>thus</p>
+<p>it</p>
+<p>is</p>
+<p>omitted</p>
+<p>in</p>
+<p>the</p>
+<p>following</p>
+<p>formulations</p>
+<p>so</p>
+<p>that's</p>
+<p>a key</p>
+<p>point</p>
+<p>about</p>
+<p>the</p>
+<p>notation</p>
+<p>of</p>
+<p>the</p>
+<p>variable</p>
+<p>c</p>
+<p>and</p>
+<p>something</p>
+<p>kind</p>
+<p>of</p>
+<p>maybe</p>
+<p>interesting</p>
+<p>to</p>
+<p>explore</p>
+<p>equation</p>
+<p>four</p>
+<p>variational</p>
+<p>bayesian</p>
+<p>inference</p>
+<p>refers</p>
+<p>to</p>
+<p>the</p>
+<p>process</p>
+<p>that</p>
+<p>optimizes</p>
+<p>the</p>
+<p>posterior</p>
+<p>belief</p>
+<p>q</p>
+<p>of</p>
+<p>theta</p>
+<p>based</p>
+<p>on</p>
+<p>the</p>
+<p>main</p>
+<p>field</p>
+<p>approximation</p>
+<p>q</p>
+<p>of</p>
+<p>theta</p>
+<p>is</p>
+<p>expressed</p>
+<p>as</p>
+<p>and</p>
+<p>here</p>
+<p>is</p>
+<p>the</p>
+<p>factorization</p>
+<p>representation</p>
+<p>of</p>
+<p>the</p>
+<p>q</p>
+<p>of</p>
+<p>theta</p>
+<p>variational</p>
+<p>and</p>
+<p>another</p>
+<p>notation</p>
+<p>note</p>
+<p>throughout</p>
+<p>the</p>
+<p>manuscript</p>
+<p>bold</p>
+<p>case</p>
+<p>variables</p>
+<p>such</p>
+<p>as</p>
+<p>bold</p>
+<p>s</p>
+<p>sub</p>
+<p>tau</p>
+<p>denote</p>
+<p>the</p>
+<p>posterior</p>
+<p>expectations</p>
+<p>of</p>
+<p>the</p>
+<p>corresponding</p>
+<p>italic</p>
+<p>case</p>
+<p>random</p>
+<p>variables</p>
+<p>and</p>
+<p>some</p>
+<p>more</p>
+<p>details</p>
+<p>about</p>
+<p>the</p>
+<p>model</p>
+<p>for</p>
+<p>example</p>
+<p>for</p>
+<p>simplicity</p>
+<p>here</p>
+<p>we</p>
+<p>suppose</p>
+<p>that</p>
+<p>state</p>
+<p>and</p>
+<p>decision</p>
+<p>priors</p>
+<p>d</p>
+<p>and</p>
+<p>e</p>
+<p>are</p>
+<p>fixed</p>
+<p>so</p>
+<p>one</p>
+<p>could</p>
+<p>imagine</p>
+<p>they</p>
+<p>don't</p>
+<p>have</p>
+<p>to</p>
+<p>be</p>
+<p>but</p>
+<p>for</p>
+<p>simplicity</p>
+<p>they</p>
+<p>will</p>
+<p>be</p>
+<p>here</p>
+<p>under</p>
+<p>the</p>
+<p>above</p>
+<p>defined</p>
+<p>generative</p>
+<p>model</p>
+<p>and</p>
+<p>posterior</p>
+<p>beliefs</p>
+<p>the</p>
+<p>ensuing</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>is</p>
+<p>analytically</p>
+<p>expressed</p>
+<p>as</p>
+<p>follows</p>
+<p>equation</p>
+<p>five</p>
+<p>this is</p>
+<p>a</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>f</p>
+<p>and</p>
+<p>recall</p>
+<p>equation</p>
+<p>one</p>
+<p>that</p>
+<p>it</p>
+<p>is</p>
+<p>being</p>
+<p>connected</p>
+<p>to</p>
+<p>juxtaposed</p>
+<p>with</p>
+<p>etc</p>
+<p>the</p>
+<p>loss</p>
+<p>function</p>
+<p>the</p>
+<p>gradient</p>
+<p>descent</p>
+<p>on</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>updates</p>
+<p>the</p>
+<p>posterior</p>
+<p>beliefs</p>
+<p>about</p>
+<p>hidden</p>
+<p>states</p>
+<p>s</p>
+<p>decisions</p>
+<p>delta</p>
+<p>and</p>
+<p>parameters</p>
+<p>theta</p>
+<p>the</p>
+<p>optimal</p>
+<p>posterior</p>
+<p>beliefs</p>
+<p>that</p>
+<p>minimize</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>are</p>
+<p>obtained</p>
+<p>as</p>
+<p>the</p>
+<p>fixed</p>
+<p>point</p>
+<p>of</p>
+<p>the</p>
+<p>implicit</p>
+<p>gradient</p>
+<p>descent</p>
+<p>which</p>
+<p>ensures</p>
+<p>!</p>
+<p>that</p>
+<p>change</p>
+<p>in</p>
+<p>f</p>
+<p>with</p>
+<p>respect</p>
+<p>to</p>
+<p>the</p>
+<p>change</p>
+<p>in</p>
+<p>hidden</p>
+<p>state</p>
+<p>through</p>
+<p>time</p>
+<p>equals</p>
+<p>zero</p>
+<p>and</p>
+<p>some</p>
+<p>more</p>
+<p>definitions</p>
+<p>all of</p>
+<p>them</p>
+<p>are</p>
+<p>zero</p>
+<p>that</p>
+<p>one</p>
+<p>might</p>
+<p>be</p>
+<p>an</p>
+<p>o</p>
+<p>but</p>
+<p>!</p>
+<p>they're</p>
+<p>all</p>
+<p>zero</p>
+<p>and</p>
+<p>this</p>
+<p>is</p>
+<p>saying</p>
+<p>the</p>
+<p>ball</p>
+<p>rolls</p>
+<p>to</p>
+<p>the</p>
+<p>bottom</p>
+<p>of</p>
+<p>the</p>
+<p>hill</p>
+<p>in</p>
+<p>this</p>
+<p>gradient</p>
+<p>descent</p>
+<p>and</p>
+<p>when</p>
+<p>the</p>
+<p>rate</p>
+<p>of</p>
+<p>change</p>
+<p>is</p>
+<p>zero</p>
+<p>then</p>
+<p>that</p>
+<p>is</p>
+<p>a</p>
+<p>fixed</p>
+<p>point</p>
+<p>attractor</p>
+<p>like</p>
+<p>dynamic</p>
+<p>and</p>
+<p>that</p>
+<p>can</p>
+<p>be</p>
+<p>used</p>
+<p>as</p>
+<p>a</p>
+<p>way</p>
+<p>to</p>
+<p>incrementally</p>
+<p>fit</p>
+<p>statistical</p>
+<p>models</p>
+<p>like</p>
+<p>the</p>
+<p>loss</p>
+<p>function</p>
+<p>is</p>
+<p>used</p>
+<p>to</p>
+<p>incrementally</p>
+<p>fit</p>
+<p>neural</p>
+<p>networks</p>
+<p>to</p>
+<p>explicitly</p>
+<p>demonstrate</p>
+<p>the</p>
+<p>formal</p>
+<p>correspondence</p>
+<p>with</p>
+<p>the</p>
+<p>cost</p>
+<p>function</p>
+<p>for</p>
+<p>neural</p>
+<p>networks</p>
+<p>considered</p>
+<p>in the</p>
+<p>next</p>
+<p>section</p>
+<p>we</p>
+<p>further</p>
+<p>transform</p>
+<p>the</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>as</p>
+<p>follows</p>
+<p>some</p>
+<p>details</p>
+<p>using</p>
+<p>these</p>
+<p>relationships</p>
+<p>equation</p>
+<p>five is</p>
+<p>transformed</p>
+<p>into the</p>
+<p>form shown</p>
+<p>in figure</p>
+<p>three</p>
+<p>see the</p>
+<p>method</p>
+<p>section</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>for</p>
+<p>further</p>
+<p>details</p>
+<p>in</p>
+<p>what</p>
+<p>follows</p>
+<p>we</p>
+<p>demonstrate</p>
+<p>that</p>
+<p>the</p>
+<p>internal</p>
+<p>states</p>
+<p>of</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>encode</p>
+<p>posterior</p>
+<p>beliefs</p>
+<p>here's</p>
+<p>figure</p>
+<p>three</p>
+<p>on the</p>
+<p>top</p>
+<p>from</p>
+<p>the</p>
+<p>caption</p>
+<p>figure</p>
+<p>three</p>
+<p>is</p>
+<p>the</p>
+<p>mathematical</p>
+<p>equivalence</p>
+<p>between</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>and</p>
+<p>neural</p>
+<p>network</p>
+<p>cost</p>
+<p>functions</p>
+<p>depicted</p>
+<p>by</p>
+<p>one-to-one</p>
+<p>correspondence</p>
+<p>of their</p>
+<p>components</p>
+<p>top</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>transformed</p>
+<p>from</p>
+<p>equation</p>
+<p>five</p>
+<p>using</p>
+<p>the</p>
+<p>Bayes</p>
+<p>theorem</p>
+<p>and</p>
+<p>foreshadowing</p>
+<p>equation</p>
+<p>seven</p>
+<p>using</p>
+<p>this</p>
+<p>relationship</p>
+<p>equation</p>
+<p>seven</p>
+<p>is</p>
+<p>transformed</p>
+<p>into</p>
+<p>the</p>
+<p>form</p>
+<p>presented</p>
+<p>at</p>
+<p>the</p>
+<p>bottom</p>
+<p>of</p>
+<p>the</p>
+<p>figure</p>
+<p>so</p>
+<p>here's</p>
+<p>f</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>and</p>
+<p>l</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>cost</p>
+<p>function</p>
+<p>and</p>
+<p>different</p>
+<p>elements</p>
+<p>as</p>
+<p>they're</p>
+<p>represented</p>
+<p>here</p>
+<p>with</p>
+<p>some</p>
+<p>resonances</p>
+<p>and</p>
+<p>concordance</p>
+<p>and</p>
+<p>beyond</p>
+<p>which</p>
+<p>we can</p>
+<p>explore</p>
+<p>they're</p>
+<p>being</p>
+<p>shown</p>
+<p>to be</p>
+<p>equivalent</p>
+<p>and</p>
+<p>it was</p>
+<p>in the</p>
+<p>conversation</p>
+<p>preparing</p>
+<p>for this</p>
+<p>dot</p>
+<p>zero</p>
+<p>with</p>
+<p>Dean</p>
+<p>where</p>
+<p>we</p>
+<p>saw</p>
+<p>this</p>
+<p>as</p>
+<p>some</p>
+<p>chromosomes</p>
+<p>in</p>
+<p>this</p>
+<p>section</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>perform</p>
+<p>active</p>
+<p>inference</p>
+<p>in</p>
+<p>this</p>
+<p>section</p>
+<p>we</p>
+<p>identify</p>
+<p>the</p>
+<p>neuronal</p>
+<p>substrates</p>
+<p>that</p>
+<p>correspond</p>
+<p>to</p>
+<p>components</p>
+<p>of</p>
+<p>the</p>
+<p>active</p>
+<p>inference</p>
+<p>scheme</p>
+<p>!</p>
+<p>We</p>
+<p>consider</p>
+<p>a</p>
+<p>class</p>
+<p>of</p>
+<p>two</p>
+<p>layer</p>
+<p>neural</p>
+<p>networks</p>
+<p>with</p>
+<p>recurrent</p>
+<p>connections</p>
+<p>in the</p>
+<p>middle</p>
+<p>layer</p>
+<p>figure</p>
+<p>1a</p>
+<p>those</p>
+<p>are</p>
+<p>those</p>
+<p>connections</p>
+<p>with</p>
+<p>loops</p>
+<p>recurrent</p>
+<p>in the</p>
+<p>middle</p>
+<p>layer</p>
+<p>the</p>
+<p>modeling</p>
+<p>of the</p>
+<p>networks</p>
+<p>in this</p>
+<p>section</p>
+<p>referred</p>
+<p>to as</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>is</p>
+<p>based</p>
+<p>on the</p>
+<p>following</p>
+<p>three</p>
+<p>assumptions</p>
+<p>that</p>
+<p>reflect</p>
+<p>physiological</p>
+<p>knowledge</p>
+<p>1</p>
+<p>gradient</p>
+<p>descent</p>
+<p>on a</p>
+<p>cost</p>
+<p>function</p>
+<p>L</p>
+<p>determines</p>
+<p>the</p>
+<p>updates</p>
+<p>of</p>
+<p>neural</p>
+<p>activity</p>
+<p>and</p>
+<p>synaptic</p>
+<p>weights</p>
+<p>method</p>
+<p>section</p>
+<p>neural</p>
+<p>networks</p>
+<p>neural</p>
+<p>two</p>
+<p>assumption</p>
+<p>two</p>
+<p>neural</p>
+<p>activity</p>
+<p>is</p>
+<p>updated</p>
+<p>by the</p>
+<p>weighted</p>
+<p>sum</p>
+<p>of</p>
+<p>inputs</p>
+<p>and</p>
+<p>its</p>
+<p>fixed</p>
+<p>point</p>
+<p>is</p>
+<p>expressed</p>
+<p>in a</p>
+<p>form</p>
+<p>of</p>
+<p>the</p>
+<p>sigmoid</p>
+<p>or logistic</p>
+<p>function</p>
+<p>and</p>
+<p>assumption</p>
+<p>three</p>
+<p>a</p>
+<p>modulatory</p>
+<p>factor</p>
+<p>mediates</p>
+<p>synaptic</p>
+<p>plasticity</p>
+<p>in a</p>
+<p>post hoc</p>
+<p>manner</p>
+<p>they</p>
+<p>based</p>
+
+<p>upon</p>
+<p>assumption</p>
+<p>two</p>
+<p>which</p>
+<p>is</p>
+<p>neural</p>
+<p>activity</p>
+<p>is</p>
+<p>updated</p>
+<p>by</p>
+<p>the</p>
+<p>weighted</p>
+<p>sum</p>
+<p>of</p>
+<p>inputs</p>
+
+<p>and</p>
+<p>its</p>
+<p>fixed</p>
+<p>point</p>
+<p>is</p>
+<p>expressed</p>
+<p>in the</p>
+<p>form</p>
+<p>of a</p>
+<p>sigmoid</p>
+<p>or logistic</p>
+<p>function</p>
+<p>based</p>
+<p>on</p>
+<p>assumption</p>
+<p>two</p>
+<p>we</p>
+<p>formulate</p>
+<p>neural</p>
+<p>activity</p>
+<p>in the</p>
+<p>middle</p>
+<p>layer</p>
+<p>and</p>
+<p>output</p>
+<p>layer</p>
+<p>the</p>
+<p>autonomous</p>
+<p>states</p>
+<p>as</p>
+<p>follows</p>
+<p>equation</p>
+<p>six</p>
+<p>without</p>
+<p>loss</p>
+<p>of</p>
+<p>generality</p>
+<p>equation</p>
+<p>six</p>
+<p>can be</p>
+<p>cast</p>
+<p>as</p>
+<p>the</p>
+<p>gradient</p>
+<p>descent</p>
+<p>on</p>
+<p>cost</p>
+<p>function</p>
+<p>l</p>
+<p>such</p>
+<p>a</p>
+<p>cost</p>
+<p>function</p>
+<p>can be</p>
+<p>identified</p>
+<p>by</p>
+<p>simply</p>
+<p>integrating</p>
+<p>the</p>
+<p>right-hand</p>
+<p>side</p>
+<p>of</p>
+<p>equation</p>
+<p>six</p>
+<p>with</p>
+<p>respect</p>
+<p>to</p>
+<p>x</p>
+<p>and</p>
+<p>y</p>
+<p>consistent</p>
+<p>with</p>
+<p>previous</p>
+<p>treatments</p>
+<p>citations</p>
+<p>because</p>
+<p>neural</p>
+<p>activity</p>
+<p>and</p>
+<p>synaptic</p>
+<p>plasticity</p>
+<p>minimize</p>
+<p>the</p>
+<p>same</p>
+<p>cost</p>
+<p>function</p>
+<p>l</p>
+<p>the</p>
+<p>derivatives</p>
+<p>of</p>
+<p>l</p>
+<p>must</p>
+<p>generate</p>
+<p>the</p>
+<p>modulated</p>
+<p>synaptic</p>
+<p>plasticity</p>
+<p>under</p>
+<p>these</p>
+<p>constraints</p>
+<p>reflecting</p>
+<p>assumptions</p>
+<p>one</p>
+<p>through</p>
+<p>three</p>
+<p>a</p>
+<p>class</p>
+<p>of</p>
+<p>cost</p>
+<p>functions</p>
+<p>is</p>
+<p>identified</p>
+<p>as</p>
+<p>follows</p>
+<p>equation</p>
+<p>seven</p>
+<p>loss</p>
+<p>function</p>
+<p>awesome</p>
+<p>to hear</p>
+<p>somebody</p>
+<p>read</p>
+<p>this</p>
+<p>directly</p>
+<p>so</p>
+<p>there's</p>
+<p>a</p>
+<p>firing</p>
+<p>rate</p>
+<p>aspect</p>
+<p>that's</p>
+<p>related</p>
+<p>to</p>
+<p>neural</p>
+<p>firing</p>
+<p>in the</p>
+<p>short</p>
+<p>term</p>
+<p>more</p>
+<p>perceptual</p>
+<p>aspect</p>
+<p>of</p>
+<p>function</p>
+<p>and</p>
+<p>there's</p>
+<p>a</p>
+<p>slower</p>
+<p>neurotransmitter</p>
+<p>neural</p>
+<p>glial</p>
+<p>factor</p>
+<p>mediated</p>
+<p>learning</p>
+<p>over</p>
+<p>perhaps a</p>
+<p>different</p>
+<p>timescale</p>
+<p>and with</p>
+<p>some</p>
+<p>different</p>
+<p>features</p>
+<p>and</p>
+<p>they're</p>
+<p>being</p>
+<p>included</p>
+<p>as a</p>
+<p>joint</p>
+<p>model</p>
+<p>of</p>
+<p>inference</p>
+<p>and</p>
+<p>here</p>
+<p>that</p>
+<p>is</p>
+<p>being</p>
+<p>connected</p>
+<p>to</p>
+<p>doing</p>
+<p>inference</p>
+<p>on</p>
+<p>action</p>
+<p>synaptic</p>
+<p>plasticity</p>
+<p>in neural</p>
+<p>networks</p>
+<p>so</p>
+<p>synaptic</p>
+<p>plasticity</p>
+<p>rules</p>
+<p>conjugate</p>
+<p>to the</p>
+<p>above</p>
+<p>rate</p>
+<p>coding</p>
+<p>model</p>
+<p>can</p>
+<p>now</p>
+<p>be</p>
+<p>expressed</p>
+<p>as a</p>
+<p>gradient</p>
+<p>descent</p>
+<p>on</p>
+<p>the</p>
+<p>same</p>
+<p>cost</p>
+<p>function</p>
+<p>L</p>
+<p>according</p>
+<p>to</p>
+<p>assumption</p>
+<p>one</p>
+<p>equations</p>
+<p>eight</p>
+<p>and</p>
+<p>nine</p>
+<p>showing</p>
+<p>that</p>
+<p>neural</p>
+<p>networks</p>
+<p>can</p>
+<p>integrate</p>
+<p>those</p>
+<p>modes</p>
+<p>of</p>
+<p>firing</p>
+<p>rate</p>
+<p>like</p>
+<p>and</p>
+<p>synaptomodulatory</p>
+<p>like</p>
+<p>neural</p>
+<p>networks</p>
+<p>cost</p>
+<p>functions</p>
+<p>and</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>based</p>
+<p>on</p>
+<p>the</p>
+<p>above</p>
+<p>considerations</p>
+<p>we</p>
+<p>now</p>
+<p>establish</p>
+<p>the</p>
+<p>formal</p>
+<p>correspondence</p>
+<p>between</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>cost</p>
+<p>function</p>
+<p>and</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>using</p>
+<p>under</p>
+<p>the</p>
+<p>aforementioned</p>
+<p>three</p>
+<p>minimal</p>
+<p>assumptions</p>
+<p>we</p>
+<p>identified</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>cost</p>
+<p>function</p>
+<p>as</p>
+<p>equation</p>
+<p>seven</p>
+<p>equation</p>
+<p>seven</p>
+<p>can</p>
+<p>be</p>
+<p>transformed</p>
+<p>into</p>
+<p>the</p>
+<p>form</p>
+<p>shown</p>
+<p>in</p>
+<p>figure</p>
+<p>three</p>
+<p>bottom</p>
+<p>using</p>
+<p>sigmoid</p>
+<p>functions</p>
+<p>of</p>
+<p>synaptic</p>
+<p>strengths</p>
+<p>so</p>
+<p>equation</p>
+<p>seven</p>
+<p>loss</p>
+<p>function</p>
+<p>transformed</p>
+<p>into</p>
+<p>the</p>
+<p>form</p>
+<p>shown</p>
+<p>in</p>
+<p>figure</p>
+<p>three</p>
+<p>bottom</p>
+<p>hence</p>
+<p>this</p>
+<p>class</p>
+<p>of</p>
+<p>cost</p>
+<p>functions</p>
+<p>for</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>is</p>
+<p>formally</p>
+<p>homologous</p>
+<p>to</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>under</p>
+<p>the</p>
+<p>particular</p>
+<p>form</p>
+<p>of</p>
+<p>the</p>
+<p>POMDP</p>
+<p>generative</p>
+<p>model</p>
+<p>defined</p>
+<p>in</p>
+<p>the</p>
+<p>previous</p>
+<p>section</p>
+<p>we</p>
+<p>obtain</p>
+<p>this</p>
+<p>result</p>
+<p>based</p>
+<p>on</p>
+<p>analytic</p>
+<p>derivations</p>
+<p>without</p>
+<p>reference</p>
+<p>to the</p>
+<p>complete</p>
+<p>class</p>
+<p>theorem</p>
+<p>thereby</p>
+<p>confirming</p>
+<p>the</p>
+<p>proposition</p>
+<p>of</p>
+<p>equation</p>
+<p>one</p>
+<p>loss</p>
+<p>function</p>
+<p>and</p>
+<p>free</p>
+<p>energy</p>
+<p>this</p>
+<p>in</p>
+<p>turn</p>
+<p>suggests</p>
+<p>that</p>
+<p>any</p>
+<p>canonical</p>
+<p>neural</p>
+<p>network</p>
+<p>in</p>
+<p>this</p>
+<p>class</p>
+<p>is</p>
+<p>implicitly</p>
+<p>performing</p>
+<p>active</p>
+<p>inference</p>
+<p>table</p>
+<p>two</p>
+<p>summarizes</p>
+<p>the</p>
+<p>correspondence</p>
+<p>between</p>
+<p>the</p>
+<p>quantities</p>
+<p>of</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>and</p>
+<p>their</p>
+<p>homologues</p>
+<p>in</p>
+<p>variational</p>
+<p>base</p>
+<p>so</p>
+<p>two</p>
+<p>a</p>
+<p>great</p>
+<p>concordance</p>
+
+<p>table</p>
+<p>on the</p>
+<p>left</p>
+<p>side</p>
+<p>neural</p>
+<p>network</p>
+<p>formation</p>
+<p>on the</p>
+<p>right</p>
+<p>side</p>
+<p>variational</p>
+<p>base</p>
+<p>formulation</p>
+<p>so</p>
+<p>just</p>
+<p>like</p>
+<p>in</p>
+<p>figure</p>
+<p>three</p>
+<p>we</p>
+<p>had</p>
+<p>the</p>
+<p>two</p>
+<p>long</p>
+<p>lines</p>
+<p>then</p>
+<p>table</p>
+<p>two</p>
+<p>we</p>
+<p>have</p>
+<p>rotated</p>
+<p>90</p>
+<p>degrees</p>
+<p>and</p>
+<p>the</p>
+<p>variables</p>
+<p>for</p>
+<p>different</p>
+<p>parts</p>
+<p>of</p>
+<p>these</p>
+<p>models</p>
+<p>are</p>
+<p>laid</p>
+<p>next</p>
+<p>to</p>
+<p>each</p>
+<p>other</p>
+<p>so</p>
+<p>what</p>
+<p>papers</p>
+<p>of</p>
+<p>neural</p>
+<p>networks</p>
+<p>can</p>
+<p>we</p>
+<p>make</p>
+<p>active</p>
+<p>models</p>
+<p>for</p>
+<p>is it</p>
+<p>already</p>
+<p>done</p>
+<p>or</p>
+<p>is there</p>
+<p>just</p>
+<p>one</p>
+<p>script</p>
+<p>that</p>
+<p>needs</p>
+<p>to be</p>
+<p>done</p>
+<p>and</p>
+<p>then</p>
+<p>conversely</p>
+<p>what</p>
+<p>interesting</p>
+<p>variational</p>
+<p>Bayesian</p>
+<p>models</p>
+<p>have</p>
+<p>interesting</p>
+<p>applications</p>
+<p>or</p>
+<p>some</p>
+<p>other</p>
+<p>value</p>
+<p>or</p>
+<p>information</p>
+<p>gain</p>
+<p>from</p>
+<p>being</p>
+<p>cast</p>
+<p>as</p>
+<p>neural</p>
+<p>networks</p>
+<p>or</p>
+<p>integrating</p>
+<p>neural</p>
+<p>networks</p>
+<p>into</p>
+<p>what</p>
+<p>had</p>
+<p>previously</p>
+<p>been</p>
+<p>only</p>
+<p>analytical</p>
+<p>variational</p>
+<p>Bayesian</p>
+<p>models</p>
+<p>as well</p>
+<p>as the</p>
+<p>empirical</p>
+<p>data</p>
+<p>fitting</p>
+<p>aspect</p>
+<p>which</p>
+<p>is</p>
+<p>related</p>
+<p>that's</p>
+<p>highlighted</p>
+<p>by the</p>
+<p>authors</p>
+<p>so</p>
+<p>in</p>
+<p>summary</p>
+<p>when</p>
+<p>a</p>
+<p>neural</p>
+<p>network</p>
+<p>minimizes</p>
+<p>the</p>
+<p>cost</p>
+<p>function</p>
+<p>with</p>
+<p>respect</p>
+<p>to</p>
+<p>its</p>
+<p>activity</p>
+<p>and</p>
+<p>plasticity</p>
+<p>the</p>
+<p>network</p>
+<p>self</p>
+<p>organizes</p>
+<p>to</p>
+<p>furnish</p>
+
+<p>responses</p>
+<p>that</p>
+<p>minimize</p>
+<p>a</p>
+<p>risk</p>
+<p>implicit</p>
+<p>in</p>
+<p>the</p>
+<p>cost</p>
+<p>function</p>
+<p>this</p>
+<p>biological</p>
+<p>optimization</p>
+<p>is</p>
+<p>identical</p>
+<p>to</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>minimization</p>
+<p>under</p>
+<p>a</p>
+<p>particular</p>
+<p>form</p>
+<p>of</p>
+<p>the</p>
+<p>POMDP</p>
+<p>model</p>
+<p>hence</p>
+<p>this</p>
+<p>equivalence</p>
+<p>indicates</p>
+<p>that</p>
+<p>minimizing</p>
+<p>the</p>
+<p>expected</p>
+<p>risk</p>
+<p>through</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>minimization</p>
+<p>is an</p>
+<p>inherent</p>
+<p>property</p>
+<p>of</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>featuring</p>
+<p>delayed</p>
+<p>modulation</p>
+<p>of</p>
+<p>Hebbian</p>
+<p>plasticity</p>
+<p>!</p>
+<p>Okay</p>
+<p>brief</p>
+<p>seconds</p>
+<p>to</p>
+<p>view</p>
+<p>some</p>
+<p>image</p>
+<p>memes</p>
+<p>and</p>
+<p>take</p>
+<p>a</p>
+<p>breath</p>
+<p>and</p>
+<p>a</p>
+<p>stretch</p>
+<p>on</p>
+<p>the</p>
+<p>left</p>
+<p>side</p>
+<p>the</p>
+<p>top</p>
+<p>panel</p>
+<p>says</p>
+<p>every</p>
+<p>neural</p>
+<p>network</p>
+<p>is</p>
+<p>implicitly</p>
+<p>performing</p>
+<p>active</p>
+<p>inference</p>
+<p>question</p>
+<p>mark</p>
+<p>that's</p>
+<p>awesome</p>
+<p>in</p>
+<p>the</p>
+<p>middle</p>
+<p>image</p>
+<p>meme</p>
+<p>one</p>
+<p>simply</p>
+<p>makes</p>
+<p>a</p>
+<p>neural</p>
+<p>network</p>
+<p>and</p>
+<p>it</p>
+<p>is</p>
+<p>implicitly</p>
+<p>performing</p>
+<p>active</p>
+<p>inference</p>
+<p>also</p>
+<p>question</p>
+<p>mark</p>
+<p>and</p>
+<p>then</p>
+<p>in</p>
+<p>the</p>
+<p>right</p>
+<p>image</p>
+<p>meme</p>
+<p>there</p>
+<p>are</p>
+<p>two</p>
+<p>pieces</p>
+<p>of</p>
+<p>paper</p>
+<p>neural</p>
+<p>network</p>
+<p>and</p>
+<p>implicit</p>
+<p>performance</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>corporate</p>
+<p>needs</p>
+<p>you to</p>
+<p>find</p>
+<p>the</p>
+<p>differences</p>
+<p>between</p>
+<p>this</p>
+<p>picture</p>
+<p>and</p>
+<p>this</p>
+<p>picture</p>
+<p>and</p>
+<p>here</p>
+<p>is</p>
+<p>the</p>
+<p>paper</p>
+<p>they're</p>
+<p>the</p>
+<p>same</p>
+<p>picture</p>
+<p>so</p>
+<p>the</p>
+<p>previous</p>
+<p>sections</p>
+<p>have</p>
+<p>successfully</p>
+<p>extended</p>
+<p>the</p>
+<p>variational</p>
+<p>base</p>
+<p>meets</p>
+<p>inference</p>
+<p>neural</p>
+<p>network</p>
+<p>result</p>
+<p>from the</p>
+<p>2020</p>
+<p>paper</p>
+<p>with an</p>
+<p>action</p>
+<p>loop</p>
+<p>and a</p>
+<p>loss</p>
+<p>function</p>
+<p>only on</p>
+<p>the</p>
+<p>autonomous</p>
+<p>states</p>
+<p>so</p>
+<p>that was</p>
+<p>the</p>
+<p>conceptual</p>
+<p>and</p>
+<p>technical</p>
+<p>feature</p>
+<p>that</p>
+<p>this</p>
+<p>paper</p>
+<p>brought</p>
+<p>in</p>
+<p>again</p>
+<p>it'll</p>
+<p>be</p>
+<p>awesome</p>
+<p>to</p>
+<p>hear</p>
+<p>the</p>
+<p>author</p>
+<p>describe</p>
+<p>it</p>
+<p>more</p>
+<p>and</p>
+<p>differently</p>
+<p>and</p>
+<p>then</p>
+<p>in</p>
+<p>this</p>
+<p>part</p>
+<p>of</p>
+<p>the</p>
+<p>paper</p>
+<p>they</p>
+<p>turn</p>
+<p>from</p>
+<p>that</p>
+<p>kind</p>
+<p>of</p>
+<p>analytical</p>
+<p>theoretical</p>
+<p>towards</p>
+<p>some</p>
+<p>numerical</p>
+<p>simulations</p>
+<p>in</p>
+<p>MATLAB</p>
+<p>here</p>
+<p>we</p>
+<p>demonstrate</p>
+<p>the</p>
+<p>performance</p>
+<p>of</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>using</p>
+<p>maze</p>
+<p>tasks</p>
+<p>as</p>
+<p>an</p>
+<p>example</p>
+<p>of</p>
+<p>a</p>
+<p>delayed</p>
+<p>reward</p>
+<p>task</p>
+<p>the</p>
+<p>agent</p>
+<p>comprised</p>
+<p>the</p>
+<p>aforementioned</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>figure</p>
+<p>4a</p>
+<p>thus</p>
+<p>it</p>
+<p>implicitly</p>
+<p>performs</p>
+<p>active</p>
+<p>inference</p>
+<p>by</p>
+<p>minimizing</p>
+
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>so</p>
+<p>now</p>
+<p>some</p>
+<p>entity</p>
+<p>or</p>
+<p>agent</p>
+<p>is</p>
+<p>going</p>
+<p>to</p>
+<p>be</p>
+<p>constructed</p>
+<p>and</p>
+<p>numerically</p>
+<p>simulated</p>
+<p>to</p>
+<p>support</p>
+<p>some</p>
+<p>of</p>
+<p>the</p>
+<p>aspects</p>
+<p>of</p>
+<p>their</p>
+<p>model</p>
+<p>and</p>
+<p>point</p>
+<p>towards</p>
+<p>utility</p>
+<p>in</p>
+<p>other</p>
+<p>settings</p>
+<p>so</p>
+<p>here's</p>
+<p>figure</p>
+<p>4</p>
+<p>simulation</p>
+<p>of</p>
+<p>neural</p>
+<p>networks</p>
+<p>solving</p>
+<p>maze</p>
+<p>tasks</p>
+<p>!</p>
+<p>of</p>
+<p>the</p>
+<p>agent</p>
+<p>sensory</p>
+<p>input</p>
+<p>layer</p>
+<p>O</p>
+<p>of</p>
+<p>T</p>
+<p>synaptic</p>
+<p>weights</p>
+<p>into</p>
+<p>the</p>
+<p>middle</p>
+<p>layer</p>
+<p>X</p>
+<p>internal</p>
+<p>states</p>
+<p>and</p>
+<p>the</p>
+<p>output</p>
+<p>layer</p>
+<p>Y</p>
+<p>decision</p>
+<p>action</p>
+<p>with</p>
+<p>risk</p>
+<p>gamma</p>
+<p>of</p>
+<p>T</p>
+<p>the</p>
+<p>sensation</p>
+<p>comes in</p>
+<p>a neural</p>
+<p>network</p>
+<p>then</p>
+<p>outputs</p>
+<p>a</p>
+<p>decision</p>
+<p>there's</p>
+<p>some</p>
+<p>task</p>
+<p>that</p>
+<p>the</p>
+<p>entity</p>
+<p>must</p>
+<p>perform</p>
+<p>which</p>
+<p>is</p>
+<p>to</p>
+<p>move</p>
+<p>towards</p>
+<p>the</p>
+<p>goal</p>
+<p>from</p>
+<p>the</p>
+<p>start</p>
+<p>across</p>
+<p>this</p>
+<p>lateral</p>
+<p>maze</p>
+<p>so</p>
+<p>one</p>
+<p>can</p>
+<p>imagine</p>
+<p>that</p>
+<p>if</p>
+<p>it</p>
+<p>were</p>
+<p>just</p>
+<p>a</p>
+<p>hallway</p>
+<p>with</p>
+<p>no</p>
+<p>maze</p>
+<p>features</p>
+<p>simple</p>
+<p>strategies</p>
+<p>would be</p>
+<p>very</p>
+<p>overfit</p>
+<p>but</p>
+<p>effective</p>
+<p>like</p>
+<p>always</p>
+<p>move</p>
+<p>simply</p>
+<p>towards</p>
+<p>the</p>
+<p>goal</p>
+<p>whereas</p>
+<p>in</p>
+<p>more</p>
+<p>complex</p>
+<p>settings</p>
+<p>which</p>
+<p>this</p>
+<p>is an</p>
+<p>example</p>
+<p>of</p>
+<p>where</p>
+<p>there's</p>
+<p>uncertainty</p>
+<p>as well</p>
+<p>as many</p>
+<p>local</p>
+<p>optima</p>
+<p>so</p>
+<p>one</p>
+<p>has</p>
+<p>to</p>
+<p>sometimes</p>
+<p>take</p>
+<p>one</p>
+<p>or</p>
+<p>two</p>
+<p>or</p>
+<p>three</p>
+<p>or</p>
+<p>four</p>
+<p>or</p>
+<p>more</p>
+<p>steps</p>
+<p>or</p>
+<p>however</p>
+<p>many</p>
+<p>to</p>
+<p>get</p>
+<p>closer</p>
+<p>to</p>
+<p>the</p>
+<p>goal</p>
+<p>and</p>
+<p>sometimes</p>
+<p>may</p>
+<p>not</p>
+<p>know</p>
+<p>for</p>
+<p>example</p>
+<p>how</p>
+<p>long</p>
+<p>those</p>
+<p>backtracking</p>
+<p>situations</p>
+<p>are going</p>
+<p>to be</p>
+<p>and all</p>
+<p>these other</p>
+<p>complexities</p>
+<p>for which</p>
+<p>this maze</p>
+<p>example</p>
+<p>is</p>
+<p>symbolic</p>
+<p>of</p>
+<p>so</p>
+<p>maybe</p>
+<p>there's</p>
+<p>some</p>
+<p>interesting</p>
+<p>mythos</p>
+<p>maze</p>
+<p>connections</p>
+<p>and</p>
+<p>computational</p>
+<p>and</p>
+<p>here's</p>
+<p>some</p>
+<p>performance</p>
+<p>measures</p>
+<p>on</p>
+<p>the maze</p>
+<p>task</p>
+<p>with</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>entity</p>
+<p>this way</p>
+<p>before</p>
+<p>training</p>
+<p>the agent</p>
+<p>moved to</p>
+<p>a random</p>
+<p>direction</p>
+<p>in each</p>
+<p>step</p>
+<p>resulting</p>
+<p>in a</p>
+<p>failure</p>
+<p>to</p>
+<p>reach</p>
+<p>the</p>
+<p>goal</p>
+<p>position</p>
+<p>within</p>
+<p>the</p>
+<p>time</p>
+<p>limit</p>
+<p>during</p>
+<p>training</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>updated</p>
+<p>synaptic</p>
+<p>strengths</p>
+<p>depending</p>
+<p>on its</p>
+<p>neural</p>
+<p>activity</p>
+<p>and</p>
+<p>ensuing</p>
+<p>outcomes</p>
+<p>i.e.</p>
+<p>risk</p>
+<p>this</p>
+<p>training</p>
+<p>comprised</p>
+<p>a cycle</p>
+<p>of</p>
+<p>action</p>
+<p>and</p>
+<p>learning</p>
+<p>phases</p>
+<p>this</p>
+<p>treatment</p>
+<p>renders</p>
+<p>neural</p>
+<p>activity</p>
+<p>and</p>
+<p>adaptive</p>
+<p>behaviors</p>
+<p>of the</p>
+<p>agent</p>
+<p>highly</p>
+<p>explainable</p>
+<p>and</p>
+<p>manipulatable</p>
+<p>in terms</p>
+<p>of the</p>
+<p>appropriate</p>
+<p>prior</p>
+<p>beliefs</p>
+<p>implicit</p>
+<p>and firing</p>
+<p>thresholds</p>
+<p>for a</p>
+<p>given</p>
+<p>task</p>
+<p>or</p>
+<p>environment</p>
+<p>in other</p>
+<p>words</p>
+<p>these</p>
+<p>results</p>
+<p>suggest</p>
+<p>that</p>
+<p>firing</p>
+<p>thresholds</p>
+<p>are the</p>
+<p>neuronal</p>
+<p>substrates</p>
+<p>that encode</p>
+<p>state and</p>
+<p>decision</p>
+<p>priors</p>
+<p>as predicted</p>
+<p>mathematically</p>
+<p>big if</p>
+<p>true</p>
+<p>further</p>
+
+<p>when the</p>
+<p>updating</p>
+<p>of</p>
+<p>parameters</p>
+<p>is slow</p>
+<p>across</p>
+<p>these</p>
+<p>two</p>
+<p>now</p>
+<p>linked</p>
+<p>domains</p>
+<p>parameters</p>
+<p>of the</p>
+<p>variational</p>
+<p>bayesian</p>
+<p>autonomous</p>
+<p>state</p>
+<p>inference</p>
+<p>and</p>
+
+
+
+
+
+
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>loss</p>
+<p>function</p>
+<p>parameters</p>
+<p>when</p>
+<p>the</p>
+<p>updating</p>
+<p>of</p>
+<p>these</p>
+<p>parameters</p>
+<p>are</p>
+<p>slow</p>
+<p>in</p>
+<p>relation</p>
+<p>to</p>
+<p>the</p>
+<p>experimental</p>
+<p>observations</p>
+<p>the</p>
+<p>parameters</p>
+<p>can be</p>
+<p>estimated</p>
+<p>through</p>
+<p>bayesian</p>
+<p>inference</p>
+<p>based</p>
+<p>on</p>
+<p>empirically</p>
+<p>observed</p>
+<p>neuronal</p>
+<p>responses</p>
+<p>see</p>
+<p>method</p>
+<p>section</p>
+<p>data</p>
+<p>analysis</p>
+<p>for</p>
+<p>details</p>
+<p>using</p>
+<p>this</p>
+<p>approach</p>
+<p>we</p>
+<p>estimated</p>
+<p>implicit</p>
+<p>prior</p>
+<p>e</p>
+<p>which is</p>
+<p>encoded</p>
+<p>by</p>
+<p>psi</p>
+<p>from</p>
+<p>sequences</p>
+<p>of</p>
+<p>neural</p>
+<p>activity</p>
+<p>generated</p>
+<p>from</p>
+<p>the</p>
+<p>synthetic</p>
+<p>neural</p>
+<p>networks</p>
+<p>used</p>
+<p>in</p>
+<p>the</p>
+<p>simulations</p>
+<p>reported</p>
+<p>in</p>
+<p>figure</p>
+<p>four</p>
+<p>we</p>
+<p>confirmed</p>
+<p>that</p>
+<p>this</p>
+<p>estimator</p>
+<p>was a</p>
+<p>good</p>
+<p>approximation</p>
+<p>to</p>
+<p>the</p>
+<p>true</p>
+<p>e</p>
+<p>so</p>
+<p>that's</p>
+<p>also</p>
+<p>pretty</p>
+<p>interesting</p>
+<p>this</p>
+<p>is</p>
+<p>showing</p>
+<p>they</p>
+<p>don't</p>
+<p>just</p>
+<p>lay</p>
+<p>out</p>
+<p>this</p>
+<p>architecture</p>
+<p>and</p>
+<p>show</p>
+<p>that</p>
+<p>it's</p>
+<p>possible</p>
+<p>to</p>
+<p>fulfill</p>
+<p>this</p>
+<p>maze</p>
+<p>task</p>
+<p>with</p>
+<p>the</p>
+<p>best</p>
+<p>whatever</p>
+<p>it's</p>
+<p>not a</p>
+<p>classification</p>
+<p>accuracy</p>
+<p>imperative</p>
+<p>alone</p>
+<p>they're</p>
+<p>describing</p>
+<p>that</p>
+<p>from</p>
+<p>empirically</p>
+<p>observed</p>
+<p>neuronal</p>
+<p>responses</p>
+<p>which is</p>
+<p>to say</p>
+<p>the</p>
+<p>experimenter's</p>
+<p>observation</p>
+<p>the</p>
+<p>sequences</p>
+<p>of neural</p>
+<p>activity</p>
+<p>generated</p>
+<p>from the</p>
+<p>synthetic</p>
+<p>neural</p>
+<p>networks</p>
+<p>used</p>
+<p>in</p>
+<p>that</p>
+<p>figure</p>
+<p>numerically</p>
+<p>so</p>
+<p>statistically</p>
+<p>that</p>
+<p>estimator</p>
+<p>was a</p>
+<p>good</p>
+<p>approximation</p>
+<p>to the</p>
+<p>true</p>
+<p>e</p>
+<p>figure</p>
+<p>5</p>
+<p>a</p>
+<p>so</p>
+<p>here's</p>
+<p>figure</p>
+<p>5</p>
+<p>estimation</p>
+<p>of</p>
+<p>implicit</p>
+<p>priors</p>
+<p>enables</p>
+<p>the</p>
+<p>prediction</p>
+<p>of</p>
+<p>subsequent</p>
+<p>learning</p>
+<p>so</p>
+<p>that's</p>
+<p>pretty</p>
+<p>interesting</p>
+<p>and</p>
+<p>will be</p>
+<p>great</p>
+<p>to hear</p>
+<p>what</p>
+<p>each</p>
+<p>of the</p>
+<p>axes</p>
+<p>are</p>
+<p>and</p>
+<p>what</p>
+<p>all the</p>
+<p>variables</p>
+<p>mean</p>
+<p>with</p>
+<p>this</p>
+<p>set up</p>
+<p>in</p>
+<p>place</p>
+<p>they</p>
+<p>did</p>
+<p>some</p>
+<p>numerical</p>
+<p>validation</p>
+<p>and</p>
+<p>talked a</p>
+<p>little bit</p>
+<p>more</p>
+<p>about</p>
+<p>fitting</p>
+<p>data</p>
+<p>from</p>
+<p>this</p>
+<p>simulation</p>
+<p>model</p>
+<p>here's</p>
+<p>the</p>
+<p>discussion</p>
+<p>section</p>
+<p>so</p>
+<p>the first</p>
+<p>paragraph</p>
+<p>of the</p>
+<p>discussion</p>
+<p>biological</p>
+<p>organisms</p>
+<p>formulate</p>
+<p>plans</p>
+<p>to</p>
+<p>minimize</p>
+<p>future</p>
+<p>risks</p>
+<p>in</p>
+<p>this</p>
+<p>work</p>
+<p>we</p>
+<p>captured</p>
+<p>this</p>
+<p>characteristic</p>
+<p>in</p>
+<p>biologically</p>
+<p>plausible</p>
+<p>terms</p>
+<p>under</p>
+<p>minimal</p>
+<p>assumptions</p>
+<p>we</p>
+<p>derive</p>
+<p>simple</p>
+<p>differential</p>
+<p>equations</p>
+<p>that</p>
+<p>can</p>
+<p>be</p>
+<p>plausibly</p>
+<p>interpreted</p>
+<p>in</p>
+<p>terms</p>
+<p>of</p>
+<p>a</p>
+<p>neural</p>
+<p>network</p>
+<p>architecture</p>
+<p>that</p>
+<p>entails</p>
+<p>degrees</p>
+<p>of</p>
+<p>freedom</p>
+<p>with</p>
+<p>respect</p>
+<p>to</p>
+<p>certain</p>
+<p>free</p>
+<p>parameters</p>
+<p>e.g.</p>
+<p>firing</p>
+<p>threshold</p>
+<p>these</p>
+<p>free</p>
+<p>parameters</p>
+<p>play</p>
+<p>the</p>
+<p>role</p>
+<p>of</p>
+<p>prior</p>
+<p>beliefs</p>
+<p>in</p>
+<p>variational</p>
+<p>Bayesian</p>
+<p>formulation</p>
+<p>thus</p>
+<p>the</p>
+<p>accuracies</p>
+<p>of</p>
+<p>inferences</p>
+<p>and</p>
+<p>decisions</p>
+<p>depend</p>
+<p>upon</p>
+<p>prior</p>
+<p>beliefs</p>
+<p>implicit</p>
+<p>in</p>
+<p>neural</p>
+<p>networks</p>
+<p>and</p>
+<p>here's</p>
+<p>some</p>
+<p>more</p>
+<p>stable</p>
+<p>diffusion</p>
+<p>ant</p>
+<p>neural</p>
+<p>network</p>
+<p>ant</p>
+<p>brain</p>
+<p>neural</p>
+<p>network</p>
+<p>so</p>
+<p>some</p>
+<p>more</p>
+<p>summarization</p>
+<p>of what</p>
+<p>they did</p>
+<p>based</p>
+<p>on the</p>
+<p>view</p>
+<p>of the</p>
+<p>brain</p>
+<p>as an</p>
+<p>agent</p>
+<p>that</p>
+<p>performs</p>
+<p>Bayesian</p>
+<p>inference</p>
+<p>neuronal</p>
+<p>implementations</p>
+<p>of Bayesian</p>
+<p>belief</p>
+<p>updating</p>
+<p>have been</p>
+<p>proposed</p>
+<p>which</p>
+<p>enables</p>
+<p>neural</p>
+<p>networks</p>
+<p>to</p>
+<p>store</p>
+<p>and</p>
+<p>recall</p>
+<p>spiking</p>
+<p>sequences</p>
+<p>8</p>
+<p>learn</p>
+<p>temporal</p>
+<p>dynamics</p>
+<p>and</p>
+<p>causal</p>
+<p>hierarchy</p>
+<p>9</p>
+<p>extract</p>
+<p>hidden</p>
+<p>causes</p>
+<p>10</p>
+<p>solve</p>
+<p>maze</p>
+<p>tasks</p>
+<p>11</p>
+<p>and</p>
+<p>make</p>
+<p>plans</p>
+<p>to</p>
+<p>control</p>
+<p>robots</p>
+<p>12</p>
+<p>so</p>
+<p>citations</p>
+<p>8-12</p>
+<p>listed</p>
+<p>here</p>
+<p>in</p>
+<p>these</p>
+<p>approaches</p>
+<p>the</p>
+<p>update</p>
+<p>rules</p>
+<p>are</p>
+<p>generally</p>
+<p>derived</p>
+<p>from</p>
+<p>Bayesian</p>
+<p>cost</p>
+<p>functions</p>
+<p>e.g.</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>however</p>
+<p>the precise</p>
+<p>relationship</p>
+<p>between</p>
+<p>these</p>
+<p>update</p>
+<p>rules</p>
+<p>and the</p>
+<p>neural</p>
+<p>activity</p>
+<p>and</p>
+<p>plasticity</p>
+<p>of</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>has yet</p>
+<p>to be</p>
+<p>fully</p>
+<p>established</p>
+<p>we</p>
+<p>identified</p>
+<p>a one-to-one</p>
+<p>correspondence</p>
+<p>between neural</p>
+<p>network</p>
+<p>architecture</p>
+<p>and a</p>
+<p>specific</p>
+<p>POMDP</p>
+<p>implicit</p>
+<p>in that</p>
+<p>network</p>
+<p>equation</p>
+<p>2</p>
+<p>speaks</p>
+<p>to a</p>
+<p>unique</p>
+<p>POMDP</p>
+<p>model</p>
+<p>consistent</p>
+<p>with the</p>
+<p>neural</p>
+<p>network</p>
+<p>architecture</p>
+<p>defined</p>
+<p>in</p>
+<p>equation</p>
+<p>6</p>
+<p>where</p>
+<p>their</p>
+<p>correspondences</p>
+<p>are summarized</p>
+<p>in table</p>
+<p>2</p>
+<p>and</p>
+<p>the</p>
+<p>figures</p>
+<p>this</p>
+<p>means</p>
+<p>that</p>
+<p>our</p>
+<p>scheme</p>
+<p>can be</p>
+<p>used</p>
+<p>to</p>
+<p>identify</p>
+<p>the</p>
+<p>form</p>
+<p>of</p>
+<p>the</p>
+<p>POMDP</p>
+<p>given</p>
+<p>an</p>
+<p>observable</p>
+<p>circuit</p>
+<p>structure</p>
+<p>moreover</p>
+<p>the</p>
+<p>free</p>
+<p>parameters</p>
+<p>that</p>
+<p>parameterize</p>
+<p>equation</p>
+<p>6</p>
+<p>can be</p>
+<p>estimated</p>
+<p>using</p>
+<p>equation</p>
+<p>24</p>
+<p>this</p>
+<p>means</p>
+<p>that</p>
+<p>the</p>
+<p>generative</p>
+<p>model</p>
+<p>and</p>
+<p>ensuing</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>can</p>
+<p>in</p>
+<p>principle</p>
+<p>be</p>
+<p>reconstructed</p>
+<p>from</p>
+<p>empirical</p>
+<p>data</p>
+<p>this</p>
+<p>offers</p>
+<p>a</p>
+<p>formal</p>
+<p>characterization</p>
+<p>of</p>
+<p>implicit</p>
+<p>Bayesian</p>
+<p>models</p>
+<p>entailed</p>
+<p>by neural</p>
+<p>circuits</p>
+<p>thereby</p>
+<p>enabling</p>
+<p>a</p>
+<p>prediction</p>
+<p>of</p>
+<p>subsequent</p>
+<p>learning</p>
+<p>so</p>
+<p>what</p>
+<p>can</p>
+<p>be</p>
+<p>done</p>
+<p>with</p>
+<p>this</p>
+<p>what</p>
+<p>is</p>
+<p>this</p>
+<p>new</p>
+<p>what</p>
+<p>is</p>
+<p>new</p>
+<p>here</p>
+<p>does</p>
+<p>this</p>
+<p>second</p>
+<p>selection</p>
+<p>fully</p>
+<p>establish</p>
+<p>the</p>
+<p>precise</p>
+<p>relationship</p>
+<p>between</p>
+<p>these</p>
+<p>update</p>
+<p>rules</p>
+<p>and</p>
+<p>the</p>
+<p>neural</p>
+<p>activity</p>
+<p>and</p>
+<p>plasticity</p>
+<p>of</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>here</p>
+<p>is a</p>
+<p>discussion</p>
+<p>section</p>
+<p>on</p>
+<p>Hebbian</p>
+<p>plasticity</p>
+<p>neurotransmitters</p>
+<p>and glia</p>
+<p>with a lot</p>
+<p>of</p>
+<p>citations</p>
+<p>listed</p>
+<p>and</p>
+<p>here</p>
+<p>is just</p>
+<p>one</p>
+<p>interesting</p>
+<p>follow-on</p>
+<p>discussion</p>
+<p>from</p>
+<p>the</p>
+<p>computational</p>
+<p>aspects</p>
+<p>neuro</p>
+<p>cognitive</p>
+<p>and</p>
+<p>computational</p>
+<p>aspects</p>
+<p>of</p>
+<p>Hebbian</p>
+<p>plasticity</p>
+<p>is</p>
+<p>these</p>
+<p>modulations</p>
+<p>have been</p>
+<p>observed</p>
+<p>empirically</p>
+<p>with</p>
+<p>various</p>
+<p>neuromodulators</p>
+<p>and</p>
+<p>neurotransmitters</p>
+<p>such as</p>
+<p>dopamine</p>
+<p>noradrenaline</p>
+<p>muscarine</p>
+<p>and</p>
+<p>GABA</p>
+<p>as well</p>
+<p>as</p>
+<p>glial</p>
+<p>factors</p>
+<p>so</p>
+<p>here's</p>
+<p>a</p>
+<p>picture</p>
+<p>by</p>
+<p>Alexandra</p>
+<p>Mikhailova</p>
+<p>cultured</p>
+<p>astrostites</p>
+<p>release</p>
+<p>signaling</p>
+<p>and</p>
+<p>growth</p>
+<p>factors</p>
+<p>that</p>
+<p>regulate</p>
+<p>proper</p>
+<p>neuronal</p>
+<p>development</p>
+<p>so</p>
+<p>cool</p>
+<p>glial</p>
+<p>pick</p>
+<p>dopamine</p>
+<p>and</p>
+<p>reinforcement</p>
+<p>learning</p>
+<p>in particular</p>
+<p>a delayed</p>
+<p>modulation</p>
+<p>of</p>
+<p>synaptic</p>
+<p>plasticity</p>
+<p>is well</p>
+<p>known</p>
+<p>with</p>
+<p>dopamine</p>
+<p>neurons</p>
+<p>citations</p>
+<p>35</p>
+<p>through</p>
+<p>37</p>
+<p>those</p>
+<p>citations</p>
+<p>are</p>
+<p>listed</p>
+<p>here</p>
+<p>this</p>
+<p>speaks</p>
+<p>to a</p>
+<p>learning</p>
+<p>scheme</p>
+<p>that</p>
+<p>is</p>
+<p>conceptually</p>
+<p>distinct</p>
+<p>from</p>
+<p>standard</p>
+<p>reinforcement</p>
+<p>learning</p>
+<p>algorithms</p>
+<p>such</p>
+<p>as</p>
+<p>the</p>
+<p>temporal</p>
+<p>difference</p>
+<p>learning</p>
+<p>with</p>
+<p>actor</p>
+<p>critic</p>
+<p>models</p>
+<p>based</p>
+<p>on</p>
+<p>state</p>
+<p>action</p>
+<p>value</p>
+<p>functions</p>
+<p>please</p>
+<p>see</p>
+<p>the</p>
+<p>previous</p>
+<p>work</p>
+<p>citation</p>
+<p>50</p>
+<p>for a</p>
+<p>detailed</p>
+<p>comparison</p>
+<p>between</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>reinforcement</p>
+<p>learning</p>
+<p>that</p>
+<p>is</p>
+<p>Sajid</p>
+<p>Ball</p>
+<p>Parr</p>
+<p>and</p>
+<p>Friston</p>
+<p>active</p>
+<p>inference</p>
+<p>demystified</p>
+<p>and</p>
+<p>compared</p>
+<p>from</p>
+<p>2021</p>
+<p>and</p>
+<p>that's</p>
+<p>also</p>
+<p>active</p>
+<p>model</p>
+<p>stream</p>
+<p>number</p>
+<p>2.1</p>
+<p>we</p>
+<p>mathematically</p>
+<p>demonstrated</p>
+<p>that such</p>
+<p>plasticity</p>
+<p>enhances</p>
+<p>the</p>
+<p>association</p>
+<p>between</p>
+<p>the</p>
+<p>pre</p>
+<p>post</p>
+<p>mapping</p>
+<p>and</p>
+<p>the</p>
+<p>future</p>
+<p>value</p>
+<p>of</p>
+<p>the</p>
+<p>modulatory</p>
+<p>factor</p>
+<p>where</p>
+<p>the</p>
+<p>latter</p>
+<p>is</p>
+<p>cast</p>
+<p>as</p>
+<p>a</p>
+<p>risk</p>
+<p>function</p>
+<p>this</p>
+<p>means</p>
+<p>that</p>
+<p>post</p>
+<p>synaptic</p>
+<p>neurons</p>
+<p>self</p>
+<p>organize</p>
+<p>to</p>
+<p>react</p>
+<p>in</p>
+<p>a</p>
+<p>manner</p>
+<p>that</p>
+<p>minimizes</p>
+<p>future</p>
+<p>risk</p>
+<p>so</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>had</p>
+<p>three</p>
+<p>layers</p>
+<p>it's</p>
+<p>the</p>
+<p>second</p>
+<p>and</p>
+<p>the</p>
+<p>third</p>
+<p>layer</p>
+<p>not</p>
+<p>the</p>
+<p>initial</p>
+<p>sensory</p>
+<p>layer</p>
+<p>but</p>
+<p>the</p>
+<p>second</p>
+<p>and</p>
+<p>the</p>
+<p>third</p>
+<p>layer</p>
+<p>the</p>
+<p>cognitive</p>
+<p>and the</p>
+<p>active</p>
+<p>states</p>
+<p>which are</p>
+<p>the</p>
+<p>autonomous</p>
+<p>states</p>
+<p>of</p>
+
+<p>the</p>
+<p>particular</p>
+<p>states</p>
+<p>so</p>
+<p>that's</p>
+<p>quite</p>
+<p>interesting</p>
+<p>the</p>
+<p>self</p>
+<p>organization</p>
+<p>of</p>
+<p>post</p>
+<p>synaptic</p>
+<p>neurons</p>
+<p>to</p>
+<p>react</p>
+<p>in a</p>
+<p>manner</p>
+<p>that</p>
+<p>minimizes</p>
+<p>future</p>
+<p>risk</p>
+<p>crucially</p>
+
+<p>this</p>
+<p>computation</p>
+<p>corresponds</p>
+<p>formally to</p>
+<p>variational</p>
+<p>Bayesian</p>
+<p>inference</p>
+<p>under a</p>
+<p>particular</p>
+<p>form of</p>
+<p>POMDP</p>
+<p>generative</p>
+<p>models</p>
+<p>suggesting</p>
+<p>that the</p>
+<p>delayed</p>
+<p>modulation</p>
+<p>of</p>
+<p>Hebbian</p>
+<p>plasticity</p>
+<p>is a</p>
+<p>realization</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>regionally</p>
+<p>specific</p>
+<p>projections</p>
+<p>of</p>
+<p>neuromodulators</p>
+<p>may allow</p>
+<p>each</p>
+<p>brain</p>
+<p>region</p>
+<p>to</p>
+<p>optimize</p>
+<p>activity</p>
+<p>to</p>
+<p>minimize</p>
+<p>risk</p>
+<p>and</p>
+<p>leverage</p>
+<p>a</p>
+<p>hierarchical</p>
+<p>generative</p>
+<p>model</p>
+<p>implicit</p>
+<p>in</p>
+<p>cortical</p>
+<p>and</p>
+<p>subcortical</p>
+<p>hierarchies</p>
+<p>this is</p>
+<p>reminiscent</p>
+<p>of</p>
+<p>theories</p>
+<p>of</p>
+<p>neuromodulation</p>
+<p>and</p>
+<p>meta-learning</p>
+<p>developed</p>
+<p>previously</p>
+<p>citation</p>
+<p>52</p>
+<p>doya</p>
+<p>2002</p>
+<p>meta-learning</p>
+<p>and</p>
+<p>neuromodulation</p>
+<p>cool</p>
+<p>our work</p>
+<p>may be</p>
+<p>potentially</p>
+<p>useful</p>
+<p>when</p>
+<p>casting</p>
+<p>these</p>
+<p>theories</p>
+<p>in terms</p>
+<p>of</p>
+<p>generative</p>
+<p>models</p>
+<p>and</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>minimization</p>
+<p>they</p>
+<p>then</p>
+<p>return</p>
+<p>the</p>
+<p>discussion</p>
+<p>to</p>
+<p>the</p>
+<p>complete</p>
+<p>class</p>
+<p>theorem</p>
+<p>and</p>
+<p>neural</p>
+<p>networks</p>
+<p>so</p>
+<p>the</p>
+<p>complete</p>
+<p>class</p>
+<p>theorem</p>
+<p>same</p>
+<p>citations</p>
+<p>from</p>
+<p>before</p>
+<p>ensures</p>
+<p>that</p>
+<p>any</p>
+<p>neural</p>
+<p>network</p>
+<p>whose</p>
+<p>activity</p>
+<p>and</p>
+<p>plasticity</p>
+<p>minimize</p>
+<p>the same</p>
+<p>cost</p>
+<p>function</p>
+<p>can be</p>
+<p>cast</p>
+<p>as</p>
+<p>performing</p>
+<p>Bayesian</p>
+<p>inference</p>
+<p>however</p>
+<p>identifying</p>
+<p>the implicit</p>
+<p>generative</p>
+<p>model</p>
+<p>that</p>
+<p>underwrites</p>
+<p>any</p>
+<p>canonical</p>
+<p>neural</p>
+<p>network</p>
+<p>is a</p>
+<p>more</p>
+<p>delicate</p>
+<p>problem</p>
+<p>because</p>
+<p>the</p>
+<p>theorem</p>
+<p>does not</p>
+<p>specify</p>
+<p>a form</p>
+<p>of the</p>
+<p>generative</p>
+<p>model</p>
+<p>for a</p>
+<p>given</p>
+<p>canonical</p>
+<p>neural</p>
+<p>network</p>
+<p>which is</p>
+<p>pretty</p>
+<p>interesting</p>
+<p>is that</p>
+<p>to say</p>
+<p>that the</p>
+<p>form of</p>
+<p>the</p>
+<p>generative</p>
+<p>model</p>
+<p>as</p>
+<p>modeled</p>
+<p>is</p>
+<p>different</p>
+<p>in what</p>
+<p>ways</p>
+<p>from</p>
+<p>the</p>
+<p>given</p>
+<p>canonical</p>
+<p>neural</p>
+<p>network</p>
+<p>the</p>
+<p>posterior</p>
+<p>beliefs</p>
+<p>are</p>
+<p>largely</p>
+<p>shaped</p>
+<p>by</p>
+<p>prior</p>
+<p>beliefs</p>
+<p>making</p>
+<p>it</p>
+<p>challenging</p>
+<p>to</p>
+<p>identify</p>
+<p>the</p>
+<p>generative</p>
+<p>model</p>
+<p>by</p>
+<p>simply</p>
+<p>observing</p>
+<p>systemic</p>
+<p>dynamics</p>
+<p>to</p>
+<p>this</p>
+<p>end</p>
+<p>it is</p>
+<p>necessary</p>
+<p>to</p>
+<p>commit</p>
+<p>to</p>
+<p>a</p>
+<p>particular</p>
+<p>form</p>
+<p>of</p>
+<p>the</p>
+<p>generative</p>
+<p>model</p>
+<p>and</p>
+<p>elucidate</p>
+<p>how</p>
+<p>posterior</p>
+<p>beliefs</p>
+<p>are</p>
+<p>encoded</p>
+<p>or</p>
+<p>parameterized</p>
+<p>by the</p>
+<p>neural</p>
+<p>network</p>
+<p>states</p>
+<p>this</p>
+<p>work</p>
+<p>addresses</p>
+<p>these</p>
+<p>issues</p>
+<p>by</p>
+<p>establishing</p>
+<p>a</p>
+<p>reverse</p>
+<p>engineering</p>
+<p>approach</p>
+<p>to</p>
+<p>identify</p>
+<p>a</p>
+<p>generative</p>
+<p>model</p>
+<p>implicit</p>
+<p>in a</p>
+<p>canonical</p>
+<p>neural</p>
+<p>network</p>
+<p>thereby</p>
+<p>establishing</p>
+<p>one-to-one</p>
+<p>correspondences</p>
+<p>between</p>
+<p>their</p>
+<p>components</p>
+<p>remarkably</p>
+<p>a network</p>
+<p>of rate</p>
+<p>coding</p>
+<p>models</p>
+<p>with</p>
+<p>sigmoid</p>
+<p>activation</p>
+<p>function</p>
+<p>formally</p>
+<p>corresponds</p>
+<p>to a</p>
+<p>class</p>
+<p>of</p>
+<p>POMDP</p>
+<p>models</p>
+<p>which</p>
+<p>provide</p>
+<p>an</p>
+<p>analytically</p>
+<p>tractable</p>
+<p>example</p>
+<p>of the</p>
+<p>present</p>
+<p>equivalence</p>
+<p>please</p>
+<p>refer to</p>
+<p>the</p>
+<p>previous</p>
+<p>paper</p>
+<p>citation</p>
+<p>22</p>
+<p>for</p>
+<p>further</p>
+<p>discussion</p>
+<p>so</p>
+<p>some</p>
+<p>of</p>
+<p>the</p>
+<p>analytical</p>
+<p>details</p>
+<p>especially</p>
+<p>on the</p>
+<p>inferential</p>
+<p>side</p>
+<p>cognitive</p>
+<p>side</p>
+<p>were</p>
+<p>captured</p>
+<p>in the</p>
+<p>earlier</p>
+<p>paper</p>
+<p>this</p>
+<p>paper</p>
+<p>goes</p>
+<p>further</p>
+<p>into</p>
+<p>mapping</p>
+<p>the</p>
+<p>potentially</p>
+<p>necessary</p>
+<p>and</p>
+<p>sufficient</p>
+<p>aspects</p>
+<p>of</p>
+<p>the</p>
+<p>particular</p>
+<p>entity</p>
+<p>which is</p>
+<p>to say</p>
+<p>the risk</p>
+<p>minimizing</p>
+
+<p>features</p>
+<p>of</p>
+<p>the</p>
+<p>autonomous</p>
+<p>states</p>
+<p>with respect</p>
+<p>to the</p>
+<p>entire</p>
+<p>particular</p>
+<p>states</p>
+<p>including</p>
+<p>sensory</p>
+<p>states</p>
+<p>connecting</p>
+<p>that</p>
+<p>back of</p>
+<p>the</p>
+<p>envelope</p>
+<p>verbally</p>
+<p>expressible</p>
+<p>formulation</p>
+<p>to</p>
+<p>some</p>
+<p>complete</p>
+<p>class</p>
+<p>of</p>
+<p>neural</p>
+<p>networks</p>
+<p>so</p>
+<p>what's</p>
+<p>outside</p>
+<p>of the</p>
+<p>complete</p>
+<p>class</p>
+<p>and why</p>
+<p>and then</p>
+<p>what</p>
+<p>groups</p>
+<p>within</p>
+<p>the</p>
+<p>class</p>
+<p>have</p>
+<p>special</p>
+<p>or</p>
+<p>different</p>
+<p>features</p>
+<p>it is</p>
+<p>remarkable</p>
+<p>that the</p>
+<p>proposed</p>
+<p>equivalence</p>
+<p>can be</p>
+<p>leveraged</p>
+<p>to identify</p>
+<p>a generative</p>
+<p>model</p>
+<p>that an</p>
+<p>arbitrary</p>
+<p>neural</p>
+<p>network</p>
+<p>implicitly</p>
+<p>employs</p>
+<p>this</p>
+<p>contrasts</p>
+<p>with</p>
+<p>naive</p>
+<p>neural</p>
+<p>network</p>
+<p>models</p>
+<p>that</p>
+<p>address</p>
+<p>only</p>
+<p>the</p>
+<p>dynamics</p>
+<p>of</p>
+<p>neural</p>
+<p>activity</p>
+<p>and</p>
+<p>plasticity</p>
+<p>if the</p>
+<p>generative</p>
+<p>model</p>
+<p>differs</p>
+<p>from the</p>
+<p>true</p>
+<p>generative</p>
+<p>process</p>
+<p>that</p>
+<p>generates</p>
+<p>the</p>
+<p>sensory</p>
+<p>input</p>
+<p>inferences</p>
+<p>and decisions</p>
+<p>are biased</p>
+<p>i.e.</p>
+<p>suboptimal</p>
+<p>relative to</p>
+<p>Bayes'</p>
+<p>optimal</p>
+<p>inferences</p>
+<p>and decisions</p>
+<p>based upon</p>
+<p>the right</p>
+<p>sort of</p>
+<p>beliefs</p>
+<p>prior</p>
+<p>beliefs</p>
+<p>in</p>
+<p>general</p>
+<p>the</p>
+<p>implicit</p>
+<p>priors</p>
+<p>may</p>
+<p>or</p>
+<p>may</p>
+<p>not</p>
+<p>be</p>
+<p>equal</p>
+<p>to</p>
+<p>the</p>
+<p>true</p>
+<p>priors</p>
+<p>thus</p>
+<p>a</p>
+<p>generic</p>
+<p>neural</p>
+<p>network</p>
+<p>is</p>
+<p>typically</p>
+<p>suboptimal</p>
+<p>nevertheless</p>
+<p>these</p>
+<p>implicit</p>
+<p>priors</p>
+<p>can be</p>
+<p>optimized</p>
+<p>by</p>
+<p>updating</p>
+<p>free</p>
+<p>parameters</p>
+<p>e.g.</p>
+<p>threshold</p>
+<p>factors</p>
+<p>by</p>
+<p>psi</p>
+<p>based</p>
+<p>on the</p>
+<p>gradient</p>
+<p>descent</p>
+<p>on</p>
+<p>cost</p>
+<p>function</p>
+<p>L</p>
+<p>by</p>
+<p>updating</p>
+<p>the</p>
+<p>free</p>
+<p>parameters</p>
+<p>the</p>
+<p>network</p>
+<p>will</p>
+<p>eventually</p>
+<p>in</p>
+<p>principle</p>
+<p>become</p>
+<p>Bayes</p>
+<p>optimal</p>
+<p>for</p>
+<p>any</p>
+<p>given</p>
+<p>task</p>
+<p>in</p>
+<p>essence</p>
+<p>when</p>
+<p>the</p>
+<p>cost</p>
+<p>function</p>
+<p>is</p>
+<p>minimized</p>
+<p>with</p>
+<p>respect</p>
+<p>to</p>
+<p>neural</p>
+<p>activity</p>
+<p>synaptic</p>
+<p>strengths</p>
+<p>and</p>
+<p>any</p>
+<p>other</p>
+<p>constants</p>
+<p>that</p>
+<p>characterize</p>
+<p>the</p>
+<p>cost</p>
+<p>function</p>
+<p>the</p>
+<p>cost</p>
+<p>function</p>
+<p>becomes</p>
+<p>equivalent</p>
+<p>to</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>with</p>
+<p>the</p>
+<p>optimal</p>
+<p>prior</p>
+<p>beliefs</p>
+<p>so</p>
+<p>the</p>
+<p>cost</p>
+<p>function</p>
+<p>for</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>activity</p>
+<p>and</p>
+<p>synaptic</p>
+<p>strengths</p>
+<p>underlying</p>
+<p>the</p>
+<p>loss</p>
+<p>function</p>
+<p>are</p>
+<p>equivalent</p>
+<p>to</p>
+<p>the</p>
+<p>kind</p>
+<p>of</p>
+<p>gradient</p>
+<p>descent</p>
+<p>enabled</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>minimization</p>
+<p>under</p>
+<p>the</p>
+<p>Bayes</p>
+<p>optimality</p>
+<p>scenario</p>
+<p>from a</p>
+<p>risk</p>
+<p>perspective</p>
+<p>simultaneously</p>
+<p>the</p>
+<p>expected</p>
+<p>risk</p>
+<p>is</p>
+<p>minimized</p>
+<p>because</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>is</p>
+<p>minimized</p>
+<p>only</p>
+<p>when</p>
+<p>the</p>
+<p>precision</p>
+<p>of</p>
+<p>the</p>
+<p>risk</p>
+<p>gamma</p>
+<p>is</p>
+<p>maximized</p>
+<p>see</p>
+<p>method</p>
+<p>section</p>
+<p>generative</p>
+<p>model</p>
+<p>for</p>
+<p>further</p>
+<p>details</p>
+<p>very</p>
+<p>interesting</p>
+<p>they</p>
+<p>then</p>
+<p>say</p>
+<p>the</p>
+<p>class</p>
+<p>of</p>
+<p>neural</p>
+<p>networks</p>
+<p>we</p>
+<p>consider</p>
+<p>can</p>
+<p>be</p>
+<p>viewed</p>
+<p>as</p>
+<p>a</p>
+<p>class</p>
+<p>of</p>
+<p>reservoir</p>
+<p>networks</p>
+<p>citation</p>
+<p>54</p>
+<p>citation</p>
+<p>55</p>
+<p>here</p>
+<p>the</p>
+<p>proposed</p>
+<p>equivalence</p>
+<p>could</p>
+<p>render</p>
+<p>such</p>
+<p>reservoir</p>
+<p>networks</p>
+<p>explainable</p>
+<p>and</p>
+<p>may</p>
+<p>provide</p>
+<p>the</p>
+<p>optimal</p>
+<p>plasticity</p>
+<p>rules</p>
+<p>for</p>
+<p>these</p>
+<p>networks</p>
+<p>to</p>
+<p>minimize</p>
+<p>future</p>
+<p>risk</p>
+<p>by</p>
+<p>using</p>
+<p>the</p>
+<p>formal</p>
+<p>analogy</p>
+<p>to</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>minimization</p>
+<p>under</p>
+<p>the</p>
+<p>particular</p>
+<p>form</p>
+<p>of</p>
+<p>POMDP</p>
+<p>models</p>
+<p>a</p>
+<p>clear</p>
+<p>interpretation</p>
+<p>of</p>
+<p>reservoir</p>
+<p>networks</p>
+<p>remains</p>
+<p>an</p>
+<p>important</p>
+<p>open</p>
+<p>issue</p>
+<p>in</p>
+<p>computational</p>
+<p>neuroscience</p>
+<p>and</p>
+<p>machine</p>
+<p>learning</p>
+<p>so</p>
+<p>from</p>
+<p>wikipedia</p>
+<p>reservoir</p>
+<p>computing</p>
+<p>is a</p>
+<p>framework</p>
+<p>for</p>
+<p>computation</p>
+<p>derived</p>
+<p>from</p>
+<p>recurrent</p>
+<p>neural</p>
+<p>network</p>
+<p>theory</p>
+<p>that</p>
+<p>maps</p>
+<p>input</p>
+<p>signals</p>
+<p>into</p>
+<p>higher</p>
+<p>dimensional</p>
+<p>computational</p>
+<p>spaces</p>
+<p>through</p>
+<p>the</p>
+<p>dynamics</p>
+<p>of</p>
+<p>a</p>
+<p>fixed</p>
+<p>nonlinear</p>
+<p>system</p>
+<p>called</p>
+<p>a</p>
+<p>reservoir</p>
+<p>after</p>
+<p>the</p>
+<p>input</p>
+<p>signal</p>
+<p>is</p>
+<p>fed</p>
+<p>into</p>
+<p>the</p>
+<p>reservoir</p>
+<p>which</p>
+<p>is</p>
+<p>treated</p>
+<p>as</p>
+<p>a</p>
+<p>black</p>
+<p>box</p>
+<p>a</p>
+<p>simple</p>
+<p>readout</p>
+<p>mechanism</p>
+<p>is</p>
+<p>trained</p>
+<p>to</p>
+<p>read</p>
+<p>the</p>
+<p>state</p>
+<p>of</p>
+<p>the</p>
+<p>reservoir</p>
+<p>and</p>
+<p>map</p>
+<p>it</p>
+<p>to</p>
+<p>the</p>
+<p>output</p>
+<p>then</p>
+<p>there</p>
+<p>are</p>
+<p>two</p>
+<p>key</p>
+<p>benefits</p>
+<p>of</p>
+<p>this</p>
+<p>approach</p>
+<p>the</p>
+<p>first</p>
+<p>key</p>
+<p>benefit</p>
+<p>of</p>
+<p>this</p>
+<p>framework</p>
+<p>is</p>
+<p>that</p>
+<p>training</p>
+<p>is</p>
+<p>performed</p>
+<p>only</p>
+<p>at</p>
+<p>the</p>
+<p>readout</p>
+<p>stage</p>
+<p>as</p>
+<p>the</p>
+<p>reservoir</p>
+<p>dynamics</p>
+<p>are</p>
+<p>fixed</p>
+<p>the</p>
+<p>second</p>
+<p>is</p>
+<p>that</p>
+<p>the</p>
+<p>computational</p>
+<p>power</p>
+<p>of</p>
+<p>naturally</p>
+<p>available</p>
+<p>systems</p>
+<p>both</p>
+<p>classical</p>
+<p>and</p>
+<p>quantum</p>
+<p>mechanical</p>
+<p>can</p>
+<p>be</p>
+<p>used</p>
+<p>to</p>
+<p>reduce</p>
+<p>the</p>
+<p>effective</p>
+<p>computational</p>
+<p>cost</p>
+<p>here's</p>
+<p>some</p>
+<p>stable</p>
+<p>diffusion</p>
+<p>reservoir</p>
+<p>computing</p>
+<p>active</p>
+<p>inference</p>
+<p>neural</p>
+<p>network</p>
+<p>so</p>
+<p>this</p>
+<p>would be</p>
+<p>interesting</p>
+<p>to discuss</p>
+<p>and I</p>
+<p>remember</p>
+<p>some</p>
+<p>act</p>
+<p>institute</p>
+<p>participants</p>
+<p>who are</p>
+<p>specifically</p>
+<p>interested</p>
+<p>empirical</p>
+<p>analyses</p>
+<p>and</p>
+<p>hypotheses</p>
+<p>they</p>
+<p>write</p>
+<p>the</p>
+<p>equivalence</p>
+<p>between</p>
+<p>neural</p>
+<p>network</p>
+<p>dynamics</p>
+<p>and</p>
+<p>gradient</p>
+<p>flows</p>
+<p>on</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>is</p>
+<p>empirically</p>
+
+<p>testable</p>
+<p>using</p>
+<p>electrophysiological</p>
+<p>recordings</p>
+<p>or</p>
+<p>functional</p>
+<p>imaging</p>
+<p>of</p>
+<p>brain</p>
+<p>activity</p>
+<p>so</p>
+<p>then</p>
+<p>another</p>
+<p>summarization</p>
+<p>crucially</p>
+<p>the</p>
+<p>proposed</p>
+<p>equivalence</p>
+<p>guarantees</p>
+<p>that</p>
+<p>an</p>
+<p>arbitrary</p>
+<p>neural</p>
+<p>network</p>
+<p>that</p>
+<p>minimizes</p>
+<p>its</p>
+<p>cost</p>
+<p>function</p>
+<p>possibly</p>
+<p>implemented</p>
+<p>in</p>
+<p>biological</p>
+<p>organisms</p>
+<p>or</p>
+<p>neuromorphic</p>
+<p>hardware</p>
+<p>can be</p>
+<p>cast as</p>
+<p>performing</p>
+<p>variational</p>
+<p>Bayesian</p>
+<p>inference</p>
+<p>so</p>
+<p>to</p>
+<p>state</p>
+<p>it</p>
+<p>a few</p>
+<p>more</p>
+<p>times</p>
+<p>in</p>
+<p>the</p>
+<p>final</p>
+<p>paragraph</p>
+<p>in</p>
+<p>summary</p>
+<p>a</p>
+<p>class</p>
+<p>of</p>
+<p>biologically</p>
+<p>plausible</p>
+<p>cost</p>
+<p>functions</p>
+<p>for</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>can be</p>
+<p>cast</p>
+<p>as</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>formal</p>
+<p>correspondences</p>
+<p>exist</p>
+<p>between</p>
+<p>priors</p>
+<p>posteriors</p>
+<p>and</p>
+<p>cost</p>
+<p>functions</p>
+<p>this</p>
+<p>means</p>
+<p>that</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>that</p>
+<p>optimize</p>
+<p>their</p>
+<p>cost</p>
+<p>functions</p>
+<p>implicitly</p>
+<p>perform</p>
+<p>active</p>
+<p>inference</p>
+<p>this</p>
+<p>approach</p>
+<p>enables</p>
+<p>identification</p>
+<p>of the</p>
+<p>implicit</p>
+<p>generative</p>
+<p>model</p>
+<p>and</p>
+<p>reconstruction</p>
+<p>of</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>that</p>
+<p>neural</p>
+<p>networks</p>
+<p>employ</p>
+<p>this</p>
+<p>means</p>
+<p>that</p>
+<p>in</p>
+<p>principle</p>
+<p>neural</p>
+<p>activity</p>
+<p>behavior</p>
+<p>and</p>
+<p>learning</p>
+<p>through</p>
+<p>plasticity</p>
+<p>can be</p>
+<p>predicted</p>
+<p>under</p>
+<p>Bayes</p>
+<p>optimality</p>
+<p>assumptions</p>
+<p>there's</p>
+<p>a code</p>
+<p>availability</p>
+<p>statement</p>
+<p>the</p>
+<p>MATLAB</p>
+<p>scripts</p>
+<p>are</p>
+<p>available</p>
+<p>at</p>
+<p>github</p>
+<p>in</p>
+<p>the</p>
+<p>repo</p>
+<p>of</p>
+<p>the</p>
+<p>first</p>
+<p>author</p>
+<p>and</p>
+<p>it</p>
+<p>would</p>
+<p>be</p>
+<p>awesome</p>
+<p>for</p>
+<p>the</p>
+<p>author</p>
+<p>or</p>
+<p>anyone</p>
+<p>to</p>
+<p>bring</p>
+<p>this</p>
+<p>working</p>
+<p>MATLAB</p>
+<p>script</p>
+<p>up</p>
+<p>and see</p>
+<p>if we</p>
+<p>could do</p>
+<p>some</p>
+<p>real</p>
+<p>time</p>
+<p>active</p>
+<p>inference</p>
+<p>methods</p>
+<p>then</p>
+<p>as</p>
+<p>mentioned</p>
+<p>earlier</p>
+<p>from</p>
+<p>the</p>
+<p>roadmap</p>
+<p>the</p>
+<p>methods</p>
+<p>are</p>
+<p>following</p>
+<p>the</p>
+<p>discussion</p>
+<p>I'll</p>
+<p>just</p>
+<p>show</p>
+<p>the</p>
+<p>equations</p>
+<p>but not</p>
+<p>go into</p>
+<p>any</p>
+<p>details</p>
+<p>because</p>
+<p>there's</p>
+<p>not</p>
+<p>time</p>
+<p>nor</p>
+<p>familiarity</p>
+<p>so</p>
+<p>those</p>
+<p>who</p>
+<p>have</p>
+<p>more</p>
+<p>of</p>
+<p>one</p>
+<p>or</p>
+<p>the</p>
+<p>other</p>
+<p>would</p>
+<p>be</p>
+<p>welcome</p>
+<p>to</p>
+<p>fill in</p>
+<p>some</p>
+<p>dots</p>
+<p>because</p>
+<p>this</p>
+<p>is a</p>
+<p>really</p>
+<p>awesome</p>
+<p>and</p>
+<p>important</p>
+<p>paper</p>
+<p>so I</p>
+<p>hope</p>
+<p>that</p>
+<p>it</p>
+<p>can</p>
+<p>be</p>
+<p>interpreted</p>
+<p>and</p>
+<p>critiqued</p>
+<p>and elaborated</p>
+<p>on</p>
+<p>and so</p>
+<p>on</p>
+<p>by those</p>
+<p>with</p>
+<p>familiarity</p>
+<p>in</p>
+<p>both</p>
+<p>sides</p>
+<p>of that</p>
+<p>free</p>
+<p>energy</p>
+<p>loss</p>
+<p>function</p>
+<p>equation</p>
+<p>one</p>
+<p>generative</p>
+<p>model</p>
+<p>section</p>
+<p>many</p>
+<p>details</p>
+<p>are</p>
+<p>provided</p>
+<p>equation</p>
+<p>10</p>
+<p>is</p>
+<p>shown</p>
+<p>it's</p>
+<p>a</p>
+<p>larger</p>
+<p>unpacking</p>
+<p>of the</p>
+<p>generative</p>
+<p>model</p>
+<p>section</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>many</p>
+<p>details</p>
+<p>are</p>
+<p>provided</p>
+<p>equation</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>and</p>
+<p>15</p>
+<p>section</p>
+<p>inference</p>
+<p>and</p>
+<p>learning</p>
+<p>details</p>
+<p>are</p>
+<p>provided</p>
+<p>equations</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>then</p>
+<p>section</p>
+<p>on</p>
+<p>neural</p>
+<p>networks</p>
+<p>so</p>
+<p>there's</p>
+<p>just</p>
+<p>some</p>
+<p>interesting</p>
+<p>writing</p>
+<p>here</p>
+<p>so</p>
+<p>I</p>
+<p>wanted</p>
+<p>to</p>
+<p>highlight</p>
+<p>that</p>
+<p>in</p>
+<p>this</p>
+<p>section</p>
+<p>we</p>
+<p>elaborate</p>
+<p>the</p>
+<p>one-to-one</p>
+<p>correspondences</p>
+<p>between</p>
+<p>components</p>
+<p>of the</p>
+<p>canonical</p>
+<p>neural</p>
+<p>networks</p>
+<p>and</p>
+<p>variational</p>
+<p>bays</p>
+<p>via</p>
+<p>an</p>
+<p>analytically</p>
+<p>tractable</p>
+<p>model</p>
+<p>so</p>
+<p>that's</p>
+<p>the</p>
+<p>figure</p>
+<p>three</p>
+<p>that</p>
+<p>we've</p>
+<p>been</p>
+<p>returning</p>
+<p>to</p>
+<p>neurons</p>
+<p>respond</p>
+<p>quickly</p>
+<p>to a</p>
+<p>continuous</p>
+<p>stimulus</p>
+<p>stream</p>
+<p>with a</p>
+<p>timescale</p>
+<p>faster than</p>
+<p>typical</p>
+<p>changes</p>
+<p>in</p>
+<p>sensory</p>
+<p>input</p>
+<p>for</p>
+<p>instance</p>
+<p>a</p>
+<p>peak</p>
+<p>of</p>
+<p>spiking</p>
+<p>neurons</p>
+<p>in the</p>
+<p>visual</p>
+<p>cortex</p>
+<p>of</p>
+<p>v1</p>
+<p>appears</p>
+<p>within</p>
+<p>50</p>
+<p>and</p>
+<p>80</p>
+<p>milliseconds</p>
+<p>after</p>
+<p>a</p>
+<p>visual</p>
+<p>stimulation</p>
+<p>citation</p>
+<p>6263</p>
+<p>which is</p>
+<p>substantially</p>
+<p>faster</p>
+<p>than the</p>
+<p>temporal</p>
+<p>autocorrelation</p>
+<p>timescale</p>
+<p>of</p>
+<p>natural</p>
+<p>image</p>
+<p>sequences</p>
+<p>about</p>
+<p>500</p>
+<p>milliseconds</p>
+<p>citation</p>
+<p>64</p>
+<p>65</p>
+<p>so</p>
+<p>that's</p>
+<p>pretty</p>
+<p>interesting</p>
+<p>what is</p>
+<p>the</p>
+<p>temporal</p>
+<p>autocorrelation</p>
+<p>timescale</p>
+<p>of</p>
+<p>natural</p>
+<p>sequences</p>
+<p>what</p>
+<p>timescale</p>
+<p>do</p>
+<p>neural</p>
+<p>firing</p>
+<p>and</p>
+<p>neuroplasticity</p>
+<p>etc</p>
+<p>processes</p>
+<p>actually</p>
+<p>occur</p>
+<p>at</p>
+<p>and</p>
+<p>when</p>
+<p>might</p>
+<p>some</p>
+<p>type</p>
+<p>of</p>
+<p>function</p>
+<p>at a</p>
+<p>given</p>
+<p>timescale</p>
+<p>be</p>
+<p>understood</p>
+<p>to be</p>
+<p>functional</p>
+<p>or not</p>
+<p>thus</p>
+<p>in other</p>
+<p>words</p>
+<p>downstream</p>
+<p>of the</p>
+<p>fact that</p>
+<p>neurons</p>
+<p>respond</p>
+<p>quickly</p>
+<p>at a</p>
+<p>timescale</p>
+<p>faster than</p>
+<p>typical</p>
+<p>changes in</p>
+<p>sensory</p>
+<p>input</p>
+<p>we consider</p>
+<p>the case</p>
+<p>where the</p>
+<p>neural</p>
+<p>activity</p>
+<p>converges</p>
+<p>to a</p>
+<p>fixed</p>
+<p>point</p>
+<p>given</p>
+<p>a</p>
+<p>sensory</p>
+<p>stimulus</p>
+<p>we</p>
+<p>note</p>
+<p>that the</p>
+<p>present</p>
+<p>equivalence</p>
+<p>is derived</p>
+<p>from the</p>
+<p>differential</p>
+<p>equations</p>
+<p>equation</p>
+<p>six</p>
+<p>but not</p>
+<p>from its</p>
+<p>fixed</p>
+<p>point</p>
+<p>thus</p>
+<p>the</p>
+<p>equivalence</p>
+<p>holds</p>
+<p>true</p>
+<p>irrespective</p>
+<p>of the</p>
+<p>time</p>
+<p>constant</p>
+<p>of</p>
+<p>neurons</p>
+<p>to</p>
+<p>rephrase</p>
+<p>neural</p>
+<p>networks</p>
+<p>with a</p>
+<p>large</p>
+<p>time</p>
+<p>constant</p>
+<p>!</p>
+<p>formally</p>
+<p>correspond</p>
+<p>to</p>
+<p>Bayesian</p>
+<p>belief</p>
+<p>updating</p>
+<p>with a</p>
+<p>large</p>
+<p>time</p>
+<p>constant</p>
+<p>which</p>
+<p>implies</p>
+<p>an</p>
+<p>insufficient</p>
+<p>coverage</p>
+<p>of the</p>
+<p>posterior</p>
+<p>beliefs</p>
+<p>pretty</p>
+<p>interesting</p>
+<p>related to</p>
+<p>learning</p>
+<p>rates</p>
+<p>and</p>
+<p>Bayesian</p>
+<p>updating</p>
+<p>rates</p>
+<p>and all</p>
+<p>of the</p>
+<p>nooks and</p>
+<p>crannies</p>
+<p>of Bayesian</p>
+<p>inference</p>
+<p>and the</p>
+<p>challenges</p>
+<p>associated</p>
+<p>with dynamic</p>
+<p>uncertain</p>
+<p>rugged</p>
+<p>fitness</p>
+<p>and</p>
+<p>free energy</p>
+<p>landscapes</p>
+<p>these</p>
+<p>optimization</p>
+<p>challenges</p>
+<p>which are</p>
+<p>addressed</p>
+<p>differently</p>
+<p>methodologically</p>
+<p>culturally</p>
+<p>etc.</p>
+<p>in the</p>
+<p>variational</p>
+<p>Bayesian</p>
+<p>and in</p>
+<p>the</p>
+<p>neural</p>
+<p>cases</p>
+<p>they</p>
+<p>have to</p>
+<p>deal with</p>
+<p>time</p>
+<p>and so</p>
+<p>all of</p>
+<p>those</p>
+<p>different</p>
+<p>nooks and</p>
+<p>crannies</p>
+<p>mentioned</p>
+<p>like</p>
+<p>catastrophic</p>
+<p>learning</p>
+<p>catastrophic</p>
+<p>forgetting</p>
+<p>simply</p>
+<p>memory</p>
+<p>anticipation</p>
+<p>attention</p>
+<p>local</p>
+<p>maxima</p>
+<p>choosing</p>
+<p>when to</p>
+<p>play</p>
+<p>all these</p>
+<p>higher order</p>
+<p>questions</p>
+<p>are</p>
+<p>connected</p>
+<p>here</p>
+<p>does that</p>
+<p>make it</p>
+<p>what kind</p>
+<p>of a</p>
+<p>problem</p>
+<p>space</p>
+<p>now</p>
+<p>or just</p>
+<p>what kind</p>
+<p>of space</p>
+<p>pretty</p>
+<p>interesting</p>
+<p>and</p>
+<p>equation</p>
+<p>19</p>
+<p>20</p>
+<p>21</p>
+<p>22</p>
+<p>23</p>
+<p>they</p>
+<p>have</p>
+<p>some</p>
+<p>more</p>
+<p>details</p>
+<p>on</p>
+<p>the</p>
+<p>simulation</p>
+<p>maybe</p>
+<p>we</p>
+<p>could</p>
+<p>see</p>
+<p>the</p>
+<p>simulation</p>
+<p>go</p>
+<p>and</p>
+<p>in</p>
+<p>the</p>
+<p>last</p>
+<p>section</p>
+<p>data</p>
+<p>analysis</p>
+<p>so</p>
+<p>this</p>
+<p>is</p>
+<p>kind</p>
+<p>of</p>
+<p>returning</p>
+<p>to</p>
+<p>that</p>
+<p>point</p>
+<p>about</p>
+<p>the</p>
+<p>time</p>
+<p>constants</p>
+<p>in</p>
+<p>Bayesian</p>
+<p>and</p>
+<p>neural</p>
+<p>network</p>
+<p>systems</p>
+<p>when the</p>
+<p>belief</p>
+<p>updating</p>
+<p>of implicit</p>
+<p>priors</p>
+<p>d and e</p>
+<p>is slow</p>
+<p>in relation</p>
+<p>to</p>
+<p>experimental</p>
+<p>observations</p>
+<p>d and e</p>
+<p>which are</p>
+<p>encoded</p>
+<p>by</p>
+<p>phi and</p>
+<p>psi</p>
+<p>can be</p>
+<p>viewed as</p>
+<p>being</p>
+<p>fixed</p>
+<p>over a</p>
+<p>short</p>
+<p>period</p>
+<p>of</p>
+<p>time</p>
+<p>as</p>
+<p>an</p>
+<p>analogy</p>
+<p>to</p>
+<p>homeostatic</p>
+<p>plasticity</p>
+<p>over</p>
+<p>longer</p>
+<p>timescales</p>
+<p>66</p>
+<p>homeostatic</p>
+<p>plasticity</p>
+<p>in the</p>
+<p>developing</p>
+<p>nervous</p>
+<p>system</p>
+<p>2004</p>
+<p>very</p>
+<p>interesting</p>
+<p>in light</p>
+<p>of our</p>
+<p>recent</p>
+<p>discussions</p>
+<p>on</p>
+<p>allostasis</p>
+<p>and other</p>
+<p>topics</p>
+<p>thus</p>
+<p>phi and</p>
+<p>psi</p>
+<p>can be</p>
+<p>statistically</p>
+<p>estimated</p>
+<p>by a</p>
+<p>conventional</p>
+<p>Bayesian</p>
+<p>inference</p>
+<p>or</p>
+<p>maximum</p>
+<p>likelihood</p>
+<p>estimation</p>
+<p>given a</p>
+<p>flat</p>
+<p>prior</p>
+<p>based</p>
+<p>on</p>
+<p>empirically</p>
+<p>observed</p>
+<p>neuronal</p>
+<p>responses</p>
+<p>in this</p>
+<p>case</p>
+<p>the</p>
+<p>estimators</p>
+<p>of</p>
+<p>phi and</p>
+<p>psi</p>
+<p>are</p>
+<p>obtained</p>
+<p>as</p>
+<p>follows</p>
+<p>nice</p>
+<p>equation</p>
+<p>number</p>
+<p>24</p>
+<p>mentioned</p>
+<p>earlier</p>
+<p>so that</p>
+<p>will be</p>
+<p>definitely</p>
+<p>one to</p>
+<p>look into</p>
+<p>more</p>
+<p>well</p>
+<p>I hope</p>
+<p>you found</p>
+<p>this a</p>
+<p>useful</p>
+<p>and</p>
+<p>interesting</p>
+<p>dot</p>
+<p>zero</p>
+<p>I'm</p>
+<p>looking</p>
+<p>forward</p>
+<p>to the</p>
+<p>discussion</p>
+<p>with</p>
+<p>the</p>
+<p>author</p>
+<p>and</p>
+<p>again</p>
+<p>any</p>
+<p>other</p>
+<p>institute</p>
+<p>participants</p>
+<p>or</p>
+<p>those</p>
+<p>with</p>
+<p>knowledge</p>
+<p>or</p>
+<p>strong</p>
+<p>feelings</p>
+<p>to</p>
+<p>express</p>
+<p>about</p>
+<p>neural</p>
+<p>networks</p>
+<p>active</p>
+<p>inference</p>
+<p>applied</p>
+<p>active</p>
+<p>inference</p>
+<p>computational</p>
+<p>modeling</p>
+<p>of perception</p>
+<p>cognition</p>
+<p>and action</p>
+<p>neural</p>
+<p>networks</p>
+<p>in the</p>
+<p>wild</p>
+<p>AI</p>
+<p>ethics</p>
+<p>all</p>
+
+<p>these</p>
+<p>different</p>
+<p>areas</p>
+<p>can</p>
+<p>hopefully</p>
+<p>have</p>
+<p>a nice</p>
+<p>discussion</p>
+<p>in</p>
+<p>51.1</p>
+<p>and</p>
+<p>.2</p>
+<p>that'll</p>
+<p>be the</p>
+<p>last</p>
+<p>paper</p>
+<p>streams</p>
+<p>for</p>
+<p>2022</p>
+<p>there will</p>
+<p>still be a</p>
+<p>few</p>
+<p>guest</p>
+<p>streams</p>
+<p>upcoming</p>
+<p>so</p>
+<p>those</p>
+<p>discussions</p>
+<p>will</p>
+<p>close the</p>
+<p>paper</p>
+<p>focused</p>
+<p>prepared</p>
+<p>live</p>
+<p>streams</p>
+<p>for</p>
+<p>2022</p>
+<p>and</p>
+<p>yeah</p>
+<p>if you</p>
+<p>want to</p>
+<p>be more</p>
+<p>involved</p>
+<p>with live</p>
+<p>streams</p>
+<p>whenever</p>
+<p>you're</p>
+<p>listening</p>
+<p>to</p>
+<p>this</p>
+<p>join</p>
+<p>or</p>
+<p>recommend</p>
+<p>someone</p>
+<p>to join</p>
+<p>or help</p>
+<p>in any</p>
+<p>number</p>
+<p>of other</p>
+<p>ways</p>
+<p>just</p>
+<p>listening</p>
+<p>and learning</p>
+<p>is</p>
+<p>awesome</p>
+<p>and we</p>
+<p>also</p>
+<p>really</p>
+<p>look</p>
+<p>forward</p>
+<p>to</p>
+<p>those</p>
+<p>who</p>
+<p>want</p>
+<p>to</p>
+<p>help</p>
+<p>make</p>
+<p>some</p>
+<p>of</p>
+<p>these</p>
+<p>connections</p>
+<p>that</p>
+<p>are</p>
+<p>latent</p>
+<p>and</p>
+<p>sometimes</p>
+<p>exposed</p>
+<p>in</p>
+<p>these</p>
+<p>papers</p>
+<p>and</p>
+<p>conversations</p>
+<p>and</p>
+<p>with</p>
+<p>a few</p>
+<p>motivated</p>
+<p>people</p>
+<p>who</p>
+<p>want</p>
+<p>to</p>
+<p>connect</p>
+<p>for</p>
+<p>example</p>
+<p>to</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>communities</p>
+<p>and</p>
+<p>those</p>
+<p>who</p>
+<p>can</p>
+<p>facilitate</p>
+<p>discussions</p>
+<p>on</p>
+<p>these</p>
+<p>topics</p>
+<p>that</p>
+<p>would</p>
+<p>be</p>
+<p>awesome</p>
+<p>just</p>
+<p>using</p>
+<p>my</p>
+<p>final</p>
+<p>thoughts</p>
+<p>on</p>
+<p>this</p>
+<p>dot</p>
+<p>zero</p>
+<p>because</p>
+<p>it's</p>
+<p>always</p>
+<p>great</p>
+<p>to</p>
+<p>have</p>
+<p>others</p>
+<p>also</p>
+<p>join</p>
+<p>in</p>
+<p>the</p>
+<p>preparation</p>
+<p>for</p>
+<p>the</p>
+<p>dot</p>
+<p>zero</p>
+<p>so</p>
+<p>just</p>
+<p>want</p>
+<p>to</p>
+<p>add</p>
+<p>that</p>
+<p>note</p>
+<p>on</p>
+<p>this</p>
+<p>rare</p>
+<p>solo</p>
+<p>stream</p>
+<p>so</p>
+<p>thanks</p>
+<p>again</p>
+<p>looking</p>
+<p>forward</p>
+<p>to</p>
+<p>talking</p>
+<p>or</p>
+<p>seeing</p>
+<p>you</p>
+<p>later</p>
+<p>bye</p>
+<p>!</p>
+</article>
+</body>
+</html>

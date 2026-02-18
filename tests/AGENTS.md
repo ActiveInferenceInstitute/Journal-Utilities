@@ -2,7 +2,7 @@
 
 ## Test Suite Overview
 
-35 tests across unit and integration suites.
+272 tests across unit and integration suites.
 
 ## Running Tests
 
@@ -11,10 +11,10 @@
 uv run pytest tests/ -v
 
 # Unit tests only (no API keys needed)
-uv run pytest tests/journalrag/unit/ -v
+uv run pytest tests/journal_utilities/rag/unit/ -v
 
 # Integration tests (requires COHERE_API_KEY)
-uv run pytest tests/journalrag/integration/ -v -s
+uv run pytest tests/journal_utilities/rag/integration/ -v -s
 ```
 
 ## Key Fixtures
@@ -25,7 +25,11 @@ From `tests/conftest.py`:
 - `sample_transcript_file` - Sample transcript for testing
 - `images_dir` - Test images directory
 
-From `tests/journalrag/conftest.py`:
+From `tests/journal_utilities/conftest.py`:
+
+- `sample_transcript` - Sample transcript text
+
+From `tests/journal_utilities/rag/conftest.py`:
 
 - `sample_concept` - Test Concept model
 - `sample_researcher` - Test Researcher model
@@ -34,12 +38,12 @@ From `tests/journalrag/conftest.py`:
 
 ## Test Patterns
 
-**Unit tests use mocks:**
+**Unit tests use mocks where needed:**
 
 ```python
 from unittest.mock import AsyncMock, patch
 
-@patch("journalrag.graph.SurrealDBClient")
+@patch("journal_utilities.rag.graph.SurrealDBClient")
 async def test_pipeline(mock_client):
     mock_client.return_value.connect = AsyncMock()
     # ...
@@ -56,6 +60,6 @@ async def test_real_extraction():
 
 ## Adding Tests
 
-1. Unit tests: `tests/journalrag/unit/test_*.py`
-2. Integration tests: `tests/journalrag/integration/test_*.py`
-3. Journal utilities tests: `tests/journal_utilities/test_*.py`
+1. Pipeline tests: `tests/journal_utilities/test_*.py`
+2. RAG unit tests: `tests/journal_utilities/rag/unit/test_*.py`
+3. RAG integration tests: `tests/journal_utilities/rag/integration/test_*.py`

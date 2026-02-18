@@ -1,0 +1,998 @@
+---
+title: "ActInf Livestream #048.1 ~ "Communication as Socially Extended Active Inference""
+category: "Livestream"
+series: "Livestream_048"
+episode: "1"
+duration: "1:54:35"
+url: "https://www.youtube.com/watch?v=nWFM5zrdmG8"
+views: 207
+exported_at: "2026-02-18T22:37:37.914827+00:00"
+format: markdown
+---
+
+# ActInf Livestream #048.1 ~ "Communication as Socially Extended Active Inference"
+
+All right.
+Welcome, everyone. It is September 7th, 2022. We're here in ACT-INF livestream number 48.1 in the second discussion on the paper, Communication as Socially Extended Active Inference, an Ecological Approach to Communicative Behavior.
+Welcome to the Active Inference Institute. We are a participatory online institute that is communicating, learning, and practicing applied active inference.
+This is a recorded and an archived livestream, so please provide us with feedback so we can improve our work.
+All backgrounds and perspectives are welcome, and we'll be following video etiquette for livestream.
+Head over to activeinference.org to learn more about getting involved in different learning groups and projects at the institute.
+Well, we're here in stream number 48.1, continuing our discussion on communication, active inference, ecological approaches, and so on.
+This is going to be a really exciting discussion, and we're appreciative of the first author joining us.
+We'll jump right in with some introductions and then on to the discussion.
+So if you're watching live, feel free to write any questions in the live chat.
+And I know that on our side, we have a lot of things to explore, and also, of course, looking forward to learning more and seeing where it goes.
+So I'm Daniel. I'm a researcher in California, and I guess the ecosystem of today is Chaparral, because it's very warm where I am.
+And so I was thinking about how different ecosystems and ecotones might facilitate different kinds of communication in a regional way.
+And I'll pass it to Dean.
+Thanks, Daniel. I'm Dean. I'm in the Rocky Mountains in Western Canada right now, and it's – what would you be in Fahrenheit?
+It's about 45 Fahrenheit this morning, but it's going to warm up to about 90.
+So, yeah, there's a bit of an ecology going on around here, too.
+I think it's going to be a really interesting day, because I think what we're going to do is take this ecological approach and lens.
+And with the background of everybody here, we're going to really be able to pull up a lot of different interesting things
+that otherwise we would not pay attention to if we only got stuck on the transmission piece.
+And I'll pass it down to Blue.
+Hi, I'm Blue. I am a researcher in sunny, beautiful New Mexico at the other end of the Rocky Mountains from Dean.
+Like, literally, if you just go straight down, I'm in the Sangre de Cristos.
+And we are recovering here from a, like, torrential summer of rain.
+And I think, like, maybe we're finally getting back to some sun.
+It's starting to get hot now, like, finally.
+Like, so I think that the sun is here to stay.
+We still have a hot month, I guess.
+But the desert ecosystem and, you know, the Chihuahuan desert is special and fun and always excites me.
+And I'm interested, too, in this paper in how it more applies broadly, the communication as compared to the Vassal paper.
+Like, can we then apply to animals and also to, like, maybe human-animal interactions and what those look like?
+And maybe not only cooperative communication, but also, like, competitive communication.
+And I think, like, extending this work into those avenues is interesting and exciting.
+Awesome. Thank you, Blue.
+So, Remy, welcome.
+And please take it away.
+Feel free to introduce yourself and give any context on the paper.
+All right.
+So, thank you for having me.
+I'm really pleased to see that we'll discuss our paper.
+I'm Remy Tidon.
+I'm a researcher based in Montreal at UCAM.
+And, yeah, it's sunny.
+It's a nice day here, too.
+So, yeah.
+The paper was an attempt to devise a view of communication that could be like a starting point for ecological and inactive approaches to language and communication.
+The problem that we saw is that in most language sciences, like linguistics, in philosophy of language, in mainstream philosophy of language and in biology of communication, most researchers, most people adopt, like, automatically a view of communication in which communication is essentially transmitting information.
+Transmitting information or transmitting content or an idea to another being.
+So, usually, like, in linguistic communication, that would be like, I have the belief that it's a sunny day outside.
+I say it's a sunny day outside.
+And then, by doing this, I'm transmitting to you the belief that it's a sunny day outside.
+So, that's the basic view of communication, the transmission view that is more or less adopted by everybody in linguistics and in cognitive science, but a lot of people, at least.
+And that's the basic view of communication.
+
+And that's the basic view of communication that is problematic from an inactive and ecological perspective because it relies on the notion of content, on the notion of representation.
+representation to transmit a content, I must have a representation in my head, and then I can transmit it to you so that you can entertain this representation in your head.
+But, as is quite well known, inactive and ecological approaches to cognition reject the notion of representation, the notion of content as a basic building block of cognition.
+So, the transmission view is a problem from an inactive and ecological view.
+And so, what we tried to do was to develop a view of communication from which ecological and inactive approaches could start to understand language and communication without having to rely on the notion of content or representation.
+So, that's like the basic motivation of the paper.
+That's what we were trying to do.
+And we thought that active inference and especially its ecological interpretation could be useful for doing that.
+And, yeah, the thing that you mentioned, Blue, yeah, the aim was to devise a view of communication that could be perfectly general.
+So, that could be applied to animal communication, maybe communication between cells at a more small scale level.
+And eventually, maybe communication between groups at a larger scale.
+So, that's that the view, the attempt was to produce a view of communication that is perfectly general and that can be precise along the way so that we can, for instance, precise the conception of communication to apply it to cooperative communication, for instance, which is the kind of communication that is characteristic of human communicative interaction.
+And that was treated, and that was treated notably in the vessel paper to which you alluded to.
+So, that's the aim of the paper.
+And so, because of its generality, it's a paper that is really in a way superficial because it's, it really treats a lot of topics really quickly.
+But that was like a big roadmap for a view of communication that could be used by ecological and active researchers.
+So, that was essentially what we tried to do in this paper.
+Awesome.
+And just one more follow-up question we often ask would be, how did you come to use active inference?
+What about the collaboration or your direction led to the fusion of these approaches?
+Were you studying communication more broadly and came across active inference or vice versa?
+Yeah.
+So, earlier in my, in my academic career, so to speak, I was really more in philosophy of mind, so more of a philosophical background and not really in cognitive science.
+So, that's where I became acquainted with like issues about content, about meaning, etc.
+And then I came at UCAM work with Pierre Poirier, which is really more centered in philosophy of cognitive science and was really interested in predictive processing theories and eventually in active inference framework because of its link with predictive processing.
+So, coming at UCAM with Pierre Poirier, I really became acquainted with these ideas, with these frameworks.
+And that's where I linked these new frameworks with my earlier interest in language and communication that came from my background in philosophy of mind.
+So, that's kind of how it happened and talking with Pierre and the community of researchers at UCAM, who is really using the predictive processing and active inference frameworks.
+That's how, like, it all came together.
+Awesome.
+Well, many places to pick up.
+Many places to pick up.
+Perhaps Dean first, if you'd like to.
+Well, okay, I'll start with a question.
+If we're going to take an activist approach to this, or we're going to look at what communication is through that philosophical approach and take all that active inference affords in terms of opening up.
+What communication is.
+Maybe, Rumi, could you talk a little bit about how people who want to argue that there is no content.
+What, how then, what, how could we then describe our experiences, the things that we've played out, the things that we're going to play towards, but mostly what I'm curious about is the things that have been played.
+Because we've got a record of that we don't have to call it content.
+But I've had a lot of conversations with a lot of people who live in the in activist thinking community.
+And they, they come up with, they twist a whole bunch of things around, but they really have a hard time coming up with an argument that says, my experiences.
+Aren't something, something.
+So maybe you could talk to us a little bit about that.
+Yeah, so that's a good question.
+I think that's one of the answers that I could provide is that from my perspective.
+There are some people in the ecological and inactive circles who refuse all reference to content.
+They say content doesn't exist at all.
+But that's not my perspective.
+From my perspective, content is just not at the basic level of cognition.
+It's like, it's kind of, I don't know if you're familiar with the work of Hutto and Mayen.
+There are, these are radical inactivists.
+And they claim that their content is not like at the fundamental level.
+It's something that gets added up once there are a particular kind of social normative practices that can give rise to content.
+So that's my view.
+I think that we can describe the basic cognitive functioning of organisms and animals and in many cases, humans, without the use of the notion of content, of the notion of representation.
+I think that we can do that.
+But at some point in our social interactions, there are multiple things that can happen that will give rise to content, to representation.
+And that's a complicated story.
+That's something that I might come back to later on.
+But the idea is that content is not at the basic level.
+It's not something that we can presuppose in a theory of communication.
+It's something that can be explained by a theory of communication.
+But it's not something that can be taken as something that can explain.
+It's something that has to be explained, so to speak.
+I don't know if I'm clear.
+So we can, I think, use the notion of content to characterize the kind of experience, the kind of phenomena that you allude to.
+But this notion must not be taken as granted.
+That's the view that I take.
+And I think there are some ways to explain how content arrives on the scene.
+But it's not something that can be taken as granted in a theory of communication.
+And that's what I'm critiquing in this paper.
+It's like in traditional transmission view of communication, people presuppose that there is content, that there is representation.
+And communication is defined as the transmitting of this content, of this representation.
+What I'm saying is that representation is not something that can be used as this basal, explanatory notion.
+It's something we have to describe communication without the use of this notion.
+And then with various tools of social interaction and particularly social normative practices, we can explain how content can then arise.
+So that's, I can, if you want to give more detail on that front, but that's my two cents.
+So content exists, it's not just at the basic level of communication.
+Awesome.
+That reminds me of, and to stay on our philosophy, wavelength, the difference between the explanandum and the explanands.
+So just quoting Wikipedia, an explanandum is a sentence describing a phenomena that is to be explained.
+And the explanandums are the sentences adduced as explanations of that phenomena.
+And so it's a very interesting difference amongst these theoretical views and framings, which I'm sure we'll be able to unpack a lot of implications of, that content as a phenomena or descriptive category, sign or symbol, we could have many ways of even describing what that is.
+However, under the transmission view, you're suggesting that content is seen as what is able to explain different phenomena like communication or cooperative communication, no matter how far out you go in the sub discussions content is doing something to explain.
+Whereas in the radical inactivist approach, radical meaning from the root.
+So with inactivism at the root, that doesn't mean that there couldn't be a branch that summarizes and reflects content, but it's something that is explained through inactive means, rather than something that we're going to put like the cart before the horse, and then use the semantic content representation view, and the transmission associated with it, to then try to explain inactivism.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+
+Dean.
+Dean.
+
+Dean.
+Dean.
+
+Dean.
+Dean.
+
+Dean.
+Dean.
+Dean.
+
+Dean.
+Dean.
+Dean.
+Dean.
+
+Dean.
+
+Dean.
+
+Dean.
+and context in the, I don't know if you mean in general or in the specific way in which we use it in the paper.
+So how you use it in the paper?
+Yeah. So context is a set of elements that are relevant to the, to the, to a joint action.
+So that's how we use it, a context, a context of action in particular in the paper, we're talking about joint action.
+So when two people or more people are performing a joint action, they're doing something together.
+There are going to be some elements, some events, some objects of the environment that will be relevant on which some action has to be done in order to advance the joint action.
+So the context is like the, this structured, special temporarily structured set of elements on which action has to be taken to progress the joint action.
+So that's the notion of context that we use in the paper. I don't know if that clarifies.
+Well, so it implies like, like the set of elements is therefore also content. Is that true?
+In, in, in the, in the, the paper, we, we don't think that it is that my describing it as a set of elements is a contentful description because I'm talking about it.
+And there's a content to the sentence of me who's saying that, that, that there's a set of elements, but the set itself, uh, uh, the, the thesis that we were pushing forward in the paper is that.
+It can be, uh, it can appear in the field of affordances of an organism without it, uh, having to represent, uh, it, uh, so that that's where, that's what we were going to, uh, in ecological psychology, uh, there's a work on the notion of a field of affordance.
+So it's like the, the, the set, the, the structured set of affordances, uh, to which, uh, uh, an organism is sensible.
+And, uh, it's like, uh, there, there, there are some elements that will, uh, drive its action, uh, the, uh, differentially depending on various internal factors.
+And this sensibility of an organism to its environment doesn't have to be, uh, characterized in terms of content.
+If we believe that the ecological psychologists to develop this notion.
+So this set of elements appears in a field of affordances and these, uh, these organisms who are sensible to their field of affordances, not have to entertain a representation of this set of elements.
+There's just sensible to their field of affordances.
+And that's how they respond to these sets of elements of their environment.
+So like, I, uh, maybe like when you talk about content, maybe that is what needs to actually be clarified.
+Like, so content is specifically.
+Some kind of semantic representation or semiotic representation, right?
+So it's something that is explicit, but like, can you, can you give me an example of the, what would be an element in like a set of elements?
+Like how, how, how is that also not like content?
+Yeah.
+These are, uh, uh, obviously, uh, complex questions, but, um, yeah, uh, typically, uh, an affordance is a, a, a relation between an element of the environment and an action capacity of an organism.
+And the, the, the, the, the thesis that is taken by an active, by a ecological psychologist, not everybody will agree with that, but it's that the perception of affordances, uh, does not need the mediation of a representation.
+You can directly be sensible to, uh, a certain, uh, pattern of energy, for instance, in the, uh, in the, uh, in the energy array around you.
+And you respond to this pattern of energy by, for instance, taking the affordance that is specified by, by, by this pattern of energy.
+And you don't have, it's not necessary to have a representation of the affordance to which you're sensible.
+It's something that you can directly perceive.
+And that's, uh, that's like a, a, a central idea of ecological psychology.
+Some people will disagree with that, will say that you cannot be sensible to an affordance if you don't represent it.
+So that, that's obviously something that you can argue for.
+Uh, but there's a lot of ecological psychologists who believe that you can be directly sensible to affordances, uh, of your environment just by responding to the, the energy array that is in your environment without needing, uh, to represent.
+And so, uh, in doing that, they say that we don't need.
+The notion of, uh, content or representation to characterize the way in which an organism is responsive to the affordances of its environment.
+And that's what we, uh, we presuppose in this paper, but obviously there are disagreements, uh, to be at there.
+There are people, obviously you think that, uh, uh, if an organism is to, uh, act on its environment, it has to be, to have a representation of its environment in order to act correctly.
+So that, that's obviously something that can be defended too.
+Well, great.
+Thank you so much.
+No, that's super helpful.
+Thanks.
+It makes me think of a tug of war game or just two people pulling on a rope.
+They're engaged in joint action, which is how action and activism are placed at the center of the account of context.
+One individual pulling the rope, they might be thinking or thinking that they think any number of things, but through the field of affordances being shaped through the regularities and the, um, I think arrays of energy that you described in the niche.
+That is going to alter the field of affordances of someone on the other side of the rope.
+And that could be mediated through their proprioception, or maybe the rope is now not graspable, but it was graspable previously.
+None of that requires a symbolic or even necessarily semantic component to be transmitted along with the rope pole.
+Maybe they had a pre-play and they said two tugs means this and three means that.
+And that can also reflect planning to communicate.
+However, in the act of communication, as we're exploring, we're putting action and the embodiment in the environment as primacy,
+and then seeing certain types of cognitive agents as being able to develop representation like properties on top of some physical regularities in the niche.
+Dean?
+I mean, what would you think of this idea?
+If you, if I were to, we haven't defined ecology here in this conversation,
+but if, if someone like me came along to you and said, um, can we define it as both, um, a process ecology as process and ecology as a, as a product,
+would you push back on that, on that ability to see it two, two ways?
+And then I guess on top, uh, on the general level to blues question, then can, can we, can we see it as content and context?
+This idea, this placeholder of ecology.
+If we keep it on that general level, can we have our cake and eat it too?
+Yeah.
+So, um, ecology here, uh, really refers to something specific.
+It's not, uh, ecology, um, in general, like in, in the, the branch of biology, uh, when, uh, in, uh, in philosophy of cognitive science,
+when we talk about ecological psychology, it's a particular, um, uh, movement that became, that, uh, that, uh, began with the, the work of, uh, of Gibson in the, the fifties, sixties, and seventies.
+And it's an approach to psychology that, uh, states that the, um, yeah, the, the cognition of animals is the matter of its direct relation with its environment.
+And it's a matter of the, uh, the, uh, the kind of skills that are exerted by this animal in, in its environment.
+And the, the, the, um, the central notion of, uh, ecological psychology is the notion of affordances.
+Affordances.
+An affordance is a possibility of action.
+It's, uh, a relation between an element of the environment and a skill that can be exercised on this element of the environment.
+And the, the thesis of Gibson and all the ecological psychologists that followed after that is that, um, uh, organisms and animals, uh, primarily perceive affordances in their environment.
+They don't perceive objects.
+They don't perceive, uh, events or properties that what they perceive first and foremost, first and foremost is, uh, uh, possibilities for action.
+And they are pushed and pulled by their environment in various way and responsive to their environment, uh, to take some affordances and don't not take some other affordances.
+And that's how that's like in a constant interaction with their environment, organisms will respond to the, the, these affordances.
+And do some, uh, do some things and, uh, will be, uh, attracted by some affordances will be pushed by some other affordances.
+And that's how an organism interacts with in environment.
+So that's ecology here really refers to that, uh, that body of ideas that came from the work of Gibson in ecological psychology.
+There are obviously links with, uh, ecological ecology more broadly in, in, in, uh, as a branch of biology, but it's really specifically the, the, the, like the, the, this, uh, this set of ideas, uh, linked to ecological psychology.
+And Gibson's work.
+Do you think that that, what you just described the possibility could be for people like yourself, both a product and a process?
+Is that possibility something that can be categorized two different ways at once?
+That's a good question.
+You, you mean like, uh, um, that is a category error to say it's only a process.
+That would be another way of asking the same questions.
+Mm-hmm I think that, uh, uh, conjugal psychologists would more, uh, prefer the description of, of, uh, the entire interaction of an, an organism with its environment in terms of process, because the, uh, organisms is always changing through its interaction with its environment.
+And obviously, uh, the organism is also changing the environment consciously as is described in, uh, in, uh, active inference accounts of niche construction.
+So there's always an evolving, uh, interaction in which the, uh, the organisms, uh, gain skills and the environment is transformed.
+So the, the field of affordances is like never static.
+So it can never really be described as a product.
+I don't know if that's, that can, that answers a bit your, your question.
+Well, are there, are there products within what you just described?
+So for example, if I, if I'm an organism and I've had experiences and I can now, you know,
+use those experiences to continue my process.
+Are those, those things that I've experienced, are they, do they just have to stay in the same category as now processed as in, as in past or have they solidified?
+Cause I can't go back and change my history per se.
+Um, I can build off of it, but those are pretty absolute.
+Now this, this sentence that I'm getting out is going to have a record that I can't, I can't erase.
+So are those things products now in, in the enacting of whatever I've decided I want to focus on in terms of possibility?
+Uh, maybe I, I just say something quick.
+Maybe when you, you, you take like a definite time slice of an evolving organism, you can say that at that point, there's a product that can be defined.
+You can say, okay, at that point, there's this set of abilities, this set of skills, this set of experiences that can be attributed to this animal.
+So there's a product at that point, but if you take the, uh, organism, uh, evolution, like it's an, it's an entirety that there is always changing.
+So there it's content.
+It's always a process in true the, there's always a process, but if you, you, you, you, uh, freeze frame, maybe you can say, okay, at that point, there's this and that, that is a product of the, of the, the, the, the, the, the interaction.
+But I, I, I, I don't know if I answer correctly your, your question, but that's where that would be my, uh, my idea.
+Yeah.
+I, I, I, I, you are answering and that's great.
+I'm just trying to get in my mind.
+If we're going to talk about relativity and I know that I step into a river and step out and then step into it a second time, I'm not stepping into the same river.
+So what gives me the affordance to realize that difference?
+Is it a product?
+Is it the first step?
+Is that first time I went in now a product because I can't go back and change it.
+I can move off of that and see the relative, the relative distance or the relative time.
+But I don't know how we do processing without product.
+That's, I guess what I'm asking.
+One quick thought on that is that product doesn't necessarily mean singular, final static.
+There are working products that can be versioned, which digital files have helped us see.
+And then also we could say that the past is produced, but also it's reproduced when it's remembered, when it's brought back together.
+And even in the directions you point to towards the end of the paper, with what kinds of empirical neurophysiological accounts are helping bolster the ecological claim.
+And then we could also see the realization that memories are not being accessed as static files, but are recreated contextually and relived is an interesting angle.
+Yes, blue.
+So the, the recreation of memories contextually, like in dreams is really like interesting because it's like the recreation and also like recombination in, in a different context.
+And just before we leave context entirely, I guess, I think I have a hard time with all of this because even a field of affordances has content, right?
+Like, like I can go fly a kite if it's windy outside.
+Like I have a set of actions that I can choose from.
+And I think because we have to talk about it in, in a way that's semantic, it's difficult to like experience my field of affordances because I'm a human.
+And, and not only that, like I'm a very verbal human.
+So, so I think that there's, there's like that, but, but wait, even the field of affordances is content.
+But, but I realized that like, it's the mental representation aspect that is not, that, that is the distinction between content and context.
+And I, I just want to point to the quantum paper where, where we had the quantum reference frames and Chris Fields paper on contextuality.
+Um, that like we did on the live stream, I think number 40 and live stream number 17.
+Um, and, and just, it's, it's not possible to have a full contextual alignment here.
+Um, and, and it makes me think of in the paper, how, how you were describing, like, there's this person on one end of the, of the tug of war.
+And then there's another person on the other end of the tug of war.
+And then there's actually the tug of war itself.
+And I just wonder about, um, like, what is the, the, so person A has their context.
+Person B has their context.
+What is the context of the tug of war itself?
+Like it's, it's, it's another entity.
+Anytime you have this like interaction, and this is something that I've said to Daniel before, like you have a relationship with a person, you have a set of communication with a person, like that's its own thing.
+Like that has to be like loved, protected, nurtured.
+Um, like you have to keep it up.
+It has to, um, like, like it has to undergo like auto puesis.
+It has to self-assemble, right?
+Like it's its own entity.
+And I wonder about modeling in that way.
+Like, like if I model my communication, like there's me and the person and then the interaction or the collective behavior or, or, or whatever, um, it may be, I dunno.
+I just, it's, I've been thinking about it and, um, yeah, that's all.
+It's like a view from the bottom or inside or however of communication where there's two entities and a partially aligned reference frame.
+And then there's also a view where it is just one thing.
+I'll be it maybe with partial information encapsulation, but it still becomes one thing.
+And then is that one thing atomic, even though it contains, um, divisions and partitions as well.
+Remi on that or anywhere you want to go.
+Yeah.
+Yeah.
+I think blue, your, your, uh, interventions that were really, uh, are really, really interesting.
+Uh, so far for the, the first, uh, thing that you said, um, I, I think, I know that it's hard to, uh, to, uh, um, to, to, uh, like remove our, our, uh, um, our, uh, a bit of describing things in terms of content, because we have language and we describe things in terms of content.
+But it's something that has, uh, been remarked by, uh, really early by phenomenology, phenomenologists
+like, uh, Merleau-Ponty and, uh, uh, that our primary, um, contact with, with the world is not, uh, some like a description.
+It's not like a representation.
+Um, uh, it's not like a reflexive consciousness.
+It's a pre reflexive consciousness.
+And in your day to day interaction with your environment, you're not using this kind of language, like description to experience your environment.
+Like if you're playing a sport and like, for instance, with your playing soccer and you, you see like a pass that you can make, you're not, uh, reflexively thinking that, oh, you could make that pass.
+It's like a push or a pull in, in a field, uh, in a, in an attack, a tractor field kind of thing.
+And that that's how we, we experience.
+And at the second where, uh, us humans, especially we, we begin to think about our experience, then we cannot help, but describe it in terms of content, in terms of a representation that we entertain in a linguistically, uh, with a linguistic means.
+But in our pre reflexive engagement with the environment, that's the thesis of the phenomenologists and the ecological psychology, it's really just a push and a pull from the environment that drives us in different directions.
+And we don't have this kind of reflexive consciousness, this kind of representation on which we rely to describe and, uh, uh, understand it, uh, with these linguistic means.
+So that, that, I think that's really the, the, the difficulty that we have, uh, of like, um, uh, getting to this pre reflexive consciousness when we are so used to at the second that we describe something, we are describing it in terms of content.
+So we have, it's hard to like say, oh, there's no content.
+When we talk about it, we are invoking content automatically.
+So yeah, there's a difficulty there.
+And about the, um, the autonomy of the, the dynamic of an interaction.
+That's something that's really, really interesting.
+And there's been a great work on this by, uh, Ezequiel DiPaolo.
+I don't know if you're familiar, uh, is working, is an, an activist researcher.
+He's working on language too.
+And I'm, I, uh, I, uh, I've been really inspired by his work and he's describing situations where like, there are two people interacting and these two people, uh, have, uh, goals that are aligned.
+But because of the particular dynamic of the interaction, these goals don't come to fruition.
+For instance, when you're walking in a, in a corridor in, uh, somewhere and you're facing somebody and both of you want to like, uh, fluidly like, uh, pass each other, but you're both trying to, uh, go for, uh, on one side and then on one side.
+And you're blocking each other that you're trying to, uh, achieve the same goal, which is individually, uh, passing past each other.
+But because of a dynamic that, uh, arise from your, the interaction, you're not, uh, you cannot achieve this, this goal.
+So there there's really like this autonomous dynamic at the interaction that is really important.
+And I don't think that obviously that's something that I, that we wanted to put in the paper because we're talking about, uh, interactive dynamical, dynamical systems.
+But I don't think that I've succeeded in, um, translating this in the way we think of shared field of affordances, because I, I, I define shared field of affordances as the subset, uh, that is common to both, uh, individual fields of affordances.
+But I think that neglect this part, this autonomy of, uh, the, the, the field of affordances that is shared in, in, in the interaction.
+I don't know if, if I'm being clear, but I, I define the shared field affordances as a product of the combination, the combination of the, the two individual fields of affordances.
+But it seems that there's a lack of autonomy in, in the shared field that I, I don't know how to account for.
+That makes me think of the ant case where one nest mate might be able to grab a single seed and carry it home.
+So that would be compatible with a view on communication as shaping the field of affordances, because it modifies, um, the capacity for another nest mate to pick up that seed because it's been moved.
+It doesn't need to have any representational content, although, especially when we're linguistically describing, it does.
+So I definitely want to come back to that.
+Then there's this, um, seed grabbing ability, which is predicated on a lower level affordance, like the ability to grasp with the mandibles.
+And that lower level affordance enables true joint action, like multiple nest mates working together to drag something bigger home.
+But dragging something bigger isn't an affordance that even exists at the single nest mate level.
+So there's like shared affordances and joint action at the level of what we can both do.
+And then there's also this very interesting higher level view where perhaps novel affordances become accessible, but then whom or to what or when do these special affordances or, um, maybe nested system affordances come into play.
+And how will we mediate the handoff or like the way that those different levels of affordances come into relevance or out of relevance?
+Blue?
+So in terms of that modeling, the field of affordances, like it changes through time.
+Um, and this is why, like, I was thinking about, um, a competition, like in a tug of war between two people, both of them have the affordance to win or there could be a tie.
+Right. Right. But, but like, it's a potential opportunity for either one to win, but only one can be the winner.
+And so then one person winning, like by default, you know, makes, makes the other person lose.
+And so this, this, uh, field of affordances changing through time is really, um, interesting.
+And I think very broadly applicable, um, for, for modeling law, all kinds of processes.
+Yeah, that's true.
+And the, the, the idea about the, um, the, the, the collective affordances, there's been some interesting, interesting work on that.
+And clearly some organisms like ants don't perceive collective affordances.
+They perceive, if they perceive something, they perceive their individual affordances.
+And at the collective level, there's the, uh, the taking of this, uh, higher level affordances, this collective affordances, affordance, but they don't perceive individually.
+Probably. I don't think they, they do perceive individually the affordance, but some organisms such as humans, I think, because we have maybe a deeper generative model or something.
+We are able to perceive some collective affordances because we're, um, sensible to them.
+For instance, I, if I'm moving with a friend, I can perceive that a couch is unmovable by me, but I can perceive it as movable by us.
+And then I can say like, Oh, we could move this couch together because I perceive it as something that can be, uh, acted upon, not just by me, but with somebody else.
+And then I have a perception, it appears in my individual field of affordance as a collective affordance, but that's different from the, the, the ants who, uh, achieve a collective action, but without having the perception in their field of afford, individual field of affordances, uh, of this collective affordance.
+That's awesome.
+That's awesome.
+It makes me think of the human capacity to, uh, have counterfactuals and speculative realism on teams and projects like, Hey, everybody here, we could do X.
+So there's the ability to communicate semantically and representationally where needed plausible narratives or little sub niches.
+New things can be suggested and arise that are specifically about shared or collective affordances.
+And then additionally, there are special names for when we take individual level affordances that have consequences on other levels of decision-making.
+Like there might be, um, a multi-sig wallet in cryptography or a voting system in democracy where an individual's affordance is like to pull the lever or to fill in a box or to sign a transaction.
+And then it's being engaged in specifically because there's knowledge.
+If a hundred people do this, then this affordance is going to happen.
+So it seems like there's many cases where we, um, do our mandible closing, the kind of lower level individual task also with an explicit knowledge and a communicated knowledge around how,
+how someone's individual actions will influence group, um, outcomes that could be like weekly emergent, like merely summating the affordances taken by individuals as well as strongly emergent or more strongly emergent in the sense that there's, there's nothing different about anyone's pulling lever in voting, but there are phase transitions and dynamics that can be like top down.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+Dean.
+
+Dean.
+Dean.
+Dean.
+
+Dean.
+
+Dean.
+Dean.
+Dean.
+Dean.
+
+Dean.
+Dean.
+Dean.
+so for instance how do we learn how do we we we learn to perceive an affordance we learn to
+perceive an affordance when we attain we we gain a skill when we gain a particular skill we then
+can perceive in the environment the the situations where we can apply the skill so for instance when
+we're really young we can like i guess we can can maybe crawl a little bit so we we know where
+surfaces that can be crawled upon and we can grab things so we perceive where things can be
+grabbed and so we start from this like basic skills and then we explore environment we do some things
+that we we we're gaining some abilities and when we do that uh probably a little bit by trial and
+error but we we begin to perceive some higher level affordances because because we can do some more
+complex things and so our field of affordances uh depends and become more becomes more complex as
+our set of skills becomes more complex but i think that interacting with others with others um so sorry
+for my my accent it's not really good i think i i didn't want to say interacting with the animal others
+so yeah um so when we interact with others we are also learning to do some particular things for
+instance if i try to uh to pick something up alone i might not be strong enough to do it so i i don't
+have the skill so i don't perceive the affordance but if in some cases i picked something up and i see
+something somebody else picking it up with me and we succeed in lifting it and then i have gained the
+ability to see that with somebody else i can lift the the stick but it's not a different different kind of
+learning uh in that case from the kind of learning that i apply when i'm learning individual skills
+it's just that interacting with your environment you acquire skills somebody sometimes with some
+somebody else sometimes not and you understand how you can apply the skills in your environment
+and then you navigate your field affordances accordingly so how you perceive a possibility is
+about how you have learned to do some things in the past in the past and then because of this learning
+you perceive situations as affording these kinds of actions they can be individual but in communication
+they are usually about what others can do and what we can do with others and that's how you perceive
+like the the possibilities that can be uh that can be brought upon that can be done with with the person with
+which you're interacting but i i don't know if that helped but that's how i see it from a from a modeling
+standpoint if you if you move away from the constraints and you look at the emancipation
+and the freedom piece it it obviously becomes combinatorially explosive very very quickly because
+it can go off in many many directions but as a for example as daniel uh alluded to when we started today's
+live stream this could go down many different paths so he left it open he left the the freedom aspect in
+and so i was curious what you think about so when we do leave that in when we do move out of the
+laboratory or we do move away from the mechanics which you were just describing and give our attention
+over to the the freedoms piece of it without without immediately assuming oh well we're going to stop
+modeling now because this is just going to blow up on us i was wondering what you were think what
+you're thinking is around that in terms of communication as a platform for the possible
+yes so the idea of communication is is that the role it plays in interaction is is the constraint it's a
+constraint of the on the set of possible action that can be achieved so the idea is that the the what
+communication achieves it's it it helps to uh limit the kind the the the scope of affordances that
+will be salient at a given moment it's like you will uh center like the the the shared field of
+affordances around a certain set or certain affordances and this will limit this will restrict
+the the the set of affordances that will be um considered or that that can be acted upon by the
+the individual participants so that's the the role that it plays i don't know if that that helps but
+that's how communication works i think in in interaction that what it does it in in dynamical
+systems terms it the idea was that it helped to create interpersonal synergies uh in order to achieve
+the joint goals of the interaction that was the the suggestion in in the paper so for instance two
+people being together in a room they can be a lot they can do a lot of things there's like an
+almost infinite uh set of affordances that are open to them but if one of the people in the room like
+goes uh to the couch and say like couch or manifestly tries to lift it then what is uh what is conveyed
+for uh to to uh to take the the transmission view idiom what is conveyed or what the effect that it has
+it will augment the salience of the the saliency of the the affordance of taking the couch and then
+this will restrict the set of affordances that are open or that are salient in the shared field and then
+the other person will like see okay that's what we're doing now and they're gonna take the couch
+together and lift it and bring it uh so so that's the role of communication is like there's a whole
+set of affordances open at any moment and what communication does it it restricts and it comes
+trains this set of affordances in order to um better achieve the the joint goals of the interaction
+that's what we tried to do uh in in the in the paper to understand cooperative communication
+um you touched on an important difference though between is and if so what is does actually put put
+pretty strong um what do we call them guardrails constraints but if i ask what if i haven't put a
+constraint on something i've looked now at the counterfactual and the possible and i haven't said
+that the first the first person that answers back to me is going to necessarily be now the new
+constraint the whole point of if is the possible right and it is the freeing up and it's the white
+board moment and all we know all of this so again i understand in the context of this paper what the is
+part of it is in terms of joint action but is there a what is there a place in your research here for the if
+within the same arguments that you i believe that there is but you didn't speak as clearly to them
+as you did to the is parts the the constrained parts yes so the the i think what you're talking about
+here is the the the the communication about like future or counterfactual situation that's what that's
+what you're talking about okay yeah so what what we we tried to do in the paper is we introduce the
+notion of a simulation of a field of affordances and that's where we're we're dancing really closely
+with like the notion of representation because are there is is it a representation of an affordance
+or like that's like a fine fine line to tread but uh so so there's this notion of a simulation of an
+affordance field uh some uh sufficiently cognitively complex organisms such as humans and uh probably some
+primates can uh can produce a simulation of an affordance that will enter in this year hierarchical
+affordance competition so you can like activate an affordance that is not immediately present in order
+to affect your current field of affordance to uh to to to um to for instance go toward this this
+simulation of affordance that's based on the work of paul chisek which is at at montreal and his work
+on affordance competition and he argues that um a lot of uh of phenomena linked to cognitive control such
+as such as executive function and these kind of things and working memory can be understood as these these
+effects of of affordances at higher hierarchical levels that will constrain the the lower levels
+of the the field of affordances uh in order for instance to uh act um accordingly to the desire level
+affordance so the exact the example that uh chisek gives is for instance uh suppose that there's a a
+monkey on on a branch that likes to see a little berry uh just just beside it so there's the affordance of
+eating the berry but uh suppose that uh there's a um an apple which is a bigger fruit a bigger price
+uh further down on the on the branch and the the monkey as as an understanding that there's a this
+apple further there you can with this this simulation of the affordance of eating this apple at a higher
+level so like if i do that if i go there i will get this apple this simulation of an affordance at a
+higher level will constrain with diminish the salience of this immediate solicitation that and it will
+help him to like ignore this immediate berry and it will uh continue on the branch in order to get to
+the the bigger uh to the to the apple so there's like the basic idea of how uh the simulation of
+affordances can play uh like a cognitive control uh role in order to uh constrain on our behavior
+according to further uh goals like in in future future situations so that that's the idea on which
+we we we speak about it really really quickly in the paper because uh it's already a really big paper
+but that's an important point and that's the key to understanding the the communication about future
+and counterfactual situation we talk about it in the last section uh it's the the displacement uh or the the
+the absent reference uh discussion so the idea how can we talk about things that are not immediately
+present in a special temporal sense and the idea is that we can activate shared simulations of affordances
+so i can speak about enough for dancers that an affordance that is not immediately present but it can
+affect our uh our shared field of affordance and it can drive our behavior toward this affordance for
+instance even if it's not immediately present but yes this poses the question of is are these simulations
+of affordances representations i i'm not i'm on defense on this question but if they are they are
+probably like action-oriented representations that maybe would be acceptable to an activist and
+ecological psychologist sorry for my really long answer that's something that's something that i've
+really thought about it a lot nice yeah blue want to add anything or there's a few ways to go
+no i'm good go ahead take it away all right well one interesting connection with active inference
+you mentioned there's nested affordances including ones that include that are um plausible so that reminded me a
+lot of the uh attention and metacognition as mental action which we explored in live stream 25 with
+sandved smith et al's paper where the same way that at the kernel layer of the partially observable
+markov decision process or however we're doing active modeling at the most basal or kernel layer those pies
+those policy selections those e's those affordances have to do with the level of affordance that is
+embodied like the actual actions that the eyes are taking in the oculomotor case or the actual direction
+that's taken uh left or right in a teammate's example and then nested modeling is using an analogous
+to make this known to make this known to make this known to make this known to make this known to
+
+being paid to various lower level lower levels of that hierarchical architecture
+so there could be uh one lever that can go left and right and one that can go up and down and
+then there's a higher level decision like which of these two levers should i be paying attention to
+and how aware am i of which lever i'm paying attention to and so on um so i think the
+paper itself does not present any formalisms but there's extensive linking to work in active
+inference and also to really resonant ideas that are in a non-slash-pre active inference framing
+that are immediately compatible like nested levels of affordances the distinction between
+the primacy of the bodily affordances but also for certain cognitive systems the existence of
+what appear to be cognitive affordances and the desire to model those jointly perhaps without
+taking on strong or specific baggage around how we are then constrained to think about the bodily or
+the cognitive aspects of that modeling blue oh um and then one other thought was on like
+shared action including shared planning so planning to act together and about how event or activity
+planning in the future is like an activity that one person can do or groups can do
+but it's about preparing a context so that a process can occur and sometimes all that's needed is to send
+the calendar event invite other times there might need to be a lot of work to be done before the event
+itself however what is the transmission view on planning that might be um able to describe and i think the paper
+does an excellent job of saying that the transmission view is not refuted by the ecological and inactive
+angle you said no transmission no communication no communication it's like it's an enabling aspect
+of this action orientation and this focus
+here's some other areas that we had written down from before
+um
+one i'm really curious to follow up on is about like language and maybe the role of
+this is kind of um is about to make this kind of make this kind of make this kind of make this kind of
+
+do any inactivists do presentations with
+silent films or with objects that are mailed to you and you play with or do this i mean how else
+can we point at the moon and not have it be confused that we're talking about finger anatomy
+remy first stentler
+okay yeah i think that that's uh that's hard to um to um
+to talk about academic subjects like this without uh having uh like an explicitly transmission view uh
+uh like uh appearance of communication because the the this this kind of interactions are
+so far from the basic interactive activities that uh were like the context of the evolution of
+communication which is what i'm trying to to explain here it's not like you imagine like you
+imagine like a a tribe somewhere uh in the in the the place the same and like they're the they're not
+trying to explain academic subjects to each other they're trying to do things concrete things together
+and that's really the context of uh where communication uh evolved and uh what it uh what
+purpose it served but i think that it's hard to like envision the um uh uh an academic discussion such
+as the one we're having now that would be uh um like that would be more evidence toward the ecological
+view than for the transmission view i i don't know if that uh that's here but clearly like uh moving a
+couch together is a better instance of and the communication that takes place in this joint activity
+is a probably a better example of uh our view than like speaking together about active inference and
+communication because this is really a specific and really uh highly complex form of social activity
+that that is more uh more readily described for instance in terms of uh of the transmission view i think
+yeah nice a lot to say there blue
+so i think all of those things like even silent films are also representations right like so whether it's
+a communication like a whistle communication or um even pointing to the moon would be like a
+well maybe that would be different i don't know um i i like this uh idea of communication as
+an action that we take and i'm not leaving information transmission behind in the dirt i don't
+think it i don't think it needs to to go there i think um but but i do think that all actions
+uh are in some way some kind of information transmission so even like like and and remy you
+you've studied a theory of mine so i assume you're familiar with um integrated information theory and the
+emergent properties that information can help us to represent um and so i think
+like in in some way even like eating food like tells the environment that you're hungry and and takes
+away the food and so there's there's always some level of informational exchange even if it's just
+trivial information exchange even if it's not meaningful it doesn't create some bigger emergent um
+thing right thanks blue dean
+um i think it's an easy again i think it's it's i won't say it's easy it's remy did a good job of
+explaining this and not making it too obtuse if you if you use an example of moving a couch the physical
+manipulation it's not hard to extend that to communication and symbolic manipulation the
+manipulation stays then the then that sort of reinforces the idea that there is there is a
+process at hand something that we can observe but i'm still kind of confused about so once the the chair
+has been lifted or the the words have come out of my i heard an expression because i was watching
+the john vervacchi thing yesterday and something comes out of my mouth hole
+the whole now it's it's done it's a product i mean we can read we can re submit it or reflect on it or
+whatever but it's there it's now historical and so that transition from process to product i think is
+something that the manipulation by itself doesn't explain we have to kind of de-link and see the sort of
+timelessness aspect of this. Carl talks about deep temporal models. And so I don't know that I'm not sure how communication, manipulation, symbolic manipulation gets explained in these deep temporal senses.
+And I'm not just talking about chiseling it into the stones, the tablets, right? Like there's got to be another piece to this that you've looked into, Remi, and obviously much deeper than I have. What is your sense of that once we get past the manipulation processing and start seeing the products pile up?
+Yes, so yeah, it's hard to answer this question. But that's true of everything that is something that happens. At some point, it's there and you can't change it. So any event communicative or not, or like a rock that falls or something that has that property too.
+No, it's once it's happened, it's something to which we can go back and I don't know if that's so so in the same sense that if you you talk you say something, this is something that that has happened. And you can
+ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+set down in this paper is not the end.
+It's the start of something.
+This product, this paper should be the start of a dialogue
+or a trialogue, or in this case, a quadrilogue.
+And it has become something, right?
+So it's the back and forth part
+that I find really interesting.
+And it's something you spoke to very clearly
+at the very start of your paper.
+You didn't say, okay, so if we get stuck
+in the transmission view, when I stopped talking,
+that's it, that's over,
+and now we're gonna start something else?
+No, you basically said,
+there's a continuum aspect to this.
+It isn't strictly episodic,
+that we have to look at something
+more than just what Remy says,
+which I think is a brilliant way to start a paper
+and an even better way to start a conversation.
+So there is a product piece to this,
+and there's a process piece to this.
+You put something down,
+and a child will start manipulating it.
+And then they'll start manipulating the symbology
+that they're applying or affiliating or associating with that.
+So again, you've looked at that far deeper than I have,
+obviously, because listen to how I ramble, right?
+But I wondered what you, like,
+how do you take that transition piece now
+and hold it up to other people
+who may be taking an activist approach
+or take more of an instrumentalist approach, right?
+Because the bottom line is,
+it's hard to deny that it's done,
+or it's still happening.
+But you focused on the it's still happening.
+So what are your thoughts?
+Yeah, I think that there's, with communication,
+there's a sedimentation.
+DiPaolo talks about this too.
+Like the symbol that we use,
+the words that we speak, there's like this,
+there's also talk about a first order languaging
+and second order languaging.
+So first order languaging is like the flow,
+the dynamic where every interaction is new.
+Everything is always like on the fly.
+And there's always a transformation
+of the linguistic forms that we use.
+And the second order languaging is like the abstraction
+where we can say, oh, that's the same word
+that has been used, that the same sentence,
+that's the same meaning.
+And this second order languaging is like something
+that's added up and that's an abstraction.
+And that's something traditional linguistic
+has really focused on this second order languaging,
+which is like the product of language,
+which is like, okay, the language that we speak
+is a set of sentences, a set of words.
+And that's something that is identified
+at the level of the second order languaging.
+But when we're speaking, when we're talking,
+it's not at this level that we're doing it.
+When we're acting, it's always new.
+We are always reconfiguring.
+We are always transforming.
+And it's only when we abstract from this like basic interaction,
+some patterns that we see, okay, at the second order,
+at the second level, there is a words, there's a syntax,
+there's some rules that are followed, but it's not.
+The real phenomenon of language is at the first order.
+And that's the, so maybe that's the way to see like,
+the real activity is really a process.
+But if we abstract, if we look back on this process and we analyze it,
+and we abstract some parts of it, then we can see these forms emerging,
+these languages, these words that are used repetitively.
+And then we can have like the product of language.
+But in truth, language is always a process.
+And that's the shift, the terminological shift of not talking about language,
+but languaging, which is something that is, that an activist working on language
+that really brings forward this notion of language is always an activity,
+always a process and not like a set of words, a set of symbols that are used.
+And these, these analysis in terms of repeatable symbols is something that we get
+when we analyze it, like after the fact, and we see these patterns that are,
+that are used that we get this second order, but when we're doing it and at the fundamental level,
+it's really just a process of continual interaction.
+So that's maybe something to think about.
+And there's something I want to say really quickly about what Blue said about the information
+and the way in which information is always present.
+And that's true.
+That's what I allude to at the end of the paper.
+I remember when I cite Brian's terms, when I say, yeah, there's always information transmission, right?
+Just moving in my environment, there's the information that's transmitted.
+But yeah, that's exactly the point.
+And that's the idea is that content is not information.
+Information is everywhere, everywhere, always.
+When we, when anything happens in the environment, in the universe,
+there's information that is created, that's transmitted.
+But the idea is that information understood in this, in these terms, in uncertainty reduction notion of information is not sufficient to explain communication because there's information always everywhere.
+That's the point that, that, that people who hold the transmission view think that they can rely on this notion of information to explain, to explain communication.
+But it's not a strong enough notion of information.
+They need the notion of content to explain what they want to explain.
+Because for instance, the information that you think about when I eat, when I do wave my arms like that, there's information because there's an exchange with my environment.
+But that's not sufficient to explain communication because this information is everywhere and communication is not everywhere.
+It's a property of certain behaviors that we have to be more specific to analyze.
+Thank you.
+Blue?
+Blue?
+So the information has to have context, right?
+It has to have relevance for the communication, for the collective action, for the collaboration or something.
+So, so there's no, like an order for communication, like that, that contextual, I don't know, imposition needs to exist, I think.
+Yeah, nice. So just a few notes. I really like this sedimentation of communication.
+It's a really rich, like riverbed or, or rock formation, natural analogy that's, that's very concordant with ecological perspective.
+To reflect how the products of communication are indeed sequentially layered.
+The pen marks on the page can't be erased.
+We can't undo what was said.
+We can't unrecord.
+We can't un-transact on a blockchain.
+All these different aspects, and even including the scientific literature being appended to continually.
+So there's a sedimented aspect.
+Yet also there is something that is a process, like the river that is depositing the sediment.
+And then that made me think about how sometimes communication is descriptive around what was or is.
+And this may map onto the variational free energy inference, which is kind of like now casting or even retro casting.
+But once we enter into action and anticipatory or prospective informing and communicating.
+Looking forward to reduce uncertainty about action selection is vital for systems to persist and thrive.
+However, as we've explored in many discussions, sometimes from a really technical angle, the introduction of action into model selection and just modeling in general introduces several complexities.
+How the space of possible actions is enumerated and scanned over.
+It's a simpler and a different question to do purely receptive inference on something about the past.
+But to inject one into the present and embody that presencing requires one to act amidst uncertainty about what the future of the generative process will be.
+And the consequences of action, which are either slightly or almost entirely unknown.
+So the introduction of action puts us into that realm of expected free energy and highlights all these really interesting dynamics and how the future is not the past, but it becomes that way.
+Like it gets sedimented.
+Like it's a little bit more complicated, but this is the pre sedimentation.
+There's some dust molecules that are right next to each other in the river.
+One of them is going to sediment.
+The other one is going to go out to the Pacific Ocean.
+It may not even be clear in that river which way the different particles are going to go.
+And so that's like where like all the complexity and turbulence can be happening.
+And so it's a very rich distinction and something to really bring back about how the past is sedimented.
+But there's an openness in the action consideration.
+And that's where planning as inference and joint action and shared attention, all these features come into play.
+Dean?
+Yeah, Daniel, I don't know if you're, if you're interested in this, but I think that's a great question.
+If you're indirectly referring back to the 47 series of the live stream, but there it was, we've got, we talked about was that people who have looked through an activist lens really make fantastic arguments about let's focus on process.
+Let's focus on the process.
+Apologies.
+If, if you're talking about people who work in the instrumentalist.
+Hopefully that'll get answered.
+If you're talking about people working in it through the instrumentalist lens, they really want to talk about product.
+They really want to say this is a tool.
+And they argue fantastically for that.
+And I think what we tried to do in the 47 was say, you're both right.
+You both have fantastic arguments as an agent who's trying to communicate.
+Why would we say one is necessary?
+Like if we're active in first, why, if we're active in first, first and foremost, if we're always trying to scan and survey that field of affordances, why would we drop one for the other?
+Unless that was necessary.
+Well, even part of affordance, the, the ability to option and be able to recognize the tool product and recognize the, the action in that moment, carrying out that, that data thread, which we can now act further on as Daniel said downstream.
+Right.
+So again, I don't think anybody would argue that in activism and that ecological approach is hugely important in order to be able to generate those affordances.
+But maybe, maybe there's still people who want to argue, no, if you just bring your toolkit, all of your, all of your problems will suddenly dissolve.
+Or if you just walk into the room, you'll know how to talk to all of these people without really developing that, that sense of, okay.
+Okay.
+So as you said, first order and second order communication, right?
+You just walked into the room and then you reflect later on.
+So that the next time you walk into a room, maybe you, you come at it a little differently each time.
+Right.
+So again, Daniel, I don't know if you were consciously or subconsciously referring back to the last live stream set, but that's essentially where I'm kind of at.
+Well, I've been there for a bit now, but I'm wonder how you can argue that it could only be one.
+And if we're talking about affordances, if we're not talking about affordances, fine, it can be one.
+But if we're talking about affordances and we're optioning out, how can it be less than two?
+The menu is not diminished by selecting what you want for that meal.
+You don't rip the rest of the menu out.
+And then also Remi one, one, just insight.
+I've never heard it phrased this way, but it's so interesting and hopefully gives many people, including us some directions is you said, it's hard to discuss academic subjects without the transmission view.
+And that's just such a fundamental point.
+One could take a sort of sociological critique of academic discourse and while the practices and the networks of academics and the genres that they write in the venues and the paywalls and all of these different sociological features structure academic discourse to be such in such a way that can feel lifted from our first order experience.
+And this actually takes an even more fundamental angle, which is, yes, those sociological features may be what is explained, but fundamentally on that topic or anything, what is it about this conceptual or academic mode of synchronous and asynchronous discourse?
+Just what is it about what is it about what is it on and how can we evolve this and develop this to create an ecology of communication to integrate in a new way?
+For Remi first, for Remi first, and then anyone.
+So yeah, I think that not just the academic discussions, but all our conceptions of education and learning are influenced by this transmission view also because all the traditional views of education is the notion that you transmit a certain knowledge, a certain view, a certain content to like the student.
+You're the teacher and you're the teacher and you have this content and you're giving it to the that's like the traditional view of education.
+And there's been pushback in recent years in philosophy of education and trying to understand education and apply more participative methods of learning that go against that.
+But really, the view of education as transmitting knowledge, I think is really closely connected to this transmission view of communication.
+And I think that's not a particularly good view of applying pedagogic practices.
+I think that's really limited.
+I think that's really limited.
+And there's been, they haven't waited for our paper in 2021 to do that.
+But yeah, there's been in recent years a lot of work in philosophy of education and trying to push back again this transmission view of education and trying to put like, I think classrooms that are more interactive and in which there's active learning from the students.
+And they're just not just receiving knowledge, but they're gaining skills by acting in the in the in the in the in the in the in the environment, learning environment in which they're agents and not just patients.
+So that that's I think that's something that's also useful to to to to to discuss.
+Yes, we had some great times discussing instruction ism and interaction ism in the context of skillful performance and motor commands.
+And the discussion was, are descending motor commands representational?
+Are they instructions to be carried out or are they interactions that are being engaged in that might not necessitate taking a representation list view?
+And in the same spirit and strength of the active inference framework that we can talk about patterns across systems here is instruction ism and interaction ism in a very natural setting of the ecological experience of learning.
+And one can take various critiques or angles on like tabula rasa or blank slate.
+We don't need to endorse the view.
+However, what it implies quite directly is that there's a canvas and things are added sedimented on the canvas.
+And one can say that some writing is on the canvas or it's a different shape or those are specifying the metaphor.
+But fundamentally, the knowledge accretion model of education, the opt in model, as well as the ignorance, destructive model of education, which is a kind of counterpoint to we're going to add good knowledge.
+And then the shadow of that is we're going to destroy bad knowledge and unlearn.
+Both of those are like working in the riverbed.
+Are we going to sediment this way or let's modify these sediments?
+It's it's still seeing the product of education, which is a totally reasonable focus for industries and sectors that are focused on the products of education, the products of education for the student, the certificate and the social recognition and status thereof, or just the outcomes of education for the system, like amount of people with a certain professional training.
+And what is the river that is sedimenting or desedimenting that can get dropped.
+And that's the active turn in education, learning by doing as if even a lecture is doing something.
+You're looking, you're hearing, you're touching.
+So it is quite an exciting area to explore how interactionism in settings that have been considered educational conventionally or unconventionally what the implications are.
+And I'm sure that next week we'll be able to explore many more implications as we kind of have crested one hill and look towards some implications.
+But how do you communicate differently with what you know and have done in philosophy and science of communication?
+Remy.
+I think I'm really bad at applying my own theory of communication.
+I think I, I give a class at UQAM and I, I always like I'm angry at myself because I really, like just automatically applies this really classical way of, of, of transmitting.
+I'm, of transmitting knowledge and I, I'm always angry at myself because I don't apply enough.
+I think my, my, my own ideas about communication, but I think I should do more to, to be a better, provide better evidence for my own theory of communication.
+Yeah, I think, I think, is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is this is
+And are we going to select only from yesterday's menu?
+Or can new dishes and new approaches be added in that we may want to select from?
+Are there new modalities or approaches to communication in educational settings or otherwise that are now authorized or enabled by this perspective?
+I'm sure we'll continue to discuss it, but let's just say this paper becomes a fundamental reading for a communications department or for an early life learning group like a public school.
+What is different in the short term with the structural constraints and opportunities that exist with someone thinking and acting differently?
+And then over slower timescales, the co-evolution of those individual affordances, cognitive and bodily affordances, and the kinds of systemic alterations to the education architecture.
+Dean?
+Dean? I know you'll have a thought on that.
+Part of what you were speaking to is simply asking, as Remy did at the beginning of his paper, and then what happens, but then not racing to provide the answers.
+Dean?
+But if you let the herd piece of it off and see what cats do when allowed to sort of free think, I think, I don't know that it provides the absolute specific answer, but it will provide you that joint action opportunity.
+Dean?
+If you're really, if you're really, if you're really truly looking for affordances.
+As opposed to specifics.
+And again, I think even in an academic setting.
+I don't think it's too far of a stretch to say affordances matter.
+We would like to see if people can exercise those things.
+We just don't want to get too crazy, right?
+Right.
+Dean?
+Norms and guidelines or affordances help.
+Don't know what else to say, but certainly there are things that one would prefer not to see occur in a learning setting.
+Easy to enumerate.
+And then there are the known beneficial affordances or phenomena.
+And then part of interactionism seems to leave that unknown unknown quadrant open and to allow for individual or for collective outcomes that are surprising and maybe not explicitly navigated towards or planned for.
+But how to leave the unknown unknowns open while de-risking unknowns and knowns is a challenge.
+And so again, it's natural to see where in the de-risking imperative, we de-risk everything.
+And that introduces like second order risks and it closes the door on what may have even been the purpose.
+I mean, what's the safest car?
+The one that doesn't move in that one limited local optimization of like reducing the number of high speed collisions or something like that.
+Yes, Remy?
+So on that topic, I think there's Brunberg and Riedveld and Keverstein talk about an optimal grip on the field of affordances.
+I didn't say it, I think, but their work was a great inspiration for my own work.
+So they talk about an optimal grip on the field of affordances.
+And there's like, you're always trying to stay in the point where there's like the relevant affordances are open to you, but you stay at the same time open to switching to other affordances.
+And you're trying to, in that process of interaction with your field of affordances, continually minimize your own free energy.
+But there's risk in that.
+So there's the idea, the example that they give is the boxer who's trying to maintain a certain distance to its opponent.
+Because at that distance, if the boxer is farther, it cannot reach with its punches.
+If it's too close, maybe there's left impact and maybe it's more open to being it.
+So there's like this optimal distance to which the boxer has like flexible, multiple opportunities that it can, that the boxer can take.
+And I think that that's what we're always trying to do.
+We're trying to get to this optimal grip of the field of affordances in which there's multiple affordances that afford free energy minimization.
+And that we want to take that.
+And that's obviously something that can be hard to do.
+But we have, through our skillful interaction with the environment, we learn these kinds of gradients.
+Where should we go in our environment in order to find these optimal grips?
+And like you're speaking about car, I guess, depending on your skill, you might want a different car to get this optimal grip on the road.
+If you're like a fast driver who likes to go really fast, you might want a faster car.
+But if you go too fast, then you're getting an accident.
+So there's, depending on our skills, there's different optimal grips on our field of affordance.
+And something who's really afraid to go fast might go with a like really slow car.
+And that would be, it's that person's optimal grip on the road.
+That would be the, this car would provide it for this person.
+So that made me think about that.
+So some comments on optimal grip.
+Thanks for bringing in Yala et al.'s work.
+It's really nice that that was brought in even several years ago into the active inference literature.
+And if we're imagining a tactile grip, actual prehension.
+If we're not in a grip strength competition, where one might just monotonically prefer more grip.
+If we were like on a playground and we're going to be swinging amongst bars, then the optimal grip has to satisfy being able to keep us off the hot lava.
+But also, it's not permanent.
+And there's like a level of engagement that is not as strong as we could possibly grasp, but gets the job done, keeps us in the air, and lets us easily and without repetitive stress, like grab the next bar.
+So, how might that be reflected in some of the formalisms of active inference?
+Well, for expected and variational free energy, there are two terms.
+One is reflecting a divergence minimization, and one is keeping the door open with uncertainty about future outcomes.
+So, in that balance is like the divergence minimization of the boxer, but then also there's something about keeping it open.
+And then it makes me wonder about optimal grip with some of these educational and academic ideas.
+What is the optimal grip in a given context of thermodynamics?
+Could it be the optimal grip in an easygoing, chill, qualitative conversation to know that thermodynamics has to do with things like temperature?
+And now we're going to talk about something adjacent to it.
+That was just one bar on the playground to jump amongst.
+And so, what does optimal grip look and feel like?
+And what are the ecologies that support different individuals' optimal grip on different concepts?
+So that people can be engaging and interacting in a way that is natural and seamless for them?
+Yeah, Remy?
+I think there's a case where the...
+You're talking about the tactile grip.
+There can be an optimal grip in that sense.
+And I think in the communicative context, we can also see, for instance, the case where we're...
+That we talked about the example of moving furniture together.
+There's this optimal grip where, okay, you're holding the couch and you can feel it slipping sometimes.
+And you're like, oh, damn, I must get a better grip.
+But in that case, you have an interactive component and you have a communicative component.
+Because you can say, when you're feeling your grip slip, you can say, stop to the other person to, okay, so the other person can stop moving.
+And then you can get a better grip on the couch.
+So this aspect is that the idea that we tried to put in the paper when we were talking about cooperative communication is that there can be an optimal grip from a collective, from an interactive perspective.
+And communication is a way of achieving that, of achieving an optimal grip by a group of individuals on their context of their joint action.
+And so, for example, if I'm moving a couch with somebody and I feel my grip slipping, I can say, oh, stop, because it will help.
+It will stop the couch from moving.
+And then it will help me get a better grip in a literal and a figurative sense on the couch so that we can further advance our joint action of moving the couch.
+Thank you.
+Blue?
+Blue?
+So something else, like where is an interesting place where we have grip where we don't always think about it is in the mental capacity.
+So like when you, they talk about overthinking.
+So like you think something, you can underthink, underprepare, and then you can also overthink.
+um so there's like also this optimal space and just as a practitioner of meditation for a long
+time um when you're meditating on something it's the same so like it's like this over focus like
+you have to hold it there the object of your meditation but like if you squeeze too tight
+like if you focus on it too intently it goes away it pops out um and lots of things are like i mean
+even if you literally grip something if you squeeze it too tight it will pop out of your hand
+just the force and and um the laws of physics make it that way so just wanted to bring that up
+thank you blue one note on the couch moving example it's quickly become our favorite example we should
+definitely do some um visuals next time um it's it's a interesting example because the communication
+can be representational and linguistic wait i don't have enough room for my right hand to come through
+this doorway it's very transmission view compatible but also there's a direct um continuous time
+communication through the mechanics of the couch that are synchronously being experienced in real time
+and mediated through artifacts and through the niche itself linguistic communication
+has a linear sequential and turn-taking aspect active listening is a practice that
+from the point of view of the active listener whether they speak or not brings that real-time and continuous
+engagement to the discourse even if they're listening to a recording or whether they're participating
+or listening in a conversation however it feels like something really important to unpack as we look
+towards the linguistic direction to differentiate settings where like through digital stigmargy and note-taking
+or through physical objects like a rowing team or the moving the couch there's a mediation
+competition through the environment is a competition where they're participating in real time is a
+correspondence chess game or a phone call where there's a linear turn-taking sedimentation
+even though there may still be a continuous unfolding of experience for the agents so that is a
+very rich area to look at. Dean? Yeah, you're just you're jumping in and saying things that I want
+to say so we're obviously some sort of simpaticos going on communication-wise. What I was going to
+say is I was going to kind of now I'm going to build off what you said and what Blue said.
+One of the things that we used to always bring to people's attention in terms of their field
+of importance is that when you're having to explain something you have to take your time.
+You have to slow down. I was working with younger people. You have to slow down. But the also the
+other part of it is you have to know when to hit the hand up reaction button in the zoom call. You
+have to time your take for full effect. So you have to know both of those relativities when we're talking
+about communication because if you are you can show your passion by constantly interrupting another
+person and actually do yourself a disfavor. So the first thing was always slow down. The second thing
+was always think about when you're putting up your hand. Think about when it's your turn. Allow sometimes
+for there to be a pregnant pause. I know Daniel's very gifted at this. There's lots and lots of times as the
+moderator. He could just fill in the space. But he's really really good at sometimes letting the
+communication happen when nothing is said. So I'm going back to what he was asking earlier is can we
+signal something by not saying something? And I didn't jump in then but I was kind of hoping to be
+able to explain that before we have to sign off today because that's a perfect example of actually doing
+the signaling without manipulating the symbols per se. Interesting stuff. Does anyone have any final
+thoughts in this dot one? Yes please Remy? Yeah just quickly the the idea that there's like a skill in
+uh uh when to intervene speak too much speak not enough. It's like it's like all this dimension
+that what what is called pragmatics in uh in uh in linguistics and I there's a really clear example of
+a of the notion of an optimal grip again in terms of distance. There's a an appropriate distance to
+which you you must stand to your interlocutor and that varies in in in function of culture. So if you're
+really so in some culture and some for some person they can be like really close to you and you're
+you're uncomfortable for but for them it might be their their optimal grip in this communicative
+interaction for their for others maybe you're you're uh you must be farther but then if you're too
+far then you you might uh you're bad though uh uh less less have a less good uh understanding of what
+this person is saying. So there there's this optimal grip also in in the pragmatics of the
+interaction that yes I think that was a good point.
+ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+lot of different agents. So a lot of different communications. Blue or Dean, if you have any
+other thoughts, otherwise that brings us to a very nice end of 48.1. And I'm sure it'll be a
+great discussion to continue next week. Just thanks for providing us with such beefy, juicy
+stuff to talk about. I really enjoyed the paper and having you here. It's great.
+Thank you. Completely concur, Remy. It was a fantastic paper. And as I said, there's nothing
+that I find more intriguing when somebody writes something down, not as providing all the answers,
+but as opening up all these questions that we've been able to share today. So I'm very happy that
+you were able to join us. All right. Thank you all. See you next week.

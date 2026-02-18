@@ -1,0 +1,3342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active Inference ModelStream 007.2 ~ pymdp</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active Inference ModelStream 007.2 ~ pymdp</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_007 &middot; Episode 2 &middot; Speakers: pymdp &middot; Duration: 2:08:41 &middot; Views: 1,300</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=uX8iSoDR83g">https://www.youtube.com/watch?v=uX8iSoDR83g</a></div>
+<article>
+<p>hello and welcome this is model stream</p>
+<p>number 007.2 it's the 18th of January</p>
+<p>2023 we're back in our second session on</p>
+<p>Pi mdp welcome back Connor thanks for</p>
+<p>joining again and off to you for a</p>
+<p>presentation that you will weave</p>
+<p>together with some code examples and the</p>
+<p>notebook that we'll use is in the video</p>
+<p>description so thanks again Connor off</p>
+<p>to you</p>
+<p>great thank you Daniel it's great to be</p>
+<p>back here again I think I've been here</p>
+<p>maybe four or five times now so it's</p>
+<p>always a pleasure to be with you all um</p>
+<p>so yeah as Daniel said this is the</p>
+<p>second</p>
+<p>um model stream in a two-part Series</p>
+<p>where we'll be discussing implementing</p>
+<p>active inference with pi mdp</p>
+<p>so um just like there's some background</p>
+<p>that I'm assuming you either know from</p>
+<p>your own research into active inference</p>
+<p>and palm DPS in particular or because</p>
+<p>you've watched the first part of the</p>
+<p>series so</p>
+<p>um I'll just say that to start with like</p>
+<p>if you want background I would encourage</p>
+<p>you to go watch the first part where we</p>
+<p>talk about Pi mdp the motivation for the</p>
+<p>package uh what you can do with it in</p>
+<p>kind of sweeping terms and then today</p>
+<p>we're actually going to go in and use it</p>
+<p>to code up an active inference agent</p>
+<p>performing a task like a reinforcement</p>
+<p>learning style task</p>
+<p>um that's very similar to Classic active</p>
+<p>inference tests that you can find in the</p>
+<p>literature</p>
+<p>um yeah so as Daniel said I'm gonna step</p>
+<p>through these slides I have pauses for</p>
+<p>questions and stuff but we also have</p>
+<p>pauses for code</p>
+<p>um live coding or side by side coding so</p>
+<p>I'll take a pause from the slides and</p>
+<p>we'll go over to the</p>
+<p>um a collab notebook the link is in the</p>
+<p>description of the YouTube video and uh</p>
+<p>and we'll kind of code up this agent</p>
+<p>based on things that we discuss in the</p>
+<p>slides</p>
+<p>um it's not that I'll be actually</p>
+<p>writing code I'll just be running cell</p>
+<p>blocks</p>
+<p>um and yeah so if if anyone who's</p>
+<p>viewing</p>
+<p>um wants to do it themselves you can</p>
+<p>open the collab notebook actually let's</p>
+<p>start by doing that</p>
+<p>because</p>
+<p>um so this should be the co-op notebook</p>
+<p>that you get brought to when you</p>
+<p>um click on the link and then and this</p>
+<p>is one copy you need to have a Google</p>
+<p>account to use this because Co-op is</p>
+<p>linked to your Google Drive of your</p>
+<p>Google account so if you're doing this</p>
+<p>um on your own this is a shared link but</p>
+<p>it's not</p>
+<p>um you can't edit it you can't write to</p>
+<p>it so what you have to do is go to file</p>
+<p>up here then save a copy and drive and</p>
+<p>then you'll get your own personal</p>
+<p>private copy of the notebook and I'll do</p>
+<p>that right now because I'll create a run</p>
+<p>copy where we can like manipulate it all</p>
+<p>together in real time</p>
+<p>so I'll just call it run copy</p>
+<p>um and I'll start by just installing</p>
+<p>into this collab environment</p>
+<p>uh Pi mdp so collab is kind of like</p>
+<p>Jupiter notebooks it's an interactive</p>
+<p>Cloud hosted notebook for running</p>
+<p>different kinds of code but mainly</p>
+<p>python code</p>
+<p>um so while that's installing and I'll</p>
+<p>run that as well</p>
+<p>we can start with the slides</p>
+<p>Okay so</p>
+<p>um</p>
+<p>so I'll just start with a quick review</p>
+<p>from last time and again go back to the</p>
+<p>video if you want to see the full</p>
+<p>picture of what we discussed so the</p>
+<p>generative models the kind of brains of</p>
+<p>the agents that we'll be constructing</p>
+<p>are these partially observed Markov</p>
+<p>decision processes or Palm DPS</p>
+<p>um they have various parameters and it's</p>
+<p>kind of up to you how to parameterize</p>
+<p>them but under active inference we</p>
+<p>typically have these four main</p>
+<p>components there's fifth and sixth</p>
+<p>depending on how complicated of a model</p>
+<p>you want to create but these components</p>
+<p>kind of represents the agent's beliefs</p>
+<p>about the world that it's operating in</p>
+<p>so these are usually hand designed or at</p>
+<p>least generally structured on a</p>
+<p>case-by-case basis according to the</p>
+<p>behavioral task that you're trying to</p>
+<p>model so we have the a matrix or a array</p>
+<p>which encodes the agent's beliefs about</p>
+<p>how hidden states of the world that it's</p>
+<p>doing inference about relate to the</p>
+<p>observations that it gets you have the B</p>
+<p>array which encodes uh beliefs about</p>
+<p>transitions or beliefs about Dynamics so</p>
+<p>how do hidden States relate to each</p>
+<p>other over time</p>
+<p>um you have the C vector or C array</p>
+<p>which encodes agents prior preferences</p>
+<p>for seeing certain sorts of Sensations</p>
+<p>so this kind of plays the role of a</p>
+<p>quasi-reward function and it has the</p>
+<p>effect of biasing Agents action</p>
+<p>selection such that it's more likely to</p>
+<p>visit states of Affairs that it a priori</p>
+<p>expects to see I.E goal directed</p>
+<p>Behavior wants to achieve some goal and</p>
+<p>then we have the D Vector which is kind</p>
+<p>of a baseline prior about what is the</p>
+<p>state of the world</p>
+<p>um before I get any observations like</p>
+<p>what do I believe the hidden State</p>
+<p>distribution is and again I'm glossing</p>
+<p>over this because I assume that you know</p>
+<p>about things like categorical</p>
+<p>distributions</p>
+<p>um you know the we the all the details</p>
+<p>of those these different arrays are</p>
+<p>explained more in the first video</p>
+<p>um</p>
+<p>and just again to show the graphical</p>
+<p>model we have the a array relating</p>
+<p>hidden States in red to observations in</p>
+<p>blue we have the B Matrix or B array</p>
+<p>that relate on hidden states to</p>
+<p>themselves over time so how does the</p>
+<p>world change</p>
+<p>and then we have policies Pi which are</p>
+<p>uh sequences or collections of actions</p>
+<p>that affect Transitions and thereby</p>
+<p>change the state of the world</p>
+<p>and then you have this critical</p>
+<p>quasi-seudo value function to active</p>
+<p>inference in Palm DPS active inference</p>
+<p>in general which is the expected free</p>
+<p>energy and the expected free energy is</p>
+<p>the thing you try to minimize as you</p>
+<p>optimize your beliefs about policies so</p>
+<p>the best policies are those that</p>
+<p>minimize expected free energy</p>
+<p>and that has a bunch of interesting</p>
+<p>terms that lend active inference all of</p>
+<p>its interesting curious uh information</p>
+<p>seeking behaviors and then this prior</p>
+<p>over observations factors into the</p>
+<p>computation of that expected free energy</p>
+<p>so if you have a particular prior</p>
+<p>preference to see some observations that</p>
+<p>will affect</p>
+<p>which policies get more or less expected</p>
+<p>free energy and then you use that to</p>
+<p>actually choose a policy</p>
+<p>and then of course we have the D Vector</p>
+<p>which parameterizes the initial uh</p>
+<p>beliefs about his and states</p>
+<p>so today</p>
+<p>um we're going to actually dive in and</p>
+<p>write out our own a b c's and D's for</p>
+<p>particular</p>
+<p>um a generative model we don't have to</p>
+<p>worry about writing it out our own</p>
+<p>functions that do inference and or do</p>
+<p>planning all of that will be handled by</p>
+<p>the abstractions provided by Prime DP</p>
+<p>per tip particularly in the agent class</p>
+<p>so the Aging class takes the components</p>
+<p>of the generative model it gives you</p>
+<p>this very kind of Black Box API that you</p>
+<p>can just use to perform active inference</p>
+<p>um this is a very in the last video we</p>
+<p>talked about different levels of</p>
+<p>abstraction this is like the top level</p>
+<p>of abstraction in pi mdp where you're</p>
+<p>just passing a generative model to an</p>
+<p>agent and then kind of pressing go on</p>
+<p>the agent</p>
+<p>um having it interact with the task</p>
+<p>environment so typically this is another</p>
+<p>class like an environment class or a</p>
+<p>task class and then you just kind of</p>
+<p>string the two together in an action</p>
+<p>perception Loop and uh and you get a</p>
+<p>simulation of behavior under active</p>
+<p>inference</p>
+<p>and this is a a standard thing you'll</p>
+<p>see in like open AI gym or other</p>
+<p>reinforcement learning packages you'll</p>
+<p>have usually like an environment class</p>
+<p>and an agent class and they exchange</p>
+<p>actions and observations in order so we</p>
+<p>we designed the API of Pi mdp very much</p>
+<p>uh inspired by that</p>
+<p>um Okay so</p>
+<p>before we start writing down the</p>
+<p>generative model so that a b c and d</p>
+<p>um I want to spend a little bit of time</p>
+<p>exploring the idea of factorized State</p>
+<p>spaces</p>
+<p>and this is important because not only</p>
+<p>the model we're working today it's</p>
+<p>important to understand factorization in</p>
+<p>both observations and hidden States</p>
+<p>but for almost all the most interesting</p>
+<p>Palm DP models you're going to want to</p>
+<p>build it's going to be really crucial to</p>
+<p>factorize your system in some way not</p>
+<p>only because it becomes easier to reason</p>
+<p>about and work with when things are</p>
+<p>factorized but also it handles a lot of</p>
+<p>computational explosions that happen if</p>
+<p>you don't factorize your state space</p>
+<p>[Music]</p>
+<p>um</p>
+<p>so it's not it's often useful to</p>
+<p>categorically separate observations into</p>
+<p>different modalities and hidden States</p>
+<p>into different factors so what this</p>
+<p>means is that when we get an observation</p>
+<p>we're actually getting a collection of</p>
+<p>different observations one coming from</p>
+<p>each distinct sensory modality or</p>
+<p>channel so similarly for hidden States</p>
+<p>at any given time the hidden states are</p>
+<p>described by a distinct set of different</p>
+<p>features or what we call Hidden State</p>
+<p>factors and so we refer to this as a</p>
+<p>factorized representation because the</p>
+<p>different modalities are independent of</p>
+<p>each other</p>
+<p>and the different hidden states are also</p>
+<p>um independent of each other their</p>
+<p>Dynamics are so they evolve in time</p>
+<p>without ex affecting the other hidden</p>
+<p>State factors so that's formally written</p>
+<p>down as follows like the modalities</p>
+<p>um are conditionally independent of each</p>
+<p>other given the hidden States that's</p>
+<p>what this factorization of the</p>
+<p>likelihood looks like</p>
+<p>um so you can think of the different</p>
+<p>modalities as different sensory channels</p>
+<p>like visual Vision audition</p>
+<p>somatosensation and they provide their</p>
+<p>own distinct type of information which</p>
+<p>are then integrated together during</p>
+<p>inference and factorizing the hidden</p>
+<p>States is like the idea that any given</p>
+<p>time the world can be described by</p>
+<p>independent features like an object</p>
+<p>being described by both its location and</p>
+<p>space as well as its identity</p>
+<p>um and factorizing the state's</p>
+<p>representations of the model in this way</p>
+<p>allows for a few different distinct</p>
+<p>advantages one is computational</p>
+<p>efficiency both in terms of memory and</p>
+<p>um CPU</p>
+<p>it simplifies the structure of the</p>
+<p>generative model itself so it lends it a</p>
+<p>bit of interpretability and transparency</p>
+<p>so there's only certain sets of</p>
+<p>variables that represent the agent's</p>
+<p>beliefs about one feature of the</p>
+<p>environment for instance and then</p>
+<p>finally some would argue it has a degree</p>
+<p>of neuronal or biological plausibility</p>
+<p>and is consistent with the idea of</p>
+<p>factorized on what others would call</p>
+<p>Modular representations in the brain so</p>
+<p>this part of this group of neuronal</p>
+<p>populations deals with representing</p>
+<p>where something is in space and this</p>
+<p>group of neuronal populations deals with</p>
+<p>representing the Identity or what the</p>
+<p>thing is</p>
+<p>um so that that's kind of the reason we</p>
+<p>do this factorization</p>
+<p>um so one of the most classic examples</p>
+<p>of uh the the early examples we do in pi</p>
+<p>MVP and this can be found on the uh</p>
+<p>documentation and on the main page is</p>
+<p>this a grid World example where the</p>
+<p>agent is kind of</p>
+<p>um</p>
+<p>navigating in a 2d grid World space uh</p>
+<p>then in the notebooks online we do like</p>
+<p>a two byte of three by three grid wool</p>
+<p>so there's nine total locations and in a</p>
+<p>fully unfactorized or what we call an</p>
+<p>enumerated State space representation</p>
+<p>every location in Grid world has its own</p>
+<p>um particular uh like Identity or state</p>
+<p>so we just arbitrary can label them like</p>
+<p>location zero all the way to location</p>
+<p>eight and that that covers all nine</p>
+<p>levels of grid World</p>
+<p>um this is fine but it especially for a</p>
+<p>small state space like a three by three</p>
+<p>grid world but it leads to some it kind</p>
+<p>of taxes our our memory and our uh our</p>
+<p>interpretability a little bit because we</p>
+<p>have to remember exactly how our nine</p>
+<p>indices map to our uh the different</p>
+<p>places in Grid world so like if I'm in</p>
+<p>the middle of the grid I need to like</p>
+<p>have some kind of lookup table to say</p>
+<p>okay location four is uh</p>
+<p>like zero or one comma one I.E the</p>
+<p>middle location the grid in a factorized</p>
+<p>representation</p>
+<p>the grid could be represented as two</p>
+<p>orthogonal or independent hidden State</p>
+<p>factors one is something like the X</p>
+<p>displacement or the horizontal</p>
+<p>displacement which now just takes three</p>
+<p>values like which column of grid world</p>
+<p>are you in and then uh vertical</p>
+<p>displacement or a y position which is</p>
+<p>something like which row of grid will</p>
+<p>dot am I in</p>
+<p>and so now each hidden state is not a</p>
+<p>single nine-dimensional Vector but it's</p>
+<p>actually a combination or a pair of two</p>
+<p>hidden State factors so two three</p>
+<p>vectors instead of a single nine vector</p>
+<p>and then a given hidden State itself is</p>
+<p>picked out by a coincidence of these two</p>
+<p>hidden State factors so if the X</p>
+<p>position is one and the Y position is</p>
+<p>two then it means I'm in</p>
+<p>um</p>
+<p>two are one comma two so like the middle</p>
+<p>bottom of the of the grid world</p>
+<p>and then once you do this so once we</p>
+<p>have a factorized hidden state</p>
+<p>representation it has implications for</p>
+<p>the way we construct the generative</p>
+<p>model so in a kind of simple generative</p>
+<p>model you would just have one B array</p>
+<p>that in the original uh grid World</p>
+<p>example just is like nine possible</p>
+<p>hidden States the nine possible</p>
+<p>locations of where I just was that maps</p>
+<p>to the nine possible subsequent hidden</p>
+<p>States so the nine possible locations I</p>
+<p>could be going to and then you'd have</p>
+<p>that nine by nine Matrix conditioned on</p>
+<p>the different actions so in the grid</p>
+<p>World demo</p>
+<p>the actions are typically local like</p>
+<p>move up move left move down move right</p>
+<p>um but once you factorize things you're</p>
+<p>going to actually now have a collection</p>
+<p>of B matrices and this is a consequence</p>
+<p>of the factorization across the</p>
+<p>transition models that we discussed a</p>
+<p>few slides ago so you're going to have</p>
+<p>one B Matrix or one set of B arrays for</p>
+<p>the X displacement so how does the agent</p>
+<p>move in the X Direction so these are</p>
+<p>what each of these X</p>
+<p>um these X displacement</p>
+<p>um B matrices look like conditioned on</p>
+<p>different actions so this is what it</p>
+<p>looks like from moving left this is what</p>
+<p>the B Matrix looks like for moving right</p>
+<p>and this is what it looks like for stay</p>
+<p>and then similarly you'll have another B</p>
+<p>Matrix that encodes the agent's</p>
+<p>abilities to move in the vertical</p>
+<p>direction or Y displacement and</p>
+<p>similarly they actually look identical</p>
+<p>um because the the world is is like</p>
+<p>rotation and translation invariant</p>
+<p>and you'll have a another smaller B</p>
+<p>array just for y movement this is a very</p>
+<p>simple example we're not going to</p>
+<p>actually do this in code because it's</p>
+<p>kind of trivial but it's just an example</p>
+<p>of how instead of having a location</p>
+<p>fully enumerated representation you can</p>
+<p>split that up into basically a y-axis</p>
+<p>and an x-axis</p>
+<p>so now we're gonna We're Not Gonna</p>
+<p>simulate an active inference agent but</p>
+<p>we're just gonna play around with these</p>
+<p>data structures to get you used to the</p>
+<p>idea of factorized representations and</p>
+<p>how that manifests in the code so now</p>
+<p>we'll go over to collab</p>
+<p>so if you've been running this on your</p>
+<p>own this should all be</p>
+<p>downloaded</p>
+<p>um so you've installed in infra actively</p>
+<p>dashed Pine DP that's the whole name of</p>
+<p>the package</p>
+<p>that's now in your environment and then</p>
+<p>you should also run this some basic</p>
+<p>Imports like numpy and Pi mdp which is</p>
+<p>now in the environment</p>
+<p>mm-hmm okay and so the basic variables</p>
+<p>that you'll see</p>
+<p>are things like</p>
+<p>the yes so there's a few variables that</p>
+<p>are almost always part of any pine DP</p>
+<p>workflow and this is very much mirrored</p>
+<p>on how it's done in SPM in the Dem</p>
+<p>toolbox so typically you'll have a list</p>
+<p>that specifies the dimensionalities or</p>
+<p>the number of different levels of each</p>
+<p>hidden State Factor so for our three our</p>
+<p>three by three grid world nine possible</p>
+<p>States we have one X Factor of three</p>
+<p>levels and one y factor of three levels</p>
+<p>and then the length of that list tells</p>
+<p>us the total number of hidden State</p>
+<p>factors so in this case we have two</p>
+<p>hidden State factors and then similarly</p>
+<p>we have uh hidden you have hidden states</p>
+<p>are factorized and then similarly you</p>
+<p>factorize your control States so for</p>
+<p>every hidden State Factor there's also</p>
+<p>going to be a control State factor and</p>
+<p>the fact that these are also</p>
+<p>three-dimensional each just basically</p>
+<p>means that the agent has three possible</p>
+<p>actions in the x-axis and three possible</p>
+<p>actions in the y-axis and then the</p>
+<p>number of control factors is also gonna</p>
+<p>be two in that case</p>
+<p>and so we have some nice utility</p>
+<p>functions that can quickly build a b</p>
+<p>array given the the two things that are</p>
+<p>necessary uh the num States and num</p>
+<p>controls variables so you just do</p>
+<p>uh initialize empty B</p>
+<p>some states and number controls</p>
+<p>and then you'll have</p>
+<p>a b Matrix</p>
+<p>that has you know the correct shapes and</p>
+<p>stuff</p>
+<p>so three rows three columns and three</p>
+<p>possible actions for the X Direction and</p>
+<p>similarly for the Y Direction so this is</p>
+<p>just basic setting up your variables</p>
+<p>um</p>
+<p>and often we'll have these solution</p>
+<p>cells that are hidden underneath each</p>
+<p>little quasi exercise so that's</p>
+<p>something you can do as well</p>
+<p>okay and so that's just and that's just</p>
+<p>initializing an empty array right so we</p>
+<p>don't actually know what's uh</p>
+<p>what those contingencies are that we saw</p>
+<p>in the in the slides but if we want to</p>
+<p>populate this thing</p>
+<p>so this is what each</p>
+<p>Factor specific B array looks like then</p>
+<p>we have to go into these matrices and</p>
+<p>actually fill out the rows columns and</p>
+<p>third order slices with numbers so for</p>
+<p>instance this Loop where we Loop over</p>
+<p>factors and we fill out the different</p>
+<p>entries of the B array what this will do</p>
+<p>is just encode those local actions like</p>
+<p>move left move right for The X Factor</p>
+<p>and then move up move down for the Y</p>
+<p>factor and so once you've run that code</p>
+<p>you basically filled out all the numbers</p>
+<p>in that that Big Empty B array that you</p>
+<p>started and then you can use things like</p>
+<p>the plot likelihood function to to plot</p>
+<p>these likelihood distributions action</p>
+<p>conditioned likelihood distributions as</p>
+<p>matrices so this is move uh left for</p>
+<p>instance if we're in the x hidden State</p>
+<p>factor and if we change this to a one</p>
+<p>we've changed the action index then this</p>
+<p>is</p>
+<p>move right and then similarly if we</p>
+<p>change this this is move</p>
+<p>down if we're doing action one here</p>
+<p>um oh and just uh so darker colors</p>
+<p>whether it's grayscale or red or</p>
+<p>whatever</p>
+<p>almost unanimously in Prime DP the</p>
+<p>darker colors represent more probability</p>
+<p>so that's just for</p>
+<p>um</p>
+<p>so instead of having to display numbers</p>
+<p>we'll just show darker numbers</p>
+<p>okay so now let's go back to the slides</p>
+<p>and talk about the a arrays</p>
+<p>so in in our unfactorized fully</p>
+<p>enumerated grid World example and again</p>
+<p>I'll refer you to the documentation of</p>
+<p>primevp if if uh if you want to like</p>
+<p>play around with that example the hidden</p>
+<p>State factors which are just these nine</p>
+<p>kind of arbitrarily labeled locations</p>
+<p>map to an observation modality which is</p>
+<p>like the agent's sensation of its own</p>
+<p>position kind of appropriate receptive</p>
+<p>GPS modality you could think of it as</p>
+<p>like they're sensing where they are at</p>
+<p>any given time and so um there are</p>
+<p>various ways you could uh encode that</p>
+<p>but let's just pretend that they have a</p>
+<p>very high fidelity GPS so they're</p>
+<p>getting precise GPS readouts of where</p>
+<p>they are at any given time so in in a</p>
+<p>fully enumerated world that a matrix</p>
+<p>that likelihood modality would look like</p>
+<p>this</p>
+<p>when we start factorizing things so</p>
+<p>splitting up the hidden State factors</p>
+<p>into an X Factor and a y factor that</p>
+<p>choice not only manifests in the B</p>
+<p>arrays but it also manifests in the</p>
+<p>structure of the areas and I think this</p>
+<p>is one of the most key things to</p>
+<p>understand because when it comes to</p>
+<p>coding these things up yourself</p>
+<p>understand how these arrays are</p>
+<p>structured is really important to</p>
+<p>getting things working</p>
+<p>um</p>
+<p>like successfully</p>
+<p>so it's basically getting used to</p>
+<p>multi-dimensional indexing so</p>
+<p>the briefly uh in summary when you have</p>
+<p>multiple hidden State factors that</p>
+<p>manifests as extra lagging Dimensions or</p>
+<p>extra higher order dimensions in your um</p>
+<p>in your a array so it's not really an a</p>
+<p>matrix anymore it's an a tensor so that</p>
+<p>means if you have two hidden State</p>
+<p>factors the number of lagging Dimensions</p>
+<p>I.E excluding rows that's what I mean</p>
+<p>when I say lagging Dimensions will be</p>
+<p>two so you have columns and slices in</p>
+<p>addition to rows so this is really</p>
+<p>important to understand when either</p>
+<p>using SPM or pi mdp to do pom DP based</p>
+<p>active inference and another way of</p>
+<p>saying this is for each additional</p>
+<p>random variable that we're conditioning</p>
+<p>our observations on we have an</p>
+<p>additional lagging dimension in our</p>
+<p>array so this is the same Principle as</p>
+<p>with the B matrices because we condition</p>
+<p>the next state both on the past State</p>
+<p>and the past action that's why the B</p>
+<p>arrays are also tensors so we have two</p>
+<p>extra dimensions in the B array one for</p>
+<p>each conditioning variable past State</p>
+<p>and past action so now in the in the X</p>
+<p>and Y factorized grid world we have two</p>
+<p>lagging Dimensions where the first</p>
+<p>lagging Dimension the columns in blue</p>
+<p>index a particular X location and the</p>
+<p>second lagging Dimension the slices if</p>
+<p>you will index a particular Y location</p>
+<p>so now what I'm going to do</p>
+<p>is unwrap these slices of the</p>
+<p>multi-dimensional a matrix</p>
+<p>um</p>
+<p>and so you can see that each slice of</p>
+<p>the a matrix so that each purple indexed</p>
+<p>third order slice corresponds to</p>
+<p>conditioning on a particular setting of</p>
+<p>Y so a particular conditional</p>
+<p>distribution over observations for the</p>
+<p>three settings of X for a fixed value of</p>
+<p>y so each slice is exactly this</p>
+<p>conditional distribution</p>
+<p>where we're looking at the conditional</p>
+<p>distributions over observations for each</p>
+<p>setting of X so those are the The</p>
+<p>Columns indexed by the blue numbers at</p>
+<p>the bottom</p>
+<p>but we're fixing to one value of y so</p>
+<p>that's the conditional distribution over</p>
+<p>observations 0 1 and 2 so being in the</p>
+<p>top row given that we're in the first</p>
+<p>the first row y equals zero for the</p>
+<p>three possible settings of X and then we</p>
+<p>move down to this next set of</p>
+<p>observations</p>
+<p>and uh the next slice of Y and it looks</p>
+<p>like that and then finally like that</p>
+<p>so this is the case where our GPS is uh</p>
+<p>noiseless and High Fidelity right that's</p>
+<p>why we have like hyper Dark Cells and</p>
+<p>then everything else is white is because</p>
+<p>the agent believes that its observations</p>
+<p>are High Fidelity</p>
+<p>um signals of the actual hidden State</p>
+<p>namely the X comma Y location</p>
+<p>so then when we Pat these back together</p>
+<p>we see how this full a matrix or set of</p>
+<p>conditional distributions will be</p>
+<p>represented by a nine by three by three</p>
+<p>tensor where again each lagging</p>
+<p>Dimension exists to encode the</p>
+<p>conditional dependencies between that</p>
+<p>particular hidden State Factor indexed</p>
+<p>by the lagging Dimension and the</p>
+<p>observations for this modality so when I</p>
+<p>index into the ith column and the jth</p>
+<p>slice of this a matrix or a tensor I'm</p>
+<p>basically slicing out a particular</p>
+<p>conditional distribution over</p>
+<p>observations where I'm deciding what</p>
+<p>settings</p>
+<p>of the conditional distributions or the</p>
+<p>conditional very random variables I'm</p>
+<p>interested in</p>
+<p>um</p>
+<p>okay so yeah that's uh that's a kind of</p>
+<p>critical concept and to just uh make it</p>
+<p>more</p>
+<p>um tangible and clear</p>
+<p>and I mean to be clear this isn't the</p>
+<p>only way to encode conditional</p>
+<p>dependencies in categorical</p>
+<p>distributions but it's just the way that</p>
+<p>was originally uh used in SPM to encode</p>
+<p>these dependencies and then we just</p>
+<p>borrowed that convention when building a</p>
+<p>primevp and it's pretty useful because</p>
+<p>it makes generating things like</p>
+<p>conditional expectations pretty</p>
+<p>straightforward</p>
+<p>um using like a linear algebra</p>
+<p>operations like</p>
+<p>higher order dot products and stuff like</p>
+<p>that so we have this</p>
+<p>kind of unwrapped representation of the</p>
+<p>array here and we can use this to</p>
+<p>uh to refer back to when we're building</p>
+<p>our array so</p>
+<p>um one thing I didn't mention that is</p>
+<p>also important is that in the same way</p>
+<p>we can factorize hidden States we can</p>
+<p>factorize modalities so we'll have we'll</p>
+<p>talk about that in a second but just for</p>
+<p>now let's assume we have one single GPS</p>
+<p>sensing modality of nine possible levels</p>
+<p>of where I am in Grid world so it's just</p>
+<p>a list of one number nine</p>
+<p>and then the number of modalities will</p>
+<p>trivially be one the length of that list</p>
+<p>and then we can use similarly this utils</p>
+<p>initialize empty a array which takes the</p>
+<p>number of observation modalities their</p>
+<p>dimensions and the number of hidden</p>
+<p>States</p>
+<p>and then it creates</p>
+<p>um the a array with the proper</p>
+<p>dimensions and everything</p>
+<p>so I've also created this combined list</p>
+<p>called a location dims which is a</p>
+<p>combination of the number of observation</p>
+<p>modality dimensions and the number of</p>
+<p>hidden State Factor Dimensions so that's</p>
+<p>as we said going to be 933</p>
+<p>and so then we can populate our first</p>
+<p>the entry of our first modality in the a</p>
+<p>matrix which is trivially here the only</p>
+<p>modality with a matrix of zeros</p>
+<p>this is actually what's happening under</p>
+<p>the hood in this thing so we don't need</p>
+<p>to do it here</p>
+<p>but then if we just run that then we'll</p>
+<p>see that the shape of a0 is the same as</p>
+<p>a location divs</p>
+<p>um okay so that's just initializing it</p>
+<p>so we now have one a array that has one</p>
+<p>modality whose shape is nine by three by</p>
+<p>three and then we just go and fill it</p>
+<p>out like we saw up here so I'm filling</p>
+<p>it out under the assumption of this</p>
+<p>noiseless high high quality GPS sensor</p>
+<p>so you can see when I'm indexing into</p>
+<p>the lagging Dimension here the the Y</p>
+<p>Dimension which is the third dimension</p>
+<p>of the tensor I'm saying for this</p>
+<p>particular value of y which is when Y is</p>
+<p>zero</p>
+<p>um we're in the first row of grid world</p>
+<p>then the conditional distribution over</p>
+<p>the three settings of the GPS given all</p>
+<p>the settings of X is just an identity</p>
+<p>Matrix so I'm just coding that that</p>
+<p>little chunk right there and then we can</p>
+<p>go through each of the slices</p>
+<p>iteratively and do that</p>
+<p>um so yeah one of the things I think is</p>
+<p>a disadvantage currently of both Prime</p>
+<p>DP and the SPM is I think we need better</p>
+<p>ways to make people not have to do these</p>
+<p>multi-dimensional indexing operations to</p>
+<p>encode a particular conditional</p>
+<p>independency structure and I thought of</p>
+<p>ways to do that but it's actually pretty</p>
+<p>hard to do that in a generic flexible</p>
+<p>way where people can just come to the</p>
+<p>table with their own semantics and then</p>
+<p>all this gets done for them so for now</p>
+<p>you still have to kind of do this by</p>
+<p>hand or write some algorithmic way to do</p>
+<p>it that's specific to your task</p>
+<p>but uh but yeah that's just something to</p>
+<p>mention is like it would it's not ideal</p>
+<p>that we have users doing this but I at</p>
+<p>the moment I can't really think of a</p>
+<p>better way to do it</p>
+<p>um</p>
+<p>and then once we've encoded that we can</p>
+<p>look at our little conditional</p>
+<p>distributions given different settings</p>
+<p>of why you know and that's just one</p>
+<p>choice we could also condition on X and</p>
+<p>look at for all settings of Y</p>
+<p>x equals zero</p>
+<p>like you can slice this up however you</p>
+<p>want right</p>
+<p>um that's just a a visualization choice</p>
+<p>and these are our three</p>
+<p>collections of conditional distributions</p>
+<p>one for each setting of Y</p>
+<p>okay</p>
+<p>um</p>
+<p>you know let's go back to the slides</p>
+<p>yes so one thing I didn't mention uh or</p>
+<p>I said I would mention is we we just had</p>
+<p>a a single observation modality but just</p>
+<p>as for hidden States we can factorize</p>
+<p>um and we don't have to fully enumerate</p>
+<p>our observation space so we could</p>
+<p>separate the grid GPS observations into</p>
+<p>an X and A Y GPS so now you're observing</p>
+<p>a pair of different observations at any</p>
+<p>given time One X observation and one y</p>
+<p>so just like we had a separate B array</p>
+<p>for each hidden State Factor similarly</p>
+<p>we now have a separate a array for each</p>
+<p>observation modality so we would</p>
+<p>populate one big a object array with</p>
+<p>these different modality specific Aras</p>
+<p>so in this case if we had X observations</p>
+<p>and Y observations we would have two a</p>
+<p>sub arrays each one would have size</p>
+<p>three by three by three because three</p>
+<p>observations and then for the two</p>
+<p>possible states of the Hidden State</p>
+<p>factors</p>
+<p>so yeah that wraps up the the um slides</p>
+<p>I had on</p>
+<p>multi-factor multi modality factorized</p>
+<p>representations and how that affects A</p>
+<p>and B arrays so uh before we move on to</p>
+<p>the contextual multi-arm Bandit um let's</p>
+<p>open it up for questions or comments if</p>
+<p>anything was unclear and someone wants</p>
+<p>to contribute their own way of</p>
+<p>explaining something I'm happy to talk</p>
+<p>about that now</p>
+<p>awesome Jacob then Adam and Carl if</p>
+<p>you'd like</p>
+<p>yeah uh thanks a lot for the great uh</p>
+<p>overview I had a question on uh</p>
+<p>initializing the B Matrix so in this</p>
+<p>case we uh initialized it with the</p>
+<p>simplest policy just all of the</p>
+<p>available actions the agent has is there</p>
+<p>um</p>
+<p>would there be any particular use case</p>
+<p>in the grid World example where we would</p>
+<p>want to initialize it with a sequence</p>
+<p>of uh of policies and is that needed if</p>
+<p>we want to do planning of different</p>
+<p>temporal depth</p>
+<p>So when you say sequence of policies can</p>
+<p>you give me like an example</p>
+<p>like instead of in instead of</p>
+<p>um conditioning uh conditioning</p>
+<p>it on just move up viewed conditioning</p>
+<p>on move up and down</p>
+<p>fixed sequences of of actions</p>
+<p>right right that's interesting okay so</p>
+<p>that's so yeah typically when we are</p>
+<p>building these transition likelihoods</p>
+<p>this is more of a consequence of the</p>
+<p>fact that it's a palm</p>
+<p>a p-o-m-dp with an emphasis on the m so</p>
+<p>it's markovian so if you want to</p>
+<p>encode something like</p>
+<p>what is the predicted next hidden State</p>
+<p>given</p>
+<p>I did move up and move down in the last</p>
+<p>two time steps if I'm understanding</p>
+<p>correctly you're like saying can</p>
+<p>condition my B Matrix my next hidden</p>
+<p>State on a sequence of two possible uh</p>
+<p>past actions then we're breaking the</p>
+<p>Markov property of the Dynamics because</p>
+<p>we're saying the next thing says not</p>
+<p>just depends on what I did at the last</p>
+<p>time step in the end the state but it</p>
+<p>depends on also what I did two time</p>
+<p>steps ago so now you have a higher order</p>
+<p>temporal dependence like a semi-markov</p>
+<p>model or uh yeah really just not a</p>
+<p>markup model but a higher order model</p>
+<p>and that's not something that's</p>
+<p>currently supported in pi mdp the</p>
+<p>natural way you get around that is by</p>
+<p>building a hierarchical model</p>
+<p>um so at at each individual</p>
+<p>um level of the hierarchy you have a pom</p>
+<p>DP but then when you look at a single</p>
+<p>layer like the bottom layer of this</p>
+<p>hierarchical model</p>
+<p>it is a semi-markov model or</p>
+<p>non-markovian if you take into account</p>
+<p>what all the other layers are doing</p>
+<p>um but but that's not uh currently</p>
+<p>supported at the level of a single</p>
+<p>Markov model like you can't build a b</p>
+<p>Matrix that's dependent on more than</p>
+<p>what happened at the last time step it</p>
+<p>always has to you yeah you can't have</p>
+<p>like an extra lagging Dimension that</p>
+<p>encodes also what were they doing two</p>
+<p>time steps ago</p>
+<p>um</p>
+<p>that so that's one interpretation of</p>
+<p>when you say policy like up down I think</p>
+<p>of two actions uh that happen in in</p>
+<p>locks in sequence</p>
+<p>um but maybe another thing and correct</p>
+<p>me if I'm uh reading too deeply into</p>
+<p>your question another thing would be can</p>
+<p>I have actions in a different control</p>
+<p>State Factor affect the Dynamics of the</p>
+<p>of a particular hidden State Factor so</p>
+<p>say I had one hidden State factor which</p>
+<p>is move up</p>
+<p>uh and another uh I said one factor</p>
+<p>which is y displacement another Factor</p>
+<p>that's X displacement can I have the</p>
+<p>Dynamics of the Y Factor not just depend</p>
+<p>on my y action but also on my X action</p>
+<p>um so that's the idea of</p>
+<p>basically breaking</p>
+<p>this uh conditional sorry this</p>
+<p>Independence property</p>
+<p>where is it here</p>
+<p>I don't know let me find it here</p>
+<p>so if you</p>
+<p>you allowed the lower right shows that</p>
+<p>the dynamic the state of one factor over</p>
+<p>time only depends on the state of of</p>
+<p>that factor at the previous time step</p>
+<p>but if you said I could also can make</p>
+<p>this conditionally dependent</p>
+<p>on not just factor F but say Factor</p>
+<p>um I or Q</p>
+<p>at T minus one</p>
+<p>this is something that's also not</p>
+<p>currently supported but I think is an</p>
+<p>interesting idea which is you would</p>
+<p>actually have interactions between maybe</p>
+<p>pairs of hidden State factors</p>
+<p>in in Hidden State space this actually</p>
+<p>can be accommodated under uh Pine DP</p>
+<p>like like mathematically I haven't built</p>
+<p>in the functionality to do it but I</p>
+<p>think there's nothing that stops you in</p>
+<p>principle from doing this so this would</p>
+<p>be as if I can have actions from</p>
+<p>different control factors all</p>
+<p>influencing the next state of one hidden</p>
+<p>State Factor</p>
+<p>um and that is something that will</p>
+<p>probably make the message passing</p>
+<p>a little bit more not maybe not more</p>
+<p>complicated but maybe there's</p>
+<p>convergence properties wouldn't be as</p>
+<p>guaranteed I don't know what it looks</p>
+<p>because you're introducing weird Loops</p>
+<p>in your your graph but um in the factor</p>
+<p>graph that represents the generative</p>
+<p>model but uh that's something in theory</p>
+<p>could be uh entertained but I I don't</p>
+<p>know if that's actually what you had in</p>
+<p>mind maybe you had more in mind of</p>
+<p>breaking the Markov property when you</p>
+<p>say</p>
+<p>yeah it was</p>
+<p>um thank you for the answer it was more</p>
+<p>of a clarification also on the</p>
+<p>mathematical notation uh because uh</p>
+<p>Pi uh it's interpreted as policy which I</p>
+<p>guess can be both individual actions and</p>
+<p>sequences of actions</p>
+<p>um yeah so just wanted to clarify that</p>
+<p>yeah that's a good point so when I said</p>
+<p>Pi up here</p>
+<p>I meant</p>
+<p>um</p>
+<p>I meant yeah so</p>
+<p>in in if Paul if Pi was a sequence of</p>
+<p>actions that any any given time the B</p>
+<p>Matrix that you're indexing out is</p>
+<p>conditioned on the action that's</p>
+<p>entailed by the policy at that</p>
+<p>particular time but the B Matrix will</p>
+<p>never be entailed on like what's going</p>
+<p>on in the full policy but just by okay</p>
+<p>at time t i take out this slice of the B</p>
+<p>Matrix because at time T this is the</p>
+<p>action entailed by this policy of</p>
+<p>sequence length H or something but uh</p>
+<p>yeah that's a good point so in the in in</p>
+<p>a trivial case policy length is one and</p>
+<p>there's just one action that's</p>
+<p>uh the policy is just an action that</p>
+<p>comes down to slice out the b Matrix</p>
+<p>thanks Jacob Adam anything you like to</p>
+<p>add go for it yeah a couple follow-ups</p>
+<p>uh thank you for this very clear</p>
+<p>presentation Connor so first um just to</p>
+<p>follow on what Yakov just asked it seems</p>
+<p>like another potential way if you wanted</p>
+<p>to do this sort of two-time Step uh</p>
+<p>model would be to actually condenser or</p>
+<p>kind of permute those two time steps</p>
+<p>into a single uh variable the same way</p>
+<p>that you you know could condense the row</p>
+<p>and column into a single nine Dimension</p>
+<p>you know nine nine row vector or you can</p>
+<p>break it down into two could you</p>
+<p>similarly break down the last two moves</p>
+<p>and sort of combine them into a</p>
+<p>permutation of all possibilities of the</p>
+<p>last two moves and have those be the</p>
+<p>hidden States</p>
+<p>yeah uh you could do that as well I</p>
+<p>don't I haven't seen that actually done</p>
+<p>in practice the only thing is you'd have</p>
+<p>to actually have to somehow change the</p>
+<p>there</p>
+<p>[Music]</p>
+<p>um</p>
+<p>you have to change the the scheduling I</p>
+<p>guess of the message passing in the</p>
+<p>action to accommodate the fact that</p>
+<p>before I determine what my last hidden</p>
+<p>state was I need to like wait two time</p>
+<p>steps so I can get not only the proximal</p>
+<p>action I did but also have this memory</p>
+<p>of the action two time steps ago</p>
+<p>um yeah I was imagining that you'd have</p>
+<p>some special special case for the first</p>
+<p>move where it's like undefined and then</p>
+<p>the last move then after that you'd have</p>
+<p>the last two moves a separate Matrix for</p>
+<p>those or something yeah like a moving</p>
+<p>window kind of so it's always yeah</p>
+<p>remembering the last yeah I I could see</p>
+<p>that working</p>
+<p>um I think like the active like kind of</p>
+<p>the canonical active inference</p>
+<p>answer to that is instead of having to</p>
+<p>kind of manufacture this special way of</p>
+<p>represent of basically baking memory</p>
+<p>into a markovian system the classical</p>
+<p>way to handle that is just to build a</p>
+<p>hierarchical model because the</p>
+<p>hierarchical model handles that memory</p>
+<p>um easily by just having</p>
+<p>like nested markovian processes where if</p>
+<p>you if you were to look at a single</p>
+<p>process it looks like it has memory but</p>
+<p>that's just because it's priors for its</p>
+<p>own markovian process are evolving as a</p>
+<p>function of another Palm DP that's</p>
+<p>operating at a slower time scale</p>
+<p>um so like I I could imagine doing that</p>
+<p>exact exact thing that you're talking</p>
+<p>about if you had a</p>
+<p>low-level Palm DP that was moving twice</p>
+<p>as fast as the top level Palm DP and so</p>
+<p>basically with the top level Palm DP is</p>
+<p>doing is setting an initial prior over</p>
+<p>one action that then allows the slow</p>
+<p>level Palm DP to condition whatever it</p>
+<p>does next on the behave on like a belief</p>
+<p>that whatever I do next I know that I</p>
+<p>just took</p>
+<p>um this action two time steps ago but</p>
+<p>you don't actually have to hand craft</p>
+<p>that it's just by building a one Palm DP</p>
+<p>like within another Palm DP</p>
+<p>um but I don't see that there's anything</p>
+<p>in principle going against what you're</p>
+<p>describing as well</p>
+<p>it's just yeah I like your approach a</p>
+<p>lot better</p>
+<p>yeah this is this is um I mean</p>
+<p>essentially what I learned from from</p>
+<p>working with Carl was that like any time</p>
+<p>you're trying to imbue a system with</p>
+<p>more complex non-markovian Memory full</p>
+<p>Dynamics or higher order dependencies</p>
+<p>that's when you it's the natural move is</p>
+<p>to go to a hierarchical model</p>
+<p>um because it kind of handles it all</p>
+<p>naturally</p>
+<p>[Music]</p>
+<p>so my next question is</p>
+<p>um about the uh what you were sort of</p>
+<p>tweaking in that formula just a couple</p>
+<p>minutes ago where you were suggesting</p>
+<p>the possibility that there could be</p>
+<p>feedback loops you know between the</p>
+<p>hidden States in theory but but as</p>
+<p>currently implemented if I understood</p>
+<p>correctly that's not the case the state</p>
+<p>of us of one of the Hidden variables or</p>
+<p>so in the state of one of the Hidden</p>
+<p>States depends only on</p>
+<p>the previous dates of that the previous</p>
+<p>state of that hidden State as currently</p>
+<p>yeah but I want to make yeah a hidden</p>
+<p>Factor what I want to make sure I I</p>
+<p>understand is that is that also</p>
+<p>something about</p>
+<p>the markovian Assumption or is that just</p>
+<p>sort of an implementation or design</p>
+<p>decision</p>
+<p>completely separate from the markup</p>
+<p>yeah that's that's a good question</p>
+<p>that's separate from the Markov</p>
+<p>um that's separate from the markovian</p>
+<p>Assumption so that's something having to</p>
+<p>do with kind of just how the graph that</p>
+<p>represents the generative model which</p>
+<p>you could think of as like a Bayesian</p>
+<p>graph like a bunch of nodes</p>
+<p>that uh affects a layer of observations</p>
+<p>so you say a bunch of hidden State nodes</p>
+<p>that all uh</p>
+<p>all have all the observation nodes</p>
+<p>conditionally depend on the state of all</p>
+<p>the hidden State Factor nodes by</p>
+<p>constructing it this way you basically</p>
+<p>have a graph that it's very easy to do</p>
+<p>inference on that has like stationary</p>
+<p>fixed points so the inference does not</p>
+<p>depend on like initial conditions of the</p>
+<p>posteriors and things like that so um</p>
+<p>this is like a kind of a bar the way the</p>
+<p>generic model is set up right now is</p>
+<p>like a bipartite graph that resembles a</p>
+<p>classic</p>
+<p>um uh model for machine learning called</p>
+<p>like a restricted boltzmann machine so</p>
+<p>this is where all the hidden States</p>
+<p>can all affect one uh observation</p>
+<p>modality but there's no interactions</p>
+<p>between the observation layers so</p>
+<p>there's no lines going between</p>
+<p>observations within one modality and</p>
+<p>there's also no lines going between</p>
+<p>hitting State factors so that's that's</p>
+<p>kind of what we're what one of the</p>
+<p>advantages of this assumption is is when</p>
+<p>you have the hidden State factors be</p>
+<p>only dependent on their own past State</p>
+<p>and their own past action within that</p>
+<p>control Factor then you're not</p>
+<p>introducing these Loops in the graph</p>
+<p>that make inference a little bit harder</p>
+<p>so you'll see this structure in when</p>
+<p>people are using like restricted</p>
+<p>Baltimore machines or other or even deep</p>
+<p>neural networks it's very hard to get a</p>
+<p>fixed Point solutions for like the</p>
+<p>posteriors when you're when you have</p>
+<p>interactions between nodes in a single</p>
+<p>layer so it's not quite the same thing</p>
+<p>as as</p>
+<p>um it's yeah it's just not the same</p>
+<p>thing as a the Markov property has more</p>
+<p>having to do with generating an acyclic</p>
+<p>graph so you can do a fast efficient and</p>
+<p>fixed Point inference on it I mean that</p>
+<p>that's my general answer to that because</p>
+<p>if you look actually draw out the factor</p>
+<p>graph for these things it looks</p>
+<p>like that but there might be another</p>
+<p>reason this is done that I'm actually</p>
+<p>not aware of</p>
+<p>um maybe that's something that Carl uh</p>
+<p>would know</p>
+<p>but or or someone else</p>
+<p>if you want to add anything Carl</p>
+<p>otherwise</p>
+<p>and then after this we'll head into the</p>
+<p>script go for it Carl thank you</p>
+<p>um yeah I think everything that needs to</p>
+<p>be said has already been said very very</p>
+<p>clearly and very usefully uh but yes</p>
+<p>Connor's absolutely right</p>
+<p>um so I look at this</p>
+<p>um in terms of the overall architecture</p>
+<p>of the graphical model you bring to the</p>
+<p>table and you know it can only have a</p>
+<p>number of different attributes you know</p>
+<p>how deep is it how many levels does it</p>
+<p>have</p>
+<p>um we're not in this presentation</p>
+<p>talking about uh deep uh</p>
+<p>um mdp or generative models based upon</p>
+<p>um</p>
+<p>um hierarchically composed uh Markov</p>
+<p>decision uh processes uh but we you know</p>
+<p>generally you would think of any one</p>
+<p>level in the context of the level above</p>
+<p>and the level below and that lends this</p>
+<p>attribute of depth to Any Given</p>
+<p>generative model but probably more</p>
+<p>important certainly from the point of</p>
+<p>view of the current discussion is the</p>
+<p>Barrette and the barrette's basically</p>
+<p>the number of uh</p>
+<p>independent actors in physics this is</p>
+<p>simply known as the field approximation</p>
+<p>it's you know it's just the</p>
+<p>factorization of a joint distribution in</p>
+<p>this instance</p>
+<p>um</p>
+<p>what we're aiming for is an approximate</p>
+<p>posterior distribution but it's a</p>
+<p>factorization into conditionally</p>
+<p>independent factors that incidentally</p>
+<p>also induces certain Markov blankets and</p>
+<p>resolves a lot of the message passing</p>
+<p>and uh means sort of variational</p>
+<p>iterations are more robust but</p>
+<p>um from the point of view of your why do</p>
+<p>you do that well you do that because to</p>
+<p>maximize the marginal likelihood of the</p>
+<p>evidence for your generative model you</p>
+<p>have to carve the nature out there at</p>
+<p>its joints in the right kind of way so</p>
+<p>if the world you're trying to navigate</p>
+<p>or exchange with or explain</p>
+<p>um does have the this factorization is</p>
+<p>conditional independencies it is carved</p>
+<p>in this way then your model has to</p>
+<p>comply in order to have the maximum</p>
+<p>evidence</p>
+<p>um so when learning that particular</p>
+<p>factorization or that structure you</p>
+<p>would normally apply a process of basic</p>
+<p>model selection or structure loan to get</p>
+<p>the number of factors right so and that</p>
+<p>is getting the right kind of mean</p>
+<p>approximation apt for this world and and</p>
+<p>these data and the right factorization</p>
+<p>will simply minimize variational free</p>
+<p>energy and therefore minimize the</p>
+<p>computational complexity and also the uh</p>
+<p>the computational complexity expressed</p>
+<p>in terms of thermodynamics for example</p>
+<p>so it's a really important sort of thing</p>
+<p>and there's a couple of the little um</p>
+<p>endorsement comments</p>
+<p>um you know</p>
+<p>conditioning any one</p>
+<p>um state with any one factor on States</p>
+<p>and other factors destroys that that</p>
+<p>particular factorization so you don't</p>
+<p>have to worry about introducing loops</p>
+<p>and things all you all you're doing is</p>
+<p>saying that particular factorization has</p>
+<p>gone away you've coarse grained and you</p>
+<p>now have to lump together all the</p>
+<p>elements of one factor and the other</p>
+<p>factor into one bigger factor and now</p>
+<p>you've got a couple more coarse grain</p>
+<p>factorization and more</p>
+<p>mathematically complex model because you</p>
+<p>haven't done as many carvings uh in you</p>
+<p>know tourism you know to Leverage The</p>
+<p>conditional independencies that you</p>
+<p>um you're trying to model and the first</p>
+<p>question about the policy is that that</p>
+<p>was an interesting one I suspect it may</p>
+<p>be an artifact of um the way that we</p>
+<p>condition everything on I without sort</p>
+<p>of forwarding people I is actually quite</p>
+<p>a complicated variable</p>
+<p>um first of all it's basically you're an</p>
+<p>index or a a name for quite a</p>
+<p>complicated combination of things so not</p>
+<p>only is it a sequence of</p>
+<p>um actions</p>
+<p>um upon which you condition each</p>
+<p>individual transition at any point in</p>
+<p>time over time so it's a sequence of</p>
+<p>actions so an answer to Jacob's question</p>
+<p>um you know the whole point of the</p>
+<p>expeditary energy is exploring lots and</p>
+<p>lots of different sequences as you run</p>
+<p>out into the future</p>
+<p>um</p>
+<p>but also</p>
+<p>um induced by the factorization as Conor</p>
+<p>was saying</p>
+<p>um the that pie actually has to now</p>
+<p>entail a action for every factor of a</p>
+<p>fixed combination so if you change the</p>
+<p>the combination of actions for two</p>
+<p>factors you now have a different policy</p>
+<p>even at one time step even for one step</p>
+<p>ahead so the notion of a policy as a</p>
+<p>combination of actions uh is still in</p>
+<p>play when you have a factorized mean</p>
+<p>field approximation of the Hidden States</p>
+<p>so if you know it's a subtle Point</p>
+<p>usually would resolve it by actually</p>
+<p>explicitly writing down usually the</p>
+<p>using the variable U the thing that</p>
+<p>you're conditioning the state</p>
+<p>transitions on and then you</p>
+<p>um comes from a family of combinations</p>
+<p>of views over factors and over time</p>
+<p>um so you can have deep and shallow</p>
+<p>policies but even you've got very</p>
+<p>shallow policies one step ahead and one</p>
+<p>look ahead apologize there's still a</p>
+<p>subset of combinations of actions you</p>
+<p>know so it could be that you can either</p>
+<p>only move up or or down sorry up or to</p>
+<p>the left but you can't move diagonally</p>
+<p>for example yeah and so and that will be</p>
+<p>placed um in terms of priors over Pi</p>
+<p>namely combinations of of actions</p>
+<p>oh so one final just for for Adam's</p>
+<p>benefit that notion of um</p>
+<p>putting semi-markovian Dynamics and I'm</p>
+<p>getting kind of absolutely right that</p>
+<p>the other the way that</p>
+<p>um as a physicist the way you do that is</p>
+<p>by appealing to the depth of the</p>
+<p>hierarchical model which always entails</p>
+<p>time and that's that's an absolutely</p>
+<p>crucial observation there's no point in</p>
+<p>adding depth to a generative model</p>
+<p>unless you are mindful it is introducing</p>
+<p>a separation of temporal time scales and</p>
+<p>I think you know that's a profound</p>
+<p>this sort of a structural insight into</p>
+<p>the nature of genital models and has all</p>
+<p>sorts of implications</p>
+<p>um but then it you know just speaking to</p>
+<p>this notion of sort of having</p>
+<p>combinations of little histories or</p>
+<p>little caches of Legacy State</p>
+<p>um as if you like a superstead</p>
+<p>um strictly speaking that is exactly</p>
+<p>what is done effectively in continuous</p>
+<p>text-based models with common filters so</p>
+<p>you you actually have now two kinds of</p>
+<p>random variables the position and the</p>
+<p>velocity so you you've now got a sort of</p>
+<p>dual representation and if you</p>
+<p>generalize that you get a generalized</p>
+<p>points of motion so you know</p>
+<p>and technically</p>
+<p>um when you're doing variational message</p>
+<p>passing you now use something called a</p>
+<p>chef face free energy as opposed to</p>
+<p>which is a variant of variational free</p>
+<p>energy</p>
+<p>um however when you move to discrete</p>
+<p>States there's generalized coordinates</p>
+<p>now actually are replaced just by having</p>
+<p>um states that unfold in time over the</p>
+<p>um under the public transition Matrix so</p>
+<p>that you you shouldn't in principle ever</p>
+<p>need to do that but you can now regard</p>
+<p>if you like the little local history the</p>
+<p>little little packet or trajectory or</p>
+<p>orbit</p>
+<p>the path that you're taking at this</p>
+<p>point at this Temple scale</p>
+<p>um as sufficiently discretized and cause</p>
+<p>brain with the different probability</p>
+<p>transition matrices and then at the</p>
+<p>slower time scale then it's a succession</p>
+<p>of initial States that's normally how we</p>
+<p>would think about that but it's a it's</p>
+<p>an interesting</p>
+<p>game to think about how what kinds of</p>
+<p>structures in these dispute States based</p>
+<p>models Echo the equivalent movements one</p>
+<p>has to make in continuous State space</p>
+<p>modeling and uh and thinking here</p>
+<p>particularly generalized filtering and</p>
+<p>Bayesian smoothing and Bayesian</p>
+<p>filtering and the line</p>
+<p>yeah thank you that's a really it's</p>
+<p>really nice to have uh those</p>
+<p>afterthought like because that clarifies</p>
+<p>I think and justifies a lot of the</p>
+<p>preceding slides or what what Carl just</p>
+<p>said</p>
+<p>um</p>
+<p>yeah that's that's a good I I so you can</p>
+<p>kind of map the depth of the hierarchy</p>
+<p>think of the depth of the hierarchy as a</p>
+<p>discretization of what is smoothly</p>
+<p>handled with generalized filtering and</p>
+<p>generalized coordinates of motion</p>
+<p>um so States evolving at this Pawn DP</p>
+<p>are kind of like a quasi-velocity</p>
+<p>variable</p>
+<p>uh because they are evolving slower than</p>
+<p>the position variable which is like the</p>
+<p>low level quick faster clock uh Palm DP</p>
+<p>one one just tiny footnote there is it</p>
+<p>relates to the continuous and</p>
+<p>differentiable free energy landscape and</p>
+<p>the discretization that is required on</p>
+<p>Modern digital Hardware around sampling</p>
+<p>and the discretization problem on a</p>
+<p>continuous but hidden</p>
+<p>function</p>
+<p>and the approaches that we have to take</p>
+<p>to discretize the continuous nature of</p>
+<p>time especially</p>
+<p>absolutely</p>
+<p>[Music]</p>
+<p>okay</p>
+<p>um</p>
+<p>so</p>
+<p>I think we should proceed to the um the</p>
+<p>multi-on Bandit</p>
+<p>um okay so now having discussed these</p>
+<p>kind of factorized representations we're</p>
+<p>in a position to build our multi-factor</p>
+<p>generative model for what I'm calling a</p>
+<p>contextual two-armed Bandit or</p>
+<p>contextual multi-arm Bandit this is</p>
+<p>coming from the um you know</p>
+<p>reinforcement learning literature This</p>
+<p>this term contextual but</p>
+<p>uh it's based directly on a kind of</p>
+<p>gambling task that was introduced in</p>
+<p>Ryan Smith Christopher white Carl's</p>
+<p>friston's step-by-step tutorial on</p>
+<p>active inference so you basically have a</p>
+<p>multi-arm bandit two-armed Bandit but</p>
+<p>you have to first find a clue or uh</p>
+<p>forage information to figure out which</p>
+<p>of the two slot machines or arms of the</p>
+<p>Bandit is more favorable and this is</p>
+<p>echoed as well in the original teammates</p>
+<p>example where you have a rat that has to</p>
+<p>choose between two arms one is more</p>
+<p>rewarding than the other but you don't</p>
+<p>know which one is rewarding so you have</p>
+<p>to visit a informative Q State first</p>
+<p>that tells you the left one is rewarding</p>
+<p>right now or the right one is rewarding</p>
+<p>so this I'm just kind of gathering all</p>
+<p>these things into the term contextual</p>
+<p>Bandit because that's kind of the</p>
+<p>analogous uh term for this problem that</p>
+<p>you'll find in like reinforcement</p>
+<p>learning world</p>
+<p>um okay</p>
+<p>so in the multi-arm Bandit or two on</p>
+<p>Bandit task an agent has to play choose</p>
+<p>to play one of two slot machines and</p>
+<p>they can only play one at a time so one</p>
+<p>of the slot machines gives more reward</p>
+<p>than the other but the agent doesn't</p>
+<p>know which is the better one so at any</p>
+<p>given time the agent can choose to play</p>
+<p>the left or the right machine that's</p>
+<p>what we'll call them or can choose to</p>
+<p>ask for a hint</p>
+<p>and if it chooses to ask for a hint</p>
+<p>instead of playing the machine it</p>
+<p>receives information about which of the</p>
+<p>two slot machines is better so this sets</p>
+<p>up this already sets up the basic</p>
+<p>dilemma of tasks like this the so-called</p>
+<p>explore exploit dilemma so you first</p>
+<p>Forge for information that will</p>
+<p>ultimately lead to getting more reward</p>
+<p>or do you gamble immediately in order to</p>
+<p>get rewards sooner but at the risk of</p>
+<p>not having enough information to know</p>
+<p>which uh slot machine I should actually</p>
+<p>play so to encode this task structure</p>
+<p>into a generative model for a palm DP we</p>
+<p>equip the agent with three observation</p>
+<p>modalities first we have this hint</p>
+<p>modality which is the sensory channel</p>
+<p>the agent uses to perceive the hint so</p>
+<p>just what is the state of the hint then</p>
+<p>there's a reward modality which tells</p>
+<p>the agent whether it won or lost at the</p>
+<p>selected machine and then finally</p>
+<p>there's a choice modality which is just</p>
+<p>the agent's proprioceptive observation</p>
+<p>of its own choice this is equivalent to</p>
+<p>the GPS modality that we were working</p>
+<p>with in Grid world</p>
+<p>and in terms of hidden State factors we</p>
+<p>first have a context factor which is a</p>
+<p>binary variable encoding Which slot</p>
+<p>machine is the more rewarding one either</p>
+<p>the left machine is better or the right</p>
+<p>machine is better so those are the names</p>
+<p>of the two context variables you could</p>
+<p>just arbitrary enable in my context a</p>
+<p>context b or something like that and</p>
+<p>then we have a choice hidden State</p>
+<p>factor which is simply encoding the</p>
+<p>choice state that the agent currently</p>
+<p>occupies</p>
+<p>um and finally as Carl was just</p>
+<p>explaining for each hidden State Factor</p>
+<p>you also have a control Factor so we'll</p>
+<p>have a context control factor which as</p>
+<p>we'll see is Trivial since the agent</p>
+<p>can't control the context in in this</p>
+<p>particular</p>
+<p>um simulation and a choice control</p>
+<p>factor which is the control factor that</p>
+<p>allows the agent to model its own</p>
+<p>actions or choices so even for a shallow</p>
+<p>policy Horizon as Carl was explaining</p>
+<p>a policy will still be comprised of two</p>
+<p>actions so it'll be there will be a</p>
+<p>context action and a choice action but</p>
+<p>as we'll see the context action will</p>
+<p>always be to do nothing or basically to</p>
+<p>not be able to interfere in the Dynamics</p>
+<p>of the context Wednesday factors so</p>
+<p>basically action selection comes down to</p>
+<p>just choosing the state of the choice</p>
+<p>control Factor</p>
+<p>on that you Choice variable so now we're</p>
+<p>going to look at the different levels of</p>
+<p>the Hidden State factors</p>
+<p>so as we said the context one is a</p>
+<p>binary</p>
+<p>um or you could think of it as like a</p>
+<p>Bernoulli variable so it's either left</p>
+<p>bed or right better it's a distribution</p>
+<p>over these two states of the context</p>
+<p>and this is just the unchanging state of</p>
+<p>the world for a particular trial either</p>
+<p>left machine has a better payoff</p>
+<p>probability or the right one does</p>
+<p>and then the choice hidden State Factor</p>
+<p>has four levels which correspond to the</p>
+<p>four possible Choice states that the</p>
+<p>agent can be in so this can either be</p>
+<p>the neutral starting location</p>
+<p>on the hint state which is the location</p>
+<p>they they occupy when they're acquiring</p>
+<p>the hint</p>
+<p>um and or they can be playing the left</p>
+<p>machine or they can be playing the right</p>
+<p>machine and so now for the control State</p>
+<p>factors</p>
+<p>the control State factor for the context</p>
+<p>only has one level you can call it do</p>
+<p>nothing or it's just a trivial</p>
+<p>one-dimensional variable and the agent</p>
+<p>will always take this action with 100</p>
+<p>probability</p>
+<p>so in other words the agent um has no</p>
+<p>control over the state of the context</p>
+<p>and then the choice control state has</p>
+<p>four levels corresponding to the</p>
+<p>decision to change</p>
+<p>um the S Choice the hidden State factor</p>
+<p>for the choice state in one of four</p>
+<p>different ways either it can move to the</p>
+<p>start location it can move to the hint</p>
+<p>location it can play the left machine or</p>
+<p>it can play the right machine so what</p>
+<p>choice State the agent is in is kind of</p>
+<p>obviously under the agent's control</p>
+<p>which is encoded by the fact that this</p>
+<p>u-choice variable has four levels</p>
+<p>so optimizing a posterior distribution</p>
+<p>over this Choice uh control State Factor</p>
+<p>that's that's what action selection and</p>
+<p>planning boils down to is basically</p>
+<p>choosing what level of you Choice I'm</p>
+<p>we're inferring what uh the distribution</p>
+<p>over you choices and then sampling or</p>
+<p>taking the ARG Max of that distribution</p>
+<p>to actually make an action</p>
+<p>okay so now let's review the observation</p>
+<p>modalities and their different levels</p>
+<p>the first modality is the hint modality</p>
+<p>which can either give the outcomes of</p>
+<p>null like I'm not at the hint state so</p>
+<p>I'm getting no sensory information from</p>
+<p>that channel a left is better hint hint</p>
+<p>left or right is better hint and they're</p>
+<p>just named that because you will see in</p>
+<p>the a matrix how seeing that observation</p>
+<p>relates to seeing the um two to the the</p>
+<p>state of the context</p>
+<p>um we have the null observation because</p>
+<p>as I said if the agent isn't in the</p>
+<p>choice state of getting a Hint it still</p>
+<p>needs to receive some information from</p>
+<p>that modality so that's why we often</p>
+<p>have in both the SPM and the pine BP</p>
+<p>implementations we have this null</p>
+<p>observation that just encodes an</p>
+<p>observation that has uh has no</p>
+<p>information about hidden States within</p>
+<p>uh some particular Factor</p>
+<p>and then we have a reward modality which</p>
+<p>similarly has a null observation for</p>
+<p>when the agent isn't playing either slot</p>
+<p>machine and then two possible reward</p>
+<p>observations either a loss or a reward</p>
+<p>but this is a a choice that can um</p>
+<p>depends on what you're trying to do you</p>
+<p>could also make a reward have like 10</p>
+<p>different reward levels that have</p>
+<p>different like magnitudes of rewards</p>
+<p>it's just a choice to</p>
+<p>call these like loss and reward one the</p>
+<p>point being that one is preferred</p>
+<p>relative to the other</p>
+<p>and then finally we have the choice</p>
+<p>modality which just allows the agent to</p>
+<p>unambiguously infer what choice State</p>
+<p>it's in so it just allows it to infer</p>
+<p>what it's doing and this is important</p>
+<p>because remember in active inference</p>
+<p>everything has to be inferred everything</p>
+<p>is about is in the game of minimizing</p>
+<p>free energy and</p>
+<p>um coming up with uh posteriors</p>
+<p>approximate beliefs about the state of</p>
+<p>the world including your own choice</p>
+<p>state so that's why we often equip</p>
+<p>agents with a proprioceptive sense of</p>
+<p>where where I am like a GPS</p>
+<p>um</p>
+<p>yeah okay and and so that that's the</p>
+<p>three observation manage we've done the</p>
+<p>hidden States and the controls so now</p>
+<p>we're in a position to start building</p>
+<p>the a arrays for this agent's generative</p>
+<p>model so for each modality specific a</p>
+<p>array we're going to have as many rows</p>
+<p>as there are levels of that modality and</p>
+<p>then two columns and four slices and so</p>
+<p>why is it two columns four slices</p>
+<p>because each column corresponds to a</p>
+<p>setting of the context hit and state</p>
+<p>factor and each third order slice</p>
+<p>corresponds to a setting of The Choice</p>
+<p>State hidden State factor and these</p>
+<p>lagging</p>
+<p>dimensions of two columns four slices</p>
+<p>will be the same for every single a</p>
+<p>matrix not not the values in them but</p>
+<p>that shape so the only thing that will</p>
+<p>change across modalities the a uh</p>
+<p>modality specific a arrays is the number</p>
+<p>of rows which is the number of</p>
+<p>observation levels so for the hint</p>
+<p>modality each slice of this a matrix</p>
+<p>tells us the mapping between the two</p>
+<p>possible context States and the</p>
+<p>observations in the hint modality for a</p>
+<p>fixed Choice state that the agent could</p>
+<p>be in so for instance if the agent is in</p>
+<p>the start Choice State what we're seeing</p>
+<p>now regardless of whether the left or</p>
+<p>the right mission is better the agent</p>
+<p>will always get the null observation</p>
+<p>which has zero information about the</p>
+<p>state of the context as you can see</p>
+<p>because given</p>
+<p>an observation of the null observation</p>
+<p>in the hint modality you have no idea</p>
+<p>whether the left is better or the right</p>
+<p>is better however if the agent is in the</p>
+<p>visit a hint state or acquire a hint</p>
+<p>State then the mapping between the</p>
+<p>contact State and the two hint</p>
+<p>observations will be informative and why</p>
+<p>I I say informative I just mean that the</p>
+<p>columns of this Matrix will uh be</p>
+<p>independent from each other and they</p>
+<p>will be low entropy so another way</p>
+<p>that's saying that is that there'll be</p>
+<p>low entropy in the observation</p>
+<p>conditioned rows of the Matrix so uh</p>
+<p>briefly what we're seeing here where</p>
+<p>grayscale darker colors means more</p>
+<p>probability</p>
+<p>if the slot less machine is better</p>
+<p>that's the context then the agent is</p>
+<p>more likely to see the hint left</p>
+<p>observation and if the right machine is</p>
+<p>better they're more likely to see the</p>
+<p>the hint right observation so this slice</p>
+<p>of the a matrix is what gives those</p>
+<p>observation levels their their meaning</p>
+<p>the the very region they're called Hit</p>
+<p>left and hit right is just because of</p>
+<p>the the kind of diagonal structure in</p>
+<p>this slice of the Matrix and then</p>
+<p>finally for the other states</p>
+<p>um if I'm playing the left or the right</p>
+<p>machine I'm never getting any</p>
+<p>informative observations from this</p>
+<p>modality</p>
+<p>[Music]</p>
+<p>um okay and then we move on to the</p>
+<p>reward modality so again two columns and</p>
+<p>four slices like for all the arrays but</p>
+<p>now we're looking at the mapping between</p>
+<p>the two context and the reward</p>
+<p>observation levels so no loss reward for</p>
+<p>each possible Choice State the agent can</p>
+<p>be in so as we can see if the agent is</p>
+<p>in starting location or getting the hint</p>
+<p>they're not getting uh any reward</p>
+<p>observation they get the trivial</p>
+<p>meaningless null observation however if</p>
+<p>the agent is playing the left or the</p>
+<p>right machine</p>
+<p>though there's a probabilistic mapping</p>
+<p>between the context the left machine or</p>
+<p>the right machine being better</p>
+<p>and and uh the expected rewards so if</p>
+<p>the context is left is better then the</p>
+<p>agent is more likely to see the reward</p>
+<p>if and only if they're playing the left</p>
+<p>machine</p>
+<p>uh likewise if they're playing the right</p>
+<p>machine this Matrix</p>
+<p>uh is the same so if you're paying right</p>
+<p>then you're more likely to see reward so</p>
+<p>this is this sub Matrix within this big</p>
+<p>a tensor is what determines the payoff</p>
+<p>structure of the task</p>
+<p>um or the agent's beliefs about that</p>
+<p>payoff structure I should say because</p>
+<p>this is the area it's not the actual</p>
+<p>rules of the game so now we're finally</p>
+<p>up to the choice modality which again is</p>
+<p>just their observation of Their Own</p>
+<p>Choice state which you can see only</p>
+<p>depends on the state of the choice</p>
+<p>that they're making it doesn't depend on</p>
+<p>the context so it just means that</p>
+<p>they'll always unambiguously infer uh</p>
+<p>whether they're playing the right</p>
+<p>machine or they're in the start state or</p>
+<p>whatnot so this is just an example of</p>
+<p>going through those slices and really</p>
+<p>seeing how that looks so now we can code</p>
+<p>this up in collab and again we won't be</p>
+<p>doing it by hand we'll just be</p>
+<p>um we'll just be running some predefined</p>
+<p>code so one useful thing to do often</p>
+<p>with control factors and observation</p>
+<p>modalities is get some semantic labels</p>
+<p>like create a list of strings for</p>
+<p>instance so the context names will have</p>
+<p>these two states left better right</p>
+<p>better choice names will have these four</p>
+<p>possible States and then we can</p>
+<p>automatically create these lists of</p>
+<p>Dimensions that are needed to create</p>
+<p>your A and B matrices just by looking at</p>
+<p>things like the length of this list of</p>
+<p>strings or the length of this list of</p>
+<p>choice names so if you run this</p>
+<p>then we'll have our num States</p>
+<p>variable which will be</p>
+<p>2 4 2 possible contexts and four</p>
+<p>possible Choice States and then you'll</p>
+<p>have num OBS which will be yeah three</p>
+<p>possible hints three possible rewards</p>
+<p>and four</p>
+<p>proprioceptive location or Choice State</p>
+<p>observations and then we can use this</p>
+<p>function to initialize our empty a</p>
+<p>matrix</p>
+<p>and in the next few chunks of code</p>
+<p>basically just fill out these a matrices</p>
+<p>like we saw in the slides</p>
+<p>um so one thing we'll do is we will have</p>
+<p>two parameters and this is again</p>
+<p>arbitrary you can choose to do this</p>
+<p>however you want we'll parameterize the</p>
+<p>a matrix with a probability of hint or a</p>
+<p>hint accuracy which will effectively</p>
+<p>just fill out that slice of the hint</p>
+<p>modality a array that corresponds to how</p>
+<p>accurately the hint</p>
+<p>um signal</p>
+<p>uh indicates the context or or lends</p>
+<p>evidence to the context so if the hint</p>
+<p>is 100 is 1.0 P hint is 1.0 it means</p>
+<p>whenever they visit the hint State they</p>
+<p>immediately know okay the left arm is</p>
+<p>better</p>
+<p>um but this doesn't have to be 100 right</p>
+<p>the hint itself could have some noise or</p>
+<p>uncertainty associated with it so we'll</p>
+<p>parametrize that just with this</p>
+<p>probability</p>
+<p>um so this is</p>
+<p>the probability of the two hint types or</p>
+<p>the two game States and you see the null</p>
+<p>has zero probability and then hint left</p>
+<p>has more probably when the context is</p>
+<p>left indicated by the column and then</p>
+<p>hint right has more probably when the</p>
+<p>context is right</p>
+<p>and then we'll just go through and fill</p>
+<p>out this Choice</p>
+<p>um stuff oh you the reward modality will</p>
+<p>have a similar thing a p reward so this</p>
+<p>will determine the payoff structure of</p>
+<p>both banded arms so if P reward is high</p>
+<p>it means if the context is left is</p>
+<p>better and you're playing the left slot</p>
+<p>machine you'll have an 80 chance of</p>
+<p>getting the reward</p>
+<p>and this thing itself can be not changed</p>
+<p>to determine basically how how rewarding</p>
+<p>the bandits are</p>
+<p>um</p>
+<p>so this is the payoff structure uh if</p>
+<p>you're playing the left arm the payoff</p>
+<p>structure for the two contexts and</p>
+<p>there's an inverseness that I didn't</p>
+<p>discuss so if I'm playing the left arm</p>
+<p>but the right arm is better</p>
+<p>then I'm also more likely symmetrically</p>
+<p>to get punishment or negative reward</p>
+<p>with the same probability that I would</p>
+<p>get positive reward if I was playing the</p>
+<p>right on so just that that's also a</p>
+<p>choice but just to make this a single</p>
+<p>parameter that's how we we did it here</p>
+<p>and then finally the choice observation</p>
+<p>model is just filling out that GPS uh</p>
+<p>High Fidelity GPS sensor</p>
+<p>and that's pretty um</p>
+<p>you know if you slice it along the</p>
+<p>any context hidden State Factor since it</p>
+<p>doesn't depend in context this could be</p>
+<p>a zero or a one</p>
+<p>then we'll get an identity mapping which</p>
+<p>just allows them to infer their choice</p>
+<p>state</p>
+<p>and then we wrap this all into one</p>
+<p>function so we just have two parameters</p>
+<p>P hint P reward and then we can see once</p>
+<p>we start doing simulations how</p>
+<p>manipulating those things messes with</p>
+<p>their behavior</p>
+<p>so now we'll move on to the B arrays</p>
+<p>um oh yeah so let me go here and talk</p>
+<p>through some slides this will be quick</p>
+<p>the bras are pretty simple so we're</p>
+<p>gonna mess with this later but we're</p>
+<p>gonna start by saying that</p>
+<p>the context hidden State factor is</p>
+<p>stationary over time so they can't</p>
+<p>change that end State factor and even in</p>
+<p>the absence of their ability to</p>
+<p>intervene it it uh it stays in the same</p>
+<p>state over time so we parametrize this</p>
+<p>with like a p change probability that</p>
+<p>just fills out the diagonal of this</p>
+<p>um kind of trivial transition Matrix</p>
+<p>with 100 probability but later on we can</p>
+<p>mess with that parameter and decrease it</p>
+<p>so they believe that the context can</p>
+<p>actually change with some stochasticity</p>
+<p>over time</p>
+<p>um but for now we just assume they don't</p>
+<p>believe the context changes</p>
+<p>and uh and then this is their ability to</p>
+<p>so unlike grid world where you have</p>
+<p>local actions they can only move up down</p>
+<p>left right here they can move from any</p>
+<p>other state to any other state so this</p>
+<p>is like a signature thing if you want a</p>
+<p>controllable</p>
+<p>um hidden State space so the agent can</p>
+<p>go anywhere from any other place that</p>
+<p>will manifest as these dark bands in</p>
+<p>your in your B Matrix or bands of 100</p>
+<p>probability so this is another way of</p>
+<p>saying that the transition graph is</p>
+<p>fully connected that you can get</p>
+<p>anywhere from anywhere</p>
+<p>um but that's also not sure like we</p>
+<p>could have made it such that they once</p>
+<p>they leave the start State they can't</p>
+<p>return there so that would correspond to</p>
+<p>having</p>
+<p>um the absence of one of these uh uh</p>
+<p>like basically the start state is a</p>
+<p>source but it can't also be a a sink or</p>
+<p>if there's no uh in arrows going to it</p>
+<p>so that would affect the structure of</p>
+<p>this</p>
+<p>okay and then we can quickly code that</p>
+<p>up</p>
+<p>um so b0 is the context in state which</p>
+<p>as we said is just going to be</p>
+<p>stationarity</p>
+<p>and then the choice given state is it's</p>
+<p>fully controllable and then we will</p>
+<p>parameterize this all as a create B</p>
+<p>function which will for now have this P</p>
+<p>change thing so we can make the agent's</p>
+<p>belief about the stationary of the</p>
+<p>context</p>
+<p>um different like if the context is</p>
+<p>likely to change but for now by setting</p>
+<p>it to zero it just means that they</p>
+<p>believe the context is fixed for a given</p>
+<p>uh trial or set of time points</p>
+<p>and then finally very basic stuff this</p>
+<p>is just how we establish the semantics</p>
+<p>of the reward modality so the reward</p>
+<p>modality is as we said the null the loss</p>
+<p>and the reward and we can encode the C</p>
+<p>Vector which is kind of like the reward</p>
+<p>function</p>
+<p>um the prior preferences or prior over</p>
+<p>observations</p>
+<p>directly in terms of the log relative</p>
+<p>log probabilities so we can encode</p>
+<p>punishment by having the prior</p>
+<p>expectation about loss be much lower in</p>
+<p>relative log in in Nats natural log</p>
+<p>units much lower than the reward</p>
+<p>observation within that modality and</p>
+<p>then the other ones are just going to be</p>
+<p>uniform distribution so you can leave</p>
+<p>them empty</p>
+<p>and this is just what allows them to</p>
+<p>want to see reward as opposed to loss or</p>
+<p>punishment</p>
+<p>and uh yeah so just as I think we</p>
+<p>discussed this last time</p>
+<p>um Daphne had a question about that so</p>
+<p>why do we encode things in relative log</p>
+<p>probabilities rather than Shear</p>
+<p>probabilities is just more analogous to</p>
+<p>the reward construct from reinforcement</p>
+<p>learning that's one benefit so and</p>
+<p>they're unbounded you don't have to they</p>
+<p>don't have to be bounded between zero</p>
+<p>and one so if you just encode them that</p>
+<p>way it becomes easier to kind of make</p>
+<p>one thing x times more rewarding or</p>
+<p>punish or aversive than another thing</p>
+<p>and that directly relates to how kind of</p>
+<p>reward is calculated in our expected</p>
+<p>utility of the expected free energy is</p>
+<p>because it's always kind of an expected</p>
+<p>it's kind of like an entropy or a cross</p>
+<p>entropy so it's always</p>
+<p>um it's you its units are in in natural</p>
+<p>log space</p>
+<p>okay so yeah</p>
+<p>um and then the D Vector again they can</p>
+<p>have prior beliefs about which context</p>
+<p>is better so that will also be a</p>
+<p>collection of vectors one over the</p>
+<p>context factor and one over the</p>
+<p>um the initial state of where they are</p>
+<p>they are which we can make it start but</p>
+<p>it doesn't really matter because they</p>
+<p>have precise observations</p>
+<p>and then that's very easy to do in Prime</p>
+<p>DP</p>
+<p>we'll just create some functions that</p>
+<p>parametrize how rewarding the reward</p>
+<p>observation is and how punishing the</p>
+<p>punishment observation is</p>
+<p>and then we can plot those and you know</p>
+<p>this could be 10</p>
+<p>and then the reward is much more</p>
+<p>is much better than the punishment or</p>
+<p>the punishment could be very bad</p>
+<p>in which case the punishment is much</p>
+<p>much lower than both the null and the</p>
+<p>the reward and here I'm showing the</p>
+<p>belief the the prior directly in terms</p>
+<p>of probabilities so when you convert the</p>
+<p>log probabilities to probabilities these</p>
+<p>things will become bounded between zero</p>
+<p>and one</p>
+<p>okay and then the D Vector assembly will</p>
+<p>just create a quick function that</p>
+<p>parameterizes how much they believe the</p>
+<p>left is better is the left is better</p>
+<p>context is true at the beginning of the</p>
+<p>simulation and if you just set that to</p>
+<p>0.5 it means they have flat unbiased</p>
+<p>uninformed prior beliefs about the</p>
+<p>context</p>
+<p>um yes okay</p>
+<p>all right so now I think we are good to</p>
+<p>actually do this after all the build up</p>
+<p>um so like 95 of the work is in encoding</p>
+<p>the generative model and this is</p>
+<p>something Carl will tell you as well SPM</p>
+<p>like most of the work is not actually</p>
+<p>running active inference maybe</p>
+<p>computation wise it is but in terms of</p>
+<p>the time and the intellectual energy</p>
+<p>spent it all comes down to the</p>
+<p>generative model that's where all the</p>
+<p>information is the rest is just</p>
+<p>optimization basically</p>
+<p>um so we've written down our a b c's and</p>
+<p>D's then we just basically plug them</p>
+<p>into this agent API from PI mdp and then</p>
+<p>we</p>
+<p>create an environment class which could</p>
+<p>be as something as uh ad hoc as I'm</p>
+<p>getting a list of observations from some</p>
+<p>like API that's talking to the internet</p>
+<p>or like from a robot sensors or you can</p>
+<p>actually write down an environment class</p>
+<p>that generates uh observations like like</p>
+<p>another agent for instance</p>
+<p>um and then you plug the observations</p>
+<p>from the environment into the in first</p>
+<p>States function you do infer policies</p>
+<p>and then you sample an action according</p>
+<p>to the expected free energy stuff that</p>
+<p>we talked about last time</p>
+<p>Okay so</p>
+<p>now we're actually going to do this so</p>
+<p>we have our nice Nifty functions for</p>
+<p>creating a b c and d we can just run</p>
+<p>those with desired levels of P hint and</p>
+<p>P reward</p>
+<p>and then create our agent</p>
+<p>and um this is something we discussed</p>
+<p>last time but an important distinction</p>
+<p>is the generative model versus the</p>
+<p>generative process or the environment so</p>
+<p>the things we're putting in a and b</p>
+<p>right now and and C are just the agent's</p>
+<p>beliefs about for instance the hint</p>
+<p>accuracy or the payoff Matrix of reward</p>
+<p>that can be arbitrarily different from</p>
+<p>the actual structure of the environment</p>
+<p>and we'll see how later we'll see how</p>
+<p>you can adjust the agent can actually</p>
+<p>learn the correct reward statistics</p>
+<p>through process of learning so even if</p>
+<p>they start out with the wrong generative</p>
+<p>model they can adapt their generative</p>
+<p>model online so that they um they match</p>
+<p>the generative process better</p>
+<p>okay and then we'll Define this quick</p>
+<p>class the two Arm Bandit which will be</p>
+<p>the generative process the real world</p>
+<p>for our agent we're not going to step</p>
+<p>through the code but um the link is</p>
+<p>available so if anyone wants to look at</p>
+<p>this this is basically just encoding the</p>
+<p>rules of the game so when the agent is</p>
+<p>in the left arm they'll get reward or</p>
+<p>lost depending on</p>
+<p>the P reward and P hint values and as we</p>
+<p>said these values can be different than</p>
+<p>the agent's beliefs about them which</p>
+<p>will be in their a matrix</p>
+<p>so this is the generative process the</p>
+<p>actual reward and then the generative</p>
+<p>model are</p>
+<p>the parameters you give to the a</p>
+<p>Constructor</p>
+<p>and then we'll just have a function here</p>
+<p>that runs the active inference Loop it</p>
+<p>looks a little bit more complicated than</p>
+<p>those three lines I showed on the slide</p>
+<p>but that's just because I'm storing</p>
+<p>things like the history of their choices</p>
+<p>the history of their beliefs</p>
+<p>um I'm having optional plotting of</p>
+<p>beliefs things like that and plotting of</p>
+<p>actions</p>
+<p>but this function basically that the key</p>
+<p>Things Are</p>
+<p>you get an observation from the you</p>
+<p>start with an observation which it will</p>
+<p>be from the generative process you do</p>
+<p>hidden State inference using that</p>
+<p>observation to get your posterior over</p>
+<p>hidden States</p>
+<p>and this you can return if you want to</p>
+<p>plot it but you don't have to and then</p>
+<p>you'll do inference about policy so this</p>
+<p>is optimization of a posterior over</p>
+<p>policies which then gets translated into</p>
+<p>a marginal posterior Over Control States</p>
+<p>or actions that you sample from</p>
+<p>and you sample from them if this next</p>
+<p>line with sample action so the main</p>
+<p>three lines of any active inference</p>
+<p>process are inference</p>
+<p>about States inference about policies</p>
+<p>and then action selection which can be</p>
+<p>either deterministic or stochastic</p>
+<p>depending on your application and then</p>
+<p>the rest is just basically code that</p>
+<p>converts observations</p>
+<p>from the generative process into like</p>
+<p>the terms that the agent can understand</p>
+<p>and vice versa</p>
+<p>and then we have this helper function</p>
+<p>that plots the history of choices and</p>
+<p>beliefs in the true context over uh over</p>
+<p>time</p>
+<p>so yeah I just Waze through that quickly</p>
+<p>because it's not very important but we</p>
+<p>can if anyone has questions we can go</p>
+<p>back and dissect that code a little more</p>
+<p>um</p>
+<p>so now all we have to do is to find the</p>
+<p>oh yeah you have your hand up you'll ask</p>
+<p>something uh yeah</p>
+<p>um maybe</p>
+<p>um maybe this is better better suited</p>
+<p>for</p>
+<p>um for the end but</p>
+<p>um in Prime DP there's also modules that</p>
+<p>are adjacent to the Asian class</p>
+<p>uh so I was just wondering how you um</p>
+<p>how we could make use of the different</p>
+<p>modules in the action perception Loop</p>
+<p>um because I haven't I haven't seen many</p>
+<p>examples of uh</p>
+<p>of using for instance the inference</p>
+<p>module or the learning module and how</p>
+<p>that would augment</p>
+<p>the Run active information yeah that's a</p>
+<p>great question um so I have another demo</p>
+<p>that we can maybe do another time that's</p>
+<p>uh building a hierarchical model in pi</p>
+<p>mdp so building a two layer model it's a</p>
+<p>visual foraging hierarchical model based</p>
+<p>on a paper that we did back in 2018 2019</p>
+<p>and um and there you you're in this</p>
+<p>inner loop over time you're doing you're</p>
+<p>making use of these sub-module functions</p>
+<p>so say you wanted to do some special</p>
+<p>kind of inference</p>
+<p>that's not just the standard in first</p>
+<p>States</p>
+<p>you could actually say Okay I want to do</p>
+<p>this particular weird thing that's</p>
+<p>specific to this inference process and</p>
+<p>you would just add lines here</p>
+<p>um like I want to take a function from</p>
+<p>the inference module and run like I</p>
+<p>don't know a different kind of message</p>
+<p>passing on it</p>
+<p>um like we're on to MMP or something</p>
+<p>inference dot or that there's an Algos</p>
+<p>module too that has different message</p>
+<p>passing algorithms and then you could</p>
+<p>optimize your hidden State beliefs using</p>
+<p>that message passing algorithm and then</p>
+<p>set them uh equal to the the like</p>
+<p>special thing you did just just with</p>
+<p>that</p>
+<p>oops</p>
+<p>so yeah there's no examples here but</p>
+<p>um I haven't done that here but it's</p>
+<p>definitely something that can be done</p>
+<p>um</p>
+<p>or yeah there's another example I did</p>
+<p>like simulating an active inference</p>
+<p>equivalent of an Evidence accumulation</p>
+<p>drift diffusion style task where the</p>
+<p>policy selection was done in a</p>
+<p>particular way where you're only using</p>
+<p>certain components of the expected free</p>
+<p>energy</p>
+<p>and uh and yeah so so basically there's</p>
+<p>other demos where you can like zoom in</p>
+<p>and not use the agent class and use sub</p>
+<p>modules but I haven't written</p>
+<p>those in like a publicly accessible way</p>
+<p>yet but I can the hierarchical one I can</p>
+<p>just easily make public I just haven't</p>
+<p>had time to put it on the docs yet but</p>
+<p>yeah that's a good question because yeah</p>
+<p>you're right most of the stuff right now</p>
+<p>is just the highest level implementation</p>
+<p>with the agent</p>
+<p>um okay</p>
+<p>and now uh that to just run the active</p>
+<p>inference process we just I've made a</p>
+<p>distinction between generative process</p>
+<p>parameters like how accurate the hint is</p>
+<p>how uh how the payoff structure is and</p>
+<p>then generative model parameters which</p>
+<p>are used when creating the a matrix so</p>
+<p>the P hint end is the true hint accuracy</p>
+<p>P reward end is the true payoff and then</p>
+<p>just choose some time Horizon and run</p>
+<p>the active inference loop with that time</p>
+<p>Horizon</p>
+<p>and then plot the history of beliefs</p>
+<p>okay so here's an example</p>
+<p>um the top plot shows the agent's</p>
+<p>Behavior so white squares indicate what</p>
+<p>it was doing</p>
+<p>at any given time so time is on the</p>
+<p>x-axis so you can see it start in the</p>
+<p>start State then it gathered information</p>
+<p>at the hint</p>
+<p>and the reason this wasn't immediate is</p>
+<p>because it's beliefs about accuracy were</p>
+<p>only 0.7 so it needs to actually do some</p>
+<p>evidence accumulation before it's sure</p>
+<p>what the state is then it played right</p>
+<p>but as soon as it played right because</p>
+<p>that's what the hint was telling it as</p>
+<p>soon as it played right it probably had</p>
+<p>a a loss</p>
+<p>um</p>
+<p>a loss observation which then messed up</p>
+<p>its inference and made it go back to the</p>
+<p>hint to accumulate evidence again before</p>
+<p>being okay the hint is really suggesting</p>
+<p>that I should go right so then it goes</p>
+<p>back revisits the right arm and then</p>
+<p>over time you see here the Red Dot is</p>
+<p>the actual true context and the</p>
+<p>grayscale indicates the agent's beliefs</p>
+<p>about the hidden state</p>
+<p>so here</p>
+<p>um the hidden State beliefs are now</p>
+<p>converging to</p>
+<p>believing that the right arm is better</p>
+<p>and I know I said at the beginning that</p>
+<p>all probability would be darker means</p>
+<p>higher probability but it's actually the</p>
+<p>opposite here so sorry that's confusing</p>
+<p>um so yeah right better is higher</p>
+<p>probability</p>
+<p>and their beliefs get more and more</p>
+<p>confident as they play so this is you</p>
+<p>know this this is the exact same thing</p>
+<p>you'll see with the teammates right they</p>
+<p>first</p>
+<p>forage for information that's driven by</p>
+<p>this epistemic value component of the</p>
+<p>expected free energy as their posterior</p>
+<p>over hidden States becomes more precise</p>
+<p>epistemic value goes down and then</p>
+<p>um the expected utility component goes</p>
+<p>up which is bolstered by the fact that</p>
+<p>they now have confident beliefs about</p>
+<p>the context and then that drives them to</p>
+<p>forge information</p>
+<p>um and then so like that kind of</p>
+<p>exercise that I would have people do if</p>
+<p>this was like in a classroom context is</p>
+<p>start messing with</p>
+<p>the Bandit probabilities and also mess</p>
+<p>with the agent's sensitivity to</p>
+<p>punishment so up here we made them have</p>
+<p>plus two relative Nets in their reward</p>
+<p>function and minus four for punishment</p>
+<p>but if you made this even lower let's</p>
+<p>say it made it negative six</p>
+<p>what would happen</p>
+<p>so now because they're more risk-averse</p>
+<p>the um the risk of getting a loss</p>
+<p>observation if I was to play immediately</p>
+<p>becomes higher so now the agent</p>
+<p>basically requires more confidence</p>
+<p>before it's willing to actually play the</p>
+<p>left arm because the risk of getting it</p>
+<p>wrong and getting a loss is too great</p>
+<p>because their reward function is now</p>
+<p>shaped more risk adversely</p>
+<p>and then if I like decrease this even</p>
+<p>more</p>
+<p>down to negative eight you can see that</p>
+<p>they never even go for play</p>
+<p>because even once they're very certain</p>
+<p>that the left arm is better it's still</p>
+<p>too risky</p>
+<p>given their beliefs about the payoff</p>
+<p>structure</p>
+<p>because there are beliefs about the</p>
+<p>payoff structure are such that they</p>
+<p>believe that there's still a 20 chance</p>
+<p>that they'll get lost but if we change</p>
+<p>this and said what if their P reward was</p>
+<p>1.0</p>
+<p>or say 0.99</p>
+<p>then they're willing even despite the</p>
+<p>great risk of being punished</p>
+<p>because the the expected reward given</p>
+<p>you know the context is high enough</p>
+<p>they will still end up</p>
+<p>um risking it and they acquire the hint</p>
+<p>for some time and then they start</p>
+<p>risking it</p>
+<p>but they're the observations will</p>
+<p>because peer reward is so high their</p>
+<p>their beliefs about the payoff structure</p>
+<p>their beliefs will kind of oscillate as</p>
+<p>the observations actually change because</p>
+<p>the true observations are generated much</p>
+<p>more stochastically because this is the</p>
+<p>peer reward of the Bandit</p>
+<p>so you'll you can mess around with this</p>
+<p>and and like I would encourage if anyone</p>
+<p>listening now or afterwards</p>
+<p>um wants to mess with these parameters I</p>
+<p>would encourage you to just go crazy and</p>
+<p>mess with parameters and see what</p>
+<p>different kinds of behaviors you can get</p>
+<p>um yeah</p>
+<p>okay so that pretty much wraps up the</p>
+<p>main brunt of the tutorial</p>
+<p>and let's pause there for questions</p>
+<p>because I have additional material about</p>
+<p>learning parameters that we discussed</p>
+<p>last time would be good to</p>
+<p>to</p>
+<p>um get into because that's something</p>
+<p>that's really under documented right now</p>
+<p>with primevp so we can move into that</p>
+<p>but I think we should first break for</p>
+<p>some questions</p>
+<p>awesome thank you Jacob if you want to</p>
+<p>ask or Carl otherwise I'm happy to hear</p>
+<p>about learning</p>
+<p>cool</p>
+<p>let's do learning and then we'll have</p>
+<p>any closing questions at the end</p>
+<p>perfect</p>
+<p>okay</p>
+<p>I'll have some quick slides so</p>
+<p>learning under active inferences cast as</p>
+<p>updating beliefs about the generative</p>
+<p>model parameters itself so inference is</p>
+<p>one thing inference is saying given my</p>
+<p>generative model so my beliefs about the</p>
+<p>the way the world Works what is the best</p>
+<p>explanation in the sense of posterior</p>
+<p>over hidden States and policies</p>
+<p>that explains my actual data and you get</p>
+<p>that by minimizing variational free</p>
+<p>energy learning is much um becomes much</p>
+<p>more complex but also more interesting</p>
+<p>in the sense that if the agent's</p>
+<p>generated model itself is wrong they can</p>
+<p>change the generative model to also</p>
+<p>optimize variational free energy so</p>
+<p>learning and inference can kind of</p>
+<p>cooperate to or sometimes interfere with</p>
+<p>each other as we'll see to to minimize</p>
+<p>variational free energy so the way we</p>
+<p>have to start by doing this is now</p>
+<p>treating the parameters themselves so</p>
+<p>the parameters of the a array which are</p>
+<p>categorical likelihood parameters B</p>
+<p>array d-array C array those themselves</p>
+<p>now become random variables over which</p>
+<p>we can have priors and of course</p>
+<p>variational posteriors</p>
+<p>um so we can go back to our original a</p>
+<p>or Palm DP representation so now what we</p>
+<p>see is in this third column next to a b</p>
+<p>c and d we have parameters that are</p>
+<p>priors over</p>
+<p>the categorical</p>
+<p>um parameters of the a b c and d so a</p>
+<p>natural</p>
+<p>um prior for these sorts of categorical</p>
+<p>variables is called the dear Schley</p>
+<p>distribution which is a um it's</p>
+<p>basically a conjugate prior for a</p>
+<p>categorical likelihood distribution</p>
+<p>that's why it's very nice and also the</p>
+<p>values of its parameters have a very</p>
+<p>nice intuitive</p>
+<p>um feeling and interpretability to them</p>
+<p>so now the agents will have priors which</p>
+<p>are updated by this P of Phi at the top</p>
+<p>um and Phi is just a collection of all</p>
+<p>these dirichlet hyper parameters they're</p>
+<p>also called or prior parameters and</p>
+<p>these are parameters or priors over</p>
+<p>random variables that themselves are the</p>
+<p>likelihood distributions and priors of</p>
+<p>the generative model</p>
+<p>so we're just going to do a few</p>
+<p>instances of learning today I don't know</p>
+<p>if we'll have time to do b or d learning</p>
+<p>we'll start with a matrix learning but</p>
+<p>um</p>
+<p>but the principle applies the same so</p>
+<p>here's an example of a deer slate prior</p>
+<p>distribution over some categorical</p>
+<p>parameters so let's say our a matrix or</p>
+<p>a array let's just say it's a matrix so</p>
+<p>now the random variable itself are the</p>
+<p>entries of the a matrix</p>
+<p>a prior of over those entries is</p>
+<p>something called a deer slay</p>
+<p>distribution which is just a vector of</p>
+<p>real positive real numbers and here</p>
+<p>we've reshaped it so that it has the</p>
+<p>shape of an area so let's say this array</p>
+<p>represents like the payoff Matrix in our</p>
+<p>Bandit task so the two columns are two</p>
+<p>possible hidden states are context one</p>
+<p>context two and then the two</p>
+<p>observations are punishment and reward</p>
+<p>so if this is our prior which is</p>
+<p>measured by these deer slay</p>
+<p>um parameters</p>
+<p>the likelihood distribution that they</p>
+<p>parametrize also you can express this as</p>
+<p>the expected value of the dershland</p>
+<p>distribution is a categorical with these</p>
+<p>values so what you can see is that the</p>
+<p>deer Chalet</p>
+<p>um counts like the the num the kind of</p>
+<p>scalar magnitude of the deer slate</p>
+<p>parameters kind of represent a prior</p>
+<p>confidence about the probability of</p>
+<p>um of the different contingencies</p>
+<p>encoded in the a matrix so I made these</p>
+<p>these very simple</p>
+<p>um here like the the gear slave priors</p>
+<p>are not nine counts for seeing</p>
+<p>punishment given context and one count</p>
+<p>for seeing reward given context one but</p>
+<p>you can change those to very very high</p>
+<p>numbers so for instance if that 9 on the</p>
+<p>left was changed to a ten thousand then</p>
+<p>on the right the probabilities would</p>
+<p>become like 0.9999 to</p>
+<p>.0001 so the scale of the deer slay also</p>
+<p>known as pseudo count parameters encode</p>
+<p>something like a</p>
+<p>belief about how many times that</p>
+<p>particular Coincidence of observation in</p>
+<p>Hidden state has been observed which you</p>
+<p>can also think of as like a prior</p>
+<p>confidence about that contingency</p>
+<p>um and the expectation to create your a</p>
+<p>matrix via this uh going from a deer</p>
+<p>slate to an a array is very simple</p>
+<p>because you just take each deer slate</p>
+<p>count and divide it by the column wise</p>
+<p>sum which is this a naught variable on</p>
+<p>the lower right so it's just that</p>
+<p>particular value of the the a array and</p>
+<p>divided by the sum of the counts</p>
+<p>um so that's how you go from a deer site</p>
+<p>prior over a categorical likelihood</p>
+<p>distribution through the expectation</p>
+<p>um and then inference and I'm not going</p>
+<p>to get into like the variational</p>
+<p>posterior but it's very simple so when</p>
+<p>you're doing learning and you're trying</p>
+<p>to actually update these deer parameters</p>
+<p>as a function of observations what</p>
+<p>essentially you have is a new posterior</p>
+<p>that's not now not over hidden states of</p>
+<p>the world but you have a variational</p>
+<p>posterior over the parameters the</p>
+<p>categorical or rather a variational</p>
+<p>posterior over the deer Schley</p>
+<p>distribution the deer distribution that</p>
+<p>parameterizes your a matrix so that's</p>
+<p>what's representing the lower right so</p>
+<p>let's assume that our beliefs about the</p>
+<p>deer shlay parameters were as it is now</p>
+<p>so your beliefs about the a matrix</p>
+<p>and then we get an observation</p>
+<p>and let's say that we saw the</p>
+<p>observation of punishment</p>
+<p>and that can be represented by this one</p>
+<p>hot vector</p>
+<p>now we want to update our beliefs about</p>
+<p>uh the a matrix given the observation</p>
+<p>but what to do that what you also need</p>
+<p>is a hidden state or a belief about</p>
+<p>hidden States and let's say that the</p>
+<p>agent uh was very confident that the</p>
+<p>hidden state was context one</p>
+<p>what ends up happening to the resulting</p>
+<p>posterior over the a matrix</p>
+<p>is a very simple associative</p>
+<p>quasi-associative learning rule where</p>
+<p>the update to the a the deer slay</p>
+<p>represented by this um bold a Sub-Q</p>
+<p>becomes the prior over the deer slight</p>
+<p>parameters plus the outer product</p>
+<p>between the observation vector and the</p>
+<p>hidden State belief Vector so this is</p>
+<p>kind of like a form of coincidence</p>
+<p>detection where you just see what parts</p>
+<p>of the Hidden States line up with what</p>
+<p>parts of the observations and you</p>
+<p>increment your beliefs about the a</p>
+<p>matrix accordingly so in this case if I</p>
+<p>really believe the context was one and I</p>
+<p>saw a punishment then my belief about</p>
+<p>that particular contingency</p>
+<p>seeing punishment under context one</p>
+<p>would just be incremented by a plus one</p>
+<p>and that's what this outer product at</p>
+<p>the lower right calculates it computes a</p>
+<p>matrix that is the increment to your</p>
+<p>beliefs about the a matrix so in this</p>
+<p>case The Matrix would be have one in the</p>
+<p>upper left and then zeros in the other</p>
+<p>three entries and you use that to kind</p>
+<p>of increment your your a matrix</p>
+<p>technically you're incrementing a deer</p>
+<p>Chalet kind of conjugate prior over your</p>
+<p>a matrix but it's a very a variational</p>
+<p>it's really a variational dirichlet</p>
+<p>posterior</p>
+<p>but you can imagine if your hidden</p>
+<p>states are also contaminated with</p>
+<p>uncertainty so say you had uh 50 your 50</p>
+<p>50 whether it was context one or context</p>
+<p>two then similarly with this a matrix</p>
+<p>update the update would then be spread</p>
+<p>over the two</p>
+<p>um possible contingencies so if you saw</p>
+<p>an observation but you weren't sure what</p>
+<p>the hidden state was then both that the</p>
+<p>just the overall probability of seeing</p>
+<p>punishment under your generative model</p>
+<p>would go up because you would increment</p>
+<p>that entire row of the a matrix within</p>
+<p>this case 0.5</p>
+<p>so that's just an important thing to</p>
+<p>note is that uncertainty in your own</p>
+<p>hidden State beliefs will bleed into the</p>
+<p>updates to the dirichlet parameters</p>
+<p>and oftentimes alongside uh I mean it</p>
+<p>optimally alongside a matrix learning or</p>
+<p>parameter learning you're also going to</p>
+<p>be augmenting your expected free energy</p>
+<p>because your generative model is now</p>
+<p>different so you have these new priors</p>
+<p>and posteriors with a so-called</p>
+<p>parameter Information Gain term or a</p>
+<p>novelty term so while you're pursuing</p>
+<p>learning it also makes sense to choose</p>
+<p>your policies such that you'll maximize</p>
+<p>um a kind of the information you get</p>
+<p>based on the consequences of your</p>
+<p>policies about the parameters of the</p>
+<p>generative model so this this expected</p>
+<p>KL Divergence exactly quantifies how</p>
+<p>much a given policy will lead to a a</p>
+<p>good Bayesian update of your parameter</p>
+<p>beliefs so intuitively this quantity</p>
+<p>might be um</p>
+<p>described as how much do I expect the</p>
+<p>consequences of my actions will update</p>
+<p>my beliefs about parameters so</p>
+<p>consequences of actions is represented</p>
+<p>by that Q of O given Pi the thing that</p>
+<p>the uh KL Divergence is taking taken</p>
+<p>under expectation of</p>
+<p>and then the actual KL Divergence is</p>
+<p>saying how much surprise will I get</p>
+<p>given these observations</p>
+<p>um relative to my current beliefs about</p>
+<p>the the parameters of the generative</p>
+<p>model so this is what's called the</p>
+<p>literature of the novelty term</p>
+<p>and it's very easy to experimentally</p>
+<p>turn off or on this novelty term</p>
+<p>using simple Flags in in the agent class</p>
+<p>and this goes for the other components</p>
+<p>of the variation or the expected free</p>
+<p>energy as well you can kind of turn on</p>
+<p>flags that say do I want to use this</p>
+<p>novelty or parameter information game do</p>
+<p>I want to use the state info gain which</p>
+<p>is the same as the epistemic value or</p>
+<p>the Bayesian surprise and then do I want</p>
+<p>to use the utility so for the learning</p>
+<p>simulations it makes sense if you're</p>
+<p>doing learning to have to make sure that</p>
+<p>this parameter is turned on</p>
+<p>um yeah okay so that's that's the kind</p>
+<p>of um slides on on learning and now we</p>
+<p>can actually get into implementing this</p>
+<p>in primevp</p>
+<p>um so</p>
+<p>we first will create an a matrix and</p>
+<p>we'll let the agent have very slight</p>
+<p>positive beliefs about the reward</p>
+<p>contingencies</p>
+<p>and I'll explain later why this helps it</p>
+<p>helps with learning if they don't have</p>
+<p>total ignorance about the reward</p>
+<p>probabilities but they have some bias in</p>
+<p>some direction it doesn't actually have</p>
+<p>to be 0.51 it could be the other way</p>
+<p>um and then there's utility functions</p>
+<p>that allow you to create dearishly</p>
+<p>variables that have the same shape as</p>
+<p>some base a array</p>
+<p>so here we this pa</p>
+<p>um</p>
+<p>variable is basically the prior that</p>
+<p>bold a sub P variable that represents</p>
+<p>the agent's dirichlet prior over the a</p>
+<p>matrix so this is now a new variable</p>
+<p>that we're going to pass in to the</p>
+<p>um to the agent Constructor so if our a</p>
+<p>matrix is like</p>
+<p>let's look at the</p>
+<p>um you know the</p>
+<p>reward contingency</p>
+<p>reward modality so that's A1 so this is</p>
+<p>the agent's current beliefs about the</p>
+<p>the payoff structure right so under</p>
+<p>choose left and choose right those are</p>
+<p>the two contingencies given the two</p>
+<p>hidden States PA will have the same</p>
+<p>structure</p>
+<p>except that it'll have</p>
+<p>those contingencies encoded in terms of</p>
+<p>dear slay pseudo counts so if I made</p>
+<p>them</p>
+<p>made this pseudo count scale 10.</p>
+<p>then they are very con or quasi like</p>
+<p>relatively confident</p>
+<p>that the payoff probabilities look like</p>
+<p>this</p>
+<p>but again these are not probabilities</p>
+<p>they're deer slay parameters that</p>
+<p>parameterize a um categorical likelihood</p>
+<p>so you can use the normalized</p>
+<p>distribution function to actually then</p>
+<p>visualize the dirichlet distribution in</p>
+<p>terms of actual categorical parameters</p>
+<p>which so taking the expectation I.E the</p>
+<p>normalization of the deer slate prior</p>
+<p>will give you exactly this</p>
+<p>so if I say are these two things the</p>
+<p>same they should be the same</p>
+<p>okay maybe down to numerical differences</p>
+<p>they're not but</p>
+<p>yeah</p>
+<p>um okay so yeah that's how you</p>
+<p>parameterize that so we'll create a</p>
+<p>this is an important Point that's also</p>
+<p>used in SPM often we want certain</p>
+<p>contingencies to be unavailable to</p>
+<p>learning so we assume these are</p>
+<p>contingency that are baked into the</p>
+<p>agent's beliefs about the world and</p>
+<p>that's not adaptable so one way and this</p>
+<p>is just borrowed from the SPM way of</p>
+<p>doing it to encode that is to bake in a</p>
+<p>kind of um</p>
+<p>really precise confidence or very high</p>
+<p>confidence that certain contingencies</p>
+<p>are the case and you can just do that by</p>
+<p>adjusting the scale parameter for</p>
+<p>particular indices so for instance by</p>
+<p>doing this</p>
+<p>I'm just telling the agent that it it</p>
+<p>essentially doesn't learn the</p>
+<p>contingencies related to the null</p>
+<p>modality</p>
+<p>um</p>
+<p>so for instance if</p>
+<p>if you're in the uh start state it</p>
+<p>believes with really high confidence</p>
+<p>that you'll always get the null</p>
+<p>observation and we just operationalize</p>
+<p>that by creating very very high pseudo</p>
+<p>count or dear slay priors over that</p>
+<p>particular slice of the a matrix</p>
+<p>um so that's an important point to to do</p>
+<p>and then we'll just write all this stuff</p>
+<p>so this prior account about the null</p>
+<p>observations and then the scale that</p>
+<p>determines their General confidence</p>
+<p>outside of this this um null thing we'll</p>
+<p>write that all into a function so that</p>
+<p>we can then parameterize our PA</p>
+<p>and then we now write a new active</p>
+<p>inference with learning Loop where</p>
+<p>instead of just uh storing the history</p>
+<p>of choices and beliefs we also store the</p>
+<p>history of their beliefs about the</p>
+<p>dirichlet parameters</p>
+<p>um and an important thing that you can</p>
+<p>also do in primevp which is nice is you</p>
+<p>can say</p>
+<p>I only want to learn particular</p>
+<p>modalities so when you're creating the</p>
+<p>agent class there's a bunch of arguments</p>
+<p>you can pass in but one of them is I</p>
+<p>only want to be learning the reward</p>
+<p>payoff modality right now</p>
+<p>and this can change you could have them</p>
+<p>learn the the hint accuracy as well but</p>
+<p>by passing in a list of which of the</p>
+<p>modality indices that you want them to</p>
+<p>learn you turn off learning on all the</p>
+<p>other modalities which normally in SPM</p>
+<p>more or what we used to have to do in pi</p>
+<p>mdp is you just have to turn up those</p>
+<p>deer pseudo counts super high on all the</p>
+<p>modalities that you don't want to learn</p>
+<p>but um if there are other modalities</p>
+<p>that you don't want to learn now you</p>
+<p>just you can just pass in this list of</p>
+<p>modalities that you want to learn and</p>
+<p>it'll only focus learning onto that</p>
+<p>so now I'm setting up an agent</p>
+<p>as these particular beliefs</p>
+<p>about the world via a and now has a</p>
+<p>prior that it's going to update through</p>
+<p>doing variational inference or learning</p>
+<p>and then so we'll create the generative</p>
+<p>model here including this new prior over</p>
+<p>a and then we'll run the active</p>
+<p>inference loop with learning which</p>
+<p>involves creating an agent that can only</p>
+<p>do learning on the payoff structure</p>
+<p>modality so we want the agent to now</p>
+<p>learn</p>
+<p>which arm is best basically because it</p>
+<p>doesn't know the payoffs and then also</p>
+<p>to use parameter Information Gain to</p>
+<p>motivate its decision</p>
+<p>and there's another thing I forgot to</p>
+<p>mention which is the learning rate which</p>
+<p>is how much they increment their beliefs</p>
+<p>about the</p>
+<p>posterior</p>
+<p>or about the a matrix using this update</p>
+<p>row so there's something I didn't</p>
+<p>mention there's often a learning rate</p>
+<p>that's that's added here that basically</p>
+<p>scales how big this update is</p>
+<p>so that can be you know you can</p>
+<p>experiment it depends on the on the</p>
+<p>application how what what the scale of</p>
+<p>that is going to be but the default is</p>
+<p>one</p>
+<p>okay</p>
+<p>so in this in this example the agent</p>
+<p>gets the hint for one time step</p>
+<p>he's got the standard like negative four</p>
+<p>punishment</p>
+<p>and then it goes straight to the right</p>
+<p>because it believes the</p>
+<p>um the hint is accurate so it gets a</p>
+<p>reward is right then it goes and starts</p>
+<p>playing the right arm</p>
+<p>and uh you see it's posterior beliefs</p>
+<p>instantly go to right</p>
+<p>and now so since what we've also spit</p>
+<p>out of this active infant soup is the</p>
+<p>beliefs about the</p>
+<p>um a matrix in this QA hist posterior</p>
+<p>over a history we can plot its beliefs</p>
+<p>about the a</p>
+<p>um the a matrix probability over the</p>
+<p>contingency of seeing reward given that</p>
+<p>I was in the right arm</p>
+<p>and what you see is that even though</p>
+<p>they start with basically 50 50 beliefs</p>
+<p>as they gather observations</p>
+<p>their beliefs about that posterior</p>
+<p>probability over that particular entry</p>
+<p>of the a matrix get bigger and bigger</p>
+<p>an interesting consequence of this is</p>
+<p>their beliefs about the left arm</p>
+<p>contingencies don't change because they</p>
+<p>don't ever experience that that um state</p>
+<p>of the world</p>
+<p>so that's like an interesting um what</p>
+<p>you might call in uh in machine learning</p>
+<p>like a</p>
+<p>it's not really a bad bootstrap but it's</p>
+<p>the idea of</p>
+<p>um like selective sampling so you only</p>
+<p>learn those contingencies</p>
+<p>that are selective to the part of the</p>
+<p>world that you're sampling so I don't</p>
+<p>the agent doesn't know what that other</p>
+<p>slice of the a matrix looks like because</p>
+<p>it's never experienced what it's like to</p>
+<p>be in the left is better context</p>
+<p>and and playing the left arm so it has</p>
+<p>no it's posterior beliefs about that</p>
+<p>part of the a matrix remain the same but</p>
+<p>you can see that over time its beliefs</p>
+<p>start to converge to point a which is</p>
+<p>what we set in the uh in the generative</p>
+<p>model</p>
+<p>this is just basic statistical learning</p>
+<p>right it's just getting reward</p>
+<p>observations over time and as it gets a</p>
+<p>sequence of reward and Punishment</p>
+<p>through this very associative basic</p>
+<p>mechanism is just incrementing its dear</p>
+<p>slay beliefs and what I'm showing is the</p>
+<p>normalized IED expectation of those</p>
+<p>beliefs over time so you get something</p>
+<p>that's 0.8 but the actual dirichlet</p>
+<p>parameters themselves will be growing</p>
+<p>um like linearly in time effectively</p>
+<p>depending on the observations they get</p>
+<p>um yeah so that is just a basic learning</p>
+<p>and then there's another thing you can</p>
+<p>do which is</p>
+<p>take advantage of this change</p>
+<p>probability so now we allow the context</p>
+<p>to change and this is one way to get</p>
+<p>them to actually be able to explore and</p>
+<p>learn more about both reward</p>
+<p>probabilities in the landscape is allow</p>
+<p>them to have</p>
+<p>not only to make the environment change</p>
+<p>but they also entertain</p>
+<p>beliefs in their in their uh B Matrix</p>
+<p>that the the environment can change so</p>
+<p>you could use this to do B Matrix</p>
+<p>learning as well by defining like a PB</p>
+<p>variable but here we're just going to</p>
+<p>have a matrix learning as we were doing</p>
+<p>before I've changed a little bit the</p>
+<p>parameters to make things like a little</p>
+<p>more stable</p>
+<p>um because sometimes you get weird</p>
+<p>Behavior I mean that's something we can</p>
+<p>play around with too so now they allow</p>
+<p>the the environment itself can change</p>
+<p>and they also in their B Matrix they</p>
+<p>think the environment can change</p>
+<p>and then I'll plot</p>
+<p>uh the history of beliefs and choices so</p>
+<p>now</p>
+<p>they instantly go for</p>
+<p>um playing the arms they kind of risk it</p>
+<p>they don't the parameter Information</p>
+<p>Gain actually outweighs the epistemic or</p>
+<p>state information game they start</p>
+<p>playing they gather observations but</p>
+<p>they're not very confident about what</p>
+<p>the state of the world is because they</p>
+<p>only are getting information about the</p>
+<p>hidden state from the actual sequence of</p>
+<p>rewards and losses</p>
+<p>and then eventually they go to the hint</p>
+<p>because probably the utility becomes low</p>
+<p>because they don't know what the reward</p>
+<p>probabilities are and they're building</p>
+<p>their own beliefs then they get the hint</p>
+<p>then the hint is accurate so they have</p>
+<p>very precise beliefs about the hidden</p>
+<p>state of the world</p>
+<p>and then the the world actually switches</p>
+<p>so you see the Red Dot is the actual</p>
+<p>switching statistics of the Bandit and</p>
+<p>now they've kind of explored wolf band</p>
+<p>at Arms while also updating their</p>
+<p>beliefs about the</p>
+<p>the bandits</p>
+<p>and you see that their beliefs about</p>
+<p>their left arm are kind of bad because</p>
+<p>they they it seems like they probably</p>
+<p>mostly gotten negative data while</p>
+<p>they're in the left arm and they didn't</p>
+<p>explore it very much</p>
+<p>um and and yeah or no I guess at the end</p>
+<p>they're exploring it quite a bit but</p>
+<p>their their beliefs about it go down</p>
+<p>because they have I guess a bad</p>
+<p>experience with it</p>
+<p>um yeah that's a left arm that's the</p>
+<p>right arm but you can like keep trying</p>
+<p>this and mess around with different</p>
+<p>parameters and you'll get different</p>
+<p>sorts of</p>
+<p>uh beliefs</p>
+<p>okay so here in this example there's</p>
+<p>some switching going on the posters</p>
+<p>aren't tracking very well until they</p>
+<p>actually visit the hint and then their</p>
+<p>posters start getting much more</p>
+<p>um much more precise and then at that</p>
+<p>point they can start making more precise</p>
+<p>beliefs in this case</p>
+<p>they ended up kind of doing poorly on</p>
+<p>learning on both of them because the</p>
+<p>true</p>
+<p>the word probabilities are PA yeah</p>
+<p>um but so everything I've talked about</p>
+<p>so far is an example where learning can</p>
+<p>often lead to sub-optimal outcomes</p>
+<p>because it's done in an online fashion</p>
+<p>so this is an interesting Point of</p>
+<p>Departure between SPM and pine DP but I</p>
+<p>mean you can do all the same things in</p>
+<p>SPM that you can do in pi VP so here</p>
+<p>what I'm doing is I'm updating the a</p>
+<p>matrix every time I get an observation</p>
+<p>so they do hidden State inference they</p>
+<p>select policies</p>
+<p>they select actions and then given the</p>
+<p>last observation and the last hidden</p>
+<p>State belief they do one step of</p>
+<p>parameter inference and they use the</p>
+<p>next a matrix that's what's handled in</p>
+<p>this update a function of of the agent</p>
+<p>class they update their beliefs about</p>
+<p>the a matrix and they use that for</p>
+<p>inference at the next time step</p>
+<p>another way you could do this is you</p>
+<p>could do an entire trial</p>
+<p>and then update your a matrix at the</p>
+<p>very end of all the time steps of action</p>
+<p>selection and observation sampling and</p>
+<p>then use that a matrix for another trial</p>
+<p>so this is kind of the difference</p>
+<p>between</p>
+<p>um like a more em uh like a separation</p>
+<p>of time scales em or expectation</p>
+<p>maximization approach where given a set</p>
+<p>of observations then I update my model</p>
+<p>and then I go back and I do more trials</p>
+<p>without updating my model but using the</p>
+<p>same fixed one and then you can kind of</p>
+<p>do that in epochs and that's typically</p>
+<p>how it's done in SPM because you only do</p>
+<p>parameter learning basically this part</p>
+<p>outside this time Loop so you do it like</p>
+<p>down here but then what you do is you</p>
+<p>run multiple trials</p>
+<p>and the the nice thing about that is it</p>
+<p>kind of makes the a matrix updates less</p>
+<p>um likely to in the moment bias your</p>
+<p>action selection so for a given set of</p>
+<p>time steps you're you're locked into</p>
+<p>what your a matrix beliefs are and you</p>
+<p>don't do the update until a set of time</p>
+<p>steps has elapsed</p>
+<p>and uh yeah so for the purposes of this</p>
+<p>tutorial I just did this online learning</p>
+<p>thing but as you can see that can lead</p>
+<p>to actually weirdly sub-optimal Behavior</p>
+<p>where they don't learn the true reward</p>
+<p>statistics very well</p>
+<p>and it depends on a bunch of things too</p>
+<p>like the learning rate and you know</p>
+<p>there's a I haven't explored this demo</p>
+<p>as much as I would like but there's a</p>
+<p>lot of interesting kind of side effects</p>
+<p>like here they're actually learning very</p>
+<p>weird statistics about the the Bandit</p>
+<p>landscape like they start kind of</p>
+<p>learning it well but then as their</p>
+<p>observations keep going they don't they</p>
+<p>don't actually learn very well here they</p>
+<p>just avoid playing because they have a</p>
+<p>bad early experience so this is an</p>
+<p>example of like a bad bootstrap and then</p>
+<p>they go and just play the hint because</p>
+<p>they're too scared of anything else even</p>
+<p>though they're hidden State inference is</p>
+<p>perfect</p>
+<p>because the hint perfectly tracks the</p>
+<p>hidden state</p>
+<p>so yeah there's it's just um this is</p>
+<p>just a kind of meant to be an example of</p>
+<p>what you can do with learning</p>
+<p>um but there's there's going to be</p>
+<p>examples where learning actually causes</p>
+<p>sub-optimal Behavior but in an</p>
+<p>interesting way</p>
+<p>so here's an example where they actually</p>
+<p>kind of are learning the correct reward</p>
+<p>statistics things are starting to</p>
+<p>converge to point eight for both Bandit</p>
+<p>arms</p>
+<p>but um but it's very stochastic as you</p>
+<p>can see and I also chose action</p>
+<p>selection to be stochastic</p>
+<p>with deterministic I wonder what you</p>
+<p>would get</p>
+<p>um yeah yeah they're just Arc maxing the</p>
+<p>expected free energy or Arc meaning so</p>
+<p>hint is always the most</p>
+<p>safest option given their history of uh</p>
+<p>observations</p>
+<p>if I can make one remark on that kind of</p>
+<p>diversity behaviors that we're seeing</p>
+<p>pi mdp and active inference are</p>
+<p>providing us a space and a approach to</p>
+<p>composable generative model construction</p>
+<p>that we can then sift through and to</p>
+<p>co-evolve with to find different</p>
+<p>strategies and behaviors so active</p>
+<p>inference or even any specified</p>
+<p>generative model it's not an answer or a</p>
+<p>solution for example to the explore</p>
+<p>exploit dilemma we see this like</p>
+<p>empirically right now active inference</p>
+<p>is not in general resolving explore</p>
+<p>exploit anygm in general is not</p>
+<p>resolving explore exploit any</p>
+<p>parameterization is not resolving</p>
+<p>explore exploit even for one environment</p>
+<p>it just is equivalent to saying like</p>
+<p>well we have a linear model of</p>
+<p>healthcare data so we've resolved the</p>
+<p>health care issue and</p>
+<p>um this really this really shows the</p>
+<p>space that we build in and what remains</p>
+<p>to be built</p>
+<p>is so open</p>
+<p>yeah absolutely yeah I mean because</p>
+<p>optimality is not really a function of</p>
+<p>what the gender model is or what the</p>
+<p>algorithm is what's it's more guaranteed</p>
+<p>to be optimal based on how analogous the</p>
+<p>generative model and the generative</p>
+<p>process are so if the gendered model is</p>
+<p>a perfect model of the generative</p>
+<p>process then doing Bayesian infants</p>
+<p>inference with respect to that</p>
+<p>generative model that is optimal for</p>
+<p>like everything</p>
+<p>but um but uh how you learn the</p>
+<p>generative model that's what we're</p>
+<p>seeing here if you learn the generative</p>
+<p>model in online fashion it's not</p>
+<p>guaranteed to learn the right to</p>
+<p>generative model in many cases it learns</p>
+<p>the wrong one</p>
+<p>and this is something that a lot of</p>
+<p>people in active inference world have</p>
+<p>explored for instance nor Sajid who's</p>
+<p>also a student of Carl's has explored a</p>
+<p>lot the the limitations and the the</p>
+<p>boundaries of parameter learning and</p>
+<p>things like preference learning like</p>
+<p>what if you were learning the C Vector</p>
+<p>itself how can that be learned online in</p>
+<p>an Adaptive way</p>
+<p>um yeah and also Alec chance has that</p>
+<p>paper action oriented models where</p>
+<p>they're learning the B Matrix and in</p>
+<p>that thing they're showing how the agent</p>
+<p>learns kind of sub-optimal strategies</p>
+<p>depending on its exploration of</p>
+<p>parameter space</p>
+<p>um but that also actually is kind of a a</p>
+<p>one of the</p>
+<p>benefits of active inference that paper</p>
+<p>shows because it shows if you have an</p>
+<p>agent that does have epistemic value the</p>
+<p>model it learns of the world is like</p>
+<p>better than agents that don't have</p>
+<p>epistemic value but again that the</p>
+<p>models are always action oriented</p>
+<p>they're always based on what parts of</p>
+<p>the full State space is the agent driven</p>
+<p>to sample</p>
+<p>awesome Jacob any closing comments and</p>
+<p>then all the closing comment and then</p>
+<p>Connor with the last word</p>
+<p>yeah well thank you very much for the</p>
+<p>great</p>
+<p>um overview what particularly uh was</p>
+<p>inter um I I found particular</p>
+<p>particularly interesting was</p>
+<p>um both how you touched on how it could</p>
+<p>be modified uh with the action</p>
+<p>perception look could be modified with</p>
+<p>the other other modules even though uh</p>
+<p>as you mentioned there would be more</p>
+<p>opportunities to go deeper in that but</p>
+<p>also on the on learning</p>
+<p>um the</p>
+<p>the duration parameters and I would be</p>
+<p>interested to</p>
+<p>um see how that uh also influences</p>
+<p>planning uh like</p>
+<p>if you would up if you would do like um</p>
+<p>kind of pseudo update of your duration</p>
+<p>parameters when you're calculating your</p>
+<p>expected free energy as in what would I</p>
+<p>uh I'm calculating my expected free</p>
+<p>energy</p>
+<p>whilst also taking into account that my</p>
+<p>B would change on each in on each step</p>
+<p>and uh how that how that changes like</p>
+<p>the optimality of</p>
+<p>the temporal depth that we do planning</p>
+<p>with I think it's super super</p>
+<p>interesting and really looking forward</p>
+<p>to hopefully uh another model stream</p>
+<p>yeah that's a um</p>
+<p>okay is it okay if I quickly respond</p>
+<p>yeah please please</p>
+<p>um yeah that that's a very interesting</p>
+<p>point that you just made about</p>
+<p>um these this fictive or imagined update</p>
+<p>whereas that I had a yeah this slide so</p>
+<p>that term that novelty term in theory</p>
+<p>that does capture exactly what you're</p>
+<p>saying yakub is that this thing says how</p>
+<p>would my dear straight parameters update</p>
+<p>if I was to take this policy pie and</p>
+<p>then I use that term to actually choose</p>
+<p>where to explore next so if I turn on</p>
+<p>the parameter information game term in</p>
+<p>the agent class they'll much more</p>
+<p>quickly skip that skip the hint and go</p>
+<p>directly to sampling the bandits because</p>
+<p>they're driven by novelty oh I want to</p>
+<p>know what the reward probabilities are</p>
+<p>so I'm going to go explore however when</p>
+<p>it doesn't do and what I think you're</p>
+<p>intimating with your comment is that</p>
+<p>if I did like multi-step planning</p>
+<p>two time steps in the future will I be</p>
+<p>able to do my planning given how I think</p>
+<p>I updated my parameters at the first</p>
+<p>time step so that's what the equivalent</p>
+<p>of sophisticated inference sophisticated</p>
+<p>inference is saying how would I plan at</p>
+<p>time step three given how I think my</p>
+<p>beliefs would update up to time step two</p>
+<p>and that's done right now for hidden</p>
+<p>States but I haven't seen that done for</p>
+<p>parameters and I think there's someone</p>
+<p>like a student of Ryan Smith's uh is</p>
+<p>working on that now</p>
+<p>um is like this propagation of</p>
+<p>counterfactual beliefs about how my</p>
+<p>parameter beliefs would change in the</p>
+<p>future</p>
+<p>um and that's like that's like a really</p>
+<p>cutting edge I think active inference</p>
+<p>it's like not only novelty but how would</p>
+<p>my like prospective sophistication about</p>
+<p>how your own parameter beliefs will have</p>
+<p>evolved by time Point T and then using</p>
+<p>that to do planning for time Point t</p>
+<p>plus one</p>
+<p>um that's like a really sophisticated</p>
+<p>stuff I think getting just even Bare</p>
+<p>Bones sophisticated inference with</p>
+<p>hidden State counterfactual stuff in in</p>
+<p>Pine BP that would be a huge</p>
+<p>accomplishment too and then of course</p>
+<p>incorporating it to be more</p>
+<p>um more uh with the parameter</p>
+<p>sophistication as well and then another</p>
+<p>quick thing is I can quickly show you</p>
+<p>um an example of one of those other</p>
+<p>oopsie</p>
+<p>just while you're finding it the live</p>
+<p>that that last discussion on</p>
+<p>uh sophisticated planning</p>
+<p>it's something that at the semantic</p>
+<p>level we engage with every day what</p>
+<p>courses should I take this quarter</p>
+<p>so that I can learn what I don't know</p>
+<p>today so that next quarter I'll be able</p>
+<p>to make a better plan for which classes</p>
+<p>to take so that in three years when I</p>
+<p>graduate</p>
+<p>but it's already phrased at the semantic</p>
+<p>granularity that these models are</p>
+<p>rapidly converging towards and they're</p>
+<p>not converging towards it by scaling is</p>
+<p>all you need they're converging towards</p>
+<p>it with a factorized actually semantic</p>
+<p>approach which is very exciting</p>
+<p>yeah that's a great analogy it's like by</p>
+<p>the if you were a naive active inference</p>
+<p>agent without sophistication you would</p>
+<p>never plan with like a 10 time step</p>
+<p>planning Horizon you never plan to take</p>
+<p>or let's say a three semester planes</p>
+<p>Rising you never plan to take</p>
+<p>multivariate calculus</p>
+<p>in your third semester because you will</p>
+<p>you would not have anticipated by the</p>
+<p>second semester I now have enough linear</p>
+<p>algebra to take I know that by the time</p>
+<p>I finish the second semester I will now</p>
+<p>know linear algebra so I'll be well</p>
+<p>suited to take multivariable calculus</p>
+<p>whereas what we as humans do is we do</p>
+<p>have that parameter sophistication I can</p>
+<p>plan as a freshman as a first year to</p>
+<p>take in my third or fourth semester some</p>
+<p>high Advanced physics because I know by</p>
+<p>that time I will have the requisite</p>
+<p>multi-variable calculus or whatever so</p>
+<p>that's a that's a really nice analogy</p>
+<p>that I never</p>
+<p>I think that's a good uh a good example</p>
+<p>welcome to active View</p>
+<p>yeah exactly</p>
+<p>um so here uh</p>
+<p>I just wanted to show you Jacob um</p>
+<p>here's an example of a hierarchy</p>
+<p>hierarchical active inference demo I can</p>
+<p>share this too it's another collab</p>
+<p>notebook where we're exactly doing we're</p>
+<p>composing to palmdps so there's like a</p>
+<p>high level Palm DP</p>
+<p>and then there's a low level Palm DP and</p>
+<p>for example when you're doing a step of</p>
+<p>updating the empirical priors at the</p>
+<p>high level before you pass them down to</p>
+<p>be empirical priors at the low level we</p>
+<p>use the control module for example to do</p>
+<p>get expected States or use the high</p>
+<p>level beliefs the high level B Matrix</p>
+<p>and then the high level chosen action to</p>
+<p>propagate forward the next posterior</p>
+<p>beliefs at the high level and then those</p>
+<p>things themselves parameterize a low</p>
+<p>level empirical prior for this faster</p>
+<p>Palm DP that's going on at the low level</p>
+<p>so this is an example where you're</p>
+<p>composing like agent class calls like</p>
+<p>this but you're composing them with</p>
+<p>functions that are built from sub</p>
+<p>modules and adjacent modules of prime DP</p>
+<p>um so that's an example of the thing you</p>
+<p>were talking about but yeah that's very</p>
+<p>brief like we can get into that um later</p>
+<p>on</p>
+<p>in a different stream or something like</p>
+<p>that yeah</p>
+<p>awesome Yes uh dot three whenever the</p>
+<p>time is right I'll I'll just give two</p>
+<p>closing areas</p>
+<p>again really</p>
+<p>appreciate coming back on and sharing</p>
+<p>this development in progress already</p>
+<p>it feels more powerful and documented</p>
+<p>than when we were in the dot one just a</p>
+<p>few</p>
+<p>weeks or months ago</p>
+<p>I think two areas that are going to be</p>
+<p>really exciting to discuss and see how</p>
+<p>they're implemented and also the</p>
+<p>plurality of ways that they're</p>
+<p>implemented</p>
+<p>the first area is structured learning on</p>
+<p>cognitive models from the outside so as</p>
+<p>a ethologist as a behavioral researcher</p>
+<p>how do we do structure learning on</p>
+<p>cognitive models</p>
+<p>four systems that we actually know about</p>
+<p>their cognitive architecture or not but</p>
+<p>also the view from the inside in terms</p>
+<p>of structured learning and metacognition</p>
+<p>like how should I change the</p>
+<p>dimensionality of my B Matrix or should</p>
+<p>I turn on that flag to engage in this</p>
+<p>kind of sophisticated inference so</p>
+<p>structure learning on cognitive models</p>
+<p>view from the outside View From the</p>
+<p>Inside is one exciting area and the</p>
+<p>second more experimental area is</p>
+<p>statistical power analysis pre and</p>
+<p>post-hoc statistical power analysis</p>
+<p>along the lines of the design Matrix in</p>
+<p>SPM</p>
+<p>so that you put 15 time steps and 0.8.2</p>
+<p>and punishment is for</p>
+<p>and then you could sweep across</p>
+<p>parameters and learn about how well it</p>
+<p>did but if there was certain interfaces</p>
+<p>analytical or numerical approaches to be</p>
+<p>like yes with 25 time steps</p>
+<p>we have this much of an expectation of</p>
+<p>convergence or this differential in</p>
+<p>rewards should be resolvable by an</p>
+<p>Adaptive agent over this long</p>
+<p>and just understand how long should</p>
+<p>these experiments be because there are</p>
+<p>such interesting results with One-Shot</p>
+<p>learning and with being able to generate</p>
+<p>someone's voice from just 10 seconds of</p>
+<p>them talking or make a video of somebody</p>
+<p>as a deep fake with just a still image</p>
+<p>and so it seems like it's possible to</p>
+<p>learn a lot from a little</p>
+<p>and if we can learn a lot from a little</p>
+<p>and have a semantic cognitive model</p>
+<p>that would be quite great</p>
+<p>absolutely yeah like</p>
+<p>it's almost like hyper parameter</p>
+<p>optimization on the landscape of active</p>
+<p>inference models like how do I choose</p>
+<p>the parameters of an active inference</p>
+<p>model in a smart way</p>
+<p>um yeah there's several methods for</p>
+<p>doing that like yeah that we could uh</p>
+<p>definitely explore</p>
+<p>yeah data efficiency is the main main</p>
+<p>thing like you said like making it so</p>
+<p>you don't have to train it on a trillion</p>
+<p>images like with a deep neural network</p>
+<p>perfect and Dot 007.2 and whenever you</p>
+<p>want to join you in any colleagues are</p>
+<p>are always welcome to share the next</p>
+<p>spiral in pi mdp development</p>
+<p>awesome thank you so much again for</p>
+<p>letting me come on and listening I hope</p>
+<p>it was helpful</p>
+<p>um yeah and I'm glad that it's recorded</p>
+<p>it's really an amazing resource that you</p>
+<p>guys are developing here so thanks again</p>
+<p>thank you till next time bye</p>
+<p>[Music]</p>
+</article>
+</body>
+</html>

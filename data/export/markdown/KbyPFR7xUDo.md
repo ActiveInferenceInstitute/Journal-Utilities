@@ -1,0 +1,5435 @@
+---
+title: "ActInf Livestream #039.2 ~ "Morphogenesis as Bayesian inference....""
+category: "Livestream"
+series: "Livestream_039"
+episode: "2"
+duration: "1:38:01"
+url: "https://www.youtube.com/watch?v=KbyPFR7xUDo"
+views: 127
+exported_at: "2026-02-18T22:37:37.765339+00:00"
+format: markdown
+---
+
+# ActInf Livestream #039.2 ~ "Morphogenesis as Bayesian inference...."
+
+All right.
+Hello, everyone.
+Welcome to ActinFLAB livestream number 39.2.
+It's March 9th, 2022.
+Welcome to the ActinFLAB.
+We're a participatory online lab that is communicating, learning, and practicing
+applied active inference.
+You can find us at the links here on the slide.
+This is a recorded and archived livestream, so please provide us with feedback so we can
+improve on our work.
+All backgrounds and perspectives are welcome, and we'll be following video
+etiquette for livestreams.
+Check out activeinference.org to learn more about anything that the lab is up to.
+Today in stream number 39.2, we're in our third discussion around this paper,
+Morphogenesis as Bayesian Inference, a Variational Approach to Pattern Formation and Control in
+Complex Biological Systems, by Franz Kuchling, who's here with us, as well as Frustin, Georgiev, and Levin.
+So we're going to have a fun discussion in the .2.
+The .0 was some background and context, hopefully overviewing the paper.
+The .1, we had a discussion that opened up several threads.
+And today we will, in the .2, say hello on the introductions and then just jump in
+to a blank slide or to a not blank slide.
+So, I'm Daniel.
+I'm a researcher in California, and I'll pass it to Dean.
+Morning, I'm Dean.
+I'm in Calgary.
+And I am going to say that I have one thing I want to look at down the road, which is
+how long is a person a stem cell?
+Which I think this paper might help us parse a little bit, and I'll pass it down to Blue.
+Hi, I'm Blue.
+I'm a researcher in New Mexico.
+And I also, similar to Dean, have questions about when a cell becomes a cancer cell and like,
+how does it develop its own generative model?
+And just in general, like when you're looking at complex systems, how these small perturbations
+can lead to like a totally different effect downstream, which I think is kind of related
+to the stem cell question that Dean had.
+And I'll pass it over to the first author, Franz.
+Hi, I'm Franz.
+I am a PhD student in the Levin lab in Tufts, Medfield, near Boston.
+And yeah, I study part of active inference in my theoretical work, and I do a lot of experimental
+work as well, looking at information processing in organisms and cells.
+Cool.
+So where does stemness, or how do stem cells play into this paper and this line of research, Franz?
+Definitely something we've touched on, but just to kind of start generally,
+and then we'll zoom in somewhere. So take it away.
+Sure. The idea is that the cells initially, when they're in the simulation, when they're
+being initialized, they have the random initialized and they have very low beliefs about what cell
+type they are. They can be one of four different cell types in this particular simulation. And they all
+share a model, a tallyt morphology they could achieve that they essentially are programmed to achieve at some point.
+But none of the cells are any of the given cell types initially, at least not with any
+significant precision. And as they move along, signaling to each other and sensing each other and secreting
+signal types in response to each other, they then slowly by slowly infer a cell type, which essentially
+is differentiation.
+So cells starting with low precision about what kind of cell they believe themselves to be. And then
+there's a process of differentiation. So Diener Blue, any thoughts on that sort of stem to differentiated
+continuum? And I'll pull up an image from a non-active perspective that also shows that kind of a
+continuum.
+So I have just something to add that ties into the paper where there's aberrant signaling. So
+a stem cell differentiates, but then during the process of carcinogenesis, like retains some kind
+of, or D differentiates into something that's more similar to a stem cell than it is to a different
+kind of cell. And so this plasticity is important to retain, like, so that we can repair ourselves,
+but also it can lead to kind of an aberrant signaling pattern.
+Yeah.
+Yeah.
+Like this notion of having a terminal cell
+revert to a state and regain the ability of having stemness is one of the characteristics of cancer,
+because it can then sometimes differentiate into other cell types that are like normal and downstream
+of a precursor or abnormal in some other way.
+How is this...
+And it's also something...
+Yeah, go ahead, friends.
+I was going to say, it's also something that happens in, especially in higher organisms,
+right? Not every organism keeps absolute stem cells in all kinds of populations. One example that I used
+to work on is in zebrafish, where you have an always developing eye and there's certain...
+There are parts of the retin, essentially, that can de-differentiate some extents. They're not
+entirely stem... They have a stem cell niche as well, but there's also, especially in higher organisms,
+while they keep those populations of either stem cells or of already partially differentiated cells
+that can de-differentiate. So it's an important part in regeneration. And ironically, this is
+something that's not been studied for a while, but there's older research that was done where
+highly regenerative organisms, when they undergo... They did it as in salamanders, and they injected
+them with carcinogens, and they basically had it... You know, saw a tumor progressing, and they cut
+up a limb, and these are highly regenerating. We actually re-normalize the tumors, essentially.
+So initiation of regeneration in those organisms seems to actually counteract cancer progression,
+and even kind of remove the tumors, which is very interesting. And it kind of... This feeds a little
+bit into the idea in this paper as well that regeneration, right? What happens is you certainly
+now have a much higher flow of information, things need to rearrange to re-differentiate, and that is
+kind of like what I was thinking as well with the simulation here of the cancer rescue phenomena, where
+you rescue this formation of aberrant cells and aberrant signaling by having a stronger contact
+between cells as well. I'm not saying I'm modeling generation here, although you can... I think in the
+original paper, Carl has done some way to cut, I think, part off and let it grow again. I think that
+has been done in the original paper in the annoying one's place. But that's something to kind of keep in
+mind. This is something that is experimentally highly studied to an extent.
+So one general note, and then a question. This idea that the organisms that have the highly regenerative
+capacity, and there's a continuum from regrowing just the tail to regrowing a whole limb to kind of an extreme
+or a highly regenerative case like the planaria that was studied in this paper. So it's all kind of on a
+continuum from total ability to regenerate from any adult somatic cell can fully recapitulate the full
+population all the way to a total opposite of that. And then you pointed out that it might be related to
+cancer progressions and phenotype. And that speaks to what Blue brought up about the
+like system level effects. There's the individual cell and then there's the system level, because clearly
+there's something about the system level in the regenerative situation that would lead to this
+being different. Or maybe it could be explained by just something internal to the model. Anyways,
+you mentioned that higher information was associated with rearrangement. Could you explain a little bit
+about that? Or how does it play out in this paper or in general?
+Yeah, it's basically the idea that it's not so much the total information content, but the flow of it.
+And I'm talking a little bit about this last time, right? It's hard to really kind of quantify this in
+a more meaningful biological sense. But the idea is that it's information flow. Like I think Dean asked this
+question, like is more information always good? And my kind of answer to that was,
+it's within context of what the participating organisms can receive and can process. So in the sense
+that if you have cells that are processing certain information with a certain kind of rates, time
+constants, then kind of getting information in within with that timeframe in mind is what makes it more
+likely for them to kind of understand better their environment and react to it, as opposed to a cell,
+you can think of it also cancer cells that, you know, have the whole sensory part completely perturbed,
+that do not react to the environment anymore, then everything else becomes noise and it gets ignored.
+That's kind of the idea. So there is, there is a lot of different differences in how the cancer cells,
+because they have changed ion profile, ion channel profiles, they have changed
+machinery of what they are actually transcribing. So all of that leads to the difference in how signals
+are being processed. And understanding that and then reacting to that is, I think, is a key to
+to understanding and treating this disease.
+Dr. David Pérez
+Awesome. Thanks, Dean.
+I don't know if I have the answer to my question, which is how long is a person,
+a, in finger, in scare quotes, a stem cell. But one of the things you mentioned,
+Franz, in the point one was, I think Stephen asked the question about how much volume in the flow. And what
+I've heard you say back was, it's always a state space dependency, which, which I, when I'm reading
+the paper, it was, I think you made a really good sound case for that. But then one of the things that
+when you had to, when you had to sign off, one of the questions that I brought up, hopefully that maybe
+we can discuss a little bit today is, they can figure four and five of the paper, all that black area
+around when the sort of cells move into place. That's a crude way of describing what's going on
+there. But all that black area around that, am I, is it fair to say that that's kind of the,
+the state space dependency? Or is that just assumed? And how would we, because Daniel did a good job of
+sort of saying, there's some invisibility aspects to this when we do multiple layering. And so,
+how, how do you give people a sense of what's going on in that, in that black, that blacked out area?
+Right? I think, I think black is a good, a good color representation, because it's not really
+a color, I don't think. But it, but it kind of speaks to this idea that we've got these low beliefs,
+but how long, or how long as a person, or as cells, as a cluster of cells, is that beneficial?
+Right? When we're talking, we're talking of course here on under the big umbrella of morphology. So
+that was kind of where I was wondering today, maybe you could, you could explain it, because you, the
+focus, the eye tends to focus on the object within the frame, as opposed to sort of the area around the,
+what we would consider to be the object. So maybe you can kind of help me understand this state space
+dependency piece. Yeah, I mean, so if you have the look at figure two, so, and what I didn't plot in
+the figure four and five, but in two I did, is the back of concentrations, right? So there are, of course,
+some, some levels of constant, of signaling molecules in the background as well, which will also,
+of course, be the case in the, in the actual simulations, down the line of four and five.
+The, the blackness, so the one interesting part about the simulation, which was done mainly for
+simplicity and lack of necessity, is to not actually have an external environment per se,
+like there's nothing, right? There's no external force, like, outside of base, everything in the
+simulations is done by the cells, where the cells, they make the environment, right? So there is,
+essentially there's an external environment by the signaling molecules that they put out,
+but we don't have any external, limited, like, limits around it. We just basically, that's just
+basically plot, the signaling molecules don't go faster than that. And there isn't any external force,
+which we could do, right? We, we, the power of the simulations, where you do this asymmetry,
+we essentially get, we get sort of an, an implicit environment by changing the response to the
+signals around, which you can imagine that you put something in the, in the medium that, that flips
+how, how the signal is being processed, and then that's it. So back to your question. So this,
+about this blackness, and when is that beneficial, if I answered that question correctly, it's,
+there is, of course, like a hype, like a precision component to it and kind of more, less hand,
+less hand wavy. If, you know, if, if your environment is very volatile, and constantly changes,
+and you keep, right, you have a, not, not this, this is a closed system, right? If you had an open
+system, you constantly would get signals also from the environment, this will also become all a lot
+messier, and especially initially, right? In the, in the first frames of that figure, four and five,
+earlier the simulations, they all started together. I mentioned last time, there are certain smoothness
+requirements where like, if, if we had to put this dampening on the sensitivity a long time, so
+inverse dampening, it will get more sensitive with time, which is because initially they're very
+unstructured, they have, you know, very low power beliefs, and they will jump crazy if they have
+high sensitivity to each other, because they're in such close proximity. And
+that is something that we, of course, do see in biology, right? We do be most, especially the
+higher organisms, right? They start off usually in close environments. Now, of course, you can,
+you can argue this, you don't need to go to any information stuff, you can just argue, well, it's
+just, you know, thermally insulated, they have their own food supplies, it makes, you know, just makes
+like a more safe zone, like just physically, energy speaking. But I do think there's a big component to it,
+it's like shutting this highly volatile, you know, itself inferring organism off from influence from
+the environment at a stage when all these cells are figuring out what to do each other.
+So they need, they kind of need to have a kind of a barrier between signals from the environment,
+which normally, you know, to us adults, to a mature organism are not really dangerous, but to
+end developing organisms full of stem cells can be problematic and will basically would
+would perturb its natural kind of progression in this state space on this sulfate acquisition.
+There is a cool paper I can reference to you from Chris Fields, who I am from disclosure,
+I'm working with and very much admire him, who wrote a paper about multicellularity as exactly
+the consequence of what I'm talking about. I just said that multicellularity basically emerging
+in a, as a way to shut stem cells or, you know, cells that are in an initial evolution of
+multicellularity, cells that are undergoing some evolution towards complexity, needing some kind
+of barrier from the environment, basically making themselves making, creating a Markov bank around
+them that makes it so they're not constantly, you know, being perturbed by the environment.
+And that's the idea of how multicellularity evolves in the first place is to insulate niches,
+which will become stem cell niches from the environment so that cells that are undergoing,
+you know, very, very dynamic changes in short amount of time that therefore need to be kind of
+sensitive to the environment, cannot be, need to be isolated from influence in the environment that
+would perturb this careful inference of cell type. Thanks, Dean. Yeah, so in this, in this figure too,
+you can see that there's, we're talking about ranges because we've got values on the horizontal and the
+vertical sides of the box. So, so one of the things that I think is really interesting is that once you,
+so you, we've all spelled it out, if we're dealing with active inference, we want to avoid something
+surprising, right? The whole, the whole variational aspect of this. So again, if we're talking about
+going from something that is, has low beliefs to something that gains in, I'll say gains in sensitivity
+without hopefully killing what I want to say next, if, if it's about signal adaptation to these top down
+conditions, which influence the final form taken, is there some way based on what you researched with
+this paper? Is there some way to know as you're approaching that place of energy exhaustion? Like,
+is there something that the cell tells you that it's, it's finding this too surprising? Because
+one of the things we, again, we talked about was that rate of change being so rapid, say, like the UN
+report on global warming, where we simply don't have the machinery to be able to adapt. Is there something
+that you found out through this paper that kind of said to you, as you were looking at these things,
+oh, wait a second here, we're just going to, we're going to, we're not, our, our intent is not to kill
+this thing off, but we're approaching that place where the environment is just too changing too fast.
+Yeah, I'm trying to give you a more to answer than hand-waviness, but let's start with the general
+answer first. So, yes, you do, it's, you can, of course, you can, like, one way you can quickly see
+it is in that kind of, like, something that you get with the prediction error plot, that you also get
+with the free energy plot, if you, right, in a perfect world, you'll get, like, a nice smooth, like,
+you know, kind of exponential decay of the free energy function. If that keeps changing, bouncing up and
+down, that will be very problematic. I did some simulations afterwards, we're not included in this paper,
+but based on exactly the same stuff, where I was including a time, based on top of this time
+sensitivity, you know, increase, that I use for basically, you know, increasing the sensitivity
+over the time, but having a low in the beginning. On top of that, I put in a pulsing, like a sinusoidal or
+a rectangular function, which was, we were just trying to simulate what I'm doing in my experiments in
+a lab, where basically, you know, I pulled certain signaling inputs to my organisms. I wanted to see,
+basically, if I randomize that, or if I made that in a certain pattern, how well would the simulation
+still be able to cope with that? And in the case where I had, like, a nice regular pattern of the,
+you're in the free energy land, and the free energy decay, you hardly saw that, you know, initially,
+initially, when that sensitivity was very high, it was, you know, you can see it there, there was like
+a big jumpiness and fuzziness. You could see it also in the belief updates, you know, basically,
+they were, they kind of emerged, kind of like, they diverged initially very strongly, and diverged in
+terms of their beliefs that they had about themselves. But then kind of afterwards, when the sensitivity
+overall was kind of acclimating, but was kind of varying around this acclimation point, you didn't
+see that much anymore in the, in the, in the, in the regular pattern, but in the ones were less regular,
+that was very much perturbed. And the, and the free energy also didn't actually quite, did not only did it
+not come to kind of like, to this asymptotic behavior, but actually started increasing again, basically,
+just was really perturbed, and you didn't see that. So to answer the question, like, how do you see
+if, if you are not adapting correctly, even though you don't actually know yet what the, what your
+external state is, I would answer it's, how much are you switching back and forth between your beliefs?
+And I guess more precisely also like, how certain are you of that, right? This is something that
+we talk about in metacognition, which I've recently, from my last paper, I've been getting into and
+reading about metacognition and rats and primates and other animals. And the first step to metacognition
+is, as far as I understand it, is having a certain confidence about your results. They did this with rats,
+where they basically gave rats the option and this kind of cognitive task, that they could also just
+not answer the task, like not do, not push a lever, because I think it was levers, I forgot what the
+task was, but it was basically levers. And they had an option to not push a lever, for which they would
+get a lower reward than if they, a much lower reward than if they got it correctly, but more than if they
+got it wrongly. And so what they saw is that they actually would, in certain cases, when they hadn't
+learned it, when they hadn't learned the task correctly, they would just not push the lever.
+And that is used as like a first instance of the metacognition, in a sense of they must have been
+unsure about what you do, and then chose not to do it. So I think that's kind of like, if you,
+it's one thing if you kind of lean back and forth, because you always think, well, you know, I'm this and
+that being unsure is normal, but kind of, kind of constantly going back and forth between certain
+states of sureness is also problematic. So that's the generalized answer to this.
+Yeah, I think the interesting thing there is the emphasis on the back and forth, metaphorically
+speaking, we tend to give a lot of attention over to the balance piece. But what you're talking about,
+when you're talking about the environment is not the plank as much as a moving fulcrum. So how do you
+adjust? Right? The balance, I guess, is the outcome, but it's the process itself is the back and forth.
+So yeah, I wondered about that, because some things you do want, from an epigenetic standpoint,
+you do want certain cells to die, you want their energy to expire.
+Absolutely. I mean, I'm…
+Right? That's part of the back and forth, as opposed to the balance, you know, there's no balance metaphor
+you want there, you want them to die. And they're not dying. So that's really interesting. Thank you.
+Yeah. And I wanted to add one more kind of attempt to answer this more specifically, is there's a paper by,
+I'm probably pronouncing his name wrong, Joffoli, which was, if you just Google valence and active inference,
+they basically looked at, you know, valence in terms of like, judging if your actions are, you know,
+certain like, are they better or worse, basically, is there, are you assigning a sign, positive or negative
+to outcomes? And they were doing that in active inference schemes, and they were defining it. And,
+you know, there's other definitions, not everyone's going to agree about this, but they were looking at it in
+an active inference scheme about the rate of change. They were looking at the first and second order
+derivatives of how… I'm saying this correctly… about how the prior beliefs were updated to the
+precision, like how important, like how sure they were about what cell type they were. And so basically,
+in the second order derivative, basically, how much would they change at any given time in their beliefs,
+that's what they… where they plugged in valence into different mode that gets more complex than that,
+but that's the gist of it. So that, I think, is a… in the… within the framework of active
+inference is a more specific answer to your question, is look at the rate of change by which your beliefs are
+updating. And that, with respect to your uncertainty, of course, this… this whole… Karl has written about
+this as well. I'm very interested in as well from the biology standpoint of view, is that stress… stress
+sensing mechanisms, like stress is a universal driver. In biology, it's actually much more important than
+rewards. I kind of find that we always talk about rewards, but biology is much more focused on stress,
+because it's more informative and it's more important to deal with than… than reward maximizing. But of
+course, you don't always say it's just negative, but… the… the point there being is… stress as in… as in terms of
+for uncertainty, like not having… not minimizing your energy effectively and stably, that will lead to stress. And there's paper that
+that's in humans. I think I mentioned last time as well, where they do experiments with humans and mice as
+well, where they… very ethical, where they shock… they give electric shocks… I think they did it both
+for mice and humans. And then they showed that the… so they were more stressed out, not just by this… like the
+shocks themselves, but they couldn't predict… Right. The electric shocks. So it's that uncertainty of what
+coming next. I think that is the most… if I had to like say one thing that is most indicative of… of
+you going in a bad place. So if you are stressed because you have no idea what's happening and you
+cannot even… if you know something bad's going to happen, you know when it's happening, that's a lot
+less bad than if you don't know at all. One last really dark example to really make it to a dark place is
+there is… I am from… I was born in East Germany. I guess I was only one here open the wall fell, so… but
+we… you know, my parents were very much and there was this… now it's a museum, but it was a prison
+for the… the basic political detainees in East Germany and East Berlin. And we went there as a class once
+and they showed us all the things… all the techniques they used to interrogate prisoners, including
+torture. And one of the torture devices was I believe in a Japanese device where you would…
+it's retired. You… you put your head down on this device and there's a water that's dropping from
+the top onto your neck. So you think at this point like that doesn't sound too bad, right? The problem
+was is that the drops, you know, there's… there's a lot of viscosity in there. So, you know, a lot of
+kind of fluctuations so the drops wouldn't always come at the same time and it kept repeatedly happening.
+all time and time again. So what the… and the prisoners actually… people that used to be in prison,
+they were actually the ones giving the tour. So, they were telling us, yeah, if you're on the device
+after a couple hours or so, these drops will feel like hammers on your… on your neck. And apparently
+a big component of that was the… not… the body not being able to adapt to it because, you know, the
+drops don't come at a perfect five-second interval. It happens kind of at semi-fast,
+randomised intervals. So, that… I think there's a huge part in… and… and not just looking at
+stress over time but how you can adapt to that stress and… in order to adapt to stress. Adaptation
+to me always involves a component of prediction. If you can't predict the source of the stress when it
+happens, it makes things a lot worse. This has been shown extensively in humans and also in… in… in…
+lower organisms. And I believe very strongly that there's something fundamental to any biological
+system to fundamental drive. If you… if you… if you… if you… if you… if you… prescribed… if you
+described to the point of view that… minimizing uncertainty in your environment is a fundamental drive
+of life, then with that you prescribe that minimizing stress and the source of stress over time and being
+able to predict it is also fundamental and lack thereof makes a very dangerous system.
+Blue? Thanks.
+So… all that's super interesting. Just… okay. So let me… I'm going to start at the front and work
+backwards. So in terms of uncertainty and… how that's… causes stress… I'm really kind of… I don't know…
+reluctant to use the word stress in a biological system. Like… I think about stressing a biological
+system as like pushing it out of equilibrium. But… but… maybe that's just a stimulus, right? Like I
+want you to rebalance and go to like a new equilibrium. Like… or… or like… turn on heat shock protein. Or… you
+know… there's a variety of different things. Like… many ways you can view stress as a stimulus to
+do something new or to perturb the system in a new way. But… but in terms of uncertainty, I think that
+there's a lot of truth in… how uncomfortable people are with uncertainty like at a cognitive level. And
+you can even see it like in the stock market before like the election is in. Before the election results,
+like the… the stock market goes crazy. And… because nobody knows. I mean… it's not that one
+candidate is preferable over the other. But it's just the unknowing is very… like… people freak out. So… so… and that
+speaks… I think to metacognition also. And then… so… I wanted to back up a little bit if… if I can…
+to your discussion of information flow and how that might be difficult to quantify. And Daniel,
+I don't know… can you flip to the section for me please on… the generalized flow section? I think
+we started to get into that a little bit last week. And… we did discuss it in… in the dot
+zero. But I have… like… I know that this is very… mathematically technical. And so… I just have
+a little bit of… of questions about… this. And maybe… you can help explain it in a way that's
+perhaps less technical. But… specifically… information flow… and Chris Fields is coming… to discuss
+the FUP for generic quantum systems next week. And so… I can… I can similarly interrogate him about…
+about some of… of this stuff. And I'm looking forward to it. But… you know… we… we have a… a
+discussion… there's a discussion in the paper about the probability flow… and… information… like a…
+a… probability current… I think is actually what is used. And getting into… information currents… like
+if you look up what is an information current… I think… there's like the idea of the von Neumann… information
+current… and… that like is explicitly related to quantum systems. So… is there any similar… like… do
+we have a way to measure information current? Because even when Mike came to the live stream and talked about…
+expanding cognition… biological cognition… computational boundary of itself… there it was.
+Sorry. But when you expand biological cognition… like there's… you know… you're basically
+expanding your… informational awareness. And so… is there anything like an information current… or… how… can you best…
+relate that within a biological system? Is it like an expansion of… of… your computational boundary? Or… does it look like… just more… information… goes in… and comes out?
+I think it's… depends on… depends on… on… what level you're looking at. I would say it's both. So… the… the… the… the second part… you mentioned… right…
+the information… the information… comes in… and out. That's something we just have more access to… biologically speaking… experimentally… right?
+um… and you can absolutely… you know… you can… you can look at… you know… you have all these… uh… sensors… for… for… for… for… for… for… for… for… for… for… for… um… genetic… um… transcription…
+in response to that. So… so… so that's something that we can… you have the best chance of quantifying… experimentally…
+and… and… in terms of… computationally… is something you can monitor… and then… also… couple that… with… what… Chris… um… good thing you mentioned… that… because… and I can… relate to him…
+that's basically what… what he's also very interested in… right? Like… how… how… how… does physical energy… of course… played all… all… all… into this… in… in… in… in… in… in… in… metabolism… right?
+now… this comes for free… that's something that… biologists… often… kind of… um… not biologists… actually… no… theoretical…
+is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is… is
+because there's people locally competing with you.
+The same is true, right?
+I mean, this is always like when you talk to,
+when you talk to people that have problems,
+the idea of why does entropy,
+I don't wanna say names,
+but that saying that entropy is always increase
+if KRs in the universe increases,
+how do we see much more structure evolving?
+And then of course the answer to that is that,
+well, just like in a bath of water,
+if you have certain order outputs are gonna come together
+because overall that makes,
+that gives more degrees of freedom for all the water molecules.
+So the entire system entropy did increase,
+but you managed to find a solution that does increase that
+by locally creating more order.
+That's the drive of,
+or I think of life overall.
+The quote that probably,
+the talk that got me into biology is,
+was from a biophysicist in Heidelberg,
+was saying life is not about energy,
+it's for entropy.
+But the two come together, right?
+Yes, it's about how much information is available,
+but then by extent of that,
+once you are subscribed to that,
+once you have to form these localized structures,
+then energy becomes important again.
+So, and that's where I think is needed right now,
+when you have these highly spatially organized systems,
+energy suddenly does become something that is valuable again.
+So, yeah, I think I kind of lost my train of thought there.
+The, the boundary of self, that's right.
+The other information flow that was part of information flow,
+we can measure that.
+We have good ideas, what's lacking is,
+and a quantum understanding of,
+of, of how metabolism is really hooked into the information flow.
+Whether or not it's built into the model,
+whether it's ad hoc, just down the line,
+you give it certain resources,
+and after a while it just exploits them.
+The boundary of self is interesting,
+because, and of course in the cell,
+we think, well, we have a, you know, there's a membrane,
+the boundary of the self is fairly, fairly obvious.
+It's not actually as easy as that, I think.
+And of course, if you look at multicellular organisms,
+it becomes, you know, tissue scale,
+then that becomes a lot more difficult.
+But even on a cellular level,
+if you have certain receptors, you know,
+you have certain activations of it,
+then a model, any generative model,
+not just in the active inference scheme,
+but especially in the active inference scheme,
+you also have a model of yourself, right?
+And if, at what point your own,
+your own, what you're secreting on the owner,
+your signals that you secrete
+also feed back into what you're sensing after all.
+So it is kind of thought that that whole system
+is very much perturbing cancer cells as well,
+where the, how much, like, is it,
+is, are you actually receiving things from the environment?
+Are you basically just secreting and secreting
+and you don't really react to it anymore?
+So the, the boundary of self, what Mike,
+if Mike already talked about this,
+he will be, have been much more,
+I can be about this,
+but the idea is the boundary of self is encoded
+specifically with time and spatial constraints.
+So like how much your boundary of yourself,
+what your, your self model,
+be more general about this,
+your self model depends very much on your sensual,
+on your sensory memory.
+Like how, how far do you sense and how,
+and spatially, how much around you can sense,
+and how much back do you have encoded as memory?
+How much are effects in the past persisting?
+So that, you know, so even though if you have a cell,
+that's a certain membrane,
+if, if that cell does not actually keep any track,
+if that cell is not somehow sensing
+or beyond a certain boundary,
+and then it creates on boundary
+by these highly peripheral cells
+that are basically surrounding themselves with each other,
+and suddenly the environment becomes mute.
+So the boundary of the self has especially expanded,
+I would argue.
+So I think that's kind of the, the, the thought train here.
+I, I'm sure hope that was somewhere
+I would answer your question.
+Awesome. Blue?
+So just, I was curious,
+you mentioned that there was a talk
+that got you hooked into biology.
+Was it Eric Smith and his discussion of biology
+and entropy, because that's also fabulous.
+It was not, I'm real, just seeing that.
+And I was, damn, that's really embarrassing that the guy,
+I don't remember right now the name of the person
+that got me into biologies.
+It's, I'm speaking English right now,
+it's all in German back then.
+And always kind of my brain then has problems
+switching between those two in content,
+as well as language.
+I'll come back to me probably within this talk.
+Eric Smith does a wonderful job though,
+of, you know, discussing biology in terms of entropy.
+And so if you are not familiar with this work,
+I would just highly recommend it.
+Yeah.
+That really reflects on our discussion.
+What parts of the self model are important
+to carry forward?
+And then what are the affordances for direct
+and indirect self modification?
+So that's one piece.
+Like you mentioned the auto-crine signaling,
+and that's not even a contentious component.
+It just is being modeled in a different way
+with active inference,
+rather than just a molecular event that's happening,
+that like a cells secrete molecules
+that they also possess receptors to measure.
+It's just putting that into a framework
+of reflexive self modeling and stigmacy
+and niche modification here.
+So that's a very, very important point.
+But just one other point that I thought was really,
+maybe useful to highlight was this sensitivity.
+And just like many of the terms in active,
+we're kind of seeing that there is a narrow
+or a quantitative sense,
+and then there's a broader sense.
+Because in any dynamical systems model,
+you might hear about sensitivity of the parameter,
+which is how much changing that parameter
+changes the outcome of the system.
+And so that's a quantitative sense.
+And then also it was brought up
+that it's important to model these like second order
+derivatives, like how fast are things changing
+relative to expectations,
+or how fast are they changing how they're changing.
+And that is what the generalized flow is,
+is all those higher derivatives.
+So we can use that quantitative sense of sensitivity
+to look at how parameter changes
+in the generalized coordinates of motion matter.
+But also we can perhaps with cognitive modeling,
+take this discussion of sensitivity
+in the way that people are usually meaning it.
+Like sensitivity of what is seen
+on someone's emotional state,
+and then model that using cognitive parameters,
+like valence and affect,
+even though that's quite a disjoint use
+from the parameter sensitivity discussion
+on the generalized coordinates.
+So it was an awesome discussion with like,
+what is stress,
+and how does that relate to the parametric,
+sort of neutral perspective on what stress
+or sensitivity might mean,
+just the model descriptive,
+versus some of these functional
+or phenomenological even ways
+that these terms come into play?
+Blue?
+So that's super interesting,
+thinking about sensitivity and stress
+in just in terms of cognition, right?
+Like, so I know that like people
+that have sensory processing disorders
+get like super aggravated by something
+like a bright light or like a windy day
+and just how sensitivity does play into
+maybe the flow of information.
+Like, because, you know,
+I'm suddenly sensitive to this
+and I'm also sensitized
+to every other thing in my environment.
+Like someone's screaming over here
+and it's windy and it's hot and it's bright.
+And then like, I become just so overstimulated, right?
+Like people have these processing things
+and it's sensory,
+is that something that like has momentum, right?
+Like, so you have enhanced sensitivity
+and does that just like then all of a sudden
+you're just, you're so sensitive.
+Like we hear people say stuff like that.
+Like, stop being so sensitive.
+Just in terms of cognitive processing,
+I thought that that was just super interesting.
+I think that's an excellent point.
+I mean, that's something that shows exactly
+how important it is for humans.
+And again, I argue low levels as well
+in the evolution to be able to model our sensitivity,
+to change our sensitivity, right?
+We would never be able to have conversations
+in low environments
+if we couldn't change consciously our,
+and sometimes subconsciously as well,
+our sensitivity parameters.
+And I think that's something also
+that then also feeds into metacognition, right?
+You'll learn like, oh, well,
+I'm not paying attention enough.
+So something to pay more attention to,
+you're trying to tune this in.
+And I think that's the, in the sense of,
+on the cell level, I think where that feeds in is the,
+is by learning over time, right?
+But how much are being,
+how many receptors are being activated
+and how does that feed in downstream?
+Then there's this component
+where essentially the cell can up its sensitivity
+by expressing more receptors by,
+if it's not understanding its inputs,
+it can increase those proteins
+that are responsible for sensing these things.
+And there's also different,
+if you talk about iron channels specifically,
+and in the lab we work with that,
+there are different versions of iron channels
+that have different rate constants.
+The same is true for other,
+for active proteins as well, such as pumps.
+So that becomes a lot more,
+you know, explicitly modulating sensitivity over time
+in a way to, you know, better react
+and cope with, adapt to its environment.
+Again, adaptation, keep in mind,
+involves prediction in most cases.
+If not explicitly, then implicitly.
+Awesome.
+And by the way,
+the guy is Michael Hausmann in Heidelberg
+before I turn around my grave.
+Oh, that was the person coming to physics,
+and to biology, biophysics.
+Cool.
+Just to kind of connect that change in sensitivity
+to some of those mechanisms.
+So if it's the sensitivity to a given hormone
+or a given circulating molecule,
+then that sometimes gets accomplished biologically
+by changes in like the membrane receptor density
+or changes in downstream signaling pathways.
+So even if the amount of receptor
+in the membrane stays constant,
+it's like you can release more
+of the neurotransmitter in the synapse,
+or you could have more or less receptors,
+or you could have more or less
+of all these regulators
+and phosphorylating proteins, et cetera,
+in the downstream signaling pathways,
+because there's a lot of complexity in that space,
+but there's a lot of knobs,
+including rates of change
+and rates of rates of change
+and lag effects with transcription factors,
+and all this other,
+basically anything is possible.
+And then at the organism level,
+just to give one,
+and then anyone else maybe at some other level,
+like it's kind of like a nest mate ant
+being sensitive to interactions.
+And then a nurse who's a younger ant
+is like initially more susceptible
+or more sensitive due to multiple reasons,
+like at the antenna,
+at the brain,
+in just spatially where the nurse is.
+And then there's this development
+towards being a forager,
+being sensitive to forager cues,
+finding oneself in spaces
+where there are forager cues
+that are useful.
+So there's a lot of ways
+that these changes in the type
+of sensitivity,
+again, are already things
+that we talk about
+in developmental biology.
+And so it's so cool
+to see how that is connected
+to the molecular mechanism,
+the affective angle,
+and then with the underpinning
+of the generalized flow.
+Yeah, Dean?
+So you guys can push back
+on this hard if you want,
+but it's interesting.
+I think one of the terms
+that I coined
+was that stress programming,
+or at least programming
+with stress assumed
+was basically learning,
+either formally or informally.
+That's what it is
+because there's a certain amount
+of stress involved,
+be it positive or negative.
+But kind of through that viewfinder,
+I think it's interesting
+that back to the back and forth thing,
+stress programming can be safer
+or it can be riskier,
+as long as it's not
+sort of killing the learner.
+It's safer in the sense
+of as intervention.
+I think this paper
+showed that you can intervene,
+but riskier is as distribution,
+like sending something
+out into the unknown.
+It can be safer
+as teaching or taught.
+It can also be riskier
+as unteaching or untaught,
+sort of just sort of
+throwing somebody
+into a situation
+and see whether they can paddle
+or not.
+The last thing is
+it can also be seen
+as both modeling
+in the safer sense
+because we've reduced
+some of the variation,
+or it can also be riskier
+as in terms of coordinating,
+meaning the person
+has to kind of figure it out
+as they're flying the plane.
+So I wonder what you guys think.
+Do you think that,
+can we,
+is there some agreement
+that learning in general,
+be it formalized
+or informalized,
+has an aspect
+of stress programming
+that kind of is assumed
+or from my way out?
+Awesome question.
+Blue or Franz,
+what do you think?
+I don't think you're off.
+There's definitely,
+of course,
+some of the explicit
+incorporations
+of stress into learning,
+but your question,
+I think,
+is like,
+is it,
+is kind of always
+implicitly there,
+even if not explicitly?
+So one interesting
+kind of fact,
+this,
+because Blue mentioned earlier,
+that stress can be interpreted
+as like human perceived stress
+hormones,
+but can also just be like
+perturbation
+from equilibrium,
+from homeostasis.
+And they actually do
+kind of,
+this has been reached,
+this has been combined
+in homeostatic reinforcement learning
+where they kind of implicitly,
+explicitly make
+the reward
+and reward-based,
+you know,
+reinforcement learning
+about the homeostatic
+off point.
+And then stress
+becomes suddenly
+a lot more explicit
+in that sense
+of perturbation
+from your homeostatic
+set point.
+In the active inference
+scheme,
+stress is basically
+just your,
+you could just define it
+basically as your,
+you know,
+your overall
+difference.
+And again,
+like with those
+bands I was talking
+about,
+like how much
+is your,
+is your,
+is your private belief
+certainty changing?
+Are you minimizing
+uncertainty
+over time or not?
+it is,
+it is hard.
+I think it's hard,
+it's hard both
+to completely
+say stress
+is not involved
+and without
+saying that,
+well,
+you're just calling
+everything stress.
+So it kind of,
+it's really,
+it depends on what,
+how you define the stress.
+But if you think
+if you go,
+go with something
+like,
+as in like stress
+as you're not
+right now
+in an energy
+minimized state,
+you're not in a,
+an active inference
+scheme,
+or you're not
+in a,
+in a homosex
+set point
+in a more basic
+scheme,
+then stress is,
+I would argue,
+ubiquitous in learning.
+Yes,
+because without that,
+if you don't have
+a difference to that,
+if you don't actually,
+if you don't have
+any drive to learn
+because you're not,
+you know,
+you think you're,
+everything's perfect,
+then it's hard
+to,
+to have learning.
+So specifically,
+if learning is about
+with the environment
+and context,
+what is,
+what are you getting
+from your environment?
+Are you trying to adapt
+to it?
+Are you trying to learning
+in a sense of like adapt
+to it and find a certain
+equilibrium with it?
+Then I think stress
+becomes very much explicit
+and it's ubiquitous
+in learning.
+Okay.
+I just want to add one thing
+and that's perfect
+because I always talk
+about the minimum of two
+and I think you're,
+I think you're absolutely
+right, Franz.
+I think you have to then
+look at stress
+as being either voluntary
+or involuntary.
+I think that's the minimum
+of two that you have
+to look at
+because I think
+if you have voluntary stress,
+it's,
+it's,
+it's,
+it's measurably different
+than the involuntary type.
+So,
+yeah,
+you're right.
+I don't think it's,
+I don't think we can just
+throw under everything
+under one umbrella
+and make it a monolith.
+I think we have to partition
+it right from the very get-go
+and say,
+all programming,
+be it a curriculum,
+whatever,
+whatever the curriculum is
+that those stem cells have,
+that's,
+some of it's going
+to be voluntary
+and some of it's going
+to be involuntary
+based on the situation
+that they're,
+they're placed in.
+So,
+again,
+I wasn't trying
+to pull it in that direction
+but I didn't bring up stress
+but I really liked
+that it was brought up.
+So,
+okay,
+yeah,
+blue,
+blue.
+Sorry,
+so just
+from a
+neuroscience
+perspective,
+it's interesting,
+like the voluntary
+and involuntary
+stress thing
+is so different
+and I feel like
+maybe Daniel will remember
+we discussed that
+at some point,
+like when you're exposed
+to a stress
+that like you do
+to yourself on purpose,
+like your strength training
+or something like that
+versus,
+you know,
+some,
+some externally
+imposed stress
+that you didn't volunteer for.
+I think that that has
+a difference in affect.
+I feel like we looked
+at a paper,
+I can't remember
+off the top of my head though,
+but in terms
+of sensory processing,
+it's really interesting
+in neuroscience,
+we actually adapt,
+right?
+So,
+so you can listen
+to like your,
+you,
+this is a great example,
+like you turn
+on the car radio
+and like you're listening,
+jamming out in the car
+for,
+I don't know,
+a while,
+20 minutes,
+30 minutes
+and then suddenly
+it doesn't seem as loud
+and so you turn it up
+and then you're jamming out,
+jamming out,
+jamming out
+and still,
+it doesn't seem as loud
+so you turn it up
+because the same level
+of stimulus
+produces a decreasing sensation
+and that's true
+in terms of,
+you know,
+visual,
+like when you first
+turn on the light,
+you're like,
+oh,
+it's so bright
+but then you adapt
+and so in,
+in terms of sensory processing,
+we have a mechanism
+for adaptation
+and I wonder
+about actually cells,
+like not neurons
+because this is like,
+I'm specifically talking
+about like a sensory processing way
+but I wonder if cells
+do the same thing,
+I mean,
+I guess like,
+you know,
+the receptor shuts
+or the receptor's triggered
+and then it can't get activated again
+for some certain amount of time
+so even just receptor binding
+in and of itself
+is like an adaptation mechanism
+like you can't constantly
+like dump the chemical
+into the receptor,
+open the channel
+or whatever,
+like that's not
+like biochemically possible
+but I wonder if,
+you know,
+cells have some other
+adaptation mechanism
+outside of this
+like channel opening
+or closing
+or just this,
+is there more than
+like the mechanodynamics
+of the channel
+that enables
+cellular adaptation?
+I can think of a couple ones
+that I know
+we're an expert on this
+but there's,
+you can think of first
+on the epigenetic level
+if you basically just,
+you know,
+recruit more histones
+basically have a more
+tightly packed chromosome
+you're going to have
+less genetic expression
+no matter what
+kind of signaling input
+you get to the nucleus.
+That's one level
+I can think of it.
+Another one is
+mechanically
+so the right,
+most of the,
+I hope I'm not
+overgeneralizing
+but I think most of the,
+you know,
+signaling against
+that receptors are sensing
+and then has to be transported
+to the nucleus
+somehow to cause
+transcription.
+That is usually directed,
+right?
+That has to crack
+double-cross cytoskeleton
+so if you change
+the mechanical properties
+of the cytoskeleton itself
+and,
+again,
+yeah,
+I'm out of my league
+but that's something
+I could very well imagine
+to ask someone
+that's smart on me
+on that topic.
+lastly,
+it's,
+if you talk in the intercell,
+intercellular context
+then,
+you know,
+things like,
+you know,
+what we,
+in neuronal context
+you have these,
+you know,
+the synapses
+in the non-neuronal context
+you still have gap junctions
+and other complexes
+that basically allow
+transport between cells
+and those can also
+be modulated
+by the cell
+so then there
+you can also get
+habituation
+and definitely
+know of examples
+where people
+have shown habituation
+and even other
+there's active research
+on showing
+that there's more
+habituation
+but also actually
+the learning
+of a certain pattern
+as well.
+I think that's true.
+So I'm really interested
+in the cytoskeleton
+because a lot of,
+you know,
+I mean,
+the receptors
+are in the membrane
+embedded in the membrane
+but we don't really,
+there's not a lot of work
+that looks at
+like the cytoskeletal dynamics
+with respect to
+like modulation
+of receptor dynamics,
+right?
+So like that's a field
+that I think
+or I haven't seen
+very much work
+in terms of
+how does the underlying
+cytoskeleton
+contribute to the properties
+of the membrane
+and how a cell
+might be behaving
+and just in terms of like,
+you know,
+things having to get
+into the nucleus,
+I don't know.
+I'm iffy on that one.
+I think,
+and it's just
+because I did
+very early work
+like transfecting cells
+in a variety
+of different ways
+and, you know,
+to get a gene
+into the cell
+to get the cell
+to express the gene,
+you have to get it
+through the nucleus,
+right?
+How does it get
+into the nucleus?
+Like nobody can answer you.
+So like if it doesn't
+have a nuclear target on it,
+like how is it going?
+So is it just like
+osmosing itself through
+or like just
+how is that
+exactly happening?
+And so you call the vendor
+like,
+oh,
+I'm trying to use your product
+whether you're
+electroporating
+or, you know,
+using some kind
+of lipid mediated
+transduction,
+they don't know.
+They have no idea actually.
+So it's just
+a super interesting
+prospect.
+And I think that
+in terms of both that
+and the cytoskeleton,
+there's a lot of like
+dynamic remodeling
+that occurs
+during cell cycles,
+right?
+Like during the phases,
+you know,
+like when a cell is dividing
+and growing
+and becoming two cells,
+there's,
+and so like the nuclear
+membrane
+point,
+but in terms of terminally
+differentiated cells
+like a neuron
+or something
+that's not undergoing,
+you know,
+constant change
+and remodeling,
+it's curious to see
+how that can happen.
+And I'm interested
+if anybody has any,
+any good like
+hardcore mechanistic papers
+that you want to point
+out to me
+or if anybody listening
+in the live stream
+wants to drop them
+in the YouTube chat,
+I would really love
+to take a look at them.
+Bill.
+I really like Dean
+returning to this
+idea that
+there's the,
+there's a continuum
+or there's multiple
+archetype dimensions.
+So not that it's all
+going to map on to just two,
+but we know it's
+at least locally
+going to be at minimum two
+that there's the kind of
+one mode of
+interacting
+in an educational
+or training setting
+with a teaching
+and a taught
+that could still be
+in an interactionist
+or an instructionist
+way
+versus the unteaching
+and the untaught.
+So that's
+the difference
+between the athlete
+having their form
+like observed
+and a type feedback
+versus when they're
+on a sojourn
+away from that
+sort of a training
+context.
+And so there's like
+an environment
+or there's a setting
+where there's
+some kind of
+stress as fundamental
+and then
+there's another
+type of environment
+where the different
+kind of stress
+is fundamental
+and then
+Franz,
+it was an awesome
+point
+moving from that
+basic homeostatic
+framing
+where stress
+is usually
+considered at the
+first derivative
+or the state.
+So it's like
+for a thermo
+organism,
+thermal stress
+is going to be
+when it's hot
+or cold
+and then that's
+going to be
+like a bowl
+or it's a V
+or it's a bathtub
+or it's some other
+thermal stress curve.
+It's about temperature.
+Moving into the
+generalized coordinates
+of motion
+with temperature
+and change of
+temperature
+and change of
+change of temperature
+so all the higher
+derivatives of temperature
+that expands
+the space a lot
+because maybe it's
+possible that a
+temperature that you
+slowly reach
+like over
+10 years
+is a different
+amount of stress
+than just jumping
+there instantly.
+Time matters
+and so the rates
+of change
+captures that
+time dependence
+in an instance
+with a snapshot
+vector.
+So that's sort
+of the formal
+use of how
+we can
+look beyond
+just the stress
+on temperature
+and then
+we introduce
+the whole
+cognitive stress
+because you said
+well for the
+active inference
+entity
+this is sort
+of like the
+first
+resonance
+and this is
+the one
+whose
+violation
+of integrity
+results in
+physical death
+but then
+stress
+moves to
+higher
+or different
+analogous
+settings
+and that
+could be
+how fast
+am I
+learning
+and as
+pointed out
+by Dave
+in the chat
+and by Dean
+and others
+like it really
+matters whether
+somebody has
+agency
+or affordances
+to change it
+and so my
+closing point
+there with
+the voluntary
+involuntary
+is like
+grad school
+and stress
+because
+or any
+research
+or any
+educational
+environment
+but one
+that many
+people experience
+is like
+it can be
+stressful
+it's also
+a very
+often
+privileged
+setting to
+be in
+and one
+is taken
+care of
+sometimes
+in a way
+that even
+like neighbors
+won't be
+and so that
+is something
+that like
+I saw
+first and
+second hand
+and just
+thinking about
+the stress
+it's like
+why is it
+stressful
+to just
+read a few
+papers
+some days
+or something
+like that
+so just
+kind of
+interesting
+with what
+is voluntary
+and involuntary
+how we
+commit ourselves
+to different
+kinds of
+stress
+of what
+kind
+it's like
+well I
+wanted it
+to be
+novel
+but not
+that
+novel
+and how
+we actually
+make those
+action
+selections
+in
+uncertain
+environments
+blue
+so just
+to add
+on to
+the
+voluntary
+versus
+involuntary
+like grad
+school is
+an entirely
+voluntary
+endeavor
+obviously
+but like
+high school
+is not
+and like
+I dropped
+out of high
+school at
+16
+like as soon
+as I was
+old enough
+to drop
+out I was
+like I'm
+out
+like I'm
+not doing
+this compulsory
+regimented
+program
+like sorry
+no regrets
+right
+like I started
+college
+obviously
+have a PhD
+like did
+well
+but it's
+the difference
+versus
+involuntary
+versus
+voluntary
+like when
+it's
+compulsory
+it becomes
+torture
+like
+I mean
+just my
+two sets
+we had
+an interesting
+discussion
+about
+computation
+group
+recently
+about
+you know
+this whole
+idea of
+how do you
+quantify
+any kind
+of agency
+and
+Josh
+in that
+context
+brought up
+this idea
+instead of
+talking about
+agency
+which is
+hard to
+quantify
+you can
+talk
+about
+empowerment
+and
+in the
+computational
+sense
+empowerment
+is about
+how much
+do your
+actions
+how much
+can
+your
+actions
+influence
+your
+sensations
+again this
+makes
+very clear
+an active
+influence
+scheme
+right where
+you have
+this
+market
+so
+to
+build an
+example
+right
+if you
+if you
+don't
+if there's
+no actions
+you can
+take
+to change
+it
+that's
+you know
+we can
+think about
+it as
+natively
+stressful
+but we
+can also
+define that
+fairly
+clearly
+in a
+computational
+sense
+using
+something
+like
+empowerment
+so
+it's
+and that
+again I like
+that you brought
+this up
+because this
+drives home
+the point
+that a lot
+of these
+fundamental
+things we
+understand
+about stress
+in human
+context
+anyone that's
+ever dealt
+with depression
+or people
+that suffer
+from depression
+knows that
+it's never
+really about
+the
+the
+the
+objective
+total amount
+of stress
+but how it's
+being perceived
+by that person
+and I think
+this empowerment
+helps a lot
+this definition
+empowerment
+helps a lot
+to understand
+that better
+how much
+control
+you have
+over that
+there's other
+things that
+of course
+we enter
+that
+but it also
+makes
+then fairly
+clearly
+that the
+same
+a lot
+of the
+fundamental
+principles
+must hold
+true
+in lower
+organisms
+as well
+because
+these definitions
+are of course
+you know
+as soon as
+you prescribe
+actions
+of course
+you can argue
+that there's
+no real
+actions
+in cell
+biology
+then that's
+okay
+that's just
+then don't
+want to talk
+about that
+level
+but if you
+do look
+at active
+states
+in a
+cellular
+context
+then you
+do get
+then you
+can fairly
+simply
+in an
+active
+inference
+scheme
+but other
+ones as
+well
+define
+empowerment
+measure
+empowerment
+over time
+by looking
+at how
+actions
+actually
+change
+the
+sensory
+states
+of the
+cell
+and then
+definitions
+of stress
+from that
+point of view
+also become
+fairly
+explicit
+can i
+ask you a
+question
+yeah i can
+ask you a
+question because
+you mentioned
+in the when
+you were with
+us in the
+point one
+for a bit
+there and i
+don't know if
+you mentioned
+it today
+you said
+you went
+to mark
+i think
+and you
+said i want
+to do
+something
+cool
+we're going
+to bring
+this back
+to the
+voluntary
+and involuntary
+piece
+and then
+he
+and then
+i think
+he said
+i think
+you said
+i'd never
+heard of
+active
+inference
+before
+i was
+pointed in
+that
+direction
+to carl's
+lab
+so
+in the
+in the
+in the
+context
+of what's
+voluntary
+and involuntary
+when you
+when you
+when you
+said i want
+to do
+something
+cool
+that sounds
+like you
+wanted to
+do
+something
+voluntarily
+then you
+got
+then you
+got this
+deep dive
+into
+active
+you
+pushed
+that
+up
+against
+your
+biology
+background
+which is
+something
+that
+you've
+obviously
+done
+because
+you
+like
+it
+right
+and you
+wanted
+to
+finish
+off
+so
+so
+going
+forward
+now
+that
+that
+voluntary
+piece
+that got
+you
+into
+the
+active
+inference
+what
+do
+you
+see
+the
+active
+inference
+doing
+in terms
+of
+this
+empowerment
+question
+because
+Daniel's
+written
+out
+here
+with
+a
+question
+mark
+behind
+it
+so
+how
+do
+you
+feel
+
+more
+I'm
+just
+curious
+what
+you
+think
+now
+in
+terms
+of
+what
+sort
+of
+empowerment
+you've
+sort
+of
+become
+in
+the sense
+that
+now that
+you've
+got
+this
+sense
+of
+what
+active
+inference
+can
+do
+and
+what
+some
+of
+these
+math
+formalisms
+provide
+and
+what
+the
+statistical
+world
+bridges
+what
+do
+you
+think
+in
+going
+forward
+in
+terms
+of
+the
+reapplication
+of
+what
+you
+what
+you
+pulled
+out
+of
+a
+different
+bucket
+and
+then
+set
+down
+in
+the
+bucket
+that
+you're
+most
+familiar
+with
+so
+you
+mean
+like
+what
+I
+pull
+that
+on
+a
+personal
+level
+like
+for
+my
+life
+decisions
+yeah
+like
+when
+you're
+going
+to
+be
+going
+forward
+and
+trying
+to
+use
+that
+active
+inference
+sense
+in
+terms
+of
+some
+of
+those
+decisions
+and
+what
+kind
+of
+environments
+do
+you
+think
+you
+see
+yourself
+projecting
+yourself
+into
+that
+you
+may
+not
+have
+projected
+yourself
+into
+prior
+to
+sort
+of
+engaging
+or
+encountering
+or
+exposing
+yourself
+to
+active
+inference
+inference
+that's
+a
+question
+I
+think
+in
+the
+end
+it
+
+it
+it
+my
+wife
+and
+I
+we
+both
+love
+this
+word
+serendipity
+which is
+the
+concept of
+happy
+accidents
+which
+there's
+all kinds
+of
+connotations
+but
+in
+active
+inference
+scheme
+or
+any
+you
+know
+when
+you
+look
+at
+what
+is
+the
+information
+from
+you
+what
+the
+idea
+is
+that
+you
+if
+you
+have
+tumor
+if
+you
+have
+so
+it's
+going
+to
+!
+very
+strong
+beliefs
+then
+whatever
+you
+if
+you
+are
+confining
+yourself
+and
+you
+don't
+allow
+variances
+to
+change
+your
+mind
+then
+you're
+almost
+always
+going
+to
+be
+upset
+because
+you
+never
+you
+know
+your
+precision
+is
+too
+high
+right
+there's
+a
+paper
+going to
+be
+coming
+out
+soon
+about
+this
+collaborator
+as
+well
+looks
+about
+precision
+in
+this
+context
+as
+well
+so
+that's
+something
+that
+any
+active
+inference
+model
+will
+know
+that
+you
+have
+to
+keep
+that
+in
+mind
+your
+precision
+for
+me
+personally
+it
+really
+is
+an
+idea
+of
+like
+I
+think
+every
+there's
+not
+an
+idea
+by
+myself
+any
+stretch
+but
+any
+human
+tells
+stories
+about
+the
+environment
+but
+most
+about
+themselves
+and
+the
+storytelling
+is
+in
+my
+sense
+nothing
+else
+than
+doing
+a
+model
+and
+making
+a
+generative
+model
+and
+setting
+that
+so
+I
+think
+for
+me
+I
+am
+too
+young
+to
+be
+giving
+life
+advice
+but
+for
+me
+to
+achieve
+any
+kind
+of
+happiness
+you
+have
+to
+be
+careful
+of
+what
+story
+you
+tell
+about
+yourself
+and
+how
+strictly
+you
+can
+find
+that
+on
+things
+and
+there
+is
+definitely
+advantage
+to
+yourself
+I
+think
+personally
+I've
+always
+had
+better
+luck
+personally
+I
+think
+by
+not
+letting
+not
+define
+that
+too
+strictly
+and
+really
+looking
+into
+what
+your
+environment
+throws
+at
+you
+and
+I
+think
+that
+helps
+and
+I
+know
+personally
+people
+that
+have
+a
+very
+hard
+time
+with
+that
+and
+that
+have
+very
+strong
+modeled
+so
+if
+you
+know
+I'm
+going
+to
+get
+married
+at
+that
+age
+and
+do
+this
+and
+that
+and
+then
+when
+things
+don't
+happen
+that
+way
+I
+think
+it
+leads
+to love
+and
+happiness
+so
+in that
+context
+what can
+I do
+for you
+I mean
+I
+think
+it
+makes
+things
+explicit
+that
+we
+all
+hear
+about
+some
+level
+and
+psychology
+things
+just
+people
+giving
+you
+advice
+parents
+I
+don't
+want
+to
+say
+you
+need
+any
+of
+those
+insights
+you
+can
+get
+this
+lots
+of
+ways
+but
+what
+I
+like
+about
+that
+inference
+scheme
+it
+makes
+the
+it
+makes
+the
+biology
+the
+biggest
+advantage
+you
+get
+a
+very
+explicit
+structure
+about
+information
+flow
+for
+very
+simple
+systems
+and
+because
+it's
+been
+primarily
+applied
+in
+neurosciences
+you get
+for us
+intuitive
+results
+from that
+what happens
+if you
+have
+try
+precision
+what
+happens
+if
+your
+energy
+isn't
+being
+minimized
+all
+these
+things
+I
+can
+fairly
+easily
+explain
+that
+in
+the
+context
+of
+human
+behavior
+because
+that's
+been
+applied
+and
+we
+all
+have
+true
+understanding
+but
+I
+think
+there's
+for
+the
+biology
+point
+of
+view
+there's
+a lot
+of
+things
+we
+can
+learn
+from
+that
+if
+you
+look
+at
+the
+mathematical
+definitions
+then of
+course
+you deal
+with the
+baggage
+that you
+get
+from
+the
+neuroscience
+which
+you have to deal
+a lot
+with
+which is
+fair
+but for
+your life
+I think
+it just
+helps
+you
+once
+you see
+really
+how
+much
+study
+has
+been
+put
+into
+mis
+inference
+bad
+inferences
+and of
+course
+people
+doing
+tests
+in
+an
+actual
+inference
+scheme
+about
+psychological
+behavior
+tasks
+states
+then
+I think
+that's
+one lesson
+I can
+definitely
+learn from
+that
+if I
+hadn't
+already
+is that
+be mindful
+of
+your
+price
+be mindful
+of
+the
+rate
+of
+change
+like
+what are
+you
+stressed
+out
+about
+right
+now
+what's
+the
+worst
+uncertainty
+coming
+from
+and
+how
+much
+should
+that
+throw
+you
+off
+right
+and
+this
+is
+in a
+sense
+to
+bring
+all
+this
+home
+a
+little
+bit
+the
+biggest
+limitation
+of
+any
+algorithm
+of
+any
+model
+is
+that
+you
+are
+defining
+the
+model
+beforehand
+not
+just
+an
+active
+inference
+scheme
+but
+any
+there's
+papers
+that
+come
+out
+that
+criticize
+the
+idea
+of
+artificial
+generalized
+intelligence
+because
+you
+always
+have
+predefined
+model
+and
+life
+on
+that
+sense
+but
+that
+definition
+does
+not
+do
+that
+life
+always
+in
+biological
+systems
+evolution
+generates
+a bunch
+of
+diversity
+in
+its
+background
+and
+from
+that
+they
+pick
+the
+best
+path
+constantly
+evolve
+the
+generative
+model
+so
+that's
+kind
+of
+limitation
+of
+any
+other
+algorithm
+which
+can
+be
+overcome
+by
+changing
+different
+algorithms
+together
+by evolving
+systems
+by having
+models
+make
+models
+there's
+some
+cool
+work
+on
+that
+too
+but
+that's
+something
+you
+need
+to
+take
+both
+computationally
+scientifically
+but
+personally
+take
+in
+mind
+of
+at what
+point
+do
+you
+change
+your
+own
+model
+and
+allow
+for
+flexibility
+that's
+what
+makes
+human
+right
+now
+still
+that's
+one
+of
+the
+soft
+acts
+that makes
+humans
+superior
+I would
+say
+to any
+kind of
+algorithm
+right now
+is because
+they all
+come
+predefined
+with a lot
+of the
+hard
+model
+again
+I'm
+saying
+this
+now
+I also
+don't
+actually
+agree
+with
+that
+100%
+I don't
+actually
+believe
+in
+fundamental
+differences
+between
+different
+intelligences
+but
+that's
+something
+that
+at least
+intuitively
+makes
+sense
+to
+whether
+or
+not
+that's
+true
+scientifically
+I have
+my
+points
+but
+that's
+going
+off
+the
+rails
+awesome
+wow
+a few
+things
+like we
+often
+talk
+about
+concordances
+with
+different
+systems
+and
+it
+brings
+the
+cognitive
+apparatus
+that was
+developed
+for
+humans
+and
+starts
+to
+at least
+instrumentally
+if not
+from a
+realism
+perspective
+also
+project
+that
+and so
+it
+allows
+as a
+trans
+discipline
+people
+to
+talk
+about
+systems
+and
+map
+their
+analogies
+and
+models
+in a
+way
+that
+would
+help
+us
+find
+the
+resonances
+between
+cellular
+metabolism
+and
+economics
+kind of
+taking a
+vague
+feeling
+like those
+might have
+some
+similarities
+into
+using
+the same
+notation
+terms
+forms
+etc
+so that's
+one very
+interesting
+piece about
+active
+inference
+and
+also
+the
+limitations
+in terms
+of
+at
+what
+order
+and
+how
+much
+time
+and
+attention
+is
+allocated
+to
+this
+structural
+aspect
+and
+how
+many
+different
+families
+of
+structures
+are
+provided
+and
+then
+to
+your
+well
+communicated
+uncertainty
+about
+if and
+how
+biology
+is
+different
+from
+other
+kinds
+of
+processes
+that's
+an
+awesome
+question
+especially
+connecting
+back to
+your
+point
+about
+the
+reservoir
+of
+energy
+versus
+how
+locally
+there
+can
+be
+a
+different
+energy
+or
+entropy
+balance
+so
+it's
+almost
+like
+there
+might
+be
+little
+pieces
+that
+can
+be
+mapped
+to
+digital
+signal
+processing
+with
+super
+high
+fidelity
+and
+that
+will
+be
+taken
+as
+a
+win
+for
+the
+realists
+and
+then
+there
+might
+be
+other
+parts
+where
+the
+instrumentalism
+bridges
+because
+we're
+just
+making
+a
+model
+of
+this
+one
+smaller
+thing
+and
+this
+one
+larger
+thing
+and
+then
+in
+cases
+where
+this
+is
+fully
+computationally
+defined
+or
+fully
+described
+then
+there's
+like
+a
+case
+for
+a
+real
+what
+does
+empowerment
+look like
+at
+maybe
+like
+a
+lower
+organismal
+level
+or
+even
+like
+a
+cellular
+level
+how
+like
+is
+cellular
+behavior
+or
+lower
+organism
+behavior
+like
+voluntary
+versus
+compulsory
+and
+like
+is
+there
+a
+way
+to
+measure
+that
+like
+obviously
+like
+you can
+trap
+an
+animal
+in
+a
+box
+and
+frequently
+like
+you know
+will
+try to
+get out
+but
+if
+you
+don't
+it
+would
+it
+go
+into
+the
+box
+and
+hang
+out
+there
+like
+does
+that
+happen
+maybe
+I don't
+know
+does
+anybody
+know
+of
+any
+examples
+of
+like
+what
+empowerment
+looks like
+at
+like
+that's
+just
+it's
+a super
+interesting
+concept
+to me
+in the
+in the
+sex
+if you
+take
+that
+definition
+of
+how
+much
+your
+actions
+change
+your
+sensory
+perceptions
+then
+definitely
+definitely
+you
+I would
+if
+once
+you
+have
+a
+definition
+it's
+of
+course
+built
+on
+what
+your
+actions
+are
+and
+that
+is
+fairly
+easy
+because
+you
+don't
+have
+to
+go
+into
+this
+route
+but
+it's
+voluntary
+not
+you
+just
+something
+you
+know
+you
+look at
+the
+flow
+of
+states
+your
+marker
+blanket
+which
+you
+can
+show
+forms
+naturally
+which
+car
+is
+shown
+and
+then
+from
+that
+point
+of
+you
+once
+you
+have
+active
+states
+then
+you
+can
+measure
+that
+fairly
+easily
+so
+as
+example
+I
+would
+argue
+if
+cells
+actually
+interact
+with
+each
+other
+and
+really
+change
+other
+cell
+types
+here
+is
+a great
+example
+morphogenesis
+is traditionally
+fairly
+established
+driven by
+large
+organizing
+and
+it's
+always
+a
+subgroup
+of
+cells
+that
+will
+drive
+the
+ones
+I
+would
+argue
+then
+that
+those
+cells
+are
+probably
+very
+much
+in
+power
+because
+their
+actions
+cause
+differentiation
+of
+cells
+around
+them
+which
+then
+will
+very
+much
+and
+they
+are
+going
+to
+do
+certain
+expression
+of
+cell
+types
+well
+so
+then
+that
+will
+they
+have
+action
+very much
+control
+that
+whereas
+the
+receiving
+end
+have
+a
+low
+impact
+because
+their
+own
+signaling
+probably
+isn't
+really
+because
+they
+often
+just
+don't
+have
+that
+they
+don't
+make
+a lot
+of
+that
+signaling
+cell
+that
+it's
+being
+organizing
+element
+so
+they
+have
+a
+lower
+let's
+think
+of
+that
+you
+asking
+me
+what
+anyone
+yeah
+what
+as
+our
+guest
+or
+anyone
+else
+is
+welcome
+to
+whether
+to
+go
+I
+personally
+like
+to
+get
+to
+where
+there
+comes
+more
+than
+kind
+of
+quality
+of
+like
+making
+actual
+like
+instead
+of
+just
+like
+making
+these
+models
+of
+active
+inference
+you
+can
+measure
+on
+the
+hand
+if
+you
+can
+really
+map
+those
+two
+together
+right
+like
+in
+the
+sense
+that
+I
+mean
+a lot
+of
+work
+went
+into
+this
+whole
+SPM
+software
+that
+they
+developed
+in
+London
+and
+at
+this
+point
+you
+actually
+can
+get
+fMRI
+data
+and
+then
+you
+can
+do
+dynamic
+causal
+models
+and
+you
+can
+really
+postulate
+different
+causal
+models
+and
+do
+a
+Bayesian
+belief
+updating
+you
+can
+do
+hypothesis
+that
+you
+see
+if
+we
+get
+to
+that
+level
+in
+a
+morphogen
+for
+example
+and
+get
+the
+high
+fidelity
+images
+of
+a
+developing
+embryo
+that
+you
+would
+get
+over
+time
+get
+signals
+that
+you
+can
+measure
+and
+feedback
+into
+your
+model
+and
+really
+make
+really
+test
+of
+what
+cause
+a
+model
+like
+what
+structure
+would
+have
+caused
+these
+sensations
+that
+you
+that
+you
+receiving
+that
+would
+be
+a
+huge
+step
+forward
+and
+microscopy
+great
+advance
+on
+that
+one
+example
+I can
+give
+is
+a
+friend
+of mine
+works
+on
+that
+Dimitri
+Krum
+and
+he used
+to be
+in
+Heidelberg
+and he
+was
+light
+sheet
+microscopes
+there's
+a lot
+of
+other
+groups
+he's
+a
+master
+student
+PhD
+student
+so
+I'll
+know
+about
+that
+from
+him
+but
+there's
+groups
+that
+do
+high
+fidelity
+light
+sheet
+from
+two
+sides
+really
+nice
+like
+near
+confocal
+resolution
+but
+with
+high
+temporal
+resolution
+of
+their
+organism
+doing
+the entire
+process
+of
+you know
+from
+castellation
+further on
+that's
+you could
+collect
+where you
+can really
+start to
+make
+postulate
+up
+cause
+in an
+active
+inference
+framework
+and then
+they
+basically
+retest
+where's
+the
+actual
+palm
+there
+and you
+can
+retest
+the idea
+that we
+already
+have
+as
+mentioned
+as I
+mentioned
+in
+morphogenesis
+and retest
+out how
+much
+that fits
+into
+our
+notions
+of
+update
+in
+actions
+I
+would
+love
+to
+see
+that
+in
+my
+lifetime
+wow
+super
+awesome
+so
+just
+to
+kind
+of
+restate
+that
+SPM
+has
+been
+developed
+in
+the
+capacity
+of
+behavioral
+neuro
+imaging
+and
+so
+it
+allows
+a
+combination
+of
+observable
+features
+such
+as
+what
+button
+somebody
+pressed
+or
+what
+image
+somebody
+was
+shown
+and
+also
+observable
+features
+of the
+environment
+like
+the
+measurements
+coming
+in
+off
+of
+the
+EEG
+or
+the
+FMRI
+or
+the
+MEG
+and
+it
+allows
+integrated
+modeling
+of those
+different
+kinds
+of
+parameters
+along
+with
+the
+dynamical
+causal
+modeling
+on
+the
+underlying
+dynamic
+system
+identification
+and
+there's
+a lot
+more
+in
+the
+SPM
+documentation
+on
+that
+and
+so
+ACDIMPH
+here
+along
+with
+some
+advances
+in
+for
+example
+the
+ability
+to
+look
+at
+the
+process
+of
+embryogenesis
+and
+track
+cellular
+location
+for
+a
+whole
+organism
+developing
+through
+time
+then
+that
+can
+be
+fit
+as
+if
+those
+are
+the
+fMRI
+measurements
+of
+this
+embryo
+SPM
+and
+then
+the
+underlying
+
+mechanics
+of
+development
+like
+a
+hypothesized
+morphogen
+gradient
+or
+a
+known
+or
+hypothesized
+mechanical
+relationship
+that's
+part of
+the
+model
+that's
+like
+the
+underlying
+neural
+systems
+model
+in
+SPM
+and
+so
+it's
+kind
+of
+a
+great
+dream
+but
+if it
+can be
+stated
+if
+it's
+likely
+to
+exist
+sounds
+like
+you're
+taking
+some
+actions
+that
+will
+reduce
+your
+surprise
+about
+it
+yeah
+pretty
+cool
+so
+on the
+microscopy
+note
+I'm
+like
+getting
+ready
+to
+receive
+and
+set
+up
+IO
+AFM
+I'm
+really
+looking
+forward
+to
+like
+the
+multi
+parametric
+capability
+of
+like
+I
+can
+look
+structures
+top
+left
+also
+like
+do
+fluorescence
+imaging
+so
+I'm
+really
+excited
+to
+have
+the
+affordances
+available
+on
+this
+same
+like
+the
+micro
+advances
+are
+great
+like
+I've
+used
+an
+AFM
+book
+and
+you
+know
+it
+gives
+you
+the
+biomechanics
+of
+sample
+but
+not
+not
+it's
+I've
+never
+also
+been
+able
+to
+look
+at
+the
+sample
+you
+just
+the
+mapping
+without
+being
+able
+to
+see
+it
+so
+I'm
+really
+excited
+to
+be
+able
+to
+see
+and
+measure
+what's
+going
+on
+in
+a
+cell
+that's
+the
+skeleton
+parameters
+that was
+discussing
+earlier
+about
+how
+that
+you
+know
+manipulates
+or enables
+a cell
+to do
+different
+things
+cool
+cool
+let's
+look
+at
+any
+other
+things
+or
+also
+we
+can
+sort
+of
+give
+a
+closing
+round
+whatever
+people
+feel
+like
+so
+one
+thing
+I'd
+like
+to
+find
+really
+about
+the
+aberrant
+signaling
+figure
+so
+I
+don't
+think
+we
+went
+into
+figure
+five
+very
+much
+last
+time
+in
+the
+dot
+one
+and
+maybe
+you
+could
+talk
+about
+the
+aberrant
+signaling
+rescue
+kind of
+unpack that
+for us
+in your
+own words
+we're not
+seeing the
+slides
+anymore
+also
+Daniel
+I don't
+know if
+you know
+that
+or I'm
+not
+yeah
+it's
+also
+kind
+of
+lagged
+on
+YouTube
+so
+I'm
+recording
+it
+I'll
+reupload
+like
+the
+high
+quality
+one
+it's
+kind
+of
+like
+weird
+it's
+a
+normal
+video
+chat
+but
+the
+YouTube
+stream
+link
+is
+like
+disrupted
+but
+c'est la vie
+yeah
+so
+actually
+if you
+don't
+see
+the
+I'm
+showing
+figure
+five
+even
+though
+you
+can't
+see
+it
+so
+just
+oh
+yeah
+or
+I
+see
+okay
+we
+can
+do
+that
+too
+yes
+that's
+good
+great
+and
+thank
+you
+awesome
+yes
+so
+the
+so
+this
+is
+the
+the
+top
+release
+the
+non
+stimulation
+this
+reference
+right
+you start
+off
+with
+these
+eight
+cells
+in
+the
+beginning
+and
+kind
+of
+have
+this
+vague
+very
+specified
+low
+prior
+belief
+of
+what
+type
+they
+are
+and
+as
+they
+move
+out
+that
+intensity
+changes
+so
+the
+hue
+tone
+here
+means
+that
+they're
+now
+more
+the
+more
+sure
+they
+are
+of
+being
+this
+head
+type
+cell
+or
+in
+case
+the
+B
+where
+one
+cell
+which
+you can
+see
+!
+have
+been
+out
+that
+had
+reduced
+sensitivity
+to
+movement
+264
+basically
+had a
+really hard
+time
+basically
+first of all
+it was
+much
+longer
+unspecified
+than its
+neighbors
+were
+and in
+the end
+it achieves
+actually
+it gets
+wrong
+cell type
+race
+not only is it
+at a wrong
+position
+there's
+no
+cell
+in
+the
+original
+one
+at that
+place
+and
+even
+were
+you
+expected
+to be
+either
+yellow
+red
+or
+somewhere
+in
+between
+but not
+blue
+as it
+is
+down
+here
+so
+the
+sensation
+of
+a cell
+of a
+cancer
+is
+I
+term
+this
+that
+way
+because
+I
+think
+that's
+basically
+the
+first
+step
+in
+cancer
+initiation
+is
+mis
+identification
+of your
+environment
+and
+your
+place
+in
+it
+right
+the
+original
+paper
+from
+Carl
+was
+called
+knowing
+one's
+place
+the
+cell
+definitely
+does not
+know
+its
+place
+so
+this
+goes
+in
+and
+then
+here
+is
+where
+you
+have
+basically
+the
+same
+as
+above
+but
+the
+overall
+not
+just
+the
+absolute
+flow
+of
+actually
+signaling
+to
+one's
+cells
+is
+to
+get
+to
+that
+has
+been
+upregulated
+so
+that
+each
+cell
+basically
+now
+drives
+more
+concentrations
+of
+cells
+to
+that
+cell
+and
+basically
+kind
+of
+tries
+to
+compensate
+for
+that
+that
+all
+the
+sensitivity
+and what
+happens
+that
+I
+expect
+at all
+is
+that
+you
+have
+um
+if a
+cell
+contracting
+with it
+more
+here
+so
+you
+don't
+see
+that
+so
+much
+yet
+you
+
+see
+this
+cell
+that
+kind
+of
+initially
+would
+normally
+gone
+down
+more
+cell
+push
+out
+in
+the
+end
+here
+what
+happened
+the
+words
+is
+that
+were
+put
+into
+most
+of
+signaling
+concentration
+and
+allowed
+arrangement
+and
+allowed
+this
+cell
+to
+retake
+a
+place
+that
+is
+conform
+what
+you
+see
+in
+the
+target
+morphology
+and
+what
+I
+always
+when I
+talk about
+this
+figure
+and
+both
+figures
+really
+is
+you
+do
+not
+in
+the
+simulation
+at
+any
+point
+in
+time
+change
+target
+morphology
+all
+the
+actual
+encoding
+was
+exactly
+the
+same
+so
+what
+they're
+expecting
+and
+where
+they're
+expecting
+is
+exactly
+the
+same
+and
+that
+I
+think
+is
+where
+I
+see
+the
+fundamental
+promise
+of
+this
+work
+that
+you
+don't
+always
+want
+to
+change
+the
+code
+we
+know
+that
+we
+have
+higher
+value
+we
+ever
+had
+and
+yet
+I
+think
+anyone
+really
+thinks
+that
+this
+is
+the
+way
+forward
+in
+all
+cases
+and
+if
+you
+can
+do
+it
+and
+you
+have
+no
+
+other
+options
+in
+extreme
+cases
+that
+is
+absolutely
+unwarranted
+I'm
+not
+trying
+to
+dissuade
+anyone
+from
+advances
+in
+genotherapy
+but
+I
+think
+the
+genome
+is
+so
+complex
+so many
+things
+can
+go
+wrong
+we
+don't
+know
+all
+the
+details
+that
+if
+you
+did
+not
+have
+to
+start
+messing
+up
+people
+loading
+I
+think
+that
+would
+be
+preferred
+and
+also
+from
+a
+capability
+setting
+you
+don't
+always
+have
+the
+capability
+with
+high
+fidelity
+that
+we
+I
+take
+at the
+core
+of
+my
+experimental
+approach
+to
+things
+is that
+I
+want
+to
+understand
+how
+cells
+interact
+with
+their
+environment
+and
+work
+on
+that
+manipulation
+and
+drive
+them
+towards
+different
+states
+again
+with
+that
+Wellington
+landscape
+that
+we
+talked
+last
+time
+you
+want
+to
+direct
+the
+floor
+I
+took
+my
+shirt
+on
+I
+can
+see
+that
+right
+now
+I
+do
+have
+the
+landscape
+there
+on
+my
+shirt
+this
+time
+I
+did
+that
+so
+that's
+like
+what
+are you
+trying
+to
+redirect
+the
+flow
+of
+decision
+making
+not
+try
+to
+manipulate
+the
+actual
+presence
+themselves
+so
+what
+was
+the
+perturbed
+signal
+response
+oh
+sorry
+there
+yeah
+the
+perturbed
+signal
+response
+so
+what
+was
+what
+was
+yeah
+how
+did
+you
+perturb
+the
+like
+did
+you
+cut
+it
+off
+did
+it
+get
+less
+information
+or
+did
+it
+like
+was
+it
+supposed
+to
+infer
+an
+incorrect
+place
+like
+how
+exactly
+in that
+one
+cell
+did
+you
+manipulate
+the
+parameters
+of
+that
+one
+cell
+so
+that
+it
+went
+to
+a
+different
+place
+yeah
+basically
+let me
+see
+I
+think
+I
+was
+!
+it
+was
+basically
+done
+in
+the
+decrease
+in
+sensitivity
+is
+that
+what
+it
+was
+I
+try
+and
+make
+this
+specific
+but
+hand
+waving
+that
+so
+it
+is
+in
+the
+gradient
+that
+we
+also
+formally
+induced
+right
+so
+that
+that
+is
+basically
+the
+how
+much
+of
+a
+right
+this
+the
+how
+much
+actions
+are
+being
+updated
+based
+on
+sensory
+inputs
+and
+we
+can
+put
+a
+gradient
+on
+there
+and
+the
+sign
+on
+that
+that
+that
+is
+the
+part
+that
+I
+manipulate
+here
+so
+but
+that
+basically
+means
+is
+that
+by
+altering
+the
+response
+capability
+of
+the
+cell
+how
+much
+how
+much
+sensory
+update
+how
+many
+how
+much
+to
+what
+extent
+sessions
+are
+being
+updated
+based
+on
+external
+information
+flow
+and
+with
+what
+kind
+of
+you
+know
+power
+on
+top
+of
+that
+that
+by
+that
+you
+basically
+upping
+or
+reducing
+the
+sensitivity
+to
+the
+environment
+you
+basically
+you
+misarrange
+you
+misregulating
+the
+again
+the
+power
+essentially
+but
+that
+sounds
+stream
+but
+you
+the
+potential
+of the
+cell
+to
+act
+with
+environments
+and
+do
+anything
+about
+and also
+even
+upstream
+how much
+sensing
+of that
+so in
+this case
+specifically
+it just
+wasn't really
+sensing as
+much of
+its
+environment
+as it
+was
+supposed
+to be
+sense
+it
+it
+almost
+is
+equivalent
+to
+the
+argument
+or the
+dissolution
+of sort
+of nature
+and nurture
+partitioning
+by just
+taking a
+complexity
+stance
+kind of
+like
+Evelyn
+Fox
+Keller
+in
+her book
+the
+mirage
+of a
+space
+between
+nature
+and
+nurture
+you were
+talking about
+a target
+morphology
+but then
+about how
+changes in
+the signal
+we're about
+to do
+number 40
+on the
+quantum
+FEP
+paper
+and
+blue
+and our
+friend
+Jason and
+I have been
+preparing a lot
+for it
+and I think
+separating
+quantum
+from
+the
+electrons
+and their
+behavior
+and just
+asking
+well what
+is
+quantum
+strategy
+or what
+does this
+quantum
+statistics
+or quantum
+information
+projected onto
+biology mean
+not how
+it's been
+approached
+from the
+mechanistic
+question
+which is
+quantum
+biology
+well that's
+about the
+synapses
+and their
+quantum
+mechanical
+properties
+or about
+photon
+tunneling
+or proton
+tunneling
+and like
+quantum
+effects
+but what
+about just
+using the
+statistics
+instrumentally
+of quantum
+and talking
+about situations
+with complex
+patterns of
+uncertainty
+and observation
+bias and
+memory and
+modeling and
+all of that
+and this
+was like a
+dot two
+that kind
+of like
+opened up
+a whole new
+area for us
+in our
+discussions
+with morphology
+and like the
+spatial and
+the embedded
+and then
+cracked a
+window
+into just
+another area
+we'll go
+into and
+you brought
+so many
+awesome
+insights so
+we really
+appreciate it
+yeah that
+talk should
+be a real
+pleasure
+I highly
+recommend
+doing it
+Chris Fields
+was great
+to listen
+to and
+it's some
+exciting work
+and if
+you also
+if you have
+seen I'm
+sure you
+have seen
+that the
+particular
+paper from
+Carl Frist
+he has a
+section
+there on
+quantum
+mechanics
+and it's
+a very
+cool section
+because he
+actually derives
+I think the
+Schroding
+equation
+from
+essentially
+from my
+point of
+view
+from just
+a definition
+of what
+your log
+probability
+density
+is
+very cool
+kind of
+you know
+I don't
+know how
+much that
+will feed
+into other
+and future
+work
+but it's
+always very
+exciting to
+me when you
+see different
+fields at
+least formally
+being able to
+be related to
+each other
+that usually
+means there
+something
+something going
+on
+something
+fundamental
+we'll have
+more to say
+in that
+way
+so
+and join
+us
+yeah
+and
+you're welcome
+anytime
+to participate
+yeah
+it'll be
+Chris
+and
+Carl
+and I think
+Mike
+I think
+everybody's
+coming
+so if you
+want to
+come
+and
+join the
+panel
+you're
+more than
+welcome
+I'll add
+to the
+events
+and pop
+in if
+it works
+so
+thanks again
+everybody
+hope that
+the viewers
+can bear
+with the
+lag if it
+was there
+but
+peace
+out
+everyone
+thanks a lot
+for this
+great discussion
+thanks for
+having me
+bye
+bye
+bye
+thank you
+
+
+thank you
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.

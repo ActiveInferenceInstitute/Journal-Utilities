@@ -4,7 +4,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from journal_utilities.transcribe import TranscriptionService
+from journal_utilities.transcribe.transcribe import TranscriptionService
 
 
 @pytest.fixture
@@ -13,7 +13,7 @@ def transcription_service() -> TranscriptionService:
     with (
         patch("whisperx.load_model") as mock_load_model,
         patch("whisperx.load_align_model") as mock_align_model,
-        patch("journal_utilities.transcribe.DiarizationPipeline") as mock_diarize,
+        patch("journal_utilities.transcribe.transcribe.DiarizationPipeline") as mock_diarize,
     ):
         mock_load_model.return_value = MagicMock()
         mock_align_model.return_value = (MagicMock(), MagicMock())
@@ -182,7 +182,7 @@ class TestTranscriptionServiceInit:
         with (
             patch("whisperx.load_model") as mock_load_model,
             patch("whisperx.load_align_model") as mock_align_model,
-            patch("journal_utilities.transcribe.DiarizationPipeline") as mock_diarize,
+            patch("journal_utilities.transcribe.transcribe.DiarizationPipeline") as mock_diarize,
         ):
             mock_load_model.return_value = MagicMock()
             mock_align_model.return_value = (MagicMock(), MagicMock())
@@ -205,7 +205,7 @@ class TestTranscriptionServiceInit:
         with (
             patch("whisperx.load_model") as mock_load_model,
             patch("whisperx.load_align_model") as mock_align_model,
-            patch("journal_utilities.transcribe.DiarizationPipeline") as mock_diarize,
+            patch("journal_utilities.transcribe.transcribe.DiarizationPipeline") as mock_diarize,
         ):
             mock_load_model.return_value = MagicMock()
             mock_align_model.return_value = (MagicMock(), MagicMock())

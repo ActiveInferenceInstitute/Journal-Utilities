@@ -1,0 +1,2749 @@
+---
+title: "ActInf Livestream #023.2 ~  "Embodied skillful performance: where the action is""
+category: "Livestream"
+series: "Livestream_023"
+episode: "2"
+duration: "1:39:19"
+url: "https://www.youtube.com/watch?v=bjYUbKlfHUo"
+views: 76
+exported_at: "2026-02-18T22:37:37.858772+00:00"
+format: markdown
+---
+
+# ActInf Livestream #023.2 ~  "Embodied skillful performance: where the action is"
+
+greetings everyone
+welcome to actin flab live stream number
+23.2
+today is june 15th 2021
+and we're going to be having our dot 2
+discussion
+on embodied skillful performance where
+the action is
+and we'll see who else joins us live as
+we
+go through the slides in the paper and
+also of course
+if you're watching live we'd welcome any
+questions or comments
+welcome to the active inference lab
+everyone we are a participatory
+online lab that is communicating
+learning
+and practicing applied active inference
+you can find us
+at the links that are on this slide this
+is recorded greetings dave
+you this is a recorded and an archived
+live stream so please provide us with
+feedback so that we can improve our work
+all backgrounds and perspectives are
+welcome here
+and we'll be following good video
+etiquette for live streams
+we're again on june 15th having our
+second
+group discussion on embodied skillful
+performance where the action is
+so this is sort of our jumping off point
+and let's see if we can
+make it a skillful one today the goals
+are really just to be
+discussing and learning to be hearing
+the questions and points that people
+found really interesting when they were
+reading the paper as well as
+see where our discussion can
+spontaneously
+go as of course participants join
+and leave and hopefully we get some fun
+questions from the chat
+and we're just going to walk through the
+paper
+and the slides go where we need to go
+to hopefully connect some dots
+so with that being said let's just go to
+the introductions
+and warm-ups and we can each just give
+an
+introductory thought on the paper if we
+would like
+or something we liked or remembered
+something we're looking to
+resolve reduce our uncertainty on by the
+end of the discussion
+so i'm daniel i'm a postdoctoral
+researcher
+in california and all passed to dean
+hi i'm dean i'm in calgary and
+i'm becoming a more
+embedded personality in this active
+inference lab
+world and i'll pass it over to stephen
+hello i'm stephen i'm based in toronto
+i'm doing a practice based phd through
+the uk i'm interested in um
+participatory theater community
+development and ways to understand
+how people interact with each other uh
+in groups and individually so
+this paper is quite relevant as it opens
+up some new avenues in that
+and i will pass it over to
+is it is dave here dave hello dave
+yeah dave if you can speak otherwise
+no worries maybe you're just listening
+in
+so maybe just a quick question stephen
+where do we
+see the connection between skillful
+performance which is often thought of
+like motor and bodily
+how do we connect that to social
+practices which are
+amongst bodies and use verbal behavior
+or
+symbolic behavior yeah i mean
+this is this is kind of a question i
+think that's arising more and more as
+people are trying to question
+psychology or community psychology which
+works on the individual
+or sociology which works on this sort of
+mass of people
+but when you want to work with
+intersubjectivity and sort of small
+groups
+and understanding the dynamics that are
+going on there
+you could kind of ask phenomenological
+questions about what it's like
+to be in that state which is kind of a
+bit more
+direct than say someone's psychological
+perspective on it but it's still not
+quite working so then you say well let's
+get into action here let's get into
+what's actually happening in and amongst
+people
+um and often if you then jump into
+action that's another abstracted
+area but if you're in the area of
+practice
+um you're kind of in a in between
+you know it's something that people are
+doing something that people are doing
+between each other
+and but you're still able to talk about
+how it's happening
+how it feels um so i think that um
+that this this question of practice then
+you know takes you into the sort of
+areas that get used a lot in arts
+arts practice theater practice all these
+types of areas so
+um i think it's quite a a nice nexus
+that's normally a bit impenetrable cool
+it makes me wonder do groups
+have skill or is skill something that
+only
+bodies have so you see some football
+team or basketball team do some very
+coordinated play
+or two dancers that are improvising is
+that
+able to be reduced entirely to the
+skilled embodied performance
+of individual bodies or is there
+a way in which we could talk about a
+group embodying
+skillful performance especially because
+so many performances i mean except for
+what stand-up comedy a few other things
+their group and then even those
+individual performances are in feedback
+sometimes
+with a group it's just different roles
+um that's a good point actually i mean i
+think that's really the exciting
+field of practice that's going to be
+growing over the next while
+and i i sense that it's almost
+impossible to get that from a snapshot
+you have to have something that's been
+progressing over time to get
+or let's just say i don't know whether
+that's true but i
+i sense that there's more use in
+understanding how things change over
+time
+and getting the dynamics than there is
+trying to analyze a snapshot
+uh dave if you have any comments you can
+unmute and i'll
+see it or dean any sort of just opening
+thoughts how does this dot 2 meet you
+today
+well i'm going to come from it from a
+little different angle i
+so i think that word between is a huge
+is it it's the thing that that befuddles
+us and yet it's the thing that we
+probably want to know the most about
+and um in this idea of
+embodied skill for skillful performance
+i was going to actually ask the author
+some questions around how she relates it
+back to sort of
+the poor the parts of the brain that um
+resolve these problems so is it a
+spatial relationship thing like what the
+hippocampus
+tends to provide us some insight on or
+is it a
+caudate nucleus thing which says that we
+sequence everything out and we turn left
+we turn right we
+release the ball and i was just curious
+about which
+because those two those two things work
+but when one is on the other one is off
+there's kind of a binary relationship
+between those two parts of the brain and
+so i wanted to kind of figure out
+how that that toggling back and forth is
+part of
+this skill that we are witnessing
+nice point there's um the more
+cognitively driven versus almost the
+more bodily
+driven and then that handoff is where we
+see
+skillful performance and that's where we
+see choking it's where we see all these
+dynamics between cognitive processes and
+action processes
+okay we see another dave dave if you can
+if you want to give any thoughts just
+feel free
+um yeah oh just listening and thanks
+nice
+right on that's the real that's the real
+og way to listen in
+in the jitsi rather than in the live
+stream
+um yeah so we'll see who else
+joins in today but that's a great
+question about the brain pieces and then
+i always think about other species like
+if insects can have
+embodied action and that seems pretty
+fair to say
+can they have skillful action and how
+would we know
+and then if they do the layout of their
+brain and body
+is so different that it wouldn't map on
+you know they don't have a hippocampus
+they don't have a prefrontal cortex they
+have other
+brain regions so we don't need to get
+too
+locked into one implementation of these
+processes based upon human neuroanatomy
+when we know that there's other neural
+anatomies
+that can deploy similar
+processes so it helps us
+keep an open mind the multiple
+realizations
+of active inference or of embodied
+skillful performance because of just the
+diversity of evolutionary systems
+let's take an overview at the roadmap
+this paper has a form that we've
+seen several times before which is
+in the first half taking
+some non-active inference body of
+research so in this case it's skillful
+performance
+and optimal motor control theory and
+investigating with a critical lens this
+previous body of research
+to understand what is it really saying
+or what are the assumptions
+so in this case there's this
+instructionist assumption
+implicitly or explicitly that's drawn
+out
+through the exploration of previous
+approaches to skillful performance
+and specifically the motor
+representations and motor commands that
+are implicit
+in optimal motor control theory so
+that's
+part one part two
+goes from optimal control to predictive
+coding and
+active inference and last time we talked
+a little bit about similarities and
+differences
+as you go from optimal motor control to
+predictive processing
+to active inference what is generalized
+as you move from a to b to c
+what is different what kinds of issues
+might you stick or
+introduce and then in the
+last sections of the paper motor control
+is positively reframed as this
+interactive
+sensory motor engagement with the world
+which puts us very squarely
+in the domain of active inference rather
+than in the instructionist domain of
+optimal motor control theory
+greetings blue so that's kind of a
+general pattern that we've seen before
+where the first third of the paper is a
+background on previous approaches
+in a critical lens the second approach
+shows some sort of a transition
+from theory a to b to c and then by the
+third part
+there's a positive positivist argument
+as to why active inference is
+more in line with how things are or
+might be more useful
+uh steven go ahead
+so yeah further to our conversation
+earlier um
+i think this actually this this showing
+the instructionist and then the
+interactive
+approach is really useful to sort of
+have a plausible way for
+affect and social dynamics
+to interplay with action because when
+it's under an instructionist model
+it is kind of hard to imagine how that
+kind of
+mechanical almost message passing type
+of approach can
+integrate into our sort of social
+dynamics whereas
+um the interaction in this approach
+does give that so i think that's quite
+good
+it can frighten people off because it
+brings in this other
+philosophical piece which i think a lot
+of people would like
+running away from at first but actually
+it does
+offer a more humorous humanizing or
+biological way to engage
+cool let's just go there blue of course
+raise your hand anytime you want to add
+something but this
+instructionism versus interactionism
+i think is a big piece that we'll walk
+away from this
+uh 23 width it's something that we can
+take on in the case of embodied skillful
+performance but i think we're going to
+be able to apply it
+to education we're going to be able to
+apply it to team collaboration
+and so we can definitely return to this
+distinction between instructionism
+and interactionism so steven just from
+you know your experience with drama or
+other
+kinds of work do you think people are
+how do people implicitly use
+instructionism versus interactionism or
+what kinds of scenarios
+uh support or constrain instructionism
+versus
+allow for interactions to emerge
+well i think what tends to happen is in
+the models that people tend to use
+they're kind of either in one
+camp or another it's like so mostly
+it's almost implicit that there's some
+sort of
+interactive stroke flow it probably goes
+even further it's sort of some sort of
+flow
+in the sort of performance arts world
+they talk about flow
+and ease and that type of thing and
+what's also interesting is i know they
+talk about this in the michael chekhov
+acting approach is there's always this
+battle between
+ease and form so a dancer gets more form
+they get more technique they get more
+proficient their technique
+but they might lose their ease that you
+have as a beginner
+so you're forever trying to add more
+technique
+without becoming this kind of rigid
+autumn automaton
+you know so i think there's there's that
+kind of side to it and
+and that that whole area they just go
+off
+and it's it's kind of it just takes care
+of itself but it becomes a little bit
+um of a silo in a way
+and then you've got people working in
+more straight activity theory
+veikovsky kind of much more like
+what activity happened when um and that
+they they they are also in a bit of a
+silo
+so i think that you tend to find that
+and
+different different areas they they are
+a little bit siloed in their approaches
+um to sort of get around some of these
+um
+challenges um so i think that
+the way of trying to break
+beyond what you can analyze which often
+you have to look at
+instructionally because you kind of have
+to break down things into steps
+but that doesn't mean you need to keep
+it in
+a stepwise form in terms of how we
+understand
+what people really do so there's this
+kind of i think there's this kind of gap
+that this will help to make plausible
+interesting there how we capture
+the utility and the apparent advantages
+of instructionism
+some of them are written here like the
+ability to separate different
+instructions that seems
+pretty important if you say well how am
+i going to cook this multi-stage dish
+and someone just says you know here's
+all the ingredients and here's all the
+behaviors but i'm not going to tell you
+what order to do what in
+if we can't separate and sequence events
+then it's going to be hard to carry out
+a performance correctly you can't just
+switch the order of musical notes and
+the sheet music
+you can't just do things in a different
+order so how do we get
+some of the features that we're looking
+for
+like separability and modularity and
+take it into a fully interactionist
+framework one distinction there
+that the authors raise is like strong
+versus weak instructionism
+and they'll um end up continuing
+that both of these forms have similar
+underpinnings
+but there's sort of uh a continuum
+between thinking that the instructionism
+is completely its own neural
+representationism
+it's kind of like a mott and bailey type
+argument this is the strong
+instructionism
+thinking that it's totally just the
+neural representations
+that are entirely specifying on their
+own
+the movements that have to be performed
+versus
+a more dynamical coupling version of
+instructionisms
+so that'd be like you know when you're
+tapping the gas it's like an instruction
+to the engine but it's not the entire
+um go faster cue
+given the background of ecologically
+normal processes that enable them to
+play
+this role so that's kind of interesting
+um blue any sort of overarching thoughts
+or anywhere you think it'd be fun to
+jump in
+no i'm just trying to figure out where
+i'm at still
+indeed um well there'll be a few other
+places like a few other notes that we
+wanted to discuss dean
+mentioned um one thing maybe we can even
+have a dot three
+and find out what a dot three would uh
+mean or dot two point
+dot two one or something like that dot
+twenty one um so one piece was about the
+the neural elements because in the
+figures
+we do see brains
+however um these are quite schematic
+it's not saying that these are the brain
+regions where
+these types of things happen which can
+be a little
+uh ambiguous because it's not actually
+an anatomical
+representation yet it's superimposed on
+top of a brain
+um okay so one piece we wrote down was
+about the neural
+and i think there was a few um yeah oh
+yeah stephen go for it
+yeah just tying this as you mentioned
+about the streak the weak and strong
+um it's kind of interesting because
+that's kind of trying to give this
+scientific
+feel but it doesn't feel very
+satisfactory to
+try and have to say it in terms of weak
+and strong because you're kind of in
+this
+well what does that really mean and how
+does it shift between the two i mean i
+can understand what has been said
+but um it's it gets into this kind of
+fuzzy version of instructionism so i
+i think that kind of sets up some of
+these questions that as soon as you move
+away from
+a strong instructionism um
+it becomes harder to hold it together
+using the word instructionism
+so i think that's it's quite a good
+illustration of that
+because it's sort of unraveled you can
+see how the second paragraph's a lot
+longer than the first one basically
+yep great point and it's also a common
+approach to basically rigorous
+philosophical argument instead of making
+an argument against a total category
+you introduce a distinction in the
+category and then
+you might find that either one of those
+categories has some feature that the
+other one doesn't
+you know instead of being against all
+wars well there's the good ones and
+there's the bad ones and then here's my
+distinction for just the bad ones or it
+could be that by making that distinction
+you then can say actually this holds
+true for both
+of these categories or subcategories
+and so that's how i've made my claim
+against all x
+is by first breaking it down and then
+they do again
+find that there of course are
+differences between these two
+forms of instructionism but that they
+end up taking on some of the same
+assumptions
+um cool there's probably a few other
+pieces we can explore
+this is the section in the paper that
+i'm
+sharing on the screen that says the
+formulation
+of sensory motor control in terms of
+optimal motor control theory
+heavily hinges on two different but
+highly interconnected assumptions
+so let's see what the assumptions are
+because it's probable that
+active inference is going to be
+contrasting or doing something
+different so one is the central
+specification of descending motor
+commands
+and their efferent copies in the form of
+detailed low-level instructions for
+control
+of the motor plant specified in terms of
+an intrinsic
+frame of reference i.e extension and
+contraction of muscle
+fibers so that's that instructionism
+and then two a separation of forward and
+inverse models
+operating on complementary aspects of
+action planning and executionism
+so the first piece is that
+instructionism that what's being sent
+descending or towards the body are
+instructions and the second piece is a
+separation of the forward and the
+inverse
+models operating on complementary
+aspects of action planning and execution
+so the forward model is like sort of a
+planning
+model and then the execution is like
+okay given what i planned
+how am i going to execute that and those
+are two different streams
+in optimal motor control and so we've
+been talking about how
+interactionism we can explore how active
+inference
+deploys interactionism but in
+interactionism we have a contrast with
+the instructionist point
+one and then through a unified
+generative model in active and the
+reduction of uncertainty in a unified
+generative model
+we're going to move beyond this
+separation of these two
+forward and inverse models stephen and
+then
+anyone else or any questions in the live
+chat
+yeah this is quite helpful it gives that
+realization that optimal motor control
+theory it could
+it can be very precise you could imagine
+someone making a robot because you can
+measure everything you've got access to
+all the data
+and you could make something within like
+a thousandth of a
+millimeter precision which humans or
+animals can't do
+but it it does have a bit of a
+limitation in terms of um
+being able to integrate and i think that
+i don't know if you've seen any of the
+papers around
+the idea of fields being around the
+robot's
+joints i have like a field around the
+hand a field around the
+and just move into the field rather than
+trying to
+work out what the actual must like the
+actual joints should do
+and they they out competed other robots
+within like
+two or three months so the same idea of
+working with
+some sort of more fuzzy um
+dynamical field
+actually and just working out what works
+most
+efficiently or best even though you're
+probably adding a lot more fuzziness
+into the actual
+understanding of the measurements
+actually has
+a lot of them has a lot of benefits in
+terms of
+learning how to do something quickly
+okay i think there'll be a few more cool
+points to return to on this notion of
+field
+but i think it's also helpful here to
+look at how they distinguish
+the forward and the inverse
+models so here a forward model
+takes a system from an intrinsic to an
+extrinsic frame
+predicting the effects of different
+movements
+using musculoskeletal plans specified by
+neural activity so again that's that
+instructionism that's because we're in
+the optimal motor control
+so forward model is basically plans
+that can be cognitive into
+implementations
+that's the translation into motor
+commands and
+their consequences on the other hand an
+inverse
+model builds motor commands by inverting
+the causal change
+so first that inverse model leverages a
+value function of states
+this is where we get the inoptimal motor
+control
+the non-negotiable introduction of value
+as a central
+heuristic states have to be assigned
+value because value is what's used to
+determine
+which plans to select and that
+leveraged on the value function is used
+to form a mapping
+from desired target states which
+again is built into active inference in
+a sense through the preference
+over certain types of states but the
+desired target state
+has to be specified in a slightly
+different way as an actual
+preferred state rather than over a
+preferences over states
+in this optimal motor control framework
+and that's in the coordinate system
+based upon the external consequences of
+movements
+so i want my my arm to be at a 90 degree
+angle and then that
+is translated or it's mapped to a set of
+intrinsic coordinates in the space of
+muscle fiber activations like my arm is
+at a greater than 90 degree angle
+so that needs to map to activation of
+bicep firing patterns so that the arm
+can
+contract so that the angle is smaller
+and that's why frameworks based upon
+optimal motor control are sometimes
+characterized in terms of
+force control because all the motor
+commands specify
+is muscle forces and joint torques so
+that's kind of the macro
+to micro mapping is we have preferred
+states and the question is there's so
+many degrees of freedom
+with the joints so how do we go from
+potentially a
+broad set of preferred states or
+acceptable states
+into a specific pattern
+of muscular activations so how do you go
+from
+make your hand just rest where it's
+comfortable which is a relatively broad
+sort of plateau of accessible states
+into
+a position that each joint is going to
+be at equilibrium
+with and the two of these
+assumptions that we've been exploring
+here so again
+one the instructionism and two the
+separation of forward and inverse model
+that architecture induces the assumption
+or rests on the assumption that value
+valuable states is what causes action
+and that's what that
+first in 2011 paper introduced
+is sort of flipped that on its head
+which is that
+well um in models from omct
+sequences of action are selected
+according to the value function of their
+states
+so value is something that's cognitive
+and then induces action
+but that gets sort of flipped
+in the 2011 perspective because value is
+a function of the states
+not a cause of them so
+as written here value is an attribute of
+states that are caused by movement it's
+a consequence
+not a cause and when we get
+loops you know which one's a cause of
+which
+something that's locally a causes b but
+then
+you pull back a level and maybe the
+relationship
+can also be seen as sort of the other
+direction or
+maybe with feedback systems or
+embodied systems we move beyond just any
+single linear framing of what causes
+what
+but regardless of the direction or
+whether value is an attribute of states
+or it's a consequence or it's a cause
+the point is
+there still is this central value
+parameter in optimal motor control
+theory
+and that value parameter which is
+familiar to reinforcement learning like
+learning preferable states based upon
+their predicted value
+that's something that we're going to be
+able to build on
+in active inference by pursuing not just
+value
+but also allowing for reduction of
+uncertainty
+in a generative model which can include
+pragmatic or value-driven elements but
+also elements
+that include curiosity like drives
+steven
+and then anyone else and this ties in
+with kasper hess
+work with affect you could imagine that
+the affective states are kind of
+generated
+on the fly at different scales so as you
+start to move maybe slowly as you
+practice
+you see that these value states are kind
+of almost
+revealed and not necessarily available
+and then maybe there's a state
+for once the whole action is complete
+and that gives you
+you know enter that value state which
+maybe only appears
+as that um degree of surprisal
+is realized and it's always going to be
+slightly different
+each time you do something so this this
+is quite cool
+i've moved here to that
+kind of vector field representation of
+the difference between
+value only learning and
+performance here's our robot who's only
+interested
+in kind of taking the ruler putting it
+on the hill and then going in the
+direction of the ruler going uphill
+that's the sort of scalar approach to
+pursuing peaks
+in contrast we have that
+peak climbing or hill climbing element
+in active inference as that irrotational
+or longitudinal current
+but we also get this solenoidal element
+so i'm wondering
+talking to people about performance for
+example
+or training in some way how would it be
+different
+to promote this sort of value and
+equivalent
+flow model rather than a
+comparative reward driven model like
+if a learner is constantly assessing
+whether it's a multiple choice test or
+whether it's baseball pitching or
+something like that
+if a learner is always assessing the
+value of states
+and everything is framed as value
+maximization and you're going to want to
+be doing
+accurate states you want you know the
+pitch you want to be getting your
+pitches more accurate because more
+accurate is more rewarding
+i'm just wondering how it changes
+training or the experience of practice
+to know that there's times when one is
+pursuing value or that
+in the long range pursuit of value can
+be achieved through
+this rotational or exploratory element
+blue and then anyone else
+so just talking about pitching
+specifically like yeah
+you can you know hit the bullseye right
+if you're
+gonna pitch you know pitch a ball you
+can hit the bullseye you can hit the
+target get it right over home plate
+but like you never explore like what
+about like
+spinning the ball what effect will like
+different spins that you put on the ball
+have
+on you know the way that the batter hits
+it so like the accuracy versus like
+the finesse of it and i think about that
+in terms of dance also like if you're
+not
+if you don't explore like you know what
+it feels like like if you're only trying
+to accurately make a movement
+you're never exploring like the finesse
+element of it so there's no like
+room for perfection or like ultimate
+mastery i think
+and where does skill become mastery
+it's sort of like at least in chess it's
+the the masters who
+appear to challenge some of the basic
+rules like they don't castle early
+because there's some deeper plan or a
+jazz musician
+who moves beyond the framework of
+regular
+timing to introduce some other element
+so that play element becomes especially
+important
+it's almost like if you never learn how
+to do it
+correctly or normatively you can't throw
+the baseball so you got to get it over
+the plate
+but then the mastery level after
+performance has been
+demonstrated in a sense involves
+inventing a new way to pitch like
+there's you know a
+fraction of baseball pitchers who throw
+sidearm or throw knuckleball
+all these different sort of
+unconventional approaches
+that aren't the value function that they
+learned initially
+or maybe it was their biomechanics and
+that was the value function that worked
+for them
+and some other value function just
+wouldn't have worked with their
+body and brain steven and then anyone
+else
+yeah thinking from the perspective of
+coaching because um
+so my supervisor works a lot with
+systemic coaching and performance
+coaching
+is this this becomes a more unifying
+approach
+it might be for specific things
+optimal control theory is quite useful
+for just
+unpacking something but if you want to
+look at performance coaching
+more broadly or developmental coaching
+more broadly and how they relate this
+could be useful and i'm just thinking
+about
+christian ericsson the you know the
+soccer player i know if you heard he
+collapsed during
+the euros and uh his heart stopped and
+all the team were around him trying to
+and then they had to play the game
+in about an hour's time now
+their ability to perform
+um was going to be very hard it's not a
+performance coaching
+question at that point there's these
+other dynamics going on
+and i think that this this ability for
+active inference to
+at least unify how regimes can change
+and how it could be the environment
+the system the the emotions all these
+things are quite um
+quite useful
+thanks dean yeah
+yeah i appreciate what you're saying
+there steve and i i am
+aside from the from the step-by-step
+part that i think the caudate nucleus
+tends to to perform when we're when
+we're trying to
+climb that little mountain there
+robotically
+it's another factor i think that's kind
+of interesting and that's um
+if it's embodied and it's skilled
+there's probably
+three kinds of math at play there's
+materialization the how
+sort of the engineering of it there's
+the what's in what's out
+what's supliferous and what what needs
+to be
+an element within the performance and
+then i think what this paper does
+in the interactions piece pieces it
+brings the the probably
+into the conversation
+and i think you need all three kinds of
+calculations in order to be able to get
+a real grip on
+on what's going on maybe not an optimal
+grip at least
+a fuzzy grip on what to do next i think
+if you
+only have two of those elements you've
+got the perfect conditions for an
+instrumentalist approach when you add
+the probably
+whether it's erickson um
+what did he text or email all of his his
+teammates and said
+go finish the game we gotta we gotta
+finish this game
+and i think steven's right you can you
+can give an instruction to your
+teammates
+and say i'm fine but you just had a
+cardiac arrest
+and we probably aren't going to be able
+to wipe that from our memory
+in that moment and so it's a little bit
+more complicated when we add probably
+but i think we need probably in order
+for it to be interactionist
+so that team like in the middle of the
+game
+the personnel of the team changed
+in the individual story of motor control
+it's like but that's not between you
+and the soccer ball so why should it
+change performance but when we
+have the deep generative model of the
+individual that includes affect that's
+one way to get to
+the loss of a teammate influencing
+performance and the second way would be
+to actually
+genuinely allow teams to be skillful
+performers
+in the sense that there's a distributed
+cognitive process
+on the team just like there is in the
+body and so
+they actually changed and whoever steps
+into
+that person's position on the field
+they're gonna have a different approach
+so it'd be like switching out you know
+one arm for another arm
+or one forager nest mate for another
+nest estimate
+it's going to change the emergent
+properties of the group in a way that's
+an explanation at the group level rather
+than
+requiring to come back to just the
+optimal motor control
+value driven instruction guided of a
+body
+blue
+yeah just the probably is like what
+gives active inference its power
+right like probably if i don't eat
+breakfast i'm going to collapse in the
+middle of a of a field you know or
+playing a a game or whatever um so so
+when you have that
+that probably it it allows you to guide
+all of your
+actions toward a given intention i think
+thanks blue steven yeah and i also think
+when probably
+because probably often it's still in
+that venue
+my world you know probably i will get
+this game or that game
+when the word uncertainty is put in
+uncertainty is a much scarier word than
+probability right because it's like
+it has that risk component um so it's
+really interesting that you say
+that that that um we tend to say
+probably everything will be okay but
+active influence is like
+you don't know it's all it's all unknown
+to some extent here's
+here's another nice piece from the paper
+that
+i think can continue this discussion
+about probability and
+maybe also how active inference reframes
+it so
+the physics of flow embedded in active
+inference now
+it's an ongoing discussion exactly the
+formalisms that get us to
+a physics of information flow on sense
+cognition and action so other
+live streams other days other years but
+let's just roll with this
+physics of flow it's accounting for
+sensory motor behavior to show that
+motion in a biologically realistic state
+space irreducibly includes two
+orthogonal kinds of motion
+the irrotational and the solenoidal
+component so that's what we're looking
+at here
+just this is a paragraph that's
+representing this piece
+instead of just value only we have value
+and flow
+and again this is key to reiterate
+because it's something that isn't
+included
+in reward scalar representations
+so the former that the first one the
+curl free
+is what allows the flow to climb a
+gradient towards more valuable
+or probable states now that's one of the
+head scratchers in active inference
+that preferred states are likely states
+under an optimistic deep generative
+model
+and that is the alignment
+that allows us to reduce uncertainty
+and by way of reducing uncertainty
+achieve
+our target outcomes and so when we align
+the deep generative model in an
+optimistic way
+such that we believe that likely states
+are preferred ones
+that it's likely that tomorrow i'll have
+a regular body temperature
+it's likely that tomorrow i'll be in
+this preferred body position
+then we actually get to pursue
+value as a consequence of reducing
+uncertainty
+there's more to say on this but dean go
+for it and then stephen
+yeah and i think daniel that what that
+points out is that there's a dependency
+for people who who who want to introduce
+statistical
+propositions to what's the underlying
+situation that we're observing
+um there's a dependency on the
+derivative math and the accounting math
+you you can't you can't figure out what
+probably is
+without figuring out how and what and
+having a
+having a a sense of
+confidence around what how and what are
+so i don't think it's
+it isn't just the introduction of active
+inference
+active inference is also wholly
+dependent on a strong
+foundation in terms of really being able
+to get
+from priors through that hidden state
+and how do we do that we have to have
+derivatives
+and we have to have accounts so i think
+um
+there's a real codependency back to the
+between comment
+that steven brought up
+cool thanks steven
+yeah that that that idea of um
+things going through cycles i think that
+i'm not going to go into ergodicity
+again but you know it often comes up is
+that's from what i'm understanding is is
+pretty much
+not present in optimal motor control
+theory because it's
+it's about you go there and then now you
+have a vector
+and that vector is a thing and that
+thing gets optimized but
+you never have that thing i think like
+dean was saying there's that kind of
+in-between and
+you're kind of holding that in between
+but but
+that only makes sense if you keep
+revisiting the in between
+like if the you need to have ergodicity
+of whatever
+i mean that's an open question again for
+another day but
+the there's some way that you're
+revisiting this understanding because
+otherwise you've got no way to make
+um any sort of information gain
+or information extraction unless you
+have a revisiting
+to compare interesting
+um and it's
+one of the key pieces again that
+we reduce our uncertainty and achieve
+preferred states
+through that process i'm just imagining
+you know something from
+organic chemistry it's like you want to
+study up cram for your final at ochem
+you want to pass
+so are you going to take a reinforcement
+learning perspective or an active
+inference perspective
+well the reinforcement learning
+perspective is like saying you'll get
+the big reward when you pass
+so what's the most rewarding problem
+that we should be solving or what's the
+most rewarding chapter to review
+but you don't know because if you knew
+then you'd pass ochem
+so you're kind of right back at square
+zero with value because
+you framed learning as a value question
+in contrast the active inference learner
+would be like oh
+sure my preference is to pass how am i
+going to reduce my uncertainty about the
+critical path
+of passing well let's i haven't even
+opened the textbook let's go to the
+first
+table of contents or something like that
+like reduction of uncertainty
+gives a first step and then it even
+allows for
+okay maybe that wasn't even the right
+first step or maybe that was a good
+two-step
+path and now i'm ready to go a different
+way but i'm trying to reduce my
+uncertainty
+about how to get to what i prefer
+which is passing rather than i have a
+priori valued
+this future state and now i'm going to
+back
+propagate value at every single step of
+the line
+and then i'm going to stress myself out
+if this specific chapter
+isn't maximally rewarding because
+everything again
+has to get reduced to value in this
+value is everything framework but in the
+uncertainty reduction framework
+we see sort of this mist of uncertainty
+and then regularities and especially
+dependable ones
+emerge out of that and so we're planning
+amidst uncertainty
+with preferences in mind trying to
+figure out what to do
+that's planning as inference amidst
+uncertainty
+which is just a world apart from
+planning to maximize value through time
+given
+you know what model again of how value
+is assigned
+it's just a recursive question and value
+learning doesn't give us that higher
+level answer
+for how we should actually go about
+planning to obtain values
+let alone critiquing value as a
+pervasive framework
+stephen well actually that's a very
+interesting
+talk about organic chemistry experiences
+at university
+that i had an absolute nightmare on my
+organic chemistry i
+might i've given my textbook to someone
+i've got behind on the organic side
+and um it was this like two inch thick
+textbook on organic chemistry and every
+time you go into it's got so many words
+it's long names and all of this
+and what's going on it's really
+interesting because we had this class
+with the new
+professor and he got there and he got a
+few people to go up to the board
+and it became clear that absolutely no
+one knew their organic chemistry
+and no one had seemed to pick up on this
+so we were now in the second year no one
+knew
+they were doing i think it was even the
+third year and he said
+and he said he recommended a little thin
+exercise book
+with exercises not on all the different
+chemical reactions and all the
+structures that just
+the key reactions and just to go through
+these exercises in this thin book and
+basically
+that got me through the exam and got me
+on track
+not and i you know so going for the big
+book and the
+the memorizing and the optimal control
+it was
+just work out the five types of reaction
+and do the exercises and i think that
+speaks to what you were talking about
+there you know which ways the electrons
+move
+and and that suddenly really really
+changed everything
+there's also some fun drilling happening
+of course
+all around me welcome back
+dave um so this
+section right here it's it's a nice
+challenge
+it increases the difficulty of speaking
+but it's fun
+this um is a challenge for other
+frameworks this idea that the two flows
+together
+provide a richer framework for
+expressing skillfulness
+as a process whose characteristic go
+beyond a simple gradient of value
+accuracy
+so we saw that reward is enough paper
+recently and some participants in our
+lab were kind of curious about writing a
+response
+because that's the whole argument is
+they said hey reward is
+enough the kernel can be reward and
+that's how you get
+all of these intelligent behaviors
+provided that you have these second
+level
+um tweaks on the model or these bolted
+on modules
+and then the contention of the authors
+here
+is that value functions and indeed any
+motor
+scheme based upon functions that return
+scalars
+are not up to the task of modeling the
+variety of skillful acts describing
+human behavior
+any kind of behavior just human because
+by construction
+they cannot account for the solenoidal
+aspect of flow
+so that that's pretty interesting that
+when we have to
+bottleneck into a single number
+we lose a lot of the expressivity that
+allows for
+explore and exploit behavior to almost
+coexist
+because we're collapsing onto a number
+line
+so there's extremely limited
+availability for
+you know what do you want for your main
+dish and your side dish and you just say
+seven you can't express two things
+with just one number but if you could
+say you know seven and three
+you could express something that's more
+in a two-dimensional space
+blue so i think you bring up an
+interesting point about any behavior
+or just human behavior um and i think
+about
+you know there's like dolphins that use
+tools right to crack open like fish and
+or to crack open not the fish but the um
+the sea urchins right so there's
+dolphins that use tools for eating and
+then there's dolphins that don't
+and and so is there and like this is
+like a hereditary like
+it's it's an example of cultural
+evolution in dolphins actually
+so it's you know it's hereditary but
+only because
+it's passed on through learning and
+social learning right
+so you know you bring up and and then we
+saw the motor plant right like the
+motorized
+plant like does the plant learn where
+the like
+how like skillful performance i mean
+this is a skill for
+performance on the part of the plant so
+it's a really interesting question
+whether
+you know i mean we think about active
+inference as applying to all
+non-equilibrium steady state systems but
+does this maybe apply only in the human
+sense of movement movement or what about
+like tribes of
+humans like what about like in a nomadic
+kind of population would this apply
+there also
+cool here's another nice piece in this
+section that i think will be useful for
+us to learn about
+so technically it's easier to read when
+it's already been written when you're
+getting the drilling
+experience that's when it's the hardest
+to skillfully
+improvise but reading is a little easier
+technically
+active inference extends popular
+predictive coding models used in
+neuroscience
+where perception critical only
+perception
+is cast in terms of prediction error
+minimization so that's the classic round
+ballard
+99 paper that's sort of a mega citation
+and there's a huge amount of
+subsequent work and predictive
+processing or predictive coding
+is just looking at the relationship from
+sense
+to updating of a generative model of
+sense so it's a signal processing
+framework
+and this is something i know that dave
+is a big fan of
+both he knows drills and hammers i know
+that dave is a
+fan of talking about the signal
+processing
+and the audio processing routes of
+active inference
+so this is just on the inbound just
+from sensory information to estimates of
+that generative model of that
+generative process of the sensory data
+the active inference framework
+extends this account of predictive
+processing to model
+motor control and explains action
+selection
+by appealing to the minimization of
+divergence between predicted sensory
+data
+and actual sensory data so here we have
+the exact
+same divergence minimization it will
+sound better on the live stream
+my jitsi colleagues don't worry um it's
+the same
+divergence that's being minimized which
+is the difference between
+observed and expected sensory data so
+in predictive processing it's about
+sense and perceiving sense and so you
+want to minimize the divergence between
+what sensory data you expect and what
+you're actually getting
+but active inference adds inference
+uh planning as inference into the loop
+and explains action selection also in
+terms of the exact same divergence goal
+of predictive processing
+which is again to have your observed
+sensory outcomes
+come into line with your expected
+sensory outcomes
+dean yeah i
+i one of the things i used to
+share with people is so today i'm i'm
+wearing my
+uh murder of of crow's t-shirt because i
+used to study a lot of corvette behavior
+and even though i there's
+there's still some question as to what
+sort of
+verbal cues there what instructions
+corvids are able to share because they
+are social animals and they're
+they are problem solvers but you don't
+have one corbin standing
+to the side as another corvette solves a
+problem giving them instructions
+so i think it's kind of interesting when
+we're when we're looking at this
+behavior
+question whether we're the only species
+that are actively inferring
+because i think that there are other
+species out there that you can make a
+case that
+they are doing that probably
+form of questioning and answering as
+well
+um so and and yeah it can be tools
+it can be based on on on social
+constructs
+um it can be based on caching
+so deep memory and again there's a
+dependency i think
+for behavior that uses active inference
+to also
+some grounding in how and what
+so i don't think that active inference
+in and of itself
+will allow us to to
+minimize anything unless we have the
+derivative
+and the accounts so i think it's i think
+it's it's a virtuous triad
+here but i think what this paper is
+trying to do is get away from the idea
+that
+all problems can be solved with only two
+kinds math
+cool thank you stephen
+yeah further to that point around you
+know
+what humans do or animals do in general
+is
+you could say optimal control approaches
+maybe
+it's only really humans that can apply
+that extra level on top
+as this kind of constraining kind of
+deductive
+idea and every every other organism is
+really
+working with this kind of flow i mean if
+you see a squirrel trying to run up in
+a tree and between trees and chase
+another squirrel around the trees it's
+quite phenomenal
+just how agile they are and the speed
+they can work at
+and um so there's some sort of skillful
+performance that they've got
+so there's this interesting
+thing whereby you've got this we
+see optimal control as more
+straightforward
+but it basically it's almost really
+optimal control just
+isn't implementable in practical terms
+it's almost it's a it's an what you
+could say it's a
+non-ergodic deductive extra
+that humans bring to the table to
+explain
+the mechanical world that they're
+bringing to bear
+in some way so it's kind of interesting
+it just happens to be that was the first
+explanation we had for this type of
+stuff
+nice so let's think about what active
+inference is
+and then see who might be doing it or
+what might be doing it
+so again the core idea is that rather
+than
+selecting commands the organism in
+active inference is inferring what it
+must should be doing under this same
+imperative of predictive coding which is
+to minimize the relationship
+minimize the divergence between observed
+and expected outcomes through time
+crucially this brings perception and
+action together in the same functional
+profile
+we have them on a current sort of
+trading uh
+market almost like we can reduce our
+uncertainty through
+updating our model and we reduce our
+uncertainty through action
+so updating an action or action and
+inference
+are put on common footing and it also
+explains
+some so this is the sort of
+computationalist or
+um algorithmic level is we're making a
+sensory motor model
+that doesn't just have arrows connecting
+pieces ad hoc and say look they're
+connected because i drew a picture
+we're bringing perception and action
+together
+in a common modeling
+framework and also on the neurological
+it explains some of the similarities
+between the functions of sensory and
+motor cortices
+so that speaks to dean's points earlier
+and to a lot of these brain regions that
+might have been discovered
+or initially characterized as having a
+more cognitive or a more motor role but
+then it's shown that they play
+other roles and so you know cue the
+endless clickbait oh this brain region
+associated with this
+also does that should that be surprising
+should that be salient or
+should we have another view where that
+is to be expected
+now while this move from a problem of
+control
+so optimal motor control that's the
+action side
+and then there's so pure action side
+optimal motor control
+tends to not concern itself too much
+with uncertainty of measurement or deep
+generative models
+and then you have the pure sensory
+processing side that's kind of
+predictive processing
+this move from a problem of control to
+one an inference in terms of active
+inference does not make the problem
+mathematically
+easier in and of itself but it offers a
+different model of skilled action which
+respects the neurophysiological evidence
+so in other words we're taking the sort
+of problem of going from
+sense data to a generative model the
+predictive processing model
+and then the forward model from
+internal states to action selection
+and it's easier to of course
+subset to just one of those directions
+and say that one has a tractable model
+but active inference is combining both
+directions
+or integrating across these two
+different
+ways of like looking at sense in action
+and saying let's have
+one model of sense in action with a
+common
+functional profile as they describe it
+here now
+which systems have it slash do it
+that's the realism question and the
+instrumentalism question is
+which systems can we model as if they're
+doing this
+so i think that the instrumentalism
+question which as always it's about
+us so it's easier to answer is the kinds
+of systems
+that have sensory motor input output
+dynamics so everything from a
+self-driving car to
+different kinds of animals we could
+model as if
+they were getting input generative model
+output so the things that people model
+with ooda
+or the that classical sandwich of
+cognition
+those are the kinds of systems that are
+apt to be modeled with active inference
+the kinds of things that people were
+modeling with optimal control
+going from the model to action and the
+kinds of systems that people
+were modeling with predictive processing
+from
+sensory inputs to generative model
+both of those and ones that especially
+are doing both those are some of the
+most
+amenable uh systems for active imprints
+stephen
+you know i was wondering this this idea
+of functional profile
+is i haven't heard that one before it
+might be another one to think on the
+ontology
+that's been talked about how have you
+seen that being used anywhere else um in
+terms of active inference
+functional profile
+good question it doesn't seem like it's
+used anywhere else
+in this paper and i
+don't off hand recall
+what other papers it might have been
+used in but that's a great point
+something to ask about
+um i think that the notion of just
+function
+is a key one to follow and
+uh what what
+how how do we follow a function yeah go
+ahead stephen
+yeah i suppose because this is talking
+about
+actions skillful performance function
+starts to it's thinking about functional
+as in how to achieve an
+action of skillful performance so maybe
+that's how it comes in here
+whereas a lot of some of the other
+papers there's no moving parts so to
+speak it's all information based
+in in terms of um but i think it's
+it's interesting in terms of um
+what that does or what it's trying to do
+it's another way of trying to speak to
+something which is a bit bigger you know
+that's one thing i've noticed inference
+normally things are trying to define
+what everything is this one it gives
+these it
+gives these pullbacks they're like okay
+we've got a functional
+profile now that allows us to
+um do xyz but like i say it does provide
+that challenge of
+trying to fit that into these other
+pullbacks
+that we seem to be keep finding
+appearing
+like you know the effective charge
+that came up in one and so yeah i think
+that's a kind of an interesting
+question about how that fits in
+with other types of models or
+ways of translating between spaces or
+frameworks
+dean thanks yeah so i wonder
+so let's just take that to its its next
+logical place so
+let's start with a functional profile
+not necessarily work back but
+is there some way for us to be able to
+identify
+what's in that profile that would allow
+for active inference and should we
+is that something that that is that
+dangerous or is that
+legitimate
+nice question
+here's a little bit where they're
+getting at this realism and
+instrumentalism
+discussion so even some of the most
+forthright defenders of the active
+inference
+framework assemble have backed away from
+making such strongly realist claims
+about the causally
+efficacious character of generative
+model so here is where we see
+um hardcore realism so it's nice you
+know and
+as we work towards the terms and the
+ontology how can we classify
+different senses or uses of terms
+first in 2013 has advanced the view that
+an agent does not have a model of its
+world it is a model
+now that's an interesting claim
+um but the authors bring this up
+by also qualifying fristen's use of
+model from a different paper
+and saying crucially if we accept the
+generative models of the active
+inference
+frameworks not sure if this
+is the if there's saying you know
+usually it's framework but
+are will there be multiple active
+inference frameworks in line with these
+proposals we must embrace the idea that
+generative models are causal in the
+sense of an agent's inactive attunement
+with the world
+rather than part of the causal
+efficacious machinery used by an agent
+so that's an interesting claim blue
+so i i was thinking about like you know
+that an agent doesn't have a model of
+the world but it is a model and like
+i think about that in terms of people
+that are that get
+have traumatic brain injury and then
+have like
+dramatic amnesia like can't remember how
+to walk or
+talk or eat and have to like relearn all
+of these
+things right so so i think about like if
+we don't
+i mean in that case it seems like the
+model
+like you have a model and then you
+suddenly don't have a model
+but it's like if you are a model
+are you suddenly not a model or is your
+is that like a temporal
+disruption i don't know like so that
+that to me i mean
+and this is an instrumentalist realist
+debate i realize
+but where do you you know if you are a
+model is it like a temporal disruption
+and suddenly you have to start over
+or what does that that look like in in
+those circumstances
+nice question stephen
+yeah i mean in a way i suppose when
+someone has to re-learn
+that the fact that they are at some
+level their body is part of being that
+model that gives them
+access to either some priors
+or that they call it the morphological
+computing capacity the body's capacity
+to then
+form those priors because um
+you know if if however certain parts of
+the body are
+like with a stroke that can be kind of
+challenging because that
+maybe the actual way the body moves
+is compromised therefore the ability to
+use it to recreate
+is is diminished i mean the question of
+how much it's diminished then becomes
+i don't know if anyone could quantify
+that but it's interesting
+it's a good point an instrumentalist
+would say well yeah the brain
+isn't you know per se doing active
+inference we're going to model it as
+such
+but then when there is an injury to the
+physical system
+then we say oh we're still just modeling
+it with active inference we're just
+changing our active inference model or
+has the actual
+system itself changed so will we just
+always say that even when the system
+changes
+in the physical world we're just going
+to update our
+model and just always stay in the
+instrumentalism land or
+are there times where changes in the
+world
+make the instrumentalism verge into
+realism as if it's actually describing
+something about the world that's going
+to be a very delicate
+walk and they they
+are arguing that again if we think about
+these generative models
+as purely formal and epistemic tools
+so just like a linear regression you
+know you can do a linear regression
+on gdp or on some other feature you can
+do a t-test in a double-blind study it
+doesn't make the people a t-test
+it doesn't make the gdp a linear model
+so it doesn't make something active
+inference
+just to use it in this statistical
+framework
+that's what's meant by the formal and
+epistemic tools
+then this framework is we argue
+compatible with a sensory motor approach
+to understanding skilled action
+it's interesting to me because the
+sensory motor approach to understanding
+skilled action
+itself could have a realist or an interp
+or an instrumentalist approach
+the instrumentalist sensory motor would
+say i'm not even saying this system has
+sense in action
+i'm just saying we could model it as if
+it had sense in action
+whereas the realism of sensory motor
+would say this system
+actually does have sensory and active
+components
+and also this is another important note
+the sensory motor view
+reflects a spectrum of ideas which
+includes simple open loop
+sensory motor correlations closed loop
+systems regularities given a goal and
+optimal sets of regularities according
+to a certain performance
+metrics these can be understood using
+the tools of dynamical models of
+cognition
+capturing the brain body environment
+interactions in terms of dynamical
+systems
+as opposed to assuming the agent is
+involved in symbolic computation
+so it's almost like we see a lot of
+separation of
+uh the isolation of agency or the
+delineation of agents
+with agent in the niche and then the
+niche itself so we see like agent
+and external internal states and
+external states and now when we think
+about brain and body
+that's one sort of inseparable dyad
+and then it is also inseparable from the
+niche
+so how are we going to take all these
+dynamical systems which have different
+physical and causal connections amongst
+them
+brain body and niche and
+work towards a framework that's actually
+going to
+say what we want to say and be useful
+for what we want to do with these kinds
+of models
+like reducing uncertainty about how
+organisms will
+act or designing environments that work
+for
+different sorts of agents how are we
+going to do that effectively
+and drawing from what we know about
+dynamical systems more broadly
+rather than bring on assumptions such as
+that the agent is performing
+symbolic computation which comes along
+with the instructionism and the
+representationism and all these other
+pieces
+stephen you know this is a useful
+uh sentence here to show that dynamic
+that's happening between the kind of
+participatory sense making world um
+and the sort of inactivists and
+the inactive inference
+world um because there's there's these
+useful distinctions that have been
+coming up
+in an activism and this participatory
+sense making
+yet they struggle to give the ways to
+actually
+calculate how that comes about outside
+of these kind of metrics
+that are looking from the outside of the
+system so
+um this this is kind of
+quite a dance that's going on but it
+seems to be yielding some
+good um progress for active influence
+because
+they're laying some of the ground for
+active inference to then see what could
+be plausibly
+uh modeled so that's quite useful
+yeah another point to that and also what
+you said
+earlier um
+they're suggesting that active inference
+is going to extend
+costly linear accounts of motor control
+which tend to focus on the contingency
+between
+new actions and their consequences so
+the loop
+there which is hardly a loop it's
+actually a line goes from
+action selection to a new
+state like i want you know i want to
+grasp the coffee cup
+how am i going to grasp i grasped that
+is
+the domain of many previous models which
+is like from some sort of delta
+that needs to be accomplished to
+achieving
+that action and that's where the model
+ends
+active inference in fact proposes a
+complementary view
+where predictions of expected
+proprioceptive states
+are not just seen as passive reactions
+to new motor signals
+like in the coffee cup grab example but
+as
+also triggering adjustable dynamic
+reflex arcs to generate new actions
+so here instead of starting from action
+to a new proprioceptive state like i
+want to be in a different state
+so um i want to select an action okay
+now my elbow is in the correct
+predicted proprioceptive state so we're
+good to go
+here we're starting with the updating
+of our proprioceptive state moving to
+action selection
+inferring our state so action and
+inference
+like the two-stroke engine are now
+working together
+in a way where we can pull out a little
+local stretch
+that has the same functional features
+as this linear causative model above
+because there's going to be some stretch
+where
+that action was performed and where the
+functional characteristics were carried
+out
+but we're embedding that in a
+deep temporal model and the temporal
+depth of this model confers a more
+active anticipatory role to
+proprioception
+now seen in a causally circular model in
+line with the inactive and embodied
+approach
+so that's that sort of rummaging around
+that gives
+an anticipatory and active role for
+proprioception
+not just a state estimate role for
+proprioception
+so that it can get relayed to the
+central headquarters
+and sent back as an instruction it's not
+like a central intelligence model
+of action selection it's like an
+anticipatory
+deep temporal model that allows sense
+to be doing something slightly different
+stephen
+um just a question when it says and so
+it says new action so new action in
+active influence is
+the new well guess
+i suppose of what the action state is
+and and then the new proprioceptive
+state
+this is interesting thing with
+proprioception
+is is that almost a guess as well
+like based on a mix of um
+sort of intraceptive data
+and other data
+or data but other ways so is it like a
+different types of guessing
+or is one of them action ones
+still being seen as perception in that
+loop
+good question i'm sure there's a lot of
+ways to go about it
+but one thought is even perception
+is inference that's predictive coding so
+our
+visual perception is clearly a generated
+inference there's no blind spot there's
+resolution and color in the periphery
+where we know the anatomy of the eye
+doesn't directly support that
+and so on there's smoothness even though
+our eyes are constantly secating
+so whether it's a proprioceptor
+or whether it's visual input that is
+also
+inferred as part of the deep generative
+model
+and so when there is ambiguous visual
+input
+or ambiguous proprioceptive input for
+example
+that inactive inference is an
+opportunity for uncertainty reduction
+rather than getting out over our skis
+within saying whether that's a valuable
+or
+a less valuable state we actually
+don't need to judge the value in a
+scalar framework
+of ambiguous versus unambiguous states
+because we can just pursue uncertainty
+reduction
+and then also cast planning as inference
+and perception as inference does that
+make sense stephen and then blue yeah
+that's that's really useful and
+i think it's like what you're saying
+there that also brings in the
+the idea of temple scale so there's with
+vision and with this
+there's what's going on below
+at greater speeds and flux than we can
+know like the circades and the way those
+circades then get put together to be
+this kind of joined up smooth perception
+of vision and
+this this is this new action new
+proprioceptive states that's almost kind
+of
+at the speed of everyday awareness
+you know and once things become longer
+and happen over the period of like
+10 minutes intervals you can no longer
+track that in your working memory or
+your working phenomenological
+consciousness
+so this is kind of like the goldilocks
+zone in a way where we're able to
+when it's talking about new action new
+proprioceptive states it's kind of
+sitting at a kind of um an
+averaged out perceptual
+awareness in a way that we can engage
+interesting point blue
+yeah daniel you already like kind of
+said what i was going to say right after
+stephen but
+um proprio reception really is is the
+expectation
+like where do i expect my body to be
+where
+like instead of asking like where is my
+leg it's like where
+is my leg supposed to be or where do i
+think my leg actually is
+and you're not always right right like
+in the phantom limb
+um case and even like you know if you're
+stuck with a pin
+right like so and this is not
+proprioception this is just
+generally like where your nerves are so
+some in some places they're very close
+together
+and you can infer with great accuracy
+where exactly the pin was poked into you
+but in some other places in your body
+the nerves are more
+far apart and so you can't tell even if
+the nerve even if two pins you put a pin
+here
+you poke a pin here you touch the same
+place it's like the pin
+is here but you're not always right so
+so there's there's
+this inference that that happens um in
+proprioception
+as well nice it's like there's
+um one mode where you have a very
+high confidence prior of where your arm
+is located you know it's right by my
+side
+let's just say and when there's a high
+confidence prior
+data that don't support that prior are
+only going to move it
+slightly if someone's very convinced
+that something is the case
+and they say it's 100 the case that this
+is this way well then
+you know there's no point in providing
+alternative evidence because
+they're going to see it in terms of
+their prior so in that case of the
+phantom limb
+it's like there's a high precision prior
+that the limb is in a certain location
+in fact it's such a strong prior that
+sensory data
+like proprioceptive data that your arm
+is in a different place or visual data
+that
+for example somebody no longer has that
+limb
+still doesn't manage to update the
+experience
+or the generative model of the limb
+being there so that's one case
+that we can frame in an active inference
+way and another case would be like
+where's my leg i have low confidence
+and now instead of framing this just as
+a estimate that there's an uncertainty
+on and then we're going to have to tag a
+value on
+we go from that estimate with
+uncertainty to
+planning as inference what motor control
+or what motor behavior is going to
+reduce uncertainty on the leg and
+sometimes that's like looking
+at it other times it but that's a motor
+behavior with the eyes
+other times it might be doing a motion
+that then like kind of uh gives us some
+sensor
+data so it's kind of i don't know like
+checking your phone and seeing like what
+notifications are there when you're
+uncertain
+maybe sometimes like a shake or
+something like that it's like just
+reactivating a bunch of sensors just to
+pass
+say oh yep we're here just checking in
+reducing your uncertainty
+and so the state estimate even when
+there is uncertainty about it
+we can reduce that uncertainty through
+action selection
+rather than just being trapped in a
+framework of like
+okay i'm not sure where it is and now
+i'm not sure whether that's rewarding or
+not
+and now i'm not sure which path to take
+that's going to be most rewarding
+we don't go down the reward rabbit hole
+because there's a deep generative model
+and
+for evolved slash created or whatever
+organisms those priors are
+fit so it's not just like we're dealing
+with the space of all possible
+generative models these have been
+evolutionarily
+selected to be functional
+in our physical constraints but
+underwater or
+in a different gravity space it'd
+be a different set of priors that would
+need to be
+uh learned or utilized
+in our last piece here what what do you
+think were some of the big
+pieces that we leave this 23 strange
+attractor
+with as we move forward like what kinds
+of
+distinctions or insights here do we want
+to see how they apply in different
+settings
+dean and then anyone else
+okay so this is gonna be a strange twist
+but that's
+that's okay so i came away from the
+paper
+and i thought about some of the things
+that
+casper did bring up casper hess did
+bring up in terms of
+so so what happens when
+when we talk to instructionalists like
+instructors are all around us there's
+people that spend
+a great deal of their life preparing to
+become an instructor
+and we come along and say um yeah that's
+great
+we know what you do um but we're gonna
+kind of
+i don't know maybe bring you down a peg
+because we're going to introduce this
+other
+stuff that you weren't asked to sort of
+train yourself up on
+and i'm not sure if that's a threat or
+not
+i guess it depends on the personality
+who the idea is introduced to but
+i'll bring i'll bring up
+if you know the movies independence day
+and thelma and louise
+um i'm going to bring those into kind of
+into a
+juxtaposition here i think for the
+instrumentalists
+um they don't necessarily see that there
+can be
+for the person who's living out the
+adversarial
+greek myth us against the aliens or
+us against the the people who are
+chasing us down and trying to get our
+our convertible back um there isn't
+there is no set of instructions per se
+that those people want to follow they're
+living the interactionist
+state and you could start out with kick
+the tires and light the fires all uh
+harry connick jr and still end up in a
+rapid deceleration moment a la
+susan sarandon and and gina davis
+and i think for people who are going to
+look at this problem
+in terms of how do we introduce
+interactionism
+in a way that doesn't threaten
+the top-downedness of how most
+most situations where we want people to
+be able to take up this
+embodied skill skillful performance
+without
+putting them in a in a situation where
+they
+behave like aliens or behave like police
+chasing somebody down with a helicopter
+we're gonna have to sort of
+i don't know i don't know if it's a slow
+rolling i'm not sure exactly what it is
+but those people who are now currently
+instructors and instructionalists by
+by profession we're going to have to
+give them
+something so that they don't cling
+desperately to
+a model that i think the authors of this
+paper
+demonstrated requires a rethink i don't
+think we throw out instructionalism
+but i absolutely do think that it's it's
+place on the top of the mountain
+and now all these little robots climbing
+up it
+that that has to be reviewed and
+revisited and so
+i mean as a go forward i don't know how
+we put people
+in a place where they're comfortable
+with that kind of
+i don't want to say it's disruptive but
+i think it is
+but i think we have to be able to come
+at this in a way that doesn't make
+them sort of circle the wagon
+solenoidally and
+try to protect something that obviously
+is
+is up for a bit of evolution before a
+revolution
+nice points there stephen
+yeah i like that idea yeah this
+challenge of
+having this mountain that we've kind of
+ascended
+and placed these optimal control
+theories on
+and maybe it's it's more like there's a
+mountain
+of active inference and there's a
+there's a little rock
+a rock structure on the top which is
+optical control theory which
+we're able to sort of utilize on top of
+that you know but it's uh
+it's it's a lot more rickety and it's
+not the
+the main game in town you know the main
+game is our intuition
+our dynamical um
+balancing of all these different free
+energy
+parameters um but we do and particularly
+humans have this ability
+to impose this extra
+um shack of tools on the top
+that we now think is the main game in
+town
+nice so to stevens then to dean's point
+so as to which one's the uh
+mountain which one's the mole hill which
+one's the ant hill
+here fristen says optimal control can be
+cast as
+active inference with three
+simplifications so as we
+increasingly clarify our understanding
+of these different models
+will be able to see which models are
+nested within
+one another or are alternate framings of
+one another
+or are you know more overlapping than
+different or what are those key
+distinctions or what are the variables
+where you can expand it to three and all
+of a sudden you've gone from model a to
+b
+so remains to be seen and
+by uh him saying that optimal control
+is a thrice simplified active inference
+along these three specific domains
+it does suggest that the bigger picture
+might be active inference and then you
+get special case
+optimal motor control with a value
+function as a
+derivative model within an active
+inference
+universe even if these other models were
+developed first that's often
+the case that a certain model is
+introduced and then it's
+later generalized in several ways so
+that in the future it's actually seen as
+a special case model
+even though it's actually at one point
+it was the only game
+in town certainly for a lot of biology
+models that's the case
+and then dean i really like this idea of
+like there's a job title called an
+instructor
+and if somebody says i'm an instructor
+in
+you know organic chemistry or in tango
+baseball people know what you're talking
+about so how could interactionism
+be so broadly
+participated in that people say yeah i'm
+an interactor
+i'm a baseball interactor or i'm an
+ochem interactor
+maybe the job would be called that or
+not so how do we
+like you were saying not kind of
+threaten
+or um disrupt their modes but
+give a yes and for what they're working
+on and
+maybe part of it is that the interactor
+it's like we're framing their
+interactions with their
+student let's just say as a cultural
+scaffolding
+of an interaction that doesn't make it a
+symmetric interaction
+it's a culturally scaffolded moment
+of bayesian model updating and so it's
+like
+yes you do give instructions that's the
+verbal term for what you say when you
+say pull
+or breathe or okay slow down you can
+still give instructions we're not
+saying that that is not part of your
+toolkit but let's
+more broadly look at your interactions
+with this dynamical system
+as doing what you want to do
+and maybe it'd be enough just to push
+them to that
+edge of the hill and just say
+interactions are a broader
+way than instructions would you want to
+reduce everything you do to just
+barking instructions or sometimes you
+lead by example other times you
+show wordlessly you don't need to frame
+your
+interactions as instructions recognize
+that you're
+just dynamically interacting systems and
+this a lot of people are working on a
+framework that suggests
+that this is a broader way of thinking
+about training and
+might be able to help you on one hand
+with the high performance elements
+and on the other hand with accessibility
+and in making your work more
+communicable
+not sure about that of course but just
+one way to go steven
+yeah with the idea of roles and how
+people uh
+look at performance in roles this really
+comes back to coaching again i mentioned
+that earlier is
+you know we've coaching came out of the
+need to supervise
+therapists and how they could be
+guided in their path as they were
+supposedly helping the people that were
+needy
+they needed guidance and that same idea
+now of
+coaching rather than teaching
+or instructing and
+um while they have their role as giving
+the formal documents that you might need
+and
+providing the bigger narrative and
+giving certain tools
+you know you you within that you there's
+this idea of
+okay what types of developmental or
+performance
+interactions can be nurtured and
+cultivated
+and i think this actually really can tie
+into the kind of pragmatist
+social constructivist approaches that
+coaching's trying to work with
+as in but it gives it a bit more um
+does actually give it a bit more meat
+without becoming too complex which i
+think
+previously a lot of the active
+influences may be a bit too abstract
+but this is starting to show a bridge
+there of why coaching
+at different levels can and positive
+psychology more broadly
+can have a role
+okay great thank you stephen dean yeah
+stephen i appreciate exactly what you're
+saying i
+i think to get to a place where
+interactionism
+is no longer threatening
+people have to want or appreciate that
+you can be a subject matter expert and a
+prediction matter expert
+and i'm not sure i think there are maybe
+are some
+coaches who are both
+and i but i sort of transcended that
+and got into the wayfaring thing because
+wayfaring imposes
+a prediction aspect to this now i can't
+predict for you
+whether that running drum shot that you
+make i can't be in your ear
+i cannot coach you to take that shot in
+that moment with
+that much time left on the clock in fact
+if i do that
+i'm probably adding impediments and i'm
+actually
+being an optimal control list
+micromanaging you
+and you whether you make it or not it's
+not about
+me it's about whether the ball and the
+and the and the basket arrived at some
+sort of outcome that we both want
+i think that i think that that's part of
+how we get people to a place where
+their dependency on their subject
+subject matter expertise
+doesn't overwhelm the fact that for
+these performances
+there is a predictive element and so we
+have to
+sort of give that equal billing i don't
+think we have to over bill one or the
+other
+it's back to the between and that's a
+prediction matter expert and
+again i don't know if it's a role being
+away
+fairer because you're in the boat with
+that other person right
+it doesn't matter whether you're the one
+saying okay well i'm
+i'm getting a sense of the direction of
+the current right now and the other
+person's
+looking up at the stars you're working
+together
+and so you everybody brings their
+expertise
+and i think that that only
+that only materializes if we can if we
+can include something with the subject
+matter expertise
+culturally yes absolutely there's huge
+cultural piece to it
+but i think i think you can be a coach
+and not necessarily be a wayfarer
+but i think if you're a wayfarer you
+have to bring
+a predictive element into it otherwise
+you're not being a wayfarer
+interesting about having an integrated
+way to talk about
+goal and process
+and interaction with a niche interaction
+with your co
+wayfarers just like your example with a
+movie
+you know there's is the map app going to
+tell you which
+directions to take that's kind of on the
+instructionist end
+versus are you on the run so anywhere
+you go
+you're you're just not following
+instructions you're just negotiating
+sequential interactions and reducing
+uncertainty in a way that
+isn't just looking down at the
+application and seeing which way to turn
+when nice i'm glad you picked up on the
+uh
+the map going out the back end over the
+trunk of the car
+exactly oh you're reading it oh no
+right um cool well
+steven yes yeah just one question way
+fairer is that like a particular sort of
+approach is like an
+orientation based or well yeah
+yeah you're on your path and how are you
+faring how are you feeling
+okay right it's not just way finding
+it's not just
+the discovery piece but it's so how does
+that make you feel being in that
+uncertainty space
+because again if we're going to close
+loop discovery will eventually loop back
+around to recapitulation
+and then all right we're open systems
+that are constantly closing these loops
+so how does that make you feel right
+okay
+to connect that also to john boyk
+and second order science as well as a
+bucky fuller in
+trim tab when we're
+the rudder we need to act in an
+anticipatory
+fashion so that's kind of like first
+order cybernetics the
+rudder has to turn before you hit the
+iceberg
+you know you gotta find a path so
+pathfinding and
+that whole notion of anticipatory
+control
+comes to the rudder and the trim tab is
+the little
+rudder on the rudder so it's
+anticipating
+even the anticipatory nature
+of planning because you have to turn
+that trim tab
+even before you turn the rudder and so
+here we have instead of a sort of
+mechanical model
+with recursive levels of rudders we
+actually have hierarchically nested
+priors and so it's a little bit like
+higher and higher level priors
+that in one sense when you look at one
+iceberg
+and you try to tell a story by
+backfilling what happens
+they do act in increasingly anticipatory
+ways
+but then when it's seen as just part of
+the wayfinding of the ship
+they're all in a cyclic feedback with
+each other and it's not like one is
+really upstream of another
+but there are certainly pieces doing
+different things
+cool stuff
+any um final thoughts or questions i
+don't see any other
+questions from the live chat but
+another um interesting and surprising
+as usual does anyone have any
+final comments
+well great we'll um look forward to
+some awesome upcoming streams let's just
+look at those really fast
+next week on the 21st
+we're going to have our symposium with
+carl fristen
+so if you've been helping to co-organize
+this event and develop the questions
+with us
+you'll be with us live otherwise we're
+going to be recording this
+not live streaming it and then providing
+the recordings on our youtube
+channel and then for the second two
+weeks
+of june we're going to be
+doing a more technical or statistical
+paper
+empirical evaluation of active inference
+in multi-armed bandits
+then in early july we're going to have
+a fields and living paper scale free
+biology
+integrating evolutionary and
+developmental thinking
+then uh don't have any papers for the
+end of july or beginning of august but
+we'll
+figure out what we want to do there and
+then we'll be
+turning to some industrial engineering
+and some other areas so
+as always pretty fun journey
+thanks uh dean blue steven
+dave for participating live and everyone
+for
+watching live on replay we'll see you
+on a future stream

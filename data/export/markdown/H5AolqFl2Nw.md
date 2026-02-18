@@ -1,0 +1,3589 @@
+---
+title: "ActInf ModelStream #001.1: "A Step-by-Step Tutorial on Active Inference""
+category: "ModelStream"
+series: "ModelStream_001"
+episode: "1"
+duration: "1:59:21"
+url: "https://www.youtube.com/watch?v=H5AolqFl2Nw"
+views: 6600
+exported_at: "2026-02-18T22:37:37.749180+00:00"
+format: markdown
+---
+
+# ActInf ModelStream #001.1: "A Step-by-Step Tutorial on Active Inference"
+
+hello everyone
+welcome to the active inference lab this
+is the first active inference model
+stream active inference model stream 1.0
+and i'm really excited for today's
+conversation i'm
+daniel friedman and just to introduce
+the other participants today
+uh ryan go for it uh yep
+hi i'm uh ryan uh i'm from the florida
+institute of brain research
+hi i'm christopher i'm a phd student at
+the mrc
+cognition brain sciences unit which is
+based at the university of cambridge
+hi i'm max murphy i just completed my
+phd at university of kansas in
+bioengineering
+uh with a focus on neural engineering
+awesome
+thank you everyone for participating and
+for ryan and christopher
+two of the authors of this awesome work
+we're going to be exploring
+so this is the first in a several part
+series that is going to be highlighting
+several perspectives and
+addressing questions related to the
+active inference tutorial paper
+of smith at all called a step-by-step
+tutorial
+on active inference and its applications
+to empirical data
+so the idea here is for those who are
+working with empirical data
+to learn about active inference as a
+method and also for those in the active
+inference community to be learning about
+some of the methods that apply
+active inference if you're listening
+you're participating
+and if you have any questions during the
+live stream feel free to post it
+in the youtube live chat and we'll try
+to address it during
+or after this presentation that we're
+about to get
+if you have questions after the live
+stream please feel free to leave it
+in a comment form and we'll try to
+address it
+and integrate your input in future
+sessions
+and to learn more and to participate
+check out activeinference.org or any of
+the information in the video's
+description
+so that's all the information uh or
+metadata for this video
+the way this is gonna work today is
+we're going to do some introductory
+questions uh just sort of like asking
+what in general is this work about
+what motivated the authors to write the
+paper the way that they did
+and then both ryan and christopher are
+going to share their screens
+for part of the presentation and they're
+going to show us a few different things
+about the work that they've done and
+then we have a couple of questions
+prepared on our side
+but also we're going to be looking at a
+live chat if anyone has questions so
+just post it
+whenever you feel like it in the live
+chat and then we'll again try to address
+it
+so as i stated the intro questions and
+then we'll go to the presentations
+so first intro question to uh the
+authors
+is what is this work what is exciting
+about it what
+motivated you to work on it
+um okay so uh so just to kind of
+reintroduce myself a little bit more so
+i'm uh ryan smith so i'm an investigator
+at the laureate institute for brain
+research in tulsa oklahoma
+and the um the focus of our institute is
+um primarily on uh neuroimaging
+and sort of neuroscience approaches to
+understanding
+um psychology and psychiatry with a
+focus on sort of treating psychiatric
+disorders
+um and so for a while now there has been
+um the use of simpler computational
+models
+primarily reinforcement learning models
+or drift diffusion models things like
+that
+um out there for researchers for who are
+working with empirical data
+who so there are good resources out
+there for people to learn those methods
+um to apply them to data in their own
+research
+um however at the moment so active
+inference is a sort of much newer field
+especially it's sort of a formulation in
+terms of uh
+partially observable markov decision
+processes and
+there isn't really to date a really
+clear sort of combined place
+to learn the sort of practical methods
+to um to build these sorts of models
+and um to then sort of apply them
+to uh task behavior in empirical studies
+um so the kind of motivation for this
+paper this tutorial
+was to allow somebody you know so new
+students or somebody who's sort of like
+an early
+earlier you know junior faculty things
+like that who wants to
+go in this direction to give them the
+resources they need to do that
+as easily as you know and as thoroughly
+as possible so
+even if you start out not really
+having any background in this stuff the
+hope was
+that you know the the first section of
+the paper would
+allow you to kind of get enough of a
+background in theory
+such that you would understand how to
+then learn how to build these models
+specifically for empirical tasks and
+eventually
+to learn how to fit those models to uh
+to data
+um so that they could be used in your
+own sort of research
+um you know even you know for across
+many different
+fields so i would say what's what's
+exciting or motivating is
+is primarily just that if you're a new
+researcher and you're interested in this
+but you don't know how to do it
+you know the hope is is kind of going to
+be like a one-stop shop where if you can
+get beginning to end then you'll
+know how to do what you need to do to
+start using it in your own research
+so that's the major driving uh
+motivation
+awesome i love that one stop shop for a
+researcher who wants to apply the
+methods but doesn't really know
+where to start so that's really a great
+idea and
+you have version the document many times
+to really
+address people's input so it's cool how
+it's an evolving document as well
+so christopher what would you say in
+response to those
+intro questions um
+so i think there are two parts of my
+motivation for writing this the first
+was the selfish motivation in that i
+think
+if you want to understand something the
+best way to do it is actually to write a
+tutorial on it
+and so in when ryan asked me to do this
+tutorial with him
+i was jumped at the opportunity just
+because it would be an opportunity to
+kind of
+actually learn this stuff better myself
+and really get into some of the more
+technical details
+um and so then more broadly speaking
+though
+i think there are lots if in principle
+there's nothing kind of
+applying these models in practice is no
+more complicated than doing like
+model-based reinforcement learning
+and yet it's incredibly more common to
+see researchers working with
+various more sophisticated rl schemes
+and i think
+if you are a graduate student maybe
+starting in psychology or neuroscience
+you're like hey i'm
+interested in whatever it is uh decision
+making under uncertainty
+and i mean we have a finite time in this
+earth right and a fine amount of time to
+actually
+dedicate into learning things and so i
+think it would be perfectly rational if
+it's someone to look at active inference
+research
+like wow this is super technical i wish
+i could learn it but here's this other
+thing where i can go on euromatch i can
+read sutton and barto
+and really totally get up scratch and
+use my research fairly easily
+and there just wasn't something really
+accessible
+to help people actually apply in their
+own research um so that was kind of my
+yeah yeah i mean i should say just as a
+little background you know when i wanted
+to learn this stuff
+originally at the end of my postdoc
+before i took my current
+faculty position um i the only way to do
+it
+the only way that i could learn it was
+actually to go you know hang out at the
+phil
+in london with carl for about four
+months um
+and you know just ask people a ton of
+questions and
+sit there and that was the only way you
+know so without having to
+you know physically go to uh one
+location in the world i was very far
+away from you know my current
+institution
+and without doing that there really was
+no way for me to do it so i mean this is
+sort of a out of empathy for my past
+self
+that you know this is the sort of thing
+i wish i would have had available to me
+so i could learn this stuff
+independently
+cool so max um what is your
+background or what got you really
+excited to work through the paper and
+develop a lot of the examples out on
+your own um computer and everything so
+what what got you excited or where are
+you coming from today
+sure um yeah so uh maybe i'm kind of
+your target demographic in some sense
+uh i don't know that i could really be
+considered a junior investigator
+although i hope i could someday be that
+um and i'm interested in um i'm much
+more on the
+the motor motor system side of
+neuroscience as opposed to the decision
+making so this
+just the whole um lexicon it's a little
+different
+but i am seeing so many commonalities
+when i'm coming from a signal processing
+background i think of things
+um in terms of kalman formulation and
+trying to integrate sensory and motor
+information i see a lot of similarities
+there and so for somebody like
+myself then looking at some of fristen's
+work and seeing how
+he's described you know the the anatomy
+of uh
+inference and could this apply also in
+motor systems
+i'm very interested to see how this
+might apply in my
+own future research and work
+cool so let's just say that you were
+speaking
+ryan first and then christopher to that
+early
+investigator researcher of any age who
+is like okay
+i get it um in reinforcement learning
+it's about reward or reward-centric
+learning is about reward
+what is active inference how is it
+taking a different
+perspective on what it is that organisms
+are doing than
+that kind of classical account of reward
+based learning for example or whatever
+you'd like to contrast it with
+but what is the bridge from the kind of
+assumptions
+and implications that lead somebody to
+work on that classical framing
+versus what is the um difference in
+thinking that is active inference and
+how is that manifested in the model
+so i think this is actually a really
+important thing to bring up right from
+the start
+is that so there's a there's a kind of
+big distinction between
+um when people talk about the free
+energy principle broadly or the
+philosophy of the free energy principle
+and there's a very kind of uh you know
+somewhat wide chasm between that
+and what gets called active inference
+nowadays where active inference is a
+corollary
+of the free energy principle but um
+you know active inference as formulated
+in terms of partially observable
+partially observable markov decision
+processes is a
+quite a bit narrower right it's a very
+specific sort of
+discrete state-space generative model um
+and that has particular sorts of
+elements to it um
+and it it doesn't actually require
+knowing a lot of the things that people
+talk about with respect to the free
+energy principle more broadly
+um it appeals to um free energy and
+expected free energy
+as functions right as more or less cost
+functions for
+figuring out what the best choice to
+make is um
+and it but but at the end of the day i
+mean when you apply
+these sorts of models to behavioral
+tasks that they used in studies
+it's actually there's quite a bit of
+similarity i mean you can really see
+active inference models or at least the
+mdp formulation
+as as just a particular is kind of like
+what chris said is just a particular
+kind of flavor almost of model based
+reinforcement learning
+um you know so instead of i mean there's
+there's some sort of technical
+differences
+right where um the way that sort of carl
+and them have set it up
+what you're doing is kind of like it
+allows for kind of a fully unified
+bayesian way of doing
+reinforcement learning and decision
+making processes
+and you do that by instead of calling
+something
+a reward per se you define this
+probability distribution
+over observations that gets called a
+preference distribution
+and so reward then becomes a kind of
+probabilistic preference
+to observe some things over others um
+you know so if you call
+a particular observation a reward um
+then calling it a roar just amounts to
+having a
+precise preference distribution that has
+a precise
+high value over whatever that rewarding
+outcome is
+and then the agent is simply driven to
+make decisions that it thinks is most
+likely
+to get it to observe the thing it
+prefers
+right so this preference distribution is
+more or less a way of specifying what is
+rewarding to the agent right what the
+agent is seeking
+um one thing that is kind of nice about
+active inference that's a little
+different
+from reinforcement learning per se
+or there's a few things i should say one
+is that um
+making decisions based on trying to
+minimize expected free energy which
+chris will cover
+doesn't just try to maximize reward
+it also simultaneously tries to maximize
+information gain
+so so what will happen is you know say
+say an agent starts out in a dark room
+you know just to take a very kind of
+contentious
+you know philosophy of the fep sort of
+example
+right say an agent starts out in a dark
+room um
+which means that it doesn't know where
+anything is
+right so that means it has a lot of
+uncertainty over what state it's in
+um and let's say simultaneously in
+another room
+there's a fridge with some food in it um
+then there will be two different sorts
+of drives there right there'll be this
+epistemic drive
+to do whatever it thinks is gonna give
+it the most information gain
+right which will be go turn on the light
+right so then it'll know
+what state it's in right whether it's in
+room a or room b
+right or whether there's a couch in the
+room or whether there's a
+tv in the room or whatever right um and
+that's not
+reward per se that's just trying to make
+the app
+choose the action that's going to
+maximize the amount of information you
+get
+the other the other chunk of it though
+is to maximize
+observing preferred outcomes and so the
+agent will also be driven to just leave
+the room
+to go to the fridge you know to observe
+itself eating food um
+you know so in practice what will happen
+that typically won't happen
+at least in a standard reinforcement
+learning setting
+is that the agent won't just try to
+maximize reward directly
+a lot of times it will first choose the
+action that will
+help it figure out where it is so that
+it's more confident what to do
+to get the reward later so
+so it's so it's really not again in
+practice these models are
+are just a nice fully bayesian way to
+integrate
+perception learning and decision making
+where decision making is driven to both
+maximize information gain and maximize
+reward
+christopher thanks a lot anything else
+to add there
+um no not particularly i i think the
+only thing i would say and i'm going to
+say this in a little bit
+on a slide is if you're interested in
+the technical details what ryan just
+said there are two really good papers
+um maybe we can make these slides
+available afterwards as well
+um one's by norsajid and i'm not sure if
+i'm sorry if i'm
+butchered your name there um the other
+one's lancelot decosta
+and they have two excellent papers
+comparing it to reinforcement learning
+so
+formulations excellent um just to draw
+out a couple points
+ryan from what you said so one is that
+uh
+the active inference framework and
+specifically the
+po mdp the partially observable markov
+decision process
+instantiation of active inference is a
+corollary
+or like a derivative of the free energy
+principle
+and there's a lot of philosophy and
+contentiousness around different aspects
+of that we're going to read a paper in
+active inference stream 14 by mel
+andrews about
+the math is not the territory about the
+philosophy and the status so yes if you
+want to go
+that way there's a whole rabbit hole
+there but this is kind of like a tool
+like a linear regression
+you don't get caught up in the weeds on
+number theory or on the information
+space that it's about
+where the calculation is useful and
+tractable
+it's going to be a tool so that's kind
+of where we're coming at at least today
+and in this series another interesting
+thing
+and in contrast with reinforcement
+learning which is kind of like
+uh reinforce what works and don't
+reinforce what doesn't work that neurons
+that fire together wire together
+positive reinforcement schemes there is
+a reward preference built into that kind
+of model
+but when there's a basin of low reward
+it's often difficult for those models to
+latch on
+so we saw that in the paper of alec
+chance at all
+in active inference stream eight scaling
+active inference
+that kind of showed how even up against
+these very very
+large scale machine learning models like
+q reinforcement learning and things like
+that
+other state-of-the-art deep learning
+models that the active inference
+trolley car and control theory robots
+were able to work really well because
+first they did what you just described
+ryan which was
+they kind of went into an explore mode
+before going into a more fine-tuning
+mode and so in doing so they transcended
+the explore
+exploit simple trade-off it's not just a
+knob in this model
+it's not a coefficient to balance
+explore versus exploit i hope will draw
+out an understanding that they're
+actually related in a different way
+because there's something that's model
+based and generative that's happening
+and so
+really a ton of interesting stuff so at
+this point
+i would think we could go into the
+presentations
+if people have any questions that arise
+put them in the youtube chat and i'll be
+copying those out
+for addressing them later and um other
+than that let's just work through the
+presentations however
+ryan and christopher have set up and
+preferred
+cool okay go ahead and just share your
+screen chris you can just go ahead
+yeah it's like just kidding
+okay so i'm using a dual monitor setup
+we'll see how this goes
+um
+okay sorry i now have to open system
+preferences sorry
+to allow microsoft teams to use it sorry
+about that
+um
+okay should be with you momentarily
+cool
+good to digest really it's really
+it's interesting stuff and we're all
+learning by doing
+here so i just really appreciate and
+have just seen a lot of
+appreciation for this kind of work
+because in some ways it's like the
+missing
+piece between a lot of these
+hypothetical or abstract or scaffold
+models
+or what people have heard about with
+respect to what active inference is
+and then how it's deployed how it's
+enacted so to take the inactivist
+insight seriously as practitioners of
+science
+and as communicators as well it means
+making this kind of work and
+showing us how you do it as we all are
+trying to like
+figure out every level from literally
+the tech to
+the best way to make it rigorous and
+accessible
+the best ways to talk about it so yeah
+what what do you think about that ryan
+um yeah i mean i totally agree hold on
+to chris
+yeah actually i've never used um this
+there should be a little thing in the
+upright corner it's like an arrow
+pointing into us into like a square
+share content
+are you guys both on pcs yeah
+yeah okay so yeah so
+it should be upright corner like right
+next to the leave button
+okay um or ryan you could present
+first or yeah um
+i actually have a question i i have a
+question it will really work for me to
+present first i think i think
+you know yeah what i'm gonna do not
+gonna be so comprehensible before chris
+got it i actually have a question that
+will take a couple of minutes uh
+christopher while you're figuring it out
+is
+what tools would somebody need to follow
+along
+so what programming language or what
+interface
+do they need what background knowledge
+do they
+need is there a software to download is
+there a course
+what are the prerequisites for doing
+what we're about to basically jump into
+um yeah so i mean i'll just say that
+that you know a lot of this stuff was
+originally designed
+by carl fristen um and if you know
+a lot about carl um you know before he
+proposed a lot of this active inference
+stuff you know he
+was uh sort of most uh you know famous
+or his his biggest contribution was
+putting together
+uh sp spm within matlab spm is um
+like a it's called statistical
+parametric mapping software but it was
+more or less the original way of doing
+fmri so like analyzing functional and
+like neuroimaging data
+and so a lot of the scripts and dynamic
+puzzle modeling i should say which is a
+particular sort of approach to doing
+your imaging
+i mean so a lot of basically all the
+standard resources all the standard
+coding routines everything
+for actually building active inference
+models right now
+is primarily an spm which runs
+within matlab um so and all the
+kind of supplementary tutorial code that
+we've provided we've provided i think
+six
+six or seven different um different
+supplementary scripts
+where you can actually run the
+simulations and build these models
+yourself
+they are they are all they're all in
+matlab um
+so if you so if you have matlab then you
+need to have downloaded spm
+um and with matlab and spm you um
+you will have everything you need to do
+to open our supplementary code
+and to uh and to follow along so a lot
+of the tutorial is actually set up so
+it assumes that you're kind of have the
+paper open
+side by side with the code so you can
+actually click on
+you know different options to simulate
+and reproduce all the figures in the in
+the tutorial paper
+so it's uh yeah so the short answer is
+you need matlab and you need spm
+um thanks for that and you need to have
+some minimal
+ability to you know work with work with
+matlab
+just just to piggyback on to that for
+anybody's
+benefit watching this in the future
+whenever you're watching this uh
+once you get the spm folder you know
+you'll unzip that you'll get that folder
+you'll put that somewhere on your
+computer
+you'll want to make sure that you add
+path from your matlab workspace when
+you're in the supplementary code
+provided
+by uh ryan and christopher
+when you're in that workspace add path
+of that folder wherever you put it
+add path of that folder slash
+toolbox slash dem
+and then you should have access to the
+additional spm12
+scripts that you need in order to make
+use of the functions they've provided
+yeah no thank you very much i mean
+that's that yeah for someone who's never
+used matlab yes there's a few
+steps like that which are super
+important um
+yeah because basically all these scripts
+are actually within yeah within
+the dem toolbox um
+of spm um and uh all the scripts they've
+provided
+um call on uh sort of
+sub functions um within that are within
+spm
+um so so yeah it won't unfortunately
+uh none of them will work without
+without spm at the moment
+um although there are certainly efforts
+to try to make
+um some of these routines more sort of
+generally accessible
+and like free software um like alec alec
+chance for example
+is in the process of um i think writing
+a uh like a python
+version of the um of the main um
+active inference uh mdp script which is
+called the
+it's called uh uh spm
+underscore mdp underscore vb underscore
+x
+and that just corresponds that just mdp
+underscore vb underscore x corresponds
+to markov decision process
+underscore variational base underscore x
+which stands for factorized
+um and i'll i'll go over what
+factorization is
+um and how you actually code that in
+once we get to
+my section um
+okay i'm gonna ask a follow-up there so
+i have my
+desktop computer i have matlab and it's
+all working with referencing
+spm most updated version
+and i've run through the examples that
+we're going to be working through maybe
+today or the ones that are in the paper
+so i kind of hit enter and i got things
+to work
+everything's all the scripts are working
+fine
+what information from my system do i
+need to know
+like what measurements are going to be
+relevant for me to bring to the table
+if i'm going to do a t-test for whether
+two ant colonies are
+a different uh size you know i know what
+kind of machinery i'm going to need you
+know two columns
+in the excel spreadsheet or something
+but what kind of data
+or what attributes of the system are
+important
+to bring to the table for an
+investigator to utilize
+the examples that you're providing
+um yeah so i mean so i mean there's a
+couple things i mean so
+so first the um
+you know so the first goal is you know
+you take a particular
+behavioral task and you have to figure
+out
+what the right generative model is um
+for that task
+um and this is the sort of thing that
+i'll give an example of i can actually
+show you multiple examples of this
+um and so once you have this or
+generative model set up
+then you can run simulations and those
+simulations will generate
+observations and they'll generate
+expected actions um
+so so what you need then is you need
+data
+from an actual participant performing
+that task where you'll know
+on each trial um what the person
+observed right what the tasks amelia
+were
+and you'll know what action they
+actually chose
+and so then what you'll do ultimately is
+you'll do what's called parameter
+estimation
+which is and again this will be a lot
+more comprehensible
+once i actually show you but but
+basically what you try to do
+is you try to find the set of parameter
+values in the model
+that generates behavior that's most
+similar to what the participant actually
+did
+and so once you find the parameters you
+know say one has a value of two and the
+other has a value of four
+and that generates behavior that's
+identical to whatever a given
+participant did
+then those values of 2 and 4 you can use
+those
+as individual difference estimates you
+know so if you have those values for a
+bunch of different people who behaved in
+different ways on the task
+then you could say hey you know is there
+something different right about the
+people that have a parameter value of
+four
+versus a parameter value of eight right
+can i use that to predict for example
+you know how well somebody's going to
+respond to a particular treatment
+in in computational psychiatry um
+um hi chris twice yes
+um
+yeah but so but so but so that's that's
+kind of the idea
+um you know and i mean i can't i can
+share my screen in the meantime
+um i don't know well here i can i can
+perhaps go through
+some of this um so i'll just share my
+screen until
+i'm good yeah sorry that was this whole
+thing was
+um oh you're good okay
+i think i am at least can you guys see
+my screen uh yes perfect
+uh right here okay great sorry about
+that there was some a whole bunch of
+privacy issues
+um they had to enjoy the passwords there
+anyway
+okay we are here so
+okay so are you guys seeing my present
+of you or are you seeing the full thing
+looks uh we see the we see the full
+slide yeah just the slope awesome
+okay so this is just kind of part one um
+after i've done
+gone through this uh ryan's going to
+take over and go through some of the
+practical aspects of it
+um and so then just kind of reiterate
+the scope and purpose
+our target audience really is kind of
+researchers in neuroscience and
+psychology that don't have a strong
+kind of quantitative background in maths
+or ml in particular early career
+researchers
+and we just really want to provide
+people with a requisite background
+to actually apply this in the context of
+their own
+okay and then so just to quickly
+highlight some really fantastic other
+resources
+um the first paper is by lancelot de
+costa which is an incredible technical
+review
+just came out mathematical psychology um
+north has a really
+other incredible paper this came out
+neural computation
+and i think the um comparison to
+dynamic programming and bellman
+formulations um is still in pre-print if
+that's right ryan um but as well there's
+some really phenomenal
+informal tutorials with oleg solo shock
+i'm sorry if i butchered your name but
+anyway they're
+fantastic kind of informal tutorials on
+medium
+and then lastly is kind of the closest
+thing to what we're doing today
+is these lectures by philip
+schwartenbeck
+in the computational psychiatry
+summer school and these really are
+fantastic
+the only difference is that they work
+with to my knowledge i think they work
+with the unfactorized mdp scheme which
+is a little less flexible than what
+we're working with
+um okay and so
+there are a lot of ways of kind of
+motivating active inference
+i think kind of the way that's most
+intuitive to a lot of people in
+cognitive science or backgrounds in
+cognitive sciences to
+kind of start from perspective of the
+bayesian brain and so
+interrupting if anything's kind of
+moving too quickly or too slowly or
+anything like that but broadly speaking
+the idea is
+is that the brain encodes a generative
+model of the environment
+where this generative model is just kind
+of a joint probability distribution
+and then outside or in the outside world
+as it were
+there are states and observation states
+give rise to observations
+and we use the generative model in
+combination with bayesian updating
+to infer the hidden causes of our
+sensations
+from the observations and then we take
+actions based upon
+our kind of internal model of the world
+that couples us back
+to the generative process that if that
+makes sense and so there's this kind of
+perception
+action loop that's always going on so
+chris i think i think you might want to
+tell people just what the p o comma
+so that is a joint probability
+distribution over observations
+states and policies where policies are
+just actions or sequences of actions
+um that are available kind of all of the
+actions that
+are afforded to the agent essentially um
+okay and so then kind of
+just we start with like a re illustrate
+this we'll just give like a really
+really basic example
+and so you might be imagine being
+presented with
+kind of a shadowy shape like this and
+then you might and what you want to do
+is infer the causes of that shape based
+just based upon
+the observations but you don't just have
+observations right
+you have some prior knowledge about the
+world
+um and so we can specify that here so we
+might say
+where two possible causes in this very
+limited example
+there is we might say that the shadow is
+caused by a convex surface or a concave
+surface
+and they have fairly similar prior
+probabilities however we also have the
+structural prior that we've kind of
+acquired through a lifetime experience
+of just light emanating from above
+and under the kind of a structural pry
+that light emanates from above
+the likelihood of the observation of
+that particular shadow
+kind of conditional being concave is
+much much higher
+okay and so then we can then combine the
+two the prior and the likelihood
+to give us a joint distribution where
+this is just kind of conditional on a
+specific observation
+we can then and then we sum over
+the states in that likelihood to give us
+our marginal likelihood and then divide
+our joint distribution or our generative
+model by our
+marginal likelihood and that's called
+model inversion or is often
+colloquially called model inversion
+and from there we get our posterior
+distribution this is the probability of
+states
+conditional on observations and so we
+started with a prior
+and a likelihood and got to a posterior
+through bayes rule and that is kind of
+formally speaking the optimal way to
+infer
+the probability of hidden causes given
+observations
+and the complication to all this is that
+the marginal likelihood is generally
+speaking computationally intractable
+um so i in the case kind of these very
+simple discrete distributions
+the number of sums that you have to
+perform scales exponentially with the
+size of your hypothesis space so that's
+extremely impractical um and
+kind of more realistically when you're
+working with in continuous state spaces
+if you have non-gaussian or non-linear
+um signals
+they're just analytically the
+distributions is analytically
+interactable
+so chris i think i think uh max had a
+question yeah yeah sorry
+yeah real quick uh just just to really
+explicitly uh touch on
+the idea of hidden hidden states and
+hidden variables
+in this particular context uh would it
+be fair to say that it's not only
+the convexity or concavity of the the
+potential
+you know thing that i'm looking at but
+also i could think of
+the light source the direction from
+where the light source is as being
+another hidden variable
+and those things together would it be
+fair to term those as under my
+markov blanket or is that uh getting a
+little too far out from where we want to
+be talking right now
+yeah so markov blankets don't really the
+kind of markup blanket concept here
+doesn't really
+come in in in any really interesting way
+i mean you can formulate it that way but
+really the idea is just
+you have this prior expectation so when
+you're looking at the little gray disc
+right there under observation
+most people when you look at it even
+though it's actually just a flat
+shape with some you know it's just a
+flat two-dimensional thing that has
+a little bit of darkness in one place a
+little bit of lightness in another
+um you know if most people see that as
+being concave
+even though it's a flat 2d thing
+right so the idea is is just that
+there's a reason
+right why people typically see it as
+being concave as it's kind of like
+popping in as opposed to out
+and that's specifically because there's
+this prior belief
+that um that light sources tend to come
+from above um so the the hidden states
+here
+are kind of there is a joint in the
+likelihood which just means
+that there's a in the upright where it
+says likelihood there's a concave comma
+light from above right so those are two
+different hidden states
+what it's saying is um if
+the hidden states are concave and light
+from above
+if the combination of those things is
+what's generating
+the what i'm seeing with that gray disc
+thing
+um the probability of the shadow shape
+that the shadow pattern that you see um
+is 0.9
+whereas if it was convex and light from
+above if those were the two hidden
+states
+then the probability you get that shame
+that same shadow pattern is only 0.1
+right in other words it'd be really hard
+to get that
+pattern of shading if if the thing was
+popping out
+under the assumption that light's coming
+from above
+um so so the observation here is shadow
+and the hidden states are
+concave and light from a concave or
+convex and light from above and like
+from below
+okay thanks yeah just one other quick
+example there would be like the chess
+board
+with a shadow and a dark square it's
+perceived under a deep cultural prior
+that chessboards are regular
+alternating grids it makes an ambiguous
+shaded square appear as something that's
+quite different than it is people can
+look that up
+and then another uh thing this reminds
+me of is like using a t-test
+to test whether group a versus b is
+taller or something like that
+it assumes but um it can be an
+assumption that can be
+slightly bent is it assumes that other
+than the variable being considered
+other things are sort of fixed or not
+mattering otherwise your statistical
+test is basically misleading
+because it could be capturing some
+totally confounding variable
+in the framework you put it in and so
+whenever you're talking about a real
+biological organism you're talking about
+conditioning on certain things
+and then given what is totally
+conditioned out of the picture
+so i i kind of see where you're going
+with the blanket but it's
+not specifically in this place but a
+good question
+but it's like depending on the
+irrelevancies that we can condition out
+then we're looking at the conditional
+relationships between different
+observed states versus the hidden things
+so
+cool stuff and again in the live chat
+people can post any
+questions on it continue christopher
+yeah thank you
+um yeah thanks for covering that ryan um
+okay so then the idea is is that the
+marginal likelihood is generally
+computationally intractable
+but kind of borrowing some ideas from
+statistical physics
+what you can do is actually use some
+approximation techniques and instead of
+evaluating the marginal likelihood
+directly
+we can evaluate something that's always
+provably greater than or equal to
+the marginal likelihood i'm so going
+through that
+right now okay and so we're just going
+to take the logs kind of for
+mathematical convenience and the reason
+we always work with logs or generally
+speaking is because
+log log algebra is just a lot easier
+just because it turns multiplications
+into arithmetic
+um so things it's just easier to work
+with essentially
+so we'll take the negative log of our
+marginal likelihood
+um this is also sometimes called
+bayesian model evidence and
+when we have a negative log of a
+probability it's also called surprise
+and information theory which is kind of
+the terminology i'm going to use the
+rest of this kind of presentation
+and so you can see on the right-hand
+side of the equality this
+is kind of the sum rule of probability
+we can get back our surprise by just
+summing over
+kind of all of the states under our uh
+joint distribution over states and
+outcomes
+and then we can kind of do a little bit
+of a trick here so what i'm going to do
+now
+or show you is that we are going to
+multiply this joint distribution or
+generative model by some arbitrary
+distribution
+we multiply and divide by the same
+distribution
+and so nothing has changed here this
+quality still holds
+i could cancel these if we wanted to but
+i don't want to
+and that's in particular because i want
+to take advantage of something called
+jensen's inequality and that is that a
+result showing that the
+expectation of a logarithm is always
+less than or equal to the logarithm of
+an expectation
+and so the idea is is that this sum
+here where the logarithm is inside this
+summation
+where sorry so we're taking we're
+summing over
+this kind of difference between a
+generative model
+and this approximate or target
+distribution
+when the logarithm is inside that it is
+always going to be and we're in kind of
+negative territory
+it's always going to be greater than
+this quantity on the left-hand side
+where this left-hand quantity is equal
+to surprise because
+the log is outside the sum we can cancel
+these kind of approximate distributions
+right and end up
+back at surprise on the right hand side
+we can't do that
+this right hand side will only be equal
+to surprise
+when our generative distribution
+perfectly matches our approximate
+distribution
+and so this quantity on the right hand
+side here
+this is variational free energy and so
+the idea is
+is that we find the probability
+distribute this approximate probability
+distribution which we make simplifying
+assumptions about and so we can
+kind of evaluate analytically
+we make simplifying we find the value of
+this distribution
+that best minimizes f
+where f is variational free energy does
+that kind of make sense
+hey chris just one thing are you like
+trying to like move your mouse around to
+point to things
+no okay i'm actually putting my mouse
+i'm scribbling my mouse a little bit on
+the live stream they should be able to
+see that
+but christopher thank you for that
+really awesome
+example because it really clarified a
+few things
+any other notes to add here otherwise
+this is cool to continue
+yeah okay so then just kind of give a
+really toy example of this
+so we can define our approximate
+posterior
+kind of arbitrarily is a flat
+distribution we'll have a true posterior
+generally speaking we don't know what
+this is but for illustration's sake
+we're going to give
+kind of give it to you and then we can
+have a joint distribution
+and an observation what the observation
+will do is it's just going to select
+a kind of a column from this joint
+distribution
+and so then we have we can now enter
+this into the equation we saw on the
+last slide
+and we'll slowly but surely in each
+update
+nudge our posterior distribution
+such that it minimizes f on each step
+and at the third step you see what we
+should see is that when f is at a
+minimum
+it is equal to surprise and when f is at
+a minimum as well
+it's at a minimum because the true
+posterior
+and our approximate posterior match
+so that kind of makes sense um and so
+the idea is is that
+by performing bayesian inference and
+having and kind of forcing
+some arbitrary distribution to
+approximate our posterior
+we come up with an upper bound on
+surprise or we come to
+an upper bound on surprise let me kind
+of just
+walk through and just double check here
+so q
+of s is our estimate of whether the coin
+is a fair coin 50 50 means that it's 50
+50 and then 80 20 is the reality
+on the table so to speak so it's almost
+like
+first we click from 50 50 we see heads
+come up
+and that contributes a little bit of
+evidence that maybe heads is more likely
+so we go from 50 50 to 60 40.
+and then something happens again and we
+click on the second update
+to 7.7.3 we click eventually to 0.8.2
+and then if we click all the way to
+point nine point one
+so again in 90 10 all of a sudden we go
+uh back up from 0.693
+back up so if we were to plot this final
+estimated f we'd find that we're like
+going downhill getting better
+get to 0.693 in this discrete 0.1
+movement space and then we pop up a
+little bit too far we overshoot
+and we get a little bit more surprised
+by the distributions that we're
+drawing yeah exactly that's perfect um
+well the only the only thing that i
+would say
+that's i mean a little different just to
+note is that there's nothing in this
+example where you observe something over
+and over again
+this is this is just a single
+observation once
+and you're trying to figure out what
+what is the you're trying to figure out
+what the true posterior
+is trying to get as close to it as
+possible so all you're doing is saying
+here's the single observation
+and i'm going to try out a bunch of
+different values for qs
+a bunch of different values for that
+approximate distribution
+and i'm just going to find the one you
+know through this kind of iterative
+updating thing where i slowly move qs
+you know to different values you just do
+that for a single observation
+you update until you find the minimum
+free energy value which just tells you
+that your approximate posterior the qs
+thing is as close
+is really close to the true posterior
+that you couldn't figure out
+on your own because the problem was too
+tough to solve with exact bayesian
+inference
+um so this this is kind of corresponds
+to what people might talk about as
+prediction error minimization
+right so you just see this observation
+once
+and the brain tries to minimize
+prediction error by minimizing f
+by just moving beliefs until it finds
+the
+the belief that minimizes f
+which is the same thing as minimizing
+prediction error
+um look at that if that makes sense
+let me clarify because i i think that
+really helped me understand it and
+at first i thought wait with one
+observation because at first when i
+described it i was thinking update was
+tied to a new observation from the coin
+but then i thought well if you're only
+getting one observation the maximum
+likelihood model is a coin that only
+comes up heads
+because you only have one observation
+but it's not one-shot
+parameter learning naive it's actually
+a a tethered estimate that's tethered
+even loosely but non-zero tethering to a
+prior
+0.5.5 some people will say uninformative
+but all priors are informative
+they're all what they are and then it's
+almost like because of the logs
+even though you only observed the coin
+come up once it's like all right it's a
+little too far to update
+to 99 one just from seeing one coin flip
+i would need extraordinary evidence for
+extraordinary
+updates and so it's like that one heads
+observation
+updates you from 50 50 to near
+80 20 which does happen to be close
+to the actual probability of the coin
+and it also happens to navigate this
+explore exploit in an interesting way
+because it updates it but not all the
+way so it's just kind of showing
+how the bayesian updating brings some of
+that
+wisdom of multi-observation learning
+like slow updating of parameters and
+uh sequential uh updating to
+a little bit of a different context so
+yeah i mean
+i do want to clarify here a little bit i
+mean there's there's no actions here
+so there can't really be explore exploit
+right you can't
+you can't choose to look over here
+versus over there to gain information
+right so explore exploit is you know
+specifically in the realm of making
+choosing actions that will minimize
+uncertainty
+versus maximize reward um this is this
+is really more just
+with with normal free energy right we're
+not too expected free energy yet which
+is the decision-making part
+with normal free energy there's you can
+think the simplest way to think about
+um free energy is just in terms of
+um complexity minus accuracy
+which is equivalently complexity plus
+prediction error
+and all that all that ultimately means
+is so the complexity thing is basically
+how much you have to change your beliefs
+um so it's basically saying what's the
+minimum change in my beliefs that will
+make my new beliefs as accurate as
+possible right so i have to move my
+beliefs as little as possible while also
+minimizing prediction error
+if that if that makes sense so this what
+this generative model is saying is just
+that the probability that we're in state
+one
+is point eight if i were to chew if if i
+were to get this observation
+where the probability of being in state
+two is only point two where to get this
+observation
+right so so i mean the probably a better
+example than the um
+than the like heads and tails thing
+would just be would just be something
+like the concave complex example we gave
+before
+right there is some possibility where
+where light from above
+you know where light from below could
+cause the shading pattern but it's just
+much less likely
+right so you're just trying to find the
+the belief
+right that it's convex and light from
+above
+that that is the one that most likely
+generated what you're what you're seeing
+and it might take a bunch of updates
+like that given just what you see once
+to kind of arrive at the best fitting
+belief there's a related question
+in the live chat that i'm just gonna ask
+because it's on the topic
+they asked is this approximate bayesian
+inference thing
+called something else in stats outside
+of active inference or is this unique to
+active inference because this isn't
+sequential bayesian updating as you
+mentioned
+this isn't a standard bayesian filter
+what is this called outside of the
+active inference field
+so yeah it's just variational bays
+variational bays where does the
+partially observable markov decision
+process come into play
+uh we'll cover that in a moment's time
+actually yeah it doesn't
+it doesn't yeah it doesn't come in yet
+so i think one thing to say is kind of
+writing this tutorial it's hard to
+please everyone right like in going
+through some of the feedback like we get
+we got some feedback where people were
+just like utterly confused
+and wanting clear explanations and then
+at the other end of the spectrum we
+wanted there were people wanting much
+more technical details like how does
+this relate to things like gradient
+descent
+because this is just kind of a very
+simplified cartoon example of something
+called grading of
+a gradient descent scheme where you're
+doing a gradient descent
+on free energy um and so i would just
+say kind of the flag
+of these issues is one i would say
+if something's unclear in this
+presentation read the paper because we
+gave things
+we cover things a lot more detail in the
+paper and if that isn't technical enough
+for you
+actually go and just look at our code we
+supply
+a kind of standalone script where we
+it's extreme and it's extremely well
+commented and from there you should be
+able to figure out everything that's
+going on
+so all of this stuff in this
+presentation is kind of necessarily
+simplified because you don't
+really need those technical details to
+kind of start
+using the framework or start getting
+intuition for how things work
+but once you do have an intuition and
+you want more just go and see the code
+i would say um awesome
+it's like you can use the anova package
+in our
+without going into the source code it's
+helpful it's a tool for scientists
+and then if you're curious about the
+underpinnings of statistics
+and perennial philosophical debates
+there's a literature
+and a search bar but today it's about
+the applications of these methods
+which is awesome so thanks for everyone
+for the questions keep them coming but
+this is great
+discussion i really appreciate it
+okay and so just kind of to recap there
+i haven't covered action yet i'm going
+to cover action a little bit
+but just kind of to recap the idea is
+under active inference
+organisms are kind of we model them as
+if
+their phenotype is in their body and
+their brain kind of embodies a
+generative model of the environment
+and organisms kind of invert a generated
+model to arrive in
+approximate posterior distribution over
+the hidden causes of sensory input
+and they do this by minimizing
+variational free energy
+so that should that much should
+hopefully be clear by this point
+and so then on to the generative model
+and it is a very specific type of
+generative model
+namely it's a partially observable
+markov decision process
+and so there's kind of a graphical
+representation of this as a bayesian
+network
+on the right-hand side and i'm not going
+to kind of give give too much detail
+about this
+right now i will actually build it up
+step by step
+but just kind of prelude the idea with
+pomdps
+is that they describe transitions among
+hidden unobservable variables
+and the sensory data that's generated by
+the variables whoops
+so those arrows mapping from states
+to observations are kind of give
+information about the direction of
+influence or conditional indepen
+conditional influence so kind of the
+arrow between the purple
+node o and the green node s
+is mediated by the a matrix which is a
+likelihood
+and the transitions between states are
+mediated by a b
+matrix which is a transition probability
+and so the goal of active inference with
+pomdps
+is to infer states and action sequences
+or policies
+by minimizing various forms of
+variational free energy
+okay so start with a really really
+simple example
+we have static inference and the idea
+with static inference
+is this this is just a graphical
+representation of
+bayes rule essentially we have a
+prior which is encoded in our d vector
+we have a likelihood
+encoded in our a matrix and we end up
+with an update equation
+which is a soft max function a softmax
+function is a normalized exponential
+whoops
+and so i'm not going to kind of run
+through that explanation
+in detail i'm just going to kind of
+leave the slide here so people can
+figure it out for themselves and pause
+and go back and convince themselves that
+this is true
+but for this very simple example uh the
+active the inference scheme that we're
+using here is formally equivalent it's
+just an
+exact inference scheme so
+moving into dynamic models specifically
+so where states
+change over time these are also called
+hidden markov models
+this is when we have to start making
+approximate or when things are no longer
+equivalent to a prop
+using active inference are no longer
+equivalent to
+exact inference and so
+here we have our transition
+probabilities encoded in a b
+matrix and this is just essentially like
+the probability of some state at t
+plus one conditioned on the previous
+state
+and so you can see over here in terms of
+the update equations we're now in we're
+in log space
+and this little sigma thing here is a
+softmax function which just normalizes
+this equation
+and the idea is is that this is kind of
+sorry my screen keeps flipping um
+anyway uh the combination of d
+and b so our two priors in addition to
+our likelihood
+will give us the approximate posterior
+and the reason we have this one half in
+front
+is just because in practice the
+approximation scheme that's used by
+active inference namely
+variational message passing tends to
+overestimate
+kind of the value of the posterior and
+so this is kind of just a way of
+compensating for that and so anyone's
+kind of interested in technical details
+there
+see thomas parr has a really excellent
+paper out in scientific reports on
+neuronal message passing schemes
+under various approximations to free
+energy
+okay and so then the form of the free
+energy is just down here
+um and so the idea is is that by
+iteratively applying these
+updates we minimize free energy
+and you iteratively kind of every you
+start you do a full round of updating
+every time you get a new
+observation
+okay but what about policy selection so
+the idea with policy selection is
+roughly speaking
+that policies are just state transitions
+that the agent has control over
+so imagine you are a psychophysics
+experimenter
+and you have just a very simple boring
+example of someone kind of
+uh say estimating the orientation of
+some hard to see stimulus
+and so the policy space there is tiny
+it's two options it's left or right
+let's say
+or you could have an agent that you
+could be simulating something more
+interesting in psychophysics
+you could be simulating an agent
+navigating a maze and then the policy
+space is much larger they could go
+forward they could move forwards
+backwards
+left right et cetera et cetera
+and so the idea is is that active
+inference agents by definition
+need to select policies that will
+minimize variational free energy
+but that relies upon
+observations that have yet to come so
+that's kind of a problem
+but the way around this is to treat
+observations as random variables
+and then what you do is you minimize an
+approximation not to surprise which is
+variational for energy but to expected
+surprise
+and that approximation to expected
+surprise
+is expected free energy and so this
+expected for energy has two
+key components the first is the expected
+cost
+and this kind of minimize the idea here
+is to minimize expected cost
+you need to minimize the deviation
+between our predicted and our preferred
+outcomes
+and so this is kind of what we were
+talking about ryan was talking about
+before so this c vector
+encodes a distribution over an agent's
+preferences
+so for example policies that minimize
+expected costs
+are policies that kind of bring about
+observations that the agent prefers
+for example so if i prefer to kind of
+have
+my body temperature within a certain
+range the policy would be
+maybe staying inside because i live in
+england and it's like negative one
+outside
+um for example now
+expected ambiguity is a little bit this
+this is kind of the epistemic drive or
+the information gain term
+this is kind of the expected entropy of
+our likelihood distribution
+so the idea here is that to minimize
+ambiguity
+you will have an a matrix right an a
+matrix if
+the idea is to minimize kind of
+ambiguity you need to select
+observations in that a matrix that
+are maximally precise and so to return
+to
+or take actions even that will make
+those things that a matrix maximally
+precise
+and so if i'm in a dark room to give an
+example before the thing that will make
+or select kind of met or policies that
+will make that distribution maximally
+precise
+are policies like turning light on
+and so then to minimize free energy as a
+whole you have to minimize both of these
+things
+and you can do this in terms of one-step
+policies just looking one step ahead
+or you can do it look in using deep
+policies looking many many steps ahead
+hopefully that's pretty clear is there
+anything you'd like to add to that ryan
+or
+daniel anyone else yeah i mean i guess
+i'll i guess i'll just say i mean to
+just to make it kind of as
+as clear and explicit as possible for
+people who don't have a background in
+you know and what this whole thing you
+know what the seclusion
+means right so the idea is just if you
+look at that term above expected cost
+that's called a kl divergence and so
+basically it's just a value
+that encodes the difference between two
+distributions or the dissimilarity
+between two distributions
+and so that first one that q o given pi
+that's just saying what observations do
+i expect
+given that i choose to do this versus
+that um
+then that second one that p of o that's
+the preferences
+so basically what it's trying to do is
+just minimize the difference between
+your your preferred observations and the
+observations that you expect
+given that you choose to do you know
+thing one versus thing two
+um so it's really just choosing the
+thing that's going to get you as close
+to that you think is going to get you as
+close to what you want as possible
+it's very just you know reward seeking
+more or less
+and that second one the expected
+ambiguity that each thing
+stands for entropy and basically entropy
+is just
+the higher the entropy the flatter a
+distribution is
+so think of a distribution that's like
+one is like 0.5.5 and the other one's
+like 0.8.2
+if you chose the state that would
+generate 0.5.5
+over observations then it wouldn't tell
+you anything
+because either observation you got it'd
+tell you
+there's a 0.5 probability that you're in
+one state and a 0.5 probability you're
+in the other state
+right whereas the other state would
+generate a 0.8 or a 0.2
+then that one will give you a lot more
+information because you observe if you
+observe the thing that indicates 0.8
+then you're really confident what state
+you're in
+and if or if you observe point two
+you're really confident you're not in
+that state
+right so you're just seeking out the
+thing
+that you think will get you what you
+want as much as possible
+but also moving to the states that are
+going to
+give you the observation that's going to
+tell you the most about where you are
+if that if that if that makes sense so
+just again just for people who
+who aren't necessarily as familiar with
+reading the the kind of
+notation in these equations thank you
+max
+um yeah just one one point of
+clarification and then i just wanted to
+tie it back to what we the example we
+discussed previously
+so first i want to just make sure i'm
+understanding correctly that the d
+in that equation is the the kl
+uh the diverge so that's the that's an
+operator it's not the same as the d
+that's in the figure uh in the block
+diagram well that's
+that's the kl divergence that's a yeah
+that's kind of a standard way of
+representing it in other papers that's
+just kind of paste it in but
+um it's not very clear that should be
+the kl it has nothing to do with d
+d sub n the d that's in this graphic
+in the block diagram would that be
+analogous in our previous example where
+we were talking it when when we
+illustrated step by step that would be
+our
+0.5 0.5 but it in this context could be
+much more complicated than that
+yeah in a simple example yeah it would
+just be your your prior
+right so if ahead of time you think that
+like
+ice cream is more likely than donuts
+right
+then that could just be like 0.8.2 you
+know that's
+or if you have no idea whether it's
+going to be ice cream or donuts it could
+be 0.5.5
+and for and for anyone who is uh
+like wanting to get into optimization
+and how do we know
+whether or not this is going to converge
+when we do our message passage
+our message passing algorithm back and
+forth there was a
+really good citation and that's the one
+that was alluded to
+at the beginning of this uh on the
+slides right the technical papers is
+that correct
+uh so the citation to do with message
+passing in particular is a paper by
+thomas parr
+so that is in scientific reports um
+yeah we can i i think do you have show
+notes i i assume we can yes
+please i have a couple other general
+questions from the
+live chat but i think we'll take them at
+the end of your presentation
+as we turn towards some of the
+neurobiology beginnings and
+um a few other aspects so continue
+christopher yeah cool thank you
+um okay and so then kind of just to
+close or just to briefly recap
+so there are multiple stages to this to
+policy selection
+so under a generative model that has
+multiple policies
+you need to minimize you minimize your
+free energy with respect to each policy
+your variational free energy and so you
+might think about this as
+say you're coming to a set of traffic
+lights and
+you have a whole bunch you could turn
+left right or go straight ahead
+those actions are possible but you then
+get
+sensory input that says there's a no
+left turn sign
+so that would make that policy give an
+extremely high free energy value
+and so that would eliminate it from the
+plausible policies that you can kind of
+evaluate right
+and so then expected fringe is what we
+just talked about
+and the posterior distribution is
+actually
+uh the net soft max function over both
+of these and so this because
+kind of this is these are both negatives
+um
+policies that best minimize both
+variational free energy and expected
+free energy
+will have the highest posterior value
+um and then kind of is that is that
+clear there are a couple of caveats to
+all of this
+um but just wanting to make sure ryan do
+you want to add a thing here
+well i just say just just so anybody who
+doesn't know like what a
+what a soft max function is yeah so so
+all that
+all that means is that like for instance
+when you take
+minus f minus g um that's not going to
+give you something that's a true
+probability distribution
+right it's not going to be a thing that
+sums to 1 right where probabilities all
+together sum to 1.
+what it's going to do is give you this
+negative you know a bunch of negative
+numbers
+right so the softmax function does is it
+normalizes that which just means that it
+takes the kind of relative values
+you know of each of those things and
+turns it into
+a probability distribution that sums to
+one so
+so you end up with that bolded pi symbol
+is just a a probability distribution
+that's assigned
+a pro that assigns a probability to each
+possible policy
+and a policy by the way is just a
+sequence of actions
+right so one policy might be like turn
+left turn right and another policy might
+be turn right turn left
+um and so it's just saying that um
+that that minus f minus g thing will
+just be turned into a probability
+distribution
+and that probability distribution over
+different policies is what the
+uh agent will sample from right so if
+the
+if pi says this policy is 0.8 and this
+other policy is 0.2
+then the agent will be a lot more likely
+to choose the policy that's 0.8
+yeah maybe go to the last caveat slide
+and then
+i have a few other questions where we'll
+just try to like have a question
+simple answer question simple answer and
+then we'll move into the part two screen
+share
+okay so the two caveats are just a there
+are two extra components of the pl mdp
+that is namely the e
+vector which you can see is kind of
+pointing to
+or there's that e block that's pointing
+to policies
+and then there's our gamma as well
+that's also pointing to policies
+and so e is how generally speaking how
+one models habit formation or one way of
+modeling habit formation
+and so i'm not going to talk about that
+now i just kind of want to flag it
+and then when we come up things come up
+in learning you won't be surprised
+there's now there's extra term in the
+policies and get what gamma does gamma
+is essentially weights the contribution
+it's a
+of g to policy selection and so the idea
+is roughly speaking is that
+g is essentially a you have your prior
+distribution over policies
+which doesn't take in f at all and then
+you
+take you have your posterior
+distribution which takes in f
+and then you look at the difference
+between those and
+if there's a large difference between
+those roughly speaking
+then gamma will go down it will
+essentially down weight
+the contribution of expected free energy
+to your posterior over policies
+and this is kind of linked to has some
+really this is how we model dope
+phasic dopamine spiking for example
+i'm not going to get into any more
+details there because i think it's
+actually much easier to just have like a
+fully worked example but i did just want
+to flag all that stuff
+okay so i think that was my last so
+that's like this tightening
+of strategy while things are effective
+but not overfitting but a tightening
+while things are working
+and then during a mismatch a period of
+high uncertainty or ambiguity
+there's actually a movement towards more
+exploratory behavior
+um okay let me try to go through a
+couple
+of these questions so we'll just try to
+have the like sort of clippable
+one one further thing i just wanted to
+clarify about that though is that
+so so gamma thing and really you should
+think about that as kind of like the
+precision estimate for expected free
+energy so so all it's doing
+is just saying hey if things were super
+different
+than what i thought they were before
+policy-wise
+then i mean in some cases a little more
+complex than that but but basically
+i can't trust my expected free energy
+estimate as much
+right right so i should down weight i
+should sort of down weight
+how much me expected free energy
+contributes to what i choose to do
+because it's not as reliable right so
+it's just saying how much should my
+habits
+and my current observations affect what
+i do versus
+what i expected ahead of time uh how
+rewarding they were going to be
+right so if the clock has always been
+accurate and then you look at you're
+like wow i didn't know it was 1pm
+you're like i believe the clock but if
+you know that the clock is inaccurate
+then you think i thought it was noon i
+looked at it it said one but you know
+who knows with this clock these days
+so that's about the confidence in the
+observation okay
+so policy selection two quick questions
+on that
+the first one is what is the time scale
+of policy selection
+and does this model assume any
+particular temporal scale
+um so i mean temporal temporal scales
+are kind of just whatever you want them
+to be
+right so so like you know in the context
+of a task
+right you might just say here's time
+point one which is where
+you know a participant gets some
+observation right and here's time point
+two which is where
+they choose an action right in which
+case that would be a two
+time step trial um
+and i mean it doesn't really matter
+right i mean it might the stimulus might
+be on for five seconds
+or it might be on for one second in the
+first you know
+time step in the trial um and maybe
+their decision takes
+half a second right so the time step two
+could be half a second
+or it could be like a minute right i
+mean like so it's
+time steps are kind of whatever you
+define them to be relative to a task
+in another session when we get to
+hierarchical models you will have
+um higher levels that operate on slower
+time scales
+than the lower levels but that's a kind
+of more complex thing that we'll have to
+cover later
+okay another policy related question uh
+is can you comment on different forms of
+policies
+such as plans from tau equals zero to
+big time t so from the beginning till
+t and then tau equals little t to big t
+belief action policies research followed
+by belief action policies
+and then how is this related to
+different constructs such as working
+memory
+and habits so maybe just first part of
+the question was
+how are different kinds of policy
+estimation
+undertaken and the second part is how is
+that related to maybe different
+constructs we have
+with regular vocabulary like working
+memory or habits
+um do you want me to take that curse or
+do you want to um yeah i'm happy to take
+it i suppose
+uh so you can have shallow policies or
+you can have deep policies
+where deep policies are just kind of
+time point whatever time point one
+to t and you're just summing over
+basically all of
+you basically it's the path integral
+formally speaking just over
+expected free energy and that is updated
+at each time point
+um or you can have shallow policies
+whereas there's one time step
+uh how does this relate to like things
+like tree search and all that stuff
+um well it depends so
+i s i'm assuming that that question
+means that you're kind of
+familiar with like bellman formulations
+and that kind of thing
+so expected free energy is bellman
+optimal for one-step policies
+and it's sub it's not bellman optimal
+for deep policies
+but there are sophisticated what's
+called a sophisticated inference scheme
+which is is this correct ryan that's
+formally equivalent to uh backward
+induction
+yeah yeah so yeah sophisticated version
+of active inference
+which is more sort of explicitly like a
+deep tree search
+um is is equivalent to backward
+induction which is film and optimal yeah
+exactly um and so there are forms of
+this that do relate to kind of research
+and in regard to working memory
+uh depends on how you want to set up the
+task so there are like models
+of uh say working memory where you have
+two level models where your model
+working memory is kind of the thing that
+has
+stable maintenance uh you can then or
+you can model it with kind of one level
+models
+uh it just it just depends on how you
+want to set things up generally speaking
+i think of
+working memory as being functionally
+defined there are lots of definitions i
+won't put one out there right now but
+like
+something to do with maintenance right
+and then it kind of just depends on what
+you're trying to model about working
+memory what type of model is appropriate
+yeah i mean one one additional thing to
+say is just really kind of basic is that
+working memory is gonna
+come down to what your transition
+matrices look like
+right so if you're if you're put into
+state one
+and you have a really strong belief in
+your transition matrices that you're
+gonna if you start in state one you're
+gonna stay in state one
+right then that more or less amounts to
+that state remaining active
+over over several time steps and if you
+learn that at time step one
+and then at time step four believing in
+that same believing you're in that same
+state
+tells you what action to do then that's
+a type of working memory so uh thomas
+parr has a really awesome
+prefrontal computation as active
+inference where he kind of thinks
+or use thinks about transition precision
+in terms
+of excitatory recurrent connections in
+lateral pfc essentially which have been
+linked to things like maintenance
+cool one last quick take before we go to
+ryan sharing your screen is related to
+modeling
+a given behavioral task what are the
+criteria
+for setting the factors where the model
+will be embedded
+so how do we just sort of operationalize
+the kinds of things that we take into
+account in this model
+i believe is what the question is asking
+um i mean there's in a lot of tasks
+there's probably not one unique way
+right i mean that's kind of the where
+the the kind of creativity
+problem solving aspect of this comes in
+is because you know you kind of have to
+figure out
+right what what uh
+factorization structure what generative
+model structure whether it's factorized
+or not
+right or what different sets of ways to
+set up a model
+that can um generate
+uh behavior that you would see in a task
+right i mean i'll give you
+i'll give you an example right when we
+build this task
+build this task model together in my
+part here um
+but you know general in a lot of cases
+you can make something factorized or you
+can make it not factorized
+um and you know sometimes you can set
+actions up so that uh it has to do with
+um probabilities in the b matrix and
+your transition beliefs and in other
+cases you can set it up so it's in the
+likelihood
+in the a matrix um so it's not there
+isn't
+my point is there isn't one unique
+solution always for
+for what generative model to use and a
+lot of times you might
+try out multiple generative models and
+then do model comparison to figure out
+which one's best
+yeah all right maybe while you're
+setting up your
+screen i'm going to ask one more
+question
+somebody wrote i'm still not exactly
+clear on why you would want to maximize
+information and minimize the difference
+between your desired outcomes and your
+expectation
+what advantage is afforded by maximizing
+information
+if it doesn't enhance the likelihood of
+receiving the desired outcome
+uh well it won't it won't in that case
+like typically what will happen is
+is if there's so the agent i mean it
+depends a little bit on the
+exact task setup but what will usually
+happen is that
+if the agent knows what to do to get the
+reward
+then that just means that that cost term
+or that kind of reward probability term
+will just be the one that dominates like
+the value of that will dominate the
+thing will just
+select reward automatically the
+information seeking
+will typically only have a high weight
+if it's the case that the agent doesn't
+know what to do yet
+to get to get the reward you know that
+reminds me a lot
+it reminds me a lot of the game theory
+uh strategy which is like tit for tat
+but then you start out playing nice
+it's like default to being cooperative
+but then have a strategy
+and so it's sort of like a meta approach
+which is if it's
+if it's in the room if you're winning
+the game of go or chess
+at whatever training level then what is
+there to do
+your strategy is working but then when
+there isn't a victory observation
+then it entails an exploratory search
+that percolates through higher and
+higher abstractions
+of learning in the system so i hope that
+we can
+make that a little bit more tangible
+with this session right here
+so we have 40 minutes left and again
+this is just part one of multiple
+so let's go for you know 20 to 30
+minutes followed by
+10 to 20 minutes of wrap up and final
+questions from the chat and a couple
+other ones i have stored up
+but thanks um and take it away ryan
+okay so i want to just ask real quick
+can you guys see my like mouse if i like
+point to things
+yes okay okay because i i i need to
+point to things when i'm presenting this
+stuff
+so okay so so just kind of again to get
+to
+scope here i mean the end goal of the
+tutorial is for people to be able to
+actually do research with us with these
+things
+right so so the end goal here is to
+learn how to build task models
+for empirical studies and the basic idea
+is that you're going to have
+participants perform a task
+and then what you want to do is find the
+parameter values in the model
+um say like values for precision or
+values for prior
+expectations or values for
+habit distributions right that e thing
+that um
+i'm not gonna probably i won't use e
+very in this
+example but but just things like that
+right where
+different things in a model could take
+on different values
+and based on those values the agent will
+act differently
+it'll make different choices and so what
+you want to do is
+take the behavior of an actual
+participant and then
+find the values for those parameters
+there is that
+they'll best reproduce their behavior
+um and uh so
+and then once you have those parameters
+that best reproduce
+um a given person's behavior and you do
+that for all the participants
+then you can just use those values those
+parameter values
+as individual difference measures you
+might say like if one person has a
+higher precision
+uh a higher a matrix precision
+than another person you know does that
+predict something about
+for instance how well they're going to
+respond to a treatment like in
+computational psychiatry or
+can that tell you something about um you
+know some other cognitive function
+or i mean you know et cetera et cetera
+um
+and um so the goal again is to
+get people to that point where they can
+do that um
+and um like i said before this is the
+kind of thing that people have been
+doing for a long time
+in reinforcement learning um but it's
+new
+it's a novel sort of not very common
+thing yet to do an active inference
+because not enough people know how to do
+it
+um and so you know i can give you uh
+examples here if i can get my what the
+uh it's um
+i don't know why this is not letting me
+advance
+[Music]
+um okay there
+um so you know and these tasks and vary
+you know in another session we'll
+um you know walk you through how to
+build like a perceptual task that's like
+widely used for like
+eeg research um as well as number
+imaging research more broadly but
+called like an oddball task which is
+primarily a perception task
+and there are also sorts of inferential
+like prospective decision making tasks
+that you can use that don't involve
+learning
+and then there are tasks that you know
+that
+use reinforcement learning or explore
+exploit dynamics
+um and then you can also use it with
+neural imaging
+right you could say like trial by trial
+where are the prediction errors
+you know in the brain what parts of the
+brain look like they're doing the free
+energy minimization
+um you know trial by trial um so there's
+things like that that you can do
+why okay
+and so sorry what just that that really
+reminds me of just to pull back a level
+making measurements of a biological
+system like gene expression or
+neuroimaging and then saying what gene
+is
+upregulated in people who have this
+condition or
+what brain region is activated in this
+condition and we're taking that
+beyond the simply descriptive beyond the
+just
+measure and do a t-test and we're
+thinking about these observations
+these behavioral phenotypes as being
+emitted
+often across tasks potentially or across
+modalities
+emitted by a generative model that has
+these higher level
+parameters that shape the way that the
+person or the organism
+responds to stimuli under a certain
+specific framing
+of a time and task dependent model just
+to sort of pull back a level and give
+that but continue right
+so so i just want to say that you know
+there are
+this is kind of a new a new thing to do
+not very many people have done it
+um you know my lab has kind of
+been uh trying to kind of get this
+approach out there
+more um and so i mean here's some
+example papers
+that just do each of the things that i
+mentioned right so
+this one on the right here so recent
+plus computational biology paper
+is using active inference primarily just
+for a perceptual model
+um and with that one we were just
+looking at um actually uh
+inter-receptive processes right so for
+instance
+um every time people feel a heartbeat
+and then indicate by pushing a button
+that they feel their heartbeat
+you know who who does better than that
+uh than others
+and why right and some people might have
+stronger prior expectations that they
+are or not going to feel a heartbeat and
+some people instead might just have
+different levels of sensory precision
+right like they treat the signal coming
+up from their body as more or less
+precise
+right so that's like one example um
+this paper uh in drug and alcohol
+dependence was a learning
+an action or a explore exploit
+and reinforcement learning task that was
+applied to people in substance use
+and then this one in the lower left is
+greater decision uncertainty
+paper um is an example of
+uh purely just sort of planning like
+decision making inferential model
+without learning
+um and then philip schwartenbeck's paper
+up here on the right is an example of
+using active inference to
+look for the neural correlates of
+particular uh
+model parameters um you know so for
+instance with the
+with the drug and alcohol dependence
+paper
+and just use this simple
+exploit tasks where people had three
+options they could push button one two
+or three
+and then you could either a green or red
+ball would kind of fall
+and green meant they won and red meant
+they lost and initially
+they didn't know you know what the
+probability was of winning or losing for
+each
+winning or losing for each button um so
+the first few choices they had to kind
+of
+explore right to figure out which one's
+giving the most greens
+i mean eventually they become confident
+that one of them is best and they kind
+of stick to that one
+and i won't go through it but you know
+you can specify a particular version
+of the graphical models that uh chris
+showed
+that generate appropriate behavior like
+participants do on this task
+and again i won't really go through this
+but this is what
+the likelihood or a matrix would look
+like
+that they would where over time they
+would learn these a zero values
+to basically say if i choose a slot
+machine one two or three
+what's the probability that that's going
+to generate uh
+this row the observation for this row
+which is a win or the observation for
+this row which is a loss
+and then the c vector here the one that
+encodes reward
+just says whatever this cr value is
+which would be a positive number
+just says i prefer winning versus losing
+by some amount
+and then this is the equation for
+learning and then this is just showing
+um this is just showing the expected
+free energy equation
+um and again this isn't the example i'm
+going to work through
+but what you could do i'll skip that is
+you could find
+that people with substance use showed
+lower
+action precision in other words the
+behavior was a little more random
+they showed higher learning rates for
+wins
+and lower and less slower learning rates
+for losses compared to healthy people
+right so you can tell this interesting
+story about hey like if people with
+substance use
+learn more slowly whenever a bad thing
+happens when they take the drug but they
+learn more
+you know more quickly every time they
+feel good right after taking a drug
+then um their behavior is going to have
+a much harder time
+stop stopping uh taking taking a a
+drug um despite the fact that it has
+negative consequences
+um you know and so you can fit uh these
+are just
+group estimates just showing in a
+bayesian way that
+learning rate for losses was uh
+different um in people with uh substance
+use than healthy people
+and uh the example for just uh
+planning and decision making without
+learning this was a
+an approach avoidance conflict task
+basically people just had to decide
+where to move this little
+avatar dude on uh along this little
+runway
+line and the closer they were to like
+the sun
+and uh and a bar that had lots of red
+that mean meant they were going to see a
+nice happy image and they were going to
+win some points the more red and the
+uh rectangle thing the more points they
+would win
+and the rainy cloud meant they were
+going to see like a really
+terrible picture and hear like a
+terrible sound
+um so in some cases they would need to
+say okay
+i'm willing to go through seeing this
+really negative
+uh aversive thing to win a lot of points
+or not right so in this model it's just
+trying to say
+you know they start in the middle for
+example you know
+how close do they decide to get to one
+side or the other which
+um controls the probability of getting
+what's on one side or the other
+so it's just planning where to move
+right there's no learning because they
+already know exactly
+what the rewards and punishments are um
+and so in that case again i won't go
+through this but you can specify a
+generative model for this
+um in a similar way you can run
+simulations about what we people will do
+under different um parameter values this
+beta thing is the um
+expected precision um for expected free
+energy precision
+um and ec here is just how much they
+like the reward like the points relative
+to how much they dislike the negative
+images
+and we just called that emotion conflict
+um
+that's just another way of presenting
+the generative model i won't go through
+that
+but here again you can show for example
+that
+people with depression and people with
+substance use
+showed uh less emotion conflict than
+healthy people
+and they showed greater uh decision
+uncertainty than healthy people they
+showed they had
+higher uh a lower expected free energy
+precision
+which corresponds to higher beta values
+um so that's just another example
+um i think one thing that uh from the
+presenter view you can't see questions
+but now that i'm not in presenter view i
+can see that daniel had his hand up oh
+sorry oh okay just just yes this is
+great
+stuff i just want to highlight a few
+pieces here
+so with that same task you can imagine a
+purely descriptive model
+and a paper being written on something
+like people who have
+x diagnosis are more likely to approach
+when there's conflict or something
+so that would be a purely descriptive
+finding based upon the same exact data
+now what this tutorial is about is using
+the exact same behavioral data
+within and across participants and then
+modeling
+underlying parameters that have a very
+specific
+graphical layout and relatedness so here
+we're talking about a t-test basically
+being used on a summary statistic
+so they're not just different in the
+descriptive outcomes
+like this group was more likely to
+gamble on red
+this is like saying this group had a
+higher
+hidden state variable that we're going
+to attach to what we're going to call
+like gambling propensity
+now that relates to a question from the
+chat which is
+um and a really important question how
+are the neurobiological
+interpretation of the agent's generative
+model parameter
+estimates done with respect to the
+parameter model so how do we go from
+a summary statistic or a graphical model
+estimate to a neurobiological
+interpretation let alone intervention
+or anything like that but just mainly
+the interpretation side
+um so so we have a whole a whole section
+in the tutorial on the neural process
+theory that's associated with active
+inference
+um that's something that we're going to
+uh that was we plan to talk about
+in another session um probably in part
+two
+um so i'm probably going to hold off on
+describing that in detail right now
+but the the kind of quick version um
+is that uh the the process the neural
+process theory just makes certain
+assumptions
+about how uh neurons can be connected up
+to do this kind of thing
+um you know so for example um there's a
+you can have different rates at which
+your beliefs change
+rates with which the with your
+distribution over states
+more or less precise um and
+you know the the neural process theory
+says that the for instance the the sorts
+of erps
+that you would measure right the changes
+and the changes in uh the magnitude of
+change in the uh
+neural activation that you would see
+would correspond to the rate of change
+in in those beliefs essentially you can
+think about it as how quickly prediction
+error is being minimized
+as well um whereas the
+the updates to this beta thing um trial
+by trial
+um are uh modeled as the
+as the phasic dopamine spikes that are
+essentially updating
+um how much the expected free energy
+controls uh action slow you know policy
+selection
+um so there are there is just there's
+just a neural process theory that
+proposes one way in which the uh the
+variational message passing that
+otherwise these models
+how that could be implemented in early
+and therefore what sorts of signals
+are you know you ought to measure in the
+brain if that process theory was correct
+but it's it's really important to
+recognize that there are several
+different
+possible process theories that you could
+come up with right so
+there's there's many different ways you
+you could
+connect a bunch of neurons up together
+to implement these sorts of models
+so there's like a lot of different
+levels of um
+study here right there's what generative
+model best describes task behavior
+and then there's given that model what
+of a bunch of different message passing
+algorithms
+is the one that is being used
+and then there's the question about
+given that it's method this message
+passing algorithm
+you know there's a bunch of different
+possible ways the brain could implement
+that so which one is the right one
+right so there's many different levels
+of of you know empirical questions that
+that you can ask
+at each of these different levels of
+description yep
+what i'll say to that is that the
+relationship between the free energy
+principle
+and active inference again as a process
+theory
+it means something uh within the
+philosophy of science literature
+so check out the alias 2018 interview
+with
+carl fristen myself and marchand fortre
+or the recent paper of mel andrews
+because basically the process theory
+makes specific
+falsifiable testable hypotheses so
+that's the kind of thing you could
+actually then say dopamine use this kind
+of tool
+and you should expect to see this and
+that's why this is a little bit more
+towards the data
+focused empirical end so continue right
+yeah but like i said i mean we'll go
+into it you know task models will make
+specific predictions about
+what kind of erps you know you would
+measure in uh
+eeg uh you know during certain tasks or
+same thing with like fmri responses
+and and so but anyway we'll we'll get
+into that in another session
+um so just uh you know so this is
+another example again i'll walk you
+through these really briefly
+but that's what that's another
+generative model we built for this
+heartbeat
+perception task and what we found here
+was that
+in a certain condition a certain high
+arousal condition
+healthy people showed higher precision
+uh higher intraoceptive precision
+whereas a bunch of different clinical
+groups didn't show any change in
+precision
+so again it's just showing differences
+here in the way the brain treats signals
+coming up from the body
+when in a high arousal state um or
+really a state where they're having to
+hold their breath for a long period of
+time but um
+and then that's you know you can also
+estimate prior expectations those didn't
+differ by group
+um then finally this is an example of
+doing uh using active inference for
+neural imaging that
+philip schortenbeck did and here he was
+looking at
+the the beta gamma updates the expected
+free energy precision updates
+and he showed that trial by trial those
+did those updates did correlate
+with these midbrain region with this
+midbrain region um
+that is where a chunk of that region is
+is um
+where a bunch of dopamine neurons are um
+so sort of consistent with this kind of
+idea that
+phasic dopamine responses are the ones
+encoding these changes and expected free
+energy precision
+um anyway so those are just a bunch of
+examples of the way that this kind of
+thing has been used
+and i should point out that this is all
+just within the last couple of years
+this is very recent
+um so the the task that um i'm going to
+walk you through how to actually build
+it
+um and we'll see how much time we
+actually have to go through this
+um is a pretty simple task where
+you just the participant just starts in
+the start state
+and initially they don't know anything
+about they have to choose one of two
+of these slot machines the one on the
+left or the one on the right
+um and they don't know you know i have
+no idea to start with on trial one
+what which one is more likely to uh to
+give a reward
+and if you're in the the left better
+context then that means that
+choosing the left slot machine will win
+80 percent of the time
+and if you're in the the right better
+context
+then choosing the right slot machine
+will give you the reward
+um eighty percent of the time um and so
+crucially
+if on the first time step they just
+choose a slot machine
+then uh they could they'll win four
+dollars if they're right
+um but the other things that'd be kind
+of like the reward seeking thing you
+know they want as much money as possible
+um but what they can also do is they can
+first
+ask for this hint if they choose to ask
+for the hint
+it will tell them what context they're
+in it will tell them whether it's left
+better or write better
+and then they can choose one of the two
+slot machines and again they'll win 80
+of the time
+if they choose the right one based on
+the hint but crucially
+if they take the hint first then they'll
+only win two dollars if they get it
+right
+instead of four so in other words taking
+the hint is costly
+um so so you can think of choosing one
+of the slot machines right away as being
+this kind of
+reward seeking thing where it's also
+risk seeking
+because you don't know ahead of time
+which one's the right one
+or you can do this information seeking
+thing where you choose the hint first
+even though that'll get you less money
+but you'll be more confident which one's
+right
+so it's set up specifically to have this
+information gain component by choosing
+the hint
+and the reward seeking component by
+choosing one of the two slot machines
+so the question is how would you
+actually in practice build a model of
+this kind of task
+now the first thing you know so so
+there's going to be some basic steps to
+do this
+one is to define whatever your initial
+state priors are
+and that's going to be that d thing um
+and just as a you know we'll go into
+this more with the learning
+but big d if you use both big d and
+little d
+big d is kind of like the true
+generative process um you know the real
+thing out in the world that are
+generating the observations
+um and little d if you use it is a
+is what's in the generative model so the
+the agent's beliefs
+right and those two can be so big d and
+little d can be different if big d and
+little d are the same that means
+that the agent's beliefs are accurate
+um and so
+if you want the agent to learn or to
+have different prior expectations than
+what the true ones are
+then you have to use this little d thing
+um
+same thing here we have to define the
+the likelihood or the state outcome
+mapping
+and that's going to be our big a and our
+little a if we want it to
+learn and have different beliefs than
+the true ones
+we have to define the preferences over
+outcomes right so that's going to be the
+c thing then we have to divide to find
+the possible transitions
+or actions um and so you know if there's
+just one transition matrix for a factor
+that just means the agent has no control
+over
+what it does but if there's a state
+factor
+that can have multiple possible
+transitions
+where each transition is like like an
+action
+then uh the agent can choose policies
+that correspond to different
+transition sequences um you know so for
+instance
+well i'll just show you um but then but
+then for
+v here the last thing you have to define
+is policies which is
+this thing v in the code and that's
+going to be specifying different
+sequences of b matrices different
+sequences of
+possible transitions that could happen
+over the course of the trial and that
+the agent could choose
+one of those transition sequences um
+yeah really really quickly for each of
+those then if
+if there's uh you know if i'm talking
+about a different outcome modality i
+would have
+i would have to have one of those
+parameters for each outcome modality is
+that correct
+um you would need to have so there's
+going to be
+one uh a matrix
+for each outcome modality and that's
+just going to say
+what uh what outcomes are going to most
+likely to be generated
+um given each combination of of states
+um so given the value of each of each uh
+state factor um and and these are things
+that are
+that come up in experimental design
+right so like the probability that a
+given machine would dispense
+a winning ticket or that's something i
+should be thinking about as the
+empirical person designing my experiment
+right
+yeah exactly so so i'll show you
+um here but right so typically you can
+do it other ways but typically
+this likelihood thing is what would
+define the um the reward probabilities
+right so you'd say given that i'm in the
+state of
+uh you know having chosen the left
+uh slot machine um that will generate
+reward the reward observation with 0.8
+and the not reward observation as point
+as 0.2
+for example such as saying the reward
+probability is eighty percent
+um and you know the agent would
+if you want them to learn those word
+probabilities then you'd specify one of
+these little a things and then you'd
+have it
+learn it um over repeated observations
+um
+it's such a critical and and really
+fascinating point that
+reward isn't absent from the model
+through the preference vector c
+it's baked into how policy is calculated
+and so it's like the agent is pursuing
+precision
+all things being equal through natural
+selection you know
+unsuccessful models are just not going
+to exist and models that
+don't see themselves performing behavior
+are not going to be active for long
+so under a model of a successful
+preference then there's just a
+convergence towards that with whatever
+affordances are at hand
+so it's just a really interesting way to
+see how re
+uh reinforcement learning situations
+um can be adapted so
+the atms some of the some of it gets a
+little bit more into the kind of like
+free energy philosophy stuff but but
+i mean yes like the assumption is that
+uh people inherit preferences that keep
+them alive
+um but uh but in in kind of like an
+empirical task context you just use the
+c vector to just
+define what counts as the reward um
+you know it could be it could be
+anything right it could be winning money
+it could be winning
+points even if it doesn't give you money
+right it could be like
+seeing a positive image you know
+anything like that you just define
+what the preference distribution is um
+and then usually you parameterize it so
+you
+fit that as a parameter to see
+essentially how much does the person
+like
+you know winning two dollars for example
+um
+and i'll show you that in a second um
+but uh but yeah
+so so you're gonna need one c uh
+c matrix uh for each so you need one a
+matrix and one c matrix for each output
+modality
+um and you're gonna need one d vector
+and at least one v matrix for each state
+factor
+um as the to answer your uh the original
+question
+um so so the first thing here
+right is you the first so the way that
+i decided to build the model for this
+task is
+the first hidden state factor is the
+context
+right so am i in the state where the
+left one is better
+or am i in the state where the right one
+is better
+and i started that out specifying this
+little d here thing
+um and the brackets just say the number
+of the state factor so this is d
+for state factor priors over states for
+state factor one
+and there's two different possible
+states left better or write better
+and i just specified these as two really
+small numbers
+which just says it's an even probability
+that the it's going to be the left one
+or the right one is better
+but these are really small and so i'm
+not confident at all
+about you know whether that distribution
+is right
+um and i'll explain more about that when
+we get to the learning
+um because this is this will be soft
+maxed
+um during inference so this will become
+0.5.5
+during inference but when you learn you
+sort of
+build up the numbers here so they become
+bigger numbers
+which means the agent learns to be more
+confident in what the distribution is
+that it believes
+but then i can also specify big d right
+which is the generative process
+and i just put this as one and zero
+which means that the true context is
+that the left one's better
+um so that's what i would use to set up
+the priors for uh state factor one
+um state factor two here um if you can
+see
+at the bottom um so
+hold on can you guys you guys see this
+or can you guys see the bottom because
+uh
+for in mine i can see like my bottom the
+like
+we only see one line of code yeah the d2
+bind yeah i'm just asking do you see
+like this like search down here and all
+that stuff
+it's perfect it's perfect okay there now
+it's gone okay
+so so then d2 is the second
+hidden state factor and that's the one
+that corresponds to your choices
+right so this is a one here which means
+it always starts out in the
+start states the first column here is
+the start state
+and then it can either transition into
+the hint state right which is the second
+one here i just define that
+um and then the third one is the choose
+the left
+slot machine state and the fourth one is
+choose the right slot machine state
+so this is just says at time one my
+prior
+is with 100 certainty that i'm going to
+start in the start take
+of the task um so that's actually pretty
+simple
+right so then the next thing you're
+going to do is you're going to have to
+specify the likelihood so the a matrix
+and i'm not going to show you the
+complete one yet until we go into the
+code i'm just going to show you the
+parts that matter
+um but so for the second state factor
+so a2 so uh for the second outcome
+modality
+so the likelihood mapping for a two um
+is going to be this thing where
+the first row corresponds to null which
+is just it hasn't won
+or lost yet the second row is the
+observation that it lost
+and the third row is the observation
+that it won
+and each of the columns here correspond
+to
+the state factor values so the left
+column here corresponds to
+the d1 you know this thing you know
+uh so the 0.25 here for left better for
+the left better state
+and the right one here is the one that
+corresponds to the light better state
+which maps onto column two here so the
+way that you would read this matrix is
+that if you were in the right state
+right better
+state then you would
+win with this probability
+and you would lose with this probability
+um or if you were in the left one then
+you would lose with that probability and
+win with that probability
+um the columns of that soft maxed
+are those are those distributions yeah
+the columns the columns are shaft maxed
+yeah again if you're using i mean to get
+a little technical if you're using
+if you're using little a so these are
+dirichlet distributions
+then it will build up counts right so
+these numbers could become like
+you know like 50 25 8 you know whatever
+but those that encode the confidence in
+those distributions but yeah they'll get
+soft max for inference
+um so then
+so then you'd have to also specify the c
+matrix
+for that state factor or i mean that
+outcome modality sorry so c2
+is going to correspond to a2 basically
+it's for the sec they're both for the
+second outcome modality
+um and here again rows are going to be
+observations
+but here the uh the rows correspond to
+time points
+in the trial um so basically this is
+just saying
+that um at time 0 or at time 1
+i have no preference for anything at
+time
+2 i have a negative preference for
+losing
+and i have a positive preference for
+winning and this rs thing is just a
+parameter right so we can say this la
+thing so loss of version
+is one so it doesn't want to lose with
+negative one
+right um and for rs we say rs equals
+four
+which is you could think of as the four
+dollars right
+and then so if it ch if it observes the
+win
+at time two then it's gonna prefer that
+with a value of four
+and if it's gets it at time three then
+it's gonna be rs divided by two which
+means at time three if it gets it it's
+only gonna win two dollars
+right or whatever the relative values
+are for the person right you could fit
+rs for a given person um to see how much
+they
+prefer four dollars over two for example
+um
+and um these also um in the code are
+soft maxed and then
+uh logged um so they become they become
+long probabilities
+um um so that's just saying
+how much you dislike losing and how much
+you want to win
+and again you can set those as
+parameters
+and then for state outcome
+for outcome modality one which is the
+getting the hint right you can have no
+hint
+you can have the hint that the left
+machine is better and the hint that the
+right machine is better right so those
+are both observations
+and then you can say uh with this pha
+thing you can say basically how
+how informative is the hint right like
+if i observe the machine
+left hint does that tell me with
+certainty that the left one's better or
+does it just tell me with some
+probability that the left one's better
+um and here you could just set this as
+uh being
+you know like you could just set uh this
+is like ones and zeroes
+um to just to just tell you uh
+basically that would just say uh if pha
+was one then that would just say that
+the uh
+the thing is a hundred percent uh
+accurate
+um in telling you which one's better if
+you observe one hit versus another
+um and um
+and so then the next thing right is you
+have to consider the possible actions
+or sequences of actions that are going
+to correspond to policies
+and so here the way to think about it is
+so you're starting out
+in state one first day factor two right
+the like action
+state factor and you can either
+go from the start state immediately to
+choosing the right
+machine or you can go immediately from
+the start to choosing the left machine
+or you can choose to take the hint and
+then go to the left one or to the right
+one or take the hint and then go to the
+left one
+so those are like the the those
+sequences of actions are the policies
+that are gonna
+matter right they're gonna encode what
+the agent can do
+um and so to do that you have to set up
+different transition matrices different
+b matrices
+that encode each of these actions right
+transitioning from one
+to four transitioning from one to three
+transitioning from one to two
+transitioning from two to four and two
+to three um
+and so that's going to correspond to
+these setting up these b matrices
+which um here so b1
+right which is the state factor for uh
+the um
+which one is which slot machine is
+better um
+this is just going to be an identity
+matrix which basically just says
+that the left better context is constant
+across the trial
+you know it's not as if from time point
+one to time point two
+the context is gonna change or something
+like that right this just says the
+belief is
+and it is true that each trial has a
+stable identity as being the left better
+one or the right better one
+um but for state factor two so
+b2 here that's where you want the agent
+to have different possible actions
+right so b2 colon colon one
+right so the third dimension being the
+different uh different possible action
+um the first one would be like this
+which basically just says so columns
+are states at time t
+and rows are states at time t plus one
+um so this just says i can start in any
+state
+so in any column and choose to move to
+state one this one says i can start in
+any column
+and move to state two so taking the hint
+this one says i can start in any column
+so any state and move to
+state three which is using the left
+machine then same thing here for
+changing the
+to moving to the right machine so there
+are four actions one two three and four
+they correspond to four different third
+dimensions
+in the b matrix for state factor two
+um and so then given those
+um given those
+we specify v which are the policies
+um and here the third dimension
+corresponds to
+which state factor so for this one for
+state factor one
+there are no actions right it's just
+this one v matrix and its identity
+matrix
+and here the rows are the action and the
+columns are
+sorry the rows are the time point and
+the columns are the uh
+the action or the policy sorry
+um and so the row here just means action
+moving from time one to time two
+and the uh um and this second row
+means the action from time to time three
+um and so that
+is useless right for state factor one
+because there's just only one action
+whereas for state factor two we have all
+the different possible action sequences
+right so policy one would just be if the
+thing just decided to stay in the start
+state the whole time right like to just
+not do the trial um the other one would
+be action two which is take the hint
+and then and then take action three
+which is move to the
+left slot machine or take the hint
+it to the third column take the hint and
+then move to four which is the action of
+choosing the right slot machine
+um and then here this is just kind of a
+little bit of a trick
+but you can choose to at time from one
+time to one to time two you can
+immediately choose the left slot machine
+and then move back to the start state so
+three and then one
+or same thing choose the right slot
+machine and then again move back to
+state one
+and the only reason for that move back
+to state one thing is is that um
+if you let the thing stay in state three
+and state four
+then it's as if it won four dollars and
+then won two dollars after that
+so you have to kind of move it back out
+of the state where it would win
+um so so then
+you know then you've built everything
+really um
+so you and you throw all of it in this
+little mdp
+structure um so i didn't mention this
+but you have to specify
+t which is the number of time points in
+the trial so in this case it would be
+uh three um so start take the hint
+choose left
+start take the hinge who's right et
+cetera so there's three time points
+um v is just v which is what we defined
+um we'll ignore u for now but that's
+what you would use if you wanted to
+specify one step policies instead but
+the thing doesn't look ahead at all um
+you know and then a b c and d are just
+the different matrices we specified and
+we want it to learn
+d um so we specify the little d um
+and then these other things are just
+different parameters that you can set
+um so edda is the as a learning rate um
+alpha is kind of like an action
+precision so it's basically an inverse
+temperature parameter it controls how
+random someone's
+choices are given the policy that they
+choose um
+beta is the expected free energy
+precision that we talked about
+and um these other two parameters i
+won't really go into detail but they
+just have to do with specifying
+um the time constant so basically how
+quickly evidence accumulates
+after an observation and this erp thing
+is um
+basically it controls it controls
+certain assumptions about
+what ought to happen if you would make a
+new observation each time with respect
+to what sorts of
+neural responses you would get um
+and this is all explained in the code
+but i think that's a
+it's a perfect pause point so that we
+can close within the hour
+and leave people with excitement for
+part two so
+what can they look forward to in part
+two and beyond in a minute
+yeah so i mean i would just say that you
+know once once you have this set up
+then the next steps are to run this
+structure through
+this vbx underscore tutorial script and
+that will actually run the model
+and you know simulate the behavior the
+neural responses and then we'll show you
+how to
+use um plotting scripts
+to display and show how that behavior
+show the behavior that uh was the
+outcome of the simulation
+and then we'll show you how the the kind
+of structure the mdp structure works
+um and then actually show you some
+simulation results and how they work and
+things like that
+well and i actually probably walk you
+through some of the actual code
+um that was an amazing session
+ryan christopher max thanks so much for
+coming on
+everybody who was watching live and in
+replay also
+very appreciated so please leave a
+comment
+if you have a question or feedback for
+the authors or for anyone else
+and stay in touch with us because we're
+going to be making this a multi-part
+series where we're going to be going
+deeper into the technical aspects
+and also highlighting use cases hearing
+about people who are just learning
+programming learning to apply it people
+who are experts in other fields so
+whatever your perspective is you're in
+the right spot to be learning
+so thanks again all of you for coming on
+and we will see you another time

@@ -2,42 +2,42 @@
 
 This directory contains the two main Python packages that power Journal-Utilities.
 
-## Packages
+### Packages
 
-### `journal_utilities/`
+#### `journal_utilities/`
 
-**WhisperX Transcription Pipeline**
+**Unified Transcription, RAG, and Course Scaffolding Pipeline**
 
-Local transcription of YouTube videos using WhisperX with speaker diarization. Stores metadata and transcripts in SurrealDB.
+Local transcription of YouTube videos using WhisperX, entity extraction via Cohere (RAG), playlist enumeration, and course scaffolding.
 
-- `ingest_db_create_wav.py` - Session import, metadata fetch, file organization
-- `transcribe.py` - WhisperX transcription with alignment and diarization
-- `fix_scheduled_dates.py` - Date correction utilities
-
-### `journalrag/`
-
-**Entity Extraction Pipeline (JournalRAG)**
-
-Cohere AI-powered entity extraction from transcripts. Extracts concepts, researchers, citations, and technical terms into a graph structure.
-
-- `main.py` - Pipeline orchestrator
-- `extractors/` - Cohere extraction logic
-- `graph/` - SurrealDB graph client
-- `models/` - Pydantic entity models
-- `schemas/` - JSON schemas for extraction
-- `adapters/` - Entity format adapters
-- `utils/` - Logging utilities
+- `data/` - Database and file organization
+- `download/` - YouTube transcript, audio, and video downloading
+- `transcribe/` - WhisperX (GPU) and MLX (Apple Silicon) transcription
+- `rag/` - Entity extraction and graph construction
+- `export/` - Multi-format transcript export (plaintext, PDF, Markdown, JSON, HTML)
+- `interface/` - Transcription search and browsing
+- `llm/` - LLM tool integration
+- `youtube/` - YouTube API and playlist management
+- `render/` - Course scaffolding and markdown generation
+- `utils/` - Shared utilities
 
 ## Data Flow
 
-```
-Coda API → JSON → SurrealDB (sessions)
-                         ↓
-YouTube API → Metadata → SurrealDB
-                         ↓
-MP4 → WAV → WhisperX → Transcripts → SurrealDB
-                                          ↓
-                    Cohere AI → Entities → SurrealDB (graph)
+```mermaid
+graph TD
+    Coda[Coda API] -->|JSON| SurrealDB
+    YouTube[YouTube API] -->|Metadata| SurrealDB
+    MP4 -->|WAV| WhisperX
+    WhisperX -->|Transcripts| SurrealDB
+    SurrealDB -->|Transcripts| Cohere[Cohere AI]
+    Cohere -->|Entities| Graph[SurrealDB Graph]
+    SurrealDB -->|Transcripts| Export[Export Module]
+    Export -->|Plaintext/PDF/MD/JSON/HTML| Output[data/export/]
+    
+    Playlists --> Enumerate
+    Enumerate --> Download
+    Download --> Scaffold
+    Scaffold --> ModuleMD[module.md]
 ```
 
 ## Usage

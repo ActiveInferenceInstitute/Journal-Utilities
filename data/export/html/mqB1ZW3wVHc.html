@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Textbook Group ~ Cohort 5 ~ Session 16 (Chapter 7, Part 1) ~ 2/19/2024</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Textbook Group ~ Cohort 5 ~ Session 16 (Chapter 7, Part 1) ~ 2/19/2024</h1>
+<div class="meta">Category: TextbookGroup/ParrPezzuloFriston2022/Cohort_5 &middot; Series: Meeting_016 &middot; Speakers: Cohort 5 ~ Session 16 (Chapter 7, Part 1) ~ 2/19/2024 &middot; Duration: 56:55 &middot; Views: 40</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=mqB1ZW3wVHc">https://www.youtube.com/watch?v=mqB1ZW3wVHc</a></div>
+<article>
+<p>all right welcome back cohort 5 we're in</p>
+<p>our first discussion for chapter 7 so</p>
+<p>Andrew thank you</p>
+<p>for facilitating feel free to take it</p>
+<p>from</p>
+<p>here um so yeah uh first meeting on</p>
+<p>chapter seven so I'll do what I did with</p>
+<p>chapter six and maybe just give a I'll</p>
+<p>attempt to give a brief rundown of the</p>
+<p>chapter outline sort of layout and</p>
+<p>what's going on um that said there's a</p>
+<p>lot going on in this chapter and I would</p>
+<p>say aside from chapter six those who are</p>
+<p>interested in getting started on</p>
+<p>building actor inference models are</p>
+<p>going to want to kind of give a a kind</p>
+<p>of special amount of weight to this</p>
+<p>particular</p>
+<p>chapter um we do we are introduced to</p>
+<p>Hidden Markov models and partially</p>
+<p>observable Markov decision-making</p>
+<p>processes which PP is a shorthand for</p>
+<p>that and it's it's just as of right now</p>
+<p>that's kind of the not completely</p>
+<p>ubiquitous but most widely used models</p>
+<p>for a variety of Behavioral experiments</p>
+<p>um that said U couple weeks from now</p>
+<p>we'll get into chapter eight where we</p>
+<p>talk more about continuous models and um</p>
+<p>that'll be for looking at instances</p>
+<p>where we're looking at very you know uh</p>
+<p>fast time scales and great for things</p>
+<p>like motor movements um and just with</p>
+<p>things that are much quicker but usually</p>
+<p>we're dealing with discret variables so</p>
+<p>um chapter</p>
+<p>7 quick intro</p>
+<p>7.1 uh we focus on models of categorical</p>
+<p>variables in discrete time with examples</p>
+<p>increasing in complexity so we're</p>
+<p>introduced to models of perceptual</p>
+<p>processing decision making info seeking</p>
+<p>learning and finally hierarchical</p>
+<p>inference um and the authors try to um</p>
+<p>kind of get at different sorts of</p>
+<p>emergent properties including measurable</p>
+<p>physiology and behavior from these</p>
+<p>models</p>
+<p>7.2 were introduced to the hidden Markov</p>
+<p>model on a perceptual processing</p>
+<p>experiment um this is where where the</p>
+<p>the model is of our beliefs about how a</p>
+<p>musician's audible notes which are the</p>
+<p>observations or outcomes in the model</p>
+<p>are generated from a written musical</p>
+<p>score which are the hidden States the</p>
+<p>actually written notes um they're uh</p>
+<p>they simulate the Dynamics of basian</p>
+<p>belief updating induced by a sequence of</p>
+<p>her notes again the</p>
+<p>outcomes</p>
+<p>um and then from there it gets into</p>
+<p>before I move on to the next section</p>
+<p>it's just worth noting all of these</p>
+<p>experiments in this chapter more or less</p>
+<p>to note very specifically what are the</p>
+<p>hidden States uh what are the</p>
+<p>outcomes what are our matrices that</p>
+<p>we're looking at um the a matrix or</p>
+<p>likelihood Matrix probability of</p>
+<p>observation given State um our B</p>
+<p>matrices which is our beliefs about how</p>
+<p>one state moves to the</p>
+<p>next uh from time step to time step we</p>
+<p>have our D Vector which are our prior</p>
+<p>beliefs uh about States just starting at</p>
+<p>time step one that's it once you move on</p>
+<p>from there uh D is no longer it's in the</p>
+<p>equation but it's not repeatedly used at</p>
+<p>every time step um although it can be</p>
+<p>updated depending on how you're running</p>
+<p>an experiment such as from trial to</p>
+<p>trial</p>
+<p>um so we get to see how it evolves over</p>
+<p>time time there are five total time</p>
+<p>steps it's another thing important to</p>
+<p>note a lot of experiments you'll</p>
+<p>typically decide how many time steps</p>
+<p>occur or will occur over the course of</p>
+<p>your experiment so here there are five a</p>
+<p>total of five notes that are played</p>
+<p>thanks Daniel for going to figure</p>
+<p>7.2 um I guess to get a little bit more</p>
+<p>in depth here uh upper left of that</p>
+<p>figure shows the the models kind of um</p>
+<p>posterior beliefs about States and it's</p>
+<p>confidence and so like these lines start</p>
+<p>to stretch outward at first it's getting</p>
+<p>the the right notes for time step one</p>
+<p>and time step two Suddenly at time step</p>
+<p>three we get an incorrect note or at</p>
+<p>least an unexpected note uh there's a</p>
+<p>difference between the observations</p>
+<p>which are in the lower right corner um a</p>
+<p>certain note is played twice in a row</p>
+<p>incorrectly versus um what should have</p>
+<p>happened or what we expect expected</p>
+<p>which is the top right graph unless you</p>
+<p>can see that lightly gray square that is</p>
+<p>and the model correctly inferred the</p>
+<p>right note one that's in black but it</p>
+<p>was thrown off by that incor incorrect</p>
+<p>note occurring that's the gray there so</p>
+<p>the these are all basically outputs of</p>
+<p>the the model as the experiment is run</p>
+<p>um at the time of this experiment I</p>
+<p>believe they were using mat lab and SPM</p>
+<p>is their um kind of you know packages</p>
+<p>and software used for for deriving this</p>
+<p>experiment so there's a lot of</p>
+<p>um um nice functions for producing</p>
+<p>graphs and outputs of the experiments so</p>
+<p>you can actually see what's going on</p>
+<p>when we run run them um moving on</p>
+<p>to uh section 7.3 now we have what is</p>
+<p>arguably a really key sort of model to</p>
+<p>dig into this is where decision making</p>
+<p>and planning are introduced</p>
+<p>into um an experiment and so now our hmm</p>
+<p>becomes a</p>
+<p>PDP Um this can be seen let's see figure</p>
+<p>7.3 um is a great one to it's kind of a</p>
+<p>um Exemplar uh image of a of a PDP where</p>
+<p>we have many elements as we had before</p>
+<p>we have our uh D Vector the initial</p>
+<p>States starting all the way to the left</p>
+<p>from there we move on we have our states</p>
+<p>we have our outcomes s and O we have our</p>
+<p>a likelihood matrices which map the two</p>
+<p>we have our B matrices showing going</p>
+<p>from state to state um but now what</p>
+<p>we've done is we've added policies which</p>
+<p>are sequences of actions um that the the</p>
+<p>agent holds like it could do this series</p>
+<p>of actions it could do this series of</p>
+<p>actions and so on um those are all kind</p>
+<p>of scored so to speak by what's another</p>
+<p>quantity that's been introduced here</p>
+<p>expected free energy um which differs</p>
+<p>from variational free energy that we've</p>
+<p>seen before F uh in that g now invol it</p>
+<p>takes into account preferences which are</p>
+<p>also c not imaged here but you can see</p>
+<p>on the the right um they are denoted in</p>
+<p>that like list of equations um and those</p>
+<p>impact how G is calculated that is you</p>
+<p>kind of are trying to score should I do</p>
+<p>this to get what I want should I do this</p>
+<p>to get what I want should I do this to</p>
+<p>realize my expected or preferred</p>
+<p>outcomes or should I do this instead</p>
+<p>that is impacting how the agent from</p>
+<p>there computes its transitions so what</p>
+<p>we've done is introduced action into the</p>
+<p>model where Action Now impacts the</p>
+<p>environment and it's expected to</p>
+<p>impact the the hidden states of the</p>
+<p>world that are agent is inferring so</p>
+<p>it's it's just kind of like the the</p>
+<p>prior example but now we've just added</p>
+<p>this whole new dimension of action where</p>
+<p>there's an actual</p>
+<p>bidirectional um relationship between</p>
+<p>the agent and</p>
+<p>environment um we are also introduced to</p>
+<p>a couple of Concepts whenever um the</p>
+<p>authors break down expected free energy</p>
+<p>so we have like negative epistemic value</p>
+<p>and we also have pragmatic value um this</p>
+<p>relates to the famous exploration</p>
+<p>exploitation uh debate or dilemma um</p>
+<p>there's a broad statement in this</p>
+<p>textbook that uh active inference</p>
+<p>naturally balances out exploration and</p>
+<p>exploitation that's its own kind of</p>
+<p>conversation to have and some people</p>
+<p>debate that depending on how you want to</p>
+<p>Define what balance means the key Point</p>
+<p>here is that exploration and</p>
+<p>exploitation for uh EX epistemic value</p>
+<p>and pragmatic value changing your mind</p>
+<p>or changing the world</p>
+<p>um are included within the same cost</p>
+<p>function if you want to look at this</p>
+<p>from a machine learning um perspective</p>
+<p>for example or more statistical</p>
+<p>perspective or calculus what we're doing</p>
+<p>is that we're minimizing this quantity</p>
+<p>that is expected free energy and you're</p>
+<p>minimize you're minimizing it by</p>
+<p>engaging in both kinds of behavior both</p>
+<p>of them contribute to minimizing the</p>
+<p>same quantity and I believe that is what</p>
+<p>is meant whenever they state that um</p>
+<p>active inference naturally balances</p>
+<p>those two uh kinds of actions that an</p>
+<p>agent can take we're also introduced to</p>
+<p>other things that you know for the sake</p>
+<p>of time I won't go too deeply into but</p>
+<p>we are introduced to factorization here</p>
+<p>so there are different kinds of States</p>
+<p>um that that the agent can try to infer</p>
+<p>um they're also so different kinds of</p>
+<p>outcomes or sensory modalities that the</p>
+<p>agent can try to infer for example um</p>
+<p>the yes that figure 7.4 uh the A1 Matrix</p>
+<p>is just mapping uh</p>
+<p>exteroceptive the exteroceptive modality</p>
+<p>or set of outcomes which is basically</p>
+<p>where the rat is in the Maze but then</p>
+<p>the second Matrix uh a a superscript 2</p>
+<p>is</p>
+<p>denoting uh the rat's beliefs about</p>
+<p>uh the stimulus if there's no stimulus</p>
+<p>an aversive stimulus or uh an attractive</p>
+<p>stimulus and so the word tensor is used</p>
+<p>in this chapter and in previous meetings</p>
+<p>there's been some debate over if this is</p>
+<p>actually a tensor I believe the idea is</p>
+<p>that we're ultimately looking at</p>
+<p>outcomes locations and contexts right so</p>
+<p>it's this kind of outcomes by locations</p>
+<p>by context so it does kind of in a way</p>
+<p>if you attempt to to put it together</p>
+<p>would be more of a tensor object as</p>
+<p>opposed to a matrix it's it's a</p>
+<p>collection of matrices here um but</p>
+<p>hopefully that helps for anyone who's</p>
+<p>been</p>
+<p>wondering uh what that term how how that</p>
+<p>term's being used um similarly we have</p>
+<p>multiple B matrices because we also have</p>
+<p>um multiple</p>
+<p>contexts uh related to</p>
+<p>location skipping ahead a little bit</p>
+<p>we're are at least skimming the rest of</p>
+<p>this section we have our C vectors which</p>
+<p>are composed of um preferen preferences</p>
+<p>about location</p>
+<p>outcomes um which is C1 uh the rat dis</p>
+<p>prefers staying in the same spot</p>
+<p>whenever it starts out uh so it's set to</p>
+<p>a negative one right um You can you</p>
+<p>might expect that if you set that to</p>
+<p>zero and kept them all zero there's a</p>
+<p>chance the rat might just stay there for</p>
+<p>the entirety of the experiment</p>
+<p>probabilistically um negative one kind</p>
+<p>of gets it moving</p>
+<p>um C2 meanwhile has to do with the</p>
+<p>stimulus zero uh it's neutral towards</p>
+<p>not getting a uh not achieving any kind</p>
+<p>of stimulus six because it really wants</p>
+<p>an attractive stimulus neg -6 it doesn't</p>
+<p>want the aversive stimulus right it</p>
+<p>wants the cheese it doesn't want you</p>
+<p>know a tiny shock or something along</p>
+<p>those lines and finally Ma just as far</p>
+<p>as the mathematics go those are all</p>
+<p>passed through a sof Max function um</p>
+<p>that allows you to both include positive</p>
+<p>and negative values whenever you're</p>
+<p>initially defining the vectors um and</p>
+<p>then also it it normalizes everything</p>
+<p>such that we're we're looking at more</p>
+<p>like probabilistic um probability</p>
+<p>distributions so actually after the math</p>
+<p>there um for example the attractive</p>
+<p>stimulus is actually 400 times more</p>
+<p>probable or we might say more desired</p>
+<p>than the neutral stimulus um</p>
+<p>and then again we have our D Vector</p>
+<p>beliefs about um and and again multip</p>
+<p>it's factorized there multiple</p>
+<p>modalities so uh the the rat believes</p>
+<p>that it's starting at the starting</p>
+<p>location with full probability that's</p>
+<p>how we said it meanwhile for D2 uh that</p>
+<p>has to do with where is this where is</p>
+<p>the stimulus that it wants uh it doesn't</p>
+<p>know so we have a purely uniform D</p>
+<p>Vector there uh half and half</p>
+<p>so</p>
+<p>um that experiment also includes things</p>
+<p>like a big part of it is there's a q um</p>
+<p>in the lower position of the Maze and so</p>
+<p>this is a great experiment to look at as</p>
+<p>well because now we get to see both</p>
+<p>epistemic and pragmatic value epistemic</p>
+<p>it doesn't know where the reward is uh</p>
+<p>the Q gives it epistemic value it gives</p>
+<p>it information about where the reward is</p>
+<p>such as in the image there it's it the</p>
+<p>time step one rat starts at beginning</p>
+<p>location time step two rat moves to the</p>
+<p>Q at the bottom of the maze it uh the Q</p>
+<p>tells it that it's at the left position</p>
+<p>that's the location of the reward</p>
+<p>finally time step three rat smart rat</p>
+<p>follows that Q moves to the attractive</p>
+<p>stimulus at the left position um which</p>
+<p>is pragmatic value realizing its</p>
+<p>preference that it does want aches so so</p>
+<p>we we we end up with kind of this you</p>
+<p>know two-step process where it derives</p>
+<p>epistemic value from the que pragmatic</p>
+<p>value from actually achieving the the</p>
+<p>attractive</p>
+<p>stimulus</p>
+<p>um so those are some key ideas in active</p>
+<p>inference in general and yeah again kind</p>
+<p>of an Exemplar model to wrap your head</p>
+<p>around um especially for those who are</p>
+<p>still kind of trying to understand the</p>
+<p>material here because there's a a</p>
+<p>significant amount but this is a great</p>
+<p>starting point point for really trying</p>
+<p>to get into to</p>
+<p>modeling um section</p>
+<p>7.4 have a model of information seeking</p>
+<p>this is a kind of an a cade experiment</p>
+<p>um where an agent looks at four</p>
+<p>different squares um this does start to</p>
+<p>break down things like uh it breaks down</p>
+<p>epistemic value further um rather</p>
+<p>lengthy explanations of these terms but</p>
+<p>but they can be very important and</p>
+<p>they're uh very helpful for</p>
+<p>understanding the behavior so um those</p>
+<p>uh squares there uh all the way to the</p>
+<p>left this is where all of the squares</p>
+<p>are given uh equal epistemic value right</p>
+<p>they're um the agent will look at any of</p>
+<p>them with roughly the same frequency uh</p>
+<p>in the middle one however um in that</p>
+<p>situation the top left square is uh by</p>
+<p>the person who set up this experiment</p>
+<p>and its distribution um they gave the</p>
+<p>top left Square more expected ambiguity</p>
+<p>which is one of the the terms that's</p>
+<p>derived from epistemic value um beliefs</p>
+<p>about that square are less precise</p>
+<p>they're more uniform uh in the a matrix</p>
+<p>for this Square the likelihoods uh you</p>
+<p>can kind of equate this with uh the</p>
+<p>street light effect the idea that if</p>
+<p>someone is out at night they drop their</p>
+<p>keys um they don't know where they are</p>
+<p>they will probably look where there's</p>
+<p>more light first so they the idea is oh</p>
+<p>it's expected that you will actually be</p>
+<p>able to minimize your uncertainty or</p>
+<p>reduce your uncertainty by looking at</p>
+<p>the other three squares here uh whereas</p>
+<p>the top left one just imagine it's as if</p>
+<p>that square is is is blacked out or or</p>
+<p>not well lit or dim or something right</p>
+<p>there's it's going to be hard to derive</p>
+<p>any kind of epistemic value from it</p>
+<p>because it's not things are not very</p>
+<p>visible um so that's an attempt at</p>
+<p>getting at how to understand expected</p>
+<p>ambiguity and finally top right uh or</p>
+<p>excuse me the rightmost um image uh here</p>
+<p>all of the squares are still visited um</p>
+<p>but the B transitions are made to be</p>
+<p>less</p>
+<p>predictable um and so it's uh the lower</p>
+<p>left yeah the lower left square is given</p>
+<p>a higher post posterior predictive</p>
+<p>entropy so the agent is less sure about</p>
+<p>what what will be seen if the cic is</p>
+<p>chosen for this square if they keep</p>
+<p>looking there it's as if it's as if they</p>
+<p>uh are unsure if there will be new</p>
+<p>information to get out of that square so</p>
+<p>they keep returning to it again and</p>
+<p>again um whereas for the other squares</p>
+<p>those are more equivalent in the idea</p>
+<p>that oh you look at them they don't</p>
+<p>really change why look back again right</p>
+<p>so it visits all of them but it keeps</p>
+<p>checking out the lower left</p>
+<p>one um we do have box</p>
+<p>7.1 which introduces us to it's been</p>
+<p>mentioned before in the textbook but</p>
+<p>this is just a quick rundown of trying</p>
+<p>to describe uncertainty and precision or</p>
+<p>um priors over Precision so that's a</p>
+<p>term that basically it it start you it's</p>
+<p>like game</p>
+<p>control uh from the neural process</p>
+<p>theory that we've looked at uh</p>
+<p>previously especially in chapter 5 um</p>
+<p>this is kind of like at amplifying not</p>
+<p>adding to but rather amplifying certain</p>
+<p>neural signals um Precision is inverse</p>
+<p>variance so something has very high</p>
+<p>variance it means it has low Precision</p>
+<p>um kind of hard to trust something that</p>
+<p>has very high variance or very low</p>
+<p>Precision meanwhile um High Precision</p>
+<p>means oh that's seems more trustworthy</p>
+<p>whenever carrying out your computation</p>
+<p>so it's in a in a sense it's like</p>
+<p>waiting uh differently all of these</p>
+<p>different objects the different matrices</p>
+<p>or particular beliefs or otherwise uh</p>
+<p>within the</p>
+<p>model um section 7.5 learning and</p>
+<p>Novelty um this is where we're</p>
+<p>introduced to beliefs about</p>
+<p>parameters um so this shows us we're</p>
+<p>showing this</p>
+<p>on page 141 figure</p>
+<p>7.10 or 7.10</p>
+<p>um it's basically the same model as</p>
+<p>before except now we can see all these</p>
+<p>additional</p>
+<p>nodes uh where all of our different</p>
+<p>objects are</p>
+<p>parameterized so our likelihood matrices</p>
+<p>the a matrices those are all</p>
+<p>parameterized by tiny a or small a um</p>
+<p>same thing for the B matrices</p>
+<p>parameterized by small B um C Small C</p>
+<p>and so on</p>
+<p>um those mesh really well with looking</p>
+<p>at things like Precision because we're</p>
+<p>looking at things like waiting um so</p>
+<p>these are all parameters that can be</p>
+<p>learned as well over the course of a</p>
+<p>series of</p>
+<p>experiments</p>
+<p>um and typically in active inference</p>
+<p>models this uh learning occurs at a</p>
+<p>slower time scale um which is also kind</p>
+<p>of seen in the final example of the tech</p>
+<p>of of this particular chapter um that</p>
+<p>has to do with hierarchical inference</p>
+<p>but basically these parameters can be</p>
+<p>learned as well like how you can learn</p>
+<p>over time how much to</p>
+<p>trust uh certain likelihood mappings</p>
+<p>versus others or</p>
+<p>trusting uh your beliefs about</p>
+<p>transitions versus others or which um</p>
+<p>policies to take versus</p>
+<p>others things like that um</p>
+<p>brief mentions about other things um</p>
+<p>I'll leave</p>
+<p>them off here but it has to do with</p>
+<p>choosing conjugate priors whenever uh</p>
+<p>developing um variables that are linked</p>
+<p>together concentration</p>
+<p>parameters uh the importance of dislay</p>
+<p>distributions for categorical variables</p>
+<p>where observations and states are kind</p>
+<p>of counted over the course of an</p>
+<p>experiment um the more you see this the</p>
+<p>more you expect it to happen it also</p>
+<p>helps us to remember that like a model</p>
+<p>like how quickly it will update so you</p>
+<p>know you flip a coin five times you see</p>
+<p>it's always heads uh you might quickly</p>
+<p>come to a conclusion that uh it's an</p>
+<p>unfair coin meanwhile if you flipped it</p>
+<p>a hundred times with a 5050 of heads or</p>
+<p>tails and then you just happen on the</p>
+<p>next five tosses to get um all heads</p>
+<p>you're much less likely to think oh well</p>
+<p>this is an unfair coin because clearly</p>
+<p>it was pretty fair the first hundred</p>
+<p>times around right so by accumulating</p>
+<p>more counts um that informs us about how</p>
+<p>much the the model or the agent might</p>
+<p>update its beliefs after the next you</p>
+<p>know new observation that comes</p>
+<p>in we have a mention of structure</p>
+<p>learning which is an entire topic on its</p>
+<p>own and there's a lot of work still</p>
+<p>being</p>
+<p>done uh on structure learning but it's</p>
+<p>rather interesting uh I'll just briefly</p>
+<p>mention this is seen as something like</p>
+<p>offline</p>
+<p>learning um it there's a metaphor used</p>
+<p>for it like that occurs during sleep um</p>
+<p>that is the model or agent is not taking</p>
+<p>in any new data and yet it's actually</p>
+<p>updating its beliefs um but more</p>
+<p>specifically what it's doing is that</p>
+<p>it's scoring the model it currently has</p>
+<p>of the world uh let's say and uh during</p>
+<p>this this sleep or resting offline state</p>
+<p>it can actually uh compare that model</p>
+<p>that it has now with let's say a simpler</p>
+<p>model that maybe has removed some of the</p>
+<p>certain variables or or or readjusted</p>
+<p>and minimize some of its matrices or</p>
+<p>otherwise to see um if it can produce uh</p>
+<p>an equivalently if not better performing</p>
+<p>model um that nonetheless has some of</p>
+<p>its complexity reduced and suddenly it's</p>
+<p>computationally more efficient right so</p>
+<p>so basically in a sleeper resting state</p>
+<p>we have basian model reduction um is is</p>
+<p>one way that can occur where the model</p>
+<p>is kind of pruned and and improved um</p>
+<p>even though there's no uh additional</p>
+<p>data coming coming in at the</p>
+<p>moment and then finally um SEC section</p>
+<p>7.6 hierarchical or deep inference um</p>
+<p>this again is very similar to um the PDP</p>
+<p>that we we saw previously except now we</p>
+<p>have an entire additional level added</p>
+<p>above um this is figure 7.12 on page 148</p>
+<p>and so um I would say briefly that um</p>
+<p>the observation nodes uh in the middle</p>
+<p>between level one and level two that's a</p>
+<p>bit of a</p>
+<p>misnomer um there what's going on is</p>
+<p>that the state inference occurring at</p>
+<p>the lower level is being fed up into</p>
+<p>level two uh as if they were</p>
+<p>observations at level two um there I I</p>
+<p>note this because in a lot of um other</p>
+<p>papers that I've personally read uh</p>
+<p>usually they would not include those</p>
+<p>extra observation nodes in the middle</p>
+<p>they would just go straight level one up</p>
+<p>to level two um but this is a nice way</p>
+<p>of illustrating like it's as if those</p>
+<p>are observations for level two so what's</p>
+<p>going on what we have at level one</p>
+<p>multiple time steps like three time</p>
+<p>steps uh vers for every single time Step</p>
+<p>at level two so this demonstrates that</p>
+<p>there are multiple time scales going on</p>
+<p>here level one is happening at a faster</p>
+<p>time SC scale there three time steps for</p>
+<p>every individual time Step at level two</p>
+<p>um the state predictions occurring at</p>
+<p>level two are being fed</p>
+<p>into uh the uh computations at level one</p>
+<p>and so it's like we have these</p>
+<p>descending um predictions coming from</p>
+<p>this higher level and then meanwhile</p>
+<p>level one's State inferences are acting</p>
+<p>as</p>
+<p>ascending um observations uh if that's</p>
+<p>useful and um so this is um I would</p>
+<p>maybe I'll drop um an article uh link</p>
+<p>into the chat but I think that there's a</p>
+<p>rather nice um paper that that I've</p>
+<p>spent time reading and I I find personal</p>
+<p>interest in it um but it's it's a paper</p>
+<p>called deeply felt affect uh which came</p>
+<p>out a couple of years ago and it relates</p>
+<p>to I would say Fields like computational</p>
+<p>psychology or psychiat</p>
+<p>um but why I think it's useful for</p>
+<p>anyone who wants some further reading</p>
+<p>here is that um it one is a recreation</p>
+<p>of the tze experiment uh that we saw</p>
+<p>earlier uh and on the other hand it adds</p>
+<p>a hierarchical layer um that is</p>
+<p>theorized in the paper to relate to</p>
+<p>emotion and so we have a rat that is um</p>
+<p>given this kind of emotional or</p>
+<p>affective layer to its model and it</p>
+<p>actually dramatically changes its um Its</p>
+<p>Behavior whenever navigating the maze uh</p>
+<p>it becomes much more confident uh</p>
+<p>depending on its emotion in its own</p>
+<p>model of how to achieve the reward um</p>
+<p>sometimes to the degree that it will</p>
+<p>skip the epistemic value from the que</p>
+<p>it'll go straight to the reward why</p>
+<p>because now it gets an extra time step</p>
+<p>that it gets to spend with the reward um</p>
+<p>so it's it's again it's just we have the</p>
+<p>teamas we have a hierarchical model and</p>
+<p>then finally we get to see how like</p>
+<p>Behavior changes whenever we add this</p>
+<p>hierarchical layer and whenever it comes</p>
+<p>to cognitive modeling that's a big</p>
+<p>aspect right it'll be to kind of fiddle</p>
+<p>around with what variables do you need</p>
+<p>uh in your model what are the layers to</p>
+<p>be</p>
+<p>included um and and how do you kind of</p>
+<p>tune or prune things from there um I</p>
+<p>feel like I've spoken more than enough</p>
+<p>so I will now uh open the floor if</p>
+<p>anyone has any thoughts or questions or</p>
+<p>just general things you're</p>
+<p>considering</p>
+<p>um sorry</p>
+<p>pach uh actually I have a very basic</p>
+<p>question uh since we have been talking</p>
+<p>on matrices is the D Vector just like a</p>
+<p>onedimensional vector that's it yes</p>
+<p>nothing else oh wow so I will say in the</p>
+<p>so we saw the te uh experiment for</p>
+<p>example and in that case we did have two</p>
+<p>vectors</p>
+<p>uh one for each uh modality so the first</p>
+<p>one was yeah the the rat's belief about</p>
+<p>where it starts so the location uh</p>
+<p>factor or modality and then D2 its</p>
+<p>beliefs about where the stimulus is is</p>
+<p>it to the left is it to the right here</p>
+<p>it's uh you know hardcoded as uniform uh</p>
+<p>as a starting point but yes uh they are</p>
+<p>each uh 1D vectors um and that's all you</p>
+<p>need to kind of kick off or start the</p>
+<p>the simulation whenever you're running</p>
+<p>it yes so that is mapped to the number</p>
+<p>of factors of the B Matrix</p>
+<p>right yes to the edge The Edge length of</p>
+<p>B okay</p>
+<p>yeah because B maps from hidden state to</p>
+<p>Hidden state so whatever the number of</p>
+<p>hidden States is that b is just that per</p>
+<p>slice and then the number of slices of B</p>
+<p>is equivalent to how many affordances</p>
+<p>there are and then D is just the edge</p>
+<p>length that's carried through with s and</p>
+<p>then a is O * s because it Maps o and</p>
+<p>s pi is also a list with the</p>
+<p>probabilities of the actions in the</p>
+<p>policy space summing to</p>
+<p>one thank you</p>
+<p>yeah</p>
+<p>I have one question</p>
+<p>sorry uh in like actually like when you</p>
+<p>normally try to initialize these vectors</p>
+<p>say uh say d can you just also hardcode</p>
+<p>it like just like one and then just pass</p>
+<p>it</p>
+<p>right</p>
+<p>yeah yeah that's right you would you</p>
+<p>would hardcode it um that's one of the</p>
+<p>kind of theoretical discussions around</p>
+<p>active inference right is it's it's more</p>
+<p>about the what and the the why and the</p>
+<p>how but not so much about how it starts</p>
+<p>um that said what you can also do as far</p>
+<p>as learning and inference goes is you</p>
+<p>could have um you could set up an</p>
+<p>experiment that runs over multiple</p>
+<p>trials uh in that case you would still</p>
+<p>hardcode D but going from trial to trial</p>
+<p>you could have it such that the agent</p>
+<p>actually updates uh deep over time so</p>
+<p>that trial one it begins with those</p>
+<p>hardcoded values trial two it might</p>
+<p>update um you know now that it's the</p>
+<p>start of trial two what is what are its</p>
+<p>prior or initial beliefs about the state</p>
+<p>yeah yeah so like in this case let's</p>
+<p>just say it was GNA do three rounds of</p>
+<p>the</p>
+<p>teamas and then initially it has a a</p>
+<p>flat uh you know it has a certain it</p>
+<p>believes it starts in a certain setting</p>
+<p>that that could be that that would be</p>
+<p>the D1 location or maybe that one stays</p>
+<p>the same the one z00 Z and then the one</p>
+<p>it's like it learns by the end that it</p>
+<p>it it always starts on the right or</p>
+<p>updates it towards the fact that it's</p>
+<p>that the reward of the other the stimul</p>
+<p>food is on the right side it could learn</p>
+<p>that by just counting up okay it was on</p>
+<p>the right it was on the right it was on</p>
+<p>the right and than that kind of like</p>
+<p>putting Pebbles of different color into</p>
+<p>the N that's the learning by</p>
+<p>counting which is reflected here with a</p>
+<p>little D over</p>
+<p>the learning by counting on this one so</p>
+<p>this one starts out Z 0 it starts out</p>
+<p>one one and then you add one every time</p>
+<p>you observed it and then that ends up</p>
+<p>that's a hyperparameter on the D</p>
+<p>distribution so hence the kind of</p>
+<p>strategy of the book of showing like the</p>
+<p>minimal figure 4.3 type model and then</p>
+<p>here's like one Motif which is hyper</p>
+<p>priers for learning or attention like</p>
+<p>Andrew mentioned here's another Motif</p>
+<p>nested models but the hyper priers are</p>
+<p>not</p>
+<p>shown you can start to combine these but</p>
+<p>then you can also imagine how the models</p>
+<p>complexity grows a</p>
+<p>lot sorry what do you mean by motive</p>
+<p>like here The Motif that it's showing is</p>
+<p>just nesting it's not including Little D</p>
+<p>so it's not like it this is not a</p>
+<p>generalization of the previous</p>
+<p>one this is just like a generalization</p>
+<p>of the of the figure 4.3</p>
+<p>one</p>
+<p>as this one is but this one's not</p>
+<p>nested so like here but the difference</p>
+<p>that it's trying to show is just about</p>
+<p>the idea of putting this the metallic</p>
+<p>lowercase above each of</p>
+<p>letters a b c d</p>
+<p>e and then these motifs get kind of</p>
+<p>combined</p>
+<p>okay</p>
+<p>um question</p>
+<p>yeah slightly slightly tangential so</p>
+<p>Andrew in the react FX um project that</p>
+<p>you're doing are you building these</p>
+<p>types of models I know it's very simple</p>
+<p>question um well we've just kicked off</p>
+<p>the the project a couple weeks ago so</p>
+<p>we're still kind of trying to</p>
+<p>decide what kinds of models to build but</p>
+<p>anyone who's interested can can</p>
+<p>certainly you know hop on and and see</p>
+<p>what's going on we do have a a distinct</p>
+<p>Coda for that and so right now people</p>
+<p>are running project ideas and so they're</p>
+<p>like in a table that you can just put in</p>
+<p>like oh I would like to try doing</p>
+<p>something like this and then maybe put a</p>
+<p>couple notes on on what direction you</p>
+<p>think it might take and um yeah as</p>
+<p>Daniel's pulled up here uh for me I</p>
+<p>wanted to see if we could do kind of</p>
+<p>reproducibility project where we take</p>
+<p>some of this you know few years old code</p>
+<p>in mat lab or SPM can we run it through</p>
+<p>uh Julia and RX and fur instead um just</p>
+<p>basically to see if we can to help with</p>
+<p>reprodu reproducibility and from there</p>
+<p>we could even potentially start moving</p>
+<p>into like modifying those models or</p>
+<p>maybe improving</p>
+<p>them yeah generally I would it seems</p>
+<p>like pdps might be one of the primary</p>
+<p>ways that we go so hopefully that</p>
+<p>answers your question and is that all I</p>
+<p>I see Daniel posted the links in the</p>
+<p>chat and I I'll take a look um but is</p>
+<p>that all happening at this point</p>
+<p>asynchronously through Koda or are there</p>
+<p>um Thursday meetings Okay this what you</p>
+<p>got up here on the and we're developing</p>
+<p>out the GitHub repo and so on so</p>
+<p>there'll be but there's there's more</p>
+<p>than ample sync and synchronous</p>
+<p>opportunities if people want okay and</p>
+<p>and it's I mean and there's no chapter</p>
+<p>six for RX and fur but these are some of</p>
+<p>the um it um I mean we can go more into</p>
+<p>this another time but we've like talked</p>
+<p>about how we can best contribute and</p>
+<p>right documentation so for people right</p>
+<p>so it's more I mean it's still sorry</p>
+<p>sorry but it's it's still the underlying</p>
+<p>strategy yes</p>
+<p>we're learning this package for</p>
+<p>generative model that's also over the</p>
+<p>course of the Year going to increase a</p>
+<p>lot in its capacity and</p>
+<p>usability okay cool all right I'll pull</p>
+<p>up that Cota thanks a</p>
+<p>lot and just to note it'll also be</p>
+<p>incorporating um you know some research</p>
+<p>that's been done since the publication</p>
+<p>of the textbook we're looking at so um</p>
+<p>you know there'll be a little bit more</p>
+<p>uh up to dat so to speak the the</p>
+<p>textbook is still a Cornerstone of of</p>
+<p>active inference but that said there</p>
+<p>than some you know certain kinds of</p>
+<p>updates that have been made since then</p>
+<p>yeah I would just I would just love to</p>
+<p>see this um those modeling applied with</p>
+<p>you know actual values if you will it</p>
+<p>will help me wrap my mind around it cool</p>
+<p>absolutely um I did notice uh Susan</p>
+<p>posted a question in the chat how would</p>
+<p>reflection versus indecision be</p>
+<p>represented um</p>
+<p>I find that to be a rather interesting</p>
+<p>question myself and uh while that's not</p>
+<p>directly answered by the textbook uh</p>
+<p>surely there are papers that have been</p>
+<p>published on the these kinds of topics</p>
+<p>um but in any case intuitively I would</p>
+<p>say just to kind of stay with the</p>
+<p>chapter</p>
+<p>itself uh</p>
+<p>chapter excuse me uh page 145</p>
+<p>146 um this is uh an agent navigating a</p>
+<p>maze and in this case</p>
+<p>um uh the agent is does not have any</p>
+<p>specified like particular preferences or</p>
+<p>rather that it's like purely uniform</p>
+<p>preferences and so the a it's as if the</p>
+<p>agent doesn't prefer anything in</p>
+<p>particular uh whenever the model is set</p>
+<p>up in that way then the agent uh engages</p>
+<p>in what could be viewed as an emerging</p>
+<p>Behavior called novelty seeking where it</p>
+<p>just keeps going to places that it</p>
+<p>hasn't been to yet uh you know there</p>
+<p>there's no preference for a certain</p>
+<p>reward or stimulus to where it knows</p>
+<p>that it wants to go to a space that has</p>
+<p>a reward right so it doesn't go there it</p>
+<p>just goes everywhere um that said it's</p>
+<p>still doing it's still following the FP</p>
+<p>it's still minimizing expected free</p>
+<p>energy or variational free energy and so</p>
+<p>uh it will avoid spaces it's already</p>
+<p>been to because it's already been there</p>
+<p>um nothing new to get no new epistemic</p>
+<p>value to be derived from a space you've</p>
+<p>already been to and so it will just kind</p>
+<p>of like run the full gamut of all the</p>
+<p>spaces it's never been to uh this is a</p>
+<p>phenomena that's also been referred to</p>
+<p>by pner in 1985 is the inhibition of</p>
+<p>return so that's that's a pretty</p>
+<p>interesting thing to see and it makes a</p>
+<p>lot of sense because when we look at our</p>
+<p>equations C uh C vector or preferences</p>
+<p>are uh heavily informing G and</p>
+<p>so there's nothing informative about SE</p>
+<p>because it's purely uniform you know uh</p>
+<p>nothing nothing's particularly preferred</p>
+<p>then it doesn't really help with you</p>
+<p>know figuring out what to do other than</p>
+<p>just keep keep running around getting</p>
+<p>getting all that novelty you can U maybe</p>
+<p>it's thrill seeking um it's a joke but</p>
+<p>reflection meanwhile not so sure</p>
+<p>intuitively might have a relationship</p>
+<p>with structure learning um you know an</p>
+<p>agent doesn't necessarily have to be</p>
+<p>sleeping in order to uh kind of tune or</p>
+<p>prune its model um but the idea is that</p>
+<p>yeah there's no incoming sensory data so</p>
+<p>reflection might relate to that process</p>
+<p>you know someone who's sitting there</p>
+<p>reflecting uh kind of thinking through</p>
+<p>things through even though they've not</p>
+<p>pres been presented with anything new um</p>
+<p>might be a for struct learning there</p>
+<p>might be a paper out there um or or a</p>
+<p>dozen uh on these kinds of things worth</p>
+<p>worth uh searching for that um but yeah</p>
+<p>very interesting question</p>
+<p>um yes uh</p>
+<p>Anna I see put you're muted</p>
+<p>MD</p>
+<p>can you hear me okay now yes okay okay</p>
+<p>sorry about that uh yeah I was wondering</p>
+<p>if you could elaborate on a little bit</p>
+<p>on</p>
+<p>um the offline updating of of</p>
+<p>beliefs um and I'm curious about the</p>
+<p>scientific studies that have been done</p>
+<p>demonstrating that this in fact happens</p>
+<p>that you can you're you know during</p>
+<p>sleep or maybe meditation or daydreaming</p>
+<p>right can you elaborate a little bit on</p>
+<p>how active inference scientists have</p>
+<p>looked at this</p>
+<p>aspect about active</p>
+<p>inference so just be direct in saying</p>
+<p>that yeah I'm not personally too sure of</p>
+<p>the research that's been done very</p>
+<p>specifically on structure learning in</p>
+<p>related in relation to</p>
+<p>actual sleep um or meditation I mean I'm</p>
+<p>seeing just from a a quick all show one</p>
+<p>this is not exactly AC but it's it's B</p>
+<p>it's right there I'll put it in the</p>
+<p>notes this is kind of a g there's many</p>
+<p>similar architectures done in machine</p>
+<p>learning where there's this</p>
+<p>phasic um</p>
+<p>approach W with extending and updating</p>
+<p>during the day with a fast inference and</p>
+<p>then um using different techniques for</p>
+<p>sleep and I mean it it probably gets</p>
+<p>into the specifics of the machine</p>
+<p>learning architecture and then also</p>
+<p>there's the whole other angle you said</p>
+<p>like</p>
+<p>empirically um what what's happening at</p>
+<p>the synoptic level and at like the</p>
+<p>cognitive level for humans and skill</p>
+<p>consolidation and sleeping learning</p>
+<p>consolidation naps there's there's</p>
+<p>probably a lot of different phenomena</p>
+<p>that thank you</p>
+<p>just drop this here but this looks to be</p>
+<p>a manuscript by a couple of researchers</p>
+<p>as well who uh make a mention of</p>
+<p>particular meditative</p>
+<p>Traditions um but they claim there that</p>
+<p>as opposed to it being um structure</p>
+<p>learning per se they they claim that</p>
+<p>meditation is more of a form of like</p>
+<p>it's it's a particular It's A peculiar</p>
+<p>policy itself um that is you're choosing</p>
+<p>to do that um that actually looks to be</p>
+<p>a really interesting paper and I</p>
+<p>appreciate that there's a more U kind of</p>
+<p>culturally accurate as opposed to highly</p>
+<p>abstract um kind of theme to it so um</p>
+<p>Susan so yeah this is fascinating um</p>
+<p>thank you Andrew</p>
+<p>so what uh what keeps coming up is is is</p>
+<p>the reference to</p>
+<p>you know learning is takes time or um or</p>
+<p>you there's no fast learning and so</p>
+<p>I'm I'm wondering if maybe the concept</p>
+<p>of learning</p>
+<p>itself is you know is is um more</p>
+<p>specific than I guess what we um what we</p>
+<p>generally think about learning so I mean</p>
+<p>how would you</p>
+<p>categorize learning or or well maybe why</p>
+<p>that why it keeps referencing that</p>
+<p>learning is</p>
+<p>slow slower than</p>
+<p>what yes this is a great question I'll</p>
+<p>give a first thought um especially as as</p>
+<p>more complex cognitive models are built</p>
+<p>there's several ways that different time</p>
+<p>scales of adaptation happen so the</p>
+<p>fastest layer is called inference</p>
+<p>and that's kind of like the rubber hits</p>
+<p>the road like each um new observation</p>
+<p>coming in but also the whole process is</p>
+<p>called inference um but also the fastest</p>
+<p>layer is called inference then um the</p>
+<p>next slowest layer is attention so like</p>
+<p>attention modulates um on over multiple</p>
+<p>sensory Cycles like just thinking about</p>
+<p>the visual case or the the dinner party</p>
+<p>like overhearing multiple conversations</p>
+<p>like attention module</p>
+<p>faster than um slower than the words</p>
+<p>coming in but um faster than updating</p>
+<p>like deeper factual beliefs and then</p>
+<p>then</p>
+<p>learning um as distinguished from those</p>
+<p>other kinds of parameter</p>
+<p>changings is like here being modeled</p>
+<p>explicitly with these Hyo priers and</p>
+<p>updating the distribution that the kind</p>
+<p>of rubber hit the road parameters are</p>
+<p>being drawn from that's not the only way</p>
+<p>to model</p>
+<p>learning so hence chapter six and really</p>
+<p>digging in with like what time scale</p>
+<p>analysis is being studied because maybe</p>
+<p>whether it's learning over seconds like</p>
+<p>uh repeating back a phone number or</p>
+<p>whether it's like a um semester level</p>
+<p>maybe that's the time scale of your</p>
+<p>model so then that learning is happening</p>
+<p>on the kind of primary time scale of the</p>
+<p>model</p>
+<p>it's just way too General to say without</p>
+<p>specific system of interest but that</p>
+<p>being said there are multiple ways that</p>
+<p>like to kind of and the hierarchical</p>
+<p>models like looked at so multiple</p>
+<p>non-exhaustive or exclusive ways to</p>
+<p>model the multiscale temporal dynamics</p>
+<p>of</p>
+<p>change yeah I I would definitely second</p>
+<p>uh Daniel's point about yeah it's it</p>
+<p>there is no single answer to the to the</p>
+<p>question again we have this final</p>
+<p>example in this particular chapter</p>
+<p>referring to yeah words and sentences</p>
+<p>right so those time scales don't seem</p>
+<p>dramatically different actually right</p>
+<p>like we're looking at a matter of let's</p>
+<p>say milliseconds versus seconds um like</p>
+<p>predicting what the next few words are</p>
+<p>going to be an entire sentence to try</p>
+<p>and capture something like what the</p>
+<p>sentence is about versus the the faster</p>
+<p>time scale of word word word word like</p>
+<p>word to word um in the in the sentence</p>
+<p>but I I did want to mention a couple</p>
+<p>other uh as far as like um trying to map</p>
+<p>this to uh Concepts or behaviors in</p>
+<p>Neuroscience um another way of thinking</p>
+<p>not necessarily thinking about it this</p>
+<p>way but one potential analogy could be</p>
+<p>something like working memory versus</p>
+<p>versus long-term memory uh right like</p>
+<p>like here's your quick access like</p>
+<p>working memory memory of the Moment by</p>
+<p>moment long-term memory occurs over time</p>
+<p>you know it gets</p>
+<p>Consolidated um slowly over time and it</p>
+<p>it can lead to long-term changes in</p>
+<p>things like uh your daily habits um what</p>
+<p>comes more naturally or quicker to you</p>
+<p>so it just describing it a bit more</p>
+<p>intuitively that way yeah I like to</p>
+<p>sometimes think of it as like yeah</p>
+<p>shortterm versus long-term memory then</p>
+<p>in addition to that as we saw in chapter</p>
+<p>five uh in terms of the neurobiology</p>
+<p>um it's commonly been found or or</p>
+<p>theorized from from various studies when</p>
+<p>working with neuroimaging data that uh</p>
+<p>whenever a participant in these studies</p>
+<p>is learning something uh what happens is</p>
+<p>that that you tend to find when looking</p>
+<p>at brain rhythms from let's say EEG um</p>
+<p>that uh more Theta and gamma waves are</p>
+<p>present simultaneously and so they view</p>
+<p>it as what would be called a Theta gamma</p>
+<p>coupling we do get a reference to that</p>
+<p>in chapter 5 in this textbook um Theta</p>
+<p>rhythms are slower uh in a in a</p>
+<p>particular kind of Rhythm band or</p>
+<p>frequency band uh gamma are faster and</p>
+<p>so what happens is these rhythms kind of</p>
+<p>um you know it's kind of fun you can</p>
+<p>think of it as like music you know you</p>
+<p>have some fast drums and a slow piano or</p>
+<p>you know some such thing but there's a</p>
+<p>kind of sinking between these two uh</p>
+<p>differing rhythms and it it is seen as</p>
+<p>refle um being a kind of neural</p>
+<p>correlate to someone learning something</p>
+<p>um so multiple time scales in a PDP</p>
+<p>multiple time scales in how our memory</p>
+<p>Works multiple time scales in Neuro</p>
+<p>Imaging data just a couple more uh kind</p>
+<p>of metaphors is Food For</p>
+<p>Thought So one one more question that</p>
+<p>um it almost I think I'm wrong but it</p>
+<p>almost makes me want to wonder um if um</p>
+<p>if the learning in this sense isn't</p>
+<p>um is it an effect</p>
+<p>um</p>
+<p>[Music]</p>
+<p>um actually acting on a</p>
+<p>policy but that may or may not be</p>
+<p>correct but the other thing that comes</p>
+<p>to mind</p>
+<p>um would be</p>
+<p>would would</p>
+<p>surprise occur at either level in other</p>
+<p>words if they if they don't learn or if</p>
+<p>their policy doesn't um get the expected</p>
+<p>payoff then you know there would be a</p>
+<p>surprise but also learning would could</p>
+<p>actually Encompass a surprise as well</p>
+<p>so makes me want to say that there's a</p>
+<p>almost a surprise</p>
+<p>tolerance yeah like thinking back to the</p>
+<p>chapter 2 the basian surprise is the</p>
+<p>Delta of</p>
+<p>learning and so if if the hyper priors</p>
+<p>are</p>
+<p>fixed the basing surprise is going to be</p>
+<p>zero no matter how surprising in the</p>
+<p>first sense the observation is like we</p>
+<p>think that the room is this temperature</p>
+<p>and we're not open to learning we' have</p>
+<p>fixed hyper prior and then even shocking</p>
+<p>observations just continue to shock US</p>
+<p>versus if you had um like a kind of</p>
+<p>adaptive learning rate then there would</p>
+<p>be some like a surprising observation</p>
+<p>would come in that would catch your</p>
+<p>prior wherever it initially was and then</p>
+<p>that would also move your prior some</p>
+<p>amount over to the new observation so if</p>
+<p>that kept happening eventually like you</p>
+<p>would converge so that that was no</p>
+<p>longer surprising and then how fast you</p>
+<p>converge is</p>
+<p>attention slash the learning capacity</p>
+<p>over different time scales so learning</p>
+<p>capacity would would come into the level</p>
+<p>of Tolerance I</p>
+<p>guess would</p>
+<p>coincide thank you and uh forgive me um</p>
+<p>to clarify so learning capacity is</p>
+<p>represented through those hyper</p>
+<p>priors yeah um indirectly yes like like</p>
+<p>when Andrew mentioned the coin flip it's</p>
+<p>like when um and this is just um you</p>
+<p>could see this in any kind of uh basian</p>
+<p>statistics overview like if you only had</p>
+<p>flipped the coin twice and you got one</p>
+<p>in one then you'd have a wide prior</p>
+<p>centered around 50% because your maximum</p>
+<p>likelihood estimate for the fairness of</p>
+<p>the coin is 50/50 but it's very</p>
+<p>dispersed it can't be zero can't be 100</p>
+<p>because you know that you've seen at</p>
+<p>least the other things but but it's</p>
+<p>broadly like it's it's a very over</p>
+<p>dispersed and then if it was 1 million</p>
+<p>and 1 million then the the the the two</p>
+<p>millionth and one flip would be very</p>
+<p>tight would only move the distribution a</p>
+<p>tiny</p>
+<p>amount so that's like that learning by</p>
+<p>counting and then as you count up more</p>
+<p>and then so then then you have this</p>
+<p>whole question of okay well then but</p>
+<p>then that just slows down our learning</p>
+<p>rate but maybe it's a cell</p>
+<p>differentiating and it does slow down</p>
+<p>its learning rate to a halt or maybe</p>
+<p>there's another process that takes a</p>
+<p>look at that um learning by counting</p>
+<p>variable says when this is 100 we cut it</p>
+<p>down to</p>
+<p>20 and and that's this whole challenge</p>
+<p>with the iterated modeling is figuring</p>
+<p>out all these like second order rules</p>
+<p>and diagnostic</p>
+<p>to be like okay should we cut out 20 or</p>
+<p>like 30 and then those are all the like</p>
+<p>simulations and sweeps that you do and</p>
+<p>then investigate how the agent is</p>
+<p>behaving in different</p>
+<p>regularities got you thank that's a good</p>
+<p>explanation that's a lot of</p>
+<p>compute it is so even that's one very</p>
+<p>interesting thing which is like even</p>
+<p>when like the model as</p>
+<p>parameterized might be low compute to</p>
+<p>run the open question is how much did it</p>
+<p>take to get there not dissimilar to like</p>
+<p>a language model where in the forward</p>
+<p>running of a trained model it's not Mega</p>
+<p>computationally expensive but then</p>
+<p>training it can be expensive and</p>
+<p>similarly while updating the model might</p>
+<p>not be expensive so for a toy model</p>
+<p>we're just whatever you make you let it</p>
+<p>run and it's all</p>
+<p>good but to find like adaptive and</p>
+<p>resilient ranges of parameters with many</p>
+<p>many</p>
+<p>possibilities that can be running these</p>
+<p>models many</p>
+<p>times cool</p>
+<p>well we</p>
+<p>return for chapter 7 part two next time</p>
+<p>or feel free to</p>
+<p>join chapter two it's kind of funny</p>
+<p>chapter 2 and chapter 7 they</p>
+<p>are very similar and in Chapter 2 we</p>
+<p>kind of reference chapter 7 because</p>
+<p>that's where the discreet time models</p>
+<p>are then chapter 7 took us back to</p>
+<p>chapter 2 with the surprise and</p>
+<p>everything</p>
+<p>so oh thank you Cheryl I'm going to copy</p>
+<p>this</p>
+<p>in you're welcome thank</p>
+<p>you okay farewell bye he bye bye every</p>
+</article>
+</body>
+</html>

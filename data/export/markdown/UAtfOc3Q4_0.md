@@ -1,0 +1,453 @@
+---
+title: "ActInf GuestStream 066.2 ~ Adrian Bejan, "Freedom and Evolution""
+category: "GuestStream"
+series: "GuestStream_066"
+episode: "2"
+speakers:
+  - "Adrian Bejan"
+duration: "1:05:44"
+url: "https://www.youtube.com/watch?v=UAtfOc3Q4_0"
+views: 283
+exported_at: "2026-02-18T22:37:37.815966+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 066.2 ~ Adrian Bejan, "Freedom and Evolution"
+
+Hello and welcome.
+This is ActiveInference Guest Stream 66.2 on February 15th, 2024.
+We're very much looking forward to this follow up on a very delightful 66.1.
+So thank you, Susan Hastie for organizing and helping with this to you for the introduction.
+Unmute and continue.
+Thank you.
+Okay, thank you, Daniel.
+And thank you, Adrian, for coming back.
+Our last session we covered Design and Nature, your book on Design and Nature.
+And this is my favorite book of all, which is what we're going to cover today, which is Evolution and Freedom.
+So I'm going to turn it over to you and I look forward to this presentation and our discussion afterwards.
+Okay, thank you for the invitation, especially in view of the fact that this is my second appearance on your show.
+The written version of our discussion is in this book, which is still relatively fresh.
+And I prepared a few slides for the next 20 or 25 minutes.
+The first slides are a brief review of my previous presentation, which is about the fact that the phenomenon that screams to be recognized in nature, or for that matter in physics, is the appearance and then the evolution of the flow configuration.
+The flow configuration, as you can see here, unites the animate with the inanimate.
+In other words, it does away with the dichotomy inherited from the church.
+And without the idea going forward, everything that flows and moves on earth is driven by power, which comes from the consumption of fuel and food.
+And the flow architectures, most of them natural, that function as engines, for example, the atmosphere, the hydrosphere, all these things that move are driven by power.
+And as they move and as they morph, they dissipate the power and I call the dissipated features brakes.
+And on the right hand side, you see a summary of everything, which means the geo, the bio and the socio are morphing, meaning evolving flow architectures.
+The statement that emerges after all these observations, again, is based on observations.
+In other words, this law of evolution in nature is of empirical origin, like all laws of physics.
+And it says that it actually defines the live state, which is our subject today.
+For a flow system to persist in time, it must evolve with freedom such that it provides greater access.
+So the phenomenon is the evolution of flowing form, which is actually the time arrow or the definition of future as something different than the present and the past.
+The keywords are only two, the ones that will give us support in the conversation.
+So the definition of evolution from the dictionary is changes that occur in a discernible direction in time.
+That direction is known by many names, objective, purpose, goal.
+But there are many other such words that represent common sense.
+Common sense, common sense. Freedom are physical features that allow an entity, we call that the system and thermodynamics, to exhibit changes.
+Freedom can be measured in terms of the number of degrees of freedom.
+For example, the piston moving in and out of the cylinder of the engine has one degree of freedom, which is the position of the piston.
+Other configurations, the natural ones have innumerable degrees of freedom.
+You can look at the direction in which your cat is moving.
+And anyway, the freedom description is a very, very thick book of examples.
+The punchline is that without this physical feature called freedom, there can be no evolution and no design.
+And for that matter, no direction in time.
+The book has 11 chapters. Time is short. So I will, if I'm lucky, I'll touch on the chapters highlighted in red.
+And I'll take them one at a time. Economies of scale is an observation from economics.
+Coming from design and nature, this observation is predictable.
+In the upper left-hand corner, this is a classroom exercise.
+You can show easily that if a stream, a stream of a particular flow rate flows through two parallel tubes, meaning one stream divided to flow in parallel through those two tubes.
+That stream flows a lot easier through a single tube with a flow volume equal to the sum of the previous two.
+In the second example, if the flow is external to the solid walls, that is, for example, in two barges that are pulled up the river by two tugboats.
+Well, the load, the total load on those two barges is pulled a lot easier on a single barge that is bigger.
+So in going from left to right, in both examples, from left to right, it is easier to go from two to one.
+And that, according to the construct the law, direction of evolution from two to one suggests that these two examples, the phenomenon of accretion or confluence or association is part of nature.
+If that is so, then why is it that flows everywhere around us are not of one big size?
+And the reason is that the flows on areas and inside of volumes, such as the animal body, are flows between one point in an area and one point in a volume.
+In other words, flows between one point in a very, very, very, very many points.
+And this kind of, let's call it the design challenge, is satisfied or answered by a flow architecture called hierarchy.
+And again, empirically, hierarchies are everywhere, but those who are curious can discover them one by one and report them in ways that are memorable.
+And the easiest to memorize a punchline is to arrive at the same punchline many times in presumably disconnected domains.
+So here in social organization, the hierarchy of cities in Europe plotted on the vertical versus the city rank.
+Clearly, the big cities are very few. The biggest one is only one. And then these descending lines, best known empirically as Zipf distributions are proceeding the same way with a relatively fixed slope.
+Over time, the lines move upward because population has been increasing, but the hierarchy remains the same.
+The zigzag line at the very top is a prediction of this descending trend, one based on a very simple model that I used in my classroom.
+From cities in Europe to trees in the forest. This is a, you see this, these two areas that occupy the descending diagonal.
+They represent data based on assuming several patterns of distribution of tree canopies on the forest floor.
+These are tree canopies seen from above. Regardless of what pattern of construction you choose, the hierarchy is relatively rigid.
+And it looks just like the hierarchy of cities distributed over a continent.
+Here is another example. This is in fact an icon of the distribution of animal populations on the globe.
+Population size versus body size. It is a descending association, which if one gets really curious, could punctuate with actual data from the zoology literature.
+Clearly, we're familiar with the aircraft. Airplanes are falling on the same line.
+And the point line is that the hierarchy is natural and the one size is not. So that's a very important line to keep in mind.
+As we, as we, as we, I don't know what I did that I lost my, oh my God. I can not change the slide though. All right. What am I doing?
+So, here we go. So now I get to the next, next topic inequality.
+Here's the movement, the actual movement on the area. Most familiar to us is the movement of freight. It is on an area. It has many participants, but the few, the few are large, big, they travel fast and they travel long.
+The same freight is on the same freight. The same freight is carried by a multitude of smaller vehicles traveling slowly in short distances. The freight is one. The freight is the one that scans the area.
+And this coexistence of the few with the many is stable. It is stable. It is stasis, stasis. It is harmonious. In the animal realm is the same story.
+You see down the, down the slide, the coexistence of the few large and long and fast with the, with the prey that the move short, slow, and the prey is very numerous, which is a coexistence that does not change over time.
+Now, in the human realm, we see also, let's say in our, in our lifetime, the hierarchy of movement on the globe. It is in this case, represented by aviation.
+The color red is about high density movement of people, people who are flying carpets called airplanes. And the rest of the globe is all in motion. It is interconnected.
+But sooner or later, individuals from the blue area have access to other points in the blue area by passing through the two chambers of the heart of world aviation.
+So, incidentally, hierarchy movement is synonymous with hierarchy in the consumption of fuel. And what is seen in the image has emerged naturally.
+It is not the result of a, say, the United Nations. Now, on the left side, we learned that the hierarchy and movement and fuel use is synonymous with the hierarchy in the distribution of freedom, not of wealth, not freedom, wealth.
+On the left side, data from economics show the coincidence that if you plot the wealth on the vertical and the consumption of fuel on the horizontal, the populations of the world fall on the diagonal.
+So, I regard this first graph on the left side as an entry in a dictionary, which explains that what is known as wealth distribution in economics is known as the consumption of fuel or for that matter, the distribution of human movement in engineering and in physics.
+And in physics and social dynamics. On the right-hand side, the same data are plotted with fuel use on the vertical and economic freedom on the horizontal.
+And the arrow pointing toward the future, because, by the way, all these dots are racing upward, meaning listen to governmental reports.
+They all are about this year being better than last year. I mean, if the people get lucky.
+Then, on the right-hand side, you see the dots are migrating toward greater freedom.
+This is obvious graphically, but not known very well to the general public.
+Now, looking more closely at what's going on in every such country, advanced or not so advanced, the population has unequal access to wealth.
+And this is a common presentation of the distribution of wealth in society.
+On the vertical direction is the accumulated share of income that is a share that belongs to a particular fraction of the population.
+So, the income share is called epsilon. The fraction of the population is beta. We'll see this graph more than once after this.
+And if the distribution of income were to be uniform over the population, then the curve should be the straight diagonal.
+But none of the curves are straight. They are, in fact, convex with, say, France and Germany being relatively close to the diagonal.
+The US and China, although similar to each other, they're more convex.
+And Brazil and South Africa, arguably less developed than the previous four, have curves that are even more convex, meaning deviating from the diagonal.
+We're going to see very soon why this convex curve is natural.
+And I decided to illustrate or to present the answer by imagining a population, unlike in this graph about the four, six countries,
+a population of things that do not represent human society.
+And I have on the left side images of the so-called river basins, beginning with the actual river, river delta, then the river basin of air flow through the lungs, river basin of water being pumped upward by the tree in Africa.
+And then in the bottom photograph are the river basin of space coming down the slope toward the Chalet are all hierarchical and convex curves are crowded in the lower left corner of the epsilon versus beta graph.
+beta graph. In other words, by the way, the rest of the picture shows details of that crowdedness.
+For the details, you have to flip through the book. The point is that in the absence of people
+in the population on this flowing system, the inequality is much, much, much worse.
+So, social existence, meaning living together, has brought these curves upward from the lower right corner
+in the direction of the diagonal. This is, in my opinion, good news, but it is relatively unknown.
+And the comparison between the living society and the, by the way, they're all life force systems,
+but the comparison between the human society and a society of things that flow without people
+connected to their neighbors is that difference is striking. This brings me to two examples of
+social organization and how it benefits from innovation. The first example is a look at
+prehistory beginning from left to right on the vertical direction that the Q represents in
+the dimensionless terms represents the rate of loss of heating from a container with hot water
+water, hot water being used by primitive population. On the abscissa, that's the horizontal direction,
+is that M tilde is the dimensionless and is proportional to the rate of hot water consumption by
+individual, by one individual. It means that on the abscissa, the direction of time from a prehistory to
+modern times is from left to right. Now, if you look at the piecewise linear curve that emerges,
+it starts on the left with the hunting and gathering individuals living in huts. One
+pot of hot water, meaning on fire, for one particular hut and that pot leaks heat to the ambient
+and that rate of heat leak is proportional to the Q on the ordinate. Now, the invention, the first one is
+what was the idea of having a larger pot of hot water as shown in the example called N equals 3.
+and then from that pot, the individuals are growing their own supply of hot water.
+And then climbing up the curve, one invention after the next leads to a social organization,
+what leads to association, more individuals or more neighbors coming together
+and benefiting from one central source of hot water. And what's interesting here is that the
+from one invention to the next, the slope of the curve decreases and that means that on a per individual basis
+it becomes less costly or the loss diminishes and therefore everything about hot water becomes more economical.
+The next graph is about another invention called dendritic design as opposed to radial design.
+So the dendritic design. So the dendritic design is an invention that allows the user to
+to get by by paying even less for heat loss to the ambient. In other words,
+the making of hot water becomes more economical. The radial design's envelope is at the top and you see these
+thin lines. They have to do with the invention.
+The thin lines are descending. They're sliding downward as the size of the population called the capital N increases.
+The second example of what an invention does for the benefit of the whole population is here.
+I proposed this image of complete equality of a population. It's spelled out at the top. You have a square
+domain populated with equal inhabitants, equal inputs of something, for example, water or hot water or whatever,
+milk if you want, and equal channels. And equal channels are obeyed by equal flow rates. And this area is an area
+that facilitates the flow of something from the area to the point. And the point called the source or the sink is in the lower right corner.
+And going from the upper right to the lower left, the grid becomes finer, which means that the population increases on the square.
+And in that direction, the convex curve of epsilon versus beta migrates toward the corner in the lower right. In other words, the distribution of this flow over the population becomes less and less equal.
+In that direction is the direction of the size of the size of the population.
+So this is the first conclusion. Next is what can be done about it.
+And by the way, you may have thought of communism. If you look at the first paragraph,
+the importance of this imposed equality on the population is easy to imagine, maybe kind of more difficult to implement, but that has been tried.
+But when there is movement from the area to one point, source or sink, clearly, clearly the individual
+in the vicinity of that very special point benefits from a bigger beta, a bigger beta corresponding to anyway, very few people like himself or herself.
+Anyway, what can be done about it? So assume that the design has only two times two participants, as in the upper right,
+the simplest square, the simplest square is investigated here. First, it is reproduced in the lower right corner and it's labeled a design without innovation.
+To the left, there are two designs in which one innovation was implemented.
+And that innovation is represented by the solid arrow. The solid arrow is the idea of somebody to reduce the flow resistance between two neighbors.
+So in other words, the flow was liberated by one inventor with regard to his or her access to
+an adjacent neighbor. And you see here that regardless of where this inventor was located on the square,
+the effect of liberating the flow is to move the curve, that curve to move it closer to the diagonal.
+So a single innovation is a local design change that benefits the entire population, not only the inventor.
+Next, again, all these examples have to do with changes, changes that happen in the flow rates and the distribution of
+flow rates called movement and wealth and all these other things, including freedom over the population.
+Another way to characterize all these things, the hierarchy and the inequality and so on,
+is the word diversity. And here I show several images of diversity in what concerns us the most,
+which is the human society. This is my graphic way of putting in front of you where the Homo sapiens came from.
+This is a picture of the past two or three millennia. It began with the Homo erectus and then
+the spread. The first migration was two million years ago. The next, the 900,000 Denisovans was 500,000 years ago.
+And then the rest, you can leave the labels on this fork-shaped flow architecture. What I think you should pay
+attention to is the word artifact, which is in red at the very top. All this movement, movement toward the
+diversification of the population of Homo sapiens had to do with change, which means, if you want the inventions,
+the abscissa, the first migration of Africa became possible. Next came clothing. Clothing made the second
+migration of the first migration of the first migration of the first migration of the first migration of the
+North and Northeast Europe, and Eurasia, Siberia. Clothing, big deal. Fire and clothing both have to do with power,
+power and heating for the retention of that heating. And then the third power-related change or artifact was
+boating, boating, boating, which enabled these early humans and hominids to invade the world as we know it. The result,
+as you see, the horizontal lines is the diverse population that characterizes
+the globe today. And now all that means that the modern humans are the object of the history that is taught in schools.
+That history is only the blink of one eye, 10,000 years, no more. And in this direction, more of the same took place.
+You look at these artifacts on the timeline at the very bottom, agriculture, the wheel, domestic animals,
+and then, of course, the mechanism, the machines, language, of course, and literature, printing press,
+and all the way to today's advancements in human affluence, which are, in fact,
+possible because of the industrial revolution. And now, coming even closer to who we are and closer to the
+present, science itself is an evolutionary design that took place and continues to take place because of
+freedom, freedom to innovate, freedom to communicate, and freedom to implement. My own specialty is thermodynamics.
+This is relatively new science, 150 years since it started to spread seriously. Before thermodynamics, the science had very
+strong legs, all of them successful. The heating part was called caloric theory. The rest of it without heating was called mechanics.
+This is as old as even before the Greeks, the old Greeks. And of course, evolution, which really means design, is also even older than the previous two.
+You see it in everything from cave paintings to the Renaissance and, of course, the kind of designing and construction that's going on today. Along the way, the science became unified with a construct the law.
+So, the branch called the heat transfer, where thermal engineering joined the rest of the theory and became what I'm teaching today. And what I think is very, very powerful science of thermodynamics with design evolution in it.
+So, where is this arrow pointing? Obviously, it's pointing toward the future. But the present, unfortunately, is a little bit complicated. Let me go back to the previous story. If you read any book of the history of physics or the history of thermodynamics, you will find a story about individuals.
+The very few, the very few, beginning with the very few, beginning with the very few, beginning with Sadiq Carnot and his father, who was called named Lazar Carnot. Before that, of course, Archimedes and many of these very, very few distinguishable names.
+And design evolution has its own luminaries, individuals, individuals who lived and created in places that were known for creativity and for the sanctity of the individual.
+So, in this is known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be
+like between the American scientist and the scientific American. You see here, yeah, a joke about
+what you see published these days, articles co-authored by 10 or 20 or sometimes 40 co-authors,
+40 co-authors, which give the impression or attempt to perpetuate the view that better science comes from
+the larger group. That is a view that's not original, it happened with the co-activization of agriculture
+and the history of the 20th century is very clear about the success of that, success in quotation marks.
+Well, this is the present and luckily in it, this is what's going on. In it, there are individuals just
+like in the books of the history of science who by their very nature do not feel at home
+marching in columns. They simply run away if they can survive or they shy away. They are not joiners.
+They are happy with their ideas because only that way they can climb peaks, unlike the margin columns.
+So, I end with a view of this little man conquering Mount Everest. I drew, I made a drawing in 1975
+with a big pen in one stroke. 1975 is when I was leaving MIT to become a postdoc in Berkeley.
+And yes, that caricature is Adrian, attracted by the idea somewhere at the very top.
+And this is on the left, how it looks from that very high position. The single investigator, the one with the driven by ideas,
+does two things and both are comforting. One is he steps on deadwood. Deadwood, that's a metaphor for
+everything from all ideas and inactive or groups that are not created. But in front of the individual, there is an infinite
+blue sky of opportunity in which the ideas could be projected, tried and implemented. So, this is the thread of
+the book. Once again, on the right hand side. And I thank you for your attention.
+Thank you. Thank you, Adrian.
+Should I stop sharing?
+You can leave it.
+Okay.
+Susan, would you like to begin?
+Sure. Yeah, sure.
+Susan, what I'd like to do is, is kind of share some insights that have occurred to me,
+and get you Daniel and you Adrian, of whether you know, I'm on the evolutionary track, right? Or, you know,
+or it'll give us something to riff about. So, as I reread this, and I have an autographed copy here.
+It really, the impact became much more powerful for me because, one, I started understanding that
+there's a correlation and there's a difference in the language here. But there's a correlation, Daniel,
+that active, what the constructional law does is actually validate active inference because
+what the constructional law is saying is that, yeah, nature is going to evolve based on minimizing heat
+transfer or heat loss. And for energy is saying the same thing with, you know, we are driven to
+minimize our free energy. Oh, no, no, no, no. Okay.
+Hold on, Adrian. I said that, yeah, I know that these are two different terms,
+but I'm just trying to connect this for the audience. And so I have some really specific
+questions for you. So I want to kind of stay on track here and not get caught up in too much of the
+definitions because one is that the audience that's going to watch this, they're probably not going to
+be as astute about the hard science of thermodynamics versus the machine learning, the biology, the psychology,
+the philosophy that, you know, that we really talk about here. So I'm just kind of threading that needle.
+I'll just say when I, when I kind of start, start trying to capture the essence of the beauty, quite
+frankly, of the constructional law, they're able to connect those, those blankets. Okay.
+Let me, let me, let me respond to what you bring up. Okay.
+I, I think more highly of the audience. I think the audience is astute. And even, even if, even those
+like Adrian, who are not experts in a particular corner of science are able to connect the dots. And
+this is why my role of teaching is to use common language whenever, whenever possible. And that is the
+direction in which I, I want to push our dialogue here. I want to, I want to respond to a few things that
+you said. First, design and nature or evolution is not about minimizing heat loss. It is about providing
+meaning, evolutionary design, changing design, morphing design to facilitate flow or movement. And in every
+example of mine, the, the mover, the mover, the answer to the question, what moves was the individual
+or the group. And yes, the individuals, which is why it started with hunting and gathering, benefited as a
+mover, meaning as a living body, benefited from not wasting heat from the pot of hot water. Okay.
+Meaning the individual benefited from being economical. Here you see the word being economical or being
+thrifty as another way of expressing the natural tendency encapsulated in the Constructor Law. So that is, that is,
+that is, that is the, that is design in nature. Second, design in nature has nothing to do with what you call free energy.
+It is about, it is about, it is about this moving architecture that keeps on changing. And yes,
+in order to move the object, I call it the thermic system, that the entity must be pushed.
+And the pushing comes from power. And the power comes from architectures, most of them natural. Some, a few of them made by people,
+called engines, were functioning as engines. What those systems consume from animals to
+people into the entire globe are called food, fuel and solar input.
+solar input. That is, and those things, those things are not free. Those things are not free. I can give you examples of how dear
+every single one is. And finally, finally, finally, you and I had a conversation via email. If the audience would like to find out what free energy means,
+I would be happy to come back and give you again, common sense or common language presentation of what is meant by free energy in thermodynamics.
+It is a pretty good name for something that was coined around 1860.
+But no, free energy is not free.
+Okay. And it is not responsible for setting things in motion or for creating changes.
+Quite the opposite. Free energy is a, just like entropy, mathematical formula useful in the description of an entity
+that is in perfect equilibrium with its environment. In other words, an entity that is not pushed by the surroundings or pushing the surroundings.
+But it is useful for other reasons which require an hour long discussion. And yes, some illustration that I offer to produce if people are curious.
+But by the way, I'm not criticizing anybody. And certainly, free energy principle is something else, not free energy. Okay. So that's the, keep in mind, these are two different notions.
+And, but it's very important to be very clear about one, about the fact that in our conversation, we respect the meaning of the word.
+Absolutely. And thank you for that.
+Absolutely. And thank you for that. Because I mean, that actually, which enrich and my, the how I'm tying or banding these together, I kind of like to point to the economical, because that actually makes a lot of sense.
+But in reading the book, what I did get a distinction of, and again, you know, I want to hear, correct me, there's not a problem, is that, you know, when we're thinking about active interference annual, you know, we're really more focused on the agents and the interactions with the agents.
+And what I, what I, what I, what occurred to me, especially as I was looking through your slides, Adrian, is, you know, is that the flow architecture, one, it's, you know, it's kind of pointing us toward what is actually flowing.
+And so many of our mental models are static.
+And so many of our, in, in, in, in condensing the information, I was like, okay, the flow architecture is the natural things that are observable, palatable, movable, and measurable.
+Okay.
+And, and, and the, the flow direction, and the configuration, and the time, i.e. rhythm, is actually what is, what needs to be free.
+And, and, and I pulled one thing that I thought was really rich in terms of these features, which again are contextually bound, but they're flowing together.
+And one point I wanted to make was, is that they have to be, or, or ask you about in terms of how are those features needing to be independent first?
+And number two is, is, is how they are flowing together.
+You pointed at it in one of the slides here, but the, how they are actually more economical when they are powering together.
+Well, okay.
+I think it's a, you know, a really key, key aspect here.
+Let me, let me respond.
+It is, it, I confess early on, that's 25 years ago.
+Coming from engineering, I, I saw, I saw flow first before I saw the configuration or the design flowing or changing or morphing.
+The phenomenon is, is not the, the flow and the direction or for that matter, the, the decrease in the so-called flow resistance.
+The phenomenon is the, the, the, the tendency of the, of the design to change, all of it to change so that, so that, that movement, which is, belongs to the body, but also to the niche around it.
+That movement is facilitated.
+A friend of mine the other day brought up the example of the, one of the valves moving and flapping inside the human heart.
+Yes, that is, the valve is the niche, the flow is the blood flow.
+The blood flow has eddies.
+The blood flow is constantly morphing.
+Keep in mind, the flow of liquid is, is, is complicated.
+It's like stuffing a rope down the throat of a gun barrel.
+It's, it's, it has configuration that's invisible to, to most mortals.
+And in the case of the, of, of the living organ, the heart, the stuffing of the rope called the blood flow brings with it the, the rhythmic, the, loving deformation of the, of the flap of the valve.
+And, and this is all for the benefit of the moving animal.
+Yes, the freedom, the, the, the, the life.
+I call it access according to construct the law.
+The freedom, freedom galore.
+In the description of what I just told you, there are innumerable degrees of freedom.
+You know, the bending of the, of the flap, the direction of the flap, the rhythm of the flap.
+And that's only about the flap.
+But when I get into the eddies inside the blood flow, well, those are innumerable.
+Once again, hierarchical.
+A few large and many small.
+And they move.
+These blobs moving speak of rhythm.
+But if you take a snapshot, you see hierarchy.
+Yes, it's complicated, but it happened naturally.
+And the direction of the happening is toward making a better and better animal.
+A longer living animal, a longer traveling animal.
+That is the, the, the, and why should the animal evolve in that direction?
+Because the animal along with, with, with, with his or her compatriots, but is a participant in the river basin of water called humanity.
+Humanity is spending water on the globe.
+And morphing and evolving and getting, okay, better at moving itself, which means moving water just like any river basin or just like the hydrosphere.
+And it's all a relatively boring conclusion because it's always the same conclusion.
+But it is a beautiful conclusion because it makes us, on the one hand, not waste time on something that repeats itself and gives us the opportunity to come up with, with better ideas or new ideas.
+Or frankly, to make a bigger noise to say, aha, aha.
+And I'll say another thing before I stop.
+You brought up more freedom.
+Yes, it's very important in, in my, okay, modest way of teaching these things.
+I show what happens if you have a, one of these morphing designs, any, anything such as a very simple
+drawing of, of a river basin.
+And what happens if you increase the number of degrees of freedom from one, one version of the design to the next.
+So I show this with pencil and paper that as the number of degrees of freedom increases, the access, which is measured in many ways,
+access increases if what flows is people walking through the streets and everything, including vehicles.
+That means wealth increases in the direction of greater freedom.
+And this is why it's no coincidence, no coincidence that the distribution of innovation on the globe is non-uniform,
+just as non-uniform, in fact, coincides with the non-uniform distribution of wealth, wealth, and the consumption of fuel,
+and all these other things that are undeniable.
+So this is the coincidence to keep in mind.
+And keep it in mind when you hear people calling for uniform distribution of this and uniform distribution of that,
+and for certain groups to cut down in the consumption of fuel and to stop using commercial aviation because they are burning too much fuel.
+Yeah, think about that.
+Think about how intelligent that proposal would be.
+And by the way, the reason it's not intelligent is because even if you implement it, it is calling to be replaced tomorrow,
+because that kind of change is unnatural, you see?
+Unnatural.
+Okay, so here's where I'm confused.
+And so help me to kind of pull this together, because we talk a lot about self-organizing systems and about degrees of freedom.
+And what I'm kind of teasing out and maybe I'm confused, maybe not.
+But yeah, what I'm as I'm digging into this and really appreciating the richness of your precision of your language.
+I want to, I want to kind of capitalize on, on as, as the evolution occurs, and, and how, going back to the inequality and how the system is naturally going to lead to the different, the different areas and volumes that the point of the area and the volume, I think is, I think that's one of the richest things that you can
+probably the hardest to grasp in here, but, but yeah, but the also, the more volume there is, and this is a question, then the more coalescence, the accretion, I believe, is increases, but that also leads to fragmentation.
+Is that, how does that relate to the point in the area?
+Let me, let me address that to you.
+This big volume you referred to is one, one feature of the object or of the design is called size, size.
+Everything that we use in our discussion today is about a thing with many features, including size. Size is a natural feature.
+I, I started that way.
+Not, not, not everything is big or not everything is, should be this small.
+Yeah.
+Everything should be this size. And if you, if you look carefully at the, at the literature that grew around the construct the law, you'll see many, many predictions of what the size of the bird should be, the size of this airplane should be,
+and the size of this helicopter should be because size is a natural feature of the moving flow system. And so what moves is a more complicated story than accretion.
+Accretion is, comes from celestial bodies where, where, let's say particles in the primordial soup attract each other and they come together.
+Or forget about the, the, the thing that nobody saw, nobody saw the primordial soup, but you can look at, you can, no, you can actually look at, at the little suspensions of dust and how they, they, they,
+they become aggregates, dust aggregates shaped as just like the snowflakes, snowflakes. You see this in hidden corners somewhere in a room where no one has been for about 30 years.
+These dendrites of, of, of, of particles that came together because of mutual electrostatic attraction. And yes, but well, those systems by this, by this time are dead.
+They are not the object of our, our discussion, although on route to those dendrites, they were alive and behaving just like any other, any other flow architecture in their case proceeding from a volume to one point.
+Right. So I, I come to the, anyway, the observation is that the, the, the design in nature is, is, is not about accretion.
+That's just the one, one kind of flow. It is about the, the, the whole architecture that has this purpose of enabling easier movement for the whole, the whole.
+I think what's difficult here. I recognize where my peers feel difficult to grasp. The difficulty is to, to get away from the, from the, the present tendency of, of splitting hairs called, you know,
+splitting too much the infinitesimal, it's called reductionism. This discussion about design in nature is about the whole. It's about the whole. It's about the,
+rising above the, and, and, and, and engaging in holism, holism, holism, and, or getting away from disciplines and becoming a polymath. Okay. It's about the, and if you, if you become a polymath,
+you become closer to being a polymath, you become closer to being a street person, a person who looks at this poster, this poster, reads 10 different books, 10 different books,
+10 different books, not just narrow, narrow, narrow, narrow, and a person who does not live in a, in a cubicle or in a locker room, a person who has many friends, many friends,
+a person who knows more than one language, a person who knows more than one language. A person is, this is the, the meaning of a truly, truly common person. And that's the invitation to the scientists to, to, to, to get out, get out of the apartment, you know, physically or figuratively and smell the roses.
+roses uh because beauty beauty is uh where you don't don't expect to find it okay meaning it's
+it's maybe maybe behind the house of the neighbor that's probably where the beauty is so well
+this one because it's so rich but i could go on for hours i'm going to turn this back over to daniel
+um yeah because i thank you so much because this has been thank you susan just in our last
+minutes um i'll just add a few small points um first just beginning with the last common person
+is that what is held in commons a commons person and the stewardship of the commons then in your
+drawing with the mountain there was the peak up and there was the path out and it was like a person
+walking on a path forward out and a river a flow and time as you began with is goal flow it flows in
+the goal oriented direction yes there's more to it and it's flowing false roll downhill and uh the the
+organism walks forward it can't walk backwards uh and then the last point is the uh distributions
+empirical that you presented um jeffrey west and others have have highlighted that empirical aspect
+of the outcomes and their uh distributions however you tied that to the point zero to one to two to
+three dimensional um transfer points where from one to two is like a point spreading out on a plate and
+three-dimensional is like a point radiating out these are fundamental equations that are kind of in your
+engineering toolkit because they have to do with like for example heat distribution but that's just
+related to the modes of vibration and the degrees of freedom of the molecules as a secondary distributional
+approximation to an actual size specific and that's why there are river bifurcations that are this big
+and not river bifurcations that are a micron and all these other kinds of things that are um not just
+the neutral we need to explain away about nature but just straight down the middle with what the study of
+nature is that's right uh yes i couldn't agree more and i get uh i get uh uh enlightened by uh by uh this kind
+of commentary um and um and yes uh you mentioned jeffrey west he's one of the few uh uh in whose company i feel at home
+the uh uh it's important it's important to uh to uh once again to look at uh uh
+uh as life from both sides okay as in the song uh and um and uh and make a very strong effort not to become an ideologue
+uh um i um i like the opposite of that which is that uh that uh
+uh my students idea may be better you see uh where maybe uh i get corrected every day i teach this
+course right now i teach it to a an overflow crowd um and quite quite frequently uh not every day
+they correct me they say how about this and it's uh it's it's like a free food for me this sort of
+reaction uh uh the listeners should pay attention i don't get these comments from my colleagues okay
+i get them from these nobodies from these nobodies girl students
+yes don't say that too loud it's a perfect it's a perfect note and it's one of the things i've always
+loved the most is outside of the organizational structure and the shape of the building is about
+the fact that it's first principles and about the opportunity though unlikelihood or not
+of a transformative epistemic relationship across all language and all professional boundaries
+so thank you adrian for for also living this and sharing how you've done it yeah yeah thank you so
+much this has been awesome thank you to both of you until next time bye bye
+thank you
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.

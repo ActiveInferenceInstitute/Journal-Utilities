@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active Inference LiveStream 058.1 ~ "From pixels to planning: scale-free active inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active Inference LiveStream 058.1 ~ "From pixels to planning: scale-free active inference"</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_058 &middot; Episode 1 &middot; Duration: 1:58:21 &middot; Views: 739</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=OPapscuD05s">https://www.youtube.com/watch?v=OPapscuD05s</a></div>
+<article>
+<p>Hello and welcome. This is Active Inference live stream 58.1 on November 7th, 2024.</p>
+<p>Welcome to the ActInf Institute. We're a participatory online institute that is communicating, learning,</p>
+<p>and practicing applied active inference. You can find us at links here. This is a recorded</p>
+<p>and archived live stream, so please provide feedback so we can improve our work. All</p>
+<p>backgrounds and perspectives are welcome and will follow video etiquette for live streams.</p>
+<p>Head over to activeinference.institute to learn more about live streams and other projects.</p>
+<p>We are in the second in the 58 series. Arun and I last week did 58.0 with some background</p>
+<p>and context. Kind of the approach to scratch the surface. And today we're going to pick</p>
+<p>it up with Lance and looking forward to this discussion. So people watching live, please</p>
+<p>write any live chats. Arun has also prepared a bunch of questions. Let's begin though with</p>
+<p>Lance if you want to say hi and welcome back. And then any overviews or any introductions,</p>
+<p>what's the question that you feel will help set the table for today? Thank you.</p>
+<p>Well, thank you so much. And thank you so much for having me. So yeah, I'm super excited</p>
+<p>about this discussion. And I feel a lot of us are trying to understand renalizing objective</p>
+<p>models. So I'm sure I'm going to learn a lot as well. Yeah. So just to give a little bit</p>
+<p>of background. So now Kyle Friston is the chief scientific officer at Versus. And one of the</p>
+<p>challenges that we are kind of like moving towards, and this is public information, is of course</p>
+<p>scaling active inference. And there's one particular challenge that we're looking at. It's Atari. So</p>
+<p>for those who don't know, Atari is just a suite of like about 30, 31 games. They've been around</p>
+<p>for a long time, maybe since the 80s, or I don't know exactly. It's a famous benchmark for</p>
+<p>reinforcement learning. Now there's been a lot of work in RL solving Atari and maybe stuff even</p>
+<p>like 10 years old already that solves Atari. So the question is, why are we trying to do</p>
+<p>that with active inference? And the answer is, all of these RL methods, they use a lot of</p>
+<p>data. They're super data hungry, and they're not, so they don't have this human level efficiency</p>
+<p>that we're looking for. And so that's where active inference could potentially come into</p>
+<p>play. So one of the things that we're looking at at the company is scaling active inference</p>
+<p>to show that we can solve Atari with a human level efficiency. And so this scale-free approach,</p>
+<p>planning from pixels, emerged out of these efforts. And this has been work led by Carl. So he's,</p>
+<p>you know, come up with the ideas and the code and so forth. And, and yeah, and so now we're still</p>
+<p>pushing with this approach and other approaches. So yeah, it's super exciting. And there's many,</p>
+<p>many research questions of things we could explore. So very excited to discuss it today.</p>
+<p>Okay. Do you want to give any connective tissue between some of your previous conversations or</p>
+<p>papers or streams? And then we'll jump into the listed questions we have.</p>
+<p>Sure. So, so for those who don't know me, so I'm Lance, I've been working on the</p>
+<p>principle active inference for a long time, primarily on the, on the mathematical side of things. So</p>
+<p>back when I started, possibly the only person understanding active inference was Carl himself.</p>
+<p>And if he privileged people around Carl. And so a lot of the work I did was to try to understand</p>
+<p>things and put them on a more rigorous mathematical footing. And so we've had a, a few conversations</p>
+<p>here, a few live streams, speaking about some of that. So we'd say the, the RGM work that we're</p>
+<p>discussing today is a, is a bit different from, from what I've been working so far. So,</p>
+<p>previous work was mostly on the theory of the principle theory of active inference,</p>
+<p>the math. Today, it's more about a piece of code that does things, and it does really cool things.</p>
+<p>And so it's a much more pragmatic agenda. And I'm personally moving in this more pragmatic</p>
+<p>set of things, but I have a lot to learn. Yeah. So this is, this is how things stand at the moment.</p>
+<p>Yes, it was live stream 52 on the geometric methods for sampling optimization,</p>
+<p>inference and adaptive agents. That was a great and very epistemic setting. And then also now that I'm</p>
+<p>seeing it also 26. So it was sort of a 26 52 full card Lance situation, but both of these were some of the</p>
+<p>clearest and most fundamental papers and unpackings in the series.</p>
+<p>Arun, anything you want to begin with, or we can just jump into the questions you wrote.</p>
+<p>Uh, I mean, first of all, just to say like, I need to catch up on those because they sound great.</p>
+<p>Um, also, I think some of my questions are still fairly, like, I don't want to say like towards the</p>
+<p>end of the paper, they're much more like discussion points, but I don't know if maybe for some people who</p>
+<p>might not been able to catch the first session to maybe go into a very high level summary of the</p>
+<p>paper first, uh, and then set some background that might make the discussion points, uh, a bit clearer</p>
+<p>as they happen. Uh, but very happy to, for you to take the lead on that one, Daniel.</p>
+<p>Daniel</p>
+<p>Yeah. Lance, what would, what would you say is the overall summary through line and then we'll turn to the</p>
+<p>specific questions.</p>
+<p>Sure. Um, so, so I'll give a quick summary.</p>
+<p>Yeah. Um, right. So, um, yeah, so, so the problem that we're looking at is planning from pixels.</p>
+<p>So you have a bunch of pixels and we want to, you know, the decision making.</p>
+<p>Um, so for, for those who are familiar with active inference, there's typically two flavors of active</p>
+<p>inference. There's the reflexive type of active inference where you're not really planning in</p>
+<p>the future, but you're like, uh, if, if I infer it and I'm in this state, then I should do this.</p>
+<p>And if I infer, I'm in this state, I should do that.</p>
+<p>And it's typically what we see and continuous active inference.</p>
+<p>Um, and then there's the other favor of active inference and also sophisticated inference,</p>
+<p>which is typically in the speech states.</p>
+<p>And, um, and that has planning that has expected free energy. It has expiration and so forth.</p>
+<p>Um, here we are in a setting when, where we are doing things in the speech states, but we are reflexive.</p>
+<p>So this is just to situate with the other things that are in the literature.</p>
+<p>And so what happens is we, we get a bunch of pixels.</p>
+<p>So yeah, just to go back a little bit, this is, um, the pixels of the planning paper is a way to</p>
+<p>learn from expert data.</p>
+<p>So if I, if I look at expert data of an agent doing something, I'm going to be able to learn that</p>
+<p>with an RGM and reproduce it in some kind of a, like a habitual reflexive loop, but I'm not going to do</p>
+<p>any kind of the, no, for learning.</p>
+<p>Um, and, and yeah, and so then there's like a very specific, um, architecture for the RGM</p>
+<p>generative model, uh, that allows it to do what it, what it does.</p>
+<p>And there's a way we can, you know, learn these things, uh, but that's kind of like the, yeah,</p>
+<p>goal idea or, or a little context.</p>
+<p>Okay.</p>
+<p>Awesome.</p>
+<p>Yeah.</p>
+<p>Just, we have the figures if there's any to jump to, let's go to the first, uh, question.</p>
+<p>So how are renormalizability and sparsity linked?</p>
+<p>And also if you could connect that to how else we've seen sparsity discussed in the Markov blanket</p>
+<p>concept, what's sparsity in a graphical model?</p>
+<p>How is renormalizability doing something similar or different than the sparsity conditions that we've</p>
+<p>studied before?</p>
+<p>Right.</p>
+<p>Um, so, um, yeah, just to give a bit of, uh, a bit of context on that question, because you</p>
+<p>talked about Markov blankets.</p>
+<p>So, uh, Cal and a number of people have this idea that living systems and I guess systems in general</p>
+<p>are made of Markov blankets, I mean, they're themselves Markov blankets.</p>
+<p>And so if you take an organism, it would be composed, for example, of, uh, organs with their</p>
+<p>own Markov blankets and themselves, uh, made of cells with their own Markov blankets.</p>
+<p>Uh, and, and you can, you know, subdivide, uh, many, many times sort of zoom in and you'll still see</p>
+<p>Markov blankets everywhere.</p>
+<p>And so the, what, what you get from that, or, or probably what Cal, uh, got from that is that</p>
+<p>there is some kind of, uh, spell free invariance about the nature of things.</p>
+<p>Um, which is that if you, if you zoom in or if you zoom out and, um, you know, arbitrary zooming or</p>
+<p>zooming, you would still have this kind of like fundamental structure.</p>
+<p>And, um, and I should say, uh, the renormalization group is a mathematical apparatus for zooming in</p>
+<p>or zooming out on things.</p>
+<p>And, and so basically these, uh, renormalizing, you can't, and models, they have this, um, assumption</p>
+<p>that the world is renormalizable, that the world has some kind of a spell free information.</p>
+<p>Uh, within them.</p>
+<p>And, uh, and so we can get more into the details of that, but basically long story short is that</p>
+<p>this renormalization aspect, it gives you a very powerful inductive bias on the structure of the</p>
+<p>genital model.</p>
+<p>Um, and in this case, it gives you this kind of renormalizing genital model, which is</p>
+<p>a genital model that looks the same at every scale.</p>
+<p>So it's a genital model that if you, uh, you know, give it pixel data that sort of</p>
+<p>very zoomed in, uh, that part of the model that feeds that data is going to be the same</p>
+<p>in terms of its structure than the high level parts of the model that look at like much more</p>
+<p>causal grain features.</p>
+<p>Um, and, and these models are very sparse.</p>
+<p>Um, yeah, just because, uh, when you look at the representations in the model,</p>
+<p>there's many, many, uh, connections are missing, but by design on purpose, right?</p>
+<p>So, to have a lot of, uh, sparsity, uh, so it means that they're very lightweight.</p>
+<p>Um, and yeah, I would say that's kind of, um, the main advantage, right?</p>
+<p>Uh, so when we, when we compare with, uh, traditional machine learning architectures,</p>
+<p>this is not to say that, you know, this approach has a lot of limitations, but one,</p>
+<p>one of the strengths is that we, we get some very lightweight models that can learn things with a</p>
+<p>a relatively low number of states.</p>
+<p>And, and I think that goes back to sparsity.</p>
+<p>Okay.</p>
+<p>Let's look at the figure and, and talk about the architecture.</p>
+<p>Maybe continue a little bit on what, what specifically</p>
+<p>can, can, uh, where, how can we see that renormalization structure in figure three?</p>
+<p>And how does this have similarity and differences than like the textbook generative models that we've</p>
+<p>worked with?</p>
+<p>Right.</p>
+<p>So, so I should say a full disclaimer, I don't think the explanation of, uh,</p>
+<p>renormalizing data models is very clear in the paper.</p>
+<p>And some will say it's extremely unclear.</p>
+<p>Uh, so I'm going to try to, to clear some of that confusion.</p>
+<p>Uh, but there's also a part of it where, where I'm probably still confused.</p>
+<p>So, so apologies in advance if I cannot clear all the confusion.</p>
+<p>Um, but so, so I can try to describe the, the figure that you have here.</p>
+<p>And then I, I can also give you my own, uh, kind of personal summary of gender models,</p>
+<p>uh, of renormalizing gender models.</p>
+<p>So, so here we have kind of, um, a classic, a classic, uh, hierarchical partially observed,</p>
+<p>uh, market decision process.</p>
+<p>And the special features is that, um, there's a time horizon of one at each layer.</p>
+<p>Um, and then you, you have this renormalizing scale-free aspect, where, as you can see at the</p>
+<p>bottom level, you have two states, two actions.</p>
+<p>These are grouped into one state, one action of the level above.</p>
+<p>And then if you go one level, even, even further above, there's, again, two states at the level</p>
+<p>below and two actions that are grouped into one state and one action the level above.</p>
+<p>And you can go like that for as many layers as you want.</p>
+<p>Um, in, in the current code, what you do is you specify the number of layers that,</p>
+<p>that you want, uh, to start with.</p>
+<p>And then you would kind of learn, uh, you know, the transition mappings and, and so on and so forth.</p>
+<p>What aspects of the code are available or what languages or timeline for overall applying it?</p>
+<p>Um, you mean for, for applying it in, you know, to machine learning test?</p>
+<p>Is it, is it, is it, or, or just for any of these settings, what is the code availability</p>
+<p>or, or what do you think are the pro, the promising ways today and going forward for</p>
+<p>people who are interested in the open source active inference implementations to work with it?</p>
+<p>Right.</p>
+<p>Um, yeah.</p>
+<p>So, so I'm not entirely sure, um, as to the kind of like privacy constraints on the, on the code right now.</p>
+<p>Um, I would assume there's a link in the paper pointing to a repo, but if that's not the case,</p>
+<p>it's not the case.</p>
+<p>Okay.</p>
+<p>Well, um, so I know it's on a private version of SPM.</p>
+<p>Um, and so if it hasn't been released yet, uh, then there surely, uh, talks inside the company</p>
+<p>of like, when to release it, how to release it.</p>
+<p>Um, yeah.</p>
+<p>So I'm not exactly sure about the timeline of that, unfortunately.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>All good.</p>
+<p>Yeah.</p>
+<p>I mean, the, it's, it's an interesting, that, uh, piece with the research and being able</p>
+<p>to share that.</p>
+<p>And with this information here from the pseudo code, it, it gives a lot of the recipe and the</p>
+<p>anatomy of the, uh, model.</p>
+<p>But let me just, uh, is there, is there another part of this figure or another figure to continue</p>
+<p>specifying a little bit more about what's happening or do we want to jump back to the questions?</p>
+<p>Um, yeah.</p>
+<p>So, uh, there's a presentation by, by Tim Ferberlin that, that, um, um, and there's a useful slide</p>
+<p>on, on that presentation, uh, that, that could potentially show.</p>
+<p>I don't know if I can share my screen here, but I think it would be quite useful to illustrate a</p>
+<p>bit more.</p>
+<p>Sure.</p>
+<p>What's going on.</p>
+<p>Oh yeah.</p>
+<p>Share your screen.</p>
+<p>And, uh,</p>
+<p>I said, see if I can do that.</p>
+<p>This is a new computer.</p>
+<p>Um,</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>Unfortunately I'm not going to be able to do it because it's, um,</p>
+<p>I mean, I could, but I need to fiddle with the settings or you could, you could email it</p>
+<p>and I don't have admin rates.</p>
+<p>Okay.</p>
+<p>You could email any slides.</p>
+<p>Um, if you wanted to,</p>
+<p>to, uh, admin.</p>
+<p>Yeah.</p>
+<p>I'll check, I'll check and, um, yeah, I'll get back to you on that.</p>
+<p>Okay.</p>
+<p>But I can, I'm happy to explain.</p>
+<p>Yeah.</p>
+<p>Continue.</p>
+<p>Um, what, what I was going to show.</p>
+<p>So the idea, and, and here I'm going to have to wave my hands a bit, but hopefully it's, uh,</p>
+<p>it's clear.</p>
+<p>I'm going to show you the picture.</p>
+<p>Um, you get some pixel data, you get a movie, but basically that's what our RGMs do.</p>
+<p>You get a movie of an agent doing something and you're going to learn a gentle model that,</p>
+<p>you know, learns that and is able to reproduce the agent in the movie.</p>
+<p>And so it's able to learn its actions and reproduce its actions depending on the state.</p>
+<p>So the way it works is you, um, you take one frame of the movie and you take the next frame.</p>
+<p>And, and this would be like your low level observation for the renormalizing during the model.</p>
+<p>So why do we take two consecutive frames, uh, as one observation, because we want to extract position,</p>
+<p>but also momentum, uh, information.</p>
+<p>So, so that's our observation to consecutive frames.</p>
+<p>Then each frame we're gonna, um, we're gonna divide it into several overlapping patches.</p>
+<p>So this, like, uh, convolutional neural network would, so, um, yeah, you have like multiple patches</p>
+<p>that overlap each center, for example, around pixel.</p>
+<p>And then each of those patches, you do a singular value decomposition,</p>
+<p>which is that you, uh, you take the eigenvectors.</p>
+<p>So you have those pixel vectors, you take the eigenvectors and, and you essentially do a PCA.</p>
+<p>And, and the reason why you do that, so, so just to give a little bit of, uh, context.</p>
+<p>Um, well, first of all, uh, planning is, is much easier in discrete states.</p>
+<p>Uh, so somehow things work a lot better, or, or, or at least that's what we think, uh, at this moment.</p>
+<p>Uh, so we want to convert this kind of like very high dimensional, kind of continuous data,</p>
+<p>that are pixels into some more, uh, manageable size, uh, low dimensional discrete representation that we can</p>
+<p>then work with in the RGM.</p>
+<p>And so there's potentially many ways you can do that.</p>
+<p>And one way would be to use, uh, like kind of, uh, for example, um, uh, variational autoencoder,</p>
+<p>where you would then discretize the latent space.</p>
+<p>That would be one way to get from continuously discrete.</p>
+<p>So there's many, many ways, uh, you can do this step.</p>
+<p>The reason why, uh, I suppose, Carl chose SVD is because it's very lightweight.</p>
+<p>And it's also very, um, I would say context sensitive.</p>
+<p>If you gave one bit of data, I will adapt to that data.</p>
+<p>If you give it another bit of data, I will adapt as well.</p>
+<p>Um, there's arguably also pros to using a deep learning architecture.</p>
+<p>The cause is that it would be need to be trained.</p>
+<p>So lots to explore there.</p>
+<p>But for now we use it as GD.</p>
+<p>And so, um, so once you've done your, your singular value decomposition,</p>
+<p>you get these eigenvectors that, um, you still get a list of eigenvectors for,</p>
+<p>for each patch that tell you, okay, well, this is like the most important feature</p>
+<p>in, in the patch of pixels.</p>
+<p>This is second most important feature, third most important feature and so forth.</p>
+<p>What you do is you truncate that.</p>
+<p>So you take the most important features and then you discretize that.</p>
+<p>Um, so it's, it's a lot of stats, um, I know.</p>
+<p>So hopefully I can, um, send you a picture.</p>
+<p>But the point is that you extract the features using SVD.</p>
+<p>So you get a much lower dimensional, uh, representation of the data.</p>
+<p>And because you truncate it, you kind of eliminate the noise,</p>
+<p>you eliminate the things you don't care.</p>
+<p>And then this low dimensional thing, which is still continues,</p>
+<p>because these are eigenvectors, you can discretize it using multiple bins.</p>
+<p>So now you have discrete data.</p>
+<p>And once you have your discrete data, then you can fit it to the picture that you have</p>
+<p>in the slide right there and do your hierarchy point.</p>
+<p>And kind of like much more classic.</p>
+<p>Yeah.</p>
+<p>Awesome.</p>
+<p>Yeah.</p>
+<p>And the dot zero, we talked a little bit about that process about going from the continuous</p>
+<p>to the discrete to enable planning over the discretized form.</p>
+<p>Arun, go for it.</p>
+<p>Yeah.</p>
+<p>And thanks for that summary, Lars.</p>
+<p>That was really like clear and informative.</p>
+<p>Uh, one question I have just to follow off on that is when you said something you said</p>
+<p>quite early on, which is that planning in the continuous space is really difficult.</p>
+<p>Um, could you say a little bit about why that is?</p>
+<p>So the reason I ask is, I think it's a very common thing that people would want to do</p>
+<p>is have an agent that can plan an action to do this thing, but control the degree at which it does it.</p>
+<p>So I would like to move, but by a certain amount, how do I choose how much to move in a continuous distance?</p>
+<p>So I guess maybe could you say a little bit about why it's so difficult to plan in continuous space?</p>
+<p>Yeah, it's a really good question. So I think, um, so planning is always about doing things.</p>
+<p>Um, so when, when I talk about planning, I don't talk specifically about action selection.</p>
+<p>I talk about imagining what will happen, um, you know, in a certain time interval in the future.</p>
+<p>So it means that you're looking at, uh, what would happen if I did that in terms of what is the trajectory of what would happen if I did that.</p>
+<p>Now, if you're in discrete spaces with time, you're looking at a sequence of future states.</p>
+<p>But if you're in, um, and, and so your space of trajectory is that you're kind of like planning over is discrete.</p>
+<p>Because it's like, um, possible steps of the next time step and then 10 possible step of the next time step.</p>
+<p>So it can be huge, but it's discrete.</p>
+<p>When you're in continuous space, if you want to plan, uh, in a certain time and to run the future,</p>
+<p>you're looking at trajectories of what would happen if you took a particular trajectory of actions.</p>
+<p>And so if you're in continuous space, continuous time, the space of trajectories is infinite dimensional.</p>
+<p>So I think that's kind of like the, well, it's infinite and it's also infinite dimensional.</p>
+<p>So it's kind of like really bad.</p>
+<p>And yeah, and there's probably, I mean, there are algorithms that kind of do this.</p>
+<p>I'm not really an expert on that, but I think that's kind of like the underlying limitation,</p>
+<p>the, the fundamental, fundamental mathematical limitation.</p>
+<p>And so the thing you can do then, uh, to plan in continuous space, continuous time is you abstract</p>
+<p>away on a discrete space and then, and then you go back down and, and this is what, what we've been</p>
+<p>doing.</p>
+<p>I mean, as you know, um, in active inference, it's kind of like the, the hack, uh, there's probably</p>
+<p>other ways to do it, but yeah, that's where we're at.</p>
+<p>So maybe something just to clarify there is the nature of these infinities, right?</p>
+<p>So you said infinite dimensional, but then also it's almost like infinite values for each of those</p>
+<p>dimensions.</p>
+<p>So that's why it gets really explosive in the number of things you have to consider.</p>
+<p>Uh, one of the things that we talked about in the dot zero was the path-based formulation</p>
+<p>and how that seemed to be even more combinations you would have to consider</p>
+<p>compared to the textbook, uh, formulation where now we're considering paths over states and actions.</p>
+<p>And there are as many, uh, combinations of paths of like common, combinate, combining states and action</p>
+<p>choices, uh, which already sounded like quite difficult to solve relative to sort of the toy examples</p>
+<p>of just what, what's in the book.</p>
+<p>So maybe you could, uh, say a little bit about that.</p>
+<p>Right.</p>
+<p>So, so just to make sure I'm, I'm on the same page with you.</p>
+<p>Um, what, what do you mean exactly by the path-based formulation?</p>
+<p>So I think it's, um, when we're now, just, just, just figure 4.3 from the textbook is kind of a good touch point.</p>
+<p>Um, on the top is the discrete time explicit states and observations that time points are considered.</p>
+<p>Time point 1, 2, 3, 4.</p>
+<p>In a continuous time.</p>
+<p>Future time points are only predicted through a Taylor series generalized coordinates expansion,</p>
+<p>which is something we talked about in, in 52.</p>
+<p>Um, or continue from there.</p>
+<p>Just wanted to bring in those two textbook figures and how they can be combined in, in a hybrid architecture</p>
+<p>that kind of presages what we're talking about today.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>It's interesting that you bring up generalized coordinates because, um, yeah, when I, when I was mentioning, uh,</p>
+<p>myopic active inference or like not using path, um, I wasn't specifically mentioning, referring to generalized coordinates.</p>
+<p>Kind of like the more simpler version without the generalized coordinates, because you're right, you're absolutely right that when you have generalized coordinates, um, you, you do get trajectories again.</p>
+<p>The, the difference or, or one of the differences is in discrete states, um, you, you may have a limited computational budget that kind of limits you in several ways,</p>
+<p>but at least theoretically you can plan infinitely or arbitrarily far ahead in the future.</p>
+<p>Uh, even though your beliefs would get very imprecise, um, in continuous states, when you have generalized coordinates, you have this notion of, um, encoding implicit trajectories in the future.</p>
+<p>Through these Taylor expansions, but the Taylor expansions are only by design, only going to be accurate on a very small or, or small, uh,</p>
+<p>time interval.</p>
+<p>So, so already theoretically, if you have only finally many generalized coordinates, which is what you always have in practice,</p>
+<p>you are now able to plan very fine the future.</p>
+<p>This is, um, this is like much more sophisticated than, than any kind of active inference without the generalized coordinates</p>
+<p>or the things I was mentioning before.</p>
+<p>The, yeah, what, what, one other thing, um, is so, so when you do planning in the sweet states here, like comparing multiple trajectories of actions,</p>
+<p>if I remember right, but, but correct me here if I'm, if I'm wrong, when you do planning in the continuous states for generalized coordinates,</p>
+<p>so then, uh, at the bottom of 4.3, you're always minimizing the gradient of the free energy with your actions.</p>
+<p>So even though you plan the, the trajectories of states in the future, if you did that, you don't plan for sequences of actions.</p>
+<p>I, I believe that that's true or another way to say that is that the continuous time formalization,</p>
+<p>even if you do have a high degree, uh, Taylor series expansion or a lot of generalized coordinates,</p>
+<p>it isn't explicitly considering counterfactual scenarios like tree search in chess.</p>
+<p>It's like seven moves down the road. If one, two, three, four, five, six, seven, then eight, a eight, b eight, c.</p>
+<p>Whereas in a continuous time expansion, you get one polynomial approximator, but it isn't saying, well, what if time point 12 were different?</p>
+<p>All you could say is something about the statistics of that path as interpolated, but you wouldn't be able to directly, um, make strong guarantees outside of following the gradients around that inferred path.</p>
+<p>So maybe, maybe I've mistaken something, but I, either in one of the points that you've written there, Daniel, or something Lance said,</p>
+<p>I remember the word reflexive for the continuous time action of inference. Is that, is that what we're saying here is that, um, yeah, there we go.</p>
+<p>Without planning, um, at least with the continuous, um, time formulation.</p>
+<p>Yes. It's sort of doing something with the expectation of what's going to happen in the future.</p>
+<p>But as you say, it's not considering counterfactuals. We're not considering if I do this, then this, if I go 10 meters rather than 20 meters, this will happen, et cetera.</p>
+<p>Yeah. Yeah. I think it would be interesting if he, if he has that question to Cal, um, if he, if he draws the same distinction, but, but I would totally agree with you.</p>
+<p>Um, I would say, so at the beginning I was referring to continuous active inference without the generalize coordinates as being reflexive.</p>
+<p>I would say that with generalize coordinates, it's still reflexive, but you're right.</p>
+<p>That it's still, it's already much more sophisticated in the sense.</p>
+<p>Yeah.</p>
+<p>The generalize coordinates are like a way to bring the depth in.</p>
+<p>It's like doing momentum trading on a stock over multiple timescales.</p>
+<p>You're still making an instantaneous decision in the sense you're looking at a vector of the current moment and then looking at different trends and first, second, third, et cetera, higher moments.</p>
+<p>However, again, there's not explicit planning.</p>
+<p>So this sort of gets into the functional underpinnings of anticipatory behavior and whether anticipatory behavior can be loaded up into a sort of reflexive, intuitive moment or, and, or to what extent it involves explicit tree-based search of branching possibilities.</p>
+<p>Yeah, totally.</p>
+<p>Um, okay.</p>
+<p>Okay.</p>
+<p>But just to close the loop on the sparse, on the sparsity, could we say generative models are defined by their sparsity.</p>
+<p>We're literally talking about some set of random variables, nodes, and their edges, which defines their sparsity conditions.</p>
+<p>Any node interpolating between two other nodes is a blanket.</p>
+<p>People often are interested in the agent environment blanket as interface.</p>
+<p>However, taking the graphical model as a base graph itself, we can think about the B matrix here as being a blanket, for example, between these other two nodes.</p>
+<p>So this is the sparsity conditions of figure three and the, I mean, whatever model you design, the connectivity is the sparsity condition.</p>
+<p>Renormalization generative models have a special template or recipe for how the sparsity conditions are related within and across levels.</p>
+<p>levels.</p>
+<p>Okay.</p>
+<p>Arun, want to pick one of these or which one to go to next?</p>
+<p>Um, I actually think the next one is they're sort of roughly in an order.</p>
+<p>Uh, so yeah, I think talking about the RG operators, because it is</p>
+<p>the really new thing in this paper, what makes a good one?</p>
+<p>What makes a good RG operator?</p>
+<p>So, um, yeah, I mean, I'm assuming if you ask this question, you probably know more about RG</p>
+<p>operators than I do.</p>
+<p>Um, so it'd be interesting to know what you think about this.</p>
+<p>Um, yeah, to be honest, like, uh, yeah, just to give like a comment, um, this is one of the</p>
+<p>things that I really need to read up on.</p>
+<p>Um, Kyle repeatedly says there is this universal aspect to renormalizing giant models.</p>
+<p>And I agree that there is some part of nature that seems to be scale-free in terms of like</p>
+<p>these marker blankets had different scales.</p>
+<p>But to me, there is also a lot of nature that is not scale-free.</p>
+<p>I mean, not everything that you look at is a fractal.</p>
+<p>So in what sense are RGMs universal?</p>
+<p>Uh, the super cool thing and surprising thing for me in this paper is that, uh, there's a lot of</p>
+<p>things that you can do with RGMs.</p>
+<p>There's a lot of things that you can learn.</p>
+<p>I'm not sure to what extent, I mean, I would really like to know, okay, well,</p>
+<p>this is one thing that you cannot do with RGMs in terms of like, uh, I cannot memorize this.</p>
+<p>Yeah.</p>
+<p>That's something I'm not, I'm not sure about.</p>
+<p>So maybe I can sort of come back on that.</p>
+<p>Uh, so I think the use of the SVD and effectively principle components analysis in this paper is</p>
+<p>actually like a really nice introduction to renormalization groups.</p>
+<p>If you don't know what they, if you haven't heard of them before, uh, it's very common in other</p>
+<p>aspects of more like traditional pattern matching and machine learning.</p>
+<p>And there's loads of good tutorials, uh, just out on the web.</p>
+<p>We've got a couple of links in the slides, uh, to explain what it does.</p>
+<p>So I think just saying like to summarize that very quickly, PCA is, uh, you do a transformation</p>
+<p>on your data to maximize variance amongst particular dimensions.</p>
+<p>And then you can do a dimensionality reduction by throwing away the dimensions you don't want.</p>
+<p>So that really neatly leads into the definition of RGMs in this paper, which is the core screening.</p>
+<p>It's the critical part is that you are throwing bits away that you think aren't important at</p>
+<p>particular levels.</p>
+<p>And then as you go up levels, you throw away different dimensions, but they feed into the lower levels.</p>
+<p>Uh, but I think it's, there's also a lot of talk in this paper about like the spin block transformation</p>
+<p>as well, uh, how the pixels are sort of blocked up and then you say, okay, we're going to core screen in space,</p>
+<p>uh, and also core screening in time.</p>
+<p>That's in a couple of the examples in the paper as well.</p>
+<p>Uh, but I guess my sort of question is particularly on the, like, how do we know our core screening is not</p>
+<p>throwing away actually useful information?</p>
+<p>And how does that relate to the data that we're putting into the training as well?</p>
+<p>Uh, I think that's cause I know you mentioned before, this is all about learning from expert play,</p>
+<p>but are we also possibly throwing away some of the expertise when we core screen?</p>
+<p>Totally.</p>
+<p>Um, yeah, totally.</p>
+<p>I mean, um, as far as things stand at the moment, this is more of a open question, a research question.</p>
+<p>So some of the things that we're, we're doing is, you know, testing RGMs on, on different kinds of, uh, expert play for different games</p>
+<p>or for different environments, uh, in and outside of Atari and looking at how well it works.</p>
+<p>Um, so my own take right now is that RGMs are pretty good at memorizing, uh, really a bunch of things,</p>
+<p>a bunch of expert play.</p>
+<p>Um, the, well, two things, um, the, for, for RGMs to do well, the, the game or the environment needs to</p>
+<p>have some kind of orbits, some kind of, um, orbit structure that, um, yeah, the RGM would learn.</p>
+<p>So that's like one thing that's pretty important.</p>
+<p>Um, the main challenge of RGMs that, that we've kind of, um, been looking at or, or looking into is, uh, generalizability.</p>
+<p>So one of the things that, uh, we show in the paper, which is, uh, pretty cool, I think is this, uh, Dove example.</p>
+<p>So we, we learned this Dove video with the RGM and then we occlude, uh, the Dove and the RGM is able to infer,</p>
+<p>oh, um, um, I'm actually, so it's going back to its training data, its reconstruction of the training data</p>
+<p>and reconstructing the Dove. Um, so that's one type of generalization that works very well.</p>
+<p>But it kind of highlights, um, perhaps, I mean, what, what seems to be a drawback as well. So</p>
+<p>the RGM, uh, learns representations of the training data, which means that when you expose it to non-training</p>
+<p>data, so, such as the Dove, which is occluded, it will go back to training data and be like, okay,</p>
+<p>well, this is the Dove that I saw in my training and so I'm going to reconstruct it. What if, um,</p>
+<p>you train it on expert play for a game or expert something for something, and then you initialize</p>
+<p>the RGM at a different condition. So let's say, um, so, uh, let's say you train the RGM on walking data,</p>
+<p>some robot walking. The RGM will learn the orbits of walking and it will be able to reconstruct the</p>
+<p>motion and the actions of walking. But now if you initialize the RGM of like, I'm lying flat on the ground,</p>
+<p>it won't be able to stand up to go back on the walking orbit. It will infer that it's walking and</p>
+<p>it will execute the actions of walking even though it's flat on the ground. So you can imagine the motion,</p>
+<p>um, the motion that you get out of it. Um, and this is a kind of a generalization aspect where RGMs are</p>
+<p>really lacking is if you're outside of the training data, you're going to infer that you're in your</p>
+<p>training data when in fact that you're not, how do you go back to the things that you've learned? How</p>
+<p>do you pick up the orbit? Yeah, this, this definitely came up in the previous one, the point zero as well,</p>
+<p>Daniel, we're talking about resiliency of models. Um, and, uh, this is, I think a really interesting</p>
+<p>question of, yeah, how do you know if you're out of distribution? If you like, there are, there are</p>
+<p>other sort of machine learning applications of maybe like kernel density estimation or whatever,</p>
+<p>where you might say, okay, I've trained on this data, I get this new data. Can I compare it to</p>
+<p>probability distribution and say, oh, wait, this doesn't look like anything else that I've seen before.</p>
+<p>Hit. I'm now very uncertain on what to do. Is there a way we could apply those sorts of principles here?</p>
+<p>Yeah, I suppose so. Um, so this is, um, this would be a very interesting project because,</p>
+<p>um, yeah, I mean, this is the main limitation with RGMs right now. And, uh, yeah, there's possibly many</p>
+<p>routes forward, but, um, yeah, the moment that's the main challenge. So taking inspiration from those</p>
+<p>things that you mentioned would be super promising. One, one way that, um, active inference models</p>
+<p>at least have a diagnostic is surprise bounded by variational free energy does give you a measure of</p>
+<p>overall how likely something is apt to be. So if you have a, um, training on driving safely,</p>
+<p>then you're minimally surprised by the safe drive. You have a measure, at least this kind of threat</p>
+<p>agnostic measure of something different is happening. However, it's almost a general information theory</p>
+<p>problem of, well, how the space of what you don't know is always going to be so much large. There's</p>
+<p>always more that you could be surprised by like for all the combinations of valid English sentences</p>
+<p>that language models are trained on. There are more combinations of gibberish sequences. So then how,</p>
+<p>how to make something that can weave its way back into the orbital zone or into a zone of control.</p>
+<p>And that's, that's where some of the multi-scale architectures and switching architectures</p>
+<p>come into play because the, the variational free energy value itself isn't going to say what to do when</p>
+<p>the car is off road, but at least it would be a diagnostic of how, like a kernel desk density estimator,</p>
+<p>how similar it is to training information.</p>
+<p>Just a, another thing to bring in as well. I think we still bring all the questions in at once, but,</p>
+<p>uh, it's all, it's all related and it's all relevant. Um, the question of how, if we are only training these</p>
+<p>things on expert play, uh, how can we create resilient agents that can recover from unseen positions to,</p>
+<p>so quote unquote, get back on the path. So I think one of the things that came to my mind when I was</p>
+<p>reading the paper was if you give it data where it starts off in a losing position and you can show it</p>
+<p>ways of going, ah, if you are losing, this is how you get to winning. Then that would become a new</p>
+<p>potential attractor set that, okay, if I am losing, I can then move to another sets where I'm winning.</p>
+<p>So you explicitly give it that journey as data that it sees. But then I think we come on to one of my</p>
+<p>other questions, which is how do we then tell an agent that has learned the structure from the data itself,</p>
+<p>which attractor sets are good and which are bad. How do we inject value into these to say,</p>
+<p>okay, we've given you this data where let's say the self-driving car is a really nice example. Driving</p>
+<p>safely is great. If you are in an accident and you drive off road, this is how you get back onto the path.</p>
+<p>But if it's learned the structure of those actions from the data itself, how do we then inject the</p>
+<p>value that actually driving safely is good and being operated is bad?</p>
+<p>Yeah. I mean, yeah, really interesting questions. So I have a few thoughts that I think echo what you</p>
+<p>said and I don't have specific solutions, but just echo what you said. So for example, in the case of</p>
+<p>walking, we might ask, okay, well, if we have the training data for walking agent and somehow the</p>
+<p>agent is like down, either sitting or lying down, we should teach it how to stand up. And then once</p>
+<p>it's recovered, it's starting position, we can go back and use the RGM policy. So that's one solution.</p>
+<p>Yeah, going back to the starting point of the orbit that works. But there are challenges. So for example,</p>
+<p>and this is maybe a slightly different challenge, but also coming back to self-driving cars.</p>
+<p>A self-driving car is a very, very high dimensional system. Lots of moving parts, actions,</p>
+<p>things that are going on. So if you give the RGM a lot of driving data of driving safely,</p>
+<p>I'm assuming the RGM would learn comfortably. But now if you expose it to a new situation it hasn't seen</p>
+<p>before in the training set, and I would assume this would just happen very easily, right? Because we're</p>
+<p>such in a very, very high dimensional space. And when you think about it, it's kind of a</p>
+<p>personal dimensionality problem. Because you're feeding trajectories to the RGM. So trajectories</p>
+<p>or Orbeez, these are one dimensional objects. And you're in a state space that can be very high</p>
+<p>dimensional, for example, in a self-driving car. And what you want is to get full coverage of like the</p>
+<p>underlying manifold of state driving. And what you also want is if you're in an unsafe driving situation,</p>
+<p>you want the trajectory that gets you back to the manifold of self-driving. So you have these two</p>
+<p>problems. And, and yeah, so one problem coming back to the curse of dimensionality,</p>
+<p>is that if you have this extremely high dimensional manifold of state driving,</p>
+<p>you want to cover it with one dimensional trajectories. The higher the dimension, the harder it's going to</p>
+<p>be because you're in a trying to cover a large n dimensional thing with one dimensional objects.</p>
+<p>So computationally, it's going to be a problem. And yeah, so there's this generalization that</p>
+<p>doesn't work like within, as you said, like within data distribution generalization, that's a problem.</p>
+<p>Because if you give it a lot of data of the driving safely situation, we would want it to kind of</p>
+<p>extrapolate over all safe scenarios of driving. And we don't, we don't really see that at the moment,</p>
+<p>or at least maybe it happens, but it could be a challenge in some situations. And the other one,</p>
+<p>which is maybe the more fundamental problem is you have this huge region of driving not safely. How do you</p>
+<p>go back to driving safely situation? Also coming back to the example of walking, how does that happen? And</p>
+<p>and that's also very hard, right? Because I think you really want to, you know, have a trajectory back to</p>
+<p>the safe situation from every possible starting location. But as the state space becomes very large,</p>
+<p>that also becomes very difficult.</p>
+<p>Yeah. When thinking about all the angles, your joints could be in all the muscle energies,</p>
+<p>there might be a very small zone.</p>
+<p>So how, how to really think about adaptive active inference agents at the agentic level,</p>
+<p>and then also more at the systems design level, how could components be robust and adaptive</p>
+<p>and simplified components doing better on a subtask, and then design</p>
+<p>a composed system where the sort of low energy efficacious operation of the smaller units</p>
+<p>is designed in a way where they are not dealing with that massive overall computational challenge.</p>
+<p>They're dealing with local computational challenges. However, that moves the</p>
+<p>design challenge to, or moves the the functional challenge to design time rather than inference time.</p>
+<p>But most morphologies don't walk. But if you have one that walks through the revolution or whatnot,</p>
+<p>then it may be a relatively simplified inference problem at runtime. However, the challenge is</p>
+<p>basically figuring out which of those sparsities and message passing schemes would result in tractable</p>
+<p>node level inference. Otherwise, it would be hard to do on a relevant hardware.</p>
+<p>So that's the way that we're going to do that.</p>
+<p>And adding to that, if I may, so going back to the walking example that you mentioned, and also the</p>
+<p>generalizing within data distribution. So there is evidence, and this is also something that we've</p>
+<p>kind of encountered empirically that walking is a chaotic orbit, which means that if you...</p>
+<p>So let's say I'm here, and I'm going to take some actions, and I walk. Now, let's say I start from a</p>
+<p>slightly different, infinitesimally different initial condition, and I take the exact same actions,</p>
+<p>I'm going to fall at some point. And I just take the chaoticity, right? So if you take the same actions,</p>
+<p>but you start from a different initial condition, you're going to diverge very far away at some point.</p>
+<p>And so we have, I mean, I think we have this problem in RGN that if we teach the agent to go back to the</p>
+<p>standing position, and then take the RGN policy, if the agent has a slightly different initial condition than</p>
+<p>what the RGN was trained on, the RGN will infer that it is in the true starting position, even though</p>
+<p>it's slightly different. And then we'll take the actions of the RGN, and it will fall at some point.</p>
+<p>So you have this idea that just memorizing just doesn't work in that situation. And yeah,</p>
+<p>that's also an issue.</p>
+<p>But maybe just a small question there. Is the issue there with the coarse graining part,</p>
+<p>in that a slight change in initial conditions is being thrown away by the PCA and throwing away</p>
+<p>dimensions early on? And then when we go back and do the inference, we infer that we are sort of in</p>
+<p>quote unquote, the same place, because we're thrown away, like something that we've is actually</p>
+<p>signal has gone to the noise part of this.</p>
+<p>Yeah, I imagine that's one way to look at it. The way I've been looking at it, but I haven't been</p>
+<p>thinking about it in those terms, is just if your training data is one particular, you know, orbit</p>
+<p>trajectory, and you start slightly different, because you're inferring where you are based on the</p>
+<p>training data based on the structure that you've learned, you're going to infer that you're on your</p>
+<p>right trajectory, even though you're not, and you're going to reproduce that, but you're going to</p>
+<p>land arbitrarily far. But yeah, I assume it's the same phenomenon.</p>
+<p>This kind of gets to the whole structure determination question. Chaotic systems are</p>
+<p>sensitive to small changes near critical points, but then there might be another zone of the system</p>
+<p>that isn't so susceptible to critical points. So like, let's look at the chaotic attractor example from</p>
+<p>the paper in figure 13.</p>
+<p>If we were to make a small change while we were out on one of the arms of the attractor,</p>
+<p>it might not change things that much. But then there might be some other points where it does lead to</p>
+<p>taking a bifurcation. So if you can break up systems so that the coarse graining captures</p>
+<p>those bifurcations into two discrete categories, then it discretizes a continuous chaotic system well.</p>
+<p>But then if you are applying a grid that's in commensurate with what's actually happening,</p>
+<p>then any grid you draw is going to include trajectories that have radically different outcomes.</p>
+<p>So the overall predictive efficacy or the variance retention of the SVD is going to be low.</p>
+<p>Like if there's actually two zones in a city and they're one mile squared and they have different</p>
+<p>properties and you have a one mile grid and you actually capture it, you carve nature of the joints</p>
+<p>or articulate it at the joints. But if every block has mixed zoning and all you have is a one mile grid,</p>
+<p>you could do the best placement of your one mile grid,</p>
+<p>and you could do the best placement of your own grid. But it still is always going to capture something</p>
+<p>that's kind of mixed. And this kind of related to a few of our thoughts and questions like,</p>
+<p>how do we determine what window to use just from a generic perspective? Like there was 10 levels</p>
+<p>in the discretization of a grayscale image, or there was a 4x4 or the MNIST images were pre-processed to 32x32 pixels</p>
+<p>and then they were blocked in 4x4 grids. So how much</p>
+<p>sweeping or how do you do inference on the number of discretizations and the window size and all these</p>
+<p>other features? Like what kinds of trade-offs computationally do you look for? Or how many levels</p>
+<p>of meta modeling do you feel like are relevant to engage in when you could sweep across discretization of</p>
+<p>N and windows of M? And then you could have, well, window size of 6 with a discretization of 3 gives this</p>
+<p>performance. But something, so how do you even navigate through that combinatorics?</p>
+<p>Yeah. Yeah, really good question. So yeah, at the moment it's very much, I mean, because this is very</p>
+<p>much a new thing, for the moment these are hyperparameters and we're very much in the exploratory phase of,</p>
+<p>okay, well, this works and this doesn't work.</p>
+<p>I mean, I'm assuming for, I'm thinking for the paper there wasn't much hyperparameter tuning,</p>
+<p>like it was all, you know, powers of 2 that were chosen and a small number of layers.</p>
+<p>But when you think about it, I mean, you could do renormalization by powers of 3, powers of 4,</p>
+<p>4. You could choose to have smaller or bigger patches, increase or decrease the number of patches. So,</p>
+<p>there's many things you can be looking at. And I would say that's also a problem that you would get</p>
+<p>if you were to do structure learning with a genitive model that are not specifically renormalizing</p>
+<p>terms of models. You also have that problem of, okay, how many patches, how many layers and so forth.</p>
+<p>So this is not a problem that's like specific to this approach. What this approach has,</p>
+<p>which makes the problem a lot easier is that there is a lot of interplay between the number of layers</p>
+<p>and the number of patches, right? So if you choose, I'm going to renormalize by 2. So it means that</p>
+<p>two states at one level become one state at the next level and two states at that level become one</p>
+<p>state at the next level. This gives you a relationship between the number of states and the number of</p>
+<p>layers that you have and also implicitly the number of patches that you have. So you have this like big</p>
+<p>constraint that comes in renormalizing terms models that makes the search a lot simpler than otherwise.</p>
+<p>But I think ultimately what you would probably want is to infer, and I think we hinted at that, infer</p>
+<p>like the number of patches and so forth. Yeah, we're not doing that. It would be helpful to do that.</p>
+<p>I think another possible thing we could try is maybe start with a budget of this many layers, patches,</p>
+<p>like basically combinatorics and set. Okay, you have this much computational power for understanding this</p>
+<p>data. Figure out the best way of allocating that, because at some levels, you might have more</p>
+<p>variability than others. And maybe you want to allocate your computational budget at the higher</p>
+<p>abstract levels than you do more so than you want to do at the pixel level. And perhaps we could learn</p>
+<p>that from the data itself, given a constraint of this many parameters. And I think you could probably</p>
+<p>code that up multiple ways. But one way you could have priors on those hyperparameters. And then I think</p>
+<p>as Daniel suggested in the point zero, do a free energy calculation on that, compared to that your priors</p>
+<p>on those hyperparameters and just minimize free energy that way. But you could also probably do a hacky</p>
+<p>approach as well, and just go, well, what gives me the best performance, call it that.</p>
+<p>Daniel Ponga, Ph.D.: Yeah, and just to kind of echo that and complement that. So, as you both mentioned,</p>
+<p>the issue is, well, there's so many hyperparameters. I mean, there's so many quote unquote, right? Because</p>
+<p>if we're using GENT models that we're not, we don't imagine there would be even more of them.</p>
+<p>Daniel Ponga, Ph.D.: But even here, we have a lot of hyperparameters. And so that's a separate thing</p>
+<p>that we're also working on, which is, can we infer the structure of the model? Instead of just saying,</p>
+<p>oh, well, we have this data, this is the model that we get. I think we need to be recognizing the</p>
+<p>fact that with limited data, you're always going to be unsure about the resulting model.</p>
+<p>Daniel Ponga, Ph.D.: And so we need to have probability distributions over models.</p>
+<p>Daniel Ponga, Ph.D.: And so one instance of that is what you mentioned, like we have probability</p>
+<p>distribution prior over the number of patches, and we optimize that with respect to free energy.</p>
+<p>Daniel Ponga, Ph.D.: But we could also have probability distributions over three layers or four layers,</p>
+<p>and so forth. And I think this is where we, this is kind of</p>
+<p>Daniel Ponga, Ph.D.: I mean, yeah, beyond this paper, but where we need to be going is</p>
+<p>having uncertainty about the model. And so then if I have uncertainty about the model,</p>
+<p>I can take actions upon the world that maximize the expected information gain about the model.</p>
+<p>Daniel Ponga, Ph.D.: So I'm going to get data that's maximally informative to refine my beliefs,</p>
+<p>ultimately converting about the best model of the world, or maybe a set of candidate bests,</p>
+<p>if there is a fundamental instruction where you cannot find which one fits best.</p>
+<p>Daniel Ponga, Ph.D.: But the point is,</p>
+<p>Daniel Ponga, Ph.D.: In this approach to structural learning, and I think in every other approach</p>
+<p>that we have in active inference so far, we're not recognizing the inherent uncertainty about the model.</p>
+<p>Daniel Ponga, Ph.D.: And so what we're doing in the</p>
+<p>Daniel Ponga, Ph.D.: yeah, in all these structural learning approaches is</p>
+<p>Daniel Ponga, Ph.D.: is a kind of, well, imagine if you have a prior of the models,</p>
+<p>and then if you have data, you have implicitly a posterior of the models.</p>
+<p>Daniel Ponga, Ph.D.: Now, this is what I think we need to do, and what we're currently doing</p>
+<p>implicitly by taking the model with the lowest free energy when we actually do that,</p>
+<p>Daniel Ponga, Ph.D.: is taking a flat prior of the models, and then taking the most likely model</p>
+<p>in the posterior. So we're doing this maximum a posterior estimation when we're optimizing model</p>
+<p>free energy. And yeah, ultimately, we want to have a distribution of a model, and also recognize that</p>
+<p>a priori models are more likely than others. Daniel Ponga, Ph.D.: That's funny about having a flat prior</p>
+<p>over models. It's almost like return of the frequentism. All models within this class are equally likely,</p>
+<p>so that's the special case of Bayesianism where it sort of anachronistically is frequentist again,</p>
+<p>because then you're selecting the maximum likelihood model structure or weighting model</p>
+<p>the model. So that's the total reliance in a portfolio on its maximum likelihood estimation.</p>
+<p>But then rather than using an ML value, the model itself is actually engaging in a Bayesian inference</p>
+<p>process. How about representations of uncertainty within the model? Like, just taking a given</p>
+<p>architecture as fixed. I'm curious about how are uncertainties represented? There was some discussion</p>
+<p>of lossless and lossy compression. And do we have any way to have interpretability</p>
+<p>of the uncertainties across layers? Like, do you find that you can trace those state estimations and</p>
+<p>uncertainty estimates and they ring true? Or once we're past the pixel level, is through the SVD and all</p>
+<p>of this, are we already in spaces that are not human semantically interpretable?</p>
+<p>Daniel Ponga, Ph.D.: Good question. So yeah, coming back to one of the points that Arun made,</p>
+<p>because we do this SVD and we throw away some less relevant components, we are throwing away information.</p>
+<p>And so we're always in this lossy compression kind of setting. Now, what we've done in this paper and</p>
+<p>also in other experiments is to just try to reconstruct expert play or any other kind of video or agent from</p>
+<p>the RGM. And usually it works pretty well. So we, as you can see with the DAOV or with many other examples,</p>
+<p>the RGM does a good job at compressing and reconstructing. But we haven't actually looked into</p>
+<p>mechanistic interpretability of like this state in the RGM actually encodes this and this state in the RGM</p>
+<p>actually encodes that. So that would be interesting to look into.</p>
+<p>Daniel Ponga, Ph.D.: I think in the MNIST example, there is a little section where it said like,</p>
+<p>okay, at the very top level, we say there's basically a value per class of digit, which feels</p>
+<p>very much alike. Okay. In the intermediate stuff, it's very uninterpretable, but at the end, we're going to</p>
+<p>have, okay, we're going to say each of these values at the top level can have corresponds to a digit,</p>
+<p>because we're designing a classifier. I think it's a really interesting question that's not just</p>
+<p>specific to this paper or to Active Inference. I think it's a self-supervised learning in general,</p>
+<p>which is how do you interpret that if you're learning the structure of data from the data without</p>
+<p>anything labeled? How do you get that interpretability? I don't think there's an easy answer to that.</p>
+<p>Daniel Ponga, Ph.D.: Yeah.</p>
+<p>So here at level four, okay, so this also notes, the matrices in this figure are not simple likelihood</p>
+<p>mappings. They're concatenated likelihood mappings from all hidden states at one level to all hidden</p>
+<p>states and paths at the subordinate level where the sum to one constraint is applied to states each</p>
+<p>child could be in. So we're taking some higher level path trajectory and pulling lower level observations</p>
+<p>from a probability distribution sum to one at that lower level for the child. So here at the top level,</p>
+<p>there's 10 states. So it's almost like if you came across an alien handwritten text, how would you know how</p>
+<p>many letters there were? Or if there were several writers with different styles, how would you say how many discrete symbols?</p>
+<p>Daniel Ponga, Ph.D.: Because that's kind of like this unstructured or semi-structured learning question. You have cursive handwriting from a language where you don't know how many discrete symbols there are.</p>
+<p>Daniel Ponga, Ph.D.: So you know there's a discrete compositionality at the level of the word, let's just say. However, you're getting the raw data and then the pixels to planning in the linguistic case, or the phonemes to planning,</p>
+<p>Daniel Ponga, Ph.D.: is like how do you go from a continuous visual or sound data to inference and planning over language production.</p>
+<p>Daniel Ponga, Ph.D.: But then you don't know how many discrete elements to have</p>
+<p>per se. But if you can have a, if you can be making a domain specific model, that may not be a relevant</p>
+<p>question. You may just be able to say, we know we're going to get to 10, find me the best 10.</p>
+<p>But it's interesting that the compositionality of the RGM could extend to higher orders of structure</p>
+<p>Daniel Ponga, Ph.D.: with the trade-off that there's just more and more as you continue to expand how many states there can be.</p>
+<p>Daniel Ponga, Ph.D.: It doesn't escape the curse of dimensionality.</p>
+<p>Daniel Ponga, Ph.D.: It's like swimming in the curse of dimensionality or casting the spell of the curse of dimensionality,</p>
+<p>but at least in a way where the model architecture is going to be able to be implemented using</p>
+<p>Daniel Ponga, Ph.D.: The inference methods that are the same across different scales.</p>
+<p>Daniel Ponga, Ph.D.: Quick question on that. Do we think that the PCA part of this</p>
+<p>could give you a clue as to how many values a particular state could have in a layer?</p>
+<p>Daniel Ponga, Ph.D.: I think Daniel, you had this idea in the point zero of saying, well, maybe we just</p>
+<p>have as many values a state could occupy that explains 80% of the variance at that level.</p>
+<p>Daniel Ponga, Ph.D.: So then you could say, then, I mean, we're sort of moving the complexity from this</p>
+<p>part into construction of the training data, which we should definitely talk about at some point on this</p>
+<p>call. But you could then say, yeah, exactly. That's the graph that I wanted. If we're going to just a</p>
+<p>priori say, I only need to explain 80% of the variance on this stuff, chuck some training data</p>
+<p>at it. And then we say, ah, this training data had like 10 digits. And then you basically end up picking</p>
+<p>10 values because that explains enough variance in the training data to do a good enough job.</p>
+<p>Daniel Ponga, Ph.D.: Yeah, for sure. And I would say that's also basically what happens when we're</p>
+<p>optimizing model free energy, right? Because we're trading off accuracy and complexity. And what you're</p>
+<p>mentioning, maybe like a more deliberate way of saying, well, we have this target. What is the</p>
+<p>minimally complex model to achieve this accuracy target, for example? And yeah, yeah, that would</p>
+<p>be super cool to do. I think specifically for more like engineering and industry applications,</p>
+<p>that would be something that people would be very interested in because,</p>
+<p>for example, regulators, they don't talk in terms of, oh, your free energy should have</p>
+<p>lower than this value. And then you can use your model for self-driving cars, right? You're approved.</p>
+<p>It's more like, oh, when some kind of accuracy or some kind of explanation of some data</p>
+<p>about a third threshold, then yeah, it would be very worthwhile for this kind of application.</p>
+<p>Daniel Ponga, Ph.D.: Yeah. How to convert from a sort of model intrinsic currency, the way that</p>
+<p>different structural models are compared with each other, or the way that alternative parameterizations</p>
+<p>are compared within the same active inference model through comparison of their free energy values,</p>
+<p>how to convert that into a value or a currency that matters, like an actual risk profile or a cost or a time</p>
+<p>estimate. That's the critical question. How does the reliability of the inference translate?</p>
+<p>Daniel Ponga, Ph.D.: What would be an interesting way to go, Lance? And then for those in the live chat,</p>
+<p>please feel free to write some specific questions that I'll ask.</p>
+<p>Lance Stavroson, Ph.D.: Sorry, specific interesting way to go for a way.</p>
+<p>Daniel Ponga, Ph.D.: Or just what do you feel like we should continue with or...</p>
+<p>Lance Stavroson, Ph.D.: Oh, yeah. Okay.</p>
+<p>Daniel Ponga, Ph.D.: How, also, how do,</p>
+<p>how do others pick up and continue with this work beyond studying the background 11 and a half</p>
+<p>Ph.D.s needed to continue with this, knowing that better and more advanced open source tools are</p>
+<p>under active development here and elsewhere. But I mean, what's the way to engage with this material,</p>
+<p>with the current state or what are your next plans for how it continues from this preprint form?</p>
+<p>Lance Stavroson, Ph.D.: Yeah. So good question. I think there's already a lot of</p>
+<p>ideas that have come up in this poll. I think my interesting idea is what Arun mentioned, like using</p>
+<p>tools from machine learning to improve generalizability in RDMs. More broadly,</p>
+<p>my personal take home message, because we've been talking a lot about, well, first of all,</p>
+<p>how our RGMs work, but also what their limitations are. So this is my understanding is that this is a very</p>
+<p>new kind of model. And there are a lot of limitations. But there is the, like the recall thing about this paper,</p>
+<p>and this is why I'm personally excited about RGMs, is this universality claim. The fact that</p>
+<p>RGMs are super expressive, you have this like one architecture that can learn many, many things that are pixel based,</p>
+<p>as we've seen in the paper. And so this is what we've seen empirically here and in other places.</p>
+<p>And there's the more theoretical reason for why that's the case. And I would say that's more of a physics</p>
+<p>question of like, understanding renormalizing groups, and why the world may be or may not be renormalizable to</p>
+<p>some extent. So I think it would be super cool from a theoretical perspective to have a better</p>
+<p>understanding of that from an applied perspective. So we've seen all these limitations. And it was already</p>
+<p>clear on this call that for each of these limitations, we don't know exactly whether it's a fundamental</p>
+<p>limitation, whether the limitation lies from the current implementation, or maybe from the current</p>
+<p>instance of RGMs, that we can modify them in some clever way to actually overcome the limitation. So</p>
+<p>there's many different places where improvements could come. Third, the actual structure of the thing,</p>
+<p>or maybe even the theory, maybe we need more than renormalizing different models, maybe renormalization</p>
+<p>is not all you need, you need something else. So at the moment, I think we should be, you know, looking at</p>
+<p>where each of those limitations are, and you know how to go forward from there. The other thing is</p>
+<p>classical active inference, like the discrete planning, is does actual planning, you know, it plans multiple</p>
+<p>steps ahead. And it has this counterfactual aspect. In RGMs, you don't have that. You just learn the</p>
+<p>transitions from state to state at each level, and then you infer them from the data. So you're just like,</p>
+<p>you're like in this self fulfilling prophecy mode, where you've seen your training data, and you're</p>
+<p>reproducing that from the RGM. And it would be cool to know if you can combine the strengths of</p>
+<p>classical active inference and the RGMs. To have some planning at one or multiple levels, some actual</p>
+<p>planning with information gain, to actually help this generalization aspect. By improving the model with</p>
+<p>some, you know, new relevant data. So there's many, many, you know, directions this work could be taken in.</p>
+<p>Personally, the direction I'm most excited in is this idea of moral uncertainty. Because in, so, I mean, a big</p>
+<p>question in machine learning, and also developmental cognitive science is this idea of structural learning,</p>
+<p>how do you learn the structure of your model of the world? Now, there's a lot of papers, evidence, and I</p>
+<p>think there's also a lot of debate. But one interesting paradigm is this idea of model inference.</p>
+<p>And the way we've been thinking about structural learning and active inference so far is about</p>
+<p>optimizing model free energy. So we take the model that that has the lowest free energy. When we do that,</p>
+<p>we are frequent, we are Bayesian in the states and parameters, but we are frequentist in the model.</p>
+<p>And that goes exactly to what we're saying before, this idea that you have this flat prior, and you're</p>
+<p>doing much more posterior estimation. And so we know that being frequentist is fine, but you can,</p>
+<p>this means that you can overfit. It means, yeah, basically you're selecting the model structure that</p>
+<p>overfits, that best fits the data and which may overfit. You're not recognizing any kind of uncertainty.</p>
+<p>And there's actually a lot of theorems that show that with limited data, but even unlimited data,</p>
+<p>there's many instances where multiple models could explain the data equally well, which means that</p>
+<p>they would have the same free energy. Now, which one do you pick? And two different models could yield</p>
+<p>two different decisions. So if you're in a real world scenario, one model may be, you know, the true</p>
+<p>model or what we want the agent to have, the other one would be wrong and could have some, you know,</p>
+<p>unsafe decisions being made down the line. So what we want to be moving to is this idea of full model</p>
+<p>inference, not just map estimation, but actually having a full posterior of our models. And this would be,</p>
+<p>for example, a particle approximate posterior where you're entertaining a mixture of models. And so</p>
+<p>basically means that we would be doing basic model averaging for all of your predictions. And yes, we</p>
+<p>want to be moving towards that, in my opinion. And what this affords, which I think is super important,</p>
+<p>is so when you have this uncertainty about models, you have this idea of taking actions that maximize</p>
+<p>the expected information gain about your model. And so now you can start to learn your model in a</p>
+<p>self-supervised way. And hopefully in a way that also generalizes, because you're making this epistemic</p>
+<p>search that informs your model, which we're currently not doing. At the moment, we're seeking data that's</p>
+<p>informative for the states and parameters, and we're overfitting the model and we're going to be moving beyond that.</p>
+<p>Awesome. Yeah, very interesting. It's like equivalent to only doing policy selection on pragmatic value</p>
+<p>is just utility seeking. So then if the utility of the modeler is model fit, they have entered into a</p>
+<p>pragmatic only analytic mode that in single-minded pursuit of what appears to be a totally valid,</p>
+<p>defensible, analytic goal of accuracy or of data poster posteriori fit, ironically produces local</p>
+<p>overfitting. So it's like exactly why we use expected free energy for policy inference, because it does</p>
+<p>have the epistemic value component. And then now with this level among portfolios of models, it's like,</p>
+<p>we need to remember why we put the epistemic value into the architecture at the base layer,</p>
+<p>because it isn't enough to just have the epistemics at the base layer and then forget about it at the</p>
+<p>modeler's level. There's actually a role for the epistemic value and also for the lifelong learning.</p>
+<p>Whereas in the examples here, there was a training phase and then a test phase, as opposed to like</p>
+<p>the rules of the game, like sleep-wake type train and test and updating with online inference,</p>
+<p>like if the rules of the game changed or something like that.</p>
+<p>Yeah, totally. Yes, you want to be able to handle environments. Let's say, coming back to games,</p>
+<p>because I guess we love games, but it doesn't have to be games. Let's say you're in an environment,</p>
+<p>and you learn how to play the environment, you learn the genital model. And then you get to the</p>
+<p>end of the level, you get to a new level, and the environment changes somehow, the number of</p>
+<p>categories changes and so forth, you want to be able to handle that in a graceful way. And you want to be</p>
+<p>able to handle the inherent uncertainty about the world. So there's a lot of work on AI-driven scientific</p>
+<p>discovery. And you can argue that, I mean, science is about understanding the mechanisms that generate</p>
+<p>the data that we have. And in particular, the mechanisms of cause and consequence, right? What</p>
+<p>causes what among our latent states. So this is like, a totally, I mean, like an example that all of us</p>
+<p>can relate of the fact that we have uncertainty about causal structure. And we may also have uncertainty</p>
+<p>about the number of representations used to explain a particular dataset. So let's say I'm a young child,</p>
+<p>or I'm a zoologist, and I'm in the forest, and I see an animal I've never seen before. Is that animal part of</p>
+<p>an existing species that I know? Or is it part of a totally new species? And there's two hypotheses.</p>
+<p>At this moment, I don't have enough data to decide between either of them. I'm going to conduct as a</p>
+<p>scientist experiments. Well, just going back a little bit, it means that I have a posterior with two</p>
+<p>different models that are equally likely or somewhat likely. And then I'm going to conduct an experiment</p>
+<p>to decide whether this animal is part of an existing or new species. Which means that to do that, I need</p>
+<p>to have some notion of what would happen if I did that, like information gain about the model that I'm</p>
+<p>using about the world. This is like a super simple example of like, we fundamentally need that in a,</p>
+<p>for one in a biomimetic agenda of like creating agents that, you know, resemble us and modeling and</p>
+<p>so forth. Also from a statistical perspective of like not overfitting. But it's like pretty hard to do in practice.</p>
+<p>How about coming back to one of Arun's questions. In what ways is time a special dimension?</p>
+<p>We talk about planning through time and that's intuitive. From a folk psychological perspective,</p>
+<p>how does the model handle time similarly or differently about RGMs or just in general? I mean,</p>
+<p>what, what, what is time? How is it being treated similarly or differently to other dimensions?</p>
+<p>Um, yeah, good question. I think it's a very fundamental and also physical question. Um,</p>
+<p>um, but just in terms, I mean, very, very simply in terms of the model, time is the only direction that we</p>
+<p>can, uh, control. Is the only, I mean, we can't control the flow of time, but we can control</p>
+<p>the evolution through state space as time unfolds. And those are actions. Now, uh, one interesting thing</p>
+<p>about the paper is that we not only renormalize in space, in state space, but we renormalize in time.</p>
+<p>And so we have this, uh, in the current architecture, this one step ahead actions at each level,</p>
+<p>uh, time horizon of one, it could also be two or four or whichever you want, as long as this is the same</p>
+<p>as at each level. Um, but yeah, the point is we renormalize both in space and time. And, uh, I would be,</p>
+<p>I think this would be a good question for Carl of like, why is it important to renormalize both</p>
+<p>in space and time? I don't really have a sense for, uh, why that is, but he probably has a very</p>
+<p>compelling reason for, for what that is.</p>
+<p>So I'll give a little bit of detail as to why I asked the question. So there's a very technical</p>
+<p>reason. And then there's like a wider reason. The very technical reason is to do with the overlapping</p>
+<p>part that we talked about before. And I noticed in the paper that doesn't seem to be, there doesn't</p>
+<p>seem to be overlapping time, uh, uh, sort of factors you go from one state above to generates the initial</p>
+<p>state at the level below, and then a transition. And then you do the next pair, but the pair of</p>
+<p>observations at the level below don't overlap. Whereas in the MNIST example, you had, uh,</p>
+<p>there were radial basis functions that were like four pixels wide or whatever. Um, but they overlapped,</p>
+<p>which I thought was really interesting. So that was the very technical reason why I asked, oh,</p>
+<p>is time separate here when the pets don't overlap as you're doing the renormalization.</p>
+<p>But I think the wider question of why it's interesting is that I don't really understand how</p>
+<p>you would plan with respect to space. But as you say, like with time, it's, it's the rollout.</p>
+<p>That's the critical dimension of you go, if I do this, then in the future, something happens.</p>
+<p>But I, uh, my, my brain doesn't compute what planning would look like in space.</p>
+<p>Uh, but yeah, we will definitely ask Carlin the dot to, and probably be just as confused at the end, but</p>
+<p>that kind of makes me think of a wave propagating out like in a game of life situation, a wave is</p>
+<p>propagating out at one, one click per time step. So it's moving. It's a wave front in space time</p>
+<p>from the surfer on the wave. They're not moving, but then re-normalized over space. It's like,</p>
+<p>what will happen to that time step at the next time step? Well, if it's, if the wave's going to hit it or</p>
+<p>it's going to leave, but from the waves perspective, re-normalizing through space time, it's stationary.</p>
+<p>It's a stationary traveling wave</p>
+<p>that still is treating time in a little bit of a different way than space.</p>
+<p>But for all systems that we're studying in time, which basically are the natural systems,</p>
+<p>we can't really get away from it. But maybe there's like a hyper time crystal view on some of these</p>
+<p>systems that spatializes time.</p>
+<p>So, yeah, in some of our last pieces, again, if anyone has questions, feel free to write it. Okay.</p>
+<p>Rex asks, how has the progression been with the Atari challenge? Encouraging results?</p>
+<p>Yeah, I mean, really good question. I'm not sure how much I'm able to share, just because of</p>
+<p>confidentiality issues. But I would say, overall, it's quite challenging. Definitely very interesting</p>
+<p>results. Many different approaches that are being tried, because of course, you could, I mean, you have</p>
+<p>this RDM approach, but there's many other types of generative models that, you know, you could be</p>
+<p>exploring for solving this type of task. The really interesting question is, what kind of structure</p>
+<p>or structure is sufficiently universal to be able to express any kind of Atari game? And the day we solve</p>
+<p>that, we'll actually have learned a great deal. At the moment, we have some leads, we have some</p>
+<p>promising results, but we are still far away from being able to solve all the games with the same</p>
+<p>structure. So I think there's a very interesting progress in terms of scaling up. But yeah, so still</p>
+<p>far. And as always, with these research questions, it is always hard to know, you know, how long we'll need</p>
+<p>to actually solve the challenge.</p>
+<p>Yeah, maybe just think of the game, how children pick up games, and Calvin Ball making up games,</p>
+<p>and what cognitive capacities support the idea. Like, maybe there's a game</p>
+<p>game, hangar, or high level game virtualizer, that then can be like a sandbox for creating games with</p>
+<p>arbitrary structure. You know, you're going to tell me a number that ends in a seven, and then I'm</p>
+<p>going to do this dance. It's like, that's our game. But because it's a rule set within a space, within a</p>
+<p>container that's understood. And so, although generalized coordinates, RGM, and so on, in theory, can go for</p>
+<p>infinite number of dimensions. For any finite system, it may only be several levels of generalization,</p>
+<p>or path extraction, or just in the example of time. Even with two time steps per level,</p>
+<p>at some point, with time doubling, you're talking about a transition that's longer than a lifetime.</p>
+<p>So, it becomes a kind of an extraneous inference. And similarly, making it finer scale, you're going to</p>
+<p>quickly get to the state transitions of walking at a picosecond, which again don't really matter. But if</p>
+<p>there were either automated ways, or interpretable human in the loop type ways, to say, okay, the SVD is</p>
+<p>looking pretty, pretty, pretty, pretty uninformative at this small scale, and at this large scale.</p>
+<p>Here's the bulk of the meso variants that we're working with. Here's the information content across</p>
+<p>these coarse grainings. Here's sweeping across different windows and grainings. This looks like</p>
+<p>a good, a good graining approach. Here's where the meat is to chop up. And that relates to the focusing,</p>
+<p>the computational resources on where the information content is.</p>
+<p>Focus the resources on where there's information to glean, and then truncate the model's dimensionality</p>
+<p>beyond the point of diminishing returns.</p>
+<p>Like, it almost, it's, it's, it goes without saying, slash is hard to say sometimes, but</p>
+<p>that's an extremely different paradigm for fitting small to very large models than coming with a fixed</p>
+<p>number of parameters of a large model and a fixed data set as much as you can,</p>
+<p>and then colliding the two until you can optimally reproduce the training data.</p>
+<p>While there is this element of parameterizing it on training data,</p>
+<p>in principle, you can just specify generative models and generate synthetic data. We do this all the time</p>
+<p>for different models. It doesn't, you don't have to train them on anything. You can just make a</p>
+<p>thermometer and a synthetic room and just let it play.</p>
+<p>So it's just interesting how with these new Lego toolkits and new composabilities</p>
+<p>that can deal with data and play in that sort of empirical test train mode,</p>
+<p>that they also lend themselves to a lot more dynamic reconfiguring that I think is the main piece we've been</p>
+<p>wrestling with, which is it gives us more affordances in building and modulating these models.</p>
+<p>And so, I think that's a lot of the models.</p>
+<p>But every degree of freedom in the modeler's toolkit is double-edged because it expands the combinatorics of what is possible,</p>
+<p>possibly diminishing the proportion of good solutions.</p>
+<p>But maybe those good solutions get better and better, though they're rarer and rarer.</p>
+<p>So, I just want to come in on a quick point, which I think you've talked about at the very high scale,</p>
+<p>nothing really happens across, you know, beyond a lifetime at a very small scale. You don't want to</p>
+<p>consider walking on picoseconds. From a practical point of view, I guess that's going to be very</p>
+<p>limited by your training data. So, for example, on the spatial point of view, what does a pixel mean</p>
+<p>in your training data? And presumably you have to normalize across all your different samples to be</p>
+<p>a pixel means the same distance in an image, regardless, potentially. Or do you have to do</p>
+<p>some sort of pre-processing to mean that you're only ever taking pictures from the same camera at the same</p>
+<p>distance for that to mean the same thing across the different bits of your data? Or if they are</p>
+<p>different, does your model then have to learn that from a structural point of view? And then going</p>
+<p>on the time one, I think that's also quite interesting, maybe it's another reason why it's</p>
+<p>different, if you're introducing videos of different lengths. So if you say, okay, here's some data where</p>
+<p>in this particular video, it's 100 frames and this one is 200 frames, there's different levels of</p>
+<p>re-norm, you're limited in how far up you can go if you're just going to continually pair and pair and</p>
+<p>pair, if you've only got 100 frames compared to 200 frames. So there could be very practical</p>
+<p>considerations here for the number of levels you can have and what timescale you can operate on.</p>
+<p>But then also, I think it does beg the question, at the very top level, if you've only got, I think,</p>
+<p>for, let's say for the music example in this paper, you've, if you've got a length of music,</p>
+<p>and you, it breaks it down, like it was jazz music, and you break it down to like, notes and bars and</p>
+<p>potentially could go up to a movement, but you can only go up to the maximum level, like length of your,</p>
+<p>like a piece of music that is, that you're, that you're exposing in the training data, you can't go</p>
+<p>a level above that. And that sort of like, highest level thing could only really have like one value,</p>
+<p>so you might as well get rid of it. So there's some, there might be some redundancy at the very</p>
+<p>top there that you just sort of can always implicitly throw away.</p>
+<p>Yeah, I think so. I mean, when, yeah, and when we have the current architectures, I mean,</p>
+<p>we always show the, the top level as having, for example, one state or, or two states with a</p>
+<p>transition to another two states. But then implicitly, you have this, even higher level that has one state,</p>
+<p>and that static, but yeah, somehow he, I mean, it doesn't do anything. So</p>
+<p>yeah, there's many things, I guess, many questions and many things that can be explored. The other thing,</p>
+<p>another question that I have is, so intuitively, let's say we're thinking, okay, I need to go to work,</p>
+<p>I need to take a certain amount of actions to go to work. Intuitively, when we plan in that setting,</p>
+<p>there's several actions that happen in the same, at the same level, or arguably, maybe not everybody's like this,</p>
+<p>but it's like, I need to go down, I need to, you know, take my car, and then I need to go up the elevator,</p>
+<p>at the workplace, and so forth. It seems that this plan maybe happens at the same level of abstraction,</p>
+<p>or like, there's many cases where we plan on the same level of abstraction. And the current RGM</p>
+<p>architecture, we just have one step ahead, or like a fixed amount of steps ahead, that are reproduced</p>
+<p>at each level. So, yeah, I mean, it, you can definitely reproduce the example that I talked about</p>
+<p>by saying, okay, well, we're going to plan, you know, 10 steps ahead at each level, and then</p>
+<p>it would fit with more complex plans. But, you know, how can we allow some flexibility there? Or</p>
+<p>is there some flexibility that we need for the time horizon at each level? Should it be different</p>
+<p>from one level to another, and so forth? Yeah, well, it's like, the controls in the studio are being</p>
+<p>explored and fleshed out, because you could sweep across different planning horizons, or you could</p>
+<p>plan for the same amount across horizons, like, just like, and it's brought up with the when it's</p>
+<p>connected to the convolutional neural network. It talks about how the special case where all of the</p>
+<p>where the likelihood mappings are conserved over groups, one has the discrete homologue of</p>
+<p>convolutional neural network. So if you're just trying to make the best single filter to pass over an</p>
+<p>image, you have a CNN. Whereas if you open it up to different locations of the image having different</p>
+<p>filters, that's the blessing and the curse. Now you have that many times larger of a state space,</p>
+<p>but for problems that have that statistical structure, that would be the way to go. So that's</p>
+<p>what motivates this meta modeling question of how would we recognize whether we're in a situation where</p>
+<p>single filter is better than n number of filters. Like, these are where the modeling questions quickly rise</p>
+<p>in a way, because where our inference hits the metal, we know how that's going to happen. In terms of Bayesian</p>
+<p>graphical model and variational free energy, it's just how to know what level of abstraction to enter into</p>
+<p>the problem and really what's the purpose of the model. Because it's really easy to set up a situation</p>
+<p>where the, for example, policy inference is a slam dunk. And it's easy to set up situations where the policy</p>
+<p>inference is hopeless by design. So what is that sort of Goldilocks zone where if you could curate only the</p>
+<p>expert gameplay examples and do resemblance modeling, but if you already knew who is expert, then you already</p>
+<p>have those traces. So it's like just, it's interesting how with a strong floor and grounded in a really low level</p>
+<p>way to balance accuracy and complexity,</p>
+<p>we really quickly hit these data science questions about what the analysis is for and what structure the model</p>
+<p>should be taking on. Okay, in our last minutes. Okay, another question. Are any other benchmarks being looked at? Or just what kinds of benchmarks</p>
+<p>do you think for the open source community would be interesting for us to pursue?</p>
+<p>With active inference searching and with RGNs?</p>
+<p>With RGNs? So yeah, I mean, there's several things, right? So there could be imitation learning benchmarks.</p>
+<p>I think this would be very interesting to go into because arguably this isn't, I mean, the current state of RGNs, it's an imitation learning tool.</p>
+<p>It's not really a planning tool. It's also a compression tool.</p>
+<p>In terms of, so there's a tire. But arguably, if we really want to solve a tire, we want to put a planner in the RGNs.</p>
+<p>So we just, we don't want to be able to learn necessarily from expert data, we want to learn in a self supervised way.</p>
+<p>And so the very things that we're exploring there, extensions of RGNs in various ways.</p>
+<p>And then, and then, you know, I mean, there's, there's so many benchmarks out there.</p>
+<p>One thing that's interesting for going to Atari is mini Atari.</p>
+<p>And then there's all the robotic benchmarks that I think are quite interesting.</p>
+<p>I mean, you probably know many, many other interesting examples that, yeah, I think these are the most interesting ones, at least from my perspective.</p>
+<p>It also depends on the, on the feature that you're developing, right? So maybe RGNs are particularly good for imitation learning.</p>
+<p>But if you're in a multi-agent active inference, then you probably want to look at multi-agent games or things that require cooperation to, to solve certain types of problems.</p>
+<p>Yeah, I would say it's very much open-ended and depending on, on the strength of the particular approach.</p>
+<p>Okay. What are your next, uh, moves? I mean, how will your year proceed and what are your, what are you excited for?</p>
+<p>So I'm super excited about, um, this model uncertainty thing.</p>
+<p>Um, this idea of, uh, how, how do we do based on principle models in a way that's fast, fast enough so that we can plan.</p>
+<p>Uh, to take actions that improve our model over time.</p>
+<p>And, um, this is also interesting, I guess, from, um, bridging multiple fields together, because when we look at, um, for example, the work in computational cognitive science,</p>
+<p>um, by, by folks like, Josh Tenbaum, Sam Gershman, they, they think very much in terms of inferring the model of the world, having a distribution of a model of the world.</p>
+<p>It's not something that we're doing again at the moment.</p>
+<p>Um, and I think this is a limitation.</p>
+<p>Um, when you look at other folks like, uh, Joshua Benjo for interesting AI safety and also AI driven scientific discovery, they also have this uncertainty about models.</p>
+<p>Um, and there's Bayesian inference, which is, uh, very important and interesting.</p>
+<p>So then when you accept that this is, uh, the way that things need to be done, then there's the question of how do you infer, how do you do the Bayesian inference in practice?</p>
+<p>And there's, uh, and there's a wide set of tools of, um, for doing approximate inference of a model.</p>
+<p>It's still relatively young field.</p>
+<p>So there's lots of improvements to be done there.</p>
+<p>Lots of, uh, hardcore statistics and machine learning, very deep questions.</p>
+<p>So this is like one direction that I think is interesting to pursue.</p>
+<p>And, and then once you have that working well, and by working well, I mean, you want a method.</p>
+<p>That's able to infer models very fast.</p>
+<p>It doesn't need to be super accurate.</p>
+<p>Uh, when you think about humans, uh, we typically only have, uh, you know, a few hypotheses about the core structure of something or something in the world.</p>
+<p>So we don't necessarily need to have a super complex approximate posterior of a model.</p>
+<p>Also, that would be very computationally complex.</p>
+<p>So we want to look for, uh, things are fast and that operate online.</p>
+<p>And so once you have these kinds of methods for inference about the model, then putting that into an agent and having the agent learn to know,</p>
+<p>um, you know, in a, in a self supervised way, uh, in, in its environment.</p>
+<p>And, and the other challenge for that is, uh, because you're doing model inference, there's no,</p>
+<p>it's not strictly speaking, it's not model growing or pruning anymore.</p>
+<p>You're just doing model inference.</p>
+<p>So your space of model is fixed from the outset.</p>
+<p>Um, and so therefore, if you want developmental agents or lifelong learning agents,</p>
+<p>you want a space of models that can pretty much explain anything the agent would ever encounter.</p>
+<p>Or you want a space of model that is able to express anything that the agent would need to survive.</p>
+<p>Um, so you don't necessarily want something that's doing complete, but you want something that's,</p>
+<p>you know, a class of model that's pretty expressive.</p>
+<p>But it should also be sufficiently coarse that you are able to do efficient inference on it.</p>
+<p>So you have this trade off, which is very difficult to navigate of, um, trying to find a class of model that is universal in some sense,</p>
+<p>but also sufficiently coarse that you can, you know, do things, uh, manageably.</p>
+<p>And I think this is where, um, RGMs can potentially be very fruitful, um, because they are very expressive.</p>
+<p>And they're also, I mean, they have very powerful inductive biases, this like renormalization aspect</p>
+<p>that makes your model space a lot smaller than it would be with other methods.</p>
+<p>So this, uh, yeah, this is a one way forward.</p>
+<p>I'm like particularly excited about.</p>
+<p>Cool.</p>
+<p>Yeah.</p>
+<p>Expert learning is kind of the inductive side and then the creativity and the abduction</p>
+<p>interaction and being able to jump to an adjacent possible from what has been induced.</p>
+<p>That's exciting.</p>
+<p>Um, Arun?</p>
+<p>And then we kind of have our last, uh, thoughts here.</p>
+<p>Uh, I thought that all of those, uh, directions of future research sound really interesting.</p>
+<p>Uh, I had a very possibly silly question, uh, which is on when we're talking about learning</p>
+<p>about the structure, are we also learning about potential new actions that an agent could take?</p>
+<p>And I think that ties into the AI safety part quite nicely of currently an active inference.</p>
+<p>If you come up with your own generative model as the modeler, I can say, these are the actions</p>
+<p>available to my agent.</p>
+<p>It can only do these things.</p>
+<p>It has to pick one of those things and it can't do anything else.</p>
+<p>But if we're going to learn online about possible actions, like new actions I could take suddenly</p>
+<p>now I've learned that I have the choice to drive car.</p>
+<p>Whereas before I could only walk, then suddenly the range of impacts that I could have my,</p>
+<p>me as the agent can have on the world massively increases and is possibly not predicted by the</p>
+<p>modeler at the time they're creating their agent.</p>
+<p>So I think that, so yeah, my question is sort of about what type of structure do we want to learn</p>
+<p>with these new models and does that include actions that an agent could take?</p>
+<p>Yeah.</p>
+<p>Um, I mean, really interesting question.</p>
+<p>And, um, so, so I'll give you a couple of thoughts.</p>
+<p>Um, there is a Toby Sinclair Smith, uh, which you've probably had, had here on the show.</p>
+<p>He, yeah, he, he does category theory and, and in his latest formulation of, um,</p>
+<p>structure learning, active inference with category theory, he talks about blankets that change over</p>
+<p>time.</p>
+<p>And so this would be this idea of adding, removing actions of observations.</p>
+<p>Um, so I think that's interesting and, and he would probably have some, some really cool thoughts</p>
+<p>about that.</p>
+<p>The other perspective is let's say you fix the observation space and the action space.</p>
+<p>Um, and let's suppose that each, that I, as a person exists only in a, like a small part of my head</p>
+<p>and my observations and actions are the information that's coming in and out of this small part of the</p>
+<p>head.</p>
+<p>Now, when you're a baby, you don't know that you can act on your body, right?</p>
+<p>So you don't know that your foot is you and your arm is you, but you're gonna learn eventually that</p>
+<p>there is a very precise mapping from the information that's coming out of your action neuron to what</p>
+<p>your arm can do.</p>
+<p>And so eventually, even though your arm is a latent state, you're gonna associate moving my arm with an</p>
+<p>action that you're taking because there is a very precise mapping from your neuron to what the arm does.</p>
+<p>And I think this would be, um, this would, basically when you, when you think about it this way,</p>
+<p>there is maybe a lot of actions that we can lump into the latent states of the environment.</p>
+<p>the, that we have direct, uh, very precise control over that. That's the way I'm thinking about things.</p>
+<p>Yeah, that's, that's the babbling. It's interesting. I'm also just thinking of expert video of figure skating,</p>
+<p>but then there, that doesn't mean it's safe for a non-expert or there could have been a body</p>
+<p>position that was safely reached. But then if a different object in a different context is so</p>
+<p>that there's so many interesting, um, fundamental issues and that is the sort of benchmark</p>
+<p>and reproducibility question is how can we compare models with these radically different forms, possibly</p>
+<p>in the future, also radically different substrates solving these problems in different ways,</p>
+<p>such that the ways that benchmarks are even conceptualized in terms of like CPU or RAM may only be a constrained way to think about how some of these embodied problems are solved.</p>
+<p>So, um, Lance, thank you for this and all the authors for the work.</p>
+<p>We're very excited to, uh, talk with Carl and others in 58.2 during the Applied Active Inference Symposium.</p>
+<p>So, good luck with your works. See you next time.</p>
+<p>Thank you so much.</p>
+<p>Thanks, everyone.</p>
+<p>Thank you.</p>
+<p>Thank you.</p>
+</article>
+</body>
+</html>

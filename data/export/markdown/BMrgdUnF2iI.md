@@ -1,0 +1,1323 @@
+---
+title: "Active Inference LiveStream 056.1 ~ Neural coding, Predictive processing, and Cognitive modeling"
+category: "Livestream"
+series: "Livestream_056"
+episode: "1"
+speakers:
+  - "Neural coding"
+  - "Predictive processing"
+  - "and Cognitive modeling"
+duration: "2:12:29"
+url: "https://www.youtube.com/watch?v=BMrgdUnF2iI"
+views: 348
+exported_at: "2026-02-18T22:37:37.720465+00:00"
+format: markdown
+---
+
+# Active Inference LiveStream 056.1 ~ Neural coding, Predictive processing, and Cognitive modeling
+
+Hello and welcome everyone. This is ActInv Livestream 56.1. It's November 14th, 2023,
+and we're continuing our discussion series on these four papers by Alexander Aurobia et al.
+Welcome to the Active Inference Institute, everyone. We're a participatory online institute
+that is communicating, learning, and practicing applied active inference. This is a recorded
+and an archived and a published live stream, so please provide us feedback so we can improve our
+work. All backgrounds and perspectives are welcome and will follow video etiquette for live streams.
+Head over to activeinference.org to learn more about projects and learning groups at the institute.
+Well, today in 56.0, we're bringing out all of the four entrees, and we'll see where we go with these
+big topics and with Alex here to discuss. So we'll begin with intros and go from there. So I'm Daniel,
+I'm a researcher in California, and what I would like to explore in this stream beyond the trails that
+were left in the dot zero is to get the zoomed in. What is the space of these micro motifs?
+And then to compose those zooming in into the bigger picture? What do cognitive architectures look like
+in 2023? How is that difference in theory and in practice than 1983? And then where is this all
+heading in terms of how we can do useful and important research? Blue?
+Blue? Cool. Thanks. Yeah, I'm interested in the 2043 cognitive architecture also. And maybe exploring the
+space of human cognitive architecture, but also like non human cognitive architecture and what that looks
+like and where maybe that might take us. Yeah, that's good. Alex?
+Alex Vervia, All right. Yeah, I'm Alex Vervia. And I am the director of the Neural Adaptive Computing
+Laboratory and computer science assistant faculty professor here at RIT in computer science. I'm also
+affiliate professor in psychology, soon to be affiliate professor in cognitive science and
+affiliate faculty in computational neuroscience, kind of a mouthful of different involvements, but I do a lot.
+Alex Vervia, All right. So yeah, I've known about the Active Inference Institute before. Some of my
+students are fans of the channel already. So it's very exciting to be here to talk to you guys. And
+I think that you have some really good questions. And I think this set of papers that you picked
+is a nice little pathway through some of the thinking that I've done over the years. What was funny when I
+was watching the dot zero is, and again, I also noted this to both Blue and Daniel and email,
+is that I thought, Oh, there's these other papers that I've written that would have clarified or could
+have come so very easily, this could have become like, why don't you do 25 different papers? And you
+know, I think that might have become quite a burden. But some of my bonus slides that I know Daniel told me,
+I didn't have to make any, or it's not typical, but I have some slides taken from some pieces of those
+other papers that might have might give some clarity to some pieces of your guys questions, depending on
+which ones we start with. And you know, this and the dot two of next week. So again, thank you for
+happening. This is very exciting. Awesome. I guess to begin, how did you get into cognitive sciences or
+cognitive modeling? Oh, okay. The history, the origin story, right? Yeah, it's interesting. So when I,
+without going into too much and spending too much of the podcast on one's own life story, when I started
+out in computer engineering or computer science and engineering, when I was a young undergraduate.
+And, you know, I even came from like a background of art and digital arts, which is kind of interesting.
+I had learned a program late in high school. And then I'm entering in Bucknell University was where I
+went for my undergraduate education. And it was really strange, I did not do much, I actually did not know
+at all of machine learning, let alone cognitive models or computational neuroscience. It was more
+of that strict engineering education. However, I like to think that something that I did, which was,
+I'm a philosophy minor, philosophy of mind is what I studied. I like to think that's what biased me and
+kind of launched me to where I am today. So I was always studying things like consciousness,
+consciousness, also ethics and other aspects of philosophy and Greek philosophy. But philosophy of
+mind and identity was something that sort of motivated me to think, well, hey, maybe this stuff I'm doing
+in, you know, hardware and engineering, I could combine the two, you know, is there a way to sort of emulate
+this concept of identity or consciousness? Little did I even know what, you know, the free energy principle.
+And so then towards the end, I worked on complex adaptive systems, again, nothing to do with
+machine learning. However, it ties so beautifully, especially nowadays, over the last year, I've done
+thinking in working with Carl on the free energy principle and aspects of the Markov blanket. It's
+funny how all that construct ties back together. And I was like, all that stuff I studied years ago,
+wow, it comes back into force full into play really, really strongly. And then grad school,
+I was in Dr. Celie Giles's lab, who's actually a very well known information retrieval scientist and
+a classical deep learning researcher. And, and then I was, and he was more artificial intelligence.
+But that's the reason why I got into deep learning, he gave me a survey, I was exposed to neural nets,
+and he actually said to me years later, the reason he gave me that survey was to discourage me from
+going into it. But he told me he was glad that it didn't work. And then along the way, this is the
+part where I would, the cognition comes in. I was co-advised by a cognitive psychologist, Dr. David
+Ryder at Penn State, who also worked a lot with another well known cognitive scientist, Dr. Frank Ritter,
+who is, he himself was advised by Alan Newell and Herbert Simon. So some of the greats of our time
+in cognitive science and classical artificial intelligence. So I was in the applied cognitive
+sciences lab as well. And so between those two worlds, I think that's what sort of solidified me
+to saying, hey, there's these big problems in machine learning, particularly with credit assignment.
+So I don't know, I'm pretty sure you guys are familiar with these concepts in one form or another.
+But credit assignment is just like when we're doing back propagation on a big neural network,
+we want to play the blame game. How much does this neuron contribute in a positive or negative way
+to some cost function? And for some reason, that always felt at odds with me, because along the way,
+I worked with all kinds of really non mainstream models, like hot field networks and Boltsman
+machines were actually my first loves, if you will. That's what I did in my early PhD thesis. So that was
+at odds with what's going on in deep learning, even though Boltsman machines were used at the very
+beginning, and then everyone threw them away. And so I think those ideas of like memory consolidation and
+memory storage and the fact that hot field network couldn't remember everything actually had very
+limited storage was awesome to me. And I was like, I want to probe that more. Can I build systems with
+this? And so I was one of the early days working on Boltsman machines, but like trying to sell them as
+the thing we should care about. And then towards the end of my PhD, so now I'm going to skip around a bit.
+I did work on recurrent neural nets with Thomas Mikolov. He's one of my friends. And then towards
+the end of my PhD, I had somewhere along the line over the years found predictive coding. My joke to
+my grad students is Rajesh Rouse and Dana Ballard's classical 1990s paper on predictive coding and
+classical effects of the eye was something that I read so many times that I said I slept with it under
+my pillow to hope that I would absorb how incredible it really was. So that paper probably was the
+strongest influence on why I decided, you know what, for the rest of my life, I'm going to do
+predictive coding. I think we need a lot of work here because it's again also not a mainstream area.
+It resonated with some aspects of Boltsman machines for me because I love iterative processing.
+And I also read parallel distributed processing by McClellan, Rommelhard, Hinton,
+Jeff back in the day. And so all of those things kind of rolled together. And so that led me to saying,
+I want to do credit assignment, but in a biological way. So backprop's got to go. It's clearly not what
+the brain is doing. I mean, if it turns out it does, I'm okay with being wrong. At least we explored some
+other parts in the space that was beyond backprop. And so I do like the Bayesian brain theory and the free
+energy interpretations of predictive coding. This is why I'm a fan of aspects of Carl's work.
+And so, you know, taking that interpretation that came a little bit later, I would say once I,
+so after grad school or my PhD, I got faculty position at RIT. And that's where the free energy
+principles sort of biased me and active inference a little bit later on. Actually, most of my students in
+my lab, if at least two of them that promised they would watch the stream, they both work on active
+inference. So, so we talk a lot about that or read a lot of these papers. And then of course,
+very recently have I finally gotten in touch and, and I collaborate now, you know, I would say rather
+readily now with Chris Buckley, who's really, really well known in active inference, Carl in free energy
+stuff, you know, and, and, and Bradress Rao was on the survey. So it was really great. The, if I actually
+did not give you in blue, Daniel, that big survey, that I recently worked with Thomas Salvatore and Ankur
+Mali. But we have this big review of predictive coding over the last like three plus decades. And
+Carl's on there, Rajesh Rao's on there, Chris Buckley's on there, Thomas is on there. So there's a lot of
+really nice names and they're really great people. And it was crazy when I got to talk to Rajesh Rao,
+just as I told you earlier, I slept with under the pillow with, you know, his 1990s nature paper. So
+to actually meet him in where I meet him in zoom was rather incredible. It was actually a, it was a fun
+experience to get to ask him even the questions I've always had on the tip of my tongue. And so anyway,
+that, that sort of is what molded me. And the cognitive science, cognitive architecture part,
+which we'll talk about in point two, that was heavily biased by David Ryder and Frank Ritter and
+my discussions with them and understanding architectures like Akdar and Soar, which are
+these older ones, as you mentioned, I believe Daniel, but or, or blue, like in 1989 or in the 1980s. And
+what's the future. And we can have some fun chats about that as well. So yeah, I would say that
+because of that interesting blend that sort of led me to say that I'm not just the guy that says,
+we got to get rid of back prop and here's how we do it. And, oh, well, let's use the Bayesian brain
+theory of predictive coding or predictive processing to do that. But rather let's use that. But also
+let's look to the common model of cognition, which is sort of like the grand theory or the blueprint
+theory in cognitive science that I've also sold my soul to. I was just at DC a couple of weeks ago at the
+cognitive science symposium, one of the FSS symposiums for AAAI. And I was talking to Andrea
+Stocko and John Laird and all the greats from like the old cognitive architectures or brain imaging and
+brain science. And we were talking about the directions where these go. So actually, if we talk
+about later the future of cognitive architectures, I might bring and bring some of my thoughts from
+that really, really nice symposium. And yeah, and I could keep blabbing. I don't know if that really
+completely answered your question as to why, but I guess too long didn't read TLDR. Cognitive science
+co-advisor in grad school combined with an AI main advisor in grad school philosophy of mind in my
+undergrad strongly biased me with complex systems. And I guess I'll just blame Boltzmann machines because
+honestly, those were, those were wonderful, wonderful. And I still think elegant little models
+that sort of like said, we got to look to things that don't do, uh, don't work with at least gradients,
+uh, with the reverse mode, uh, differentiation algorithm that sort of characterized the back problem.
+All the credit goes to Boltzmann in the end.
+Always. Oh, and we should give Helmholtz some love too. Von Helmholtz and the Helmholtz machines.
+And you know, those are wonderful too.
+Well, Blue, if you want to begin with a question or I'm happy to ask.
+There was a lot there, so I could follow up a few times, but, um, um, I am interested in,
+um, what you said about the Hopfield network forgetting and like how you thought that that
+was perfect and like the most exciting thing that it, it didn't like recollect perfectly the imperfect
+memory. Um, and I think that that's interesting to me also, and that, that kind of introduces
+variants, which we see like in humans. I I'm a very much like, it's all in your mind. And
+like, I like to walk the tight rope between like perception and like reality and like what is reality.
+And, um, how, how do you like, when you have a variant, um, uh, in a system, like, because it forgot
+X, Y, or Z somewhere along the line, how do you find like the best variant, best variants? Like what
+would, and then like, you know, do you go on to selectively refine, like refining selective memory?
+And, and what would that look like? Okay. So let me ask a clarification question. What do you mean by
+like variant model or variant as in like a deviation that that's maybe some term I'm not quite,
+it's not triggering something. So like in bio, in biology, you can't, you get variants, right? Like,
+so you have like a biological variant, but I mean, just as in humans, like you have 25 people at a party
+and 25, you have 25 different perceptions and 25 different memories of that party. Right. And so,
+so in, when you have like a network that forgets, what do you then do with that forgetting? Like what,
+you know, you have 25 different networks, 25 different memories, like how do you select the
+best one or would you want to, and then how do you, um, like, what, what do you think could be the
+outcome of that? Why is that so exciting that you have selective memory in a network?
+Okay. Um, so I, now I, I understand now what you're asking, um, to unpack that a little bit,
+briefly to answer why I thought Hopfield networks were so cool or so exciting. Uh, and just to make
+sure that was clear was the fact that they could only had like linear storage capacity. So as obviously,
+you could actually calculate, I think it was even, there's a formula with respect to the dimensionality
+of the patterns. You can actually say how many memories I can store vector patterns, especially
+binary patterns. Yeah. As I see the diagram being pulled up here, uh, before things start getting
+corrupt. So I think that that was fascinating to me because, uh, I guess I had assumed that you could
+just store lots and lots and lots of information, these deep networks, right. And the fact that memory can
+be corrupted, uh, it is a very human like quality, right? We forget things as you've brought up now,
+blue and your, in your comments. Uh, and I think it's a, it is a human like thing, but it also highlights.
+And again, later I would discover catastrophic forgetting in deep neural networks, which isn't
+really quite, at least in my view, human, like in the way that it happens in machines where, and by the
+way, for the audience that may, may or may not know catastrophic forgetting, it's like you train a
+neural network on one task, uh, to predict cats and dogs. And then I move on to airplanes and trucks
+and I learned to predict that. And then I say, Hey, by the way, can you tell me if this is a cat or
+dog? And it gets like 0%. It just, it's abysmal performance. That's not quite like a human.
+Cause the joke I tell also my students is, um, I'd be like, Oh, as I learned to play the piano,
+I forget how to breathe. Uh, that doesn't quite work. Um, so I think now tying that back. So that,
+again, is like motivation and actually have like a bonus slide to say like future directions. This is
+like one of the things that I've been working to try to resolve, uh, with biological models. The
+Hopfield network was interesting and Boltzmann machines, uh, by extension, cause they're just
+Hopfield networks with latent variables. I like the concept of attractors. So when you, when you
+build like a Hopfield network, you know, the idea is that because you're learning with contrastive
+heavy learning, which was also the algorithm that really caught my attention. I love that idea of
+just, Hey, I find equilibrium. I run my model for like a certain phase. I compare it to some clamped
+phase and then I just do a big subtraction. You get heavy and rules out of it. That's like one of the
+central reasons to, I liked heavy, uh, sorry, uh, Hopfield networks and Boltzmann models.
+But these idea of having these attractors in space, where if you could figure out your
+optimization landscape, usually it's an energy landscape with a Hopfield model. Uh, we are
+pulling the data, let's say templates even, or representative aspects of data at these little
+pins that are saying these points in the energy landscape are what I'm going to remember and
+patterns that look similar. So I guess this might kind of slightly address your comment on a variant.
+So variant as in like variations to particular memories, if I meet someone or I have certain
+attributes in a vector, this would fall into this dynamical attractor, right? Which again would fall
+into this energy landscape. I really liked that interpretation of how memory works because then
+it's not just me storing things in a hard array, right? The idea of like, let me just store every
+vector I've ever seen, uh, because now you have this problem of capacity. Uh, and then again, how do
+I build the, and you know, there's some value in modeling things in that way. So this isn't a
+criticism of any neural models in that regard, but I like the dynamical attractor kind of point of view,
+which again, then you can connect it nicely to free energy and say, oh, it's your free energy
+functional. And I am just walking along my landscape to plot my memories in there. Um, so I think that's
+what fascinated me was the energy based interpretation. Uh, and then again, uh,
+Boltzmann machines and restricted Boltzmann machines, also known as harmoniums, uh, they have this
+beautiful kind of energy based functional interpretation and they too are recollecting
+patterns, right? By this, you could say a dynamical reconstruction, but it's really just like I'm
+clamping noise and I'm running this until I reach equilibrium. And that sort of rep retrieves from my
+memory, some particular element of life, right? Some, something I've experienced in my niche.
+And I pull out that attractor, or I basically, I'm just saying how similar I am to that attractor.
+And then of course, later on, there's been a lot of more efficient work and then there's
+criticisms of Boltzmann machines. But, um, so I think like that's particularly why I found them
+specifically fascinating. Um, I'm going to stop myself there. I don't know,
+Blue if that was scratching at least that some type of answer to your question.
+That was great. Thank you.
+Earlier, you mentioned this grand cognitive science framework, kind of the general
+cognitive model. So how do you pursue that or where do we place or enumerate all these features
+of diverse intelligences like memory, but clearly just in your answer, there's multiple implementations
+that are non-overlapping of memory, almost to the point where it's like, what, what can you really
+say memory even is? So what are those core pieces and how will we know or assess that we have the
+relevant, even, um, continents sketched out for, for worthwhile pursuit of, of anything other than just
+an abstraction? Well, I mean, wonderful question, complex question. And, you know, I, me, I'm not the
+only person, I mean, I'm just but one small voice, right. That, you know, should speak to that. I think
+all of cognitive, all the great cognitive scientists I've even just met in, uh, the short span of my life,
+uh, have some interesting differing thoughts. So I think just to clarify what you said, Daniel, the grand
+kind of blueprint theory that I'm referring to is actually well known. There's some nice papers. I can
+try to pass them on to you and blue. If you don't already know of them, it's called the common model
+of cognition. And, uh, by the way, it is not the only way you can build a mind. Uh, it's just the one
+that resonates the most with me. Um, and so I just want to point that out. It's not, again, just like
+anything, there's no such thing as a silver bullet. I would even venture to say that there's probably a
+no free lunch theorem that applies to cognitive science, just like I teach it in machine learning.
+Uh, so there's probably no one cognitive architecture. Cause I think, I think blue said it, but you might've
+said it, Daniel, about modeling things that are not necessarily human, uh, which I think could have
+generalized to animal cognition, but it could also even, I was my brain weirdly enough went to alien
+cognition, right? Things that are not even of, uh, you know, planet earth. Maybe there's other types of
+intelligent organizations. And I do believe that that there is probably more than one way to build an,
+an intelligent computational entity, but without getting into that also potential can of worms, um,
+the common model of cognition, I think to sketch out what you said lays out the continents of the mind,
+to use your word. Uh, the reason I like it is that it sort of is like a synthesis. The, when you read
+the paper, uh, they themselves at the time, this was now years ago that the original common model of
+cognition, uh, paper view paper came out and they looked at things like ACDR, SOAR, uh, Sigma. I don't know if they
+looked at like, for example, uh, they might've looked at versions of Randall O'Reilly's work.
+He does a lot of really nice stuff like Libra, the Libra architecture. I don't remember if that was in
+there. Um, and other variants, of course, I don't think they had, uh, like Chris Elias Smith's group
+at Waterloo who does, who did the work on spawn. You might've heard of Nango, which are like spiking
+neural model toolkits, uh, spawn is an S P A U N, Daniel, if you want to write that so that way,
+because there's like a science paper that he had years ago that came out about spawn. Um,
+but they looked at maybe not those specifically, those would be like the updates. Uh, but they
+looked at particularly the first three that you have in your, uh, in your notes there. And they,
+they synthesize these architectures and what are commonalities here? What are they trying to model?
+Um, and I, I, sometimes I misuse the word brain regions, but rather it's more like functional,
+uh, continents. I'm going to borrow your terminology, Daniel of the brain. And they
+kind of chop it up into saying, well, what are the grand pieces of computation that goes on?
+And, uh, let's see if I can distill it from my own limited memory. Uh, you know, we have our motor
+functionality, our motor cortex, we have perception. Uh, and of course, now I, of course have added my own
+addendums to that, where you could break up perception into modalities like audio, visual,
+uh, and then of course, olfactory and touch and taste and all these other elements that maybe we
+don't model very well, but we'll leave that again, also as a separate discussion. And then the parts of
+memory. So we have, for example, procedural memory, then we have declarative memory and we have working
+memory. And those are kind of like the big, big kind of groupings of all the other things inside of
+there. There's different types of memory that you could start partitioning up. Um, and so like declarative
+memory would be like fact-based knowledge or world-based knowledge. It could also include episodic
+memory, which is kind of blobbed into there. Uh, and I've done some work on modeling episodic
+memory because I do things with active inference as applied to reinforcement learning. So of course you
+need, you know, at least a, a type of replay memory to sort of refresh your, you know, uh, statistics.
+And I'll leave that vague for now. And then you have working memory, which are again, this could be a
+bias on my end because I have studied things like ActR, but they're like buffers. So I think of working
+memory as not just this one module, but rather many little tiny occurrences of this module. And they are
+the glue that helps transmit information between various continents in the brain. And then we have
+procedural memory and the procedural memory is really interesting to me. And I think it resonates
+really strongly with, uh, just cause again, we're, you're the active inference Institute and I have done
+research in active inference. So, uh, cause I remember a question you had Daniel on point zero,
+you said, where's the action. Uh, and then later you guys answered that question actually, but, uh, just to
+be clear, there's other papers too, where I try to show you how to do active inference without even a
+cognitive architecture with predictive coding. If I ever show you these bonus slides, we could look
+at some of that, but, um, anyway, and, uh, procedural memory, I think resonates really nicely with active
+inference in the sense that I put in there it's dynamics model. So again, if we imagine we have
+perception and we think of that as, you know, the context of, uh, active inference, which is usually a
+POMDP partially observable Markov decision process. Uh, let's assume that Markovian assumptions are okay
+for now. I have criticisms of that, but the idea is that we have our input space. We have a latent space.
+That's what, uh, your cortices are doing, right? Like the visual cortex is transforming
+beams of light or pixels in a computer into some distributed neuronal representation, ideally very
+sparse. And this is, again, I know blue is very interested in, uh, my, uh, my aspects of sparsity,
+which is something I'm obsessed with. Uh, and I think we all should be obsessed with because that's
+very biological. Uh, and then, uh, if we put the motor cortex as like, well, it's going to take other
+signals and that's where the action comes in, Daniel. So like, for example, motor cortex is going to take
+information from probably information processed in the cortices, maybe information queried from
+various pieces of memory, uh, transferred to the working memory, and then they'll do something.
+And then we'll get our, our signals, whether they come from another part of the brain, like the prior
+preference part of the brain, which is kind of like our, you know, uh, goal oriented signals. Uh, and then
+the part that, again, to go back to the procedural memory, the dynamics model that lives in there, or
+the way that I've been modeling it, and I do this in cog engine, but also I just do this in my robotics
+work too, uh, is that that's kind of living in latent space is trying to guess the next state, the sparse
+distributed state of predictive coding circuitry. And with that, it's saying, oh, I'm wrong. Uh, you get
+the basis of an epistemic signal, right? And that's how you encourage foraging, right? Because exploration
+is like, to me, my view is the soup, the real crux of active inference. Uh, you don't have foraging,
+you don't have this, uh, uh, epistemic kind of signal to drive you to be curious about the world. I,
+uh, you know, I know you guys have talked about curiosity, uh, but also the, uh, prior preference
+and obviously plays a role because you can either encode goals. And if we're doing RL, we sort of do
+it like, oh, well, we could use the reward function or maybe we train some prior model. But, uh, the other
+way to look at that is that's where also like homeostatic constraints could be, uh, you know, embodied. Uh,
+and that's the stuff I'm doing with Carl. Now I'm going to have a nice big paper that's about to come out
+to once I finish applying some of his edits and it'll basically address that, the, the life aspect
+of this, but put that aside, uh, cause it's another can of worms, lots of can of worms to avoid. Um,
+and then the last piece of this puzzles inside procedural memory, uh, there's the basal ganglia,
+which is another structure I'm very obsessed with, uh, that in the prefrontal cortex and these
+particular constructs in the brain, uh, they do many things. I mean, the basal ganglia is often,
+you know, uh, you know, cited and studied for like dopamine application and reward injection.
+Uh, that's where the reward signals come and, you know, I've often used that interpretation, but
+another thing, and this is why, uh, Andrea Stacco, who's at the symposium and I really, uh, enjoy
+talking to him, has done a lot of study of the basal ganglia. He has put in his work and he has
+found neuroscientific evidence of it being like an information routing system.
+And that to me is a humongous, uh, uh, tool for tackling catastrophic forgetting because the way
+I see it is if I have this neural structure that is responsible for deciding what task I'm in the
+brain or what pieces of information to play a role in the task that I am doing, uh, it's like suppressing
+regions of neurons and exciting other regions. So it also induces sparsity to tie back to sparsity.
+At the, the, the most extreme level, right? It's like turning off parts of your brain and saying,
+this is task dependent. And the prefrontal cortex can be argued to do some of this too.
+I haven't modeled that specifically, but I've seen other people do that. Uh, but again, the basal
+ganglia was one thing. And so I have work on that, that you guys aren't also talking about, but again,
+I've already thrown too many papers at you, but, uh, focusing on just like, oh, can I do information
+routing with some basic predictive coding circuitry? Um, so I think that that sort of big glut of, uh,
+uh, of speech that I just threw at you guys sort of gives you an answer, Daniel, as to like how you
+would, why the common model of cognition, uh, is so nice is what I just explained was, uh, I just used
+their blueprint. I mean, they didn't say the, the, the mechanics and the active inference part. That's
+my twist to it, right? Uh, oh, can I reinterpret common model of cognition through free energy?
+The answer is, uh, well, I've bet everything I have on that idea. Um, and then, you know,
+and I teamed up with someone, uh, uh, Mary Kelly at Carleton university, uh, and she works on,
+for example, uh, Minerva two memory and hyper vector, symbolic structures and holographic memory
+and hyper vectors. And that's where, even though I know, uh, hot field nets, that's kind of another
+world that, you know, they sort of intersect. So we, we put that in there too, but I don't,
+you know, that's maybe we should save some stuff for point two. Um, but, uh, the, what I, what I
+just explained is I walked you through the blueprint, which was very vague. It just said we should have
+these grand continents, uh, and they might do certain things. They have like little arrows in their
+diagram about information that's transferred, what modulation is going on. Uh, but then they
+leave the implementation level kind of vague, right? The idea is it could be whatever you want.
+You could implement it even classically, like in the 1980s with, you know, production systems and
+if then statements, yeah, this is a good diagram actually. Um, you know, yeah. And you can kind of
+see all some of the key aspects of memory here. Uh, and again, too, what's nice I took from common
+model of cognition. And, uh, I do have a slide here. I keep saying I have a slide. Maybe I'll show
+you one just so I can prove to the audience. I do have them. Uh, you know, the idea is that the action
+element, the active aspect of active inference, common model of cognition also speaks to, right?
+It says, well, we have to have a motor cortex. Uh, it doesn't tell you what to do with that motor
+cortex, except that it's going to, you know, produce some motor command and then, you know,
+it will transmit to the body, uh, and we'll leave embodiment as another thing. That's another can of
+worms that I have been trying to address and inactivism, which is your niche and how that
+relates to this, but let's just zoom in on the, the, the architecture of the mind and it has all
+these components. So the way I envision the future, just to tie this to another question and make sure
+that I'm not just blabbing, but keeping us, you know, uh, you know, useful, uh, is that I think
+the direction we're gonna head or should head, I don't know if everyone else will follow that,
+is that you want to build these biological cognitive architectures, um, rather than just,
+okay, you know, let's rely on a production system like we do in act art, which is valuable.
+I have, it's not really a criticism of that because maybe the level of modeling you want to do is I
+want to encode this knowledge. It's a lot more intuitive sometimes to encode in like, if then
+statements and logical statements, as you did in classical architectures, you can interpret it easier.
+Um, but the part I think that, uh, we really need to push for is how do we get that type of behavior,
+that type of self-organization, uh, without me hard coding this knowledge, right? Because again,
+it gets to expert systems and good old fashioned AI, uh, we kind of don't want to be doing that.
+We want to say, can we do this in a neural way? And then, uh, the answer I try to jump ahead to is
+I say, by the way, don't do back prop because while you could do back prop, then there's, I think, work
+on people trying to build types of cognitive architectures with that. At least it's a better step than,
+uh, you know, chat GPT and claiming that that solves cognition, because it doesn't. Uh, and I, I am in that camp.
+But again, leave that can of worms somewhere else. But the idea is that you skip that and go into
+something that's biological, which is predictive coding. Uh, there are other things you can do.
+I actually am working on other things besides predictive coding. Uh, maybe we can chat about
+that in future directions if that question comes up. Um, but I think predictive coding and predictive
+processing offer you a lot, uh, that, you know, other algorithms right now might or might not give
+you, they might have drawbacks. Um, and this could even help answer if the question comes up, Daniel,
+if you're interested, like, uh, what aspects of neurobiology does that bring to the table? But I also
+think it has, uh, uh, the best way to convince machine learning individuals is to explain the
+practical elements of it. Uh, cause you know, a lot of times we'll say, well, who cares about
+modeling the brain? I just want to build an intelligent system. Um, but you can, you can use
+predictive coding, uh, and predictive processing as a pragmatic, uh, type of argument. And you can say,
+hey, well, you get this, you get this, you get this. And, uh, among those arguments is sparsity, but
+there's, there's even more powerful pieces that we could go into. I think I'm going to stop now
+because that's a lot of information. I don't know if I missed any piece of your question.
+No, it's great. I'll ask a short question from the chat. Viet writes,
+can we represent declarative memory with neural network based techniques such as HopfieldNet?
+Was it, did you say Viet? Yes. That's my, I believe that's my, one of my students.
+Um, so, uh, yeah, he's also works on active inference as well. So, uh, I'm not surprised
+that he would throw a question like that. Um, the answer is yes. Uh, uh, you can,
+actually there's a lot of good work already, even without the cognitive architecture kind of structure.
+Because again, think of the common model cognition is like a blueprint that tells you
+what things you're going to need to have and how they interact. Uh, but if you zoom in on one of
+those continents, declarative memory, as was pointed out in the question, uh, for example,
+you can use vector symbolic structures. You can use, for example, Minerva 2 memory. Uh, there's a lot
+better. I would recommend faster models, which are Hebbian based systems, right? You can model Hebbian
+memory, uh, associative memory, hetero associative memory with a lot of these like simple kind of
+Hebbian like constructs. The learning is very efficient as well. Uh, they don't come without
+the drawbacks, but, um, so the answer is yes. And you can model them with, I think, Hebbian networks,
+uh, Hebbian learning, which is a correlational local learning rule. Uh, the other part with the
+Hopfield network, you can also do that. And it's weird because while, uh, the work I have currently
+done said we will do Hopfield networks in our cognitive architecture, which we'll probably chat
+more about that in point two cog engine. Uh, but we do have plans to do like, uh, what do you call it?
+Modern Hopfield networks. That's a particular, uh, instantiation of Hopfield nets that
+is actually very, uh, efficiently implementable, uh, as I've discussed with my collaborator, Mary and,
+uh, and others like Robert West at Carlston, uh, you know, talking about these types of things, but,
+uh, you can use a Hopfield network to sort of use, uh, to create that dynamical attractor
+interpretation. I was telling blue about earlier, uh, and the idea is that, you know, it'll have a certain
+capacity, but the problem is, is we need to make sure that we have enough capacity because again,
+uh, I don't think I ever completely properly answered blue's question about variants or,
+you know, differences between what's, you know, reality versus what you think reality is. And
+there's some interesting connections to predictive coding that also answer that question. Um, but,
+um, the idea is that if you have, you know, one single Hopfield network, that might not be enough,
+but I imagine chaining a bunch of these together to create what I call an assembly or an assembloid,
+to use one of Carl's words, assembloids of Hopfield nets, I think is one way to build, uh, a completely
+neural implementation of declarative memory. Uh, another piece of declarative memory that we did model,
+I won't argue it was the most efficient thing you should do, uh, but it can be done, is, uh, Minerva 2,
+uh, and again, that you can look it up. It's Hintzman and all, and, uh, Hintzman's old work. It's a heavy,
+and it's an approximation of a large heavy and audio-associative memory. And, uh, what we did is we
+modeled the episodic memory with like a big Minerva 2. The reason I say it's not a good idea is Minerva 2 is
+really slow because it's kind of like approximating this heavy-end associativity with like a weird
+echo query style lookup table, uh, at least the implementation. And even when you vectorize it and
+put it in TensorFlow or, you know, your favorite linear algebra backend, uh, you can only get so
+much of a speed up. So for very big memories, I don't think that's the right place to do it. But
+the value of what we did is we essentially tried to emulate what episodic memory does when you do
+replay and reinforcement learning, right? So, uh, you have to do some weird hacks to make, uh, the, uh,
+episodic memory predict the next thing rather than recall this thing from a corrupted input vector.
+That's called header-associative memory. Uh, and we did some things with like a window and we said,
+hey, have this predict the next sensory or sorry, latent vector since, you know, I told you live in
+latent space in, uh, the cognitive architecture, uh, maybe predict what you thought the original
+action you're taking and the reward. And we sort of use that to roll out little streams or mini streams
+of episodes. Uh, and then we use that to train the modules that are inside the cognitive architecture.
+For example, if you do replay, you can refresh the dynamics model. You can refresh the motor cortex
+because again, you're querying this episodic declarative memory to say, hey, remember these
+little tiny mini experiences. Um, the other problem with Minerva too, was that all you can only remember
+so far into the future. So it gets a little wonky and hacky when you try to build like these like
+little lookup windows, but there are better memories out there. And I actually, my collaborator and I've
+talked about using modern hot field networks as one possible, uh, construct and they're very
+cleanly implementable. They almost look like auto encoders, which is kind of crazy, uh, at least from
+like the engineering point of view. And so once you understand that you're like, oh, I could build all
+of these and build again, what I said earlier, assembloids, right. Or assemblies of, uh, these hot field
+network structures, right. And maybe see what those do, uh, when I want to recall particular pieces of
+experience. So that would be the answer to your question. Uh, I would say I only have some experience
+with the episodic piece of declarative when it comes to like the world fact graph organizational
+knowledge. I don't have much to say yet. I know you can use Minerva too and vector symbolic and
+holographic memory and hot field memory to emulate that people have done that on like, for example,
+language tasks. Um, another really nice name. And he's done work on, I don't know if you guys in the
+Active Inference Institute know him, uh, Ben Gertzl. He's, you know, a premier researcher in, okay,
+you know, Ben, I see you shaking, you know, an AGI, right. And he has OpenCog. And I know that he's done
+some really nice work on graphs, uh, knowledge graphs. And there's people that have had discussions
+with him about neural implementations of that. Cause when he and I have talked and I also work a
+bit with him too, uh, I've said to him, you know, okay, well, what, what would be the like purely
+neural version of this? And there are ways to do it, whether it's simulatable, uh, in our, you know,
+computing systems nowadays, I don't know if it can be expensive, but it can be done. So he would be,
+open cog might provide a nicer, cleaner answer than I possibly could today about like the world fact
+knowledge in graph organization of how we think about concepts. Uh, and you know, and I think
+open cog has some of that answer. Uh, but again, I'm going to speak with that as the final statement
+and boundary of my knowledge and, you know, let the audience look into that. Uh, but I do recommend
+Ben Gertzel's work in that area too. So Robert West, Ben Gertzel, these are some really nice names
+to kind of look at how they either use the common model of cognition or they build their own cognitive
+architecture and they model certain pieces of this structure, uh, that have nothing to do with,
+let's say predictive coding. Cause Ben, the reason he's working with me is cause I've said,
+oh, we should do it with predictive coding. And he was like, that's a great idea. Uh, and so, you know,
+hence collaborations get born, but, uh, so yeah. And obviously, and as Daniel's writing that statement,
+you'll notice I'm extremely, uh, biased, but I think with rather good reasoning, uh, even from a
+neuroscientific point of view, there's a lot more evidence for predictive coding than there is for
+backprop in the brain. Plus you can approximate backprop with predictive coding if you squint at it
+and make the right theoretical assumptions in the right way. So, uh, obviously I'm going to say
+everything should be built with predictive coding. Um, and then the, also the beautiful thing, and I
+know Carl will like this if he ever watches this is, uh, you know, then you can also state it's
+min, uh, it's optimizing or minimizing a variational free energy and we can derive where that comes from.
+And it's a, it's a Bayesian model, right? And so you have this Bayesian graphical model interpretation.
+Uh, and it's a really, really elegant framework too. So that's another strength I think of predictive
+coding. Uh, I guess I am the market man for it now, but, uh, uh, but I, I, I really do believe in it.
+And, uh, it's, it's served me well over the last, I mean, as I'm coming up on almost a day, if we count
+grad school, almost on a decade of working on, on this. And, uh, and I do think predictive coding is at the
+forefront of where we need to go, uh, if we want, you know, biological human, like even, uh, machine
+intelligence. And I'm going to stop there too, because I don't know if there's more questions.
+I can keep going and very easily. Yeah. It's awesome. Very, um, encouraging.
+Certainly you lay it out differently. Everyone does, but you lay it out very differently.
+It's actually very rare to start
+on a high road. It's not exactly the high road laid out by the free energy principle,
+but this kind of approach to cognitive science, which is like, let's sketch out the functionalities
+and then drill in. That's how a big tent is built because it clarifies that there's all these different
+implementational techniques, none of which can be all things in all settings. And then another,
+another piece that, that the work holds up is what's biological when after all the neural network
+is the great, great, great grandchild already of a cell type. And so what, what is modern and
+biological? And then it just made me think about how there's the pure biomimicry, which is usually like
+if somebody were actually interested in studying that system to resolve some pathology or just to
+do natural history. And that's one sense that we might be doing biologically inspired computation,
+but whether it's leaving the door open to our alien colleagues or developing new synthetic intelligences,
+we need something that's both biological, but also novel. And then this leads to consideration of,
+well, what are the fundamental constraints other than the historicity of the life forms today with
+two wings or six legs or whatever they may be? What are the real features? And that's where we complement
+those fundamental attributes identified by the common cognitive model, like memory, action selection,
+perception, and perception, where those come together with like local processing only. And then also some
+more potentially aspirational things like low energy compute and other features. So these are just some big
+topics and it's kind of like, come work on it. These are the challenges because they're laid out. The
+challenges are not esoteric at all. Oh, we've either known about some of them for a while and just never
+resolve them or, or they're becoming more pressing in today's day and age. Like you brought up the energy
+compute part, right. And, uh, energy efficiency and, you know, we hit global warming, regardless of, uh,
+whether or not you want to, you know, accept it is, is upon us. Uh, and, uh, we have the problems of even,
+even in AI, there's this thing called green AI versus red AI. And I've written a little bit about
+this in some of my papers as a motivation, uh, to looking to biology. Cause you know, the brain is
+regardless of its, you know, own limitations, every biological system has, you know, trade-offs that it
+has to make, but, uh, it is an extremely energy efficient system. And it's an example of beautiful
+parallelism, uh, as well as low energy compute. And if we could get even just a little bit of that
+in our systems today, that would be huge. So I think that's a nice, uh, motivation. Of course,
+I also work in, well, I know you guys talked about one of my papers, spiking neural nets, which gets us
+into neuromorphics and neuromorphic computing. Uh, and I think there's a lot of really nice hardware,
+uh, in silico that's out there that we could take advantage of. Uh, but the key is finding the right
+algorithms that we could implement there, uh, and carry over the best of all the worlds, right? The
+best principles, uh, that are software simulations and mathematical arguments make, uh, but then
+instantiate them in, you know, you know, let's say a memoristic crossbar. Uh, and, you know, and I've
+worked and talked with different people, uh, including Intel's low heat chip, you know, and I'm not saying
+that that there's many different ways you can build these constructs though. And, and I know that
+because I've, I've watched some of Carl's chats with you guys and talked with Carl about this is also, I
+do think the biological chimeric implementations is like a really cool area. Uh, I'm a huge fan of, uh,
+organoids and, uh, and organoid intelligence. I, I think that that's a humongous place. Uh, that's like
+a new frontier almost, uh, given like Smirnov's work and a couple other people. And, uh, I think
+that's where like these ideas of predictive coding and the computational models we build are valuable
+to even consider in these biological systems, either study them and see, do they match back to my
+mathematical theoretical predictions, or can we manipulate or engineer them to, you know, maybe
+induce similar kinds of compute, uh, or maybe we'll just see that it pops out. Maybe they're just doing
+predictive coding and we're going to see that these neuronal structures emerge. And I think that would
+be fascinating. Uh, a quick point I want to add in, cause I see blue raising her hands. So I just want
+to mention that the thing I like about my interpretation of predictive coding, and it's not only my own, it's
+just that I carry that forward is predictive coding. As I've talked to people, it's interpreted in a lot of
+different ways. Like in psychology, predictive coding kind of has similarities, but it's not quite
+where I work, which is the mechanistic version of predictive coding. And it's interesting. I think you
+can borrow those worlds like, Hey, the, the idea of predicting error and feeding that back in or matching
+discrepancies, you know, in our memories, you know, that's a beautiful concept. And that's, you know,
+what psychologists look at cognitive scientists kind of see things in that way. Um, biology,
+biologists and neurobiologists might sometimes talk about predictive coding, but they, they might not
+necessarily mean it like in the concrete ways that, uh, my work, which was inspired, you know,
+by Regis Raus and others, uh, you know, to say, let me build you the exact mechanics and the dynamics.
+And I think that's important to get right. Uh, I am, uh, even though recently I'm getting
+a little more philosophical, which I love in theoretical, uh, and, in talking to Carl and others
+and Ben, uh, there's this engineer in me that cannot divorce away the very specific dynamics and the,
+not just the mathematical, like, Oh, the ordinary differential equations, but how does that get
+implemented efficiently? Cause I think that's what lies in the future is the marriage of these kind of
+high level theoretical, mathematical, philosophical concepts, their mechanistic description, which is
+what like predictive coding says, Hey, one set of neurons tries to get another set of neurons firing
+rates or their activities. And we can feed that back in and you can repeat this motif and build very
+beautiful constructs. Like what I try to do in cognitive architectures or little POMVP systems.
+And then we also have the spikes, right? How does that compute happen at this very fine grain level?
+And then how does that get put onto a chip? And then I think the other piece that,
+then I'll shut up is, uh, the connection to the niche. Uh, I think it goes back to the body
+and you can't ignore the body. And I have a lot more to say about that, but I'm going to bite my tongue
+for a little bit. Cause I want you guys to read that paper. Maybe we'll have another chat in the future
+about it. Uh, Carl and I've really thought very deeply about this, the role of the body. And that
+has nothing to do sometimes with neurons, or at least not the neurons that we model and then the
+niche itself. And how does that have a role? And then I know you can go into, and I know all the
+cognitive theories, like extended cognition, embedded cognition, how do other agents and cultures and
+tools play a role, uh, the extended, uh, theory of mind. Cause I, I did study that as a philosopher.
+So I think like though, those parts are gonna, those all need to be reconciled and build this
+kind of framework. And I think Daniel, you're right. You can use blueprints like the CMC as a stepping
+stone. And I think that that top down way is a nice way, but then you also merge it right with all this
+bottom up. It's, it's kind of like you're doing predictive coding, but in the scientific realm,
+right? You have this top down kind of direction you want to fill, but then you have all this mechanical
+low level stuff that you really can't ignore if you want like energy efficiency and where do they
+meet in the middle? So it's a bottom up top down, which is beautiful. Cause it, it repeats the,
+the metaphor of biology and I'll stop. Cause I see blue. It's time to put someone else speak.
+Yeah. So you really like stole my thunder there. Oh, sorry about that. I have a lot to say sometimes.
+It's okay. No, no, no, it's perfect. So I really wanted to ask about the role of the niche and
+especially like in, when we're talking about like energy efficiency and predictive coding and the
+compute power, et cetera. Like I think about, um, like what makes us efficiently able to do cognition
+and it really is like cognitive offloading into the niche, like the internet, the phone, like click,
+click, click now I know this. Right. And then even like with non-human systems like ants, like leaving
+pheromone traces in the environment that convey a ton of information as to where to go and what to do.
+And so how can we then bring the efficiency of cognitive, our cognitive offloading into cognitive
+architectures that we can then leverage for increased compute power with very little, um, you know, effort
+on in terms of like the actual compute.
+So the answer to your question is extremely hard, right? It's a grand challenge, if you will. Um, I would say
+that the right path and I, these things are okay for me to share because thankfully, uh, they're not all of my
+my invention. Uh, so to think about how other agents and other tools could be efficiently used to allow
+our own agents, right? Our artificial agents to achieve their tasks. You do need to now finally
+answer the question of the body and the question of the environment. And I've been thinking a lot about
+this and let's just assume that you can simulate it. And that's another issue in of itself, but you pick
+your world, right? So let's say I'm going to, so I, okay, actually I'll pick up. I'm going to start
+with my body. I'm going to do a quadruped robot, right? Like, you know, uh, what is it? Big dog
+or spot, right? The little robots that are out there. And that's going to be my, my actual
+morphological construct, the body in which that I'm going to manipulate it. Now that body, let's assume
+that I have access to all aspects of its physical mechanics. Okay. And it's artificial hard-coded
+routines because robotics have a lot of like automated procedures. Like you're not going to
+necessarily need to manipulate every piece of the arm. You know, you're going to use, like take
+advantage of inverse kinematics and other algorithms that allow you to say, I just need to move this
+point and the rest of the arm will kind of coordinate around that. And that is an offload of what the
+neurons need to do or the neural compute. And let's say organized, and I'm a fan of common model
+cognition. So let's assume you build your little brain from the CMC point of view. That's going to,
+again, not worry that much about the fine grain mechanics of the pieces of, let's say the quadruped's
+front right arm, right? Or front left arm. It's going to offload because it knows that as long as I
+tell you, I plan to move this piece of my, you know, I don't know, joint in this direction, the rest of
+the arm's going to fall along. You've already now done embodiment, which is embodied cognition,
+which says the, and I'm, I'm on the extreme end. There's like spectrums. I've studied cognitive
+science. There's the body kind of influences the mind. Then there's isolated cognition,
+brain in a vat. And then there's really strong embodiment, which says the body does a lot. And
+the brain kind of just says, Hey, let me send you a little control signals to manipulate you.
+So that's the embodiment. Now we get to the niche. And by the way, so I've already started to answer
+your question because I picked the body. You're going to need to commit yourself to a construct,
+which by the way, means you're not as general as you would want to be, but it gets you a chance
+to answer the question because now you say quadruped. Now you say, what's the niche? Where's
+that quadruped going to operate? And I don't know. I'm going to pick something really simple.
+Uh, outside my office, there's, you know, some hills and some grass and some trees.
+Uh, and I'm going to specify this little world. Uh, maybe I going to design some way of recharging
+that robot's batteries, you know, cause obviously we need to create some type of life giving force
+some resources, uh, for this to look for. And I specify other properties in my environment. Now I've
+specified my niche. Now I've answered concretely the exact world that my quadruped is going to operate.
+So now I know the inactive cognition comes into play, right? Because now I have to interact with
+the physics of my world. It's going to manipulate the robot. It's going to damage the robot. The robot's
+going to have to respond to this. Uh, so remember under the hood is like a CMC neural predictive kind of
+neural construct. It's offloading a lot of its cognition to the body. The body says, oh,
+I'm going to also take advantage of sensors that I can read in my environment. I know like, I don't
+want to be maybe in a very hot area that starts to, you know, interact badly with certain properties of
+the robotic construct. And then to now get at, uh, the answer to what you said about other things.
+Well, in this world, I should also, and I think there's some work in, uh, I cited it in the one
+paper that's going to come out, uh, uh, about, uh, like tools. You have to specify what are objects
+that are manipulable. So you need to define your affordances. And by the way, this is again,
+defining the niche. I think it's really important not to just say, oh, I'm going to throw it in any
+environment and we'll just, it'll work somehow. You need to define the properties of your niche to some
+degree because that's how we can also experimentally analyze and study what's going on. And you say,
+what are the affordances? What are things that I can do? What properties of environment am I able
+to manipulate that I, let's say even one that could help you model this? Uh, and then you introduce
+other quadrupeds with the same exact underlying cognitive structure, because let's say we're not
+going to do heterogeneous, uh, multi-agent systems. So, you know, I introduce a couple other spots,
+right? Which are also operating under the same principles. They minimize a variational free energy
+inside the common model of cognition. They have the same, you know, roughly, uh, you know, artificial
+dynamics that they can offload to their robot bodies and they could work together, right? They
+could create herds, right? They could have herd behavior or group behavior because maybe now they're
+going to find those port charges or whatever the resources is that I allow them. Maybe there's,
+maybe they're solar powered. I don't know. I mean, they have solar panels and they need to
+collect from the sunlight, but obviously if it rains, they need to hide. And so you can now say
+those dynamics, those groups, now they interact. Maybe one of the spot bots found a good area,
+and this is a really good place to exploit their prior preference, which is, you know, to survive.
+Hey, I want more energy. I need to just continue living, right? Because I think life is the,
+the place you have to look, uh, they, they don't want to die. They don't want to terminate. So
+they're going to work together to do that. So that answers the embedded part, right? Because the
+embedded aspect of it is the cultural, and this is an approximation. I'm not going to claim that
+a little herd of quadruped spot bots, right? Are going to have a society. I, I don't know. That's
+an emergent property perhaps, but they'll have some means of communication and that way allows
+them to organize themselves as their own little system, you know, in their niche. And then of
+course, because we specified the affordances and properties in the environment that you can
+manipulate, you have extended cognition, right? Because these tools allow them to better survive,
+better find those areas that, for example, allow them to charge their batteries or, you know, collect sun
+at the right times and avoid damage from the world, you know, when it's raining or when there's
+inclement weather. And again, I'm kind of like vaguely describing a very complex niche. You could
+really experimentally control it. Maybe you make it a lab and, you know, you have artificial blocks
+and charging ports, and maybe you could kind of simplify this a little bit. But I think that's where
+that doesn't like give you the exact answer. Cause you know, if I had the exact answer,
+I probably would have implemented it and we would have solved AGI, right? But I do think that's the
+pathway to answering your question, right? It says, if you want to even have a chance at scratching at
+the answer of efficient interactions with the environment, using objects and tools to solve
+problems and offload your cognition to these, let's say, non-neural, non-biological entities, or these non-living,
+or non-planning entities. I know Carl talked to you guys long ago about the difference between like,
+well, the environment's also its own system, but it doesn't plan, but it's, you know, subject to
+thermodynamic constraints and the entity itself is also, you know, that one is different because it
+can plan. So there's like a little bit of like, you know, its own ability to change its outcomes with
+planning as inference. So you could kind of like use that as your starting point to say, I need to
+define the niche. I need to define the body. Then I need to define the organization of the brain
+structure that goes into that body. Cause you should, you do need to have the neural part.
+We're gonna, if we're interested in modeling, let's say a very high level cognition,
+behavior, and how does that interact with the hardware? And that's another question in of itself
+that, you know, I'm, I've been thinking about. And I think with all of that, you get a chance to now
+simulate, do experiments, uh, and actually see how does that efficient interaction emerge,
+right? What can we study aspects of embedded cognition, right? Into this little, uh, experimental
+niche and agent niche and collective agent niche setup that I've constructed. So I think that's like
+an interesting place that I would, this is where I would go. Right. And I'd love to go if I had
+resources, but, uh, you know, these are that, I think that gives you a chance to begin to answer
+that question. And then it will tell you what's wrong with a lot of things too. Cause I think it'll
+say you're, you're going to quickly, especially if you just even pick the body and you're doing a body
+cognition, you say, uh, Hey, wait a minute, this neural construct, let's see back prop, right?
+Uh, it isn't working very well, right? Because why I need to unroll in time. I need a time machine
+to do back prop with time-based data. Um, but predictive coding doesn't really need that,
+right? Oh, probably that might be the right neural structure for the brain, uh, because now it interacts
+with my robot hardware, which has very limited resources. You have very limited memory and compute
+that you can run with. So already there, you've now manipulated your software. You have now co-designed
+the hardware and the software a little bit to interact in the context of this morphological
+construct, your body. And because you've, you've also defined where it's going to operate. You also
+understand what properties of the environment you need to be aware of. Maybe you can build that as an
+inductive bias into the system because we don't want to play evolution because that's usually how you
+emerge these systems. But I don't know if I want to wait doing genetic algorithms for, you know,
+whatever simulated thousands and thousands of years. So maybe we need to build those inductive biases as
+well. And that's another interesting research area. I think now I'm, I'm digressing. So I'm going to stop
+there. It's great. Again, again, oh, just the pathway is clear. And in fact, this is even in some ways, an
+anti-reductionist pathway that actually starts from the bigger context, you stepped through
+specification of the niche in the context, getting to the embodiment, including the extended embodiment,
+pheromones and all of this with a niche, like each time you step through, then to the brain, the body,
+then into the multi-agent. And then that is where the evolutionary and the ecological dynamics kick into
+play. EcoEvoDevo is going to pick up once there's like a population, even if it's an in silico population
+that has resource constraints, or it actually is a materialized system. Then the ball's rolling and it either
+persists or doesn't.
+And it's like a landing strip for our efforts and, and a organizing principle for our research, whether
+we're like just beginning to do cognitive science research and thinking about going to grad school
+or something, or trying to recap on this flurry of development over the last years of being aware for a
+long time. Um, it's actually a, to me, a mark of the advancement, not just like how fast or performant
+the systems are, but how many index card type
+agreements or ways of coordinating that we have. We have the common model. We have, of course, active and free
+energy principle, which we've barely talked upon. We have this kind of general agreement of the structuring
+of cognitive systems. And then that organizes otherwise what would be essentially arbitrary,
+unlimited information because the scope of cognitive sciences is so vast that having some of these
+categorizing strategies as part of our recall system is part of it. And then that's an interesting question
+about jumpstarting it. And what do you bring to zero? What do you bring to the table? And then were the
+agents with our tools that are building other agents and tools and all of the like reflexivity and also
+relevance that comes along with that?
+Yeah. Yeah. I like that summary.
+I go on and on and on and on about it. I even have different names for these things, but, uh,
+I want to, there's a little bit of thunder I can't steal just yet. Uh, but I will ping you guys. I did. I
+have a couple of people in mind about sharing, uh, a manuscript I've been working on for, for many months at
+this point. And, uh, it, it, it, this is related, uh, especially the relationship between neurons, the body,
+the environment and beyond and how that all ties together. So this is stuff I've been thinking a lot
+about. So it's actually timely. Your questions are great. I didn't know we'd get into this part, but, uh,
+you know, that that's, it's fun. And, uh, there's more to the story too. Uh, there, there's other, but I, I want to save that thunder.
+Yeah. Dot three. Maybe, maybe you could have me on about that paper if you ever read that, but, uh, you know,
+that's a different, different thing. 56 never dies. Um, exactly. He doesn't leave, leave us alone.
+Or like a sequel, like a one paper, a one paper sequel, because I will say like four, four papers was,
+was challenging. And I don't think we've really like, we we've skimmed the surface of, of each paper,
+but like not even, you know, there's, there's so, so many interesting threads to untangle in just what
+we've talked about here. Um, and like, are you sure you don't want to go into evolution? Um, are you sure?
+I'm not opposed to it. I think the problem is resources blue.
+Yeah, no, I, I don't know that genetic algorithms is necessarily like the, the way or the means like
+that, that I mean, but I, I really am curious about like unraveling maybe alien cognition.
+Like, what does that look like when I really start to think about like, what is the most different
+kind of cognition that I could imagine? What is the most different from my own? Like, I really think
+about plant cognition and then like active inference becomes kind of problematic because you know, they,
+they like, they're really limited. They have a really restricted like course of action. Right.
+Um, but, but I, I think about like what, you know, how, how plants have evolved and how they've co-evolved
+with humans, like, and how they've, you know, they produce all these lovely things that we like to
+eat and they produce things that alter our own cognition, you know, so, so like they can totally
+drastically influence our information transmission pathways. And, and I really think about what does
+that cognitive system look like, or what is it like to, to be a plant or to have a memory that looks like
+a plant memory, right? All of your memory is essentially chemical, like, or evolutionary.
+And I think about that in terms of like, why like evolutionary memory might be important, um, and
+across species and across, you know, evolutionary time, like not necessarily evolving through genetic
+algorithms, but, but what does that evolutionary memory start to look like?
+I mean, it's a great question. Uh, I, I've only, I, while I don't have any work of
+my own, well, I have worked weirdly enough with, by the way, I will say I have worked with
+neuroevolution. Uh, actually you guys had, uh, I know, you know, the, the ant colony paper,
+uh, optimization with, uh, Abdelrahman and Travis, right? I was in the audience and I chimed in and
+talked to you about active inference. Uh, uh, so I, I have hedged my bets a little bit, you know, to look
+at other ways of doing things. So I, while I did say I sold my soul to predictive coding and common
+models of cognition, uh, I guess it's not completely the truth because I do look at other things.
+But, uh, so, but I do think that it's interesting, Blue, that you bring up about things that are not
+human or even maybe animal-like, right? Because there's also animal cognition, which is, there's some
+differences. Um, so when you go into something like plant evolution, it's interesting because
+there are, there is work as I have found. Again, I, I want to say it in a way that, again, I don't
+steal too much thunder from this one paper. I'm like, like, it's on the tips of my tongue, you know,
+and it's like, I got no, no, hold, hold. It's almost done. I got to finish the edits, put it on archive,
+and then we can all chat about it. Um, but there, there is a dressel of plant cognition and let's,
+like you said, alien cognition or just let's say non-human cognition. And, uh, I can, this work's
+existed. It's wonderful work to read. Have you guys heard of the, uh, life-mind continuity thesis,
+thesis, uh, by Kirchhoff and others? They're also heavily influenced by Carl and Free Energy. I,
+they might've even worked with him. I, I, sometimes cause Carl's everywhere. Uh, but, uh, with,
+with that in mind, uh, I liked the life-mind continuity thesis because it, it addresses a
+lot of things that have emerged from evolutionary psychology, biology, uh, even like work that
+touches in the world of Michael Levin's world, which Carl also worked a lot with. Uh, and, uh,
+these ideas that there is cognition at the plant level or organism level, you can even go simpler.
+Like, by the way, that's hard for me, Blue, to imagine I've been studying them, uh, not physically,
+but, you know, theoretically, uh, you know, my, um, bacterial organisms, right? Or, you know,
+even like E. coli is a wonderful example of studying its behavior. It too, also minimizes
+this Variational Free Energy. Uh, it opens the story to other things, which is also what inspires
+this work that I've done very recently with Carl that I keep teasing everyone about, but it's, it is,
+I promise it will come out. Uh, but all of these things have cognition, but they are not cognitive
+in the way that humans are. So there's like, and I've long thought about this ever since, uh, I was,
+you know, studying philosophy of mind as a young undergrad. Uh, now, of course the, the thing,
+and when I was very young was about consciousness and consciousness is very big world with a lot of
+implications that I have to be careful because there's been philosophical theories forever and
+everyone has their holes that they need to fill. And then there's flaws. And I don't want to go into
+like Thomas Nagel or Dennett concepts right now, but, um, you know, I always thought, well, animals
+are conscious and plants are conscious. They're just not conscious in the same way. There's degrees
+of consciousness. And the reason I brought up the life, mind, continuity thesis is that it sort of
+talks about like gradations or degrees of cognition and cognitive functionality. And as you go from,
+cause it, and I like this premise, I think it's an important premise. And since it's published
+work from them, I, it's not like I'm stealing any thunder now, it's already out there and you guys
+even are nodding. So I know, you know, of it, um, you have the neurons and nervous systems,
+which evolved a lot later in, you know, when you look at the picture of life, right? And so
+what was below that? What are things that are more foundational because other organisms might not even
+have nervous systems and yet they do beautifully complex things. They elicit beautifully complex
+behavior. Uh, even doing photosynthesis in a plant is beautifully complex. If you study the details,
+uh, and it's, you know, it's also an alien way of which they get their nutrients, right? We don't do
+photosynthesis, uh, you know, and so that it's a completely different evolute evolved behavior.
+And so Michael Levin and other researchers, not just Michael, but like others have this thing called
+basal cognition, which is this really, really, really low level cognitive functionality that
+emerges through the memory of evolution. So I agree with you, Blue, you can't completely ignore the role
+of evolution. In fact, it's another piece of the puzzle that you sort of have to somehow account for.
+And that's where the life, mind, continuity thesis goes in the opposite direction. It says,
+uh, we have high level cognition or complex minds and brains. We also have simple minds and brains,
+and it's not like all of a sudden there's this hard discrete flip switch where you say,
+all of a sudden there's a brain and then there's not a brain. It's like, no, plants do have a brain,
+just not the brain in which we have a brain, right? And it's not a nervous system. It's,
+you know, these evolved biological constructs that, you know, have emerged from their primordial
+biochemical soup of evolution, uh, to then allow them to, for example, uh, manipulate their structure
+and response to the weather and rotate and move towards the light, right. To better conduct photosynthesis,
+you know, and their growth mechanisms. And so they're very simple behavior. Obviously the plant's
+not going to get up and walk and figure out, oh, I, I know I want to attack this other plant, right.
+That's more high level behavior, although we can come up with a really cool science fictions about it.
+But, um, you know, that level of behavior is cognitive. It's just basal cognitive. And so that gives you
+what's called a simple mind or even just a mind in a different part of the spectrum. And so how do we account for that?
+Um, I have some thoughts and I don't want to steal that thunder, but there's also the role of evolution.
+They talk about evolution and life mind continuity thesis and how you actually can't get even the
+complex minds to emerge without a memory that is evolutionary, right? So that's where you have an
+aggregate. And so that leads you in, uh, the engineer in me gets a little, uh, anxious about this premise,
+uh, but not because it's not the right path. It's rather my ability to contribute properly to it.
+Uh, cause there's only so much you can do, which is, well, now you do have to think in collectives,
+right? You can't just model the individual. You do have to have many individuals and you need a
+population to then induce some type of evolutionary process. Cause you need what, uh, Kirchhoff and they
+say in the life mind continuity thesis is a selection history. You need the selection history.
+It can be through the evolutionary process. Maybe there's other ways to do it that they didn't say
+specifically. Uh, it's just what biology does. And that's what gives you this emergent behavior,
+right? To create, for example, the plant cognition that we observe. Uh, and of course, you know, the
+very long chain that gave rise to the evolution of, you know, apes and primates and then the humans
+from that. Uh, and so you have that selection history. So that means we need to model populations
+in, you know, the processes of which they evolve. Um, I, the, and the reason I said the engineer in me
+gets anxious is it's extremely my world complex to computationally simulate just even one agent.
+So, and when I do evolution and I've done neuroevolution, you usually simplify the little
+agents, even the ant colony, the, the paper that you guys talked about. Well, that was a really
+beautiful example of emergence and other really neat things. Uh, those ant agents that can't, says,
+uh, my colleague talked to them, they're very simple. They weren't even neural nets, let alone a
+common, imagine running a thousand common model of cognition. And that's not even enough to do the
+evolution scale that we want. So that's where I say, oh, um, and again, knowing that that might
+limit what I could do and researchers like me that go on this pathway, uh, maybe the other solution is,
+okay, well, uh, I'm just going to figure out what the inductive biases would have been that were
+evolved from the evolution. And I'll just skip the evolutionary phase. However, that means you could be
+wrong. You could have gotten the bias wrong, right? So you just say, well, I need something.
+So I'm going to go from there. Cause I'm not given a supercomputer to do the simulations that I dream
+of doing. I have a GPU. So I'm going to build my little agent and I'll, and I'll just say,
+when blue, you criticize it and you say, well, you know, that could be the right,
+why is that the right bias? I'll say, oh, it's probably wrong, but you know, it does give me
+these behaviors, you know? So if we have the right behavior, plug in my agent into
+your simulation framework and I'd love to see what happens. So yeah. And I'll stop there.
+So is this where sparsity then comes in when it becomes like too computationally intensive in terms
+of like, you know, evolving a million little tiny creatures, or maybe this is a, a, a good time to
+talk about sparsity. I mean, oh, first of all, oh, I see you put a link here in the chat. I didn't.
+Yeah. Yeah. So if you want to see a plant walk around, watch the MIT. So, so the MIT media lab has
+made the, what's it called? LO, LON. Um, anyway. Yeah. If you want to see the plant walk around,
+I've shown this before, but they, the plant will move. There's a little plant robot. So.
+Oh, okay. I have to read about this. Yeah. It's cool.
+On the plant topic, I, I, I brought in these papers from 2017 with Friston and Calvo on predictive
+processing and plants. And then a paper from 89 with Silvertown and Gordon making essentially the
+exact same points in a broader behavioral setting. It's just like wave after wave of the realization
+that there are diverse intelligences over different spatial and temporal scales. And the same things that
+people remarked upon looking at a piece of grass cracking up through the concrete now is being
+instrumentally unified with the most advanced cognitive modeling that we have. And, and also Mike
+Levin's work certainly is that point. You made a great point also about intelligence, accelerating
+evolution and on Mike Levin's YouTube channel, there's actually a series of very good discussions
+to that point. Um, evolution trial by error and selection and pruning, and then quantum intelligence,
+basically just teleporting you and getting to the solution without needing to
+traverse the entire landscape. I'll read a question. There's a little bit of Chris fields there too,
+right? Cause quantum, and I know he and Carl been doing the quantum version of free energy and markup
+blankets. Yeah. Yeah. And the course that Chris provided at the Institute over the previous months has
+helped put a lot of things more in a quantum footing, but that's a super exciting direction.
+Um, I'll read a question from the chat.
+Can there be self-regulation of ensembles of noisy oracles without intelligence? If so,
+it would be extremely helpful for a robot mind so it can discount components that are malfunctioning.
+Okay. Okay. So maybe repeat the question one more time. So I make sure it's a little bit of a loaded question.
+It's so it's aren't they all?
+Of course. Yeah. I think I need to parse it. Repeat it one more time. Make sure I get it.
+Can there be self-regulation of ensembles of noisy oracles without intelligence?
+Okay.
+Yeah. The without intelligence part is a little bit of a curve at the end, but can there be ensembles
+engaging in distributed regulation? Seems like, yes, that was the sparsely connected hop field system
+that you described.
+So I think the key, I wish the, there could be a clarification about oracle, right? Because
+that's usually something you ask for an answer, right? You know, but I guess if it's just to say,
+oh, it's like a sensory reading or a, hey, I need to query this part of myself, right? Of my morphology
+or my body. And I need to understand what's going on. And I say, hey, tell me, and you give me the answer.
+If I interpret it that way and not maybe some other interpretation. Yeah, I would agree. I think,
+I think our discussion has lent itself to the implication that you want ensembles. I mean,
+I've said this already or assemblies, right? I've said even earlier when I was addressing some comments
+for blue and Viet's question, I believe was part of this piece about how you implement memory. Even
+just even classical work on like auto-associative and hetero-associative memory back before even like
+talking about the hop field nets, like, oh, I have a matrix and I can update it with some heavy and
+learning and outer products of vectors. And what I remember when I was studying that is that they said,
+well, you wouldn't use this one little matrix as the memory, you would actually stitch together
+an assembly of them, right? And so that's how you get this complex behavior because, you know,
+even in biology, all the ranging up to nervous systems to modules and structures in the brain,
+they are these like self-organizing systems of parts and relationships between those parts,
+right? And we can interpret them as dynamical systems and there's a lot of nice little frameworks
+we can apply. So the answer to that or the general gist to that question is yes, you could build
+robotic systems because I think that was the kind of the application area. And would you get things
+like fault tolerance or would you get, for example, if a part of the robot's morphology or body is
+damaged with that, I think that that would be the right design paradigm, right? That would be an
+appropriate design paradigm to construct where you have like a distributed form of intelligence.
+These, uh, you might not, it might the, I think the nature of the assembly might be important. For
+example, it would probably be semi-hierarchical or heterarchical in nature. Uh, Karl has done some
+really nice, uh, theoretical sketches of like, uh, Markov blankets of Markov blankets, which, uh, I,
+I will just borrow this question and that statement to address a piece of something I forgot to say to
+say to blue in our earlier discussion of the body and the niche and the neurology or the neuron neuronal
+constructs is that I also think it's going to be important going forward to embrace again, there might,
+there are other ways to probably do this, but I do like the Markov blanket formalism because it
+partitions, uh, the states of the outer world, the internal states and dynamics of the system,
+which is very vague, but it leaves that on purpose. And then you have sensory and active states,
+as your blanket, right? Your little Markov blankie. Um, and I think you need to specify that, uh,
+and that will give you the notion of like, okay, well, there's the theoretical body and then we need
+to answer the question on how to physically instantiate that. So that was just a quick thing
+I had in my notes. I wanted to make sure I didn't forget to say that. So I think that's another piece
+of that puzzle. You need to, uh, embrace that. And then there's other arguments for it, but that
+does something quickly. And now that goes back to the answer to the question is that
+you would want to construct, uh, you know, a cognitive system to manipulate the robot. Let's
+even leave the common model and predictive coding, because those are just other tools that you could
+use to construct your brain. Uh, but rather think of like the nervous system of the robot and think
+of it as I want a Markov blanket of Markov blankets, right? Uh, and Markov blanket is a Markov blanket.
+And you can keep doing this recursive nature where now you have your little atomic unit and that Markov
+blanket kind of construct, right? Is your Oracle, right? It has its own internal states and that map
+to some physical component of the robot. I think the part is that now you are no longer just saying,
+I abstractly modeled the robot in the software sense, but it actually is grounded in some physical
+component, uh, hardware property, maybe a particular piece of the robot. And then you model these with
+these little Markov blankets, and then you have macroscopic or gradually increasing macroscopic
+level Markov blankets that allow you to say, well, now I have this organization, but the internal states of
+the higher level Markov blanket are, you know, these other Markov blankets that have their relationships.
+And that goes back to my biased background in complex adaptive systems, because what do you get out of
+that? You get what Herbert Simon and some of the greats of our time, you know, uh, in the past, you
+know, talk about heterarchical, partially decomposable hierarchies, right? And you build these beautiful,
+complicated systems of control, right? You have top-down modulation because the upper level markup
+blankets are maintaining their internal states and there's dynamics that we should probably figure
+out how to model that. I'm leaving the engineering side of this out, uh, because that's an interesting
+question of itself. Um, and then those dynamics and those relationships and laws between those higher
+level units, well, they affect those lower level units, right? Because those lower level units upwardly
+cause the emergence or the existence of the internal states of the upper level Markov blanket, but the rules of
+the upper level Markov blanket, uh, downwardly cause, there's, there's directions of causation,
+modulate and shape the behavior and interactions of those lower level modules. So I think the answer is
+yes, you could do the, uh, assembly and the noisy oracle, well, noise is always a part of it because,
+you know, for example, physics. We always have a thermodynamic exchange with our world. There's always loss of
+heat. Entropy must go up even if we are an open system, uh, and the entropy within us goes down.
+The entropy of the entire system of the niche and the agent, uh, must go up because you can't violate
+the second law of thermodynamics. And I think that when you consider that you're going to have this and
+you're also going to have inc, uh, what do you call it? Um, imperfect sensors, right? And you're going to have
+noisy sensors. I guess that's where the noisy oracle comes into play because you're not always going to
+have a perfect reading and you're going to have to make decisions based on that. And that's where the
+uncertainty part comes into play. Uh, the precision weighting mechanisms of active inference and free
+energy come into play. Um, and then how do those dynamics change when, for example, a part of my system
+fails, right? I do think that that's a viable pathway or a design paradigm for constructing.
+I would even not even don't even need to worry about the common model part, the nervous system,
+right? Of the robot. So we just build, you know, that complex interaction, which is neuronal, right?
+Uh, but we're using sort of that hierarchy or the, uh, recursive Markov blanket formulation to design
+this. And you can tell I like Markov blankets because they are a nice little entity that tells you
+what's going on. So I don't know if that was a useful enough answer to the question, but yeah,
+it's great. I'll, I'll just note two key pieces first in terms of what does free energy principle
+and active inference offer in alternative or in addition to these other frameworks, a very clear
+principled articulation between the math and the theory and the implementation, which is already there.
+in the common framework, but then to actually separate out the discussion of how to structure
+the Markov blankets and generative models from the micro implementational message passing on factor
+graphs and these features that can improve the component tree as a capacity building work,
+while blueprinting can be blueprinting rather than kind of needing to build the blueprint on the ground,
+which is always going to end up with like an overly bespoke setting. And then also like, even when we are
+seemingly talking about a single mind, whatever an individual would be, we are really always talking
+about the relationship with the niche, the multiple agents, similar and different types and the whole life
+cycle. And then you said that kind of like made you nervous or something as an engineer, because it's
+like, when you want to think about engineering, the car, not the car engineer, but one account would be
+to focus on the car on the freeway driving and everything working. But then actually the real systems
+engineering of the car is the supply chain on through the recycling and all the different ways that it
+can interface with things that are outside of the control. And so to just build a cognitive model that
+is like in silico or just has this kind of like inward perfect
+gaze, it may be an interesting project, but then to engage with the messiness of the world,
+that's where we again, go back to biology, look at how it's done and then try to
+accelerate or compliment it.
+Yeah. I mean, we can learn a lot from biology. So, uh, I think that's, I think you said it well.
+Um, we could look a little bit to a paper, one of the, maybe the first
+Blue, you focused on the first paper or how about just, what do you see in figure two, Alex? How would
+you describe figure two, or if there's another figure from this first paper that you want to
+describe, but just if you, whichever one you feel like is the best graphical abstract,
+just describe how you see it.
+Alex Bialik
+I like figure two. Um, there's a couple other nice diagrams in the paper. I'm not sure. Uh,
+so I think this one is a nice diagram. I saw you guys go through this. I think
+everyone should watch point zero because I think you guys did a nice job at least dissecting parts
+of it and summarizing the, the main takeaways. Um, this is just showing you, this is now very fine
+grain, you know, our discussion. I don't know if that was the intent or maybe that's good thing.
+I don't know how the, the podcast likes to keep things constrained, but, uh, we sort of went really
+high level and then philosophical, mathematically conceptual. Uh, and then, like you said, we
+haven't really talked about the papers, but I would say this paper in general is sort of like, okay,
+given that discussion, now you're back to being the engineer and saying, okay, where do I start?
+What's my Lego blocks? If you play with Legos or little toys and put things together to build a
+tower, I call this a Lego block, right? This is a computational unit. Now you could still go further
+as you guys also did look at another paper called spiking predictive coding. I guess we'll save that
+one for next week, next session. Um, which is like the same thing. It's just really, really, uh, intricate.
+And that would be what you'd put on neuromorphic chips. So this is like, okay, I want to build a
+little circuit of neurons and I want them to relate to each other. And that's what like figure A1 is
+trying to tell you. It says that would be sort of like your network in what's called prediction mode.
+And, uh, the idea is that like the little two dots, the gray dots actually in general are what are called
+state nodes or just the neuronal units. And the reason I call them state nodes is this is very different
+than deep learning, uh, or at least most of deep learning where these units always exist. And that's
+kind of a, this is, this goes back to maybe the earlier part of our discussion. Uh, this paper is
+what I would call mechanistic predictive coding, right? It's saying, I'm not just telling you the
+principles of, Oh, error. And I bounce it around and I somehow form impressions. It's like, okay, how do I
+build this? And what would the neuronal model, something actually in your brain, maybe a little
+group of like six neurons, how would they be related to each other? Or, you know, maybe you're looking at
+it a little more abstractly, but, uh, this is supposed to describe cortical structure specifically, but I
+like to think that this paradigm repeats itself and almost everywhere in the brain, there might be other
+ways of doing things. So in figure A1, the little two dots, the two gray circles in Z2, those are just like,
+okay, I have two neurons. So I have little regions and those are layer two. Then there's these other two gray
+circles in one called Z1. Those are another set of state neurons. And then we have another set of neurons, Z0,
+and that's at the bottom. So those are the actual physical neurons and they exist all the time. Uh, and what I
+mean by that is that we simulate their dynamics. This is why I keep saying neural dynamics is that
+they're emulated through like an ordinary differential equation, right? So you have maybe
+an initial condition, which is just a number that you put inside each one. So these, this model and
+this paper still has some biological constraints that, oh, they are modeling roughly firing rates,
+if you want to say that. Uh, so these are like rate coded neurons. Uh, my spiking implementation and my dis, my
+my generalization of predictive coding, uh, tries to say, well, maybe I'm not interested in modeling spike
+rates. I want to model the spike trains. And this is a stepping stone to that. You actually
+understanding this and understanding those ordinary differential equations that govern Z of L, which is like Z2,
+Z1, Z0. Um, you kind of just modify them a little bit and you out pop spike trains, which is like
+really cool. And, uh, and I have slides that mention this a little bit, but maybe I'll use them next time
+since we're, we're, you know, we're going over, I'll just play off you guys and the material you have
+here. And so Z2 and A1 is predicting Z1. And what do I mean by that? Well, Z2, I just told you,
+has numbers inside each of those gray circles, right? It has at a particular snapshot in time,
+they have a firing rate, right? And it's just represented by a number, a scalar, and they emit
+a prediction using those black diamond arrows that are like kind of connecting to E1. Well, we'll talk
+about E1 in a minute, but those little black diamond arrows, and I have, you know, like terminology for
+excitatory and inhibitory neurons, just to tell you, oh, when do you subtract and when do you add?
+But let's just forget about the math, because if we get in the math, that takes a while. And I've found
+confuses people, especially on these types of presentations. So just imagine those scalar
+values inside of Z2 are being transmitted along those black diamond arrows down to Z bar of one.
+That's what that little bar, I think you can kind of see it in your visual. And that's the mean of a
+Gaussian distribution, because what the model that we're sort of constructing is we're saying
+every local set of neurons, they are driving like a car, the car of a Gaussian, multivariate
+Gaussian distribution. And so I embrace more of a, let's say, a Fristonian kind of view, which is that
+we're going to learn in this case, somewhat of a hierarchical Gaussian model. And so Z2 makes a
+prediction of the mean, and that's what Z bar one is in the paper. And you can see it in this diagram,
+but it's not like super clear. There's also a precision matrix, or a covariance matrix, because a
+multivariate Gaussian is defined by a vector mean, and then a square symmetric matrix for covariance
+parameters. And it's kind of like it lies off to the side, it's like lateral connections really.
+And they are what those weird little diamond, open diamond connections in E1 are. That's the precision
+weights, if you will, or the covariance weights. And so between those, you multiply the mean by the
+precision weights, which is like a lateral competition, not even competition, it's more
+like a lateral pressure. And then you're done, you've made a prediction from Z2 to Z1. Z1, right,
+I told you has numbers inside of it, right? Because again, these neural dynamics exist at every snapshot
+in time. So E1 is what is known in mechanistic predictive coding as the error neurons. And we're
+we're making other biological simplifications, we could discuss them later for those criticisms. But
+E1 says, okay, I also have two little diamonds, these orange diamonds, and I need two of them,
+right? Because Z2 has to predict Z1, which has two nodes, so it needs to have a dimensionality of two.
+And I need one error neuron to compare each dimension. So there's a mapping of one to one,
+there's a biological criticism of that. But for computational purposes, it's good. So we're going
+to go with it. And Z1, each dimension is compared to each dimension in Z bar one. And we can emulate
+this very simply as in the paper, you can take derivatives of a free energy functional. But at the
+end of the day, you do all the math, and it comes out to be a subtraction, Z1 minus Z bar one, that's it.
+So that's called a mismatch signal. And that's sort of emulating in a very, very simple way.
+You know, what what's known as like the superficial pyramidal cells in your brain,
+which sometimes are argued to do like these mismatch computations. That's kind of one in one
+interpretation of them. And the idea make sure that I actually wrote that down, make sure I didn't get
+that flipped. Yeah, no, I'm right. Yeah, yeah, the superficial and then the the state neurons are
+what are called deep excitatory pyramidal cells. So these are you could almost argue I'm using a lot of
+pyramidal cells. But they're just neuronal units. That's just the bio interpretation. And that's pretty
+much it. So E1 compares Z bar one to Z1. And now you just repeat, right? So Z1 would be guessing the
+activity of Z zero, which means it emulates Z bar of zero, which is the mean of the Gaussian of the
+layer below. And you know, you'll have a precision matrix, you'll have a set of error neurons, but the
+calculation just repeats. And that's pretty much it. You have now a canonical predictive coding circuit.
+This the the interesting piece of this is this is very similar to like Regis Rao's model,
+uh, except it's not applied to image patches, it's just applied to sort of the vector space directly.
+Um, that's what parentheses one is, it's like the prediction mode. And then A2 says, okay, you made those
+predictions, by the way, Z one, sorry, Z two predicting Z one is made in parallel, which is a
+beautiful property that I want to emphasize right now, to Z one predicting Z zero, by the way, Z zero,
+in this case, you would clamp those numbers to a data point. So for example, like I do in this paper,
+and I know you and Blue talked about it last time, pixels of an image, right? And maybe by the way,
+you can change the distribution, I will add a quick caveat that the bottom layer is actually a
+multivariate Bernoulli distribution, because I'm modeling binary pixels, but it doesn't really
+matter, just pretend everything's Gaussian, because it's easy to visualize for the audience.
+Um, and so that's prediction mode, those things happen in parallel, notice that the prediction Z zero
+bar does not depend on anything except Z one. So for free, you get something that's already brainlike,
+which is a kind of answering a question I know you and Blue had about like, what do I get from this?
+Right? What do I get? It's kind of like, what was what does predictive coding bring to the table?
+You get layer wise parallelism for free. And that's a really nice property, because if you can,
+you know, emulate that, you have multiple GPUs or CPUs, you have a performance cluster,
+uh, you know, you could now actually do literal parallelism, whereas deep learning, you have to
+kind of like run a four propagation pass, everything is locked into sequence, this is parallel. Now,
+the problem with that is, now you have to do message passing, which I know you guys are familiar
+with it. So I don't need to maybe go into so much detail. But that's what two is, it tells you how to
+take the messages at E one and E zero, which are error messages, right? They tell you how far off was
+the prediction made to the thing I wanted to look at. And then I backwards transmit that information
+along a different set of synapses, which is sort of what makes neural generative coding a little bit
+unique. We talk about this in my survey as well, compared to Regis Rao's model and even Carl's older
+models, which are essentially you would just take the transpose of the weight matrix for Ford prediction.
+But that's not biological, because we don't reuse synapses, there is no evidence of the weight
+transport problem, which is I go back along the weights that I've transmitted Ford, the brain is
+really recurrent. And so I embrace that. And so you have a different set of synapses, you can call
+them feedback if you want, but I call them error synapses, it doesn't matter. And that's what those
+little diamond or sorry, dashed open circle lines are doing is they are taking the little diamonds,
+the orange diamond values, and they are backwards transmitting them to a particular layer. And it's
+usually back to the state neurons that made the original prediction. And then the last piece of the
+puzzle, if you just want to understand why are what are those dashed solid diamond ones? Well,
+those aren't actually synapses, they could be. They are just basically, oh, let me take the error message
+and let me subtract it. And this is how you get top down pressure, because you need to have bottom
+up top down pressures at every layer of neurons. And so this is where that message passing happens that
+one step right now, I've only shown you one step, Z1's dynamics are going to be perturbed
+by the message that was passed from the layer below. So in this case for Z1, it's the message from E0.
+And then the prediction or the reverse of the prediction of layer Z2, which is the minus E1.
+And that's what I have in the equations in the paper. And I could show some slides that walk you through
+these steps if you want, maybe next time. But the idea is that that happens at Z1. By the way, all the layers
+of neurons do this, as long as they're not clamped to data. Because if you clamp them, that means you fix them
+to a set of values that you're saying, well, I know what the data is, I don't need to infer it. So I'm going to put it here.
+So that's Z0, in this case would always be pixels of an image. Maybe they change with time, but let's keep it static.
+And then all you do is you repeat step one and step two multiple times, right, until you reach a steady state,
+which is one thing you could do, which is how many times you repeat that while you reach equilibrium.
+Or you just bound it and you say, I'm going to run this for, like I do in the paper, a number K, you know, 10 steps, right?
+And what is this doing is it's changing the values inside of Z1 and Z2 only. Notice I've said nothing about synapses.
+The synapses are just whatever numbers they are. The synaptic strengths are fixed at this point.
+So let's say I reach a steady state or I do this for like K times. Then you make an update to all the synapses.
+So the solid diamond arrows, which were the generative weights and the dashed open circle synapses,
+those are put inside matrices and you just calculate their updates with heavy and learning, right?
+It's really easy. I have statistics. Paper shows you those rules. It's just some outer product.
+What is this doing? Well, you probably are familiar with like dynamic expectation maximization from none other than Carl, right?
+And generalized filtering. It's a form of that. It's just a biological manifestation of dynamic EM in this specific context.
+Um, when you do things at the spiking level, you don't need to wait so long to do synaptic plasticity updates.
+Uh, I do those online. That means every step in time synapses change and you write out their ordinary differential equation.
+We can save that for, I think that is actually supposed to be for next time.
+So we can dive into that fun pile of dynamics later. And that's pretty much it.
+I mean, the little diagram B is just trying to show you, oh, what do the cells look like?
+So if I just zoom in on like two, uh, one single state node and one single error neuron cell, you're looking at scalars, right?
+And I'm just saying, well, this is how they wire together.
+And then the, so that's just a zoom in if you want, if you will, if you don't like matrices,
+because engineers, we love vectors and matrices and vectorizing because then you can run them on a GPU.
+Uh, but, uh, the old fashioned way in the eighties was scalars. And then on the right, uh, we have diagram C and that's actually showing you all four models that we investigated in that journal article.
+And it's cool because this paper's long, by the way. So it's funny. Um, I admire you guys for doing four of my papers and on top of them, they weren't short little guys either.
+Um, this paper has a very long appendix. I don't know if you found the supplementary material. Uh, that was the reviewers. I, they, they had us do a lot of extra things.
+Um, the appendix actually tells you a lot. Uh, and among the things that it does is it emphasizes something that I think the message kind of got a little tiny bit muted in the main article, but that's just how nature is.
+It wants you to sort of say, give me the main thing, show me the results, all the beautiful math, box it up in this nice little corner. And if people really care, they'll look at it.
+Um, and so the diagram to the right emphasizes something that in the appendix talks about a naming convention. So neural generative coding isn't just predictive coding.
+It's like a computational framework that tries to unify as much of predictive coding as I felt that I could in the paper. And so that's why the model has underneath there GNCNT1.
+In the appendix was like a section that tells you how to interpret. Why do I use the word GNCN? What is T1? It means type one. T2 means type two. And those refer to the error synapses.
+Cause you'll see route register Rouse name in the model there at the bottom. And that's to pay homage. Cause you know, I'm a, I'm a big buff for historical research and I like to pay credit.
+Whereas a lot of people don't, uh, to old work cause we stand on the shoulders of giants. And so, as I told you, I've read a lot of Rouse work. Um, that model's named after him because it is effectively like the fully connected version of his patch model in his classical nature paper.
+And that is a neural generative coding network under specific assumptions. And so like any mathematician, you just say, Oh, I recover this older model because it's a subset of my theory. Uh, and then, uh, the middle of the second model,
+usually it's a little bit similar to Regish Rouse is essentially Carl's model from, uh, is either 2008 or 2010. Uh, the reviewers wanted us to implement that.
+And it's not a model that many people, I hate to say implement besides Carl. So I had to do that and, uh, it was fun. And basically it's just a large piece of it is making sure you get those precision matrices, right?
+Cause he introduces that in one of his like graphical model papers. And so that's why it's named after him.
+Uh, that pays homage to his classical work. And then the, uh, two to the right are the new models. And that's for the ones that like, for example, have separate feedback synapses, which is not something that older models directly addressed.
+Carl has mentioned them, but at least the mathematics or the models that of those papers did not concretely tell you how to implement them, let alone how to learn them.
+Um, so all the, my models, all my synapses are learned with like heavy and like plasticity. And then the last model, the farthest one to the right, the reason I like, the reason I'm spending time on these is because those are the core models we looked at in the paper.
+So, um, the one to the far right just says, oh, well, because NGC is such a broad framework, you are not committed to a hierarchical model. You could build a heterarchical model or a weird model that has skip connections. Right?
+And so that's why you see this like weird arrow going from the very, very top layer all the way down to the bottom. And so the math in the paper shows you, oh, I can turn off with these little gating variables.
+Uh, these weird kind of skip connections that violate the hierarchy, but you can still learn them in heavy and ways. So the efficiency is all there. Uh, turns out that model actually worked the best.
+And so, um, there are, you guys actually showed in point zero, the, the data samples. And those are what I used to, I used the final model, the GNCN PDH. That's like a little compression because when you use a, uh, a naming convention, the names get really long to a certain point.
+So you're just like, well, I'm not going to say GNCN T2 L sigma, which refers to the lateral connections and the synapse and the precision weights and PDH. I'll just call it PDH, right?
+And you can just say that to your friends and it's quick and, uh, rolls off the tongue. Um, so that, that's a little weird naming thing I did.
+And so the nice thing about these models is they, they do show you pretty much all the mechanics, uh, at least visually.
+And then the other piece of this puzzle is you'll notice those gray circles back in figure A also have synapses that I didn't really address.
+Those are lateral synapses at the state node level, which is also something that, you know, you know, classical work like RALS and Fristen's models and others don't really use.
+This is something we introduced, which encourages like what I would argue extreme sparsity and the motivation for that.
+Cause I know blue had a question or just wanted to chat a little bit about sparsity.
+So maybe this is a way I'll sneak it in is that, uh, RAL, for example, introduced sparsity by imposing a cartotic Laplacian prior, which just is basically a pointy distribution over the neural firing rates that just say,
+I want some of these neurons to go to zero and other ones to be high.
+And I want, you know, as many of them to be zero as possible.
+And that's a useful way to do sparsity.
+It actually comes from Bruno housing and sparse coding work.
+And I cite Bruno, I've met Bruno housing.
+He's a cool guy.
+Uh, you know, you can get these activities to be really, really, really sparse.
+So most of them are zero because zero, why do we care about zero?
+Not just from a biological point of view, hardware loves zero, zero means I don't compute it.
+So if I don't have to compute it, I don't use any hardware resources for it.
+I can ignore it.
+It's those numbers that aren't zero that are annoying for a computer.
+And so instead of doing a Laplacian prior, which I did investigate in this paper, and I think I even have the dynamics in there as well.
+It's like one of the equations.
+And to be faithful to Raoul Rajesh, I had to put that in there.
+But the lateral synaptic connections, the state nodes, what they do is you, what we did in this one is we introduced fixed weights because that's the easiest thing to do.
+You don't have to learn them.
+Later on, I've learned them.
+That's like some future work.
+And what these lateral synapses do is they have, it's like a matrix, and they are shaped to be a square.
+And they are like, let's say, the dimensionality of a layer.
+So in the top layer, it'd be two cross two.
+Along the main diagonal are a set of positive numbers or maybe negative numbers.
+You have to make sure that the middle diagonal is excitatory, and it's called self-excitatory,
+which means if a single neuron fires at a step in time, its new firing rate is going to be amplified by its own firing rate.
+So that's called self-excitatory or self-excitation.
+And the off-diagonal, so the lower and upper right triangle of this lateral matrix that I'm talking to you about, that has to be the opposite sign.
+So I would believe it would be negative unless you wrote the negative sign in the ODE, then it changes.
+And those are negative numbers.
+And the idea is that those put a downward pressure and says this neuron, let's say in this one element of the column, will laterally inhibit other neurons in that layer.
+And the cool part, and again, it's in the super long appendix of that paper.
+You can find it.
+That matrix, even though I fix it, because you could try to learn it with like heavy and learning, and I later like investigated that, you might say, okay, I'll put some random numbers in that matrix.
+But wait a minute.
+Do I really want every neuron in the main diagonal to inhibit all the other neurons?
+The answer is probably not.
+You could.
+That is a type of pattern.
+What I did is I initialized a masking matrix.
+And in that matrix, without going into the details of that, because there's a little bit of an algorithm, it just basically says little groups of neurons inhibit each other and no one else.
+And so you basically turn off things in that matrix.
+You fix it with a mask.
+And now you get group sparsity.
+And so the long story short with all of that cool description is that you get K winner take all type lateral competition, but it's biologically implemented.
+So I'm not like using an activation function.
+And as you go through the dynamics of this model, this matrix, what it'll do is it'll emphasize neurons that are really important for the object that you're processing.
+And it will shut up all the other neurons that aren't relevant.
+Right.
+And so this is to answer a question.
+I believe it was blue.
+And you, Daniel, were discussing last week about the results that we had in this paper, because it's not shown here in this diagram.
+But the idea is that we also got really good classification performance.
+This model has no label.
+Right.
+So we trained like a little probe or whatever on the topmost layer.
+And we also showed some TS and E plots.
+And the reason I think that the model works as well as it does for something it wasn't trained to do, which is discrete categorization of object categories, like different numbers, like the digit zeros, the zero category, is because of that sparsity.
+And we did measure the sparsity levels.
+And they were really, really, really tiny.
+And the proportion of neurons that were active as you go through these dynamics, especially as it learned, is it said, oh, I don't need a lot of neurons to represent zero.
+So it's sort of like extracted out little subnetworks that specialize to these templates.
+Right.
+So I don't we didn't we didn't exactly probe that hypothesis, but that's what I speculate is going on.
+And it's also very easy.
+You can justify it from the past.
+You can say sparsity is a really important way to do memory retrieval.
+It's a beautiful way to fight catastrophic forgetting, which is another piece of my work that tries to look at that.
+And the idea is that you're going to get non overlapping representations.
+Right.
+So, you know, if we only have a few neurons in a sparse distributed memory, semantically, if these units activate, they're probably related to roughly the same concept.
+And you'll learn as long as you have big enough layers, of course, is the thing where you do need like brain level stuff.
+You need lots of neurons.
+You'll find that they don't crosstalk with each other.
+They don't fight each other so much.
+So knowledge for zero doesn't fight with the knowledge of two.
+And so you'll have this nice, beautiful separation.
+And I think it makes things like classification a little bit easier.
+It's really nice for fighting forgetting because you'll remember things a lot more until eventually you run out of capacity and then you just need more neurons.
+And it's also energy efficient.
+So the big, big argument is if everything is zero, except for like a few neurons firing, that's a perfect candidate for neuromorphic computing.
+And then if we can make them spike, which is what the other paper you guys reviewed tried to do, then we solve all of those weird things because you should only be communicating with bits.
+You shouldn't be communicating with rate-coded continuous values, which are clean, but they're not good for hardware like a neuromorphic chip or a memristor.
+So that's kind of the general gist of it.
+And I think that's where you get this beautiful benefit of sparsity and you see this nice interaction and you're learning a generative model.
+And of course, that paper actually synthesizes the models.
+We look at what samples are produced.
+Yeah, and I could keep going on and on, but hopefully that that was useful and made sense.
+I see blue is gone, so maybe I got boring here.
+That was great and a lot.
+Yeah, it was a lot.
+Did it make sense?
+It helped me.
+It helped me even after reading all the papers multiple times, hearing this explanation still really did help.
+I hope it's helpful for other people too.
+There's an enormous amount of condensation, but you really are laying it out like an engineer.
+How do we build the three-story building?
+What's the wiring diagram of each floor?
+And then you're clearly striking a fine balance with how much of the mathematics to visually convey versus explore here.
+And that's why there's appendices.
+That's why there's sequences of papers.
+What are you looking forward to in .2?
+Or just as we kind of close out?
+Yeah, I don't know if we went too long.
+I'm sorry.
+Oh, it's fine.
+Well, I mean, I'm looking forward to continuing some of this discussion.
+I think we didn't really even touch on the convolutional one, which is really, you could even argue is more of a, to use Carl's terms,
+you could think of it as the convolutional neural coding is a corollary to the neural generative coding framework,
+because it just says, wait a minute, how do I do image processing in an efficient way?
+Let's do deconvolution or convolution.
+That could be something we briefly touch on next time.
+I'm looking forward to the spiking stuff, because I really, really love spiking neuronal cells.
+And I don't think he was able to make it, but one of my students works with me on spike timing and synaptic plasticity is driven through solely spikes.
+So I, you know, I have a particular soft spot for that.
+And I think the future predictive coding, at least where I'm trying to lead the crowd, is to do things at the spike level,
+because neuromorphic computing offers beautiful energy efficiency.
+We could do edge computing.
+So I'm looking forward to some of that chat.
+I also love, we sort of borrowed a big chunk of what I think you wanted, Daniel, us to do with the cognitive architecture,
+because we kind of brought all that today.
+I know Blue is very interested in that.
+So we sort of front loaded with a lot of that.
+So I was going to say, I'm looking forward to that.
+But I mean, I'm always looking forward to chatting more.
+I think we front loaded it.
+So maybe we could address more of the predictive coding pieces.
+However, I do have slides that I'll probably share if you want me to,
+and maybe talk about other aspects of the cognitive architecture that aren't just the cog engine,
+but rather like, oh, I'll show you something I did in robotics.
+I'll show you some things about how you can make predictive coding do something a little bit more concretely active inference without obscuring it with the common model.
+Because I think the common model is like, you get kind of lost, not you, but the audience in general,
+might say, oh, all these continents of mind, and how do they relate?
+Well, wait, where's the active inference?
+And I talk about, it's in there.
+I think sometimes it's good to say, let me throw away all that for just a minute, because memory can kind of cloud it.
+Let's just look at epistemic foraging and prior preference, and maybe do something simple like have a robot arm manipulate it,
+manipulate an object, and I could talk about that.
+And also just chatting more about the future of this.
+I think that this is, I think what I am trying to represent, and actually with a lot of discussion with Carl,
+I think I've narrowed down what I bring to the table to the fields of cognitive science, computational neuroscience,
+and machine learning, which is the three, the triad that my lab represents, is this thing called biomimetic intelligence.
+And I think that we need to understand the neurophysiology, the biology of things, and also understand the physics of things,
+and understand how the niche and the body and the neuronal constructs all interplay together,
+to then build technological artifacts that do things like robotics in an energy efficient way.
+And I think this is that path, this is one possible pathway to AGI.
+I think it's the path, but I obviously could be clearly wrong.
+You know, we all don't know until we get there, and we have perfect hindsight.
+But I think that that could be a fun little bit of discussion, because I know you guys were interested in knowing about the future work that my team has been trying to do,
+as well as the history of those papers, which I didn't even get to talk about.
+I know Blue had said something she was interested to know, what was the order of these papers?
+And I had this in my notes.
+So we can save those for the next session if you guys want to talk about them, or other questions.
+I'm open to anything, really.
+Yeah, this was huge.
+It really is a tour de force of cognitive science and engineering.
+So I hope that people enjoyed it.
+Looking forward to talking next week.
+If you're watching Dot One now and you want to join next week, this may be possible.
+And thanks again.
+See you.
+And thank you.
+Thank you for having me.
+We appreciate it.
+See you.
+Bye.
+Take care.
+Bye.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.

@@ -1,0 +1,983 @@
+---
+title: "ActInf Livestream #044.2 ~ Therapeutic Alliance as Active Inference: The Role of Therapeutic Touch.."
+category: "Livestream"
+series: "Livestream_044"
+episode: "2"
+speakers:
+  - "Therapeutic Alliance as Active Inference: The Role of Therapeutic Touch.."
+duration: "1:49:54"
+url: "https://www.youtube.com/watch?v=epoHxFdzFkw"
+views: 153
+exported_at: "2026-02-18T22:37:37.877893+00:00"
+format: markdown
+---
+
+# ActInf Livestream #044.2 ~ Therapeutic Alliance as Active Inference: The Role of Therapeutic Touch..
+
+Hello and welcome everyone.
+It's ACTIMF Lab Livestream No. 44.2 and it's May 25, 2022.
+Welcome to the ACTIMF Lab.
+We're a participatory online lab that is communicating, learning, and practicing applied active inference.
+You can find us at the links on this slide.
+This is a recorded and archived live stream, so please provide feedback so we can improve
+our work.
+All backgrounds and perspectives are welcome and we'll be following video etiquette for
+live streams.
+If you want to learn more about the live streams or any other projects at ACTIMF Lab, check
+out activeinference.org.
+Okay, today in 44.2, we are in our third discussion around the paper Therapeutic Alliance as Active
+Inference, The Role of Therapeutic Touch and Synchrony from 2022 by the authors listed here.
+And Ian and I had a dot zero where we contextualized and went over some of the outline of the paper.
+Then we had a great discussion last week with several of the authors in the dot one.
+Today we're here with some of the authors and we'll see who else joins.
+And we'll be continuing that discussion around the paper.
+We left a few threads, but also we can just take it wherever people would like to go.
+And we'll begin just by saying hello.
+People can say anything they want.
+How is this week different than last week?
+How are we approaching this paper differently or what would we like to resolve or address
+in this dot two that was stimulated by the dot one or that we didn't get to in the dot
+one?
+Feel free to add anything in that area.
+So I'm Daniel.
+I'm a researcher in California.
+And one piece in the dot two that I'd like to explore would be what are the entities that
+we're discussing here at what scales and how to think about that in terms of their generative
+model and so on.
+And I'll pass to Ian.
+Hello.
+Thank you, Daniel.
+And yes, I would like to maybe pick up on if we've got time on the topic of synchrony this
+week and what types of synchrony might we be talking about, what things might be oscillating
+that come into sort of phase lock between two agents that have the potential to synchronize.
+And then where do they head where do they head towards with their synchrony?
+And then if we've got time, you know, thinking about trying this all back to the some of the
+sort of core ideas about minimizing free energy and what what does that mean for in a therapeutic
+setting?
+Yes, that's it, I think.
+Thank you.
+Awesome.
+All right.
+Any of the authors feel free to go for it.
+Okay.
+
+I'm one of the authors on this paper.
+I'm an osteopath and researcher.
+And where do I see this going forward?
+I'm pretty much enjoyed the interaction we had last week.
+I'm an osteopath and researcher and where do I see this going forward?
+I pretty much enjoyed the interaction we had last week and very happy to kind of be left by you guys, Ian and Daniel and anybody else that want to join.
+I think we can definitely explore those ideas about the synchronization two agents and arguably more than two agents when we operate in a kind of not in a dyadic setting but actually a triadic setting.
+For example, pediatric care, kind of elderly care and so on where actually there's an additional agent in the whole thing.
+So, what do I look forward to the discussion, kind of stimulate some ideas about ways in which we can move forward with this to the more empirical state of the research.
+Great, Zoe.
+Hi, I'm Zoe. I'm an osteopath as well based in Singapore and I'm the primary author for this paper.
+Yeah, happy to be led by anyone that wants to where we want to go, but definitely happy to talk about synchrony.
+I think as George said, it would be important to talk about not just dyadic but triadic or otherwise, because I think that adds a lot of depth to it.
+But also, it's easier to sort of discuss the effects of synchrony and also the fact that you can be
+Okay, lost Zoe for a second.
+Anyone that wants to ask questions.
+Okay. Also, Zoe, is there like any other microphone to use or could you speak closer to the microphone?
+I'm just using my laptop so that isn't really a microphone. I can take my headphones off if that makes a difference.
+It's fine, it's just a little quiet, but it's fine.
+But, okay.
+Sorry.
+Oh, no, it's all. It's totally okay. Just want us to check. Okay.
+All right. Let us pick up with the synchrony then.
+So, I guess just to kind of recall, how was this question of synchrony approached in the active inference literature?
+And maybe even outside of the active inference literature? And then how was synchrony approached in this paper?
+Like, why was that such a core topic in this approach that the authors took?
+I think we started with synchrony as the main part mainly because when we were talking about the therapeutic alliance, synchrony and getting on with the other person is kind of key.
+And the way that we approached this paper primarily in terms of a lot of the aspects of how we achieved that good therapeutic alliance was through synchrony.
+So that's kind of where we, that's one of the reasons through active inference.
+It was also about, we started, or I started the research when I was looking at it right from sort of the start and looking at how communication worked and how, why people would want to sort of synchronize together and why people to implement active inference into the sort of the structure that we had.
+It was important to kind of see why that would be beneficial because we wanted to use, or we like to say that the synchrony enables us to work together to then therefore save free energy, be more efficient.
+And then that's how we kind of, we very much used it to apply the, the active inference sort of framework around, around it.
+And so I felt that it was very key without the synchrony element, it would be very, it was kind of the backbone into which a lot of the aspects of active inference in the way that we achieve therapeutic alliance seem to sort of center around without that connection between different people.
+We wouldn't be, we wouldn't be, we wouldn't be able to be, to save energy, to work together, to have a better relationship with our practitioners.
+We wouldn't, with the patients and practitioner, we wouldn't be able to get the clinical applications and benefits from it.
+So I saw synchrony as sort of the key modality to sort of get to where the sort of paper was.
+So it was sort of a key concept to use in order to implement it all together.
+George?
+Yeah.
+Let's say when we, when we started the project, actually kind of putting some ideas along the lines of how could we apply predictive processing and the free energy active inference within the
+within osteopathy and within the, the osteopathic setting, um, synchrony came along actually after, um, the simple initial discussion with Carl Fristen that kind of suggested this, this is actually, you know, look into this stuff because actually could be quite a robust way of, of, you know, of understanding, uh, what goes on in the, in, in, in the clinic room, uh, when two people are working together, uh, when the specific kind of areas,
+is kind of ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+communication non-verbal but primarily by kind of copying body movements and so
+on and to think okay you know how can this be applied in the context of
+actually a an approach that is largely hands-on based in his manual therapy so
+that's where it kind of started from it was why one way of some of trying like
+like Zoe said kind of looking at therapeutic alliance when people interact to try and
+understand what goes on in the diatic setting and of two people but also a
+little bit beyond that you know it kind of what happens when there's actually more
+people involved in that therapeutic relationship that need to be consulted
+need to be involved in the process and so on and so that's that was the kind of
+early stage and yeah and then we thought that actually this is a good way of
+understanding a little bit more about how we can create the conditions of
+developing a strong kind of a ecological niche that is based on that synchrony of
+that sort of understanding of that give and take like a little bit like we talked
+about last week the kind of the bird song you know people taking turns kind of
+understanding listening okay acting kind of taking on go back and so on and
+that sort of in a sense like a kind of a nice wave that goes back and forth but it
+is a kind of very nice and tranquil kind of wave not a one that just crashes and
+destroys everything but actually one way you know once that kind of goes on a
+little bit like the pendulum kind of analogy once you introduce that nice
+pendulum kind of things happen that's where we sort of thought you know it's
+could be one way of exploring the the whole process of care
+ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+singing together they have been shown their their heart rates kind of synchronize with their
+breathing um and i think in the paper there was some references cited for similar sort of stuff
+in drumming group drumming circles for example so so that really interests me and i can kind of
+begin to see how in a therapeutic setting that kind of synchrony could lead someone um who's
+maybe stressed and anxious into a kind of more um healthy uh increased uh parasympathetic activity
+and that is conducive to healing um then but i've also got these other sort of nagging things about
+synchrony as well but uh um maybe i touched on in in the you know the the dot zero which is what are
+we synchronizing towards and is it always you know um uh beneficial so you know this this kind of
+the less kind of lockstep synchrony that you talked about daniel um so maybe it's just um you know let's
+say a child saying mummy mummy mummy waving their arms around and then the mum synchronize they
+synchronize their attention together so you get mother and child and then then you've got a choice
+so there's some aspect that's synchronized you know that i think in the paper it talks about the
+arms and you know the limbs and the the voice kind of synchronizing but you know and the facial
+expressions but um you know a caregiver might then lead the child to a soothing kind of parasympathetic
+way soothe it or it might say you know give it a clip behind the ear and say you know children
+us to be seen and not heard and try and stop the attention you know the attention is synchronized
+but the the um the action may not be therapeutic so um yeah i'm just sort of thinking about where
+you know where just because something's synchronized does it mean it's always minimizing
+free energy or just because it's uh you know things in the therapeutic world go in and out of fashion so
+frontal lobotomies okay we don't do that anymore but that for a while there was some kind of
+synchronized thinking in the therapeutic world that that's a good idea for people and you know our
+there are ideas that i hear in the wider kind of therapy world that are fashionable
+but um and they're being applied um but you know they in 50 years time we may look that they may
+have been leading people away from minimizing free energy or improving health so um yeah
+and my thoughts okay awesome yeah a lot there george um i think that the interesting thing you know
+there's this is there are nagging questions there for sure um the first one do we always synchronize
+and uh you know when if you don't synchronize what we're going to do because you know clearly there
+are cases where we know the therapeutic relationship is going nowhere okay we can say whatever you know
+we can try our best but actually there is resistance to change from the patients we end up not
+understanding each other and uh you know arguably that's a relationship that will not evolve and
+well you might even get to a point at the end you know maybe it'd be a good idea to go and see a
+colleague of mine kind of thing okay so do we synchronize with everybody no clearly not uh
+is there any value understanding this stuff by sometimes understanding that some kind of uh
+gestures and sort of body language and so on um voice sound sort of communication style
+we're probably uh giving us cues to maybe to adapt a little bit so to try and synchronize a little bit
+better i think that that's useful i think important in order to be a good communicator i think
+first and foremost you know sometimes people worry too much about the technical skills and the ability
+of doing x and y and doing some some miracles and so on arguably you know what the first thing that
+people need to be in a clinical setting is a good communicator and a pretty good nice person okay and i
+think you know if that's if that's there i think we we've got we create the conditions and good
+communicators likely to to have potentially better outcomes that guys that basically don't care and
+sort of they're the experts and so on the other question is you know is it always about minimizing
+free energy because you know there are situations um where probably you know you want to short circuit
+the whole thing you know you want to sort of flatten a little bit of that sort of sensory states you
+know you want to create a condition where and the only way you can you can um you can sort of uh
+change the generative model is actually by creating a massive surprise a massive prediction error that
+arguably surprises the system in a way like wow what just happened you know and actually oh okay
+so it's it's i don't think it's always about minimizing free energy as in that but sometimes i think
+you know you want to shock the whole thing because the system on the other side wants to minimize free
+energy for sure you know if you mind if i'm a kind of chronic pain patients and i you know i'm scared
+of moving and you tell me to move and so on the reaction is you know i anticipate the the likelihood
+of movement leading to pain i anticipate the consequences of actions in the future the typical
+active inference model and you know i lock i don't move so i probably want to short circuit the whole
+thing to to create a condition where you know it's actually okay to move because it's not going to cause
+any harm and so is it through synchrony um maybe it isn't okay so i think i i think that's not a sort of
+i think a kind of one size fits all kind of thing uh i don't think you know it's just about sort of
+always that minimizing free energy because i think creating change that is meaningful change
+uh probably needs a little bit more of it needs to it needs to destroy that sort of strong prior
+kind of thing so i can implant another chip kind of thing yeah in a metaphorical way um and that's why
+we know in in some mental health conditions why some types of drugs like catamines and so on create
+that condition you know that's you know sort of zeros the whole thing is a bit like you know you reset
+the button isn't it the computer is stuck what you do you've tried everything you unplug the computer
+and then you try again the whole thing reboots isn't it so i think sometimes that's the that's the
+analogy of what maybe what we want to achieve in the setting is it through synchrony i personally i
+i don't know and i'm not entirely sure i think if you of course if the people started understanding
+each other then that creates the conditions for this thing probably to happen because if i if you don't
+understand me as a practitioner i don't understand you as a patient it's pretty hard that actually i
+i create the conditions will change so maybe it's through synchrony but again you know it's
+as a sort of big question marks really so thanks so just yes zoe please
+yeah so i think um going off what george said yes i think i mean overall the goal would be to minimize
+free energy but to it to be able to do that you have to sort of at some point challenge it right
+you're not gonna have the same belief that you think is the most efficient when you're born to
+when you die the way that you become youth like reduce energy is going to change over time you'll
+see that especially in in sort of pediatrics you see it in sports um there's a lot of studies with
+running for example that show that the more you run the more often the more mileage that people do when
+they run the more efficient they get so i think free energy is yes we all want to reduce it but
+at some point we've got to update it and challenge it right so it won't be sort of just this linear
+thing where you're constantly just changing it you've got to update it and challenge it at some point so
+it will sort of be a little bit of a roller coaster and have a few dips where you've got to take that risk
+to see if there's another way that is more efficient um that will save it more um whether synchrony
+is always necessary i'm not sure i think i definitely think that when you're unsure whether
+uh or if your prior is not so precise and you're not 100 sure that that is the best way to do whatever
+you're doing or you're not 100 certain that your belief is explained what's going on then i think
+you're more likely to synchronize with others i think you once you're quite certain on what you think and
+what you're going to do then it's a lot harder to synchronize like with the cognitive sort of
+immunity when you've got chronic pain it's a lot harder to change that because you're convinced that
+you're you're right you've had this pain for years maybe and you know what it's like if you bend forward
+it's gonna hurt so why would you bother to challenge that um it's i think yeah i think there's a lot of
+studies that show that especially with sort of babies that they synchronize with their as they
+once they when they're younger the synchrony is is very consistent um obviously they need to to work
+with their caregiver to get their aliostatic needs and everything that they need to keep surviving but
+it shows that they do still think when they're adults but the time when they're older or in
+adulthood that they do think is when they're unsure with when you know something happens when you are
+near that caregiver and you you don't you don't know you still sort of rely on on them say i don't
+know you get into a car accident or something um and there's a big shock and you're not sure you often
+the child will still no matter how old they are will look to the to the parent um obviously unless the
+the parent is is very elderly but generally speaking in times of uncertainty you will look towards
+someone else um so i think is synchrony always necessary no but i think if you're not 100
+sure and with your priors and you are questioning it or there is a doubt of that questioning it then i
+think synchrony will play more of a role in it and i'll pause it back to you awesome thanks yeah just
+thinking about beliefs in the way that we might talk about them hey blue welcome just the way that we
+might conversationally talk about beliefs if somebody is unsure about something that's when they look to be
+synchronized by some other informational resource i'm not sure what time this thing opens so i'm going to
+look it up in this way or i'm going to ask this person or i'm not sure where to go so i'm going to
+follow the crowd we see that kind of in the ant pheromone trail we see that in the social media all
+these different areas and then conversely when somebody does have a more confident more built up
+prior then that's more like going their own way and potentially being more resistant to external
+contrasting information and then translating from that one conversational meaning of belief like i
+believe that is going to open at this time into a broader bayesian perspective on bayesian brain and
+body and like thinking about pain and perception as also parameters that are can be seen as as beliefs
+in this bayesian sense so not always like a psychological experienced belief but in some
+statistical way it's like they're held stances that are updated in some way or partially or completely by
+certain kinds of incoming information so ian and then also like this is going to be a i think a very
+interesting to return to the free energy minimization and unpack like what we mean by free energy there
+so ian go for it uh thanks so um yeah i'm just sort of wanting to check that um some of the language used
+in other realms of uh therapy so this idea of self-regulation and co-regulation um are we are we saying here
+that this um synchrony for in therapeutic reliance is a form of co-regulation um that that we hear a lot about in uh
+you know people um with disorder um problems of their autonomic nervous system and then we say we go to a
+therapist to help co-regulate your autonomic nervous system is is that what we're saying is synchrony is the kind of
+kind of mechanism for co-regulation which i believe fits with what you're saying zoe that children need
+that more and as adults we might do that occasionally and um then i'm just thinking also you know other
+forms of therapeutic synchrony and co-regulation so meeting friends for a coffee uh sometimes um
+um you know i might be having a bit of a stressful week or or a uh a wobble in some way and then i meet
+some friends and we kind of uh um seek counseling each other have a synchronize our movement of our
+hands to our mouth with a coffee cup or listen to some music together tap our feet together and that's
+a kind of um therapeutic so are we all kind of doing this on and off all the time um they're my thoughts
+or questions yes george uh yeah zoe then george um yeah no i just wanted to say yes with the
+co-regulation i think that we kind of not always but i think we do add an element to try and suggest that um
+we'd like to say that we in part help co-regulation and co we as a as a practitioner to achieve sort of
+recovery and and reduce pain and um and how we i think we all want to say that we help in that process
+and that we help regulate their sort of disruptive pattern whether that's inflammation whether that's
+pain um whatever sort of metrics that you want to um rate your your treatment by or whatever your
+treatment goals are that you're sort of working towards i think we all want to say that we could
+help regulate what um which ways we regulate in terms of whether our sort of um we actually change
+their their heart rate or um things like that we haven't got sort of we're not always so specific
+about or we don't have the research to kind of show that but we i think certainly there is elements of
+sort of sympathetic and parasympathetic things that that we do as well as sort of the intent to co-regulate
+even if we don't sort of empirically do it um or achieve it whether just that reassurance that we're
+attempting to help um regulate their their pain um i think is sort of the intention that that i hope that
+as a as a practitioner i am giving off to my my patients and i'll let george speak um
+i think you know um if we see you know if you come from a a manual therapy background the touch-based
+hands-on approach uh one could argue or old school kind of beliefs in the profession
+christian osteopathy would would argue that actually how you achieve that core core regulation um you
+know autonomic nervous system sympathetic parasympathetic is primarily through the use of
+techniques you know you use a technique in a particular part of the body and this affects
+uh you know the parasympathetic part and so on okay the vagus nerve and all that stuff that sort of
+uh implies there is a tool that by which you can apply that stuff treat that particular bit and by
+miracle you know you modulate everything um i used to be there no longer there because you know the
+evidence isn't isn't strong enough to actually support those clients on the other hand if we add
+another element which is the element you know the synchrony and the synchrony here goes beyond just that
+sort of passive uh practitioner-led type of intervention into something that implies communication
+implies uh alignment you know attuning to this to the environment and the environment there is the
+practitioner as well so the other person in the room the guy that is facilitating the process so sort of
+takes us i think away from this idea that you know it's everything is about touches everything is about
+the manual stuff and so on but it becomes a kind of a multi-pronged approach where touch matters but
+communication matters as much as touch and it's not a technique x y or z but it's actually the whole
+package of care that's likely to to enable us to to get there so you know is it similar to you know and
+i kind of uh you know i like your analogy to sort of you know tough day and so on you go out you need
+to see your friends you need to synchronize in a different environment because ultimately people
+you know will talk talk to each other and correlate each other even in terms of reducing allostatic
+load of a tough week and so on um there are kind of things that that are similar to what happens in
+the clinical setting one of them we're probably thinking about reward systems as well you know there's a
+there's a sort of a participation in something that is likely to even if uncomfortable is let
+is going to lead to some improvement it kind of you know maybe maybe there's some dopamine stuff there
+maybe there is a reward pathways that are kind of involved in the whole thing like having a drink
+in the same having a therapeutic intervention that ultimately is going to uh get me to to a better state
+i think you know it's very very analogous to moving away from the free energy principle and to an area
+that is kind of uh works alongside that in activism um the concept of sense making you know so the kind of
+and uh what in activists would argue participate three cents making so synchrony could be kind of also
+looked from that from that lens from that perspective whereas two people or more than two people either in a
+group you know having a drink and all kind of helping each other because i listen and or in a in a therapeutic
+setting that sort of participatory things making uh minimizing free energy or auto poesis for the the kind of the
+inactivists um which actually i think you know we we we we sort of uh looking at the same phenomena maybe with
+different language but arguably the same kind of phenomena so you say i think it's that package that
+probably helps core regulation rather than just one one intervention thank you blue welcome you want to
+add anything or ask anything
+uh not right off the bat just hi it's nice to be here with you guys i'm sorry i missed last week and
+i've really enjoyed the discussions with the papers so far and um i'll jump in in a little bit i think
+you guys were engrossed in a in a good conversation so okay awesome so the dopamine angle and a few other
+things let's we'll return to but we were talking about minimizing free energy and i wanted to
+show a few images from the textbook
+because even those who have seen free energy come up in a lot of different settings
+sometimes returning to the basics is
+a generator that helps us take it in many other ways
+and for those who are maybe focused more on the clinical setting or have more of that background
+this can provide a little uh you know other tissues around the connective tissue free energy
+is being used like a connective tissue here it's bridging a lot of different ideas it's helping us
+connect different sensory modalities and therapeutic modalities so just a few
+cool images from the active inference textbook so here is figure 2.3 and it's the action perception
+loop and the two ways that discrepancies related to predictions or expectations the two ways that
+discrepancies about observations can be reduced just qualitatively is through changing belief and
+changing action and it's some blend of those two that individual entities are engaged in in this action
+perception loop and then when we're specifically talking about free energy there's some type of equation
+this is like a simple form of it that is going to make that discrepancy minimization
+is to make that known to make that known to make that known to make that known to make that known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make known to make
+serves as like this upper bound, whereas if we can reduce this upper bound, we're getting implicitly closer to this
+asymptotic reduction of surprise.
+So,
+who is doing this reduction of surprise? That relates to the entity
+question. What is the entity that's actually doing free energy minimization?
+And so,
+what are the entities that we're talking about here?
+What does it mean to minimize free energy?
+And when is it? And I liked how earlier it was brought up when sometimes where that free energy minimization
+was going with the flow and then sometimes when there was a flow disrupt.
+So, what is free energy minimization and what are the entities and how are we modeling that?
+Ian, and then anyone else?
+Ian, thanks. Yeah, that question of what are the entities and linking it back to George's point about sense making and inactivism. So,
+in the paper, there was some really interesting stuff on the realizing that we're all alike
+in the therapeutic alliance and
+relating that back to sense making.
+I'm thinking that, you know,
+
+therapeutically or meeting, you know, in a, in a manual therapy or meeting friends, there's, you know, the outcome might be, oh,
+I'm not a weirdo. I'm not, you know, I'm not, I haven't done anything wrong. Everything's okay again.
+I'm relaxed and that's therapeutic. So, you know, I'm amongst people who are very much alike me.
+And that's the sense making. There's the pattern recognition. You know, I'm a valuable member of my tribe, however you want to describe it.
+And then I think, you know, how, but we're not, we're never completely identical.
+Or are we, I don't know.
+Though the proposal in the paper is that that's the ultimate realization that we're all alike.
+And I can kind of see that that's a kind of relieving thing to realize.
+But, you know, we're similar, but we're,
+am I, I'm similar to my pet dog in that I've got eyes and I breathe and my heart beats and I can synchronize in some ways with that.
+And it feels nice, but my dog can't help me do my accounts, for example.
+So yes, this, this aliqueness and how does that fit into sense making?
+Thanks. Blue.
+So as I've been reading the textbook, I've been thinking a lot about the hidden states.
+And it's interesting to think about that in terms of using touch to kind of resolve uncertainty about the hidden states.
+Because while a state might be hidden to the patient, right?
+When you present with some, like I've got a pain in my shoulder or something like that.
+It might be easy for the therapist to say, oh, that's this, this, and I push here and tweak this and then it's better.
+So it might be hidden to the patient, but not hidden to the doctor.
+Or hidden to the doctor and the patient.
+Or hidden to the patient, but not the doctor.
+Or the doctor, but not the patient.
+So it might be like all of these things.
+And so it's like working together, this kind of synchrony to resolve uncertainty about, about a hidden state.
+And I've, I've thought a lot about like, who's making the observation and who's, who's doing the state observing.
+And who is the state hidden to?
+And, and it brings back what the paper that you guys mentioned in the dot zero, the communication as active inference.
+Because it really is like a bi-directional harmonious kind of thing happening.
+Right.
+Awesome.
+Thanks.
+Yes.
+George.
+Yeah.
+So, um, actually starting with the hidden states, who's observing, who's been observed.
+I think, uh, you know, the free energy model picture, the typical representation with the two agents and, or one agent in the world and internal states, external states.
+And so on.
+So if you have the two agents, you know, there's something in the middle that clearly is the ground where, uh, we kind of, uh, try to achieve some form of alignment.
+And then, um, um, that's what's the reading of someone else's internal states.
+And I think, uh, uh, uh, uh, I think, uh, who makes the observation, who's been observed and so on.
+Okay.
+Again, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um
+um there's an interesting phenomena for example with in chronic conditions um which is the concept
+of uh cognitive immunization where um it's very common these days for you know patient goes and
+sees a practitioner has read has consulted with Dr Google to start Dr Google said you know could
+X Y and Z typically the worst case scenario goes and sees uh doctor number one doctor number one
+says yeah you know what you know it's nothing to worry about it's nothing wrong with you
+question has got pain kind of saying all right I don't trust you kind of thing then goes and sees
+practitioner number two that comes with a different story and yeah okay maybe you forget about you
+forgotten about something goes for practitioner number three and so on and gets through a process
+where authors argue that it's a kind of you know uh the system becomes cognitively immune to any new
+explanations because the expectation is surely there's something wrong with me so clearly in
+those conditions you know if we take from this lens one could argue uh yeah as a person I'm observing you
+I'm kind of reading your internal states which is I don't trust you kind of thing because in actually
+telling me something but actually something that potentially you don't believe either okay or you
+know this thing about let's do cognitive reassurance because most non-specific back pain or neck pain you
+know one cannot say that's clearly a particular tissue responsible for the pain the symptoms and so on so
+you say okay you know and there's nothing serious with you so what's wrong with me you know you clearly
+you can't tell the patient oh you've got non-specific back pain because for the patient that means you
+haven't got a clue about what's wrong with me or you're implying that something upstairs in my head
+I'm making it up so patients observe us for sure and they know when we kind of are confident and so on
+and when we we're not so confident and maybe we're not entirely sure if actually the whole thing's gonna
+happen in the same way we observe patients we we start observing them you know when they come through
+the door when you first greet them and so on hi how are you doing before to read times you know shaking
+hands and so on were a pretty good first kind of getting into someone else's internal state because just
+you know the the handshake the quality of the the amount of pressure the confidence and so on in a lot of
+you know there were cases say this person is anxious this person is down is depressed and so on and you
+could get that down to you know when your clinic do clinical examination you thought you observe you
+you feel you palpate and so on so that implies that there's a lot of unconscious stuff that it's you
+you know it's process comes through arrives through our our sensory our sensorian and you know we made
+something out of it so I think that that's what we kind of um you know one of the things we try to
+explore through this stuff about you know try to understand someone else's internal state you know
+predicting a little bit of their mental state and and that's where synchrony and that's where alignments
+um kind of plays that important role because you know there's no alignment I can't clearly guess what's
+wrong going on um the stuff about you know what what you Ian what you mentioned about sense making and
+so on sense making is is quite an interesting thing you know you said okay you know we're not like
+you know a patient is a patient and the practitioner is a practitioner you know that is that our
+differential as well you know there's the doctor there's the patient uh when one is an expert and
+when the other is an expert and things alternate and the the whole thing about sense making and
+actually minimization of free energy and so on sense making is quite an interesting thing too when we look
+at some uh clinical conditions and there's some beautiful stuff written about for example mental
+health and inactive approaches and looking at for example depression as a disorder of sense making
+for example uh and you see that sometimes with patients with chronic musculoskeletal problems
+patients that also have you know a comorbidity they have depression what came first the depression of
+the back or the back pain uh one could argue that um if I suffer from chronic back pain and I can't get
+out of the house I can't see my friends I can't walk my dog I can't play with my children and so on
+uh the world stops kind of making sense right you know I don't go out because outside is a is a cruel
+world and it's kind of full of you know uh dangers and so on so I stay in a safe environment which is
+my home watching telly a kind of uh you know complaining about myself to myself okay and uh and I become
+depressed because I'm stuck there so um the therapeutic will you know the the therapeutic encounter that
+sort of a nice ecological niche in a sense creates opportunity for sense making to to understand where
+there's patterns for example rigid behavior rigid thinking that actually by uh understanding by uh
+interacting I can potentially start sort of taking the patient in a particular direction which is the
+sort of you know uh this kind of road to to recovery uh and one you know I one could argue that if someone
+starts feeling um kind of bettering themselves symptoms reduce a little bit can start doing a little
+bit more can start again engaging with the world maybe the other stuff about feeling miserable would
+get better as well and I think that's that's sometimes what we see in musculoskeletal care is
+this stuff you know we don't treat mental health conditions and I don't think we should make those claims
+because they're clearly you know uh boundaries and competences and so on but but you know the patient
+that has got for example a chronic musculoskeletal problem and gets better and gets an impact you
+know that impacts changes their quality of life changes their ability to you know become an agent again
+because pain they lost their agency because of pain I think that's where the the kind of the beauty of
+this understanding this stuff kind of comes is you know you can impact on some you know on different
+levels of the person of the self that is clearly not just that embodied self that body but it's beyond that
+embodied self is the sort of you know this multi-dimensional kind of um what is to be a person kind of
+thing right um so yeah nothing at some times is about kind of reading the others the you know
+understanding the other guys internal states is about sort of doing the right thing at the right time
+because I know there's there's a queue that tells me maybe I if I do this stuff this could be really
+you know one way of getting in surprising the system in a very positive way okay so I've just been
+pontificating so Joey yes uh yeah I think oh gosh let me take my hand down okay yeah I think similar to
+to what George said on sort of it's uh a bird song I think there's different aspects where you know
+yes generally on the the technical the physiology or the anatomy side then the practitioner is always
+obviously more the expert but I think there's certain things where maybe you're looking at a
+patient or you're you know still trying to examine them and the the patient is still going to be the
+expert in their pain and so you you might be tossing and turning between a few diagnoses say and then the
+patient suddenly comes up with like oh yeah by the way and then what you were thinking completely goes
+out so I think you completely read them um there's always going to be sort of hidden states that you
+don't know about and then you kind of have to you're always on the lookout in case the situation is
+changing or maybe they don't want to tell you exactly what it is and you're not you you think
+something's missing that intuition that maybe there's an element of this that you're not that you're
+not getting or suddenly they got worse and you're wondering well what happened like what changed what
+was what what goes on and then you you find out that you know um their child's been really sick or
+something or their work's been really stressful or something else has happened excluding that they
+haven't said that you kind of pick up on um so I think there's there's that where you kind of
+you're inferring what that other person means and there's definitely you know you're watching them
+they're watching you and you're kind of still you know deciding what's going to happen based on the
+sort of what you think's going on and and that and throughout treatment you know there's no set
+treatment for certain things as well like whether it's exercises or touch you have to adapt based on
+what you're feeling and similarly to what you um ian that brought it up um before the sort of
+synchrony and whether it's exact or not well it sort of also depends on the stimulus there's a lot of
+research that um there was one paper that was about a film and um they got two separate people
+to watch the same film um um in by themselves at at separate times but in certain parts of the the
+film their heart rate was exactly the same um their heart rate went up when you know the fight scene
+happened and then their heart rate went down the same and actually you know the difference was they
+were in sync even though they were nowhere near each other couldn't see each other didn't know what that
+person was doing they're probably doing completely different things but the stimulus dictated the
+synchrony um so i think that's an interesting thing to um to consider as well that the synchrony might be
+from from the stimulus that's happening during the treatment whether it's touch whether it's something
+else but we focused on touch but yeah the whether you synchronize just based on what you're
+in in that moment um but actually you know it's completely different otherwise so um yeah i just
+wanted to point out thanks that that reminds me a lot of this direct interfacing mechanism of synchrony
+which might be via like auditory communication touch and so on and then there's this more stigmergy
+based niche modification construction of a niche like a corn maze where everybody walking through it
+is having a shared experience or like you said with two people watching the same film it's like there's
+some similarity in their niche and so there's um a resulting synchronization without direct interfacing
+because they're interacting in a shared there's something shared about their niche either two
+people going through the same niche at different moments patients coming through a space or there's
+people that are in separate physical spaces but the niche has some similarity and i'm sure there's a lot
+of other examples like that um ian and then i have that image up if you want to describe what you
+wanted to share there thanks daniel uh yeah i will we'll describe that in a moment but as uh
+um conversation about films i'm just thinking that hollywood and filmmakers are actually masters of uh
+inducing synchrony really you know they've got the bird song so they've got the the beautiful music or
+the dramatic music or whatever got the imagery the words the the composition of the images to
+hopefully not obviously not everyone will have the same experience of a film but they hope
+that their sad film will induce some synchrony amongst the viewers in terms of the response in
+their body or a happy film will induce some kind of rhythmic laughter um so uh yeah and i'm thinking
+about some work of um heard of recently of uh john viveki looking at emotional goosebumps um and how this
+links to um he thinks it's uh the process of temperature regulation is being exacted up into um
+some kind of relevant or bringing things salient to us through goosebumps um and there's an opportunity
+there to kind of open up cognitively and explore some other ideas that maybe the person wasn't able
+to before and you can think okay that music gave me goosebumps and i had all these ideas um so yeah
+there's just a few things as we were talking there that i was thinking about but um this diagram was
+george as you were talking about the kind of how you know the complex things that um might be at play
+with in a patient that this was um done by mit i only found out about it a few days ago it was 2015
+but all of these different factors that might lead someone into a kind of um
+vicious cycle of depression and you know we've got things like uh
+uh cortisol or it unreg you know unbridled inflammation at the top there but then you've
+also got as you said george the physical inactivity and how this you've got all these different looping
+perception action cycles here that are creating this sort of downward spiral and you know therapeutically
+i guess what we're trying to do is create an upward opening trying to get an access point and you know
+zoe you said you might have to try lots of things you might have to try looking trying one of these
+loops and if that doesn't work okay try a different loop to um open up this sort of thing that's
+tightening and maybe open it up either physically or perceptually yeah thank you this is like very
+much showing that complex causation and so sometimes a disciplinary approach um might be like
+well hippocampal volume is associated with this change and that could absolutely be empirically
+true or cytokine signaling or early adverse experiences and so part of the challenge is
+reassembling this complex causal network and then even if there were some sort of causal network
+that could be reassembled then how might the failure mode be similar or different from the recovery
+mode like there are certain things that cannot be changed like in the past and there's other things
+kind of like the concept of hysteresis where we can't just reversibly modify something and so where
+are the leverage points in this diagram and it's yeah george um yeah it's uh pretty complex but yeah
+very good very good diagram for sure and i think you know that there's a lot of stuff that we you know
+we are talking about that's clearly there um i think you know where you know clearly we have you know we
+have modifiable and non-modifiable things you know it's the kind of uh there's stuff you know we can't
+change someone else someone else's genetics we can't change you know what happened in the past okay
+but they are modifiable things that's uh at least in uh in the context of musculoskeletal care um
+you know are are present you know that can include beliefs you know their prayers about you know their
+ideas about pain they know what's wrong with them and so on down to things that uh could be lifestyle
+okay and and lifestyle yeah it could be more movements uh kind of changing the diet or whatever
+stop smoking kind of engaging in something that starts getting them kind of uh you know start getting
+the their sense making back okay um through the sense you know the the ideas and actually
+the other the other interesting thing about this stuff you know where are the opportunities you know
+how can we start how can we start that process of change uh a very nice model typically aligned more
+with an activist approach now sort of finding ways into pain and so on are the ecological psychology ideas
+about the fourth and affordances you know what's outside what is out there in the environment you
+know already linked you know some some offers to kind of the active inference predictive processing and so
+on but clearly one can think about you know uh the world provides us with uh with a landscape of
+of affordances you know stuff that uh kind of uh are opportunities for action which is basically what the
+description of an affordances and one that lives in a very nice environment for example with a beautiful
+park and can walk you know along the coastline and uh you know for stress-free environment and so on
+clearly that that world it's a world for the sort of you know beautiful kind of lifestyle and so on right
+whereas if one lives in an urban urban jungle and everybody's super stressed outside and so on arguably that
+landscape kind of is much much smaller and you know when we say yeah you know would be good for you to
+start walking for example you know that would be a good way of sort of start managing your back pain
+the patient can say yeah but you know when i get out of the house i'm i'm struggling i might just get
+run over by a car straight away the environment outside is is awful you know there's pollution everywhere
+you know what do you want me to do you know kind of a yeah i i'm scared of going outside so no thank you
+very much because of course if you are on the other side of the of the spectrum and you can invite the
+person and use what's out there and start playing a little bit with those opportunities for action and
+i think that's those are tools that if we think sometimes you know we can start thinking very hard
+about what sort of exercises should the patient do should the person get engaged and so on and
+if we think much you know in much simpler terms and think about you know what's outside what's out there
+what kind of you know what kind of things are already in the environment that can be used
+to actually promote change uh you know we would be surprised that actually just the flight of stairs
+would be good enough you know don't take the lift take the stairs and um you know start sort of uh
+walking a little bit back and forth you know from home to work and so on those minimal things if the
+person feels like yeah okay i'll have a go and i'll try that clearly we are in a in that process of you
+know uh change uh kind of changing a little bit of their their sort of uh internal state you know maybe
+that prior about yeah i can't move i can't lift because you know it'll damage my back in fact when they
+start trusting their bodies um you know they can do a little bit more so there's a kind of a it's
+always hard to think about okay how can i change this how can i change the the generative model and
+we almost think you know everything needs to be conscious cognitive and so on when in fact
+a lot of stuff happens unconsciously right you know if it was always about i'm going to think
+about changing and i'm going to do this and then the the world would be much simpler right but you
+know we you know so a lot of stuff is hidden anyway and even the person is not aware of that stuff so
+but so so the change the process the tools and so on i kind of uh this is a facet you know that goes
+back to that very good diagram with all these factors and i think as a practitioner yes okay i can focus
+entirely on the brain and the neuroscience of it and become like a brain centric approach or i can
+start thinking about actually the brain is you know it's the hardware kind of stuff uh but there's
+much more in it and much more in it takes the person takes the environment takes the kind of
+opportunities and so on the stuff out there can be used thank you george zoe
+yeah just going off of what um george said in terms of um the environment around it like when
+you're sort of maybe if you're surrounded by nature or things like that then you might be sort of more
+willing or more able to change your priors i think it's also important to realize especially through touch
+that it's one modality right it's one way in which we're starting to kind of try to understand and
+try to to manipulate the process of sort of changing those memories um whether it's the way it's processed
+or just having initially or just trying to adapt it and that's that touch is one way but i think also it's
+interesting that it's probably more likely that we may not be able to completely change that sort of
+uh prior but we might in that context so we might not change the fact that it's painful to bend down
+but we might be able to through touch and through sort of treatment get the patient to realize okay well
+yes maybe bending forwards is is dangerous it is is a bad thing but if you do it in a certain way and
+you look at it in this way then actually it's not so bad so i think it's it's yeah it's um it's important
+to take the context into it i think with with this i think we might be able to maybe not completely change
+the the maladaptive belief but with touch we can try to change it so that it's more context specific
+rather than a general belief that isn't able to change we might be able to change it so in certain
+circumstances whether it's the way we do things or just the way that we approach things we might be able
+to update it or modify it for that specific thing um i know the papers were talking about it in terms
+of like being scared of spiders you know you might still be scared of spiders but if you know that
+you're scared of spiders and they've got food nearby and that the spider's happy then maybe
+yeah the spider's still scary but it's not likely to kill you um or something like that in this
+circumstance it's not as bad as it it could be and you're going to be safe um from whatever sort of
+fear it is so i think that's an important thing um to add on from what george was saying and i'll pass it
+back to george yes george and then ian uh now this is you know what's always just sense kind of a
+yeah it's quite quite important i mean you know through touch we can clearly get in kind of affect
+understand and so on um i think that that's all the positive stuff about touch there's another factor
+another side of the equation which i think you know as practitioners we need to be aware of which is
+the power of you know what's the hidden state and that touch can trigger and uh particularly in trauma
+situations memories are embodied and when you touch someone in a particular part of the body that might
+again bring that unconscious stuff about for example someone has been the victim of sexual abuse for
+example and you could touch a person and straight away uh either there's a sort of an you know a massive
+response you know fight or flight you know what's going on here uh or you might actually um if it is
+about this sort of hidden state uh you might actually find that you know that touch kind of created a
+response that is almost like a no-go zone and you kind of need to be aware that sometimes you know you
+touch people that don't like being touched okay if someone goes to a clinician that's you know in an
+intervention is primarily touch based doesn't like being touched uh it might you know might go well you
+might synchronize extremely well you know kind of they understand you they talk when you start so okay
+let's have a look let's palpate that you can feel like there's a there's there's a fight or flight
+kind of mode the person goes in straight away so i think understanding this
+is also quite important in understanding the limits of competence of someone
+you know in in musculoskeletal care for example that that's an area that where probably the person
+needs to be referred to someone else an expert in the area or maybe uh by getting a sense of you
+know this there's a response here that's not the one i would expect to perhaps not then to open the
+pandora box oh let's tell me a little bit about what's going on here because again you know it's
+a kind of you know you you probably triggered you pressed on a button that uh yeah you know keep the lid
+on kind of thing don't open it please because so this is important i think both both ways is it's a kind of
+the the power as a therapeutic tool but also the power of triggering responses that actually uh are
+quite you know quite important to take into account and in fact you know it's you know the the paper we
+got accepted yesterday which is the continuation of this in musculoskeletal care you know one of the
+reviewers actually wanted us to say you know there are you know psychologists you know psychotherapy treat
+people that memories are embodied and you need to be aware of avoiding overlaps okay so that means
+don't jump into an area that you don't know about and but be aware that sometimes you know you yeah you
+you're getting that the responses is pretty much you're getting into someone hidden states stuff that is
+there and the background just leave it alone please that's the way at least i see my you know the world
+around me is like don't don't don't sort of start the process that you don't want to or or if you don't
+if you do then go and see someone else thank you blue and then oh sorry ian and then blue
+oh it's okay i didn't have my hand up so over to blue sorry okay blue go for it
+so it's interesting um and i don't know if like in your um work as an osteopath but like there's many
+layers like i found like through working emotionally physically on myself through my life like it's
+like peeling an onion right and so as you go through um it's interesting that like like all this stuff
+resurfaces and and like even physical trauma remains there like you stub your pinky toe you stub your pinky
+toe 25 times 35 times 255 times who knows how many times right depends on how clumsy you are but but
+your pinky toe remembers being stubbed like it has maybe like a hyper response because it's been stubbed
+so many times because it's whatever that's it's it's little um job in life is to be stubbed i think
+um but but like it's interesting that um you know you kind of have to open it up to to do the work
+and i wonder like what kind of synchronous work there is like i mean i know that there are some
+people that deal with like physical and emotional trauma and i know like physical trauma can be a
+manifestation of emotional trauma um and you can have emotional trauma based on your physical trauma
+so again it's like this like bi-directional circular loop and um i wonder what like the training
+is and osteopathy to deal with emotional trauma that may come up or um what kind of uh like are there
+people that do integrative practices like you have to be uh uh like an osteopath and then maybe you do
+your residency as a psychiatrist or or what kind of you know can you get it all out like if you have
+like some kind of linked problem that's both physical and emotional thank you george then yeah uh okay um
+so so so so the model in in terms of therapeutic alliance and synchrony and using touch if we use
+to the whole world of healthcare practice you know could argue that you know in a world of psychotherapy
+for example mind body kind of stuff uh yeah the person would be um sort of um equipped with the
+tools to explore to enable them to open up to start the process and being able to deal with that so so
+the the paper as a as a kind of a generic kind of model that could apply you know as an umbrella to a
+number of areas of practice for sure we can do that and no problem if we think specifically
+about manual therapy and specifically about osteopathy then you've got two worlds uh the american world
+of osteopathic medicine where osteopathic medicine is medicine and you know the they are there are
+osteopaths in the in the in the us who are psychiatrists as well and in that case yes that person would be
+ideally uh suited to be able to explore that you know to do that to kind of start that process of care
+actually using both their competences as a psychiatrist and their competences as a you know also manual
+therapist as a hand on hands-on kind of a practitioner uh in other countries um osteopaths are primarily kind of
+uh uh manual therapists if you want to call it that way although osteopaths don't like being called
+manual therapists but primarily use manual therapy primarily uh in musculoskeletal care but you know
+other areas of practice and we start seeing a number of practitioners going down the route of
+like physiotherapists uh using uh what is called a psychologically informed type of practice and that
+typically involves some additional training in counseling or some additional training in some
+uh you know cbt like kind of approaches like for example um something like accept acceptance and
+commitment therapy for example so stuff that actually combined with that with hands-on is is a sort of
+you know potentiates the effect of the treatment that the hands-on alone would not achieve but
+when you come from the two kind of two different angles meeting in the middle and providing a
+uh a more robust package of care uh you can get better results because you know the training as as a as a
+pre-registration level is very basic uh to sort of uh to enable you to recognize that there are things that
+um are you know need a referral to another practitioner even those that even those that practice and a
+psychologically informed type of practice like several physiotherapists uh have developed a kind
+of a traffic light system where clearly there are stuff on on the yellow that's you know anxiety is
+associated with pain and so on that's okay you know you can deal with that there's some stuff kind of
+in the in the in the orange that you have to be a little bit careful and they clearly stuff ptsds and so on
+uh where you know it's a no-go zone you know because you know you you you can dive in and then you don't
+know if you're going to come up and come back okay kind of thing okay so that that is typically a referral
+to another practitioner having said that i think there are opportunities for collaborative work where
+the two together can actually provide a much better service to a person that's simply relying on one
+practitioner that can do everything i think that's sometimes exploring stuff through the physical body
+the embodied self opens the doors for stuff to be explored at other elements of the self okay when
+the body is a little bit more prepared to deal with stuff and people maybe are prepared to talk sometimes
+you see that in cases of uh childhood abuse and so on you know i kind of had some some stuff that felt good
+some hands-on work even the massage and the person felt a bit more confident in themselves and they
+were prepared then let's have a chat and they were not prepared to simply go to talking therapy straight
+away uh because there was there's too much going on in their kind of embodied self the sirens go off
+when certain things happen exactly ian
+yes so um just sort of picking up on the points from george and the uh question from blue um yeah
+really totally agree that it's you know not the job of a untrained manual therapist to kind of aim to
+open a can of worms of um something that you know especially if it's not five minutes before the
+end of a session and then you kind of say okay i want to you know see you later see you next week and
+got another client now and you know that that's not definitely not not a good idea um however as you
+said george sometimes people will come and they'll want to offer things and they'll want to talk about stuff
+um and what i was thinking about blue as you were asking about sort of the the different combinations
+of approaches i don't know if um george and zoe or any any of you are familiar with david bocelli's work
+on um tre trauma release or tension release exercises so um what you know he doesn't really go into the story so it's not kind of psychoanalytical or
+unravelling the stories of people's past but he has a methods for inducing kind of
+what i think is my fascial on what it looks like my fascial unwinding so sometimes it's tremoring
+um and um so it's sort of he i don't think he necessarily uses touch in the beginning um but it's
+i guess what i'm thinking is that there are ways that if you know the ways of offering
+clients opportunities to unravel the bodily trapped or the the stuff that's held in the body that um
+where they don't have to verbalize it if they don't want to but the the inroad is to induce some kind of
+letting go um which maybe is what all therapy is about to a greater or lesser degree but his you
+know his examples are quite dramatic you know people will be making big movements um that seemingly are
+uncontrolled but if you ask them to stop at any time they can stop they can bring it into voluntary but
+there seems to be a really big updating of some generative model through this process um uh
+uh yeah they're my thoughts thank you um i'm gonna return to our previous complex causation network
+now it's smaller because we're abstracting away from the details and think about like what are some
+active inference questions that come to mind and how could we look at this differently than for example
+just a structural equation model that's fit from many empirical studies and so here's figure 4.3
+from the textbook and this is a partially observable markov decision process and it's come up in other
+papers and live streams so we won't go into too much details but the kinds of things that we might want
+to ask are like what variables are latent states or observable in general and then in the specific case
+for example maybe there's a total absolutely perfect association between hippocampus volume and some other
+clinical outcome and so hippocampus volume conceptually is observable it could be observed but in that
+exact patient's case it may not be an observable in that relationship so variables can be observable in
+one context and latent in another context so that might speak to evidence-based grounding where like
+okay we don't know what somebody's blood level of this is what's the most informative thing to do
+maybe we can measure it and then that ties their measurements into other observables so that's one question
+what are observables and what are latent variables um what variables do we have causal influence on
+what affordances exist that might have intervening influence on some unobserved state so here's like pi the
+policy selection and then the way that the hidden state is changing through time
+that's what the affordances are about influencing the hidden state is the true temperature of the room the thermometer
+is the observed value and then taking an action like turning on the air conditioning is about intervening in the
+hidden state such that other observables are seen and then we talked also about like in what ways can we change
+the generative model so here's the policy selection of the practitioner and then in the interface it's like it's meeting with the observations of the patient
+the actions of the practitioner what they say and what they do are received as observations and that's kind of this dyad
+actinth that we've seen so rather than the one entity navigating and sense making in the world the joint sense making
+features this interface where the policy selections on one and they're thinking through other minds their inference on the generative model of the other is what is being um intervened in
+how can we change the generative model the cognitive models how can we change the generative process
+could there be something welcoming on the door of the room that is a modification of the niche
+what is the type of the niche or some other design choice that helps scaffold this therapeutic niche
+and um yeah what policies can be taken from the toolkit that is afforded in that moment based upon the
+training and the equipment available and so on that influence what to result in what and that kind of comes back to this
+synchrony for what question just achieving synchrony is like a sort of undirected hypnosis or undirected sort of
+i don't know it's just sort of like this vegetative propagation of coordination
+that would only coincidentally be functional so having a functional outcome in mind then there can be a working backwards like well what observations are we looking for
+and then what hidden states give rise to those observations and what policies exist that intervene in those hidden states and in the dynamics of how they change
+are we looking for the different ways of how they change recognizing like their complexity so those would just be a few active inference
+variables and approaches that are are being invoked here conversationally however the kinds of models and the empirical data
+to take it further are being sketched out
+um well it's going very fast and we're in kind of the home stretch so what would anyone like to
+look at or turn to we have a few other questions that previously had been raised that we
+didn't perhaps get to some of them are written here so anything that people see here that they're interested in
+or any other topic and then also just how are we coming out of this dot two what will be different in our
+action as we are engaged in this area of course from many different perspectives george
+i i loved your your your kind of proposal your summary of all the you know those um those active
+inference questions in fact there's a structure for paper in it right
+uh it can take us down the road even just sort of looking at some computational stuff
+uh so creating some kind of you know a framework um yeah so i i i very much like it um i think there
+there is a sort of challenge and what's what are the latent and observables uh and so on to define
+those kind of things that needs a little bit of thinking um we can you know the the other stuff i
+think you know as you said you know probably will you know working backwards would sort of
+becomes easier you know isn't that you know if when you kind of a it is about
+you know if you're not hands-on with reassurance and you know and so on if if that's a sort of what's
+you know the policy and so on and what we observe you know back at the beginning i think you know it's uh
+it would be fascinating i think in terms of the bio behavioral kind of elemental synchrony
+uh there's clearly changes in them in breathing changes in probably heart rate variability and so on um
+that would be interesting to to understand you know is that a sign that the system is sort of
+starting changing um the process uh you know it talked about the thing in the you know maybe something
+in the the door of the room um a couple of years ago when i was practicing in another country um i i for
+quite a few months i used to use a lot of classical music and opera and so on and that was actually a
+tremendously effective way of creating an environment where the person sort of actually a form of inducing
+that synchrony and kind of you know i'm i'm treating i'm kind of doing this stuff i don't need to talk
+that much i'm kind of you know just go with the sensations go with the music and i felt that actually that
+is a very good way as a process of start changing the generative model um so there is the the stuff
+as we kind of um proposed on the one of the recent papers uh the stuff that you can implement
+so if you doing the tactile the touch-based intervention and use forms of language sometimes
+to get the person to visualize what you're doing you know for example i'm doing this and i'm trying
+to achieve that and you think that the per you know that the person is even like interceptively
+robust enough to let you explore the inner sensations to situations as you know you're probably
+doing some work and you you realize by sort of predicting their internal states that they're just
+focusing too much and giving too much attention to stuff which is actually not not useful where
+you can just say oh you know what uh like we said in the paper you know i i have a new dog and i kind
+of where does the dog come from but a dog in that sense is a way of sort of breaking down that
+that attention to what you're doing to sort of say oh okay so you you're continuing you know there's
+still the sensory stimulation there's still that sensory evidence arriving to the system but actually
+you suddenly start changing a little bit you know you you you flattening a little bit of the sensory
+state by sort of zeroing the three things and then maybe those sensations that come in um potentially
+kind of change some stuff so yeah i i think at this level that's for sure some some stuff
+uh to do i think it's an interesting thing that actually being started being explored now uh with uh
+ted kaptuk lab in harvard uh around um acupuncture which is you know looking at synchrony as well with
+hyper scanning techniques and kind of finding that actually uh successful in terms of the intervention is
+associated again with what synchrony so kind of uh it's a body of evidence sort of uh building up i think
+quite nice oops one thought on the free energy minimizing and and ml dawn and several others were
+discussing in the chat about like our biological systems truly finding global minima and so it's a big
+question but just to give one thought on it is the free energy is calculated for a given policy sequence
+of actions in terms of how informative that sequence of actions is expected to be and how useful that
+sequence of action is supposed to be expected to be and so different action pathways are evaluated
+based upon their ability to produce uncertainty or provide direct value and so if we can just maybe
+there's multiple things that have value in the therapeutic alliance but one um for the generative
+model of the practitioner might be like to reduce a number on a pain survey that would be useful and then
+there might be multiple policies and maybe adequacy is good enough and if the pathways are
+to some balance or shifting balance of informative and useful either reducing pain or helping understand
+how to reduce pain then navigating and shifting policies is something that can be done adaptively
+and then in contrast the policies that might want to be disfavored would be like the ones that are adding
+confusion reducing clarity of sense making or increasing pain um and that's not to say that there's not
+moments where transiently surprise does increase or pain does increase but that is part of a policy like
+i'm going to touch this place that might transiently increase pain but that might be an informative action
+that in a extended timeline is part of a free energy minimizing trajectory and so what is the horizon
+and so on george and then anyone else
+uh that that thing you know sort of modifying pain you know modifying symptoms
+it's quite an interesting thing because you know for example at least in my profession there's this idea
+that you know we don't treat the symptoms we treat the cause of the problem okay
+so you know pain is just a symptom it's nothing to worry about okay um but you know from this perspective
+actually me you know changing symptoms reducing symptoms is actually an important thing quite an
+important thing particularly if you if you're thinking about chronic conditions if you start making
+the person start feeling a little bit better then you probably start changing the whole
+you know the whole process uh if you don't change anything you know it's uh how is the person going
+to engage in that if actually you know you can continue saying oh you know uh you're moving much
+better you know your function is so much better but actually the person says you know you know what
+but i find it hasn't reduced at all i'm still in agony so so i think you know going a little bit with
+small things at that level are quite important in the greater scheme of things in terms of changing
+the generative model um so it it is clearly you know a fundamental bit uh of of the jigsaw and it's
+the same you know as you said informing for example you know this might be uncomfortable but
+in fact is important in um in kind of uh you know achieving something so the same way some persons some
+patients tell you uh it is painful but it's a good pain so again what's the value of the good pain is
+a reward this is a sort of anticipation that this will lead to a positive change thank you zoe
+yeah i think george just kind of touched upon what i was going to say um pain you know sometimes
+patients i know i have patients that come to a session and they expect it to be painful
+i mean a lot of people expect that at some point you know it they might get that um sort of quote good
+pain where they know they almost want to feel like something's happening and whether that feedback is
+kind of pain or something that's kind of reassuring i know patients especially with sort of osteopathic
+manipulative um sort of treatment they they want the click if someone manipulates them they they come
+in and go oh i just want you to click me and you know the research shows that not necessarily you need
+that that sound but that feedback that they sort of want they they kind of want some people they expect if
+you do a hard sort of a more for a massage they feel like they're i don't know getting a money's
+worth or they're getting more sort of treatment than than if they want they want you to they kind of want
+that feedback to say yeah you're in the right place um and i get that a lot so i think pain is is an
+interesting one i think it just the the biosynchrony the that we get and we go upon you know whether it
+is the patient's heart rate their breathing changes you see their facial expression changes when you're
+or the muscle tightens up nearby you kind of go on on that but i think it's what they expect to get
+from treatment not every patient's going to come in and go yeah i want to i want to be in less pain that
+might not be their ultimate goal obviously they're not going to say no to it but they might really just
+want to be able to pick their kid up or go to sleep with just being able to go to sleep not being in pain
+or not waking up or something like that so i think it's not yes we can clinically it's not so simple as
+something that we can measure empirically it might be something that's you know a goal to that patient
+is more important than you know if their pain is less or if they're moving better or oh well yeah
+you know if we we had the technology um to say look oh look your heart rate's lower or this means
+that you're more efficient you know you're saving free energy because you're not expending on your
+pain or it you know you're more efficient so it's not gonna you'll have more energy to to do this now
+that you're doing this better they they may not care they may just want to be able to pick their kid up
+um and not be in pain so i think what we're measuring i think will be very individual to
+the patient and it might not be something that is necessarily useful in terms of research um
+that we can quantify it it just might be that goal that's not always sort of empirical
+um thank you so ian ian
+thanks uh thanks all and um yeah just as you were saying that you know that zoe you said at the
+beginning i think the the intention behind it all is to help them and i'm just thinking of a scenario
+or some scenarios of when um you know agreeing on the goals is so important so i'm thinking short-term
+goals and long-term goals here so clients who are maybe endurance runners and you know they want to
+do fix ultra marathons a year and they come to you because their calves are hurting so your immediate
+goal is to reduce the pain in their calves so they can make the ultra marathon at the end of the month
+but then you know do i really if i'm if i'm aware as a therapist that there's a link between
+endurance running and developing arrhythmias heart arrhythmias for example and i see this person is
+very anxious about their goals to the point where you know it's almost like they need it rather than
+it's a um a pleasure as such then you know if i disagree with their goal um are we am i true you
+know and saying actually maybe four ultra marathons a year would be enough for you um am i just enabling
+this drive by relieving your calf pain um in the short term uh so you know agreeing i think agreeing
+on those like longer you know more broader life goals and um or referring to someone else if i don't
+agree with with that or just you know that's a that's a more of an ethical issue i thought it came
+to mind as we were talking there yeah that reminds me of like the kind of performances that we might see
+in the olympics or the medical care that might happen like on the sideline of a game where somebody
+has been injured but they're gonna like continue doing it almost um in a way that is like rapidly
+degrading potentially the future weeks of their health and then that's the ethical challenge or the
+decision-making challenge like is it is it worth them to hobble across the finish line with an injury
+that every step is it's just deteriorating the injury but then being consistent with the belief
+that one is a finisher or even a signal to those who are watching there's so many complex phenomena
+at that level um those are very interesting questions um wow so we're towards the end here
+i guess for the um authors and for anyone else we can give some of our last thoughts what are
+some of your next directions for this line of research and application
+okay so um well first of all as uh as last time was a fascinating discussion i think uh kind of uh
+uh learning a lot from from this kind of interaction for sure um within this we we um
+sort of got some stuff done in publishing the musculoskeletal side of things we have another paper
+to be submitted very soon the next week or so uh the same topic but in pediatrics and there's the bulk of
+other stuff building up um i think you know what we want to achieve now is to start testing some of
+these ideas kind of empirically using different methods um from uh qualitative kind of phenomenological
+type of approaches trying to understand really what's going on to more you know sort of um neuro bio
+uh stuff kind of along the lines of looking at for example uh some some markers of bio behavioral synchrony
+like for example um you know uh physiological changes in both the practitioner and the and the patient
+uh bearing in mind some of this stuff it is a bit more challenging to achieve because uh whereas for
+example in the in the field of psychotherapy the person practitioner is typically sitting down uh the
+guy doing manual therapy is probably you know he's moving around so therefore the heart rate is not going
+to be exactly the same but you know looking at what's what can be done um and uh and you know and some
+you know creating some some some some models as well so the idea around computational stuff also makes sense
+you know to test um some of the ideas uh this is work that is building up so you know we very much
+look forward to kind of people getting in touch uh bouncing off ideas from each other kind of uh
+looking how we can move forward with this there's uh it's not osteopathic specific is
+is more than that i think at least it can be
+manual therapy you know more broadening along those lines uh you can look at uh
+uh sort of uh you know the role of some of this stuff in chronic condition not just pain but you
+know other other persistent physical symptoms uh uh and so on so that's that's where we are it's
+it's time now to start kind of uh testing some of the stuff for sure and stop writing theoretical papers
+cool um zoe
+yeah um sort of what george said um we've got i've got um we've had one paper accepted for um msk so
+hopefully that will come out for everyone to read soon um we've got one waiting um okay
+so um for um more orthopedic um general yeah musculosletal muscle in um
+muscle and bones kind of um patients and then um the pediatrics one is almost ready to submit um
+and then yeah i guess we'll be looking towards seeing where it goes and and what we can sort of
+empirically prove from all the theories that are kind of circulating um and going and going from there
+but hopefully discussions like what everyone said now will give everyone more ideas to sort of
+where we're where we're going or where we could go and different ways to apply the
+um principles and the frameworks that we've suggested so far
+awesome george uh yeah just well you know on on the pediatrics uh we actually have
+you know in the first lines to start exploring is is uh synchrony between
+mother baby and practitioner um starting with um not sure if you're gonna be we've been done you know
+we've been doing a a bit of work around you know the effect of touch on uh on premature babies um
+so we have those collaborations with hospitals in italy would enable us to do some of that stuff but we
+we sort of start looking also you know looking at this whole concept of of synchrony uh on a triadic
+kind of thing so the baby the practitioner and the mother and see if actually if we find that you know
+the synchrony actually between mother and baby is a marker of you know for example the baby would be
+you know some some some some markers of um you know uh autonomic change you know changes in
+autonomic arousal for example like we observed for example the effect of effective touch uh gentle touch on
+the baby as in cancer thank you ian uh george just as you were saying about the challenge of um a
+practitioner being moving whilst during the you know a manual therapy session and yeah i'm sort of aware
+of how that does lead to some difficulties especially with the ppg sort of measurement of heart rate variability
+um i heard just an idea i heard about uh i don't know i don't know if you've come across it an ec a
+wearable ecg that um encourage it's aimed at increasing respiratory sinus arrhythmia it stimulates
+it vibrates and it stimulates the person catches them at the top of their out breath um and it's designed
+to actually be used whilst you're walking around in everyday life um so i'm just wondering if there's an
+opportunity there to um because it's designed to a increase rsa and b to be used whilst moving that
+might be an interesting piece of kit to use yeah absolutely cool blue or would anyone else like any
+comments um i just want to give a final thought so something that i'm going to be thinking about for
+i don't know whoever knows how long um is this idea of um the emotional and physical body in terms of
+reference point right so we we studied it in i think live stream 40 the um fvp for generic quantum systems and
+it it it talked about how like the fvp drives entanglement um and in this way like when there's
+when there's perfect learning there's like this overlapping of the reference point so i just wonder
+like how like can an emotional body and a physical body be driven toward a more overlapping reference frame
+like when those things are so fundamentally different um so i'm going to be thinking about that
+cool very cool
+all right well thank you for this excellence dot two that concludes 44 and really appreciated the authors
+joining and blue thank you for joining ian also for contributing so much with the dot zero and
+everyone is welcome back to give us updates on their learning and application on this very important
+area so thanks again everybody see you later thank you thank you goodbye bye bye
+thank you
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.

@@ -1,0 +1,2925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #017.1 ~ Information flow in context-dependent hierarchical Bayesian inference</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #017.1 ~ Information flow in context-dependent hierarchical Bayesian inference</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_017 &middot; Episode 1 &middot; Speakers: Information flow in context-dependent hierarchical Bayesian inference &middot; Duration: 1:54:41 &middot; Views: 646</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=ldg2An-tEIE">https://www.youtube.com/watch?v=ldg2An-tEIE</a></div>
+<article>
+<p>hello</p>
+<p>and welcome everyone to active inference</p>
+<p>lab</p>
+<p>to the active inference live stream</p>
+<p>today is march 9th</p>
+<p>2021 and we are in livestream 17.1</p>
+<p>the active inference lab is an</p>
+<p>experiment in</p>
+<p>online team communication learning and</p>
+<p>practice related to</p>
+<p>active inference you can find us at the</p>
+<p>links and the contact mechanisms here</p>
+<p>this is recorded in an archived live</p>
+<p>stream so please provide us with</p>
+<p>feedback so that we can be</p>
+<p>improving on our work all backgrounds</p>
+<p>and perspectives are welcome here</p>
+<p>and we'll be using good video etiquette</p>
+<p>for live streams</p>
+<p>muting if we're not talking raising our</p>
+<p>hands so that we can hear from everyone</p>
+<p>on the stack and using respectful speech</p>
+<p>behavior</p>
+<p>here we are today in 17.1 coming fresh</p>
+<p>off of our</p>
+<p>fun quarterly roundtable number one and</p>
+<p>the first</p>
+<p>of two weeks discussing this paper with</p>
+<p>uh the author chris fields and we're</p>
+<p>gonna have a ton of time</p>
+<p>to get into it today and a follow-up</p>
+<p>discussion</p>
+<p>next week today our goal is to</p>
+<p>discuss and learn this awesome paper and</p>
+<p>area</p>
+<p>some areas that are probably new to</p>
+<p>everybody</p>
+<p>and today in 17.1 we're just gonna</p>
+<p>introduce ourselves say hello</p>
+<p>then chris is gonna give a presentation</p>
+<p>and then we'll be able to</p>
+<p>ask questions and continue the</p>
+<p>discussion from there</p>
+<p>so without further ado we can get into</p>
+<p>the introductions and warm-ups</p>
+<p>so everybody can just go around we'll</p>
+<p>introduce ourselves</p>
+<p>say hello and then we can also consider</p>
+<p>these warm-up questions</p>
+<p>so after introductions and anyone</p>
+<p>wanting to say something on a warm-up</p>
+<p>question we'll go to chris's</p>
+<p>presentation so i'm daniel i'm a</p>
+<p>post-doc</p>
+<p>in california and i'm excited today just</p>
+<p>to</p>
+<p>hear all of the things that we missed or</p>
+<p>messed</p>
+<p>in 17.0 and learn and uh</p>
+<p>recalibrate and correct and i'll pass it</p>
+<p>to</p>
+<p>alex</p>
+<p>thanks hi everyone</p>
+<p>my name is alex watkin i'm in moscow</p>
+<p>russia</p>
+<p>i'm a researcher in systems management</p>
+<p>school and also co-organizer</p>
+<p>of active inference lab and they pass it</p>
+<p>to scott</p>
+<p>thank you alex my name is scott david</p>
+<p>i'm the director of the information</p>
+<p>risk research initiative at the</p>
+<p>university of washington</p>
+<p>applied physics lab i'm super excited</p>
+<p>about</p>
+<p>the the discussion today about</p>
+<p>information flows we deal in</p>
+<p>as name sounds and risk flows and</p>
+<p>information and risk are really</p>
+<p>hand in hand so this is going to be</p>
+<p>super exciting today and i'll pass it to</p>
+<p>siri</p>
+<p>uh hi my name is sarah davis i'm a</p>
+<p>science artist and actually current grad</p>
+<p>student at um in philosophy of science</p>
+<p>at university of leipzig</p>
+<p>and i'm really looking forward to this</p>
+<p>talk today</p>
+<p>um who else do we have</p>
+<p>donna and chris and then so maybe shawna</p>
+<p>first and then chris you can</p>
+<p>introduce yourself and take it away hi</p>
+<p>my name is shanna and i'm a</p>
+<p>mathematician</p>
+<p>and um i'll be grad student in the fall</p>
+<p>but i've been doing all this stuff and</p>
+<p>chris and i are working on a couple cool</p>
+<p>things</p>
+<p>and i support him anyway hello</p>
+<p>cool so chris welcome thanks for joining</p>
+<p>us</p>
+<p>and we are looking at hello steven so</p>
+<p>chris um feel free to just introduce</p>
+<p>yourself</p>
+<p>and take it away with a presentation</p>
+<p>okay thanks daniel thanks for inviting</p>
+<p>me to</p>
+<p>suggest a paper and join you for this</p>
+<p>discussion session</p>
+<p>today i wanted to</p>
+<p>start with just a quick</p>
+<p>presentation to provide some background</p>
+<p>context</p>
+<p>on this paper which is about context</p>
+<p>uh written by myself and and jim</p>
+<p>glasbrook</p>
+<p>who is a mathematician uh we've been</p>
+<p>working together</p>
+<p>several years we actually connected and</p>
+<p>started working together because we were</p>
+<p>both interested in the</p>
+<p>perceptual and intentional phenotypes</p>
+<p>that one</p>
+<p>finds on the autism spectrum and</p>
+<p>that's where we encountered uh carl</p>
+<p>fristen actually</p>
+<p>and the whole active inference framework</p>
+<p>in some of his papers on autism</p>
+<p>so uh let me just start this little</p>
+<p>presentation</p>
+<p>and that'll give some background for</p>
+<p>discussion</p>
+<p>here we go okay as i said just some</p>
+<p>some context for uh</p>
+<p>this paper about context</p>
+<p>and let's see oh okay</p>
+<p>so am i so good on on vision and hearing</p>
+<p>and all that</p>
+<p>looks perfect thank you okay cool</p>
+<p>so um here's a standard picture from</p>
+<p>carl fiston on the theory of active</p>
+<p>inference</p>
+<p>uh it describes the interaction between</p>
+<p>some system that has internal states and</p>
+<p>some system that has</p>
+<p>external states and the interaction is</p>
+<p>mediated by</p>
+<p>sensory states and and active states of</p>
+<p>the form of arkham blanket</p>
+<p>and when i first encountered this</p>
+<p>um it seemed like a very nice</p>
+<p>modern statement of ideas that i would</p>
+<p>trace</p>
+<p>back to robotics initially</p>
+<p>in terms of the the</p>
+<p>learn slash explore distinction</p>
+<p>that one finds in in developmental</p>
+<p>robotics especially</p>
+<p>and and even from there uh</p>
+<p>back to the basic theory in</p>
+<p>ethology where you have the approach</p>
+<p>avoid distinction</p>
+<p>um approach of being very similar to</p>
+<p>explore</p>
+<p>to acting on the world in order to learn</p>
+<p>something</p>
+<p>and avoid being</p>
+<p>a state in which the organism backs off</p>
+<p>and tries to figure out what it did</p>
+<p>wrong</p>
+<p>so the the theory has a very rich</p>
+<p>history and i think</p>
+<p>when it's what its current formulation</p>
+<p>uh due to fristen and his colleagues</p>
+<p>brings to it is a large</p>
+<p>body of applicable formalism and in fact</p>
+<p>i would characterize the theory of</p>
+<p>active inference as it's been presented</p>
+<p>as perception and cognition from a</p>
+<p>physics perspective</p>
+<p>and the presentation</p>
+<p>of the theory thus far has been</p>
+<p>primarily in the language of</p>
+<p>classical physics and</p>
+<p>i think that the language of classical</p>
+<p>physics</p>
+<p>is actually seriously</p>
+<p>unsuitable for</p>
+<p>talking about active inference it's</p>
+<p>complicated</p>
+<p>and messy and so</p>
+<p>what i'm going to do today is provide a</p>
+<p>little bit of background</p>
+<p>from a from a more quantum theory</p>
+<p>perspective</p>
+<p>and i consider today just starting with</p>
+<p>a an introductory talk about quantum</p>
+<p>theory but i</p>
+<p>that won't give us quite the background</p>
+<p>that we need for this</p>
+<p>so um</p>
+<p>i won't be quite so uh</p>
+<p>straightforward about quantum theory but</p>
+<p>i am i'm happy to answer any questions</p>
+<p>about it</p>
+<p>and you can go on and on about it as</p>
+<p>shauna knows</p>
+<p>um so what i really want to</p>
+<p>to do is give you another way of looking</p>
+<p>at</p>
+<p>active inference which i would</p>
+<p>characterize as</p>
+<p>physics from the perspective of</p>
+<p>perception and cognition</p>
+<p>so taking the idea of observation</p>
+<p>and reformulating physics using that</p>
+<p>idea</p>
+<p>and you'll recognize from the paper</p>
+<p>there's a</p>
+<p>a a coco diagram</p>
+<p>that's sitting next to something that</p>
+<p>looks a lot like a markov blanket</p>
+<p>so the cocoon diagram represents the</p>
+<p>internal state of some system</p>
+<p>and the external state is completely</p>
+<p>unspecified</p>
+<p>all that's happening out there is some</p>
+<p>dynamics</p>
+<p>and the job of system a is to</p>
+<p>learn as much about system b as it can</p>
+<p>in order to make good predictions so</p>
+<p>this is still</p>
+<p>active inference just from a different</p>
+<p>point of view</p>
+<p>and looking at it this way it gets us</p>
+<p>into</p>
+<p>a a cloud of issues that are</p>
+<p>all related and i hope uh</p>
+<p>by this little introduction to show you</p>
+<p>how they're related at least somewhat</p>
+<p>give you a sense of how they're related</p>
+<p>and</p>
+<p>i'll i'll start this this cycle with</p>
+<p>system identification</p>
+<p>which is the old problem from</p>
+<p>engineering and cybernetics</p>
+<p>of figuring out what system you're</p>
+<p>working with</p>
+<p>and in physics this is typically just</p>
+<p>taken for granted</p>
+<p>and in biology it's often just taken for</p>
+<p>granted</p>
+<p>um but in uh computing theory for</p>
+<p>example</p>
+<p>and in what are called device</p>
+<p>independent protocols in physics now</p>
+<p>it's not taken for granted system</p>
+<p>identification is up for grabs</p>
+<p>intrinsic contextuality is the topic of</p>
+<p>the paper</p>
+<p>and it has to do with the unavoidable</p>
+<p>uncorrectable effects of</p>
+<p>unknown contextual variables on</p>
+<p>measurements being made</p>
+<p>now that's clearly related to the</p>
+<p>question of reference frames</p>
+<p>how am i making my measurements</p>
+<p>and in fact the first formulation of</p>
+<p>contextuality and physics by coca and</p>
+<p>specker</p>
+<p>was about making measurements with</p>
+<p>different kinds of apparatus</p>
+<p>and showing that experimental results</p>
+<p>could vary even for the same</p>
+<p>observable based on how what other</p>
+<p>things were measured at the same time</p>
+<p>this connects to the frame problem from</p>
+<p>ai which is the problem of</p>
+<p>of predicting side effects of your</p>
+<p>actions</p>
+<p>so side effects of making the</p>
+<p>measurement in a particular way would be</p>
+<p>an example</p>
+<p>this gets to the problem of memory if</p>
+<p>you're going to predict</p>
+<p>side effects you have to remember what</p>
+<p>you've done and so</p>
+<p>you have to ask about what are the side</p>
+<p>effects of recording your memory</p>
+<p>someplace because that's a physical</p>
+<p>action and finally we get to the</p>
+<p>question of ensemble sampling</p>
+<p>and the question of what probability</p>
+<p>actually means right prior probability</p>
+<p>is fundamental to bayesian decision</p>
+<p>theory</p>
+<p>but it becomes problematic to say what</p>
+<p>does prior probability</p>
+<p>actually mean and all of these issues</p>
+<p>swirl around at least in my view one</p>
+<p>issue which is the issue of separability</p>
+<p>what does it mean to separate the world</p>
+<p>into a set of systems that then interact</p>
+<p>and separability</p>
+<p>has a very precise meaning in quantum</p>
+<p>theory</p>
+<p>so this is one reason for diving</p>
+<p>immediately into quantum theory</p>
+<p>in quantum theory the notion of</p>
+<p>sufferability</p>
+<p>is defined</p>
+<p>in terms of whether a quantum state</p>
+<p>factors into two quantum states</p>
+<p>so if if i have a system and i can draw</p>
+<p>a boundary</p>
+<p>somewhere in it that divides it into two</p>
+<p>compartments a and b</p>
+<p>then if the joint state the state of the</p>
+<p>entire system a b factors</p>
+<p>into a state of a and a state of b then</p>
+<p>the system is separable</p>
+<p>and otherwise it's entangled</p>
+<p>and entanglement is kind of the natural</p>
+<p>state of systems</p>
+<p>in quantum theory whereas separability</p>
+<p>is the</p>
+<p>the only state of systems in classical</p>
+<p>physics</p>
+<p>so a has a state and b has a state</p>
+<p>and we can specify those two states</p>
+<p>independently of each other</p>
+<p>if this joint system is separate that</p>
+<p>means a and b</p>
+<p>have identities and we can talk about</p>
+<p>their interaction</p>
+<p>so i want to go back in history to the</p>
+<p>18th century and</p>
+<p>and just mention how strange an</p>
+<p>idea this is if you think about</p>
+<p>physics at the time of laplace</p>
+<p>he was mixing the kind of atomism of</p>
+<p>democritus</p>
+<p>the kind of hard sphere irreducible</p>
+<p>particle</p>
+<p>atomism with the dynamics of newton</p>
+<p>and so laplace's world was a bunch of</p>
+<p>atoms each of which was a hard sphere</p>
+<p>a monad and they were moving around</p>
+<p>according to newton's laws</p>
+<p>and newton's laws act instantaneously</p>
+<p>so there's no sense in newton of forces</p>
+<p>being communicated the forces are just</p>
+<p>there and oh this is something that</p>
+<p>newton was aware of</p>
+<p>and here's a quote from nicholas guyson</p>
+<p>who's been very concerned about this</p>
+<p>issue of locality and physics and</p>
+<p>he in fact wrote a beautiful paper</p>
+<p>pointing out that the</p>
+<p>passion for locality in physics is very</p>
+<p>recent</p>
+<p>it comes from einstein einstein invented</p>
+<p>this idea that</p>
+<p>information travels at a finite speed</p>
+<p>before that everything happened</p>
+<p>instantaneously so newton understood</p>
+<p>that if you go up to the moon and move a</p>
+<p>rock</p>
+<p>then everybody's weight on earth changes</p>
+<p>instantly now that's contextuality</p>
+<p>that's a change</p>
+<p>here that happens</p>
+<p>unpreventably due to</p>
+<p>completely unknown events happening</p>
+<p>somewhere else</p>
+<p>so intrinsic contextuality is closely</p>
+<p>linked to non-locality</p>
+<p>now in laplace's world of</p>
+<p>all these atoms obeying newton's laws</p>
+<p>there aren't any boundaries there are no</p>
+<p>boundaries around</p>
+<p>systems like the earth or you or me</p>
+<p>uh or a cannonball so where do those</p>
+<p>boundaries come from</p>
+<p>in a laplacian world they have to be</p>
+<p>imposed from the outside</p>
+<p>so we impose a boundary we slice</p>
+<p>this picture in two and we say those are</p>
+<p>two different systems</p>
+<p>now if you think about that in classical</p>
+<p>physics</p>
+<p>that means that you've created an</p>
+<p>infinite potential</p>
+<p>that separates the particles from each</p>
+<p>other and prevents the newtonian</p>
+<p>dynamics from mixing them up</p>
+<p>and frank tipler several years ago wrote</p>
+<p>a beautiful paper</p>
+<p>published in pnas showing that if you</p>
+<p>just start with laplacian physics</p>
+<p>and you remove these singularities the</p>
+<p>boundaries around objects you get</p>
+<p>quantum theory</p>
+<p>automatically so laplace in a</p>
+<p>sense had a theory very much like</p>
+<p>quantum theory</p>
+<p>and he had a notion of the universe very</p>
+<p>much like entanglement who was full of</p>
+<p>what einstein would later call</p>
+<p>spooky action in the distance</p>
+<p>okay so in this picture where we</p>
+<p>start with the system and we slice it</p>
+<p>down the middle and call the two parts a</p>
+<p>and b we're assuming that there's a</p>
+<p>boundary there</p>
+<p>it's not given to us by the physics</p>
+<p>and we're assuming that it stays</p>
+<p>constant over time</p>
+<p>and in quantum theory unlike classical</p>
+<p>physics</p>
+<p>the dynamics will automatically erase</p>
+<p>this boundary</p>
+<p>so quantum dynamics of an isolated</p>
+<p>system</p>
+<p>is unitary and so it mixes everything</p>
+<p>together into a superposition</p>
+<p>so if we say that a and b can be</p>
+<p>separated</p>
+<p>what we're effectively assuming is a</p>
+<p>weak local interaction</p>
+<p>that's only well defined for a short</p>
+<p>period of time</p>
+<p>because eventually the dynamics of the</p>
+<p>of the</p>
+<p>joint system will erase the boundary</p>
+<p>that we've put there</p>
+<p>okay but if we have</p>
+<p>a separable system and if it's finite</p>
+<p>dimensional</p>
+<p>we have a perfectly general way of</p>
+<p>talking about the interaction we can</p>
+<p>always write the interaction in this</p>
+<p>simple summation form</p>
+<p>uh the whole system interaction which</p>
+<p>i'll call h</p>
+<p>a b with parentheses is the sum of what</p>
+<p>a is doing</p>
+<p>and what b is doing and then how they're</p>
+<p>interacting</p>
+<p>and this interaction can always be</p>
+<p>written</p>
+<p>in the form that i give that i've given</p>
+<p>below which is</p>
+<p>basically a bunch of thermodynamics</p>
+<p>numbers of degrees of freedom</p>
+<p>and kt and some measure of efficiency</p>
+<p>times a sum of operators and those</p>
+<p>operators we can choose a basis where</p>
+<p>those operators have</p>
+<p>binary outcomes so they question they</p>
+<p>correspond to</p>
+<p>asking yes no questions which is what</p>
+<p>john wheeler postulated the very</p>
+<p>foundation of physics was</p>
+<p>just answers to yes no questions but we</p>
+<p>can always do this in quantum theory</p>
+<p>and that's why quantum theory is so nice</p>
+<p>it allows us to</p>
+<p>[Music]</p>
+<p>write down a formalism that explicitly</p>
+<p>describes the interaction between two</p>
+<p>systems</p>
+<p>in terms of exchanging information</p>
+<p>and this depends on an insight that</p>
+<p>boltzmann had</p>
+<p>in the 1870s and it's really this</p>
+<p>insight that that</p>
+<p>gives us quantum theory boltzmann</p>
+<p>realized that</p>
+<p>information always costs energy</p>
+<p>and what this did was rule out</p>
+<p>the way of thinking about measurement</p>
+<p>that one finds in classical physics</p>
+<p>which is that the observer is completely</p>
+<p>detached from the system</p>
+<p>and information flows from the system to</p>
+<p>the observer</p>
+<p>but but that process of observation</p>
+<p>doesn't affect the system and boltzmann</p>
+<p>realized that this simply wasn't true</p>
+<p>observers aren't gods uh if i want to</p>
+<p>get</p>
+<p>information i need to spend some energy</p>
+<p>and that energy flows back into the</p>
+<p>world so by getting some information i'm</p>
+<p>always affecting what's going on so</p>
+<p>from a formal point of view these</p>
+<p>operators</p>
+<p>the mk implement both perception</p>
+<p>and action and that becomes key of</p>
+<p>course to understanding active inference</p>
+<p>because</p>
+<p>active inference is about getting</p>
+<p>information and</p>
+<p>giving information by acting</p>
+<p>okay so to sum this up whenever i have</p>
+<p>a bipartite system that's finite and</p>
+<p>it's separable</p>
+<p>i can write the interaction as</p>
+<p>thermodynamics times</p>
+<p>questions and that looks just like</p>
+<p>classical communication</p>
+<p>i can think of my two systems as agents</p>
+<p>alice and bob they're always called and</p>
+<p>they exchange bit strings</p>
+<p>finite bit strings</p>
+<p>so now let's think of a specific model</p>
+<p>let's suppose that alice and bob are</p>
+<p>each</p>
+<p>uh alternately preparing and then</p>
+<p>measuring</p>
+<p>the states of a bunch of independent</p>
+<p>cubits quantum bits</p>
+<p>and we can think of those as electron</p>
+<p>spins or something like that</p>
+<p>so um alice in some</p>
+<p>time uh prepares in electron spins</p>
+<p>and she hands those to bob and bob</p>
+<p>measures them</p>
+<p>and then bob writes a message by</p>
+<p>preparing the electron spins in some way</p>
+<p>and hands them to alice and alice</p>
+<p>measures them so they've now</p>
+<p>exchanged some bits</p>
+<p>but there's no requirement that they use</p>
+<p>the same z-axis to measure the spins</p>
+<p>so if they use exactly the same z-axis</p>
+<p>to measure their spins then if alice</p>
+<p>writes</p>
+<p>zero zero one bob is going to measure</p>
+<p>one zero</p>
+<p>zero one but if</p>
+<p>alice and bob are using different z-axes</p>
+<p>to measure their spins</p>
+<p>alice will write one zero zero one using</p>
+<p>her z</p>
+<p>axis and bob will get some probability</p>
+<p>distributions over 1 and 0</p>
+<p>for each qubit measuring it with his</p>
+<p>axis</p>
+<p>and the way those probabilities will</p>
+<p>look</p>
+<p>will depend on how tilted his z-axis is</p>
+<p>with respect to analysis</p>
+<p>so this is now an interesting situation</p>
+<p>and this gets to daniel's question about</p>
+<p>shannon information versus other kinds</p>
+<p>information with semantics</p>
+<p>this is a purely quantum system</p>
+<p>there's nothing to introduce any</p>
+<p>classical noise</p>
+<p>so the information exchange is perfectly</p>
+<p>symmetrical</p>
+<p>and completely free of classical noise</p>
+<p>but by using different reference frames</p>
+<p>they introduce quantum noise</p>
+<p>and specifically what they lose is the</p>
+<p>message</p>
+<p>they lose the semantics from the message</p>
+<p>so alice encodes four bits bob gets</p>
+<p>four bits but the code</p>
+<p>may have been lost and the code resides</p>
+<p>in the z-axis if they're using the same</p>
+<p>z-axis they share a code</p>
+<p>if they're not they don't so semantics</p>
+<p>depends on</p>
+<p>shared reference frames and that's what</p>
+<p>shannon information theory</p>
+<p>is missing it's missing the idea of the</p>
+<p>reference frame that's</p>
+<p>used to decode the message</p>
+<p>it's just counting bits so shannon</p>
+<p>theory is just a quantitative theory of</p>
+<p>bits</p>
+<p>a way of counting bits and what we're</p>
+<p>really interested in is decoding</p>
+<p>encoding and decoding so we're really</p>
+<p>interested in reference frames</p>
+<p>and that will be a central theme it is a</p>
+<p>central theme in the paper</p>
+<p>okay so sum up every interaction between</p>
+<p>finite systems and a sufficient joint</p>
+<p>say can be represented in this way</p>
+<p>of two agents and they're separated by</p>
+<p>a set of bits a set of qubits that set</p>
+<p>of qubits can be thought of as a</p>
+<p>holographic screen</p>
+<p>it functions as a markov blanket and the</p>
+<p>information that he codes is completely</p>
+<p>specified it's the eigenvalues of the</p>
+<p>interaction</p>
+<p>written in its hamiltonian form</p>
+<p>so we know everything there is to know</p>
+<p>about an interaction</p>
+<p>in terms of a picture like this and</p>
+<p>these pictures are uh everywhere</p>
+<p>in biology um everyone is now using</p>
+<p>the market mark all blanket concept it's</p>
+<p>very common</p>
+<p>in computer science exactly the same</p>
+<p>concept is called an application</p>
+<p>programming interface</p>
+<p>and it can be plugged down between two</p>
+<p>virtual machines and regulate their</p>
+<p>communication</p>
+<p>in cosmology the holographic principle</p>
+<p>was originally invented to deal with</p>
+<p>stretched horizons and black holes so it</p>
+<p>separates the exterior from the interior</p>
+<p>and it specifies exactly how much</p>
+<p>information can be obtained</p>
+<p>if you're an observer on the exterior</p>
+<p>about the interior</p>
+<p>and it's symmetrical so it also</p>
+<p>specifies exactly what the interior can</p>
+<p>learn about the exterior</p>
+<p>but you also see this concept in</p>
+<p>particle physics if you're thinking of a</p>
+<p>scattering interaction for example</p>
+<p>that's mediated by</p>
+<p>a vector boson of photon or something</p>
+<p>like that</p>
+<p>say it's electromagnetic scattering then</p>
+<p>all of the information is on that vector</p>
+<p>ozone there's no information about</p>
+<p>say entanglement on one side that's</p>
+<p>communicated to the other side</p>
+<p>it's it's just a single value</p>
+<p>a momentum transfer for example that's</p>
+<p>encoded</p>
+<p>by this holographic screen</p>
+<p>okay so where do we take this if we have</p>
+<p>an observer</p>
+<p>and she's got a holographic screen and</p>
+<p>she's interacting with</p>
+<p>the rest of the universe bob then by</p>
+<p>looking at her bit string alice can</p>
+<p>learn very little</p>
+<p>she doesn't know what z-axis bob is</p>
+<p>using so she gets a message but she</p>
+<p>doesn't know what code</p>
+<p>bob used she doesn't know how big bob's</p>
+<p>state space is</p>
+<p>so bob could be a small system could be</p>
+<p>an enormous system</p>
+<p>since she doesn't know the state space</p>
+<p>you can't possibly know bob's state</p>
+<p>she doesn't she doesn't know whether</p>
+<p>bob's state is separable or entangled</p>
+<p>so whether there are any divisions in</p>
+<p>bob that she has to worry about</p>
+<p>uh she doesn't know the dynamics on the</p>
+<p>other side so she can't predict what bob</p>
+<p>will do next</p>
+<p>and all of this is in principle uh</p>
+<p>looking out at the world i actually</p>
+<p>don't know that there are any separate</p>
+<p>objects in it</p>
+<p>i can't based on the information that i</p>
+<p>can get</p>
+<p>at my boundary which is just a set of</p>
+<p>interaction eigenvalues</p>
+<p>and so these questions have to be</p>
+<p>answered some other way they can't</p>
+<p>be answered by observation they have to</p>
+<p>be answered by a generative model</p>
+<p>so hence active inference is based on</p>
+<p>what models predict and</p>
+<p>what quantum theory tells us about</p>
+<p>generative models</p>
+<p>is that they're heuristic by definition</p>
+<p>they</p>
+<p>can't be constructed based on the data</p>
+<p>they're</p>
+<p>only heuristics so where did they come</p>
+<p>from</p>
+<p>and here when we look back at our</p>
+<p>picture our original picture of a joint</p>
+<p>system being divided</p>
+<p>uh recall that this boundary is</p>
+<p>arbitrary</p>
+<p>and it doesn't last very long</p>
+<p>so this joint state isn't separable for</p>
+<p>very long</p>
+<p>and the only asymptotic dynamics the</p>
+<p>only dynamics that's long lasting is the</p>
+<p>joint dynamics</p>
+<p>so alice's generative model</p>
+<p>which is implemented by her dynamics is</p>
+<p>effectively a sample of the joint</p>
+<p>dynamics</p>
+<p>it's just a temporary sample of what</p>
+<p>would be going on</p>
+<p>anyway if there was no division</p>
+<p>so it makes sense that alice's</p>
+<p>generative model</p>
+<p>contains information about the world but</p>
+<p>that information</p>
+<p>did not come from observation it came</p>
+<p>from</p>
+<p>the time before the boundary was imposed</p>
+<p>and it will still be there after the</p>
+<p>boundary goes away</p>
+<p>okay another thing that quantum theory</p>
+<p>adds to the acting inference picture</p>
+<p>is that it recognizes that all of the</p>
+<p>energy that's required to run the</p>
+<p>calculations</p>
+<p>also has to come through the markov</p>
+<p>blanket</p>
+<p>so if you think about the states</p>
+<p>on a holographic screen a markov blanket</p>
+<p>of any information encoding</p>
+<p>if that interface is the only interface</p>
+<p>between the two systems which is how</p>
+<p>we've defined it here</p>
+<p>then some fraction of those bits can't</p>
+<p>be informative because they have to be</p>
+<p>burned as fuel so by definition they're</p>
+<p>meaningless</p>
+<p>now this tells us again something very</p>
+<p>deep which is that</p>
+<p>the context of a measurement of can</p>
+<p>never be specified</p>
+<p>completely and that again is in</p>
+<p>principle</p>
+<p>because some of the information on the</p>
+<p>blanket has to be burned as fuel</p>
+<p>and we see this on the output side too</p>
+<p>of course</p>
+<p>of some of my output</p>
+<p>on the world some of my action on the</p>
+<p>world</p>
+<p>is just dissipating what for me is waste</p>
+<p>heat</p>
+<p>and i have no control over that that's</p>
+<p>part of my metabolism</p>
+<p>but i'm side affecting the world all the</p>
+<p>time by</p>
+<p>dissipating this waste heat which i</p>
+<p>don't</p>
+<p>think of as an action but which is an</p>
+<p>action from the point of view of the</p>
+<p>physics</p>
+<p>so here again we have an addition to</p>
+<p>the theory that we get from thinking</p>
+<p>about the dynamics from a quantum</p>
+<p>physics point of view instead of a</p>
+<p>classical physics point of view</p>
+<p>okay so this is the picture i showed</p>
+<p>before</p>
+<p>this set of qubits is the markov blanket</p>
+<p>of generated model is represented by</p>
+<p>this</p>
+<p>coconut diagram and</p>
+<p>it becomes clear of what the generative</p>
+<p>model is it's a combination of a</p>
+<p>reference frame</p>
+<p>and some combination some computation</p>
+<p>and it's clear what it does it</p>
+<p>specifies the option space for</p>
+<p>both perception and action it encodes</p>
+<p>everything that's detectable</p>
+<p>in everything that's actionable about b</p>
+<p>4a so here just a couple of cartoons</p>
+<p>for example if alice looks out in the</p>
+<p>world and what she sees</p>
+<p>is a red rectangle interacting with a</p>
+<p>green diamond by some</p>
+<p>interaction then she must have reference</p>
+<p>frames for</p>
+<p>seeing rectangles and diamonds and she</p>
+<p>must have</p>
+<p>state observables for red and green and</p>
+<p>she must have a</p>
+<p>memory so that she can keep track of</p>
+<p>what's going on with those state</p>
+<p>observables long enough to construct</p>
+<p>this picture of an interaction</p>
+<p>so all of the semantics is inside the</p>
+<p>observer it has to be provided by these</p>
+<p>structures</p>
+<p>inside the observable observer so the</p>
+<p>semantics that's imposed on the world</p>
+<p>is imposed it comes from the generative</p>
+<p>model</p>
+<p>it's not out there in any sense</p>
+<p>part of of what the observer has to do</p>
+<p>is write</p>
+<p>memories if the observer is going to see</p>
+<p>change and since memories are classical</p>
+<p>data those memories are effectively</p>
+<p>written back in the blanket because the</p>
+<p>blanket is the only place where any</p>
+<p>classical data live</p>
+<p>so we can we can infer from this that if</p>
+<p>a memory looks internal to a system</p>
+<p>that system has to have</p>
+<p>intercompartmental boundaries inside it</p>
+<p>to to write those memories on so this</p>
+<p>actually tells us something gives us an</p>
+<p>expectation of physiology</p>
+<p>in organisms or in any sort of</p>
+<p>artificial structure that</p>
+<p>memories have to be written on</p>
+<p>boundaries of some sort</p>
+<p>so again here's this this swirl of</p>
+<p>issues</p>
+<p>that all surround this question of</p>
+<p>separability</p>
+<p>of the world being separated into</p>
+<p>distinct</p>
+<p>pieces and i've mentioned all of them</p>
+<p>now except the frame problem</p>
+<p>which is the problem of predicting side</p>
+<p>effects</p>
+<p>and clearly if you don't have</p>
+<p>access to the dynamics outside you</p>
+<p>and you don't have access to all of your</p>
+<p>actions</p>
+<p>because some of them are just heat</p>
+<p>dissipation</p>
+<p>you can't possibly predict side effects</p>
+<p>all side effects so the frame problem is</p>
+<p>unsolvable in principle</p>
+<p>in this setting</p>
+<p>so in this paper what gemini set out to</p>
+<p>do</p>
+<p>was to construct a general</p>
+<p>representation of</p>
+<p>these reference frames and because</p>
+<p>they're physically implemented they're</p>
+<p>quantum reference frames they're not</p>
+<p>just</p>
+<p>abstracted and</p>
+<p>these things specify both what the agent</p>
+<p>can expect</p>
+<p>and what the agent could do so they</p>
+<p>completely define the option space</p>
+<p>for active inference for the agent so by</p>
+<p>having a general representation of the</p>
+<p>agent's reference frames we know</p>
+<p>in a sense everything interesting to</p>
+<p>know about the agent</p>
+<p>then we wanted to distinguish the</p>
+<p>reference frames that can be used</p>
+<p>simultaneously and these are the</p>
+<p>co-deployable reference frames from</p>
+<p>those that can't</p>
+<p>and the distinction again is given to us</p>
+<p>by quantum theory it's just</p>
+<p>operator commutativity so for example i</p>
+<p>can't</p>
+<p>deploy position and momentum at the same</p>
+<p>time because</p>
+<p>those operators don't commute</p>
+<p>they side affect each other it's the</p>
+<p>other way to think of it</p>
+<p>and physics is full of operators that</p>
+<p>don't commute</p>
+<p>so my my action</p>
+<p>space is is not unitary it's</p>
+<p>segmented into uh sets of things that i</p>
+<p>can't do at the same time</p>
+<p>without introducing contextuality</p>
+<p>so we showed that this</p>
+<p>non-co-deployability of reference frames</p>
+<p>actually induces intrinsic contextuality</p>
+<p>as it's defined in the literature</p>
+<p>what that means is that it creates</p>
+<p>undefined joint probability</p>
+<p>distributions</p>
+<p>um not just probability distributions</p>
+<p>that are difficult to make sense of</p>
+<p>or that needs some information added to</p>
+<p>them</p>
+<p>but probability distributions that</p>
+<p>actually can't be consistently defined</p>
+<p>why not because there's the information</p>
+<p>that would have to be specified</p>
+<p>to make them well behaved as information</p>
+<p>that you can't have</p>
+<p>that you can't get even in principle</p>
+<p>and then our final objective was to tie</p>
+<p>this explicitly to the frame problem</p>
+<p>which is</p>
+<p>a canonical problem that artificial</p>
+<p>intelligence</p>
+<p>discovered by mccarthy and hayes back in</p>
+<p>1969</p>
+<p>the unpredictability of side effects</p>
+<p>so that's that's it for my introduction</p>
+<p>kind of context setting</p>
+<p>and i am happy to</p>
+<p>um as soon as i can get to this button</p>
+<p>again</p>
+<p>switch to discussion</p>
+<p>chris thank you so much for that there</p>
+<p>it is</p>
+<p>yep we got it now thanks so much for</p>
+<p>that</p>
+<p>really amazing presentation i'm sure</p>
+<p>everybody was having some pretty</p>
+<p>interesting thoughts from what you were</p>
+<p>communicating really though thanks again</p>
+<p>for coming on the stream</p>
+<p>so um for those who are here please</p>
+<p>write down your questions</p>
+<p>and then when you ask your question</p>
+<p>let's stop after the question so that we</p>
+<p>can get a response to that</p>
+<p>question and not continue on with the</p>
+<p>question and then we'll</p>
+<p>raise our hands to hear from everyone so</p>
+<p>i'm gonna first ask a question from the</p>
+<p>chat and then stephen i saw you raise</p>
+<p>your hand so anyone else</p>
+<p>raise your hand otherwise there's a</p>
+<p>couple questions from the chat</p>
+<p>so here's the first question from the</p>
+<p>chat can the context-based paradigm</p>
+<p>especially quantum contextuality help to</p>
+<p>answer</p>
+<p>how does spontaneously generated thought</p>
+<p>arise in the brain</p>
+<p>if yes how how do you see this relating</p>
+<p>to the brain</p>
+<p>um good question</p>
+<p>um i</p>
+<p>actually suspect that</p>
+<p>all cells are quantum computers</p>
+<p>and that to to really get a handle on</p>
+<p>information processing in cells</p>
+<p>we'll eventually have to use quantum</p>
+<p>information theory</p>
+<p>and the the reason for that is that</p>
+<p>cellular energy budgets are really</p>
+<p>small and and place a pretty strict</p>
+<p>upper a strict upper limit</p>
+<p>on how much classical information cells</p>
+<p>can encode</p>
+<p>and that upper limit is much</p>
+<p>much smaller than the information</p>
+<p>required to encode</p>
+<p>things like protein confirmation</p>
+<p>so i think that that cells are</p>
+<p>in fact uh devices where</p>
+<p>contextuality and entanglement play a</p>
+<p>role</p>
+<p>now what what spontaneous thought means</p>
+<p>i'm not sure oh</p>
+<p>i'm um</p>
+<p>very sympathetic to</p>
+<p>the idea that thoughts</p>
+<p>are and emotions and and everything else</p>
+<p>that we experience</p>
+<p>[Music]</p>
+<p>just the experience tip of a very large</p>
+<p>iceberg that we don't experience</p>
+<p>so i think our experiential</p>
+<p>access to</p>
+<p>what our minds are doing is extremely</p>
+<p>limited</p>
+<p>and um</p>
+<p>so how how what we actually experience</p>
+<p>as a as it were rises to the surface is</p>
+<p>uh a good question</p>
+<p>i tend to think that global workspace</p>
+<p>type theories</p>
+<p>are a good classical answer to that</p>
+<p>but all of those ideas</p>
+<p>i think will eventually need to be put</p>
+<p>in a</p>
+<p>much better mathematical framework</p>
+<p>thank you for the answer that's a long</p>
+<p>way of saying i don't know</p>
+<p>but it's what spontaneously came to mind</p>
+<p>so how could we ask for anything else</p>
+<p>stephen and then anyone else who wants</p>
+<p>to raise their hand</p>
+<p>yeah thank you um i was just curious um</p>
+<p>you mentioned</p>
+<p>sort of the quantum noise and the the</p>
+<p>the way that if you um have</p>
+<p>the z-axis um that you if you don't have</p>
+<p>the z-axis you can't decode</p>
+<p>back the information and often with</p>
+<p>quantum</p>
+<p>effects it's like it's when you have</p>
+<p>very low</p>
+<p>uh degrees of freedom for like a</p>
+<p>molecule or something that you</p>
+<p>particularly can see it</p>
+<p>compared to you know when it's in the</p>
+<p>melor of many degrees of freedom</p>
+<p>so i'm wondering if there's like a um</p>
+<p>certain scales where like</p>
+<p>the the interactions are in the cell or</p>
+<p>molecules are very quantum</p>
+<p>like and then it becomes more contextual</p>
+<p>and a bit more blurry and then another</p>
+<p>scale it becomes a</p>
+<p>bit more quantum like maybe once you</p>
+<p>start to get to brainwaves interacting</p>
+<p>and is the contextuality piece</p>
+<p>moving it in a way it's another way of</p>
+<p>moving it in and out of a more classical</p>
+<p>um kind of noisy space</p>
+<p>um so that it's like where it's got more</p>
+<p>um</p>
+<p>noise and it's less easy to see sort of</p>
+<p>more distinct quantum effects</p>
+<p>so i was wondering like is there</p>
+<p>particular scales at which</p>
+<p>you see the quantum effect being more</p>
+<p>like you think a traditional quantum</p>
+<p>like flipping between states</p>
+<p>um and if there's other scales where</p>
+<p>it's much more</p>
+<p>like fristen talks about this kind of</p>
+<p>non-linear</p>
+<p>miller</p>
+<p>great</p>
+<p>yeah that's that's a very good question</p>
+<p>is the question about</p>
+<p>is there a quantum to classical</p>
+<p>transition and if so where</p>
+<p>and</p>
+<p>that that question is typically posed in</p>
+<p>terms of decoherence</p>
+<p>and in in</p>
+<p>biological systems um</p>
+<p>estimates of decoherence times are</p>
+<p>anywhere from</p>
+<p>femtoseconds down</p>
+<p>there's the famous paper by tegmark from</p>
+<p>2000</p>
+<p>uh criticizing the hammer off penrose</p>
+<p>theory where</p>
+<p>um his argument against hammer off and</p>
+<p>penrose is basically the d coherence</p>
+<p>happen many orders of magnitude faster</p>
+<p>than</p>
+<p>than any cognitive processes or any</p>
+<p>neuronal processes</p>
+<p>so based on that type of reasoning</p>
+<p>biochemistry is thought of as being</p>
+<p>classical</p>
+<p>somewhere above the say finto second</p>
+<p>type of time scale</p>
+<p>so molecular dynamics calculations</p>
+<p>are basically classical when they're in</p>
+<p>like finto second types of time steps</p>
+<p>and that introduces the question of what</p>
+<p>is noise</p>
+<p>right what what does it mean to say that</p>
+<p>there's thermal noise in a system</p>
+<p>um when we think about thermal noise</p>
+<p>classically for example we might think</p>
+<p>about a protein</p>
+<p>that's sitting in a bath of</p>
+<p>water and the water molecules are</p>
+<p>thermally excited so they're banging</p>
+<p>into the protein like</p>
+<p>little billiard balls and that's in fact</p>
+<p>one way of</p>
+<p>thinking about a decoherence model</p>
+<p>so what we've introduced here is</p>
+<p>this idea of a temporal sample</p>
+<p>that we're looking at the protein</p>
+<p>molecule for a long enough period</p>
+<p>that the water molecules have had a</p>
+<p>chance to bang</p>
+<p>into it from many different directions</p>
+<p>and we're somehow averaging over that</p>
+<p>temporal sample</p>
+<p>so that gets to this question of</p>
+<p>ergodicity that came up in the earlier</p>
+<p>discussion</p>
+<p>and it it makes us ask how</p>
+<p>am i implementing this this temporal</p>
+<p>sample and</p>
+<p>the the obvious answer is i'm</p>
+<p>implementing this temporal temporal</p>
+<p>sample by</p>
+<p>measuring the state of the protein in a</p>
+<p>particular way so i'm i'm using</p>
+<p>an enzyme say to to measure the state of</p>
+<p>the protein</p>
+<p>and the the enzymatic reaction has some</p>
+<p>particular time constant</p>
+<p>so it takes a certain amount of time</p>
+<p>for the enzymatic reaction to take place</p>
+<p>and during that time the protein may be</p>
+<p>wiggling around</p>
+<p>so i think that that all of these</p>
+<p>questions about classicality</p>
+<p>in the end come down to questions about</p>
+<p>measurement</p>
+<p>and the temporal resolution of</p>
+<p>measurements</p>
+<p>implemented by something an instrument</p>
+<p>or another part of the biological system</p>
+<p>or an observer of some kind</p>
+<p>so this is a this is kind of a long way</p>
+<p>of saying</p>
+<p>that i suspect that this question of</p>
+<p>classicality is</p>
+<p>always a question of observation</p>
+<p>and the the sort of coin in picture that</p>
+<p>that i outlined implies that</p>
+<p>the classical information only exists</p>
+<p>on the mark on blanket that there's no</p>
+<p>classical information anywhere else in</p>
+<p>the system</p>
+<p>so classical information may not</p>
+<p>in a sense be ontological at all</p>
+<p>there may be no ontological classicality</p>
+<p>uh if this kind of communication picture</p>
+<p>is correct</p>
+<p>now if that's the case noise is</p>
+<p>um epistemological</p>
+<p>noise is an artifact of making the</p>
+<p>observations in a certain way</p>
+<p>with a certain reference frame right an</p>
+<p>instrument is just a reference frame</p>
+<p>thank you for the deep answer chris</p>
+<p>we're gonna go</p>
+<p>blue scott and then a question from the</p>
+<p>chat</p>
+<p>hi chris thanks for the um</p>
+<p>contextualization</p>
+<p>talk that was really nice um so</p>
+<p>i just was wondering you just mentioned</p>
+<p>earlier like the prospect</p>
+<p>of each cell being a quantum computer</p>
+<p>and i'm also like i have a similar kind</p>
+<p>of thought or</p>
+<p>theory and i just was wondering if</p>
+<p>you've heard of like quantum cognition</p>
+<p>and the positive molecule with the idea</p>
+<p>of these</p>
+<p>entangled pyrophosphates as as holding</p>
+<p>kind of quantum cognition cellularly</p>
+<p>have you heard this theory and</p>
+<p>do you think it's credible or do you</p>
+<p>have other</p>
+<p>suppositions as to where this quantum</p>
+<p>cognition could occur</p>
+<p>intracellularly</p>
+<p>i've certainly</p>
+<p>heard and seen various studies of</p>
+<p>localized quantum effects</p>
+<p>in particular molecular structures</p>
+<p>so</p>
+<p>stacked pi domains and and so on and</p>
+<p>there's the whole story about</p>
+<p>uh is there quantum coherence in</p>
+<p>um um</p>
+<p>goodness i've just dropped the word</p>
+<p>light harvesting molecules or</p>
+<p>electron transport or something like</p>
+<p>that</p>
+<p>and um you know there's the</p>
+<p>hemorrhage theory that there's that</p>
+<p>there's quantum processing in</p>
+<p>microtubules</p>
+<p>and in all of these approaches</p>
+<p>one is thinking about a quantum</p>
+<p>process happening in a background</p>
+<p>of a classical cell once one's thinking</p>
+<p>the rest of the of the biochemical</p>
+<p>situation as being classical a classical</p>
+<p>environment of some kind</p>
+<p>in which this single quantum process is</p>
+<p>happening</p>
+<p>and as i sort of expressed in</p>
+<p>in answering the last question i</p>
+<p>i suspect that that entire way of</p>
+<p>thinking is</p>
+<p>probably wrong</p>
+<p>that we we can't actually think of</p>
+<p>bulk biochemistry as being classical</p>
+<p>so um trying to think of</p>
+<p>a particular event as being</p>
+<p>a quantum event against a classical</p>
+<p>background</p>
+<p>may just be misleading us about what's</p>
+<p>how information processing is actually</p>
+<p>occurring</p>
+<p>and if we think of of the interior of a</p>
+<p>cell</p>
+<p>say the entire interior of something</p>
+<p>like a bacterial cell</p>
+<p>as being in one coherent state</p>
+<p>then um it's not that</p>
+<p>that their particular quantum molecular</p>
+<p>states</p>
+<p>is it's that the entire interior is one</p>
+<p>big entangled mess</p>
+<p>that demands a very different way of</p>
+<p>thinking about biochemistry and</p>
+<p>i don't even know how to formulate</p>
+<p>that way of thinking about biochemistry</p>
+<p>but i suspect that approaching it as a</p>
+<p>as a quantum information</p>
+<p>problem where we're extremely</p>
+<p>explicit about where measurements are</p>
+<p>made</p>
+<p>would be what would have to be done</p>
+<p>thanks chris really amazing about the</p>
+<p>relational</p>
+<p>and the semantic biochemistry that's not</p>
+<p>how we got it in 103.</p>
+<p>so scott and then a question from the</p>
+<p>chat</p>
+<p>chris thank you that's a absolutely</p>
+<p>fascinating presentation</p>
+<p>a number of questions but i'll just ask</p>
+<p>one or two</p>
+<p>um one of the challenges of quantum</p>
+<p>physics</p>
+<p>or challenges to quantum physics being</p>
+<p>applied in the macro level</p>
+<p>is that you know don't take people have</p>
+<p>said don't take the concepts and apply</p>
+<p>them to social constructions and things</p>
+<p>like that</p>
+<p>but here the um origin of the</p>
+<p>active inference notions or the</p>
+<p>relationship to the acupuncturist</p>
+<p>suggests to me um the opportunity</p>
+<p>to look at phenomenon of much larger</p>
+<p>systems larger scale</p>
+<p>social scale um and so</p>
+<p>i wonder about your um uh acceptance or</p>
+<p>enthusiasm for that notion of</p>
+<p>applying these ideas</p>
+<p>to uh social systems political systems</p>
+<p>economic systems other systems that have</p>
+<p>interactions that can be described with</p>
+<p>active inference</p>
+<p>um and this feels to me like a nice way</p>
+<p>to say hey</p>
+<p>we're talking about quantum politics</p>
+<p>quantum</p>
+<p>markets we're talking about uh prionic</p>
+<p>governance with conformational changes</p>
+<p>of narratives</p>
+<p>um and so a lot of the work that we've</p>
+<p>been doing on the information</p>
+<p>side is gonna is i've been saying</p>
+<p>without knowing you've explained to me</p>
+<p>what i've been trying to say for years</p>
+<p>now</p>
+<p>in this talk and i've been saying</p>
+<p>without</p>
+<p>knowing why that data plus meaning</p>
+<p>equals information</p>
+<p>and the meaning part is what you just</p>
+<p>explained to me what i meant by meaning</p>
+<p>and i always thought of it i was a</p>
+<p>lawyer for 30 years so i always thought</p>
+<p>of it as the meaning like a contract</p>
+<p>with an enforceable</p>
+<p>narrative which is meaning but you've</p>
+<p>just given me a new way of looking at</p>
+<p>that meaning from a quantum perspective</p>
+<p>which is extremely robust</p>
+<p>and scale independent i just wonder</p>
+<p>about your comments on that and your</p>
+<p>enthusiasm for that kind of application</p>
+<p>thanks oh thank you that's</p>
+<p>that's a very interesting observation</p>
+<p>um</p>
+<p>i think the experiments are going to be</p>
+<p>very difficult</p>
+<p>but i think if we can figure out how to</p>
+<p>do the experiments</p>
+<p>we're going to find contextuality and</p>
+<p>entanglement</p>
+<p>kinds of effects all over the place</p>
+<p>and i would i would point you to the</p>
+<p>work of</p>
+<p>of uh atamar zad zafarov and his</p>
+<p>colleagues some of which</p>
+<p>is referenced in the paper</p>
+<p>in in their formulation called</p>
+<p>contextuality by default</p>
+<p>what they've done is</p>
+<p>translate this kind of most standard</p>
+<p>model of</p>
+<p>quantum contextuality into classical</p>
+<p>probability theory</p>
+<p>and and given this criterion of</p>
+<p>if a classical probability a consistent</p>
+<p>classical probability</p>
+<p>distribution cannot be defined over a</p>
+<p>set of data</p>
+<p>then it displays contextuality</p>
+<p>and they they published a</p>
+<p>series of papers in the past four or</p>
+<p>five years</p>
+<p>on this approach and one of them</p>
+<p>deconstructs a large number of claims of</p>
+<p>quantum effects in psychological data</p>
+<p>which have been reported now by numerous</p>
+<p>groups around the world</p>
+<p>with various kinds of experimental</p>
+<p>protocols</p>
+<p>and there's active controversy between</p>
+<p>members of these different groups about</p>
+<p>what is and is not evidence of quantum</p>
+<p>behavior</p>
+<p>so it's an enormous literature now</p>
+<p>but using the contextuality by default</p>
+<p>approach</p>
+<p>zafrov and colleagues</p>
+<p>his student cervantes is one of the lead</p>
+<p>people</p>
+<p>who's done this work have</p>
+<p>constructed extremely careful</p>
+<p>experiments</p>
+<p>where under their their best criteria</p>
+<p>there are robust intrinsic contextuality</p>
+<p>effects</p>
+<p>and interestingly they have to do with</p>
+<p>meaning</p>
+<p>so one that we refer to in the uh</p>
+<p>in the paper is called the snow queen</p>
+<p>experiment and it's based on</p>
+<p>uh interpretations of the hans christian</p>
+<p>andersen story</p>
+<p>so i think that as</p>
+<p>as the tools and techniques for</p>
+<p>developing these these kinds of</p>
+<p>experimental protocols are improved</p>
+<p>uh we're going to see more and more uh</p>
+<p>effects that are</p>
+<p>very very difficult to challenge from a</p>
+<p>statistical point of view</p>
+<p>i mean the problem is as therefore often</p>
+<p>and i'll point out</p>
+<p>is that in physics if i'm doing</p>
+<p>something like a bell experiment</p>
+<p>i can put my two observers far enough</p>
+<p>apart that they can't communicate</p>
+<p>just due to the speed of light in the</p>
+<p>time it takes to do the experiment</p>
+<p>and you can't do that in biological</p>
+<p>systems</p>
+<p>so you always have this communication</p>
+<p>loophole</p>
+<p>to deal with and what what zafrovan and</p>
+<p>colleagues are really trying to do is</p>
+<p>develop the statistical analysis</p>
+<p>techniques</p>
+<p>uh to get around the communication</p>
+<p>loophole in an arbitrary experiment</p>
+<p>you know carried out with college</p>
+<p>undergraduates</p>
+<p>and i think they've been successful</p>
+<p>thanks for the response so we're gonna</p>
+<p>go</p>
+<p>to a question in the chat and then if</p>
+<p>anyone here</p>
+<p>who hasn't raised their hand yet raises</p>
+<p>their hand otherwise we'll go back to um</p>
+<p>someone who has</p>
+<p>so this is from sudakar in the chat how</p>
+<p>will an</p>
+<p>agent acquire information for their</p>
+<p>generative model</p>
+<p>you've uh said that there has to be some</p>
+<p>heuristic to infer</p>
+<p>the information even from the joint</p>
+<p>world and you said that the object</p>
+<p>semantics have to be inside the observer</p>
+<p>but how does the observer</p>
+<p>learn that in the first place for their</p>
+<p>generative model</p>
+<p>that's that's an excellent question and</p>
+<p>again i the only answer i can give is i</p>
+<p>don't know</p>
+<p>i'll but i think that i think that</p>
+<p>biology gives us</p>
+<p>hints</p>
+<p>if you look at the process of cell</p>
+<p>which is one of the best examples of of</p>
+<p>separation that we</p>
+<p>have to deal with that we can really</p>
+<p>manipulate in the laboratory</p>
+<p>then and if you ask how much information</p>
+<p>is</p>
+<p>is shared between the daughter cells</p>
+<p>well clearly their genomes are shared</p>
+<p>but the genome is only a very tiny part</p>
+<p>of the shared information</p>
+<p>they also share information that's</p>
+<p>encoded in their cytoskeletons</p>
+<p>they share information that's encoded in</p>
+<p>the cell membrane</p>
+<p>they share information that's encoded in</p>
+<p>the cytoplasm itself</p>
+<p>they may share aspects of their</p>
+<p>bioelectric states</p>
+<p>so there's a lot of information</p>
+<p>that is inherited if you will across</p>
+<p>cell division</p>
+<p>and most of it has not been quantitated</p>
+<p>in in any reasonable way i mean it's</p>
+<p>easy to quantitate the information in</p>
+<p>dna or protein</p>
+<p>but it's extremely difficult to</p>
+<p>quantitate this other information</p>
+<p>and i'll just give you one example of</p>
+<p>that's from my colleague mike levin's</p>
+<p>lab at</p>
+<p>tufts they work on regeneration and</p>
+<p>planaria</p>
+<p>and they've been able to show um</p>
+<p>experimentally</p>
+<p>that it's been known it's been known for</p>
+<p>quite some time that if you</p>
+<p>alter the</p>
+<p>ability of cells to communicate</p>
+<p>bioelectrically</p>
+<p>then you can get planaria to regenerate</p>
+<p>with two heads instead of one</p>
+<p>but what mike's lab was able to show</p>
+<p>is that this is epigenetically heritable</p>
+<p>so planaria that looked perfectly normal</p>
+<p>may have inherited the tendency to</p>
+<p>regenerate with two heads after injury</p>
+<p>and this happens without changing dna</p>
+<p>without changing rna without changing</p>
+<p>protein content without changing any of</p>
+<p>the kind of obviously</p>
+<p>inheritable factors</p>
+<p>and have been able to show</p>
+<p>experimentally that the bioelectric</p>
+<p>effect happens</p>
+<p>first before the observable changes in</p>
+<p>gene expression</p>
+<p>so here's a case where a completely</p>
+<p>uh unlooked form kind of information</p>
+<p>is epigenetically inheritable and makes</p>
+<p>a huge difference to what the animal</p>
+<p>does</p>
+<p>with his with his physiology with its</p>
+<p>anatomy i mean the the two-headed</p>
+<p>planaria have two perfectly good</p>
+<p>operational brains that are</p>
+<p>independently able to direct behavior</p>
+<p>uh so they're they're pretty weird</p>
+<p>creatures</p>
+<p>thanks for the response and just briefly</p>
+<p>that's one reason why the information is</p>
+<p>in the genome kind of zoolander</p>
+<p>take doesn't work well because that's</p>
+<p>assuming there's this map</p>
+<p>between the source code in the program</p>
+<p>but then there's these alternate stable</p>
+<p>states that exist</p>
+<p>because the semantic or the epigenetic</p>
+<p>or the environmental frame</p>
+<p>so it's not quite as simple as just this</p>
+<p>one mapping that you made</p>
+<p>so that's a really nice point all right</p>
+<p>we're gonna have</p>
+<p>sarah and then shauna and then a</p>
+<p>question from chat</p>
+<p>thank you go ahead sarah yeah i</p>
+<p>um i have almost like two different</p>
+<p>questions or directions and i'm not sure</p>
+<p>how they're gonna match so i'll just</p>
+<p>start with one and see where it goes</p>
+<p>um one it seems to me like the</p>
+<p>the the way you frame the quantum um set</p>
+<p>up you know you have a you have b</p>
+<p>you could actually kind of do this with</p>
+<p>any problem it's probabilistic type</p>
+<p>notation that you're using but</p>
+<p>you know you have a you have b they have</p>
+<p>the joint distribution of the two</p>
+<p>and um it seems like</p>
+<p>i i guess the question that comes to my</p>
+<p>mind is like what happens</p>
+<p>when we don't if if we were</p>
+<p>hypothetically because i know our world</p>
+<p>is constructed around reductionism but</p>
+<p>if we were hypothetically able to</p>
+<p>separate out</p>
+<p>or to not think of things as um</p>
+<p>reductionist you know and so like for</p>
+<p>example</p>
+<p>um how would our how could our math</p>
+<p>possibly be different if</p>
+<p>we were looking at things as only</p>
+<p>spanning sets rather than eigenvalues</p>
+<p>and eigenvectors</p>
+<p>um yeah so this is kind of where my mind</p>
+<p>goes is like</p>
+<p>is there a is there even a kind of a way</p>
+<p>to approach a problem</p>
+<p>purely through contextuality rather than</p>
+<p>than you know reductionism of any kind</p>
+<p>that's yeah</p>
+<p>hmm</p>
+<p>i don't know on the on the math front i</p>
+<p>may actually defer to shauna here</p>
+<p>because</p>
+<p>as she she does know much more category</p>
+<p>theory than i do and i suspect the</p>
+<p>answer is a category theoretic type of</p>
+<p>answer</p>
+<p>but i'll make one comment which is that</p>
+<p>reductionism is one of these complicated</p>
+<p>words that has many different meanings</p>
+<p>for many different people</p>
+<p>but one way to think about</p>
+<p>what we're doing in quantum theory is</p>
+<p>merely labeling</p>
+<p>and we're labeling things for</p>
+<p>convenience with the full</p>
+<p>understanding that our labels</p>
+<p>in a sense don't have any physical</p>
+<p>meaning</p>
+<p>they they only have meaning</p>
+<p>in the context of particular</p>
+<p>observational outcomes</p>
+<p>that we've made by measuring things in a</p>
+<p>certain way</p>
+<p>but that in itself is a problematic</p>
+<p>statement right and this is</p>
+<p>this is in a sense the core of the</p>
+<p>copenhagen interpretation it's</p>
+<p>it's what bohr talked about in his</p>
+<p>paper in nature in 1928.</p>
+<p>uh he basically said at the end of the</p>
+<p>day</p>
+<p>we have to talk about apparatus and we</p>
+<p>have to talk about</p>
+<p>colleagues and we have to talk about</p>
+<p>classical communication</p>
+<p>and in a sense quantum theory tells us</p>
+<p>that</p>
+<p>all of that is um</p>
+<p>a poor approximation</p>
+<p>but it's the only language that we've</p>
+<p>got</p>
+<p>so uh i i think this this</p>
+<p>question of of how far can we go</p>
+<p>without uh reifying</p>
+<p>separation is a very good question</p>
+<p>and as usual my answer is i don't know</p>
+<p>awesome thanks for the response you have</p>
+<p>any thoughts yeah let's go</p>
+<p>oh yeah i wonder if i should um ask my</p>
+<p>two</p>
+<p>yeah category theory is really powerful</p>
+<p>and when chris says there's only one</p>
+<p>logic no no no he and i are trying to</p>
+<p>find another one</p>
+<p>something called like a chromatic types</p>
+<p>and i was actually going to ask you</p>
+<p>chris if you think</p>
+<p>you know the phenomena of regeneration i</p>
+<p>think could actually be modeled by when</p>
+<p>we're trying to do that chromatic</p>
+<p>filtration</p>
+<p>right it seems like regeneration seems</p>
+<p>to be some kind of um</p>
+<p>morphism equivalent of when the stop</p>
+<p>mechanism is what does it mean to stop</p>
+<p>maybe that means stop means</p>
+<p>not making more morphisms and the two</p>
+<p>had a panera like actually has a two</p>
+<p>category structure</p>
+<p>right that has a one morphism and a two</p>
+<p>morphism and i think that's what's</p>
+<p>controlling the central nervous system</p>
+<p>right that it if you can have two</p>
+<p>morphisms and you could have this double</p>
+<p>head kind of thing</p>
+<p>and so whatever the stop mechanism is i</p>
+<p>think it's almost like</p>
+<p>remember when i was showing you those</p>
+<p>filtrations how you could actually</p>
+<p>make more equivalences and more</p>
+<p>equivalences using that boost field</p>
+<p>localization</p>
+<p>so i think you know there's another one</p>
+<p>called the topological localization</p>
+<p>where the objects and the categories are</p>
+<p>reflections and that might be</p>
+<p>what might help um sar a little bit is</p>
+<p>that there's</p>
+<p>different categorical models for</p>
+<p>interaction anything interaction based</p>
+<p>should be immediately category here i</p>
+<p>think the tensor network step</p>
+<p>fails because like a node is just a</p>
+<p>point</p>
+<p>but in category theory you can add space</p>
+<p>to that point</p>
+<p>by making the point something else and</p>
+<p>then you're working in this modulized</p>
+<p>space</p>
+<p>so that was my thought that about like</p>
+<p>spawn and you know when you were talking</p>
+<p>about spontaneous thoughts whoever had</p>
+<p>the question about that</p>
+<p>i mean i also think that like our work</p>
+<p>on the pro finite condition chris could</p>
+<p>also account for like</p>
+<p>thought whatever that is right because</p>
+<p>um</p>
+<p>the thought doesn't really last right</p>
+<p>voice speech doesn't last the speech</p>
+<p>fades based on the composition of the</p>
+<p>molecules in the air but something</p>
+<p>remains i mean we all</p>
+<p>continue it seems to be that holographic</p>
+<p>copy of the pro finitely mini right in</p>
+<p>the diamonds and stuff</p>
+<p>so i just want so for syria you know i</p>
+<p>think a bunch of this category theory</p>
+<p>could really help you with uh</p>
+<p>you know uh you know it's like you have</p>
+<p>this object and topology called like a</p>
+<p>sheaf which is this very</p>
+<p>very complex structure but it attaches</p>
+<p>to a topological space and it's like a</p>
+<p>little bag and it keeps track of all the</p>
+<p>data</p>
+<p>you know and uh so if each space has</p>
+<p>these structures attached to it that</p>
+<p>keep track of what happens locally you</p>
+<p>can look at the modulized space and the</p>
+<p>isomorphism classes of those little bags</p>
+<p>so what's happening in the isomorphism</p>
+<p>space with the little bags probably</p>
+<p>seems to be</p>
+<p>what this like global consciousness</p>
+<p>things is</p>
+<p>so you can upgrade that one dimension</p>
+<p>using category theory you can work in a</p>
+<p>stack</p>
+<p>and a stack is going to be a sheath that</p>
+<p>doesn't take values in sets anymore</p>
+<p>all of quantum theory has taken place in</p>
+<p>sets and i think it needs to be a little</p>
+<p>bulldozed like it needs to go</p>
+<p>up if you can take values in categories</p>
+<p>then</p>
+<p>in each point you have so much more</p>
+<p>space to move around</p>
+<p>right so then if you actually have this</p>
+<p>object that takes values and categories</p>
+<p>and not in sets then you've</p>
+<p>allowed yourself more space so that you</p>
+<p>could have these</p>
+<p>phenomena like the the planera and stuff</p>
+<p>like that but if you're just working in</p>
+<p>like</p>
+<p>uh like points and like dots and like</p>
+<p>nodes connecting i think it's just not</p>
+<p>enough but you can do all these other</p>
+<p>things</p>
+<p>but um i'm not sure if i answered</p>
+<p>anything but yeah chris i think that</p>
+<p>regener i was going to ask if you</p>
+<p>thought would</p>
+<p>like our which we need to pick back up</p>
+<p>the chromatic you know our chromatic</p>
+<p>type over uh</p>
+<p>temporal logic if that could actually</p>
+<p>work with this</p>
+<p>i'm fascinated by the regeneration and</p>
+<p>the stop mechanism which is weird</p>
+<p>you know yeah i i'll just quote</p>
+<p>mike levin telling killing me</p>
+<p>over and over again and everyone else</p>
+<p>who will listen that the most important</p>
+<p>question of biology is when to stop</p>
+<p>yes now how how how does</p>
+<p>how does the embryo know that it's done</p>
+<p>now i can stop i'm an adult</p>
+<p>no one knows and that the question even</p>
+<p>isn't even asked that way</p>
+<p>but when you think about it it becomes</p>
+<p>it is a key question</p>
+<p>because it's it's related when you said</p>
+<p>like uh our experiential</p>
+<p>phenomenon uh capacity is just</p>
+<p>this you know the the tip of the</p>
+<p>non-experience so it's almost like</p>
+<p>if the stop is the iceberg of everything</p>
+<p>else i'd like to see what's the</p>
+<p>everything else</p>
+<p>you know</p>
+<p>thanks for these points it's really an</p>
+<p>amazing</p>
+<p>mapping that is rigorous and something</p>
+<p>that we should be learning more about</p>
+<p>how the point</p>
+<p>can be just the tip of the iceberg kind</p>
+<p>of where it's piercing</p>
+<p>something that's a lower dimensionality</p>
+<p>and so</p>
+<p>what do we do with that so i'm going to</p>
+<p>go to a question from chat and then</p>
+<p>can i ask can i ask a second part of the</p>
+<p>question i was working with</p>
+<p>go for it it's this is and feel free to</p>
+<p>just be like</p>
+<p>eh it's not great just just move you</p>
+<p>know not answer it if it but i</p>
+<p>i can't help but analogize</p>
+<p>um something that i just yeah i cannot</p>
+<p>ever let go which is</p>
+<p>um in electrical engineering</p>
+<p>or in electronics essentially you know</p>
+<p>you have this</p>
+<p>well in anything but i i really like</p>
+<p>electronics because it's very tangible</p>
+<p>you have the real component and the</p>
+<p>imaginary component of</p>
+<p>of of signal you know that goes across</p>
+<p>an interface and so i'm always really</p>
+<p>fascinated by that because it always</p>
+<p>seems like a really good analogy to this</p>
+<p>thing that we can look at through math</p>
+<p>or quantum mechanics but with</p>
+<p>electronics you actually have</p>
+<p>you know a thing that you can put on</p>
+<p>your desk um</p>
+<p>because you could think of this this</p>
+<p>this this phase change that happens at</p>
+<p>interfaces</p>
+<p>as the context and and so i've always</p>
+<p>been interested</p>
+<p>in in trying to look at that thing that</p>
+<p>gets lost without looking at the</p>
+<p>at the current or the voltage like</p>
+<p>measuring at a point but actually just</p>
+<p>keeping track of the context as things</p>
+<p>move across interfaces in a circuit</p>
+<p>it's not even a question i apologize for</p>
+<p>that but if it brings up any thoughts</p>
+<p>great</p>
+<p>either of you two if you'd like to give</p>
+<p>a thought otherwise</p>
+<p>it stands and i love how many ideas</p>
+<p>people are bringing up this will</p>
+<p>definitely be an episode for people to</p>
+<p>re-listen to and make some knowledge</p>
+<p>network stuff</p>
+<p>uh all i'll say is phase is extremely</p>
+<p>important</p>
+<p>this is important it's a very it's like</p>
+<p>phase according to whom</p>
+<p>so chris and i really torn apart this</p>
+<p>reference frame idea like according to</p>
+<p>whom</p>
+<p>at what point if phase was like</p>
+<p>non-local then everything would be the</p>
+<p>same thing</p>
+<p>but so what point do you actually have</p>
+<p>you know electronics you assume that you</p>
+<p>have a</p>
+<p>free that you're like local and stuff</p>
+<p>but</p>
+<p>um electronics are fascinating it's</p>
+<p>still like kind of tangible but if you</p>
+<p>work on that</p>
+<p>that space that's pre-actualization</p>
+<p>i think it's very just like for those</p>
+<p>presented it's very very difficult to</p>
+<p>say</p>
+<p>who you are what the boundary actually</p>
+<p>is and if the boundary</p>
+<p>um like a boundary in mathematics is</p>
+<p>like an asymptote or something right</p>
+<p>so it's like a horizon or a koshi</p>
+<p>horizon or something like that</p>
+<p>so inside that very notion of a boundary</p>
+<p>you already have</p>
+<p>causality and then this you know tensor</p>
+<p>product and there's all kinds of other</p>
+<p>tensor part there's wedge products and</p>
+<p>you know it's it's i think it's really</p>
+<p>hard to say what a phase is</p>
+<p>without bringing into play all these</p>
+<p>other reference frames that are um</p>
+<p>so fragile cool</p>
+<p>i'm going to do a question from the chat</p>
+<p>and then i have a simple question</p>
+<p>so a question from the chat is do you</p>
+<p>think a reformulation of quantum</p>
+<p>mechanics is necessary</p>
+<p>in order to tackle the problem of</p>
+<p>consciousness or life</p>
+<p>from a full mathematical generality i'm</p>
+<p>mainly thinking of the notion of</p>
+<p>intrinsic information from</p>
+<p>tishbe's paper information theory of</p>
+<p>decisions and actions</p>
+<p>but also maybe other approaches like</p>
+<p>self-organized criticality</p>
+<p>more generally i'm curious how necessary</p>
+<p>is it to bridge our understanding of</p>
+<p>thermodynamics information theory and</p>
+<p>biology or control theory</p>
+<p>to have a good understanding how far</p>
+<p>along are we and are there any concrete</p>
+<p>problems for a mathematician</p>
+<p>i read what they say you know that's</p>
+<p>that's an omnibus</p>
+<p>question i i guess my my first answer</p>
+<p>would be</p>
+<p>yes uh we do need to bridge all those</p>
+<p>all those disciplines uh in order to</p>
+<p>make progress</p>
+<p>um whether</p>
+<p>it will tell us something deep</p>
+<p>about what experience</p>
+<p>is in some ontological sense</p>
+<p>i have my doubts about uh</p>
+<p>whether it will tell us something</p>
+<p>interesting about</p>
+<p>what experience um</p>
+<p>in a sense does how it works</p>
+<p>uh i think it may tell us something very</p>
+<p>important about that</p>
+<p>but yes i i i do think that these</p>
+<p>disciplines</p>
+<p>need to be bridged i i think we're</p>
+<p>a bit of an impulse that's been imposed</p>
+<p>on us by the disciplinary structure of</p>
+<p>science</p>
+<p>thanks for the answer i'm gonna ask my</p>
+<p>simple question</p>
+<p>and then we're gonna go to stephen and</p>
+<p>blue and also sarah i know</p>
+<p>you had some other kinds of questions</p>
+<p>that were a little bit less about the</p>
+<p>math but</p>
+<p>here's my simple question where does</p>
+<p>active inference</p>
+<p>come into play or for those who are just</p>
+<p>learning about active inference and</p>
+<p>curious to</p>
+<p>how it might be the bridge for all these</p>
+<p>different areas</p>
+<p>um what do you think active inference is</p>
+<p>doing here</p>
+<p>well i as i said at the very beginning i</p>
+<p>i</p>
+<p>think of active inference in terms of</p>
+<p>this</p>
+<p>fundamental decision that that every</p>
+<p>system has to make all of the time</p>
+<p>between of</p>
+<p>do i explore do i act</p>
+<p>or do i retreat and</p>
+<p>and and try to do a kind of post-mortem</p>
+<p>on just</p>
+<p>what just happened and learned something</p>
+<p>so do i modify my priors</p>
+<p>or do i try to modify my my experience</p>
+<p>and</p>
+<p>i think thinking of active inference in</p>
+<p>terms</p>
+<p>of</p>
+<p>what reference frames are being deployed</p>
+<p>it just allows us to pose that question</p>
+<p>a little bit</p>
+<p>differently it allows us to think of the</p>
+<p>question</p>
+<p>in the form of</p>
+<p>do i make another measurement do i act</p>
+<p>on the world</p>
+<p>or do i</p>
+<p>modify my reference frame</p>
+<p>right you can think of a reference frame</p>
+<p>uh like a category</p>
+<p>like a cognitive category so we have</p>
+<p>cognitive categories like this is a cat</p>
+<p>and that's a dog</p>
+<p>and this is a table and this is another</p>
+<p>person</p>
+<p>so modifying a reference frame</p>
+<p>can be thought of as going into your</p>
+<p>apparatus and</p>
+<p>changing the way it works you can also</p>
+<p>think of it as</p>
+<p>modifying my category modifying the</p>
+<p>things i'm capable of seeing</p>
+<p>and i i think you asked in the in the</p>
+<p>previous discussion last week</p>
+<p>what does the theory say about the</p>
+<p>the capabilities of organisms and or</p>
+<p>does it does it put a limit of what</p>
+<p>organisms can do</p>
+<p>and i think in a sense that's the</p>
+<p>question we're trying to answer</p>
+<p>to to what extent are</p>
+<p>you organisms have flexible capabilities</p>
+<p>to what extent can they retool their</p>
+<p>cognitive systems</p>
+<p>even if it's even if it's just e coli to</p>
+<p>what extent can</p>
+<p>can something like a microbial</p>
+<p>population retool what it's capable of</p>
+<p>and again biology gives us these</p>
+<p>beautiful examples</p>
+<p>in terms of things like lateral gene</p>
+<p>transfer where</p>
+<p>uh microbes in a community can pass</p>
+<p>around genes and so can</p>
+<p>can change very radically what they're</p>
+<p>capable of doing</p>
+<p>so i mean from an active inference point</p>
+<p>of view</p>
+<p>that's a question do i</p>
+<p>do i keep going with the capabilities</p>
+<p>that i've got or do i go shopping for</p>
+<p>some new dna</p>
+<p>cool it's like the active turn</p>
+<p>we don't know how far or what else what</p>
+<p>other stones are going to be turned</p>
+<p>when we actually start thinking and</p>
+<p>doing instead of</p>
+<p>just thinking about doing so we have</p>
+<p>stephen then blue then scott</p>
+<p>very excited to hear you talking about</p>
+<p>the work of my mike levin because</p>
+<p>his work's very uh when i saw the video</p>
+<p>of his work recently like last year was</p>
+<p>like wow</p>
+<p>it started to bring the whole idea of</p>
+<p>swarming and how swarming</p>
+<p>actually is underpinning a lot of what</p>
+<p>happens and the the</p>
+<p>the work with bioelectrics is really</p>
+<p>interesting and i</p>
+<p>i've been interested in how if that</p>
+<p>bioelectric aspect seems more maybe</p>
+<p>more closely tied to the sort of quantum</p>
+<p>transitions um</p>
+<p>and um just maybe a little clarity on a</p>
+<p>couple of things because often</p>
+<p>traditionally let's just ask the</p>
+<p>question and clarify it</p>
+<p>okay um so the question is um</p>
+<p>when you have these quantum effects you</p>
+<p>know normally they may be just you think</p>
+<p>of things flipping between one state and</p>
+<p>others another state in more sort of</p>
+<p>basic chemistry thinking about like</p>
+<p>energy levels or something like that but</p>
+<p>you have many levels potentially so is</p>
+<p>it a case that</p>
+<p>you're able to still infer</p>
+<p>from the noise what's going on with</p>
+<p>quantum states</p>
+<p>and therefore this gives us a way to not</p>
+<p>have to just</p>
+<p>go for like the attractor theory and</p>
+<p>complexity or catastrophe theory or</p>
+<p>phase theory that we use at the moment</p>
+<p>but you're able to still</p>
+<p>extract quantum state information</p>
+<p>in ways that's not just classical like</p>
+<p>one energy level to another energy level</p>
+<p>but you get this more</p>
+<p>higher information context</p>
+<p>yeah good question i i think what you're</p>
+<p>really asking is</p>
+<p>uh where are the experimental tools that</p>
+<p>let us</p>
+<p>uh probe this domain</p>
+<p>and um i wish</p>
+<p>i knew and this is something that mike</p>
+<p>and i talk about for example</p>
+<p>how could we go about looking for</p>
+<p>contextuality effects for example in</p>
+<p>things like bioelectric effects and worm</p>
+<p>regeneration</p>
+<p>and i don't know i think i think there's</p>
+<p>a huge opportunity space here for</p>
+<p>for people to think about uh</p>
+<p>ways of doing experiments that we can't</p>
+<p>experiments that we can't do now</p>
+<p>or have never thought about being able</p>
+<p>to do</p>
+<p>that</p>
+<p>probe a domain of correlation</p>
+<p>that is non-classical or super</p>
+<p>determined or however</p>
+<p>however you want to think about it</p>
+<p>and i think that the the more we can</p>
+<p>think of biological systems in</p>
+<p>in communication theoretic</p>
+<p>terms the better prepared will be</p>
+<p>to design experiments to look for</p>
+<p>what are really communication theoretic</p>
+<p>effects and quantum theory is really</p>
+<p>about</p>
+<p>communication</p>
+<p>thank you cool blue and then scott</p>
+<p>so first because shanna dropped off i</p>
+<p>don't know if she's gone or if she's</p>
+<p>gonna rejoin and it's kind of a</p>
+<p>follow-up to some of the stuff that she</p>
+<p>was</p>
+<p>saying but i can still ask it um but let</p>
+<p>me pass to</p>
+<p>scott and then i'll go we'll we'll go to</p>
+<p>scott and hopefully um</p>
+<p>we can have some future category streams</p>
+<p>to really learn more about</p>
+<p>this area so yeah scott and then back</p>
+<p>split</p>
+<p>great um thank you this is my</p>
+<p>smile is hurting my face it's so such a</p>
+<p>great discussion</p>
+<p>um the two things i want to talk about</p>
+<p>embodiment and this is</p>
+<p>related and one is social level</p>
+<p>experiments so</p>
+<p>the first one is embodiment it seems</p>
+<p>like we have these internal states or</p>
+<p>embodiments of</p>
+<p>prior external states or their learned</p>
+<p>states</p>
+<p>and so it's kind of interesting because</p>
+<p>the external states in the internal</p>
+<p>states have bearish</p>
+<p>significant relationship through time</p>
+<p>not just through that individual</p>
+<p>organism's markov blanket but by the</p>
+<p>inherited</p>
+<p>and other factors that are become the</p>
+<p>priors</p>
+<p>right and so it's kind of interesting</p>
+<p>because they have embodiment externally</p>
+<p>and internally</p>
+<p>maybe that's extremely fluid right</p>
+<p>because if you talk about systems at</p>
+<p>different levels they're different</p>
+<p>types of systems cell systems social</p>
+<p>systems organisms organizations</p>
+<p>they all have different affordances and</p>
+<p>their embodiments are not necessarily</p>
+<p>they can be um</p>
+<p>they're not necessarily inconsistent</p>
+<p>when they're different right you can</p>
+<p>have an embodiment of something</p>
+<p>uh if i eat a lot of fatty food i become</p>
+<p>fat but that doesn't you know</p>
+<p>anyway that's one thing is the</p>
+<p>embodiment if you talk a little bit</p>
+<p>about that</p>
+<p>for me from my perspective if you're</p>
+<p>looking at risk and change when you</p>
+<p>information being shifted around as a</p>
+<p>lawyer ex-lawyer i look at</p>
+<p>risk and risk being moved around and so</p>
+<p>one of the things that seems to me when</p>
+<p>you have the embodiment question</p>
+<p>is that among the relationships then you</p>
+<p>get the question since entropy or</p>
+<p>disorder is going to increase</p>
+<p>universally</p>
+<p>what we're doing is we're um managing</p>
+<p>local meg entropy in these systems right</p>
+<p>we're</p>
+<p>sharing uh local entropy and so the</p>
+<p>question is</p>
+<p>is that dynamic something that um tends</p>
+<p>to dissipate</p>
+<p>the markov blanket as a standalone thing</p>
+<p>maybe markov blankets</p>
+<p>are a general thing that's one question</p>
+<p>okay let's get that</p>
+<p>let's try to do one question because</p>
+<p>it's really you know in a</p>
+<p>body domain let's just try to yeah</p>
+<p>thanks for the really great question</p>
+<p>go ahead yes okay um</p>
+<p>this is a wonderful question i'll make</p>
+<p>uh two comments</p>
+<p>one is in terms of of reference frames</p>
+<p>which i always come back to um</p>
+<p>i think what what what quantum theory</p>
+<p>contributed to the</p>
+<p>to the notion of a reference frame is</p>
+<p>it insisted that we regard reference</p>
+<p>frames as</p>
+<p>embodied as physically implemented</p>
+<p>and stop thinking of them as merely</p>
+<p>abstractions</p>
+<p>and we can we can go back for example to</p>
+<p>the idea of</p>
+<p>cognitive categories you know my</p>
+<p>my idea of a table is</p>
+<p>not an abstraction it's a</p>
+<p>it's something that's implemented in my</p>
+<p>brain</p>
+<p>and it can be changed</p>
+<p>by operating on my brain</p>
+<p>and i can change it that way we don't</p>
+<p>know how that works</p>
+<p>right but but what the</p>
+<p>what the the embodied movement or the</p>
+<p>the 4e</p>
+<p>framework whatever what that forces</p>
+<p>cognitive science to think</p>
+<p>to think about is these are not</p>
+<p>abstractions we're talking about things</p>
+<p>that have been implemented</p>
+<p>so i think that's an incredibly</p>
+<p>important point</p>
+<p>um the second point i want to make is</p>
+<p>about</p>
+<p>boundaries and i showed that picture of</p>
+<p>of</p>
+<p>uh right alice looking at her at her</p>
+<p>holographic screen and listed the things</p>
+<p>that she doesn't know</p>
+<p>but i could have added to that that</p>
+<p>alice doesn't know</p>
+<p>where her boundary is</p>
+<p>if if i'm a system</p>
+<p>and i'm i'm looking out at the world</p>
+<p>through my markov blanket or through my</p>
+<p>my encoded screen then</p>
+<p>what i'm seeing is this array of</p>
+<p>information that's painted on my screen</p>
+<p>right this array of bits</p>
+<p>and and fristen's point and the point of</p>
+<p>the holographic principle is</p>
+<p>i don't see what's on the other side</p>
+<p>but you can flip that around it's always</p>
+<p>symmetrical i don't see what's on my</p>
+<p>side</p>
+<p>either and</p>
+<p>that's that's why i tried to make this</p>
+<p>point very briefly about</p>
+<p>memory how if we think of memory as</p>
+<p>classical</p>
+<p>then it's got to be written on the</p>
+<p>screen because that's the only focus of</p>
+<p>any classical information</p>
+<p>so if i'm looking at my screen the thing</p>
+<p>that i</p>
+<p>don't see is myself</p>
+<p>and since i don't see myself and i don't</p>
+<p>see the other side i just see the screen</p>
+<p>i have no idea where it is</p>
+<p>so when you when you raise this question</p>
+<p>of</p>
+<p>a social system or or any other kind of</p>
+<p>complex system</p>
+<p>um we as as</p>
+<p>observers of that system are using</p>
+<p>our reference frames or our cognitive</p>
+<p>categories or</p>
+<p>our however you want to describe them to</p>
+<p>draw a boundary around that thing</p>
+<p>that boundary is our imposition</p>
+<p>it's not the system's imposition the</p>
+<p>system doesn't know where its boundary</p>
+<p>is</p>
+<p>is there a talk is there a tautology in</p>
+<p>there though because that's</p>
+<p>interesting right because we're using</p>
+<p>our system we're drawing the system</p>
+<p>within</p>
+<p>our boundary it seems like that's an</p>
+<p>intrinsic quality of the thing that</p>
+<p>system can</p>
+<p>can a system know it's open kind of</p>
+<p>system know others and you can only know</p>
+<p>it through the boundary</p>
+<p>but you so you can't know yourself</p>
+<p>because you're not written on the</p>
+<p>boundary so it's kind of it</p>
+<p>well let me let me get to the next</p>
+<p>question because it relates to that so</p>
+<p>the next question</p>
+<p>but the quick answer to that question is</p>
+<p>yes yeah</p>
+<p>i like that's a good question it's good</p>
+<p>when there's a binary answer</p>
+<p>so the next question was i was</p>
+<p>wondering if we can um if the</p>
+<p>for experimentation this is the question</p>
+<p>of answering experimentation</p>
+<p>if and to the extent that this is</p>
+<p>there's scale independence and active</p>
+<p>inference and so that it applies at cell</p>
+<p>levels and social</p>
+<p>etc why can't we look at the social</p>
+<p>level to run experiments</p>
+<p>and then apply those what we come out</p>
+<p>with at</p>
+<p>other levels so it's similar to when you</p>
+<p>do a qubit at a macro you know they do</p>
+<p>cubit</p>
+<p>qubits that are manifested in different</p>
+<p>ways in different kinds of systems you</p>
+<p>know ionic qubits and things like that</p>
+<p>so you can measure them in different</p>
+<p>ways</p>
+<p>so we could be observers of the system</p>
+<p>to</p>
+<p>at the social level to identify some</p>
+<p>qualities and the reason i'm asserting</p>
+<p>that as a lawyer</p>
+<p>even though the social has a lot of</p>
+<p>variables what we do is as lawyers is</p>
+<p>create</p>
+<p>fewer variables right we take a meaning</p>
+<p>thing we say hey</p>
+<p>everyone in this area of the statute has</p>
+<p>to behave this way</p>
+<p>and so then internally everyone can</p>
+<p>absorb and embody the idea that</p>
+<p>i know everyone's going to stop at a red</p>
+<p>light i know i'm going to stop at a red</p>
+<p>light</p>
+<p>that's the story of the red light red</p>
+<p>means stop you're taught it as a kid</p>
+<p>so it becomes instantiated and kind of</p>
+<p>axiomatic</p>
+<p>so one of the things about the law is</p>
+<p>that i'm going at it from a slightly</p>
+<p>different way of</p>
+<p>effectively going in and trying to</p>
+<p>create</p>
+<p>non-variables in the markov blanket that</p>
+<p>are shared</p>
+<p>right and so and then so i wonder about</p>
+<p>the embodiment</p>
+<p>relates in a way i think to the</p>
+<p>experimentation question</p>
+<p>because can we do let's call them</p>
+<p>artificial embodiments</p>
+<p>into the internal states through things</p>
+<p>like law or folkways or shared meaning</p>
+<p>or norms or things like that</p>
+<p>that we can then experiment against is</p>
+<p>what i'm wanting cross-cultural</p>
+<p>experiments things like that</p>
+<p>that then may have application at other</p>
+<p>levels</p>
+<p>i i think that's i think that's a</p>
+<p>fascinating thing to try to follow up on</p>
+<p>and um</p>
+<p>i would say one of my one of the things</p>
+<p>that seems most mysterious to me</p>
+<p>is language is is the very possibility</p>
+<p>of classical communication of what</p>
+<p>what you're talking about a physicist</p>
+<p>would call super determinism</p>
+<p>and super determinism</p>
+<p>is essentially the same thing as</p>
+<p>entanglement</p>
+<p>if if i don't have a choice</p>
+<p>about what reference frames to deploy</p>
+<p>if there's a correlation in advance</p>
+<p>super determined</p>
+<p>uh by the past between the reference</p>
+<p>frames i use and the reference frames</p>
+<p>you use</p>
+<p>then and in an important sense we're not</p>
+<p>independent systems anymore</p>
+<p>right we're we're entangled but that's</p>
+<p>what language</p>
+<p>is in</p>
+<p>in some sense and so</p>
+<p>i i i agree with you we should be able</p>
+<p>to</p>
+<p>redescribe</p>
+<p>communication generally in these terms</p>
+<p>of of</p>
+<p>reference frame sharing reference rank</p>
+<p>choice of</p>
+<p>super determinism</p>
+<p>and apply some of this math that's been</p>
+<p>worked out in other places</p>
+<p>to reinterpret communication</p>
+<p>and i i'll mention a paper by a guy</p>
+<p>named</p>
+<p>alexi grinbaum it's a philosopher of</p>
+<p>science at saclay</p>
+<p>and it's a paper on uh device</p>
+<p>independent methods in quantum</p>
+<p>communication</p>
+<p>but the very last i see</p>
+<p>sarah you're nodding your head you</p>
+<p>probably read this paper</p>
+<p>one of the very last sentences in the</p>
+<p>paper is</p>
+<p>he says this redefines what physics is</p>
+<p>about physics is about</p>
+<p>languages and i think that's</p>
+<p>a phenomenally profound statement i</p>
+<p>think he's right</p>
+<p>nice let's continue in order so we got</p>
+<p>blue and then stephen and then sarah</p>
+<p>so shanna's not here i think she said in</p>
+<p>the chat that she um had to run</p>
+<p>but um i want to touch back on what she</p>
+<p>said like when</p>
+<p>a thought passes that there's still</p>
+<p>something there and also chris to what</p>
+<p>you were saying earlier about</p>
+<p>memory and what uh sarah was saying</p>
+<p>of keeping track of what gets lost and</p>
+<p>so something that i gleaned from this</p>
+<p>paper now i have like no background</p>
+<p>in category theory at all um as you may</p>
+<p>have</p>
+<p>been able to tell from the introduction</p>
+<p>video right so um</p>
+<p>the so it seems like that there's this</p>
+<p>hierarchical nature of</p>
+<p>some mathematical summation that is like</p>
+<p>able to occur like via these methods and</p>
+<p>i just was wondering if you're familiar</p>
+<p>with</p>
+<p>eric cole's work um he put out a paper</p>
+<p>last year on causal geometry</p>
+<p>and um like he's done some coarse</p>
+<p>graining stuff</p>
+<p>and so so is there some relationship</p>
+<p>between like that kind of coarse</p>
+<p>graining or</p>
+<p>like dimension reduction and this</p>
+<p>category theory work or is the category</p>
+<p>theory</p>
+<p>somehow able to encompass um the</p>
+<p>entirety of the mathematical problem</p>
+<p>in a better way or a different way than</p>
+<p>say core screening</p>
+<p>um yeah good good question</p>
+<p>um uh yes i i do know eric's work</p>
+<p>and i talk to him almost every week</p>
+<p>because he's also part of</p>
+<p>mike levin's lab and</p>
+<p>so we have discussed this question of</p>
+<p>of</p>
+<p>course graining and causal emergence</p>
+<p>and effective information all these</p>
+<p>concepts that</p>
+<p>that eric has been working with</p>
+<p>um i think are very closely related to</p>
+<p>the concepts that jim and i have been</p>
+<p>working with</p>
+<p>and we're</p>
+<p>we're coming at them from such different</p>
+<p>starting points that it's not clear</p>
+<p>at least to me exactly how they fit</p>
+<p>together</p>
+<p>but what a what a coconut diagram does</p>
+<p>is coarse-grain</p>
+<p>it</p>
+<p>it represents a</p>
+<p>an abstraction</p>
+<p>of a set of logical relationships</p>
+<p>or or it represents a an abstractions of</p>
+<p>a set of criteria into</p>
+<p>a coarse-grained</p>
+<p>larger scale if you will uh</p>
+<p>criterion that</p>
+<p>covers all of the cases below it</p>
+<p>but in which information</p>
+<p>is both lost and gained</p>
+<p>i i think the the</p>
+<p>the best example at least for me for</p>
+<p>thinking about it is again going back to</p>
+<p>cognitive categories if you think about</p>
+<p>you know your category for a table or</p>
+<p>another person or whatever</p>
+<p>you you lose information in that</p>
+<p>abstraction process</p>
+<p>but you also gain information</p>
+<p>by tying all of those exemplars</p>
+<p>together and</p>
+<p>each exemplar is then</p>
+<p>in some sense encoding through the rest</p>
+<p>of the network</p>
+<p>of its consistency</p>
+<p>in some sense with other exemplars that</p>
+<p>may have</p>
+<p>different uh detailed characteristics</p>
+<p>so at the token level they look</p>
+<p>inconsistent but at the tight level</p>
+<p>they're consistent</p>
+<p>and the</p>
+<p>um the coco diagram represents</p>
+<p>that that very complex relationship</p>
+<p>so when</p>
+<p>one is doing a course grading and it</p>
+<p>works</p>
+<p>the the information in the course grain</p>
+<p>state</p>
+<p>is capturing just this kind of abstract</p>
+<p>information</p>
+<p>it's the it's the abstract information</p>
+<p>that's actually useful</p>
+<p>and that captures what is consistent</p>
+<p>between the</p>
+<p>the fine-grained exemplars</p>
+<p>and by organizing them that way it</p>
+<p>allows each of them to represent</p>
+<p>the fact of its consistency with this</p>
+<p>larger set</p>
+<p>thanks i also like i'm curious to see</p>
+<p>because i do think that it's gonna</p>
+<p>like you guys are we'll lock together</p>
+<p>eventually at some point</p>
+<p>um you know maybe in 10 years but but</p>
+<p>i'm curious to see how that</p>
+<p>um you know kind of dynamic interplay</p>
+<p>unfolds</p>
+<p>will also lie also um mike living will</p>
+<p>be</p>
+<p>on active inference live stream on july</p>
+<p>13th</p>
+<p>so we can talk before then or after then</p>
+<p>all right awesome so we have um a little</p>
+<p>bit less than 20 minutes</p>
+<p>left so we'll just do you know questions</p>
+<p>and try to get a few more questions in</p>
+<p>from the chat as well</p>
+<p>stephen and then sarah</p>
+<p>thank you yeah deep breath there's a lot</p>
+<p>a lot to</p>
+<p>go through here um i was gonna sort of</p>
+<p>build on that coarse grain</p>
+<p>question and maybe just stepping back at</p>
+<p>some of the bigger implications of</p>
+<p>contextuality</p>
+<p>um and how that is thought about so</p>
+<p>um you know the principles that you</p>
+<p>talked about or the paradigms</p>
+<p>um so i'm curious about how you see this</p>
+<p>maybe impacting contextuality</p>
+<p>um and the way people think about that</p>
+<p>um</p>
+<p>let's address that and then continue</p>
+<p>stephen let's just get one question and</p>
+<p>one answer</p>
+<p>okay</p>
+<p>okay i guess i didn't i didn't actually</p>
+<p>hear that as a question</p>
+<p>sorry guys okay thank you sorry</p>
+<p>yeah i just i just finished that thought</p>
+<p>but basically</p>
+<p>just in terms of contextuality and</p>
+<p>coarse graining</p>
+<p>and you know how much granularity is</p>
+<p>thought about</p>
+<p>um and how that has a bigger</p>
+<p>that that general idea of how to think</p>
+<p>about contextuality</p>
+<p>um i'd be interested in your thought</p>
+<p>about that as how that</p>
+<p>sort of has a bigger set of legs and one</p>
+<p>of the reasons i say that is because</p>
+<p>when people often talk about quantum</p>
+<p>theory</p>
+<p>in a sort of broader world out there</p>
+<p>they often think about this</p>
+<p>transpersonal</p>
+<p>it's all the same and it's unifying and</p>
+<p>it's actually decontextualizing in some</p>
+<p>ways you know it's almost</p>
+<p>some ways this is quite revolutionary to</p>
+<p>me to really see quantum</p>
+<p>effects as being contextual you know</p>
+<p>being in that way so you know that maybe</p>
+<p>ties in with david bowman's work</p>
+<p>on implicit order and the awareness</p>
+<p>of things so rather than always being</p>
+<p>about the whatness and going up</p>
+<p>indigenous approaches are very much</p>
+<p>about where you are and how you are</p>
+<p>what's your embeddedness in your niche</p>
+<p>so</p>
+<p>in some ways it's like quantitative now</p>
+<p>when i first heard about your paper i</p>
+<p>was thinking oh this is</p>
+<p>you hear quantum you think abstract but</p>
+<p>actually</p>
+<p>it's doing something very different i</p>
+<p>just wondered how that might have impact</p>
+<p>in other practices okay</p>
+<p>so so i i heard a number of different</p>
+<p>ideas here</p>
+<p>that that are are parts of questions</p>
+<p>one is to do with with course training</p>
+<p>and contextuality</p>
+<p>and you put your finger very precisely</p>
+<p>on the danger of course grading</p>
+<p>uh</p>
+<p>and this this you can also state this in</p>
+<p>terms of the frame problem</p>
+<p>it's it's often the little details that</p>
+<p>come back to bite you</p>
+<p>and when you coarse grain you're</p>
+<p>specifically getting rid of those little</p>
+<p>details</p>
+<p>so this is uh</p>
+<p>goodness it it it's like the the</p>
+<p>metaphor of the hammer and the nail</p>
+<p>right if</p>
+<p>any choice of reference frame is</p>
+<p>effectively a choice of course grading</p>
+<p>and choosing a reference frame choosing</p>
+<p>a course greeting determines what you</p>
+<p>can see</p>
+<p>but that also determines what you can't</p>
+<p>see</p>
+<p>and it's what you can't see</p>
+<p>that is responsible for the contextual</p>
+<p>effects</p>
+<p>that you can't avoid by</p>
+<p>by by you know um</p>
+<p>learning more about the context if</p>
+<p>you've if you've arranged your</p>
+<p>measurement procedures in a way that</p>
+<p>prevents you from seeing them</p>
+<p>then you can never take them into</p>
+<p>account when you're building your</p>
+<p>probability distribution</p>
+<p>so so coarse graining</p>
+<p>is something that we're stuck with</p>
+<p>but it's it's very much a double-edged</p>
+<p>sword</p>
+<p>right it allows us to get around in the</p>
+<p>world it allows us to see these</p>
+<p>similarities</p>
+<p>it allows us to learn things but</p>
+<p>it forces us to ignore things that</p>
+<p>may turn out to be important or may turn</p>
+<p>out to have been</p>
+<p>important</p>
+<p>thanks for the really interesting answer</p>
+<p>there</p>
+<p>um so so with respect to you</p>
+<p>to your other question about if you will</p>
+<p>embeddedness</p>
+<p>uh yes i think that's crucially</p>
+<p>important</p>
+<p>um let's go to sarah</p>
+<p>i'm just going to say yeah that that</p>
+<p>that whole embeddedness</p>
+<p>is huge for the inactive ecological</p>
+<p>cognition work and sort of the</p>
+<p>the pragmatic turn in psychology so</p>
+<p>there's a lot of implications of that so</p>
+<p>i just</p>
+<p>think that's very exciting so thanks</p>
+<p>yeah</p>
+<p>yeah i i'm very attracted to this sort</p>
+<p>of</p>
+<p>notion that ecosystems are</p>
+<p>are in a sense extended organisms etc</p>
+<p>that whole way of thinking in biology</p>
+<p>is i think very important</p>
+<p>and also to connect that it's like</p>
+<p>there's this embedded practice and then</p>
+<p>we're talking about the physical</p>
+<p>electronic circuits</p>
+<p>so it's almost like across domains we're</p>
+<p>taking an</p>
+<p>action-oriented and a realist manifested</p>
+<p>focus but then seeing the what is</p>
+<p>actually manifest as the tip of the</p>
+<p>iceberg</p>
+<p>in another sense but it's totally real</p>
+<p>for what it really is</p>
+<p>which is our measurement and then also</p>
+<p>it's the tip of an iceberg because we're</p>
+<p>also in the system and</p>
+<p>those kinds of systems don't just arise</p>
+<p>out of nowhere so</p>
+<p>sarah and then scott in our last couple</p>
+<p>of minutes</p>
+<p>but thanks everyone for this really</p>
+<p>awesome discussion</p>
+<p>maybe sarah yeah good god</p>
+<p>yeah um so am i to understand that we</p>
+<p>have another one of these because i i</p>
+<p>would love to ask chris</p>
+<p>you know these other questions but</p>
+<p>obviously not now there's just not</p>
+<p>enough time</p>
+<p>we will be discussing the paper next</p>
+<p>week but um we did not plan without</p>
+<p>totally</p>
+<p>no pressure but we're doing the same</p>
+<p>time next week but</p>
+<p>no expectation okay no prior okay um</p>
+<p>yeah in some ways this is like a media</p>
+<p>um just rephrasing what's already been</p>
+<p>said but it's actually right up right up</p>
+<p>your alley steven</p>
+<p>um i was actually just in writing in my</p>
+<p>paper you know about well</p>
+<p>what methods you choose depend on what</p>
+<p>met what questions you ask</p>
+<p>um related to reductionism related to</p>
+<p>this whole theme</p>
+<p>um but i i wonder this is like super</p>
+<p>abstract</p>
+<p>um but like i wonder about</p>
+<p>the the role of play because i was</p>
+<p>thinking about you know like</p>
+<p>i was thinking about um there's so many</p>
+<p>situations in science where you're not</p>
+<p>you know like</p>
+<p>when you look at the paper you're like</p>
+<p>oh yeah they're doing science but in</p>
+<p>reality they're just</p>
+<p>poking at right like so it's just</p>
+<p>this way of being with the world where</p>
+<p>you're like oh i wonder what happens if</p>
+<p>i you know but they're not really</p>
+<p>reducing</p>
+<p>they're just it's like so it's like play</p>
+<p>and so i've really wondered about</p>
+<p>about how to bring that to the</p>
+<p>foreground about what that what that is</p>
+<p>in science</p>
+<p>you know and so i again i apologize but</p>
+<p>you're</p>
+<p>you always have a way of coming up with</p>
+<p>a comment so hopefully you'll have a</p>
+<p>thought on this</p>
+<p>[Music]</p>
+<p>oh yeah</p>
+<p>if it's not fun you're probably doing it</p>
+<p>wrong</p>
+<p>i was just thinking of like an antidote</p>
+<p>to reductionism like play seems like a</p>
+<p>way that you're not</p>
+<p>taking things apart you're just kind of</p>
+<p>you're with it</p>
+<p>in some way</p>
+<p>well i to take this back to active</p>
+<p>inference and to</p>
+<p>to think of it uh</p>
+<p>almost in in robotics terms right</p>
+<p>how what the people in robotic and</p>
+<p>developmental robotics are</p>
+<p>are trying to do is understand</p>
+<p>what motivates a system</p>
+<p>to</p>
+<p>engage with the world with this kind of</p>
+<p>innocence that i think you're referring</p>
+<p>to</p>
+<p>to to just explore and</p>
+<p>and see what's learnable</p>
+<p>right the uh one of the one of the key</p>
+<p>questions is</p>
+<p>is um</p>
+<p>and pierre etier is is the one who i</p>
+<p>think in the literature has</p>
+<p>emphasized this more than anyone else is</p>
+<p>how do how do you learn what</p>
+<p>parts of the world are learnable</p>
+<p>with the resources that you have</p>
+<p>so that you can avoid spending all of</p>
+<p>your resources</p>
+<p>trying to learn things that you're not</p>
+<p>capable of learning</p>
+<p>so how do you how do you how do you</p>
+<p>focus your exploratory behavior</p>
+<p>in the parts of the world where it can</p>
+<p>actually be productive</p>
+<p>this is sort of a meta question on top</p>
+<p>of active inference</p>
+<p>and it has to do with bayesian precision</p>
+<p>and things like that</p>
+<p>but it's your expectations about</p>
+<p>learnability</p>
+<p>and then there's a flip side of this in</p>
+<p>evolutionary theory right the whole</p>
+<p>idea that that what organisms are doing</p>
+<p>in evolution</p>
+<p>is trying to improve their evolvability</p>
+<p>uh so they're they're they're trying to</p>
+<p>increase if you will the flexibility of</p>
+<p>their lineage</p>
+<p>to cope with with whatever the</p>
+<p>environment can throw at them</p>
+<p>and this is very much i think what</p>
+<p>what's happening in play as you put it</p>
+<p>you're</p>
+<p>you're trying to to engage with the</p>
+<p>world in a way that</p>
+<p>is wanting to know</p>
+<p>what the possibilities for further</p>
+<p>engagement are</p>
+<p>thanks for the answer and speaking to</p>
+<p>play it's almost like you start with</p>
+<p>what you have the rubber band</p>
+<p>the tin foil so you start with the</p>
+<p>actual but then you you think about what</p>
+<p>if</p>
+<p>and you think about adjacencies even</p>
+<p>categorical adjacencies</p>
+<p>um so that was a pretty interesting</p>
+<p>so and then also a comment on what you</p>
+<p>said about the expectations of</p>
+<p>learnability</p>
+<p>in active inference lab we would hope to</p>
+<p>learn by doing and applying</p>
+<p>and update people's expectations to</p>
+<p>increase their um</p>
+<p>understanding of they can learn active</p>
+<p>inference basically</p>
+<p>we'll figure out other ways to say it</p>
+<p>more directly but</p>
+<p>will manifest through observations on</p>
+<p>people's screens</p>
+<p>that they can learn active inference and</p>
+<p>then it's almost like in the cognitive</p>
+<p>dimension</p>
+<p>our collective and our individual</p>
+<p>cognitive evolution will</p>
+<p>undertake another inflection point when</p>
+<p>we believe that we can learn</p>
+<p>so that will be really powerful so scott</p>
+<p>yeah along those lines just in terms of</p>
+<p>further leverage i want to talk a little</p>
+<p>bit about the buy</p>
+<p>or build decision that every organism</p>
+<p>makes and the idea is do you do you</p>
+<p>develop it internally or do you get it</p>
+<p>outside right</p>
+<p>and so it seems like one of the things</p>
+<p>that struck me is we've talked about the</p>
+<p>brain</p>
+<p>being tied to language one of the things</p>
+<p>i've been</p>
+<p>fussing with lately and i've this is the</p>
+<p>question i've been</p>
+<p>fussing with the idea that the mind</p>
+<p>resides in language and the brain is</p>
+<p>just an</p>
+<p>antenna tuned to the mind</p>
+<p>now the antenna would be the markov</p>
+<p>blanket right or the</p>
+<p>the action of the markov blanket is a</p>
+<p>continuous dynamic tuning</p>
+<p>and the so that you're if you're born</p>
+<p>into a</p>
+<p>cultural context in my place very</p>
+<p>quickly my sister adopted a</p>
+<p>five-month-old chinese baby she was</p>
+<p>raised in central pennsylvania she looks</p>
+<p>chinese she</p>
+<p>doesn't speak chinese doesn't like</p>
+<p>chinese food she's not chinese right</p>
+<p>so her mind is a creature of her</p>
+<p>environment</p>
+<p>in body so one of the things in terms of</p>
+<p>affordances you know we talk about</p>
+<p>resources internally to develop the</p>
+<p>markov like it</p>
+<p>you know you can really shortcut that if</p>
+<p>you say hey</p>
+<p>i know that my resource internally is i</p>
+<p>should time myself to</p>
+<p>to daniel because he's awesome and he</p>
+<p>knows all the stuff i don't have to know</p>
+<p>it i just have to know if i have a</p>
+<p>question i'll go ask him</p>
+<p>right so you start to have something</p>
+<p>like it's like eukaryotic revolution and</p>
+<p>multicellularity</p>
+<p>you start to have this de-risking and</p>
+<p>leverage at</p>
+<p>larger scales made possible by the fact</p>
+<p>of synthesis of multiple markov blankets</p>
+<p>now</p>
+<p>they can be synthesized around common</p>
+<p>ideas or common problems</p>
+<p>so the the question is in terms of that</p>
+<p>again</p>
+<p>separateness we see ourselves and our</p>
+<p>markov blankets and our minds as</p>
+<p>separate</p>
+<p>but it seems like maybe they're not</p>
+<p>maybe maybe the mind is</p>
+<p>all one thing and we have these</p>
+<p>instantiations of it that we call</p>
+<p>different</p>
+<p>there are different iterations of that</p>
+<p>markov language can you comment on that</p>
+<p>kind of macro and micro level uh notion</p>
+<p>briefly um</p>
+<p>i'll try i think this is all good</p>
+<p>thinking</p>
+<p>i i view this in the language of</p>
+<p>in a sense extended organism thinking</p>
+<p>and evolutionary theory</p>
+<p>which is very closely connected to</p>
+<p>to multicellularity and evolutionary</p>
+<p>theory</p>
+<p>uh which is closely connected to</p>
+<p>the sorts of of</p>
+<p>faculty multicellularity you see in</p>
+<p>microbial communities</p>
+<p>um i think from the</p>
+<p>from i think we see examples of this</p>
+<p>throughout biology</p>
+<p>and um so the question becomes how do</p>
+<p>how do we take this into the human</p>
+<p>sphere or</p>
+<p>as i think you posed it very clearly uh</p>
+<p>how do we realize that it's already been</p>
+<p>taken into the human sphere</p>
+<p>we just don't quite get it yet</p>
+<p>and and i suspect that you're right</p>
+<p>uh that we just don't quite get it yet</p>
+<p>and you know i i remember in graduate</p>
+<p>school someone said</p>
+<p>you're what you're learning is how to</p>
+<p>read the literature yes</p>
+<p>you don't need to learn any facts</p>
+<p>and that has to do with security right</p>
+<p>and in new forms of</p>
+<p>threat and integrity and privacy issues</p>
+<p>all these new allergic</p>
+<p>problems are not necessarily</p>
+<p>new problems okay and that's why i</p>
+<p>wondered about the</p>
+<p>biology and the biomimicry you see that</p>
+<p>we can</p>
+<p>how can we actively pursue biomimicry</p>
+<p>thank you cool sorry you're a little</p>
+<p>quiet at the end there</p>
+<p>scott but um with this um close the hour</p>
+<p>um chris really thanks so much and also</p>
+<p>to</p>
+<p>um shauna for joining with your</p>
+<p>expertise but really this was a special</p>
+<p>event for us we would always welcome the</p>
+<p>opportunity to</p>
+<p>speak with you or colleagues to learn</p>
+<p>more</p>
+<p>and any other final thoughts</p>
+<p>um that you'd like to give in closing</p>
+<p>chris</p>
+<p>uh yeah feel free to send me an email</p>
+<p>my my address is on my website</p>
+<p>chrisfieldresearch.com</p>
+<p>all the papers i published recently are</p>
+<p>there um</p>
+<p>but yeah i'd love to continue discussing</p>
+<p>awesome well thanks a lot and um next</p>
+<p>week we're going to be having a</p>
+<p>follow-up discussion to really</p>
+<p>digest this definitely re-listen to it</p>
+<p>and go from there so thanks everyone for</p>
+<p>joining and we'll see you</p>
+<p>another time</p>
+</article>
+</body>
+</html>

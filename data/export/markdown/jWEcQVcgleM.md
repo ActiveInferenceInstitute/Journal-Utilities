@@ -1,0 +1,496 @@
+---
+title: ""Physics as Information Processing" ~ Ander Aguirre ~ Discussion 4"
+category: "Courses/PhysicsAsInformationProcessing_ChrisFields"
+speakers:
+  - "Ander Aguirre ~ Discussion 4"
+duration: "1:07:15"
+url: "https://www.youtube.com/watch?v=jWEcQVcgleM"
+views: 652
+exported_at: "2026-02-18T22:37:37.899299+00:00"
+format: markdown
+---
+
+# "Physics as Information Processing" ~ Ander Aguirre ~ Discussion 4
+
+All right. Hello, welcome everyone. It is Saturday, August 26th, 2023. And we're here in Physics
+as Information Processing in the fourth discussion. Thank you everybody who's joining live or watching
+live or watching in replay. This should be a really fun discussion as usual. So we're going
+to have Ander provide some slides and some initial clarifying questions for Chris. And
+then we're going to open it up for our guests to ask some questions and check in the live
+chat, see what people are talking about. So Ander, to you for some slides and overview.
+Okay. Thank you, Daniel. So last time we were starting to talk about multi-agent communication
+and log protocols and all of that. So let's quickly go through the slides and sort of try
+to recall the main concepts. So I guess from just to go back to session three for a second,
+one takeaway was that when you have non-comitian sectors in a boundary, that's necessarily going
+to require classical communication between them. So that is more or less the whole point of today,
+how non-comitian sectors may communicate, have to communicate classically.
+Another introduction in this last lecture was this new graphical notation, TQFT, if you wish to call
+it that way, for any of these clock ticks. Okay. So let's recall the whole process of measuring a sector
+environment and writing it into a memory environment. It can be simplified to this sort of tick that
+connects two portions of the boundary. And, you know, everything we talk about log protocols will be
+written in this graphical notation. So let's keep going a little bit. This slide is on the paper,
+paper on sequential measurements from 2022. These are basically the formal mapping between QRFs and
+topological quantum field theories. Okay. So we're more used to the picture here on the left-hand side of
+this slide, right, with the QRF sectors. But, you know, pictorically speaking, this is at least how they map.
+Okay. And then from then, we started talking about entanglement and classical communications
+using this notation. And this is probably where my questions to Chris will start. So in section three,
+we saw this idea of the FVP asymptotically being the principle of unitarity, AKA driving the system,
+the joint system and Alice involved to entanglement, which in this graphical notation amounts to them
+sort of completing a cycle here, where the QRFs are perfectly aligned so that the S sector of one
+becomes the memory sector of the other and vice versa. Now, I actually, at this point already, I have a
+question for Chris. Let me, I have it written down here. So,
+so, so yes, two things here, Chris. Number one is in the log protocol picture, we do have
+a distinguishing between a quantum channel and a classical channel. And if I understood that part
+correctly, we said that passage of time or expenditure of energy, free energy, only corresponds to the
+classical tick. So in this, you know, quantum entanglement picture where you don't quite have that,
+is it fair to say that there's no such thing as a classical tick, no passage of time, no expenditure of
+free energy? Is this a degenerate picture of the log protocol where the sectors were aligned the right
+way and boom, you got rid of that classical thing and that's it. And secondly, I guess it's,
+what does it mean for these two parts, quote unquote, uh, in the, from the paper to implement
+the joint, uh, unitary process, the joint quantum process?
+So, yeah, this is, this is not a, a lock protocol clearly because, uh, there, there is no classical,
+uh, communication. And in, in fact, uh, Alice is not divided into, uh, multiple compartments here.
+Uh, Alice is just implementing one, this, this single quantum process, Q, and, uh,
+uh, because these sectors are, are because these, these QRFs are perfectly aligned, uh, we can think of,
+uh, uh, uh, uh, remember, uh, from probably the second session, the, the, the, the
+picture that you were very interested in under, uh, of the wick rotation,
+uh, reversing time between Alice and Bob. So Alice's clock, in fact, uh, ticks in the opposite
+direction from Bob's clock because both of their internal clocks are counting incoming bits, not
+outgoing bits. So in this, in the right side of this picture, um, there, there is no overall time.
+You can think of Alice's clock, uh, ticking forward one unit, and then Bob's clock ticking backward one unit
+so that, uh, the, the, the information flow is completely time symmetric between Alice and Bob.
+So we can think of, of both of these processes, uh, Q and Q prime as bidirectional in time.
+That's, that's what it means to have a pure unitary process.
+So no time asymmetry, that's what it is. Right. So there is no time asymmetry in this picture.
+And once, when you introduce classical communication, of course, you have to have a time asymmetry.
+Right. Because, uh, you have this, I mean, classicality is defined by this notion of irreversibility.
+I see. Which is just the same as, as time asymmetry. And it's the irreversibility that burns energy. So the,
+there has to be energy flow between Alice and Bob, uh, to, to drive
+what is in, from a global point of view, and only an apparent asymmetry, but from the point of view of
+Alice one and Alice two as components of Alice, uh, they're the ones who see the asymmetry.
+So, uh, I guess, uh, just to tie back to the question of the weak rotation, once this joint, uh, process is implemented, I mean,
+a naively one can say, is this cycle going clockwise or counterclockwise? And it's, is that going to define on
+originally whenever these guys ended up being, uh, lined up where the weak sign was coming from?
+Uh, yes. Whenever, whenever Alice sees information flowing in, Bob sees information flowing out. So
+their, their, their, their wick rotations are going on opposite directions.
+Mm-hmm. Okay.
+Yeah. Uh, very good. And, uh,
+yeah. The other, the other thing to, to think of in this picture, which it's, it's impossible to draw
+all of these simultaneously is that if you, if you think of the FEP as fully aligning Alice and Bob,
+Bob, then not only do these processes perfectly couple, but the, the area that's green, uh, in this right-hand
+side kind of expands to fill the whole boundary so that in the, in the complete limit of, uh, Alice being
+able to perfectly predict Bob and, and vice versa, then the whole boundary is green. Right? So that, uh,
+there's no, this distinction between the, the, the S sector and the Y sector disappears.
+Yes. Yes. That makes sense actually. And just to conclude with this slide, um, back in the session
+two, we saw something about, uh, agents requiring a free choice of reference frame for their QRFs,
+which amounts to being able to choose how to measure spin. Right? Right. So is part of this
+entanglement picture, like, do they, do they just have to align the sectors or all also the way they
+are measuring a spin on those sectors? Yes. They, they, they have to align the way they're measuring
+the spin in those sectors that it's that lack of, remember the, the point that, uh, free choice of, of
+local reference frame is required for separability. So as the systems become fully entangled,
+then their local reference frames for each qubit, uh, become the same, become necessarily the same.
+Mm-hmm.
+Thank you. Okay. And then, uh, let's continue a little bit. Um, so in, in this, in this talk,
+we're mainly interested, uh, uh, QRFs that do not commute, uh, now maybe, uh, you can, Chris, you can
+tie this back to what you were saying earlier about if you're perfect, you're perfectly entangled, then
+the, the, the sector is going to grow. Does it have anything to do with this? So if Q1 and Q2 here are
+do commute, then how does, how do you reduce this, uh, to the picture on the right-hand side?
+At a first glance, it looks like the picture on the left-hand side encompasses, uh, more sectors of the
+boundary. Yeah. The, the point here is just that if, if we go back and, uh, rep, go back to the notation
+where, uh, what we're, we're representing by this, this simplified notation is
+a collection of, uh, cone-cone diagrams. And if the, if the, if these reference frames commute,
+then one can take these two diagrams and, and find a, uh, think of it in the information inflow direction,
+uh, there will always be a common, uh, co-cone over the two sets of input classifiers
+if the two QRFs commute. So what that means is that I go from a diagram with two sets of, of classifiers,
+each going up to some apex, to a, a diagram with the merged set of classifiers going up to some,
+some farther up the hierarchy apex, uh, because they commute, I can find that, that sort of yet more
+abstract cocoon that covers all of the classifiers in both QRFs. So that just collapses, uh,
+these pairs of green segments down to one green segment. And I've drawn it the same size. I mean,
+it would, it would make more sense graphically, I suppose, to draw it. Right. Each one is twice as big, or
+each one is twice the area. But keeping to this kind of very topological representation where the area
+isn't actually meaningful, uh,
+it is convenient to draw it this way. Right. So, so in short, community, the fact that the commute means
+that you will have that higher apex anyway, so you can bypass that, that first nest thing. Right. But
+it comes to the number of degrees of freedom at the boundary, uh, they're still the same. And in terms of
+area, yeah. Right. Yeah. We're not, we're not getting rid of any of the, the degrees of freedom
+of the boundary that these, uh, QRFs are looking at. Uh, yeah. Very good. So the next slide, um,
+I found a very interesting one. So these are no-go theorems, things that Alice and Bob cannot do. And
+they measure, you know, it's mainly having to do well by measuring their own entangled amount, entropy,
+and counting degrees of freedom. Um, I guess, uh, this has, uh, a very holographic feel to it.
+And also maybe even a, a bit of a Godel theorem feel to it. So I don't know if Chris wants to comment on that.
+Well, I'll just say that I, I think this does have a, a kind of, uh, uh, girdle undecidability feel to it.
+And that there, there are a large number of questions that Alice can't answer, which, uh,
+uh, certainly suggests a formulation in terms of incompleteness.
+And, uh, this is, the connection to Godel's theorem is actually something that
+Jim Glazebrook and I are currently working on.
+Um, and hopefully we'll be able to make that connection more precise.
+Jim Glazebrook
+But the, the point of these statements is just to emphasize that, um,
+a single observer that's uncompartmentalized
+cannot, uh, determine anything about the entanglement entropy of the environment.
+And this is, this is just the result that to, to measure entanglement, you have to have,
+you have to employ a lock protocol. So you have to have classical communication.
+Jim Glazebrook
+And this raises, um, a fundamental issue in the theory, in that, that, uh, classical communication
+is an exchange of information that cannot be represented as a single quantum process. You know, hence,
+you have language like the collapse of the wave function or these various other, uh, you know,
+decoherence, et cetera, et cetera, these various ways of trying to capture this idea that
+something different and irreversible is happening as soon as you talk about classical communication.
+So, uh,
+Jim Glazebrook
+The point is for, for Alice to measure anything about the entanglement entropy of Bob, she has to be sectored.
+So her entanglement entropy, uh, has to decrease, but she can't know that. She can't actually know that she has
+such a lot of the, uh, the, uh, the, uh, the, uh, the very limited points of view of particular observers.
+Jim Glazebrook
+And to, to, to talk about that, I think it's, it's very important to keep these various limitations in mind,
+because there's a real distinction between what we can say, uh, effectively from this kind of God's eye point of view that we're adopting as theorists, where we say, uh, Alice has sectors that are communicating classically.
+Jim Glazebrook
+And, uh, what Alice, a system can do from her point of view, or, uh, her sectors can do from their points of view.
+Jim Glazebrook
+And this is a distinction that's often ignored, but it's important to keep it in mind.
+Jim Glazebrook
+Awesome.
+Jim Glazebrook
+Thanks for this line, Ender.
+Jim Glazebrook
+Yeah. So, we continue?
+Jim Glazebrook
+
+Jim Glazebrook
+Um, so then, uh, I guess we get to the, the proper material of, of the last lecture, which is what happens when you have sectors that are not commutative, such as two portions of Alice involved, that have to communicate classically.
+Jim Glazebrook
+This, this is what requires the classical communication tick.
+Jim Glazebrook
+Um, let me see.
+Jim Glazebrook
+So, it would be fair to say, Chris, this only such a classical channel, which is the one shown in this slide requires free energy.
+Jim Glazebrook
+Is that right? Because there's some writing in memory involved in here.
+Compared to the earlier slide where we had that closed loop in the entangled picture, there was no expenditure of energy. Is that correct?
+Jim Glazebrook
+Right. Right. So, so here the, the, the example that keep in mind here is, uh, the, exactly the process that we're, that we're executing right now.
+Jim Glazebrook
+Alice has two components.
+Jim Glazebrook
+Um, and, and we are currently in the position of those components.
+Jim Glazebrook
+And we're communicating classically with each other by, uh, employing a channel that's part of our shared environment.
+Jim Glazebrook
+So we're acting irreversibly on our shared environment.
+And, uh, it's that irreversible action on the environment that has the free energy cost for each of us.
+We actually have to make noise to communicate.
+Jim Glazebrook
+And, uh, you know, our, our laptops are actually consuming power.
+Jim Glazebrook
+All of this is classical.
+I mean, it's this irreversible irreversibility that defines classicality.
+Right.
+And, uh, to continue with this question, I guess, uh, it will come in, in, in, in later slides,
+but the other side of this log protocol is, is the quantum channel.
+And my question to you, uh, Chris, is just like there is an expenditure of time and energy involved in this classical channel.
+Is, is the quantum channel basically the opposite of that?
+Meaning it's, it's, it's, it's action is instantaneous.
+Entanglement, presumably.
+And also, again, back to that loop picture of entangled cycle.
+Uh, is there just no passage of time, no expenditure of energy?
+Is, does that, any of that make sense?
+Jim Glazebrook
+Yeah. And I think it's worth actually going to the next slide here where we complete the loop and add the quantum channel.
+Uh, is it, is it this one?
+Yeah. Um, I think to, to understand what's going on here, I think it's very useful to think of it in terms of a, a Bell EPR experiment.
+Mm-hmm.
+Right? Where, uh, Bob, in this case, the shared environment includes the source that's creating the entangled pair,
+which, uh, a one and a two observe simultaneously.
+They interact simultaneously with, uh, their two detectors, which are interacting with the entangled pair.
+So you can think of their, their two detectors are entangled.
+And it's only later that they exchange this classical information.
+And in a Bell EPR experiment, the, the time, the elapsed time between the source emitting the entangled pair
+and the entangled pair interacting with, uh, the detectors deployed by A1 and A2
+is, is, is designed as part of the experimental protocol to be less than the time that it is required for A1 and A2 to communicate classically.
+Mm-hmm.
+And notice that from the point of view of the entangled pair itself, no time has passed at all.
+Right? It's, the entangled pair is, from a special relativity point of view, uh, moving along a light, light trajectory.
+So there's, uh, there's, uh, there's no distance being traversed and no time is, is elapsing from the point of view of the entangled pair.
+Uh, there's only an elapsed time and a traversed distance in the coordinates of the observers.
+Mm-hmm.
+So that's, this is why I characterize the, the assumption of classical communication as a stipulation.
+And also why I characterized it as a fine tuning assumption, right? We're, we're assuming something
+very specific about this communication channel. Uh, and we're assuming that the, the part of Bob, the part of the shared environment
+that implements this classical communication channel behaves differently from the rest of the shared environment.
+Uh, it behaves in a way that is, is classical. Uh, but the rest of the shared environment doesn't.
+Right? The rest of the world is, is described using quantum theory. So we're, we're making this assumption that part of the shared environment is special.
+And the, the, the specialness is that it, it behaves in this classical way.
+Mm-hmm.
+So let me, let me finish with this, uh, slide, I suppose, uh, to go back to my earlier question about that entangled loop being,
+at least pictorically appears to be like a degenerate version of this log picture.
+If in this log picture, I have the quantum channel on the right, uh, that hypothetical entanglement on the, to complete the cycle on the left was only broken when a one and a two
+chose to write that into their memories at different sectors. Right. And then that eventually necessitated the, the classical communication between them.
+Is that, is that, is that correct? Yeah. Um, you know, one could, one could always take the point of view of, uh, if you will, the observer who's outside the entire universe
+and just sees the entire universe evolving unitarily.
+Mm-hmm.
+And in, in, from that point of view, there's no such thing as classical communication.
+So the communication is classical only, only relative to this division between the observers.
+And that division between the observers corresponds to their, their measurement procedures not commuting.
+Mm-hmm.
+So it, it, it corresponds to what we think of classically as Alice acting on her half of the entangled state, uh, determining what Bob will then see.
+Again, that's that, all of that causal language is classical.
+So, right.
+
+Right.
+Uh, and we're like at 1130, so halfway more or less, let's say a few words on, uh, the, the later slides, uh, scaling profits and all of that.
+Um, I guess before we, before we start talking about this, which will take us like five to 10 minutes at most,
+could you say a few words again about the, the fine tuning assumption?
+So, uh, I still, I still can't quite understand what is meant here,
+that this whole classical communication stuff requires fine tuning.
+Okay.
+
+I, I think, uh, a way to think about it is, um, to, to think about what it means to say that Alice and Bob are able to communicate classically.
+Um, what we're saying is that Alice and Bob share some sort of language.
+So when they exchange their data, we can think of their data as, as written in some binary code in a data table.
+Um, you know, Alice says, uh, I, I set my instrument this way and I saw this spin.
+I, I, I then set my instrument this other way and I, I made this observation.
+So Alice's data table or, uh, a one's data table, um, is, is just a, a, a long table with two entries in each row.
+Uh, one entry is how the detector was adjusted.
+And the other entry is, is what the value of the spin was observed.
+And Bob's data table looks the same.
+And so they, they share this information or they share it with some third party.
+They, they communicate it classically.
+And there are two aspects to that classical communication.
+One is that up to classical noise, um, their data tables don't change when they share them.
+So, uh, they really are irreversibly recorded.
+They're not evolving in time, uh, along with the rest of the universe.
+The other aspect is that we have to assume that Alice and Bob mean the same thing, uh, by their, their notations in these data tables so that they can actually compare them, so that they can actually do this statistic.
+And see if they violated Bell's inequality.
+So what that means is we have to assume that they actually share a definition of up.
+And that when they talk about changing the settings on their instruments, they're talking about changing those settings with respect to some shared definition of up.
+And, you know, in a, in a, in a real experiment that shared definition of up is provided by the, the earth's gravitational field or something like that.
+Mm-hmm.
+Earth's magnetic field.
+Some shared environmental variable.
+So now it seems like, uh, we have a situation in which Alice, Alice one and Alice two should be entangled, right?
+Because they share this reference frame that enables them to communicate classically.
+But they can't be entangled if they're going to communicate classically.
+So, so we make an assumption that in just this case, they share a reference frame, but they're not entangled.
+They're able, they're able, they're able to communicate classically while sharing the reference frame.
+Mm-hmm.
+And we can sort of wave our hands and say, uh, they only share the reference frame up to some measurement resolution or something like that.
+But despite the hand waving, we're making a very specific assumption that violates, uh, the fact that reference frame sharing, uh, induces entanglement.
+So that's the fine tuning assumption.
+We assume that the universe is such that in this very specific kind of case, uh, we can have reference frame sharing without entanglement.
+Cool.
+Let's, let's keep it here and just open it up a little bit.
+Let's see if, um, Harris or Dean want to just give any thought or reflection on what we've gotten to so far.
+Harris, if you want to, please.
+Yes.
+Uh, everything is very interesting.
+Um, basically I was listening, uh, uh, with great, uh, let's say focus.
+It reminded me of this, uh, uh, let's say elaboration on, on the previous talk, uh, that Chris, uh, gave two weeks ago.
+It reminded me something that Michael Levitt said, uh, some time ago.
+Uh, it is regarding this amazing ability of, uh, cognition to scale up.
+So it's not only, uh, this, uh, understanding, let's say of the scattering of cognition, but also the scaling up of cognition.
+Uh, and, uh, when, uh, when I tried to, uh, get inside in my head, uh, uh, actually that, uh, uh, as Chris said in, in, in one of his, uh, talks.
+That is, um, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is,
+Thank you. I'm glad that helped. Yeah, I think this is intimately related to the question of
+what cognition is. Since if we have a purely quantum system, there really is a deep sense
+in which nothing is happening because of the time symmetry. So to talk about cognition as something
+that actually occurs, we have to think of it classically. Thank you. Also, if you allow me
+another comment on that, basically one of the comments posted during your last talk in the chat
+had to do with classical memories. And I was thinking about that and I came to the conclusion
+that classical memories presupposes a gestation period. And when I think about it, that actually
+makes sense. And it is true, let's say, for both physical and psychological reasons. So, for example,
+a hard disk needs to write data on its magnetic surface and a human brain needs to consolidate
+all those neural connections through synaptic plasticity, let's say. However, when we start
+thinking about quantum information and quantum memories, let's say, we realize that such quantum
+memories basically will be stored in qubits or in those entangled states that you describe. So they do not
+necessarily have the same limitations. And of course, quantum information theories suggest, as I understand it,
+that quantum memories can be created and accessed instantaneously without any form of gestation, let's say,
+without any gestation period. And of course, this goes back and it has the potential, as I see, to revolutionize
+computation with in terms of quantum computation, but also, and most importantly, communication and quantum cryptography,
+even. And this is something that I am truly interested in. So, yeah, I just wanted to share also that.
+Yeah, that's a very good point. And the flip side is
+the issue of stability, which again gets to the notion of environmental decoherence, which is just the process of observation of the quantum state by some environment or some observer, some component of its environment.
+And the reason this is a problem in practice is that we don't have complete control of all components of the environment.
+Right? So, we have to use things like liquid helium to try to keep the environment at bay to prevent decoherence.
+Because any other components of the environment interacting with our quantum memory will alter the state of the memory.
+Yeah, that is a great answer.
+And basically, the reason why I typed that question regarding super selection rules, and namely, I propose something called fuzzy super selection rules.
+Basically, as I understand it, those super selection rules, the classical ones, let's say, they are based on symmetries or on all those conversation laws that actually limit the accessibility or the,
+our capacity to measure, let's say, certain quantum properties, let's say, maybe it's parity, maybe it's angular momentum, maybe it's even charge.
+But if we start thinking like these fuzzy super selection rules, in an effort to relax these restrictions by allowing some degree of coherence or interference between the different super selected sectors,
+which can be quantified, let's say, and then we have to use the same parameters, which can be quantified, let's say, by a parameter called fuzziness.
+I know that in other fields, like in my field, that is fuzzy cognitive mapping, the production of fuzziness from us, as it was propounded by Professor Lotfi Zadek,
+it actually helped a lot of our models to become more accurate, let's say.
+So this is what I am proposing, maybe, of course, I don't expect it to revolutionize quantum information, but maybe it can help us understand a bit better what is going on in the role of this,
+the coherence that comes out of the environment.
+So if we incorporate it as a parameter of fuzziness, a priori, then maybe we can understand and even what we are dealing with.
+Yeah. I would refer you to the paper by Bartlett, who are the other, there are two other co-authors.
+In 2007, a lovely review of quantum reference frames in Reviews of Modern Physics.
+And a point that they make that I think is relevant here is that a super selection rule can always be interpreted.
+Let me see if I, if I, I'm not sure I'll be able to completely reproduce their argument.
+But they show that a super selection rule can always be interpreted as the absence of a reference frame or the lack of a reference frame.
+And one of the examples that they give is charge conservation, that we never see super positions of different electric charges.
+And their point is, we never see this because we have no way of measuring it.
+We have no reference frame that we could use that would allow us to see a state of superposed charges.
+And effectively what they're saying is our reference frames are all made of matter that is composed of stuff that has well-defined electric charges.
+So we can't, we can't, we can't see things that are super positions of charge.
+And it's very difficult, you know, for us to see things that are super positions of position.
+So this question of what is a super selection rule, why do we have these rules, at least in their reasoning, boils down to the question of why do we have some reference frames or some measurement capabilities and not others?
+What is it about us that limits in some fundamental way our ability to make measurements?
+And I suspect that when you talk about fuzziness, which is a sense of classical uncertainty, that you may be sort of pointing in that direction.
+But I think, I think it would be worth looking at that paper and, which is, which is largely written in English, right?
+The, the, the formalism is, uh, kept in the background.
+So it's a, it's a very nice paper.
+Thank you.
+We'll check it out for sure.
+Thank you.
+Um, Andrew, maybe mute a little bit.
+Dean on the mountaintop.
+What can you throw down on us?
+I don't have anything, anything super special to throw down.
+I have a, I have a question though.
+And because I am very comfortable in that fuzzy space.
+I kind of see relationships as, uh, and their, and their lack of definability as a feature.
+So here's my, here's kind of my question.
+Um, so you talked about a minimum sort of two different memories to encode something in time.
+And I think it's, it was one of the slides just after the one that's up here right now.
+Um, which sounds to me like somewhere processing capacity.
+It sounds like we are kind of stepping back and trying to look at this instantaneous thing.
+Um, which sounds to me like, uh, from the relative position of even the things that are classical can be seen as all quantum.
+So that when you mentioned that earlier, Chris, that helped me quite a bit, which then manifests itself as a classical ability to process somewhere.
+I, I, I, I spent a lot of my career self labeling as a wayfinder.
+So not capacity realization relationship.
+Just as a relationship, it, it means that wayfinding is not just an orienting or a processing where I am.
+And being gripped by the sort of the thing that I'm enveloped by it's also the channel, the screen, the bound, the divide, the gap, the unentangled potentiator.
+It's the thing upon which traction can exist as being a gripper as well.
+So if it's, I was already hung up on, I wanted to go back like Columbo in that old seventies TV show and talk about Z spin, because I think Z spin is an energy way of describing.
+But I honestly think when I went back and watched the, your presentation a couple of times, I'm starting to get a sense that Z spin is also a relationship.
+It's that affordance that allows us to be able to see up and down, but I'm just curious, Chris, are we really talking about processing somewhere in the classical sense?
+But because we have these two ways of encoding different memories, we're also talking about somewhere processing just that, that state that allows for that.
+That's my, my question.
+Is that what we're really getting?
+Are we, are we trying to open that up, that possibility up?
+Yeah, I think that's a nice way to think about it.
+I think we're trying to, at some deep level, come up with a way of describing
+what it means to be an agent, and I'll say in our case, a self-conscious agent, with a sense of time that's embedded in an environment that we depend on to store memories for us.
+And what I mean by that is that we depend on the environment to change very slowly, at least from our point of view, so that we can keep some sense of our orientation within the environment.
+Right?
+Right?
+We're using everything we see as a memory that allows us to keep ourselves fixed, which allows
+us to have a point of view.
+So we're using the entire visible environment as, if you will, a reference frame against which we can see small changes.
+But if the environment was constantly and rapidly changing, we wouldn't be able to do that, and we wouldn't be able to use it as a memory, and so we would have no point of view.
+So, in a sense, I think what we're talking about here is the miracle of having a point of view that gives us a sense of time.
+That's very philosophical.
+It's amazing.
+And I wonder if, along with the perspectival visual advancements, which you and Shannon Dobson have explored in the math-art settings, you're almost bringing that kind of a transformative re-understanding or re-quantum reference framing into a temporal setting, where it's not just a static spatial parallax
+that we are aesthetically and formally re-understanding, but also a temporal one, which in an agent environment system necessitates these questions of communication, which in the quantum information formalism are approached topologically, rather than geometrically, which is what we needed for the kind of vanishing point type math-art in the spatial set.
+Well, I think they're approached geometrically eventually.
+And that's really what the session in September will be about.
+It's how to start with this very topological picture, where we're only talking about interactions, in a sense, interactions in time, but outside of space, and layer a spatial structure on top of that.
+And this is...
+And this is...
+I think this is particularly interesting in this active inference context, because it immediately raises biological questions about the ability of different organisms to layer space on their experience, and hence locate themselves, if you will, within some sort of
+of perceived world.
+And then, of perceived world.
+Awesome.
+Dean, and then back to Andra for the last minutes.
+Okay, unmute Dean, and then please continue.
+Sorry.
+So, Chris, is it from the pure neophyte perspective that I have, is it okay to say that it's not just a flipping of position of words, that somewhere processing that availability, and processing somewhere in the classical sense, where am I?
+It's our ability to diffuse those, as you mentioned, we can slow down, we can stabilize, we can see that relationship.
+Or, is it about spin?
+I think the former, right?
+Spin is a very convenient abstraction for talking about binary encoding.
+And we have this felt sense of spin, but the sense, its use in physics is very much an abstraction.
+I mean, the difference between a proton and neutron is a spin variable.
+So, is this is kind of ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+quantum Darwinism so towards the end the slides um appear to start pivoting towards the next
+subject which is space and time and here in particular we see the earlier slide uh showcasing
+the log protocol where you can you can you can notice that half of it has been cut
+and has been moved to the future so here we don't have uh two sectors of Alice communicating
+but rather Alice communicating with its future still you have the classical and the quantum
+channel now one question that I brought up I remember and uh in the lecture and maybe we can
+expand on a little more was exactly what is the difference between this quantum and the classical
+channel part um something I heard Chris say is that it is crucial for the quantum channel to be
+coherent so this is going to be some sort of unitary scattering evolution that is
+completely independent of everything else going on uh is that correct or or should be in theory
+and yes yeah and and and I suppose just like earlier the classical the classical channel is
+is the part that takes time and free energy expenditure now uh my question uh to you Chris is on not not
+not the not the channels in the middle but the ticks on either side of the boundaries that have been
+broken down and separated in terms of an external time what's what's up with those ticks from one
+sector to the other of the boundary so in q1 for example the law of the lower crf sector that's that
+amount to a state was prepared the upper one was I made a memory record of that state is that that's
+what it is right yeah okay so uh in in the lower sector we both had a preparation and a measurement
+and a measurement was recorded classically here that's all there is yeah so so preparation and measurement are
+are effectively the same process um and you can think of uh in a1 of t what a1 is doing is uh uh
+from from from an operational point of view uh she's preparing an instrument
+and turning it on she's she's creating an initial state
+and she's simultaneously encoding a memory someplace
+mm-hmm uh in her head or or on a piece of paper of what those preparation conditions were
+because it's only with respect to the memory of what the preparation conditions were that the later
+measurement is meaningful mm-hmm so um to let's let's go back to just preparing
+a spin uh right and at t she may uh set the angle of some polarization filter that defines a propagating
+beam of photons and at at t plus delta t she measures something about what those photons are doing
+but the measurement is only meaningful with respect to her memory of what the polarization setting that prepared the photons was
+so the uh effectively what's going on in the quantum channel is an experiment
+and it's it's the the classical information that's preserved in this classical channel that makes the experiment meaningful or interpretable or informative
+yeah for sure yeah it makes perfect sense and and preparation and measurement this ties back to an earlier question we had
+both happen simultaneously at the same like um uh degree of freedom at the boundary or do we have preparation at the lower bounds
+at the top of one
+only when you
+yeah one one can one can think of that operator mi
+mi if you remember the the decomposition of the hamiltonian as as preparing or measuring that it's just a matter of interpretation uh
+uh you know effectively is it acting to the left or acting to the right
+yeah okay yeah yeah yeah and then um before we get to quantum matter correction as uh more of a spatial
+uh so instead of a time thing i i wanted to ask about yet another question between this quantum
+and the classic so the quantum channels does involve some sort of time evolution you know it's this unitary
+you know portion that is uh sorry this portion that is evolving unitarily with no interference from the outside
+uh however as you said for this experiment to make sense you need to have a classical memory
+of how that experiment most prepared so that's that means that that classical guy on top
+is uh static there's no time for any uh well this actually gets back to the talk by suskin that
+we were talking about before we started here uh that you you kindly referred me to uh
+uh part of part of part of this classical memory is uh memory for what counts as a classical clock
+and we'll we'll actually get to this again in the september session but if you if you think again about
+doing an experiment uh in which a state is prepared and then it's measured uh this quantum process
+is a process through time with respect to some uh classical clock that actually provides the time
+coordinate for the experiment so this this classical clock is some external reference frame
+that that that a1 here in this notation is is using as part of her classical memory
+right again uh it's a memory because it's something that's assumed not to change
+uh and and this is this will be kind of the heart of the discussion in september that
+that that time and memory and object persistence are all different names for the same assumption that we
+make about the world
+thank you chris thank you i i am going to have to disappear so um only for now though
+yeah only for now i i will i will nonetheless persist someplace thank you chris so much chris okay awesome
+see you thanks very much well measure you later okay um enter if you wanted to drop any other cues or clues or
+uh bring us a little bit of a preparation for where we're going to be heading in lecture five that would be pretty cool
+uh sure so i mean i i'm a little aware of what's coming in lecture five um
+until uh uh space and time and how space may be sorry time may be a little more fundamental than space for
+reasons that chris will show um has a lot to do with the notion of how you define a clock
+i'm seeing we need to think hard about what what what are the very minimum ingredients for you to talk
+out the existence of a clock uh these are deep fundamental almost philosophical questions that are
+overlooked and the good news and that's the saskin talk that chris and i were referring talk
+referring to is that other people especially in the high energy community are also looking into these
+questions which is very reassuring so i'm talking about at wheaton saskin uh harlow etc they are
+there is a recent talk on youtube uh where they talk about what does it mean for something to be a
+clock you know how does how long does the clock last and and then chris will also talk about space
+and and the punchline of it will be that um there's obviously a physics approach to emergent space
+time which is very very technical and and so on but from what i understood i mean i i have yet to see
+the talk my first my first myself first um is that there is a parallel biological approach as to how we learn
+how we learn how to understand space time so from uh developmental psychology point of view um
+infants and i suppose all kinds of animals are not born uh fully equipped to perceive space time hence
+the necessity of things like play and so on so they can find correlations between uh motor inputs and
+visual inputs right and eventually things like the mirror test which is non-trivial no no no no no
+human born is born uh passing the mirror test already so that implies that at least biologically
+it is non-trivial and it takes a few steps until you get to have that sort of
+space spatial awareness right now the interesting part of this for me personally is what the what
+the physics side of it is and uh i i'm i'm no expert by any means but i think the gist of it might
+might have to do something with quantum error correction uh ads cft and so on um there was a
+bit of a teaser about quantum error correction here in these slides uh but yeah i mean that's that's
+about all i can say but very looking forward to the biology also yeah cool harris any last
+thoughts or anything you want to point towards basically i would like to thank everyone for
+inviting me i really enjoyed it the whole uh live stream i hope we have made some progress and uh
+uh looking forward to uh the next uh live streams uh number five and number six so uh that's about it
+thank you everyone thank you anything else under that's it awesome well i encourage everyone to go to the
+syllabus page look ahead look back pre-gest digest re-gest ask questions and let's make progress as you
+exhort harris so see y'all till next time
+is

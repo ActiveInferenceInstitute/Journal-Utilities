@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #026.0 ~ “Bayesian Mechanics for Stationary Processes”</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #026.0 ~ “Bayesian Mechanics for Stationary Processes”</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_026 &middot; Episode 0 &middot; Duration: 1:21:51 &middot; Views: 223</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=eZlG_J7sPj4">https://www.youtube.com/watch?v=eZlG_J7sPj4</a></div>
+<article>
+<p>hello</p>
+<p>and welcome everyone this is the active</p>
+<p>inference lab it is active inference lab</p>
+<p>live stream number</p>
+<p>26.0 on august 6 2021</p>
+<p>we're going to be discussing the paper</p>
+<p>bayesian mechanics for stationary</p>
+<p>processes</p>
+<p>welcome to active inference lab everyone</p>
+<p>we are a participatory</p>
+<p>online lab that is communicating</p>
+<p>learning and practicing</p>
+<p>applied active inference you can find us</p>
+<p>at the links</p>
+<p>on this slide this is recorded in an</p>
+<p>archived live stream so please provide</p>
+<p>us with feedback so that we can improve</p>
+<p>on our work</p>
+<p>all backgrounds and perspectives are</p>
+<p>welcome here as well</p>
+<p>today as you can find out at this short</p>
+<p>link</p>
+<p>we're going to be having the context</p>
+<p>video for the discussions on august 10th</p>
+<p>and 17th in number 26.1 and 26.2</p>
+<p>which are going to be group discussions</p>
+<p>with some of the authors joining</p>
+<p>so if you want to join for any of these</p>
+<p>talks</p>
+<p>or discussions then please just let us</p>
+<p>know</p>
+<p>and also we have a few weeks where we</p>
+<p>don't have a paper decided so if you</p>
+<p>have a suggestion</p>
+<p>and want to be in those discussions let</p>
+<p>us know</p>
+<p>all right today in acting stream number</p>
+<p>26.0 the goal is going to be to</p>
+<p>learn and discuss this paper bayesian</p>
+<p>mechanics for stationary processes</p>
+<p>by decosta fristen heinz and pavliotis</p>
+<p>which was posted in june 2021</p>
+<p>this video just like all the dot zeros</p>
+<p>is just an introduction to some of the</p>
+<p>ideas in a walk through the paper one</p>
+<p>way it's not a review or a final word</p>
+<p>we're gonna give some overview to the</p>
+<p>paper then</p>
+<p>address a few of the key words from a</p>
+<p>big picture perspective</p>
+<p>then go through the figures in the</p>
+<p>formalism</p>
+<p>i'm daniel and i'm a postdoc researcher</p>
+<p>in davis california</p>
+<p>so in this paper the aims and the claims</p>
+<p>are</p>
+<p>laid out as followed they wrote in this</p>
+<p>paper</p>
+<p>we considered the consequences of a</p>
+<p>boundary mediating interactions between</p>
+<p>states internal and external to a system</p>
+<p>so it's about interfaces and</p>
+<p>interactions that's the first point</p>
+<p>on unpacking this notion we found that</p>
+<p>the states internal to a markov blanket</p>
+<p>look as if they perform variational</p>
+<p>bayesian inference</p>
+<p>optimizing beliefs about their external</p>
+<p>counterparts</p>
+<p>so uh when the boundary is set up in a</p>
+<p>certain way</p>
+<p>for which kinds of systems that's what</p>
+<p>we'll be</p>
+<p>asking uh how do those systems look from</p>
+<p>the outside or what does it look as if</p>
+<p>they're doing</p>
+<p>and then three when subdividing the</p>
+<p>blanket into sensory and active states</p>
+<p>we found that autonomous states perform</p>
+<p>active inference in various forms of</p>
+<p>stochastic control</p>
+<p>i.e generalizations of pid control so a</p>
+<p>lot of these terms like variational</p>
+<p>bayesian</p>
+<p>markov blanket pid control we're going</p>
+<p>to be</p>
+<p>talking about more but at the overview</p>
+<p>level that's the aims and claims as the</p>
+<p>authors write them</p>
+<p>the abstract states that the paper</p>
+<p>develops a bayesian mechanics for</p>
+<p>adaptive systems and then there's only</p>
+<p>these three claims again</p>
+<p>which are again related to the blanket</p>
+<p>and adaptiveness</p>
+<p>of systems and then this partitioning of</p>
+<p>that interface into sense and action so</p>
+<p>first we model the interface between a</p>
+<p>system and its environment with a markov</p>
+<p>blanket</p>
+<p>this affords conditions under which</p>
+<p>states internals of the blanket encode</p>
+<p>information about</p>
+<p>external states second we introduce</p>
+<p>dynamics</p>
+<p>and represent adaptive systems as markov</p>
+<p>blankets at steady state</p>
+<p>this allows us to identify a wide class</p>
+<p>of systems whose internal states appear</p>
+<p>to infer external states</p>
+<p>consistent with variational inference in</p>
+<p>bayesian statistics and theoretical</p>
+<p>neuroscience</p>
+<p>finally whoops we partition the blanket</p>
+<p>into sensory and active states</p>
+<p>it follows that active states can be</p>
+<p>seen as performing active inference</p>
+<p>and well-known forms of stochastic</p>
+<p>control such as pid control</p>
+<p>which are prominent formulations of</p>
+<p>adaptive behavior in theoretical biology</p>
+<p>and engineering so this is going to be</p>
+<p>relating to</p>
+<p>math and physics with the markov</p>
+<p>blankets and the far from equilibrium</p>
+<p>thermodynamics</p>
+<p>component and information theory and</p>
+<p>then</p>
+<p>it's also going to be developed into</p>
+<p>some domain specific</p>
+<p>cases or shown to be a generalization of</p>
+<p>domain specific</p>
+<p>cases like theoretical biology</p>
+<p>and engineering these are the sections</p>
+<p>of the paper so first there's an</p>
+<p>introduction which has some of the</p>
+<p>general concepts then there's a section</p>
+<p>on markov blankets which is going to be</p>
+<p>a key</p>
+<p>framework and a key uh formalism to</p>
+<p>track because it's kind of what the</p>
+<p>paper is about</p>
+<p>so first technical sections about the</p>
+<p>markov blankets</p>
+<p>followed by a discussion of how that</p>
+<p>relates to bayesian</p>
+<p>systems or certain types of bayesian</p>
+<p>systems</p>
+<p>and then this general bayesian framework</p>
+<p>is then sort of uh</p>
+<p>specified towards an active inference</p>
+<p>model specifically with an eye towards</p>
+<p>stochastic control</p>
+<p>and then there's a discussion and</p>
+<p>conclusion and then there's three</p>
+<p>supplemental sections related to the</p>
+<p>synchronization map</p>
+<p>which is about the synchronization of</p>
+<p>internal and external states</p>
+<p>and how that's related to some math</p>
+<p>results</p>
+<p>there's the helmholtz decomposition</p>
+<p>which</p>
+<p>is related to vector fields and</p>
+<p>splitting them into different components</p>
+<p>and then there's the free energy</p>
+<p>computation and</p>
+<p>some more details related to what</p>
+<p>exactly</p>
+<p>that formalism is used as here</p>
+<p>the keywords of the paper were</p>
+<p>variational bayesian inference</p>
+<p>non-equilibrium steady state markov</p>
+<p>blanket</p>
+<p>free energy principle predictive</p>
+<p>processing and active inference</p>
+<p>so first non-equilibrium non-equilibrium</p>
+<p>steady state here's a figure</p>
+<p>from this paper stable unstable and</p>
+<p>meta-stable states of equilibrium</p>
+<p>definitions and applications to human</p>
+<p>movement so</p>
+<p>there's going to be some mathematical</p>
+<p>definitions and uses of non-equilibrium</p>
+<p>steady state but this is a domain</p>
+<p>specific usage that gets at some of the</p>
+<p>nuances</p>
+<p>there's not just one single way to frame</p>
+<p>equilibrium</p>
+<p>especially for dynamical systems and</p>
+<p>this is shown as</p>
+<p>with an example of a person in movement</p>
+<p>so there might be a total thermodynamic</p>
+<p>equilibrium</p>
+<p>like death but even within the non-death</p>
+<p>regime there are still many types of</p>
+<p>equilibrium</p>
+<p>there's lying down they're sitting in a</p>
+<p>chair</p>
+<p>there's a walking steady state there's</p>
+<p>this meta-stable state</p>
+<p>and then there's unstable states of</p>
+<p>equilibrium so a few</p>
+<p>just questions would be like what does</p>
+<p>it mean to have equilibrium</p>
+<p>of a measurement or a system at a given</p>
+<p>level and what's the difference between</p>
+<p>that</p>
+<p>static just something on the ground</p>
+<p>versus a dynamic equilibrium</p>
+<p>like something that maintains its</p>
+<p>position and uses energy to do that</p>
+<p>so in those cases where does the energy</p>
+<p>come from</p>
+<p>how does this relate to dissipative</p>
+<p>systems</p>
+<p>so something where there's energy to be</p>
+<p>expended like a battery</p>
+<p>or a tornado and how does that relate to</p>
+<p>adaptive</p>
+<p>systems and predictive systems</p>
+<p>which ones are related to active</p>
+<p>inference one or both</p>
+<p>and what about when there are</p>
+<p>multi-level</p>
+<p>systems of equilibria so some that are</p>
+<p>higher frequency or shorter timescale or</p>
+<p>smaller spatial scale</p>
+<p>and others that are broader and also</p>
+<p>what if we want to have</p>
+<p>action-oriented models of those systems</p>
+<p>so we want to have the description</p>
+<p>that's optimal</p>
+<p>for some other set of requirements other</p>
+<p>than just accurate measurement</p>
+<p>and that's where this paper is going to</p>
+<p>be kind of headed</p>
+<p>is thinking about dynamical systems in</p>
+<p>general and looking</p>
+<p>at equations that relate to solving them</p>
+<p>another keyword was variational bayesian</p>
+<p>inference</p>
+<p>and there's a lot of good literature on</p>
+<p>this</p>
+<p>topic from a lot of different</p>
+<p>perspectives but this article</p>
+<p>had a good way of phrasing it which is</p>
+<p>that</p>
+<p>variational inference methods consist in</p>
+<p>finding the best approximation of a</p>
+<p>distribution among a parameterized</p>
+<p>family and in contrary to sampling</p>
+<p>approaches</p>
+<p>a model is assumed which is the</p>
+<p>parameterized family</p>
+<p>implying a bias but also a lower</p>
+<p>variance in general</p>
+<p>variational inference methods are less</p>
+<p>accurate than sampling based like mcmc</p>
+<p>ones but produce results much faster</p>
+<p>these methods are better adapted to big</p>
+<p>scale very statistical problems</p>
+<p>so again to just kind of give a</p>
+<p>qualitative example it's like the real</p>
+<p>world is giving you this data which is</p>
+<p>the blurry image of a cat</p>
+<p>one way to get at what was the</p>
+<p>generative</p>
+<p>uh underlying cat that generated this</p>
+<p>blurry image</p>
+<p>would be to sample and find the most</p>
+<p>likely cat generating this image</p>
+<p>or do various other sampling schemes and</p>
+<p>if it's set up properly it can fit</p>
+<p>arbitrary</p>
+<p>distributions however it can be</p>
+<p>computationally expensive and really</p>
+<p>hard to know if you're</p>
+<p>solving the problem at</p>
+<p>a functional enough rate in contrast the</p>
+<p>variational inference approach is</p>
+<p>related to fitting the data</p>
+<p>based upon a pre-specified family of</p>
+<p>distributions</p>
+<p>which can still be really general and it</p>
+<p>can be fast but it can sometimes</p>
+<p>lead to fitting the optimal support for</p>
+<p>a given distribution</p>
+<p>but having it just be categorically</p>
+<p>wrong on some other dimension like</p>
+<p>estimated through deep time or something</p>
+<p>like that</p>
+<p>so variational bayesian inference is</p>
+<p>this lower</p>
+<p>cat where there's a known cat and then</p>
+<p>you stretch and distort the cat for</p>
+<p>example</p>
+<p>reparameterize the cat to find an</p>
+<p>underlying likely cat</p>
+<p>another was markov blanket</p>
+<p>and there was good discussion of this</p>
+<p>with mel</p>
+<p>andrews in active stream 14</p>
+<p>and we kind of had this continuum from</p>
+<p>markov on the left here which was</p>
+<p>studying systems from a mathematical</p>
+<p>perspective didn't have</p>
+<p>computer so it was looking at matrices</p>
+<p>and which elements</p>
+<p>of matrices were connected to each other</p>
+<p>or not</p>
+<p>and then that was developed later by</p>
+<p>pearl</p>
+<p>and others in this broader bayesian</p>
+<p>statistical framework</p>
+<p>that's where the markov blanket</p>
+<p>terminology</p>
+<p>starts to come from and</p>
+<p>it's also oriented towards empirical</p>
+<p>data and discovering dependencies in</p>
+<p>data and it's very computational</p>
+<p>and then part of the</p>
+<p>literature that we're discussing is</p>
+<p>where</p>
+<p>fristen and others have built on or</p>
+<p>used this pearl blanket slash markov</p>
+<p>blanket</p>
+<p>theme and done a few things like</p>
+<p>separating the blanket states into</p>
+<p>sensory in action</p>
+<p>incoming and outgoing nodes</p>
+<p>uh introducing the cybernetic</p>
+<p>imperative to be a goal seeking or a</p>
+<p>multi-scale good regulator</p>
+<p>to maintain that non-equilibrium steady</p>
+<p>state which we'll talk about</p>
+<p>or and we did um and then also</p>
+<p>what's being explored from a formalism</p>
+<p>perspective in the paper we're</p>
+<p>discussing</p>
+<p>is how is it or under what conditions do</p>
+<p>internal states act as if they're a</p>
+<p>model of their non-local dependencies</p>
+<p>so causal dependencies in the world</p>
+<p>would be</p>
+<p>reflected by how the brain or some other</p>
+<p>computer system</p>
+<p>works so that entails this generative</p>
+<p>model of</p>
+<p>the action in the niche and also</p>
+<p>brings in the element of including the</p>
+<p>uh blanket in internal external states</p>
+<p>as part of this broader</p>
+<p>inactive embodied and cultured slash</p>
+<p>pragmatic term</p>
+<p>also in active stream 14 we</p>
+<p>had this sort of progression emerging</p>
+<p>from the</p>
+<p>structuring of the paper where there's a</p>
+<p>uh</p>
+<p>sort of vector field meets diffusion</p>
+<p>thermodynamics uh branch on the bottom</p>
+<p>with the</p>
+<p>uh focker plank and helmholtz</p>
+<p>and that's related to non-equilibrium</p>
+<p>steady state</p>
+<p>densities and then the free energy</p>
+<p>principle</p>
+<p>uh subsuming all these sort of pieces</p>
+<p>like the markov blanket being maintained</p>
+<p>through time</p>
+<p>necessitates the degenerative model of</p>
+<p>action</p>
+<p>is what the internal states have to be</p>
+<p>inferring so the useful components</p>
+<p>of the external world</p>
+<p>and then uh under free energy principle</p>
+<p>there's all these sort of related areas</p>
+<p>like</p>
+<p>active inference is that an</p>
+<p>implementation of systems under the free</p>
+<p>energy principle</p>
+<p>how is this related to predictive</p>
+<p>processing</p>
+<p>bayesian brain so we talked more about</p>
+<p>that but today we're going to look at</p>
+<p>how it's used more by the authors in</p>
+<p>this paper</p>
+<p>so the first thing is that the</p>
+<p>code is available on connors</p>
+<p>github and we'll also be</p>
+<p>talking with connor hopefully so</p>
+<p>let's um maybe work through it or if</p>
+<p>anyone has</p>
+<p>the chance to run it tell us about how</p>
+<p>it went or what they learned from it but</p>
+<p>i didn't</p>
+<p>get to run it so</p>
+<p>we can start with figure one which is</p>
+<p>laying out the big</p>
+<p>graphical intuition of the whole paper</p>
+<p>and everything is going to be</p>
+<p>specifying uh constraints</p>
+<p>or some details or implications of</p>
+<p>a way of interpreting this intervention</p>
+<p>of the blanket states between</p>
+<p>internal and external states so we have</p>
+<p>mu the internal states b the blanket</p>
+<p>states</p>
+<p>and eta which are looks like a curly n</p>
+<p>and um this is going to allow us to</p>
+<p>separate any set of nodes</p>
+<p>mu that we're specifying and</p>
+<p>ask what are the blanket states that</p>
+<p>insulate from a some</p>
+<p>statistical codependency sense which</p>
+<p>we'll be exploring</p>
+<p>insulates these two partitions</p>
+<p>and the caption says the mark called</p>
+<p>blanket is depicted graphically as an</p>
+<p>undirected graphical model also known as</p>
+<p>a markov random field</p>
+<p>the circles represent random variables</p>
+<p>the lines represent conditional</p>
+<p>dependencies between random variables</p>
+<p>the markov blanket condition means that</p>
+<p>there is no line between mu</p>
+<p>internal states and eta the external</p>
+<p>states</p>
+<p>this means that mu and eta are</p>
+<p>conditionally independent given b</p>
+<p>so conditioned on the blanket these</p>
+<p>internal</p>
+<p>external states are separated in other</p>
+<p>words knowing the internal state mu</p>
+<p>does not afford additional information</p>
+<p>about the external state eta when the</p>
+<p>blanket state b</p>
+<p>is known thus blanket states act as an</p>
+<p>informational boundary between</p>
+<p>internal and external states so that's</p>
+<p>what the</p>
+<p>blanket states do and this paper is</p>
+<p>going to explore some of the</p>
+<p>consequences of</p>
+<p>that and again anyone who</p>
+<p>has more expertise in this area or</p>
+<p>some piece of knowledge that i totally</p>
+<p>missed or got wrong my apologies but</p>
+<p>um just want to try to represent it as i</p>
+<p>saw it</p>
+<p>because a lot of the details i was just</p>
+<p>wanting to</p>
+<p>learn more about and go over with the</p>
+<p>authors</p>
+<p>uh so if anyone has comments in the chat</p>
+<p>they can also</p>
+<p>just like mention it okay</p>
+<p>so let's jump into how they present some</p>
+<p>of the key pieces</p>
+<p>of the formalism because that's the</p>
+<p>details of free energy</p>
+<p>principle slash some of the grounding of</p>
+<p>active inference so</p>
+<p>even if this is new uh formalism for you</p>
+<p>then also hopefully it's also</p>
+<p>interesting</p>
+<p>so keeping that picture in mind of</p>
+<p>figure one</p>
+<p>another way of writing out that</p>
+<p>graphical model</p>
+<p>with a formalism is this eta and then</p>
+<p>upside down t</p>
+<p>so that's the external states</p>
+<p>and then mu conditioned on b so that is</p>
+<p>blanket states are markov blanket</p>
+<p>separating internal external states so</p>
+<p>the top third of the slide</p>
+<p>these are like writing out in pros the</p>
+<p>same thing as this graphical</p>
+<p>model and then</p>
+<p>we can take that tuple that</p>
+<p>set of those three kinds of nodes</p>
+<p>so we have measurements from all these</p>
+<p>different things or generative models of</p>
+<p>each of these different categories of</p>
+<p>nodes</p>
+<p>and then that set</p>
+<p>so all the measurements slash generative</p>
+<p>processes</p>
+<p>that x is existing in a bigger</p>
+<p>state space so the little x which</p>
+<p>consists of like the real</p>
+<p>measurements are part of the bigger</p>
+<p>x which is kind of like the capital</p>
+<p>versions of each of these</p>
+<p>and those spaces the the uh e b</p>
+<p>and i are taking to be euclidean spaces</p>
+<p>for simplicity so i don't know</p>
+<p>if it holds for other kinds of spaces so</p>
+<p>that's just defining the total space the</p>
+<p>possible</p>
+<p>states of each of these nodes and then</p>
+<p>also the ones that you actually observe</p>
+<p>they start with</p>
+<p>this case of a gaussian distribution p</p>
+<p>encoding the distribution of states of</p>
+<p>the world</p>
+<p>so p is a random variable</p>
+<p>that has drawn from n that's like a</p>
+<p>normal distribution symbol</p>
+<p>with a mean and a variance and the mean</p>
+<p>is zero and the variance is this</p>
+<p>um pi to the negative one</p>
+<p>and um this has an associated precision</p>
+<p>covariance matrix so mean zero that's</p>
+<p>the convention n means the normal</p>
+<p>distribution</p>
+<p>and so it's zero mean that's the</p>
+<p>variance pi</p>
+<p>and the precision matrix is pi</p>
+<p>so then the variance is this pi inverse</p>
+<p>and sometimes the equations are</p>
+<p>formulated in terms of precision</p>
+<p>other times they're they're discussed in</p>
+<p>terms of variance</p>
+<p>but those are kind of like two sides of</p>
+<p>the same coin because the same</p>
+<p>it's just like describing it whether</p>
+<p>it's how uncertain you are is like</p>
+<p>looking from the mean out</p>
+<p>and then your precision might be kind of</p>
+<p>like is like focusing down</p>
+<p>uh unpacking</p>
+<p>in terms of gaussian densities so we</p>
+<p>would find that a markov blanket is</p>
+<p>equivalent to sparsity in the precision</p>
+<p>matrix so the mark called blanket</p>
+<p>condition is entailing</p>
+<p>that the covariance the pi between</p>
+<p>external states and internal states</p>
+<p>that's the first</p>
+<p>one here is equivalent to between</p>
+<p>external states and internal states</p>
+<p>the mu and the eta and that both of</p>
+<p>those equal zero</p>
+<p>so there's no covariance and they're the</p>
+<p>same as zero</p>
+<p>so they're conditionally independent</p>
+<p>that's the</p>
+<p>bayesian covariance matrix</p>
+<p>framing of the marcal blanket sparsity</p>
+<p>blanket states act as an information</p>
+<p>boundary between external</p>
+<p>and internal states and this allows</p>
+<p>the breakdown of instead of the all by</p>
+<p>all</p>
+<p>consideration of correlations for data</p>
+<p>fitting or generative modeling</p>
+<p>you can reduce</p>
+<p>the model space to a much better</p>
+<p>uh formulated subset of equations</p>
+<p>which are related to inferring</p>
+<p>distributions</p>
+<p>relating to like external states</p>
+<p>conditioning on the blanket states and</p>
+<p>internal states</p>
+<p>conditioning on the blanket states this</p>
+<p>enables us to associate to any blanket</p>
+<p>state its corresponding expected</p>
+<p>external and expected internal states</p>
+<p>so then this equation</p>
+<p>said uh drew us a set of equivalencies</p>
+<p>which were that the internal states as a</p>
+<p>function of blanket states so mu of b</p>
+<p>were equal to the expectation</p>
+<p>fancy e of mu conditioned on b</p>
+<p>so that's the expectation of external</p>
+<p>states conditioned</p>
+<p>up on of internal states</p>
+<p>um internal states conditioned on</p>
+<p>blanket i</p>
+<p>think that's corrected is right then</p>
+<p>three</p>
+<p>that that expectation is the same</p>
+<p>as the distribution that's</p>
+<p>being calculated involving uh the</p>
+<p>objective distribution</p>
+<p>p and that also that that's related to</p>
+<p>uh the variance in covariance like this</p>
+<p>sigma variable of internal</p>
+<p>and blanket states mu and b</p>
+<p>mapping to the space of all the possible</p>
+<p>internal states</p>
+<p>which was i from here</p>
+<p>and then they wrote pursuing the example</p>
+<p>of the nervous system each sensory</p>
+<p>impression on the retina and ocular</p>
+<p>motor orientation</p>
+<p>blanket state is associated with an</p>
+<p>expected</p>
+<p>scene that caused sensory input which is</p>
+<p>the expected external state</p>
+<p>and does an expected pattern and an</p>
+<p>expected pattern</p>
+<p>of neural activity in the visual cortex</p>
+<p>expected internal state</p>
+<p>so it's a way that that objective</p>
+<p>distribution</p>
+<p>of uh p gets</p>
+<p>integrated into the internal model's</p>
+<p>output given blanket states</p>
+<p>or maybe there's another interpretation</p>
+<p>too so i was just i don't know</p>
+<p>one way to look at it</p>
+<p>this question about the relationship</p>
+<p>between the internal and the external</p>
+<p>states after you've not</p>
+<p>denoised them but decorated them in a</p>
+<p>specific way</p>
+<p>is this topic of the synchronization map</p>
+<p>so they go from just pointing out that</p>
+<p>okay we've decorated internal and</p>
+<p>external states with these blanket</p>
+<p>states</p>
+<p>now we're going to ask how these</p>
+<p>internal states might encode</p>
+<p>information about expected external</p>
+<p>states</p>
+<p>so after we've decorated systems how do</p>
+<p>they have a memory or a model of one</p>
+<p>another</p>
+<p>for this we would need to characterize a</p>
+<p>synchronization function</p>
+<p>sigma mapping the expected internal</p>
+<p>state to the expected</p>
+<p>external state given the blanket state</p>
+<p>so</p>
+<p>sigma mapping function of internal</p>
+<p>states of</p>
+<p>blanket states is going to</p>
+<p>relate to the</p>
+<p>external states at a conditioned on</p>
+<p>blanket states</p>
+<p>so there's still the dependence of both</p>
+<p>internal and</p>
+<p>external states on the blanket states b</p>
+<p>and now there's a sigma mapping that</p>
+<p>is gonna connect internal and external</p>
+<p>states</p>
+<p>and lemma 2.1 goes</p>
+<p>through some details of that</p>
+<p>specification</p>
+<p>so the first is proposing that there is</p>
+<p>a function that maps</p>
+<p>internal and external states</p>
+<p>for any blanket state</p>
+<p>i don't know how generally it holds but</p>
+<p>or</p>
+<p>this would be cool to talk to the</p>
+<p>authors about but it's sort of proposing</p>
+<p>this sigma function and</p>
+<p>maybe in certain cases it's a zero line</p>
+<p>maybe in other cases there's some</p>
+<p>meaningful</p>
+<p>relationship but for biological systems</p>
+<p>it does seem like there's a meaningful</p>
+<p>relationship</p>
+<p>so those are the systems that we want to</p>
+<p>explore modeling</p>
+<p>they then write in how to construct this</p>
+<p>synchronization map the key idea is to</p>
+<p>map an expected internal state mu of b</p>
+<p>to an expected external state</p>
+<p>eta of b and to do this the</p>
+<p>two points they provide are</p>
+<p>one to find a blanket state that maps to</p>
+<p>this</p>
+<p>expected internal state i.e by</p>
+<p>inverting mu and 2 from this blanket</p>
+<p>state find the corresponding expected</p>
+<p>external state</p>
+<p>i.e by applying eta we now proceed to</p>
+<p>solving this problem</p>
+<p>given an internal state mu we study the</p>
+<p>blanket states b</p>
+<p>such that the</p>
+<p>internal states of b</p>
+<p>equals mu</p>
+<p>they provide some details</p>
+<p>maybe that is meant to be external</p>
+<p>states i'm not sure</p>
+<p>um here um</p>
+<p>they're framing that inference</p>
+<p>that mu is doing the internal states</p>
+<p>in terms of covariance matrices</p>
+<p>which is in</p>
+<p>this equation 2.4</p>
+<p>and then frames that</p>
+<p>matrix of unknowns as a system of linear</p>
+<p>equations</p>
+<p>or those are kind of similar</p>
+<p>representations and then</p>
+<p>solves for it in the vector space using</p>
+<p>this</p>
+<p>equation 2.5 they use this</p>
+<p>matrix negative</p>
+<p>function which is the more penrose</p>
+<p>pseudo inverse</p>
+<p>it would be helpful to have someone</p>
+<p>explain in a little more detail</p>
+<p>what the matrix inverse is or what</p>
+<p>degrees of freedom there are in choosing</p>
+<p>different</p>
+<p>kinds of matrix inverses but i just</p>
+<p>found it interesting from wikipedia that</p>
+<p>a common use of the pseudo inverse</p>
+<p>is to compute a best fit or least square</p>
+<p>solution to a system of linear equation</p>
+<p>that locks a solution</p>
+<p>another use is to find the minimum norm</p>
+<p>solution to a system of linear equations</p>
+<p>with multiple solutions</p>
+<p>so this means that there might be</p>
+<p>multiple</p>
+<p>solutions that are equally well fit and</p>
+<p>this just allows you to pick one</p>
+<p>fast maybe</p>
+<p>and then they write that the key for the</p>
+<p>existence of a function sigma mapping</p>
+<p>expected internal states to expected</p>
+<p>external states given blanket states</p>
+<p>is that for any two blanket states</p>
+<p>associated with the same expected</p>
+<p>internal state</p>
+<p>these be associated with the same</p>
+<p>expected external state</p>
+<p>this non-degeneracy means that the</p>
+<p>internal states eg patterns of activity</p>
+<p>in the visual cortex</p>
+<p>have enough capacity to represent all</p>
+<p>possible expected external states</p>
+<p>eg 3d scenes of the environment that's</p>
+<p>formalized</p>
+<p>in this lemma so first</p>
+<p>was the point discussed before that</p>
+<p>we're interested</p>
+<p>in positing the existence of this sigma</p>
+<p>function</p>
+<p>and then 0.2 so these are all</p>
+<p>points that are going to be equivalent</p>
+<p>to each other</p>
+<p>0.2 is that for any</p>
+<p>two blanket states one and two that the</p>
+<p>if the two external states</p>
+<p>are equal i'm sorry if the two internal</p>
+<p>states are equal the muse</p>
+<p>of those two b's then it's going to map</p>
+<p>onto</p>
+<p>equal points in</p>
+<p>external world so</p>
+<p>the blanket is a is a</p>
+<p>map that conserves certain properties of</p>
+<p>the relationship between</p>
+<p>internal and external states</p>
+<p>then points three and four of the lemma</p>
+<p>2.1</p>
+<p>use this kernel</p>
+<p>in image notation</p>
+<p>so here was a image that was kind of</p>
+<p>interesting</p>
+<p>about how spaces were mapped to each</p>
+<p>other</p>
+<p>so someone could definitely</p>
+<p>help explain what some of these mappings</p>
+<p>mean or what the emblem</p>
+<p>implications are and then this sideways</p>
+<p>u shape is the proper subset</p>
+<p>symbol so that's meaning that every</p>
+<p>element</p>
+<p>of the first one is in the second one</p>
+<p>but b</p>
+<p>is a bigger subset so</p>
+<p>certain mappings between the internal</p>
+<p>and blanket covariance and the external</p>
+<p>and blanket covariance</p>
+<p>and then uh similar for the</p>
+<p>pi</p>
+<p>figure 2 provides a visualization of</p>
+<p>some simulations drawn</p>
+<p>that uh support just from a simulation</p>
+<p>perspective</p>
+<p>the existence of a useful</p>
+<p>synchronization</p>
+<p>map function so</p>
+<p>figure two on the left side shows</p>
+<p>the external states given blanket states</p>
+<p>so those are the orange</p>
+<p>yeah external states up these are</p>
+<p>the flipped</p>
+<p>sorry about that so</p>
+<p>the blue are the</p>
+<p>internal states the sigma</p>
+<p>mapping corresponding to the internal</p>
+<p>states conditioned on the external</p>
+<p>states</p>
+<p>and they're doing a very accurate job</p>
+<p>of mapping onto the external states in</p>
+<p>orange</p>
+<p>and then in b is a so-called non-example</p>
+<p>and i'd be curious what</p>
+<p>changed or what was different about this</p>
+<p>second example or is there more than one</p>
+<p>way to break the model</p>
+<p>what are the cases where it does or</p>
+<p>doesn't have a mapping</p>
+<p>then in section 3 they</p>
+<p>go from that sort of static estimate</p>
+<p>of variables that are just</p>
+<p>having a specific relationship to one</p>
+<p>another</p>
+<p>to beijing mechanics operating through</p>
+<p>time</p>
+<p>so they write in order to study the time</p>
+<p>evolution of systems with a markov</p>
+<p>blanket</p>
+<p>we introduce dynamics into the external</p>
+<p>blanket and internal states</p>
+<p>henceforth we assume a synchronization</p>
+<p>map under the conditions of the</p>
+<p>lemma 2.1 so that was what was discussed</p>
+<p>up here</p>
+<p>and now in contrast with</p>
+<p>figure 1 which was just the variables</p>
+<p>by themself now we're</p>
+<p>putting the t subscript and looking at</p>
+<p>how those variables are changing through</p>
+<p>time</p>
+<p>we use bacillus to depict an intuitive</p>
+<p>example of a markov blanket that</p>
+<p>persists over time</p>
+<p>here the blanket state between the</p>
+<p>membrane and actin filaments of the</p>
+<p>cytoskeleton</p>
+<p>which mediate all interactions between</p>
+<p>the internal states and the external</p>
+<p>media external states</p>
+<p>in example 3-1 they write there are many</p>
+<p>examples of stochastic processes at a</p>
+<p>gaussian steady state p</p>
+<p>to name a few uh stationary diffusion</p>
+<p>processes with initial conditions</p>
+<p>x0 tilde p the time evolution is given</p>
+<p>by an ito stochastic differential</p>
+<p>equation</p>
+<p>appendix b next slide that will be on</p>
+<p>the next slide</p>
+<p>and then also example three one more</p>
+<p>generally</p>
+<p>any markov process at steady state p</p>
+<p>such as the zigzag</p>
+<p>process any mean zero gaussian process</p>
+<p>at steady state and any random dynamical</p>
+<p>system at steady state p</p>
+<p>so questions for people who know more or</p>
+<p>the authors would be</p>
+<p>what kinds of systems fall under this</p>
+<p>category of stochastic processes</p>
+<p>and what kind of real world systems</p>
+<p>would be modeled well or not by this</p>
+<p>formalism</p>
+<p>and then going a little deeper into</p>
+<p>that first point in the examples</p>
+<p>appendix b points to this helmholtz</p>
+<p>decomposition</p>
+<p>and that is conditioned on this</p>
+<p>ido stochastic differential equation</p>
+<p>and again just questions for someone who</p>
+<p>knows more or for the authors</p>
+<p>what does this edo calculation entail</p>
+<p>and what does or doesn't fit under this</p>
+<p>edo</p>
+<p>framework that would work using some</p>
+<p>other definition</p>
+<p>uh just</p>
+<p>not sure about that but in this</p>
+<p>helmholtz</p>
+<p>supplement there is</p>
+<p>a very nice figure 10 that is</p>
+<p>looking at in this kind of hill climbing</p>
+<p>perspective</p>
+<p>so in an algorithm that's looking in its</p>
+<p>local</p>
+<p>neighborhood and doing a calculation to</p>
+<p>sort of make local decision making and</p>
+<p>hill climb that action</p>
+<p>of a stochastic but hill-climbing</p>
+<p>algorithm</p>
+<p>up this gradient</p>
+<p>or down depending on which way you set</p>
+<p>it up</p>
+<p>is going to have two components to its</p>
+<p>motion</p>
+<p>this straight up the mountain component</p>
+<p>like putting a ruler on the mountain and</p>
+<p>the maximum slope</p>
+<p>and then another component that's at the</p>
+<p>same likelihood like the same altitude</p>
+<p>same energy that's going</p>
+<p>at an iso contour just like you can</p>
+<p>always do for a mountain</p>
+<p>so with that idea in mind</p>
+<p>it's possible to take the full dynamic</p>
+<p>of a stochastic trace</p>
+<p>on the top left this is like this</p>
+<p>particle that is going</p>
+<p>different colors through time that just</p>
+<p>like converging to the top of this</p>
+<p>mountain</p>
+<p>diffusing like to the bottom of the bowl</p>
+<p>like a marble going to the bottom of a</p>
+<p>bowl</p>
+<p>and then that trajectory can be</p>
+<p>separated</p>
+<p>into this spiral or i mean this um</p>
+<p>oval the time irreversible component and</p>
+<p>then a time reversible component</p>
+<p>that has a much more direct trajectory</p>
+<p>and that was in the section with remark</p>
+<p>three one</p>
+<p>which is again related to the ido</p>
+<p>stochastic differential equation which i</p>
+<p>just</p>
+<p>i'm not too sure about um</p>
+<p>but they write when the dynamics are</p>
+<p>given by this edo stochastic</p>
+<p>differential equation</p>
+<p>a markov blanket of the steady state</p>
+<p>density does not</p>
+<p>necessarily imply that internal and</p>
+<p>external states cannot</p>
+<p>influence each other so that's i think</p>
+<p>kind of the interesting</p>
+<p>tension in question is how do certain</p>
+<p>mathematical definitions of conditional</p>
+<p>independence of blanket states</p>
+<p>separating internal external states how</p>
+<p>does that partition</p>
+<p>sometimes result in subsets or systems</p>
+<p>that don't influence each other</p>
+<p>versus systems that do so in the case of</p>
+<p>systems that don't influence</p>
+<p>each other i was thinking of like an</p>
+<p>empty bottle</p>
+<p>of air in a room of air like they're</p>
+<p>separated systems</p>
+<p>but they interact through the bottle</p>
+<p>so they could transfer heat for example</p>
+<p>through a hot</p>
+<p>bottle could transfer heat to the room</p>
+<p>but the systems would only interact</p>
+<p>conditioned on the temperature of the</p>
+<p>interface</p>
+<p>versus a person in a room</p>
+<p>could be planning or thinking about the</p>
+<p>external states</p>
+<p>so just how do we think about what kinds</p>
+<p>of systems are still having</p>
+<p>influence or a long-term implication</p>
+<p>for each other even after conditioned on</p>
+<p>the interfacing a certain way</p>
+<p>and then also just how does this example</p>
+<p>provided kind of</p>
+<p>show that that'd be good to walk through</p>
+<p>and the absence of reciprocal influences</p>
+<p>between two states</p>
+<p>in the drift sometimes but not always</p>
+<p>implies conditional independence</p>
+<p>okay going back to the main uh</p>
+<p>facts and figures in figure four there's</p>
+<p>now looking at this synchronization map</p>
+<p>and transition probabilities for</p>
+<p>processes at the gaussian steady state</p>
+<p>so on the left is we plot the</p>
+<p>synchronization map as in figure 2.</p>
+<p>only here the samples are drawn from</p>
+<p>trajectories of a diffusion process</p>
+<p>with a markov blanket so now it's</p>
+<p>a temporal process</p>
+<p>on the right panel there are the</p>
+<p>transition probabilities of that same</p>
+<p>diffusion process for the blanket state</p>
+<p>at two different times</p>
+<p>and this is called a joint distribution</p>
+<p>because there's two</p>
+<p>distributions that are being looked at</p>
+<p>jointly and</p>
+<p>if you kind of went to one side and</p>
+<p>looked through the cornfield one way</p>
+<p>you'd see this gaussian</p>
+<p>p of b sub s and if you looked at it the</p>
+<p>other way you'd see</p>
+<p>p of b through t</p>
+<p>and uh then they write which is kind of</p>
+<p>interesting</p>
+<p>um this shows that in general processes</p>
+<p>at a gaussian steady state are not</p>
+<p>gaussian processes</p>
+<p>so that was just like very i'm curious</p>
+<p>about what that meant</p>
+<p>in fact the ornstein olbeck process is</p>
+<p>the only stationary diffusion process</p>
+<p>that is a gaussian process so the</p>
+<p>transition probabilities of nonlinear</p>
+<p>diffusion processes are never</p>
+<p>multivariate gaussians</p>
+<p>not sure what that means but sounded</p>
+<p>kind of interesting all right so then</p>
+<p>uh from this sort of mapping between</p>
+<p>internal and external states through</p>
+<p>time the synchronization mapping</p>
+<p>sigma they write in the section on</p>
+<p>predictive processing</p>
+<p>we can go further and associate to each</p>
+<p>internal state</p>
+<p>mu a probability distribution over</p>
+<p>external states</p>
+<p>such that each internal state encodes</p>
+<p>beliefs about</p>
+<p>external states so</p>
+<p>now rather than just framing these as</p>
+<p>two dynamical processes that</p>
+<p>track one another like oh there's this</p>
+<p>synchronization map between this random</p>
+<p>variable</p>
+<p>internally and this random variable</p>
+<p>externally</p>
+<p>they're going to frame this q</p>
+<p>distribution</p>
+<p>so q is going to be</p>
+<p>a probability distribution inside of mu</p>
+<p>that's over external states such that</p>
+<p>each of those states encode beliefs</p>
+<p>about external states so q</p>
+<p>of internal states is about eta</p>
+<p>and that's going to be a normal</p>
+<p>distribution</p>
+<p>with a mean of the actual external state</p>
+<p>it's like mean and variance</p>
+<p>um so it's eta and then sigma of mu</p>
+<p>the mapping function comma variant so</p>
+<p>here these two</p>
+<p>are both what it's being uh</p>
+<p>is being inferred is the the external</p>
+<p>state and the mapping</p>
+<p>and then there's the variance of the</p>
+<p>precision on external states</p>
+<p>and then um 3.4</p>
+<p>is just giving a little bit more details</p>
+<p>about how that</p>
+<p>q is like this internal function where</p>
+<p>the states of it</p>
+<p>are reflecting beliefs about external</p>
+<p>states</p>
+<p>um and then there's a relationship to</p>
+<p>how the internal states are conditioned</p>
+<p>on blanket states</p>
+<p>this was a um interesting remark that'd</p>
+<p>be cool to</p>
+<p>have people discuss would be uh when</p>
+<p>they wrote</p>
+<p>note a potential connection with</p>
+<p>epistemic accounts of quantum mechanics</p>
+<p>namely a world governed by classical</p>
+<p>mechanics sigma</p>
+<p>conditioned at zero or i don't know if</p>
+<p>there's another way to read that symbol</p>
+<p>with three lines</p>
+<p>in 3.2 um not sure because in 3.2</p>
+<p>i'm not sure if there was a sigma in</p>
+<p>which each agent encodes gaussian</p>
+<p>beliefs about</p>
+<p>external states the could appear to the</p>
+<p>agents as reproducing many features of</p>
+<p>quantum mechanics</p>
+<p>so this was just cool like what is the</p>
+<p>relationship between the sigma</p>
+<p>internal external mapping function and</p>
+<p>then classical</p>
+<p>versus quantum mechanics so maybe</p>
+<p>classical systems are like</p>
+<p>the ones where there's a clean</p>
+<p>separation between the internal and the</p>
+<p>external states</p>
+<p>quantum states being ones that are more</p>
+<p>uh with residual influence between</p>
+<p>internal and external states</p>
+<p>so returning to the um</p>
+<p>predictive processing they</p>
+<p>write that under that 3 4 so under this</p>
+<p>implication of the q internal</p>
+<p>distribution</p>
+<p>expected internal states are the unique</p>
+<p>minimizer of a callback liblar</p>
+<p>divergence so that mu through time</p>
+<p>internal states through time are the</p>
+<p>minimization the argument</p>
+<p>over the mu states internal states</p>
+<p>of the d kl the kl divergence</p>
+<p>of</p>
+<p>the internal belief distribution q about</p>
+<p>external states</p>
+<p>q of eta double line</p>
+<p>divergence between the objective</p>
+<p>distribution</p>
+<p>of external states conditioned on</p>
+<p>blanket states</p>
+<p>so if that q distribution can converge</p>
+<p>to the p</p>
+<p>then that is being minimized effectively</p>
+<p>this measures the discrepancy between</p>
+<p>beliefs about the external world</p>
+<p>q mu sub mu of eta and the posterior</p>
+<p>distribution over</p>
+<p>external variables computing the kl</p>
+<p>divergence</p>
+<p>they're going to obtain this 3.5</p>
+<p>and um that's</p>
+<p>argument so it's minimizing</p>
+<p>the differential uh between sigma's</p>
+<p>prediction</p>
+<p>so that's sigma of mu minus</p>
+<p>the actual external states through time</p>
+<p>sigma</p>
+<p>mapping function of internal states</p>
+<p>minus the actual state</p>
+<p>multiplied by so pi</p>
+<p>of the precision matrix of eta</p>
+<p>relating to how wrong</p>
+<p>that differential is so that's kind of</p>
+<p>an interesting</p>
+<p>framing um and then they write that</p>
+<p>the right hand side of 3.5 that equation</p>
+<p>is commonly known as the squared</p>
+<p>precision weighted prediction error</p>
+<p>which is the discrepancy between the</p>
+<p>prediction and the expected state of the</p>
+<p>environment</p>
+<p>and it's weighted with a precision</p>
+<p>matrix that derives from the steady</p>
+<p>state density</p>
+<p>this equation is formally similar to</p>
+<p>that found in predictive coding</p>
+<p>formulations of biological function</p>
+<p>which stipulate that organisms minimize</p>
+<p>prediction errors</p>
+<p>and in doing so optimize their beliefs</p>
+<p>to match the distribution of external</p>
+<p>states</p>
+<p>so that's pretty cool and we can talk</p>
+<p>more about it but</p>
+<p>it kind of reminds me of this</p>
+<p>uncertainty reduction imperative rather</p>
+<p>than reward</p>
+<p>maximization imperative it's kind of</p>
+<p>like saying</p>
+<p>if the organisms are minimizing their</p>
+<p>prediction errors</p>
+<p>not maximizing the reward they will</p>
+<p>optimize their beliefs to match the</p>
+<p>distribution of external states</p>
+<p>so maybe that's related to that</p>
+<p>variance reduction imperative</p>
+<p>um so we had the uh</p>
+<p>predictive processing section and then</p>
+<p>there's one more layer that gets added</p>
+<p>on</p>
+<p>so from the markov blanket to making it</p>
+<p>a bayesian</p>
+<p>markov blanket happening through time</p>
+<p>to introducing this q distribution</p>
+<p>that's a special type of internal state</p>
+<p>they write in the next section we can go</p>
+<p>further and associate</p>
+<p>expected internal states to the solution</p>
+<p>to the classical variational inference</p>
+<p>problem from statistical machine</p>
+<p>learning</p>
+<p>and theoretical neurobiology so</p>
+<p>it's going to be that q function is</p>
+<p>going to be a very specific kind of q</p>
+<p>function</p>
+<p>so not all systems are going to be</p>
+<p>doing this subtype of variational</p>
+<p>inference or</p>
+<p>maybe they are um that is something we</p>
+<p>could discuss</p>
+<p>but we can finesse</p>
+<p>that mapping function between</p>
+<p>the internal and external states and</p>
+<p>what exactly the internal states are</p>
+<p>because if</p>
+<p>you can co-design both the internal</p>
+<p>states and the mapping</p>
+<p>then you have a lot of degrees of</p>
+<p>freedom</p>
+<p>in mapping on to external states</p>
+<p>even as they change so now we're going</p>
+<p>to</p>
+<p>do a really sub-special</p>
+<p>phrasing maybe it's a more general one</p>
+<p>but just one specific phrasing</p>
+<p>of how the internal states could map</p>
+<p>onto the external states</p>
+<p>and that's going to be as expected</p>
+<p>internal states</p>
+<p>as the unique minimizers of a free</p>
+<p>energy functional</p>
+<p>i.e in evidence bound so now there's a</p>
+<p>f function over blanket and internal</p>
+<p>states through time</p>
+<p>and that f</p>
+<p>function is going to consist of two</p>
+<p>elements which is like a divergence term</p>
+<p>that we saw before with a divergence</p>
+<p>between</p>
+<p>q's internal estimate of external states</p>
+<p>divergence and actual external states</p>
+<p>conditional blanket states</p>
+<p>minus the uh the evidence</p>
+<p>term and then that can be</p>
+<p>equivalent to this energy minus entropy</p>
+<p>term</p>
+<p>so that last line expresses the free</p>
+<p>energy as a difference between energy</p>
+<p>and entropy pretty cool energy or</p>
+<p>accuracy measures to what extent</p>
+<p>predicted external states are close to</p>
+<p>the true</p>
+<p>external states while entropy penalizes</p>
+<p>beliefs that are overly precise</p>
+<p>so that's cool like energy is locking in</p>
+<p>on the good solution that's like</p>
+<p>maybe the component that is going up the</p>
+<p>hill</p>
+<p>and then entropy is keeping things</p>
+<p>away from just going up the hill and</p>
+<p>keeping this other component in</p>
+<p>but if um</p>
+<p>entropy overwhelms the entropy uh the</p>
+<p>energy then the solution</p>
+<p>will not kind of fit the situation</p>
+<p>so at first sight</p>
+<p>variational inference and predictive</p>
+<p>processing are solely useful to</p>
+<p>characterize the average internal state</p>
+<p>given blanket states at steady state</p>
+<p>it is then surprising to see that the</p>
+<p>free energy says a great deal about a</p>
+<p>system's expected</p>
+<p>trajectories as it relaxes the steady</p>
+<p>state</p>
+<p>pretty interesting so here's how they</p>
+<p>kind of show that</p>
+<p>figure five is using that free energy</p>
+<p>minimizing</p>
+<p>framework to look at variational</p>
+<p>inference and predictive processing</p>
+<p>so the highlighted part says the figure</p>
+<p>illustrates the system's behavior</p>
+<p>after experiencing a surprising blanket</p>
+<p>state</p>
+<p>so kind of like a perturbation this is a</p>
+<p>multi-dimensional ornstein olbeck ou</p>
+<p>process with two external blanket and</p>
+<p>internal variables</p>
+<p>initialized at the steady state density</p>
+<p>conditioned on an improbable blanket</p>
+<p>state</p>
+<p>which was given at the initial time</p>
+<p>actual distribution of x and b</p>
+<p>at time 0. and</p>
+<p>on the left top left quadrant</p>
+<p>is sort of this red to blue gradient</p>
+<p>of free energy so it's kind of high</p>
+<p>elevation to low elevation</p>
+<p>and through time the blanket stage just</p>
+<p>converged down to the bottom of the bowl</p>
+<p>so that's the free energy minimization</p>
+<p>in action the upper right is the is the</p>
+<p>free energy</p>
+<p>over time averaged over multiple</p>
+<p>trajectories so it starts out</p>
+<p>really high and then it kind of rolls</p>
+<p>down and it converges to</p>
+<p>this low level at 40 time points</p>
+<p>the lower left is showing</p>
+<p>this uh predictive processing</p>
+<p>framing of the q distribution</p>
+<p>versus the actual distribution and said</p>
+<p>at steady state from time step about 100</p>
+<p>the predictions become accurate</p>
+<p>so that's showing how for the estimate</p>
+<p>of the parameter converges to the</p>
+<p>accurate</p>
+<p>external states under their simulation</p>
+<p>be cool to do a walkthrough</p>
+<p>and then on the bottom right is looking</p>
+<p>at the error prediction errors</p>
+<p>the covariance of so the two co errors</p>
+<p>um the evolution of precision weighted</p>
+<p>prediction errors</p>
+<p>over time these are normally distributed</p>
+<p>with zero mean at steady state</p>
+<p>uh figure six</p>
+<p>is uh</p>
+<p>maybe i didn't change not sure exactly</p>
+<p>it's a similar</p>
+<p>figure it has a little bit of</p>
+<p>differences</p>
+<p>uh again showing the predictive</p>
+<p>processing</p>
+<p>lock in on a free energy minimizing</p>
+<p>process</p>
+<p>showing the average free energy</p>
+<p>initially having a</p>
+<p>slight increase maybe and then just</p>
+<p>decreasing through time</p>
+<p>and then also just showing that the um</p>
+<p>the relationship</p>
+<p>of the covariance um</p>
+<p>[Music]</p>
+<p>was raised up from zero and then started</p>
+<p>converging back to zero</p>
+<p>so just cool figures but cool to see</p>
+<p>what other people would think about them</p>
+<p>in figure four or i'm sorry section four</p>
+<p>we get to</p>
+<p>active inference and stochastic control</p>
+<p>so they write in order to model agents</p>
+<p>that interact with their environment we</p>
+<p>now partition blanket states into</p>
+<p>sensory and active states</p>
+<p>so for active everything that we've</p>
+<p>talked about before is like an</p>
+<p>undirected</p>
+<p>bayesian graph um</p>
+<p>it's not using that frist and blanket</p>
+<p>separation so that's where we're gonna</p>
+<p>be bringing in a lot of other</p>
+<p>uh cool formalisms and</p>
+<p>ideas so let's go from that sort of</p>
+<p>blanket one type of fiber in the blanket</p>
+<p>to</p>
+<p>two now uh in order to model agents to</p>
+<p>interact with their environment we now</p>
+<p>partition blanket states into sensory</p>
+<p>and active states</p>
+<p>so the blanket state b of t blanket</p>
+<p>through c</p>
+<p>is now two subsets of sensory</p>
+<p>and action states through time so now</p>
+<p>that whole</p>
+<p>tuple the whole set that you need to</p>
+<p>infer the four kinds of states are</p>
+<p>external sense action and internal</p>
+<p>eta s-a-u yeah</p>
+<p>and now that previous example of the</p>
+<p>bacillus so here we had</p>
+<p>just one we had external and internal</p>
+<p>states mediated by one kind of node</p>
+<p>and now the external states are coupled</p>
+<p>to the sensory states</p>
+<p>that's s of t and sensory states are</p>
+<p>coupled to internal states</p>
+<p>internal states are coupled to action</p>
+<p>states and actions connect back to</p>
+<p>external states also sense and action</p>
+<p>are connected to each other</p>
+<p>but i wonder if that part is needed or</p>
+<p>i'm always wondering what topologies</p>
+<p>of connectedness different</p>
+<p>functionalities arise from</p>
+<p>and uh miguel aguilera's</p>
+<p>paper and recent uh guest stream</p>
+<p>speak to that so</p>
+<p>we take that dynamic markov blanket</p>
+<p>model from the previous sections and now</p>
+<p>split the blanket states into sense in</p>
+<p>action</p>
+<p>that was this piece here</p>
+<p>now then they write intuitively in</p>
+<p>agents actions and internal states</p>
+<p>depend</p>
+<p>upon its sensations therefore we are</p>
+<p>interested</p>
+<p>in characterizing autonomous i.e active</p>
+<p>and internal</p>
+<p>so we can't control our senses directly</p>
+<p>but we can control internal states and</p>
+<p>active states</p>
+<p>so those two states we're going to think</p>
+<p>about that pair of notes</p>
+<p>given sensory states so</p>
+<p>that is the following free energy</p>
+<p>equation</p>
+<p>that was brought up earlier so taking</p>
+<p>that free energy</p>
+<p>minimizing perspective on the</p>
+<p>distribution of mu</p>
+<p>internal states and blanket states as a</p>
+<p>whole b</p>
+<p>before we introduce the split here then</p>
+<p>do a similar free energy equation</p>
+<p>with three variables on</p>
+<p>the sensory action and internal states</p>
+<p>which is just another way of saying the</p>
+<p>blanket states</p>
+<p>and the internal states mu</p>
+<p>and then etc etc more details that</p>
+<p>people can</p>
+<p>explain if they know better but the</p>
+<p>result</p>
+<p>that um comes out</p>
+<p>relates to action so it'd be cool to</p>
+<p>learn more about what this equation</p>
+<p>means</p>
+<p>but then they write this is known as</p>
+<p>active inference because expected</p>
+<p>autonomous states minimize free energy</p>
+<p>crucially active inference is a</p>
+<p>well-known framework to describe and</p>
+<p>generate adaptive behavior in</p>
+<p>neuroscience machine learning and</p>
+<p>robotics</p>
+<p>see figure eight so</p>
+<p>figure eight is a similar</p>
+<p>diagram to we had before</p>
+<p>but now it's an active inference</p>
+<p>agent rather than just the free energy</p>
+<p>minimizer</p>
+<p>of the previous framing and then they</p>
+<p>write</p>
+<p>the figure illustrates a system's</p>
+<p>behavior after experiencing a surprising</p>
+<p>sensory state</p>
+<p>averaging internal variables for any</p>
+<p>blanket state this is an ornstein olbeck</p>
+<p>process</p>
+<p>with two external one sensory one active</p>
+<p>and two internal variables</p>
+<p>initialized at steady state density</p>
+<p>conditioned upon an improbable sensory</p>
+<p>state</p>
+<p>and also one pattern that they found was</p>
+<p>that</p>
+<p>the free energy minimization here it's</p>
+<p>relatively monotonic</p>
+<p>it kind of doesn't ever bump back</p>
+<p>up it just goes down or stays the same</p>
+<p>but then it was kind of interesting they</p>
+<p>said</p>
+<p>we plot the free energy of the expected</p>
+<p>internal state averaged over multiple</p>
+<p>trajectories</p>
+<p>so this is not just one aberrant run</p>
+<p>in this example or maybe this is just</p>
+<p>one example</p>
+<p>but they wrote the average free energy</p>
+<p>does not decrease monotonically</p>
+<p>see figure five for an explanation and</p>
+<p>then um</p>
+<p>maybe we can learn more about that but</p>
+<p>that was kind of cool</p>
+<p>okay they</p>
+<p>continue on and write that any mean</p>
+<p>stationary mean zero stationary gaussian</p>
+<p>process with exponentially decaying auto</p>
+<p>covariance function</p>
+<p>so it resembles itself less and less</p>
+<p>through time</p>
+<p>is an ornstein obec process which is</p>
+<p>kind of cool because in phylogenetics we</p>
+<p>sometimes would use this</p>
+<p>for let's just say the average femur</p>
+<p>length of</p>
+<p>some mammal and then you would be</p>
+<p>inferring a model</p>
+<p>that had an average value so it's kind</p>
+<p>of like a</p>
+<p>peg and then like a tether so it's like</p>
+<p>a diffusion term</p>
+<p>and then a mean so just a mean</p>
+<p>and a variance that drift through time</p>
+<p>is like the orangeteen olbeck or the oh</p>
+<p>you</p>
+<p>process sometimes known as dub's theorem</p>
+<p>so those kinds of processes which</p>
+<p>are apparently general enough to be</p>
+<p>really good</p>
+<p>model systems for studying math i guess</p>
+<p>thus if</p>
+<p>c equals a finite sum of exponentially</p>
+<p>decaying functions</p>
+<p>we can express s of t the state's</p>
+<p>sensory states</p>
+<p>as a linear function of several nested</p>
+<p>ou processes</p>
+<p>i.e an integrator chain from control</p>
+<p>theory</p>
+<p>so the integrator chain was kind of a</p>
+<p>cool idea and</p>
+<p>we'll talk about maybe applications of</p>
+<p>integrator chain in a few slides</p>
+<p>but just to continue with the math that</p>
+<p>they</p>
+<p>have so there's this um</p>
+<p>s of t states through time sensory</p>
+<p>states is going to be this f</p>
+<p>function and then there's these um</p>
+<p>d these these kind of similar</p>
+<p>d equations so it says in this example</p>
+<p>f and f sub i are suitably chosen linear</p>
+<p>functions</p>
+<p>not sure what the pronunciation is but</p>
+<p>the squiggle are matrices</p>
+<p>and w are standard brownian motion</p>
+<p>thus we can see sensory states through</p>
+<p>time s t as the output of a continuous</p>
+<p>time hidden markov model</p>
+<p>whose hidden states s of t superscript i</p>
+<p>encode various orders of motion position</p>
+<p>velocity</p>
+<p>jerk etc these are known as generalized</p>
+<p>coordinates of motion in the bayesian</p>
+<p>filtering literature which we'll look at</p>
+<p>graphically in figure 9</p>
+<p>and more generally the state process s</p>
+<p>of t and a function</p>
+<p>f need not be linear which enables to</p>
+<p>realize</p>
+<p>non-linear non-gaussian processes sst</p>
+<p>technically this follows as ornstein</p>
+<p>obec processes are the only stationary</p>
+<p>gaussian markov processes yet we</p>
+<p>emphasize that stochastic</p>
+<p>realization is not as well developed in</p>
+<p>the general case</p>
+<p>so this is um in a way saying</p>
+<p>that we're going to have like the</p>
+<p>position of the ball</p>
+<p>is the sensory data that's like the</p>
+<p>first pass</p>
+<p>um of where the ball is that's the</p>
+<p>measurement that's the sensory data</p>
+<p>then there's the variance and then</p>
+<p>there's the second</p>
+<p>derivative of that statistical moment</p>
+<p>and so if the variance is equal through</p>
+<p>time then you can just integrate away</p>
+<p>and the higher levels are zero and</p>
+<p>you've kind of locked on to the pattern</p>
+<p>after just one or two levels</p>
+<p>but there's other distributions where as</p>
+<p>you go to higher and higher</p>
+<p>distribution uh higher moments</p>
+<p>there's just more or different</p>
+<p>information</p>
+<p>so there's this concept of the</p>
+<p>integrator chain</p>
+<p>where these relationships of equations</p>
+<p>are all</p>
+<p>integrals or derivatives of each other</p>
+<p>which are kind of like going up or down</p>
+<p>in this rows of equations and then this</p>
+<p>helps</p>
+<p>use gaussian type mathematics like the</p>
+<p>ou</p>
+<p>stochastic process where a lot of the</p>
+<p>math is clean</p>
+<p>it allows you to apply these</p>
+<p>systems of equations of well-behaved</p>
+<p>types oh you to model highly non-linear</p>
+<p>systems so</p>
+<p>this was related to some interesting</p>
+<p>discussions</p>
+<p>um uh i i will look forward to hearing</p>
+<p>what you</p>
+<p>have to say about these so-called</p>
+<p>generalized coordinates of motion</p>
+<p>and that relationship between control</p>
+<p>theory</p>
+<p>and then looking at nonlinear functions</p>
+<p>as relationships of integrals and</p>
+<p>derivatives</p>
+<p>leads to this discussion of the pid</p>
+<p>control</p>
+<p>so proportional integral derivative</p>
+<p>control pid</p>
+<p>is a well-known control method in</p>
+<p>engineering more than 90</p>
+<p>of controllers in engineered systems</p>
+<p>implement either pid or pi</p>
+<p>no derivative like just proportional</p>
+<p>integral control</p>
+<p>the goal of pid control is to control a</p>
+<p>signal</p>
+<p>s sub t its integral s sub t</p>
+<p>with a 0 instead of a 1 and its</p>
+<p>derivative</p>
+<p>s sub 2 of the 2 close to a</p>
+<p>pre-specified target</p>
+<p>value so it's like i want 95</p>
+<p>battery and i want to be a rectangle at</p>
+<p>95 percent and it's derivative to be</p>
+<p>such and such during use this turns out</p>
+<p>to be exactly what happens</p>
+<p>when we take stochastic control of an</p>
+<p>integrator chain</p>
+<p>with two with three orders of motion so</p>
+<p>that's just</p>
+<p>a three level model in this sort of</p>
+<p>infinite rows of the moments of the</p>
+<p>distribution</p>
+<p>the three levels are just what are</p>
+<p>described here the signal the integral</p>
+<p>and the derivative</p>
+<p>when f is linear expected autonomous</p>
+<p>states control to what extent</p>
+<p>integral proportional and derivative</p>
+<p>processes s t at zero one and two</p>
+<p>levels of derivative are from their</p>
+<p>target value of 0.</p>
+<p>so it's like if it's a linear response</p>
+<p>function then the first derivative</p>
+<p>is going to be a constant value as in</p>
+<p>the second derivative you get rid of it</p>
+<p>furthermore from f and k alone one can</p>
+<p>derive integral proportional</p>
+<p>derivative gains which penalize</p>
+<p>deviations of these three moments</p>
+<p>respectively from a target value of zero</p>
+<p>so these are highly optimizable problems</p>
+<p>and</p>
+<p>computable crucially these control gains</p>
+<p>are simple byproducts of the steady</p>
+<p>state density and the stochastic</p>
+<p>realization problems</p>
+<p>this is a cool question why restrict</p>
+<p>ourselves to pid control when stochastic</p>
+<p>control of integrator chains is</p>
+<p>available it turns out that when sensory</p>
+<p>states s of t</p>
+<p>are expressed as a function of an</p>
+<p>integrator chain one to get away with</p>
+<p>controlling an approximation of the true</p>
+<p>sensory process obtained by truncating</p>
+<p>high orders of motion as these have less</p>
+<p>effect</p>
+<p>on the dynamics though knowing when this</p>
+<p>is warranted is a problem in</p>
+<p>approximation theory so how</p>
+<p>let's just say we open the door to doing</p>
+<p>infinite derivatives of statistical</p>
+<p>distributions</p>
+<p>infinite variances upon variances how</p>
+<p>would we know when to stop</p>
+<p>that's the problem in approximation</p>
+<p>theory or approximation science</p>
+<p>this may explain why integral feedback</p>
+<p>control</p>
+<p>which is just like battery good</p>
+<p>pi control n equals one and then the pid</p>
+<p>control with</p>
+<p>two extra layers of the derivatives are</p>
+<p>the most ubiquitous control methods in</p>
+<p>engineering</p>
+<p>applications however when simulating</p>
+<p>biological</p>
+<p>biological control usually with highly</p>
+<p>non-linear systems</p>
+<p>it is not uncommon to consider</p>
+<p>generalized motion to fourth</p>
+<p>or sixth order so that's pretty cool um</p>
+<p>like how many levels of recursion and um</p>
+<p>depth in modeling</p>
+<p>are needed to have a people</p>
+<p>so calling back to</p>
+<p>here when we defined that initial sense</p>
+<p>function</p>
+<p>as part of this integrator chain setting</p>
+<p>off the integrator chain</p>
+<p>here's that initial sense function</p>
+<p>as part of a broader set of dependencies</p>
+<p>so here is that sense function</p>
+<p>at time 3 6 and 9.</p>
+<p>the figure is depicting in a graphical</p>
+<p>format</p>
+<p>the bayesian network of those</p>
+<p>equations flipped</p>
+<p>the encircled variables are random</p>
+<p>variables and the processes are indexed</p>
+<p>an arbitrary</p>
+<p>sub an arbitrary arbitrary sequence of</p>
+<p>subsequent times</p>
+<p>the arrows represent relationships of</p>
+<p>causality so</p>
+<p>the sensory states are not causing each</p>
+<p>other through</p>
+<p>time they're getting measured through</p>
+<p>time but</p>
+<p>they are being emitted through time</p>
+<p>by this s at the zeroth level like the</p>
+<p>just the base generative model</p>
+<p>of this s of zero</p>
+<p>level function so this is the generative</p>
+<p>process</p>
+<p>then that can have higher derivatives</p>
+<p>of change and each of those are</p>
+<p>being framed as well behaved</p>
+<p>statistically</p>
+<p>so in the hidden markov model and these</p>
+<p>um white nodes are</p>
+<p>hidden states but they're inferred by</p>
+<p>statistics</p>
+<p>the hidden integrator state hidden state</p>
+<p>processes sat</p>
+<p>is given by an integrator chain i.e</p>
+<p>nested stochastic differential equations</p>
+<p>these processes can be seen as encoding</p>
+<p>the position</p>
+<p>velocity jerich etc so higher</p>
+<p>derivatives of the distribution</p>
+<p>so this integrator chain is kind of a</p>
+<p>cool</p>
+<p>idea so here was one paper stabilization</p>
+<p>of integrator chains</p>
+<p>in the presence of magnitude and rate</p>
+<p>saturations a gain scheduling approach</p>
+<p>so this paper wrote and the conclusions</p>
+<p>in this paper we have given a time</p>
+<p>varying controller</p>
+<p>so kind of like a heuristic or an</p>
+<p>algorithm for control</p>
+<p>for stabilizing a chain of integrators</p>
+<p>in the presence of magnitude and rate</p>
+<p>saturations</p>
+<p>it is proved that the controller gives a</p>
+<p>convergent closed-loop system</p>
+<p>i.e for any bounded state initial or</p>
+<p>initial condition the state will</p>
+<p>converge to the origin</p>
+<p>the main strength of the controller is</p>
+<p>that it gives provable convergence</p>
+<p>without being overly conservative</p>
+<p>this is verified in a simulation study</p>
+<p>so</p>
+<p>it's kind of like we have the frame of</p>
+<p>the airplane</p>
+<p>at steady state and then</p>
+<p>which is flying through the air so how</p>
+<p>are we going to re-equilibrate all the</p>
+<p>sensors</p>
+<p>so that if we get knocked off to the</p>
+<p>side</p>
+<p>what's the path by which we're going to</p>
+<p>get those sensors back to their desired</p>
+<p>level</p>
+<p>and it's just a question i oh and this</p>
+<p>is kind of what it looked like one of</p>
+<p>the figures from the paper</p>
+<p>so these are these derivative functions</p>
+<p>they get get like bumped and then they</p>
+<p>can come back to</p>
+<p>the level that they're desired</p>
+<p>almost in this signal processing like</p>
+<p>way</p>
+<p>so what are integrator chains how are</p>
+<p>they used maybe someone has</p>
+<p>used them before that'd be cool and then</p>
+<p>one kind of random thought was there's a</p>
+<p>lot of cases</p>
+<p>where we frame a process as mean</p>
+<p>zero because it</p>
+<p>allows thinking about something in</p>
+<p>relationship</p>
+<p>to uh a defined axis whether it's the</p>
+<p>number line or whether it's some other</p>
+<p>variable</p>
+<p>it kind of splits half the things</p>
+<p>negative and positive or there's various</p>
+<p>other times</p>
+<p>but there's actually a bunch of places</p>
+<p>and maybe more or maybe these are not</p>
+<p>all the same so</p>
+<p>it's okay if somebody knows more and</p>
+<p>helps us all out</p>
+<p>but there's actually a few cases where</p>
+<p>a distribution that's hard to estimate</p>
+<p>is replaced with a zero mean like</p>
+<p>sometimes there's replacing elements of</p>
+<p>a list</p>
+<p>with a z score like their standard</p>
+<p>deviation</p>
+<p>from the mean or the mode um</p>
+<p>but then it's like half or above and</p>
+<p>half are below</p>
+<p>so that's like replacing something with</p>
+<p>a zero center</p>
+<p>z score or t distribution sometimes</p>
+<p>there are error distributions which are</p>
+<p>extracted from a signal it's like the</p>
+<p>signal</p>
+<p>is the underlying line and the goal of</p>
+<p>the signal</p>
+<p>extraction is to leave your error</p>
+<p>distribution</p>
+<p>mean zero and then equally</p>
+<p>distributed in both directions so</p>
+<p>sometimes we're</p>
+<p>pulling out an error distribution</p>
+<p>we're trying to find uh</p>
+<p>that mean zero get to a level of</p>
+<p>derivative of a signal</p>
+<p>where the mean is zero like where the</p>
+<p>rate of change of some</p>
+<p>high derivative is zero which implies</p>
+<p>that it's not changing at that level</p>
+<p>and then sometimes we're trying to get</p>
+<p>um like in predictive processing</p>
+<p>study the differentiable or predictive</p>
+<p>processing with</p>
+<p>trying to get a zero centered variance</p>
+<p>on the sensory input but more</p>
+<p>about how we can study the differential</p>
+<p>between some controllable distribution</p>
+<p>and then some other distribution that we</p>
+<p>can't control</p>
+<p>and then how to make how does zero</p>
+<p>center that</p>
+<p>to determine which solutions are better</p>
+<p>or worse than each other and there's a</p>
+<p>lot of different methods there</p>
+<p>and then there was this other paper time</p>
+<p>optimal regulation of a chain of</p>
+<p>integrators with saturated input and</p>
+<p>internal planet variables in application</p>
+<p>to trajectory planning</p>
+<p>so again just kind of a open question</p>
+<p>what is the relationship between</p>
+<p>integrator chains and then this idea</p>
+<p>that we talk about a lot with</p>
+<p>action planning as inference</p>
+<p>then the conclusion this paper outlines</p>
+<p>some of the key relationships between</p>
+<p>stationary processes</p>
+<p>inference and control these</p>
+<p>relationships rest upon partitioning the</p>
+<p>world into those</p>
+<p>things that are internal or external to</p>
+<p>a statistical boundary</p>
+<p>known as a markov blanket when equipped</p>
+<p>with dynamics the expected internal</p>
+<p>states appear to engage</p>
+<p>in variational inference while the</p>
+<p>expected active states</p>
+<p>appear to be performing active inference</p>
+<p>in various forms of</p>
+<p>stochastic control the rationale behind</p>
+<p>these findings is rather simple</p>
+<p>if a markow blanket derives from a</p>
+<p>steady state density the states the</p>
+<p>system will look as if they are</p>
+<p>responding adaptively to external</p>
+<p>perturbations</p>
+<p>in order to recover the steady state</p>
+<p>conversely</p>
+<p>well-known methods used to build</p>
+<p>adaptive systems implement the same kind</p>
+<p>of dynamics implicitly</p>
+<p>so the system maintains a steady state</p>
+<p>with its environment</p>
+<p>so maybe there's i mean this isn't a</p>
+<p>totally accurate</p>
+<p>uh classification but there's some</p>
+<p>algorithms</p>
+<p>that are being connected on one side to</p>
+<p>each other</p>
+<p>so we have learning and optimization</p>
+<p>learning as inference</p>
+<p>all of machine learning etc learning and</p>
+<p>optim</p>
+<p>optimization and then variational</p>
+<p>inference being used as an optimization</p>
+<p>technique with the gradient descent by</p>
+<p>free energy</p>
+<p>in machine learning and maybe in</p>
+<p>evolutionary systems then there's this</p>
+<p>question about</p>
+<p>estimating latent causes in the world</p>
+<p>and connecting that to</p>
+<p>higher derivatives in the integrator</p>
+<p>chains</p>
+<p>or as just variables under consideration</p>
+<p>that's that mapping</p>
+<p>of external states which aren't directly</p>
+<p>seen</p>
+<p>and then maybe</p>
+<p>this one goes on this side but</p>
+<p>uh there's this whole other set of</p>
+<p>algorithms related to</p>
+<p>adaptive systems and these are framed</p>
+<p>variously but we have adaptive systems</p>
+<p>cybernetic systems</p>
+<p>anticipatory systems holism homeostatic</p>
+<p>slash</p>
+<p>active learning allostatic agents</p>
+<p>all these sort of biologically inspired</p>
+<p>yes drawing on far from equilibrium</p>
+<p>thermodynamics</p>
+<p>but here was like the flame dissipating</p>
+<p>like it's about something that just sort</p>
+<p>of gets to its free energy minimization</p>
+<p>just like gets there</p>
+<p>but with these active systems</p>
+<p>the question becomes how do we take this</p>
+<p>ongoing</p>
+<p>multi-scale inference</p>
+<p>side and connect it to this multi-scale</p>
+<p>action in the loop niche modifying</p>
+<p>also action planning biology section</p>
+<p>um one friend uh looked at these slides</p>
+<p>and then made a comment</p>
+<p>and they wrote i think it would be good</p>
+<p>to expand on the differences</p>
+<p>of the paradigms in section three which</p>
+<p>were lettered</p>
+<p>as they were in the paper a priori</p>
+<p>a posteriori estimate estimation</p>
+<p>afterwards estimation</p>
+<p>predictive processing and variational</p>
+<p>base</p>
+<p>i get the differences formally but still</p>
+<p>not at a super intuitive level so this</p>
+<p>might be good as a pedagogical</p>
+<p>exercise for ourselves so that'd be cool</p>
+<p>maybe everyone can think about that</p>
+<p>and come to their own explanation for</p>
+<p>what the difference is between these</p>
+<p>three and we'll talk about it in the dot</p>
+<p>one and dot two</p>
+<p>then just a few of the implications and</p>
+<p>bigger questions that are raised by the</p>
+<p>paper</p>
+<p>so in the section on interacting markov</p>
+<p>blankets they write</p>
+<p>the sort of inference we have described</p>
+<p>could be nuanced by partitioning the</p>
+<p>external state space into several</p>
+<p>systems that are themselves markov</p>
+<p>blankets</p>
+<p>such as markov blankets nested at</p>
+<p>several different scales</p>
+<p>from the perspective of internal states</p>
+<p>this leads to</p>
+<p>a more interesting inference problem</p>
+<p>with a more complex generative model</p>
+<p>it may be that the distinction between</p>
+<p>the sources systems we generally think</p>
+<p>of as engaging in cognitive</p>
+<p>inferential dynamics and simpler systems</p>
+<p>rest upon the level of structure</p>
+<p>in their generative models i.e the</p>
+<p>steady state densities</p>
+<p>that describe their inferential dynamics</p>
+<p>so that's pretty cool about maybe this</p>
+<p>framework or at least work in this level</p>
+<p>of analysis</p>
+<p>mapping just directly to nested markov</p>
+<p>blankets</p>
+<p>and it brings up this whole discussion</p>
+<p>about what kinds of systems can we model</p>
+<p>with active inference so no one's saying</p>
+<p>that</p>
+<p>the stock market is an auto-regressive</p>
+<p>model</p>
+<p>but people use auto-regressive models so</p>
+<p>what kinds of</p>
+<p>systems will we usefully be able to</p>
+<p>model with active inference</p>
+<p>without really just getting into a</p>
+<p>debate about whether it quote</p>
+<p>is active inference in the system just</p>
+<p>how are we going to use variational</p>
+<p>based methods</p>
+<p>with modern twists and developments</p>
+<p>related to</p>
+<p>cybernetics and multi-scale systems so</p>
+<p>that's like the instrumentalism side</p>
+<p>and then the realism side</p>
+<p>is what kind of systems are doing active</p>
+<p>inference</p>
+<p>so there's maybe even a realism of</p>
+<p>philosophy branch and then even maybe on</p>
+<p>the applied side</p>
+<p>like it's a philosophical debate is the</p>
+<p>cell doing</p>
+<p>active inference doing free energy</p>
+<p>principle is it realizing</p>
+<p>certain constraints of nature or how</p>
+<p>would we know what</p>
+<p>um uh you know an ant is quote doing</p>
+<p>free energy minimization in its brain</p>
+<p>and then on the engineering side</p>
+<p>it could be argued that if a robot is</p>
+<p>implementing active inference code that</p>
+<p>it is actually doing</p>
+<p>active inference so this question about</p>
+<p>designing systems within the active</p>
+<p>inference framework</p>
+<p>so instead of saying i think all</p>
+<p>internet networks</p>
+<p>are active in front systems it's</p>
+<p>definitely a claim somebody could make</p>
+<p>interesting claim but it's quite another</p>
+<p>thing to design</p>
+<p>a computer network that is within an</p>
+<p>ontology of</p>
+<p>active inference then it would be fair</p>
+<p>to say that that network is quote doing</p>
+<p>active inference</p>
+<p>so that's like realism and maybe for</p>
+<p>some it's more of an engineering realism</p>
+<p>others it's a philosophical realism</p>
+<p>another implication and bigger question</p>
+<p>that arises in the paper</p>
+<p>is about temporally deep inference so</p>
+<p>they write</p>
+<p>this distinction may speak to a</p>
+<p>straightforward extension of the</p>
+<p>treatment on offer</p>
+<p>from simply inferring an external state</p>
+<p>to inferring the trajectories of</p>
+<p>external states so again moving from</p>
+<p>not just the point estimate current</p>
+<p>estimate of external state</p>
+<p>that was what was presented earlier to</p>
+<p>inferring the trajectories of external</p>
+<p>states</p>
+<p>which is to say decomposing their</p>
+<p>higher orders of movement this may be</p>
+<p>achieved by representing the external</p>
+<p>process</p>
+<p>in terms of its higher orders of motion</p>
+<p>by solving the stochastic realization</p>
+<p>problem by repeating the analysis above</p>
+<p>internal states may be seen as inferring</p>
+<p>the position</p>
+<p>velocity juror etc of the external</p>
+<p>process</p>
+<p>consistently with temporally deep</p>
+<p>inference</p>
+<p>in the sense of a bayesian filter a</p>
+<p>special case of which is the extended</p>
+<p>kalman boosie filter</p>
+<p>so these are cool things to talk about</p>
+<p>we could talk about</p>
+<p>what is temporally deep active inference</p>
+<p>what are the ways that the model deals</p>
+<p>with internal and external categories</p>
+<p>and discrete variables</p>
+<p>how do we deal with the inference on</p>
+<p>external states and how does that relate</p>
+<p>to our action selection</p>
+<p>and then what happens when there's a</p>
+<p>feedback or um some other type of</p>
+<p>interaction with the niche</p>
+<p>the informational niche the social needs</p>
+<p>the stigma niche</p>
+<p>so or other questions people can write</p>
+<p>um well that was</p>
+<p>a sort of quick run through</p>
+<p>paper and i'm not</p>
+<p>sure if i got each section 100 correct</p>
+<p>so it will be good to have</p>
+<p>the author's perspective on a lot of</p>
+<p>pieces as well as a lot of other</p>
+<p>experts who i'm sure could have said a</p>
+<p>ton</p>
+<p>more and better about some of the math</p>
+<p>but</p>
+<p>we can offer up the same questions that</p>
+<p>we have for any paper</p>
+<p>like what might a good understanding</p>
+<p>enable</p>
+<p>what are the unique predictions and</p>
+<p>implications and the unique developments</p>
+<p>of this</p>
+<p>paper what are some of the next steps</p>
+<p>for</p>
+<p>free energy principle and active</p>
+<p>inference research</p>
+<p>what are the goals of this research and</p>
+<p>then</p>
+<p>also to the participants and the authors</p>
+<p>what are they still</p>
+<p>curious about learning so</p>
+<p>thanks for participating it was a fun</p>
+<p>26 and uh we hope that you'll</p>
+<p>join for 26.1 and 0.2</p>
+<p>if you can or comment on the videos or</p>
+<p>whatever</p>
+<p>and thanks talk to you later bye</p>
+</article>
+</body>
+</html>

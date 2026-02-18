@@ -1,170 +1,164 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code (claude.ai/code) when working with this repository.
 
 ## Project Overview
 
-Journal-Utilities is a Python-based transcription and processing pipeline for the Active Inference Journal using WhisperX for local transcription with SurrealDB for storage. The system processes YouTube videos from the Active Inference Institute, storing metadata in SurrealDB and generating transcripts for the Active Inference Journal.
+Journal-Utilities is a Python processing pipeline for Active Inference Institute YouTube content. It supports six workflows:
 
-Note: The AssemblyAI-based transcription tools have been archived and are no longer actively used. They can be found in the `Archive/` directory for historical reference.
+1. **YouTube Channel Download** — Enumerate and download transcripts, audio, and video via `yt-dlp` with cookie-based auth
+2. **Local Whisper Transcription** — Apple Silicon–optimized transcription via `mlx-whisper`
+3. **WhisperX Transcription** — GPU-based transcription with speaker diarization (CUDA + SurrealDB)
+4. **Entity Extraction (RAG)** — Cohere AI entity/relationship extraction into SurrealDB graph
+5. **Export** — Multi-format transcript export (plaintext, PDF, Markdown, JSON, HTML)
+6. **Web Interface** — FastAPI SPA for browsing the video library with Ollama-powered RAG chat
 
 ## Development Commands
 
 ### Environment Setup
 
-Using uv (recommended):
 ```bash
-# Install uv if not already installed
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Setup environment
-uv venv
-source .venv/bin/activate
-
-# Install dependencies
-uv pip install -e .
-uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
-# For development
+uv venv && source .venv/bin/activate
 uv pip install -e ".[dev]"
-```
-
-### Database Operations
-
-Start SurrealDB:
-```bash
-surreal start --log trace --user root --pass root --bind 0.0.0.0:8080 rocksdb:///mnt/md0/projects/Journal-Utilities/data/database
-```
-
-Query database:
-```bash
-surreal sql --endpoint http://localhost:8080 --username root --password root --namespace actinf --database actinf
 ```
 
 ### Running Tests
 
-Tests use unittest framework:
 ```bash
-make test  # Run all tests
-# Or manually:
-python -m unittest tests.test_output_final_artifacts
-python -m unittest tests.test_transcript
+uv run pytest tests/ -v
+uv run pytest tests/journal_utilities/ -v       # YouTube download + transcription
+uv run pytest tests/journal_utilities/rag/ -v   # Entity extraction (RAG)
 ```
 
-### Complete Workflow
-
-The project now has a streamlined workflow with Makefile commands:
+### Pipeline Runner (run.py)
 
 ```bash
-# Step 1: Fetch latest data from Coda API
-make fetch-coda
-
-# Step 2: Import sessions from JSON to database
-make import-sessions
-
-# Step 3: Fetch YouTube metadata for sessions
-make fetch-metadata
-
-# Step 4: Run WhisperX transcription
-make transcribe
-
-# Step 5: Copy transcripts to journal repository
-make copy-to-journal
+python run.py --help           # Show all commands
+python run.py config           # Display current configuration
+python run.py export           # Export transcripts (formats from config.ini)
+python run.py download         # Download from YouTube (options from config.ini)
+python run.py serve            # Start web interface
+python run.py test             # Run test suite
+python run.py full             # Run full pipeline (download → export)
 ```
 
-### Individual Script Usage
+### YouTube Channel Download
 
-**ingest_db_create_wav.py** now supports command-line arguments:
 ```bash
-# Import sessions from Coda JSON
-python src/ingest_db_create_wav.py --step import
-
-# Fetch YouTube metadata
-python src/ingest_db_create_wav.py --step metadata
-
-# Copy to journal repository
-python src/ingest_db_create_wav.py --step copy
-
-# Run all steps (except transcription)
-python src/ingest_db_create_wav.py --step all
-
-# Use a different JSON file
-python src/ingest_db_create_wav.py --step import --json /path/to/file.json
+python scripts/download_channel.py --transcripts --audio --resume
+python scripts/download_channel.py --transcripts --audio --resume --cookies-from-browser chrome
 ```
 
-**transcribe.py** runs the WhisperX transcription:
+### Local Whisper Transcription
+
 ```bash
-python src/transcribe.py
+python scripts/transcribe_missing.py --dry-run
+python scripts/transcribe_missing.py
+python scripts/transcribe_missing.py --max-files 5
 ```
 
-## Architecture Overview
+### Web Interface
 
-The project focuses on a streamlined local transcription pipeline:
+```bash
+uv pip install -e ".[interface]"
+uv run python -m journal_utilities.interface.app   # → http://localhost:8000
+```
 
-### Core Scripts (`src/`)
+### Database
 
-- **ingest_db_create_wav.py**: Multi-function script with command-line interface
-  - `--step import`: Import sessions from Coda JSON with full audit trail
-  - `--step metadata`: Fetch YouTube metadata via API
-  - `--step copy`: Copy transcripts to journal repository structure
-  - Includes audit functions: `rollback_import()`, `get_import_summary()`, `get_failed_imports()`
-  - Private video detection via `private_videos.json`
+```bash
+make db-start
+surreal sql --endpoint http://localhost:8080 --username root --password root --namespace actinf --database actinf
+```
 
-- **transcribe.py**: WhisperX transcription with alignment and diarization
-- **output_final_artifacts.py**: Process transcripts into final formats
+## Architecture
+
+### Core Modules (`src/journal_utilities/`)
+
+| Module | Purpose |
+|--------|---------|
+| `channel.py` | Channel enumeration via `yt-dlp --flat-playlist` |
+| `downloader.py` | Download transcripts, audio, video |
+| `transcriber.py` | Local Whisper transcription using `mlx-whisper` (Apple Silicon) |
+| `playlist.py` | Playlist enumeration and metadata |
+| `renderer.py` | Markdown/HTML rendering of transcripts |
+| `youtube.py` | URL builder helpers |
+| `categorizer.py` | Video categorization by series/type |
+| `database.py` | Database models and queries |
+| `importer.py` | Session import with audit trail |
+| `transcribe.py` | WhisperX transcription with diarization (GPU/CUDA) |
+| `interface/app.py` | FastAPI web server, REST API routes |
+| `interface/data_loader.py` | Video manifest builder from `data/output/` |
+| `interface/chat_engine.py` | Ollama RAG chat engine with transcript context |
+| `export/exporter.py` | Multi-format transcript export |
+
+### Entity Extraction (`src/journal_utilities/rag/`)
+
+| Module | Purpose |
+|--------|---------|
+| `main.py` | Pipeline orchestrator |
+| `extractors/cohere_extractor.py` | Cohere AI entity extraction |
+| `graph/surreal_client.py` | SurrealDB graph client |
+| `models/entities.py` | Pydantic entity/relationship models |
+| `adapters/entity_adapter.py` | Entity format conversion |
+
+### Top-Level Files
+
+| File | Purpose |
+|------|---------|
+| `run.py` | Python CLI runner (argparse + configparser) |
+| `config.ini` | Pipeline configuration (all options in INI format) |
+| `run.sh` | Bash interactive menu (legacy, still functional) |
 
 ### Data Flow
-1. Coda API → JSON export with session data
-2. JSON → SurrealDB (with audit trail)
-3. YouTube API → Video metadata enrichment
-4. MP4 files → WAV extraction → WhisperX transcription
-5. Transcripts → Journal repository (organized by category/series/episode)
+
+```
+YouTube Channel → yt-dlp enumeration → video manifest (JSON)
+                → yt-dlp download → transcripts (.txt), audio (.mp3), video (.mp4)
+                → mlx-whisper → transcripts for missing videos
+                → WhisperX → diarized transcripts → SurrealDB
+                → Cohere AI → entities + relationships → SurrealDB graph
+                → export → plaintext/PDF/MD/JSON/HTML
+```
 
 ## Key Configuration
 
-Environment variables (`.env`):
-- `CODA_API_TOKEN`: Coda API token for fetching session data
-- `HUGGINGFACE_TOKEN`: Required for WhisperX speaker diarization
-- `API_KEY`: YouTube Data API v3 key for metadata retrieval
-- `DB_URL`: SurrealDB connection URL (ws://0.0.0.0:8080/rpc)
-- `DB_USER`, `DB_PASSWORD`: Database credentials
-- `DB_NAME`, `DB_NAMESPACE`: Database and namespace (actinf)
-- `WAV_DIRECTORY`: Directory for WAV file storage
-- `OUTPUT_DIR`: Output directory for processed files
-- `JOURNAL_REPO_DIR`: Active Inference Journal repository path
+### config.ini
 
-## Recent Updates (2024)
+All pipeline options in a single plaintext file:
 
-- **Removed old CSV-based utilities**: Cleaned up deprecated functions for CSV processing
-- **Added Coda API integration**: Direct fetch from Coda API via Makefile
-- **Parameterized main script**: Command-line arguments for flexible execution
-- **Enhanced Makefile**: Separate commands for each workflow step
-- **Import audit trail**: Full tracking of import operations with rollback capability
-- **Private video detection**: Automatic marking of private videos via `private_videos.json`
+| Section | Keys |
+|---------|------|
+| `[general]` | `data_dir`, `log_level` |
+| `[download]` | `transcripts`, `audio`, `video`, `resume`, `max_videos`, `delay`, `cookies_from_browser` |
+| `[transcribe]` | `engine`, `model`, `max_files` |
+| `[export]` | `plaintext`, `pdf`, `markdown`, `json`, `html`, `output_dir` |
+| `[interface]` | `host`, `port` |
+| `[database]` | `url`, `user`, `password`, `namespace`, `database` |
 
-## External Dependencies
+### Environment Variables (`.env`)
 
-- **Coda API**: Source of session/event data
-- **Hugging Face models**: pyannote models for speaker diarization
-- **SurrealDB**: Database for storing transcription metadata
-- **WhisperX**: Local transcription with speaker diarization
-- **YouTube Data API v3**: Video metadata retrieval
-- **FFmpeg**: Audio/video processing
+| Variable | Required For | Purpose |
+|----------|-------------|---------|
+| `HUGGINGFACE_TOKEN` | WhisperX | Speaker diarization models |
+| `API_KEY` | Metadata | YouTube Data API v3 |
+| `CODA_API_TOKEN` | Import | Coda session data |
+| `COHERE_API_KEY` | RAG | Entity extraction |
 
-## Archived Components
+## Code Patterns
 
-The following AssemblyAI-based components have been moved to `Archive/`:
-- `1_youtube_to_audio/`: YouTube to audio conversion tools
-- `2_audio_to_markdown/`: AssemblyAI transcription submission and processing
-- `5_markdown_to_final/`: Markdown to final output conversion
-- `May_2023_testing/`: Historical testing scripts
-- `docs/`: Original documentation
+- **Dataclasses & Enums**: `DownloadResult`, `TranscriptionResult`, `ExportResult`
+- **Lazy imports**: `mlx-whisper` imported lazily to avoid hard dependency
+- **Skip-existing**: All functions default to `skip_existing=True`
+- **Async-first**: Database operations use `asyncio`
+- **Structured logging**: `logging.getLogger(__name__)`
+- **Config-driven**: `run.py` reads `config.ini` via Python `configparser`
 
-These archived tools used AssemblyAI API for cloud-based transcription and included features for:
-- Custom vocabulary boosting
-- Spell checking
-- Sentiment analysis
-- IAB categorization
-- Document conversion to PDF/HTML using Pandoc
+## Optional Dependencies
 
-For historical reference or if you need to use these tools, they remain available in the Archive directory.
+| Group | Install | Purpose |
+|-------|---------|---------|
+| `transcribe-local` | `uv pip install -e ".[transcribe-local]"` | `mlx-whisper` |
+| `interface` | `uv pip install -e ".[interface]"` | FastAPI, uvicorn, httpx |
+| `export` | `uv pip install -e ".[export]"` | fpdf2 for PDF export |
+| `dev` | `uv pip install -e ".[dev]"` | pytest, black, ruff, mypy |

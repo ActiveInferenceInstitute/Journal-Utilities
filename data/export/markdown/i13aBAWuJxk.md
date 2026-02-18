@@ -1,0 +1,3151 @@
+---
+title: "ActInf Livestream #016.0: “Neural correlates of consciousness under the FEP""
+category: "Livestream"
+series: "Livestream_016"
+episode: "0"
+duration: "1:39:26"
+url: "https://www.youtube.com/watch?v=i13aBAWuJxk"
+views: 198
+exported_at: "2026-02-18T22:37:37.892770+00:00"
+format: markdown
+---
+
+# ActInf Livestream #016.0: “Neural correlates of consciousness under the FEP"
+
+hello everyone welcome to the active
+inference live stream
+and this is the active inference lab i'm
+daniel friedman
+and i'm really excited to be having this
+conversation with my friend blue
+hi blue welcome to the active inference
+lab everyone
+we are an experiment in online team
+communication
+learning and practice related to active
+inference you can find us on our
+website twitter email discord youtube
+whatever it may be in the future this is
+a recorded and an archived live stream
+so please provide us with feedback so
+that we can improve on our work
+all backgrounds and perspectives are
+welcome here and we will
+look forward to using good dialogue
+video etiquette
+today in 16.0 we're going to be setting
+the stage for
+february 16th and february 23rd 2021's
+events which are both going to be
+discussions on this same paper we're
+talking about today
+and for the 16th we're going to have the
+author
+um wanja whis join us for the discussion
+today in 16.0 the goal is really to set
+the context for 16.1
+and 16.2 which are participatory group
+discussions
+the paper we're discussing is the neural
+correlates of consciousness under the
+free energy principle
+from computational correlates to
+computational explanation
+by whis and carl fristen november 18th
+2020
+and there's a link given the video is
+not uh
+uh it is an introduction to the context
+it's not a review or a final word
+blue and i just gave it a read we're
+still working through these issues we
+hope to kind of
+surface what we're thinking about on
+those topics and one of the punch lines
+is that fep it's not a singular theory
+or definition of consciousness
+itself but it lends itself to some
+pretty powerful thinking and theory
+development in this area
+and in the video of 16 we're gonna go uh
+with an introduction section and thanks
+blue for the structural
+tip we're gonna talk about the author's
+perspective on
+their introduction really aims and
+claims abstract and roadmap
+then we'll consider the keywords kind of
+just where we were at with those topics
+and where we think there might be a nice
+bi-directional road kind of on and on on
+and off ramp from active inference
+and then we'll actually go through a
+fair amount of the details of the paper
+including some of the
+formalisms close with a couple questions
+and thoughts
+and in 16.1 and 16.2 we'll be discussing
+this paper
+so that is all for the introduction
+let's go to the aims and claims of the
+paper
+um the paper was as stated blue do you
+want to um
+read the aims and claims sure
+the first aim is how can research on
+neural correlates of consciousness
+lead to an explanation of consciousness
+and what role could the free energy
+principle the fvp
+play in this endeavor we have suggested
+that research on neural correlates
+should be
+complemented by research on
+computational correlates of
+consciousness
+cccs in order to yield a computational
+explanation of consciousness
+moreover according to the free energy
+principle neuro
+neural correlates of consciousness must
+be defined in terms of neural dynamics
+not neural states and compulational
+correlates of consciousness
+should be defined in terms of
+probabilities encoded by neural states
+all we hope to have shown is that a
+computational explanation of
+consciousness is possible
+and that the free energy principle can
+make a significant contribution to this
+project
+big aims and claims um and a lot of
+interesting things
+that are already being mentioned a lot
+of these words we're gonna dive into
+so if it's their first time hearing some
+of these terms and acronyms
+or whether these are things where you're
+already bringing a lot of priors to the
+table
+hopefully you'll be able to look at it
+in a new light and these are big topics
+so
+there's just going to be a lot
+underlying these aims and claims
+anything else you'd add on those um
+cool let's talk about the abstract which
+is how the authors have distilled and
+summarized their work
+for broad uh reading so this is the
+section that most people
+read it's kind of like a power law where
+a few people see the title and the
+smaller subsets see the abstract and it
+goes down so we
+always look at how the authors reflect
+their work in the abstract
+so i'll read the first half the abstract
+and then you can give a thought on
+something in there
+how can the free energy principle
+contribute to research on
+neural correlates of consciousness and
+to the scientific study of consciousness
+more generally
+under the free energy principle neural
+correlates should be defined in terms of
+neurodynamics
+not neural states and should be
+complemented by the research on
+computational correlates of
+consciousness
+defined in terms of probabilities
+encoded by neural states
+we argue that these restrictions
+brighten the prospects of a
+computational explanation by addressing
+two central problems
+so just a thought there i think that um
+the fep is really well suited to
+providing a computational explanation of
+consciousness or
+a computational correlate of
+consciousness um
+if we can kind of maybe talk about
+the easy problem of consciousness right
+which which we'll get into the hard easy
+and
+medium problems of consciousness but
+really the easy problem of consciousness
+is is well
+described by the fep and i don't know
+that we can really even
+in like nail down what exactly
+consciousness is except
+from that computational standpoint cool
+and this question of defining
+consciousness it's gonna
+rear its head a million different ways
+not the least of which when deciding
+what to measure or which analogy
+to use having a computational versus
+some other type of adjective that you
+could put there
+so how about you go for recapitulating
+that
+last point which is there's two central
+problems that are going to be addressed
+and then continue
+so we argue that these restrictions
+brighten the prospect
+of a computational explanation of
+consciousness by addressing two central
+problems
+the first is to account for
+consciousness in the absence of sensory
+stimulation
+and behavior the second is to allow for
+the possibility of systems that
+implement computations associated with
+consciousness
+without being conscious which requires
+differentiating between computational
+systems that merely simulate conscious
+beings
+and computational systems that are
+conscious in and of themselves
+given the notation of or the notion of
+computation entailed by the free energy
+principle
+we will derive constraints on the
+inscription of consciousness
+in controversial cases for example in
+the absence of sensory stimulation
+and behavior we show that this also has
+implications for what it means to be
+as opposed to merely simulate a
+conscious system
+cool so the two key
+problems the central problems one is
+what happens in the absence of stimuli
+and then the second big plot block of
+text is
+um the difference between actually being
+conscious versus simulating it
+and then by thinking about these two
+central problems and using the fep
+as our guide remember we're under
+according to the title under the fep
+not because of the fep or some other way
+of talking about it
+under the fep we're going to think about
+how this notion of computation
+is actually going to lead to some unique
+predictions and
+explanations and hypotheses that then we
+can talk about in a really scientific
+way
+that will take it out of the land of
+abstraction and well what about this
+thought experiment and what about this
+uncertainty here
+and towards the realm of well this model
+predicts that this kind of a brain or
+this kind of an agent
+will have this type of measurement or
+response in this context
+we want to have that conscious
+consciousness a meter
+the measuring device but without the
+definition it's hard to have the
+measuring device
+and vice versa and so fep looks like a
+promising way to sort of navigate that
+paradox
+let's go to the roadmap so this
+is a paper structure with six
+sections an introduction and a
+conclusion and with four
+internal sections the first internal
+section and we're going to go through a
+lot of these keywords in just a second
+starts from neural correlates of
+consciousness and moves the discussion
+from thinking
+neurally to thinking computationally so
+that's the movement from neural
+correlates to computational correlates
+of consciousness
+then the third section moves from the
+computational correlates of
+consciousness
+into the free energy principle surprise
+surprise
+the fourth section goes back to
+computational correlates
+and moves the um the focus the regime of
+attention
+from computational chords alone which
+have already been linked to the fep
+to computational explanations of
+consciousness and then the fifth section
+brings together the computational
+explanations of consciousness
+with some of the first authors previous
+research on minimal unifying models of
+consciousness
+and all of this is implicitly interwoven
+with fep
+which is kind of what is being tied
+together with this paper
+so any thoughts on the structure or the
+roadmap blue
+no it's good it was a good um flow i
+thought yep a dense
+paper so definitely okay to take it in
+many
+sections and skip around and skim it
+through it first there's a lot of
+ways that each person will read
+different genres of paper
+okay the keywords the part we've been
+excited to
+talk about i guess all of it though and
+we just took the keywords
+from the paper and laid them out
+uh in an order and tried to present each
+keyword in a way that was standalone on
+just one or two slides
+again thinking about the on and the off
+ramp for active inference
+so if you read this because fristen's
+one of the authors or because it came up
+in a keyword search for free energy
+principle
+but maybe you haven't thought about some
+of these other topics that's one
+mode of listening and then the other
+mode of listening is like maybe with
+more experience
+or having thought more about these
+topics where's free energy principle and
+active inference playing into all that
+and then beginner's mind and learning by
+doing plays on both directions of the
+road
+so our first keyword uh well let's just
+actually read through the keywords
+uh free energy principle and active
+inference consciousness
+minimal unifying model neural correlates
+of consciousness
+computational correlates of
+consciousness computational explanation
+and islands of awareness
+okay so first free energy principle so
+how about you read it and i'll give a
+comment on the first half and then we'll
+flip
+awesome so the free energy principle
+provides an
+information theoretic analysis of the
+concept of existence of self-organizing
+systems
+it entails that self-organizing systems
+at non-equilibrium steady state bound
+the entropy of their sensory signals by
+minimizing on average
+a quantity known as variational free
+energy as such
+fvp is not a theory of consciousness do
+you want me to read the second part or
+do you want to
+switch now um i'll give a thought and
+then we can switch if there's two i
+guess
+but just that in the first paragraph if
+you only
+dipped a toe in you'd already find that
+fep is not itself a theory of
+consciousness
+so the debate's not done we're looking
+at what the fep
+is that's the first part of the
+paragraph it's a certain information
+theoretic analysis
+for thinking about self-organizing
+systems for complex adaptive systems
+and it's not itself a theory of
+consciousness so i think that that's
+just a really nice way to open
+the tone of the paper and the discussion
+so the second part here referring to
+what is the free energy principle and
+how is this going to relate to the paper
+a fundamental constraint provided by fep
+is that it only applies to active
+systems that engage with their
+environment
+hence a computer simulation of a system
+that minimizes variational free energy
+may perform computations that are
+also instantiated by a conscious agent
+that interacts with its environment
+but if these computations are realized
+by a piece of hardware that cannot be
+regarded as an agent
+eg they cannot move or change external
+states then they can at most lead to a
+simulation of consciousness
+i think that this is interesting because
+it's like it doesn't really
+um just like delineate what exactly is
+an
+active system and what what is engaging
+with the environment
+like for example if you have like an
+unborn baby inside
+of the mother is that like an active
+system engaging with its environment
+like can does it have any control over
+like the environment of the environment
+is delivered to it like all
+non-stationary like self-organizing
+systems that are maybe more passive
+like i think about like ocean you know
+creatures that just sit there like
+i know that the fep does apply but it
+just doesn't really delineate
+exactly what those systems are yep
+agreed and um so if this is your first
+time
+hearing about it's obviously a big topic
+there's a lot of ways to go about it
+also i had a question like whether other
+physical systems like a proton are we
+going to include that as an active
+system but
+there's a lot of um is that an active
+you know it's engaging with the
+environment yes but is it active
+um so that's where we're going what is
+simulation versus actual consciousness
+where's the fep
+let's in this keyword section think
+about just what is the fep before we
+go that far out with a paper because we
+wanted to draw on the quotes from the
+paper to see where they were going with
+the fep
+and now let's pull back to just thinking
+about what is the free energy principle
+and this is a slide that had been used
+actually a couple
+uh active streams ago but it
+actually a lot of the terms got reused
+focker plank
+helmholtz non-equilibrium steady state
+markov blankets active inference
+everything here
+except for some of these more um
+specific like
+sub process theories on the neural side
+almost everything here was discussed in
+this paper
+so this is why it's so interesting to
+think about convergences between the
+papers because there's a lot of overlap
+we're on the right track and we can
+hopefully start to reduce our
+uncertainty
+just to run through these the focker
+plank and this is from mel andrews's
+paper
+and the history of thermodynamics of the
+fep so active 14 if you want to
+listen more but the focker plank is
+bringing in
+a uh uh vector
+way in the helmholtz as well of dealing
+with vectors
+and mathematics for certain kinds of
+systems
+namely these non-equilibrium steady
+state densities which we're going to go
+into in more detail so we're not going
+to go into it here
+and the free energy principle is a just
+as we said on the previous slide it's an
+information theoretic analysis
+approach for these kinds of systems
+doing interesting stuff
+non-equilibrium steady state cybernetic
+systems
+and using that type of vector
+maths on it and then it leads to all of
+these consequence
+falsifiable testable hypotheses the
+process theories up at the top and there
+could be other things as well
+anything else to add on that blue not at
+all
+all right so to go into one of the
+process theories that we
+like active inference and this is from
+another paper we've discussed
+a while ago vassal at all a world unto
+itself
+and this was thinking about
+communication so on
+11 we said okay it's about active
+systems engaging with their world
+slide 12 we're going to think about that
+in this kind of thermo info
+statistical way and then 13 okay
+let's bring in almost the real processes
+and almost a systems engineering or just
+a systems modeling perspective
+to what kinds of systems are engaging
+with the world active
+with a generative model of their niche
+and how are we going to think about that
+under the free energy principle that's
+where active inference comes into play
+and this is a diagram we see in many
+guises
+where you have internal states and
+external states which are separated
+by an interface that can be modeled as a
+markov blanket but we'll also go into
+more detail on that later
+where what goes inside or from one side
+of the interface to the other
+is sensation coming in that changes
+internal states
+internal states such as uh
+different uh policy estimates for the
+world or different policy estimates
+for what one's self will engage in
+results in different action patterns
+which
+influence external states which also
+have their endogenous dynamics
+so that's active inference that's what
+active inference lab is like
+thinking about and coming at for many
+angles so that's one
+little just um snapshot of active
+inference what is active inference for
+you
+today blue or what does this make you
+think about
+so i i'm always interested in reflecting
+on
+the internal states like hunger
+right how that results in an external
+action
+like a behavior like i'm gonna go find
+some food
+so i'm always interested in reflecting
+on on this and whether it's
+um it can be reduced to
+computation right like we know if we
+have a good estimate of what our
+predictive model
+is or our generative model is if we have
+that
+uh estimate then we know like what's
+coming at us what is the input
+can we always predict output like are we
+just the sum of of
+are we just a computation like i always
+think about that so it brings that up
+for me
+yep this is a skeleton but then if it's
+skeletons all the way down
+where's the meat where is the actual
+self or is it something
+other than that maybe it's that that is
+the cell for some other thing like that
+so active inference active inference
+eight we talked about it from a
+reinforcement learning and a control
+theory perspective we've talked about it
+from a historical angle
+with mel and from a philosophical angle
+um in 15
+we're reintroducing consciousness which
+we also talked about
+in nine with the projective
+consciousness model
+so that consciousness free energy
+principle active inference discussion
+was about geometry and the projections
+and then the way that agents did active
+inference on this projective geometry
+we're actually not going to talk about
+that projective
+almost perry personal space relationship
+with the fep
+and this paper is going to take the same
+topics go in a little different way
+with more of a focus on the information
+theory and on the generative model
+and on the divergence of a few different
+kinds of
+surprise and measurements of the world
+so it's another facet
+let's talk about the main piece of the
+paper which is consciousness
+so how many ways to start or cover it
+um just when we were planning this as a
+lab and talking about it people
+were just bringing up good stuff in live
+discussion so someone said a felt sense
+of is-ness
+people were asking like where do we look
+for consciousness
+what do we measure and where what
+spatial temporal scales what kinds of
+systems
+and many people just pointed out there's
+so many
+understandings here and uh areas of
+study i mean
+if one is curious there's a great wealth
+of resources
+um before we dive into each facet of
+this
+hexaflower blue what does consciousness
+what like what interested you in this
+paper what makes you curious to
+study these things so i don't know
+consciousness is one of those things
+that's like
+love like we don't really have a good
+like definition for it we all kind of
+like
+think we know what it is right like we
+think we know what it is and what it
+isn't
+but but it's it's like a very you know
+ethereal
+concept um so i don't know it's always
+interesting to try to tackle these like
+things that can't really be pinpointed
+or like nailed to a certain
+like board right like you can't really
+exactly define consciousness
+it's always fun to kind of take a
+scientific approach to evaluate these
+things right like reduce love to you
+know oxytocin or whatever but it's more
+than that like it's it's
+i mean clearly consciousness is more
+than what any one thing that like where
+it's more than the fep it's more than
+what we're able to
+you know attach to it project onto it
+but it's it's
+always interesting to try to tackle
+these hard problems and i love the
+hexaflower
+so i've got to say like daniel put this
+together it's like a
+super cool design that takes
+consciousness as the center point
+and then integrates all of these
+keywords that we're going to be
+discussing the minimum unifying model
+islands of awareness neural correlates
+of consciousness computational
+correlation consciousness
+computational explanation and then the
+easy medium
+and hard problems of consciousness right
+so all these are surrounding the
+consciousness is the center point i love
+it
+what was kind of fun about that and
+almost meta is like i was trying to
+arrange the list
+it's like okay we got active inference
+free energy principle keywords get them
+out of the way
+then we have consciousness related
+keywords and consciousness itself
+and so how can they be arranged linearly
+and it was like there's no single linear
+arrangement
+everyone could have a different way of
+seeing that
+so then um it's just something that from
+studying to bs
+we see the hexagon and then i see it
+more like when we want to reflect
+tiling but a coherent tiling like
+settler's a catan
+you can play on a bigger board smaller
+board but instead of just something
+that's blocky it's like
+it's yeah okay so let's go to the first
+little
+sub pedal because thinking about the
+problems that
+steer us or that motivate us in
+consciousness research
+so this is like not you know moral
+proclamations on consciousness
+this is about scientific study of
+consciousness and about investigations
+um about people who are coming together
+from different perspectives not just
+living from within um one specific
+definition
+so people are going to be kind of
+playing fast and loose and having
+different
+takes that's kind of the wildness of the
+field so there's
+famous framing of the hard problem of
+consciousness by chalmers
+in the 90s and subsequent research
+that's a pretty famous
+um singular moment but
+i just thought of you know easy medium
+and hard problems but different people
+are going to perceive
+different difficulties for some people
+they're really hung up on
+mind and body other people it's like a
+speed bump they just say
+yeah i mean it's this other way so
+that's just something that
+studying the field of consciousness
+studies is so interesting to me is
+some people a word they just they spend
+their whole life
+investigating it other people they just
+blow right by it or it seems like a
+question that totally
+it even if they're aware of it isn't
+something super
+relevant so which problems are easy
+medium and hard it fits in that category
+there are hard problems like
+how could a physical thing or can of
+physical things generate conscious
+awareness or how we know there's a lot
+of hard problems
+um but it's an interesting topic what
+did this make you think about
+um so i mean i think like i already
+divulged what i was thinking about in
+the easy medium and hard problems of
+consciousness and
+how kind of the fep really lends itself
+to like the easy
+problem and like really like are we so
+reducible to the easy problem of
+consciousness like i mean we all kind of
+know that there's something like
+more than that and like when we get into
+that more than that
+like thing do we become then like
+less scientific and more like spiritual
+okay like
+like do we take some leap of faith going
+into the hard problem of consciousness
+or
+are we just like ascribing some property
+like if we're gonna really be scientific
+about it like consciousness is one of
+those things that if you're going to
+buy into it like it has to kind of be
+everywhere like
+i mean we make this like hard cut off
+like if you look at research like only
+higher vertebrates that have a central
+nervous system those are the only
+like things that are conscious in the
+world right like and
+some people have like lines within that
+like only humans right
+so really can we can we draw these like
+hard
+boundaries like i don't know i kind of
+feel like if consciousness exists
+it's pervasive but maybe pervasive only
+among
+living systems but then as a tree
+conscious
+so it's one of these it's hard it's a
+hard problem
+yes um agreed and the easy one
+is almost the part that explains it's
+like when people make fun of
+daniel dennett's book consciousness
+explained consciousness explained away
+it's like yeah we know how a robot would
+respond to a sensory
+um you know cue to engage in action
+but that's not the hard part that's not
+really the
+heart of the matter next topic so
+minimum unifying model of consciousness
+what
+what did you find interesting about this
+or what did you like about what you
+read i liked this quote
+that um i pulled out from from the end
+of the
+uh paper like i think it was right
+before the conclusion maybe the end of
+section four
+that says you know minimizing
+variational free energy could count as a
+minimum
+unifying model variational free energy
+must be minimized by every
+self-organizing system that persists
+and hence also by any conscious system
+i liked that and i thought that it was
+applicable and kind of
+really right on target
+the challenge is decompiling
+so every self-organizing system that
+persists
+are those the conscious systems are
+those two sets the same so
+self-organizing uh storm cloud what is
+it like to be a storm cloud what is it
+like to be a volcano
+that's the question of what is it like
+to be a bat and then
+um another thread is like the cultural
+like
+maybe if there's a prior or something
+that's implicit or
+sub-personal that leads us to certain
+kinds of
+explanations being just absurd versus
+intuitive like pan psychism versus only
+vertebrates or only
+subclasses or or nothing it's like what
+do you mean nothing it's like well just
+nothing it's not something i wonder
+about
+why not but not not an issue if not
+so that's the minimum unifying model
+it's going to come up in the terms of
+this paper just because that's kind of
+um both the authors are interested in
+that
+i would say and just to go
+into one of the prior papers a solo
+author paper by the first author
+um longia so this is the science of
+consciousness does not need another
+theory it needs a minimum unifying model
+unifying words on 7 11 2020
+great date for pape and here
+are on the right side are referring to
+two kind of hypotheses for how we could
+think about different
+fields of meaning one way of
+uh arranging different fields would be
+like information generation is
+all these tan things in a so this is
+like computers and random number
+generators and die
+or something like that and then
+consciousness is a subset where maybe
+there's some conscious systems that
+don't generate information maybe there's
+some that do
+maybe you have a different feeling about
+how these are overlapped like in b
+where there's information generating
+systems that's a big super class
+and then within that there are systems
+like the blue the non-reflexive behavior
+that are
+cybernetic to some extent like it's
+predictive it's acting in a way that
+might have
+some game theory like or some sort of
+adaptive seeming dynamics
+but consciousness is a subset of that
+and so i just really
+appreciate the the research direction of
+the author
+because um the difference between a and
+b is
+is night and day and there's many other
+options it wasn't an attempt to be
+exhausted it's like
+if we could talk about this we could
+have a better way of framing oh our
+computer's conscious our human and the
+computer what's conscious
+let's say let's take a step back are we
+where who
+what are we overlapping with what and
+what's on the table here and what kinds
+of words do we care about and where's
+the territory it's okay if territories
+are nested within each other or
+overlapping
+or they're intercalated or they're
+they're complementary or something
+but we have to pull back to kind of a
+level where we can at least sort through
+all these theories of the science of
+consciousness
+because otherwise it's just a total mess
+and the information overload aside
+it doesn't even make sense just if
+everyone's working in their own
+wavelength it doesn't even make sense
+so really nice um direction any thoughts
+on that blue
+so i wonder if like information
+generation and consciousness like aren't
+a full overlap
+like if those can just like be all
+lumped into one of one another and then
+non-reflexive behavior is like some
+subset
+of that um just just even going to like
+the spin of a of an electron like a
+coupled electron like if you're looking
+at
+at qubits right like so it it's always
+got to be there's a paired system and is
+that conscious
+like just getting down to the very basic
+like atomic particles
+especially what we talked about earlier
+like if the free energy principle
+is for so-called passive and active
+systems that are engaging
+with their niche like systems that
+aren't usually thought of as very
+reactive like
+a proton or like a rock at a larger
+scale
+are they on this consciousness continuum
+or are they disjoint from it or
+so those are the kinds of things where
+reading the paper
+helps bring us to the edge of the ideas
+and of research and also to the edges
+socially thinking about it and talking
+about it hearing people who have
+different
+perspectives so on the perspectives
+issue also
+computational explanations so just in
+the word
+what is computation you're going to have
+a lot of takes some people will say
+i mean of course you know my linux
+computer right here is a computer
+but then they'll say that the hydrogen
+is also a computer and the football when
+it gets kicked it's also computing a
+parabola so it's
+computing everything and then what is
+explanation
+philosophy of science rabbit hole to go
+down
+but um is it about being emotionally
+satisfied with what we know
+or is it about being able to usefully
+act like do we have an
+explanation for traffic i don't know
+maybe some people would say yes no in
+this situation yes but
+do we have best practices do we have
+approaches
+so explanation versus approaches and
+then the last point here
+is just thinking especially in the
+biological case about
+unconventional computation so let's just
+call the turing
+von neumann genre the binary state
+machine
+idea conventional computation
+there's a whole world quite literally of
+unconventional
+computation so reservoir computing
+things that we're going to talk about
+right at the very end
+within the binary computers and then
+outside of the binary computers physical
+computing
+wetware by bray is kind of about moving
+beyond software hardware
+distinctions which don't exist in cells
+dna is dna it's not hardware it's not
+software it's not source code it's dna
+and then leviathan the cover of that
+famous work
+with a larger the group
+made up of the individuals so that kind
+of multi-level systems perspective
+on computation multi-level cognition all
+of these things come into play when
+we're talking about
+computational explanation
+so can i just like maybe add a little
+bit
+oh yeah i know because i know that this
+is one of your chillest areas
+so i just think about explanation like
+what is the
+um like explanation is like the death of
+curiosity
+it's like the ultimate like pacification
+like i just explained it to you
+therefore
+shut up like that's why that's your
+answer so i think like
+explanation like we should never be
+satisfied with any explanation
+like we should not presume that we
+understand fully
+like anything because it just ceases
+investigation at that point
+um and so so i think like you know
+computational
+approximation might be more fun and
+and lend itself more to deeper
+scientific explanation
+yeah one thing that we were talking
+about just like um an hour ago
+with some other people in the lab was
+like if the heart
+of the issue is how things are realism
+once you get the lossless
+you know mp3 file the quest for what is
+is done
+but then if the song is not just the mp3
+file but it's actually the relationship
+how could you say that that ever ends so
+it's kind of like
+yeah are we looking to engage and to do
+things
+in the world and act or are we looking
+to come to
+a satisfying emotional explanation in
+some
+uh topic all right so
+19. so here we are getting to some of
+the
+details like the computational versus
+the neural correlates of consciousness
+so there's two double c's this is the
+ccc and then the next one is going to be
+the ncc
+so what are the computational correlates
+of consciousness
+what would be your definition
+for ccc so
+like i said i think that the
+computational correlates of
+consciousness um
+you know it goes back to like is a
+football conscious right like it's input
+output
+so like you know you have you what what
+goes into the system and what comes out
+of the system
+and and you know is like can we call
+that consciousness
+i don't really know so but but for me
+like my interpretation is
+is it's a decision right like so you
+have the input you know what you're
+supposed to do or what you think you're
+supposed to do you have some
+approximation
+about what you're supposed to do how
+you're supposed to engage with your
+environment based on the input that
+comes in
+and then you act in accordance with what
+you think you're supposed to do or
+or what you predict will lead to the
+best outcome
+i don't know something like that yep
+well
+the correlate word is suggesting that
+this is
+not an explanation that's causal
+correlation is not causation
+as they say so it's like we're talking
+about correlations we're talking about
+observables
+kind of like a correlation like a
+regression coefficient
+but a little bit probably deeper than
+that and then
+i guess my question for the authors
+would be how is
+this related to the cybernetic
+correlates of consciousness or the cyber
+cybernetic attributes um in the paper
+nine with rudroff and
+um and other authors it was like there
+was the five
+functional invariants or something like
+that like the perceptual invariance
+so what are these computational
+correlates um
+and how are they related to algorithmic
+or cybernetic
+because maybe the word computer has a
+lot of baggage we're live streaming on a
+computer it's just
+used in a really specific way it's a
+specific word and then
+maybe there's another way to think about
+like processural correlates or like the
+informational correlates of
+consciousness that might be a little bit
+um different aspect of what they're
+showing but the details of what they're
+showing we'll get to
+all right ncc so the neural coral is a
+consciousness it's another
+correlate question so we're looking for
+neural things that correlate with
+consciousness so first off correlation
+causation again
+and the correlation can be like
+evolutionary like we think that this
+brain region over the breadth of species
+diversity is correlated with
+consciousness or it's correlated with
+this behavior
+or the correlation can be like a
+molecular thing
+or it can be a dynamical pattern this
+fmri pattern or this eeg pattern
+is a correlative consciousness we set
+them up so that it was an experiment
+where in
+this task they did have consciousness
+and this one they didn't
+so it gets into defining consciousness
+but they say the difference between
+these two conditions is the neural
+correlated consciousness
+or the difference between patients in
+this category versus patients in this
+category is this
+and for two takes on the issue um in
+2016
+um christoph koch at all um talked about
+like
+from their pro neural correlate of
+consciousness agenda
+direction what were the problems and
+progress
+in their fields and then here's a paper
+from 2010 2019 with me
+and a colleague where we kind of took a
+step back from just thinking about the
+neural correlates
+and thought okay what about for the ant
+colony or for other systems that aren't
+just
+like set up like the mammalian brain
+how would we think about consciousness
+because if you study only the neural
+correlates consciousness
+you're studying how would you know that
+that's actually the subset of systems
+it's like you're shining a spotlight
+maybe a good one maybe a distorted one
+on the neural system
+but what if it's not just neural it's
+glial oh well of course i meant that
+okay
+what if it's neural and the body oh yeah
+i meant that too so all of a sudden
+okay now you're talking about neural in
+the niche and that's why we're talking
+about multi-scale systems
+so that's what there's a lot of
+interesting stuff happening here and
+about how the fep and multi-scale
+approaches
+fit together with the more neural
+focus and the more certain time scales
+and certain neural signatures
+that avenue of research in neuroscience
+humans
+sensu strictdo now connecting it to a
+clearly very vast area what do you think
+about that blue
+um so i think that the neural
+correlative consciousness is cool i
+think that
+um like they do the fmri study like when
+you're asleep versus when you're awake
+and then they take like the difference
+that's like a common way that they like
+estimate
+the neural covalets of consciousness
+um there's also like the hyper
+consciousness like
+um who's i can't remember the author
+um but he did like the information
+theory like aspect of like psychedelics
+so like expanded consciousness like what
+does expanded consciousness look like
+and how like there's
+more connections between uh neurons i'll
+have to remember the name of that paper
+for next time
+um but but it's it's just uh the neural
+correlation of
+of consciousness was really done by
+differentials
+that's a common thing i think yes
+exactly it's an experimental way to get
+at
+using measurements real data real
+experimental setups the kinds of things
+that exist
+in neuroscience labs getting at
+questions of consciousness
+and the question is are we are we on the
+right track or might be misled by the
+tools we have available and approaches
+we have
+so 21 islands of awareness okay so this
+is kind of a topic that i'd never
+heard about it's from a recent paper by
+bain
+at all 2020 and so we're thinking about
+kind of the fringe cases or the areas
+where we might be able to have a unique
+prediction or an explanation
+that is going to be a value add for the
+fep
+in thinking about neuroscience and
+consciousness or which systems are going
+to be useful to think about
+uh even if other systems also agree and
+there's going to be this case proposed
+like a thought experiment called the
+island of awareness
+which is a conscious stream so i don't
+know is the rabbit already in the hat
+it's a conscious stream or system whose
+contents are not shaped by sensory input
+from either the external world or the
+body and which cannot be expressed via
+motor output
+now one could just say well but what if
+the body's part of the whole conscious
+system so it's
+it's a kind of non-sequitur to say well
+it's happening in the brain ergo you can
+cut that out
+maybe you can maybe you can't but by
+looking at the paper
+and by believing that the authors have
+thought through what they wrote like
+it's always a useful starting point for
+discussion
+so the fringe and the edge cases can be
+where we start to see theory
+differentiation
+so if this thought experiment isn't very
+interesting to you you'll probably find
+another one that
+might be but these are like we're
+looking for the exceptions that prove
+the rule
+or the um sort of higher level
+game that is revealed by us over
+sampling
+just one area of state space the issue
+with thought experiments though is
+well kind of like science fiction they
+can provide inspiration if they're
+um at the right place the right time
+you're never gonna reach these ideal
+situations
+and they often have a huge amount of
+assumptions built in and then even for
+uh there's this dream of empirical
+application oh we'll study the island of
+awareness then
+because it's such a great thought system
+and there's a hundred papers on publish
+on it
+but then it even for a close case like
+oh
+maybe in this medical condition there
+locked-in syndrome
+it ends up that it's not exactly what
+people want and so then
+it goes into a really protracted
+multi-year thing with just
+is the system the right one to test this
+thought experiment short answer
+no and it's hard to know what to do with
+real systems to really make a dent in
+the consciousness problem
+any thoughts on that um
+just that uh you know the islands of
+awareness i think
+um are always there's always going to be
+those exceptions to the rule or those
+hard cases like we don't even really
+know how to
+get at consciousness in a system like
+that like a brain and a dish model
+is there consciousness in that like i
+remember working in the lab and growing
+cells
+in my like petri dish or whatever they
+were growing in and like
+you know i i was like i wonder what my
+culture is thinking or if they're
+thinking like
+i would be like doing neuronal
+differentiation and be like you know
+i just wonder like what they're thinking
+about today so so i mean it's just
+it's always like this mystery so we
+don't really know if there's if we can
+approximate consciousness in a system
+like that also uh the author
+of the information theory and
+psychedelic paper is andrew gallimore
+is his name sorry cool yeah it's um
+and again like how does philosophical
+uncertainty
+or debate propagate through basic
+research and application
+um what about with organoid research on
+neural cultures and so
+is there a certain size of brain or what
+about there's a brain in a body or you
+recapitulated something from a
+stem cell from a neuron and from a you
+know skin cell or you made some new cell
+type it's like
+is it different or worse or better to
+throw a gallon of skin cells versus a
+gallon of this type of cell
+those are big questions and that's why
+the consciousness discussion is really
+important
+to not just resolve but to sort of like
+clarify and to engage with so the big
+picture
+of this paper now to get into the
+quotes and some of the key topics we're
+not going to go through every quote
+we're not going to read every quote
+because there's
+a bunch of quotes but this section
+is going to just describe the main
+three observations that link three of
+the big
+tlas three-letter acronyms together so
+fep is the big one
+but then we have the neural and the
+computational correlates of
+consciousness
+so they're all kind of gonna be joined
+together
+and just to read the first point of each
+one
+if we're going to go fep neural
+correlates should be in terms of
+neurodynamics not neural states
+so in other words patterns of neural
+systems through space and time
+not just like up the jennifer aniston
+neuron fired
+so they were conscious of jennifer
+aniston it's going to have to move a
+little bit beyond that
+into something that's about dynamics
+through state spaces
+this second point is that there are
+relevant distinctions to be made
+between the probabilities of movements
+through this neural state space
+and the probabilities encoded by neural
+states
+that's going into a whole encoding
+representation question
+and a lot of statistical details if that
+sounds interesting
+read it and then the third point is that
+some
+of the computational correlates
+literature
+are able to be recast
+within the fvp and so the fep is going
+to be like a bridge
+or like a nexus between people have
+identified 10 computational correlates
+and 10 neural correlates well you got
+this blood signal in the
+this brain region when they see this
+thing in this auditory region when they
+hear this thing and
+this when they remember themselves and
+then on the computational side you have
+this feature
+a b c d all the stuff like information
+theory how are we going to bring them
+together fep
+any thoughts blue all right no
+so let's go through kind of with a
+little i don't think we kept the exact
+order of the paper
+but early in the paper we start from the
+neural correlates of consciousness which
+is something that
+people have at least probably thought of
+like there's something different when
+there's
+blood loss to the brain than the hand so
+people have kind of thought that there's
+a neural correlate
+of consciousness we're going to move the
+discussion from just thinking about
+neural correlates to computational
+correlates so this is the
+narrative trajectory from being like
+neuroreductionist or centric
+to more computational perspective they
+say ccc
+computational correlates are more
+general and promise to be more
+explanatory than neural
+correlates but there's also challenges
+so big benefits that you get you can
+consider ant colonies and ecosystems all
+kinds of cool stuff and
+perhaps have access to a whole new set
+of computational tools
+downside are what
+computational correlates are not defined
+in terms of neural structures
+but are neutral with respect to the
+question of whether the conscious
+experience correlates with global neural
+activity or not
+so the issue is that the brain is
+changing state all at once
+and so you don't know whether that one
+feature you isolated is really the
+difference that makes a difference
+so to speak it's like you could run two
+different computers and you wouldn't
+really know
+what about their outcomes from a
+correlated perspective
+was the actual explanation so one part
+is it's hard to get
+an explanation even though they say it's
+more explanatory
+um and then basically
+the second challenge for the
+computational correlates
+is the mapping from any correlate to
+consciousness
+especially in controversial cases and
+the third challenge for any correlate of
+consciousness
+is basically fringe cases and cases we
+don't know or don't
+but even those who knows what we do and
+don't know so
+there's these are three of the major
+dimensions
+of the challenge for any correlate of
+consciousness
+global versus local structure
+mapping between um consciousness and any
+correlate
+arbitrarily or not and then cases we
+don't know or understand
+so there's big territory that's
+pretty open and there's a lot there what
+do you think about that
+there's a lot there's a lot of remains
+to be you know elucidated
+in all of those um areas so
+yep our problem yep so 24. so yeah
+kind of taking computational just
+at the author's word that's how that's
+the thread they tie
+so it's a broader understanding than
+just i think a computer processor i hope
+that we'll
+find that out especially when we talk to
+the authors so there's a generality of
+these computational principles but they
+also have a disadvantage
+the properties described by them may not
+be necessary for many types of conscious
+experience but probably not sufficient
+so probably it's a probabilistic
+statement but do we know what is
+sufficient
+and so in other words what is required
+for consciousness that's sort of the
+issue with this computational approach
+is
+you get this general toolkit that can
+cross scales really easily say wait if i
+can make a measurement of a millimeter
+in a measurement of kilometers
+and then i can use um my tools on
+numbers
+then it's a multi-scale model right and
+so the challenge is
+have you underspecified aspects of the
+system
+leading to a really um potentially uh
+like bad false positive or false
+negative rate
+of course the question is what is the
+ground truth who's ground truth
+and how are we going to get to these
+edge cases and resolve them in a real
+finite world
+and then the authors say in order to
+address this question
+of what is necessary and sufficient we
+show that
+we show to what extent and from what
+assumptions some computational
+principles can be derived from first
+principles
+so they're going to say all right this
+even the computational correlates of
+consciousness people yes there's some
+issues with going computationalists but
+we have studied those this is good
+phrasing
+then we're going to ask how even the
+computational correlates could be
+themselves generated from an underlying
+something first first principles which
+are going to be information
+and physical principles as we are seeing
+what do you think about that so i mean i
+think
+in order to delineate what's required
+for consciousness you need to kind of
+get at the point of what is
+consciousness like and i think that you
+know
+they artfully skate past that in the
+paper and i mean i don't blame them
+right like
+it's a it's a touchy um and
+difficult and many gray areas you know
+exist within trying to define
+consciousness but if you can't define
+what is consciousness how can you
+define the requirements for
+consciousness yep
+agreed and so let's uh see what any of
+the authors have to say on that but
+this is the question how is
+computational principles or physical
+principles going to come into play
+all right here we go into the formalism
+section there's a bunch of formalisms in
+the paper
+and um here is just one from the paper
+starting on the top left
+that sites out to a fristen paper this
+first in 2019 long monograph that is
+having many
+active uh improvements and revisions
+and discussions on it and then here's
+two sections from
+this first in 2019 paper from 12 and 13
+i think
+but really you could take it even back
+further just like any other literature
+you kind of take it back as far as you
+want to learn
+but for the purposes of the top left the
+paper that we're
+reading today the key formalism
+is here or one of the key formulas just
+the one on this slide
+we're going to express the flow of f
+in terms of surprisal and hence in terms
+of a non-equilibrium steady state
+density
+expressing the flow f in terms of
+surprisal is almost like
+thinking about surprisal like it were a
+flow
+so just like you could have a flow of
+water we're thinking about
+kind of surprisal flows which is to say
+using flow
+like dynamics to study surprisal because
+that's
+all sort of a few different facets of
+the same thing
+and so there's going to be some flow
+that's going to reflect
+some terms that can be rewritten a few
+different ways we're not going to go
+down all the details i think of every
+letter anything that we should add on
+this slide
+blue but this is just about the idea of
+expressing information as a flow
+which is going to set us up for some of
+these later discussions and formalisms
+yeah no i'm good yep and we just throw
+these slides
+uh in the order just that we
+snap them so there's other orders and
+other
+ways of going through it we had to look
+up a ton of stuff we learned that the uh
+i'm gonna bring this on the dell or the
+nabla
+it's the operator used in mathematics
+particularly vector calculus
+that is a vector differential so it's
+like div
+grad curl but it's it's an upside down
+triangle but it does have to do with
+change
+just like a regular delta but it's a
+whole area
+of math and so this is just to say some
+people
+maybe they didn't expect an equation in
+a consciousness paper
+other people maybe they're very familiar
+with this math
+and applying it to consciousness seems
+like an outrageous
+overstep so that's the conversation
+yeah if you're somewhere in the middle
+like
+i think i'm i'm somewhere in the middle
+of that um but but if you're somewhere
+in the middle
+just knowing that it's like about
+information geometries like how daniel's
+mentioning it's about a flow and so
+so when you have like it's it's a
+geometry like the probabilities are
+thought about in these shape
+spaces and kind of knowing that helps to
+contextualize
+uh the way that it moves i think you
+know thinking of float it all makes me
+think of like
+a program it's all set up and loaded
+which files to read in what to analyze
+you hit enter
+it's like a bunch of grain in a silo and
+you pull out
+the stopper and then it flows because
+there are forces so the computer is
+having energy course through it
+and there's certain irreversible
+processes that
+increment a flow of information
+and so there's that's kind of i wonder
+what kinds of metaphors like this could
+be something for the author like
+how do we think about this flow and
+where how how do we what how can we
+describe it and learn about it
+so this is another this is so yeah that
+maybe
+this one could have gone before the
+other one but
+this is um a pretty general framing
+of random dynamical systems that are
+using this
+langvain formalism that was developed in
+the direction
+of free energy principle by
+ao 2008 and other authors
+and basically we can read this bottom
+part go back to the equation so the
+state of the system
+x of t at time t tau
+is constituted by slowly changing
+macroscopic variables
+which are grounded in microscopic
+variables with faster dynamics
+so it's almost like saying little things
+are composed
+of littler things little things compose
+bigger things so it's kind of
+allowing us to go multi-scale by saying
+that there's going to be a sort of big
+wave and a ripple
+and a bunch of the ripples summating
+makes the big wave
+informationally just kind of like a
+bunch of physical things
+spatially compose a bigger thing but
+this is happening
+through time as a random dynamical
+system
+not with a spatial metaphor so think
+about little things assembling into
+bigger things
+and then pour it out of the physical
+into the dynamical systems
+and it's what kind of a dynamical system
+it could be related to information
+this is why the result is a stochastic
+differential equation
+comprising not only the state-dependent
+flow f
+but also a stochastic term omega with a
+mean equal to zero
+so another way of thinking about this is
+like signal and noise
+and so it's all like the vibration but
+you can partition it
+with a model into change through time
+of a signal and a noise that's like much
+higher frequency
+so that noise it's not like you're
+saying it's like bad it's just that
+with the signal that you're pulling out
+it's the residual
+and the signals that are hard to find
+are the ones that are shorter like
+they're hiding in the noise
+but those can be pulled out if you have
+a really long time series you can
+totally pull it out
+and there's other signals where the
+signal is so strong and then the noise
+is so tiny like the vibration
+an inch off of the orbit of a planet
+it's like really easy to pull out the
+signal
+because the noise term is so small so
+any thoughts on that blue or we can
+continue all right
+so now we want to talk about what exists
+which is related to fristen's theory of
+every
+quote thing or of um particular physics
+which is
+a specific way of doing physics and it's
+a physics of particles
+anything that exists will have
+characteristic features that do not
+change over time
+this is like measured theory it's like
+if it's
+not there through time it doesn't exist
+like the reason why there isn't it's
+kind of like
+um material costs like if there isn't a
+cow
+in my room it's just not there something
+doesn't persist
+it's not there formally we express this
+by assuming
+that the system is a random dynamical
+system in non-equilibrium steady state
+so the equilibrium the total heat death
+equilibrium steady state of the air
+molecules in the room
+would be dispersed to homogeneity with
+some
+summary statistic like the well
+mixedness but if it's not
+at equilibrium to the well-mixedness
+physically
+or kind of informationally then it's an
+in a non-equilibrium steady state
+the steady-state part is because of
+existing through time
+like the length of your arm but then the
+non-equilibrium part is reflecting that
+the arm is an
+organization beyond just dissipating
+air molecules so when you have a
+non-equilibrium steady state like an arm
+that's persisting despite being
+disordered surrounding
+this means that the system is exchanging
+with its environment and its dynamics
+can be described in terms of its nest's
+probability density
+i.e a probability density that does not
+change during the time over which the
+system is said to exist
+so over the second to the second time
+scale there's a constant measurement on
+the length of the arm and through time
+it could be modeled as something
+changing
+but in all those cases it's like
+definitely not just
+um something that's there's something
+different about what that system is
+doing
+informationally relative to other
+systems
+okay and then the third kind of quote
+section here is
+such a system has a random attractor
+which could be thought of in two ways or
+another way to say that would be you can
+think about systems as having a random
+attractor which then has multiple
+downstream consequences
+first it can be considered as a
+trajectory of systemic states that
+evolve through time
+so then in this sense the system will
+after sufficient time revisit particular
+regions of a state space
+the attracting set so we've talked on
+the active stream before about like
+returning to a desired body temperature
+so it's not that your body returns to
+the state that it was as a body
+a week ago a year ago 10 years ago it's
+that
+on that one dimension with respect to
+the modeling of the signal and noise of
+body temperature through time
+because you're staying warmer than the
+background for a persistent amount of
+time
+in a way that defies the otherwise uh
+dis
+dissolving forces of uh thermodynamics
+you can model that like it's doing some
+sort of strange attractor
+that's what that part is saying and then
+the second part
+is that you can think about that as not
+just you can take a trajectory
+view like a single path through stat
+state space temperature going up in the
+morning or down in the morning
+but the other way is like when you have
+a million paths in infinite number of
+paths
+it's like a density and in fact it's a
+flow density so it's like
+one traffic you're driving that's like
+one car
+but then there's the traffic flow and so
+when you switch from a particle
+modeling to a flow modeling is
+there's a lot of it's kind of like
+discrete versus continuous time
+but it's a spatial analog whether you go
+particular like an electron as a
+particle electron is a wave
+how do you make that distinction and so
+that these are all kind of related
+topics but that's what is under the
+scope of
+the pulling back to thinking this way
+anything else all right 27
+the fact that internal states are
+conditionally independent of external
+states
+given blanket states allows us to
+disentangle systems dynamics so now
+we're going to talk about the interfaces
+between those active interesting systems
+and their otherwise disordering
+environments relatively speaking
+or whatever their other side is whatever
+the other side of the interface is
+um in other words we can write down
+separate equations of motions for the
+internal states and active states
+that only depend on the blanket states
+so there's a couple things happening
+here we're going from this active agent
+model through pearl's work
+building on bayesian statistics and
+markov blankets talked about other
+places other people
+can have a lot more to say on that
+adding
+as per mel andrews's paper the
+innovation of fristin
+which is the partitioning of blanket
+states into sensory in action
+so sensory as being defined as inbound
+and active as being defined as
+outbound and then we're gonna take this
+sort of like equations of motion
+trajectory flow remix
+and think about that kind of a physical
+depiction of a system
+with the partitioning between now two
+flows like a
+highway with two directions so here was
+just like
+landscape flow like the elevation is is
+a flow in one way
+it's kind of just its own flow the water
+flow but then
+here we're gonna have two directions in
+a way it's not just up and down hill but
+it's
+like there's a sense flow and an action
+flow so there's information coming in
+that might have an asymmetry and then
+there might be like a totally disjoint
+kind of asymmetry with respect to action
+going out
+so if it has a robot has a photon sensor
+and then it has a
+physical actuator this is going to allow
+a total obvious really simple
+partitioning yeah photon come in
+actuator go out generative model
+internal
+maybe i know that fully like a state
+machine
+maybe i'm modeling it like the
+intentional stance but by partitioning
+into
+sensory input and then the motor the
+behavioral experimental output
+we're going to be able to kind of like
+tidy our
+thought around interfacing with active
+systems and even inactive systems
+and then formally that's defined as
+um being a flow so that's this f
+is going to be a function of policy
+which is like the agent's
+you know it is the policy of your arm to
+be the length it is just like it's the
+policy of someone to wear the clothes
+that they wear
+and then it's going to be over um
+there's going to be this is not from the
+same paper but formally there are ways
+to define these different states and
+partition
+them and it's an area of active research
+and discussion which formalisms apply
+over which
+scope and how well all of these
+innovations of first ones line up
+with all the other thoughts in the area
+anything on
+markov blankets or this kind of
+partitioning
+so something i've been thinking about
+like while you've been talking and just
+a metaphor that keeps popping up for me
+is like a
+a ski resort right like with the input
+information coming in and like depending
+on your policy you might select like a
+black
+diamond or a blue diamond or bunny hill
+like slope
+and the flow of people going out and
+then there's like the people that like a
+high level of surprisal that like want
+to ski back country and like possibly
+hit a tree or
+like there's all of this like you know
+all of these options um that's kind of
+how it's been coming together in my
+brain yep i the ski slope people have
+different affordances
+different preferences different risk
+tolerances different um inclination for
+nostalgia of a simple one versus the
+thrill of a new one it's like
+these are all it's kind of like what
+ryan smith has been talked about like
+these are
+above the level of just one repeated
+task that
+two people could perform and oh there's
+a difference in how they performed
+we're looking at something that's
+actually internal about those higher
+order properties
+all right here is where we go from the
+flow state
+across an interface so we have this
+bi-directional freeway
+um with the flow that's partitioned so
+we got like signal processing dynamics
+on the inbound and all the bayesian
+statistics
+that kind of interfaces with all the
+cybernetics and the policy selection
+and then output is behavior so that's
+the bi-directional flow
+across an interface we can
+um use okay let's read this quote and
+then
+unpack these um equations and then read
+them
+if the probability distribution q of mu
+q sub mu is sufficiently similar to the
+actual conditional
+distribution p of uh i think it might be
+eta
+but i i don't know it looks like an n
+yeah curly n given
+pi policy so p of of um the actual
+we'll just call it actual yeah actual
+fancy one so if the probability
+distribution you know q
+of fancy n is sufficiently similar to
+the actual conditional
+distribution p of n given policy so
+states given policy how things will turn
+out
+given how i act over external states
+how will the external states be given my
+investing strategy
+what will stimuli will i see on my
+website
+in under different policy assumptions um
+then we can approximate that flow so if
+you're treading water
+some motor pattern is being enacted
+that's resulting in treading water
+it's not accidental so that is
+self-organization
+in a dissipating environment and so it's
+as if
+a system that's treading water is able
+to approximate the flow of the actual
+states informationally it can stay above
+water
+informationally so it has to be doing
+something like swimming
+equivalently we can say that the
+gradient flow of autonomous states can
+be considered as a gradient flow on
+variational
+free energy so now we move
+from the sort of general computational
+phrasing or physical
+computational phrasing of gradient flows
+into gradient flows being related to
+this variational free energy estimate
+which it turns out is going to allow um
+very
+easy like tractable optimization based
+upon
+minimizing variational free energy so
+the
+phrasing of a gradient flow was sort of
+neutral with respect to what you did
+with it
+now by porting the gradient flow into
+gradients of variational free energy it
+opens up a domain of optimization which
+is based upon variational
+bayes and variational free energy and
+just to skip to this
+bottom line the variational free energy
+so this thing
+that it looks as if it's optimizing with
+respect to policy
+big f of pi um
+uh is just equal and it throws out
+approximations
+coefficients it's just like you gotta
+work through it and there's probably a
+lot of ways to do it but
+um this free energy value like
+on policy is related to
+this expectation of
+this fancy j which are we do we have
+that in a later slide
+um of basically yeah it's the it is um
+the self surprise i think we have a
+later slide so
+um it's the expectation of how surprised
+you are
+given about your policies given the
+states
+so that's like how surprised are you
+about where you are
+that's why it's about yourself surprise
+about policy given state estimates
+that value plus
+the divergence which is like a kl
+divergence
+between the state estimate
+versus the actual flow and there's
+probably a lot to say about
+these kinds of information theoretic
+divergences
+um but it turns out that that is going
+to be
+greater than or equal to how surprised
+you are on
+policy itself so almost reading it
+backwards it's like how surprised you
+are to find yourself doing a policy
+which is not just an instantaneous
+action a policy is the trajectory
+like i can't believe i'm the kind of
+person who's on the top of mount everest
+that is if you've been like you know a
+700 pound person down to your couch at
+one point in your life like i can't
+believe i'm on top of mount everest
+would be kind of like i've taken a
+policy that i've ran every day and hiked
+all this stuff and now
+i'm not at first yeah so yeah so we
+what we really want to know is given a
+um optimistic self identity
+a persisting self identity now some
+people get hung up on that they're like
+what if my self identity is negative
+well it'd be equivalent to um the heart
+or lungs
+stopping existing it'd be then you
+wouldn't see that
+system treading water and that's why
+it's
+tragic when it does happen so we want to
+think about
+how surprised are individuals with
+respect to policy this doesn't tell you
+how to know what to expect or what
+policies are possible but this is
+how surprised one is about their own
+policy
+is going to be approximated with an
+expectation so it's tractable
+of surprisal of policy given states
+which is much easier to calculate
+much easier to say how surprised am i
+about um how much i've been investing
+given how much i have
+rather than computing the total space of
+everything that could happen which is
+infinite plus just the details
+of how far off you are so if you're on
+the ball
+then this divergence term is low and
+then
+your the variational free energy is like
+kind of closer
+to the idealized minimal surprise and
+this is something that one does want
+minimal surprise on because
+in a dissipating world you get the
+disorder for free
+and so this is something that's actually
+being like asymptotically converged
+towards
+so something i um maybe we should maybe
+clarify
+in the paper i think that the authors
+use like self-information
+or surprisal they don't they don't
+really talk about self-supprisal
+um and this is kind of like we're
+conflating now with like last week's
+paper about um like
+who is doing who is creating the model
+of the self like when
+you have a self model who is exactly
+constructing that self model and i think
+like in terms of this it's like
+surprisal over policy okay but like
+in relation to your model of yourself or
+i think your model of yourself is part
+of like your generative model
+overall yeah maybe yeah interesting
+cool let's go to um 29
+all right so this was so after thinking
+about
+this landscape of flows being
+operationalized as a variational free
+energy
+landscape that we're going to be able to
+do some kinds of operations
+on um now
+there can be sort of dimension play
+with mapping states from this is
+something i would
+like to ask the authors about is like
+which connecting which manifolds to
+which manifolds matter what's the hookup
+we need
+which ones are the fep providing us with
+because in this quote they connect it to
+the information geometry
+and geometry is just the shape of things
+so it's kind of like
+the shape of that information landscape
+you can think about the
+physical landscape or you can say the
+flow
+on that landscape of the water if the
+water fell on it
+and so it's kind of like okay
+information geometry is one thing
+and then this is partitioning with an
+information geometry
+angle according to this
+markov blanket active inference
+partitioning
+so the quote says and then blue you can
+give any thought on it
+conversely on this extrinsic manifold so
+viewed from the outside the internal
+states minimize variational free energy
+when conditioned on the blanket states
+in other words whenever the blanket
+states change that could be sense or
+action
+the expected internal state changes and
+there is movement on the
+extrinsic manifold that by construction
+so is this how things are or how we're
+constructing them
+can be cast as bayesian belief updating
+this is because the
+expected internal state encodes
+probabilistic
+i.e bayesian beliefs about external
+states they act as if
+there's an internal state that's
+encoding or representing or at least
+acting as if it encoded or represented
+actions about external states the
+blanket states here can be construed
+as the sensory impressions of the
+external states on the market blank
+blanket that contain the internal states
+in short it may be more useful to
+consider the system from the point of
+view of the extrinsic information
+geometry
+the probabilities encoded by internal
+states like neural firing patterns
+going out rather than from the point of
+view of the
+intrinsic information geometry in other
+words
+the statistical complexity of the neural
+dynamics
+considered alone might be misleading we
+might want to actually
+highlight the neural dynamics
+projected onto a manifold of action or
+with respect to external states
+because we don't just want that raw time
+series like
+doing bitcoin analysis we want to know
+how that is associated with other
+patterns
+in a way that would suggest that it's
+acting purely responsibly or proactively
+or
+in some way that we're going to talk
+about how you can describe the
+complexity of it
+i don't really have anything to add i
+thought but i just was looking back
+through the paper i had thought that it
+was
+um you know mapping from one the
+manifold of the internal
+geometry or like there was a geometry
+created that that
+was over the whole internal states
+versus the external states and it was
+that mapping that
+that mattered but but uh yeah i'm
+curious to revisit that now
+so um we have a question in the chat
+and someone asks can you say a few words
+about the islands of awareness
+so that's like the with the sensory
+input is disconnected
+can you say a few words about islands of
+awareness and the relationship to the
+equations you're explaining
+so on this markov blanket model on
+27 if the sensory input
+were damped that would be the islands of
+awareness model
+so if nothing else active inference has
+a process theory
+that is consistent with the free energy
+principle is helping us
+functionally operationally however you
+want to think about it get at this
+island of awareness problem
+so instead of just saying imagine that
+there was very low or minimal input or
+no input of sensory state or
+imagine that somebody could get sensory
+state but couldn't act
+or imagine the only sense they could get
+was hearing
+and then the only action they could have
+is this
+this is a way that we can think about
+totally separating
+the sort of north and southbound traffic
+with the active and the sensory states
+being partitioned
+that's the fristen innovation and so
+the island of awareness was from the
+non-fep
+people it's probably a from a different
+area
+and so to um kind of latch onto that key
+topic that's being more broadly
+discussed
+this paper is saying actually like
+here's the immediate value add of fep
+and active inference
+we can actually subsume the debate
+around islands of awareness
+which is something you all already
+agreed was an important question
+and then we actually have our own way of
+thinking about island's awareness
+so maybe if that's a question you care
+about maybe
+um this is a good way that you would
+want to study it because
+it led us to these interesting
+conclusions about islands of awareness
+um okay so
+30. um okay so this is
+unpacking a little bit more about that
+big f
+of pi with the expectation of the
+surprise of
+policy given states plus the divergence
+of the actual
+and the um estimated states so we can
+look at the quotation
+here the divergence between the
+estimated and
+actual states describes the statistical
+complexity of the internal model
+how much do i have to change my mind to
+accommodate current changes in sensory
+signals
+so with respect to state estimates about
+how
+bright it is it's like
+about whether you estimate it to be
+bright and it is or it isn't
+um whereas this other term the negative
+expectation
+of how surprised um their one is on the
+policy given states
+describes the accuracy and then this is
+a parenthetical describing why it's
+negative
+so minimizing this entails minimizing
+the difference between these two
+so it's accuracy and
+model complexity and then it's just
+you depending on how you have the
+negatives and the positives
+you get good points for being accurate
+but it's a monotonic penalty to be more
+complex
+so always better to fit better always
+better to be simpler
+and those two lines always intersect
+because you can always have a simpler
+model that does worse
+and you can always have a more complex
+model that does better if only because
+it explains some
+little random feature of the error
+signal so this is not about how the
+world is
+this is about statistical partitionings
+like a principal component analysis
+the principal components are guaranteed
+to be orthogonal well
+there's certain assumptions that get
+built into here that we don't have to
+over interpret with respect to how
+reality actually
+is note that the accuracy depends on the
+particular states so the states the
+particle
+the pi the total states now actually
+confusingly
+i wonder if this is referring to blanket
+and internal states
+instead of policy as usually we use pi
+to mean
+i had that same question oh yeah yeah
+during written on my paper yeah because
+yeah that's our little icon with the
+policy pie but this one's cool too i
+like the blanket in internal states but
+yeah maybe it could be clarified and
+which one is
+in here because are we thinking about
+the minimization on policy alone or
+um on the entire thing so let's make
+sure we're
+clear on that one during a period of
+partial disconnection from blanket
+states
+so such as dreaming that's the islands
+of awareness
+the variational free energy gradient in
+the following equation will mainly be
+driven by the complexity part which does
+not depend on the blanket states
+so we have the bi-directional traffic
+and the flow
+and then we're disconnecting a sense
+so now it's like the system is just
+emitting
+so to speak flow but that is being
+driven
+by the um uh divergence term
+rather than this including the internal
+state policy
+we'll figure it out but this part drops
+away so then
+um because it's not conditioned on these
+um blanket states it's only conditioned
+on the internal model and actual model
+so this d term is only conditioned on
+internal actual states and this one also
+includes
+blanket states so
+you can then do some
+good factorization or mathematics and
+then the conclusion of that
+at least um or the form of this equation
+entails
+that neural processes can perform the
+computations required
+to minimize free energy even when the
+coupling with the environment is
+suspended
+it's like you unplug the computer or
+something and then it's like it stops
+but then
+could you seize sensory input for the
+brain in a way that actually
+um let the brain reveal
+a different stream of output that would
+reflect any complex internal dynamics
+now how will we measure it we'll get to
+in a second but the idea would be that
+we could use sleep and dreaming as a
+model
+i don't know and think about how the fep
+could be applied to these islands of
+awareness
+and we come to this same result isolated
+systems will minimize free energy by
+reducing the complexity of the
+generative model
+blue i knew i knew you thought that was
+interesting what did you like about that
+um so i i um specifically liked uh
+the fact that they said like in when
+you're sleeping
+there's no accuracy right like or like
+in a in some island of awareness
+type of state if you don't have any
+accuracy because you don't have any
+um sensory input and so when in these
+situations that then
+you minimize free energy by reducing the
+complexity of the generative model
+i think that that's cool because um
+sleep like just from a neuroscience
+like perspective background like it's
+really thought to like integrate and
+solidify
+like your experiences shuffle things
+from short-term memory into long-term
+memory if like they're
+you know necessary like if it was like a
+peak emotional experience it'll be like
+cemented forever
+but all these things happen like during
+the sleep phase so it's literally
+like reducing complexity of the neural
+correlative consciousness also which i
+think is interesting
+yep very nicely said like when you're
+getting
+sensory data in there's an imperative to
+make it match
+like to predict what the next word is so
+that your world doesn't seem like this
+like blur
+of just things that are uncertain but
+then when you disconnect the sense
+the only imperative the only reason that
+was getting complexity pushed up was the
+need to fit data
+but when you don't need to fit the data
+there can be this radical scaling back
+in the complexity of the bottle
+so it's kind of like play or learning or
+higher dimensional
+existence or lower dimensional pretty
+interesting okay
+so 31 this is going to be a connection
+now from that variational free energy
+landscape
+to computational research in
+optimization and machine learning
+they're going to reveal variational free
+energy minimization in machine learning
+was predicated on
+minimizing algorithmic or computational
+complexity
+which is the basis of universal
+computation
+people can read the citation and have
+their own thoughts on what it means to
+be universal or be a computer but
+there's the citation
+here's pretty interesting part
+consciousness researchers assume
+maybe uncited who does maybe but
+one could assume complexity has to be
+large computational complexity has to be
+large yet the imperatives for universal
+computation in general
+and the free energy principle in
+particular say exactly the opposite
+so are we looking for at the simple
+rules end or at the complex outcomes end
+this apparent paradox can be resolved
+easily
+by noting that free energy is abound on
+marginal likelihood
+aka model evidence in the same way that
+the lz which we're going to get to in a
+second complexity is an upper bound on
+algorithmic complexity so they're like
+it's not enough to just look at how
+surprised you are by individual neural
+states because the brain is never going
+to repeat
+an exact state so you're going to be
+infinitely surprised if you'd use like
+parametric statistics you need to
+actually have a type of
+statistical inference based upon the
+dynamics of the trajectories
+and interpreting them on a flow
+landscape of information geometry
+rather than just being infinitely
+surprised by the specific measurements
+you get
+and then they basically
+write that to kind of speak to the
+island's awareness idea
+it's no surprise then to see that a good
+model of a complex world
+will show a high degree of algorithmic
+or statistical complexity even when
+observed in temporary isolation
+so this is saying okay you unplug the
+computer it's going to radically
+simplify
+if it was a bitcoin node it's
+disconnected from the internet it's
+going to simplify its processing
+but there might be another kind of
+system that has a
+high degree take your empirical question
+what high degree or
+shouldn't they be simpler or wouldn't it
+simplify once it's isolated
+but that's the kind of interesting
+behavior we would expect or be
+predicting to see
+from an isolated system and just my
+question for the author was
+what does it mean that the free energy
+is bounding the model evidence
+in the same way that this information
+measure which we're going to get to of
+complexity is an upper bound on
+algorithmic complexity
+which is very curious it's a lot of
+things i've only heard a little bit
+about
+so it's just very interesting to think
+about what did this make you think about
+um well so i think i put what i thought
+about this in a few slides
+away from now we'll we'll loop back into
+that i think
+cool so then we're like okay what is
+this lz complexity because blue and i
+both love complexity and like met while
+we were studying complexity
+a few years ago so we were both excited
+with that
+and this levels if complexity measure
+was
+our statistic however you want to think
+about it was first presented in the
+article
+on the complexity of finite sequences in
+1976 by two israeli computer
+scientists uh lempel and ziv this
+complexity measure is related
+to the kolmogorov complexity but the
+only and that's so then another one
+would be the shannon so shannon is like
+the surprise with the coin flip
+kolmogorov is like the algorithmic
+complexity usually described as that way
+but the only function that the lz
+is going to use is the recursive copy ie
+the shallow copy
+the lz complexity can be used to measure
+the repetitiveness of binary sequences
+and text like
+song lyrics or prose fractal dimension
+estimates of real world data have also
+been shown to correlate with lz
+complexity
+so it's interesting because learning
+about it on the wiki page
+this is apparently the whole algorithm
+it's kind of just like
+looking for repeating blocks
+blocks with prefixes and pointers
+it's a compression technique so if it
+was something where if your file was one
+two three four five
+you'd imagine that it would take
+i don't even want to say too much
+because i don't even know what would
+have a high or low lc complexity i'd
+like to ask
+but just like something could be easily
+zipped or not
+some things are going to be a minimal
+amenable to lz complexity measures being
+high
+or low so that was just my main question
+is how do we go from this algorithm to
+like
+conscious systems or to measuring real
+comparing real
+systems just pretty interesting not sure
+what to think about that but also really
+looking forward to the um
+everyone's perspective in like 16.1 and
+two because it was out of
+i didn't expect this to come into play
+it's cool to learn about what do you
+think about it
+so i looked at i looked up like the um
+lz complexity versus like the kolmogorov
+complexity where the komodo or
+complexity is like total randomness
+right like 3.14159 like that's like a
+totally like common goal of complexity
+to the max
+but this lz complexity i think is
+related to like
+repetitiveness and sequences and how
+much they're repeated
+so it's a it's different than the just
+totally
+randomness i i guess that was like my
+glint of what i i read from that so yeah
+if something was just
+10 of the same version you know
+transposon or something concatenated 10
+times
+you could define it by defining the unit
+and then 10 pointers
+you wouldn't need 100 data points you'd
+need 10 plus 10 pointers so like for
+example that would be something
+compressible
+um related to lz but let's take a step
+back and ask
+okay even beyond the measure of um
+the complexity or the entropy measure i
+mean
+let's learn and find out what all those
+are but
+what is dynamical complexity and this is
+really related to complex adaptive
+systems and a lot of the more
+like non-free energy principle
+complexity research that we've been
+learning about blue
+so what is it rather than how it can be
+measured now we're not going to fall
+into a realist trap we're not going to
+say systems are this way but
+we're thinking about the kinds of
+complexity that could be dynamically
+instantiated and measured and this is a
+paper from
+um first in 2019 a not b which was the
+particular physics one
+and in dynamical systems theory so this
+is drawing from even before
+complexity in some ways um like systems
+theory
+three types of complex behavior can be
+distinguished so this is not
+feedback loops and stuff like that those
+are the mechanisms
+by which we're gonna be tracking one
+particle in the space so we've got the
+particle
+the one ping-pong ball in the airflow
+that's the particle trajectory model
+and then we have the flow which is the
+air that the ping pong ball is being
+spun around in
+in that sort of vector flow trajectory
+world
+but sometimes we see chaotic itinerancy
+so that's like um when you have two
+pieces of wood in the stream and if it's
+a low the opponent experiment they go
+together for a long time if there's a
+lot of chaoticness
+then high chaotic divergence they
+diverge rapidly
+heteroclinic cycling so this is like
+cycling
+with um so repeating to come back to
+some places but
+often with a twist and then switching
+under multi-stability so like you can be
+like your brain can be like in a sleep
+mode
+and then it can go into the waking mode
+and so yes there is
+a gray zone but you tend to see um like
+phasic or categorical transitions so
+complex systems
+do that kind of stuff sometimes they're
+wild and chaotic itinerancy and wacky
+and then they can also cycle and also
+they can switch and sometimes we can
+even
+un couple those ideas like something
+could switch and the switching could
+reflect
+it turning on or off chaotic itinerancy
+or something like that
+so and then i just copied out the
+definitions from the chapter
+in the first book what do you think
+about that or what did that make you
+think about with respect to complexity
+just like the dynamical complexity
+versus like you know what's
+happening in a computer is like
+um just how things change really over
+time right like so
+in in a dynamical system is a system
+that's changing not
+like how complex is this number that
+is pi or you know 1.000 right so it's
+just that that basic difference
+cool um okay let's return to
+the kind of free energy perspective
+again thinking about the dynamical
+complexity but we want to be thinking
+about
+the complexity of these dynamical
+systems um
+so this is because the computation is
+performed by a system that minimizes
+variational free energy and inferences
+which correspond to movements on the
+systems extrinsic statistical manifold
+existing measures of dynamical
+complexity however do not measure
+complexity in terms of probabilities
+encoded by neural activity
+but in terms of statistical properties
+of neural activity
+that is properties of the intrinsic
+statistical manifold hence dynamical
+complexity
+at least measured by existing approaches
+should be associated with nccs
+at least in the point of view the fep so
+this is to their point
+that we want to move from thinking about
+neural states to neural trajectories and
+flows
+is otherwise we don't get access to
+um this kind of a dynamical complexity
+measure
+because if we just think in terms of
+stop snapshot states
+we're going to think shannon entropy how
+surprised am i by this neuron being
+lit instead of unlit at this time slice
+whereas
+in the flow model we can think about the
+dynamics
+of trajectories through really high
+dimensional state spaces
+and that's where fep suggests an
+alternative an fep inspired measure of
+dynamical complexity
+would be based on the information length
+of neurally encoded probability
+distributions
+ie bayesian beliefs instead of
+considering the statistical properties
+of a neural time series and such so
+that's kind of what i just mentioned
+all right conscious activity and
+complexity blue what would you say about
+this
+so this goes back to the lz complexity
+really
+and and also the common goal of
+complexity but but i'll just read this
+quote from the paper so it says to the
+extent that proposed measures of
+dynamical complexity
+have empirical validity as measure of
+consciousness
+which is like what is consciousness what
+are we measuring
+like how do we just know if it's valid i
+don't know all those things like
+are packed into that sentence for me
+they may regard it be regarded as
+empirically adequate
+but it would still be desirable to
+provide a fundamental justification
+because this could further support their
+application to controversial cases like
+islands of awareness
+in addition it could help resolve an
+uncertainty about whether existing
+measures of dynamic complexity also
+track
+algorithmic complexity so we we know
+that lz complexity is
+is not um it's not the same as common
+goal of complexity because it just takes
+in
+the repeats but it doesn't take in all
+of the different ways that
+um pomodoro complexity does so
+here it says it's well known that lg
+complexity for instance constitutes an
+upper bound on
+algorithmic complexity however this
+entertains the possibility that
+conscious activity
+maximizes lz complexity and related
+measures of dynamical complexity but it
+minimizes algorithmic complexity
+this hypothesis is stated and there's
+the citation ruffini 2017.
+finally developing a measure of
+dynamical complexity within the fep
+could help providing uh help by
+providing a computational explanation of
+consciousness
+so i think that that's a really cool um
+thing that the authors have brought back
+around like can we
+can we put dynamic complexity in the fep
+framework
+um and they're thereby you know put a
+computational explanation of
+consciousness forward i think that's
+really awesome
+great points okay let's talk a little
+bit more about a formalism that
+people love and also just an interesting
+um
+i think question about realism and
+instrumentalism and also just how we
+think about
+the definitions and which things are
+contingent on which so
+here they're going to write a further
+assumption we shall make is that the
+system possesses a markov blanket so
+the language of whether it possesses or
+is
+or there just is one and then the system
+is a secondary description
+and it describes a little bit more about
+the blanket and so this was kind of
+related to earlier but we didn't need
+this
+level of depth and it talks about where
+it's drawn on
+in terms of developing on perl and the
+directed
+acyclic graphs and generalizations from
+there
+but then here what matters is that the
+existence of a markup blanket has subtle
+profound implications so is that the
+markup blanket exists
+in the world or is it that the
+implications of us
+modeling with a markov blanket have
+profound implications
+so how do we think about whether we're
+describing how the systems
+are versus being clear um when we think
+that it's actually
+not how things are or where they might
+be
+congruent and so is it how do we know
+and this is related to a general
+question people has how do we pull out
+these markov blankets
+um from the empirical data
+and relate it to the analytical concept
+so again another slide just from mel
+andrews's paper
+uh discussion where we talked about the
+development of the markov blanket topic
+from markov's initial framing in
+analytical mathematics and matrix
+mathematics to pearls extension
+into bayesian statistics and graph
+theory computational approaches
+and then where fristen has developed it
+over the decades
+and collaborators and then what is now
+being um done and learned about
+with respect to this the post markov
+blanket whatever it's wanting to be
+called
+any markov thoughts
+yep no cool um
+this is related to one of the global
+challenges that were addressed which is
+that
+mapping where does consciousness come
+into play it's like whoa okay
+all of this flow and the information
+theory and the geometry but
+how are we going to connect this back to
+the consciousness question and relating
+anything about the system to the actual
+um question of what is conscious or not
+and so this is the one quote that i want
+to highlight on 39
+is being conscious versus just
+simulating it and so
+they um write a system with a
+non-equilibrium steady state
+and a markov blanket comprises internal
+external and blanket states
+as shown in section 3 such a system can
+also be described as performing certain
+computations
+inferences by virtue of causal relations
+between internal external and blanket
+states
+that is what we were measuring those
+relation dynamical contingencies
+in the equations we talked about but in
+by virtue of the causal relations this
+is different for a mere simulation
+to be sure a simulating system can
+perform the same computations
+and it will perform them because of
+causal relations between its parts so
+like it is true that the a matrix and
+the b
+matrix get multiplied together in the
+program
+however it will not perform them because
+of causal relations between its internal
+external blanket states
+the simulation may instantiate a virtual
+machine
+which may have internal external blanket
+states such that its internal states
+encode or probability distribution over
+external states given blanket states
+but the internal states of the virtual
+machine will not
+be the internal states of the physical
+machine on which
+the virtual machine is running so this
+is getting into the total
+virtualization simulation everything and
+we're not going to read this dialogue
+but on 40
+it's a section from a
+conversation about this topic in the
+book the minds eye which which is um
+compiled by
+hofstetter and dennit and just it's
+about
+you're simulating a hurricane and oh
+well programmers aren't claiming the
+simulation as a hurricane
+it's just simulating parts of a
+hurricane buildings don't get wet
+and then you have to look at it the
+right way well what do you mean look at
+it the right way you know what is
+getting wet
+it's your perception it just it's it's a
+big area so it's fun because
+it's something that you know we're all
+just learning about and
+again no one has a great measuring
+device so it's not like we can
+resolve these debates there's not like
+an open and shut answer so
+that's what's so interesting is like
+there might be a hot take or a quote you
+like or something that's inspiring to
+you about whether computers are
+conscious or not
+but in the end it's almost like
+it's a bottomless pit so that's why it's
+good that the authors are actually
+starting to build bridges across it i
+think
+all right and then a last um one
+slide on reservoir computing this was
+suggested by sarah
+she was bringing up reservoir computing
+and researching
+maybe things that we'll hear about in
+the coming months like about how
+it might relate to active inference
+reservoir computing is a framework
+for a computation that is sort of
+generalizing or building upon a neural
+network
+model and it's mapping the inputs not
+just to
+a fixed array of nodes or even multiple
+layers like a deep neural network or
+something
+but the way that these nodes internal to
+the system the reservoir
+they can actually be any system
+so that could be various types of things
+it could be a slowly changing or fast
+changing system or system with a lot of
+other structures
+and so just we we don't have answers to
+this but bringing up just
+reservoir computing sarah had some
+thoughts on it so we'll look forward to
+hearing about this
+and about the niche as a reservoir and
+computation as
+um happening and where does that put
+computationalism
+any thoughts on that before we go to our
+last bit nice
+chill and these were just some things we
+brought up but
+you know people will bring up their own
+in 16.1
+uh and anyone else can bring up uh
+anything they want us to put on the
+screen for the author and others
+but there's so much to think about with
+this paper
+they concluded just by writing that
+um how can research on neural correlates
+of consciousness lead to an explanation
+of consciousness and what role could
+free energy principle
+play in this endeavor we have suggested
+that research on neural correlates
+should be complemented by research on
+computational correlates of
+consciousness
+in order to yield a computational
+explanation of consciousness moreover
+according to free energy principle
+neural correlates to consciousness must
+be defined in terms of neural dynamics
+not states and cccs should be defined in
+terms of probabilities encoded by the
+neural states
+so specific claims for those to engage
+with
+a lot of um footholds and
+challenging walls to climb but
+interesting topics
+a lot of things that understanding could
+enable
+and we're talking about consciousness
+and neuroscience so
+everything is kind of adjacent to it any
+closing
+thoughts blue on this very nice
+discussion
+no thank you so much for having me it's
+been fun participating
+yep that was great times thanks um so
+much for
+joining because it makes it a lot you
+know more interesting to make and to do
+so um we hope to see people in 16.1
+and beyond other than that

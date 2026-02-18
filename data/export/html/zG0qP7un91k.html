@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #008.1: “Scaling active inference" (2019)</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #008.1: “Scaling active inference" (2019)</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_008 &middot; Episode 1 &middot; Duration: 1:21:41 &middot; Views: 233</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=zG0qP7un91k">https://www.youtube.com/watch?v=zG0qP7un91k</a></div>
+<article>
+<p>hello and welcome everyone to the active</p>
+<p>inference live stream this is act in</p>
+<p>stream 8.1 it is November 10th</p>
+<p>2020 welcome to tecom everyone we are an</p>
+<p>experiment in online team communication</p>
+<p>learning and practice related to active</p>
+<p>inference you can find us at our website</p>
+<p>active inference org you can find us at</p>
+<p>our Twitter at email our public keybase</p>
+<p>team or on YouTube this is a recorded</p>
+<p>and an archived live stream so please</p>
+<p>provide us with feedback so that we can</p>
+<p>improve our work all backgrounds and</p>
+<p>perspectives are welcome here and as far</p>
+<p>as video etiquette for live streams go</p>
+<p>um mute yourself if there's noise in</p>
+<p>your background raise your hands so that</p>
+<p>we can hear from everybody on the stack</p>
+<p>and use respectful speech Behavior ET</p>
+<p>today we are excitingly in act mstream</p>
+<p>8.1 and it's going to go a little</p>
+<p>something like this we're going to start</p>
+<p>with some intros and warm-ups and then</p>
+<p>we'll get to the sections of</p>
+<p>8.1 in 8.1 as well as 8.2 we're going to</p>
+<p>be discussing the paper scaling active</p>
+<p>inference by chance at all in 2019</p>
+<p>thanks to Blue for the suggestion of the</p>
+<p>paper we're going to go through the</p>
+<p>goals the abstract and the road mapap</p>
+<p>and then we'll have a little notation</p>
+<p>and math overview we'll also take a look</p>
+<p>at the figures with a special focus on</p>
+<p>what each figure is showing or</p>
+<p>representing or</p>
+<p>invoking in today's discussion 8.1 and</p>
+<p>next week's discussion 8.2 we're going</p>
+<p>to be discussing this same paper so save</p>
+<p>and submit your questions and also get</p>
+<p>in touch with us if you want to</p>
+<p>participate for the rest of 2020 we're</p>
+<p>going to be discussing this paper 8 as</p>
+<p>well as 9 10 and 11 would you can learn</p>
+<p>more about by checking our Twitter so</p>
+<p>check it out there all right here we are</p>
+<p>in the intros welcome again Shannon I'll</p>
+<p>kick out other</p>
+<p>Shannon so for the introductions we'll</p>
+<p>go around and just introduce yourself</p>
+<p>and your location and we'll uh roll with</p>
+<p>it as people gain and uh lose the chat</p>
+<p>so just say hello in a short</p>
+<p>introduction and then pass it to</p>
+<p>somebody else I'm Daniel I'm in</p>
+<p>California and I will pass it to</p>
+<p>Blue hi I'm blue and I am in Southern</p>
+<p>New Mexico in Las cruus and I will pass</p>
+<p>it to</p>
+<p>Sasha hi I'm Sasha I'm also in</p>
+<p>California and um I will pass it to</p>
+<p>Ivon hello my name is Ian I'm in Moscow</p>
+<p>Russia and I pass it to Alejandra</p>
+<p>I think she disappeared for a second so</p>
+<p>let's go to Alex</p>
+<p>okay hello I'm Alex I'm also in Moscow</p>
+<p>Russia so welcome</p>
+<p>everybody cool and Alejandra has been on</p>
+<p>before so hopefully we know her but when</p>
+<p>she jumps back in we can hear from her</p>
+<p>so for these warm-up questions and also</p>
+<p>it's pretty cool to have a slightly</p>
+<p>smaller panel so I'm really looking</p>
+<p>forward to hearing everyone's</p>
+<p>perspective on what they got out of the</p>
+<p>paper what they brought to the paper</p>
+<p>it'll be really cool to hear about so</p>
+<p>the first question is what made you</p>
+<p>excited to read this paper and or to</p>
+<p>learn about these</p>
+<p>topics so while people are raising their</p>
+<p>hand and feel free to do so something</p>
+<p>that initially made me excited to read</p>
+<p>this paper was just about learning how</p>
+<p>active inference could be applied to the</p>
+<p>kinds of problems that people apply</p>
+<p>other machine learning algorithms to so</p>
+<p>that's a starting point blue</p>
+<p>so I picked this paper I um hadn't like</p>
+<p>thoroughly like digested it when I when</p>
+<p>I picked it I had read um the first</p>
+<p>author's other paper in PL computational</p>
+<p>biology but like applying um like agent</p>
+<p>based models and like modeling</p>
+<p>parameters to uh active inference was</p>
+<p>was like really what intrigued me and</p>
+<p>the um this paper I especially liked</p>
+<p>because of the ability to apply it in a</p>
+<p>continuous frame framework as as opposed</p>
+<p>to like something in discret time steps</p>
+<p>and I thought that that's that was</p>
+<p>significant and</p>
+<p>important cool welcome Alejandra do you</p>
+<p>want to just give your quick intro and</p>
+<p>say hi oh never mind uh anyone else want</p>
+<p>to add something that made them excited</p>
+<p>to learn about this topic or read about</p>
+<p>the</p>
+<p>paper yeah thanks again for the</p>
+<p>suggestion blue the second question is</p>
+<p>what is your experience or background</p>
+<p>with computers SL comput ational</p>
+<p>modeling and what is something</p>
+<p>interesting that you've been learning</p>
+<p>about or studying recently in the area</p>
+<p>and I think that my goal with this</p>
+<p>question was to show to our listeners SL</p>
+<p>viewers that there's many computational</p>
+<p>backgrounds that intersect in active</p>
+<p>inference so it's a community that</p>
+<p>includes some people who are really on</p>
+<p>The Cutting Edge of the computational</p>
+<p>modeling and that's what we see</p>
+<p>reflected in this paper so big props to</p>
+<p>everybody who is reading and talking</p>
+<p>about it because it is at The Cutting</p>
+<p>Edge of that type of machine learning</p>
+<p>research but also there's this deep</p>
+<p>tradition of action-oriented research</p>
+<p>and embodied cognition and so many other</p>
+<p>areas that might not necessarily uh</p>
+<p>entail a computational background or</p>
+<p>even a computational approach in how</p>
+<p>they're studied until this type of</p>
+<p>intersectional research so does anyone</p>
+<p>want to just something that they've been</p>
+<p>learning about in computers or what type</p>
+<p>of computer modeling have they had</p>
+<p>experience with so I can start a lot of</p>
+<p>my computer work had been in</p>
+<p>bioinformatics which does deal with</p>
+<p>computers but it's very different kinds</p>
+<p>of questions than the machine Learning</p>
+<p>Community however increasingly there's</p>
+<p>application of machine learning to</p>
+<p>bioinformatics so this was just kind of</p>
+<p>like a different perspective on machine</p>
+<p>learning outside of the biological</p>
+<p>contexts that I had mainly seen it in</p>
+<p>and I'll just throw up the third</p>
+<p>question in case anyone wants to answer</p>
+<p>that one which is what kinds of problems</p>
+<p>might machine learning based upon active</p>
+<p>inference be applied to so you can just</p>
+<p>raise your hand if you yep go ahead</p>
+<p>Sasha um yeah I would say I guess to</p>
+<p>some of all these questions is I have</p>
+<p>very limited experience and working with</p>
+<p>computers uh but my background is in</p>
+<p>neuroscience and I'm always curious to</p>
+<p>to um learn what uh machine learning um</p>
+<p>has to offer for understanding the</p>
+<p>process of learning and how that can</p>
+<p>link back to neurobiology Concepts um</p>
+<p>and so I'm interested in in</p>
+<p>understanding these equations and having</p>
+<p>uh a better grasp on um what the</p>
+<p>relationships are</p>
+<p>like cool because learning is really a</p>
+<p>biologically inspired topic it's based</p>
+<p>upon learning in organisms or the kind</p>
+<p>of control that organisms enact in their</p>
+<p>environment and that's not even getting</p>
+<p>into the whole neural network SL actual</p>
+<p>brain debacle so definitely these kinds</p>
+<p>of learning questions any other thoughts</p>
+<p>on this</p>
+<p>one</p>
+<p>blue so like you my background is like</p>
+<p>bioinformatics but I've like branched</p>
+<p>out since like getting out of doctoral</p>
+<p>Research into like doing all kinds of</p>
+<p>different</p>
+<p>computational and agent-based modeling</p>
+<p>type applications even Quantum Computing</p>
+<p>a little bit um this system particularly</p>
+<p>um interests me because like Sasha I'm</p>
+<p>interested in learning like how things</p>
+<p>learn but also like from the Beyond</p>
+<p>brain perspective like stay in biology</p>
+<p>but think about biological systems just</p>
+<p>at a very simple level like slime molds</p>
+<p>or something like this how do these</p>
+<p>systems learn right because still</p>
+<p>there's some element of learning that</p>
+<p>happens and when you can kind of</p>
+<p>deconstruct it into like a</p>
+<p>computational like model then you can</p>
+<p>start to like recognize input output</p>
+<p>into simpler biological systems beyond</p>
+<p>the</p>
+<p>brain cool and let's return to that</p>
+<p>multiscale cognition when we're a little</p>
+<p>bit later on but I wrote that down so we</p>
+<p>can definitely return there any last</p>
+<p>thoughts on the warm-ups before we get</p>
+<p>get into the</p>
+<p>paper cool all right so today we are</p>
+<p>going to be talking about this scaling</p>
+<p>active inference paper which is an</p>
+<p>archive paper and the paper presents its</p>
+<p>goal as or what it does as we present a</p>
+<p>model of active inference that is</p>
+<p>applicable in high-dimensional control</p>
+<p>tasks with both continuous States and</p>
+<p>actions our model builds upon previous</p>
+<p>attempts to scale active inference by</p>
+<p>including an efficient planning</p>
+<p>algorithm as well as the quantification</p>
+<p>and active resolution of model</p>
+<p>uncertainty our model makes two primary</p>
+<p>contributions first we showed that the</p>
+<p>full active inference construct can be</p>
+<p>scaled to the kinds of tasks considered</p>
+<p>in the reinforcement learning literature</p>
+<p>this involved extending previous models</p>
+<p>of deep active inference to include</p>
+<p>model uncertainty and expected</p>
+<p>Information Gain second we highlighted</p>
+<p>the overlap between active inference and</p>
+<p>state-of-the-art approaches to</p>
+<p>model-based reinforcement learning</p>
+<p>welcome back Alejandra and some of these</p>
+<p>topics were introduced or at least</p>
+<p>initially brought up in the ACT imp</p>
+<p>stream 8.0 so if you're a little bit</p>
+<p>just unsure what is modelbased versus</p>
+<p>non-m modelbased reinforcement learning</p>
+<p>or what is reinforcement learning or</p>
+<p>what is machine learning it's all good</p>
+<p>there's kind of a sequence of ideas that</p>
+<p>you can follow to understand why this</p>
+<p>paper is so exciting and just go to ACM</p>
+<p>stream 8.0 if you're curious the way</p>
+<p>that we can phrase what the Big Goal or</p>
+<p>question of the paper is in terms of non</p>
+<p>active inference uh vocabulary would be</p>
+<p>how can we apply active inference to</p>
+<p>challenging control tasks and like blue</p>
+<p>mentioned these are the ones that often</p>
+<p>involve continuous decisions being made</p>
+<p>so like turning up a dial um or down or</p>
+<p>steering wheel rather than like chess or</p>
+<p>Checkers or Connect 4 or the Mario Kart</p>
+<p>example which now I will never forget</p>
+<p>and then how to connect these continuous</p>
+<p>challenging control tasks which have</p>
+<p>elements of planning and all these other</p>
+<p>things happening and connect these tasks</p>
+<p>formally to reinforcement</p>
+<p>learning any thoughts or questions on</p>
+<p>the goal of the</p>
+<p>paper cool so the abstract which we'll</p>
+<p>just run through is in reinforcement</p>
+<p>learning RL agents operate in partially</p>
+<p>observed and uncertain environments</p>
+<p>isn't that the truth modelbased</p>
+<p>reinforcement learning suggests that</p>
+<p>this control of these partially observed</p>
+<p>and uncertain environments is best</p>
+<p>achieved by learning and exploiting a</p>
+<p>probabilistic model of the world so just</p>
+<p>to be clear this is what traditional</p>
+<p>model-based reinforcement learning is</p>
+<p>model free or unsupervised reinforcement</p>
+<p>learning would be learning the very very</p>
+<p>direct relationships between outcomes</p>
+<p>like reward and States modelbased</p>
+<p>reinforcement learning abstracts a</p>
+<p>little bit above that and it considers</p>
+<p>how learning occurs on a probabilistic</p>
+<p>model of the world active inference is</p>
+<p>an emerging normative framework in</p>
+<p>cognitive and computational Neuroscience</p>
+<p>that offers a unifying account of how</p>
+<p>how biological agents achieve this</p>
+<p>control in this framework inference</p>
+<p>learning and action emerge from a single</p>
+<p>imperative that maximizes the basian</p>
+<p>evidence for a niched model of the world</p>
+<p>and so learning inference and action are</p>
+<p>all part of the organism's generative</p>
+<p>model and we're going to see how that</p>
+<p>gets specified and how it plays</p>
+<p>out the challenge is that</p>
+<p>implementations of this process this</p>
+<p>integration between inference and action</p>
+<p>if you will have thus far been</p>
+<p>restricted to low-dimensional and</p>
+<p>idealized situations so this could be</p>
+<p>for example playing a very simple game</p>
+<p>or doing a 2 by two Matrix like a</p>
+<p>prisoners dilemma or there are other</p>
+<p>cases where active inference has been</p>
+<p>used for slightly higher dimensional but</p>
+<p>still quite idealized situations like</p>
+<p>reading from a known set of</p>
+<p>options here we present a working</p>
+<p>implementation of active inference that</p>
+<p>applies to higher dimensional tasks with</p>
+<p>proof of principal results demonstrating</p>
+<p>efficient exploration and an order of</p>
+<p>magnitude increase in Sample efficiency</p>
+<p>over strong model-free baselines so just</p>
+<p>by reading that we can look forward to</p>
+<p>some improvements on classical</p>
+<p>algorithms and as far as this magnitude</p>
+<p>increase in Sample efficiency the reason</p>
+<p>why they're focused on Sample efficiency</p>
+<p>is because these distributions that we</p>
+<p>want to understand the shape of are not</p>
+<p>just like a simple curve there's a lot</p>
+<p>of Dimensions to them and they're very</p>
+<p>rugged so small changes can change your</p>
+<p>height so to speak speak quite a lot</p>
+<p>which means that the challenge is to</p>
+<p>sample effectively not get trapped in</p>
+<p>one area or not to over sample one</p>
+<p>region at the cost of</p>
+<p>another our results demonstrate the</p>
+<p>feasibility of applying active inference</p>
+<p>at scale and highlight the operational</p>
+<p>homologies between active inference and</p>
+<p>current model-based approaches to</p>
+<p>reinforcement learning so what would be</p>
+<p>the implications of that well it'd be</p>
+<p>pretty epic if all of the hype and Buzz</p>
+<p>that we hear about machine learning or</p>
+<p>rein forcement learning or all the</p>
+<p>places where we know reinforcement</p>
+<p>learning gets applied ranging from</p>
+<p>recommendation algorithms to maps to</p>
+<p>just all these types of things could</p>
+<p>active inference play a role in that and</p>
+<p>what what would that do for our</p>
+<p>conception of these kinds of algorithms</p>
+<p>and there's probably a lot of directions</p>
+<p>to take that but that's the equivalence</p>
+<p>is if there is a homology and</p>
+<p>potentially even a superiority of active</p>
+<p>inference techniques in certain cases</p>
+<p>over reinforcement learning then it</p>
+<p>liberates us from some of the baggage of</p>
+<p>the straightforward model-based uh</p>
+<p>reinforcement learning or the critiques</p>
+<p>of reinforcement learning but also opens</p>
+<p>the door to some new ways to implement</p>
+<p>strategies and understand the systems</p>
+<p>that we're working</p>
+<p>with cool so the paper has a pretty</p>
+<p>clear road map this is like driving on</p>
+<p>Highway 10 in New</p>
+<p>Mexico and there's a introduction</p>
+<p>section uh the relationship to further</p>
+<p>work is actually section five which</p>
+<p>we'll get to in a second but the paper</p>
+<p>begins with an introduction and a</p>
+<p>consideration of active inference as a</p>
+<p>topic it then moves directly to the</p>
+<p>model and lays it out in the six</p>
+<p>subsections 3.1 through 3.6 from a</p>
+<p>mathematical perspective we're going to</p>
+<p>be focusing primarily on one two and</p>
+<p>three because those are the parts that</p>
+<p>we've heard the most about and they're</p>
+<p>the most relatable so the generative</p>
+<p>model and the recognition distribution</p>
+<p>are the p and the Q mind your p's and</p>
+<p>q's and this is everything that we've</p>
+<p>been talking about with the two</p>
+<p>directions between the agent and the</p>
+<p>world and whether we think about that in</p>
+<p>the basian structural computationalist</p>
+<p>perspective or the an activist</p>
+<p>perspective the whole tale of two</p>
+<p>densities integrating internalism and</p>
+<p>externalism all these things come</p>
+<p>together in 3.1 3.2 learning and</p>
+<p>inference is where we're going to draw</p>
+<p>the bow together with reinforcement</p>
+<p>learning and about other machine</p>
+<p>learning algorithms</p>
+<p>3.3 is where we're going to come closer</p>
+<p>to control theory because we're going to</p>
+<p>be talking about setting policies for</p>
+<p>Action then 3.4 56 hopefully when Alec</p>
+<p>is here next week we'll have a little</p>
+<p>bit uh more detail there maybe we could</p>
+<p>even see a simulation or hear about some</p>
+<p>of the degrees of freedom that the</p>
+<p>authors had in the model why they chose</p>
+<p>to do what they did the part that will</p>
+<p>be very cool as an experimental</p>
+<p>biologist is the experimental section</p>
+<p>and here it's an interesting approach to</p>
+<p>do one set of tasks that conveys</p>
+<p>exploration of a state space and another</p>
+<p>set of tasks that conveys exploitation</p>
+<p>so they're saying like this model has</p>
+<p>two hands you know it's good at</p>
+<p>exploring but it's good at exploiting as</p>
+<p>well then there's the connection to</p>
+<p>previous work and the three areas that</p>
+<p>they tie it most directly to with the</p>
+<p>keywords as well as in this closing</p>
+<p>section are related to deep active</p>
+<p>inference which in contrast to I guess</p>
+<p>shallow active inference would mean that</p>
+<p>you're not just minimizing your surprise</p>
+<p>about your instantaneous sensory</p>
+<p>information but you have a deep or a</p>
+<p>counterfactual model that goes through</p>
+<p>time so that's like the example of</p>
+<p>taking a jacket even though you're not</p>
+<p>cold yet that's deep active inference</p>
+<p>you're reducing your surprise about</p>
+<p>future states of your temperature under</p>
+<p>a generative model where if you go</p>
+<p>outside and it's cold you're going to</p>
+<p>get cold but shallow active inference</p>
+<p>would be like you wouldn't put on the</p>
+<p>jacket or you wouldn't even take it with</p>
+<p>you because it wouldn't be a relevant</p>
+<p>affordance in the one second time frame</p>
+<p>but it actually is relevant in the</p>
+<p>1second time frame under a deep</p>
+<p>generative model of temperature the</p>
+<p>second two are model-based reinforcement</p>
+<p>learning which we've mentioned a few</p>
+<p>times and Information Gain information</p>
+<p>is reduction of uncertainty and when</p>
+<p>we're reducing our uncertainty about</p>
+<p>environmental causes it helps us plan</p>
+<p>better actions but we also need to</p>
+<p>reduce our uncertainty about which</p>
+<p>actions to take and that's called policy</p>
+<p>and that's what Rel relates us here to</p>
+<p>control theory then there's a discussion</p>
+<p>and conclusion okay before we jump into</p>
+<p>the math in the actual sections are</p>
+<p>there any thoughts or questions on the</p>
+<p>road</p>
+<p>map all right here is a partial notation</p>
+<p>reference and I just separate them onto</p>
+<p>two sides and so if you're only going to</p>
+<p>look at a few parameters uh if your</p>
+<p>parameter overload hits in at six the</p>
+<p>ones on the left are the important ones</p>
+<p>these are the ones that will help you</p>
+<p>get 80% of what is happening and then</p>
+<p>the next 10% are the ones on the right</p>
+<p>and then there's a few other ones which</p>
+<p>aren't on this page that are more like</p>
+<p>the esoteric statistical parameters the</p>
+<p>big parameter is s with a hat just like</p>
+<p>Sasha with a hat and that's the true</p>
+<p>state of the environment so s with a hat</p>
+<p>is what is actually trying to be</p>
+<p>predicted and that's like the actual</p>
+<p>temperature of the environment or the</p>
+<p>actual amount of sunlight but that's not</p>
+<p>what the agent is able to track directly</p>
+<p>it's able to make an estimate of the</p>
+<p>environmental State and you can imagine</p>
+<p>there's times where that's an easy</p>
+<p>estimate to make there's times where</p>
+<p>it's a hard estimate to make and then</p>
+<p>this is the difference between the</p>
+<p>discret and the continuous case would be</p>
+<p>if the state that you're estimating is</p>
+<p>is it day or night it's a zero or one</p>
+<p>that's a discrete case a continuous case</p>
+<p>would be like what is the amount of</p>
+<p>light and that's a continuous variable</p>
+<p>so there's a lot more options a lot more</p>
+<p>Shades of Gray infinite of them that's s</p>
+<p>is the agent's internal ongoing estimate</p>
+<p>of this environmental state state that</p>
+<p>it's trying to track and we can think</p>
+<p>about it with just one s or there can be</p>
+<p>multiple s's like is it humid or is it</p>
+<p>dry that's one axis another one is it</p>
+<p>light or dark o are the observations so</p>
+<p>in the case of light being estimated</p>
+<p>that would be like the observations of</p>
+<p>light on the retina in the case of</p>
+<p>temperature it's like a thermometer</p>
+<p>reading a are the policy actions by the</p>
+<p>agent and those are arising from PI</p>
+<p>which is a policy and a policy is like a</p>
+<p>layer above action so for example action</p>
+<p>would be moving my left foot my policy</p>
+<p>would be if I hear this sound then I</p>
+<p>move my left foot another policy would</p>
+<p>be I always move my left foot and so</p>
+<p>there's different kinds of policies that</p>
+<p>can be very nuanced they can be</p>
+<p>conditional they can be related to each</p>
+<p>other or they can be very</p>
+<p>straightforward and Standalone t with</p>
+<p>italics is the time steps of the model</p>
+<p>so this is just a modeling parameter</p>
+<p>that's going to come up again and again</p>
+<p>and it has to do with how time is</p>
+<p>measured in terms of epochs or states or</p>
+<p>continually okay then just to the right</p>
+<p>side we have little and big Theta and</p>
+<p>little Theta is often used just to mean</p>
+<p>a parameter of the generative model and</p>
+<p>the bigger Theta is like the space of</p>
+<p>all the parameters so those are kind of</p>
+<p>used similarly then Lambda is related to</p>
+<p>the likelihood distribution it relates</p>
+<p>some of the statistical parameters and</p>
+<p>then f is the free energy and this</p>
+<p>represents like if you could be on this</p>
+<p>super smooth variational optimization</p>
+<p>landscape just with just as if you would</p>
+<p>really want to be following s hat but</p>
+<p>you actually have to follow s with free</p>
+<p>energy if we could be following F then</p>
+<p>we'd be doing perfectly you just</p>
+<p>strictly cannot do any better than that</p>
+<p>however we can't directly track F so we</p>
+<p>have to track G which is the expectation</p>
+<p>of free energy which we'll also be able</p>
+<p>to look at okay any thoughts or</p>
+<p>questions on notation anyone seeing</p>
+<p>similar notation to another field or a</p>
+<p>difference is there something that we</p>
+<p>want to that you'd imagine that a</p>
+<p>control theory model would have that</p>
+<p>isn't in</p>
+<p>here all right anyone can just raise</p>
+<p>their hand at any time I'm not sure</p>
+<p>where several of our colleagues have</p>
+<p>gone</p>
+<p>to let's start by thinking about the</p>
+<p>generative model so this is a generative</p>
+<p>model P of a bunch of variables and this</p>
+<p>is going to be kind of like what the</p>
+<p>organism is slash does we're going to</p>
+<p>leave for a second some of these uh</p>
+<p>avenues that can be arising with the</p>
+<p>niche symmetry which we've talked about</p>
+<p>in the context of yellow bromberg's and</p>
+<p>actual constants work and there's the a</p>
+<p>lot of other things that we've brought</p>
+<p>up let's just try to isolate what's</p>
+<p>really relevant which is that the agent</p>
+<p>is doing some type of implementation or</p>
+<p>is some kind of an implementation of a</p>
+<p>generative model of a couple of things</p>
+<p>at once it's generating a model of</p>
+<p>observations through time the Tilda on</p>
+<p>top of a variable means through time so</p>
+<p>observations through time and States</p>
+<p>through time you can think of as a</p>
+<p>function of policy choices pi and</p>
+<p>parameters of the model Theta so for</p>
+<p>example one of my parameters in my Theta</p>
+<p>is like um if I get hit by a bike then</p>
+<p>it's going to hurt and then my</p>
+<p>generative model is like under the</p>
+<p>policy of looking both ways to cross the</p>
+<p>road I predict that my States will</p>
+<p>include not being hit by a bike and so I</p>
+<p>won't have any pain observations under</p>
+<p>that same policy you could imagine um</p>
+<p>other types of state and observation</p>
+<p>predictions and then there are a few</p>
+<p>subsequent mathematical details about</p>
+<p>the insides of this equation it's a</p>
+<p>little bit bracketed no pun intended in</p>
+<p>the top and that's a shorthand and then</p>
+<p>we can EXP explore and unpack it a few</p>
+<p>more levels so like on that first row we</p>
+<p>can see that that that p o Pi Theta</p>
+<p>those um uh relationships can be</p>
+<p>unpacked on the other side of the equal</p>
+<p>sign the right hand side to like just</p>
+<p>the probability of the parameters</p>
+<p>existing and then just the probability</p>
+<p>of the policy existing multiplied by</p>
+<p>this big other thing so why would that</p>
+<p>be the case and we won't go through all</p>
+<p>of them in this detail but I think this</p>
+<p>one's really helped ful to understand</p>
+<p>for active inference and people just</p>
+<p>raise your hand if you want to talk but</p>
+<p>just to keep it like informational and</p>
+<p>fun I'll just keep going until somebody</p>
+<p>wants to ask a question so the reason</p>
+<p>why P of Pi is there the probability of</p>
+<p>the policy is like if the policy is</p>
+<p>unrealistic you don't even want to</p>
+<p>consider it you want to basically take</p>
+<p>unlikely policies impossible or</p>
+<p>implausible policies and systematically</p>
+<p>not consider them so if if I'm trying to</p>
+<p>get out of the way of the incoming bike</p>
+<p>and I'm spending a lot of my time or my</p>
+<p>clock Cycles or a lot of my cognitive</p>
+<p>infrastructure on action strategies that</p>
+<p>involve me doing a Spider-Man and</p>
+<p>swinging from a building it's it's so</p>
+<p>imp plausible that it's probably not</p>
+<p>going to be effective so we want to have</p>
+<p>something in our model that represents</p>
+<p>likely or possible policies being</p>
+<p>considered a little bit more richly than</p>
+<p>impla implausible policies and similarly</p>
+<p>for p of data which is a little more</p>
+<p>abstract because it's just a parameter</p>
+<p>of the model but it's like saying if</p>
+<p>it's an unlikely parameter State it's</p>
+<p>also not worth thinking too much about I</p>
+<p>don't need to plan for it being -40 in</p>
+<p>California however our Russian</p>
+<p>colleagues might need a plan for that so</p>
+<p>it's going to be Niche dependent and</p>
+<p>contextual whether they need to plan for</p>
+<p>it or not okay now let's go into this</p>
+<p>big pie uh notation on the right side of</p>
+<p>the right hand side of the first line of</p>
+<p>equations this is kind of like a sigma</p>
+<p>Sigma adds up the elements of a series</p>
+<p>so like Sigma of you know 1 plus 1 over</p>
+<p>two plus one over four or something and</p>
+<p>the pi is like a big multiplier and it's</p>
+<p>saying from the first time step T equals</p>
+<p>1 through all of the time steps Big T do</p>
+<p>this calculation what is the calculation</p>
+<p>well it's the probability of</p>
+<p>observations given States so and that's</p>
+<p>observation out a certain time given the</p>
+<p>state at that time so it's like if this</p>
+<p>my estimate of the state not s hat just</p>
+<p>s with hat if my observ if my state is</p>
+<p>getting hit by a bike there's going to</p>
+<p>be a very likely observation of it</p>
+<p>hurting now that doesn't say whether</p>
+<p>it's likely that I'm getting hit by a</p>
+<p>bike it's just that it is the case if it</p>
+<p>is that state then there's going to be</p>
+<p>this observation so that's the mapping</p>
+<p>between observations and States but it's</p>
+<p>observations probability conditional</p>
+<p>with a straight line on the state being</p>
+<p>a certain way okay that's the first part</p>
+<p>and the second part is the probability</p>
+<p>of that state</p>
+<p>arising conditional on</p>
+<p>the previous state and the previous</p>
+<p>policy and the parameter and so again</p>
+<p>with this like bike model it's like what</p>
+<p>is the probability of my estimated State</p>
+<p>s oft at that time being hit by a bike</p>
+<p>given that I wasn't being hit by a bike</p>
+<p>before and my policy was looking both</p>
+<p>ways and my Theta model parameters tell</p>
+<p>me that if I look both ways it's really</p>
+<p>likely that I'll stay safe for example</p>
+<p>but stay safe isn't what's directly</p>
+<p>specified by the model Theta it's</p>
+<p>actually specifying the likelihood Ood</p>
+<p>that a given policy and state mapping</p>
+<p>are going to relate into the future with</p>
+<p>a certain State and then separately we</p>
+<p>can consider What observations arise</p>
+<p>given a state so it's a little bit like</p>
+<p>just showing our work or being very</p>
+<p>clear with what is the actual state of</p>
+<p>the world s hat what's the estimated</p>
+<p>State s what are the um mappings between</p>
+<p>policies States and future States that's</p>
+<p>the right side then what's the mapping</p>
+<p>between observ observations and states</p>
+<p>in that first part okay any thoughts or</p>
+<p>questions because the rest just kind of</p>
+<p>continues from here in a similar way</p>
+<p>um okay we'll just keep on you know</p>
+<p>write down any cool questions that are</p>
+<p>coming to mind Ivon yeah go</p>
+<p>ahead well you're muted first but yes</p>
+<p>then continue uh thank you uh could you</p>
+<p>please explain one more time what's the</p>
+<p>small Theta is it's parameter</p>
+<p>of uh it's parameter</p>
+<p>of the generative model but what is it</p>
+<p>yes great question so we can actually</p>
+<p>list we can go just just to show it in</p>
+<p>the context of the</p>
+<p>paper um and this by the way is in 3.1</p>
+<p>but it introduces some of the other um</p>
+<p>equations</p>
+<p>earlier um</p>
+<p>the Theta are the details of the model</p>
+<p>that relate the transition distribution</p>
+<p>so here we're looking at the states and</p>
+<p>the previous policy the S tus1 and Pi of</p>
+<p>tus one and how given Theta it maps on</p>
+<p>to S of so what is Theta just from</p>
+<p>looking at the equation what is Theta</p>
+<p>going to be telling us it's going to be</p>
+<p>telling us how to map T minus one's</p>
+<p>State and policy State estimate and</p>
+<p>policy to the time T States so let's</p>
+<p>just imagine that it were a linear model</p>
+<p>so I had a linear yal MX plus b and that</p>
+<p>was how we were going to map forward</p>
+<p>just totally a simple way to do it then</p>
+<p>Theta would be like a vector containing</p>
+<p>m and</p>
+<p>b or Theta would the the how many</p>
+<p>dimensions of the model there are is how</p>
+<p>tall Theta is going to be in a sense but</p>
+<p>Theta are the parameters of the model</p>
+<p>that say what the transition</p>
+<p>distribution</p>
+<p>is so uh yeah if it was a linear model</p>
+<p>then Theta is kind of like a wrapper</p>
+<p>around the parameters of the linear</p>
+<p>model which is the slope M and then the</p>
+<p>elevation B If This Were a neural</p>
+<p>network with a million parameters then</p>
+<p>Theta would have a million parameters</p>
+<p>but it's kind of specifying the</p>
+<p>likelihood that the S of tus1 and Pi of</p>
+<p>T minus1 map on to S of T so let's just</p>
+<p>say that Thea were one it just always</p>
+<p>mapped to one for some reason then it's</p>
+<p>like whatever these two are it's going</p>
+<p>to map to one that's like you know f ofx</p>
+<p>equals one yeah that's the parameter</p>
+<p>that's the simplest possible model is</p>
+<p>whatever the previous States and policy</p>
+<p>are we just map to one the next one</p>
+<p>would be F of uh x equals you know</p>
+<p>insert your model there and so it is a</p>
+<p>statistical point about what's a</p>
+<p>parameter of a model and like aren't</p>
+<p>these all parameters aren't they all</p>
+<p>variables aren't they all random</p>
+<p>variables aren't they all going to be</p>
+<p>variables in my python code yes to all</p>
+<p>of them and that's why there's a little</p>
+<p>bit of nuance and that's actually why we</p>
+<p>go into the details here because you can</p>
+<p>get pretty Tangled Up and Confused in</p>
+<p>the gray Zone with what's a estimator</p>
+<p>and what what is the what is the</p>
+<p>scientist estimating what is the</p>
+<p>organism estimating and a lot of times</p>
+<p>when we just look at it it's a little</p>
+<p>bit clearer and we can think about a few</p>
+<p>layers of unpacking with the top most</p>
+<p>level of understanding is this uh big p</p>
+<p>top equation then we can unpack it and</p>
+<p>Define well what does that really mean</p>
+<p>how do we pull out the likelihood of the</p>
+<p>parameters like the likelihood of theta</p>
+<p>from the likelihood of policy from this</p>
+<p>time dependent series how do we Define</p>
+<p>the distribution of P of O of T given s</p>
+<p>of T like the second line and so uh each</p>
+<p>of these we get continue unpacking and</p>
+<p>then each of them get specified in</p>
+<p>functions in programming which hopefully</p>
+<p>we'll hear from Alec about next week and</p>
+<p>there sometimes it becomes another level</p>
+<p>of uh Clarity when you look at the</p>
+<p>function definition and you can say oh</p>
+<p>this function is actually taking in</p>
+<p>variable a b and c and then instead of</p>
+<p>seeing them as just o subt s subt the</p>
+<p>variable's name could be States through</p>
+<p>time or there might be a more</p>
+<p>descriptive name so I know that</p>
+<p>especially if you haven't looked at</p>
+<p>these equations for a long time or uh</p>
+<p>perhaps many equations for a long time</p>
+<p>sometimes like you get halfway down the</p>
+<p>page it's like what what what is Mu of</p>
+<p>theta again but it is referring to</p>
+<p>something specific it's just a little</p>
+<p>bit of a shorthand to make sure that uh</p>
+<p>it fits visibly in a containable space</p>
+<p>so any other thoughts but good question</p>
+<p>there with the</p>
+<p>parameters so just what are the other um</p>
+<p>yeah yeah Sasha go</p>
+<p>ahead um yeah thank you that was really</p>
+<p>useful to walk through those steps</p>
+<p>especially with the bike example and it</p>
+<p>um kind of brings to mind uh cases of</p>
+<p>when something is very unlikely to</p>
+<p>happen but the um but it's certain to</p>
+<p>have uh really bad outcomes so like uh</p>
+<p>you know it's really going to hurt if</p>
+<p>you get hit by a bike versus um things</p>
+<p>that are very likely to happen but don't</p>
+<p>have</p>
+<p>uh but are not certain of having a bad</p>
+<p>outcome like I don't know um</p>
+<p>stubbing your toe on something um and so</p>
+<p>these are things that are weighted</p>
+<p>differently in in a model uh based on</p>
+<p>the certainty of uh and the severity of</p>
+<p>the outcome so I think that's really</p>
+<p>cool that this is all incorporated into</p>
+<p>one model yeah and when we specify why</p>
+<p>we're making certain decisions first</p>
+<p>we're just laying these equations out to</p>
+<p>describe our little control theory robot</p>
+<p>playing Mario Kart or playing control</p>
+<p>theory games on N64 but what if people</p>
+<p>had a a little bit more nuanced</p>
+<p>discussion on Collective decision-making</p>
+<p>topics like somebody thinks well I think</p>
+<p>it's totally unlikely that the minimum</p>
+<p>miles per gallon of cars could be 40</p>
+<p>miles by 2030 and someone else says</p>
+<p>that's super likely actually it's</p>
+<p>totally possible it's totally likely I</p>
+<p>think that it can be done or I think</p>
+<p>that this other policy that you're</p>
+<p>suggesting is implausible or that it</p>
+<p>will have a bad outcome and so people</p>
+<p>can disagree on whether a policy is</p>
+<p>actualizable or not for various reasons</p>
+<p>it might come across as an ethical</p>
+<p>constraint or legal constraint or</p>
+<p>logistical whatever it happens to be but</p>
+<p>for whatever reason that P of Pi is low</p>
+<p>for them and then we could unpack that</p>
+<p>and say okay all these different</p>
+<p>elements are there depending on the</p>
+<p>situation and then somebody else might</p>
+<p>say I'm with you on that outcome being</p>
+<p>unlikely I just don't think it's that</p>
+<p>big of a deal saying oh yep I think that</p>
+<p>that kind of a tsunami will happen once</p>
+<p>every hundred years but I think that my</p>
+<p>transition Matrix from tsunami damage to</p>
+<p>being repaired it just says that that's</p>
+<p>an easy transition so we don't really</p>
+<p>need to plan so heavily around it</p>
+<p>because when it does happen we'll be</p>
+<p>able to rebuild quickly for example so</p>
+<p>these just allow us to give a little bit</p>
+<p>more detail into our infrastructure</p>
+<p>really our architecture of decision-</p>
+<p>making and so I think blue that's</p>
+<p>definitely where we can take it back to</p>
+<p>this multiple scales of decision-making</p>
+<p>question just to look through a couple</p>
+<p>of these other equations before we move</p>
+<p>to Q here is the probability model of</p>
+<p>observations given States and so again</p>
+<p>that's like if the state my estimated</p>
+<p>State not s hat if my estimated state is</p>
+<p>getting hit by a bike or stubbing my toe</p>
+<p>the observations will be such and such</p>
+<p>in my appropriate receptors and that is</p>
+<p>given by a normal distribution which</p>
+<p>means big n on the variable o of T and</p>
+<p>semicolon parameterized by mu and sigma</p>
+<p>squ which are the mean and the variance</p>
+<p>and then those together mu and sigma</p>
+<p>squar it turns out that those are the</p>
+<p>hard parts to estimate just like the</p>
+<p>problem or the challenge of doing a</p>
+<p>linear aggression on a billion data</p>
+<p>points point would be estimating the</p>
+<p>mean and the variance so you could fit</p>
+<p>the mean by adding up all the numbers</p>
+<p>and then dividing it by the amount of</p>
+<p>numbers and for fitting the variance you</p>
+<p>could use like a least squares model but</p>
+<p>still that would be the computation that</p>
+<p>you could do on pen and paper but would</p>
+<p>just be very hard in this case we're</p>
+<p>going to be doing what is called a</p>
+<p>amortized learning or a functional a</p>
+<p>functional is like a function of another</p>
+<p>function and what we're going to be</p>
+<p>doing is estimating these statistical</p>
+<p>parameters</p>
+<p>with this function Lambda and then we're</p>
+<p>going to fit the neural network about</p>
+<p>that function Lambda and so even though</p>
+<p>neural networks are often understood as</p>
+<p>providing additional degrees of</p>
+<p>flexibility like being able to learn</p>
+<p>conditional relationships between data</p>
+<p>um this took me a little bit to think</p>
+<p>about but the neural network is actually</p>
+<p>just facilitating Us in this model it's</p>
+<p>not saying that it would have to be this</p>
+<p>way for all future ACM learning but it's</p>
+<p>actually still just fitting a neural</p>
+<p>network model of a normal distribution</p>
+<p>so we're finding the parameters mu and</p>
+<p>sigma use it which are very difficult to</p>
+<p>estimate as you can imagine for</p>
+<p>nonlinear control task but we're still</p>
+<p>fitting it with a function around um a</p>
+<p>normal so it's kind of this interesting</p>
+<p>juxtoposition of using Advanced</p>
+<p>Techniques like a neural network um High</p>
+<p>parametric techniques to actually drill</p>
+<p>back down to a mean and a variance and</p>
+<p>then so this is this p is this first</p>
+<p>part of this um series and then s of</p>
+<p>given the previous state and the</p>
+<p>previous policy is the second part here</p>
+<p>so this part here gets estimated with f</p>
+<p>of Lambda and then the uh second half of</p>
+<p>that series through time has another</p>
+<p>normal distribution with uh mu of theta</p>
+<p>and sigma squ of data and then those two</p>
+<p>get looped up into uh a functional over</p>
+<p>those two similarly like s of T is the</p>
+<p>right hand side what's being conditioned</p>
+<p>on and we're going to be estimating the</p>
+<p>mean and variance of what is conditioned</p>
+<p>on and then here it's similar we're</p>
+<p>making a function that is estimating</p>
+<p>what is being conditioned on okay then</p>
+<p>we have this uh early parts of the</p>
+<p>equation which is the probability of the</p>
+<p>policy is basically um it's going to be</p>
+<p>pretty simple in this case but this is</p>
+<p>where you could have a lot more degrees</p>
+<p>of flexibility this is sort of like an</p>
+<p>initial skeleton paper as far as what</p>
+<p>could be done with this framework and</p>
+<p>that's kind of cool that's actually what</p>
+<p>defines it in some ways as being</p>
+<p>research and as being cutting edges this</p>
+<p>isn't the fine tuning of the parameters</p>
+<p>this is laying out the framework that's</p>
+<p>going to help us in a lot of other</p>
+<p>contexts and then the probability of the</p>
+<p>policy this is the part where we</p>
+<p>actually get to free energy okay so if</p>
+<p>we remember from the notation slide f is</p>
+<p>like the free energy where we strictly</p>
+<p>couldn't be making any better decisions</p>
+<p>if we knew that but G is the expected</p>
+<p>free energy so just like s is the Hat s</p>
+<p>with the hat is real state of the</p>
+<p>environment that's like what we'd really</p>
+<p>want to track and free energy would be</p>
+<p>what our policy decisions would strictly</p>
+<p>want to be converging upon but we don't</p>
+<p>get S hat we get S and we don't get F we</p>
+<p>get G what is g where does it come into</p>
+<p>play well the probability of a policy is</p>
+<p>now here Sigma is actually not this is</p>
+<p>Sigma squar a statistical parameter and</p>
+<p>it's kind of annoying but it is this way</p>
+<p>that this Sigma is a soft Max function</p>
+<p>which basically is like the make a</p>
+<p>choice function in math it just is s for</p>
+<p>soft Max here Sigma for variance here</p>
+<p>and what this is going to be is the</p>
+<p>negative expected free energy and</p>
+<p>sometimes there's some negatives and</p>
+<p>some logs getting thrown around and</p>
+<p>these are all just ways to really just</p>
+<p>say pick the best given the expected</p>
+<p>free energy of policy and so this is how</p>
+<p>we get to certain statements which have</p>
+<p>definitely been discussed on this uh</p>
+<p>live stream before where it's like the</p>
+<p>agent picks the most likely policy and</p>
+<p>it's like wait but is it likely for me</p>
+<p>to win or lose what if it's a I know</p>
+<p>that it's unlikely for me to win or lose</p>
+<p>um if it's one in 100 that I'm going to</p>
+<p>win how is that me picking the most</p>
+<p>likely policy but that's actually what</p>
+<p>um is happening but it's not just simply</p>
+<p>the likeliest policy um there's a little</p>
+<p>bit more Nuance which we'll look into</p>
+<p>with G okay so that was sort of the P</p>
+<p>side let's maybe a little bit more</p>
+<p>quickly because we will recognize a lot</p>
+<p>of the variables and also a lot of the</p>
+<p>structural relationships between</p>
+<p>equations here's the CU</p>
+<p>so we have p and Q between the agent and</p>
+<p>the environment uh in a sense these are</p>
+<p>the two distributions that are linking</p>
+<p>it not that one is being computed by one</p>
+<p>or one is computed by the other but</p>
+<p>thinking about in that basian</p>
+<p>computationalist framework where we have</p>
+<p>like the data going in one model goes to</p>
+<p>the hyperparameters and then the</p>
+<p>hyperparameters generate leading to um</p>
+<p>the uh Hey Shannon welcome back if we if</p>
+<p>yeah um going back to the observed</p>
+<p>states of the world so Q um is going to</p>
+<p>be distinguished from p p is this</p>
+<p>implementation of the generative model</p>
+<p>of the world where is Q is going to very</p>
+<p>distinctly have different parameters</p>
+<p>instead of P Pi Theta here we have q of</p>
+<p>s Through Time policies in Theta so this</p>
+<p>is a slightly simpler uh mathematical</p>
+<p>formulation and it is going to be</p>
+<p>unpacked as Q of the states through time</p>
+<p>and the policy and the model parameters</p>
+<p>is again uh we see the likelihood of the</p>
+<p>model parameters and the likelihood of</p>
+<p>the policy coming out in front um and</p>
+<p>these are similar to the P but P doesn't</p>
+<p>have to equal q and then a slightly</p>
+<p>simpler uh piece here which is just</p>
+<p>about the states given the</p>
+<p>observations uh and so this is like</p>
+<p>literally given the retina Shadows what</p>
+<p>is the state estimate of the world so</p>
+<p>this is um it's like here in in P if we</p>
+<p>look at just this uh Second Line This is</p>
+<p>the probability of observations given</p>
+<p>States so this is given that it's</p>
+<p>daytime there should be a lot of photons</p>
+<p>if the estimated state of the world is</p>
+<p>nighttime there shouldn't be any photons</p>
+<p>p o s okay but it's O given s now in Q</p>
+<p>we actually have S given o so the p is</p>
+<p>different than the Q but also the orders</p>
+<p>have switched this is a called a</p>
+<p>recognition distribution because we're</p>
+<p>basically doing an estimation of the</p>
+<p>states given the observations so Q is</p>
+<p>kind of like the incoming way that the</p>
+<p>observations are going to be connected</p>
+<p>to the state estimators of the world</p>
+<p>that's the recognition but then the</p>
+<p>generative model which is the P that</p>
+<p>entails understanding what the hidden</p>
+<p>states of the world are s and your</p>
+<p>estimates of them that is and then</p>
+<p>generating out</p>
+<p>observations that are linked up to</p>
+<p>policy and so here there's a slightly</p>
+<p>different way that the parameters of</p>
+<p>this model and that the um policy</p>
+<p>mapping is done with these uh few more</p>
+<p>statistical parameters but similarly</p>
+<p>which we don't need to go into too much</p>
+<p>detail in here is these are also going</p>
+<p>to be distributed using some statistical</p>
+<p>distribution that's going to help us</p>
+<p>estimate them and similarly we can take</p>
+<p>all the statistical parameters so for a</p>
+<p>normal distribution it's a two parameter</p>
+<p>model mean invariance but you could have</p>
+<p>uh distributions with one or with more</p>
+<p>than two variables but whatever number</p>
+<p>of statistical variables you want to</p>
+<p>estimate we're just going to wrap them</p>
+<p>into a function and figure out some way</p>
+<p>to estimate them and so that's a uh uh</p>
+<p>degree of Freedom you can think of in</p>
+<p>the model is that uh there's different</p>
+<p>you could flip out this normal for some</p>
+<p>other type of distribution or you could</p>
+<p>have another way to estimate the</p>
+<p>distributions uh normality okay that's p</p>
+<p>and Q but it is really important and</p>
+<p>interesting what they are any thoughts</p>
+<p>or questions or we can just keep</p>
+<p>cruising okay yeah um</p>
+<p>Alex uh yeah I want</p>
+<p>to ask uh maybe in terms of uh so P is</p>
+<p>for generative model Q is for</p>
+<p>recognition distribution and recognition</p>
+<p>model and as we discussed in previous</p>
+<p>session generative</p>
+<p>model exists or acts uh in uh Dynamics</p>
+<p>so you have uh generative model in some</p>
+<p>way of it's like was example with</p>
+<p>Domino so when you act and act in</p>
+<p>accordance to this generative model and</p>
+<p>an example of Road and and a bike</p>
+<p>this generative model defines way you</p>
+<p>are looking on both ways and when go if</p>
+<p>you don't see a buy and uh in this terms</p>
+<p>so what will be recognition distribution</p>
+<p>recognition model it's will be</p>
+<p>understanding how bike is looks like or</p>
+<p>what is how how road is looks like and</p>
+<p>so on or it's the wrong direction for my</p>
+<p>understanding a good question and it was</p>
+<p>it was actually I had had to email Alec</p>
+<p>to clarify a few things because I looked</p>
+<p>at this Q distribution I thought wait</p>
+<p>it's a recognition distribution but</p>
+<p>where are the observations how can Q be</p>
+<p>recognition when there's no observations</p>
+<p>and then it turns out there are</p>
+<p>observations that are uh related to q</p>
+<p>but it's he just said basically it's the</p>
+<p>norm in the recognition distribution</p>
+<p>literature like this part of the basian</p>
+<p>computational fields this is what they</p>
+<p>call those two models the recognition</p>
+<p>distribution which is from the</p>
+<p>observations to the generative model</p>
+<p>parameters which ironically as a norm</p>
+<p>doesn't include the uh observation and</p>
+<p>then the generative model again is the</p>
+<p>one that's going from the organisms</p>
+<p>parameter estimates of the world to</p>
+<p>predicted observations and that's how</p>
+<p>expectation maximization works now we</p>
+<p>had all these interesting discussions</p>
+<p>Alex which you're alluding to of for</p>
+<p>example does the organism have the</p>
+<p>internal model that's generative or is</p>
+<p>the generative model enacted terms of</p>
+<p>the relationship is it that's the</p>
+<p>internalism versus externalism</p>
+<p>discussion that we had so I'm going to</p>
+<p>try to combine what Alec inform me about</p>
+<p>as well as Channel a little Maxwell here</p>
+<p>and I think the answer is going to be</p>
+<p>there's multiple philosophical lenses</p>
+<p>that you could</p>
+<p>apply um to real world situations and</p>
+<p>this is only what is specified in the</p>
+<p>math and in the programming and so if</p>
+<p>you include it if you include in your</p>
+<p>recognition distribution is the uh</p>
+<p>luminosity and the edge and the color</p>
+<p>and those are the observations and</p>
+<p>you're recogniz you're doing image</p>
+<p>classification on recognizing a bike I'm</p>
+<p>just simplifying it but there it is then</p>
+<p>that is strictly only what is in the</p>
+<p>recognition distribution it's going to</p>
+<p>be about the mapping of the observations</p>
+<p>um to of the states given observations</p>
+<p>and your observations could include</p>
+<p>those variables that we just talked</p>
+<p>about so if it's being conditioned on</p>
+<p>that then that's what's happening and</p>
+<p>then even given a single form ization of</p>
+<p>like okay the observations are the um</p>
+<p>overall brightness and the amount of</p>
+<p>movement or something like whatever it</p>
+<p>happens to be it could still be a a</p>
+<p>pluralistic philosophical scenario where</p>
+<p>somebody could say okay that's a</p>
+<p>modeling convenience but really those</p>
+<p>observations are in the space between</p>
+<p>the organism and the environment and</p>
+<p>someone else says yep it's a modeling</p>
+<p>convenience but I think those parameters</p>
+<p>are something about the neural firing</p>
+<p>and someone else says it's both of them</p>
+<p>and someone else said so I would be open</p>
+<p>to</p>
+<p>uh correction and also would love to</p>
+<p>hear Alex perspective on this but I</p>
+<p>think the answer would be these papers</p>
+<p>that we read Tale of Two densities and</p>
+<p>integrating externalism and internalism</p>
+<p>are actually about how by Framing it</p>
+<p>within active inference we move Beyond</p>
+<p>those philosophical debates or another</p>
+<p>way to say that is build a bigger tent</p>
+<p>that includes both of those perspectives</p>
+<p>um in a way that's compatibilist because</p>
+<p>those are the debates that people had</p>
+<p>about these models so like in the</p>
+<p>reinforcement learning literature it's</p>
+<p>like okay is the reward the signal you</p>
+<p>know is it a pleasing you know aesthetic</p>
+<p>body form is that the reward or is that</p>
+<p>the signal of the reward and if it is</p>
+<p>the reward then isn't that a circular</p>
+<p>definition like organisms seek out</p>
+<p>what's rewarding but it's not like you</p>
+<p>just want to see the Aesthetics there</p>
+<p>might be some second intention for</p>
+<p>example and so how do you actually draw</p>
+<p>out these questions is it happening in</p>
+<p>the organism head with a reward or is it</p>
+<p>enacted and that was sort of the</p>
+<p>philosophical groundwork and now we're</p>
+<p>for a minute putting those bags of all</p>
+<p>different stripes down and looking at</p>
+<p>just the way that we're going to specify</p>
+<p>it and how it plays out in simulations</p>
+<p>knowing that potentially one person</p>
+<p>might have a basy and structural</p>
+<p>computationalist perspective of these</p>
+<p>examples we're going to look at in a</p>
+<p>second and somebody else might take a</p>
+<p>heavily inactive example they might say</p>
+<p>oh well the the cart that's on the hill</p>
+<p>it's like the cart Hill combo organism</p>
+<p>that's being or something like that but</p>
+<p>at the end whether the person thinks</p>
+<p>that it's inacted or it's just a basy</p>
+<p>and computationalist approach they're</p>
+<p>still going to at least be able to point</p>
+<p>to the same equations and ultimately the</p>
+<p>same code as well so that's like a</p>
+<p>hopefully explanation of how the active</p>
+<p>inference framework and the specifics</p>
+<p>end up unifying these General debates</p>
+<p>which potentially without such a</p>
+<p>unifying framework it'd be intractable</p>
+<p>cuz somebody would say okay well I think</p>
+<p>that Q is happening in the brain of the</p>
+<p>organism somebody else says I think that</p>
+<p>Q happens in between the niche and the</p>
+<p>organism someone else says I think Q is</p>
+<p>a modeling shorthand someone says I</p>
+<p>agree with person one and three or one</p>
+<p>and two and now we're saying okay</p>
+<p>they're kind of all correct they just</p>
+<p>all ways that we can phrase the</p>
+<p>specifics of what we're talking about</p>
+<p>here so not that everyone's correct</p>
+<p>because everyone's correct and there is</p>
+<p>no wrong answer but under this</p>
+<p>reconceptualization of action and</p>
+<p>inference we find that some of these</p>
+<p>previous questions are phrases in become</p>
+<p>like yes and instead of either</p>
+<p>slor okay to move a little bit more</p>
+<p>quickly just through these uh a few</p>
+<p>equations before we can I think just</p>
+<p>highlight a little bit on the</p>
+<p>experiments and then probably return to</p>
+<p>the multiscale question that we talked</p>
+<p>about earlier and also about what other</p>
+<p>areas could control be interesting in</p>
+<p>and also what questions would we want to</p>
+<p>ask Alec and other attendees next week</p>
+<p>here is equation one and this I put</p>
+<p>after because I think it helps to</p>
+<p>understand that P and Q and the mappings</p>
+<p>but this is what is ultimately being</p>
+<p>minimized so again we don't get F that's</p>
+<p>the real free energy and that's um the</p>
+<p>one that we would really want to be</p>
+<p>converging towards which as they put it</p>
+<p>um converging towards an approximation</p>
+<p>of the posterior distribution of prob</p>
+<p>the P model of States policies and</p>
+<p>parameters given observations so that</p>
+<p>would be like the best possible</p>
+<p>State trajectory through time and the</p>
+<p>best possible policy given the</p>
+<p>observations of the world you know given</p>
+<p>that Bitcoin is at this value and</p>
+<p>ethereum is at this value the state</p>
+<p>trajectory that's the best for me</p>
+<p>entails this policy so that's clearly</p>
+<p>what we want to know but that is</p>
+<p>intractable so we needed to use some</p>
+<p>type of a convergence towards this</p>
+<p>intractability and this is where a lot</p>
+<p>of the more specific and technical</p>
+<p>details related to for example the colc</p>
+<p>lier informational Divergence the the</p>
+<p>informational distance between two</p>
+<p>distributions is related because um</p>
+<p>there's some those distance metrics are</p>
+<p>bounded at zero like you if two</p>
+<p>distributions are identical their</p>
+<p>distance is zero and as they get more</p>
+<p>and more distant that number strictly</p>
+<p>increases and so it turns out that</p>
+<p>there's some ways to have like this</p>
+<p>hypothetical perfect distribution and</p>
+<p>then have a distance between where</p>
+<p>you're really at and this hypothetical</p>
+<p>perfect distribution which is always a</p>
+<p>positive distance and then try try to</p>
+<p>converge towards that hypothetical</p>
+<p>perfect position by minimizing the</p>
+<p>distance function and that distance</p>
+<p>function is informational but it still</p>
+<p>is a distance metric in a certain</p>
+<p>way and wrote out a few details um the E</p>
+<p>is the expectation so it's expectation</p>
+<p>of States Through Time policies and</p>
+<p>model parameters and it's going to be</p>
+<p>something that combines the Q and the P</p>
+<p>the natural log which makes it a little</p>
+<p>bit easier to do the machine learning</p>
+<p>technique and a few other benefits</p>
+<p>scaling it and bringing certain values</p>
+<p>below the number line and then that is</p>
+<p>going to be always greater than or equal</p>
+<p>to that's this part right here than just</p>
+<p>the obser the observations so it turns</p>
+<p>out that by doing this estimator we can</p>
+<p>bound um some a b there's a few things</p>
+<p>that get bounded but they're not even</p>
+<p>all phrased</p>
+<p>here</p>
+<p>um yep so I the last thing I wrote there</p>
+<p>was given that the Q is um focusing on</p>
+<p>basically between p and Q you get all</p>
+<p>the parameters so what you can do by</p>
+<p>optimizing the recognition density and</p>
+<p>the generative model back and forth</p>
+<p>whether actually like a two cycle engine</p>
+<p>like expectation maximization which is</p>
+<p>how it gets implemented in code or</p>
+<p>dynamically and continuously as in the</p>
+<p>case of an active organismal Behavior</p>
+<p>what has to get learned upon but here</p>
+<p>what tractably can be learned on and</p>
+<p>conditioned upon is that mapping of how</p>
+<p>observations States and policies are</p>
+<p>linked in a nuanced Nexus where they're</p>
+<p>all taken into account rather than</p>
+<p>running a classifier that goes from just</p>
+<p>observations to States and then a second</p>
+<p>layer model from states to policies that</p>
+<p>would be a little bit more along the</p>
+<p>lines of traditional machine learning</p>
+<p>but this is why it's different</p>
+<p>approach okay then um again we don't get</p>
+<p>G uh we or we don't get F we we only get</p>
+<p>G so here is another phrasing of f</p>
+<p>that's being played out through</p>
+<p>time so here is um building on three and</p>
+<p>four we're looking at the variational</p>
+<p>free energy not just for an instant here</p>
+<p>this is like a kind of Timeless</p>
+<p>understanding of free energy you don't</p>
+<p>see T in here it's through time with the</p>
+<p>S Tilda and the O Tilda but it's like</p>
+<p>not a specific times and then this one</p>
+<p>is actually a function through time this</p>
+<p>is observation T so this is like that</p>
+<p>specific observation and then here's</p>
+<p>where we see the Divergence the D</p>
+<p>distance Divergence the KL distance</p>
+<p>between the Q and the p and those are</p>
+<p>not usually exchangeable so like it's</p>
+<p>not like driving between two cities so</p>
+<p>this um section again you can unpack</p>
+<p>some of what the equations actually say</p>
+<p>but this learning in inference section</p>
+<p>talks about how to update or uh do</p>
+<p>inference do learning based upon the</p>
+<p>data of these</p>
+<p>parameters here is where we get to G so</p>
+<p>we don't get F we only get to estimate G</p>
+<p>so the way I kind of broke this down was</p>
+<p>we we want to do more than just update</p>
+<p>our internal model to bounce Sur prise</p>
+<p>on observations so if all you wanted to</p>
+<p>do was test retest accuracy on an image</p>
+<p>classifier data set all you'd have to do</p>
+<p>would be bound surprise on Cross</p>
+<p>validated versions of that data um or on</p>
+<p>uh uh subsample or testing and training</p>
+<p>splits but we want to actually do a few</p>
+<p>different things we want to reduce our</p>
+<p>uncertainty in the future so that's to</p>
+<p>the or the curs of T I don't know which</p>
+<p>way You' say it um in terms of the</p>
+<p>policies that we take now so it's quite</p>
+<p>different than just minimizing our</p>
+<p>surprise about a linear aggressor given</p>
+<p>a static data set we want to reduce our</p>
+<p>uncertainty about observations in the</p>
+<p>future as a function of the policies</p>
+<p>we're taking now and this minimiz this</p>
+<p>tractable expected free energy function</p>
+<p>G takes as arguments policy and the</p>
+<p>future time point so as a function of</p>
+<p>the policies that are um available and</p>
+<p>you know two years in the future how am</p>
+<p>I going to um manage certain aspect of</p>
+<p>life and it's going to be an expectation</p>
+<p>that's conditional on um uh several</p>
+<p>things conditional mainly we can</p>
+<p>highlight is conditional on policy we're</p>
+<p>doing an expectation that's conditioned</p>
+<p>on policy because we wanted know</p>
+<p>something about the states of the world</p>
+<p>and the observations and the the</p>
+<p>estimated states of the world as well</p>
+<p>given a policy and then that is going to</p>
+<p>be strictly bigger um and so natural log</p>
+<p>that means that it's like basically</p>
+<p>worse um in some ways but it depends a</p>
+<p>lot on whether it's like positive or</p>
+<p>negative that's kind of confusing stuff</p>
+<p>sometimes um like whether it's a</p>
+<p>negative log or like the subtracting or</p>
+<p>the positive log and what it's always</p>
+<p>bigger than is the negative expectation</p>
+<p>of The observed states in the future</p>
+<p>given a policy me here's me observing</p>
+<p>that I have 50 Bitcoin um and that's</p>
+<p>this part two the P of observations</p>
+<p>given policy so what what I'd really</p>
+<p>like to know would be uh some type of</p>
+<p>model that just tells me what states I</p>
+<p>can expect in the future What</p>
+<p>observations I can expect in the future</p>
+<p>um which relate to the States because of</p>
+<p>the uh estimating the states given the</p>
+<p>observations but here we're going for</p>
+<p>the observations given the policy</p>
+<p>and it's the uh log and then uh this</p>
+<p>last part is kind of the important part</p>
+<p>which is the log of the generative model</p>
+<p>which is the observations given the</p>
+<p>policy that's how things will go that's</p>
+<p>well if we take this policy on miles per</p>
+<p>gallon then we will go between uh you</p>
+<p>know 1.5 and 2 degrees C now there's so</p>
+<p>many degrees of freedom that go into</p>
+<p>that but that's like what we'd want to</p>
+<p>estimate would be relating how policies</p>
+<p>literally are going to play into</p>
+<p>observations which then tell us about</p>
+<p>states of the world estimated like S</p>
+<p>without a hat which should be hopefully</p>
+<p>related to S with a hat the real states</p>
+<p>of the world but still the focus here is</p>
+<p>on the observations that are conditioned</p>
+<p>on policy that kind of takes us to</p>
+<p>policy selection and they write that</p>
+<p>policy selections achieved by updating Q</p>
+<p>in order to re to minimize F via G and</p>
+<p>the uh need for this paper was that when</p>
+<p>you have a short temporal Horizon you</p>
+<p>can just run out every possible policy</p>
+<p>like every possible set of five chest</p>
+<p>moves or every possible set of all the</p>
+<p>Tic Tac Toe moves there can't be more</p>
+<p>than nine moves in a game every single</p>
+<p>step if the branching is small and the</p>
+<p>time Horizon is short you can evaluate G</p>
+<p>in full so it becomes rather than</p>
+<p>sampling over a distribution literally</p>
+<p>just calculating a table and then</p>
+<p>sorting however when you have deep</p>
+<p>temporal Horizons you can't really</p>
+<p>evaluate the full branching tree because</p>
+<p>there's too many options so you have to</p>
+<p>sample from that distribution so that's</p>
+<p>the sampling problem the second Pro and</p>
+<p>that's the Deep uh counterfactual</p>
+<p>sampling problem which is even difficult</p>
+<p>under uncertainty the second part is the</p>
+<p>Mario Kart Paradigm which is that in</p>
+<p>continuous action spaces there are</p>
+<p>infinite policies meaning that some</p>
+<p>other way is going to have to come into</p>
+<p>play because not just are we sampling uh</p>
+<p>deep through time we're sampling</p>
+<p>potentially related to counterfactuals</p>
+<p>which there's infinite counterfactuals</p>
+<p>and we're talking about continuous</p>
+<p>action spaces where there's act infinite</p>
+<p>policies so if my only trading</p>
+<p>affordances are should I have zero or</p>
+<p>one or to bitcoin then I could ask which</p>
+<p>one of those three options discreetly is</p>
+<p>better but if there's infinite and I can</p>
+<p>do continuous variables uh even smaller</p>
+<p>than one you know breakdown it's like</p>
+<p>then should I do</p>
+<p>1.1 what if that's very different than</p>
+<p>1.2 now you might say well those two</p>
+<p>should be super similar and you should</p>
+<p>be able just to sample every little</p>
+<p>interval and estimate the distribution</p>
+<p>right if it's a smooth distribution then</p>
+<p>it's going to be easy to optimize maybe</p>
+<p>you could discretize it maybe you could</p>
+<p>do some other way to do smooth</p>
+<p>optimization but the problem is actions</p>
+<p>and policies are not smooth so maybe if</p>
+<p>you're going into that turn in Mario</p>
+<p>Kart you could uh aim at the corner and</p>
+<p>just try to take it as fast as you can</p>
+<p>or you could slow down and do a slightly</p>
+<p>different angle or you could do some</p>
+<p>other skidding maneuver so there's</p>
+<p>multiple Separate Ways you're going to</p>
+<p>be able to take this turn potentially</p>
+<p>with different risks and reward and</p>
+<p>they're all very nuanced so that is why</p>
+<p>the Deep through time and counterfactual</p>
+<p>aspects respectively uh which aren't as</p>
+<p>much dealt with here counterfactuals but</p>
+<p>through time absolutely is and then the</p>
+<p>continuous actions which is really the</p>
+<p>key introduction of this model that</p>
+<p>takes it out of the Paradigm of</p>
+<p>classifying images and puts it into the</p>
+<p>Paradigm of continuous control theory</p>
+<p>and then it turns out that that there's</p>
+<p>a lot of trajectories Through Time given</p>
+<p>how things can go and so there's some uh</p>
+<p>implementation of a way to sample</p>
+<p>trajectories that is utilizing what's</p>
+<p>called a Monte Carlo sampling approach</p>
+<p>or MC and uh there's the marov chain</p>
+<p>Monte Carlo sampling mc mc mc squared um</p>
+<p>and Monte Carlo just means that it's uh</p>
+<p>related to Monte Carlo being a card</p>
+<p>playing reference</p>
+<p>in English and it's like the way that</p>
+<p>you can shuffle a deck is so big how are</p>
+<p>you going to estimate the number of ways</p>
+<p>that you can get a royal flush or a pair</p>
+<p>of fours or something like that instead</p>
+<p>of just actually doing well it's 1 and</p>
+<p>24 * 1 and 52 * 3 over 52 the way you do</p>
+<p>it is you just sample randomly and then</p>
+<p>you say okay I took a billion samples</p>
+<p>and 1 million of them had this feature</p>
+<p>and then you just take the ratio as your</p>
+<p>estimate so it's a sampling and that</p>
+<p>kind of hearkens back to earlier where</p>
+<p>we wanted to talk about getting the</p>
+<p>efficient sampling cuz that's kind of</p>
+<p>what it's about is in the marov um or</p>
+<p>sorry in the Monte Carlo sampler which</p>
+<p>could be marov chain based um we want to</p>
+<p>get good sampling we don't want to</p>
+<p>sample only the hands with a royal flush</p>
+<p>like if we had a a poor randomizer</p>
+<p>because then we're going to get an</p>
+<p>estimate that's wrong all right then</p>
+<p>they go into a little bit more detail</p>
+<p>about the G the estimated or the</p>
+<p>expected free energy which is still as</p>
+<p>it was before about policy in the future</p>
+<p>and now it's going to be uh this broken</p>
+<p>down and this is also where they draw</p>
+<p>some of the homologies to reinforcement</p>
+<p>learning and info gain into the uh the</p>
+<p>informational gain kind of like the</p>
+<p>reward and the info so this is where the</p>
+<p>explore exploit also comes into play</p>
+<p>which is that if one is only optimizing</p>
+<p>locally they may be exploiting they may</p>
+<p>be getting reward for a short period of</p>
+<p>time but then it doesn't lead to a um</p>
+<p>uh like we'll see it in the hill climber</p>
+<p>example but if you just reward only and</p>
+<p>only exploit sometimes you don't do very</p>
+<p>well but if you just explore you might</p>
+<p>not ever get to exploit anywhere good</p>
+<p>and so the whole tradeoff and the whole</p>
+<p>challenge of modeling is this balance</p>
+<p>between explore and exploit between</p>
+<p>searching deeply and searching broadly</p>
+<p>and so the Holy Grail would be the right</p>
+<p>way to search deeply down the routes</p>
+<p>that are interesting and informative but</p>
+<p>not down the ones that don't tell you</p>
+<p>that much but we don't know which paths</p>
+<p>are going to be informative or not until</p>
+<p>we go down them however if we have a</p>
+<p>deep generative model we can say in</p>
+<p>terms of me winning this chess game this</p>
+<p>branch is not informative for me to</p>
+<p>search down not because there aren't</p>
+<p>trillions of options but because I have</p>
+<p>two castles and they have no pieces</p>
+<p>other than their king so I'm going to</p>
+<p>win so in terms of me winning it doesn't</p>
+<p>give me any information to keep on</p>
+<p>searching down that route I already know</p>
+<p>I'm going to win and then there might be</p>
+<p>another aen where there's fewer options</p>
+<p>per se like less branching but there's</p>
+<p>more uncertainty that's resolvable more</p>
+<p>info gain is possible with respect to</p>
+<p>the policies and</p>
+<p>winning all right let's just do a little</p>
+<p>bit on the experiments before we close</p>
+<p>out so the two experiments that they go</p>
+<p>into so hopefully all of you</p>
+<p>experimentalists um by Sasha um</p>
+<p>hopefully all you experimentalists will</p>
+<p>like this part and the two examples are</p>
+<p>the mountain car and the uh inverted</p>
+<p>pendulum task and the hopper task so the</p>
+<p>mountain car is an example of</p>
+<p>exploration so what's being leared is</p>
+<p>the policy between position and velocity</p>
+<p>and then getting higher up the reward</p>
+<p>function is like getting higher up and</p>
+<p>so the car doesn't have a strong enough</p>
+<p>engine just to drive up to the flag so</p>
+<p>it's got to drive up and then the</p>
+<p>perfect policy would be at right when</p>
+<p>you're stopped flip the engine into</p>
+<p>reverse and keep it in reverse until you</p>
+<p>stop on this side and then get a little</p>
+<p>bit higher up this way but this shows</p>
+<p>you why you can't locally optimize why</p>
+<p>you need to explore because let's just</p>
+<p>say you're driving uphill you're slowing</p>
+<p>down you're slowing down you start</p>
+<p>slipping back slipping back and you're</p>
+<p>like no stay on the gas continue</p>
+<p>accelerating forward now you're slowing</p>
+<p>your descent so when you get to here</p>
+<p>you're not moving that fast so then when</p>
+<p>you're on this side you'd say no no I</p>
+<p>still want to get to the flag and so</p>
+<p>you'd end up just sort of like being</p>
+<p>very shallow down and focusing a lot of</p>
+<p>your time here on the um middle and on</p>
+<p>the right side so if you just simply</p>
+<p>move towards the flag you're probably</p>
+<p>not going to get there if the engine is</p>
+<p>too weak however if you actually say I</p>
+<p>want to explore I want a policy that</p>
+<p>helps me increase my range so I want to</p>
+<p>go as far as I can here and then wow if</p>
+<p>I enact a policy where as soon as I hit</p>
+<p>my Maxima I just try to explore further</p>
+<p>this way and then I enact a policy</p>
+<p>Switch and Go back to going this way wow</p>
+<p>I might actually reach the goal purely</p>
+<p>as a function of exploring now again</p>
+<p>this is like a little model situation</p>
+<p>where it turns out that exploring does</p>
+<p>help one realize the goal that's not</p>
+<p>always the case but it's it isolates</p>
+<p>that feature of the model needing to be</p>
+<p>able to explore the second case in the</p>
+<p>exploit paradigms it's usually a little</p>
+<p>bit more obvious what needs to be</p>
+<p>exploited and about whether you're doing</p>
+<p>it well or not so in the inverted</p>
+<p>pendulum task it's like a railroad car</p>
+<p>on a rail and there's a heavy ball M</p>
+<p>that's on top of this pendulum it's</p>
+<p>inverted and then the car can like move</p>
+<p>backwards and that kind of moves this</p>
+<p>joint to the left and that pushes the um</p>
+<p>Pendulum In this case would straighten</p>
+<p>it out whereas if this car starts taking</p>
+<p>off to the right then this pendulum is</p>
+<p>just going to fall and so the reward is</p>
+<p>the height of the pendulum so it's</p>
+<p>trying to maximize its reward by</p>
+<p>enacting a policy and so the policy</p>
+<p>that's best would be to keep on</p>
+<p>exploiting that perfectly straight up</p>
+<p>line where you actually are in the zone</p>
+<p>of optimal control and then the exploit</p>
+<p>task on the right is about uh increasing</p>
+<p>the distance that's traveled by a little</p>
+<p>jumping thing does anyone else have any</p>
+<p>like thoughts on explore exploit or um</p>
+<p>what what else does that yeah goad</p>
+<p>blue so this I thought was super</p>
+<p>interesting um as I was unpacking this</p>
+<p>paper so and maybe I should just kind of</p>
+<p>like lay a little bit of this out there</p>
+<p>so the reward is only given in this</p>
+<p>extrinsic value which is like the</p>
+<p>exploit portion of the free energy</p>
+<p>equation like given in number six and so</p>
+<p>you know I don't know you didn't say it</p>
+<p>explicitly but like here in the</p>
+<p>exploration experiments the reward just</p>
+<p>uses that um exploit parameter and</p>
+<p>doesn't do any exploration based on</p>
+<p>state or parameter Information Gain and</p>
+<p>then in the exploit task it only uses</p>
+<p>that exploitation parameter so like</p>
+<p>there's no need for exploration I just</p>
+<p>thought that that was super interesting</p>
+<p>and like what would happen if they</p>
+<p>included exploration in this explor in</p>
+<p>the</p>
+<p>exploitation um Paradigm so like why did</p>
+<p>they leave that out like it was just</p>
+<p>kind of weird to me cool good question</p>
+<p>like that makes me think about let's say</p>
+<p>there's some parts of the railroad track</p>
+<p>where it's different angles and so yes</p>
+<p>you want to maintain the pendulum being</p>
+<p>upright but also you might want to</p>
+<p>explore around a little bit to find a</p>
+<p>region where you can control it better</p>
+<p>so that actually makes me think of like</p>
+<p>doing a track stand on my bicycle</p>
+<p>there's some times where there's some</p>
+<p>slopes of pavement that are easy to do a</p>
+<p>track stand on and some are really hard</p>
+<p>to do it but the way you get from a hard</p>
+<p>position into an easier part of payment</p>
+<p>you have to explore and that means</p>
+<p>breaking the track</p>
+<p>so definitely real control tasks are</p>
+<p>related to the combination of explore</p>
+<p>and exploit why did they use these two I</p>
+<p>think that the reason why and let's hear</p>
+<p>from Alec as to the real answer is that</p>
+<p>these are part of the open AI</p>
+<p>benchmarking set of like little micro</p>
+<p>computable benchmarks for learning</p>
+<p>algorithms here's the open ey AI um</p>
+<p>let's see if we can even open it here</p>
+<p>yeah so like here's their website and uh</p>
+<p>there's a bunch of uh documentable cases</p>
+<p>that allow comparison between different</p>
+<p>machine learning algorithms and so I</p>
+<p>think they're just outlining the minimal</p>
+<p>single dimensional like sort of extreme</p>
+<p>classic test cases there's a ton of</p>
+<p>cases where we can already see it</p>
+<p>wouldn't work like a double pendulum</p>
+<p>that's chaotic or there's other kinds of</p>
+<p>things that this model just doesn't even</p>
+<p>try to do but this allows us to directly</p>
+<p>compare two other algorithms on the</p>
+<p>exact same t task instead of inventing</p>
+<p>something that would like either not</p>
+<p>take advantage of active inferences</p>
+<p>strength or be like kind of an unfair</p>
+<p>example by making it too nuanced like if</p>
+<p>we added in a a reward another type of</p>
+<p>something that a generative model could</p>
+<p>take advantage of then we couldn't</p>
+<p>compare it to some of these other agents</p>
+<p>that don't use that kind of</p>
+<p>information is that I just think they</p>
+<p>were using the minimal case to to</p>
+<p>demonstrate what explore and exploit</p>
+<p>could look like and then future work</p>
+<p>hopefully would be about things that</p>
+<p>involve both right and so I get that and</p>
+<p>but it just was like interesting to me</p>
+<p>then I guess because the there's no</p>
+<p>reward in the exploit parameter that</p>
+<p>that's why they had to keep the exploit</p>
+<p>parameter in the explore task do you</p>
+<p>know what I mean like what I I just</p>
+<p>wonder what would be the results if you</p>
+<p>took out the exploit parameter from the</p>
+<p>explore task would it then not succeed</p>
+<p>because it just would wander around</p>
+<p>aimlessly or would wandering around</p>
+<p>aimlessly or like without a reward to</p>
+<p>get get higher would that just produce</p>
+<p>like a random result do you see what I</p>
+<p>mean I I see what you mean so there</p>
+<p>there's there's one there's one driving</p>
+<p>strategy where it's truly just making</p>
+<p>policy that's unrelated to its elevation</p>
+<p>and um that depending on how that plays</p>
+<p>out it might get somewhere it might not</p>
+<p>most likely not because the space of the</p>
+<p>strategies with relationship to getting</p>
+<p>the flag is low but yes I I I I agree</p>
+<p>that's an interesting question like when</p>
+<p>is it enough to just explore like when</p>
+<p>is novelty search simply enough when</p>
+<p>might novelty search be strictly the</p>
+<p>best when might novelty search 80% plus</p>
+<p>20% let's keep a little reminder of our</p>
+<p>elevation when might that be a relevant</p>
+<p>and tractable strategy which parts of</p>
+<p>these explore and exploit are</p>
+<p>calculable um for example it might make</p>
+<p>sense to evaluate or exploit a current</p>
+<p>distributional uh value but how do we</p>
+<p>explore the space of economic strategies</p>
+<p>like I can't explore every single</p>
+<p>possible economic strategy but I might</p>
+<p>be able to exploit some ratio by doing</p>
+<p>Arbitrage so there's some control tasks</p>
+<p>where the exploitation is really</p>
+<p>straightforward and visible and the</p>
+<p>exploration is hard and then there's</p>
+<p>other ones where um maybe this car can't</p>
+<p>see the flag so maybe exploring is the</p>
+<p>only thing it can do and so the really</p>
+<p>great question those are kind of</p>
+<p>interesting about these things being</p>
+<p>traded off so there's the explore</p>
+<p>exploit tradeoff and how that gets</p>
+<p>implemented there's also the model</p>
+<p>adequacy minus complexity which is we</p>
+<p>want a good model but not too complex or</p>
+<p>overfit one so there's no a prior best</p>
+<p>way to trade off those two and then um</p>
+<p>there there's just all these interesting</p>
+<p>trade-offs that we can explore the space</p>
+<p>of let's just look at what the results</p>
+<p>were so here the x-axis is like where</p>
+<p>positions is from the other side farther</p>
+<p>to um 0.5 which I guess could be the</p>
+<p>flag uh or at least close to it I try to</p>
+<p>line it up maybe it's the way or</p>
+<p>something like that but we can see that</p>
+<p>the position of the greedy agent who</p>
+<p>just drives up up up up up and says no</p>
+<p>and then just goes up up up up no this</p>
+<p>one stays tightly bounded in uh a medium</p>
+<p>velocity uh regime and within a sort of</p>
+<p>sampling a ton from this part of the</p>
+<p>distribution think about that like an</p>
+<p>upside down bell curve and it's like</p>
+<p>sampling a ton from right here but it's</p>
+<p>not sampling from up here so that's how</p>
+<p>there's a relationship between sampling</p>
+<p>and control because to get to certain</p>
+<p>States it's like sampling those States</p>
+<p>the Epsilon uh greedy uh agent which has</p>
+<p>a slightly different implementation it</p>
+<p>does sometimes appear to get outside</p>
+<p>maybe by the end of its 100 EPO it was</p>
+<p>starting to take some trips out further</p>
+<p>but and at slightly higher uh speeds and</p>
+<p>slightly further out but it doesn't</p>
+<p>spend most of its time doing so the</p>
+<p>active inference learner of course they</p>
+<p>wrote the paper so it's going to be the</p>
+<p>one that succeeds but it does in 100</p>
+<p>epox learn very fast fast and it does</p>
+<p>get to some pretty high speeds and some</p>
+<p>pretty distant</p>
+<p>positions and then just briefly to like</p>
+<p>compare it with the other</p>
+<p>task the two exploit tasks are laid out</p>
+<p>here and they are comparing it to this</p>
+<p>ddpg agent which is a model-free learner</p>
+<p>and so people can look into details or</p>
+<p>one could imagine that maybe there's</p>
+<p>other algorithms they could test it</p>
+<p>against these are all the kinds of</p>
+<p>things we can ask Al about but we can</p>
+<p>see that um a which is the same as c c</p>
+<p>is just the first part of a it just</p>
+<p>zoomed in on really close but it's like</p>
+<p>right away in both of these after either</p>
+<p>like five epochs like five trials five</p>
+<p>seconds or um after maybe 30 or 40 or 50</p>
+<p>the active inference learner just starts</p>
+<p>to take off in terms of once it's hit on</p>
+<p>a solution sometimes it just it strictly</p>
+<p>improves it with some noise whereas the</p>
+<p>um</p>
+<p>ddpg the two things that you see are</p>
+<p>first off at spends a ton of time near</p>
+<p>the Baseline so it takes a while before</p>
+<p>it locks on to any useful combination of</p>
+<p>parameters and then when it gets off</p>
+<p>Baseline it ends up um sometimes</p>
+<p>succeeding but still um it's like</p>
+<p>perhaps because it's locally optimizing</p>
+<p>or we can ask why it is but they're just</p>
+<p>not sampling highly rewarding States</p>
+<p>even after it gets off the Baseline it</p>
+<p>does stay off Baseline but it doesn't</p>
+<p>ever get as high as the active inference</p>
+<p>learner does extreme ex rapidly so this</p>
+<p>is kind of where they're drawing their</p>
+<p>evidence for the claims about the</p>
+<p>potential superiority or preference for</p>
+<p>active inference now yes you could</p>
+<p>probably train a ddpg on some massive</p>
+<p>data set and get better performance than</p>
+<p>they got they probably just used a</p>
+<p>straightforward implementation so that's</p>
+<p>where research happens that's what</p>
+<p>people study is okay well can we do a</p>
+<p>ddpg whatever that is plus this other</p>
+<p>feature that is being used by this other</p>
+<p>group or what is it that actually</p>
+<p>causing the active inference learner to</p>
+<p>get off the ground so fast and could we</p>
+<p>even get it off the ground faster in the</p>
+<p>case of this Hopper task or could we</p>
+<p>make a more reliable reward function for</p>
+<p>the inverted pendulum task but this is</p>
+<p>control theory at its finest really and</p>
+<p>so this is what it's all about is</p>
+<p>learning policies that map states onto</p>
+<p>reward those are the key pieces that's</p>
+<p>why we spent so much time talking about</p>
+<p>the equations that are relating between</p>
+<p>observation</p>
+<p>State estimates and policies because</p>
+<p>that's what it's all about is the</p>
+<p>observations coming in and then the</p>
+<p>policies being selected based upon the</p>
+<p>estimated states of the world and then</p>
+<p>actions coming out that's the marov</p>
+<p>blanket of the organisms perspective at</p>
+<p>least and then outside uh World in these</p>
+<p>examples is simple and unchanging like</p>
+<p>gravity is gravity for the pendulum and</p>
+<p>for the hopper and it's not changing but</p>
+<p>we can start to think about well what if</p>
+<p>there was uh a dial gravity Rhythm how</p>
+<p>would the control theory change well</p>
+<p>there could be a generative model in the</p>
+<p>agent control uh mapping of those p and</p>
+<p>Q that involved some sort of is it day</p>
+<p>or night and then I have a conditional</p>
+<p>policy whether I think it's day or night</p>
+<p>so we can kind of see how it starts</p>
+<p>adding layers there and yeah that's</p>
+<p>basically it but let's have any last</p>
+<p>thoughts does anyone like what was</p>
+<p>something cool or unexpected what's</p>
+<p>something they'd like to ask Alec about</p>
+<p>or that they're curious to learn more</p>
+<p>about</p>
+<p>now chill Oh Shannon go</p>
+<p>ahead hey um yeah so I was thinking</p>
+<p>about um Blue's question and why not use</p>
+<p>the um exploration component in these</p>
+<p>inverted pedum and Hopper tasks and</p>
+<p>wouldn't it be because there's kind of</p>
+<p>only one state that is maximum reward so</p>
+<p>if we're completely vertical or if we</p>
+<p>hop as far as possible but if there were</p>
+<p>potential states that would have</p>
+<p>differing values of reward then we might</p>
+<p>expect to see something different if we</p>
+<p>use the the exploration component of the</p>
+<p>active reference model great Point like</p>
+<p>if it were a bodal distribution then you</p>
+<p>can't just try to keep it as close to</p>
+<p>the maximum height as possible because</p>
+<p>you wouldn't know if you were locally</p>
+<p>optimizing or globally optimizing and</p>
+<p>you might want to be sampling across the</p>
+<p>whole distribution just so you know or</p>
+<p>you might want to spend a lot of time at</p>
+<p>rewarding States but still have some</p>
+<p>understanding of the Total distribution</p>
+<p>to understand if there might be more</p>
+<p>rewarding states that you're just not</p>
+<p>visiting at all that is the whole</p>
+<p>challenge of local and Global</p>
+<p>optimization and so you're right that in</p>
+<p>this mountain car example local</p>
+<p>optimization is global you're going to</p>
+<p>get to the best flag just by by you know</p>
+<p>so to speak I know it was was in the</p>
+<p>explore strategy but in this one it's</p>
+<p>clear as you brought up if you're having</p>
+<p>the pendulum at the maximum height</p>
+<p>You're simply doing as well as you can</p>
+<p>period you don't need to explore other</p>
+<p>ways you could do Loop to Loop and</p>
+<p>that's the challenge though is you got</p>
+<p>to you got to walk through the valley of</p>
+<p>death to get from the local Optima to</p>
+<p>the global and that's where these</p>
+<p>algorithms uh dare not tread because</p>
+<p>they have to walk through improbable or</p>
+<p>non preferable like moving away from</p>
+<p>your target States in order to get to</p>
+<p>the next Peak which might be absolutely</p>
+<p>higher in the exploit Paradigm or might</p>
+<p>reveal new territory in the explore</p>
+<p>Paradigm so there's reasons why you want</p>
+<p>to get through the valley of low</p>
+<p>likelihood whether you're exploring or</p>
+<p>exploiting or a</p>
+<p>combination and that is where there's so</p>
+<p>many options there's so many weeds and</p>
+<p>tangles in the valley that the way that</p>
+<p>we're going to cut through it with a</p>
+<p>machete is infog gain and we're going to</p>
+<p>explore paths through the valley that</p>
+<p>are the most informative for us given</p>
+<p>our understanding of our own policies</p>
+<p>and so that's like if you have a 4x4</p>
+<p>versus a small team versus you're a</p>
+<p>drone different policies different</p>
+<p>affordances mean that you're going to be</p>
+<p>exploring this Valley differently and</p>
+<p>then there's whether you're exploring</p>
+<p>for the sake of exploring and learning</p>
+<p>new turf or whether you're exploiting</p>
+<p>because you just want to have uh high</p>
+<p>elevation or whether it's a little of</p>
+<p>both those are all some Nuance you can</p>
+<p>add in but the inside of active</p>
+<p>inference is like let's actually think</p>
+<p>about what would be informative</p>
+<p>trajectories to take through that Valley</p>
+<p>based upon a generative model of the</p>
+<p>landscape and taking our own policy</p>
+<p>affordances into account if you don't</p>
+<p>have a generative model of the landscape</p>
+<p>you're going to be doing something like</p>
+<p>locally just going downhill or locally</p>
+<p>going uphill so you need a deeper</p>
+<p>generative model of landscape and if you</p>
+<p>don't take your affordances into account</p>
+<p>then you're lost because you might be</p>
+<p>unknowingly optimizing something that's</p>
+<p>going to be appropriate for you know</p>
+<p>know the uh drone to fly over but then</p>
+<p>you're on the ground so you actually</p>
+<p>can't make it up that hill but it's a</p>
+<p>policy that might work for a different</p>
+<p>organism and it's just not the one that</p>
+<p>works for you I know we're kind of like</p>
+<p>mixing metaphors but I think it's a fun</p>
+<p>way to think about these optimizations</p>
+<p>because we are implementing Control</p>
+<p>process something that we modeled with</p>
+<p>control theory and then also we're</p>
+<p>seeing it play out in like a very</p>
+<p>abstract computational framework</p>
+<p>here cool stuff metors yep so then they</p>
+<p>talk about the relationship with</p>
+<p>previous work I think I'll just put it</p>
+<p>on the screen people can um pause it if</p>
+<p>they want to look but with that I'll</p>
+<p>just say thanks to our cohort here for</p>
+<p>participating super interesting stuff</p>
+<p>and next week we hope to have Alec on to</p>
+<p>discuss some of these questions so you</p>
+<p>can check the calendar event to provide</p>
+<p>a follow-up survey where you can add</p>
+<p>some details how could we improve or</p>
+<p>what questions would you like to hear</p>
+<p>conveyed in 8.2 and and for those who</p>
+<p>are not participating live please</p>
+<p>provide us with feedback or suggestions</p>
+<p>or questions that we can cover and just</p>
+<p>uh stay in touch but that was really</p>
+<p>great so thanks a lot everyone for the</p>
+<p>discussion</p>
+</article>
+</body>
+</html>

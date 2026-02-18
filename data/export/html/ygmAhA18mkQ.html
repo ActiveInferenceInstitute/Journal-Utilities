@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream 010.2 ~ RxEnvironments.jl with Wouter Nuijten</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream 010.2 ~ RxEnvironments.jl with Wouter Nuijten</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_010 &middot; Episode 2 &middot; Speakers: RxEnvironments.jl with Wouter Nuijten &middot; Duration: 58:45 &middot; Views: 361</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=ygmAhA18mkQ">https://www.youtube.com/watch?v=ygmAhA18mkQ</a></div>
+<article>
+<p>all right hello it is May 16th 2024</p>
+<p>we're in the RX and fur JL project with</p>
+<p>some guests from bias lab and</p>
+<p>participants and vzer will be sharing</p>
+<p>with us about the RX environments. JL</p>
+<p>package so thanks all for joining</p>
+<p>looking forward to this presentation and</p>
+<p>discussion go for</p>
+<p>it all right thank you Daniel uh so my</p>
+<p>name is V I am a second year PhD student</p>
+<p>in bias lab uh you may know Bas laab</p>
+<p>because we are the uh main authors of</p>
+<p>the RX infer package a package for</p>
+<p>reactive Beijing</p>
+<p>inference and last year when I was</p>
+<p>working with RX and fur um and doing</p>
+<p>well reactive beijan inference I found</p>
+<p>that there was a a lacking support for</p>
+<p>environments in the same reactive</p>
+<p>Paradigm uh and we were relying on</p>
+<p>reinforcement learning uh packages such</p>
+<p>as gymnasium or or reinforcement</p>
+<p>learning</p>
+<p>and I didn't really like it so I wrote</p>
+<p>RX environments. JL a package for</p>
+<p>reactive um environments which aims to</p>
+<p>uh complement RX and fur in the</p>
+<p>reactive um agent</p>
+<p>development um ecosystem so if we look</p>
+<p>at RX environments it's a very</p>
+<p>lightweight boiler plate package it</p>
+<p>contains a boiler plate code to make</p>
+<p>something that I call a reactive</p>
+<p>environment a reactive environment is</p>
+<p>a an environment that consists of</p>
+<p>entities where an entity can be an agent</p>
+<p>but it can also be a component of an</p>
+<p>environment or the entire environment</p>
+<p>itself and what we have to describe is</p>
+<p>how entities communicate with each other</p>
+<p>so every entity has its own Mark of</p>
+<p>blanket with with which it can</p>
+<p>communicate with other entities in the</p>
+<p>environment so in that sense it's very</p>
+<p>um related to active inference because</p>
+<p>well</p>
+<p>we have a very specific notion of the</p>
+<p>interior of an entity and the exterior</p>
+<p>of the entity and it's Mark of blanket</p>
+<p>and I try to replicate that in ARX</p>
+<p>environments so um to give a short demo</p>
+<p>we can dive right into the code I have</p>
+<p>prepared um the mountain car example in</p>
+<p>the uh documentation of ARX environments</p>
+<p>but just to Showcase to you that this</p>
+<p>gives you um more</p>
+<p>um flexibility to work with so we have</p>
+<p>on the left hand side I have my code</p>
+<p>because I'm going to manipulate this</p>
+<p>environment uh in real time and on the</p>
+<p>right hand side I have the environment</p>
+<p>so I have my landscape I hope you guys</p>
+<p>can see my cursor by the way uh I have</p>
+<p>the landscape and in the middle I have</p>
+<p>one agent one car a DOT representing a</p>
+<p>car um what's nice about RX environments</p>
+<p>is that I can send um actions to the</p>
+<p>environment so my landscape the</p>
+<p>environment is one entity the agent the</p>
+<p>car is a different entity and I can send</p>
+<p>a command that contains Engine Force on</p>
+<p>a scale from minus one to one so I can</p>
+<p>send uh minus one to The Entity and</p>
+<p>you'll see that the car starts driving</p>
+<p>up the hill it doesn't have a lot of</p>
+<p>Engine Force and I can live send</p>
+<p>different commands and you'll</p>
+<p>see that the car responds accordingly</p>
+<p>now what's nice about arcs environments</p>
+<p>is that as I said uh you'll get native</p>
+<p>uh multi-agent environments out of the</p>
+<p>box so if I just add a different agent</p>
+<p>Mountain car agent with some hyper</p>
+<p>parameters to the</p>
+<p>environment you'll see that there is now</p>
+<p>a second dot at the bottom of the valley</p>
+<p>a second car and similar to how this</p>
+<p>first car can be</p>
+<p>controlled we can control the second car</p>
+<p>too 01 was</p>
+<p>maybe uh this uh I should have maybe</p>
+<p>given this car a bit less engine power</p>
+<p>because it's clearly flying off the</p>
+<p>screen um but you get the gist um that</p>
+<p>we</p>
+<p>can um well control both cars</p>
+<p>simultaneously um and RX environments</p>
+<p>handles all this uh this communication</p>
+<p>natively reactively under the hood so my</p>
+<p>idea is or my next steps for this</p>
+<p>project are going to be to uh</p>
+<p>incorporate better into the ARX and fur</p>
+<p>ecosystem because I think that building</p>
+<p>agents uh with ARs environments in this</p>
+<p>way U that both the active inference</p>
+<p>Community as well as the arcs Ander</p>
+<p>Community can can can benefit from this</p>
+<p>so this is a very short overview of the</p>
+<p>things that ARX environments can do it</p>
+<p>can do a whole lot more um but I think</p>
+<p>that this is a very short demo that</p>
+<p>gives you the best idea of why it's nice</p>
+<p>that we're going to go reactive because</p>
+<p>you get stuff like this we can control</p>
+<p>in real time we can control multi-agent</p>
+<p>environments um and it's very um active</p>
+<p>inference e in that sense so on that</p>
+<p>note um I'll stop sharing my</p>
+<p>screen let's see and um yeah if you guys</p>
+<p>have any questions about this which I uh</p>
+<p>which I heard you have then I'll be very</p>
+<p>happy to take</p>
+<p>it awesome</p>
+<p>thanks very informative and hilarious</p>
+<p>Mountain car example yeah this this you</p>
+<p>you you can play with this Engine Force</p>
+<p>of this mountain car and I probably</p>
+<p>should have prepared that it doesn't fly</p>
+<p>off the screen but you I mean it gets</p>
+<p>the point for us right</p>
+<p>it's yeah okay um I'll share screen and</p>
+<p>just type and so everyone else in the</p>
+<p>group just go for asking any of the</p>
+<p>questions we'd already identified or any</p>
+<p>new questions arising so go for</p>
+<p>it um interested Rel</p>
+<p>between I I I don't understand you very</p>
+<p>well maybe there's do you understand c</p>
+<p>as well okay</p>
+<p>relationship</p>
+<p>between you're you're very very</p>
+<p>faint uh yeah okay</p>
+<p>well with stuff I I actually had a</p>
+<p>question do not on this particular page</p>
+<p>that um Daniel's sharing right now I</p>
+<p>tried my hand at let's say plugging in</p>
+<p>the mountain car the existing Mountain</p>
+<p>car agent in the RX and thir</p>
+<p>documentation into your Mountain car</p>
+<p>environment I wasn't quite able to do</p>
+<p>that but it appears that you you have</p>
+<p>done that uh in that example just then</p>
+<p>and then maybe I was missing something</p>
+<p>because in the in the documentation the</p>
+<p>RX environments documentation from</p>
+<p>mounting car I didn't see that there was</p>
+<p>a an agent that had you know</p>
+<p>instantiated the generative model uh</p>
+<p>much in the same way that the ARX infer</p>
+<p>documentation had and I thought oh okay</p>
+<p>this this is a wrapper or you know a</p>
+<p>nice API for me to specify an</p>
+<p>environment I I now have to go away and</p>
+<p>then specify my agent also but it seems</p>
+<p>is that what you did for that example</p>
+<p>just then or or did you just no no I</p>
+<p>just for this example just now I just</p>
+<p>used my um you</p>
+<p>know custom commands that I just uh sent</p>
+<p>myself um so this is something that I'm</p>
+<p>actively working on on uh combining the</p>
+<p>two um the mountain active inference</p>
+<p>Mountain car example on the ARX and fur</p>
+<p>website I believe is a bit</p>
+<p>um cheating in a sense because we give</p>
+<p>it all Environ Dynamics all functions of</p>
+<p>the environment Dynamics and then we uh</p>
+<p>do some uh some approximation to the</p>
+<p>posterior of what we have to do but in a</p>
+<p>sense it doesn't really discover that it</p>
+<p>has to do anything because it knows all</p>
+<p>the environment Dynamics so that's why I</p>
+<p>haven't really spent time on um</p>
+<p>incorporating this specific example</p>
+<p>because I feel that if we're going to</p>
+<p>demo this package plus an agent that it</p>
+<p>should be an agent that actually has</p>
+<p>capabilities of exploring the</p>
+<p>environment instead of knowing all the</p>
+<p>environment Dynamics and just while</p>
+<p>basically doing model predictive</p>
+<p>control right okay that makes it a bit</p>
+<p>clearer okay I I have a follow up maybe</p>
+<p>let somebody else um something just for</p>
+<p>now thank you very</p>
+<p>much so to give a very short answer to</p>
+<p>your question we can we can sit together</p>
+<p>if we uh on if want to Define an agent a</p>
+<p>generative model I know how to hoop the</p>
+<p>two up I just don't have a working</p>
+<p>example</p>
+<p>yet right okay I have I don't want to</p>
+<p>use this I don't want to use this agent</p>
+<p>from from the arxs and F documentation</p>
+<p>because indeed I feel that it's a bit</p>
+<p>cheating but it's my personal opinion</p>
+<p>right yeah yeah okay that that actually</p>
+<p>clears a lot of things off for me</p>
+<p>because I was kind of unclear like oh do</p>
+<p>I do I kind of plug that one in is that</p>
+<p>is that what I do yeah okay but that's</p>
+<p>not that functionality exactly CLE yeah</p>
+<p>we can um however there is a a subtlety</p>
+<p>there and that is something that I find</p>
+<p>very interesting in my research is if</p>
+<p>you open up this space or you open up</p>
+<p>your environment to be reactive then you</p>
+<p>want your environment to be able to um</p>
+<p>receive an action at any point in time</p>
+<p>so what we see in reinforcement learning</p>
+<p>is that you have a specific transition</p>
+<p>function the environment Waits until you</p>
+<p>send an action it will move the</p>
+<p>environment forward a pre-specified</p>
+<p>amount of time and it will emit to you</p>
+<p>an observation and a reward however if</p>
+<p>you make this entire thing reactive then</p>
+<p>well our agent would be able to emit at</p>
+<p>any point in time and also it would be</p>
+<p>able to get an observation at any point</p>
+<p>in time now that is a very</p>
+<p>interesting um setting to work with</p>
+<p>because now our agents should kind of be</p>
+<p>robust to getting an observation at any</p>
+<p>point in time specifically what if uh</p>
+<p>our agent that lives on some embedded</p>
+<p>device on some drone whatsoever it has</p>
+<p>less compute to do to do inference</p>
+<p>however well at some point we're going</p>
+<p>to have to send an observ or an agent an</p>
+<p>action back to the environment we're</p>
+<p>going to have to do something so this</p>
+<p>reactivity opens</p>
+<p>up uh a research Avenue for well right</p>
+<p>now for me because I find find this very</p>
+<p>interesting on how reactive truly</p>
+<p>reactive agents would look like if you</p>
+<p>see what I mean yeah yeah I do that's</p>
+<p>that's exceptionally exciting stuff it's</p>
+<p>it's awesome um okay but but okay just</p>
+<p>just to wrap up my my yes question there</p>
+<p>is no at the moment you kind of manually</p>
+<p>you know yes you put in the force limit</p>
+<p>and you say okay I'm going to kind of</p>
+<p>manually you know play around with</p>
+<p>letters and I have I have working</p>
+<p>examples with like ban therat or very</p>
+<p>very easy um which I probably I don't</p>
+<p>know if I have them on my machine right</p>
+<p>now or if they live somewhere like it</p>
+<p>works but the the thing that I got to</p>
+<p>work is model predictive control and not</p>
+<p>active inference yet so that's</p>
+<p>why awesome all right thank</p>
+<p>you you're welcome</p>
+<p>um is my yeah can you hear me a bit</p>
+<p>better now yes okay but um I'm uh</p>
+<p>interested in the relationship between</p>
+<p>orx environments and orex in fur um for</p>
+<p>example to put it simply is it possible</p>
+<p>to use only orx environments or is it</p>
+<p>supposed to be always be used in</p>
+<p>collaboration with RX and</p>
+<p>fur</p>
+<p>us yes the relation is that uh I wrote</p>
+<p>ARX environment</p>
+<p>specifically um as a complimentary</p>
+<p>package to ARX and fur so if you just</p>
+<p>want to do basian inference you use ARX</p>
+<p>and fur but I think if you want to build</p>
+<p>agents that you're better off using the</p>
+<p>the two together so RX environments</p>
+<p>is um a package that uses the same</p>
+<p>reactive backend as RX and fur so it's</p>
+<p>made to be compatible with ARX and fur</p>
+<p>however if you write um agents just with</p>
+<p>an algorithm you can use ARX</p>
+<p>environments by itself it's not</p>
+<p>mandatory to use ARX and fur they are</p>
+<p>separate packages there's not a</p>
+<p>dependency on ARX Ander however since um</p>
+<p>they share the same reactive back endend</p>
+<p>so the same package for reactivity under</p>
+<p>the hood which is also from bias laab</p>
+<p>which is rocket um if you want to build</p>
+<p>agents I would advise to to use RX INF</p>
+<p>fur so there they're disjoined but</p>
+<p>they're designed with each other in mind</p>
+<p>or ARX environments is designed with ARX</p>
+<p>Ander in</p>
+<p>mind so um if we um use this high level</p>
+<p>of a</p>
+<p>of abstraction given to us by ARX Vons</p>
+<p>uh do we lose</p>
+<p>anything uh or can we at any time dive</p>
+<p>into the lower levels by means of orex</p>
+<p>INF fur</p>
+<p>itself</p>
+<p>so um I would say yes because the</p>
+<p>inference process that happens in ARX</p>
+<p>and fur is disjointed from what's going</p>
+<p>on in ARX environment similarly to well</p>
+<p>what happens in in in real life so you</p>
+<p>can you can see ARX environments as a</p>
+<p>package in which you can make</p>
+<p>um like a digital twin of the</p>
+<p>environment but then whatever happens in</p>
+<p>the inference process in your agents</p>
+<p>well that's still RX andur like all RX</p>
+<p>andur um diagnostic tools or debuging</p>
+<p>tools should be available</p>
+<p>there um and a more practical question I</p>
+<p>know from based on the large papers um</p>
+<p>and uh Professor def as well they like</p>
+<p>to divide the um what's going on into</p>
+<p>these six methods the ACT future execute</p>
+<p>observe compute and slide so do you see</p>
+<p>that as kind of Superfluous in the orx</p>
+<p>orx environment setting</p>
+<p>or um is it is it fine to use that</p>
+<p>apprach</p>
+<p>let me Google the definition for</p>
+<p>Superfluous uh ah um that is a I'm going</p>
+<p>to spread very carefully in answering</p>
+<p>that questions uh I don't think it is</p>
+<p>Superfluous um because in a sense that</p>
+<p>it's if you want to design your agent</p>
+<p>such that it goes through those steps um</p>
+<p>then you're more than welcome to uh my</p>
+<p>personal opinion is that I'm I will I'm</p>
+<p>going to try and see if I can make an</p>
+<p>active inference agent that does</p>
+<p>inference in one step instead of having</p>
+<p>to act</p>
+<p>observe uh plan slide uh and so forth</p>
+<p>however for AR environment so for your</p>
+<p>environment it doesn't really matter how</p>
+<p>you will get to your uh to your action</p>
+<p>as long as well or not right you can you</p>
+<p>can send an action at any point in time</p>
+<p>and if you don't send an action the</p>
+<p>world will just continue that and arcs</p>
+<p>environments will just continue running</p>
+<p>there's no real constraints on that so</p>
+<p>that the design is to be as less</p>
+<p>constraining on on users as possible</p>
+<p>while opening up this reactivity uh</p>
+<p>um the reactivity aspect and also for</p>
+<p>um if you start with the package you</p>
+<p>could make what I call discreet</p>
+<p>environments they're they're a bit</p>
+<p>feeding I would say because they're</p>
+<p>basically just the arc environment's</p>
+<p>equivalent of a of a classical</p>
+<p>reinforcement learning environment where</p>
+<p>you have a prespecify time step every</p>
+<p>time but I wanted to make that to make</p>
+<p>the transition easier because if you go</p>
+<p>full reactive right off the bat I would</p>
+<p>say it's a very ambitious thing to</p>
+<p>do so I don't think I don't think it's a</p>
+<p>Superfluous</p>
+<p>algorithm</p>
+<p>um but I I also don't think it's a</p>
+<p>um</p>
+<p>well our environment doesn't constrain</p>
+<p>you to use it so I would</p>
+<p>say nice now let's say uh one has a need</p>
+<p>to write one's own node in the</p>
+<p>factory um put ARX environments support</p>
+<p>that kind of thing or is it kind of an</p>
+<p>irrelevant</p>
+<p>question it's it's in that sense I would</p>
+<p>say irrelevant because uh the um a</p>
+<p>custom node is something that lives in</p>
+<p>ARX and fur um and ARX environments</p>
+<p>really uh is concerned with everything</p>
+<p>that goes on outside of your inference</p>
+<p>process um then another quick question</p>
+<p>while playing with the um I think it was</p>
+<p>a thermostat problem in oric</p>
+<p>environments I wanted to see the time</p>
+<p>behavior of some variables like</p>
+<p>observations States controls um free</p>
+<p>energy and things like that but it</p>
+<p>wasn't straightforward to me how to plot</p>
+<p>those um in the arment settings uh is</p>
+<p>there uh an example that you can point</p>
+<p>as to or a fragment of code that shows</p>
+<p>us how to do</p>
+<p>that um I can make it because I I know</p>
+<p>how I can access so free energy is uh</p>
+<p>something that lives inside your agent</p>
+<p>so it's part of the inference process</p>
+<p>it's the you know it's the uh cost</p>
+<p>function if you will of of of the</p>
+<p>inference process so for free energy you</p>
+<p>would have to look at your uh would have</p>
+<p>to look into ARX and fur however</p>
+<p>everything that goes on in our</p>
+<p>environments we can extract it and we</p>
+<p>can plot it so both uh environment</p>
+<p>States as well as emitted controls uh or</p>
+<p>observations uh we can extract all those</p>
+<p>things um I can show a code</p>
+<p>fragment that does this because it's</p>
+<p>well one line um however I also</p>
+<p>understand that that is not something</p>
+<p>that</p>
+<p>uh well you probably remember after this</p>
+<p>meeting so I'll I'll make sure that uh</p>
+<p>we can design a</p>
+<p>uh uh an example that showcases this but</p>
+<p>in uh in a nutshell we can uh create a</p>
+<p>keep actor so this is a well uh an</p>
+<p>entity that will keep all everything</p>
+<p>that it gets</p>
+<p>uh we'll keep it inside memory and then</p>
+<p>we subscribe to the observations of the</p>
+<p>agent so we say well subscribe to</p>
+<p>observations and with this Ops keep</p>
+<p>actor uh we do</p>
+<p>this and if I then call OBS</p>
+<p>values this will contain all kinds of</p>
+<p>well ARS environment</p>
+<p>observations which is basically a</p>
+<p>wrapper struct for uh let</p>
+<p>me call data on this entire</p>
+<p>array and you'll get your individual</p>
+<p>observation so we can basically tap</p>
+<p>anywhere in this process uh anywhere in</p>
+<p>this communication we can we can tap</p>
+<p>whatever is being emitted so if I run</p>
+<p>this again now it will contain 400</p>
+<p>elements because well this environment</p>
+<p>is reactively running while we speak so</p>
+<p>the the the agent is getting more and</p>
+<p>more observations so you see this thing</p>
+<p>reactively growing every time I call</p>
+<p>uh or extract its uh its contents so</p>
+<p>there is definitely functionality in</p>
+<p>which you can sort of inspect this</p>
+<p>process um but yeah I I I have to stress</p>
+<p>that it's really distinct from the</p>
+<p>inference process so if you make an</p>
+<p>agent in ARX infer and you hook it up to</p>
+<p>ARX envir ments then you have to set up</p>
+<p>a similar procedure to extract free</p>
+<p>energy and stuff like that um from ARX</p>
+<p>and fur um and because I'm not the</p>
+<p>author of ARX and fur I I don't know how</p>
+<p>easy that is um but for AR environments</p>
+<p>I yeah this is one of the first things</p>
+<p>that I wanted to do see what my agent</p>
+<p>was sending see what my agent was</p>
+<p>observing so I made sure to build</p>
+<p>it yeah I'm not sure if what you just</p>
+<p>showed was uh recorded by us so if you</p>
+<p>could uh just make sure that that is</p>
+<p>included in your examples as well that</p>
+<p>would yes that that's my idea that we</p>
+<p>can uh or I I just wanted to Showcase uh</p>
+<p>for now such that you can so that you</p>
+<p>know that it exists but it wasn't meant</p>
+<p>to be well a big tutorial or anything I</p>
+<p>can just put it in the examples and uh</p>
+<p>uh yeah then then we can plot it that's</p>
+<p>that's not a problem</p>
+<p>okay thanks a</p>
+<p>lot you're</p>
+<p>welcome okay anyone else can go for a</p>
+<p>question or we have some other written</p>
+<p>ones or I can ask a</p>
+<p>question um I have a quick question I</p>
+<p>would just wonder once I don't know if</p>
+<p>you guys can hear me I hope so yes um</p>
+<p>fantastic um a lot of the examples that</p>
+<p>uh you have there and kind of the way</p>
+<p>I'm I'm probably naive in how I'm</p>
+<p>thinking about this um the ARX</p>
+<p>environment is modeling something in the</p>
+<p>real world um or at least that's the</p>
+<p>example that we're thinking of right now</p>
+<p>um is the is arc's environments capable</p>
+<p>of essentially</p>
+<p>modeling um more metaphysical spaces so</p>
+<p>if you think</p>
+<p>of your question in a way that you have</p>
+<p>a Time series or a space that you're</p>
+<p>trying to</p>
+<p>occupy but it's not a physical space</p>
+<p>it's a more theoretical space uh you</p>
+<p>know dimensionality that you're trying</p>
+<p>to have an agent</p>
+<p>navigate um is that something that this</p>
+<p>that you see that this</p>
+<p>is you know usable for or is this</p>
+<p>something that we need to kind of gear</p>
+<p>back towards the arent for um package</p>
+<p>itself to kind of build the more</p>
+<p>metaphysical concept of the environment</p>
+<p>that you're putting together does that</p>
+<p>make sense so yeah if I understand your</p>
+<p>question</p>
+<p>correctly um yeah I my answer to that</p>
+<p>would be that there's no a physics</p>
+<p>simulator or whatever in arcs</p>
+<p>environments it's purely the boiler</p>
+<p>plate to make whatever you write act</p>
+<p>reactively uh and expose reactive</p>
+<p>streams that you can then use in arcs</p>
+<p>and</p>
+<p>so um for example one of our colleagues</p>
+<p>has made a an</p>
+<p>environment that Returns the um the</p>
+<p>result of a stochastic differential</p>
+<p>equation so an agent could query with an</p>
+<p>action I want the realization at time T</p>
+<p>and the environment would respond with</p>
+<p>the actual value um and with this</p>
+<p>interplay of query in a stochastic</p>
+<p>differential equation and uh and getting</p>
+<p>a result you can cast solving a</p>
+<p>differential stochastic differential</p>
+<p>equation sort of a uh aasan stat based</p>
+<p>model uh I'm not an expert on this topic</p>
+<p>I just know that one of our colleagues</p>
+<p>uh did this so if I understand your</p>
+<p>question correctly that would be the</p>
+<p>sort of environments you were after or</p>
+<p>you were you were questioning about um</p>
+<p>so I would say yes you can so there's no</p>
+<p>there's no physics simulator or anything</p>
+<p>in there because that's a whole</p>
+<p>different uh a whole different topic um</p>
+<p>my main thing was just to make whatever</p>
+<p>code you guys write to make it</p>
+<p>reactive fantastic thank you now that</p>
+<p>makes a lot of sense I just wanted to</p>
+<p>clarify that since no it's</p>
+<p>perfect not thinking so much in robotics</p>
+<p>or querying like physical environments</p>
+<p>and thinking more along the lines of</p>
+<p>data environment so that's why I was</p>
+<p>trying</p>
+<p>to understand how we could utilize</p>
+<p>this yes yeah you can yeah and uh you</p>
+<p>can push it further right you can make a</p>
+<p>uh a combination of the two you can make</p>
+<p>a uh an environment that flies a drone</p>
+<p>uh your agent has to control the Drone</p>
+<p>but it can also query the environment</p>
+<p>for hey what is going to be my position</p>
+<p>in 5 seconds so kind of this this well</p>
+<p>abstract action that's basically</p>
+<p>querying the environment well since we</p>
+<p>have this uh this mechanism that we can</p>
+<p>depending on what action you send</p>
+<p>correspond or match this with an</p>
+<p>observation now you can do stuff like</p>
+<p>that there's nobody stopping you doing</p>
+<p>it whether or not it's useful for your</p>
+<p>agent well that's up to you I I was just</p>
+<p>yeah I'm I'm trying to make your</p>
+<p>environments as expressive as can or</p>
+<p>your the framework as expressive as I</p>
+<p>can and yeah you you can you can go wild</p>
+<p>with it right you can go</p>
+<p>crazy that's perfect because the agent</p>
+<p>that I'm kind of that I'm wanting to put</p>
+<p>together would need to actually walk</p>
+<p>through time in a certain way um and</p>
+<p>optimize its activities in a Time series</p>
+<p>um yeah and I was I was already</p>
+<p>expecting you that's why I brought up</p>
+<p>this this uh that's very cool I be very</p>
+<p>excited to see uh well whether or not</p>
+<p>you uh you can build your environment</p>
+<p>and ARS environment would be yeah very</p>
+<p>cool</p>
+<p>Absolutely I'll keep you updated then</p>
+<p>nice</p>
+<p>thanks the observable and actor roles in</p>
+<p>orx</p>
+<p>environments can any entity take on</p>
+<p>either of these roles or are there</p>
+<p>certain constraints for example</p>
+<p>let's say the agent must always have the</p>
+<p>actor role or</p>
+<p>something no they're completely</p>
+<p>unconstrained um there is no real</p>
+<p>distinction under the hood</p>
+<p>between uh entities or between something</p>
+<p>that represents an environment as</p>
+<p>something that represents an agent uh</p>
+<p>they are both entities in arcs</p>
+<p>environments um the only thing is that</p>
+<p>you can make uh something which I call</p>
+<p>an active or a passive entity by the way</p>
+<p>all this terminology it's all up for</p>
+<p>discussion I've thought about this and</p>
+<p>most of the terms that I come up with</p>
+<p>they they don't really fit what I what</p>
+<p>I'm trying to say um but an active</p>
+<p>entity is something that whenever it</p>
+<p>gets an observation or whenever it</p>
+<p>receives an action it emits or it at</p>
+<p>least considers emitting to uh</p>
+<p>subscribers for example the mountain car</p>
+<p>uh environment itself would be an active</p>
+<p>entity whenever the the agent sends an</p>
+<p>action to move the car it will</p>
+<p>correspond or it will match this uh this</p>
+<p>this action with well moving the car um</p>
+<p>whereas the agent whenever it gets an</p>
+<p>observation from the environment well it</p>
+<p>doesn't really have to do anything we</p>
+<p>have to in the later stage attach an</p>
+<p>inance process but that is something</p>
+<p>that's not ARX environments that is ARX</p>
+<p>and first so we we make this entity um</p>
+<p>passive in a sense that it it's it's an</p>
+<p>observer uh that can also send actions</p>
+<p>but those are not triggered by an actual</p>
+<p>algorithm that we write ourselves uh in</p>
+<p>arxs environments but it's a result of</p>
+<p>some inference process it's the triggers</p>
+<p>are external to the the reactive</p>
+<p>ecosystem that we've built in ARX</p>
+<p>environments</p>
+<p>itself so that's the only distinction</p>
+<p>that I make but you can yeah something</p>
+<p>that represents an environment or</p>
+<p>something that represents an an agent</p>
+<p>they're they're under the hood</p>
+<p>completely the same things they are just</p>
+<p>uh entities that that that can</p>
+<p>communicate with with with external</p>
+<p>entities do you think you could um in</p>
+<p>addition add a a discrete control space</p>
+<p>example for us as well because Mountain</p>
+<p>car and the evasion thermostat are both</p>
+<p>um continuous</p>
+<p>examples even if it's just a simple uh</p>
+<p>discrete control space or categorical in</p>
+<p>particular categorical control</p>
+<p>space maybe a simple maze example or a</p>
+<p>grid example you know like the windy</p>
+<p>grid that's often used in reinforcement</p>
+<p>learning even if it's just a simple</p>
+<p>windy</p>
+<p>grid windy grid yeah okay I'll I'll</p>
+<p>Google</p>
+<p>that just uh even if it's just a simple</p>
+<p>categorical control space because that's</p>
+<p>what our problems currently uh center</p>
+<p>around not so much continuous control</p>
+<p>spaces but uh categorical control</p>
+<p>spaces okay that's uh yeah I can do that</p>
+<p>okay I</p>
+<p>windy G world yeah okay I I can do</p>
+<p>that be</p>
+<p>excellent I ask sort of a very quick</p>
+<p>broad question about the whole</p>
+<p>ontology my when I first learned about</p>
+<p>this my own Na and and just sort of</p>
+<p>looking through the docs I thought oh</p>
+<p>okay this is this is a rapper around RX</p>
+<p>and thir for standardizing the creation</p>
+<p>of an Environ enironment that you will</p>
+<p>then use for for whatever purposes but</p>
+<p>it sounds to me it's it's not at all</p>
+<p>that it's it's really this is this is</p>
+<p>not even really a way of talking about</p>
+<p>an environment per se this is no it's</p>
+<p>more of a it's a communication protocol</p>
+<p>for active inference agents I would say</p>
+<p>yeah yeah it's like well you this this</p>
+<p>is a way to sort of standardize the the</p>
+<p>dietic interaction between you know two</p>
+<p>abstract entities U and that could be</p>
+<p>between environment and an agent you</p>
+<p>know or it could be something else</p>
+<p>entirely okay that's much much broader</p>
+<p>than what I was conceptualizing ex so I</p>
+<p>I when I when I started this indeed I I</p>
+<p>started as okay I want to standardize</p>
+<p>environment Creation in in our ecosystem</p>
+<p>in our fer and I had discussion with</p>
+<p>Magnus kudal who's also uh in in this</p>
+<p>Discord I saw and well we had some very</p>
+<p>interesting talks and he said well</p>
+<p>actually an environment and and an agent</p>
+<p>they're not so different right they</p>
+<p>just they just hand or they just receive</p>
+<p>data from each other and and handle them</p>
+<p>accordingly so yeah there is a certain</p>
+<p>uh symmetry there and then I thought</p>
+<p>well if there's a symmetry there then I</p>
+<p>can make an</p>
+<p>overarching uh programming concept and</p>
+<p>just kind of implement it that way and</p>
+<p>that's what I did and then it turns from</p>
+<p>just a way in which you can make an</p>
+<p>agent and an environment communicate to</p>
+<p>a in which you can communicate this</p>
+<p>whole network</p>
+<p>of uh of subscriptions and</p>
+<p>Communications um because there's yeah</p>
+<p>there's no constraints anymore so for</p>
+<p>example we run an environment in in uh</p>
+<p>in our lab with MCO actually that um has</p>
+<p>well a</p>
+<p>non-trivial uh entity interaction where</p>
+<p>we have a hearing aid that uh gets data</p>
+<p>from both the external world because it</p>
+<p>can well it has a microphone and it</p>
+<p>should register the external world but</p>
+<p>it can also get data from the user of</p>
+<p>the hearing aid saying hey I'm happy</p>
+<p>with the hearing aid settings yes or no</p>
+<p>so now we have a three entity</p>
+<p>environment we have the user we have the</p>
+<p>hearing aid and we have the uh the</p>
+<p>external world that just emits noise</p>
+<p>then we have a fourth entity which is</p>
+<p>our agent that should learn the</p>
+<p>preferences of the user that should get</p>
+<p>data from the hearing aid and should uh</p>
+<p>tweak the parameters inside of the</p>
+<p>hearing a so now we have four entities</p>
+<p>that are communicating in this</p>
+<p>non-trivial way and well we built this</p>
+<p>in arcs environments and it all holds up</p>
+<p>like it all just yeah it runs just</p>
+<p>because whenever we get data the hearing</p>
+<p>aid knows ah I get new data I get new</p>
+<p>noise I have to transform this noise and</p>
+<p>send it to the user and I have to do a</p>
+<p>f8 transform and send it to the agent</p>
+<p>for analysis uh and just because it does</p>
+<p>this reactively it's all tractable and</p>
+<p>all works nicely so yeah uh it it it</p>
+<p>turned out to be a bit of a uh a</p>
+<p>bigger well scope than I would have</p>
+<p>imagined but I'm yeah I I'm I'm not</p>
+<p>making any claims on on how large it</p>
+<p>actually is that's uh yeah</p>
+<p>cool this this is also very cool I'm</p>
+<p>very very thankful that you're you're</p>
+<p>working on this because I I I had the</p>
+<p>thought like oh what what what then is</p>
+<p>you know sort of predicated of the</p>
+<p>environment it's kind of like what we</p>
+<p>have the environment and the Asian</p>
+<p>they're kind of both being equally</p>
+<p>treated</p>
+<p>you it's a very interesting question</p>
+<p>right so so what the what is the actual</p>
+<p>actual</p>
+<p>difference um some people say well an</p>
+<p>agent has some sort of inferential</p>
+<p>process uh on how it comes up with an</p>
+<p>action but in a sense well we are all</p>
+<p>all just with our eyes and ears and</p>
+<p>muscles we have an interface to to the</p>
+<p>environment um but yeah in in in that</p>
+<p>sense we we are just all Mark of</p>
+<p>blankets with internal states that that</p>
+<p>that navigate this world uh and this</p>
+<p>well communication that we have with our</p>
+<p>outside world I yeah I try to replicate</p>
+<p>fastic</p>
+<p>thanks anyone else want to ask any</p>
+<p>questions yeah Kristoff or yeah yeah I</p>
+<p>have a question um I I didn't quite get</p>
+<p>what you um what you said about the</p>
+<p>difference between the typical</p>
+<p>reinforcement learning setting and the</p>
+<p>RX environments Could you um could you</p>
+<p>could you explain that again please that</p>
+<p>was very interesting sure sure if if you</p>
+<p>want or if you make an environment in JY</p>
+<p>in gymnasium we can we can look at</p>
+<p>the um at their documentation right so</p>
+<p>let's see</p>
+<p>gymnasium</p>
+<p>package so I go to gymnasium and I want</p>
+<p>to make my own custom</p>
+<p>environment I saw it here make your own</p>
+<p>custom environment i' I've visited this</p>
+<p>page before so we can make our</p>
+<p>environment blah blah blah and then you</p>
+<p>have this function step the step method</p>
+<p>usually contains most of the logic for</p>
+<p>your environment it accepts an action</p>
+<p>computes the state of the environment</p>
+<p>after applying that action and returns a</p>
+<p>five Tuple observation reward terminated</p>
+<p>truncated</p>
+<p>info so we write a function step that</p>
+<p>takes only an action so this is the main</p>
+<p>design Paradigm of JY and most</p>
+<p>reinforcement</p>
+<p>learning packages actually where I emit</p>
+<p>an</p>
+<p>action this action is incorporated into</p>
+<p>the world um but the time that uh the</p>
+<p>environment is uh simulated forward is</p>
+<p>constant so there's no notion of</p>
+<p>different time intervals whereas if I'm</p>
+<p>I'm a very big uh football effici out</p>
+<p>for the Americans that's soccer um but</p>
+<p>it's actually football but if I kick a</p>
+<p>ball I kick the ball the ball starts</p>
+<p>rolling</p>
+<p>well whether or not I do something the</p>
+<p>ball will just continue rolling like</p>
+<p>this this environment around me it</p>
+<p>doesn't wait for me to emit additional</p>
+<p>actions or I'm not consciously saying</p>
+<p>okay for the next second I do nothing</p>
+<p>and then the ball rolls okay for the</p>
+<p>next second I do nothing again and the</p>
+<p>ball rolls further no there is a in the</p>
+<p>real world there is a difference right</p>
+<p>we do something and then the world just</p>
+<p>continues</p>
+<p>so we can do something at any point in</p>
+<p>time and the world around us will just</p>
+<p>well the world keeps on turn um and</p>
+<p>that's what I was trying to do with with</p>
+<p>ARX environments is to um alleviate</p>
+<p>ourselves of</p>
+<p>this um communication protocol because</p>
+<p>this specifies I get one</p>
+<p>observation I can do one action per</p>
+<p>observation and that's it and in between</p>
+<p>uh different observations I have no</p>
+<p>power to do anything whatsoever also if</p>
+<p>I have an environment that instead of</p>
+<p>modeling one second forward I now do</p>
+<p>half a second well everything breaks</p>
+<p>down because now I have to emit actions</p>
+<p>at twice a speed or my observations</p>
+<p>don't correspond anymore with my</p>
+<p>internal model or there's all kinds of</p>
+<p>stuff that if you do it like this it</p>
+<p>turns kind of awkward and that's what I</p>
+<p>was trying to</p>
+<p>alleviate</p>
+<p>uh with with ARX environments is that</p>
+<p>I'm trying to make this communication</p>
+<p>between agent and environment as free as</p>
+<p>possible so if you have a hearing aid</p>
+<p>environment yeah that you can yeah</p>
+<p>that's that that's it if if I'm not yeah</p>
+<p>I'm rambling sorry good interrup that's</p>
+<p>a good that's a good explanation and U I</p>
+<p>think you also mentioned something about</p>
+<p>um some difficulty there because uh the</p>
+<p>the question then becomes like if you</p>
+<p>have multiple agents in with the</p>
+<p>environment then what exactly is the</p>
+<p>state of the world</p>
+<p>right um what exactly is the state of</p>
+<p>the world is not uh because you can just</p>
+<p>uh sort</p>
+<p>of you can have like a god entity that</p>
+<p>takes care of of of this stuff that that</p>
+<p>that kind of resolves all conflicts in</p>
+<p>that sense um the main question for me</p>
+<p>would be</p>
+<p>well we just took away your one moment</p>
+<p>to conduct an action in reinforcement</p>
+<p>learning you have one moment you can do</p>
+<p>an action and you'll get one observation</p>
+<p>we just took away this one moment and</p>
+<p>gave you the opportunity to act at any</p>
+<p>point in time well when are you going to</p>
+<p>do it right so you know the reason I'm</p>
+<p>asking about this is that it it</p>
+<p>immediately got me thinking about um</p>
+<p>stepen wolfram's work on Observer Theory</p>
+<p>so he's trying to formalize uh the</p>
+<p>notion of an observer right and um there</p>
+<p>is this um whole field that he basically</p>
+<p>invented uh for the physics project</p>
+<p>related to uh which calls multi multi</p>
+<p>computation I'm not really deep into um</p>
+<p>that yet but it seems some it seems</p>
+<p>somehow relevant you know as an agents</p>
+<p>interacting with the environment we</p>
+<p>effectively sample it precisely because</p>
+<p>it keeps rolling as we um do the</p>
+<p>internal computation required to um</p>
+<p>update our um our generative model in</p>
+<p>order to to act so I I think you</p>
+<p>stumbled onto something quite quite</p>
+<p>profound there um and the question the</p>
+<p>question is about this this God God mode</p>
+<p>view right like that's a that's an old</p>
+<p>question in physics whether there exists</p>
+<p>the absolute reference frame or whether</p>
+<p>everything is</p>
+<p>relative um and yeah just won't say that</p>
+<p>you know foot for fault there's there's</p>
+<p>some there's some interesting problems</p>
+<p>there maybe we can we can talk about it</p>
+<p>some sometime I would love to hear your</p>
+<p>thoughts about this yeah sure like I'm</p>
+<p>I'm very interested in this stuff so as</p>
+<p>a as a software developer like I would</p>
+<p>advise you in your environments if</p>
+<p>you're not dealing with you know</p>
+<p>existential stuff that just make a god</p>
+<p>state that takes care of this but uh you</p>
+<p>make a very good point right so if we</p>
+<p>really want to make an accurate</p>
+<p>representation of of the world do we</p>
+<p>need this God state or because we now</p>
+<p>allow our environments</p>
+<p>to to alleviate this right we can have</p>
+<p>multiple entities that together compose</p>
+<p>the environment and that there is some</p>
+<p>internal communication between them so</p>
+<p>um it does it does open up this like it</p>
+<p>doesn't slam it wide open but at least</p>
+<p>you know there's a in Dutch you would</p>
+<p>say open key yeah so</p>
+<p>so I I think there is a there's a that</p>
+<p>that's that's a potential um incursion</p>
+<p>into effectively resolving some of the</p>
+<p>most interesting problems in the</p>
+<p>fundamental theories of physics that</p>
+<p>understanding precisely which one is the</p>
+<p>case whether is this um absolute</p>
+<p>reference frame or whether you can just</p>
+<p>simply explain everything through these</p>
+<p>relative reference frames and agent</p>
+<p>sampling the environments and if if you</p>
+<p>can effectively recover something that</p>
+<p>looks like physics from um this</p>
+<p>interaction which is what wall from is</p>
+<p>essentially working on that would be</p>
+<p>that would be a complete computation of</p>
+<p>fundamental Theory of physics and it's a</p>
+<p>bit big undertaking but it's worth uh</p>
+<p>worth considering not just merely from</p>
+<p>you know um software engineering</p>
+<p>perspective but from from that angle if</p>
+<p>if you're interested in that kind of</p>
+<p>stuff I mean yeah it it's very</p>
+<p>interesting it's something that I you</p>
+<p>you know it's a very big deviation from</p>
+<p>what my supervisor wants me to work on</p>
+<p>so it's probably not something that I'm</p>
+<p>going to undertake but yeah if if anyone</p>
+<p>wants to pick it up right who am I to</p>
+<p>stop</p>
+<p>them thanks it's great work</p>
+<p>cool yeah anyone else want to ask any</p>
+<p>questions</p>
+<p>how would you deal with the setting of</p>
+<p>multiple ant nestmates moving around and</p>
+<p>modifying the pheromones on the ground</p>
+<p>so in these kinds of simulations it's</p>
+<p>common enough to have the pherone</p>
+<p>phermone state on the ground and then</p>
+<p>Nest mates that are reading and writing</p>
+<p>how do you deal with the spatial</p>
+<p>proximity and the collisions and</p>
+<p>interactions</p>
+<p>so that is something very very very</p>
+<p>difficult I'm working on a project right</p>
+<p>now where once again we're modeling</p>
+<p>football uh which is why I brought up</p>
+<p>this example just now um and like</p>
+<p>resoling collisions is something</p>
+<p>extremely difficult it's something that</p>
+<p>I don't have a standardized uh advised</p>
+<p>way of doing an arcs environments just</p>
+<p>because game studios uh they they spend</p>
+<p>God knows how many developer hours on</p>
+<p>resolving collisions efficiently so</p>
+<p>that's not something that I think well</p>
+<p>we we can figure out in an afternoon</p>
+<p>right</p>
+<p>um it's it's it's something that would</p>
+<p>be in the internal dynamics of your</p>
+<p>environment but not something that is</p>
+<p>part of your communication protocol per</p>
+<p>se just influences the the the type of</p>
+<p>observations that your agent would get</p>
+<p>um so it's not something that I can give</p>
+<p>that I feel qualified to give advice</p>
+<p>on but it is like making this</p>
+<p>environment with ants running around</p>
+<p>the floor that is something that's just</p>
+<p>a multi-agent environment that's fully</p>
+<p>covered the problem is these these uh</p>
+<p>the collisions that is a difficult thing</p>
+<p>it's not uh difficult in an arcs</p>
+<p>environment uh perspective it's</p>
+<p>difficult in a computational geometry</p>
+<p>perspective that you want to resolve</p>
+<p>collisions that's yeah like in in tripa</p>
+<p>a games you can still clip into walls</p>
+<p>somewhere</p>
+<p>that's that's a great and funny response</p>
+<p>yeah I would just highlight the the real</p>
+<p>structural difference when you pointed</p>
+<p>to the step function in the</p>
+<p>gymnasium that yes is why in so often</p>
+<p>for these control problems there's like</p>
+<p>a null action or like a weight action so</p>
+<p>you kind of get this um bodal action</p>
+<p>Vector policy Vector where there's like</p>
+<p>a do nothing option and then all the</p>
+<p>options because out of requirement</p>
+<p>something must be emitted at every click</p>
+<p>of the simulation and all of a sudden</p>
+<p>it's like we mve from walking on a</p>
+<p>staircase to like ice skating or flying</p>
+<p>with RX and fur because it has totally</p>
+<p>opened up a dimension of the control</p>
+<p>question when to act not just which with</p>
+<p>according to a metronome and that's</p>
+<p>that's an entirely different approach</p>
+<p>that um the communication protocols</p>
+<p>enable and then those communication</p>
+<p>protocols can have all these other</p>
+<p>functionalities like they can have a</p>
+<p>subontology or they can have compliance</p>
+<p>features as well so it's super powerful</p>
+<p>and we're very excited to learn</p>
+<p>it that's yeah that's the main point uh</p>
+<p>the yeah it's a two sides of the same</p>
+<p>coin like it it opens up this</p>
+<p>communication protocol but then yeah you</p>
+<p>have to question</p>
+<p>when when it's something something that</p>
+<p>I'm going to spend time on in my next</p>
+<p>project like can we make an iterative</p>
+<p>procedure maybe with iterations and ARs</p>
+<p>and third we can send intermediate</p>
+<p>posteriors and we have we always have</p>
+<p>like a an action that we Supply I I</p>
+<p>don't know yet I have no idea or I have</p>
+<p>ideas but I don't have anything working</p>
+<p>yet I think to me the underlying</p>
+<p>principle of the RX in first Suite</p>
+<p>versus</p>
+<p>traditional yes this um</p>
+<p>um instead of having synchronized</p>
+<p>Communications we now have asynchronized</p>
+<p>communications between everything</p>
+<p>between everything</p>
+<p>yes I'm I'm glad I got that point across</p>
+<p>that's that's the point I wanted to</p>
+<p>make great well um if anyone else has a</p>
+<p>question otherwise we will continue</p>
+<p>learning and watching the GitHub updates</p>
+<p>and just building out examples CU in the</p>
+<p>coming months we know a lot of fun</p>
+<p>things will</p>
+<p>happen all right yeah um you guys can</p>
+<p>always reach out to me on I don't know</p>
+<p>GitHub Twitter I don't know how often</p>
+<p>I'll check Discord I'll try you know</p>
+<p>I'll try um but you can always reach out</p>
+<p>to me on uh on LinkedIn Twitter whatever</p>
+<p>that's that's all fine</p>
+<p>excellent I I do have a a final question</p>
+<p>if that's all right um sure just just</p>
+<p>with respect to you know future</p>
+<p>directions and that kind of thing what's</p>
+<p>kind of biggest problem set of problems</p>
+<p>what are you kind of looking to do I</p>
+<p>know that's a massive thing but is there</p>
+<p>anything relatively summited in that</p>
+<p>direction that that we could have speak</p>
+<p>to for just a second so I'm very</p>
+<p>interested in this when to act uh</p>
+<p>problem so this to me opens up the door</p>
+<p>to a um an agent</p>
+<p>that um because we okay so we can now</p>
+<p>act at any point in time or at any point</p>
+<p>in time um yeah we can send something to</p>
+<p>the environment a logical consequence</p>
+<p>for me is that at any point in time we</p>
+<p>should have an action ready to send so</p>
+<p>when the next observation comes in we</p>
+<p>don't know when that's going to be we</p>
+<p>should be able to act so we have a</p>
+<p>certain computational budget between one</p>
+<p>observation and the next we don't know</p>
+<p>how much it's going to be but we do have</p>
+<p>a budget to spend so I want to design</p>
+<p>indeed an interative procedure that</p>
+<p>comes up with an action and then refines</p>
+<p>it and refines it and refines it until</p>
+<p>well the next observation comes in so we</p>
+<p>we have to send whatever we had and we</p>
+<p>get the the next observation this gives</p>
+<p>you if this all works right this gives</p>
+<p>you a very nice robust agent that if you</p>
+<p>give it a lot of computing power a lot</p>
+<p>of computational budget then in between</p>
+<p>observations well it's going to be able</p>
+<p>to come up with a pretty good um pretty</p>
+<p>good action and will solve the task</p>
+<p>accordingly like ideally however if you</p>
+<p>limit this uh uh this computational</p>
+<p>budget you put it on like a Raspberry Pi</p>
+<p>or on an edge device it will not have as</p>
+<p>much iterations to refine its actions so</p>
+<p>it will still solve the problem</p>
+<p>hopefully but it will be less efficient</p>
+<p>doing so it will be slightly Dum so this</p>
+<p>is a very to me is a very interesting</p>
+<p>problem to think about because then you</p>
+<p>have a sort of a a procedure for control</p>
+<p>that is robust to loss of computation or</p>
+<p>whatever and it's still adaptive and</p>
+<p>reactive and and and all those nice</p>
+<p>things we get from from Asian</p>
+<p>inference um so yeah that's something</p>
+<p>that I that I would want to work on if I</p>
+<p>you know at 48 hours in a</p>
+<p>day it's very interesting so it sounds</p>
+<p>to me like a number of iterations you</p>
+<p>just refer to as um the iteration field</p>
+<p>in the call of the infer function yes in</p>
+<p>infer yes if I can do something like</p>
+<p>that so I run an indefinite amount of</p>
+<p>iterations and I just stop the inference</p>
+<p>procedure whenever I have to do</p>
+<p>something and then I extract the latest</p>
+<p>posterior for the action and I I send</p>
+<p>that to the environment yeah that's</p>
+<p>something well that would be the first</p>
+<p>thing I would</p>
+<p>investigate yeah I I think it has the</p>
+<p>potential to make the behavior in</p>
+<p>general quite robust if you if you</p>
+<p>consider that</p>
+<p>approach it yeah it would be rob it</p>
+<p>would always have something to do do</p>
+<p>like it would always do something</p>
+<p>whether or not sort of the the the free</p>
+<p>energy would converge uh or yeah as as a</p>
+<p>measure of whether or not this action is</p>
+<p>good enough uh that is to be</p>
+<p>investigated but it would allow us to</p>
+<p>run the same models on edge devices as</p>
+<p>well and get slightly worse performance</p>
+<p>but</p>
+<p>still yeah yeah it would still do the</p>
+<p>job we and then you can investigate you</p>
+<p>know how many iterations do I actually</p>
+<p>need before I can solve the problem uh</p>
+<p>it's of course problem dependent but</p>
+<p>yeah it's a very yeah it's just</p>
+<p>something that that really interest me I</p>
+<p>really like this this way of thinking um</p>
+<p>and it's in part why I why I wrote this</p>
+<p>package because I I don't like this this</p>
+<p>this synchronized communication protocol</p>
+<p>from Jim I just I just don't like it</p>
+<p>yeah that's why I wrote wrote ARS</p>
+<p>environments I think the only</p>
+<p>alternative is to not be able to respond</p>
+<p>whenever it gets an ation other words to</p>
+<p>postpone your</p>
+<p>response it NES back into the um the the</p>
+<p>synchronicity approach again so it</p>
+<p>breaks away from the you know the</p>
+<p>reactiveness of</p>
+<p>the but then you you run into the</p>
+<p>robustness issue I would say if you have</p>
+<p>a self-driving car and it it's driving</p>
+<p>into a wall because it's thinks it's a</p>
+<p>green light because those things are not</p>
+<p>that that smart nowadays uh and ah it</p>
+<p>figures out it's a wall but it takes</p>
+<p>some time to adjust or it takes some</p>
+<p>time to come up with the idea okay now I</p>
+<p>have fully converged on the action that</p>
+<p>I have to steer away well by that time</p>
+<p>we might have already crashed into the</p>
+<p>wall um so this this queuing up of uh uh</p>
+<p>of observations and waiting until uh my</p>
+<p>computation is fully converged I think</p>
+<p>it takes away the robustness like if you</p>
+<p>if if you don't have enough</p>
+<p>computational budget to</p>
+<p>spend well yeah you you might do the</p>
+<p>wrong thing it's the same as when you</p>
+<p>and I are in a car right if we're in a</p>
+<p>very</p>
+<p>um a very busy situation so well I'm in</p>
+<p>the Netherlands so we have cyclist right</p>
+<p>so if we have cyclists we have other</p>
+<p>cars and there's a an ambulance coming</p>
+<p>what it's very busy you might feel</p>
+<p>overwhelmed but you still kind of know</p>
+<p>the basic things to do to to to steer</p>
+<p>your car it's basically the same where</p>
+<p>you have limited computational budget</p>
+<p>there's all this stuff around you so to</p>
+<p>come up with a really thought through</p>
+<p>response or action uh it's too much to</p>
+<p>ask because you don't have the</p>
+<p>computational budget but your brain kind</p>
+<p>of prioritizes and says well if we stay</p>
+<p>on the road and we let the ambulance</p>
+<p>pass and well we're fine for now we're</p>
+<p>this is the best we can do um so this</p>
+<p>feeling of being overwhelmed by what</p>
+<p>what goes on on around you inspired this</p>
+<p>idea of of robustness and uh uh of</p>
+<p>interruptibility</p>
+<p>basically yeah but then again how how</p>
+<p>how I'm going to do it well no idea yet</p>
+<p>or run run our iner iterations and see</p>
+<p>if I can uh can send intermediate</p>
+<p>posterior results or something or but</p>
+<p>it's just something yeah I I find this</p>
+<p>very very very</p>
+<p>interesting think it's a good thing that</p>
+<p>free energy in</p>
+<p>general decays uh predictably in a sense</p>
+<p>so I mean just fully using your budget</p>
+<p>your computational budget for that time</p>
+<p>that you're allow before the next</p>
+<p>observation</p>
+<p>arrives I think it's it's fairly safe to</p>
+<p>just uh yes use the current value of the</p>
+<p>posterior that's the best you can do the</p>
+<p>circumstances yes that that that would</p>
+<p>be the argument</p>
+<p>indeed hopefully hopefully this this</p>
+<p>this opens up the road to having actual</p>
+<p>you know robots driving around instead</p>
+<p>because</p>
+<p>well there's no self-driving cars where</p>
+<p>I live there's no robots or drones</p>
+<p>flying around and I think one of the</p>
+<p>reasons is because they're not robust or</p>
+<p>interruptible</p>
+<p>fly agreed</p>
+<p>yeah all right thank you all we'll look</p>
+<p>forward to staying updated</p>
+<p>asynchronously even asynchronously</p>
+<p>reactively see y all soon</p>
+<p>bye thanks</p>
+</article>
+</body>
+</html>

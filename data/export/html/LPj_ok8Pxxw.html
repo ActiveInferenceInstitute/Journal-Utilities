@@ -1,0 +1,7903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #052.0 ~ Geometric Methods for Sampling, Optimisation, Inference and Adaptive...</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #052.0 ~ Geometric Methods for Sampling, Optimisation, Inference and Adaptive...</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_052 &middot; Episode 0 &middot; Speakers: Geometric Methods for Sampling, Optimisation, Inference, Adaptive... &middot; Duration: 1:56:03 &middot; Views: 208</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=LPj_ok8Pxxw">https://www.youtube.com/watch?v=LPj_ok8Pxxw</a></div>
+<article>
+<p>Hello and welcome. This is ActInf livestream number 52.0 and it is February 28th, 2023.</p>
+<p>Welcome to the Active Inference Institute. We're a participatory online institute that is communicating, learning, and practicing applied active inference.</p>
+<p>You can find us at the links here on this slide. This is a recorded and an archived livestream, so please provide feedback so we can improve our work.</p>
+<p>All backgrounds and perspectives are welcome and we'll be following video etiquette for livestreams.</p>
+<p>Head over to activeinference.org if you want to learn more and participate in learning groups and projects at the institute, including these livestreams.</p>
+<p>Well, we're here today to learn and discuss the paper, Geometric Methods for Sampling Optimization Inference and Adaptive Agents by Alessandra Barp, Lancelot DaCosta, Guilherme Franca, Carl Friston, Mark Ghirilami, Michael Jordan, and Gregorios Pavliotis.</p>
+<p>This video, like all .0 videos are, is an introduction for some of the ideas. It is not a review or a final word.</p>
+<p>And as we've joked before, it's more than anything, a call for help.</p>
+<p>So if you're curious about these topics, if you're knowledgeable about these topics, we would really look forward to you getting involved in the upcoming 52.1 and 52.2 discussions, as well as in an ongoing basis to help us understand some of the technical details.</p>
+<p>This is going to get technical at times, and certainly beyond the technicalities I understand, though I am looking forward to presenting them.</p>
+<p>And it will be great to have those who have backgrounds of all different types to come together and talk about this awesome work.</p>
+<p>Also, big thanks to Ali and Kandon for the assistance, technical and moral, during the preparations here.</p>
+<p>In 52.0, we're going to bring up some aims and claims, read the abstract, look at the roadmap, and talk about the keywords.</p>
+<p>And then we will walk through the paper with an emphasis on the figures, formalisms, and key points.</p>
+<p>In the coming weeks, we're going to be discussing this paper with one or more authors.</p>
+<p>So, as usual, get in touch if you want to participate, or if it's after the fact, you can still get involved.</p>
+<p>We can start with an introduction or a warm-up.</p>
+<p>I'm Daniel. I'm a researcher in California.</p>
+<p>And I'm tempted to say, just totally honestly, I'm happy to get this one over with, but that sounds a little bit different than I might intend it to be.</p>
+<p>I'm really excited to dive into this work, which is going to be approaching active inference from an angle that we haven't necessarily highlighted on these streams.</p>
+<p>So, I think it's going to be a fascinating discussion. It's going to run the gamut, span the gap, however you choose to see it, between technical sophistication and intuition, which is a great place to be.</p>
+<p>So, I've been really excited and motivated to prepare, and I'm looking forward to the .0 we're doing right now, and to the upcoming discussions.</p>
+<p>So, let's jump in with the big questions that might motivate one to read this paper, this kind of paper, even if they were not familiar with the authors or topics.</p>
+<p>And these are just a few ways to write it up, of course not the only ways.</p>
+<p>So, first question. How can we effectively and efficiently navigate information geometric or information theoretic landscapes?</p>
+<p>And how can we tackle that question from an analytical, which is to say, equation based, as well as a computational, which is to say, real implementation based perspective?</p>
+<p>Often, it's really fun, intuitive, natural to talk about information theory, even for those who haven't taken the technical prerequisites.</p>
+<p>And this work may help us navigate to a space where we're able to think with good intuitions about information geometry, information theory, and also make sure that those intuitions are going to be caught by our technical tools.</p>
+<p>Second, how can we optimize inference in complex models, including cases where we are doing inference on action as a parameter, also known as active inference?</p>
+<p>Optimization and functional analysis, as we'll come to see soon, has long been interested in these complex or challenging models that are right at the margin, right at the border of what is tractable or not, given the computational hardware that modelers have access to.</p>
+<p>For example, big data sets, high dimensional states, complex dynamics, complex dynamics, and so on.</p>
+<p>How about cases where we're also interested in doing parametric inference and optimization on action or action plans as a parameter, also known as active inference?</p>
+<p>And third, what technical underpinnings support the rigor and applicability of active inference?</p>
+<p>And what special cases are revealed when we consider possibilities and constraints?</p>
+<p>These are those two branches of analytical and computational coming back again.</p>
+<p>We want to make sure that when we're thinking within the active inference paradigm, the active inference ontology is the language that we're speaking, and that there's a technical rigor to what's being discussed.</p>
+<p>Additionally, we want to make sure that it's not just an analytical rigor, but it's also going to be computationally plausible, tractable, or maybe even preferable.</p>
+<p>That would be awesome.</p>
+<p>Those are the questions that at least appeared.</p>
+<p>We are discussing this paper, Geometric Methods for Sampling, Optimization, Inference, and Adaptive Agents by Barp and DaCosta et al. Shared First Authorship, and it was published on Archive.</p>
+<p>I'll just note a few key claims from this paper.</p>
+<p>They wrote,</p>
+<p>Our goal in this chapter is to discuss the emergence of natural geometries within a few important areas of statistics and applied mathematics, namely optimization, sampling, inference, and adaptive agents.</p>
+<p>That's the title.</p>
+<p>We provide a conceptual introduction to the underlying ideas rather than a technical discussion, highlighting connections with various fields of mathematics and physics.</p>
+<p>Though whether it is a conceptual introduction or a technical discussion is all going to be about your perspective.</p>
+<p>Third, to illustrate a generic use case for the previous methodologies that are going to be discussed, we consider active inference, a unifying formulation of behavior, subsuming perception, planning, and learning as a process of inference.</p>
+<p>So, inference on adaptive agents is not necessarily new.</p>
+<p>It goes by reinforcement learning, machine learning, and so on.</p>
+<p>However, to use those methodologies in the context of active inference, a unifying formulation of behavior, is something that the authors are bringing forth here.</p>
+<p>And last, we describe decision making under active inference using information geometry, revealing several special cases that are established notions in statistics, cognitive science, and engineering.</p>
+<p>So, active inference is not just unifying.</p>
+<p>It's going to be shown to be generalized as well, which is to say that special cases of the generalization emerge different formalisms that were known disparately across fields.</p>
+<p>On to the abstract.</p>
+<p>They write,</p>
+<p>They write,</p>
+<p>In this chapter, we identify fundamental geometric structures that underlie the problems of sampling optimization, inference, and adaptive decision making.</p>
+<p>Based on this identification, we derive algorithms that exploit these geometric structures to solve these problems efficiently.</p>
+<p>We show that a wide range of geometric theories emerge naturally in these fields, ranging from measure-preserving processes, information divergences, Poisson geometry, and geometric integration.</p>
+<p>Specifically, we explain how.</p>
+<p>One.</p>
+<p>One.</p>
+<p>Leveraging the symplectic geometry of Hamiltonian systems enable us to construct accelerated sampling and optimization methods.</p>
+<p>Two.</p>
+<p>The theory of Hilbertian subspaces and Stein operators provides a general methodology to obtain robust estimators.</p>
+<p>And three.</p>
+<p>Preserving the information geometry of decision making yields adaptive agents that perform active inference.</p>
+<p>Throughout.</p>
+<p>We emphasize the rich connections between these fields.</p>
+<p>E.g.</p>
+<p>Inference draws on sampling and optimization.</p>
+<p>And adaptive decision making assesses decisions by inferring their counterfactual consequences.</p>
+<p>Our exposition provides a conceptual overview of underlying ideas rather than a technical discussion, which can be found in the references herein.</p>
+<p>And indeed, there are several hundred references in this paper.</p>
+<p>Let's go to the roadmap.</p>
+<p>So, first, we can start on the right side.</p>
+<p>Here's an active agent.</p>
+<p>Vroom, vroom.</p>
+<p>Vroom.</p>
+<p>Vroom.</p>
+<p>Doing accelerated optimization in the carpool lane.</p>
+<p>Looking ahead to the almost dessert-like visual representation of active inference.</p>
+<p>That's where we're going to go.</p>
+<p>And on the right side, it's just some cars.</p>
+<p>One of them is accelerated.</p>
+<p>The other one isn't.</p>
+<p>The paper begins with an introduction.</p>
+<p>And then in section two gets into the topic of accelerated optimization.</p>
+<p>Covering the areas of principle of geometric integration.</p>
+<p>Conservative flows and symplectic integrators.</p>
+<p>Rate matching integrators for smooth optimization.</p>
+<p>Manifold and constrained optimization.</p>
+<p>Gradient flow as a high friction limit.</p>
+<p>And optimization on the space of probability measures.</p>
+<p>In section three, they turn from accelerated optimization in general to Hamiltonian-based accelerated sampling.</p>
+<p>The subsections of three are optimizing diffusion processes for sampling and Hamiltonian Monte Carlo.</p>
+<p>From the Hamiltonian-based accelerated sampling, they turn towards doing statistical inference with kernel-based discrepancies in section four.</p>
+<p>The subsections are topological methods for MMDs, smooth measures and KSDs, the canonical Stein operator and Poincaré duality, kernel-Stein discrepancies and score matching, information geometry of MMDs and natural gradient descent, minimum Stein discrepancy estimators, likelihood inference with generative models.</p>
+<p>Finally, in section five, adaptive agents through active inference.</p>
+<p>They're going to bring it home to active inference.</p>
+<p>Section 5.1, modeling adaptive decision-making, behavior agents and environments, decision-making in precise agents, the information geometry of decision-making.</p>
+<p>And 5.2, realizing adaptive agents, the basic active inference algorithm, sequential decision-making under uncertainty, world model learning as inference and scaling active inference.</p>
+<p>So, a quick note.</p>
+<p>We have all the formalisms entered into our .0 teams coda document.</p>
+<p>There are 46 numbered equations in this paper and 83 overall.</p>
+<p>We're going to bring in some, but not all of these formalisms in the .0 video.</p>
+<p>And we're ready to bring in more during the .1 and .2 discussions with the authors.</p>
+<p>Just for those who are watching along, I'm going to scan through all of the formalisms from our coda.</p>
+<p>And again, for those who want to help get involved with a .0 preparation, this is a little bit of what .0 preparation looks like.</p>
+<p>I'm going to now scroll through the formalisms just in case anybody wants to screenshot or see them.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+
+
+<p>.</p>
+<p>Great.</p>
+<p>On to the keywords.</p>
+<p>Keywords of the paper are information geometry, Hamiltonian Monte Carlo, Stein's method, reproducing kernel, variational inference, accelerated optimization, dissipative systems, decision theory, and active inference.</p>
+<p>In no particular pedagogical order.</p>
+<p>Let's start with decision theory.</p>
+<p>From the Stanford Encyclopedia of Philosophy, the article begins,</p>
+<p>.</p>
+
+<p>.</p>
+
+
+<p>.</p>
+
+
+<p>e.g., the differential geometric treatment of smooth statistical manifolds,</p>
+<p>whose origin stems from a seminal article by Rao, 23,</p>
+<p>who introduced the Fischer metric tensor on parameterized statistical models,</p>
+<p>and thus a natural Riemannian geometry that was later observed to correspond to an infinitesimal distance</p>
+<p>with respect to the Kolbach-Leibler or Kael divergence.</p>
+<p>So, going into Citation 23 and 24,</p>
+<p>Citation 23 is Rao from 1992, and Rao wrote,</p>
+<p>The objective of the paper is to derive certain inequality relations connecting the elements of the information matrix as defined by Fischer, 1921,</p>
+<p>and the variances and covariances of the estimating functions.</p>
+<p>A class of distribution functions which admit estimation of parameters with the minimum possible variance has been discussed.</p>
+<p>The concept of distance between populations of a given type has been developed starting from a quadratic differential metric defining the element of length.</p>
+<p>So, I'm only going to give the disclaimer one time, everything in red text is beyond speculative.</p>
+<p>It's just priming the pump for discussions with those who know more and with those who know less,</p>
+<p>and it's just a first pass that we're going to continue to develop on.</p>
+<p>But broadly, if we can compute inequality relationships, which this paper developed in 1992,</p>
+<p>we can bound estimators, test for relative improvements, and basically do stuff with those distributions.</p>
+<p>And if we can compute certain kinds of statistical distances, such that a distance requires a length metric,</p>
+<p>we can find optimal estimators of parameters, specifically their variances and covariance structure,</p>
+<p>in principle and in practice, by finding the maximum informational alignment to other estimators or empirical data.</p>
+<p>So, we'll often say, like, if you had the optimum parameterization, you'd be predicting as well as you could.</p>
+<p>And so, we want to be able to operationalize that using distances and metrics.</p>
+<p>And citation 24.</p>
+<p>This is an invariant form for the prior probability and estimation problems by Harold Jeffries.</p>
+<p>And Jeffries wrote,</p>
+
+<p>So, if all the parameters in our model, whether there's one, two, or more, are differentiable,</p>
+<p>which is to say they're smooth, etc., etc., there are technical details,</p>
+<p>then there are certain transformational invariances.</p>
+<p>So, just like every Gaussian distribution, by shifting it and stretching and shrinking it,</p>
+<p>you can map those onto each other.</p>
+<p>It's like that.</p>
+<p>It turns out that some of those constraints can even be somewhat relaxed.</p>
+<p>For example, this approach may still be effective, even where parameters are not differentiable everywhere.</p>
+<p>And this is big for helping us do Bayesian estimation,</p>
+<p>which can be seen as a special case of informational transformations</p>
+<p>or of manipulations of statistical distributions in the information theoretic or information geometric sense.</p>
+<p>Functional analysis.</p>
+<p>So, let's begin as tradition in our year 2023 with a brief quote from ChatGPT.</p>
+<p>How is functional analysis helpful for us who are learning and applying active inference?</p>
+<p>I'll just read the last section.</p>
+<p>Overall, functional analysis provides a powerful mathematical tool set for understanding and analyzing the principles of active inference.</p>
+<p>And one can read more.</p>
+<p>Functional analysis is the study of functions.</p>
+<p>Functional analysis.</p>
+<p>And here we see one way of showing what a function does in terms of being this box, f of x,</p>
+<p>that takes in an input, an argument x, and outputs a result y.</p>
+<p>And also, that can be understood as a mapping between or amongst spaces.</p>
+<p>And there's a lot more to go into.</p>
+<p>Just wanted to bring up that in math, sometimes people have analyzed functions and their properties.</p>
+<p>And we're interested in the properties of a special class of functions, which are probability distributions,</p>
+<p>well-behaved probability distributions.</p>
+<p>What do we do with those probability distributions?</p>
+<p>Well, one thing we might want to do is sample.</p>
+<p>So, the paper writes,</p>
+<p>Sampling methods are critical to the efficient implementations of many methodologies.</p>
+<p>Most modern samplers are based on Markov chain Monte Carlo methods,</p>
+<p>which include slice samplers, piecewise deterministic Markov chains, and so on.</p>
+<p>The original Hamiltonian Monte Carlo, or HMC, which we're going to get to,</p>
+<p>algorithm was introduced in physics to sample distributions on gauge groups for lattice quantum</p>
+<p>chromodynamics.</p>
+<p>It combined two approaches that emerged in previous decades, namely the Metropolis-Hastings algorithm</p>
+<p>and the Hamiltonian formulation of molecular dynamics.</p>
+<p>So, the way that they state it in the beginning of section three of the paper is,</p>
+<p>The purpose of sampling methods is to efficiently draw samples from a given target distribution,</p>
+<p>rho, or more commonly to calculate expectations with respect to rho, by equation 33 and other.</p>
+<p>They write,</p>
+<p>Modern Hamiltonian Monte Carlo, which again we're going to get to in a second,</p>
+<p>relies heavily on symplectic integrators, another keyword,</p>
+<p>to simulate a deterministic dynamic,</p>
+<p>responsible for generating distant moves between samples,</p>
+<p>and thus reduce their correlation,</p>
+<p>while at the same time, preserving important geometric properties.</p>
+<p>Now, we want to make our samples as informative as possible.</p>
+<p>If we're just drawing samples and it's the same sample again and again,</p>
+<p>one can imagine that it is uninformative.</p>
+<p>Conversely, one can imagine a situation where samples are informative.</p>
+<p>And that is brought into practice by making sure that the samples are minimally correlated with each other,</p>
+<p>as noted above.</p>
+<p>And this also has analogy in cryptography.</p>
+<p>So, if we're sampling something where the successive samples are 99% correlated,</p>
+<p>you can imagine that you're oversampling.</p>
+<p>So, you're taking 10,000 frames per second of a YouTube video with 30 frames per second.</p>
+<p>I think I'm streaming at 25 frames per second right now.</p>
+<p>Conversely, if one were to sample every 10 minutes,</p>
+<p>then their correlation structure would also not capture the video's 25 frames per second.</p>
+<p>So, in order to generate good and large moves in the space,</p>
+<p>we would need perfect knowledge of what the space is,</p>
+<p>or how it's generated,</p>
+<p>which is sometimes knowable in cryptography.</p>
+<p>However, empirically, we need to use heuristics and statistical approximations.</p>
+<p>So, this is the applied statistics angle on the analytical relationships that we're going to be talking about.</p>
+<p>And it's going to come up again and again,</p>
+<p>this tension between analytical formulations, what's true in principle,</p>
+<p>and the statistical or numerical or computational applications.</p>
+<p>Two, Hamiltonian Monte Carlo.</p>
+<p>From Wikipedia.</p>
+<p>The Hamiltonian Monte Carlo algorithm,</p>
+<p>originally known as hybrid Monte Carlo, still HMC,</p>
+<p>is a Markov chain Monte Carlo method for obtaining a sequence of random samples</p>
+<p>which converge to being distributed according to a target probability distribution</p>
+<p>for which direct sampling is difficult.</p>
+<p>So, just a few first pass reflections.</p>
+<p>We're sampling, which is to say Monte Carlo,</p>
+<p>and Monte Carlo is hearkening back to a different time</p>
+<p>when gambling was done in Monte Carlo,</p>
+<p>and the state space of all the hands of poker</p>
+<p>were too vast to compute analytically,</p>
+<p>or equations were not known.</p>
+<p>And so, what one used to do, and still does,</p>
+<p>is draw samples and say,</p>
+<p>well, I don't know if this is the final estimate</p>
+<p>on how likely a royal flush is,</p>
+<p>but from the two billion hands that I sampled,</p>
+<p>there were two royal flushes.</p>
+<p>And so, it's one in a billion based upon my sample.</p>
+<p>So, we're sampling</p>
+<p>because this is a complex distribution</p>
+<p>for which an analytical solution is not possible,</p>
+<p>not known, not relevant,</p>
+<p>or not tractable computationally.</p>
+<p>So, there's various situations where we want to sample,</p>
+<p>and we don't necessarily have an analytical solution.</p>
+<p>When we're sampling from a converged stationarity,</p>
+<p>hashtag live stream 26,</p>
+<p>of a statistical landscape,</p>
+<p>from a numerical perspective,</p>
+<p>we understand that landscape well enough to do inference.</p>
+<p>So, imagine that we're sampling height estimates</p>
+<p>from GPS locations in the X and the Y coordinates,</p>
+<p>and we're getting a Z value in our sample.</p>
+<p>At some point, we can say,</p>
+<p>we're unsurprised by new samples.</p>
+<p>At that point, we understand the landscape</p>
+<p>well enough to do statistical inference.</p>
+<p>And just like the frames per second</p>
+<p>in the previous example,</p>
+<p>one can imagine,</p>
+<p>if the landscape is changing</p>
+<p>on the spatial scale of one mile,</p>
+<p>and you're sampling every millimeter,</p>
+<p>you might be oversampling.</p>
+<p>If you were sampling every league,</p>
+<p>maybe you'd be too coarse-grained with your samples.</p>
+<p>And so, one reason that comes up in science all the time</p>
+<p>for using sampling is that the search space</p>
+<p>might be just too large.</p>
+<p>For example, the combinatorics of a phylogenetic tree</p>
+<p>with a thousand species might be vast.</p>
+<p>And so, it might be better to say something like,</p>
+<p>well, 99% of the million samples we drew</p>
+<p>were consistent with X</p>
+<p>because an analytical solution</p>
+<p>or a brute force search,</p>
+<p>neither might be possible.</p>
+<p>And the Wikipedia wrote,</p>
+<p>this sequence of samples</p>
+<p>can be used to estimate integrals</p>
+<p>with respect to the target distribution.</p>
+<p>So, sometimes we're sampling</p>
+<p>not from the target distribution itself,</p>
+<p>but rather from a distribution</p>
+<p>that is related or transformed</p>
+<p>from the target distribution.</p>
+<p>This is because sampling directly</p>
+<p>from the target distribution</p>
+<p>might be difficult</p>
+<p>or less than perfectly informative.</p>
+<p>So, we might, for example,</p>
+<p>hint, hint,</p>
+<p>sample from the derivative of the target,</p>
+<p>which might help us identify points</p>
+<p>where, for example,</p>
+<p>the derivative is flat in all directions.</p>
+<p>In the case that we're sampling</p>
+<p>from a derived landscape</p>
+<p>of the target distribution,</p>
+<p>this is called a symplectic integrator.</p>
+<p>So, let's look at</p>
+<p>what a symplectic integrator is.</p>
+<p>So, first, backing up</p>
+<p>to what is differential geometry.</p>
+<p>Differential geometry</p>
+<p>is a mathematical discipline</p>
+<p>that studies the geometry</p>
+<p>of smooth shapes and smooth spaces,</p>
+<p>otherwise known as smooth manifolds.</p>
+<p>Symplectic geometry</p>
+<p>is a branch of differential geometry</p>
+<p>and differential topology</p>
+<p>that studies symplectic manifolds.</p>
+<p>That is, differentiable manifolds</p>
+<p>equipped with a closed,</p>
+<p>non-degenerate two-form.</p>
+<p>Symplectic geometry</p>
+<p>has its origins</p>
+<p>in the Hamiltonian formulation</p>
+<p>of classical mechanics,</p>
+<p>where the phase space</p>
+<p>of certain classical systems</p>
+<p>takes on the structure</p>
+<p>of a symplectic manifold.</p>
+<p>So, the keyword density is high.</p>
+<p>These topics are all</p>
+<p>very closely linked.</p>
+<p>From the paper,</p>
+<p>it has been known for a long time</p>
+<p>that the class of symplectic integrators</p>
+<p>is the preferred choice</p>
+<p>for simulating physical systems.</p>
+<p>Only the finest</p>
+<p>for our simulations</p>
+<p>of physical systems.</p>
+<p>These discretization techniques</p>
+<p>are designed to preserve</p>
+<p>the underlying symplectic geometry</p>
+<p>of Hamiltonian systems.</p>
+<p>And they also form the basis</p>
+<p>of Hamiltonian Monte Carlo</p>
+<p>or hybrid Monte Carlo methods.</p>
+<p>We're going to come back</p>
+<p>to this tension again and again,</p>
+<p>which is,</p>
+<p>what good is a, in principle,</p>
+<p>smooth and differentiable</p>
+<p>analytical formulation</p>
+<p>if our discretization scheme,</p>
+<p>the way that we actually</p>
+<p>implement the steps</p>
+<p>on a computer,</p>
+<p>are inferior.</p>
+<p>We might ruin</p>
+<p>all those nice properties</p>
+<p>that we work to get</p>
+<p>about the analytical form.</p>
+<p>We might just throw those out</p>
+<p>when we discretize it</p>
+<p>coarsely or inappropriately.</p>
+<p>So, what is a symplectic integrator?</p>
+<p>It's a numerical integration scheme</p>
+<p>for Hamiltonian systems.</p>
+<p>Symplectic integrators form</p>
+<p>the subclass of geometric integrators,</p>
+<p>which, by definition,</p>
+<p>are canonical transformations.</p>
+<p>They're transformations</p>
+<p>we know a lot about.</p>
+<p>Symplectic integrator schemes</p>
+<p>!</p>
+<p>Integrator schemes</p>
+<p>are referring to,</p>
+<p>again, just broadly,</p>
+<p>both the analytical formulations</p>
+<p>and the software packages</p>
+<p>and approaches</p>
+<p>that we can use</p>
+<p>to implement those formalisms.</p>
+<p>And these integration schemes</p>
+<p>are useful</p>
+<p>across difficult estimation problems,</p>
+<p>which is why they're used</p>
+<p>to study nonlinear dynamics,</p>
+<p>molecular dynamics,</p>
+<p>like protein simulation,</p>
+<p>discrete element methods,</p>
+<p>accelerator physics,</p>
+<p>plasma physics,</p>
+<p>quantum physics,</p>
+<p>celestial mechanics.</p>
+<p>The time evolution</p>
+<p>of Hamilton's equation</p>
+<p>is a symplectomorphism,</p>
+<p>meaning that it conserves</p>
+<p>the symplectic two-form.</p>
+<p>A numerical scheme</p>
+<p>is a symplectic integrator</p>
+<p>if it also conserves</p>
+<p>this two-form.</p>
+<p>Let's hear more</p>
+<p>if this is not correct</p>
+<p>or not complete,</p>
+<p>but the one-form</p>
+<p>is like the differentiation</p>
+<p>and integration of a line.</p>
+<p>The two-form</p>
+<p>is like the differentiation</p>
+<p>and integration of a surface,</p>
+<p>and the three-form</p>
+<p>is like integration</p>
+<p>or differentiation</p>
+<p>of a volume.</p>
+<p>And John Denker</p>
+<p>has a great blog post</p>
+<p>on the basic properties</p>
+<p>of a symplectic integrator.</p>
+<p>Some really interesting quotes</p>
+<p>that are good</p>
+<p>to just keep in mind</p>
+<p>when we're hearing</p>
+<p>about all these avenues</p>
+<p>we're going to be exploring</p>
+<p>in the paper.</p>
+<p>A symplectic integrator</p>
+<p>conserves the area</p>
+<p>in phase space</p>
+<p>delimited by an ensemble</p>
+<p>of systems.</p>
+<p>For a periodic system,</p>
+<p>there is an area</p>
+<p>that is conserved,</p>
+<p>namely the area</p>
+<p>inside the phase space</p>
+<p>orbit of the system.</p>
+<p>The main reason</p>
+<p>for mentioning the orbit</p>
+<p>is to make the point</p>
+<p>that there are lots</p>
+<p>of different things</p>
+<p>with dimensions of area</p>
+<p>in phase space.</p>
+<p>Some are conserved</p>
+<p>and some not.</p>
+<p>Some are interesting</p>
+<p>and some not.</p>
+<p>You have to specify</p>
+<p>which sort of area</p>
+<p>you are talking about.</p>
+<p>So,</p>
+<p>another theme</p>
+<p>that's going to arise</p>
+<p>is we're interested</p>
+<p>in very well-behaved outcomes</p>
+<p>from a very specific</p>
+<p>or constrained,</p>
+<p>still broad,</p>
+<p>but definitely constrained</p>
+<p>set of distributions.</p>
+<p>For example,</p>
+<p>distributions</p>
+<p>that can be interpreted</p>
+<p>in an information theory sense</p>
+<p>as probability distributions.</p>
+<p>What was that mention</p>
+<p>of the Hamiltonian</p>
+<p>and the shadow Hamiltonian?</p>
+<p>So,</p>
+<p>the author is right.</p>
+<p>For symplectic brackets,</p>
+<p>which is the kind of operation</p>
+<p>that reflects</p>
+<p>the symplectic integrator,</p>
+<p>the existence</p>
+<p>of a shadow Hamiltonian</p>
+<p>can be guaranteed</p>
+<p>beyond the case</p>
+<p>of splitting methods,</p>
+<p>e.g. for variational integrators,</p>
+<p>which use variational inference,</p>
+<p>which use a discrete version</p>
+<p>of Hamilton's principle</p>
+<p>of least action.</p>
+<p>And we've heard it before</p>
+<p>that free energy principle</p>
+<p>is a principle</p>
+<p>of least action</p>
+<p>for inference and action.</p>
+<p>And more generally,</p>
+<p>for most symplectic integrators</p>
+<p>in which the symplectic bracket</p>
+<p>is preserved</p>
+<p>up to topological considerations</p>
+<p>described by</p>
+<p>some technicalities</p>
+<p>that we can learn about.</p>
+<p>As we shall see,</p>
+<p>such geometric integrators</p>
+<p>can be constructed</p>
+<p>by leveraging</p>
+<p>the shadow Hamiltonian property</p>
+<p>of symplectic methods</p>
+<p>on higher dimensional</p>
+<p>conservative Hamiltonian systems.</p>
+<p>In short,</p>
+<p>as a consequence</p>
+<p>of having shadow Hamiltonian,</p>
+<p>such geometric integrators</p>
+<p>are able to reproduce</p>
+<p>all the relevant properties</p>
+<p>of the continuum system.</p>
+<p>These arguments</p>
+<p>are completely general.</p>
+<p>So,</p>
+<p>even before one knows</p>
+<p>what the shadow Hamiltonian</p>
+<p>necessarily is,</p>
+<p>the authors are letting us know</p>
+<p>that if we can discretize</p>
+<p>the shadow Hamiltonian appropriately</p>
+<p>through symplectic integration,</p>
+<p>we can provide</p>
+<p>a discretization scheme</p>
+<p>that ends up staying</p>
+<p>consistent and compatible</p>
+<p>and all down the middle</p>
+<p>with the analytical properties</p>
+<p>that we worked so hard to get.</p>
+<p>And there were some</p>
+<p>different papers</p>
+<p>that were cited</p>
+<p>and some that were found</p>
+<p>during research.</p>
+<p>This paper,</p>
+<p>Time Step and Shadow Hamiltonian</p>
+<p>in Molecular Dynamics</p>
+<p>Simulations</p>
+<p>by Kim,</p>
+<p>demonstrates symplectic integrators</p>
+<p>on the simplest possible system,</p>
+<p>a simple harmonic oscillator.</p>
+<p>So,</p>
+<p>if one wants to</p>
+<p>go to</p>
+<p>a technical example</p>
+<p>but one that</p>
+<p>builds intuition,</p>
+<p>that's a great place to start.</p>
+<p>And,</p>
+<p>from the Wikipedia article</p>
+<p>on energy drift,</p>
+<p>these integrators</p>
+<p>do not in fact</p>
+<p>reproduce</p>
+<p>the actual</p>
+<p>Hamiltonian mechanics</p>
+<p>of the system.</p>
+<p>Instead,</p>
+<p>they reproduce</p>
+<p>a closely related</p>
+<p>shadow Hamiltonian</p>
+<p>whose value</p>
+<p>they conserved</p>
+<p>many orders</p>
+<p>of magnitude</p>
+<p>more closely.</p>
+<p>The accuracy</p>
+<p>of the energy conservation</p>
+<p>for the true Hamiltonian</p>
+<p>is dependent</p>
+<p>on the time step.</p>
+<p>So,</p>
+<p>if we can,</p>
+<p>for example,</p>
+<p>just metaphorically speaking,</p>
+<p>capture</p>
+<p>a high-resolution</p>
+<p>image</p>
+<p>of the shadow,</p>
+<p>then,</p>
+<p>we'll be able</p>
+<p>to know something</p>
+<p>do something</p>
+<p>with the actual.</p>
+<p>Some technical details</p>
+<p>on Stein's method,</p>
+<p>which is a general method</p>
+<p>in probability theory</p>
+<p>to obtain bounds</p>
+<p>on the distance</p>
+<p>between two probability</p>
+<p>distributions</p>
+<p>with respect</p>
+<p>to a probability metric.</p>
+<p>And,</p>
+<p>Stein's method</p>
+<p>is used</p>
+<p>in the context</p>
+<p>of Stein operators</p>
+<p>and Stein class,</p>
+<p>which we're going to get to</p>
+<p>in the subsequent discussions.</p>
+<p>Reproducing Kernel</p>
+<p>Our discussion of inference</p>
+<p>builds upon</p>
+<p>the theory of</p>
+<p>Hilbertian subspaces</p>
+<p>and, in particular,</p>
+<p>reproducing kernels.</p>
+<p>These inference schemes</p>
+<p>rely on the continuity</p>
+<p>of linear functionals,</p>
+<p>such as probability</p>
+<p>and Schwartz distributions,</p>
+<p>over a class of functions</p>
+<p>to geometrize</p>
+<p>the analysis</p>
+<p>of integral probability metrics,</p>
+<p>which measure</p>
+<p>the worst-case</p>
+<p>integration error.</p>
+<p>We shall explain</p>
+<p>how maximum mean,</p>
+<p>kernelized,</p>
+<p>and score-matching</p>
+<p>discrepancies</p>
+<p>arise naturally</p>
+<p>from topological considerations.</p>
+<p>So, we've added</p>
+<p>some background links</p>
+<p>here to the slide,</p>
+<p>but it'll be a great place</p>
+<p>to start with authors.</p>
+<p>What is a reproducing kernel?</p>
+<p>And how is it used</p>
+<p>in this paper?</p>
+<p>Onwards through the keywords</p>
+<p>we go.</p>
+<p>Accelerated optimization</p>
+<p>and variational inference.</p>
+<p>So, here's a 2016 paper</p>
+<p>from Michael Jordan</p>
+<p>and other authors</p>
+<p>and some quotes</p>
+<p>from the abstract.</p>
+<p>Accelerated methods</p>
+<p>achieve faster</p>
+<p>convergent rates</p>
+<p>than gradient methods</p>
+<p>and, indeed,</p>
+<p>under certain conditions</p>
+<p>they achieve</p>
+<p>optimal rates.</p>
+<p>However,</p>
+<p>accelerated methods</p>
+<p>are not descent methods</p>
+<p>and remain</p>
+<p>a conceptual mystery.</p>
+<p>We propose</p>
+<p>a variational,</p>
+<p>continuous-time framework</p>
+<p>for understanding</p>
+<p>accelerated methods.</p>
+<p>We provide</p>
+<p>a systematic methodology</p>
+<p>for converting</p>
+<p>accelerated higher-order methods</p>
+<p>from continuous time</p>
+<p>to discrete time.</p>
+<p>Our work illuminates</p>
+<p>a class of dynamics</p>
+<p>that may be useful</p>
+<p>for designing</p>
+<p>better algorithms</p>
+<p>for optimization.</p>
+<p>And,</p>
+<p>this is going to be,</p>
+<p>again,</p>
+<p>something awesome</p>
+<p>to discuss.</p>
+<p>We've talked about</p>
+<p>on many streams</p>
+<p>variational inference</p>
+<p>in the context</p>
+<p>of gradient-based</p>
+<p>optimization.</p>
+<p>For example,</p>
+<p>the ball is rolling</p>
+<p>to the bottom of the bowl,</p>
+<p>bottom of the hill,</p>
+<p>and what you can do</p>
+<p>is you can take</p>
+<p>the gradient,</p>
+<p>div, grab, curl,</p>
+<p>and all that</p>
+<p>of where the ball is</p>
+<p>and just go downhill.</p>
+<p>And if you designed</p>
+<p>the hill</p>
+<p>to be the right shape</p>
+<p>or you're using</p>
+<p>a chosen family</p>
+<p>of variational estimators</p>
+<p>that are the right shape,</p>
+<p>are a good shape,</p>
+<p>well-behaved shape,</p>
+<p>then you follow</p>
+<p>the gradient on down.</p>
+<p>And that's how we've talked</p>
+<p>about variational inference.</p>
+<p>Accelerated optimization</p>
+<p>is going to be</p>
+<p>accelerated</p>
+<p>from that.</p>
+<p>And so,</p>
+<p>it's fun to think about</p>
+<p>and it'll be great</p>
+<p>to talk about.</p>
+<p>Distributive systems.</p>
+<p>The vast majority</p>
+<p>of statistics</p>
+<p>and machine learning</p>
+<p>applications</p>
+<p>involve solving</p>
+<p>optimization problems.</p>
+<p>The author's right.</p>
+<p>Accelerated gradient-based</p>
+<p>methods</p>
+<p>and several variations</p>
+<p>thereof</p>
+<p>have become workhorses</p>
+<p>in these fields.</p>
+<p>Recently,</p>
+<p>there has been</p>
+<p>great interest</p>
+<p>in studying such methods</p>
+<p>from a continuous</p>
+<p>time-limiting perspective.</p>
+<p>Such methods</p>
+<p>can be seen</p>
+<p>as first-order integrators</p>
+<p>to a classical</p>
+<p>Hamiltonian system</p>
+<p>with dissipation.</p>
+<p>This raises</p>
+<p>the question</p>
+<p>on how to</p>
+<p>discretize the system</p>
+<p>such that</p>
+<p>important properties</p>
+<p>are preserved,</p>
+<p>assuming the system</p>
+<p>has fast conversions</p>
+<p>to critical point</p>
+<p>and desirable</p>
+<p>stability properties.</p>
+<p>Originally,</p>
+<p>such a theory</p>
+<p>of geometric integration</p>
+<p>was developed</p>
+<p>with conservative</p>
+<p>systems in mind</p>
+<p>while optimization,</p>
+<p>in optimization,</p>
+<p>the associated system</p>
+<p>is naturally</p>
+<p>a dissipative one.</p>
+<p>More recently,</p>
+<p>it has been proved</p>
+<p>that a generalization</p>
+<p>of symplectic integrators</p>
+<p>to dissipative</p>
+<p>Hamiltonian systems</p>
+<p>is indeed</p>
+<p>able to preserve</p>
+<p>rates of convergence</p>
+<p>and stability,</p>
+<p>which are the main</p>
+<p>properties of interest</p>
+<p>for optimization.</p>
+<p>So,</p>
+<p>from the Wikipedia</p>
+<p>on Hamiltonian systems.</p>
+<p>An example</p>
+<p>of a time-independent</p>
+<p>Hamiltonian system</p>
+<p>is the harmonic oscillator.</p>
+<p>So,</p>
+<p>it's just</p>
+<p>a frictionless spring</p>
+<p>oscillating around.</p>
+<p>The Hamiltonian</p>
+<p>of the system</p>
+<p>does not depend</p>
+<p>on time</p>
+<p>and thus the energy</p>
+<p>of the system</p>
+<p>is conserved.</p>
+<p>And so,</p>
+<p>we can say</p>
+<p>that that is</p>
+<p>a conservative</p>
+<p>Hamiltonian.</p>
+<p>If the Hamiltonian</p>
+<p>decays in time,</p>
+<p>it is dissipative.</p>
+<p>Recently,</p>
+<p>the advances</p>
+<p>of these authors</p>
+<p>and others</p>
+<p>have extended</p>
+<p>our ability</p>
+<p>to make</p>
+<p>discretizations</p>
+<p>of dissipative</p>
+<p>Hamiltonians</p>
+<p>that respect</p>
+<p>the rates</p>
+<p>of convergence</p>
+<p>and stability,</p>
+<p>which are the main</p>
+<p>properties of interest</p>
+<p>for optimization.</p>
+<p>And,</p>
+<p>we've talked about</p>
+<p>Hamiltonians</p>
+<p>on livestream number 49</p>
+<p>with Dalton</p>
+<p>Saktivitvelle</p>
+<p>on Bayesian mechanics.</p>
+<p>So,</p>
+<p>pretty cool.</p>
+<p>what is conservative,</p>
+<p>what is dissipative,</p>
+<p>we'll explore.</p>
+<p>As the final</p>
+<p>keyword,</p>
+<p>here,</p>
+<p>I just wanted</p>
+<p>to start</p>
+<p>with a blank</p>
+<p>slide on active</p>
+<p>inference</p>
+<p>and see what</p>
+<p>happens in</p>
+<p>52.1.</p>
+<p>So,</p>
+<p>consider</p>
+<p>the slide</p>
+<p>to be blank</p>
+<p>and for the</p>
+<p>authors</p>
+<p>and discussants,</p>
+<p>looking forward</p>
+<p>to hearing</p>
+<p>how are we</p>
+<p>approaching</p>
+<p>active inference</p>
+<p>given</p>
+<p>everything</p>
+<p>that we've</p>
+<p>just loaded</p>
+<p>onto the</p>
+<p>table</p>
+<p>and everywhere</p>
+<p>that we're</p>
+<p>about to go</p>
+<p>with the</p>
+<p>paper.</p>
+<p>Let's get</p>
+<p>into it.</p>
+<p>Section 1,</p>
+<p>Introduction.</p>
+<p>So,</p>
+<p>the authors</p>
+<p>begin with,</p>
+<p>Differential</p>
+<p>Geometry</p>
+<p>plays a</p>
+<p>fundamental</p>
+<p>role in</p>
+<p>applied</p>
+<p>mathematics,</p>
+<p>statistics,</p>
+<p>and computer</p>
+<p>science,</p>
+<p>including</p>
+<p>various</p>
+<p>domains,</p>
+<p>citations</p>
+<p>1 through</p>
+<p>22,</p>
+<p>which can</p>
+<p>be shown</p>
+<p>here.</p>
+<p>Various</p>
+<p>citations</p>
+<p>from this</p>
+<p>well-cited</p>
+<p>paper.</p>
+<p>The geometric</p>
+<p>study of</p>
+<p>statistical</p>
+<p>models has</p>
+<p>had many</p>
+<p>successes,</p>
+<p>ranging from</p>
+<p>statistical</p>
+<p>inference,</p>
+<p>where it was</p>
+<p>used to</p>
+<p>prove the</p>
+<p>optimality</p>
+<p>of maximum</p>
+<p>likelihood</p>
+<p>estimator,</p>
+<p>to the</p>
+<p>construction</p>
+<p>of the</p>
+<p>category</p>
+<p>of</p>
+<p>mathematical</p>
+<p>statistics</p>
+<p>generated</p>
+<p>by Markov</p>
+<p>morphisms.</p>
+<p>So,</p>
+<p>what are</p>
+<p>Markov</p>
+<p>morphisms</p>
+<p>from</p>
+<p>NCAT</p>
+<p>lab?</p>
+<p>The</p>
+<p>formalism</p>
+<p>of Markov</p>
+<p>categories</p>
+<p>can be</p>
+<p>thought of</p>
+<p>as a</p>
+<p>way to</p>
+<p>express</p>
+<p>certain</p>
+<p>aspects</p>
+<p>of</p>
+<p>probability</p>
+<p>and</p>
+<p>statistics</p>
+<p>synthetically.</p>
+<p>In other</p>
+<p>words,</p>
+<p>it consists</p>
+<p>of</p>
+<p>structure</p>
+<p>and</p>
+<p>axioms,</p>
+<p>which one</p>
+<p>can think</p>
+<p>of as</p>
+<p>fundamental</p>
+<p>in</p>
+<p>probability</p>
+<p>and</p>
+<p>statistics,</p>
+<p>which one</p>
+<p>can use</p>
+<p>to prove</p>
+<p>theorems</p>
+<p>without</p>
+<p>having to</p>
+<p>use</p>
+<p>measure</p>
+<p>theory</p>
+<p>directly.</p>
+<p>Intuitively,</p>
+<p>for the</p>
+<p>purposes of</p>
+<p>probability,</p>
+<p>a Markov</p>
+<p>category can</p>
+<p>be seen</p>
+<p>as a</p>
+<p>category</p>
+<p>where</p>
+<p>morphisms</p>
+<p>behave like</p>
+<p>random</p>
+<p>functions or</p>
+<p>Markov</p>
+<p>kernels,</p>
+<p>hence the</p>
+<p>name.</p>
+<p>So,</p>
+<p>just some</p>
+<p>red text</p>
+<p>speculation,</p>
+<p>it was a</p>
+<p>big success</p>
+<p>and a</p>
+<p>breakthrough</p>
+<p>to think</p>
+<p>about the</p>
+<p>category</p>
+<p>from a</p>
+<p>formal</p>
+<p>category</p>
+<p>theoretic</p>
+<p>perspective,</p>
+<p>to think</p>
+<p>about the</p>
+<p>category of</p>
+<p>statistical</p>
+<p>distributions</p>
+<p>from an</p>
+<p>information</p>
+<p>geometric</p>
+<p>perspective.</p>
+<p>This means</p>
+<p>that we</p>
+<p>can understand</p>
+<p>many analytical</p>
+<p>properties and</p>
+<p>transformations</p>
+<p>of statistical</p>
+<p>distributions,</p>
+<p>hashtag</p>
+<p>Bayesian,</p>
+<p>and develop</p>
+<p>general</p>
+<p>methods that</p>
+<p>work for</p>
+<p>that whole</p>
+<p>category,</p>
+<p>like</p>
+<p>accelerated</p>
+<p>optimization.</p>
+<p>And the</p>
+<p>applications</p>
+<p>are vast.</p>
+<p>Originally,</p>
+<p>such a</p>
+<p>theory of</p>
+<p>geometric</p>
+<p>integration</p>
+<p>was developed</p>
+<p>with conservative</p>
+<p>systems in</p>
+<p>mind.</p>
+<p>While in</p>
+<p>optimization,</p>
+<p>the associated</p>
+<p>system is</p>
+<p>naturally a</p>
+<p>dissipative</p>
+<p>one.</p>
+<p>Nevertheless,</p>
+<p>symplectic</p>
+<p>integrators</p>
+<p>were exploited</p>
+<p>in this</p>
+<p>context.</p>
+<p>More recently,</p>
+<p>it has been</p>
+<p>proved that</p>
+<p>a generalization</p>
+<p>of symplectic</p>
+<p>integrators to</p>
+<p>dissipative</p>
+<p>Hamiltonian</p>
+<p>systems is</p>
+<p>indeed able</p>
+<p>to preserve</p>
+<p>rates of</p>
+<p>convergence</p>
+<p>and stability,</p>
+<p>which are</p>
+<p>the main</p>
+<p>properties of</p>
+<p>interest for</p>
+<p>optimization.</p>
+<p>So,</p>
+<p>citation 9,</p>
+<p>what is it</p>
+<p>about?</p>
+<p>2021 paper</p>
+<p>on dissipative</p>
+<p>symplectic</p>
+<p>integration with</p>
+<p>applications to</p>
+<p>gradient-based</p>
+<p>optimization by</p>
+<p>some of the</p>
+<p>authors.</p>
+<p>And,</p>
+<p>it's interesting</p>
+<p>to pull out</p>
+<p>some quotes</p>
+<p>from the</p>
+<p>abstract and</p>
+<p>just hear a</p>
+<p>little bit about</p>
+<p>what they're</p>
+<p>up to.</p>
+<p>Recently,</p>
+<p>continuous-time</p>
+<p>dynamical systems</p>
+<p>have proved</p>
+<p>useful in</p>
+<p>providing</p>
+<p>conceptual and</p>
+<p>quantitative</p>
+<p>insights into</p>
+<p>gradient-based</p>
+<p>optimization,</p>
+<p>widely used in</p>
+<p>modern machine</p>
+<p>learning and</p>
+<p>statistics.</p>
+<p>An important</p>
+<p>question that</p>
+<p>arises in this</p>
+<p>line of work is</p>
+<p>how to</p>
+<p>discretize the</p>
+<p>system in</p>
+<p>such a way</p>
+<p>that its</p>
+<p>stability and</p>
+<p>rates of</p>
+<p>convergence are</p>
+<p>preserved.</p>
+<p>So,</p>
+<p>this is the</p>
+<p>sampling problem.</p>
+<p>In continuous</p>
+<p>time,</p>
+<p>the math is</p>
+<p>continuous and</p>
+<p>nice.</p>
+<p>However,</p>
+<p>the sampling</p>
+<p>problem,</p>
+<p>which actually</p>
+<p>comes into</p>
+<p>play when we</p>
+<p>use modern</p>
+<p>computational</p>
+<p>methods that</p>
+<p>are implemented</p>
+<p>on discrete</p>
+<p>time,</p>
+<p>space,</p>
+<p>and constraints,</p>
+<p>what happens</p>
+<p>when we use</p>
+<p>unconventional</p>
+<p>computing?</p>
+<p>That's an</p>
+<p>interesting</p>
+<p>discussion</p>
+<p>question,</p>
+<p>but in</p>
+<p>practice today,</p>
+<p>the</p>
+<p>discretization</p>
+<p>approach is</p>
+<p>going to</p>
+<p>matter a lot.</p>
+<p>In this</p>
+<p>paper,</p>
+<p>we propose a</p>
+<p>geometric</p>
+<p>framework in</p>
+<p>which such</p>
+<p>discretizations can</p>
+<p>be realized</p>
+<p>systematically,</p>
+<p>enabling the</p>
+<p>derivation of</p>
+<p>rate-matching</p>
+<p>algorithms without</p>
+<p>the need for</p>
+<p>a discrete</p>
+<p>convergence</p>
+<p>analysis.</p>
+<p>More specifically,</p>
+<p>we show that a</p>
+<p>generalization of</p>
+<p>symplectic integrators</p>
+<p>to non-conservative</p>
+<p>and in particular</p>
+<p>dissipative</p>
+<p>Hamiltonian systems</p>
+<p>is able to</p>
+<p>preserve rates of</p>
+<p>convergence up to</p>
+<p>a controlled</p>
+<p>error.</p>
+<p>So,</p>
+<p>this is the</p>
+<p>advance of this</p>
+<p>paper,</p>
+<p>that within a</p>
+<p>controlled error,</p>
+<p>good enough,</p>
+<p>they can model</p>
+<p>conservative and</p>
+<p>non-conservative,</p>
+<p>even dissipative</p>
+<p>Hamiltonian systems.</p>
+<p>Moreover,</p>
+<p>such methods</p>
+<p>preserve a</p>
+<p>shadow</p>
+<p>Hamiltonian,</p>
+<p>despite the</p>
+<p>absence of a</p>
+<p>conservation law,</p>
+<p>extending key</p>
+<p>results of</p>
+<p>symplectic</p>
+<p>integrators to</p>
+<p>non-conservative</p>
+<p>cases.</p>
+<p>Our arguments</p>
+<p>rely on a</p>
+<p>combination of</p>
+<p>backwards error</p>
+<p>analysis with</p>
+<p>fundamental results</p>
+<p>from symplectic</p>
+<p>geometry.</p>
+<p>We stress that</p>
+<p>although the</p>
+<p>original motivation</p>
+<p>for this work was</p>
+<p>the application</p>
+<p>to optimization,</p>
+<p>where dissipative</p>
+<p>systems play a</p>
+<p>natural role,</p>
+<p>they are fully</p>
+<p>general and not</p>
+<p>only provide a</p>
+<p>differential geometric</p>
+<p>analysis for</p>
+<p>dissipative</p>
+<p>Hamiltonian systems,</p>
+<p>but also</p>
+<p>substantially extend</p>
+<p>the theory of</p>
+<p>structure-preserving</p>
+<p>integration.</p>
+<p>So,</p>
+<p>they made this</p>
+<p>generalization in</p>
+<p>the case of</p>
+<p>optimization,</p>
+<p>however,</p>
+<p>it's exciting that</p>
+<p>it extends even</p>
+<p>deeper into the</p>
+<p>math and the</p>
+<p>symmetry.</p>
+<p>Those are a few</p>
+<p>highlights from</p>
+<p>section one.</p>
+<p>on to section</p>
+<p>two,</p>
+<p>accelerated</p>
+<p>optimization.</p>
+<p>Vroom,</p>
+<p>vroom,</p>
+<p>here we go.</p>
+<p>So,</p>
+<p>there are going</p>
+<p>to be a lot</p>
+<p>of slides from</p>
+<p>sections two</p>
+<p>through five,</p>
+<p>and to keep the</p>
+<p>video a reasonable</p>
+<p>length,</p>
+<p>I'm going to just</p>
+<p>highlight a few</p>
+<p>pieces,</p>
+<p>not even</p>
+<p>necessarily what</p>
+<p>I intended to</p>
+<p>highlight,</p>
+<p>but I'm just</p>
+<p>going to go for</p>
+<p>it so we can</p>
+<p>get through it.</p>
+<p>Section two,</p>
+<p>we shall be</p>
+<p>concerned with a</p>
+<p>problem of</p>
+<p>optimization of a</p>
+<p>function,</p>
+<p>finding a point</p>
+<p>that maximizes</p>
+<p>v of q,</p>
+<p>or minimizes</p>
+<p>negative v of q,</p>
+<p>over a smooth</p>
+<p>manifold m,</p>
+<p>r,</p>
+<p>in the real</p>
+<p>numbers.</p>
+<p>Many algorithms</p>
+<p>and optimization</p>
+<p>are given as a</p>
+<p>sequence of</p>
+<p>finite differences.</p>
+<p>Even when these</p>
+<p>algorithms are</p>
+<p>seen as</p>
+<p>discretizations of</p>
+<p>a continuum</p>
+<p>system whose</p>
+<p>behavior is</p>
+<p>presumably</p>
+<p>understood,</p>
+<p>it is well</p>
+<p>known that most</p>
+<p>discretizations</p>
+<p>break important</p>
+<p>properties of</p>
+<p>a system,</p>
+<p>and they</p>
+<p>continue to</p>
+<p>write.</p>
+<p>The analysis</p>
+<p>of such</p>
+<p>finite difference</p>
+<p>iterations is</p>
+<p>usually challenging,</p>
+<p>relying on</p>
+<p>painstaking algebra</p>
+<p>to obtain</p>
+<p>theoretical</p>
+<p>guarantees,</p>
+<p>such as</p>
+<p>conversions to</p>
+<p>a critical</p>
+<p>point,</p>
+<p>stability,</p>
+<p>and rates of</p>
+<p>convergence to</p>
+<p>a critical</p>
+<p>point.</p>
+<p>Even when</p>
+<p>these algorithms</p>
+<p>are seen as</p>
+<p>discretizations of</p>
+<p>a continuum</p>
+<p>system whose</p>
+<p>behavior is</p>
+<p>presumably</p>
+<p>understood,</p>
+<p>it is well</p>
+<p>known that most</p>
+<p>discretizations</p>
+<p>break important</p>
+<p>properties of</p>
+<p>the system.</p>
+<p>It can't be</p>
+<p>highlighted enough.</p>
+<p>When we</p>
+<p>implement optimization</p>
+<p>algorithms on</p>
+<p>modern computers,</p>
+<p>we have to make</p>
+<p>discretizations in</p>
+<p>space and time</p>
+<p>and in practice.</p>
+<p>So, even if the</p>
+<p>analytical properties</p>
+<p>of the distribution</p>
+<p>are totally</p>
+<p>fire, when we</p>
+<p>try to solve and</p>
+<p>fit models to</p>
+<p>empirical data,</p>
+<p>unless we also</p>
+<p>match that</p>
+<p>elegance and</p>
+<p>power with a</p>
+<p>discretization</p>
+<p>approach, we</p>
+<p>end up failing</p>
+<p>to realize</p>
+<p>analytical</p>
+<p>promises.</p>
+<p>2.1.</p>
+<p>The principle</p>
+<p>of geometric</p>
+<p>integration.</p>
+<p>Fortunately, the</p>
+<p>authors write,</p>
+<p>here comes into</p>
+<p>play one of the</p>
+<p>most fundamental</p>
+<p>ideas of geometric</p>
+<p>integrations.</p>
+<p>Many numerical</p>
+<p>integrators are</p>
+<p>very close,</p>
+<p>exponentially in</p>
+<p>the step size,</p>
+<p>to a smooth</p>
+<p>dynamics generated</p>
+<p>by a shadow</p>
+<p>vector field.</p>
+<p>A little</p>
+<p>whisper of a</p>
+<p>shadow</p>
+<p>Hamiltonian.</p>
+<p>And the</p>
+<p>shadow vector</p>
+<p>field is</p>
+<p>a perturbation</p>
+<p>of the</p>
+<p>original vector</p>
+<p>field.</p>
+<p>This allows</p>
+<p>us to</p>
+<p>analyze the</p>
+<p>discrete</p>
+<p>trajectory</p>
+<p>implemented by</p>
+<p>the algorithm</p>
+<p>using powerful</p>
+<p>tools from</p>
+<p>dynamical systems</p>
+<p>and differential</p>
+<p>geometry, which</p>
+<p>are a priori</p>
+<p>reserved to</p>
+<p>smooth systems.</p>
+<p>So, we're</p>
+<p>going to be</p>
+<p>able to</p>
+<p>discretize</p>
+<p>our cake</p>
+<p>and have</p>
+<p>it be</p>
+<p>smooth, too.</p>
+<p>Crucially,</p>
+<p>while numerical</p>
+<p>integrators</p>
+<p>typically diverge</p>
+<p>significantly</p>
+<p>from the</p>
+<p>dynamics they</p>
+<p>aim to</p>
+<p>simulate,</p>
+<p>geometric</p>
+<p>integrators</p>
+<p>respect the</p>
+<p>main properties</p>
+<p>of a system.</p>
+<p>In the</p>
+<p>context of</p>
+<p>optimization,</p>
+<p>this means</p>
+<p>respecting</p>
+<p>stability and</p>
+<p>rates of</p>
+<p>convergence.</p>
+<p>Seems like a</p>
+<p>good idea to</p>
+<p>respect the</p>
+<p>main properties</p>
+<p>of the</p>
+<p>system.</p>
+<p>This was</p>
+<p>first demonstrated</p>
+<p>in 9 and</p>
+<p>further extended</p>
+<p>in 10.</p>
+<p>Our discussion</p>
+<p>will be based</p>
+<p>on these work.</p>
+<p>So, citation</p>
+<p>9, Franca,</p>
+<p>Jordan, and</p>
+<p>Vidal, mentioned</p>
+<p>previously.</p>
+<p>And, citation</p>
+<p>10, Franca,</p>
+<p>Barp,</p>
+<p>Giralami, and</p>
+<p>Jordan, optimization</p>
+<p>on manifolds, a</p>
+<p>symplectic</p>
+<p>approach, authors'</p>
+<p>previous work.</p>
+<p>So, big</p>
+<p>development.</p>
+<p>We can use</p>
+<p>geometric rather</p>
+<p>than coarse</p>
+<p>numerical</p>
+<p>integrators, so</p>
+<p>our sampling-based</p>
+<p>optimization schemes,</p>
+<p>including their</p>
+<p>discretization,</p>
+<p>respect the</p>
+<p>main properties</p>
+<p>of the system.</p>
+<p>Sounds great.</p>
+<p>Section 2.2,</p>
+<p>Conservative</p>
+<p>Flows and</p>
+<p>Symplectic</p>
+<p>Integrators.</p>
+<p>As a</p>
+<p>stepping stone,</p>
+<p>we first</p>
+<p>discuss the</p>
+<p>construction of</p>
+<p>suitable</p>
+<p>conservative</p>
+<p>flows.</p>
+<p>These are</p>
+<p>very well</p>
+<p>studied, and</p>
+<p>they're very</p>
+<p>intuitive.</p>
+<p>More</p>
+<p>intuitive.</p>
+<p>To construct</p>
+<p>vector fields</p>
+<p>along the</p>
+<p>derivative of</p>
+<p>x, which</p>
+<p>is the</p>
+<p>function of</p>
+<p>flows along</p>
+<p>which some</p>
+<p>function is</p>
+<p>constant, we</p>
+<p>shall need</p>
+<p>brackets.</p>
+<p>Geometrically,</p>
+<p>these are</p>
+<p>morphisms, x</p>
+<p>star to x, also</p>
+<p>known as</p>
+<p>contravariant</p>
+<p>tensors of</p>
+<p>rank 2 in</p>
+<p>physics.</p>
+<p>So, calling</p>
+<p>back the</p>
+<p>2 form and</p>
+<p>the brackets.</p>
+<p>Importantly,</p>
+<p>vector fields</p>
+<p>that preserve</p>
+<p>f correspond to</p>
+<p>bracket vector</p>
+<p>fields in which</p>
+<p>b is</p>
+<p>anti-symmetric.</p>
+<p>Constructing</p>
+<p>conservative</p>
+<p>flows is</p>
+<p>thus</p>
+<p>straightforward.</p>
+<p>Unfortunately,</p>
+<p>it is a</p>
+<p>rather more</p>
+<p>challenging task</p>
+<p>to construct</p>
+<p>efficient</p>
+<p>discretizations</p>
+<p>that retain</p>
+<p>this property.</p>
+<p>Most well-known</p>
+<p>procedures, namely</p>
+<p>discrete gradient</p>
+<p>and projection</p>
+<p>methods, only</p>
+<p>give rise to</p>
+<p>integrators that</p>
+<p>require solving</p>
+<p>implicit equations</p>
+<p>at every step,</p>
+<p>and they may</p>
+<p>break other</p>
+<p>important properties</p>
+<p>of the system.</p>
+<p>Citation 96.</p>
+<p>This is the</p>
+<p>issue.</p>
+<p>Again, no</p>
+<p>matter how</p>
+<p>nicely behaved,</p>
+<p>in principle,</p>
+<p>our analytical</p>
+<p>underlying smooth</p>
+<p>differentiable</p>
+<p>function is,</p>
+<p>if we</p>
+<p>discretize it</p>
+<p>and we</p>
+<p>chop it up</p>
+<p>in a way</p>
+<p>that's</p>
+<p>inappropriate,</p>
+<p>we don't</p>
+<p>respect the</p>
+<p>properties of</p>
+<p>the system,</p>
+<p>we don't end</p>
+<p>up with being</p>
+<p>able to realize</p>
+<p>those analytical</p>
+<p>promises.</p>
+<p>Indeed, in</p>
+<p>practice, the</p>
+<p>Hamiltonian usually</p>
+<p>decomposes into</p>
+<p>a potential</p>
+<p>energy, associated</p>
+<p>to position and</p>
+<p>independent of</p>
+<p>momentum, and a</p>
+<p>kinetic energy,</p>
+<p>associated to</p>
+<p>momentum and</p>
+<p>invariant under</p>
+<p>position changes,</p>
+<p>both generating</p>
+<p>tractable flows.</p>
+<p>Thanks to this</p>
+<p>decomposition, we</p>
+<p>are able to</p>
+<p>construct numerical</p>
+<p>methods through</p>
+<p>splitting the</p>
+<p>vector field.</p>
+<p>A few ideas</p>
+<p>coming together</p>
+<p>here, recalling</p>
+<p>some of our</p>
+<p>generalized</p>
+<p>coordinate-based</p>
+<p>approaches to</p>
+<p>non-equilibrium</p>
+<p>steady-states in</p>
+<p>Bayesian mechanics,</p>
+<p>and also</p>
+<p>decomposition of</p>
+<p>complex functions.</p>
+<p>Note also</p>
+<p>that for</p>
+<p>symplectic</p>
+<p>brackets, the</p>
+<p>existence of a</p>
+<p>shadow</p>
+<p>Hamiltonian can</p>
+<p>be guaranteed</p>
+<p>beyond the</p>
+<p>case of</p>
+<p>splitting methods,</p>
+<p>e.g. for</p>
+<p>variational</p>
+<p>integrators, which</p>
+<p>use a discrete</p>
+<p>version of</p>
+<p>Hamilton's</p>
+<p>principle of</p>
+<p>least action,</p>
+<p>and for most</p>
+<p>symplectic</p>
+<p>integrators in</p>
+<p>which the</p>
+<p>symplectic</p>
+<p>bracket is</p>
+<p>preserved up to</p>
+<p>topological</p>
+<p>considerations</p>
+<p>described by</p>
+<p>the first</p>
+<p>Dirham</p>
+<p>cohomology of</p>
+<p>face space.</p>
+<p>So, for</p>
+<p>discussion with</p>
+<p>authors and</p>
+<p>you all, what</p>
+<p>are the</p>
+<p>splitting</p>
+<p>integrators?</p>
+<p>What is split</p>
+<p>from what and</p>
+<p>why?</p>
+<p>What is the</p>
+<p>bracket notation</p>
+<p>or operation?</p>
+<p>And what is a</p>
+<p>Poisson bracket?</p>
+<p>What is a</p>
+<p>Poisson system?</p>
+<p>Section 2-3,</p>
+<p>rate-matching</p>
+<p>integrators for</p>
+<p>smooth optimization.</p>
+<p>So, having</p>
+<p>obtained a</p>
+<p>vast family of</p>
+<p>smooth dynamics</p>
+<p>and integrators</p>
+<p>that closely</p>
+<p>preserve f,</p>
+<p>we can now</p>
+<p>apply these</p>
+<p>ideas to</p>
+<p>optimization.</p>
+<p>What is being</p>
+<p>set up in this</p>
+<p>section and</p>
+<p>why?</p>
+<p>In equation</p>
+<p>7, we see</p>
+<p>that the</p>
+<p>damping</p>
+<p>coefficient,</p>
+<p>gamma of</p>
+<p>t being</p>
+<p>greater than</p>
+<p>zero,</p>
+<p>reflects the</p>
+<p>dissipative</p>
+<p>component or</p>
+<p>the second</p>
+<p>term in that</p>
+<p>right-hand side</p>
+<p>of equation</p>
+<p>7.</p>
+<p>So, damping</p>
+<p>coefficient controls</p>
+<p>the strength of</p>
+<p>the dissipation.</p>
+<p>One can imagine</p>
+<p>that if the</p>
+<p>damping coefficient</p>
+<p>is zero, the</p>
+<p>dissipative side</p>
+<p>zeroes out and</p>
+<p>b has</p>
+<p>conservative</p>
+<p>behavior and</p>
+<p>so on.</p>
+<p>So, what is</p>
+<p>being set up</p>
+<p>here and</p>
+<p>why?</p>
+<p>Dot, dot,</p>
+<p>dot, dot,</p>
+<p>dot.</p>
+<p>The existence</p>
+<p>of such a</p>
+<p>Lyapunov</p>
+<p>function,</p>
+<p>described above,</p>
+<p>implies that</p>
+<p>trajectory starting</p>
+<p>in the</p>
+<p>neighborhood of</p>
+<p>q star will</p>
+<p>converge to</p>
+<p>q star.</p>
+<p>So, it's like a</p>
+<p>ball rolling to</p>
+<p>the bottom of</p>
+<p>a hill, just</p>
+<p>like we've</p>
+<p>always wanted.</p>
+<p>In other</p>
+<p>words, the</p>
+<p>above system</p>
+<p>provably solved</p>
+<p>the optimization</p>
+<p>problem, minimum</p>
+<p>of v on</p>
+<p>q, such that</p>
+<p>q is in the</p>
+<p>d-dimensional</p>
+<p>real.</p>
+<p>Punchline.</p>
+<p>We're setting</p>
+<p>up a system</p>
+<p>with good,</p>
+<p>smooth</p>
+<p>optimization</p>
+<p>characteristics,</p>
+<p>ball rolling</p>
+<p>to the bottom</p>
+<p>of a smooth</p>
+<p>hill, that</p>
+<p>is also on</p>
+<p>the path or</p>
+<p>using the</p>
+<p>notation of</p>
+<p>or prepared</p>
+<p>to make the</p>
+<p>transformation</p>
+<p>to a</p>
+<p>tractable</p>
+<p>discretization</p>
+<p>approach.</p>
+<p>So, some</p>
+<p>more on the</p>
+<p>damping</p>
+<p>coefficient.</p>
+<p>They bring</p>
+<p>up some</p>
+<p>common choices</p>
+<p>for the</p>
+<p>damping</p>
+<p>coefficient,</p>
+<p>and big O</p>
+<p>notation</p>
+<p>describes on</p>
+<p>the order of</p>
+<p>which something</p>
+<p>occurs.</p>
+<p>For example,</p>
+<p>linearly, order</p>
+<p>of the</p>
+<p>variable, or</p>
+<p>sub or</p>
+<p>super linearly</p>
+<p>as a function</p>
+<p>of time or</p>
+<p>data points.</p>
+<p>So, in</p>
+<p>computational</p>
+<p>complexity</p>
+<p>analysis, people</p>
+<p>are often</p>
+<p>interested, as</p>
+<p>I double the</p>
+<p>amount of</p>
+<p>data I'm</p>
+<p>analyzing, does</p>
+<p>that make the</p>
+<p>algorithm take</p>
+<p>twice as long?</p>
+<p>That's linear</p>
+<p>computational</p>
+<p>complexity.</p>
+<p>Does it take</p>
+<p>four times as</p>
+<p>long?</p>
+<p>Does it take</p>
+<p>the same amount</p>
+<p>of time?</p>
+<p>and so on?</p>
+<p>And it'll be</p>
+<p>great to talk</p>
+<p>about the</p>
+<p>intuitions and</p>
+<p>implications and</p>
+<p>generalizations about</p>
+<p>how the damping</p>
+<p>coefficient influences</p>
+<p>the computational</p>
+<p>complexity estimates</p>
+<p>for convergence in</p>
+<p>different settings.</p>
+<p>They write,</p>
+<p>the conservative</p>
+<p>system from</p>
+<p>equation 16</p>
+<p>reduces precisely</p>
+<p>the original</p>
+<p>dissipative system</p>
+<p>13.</p>
+<p>The second</p>
+<p>equation in</p>
+<p>16 reproduces</p>
+<p>14, and the</p>
+<p>remaining equations</p>
+<p>are equivalent to</p>
+<p>the equations of</p>
+<p>motion associated</p>
+<p>to 13, which in</p>
+<p>turn are equivalent</p>
+<p>to 8 as</p>
+<p>previously noted.</p>
+<p>Formally, what we</p>
+<p>have done is to</p>
+<p>embed the original</p>
+<p>dissipative system</p>
+<p>with phase space</p>
+<p>R2D, so real</p>
+<p>with 2D</p>
+<p>dimensions, into</p>
+<p>a higher</p>
+<p>dimensional</p>
+<p>conservative system</p>
+<p>with phase space</p>
+<p>R2D plus 2.</p>
+<p>The dissipative</p>
+<p>dynamics thus</p>
+<p>lies on a</p>
+<p>hypersurface of</p>
+<p>constant energy</p>
+<p>k equals 0 in</p>
+<p>high dimensions.</p>
+<p>The reason for</p>
+<p>doing this</p>
+<p>procedure, called</p>
+<p>symplectification,</p>
+<p>is purely</p>
+<p>theoretical.</p>
+<p>Oh, come on,</p>
+<p>it's not purely</p>
+<p>theoretical.</p>
+<p>Since the theory</p>
+<p>of symplectic</p>
+<p>integrators only</p>
+<p>accounts for</p>
+<p>conservative systems,</p>
+<p>we can now</p>
+<p>extend this theory</p>
+<p>to dissipative</p>
+<p>systems settings</p>
+<p>by applying a</p>
+<p>symplectic integrator</p>
+<p>to 13 and then</p>
+<p>fixing the relevant</p>
+<p>coordinates, 17</p>
+<p>in the resulting</p>
+<p>methods.</p>
+<p>Geometrically, this</p>
+<p>corresponds to</p>
+<p>integrating the</p>
+<p>time flow exactly.</p>
+<p>We're going to</p>
+<p>talk about a</p>
+<p>relationship between</p>
+<p>time and</p>
+<p>dissipative systems.</p>
+<p>After all, it's</p>
+<p>dissipative systems</p>
+<p>that are dissipating</p>
+<p>in time, and so</p>
+<p>discretization of</p>
+<p>time plays a role</p>
+<p>in the appropriate</p>
+<p>discretization of a</p>
+<p>dissipative</p>
+<p>Hamiltonian.</p>
+<p>And in Citation</p>
+<p>9, previously</p>
+<p>raised, such a</p>
+<p>procedure was defined</p>
+<p>under the name of</p>
+<p>pre-symplectic</p>
+<p>integrators, and</p>
+<p>these connections</p>
+<p>hold not only for</p>
+<p>the specific example</p>
+<p>above, but also for</p>
+<p>general, non-conservative</p>
+<p>Hamiltonian systems.</p>
+<p>So, what is</p>
+<p>happening here?</p>
+<p>What's an intuition</p>
+<p>for conservative and</p>
+<p>dissipative systems, and</p>
+<p>how have the recent</p>
+<p>works of Franca et al</p>
+<p>expanded what is</p>
+<p>possible?</p>
+<p>We are now ready to</p>
+<p>explain why this</p>
+<p>approach is suitable</p>
+<p>to construct</p>
+<p>practical optimization</p>
+<p>methods.</p>
+<p>The coordinate</p>
+<p>t sub k becomes</p>
+<p>simply the time</p>
+<p>discretization, which</p>
+<p>is exact.</p>
+<p>And so, is u sub</p>
+<p>k, since it is a</p>
+<p>function of time</p>
+<p>alone.</p>
+<p>Importantly, u does</p>
+<p>not couple to any of</p>
+<p>the other degrees of</p>
+<p>freedom, so it is</p>
+<p>irrelevant whether we</p>
+<p>have access to u or</p>
+<p>not, because we're</p>
+<p>looking to solve a</p>
+<p>function of t.</p>
+<p>17a can be</p>
+<p>substituted in 15</p>
+<p>to get 18, and</p>
+<p>you can replace 13</p>
+<p>to get 19.</p>
+<p>We'll talk more</p>
+<p>about it with the</p>
+<p>authors.</p>
+<p>Therefore, the</p>
+<p>known rates,</p>
+<p>equation 11, for the</p>
+<p>continuum system are</p>
+<p>nearly preserved, and</p>
+<p>so would be any rates</p>
+<p>of more general time</p>
+<p>dependent dissipative</p>
+<p>Hamiltonian systems.</p>
+<p>Let us now present an</p>
+<p>explicit algorithm to</p>
+<p>solve the optimization</p>
+<p>problem.</p>
+<p>This is all happening</p>
+<p>as a consequence of</p>
+<p>having a shadow</p>
+<p>Hamiltonian, such that</p>
+<p>geometric integrators</p>
+<p>are able to</p>
+<p>reproduce all the</p>
+<p>relevant properties of</p>
+<p>the continuum</p>
+<p>system.</p>
+<p>Section 2.4.</p>
+<p>Manifold and</p>
+<p>constrained optimization.</p>
+<p>Following 10, we</p>
+<p>briefly mentioned how</p>
+<p>the previous approach</p>
+<p>can be extended in</p>
+<p>great generality to</p>
+<p>an optimization problem.</p>
+<p>So, equation 21, we</p>
+<p>present our</p>
+<p>minimization problem,</p>
+<p>V of Q, variational</p>
+<p>distribution on Q,</p>
+<p>citation 10, Franca</p>
+<p>et al.</p>
+<p>They write, there are</p>
+<p>essentially two ways to</p>
+<p>solve this problem through</p>
+<p>a dissipative</p>
+<p>Hamiltonian approach.</p>
+<p>One is to simulate a</p>
+<p>Hamiltonian dynamics on</p>
+<p>T star M by</p>
+<p>incorporating the metric</p>
+<p>of M in the kinetic</p>
+<p>moving part of the</p>
+<p>Hamiltonian.</p>
+<p>Another is to consider a</p>
+<p>Hamiltonian dynamics on</p>
+<p>R n and embed M into</p>
+<p>R n by imposing</p>
+<p>several constraints.</p>
+<p>The first approach uses</p>
+<p>a Li group.</p>
+<p>We'll talk more about it.</p>
+<p>An example of a second</p>
+<p>approach, one can</p>
+<p>constrain the integrator</p>
+<p>on R n to define a</p>
+<p>symplectic integrator on</p>
+<p>M via the discrete</p>
+<p>constrained variational</p>
+<p>approach by using some</p>
+<p>techniques.</p>
+<p>The above method</p>
+<p>consists in a</p>
+<p>dissipative generalization</p>
+<p>of the well-known</p>
+<p>rattle integrator from</p>
+<p>molecular dynamics,</p>
+<p>citations 100</p>
+<p>through 103,</p>
+<p>used in computational</p>
+<p>biology.</p>
+<p>Section 2.5, gradient</p>
+<p>flow as a high</p>
+<p>friction limit.</p>
+<p>Let us provide some</p>
+<p>intuition why simulating</p>
+<p>second order systems is</p>
+<p>expected to yield faster</p>
+<p>algorithms.</p>
+<p>As an illustration,</p>
+<p>consider figure one on</p>
+<p>the left, we'll look at</p>
+<p>in a second, where a</p>
+<p>particle immersed in a</p>
+<p>fluid falls under the</p>
+<p>influence of a potential</p>
+<p>force, negative delta</p>
+<p>sub q on v and q.</p>
+<p>So, partial differential</p>
+<p>with respect to q of v on</p>
+<p>q.</p>
+<p>That plays the role of</p>
+<p>gravity and is constrained</p>
+<p>to move on a surface.</p>
+<p>So, ball rolling down the</p>
+<p>hill.</p>
+<p>We weren't joking about</p>
+<p>it.</p>
+<p>In the underdamped case,</p>
+<p>the particle is underwater,</p>
+<p>which is not so viscous,</p>
+<p>so it has acceleration and</p>
+<p>moves fast.</p>
+<p>It may even oscillate.</p>
+<p>In the overdamped case, the</p>
+<p>particle is in a highly</p>
+<p>viscous fluid, such as</p>
+<p>honey, and the drag force,</p>
+<p>that damping coefficient,</p>
+<p>gamma, is comparable or</p>
+<p>stronger to the gradient.</p>
+<p>Thus, the particle moves</p>
+<p>slowly since it cannot</p>
+<p>accelerate.</p>
+<p>During the same elapsed</p>
+<p>time, delta t, an</p>
+<p>accelerated particle would</p>
+<p>travel a longer distance.</p>
+<p>Here's figure one.</p>
+<p>So here, why simulating</p>
+<p>second-order systems</p>
+<p>yields accelerated methods.</p>
+<p>So on the left,</p>
+<p>constrained particle</p>
+<p>falling in fluids of</p>
+<p>differential viscosity.</p>
+<p>Here on the left, we have</p>
+<p>the particle falling through</p>
+<p>honey.</p>
+<p>It's slowly making its</p>
+<p>way to the bottom of the</p>
+<p>bowl, but it never really</p>
+<p>builds speed.</p>
+<p>Its terminal velocity is</p>
+<p>being dominated by the</p>
+<p>viscosity of the fluid.</p>
+<p>Whereas this ball falling</p>
+<p>through water or falling</p>
+<p>through air is, with</p>
+<p>respect to the honey</p>
+<p>dampened bowl, this is</p>
+<p>like an accelerated</p>
+<p>optimization.</p>
+<p>optimization.</p>
+<p>And they present some</p>
+<p>numerical results that</p>
+<p>help us bolster that</p>
+<p>intuition.</p>
+<p>Really fun and embodied</p>
+<p>way to think about</p>
+<p>optimization.</p>
+<p>We've talked about that</p>
+<p>ball rolling to the</p>
+<p>bottom of the hill and</p>
+<p>what the ball does when it</p>
+<p>hits a small bump, but</p>
+<p>we have not talked about</p>
+<p>what media the ball is</p>
+<p>floating through and the</p>
+<p>media is the message and</p>
+<p>the fish doesn't know what</p>
+<p>it's swimming through.</p>
+<p>section 2.6, optimization</p>
+<p>in the space of</p>
+<p>probability measures.</p>
+<p>It'll be great to</p>
+<p>explore more because</p>
+<p>we're going to see free</p>
+<p>energy calculations on</p>
+<p>the stationary density,</p>
+<p>KL divergence, and</p>
+<p>more.</p>
+<p>For now, we can just</p>
+<p>say all those</p>
+<p>optimization techniques</p>
+<p>we were bringing up</p>
+<p>earlier, we're going to</p>
+<p>be able to do them on</p>
+<p>information geometric</p>
+<p>spaces that correspond to</p>
+<p>probability measures that</p>
+<p>are well behaved.</p>
+<p>not all distributions are</p>
+<p>probability measures or</p>
+<p>probability distributions.</p>
+<p>Just because you draw a</p>
+<p>line doesn't mean you can</p>
+<p>use that in part of your</p>
+<p>variational inference scheme</p>
+<p>for Bayesian statistics.</p>
+<p>That's section 2.</p>
+<p>on to section 3.</p>
+
+<p>Hamiltonian-based</p>
+<p>accelerated sampling.</p>
+<p>So we talked about the</p>
+<p>Hamiltonian, conservative and</p>
+<p>dissipative, and the shadow</p>
+<p>Hamiltonian, which is going to</p>
+<p>be orders of magnitude better</p>
+<p>to approximate.</p>
+<p>We talked about gradient-based</p>
+<p>methods and how accelerated</p>
+<p>sampling is going to help us</p>
+<p>accelerate those sampling</p>
+<p>techniques.</p>
+<p>And now section 3 brings it</p>
+<p>together with Hamiltonian-based</p>
+<p>accelerated sampling.</p>
+<p>section 3.</p>
+<p>The purpose of sampling</p>
+<p>methods is to efficiently</p>
+<p>draw samples from a target</p>
+<p>distribution row, or more</p>
+<p>commonly to calculate</p>
+<p>expectations with respect to</p>
+<p>row.</p>
+<p>And from the end of the</p>
+<p>paragraph.</p>
+<p>An efficient sampling scheme</p>
+<p>is one that minimizes the</p>
+<p>variance of the Monte Carlo</p>
+<p>Markov chain estimator.</p>
+<p>Monte Carlo, that means that</p>
+<p>we're sampling hands from the</p>
+<p>poker table.</p>
+<p>And Markov chain, which means</p>
+<p>that the past only influences</p>
+<p>the future through the</p>
+<p>present.</p>
+<p>It's a quote, memoryless</p>
+<p>process.</p>
+<p>In other words, fewer samples</p>
+<p>will be needed to obtain a</p>
+<p>good estimate.</p>
+<p>Intuitively, good samplers are</p>
+<p>Markov chains that converge as</p>
+<p>fast as possible to the target</p>
+<p>distribution.</p>
+<p>It's like if you laid down a</p>
+<p>jump rope on a mountain, if</p>
+<p>that jump rope converged</p>
+<p>quickly to the topography of</p>
+<p>the mountain, it would have</p>
+<p>been a fast converging jump</p>
+<p>rope.</p>
+<p>And we're doing something like</p>
+<p>that, but with sampling from</p>
+<p>the jump rope.</p>
+<p>3.1 Optimizing diffusion</p>
+<p>processes for sampling.</p>
+<p>As many MCMC methods are</p>
+<p>based on discretizing</p>
+<p>continuous time stochastic</p>
+<p>processes, the analysis of</p>
+<p>continuous time processes is</p>
+<p>informative of the properties</p>
+<p>of efficient samplers.</p>
+<p>And diffusion processes</p>
+<p>possess a rich geometric</p>
+<p>theory, extending that of</p>
+<p>vector fields and have been</p>
+<p>widely studied in the context</p>
+<p>of sampling.</p>
+<p>A lot of very fascinating</p>
+<p>ideas here.</p>
+<p>Stratanovich stochastic</p>
+<p>differential equations are</p>
+<p>going to come into play.</p>
+<p>Equation 34.</p>
+<p>More technical details on</p>
+<p>diffusion.</p>
+<p>The calculus of twisted</p>
+<p>differential forms allows us</p>
+<p>to have a measure-informed</p>
+<p>calculus on multi-vector fields.</p>
+<p>What are twisted differential</p>
+<p>forms?</p>
+<p>I'm looking forward to that</p>
+<p>conversation.</p>
+<p>What is the untwisted</p>
+<p>differential form?</p>
+<p>Have we been twisted all along</p>
+<p>or not?</p>
+<p>And they go on to write,</p>
+<p>A fundamental criterion</p>
+<p>for efficient sampling</p>
+<p>is non-reversibility.</p>
+<p>A process is non-reversible</p>
+<p>if it is statistically</p>
+<p>distinguishable</p>
+<p>from its time reversal</p>
+<p>when initialized</p>
+<p>at the target distribution.</p>
+<p>So, once the jump rope</p>
+<p>is lying flat on the mountain,</p>
+<p>it's like in a position</p>
+<p>of reversibility.</p>
+<p>Mixing metaphors</p>
+<p>at will here.</p>
+<p>Measure-preserving</p>
+<p>diffusions are</p>
+<p>non-reversible</p>
+<p>precisely when</p>
+<p>some conditions are met.</p>
+<p>Intuitively,</p>
+<p>non-reversible processes</p>
+<p>backtrack less often</p>
+<p>and thus furnish</p>
+<p>more diverse samples.</p>
+<p>So, if you're that ball</p>
+<p>rolling on the mountain,</p>
+<p>you want to just</p>
+<p>plow forward.</p>
+<p>And whether you're going</p>
+<p>up or downhill,</p>
+<p>you want to be sampling</p>
+<p>and making moves,</p>
+<p>but you don't want to be</p>
+<p>going back and forth</p>
+<p>because at that point,</p>
+<p>it's not an efficient</p>
+<p>sampling path.</p>
+<p>It's well known</p>
+<p>that removing</p>
+<p>non-reversibility</p>
+<p>worsens the spectral gap</p>
+<p>and the asymptotic variance</p>
+<p>of the MCMC estimator.</p>
+<p>So, time discretization,</p>
+<p>spectral gap.</p>
+<p>In diffusions</p>
+<p>with linear coefficients,</p>
+<p>one can construct</p>
+<p>the optimal</p>
+<p>non-reversible matrix A</p>
+<p>to optimize</p>
+<p>the spectral gap.</p>
+<p>we can have</p>
+<p>well-behaved parameters</p>
+<p>that help us</p>
+<p>get at</p>
+<p>optimal</p>
+<p>discretization schemes</p>
+<p>so that that</p>
+<p>shadow Hamiltonian</p>
+<p>can be preserved</p>
+<p>when we do</p>
+<p>discretize it</p>
+<p>during optimization</p>
+<p>so that we can</p>
+<p>respect the key</p>
+<p>properties of the system.</p>
+<p>However,</p>
+<p>there are no</p>
+<p>generic guidelines</p>
+<p>on how to optimize</p>
+<p>non-reversibility</p>
+<p>in arbitrary</p>
+<p>diffusions.</p>
+<p>This suggests</p>
+<p>a two-step strategy</p>
+<p>to construct</p>
+<p>efficient samplers.</p>
+<p>One,</p>
+<p>optimize</p>
+<p>reversible</p>
+<p>diffusions.</p>
+<p>And two,</p>
+<p>add a non-reversible</p>
+<p>perturbation.</p>
+<p>Equation 36,</p>
+<p>citation 125.</p>
+<p>Diffusions</p>
+<p>on manifolds</p>
+<p>are reversible</p>
+<p>when</p>
+<p>certain things</p>
+<p>are the case</p>
+<p>and they're not</p>
+<p>when other things</p>
+<p>are the case.</p>
+<p>equation 37.</p>
+<p>We got a triangle</p>
+<p>pointing down</p>
+<p>and a triangle</p>
+<p>pointing up.</p>
+<p>We're going to</p>
+<p>talk more</p>
+<p>about it.</p>
+<p>Underdamped</p>
+<p>Langvin</p>
+<p>dynamics</p>
+<p>combine all</p>
+<p>the desirable</p>
+<p>properties of</p>
+<p>an efficient</p>
+<p>sampler.</p>
+<p>It is reversible,</p>
+<p>has degenerate</p>
+<p>noise,</p>
+<p>and achieves</p>
+<p>accelerated</p>
+<p>convergence</p>
+<p>to the target</p>
+<p>density.</p>
+<p>So,</p>
+<p>all of this</p>
+<p>groundwork</p>
+<p>is helping</p>
+<p>us get to</p>
+<p>an analytical</p>
+<p>formalization</p>
+<p>that's going</p>
+<p>to have</p>
+<p>the right</p>
+<p>kind of</p>
+<p>properties</p>
+<p>so we can</p>
+<p>do that</p>
+<p>discretization</p>
+<p>right on</p>
+<p>the shadow</p>
+<p>Hamiltonian</p>
+<p>so we can</p>
+<p>get the</p>
+<p>accelerated</p>
+<p>optimization</p>
+<p>done.</p>
+<p>3.2</p>
+<p>Hamiltonian</p>
+<p>Monte Carlo</p>
+<p>A challenging</p>
+<p>task consists</p>
+<p>of constructing</p>
+<p>efficient sampling</p>
+<p>algorithms</p>
+<p>with strong</p>
+<p>theoretical</p>
+<p>guarantees.</p>
+<p>We now</p>
+<p>discuss an</p>
+<p>important family</p>
+<p>of well-studied</p>
+<p>methods known</p>
+<p>as Hamiltonian</p>
+<p>Monte Carlo</p>
+<p>HMC</p>
+<p>which can</p>
+<p>be implemented</p>
+<p>on any</p>
+<p>manifold</p>
+<p>for any</p>
+<p>smooth</p>
+<p>fully supported</p>
+<p>target measure</p>
+<p>that is known</p>
+<p>up to a</p>
+<p>normalizing</p>
+<p>constant.</p>
+<p>Some of</p>
+<p>these methods</p>
+<p>can be seen</p>
+<p>as an</p>
+<p>appropriate</p>
+<p>geometric</p>
+<p>integration</p>
+<p>of the</p>
+<p>under-damped</p>
+<p>Langvin</p>
+<p>diffusion</p>
+<p>diffusing</p>
+<p>down that</p>
+<p>hill</p>
+<p>but in</p>
+<p>simpler</p>
+<p>it is in</p>
+<p>general</p>
+<p>simpler</p>
+<p>to view</p>
+<p>them as</p>
+<p>combining</p>
+<p>a</p>
+<p>geometrically</p>
+<p>integrated</p>
+<p>deterministic</p>
+<p>dynamics</p>
+<p>with a</p>
+<p>simple</p>
+<p>stochastic</p>
+<p>process</p>
+<p>that</p>
+<p>ensures</p>
+<p>ergodicity</p>
+<p>equation</p>
+<p>38.</p>
+<p>If we</p>
+<p>interpret</p>
+<p>the</p>
+<p>negative</p>
+<p>log</p>
+<p>density</p>
+<p>V</p>
+<p>of</p>
+<p>Q</p>
+<p>as a</p>
+<p>potential</p>
+<p>energy</p>
+<p>e.g.</p>
+<p>a function</p>
+<p>depending</p>
+<p>on position</p>
+<p>Q</p>
+<p>one can</p>
+<p>then plug</p>
+<p>in the</p>
+<p>potential</p>
+<p>within</p>
+<p>Newton's</p>
+<p>equation</p>
+<p>to obtain</p>
+<p>a deterministic</p>
+<p>proposal that</p>
+<p>is well</p>
+<p>defined on</p>
+<p>any</p>
+<p>manifold</p>
+<p>as soon</p>
+<p>as the</p>
+<p>acceleration</p>
+<p>and</p>
+<p>derivative</p>
+<p>operators</p>
+<p>have been</p>
+<p>replaced</p>
+<p>by their</p>
+<p>curved</p>
+<p>analogs</p>
+<p>so</p>
+<p>what</p>
+<p>pulls</p>
+<p>the</p>
+<p>ball</p>
+<p>down</p>
+<p>the</p>
+<p>hill</p>
+<p>or</p>
+<p>if</p>
+<p>you're</p>
+<p>an</p>
+<p>instrumentalist</p>
+<p>what</p>
+<p>force</p>
+<p>describes</p>
+<p>the</p>
+<p>movement</p>
+<p>of</p>
+<p>the</p>
+<p>ball</p>
+<p>moving</p>
+<p>down</p>
+<p>the</p>
+<p>hill</p>
+<p>gravity</p>
+<p>I think</p>
+<p>there's a</p>
+<p>John Mayer</p>
+<p>song</p>
+<p>about it</p>
+<p>surprises</p>
+<p>like</p>
+<p>gravity</p>
+<p>it can</p>
+<p>be</p>
+<p>understood</p>
+<p>as</p>
+<p>the</p>
+<p>minimizing</p>
+<p>force</p>
+<p>that</p>
+<p>pulls</p>
+<p>the</p>
+<p>ball</p>
+<p>down</p>
+<p>the</p>
+<p>hill</p>
+<p>or</p>
+<p>describes</p>
+<p>the</p>
+<p>movement</p>
+<p>of</p>
+<p>the</p>
+<p>ball</p>
+<p>on</p>
+<p>its</p>
+<p>path</p>
+<p>of</p>
+<p>least</p>
+<p>action</p>
+<p>down</p>
+<p>the</p>
+<p>hill</p>
+<p>how</p>
+<p>cool</p>
+<p>more</p>
+<p>discussion</p>
+<p>around</p>
+<p>38</p>
+<p>bringing</p>
+<p>these</p>
+<p>ingredients</p>
+<p>together</p>
+<p>we thus</p>
+<p>have the</p>
+<p>following</p>
+<p>HMC</p>
+<p>algorithm</p>
+<p>given</p>
+<p>dot dot</p>
+<p>dot</p>
+<p>we're going</p>
+<p>to compute</p>
+<p>a function</p>
+<p>according</p>
+<p>to</p>
+<p>one</p>
+<p>a</p>
+<p>heat</p>
+<p>bath</p>
+<p>two</p>
+<p>shadow</p>
+<p>Hamiltonian</p>
+<p>dynamics</p>
+<p>and</p>
+<p>three</p>
+<p>metropolis</p>
+<p>correction</p>
+<p>that's</p>
+<p>the</p>
+<p>recipe</p>
+<p>we're</p>
+<p>bringing</p>
+<p>those</p>
+<p>ingredients</p>
+<p>together</p>
+<p>the</p>
+<p>above</p>
+<p>rudimentary</p>
+<p>HMC</p>
+<p>method</p>
+<p>was</p>
+<p>proposed</p>
+<p>for</p>
+<p>simulations</p>
+<p>in</p>
+<p>lattice</p>
+<p>quantum</p>
+<p>chromodynamics</p>
+<p>with</p>
+<p>M</p>
+<p>being the</p>
+<p>special</p>
+<p>unitary</p>
+<p>group</p>
+<p>S</p>
+<p>U</p>
+<p>N</p>
+<p>and</p>
+<p>used</p>
+<p>a</p>
+<p>Hamiltonian</p>
+<p>dynamics</p>
+<p>ingeniously</p>
+<p>constructed</p>
+<p>from the</p>
+<p>Maurer</p>
+<p>carton</p>
+<p>frame</p>
+<p>to</p>
+<p>compute</p>
+<p>the</p>
+<p>partition</p>
+<p>function</p>
+<p>of</p>
+<p>discretized</p>
+<p>gauge</p>
+<p>theories</p>
+<p>this</p>
+<p>method</p>
+<p>has</p>
+<p>later</p>
+<p>been</p>
+<p>applied</p>
+<p>in</p>
+<p>molecular</p>
+<p>dynamics</p>
+<p>and</p>
+<p>statistics</p>
+<p>there</p>
+<p>are</p>
+<p>three</p>
+<p>critical</p>
+<p>properties</p>
+<p>underpinning</p>
+<p>the</p>
+<p>success</p>
+<p>of</p>
+<p>HMC</p>
+<p>in</p>
+<p>practice</p>
+<p>the</p>
+<p>first</p>
+<p>two</p>
+<p>are</p>
+<p>the</p>
+<p>preservation</p>
+<p>of the</p>
+<p>reference</p>
+<p>measure</p>
+<p>and the</p>
+<p>existence</p>
+<p>of a</p>
+<p>conserved</p>
+<p>shadow</p>
+<p>Hamiltonian</p>
+<p>for the</p>
+<p>numerical</p>
+<p>method</p>
+<p>the</p>
+<p>third</p>
+<p>critical</p>
+<p>property</p>
+<p>is the</p>
+<p>existence</p>
+<p>of</p>
+<p>splitting</p>
+<p>methods</p>
+<p>for which</p>
+<p>all the</p>
+<p>composing</p>
+<p>flows</p>
+<p>are either</p>
+<p>tractable</p>
+<p>or have</p>
+<p>adequate</p>
+<p>approximations</p>
+<p>namely</p>
+<p>the</p>
+<p>geodesic</p>
+<p>integrators</p>
+<p>so</p>
+<p>geodesic</p>
+<p>methods</p>
+<p>Buckminster</p>
+<p>Fuller</p>
+<p>tensegrity</p>
+<p>synergetics</p>
+<p>or however</p>
+<p>you think</p>
+<p>about</p>
+<p>geodesics</p>
+<p>as</p>
+<p>paths</p>
+<p>in</p>
+<p>curved</p>
+<p>space</p>
+<p>that</p>
+<p>is the</p>
+<p>kind</p>
+<p>of</p>
+<p>approximation</p>
+<p>and</p>
+<p>splitting</p>
+<p>we're</p>
+<p>gaining</p>
+<p>access</p>
+<p>to</p>
+<p>with</p>
+<p>appropriate</p>
+<p>discretizations</p>
+<p>on</p>
+<p>those</p>
+<p>balls</p>
+<p>rolling</p>
+<p>to</p>
+<p>the</p>
+<p>bottom</p>
+<p>of</p>
+<p>the</p>
+<p>hill</p>
+<p>let</p>
+<p>us</p>
+<p>also</p>
+<p>briefly</p>
+<p>mention</p>
+<p>some</p>
+<p>useful</p>
+<p>upgrades</p>
+<p>that have</p>
+<p>been</p>
+<p>proposed</p>
+<p>in</p>
+<p>recent</p>
+<p>years</p>
+<p>!</p>
+<p>So</p>
+<p>for those</p>
+<p>who</p>
+<p>it's</p>
+<p>been</p>
+<p>a few</p>
+<p>years</p>
+<p>since</p>
+<p>you</p>
+<p>checked</p>
+<p>in</p>
+<p>with</p>
+<p>this</p>
+<p>domain</p>
+<p>this</p>
+<p>is</p>
+<p>a</p>
+<p>great</p>
+<p>place</p>
+<p>to</p>
+<p>look</p>
+<p>first</p>
+<p>you</p>
+<p>can</p>
+<p>grant</p>
+<p>the</p>
+<p>method</p>
+<p>extra</p>
+<p>integration</p>
+<p>steps</p>
+<p>when</p>
+<p>the</p>
+<p>proposal</p>
+<p>is</p>
+<p>rejected</p>
+<p>or</p>
+<p>you</p>
+<p>can</p>
+<p>use</p>
+<p>criterion</p>
+<p>that</p>
+<p>aim</p>
+<p>to</p>
+<p>ensure</p>
+<p>the</p>
+<p>motion</p>
+<p>is</p>
+<p>long</p>
+<p>enough</p>
+<p>to</p>
+<p>avoid</p>
+<p>random</p>
+<p>walks</p>
+<p>but</p>
+<p>short</p>
+<p>enough</p>
+<p>that</p>
+<p>we</p>
+<p>do</p>
+<p>not</p>
+<p>waste</p>
+<p>computational</p>
+<p>effort</p>
+<p>such</p>
+<p>as</p>
+<p>the</p>
+<p>no</p>
+<p>u-turn</p>
+<p>sampler</p>
+<p>which</p>
+<p>is</p>
+<p>integrated</p>
+<p>in</p>
+<p>a lot</p>
+<p>of</p>
+<p>software</p>
+<p>packages</p>
+<p>second</p>
+<p>modern</p>
+<p>HMC</p>
+<p>methods</p>
+<p>bypass</p>
+<p>this</p>
+<p>issue</p>
+<p>of</p>
+<p>slow</p>
+<p>convergence</p>
+<p>by</p>
+<p>replacing</p>
+<p>the</p>
+<p>heat</p>
+<p>bath</p>
+<p>with</p>
+<p>an</p>
+<p>Ornstein</p>
+<p>Olbeck</p>
+<p>process</p>
+<p>which</p>
+<p>ensures</p>
+
+<p>the</p>
+<p>overall</p>
+<p>algorithm</p>
+<p>is</p>
+<p>irreversible</p>
+<p>an</p>
+<p>OU</p>
+<p>process</p>
+<p>is</p>
+<p>like</p>
+<p>a</p>
+<p>Brownian</p>
+<p>diffusion</p>
+<p>with</p>
+<p>a</p>
+<p>linear</p>
+<p>regression</p>
+<p>so</p>
+<p>it</p>
+<p>vibrates</p>
+<p>and</p>
+<p>has</p>
+<p>volatility</p>
+<p>and</p>
+<p>it</p>
+<p>has</p>
+<p>a</p>
+<p>trend</p>
+<p>line</p>
+<p>that's</p>
+<p>linear</p>
+<p>third</p>
+<p>many</p>
+<p>modifications</p>
+<p>of the</p>
+<p>rudimentary</p>
+<p>HMC</p>
+<p>algorithm</p>
+<p>only</p>
+<p>provide</p>
+<p>improvements</p>
+<p>when</p>
+<p>the</p>
+<p>acceptance</p>
+<p>rate</p>
+<p>is</p>
+<p>sufficiently</p>
+<p>high</p>
+<p>a</p>
+<p>third</p>
+<p>class</p>
+<p>of</p>
+<p>upgrades</p>
+<p>improve</p>
+<p>the</p>
+<p>acceptance</p>
+<p>rate</p>
+<p>by</p>
+<p>using</p>
+<p>the</p>
+<p>fact</p>
+<p>that</p>
+<p>the</p>
+<p>shadow</p>
+<p>Hamiltonian</p>
+<p>is</p>
+<p>exactly</p>
+<p>preserved</p>
+<p>by</p>
+<p>the</p>
+<p>integrator</p>
+<p>big</p>
+<p>point</p>
+<p>of the</p>
+<p>whole</p>
+<p>paper</p>
+<p>finally</p>
+<p>the</p>
+<p>metropolis</p>
+<p>step</p>
+<p>can be</p>
+<p>replaced</p>
+<p>with</p>
+<p>a</p>
+<p>multinomial</p>
+<p>correction</p>
+<p>that</p>
+<p>uses</p>
+<p>the</p>
+<p>entire</p>
+<p>numerical</p>
+<p>trajectory</p>
+<p>excepting</p>
+<p>a given</p>
+<p>point</p>
+<p>along</p>
+<p>it</p>
+<p>according</p>
+<p>to</p>
+<p>the</p>
+<p>degree</p>
+<p>by</p>
+<p>which</p>
+<p>it</p>
+<p>distorts</p>
+<p>the</p>
+<p>target</p>
+<p>measure</p>
+<p>some</p>
+<p>path</p>
+<p>based</p>
+<p>inference</p>
+<p>methods</p>
+<p>with</p>
+<p>some</p>
+<p>caveats</p>
+<p>all</p>
+<p>right</p>
+<p>on to</p>
+<p>section</p>
+<p>four</p>
+<p>statistical</p>
+<p>inference</p>
+<p>with</p>
+<p>kernel</p>
+<p>based</p>
+<p>discrepancies</p>
+<p>so</p>
+<p>section</p>
+<p>four</p>
+<p>the</p>
+<p>problem</p>
+<p>of</p>
+<p>parameter</p>
+<p>inference</p>
+<p>consists</p>
+<p>!</p>
+<p>of</p>
+<p>estimating</p>
+<p>an</p>
+<p>element</p>
+<p>theta</p>
+<p>star</p>
+<p>within</p>
+<p>big</p>
+<p>theta</p>
+<p>using</p>
+<p>a</p>
+<p>sequence</p>
+<p>of</p>
+<p>random</p>
+<p>functions</p>
+<p>or</p>
+<p>estimators</p>
+<p>theta</p>
+<p>hat</p>
+<p>n</p>
+<p>of</p>
+<p>omega</p>
+<p>onto</p>
+<p>big</p>
+<p>theta</p>
+<p>equations</p>
+<p>!</p>
+<p>and more</p>
+<p>generally</p>
+<p>probability</p>
+<p>distributions</p>
+<p>that act</p>
+<p>continuously</p>
+<p>by</p>
+<p>integration</p>
+<p>on</p>
+<p>an</p>
+<p>R</p>
+<p>K</p>
+<p>H</p>
+<p>S</p>
+<p>H</p>
+<p>are</p>
+<p>exactly</p>
+<p>those</p>
+<p>for</p>
+<p>which</p>
+<p>all</p>
+<p>elements</p>
+<p>of</p>
+<p>H</p>
+<p>are</p>
+<p>integrable</p>
+
+<p>So</p>
+<p>analytically</p>
+<p>!</p>
+<p>we</p>
+<p>have</p>
+<p>we</p>
+<p>have</p>
+<p>that</p>
+<p>nice</p>
+<p>property</p>
+<p>denoting</p>
+<p>by</p>
+<p>fancy</p>
+<p>P</p>
+<p>sub</p>
+<p>H</p>
+<p>the set</p>
+<p>of</p>
+<p>such</p>
+<p>probability</p>
+<p>measures</p>
+<p>such</p>
+<p>that</p>
+<p>dot dot dot</p>
+<p>we can</p>
+<p>define</p>
+<p>the</p>
+<p>maximum</p>
+<p>mean</p>
+<p>discrepancy</p>
+<p>or</p>
+<p>MMD</p>
+<p>as</p>
+<p>such</p>
+<p>more</p>
+<p>definitions</p>
+<p>!</p>
+<p>a</p>
+<p>practical</p>
+<p>expression</p>
+<p>for</p>
+<p>the</p>
+<p>squared</p>
+<p>MMD</p>
+<p>So</p>
+<p>just</p>
+<p>like</p>
+<p>in</p>
+<p>linear</p>
+<p>regression</p>
+<p>we're</p>
+<p>often</p>
+<p>interested</p>
+<p>in</p>
+<p>the</p>
+<p>sum</p>
+<p>of</p>
+<p>squared</p>
+<p>errors</p>
+<p>here</p>
+<p>we're</p>
+<p>interested</p>
+<p>in</p>
+<p>the</p>
+<p>sum</p>
+<p>of</p>
+<p>squared</p>
+<p>MMD</p>
+<p>4.1</p>
+<p>topological</p>
+<p>methods</p>
+<p>for</p>
+<p>MMDs</p>
+<p>just</p>
+<p>remember</p>
+<p>MMDs</p>
+<p>maximum</p>
+<p>mean</p>
+<p>discrepancy</p>
+<p>a</p>
+<p>key</p>
+<p>feature</p>
+<p>of</p>
+<p>R</p>
+<p>K</p>
+
+<p>S</p>
+<p>is</p>
+<p>that</p>
+<p>they</p>
+<p>are</p>
+<p>Hilbertian</p>
+<p>subspaces</p>
+<p>more</p>
+<p>details</p>
+<p>about</p>
+<p>embedding</p>
+<p>in</p>
+<p>Hilbert</p>
+<p>spaces</p>
+<p>and</p>
+<p>subspaces</p>
+<p>the</p>
+<p>geometric</p>
+<p>analysis</p>
+<p>the</p>
+<p>geometric</p>
+<p>description</p>
+<p>of</p>
+<p>RKHS</p>
+<p>and</p>
+<p>MMD</p>
+<p>allows</p>
+<p>us</p>
+<p>to</p>
+<p>swiftly</p>
+<p>apply</p>
+<p>topological</p>
+<p>methods</p>
+<p>in</p>
+<p>their</p>
+<p>analysis</p>
+<p>there</p>
+<p>are</p>
+<p>reasons</p>
+<p>this</p>
+<p>reduces</p>
+<p>the</p>
+<p>matter</p>
+<p>to</p>
+<p>a</p>
+<p>topological</p>
+<p>question</p>
+<p>instead</p>
+<p>of</p>
+<p>defining</p>
+<p>T</p>
+<p>star</p>
+<p>to be</p>
+<p>the</p>
+<p>set</p>
+<p>of</p>
+<p>probability</p>
+<p>measures</p>
+<p>it</p>
+<p>is</p>
+<p>commonly</p>
+<p>done</p>
+<p>to</p>
+<p>define</p>
+<p>statistical</p>
+<p>manifolds</p>
+<p>it's</p>
+<p>desirable</p>
+<p>to</p>
+<p>embed</p>
+<p>fancy</p>
+<p>p</p>
+<p>within</p>
+<p>a</p>
+<p>more</p>
+<p>structured</p>
+<p>space</p>
+<p>such as</p>
+<p>the</p>
+<p>space</p>
+<p>of</p>
+<p>finite</p>
+<p>radon</p>
+<p>measures</p>
+<p>which</p>
+<p>enables</p>
+<p>the</p>
+<p>method</p>
+<p>to learn</p>
+<p>the</p>
+<p>target</p>
+<p>function</p>
+<p>independently</p>
+<p>of the</p>
+<p>data</p>
+<p>generating</p>
+<p>distribution</p>
+<p>what</p>
+<p>is</p>
+<p>a</p>
+<p>radon</p>
+<p>measure</p>
+<p>we're</p>
+<p>going</p>
+<p>to</p>
+<p>find</p>
+<p>out</p>
+<p>however</p>
+<p>it</p>
+<p>enables</p>
+<p>the</p>
+<p>method</p>
+<p>to</p>
+<p>learn</p>
+<p>the</p>
+<p>target</p>
+<p>function</p>
+<p>independently</p>
+<p>of the</p>
+<p>data</p>
+<p>generating</p>
+<p>distribution</p>
+<p>sounds</p>
+<p>pretty</p>
+<p>important</p>
+<p>if we</p>
+<p>want</p>
+<p>that</p>
+<p>tale</p>
+<p>of</p>
+<p>two</p>
+<p>densities</p>
+<p>MMD</p>
+<p>can</p>
+<p>discriminate</p>
+<p>distributions</p>
+<p>that</p>
+<p>makes</p>
+<p>it</p>
+<p>useful</p>
+<p>to</p>
+<p>do</p>
+<p>other</p>
+<p>things</p>
+<p>let's</p>
+<p>find</p>
+<p>out</p>
+<p>more</p>
+<p>section</p>
+<p>4.2</p>
+<p>smooth</p>
+<p>measures</p>
+<p>and</p>
+<p>KSDs</p>
+<p>so</p>
+<p>more</p>
+<p>information</p>
+<p>on</p>
+<p>MMDs</p>
+<p>and about</p>
+<p>making</p>
+<p>them</p>
+<p>computationally</p>
+<p>tractable</p>
+<p>and</p>
+<p>citations</p>
+<p>to</p>
+<p>Stein's</p>
+<p>method</p>
+<p>are</p>
+<p>provided</p>
+<p>for</p>
+<p>195</p>
+<p>which</p>
+<p>is</p>
+<p>the</p>
+<p>1972</p>
+<p>Stein</p>
+<p>paper</p>
+<p>and</p>
+<p>196</p>
+<p>which</p>
+<p>is</p>
+<p>a</p>
+<p>paper</p>
+<p>written</p>
+<p>by</p>
+<p>some</p>
+<p>of</p>
+<p>the</p>
+<p>authors</p>
+<p>about</p>
+<p>Stein's</p>
+<p>method</p>
+<p>meets</p>
+<p>statistics</p>
+<p>a review</p>
+<p>of some</p>
+<p>recent</p>
+<p>developments</p>
+<p>from</p>
+<p>2021</p>
+<p>and</p>
+<p>I</p>
+<p>thought</p>
+<p>it'd</p>
+<p>be</p>
+<p>fun</p>
+<p>to</p>
+<p>look</p>
+<p>at</p>
+<p>some</p>
+<p>figures</p>
+<p>from</p>
+<p>this</p>
+<p>paper</p>
+<p>and</p>
+<p>look</p>
+<p>at</p>
+<p>the</p>
+<p>abstract</p>
+<p>so</p>
+<p>I'll</p>
+<p>put</p>
+<p>the</p>
+<p>figures</p>
+<p>up</p>
+<p>above</p>
+<p>Stein's</p>
+<p>method</p>
+<p>compares</p>
+<p>probability</p>
+<p>distributions</p>
+<p>through</p>
+<p>the</p>
+<p>study</p>
+<p>of</p>
+<p>a</p>
+<p>class</p>
+<p>of</p>
+<p>linear</p>
+<p>operators</p>
+<p>called</p>
+<p>Stein</p>
+<p>operators</p>
+<p>while</p>
+<p>mainly</p>
+<p>studied</p>
+<p>in</p>
+<p>probability</p>
+<p>and</p>
+<p>used</p>
+<p>to</p>
+<p>underpin</p>
+<p>theoretical</p>
+<p>statistics</p>
+<p>Stein's</p>
+<p>method</p>
+<p>has</p>
+<p>led</p>
+<p>to</p>
+<p>significant</p>
+<p>advances</p>
+<p>in</p>
+<p>computational</p>
+<p>statistics</p>
+<p>the topics</p>
+<p>that are</p>
+<p>discussed</p>
+<p>in that</p>
+<p>review</p>
+<p>include</p>
+<p>tools</p>
+<p>to</p>
+<p>benchmark</p>
+<p>and</p>
+<p>compare</p>
+<p>sampling</p>
+<p>methods</p>
+<p>such as</p>
+<p>approximate</p>
+<p>Markov</p>
+<p>chain</p>
+<p>Monte Carlo</p>
+<p>deterministic</p>
+<p>alternatives</p>
+<p>to</p>
+<p>sampling</p>
+<p>methods</p>
+<p>control</p>
+<p>variant</p>
+<p>techniques</p>
+<p>parameter</p>
+<p>estimations</p>
+<p>and goodness</p>
+<p>of fit</p>
+<p>testing</p>
+<p>and</p>
+<p>from</p>
+<p>the</p>
+<p>paper</p>
+<p>they</p>
+<p>write</p>
+<p>the</p>
+<p>list</p>
+<p>of</p>
+<p>results</p>
+<p>given</p>
+<p>in</p>
+<p>this</p>
+<p>paper</p>
+<p>are</p>
+<p>but</p>
+<p>a</p>
+<p>mere</p>
+<p>sample</p>
+<p>of</p>
+<p>the</p>
+<p>ongoing</p>
+<p>activity</p>
+<p>in</p>
+<p>this</p>
+<p>newly</p>
+<p>established</p>
+<p>area</p>
+<p>of</p>
+<p>research</p>
+<p>at</p>
+<p>the</p>
+<p>boundary</p>
+<p>between</p>
+<p>probability</p>
+<p>functional</p>
+<p>analysis</p>
+<p>data</p>
+<p>science</p>
+<p>and</p>
+<p>computational</p>
+<p>statistics</p>
+<p>for</p>
+<p>instance</p>
+<p>Stein's</p>
+<p>method</p>
+<p>has been</p>
+<p>used</p>
+<p>for</p>
+<p>designing</p>
+<p>sampling</p>
+<p>based</p>
+<p>algorithms</p>
+<p>!</p>
+<p>for</p>
+<p>non-convex</p>
+<p>optimization</p>
+<p>learning</p>
+<p>semi-parametric</p>
+<p>multi-index</p>
+<p>models</p>
+<p>in high</p>
+<p>dimensions</p>
+<p>and</p>
+<p>in</p>
+<p>Bayesian</p>
+<p>statistics</p>
+<p>Stein</p>
+<p>discrepancies</p>
+<p>have been</p>
+<p>used as</p>
+<p>variational</p>
+<p>objectives</p>
+<p>for</p>
+<p>posterior</p>
+<p>optimization</p>
+<p>which is</p>
+<p>what we're</p>
+<p>all about</p>
+<p>free</p>
+<p>energy</p>
+<p>functionals</p>
+<p>using</p>
+<p>variational</p>
+<p>inference</p>
+<p>as</p>
+<p>objectives</p>
+<p>for</p>
+<p>posterior</p>
+<p>approximation</p>
+<p>of</p>
+<p>inference</p>
+<p>and</p>
+<p>action</p>
+<p>free</p>
+<p>energy</p>
+<p>principle</p>
+<p>and</p>
+<p>these</p>
+<p>images</p>
+<p>have</p>
+<p>some</p>
+<p>nice</p>
+<p>intuitions</p>
+<p>too</p>
+<p>here</p>
+<p>we see</p>
+<p>depending</p>
+<p>on our</p>
+<p>step</p>
+<p>size</p>
+<p>we're</p>
+<p>getting</p>
+<p>different</p>
+<p>sampling</p>
+<p>when</p>
+<p>our</p>
+<p>step</p>
+<p>size</p>
+<p>is</p>
+<p>to</p>
+<p>the</p>
+<p>negative</p>
+<p>fifth</p>
+<p>power</p>
+<p>we're</p>
+<p>oversampling</p>
+
+<p>one</p>
+<p>part</p>
+<p>of</p>
+<p>the</p>
+<p>space</p>
+<p>then</p>
+<p>as</p>
+<p>we</p>
+<p>make</p>
+<p>the</p>
+<p>step</p>
+<p>size</p>
+<p>larger</p>
+<p>our</p>
+<p>samples</p>
+<p>are</p>
+<p>drawn</p>
+<p>from</p>
+<p>different</p>
+<p>distributions</p>
+<p>so</p>
+<p>that's</p>
+<p>selecting</p>
+<p>the</p>
+<p>step</p>
+<p>size</p>
+<p>epsilon</p>
+<p>for</p>
+<p>a</p>
+<p>stochastic</p>
+<p>gradient</p>
+<p>Langvin</p>
+<p>dynamic</p>
+<p>and</p>
+<p>also</p>
+<p>from</p>
+<p>the</p>
+<p>anastasio</p>
+<p>paper</p>
+<p>here's</p>
+<p>another</p>
+<p>fun</p>
+<p>way</p>
+<p>to</p>
+<p>see</p>
+<p>that</p>
+<p>here</p>
+<p>we</p>
+<p>have</p>
+<p>that</p>
+<p>bowl</p>
+<p>that</p>
+<p>we're</p>
+<p>rolling</p>
+<p>the</p>
+<p>ball</p>
+<p>to</p>
+<p>the</p>
+<p>bottom</p>
+<p>of</p>
+<p>and</p>
+<p>the</p>
+<p>stein</p>
+<p>points</p>
+<p>and</p>
+<p>the</p>
+<p>stein</p>
+<p>thinning</p>
+<p>which</p>
+<p>is</p>
+<p>helping</p>
+<p>us</p>
+<p>understand</p>
+<p>maybe</p>
+<p>how</p>
+<p>starting</p>
+<p>the</p>
+<p>ball</p>
+<p>in</p>
+<p>different</p>
+<p>locations</p>
+<p>or</p>
+<p>critical</p>
+<p>locations</p>
+<p>accelerates</p>
+<p>what</p>
+<p>we're</p>
+<p>doing</p>
+<p>with</p>
+<p>optimization</p>
+<p>so</p>
+<p>cool</p>
+<p>to</p>
+<p>talk</p>
+<p>about</p>
+<p>4.2.1</p>
+<p>the</p>
+<p>canonical</p>
+<p>stein</p>
+<p>operator</p>
+<p>and</p>
+<p>Poincaré</p>
+<p>duality</p>
+<p>there are</p>
+<p>two</p>
+<p>fundamental</p>
+<p>theorems</p>
+<p>that help</p>
+<p>us</p>
+<p>understand</p>
+<p>the</p>
+<p>integral</p>
+<p>differential</p>
+<p>geometry</p>
+<p>of the</p>
+<p>manifold</p>
+<p>deram's</p>
+<p>theorem</p>
+<p>and</p>
+<p>the</p>
+<p>Poincaré</p>
+<p>duality</p>
+<p>the</p>
+<p>former</p>
+<p>deram's</p>
+<p>theorem</p>
+<p>relates</p>
+<p>the</p>
+<p>topology</p>
+<p>of the</p>
+<p>manifold</p>
+<p>to</p>
+<p>information</p>
+<p>on</p>
+<p>solutions</p>
+<p>of</p>
+<p>differential</p>
+<p>equations</p>
+<p>defined</p>
+<p>over</p>
+<p>the</p>
+<p>manifold</p>
+<p>the</p>
+<p>latter</p>
+<p>which</p>
+<p>contains</p>
+<p>the</p>
+<p>fundamental</p>
+<p>theorem</p>
+<p>of</p>
+<p>calculus</p>
+<p>describes</p>
+<p>the</p>
+<p>properties</p>
+<p>of</p>
+<p>the</p>
+<p>integral</p>
+<p>pairing</p>
+<p>alpha</p>
+<p>beta</p>
+<p>of</p>
+<p>differential</p>
+<p>forms</p>
+<p>which</p>
+<p>include</p>
+<p>the</p>
+<p>pairing</p>
+<p>of</p>
+<p>test</p>
+<p>functions</p>
+<p>with</p>
+<p>smooth</p>
+<p>measures</p>
+<p>let's</p>
+<p>learn more</p>
+<p>about</p>
+<p>it</p>
+<p>4.2.2</p>
+<p>kernel</p>
+<p>stein</p>
+<p>discrepancies</p>
+<p>and</p>
+<p>score</p>
+<p>matchings</p>
+<p>technical</p>
+<p>definitions</p>
+<p>facilitating</p>
+<p>stein</p>
+<p>variational</p>
+<p>gradient</p>
+<p>descent</p>
+<p>4.3</p>
+<p>information</p>
+<p>geometry</p>
+<p>of</p>
+<p>mmd's</p>
+<p>and</p>
+<p>natural</p>
+<p>gradient</p>
+<p>descent</p>
+<p>these</p>
+<p>tools</p>
+<p>have</p>
+<p>proved</p>
+<p>to be</p>
+<p>useful</p>
+<p>in a</p>
+<p>wide</p>
+<p>range</p>
+<p>of</p>
+<p>contexts</p>
+<p>!</p>
+<p>more</p>
+<p>information</p>
+<p>about</p>
+<p>the</p>
+<p>divergence</p>
+<p>and how</p>
+<p>divergence</p>
+<p>can</p>
+<p>improve</p>
+<p>the speed</p>
+<p>of</p>
+<p>convergence</p>
+<p>by</p>
+<p>following</p>
+<p>the</p>
+<p>natural</p>
+<p>gradient</p>
+<p>descent</p>
+<p>okay</p>
+<p>red</p>
+<p>text</p>
+<p>speculation</p>
+<p>beware</p>
+<p>so</p>
+<p>the</p>
+<p>operator</p>
+<p>which</p>
+<p>is a</p>
+<p>phone</p>
+<p>routing</p>
+<p>system</p>
+<p>like</p>
+<p>ring</p>
+<p>ring</p>
+<p>hello</p>
+<p>operator</p>
+<p>is</p>
+<p>constructed</p>
+<p>in</p>
+<p>section</p>
+<p>4.2.2</p>
+<p>kernel</p>
+<p>stein</p>
+<p>discrepancies</p>
+<p>and</p>
+<p>score</p>
+<p>matching</p>
+<p>you</p>
+<p>can't</p>
+<p>have</p>
+<p>a</p>
+<p>t-test</p>
+<p>without</p>
+<p>the</p>
+<p>t-distribution</p>
+<p>the</p>
+<p>t-test</p>
+<p>statistic</p>
+<p>is</p>
+<p>using</p>
+<p>a</p>
+<p>t-distribution</p>
+<p>so</p>
+<p>a</p>
+<p>class</p>
+<p>of</p>
+<p>fancy</p>
+<p>v</p>
+<p>a</p>
+<p>set</p>
+<p>fancy</p>
+<p>v</p>
+<p>of</p>
+<p>vector</p>
+<p>fields</p>
+<p>or</p>
+<p>more</p>
+<p>generally</p>
+<p>tensor</p>
+<p>fields</p>
+<p>whose</p>
+<p>image</p>
+<p>f</p>
+<p>under</p>
+<p>the</p>
+<p>operator</p>
+<p>ring</p>
+<p>ring</p>
+<p>has</p>
+<p>mean</p>
+<p>zero</p>
+<p>under</p>
+<p>mu</p>
+<p>that's</p>
+<p>going</p>
+<p>to</p>
+<p>give</p>
+<p>us</p>
+<p>this</p>
+<p>discrepancy</p>
+<p>the</p>
+<p>sd</p>
+<p>and</p>
+<p>the</p>
+<p>stein</p>
+<p>variational</p>
+<p>gradient</p>
+<p>descent</p>
+<p>so</p>
+<p>there's</p>
+<p>some</p>
+<p>class</p>
+<p>of</p>
+<p>v</p>
+<p>vector</p>
+<p>fields</p>
+<p>such</p>
+<p>that</p>
+<p>the</p>
+<p>mean</p>
+<p>of</p>
+<p>something</p>
+<p>about</p>
+<p>them</p>
+<p>is</p>
+<p>zero</p>
+<p>does</p>
+<p>this</p>
+<p>enable</p>
+<p>the</p>
+<p>central</p>
+<p>limit</p>
+<p>theorem</p>
+<p>or</p>
+<p>just</p>
+<p>statistics</p>
+<p>more</p>
+<p>broadly</p>
+<p>like</p>
+<p>the</p>
+<p>parametric</p>
+<p>!</p>
+<p>and</p>
+<p>non-parametric</p>
+<p>methods</p>
+<p>that we</p>
+<p>know</p>
+<p>and love</p>
+<p>from</p>
+<p>SPM</p>
+<p>does</p>
+<p>that</p>
+<p>mean</p>
+<p>zero</p>
+<p>enable</p>
+<p>us</p>
+<p>to</p>
+<p>use</p>
+<p>Gaussian</p>
+<p>methods</p>
+<p>generalized</p>
+<p>Gaussian</p>
+<p>methods</p>
+<p>generalized</p>
+<p>and</p>
+<p>does</p>
+<p>it</p>
+<p>enable</p>
+<p>the</p>
+<p>proposed</p>
+<p>smooth</p>
+<p>distribution</p>
+<p>the</p>
+<p>one</p>
+<p>generating</p>
+<p>the</p>
+<p>shadow</p>
+<p>Hamiltonian</p>
+<p>that's</p>
+<p>getting</p>
+<p>inferred</p>
+<p>over</p>
+<p>to be</p>
+<p>interpreted</p>
+<p>or used</p>
+<p>truly</p>
+<p>as a</p>
+<p>statistical</p>
+<p>distribution</p>
+<p>it's</p>
+<p>easy to</p>
+<p>forget</p>
+<p>that</p>
+<p>not</p>
+<p>all</p>
+<p>distributions</p>
+<p>are</p>
+<p>formal</p>
+<p>probability</p>
+<p>distributions</p>
+<p>for</p>
+<p>example</p>
+<p>the</p>
+<p>area</p>
+<p>under</p>
+<p>the</p>
+<p>curve</p>
+<p>from</p>
+<p>zero</p>
+<p>to</p>
+<p>one</p>
+<p>of</p>
+<p>a</p>
+<p>probability</p>
+<p>distribution</p>
+<p>is</p>
+<p>one</p>
+<p>something</p>
+<p>has</p>
+<p>to</p>
+<p>happen</p>
+<p>but</p>
+<p>not</p>
+<p>all</p>
+<p>functions</p>
+<p>have</p>
+<p>an</p>
+<p>area</p>
+<p>under</p>
+<p>the</p>
+<p>curve</p>
+<p>of</p>
+<p>one</p>
+<p>between</p>
+<p>zero</p>
+<p>and</p>
+<p>one</p>
+<p>so</p>
+<p>in</p>
+<p>variational</p>
+<p>Bayesian</p>
+<p>inference</p>
+<p>the</p>
+<p>kind</p>
+<p>which</p>
+<p>we</p>
+<p>do</p>
+<p>in</p>
+<p>active</p>
+<p>inference</p>
+<p>in</p>
+<p>fact</p>
+<p>the</p>
+<p>kind</p>
+<p>that's</p>
+<p>done</p>
+<p>in</p>
+<p>machine</p>
+<p>learning</p>
+<p>and</p>
+<p>statistics</p>
+<p>more</p>
+<p>broadly</p>
+<p>but</p>
+<p>we're</p>
+<p>interested</p>
+<p>when</p>
+<p>action</p>
+<p>is</p>
+<p>a</p>
+<p>parameter</p>
+<p>that</p>
+<p>we're</p>
+<p>doing</p>
+<p>inference</p>
+<p>on</p>
+<p>we're</p>
+<p>concerned</p>
+<p>with</p>
+<p>the</p>
+<p>extremely</p>
+<p>well</p>
+<p>behaved</p>
+<p>properties</p>
+<p>of</p>
+<p>a</p>
+<p>certain</p>
+<p>subset</p>
+<p>of</p>
+<p>distributions</p>
+<p>so</p>
+<p>why are</p>
+<p>we doing</p>
+<p>this</p>
+<p>why is</p>
+<p>it</p>
+<p>important</p>
+<p>that</p>
+<p>we</p>
+<p>didn't</p>
+<p>need</p>
+<p>the</p>
+<p>input</p>
+<p>data</p>
+<p>that we</p>
+<p>could</p>
+<p>construct</p>
+<p>measures</p>
+<p>that are</p>
+<p>independent</p>
+<p>of the</p>
+<p>input</p>
+<p>data</p>
+<p>because</p>
+<p>we</p>
+<p>want</p>
+<p>to</p>
+<p>enable</p>
+<p>the</p>
+<p>tail</p>
+<p>of</p>
+<p>two</p>
+<p>densities</p>
+<p>we</p>
+<p>want</p>
+<p>to</p>
+<p>make</p>
+<p>generative</p>
+<p>models</p>
+<p>that</p>
+<p>can</p>
+<p>be</p>
+<p>used</p>
+<p>generatively</p>
+<p>generative</p>
+<p>AI</p>
+<p>in the</p>
+<p>forward</p>
+<p>or the</p>
+<p>generative</p>
+<p>direction</p>
+<p>but we</p>
+<p>also want</p>
+<p>to be</p>
+<p>able</p>
+<p>to</p>
+<p>enable</p>
+<p>the</p>
+<p>recognition</p>
+<p>distribution</p>
+<p>which is</p>
+<p>from</p>
+<p>empirical</p>
+<p>data</p>
+<p>to do</p>
+<p>hidden</p>
+<p>state</p>
+<p>inference</p>
+<p>and so</p>
+<p>just like</p>
+<p>least</p>
+<p>squares</p>
+<p>regression</p>
+<p>in the</p>
+<p>linear</p>
+<p>modeling</p>
+<p>case</p>
+<p>where</p>
+<p>the</p>
+<p>sum</p>
+<p>of</p>
+<p>squares</p>
+<p>above</p>
+<p>and below</p>
+<p>the</p>
+<p>regression</p>
+<p>line</p>
+<p>should</p>
+<p>be</p>
+<p>as</p>
+<p>low</p>
+<p>as</p>
+<p>possible</p>
+<p>L2</p>
+<p>norm</p>
+<p>sum</p>
+<p>of</p>
+<p>squares</p>
+<p>minimization</p>
+<p>always</p>
+<p>works</p>
+<p>never</p>
+<p>complains</p>
+<p>we</p>
+<p>want</p>
+<p>that</p>
+<p>kind</p>
+<p>of</p>
+<p>ball</p>
+<p>rolling</p>
+<p>to</p>
+<p>the</p>
+<p>bottom</p>
+<p>of</p>
+<p>the</p>
+<p>hill</p>
+<p>with</p>
+<p>free</p>
+<p>energy</p>
+<p>functionals</p>
+<p>variational</p>
+<p>and</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>functionals</p>
+<p>as</p>
+<p>the</p>
+<p>optimized</p>
+<p>or</p>
+<p>satisfied</p>
+<p>imperative</p>
+<p>for</p>
+<p>optimal</p>
+<p>perception</p>
+<p>which is</p>
+<p>signal</p>
+<p>processing</p>
+<p>signals</p>
+<p>intelligence</p>
+<p>and</p>
+<p>control</p>
+<p>which is</p>
+<p>control</p>
+<p>theory</p>
+<p>or</p>
+<p>action</p>
+<p>selection</p>
+<p>more</p>
+<p>technical</p>
+<p>details</p>
+<p>and</p>
+<p>equations</p>
+<p>39b</p>
+<p>and</p>
+<p>39c</p>
+<p>so</p>
+<p>what</p>
+<p>does</p>
+<p>it</p>
+<p>mean</p>
+<p>that</p>
+<p>the</p>
+<p>resulting</p>
+<p>stein</p>
+<p>discrepancy</p>
+<p>can be</p>
+<p>thought of</p>
+<p>as an</p>
+<p>MMD</p>
+<p>that</p>
+<p>depends</p>
+<p>only</p>
+<p>on</p>
+<p>rho</p>
+<p>and</p>
+<p>is</p>
+<p>known</p>
+<p>as</p>
+<p>a</p>
+<p>kernel</p>
+<p>stein</p>
+<p>discrepancy</p>
+<p>what</p>
+<p>is</p>
+<p>that</p>
+<p>as</p>
+<p>we</p>
+<p>did</p>
+<p>previously</p>
+<p>we</p>
+<p>can</p>
+<p>remove</p>
+<p>the</p>
+<p>super</p>
+<p>mum</p>
+<p>by</p>
+<p>rewriting</p>
+<p>the</p>
+<p>above</p>
+<p>as</p>
+<p>a</p>
+<p>super</p>
+<p>mum</p>
+<p>over</p>
+<p>some</p>
+<p>unit</p>
+<p>ball</p>
+<p>of</p>
+<p>continuous</p>
+<p>linear</p>
+<p>functional</p>
+<p>is</p>
+<p>this</p>
+<p>like</p>
+<p>simulating</p>
+<p>or</p>
+<p>modeling</p>
+<p>a</p>
+<p>sphere</p>
+<p>rolling</p>
+<p>on a</p>
+<p>landscape</p>
+<p>like</p>
+<p>we've</p>
+<p>been</p>
+<p>talking</p>
+<p>about</p>
+<p>is</p>
+<p>the</p>
+<p>ball</p>
+<p>of</p>
+<p>optimal</p>
+<p>radius</p>
+<p>for</p>
+<p>rolling</p>
+<p>on</p>
+<p>that</p>
+<p>landscape</p>
+<p>or</p>
+<p>what</p>
+<p>is</p>
+<p>being</p>
+<p>optimized</p>
+<p>and</p>
+<p>what</p>
+<p>is</p>
+<p>the</p>
+<p>unit</p>
+<p>the</p>
+<p>scaling</p>
+<p>or the</p>
+<p>scale</p>
+<p>specificity</p>
+<p>that this</p>
+<p>scale friendly</p>
+<p>sphere</p>
+<p>is scaled</p>
+<p>to</p>
+<p>equation</p>
+<p>42 and</p>
+<p>42a</p>
+<p>while in</p>
+<p>the</p>
+<p>Euclidean</p>
+<p>space</p>
+<p>yields the</p>
+<p>diffusion</p>
+<p>score</p>
+<p>matching</p>
+<p>citation</p>
+<p>204</p>
+<p>barp</p>
+<p>et</p>
+<p>all</p>
+<p>again</p>
+<p>minimum</p>
+<p>stein</p>
+<p>discrepancy</p>
+<p>estimators</p>
+<p>from</p>
+<p>2019</p>
+<p>they</p>
+<p>write</p>
+<p>the</p>
+<p>main</p>
+<p>strength</p>
+<p>of our</p>
+<p>methodology</p>
+<p>is its</p>
+<p>flexibility</p>
+<p>which</p>
+<p>allows us</p>
+<p>to</p>
+<p>design</p>
+<p>estimators</p>
+<p>with</p>
+<p>desirable</p>
+<p>properties</p>
+<p>for</p>
+<p>specific</p>
+<p>models</p>
+<p>at</p>
+<p>hand</p>
+<p>by</p>
+<p>carefully</p>
+<p>selecting</p>
+<p>a</p>
+<p>stein</p>
+<p>discrepancy</p>
+<p>we</p>
+<p>illustrate</p>
+<p>this</p>
+<p>advantage</p>
+<p>for</p>
+<p>several</p>
+<p>challenging</p>
+<p>problems</p>
+<p>for</p>
+<p>score</p>
+<p>matching</p>
+<p>such</p>
+<p>as</p>
+<p>non</p>
+<p>smooth</p>
+<p>heavy</p>
+<p>tailed</p>
+<p>or</p>
+<p>light</p>
+<p>tailed</p>
+<p>densities</p>
+<p>so</p>
+<p>again</p>
+<p>just</p>
+<p>with a</p>
+<p>little</p>
+<p>bit</p>
+<p>of</p>
+<p>speculation</p>
+<p>here</p>
+<p>and I</p>
+<p>think</p>
+<p>my</p>
+<p>camera</p>
+<p>has</p>
+<p>frozen</p>
+<p>it's</p>
+<p>all</p>
+<p>good</p>
+<p>all</p>
+<p>just</p>
+<p>go</p>
+<p>without</p>
+<p>the</p>
+<p>camera</p>
+<p>okay</p>
+<p>um</p>
+<p>one</p>
+<p>can</p>
+<p>estimate</p>
+<p>infer</p>
+<p>or</p>
+<p>optimize</p>
+<p>the</p>
+<p>zero</p>
+<p>point</p>
+<p>and</p>
+<p>hence</p>
+<p>the</p>
+<p>variance</p>
+<p>structure</p>
+<p>of</p>
+<p>the</p>
+<p>distribution</p>
+<p>this</p>
+<p>is</p>
+<p>going</p>
+<p>to</p>
+<p>enable</p>
+<p>generalized</p>
+<p>well-behaved</p>
+<p>modeling</p>
+<p>again</p>
+<p>from all</p>
+<p>of those</p>
+<p>nice</p>
+<p>perspectives</p>
+<p>that we</p>
+<p>raised</p>
+<p>earlier</p>
+<p>like</p>
+<p>Gaussian</p>
+<p>central</p>
+<p>limit</p>
+<p>theorem</p>
+<p>smoothness</p>
+<p>statistical</p>
+<p>distance</p>
+<p>Euclidean</p>
+<p>all of</p>
+<p>those</p>
+<p>well-behaved</p>
+<p>properties</p>
+<p>that we're</p>
+<p>looking for</p>
+<p>this is</p>
+<p>going to</p>
+<p>help us</p>
+<p>get there</p>
+<p>we are</p>
+<p>only</p>
+<p>talking</p>
+<p>about</p>
+<p>a</p>
+<p>specific</p>
+<p>subset</p>
+<p>or type</p>
+<p>of</p>
+<p>landscape</p>
+<p>here</p>
+<p>the</p>
+<p>one</p>
+<p>that we're</p>
+<p>doing</p>
+<p>variational</p>
+<p>inference</p>
+<p>on</p>
+<p>that's</p>
+<p>the</p>
+<p>map</p>
+<p>this</p>
+<p>is</p>
+<p>not</p>
+<p>the</p>
+<p>structure</p>
+<p>of</p>
+<p>the</p>
+<p>territory</p>
+<p>these</p>
+<p>well-behaved</p>
+<p>attributes</p>
+<p>of</p>
+<p>models</p>
+<p>for</p>
+<p>better</p>
+<p>worse</p>
+<p>and</p>
+<p>different</p>
+<p>through</p>
+<p>sickness</p>
+<p>and</p>
+<p>health</p>
+<p>is</p>
+<p>because</p>
+<p>they're</p>
+<p>maps</p>
+
+<p>!</p>
+<p>it is</p>
+<p>always</p>
+<p>the</p>
+<p>case</p>
+<p>that</p>
+<p>our</p>
+<p>statistically</p>
+<p>nice</p>
+<p>generative</p>
+<p>models</p>
+<p>are</p>
+<p>of</p>
+<p>a</p>
+<p>different</p>
+<p>structure</p>
+<p>or</p>
+<p>form</p>
+<p>than</p>
+<p>the</p>
+<p>generative</p>
+<p>process</p>
+<p>so this</p>
+<p>is</p>
+<p>actually</p>
+<p>not a</p>
+<p>criticism</p>
+<p>of</p>
+<p>quantitative</p>
+<p>modeling</p>
+<p>as a</p>
+<p>process</p>
+<p>in fact</p>
+<p>this is</p>
+<p>the</p>
+<p>entire</p>
+<p>basis</p>
+<p>of</p>
+<p>quantitative</p>
+<p>!</p>
+<p>modeling</p>
+<p>so</p>
+<p>we've</p>
+<p>approached</p>
+<p>this</p>
+<p>map</p>
+<p>territory</p>
+<p>distinction</p>
+<p>map</p>
+<p>territory</p>
+<p>fallacy</p>
+<p>fallacy</p>
+<p>fallacy</p>
+<p>from</p>
+<p>many</p>
+<p>angles</p>
+<p>and</p>
+<p>one</p>
+<p>will</p>
+<p>still</p>
+<p>hear</p>
+<p>things</p>
+<p>like</p>
+<p>well</p>
+<p>the</p>
+<p>structure</p>
+<p>of</p>
+<p>the</p>
+<p>statistical</p>
+<p>model</p>
+<p>is</p>
+<p>not</p>
+<p>the</p>
+<p>same</p>
+<p>as</p>
+<p>the</p>
+<p>territory</p>
+<p>or</p>
+<p>how</p>
+<p>can</p>
+<p>you</p>
+<p>say</p>
+<p>that</p>
+<p>the</p>
+<p>organism</p>
+<p>has</p>
+<p>these</p>
+<p>well-behaved</p>
+<p>properties</p>
+<p>just</p>
+<p>because</p>
+<p>the</p>
+<p>model</p>
+<p>does</p>
+<p>and</p>
+<p>this</p>
+<p>brings</p>
+<p>a</p>
+<p>really</p>
+<p>sharp</p>
+<p>light</p>
+<p>on</p>
+<p>it</p>
+<p>which</p>
+<p>is</p>
+<p>we're</p>
+<p>doing</p>
+<p>this</p>
+<p>insane</p>
+<p>amount</p>
+<p>of</p>
+<p>analytical</p>
+<p>groundwork</p>
+<p>so</p>
+<p>that</p>
+<p>the</p>
+<p>map</p>
+<p>has</p>
+<p>the</p>
+<p>good</p>
+<p>properties</p>
+<p>not</p>
+<p>to</p>
+<p>constrain</p>
+<p>what</p>
+<p>the</p>
+<p>territory</p>
+<p>is</p>
+<p>so</p>
+<p>map</p>
+<p>territory</p>
+<p>all</p>
+<p>of the</p>
+<p>math</p>
+<p>we've</p>
+<p>been</p>
+<p>talking</p>
+<p>about</p>
+<p>is</p>
+<p>map</p>
+<p>we</p>
+<p>want</p>
+<p>well-behaved</p>
+<p>maps</p>
+<p>so</p>
+<p>that we</p>
+<p>can</p>
+<p>describe</p>
+<p>well-behaved</p>
+<p>and</p>
+<p>unruly</p>
+<p>territories</p>
+<p>but</p>
+<p>it</p>
+<p>isn't</p>
+<p>the</p>
+<p>case</p>
+<p>that</p>
+<p>the</p>
+<p>organism</p>
+<p>minimizes</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>it's</p>
+<p>the</p>
+<p>generative</p>
+<p>model</p>
+<p>that</p>
+<p>minimizes</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>so</p>
+<p>a little</p>
+<p>bit of a</p>
+<p>leading</p>
+<p>discussion</p>
+<p>topic</p>
+<p>or question</p>
+<p>for you</p>
+<p>all</p>
+<p>feel free</p>
+<p>to give</p>
+<p>a thought</p>
+<p>in the</p>
+<p>live chat</p>
+<p>or write</p>
+<p>a comment</p>
+<p>or join</p>
+<p>our</p>
+<p>discussions</p>
+<p>how is</p>
+<p>this line</p>
+<p>of basic</p>
+<p>and fundamental</p>
+<p>math</p>
+<p>research</p>
+<p>by</p>
+<p>barp et</p>
+<p>all</p>
+<p>creating</p>
+<p>new</p>
+<p>models</p>
+<p>that have</p>
+<p>the</p>
+<p>operational</p>
+<p>or</p>
+<p>denotational</p>
+<p>semantics</p>
+<p>that we</p>
+<p>want</p>
+<p>for</p>
+<p>computational</p>
+<p>statistics</p>
+<p>which is</p>
+<p>to say</p>
+<p>applied</p>
+<p>information</p>
+<p>theory</p>
+<p>for example</p>
+<p>distributions</p>
+<p>that can be</p>
+<p>interpreted</p>
+<p>or used</p>
+<p>as statistical</p>
+<p>distributions</p>
+<p>ideally</p>
+<p>directly</p>
+<p>compatible</p>
+<p>with current</p>
+<p>computational</p>
+<p>methods</p>
+<p>SPM</p>
+<p>in matlab</p>
+<p>pymdp</p>
+<p>in python</p>
+<p>and</p>
+<p>forny</p>
+<p>lab</p>
+<p>in julia</p>
+<p>and so</p>
+<p>on</p>
+<p>section</p>
+<p>4.3.1</p>
+<p>minimum</p>
+<p>stein</p>
+<p>discrepancy</p>
+<p>estimators</p>
+<p>more</p>
+<p>technical</p>
+<p>details</p>
+<p>more</p>
+<p>citation</p>
+<p>to</p>
+<p>204</p>
+<p>the</p>
+<p>parameters</p>
+<p>can be</p>
+<p>adjusted</p>
+<p>to achieve</p>
+<p>characteristicness</p>
+<p>consistency</p>
+<p>bias</p>
+<p>robustness</p>
+<p>and obtain</p>
+<p>central</p>
+<p>limit</p>
+<p>theorems</p>
+<p>see</p>
+<p>204</p>
+<p>2019</p>
+<p>paper</p>
+<p>with</p>
+<p>barp</p>
+<p>et</p>
+<p>all</p>
+<p>and</p>
+<p>let's</p>
+<p>just</p>
+<p>look</p>
+<p>at a</p>
+<p>really</p>
+<p>cool</p>
+<p>image</p>
+<p>from</p>
+<p>that</p>
+<p>paper</p>
+<p>figure</p>
+<p>one</p>
+<p>and</p>
+<p>figure</p>
+<p>two</p>
+<p>pretty</p>
+<p>cool</p>
+<p>SD</p>
+<p>estimators</p>
+<p>looking</p>
+<p>nice</p>
+<p>section</p>
+<p>4.3.2</p>
+<p>likelihood</p>
+<p>free</p>
+<p>inference</p>
+<p>with</p>
+<p>generative</p>
+<p>models</p>
+<p>so</p>
+<p>for</p>
+<p>many</p>
+<p>applications</p>
+<p>of</p>
+<p>interests</p>
+<p>the</p>
+<p>densities</p>
+<p>of</p>
+<p>the</p>
+<p>model</p>
+<p>mu</p>
+<p>sub</p>
+<p>data</p>
+<p>cannot</p>
+<p>be</p>
+<p>evaluated</p>
+<p>or</p>
+<p>differentiated</p>
+<p>we</p>
+<p>thus</p>
+<p>need</p>
+<p>density</p>
+<p>free</p>
+<p>inference</p>
+<p>methods</p>
+<p>super</p>
+<p>convenient</p>
+<p>for</p>
+<p>Bayesian</p>
+<p>statistics</p>
+<p>more</p>
+<p>technical</p>
+<p>details</p>
+<p>information</p>
+<p>tensor</p>
+<p>under</p>
+
+
+
+<p>appropriate</p>
+<p>choices</p>
+<p>of</p>
+<p>kernels</p>
+<p>and</p>
+<p>models</p>
+<p>one</p>
+<p>can</p>
+<p>derive</p>
+<p>theoretical</p>
+<p>guarantees</p>
+<p>such</p>
+<p>as</p>
+<p>concentration</p>
+<p>and</p>
+<p>generalization</p>
+<p>bounds</p>
+<p>consistency</p>
+<p>asymptotic</p>
+<p>normality</p>
+<p>and</p>
+<p>robustness</p>
+<p>so</p>
+<p>little</p>
+
+<p>bit</p>
+<p>of</p>
+<p>summary</p>
+<p>we</p>
+<p>have</p>
+<p>good</p>
+<p>analytical</p>
+<p>and</p>
+<p>computational</p>
+<p>footing</p>
+<p>in</p>
+<p>certain</p>
+<p>kinds</p>
+<p>of</p>
+<p>situations</p>
+<p>or</p>
+<p>under</p>
+<p>certain</p>
+<p>constraints</p>
+<p>certainly</p>
+<p>not all</p>
+<p>constraints</p>
+<p>but</p>
+<p>definitely</p>
+<p>for</p>
+<p>some</p>
+<p>that</p>
+<p>might</p>
+<p>enable</p>
+<p>the</p>
+<p>efficient</p>
+<p>computation</p>
+<p>not</p>
+<p>just</p>
+<p>specification</p>
+<p>but</p>
+<p>actual</p>
+<p>implementation</p>
+<p>of</p>
+<p>large</p>
+<p>generative</p>
+<p>models</p>
+<p>such</p>
+<p>as</p>
+<p>described</p>
+<p>in</p>
+<p>the</p>
+<p>paper</p>
+<p>of</p>
+<p>Friston</p>
+<p>et al</p>
+<p>2022</p>
+<p>designing</p>
+<p>ecosystems</p>
+<p>of</p>
+<p>intelligence</p>
+<p>from</p>
+<p>first</p>
+<p>principles</p>
+<p>and</p>
+<p>they</p>
+<p>use</p>
+<p>the</p>
+<p>term</p>
+<p>ecosystems</p>
+
+<p>of</p>
+<p>shared</p>
+<p>intelligence</p>
+<p>in</p>
+<p>that</p>
+<p>paper</p>
+<p>and</p>
+<p>so</p>
+<p>it's</p>
+<p>relevant</p>
+<p>to</p>
+<p>learn</p>
+<p>about</p>
+<p>the</p>
+<p>actuality</p>
+<p>and</p>
+<p>build</p>
+<p>intuition</p>
+<p>why</p>
+<p>slash</p>
+<p>how</p>
+<p>do</p>
+<p>we</p>
+<p>know</p>
+<p>well</p>
+<p>here's</p>
+<p>the</p>
+<p>one</p>
+<p>figure</p>
+<p>in</p>
+<p>that</p>
+<p>paper</p>
+<p>of</p>
+<p>Friston</p>
+<p>et</p>
+<p>all</p>
+<p>the</p>
+<p>one</p>
+<p>figure</p>
+<p>in</p>
+<p>this</p>
+<p>absolutely</p>
+<p>positional</p>
+<p>paper</p>
+<p>that</p>
+<p>they</p>
+<p>have</p>
+<p>released</p>
+<p>beliefs</p>
+<p>as</p>
+<p>parameters</p>
+<p>of</p>
+<p>a</p>
+<p>probability</p>
+<p>distribution</p>
+<p>here's</p>
+<p>the</p>
+<p>sharpening</p>
+<p>of</p>
+<p>a</p>
+<p>belief</p>
+<p>as</p>
+<p>a</p>
+<p>distance</p>
+<p>belief</p>
+<p>updating</p>
+<p>as</p>
+<p>traversing</p>
+<p>a</p>
+<p>statistical</p>
+<p>manifold</p>
+<p>which</p>
+<p>is to</p>
+<p>say</p>
+<p>a</p>
+<p>lower</p>
+<p>dimensional</p>
+<p>projected</p>
+<p>space</p>
+<p>and</p>
+<p>what's</p>
+<p>being</p>
+<p>shown</p>
+<p>as</p>
+<p>the</p>
+<p>parameter</p>
+<p>space</p>
+<p>of</p>
+<p>a</p>
+<p>probability</p>
+<p>distribution</p>
+<p>so</p>
+<p>whether</p>
+<p>we</p>
+<p>see</p>
+<p>this</p>
+<p>as</p>
+<p>gradient</p>
+<p>ascent</p>
+<p>to</p>
+<p>climb</p>
+<p>to</p>
+<p>the</p>
+<p>top</p>
+<p>of</p>
+<p>the</p>
+<p>hill</p>
+<p>or</p>
+<p>we</p>
+<p>take</p>
+<p>the</p>
+<p>negative</p>
+<p>and</p>
+<p>we</p>
+<p>have</p>
+<p>gradient</p>
+<p>descent</p>
+<p>to</p>
+<p>the</p>
+<p>bottom</p>
+<p>of</p>
+<p>the</p>
+<p>hill</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>figure</p>
+<p>chosen</p>
+<p>by</p>
+<p>some</p>
+<p>very</p>
+<p>well</p>
+<p>informed</p>
+<p>authors</p>
+<p>to</p>
+<p>describe</p>
+<p>Bayesian</p>
+<p>mechanics</p>
+<p>and</p>
+<p>and</p>
+
+
+<p>long</p>
+<p>and</p>
+<p>long</p>
+<p>last</p>
+<p>we</p>
+<p>get</p>
+<p>to</p>
+<p>section</p>
+<p>five</p>
+<p>adaptive</p>
+<p>agents</p>
+<p>through</p>
+<p>active</p>
+<p>inference</p>
+<p>!</p>
+<p>We</p>
+<p>close</p>
+<p>as the</p>
+<p>authors</p>
+<p>write</p>
+<p>with a</p>
+<p>generic</p>
+<p>use</p>
+<p>case</p>
+<p>called</p>
+<p>active</p>
+<p>inference</p>
+<p>a</p>
+<p>general</p>
+<p>framework</p>
+<p>for</p>
+<p>describing</p>
+<p>and</p>
+<p>designing</p>
+<p>adaptive</p>
+<p>agents</p>
+<p>that</p>
+<p>unifies</p>
+<p>all</p>
+<p>aspects</p>
+<p>of</p>
+<p>behavior</p>
+<p>including</p>
+<p>perception</p>
+<p>planning</p>
+<p>and</p>
+<p>learning</p>
+<p>as</p>
+<p>processes</p>
+<p>!</p>
+<p>of</p>
+<p>inference</p>
+<p>By</p>
+<p>exploiting</p>
+<p>this</p>
+<p>geometric</p>
+<p>structure</p>
+<p>in a</p>
+<p>generic</p>
+<p>framework</p>
+<p>for</p>
+<p>designing</p>
+<p>adaptive</p>
+<p>agents</p>
+<p>we</p>
+<p>derive</p>
+<p>the</p>
+<p>objective</p>
+<p>functional</p>
+<p>overarching</p>
+<p>decision</p>
+<p>making</p>
+<p>and</p>
+<p>describe</p>
+<p>its</p>
+<p>information</p>
+<p>geometric</p>
+<p>structure</p>
+<p>revealing</p>
+<p>several</p>
+<p>special</p>
+<p>cases</p>
+<p>that</p>
+<p>are</p>
+<p>established</p>
+<p>notions</p>
+<p>in</p>
+<p>statistics</p>
+<p>cognitive</p>
+<p>science</p>
+<p>and</p>
+<p>engineering</p>
+<p>So</p>
+<p>section</p>
+<p>5.1</p>
+<p>Modeling</p>
+<p>Adaptive</p>
+<p>Decision</p>
+<p>Making</p>
+<p>First</p>
+<p>they're</p>
+<p>going to</p>
+<p>talk about</p>
+<p>behavior</p>
+<p>agents</p>
+<p>and</p>
+<p>environments</p>
+<p>Behavior</p>
+<p>is going</p>
+<p>to be</p>
+<p>defined</p>
+<p>as the</p>
+<p>interaction</p>
+<p>between</p>
+<p>an</p>
+<p>agent</p>
+<p>and</p>
+<p>its</p>
+<p>environment</p>
+<p>and</p>
+<p>the</p>
+<p>system</p>
+<p>is</p>
+<p>going</p>
+<p>to</p>
+<p>describe</p>
+<p>the</p>
+<p>agent</p>
+<p>plus</p>
+<p>its</p>
+<p>environment</p>
+<p>There's</p>
+<p>going to</p>
+<p>be a</p>
+<p>set</p>
+<p>of</p>
+<p>states</p>
+<p>that</p>
+<p>are</p>
+<p>partitions</p>
+<p>from</p>
+<p>a</p>
+<p>state</p>
+<p>space</p>
+<p>big</p>
+<p>X</p>
+<p>External</p>
+<p>states</p>
+<p>S</p>
+<p>are going</p>
+<p>to be</p>
+<p>unknown</p>
+<p>to the</p>
+<p>agent</p>
+<p>and</p>
+<p>constitute</p>
+<p>the</p>
+<p>environment</p>
+<p>States</p>
+<p>belonging</p>
+<p>to</p>
+<p>the</p>
+<p>agent</p>
+<p>pi</p>
+<p>particular</p>
+<p>states</p>
+<p>are going</p>
+<p>to</p>
+<p>be</p>
+<p>a</p>
+<p>subset</p>
+<p>of</p>
+<p>two</p>
+<p>different</p>
+<p>things</p>
+<p>So</p>
+<p>here</p>
+<p>is</p>
+<p>S</p>
+<p>which</p>
+<p>is</p>
+<p>here</p>
+<p>external</p>
+<p>states</p>
+<p>note</p>
+<p>that</p>
+<p>in</p>
+<p>some</p>
+<p>other</p>
+<p>settings</p>
+<p>S</p>
+<p>will</p>
+<p>refer</p>
+<p>to</p>
+<p>sensory</p>
+<p>states</p>
+<p>so</p>
+<p>look</p>
+<p>at</p>
+<p>the</p>
+<p>notation</p>
+<p>in</p>
+<p>this</p>
+<p>paper</p>
+<p>and</p>
+<p>pi</p>
+<p>which</p>
+<p>in</p>
+<p>other</p>
+<p>papers</p>
+<p>is</p>
+<p>sometimes</p>
+<p>used</p>
+<p>to</p>
+<p>describe</p>
+<p>policy</p>
+<p>inference</p>
+<p>here</p>
+<p>is</p>
+<p>going</p>
+<p>to</p>
+<p>describe</p>
+<p>particular</p>
+<p>states</p>
+<p>So</p>
+<p>pi</p>
+<p>is</p>
+<p>O</p>
+<p>and</p>
+<p>A</p>
+<p>O</p>
+<p>are</p>
+<p>the</p>
+<p>observable</p>
+<p>states</p>
+<p>states</p>
+<p>that the</p>
+<p>agent</p>
+<p>can</p>
+<p>see</p>
+<p>but</p>
+<p>cannot</p>
+<p>directly</p>
+<p>control</p>
+<p>sense</p>
+<p>states</p>
+<p>and</p>
+<p>A</p>
+<p>are</p>
+<p>the</p>
+<p>autonomous</p>
+<p>states</p>
+<p>states</p>
+<p>that the</p>
+<p>agent</p>
+<p>sees</p>
+<p>and can</p>
+<p>directly</p>
+<p>control</p>
+<p>and</p>
+<p>those</p>
+<p>are</p>
+<p>going</p>
+<p>to</p>
+<p>be</p>
+<p>internal</p>
+<p>states</p>
+<p>and</p>
+<p>active</p>
+<p>states</p>
+
+<p>figure</p>
+<p>2</p>
+<p>has</p>
+<p>a</p>
+<p>great</p>
+<p>representation</p>
+<p>and</p>
+<p>again</p>
+<p>note</p>
+<p>the</p>
+<p>way</p>
+<p>that</p>
+<p>pi</p>
+<p>S</p>
+<p>O</p>
+<p>and</p>
+<p>A</p>
+<p>are</p>
+<p>being</p>
+<p>used</p>
+<p>in</p>
+<p>this</p>
+<p>paper</p>
+<p>S</p>
+<p>is</p>
+<p>the</p>
+<p>external</p>
+<p>process</p>
+<p>hidden</p>
+<p>state</p>
+<p>latent</p>
+<p>state</p>
+<p>causal</p>
+<p>inference</p>
+<p>O</p>
+<p>are</p>
+<p>the</p>
+<p>observations</p>
+<p>and</p>
+<p>the</p>
+<p>agent</p>
+<p>process</p>
+<p>consists</p>
+<p>!</p>
+<p>of</p>
+<p>pi</p>
+<p>which</p>
+<p>is</p>
+<p>the</p>
+<p>observations</p>
+<p>and</p>
+<p>alpha</p>
+<p>or</p>
+<p>A</p>
+<p>A</p>
+<p>is</p>
+<p>consisting</p>
+<p>of</p>
+<p>according</p>
+<p>to</p>
+<p>the</p>
+<p>particular</p>
+<p>partition</p>
+<p>two</p>
+<p>different</p>
+<p>kinds</p>
+<p>of</p>
+<p>states</p>
+<p>which</p>
+<p>is</p>
+<p>internal</p>
+<p>states</p>
+<p>cognitive</p>
+<p>states</p>
+<p>and</p>
+<p>action</p>
+<p>states</p>
+<p>and</p>
+<p>so</p>
+<p>we're</p>
+<p>going</p>
+<p>to</p>
+<p>compute</p>
+<p>bounds</p>
+<p>for</p>
+<p>free</p>
+<p>energy</p>
+<p>functionals</p>
+<p>with</p>
+<p>a</p>
+<p>special</p>
+<p>focus</p>
+<p>on</p>
+<p>autonomous</p>
+<p>processes</p>
+<p>because</p>
+<p>controlling</p>
+<p>our</p>
+<p>perception</p>
+<p>is</p>
+<p>not</p>
+<p>possible</p>
+<p>and</p>
+<p>maybe</p>
+<p>not</p>
+<p>even</p>
+<p>preferable</p>
+<p>by</p>
+<p>controlling</p>
+<p>it</p>
+<p>at</p>
+<p>the</p>
+<p>level</p>
+<p>of</p>
+<p>what</p>
+<p>we</p>
+<p>observe</p>
+
+<p>But</p>
+<p>rather</p>
+<p>if</p>
+<p>we</p>
+<p>control</p>
+<p>our</p>
+<p>internal</p>
+<p>states</p>
+<p>which</p>
+<p>is</p>
+<p>our</p>
+<p>interpretation</p>
+<p>of</p>
+<p>the</p>
+<p>perception</p>
+<p>and</p>
+<p>our</p>
+<p>action</p>
+<p>states</p>
+<p>we'll</p>
+<p>be</p>
+<p>doing</p>
+<p>optimal</p>
+<p>perception</p>
+<p>and</p>
+<p>optimal</p>
+<p>action</p>
+<p>so</p>
+<p>those</p>
+<p>are</p>
+<p>the</p>
+<p>two</p>
+<p>sides</p>
+<p>of</p>
+<p>the</p>
+<p>coin</p>
+<p>with</p>
+<p>inference</p>
+<p>as</p>
+<p>perception</p>
+<p>slash</p>
+<p>learning</p>
+<p>and</p>
+<p>action</p>
+<p>selection</p>
+<p>!</p>
+<p>That's</p>
+<p>how</p>
+<p>we</p>
+<p>unify</p>
+<p>action</p>
+<p>and</p>
+<p>inference</p>
+<p>inactive</p>
+
+<p>inference</p>
+<p>is by</p>
+<p>caring</p>
+<p>about the</p>
+<p>bounding</p>
+<p>of</p>
+<p>self-surprisal</p>
+<p>just like</p>
+<p>gravity</p>
+<p>on our</p>
+<p>autonomous</p>
+<p>processes</p>
+<p>so</p>
+<p>this</p>
+<p>will</p>
+<p>be</p>
+<p>super</p>
+<p>fun</p>
+<p>to</p>
+<p>discuss</p>
+<p>more</p>
+<p>5.1</p>
+<p>point</p>
+<p>2</p>
+<p>decision</p>
+<p>making</p>
+<p>in</p>
+<p>precise</p>
+<p>agents</p>
+<p>so</p>
+<p>what</p>
+<p>distinguishes</p>
+<p>people</p>
+<p>from</p>
+<p>small</p>
+<p>particles</p>
+<p>people</p>
+<p>are</p>
+<p>subject</p>
+<p>to</p>
+<p>classical</p>
+<p>as</p>
+<p>opposed</p>
+<p>to</p>
+<p>statistical</p>
+<p>mechanics</p>
+<p>check</p>
+<p>out</p>
+<p>act</p>
+<p>inf</p>
+<p>live</p>
+<p>stream</p>
+<p>49</p>
+<p>for</p>
+<p>more</p>
+<p>on</p>
+<p>Bayesian</p>
+<p>mechanics</p>
+<p>and</p>
+<p>some</p>
+<p>of</p>
+<p>these</p>
+<p>distinctions</p>
+<p>with</p>
+<p>classical</p>
+<p>statistical</p>
+<p>quantum</p>
+<p>and</p>
+<p>thermo</p>
+<p>in</p>
+<p>other</p>
+<p>words</p>
+<p>they</p>
+<p>are</p>
+<p>precise</p>
+<p>agents</p>
+<p>with</p>
+<p>conservative</p>
+<p>dynamics</p>
+<p>precise</p>
+<p>agent</p>
+<p>definition</p>
+<p>5.1</p>
+<p>an</p>
+<p>agent</p>
+<p>is</p>
+<p>precise</p>
+<p>when</p>
+<p>it</p>
+<p>evolves</p>
+<p>deterministically</p>
+<p>in a</p>
+<p>possibly</p>
+<p>stochastic</p>
+<p>environment</p>
+<p>more</p>
+<p>definitions</p>
+<p>and</p>
+<p>it's</p>
+<p>useful</p>
+<p>here</p>
+<p>to</p>
+<p>highlight</p>
+<p>Fristin</p>
+<p>et al's</p>
+<p>recent</p>
+<p>paper</p>
+<p>path</p>
+<p>integrals</p>
+<p>particular</p>
+<p>kinds</p>
+<p>and</p>
+<p>strange</p>
+<p>things</p>
+<p>which</p>
+<p>provides</p>
+<p>a</p>
+<p>taxonomy</p>
+<p>of</p>
+<p>things</p>
+<p>taxonomy</p>
+<p>of</p>
+<p>particular</p>
+<p>entities</p>
+<p>that</p>
+<p>run</p>
+<p>the</p>
+<p>gamut</p>
+<p>of</p>
+<p>sophistication</p>
+<p>from</p>
+<p>inert</p>
+<p>!</p>
+<p>particles</p>
+<p>which</p>
+<p>have</p>
+<p>no</p>
+<p>active</p>
+<p>states</p>
+<p>active</p>
+<p>particles</p>
+<p>which</p>
+<p>have</p>
+<p>active</p>
+<p>states</p>
+<p>conservative</p>
+<p>particles</p>
+<p>which</p>
+<p>have</p>
+<p>cognitive</p>
+<p>dynamics</p>
+<p>that</p>
+<p>are</p>
+<p>described</p>
+<p>as</p>
+<p>classical</p>
+<p>and</p>
+<p>strange</p>
+<p>particles</p>
+<p>which</p>
+<p>represent</p>
+<p>in this</p>
+<p>visualization</p>
+<p>the highest</p>
+<p>level of</p>
+<p>cognitive</p>
+<p>sophistication</p>
+<p>in which</p>
+<p>those</p>
+<p>internal</p>
+<p>hidden</p>
+<p>states</p>
+<p>themselves</p>
+<p>have</p>
+<p>this</p>
+<p>kind</p>
+<p>of</p>
+<p>what</p>
+<p>would</p>
+<p>happen</p>
+<p>if</p>
+<p>this</p>
+<p>happens</p>
+<p>counterfactual</p>
+<p>type</p>
+<p>or</p>
+<p>thinking</p>
+<p>through</p>
+<p>other</p>
+<p>minds</p>
+<p>type</p>
+<p>cognitive</p>
+<p>model</p>
+<p>structure</p>
+<p>doing</p>
+<p>forward</p>
+<p>and</p>
+<p>inverse</p>
+<p>inference</p>
+<p>on</p>
+<p>these</p>
+<p>great</p>
+<p>times</p>
+<p>5.1.2</p>
+<p>decision</p>
+<p>making</p>
+<p>and precise</p>
+<p>agents</p>
+<p>we have</p>
+<p>mathematical</p>
+<p>formalisms</p>
+<p>for decisions</p>
+<p>preferences</p>
+<p>and predictions</p>
+<p>all using</p>
+<p>the</p>
+<p>partitioned</p>
+<p>variables</p>
+<p>5.1.2</p>
+<p>more</p>
+<p>formalisms</p>
+<p>we get</p>
+<p>to</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>is</p>
+<p>equation</p>
+<p>41k</p>
+<p>active</p>
+<p>inference</p>
+<p>is</p>
+<p>Hamilton's</p>
+<p>principle</p>
+<p>of least</p>
+<p>action</p>
+<p>on</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>and</p>
+<p>expresses</p>
+<p>the most</p>
+<p>likely</p>
+<p>decision</p>
+<p>where</p>
+<p>certain</p>
+<p>features</p>
+<p>are met</p>
+<p>principle</p>
+<p>of least</p>
+<p>action</p>
+<p>on</p>
+<p>manifolds</p>
+<p>of</p>
+<p>inference</p>
+<p>and</p>
+<p>action</p>
+<p>subsuming</p>
+<p>or</p>
+<p>bringing</p>
+<p>together</p>
+<p>inference</p>
+<p>and</p>
+<p>action</p>
+<p>active</p>
+<p>inference</p>
+<p>free</p>
+<p>energy</p>
+<p>principle</p>
+<p>5.1.3</p>
+<p>active</p>
+<p>inference</p>
+<p>framework</p>
+<p>AIF</p>
+<p>looks like</p>
+<p>it describes</p>
+<p>agents</p>
+<p>that engage</p>
+<p>in purposeful</p>
+<p>behavior</p>
+<p>we can</p>
+<p>rearrange</p>
+<p>the expected</p>
+<p>free</p>
+<p>energy</p>
+<p>EFE</p>
+<p>in several</p>
+<p>ways</p>
+<p>each of</p>
+<p>which</p>
+<p>reveals</p>
+<p>a</p>
+<p>fundamental</p>
+<p>trade-off</p>
+<p>that</p>
+<p>underwrites</p>
+<p>decision</p>
+<p>making</p>
+<p>this</p>
+<p>allows</p>
+<p>us</p>
+<p>to</p>
+<p>relate</p>
+<p>active</p>
+<p>inference</p>
+<p>to</p>
+<p>information</p>
+<p>theoretic</p>
+<p>formalizations</p>
+<p>of</p>
+<p>decision</p>
+<p>making</p>
+<p>that</p>
+<p>predominate</p>
+<p>in</p>
+<p>statistics</p>
+<p>cognitive</p>
+<p>science</p>
+<p>and</p>
+<p>engineering</p>
+<p>figure</p>
+<p>three</p>
+<p>as</p>
+<p>hinted</p>
+<p>at</p>
+<p>in</p>
+<p>the</p>
+<p>early</p>
+<p>early</p>
+<p>keywords</p>
+<p>here</p>
+<p>on the</p>
+<p>top</p>
+<p>we have</p>
+<p>the</p>
+<p>general</p>
+<p>formalizations</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>one</p>
+<p>of</p>
+<p>the</p>
+<p>partitions</p>
+<p>or</p>
+<p>better</p>
+<p>to</p>
+<p>say</p>
+<p>decompositions</p>
+<p>is</p>
+<p>shown</p>
+<p>here</p>
+<p>where</p>
+<p>extrinsic</p>
+<p>value</p>
+<p>is</p>
+<p>the</p>
+<p>surprisal</p>
+<p>about</p>
+<p>observations</p>
+<p>making</p>
+<p>sure</p>
+<p>that</p>
+<p>what</p>
+<p>we're</p>
+<p>getting</p>
+<p>in</p>
+<p>observations</p>
+<p>are</p>
+<p>what</p>
+<p>we</p>
+<p>expect</p>
+<p>slash</p>
+<p>prefer</p>
+<p>if</p>
+<p>the</p>
+<p>body</p>
+<p>wants</p>
+<p>to be</p>
+<p>expecting</p>
+<p>homeostatic</p>
+<p>temperature</p>
+<p>that</p>
+
+
+<p>is</p>
+<p>what</p>
+<p>this</p>
+<p>is</p>
+<p>going</p>
+<p>to</p>
+<p>determine</p>
+<p>and</p>
+<p>it</p>
+<p>plays</p>
+<p>a</p>
+<p>role</p>
+<p>equivalent</p>
+<p>to</p>
+<p>reward</p>
+<p>in</p>
+<p>reward</p>
+<p>and</p>
+<p>reinforcement</p>
+<p>learning</p>
+<p>based</p>
+<p>approaches</p>
+<p>because</p>
+<p>we</p>
+<p>don't</p>
+<p>need</p>
+<p>to</p>
+<p>actually</p>
+<p>set</p>
+<p>a</p>
+<p>reward</p>
+<p>function</p>
+<p>but</p>
+<p>we</p>
+<p>get</p>
+<p>something</p>
+<p>that</p>
+<p>looks</p>
+<p>like</p>
+<p>self</p>
+<p>surprisal</p>
+<p>aligned</p>
+<p>with</p>
+<p>reward</p>
+<p>using</p>
+<p>the</p>
+<p>preference</p>
+<p>variable</p>
+<p>over</p>
+<p>observations</p>
+<p>a lot</p>
+<p>more to</p>
+<p>say</p>
+<p>there</p>
+<p>and</p>
+<p>the</p>
+<p>second</p>
+<p>term</p>
+<p>is</p>
+<p>the</p>
+<p>intrinsic</p>
+<p>value</p>
+<p>the</p>
+<p>epistemic</p>
+<p>value</p>
+<p>curiosity</p>
+<p>novelty</p>
+<p>learning</p>
+<p>reduction</p>
+<p>of</p>
+<p>uncertainty</p>
+<p>and</p>
+<p>another</p>
+<p>partitioning</p>
+<p>is</p>
+<p>between</p>
+<p>risk</p>
+<p>and</p>
+<p>ambiguity</p>
+<p>there</p>
+<p>are</p>
+<p>four</p>
+<p>colored</p>
+<p>dots</p>
+<p>red</p>
+<p>tan</p>
+<p>gray</p>
+<p>and</p>
+<p>blue</p>
+<p>corresponding</p>
+<p>to</p>
+<p>special</p>
+<p>cases</p>
+<p>so</p>
+<p>under</p>
+<p>the setting</p>
+<p>where there's</p>
+<p>no</p>
+<p>ambiguity</p>
+<p>we</p>
+<p>realize</p>
+<p>or</p>
+<p>manifest</p>
+<p>the</p>
+<p>special</p>
+<p>case</p>
+<p>where</p>
+<p>control</p>
+<p>can</p>
+<p>be</p>
+<p>seen</p>
+<p>as</p>
+<p>inference</p>
+<p>maximum</p>
+<p>entropy</p>
+<p>reinforcement</p>
+<p>learning</p>
+<p>prospect</p>
+<p>theory</p>
+<p>and</p>
+<p>KL</p>
+<p>optimal</p>
+<p>control</p>
+<p>this</p>
+<p>is</p>
+<p>like</p>
+<p>doing</p>
+<p>as</p>
+<p>good</p>
+<p>as</p>
+<p>you</p>
+<p>can</p>
+<p>strategically</p>
+<p>or</p>
+<p>tactically</p>
+<p>given</p>
+<p>that</p>
+<p>there's</p>
+<p>no</p>
+<p>ambiguity</p>
+<p>in</p>
+<p>how</p>
+<p>your</p>
+<p>decisions</p>
+<p>play</p>
+<p>out</p>
+<p>now</p>
+<p>under</p>
+<p>the</p>
+<p>setting</p>
+<p>where</p>
+<p>there's</p>
+<p>no</p>
+<p>ambiguity</p>
+<p>or</p>
+<p>preferences</p>
+<p>a</p>
+<p>maximum</p>
+<p>entropy</p>
+<p>principle</p>
+<p>is</p>
+<p>realized</p>
+<p>and</p>
+<p>work</p>
+<p>with</p>
+<p>Bayesian</p>
+<p>mechanics</p>
+<p>and</p>
+<p>Dalton</p>
+<p>et</p>
+<p>all</p>
+<p>has</p>
+<p>shown</p>
+<p>that</p>
+<p>the</p>
+<p>constrained</p>
+<p>maximum</p>
+<p>entropy</p>
+<p>principle</p>
+<p>is</p>
+<p>dual</p>
+<p>to</p>
+<p>the</p>
+<p>FEP</p>
+<p>in</p>
+<p>the</p>
+<p>case</p>
+<p>of</p>
+<p>no</p>
+<p>extrinsic</p>
+<p>value</p>
+<p>so</p>
+<p>no</p>
+<p>quote</p>
+<p>reward</p>
+<p>no</p>
+<p>quote</p>
+<p>goals</p>
+<p>we don't</p>
+<p>use</p>
+<p>reward</p>
+<p>or goals</p>
+<p>in the</p>
+<p>active</p>
+<p>inference</p>
+<p>ontology</p>
+<p>but</p>
+<p>borrowing</p>
+<p>those words</p>
+<p>from some</p>
+<p>long</p>
+<p>long</p>
+<p>forgotten</p>
+<p>ontology</p>
+<p>in the</p>
+<p>case</p>
+<p>of</p>
+<p>no</p>
+<p>extrinsic</p>
+<p>value</p>
+<p>we</p>
+<p>realize</p>
+<p>the</p>
+<p>special</p>
+<p>case</p>
+<p>of</p>
+<p>maximum</p>
+<p>information</p>
+<p>gain</p>
+<p>Bayesian</p>
+<p>experimental</p>
+<p>design</p>
+<p>so</p>
+<p>not</p>
+<p>to</p>
+<p>prove</p>
+<p>or</p>
+<p>disprove</p>
+<p>but</p>
+<p>the</p>
+<p>maximally</p>
+<p>informative</p>
+<p>experiment</p>
+<p>that's</p>
+<p>the</p>
+<p>Bayesian</p>
+<p>scientific</p>
+<p>epistemology</p>
+<p>intrinsic</p>
+<p>motivation</p>
+<p>and</p>
+<p>Bayesian</p>
+<p>surprise</p>
+<p>seeking</p>
+<p>out</p>
+<p>optimally</p>
+<p>informative</p>
+<p>stimuli</p>
+<p>and</p>
+<p>contrast</p>
+<p>that</p>
+<p>with</p>
+<p>the</p>
+<p>setting</p>
+<p>where</p>
+<p>there's</p>
+<p>no</p>
+<p>intrinsic</p>
+<p>value</p>
+<p>so</p>
+<p>where</p>
+<p>there's</p>
+<p>nothing</p>
+<p>to</p>
+<p>learn</p>
+<p>we</p>
+<p>realize</p>
+<p>expected</p>
+<p>utility</p>
+<p>theory</p>
+<p>Bayesian</p>
+<p>decision</p>
+<p>theory</p>
+<p>reinforcement</p>
+<p>learning</p>
+<p>and</p>
+<p>optimal</p>
+<p>control</p>
+<p>so</p>
+<p>special</p>
+<p>cases</p>
+<p>from</p>
+<p>many</p>
+<p>different</p>
+<p>fields</p>
+<p>ranging</p>
+<p>from</p>
+<p>statistical</p>
+<p>mechanics</p>
+<p>to</p>
+<p>Bayesian</p>
+<p>decision</p>
+<p>making</p>
+<p>and</p>
+<p>statistics</p>
+<p>integrated</p>
+<p>or</p>
+<p>perhaps</p>
+<p>better</p>
+<p>generalized</p>
+<p>across</p>
+<p>in</p>
+<p>the</p>
+<p>formalisms</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>which</p>
+<p>is</p>
+<p>something</p>
+<p>like</p>
+<p>a</p>
+<p>Hamilton's</p>
+<p>principle</p>
+<p>of</p>
+<p>least</p>
+<p>action</p>
+<p>on</p>
+<p>variational</p>
+<p>or</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>expressing</p>
+<p>the</p>
+<p>most</p>
+<p>likely</p>
+<p>inference</p>
+<p>and</p>
+<p>action</p>
+<p>under</p>
+<p>certain</p>
+<p>constraints</p>
+<p>not</p>
+<p>the most</p>
+<p>rewarding</p>
+<p>but</p>
+<p>the most</p>
+<p>likely</p>
+<p>5.1.3</p>
+<p>decision</p>
+<p>making</p>
+<p>minimizes</p>
+<p>both risk</p>
+<p>and</p>
+<p>ambiguity</p>
+<p>risk</p>
+<p>first</p>
+<p>term</p>
+<p>on the</p>
+<p>right</p>
+<p>hand</p>
+<p>side</p>
+<p>ambiguity</p>
+<p>second</p>
+<p>term</p>
+<p>minimizing</p>
+
+<p>ambiguity</p>
+<p>leads to</p>
+<p>a type</p>
+<p>of</p>
+<p>observational</p>
+<p>bias</p>
+<p>commonly</p>
+<p>known</p>
+<p>as</p>
+<p>the</p>
+<p>street</p>
+<p>light</p>
+<p>effect</p>
+<p>when</p>
+<p>a person</p>
+<p>loses</p>
+<p>their</p>
+<p>keys</p>
+<p>at night</p>
+<p>they</p>
+<p>initially</p>
+<p>search</p>
+<p>for</p>
+<p>them</p>
+<p>under</p>
+<p>the</p>
+<p>street</p>
+<p>light</p>
+<p>because</p>
+<p>of</p>
+<p>the</p>
+<p>resulting</p>
+<p>observations</p>
+<p>I</p>
+<p>see</p>
+<p>my</p>
+<p>keys</p>
+<p>under</p>
+<p>the</p>
+<p>street</p>
+<p>light</p>
+<p>or</p>
+<p>I</p>
+<p>do</p>
+<p>not</p>
+<p>see</p>
+<p>my</p>
+<p>keys</p>
+<p>under</p>
+<p>the</p>
+<p>street</p>
+<p>light</p>
+<p>accurately</p>
+<p>disambiguate</p>
+<p>external</p>
+<p>states</p>
+<p>of</p>
+<p>affairs</p>
+<p>first</p>
+<p>place</p>
+<p>to</p>
+<p>look</p>
+<p>makes</p>
+<p>sense</p>
+<p>under</p>
+<p>the</p>
+<p>street</p>
+<p>light</p>
+<p>and</p>
+<p>the</p>
+<p>last</p>
+<p>place</p>
+<p>you</p>
+<p>look</p>
+<p>is</p>
+<p>where</p>
+<p>you</p>
+<p>find</p>
+<p>it</p>
+<p>more</p>
+<p>in</p>
+<p>5.1.3</p>
+<p>decision</p>
+<p>making</p>
+<p>maximizes</p>
+<p>extrinsic</p>
+<p>and</p>
+<p>intrinsic</p>
+<p>value</p>
+<p>another</p>
+<p>decomposition</p>
+<p>of</p>
+<p>the</p>
+<p>formalisms</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>maximizing</p>
+<p>information</p>
+<p>gain</p>
+<p>leads</p>
+<p>to</p>
+<p>a</p>
+<p>goal</p>
+<p>directed</p>
+<p>form</p>
+<p>of</p>
+<p>exploration</p>
+<p>driven</p>
+<p>to</p>
+<p>answer</p>
+<p>what</p>
+<p>would</p>
+<p>happen</p>
+<p>if</p>
+<p>I</p>
+<p>did</p>
+<p>that</p>
+<p>true</p>
+<p>counterfactuals</p>
+<p>this</p>
+<p>decision</p>
+<p>making</p>
+<p>procedure</p>
+<p>underwrites</p>
+<p>Bayesian</p>
+<p>experimental</p>
+<p>design</p>
+<p>in</p>
+<p>statistics</p>
+<p>which</p>
+<p>describes</p>
+<p>optimal</p>
+<p>experiments</p>
+<p>as</p>
+<p>those</p>
+<p>that</p>
+<p>maximize</p>
+<p>expected</p>
+<p>information</p>
+<p>gain</p>
+<p>and</p>
+<p>we've</p>
+<p>had</p>
+<p>some</p>
+<p>great</p>
+<p>discussions</p>
+<p>recently</p>
+<p>in</p>
+<p>textbook</p>
+<p>groups</p>
+<p>and</p>
+<p>in</p>
+<p>discussion</p>
+<p>hours</p>
+<p>where</p>
+<p>we</p>
+<p>contrasted</p>
+<p>that</p>
+<p>falsificationist</p>
+<p>concept</p>
+<p>of</p>
+<p>accept</p>
+<p>or</p>
+<p>reject</p>
+<p>hypothesis</p>
+<p>and</p>
+<p>even</p>
+<p>the</p>
+<p>idea</p>
+<p>of</p>
+<p>a</p>
+<p>scientist</p>
+<p>or</p>
+<p>researcher</p>
+<p>setting</p>
+<p>out</p>
+<p>to</p>
+<p>accept</p>
+<p>or</p>
+<p>reject</p>
+<p>hypothesis</p>
+<p>whether</p>
+<p>you</p>
+<p>take</p>
+<p>that</p>
+<p>positivist</p>
+<p>or</p>
+<p>you</p>
+<p>take</p>
+<p>the</p>
+<p>other</p>
+<p>path</p>
+<p>of</p>
+<p>falsificationism</p>
+<p>in</p>
+<p>both</p>
+<p>cases</p>
+<p>you</p>
+<p>might</p>
+<p>end up</p>
+<p>with</p>
+<p>an</p>
+<p>informative</p>
+<p>experiment</p>
+<p>or</p>
+<p>not</p>
+<p>but</p>
+<p>you</p>
+<p>can</p>
+<p>easily</p>
+<p>imagine</p>
+<p>cases</p>
+<p>where</p>
+<p>you</p>
+<p>end up</p>
+<p>with</p>
+<p>an</p>
+<p>uninformative</p>
+<p>experiment</p>
+<p>because</p>
+<p>you set</p>
+<p>out to</p>
+<p>confirm</p>
+<p>something</p>
+<p>you knew</p>
+<p>or you</p>
+<p>set</p>
+<p>out to</p>
+<p>disprove</p>
+<p>something</p>
+<p>by</p>
+<p>constraining</p>
+<p>your</p>
+<p>experiment</p>
+<p>so that</p>
+<p>it was</p>
+<p>locally</p>
+<p>disproven</p>
+<p>in</p>
+<p>in</p>
+<p>contrast</p>
+<p>when</p>
+<p>we</p>
+<p>take</p>
+<p>into</p>
+<p>account</p>
+<p>the</p>
+<p>richness</p>
+<p>of</p>
+<p>our</p>
+<p>generative</p>
+<p>model</p>
+<p>we</p>
+<p>motivate</p>
+<p>this</p>
+<p>Bayesian</p>
+<p>epistemology</p>
+<p>and</p>
+<p>ultimately</p>
+<p>professional</p>
+<p>Bayesianism</p>
+<p>where</p>
+<p>we make</p>
+<p>optimal</p>
+<p>experiments</p>
+<p>in terms</p>
+<p>of</p>
+<p>their</p>
+<p>maximum</p>
+<p>expected</p>
+<p>information</p>
+<p>gain</p>
+<p>which</p>
+<p>requires</p>
+<p>you to</p>
+<p>also</p>
+<p>state</p>
+<p>your</p>
+<p>generative</p>
+<p>model</p>
+<p>decision</p>
+<p>making</p>
+<p>under</p>
+<p>active</p>
+<p>inference</p>
+<p>weighs</p>
+<p>the</p>
+<p>imperatives</p>
+<p>of</p>
+<p>maximizing</p>
+<p>utility</p>
+<p>and</p>
+<p>information</p>
+<p>gain</p>
+<p>which</p>
+<p>suggests</p>
+<p>a</p>
+<p>principled</p>
+<p>solution</p>
+<p>to</p>
+<p>the</p>
+<p>exploration</p>
+<p>exploitation</p>
+<p>dilemma</p>
+<p>great</p>
+<p>point</p>
+<p>to</p>
+<p>jump</p>
+<p>into</p>
+<p>does</p>
+<p>active</p>
+<p>inference</p>
+<p>simply</p>
+<p>by</p>
+<p>written</p>
+<p>down</p>
+<p>by</p>
+<p>being</p>
+<p>written</p>
+<p>down</p>
+<p>on</p>
+<p>a</p>
+<p>paper</p>
+<p>resolve</p>
+<p>or</p>
+<p>transcend</p>
+<p>or</p>
+<p>dissolve</p>
+<p>exploration</p>
+<p>exploitation</p>
+<p>no</p>
+<p>does</p>
+<p>it</p>
+<p>provide</p>
+<p>a</p>
+<p>space</p>
+<p>or a</p>
+<p>framework</p>
+<p>a</p>
+<p>method</p>
+<p>an</p>
+<p>approach</p>
+<p>software</p>
+<p>packages</p>
+<p>research</p>
+<p>community</p>
+<p>that can</p>
+<p>help us</p>
+<p>address</p>
+<p>and navigate</p>
+<p>and surf</p>
+<p>on the edge</p>
+<p>of that</p>
+<p>dilemma</p>
+<p>absolutely</p>
+<p>5.2.1</p>
+<p>the basic</p>
+<p>active</p>
+<p>inference</p>
+<p>algorithm</p>
+<p>we're</p>
+<p>going to</p>
+<p>go through</p>
+<p>it</p>
+<p>with</p>
+<p>authors</p>
+<p>preferential</p>
+<p>inference</p>
+<p>we want</p>
+<p>to infer</p>
+<p>preferences</p>
+<p>about</p>
+<p>external</p>
+<p>and</p>
+<p>observable</p>
+<p>trajectories</p>
+<p>2</p>
+<p>for each</p>
+<p>possible</p>
+<p>sequence</p>
+<p>of past</p>
+<p>present</p>
+<p>and future</p>
+<p>actions</p>
+<p>a</p>
+<p>we're</p>
+<p>going to</p>
+<p>engage</p>
+<p>in</p>
+<p>both</p>
+<p>sides</p>
+<p>of the</p>
+<p>coin</p>
+<p>perceptual</p>
+<p>inference</p>
+<p>what</p>
+<p>would</p>
+<p>I</p>
+<p>perceive</p>
+<p>if that</p>
+<p>happened</p>
+<p>and</p>
+<p>planning</p>
+<p>as</p>
+<p>inference</p>
+<p>assess</p>
+<p>the</p>
+<p>action</p>
+<p>sequence</p>
+<p>by</p>
+<p>evaluating</p>
+<p>its</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>and</p>
+<p>then</p>
+<p>3.</p>
+<p>Decision</p>
+<p>making</p>
+<p>execute</p>
+<p>the most</p>
+<p>likely</p>
+<p>decision</p>
+<p>at</p>
+<p>T plus</p>
+<p>one</p>
+<p>according</p>
+<p>to</p>
+<p>some</p>
+<p>distributions</p>
+<p>sample</p>
+<p>from</p>
+<p>your</p>
+<p>action</p>
+<p>posterior</p>
+<p>action</p>
+<p>prior</p>
+<p>that's</p>
+<p>like</p>
+<p>your</p>
+<p>habits</p>
+<p>it gets</p>
+<p>sharpened</p>
+<p>or</p>
+<p>modified</p>
+<p>with</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>and</p>
+<p>then</p>
+<p>you</p>
+<p>sample</p>
+<p>from</p>
+<p>the</p>
+<p>action</p>
+<p>posterior</p>
+<p>5.2.1</p>
+<p>Sequential</p>
+<p>decision</p>
+<p>making</p>
+<p>under</p>
+<p>uncertainty</p>
+<p>a</p>
+<p>partially</p>
+<p>observable</p>
+<p>Markov</p>
+<p>decision</p>
+<p>process</p>
+<p>POMDP</p>
+<p>is a</p>
+<p>discrete</p>
+<p>time</p>
+<p>model</p>
+<p>of how</p>
+<p>actions</p>
+<p>influence</p>
+<p>external</p>
+<p>states</p>
+<p>in</p>
+<p>a</p>
+<p>POMDP</p>
+<p>each</p>
+<p>external</p>
+<p>state</p>
+<p>depends</p>
+<p>only on</p>
+<p>the</p>
+<p>current</p>
+<p>action</p>
+<p>and</p>
+<p>previous</p>
+<p>external</p>
+<p>state</p>
+<p>that's</p>
+<p>the</p>
+<p>Markov</p>
+<p>property</p>
+<p>each</p>
+<p>observation</p>
+<p>depends</p>
+<p>only on</p>
+<p>the</p>
+<p>current</p>
+<p>external</p>
+<p>state</p>
+<p>and</p>
+<p>one</p>
+<p>can</p>
+<p>additionally</p>
+<p>specify</p>
+<p>a</p>
+<p>distribution</p>
+<p>of</p>
+<p>preferences</p>
+<p>over</p>
+<p>external</p>
+<p>trajectories</p>
+<p>1 and</p>
+<p>2 form</p>
+<p>the</p>
+<p>agent's</p>
+<p>POMDP</p>
+<p>prediction</p>
+<p>model</p>
+<p>2 and</p>
+<p>3 form</p>
+<p>the agent's</p>
+<p>hidden</p>
+<p>Markov</p>
+<p>preference</p>
+<p>model</p>
+<p>which</p>
+<p>defines</p>
+<p>the</p>
+<p>active</p>
+<p>inference</p>
+<p>agent</p>
+<p>a</p>
+<p>simple</p>
+<p>simulation</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>on</p>
+<p>a</p>
+<p>POMDP</p>
+<p>is</p>
+<p>provided</p>
+<p>in</p>
+<p>figure</p>
+<p>4</p>
+<p>implementation</p>
+<p>details</p>
+<p>on</p>
+<p>generic</p>
+<p>POMDP</p>
+<p>are</p>
+<p>available</p>
+<p>for</p>
+<p>more</p>
+<p>complex</p>
+<p>simulations</p>
+<p>of</p>
+<p>sequential</p>
+<p>decision</p>
+<p>making</p>
+<p>e.g.</p>
+<p>involving</p>
+<p>hierarchical</p>
+<p>POMDPs</p>
+<p>please</p>
+<p>see</p>
+<p>citations</p>
+<p>figure</p>
+<p>4</p>
+<p>it's a</p>
+<p>prediction</p>
+<p>model</p>
+<p>this is</p>
+<p>sequential</p>
+<p>decision</p>
+<p>making</p>
+<p>in a</p>
+<p>TMAZ</p>
+<p>environment</p>
+<p>on the</p>
+<p>left</p>
+<p>the agent's</p>
+<p>prediction</p>
+<p>model</p>
+<p>as a</p>
+<p>POMDP</p>
+<p>represented</p>
+<p>here as</p>
+<p>a</p>
+<p>Bayesian</p>
+<p>network</p>
+<p>on the</p>
+<p>right</p>
+<p>information</p>
+<p>on the</p>
+<p>TMAZ</p>
+<p>so</p>
+<p>here</p>
+<p>we have</p>
+<p>some</p>
+<p>type</p>
+<p>of</p>
+<p>Bayesian</p>
+<p>graph</p>
+<p>reflecting</p>
+<p>hopefully</p>
+<p>a</p>
+<p>statistical</p>
+<p>system</p>
+<p>that's</p>
+<p>going to</p>
+<p>have</p>
+<p>all</p>
+<p>of</p>
+<p>these</p>
+<p>well</p>
+<p>behaved</p>
+<p>properties</p>
+<p>that</p>
+<p>we've</p>
+<p>been</p>
+<p>talking</p>
+<p>about</p>
+<p>in</p>
+<p>the</p>
+<p>paper</p>
+<p>and</p>
+<p>then</p>
+<p>the</p>
+<p>TMAZ</p>
+<p>is</p>
+<p>played</p>
+<p>out</p>
+<p>we'll</p>
+<p>talk</p>
+<p>about</p>
+<p>it</p>
+<p>5.2.3</p>
+<p>world model</p>
+<p>learning</p>
+<p>is</p>
+<p>inference</p>
+<p>due</p>
+<p>to a</p>
+<p>lack</p>
+<p>of</p>
+<p>domain</p>
+<p>knowledge</p>
+<p>it</p>
+<p>may</p>
+<p>be</p>
+<p>challenging</p>
+<p>to</p>
+<p>specify</p>
+<p>an</p>
+<p>agent's</p>
+<p>prediction</p>
+<p>and</p>
+<p>preference</p>
+<p>model</p>
+<p>for</p>
+<p>example</p>
+<p>how do</p>
+<p>external</p>
+<p>states</p>
+<p>map</p>
+<p>observations</p>
+<p>should</p>
+<p>external</p>
+<p>states</p>
+<p>be</p>
+<p>represented</p>
+<p>in a</p>
+<p>discrete</p>
+<p>or</p>
+<p>continuous</p>
+<p>state</p>
+<p>space</p>
+<p>also</p>
+<p>some</p>
+<p>great</p>
+<p>questions</p>
+<p>that</p>
+<p>come up</p>
+<p>every</p>
+<p>day</p>
+<p>and</p>
+<p>are</p>
+<p>addressed</p>
+<p>in</p>
+<p>chapter</p>
+<p>six</p>
+<p>a</p>
+<p>recipe</p>
+<p>for</p>
+<p>active</p>
+<p>inference</p>
+<p>modeling</p>
+<p>by</p>
+<p>time</p>
+<p>by</p>
+<p>2022</p>
+<p>textbook</p>
+<p>so</p>
+<p>how do</p>
+<p>we</p>
+<p>get</p>
+<p>the</p>
+<p>right</p>
+<p>priors</p>
+<p>or</p>
+<p>at</p>
+<p>least</p>
+<p>approximately</p>
+<p>adequate</p>
+<p>priors</p>
+<p>one way</p>
+<p>to</p>
+<p>answer</p>
+<p>the</p>
+<p>question</p>
+<p>lies</p>
+<p>in</p>
+<p>optimizing</p>
+<p>!</p>
+<p>a</p>
+<p>free</p>
+<p>energy</p>
+<p>functional</p>
+<p>f</p>
+<p>which</p>
+<p>is</p>
+<p>an</p>
+<p>evidence</p>
+<p>lower</p>
+<p>bound</p>
+<p>we</p>
+<p>see</p>
+<p>here</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>decomposed</p>
+<p>into</p>
+<p>an</p>
+<p>energy</p>
+<p>minus</p>
+<p>entropy</p>
+<p>and</p>
+<p>decomposed</p>
+<p>into</p>
+<p>a</p>
+<p>complexity</p>
+<p>minus</p>
+<p>accuracy</p>
+<p>framing</p>
+<p>maximizing</p>
+<p>accuracy</p>
+<p>usually</p>
+<p>results</p>
+<p>in</p>
+<p>generative</p>
+<p>models</p>
+<p>involving</p>
+<p>universal</p>
+<p>function</p>
+<p>approximators</p>
+<p>minimizing</p>
+<p>!</p>
+<p>complexity</p>
+<p>results</p>
+<p>in</p>
+<p>organizing</p>
+<p>representations</p>
+<p>in</p>
+<p>sparse</p>
+<p>compartmentalized</p>
+<p>and</p>
+<p>hierarchical</p>
+<p>generative</p>
+<p>models</p>
+<p>where</p>
+<p>higher</p>
+<p>levels</p>
+<p>of a</p>
+<p>hierarchy</p>
+<p>encode</p>
+<p>more</p>
+<p>abstract</p>
+<p>representations</p>
+<p>and</p>
+<p>vice</p>
+<p>versa</p>
+<p>a</p>
+<p>computationally</p>
+<p>efficient</p>
+<p>method</p>
+<p>to compare</p>
+<p>priors</p>
+<p>by their</p>
+<p>free</p>
+<p>energy</p>
+<p>is</p>
+<p>Bayesian</p>
+<p>model</p>
+<p>reduction</p>
+<p>free</p>
+<p>energy</p>
+<p>unifies</p>
+<p>inference</p>
+<p>and</p>
+<p>model</p>
+<p>selection</p>
+<p>under</p>
+<p>a</p>
+<p>single</p>
+<p>objective</p>
+<p>function</p>
+<p>5.2.4</p>
+<p>scaling</p>
+<p>active</p>
+<p>inference</p>
+<p>planning</p>
+<p>for all</p>
+<p>possible</p>
+<p>courses</p>
+<p>of</p>
+<p>action</p>
+<p>is</p>
+<p>computationally</p>
+<p>expensive</p>
+<p>one</p>
+<p>way</p>
+<p>to</p>
+<p>finesse</p>
+<p>this</p>
+<p>is</p>
+<p>by</p>
+<p>planning</p>
+<p>only</p>
+<p>for</p>
+<p>intelligently</p>
+<p>chosen</p>
+<p>subsets</p>
+<p>of</p>
+<p>action</p>
+<p>sequences</p>
+<p>using</p>
+<p>sampling</p>
+<p>algorithms</p>
+<p>!</p>
+<p>If you're</p>
+<p>interested</p>
+<p>in that</p>
+<p>check out</p>
+<p>the recent</p>
+<p>research</p>
+<p>on</p>
+<p>branching</p>
+<p>time</p>
+<p>active</p>
+<p>inference</p>
+<p>similarly</p>
+<p>Monte Carlo</p>
+<p>sampling</p>
+<p>finesses</p>
+<p>the</p>
+<p>expectations</p>
+<p>inherent</p>
+<p>in assessing</p>
+<p>action</p>
+<p>sequences</p>
+<p>A</p>
+<p>complementary</p>
+<p>approach</p>
+<p>is to</p>
+<p>assess</p>
+<p>actions</p>
+<p>instead</p>
+<p>of</p>
+<p>action</p>
+<p>sequences</p>
+<p>by</p>
+<p>conditioning</p>
+<p>all</p>
+<p>future</p>
+<p>actions</p>
+<p>to be</p>
+<p>optimal</p>
+<p>in the</p>
+<p>sense</p>
+<p>that</p>
+<p>they</p>
+<p>minimize</p>
+<p>the</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>It</p>
+<p>leads</p>
+<p>to</p>
+<p>smarter</p>
+<p>agents</p>
+<p>whose</p>
+<p>computational</p>
+<p>complexity</p>
+<p>scales</p>
+<p>linearly</p>
+<p>as</p>
+<p>opposed</p>
+<p>to</p>
+<p>exponentially</p>
+<p>in the</p>
+<p>length</p>
+<p>of</p>
+<p>action</p>
+<p>sequence</p>
+<p>Let's</p>
+<p>learn</p>
+<p>more</p>
+<p>about</p>
+<p>it</p>
+<p>Scalable</p>
+<p>inference</p>
+<p>methods</p>
+<p>can be</p>
+<p>used to</p>
+<p>make</p>
+<p>active</p>
+<p>inference</p>
+<p>more</p>
+<p>efficient</p>
+<p>We</p>
+<p>can train</p>
+<p>neural</p>
+<p>networks</p>
+<p>to</p>
+<p>predict</p>
+<p>the</p>
+<p>various</p>
+<p>posterior</p>
+<p>distributions</p>
+<p>including</p>
+<p>the</p>
+<p>posterior</p>
+<p>over</p>
+<p>actions</p>
+<p>While</p>
+<p>training</p>
+<p>the</p>
+<p>output</p>
+<p>of the</p>
+<p>neural</p>
+<p>network</p>
+<p>can be</p>
+<p>used</p>
+<p>as</p>
+<p>an</p>
+<p>initial</p>
+<p>conditions</p>
+<p>for</p>
+<p>variational</p>
+<p>inference</p>
+<p>resulting</p>
+<p>in</p>
+<p>accurate</p>
+<p>inferences</p>
+<p>whose</p>
+<p>computational</p>
+<p>costs</p>
+<p>decrease</p>
+<p>as the</p>
+<p>network</p>
+<p>learns</p>
+<p>Additionally</p>
+<p>optimizing</p>
+<p>free</p>
+<p>energy</p>
+<p>reduces</p>
+<p>to</p>
+<p>efficient</p>
+<p>message</p>
+<p>passing</p>
+<p>schemes</p>
+<p>when</p>
+<p>one</p>
+<p>imposes</p>
+<p>certain</p>
+<p>simplifying</p>
+<p>restrictions</p>
+<p>to the</p>
+<p>family</p>
+<p>of</p>
+<p>candidate</p>
+<p>distributions</p>
+<p>Lots</p>
+<p>of</p>
+<p>really</p>
+<p>exciting</p>
+<p>work</p>
+<p>in</p>
+<p>neurobiology</p>
+<p>and</p>
+<p>statistics</p>
+<p>around</p>
+<p>message</p>
+<p>passing</p>
+<p>Getting</p>
+<p>close</p>
+<p>to</p>
+<p>the</p>
+<p>end</p>
+<p>here</p>
+<p>A</p>
+<p>much</p>
+<p>cheaper</p>
+<p>implementation</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>exists</p>
+<p>for</p>
+<p>continuous</p>
+<p>states</p>
+<p>evolving</p>
+<p>in</p>
+<p>continuous</p>
+<p>time</p>
+<p>Hmm</p>
+<p>Pretty</p>
+<p>cool</p>
+<p>Par</p>
+<p>et al</p>
+<p>2022</p>
+<p>textbook</p>
+<p>Chapter</p>
+<p>7</p>
+<p>Discrete</p>
+<p>Time</p>
+<p>Active</p>
+<p>Inference</p>
+<p>Generative</p>
+<p>Models</p>
+<p>Chapter</p>
+<p>8</p>
+<p>Continuous</p>
+<p>Time</p>
+<p>Active</p>
+<p>Inference</p>
+<p>Models</p>
+<p>This</p>
+<p>method</p>
+<p>frames</p>
+<p>perception</p>
+<p>and</p>
+<p>decision</p>
+<p>making</p>
+<p>as</p>
+<p>variational</p>
+<p>inference</p>
+<p>by</p>
+<p>simulating</p>
+<p>a gradient</p>
+<p>flow</p>
+<p>on free</p>
+<p>energy</p>
+<p>in an</p>
+<p>extended</p>
+<p>state</p>
+<p>space</p>
+<p>It</p>
+<p>can be</p>
+<p>combined</p>
+<p>with</p>
+<p>discrete</p>
+<p>active</p>
+<p>inference</p>
+<p>to</p>
+<p>operate</p>
+<p>efficiently</p>
+<p>in</p>
+<p>generative</p>
+<p>models</p>
+<p>combining</p>
+<p>discrete</p>
+<p>and</p>
+<p>continuous</p>
+<p>states</p>
+<p>We</p>
+<p>talked</p>
+<p>about</p>
+<p>that</p>
+<p>in</p>
+<p>Livestream</p>
+<p>46</p>
+<p>Active</p>
+<p>Inference</p>
+<p>Does</p>
+<p>Not</p>
+<p>Contradict</p>
+<p>Folk</p>
+<p>Psychology</p>
+<p>Discrete</p>
+<p>Active</p>
+<p>Inference</p>
+<p>Decision</p>
+<p>Making</p>
+<p>Active</p>
+<p>Inference</p>
+<p>DAI</p>
+<p>and</p>
+<p>Continuous</p>
+<p>Time</p>
+<p>Motor</p>
+<p>Active</p>
+<p>Inference</p>
+<p>Being</p>
+<p>Used</p>
+<p>Together</p>
+<p>Also</p>
+<p>seen in</p>
+<p>the</p>
+<p>Par</p>
+<p>Adult</p>
+<p>!</p>
+<p>Textbook</p>
+<p>As an</p>
+<p>example,</p>
+<p>High</p>
+<p>Dimensional</p>
+<p>Observations</p>
+<p>in the</p>
+<p>Continuous</p>
+<p>Domain</p>
+<p>e.g.</p>
+<p>Speech</p>
+<p>Processed</p>
+<p>through</p>
+<p>Continuous</p>
+<p>Active</p>
+<p>Inference</p>
+<p>are</p>
+<p>converted</p>
+<p>into</p>
+<p>discrete</p>
+<p>abstract</p>
+<p>representations</p>
+<p>e.g.</p>
+<p>semantics</p>
+<p>and we</p>
+<p>can even</p>
+<p>go further</p>
+<p>and say</p>
+<p>rhetorical</p>
+<p>and narrative</p>
+<p>information</p>
+<p>spaces</p>
+<p>Based on</p>
+<p>these</p>
+<p>representations</p>
+<p>the agent</p>
+<p>makes</p>
+<p>high-level</p>
+<p>categorical</p>
+<p>decisions</p>
+<p>e.g.</p>
+<p>I want</p>
+<p>to move</p>
+<p>over there</p>
+<p>which</p>
+<p>contextualize</p>
+<p>low-level</p>
+<p>continuous</p>
+<p>actions</p>
+<p>e.g.</p>
+<p>the</p>
+<p>continuous</p>
+<p>motion</p>
+<p>of a</p>
+<p>limb</p>
+<p>towards</p>
+<p>the</p>
+<p>goal</p>
+<p>location</p>
+<p>and</p>
+<p>that</p>
+<p>is</p>
+<p>how</p>
+<p>the</p>
+<p>paper</p>
+<p>ends</p>
+<p>so</p>
+<p>closing</p>
+<p>thoughts</p>
+<p>if</p>
+<p>anybody</p>
+<p>wants</p>
+<p>to</p>
+<p>write</p>
+<p>a</p>
+<p>comment</p>
+<p>live</p>
+<p>feel</p>
+<p>free</p>
+<p>to</p>
+<p>do</p>
+<p>so</p>
+<p>we'll</p>
+<p>be</p>
+<p>over</p>
+<p>very</p>
+<p>shortly</p>
+<p>what</p>
+<p>are</p>
+<p>the</p>
+<p>implications</p>
+<p>of</p>
+<p>this</p>
+<p>work</p>
+<p>we</p>
+<p>have</p>
+<p>an</p>
+<p>open</p>
+<p>space</p>
+<p>to</p>
+<p>talk</p>
+<p>about</p>
+<p>it</p>
+<p>what</p>
+<p>questions</p>
+<p>and</p>
+<p>discussion</p>
+<p>topics</p>
+<p>are</p>
+<p>you</p>
+<p>interested</p>
+<p>in</p>
+<p>please</p>
+<p>write</p>
+<p>comments</p>
+<p>before</p>
+<p>or after</p>
+<p>the</p>
+<p>dot</p>
+<p>one</p>
+<p>and</p>
+<p>the</p>
+<p>dot</p>
+<p>two</p>
+<p>so</p>
+<p>we</p>
+<p>can</p>
+<p>have</p>
+<p>those</p>
+<p>interesting</p>
+<p>discussions</p>
+<p>and</p>
+<p>just</p>
+<p>as a</p>
+<p>little</p>
+<p>bit</p>
+<p>of a</p>
+<p>closer</p>
+<p>I'll</p>
+<p>share</p>
+<p>some</p>
+<p>stable</p>
+<p>diffusion</p>
+<p>images</p>
+<p>that</p>
+<p>were</p>
+<p>generated</p>
+<p>using</p>
+<p>the</p>
+<p>paper</p>
+<p>title</p>
+<p>as</p>
+<p>well</p>
+<p>as</p>
+<p>various</p>
+<p>other</p>
+<p>terms</p>
+<p>free</p>
+<p>energy</p>
+<p>lots</p>
+<p>of</p>
+<p>fun</p>
+<p>images</p>
+<p>a lot</p>
+<p>of</p>
+<p>good</p>
+<p>balance</p>
+<p>to</p>
+<p>some</p>
+<p>of</p>
+<p>the</p>
+<p>technical</p>
+<p>aspects</p>
+<p>that</p>
+<p>were</p>
+<p>being</p>
+<p>described</p>
+<p>in the</p>
+<p>paper</p>
+<p>was</p>
+<p>good</p>
+<p>to</p>
+<p>look</p>
+<p>at</p>
+<p>what</p>
+<p>diffusion</p>
+<p>looks</p>
+<p>like</p>
+<p>aesthetically</p>
+<p>and</p>
+<p>so</p>
+<p>that</p>
+<p>is</p>
+<p>the</p>
+<p>end</p>
+<p>of</p>
+<p>this</p>
+<p>live</p>
+<p>stream</p>
+<p>52.0</p>
+<p>I</p>
+<p>hope</p>
+<p>that</p>
+<p>you</p>
+<p>found</p>
+<p>it</p>
+<p>useful</p>
+<p>that</p>
+<p>you're</p>
+<p>interested</p>
+<p>to</p>
+<p>act</p>
+<p>and</p>
+<p>serve</p>
+<p>to</p>
+<p>learn</p>
+<p>more</p>
+<p>contribute</p>
+<p>more</p>
+<p>write</p>
+<p>a</p>
+<p>comment</p>
+<p>make</p>
+<p>it</p>
+<p>happen</p>
+<p>in</p>
+<p>your</p>
+<p>own</p>
+<p>life</p>
+<p>or</p>
+<p>in</p>
+<p>your</p>
+<p>own</p>
+<p>way</p>
+<p>with</p>
+<p>this</p>
+<p>honestly</p>
+<p>challenging</p>
+<p>paper</p>
+<p>so</p>
+<p>if</p>
+<p>you've</p>
+<p>listened</p>
+<p>this</p>
+<p>far</p>
+<p>thanks</p>
+<p>a lot</p>
+<p>for</p>
+<p>your</p>
+<p>attention</p>
+<p>and</p>
+<p>looking</p>
+<p>forward</p>
+<p>to</p>
+<p>52.1</p>
+<p>and</p>
+<p>.2</p>
+<p>when</p>
+<p>we will</p>
+<p>speak</p>
+<p>with</p>
+<p>some</p>
+<p>authors</p>
+<p>and</p>
+<p>some</p>
+<p>of</p>
+<p>you</p>
+<p>so</p>
+<p>till</p>
+<p>next</p>
+<p>time</p>
+<p>thanks</p>
+<p>again</p>
+<p>and</p>
+<p>see</p>
+<p>you</p>
+<p>in</p>
+<p>the</p>
+<p>dot</p>
+<p>one</p>
+<p>to</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+</body>
+</html>

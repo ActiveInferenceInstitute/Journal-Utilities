@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active Inference LiveStream 057.0 ~ Active Data Selection and Information Seeking</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active Inference LiveStream 057.0 ~ Active Data Selection and Information Seeking</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_057 &middot; Episode 0 &middot; Speakers: Active Data Selection, Information Seeking &middot; Duration: 1:22:36 &middot; Views: 374</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=GoXtkxLGkjQ">https://www.youtube.com/watch?v=GoXtkxLGkjQ</a></div>
+<article>
+<p>All right, hello and welcome. It's May 24th, 2024. We're in ACTIMF livestream number 57.0,</p>
+<p>doing background and context video for the Active Data Selection and Information Seeking</p>
+<p>paper and series. So welcome to the ACTIMF Institute. We're a participatory online</p>
+<p>institute that is communicating, learning, and practicing applied active inference.</p>
+<p>This is a recorded and archived live stream. Please provide feedback so we can improve our work.</p>
+<p>All backgrounds perspectives are welcome and will follow video etiquette for live streams.</p>
+<p>Head over to activeinference.org to learn more about any of the projects including the live streams.</p>
+<p>So today we're going to do together a background first pass on a very interesting</p>
+<p>paper from Thomas Parr, Carl Friston, and Peter Zeidman, Active Data Selection and Information</p>
+<p>Seeking from 2024. In this video we're going to introduce ourselves, talk about big questions,</p>
+<p>go through the keywords of the paper, then most of the sections section by section,</p>
+<p>and as always with the dot zero it's just like a first pass and we'll look forward to speaking with</p>
+<p>hopefully some of the authors in the coming weeks and also looking what people ask about.</p>
+<p>So Christopher, let's introduce herself and go from there. Thanks a lot also for helping in the dot zero preparation.</p>
+<p>Happily. Yeah, so I'm Christopher Bennett. I'm a bioinformatics scientist. I do a lot of data</p>
+<p>mangling, data analysis, and that sort of thing. This paper was of great interest to me as we kind of go into</p>
+<p>this more data driven era in making sure that with such large data sets that we have, making sure that we</p>
+<p>can actually select relevant data for any of our applications going forward, be it machine learning</p>
+<p>more, whatever we're trying to do. And I'm Daniel. I'm a researcher in California and also was drawn to this</p>
+<p>on one hand on the applied side, the idea of more efficient and effective data sampling, and then on the</p>
+<p>more theory side, the connection with epistemic value information game. So here are some of the big</p>
+<p>questions. Why don't you add some detail to this? Absolutely. So there's five major big questions that</p>
+<p>I had after reading this. For the most part, it boils down to doing our sampling. You can do sampling over</p>
+<p>time and sampling of different data sets in different ways. Is there a way that we can intelligently</p>
+<p>select the data that we're going for the time that we're trying to select? Is there a way that we can</p>
+<p>understand how the time aspect of sample through time instead of just doing a like a dynamic or more</p>
+<p>dynamic instead of doing a static like we're going to do time zero, time seven, time 14, time 21? Can we</p>
+<p>say, hey, the differences between time one and time two are very, time point one, time point two are very</p>
+<p>interesting. It's a lot of data in there alone. So we'll sample one and two or and then maybe sample 10.</p>
+<p>Is there a way that we can intelligently select the time points that we are sampling from when we get</p>
+<p>into the time series aspect? There's a number, the paper mentioned a number of different time dimension</p>
+<p>models that you can add to the core model that they're utilizing, one of which was a hidden Markov model.</p>
+<p>Another was, they mentioned a differential equation in the actual</p>
+<p>model itself in the equation itself. Is there one, is there other situations that one performs better</p>
+<p>over than the other? Or is what they have selected to use in the paper the optimal solution in most cases,</p>
+<p>if not all cases? You know that it, when it comes to clinical trials, that was a section in this,</p>
+<p>that they discussed. There's a lot of FDA regulations of the clinical trials and it's very heavy red tape</p>
+<p>right now. Is there a way that, there's minimum ends that you need in many clinical trials to actually</p>
+<p>be considered passing? Is there a way that you can bound this model that they're, they've developed in</p>
+<p>to something that you can guarantee a minimum number, a minimum sampling that the FDA requires,</p>
+<p>or any regulatory body?</p>
+<p>Another point is the next step of how are we going to integrate this in with other machine learning models,</p>
+<p>or any downstream applications that you're going with? Is there a selection method that we can,</p>
+<p>or how do you see these, this method kind of pre, kind of before machine learning? How are we going to</p>
+<p>attach these things together so that we feed the right data into machine learning?</p>
+<p>Be an LLM. And then scalability and computation demands. That's going to be a big one if this is going</p>
+<p>to be something that is used routinely in industry. You need to make sure that this is something that is</p>
+<p>as in as scalable as you can get. You know, go from small scale, which is a lot of what they show in</p>
+<p>this paper, and then all the way up to the very large scale data sets that we use to train LLMs and</p>
+<p>other models. Those are kind of the five major points that I have.</p>
+<p>ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>data that's there, but even there, as this paper will kind of get into, there's still subsampling</p>
+<p>and all these other factors to consider. The clinical trial example brings a very serious</p>
+<p>and very real plot twist into the paper, which moves through several levels of adding theoretical</p>
+<p>generalization and incorporating like the time dimension and other features. And then the plot</p>
+<p>twist is when the preferences for certain kinds of observations is specified, then there's all this</p>
+<p>interesting behavior and decisions that come into play. So I'm sure that'll be a great discussion.</p>
+<p>And then also in section four, they mentioned the streetlight effect, which is, quote,</p>
+<p>the tendency to search where data are generated in a minimally ambiguous way, i.e. under a street</p>
+<p>lamp compared to searching elsewhere on a darkened street. And so there it's an interesting scenario</p>
+<p>and there'll be some fun art coming up and also how they distinguish the sampling method with the full</p>
+<p>information seeking from the maximum entropy sampling is a very subtle but very important point that I</p>
+<p>look forward to hearing more from the authors about.</p>
+<p>Okay. So just to summarize, the paper is Active Data Selection and Information Seeking, 2024, Thomas Parr,</p>
+<p>Carl Friston, Peter Zeidman, and just a few of the aims and claims of the paper. And then Christopher will read</p>
+<p>the abstract. This paper aims to unpack the principles of active sampling of data by drawing from neurobiological</p>
+<p>research on animal exploration and from the theory of optimal experimental design. Our overall aim is to</p>
+<p>provide an intuitive overview of the principles that underwrite active data selection and to illustrate</p>
+<p>this with some simple examples. Our interest is in the selection of data, either through sampling subsets</p>
+<p>of data from a large data set or through optimizing experimental design based upon the models we have of how those</p>
+<p>data are generated. Optimizing data selection ensures we can achieve good inference with fewer data, saving on</p>
+<p>computational and experimental costs. So if you could read the abstract.</p>
+<p>Absolutely. So the main points in the abstract are that Bayesian inference is typically focused on two major issues. The first one is that you have to estimate the parameters of the model of the data. And the second is that you need to quantify the evidence.</p>
+<p>for alternative hypotheses and formulate an alternative model. But this paper is actually looking at a third issue, which is in how you're going to select the data for your models. And either through sampling subsets of large data is typically used or</p>
+<p>optimized in experiments of design based upon the models we have used or optimized in experiments of design based upon the models we have.</p>
+<p>These of how these data are generated. Optimizing data selection, what's going into the models can achieve a very good inference with fewer data points. So you're saving on computational time costs, that sort of thing by actually reducing the amount of information that you're putting into the model.</p>
+<p>So what they're doing here is trying to unpack how you're going to actively select data. And I mean actively select data to a machine optimization protocol by drawing from some of these neurobiology concepts and trying to optimize the maximum information that a, that the information can provide maximum information gain.</p>
+<p>So they offer an overview of some basic points from these from the field and illustrates the application in some of the toy examples that they have.</p>
+<p>We'll go through ranging from different approximations with basis sets to inference about how the process can evolve over time.</p>
+<p>And finally, they'll go through and consider how the approach to the data selection could be applied to design of clinical trials in this case. And specifically phase adapted clinical trials. Something that is more and more seeing headlines and kind of it's more and more useful.</p>
+<p>And now that we have the technology to do with it.</p>
+<p>Great. Okay. For the roadmap, the paper begins with introduction section, goes into Bayesian inference, generative models and expected information gain.</p>
+<p>They go through a simplest worked example, and then consider a few more ways to level up that model with function approximation, consideration of the time dimension with dynamic processes, and then bring in the preference for certain observations in the clinical trials.</p>
+<p>Then there's a discussion and conclusion. And they also have a paragraph explaining their kind of logic there.</p>
+<p>The keywords for the paper were experimental design, active sampling, information gain, and Bayesian inference.</p>
+<p>So the next slides are going to go into those four background topics.</p>
+<p>After the four background topics, we'll speed through the sections and just plant a few seeds for what we want to explore more.</p>
+<p>So first, experimental design. Here's two kind of classical views of experimental design in the active inference and free energy principle eras.</p>
+<p>So on the left is the statistical parametric mapping, textbook, toolbox, documentation, etc.</p>
+<p>has multiple chapters and kinds of analysis included in the package to specify and simulate and also to recognize data according to different experimental designs.</p>
+<p>And one very hallmark or common visualization of these kinds of patterns of experimental design are these design matrices.</p>
+<p>So here's the example of the black to white grayscale.</p>
+<p>And it summarizes different kinds of measurements across different experimental settings.</p>
+<p>Like here might be six settings in the larger white blocks.</p>
+<p>And then there was variability within each of those trials.</p>
+<p>And those are the smaller row levels.</p>
+<p>So that's like where the data are collected.</p>
+<p>And a lot of this has to do with the linear operations that can occur on this kind of matrix in a general linear modeling framework.</p>
+<p>And then on the right is the experimental design experimenters perspective, where the experimental stimuli they output as actions are the observations going into the subjective model, like of the rat in the T-Maze.</p>
+<p>And then the action output of the rat is the observations of the experiment of the experimenter.</p>
+<p>So these are kind of two different perspectives.</p>
+<p>SPM with more of a matrix multiplication, fMRI, optimal design, and then active inference with a more general graphical Bayesian modeling, starting to broaden the consideration of what optimal foraging and what information gain epistemic value mean.</p>
+<p>These are kind of the experimental design themes and how they connect a little bit with other experimental design factors.</p>
+<p>Want to add anything?</p>
+<p>Yeah, and keep in mind that a lot of these experiments, experimental design is a very big and very important consideration when you're actually running any sort of science or analytics of any variety.</p>
+<p>And these experiments can actually get very large with huge, huge amounts of data.</p>
+<p>And not all of that data is relevant for every application that you want.</p>
+<p>So you want to be able to design your experiment in a way that you can collect information in a intelligent way rather than trying to go through and just collect every data point that you can.</p>
+<p>Because humans in many cases are running some of these experiments and they have limited time.</p>
+<p>I certainly do when I'm running these things.</p>
+<p>So I have to be very intelligent in how I set things up and how I actually collect data and what data I collect.</p>
+<p>Because you only get, in many of these cases, you only get one shot to collect the data.</p>
+<p>You miss it, it's over.</p>
+<p>You won't have that data point.</p>
+<p>So it's very critical that you actually take the experimental design seriously when you're setting these things up.</p>
+<p>Great.</p>
+<p>So connecting that kind of experimental design, experimenter on a budget perspective with a more statistical and biologically statistical based perspective, active sampling.</p>
+<p>So they wrote, when we look at the world around us, we are implicitly engaging in a form of active data sampling, also known as active sensing or active inference.</p>
+<p>So this is referencing the visual saccades.</p>
+<p>And just to kind of highlight how extreme the relative acuity difference is between the center of the eye, where the gaze is focused on, and the off center, among other visual changes.</p>
+<p>And vision is just being taken as one sensory example here.</p>
+<p>It could also be thought of as like looking for books within a library or any other kind of selection of what data are going to come in.</p>
+<p>Even if it seems like all of it is coming in, that still is going to be perhaps addressed with different sensors that have different variability profiles or like there's different RNA sequencing kits that you could buy.</p>
+<p>And so how do you balance the kind of more samples or which samples, especially as those spaces grow massive.</p>
+<p>And then just to contrast that, whereas digit recognition in a saccade based paradigm would focus on the motor patterns and the small centrally focused visual acuity and then the motor patterns that relate to circading around a digit.</p>
+<p>Whereas in the kind of machine learning, taken all at once approach, a matrix corresponding to like the pixels in the MNIST dataset are simply taken in all at equivariance level.</p>
+<p>So that's just kind of taking in the data.</p>
+<p>There's still another higher order data selection question of like, which digits do you take?</p>
+<p>If there was a large number of digits in that library.</p>
+<p>So this is active data sampling on multiple scales, which records you pull at all, and then how the resolution and all the trade offs that are associated with using the data processing or making the experiment.</p>
+<p>So that's a great thing.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Add more though.</p>
+<p>And, you know, keep in mind that in the, when you're talking about something like the visual system, you know, our visual system has access to untold amounts of information, but our brain can't take advantage of all of that at once.</p>
+<p>It's a low energy usage of the brain that needs to optimize the relevant information.</p>
+<p>Think, you know, your nose is right at the end of your face.</p>
+<p>Your eyes are always seeing your nose, but your brain is filtering it out.</p>
+<p>And this is happening all the time at all points in time.</p>
+<p>There are literal blind spots in what you are actually capable of intaking and processing all at once.</p>
+<p>And then additionally, when you're moving away from something like the eye or biological systems and into the experiment design itself, you know, you oftentimes can't run a full factorial design.</p>
+<p>And there are other methods like a fractional factorial design, but those are random base.</p>
+<p>And this is trying to actually talk about actively selecting how you're going to set up that design.</p>
+<p>So it's kind of a, you can think of it multiple different ways.</p>
+<p>Awesome.</p>
+<p>The factor that's going to come into play as driving the active sampling is going to be the information gain.</p>
+<p>And there are some quotes here and equation two is shown.</p>
+<p>They write, we have conditioned our model upon the variable pi, which represents a choice we can make in selecting our data.</p>
+<p>So data recognition, interpretation analysis, and so on.</p>
+<p>It's often framed as kind of like an observation type or a sense making type activity here.</p>
+<p>Pi for policy, as with usual is being framed as a control or an active data selection policy.</p>
+<p>We're applying to some data set.</p>
+<p>So it adds a action element into this sequential epistemic foraging rather than just taking a large data set and just munching it like all at once.</p>
+<p>It brings in this sequential question of where to sample and potentially updating where is informative to sample through time.</p>
+<p>And the I of pi is the functional on that policy distribution or specific choice that can be decomposed all these interesting ways that we can explore more in the coming discussions.</p>
+<p>What else would you add though about information gain?</p>
+<p>I think this is one of the biggest points in this whole paper is you're measuring how much information you are gaining in your model by adding these different variables in here and selecting different variables.</p>
+<p>You're effectively automatically taking out or trying to remove things that have high mutual information that don't add as much.</p>
+<p>So if you have parameter A and parameter B that are effectively just transformations of the same data, then you can easily remove one of those and still have all the information that you need.</p>
+<p>So it's a really, really powerful way of saying I'm trying to optimize and maximize the amount of information that I'm adding into the model by selecting data that actually has the information that is going to improve them.</p>
+<p>Awesome. One other interesting angle here is often in the control literature, utility, reinforcement learning, etc.</p>
+<p>The epistemic value component is added in.</p>
+<p>Whereas in the structure of this paper, they start with the pure information gain perspective.</p>
+<p>And then in the clinical trial, they bring the preference in.</p>
+<p>So the pragmatic value comes in secondary to the information gain in how they build it up step by step.</p>
+<p>Bayesian inference is the last keyword.</p>
+<p>A lot of places to go.</p>
+<p>Here's what they showed for equation one.</p>
+<p>And they wrote Bayesian inference is the process of inverting a model of how data y are generated to obtain two things, the marginal likelihood and the posterior probability.</p>
+<p>So anything you want to say about Bayesian inference or do you want to say something about Bayesian networks and graphs?</p>
+<p>I think that you've kind of covered it here.</p>
+<p>It's, I think, fairly textbook on this part.</p>
+<p>Yeah. How about graphs?</p>
+<p>On the Bayesian graph side of it, there's multiple different ways that these Bayesian statistics is done nowadays.</p>
+<p>And the Bayesian networks and graphs is a really powerful method going forward.</p>
+<p>I know that right now in the Institute, we have an RxInfer group working right now, which is a Julia package for actually building these network graphs, these Bayesian graphs and doing message passing between the different factors and the different nodes of the graph.</p>
+<p>So this is a very big up and coming area right now.</p>
+<p>It's very early in the timeframe that this is going to become big.</p>
+<p>It's kind of on the upswing right now.</p>
+<p>And it's kind of, at least I would predict, going to be kind of the next big thing going forward in the next five years or so.</p>
+<p>Yeah, we've been having a great epistemic time and Livestream 55 explores some of this in more detail.</p>
+<p>Okay. That was the background. Now onto the paper.</p>
+<p>So first, just to get the last part of the paper out of the way, they have a GitHub, Thomas Parr's GitHub with the active data selection repo.</p>
+<p>And maybe in one of the upcoming discussions or somebody in the time between can explore and transform and play with the code.</p>
+<p>And also all these different ways that we have fun discussions around the language of the active inference model and how building it in different languages or using different styles like is or isn't plausible.</p>
+<p>These have been very fun discussions that help us get at what the core of the math really is and how that's independent of whether it's written in MATLAB or any other language.</p>
+<p>And then also as it is simulated, it's written here in MATLAB.</p>
+<p>And so that's kind of interesting.</p>
+<p>Any thoughts on that or just like coding in RxInfer or?</p>
+<p>Yeah, I think that with RxInfer being, I think, relatively new on the scene, you have some of these other traditional approaches with MATLAB and PyMD and that sort of thing.</p>
+<p>It'll be very interesting to see how these techniques evolve over time with packages like RxInfer really, I think, changing how we approach building these models and designing them.</p>
+<p>And I think that it's going to be even more critical now in this current environment to select the data intelligently going in so that you're not muddying up your models or having to build too big of models that might have information that's not as useful to the application at hand.</p>
+<p>Yeah, great. All right. Section one introduction.</p>
+<p>So we'll try to hit on some of the key points.</p>
+<p>I'll say something briefly and then feel free to add something if you want.</p>
+<p>Section one situates that inference and action cycle or loop or partition in terms of a statisticians job or process in modeling observations data as sampled and latent variables as models.</p>
+<p>And the process by which there's kind of snapshot or bulk summarization or generativity or and how it's possible to have a continuous resampling of informative data or how you even evaluate how data are informative in which way.</p>
+<p>Want to add anything?</p>
+<p>I think you've captured that very well. I'm going to actually pull out my notes so that I can actually remember all the symbols.</p>
+<p>I think that's a good point.</p>
+<p>Y are going to be used for data and data for the latent variables.</p>
+<p>So distributions of data distributions of latent variables conditioned upon data coming in.</p>
+<p>So that could be seen as just one data point sequentially or a big bulk vector coming in like all at once.</p>
+<p>Just continuing to move through this section, they wrote,</p>
+<p>Careful data selection is especially important when we consider the problems associated with very large data sets of the sort that are now ubiquitous in machine learning and artificial intelligence settings.</p>
+<p>So just to summarize a little bit or add a few notes that came up in the paper.</p>
+<p>So other than this topic being very fascinating and very integrative in terms of a unifying approach for information and behavior, etc.</p>
+<p>Also, this is definitely one of the active inference questions that has a lot of pragmatic relevance.</p>
+<p>So this is a lot of the things that we have to do with data sets of different kinds.</p>
+<p>And especially the way that even the examples specify important settings is very clear, very direct, though also the mathematics are very general about epistemics.</p>
+<p>And this motivation that they lay out in the first section about how if this challenge could be addressed, then there would be all these kinds of benefits that could be realized with current systems and data sets.</p>
+<p>And then they provide the approach to at least getting there or towards it to optimize data selection.</p>
+<p>We first need to identify an appropriate optimality criterion.</p>
+<p>And so they're going to kind of go through several stages of with different generative models, how that optimality criterion is defined.</p>
+<p>Anything else, Ted?</p>
+<p>And keep in mind that this is the expected information gain that they're talking about.</p>
+<p>It's effectively how much do we think we're going to gain by adding this information in there.</p>
+<p>And then you can, of course, train your model by looking at the actual information gain if necessary and go through kind of a learning cycle.</p>
+<p>But we're basing this all off of what do we expect to gain from this information?</p>
+<p>All right. Section two, Bayesian inference, generative models and expected information gain.</p>
+<p>In this equation three, I won't read it all.</p>
+<p>It models the Markov blanket formalism in terms of upstream and downstream causal relationships in terms of messages that are passed along edges of a factor graph.</p>
+<p>They introduced in this paper the lambda operator to indicate either summation or integration.</p>
+<p>So this is across continuous variables or discrete variables.</p>
+<p>And we'll explore this more with the authors, hopefully.</p>
+<p>Anything you want to add on equation three?</p>
+<p>More that, you know, the information gain is a function of the data that you sample.</p>
+<p>So depending on how you sample that data, you're going to get different information gain out of it as you would expect.</p>
+<p>And then you start to get into the message passing, which is that Bayes graph and factor graph, I guess, challenge going forward that that construct when you build it in a factor graph model.</p>
+<p>You have to be able to pass the messages between the nodes effectively.</p>
+<p>Yeah. And to kind of ground that in the data science situation, if you have a latent state estimate and you're generating data, generative AI, synthetic data, then the latent variable is upstream causally statistically from the data pseudo observation.</p>
+<p>But that might be the actual real observation if you're interested in the computer model.</p>
+<p>Whereas the data recognition case where the data are upstream of the estimate of a parameter, like a risk score or something like that, then the parents of the latent state estimate is the data.</p>
+<p>So that's the recognition direction.</p>
+<p>So this kind of covers the whole Bayesian update possibility spectrum in this essentially Markov blanket, but it could be in phase space or time or a few other situations that explore.</p>
+<p>All right. Three, a worked example.</p>
+<p>So this section lays out the overall pipeline for how you get from the graphical notation of the Bayesian network, whether it's viewed visually graphically, like with a variable dependency structure, or whether it's just written out in terms of the plain text with the analytical.</p>
+<p>So the Bayesian network is transformed into a factor graph, probably a constraint factor graph discussion for another day on that graph.</p>
+<p>Certain messages are passed at inference runtime.</p>
+<p>Conditional and predictive entropies are calculated as part of the way that this system outputs or is described by different probability distributions understand in a kind of statistical way.</p>
+<p>In terms of entropy.</p>
+<p>In terms of entropy.</p>
+<p>In terms of entropy.</p>
+<p>And then that is going to come together into calculation of the objective function, which is the expected information gain, which is basically conditioned upon the cognitive model of the sampler.</p>
+<p>So just because the sampling is active data sampling doesn't mean that it's going to lead to like an adaptive behavior.</p>
+<p>It just means that where the learning rate is perceived to be highest informationally iteratively.</p>
+<p>There is a ranking by which those can be, which this, the space of experiments can be ranked by.</p>
+<p>And it can connect to pragmatic value in terms of epistemic and pragmatic coming together for the full expected free energy, like in the clinical trial.</p>
+<p>Anything to add?</p>
+<p>And you'll notice in this story example, they are discussing here the factors that they have in their graph in each of their nodes is actually a cosine.</p>
+<p>So that's why you get that kind of oscillation in that bottom plot there.</p>
+<p>So you'll have areas of maximal information and then areas of minimal information just based on the toy example they have.</p>
+<p>And this doesn't always have to be cosine, but in this example it is.</p>
+<p>And so it just kind of gives you a really good graphical understanding of how your information gain can be viewed over a sinusoidal sort of oscillation.</p>
+<p>So, yeah, just to kind of double down on that, if you sample right here on the number line or right here, the lines are indistinguishable.</p>
+<p>So the information gain is expected to be low under understanding the parameter family that is being generated and sampled from, which in this first example is the same, same type of equations.</p>
+<p>Whereas where the functions are maximally distinct, the information gain associated with reducing uncertainty about which one of those five the data point is coming from.</p>
+<p>So, those are the informative points at the zero on the number line and far out.</p>
+<p>That's where just perceiving one point uncolored would give you the most ability to even perfectly resolve which one of the five situations it was.</p>
+<p>So, oh, they write, in effect, this model amplifies or attenuates the amplitude of the predicted data depending upon a periodic function of our data sampling policy pi.</p>
+<p>So, here the policy distribution is like that kind of around the clock direction, which is not a common setting, but the general idea of sampling amongst a finite set of alternatives where a control variable is going to result in the most informative data point is a theme that is going to be expanded upon.</p>
+<p>So, here's one interesting mathematical move.</p>
+<p>Once all terms that are constant with respect to pi are eliminated, we are left with equation six.</p>
+<p>So, equation five comes down to equation six, or maybe not exactly only five to six, but six has removed all the variables that don't change as policy changes.</p>
+<p>So, if the question of policy selection is taken alone, like gradients on policy updating, then everything that's constant with respect to it doesn't come into like the delta pi delta something.</p>
+<p>So, it just simplifies it down to only a function of policy, and that just kind of reflects how like the sense making and belief updating component is partitioned off from the policy selection component here.</p>
+<p>Yeah, you're looking for change in your belief based on the observations that you're gaining.</p>
+<p>So, if it's not changing, it's not as informative in your information model.</p>
+<p>Yeah.</p>
+<p>Continuing on equation six there, which is modeling the policy dependent components of information gain as an objective function that ranks decisions about where to sample.</p>
+<p>Equation six is a special case of the third row of table one, which highlights analytical expressions for expected information gain for a few common model structures.</p>
+<p>So, as we might intuit, the most informative places to sample data align with those in which differences in data lead to large differences in the predicted data, in which our choice of pi maximizes the sensitivity with which y depends on data.</p>
+<p>So, here are the categorical, the Dirichlet, and other functions in terms of how they'd be written out in the probabilistic, like specifying a distribution way.</p>
+<p>And then how there's this relationship analytically to a related distribution, which is an objective function that ranks the information content of sampling the likelihood distribution in a certain way.</p>
+<p>Okay.</p>
+<p>And that's closed form in certain situations.</p>
+<p>And then also the explorer where it's intractable formally.</p>
+<p>And so then that's where the variational approximation comes into play.</p>
+<p>Anything to add?</p>
+<p>No, I think that summarizes this slide.</p>
+<p>Okay.</p>
+<p>Section four function approximation.</p>
+<p>We next turn to a generic supervised learning problem, that of trying to approximate some function based upon known inputs and the observable outcomes they stochastically cause.</p>
+<p>Pretty general neural network or latent state observation setup.</p>
+<p>That information is composed and concatenated so that there's a common variable that's describing the statistical object that's going to be describing the inputs and the relationship with the observable outcomes.</p>
+<p>And then that function approximation from sequential data in figure 3 is simulated with random, but potentially you could call all of them random.</p>
+<p>But this one is a flatter or a less informed and iterated model of data sampling.</p>
+<p>Just going to show that samples of random data with even this minimal non-information gain driven model has a certain baseline prediction that's associated with certain choices about sampling sequentially from this generative model.</p>
+<p>Want to add anything?</p>
+<p>Yeah, I like that they highlighted in this, that choice diagram there that you can actually get the inefficient sampling just by random that you start to run.</p>
+<p>You can randomly select two things very close together and you've effectively maybe not wasted a choice, but, you know, not gotten the maximum gain from that choice that you could have.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>They write a little bit more about figure 3.</p>
+<p>Figure 3 illustrates a depiction of this model as a Bayesian network and a visual representation of the data generating process.</p>
+<p>Now they're going to bring in information gain.</p>
+<p>So they write, this is where information gain becomes relevant into designing a more informed way to sample data than from a flat or a non-updating prior data sampling distribution.</p>
+<p>It's like equivalent to having a policy prior that's fixed, which might be a heuristic in a certain space.</p>
+<p>So they write, substituting equation 7 into equation 3.</p>
+<p>So here's that Markov blanket parent-child concept.</p>
+<p>And here equation 3 is describing the policy dependence on the joint distribution of the observed and the unobserved.</p>
+<p>And this is combined into equation 10.</p>
+<p>To show what equation 10 does in terms of now that we're sampling from this distribution or like statistical distributions that this describes,</p>
+<p>they'll differentiate figure 3 from figure 4, kind of like bring in this model change between those two figures.</p>
+<p>Now samples are drawn from a distribution whose log is proportional to the information gain in equation 10.</p>
+<p>So it takes the flat policy prior and in a fixed way has remapped it to be proportional to the information gain.</p>
+<p>So here's 3 on the right and then 4 on the right.</p>
+<p>And the figure uses the same format as figure 3.</p>
+<p>But now each choice is sampled to maximize anticipated information gain.</p>
+<p>And they point to some specific quantitative patterns, but also like qualitative patterns.</p>
+<p>So want to add anything on figure 4?</p>
+<p>Just that now if you focus on those choices, because I really did, I think, like that choice plot there,</p>
+<p>you can see that the walks around, kind of choices around your data space are a little bit more distributed,</p>
+<p>evenly distributed, a little bit less random.</p>
+<p>But you start to get, I think, a more cohesive sampling of the data without entire randomness,</p>
+<p>putting things too close together, putting selections too close together.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>Continuing on.</p>
+<p>Well, they set up the question as, this raises the question as to how many samples should we collect?</p>
+<p>So within a foraging bout, where should one look?</p>
+<p>And then at the kind of like pulling a layer back in the strategy, when should you halt looking?</p>
+<p>Like if you have already sampled all three records from a data set, then unless you had some other reason, you could fully stop sampling there.</p>
+<p>But you also might want to have a softer stopping criterion that would relate to how much information you're gaining from continuing to sample in that way before like halting.</p>
+<p>And so they include that by having like an exit policy in the state space of foraging possibilities.</p>
+<p>So how do you resolve that?</p>
+<p>An answer to this question can be drawn from behavioral neuroscience and the so-called exploitation exploration dilemma.</p>
+<p>And they introduced the notion of sampling costs to help decide that.</p>
+<p>So this method is still going to require parameterization and situation-specific modeling of the relative costs versus the relative information gain.</p>
+<p>However, at least there's an accounting that includes costs into the sampling equation to give any possibility of exiting.</p>
+<p>Because if no costs are provided for sampling, then the model might just converge and continue to eke out very small amounts of variance explained.</p>
+<p>If it doesn't explicitly have that stop option.</p>
+<p>So they take the policy vector, the list of locations that can be sampled from, and adds a zero element, which reflects the information gained if we were to stop sampling.</p>
+<p>And then there's a preference over those observations expressed in the C vector preferences.</p>
+<p>And this brings in the information seeking and the cost aversive imperatives into the same objective function in 11.</p>
+<p>Anything to add on 11?</p>
+<p>Yeah, eventually the idea is that it just gets to a point where you're no longer, whatever you set your kind of stopping energy to be, kind of breaking energy.</p>
+<p>Eventually it's just going to get to a point where the model just says, hey, I've reached what I can.</p>
+<p>You've set this.</p>
+<p>You're not gaining anything beyond this point.</p>
+<p>We can just stop at this point, which is nice, since in the random selection case, there's not necessarily a stopping parameter.</p>
+<p>As Daniel mentioned, you can continue to get eke out very, very small marginal changes.</p>
+<p>But you're not going to gain anything else.</p>
+<p>And so you're just spinning your wheels for no reason.</p>
+<p>So this is a very elegant way of saying, hey, I've reached kind of an inflection point of data gain.</p>
+<p>I'm done.</p>
+<p>So figure five, they're continuing in this genre of three, four, five.</p>
+<p>And now they've added in to the policy decision, which has an upstream dependency on the data.</p>
+<p>That's the active policy edge.</p>
+<p>So we can explore more.</p>
+<p>However, it now includes not just the information gain driven choices within a trial, but it includes a specific probabilistic, but decisive stopping point for that trial.</p>
+<p>As parameterized by how sensitive it is to information gain and preference.</p>
+<p>So this is one of the most interesting parts and discussions in the paper.</p>
+<p>They ask it out loud.</p>
+<p>A reasonable question to ask at this stage is why bother with the full information seeking objective?</p>
+<p>And basically, how does this differ from maximum entropy sampling?</p>
+<p>And let's look forward to the authors or other guests.</p>
+<p>But here's just a few notes on this, because I think it'll be a great place to explore what it really means to do statistical and physical modeling on cognitive systems.</p>
+<p>They directly contrast maximum entropy sampling and their whole information gain family against each other.</p>
+<p>And then the rebuttal is in figure six.</p>
+<p>So just to show figure six for a second.</p>
+<p>The measurement noise increases in variance from the center of the function domain.</p>
+<p>So the variability profile of the function is non-uniform.</p>
+<p>This means the amount of unresolvable uncertainty is heterogeneous through the domain of potential sampling.</p>
+<p>So in some kind of ways of thinking about what they're really getting at and just putting this out as a speculation or starting point for this key technical point.</p>
+<p>So if there were a case where the latent states were equivariant, they had IID variability profiles, then sampling the most variable sensory data is the most informative.</p>
+<p>Like if you're taking a picture of a solid black image, then sampling from the noisy pixels is going to potentially provide more information gain.</p>
+<p>You're reducing uncertainty more about something.</p>
+<p>It might be overfitting, but you can select as a heuristic wanting to sample from where variability is high at just kind of a first pass layer.</p>
+<p>However, as we start to think about richer or more specified statistical patterns, generative models, there become dependencies that are sparse but important amongst all different kinds of things.</p>
+<p>So things that are variable from a sensory perspective provide high information gain potentially to one part of a generative model, like a screen and static.</p>
+<p>But then other events might be less variable from a sensory perspective, but smaller differences even in that variable relate to some other component of uncertainty resolution from some other component of the model.</p>
+<p>Like those are going to be the cases where cognitive modeling does differ from just dispersed decision making.</p>
+<p>However, they're both going to result in dispersed decision making profiles, like looking at the choices in the figures.</p>
+<p>But the choices to sample from the less ambiguous parts of the actual distribution, that leads to a much narrower policy path in this cognitive control setting versus in a variability sampling.</p>
+<p>Where it would go for the areas that were just more variable, but not necessarily providing more information.</p>
+<p>Question mark.</p>
+<p>And you can add on this with the maximum entropy or anything.</p>
+<p>And I would even highlight on the next slide, effectively what it is doing is accepting that you're not going to gain a lot of resolution in these highly variable regions.</p>
+<p>And so you don't really have to sample into those deeply because you've accepted that it is variable.</p>
+<p>It is not something it is inherently variable in the data.</p>
+<p>We're not going to gain a lot of information from these regions.</p>
+<p>And it's highlighted in blue down there.</p>
+<p>And I think that's one of the big highlight notes of this figure is there's less information gain available in these highly variable regions.</p>
+<p>And that's something that makes this method more robust and powerful when you're dealing with some of these non-uniform variable data.</p>
+<p>Yeah, awesome.</p>
+<p>And then the streetlight effect is brought in there.</p>
+<p>So the avoidance of sampling in ambiguous locations is sometimes referred to as a streetlight effect.</p>
+<p>The tendency to search where data are generated in a minimally ambiguous way, i.e. under a street lamp compared to searching elsewhere on a darkened street.</p>
+<p>So I made some GPT-4-0 images, some fun streetlight.</p>
+<p>And on one hand, there's kind of this sense of like, is it constraining to look under only the streetlight?</p>
+<p>Isn't that kind of absurd?</p>
+<p>And then there's the joke about how what the person's looking for is elsewhere, but they're still searching under the streetlight.</p>
+<p>But they're looking for something they know is elsewhere.</p>
+<p>So that's the kind of tragic element of it.</p>
+<p>Then there's this limited element.</p>
+<p>However, there's also this realistic element, which is like, well, are you supposed to search where you can't sense or outside of where you are at that moment?</p>
+<p>So how could you say that that wasn't just...</p>
+<p>And then this paper is more framing it as just a general condition of perception.</p>
+<p>Like you're in your tactile streetlight.</p>
+<p>That is the part you can see at all.</p>
+<p>You can have latent modeling of any and other things.</p>
+<p>But if it's not grounded in some way to a measurement made in a streetlight under the metaphor where the light allows for observation, then you're not connected to data unless you're connected to that streetlight.</p>
+<p>So that's just a very interesting kind of topic and reference that the authors use.</p>
+<p>What do you think?</p>
+<p>Absolutely.</p>
+<p>Absolutely.</p>
+<p>I mean, it kind of boils down to you can't know what you don't know or you can't observe.</p>
+<p>You know, if you can only observe what's underneath the streetlight, then you can't really know what else is outside of there.</p>
+<p>And so your inference necessarily should be constrained to what you're able to actually observe.</p>
+<p>You can't observe the unknown.</p>
+<p>And so not necessarily in this case, because you don't even know if it even exists.</p>
+<p>You have no data to confirm or refute it.</p>
+<p>All right.</p>
+<p>Section five, dynamic processes.</p>
+<p>So in that previous example, there was a data selection challenge, whether it was approached from the flat, fixed prior, or all these other kind of subsequent variants with adaptivity and or with the cost.</p>
+<p>Now there's going to be a time element brought into the underlying generative model.</p>
+<p>We'll just go quickly here because that's the big point.</p>
+<p>They take the static distribution that was sampled from and now give the underlying process also variability through time.</p>
+<p>So this is like a very SPM brain latent state causal modeling type set.</p>
+<p>Yeah.</p>
+<p>Anything you want to say on that before we go in?</p>
+<p>Oh, no.</p>
+<p>Go ahead.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>So they consider processes that evolve in time.</p>
+<p>Equation 12 can be interpreted similarly to equation eight in which the expectation of the data is treated as a function approximation, which now includes a time argument.</p>
+<p>So here was eight.</p>
+<p>Expectation of the data given latent state parameterization and policy equals so on.</p>
+<p>And then here there is data also being a function of parameterization and policy, and then also bringing in an element with a subscript tau for time.</p>
+<p>Then you mentioned in your big questions, the different approaches that they raise here with the three ways to bring temporalities into a model.</p>
+<p>So let's definitely talk about that.</p>
+<p>But just to show their images, seven and eight are the pair for this dynamical section.</p>
+<p>So figure seven shows a graphical representation of the matrices involved in generating our data and the inferences obtained after sampling.</p>
+<p>So here it is sampling from a time variance function.</p>
+<p>And then figure eight goes into more detail and notes predictions based upon current data can be used to inform predictions about nearby spatial locations and to predict and postdict the values of the function at different points in time.</p>
+<p>So just like you could have a 2D plane grayscale and infer the location of the streetlight by pursuing like a gradient up the light.</p>
+<p>And then there would be this optimal sampling.</p>
+<p>Like if you just got one observation, you would want to sample on a line that was orthogonal to the one that you couldn't resolve.</p>
+<p>Lots of ways to think about this sequential prediction.</p>
+<p>But now the underlying landscape also changes.</p>
+<p>So there's some temporal dynamics and then that can be fit with all these different time series models and autocorrelation and so on.</p>
+<p>However, that's specified statistically in the generative model.</p>
+<p>But this section just shows however you do make a statistical model for time.</p>
+<p>It's basically going to be the same thing where information is going to be drawn from a distribution and now time is a variable in that distribution.</p>
+<p>They write,</p>
+<p>the key formalisms that they're working with in that kind of background section or setup section.</p>
+<p>They kept one thing constant, which was that the generative model, the generative process, or however it's considered with the family of equations that the agent is inferring and tracking hidden states with,</p>
+<p>and that being the same as the actual family of observations that the actual function of observations.</p>
+<p>And here, that is relaxed.</p>
+<p>So that opens it up to all empirical settings where you can just say right off the bat,</p>
+<p>we do not have access to the generative model of those data.</p>
+<p>So we're making a map, statistical map, with all the associated trade-offs and statuses of like that genetic data or that transcriptomic data,</p>
+<p>all those different kinds of data sets,</p>
+<p>starting from a position where it's going to have to be statistically approximated,</p>
+<p>and it isn't going to be based, unless explicitly otherwise,</p>
+<p>on actual knowledge about the causal elements of the system.</p>
+<p>Any thoughts on that?</p>
+<p>Well, in something else that they noted in the paper,</p>
+<p>by adding this time element,</p>
+<p>when they're actually going through the time series,</p>
+<p>the model itself will preferentially select different data beyond what it just recently selected.</p>
+<p>So time point one, it selects X and Y data.</p>
+<p>Time point two, it might select L and M data.</p>
+<p>So it actually will go through and select different types of data,</p>
+<p>and it'll take a little bit of time.</p>
+<p>What the time is can be variable,</p>
+<p>but it takes a little bit of time before it revisits some of that previous data at a previous time.</p>
+<p>So by this, you kind of have a sliding window of data that you're selecting over different time periods.</p>
+<p>Yeah.</p>
+<p>All right.</p>
+<p>That's all going to come to play in this clinical trial,</p>
+<p>which is the big final contribution section of the paper.</p>
+<p>In our final example,</p>
+<p>we demonstrate the potential utility of the ideas outlined above in the context of a more concrete example.</p>
+<p>So they model the statistical setting here</p>
+<p>as an adaptive Bayesian clinical intervention methodology experiment.</p>
+<p>For example, the kind that was done during the 2014 West African Ebola outbreak.</p>
+<p>The active sampling approach advocated in this paper offers two main opportunities to augment adaptive trial designs.</p>
+<p>First, it allows us to adapt the design to maximize the information we obtain about treatment efficacy.</p>
+<p>So that's the pure sense-making information gain learning sampling from where it's informative,</p>
+<p>not from where like we habitually or prefer to look.</p>
+<p>And then second, to balance and bring together that information gain with costs.</p>
+<p>And that was brought in with the cost of the sampling section,</p>
+<p>which was done in this paper by adding the stop policy option,</p>
+<p>which can be probabilistically selected.</p>
+<p>And then as other sampling locations become less informative,</p>
+<p>or if somebody was just sampled and you know that there's a slow decay through time,</p>
+<p>then on that subject, the stop policy cost would outweigh the information gain from an experiment.</p>
+<p>And this is also, I think, will be a very interesting discussion.</p>
+<p>This blows the line between clinical trial and public health intervention</p>
+<p>and can be seen as analogous to animal behavior that is never fully exploitive or explorative,</p>
+<p>but is a balance between the two.</p>
+<p>So how do we think about that in terms of biomedical and health security and all these different topics?</p>
+<p>And any thoughts on this before we go into the formalism of the clinical trial,</p>
+<p>just like about clinical trials or anything?</p>
+<p>Yeah, and I think that that's going to be, like that last point there is going to be a big one going forward.</p>
+<p>It's like, how do you balance benefits to the patient, benefits to your trial,</p>
+<p>benefits to essentially the company?</p>
+<p>Like there's a lot of different benefits and costs that you have to weigh into this.</p>
+<p>And so these models are going to get very complicated when you start to distill this into something,</p>
+<p>especially with health related.</p>
+<p>So it'll be very interesting to see how this evolves.</p>
+<p>Okay, so here's how they do it.</p>
+<p>Our setup is as follows.</p>
+<p>For each new cohort of participants, we decide upon the randomization ratio to adopt.</p>
+<p>That's the orange subscript R of policy.</p>
+<p>So this is policy on a randomization ratio.</p>
+<p>There's three options.</p>
+<p>So this is a discrete but linearly ranked, not fully categorical policy decision,</p>
+<p>where one half would be the 50-50 sampling between the two groups.</p>
+<p>Whereas you know a priori that sampling in a skewed ratio is going to be less informative.</p>
+<p>Like if you sampled only from one, you would obviously be maximally uninformed about the other.</p>
+<p>However, what's going to end up being reflected in the policy decision to shift to a one-third or a two-third,</p>
+<p>which is focusing observations on one branch of the study more than the other,</p>
+<p>is going to focus on the explicit quantitative preference for observations of survival.</p>
+<p>So that's going to be very interesting to see how the time variable,</p>
+<p>which relates to the experimental design,</p>
+<p>but by way of modeling the death curves of the participants</p>
+<p>and how different preferences for complementary processes of reducing uncertainty about the treatment-specific death curves</p>
+<p>and not preferring to see death observations</p>
+<p>because that would introduce the pragmatic imperative to measure low survival experiments.</p>
+<p>So there's a lot of complexity in there from the public health side,</p>
+<p>also in this very simple and interpretable way that like,</p>
+<p>this is like a Bayesian light switch with 50-50 information-seeking mode</p>
+<p>or tilt it one way or the other to bias observations.</p>
+<p>Whereas if no information had to be resolved,</p>
+<p>then the policy selection would orient towards observing long survival.</p>
+<p>Whereas if that was somehow changed,</p>
+<p>then it would have to be adaptively sampled on the fly</p>
+<p>and changing these ratios and all that.</p>
+<p>What do you think about this?</p>
+<p>Yeah, and what we're going to kind of get into is,</p>
+<p>especially with these sorts of health decisions,</p>
+<p>you want people to survive.</p>
+<p>Like that's your primary goal in a lot of these.</p>
+<p>You want to see an effect,</p>
+<p>you want to see a positive effect of your treatment one way or the other.</p>
+<p>You know, if it's the placebo that's the positive</p>
+<p>or if it's the actual treatment that's the positive,</p>
+<p>you want people to survive.</p>
+<p>So this is kind of getting into that ethics of making sure that</p>
+<p>when you design these things,</p>
+<p>that you're doing the maximum good to your participants</p>
+<p>who, you know, may not have, you know,</p>
+<p>much hope to stand on during some of these crises or epidemics</p>
+<p>or whatever they are experiencing at the time.</p>
+<p>So you want to design this in such a way that, you know,</p>
+<p>you keep them, the patients in mind.</p>
+<p>That is the whole point of this.</p>
+<p>And so by having a Bayesian kind of preference and bias</p>
+<p>to keeping the patient alive and the best outcome,</p>
+<p>you are maximizing how the patient's outcome</p>
+<p>and the patient's life.</p>
+<p>Thanks for adding that.</p>
+<p>Another point to make, this is from figure nine,</p>
+<p>that's going to come up,</p>
+<p>but it really highlights how sparse and few</p>
+<p>and interpretable the Bayesian graphical formalism is.</p>
+<p>And message passing, which a lot of the equations describe</p>
+<p>and the discussion about Rx and Fur touched upon,</p>
+<p>message passing gives procedural ways</p>
+<p>to implement this in computational systems</p>
+<p>because it's sometimes hard to go from the simplicity</p>
+<p>of like this graphical model</p>
+<p>to fitting it iteratively on complex data sets.</p>
+<p>But it's pretty clear to see how different variables</p>
+<p>are upstream or downstream of other variables</p>
+<p>and also how the time sampling can be shown to be,</p>
+<p>which is upstream of data sampled,</p>
+<p>as these other factors are.</p>
+<p>But it has a separable, interpretable,</p>
+<p>calculable epistemic value</p>
+<p>that doesn't have a certain kind of connection</p>
+<p>to randomization ratio, for example.</p>
+<p>So being able to have explicit statistical calculations</p>
+<p>and directednesses where the follow-up time</p>
+<p>doesn't influence the treatment group ratio</p>
+<p>or the randomization ratio</p>
+<p>or other processes gives a type of interpretability</p>
+<p>that the generative model gives us the equations for.</p>
+<p>And then the pragmatic challenges</p>
+<p>are about actually implementing that.</p>
+<p>And then even if the computational component</p>
+<p>were totally addressed and abstracted away,</p>
+<p>that would basically center these broader questions,</p>
+<p>which I think the health examples are great,</p>
+<p>like jumping off point four.</p>
+<p>Yeah.</p>
+<p>And you have probably recalled</p>
+<p>from all the other different figures,</p>
+<p>despite how simple this figure is,</p>
+<p>the other figures,</p>
+<p>the plots were very basic,</p>
+<p>the models themselves,</p>
+<p>like you just had the three nodes,</p>
+<p>you know, converging on the Y.</p>
+<p>So despite how simple this looks,</p>
+<p>you are adding more complexity to these systems.</p>
+<p>And the more complexity that you add,</p>
+<p>the harder it is,</p>
+<p>the more computationally intensive it is.</p>
+<p>And so this is that question of how big can you go?</p>
+<p>You know, how many nodes can you add?</p>
+<p>How many parameters can you add?</p>
+<p>How much complexity can you add to the system</p>
+<p>before it starts to break down</p>
+<p>or not perform as well as you would hope?</p>
+<p>Yeah.</p>
+<p>So other than bringing in that randomization ratio</p>
+<p>kind of expression of preference,</p>
+<p>this model differs from a prior one</p>
+<p>in that it's defined that the kind of cognitive map</p>
+<p>is not the territory.</p>
+<p>They're different families.</p>
+<p>So that's what motivates this approximation approach.</p>
+<p>So this is a simple displacement</p>
+<p>where still it's a trackable problem</p>
+<p>as they'll unfold.</p>
+<p>However,</p>
+<p>the simulation family chosen</p>
+<p>for the,</p>
+<p>for like the approximation,</p>
+<p>basically the approximation could apply to any data set,</p>
+<p>but it might be woefully inadequate.</p>
+<p>Like it might fit only one component of it.</p>
+<p>So that's,</p>
+<p>again,</p>
+<p>part of the interesting question is like,</p>
+<p>how similar</p>
+<p>does the statistical model have to be</p>
+<p>or what information does it really bring in</p>
+<p>and how</p>
+<p>to,</p>
+<p>to model or work with an empirical side?</p>
+<p>Um,</p>
+<p>but just on a more general statistical level,</p>
+<p>uh,</p>
+<p>equations 15,</p>
+<p>16,</p>
+<p>17,</p>
+<p>describe some of the technical details</p>
+<p>of the incremental optimization</p>
+<p>gradient scheme,</p>
+<p>the Newton optimization variational Laplace.</p>
+<p>We'll talk to Thomas et al.</p>
+<p>Figure nine</p>
+<p>is</p>
+<p>displaying the</p>
+<p>kind of before picture</p>
+<p>for the randomized control trial.</p>
+<p>So</p>
+<p>here's where that graphical model</p>
+<p>is</p>
+<p>that was shown earlier.</p>
+<p>And then here are these two</p>
+<p>groups</p>
+<p>and their survival through time</p>
+<p>and different sampling,</p>
+<p>uh,</p>
+<p>choices that are made.</p>
+<p>Then just to,</p>
+<p>to jump to figure 10</p>
+<p>has the same layout as figure nine,</p>
+<p>but now using the expected information gain</p>
+<p>from equation 18</p>
+<p>to guide sampling of data.</p>
+<p>So this is just to show</p>
+<p>the impact of that active data sampling</p>
+<p>and then we'll drop back to the equation.</p>
+<p>Uh,</p>
+<p>there are some notable differences</p>
+<p>between the choices made in figure 10</p>
+<p>compared with nine.</p>
+<p>Nine</p>
+<p>choices</p>
+<p>10.</p>
+<p>Uh,</p>
+<p>the most obvious of these</p>
+<p>is that the follow-up times selected</p>
+<p>have been moved later</p>
+<p>once optimal sampling is employed.</p>
+<p>This makes intuitive sense</p>
+<p>as a later follow-up time</p>
+<p>is informative</p>
+<p>about the survival probabilities</p>
+<p>at all prior times,</p>
+<p>whereas an earlier follow-up time</p>
+<p>is not informative</p>
+<p>about survival probabilities</p>
+<p>at later time.</p>
+<p>Um,</p>
+<p>where it gets</p>
+<p>in the final,</p>
+<p>uh,</p>
+<p>simulation</p>
+<p>brings in</p>
+<p>the random sampling</p>
+<p>plus the preference</p>
+<p>element.</p>
+<p>Here's where the symmetry</p>
+<p>is broken</p>
+<p>to also want</p>
+<p>the measurement</p>
+<p>of survival</p>
+<p>as more likely</p>
+<p>than death,</p>
+<p>which is how the preferences</p>
+<p>are specified</p>
+<p>in active inference.</p>
+<p>Um,</p>
+<p>and then</p>
+<p>the policy switch</p>
+<p>is reflected</p>
+<p>in this,</p>
+<p>like,</p>
+<p>um,</p>
+<p>part</p>
+<p>where</p>
+<p>the observations</p>
+<p>are shifted</p>
+<p>later</p>
+<p>because there's</p>
+<p>less than a threshold</p>
+<p>of information to gain</p>
+<p>by having them earlier</p>
+<p>and then</p>
+<p>they,</p>
+<p>uh,</p>
+<p>even if there is</p>
+<p>equal variance,</p>
+<p>I'm not exactly sure</p>
+<p>we can ask,</p>
+<p>between the two branches,</p>
+<p>there's,</p>
+<p>uh,</p>
+<p>an over-sampling</p>
+<p>for the group</p>
+<p>with the higher survival,</p>
+<p>which in this case</p>
+<p>was the placebo group.</p>
+<p>So,</p>
+<p>anything to add on this?</p>
+<p>Yeah,</p>
+<p>I think this is,</p>
+<p>this is the,</p>
+<p>the,</p>
+<p>like,</p>
+<p>the crux</p>
+<p>of the whole</p>
+<p>making sure</p>
+<p>that you optimize,</p>
+<p>you know,</p>
+<p>the patient's outcome</p>
+<p>on this</p>
+<p>because the treatments</p>
+<p>in this scenario</p>
+<p>were not,</p>
+<p>um,</p>
+<p>were not beneficial,</p>
+<p>they're actually harmful.</p>
+<p>And so,</p>
+<p>throughout the course</p>
+<p>of the study,</p>
+<p>this,</p>
+<p>by utilizing this model,</p>
+<p>you actually randomized</p>
+<p>more people</p>
+<p>into the placebo group,</p>
+<p>which caused</p>
+<p>a greater survival</p>
+<p>of these,</p>
+<p>uh,</p>
+<p>individuals.</p>
+<p>And so,</p>
+<p>you're,</p>
+<p>you can already see</p>
+<p>the effect</p>
+<p>that this sort of</p>
+<p>methodology has</p>
+<p>on clinical trials</p>
+<p>because you're optimizing</p>
+<p>the outcome.</p>
+<p>And I think</p>
+<p>that is exactly</p>
+<p>what you want to do</p>
+<p>in these health decisions,</p>
+<p>in these trials,</p>
+<p>in these things</p>
+<p>that impact human health,</p>
+<p>uh,</p>
+<p>or humanity in general.</p>
+<p>You want to optimize</p>
+<p>the outcome,</p>
+<p>uh,</p>
+<p>and,</p>
+<p>you know,</p>
+<p>in this way,</p>
+<p>you're actually reducing</p>
+<p>the overall harm</p>
+<p>to patients.</p>
+<p>Yeah,</p>
+<p>interesting.</p>
+<p>Um,</p>
+<p>here's the specification</p>
+<p>for the information gain.</p>
+<p>So,</p>
+<p>uh,</p>
+<p>bringing in</p>
+<p>the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the form of the messages</p>
+<p>required for equation three.</p>
+<p>Now,</p>
+<p>with all these extra components</p>
+<p>that have been added in</p>
+<p>with,</p>
+<p>uh,</p>
+<p>time variability,</p>
+<p>demographic,</p>
+<p>and the sampling,</p>
+<p>they write out</p>
+<p>some of the</p>
+<p>technical details</p>
+<p>for the approximations</p>
+<p>in the variational Laplace,</p>
+<p>and then</p>
+<p>some aspects</p>
+<p>about those models,</p>
+<p>which we can ask about.</p>
+<p>But,</p>
+<p>figure 11</p>
+<p>basically shows</p>
+<p>the big</p>
+<p>change,</p>
+<p>which is that,</p>
+<p>uh,</p>
+<p>as you go from</p>
+<p>having a,</p>
+<p>uh,</p>
+<p>flat sampling distribution</p>
+<p>across time</p>
+<p>and across treatment groups,</p>
+<p>you can actually</p>
+<p>do better than that,</p>
+<p>basically,</p>
+<p>by choosing</p>
+<p>a sampling regime</p>
+<p>that</p>
+<p>makes sense</p>
+<p>given the costs</p>
+<p>of sampling.</p>
+<p>So,</p>
+<p>that's just very interesting</p>
+<p>because it,</p>
+<p>it really does look like</p>
+<p>given the,</p>
+<p>the possibility</p>
+<p>for these two lines</p>
+<p>to diverge,</p>
+<p>their divergence</p>
+<p>would be largest</p>
+<p>later on.</p>
+<p>whereas if you could only</p>
+<p>schedule like one</p>
+<p>check</p>
+<p>for every person,</p>
+<p>if it was something</p>
+<p>that was expected</p>
+<p>to happen later in life,</p>
+<p>then sampling</p>
+<p>all the</p>
+<p>young</p>
+<p>wouldn't even make sense.</p>
+<p>So then,</p>
+<p>one approach</p>
+<p>is like</p>
+<p>flat sampling,</p>
+<p>but that is kind of</p>
+<p>sometimes erroneously</p>
+<p>called,</p>
+<p>uh,</p>
+<p>like unbiased</p>
+<p>or,</p>
+<p>or uninformative,</p>
+<p>but it is very informative,</p>
+<p>and then this is</p>
+<p>pointing towards</p>
+<p>how there can be</p>
+<p>better sampling</p>
+<p>than just</p>
+<p>trying to</p>
+<p>go flat</p>
+<p>across the entire</p>
+<p>latent state</p>
+<p>estimate.</p>
+<p>If there are</p>
+<p>priors relating</p>
+<p>to something,</p>
+<p>they can be leveraged</p>
+<p>as part of</p>
+<p>the probabilistic</p>
+<p>sampling</p>
+<p>and adapted</p>
+<p>to the</p>
+<p>data set</p>
+<p>at the,</p>
+<p>in the end.</p>
+<p>however,</p>
+<p>for picking</p>
+<p>prior families</p>
+<p>for the</p>
+<p>active data</p>
+<p>selection,</p>
+<p>that's a</p>
+<p>big question</p>
+<p>about how</p>
+<p>much it will</p>
+<p>change</p>
+<p>how the</p>
+<p>algorithms</p>
+<p>work.</p>
+<p>So I guess</p>
+<p>that kind of</p>
+<p>takes us to</p>
+<p>the,</p>
+<p>uh,</p>
+<p>discussion.</p>
+<p>The paper's</p>
+<p>focus has been</p>
+<p>on illustrating</p>
+<p>how we might</p>
+<p>make use of</p>
+<p>information-seeking</p>
+<p>objectives</p>
+<p>augmented with</p>
+<p>costs,</p>
+<p>which gave</p>
+<p>kind of the</p>
+<p>exit criterion</p>
+<p>or preferences,</p>
+<p>which gives</p>
+<p>the biased</p>
+<p>pragmatic</p>
+<p>part of</p>
+<p>data selection</p>
+<p>to choose</p>
+<p>the best</p>
+<p>data to</p>
+<p>optimize</p>
+<p>our</p>
+<p>inferences.</p>
+<p>And they</p>
+<p>highlight</p>
+<p>that the</p>
+<p>maximum</p>
+<p>entropy</p>
+<p>would yield</p>
+<p>identical</p>
+<p>results</p>
+<p>in several</p>
+<p>of our</p>
+<p>examples.</p>
+<p>So that'll</p>
+<p>be interesting,</p>
+<p>like what</p>
+<p>were the</p>
+<p>examples</p>
+<p>where</p>
+<p>maximum</p>
+<p>entropy</p>
+<p>and the</p>
+<p>information</p>
+<p>gain</p>
+<p>are</p>
+<p>identical?</p>
+<p>And then</p>
+<p>what are</p>
+<p>the real</p>
+<p>world</p>
+<p>or the</p>
+<p>statistical</p>
+<p>settings</p>
+<p>when the</p>
+<p>variance</p>
+<p>around</p>
+<p>predicted</p>
+<p>outcomes</p>
+<p>is</p>
+<p>inhomogeneous,</p>
+<p>how does</p>
+<p>the full</p>
+<p>cognitive</p>
+<p>epistemic</p>
+<p>model-based</p>
+<p>objective</p>
+<p>do differently</p>
+<p>than the</p>
+<p>max-ent</p>
+<p>distribution</p>
+<p>dispersal</p>
+<p>kind of</p>
+<p>null</p>
+<p>hypothesis?</p>
+<p>Any</p>
+<p>thoughts on</p>
+<p>this?</p>
+<p>I think</p>
+<p>you've</p>
+<p>captured it</p>
+<p>very well.</p>
+<p>there are</p>
+<p>several</p>
+<p>technical</p>
+<p>points</p>
+<p>worth</p>
+<p>considering</p>
+<p>for how</p>
+<p>we might</p>
+<p>advance</p>
+<p>the</p>
+<p>concepts</p>
+<p>reviewed</p>
+<p>in this</p>
+<p>paper.</p>
+<p>So let's</p>
+<p>talk about</p>
+<p>each of</p>
+<p>these.</p>
+<p>One,</p>
+<p>refinement</p>
+<p>of the</p>
+<p>active</p>
+<p>selection</p>
+<p>process.</p>
+<p>Two,</p>
+<p>empirical</p>
+<p>evaluation</p>
+<p>of active</p>
+<p>versus</p>
+<p>alternative</p>
+<p>sampling</p>
+<p>methods.</p>
+<p>And three,</p>
+<p>identifying</p>
+<p>the appropriate</p>
+<p>cost</p>
+<p>functions.</p>
+<p>So we'll</p>
+<p>talk about</p>
+<p>those</p>
+<p>coming up.</p>
+<p>Conclusion.</p>
+<p>Here's the</p>
+<p>entire</p>
+<p>conclusion.</p>
+<p>The key</p>
+<p>ideas</p>
+<p>involved</p>
+<p>an appeal</p>
+<p>to</p>
+<p>foveal-like</p>
+<p>sampling</p>
+<p>of small</p>
+<p>portions</p>
+<p>of the</p>
+<p>total</p>
+<p>available</p>
+<p>data</p>
+<p>to</p>
+<p>minimize</p>
+<p>computational</p>
+<p>cost.</p>
+<p>That's a</p>
+<p>very cool</p>
+<p>way to</p>
+<p>put it.</p>
+<p>And it</p>
+<p>highlights</p>
+<p>that kind</p>
+<p>of like</p>
+<p>sequential</p>
+<p>scanning,</p>
+<p>but also</p>
+<p>opens up</p>
+<p>some very</p>
+<p>exciting</p>
+<p>directions</p>
+<p>about how</p>
+<p>efficient</p>
+<p>that could</p>
+<p>be</p>
+<p>for some</p>
+<p>but not</p>
+<p>other</p>
+<p>kinds</p>
+<p>of</p>
+<p>problems</p>
+<p>and how</p>
+<p>those</p>
+<p>problems</p>
+<p>could be</p>
+<p>identified</p>
+<p>or those</p>
+<p>patterns</p>
+<p>could be</p>
+<p>filtered</p>
+<p>for to</p>
+<p>where</p>
+<p>different</p>
+<p>kinds</p>
+<p>of</p>
+<p>circadian</p>
+<p>models</p>
+<p>would be</p>
+<p>adaptive</p>
+<p>or not.</p>
+<p>So like</p>
+<p>these are</p>
+<p>all fun</p>
+<p>discussions</p>
+<p>we'll have.</p>
+<p>And then</p>
+<p>they kind</p>
+<p>of brought</p>
+<p>all the</p>
+<p>theoretical</p>
+<p>components</p>
+<p>together</p>
+<p>at the</p>
+<p>end</p>
+<p>with the</p>
+<p>Bayes</p>
+<p>adaptive</p>
+<p>clinical</p>
+<p>trial</p>
+<p>with the</p>
+<p>costs</p>
+<p>of</p>
+<p>sampling</p>
+<p>constraints</p>
+<p>on</p>
+<p>sampling</p>
+<p>and also</p>
+<p>the</p>
+<p>preference</p>
+<p>for survival.</p>
+<p>So what</p>
+<p>are your</p>
+<p>overall</p>
+<p>thoughts</p>
+<p>or what</p>
+<p>are you</p>
+<p>excited</p>
+<p>about</p>
+<p>for the</p>
+<p>ones</p>
+<p>to come?</p>
+<p>I'm</p>
+<p>excited to</p>
+<p>kind of</p>
+<p>see,</p>
+<p>I mean,</p>
+<p>this is a</p>
+<p>fairly recent</p>
+<p>paper.</p>
+<p>I'm excited</p>
+<p>to see</p>
+<p>kind of</p>
+<p>where they</p>
+<p>have gone</p>
+<p>since this</p>
+<p>paper was</p>
+<p>published.</p>
+<p>You know,</p>
+<p>they had a</p>
+<p>number of</p>
+<p>kind of</p>
+<p>next directions.</p>
+<p>I would love</p>
+<p>to see what</p>
+<p>of those</p>
+<p>directions</p>
+<p>have they've</p>
+<p>taken,</p>
+<p>what they've</p>
+<p>compared it</p>
+<p>to,</p>
+<p>other</p>
+<p>sampling</p>
+<p>techniques.</p>
+<p>This</p>
+<p>shows a</p>
+<p>lot of</p>
+<p>promise</p>
+<p>going forward</p>
+<p>for very</p>
+<p>complex</p>
+<p>and,</p>
+<p>you know,</p>
+<p>ethical</p>
+<p>situations</p>
+<p>or situations</p>
+<p>where ethics</p>
+<p>are going</p>
+<p>to be a</p>
+<p>huge</p>
+<p>component.</p>
+<p>So</p>
+<p>kind of</p>
+<p>where that</p>
+<p>is,</p>
+<p>what they're</p>
+<p>going into</p>
+<p>and kind</p>
+<p>of where</p>
+<p>they see</p>
+<p>further</p>
+<p>improvements.</p>
+<p>I still</p>
+<p>kind of</p>
+<p>want to</p>
+<p>know</p>
+<p>what would</p>
+<p>happen</p>
+<p>or what</p>
+<p>of these</p>
+<p>other time</p>
+<p>metrics</p>
+<p>or what</p>
+<p>other</p>
+<p>situations</p>
+<p>these time</p>
+<p>metrics</p>
+<p>would</p>
+<p>or alternative</p>
+<p>time</p>
+<p>models</p>
+<p>would be</p>
+<p>applicable</p>
+<p>to or</p>
+<p>if this</p>
+<p>really is</p>
+<p>like the</p>
+<p>de facto</p>
+<p>just the</p>
+<p>way it</p>
+<p>needs to</p>
+<p>be done.</p>
+<p>Totally</p>
+<p>fair.</p>
+<p>I think</p>
+<p>that could</p>
+<p>very well</p>
+<p>be the</p>
+<p>case.</p>
+<p>I would</p>
+<p>just love</p>
+<p>to hear</p>
+<p>exactly</p>
+<p>if you</p>
+<p>did a</p>
+<p>hidden</p>
+<p>Markov</p>
+<p>model,</p>
+<p>how would</p>
+<p>that look?</p>
+<p>Is there</p>
+<p>a benefit</p>
+<p>of that</p>
+<p>over the</p>
+<p>selection</p>
+<p>that they</p>
+<p>have?</p>
+<p>Does it</p>
+<p>provide</p>
+<p>more or</p>
+<p>less</p>
+<p>versatility</p>
+<p>in the</p>
+<p>models?</p>
+<p>These are</p>
+<p>things that</p>
+<p>are going</p>
+<p>to be</p>
+<p>very</p>
+<p>interesting</p>
+<p>going</p>
+<p>forward</p>
+<p>and</p>
+<p>then</p>
+<p>how do</p>
+<p>we</p>
+<p>like</p>
+<p>you</p>
+<p>noted</p>
+<p>in the</p>
+<p>discussion</p>
+<p>how do</p>
+<p>you optimize</p>
+<p>those cost</p>
+<p>functions?</p>
+<p>What's</p>
+<p>a cost?</p>
+<p>You're dealing</p>
+<p>with clinical</p>
+<p>trials,</p>
+<p>it's a human</p>
+<p>life,</p>
+<p>that's a</p>
+<p>cost.</p>
+<p>Time,</p>
+<p>it's a</p>
+<p>cost.</p>
+<p>There's also</p>
+<p>just</p>
+<p>computer</p>
+<p>time.</p>
+<p>How much</p>
+<p>you can</p>
+<p>actually</p>
+<p>get,</p>
+<p>how much</p>
+<p>compute you</p>
+<p>can get</p>
+<p>and give</p>
+<p>them over</p>
+<p>time.</p>
+<p>Some of</p>
+<p>these</p>
+<p>machine learning</p>
+<p>models that</p>
+<p>you might</p>
+<p>want to apply</p>
+<p>this to</p>
+<p>or select</p>
+<p>data going</p>
+<p>into,</p>
+<p>sometimes takes</p>
+<p>a long time</p>
+<p>to try.</p>
+<p>how are</p>
+<p>you going</p>
+<p>to sample</p>
+<p>data that's</p>
+<p>going into</p>
+<p>those models?</p>
+<p>How are</p>
+<p>you going</p>
+<p>to continually</p>
+<p>feed those</p>
+<p>models</p>
+<p>appropriate</p>
+<p>data going</p>
+<p>forward?</p>
+<p>So this</p>
+<p>is a huge</p>
+<p>broad category</p>
+<p>of directions</p>
+<p>that you can</p>
+<p>go.</p>
+<p>Clinical</p>
+<p>trials was</p>
+<p>a very</p>
+<p>wonderful</p>
+<p>example of</p>
+<p>a complex</p>
+<p>situation that</p>
+<p>is right</p>
+<p>there applicable</p>
+<p>to human</p>
+<p>life.</p>
+<p>data science</p>
+<p>in general.</p>
+<p>How are</p>
+<p>you going</p>
+<p>to utilize</p>
+<p>this to</p>
+<p>going more</p>
+<p>broad?</p>
+<p>How are you</p>
+<p>going to</p>
+<p>utilize this</p>
+<p>going forward</p>
+<p>in any</p>
+<p>data sense?</p>
+<p>Data is</p>
+<p>growing,</p>
+<p>it will</p>
+<p>continue to</p>
+<p>grow,</p>
+<p>it will</p>
+<p>never really</p>
+<p>stop growing.</p>
+<p>It's going</p>
+<p>to be more</p>
+<p>and more</p>
+<p>important going</p>
+<p>forward to</p>
+<p>have these</p>
+<p>methods more</p>
+<p>broadly used.</p>
+<p>Random is</p>
+<p>nice,</p>
+<p>Random is</p>
+<p>really,</p>
+<p>really good,</p>
+<p>complicated.</p>
+<p>But this</p>
+<p>holds a lot</p>
+<p>of promise</p>
+<p>to being,</p>
+<p>I would love</p>
+<p>to just hear</p>
+<p>their thoughts</p>
+<p>on where</p>
+<p>that's going,</p>
+<p>where they</p>
+<p>see that.</p>
+<p>Yeah.</p>
+<p>A lot</p>
+<p>of interesting</p>
+<p>directions.</p>
+<p>A few things</p>
+<p>that made me</p>
+<p>think of,</p>
+<p>one was about</p>
+<p>search and</p>
+<p>about relational</p>
+<p>search concepts,</p>
+<p>page rank and</p>
+<p>everything,</p>
+<p>syntactic,</p>
+<p>semantic,</p>
+<p>new kinds of</p>
+<p>search algorithms</p>
+<p>and personalization</p>
+<p>for search</p>
+<p>and learning</p>
+<p>and updating</p>
+<p>and to what</p>
+<p>extent explicit</p>
+<p>cognitive modeling</p>
+<p>would change</p>
+<p>the way that</p>
+<p>different</p>
+<p>recommendation</p>
+<p>algorithms or</p>
+<p>different kinds</p>
+<p>of computer</p>
+<p>systems would</p>
+<p>work.</p>
+<p>I'll read a</p>
+<p>question.</p>
+<p>And then,</p>
+<p>any other</p>
+<p>questions?</p>
+<p>Otherwise,</p>
+<p>this is our</p>
+<p>last slide,</p>
+<p>so thank you,</p>
+<p>Christopher.</p>
+<p>Okay.</p>
+<p>Glea</p>
+<p>Maximalist</p>
+<p>wrote,</p>
+<p>interesting point</p>
+<p>about biased</p>
+<p>and unbiased</p>
+<p>sampling schemes.</p>
+<p>Perhaps this</p>
+<p>points out the</p>
+<p>fact that</p>
+<p>unbiased</p>
+<p>approaches are</p>
+<p>the wrong</p>
+<p>thing to</p>
+<p>strive for</p>
+<p>in research</p>
+<p>study design.</p>
+<p>What do you</p>
+<p>think about</p>
+<p>that?</p>
+<p>Unbiased</p>
+<p>research in</p>
+<p>study design?</p>
+<p>I think</p>
+<p>there's a time</p>
+<p>and place</p>
+<p>for unbiased</p>
+<p>and I think</p>
+<p>there's a time</p>
+<p>and place</p>
+<p>for bias.</p>
+<p>I think</p>
+<p>that when</p>
+<p>you accept</p>
+<p>bias into</p>
+<p>your model</p>
+<p>or take</p>
+<p>bias out</p>
+<p>of your</p>
+<p>model,</p>
+<p>you need</p>
+<p>to understand</p>
+<p>why you're</p>
+<p>doing that.</p>
+<p>Certain bias</p>
+<p>you don't</p>
+<p>want to</p>
+<p>have,</p>
+<p>you know,</p>
+<p>researcher</p>
+<p>bias is</p>
+<p>something that's</p>
+<p>a huge bias</p>
+<p>that you want</p>
+<p>to not have,</p>
+<p>for example.</p>
+<p>But in</p>
+<p>certain cases,</p>
+<p>like in this</p>
+<p>paper,</p>
+<p>where you</p>
+<p>actually do</p>
+<p>want to</p>
+<p>have a</p>
+<p>bias,</p>
+<p>you want</p>
+<p>to make</p>
+<p>an intelligent</p>
+<p>decision,</p>
+<p>note why</p>
+<p>you're making</p>
+<p>that decision,</p>
+<p>call it out,</p>
+<p>and then build</p>
+<p>it into your</p>
+<p>model.</p>
+<p>That would be</p>
+<p>my problem.</p>
+<p>Yeah,</p>
+<p>that's</p>
+<p>interesting.</p>
+<p>There are</p>
+<p>certain</p>
+<p>statistical</p>
+<p>distributions,</p>
+<p>the bias</p>
+<p>or the</p>
+<p>constraints</p>
+<p>on which</p>
+<p>define the</p>
+<p>research</p>
+<p>study,</p>
+<p>whereas other</p>
+<p>ones that</p>
+<p>can have</p>
+<p>an explicitly</p>
+<p>strictly</p>
+<p>negative</p>
+<p>data loss</p>
+<p>or something.</p>
+<p>But then</p>
+<p>the trade-offs</p>
+<p>of how that</p>
+<p>distribution</p>
+<p>actually interacts</p>
+<p>with others</p>
+<p>can enter</p>
+<p>into this</p>
+<p>more complex</p>
+<p>experimental</p>
+<p>calculus</p>
+<p>that relates</p>
+<p>to all</p>
+<p>these</p>
+<p>different</p>
+<p>experimental</p>
+<p>factors.</p>
+<p>And so</p>
+<p>the optimal</p>
+<p>experiment</p>
+<p>for</p>
+<p>different</p>
+<p>labs</p>
+<p>or different</p>
+<p>moments for</p>
+<p>the lab</p>
+<p>could look</p>
+<p>extremely</p>
+<p>different.</p>
+<p>And that's</p>
+<p>going to be</p>
+<p>the case.</p>
+<p>There's going</p>
+<p>to be dispersed</p>
+<p>behavior either</p>
+<p>way, but then</p>
+<p>the question</p>
+<p>is how is</p>
+<p>that actually</p>
+<p>driven in</p>
+<p>a way that</p>
+<p>is doing</p>
+<p>better than</p>
+<p>drawing from</p>
+<p>distributions?</p>
+<p>However,</p>
+<p>even that</p>
+<p>does interestingly</p>
+<p>well.</p>
+<p>for the</p>
+<p>right</p>
+<p>variables.</p>
+<p>And you</p>
+<p>can mine</p>
+<p>bias all</p>
+<p>over the</p>
+<p>place.</p>
+<p>Bias in</p>
+<p>data design</p>
+<p>in experiments</p>
+<p>can be</p>
+<p>very useful.</p>
+<p>So it'll</p>
+<p>just be</p>
+<p>interesting.</p>
+<p>I think it'll</p>
+<p>be case by</p>
+<p>case.</p>
+<p>That's the</p>
+<p>way I</p>
+<p>see it.</p>
+<p>Okay.</p>
+<p>Well,</p>
+<p>do you have</p>
+<p>any last</p>
+<p>comments?</p>
+<p>I think</p>
+<p>that the</p>
+<p>main thing</p>
+<p>here is</p>
+<p>I'm just</p>
+<p>very excited</p>
+<p>to see</p>
+<p>this paper</p>
+<p>come out.</p>
+<p>I would</p>
+<p>love to</p>
+<p>see how</p>
+<p>this is</p>
+<p>going to</p>
+<p>evolve over</p>
+<p>time,</p>
+<p>see if</p>
+<p>this can</p>
+<p>be applied</p>
+<p>to</p>
+<p>different</p>
+<p>technologies,</p>
+<p>different</p>
+<p>areas.</p>
+<p>I'm really</p>
+<p>excited just</p>
+<p>to see</p>
+<p>where this</p>
+<p>is going</p>
+<p>because I</p>
+<p>think this</p>
+<p>is just</p>
+<p>right on</p>
+<p>the cusp</p>
+<p>of what's</p>
+<p>needed.</p>
+<p>Awesome.</p>
+<p>Thank you.</p>
+<p>We will</p>
+<p>look forward</p>
+<p>to it.</p>
+<p>Thank you.</p>
+<p>See you.</p>
+<p>All right.</p>
+<p>Thanks,</p>
+<p>guys.</p>
+<p>Thanks,</p>
+
+<p>to</p>
+<p>see you</p>
+<p>Thank you.</p>
+</article>
+</body>
+</html>

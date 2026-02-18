@@ -1,0 +1,3199 @@
+---
+title: "ActInf Livestream #028.2 ~ “Towards a computational phenomenology of mental action""
+category: "Livestream"
+series: "Livestream_028"
+episode: "2"
+duration: "1:54:12"
+url: "https://www.youtube.com/watch?v=sEyNwzUuiII"
+views: 190
+exported_at: "2026-02-18T22:37:37.935513+00:00"
+format: markdown
+---
+
+# ActInf Livestream #028.2 ~ “Towards a computational phenomenology of mental action"
+
+hello and welcome everyone to the active
+inference lab this is actin flab
+live stream number 28.2
+on september 14 2021
+and we're going to be having our dot 2
+follow up discussion on the paper
+towards the computational phenomenology
+of mental action
+modeling meta awareness and attentional
+control with deep parametric active
+inference
+welcome to the active inference lab
+we are a participatory online lab that
+means you can participate that is
+communicating learning and practicing
+applied active inference you can find us
+at the links here on this slide
+this is recorded in an archived live
+stream so please provide us with
+feedback so that we can be improving our
+work
+all backgrounds and perspectives are
+welcome here
+we'll be following good etiquette for
+live streams and see who joins in
+at this short link you can find the
+calendar of events for 2021 as well as
+all the other kinds of streams that we
+do
+related to kind of wild card guest
+streams
+and the more technically oriented model
+streams and math streams
+and we have some preliminary decisions
+for what we'll read in 29
+today though we're here to continue the
+discussion on 28
+paper which is the towards a
+computational phenomenology of mental
+action paper
+and again we'll see who joins and see
+where we go i wrote down a few comments
+and questions but i know that there's
+many ways it can go and of course
+everybody who's watching live definitely
+um
+leave us questions and comments and we
+can address them on the stream
+uh
+everyone's participating who's here at
+this time
+we can start with just some
+introductions and warm-ups since there's
+only a few of us we can
+say hi and um
+reminisce on what brought us to this
+paper or even where we'd like to go
+for the dot too where are we
+jumping off from or two as we're in that
+kind of the middle of the gangplank the
+middle of the diving board so
+i'm daniel and i'm a researcher in
+california
+and i think today i wrote down the
+pieces that i wanted to
+if not resolve just at least explore a
+little bit and it had to do with
+annotating that generalized model of
+mental action and seeing if we could
+find words in a language or scenarios or
+exercises thought experiments
+find some tangible ways to interact with
+these different aspects of uncertainty
+and then
+on a more theoretical note
+ask how are those maybe related to
+neurological function or certain kinds
+of measurements that are made in the
+laboratory but just at the experiential
+level
+are there cases where we actually can
+get in touch with some of these
+different
+qualitatively different kinds of
+uncertainty
+so
+either or stephen just go ahead stephen
+avendy
+yeah good morning
+from toronto um
+yeah i'm interested
+to sort of pursue what we're talking
+about in the last session and
+i'm very interested in the fact that
+a bit like um to some extent
+process-orientated
+psychology
+by um the min dales which comes out of
+some work around information theory in
+the 70s this idea of really getting into
+the process from within
+and the phenomenology so this this this
+paper starts to look at
+giving
+actual models or at least a heuristic as
+well for thinking about how we
+phenomenologically can be doing stuff
+from the inside and for me that's
+exciting because
+psychology can be kind of limiting
+because it's always this external
+modeling
+of people which then sort of but how can
+we get and look at some of the
+structures of how we
+operate at some level so this this is
+cool and i think this is the first
+or one of the first papers that really
+gets into that phenomenology beyond a
+philosophical point of view and starts
+to sort of
+give a few handles on it and
+that's where i'm interested so i'm going
+to pass this over if it's okay dean
+hey good morning my name is dean i'm in
+calgary
+and a few years back i read a book by
+a philosopher by the name of douglas
+hofstetter it's called i'm a strange
+loop
+and
+yeah sort of trying to put some sort of
+a
+context on when i read that book and
+then this paper
+um
+hofstetter doesn't really get into the
+um
+the perception of
+i'm aware of planning to make a plan
+because i can think about my thinking so
+what have this planned policy of
+attention and then all of the math that
+supports that
+um
+and then he sort of doesn't really get
+into
+and then what i attend to tells me what
+i'm losing focus on which is what this
+paper also talks to so again i'm just
+trying to i'm trying to put these two
+ideas side by each
+and without saying
+either one of them is more correct i
+think they're very complimentary so
+yeah that's where i kind of was
+looking at this and saying hmm
+this is really interesting so yeah
+that's where i i'm kind of coming out
+this room so
+on the hofstetter the strange loop and
+the geb some works that i really love as
+well as mind's eye with
+dennit
+yeah it does seem like his focus is on
+how symbols
+are computed upon which makes sense
+given his kind of computational focus
+and so we've talked a lot about how
+syntax and semantic layers can be
+seen within active inference and
+that doesn't have phenomenology
+in the picture at all
+and that's why the sort of question
+about how computers interpret syntax and
+how that becomes semantics
+is orthogonal it's kind of you could
+take one take on another
+whether computers have experience or not
+like you don't need to think that
+computers are having an experience or
+not to ask how a programming language is
+compiled or interpreted so there's sort
+of that two by two with how meaning is
+made in a computational sense
+and then
+how our meaning is made and experienced
+uh so that's definitely an interesting
+piece
+um and steven you wrote like from the
+inside what do you think differentiated
+this
+approach
+rather than the theoretical or the
+philosophical and what does it look like
+for an academic
+work or for a work of research to
+not just be theoretical or philosophical
+yeah this is a good question um
+well the i suppose
+having sort of um
+mechanisms and
+identifiable relationships between
+aspects of experience
+i.e
+thinking about thinking and
+our
+sense of
+accuracy in our predictions and things
+like that gives a way for stuff to
+relate to each other otherwise it tends
+to be
+one
+thread of that so be it consciousness be
+it um
+awareness
+be it that one thread then can be mused
+about and we could get quite an
+interesting philosophical explanation of
+what it is
+the thing is though that
+you can't really process that or try to
+emulate the process of that on its own
+there needs to be something else that is
+somehow
+in like you say the body
+what's the body you know
+some sort of sensory feelings
+um some sort of sense of predictions
+about something else and
+normally that seems to be where things
+fall down a bit ends up going off to the
+neuroscience world and
+again which is great but still ends up
+being a kind of a model of the brain
+right so
+you're in this neurophenomenology world
+where it's kind of explaining
+phenomenology but through the brain but
+again i can't the brain has got no
+feelings inside it you know
+so you can't be your brain i think we
+think we can because we have all these
+pictures of brains as if they are people
+but
+um so i think
+it's interesting questions i don't
+really quite thought about it this way
+but i think there's something about
+having different aspects of our
+phenomenological
+um being able to
+meaningfully relate
+um
+and not end up being kind of a deep
+explanation of one strand i don't know
+if that makes sense
+it also makes me think about in
+hofstetter's girdle usher block geb
+one of the main strange attractors
+is the turing test so that's the
+question about how you can identify on
+the other side of the blanket some other
+system in another room
+how do you know whether it's
+a human or whether it's a computer or
+whether it's aware or not so
+there's been all kinds of thought on
+that
+and
+it's almost like
+what happens when you take that
+as a fundamental unknowable
+how do we respect what's on the other
+side of the wall
+and maybe even give it an affective
+parameter
+while recognizing that we have the same
+and we're experiencing it but we're
+never going to be able to experience
+what's on the other side of the wall
+we're going to be only able to
+experience our interactions with what's
+coming across
+and i think that's why
+hofstetter and dennett worked well
+together
+because then it with the intentional
+stance is kind of like saying
+it's simple it doesn't really matter if
+you're playing chess it doesn't matter
+if you're playing somebody who's human
+or a super computer or something it's
+about what's on the board and in a way
+that's kind of like the way that we're
+addressing it's about the sensory input
+coming in and how we're modeling the
+external states so if it's in the other
+room the turing test is
+on the outside of our blanket we're
+experiencing what's inside and that
+could be an illusion or it could be
+super real or all that's real depending
+on again which philosophy you decide to
+lean towards but
+the question about how we interpret and
+experience our own
+parameterization of these models is
+really secondary from the implications
+of what's on the other side of the veil
+steven
+yeah that's a really useful um
+lens to bring to play actually and
+actually the game brings this back out
+maybe so that we're not suddenly focused
+only on the individual
+isolated from the world
+but one thing i think is really
+interesting with that is
+with active inference there's this
+well n active inference we're going to
+go down that route is that you know you
+have the
+you know with your body right so
+ultimately
+the active agent can check in
+and i think what you're just saying is
+one thing that i would know over a
+period of time if something was alive is
+if they
+had to reflect on
+some aspect of our discourse okay
+and it was something which neither i
+could know or they could know
+i
+but when they checked in with themselves
+they came up with an answer which i
+could find plausible that makes sense so
+there's no way that you you know you
+know there's those things that what do
+you feel about this well i feel and then
+you come up with something he's like we
+there's a knowing that you come up with
+right but that wasn't in your semantic
+lexicon of pre-programmed stuff you were
+able to check in somehow
+and that's the sort of thing an
+artificial machine
+can't do unless it can check into some
+some way of knowing because
+if it wasn't known before how could it
+have ever been programmed into the
+supercomputer
+so that's kind of interesting
+it comes up in this paper with a
+question about transparency and opacity
+so again the kind of what is water
+transparent states are the ones that you
+see right through so you actually don't
+perceive them directly like air and then
+the opaque states are the ones kind of
+like you know the matte black wall you
+can see it really well and so this
+question about how a prompt
+can almost like a phase transition
+move something from being transparent to
+opaque like how does your leg feel right
+now
+and it moves it from being a transparent
+state potentially one that attention is
+not being paid to
+to an opaque state which is something
+that attention is being paid to that's
+one of the major contributions of this
+paper which is to take metzinger's
+framework of transparent and opaque
+states
+as applied to phenomenology
+and bring that into the
+affective framework
+developed by hesp at all for the deep
+parametric active inference so it is
+like these multiple threads coming
+together and then
+it's just so appropriate that attention
+is kind of the thread that links it and
+precision and awareness are kind of
+coming together in new ways
+[Music]
+um the two things i wrote down and of
+course anyone watching live definitely
+ask random questions no off topic
+questions
+no such thing exist not not forbidding
+such questions
+um so one thing as kind of addressed
+earlier was i thought it'd be fun to
+annotate figure 12 a bit and explore
+some of these qualitatively different
+forms of uncertainty
+and
+but maybe a lead-in topic and again
+anyone can just
+feel differently or ask a question a
+leading topic was like
+how do we think about uncertainty
+greetings fellow jitsu blue jitzer
+uncertainty in remote work just
+how often when you send a message
+you don't get that instantaneous
+feedback that you would
+in
+a video conversation or in an in-person
+conversation because the time lag is
+very different so it's almost like
+you're left hanging
+with the uncertainty or you have to come
+to a new way of understanding
+your uncertainty because you're not
+or you're expecting not to hear from
+them oh i know that they're on the other
+side of the world so i'm expecting not
+to hear from them for the next hours
+just
+i wondered what sorts of these um
+personal level
+uncertainties applied to the remote case
+and then thinking about the remote team
+as its own active inference entity
+are there uncertainties that exist
+for located or remote teams
+that
+don't necessarily
+find themselves simply explained by
+personal level affect
+are the things that teams are uncertain
+about that people are certain about like
+a hung jury
+or a split election or decision
+are there things that people are
+uncertain about but that groups can be
+quite certain
+[Music]
+about you
+but that's just things that we can
+return to in any
+time
+just got my package through for my mum
+for baby clothes from england so i'm
+back nice
+nice
+um
+[Music]
+i think blue wants to say something yes
+blue
+uh yes so just to that point i mean i
+think that like that's like the
+the kind of like lifeline or ask the
+audience like in the you know when you
+have uncertainty about a question i mean
+an individual can be uncertain but
+the um crowd can have some certainty and
+wasn't there something about guessing
+the weight of a bison or
+some story like that like where you know
+the the i think it was the median value
+was exactly the weight of the bison like
+from this entire like divergent crowd um
+i'm not sure the exact i don't remember
+like the exact story it's just kind of
+faint in my memory but i mean i think
+that definitely the crowd knows what
+the individual can't
+maybe there's many oh yeah steven go for
+it
+yeah well that yeah that's an
+interesting one that um
+blue mentioned and and also i suppose
+there's this question well let's say we
+take uh you know bayesian statistics you
+know if it's a distributed sense of
+something
+well so when you've got a very large
+number there may be this distributed
+sense which as if people have got a feel
+for it
+i mean i suppose it assumes that there's
+not complete noise there's the people
+have got some kind of idea out of that
+group but there's
+some knowing but in a team and stuff
+there is this question and this may be
+really what types of things we're
+evaluating is with a team
+or a group
+because teams tend to have a particular
+teleology if we're trying to get a
+handle on something intersubjective
+i mean a classic case with this would be
+saying in a marketing agency or
+something like that or with a film
+you know you might want to
+get a sense of
+you might get market research but you
+also want the creative team might get a
+sense of
+what is um you know what's what how's
+this going to land you know what's and
+that that might be an integrated thing
+um and it might be the other creative
+director that
+is pushing out their one vision because
+they're trying to be novel they're
+trying to give something that breaks
+the group
+um expectations
+however you also then want to
+stay within i mean a classic one would
+be like ricky gervais before the um when
+he did his uh what was it the it's not
+the oscars but he did the other one the
+golden golden globes
+at some point he had to kind of wait
+what he could get away with right
+so there would have been a whole load of
+people sort of
+seeing how that could get tweaked and
+nudged so that
+it basically fits on that
+very near edge and that's uh
+you know that that would tie quite well
+with the fact that you need to have more
+you can't it's not just multi-sensory
+integration on one person that's enough
+you might need
+multi-inter-subjective
+awareness integration to get a better
+sort of integration
+right you need to know how others
+thinking through other minds or theory
+of mind you need to
+kind of have an estimate of how others
+will
+feel about your stimuli from an
+affective dimension
+and
+blue i think
+the example with the ox and guessing the
+weight it's uh francis skalton sir
+francis galton perhaps
+and i just looked it up it was a 787
+fair goers
+who predicted the weight of this animal
+and that the average was extremely close
+even though of course many individuals
+probably
+were over or under by vast margins and
+it ties us back to the strange loop and
+aunt hillary the ant colony in geb
+and when does collective decision making
+work collective decision making amongst
+cortical neurons it seems to work pretty
+well that's kind of what evolution has
+shaped
+why did it work for predicting the
+weight of that ox well potentially many
+people were familiar with how much
+animals weighed
+another answer is that it was within an
+order of magnitude like you could
+probably say well it's probably not 100
+pounds and it's probably not 10 000
+pounds
+so when there's bounds to the estimate
+rather than it being distributed over
+like many orders of magnitude there's
+a case for the average being something
+that can be taken and that actually has
+analogy to a lot of these mean-seeking
+distributional techniques that we
+utilize like the case where the actual
+distribution might be very rough
+but we use variational techniques
+that can pursue for example the mean
+of the distribution and just sit the
+weight of our distribution that we
+control q
+and sit
+with only one or a few parameters
+right over the bulk of the distribution
+rather than getting into the hundred
+parameters that might describe the
+actual underlying distribution
+and so it's like
+under what cases
+can distributions be well approximated
+by their mean and by many independent
+estimates
+and under what cases might you be
+looking just like steven said with a
+marketing agent
+trying to be creative or novel
+under what cases are you actually
+looking not to estimate the mean
+but rather to propose a counter factual
+or to make something that is going to
+succeed by virtue of its novelty
+stephen
+yeah and also it takes you into this
+world of the of the rural community i
+don't know if it's rural america you
+know
+they will have their wisdom about those
+types of things their fair go as they
+they probably got quite an insight into
+animals you know they
+i bet you could get a fairly good idea
+of how slippery it would be to try and
+grab hold of that baby hog you know in a
+way that the city folks wouldn't have a
+clue so it's a
+this kind of contextual
+social like
+knowing um it's quite you know that that
+that i think that's a good thing to
+to bring in as well when we think about
+participation you know then this knowing
+that can be in different communities
+outside of the
+the cities which you know and the
+advertising agencies and these
+dominating kind of
+media
+sort of
+leaders of thought
+i think it shows how we need to be able
+to bring in
+these more disparate ways of
+experiencing the world
+well when it seemed that there's a mean
+or an average like there was the famous
+like um like average american survey or
+something like the dimensions of the
+average person but then like no single
+person
+was within a tolerable limit of that
+average yet there was an approximation
+um versus
+casting it into the experience like how
+will this be received by different
+people it includes in the question
+the need to think through other minds
+and um
+that no one was thinking through the
+animal when they had to predict the
+weight that's that external the third
+person psychology and it was estimating
+a physical attribute so it's not like
+they were trying to do anything
+different but now if you asked on a
+scale of one to ten
+how do we estimate how happy this animal
+is
+the variance around that estimate is
+going to be of a very different kind
+and potentially an irreducible kind
+we're not just looking for a point
+estimate to converge on
+maybe there's differences in opinion and
+that is something that would be revealed
+through that question
+whereas
+if you're wrong about the weight it's
+just because maybe you're
+not used to it or something like that
+steven yeah
+yeah that's a good that's a good point
+to bring in as well is when looking and
+say also we maybe want to bring in this
+bayesian inference as well like if you
+could have multiple rounds you know like
+when carl fristan does some of the
+demonstrations
+it would be interesting
+a to be able to have some way of looking
+at something and using multiple
+iterative rounds which they do in
+a lot of processes like future search
+and um
+other kind of
+group participatory processes and also
+though
+to break apart the generative models at
+play so you and this is this is the
+challenge is with a lot of things is
+with normal statistics is you'll get an
+answer you'll get a graph if you just
+take all the numbers and divide by x
+right
+and then so someone's now got research
+results but the thing is like you say it
+makes a difference if you've got three
+models two models five models one model
+going on of the reality that they're
+trying to in theory that that the weight
+of the cow there's
+probably one model there might be a
+couple of different ways of trying to
+think about how to go to that model but
+you know this is sort of a fairly clear
+proposition but
+if you do have more than one generative
+model or one contextual
+engagement that's being used teasing
+that out and then having a way to
+iteratively
+do beijing inference and active
+inference
+on each of those models so they can be
+teased apart would look like it'd be a
+useful thing
+cool dean
+yeah i'm just going to say to steven's
+point there's a
+book called the end of average by todd
+rose
+that speaks to those times when
+finding the mean doesn't really work and
+you do have to kind of pull that
+generative model apart
+so if you're if you're interested in
+that there's there's a great reference
+thanks dean
+and then um this idea of updating
+it's almost like we have a vertical
+updating which we're gonna look at when
+we look at the deep parametric model
+it's an updating within
+the agent within the system passing up
+and down top top down bottom up but it's
+an updating inside of the agent versus
+the updating laterally or across the
+ensemble of similar agents like imagine
+if the people instead of putting their
+weight estimate for the for the ox into
+a box
+they actually talked about it
+there's cases where you could imagine
+that would actually
+make a worse estimate like a really
+persuasive person is convinced they have
+high precision about their estimate
+they're wrong but they have high
+precision and then in that case it's
+possible for them to shape group
+outcomes
+like a more stubborn peg
+whereas there's other cases where when
+maybe um it's less important to be
+precise on a point estimate but like to
+brainstorm maybe sharing ideas early on
+helps increase that temperature and
+updates people's models in a way where
+just having them in separate lanes and
+then coming together to converge at the
+end it's it's too late for those ideas
+to be meaningfully compared because
+they're of such different type whereas
+again if everybody is constrained to
+we're fitting something about weight
+only then maybe it's okay to combine
+them later on in the process blue
+so i was trying to flip the paper just
+now but i think that they've looked at
+that actually like when you have really
+strong
+conviction about your
+beliefs or ideas they look at how
+information is spread in networks and
+really like those people that are
+you know very strong in conviction they
+like contaminate
+their like neighbors in the graph
+essentially so it's really neat to kind
+of see this like information propagation
+and how it really does start with the um
+the people with the strongest
+convictions
+it's almost like uh yeah yes people are
+spreading information based upon a few
+things but up there on the list would be
+how precise they are about it
+and also how they want to be seen
+so both of those are like first and
+second level estimates of precision
+about oneself metacognition i won't
+raise my hand if i'm not totally sure or
+you know i'm watching a live stream but
+i'm not sure if this is a good question
+to ask hint it is but then you don't
+know so you don't make the action
+versus how will even other people
+perceive it
+that was probably less important in an
+anonymous
+guess about weights but as we talk about
+issues that are increasingly social
+those
+become the drivers maybe 90 of people in
+a room or in a country feel a certain
+way but it still isn't perceived as
+something that's okay to share
+stephen
+yeah this also ties into when
+a lot of context that's actually a
+mediator chapter was a mediator he had a
+really good quote that he actually came
+up with it was saying how
+um
+process both conscious and unconscious
+implicit and explicit has a greater
+impact on outcomes
+than substance
+i.e
+so if you're going to bring people
+together like we're saying and they're
+going to try and work together being
+able to
+the process through which people
+interact
+can have a bigger impact on the outcome
+than the substance partly because of
+exactly what blue was saying
+and you were saying you know around
+whether someone becomes a dominant voice
+whether certain information if it all
+becomes about the substance it's very
+easy to get trapped in this
+who's right who's wrong well if in this
+instance we're trying to get
+a different handle on things
+or to try and get a an active influence
+we need that process to be given a
+chance um
+so i think that's quite and that's
+actually also had a good conversation
+yesterday with uh
+um gary kirkham actually does a lot of
+device theater work through so
+interesting processes where they mix
+different artists and one thing there is
+when they go into the action space of
+exploring
+they would have the director watching or
+they have like a device there to play
+right watching
+and in some ways the people who are in
+it they just are totally immersed in it
+they can't really reflect on where they
+are at that moment it's just in there
+and there's all this information and the
+people on the outside are watching and
+you could say i suppose they're actively
+inferring on what might be easier to say
+this bayesian
+integration and waiting and then
+afterwards they will be told what worked
+what didn't work and then they could
+bring that to their conscious awareness
+and maybe
+bring that in again with some but that
+process
+in a way needed to be just a living
+process and not
+too cognitive for the person to give
+good quality
+fuzzy information
+so
+uh two things there
+the first is what do we say about active
+inference it's a process theory
+it's a corollary of free energy
+principle and it probably draws on many
+other domains as well but it's a process
+theory it's not um a state theory and in
+the alias 2018 interview fristen talks
+about process versus state so that's a
+lot like this process versus substance
+you derived these are
+a set of patterns
+for how systems update
+and so it is about the process of active
+inferencing which i hear people using
+sometimes which even differentiates it
+even more from being just a static
+substance theory like it's a static
+theory about active entities it's like
+kind of but it's actually a dynamic
+theory
+about static and dynamic entities
+because you could have an active
+inference agent
+that is just a thermometer so its
+affordances are nil so can't act but we
+can still put it within this bayesian
+graph framework it doesn't need to be
+far from equilibrium it doesn't need to
+be intelligent it doesn't need to be
+actively foraging for information we
+know the model can go all those places
+but it's almost like with the process
+theory you can explain active and
+passive processes whereas with a
+substance theory you're able to explain
+static things pretty well but then
+there's always this question about using
+the static theories to apply to dynamic
+systems
+and then
+also to
+connect to the first piece of what you
+said and to return to maybe some of the
+threads in this paper you talked about
+how that was a mediator
+and so
+mediation can look like so many things
+from diplomacy
+negotiation
+maybe even marketing like you raised
+earlier but mediator sounds a lot like
+meditation
+like the mediation is like we're we're
+not just going to make a call and then
+you're going to live with it it's like
+we're going to mediate
+now what are we mediating
+when we meditate
+are we mediating our thoughts and these
+kind of mindfulness cues that lars was
+providing last week
+like putting the distance between
+oneself and their thoughts in a way it's
+like being a meta mediator or somehow
+mediating
+lower level
+cognitive processes
+through the process
+not the substance that we call
+meditation blue
+so maybe like what are we mediating in
+meditation that's like a super
+interesting question and i wonder if
+it's um
+you know like the information
+transmission in the brain or maybe
+uh propagation or like the ongoing like
+wandering mental wandering maybe so
+there's
+you know if we're if essentially
+meditation
+cuts that information transmission right
+so so when you just are like letting go
+let go of the thought right like the
+thought arises just let go so the
+thought doesn't keep wandering around
+and i wonder if a thought spreads like i
+don't know i mean i know my background's
+neuroscience but i don't know enough
+about
+or maybe no one knows enough about the
+brain and functionality to know like
+does a thought propagate like from one
+region of the brain to another region of
+the brain like stimulate a new thought
+right like and is that how like mental
+wandering maybe works i mean i don't
+know i mean it's just it's just
+hypothetical but but maybe we're cutting
+that information transmission process
+off when we're mediating through
+meditation
+stephen
+yeah it's interesting i thought blue
+about tren it's actually funny because i
+was just watching this video on process
+orientated psychology and it was talking
+about moving between modalities you know
+like you know it could be you know i
+have a thought
+having seen something and then maybe it
+processes into how i hear it
+and how i see it and how i
+color it you know like it could be you
+know this it could be interesting how
+the different sensory modalities could
+um you know could hold a thought for a
+period of time and then pass it back
+again because synesthesia obviously is
+an interesting one on that and i've just
+seen an interesting paper actually that
+um
+talks about how
+um
+the vowels i-e-a-o-u
+they mapped it out for colors and they
+find that there's like a color map for
+how people see it and that maps across
+swedish and english i think it was
+swedish in english
+so
+that's interesting as well that there
+could be
+you know these subconscious correlates
+thanks steven blue
+yeah so i mean i really don't know that
+we know enough about a thought and like
+this reminds me of um our guest stream
+with shanna dobson like
+what is the fundamental unit of a
+thought right and and so i know in
+a biological sense like the fundamental
+unit of a thought really kind of has to
+be the action potential but
+like is it one action potential is it
+like some critical number of action
+potentials that instantiates the
+thoughts so i don't know um and
+definitely like there is that that
+propagation or like a spreading some
+contagion maybe to like other brain
+regions in synesthesia i think that
+that's been pretty well established like
+that there's like some crossed wires and
+so like you get auditory perception for
+example in the visual cortex and so i
+know that there's that relationship so
+that kind of does like lend itself to
+this idea of like the thought
+propagating through different um areas
+of the brain that but that's in in a
+very incorrect sense i just wonder even
+in normal people does a thought like
+what is a thought how many action
+potentials make up a thought and then
+does that can that move around like
+within a region or to different regions
+is that actually what's happening i mean
+i don't know that we can quantify that
+at all but it's just it's interesting to
+think about
+not to always come back to aunt hillary
+the ant colony in geb but that's the
+analogy that hofsteder makes it says if
+ensembles of neurons are transiently
+activated and even for the same word
+it's a different ensemble of neurons
+which is increasingly what molecular
+neuroscience is showing to be the case
+and similarly with the ant colony it's
+like the task group is assembling and
+disassembling and reorganizing the idea
+of a thought is still that noun centric
+approach
+which would lend us to want to find a
+static representation versus like a
+thinking unit or something that reminds
+us that it's a process that thinking is
+a process
+um
+so one comment and then a nice question
+in the chat
+about the mediator and the meditation so
+let's go to figure five which is
+again one of the
+main contributions of the paper
+so it's this three
+level
+nested structure
+and
+the outputs of one level
+influence
+a lower or an interior nested model so
+on the bottom in blue
+is the perceptive states like what am i
+perceiving is it
+light or dark
+the second level is the attentional
+layer so contrast this with for example
+lstm
+or other types of attention based neural
+network
+architectures which are not based upon
+first principles
+uh per se
+and then what this paper adds in
+is
+not just the affective components
+but actually this
+precision of how aware am i of where my
+attention is so then thinking about the
+mediation and meditation i thought well
+one mediation that might be happening in
+active inference
+is the mediation between epistemic and
+pragmatic goals so that's kind of like a
+seesaw and there's some sort of
+negotiation happening
+with free energy minimization that is
+balancing it's mediating these two goals
+when the two goals are perfectly aligned
+great then it's like we agree
+but when they don't perfectly align when
+the pragmatical just wants to run up the
+mountain and then the epistemic goal
+wants to ask
+should we look around and see if there's
+another way that might be better in the
+long run yeah can we go around exactly
+dean solenoid yep the solenoid will flow
+and so
+there's sometimes a tension there and so
+that's one type of mediation
+but then
+using the mediator more like the the
+higher level diplomat here
+it's almost like the green layer
+is serving as a mediator of attention
+by
+calling awareness to it and this is
+awareness of awareness that's why it's
+metacognition
+but it's mediating
+the dynamics of the second layer which
+end up cascading to influence the
+perceptive layer as well
+but
+in a sense it is mediating
+the activity of the second layer and
+certainly this is the level that in the
+paper they're saying is where meditation
+rests that's why when we just had active
+inference plus attention we didn't have
+papers on meditation
+but now that we have active inference
+plus metacognition awareness of
+attention
+we bring in this whole experiential
+dimension
+with meditation stephen
+one question i might have here
+um
+at that bottom and say what am i
+perceiving so that's kind of fair enough
+there's that kind of
+what's
+you know i was just thinking about
+and then what am i trying to do
+now there's an interest rather than what
+am i trying to perceive
+which is kind of interesting how they
+went for that because
+i mean i'm just thinking about there
+could be that time for instance i'm
+perceiving someone's i know saying i'm
+perceiving someone's got a bit of food
+in their teeth right
+and what i'm trying to do is listen to
+what they're saying
+but i'm seeing that bit of food it's
+kind of hard now
+so then what am i paying attention to
+but what am i trying to do is an
+interesting one because in some ways
+you could say what am i trying to do
+i think implicitly saying what am i
+trying to do with my sense oral
+apparatus but it's a bit longer
+um rather than what am i trying to do
+which which could be a higher policy
+level
+thing yep
+great question i think one possible
+answer and this relates to potentially
+the slightly different way that active
+inference partitions
+problems than other domains is
+your preference
+would be that the other person doesn't
+have your preference at the first level
+would be to see no food in the teeth so
+there's two states in that preference
+vector um in the in the c vector which
+isn't going to be shown here but the
+preference would be to not see the food
+and then the policy
+of the first perceptive layer is ocular
+motor
+the policy is what can be controlled at
+that first level
+so you could avert your eyes as a policy
+that's one way
+of not getting the visual stimuli
+however
+you can still hold it in your memory
+that it is likely to be that case so
+that's an example of like a hidden state
+which is the state of the food all
+you're going to get is photons
+corresponding to whether there might be
+food there or not and then you're doing
+hidden state inference now even though
+it's a visual so it's like why is it a
+hidden state if it's visual because it's
+actually your onboard state estimate
+of something that's out there
+you're
+seeing it through visual mechanisms but
+at the first level
+the policy is for how you can move your
+eyes
+not
+some other higher level policy yes
+stephen
+yeah that's that's quite a good uh way
+of thinking about it and i think it also
+shows
+like how it
+is probably more easily tractable when
+you say you have the visual you have
+something fairly clearly
+on the visual
+um or a particular sensory
+modality um then you could see how the
+attention shifts now obviously in in our
+in much of our life but maybe not so
+much in meditation because we we are
+able to attune to
+certain sensory
+uh roots
+more clearly but in daily life
+it's all mashed together so much that it
+probably is part of the reason why it
+becomes imperceivable because
+you know your body might be
+in the mode of
+the bigger goal are you getting to work
+on time
+um and then your visual thing in that
+real time is trying to listen to the
+conversation with the ticket collector
+who's got a bit of two food in their
+mouth in their tooth or whatever so you
+and it would all become hard to make
+this tractable you know because this
+this isn't necessarily set up to think
+about multi
+um sensory integration not that it can't
+but that would start to distort this
+it's probably easier to think about this
+where is a fairly clear
+modality at play
+another thing to know is we don't
+necessarily talk about goals in the
+active inference ontology we have
+preferences
+which are over sensory outcomes and
+policies which are action capacities
+action sequences that we're choosing so
+goals are
+they're a word and people know what
+we're talking about but in this model
+there is no goal for anything they're
+just preferences and policies so i want
+to
+read this question
+which is going to be interleaved with a
+definition and then it will be an
+interesting question
+so liberty wrote
+still reading through the paper aren't
+we all
+which seems deeply complementary to
+metzinger's account of m autonomy so i
+just want to read a definition of m
+autonomy since it wasn't a term i was
+very familiar with and this is um a
+a paragraph written by christoph delega
+who is also in the active inference
+community so kind of
+thanks for going out in front helping us
+be clear about our definitions and so
+what christopher wrote was
+in his recent article metzinger 2015
+argues for a new construal of mental or
+m autonomy
+that's the m as a functional property
+which consists in the deployment of a
+special kind of model one which
+represents the self as an epistemic
+agent
+this epistemic self model is and then
+here's the quote from metzinger
+a global model of the cognitive system
+as an entity that actively constructs
+sustains and controls knowledge
+relations to the world and itself
+metzinger 2015 page 272
+so
+good call liberty definitely we're
+hearing words like epistemic and
+self-modeling and active states that
+seem to bring us close to active
+inference and so their question was
+how do processes such as intentional
+inhibition
+inform
+a formal account of cognitive control in
+your opinion
+so we can look at five while this is up
+and people are thinking or
+just let me know which slide to go to so
+steven first or blue you want to go
+just reread the question one more time
+how do processes such as intentional
+inhibition inform a formal account of
+cognitive control in your opinion
+so stephen and then anyone else who
+wants to go for it
+um so intentional inhibition
+um or unintentional
+uh
+uninhibited
+behavior or inhibited behavior i suppose
+you could have it in different ways um
+i think what for me what's interesting
+with this when you start getting into
+um
+how we relate and how we fit into our
+social
+landscape so to speak with that type of
+thing
+is
+when we because inhibition tends to be
+something you're thinking about in a
+social context within reason
+it's like that thing about dances if
+you're on your own
+um
+i feel that is a really good case for
+where there'll be an intern locking
+model such as the type of work used in
+mental space psychology to mediate
+um this metzinger
+um
+uh
+knowledge
+structure
+because that then gives you a kind of
+an embodied inactive
+framework
+which the brain can actually
+use as a kind of meta model in
+peripersonal space
+um so i think that this is a quite a
+good
+point here is at what point
+um
+do we need to have a mediating
+embodied um
+sort of
+metaphor or structuring to help some of
+this
+pass out into the complex domains of a
+social setting
+thanks steven
+dean yeah i just think it's interesting
+that if you
+if you think about inhibition and you
+think what the effects of that are
+you can actually control the situation
+if you don't talk because we all hate a
+void or a vacuum and so by not
+expressing
+sometimes you you pull other people's
+expression into
+more than you maybe even anticipate and
+so i
+actually
+have found
+people who are
+less extroverted a little bit more
+introverted tend to have a lot more
+power in these kind of co-variational
+situations that maybe they believe they
+possess
+i know the people that are extroverted
+think that they're controlling the
+conversation but
+just stare blankly back at somebody and
+really pay attention and listen
+and you'll be amazed at how much control
+you actually possess in that in that
+relationship
+i have a thought on that but blue first
+go ahead mine's unrelated it just
+reminded me of the sort of street hustle
+dynamic which is on one hand that person
+must be
+superficially extroverted i mean they're
+coming up and speaking to a stranger if
+it's about a chess game or they're
+selling something or they want you to go
+to that club in las vegas
+that is a very extraverted social
+activity
+but the art and the science of that
+straight game is actually about what
+dean just wrote or said i guess like the
+introversion that brings
+the other person and elicits them
+to feel like they should put out their
+personal information into a void but if
+someone's just like chat chat chat chat
+chat
+there's no space for them to become
+vulnerable to feel like they're part of
+the conversation and ultimately to
+reveal personal information so it it
+shows that um
+of course we're using the introvert and
+extrovert little loosely people say oh
+it means they draw their rejuvenating
+energy from being alone or in public
+like there's different definitions but
+it just shows that actually it's not
+just about
+saying something or being the first to
+speak
+that can also be a superficial mode of
+control and that there's a deeper mode
+of control
+that actually has to do with picking and
+choosing your words as well as when to
+use them
+blue anything on that
+so unrelated but just going back to
+inhibition stephen do you want do you
+have something directly related
+um well one little thing just just a as
+a comment is one thing i remember
+when they had the the press inquiry in
+london about the levinston inquiry and
+rupert maxwell had to give evidence
+about his newspaper empire one thing
+that was really noticeable and they were
+saying this because he was like you know
+he's a very obvious he's a high level
+executive etc he always took his time
+like when he was asked a question it was
+almost like he was always used to having
+the time
+to think through his answer
+say what he needs to do and be able to
+reply his own leisure
+in a way that other people might not and
+that that also speaks to that power of
+when someone who's presumably quite
+dominant and be able to be forceful also
+can they know they can hold the space
+and there's probably some element of
+knowing how much power you have to be
+able to get away with that and no one
+else steps in so that's quite
+interesting anyway thanks
+blue then dean
+go ahead dean you've got some retort so
+i'm gonna go back to inhibition when you
+guys are done yeah yeah no i i i think
+it's just really interesting because
+i've read some stuff about
+if you're an fbi interrogator one of the
+tactics that's actually trained into fbi
+interrogators is to be
+intentionally inhibited
+interesting so there's
+intentional in the social intentionality
+and then i think
+could be
+otherwise but it seems like metzinger's
+account and and liberty's question
+is about the intentional inhibition
+within the agent as a mechanism of
+cognitive control but it brings us right
+back to this idea of the vertical
+nesting
+and then in that situation intentional
+control
+is kind of cascading from the top
+but then also there's intentionality
+laterally like i
+am intending to control somebody else's
+cognitive state
+and so that's actually one reason why
+it's important to have a model that's
+kind of like legos in two dimensions
+because these active inference models
+they plug in really well
+nesting
+internally
+so we can talk about top-down cognitive
+control and maybe have intentional
+inhibition as a phenomena within a
+broader science of mental action which
+we can get to in 12
+but also
+we can just as fluidly use some of the
+same variables and some of the same code
+some of the same formalisms for the
+kinds of intentional control that
+happened laterally so it's like when
+somebody is taking a deliberate pause or
+somebody asks a really hard question and
+then they go
+they take their time with the response
+that's an intentional cognitive control
+which has traditionally been the realm
+of the sort of psychology perhaps but
+then that can be understood to be
+deployed
+in a cultural context by which it's
+being used to intentionally control
+others states and so we can have a bunch
+of different agents each consisting of
+nested
+models like this
+and we can
+stack them up vertically as well as have
+interactions laterally because
+intentionality is deployed in both of
+those directions stephen
+yeah and following on to what you're
+saying this this then starts to
+there's a big gap in
+basically between psychology and
+sociology
+which is this idea or i suppose you
+could in many cases teams is one area
+where it gets looked at you know is
+you know it's great you can take an
+average and you can take your
+statistical averages you get your
+sociology
+within in many cases and you get your
+individual
+but um
+part of the reason that we end up there
+is
+not because they're the most useful
+places to be is because you can measure
+them you can get units of analysis which
+you can
+do stuff with
+and the inter-subjective stuff around
+four or five people is is a huge
+challenge right because
+you can't ignore the complexities of the
+individual yet you've got the
+complexities of the group
+and
+so that speaks to to that you know that
+ability to now start to get in and say
+okay well
+let's say we can tease out some
+generative models or
+not even generative models i don't think
+but to be able to tease things out a way
+which maybe can make meaning in group
+context and this participatory sense
+making that's that's really what is is
+moving things forward i think
+it almost makes me think of
+someone who can facilitate a group and
+it's like i know you intended to just
+share what you're excited about but
+you're unintentionally exerting
+cognitive control on other people
+by
+bringing up this topic or by speaking in
+this way so it helps us look at that
+vertical intentionality and the lateral
+social intentionality together
+maybe even
+not just with the same model but on a
+common footing
+of precision
+precision within the individual and
+precision of the team so it's like these
+are the real
+nuts and bolts of where integrative
+models matter if we had a totally
+disjoint model for what was happening
+inside of a head and then
+across
+bodies and brains
+we wouldn't have um
+the market to sort of flip back and
+forth between those currencies per se we
+would need another third level connector
+theory so it's like if you have one
+theory in theory b you need to invent
+theory c in the middle but if you have
+just one integrative theory then
+it's just a question of how it all works
+together dean
+yeah just one last quick comment i think
+it's really interesting that uh
+that an inhibition
+can be seen as a as a as a tactical
+stance and a reveal on those markov
+blanket hidden states
+i mean that's
+i'm not sure it's a cipher because you
+don't actually know what the other
+person if they're going to sort of be
+drawn into something that they otherwise
+wouldn't but i just think it's really
+interesting that
+we
+we assume
+that we have to keep the conversation
+going
+and we don't assume that maybe one of
+the ways to
+to do that is to not say very much
+and to give one neurological comment on
+that
+perhaps back in the day people thought
+with the higher orders of the brain the
+higher thinking processes being the
+generative and the creative processes
+since those are the human specific ones
+and were generative and creative and so
+on but when you look down to the synapse
+level
+the frontal cortexes are actually
+using inhibitory control
+so it's this model where it's like we
+can actually
+be creative and we can be generative
+through the appropriate
+inhibition we don't need to have this
+passive midbrain that gets exalted into
+activity by a really smart forebrain
+rather we can actually have the
+endogenous wisdom and activity that
+never seizes
+with targeted inhibition
+coming from
+some other parts of the brain
+i'm sure
+that was a simplification blue so i know
+you could say more on that
+no so that totally like leads into
+exactly what i was wanting to say
+earlier about inhibition and cognitive
+control so like if we were in this
+overly
+neurologically like neuron to neuron
+excited state i mean that's a seizure
+right so when you're you've got over
+excitation in the brain it's it's not
+always good but but so i mean to what
+intent like to what extent does
+intentional inhibition right this is
+going back to the question that's what
+they said intentionally
+so when you have intentional inhibition
+i wonder and this goes back to what i
+was saying about meditation like
+shutting off the fundamental unit of a
+thought so i wonder if intentional
+inhibition when you refrain from
+blurting something out or when when you
+practice restraint or or you know
+refrain from letting your thoughts
+wander so when you inhibit yourself this
+intentional inhibition i don't know but
+it's curious to think about does this
+correspond to you know there's activity
+in the brain excitatory makes more
+action potentials happen and inhibitory
+makes fewer action potentials happen so
+when i do this kind of intentional
+inhibition
+does that inhibit my neurons in a
+corresponding way i'm curious i mean i
+would guess because it it just you know
+i mean at least in the meditative sense
+i would think inhibition of an action
+potential propagating forward
+so it's a curious thing to to wonder
+about
+to what extent does intentional
+inhibition exert cognitive control at
+the molecular level
+[Music]
+thanks blue steven
+yeah that's
+actually got me thinking now on sunny
+that's quite
+um
+that
+that question about the higher level
+lower level i think and this this is a
+really interesting piece oh actually and
+it ties back to what i was thinking of
+asking as well about figure 5 where you
+put subliminal
+processes and maybe conscious processes
+i think that's an interesting
+point on figure 5 that you've there
+because maybe it's the middle bit that's
+more conscious at certain times
+and the top bit is actually never quite
+aware of you're only able to effectively
+feel
+and the you know so there might be that
+it's actually the middle layer there on
+figure five that's conscious
+um and i i like what that's actually
+really interesting if it's inhibitory
+because
+there's an interesting model i i've been
+trying to work with called dilts logical
+levels um
+um and you've got the kind of the
+identity level which i'm if i map this
+onto the the identity level or the face
+um
+could be seen as what broadcasts um
+where we are
+and
+some of that we're conscious of
+and some of that we're not you know so
+and then we've got where our awareness
+is in the moment and then we talked
+about this kind of
+lower level which you can only you're
+sort of aware of but it's again it's
+slightly outside of that crystal clear
+um question so i wonder one figure five
+and maybe this is a question for daniel
+because it might be put that i don't
+know if you put those on there
+you know where you put we've got
+subliminal and awareness and
+um how is this interface mediated and
+i'm kind of wondering what i'm paying
+attention to maybe what is actually
+awareness in
+a
+like sort of i could tell you sense and
+the top one is an awareness in a kind of
+a
+fail almost like a metaphor it feels
+like this to try and
+have that meta awareness but you can
+never quite get a handle on it you know
+great point and
+totally open to anyone's insights or the
+authors or otherwise
+but this first level is again about
+sensory perception
+so
+it is possible that the second level
+is the reportable opaque state that's
+one of the innovations of this paper
+and there would have to be another level
+to make this state at the very top
+reportable so it might be the case that
+this green
+topmost layer
+is the felt awareness of
+where one's attention is
+as well as their preferences for where
+their attention should be which might be
+scaffolded by meditation saying
+it's awesome to focus on this mandala or
+it's awesome to focus on compassion so
+these are shaping preferences
+over policies
+for how aware one should be it's great
+to be paying attention and then the what
+is one paying attention to is where
+those policies are uh influencing yeah
+where the attention is being paid but
+when somebody says like you know there
+was a car crash and i couldn't look away
+it's almost like well the first layer is
+that they were perceiving
+cars on the road
+the attention
+they're reporting is that
+they were paying attention to that
+but then there's this implicit third
+state that they were aware of where
+their attention was
+otherwise they wouldn't have been able
+to report i couldn't have looked away
+so they were extremely aware of where
+their awareness was
+that's what metacognition brings in
+that simply attention doesn't
+and
+again another argument for first
+principles theories that work really
+well in this sort of composable way
+because there are
+neural network models with so-called
+attention but where would you put
+metacognition in there might be a
+variety of ways to do that and maybe
+some would be practical and some
+wouldn't and maybe some would be
+implementable with the tools you already
+have maybe others wouldn't but here when
+we can just look at the skeleton of the
+model
+we can
+come to some pretty interesting places
+just by working with what's composable
+rather than just sort of trying to make
+it um
+fit well first
+and then make it composable in
+understandable seconds
+we're beginning with composability and
+comprehensibility and then the question
+about how it will fit empirical data
+well it's an empirical question
+stephen
+yeah this is interesting you can bring
+in empirical data you've got that
+advantage of potentially
+say the subliminal layer it may not be
+self-reports it could be that you could
+use other
+measures you know brain scanning and
+other things to give a sense of when you
+know what is coming in there
+and of course as they mentioned because
+attention
+and again this is where we get caught in
+our own need to make sure the literature
+can hold together you know attention as
+as was mentioned by lars is kind of
+relatively uncontroversial right but uh
+of course you get we we know from
+phenomena you know you you sort of can't
+help at some level get into the idea of
+consciousness right because
+conscious awareness
+of attention is that kind of interesting
+thing so when it goes to what am i
+paying attention to and what am i
+conscious of and then you get into
+phenomenological phenomenological
+consciousness or access consciousness
+coming into play
+um and it gets a bit fuzzier
+so um but i think
+at some level you you you you're gonna
+start to hit those
+um
+in between those two you're sort of
+hitting that kind of fuzziness of
+where that sort of goes and then the
+next level up again
+um
+probably is
+more maybe it's actually more clear from
+the next level up when you go from
+uh attention to meta awareness of
+attention but i think the the bit this
+might be a
+whole shift in ontology even could be
+that shift from
+how you're
+perceiving or
+and how that translates into an
+attentional state
+yep so in to kind of bring it to
+multi-level or multi-level and
+multi-sensory integration
+the perception can be of two different
+kinds like what gets passed to the agent
+at each time point might be a visual
+measurement
+and a temperature or proprioception and
+then
+the policy
+what am i paying attention to
+could be reflected by paying attention
+to for example visual input as opposed
+to some other type of input
+and then one could be aware or not
+of whether they're paying attention to
+the smell or to the sound or to the
+light
+so
+how these models get integrated with
+then
+non-first personal measurements that's
+kind of what we explored in this future
+phenomenology slide with like okay where
+do we bring in
+empirical
+measurements
+and we kind of align them on the same
+time series and we can bring in
+any kind of measurements we don't even
+need to
+um
+limit ourself anything that's measured
+through time of any uncertainty over
+that measurement we can kind of cobble
+it together into this model
+what are we doing it for
+what do we want to know with those
+measurements
+probably a lot of things that we could
+address there
+maybe for the
+45 minutes let's at least go to 12
+figure 12
+yeah and
+talk a little bit about
+just annotating or exploring
+this
+figure
+so in five
+again main contribution of the paper one
+of them
+was the explicit three-level model with
+um
+what is being perceived what is
+attention being paid to and how aware is
+one of that
+here we're dropping back to two layers
+with the understanding that we could add
+another level like a green layer on top
+of the orange one that then connects
+back down to the orange one
+but look at some of these new parameters
+that are introduced
+in this paper
+um namely all of these gamma subscripts
+so gamma are the uncertainty variables
+now there's a gamma with a subscript
+modulating
+a lot of the
+other parameters
+that previously have been presented just
+as kind of standing alone so like for
+example
+in um
+figure five you
+just have like preferences in the second
+level the preferences just exist and the
+affordances e they just exist
+now in 12 we're thinking about what does
+it look like to have an uncertainty or a
+precision
+being the
+inverses of each other
+over
+d
+the prior
+c
+the preferences
+g
+the free energy minimization
+e
+the affordances
+pi is the policy
+and then we have an uncertainty over b
+which is the matrix that defines the
+transition between hidden states
+so like given that i'm inferring it to
+be raining outside what is the
+transition probabilities of it staying
+rainy versus becoming
+not raining
+and then we also have a which is the
+matrix mapping between hidden states and
+observed states what's the relationship
+between the observation of photons and
+whether it's sunny or not is it a simple
+matrix just a clean mapping you can just
+sort of simply have a hundred percent um
+of the time map it or
+is it the case that you're very
+uncertain about how hidden states are
+connected to observable outcomes
+so those are just just to sort of recap
+what these parameters in a model mean
+but maybe if anybody wants to like
+highlight one of these
+precision variables
+just what's one that they're drawn to or
+they're curious about or
+what's one that might have applications
+in different systems
+daniel i i would speak to it but i
+in order for me to sort of explain it in
+a way that i think would make sense
+might mean i
+would have to speak for a while and
+hijack this would people be comfortable
+with me talking for a couple of minutes
+please
+okay
+so
+i kind of look at this from the
+perspective of when in doubt zoom zoom
+in zoom out in order to compute
+something and this is a computational
+paper um
+i kind of take a whole cloth or a whole
+markup blanket approach
+of precise or precision as the paper
+kind of does a good job of laying out as
+precise
+ie figure 12.
+so on the topic of meta awareness
+meaning and collective decision making
+between the greatest and the smallest
+distances that we can be aware of we
+have information geography
+if you're searching for meaning and edge
+precision things like contrast and
+proportion
+as a fitting process i often think of
+like the 16th century maps of north
+america when the explorers
+first hit the coastlines
+and then there's information geometry
+when you're putting a dimensional space
+together so that's fixing the topology
+as a precise representation
+of difference over distances
+i've already shared in the 21 or 28 one
+thought i've got this generative model i
+call it the unholy triad which is in
+essence a computational phenomenon
+phenomenology
+context generator
+that translates uh prediction error
+reduction meaning we try to give people
+a sense of prediction manage management
+expertise
+i want them to be able to turn that that
+ability to predict into a contribution
+for me it was trying to create a
+professional contribution for high
+school kids
+so what does that mean it means getting
+to the geo the geometric and the
+geographic essences of a situation
+that you've never been in before so it's
+a pretty big markov blanket inactively
+it means generalized and transfer
+regardless of that degree of novelty
+it means understanding learner
+availability to phenomena as much as
+collecting data on learner attention
+which is what this paper is kind of
+focused in on it's not about studying
+the swallow and regurgitating
+information
+as a content cycle
+which is a standardized form of learning
+measure which is also an irony because i
+had to take these models here and give
+them just 16 to 18 year olds by using
+things like when in doubt zoom in zoom
+out because they i could present them
+with this but this would be
+sanskrit to them they wouldn't
+understand it at all
+[Music]
+so then what is a precise proposition
+as create a professional contribution in
+that to be materialized or propositional
+sense and in the paper
+i think i talked about this in 281 there
+was a passage in the paper that talked
+about
+and i'll just read it out it says in
+computational terms the central place of
+confidence
+and reliability and effective
+self-regulation speaks
+to the key role of precision
+and then they say that's the inverse
+variance of implicit beliefs
+and then they talk about
+as an example probabilistic or
+posterior-basing beliefs
+that describe a probability distribution
+over some latent quantity
+and i talked
+last week about
+going across the street
+so there's a calculable risk in that
+and then back to the paper it says these
+beliefs are subpersonal meaning that
+they're unplanned however the argument
+pursued in this work is that basic
+beliefs about beijing beliefs can
+in certain situations
+become propositional and and the way
+that those things are estimated
+optimized or controlled that's referring
+to hesps casper's work
+precisions in a nutshell quantify our
+confidence and our beliefs say how
+confident we are about what we know
+about states
+of the world about their relation to our
+sensory observations or about how these
+states change over time by analogy of a
+physical action a mental or covert
+action consists in deploying and
+adjusting these quantities
+without there necessarily being an
+explicit behavioral counterpart to these
+covert actions
+so for me
+if we're computing a transformation of
+unplannable to metacognitive from
+perception of
+i'm aware of planning to make a plan
+because i can think about my thinking so
+what of this policy of attention
+then what i attend to tells me what when
+i'm losing focus
+that's what the paper said and i agree
+check
+that's one way of measuring that and
+in the crosswalk case study you have two
+propositions both are precise in terms
+of their
+their dissem disambiguated paths
+and both are examples of a nesting study
+in this case crossing a nest or a
+roadway
+and then what happens regardless of the
+awareness level inside or outside of the
+physical and the hypothetical lines this
+is what i would be asking people that
+were going to go into these novel
+situations if we don't select right away
+if we keep things open
+if we keep probability distributed
+across a propositional horizon of
+potential street crossings is precision
+lost as an openness
+as a district as a distribution
+collection versus a focal point
+attenuation which is i think what this
+paper was examining
+perhaps a way of probing this might be
+to say that the concept of scale is
+fluid
+that it's the potential for scale change
+that scale itself overtakes or retreats
+from as a directional inflation
+or deflation
+and sometimes we talk about that as a
+directional gradient to center descent
+in this sense scale either obliterates
+or gap increases which scott talked
+about having an epoxy
+and i agree with that
+that what we consider to be inside or
+outside the lines is not static due to
+our relationship our betweenness to the
+focal point of interest
+this is somewhat
+this is a somewhat conventional
+explanation of scalable behavior but i
+think there's a second part to this we
+have to
+keep with that first and that second
+sense
+which together with the first part
+generates another type of between
+which is a matter of the geography in as
+in edge precision
+and geometry out as in of difference
+over
+at once at this exact same time
+that supports the very notion of and has
+scale scaling down or scaling up
+so that's that up and down part we were
+talking about earlier today in my
+experience is very much the addition of
+this second sense
+as a parallel probing that works there's
+no violations
+of the bringing in the statistical and
+the physical mechanics together
+that active inference parameterizes as
+an hov or high occupancy vehicle
+lane as a metaphor more
+than intersectional
+intersectional is pretty much
+interventionist
+and it's kind of an instructionalist
+only reinforcing
+view or perspective
+in the in the hov lane metaphor
+you are in
+as self-organizing
+your non-interventionist because you're
+a constructor you're an interactor of
+line live stream lines
+and i use the example of a 28 0 or a 28
+one in the way that we set the live
+streams up
+if you're outside the hov lines you may
+be you're re-watching
+something that you were a participant in
+or
+perhaps you're using the 0.2 part of
+this
+as a way of sort of detaching yourself
+and being able to appreciate scale
+so math is not the territory but the
+math is both the diamond shape on and
+above
+the parameterized state space that road
+that we now say is high occupancy
+vehicle it shows the signals
+meaning the geometrics and the
+restricted fit the geographics
+that is two plus in the car mathematical
+quantity enables
+again you have opaque passengers
+and transparent traffic congestion
+reduction check
+that's what this paper talked about
+but i think we also have to consider
+that the contrast meaning that the text
+in the background are different colors
+and the proportion meaning the depth of
+field is adjustable
+is necessary to dial in the resolution
+and the resonation daniel you spoke
+about resolution and resonation mostly
+about the resolution and the point one
+and so i wanted to really come back to
+that a bit
+this is collected phenomena this is not
+i am attending or i realize that i'm not
+attending but i think it's a big part of
+this attenuation versus collective
+thought piece that we're trying to
+get some sense of order and relationship
+around
+if we want context generation the in
+plus the out equaling context to play a
+former role formal role
+in what we decide or define sorry as
+precision it's something to think about
+when looking at logic as a formalism
+the accessing of data collection sets
+which we've talked about again quite a
+bit today
+uh talks about the definition of a
+precise bigger picture as a distributed
+collection
+and then like i said in my work that was
+coming up with a professional
+contribution
+it also speaks to where there are
+relationships
+through lines
+like like a real physical line and those
+blankets that we keep talking about as a
+process
+and that also talks about what scott
+talked about in the la in the 21.1 is
+borrowing from the model has both a
+quantity and a quality determination
+i think it at the end of the day it says
+instead of just looking at how and why
+we have to look at the when
+we're inside and outside the lines the
+who
+our relationship to all of the uh
+traffic that can be crossing the road
+and the which
+which
+do we look at do we look at the figure
+12 or do we zoom out and add a third
+layer i don't think it really matters as
+long as we're prepared to look at both
+so that is that is in to me the essence
+of what a free energy principle as
+unplannable
+to
+cognitive metacognitive
+world
+looks like and i don't know that it's
+easy for people to sort of put all of
+that into a nutshell but like i said
+it's kind of a whole cloth
+whole markov blanket thing and as you
+mentioned daniel in the last
+in the last live stream it's it's we
+want the first principles to be able to
+generalize and scale up
+but i think the only way that that
+happens if we is if we don't see it
+as either always inflating or always
+deflating but we see both the geometry
+and the geography sort of working hand
+in glove with that i think that's how we
+derive a fit here
+nice dean
+thank you
+very interesting um
+i guess steven or blue or anyone else
+feel free to ask a question but just a
+few notes on that
+so one is it's a subtle design choice
+but notice that the green wraps around
+the whole box
+and then the orange wraps around the
+blue
+so it's not just like three legos
+placed one on top of another it actually
+is a zooming in and out and so that
+moves us towards bucky fuller's dream of
+you know i went in stairs and outstairs
+rather than upstairs and downstairs
+because
+it's not up and down for everyone just
+say it's in and out because you're on a
+closed surface so
+that was about zooming in and out and
+it's not that we're even necessarily
+moving again we talk about top down and
+bottom up and that's vertically how it's
+arranged here but perhaps
+um inward out and outward in will make a
+lot more sense when we start to think
+about what these models are really doing
+and um you brought up the idea of using
+the dot two and so that was interesting
+to think about resources and artifacts
+that might be considered epistemic i
+mean it's research we're talking about
+papers but how do we use
+resources rather than just learn from
+them so seeing them as action artifacts
+rather than just epistemic artifacts
+and then also just this idea that
+where
+will we have precision can we have
+precision in our policies
+how do we
+instruct a high schooler or younger
+their world that they're going to be
+having a career in and that's what it
+sounded like you were working towards
+was some sort of you know helping them
+get on a trajectory where they could
+have support and everything
+it's going to be changing a lot
+so
+it's like i'm sorry i can't give you
+precision on
+whether crypto will be important in 15
+years or something like that it's like
+we could write a million papers on that
+and just not know the answer today
+what can we have precision on
+and then this really pushes the question
+um
+where can we exchange our uncertainty
+and where what what should we focus on
+so that we can have focus on if not our
+own policy like i'm gonna go on a walk
+every day but our own attention
+and that kind of covert mental action um
+to bring it back to intentionality might
+be
+what we will always remain sovereign
+over is our attention
+stephen
+yeah i think
+the
+the this this nestedness is important
+and i think of course time is part of
+that as well because these lower levels
+happen quicker
+and i wonder dean what your thoughts are
+on this um
+in terms of
+when we look at these different
+variables that can now come into play on
+figure 12.
+i mean they're kind of okay you're going
+to start to have
+variational potential to vary
+how you set because in theory that every
+one of these values is is there
+implicitly just can can't be varied
+right it's like there's there's there's
+some sort of precision somehow in the
+system but theoretically now okay you
+can
+access or change the precision on your
+prize and your generative model on your
+expected free energy
+as well as on your transition matrix
+that gets you the sensory states and of
+course then this question is okay now
+it's showing this in one
+level
+all these arrows come together somehow
+it's like that mystery well how does
+that happen right like is it a case that
+they're all
+firing out with like okay well this is
+what it would be like if
+um
+you know
+my updating of states was to have a
+different precision this is what it
+would be like if my generative model was
+to have a different precision this is
+and is there almost like a a whole array
+like imagine going in and out of the
+screen here of temporal depths or
+even
+different sort of combinations of these
+uh
+you know precision estimates and maybe
+the top level has to basically choose
+and and maybe at some point the lower
+levels if they don't get chosen very
+often they die down you know i.e like
+the
+seven legged unicorns running across the
+street isn't selected very often so it's
+like left to one side
+um but maybe with creative people they
+tend to like keep all those things
+firing which may not be healthy if you
+go too far with that
+um so i'm because there is there is a
+question there isn't there is how
+as we start to bring in these other
+ideas is okay so what what what's that
+what's that ability to to bring up
+a precision estimate on an a matrix
+for looking at observations into states
+and to integrate these with these others
+you know and
+is that is that just
+you know integration you know are we
+just gonna start to have kinds of
+things like you're saying if you if you
+have a particular change in in how much
+the priors are changed
+um
+and along with the model you know then
+what does that do
+yeah i actually have some some thoughts
+on that stephen it's interesting because
+i think all of these figures and every
+paper has their figures because they
+show their model i think that that model
+is kind of a reflection
+and i think the other thing that tends
+to happen is if you if you do reflect on
+so what what was i trying to perceive
+in terms of sort of a metacognitive
+here's now i'm now i'm thinking about a
+process
+i don't think we do that in isolation i
+think the environment kind of acts as a
+scrutinizer as well like you guys are
+scrutinizing what i'm saying right now
+and i'm hoping that i'm not saying
+something that's so completely obscure
+that it it sort of continues to build on
+what we're all sharing in terms of what
+we're taking away from this so i think
+there's an updating of updating and
+that's when
+when um
+lars was talking about that in the 28
+one i was kind of nodding because yeah
+that's
+i think that's a that's a vital
+component it's not
+sort of written out explicitly in this
+model here but i think
+we should assume
+that when we're zooming in and zooming
+out
+we are reflecting
+so we're taking something and we're
+stretching that time frame
+and then the thing i think the second
+thing that we can't sort of leave out if
+we're context generalizing is that
+context that environment is acting as a
+scrutinizer it's giving us feedback all
+the time
+so that we don't get stuck
+in one place that time actually and
+change actually does
+becomes something that we're not just a
+we're aware of but we're actually
+utilizing
+so that rate of change pieces i think
+we don't necessarily impose it i think
+it gets imposed on us or maybe i'm wrong
+but
+yeah i haven't seen any evidence to the
+contrary yet
+um actually that's that's a good point
+if i just jumped in those is
+yeah i mean a lot of this stuff
+could i mean it actually starts to
+support the inactive approaches in a way
+i suppose
+you actually start to see now that
+you're back into the realm of well how
+could you
+start to blend all of that it almost
+needs to be maybe hardwired into
+an active kind of
+dynamical biological
+thing
+the technical term um so
+because
+it's not necessarily tractable
+purely however there may be parts of it
+which need to be more cognitively
+uh and can only happen at a sort of a
+more structured cognitive
+level you know so
+there's this question about what what
+can be inferred
+through acting in the world in different
+ways and like you say the
+you will find out when you bang into the
+wall or when you or you just find out as
+you drink a cup you know you feel that
+you're feeling
+you know hamilton's least action
+obviously becomes one of the options
+there is that would come in with a free
+energy okay
+what seems to be the
+type of configuration of precision
+estimates that kind of gives the overall
+least action
+um
+if that's if that information is
+available
+and so now you have a
+way to integrate those
+um in one context which may provide the
+general structure which is good enough
+to to to work with them in other
+contexts you know maybe that there's
+some sort of
+plausible
+so it sort of moves beyond neuro
+phenomenology
+and moves a bit beyond the body and
+you're now in you are in the mind body
+environment dynamic you know
+yeah i think the really interesting part
+is
+when in doubt implies
+you're you're you're stuck
+you're not maybe taking action
+so zoom in zoom out like don't just do
+one or the other
+be prepared
+uh and actively but also from an active
+inference perspective to
+infer the geometry and the geography
+that and i mean make that explicit
+make that make that a part of your
+strategy your tactics it's actually
+it's more inhibited than most people
+think
+but in terms of in terms of what you're
+going to do is you're not going to get
+stuck on
+level one
+or level three you're going to actually
+be able to go across levels that's why
+there's an envelopment in a lot of these
+representations you're already in the
+nest you're already deciding whether or
+not you're going to cross the street now
+what you're asking is is it more
+beneficial from a thinking perspective
+to that insider outside the lines i'm
+not i'm not passing judgment on which is
+better but what i am saying is don't
+restrict yourself to one or the other
+zoom in zoom out
+the opacity of the second layer
+only arises because there is a higher
+and a lower
+level
+right
+so it it's sort of like
+maybe the series kind of blurs off and
+so we have one type of awareness at our
+experienced tear
+and then it rests upon the shoulders
+of the first and the third level the
+green and the blue here
+and then maybe those spiral off in
+reality or maybe they don't
+we're modeling it this way
+and then it's the feedback with reality
+that we'll update our models based upon
+stephen
+yeah
+and
+this this because we've got levels at
+play and i know you you mentioned there
+about zoom in zoom out i mean zoom's
+quite an ocular kind of
+so i suppose we've got
+there's a there's a kind of a question
+in terms of how we language some of this
+because
+we we want to look at different temporal
+we've got different levels of
+abstraction as we see when we then look
+at things as they map across to our
+other knowledge epistemic systems we've
+got different we know that the
+hierarchies
+have different speeds i mean in a way
+they don't
+nature in theory doesn't care about the
+levels in sense but it might care about
+the
+the the speed at which the processing
+happens and if it has to go quicker at
+the lower levels it has no choice around
+that
+and that but then we've also got this
+question of zooming out scale-ups you
+know scale
+scale happening some of which is is is
+you can't avoid and we've got cells
+inside our body a set of scale that's
+and then we've got organs and then we've
+got
+i'm wondering
+yeah what
+when we say sky zoom in
+um is that an intentional
+no okay i'll pause it no again no i just
+that's a great question because as i
+said i don't have any pushback on
+anything the authors wrote in this paper
+i think it's a great paper
+and i'm i'm i'm suggesting we hold up
+attention
+and availability because that's what
+zoom in zoom out is it's leaving
+yourself available to what could be
+considered
+in included in a definition of what
+attention is
+i'm just i'm saying
+include both
+that's what the zoom in zoom out does it
+says what am i what am i available to
+am i avail am i making self available to
+outside the lines metaphorically
+physically
+as well as inside the lines is that part
+of my reasoning in terms of of not
+necessarily be being afraid of bumping
+into things
+that's a good point i mean one other
+thing that i think is interesting when i
+think from
+science to
+visual art with art
+is in science you tend to think of
+zooming in and out say with a microscope
+right because you can go in and you see
+more
+now in art you tend to crop
+so you have the same roughly the same
+image maybe you go a little bit more
+detail but you're just cropping in
+now cropping
+in terms of how we trying to think
+informationally is quite different right
+because it's what you're taking away to
+leave focus
+we're zooming in because we get more
+detail on something small
+we maybe don't focus on all the things
+that and well you could zoom in and you
+you just
+expand the you know
+the frame gets bigger right
+normally if it kind of that's the
+question are you zooming in
+on an object that's like a penny and it
+gets to a certain size until it fills
+your frame of awareness because once you
+go beyond that you can't help but crop
+because you can't fit everything in and
+you then
+gain more detail on something that you
+can't
+take in other detail
+so there's there's um i mean even that's
+a scale-dependent thing right it's
+dependent on the organism right so
+for a mouse to zoom in and zoom out um
+well also can to some extent without
+using a tool or an instrument can we
+zoom
+like
+it's interesting because we
+if
+can i zoom with my eyes
+in a way i can
+focus and i can go and i can
+take my
+most accurate i suppose in some ways i
+can zoom by having the area of my eye
+that has the most
+um
+cells being given attention to a
+particular part of the
+i i can take my attentional
+um
+fidelity to bear
+but some of the things also like i say
+we we we kind of imagine ourselves as if
+we've got a binoculars or some other
+tool in our hands right and we um
+because we sort of it's such an embodied
+thing to do
+but actually that's not necessarily
+that's not necessarily what we could do
+without that tool if that makes sense so
+there's a there's a there's a question
+there around
+um
+yeah
+where
+where do and maybe we were able to use
+maybe that's the thing that's kind of
+unique about humans is that ability to
+pick up a microscope and look through it
+and
+extend through the tool usage you know
+and
+that's not necessarily available to
+other animals
+i think i think that
+the paper speaks to
+uh i can i can attend or not attend and
+i'll know that i'm attending when i'm
+not attending
+so that's
+that's that's the sort of inflationary
+deflationary
+part of it and i'm not saying drop that
+i think that that's important but i
+think if it's only held up as as that
+you're missing the other two vertices of
+the triad the other two vertices being
+can i also on the on the open end of the
+triangle relative to that first part
+which is the
+mir am i not attending am i inflating or
+deflating am i going up or down
+is the geometry and the geography and i
+think if you put all i know this sounds
+very abstract but after after you put it
+into practice
+after you
+have your checklist that your or your
+model that you carry in with saying have
+i have i addressed all three sides of
+this
+you tend to generate a context much
+sooner your mark off blanket
+becomes more transparent more tunneling
+effect into these novel situations
+then
+i'm waiting around for somebody to point
+to
+what i need to attend to next which is
+more the of the instructionalist model
+again
+right
+so i mean if you want to give a person
+the ability to
+make sense sooner
+all i'm suggesting is is that have three
+vertices
+right have three corners to this
+to dimensionalize the space and and
+again if you put it into practice
+it's it's it's pretty easy to transfer
+from the abstract into actual
+physical things that you do
+i mean you you can you can decide what
+the focal point is and what the horizon
+is you can decide what the difference is
+and you can decide what the
+what the proportions and the contrast
+are and if somebody says to you
+i'm not getting this you can also
+explain to them what you're not seeing
+which is really really helpful to the
+person who's trying to be the be the
+guide of the wayfinder
+thanks dean
+blue
+yeah i wanted to kind of talk about
+zooming in and zooming out and um using
+a microscope or not and so something
+like that i have found in the course of
+my life is
+the capacity for mental zooming in and
+zooming out um especially with regard to
+um consideration for others so like i
+started life as a kid like everything
+was provided for me and then like as a
+teenager i was like the most
+self-absorbed creature alive right and
+so like as i've gotten older like my so
+i was so focused on just me right just
+me me me me i'm the center of my world
+but then like you know you really start
+to expand that um
+you know to consider more and more
+people and the planet and like all of
+the consequences of your actions as i
+you know developed and you know probably
+really set in at like 25 right with full
+frontal lobe development and the
+understanding of consequences and you
+know this kind of ripple effects the
+butterfly effect of our of our actions
+and so forth but also in meditation to
+kind of bring it back in and tie back to
+the paper
+um you know you hold you do this
+meditation i mean i've done meditations
+where you're you know doing for example
+loving kindness and you know you focus
+on loving kindness and it's kindness for
+yourself and your inner circle and then
+you expand it to include you know the
+people in the room and your extended
+family and you know everyone that's
+suffering the same ailments as you and
+so forth so you kind of expand your
+awareness this mental zooming out
+um through through meditation and um yes
+so i just wanted to kind of say like we
+don't always need a microscope but but
+it is mental
+and it may also be something that's
+uniquely human
+can i can i just respond to that blue i
+think you're absolutely right and the
+funny thing is is that
+again when he when you take it off the
+page
+it's what you're describing what i'm
+describing although i'm probably doing a
+terrible job of it is identity and
+feelings
+when you actually use this this
+its approach of being able to hold up
+three things at once it's your identity
+and your feelings that you're really
+becoming metacognitive of
+or so is it metacognitive or or is it
+dissolving
+the identity right and so that's like
+the question of mike levin you know
+expanding the cognitive boundary of the
+self
+so
+in his paper i'm not sure if you read
+the computational boundary of the self
+or not um but but you know he talked
+about this the computational boundary
+and and you know not just of a person
+but also like a cell and an organ and a
+tissue and and so but also a human and
+and when you've dissolved this
+computational boundary of the self
+you've expanded it you've dissolved i
+mean this is eventually the end goal of
+meditation is this dissolution of
+identity this ceasing of grasping to the
+self i mean in many traditions right
+this is the letting go of self-grasping
+and letting go of the idea of the self
+and so you have this very
+expansive
+consideration of the self and so it's
+encompassing all um
+beings in that in that boundary yeah and
+and that's interesting because that's
+exactly what we used to talk about is
+what does it mean to go from being a
+student to being a professional
+contributor well all i know is it's not
+an extension of being a student
+i have no idea what it means in your
+particular situation right so it is a
+dissolving
+if if nothing else it's a forming and a
+dissolving at the same time that's why i
+said
+you still you still have me because i
+it was your influence that got me
+watching soul
+and that's exactly what they were
+talking about and so again it's not a
+it it is it is effemorable ephemeral and
+we can reflect on it and we can have the
+environment scrutinize on it and that
+doesn't destroy everything that's
+actually building things up
+thanks dean stephen
+and this this what you're just
+mentioning there in terms of
+dissolving the self
+and meditation
+and precision
+estimates um i think this this could
+speak to this idea you know we talk
+about the five there's six plus or minus
+one in terms of how many ideas you can
+hold in your head and we have this idea
+you know with higher thinking it's pure
+or we have certain
+things that we hold in our minds and i
+can
+imagine that it's like
+with meditation the idea
+if it's done well because it can you
+know you could end up going into some
+places where you just don't
+it's not productive but in a productive
+sense it's like you are able to adjust
+and integrate you can imagine
+y d y b y c y e
+y g y a
+and
+b o it's not that you so you're still
+accepting that you can go with different
+precision estimates but you don't get
+this kind of attachment
+or
+to making certain precision estimates as
+as kind of rarefied things which we
+often do you know like so we kind of
+feel like it should be like something or
+we feel uncomfortable or we get drawn to
+our kind of um
+you know
+our desires or the things that we get
+kind of obsessive with or things that we
+are avoiding so that could be
+interesting and the other thing that
+then can tie to that because i like to
+mix as well as meditation which this
+talks about which is kind of yeah you've
+got meditation you've got action in the
+world
+where we can like you say with the
+environment walking around and then
+we've got ritual
+and ritual tends to be more in the um
+indigenous approaches but there
+you're not necessarily trying to
+dissolve anything it's already
+it's almost like you're trying to
+disrupt it
+it's not like you've got a nice
+pure
+drop that you're hoping to like
+evaporate and allow to become a mist
+that we're not rarefying anymore it's a
+bit like you know you you see that you
+you're going to put on a big mask and a
+costume and you're going to dance around
+the fire and until you start to
+go into another state
+now that could access another
+set of
+informational
+inferences
+um and that that may be doing some other
+things you know that maybe things which
+are more useful when we're in a communal
+integration
+and social integration or social sense
+making
+um so it could be like we're trying to
+regulate as a group and then meditation
+is helping us regulate as individuals
+and it's neither one's better than the
+other but they have different
+you know niche
+properties for us
+or well interesting
+discussion
+maybe we can each give a closing thought
+and then i have a short quote to close
+based upon something dean said but
+it's um
+it's a really interesting paper i think
+we all
+enjoyed reading it it really does point
+the way
+towards uh
+what does a generalized computational
+phenomenology
+or at the very least without getting
+experience into the mix just what is a
+computational framing of mental action
+is that a paradox in and of itself is it
+impossible is mental action just like um
+a no-go
+or is mental action going to be
+understood
+to be
+everything of the iceberg that isn't the
+tip of the iceberg
+blue so
+just a final thought um you know i i met
+a this metacognitive aspect and you know
+that the idea of identity dissolution
+and i do think it was mentioned um in
+this paper but just briefly like what
+about under the influence of psychedelic
+drugs where we know we have this
+identity dissolution this ego
+dissolution this expansion of the
+cognitive boundary so so when you have
+psychedelics how
+is the metacognitive
+hierarchy
+influenced disrupted is it obliterated
+is it enhanced so i'd be interested to
+see if the authors go down that road in
+the future or to see someone you know
+take it to that level exploring the
+metacognition of
+people under the influence of
+hallucinogenics
+thanks blue dean
+i think back in the 20 zeros we were
+wondering about whether or not this
+this paper and the stuff that it points
+to could be used for nefarious purposes
+and i
+think i commented back then that
+i used to work with a lot of people who
+are spending a lot of time with focus
+and attention on task
+and i just like
+to sort of keep that where that is
+because i know that's a thing and i'd
+like to just sort of hold it up with the
+background of what we're available to
+that availability piece because i think
+that's the more powerful thing
+and i'm not sure that that's necessarily
+threatening but i think if we can have
+conversations with people about
+how active inference
+acts as an availability enhancer
+they might be more attracted to this and
+not necessarily see it as something that
+people could use for
+for nasty purposes i mean there's going
+to be people out there going to do their
+nasty thing
+but i think there's actually a really um
+a really empathetic and sincere
+aspect to this that
+isn't just exploitable but is really
+explorable and is really kind of cool
+we'll have a quantitative framework for
+saying that we would prefer if they
+didn't even though we expect them to
+behave the way that they're expecting
+but um
+we'll have an interaction sequence that
+might change the way that that works
+steven
+yeah a couple of points well one it
+might be interesting to see what adam
+saffron makes of some of this with the
+psychedelics as he's just started a
+postdoc now at uh in psychedelics at uh
+john hopkins so that'd be uh
+that'd be interesting
+and then i suppose the other thing that
+i've noticed is as with some of the
+nefarious actions and i think you're
+right but i think also
+what i've noticed is some of the kind of
+intuitive nefarious actions of
+politicians who are particularly adept
+at
+getting people on their side
+it may actually be that some of that
+they're doing through kind of like some
+sort of roundabout intuitive artistic
+route this might help us reverse
+engineer how they're doing it so there
+might also be some benefits to
+to understanding what is it they're
+doing even if they don't quite know how
+to describe it
+dean
+just one
+i think you're absolutely right stephen
+i think
+if we if we
+are able to make this available to more
+people their detectors are
+going to get really really improved
+so the closing quote to hopefully bring
+some of these threads together we talked
+a lot about you know distributed versus
+centralized sense making and what is the
+role of scrutiny and the scrutinizer
+like dean brought up and of course geb
+hofstetter's book from 1979 but another
+work of art from 1979
+was frank zappa's song central
+scrutinizer and just closing with some
+of the first lines of that poem
+this is the central scrutinizer it is my
+responsibility to enforce all the laws
+that haven't been passed yet
+it is also my responsibility to alert
+each and every one of you to the
+potential consequences of various
+ordinary everyday activities you might
+be performing which could eventually
+lead to the death penalty or affect your
+parents credit rating
+thank you everybody though fun times see
+you in

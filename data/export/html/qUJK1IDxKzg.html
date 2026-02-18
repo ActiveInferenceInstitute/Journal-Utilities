@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generalized Coordinates in RxInfer.jl</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Generalized Coordinates in RxInfer.jl</h1>
+<div class="meta">Duration: 9:12 &middot; Views: 266</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=qUJK1IDxKzg">https://www.youtube.com/watch?v=qUJK1IDxKzg</a></div>
+<article>
+<p>All right, this is a short research</p>
+<p>update August 8th, 2025 about using</p>
+<p>generalized coordinates of motion models</p>
+<p>of various orders in RX infer to take</p>
+<p>noisy samples and do path inference on</p>
+<p>the underlying smooth trajectory and</p>
+<p>then compare how the different orders,</p>
+<p>so different moments of the</p>
+<p>distribution, how well they do in terms</p>
+<p>of confidence interval coverage. free</p>
+<p>energy minimization etc across different</p>
+<p>scenarios. So this is all in the rx</p>
+<p>infer examples.jl repo on my personal</p>
+<p>doxology fork. If you want to learn more</p>
+<p>about generalized coordinates start with</p>
+<p>the Wikipedia or the paper basian</p>
+<p>mechanics for stationary processes which</p>
+<p>is live stream 26.</p>
+<p>So here we have some numbers of orders</p>
+<p>of generalized coordinates</p>
+<p>and what is happening in this repository</p>
+<p>is that in the research generalized</p>
+<p>coordinates and order there's a model</p>
+<p>visualization folder. This is going to</p>
+<p>make visualizations</p>
+<p>of each of the model orders. So this is</p>
+<p>like a low order first order one and</p>
+<p>this is a sixth order and they're all</p>
+<p>put together in this collage</p>
+<p>that has all of the orders. Here it's 1</p>
+<p>through eight but there's a app model</p>
+<p>block generator so that you can use any</p>
+<p>order you want. The outputs folder has</p>
+<p>one general case and then it separates</p>
+<p>into different orders. So we'll look at</p>
+<p>the uh third order generalized</p>
+<p>coordinates of motion model and there's</p>
+<p>a scenario generator that generates</p>
+<p>three different</p>
+<p>uh cases and each each situation for</p>
+<p>each order is going to get all these</p>
+<p>outputs. So first is the position uh</p>
+<p>position, velocity, acceleration,</p>
+<p>however many orders are being</p>
+<p>considered. What fraction of the time is</p>
+<p>the inference within the 95%</p>
+<p>confidence interval actually including</p>
+<p>the true value?</p>
+<p>Here's the dashboard. Here's the</p>
+<p>position, velocity, acceleration, and</p>
+<p>the free energy through time. the true</p>
+<p>and the inferred value here because it</p>
+<p>was essentially uh a smooth moving</p>
+<p>scenario. The third order approximation</p>
+<p>did really well. But if we look at that</p>
+<p>constant scenario</p>
+<p>with a first order approximation</p>
+<p>basically it just is a straight line.</p>
+<p>And if we look at the sign</p>
+<p>scenario here again the first order</p>
+<p>approximation all it can do is basically</p>
+<p>draw the best straight line through this</p>
+<p>whole data set. Whereas if we go to the</p>
+<p>sign</p>
+<p>with a third order approximation we're</p>
+<p>getting</p>
+<p>uh the ability to latch on to capture</p>
+<p>the position velocity acceleration. So</p>
+<p>coverage within the confidence interval</p>
+<p>dashboard,</p>
+<p>some information on the derivatives,</p>
+<p>the error profile, cumulative sum and</p>
+<p>free energy through time. Some of the</p>
+<p>artifacts at the very beginning and the</p>
+<p>very end are just relative to the the it</p>
+<p>being earlier late data points.</p>
+<p>uh</p>
+<p>mean squared error through time for each</p>
+<p>of those position, velocity, and</p>
+<p>acceleration.</p>
+<p>Uh histogram of the residuals,</p>
+<p>root mean squared for each of those</p>
+<p>states. Here, a scatter plot, the</p>
+<p>position, velocity, acceleration. So, it</p>
+<p>latched on pretty well. Again, if we</p>
+<p>look at the first order,</p>
+<p>true versus inferred</p>
+<p>here, all all it can do is just guess on</p>
+<p>this straight line</p>
+<p>uh a QQ plot. So, definitely leaves some</p>
+<p>room to be improved quantitatively, but</p>
+<p>just structurally was what I was seeking</p>
+<p>to get here. uh residuals through time,</p>
+<p>overall fit to the noisy data. Again,</p>
+<p>the goal was to go from noisy</p>
+<p>observations to the predictions of the</p>
+<p>underlying data, some metrics, uh</p>
+<p>written report</p>
+<p>and information on the scenario</p>
+<p>that is happening</p>
+<p>uh for each scenario that gets</p>
+<p>metaanalyzed across the scenarios. So</p>
+<p>here we have</p>
+<p>the mean correlation</p>
+<p>for these three scenarios the the</p>
+<p>constant the peace-wise mixed and the</p>
+<p>sign only. So let's just look at what</p>
+<p>the peacewise mixed looks like.</p>
+<p>This one</p>
+<p>has every 500 time steps it kind of</p>
+<p>switches into a different regime.</p>
+<p>So that really challenges the</p>
+<p>approximation</p>
+<p>and we can see that</p>
+<p>for example on the constant situation</p>
+<p>the all the orders do really well</p>
+<p>because it's pretty easy in the</p>
+<p>peace-wise and in the sign situation the</p>
+<p>low orders do bad and the higher orders</p>
+<p>do fine and there's diminishing returns</p>
+<p>once you get into these higher</p>
+<p>derivatives.</p>
+<p>Here's another way to look at this. This</p>
+<p>is the the 95% confidence interval</p>
+<p>showing how again in the two more</p>
+<p>complex situations the</p>
+<p>uh low order models are not able to work</p>
+<p>that well. But then increasingly high</p>
+<p>order models do better and better</p>
+<p>and similar patterns are observed for</p>
+<p>free energy values.</p>
+<p>Again, realistically at at super high</p>
+<p>orders, you're getting weird overfitting</p>
+<p>errors.</p>
+<p>And that is all happening from the uh</p>
+<p>the situation is is the car situation.</p>
+<p>It's just imagining that there's a car.</p>
+<p>It was based off of the hierarchical</p>
+<p>Gaussian filter.</p>
+<p>So here's the uh example that was uh</p>
+<p>based off of which was basically this</p>
+<p>hierarchical Gaussian</p>
+<p>filter situation.</p>
+<p>And</p>
+<p>in the generalized coordinates, it's</p>
+<p>configured</p>
+<p>through uh the ability to to</p>
+<p>uh run the suite</p>
+<p>across uh different orders.</p>
+<p>in SRC</p>
+<p>is where the model is.</p>
+<p>So here's the basis of the RX infer</p>
+<p>model and here's the constraint block</p>
+<p>that is used to generate all those</p>
+<p>combinations.</p>
+<p>So again, generalized coordinates. This</p>
+<p>uh folder,</p>
+<p>this one is just three orders.</p>
+<p>This one's just uh uh three</p>
+<p>different uh</p>
+<p>orders of of motion.</p>
+<p>And then I generalized that into the n</p>
+<p>orders of generalized coordinates in</p>
+<p>that folder. hgf is if you want to look</p>
+<p>more at how the hierarchical gaussian</p>
+<p>filter works</p>
+<p>and all that is based upon these rx</p>
+<p>infer examples. And also while you're</p>
+<p>here check out the visualization</p>
+<p>methods folder also in research. This is</p>
+<p>a generalized way to look at all the</p>
+<p>different RX infer models. So whether</p>
+<p>it's the the coin toss or it's the drone</p>
+<p>model</p>
+<p>or this generalized coordinates model</p>
+<p>the the base form or it's a hidden marov</p>
+<p>model. These are some visualization</p>
+<p>methods. So, hope that is useful and</p>
+<p>interesting for those who like</p>
+<p>open-source statistical methods, RX and</p>
+<p>for learning about generalized</p>
+<p>coordinates, free energy principle,</p>
+<p>pathbased formulations, rough paths, all</p>
+<p>the good stuff. So, thanks for watching.</p>
+<p>Bye.</p>
+</article>
+</body>
+</html>

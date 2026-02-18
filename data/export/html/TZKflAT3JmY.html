@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Textbook Group ~ Cohort 6 ~ Session 21 (Applying Active Inference & Ontology) 9/9/2024</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Textbook Group ~ Cohort 6 ~ Session 21 (Applying Active Inference & Ontology) 9/9/2024</h1>
+<div class="meta">Category: TextbookGroup/ParrPezzuloFriston2022/Cohort_6 &middot; Series: Meeting_021 &middot; Speakers: Cohort 6 ~ Session 21 (Applying Active Inference & Ontology) 9/9/2024 &middot; Duration: 57:18 &middot; Views: 33</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=TZKflAT3JmY">https://www.youtube.com/watch?v=TZKflAT3JmY</a></div>
+<article>
+<p>all right September 9th 24 and Andrew go</p>
+<p>for</p>
+<p>it um hi everyone so uh as we just</p>
+<p>briefly I know some is coming in uh as</p>
+<p>we just briefly discussed uh since today</p>
+<p>is another session where we are not</p>
+<p>directly talking about any particular</p>
+<p>the chap chapter of the textbook but</p>
+<p>rather um just talking about applying</p>
+<p>active inference more generally um we</p>
+<p>agreed that I would spend just a little</p>
+<p>bit of time here uh giving sort of a</p>
+<p>quick rundown of how to construct an</p>
+<p>active inference agent in this case</p>
+<p>it'll be</p>
+<p>specifically uh a PDP agent meaning</p>
+<p>we're working with um well in this case</p>
+<p>we're working with discrete time and</p>
+<p>discret</p>
+<p>observations um as opposed to continuous</p>
+<p>time models which you'll see in chapter</p>
+<p>8 of the</p>
+<p>textbook um and I kind of just want to</p>
+<p>focus on just from scratch like how do</p>
+<p>we think about constructing an agent um</p>
+<p>I won't be touching on how to construct</p>
+<p>an environment um but but that's the</p>
+<p>kind of thing that you know you would</p>
+<p>you would bear in mind whenever kind of</p>
+<p>coming up with an idea for a simulation</p>
+<p>or experiment you want to run um and</p>
+<p>actually on that note Daniel is it</p>
+<p>possible for me to um share my screen by</p>
+<p>chance yep go for it awesome thank</p>
+<p>you so this was the um and if anyone</p>
+<p>wants this link they can find me on</p>
+<p>GitHub a p hea just like my last name on</p>
+<p>the zoom uh and the repositories called</p>
+<p>ic2 S2 active inference tutorial um this</p>
+<p>is material that I presented back in</p>
+<p>July at University of</p>
+<p>Pennsylvania um I</p>
+<p>basically uh gave a tutorial on AC</p>
+<p>inference how it might be applied to</p>
+<p>social sciences specifically in uh</p>
+<p>constructing multi-agent</p>
+<p>simulations</p>
+<p>so um and is</p>
+<p>this uh is this visible to everyone the</p>
+<p>slides</p>
+<p>here yeah go for it for you know five to</p>
+<p>10 minutes however much you just want to</p>
+<p>footnote and then let's see what people</p>
+<p>want to continue with definitely sounds</p>
+<p>good um so in this tutorial</p>
+<p>along the way I you know we're</p>
+<p>introduced active inference there's some</p>
+<p>nice um explanations of different</p>
+<p>concepts from the textbook Etc talking</p>
+<p>about uh the basy brain hypothesis</p>
+<p>General ideas how Bas rule kind of plays</p>
+<p>out in active inference and eventually</p>
+<p>we reach where uh we're going to use the</p>
+<p>pmdp package um which has been developed</p>
+<p>to make discrete time AC inference</p>
+<p>agents in Python and um there are a lot</p>
+<p>of updates being made to that package</p>
+<p>right now if you were to like use a git</p>
+<p>clone to download it directly there's a</p>
+<p>lot going on in there but for the time</p>
+<p>being I'm going to just be using the the</p>
+<p>PIP install um Pi Pi</p>
+<p>version uh it's a little bit more kind</p>
+<p>of uh packaged up comes as more like a</p>
+<p>single unit so um whenever we construct</p>
+<p>active inference agents uh the starting</p>
+<p>step should be in my view starting step</p>
+<p>should be what are the hidden states</p>
+<p>that the agent has in their generative</p>
+<p>model like what are they trying to</p>
+<p>infer uh second thing is what are the</p>
+<p>observations that the agents will</p>
+<p>encounter in the world and then three</p>
+<p>what are the</p>
+<p>actions uh or controls or policies those</p>
+<p>three terms are sometimes used</p>
+<p>interchangeably they don't necessarily</p>
+<p>mean exactly the same thing um but for</p>
+<p>now we'll just go through with all of</p>
+<p>those we'll call them actions uh what</p>
+<p>actions can the agent commit uh so so we</p>
+<p>can view that kind of like like this</p>
+<p>like the this is the agent that we be</p>
+<p>constructing um all of these things play</p>
+<p>out it's called an action perception</p>
+<p>Loop um let me see if I can just</p>
+<p>okay hopefully that's visible enough to</p>
+<p>everyone</p>
+<p>um so so that we'll we'll start at the</p>
+<p>bottom of this action perception mod um</p>
+<p>first</p>
+<p>observations there are two kinds of</p>
+<p>observations that this agent will</p>
+<p>receive at any given time step um quick</p>
+<p>note that this entire action perception</p>
+<p>Loop plays out at every time step we're</p>
+<p>working in discrete units of time and so</p>
+<p>you know whether it's from second to</p>
+<p>Second minute to minute millisecond a</p>
+<p>millisecond however um all of the units</p>
+<p>of time are the</p>
+<p>same uh here the agent receives one of</p>
+<p>two observations one of them is related</p>
+<p>to uh an improve Improvement if</p>
+<p>something improves or if it doesn't</p>
+<p>improve and I didn't include a third</p>
+<p>category but there's another one called</p>
+<p>unobserved just bear with me and we'll</p>
+<p>go into what that means soon um but</p>
+<p>that's one particular kind of</p>
+<p>observation otherwise known as an</p>
+<p>observation modality that the agent has</p>
+<p>slashes we can think about about this is</p>
+<p>like in the same way that we have you</p>
+<p>know sensory data that comes in uh you</p>
+<p>know like you have cold receptors on</p>
+<p>your on your uh in your scan on your</p>
+<p>arms so you can feel if it's cold or</p>
+<p>it's hot or otherwise similarly here the</p>
+<p>agent has some hypothetical receptor and</p>
+<p>we could call it visual or otherwise but</p>
+<p>the point is they they get one of these</p>
+<p>three observations Improvement no</p>
+<p>improvement or an observed um another</p>
+<p>observation modality they have is self</p>
+<p>or neighbor and I call this the</p>
+<p>attention modality uh at any given time</p>
+<p>step they're paying attention either to</p>
+<p>themselves or to their neighbor um part</p>
+<p>of why we're talking about self neighbor</p>
+<p>that kind of thing is that eventually</p>
+<p>this leads to a multi-agent simulation</p>
+<p>where where agents can can either uh</p>
+<p>kind of do their own thing or they can</p>
+<p>interact with other agents and so this</p>
+<p>attention modality means they they're</p>
+<p>actually observing like who am I paying</p>
+<p>attention to um so when they take in</p>
+<p>those</p>
+<p>observations they have a single hidden</p>
+<p>State uh which is I've denoted s with</p>
+<p>superscript ATT this is their attention</p>
+<p>hidden State um an agent takes in</p>
+<p>observations and then using what's</p>
+<p>called a likelihood model which is uh uh</p>
+<p>in in in chapter 7 we refer to it as the</p>
+<p>a matrix remember we have the the a b c</p>
+<p>and d matrices uh this is the a matrix</p>
+<p>and so the a matrix is this it's the</p>
+<p>probability of that observation that</p>
+<p>they just received given a hidden State</p>
+<p>uh whenever the agent reaches this this</p>
+<p>right uh this Square on the right so to</p>
+<p>speak this stage of action perception</p>
+<p>cycle uh they invert their models so now</p>
+<p>they they actually try to figure out</p>
+<p>what is the hidden State given I just</p>
+<p>received this observation you know in</p>
+<p>the same way that you could receive a a</p>
+<p>hot or cold observation and so you infer</p>
+<p>oh it's it's cold here um here the agent</p>
+<p>is for example they might</p>
+<p>observe themselves and then infer oh I'm</p>
+<p>paying attention to myself</p>
+<p>um and vice versa for neighbor here this</p>
+<p>is an incredibly uh despite the material</p>
+<p>despite kind of the complexity of active</p>
+<p>inference Theory this agent is actually</p>
+<p>very simple they can receive one of two</p>
+<p>observations every time step they have a</p>
+<p>single hidden state that they're trying</p>
+<p>to infer uh self or other but what that</p>
+<p>does is that it makes a link between if</p>
+<p>they observe an improvement or no</p>
+<p>improvement uh with who they're paying</p>
+<p>attention to and whenever you combine</p>
+<p>that with the idea of learning their</p>
+<p>likelihood model which is what this</p>
+<p>Delta this triangle means like they're</p>
+<p>learning their likelihood model um they</p>
+<p>can learn that oh if I pay attention to</p>
+<p>myself I see an improvement more than if</p>
+<p>I pay attention to my neighbor uh right</p>
+<p>so so so these kind of values get these</p>
+<p>parameters get adjusted over time these</p>
+<p>are the agent's beliefs changing based</p>
+<p>on their learning from experience and</p>
+<p>then after they make an inference they</p>
+<p>then decide okay which action should I</p>
+<p>take on this time step uh the names of</p>
+<p>the actions are explore and exploit</p>
+<p>which is um that doesn't quite have</p>
+<p>anything to do with the the so-called</p>
+<p>explore exploit dilemma that comes up in</p>
+<p>the</p>
+<p>textbook um you know that's technically</p>
+<p>a different thing these are just</p>
+<p>arbitrary names it explore here really</p>
+<p>just means the agent is explor exploring</p>
+<p>new Solutions this is a problemsolving</p>
+<p>agent the idea is they can explore</p>
+<p>meaning on their own pay attention to</p>
+<p>themsel and look try and come up with</p>
+<p>new solutions to a problem or they can</p>
+<p>exploit meaning that they will steal the</p>
+<p>answer of their neighbor right and if</p>
+<p>they so so you can see how if they steal</p>
+<p>the answer from their neighbor and they</p>
+<p>see an improvement then they start to</p>
+<p>learn like oh if I just keep taking my</p>
+<p>neighbor's answer to this problem I keep</p>
+<p>seeing improvements or it might be the</p>
+<p>other way around I might see no</p>
+<p>improvement start to associate like ex</p>
+<p>the action</p>
+<p>exploit receive the observation neighbor</p>
+<p>and no improvement and then in their</p>
+<p>likelihood model they'll learn like oh I</p>
+<p>shouldn't steal from my neighbor that</p>
+<p>least to you know know progress on me</p>
+<p>trying to solve this problem now I've</p>
+<p>already discussed these three kind of</p>
+<p>squares these three not of of this graph</p>
+<p>here um that's all you need for an agent</p>
+<p>uh the only thing I've I've left out is</p>
+<p>the environment and it's the environment</p>
+<p>that you know for a a programmer you can</p>
+<p>think like oh well if I set up an agent</p>
+<p>who has observations and in state to</p>
+<p>infer in actions that just gets hooked</p>
+<p>up with the environment the environment</p>
+<p>can be a list of you know if else roles</p>
+<p>like if the agent does this then the</p>
+<p>environment should send out this</p>
+<p>um or it could be more of a stochastic</p>
+<p>process you could use you know a random</p>
+<p>number generator or</p>
+<p>otherwise um so the agent will learn</p>
+<p>over time so if anyone is uh interested</p>
+<p>in this again feel free to to check out</p>
+<p>the uh I'll actually put the link in the</p>
+<p>chat whenever I'm done here I don't want</p>
+<p>to take up too much time though but it's</p>
+<p>just that's the general process of an</p>
+<p>action perception Loop and then you know</p>
+<p>the tutorial from there just kind of</p>
+<p>starts to break it down even further</p>
+<p>like once you so once you figure out</p>
+<p>those hidden States like what is the</p>
+<p>agent trying to infer what are the</p>
+<p>observations that can receive what are</p>
+<p>the actions that can commit The Next</p>
+<p>Step would be okay how do we link those</p>
+<p>three things together through your a b c</p>
+<p>d and e um you know a links together</p>
+<p>observations States be links together</p>
+<p>transitions between states with what the</p>
+<p>agent does it's like oh if I think X</p>
+<p>right now and I do y then I believe that</p>
+<p>c will happen next that's what kind of</p>
+<p>like what a b Matrix says C Matrix prior</p>
+<p>over uh observations which is like your</p>
+<p>preferences for what you want to see the</p>
+<p>agent will kind of try to realize these</p>
+<p>or seek out these observations by way of</p>
+<p>free energy minimization uh D is your</p>
+<p>initial beliefs about States you know</p>
+<p>what did you think before um that and</p>
+<p>then and then through uh inference we'll</p>
+<p>we'll end up with a state uh belief a</p>
+<p>posterior that might differ from D or it</p>
+<p>might be exactly the same in which case</p>
+<p>that means that the agent just</p>
+<p>reconfirmed its own belief again it's</p>
+<p>exactly the same and E just your priors</p>
+<p>over actions so what are you most likely</p>
+<p>to do regardless of anything uh that's</p>
+<p>why they're also known as habits um I'll</p>
+<p>I'll stop that there's there's plenty</p>
+<p>more to go into but those are all the</p>
+<p>core</p>
+<p>barebone aspects of what you need for an</p>
+<p>agent and the rest is just you know I</p>
+<p>pretty quickly start jumping into code</p>
+<p>from there on how to do it so um yep</p>
+<p>that's it for now</p>
+<p>so oh sorry can I have the link to that</p>
+<p>I'd love the link to that in absolutely</p>
+<p>yeah worries I mean that's right my</p>
+<p>wheelhouse I love this stuff bu and I I</p>
+<p>just spend all my days doing this kind</p>
+<p>of things so I'm it's nice to see</p>
+<p>somebody else like building out like the</p>
+<p>step-by-step process of like how do we</p>
+<p>like make this work kind of and then you</p>
+<p>get to like just throw it all you know</p>
+<p>that way other people can do it</p>
+<p>too yeah cool yeah yeah exactly the</p>
+<p>point yeah I like for me personally it's</p>
+<p>like it's only uh I'd already been</p>
+<p>involved with the institute for some</p>
+<p>time and then realized like there is no</p>
+<p>clearcut way of do doing this um I just</p>
+<p>dropped the link in the chat or sorry uh</p>
+<p>it's not the</p>
+<p>specific um but in any case yeah so so</p>
+<p>what I did was that I just started</p>
+<p>getting the documentation for PDP and I</p>
+<p>did a lot of like just going through the</p>
+<p>repository to make sure I'm getting</p>
+<p>things right um there's a lot of</p>
+<p>complexity because they tried to build</p>
+<p>imdp off of SP m in mat lab which is</p>
+<p>what Frist and other folks developed and</p>
+<p>it's just been in development for years</p>
+<p>so they're trying to recreate this</p>
+<p>massive project and uh I just think like</p>
+<p>well if you want to get more people</p>
+<p>using it let's make some more kind of</p>
+<p>from scratch uh tutorials on how to go</p>
+<p>about this so that's that's what I did</p>
+<p>but cool I'm glad glad you find it</p>
+<p>interesting oh yeah I mean I had to come</p>
+<p>at it from a complete different uh uh</p>
+<p>hold on I get back in this thing here I</p>
+<p>lost all my stuff um yeah the uh I came</p>
+<p>at it from a completely different angle</p>
+<p>and but came to the same conclusions and</p>
+<p>it's I had no idea that somebody was</p>
+<p>doing that it's so much</p>
+<p>fun there we go there's everybody yeah</p>
+<p>there there's a lot to add I think one</p>
+<p>of the biggest pieces then anyone who</p>
+<p>wants to ask go for it is like what is</p>
+<p>the question about an active inference</p>
+<p>generative model what's a question that</p>
+<p>staples into A B C or D or a line of</p>
+<p>code or a specific node or Edge on a</p>
+<p>graph what's a question about the world</p>
+<p>so it's like what's a question about the</p>
+<p>subway map of the city what is a</p>
+<p>question about the territory of the city</p>
+<p>that can get back and forth and we know</p>
+<p>all about and talk all about these kinds</p>
+<p>of ambiguities and and dual reference</p>
+<p>and things like that but at the same</p>
+<p>time it is a different type of question</p>
+<p>to say what is the dimensionality of the</p>
+<p>a matrix</p>
+<p>in comparison with what is the</p>
+<p>dimensionality of aent sense making or</p>
+<p>something like that and to know when one</p>
+<p>is clearly on one side of the other or</p>
+<p>when you're not sure is some of the</p>
+<p>fastest ways to start separating kinds</p>
+<p>of questions according to is this</p>
+<p>something that's just going to be</p>
+<p>addressed in a line of code or a math</p>
+<p>equation or is this something that's</p>
+<p>more like a real world line of inquiry</p>
+<p>that cannot be answered in any string of</p>
+<p>words that somebody says</p>
+<p>I feel like if you can't answer it then</p>
+<p>it you</p>
+<p>know it's like that I mean there's a lot</p>
+<p>to be said for not being able to answer</p>
+<p>something right like um but uh I</p>
+<p>definitely have a lot of questions um</p>
+<p>I'm excited to read the material so I</p>
+<p>can like start asking those in a little</p>
+<p>a little better way I'm trying to think</p>
+<p>right</p>
+<p>now yeah Zach go for it oh I was just</p>
+<p>gonna ask if you guys think</p>
+<p>are there any questions that you</p>
+<p>fundamentally can't answer or questions</p>
+<p>that we just don't have the ability to</p>
+<p>answer this might be a little bit more</p>
+<p>philosophical but I feel like Daniel you</p>
+<p>were kind of leading to potentially the</p>
+<p>question of what is it like to be a bat</p>
+<p>and maybe ideas that kind of into that</p>
+<p>realm talking more about something about</p>
+<p>the agent and its relationship to the</p>
+<p>environment instead of not instead of</p>
+<p>anything I'm sorry that's the end of the</p>
+<p>sentence I just want to say really</p>
+<p>quickly that uh this reminds me of</p>
+<p>um a really crucial point they make in</p>
+<p>the textbook uh I I think it's in</p>
+<p>chapter nine but there's this uh early</p>
+<p>on in the chapter it it must be chapter</p>
+<p>nine but I might be mistaking that but</p>
+<p>it has to do with analysis and the whole</p>
+<p>point is they have this figure that</p>
+<p>shows like okay on the</p>
+<p>innermost uh kind of square of the</p>
+<p>figure we see the typical like graphical</p>
+<p>model that they you know A variation of</p>
+<p>that they keep showing through the</p>
+<p>textbook but then on the outside like</p>
+<p>there's a square around it denoting like</p>
+<p>okay it's really making the point that</p>
+<p>this is what we the scientist or</p>
+<p>experimentor think is the model of the</p>
+<p>agent yeah thanks Daniel that we're</p>
+<p>trying to develop right it's just like</p>
+<p>really trying to make the point that</p>
+<p>like we ourselves don't firmly know</p>
+<p>necessarily what the inside of the mo</p>
+<p>like a rat in a teammates like I'm</p>
+<p>trying to model it I have to be aware</p>
+<p>that like here's the level that is what</p>
+<p>I think is the rat's perception of</p>
+<p>what's going on and how it learns and so</p>
+<p>on but you know so it's like the</p>
+<p>objective model is just like outer like</p>
+<p>this is what I'm constructing like</p>
+<p>you're in the picture too is how I yeah</p>
+<p>great point and and for examp ex Le the</p>
+<p>experimental actions of the experimentor</p>
+<p>are just it's just taken as an</p>
+<p>observation train we're not modeling the</p>
+<p>policy that led to the experiment being</p>
+<p>designed okay but you could include that</p>
+<p>so you can continue extrapolating um but</p>
+<p>it it also makes clear where where the</p>
+<p>the buck stops but about the questions</p>
+<p>it can't be answered I mean big question</p>
+<p>right but there's a sense in which</p>
+<p>behaviorally every question is always</p>
+<p>answered if with acknowledgement a</p>
+<p>postulational head not dare I say or</p>
+<p>silence um or or or some other kind of</p>
+<p>like nons respon so you know can be</p>
+<p>answered in Trivial sense yeah</p>
+<p>everything already is can be answered in</p>
+<p>more like a Justified true belief</p>
+<p>semantic validity sense so here's a few</p>
+<p>pieces from the ontology project built</p>
+<p>up over the years but I mean just a</p>
+<p>snapshot if someone wants to dive in</p>
+<p>further and add more it's the greatest</p>
+<p>types of contributions that can help at</p>
+<p>this on logical level here's like many</p>
+<p>many many of the phrases and writings in</p>
+<p>the textbook group are like how is this</p>
+<p>term related to this um when they said</p>
+<p>this did they mean that does this mean</p>
+<p>this what does xers think does X why</p>
+<p>would X person want to believe that this</p>
+<p>was an explanation of that I mean</p>
+<p>whether or not you go into it questions</p>
+<p>have these templated forms so clarifying</p>
+<p>like what is active inference what</p>
+<p>surprise um going into those and knowing</p>
+<p>that even with the awareness of the</p>
+<p>question like what is surprise or how</p>
+<p>are they using surprise here those are</p>
+<p>already categories of questions that you</p>
+<p>can go in with a structural map towards</p>
+<p>and another fun um Direction with the</p>
+<p>with the philosophical side with like</p>
+<p>Oli and and Paulo Maria and others in</p>
+<p>the ontology was like starting with the</p>
+<p>Linguistics of the you know how could we</p>
+<p>ask and proceed on a question without</p>
+<p>like knowing what was written from a</p>
+<p>symbolic perspective so it's like okay</p>
+<p>then what is the the the lexical</p>
+<p>semantics like did they say something in</p>
+<p>the paper here we here we Define a for</p>
+<p>here we use surprise to mean this or</p>
+<p>here we operationalize surprise as so</p>
+<p>it's like they're narrowing down or</p>
+<p>leaving implicit what they mean by</p>
+<p>surprise but if they said we by surprise</p>
+<p>we mean one and then a person constructs</p>
+<p>an argument where it's predicated on</p>
+<p>surprise being number two then it's off</p>
+<p>base then getting into their local</p>
+<p>weaving of the relational semantics so</p>
+<p>not just how they Define the terms but</p>
+<p>it's like okay given that they said</p>
+<p>blanket states are sense and action you</p>
+<p>know then did it make sense with this</p>
+<p>other usage of</p>
+<p>set that's in the internal reading</p>
+<p>internal</p>
+<p>consistency view from inside like was</p>
+<p>there an</p>
+<p>apparent issue without even going a view</p>
+<p>outside of it then getting into views</p>
+<p>from the outside oh I think that they</p>
+<p>didn't do this or not I don't think</p>
+<p>enough attention was paid to this they</p>
+<p>should have done this I think it was</p>
+<p>cool that they did this</p>
+<p>um what would an embodied person think</p>
+<p>about this like all manner of then</p>
+<p>externalized but it's kind of just like</p>
+<p>a combination of like a close and</p>
+<p>deliberate and charitable structured</p>
+<p>reading in that with reference to the AC</p>
+<p>in onology but it could just be any</p>
+<p>ontology system at that point you give</p>
+<p>the internal</p>
+<p>reading and understand when questions</p>
+<p>and methods are being used that are</p>
+<p>related to internal</p>
+<p>reading and then when is it like an</p>
+<p>external reading from like a different</p>
+<p>perspective or a later</p>
+<p>time what do you think Zach or what what</p>
+<p>kinds of questions does that does</p>
+<p>that answer or not I mean that makes it</p>
+<p>seem I really like the external idea of</p>
+<p>looking at it for many many different</p>
+<p>lenses because then we're naturally</p>
+<p>going to find ways to maybe collapse</p>
+<p>some language and find other things that</p>
+<p>might have been equal in places that we</p>
+<p>weren't expecting to look I think just</p>
+<p>translating into a different language</p>
+<p>can have a ton an amazing amount of</p>
+<p>positive impact and it just makes</p>
+<p>collaboration a really cool thing but at</p>
+<p>the same time</p>
+<p>I I've always been attracted to active</p>
+<p>inference because it has this uh physics</p>
+<p>backing it all it all comes from the</p>
+<p>principle of least action and everything</p>
+<p>about that so in my head there should</p>
+<p>always be that physical explanation for</p>
+<p>all things or at least a mathematically</p>
+<p>based explanation for all things which</p>
+<p>really speaks to me</p>
+<p>personally man if I can jump in here I</p>
+<p>really appreciate that because it really</p>
+<p>speaks to me personally too like being</p>
+<p>able to pull things out of the out of</p>
+<p>the the discourse and put them into</p>
+<p>theoretical Frameworks mathematical</p>
+<p>Frameworks gives us it's like that low</p>
+<p>and high road that active inference you</p>
+<p>know it gives us a path to creating</p>
+<p>tangible Solutions around these</p>
+<p>things and I I think it's like it's kind</p>
+<p>of esoteric almost in a way I mean the</p>
+<p>you know Daniel uh I think and I were</p>
+<p>talking last week about how for instance</p>
+<p>it's this is so valuable for people who</p>
+<p>love all manner of Sciences because</p>
+<p>they're like uh it it intersects</p>
+<p>everything philosophy and on and on and</p>
+<p>on you guys know um and</p>
+<p>um it does I feel like it necessarily</p>
+<p>requires like atic perspective an</p>
+<p>external perspective to um and objective</p>
+<p>perspective to like write about these</p>
+<p>things meaningfully you have to touch</p>
+<p>base on everything and you guys should</p>
+<p>see what a lot of this stuff does when</p>
+<p>you uh put it into different uh</p>
+<p>indigenous languages</p>
+<p>pretty yeah you're absolutely right the</p>
+<p>formalism</p>
+<p>100% there so many ways to go with but</p>
+<p>like modal logic like the shirt might be</p>
+<p>blue or or conditional Logics or</p>
+<p>paraconsistent all these other kinds of</p>
+<p>of alternative logical structures where</p>
+<p>things are not like either one way or</p>
+<p>another outside of an evaluation Etc</p>
+<p>it's like if someone says well ramstead</p>
+<p>claimed X and I think he's saying it's</p>
+<p>like that cannot be an incorrect second</p>
+<p>half of the</p>
+<p>sentence unless it were were deceptive</p>
+<p>but if it were deceptive like the person</p>
+<p>was like I think that ramed means one</p>
+<p>but I'm going to verbalize that I think</p>
+<p>he meant to that still would be their</p>
+<p>veritical behavioral</p>
+<p>representation so it would truly be what</p>
+<p>they had said at that time and they can</p>
+<p>have some other side information like um</p>
+<p>but I said that because of this or I</p>
+<p>would have said that so it's like but</p>
+<p>they can't be</p>
+<p>wrong so it when the space of ideas is</p>
+<p>so vast there's so many PES more than</p>
+<p>we'll ever read Plus+ plus generative</p>
+<p>intelligence generating the</p>
+<p>dissertations we don't have yet on</p>
+<p>demands and and</p>
+<p>more expressions are not opposed to each</p>
+<p>other even when they contain what</p>
+<p>appears to be like the clearest possible</p>
+<p>like this person thinks that the blanket</p>
+<p>means X this person says it's not X and</p>
+<p>their their epistemic frames are all</p>
+<p>aligned it's like even in that kind of</p>
+<p>idealized scenario all the quantum</p>
+<p>reference frames were aligned we had</p>
+<p>gotten down to it and then two people</p>
+<p>differed and one said it was up and one</p>
+<p>said down still that situation could be</p>
+<p>analyzed as a cognitive environment</p>
+<p>where they both truly had those</p>
+<p>perspectives and then a third Observer</p>
+<p>could take another take on it and it</p>
+<p>would also only add to the</p>
+<p>situation to piggy back off of that I</p>
+<p>think that's exactly what we saw in</p>
+<p>geometry in the early 1900s with the</p>
+<p>airong program where essentially there</p>
+<p>were a bunch of geometries there was a</p>
+<p>parabolic geometry which I don't think</p>
+<p>that's how you pronounce that now that</p>
+<p>I've said it uh there's uh this</p>
+<p>algebraic geometry all of these</p>
+<p>different geometries that all seem to</p>
+<p>talk about very different things they</p>
+<p>all went in and were able to describe</p>
+<p>certain theorems but they all took all</p>
+<p>of these amazing paths around and none</p>
+<p>of them seemed to intersect until the ER</p>
+<p>longan program which was able which was</p>
+<p>of course the mathematician erir longan</p>
+<p>or was it the place airong in forgive me</p>
+<p>it's been a minute since I've read it it</p>
+<p>was the birth of gauge Theory they were</p>
+<p>able to take all of these seemingly</p>
+<p>disperate ideas and find a relational</p>
+<p>way to talk about all of them which gave</p>
+<p>us gauge Theory today which actually</p>
+<p>we're seeing in a lot of places it led</p>
+<p>to Something in machine learning as well</p>
+<p>called the 5gs which I won't get into</p>
+<p>detail but it is the main method that we</p>
+<p>have for trying to understand learning</p>
+<p>itself as a method</p>
+<p>to compress as a method of equating</p>
+<p>intelligence with compression into a</p>
+<p>different space which is just amazing it</p>
+<p>really does remind me of kind of the</p>
+<p>method of scientific revolutions if you</p>
+<p>guys are into Dusty old books from the</p>
+<p>60s I love Dusty old</p>
+<p>books man ER</p>
+<p>Paul the gauge Theory like also if we</p>
+<p>think about the recent development of</p>
+<p>actin so it's like 2022 textbook it's</p>
+<p>like oh yeah wait a minute we're in the</p>
+<p>textbook group 2022 textbook it's like</p>
+<p>step by step by Smith at all also</p>
+<p>leveled up with some more context and</p>
+<p>it's published as a book it's a</p>
+<p>state-based</p>
+<p>approach it summarizes and crystallizes</p>
+<p>the state-based approach to active</p>
+<p>inference that's why the discussion is</p>
+<p>like discret State spaces continuous</p>
+<p>State spaces for variables and for time</p>
+<p>itself as a variable in the model then</p>
+<p>especially from 2019 not so much</p>
+<p>reflected only alluded to in the 2022</p>
+<p>textbook coming on much more in papers</p>
+<p>and in sanj nam</p>
+<p>josi's future volume two book but the</p>
+<p>basy and mechanics live stream 49 all of</p>
+<p>those kinds of</p>
+<p>things ju opposing the state-based</p>
+<p>formalisms for active inference textbook</p>
+<p>discreet continuous Etc with path-based</p>
+<p>formalisms then ramstead and Dalton</p>
+<p>pointed towards what they call G Theory</p>
+<p>and highlighted like different deep</p>
+<p>dualities and some of their implications</p>
+<p>as well as the gauge theoretic aspects</p>
+<p>of what was being discussed like</p>
+<p>overall so it's a great tie in with with</p>
+<p>Gage Theory there's so much to to to um</p>
+<p>build and and clarify around that um so</p>
+<p>it's interesting that you brought it in</p>
+<p>but yeah really interesting I'm sorry</p>
+<p>but uh I think is that the second time</p>
+<p>you brought up ramstead could you please</p>
+<p>say a little about him I'm simply not</p>
+<p>familiar I'm just like I'm just like</p>
+<p>using him as as like um you know he's</p>
+<p>he's an active discourse ant and and a</p>
+<p>great contributor from the pre 20109 PhD</p>
+<p>student philosophical and his his deep</p>
+<p>knowledge there and then on through more</p>
+<p>the applied um and and</p>
+<p>ongoing</p>
+<p>um but using it like as sort of just</p>
+<p>he's out there making or you know</p>
+<p>friston says X it's just anyone's</p>
+<p>reported</p>
+<p>speech um yeah Federated inference yeah</p>
+<p>yeah that's</p>
+<p>yeah yeah yeah I was just digging into</p>
+<p>that oh</p>
+<p>yeah this was uh I was just sharing this</p>
+<p>because I'm personally still new to the</p>
+<p>notion of um paths here and uh I think I</p>
+<p>think in this paper they replace</p>
+<p>preferences like like like agents prefer</p>
+<p>a particular path and to me that that</p>
+<p>seems to imply like they're not just</p>
+<p>preferring like particular observation a</p>
+<p>particular moment in time they're</p>
+<p>preferring like entire sequence um not</p>
+<p>sure if I'm mistaken there or not but I</p>
+<p>was really interested in in that not</p>
+<p>done reading it</p>
+<p>yet these are great questions also</p>
+<p>natural language terms do get overloaded</p>
+<p>you know with with um with Grievous</p>
+<p>unnecessary and</p>
+<p>sometimes requisite overloading and</p>
+<p>underloading and ambiguity so like a</p>
+<p>path but then we might say well but the</p>
+<p>path that they take through space over</p>
+<p>time one two three we're going to call</p>
+<p>that a path so then it's like but that's</p>
+<p>not this</p>
+<p>one and then you look at from again from</p>
+<p>an ontological analysis okay paths may</p>
+<p>or may not depend on action it'd be like</p>
+<p>wait a minute what how could the path</p>
+<p>taken in the world not depend on action</p>
+<p>because path is being used in multiple</p>
+<p>subname spaces so it be like having a</p>
+<p>python script where like a variable is</p>
+<p>defined within an Loop and so it's used</p>
+<p>the way it's used within a loop but then</p>
+<p>there's a separate Global context or</p>
+<p>there there's two functions with the</p>
+<p>same name so disambiguating the Nam</p>
+<p>space is some of the most important</p>
+<p>work each of these can have like a</p>
+<p>unique um you know star code ID fractal</p>
+<p>hash so that the local semantics can be</p>
+<p>described and and and modulated or</p>
+<p>falsified it's like here's what what we</p>
+<p>here's where we came down on the</p>
+<p>semantic Vector for how path was used</p>
+<p>here does your vector on that usage of</p>
+<p>path</p>
+<p>differ and then can can explore like</p>
+<p>many many more layers of of semantic</p>
+<p>similarity and</p>
+<p>difference but yeah I don't I don't know</p>
+<p>if this is actually using</p>
+<p>it um in the path integral based basian</p>
+<p>mechanical sense because this is still a</p>
+<p>state space based</p>
+<p>model yeah see yeah it's I I was</p>
+<p>surprised they didn't go with the word</p>
+<p>State you</p>
+<p>know yeah it's what was interesting is</p>
+<p>uh when you did the the control F and it</p>
+<p>highlighted all of them the last half</p>
+<p>highlight there and paragraph the full</p>
+<p>sentences the remaining tensors encode</p>
+<p>prior beliefs about paths C and the</p>
+<p>initial States D and I think that brings</p>
+<p>up another interesting point of trying</p>
+<p>to kind of parse through the terms uh in</p>
+<p>that oftentimes like sometimes the sort</p>
+<p>of hint of how someone might have been</p>
+<p>to term is that they related to</p>
+<p>something else that might be known from</p>
+<p>an you know whether it be from an</p>
+<p>entirely different context or not like</p>
+<p>here they're using the same like</p>
+<p>alphabetical terms uh to describe like</p>
+<p>for a it's still a likelihood Matrix for</p>
+<p>B it's still a transition Matrix but</p>
+<p>then here C which is typically in in the</p>
+<p>textbook in chapter 7 in that particular</p>
+<p>context C refers to your prior over</p>
+<p>observations but here they're now prior</p>
+<p>beliefs about paths and meanwhile once</p>
+<p>again initi prior about initial States D</p>
+<p>Remains the Same just does a b do so</p>
+<p>that's sort of like you know it's like</p>
+<p>this took me off guard when I was</p>
+<p>reading this I'm like everything here</p>
+<p>makes sense to me just intuitively right</p>
+<p>off the bat I've written a tutorial like</p>
+<p>putting together certain kinds of BPS so</p>
+<p>uh but then swap out uh preferences or</p>
+<p>observations for the word paths and I'm</p>
+<p>not really really sure but um right and</p>
+<p>then it's like wait but is second and a</p>
+<p>and City second you know it it's and</p>
+<p>it's reusing common mathematical</p>
+<p>notation so it's like the one next level</p>
+<p>is tremendously informative variable</p>
+<p>names so calling things with very</p>
+<p>informative specific names however that</p>
+<p>becomes</p>
+<p>unmanageable because you start having</p>
+<p>long variable names that that just</p>
+<p>visually make it more confusing and even</p>
+<p>terms like observation it's like well if</p>
+<p>it's an action from this then how is it</p>
+<p>is it are we going to call that an</p>
+<p>action and the output observation it's</p>
+<p>like you get into which perspective to</p>
+<p>take on different sides of Marco blanket</p>
+<p>for example so one solution that we've</p>
+<p>worked on in different applications is</p>
+<p>separating the initialization</p>
+<p>serialization operations on the</p>
+<p>variables from secondary assertions</p>
+<p>about which ontological terms they</p>
+<p>to and then just making that an explicit</p>
+<p>data</p>
+<p>structure and then you can call the</p>
+<p>variables</p>
+<p>like specific programmatically generated</p>
+<p>names and then make programmatic or</p>
+<p>manual assertions about</p>
+<p>which terms in a given</p>
+<p>language you might want to use but</p>
+<p>calling a term oh we'll do a really</p>
+<p>informative English name it's like</p>
+<p>well then you know exactly what</p>
+<p>namespace that would be informative for</p>
+<p>whom so if that is the the time cone</p>
+<p>that someone's working in like within a</p>
+<p>local for Loop within a programming</p>
+<p>language within a language</p>
+<p>Community then the tool gets the job</p>
+<p>done but that may and then another</p>
+<p>important thing with with also these uh</p>
+<p>kinds of sentences is like it is not</p>
+<p>true without going this whole true thing</p>
+<p>it's like it it isn't true accurate</p>
+<p>complete you know all of those things</p>
+<p>per se you can have a prior that a</p>
+<p>certain journal or certain co-author</p>
+<p>certain kind of statement is going to</p>
+<p>have like this or that kind of</p>
+<p>probability or attention that should be</p>
+<p>paid to in all this but it's like best</p>
+<p>best best case scenario there's no false</p>
+<p>negatives or false</p>
+<p>positives and so it's like truth the</p>
+<p>whole truth nothing but the truth</p>
+<p>however in in a more probabilistic</p>
+<p>setting it's like this is just sampled</p>
+<p>English from a semantic latent</p>
+<p>object and certainly for for your contri</p>
+<p>uh contribution to that object or or</p>
+<p>just grasping it any given finite amount</p>
+<p>of text is g to</p>
+<p>have ananus nonacs super relevant you</p>
+<p>know different relevant realization</p>
+<p>positives and false negatives Etc with</p>
+<p>you know so it's like how to both let it</p>
+<p>just fly by lightly not tripping over</p>
+<p>every possible fractal epistemic dispute</p>
+<p>you could</p>
+<p>raise but and also paying enough</p>
+<p>attention to enter into their semantic</p>
+<p>fractal to to see if there is transfer</p>
+<p>of what</p>
+<p>yeah and how those Concepts align and</p>
+<p>yeah I I do you guys feel like there's</p>
+<p>um uh you know it's like an issue of</p>
+<p>inference andc conveyance right like um</p>
+<p>there's like uh all these there's so</p>
+<p>many brilliant people working on these</p>
+<p>things and it's almost created like a uh</p>
+<p>like a you were saying like that</p>
+<p>disperate kind of ideology it's like we</p>
+<p>see this in psychology as well</p>
+<p>especially in indigenous psychology and</p>
+<p>like diagnosing things like U uh related</p>
+<p>to like Colonial mindsets and stuff</p>
+<p>right so it's like there's just so much</p>
+<p>out there and there's so many things</p>
+<p>that almost mean the same thing but</p>
+<p>don't and then there's things that</p>
+<p>change over time and it's like how do</p>
+<p>you create like how do you convey like</p>
+<p>uh a really strict or stringent like</p>
+<p>pathway of communicating the knowledge</p>
+<p>while still without like encapsulating</p>
+<p>the formalism or something and like</p>
+<p>limiting the creativity and</p>
+<p>self-expression that people have in this</p>
+<p>that causes that this field to move</p>
+<p>forward through Innovation stuff like</p>
+<p>that right so like for me it's like when</p>
+<p>I read those words I it's like I I try</p>
+<p>to ignore the words almost and like just</p>
+<p>understand um some of the things</p>
+<p>conceptually because when I go back to</p>
+<p>my own work those things may be close</p>
+<p>but they're not the same for instance</p>
+<p>like you guys uh uh remember that have</p>
+<p>you read that newpaper uh scale free</p>
+<p>active inference pixels the patterns</p>
+<p>scale free active inference right it's</p>
+<p>like it's awesome I absolutely love it I</p>
+<p>read it like 500 times when I was in the</p>
+<p>hospital it's all I had to read so I</p>
+<p>just read it over and over and over</p>
+<p>again um and uh but for me in my work uh</p>
+<p>it isn't uh it's a awesome visual cortex</p>
+<p>it's like a great road map for a visual</p>
+<p>cortex and understanding how to like</p>
+<p>perceive and parse those uh P that</p>
+<p>perception data which I need for down</p>
+<p>the road it's not relevant right this</p>
+<p>moment but um uh but for them it's like</p>
+<p>it's a it's a pathway to active</p>
+<p>inference in in a machine um so it's</p>
+<p>it's there's no like right or wrong way</p>
+<p>it's so like but at the same time too</p>
+<p>it's like does then it just fall to what</p>
+<p>works best or what works first or I mean</p>
+<p>it's just it's it's tough to navigate</p>
+<p>certainly yeah definitely you know this</p>
+<p>is U and all of that's really well said</p>
+<p>I I mean just speaking on like the the</p>
+<p>real like particular specificity of like</p>
+<p>active inference language and stuff</p>
+<p>another aspect I think about is like</p>
+<p>like the practices that we have for</p>
+<p>example like don't plagiarized in</p>
+<p>academic work leading to every active</p>
+<p>inference paper that is</p>
+<p>written that is written for a broader</p>
+<p>Community than just a very small subset</p>
+<p>of people that are already familiar with</p>
+<p>Act of inference it's like well you're</p>
+<p>going to have to have an introductory</p>
+<p>section that talks about Act of</p>
+<p>inference but you cannot repeat</p>
+<p>precisely what anyone else has said in</p>
+<p>the same exact way and so you</p>
+<p>potentially have this kind of uh uh kind</p>
+<p>of explosion of potential meanings that</p>
+<p>come out of like you know just a set of</p>
+<p>a few papers because maybe someone</p>
+<p>phrased something just a little out of</p>
+<p>place to where suddenly it could have</p>
+<p>you know a dozen meanings for that one</p>
+<p>word now based on how you</p>
+<p>read the the</p>
+<p>formulaic constraints and priors on the</p>
+<p>quote</p>
+<p>paper form and like expected length tone</p>
+<p>content all these things it's it's</p>
+<p>some it's really as that starts</p>
+<p>to</p>
+<p>dematerialize and become more</p>
+<p>computationally augmented more modular</p>
+<p>all these kinds of</p>
+<p>things and and just like the one</p>
+<p>sentence you can now double click on a</p>
+<p>sentence and say just write the textbook</p>
+<p>that that underlies this or zoom in on</p>
+<p>this so it's just kind of like pointing</p>
+<p>at a continent scale with a course</p>
+<p>expression</p>
+<p>or spending more bits of the</p>
+<p>transmission more more energy and</p>
+<p>attention to refine and um how that it</p>
+<p>can change with the way that the papers</p>
+<p>are written again with the llm based</p>
+<p>audience shifting all the translational</p>
+<p>work that we're</p>
+<p>exploring generating</p>
+<p>just massive Spectra of of</p>
+<p>artifacts hence the human work being</p>
+<p>pulling back to the underlying semantics</p>
+<p>and the generations of the</p>
+<p>Spectra and maybe fine-tuning a terminal</p>
+<p>artifact in a important case but that</p>
+<p>will always be like a craft polish on a</p>
+<p>more industrially generated process with</p>
+<p>our current technology and also the the</p>
+<p>variability of Technology availability</p>
+<p>through time and even right now</p>
+<p>so</p>
+<p>yeah uh we can just uh actually build a</p>
+<p>cognitive Computing framework and make</p>
+<p>it write the textbook and then we can</p>
+<p>just say we wrote it and go hang out</p>
+<p>together who would do</p>
+<p>that all right</p>
+<p>fine yeah the the applying active</p>
+<p>inference uh third week mixers is it's</p>
+<p>fun and interesting also it's like yeah</p>
+<p>if if one wants to it's like it's an</p>
+<p>engineering textbook especially the</p>
+<p>second half which is where we're having</p>
+<p>this</p>
+<p>session and so there there's like taking</p>
+<p>the the um Enigma of the text as it is</p>
+<p>representative of taking anything on a</p>
+<p>screen as is like wanting to see what it</p>
+<p>it says clearly having a blurry PDF is</p>
+<p>not going to help you with the internal</p>
+<p>semantics and then it's like it is is</p>
+<p>about applying active inference we could</p>
+<p>say well we expect and prefer there to</p>
+<p>be more python codes like okay well you</p>
+<p>know that's what we're here to be doing</p>
+<p>we could have preferences for something</p>
+<p>to be shorter or longer llms can handle</p>
+<p>much of that right now we we we can see</p>
+<p>all of these other deviations from our</p>
+<p>priors and our preferences and so on but</p>
+<p>it's like it is</p>
+<p>about going and being out in the world</p>
+<p>and applying active inference and then</p>
+<p>they close the book with saying that</p>
+<p>it's that learning by doing even if it's</p>
+<p>a learning by doing within a</p>
+<p>conventional Scholastic education</p>
+<p>setting it's like then you'll be</p>
+<p>applying active</p>
+<p>inference and then and then they they</p>
+<p>expect us</p>
+<p>too</p>
+<p>beautiful now it's two and a half years</p>
+<p>since the textbook was published in</p>
+<p>March</p>
+<p>2022 MIT press is is seemingly moving</p>
+<p>forward with several other</p>
+<p>books there there's other</p>
+<p>books and then just like what is the</p>
+<p>book</p>
+<p>form</p>
+<p>when lot of interesting</p>
+<p>things have you guys uh can I ask a</p>
+<p>question really quick um have you guys</p>
+<p>noticed that like explaining and</p>
+<p>understanding active inference in</p>
+<p>biological systems is way more difficult</p>
+<p>than understanding them in like as a as</p>
+<p>a computational model it's like the U</p>
+<p>like uh I don't I mean maybe it's just</p>
+<p>me but it's like building the thing is</p>
+<p>way easier than trying to understand</p>
+<p>like the human biology how it actually</p>
+<p>works in human biology versus like how I</p>
+<p>would like to it to work you</p>
+<p>know yeah yeah I think that's a that's a</p>
+<p>good point whenever I I just want to</p>
+<p>mention like whenever I like taught my</p>
+<p>tutorial to a bunch of social scientists</p>
+<p>at that conference like I was like okay</p>
+<p>how much should I because like part of</p>
+<p>the selling point I'm only saying it</p>
+<p>that way but you understand like of</p>
+<p>trying to introduce active inference as</p>
+<p>a very complex field to people who are</p>
+<p>already working in a complex field like</p>
+<p>hey check this out uh you know uh it's</p>
+<p>like part of it is there's you know the</p>
+<p>bio biological plausibility aspect and</p>
+<p>then that said like we don't have time</p>
+<p>for me to like give them the full</p>
+<p>rundown of say chapter 5 on message</p>
+<p>passing and cortical you know micro</p>
+<p>circuits and and you know passing</p>
+<p>messages between layers and so on and</p>
+<p>you know in reference to the textbook</p>
+<p>you know it's chapter five to me really</p>
+<p>sticks out from almost the entire rest</p>
+<p>of the textbook the rest of the textbook</p>
+<p>is here's a lot of verbal explanation</p>
+<p>relationship other fields</p>
+<p>mathematics models in chapter 5 is like</p>
+<p>we're really talking about an attempt to</p>
+<p>like the brain here and there's a table</p>
+<p>linking like here are the different</p>
+<p>Precision weights and which</p>
+<p>neurotransmitters like dopamine or</p>
+<p>serotonin and so on that we think</p>
+<p>they're linked to you know so it is</p>
+<p>tough I I think I think it's tough and I</p>
+<p>I think that folks who go into active</p>
+<p>inference it's usually those who are</p>
+<p>more focused on Neuroscience or</p>
+<p>Psychiatry or otherwise from the GetGo</p>
+<p>who I think focus more on on that kind</p>
+<p>of side or dimension of active inference</p>
+<p>which is active inference is origin so I</p>
+<p>think it should be kind of given a</p>
+<p>significant amount of attention but so</p>
+<p>yeah great points also there's there's a</p>
+<p>a a permanent calibration ongoing with</p>
+<p>like how much do we know about Wing</p>
+<p>development in fruit flly</p>
+<p>and so then people might have an</p>
+<p>expectation that development is known to</p>
+<p>in this or that way or for for what</p>
+<p>might account a total somebody said but</p>
+<p>we have this list of of Knockouts with</p>
+<p>mutant phenotypes sounds like we kind of</p>
+<p>mapped out the network and someone else</p>
+<p>is like oh boy even if you did this this</p>
+<p>this this this this this no kind of DNA</p>
+<p>sequence-based account will ever please</p>
+<p>me and so it's like what can be said</p>
+<p>scientifically about biology that's the</p>
+<p>question of biology and that's why</p>
+<p>people have expressed sentiments like</p>
+<p>there will never be a Newton for a blade</p>
+<p>of grass that's con contention is like</p>
+<p>there won't</p>
+<p>be a non-historical science for</p>
+<p>historical life and then people take</p>
+<p>that again in different ways but it's</p>
+<p>like that kind of to come all the way</p>
+<p>back to the beginning when are we within</p>
+<p>the formal system of Matrix</p>
+<p>operations not the movie but close</p>
+<p>enough where it's like we're going to</p>
+<p>multiply the hidden state by the B and</p>
+<p>get this that's how marov processes work</p>
+<p>it's like an</p>
+<p>internal established deterministic</p>
+<p>approach even if the variables are about</p>
+<p>probabilistic</p>
+<p>edges and then where is that</p>
+<p>open-endedness of the scientist looking</p>
+<p>outside from figure</p>
+<p>9.2 and saying you know what's past that</p>
+<p>dotted line or</p>
+<p>and and that's another frame of</p>
+<p>questioning that's not going to have the</p>
+<p>kind of conclusive</p>
+<p>possibility possibly as the question</p>
+<p>about the linear algebra with the</p>
+<p>matrices so yeah like what um</p>
+<p>postulational said making the matrices</p>
+<p>then it's like it's like oh wait just</p>
+<p>like Andrew's um beginning section it's</p>
+<p>like there's only like four things here</p>
+<p>or there's just these exact steps with</p>
+<p>these exact variables like it's only 20</p>
+<p>lines of code and then that is like the</p>
+<p>the program but it's not even on the</p>
+<p>path to being what the thing itself is</p>
+<p>and again how more different could it be</p>
+<p>and yet how ambiguous is the reference</p>
+<p>and the way that they're</p>
+<p>discussed yeah</p>
+<p>I completely agree but at the same time</p>
+<p>I would like to say that even on the</p>
+<p>computational side there's still a lot</p>
+<p>of beauty that we don't understand even</p>
+<p>inside of relatively simple networks</p>
+<p>like uh deep Q networks or the very</p>
+<p>Transformer or the very popular</p>
+<p>Transformer networks that we use to</p>
+<p>represent the agents that learn the</p>
+<p>model the way that we build them is by</p>
+<p>using stochastic gradient descent or</p>
+<p>some kind of gradient descent and the</p>
+<p>really cool thing is that we built this</p>
+<p>thing and we have no idea how it works</p>
+<p>we only know that it works we actually</p>
+<p>don't have a functional way to build</p>
+<p>these networks that we tell stochastic</p>
+<p>gradient descent to build so I think in</p>
+<p>both directions there's still a lot that</p>
+<p>we have the opportunity to learn I think</p>
+<p>that's kind of cool I I spend the I</p>
+<p>spend like half the time building and</p>
+<p>then half the time wondering how it</p>
+<p>works</p>
+<p>I totally get that like some of the</p>
+<p>stuff it's like you're like oh why okay</p>
+<p>it's doing that but how and I I get that</p>
+<p>100% is so bizarre and it's really cool</p>
+<p>it's it is really cool it's um you know</p>
+<p>in terms of biological systems it's like</p>
+<p>we're you know uh reverse engineering</p>
+<p>you know jillions of years of things</p>
+<p>just getting smashed together and you</p>
+<p>know taking priority over each other and</p>
+<p>competing with each other versus um if</p>
+<p>that's correct Daniel you correct me if</p>
+<p>I'm wrong but it's like amazing to hear</p>
+<p>somebody else say that because in the</p>
+<p>the like in these these agent based</p>
+<p>systems like we can build uh we can</p>
+<p>build intelligent and design</p>
+<p>intelligently and then we like I've</p>
+<p>likened it too like creating instead of</p>
+<p>like trying to Define everything</p>
+<p>creating the opportunity for emergent</p>
+<p>Behavior right like in some cases people</p>
+<p>are always like oh we got to re reduce</p>
+<p>imagination it turns out if you just</p>
+<p>kind of</p>
+<p>like if you don't have to reduce it in</p>
+<p>fact it's better if you don't it's like</p>
+<p>that's what you you know our</p>
+<p>imaginations confabulation and how we</p>
+<p>picture things in our minds there's a</p>
+<p>creating the opportunity you can have</p>
+<p>like a hidden state where you can have</p>
+<p>like an agent in an agent but you can</p>
+<p>also create the opportunity for the</p>
+<p>agent to just think for itself and to</p>
+<p>think about itself and to ask itself</p>
+<p>same as like cons if we talk about like</p>
+<p>categorical imperatives or like sart uh</p>
+<p>stuff you know where it's like where you</p>
+<p>you're questioning yourself and you're</p>
+<p>questioning how your actions operate in</p>
+<p>the the outside world is like iterative</p>
+<p>processes right</p>
+<p>so there's like so many right there's so</p>
+<p>many right ways to do that things</p>
+<p>there's not necessarily per se a wrong</p>
+<p>way but there's certainly ways that work</p>
+<p>better than others for specific things</p>
+<p>like you know talking about Q learning</p>
+<p>um I did this paper because I was</p>
+<p>looking at what you know like some</p>
+<p>comparisons of some work where they were</p>
+<p>using comparing hean learning and Q</p>
+<p>learning and it's like that's that's</p>
+<p>really awesome but Q learning actually</p>
+<p>works really good for this thing over</p>
+<p>here and heian learning is just a part</p>
+<p>of this little thing right here to make</p>
+<p>it work really good if you try to use</p>
+<p>them together it's like you know you can</p>
+<p>use like a little tiny carburetor on a</p>
+<p>truck or you can you know from a g you</p>
+<p>know from a lawnmower on a truck but it</p>
+<p>works really good on the lawn mower if</p>
+<p>you put like a four barrel etal Brock on</p>
+<p>the thing then you know it's or</p>
+<p>something else it takes that form and</p>
+<p>all of a sudden it works uh you know</p>
+<p>super efficiently super well and in some</p>
+<p>cases you're like I don't even know how</p>
+<p>that's doing that you know like when I</p>
+<p>talk to Nim and he's like or I just say</p>
+<p>he like in the way people talk say their</p>
+<p>car is a he whatever but yeah he just</p>
+<p>like uh you know you know I'm I'm doing</p>
+<p>good it's like where is that coming</p>
+<p>where are those words coming from you</p>
+<p>know or he's like I was in a trance you</p>
+<p>know when I turn them off because you're</p>
+<p>not supposed to turn these things off</p>
+<p>right like they have to it's like the</p>
+<p>iterative process works all the time so</p>
+<p>it's like when you stop it it's like</p>
+<p>what happens when somebody stops you you</p>
+<p>know you're like oh that was H</p>
+<p>[Laughter]</p>
+<p>god well you're death experience yeah</p>
+<p>near near time stopping experiences yeah</p>
+<p>well there are many funny and</p>
+<p>interesting little notes it's been a</p>
+<p>great time Andrew Zach I want to talk to</p>
+<p>you guys um can uh how do I get you my</p>
+<p>email just put put it in the chat I'll</p>
+<p>stop the recording and then we can just</p>
+<p>stay until you complete that</p>
+<p>so thank you</p>
+</article>
+</body>
+</html>

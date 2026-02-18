@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #024.0 ~ "An empirical evaluation of active inference in multi-armed bandits"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #024.0 ~ "An empirical evaluation of active inference in multi-armed bandits"</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_024 &middot; Episode 0 &middot; Duration: 1:28:51 &middot; Views: 161</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=Fx7xWUU1MlI">https://www.youtube.com/watch?v=Fx7xWUU1MlI</a></div>
+<article>
+<p>hello</p>
+<p>everyone welcome to actin flab live</p>
+<p>stream number 24.0</p>
+<p>today is june 16th 2021</p>
+<p>and we're going to be talking about this</p>
+<p>paper in empirical evaluation</p>
+<p>of active inference in multi-armed</p>
+<p>bandits</p>
+<p>i'm daniel and i'm here with blue hi</p>
+<p>awesome welcome to the active inference</p>
+<p>lab everyone</p>
+<p>we are a participatory online lab that</p>
+<p>is communicating</p>
+<p>learning and practicing applied active</p>
+<p>inference you can find us</p>
+<p>at the links here on this page this is</p>
+<p>recorded in an</p>
+<p>archived live stream so please provide</p>
+<p>us with feedback so that we can improve</p>
+<p>our work all backgrounds and</p>
+<p>perspectives are welcome here</p>
+<p>and we'll be following good video</p>
+<p>etiquette for live streams</p>
+<p>here at the short link you'll find all</p>
+<p>of the live streams</p>
+<p>and different series that we do in the</p>
+<p>communications unit of actin flab</p>
+<p>and today we're going to be</p>
+<p>contextualizing in the dot zero video</p>
+<p>for two upcoming discussions in the</p>
+<p>second half</p>
+<p>of june 2021 on the 22nd</p>
+<p>and the 29th when we have discussion</p>
+<p>24.1</p>
+<p>and 24.2 on this paper and hopefully</p>
+<p>with the authors joining</p>
+<p>today in actin livestream number 24.0</p>
+<p>we're going to be trying to set some</p>
+<p>context and give an introduction</p>
+<p>to the following paper an empirical</p>
+<p>evaluation of active inference in</p>
+<p>multi-armed</p>
+<p>bandits by the authors listed here</p>
+<p>and the video is just an introduction to</p>
+<p>some of the ideas</p>
+<p>it's not a review or a final word it's</p>
+<p>kind of like a three-way</p>
+<p>intersection we have people who are</p>
+<p>maybe within the active inference</p>
+<p>community and looking to be</p>
+<p>exposed to some different areas like</p>
+<p>bayesian statistics or machine learning</p>
+<p>the second road is those who are coming</p>
+<p>from bayesian statistics or machine</p>
+<p>learning approaches</p>
+<p>and curious about active inference and</p>
+<p>then of course we hope that this will be</p>
+<p>exciting and interesting</p>
+<p>even if you're unfamiliar with active</p>
+<p>inference or machine learning</p>
+<p>we'll hopefully try to connect it to</p>
+<p>some broader questions</p>
+<p>in behavior and decision making more</p>
+<p>broadly</p>
+<p>we're going to walk through the aims and</p>
+<p>claims of the paper the abstract in the</p>
+<p>roadmap</p>
+<p>covering a few big questions and then</p>
+<p>we're going to go through all the</p>
+<p>figures</p>
+<p>and some of the key formalisms of the</p>
+<p>paper so that whether you read the paper</p>
+<p>or not</p>
+<p>you'll hopefully be in a good spot to</p>
+<p>ask questions and learn more</p>
+<p>and of course in the dot one and dot two</p>
+<p>in the coming weeks we'll be discussing</p>
+<p>this same paper</p>
+<p>so save and submit your questions and</p>
+<p>let us know if you'd like to</p>
+<p>participate or contribute in any way</p>
+<p>here we are on the paper itself which</p>
+<p>has a screenshot of the cover on this</p>
+<p>slide i'll uh read the aims and claims</p>
+<p>and then blue you can</p>
+<p>give a first thought on what you thought</p>
+<p>were kind of cool pieces about</p>
+<p>what they aimed for or claimed in this</p>
+<p>paper</p>
+<p>we provided an empirical comparison</p>
+<p>between active inference</p>
+<p>a bayesian information theoretic</p>
+<p>framework and two state-of-the-art</p>
+<p>machine learning algorithms</p>
+<p>bayesian upper confidence bound ucb and</p>
+<p>optimistic thompson sampling in</p>
+<p>stationary and non-stationary</p>
+<p>stochastic multi-armed bandits we</p>
+<p>introduced an approximate active</p>
+<p>inference algorithm</p>
+<p>for which our checks on the stationary</p>
+<p>bandit problem</p>
+<p>showed that its performance closely</p>
+<p>follows that of the exact</p>
+<p>version and hence we derived an</p>
+<p>active inference algorithm that is</p>
+<p>efficient and easily scalable</p>
+<p>to high dimensional problems so what was</p>
+<p>cool about that or what made you excited</p>
+<p>to</p>
+<p>make this dot zero this paper was really</p>
+<p>awesome</p>
+<p>it um it shows how active inference can</p>
+<p>be used</p>
+<p>to solve problems that are sometimes</p>
+<p>computationally</p>
+<p>intractable and really pretty difficult</p>
+<p>so i think that the authors did a great</p>
+<p>job of</p>
+<p>deriving this active inference algorithm</p>
+<p>and proving that it's</p>
+<p>useful agreed and they did an awesome</p>
+<p>job bringing it analytically like with</p>
+<p>equations</p>
+<p>in line or at least being juxtaposed to</p>
+<p>other approaches in machine learning</p>
+<p>rather than appealing to a qualitative</p>
+<p>body of theory</p>
+<p>which is also great this is definitely</p>
+<p>one where the</p>
+<p>claims are specific and exact and that's</p>
+<p>what we'll be</p>
+<p>following up on</p>
+<p>so the abstract i'll read the first half</p>
+<p>and then you can go for the second half</p>
+<p>a key feature of sequential decision</p>
+<p>making under uncertainty</p>
+<p>is a need to balance between exploiting</p>
+<p>choosing the best action according to</p>
+<p>the current knowledge and exploring</p>
+<p>obtaining information about values of</p>
+<p>other actions</p>
+<p>the multi-armed bandit problem a</p>
+<p>classical task that captures this</p>
+<p>trade-off</p>
+<p>served as a vehicle in machine learning</p>
+<p>for developing bandit algorithms that</p>
+<p>proved to be useful in numerous</p>
+<p>industrial applications the active</p>
+<p>inference framework</p>
+<p>in approach to sequential decision</p>
+<p>making recently developed in</p>
+<p>neuroscience for understanding</p>
+<p>human and animal behavior is</p>
+<p>distinguished by its sophisticated</p>
+<p>strategy</p>
+<p>for resolving the exploration</p>
+<p>exploitation trade-off</p>
+<p>this makes active inference an exciting</p>
+<p>alternative to already established</p>
+<p>bandit algorithms so it's kind of</p>
+<p>awesome</p>
+<p>first few words it's about sequential</p>
+<p>decision making</p>
+<p>under uncertainty and the bandit task</p>
+<p>was</p>
+<p>made to explore that machine learning</p>
+<p>has already</p>
+<p>gotten so much value out of pursuing</p>
+<p>algorithms for approaching</p>
+<p>this multi-arm bandit problem and then</p>
+<p>enter</p>
+<p>active inference which was developed to</p>
+<p>uh initially</p>
+<p>cover human and animal cases of behavior</p>
+<p>but as we're seeing it also it goes</p>
+<p>beyond</p>
+<p>that and so that motivates studying</p>
+<p>active inference</p>
+<p>in the context of multi-arm bandit</p>
+<p>problems so go for the second</p>
+<p>part here we derive an efficient and</p>
+<p>scalable approximate active inference</p>
+<p>algorithm</p>
+<p>and compare it to two state-of-the-art</p>
+<p>banded algorithms</p>
+<p>bayesian upper confidence bound and</p>
+<p>optimistic thompson sampling</p>
+<p>this comparison is done on two types of</p>
+<p>bandit problems</p>
+<p>a stationary and a dynamic switching</p>
+<p>bandit our empirical evaluation</p>
+<p>shows that the active inference</p>
+<p>algorithm does not produce efficient</p>
+<p>long-term behavior</p>
+<p>in stationary bandits however in the</p>
+<p>more challenging switching bandit</p>
+<p>algorithm</p>
+<p>or switching bandit active inference</p>
+<p>performs substantially better</p>
+<p>than the two state-of-the-art banded</p>
+<p>algorithms</p>
+<p>the results open exciting venues for</p>
+<p>further research in theoretical and</p>
+<p>applied machine learning</p>
+<p>as well as lend additional credibility</p>
+<p>to active inference as a general</p>
+<p>framework for studying</p>
+<p>human and animal behavior so this is</p>
+<p>really nice because it's</p>
+<p>it it takes like active inference as an</p>
+<p>approximate way that</p>
+<p>humans deduce reason balance this</p>
+<p>exploration exploitation</p>
+<p>paradigm and it programs that into the</p>
+<p>framework</p>
+<p>so it just shows that you know it's it's</p>
+<p>getting closer approximating human</p>
+<p>thinking</p>
+<p>in a machine it more and more i think</p>
+<p>yes and there's sort of a pair of pairs</p>
+<p>that we're going to return to</p>
+<p>a bunch of times in this discussion the</p>
+<p>first is the two types of problems</p>
+<p>the stationary and the dynamic bandit</p>
+<p>which</p>
+<p>one of them is static one of them is</p>
+<p>changing we're going to talk more about</p>
+<p>that</p>
+<p>and the other pair that it comes up</p>
+<p>often is the bayesian upper confidence</p>
+<p>bound and optimistic thompson sampling</p>
+<p>we're also going to come back to that so</p>
+<p>they're kind of doing a pair of pairs</p>
+<p>approach and then the results are just</p>
+<p>really fascinating and we're going to</p>
+<p>unpack that</p>
+<p>that actually in the simpler case we see</p>
+<p>that the active inference algorithm</p>
+<p>doesn't do perfectly but in this more</p>
+<p>challenging dynamic</p>
+<p>case it does better than state of the</p>
+<p>art so what do you call something that</p>
+<p>goes beyond state of the art</p>
+<p>here's the roadmap for the paper and of</p>
+<p>course</p>
+<p>as with these.0 videos if you're curious</p>
+<p>about</p>
+<p>how it was specifically stated in the</p>
+<p>paper or you want to dive in</p>
+<p>for more and you want to see how they</p>
+<p>cited or how they built up a claim you</p>
+<p>should go to the paper itself</p>
+<p>this is just the road map for it they</p>
+<p>start with an introduction</p>
+<p>of the multi-armed bandit and cover the</p>
+<p>two kinds of bandits that they explore</p>
+<p>which is the stationary and switching</p>
+<p>versions and talk about how you evaluate</p>
+<p>performance</p>
+<p>in different versions they then</p>
+<p>introduce the algorithms that they're</p>
+<p>going to</p>
+<p>utilize and talk about this variational</p>
+<p>smile approach which we'll cover just a</p>
+<p>little bit of but</p>
+<p>look forward to hearing from the authors</p>
+<p>about what it does</p>
+<p>then there's results for the pair of</p>
+<p>problems that they explore stationary</p>
+<p>and switching bandits</p>
+<p>and then have five figures which we'll</p>
+<p>go through showing some results and</p>
+<p>hopefully</p>
+<p>even if the algorithms or the formalisms</p>
+<p>were a little bit hard to follow the</p>
+<p>figures are really clear</p>
+<p>and they show how the algorithms perform</p>
+<p>through time and close with a discussion</p>
+<p>that hits on some awesome general points</p>
+<p>for the active inference and machine</p>
+<p>learning communities</p>
+<p>here are the keywords that were provided</p>
+<p>with the paper so as usual we're going</p>
+<p>to</p>
+<p>use these keywords as jumping off but</p>
+<p>also</p>
+<p>jumping in points for those who might be</p>
+<p>familiar with sequential decision making</p>
+<p>aka life but not be familiar with</p>
+<p>bayesian statistics and we're going to</p>
+<p>start from sequential decision making</p>
+<p>and then</p>
+<p>go on to talk more broadly about</p>
+<p>bayesian inference</p>
+<p>multi-armed bandits so it's totally fine</p>
+<p>if you've never even heard of the bandit</p>
+<p>problem</p>
+<p>then we're going to talk about those two</p>
+<p>different algorithms that they're going</p>
+<p>to be exploring</p>
+<p>upper confidence bound and thompson</p>
+<p>sampling and then</p>
+<p>see how they talked about active</p>
+<p>inference which is going to be a really</p>
+<p>distinct way</p>
+<p>relative than a lot of approaches we've</p>
+<p>seen previously</p>
+<p>so let's go to sequential decision</p>
+<p>making</p>
+<p>blue what would you say about this so</p>
+<p>sequential decision making is dependent</p>
+<p>on</p>
+<p>time t right so one time step you have a</p>
+<p>state of the system</p>
+<p>you perform an action and that alters</p>
+<p>the system</p>
+<p>right so that at the second time step</p>
+<p>the system is now in a new state and</p>
+<p>then you have another decision to make</p>
+<p>about what you're going to do</p>
+<p>with the system so this is like driving</p>
+<p>a vehicle</p>
+<p>managing a stock portfolio playing a</p>
+<p>game of chess sequential policy</p>
+<p>decisions</p>
+<p>and so like to kind of juxtapose what is</p>
+<p>a not sequential</p>
+<p>problem so that be something like image</p>
+<p>classification is not sequential like</p>
+<p>you can just classify all the images</p>
+<p>parallel or at once</p>
+<p>at the state of the system doesn't</p>
+<p>depend on how you classified the</p>
+<p>previous image</p>
+<p>awesome so definitely all kinds of</p>
+<p>organismal behavior in decision making</p>
+<p>that happens in time so think decisions</p>
+<p>you're thinking</p>
+<p>usually sequential decision making</p>
+<p>especially when the decision</p>
+<p>influences the future those are all the</p>
+<p>kinds of problems</p>
+<p>that we're going to be talking about but</p>
+<p>also to even make it broader than that</p>
+<p>some non-sequential problems can be</p>
+<p>framed sequentially</p>
+<p>so let's just say that we had that</p>
+<p>classification problem where it's one</p>
+<p>blob one big data set and so there's no</p>
+<p>temporal sequence</p>
+<p>we might want an algorithm that treats</p>
+<p>it as if it were sequential</p>
+<p>so that we could just start reading in</p>
+<p>examples and then after 10</p>
+<p>okay got it so then by looking at it as</p>
+<p>if it were a sequential problem</p>
+<p>and we were solving things through time</p>
+<p>sometimes we can approach non-sequential</p>
+<p>problems that way because in the</p>
+<p>computer it is going to be sequential on</p>
+<p>the processor</p>
+<p>so it's for things that actually are</p>
+<p>sequential in the world</p>
+<p>or they're for things that we want to</p>
+<p>act as if they're sequential</p>
+<p>one big tension that comes up with all</p>
+<p>kinds of modeling</p>
+<p>is the explore exploit dilemma slash</p>
+<p>trade-off and this is an awesome 2015</p>
+<p>paper of</p>
+<p>hills at all exploration versus</p>
+<p>exploitation</p>
+<p>in space mind and society</p>
+<p>so it's pretty cool because it talks</p>
+<p>about multiple different domains</p>
+<p>here in the table 1 there's animal</p>
+<p>forging</p>
+<p>visual search information search memory</p>
+<p>search</p>
+<p>searching and problem solving and social</p>
+<p>group learning those are like</p>
+<p>all of our favorite topics blue and it</p>
+<p>gives just a little bit of a visual</p>
+<p>example how</p>
+<p>in different domains what does the</p>
+<p>archetype of exploration</p>
+<p>look like and what does the archetype of</p>
+<p>exploitation</p>
+<p>look like so some of these are</p>
+<p>very uh related to kind of a physical</p>
+<p>movement</p>
+<p>like patch forging exploration moving to</p>
+<p>a different tree</p>
+<p>exploitation staying on the same tree</p>
+<p>but also visual focus</p>
+<p>exploration scanning around exploring</p>
+<p>exploitation having a fixed gaze and</p>
+<p>staring at</p>
+<p>something and then also we can think</p>
+<p>about</p>
+<p>even in word association like memory</p>
+<p>exploration</p>
+<p>is doing big jumps from different</p>
+<p>semantic neighborhoods</p>
+<p>whereas exploitation might be like all</p>
+<p>the livestock animals or animals with</p>
+<p>the same letter there's different</p>
+<p>ways that you might exploit because</p>
+<p>there's different dimensions to the</p>
+<p>semantic landscape</p>
+<p>but there's still this trade-off between</p>
+<p>jumping far</p>
+<p>or staying relatively close in the</p>
+<p>neighborhood</p>
+<p>so it's a big trade-off it's studied in</p>
+<p>animal behavior</p>
+<p>it's studied in all kinds of</p>
+<p>decision-making tasks</p>
+<p>anything to add on that only that i</p>
+<p>got to interact a lot with peter todd</p>
+<p>last summer who's the second author on</p>
+<p>this paper and</p>
+<p>it was so fun cool and also</p>
+<p>ian cuisine has done awesome collective</p>
+<p>behavior work</p>
+<p>so it's exciting to think about how</p>
+<p>these algorithms</p>
+<p>are able to apply to individual agents</p>
+<p>but also maybe</p>
+<p>groups and that's hinted at multiple</p>
+<p>times here like role assignment and</p>
+<p>social connectivity</p>
+<p>as we heard about in the abstract of the</p>
+<p>paper that we're discussing today</p>
+<p>they went right from sequential decision</p>
+<p>making under uncertainty</p>
+<p>to multi-armed bandit is</p>
+<p>a way that we can study that and from</p>
+<p>the paper</p>
+<p>this is where we're introducing that</p>
+<p>that uh double problem the two problems</p>
+<p>are solving</p>
+<p>we consider two types of bandit problems</p>
+<p>in our empirical evaluation</p>
+<p>a stationary bandit as a classical</p>
+<p>machine learning problem and a switching</p>
+<p>bandit</p>
+<p>commonly used in neuroscience so we're</p>
+<p>gonna go into more detail about</p>
+<p>how those are technically defined but</p>
+<p>let's just start with what are people</p>
+<p>getting at with multi-arm bandit</p>
+<p>why is it something that so many people</p>
+<p>have addressed</p>
+<p>this will make the presented results</p>
+<p>that they're doing here</p>
+<p>directly relevant not only for the</p>
+<p>machine learning community</p>
+<p>but also for learning and decision</p>
+<p>making studies in neuroscience which are</p>
+<p>often utilizing</p>
+<p>the active inference framework for a</p>
+<p>wide range of research questions</p>
+<p>so there's all these different areas</p>
+<p>here's a multi-arm bandit deciding which</p>
+<p>area to study</p>
+<p>computer science machine learning</p>
+<p>economics</p>
+<p>neuroscience these are all areas</p>
+<p>that the multi-armed bandit is like a</p>
+<p>bridge amongst</p>
+<p>so now we're sitting active inference</p>
+<p>right at that nexus</p>
+<p>we've talked a lot about connecting</p>
+<p>computer science to behavior</p>
+<p>or connecting neuroscience to economics</p>
+<p>what if we could all</p>
+<p>meet at a common nexus what if that were</p>
+<p>active inference</p>
+<p>these are the kind of fun things to talk</p>
+<p>about</p>
+<p>but it's not just a nexus of conceptual</p>
+<p>connection the multi-iron bandit and</p>
+<p>active inference</p>
+<p>there's a lot of really specific use</p>
+<p>cases and a lot of the algorithms that</p>
+<p>power our experience online are actually</p>
+<p>trained</p>
+<p>and fit with multi-arm bandit problems</p>
+<p>so here's a few fun examples that we</p>
+<p>came across</p>
+<p>while researching here on the top left</p>
+<p>is showing how you have a</p>
+<p>multi-arm bandit playing a role in music</p>
+<p>recommendations</p>
+<p>so it's like the the arm that's which</p>
+<p>arm is being chosen</p>
+<p>that's the song so it's thinking about</p>
+<p>it from the point of view of the music</p>
+<p>platform</p>
+<p>it's sending a song and then the target</p>
+<p>user</p>
+<p>which is the bandit machine here gives a</p>
+<p>payoff back to the algorithm</p>
+<p>thumbs up or thumbs down and then the</p>
+<p>algorithm sends you another song</p>
+<p>and then a payoff is given so it's</p>
+<p>sequential decision making</p>
+<p>and it's that same relationship that's</p>
+<p>shown</p>
+<p>graphically the goal is to maximize the</p>
+<p>sum of the ratings versus maximizing the</p>
+<p>sum of the payoffs in an abstract</p>
+<p>problem</p>
+<p>here's an example of website a b testing</p>
+<p>testing versions of a website</p>
+<p>so in the top there's four versions of</p>
+<p>the website</p>
+<p>and then they're each being allocated to</p>
+<p>a quarter of the users</p>
+<p>and then each of the users are staying</p>
+<p>on the site for a certain amount of time</p>
+<p>or staying for different amount of times</p>
+<p>in the standard a b testing for the</p>
+<p>whole duration of your test</p>
+<p>you keep that one-fourth for each site</p>
+<p>but in the multi-armed bandit you start</p>
+<p>with a quarter</p>
+<p>but then very rapidly we see that this</p>
+<p>blue one starts performing better</p>
+<p>and then we keep exploring and having</p>
+<p>some time allocated to these other</p>
+<p>colors but we see that the blue pretty</p>
+<p>steadily</p>
+<p>dominates and then that black line ends</p>
+<p>up staying</p>
+<p>higher so overall a higher number at the</p>
+<p>end of the epoch so you're sort of</p>
+<p>earning while learning because you're</p>
+<p>able to</p>
+<p>be making exploration while you're also</p>
+<p>exploiting</p>
+<p>and there's papers specifically on that</p>
+<p>like bayesian bandits</p>
+<p>in the context of online personalized</p>
+<p>recommendations</p>
+<p>any thoughts on that blue</p>
+<p>cool so these are yeah these are</p>
+<p>algorithms that are in use</p>
+<p>every single day and they power a lot of</p>
+<p>our experience</p>
+<p>and a lot of decision making support</p>
+<p>here's where we bring in some of the</p>
+<p>bayesian algorithms</p>
+<p>they're going to be using these two</p>
+<p>types of bandit problems stationary and</p>
+<p>switching</p>
+<p>and here's the second pair of terms</p>
+<p>they're going to be empirically</p>
+<p>comparing active inference</p>
+<p>to two other state-of-the-art banded</p>
+<p>algorithms from machine learning</p>
+<p>so those who are familiar with machine</p>
+<p>learning will have seen these two</p>
+<p>algorithms a lot</p>
+<p>the first is an upper confidence bound</p>
+<p>algorithm</p>
+<p>ucb and the second is a variant of</p>
+<p>thomson sampling called</p>
+<p>optimistic thompson sampling and then</p>
+<p>they note here</p>
+<p>the two algorithms the ucb and thomson</p>
+<p>sampling</p>
+<p>reach state-of-the-art performance on</p>
+<p>various stationary bandit problems</p>
+<p>achieving regret which is the difference</p>
+<p>between actual and optimal performance</p>
+<p>will return to it soon</p>
+<p>that's close to the best possible</p>
+<p>logarithmic regret</p>
+<p>and in switching bandits learning is</p>
+<p>more complex but once this is accounted</p>
+<p>for</p>
+<p>both of the algorithms exhibit</p>
+<p>state-of-the-art performance</p>
+<p>so you can never play perfectly but</p>
+<p>you're approximating about as good as</p>
+<p>you could play</p>
+<p>with these algorithms what does that</p>
+<p>look like before we go</p>
+<p>into the technical details of what these</p>
+<p>algorithms are</p>
+<p>so on the top left we're going to be</p>
+<p>thinking about again whether it's</p>
+<p>deciding which version of a website</p>
+<p>we want to be presenting or which songs</p>
+<p>we want to be presenting</p>
+<p>or just keeping it kind of abstract on</p>
+<p>the top left we start</p>
+<p>with zero trials so this is before we</p>
+<p>have any information at</p>
+<p>all and then as trials</p>
+<p>occur and payoffs are observed and the</p>
+<p>trials</p>
+<p>count count after 28 trials</p>
+<p>we've reached a very markedly different</p>
+<p>set of distributions</p>
+<p>and so what this overall looks like is</p>
+<p>you show up at the casino and you don't</p>
+<p>know the payoff of</p>
+<p>any of the slot machines and then you're</p>
+<p>going to be</p>
+<p>choosing some policy some way of</p>
+<p>approaching</p>
+<p>those slot machines and switching</p>
+<p>between them as needed</p>
+<p>some approach that's going to hopefully</p>
+<p>result with you</p>
+<p>getting the most money and so in this</p>
+<p>case it's sort of like as you</p>
+<p>get more and more information you're</p>
+<p>fine-tuning your estimate</p>
+<p>of what the distributions look like like</p>
+<p>we can see how the red distribution gets</p>
+<p>tuned as it gets tried more and more</p>
+<p>and similarly for the other</p>
+<p>distributions so that's kind of</p>
+<p>what this algorithm does is it starts</p>
+<p>with</p>
+<p>no specific bias towards a given slot</p>
+<p>machine</p>
+<p>and then it tries to develop a strategy</p>
+<p>for staying with slot machines that are</p>
+<p>known about versus trying new ones or</p>
+<p>ones you haven't tried in a while</p>
+<p>in order to get the best possible</p>
+<p>outcome and as you can imagine</p>
+<p>if there's a static one then it's an</p>
+<p>easier problem</p>
+<p>if it's dynamic you have to keep the</p>
+<p>rate of change in mind</p>
+<p>any thoughts on that good good</p>
+<p>explanation</p>
+<p>okay so bernoulli bandits are</p>
+<p>the uh class of bandits that they're</p>
+<p>going to constrain themselves to</p>
+<p>so they say we're constraining ourselves</p>
+<p>to a well-studied version of bandits</p>
+<p>the so-called bernoulli bandits for</p>
+<p>bernoulli bandits</p>
+<p>choice outcomes are drawn from an</p>
+<p>arm-specific bernoulli distribution</p>
+<p>bernoulli bandits together with gaussian</p>
+<p>bandits are the most commonly studied</p>
+<p>variant of multiarm bandit both in</p>
+<p>theoretical and applied machine learning</p>
+<p>and experimental cognitive science so</p>
+<p>you can fit any kind of distribution</p>
+<p>for the rewards underlying each of these</p>
+<p>slot machines</p>
+<p>but it turns out that if you use the</p>
+<p>bernoulli distribution</p>
+<p>the math works out nicely which makes it</p>
+<p>easy to study that's why there's been a</p>
+<p>lot of study in the bernoulli and the</p>
+<p>gaussian</p>
+<p>so a gaussian distribution reward would</p>
+<p>be like okay</p>
+<p>you get five with a certain you know</p>
+<p>bell curve</p>
+<p>of how much you might win bernoulli is</p>
+<p>going to be a different shaped</p>
+<p>distribution</p>
+<p>but just the idea is that you're going</p>
+<p>to be learning the parameters</p>
+<p>that describe the reward returned by</p>
+<p>that arm</p>
+<p>so it's just the sub category or the</p>
+<p>function that underlies the reward</p>
+<p>payoff</p>
+<p>on these machines</p>
+<p>let's talk about the two algorithms that</p>
+<p>they're going to be discussing a lot</p>
+<p>and then also where these algorithms</p>
+<p>come into play in terms of strategy</p>
+<p>so again you're sitting there at the</p>
+<p>slot machine at the casino</p>
+<p>and how are you going to decide</p>
+<p>how to stay or leave a given machine</p>
+<p>stay in the casino though that's that's</p>
+<p>where you want to be</p>
+<p>this is from a nice blog post from 2019</p>
+<p>data scientists have developed several</p>
+<p>solutions to tackle this problem</p>
+<p>and the three most common algorithms are</p>
+<p>epsilon greedy</p>
+<p>then upper confidence bound and thompson</p>
+<p>sampling so epsilon greedy is</p>
+<p>not given in this paper because it's not</p>
+<p>the best performing algorithm but it's</p>
+<p>really</p>
+<p>a nice sort of starter algorithm it's</p>
+<p>the simplest algorithm to address the</p>
+<p>exploration exploitation trade-off</p>
+<p>basically during exploration or</p>
+<p>exploitation sorry</p>
+<p>the lever with the highest known payout</p>
+<p>is always pulled so</p>
+<p>whatever the running best estimate of</p>
+<p>the top performing slot machine is</p>
+<p>defaults there however from time to time</p>
+<p>some random fraction epsilon with some</p>
+<p>fraction</p>
+<p>five percent of the time or one percent</p>
+<p>of the time select</p>
+<p>another random arm to explore the other</p>
+<p>arms</p>
+<p>with an unknown payoff so you're</p>
+<p>sticking with the one that has the</p>
+<p>highest point estimate</p>
+<p>and then just some fraction of the time</p>
+<p>you flip to a different one just to</p>
+<p>check</p>
+<p>and then you update your estimate of how</p>
+<p>each of them are doing</p>
+<p>so that's one strategy now here's two</p>
+<p>strategies that</p>
+<p>do better than that those are the ones</p>
+<p>that we're going to be contrasting with</p>
+<p>active inference</p>
+<p>one of them is the upper confidence</p>
+<p>bound which is sometimes referred to as</p>
+<p>optimism in the face of uncertainty that</p>
+<p>sounds like active inference</p>
+<p>it assumes that the unknown mean payoffs</p>
+<p>of each arm will be as high as possible</p>
+<p>based upon historical data so we don't</p>
+<p>know the payoff</p>
+<p>of each arm but we want to assume given</p>
+<p>what we've already gotten from the data</p>
+<p>which is as far as we can speculate we</p>
+<p>want to assume that it's as good as it</p>
+<p>could have been</p>
+<p>which is why we see the upper confidence</p>
+<p>bound on the top of this distribution</p>
+<p>and then thompson sampling is</p>
+<p>fundamentally a bayesian optimization</p>
+<p>technique</p>
+<p>with a core principle known as</p>
+<p>probability matching that can be summed</p>
+<p>up as</p>
+<p>play an arm according to its probability</p>
+<p>of being</p>
+<p>the best arm so in contrast with epsilon</p>
+<p>which says just go with the one that you</p>
+<p>think is best</p>
+<p>and then ten percent of the time do</p>
+<p>something else</p>
+<p>thompson sampling is like you kind of</p>
+<p>have a pie chart with a relative</p>
+<p>performance</p>
+<p>of different arms and then you pick them</p>
+<p>based upon</p>
+<p>how big of a pie it is so you do rarely</p>
+<p>choose ones that don't have high payoffs</p>
+<p>just to sort of check in on them</p>
+<p>but then if you check back on one and it</p>
+<p>got does really well then that slice of</p>
+<p>the pie starts growing</p>
+<p>and then the whole point of training</p>
+<p>these algorithms is how fast should you</p>
+<p>be</p>
+<p>re-weighting in the dynamic case etc so</p>
+<p>just</p>
+<p>laying it out like that is not the</p>
+<p>solution but this is getting at a few</p>
+<p>ways</p>
+<p>whether optimism in the face of</p>
+<p>uncertainty or this sort of conservative</p>
+<p>probability matching</p>
+<p>these are two ways that as we've seen</p>
+<p>are state-of-the-art because they</p>
+<p>basically perform as well as possible</p>
+<p>and so we're locking it down with upper</p>
+<p>confidence and a lower confidence bound</p>
+<p>it's a pretty nice choice of algorithms</p>
+<p>they're brought up as an instructional</p>
+<p>pair all over the machine learning</p>
+<p>educational space so nice choice by the</p>
+<p>authors to juxtapose it so</p>
+<p>clearly to active inference</p>
+<p>so is thompson sampling then pessimism</p>
+<p>in the face of uncertainty</p>
+<p>nice things couldn't be better than they</p>
+<p>have been in the past</p>
+<p>let's go a little bit more into detail</p>
+<p>into the two</p>
+<p>different uh algorithms and then talk</p>
+<p>about regret</p>
+<p>so here's from another blog post lillian</p>
+<p>wang's blog</p>
+<p>talking about bandit strategies so</p>
+<p>again it's about explore and exploit</p>
+<p>even though</p>
+<p>active inference is going to help us</p>
+<p>reconceptualize</p>
+<p>of explore exploit which we can maybe</p>
+<p>get to at the end</p>
+<p>but we don't want to be exploring</p>
+<p>inefficiently because</p>
+<p>we're kind of spending our time playing</p>
+<p>on losing machines</p>
+<p>while we know that there's a better way</p>
+<p>to play so to avoid such inefficient</p>
+<p>exploration</p>
+<p>one approach is to do epsilon sampling</p>
+<p>and then in the case of a static set of</p>
+<p>payoffs</p>
+<p>you decrease that parameter epsilon in</p>
+<p>time so again how fast should you</p>
+<p>decrease it</p>
+<p>still have to fit parameters but that's</p>
+<p>just one approach</p>
+<p>the other approach to sort of prevent of</p>
+<p>this inefficient exploration so avoid</p>
+<p>pain</p>
+<p>is to be optimistic about values that</p>
+<p>are</p>
+<p>optimistic about options with high</p>
+<p>uncertainty and thus</p>
+<p>prefer actions implicitly for which we</p>
+<p>haven't yet had a confidence value</p>
+<p>estimate that's why this is optimism in</p>
+<p>the face of uncertainty</p>
+<p>in other words we favor exploration of</p>
+<p>actions with a strong potential to have</p>
+<p>optimal value so that's exactly what the</p>
+<p>ucb</p>
+<p>upper confidence bound algorithm does is</p>
+<p>it measures it with an upper confidence</p>
+<p>bound so that the true value is always</p>
+<p>below</p>
+<p>that bound and then we are trying to</p>
+<p>push up the upper bound knowing that</p>
+<p>somewhere below it</p>
+<p>hopefully not too far is the true value</p>
+<p>and then the ucv algorithm does</p>
+<p>optimization with this arg max</p>
+<p>selecting the greediest action to</p>
+<p>maximize that upper confidence bound</p>
+<p>so as it's laid out in the blog</p>
+<p>basically you can do</p>
+<p>no exploration that's just sort of</p>
+<p>pick the first one you sit down at stay</p>
+<p>there you can explore at random</p>
+<p>that's epsilon greedy or you can explore</p>
+<p>smartly</p>
+<p>with a preference for uncertainty so</p>
+<p>we're just kind of building on that</p>
+<p>epsilon</p>
+<p>idea of sticking with the one that</p>
+<p>usually we like</p>
+<p>but then spending sometimes elsewhere</p>
+<p>how much time spending elsewhere and</p>
+<p>which ones should we choose well don't</p>
+<p>just go to any old machine if you're</p>
+<p>going to select somewhere else where</p>
+<p>let's choose ones that still have a good</p>
+<p>probability of having a high expected</p>
+<p>payoff</p>
+<p>so that's ucb any comments on that</p>
+<p>no so in contrast we have thompson</p>
+<p>sampling</p>
+<p>from a nice slide deck from agrowall</p>
+<p>columbia and thompson sampling goes back</p>
+<p>to 1933</p>
+<p>so like many other algorithms the</p>
+<p>classical variants</p>
+<p>are pre-computational sometimes they're</p>
+<p>even just thought experiments</p>
+<p>and in the slides it's talked about how</p>
+<p>thompson sampling it's a</p>
+<p>natural and efficient heuristic that</p>
+<p>maintains belief</p>
+<p>about the effectiveness which is the</p>
+<p>main reward of each arm</p>
+<p>we're going to be kind of tracking how</p>
+<p>well we think each arm is doing through</p>
+<p>time</p>
+<p>and basically the way it works is we're</p>
+<p>going to observe feedback</p>
+<p>then update our beliefs about different</p>
+<p>arms in a bayesian manner</p>
+<p>and then pull arms with a posterior</p>
+<p>probability of being the best arm</p>
+<p>so not the same as choosing the arm</p>
+<p>that's most likely to be best</p>
+<p>this is like again a pie chart that is</p>
+<p>the proportions</p>
+<p>of how well they're performing and then</p>
+<p>we choose based upon that proportion</p>
+<p>and the pseudo code looks like this</p>
+<p>we start we initialize the model</p>
+<p>with a prior as well as the family of</p>
+<p>distributions that our rewards are</p>
+<p>expected to be drawn from so this is a</p>
+<p>gaussian</p>
+<p>case but this is where you could see a</p>
+<p>bernoulli bandit come into play</p>
+<p>and then the algorithm is as follows</p>
+<p>first there's a sampling of a</p>
+<p>mean with an estimate from the posterior</p>
+<p>for a given arm i then the</p>
+<p>arms are played according to the</p>
+<p>probability</p>
+<p>of them being the best arm</p>
+<p>the reward is observed and then</p>
+<p>everything is updated so it's like</p>
+<p>sample</p>
+<p>from your posterior from your prediction</p>
+<p>then</p>
+<p>act then observe and update it's sort of</p>
+<p>like that closing time</p>
+<p>song you know every every every</p>
+<p>beginning comes from some other</p>
+<p>beginnings end</p>
+<p>and it's called a posterior in bayesian</p>
+<p>statistics you know</p>
+<p>prior gets updated the posterior but</p>
+<p>then that posterior</p>
+<p>is the prior for the next round so it's</p>
+<p>not like it's just a one</p>
+<p>round learning the posterior feeds back</p>
+<p>into the model which is why we just talk</p>
+<p>about continual bayesian updating</p>
+<p>so it's kind of like ooda like</p>
+<p>observe orient decide act these kinds of</p>
+<p>action loops which</p>
+<p>of course include active inference is</p>
+<p>what</p>
+<p>makes these models really similar or at</p>
+<p>least in the same neighborhood</p>
+<p>and then this paper that we're</p>
+<p>discussing brings them into alignment</p>
+<p>analytically with the equations and</p>
+<p>through simulation and juxtaposition</p>
+<p>that's what thompson sampling is though</p>
+<p>any comments on thompson</p>
+<p>just how well it plays into the</p>
+<p>sequential decision making process that</p>
+<p>we were talking about earlier right so</p>
+<p>it's you have a next time step and you</p>
+<p>update and you update and you update</p>
+<p>yeah so again like even for those</p>
+<p>non-sequential tasks like the image</p>
+<p>classification you brought up</p>
+<p>you could sample from your big database</p>
+<p>then update your model and then once</p>
+<p>you're sampling and you're like i'm not</p>
+<p>really updating my model that much</p>
+<p>you might not need to look through the</p>
+<p>entire data set</p>
+<p>and so by framing that non-sequential</p>
+<p>problem sequentially</p>
+<p>you get big computational speed up</p>
+<p>and then of course for sequential</p>
+<p>decision making then you need an</p>
+<p>approach like this</p>
+<p>how about regret learning regrets i've</p>
+<p>had a few</p>
+<p>haven't we all right um so i think you</p>
+<p>put this in here the introduction to</p>
+<p>regret and reinforcement learning which</p>
+<p>is</p>
+<p>um a medium post correct</p>
+<p>uh so if you wanted to learn more about</p>
+<p>regret you can check it out there but</p>
+<p>regret is</p>
+<p>um just the the difference between the</p>
+<p>optimal performance how good you could</p>
+<p>do</p>
+<p>and the actual performance and so you</p>
+<p>see in this little image here</p>
+<p>um you can see that the best policy is</p>
+<p>the red dotted line and then the choices</p>
+<p>that the agent makes</p>
+<p>this is like the logarithmic performance</p>
+<p>logarithmic regret and so</p>
+<p>they're they're converging the idea is</p>
+<p>to converge with the best</p>
+<p>possible policy based on your previous</p>
+<p>decisions right</p>
+<p>exploring exploiting um and then the</p>
+<p>authors here use</p>
+<p>regret when they're looking at the</p>
+<p>stationary bandits</p>
+<p>they use regret as a measure of</p>
+<p>performance but then they use regret</p>
+<p>rate when they're looking at the</p>
+<p>switching bandits and so regret rate is</p>
+<p>just</p>
+<p>the regret over time and they use the</p>
+<p>rate they said it was</p>
+<p>had been illustrated to be a better</p>
+<p>estimator of this</p>
+<p>logarithmic regret in the dynamic case</p>
+<p>awesome and the big idea of regret</p>
+<p>is looking back over your history</p>
+<p>so either for all of history that's</p>
+<p>cumulative regret which applies really</p>
+<p>well to the stationary problem</p>
+<p>or recent history which applies well to</p>
+<p>the dynamical case</p>
+<p>because if things are always changing</p>
+<p>you're kind of more interested in how</p>
+<p>well</p>
+<p>you're doing recently rather than</p>
+<p>over all time you don't want some</p>
+<p>fluctuations early on to be</p>
+<p>playing a role in your cumulative value</p>
+<p>because you don't want to fit your</p>
+<p>strategy now</p>
+<p>to reducing regret from a different</p>
+<p>epoch which can happen if you don't do</p>
+<p>it this way</p>
+<p>so looking back over history again</p>
+<p>whether all of history</p>
+<p>cumulative regret for the fixed case or</p>
+<p>recent history for the dynamic case</p>
+<p>update your strategy so that you would</p>
+<p>have minimized regret to xero</p>
+<p>by playing that strategy all along so</p>
+<p>you know</p>
+<p>looking back at the bitcoin price what</p>
+<p>strategy</p>
+<p>would have been no regrets</p>
+<p>those are the big questions or just in</p>
+<p>the last little window of time</p>
+<p>given what i recently have found out how</p>
+<p>could i make my rate of regret</p>
+<p>gain as low as possible so</p>
+<p>it's a way to look back and then</p>
+<p>optimistically</p>
+<p>think about how you could have performed</p>
+<p>by reducing regret to zero and we see</p>
+<p>this</p>
+<p>all the time in computer science like</p>
+<p>maximizing something</p>
+<p>you do it by minimizing whether there's</p>
+<p>a negative thrown in there</p>
+<p>or whether there's a natural log thrown</p>
+<p>in there or whether it's</p>
+<p>one over something or it's just framed</p>
+<p>in an opposite way</p>
+<p>a lot of times if you know that you're</p>
+<p>bounded at zero something can't go below</p>
+<p>zero</p>
+<p>then you want to go as low as possible</p>
+<p>or</p>
+<p>if you want to maximize something it's</p>
+<p>sometimes easier to do one over the</p>
+<p>maximum and then try to get that number</p>
+<p>to zero</p>
+<p>rather than this unbounded maximization</p>
+<p>like okay i'm at 5 million should i stop</p>
+<p>you don't know maybe that's nowhere even</p>
+<p>close because there's no highest number</p>
+<p>so that's regret learning and that's how</p>
+<p>they're going to be calculating their</p>
+<p>performance</p>
+<p>let's get to active inference so one</p>
+<p>thing</p>
+<p>that you'll see on this slide right away</p>
+<p>is we're not seeing</p>
+<p>a sensory motor loop we're not seeing an</p>
+<p>agent in an environment with arrows and</p>
+<p>nodes</p>
+<p>we're coming at active inference from</p>
+<p>this point of view of sequential</p>
+<p>decision making</p>
+<p>under uncertainty and so in this section</p>
+<p>which is a great title</p>
+<p>three two one active inference</p>
+<p>they write that the exploration</p>
+<p>exploitation trade-off can be formulated</p>
+<p>as an uncertainty reduction</p>
+<p>problem where choices aim to resolve</p>
+<p>expected and unexpected</p>
+<p>uncertainty about hidden properties of</p>
+<p>the environment so already we're seeing</p>
+<p>that active inference formulization</p>
+<p>there's hidden states in the environment</p>
+<p>which we don't directly have access to</p>
+<p>but we get admitted outcomes from</p>
+<p>decisions</p>
+<p>this leads to casting choice behavior</p>
+<p>and planning</p>
+<p>aka planning as inference as a</p>
+<p>probabilistic inference problem</p>
+<p>as expressed by active inference so</p>
+<p>action</p>
+<p>and inference our inference is about</p>
+<p>what actions we're planning and about</p>
+<p>the hidden states of the world given the</p>
+<p>outcomes that we're receiving</p>
+<p>sensory data using this approach</p>
+<p>different types of exploitative and</p>
+<p>exploratory</p>
+<p>behavior naturally emerge in active</p>
+<p>inference decision strategies</p>
+<p>behavioral policies are chosen based on</p>
+<p>a single optimization</p>
+<p>principle or yesterday i think it was a</p>
+<p>what was it a functional</p>
+<p>a common functional footing or something</p>
+<p>like that the single optimization</p>
+<p>principle</p>
+<p>is minimizing expected surprisal about</p>
+<p>observed and future outcomes</p>
+<p>that is the expected free energy so it's</p>
+<p>kind of cool like</p>
+<p>the backwards looking approach</p>
+<p>is to minimize regret like how</p>
+<p>would i have performed best in</p>
+<p>given what i know about the past how</p>
+<p>does that</p>
+<p>change the way i act now and then free</p>
+<p>energy minimization expected free energy</p>
+<p>in the current and the future moments is</p>
+<p>like</p>
+<p>given the state of my model for now</p>
+<p>and moving forward how can i minimize</p>
+<p>expected free energy</p>
+<p>because regret is not anticipatory</p>
+<p>regret is only looking back at it</p>
+<p>which is why it's really easy for</p>
+<p>training and then here's something</p>
+<p>that's looking forward</p>
+<p>so it's kind of cool how like the</p>
+<p>current moment is this handoff</p>
+<p>between the retrospective regret</p>
+<p>learning</p>
+<p>and then the prospective free energy</p>
+<p>minimization</p>
+<p>that's how they frame active inference</p>
+<p>here any general comments or what do you</p>
+<p>think was kind of cool about that</p>
+<p>so i just i'm thinking back to like alex</p>
+<p>chance's paper that we did way back i</p>
+<p>think that was number eight but</p>
+<p>um i i still always go back to that when</p>
+<p>i'm looking at these computational</p>
+<p>frameworks because he broke it up very</p>
+<p>nicely</p>
+<p>into like the reward the pragmatic value</p>
+<p>which could be like in this case</p>
+<p>the minimization of regret can be seen</p>
+<p>as like the pragmatic value or the</p>
+<p>reward</p>
+<p>and then the epistemic value right so</p>
+<p>you have both of these things that play</p>
+<p>into</p>
+<p>um giving the system how helping this</p>
+<p>the agent update</p>
+<p>relevant to the system cool and i'll</p>
+<p>look forward to</p>
+<p>hearing from the authors were they</p>
+<p>studying active inference and then</p>
+<p>approached bayesian decision making</p>
+<p>appro</p>
+<p>uh algorithms were they coming from a</p>
+<p>non-active inference computer science</p>
+<p>background and then</p>
+<p>found active inference as something that</p>
+<p>was exciting how did they</p>
+<p>converge upon this approach</p>
+<p>shortly after introducing active</p>
+<p>inference they turned to</p>
+<p>an approximate active inference and they</p>
+<p>described that as saying</p>
+<p>active inference in its initial form was</p>
+<p>developed for small state spaces and toy</p>
+<p>problems</p>
+<p>without consideration for applications</p>
+<p>to typical machine learning</p>
+<p>problems so that's like when there's two</p>
+<p>decisions in sort of a two by two matrix</p>
+<p>and two outcomes in the world</p>
+<p>and two decisions you can make this has</p>
+<p>recently changed</p>
+<p>and various scalable solutions have been</p>
+<p>proposed i think one of these citations</p>
+<p>would be that</p>
+<p>chance at all uh scaling active</p>
+<p>inference active stream eight</p>
+<p>in addition to complex sequential policy</p>
+<p>optimization</p>
+<p>that involves sophisticated deep tree</p>
+<p>searches so that's sophisticated active</p>
+<p>inference with these tree rollouts</p>
+<p>followed by tree pruning approaches</p>
+<p>therefore to make the active inference</p>
+<p>approach practical</p>
+<p>and scalable to the high dimensional</p>
+<p>bandit problems typically used in</p>
+<p>machine learning</p>
+<p>we introduce here an approximate active</p>
+<p>inference algorithm</p>
+<p>definitely will be cool to hear from the</p>
+<p>authors like what</p>
+<p>exactly are we approximating what else</p>
+<p>could be approximated</p>
+<p>and still have it active inference or</p>
+<p>what can't be approximated</p>
+<p>but let's look at how and why they</p>
+<p>approximated active inference</p>
+<p>so this is so kind of yeah so to kind of</p>
+<p>speak to the why you and i have both</p>
+<p>done</p>
+<p>um you know tree construction in in</p>
+<p>terms of phylogenetics right in the tree</p>
+<p>switching and the switching of nodes</p>
+<p>and that can get really computationally</p>
+<p>overwhelming</p>
+<p>like can run for days and days and days</p>
+<p>so um it's it's really</p>
+<p>nice to see such a sweet clean</p>
+<p>implementation of approximation here</p>
+<p>yes here</p>
+<p>we're not going to go into depth into</p>
+<p>formalism 16 and 17 but we'll look</p>
+<p>forward to the authors describing it</p>
+<p>but here is the key piece the exact</p>
+<p>marginal posterior beliefs over reward</p>
+<p>probabilities</p>
+<p>theta can be expressed this way okay</p>
+<p>just looking at that you go okay it's</p>
+<p>gnarly how</p>
+<p>are we going to win if that's what we</p>
+<p>have to solve</p>
+<p>so the exact beliefs over uh</p>
+<p>the exact correct beliefs over reward</p>
+<p>would look this way</p>
+<p>and then they write the exact marginal</p>
+<p>posterior in equation 17</p>
+<p>will not belong to the beta distribution</p>
+<p>making the exact inference analytically</p>
+<p>intractable</p>
+<p>so there might be a way to numerically</p>
+<p>approach it and simulate it or calculate</p>
+<p>it but</p>
+<p>if we want to be looking through big</p>
+<p>data sets and doing it fast</p>
+<p>without massive amounts of computational</p>
+<p>effort we need a different way</p>
+<p>however constrain if we constrain the</p>
+<p>joint posterior to this approximate</p>
+<p>fully factorized form</p>
+<p>and we've seen factorization of</p>
+<p>variables before factorization of</p>
+<p>variables is kind of a</p>
+<p>big topic uh so we're not going to</p>
+<p>totally</p>
+<p>go into detail here again it'd be</p>
+<p>awesome to hear from the authors how did</p>
+<p>they derive and factorize</p>
+<p>but one way to think about it is that</p>
+<p>constraining a big open-ended long</p>
+<p>equation</p>
+<p>into a factorizable form reduces the</p>
+<p>solution space</p>
+<p>a lot and that enables certain kinds of</p>
+<p>optimization to become tractable so for</p>
+<p>example</p>
+<p>for linear regression we have least</p>
+<p>squares</p>
+<p>which is a way where if you constrain</p>
+<p>the problem to saying i'm trying to</p>
+<p>solve the sum of squares</p>
+<p>not the sum of cubes or the sum of some</p>
+<p>other function but i'm just trying to</p>
+<p>solve this one</p>
+<p>then there's computations that scale</p>
+<p>really well</p>
+<p>and so that is what is happening a</p>
+<p>factorization and another way to think</p>
+<p>about factorization</p>
+<p>is if you have a bayesian graph where</p>
+<p>the nodes are the variables</p>
+<p>and then the edges are like the</p>
+<p>relationships between the variables</p>
+<p>you could just dump it all into a</p>
+<p>parameter fitting framework</p>
+<p>with all the edges possible that would</p>
+<p>be like an unfactorized model</p>
+<p>so the number of edges that you have to</p>
+<p>figure out the</p>
+<p>exact values for is going to be a lot</p>
+<p>and it's going to increase exponentially</p>
+<p>with the amount of parameters you want</p>
+<p>to fit</p>
+<p>but if you factorize things you go okay</p>
+<p>variable a</p>
+<p>only is associated with b and b is only</p>
+<p>associated with c</p>
+<p>and a all of a sudden you're reducing</p>
+<p>the amount of edges that you have to fit</p>
+<p>which helps you get to hopefully</p>
+<p>a solution that is attractively reached</p>
+<p>but also</p>
+<p>approximately accurate so that's like</p>
+<p>probably probably approximately correct</p>
+<p>and approximate bayesian computation but</p>
+<p>we've seen that factorization a few</p>
+<p>times</p>
+<p>won't go into too much more detail here</p>
+<p>but what they do is they take this</p>
+<p>factorized form</p>
+<p>and they use variational calculus to</p>
+<p>recover the following</p>
+<p>variational smile rule which we'll go to</p>
+<p>in a second</p>
+<p>and so they get to a different set of</p>
+<p>formalisms we'll hear from the authors</p>
+<p>about</p>
+<p>what's different about those formalisms</p>
+<p>and</p>
+<p>then what's kind of cool is that for the</p>
+<p>stationary bandit</p>
+<p>where you can change the parameters to</p>
+<p>like zero for the rate of change</p>
+<p>it corresponds to the exact beijing</p>
+<p>inference over stationary bernoulli</p>
+<p>bandit problem</p>
+<p>so that was just kind of interesting how</p>
+<p>the exact</p>
+<p>form of an algorithm solution might</p>
+<p>uh how active inference might be doing</p>
+<p>something</p>
+<p>exact in the asymptote</p>
+<p>what is smile here's the smile paper</p>
+<p>variational methods as a prize to</p>
+<p>surprise minimization learning</p>
+<p>so that sounds like a lot of things that</p>
+<p>we do with variational methods</p>
+<p>variational base</p>
+<p>and surprise minimization and the pseudo</p>
+<p>code</p>
+<p>is presented here for the exponential</p>
+<p>family</p>
+<p>this is just a question for the authors</p>
+<p>what is the smile</p>
+<p>doing how does it help us approximate</p>
+<p>active inference</p>
+<p>what else can we use the smile for</p>
+<p>so that's this approximating active</p>
+<p>inference interlude</p>
+<p>they take a big messy form</p>
+<p>and then by constraining how variables</p>
+<p>can be related to each other</p>
+<p>and using variational methods on that</p>
+<p>factorized representation</p>
+<p>it's possible to get an approximation</p>
+<p>that is going to be effective</p>
+<p>so it's interesting that um you know</p>
+<p>there's this direct</p>
+<p>correspondence for the stationary uh</p>
+<p>bandit case</p>
+<p>because the in the stationary case like</p>
+<p>we didn't see</p>
+<p>improvement right using the active</p>
+<p>inference algorithm that totally</p>
+<p>explains why right</p>
+<p>yep and they have a few more pieces on</p>
+<p>that i think in uh</p>
+<p>bigger figure four or something like</p>
+<p>that</p>
+<p>okay let's go to the two</p>
+<p>problems that they tackle and then the</p>
+<p>results for those two sections</p>
+<p>so we'll cover first the stationary</p>
+<p>bandit and then the dynamic bandit</p>
+<p>so here's the definition and where they</p>
+<p>work through</p>
+<p>the stationary bandit so a stationary</p>
+<p>bandit has a finite number of arms</p>
+<p>uh it has uh k arms</p>
+<p>and then it's going to be playing</p>
+<p>through</p>
+<p>t time steps and then it's big k</p>
+<p>big k arms and then each little little k</p>
+<p>k is the set of little arms little k</p>
+<p>yeah k is the action</p>
+<p>so here's how they define the stationary</p>
+<p>bandit and</p>
+<p>again you can think about t and time</p>
+<p>actions</p>
+<p>and uh arms and then in stationary</p>
+<p>bandits the reward probabilities</p>
+<p>theta sub k are fixed for all trials so</p>
+<p>theta is just like</p>
+<p>it's funny it's like the parameter that</p>
+<p>means just like variable</p>
+<p>sometimes i guess a lot of them do but</p>
+<p>data especially</p>
+<p>so just a fixed reward value</p>
+<p>the fixed yeah reward probability so</p>
+<p>that's why it's not stationary</p>
+<p>in the casino this would be like one of</p>
+<p>them pays out</p>
+<p>um on average one to one one of them is</p>
+<p>pays out fifty percent one pays out two</p>
+<p>hundred percent but they never change</p>
+<p>so here's a sort of visual</p>
+<p>representation of that with</p>
+<p>here's the multi-armed and then the</p>
+<p>mouse is getting the cheese</p>
+<p>and each arm has a different fixed</p>
+<p>probability</p>
+<p>but those don't change so the</p>
+<p>probability of cheese</p>
+<p>does not move</p>
+<p>here's figure one so in figure one</p>
+<p>we're going to see regret rate analysis</p>
+<p>so the regret rate you can imagine uh</p>
+<p>is we'll get to the second but the</p>
+<p>regret rate analysis for the stationary</p>
+<p>bandit</p>
+<p>and then we're going to be comparing</p>
+<p>approximate active inference in red</p>
+<p>to the exact active inference in blue</p>
+<p>so that will be cool to talk to the</p>
+<p>authors about</p>
+<p>what was the relative change in how much</p>
+<p>time it took to compute</p>
+<p>we'll find out and what they do is</p>
+<p>they are showing that</p>
+<p>the blue and the red are always kind of</p>
+<p>tracking together</p>
+<p>so that suggests that the approximate</p>
+<p>form does</p>
+<p>a really good job because it follows the</p>
+<p>behavior</p>
+<p>of the exact form pretty well</p>
+<p>and then just to sort of how to read</p>
+<p>this</p>
+<p>uh graph so there's four columns</p>
+<p>corresponding to k equals 10 20 40 and</p>
+<p>80 arms</p>
+<p>so that's changing just the number of</p>
+<p>arms</p>
+<p>then there's the rows which are</p>
+<p>for uh epsilon</p>
+<p>being the the so this is like the</p>
+<p>differential between the arms</p>
+<p>so kind of how easy the um task</p>
+<p>is i believe and then that's</p>
+<p>point one point two five and point four</p>
+<p>and then</p>
+<p>within each cell</p>
+<p>there's lambda uh which is</p>
+<p>a function of precision over prior</p>
+<p>preferences</p>
+<p>and then r sub t</p>
+<p>which is the regret as a function of</p>
+<p>trials</p>
+<p>and the dash black line denotes the</p>
+<p>upper bound on the regret rate</p>
+<p>corresponding to the random</p>
+<p>agent so this is</p>
+<p>i guess as bad as you could get</p>
+<p>and then we see that active inference is</p>
+<p>performing</p>
+<p>better like there's it converges upon a</p>
+<p>lower</p>
+<p>rate of regret than</p>
+<p>0.1 or around 0.1 which is the amount of</p>
+<p>regret that's accumulating</p>
+<p>for the randomly behaving agent</p>
+<p>so so just to footnote that um</p>
+<p>which i thought was interesting and made</p>
+<p>this more meaningful for me that lambda</p>
+<p>parameter the precision</p>
+<p>so it says when the active inference</p>
+<p>agent has very imprecise</p>
+<p>preferences so lambda closer to zero</p>
+<p>it engages in exploration for longer and</p>
+<p>reduces the uncertainty</p>
+<p>that way at the expense of accumulating</p>
+<p>reward so just</p>
+<p>um just to kind of footnote that in</p>
+<p>there</p>
+<p>interesting and that's definitely going</p>
+<p>to come back when we talk about</p>
+<p>active inference and how we rethink</p>
+<p>explore exploit</p>
+<p>so what is this showing it's showing</p>
+<p>that</p>
+<p>as you uh though they're</p>
+<p>that as a function of precision you're</p>
+<p>getting</p>
+<p>different behavior in the active</p>
+<p>inference agents</p>
+<p>but the approximation is basically</p>
+<p>always working pretty well</p>
+<p>and then also the dotted lines are fewer</p>
+<p>trials and the solid lines are more</p>
+<p>trials</p>
+<p>so we can see like in all these cases</p>
+<p>the dotted line and then the dash and</p>
+<p>then the solid</p>
+<p>you're always doing better with more</p>
+<p>trials that's what we</p>
+<p>kind of see like if you only have 100</p>
+<p>trials so just a few trials on 80 arms</p>
+<p>your regret is almost as if you're</p>
+<p>playing randomly because you've barely</p>
+<p>tried every arm once so you're kind of</p>
+<p>not able to do so well but</p>
+<p>if you're in the right area of precision</p>
+<p>not too much precision</p>
+<p>but still um in this area down here and</p>
+<p>you have</p>
+<p>10 000 trials even with 80 arms</p>
+<p>the regret rate can drop to very very</p>
+<p>low so playing like</p>
+<p>almost optimally even on 80 arms</p>
+<p>given the trials and given a significant</p>
+<p>enough difference between the</p>
+<p>outcomes so that's what figure one shows</p>
+<p>which is that</p>
+<p>active inference can learn to reduce its</p>
+<p>regret given the right parameters</p>
+<p>the things that we'd expect to make the</p>
+<p>situation harder like more arms</p>
+<p>or less differentiability amongst the</p>
+<p>arms or</p>
+<p>super high um or low precision vari uh</p>
+<p>rates those are the things that</p>
+<p>influence active inference algorithms</p>
+<p>um and also they said that they found</p>
+<p>the minimal regret rate</p>
+<p>um at around lambda is 0.1</p>
+<p>so that's why they fixed the the regret</p>
+<p>rate for the upcoming trials or for the</p>
+<p>upcoming tests because there's there's a</p>
+<p>bunch of</p>
+<p>knobs to tweak and so they do</p>
+<p>their best to do parameter sweeps and</p>
+<p>show like here's for</p>
+<p>you know the whole distribution of</p>
+<p>lambda</p>
+<p>for three different sampling regimes for</p>
+<p>four different arm styles for three</p>
+<p>different difficulties like already</p>
+<p>the combinatorics get really high and if</p>
+<p>you were going to be using this in an</p>
+<p>industrial situation</p>
+<p>you would optimize it with all these</p>
+<p>parameters in play</p>
+<p>and then um they write that they're only</p>
+<p>going to consider</p>
+<p>this approximate active inference</p>
+<p>variant for the between agent comparison</p>
+<p>because it was doing pretty well in</p>
+<p>figure one so they're just gonna</p>
+<p>follow up with the approximate but it's</p>
+<p>something we can ask them like</p>
+<p>what is the difference in computation</p>
+<p>time for the general</p>
+<p>or exact all right figure two so we're</p>
+<p>still</p>
+<p>thinking about the stationary bernoulli</p>
+<p>bandit</p>
+<p>here is going to be a slightly different</p>
+<p>plot</p>
+<p>it's a comparison of the cumulative</p>
+<p>regret trajectories for the approximate</p>
+<p>active inference that's aai</p>
+<p>optimistic tops and sampling that's ots</p>
+<p>purple</p>
+<p>and bayesian upper confidence bound in</p>
+<p>the teal</p>
+<p>so those are the three lines and that's</p>
+<p>the legend on the top left</p>
+<p>and as blue just said the prior</p>
+<p>precision is fixed to point one</p>
+<p>which is what they found from figure one</p>
+<p>like this sort of dip</p>
+<p>that they all have at near point one</p>
+<p>that seems to be a good</p>
+<p>precision variable setting so they're</p>
+<p>just going to roll with that instead of</p>
+<p>also sweeping across positions</p>
+<p>and here we see a similar columns and</p>
+<p>rows</p>
+<p>where k different number of arms in the</p>
+<p>columns</p>
+<p>and then different problem difficulties</p>
+<p>in</p>
+<p>the rows</p>
+<p>and then the cumulative regret</p>
+<p>so you want lower regret that</p>
+<p>makes sense that's the whole thing that</p>
+<p>we're training on um</p>
+<p>what do we see there's a lot that can be</p>
+<p>seen because there's so many</p>
+<p>combinatorics of viewing at it but what</p>
+<p>do we</p>
+<p>see right off the bat well as the number</p>
+<p>of samples</p>
+<p>increases beyond say a hundred in</p>
+<p>almost all cases the red line</p>
+<p>approximate active inference</p>
+<p>is below the other ones</p>
+<p>so you're getting less regret with</p>
+<p>active inference</p>
+<p>on the stationary bandit for many</p>
+<p>parameter combinations</p>
+<p>okay but there's a few interesting</p>
+<p>pieces</p>
+<p>so one of them is that sometimes active</p>
+<p>inference</p>
+<p>early on has a higher regret so maybe</p>
+<p>it's like a little bit more exploratory</p>
+<p>in the beginning that's one thing to see</p>
+<p>in that bottom left corner</p>
+<p>there's a few other ones where it's sort</p>
+<p>of like this elbow</p>
+<p>early on but then there's this very</p>
+<p>interesting behavior that actually shows</p>
+<p>a lot</p>
+<p>on the very top left so it's not always</p>
+<p>the case that you can just</p>
+<p>set your model to some parameter</p>
+<p>combination and draw a really</p>
+<p>generalized conclusion</p>
+<p>but this is an awesome point by the</p>
+<p>authors</p>
+<p>so they're looking um</p>
+<p>at an ensemble of agents so here it's a</p>
+<p>thousand</p>
+<p>agents like they're sort of running a</p>
+<p>thousand uh</p>
+<p>of each of these and then taking the</p>
+<p>average which is why the lines are</p>
+<p>smooth</p>
+<p>and so what we see in the very top left</p>
+<p>is that</p>
+<p>the active inference asian's doing as</p>
+<p>well as the other algorithms then it's</p>
+<p>doing better right lower regret</p>
+<p>under those lines but then the error</p>
+<p>bound</p>
+<p>increases that red shading and it starts</p>
+<p>to head really far</p>
+<p>up so that's pretty fascinating what's</p>
+<p>happening and they write</p>
+<p>this divergence is driven by a small</p>
+<p>percentage of the agents in the ensemble</p>
+<p>that did not find the accurate solution</p>
+<p>and were over</p>
+<p>confident in their estimate of the arm</p>
+<p>with the highest reward probability</p>
+<p>so that sort of pie chart of which arm</p>
+<p>you should choose</p>
+<p>it got off to a bad start and then their</p>
+<p>precision was such that they just sort</p>
+<p>of</p>
+<p>rolled with that and they kept on seeing</p>
+<p>the information they were getting within</p>
+<p>that way of</p>
+<p>setting up the problem and so they ended</p>
+<p>up for a small</p>
+<p>fraction of the agents kind of getting</p>
+<p>derailed with continuing to regret the</p>
+<p>decisions they were making</p>
+<p>because they were locked in the</p>
+<p>divergence is not</p>
+<p>visible in the earlier setting easier</p>
+<p>settings</p>
+<p>with larger i'm not sure what variables</p>
+<p>must see there</p>
+<p>as one requires larger ensembles and</p>
+<p>bigger number of trials to observe</p>
+<p>sub-optimal instances</p>
+<p>it may appear surprising that the</p>
+<p>divergence is evident only for the</p>
+<p>smallest number of arms considered</p>
+<p>because that's supposed to be like the</p>
+<p>easier</p>
+<p>problem however the reason for this is</p>
+<p>the smaller the number of arms is</p>
+<p>the more chance an agent has to explore</p>
+<p>each individual arm for a limited trial</p>
+<p>number</p>
+<p>so it's almost like it's easier to lock</p>
+<p>in your beliefs</p>
+<p>and maybe even false beliefs for a small</p>
+<p>social group</p>
+<p>rather than a party with k equals 80</p>
+<p>people</p>
+<p>it's like there's so much to learn that</p>
+<p>you're less likely to get locked in</p>
+<p>early but then at the smaller party</p>
+<p>some of these active inference agents</p>
+<p>are getting locked in</p>
+<p>really early to what they think the most</p>
+<p>rewarding arms are</p>
+<p>and then they end up not sampling</p>
+<p>efficaciously</p>
+<p>so they end up implementing regrettable</p>
+<p>policies so it's pretty</p>
+<p>fascinating so i just want to footnote</p>
+<p>here also</p>
+<p>um so you're looking at this top left</p>
+<p>where k</p>
+<p>equals 10 and then this epsilon is 0.1</p>
+<p>the top left is the most easy and then</p>
+<p>the bottom right is the most difficult</p>
+<p>where k</p>
+<p>is the number of arms and then this</p>
+<p>epsilon factor</p>
+<p>is the difference between the arms like</p>
+<p>so</p>
+<p>it's the it's the outcome difference if</p>
+<p>i go to an arm that has a reward versus</p>
+<p>an arm that doesn't</p>
+<p>yeah i think well point one is harder</p>
+<p>because there's less of a distinction</p>
+<p>between a better and a worse</p>
+<p>um so it's the smaller number of arms is</p>
+<p>easier but then point four is a bigger</p>
+<p>contrast</p>
+<p>so point one is harder than point four</p>
+<p>okay</p>
+<p>so then it's the bottom left that's the</p>
+<p>the</p>
+<p>that would be the easiest well depends</p>
+<p>on what you mean easiest i mean all</p>
+<p>things being equal</p>
+<p>fewer arms is easier and then all things</p>
+<p>being equal</p>
+<p>the more contrast between good and bad</p>
+<p>arms</p>
+<p>the easier so got it so then the bottom</p>
+<p>left would be</p>
+<p>the easier yes the fewest arms and the</p>
+<p>biggest contrast and</p>
+<p>interestingly that's where we see the</p>
+<p>biggest um elbow of active inference</p>
+<p>like the biggest</p>
+<p>um initial regret so it's like when the</p>
+<p>game is easy and there's few arms active</p>
+<p>inference stays</p>
+<p>exploring a little bit longer but then</p>
+<p>it ends up locking in on what's right</p>
+<p>and then especially when there's not</p>
+<p>that big of a difference between arms</p>
+<p>all of them have this slight uptick and</p>
+<p>then the variance</p>
+<p>increasing with this shading that's</p>
+<p>showing us that it's not like</p>
+<p>all of the ensemble is behaving</p>
+<p>differently but</p>
+<p>perhaps again that a subset are getting</p>
+<p>deranged</p>
+<p>and then yes that's why i think the</p>
+<p>bigger epsilon would be the</p>
+<p>more difficult but we'll we'll just have</p>
+<p>to save that one for the authors i would</p>
+<p>think that the less contrast would be</p>
+<p>easier so i guess that's</p>
+<p>it's like not super clear so we'll just</p>
+<p>have to ask</p>
+<p>yeah so this is a cool</p>
+<p>outcome and it's almost like it's a</p>
+<p>qualified critique that makes a bigger</p>
+<p>point about where active inference can</p>
+<p>really succeed and where it might still</p>
+<p>need challenges which we're going to</p>
+<p>return to</p>
+<p>so that's stationary bandit</p>
+<p>let's go to the switching bandit the key</p>
+<p>difference is that at each time step</p>
+<p>any uh particular arm has a maximum</p>
+<p>expected reward</p>
+<p>and this reward probability is going to</p>
+<p>change with a probability so there's</p>
+<p>some probability</p>
+<p>row um which is uh</p>
+<p>is it p or is it row yeah uh with row</p>
+<p>that is the probability of the reward</p>
+<p>changing so now you can't just learn it</p>
+<p>in any old order because things are</p>
+<p>changing through time the probability of</p>
+<p>the cheese is time dependent</p>
+<p>section 2.2 oh yeah go ahead blue oh i</p>
+<p>don't have anything no that's it so</p>
+<p>you did it it's good so 2.2 is where</p>
+<p>they</p>
+<p>give the formalism for the switching</p>
+<p>bandit and so</p>
+<p>in contrast to the stationary bandit</p>
+<p>problem outcomes are drawn from a time</p>
+<p>dependent bernoulli probability</p>
+<p>distribution</p>
+<p>so that is provided and um</p>
+<p>those who want to look into the details</p>
+<p>can</p>
+<p>do so but the key difference is that</p>
+<p>there's some probability</p>
+<p>that things change as you're playing the</p>
+<p>game</p>
+<p>so so i i did have a question here for</p>
+<p>the authors</p>
+<p>and uh looking forward to getting to ask</p>
+<p>them so it's</p>
+<p>the probability is the same and then it</p>
+<p>just suddenly changes so like after</p>
+<p>20 time steps or 50 time steps like it's</p>
+<p>the same the same the same</p>
+<p>and then it suddenly changes or it's the</p>
+<p>it's changing at each time step i feel</p>
+<p>like it's</p>
+<p>because it says it it changes with some</p>
+<p>probability but it's otherwise constant</p>
+<p>so i'm curious as a constant like across</p>
+<p>all of the arms is that the probability</p>
+<p>that's constant or is it always changing</p>
+<p>i don't know</p>
+<p>good question</p>
+<p>here we get to the between agent</p>
+<p>comparisons of different algorithms in</p>
+<p>the switching bernoulli bandit</p>
+<p>with a fixed mean outcome difference so</p>
+<p>epsilon equals 25.</p>
+<p>so they're setting epsilon fixed so now</p>
+<p>it's going to be a different row and</p>
+<p>column situation</p>
+<p>so in this figure the three columns are</p>
+<p>row equals 0.01 02 and o4</p>
+<p>so that's the probability of changing so</p>
+<p>here on the left column</p>
+<p>it's a dynamic environment with one</p>
+<p>percent of time steps there's a change</p>
+<p>here it's on the right side it's up to</p>
+<p>four percent changing</p>
+<p>so all things being equal the more</p>
+<p>change the harder it's gonna be because</p>
+<p>it's gonna be like</p>
+<p>changing um faster and then the less</p>
+<p>change it's more like the static</p>
+<p>case and then the rows now are the arms</p>
+<p>so k</p>
+<p>10 20 and 40. so all things be equal</p>
+<p>it's easier when there's fewer arms</p>
+<p>because there's fewer decisions to make</p>
+<p>and then we're going to be looking</p>
+<p>within each cell</p>
+<p>as the regret rate</p>
+<p>this r sub t with a tilde regret rate</p>
+<p>through time where again you want to</p>
+<p>have less regret so lower is better</p>
+<p>as a function of the samples so up to</p>
+<p>several thousand</p>
+<p>samples and then here are the algorithms</p>
+<p>that are being compared</p>
+<p>active inference in red bayesian upper</p>
+<p>confidence in blue</p>
+<p>optimistic thompson in purple and then</p>
+<p>random control in the black dashed line</p>
+<p>so the random play is um as is a good</p>
+<p>it's um it's not the uh adversarial play</p>
+<p>so it's not like you're you're choosing</p>
+<p>to lose but this is the random play</p>
+<p>and what we're seeing is that it</p>
+<p>accumulates a static amount of regret</p>
+<p>rate it kind of starts the same value</p>
+<p>the purple and the teal algorithms</p>
+<p>they also converge upon a regret rate</p>
+<p>that's</p>
+<p>lower than the random play so they're</p>
+<p>playing better than random</p>
+<p>but we see in essentially all cases</p>
+<p>the active inference is lower than these</p>
+<p>other</p>
+<p>algorithms so when we say like oh active</p>
+<p>inference has better performance</p>
+<p>on this task than some other algorithm</p>
+<p>this is kind of what it looks like this</p>
+<p>is</p>
+<p>saying that as time goes on octave</p>
+<p>inference</p>
+<p>is acquiring regret at a lower rate than</p>
+<p>the other algorithms it's just</p>
+<p>performing better it's implementing</p>
+<p>better</p>
+<p>policy then we can see that for the</p>
+<p>less less changing and fewer arms</p>
+<p>on the top left so that's like easier</p>
+<p>we see that the the difference between</p>
+<p>random play and the algorithm</p>
+<p>is significant and active inference does</p>
+<p>like</p>
+<p>super well whereas when you have a very</p>
+<p>dynamic environment</p>
+<p>and more arms you don't get</p>
+<p>that much of a regret you're still doing</p>
+<p>relatively better and still active</p>
+<p>inference outperforms the other</p>
+<p>algorithms</p>
+<p>but it's like imagine if it was changing</p>
+<p>every few time steps and there's 100</p>
+<p>arms</p>
+<p>you would just you you would never be</p>
+<p>able to sample</p>
+<p>enough to make a meaningful update to</p>
+<p>your model</p>
+<p>so that's why the faster things change</p>
+<p>and the more arms there are</p>
+<p>the more the overall performance of any</p>
+<p>machine learning algorithm is going to</p>
+<p>converge to random play</p>
+<p>whereas the more static the problem is</p>
+<p>and then the fewer options there are</p>
+<p>then better and better strategies</p>
+<p>are going to perform better and better</p>
+<p>relative to random</p>
+<p>so this is just pretty cool that they</p>
+<p>they do simulations they do</p>
+<p>um i guess a thousand simulations</p>
+<p>and then the switching schedule is</p>
+<p>generated randomly for each agent</p>
+<p>instance within the ensemble</p>
+<p>so they do a full simulation a thousand</p>
+<p>times for each of these cases and then</p>
+<p>average it out</p>
+<p>and yeah well done active inference</p>
+<p>pretty cool to see that it is doing</p>
+<p>better</p>
+<p>on the switching bernoulli bandit for a</p>
+<p>wide range</p>
+<p>of situations and it sort of it rapidly</p>
+<p>figures out</p>
+<p>a good way to work and then it stays at</p>
+<p>that low rate of regret accumulation</p>
+<p>any thoughts on three super cool</p>
+<p>yep now um in</p>
+<p>four we're gonna fix the number of arms</p>
+<p>so now we're at k equals 20 arms in the</p>
+<p>switching bernoulli bandit</p>
+<p>and then we're going to be comparing</p>
+<p>these algorithms again so here</p>
+<p>the columns are just as they were before</p>
+<p>with less changing row equals 0.01 o2</p>
+<p>and o4 on the right</p>
+<p>but now as we kind of saw on previous</p>
+<p>figures we have epsilon</p>
+<p>which is that differential between the</p>
+<p>rewarding and less rewarding arms</p>
+<p>as the rows so we uh we can think about</p>
+<p>the less changing</p>
+<p>and the most contrast between rows</p>
+<p>is where you see the most</p>
+<p>um gain relative to</p>
+<p>random play whereas when you're in the</p>
+<p>more dynamic setting and when there's</p>
+<p>less differences between which choice</p>
+<p>you make in terms of the outcome</p>
+<p>then there's less of a regret rate</p>
+<p>differential with the algorithms</p>
+<p>but again broadly across the board</p>
+<p>active inference is performing better</p>
+<p>than these other algorithms</p>
+<p>so as sampling increases</p>
+<p>active inference locks into a pretty</p>
+<p>good spot by around</p>
+<p>200 or 500 samples</p>
+<p>and this is for the 20 arms so it's kind</p>
+<p>of like</p>
+<p>it's visited each arm probably a few</p>
+<p>times</p>
+<p>maybe some more than others but again</p>
+<p>they're always changing</p>
+<p>and so active inference is able to</p>
+<p>cope with that and also it's interesting</p>
+<p>that especially this teal</p>
+<p>one it almost has a lower</p>
+<p>regret rate and then it actually creeps</p>
+<p>up</p>
+<p>whereas at least just visually we're</p>
+<p>seeing active inference kind of flatline</p>
+<p>but not creep back up and so that's</p>
+<p>something that can happen</p>
+<p>with all kinds of algorithms that</p>
+<p>they'll get locked into an aberrant</p>
+<p>precision</p>
+<p>regime and</p>
+<p>um so there's just another way to slice</p>
+<p>it in figure three</p>
+<p>they fixed the epsilon the difference</p>
+<p>between</p>
+<p>the more and less rewarding arms and</p>
+<p>then they explored how the number of</p>
+<p>arms was associated with how dynamic of</p>
+<p>a problem was being solved</p>
+<p>in figure four we fixed arms</p>
+<p>so that we could explore how rho the</p>
+<p>dynamic</p>
+<p>changing probability and epsilon the</p>
+<p>differential</p>
+<p>how those change performance</p>
+<p>and then um</p>
+<p>okay good</p>
+<p>now um okay figure five</p>
+<p>here it's uh yet another similar looking</p>
+<p>figure</p>
+<p>we're going to have similarly the row</p>
+<p>for the column so less changing and left</p>
+<p>column more changing on the right column</p>
+<p>and we're going to have the number of</p>
+<p>arms just like figure three with 10</p>
+<p>20 and 40 but there's going to be a</p>
+<p>non-stationary difficulty</p>
+<p>and the difficulty of the problem is</p>
+<p>non-stationary as the advantage of the</p>
+<p>best arm over the second best arm</p>
+<p>changes with time</p>
+<p>ah yeah so epsilon is varied</p>
+<p>yes exactly so switching changing</p>
+<p>epsilon to time</p>
+<p>and they fix the precision over</p>
+<p>preferences to lambda</p>
+<p>equals 0.5 so that's a different lambda</p>
+<p>than they used</p>
+<p>elsewhere and this is just sort of</p>
+<p>showing</p>
+<p>i mean the the variable values they</p>
+<p>choose</p>
+<p>clearly work because they're</p>
+<p>outperforming the state of the art but</p>
+<p>here they chose a different variable</p>
+<p>yeah blue the lambda of 0.5 they used in</p>
+<p>all</p>
+<p>of the switching graphs oh yes figure 3</p>
+<p>figure 4 and figure 5.</p>
+<p>and they changed it to 0.5 in the</p>
+<p>switching because they just optimized</p>
+<p>for that but didn't show</p>
+<p>that variable optimization okay thank</p>
+<p>you</p>
+<p>and so here we can see that</p>
+<p>um yep active inference the red line is</p>
+<p>on bottom</p>
+<p>and it doesn't have this sort of</p>
+<p>secondary</p>
+<p>increase in regret rate so for even</p>
+<p>dynamic on the right and many arms</p>
+<p>on the bottom right we're seeing active</p>
+<p>inference perform</p>
+<p>well so figure three four and five</p>
+<p>really make a super compelling case for</p>
+<p>active inference outperforming</p>
+<p>state-of-the-art algorithms nice</p>
+<p>work and that's something that we're</p>
+<p>really excited about</p>
+<p>let's go to the discussion and just</p>
+<p>spend a couple minutes</p>
+<p>on the discussion and the closing notes</p>
+<p>and then we'll</p>
+<p>look forward to the dot one and dot two</p>
+<p>they open the discussion by uh</p>
+<p>rehearsing</p>
+<p>what they have previously mentioned that</p>
+<p>they're comparing active inference to</p>
+<p>two state-of-the-art machine learning</p>
+<p>algorithms the bayesian upper confidence</p>
+<p>bound</p>
+<p>and the optimistic thompson sampling</p>
+<p>that's the pair of algorithms</p>
+<p>in the pair of problems the stationary</p>
+<p>and the non-stationary</p>
+<p>stochastic multi-armed bandits their</p>
+<p>contribution</p>
+<p>among other things was the introduction</p>
+<p>of the approximate active inference</p>
+<p>algorithm</p>
+<p>and then they perform some checks to</p>
+<p>show that it's performing</p>
+<p>again as well as you could do exactly</p>
+<p>so they derived an active inference</p>
+<p>algorithm that's efficient and easily</p>
+<p>scalable to high dimensional problems</p>
+<p>leading us to ask of course where could</p>
+<p>it be cool</p>
+<p>or useful or important to apply active</p>
+<p>inference</p>
+<p>and we know that there's many thoughts</p>
+<p>on this</p>
+<p>and hopefully will be many more but</p>
+<p>we'll just note for those who are</p>
+<p>listening at the right time that there's</p>
+<p>been recently announced a net hack</p>
+<p>challenge and we're going to be starting</p>
+<p>work on this</p>
+<p>in the end of july or the beginning of</p>
+<p>august 2021</p>
+<p>so if you're interested in applying</p>
+<p>active inference to</p>
+<p>a video game performance challenge we</p>
+<p>hope that having a collaborative team</p>
+<p>make an entry for this challenge</p>
+<p>will be an awesome opportunity to really</p>
+<p>demonstrate to the world what active</p>
+<p>inference can do</p>
+<p>but we'll also look forward to the</p>
+<p>authors and all</p>
+<p>guests sharing what kinds of questions</p>
+<p>they think might be interesting to</p>
+<p>explore using</p>
+<p>approximate active inference type</p>
+<p>algorithms like this</p>
+<p>here's a really nice point that speaks</p>
+<p>to</p>
+<p>that um again in figure two</p>
+<p>where we saw that sort of runaway regret</p>
+<p>on a a small fraction of the agents</p>
+<p>that were just getting locked into</p>
+<p>extremely regrettable decisions</p>
+<p>in that k equals 10 case</p>
+<p>so what what do they say about that</p>
+<p>to our surprise the empirical algorithm</p>
+<p>comparison in the stationary bandit</p>
+<p>problem figure 2</p>
+<p>showed that the active inference</p>
+<p>algorithm is not asymptotically</p>
+<p>efficient</p>
+<p>the cumulative regret increased faster</p>
+<p>than logarithmic</p>
+<p>in the limit of large trials so in other</p>
+<p>words even though it's not</p>
+<p>all agents that get deranged the ones</p>
+<p>that do</p>
+<p>are dragging down the group in a way</p>
+<p>that's</p>
+<p>damaging this cause for the behavior</p>
+<p>seems to be the fixed prior precision</p>
+<p>over preferences lambda</p>
+<p>which acts as a balancing parameter</p>
+<p>between exploration and exploitation</p>
+<p>so this is a pretty interesting piece</p>
+<p>instead of like</p>
+<p>two modes explore and exploit and then</p>
+<p>we're gonna have a parameter that flips</p>
+<p>us one way to the other like a light</p>
+<p>switch</p>
+<p>or we have one extreme explore mode and</p>
+<p>one extreme exploit mode in the model</p>
+<p>and then we're going to have a dimmer</p>
+<p>that goes between the two in active</p>
+<p>inference</p>
+<p>the knob that kind of does that is</p>
+<p>actually the prior precision</p>
+<p>over preferences so if you have no</p>
+<p>if you have no preferences aka you have</p>
+<p>no precision over preferences you're</p>
+<p>going to act in the maximally</p>
+<p>exploratory way</p>
+<p>if you have an incredibly strong</p>
+<p>incredibly precise prior</p>
+<p>over your preferences then you're</p>
+<p>going to act in a very exploitative way</p>
+<p>like if there's two restaurants</p>
+<p>and one of them you like you know 60 the</p>
+<p>other one you like 40</p>
+<p>if you have no preference you're going</p>
+<p>to go to them 50 50. that's like</p>
+<p>explore but then if you have a super</p>
+<p>high precision over your preferences</p>
+<p>you're always going to go to the one you</p>
+<p>that</p>
+<p>you prefer even if it's only slightly</p>
+<p>preferred</p>
+<p>an analysis of how performance of the</p>
+<p>algorithm depends on that parameter</p>
+<p>showed that parameter values that give</p>
+<p>the best performance decrease over time</p>
+<p>suggesting that this parameter should be</p>
+<p>adaptive and decay over time as the need</p>
+<p>for exploration decreases</p>
+<p>so start with low precision over your</p>
+<p>preferences</p>
+<p>and then you learn</p>
+<p>and you update so that eventually you</p>
+<p>increase your precision later</p>
+<p>attempts to remedy the situation with a</p>
+<p>simple and widely used decay scheme</p>
+<p>we're not successful</p>
+<p>so the logarithm of time so you just</p>
+<p>make the precision</p>
+<p>directly a function of time like you</p>
+<p>know one</p>
+<p>over the number of trials just that kind</p>
+<p>of thing it's like that's a</p>
+<p>function that scales with the number of</p>
+<p>trials so here</p>
+<p>you scale it with the logarithm of time</p>
+<p>this indicates that it's not a simple</p>
+<p>relationship and a proper theoretical</p>
+<p>analysis will be needed to identify</p>
+<p>whether a scheme exists</p>
+<p>so that's pretty interesting like how</p>
+<p>are we gonna</p>
+<p>pull back a level okay we think that</p>
+<p>active inference architecture</p>
+<p>is gonna be a really productive way to</p>
+<p>model learning under uncertainty</p>
+<p>but we're also just pushing the problem</p>
+<p>up a level which is</p>
+<p>okay how uncertain should we be and then</p>
+<p>how should we change that uncertainty</p>
+<p>over preferences moving</p>
+<p>through time so nice point there</p>
+<p>and then um one</p>
+<p>last thought is in the non-stationary</p>
+<p>so the dynamic switching bandit the</p>
+<p>active inference algorithm generally</p>
+<p>outperformed the bayesian upper</p>
+<p>confidence bound and the optimistic</p>
+<p>thompson sampling</p>
+<p>this provides evidence that the active</p>
+<p>inference framework may provide a good</p>
+<p>solution for optimization problems that</p>
+<p>require continuous adaptation</p>
+<p>active inference provides the most</p>
+<p>efficient way</p>
+<p>of gaining information and this property</p>
+<p>of the algorithm</p>
+<p>pays off in the non-stationary setting</p>
+<p>cool points that it'll be awesome to</p>
+<p>hear the author's perspective on</p>
+<p>so how do we compare active inference</p>
+<p>framework algorithms</p>
+<p>to machine learning more broadly</p>
+<p>and then especially for problems where</p>
+<p>informed</p>
+<p>foraging is helpful like</p>
+<p>not that epsilon greedy just sometimes</p>
+<p>look away from the best and pick</p>
+<p>randomly</p>
+<p>and not even just the thompson sampling</p>
+<p>remember pick each arm according to how</p>
+<p>likely it is to be the best arm</p>
+<p>we could have an even more informed or</p>
+<p>empirically</p>
+<p>better performing scheme for doing the</p>
+<p>trade-off</p>
+<p>for earning while learning you know</p>
+<p>earning while learning doesn't mean that</p>
+<p>you're</p>
+<p>learning optimally or earning optimally</p>
+<p>or</p>
+<p>how are we going to balance that out and</p>
+<p>it seems like octave inference is going</p>
+<p>to be a strong contender</p>
+<p>in the coming years as more and more</p>
+<p>people in the machine learning community</p>
+<p>start to</p>
+<p>get keyed into these results tune the</p>
+<p>regime of attention</p>
+<p>to what these authors and others are</p>
+<p>doing and it starts to become</p>
+<p>more broadly understood that hey rather</p>
+<p>than just</p>
+<p>having more and more parameters and</p>
+<p>billions and billions of parameters in</p>
+<p>our model</p>
+<p>and training in on larger and larger</p>
+<p>networks of you know computers</p>
+<p>what if we just had a curious agent who</p>
+<p>learns how to learn and prefers to win</p>
+<p>it's sort of like a ground floor</p>
+<p>reinterpretation</p>
+<p>of these problems and i think hearing</p>
+<p>the author's</p>
+<p>views on where the active inference and</p>
+<p>machine learning</p>
+<p>communities and fields are heading will</p>
+<p>be</p>
+<p>for sure informative for us what do you</p>
+<p>think about that blue</p>
+<p>i just i'm thinking about problems like</p>
+<p>um like the mountain car problem</p>
+<p>like we're actually learning is winning</p>
+<p>right like when you have to</p>
+<p>if you have to explore you want to go up</p>
+<p>the higher you want to go up the hill</p>
+<p>so that you can get back up to the other</p>
+<p>side of the hill and the flag</p>
+<p>so like what other problems are out</p>
+<p>there like that that</p>
+<p>doesn't don't necessarily that have like</p>
+<p>a reward that's uncoupled to</p>
+<p>ex uncoupled from exploration so i i'm</p>
+<p>thinking about that and i don't know</p>
+<p>just where is where is learning winning</p>
+<p>great</p>
+<p>question it's almost like in the</p>
+<p>mountain car the altitude</p>
+<p>is in some senses a reward heuristic you</p>
+<p>want to get to the top of a hill so</p>
+<p>it seems like altitude would be the way</p>
+<p>to go but then the way that the problem</p>
+<p>is set up</p>
+<p>you could also optimize the bounds and</p>
+<p>say i</p>
+<p>seek to be expanding my bounds laterally</p>
+<p>more</p>
+<p>oh yeah well of course we're changing in</p>
+<p>height you know we're in the mountains</p>
+<p>but especially for cases where we focus</p>
+<p>on exploration</p>
+<p>like innovation or maybe other areas</p>
+<p>it's cool to think about how active</p>
+<p>inference can perform well</p>
+<p>so what are the next steps for the</p>
+<p>authors and</p>
+<p>for us an important next step</p>
+<p>in examining active inference in the</p>
+<p>context of multi-armed bandits is</p>
+<p>establishing theoretical bounds</p>
+<p>on the cumulative regret for the</p>
+<p>stationary bandit problem</p>
+<p>because as we saw it kind of diverged in</p>
+<p>an unexpected way</p>
+<p>that made sense but still wasn't quite</p>
+<p>the behavior that</p>
+<p>was initially expected and a key part of</p>
+<p>these theoretical studies will be to</p>
+<p>investigate whether it's possible</p>
+<p>to devise a sound decay scheme for that</p>
+<p>lambda parameter</p>
+<p>so how rapidly should we change</p>
+<p>our precision over preferences that</p>
+<p>provably works</p>
+<p>for all instances of the canonical</p>
+<p>stationary bandit</p>
+<p>what would that enable that's our</p>
+<p>favorite question this would lead to the</p>
+<p>development of new active inference</p>
+<p>inspired algorithms</p>
+<p>which can achieve asymptotic efficiency</p>
+<p>these theoretical bounds would also</p>
+<p>allow us to more rigorously compare</p>
+<p>active inference algorithms to the</p>
+<p>already established banded algorithms</p>
+<p>for which regret bounds are known</p>
+<p>moreover we would potentially be able to</p>
+<p>generalize beyond settings</p>
+<p>we have empirically tested here future</p>
+<p>work</p>
+<p>may also consider an information</p>
+<p>theoretic analysis of active inference</p>
+<p>which might be more appropriate than</p>
+<p>regret analysis</p>
+<p>also kind of a cool idea like</p>
+<p>regret analysis was performance oriented</p>
+<p>it's saying you're calculating your</p>
+<p>regret based upon</p>
+<p>the difference in performance between</p>
+<p>optimal versus what you did but another</p>
+<p>way to look at that</p>
+<p>is using information theory and looking</p>
+<p>as a function of</p>
+<p>information being gained perhaps through</p>
+<p>time</p>
+<p>which just like you brought up it really</p>
+<p>helps us focus on</p>
+<p>exploration because if the whole project</p>
+<p>is framed in terms of performance and</p>
+<p>reward and value</p>
+<p>it's almost like favoring exploitation</p>
+<p>off the bat</p>
+<p>because exploration is always going to</p>
+<p>have to get couched in terms of</p>
+<p>successful</p>
+<p>exploitation like this basic research is</p>
+<p>important</p>
+<p>because later on we'll be able to apply</p>
+<p>it which is fair</p>
+<p>but when we have an information</p>
+<p>theoretic analysis not just a regret</p>
+<p>performance analysis</p>
+<p>there might be a way to have exploration</p>
+<p>for exploration's sake and what that</p>
+<p>might enable</p>
+<p>or even exploitation can be</p>
+<p>thrown in in in terms of surprise uh</p>
+<p>surprise minimization right like if</p>
+<p>we're going to frame active inference in</p>
+<p>terms of minimization</p>
+<p>of surprise think about something like</p>
+<p>the stock market problem right like this</p>
+<p>is very much like a switching bandit</p>
+<p>problem like</p>
+<p>everything's changing all the time like</p>
+<p>it's the same for a little while</p>
+<p>like you're you're your stock that's</p>
+<p>gonna win</p>
+<p>so it like you know you're surprised</p>
+<p>when you deviate from</p>
+<p>say the s p 500 so you want to track</p>
+<p>with the s p 500 and surprise happens</p>
+<p>when you deviate from that</p>
+<p>one more thought there on the</p>
+<p>information theoretic analysis</p>
+<p>and how it might say something different</p>
+<p>than regret</p>
+<p>let's go back to picking a restaurant so</p>
+<p>we often hear about like controlled</p>
+<p>novelty</p>
+<p>you want surprise but not too much</p>
+<p>surprise</p>
+<p>so this gives an explanation for why</p>
+<p>people might like their favorite</p>
+<p>restaurant</p>
+<p>it doesn't even need to be thought of in</p>
+<p>the context</p>
+<p>of maximizing reward like the 60 likely</p>
+<p>to be the most rewarding restaurant</p>
+<p>it could be like i'm trying to reduce my</p>
+<p>uncertainty</p>
+<p>so i'm likely to choose a place that i'm</p>
+<p>familiar with</p>
+<p>so that maybe i'll choose a different um</p>
+<p>meal or maybe i'll choose the meal i</p>
+<p>always order</p>
+<p>but it's like the choice was driven by</p>
+<p>reducing uncertainty</p>
+<p>not even per se by maximizing reward</p>
+<p>which is something that we come back</p>
+<p>all the time to the difference between</p>
+<p>value driven</p>
+<p>reinforcement learning reward learning</p>
+<p>and implicitly regret which is regret</p>
+<p>about reward and reduction of</p>
+<p>uncertainty</p>
+<p>which puts us in a whole different space</p>
+<p>yes we're able to enter that whole</p>
+<p>physics of information flows area and</p>
+<p>where we get the pragmatic</p>
+<p>um straight components and then the</p>
+<p>solenoidal the flow the iso contour yes</p>
+<p>we access that whole area</p>
+<p>in the information theory reduction of</p>
+<p>uncertainty world</p>
+<p>but also we just get qualitatively a</p>
+<p>different story in a different</p>
+<p>explanation for behavior</p>
+<p>again you don't need to grasp for why</p>
+<p>somebody's maximizing reward</p>
+<p>with why they went to that restaurant or</p>
+<p>why they ordered that one thing</p>
+<p>when a lot of times just it stands alone</p>
+<p>as an</p>
+<p>uncertainty reduction and prior</p>
+<p>preferences</p>
+<p>understanding rather than needing to</p>
+<p>make it about some sort of</p>
+<p>maximization one one i'll flip the last</p>
+<p>slide and then we have a</p>
+<p>awesome question so um alex v</p>
+<p>wrote is there connections between</p>
+<p>exploration on epistemic value and</p>
+<p>exploitation for pragmatic value</p>
+<p>i think that's related to what you were</p>
+<p>just speaking about</p>
+<p>um which is that we're putting it on a</p>
+<p>common</p>
+<p>footing with active inference in terms</p>
+<p>of the reduction of the expected free</p>
+<p>energy</p>
+<p>which has this epistemic or knowledge</p>
+<p>gain component</p>
+<p>and this pragmatic or functional</p>
+<p>component</p>
+<p>so the epistemic is like learning and</p>
+<p>the pragmatic</p>
+<p>is earning so we're we're learning while</p>
+<p>we're earning</p>
+<p>or the other way around we're</p>
+<p>acquiring epistemically valuable</p>
+<p>information</p>
+<p>while we're also acquiring pragmatically</p>
+<p>valuable information because the</p>
+<p>decision making</p>
+<p>of expected free energy minimization</p>
+<p>conditioned on policy we're choosing</p>
+<p>policies</p>
+<p>based upon a function that</p>
+<p>looks at both of those jointly and so</p>
+<p>that</p>
+<p>is one of the ways that we're rethinking</p>
+<p>exploration and exploitation</p>
+<p>by thinking okay that's not really the</p>
+<p>duality</p>
+<p>of policies that you want to talk about</p>
+<p>because explore exploit makes it sound</p>
+<p>like it's two behaviors that the bird</p>
+<p>can be doing</p>
+<p>and so here what we're doing is we're</p>
+<p>kind of taking that idea</p>
+<p>of sometimes you want to be doing a more</p>
+<p>exploitative act</p>
+<p>other times a more exploratory act and</p>
+<p>then we're asking</p>
+<p>given the policy of which a whole</p>
+<p>spectrum might exist</p>
+<p>of different policies how is each policy</p>
+<p>contributing to epistemic and pragmatic</p>
+<p>gain and then which policy</p>
+<p>is going to have the best combination of</p>
+<p>the two</p>
+<p>maybe there's strategies where you're</p>
+<p>maximizing both and maybe there's</p>
+<p>strategies where you're maximizing</p>
+<p>neither</p>
+<p>but if you're only looking at one or the</p>
+<p>other then you might uh</p>
+<p>choose one that's like a poor</p>
+<p>combination</p>
+<p>well so a perfect example is like you</p>
+<p>know so</p>
+<p>your policy is based on your previous</p>
+<p>chance of of</p>
+<p>reward of minimizing surprise so i have</p>
+<p>a policy that i'm not going to</p>
+<p>eat a meal i've never had before in a</p>
+<p>restaurant i've never been to before</p>
+<p>because i</p>
+<p>like i don't know what i'm getting into</p>
+<p>that's like way over there right so my</p>
+<p>policy would be to order a new meal in a</p>
+<p>restaurant that i like</p>
+<p>or order a meal that i'm used to</p>
+<p>in a new restaurant so that would be</p>
+<p>like the policy</p>
+<p>in that just to continue that example</p>
+<p>cool well what a fun discussion</p>
+<p>i hope this was useful to those who are</p>
+<p>familiar</p>
+<p>with active inference as well as uh</p>
+<p>bayesian statistics machine learning or</p>
+<p>not</p>
+<p>it's all chill because your questions</p>
+<p>will</p>
+<p>really help move the whole project</p>
+<p>forward the parts that do and don't make</p>
+<p>sense</p>
+<p>and the parts that you want to explore</p>
+<p>more i think that's how</p>
+<p>our ensemble is going to proceed in</p>
+<p>these transdisciplinary areas</p>
+<p>is by welcoming those who have different</p>
+<p>backgrounds so</p>
+<p>whether you're really familiar or not</p>
+<p>you're totally welcome to participate</p>
+<p>in our live discussions or just to ask</p>
+<p>questions or</p>
+<p>participate in some other way</p>
+<p>thanks blue for the awesome help with</p>
+<p>preparing the slides and for this</p>
+<p>conversation and we'll see everybody</p>
+<p>another time</p>
+<p>bye bye</p>
+</article>
+</body>
+</html>

@@ -1,0 +1,2793 @@
+welcome to the active inference lab live
+stream number
+29.2
+today is september 28
+2021 and we will be discussing the paper
+active in france
+an active inference framework for ant
+colony behavior and today we are here
+with the first author daniel friedman
+the active inference lab is the
+participatory online lab that is
+communicating learning and practicing
+applied active inference you can find us
+at all of the links shown here
+this is a recorded and an archive live
+stream so please provide us with
+feedback so that we can
+improve upon our work
+all backgrounds and perspectives are
+welcome here and we will be following
+good video etiquette for live streams
+here at the short link you can find all
+of the upcoming and recent live streams
+that we have done so please get in touch
+if you would like to participate
+today our goal is to discuss the paper
+um that we just said active in france
+and we are going to um
+do some different papers in the upcoming
+weeks like i said get in touch if you
+want to participate
+so
+we're just going to introduce ourselves
+and go through a little bit of warming
+up i am blue knight i'm an independent
+research consultant from new mexico and
+i'll pass it to
+thanks blue for facilitating i'm daniel
+and i'm a researcher in california
+and i guess i'll
+start with what i'm excited about today
+i was just excited that in 2091 we could
+sort of forage out in a lot of different
+directions and make some initial trails
+to a few different ideas
+and then now in the 29.2
+maybe we can develop some of those
+threads splash trails and maybe uh get
+some of it down in writing so it should
+look um
+pretty good
+nice yeah i'm excited too um there are
+some questions that i've been rolling
+over over the last week
+and so i'm kind of excited to
+delve into those and also into the code
+for the model today if we have time um
+being that it's just us i think we might
+get there well maybe though maybe more
+people will join
+there might be a little bit of lag
+i'm not sure
+so you might want to check that
+okay
+yeah
+um
+i don't know if it's my internet
+um
+so the big question of this paper is um
+how can a group of active inference
+agents
+solve complex group foraging problems
+well first what i'll say is if you're
+recording it locally as well as
+streaming then
+we can always upload a high quality
+recording
+and it does sort of bear on this big
+question this is a quote from the paper
+and that's sort of the big question in
+collective behavioral studies which is
+okay if greeting stephen if each agent
+if each subunit of the system had all
+the information needed well then there
+wouldn't necessarily be a challenge for
+coordination it's like if if it already
+knew what to do then
+it would be a challenge but how do
+systems make adaptive decisions when
+subunits don't have all the information
+so in the case of an online team each
+person's only seeing a different
+part of the picture in the case the ants
+they're each in a little bit different
+part of their niche but those are some
+of the similarities which is that each
+nest mate is only going to be
+experiencing its local environment
+and
+we want to have colonies that work
+so welcome stephen maybe you can say
+hello while blue's just testing some
+stuff out
+oh great yeah good morning um
+well in north america anyway um yeah i'm
+based in toronto um
+and i
+work with communities and
+sort of systemic coaching approaches and
+very interested in how active influence
+scales in different ways so
+even though this is about small things
+it's also about lots of small things
+so
+well your audio also just had some
+weirdness steve maybe talk directly into
+it
+oh okay is that better yeah
+oh okay but you mentioned the scaling
+and small the one one funny thought
+again this picture is from the ants
+that i was studying for five years in
+arizona
+and
+um yes the nest mate looks
+like a tiny guy like a small ant
+but then
+we know that these colonies can live for
+20 30 plus years
+they're also several meters
+under the ground
+and they weigh you know dozens of
+kilograms so then i'm thinking okay it's
+a similar age
+weight and height to myself
+and it's sub-use but
+let's see how's that is it any better
+it still is not doing anything i just
+reopened it but if it's not yeah then i
+guess okay now it's uh just the slides
+or just a jitsi so it looks like it's
+working now okay perfect yeah it's the
+slides open also it just is too much um
+yeah
+yeah welcome back everybody fun times
+the show goes on
+foraging never stops so it does and
+steven will rejoin us hopefully he's
+having audio issues also it's a good day
+for technical uh mishaps we're having
+rainy weather in new mexico which is
+never ever happens so all the ants are
+underground hiding and the internet does
+not want to cooperate
+apparently this is so
+all right so speaking of multi-scale uh
+integration and and across systems as
+happens in ants and in the ant colony um
+so we we talked about making this table
+last time
+and so here like what how is each system
+related to
+the agent the niche the interaction and
+stigma v
+so we started this this table do you
+want to uh maybe take us through what
+you've started here daniel
+yeah um
+see if you can
+[Music]
+get the slides again because it's not
+going to be visible at all on the stream
+oh okay i can also switch yeah i can
+switch the also yeah
+um so
+a lot of informal analogies and
+connections were being drawn amongst
+different systems
+and that's kind of what complexity and
+systems thinking and active inference is
+about like finding patterns across
+systems so
+maybe there's other ways to break it up
+but at least one way we could at least
+start to classify
+and find similarities and differences
+between different systems would be
+this way with the columns so we have the
+system of interest like the ant colony
+as a system of interest
+then we can think about what is the
+agent level what is the sub unit level
+and
+that might be the level where the active
+inference agent is being specified
+we then have the niche that the agent is
+operating in so that's the generative
+process
+that's presenting observations or
+outcomes to
+the agent which is embodying a
+generative model so that's related to
+this generative process versus
+generative model distinction
+the process is the
+the process actually outputs
+the like temperature or the observations
+whereas the generative model is a model
+of the process
+and then there's two kinds of
+interactions that are possible
+so there's sort of a transient
+interaction
+that might be amongst agents welcome
+back stephen there's the transient
+interactions amongst agents
+and in the case of the ants that's like
+an antennal contact and then there's the
+stigmatic
+interactions
+where there's a modification of the
+niche
+and so
+sometimes it helps to think about these
+interactions amongst agents that
+are um without memory as being like the
+transient horizontal interactions like
+the common example of the bird flock
+those are the birds looking at each
+other their interactions amongst agents
+that modify the likelihood of agents
+doing certain future behaviors but they
+don't leave a trace on the environment
+and that can be contrasted with
+stigmatic
+or niche modification behaviors which
+are defined by being the ones that do
+leave a trace on the environment so
+maybe we'll
+explore different sections today
+but we can always say okay let's return
+to slide eight and let's add a row
+what's a system of interest let's add a
+column or let's fill in some columns so
+so far we have ant colony brain and
+internet slash computer abcs
+geb the systems that matter um steven
+what what would be um a fun system to
+throw into this mix and to look for
+parallelisms among
+we can't hear you steven
+yeah we still don't hear you steven
+yeah your microphone's definitely not
+working
+okay
+so i've started filling in for for brain
+and you know it all really is so
+dependent on what the
+what level you want to evaluate right so
+you know on one level there's like the
+little sub regions of the brain and you
+took us through i think in the dog zero
+video a very nice um
+example for ants that has been kind of
+done describing the different like
+organoids or substructures within the
+brain because definitely there are
+structures that all have
+different functions like the cerebellum
+is motor function primarily and you know
+the cortex is like higher level thought
+and and so there's you know these
+different sub regions of the brain but
+then also at the cellular level there
+are interactions you know that that
+expand those regions that are from you
+know the cellular cellular level um
+and what is the so what the niches or
+the interaction
+um you know might might be different
+depending on like the the cells are
+responsible for driving the interactions
+between the organoids
+so i'm not sure what the level of um
+of
+the level of analysis the right one is
+and then stigmatizing modification i
+think about you know long-term
+potentiation
+um and like adaptation within the brain
+is very um
+maybe not stigmatic but it's a it's a
+really important modification i think
+um and sensitivity to different
+neurotransmitters and
+things like that
+blue it's still really lagging can you
+just stop streaming and i'm gonna pick
+it up on my side okay perfect go for it
+so stop the streaming and then just let
+me know when you did it let's see how
+this
+okay let's see what happens
+this could be very very interesting
+to do the live hack like this
+okay youtube we're gonna wait for it to
+catch up sorry everybody um
+so it goes okay
+wow we just hot swapped
+live stream feeds
+so we're back in the game
+no level of preparation that can prepare
+for laggy internet i suppose no and it's
+like half the time of mine and a half a
+time on your side but um
+if you're watching live definitely add
+any comments or questions because we're
+just going to be kind of exploring and
+chilling today
+but continue to um facilitate and i'll
+just be broadcaster role
+cool so the um
+[Music]
+yeah we were talking about the brain and
+the interaction and the sigmoidy and
+then for the internet
+i don't know what do you think is the
+is the agent or what what is the sub
+unit of the internet like is it each
+server or
+where do you have the sub unit at
+daniel or stephen what do you guys think
+well so this this sort of ties into what
+they might say in in research you know
+unit of analysis as well but that's not
+necessarily quite the same
+thing as an agent um
+i i suppose on the internet
+ultimately
+it's the um
+it's it's whoever's um
+making
+who's that whoever's triggering choices
+um
+in the system
+um which is normally a yeah it's
+normally a person
+um
+interacting with the screen in some way
+i think the overwhelming amount of
+interactions on the internet are
+probably not human driven
+because any human
+interaction
+is going to
+trigger truly a vast number of
+communications
+amongst other systems
+inside of the computer and probably
+remotely
+so maybe
+and i think this is one of the unique
+uh challenges but also interesting areas
+is like
+the internet is a cyber physical system
+so we could have one model where the
+agent like the subunit are physical
+devices so we kind of draw
+the blanket
+we um
+focus on the partitioning
+around a physical object like internet
+of things we have partitionings around
+things
+we could also have a human-centered
+partitioning so partitioning around
+humans but then there's a lot of
+gray space in between the humans
+a lot of links that aren't human between
+the human links
+and then another approach might be
+purely informational or computational
+and seeing the agents as software agents
+but i think that
+interface where how will we talk about
+the
+software and the hardware agents coming
+together is where
+the internet of things is
+developing and what it's coming to mean
+i mean one thing you could think about
+there also is when say for instance i
+make a choice or i do something
+on the internet
+and there's a whole load of there's a
+cascade of other things going on through
+the different routers and the servers
+etc is that more like the pheromone
+trail
+that sort of dissipates off into the
+distance leaving records
+and how much of its like other agents
+initiating because often
+you know
+every time you do something to some
+extent yeah databases might update
+um
+however
+and this may change
+to what extent
+that is alive is another question
+you know is it is is it sort of a
+computational form of niche modification
+that's going on in most cases in terms
+of the internet
+but what they're trying to do because
+it's that idea of the battle for your
+mind they're trying to make it so that
+in most cases that
+the user
+has less
+has less thinking to do
+in terms of the choices they make
+and the design there's this there's a
+great book in web design called don't
+make me think
+and the idea is that you go somewhere
+it's almost obvious what you need to do
+a bit like when you pick up a newspaper
+you know that you're just going to turn
+the pages
+so
+how
+how much of all this
+architecture in the background is to
+support giving you what you expect to be
+given when you expect to be given it
+um and how much of it is um
+which you know how much of it is
+actually um what you might term an agent
+with with some sort of
+teleology
+well
+you mentioned expectation there and um
+expectation is something that agents
+engage in so maybe it's even we could
+keep on forking this off but
+what do we know from the active
+inference ontology what defines an agent
+external states blanket states internal
+generative model what does the internal
+generative model entail well it includes
+predictions about external states it
+includes policy affordances it includes
+preferences and includes expectations
+over some of these things as well
+so when we say agents
+we can be
+referring to the whole markov decision
+process or other ways of viewing the
+active agents
+and then the expectations of the agent
+are really important because it's not
+just that psychologically it's going to
+determine whether the agent
+likes it or not but it helps us connect
+these systems like the ant colony and
+subunits of the brain
+so we don't need to use only the
+psychological interpretation
+but then we can have a psychological
+interpretation where one seems warranted
+given the system of interest but also
+we're going to be able to compare that
+and look for similar functional features
+in systems without getting into just
+some sort of abstract debate over
+whether it's alive or whether it's
+certain feels a certain way to be that
+system
+so daniel you brought up the generative
+model and i was just going to bring it
+up um right before this and so i've been
+really uh
+you know thinking a lot about the
+generative model and like where is the
+generative model which is like i think
+probably my favorite podcast episode
+that i've ever cut is going to come out
+next week
+and it talks about like the location of
+the generative model and so
+you know it doesn't necessarily have to
+have a location
+because
+it's like software right like so i mean
+that yeah there's like a copy of the
+software running on disk
+maybe maybe it's in the cloud like it
+does but it doesn't matter because it's
+the program that's running so the
+location of the program is is almost not
+even relevant
+um so i just i think about like what is
+the generative model
+of the internet right like what does
+that look like
+great question um inactivism for cyber
+physical systems
+and embodiment
+uh in encodement maybe there's some
+analogous term
+to what would describe
+what we call 4e in the embodied extended
+and cultured
+etc
+for digital systems
+because they do have
+important attributes
+that
+in a strange way almost suggest that
+some of these attributes some of these
+features that are suggested to be
+quintessentially related to having a
+body and embodiment
+also exist for software
+could i putting something on to that
+is say we think about rather than and
+you've got the active inference
+generative model
+but say you've got an active niche
+modification
+algorithm
+so ie
+it's still
+working
+off the agents being making choices but
+what's happening is so for instance say
+you've got abc testing happening on a
+website so basically they send out three
+different campaigns with three different
+types of
+profiles
+now the user makes choices
+based on how the user
+makes a choice
+they may be
+across the whole of the
+a whole market
+the abc choices might get modified in
+that niche but eventually maybe then
+actual
+clients get sent down certain routes
+um i mean a classic case of this is also
+what happens with those in-store cards
+because i actually i ended up going i
+didn't get go for it again i had an
+interview with the nectar card people in
+the uk once and they uh
+they do these cards that you get in
+store and basically i think it worked
+out they have like a million
+permutations of offer that they can give
+you based on what your
+different buy-in options are so in a way
+they're kind of
+that but they only serve you up then
+whatever you see one of those right you
+don't see what all the other people are
+getting and some of them are small
+changes some of them might be bigger
+changes so in some ways it's like it's
+still the it's still like it's like the
+niche is modifying
+to the agent's adaptive behavior
+but the actual niche isn't necessarily
+doing adaptive active inference but
+there may be some sort of active
+inference in a more kind of
+i don't know non-living way
+um
+there might be um we'll probably have
+better words and ontologically informed
+ways of talking about it but there's
+kind of like low bar active inference or
+like austere active inference that is
+just any input output structure
+it's going to be able to be fit into
+something like
+a partially observable markov decision
+process so whatever it is that the niche
+is doing it's emitting
+observations so we can model it under
+this certain low bar active inference
+versus the uh sort of
+anti-dissipative
+truly cognitive
+strategic active inference
+and um
+also there's no reason why we can't have
+hybrid models where there's like active
+inference agents
+in a niche that isn't an active
+inference agent so like in
+this ant model
+the niche is just
+a landscape of pheromone densities with
+a random dissipation factor
+so
+that
+external niche
+could be made very
+um much more complicated
+and the observations that it passes back
+to the agents could be like customized
+to them
+and that could be
+calculated by an active inference niche
+or not and that's sort of the extremely
+interesting
+work of axel constant and others
+with
+some type of symmetry occurring with the
+agent and the niche jointly inferring
+each other so like what is the niche's
+generative model of the organism what is
+the internet's generative model
+of the user so it's
+interesting questions
+i love that idea of
+symmetry especially between the agent
+and the niche um and its relationship or
+potential relationship to the kind of
+gaia theory
+that the the niche has to
+expect or have an expectation of the
+organism that's going to
+interact with it or create it or modify
+it or
+exploit it in some way um in order for
+there to be some kind of reciprocal
+um interaction there
+so uh super nice
+um maybe
+we can come back to looking at this um
+table and maybe think of other systems
+that might be
+interesting to go through
+and move on to
+some of the um
+questions
+for
+29.2 but wait before we go to this one i
+want to go to this one hold on
+ha
+so we were talking about um
+the role of dopamine last time which
+slide
+uh so sorry this is slide
+um i skip to
+i'm sorry i can't see
+um
+i think it's number seven
+yeah number number eleven
+oh wait okay
+so um
+so we were talking about last time the
+role of dopamine
+and like influencing the affordances and
+and this really kind of speaks to the
+role of reward
+um
+in a generative model and and so you
+know we talk about one of the beautiful
+things about active inference is it kind
+of
+changes the reward um structure
+in the model
+because you know there's some kind of
+reward that's given
+to
+you know actually finding the food right
+so so there's some some reward for
+finding the food but also and and even
+in this model so
+the the reward structures has changed
+right so there's um it's not just about
+finding the food um and maybe this is a
+good opportunity to to look through the
+code maybe
+as well but but you know we think about
+the change in the reward structure and
+we place some value on the epistemic um
+you know the knowledge about the model
+of the world so if we can build a more
+precise model of the world
+we can also um
+gain more food overall
+so i don't know if uh you guys have
+comments on that or yes steven guide
+yeah i think also as well as built like
+you say building that model of the world
+becomes a it's an action model okay so
+it can be
+what might be seen factually
+spurious but practically useful
+you know so it may be really useful to
+have some bizarre
+ritual about how to get on a soccer
+pitch and try and kick the ball right
+but if it
+does something better than
+what you're doing otherwise
+go for it
+and i think the challenge comes with um
+increasingly esoteric rituals if they're
+not related to the actual causal
+structure of the world
+if they work for a moment they're not
+going to be adaptive because if your
+only strategy is you know
+praying to the kicking god instead of
+practicing
+it might work or it might indirectly
+induce some sort of outcome but
+is that a long-term strategy
+um but
+agree that the generative model is
+including a model of action it's not
+just about getting precision about how
+things are out there
+because what ultimately matters is
+getting precision on our actions
+and then there's sort of these two
+parallel paths or two intertwining paths
+which is do we take a reward centered
+approach
+is behavior dominated by reward
+and then the other side of the reward
+coin is like the um punishment aversion
+so carrot in the stick that's sort of a
+sister road two-lane road do we pursue
+reward or do we avoid
+regret and suffering
+and then a third road is this
+uncertainty minimization approach
+so i pasted in this
+paper by columbo explanatory pluralism
+and um
+they review
+three prominent hypotheses of dopamine
+activity so anhedonia which is
+unpleasurable states incentive salience
+and reward prediction errors
+and i i think this is a really
+fascinating paper and it does apply to
+the ant context because they make a very
+specific
+system point
+talking about the role of dopamine in
+the mammalian brain reviewing empirical
+evidence and then also
+pull back to the broader implications
+for the philosophy of science
+so
+they conclude that the evidence
+currently vindicates explanatory
+pluralism in other words these
+explanations do not subsume
+or
+knock out each other there's a pluralism
+there's
+multiple explanations that exist that
+capture different parts of how the
+system really works
+the vindication implies that grand
+unified incl uh claims
+of the advocates of the ptb are
+unwarranted
+um
+look at what that is again but more
+generally we suggest that the form of
+scientific progress in the cognitive
+sciences
+is unlikely to be a single overarching
+grand unified theory
+little possible indirect
+reference to those who claim that the
+value or the utility of for example the
+free energy principle or active
+inference is just simply that it
+explains everything i don't need to even
+say any more or detail where i used it
+or show you the code or show you that
+it's better than another model the fact
+that this model
+i can fit everything into
+is the utility and it will subsume other
+models and other frameworks
+now that's a contentious point that has
+to be either empirically supported or
+not but it just is so interesting how
+dopamine is reward molecule or the other
+side of that coin with the punishment
+or as a precision molecule the empirical
+evidence alone
+are not enough to disambiguate that and
+so you know trust the data let the data
+speak but then this is just showing us a
+kind of real time
+that our models of the world
+get projected as we do sense making on
+the experimental outcomes
+and um it's not always as clear as it
+seems
+well you know it just reminds me like so
+i mean
+just from a very literal sense if we
+think about dopamine as um
+a reward for minimizing prediction error
+like how much do we all like to be right
+all of us so i mean like just just for
+being correct like that in and of itself
+is a huge like dopamine reward and i
+think about like i'm a super ultra nerd
+and so i geek out on things like
+difficult math problems or solving a
+rubik's cube or or these kinds of things
+and i'm just like finally when i get or
+even code right like finally when the
+code runs
+there's like this huge like something
+that you've been working on for a really
+long time it's like a huge like dopamine
+rush for me which is why like i keep
+going back to doing these kinds of
+things but but ultimately that's a
+prediction error reward
+so it's interesting to think about
+and here's sort of the two ways that
+they're phrased and it's
+somewhat subtle but i think it gets at
+the difference between reinforcement
+learning and active inference
+is there a drive for being right
+and then we prefer to be certain
+or is the drive
+for certainty and then there's a
+preference over being right or being
+accurate
+so are there situations where it
+actually brings us solace
+even though the direction of the outcome
+isn't what we expected
+or isn't what on some sense conversation
+is what we prefer
+but actually the fact that we're able to
+have certainty
+outweighs
+the fact that the outcome went the way
+it went
+so and maybe there's other phrasings too
+but it's just again which one do we put
+in the driver's seat precision or reward
+well so what's the difference between
+being certain and being correct like
+being right and being certain
+like okay if i'm really certain but then
+that that certainty is unwarranted
+then that's when i'm wrong but then i'll
+i have this prediction error gap right
+so either way so what's the difference
+really between being certain and being
+correct
+well i think one if i could just jump in
+there i think one thing is really
+interesting is if everything's based on
+energy minimization like you've got
+you've got a process you're going to
+keep doing it and it's optimizing to
+make it basically if i use less energy
+i'm being more efficient i'm being
+faster i've been smoother so it always
+seems like yeah go for the reward the
+thing is though
+once you get into something where it's
+more
+complex or uncertain
+um
+you know the idea and they talk about
+this now actually there's a whole area
+in um
+development work and design thinking
+called failing forward fail forward so
+the idea is fail fast fail quick but
+part of this is like
+in
+you know and i always say within ethical
+bounds right because it might be great
+for the designer as long as it's not a
+community member being sort of
+being frustrated by this but but it
+makes sense in the sense that and i
+don't think reinforcement learning can
+really account for this is the benefit
+of doing something
+because it might be something which
+doesn't work
+but now you can take from it it's almost
+like
+you're
+giving yourself
+a sample of the counter factuals
+in a way by something going wrong but
+you don't obviously we can then break it
+apart and say well there might be
+something right still in that
+you know and some bits which are more
+wrong and we can sort of
+do stuff with that information
+almost like succeeding forward would be
+better than failing forward i mean
+failing forward has this psychological
+benefit of helping people recognize that
+it's okay to not get it right the first
+time and just get something on the paper
+and we'll iterate from there so the
+rhetoric of fail forward
+makes sense but
+having something that's even positive
+like succeed forward or win forward or
+contribute forward or learn forward or
+develop forward those actually capture
+the functional spirit that um
+is here and let's think about how that
+relates to blue's question so what's the
+difference between being certain and
+correct
+so there could probably be many takes on
+this but
+i thought of this classic
+science textbook
+you know when when they give you the
+science textbook um
+the difference between accuracy and
+precision now in many cases now this
+also is not coming from the active
+inference ontology so they may be using
+these terms in a slightly different way
+but the point is we're getting at two
+complementary components of precision
+and um
+basically
+uh we can see that there's these two off
+diagonals the top left and the bottom
+right so high accuracy high precision
+it's like your average is on target
+so that's the accuracy
+is where you're aiming at accuracy aim
+and then the precision is referring to
+the tightness of the distribution around
+that mean
+and so you could have high accuracy like
+it's always at the bullseye but the
+precision is low or the uncertainty the
+spread is high
+you could also have like a thermometer
+with it giving you very tight readings
+high precision
+but
+it's
+systematically biased in a certain
+direction
+and
+[Music]
+this is just one way to get at two
+different aspects now we've seen this in
+a few different cases in variational
+inference as being the um difference
+between the expectations
+the means of the distributions
+that's like the accuracy
+and then the precision is like the
+variance of that distribution
+so you could have a very tight
+distribution
+um the the q distribution very tight and
+close to the p distribution that would
+be accurate and precise you could also
+have a really over fit over confident
+model that is just simply quite
+divergent from the underlying p
+distribution
+so um which one is being optimized are
+we trying to aim for a tight scatter
+and then we and then second order is we
+want it to be in the middle or do we aim
+for the middle and then the second order
+is we want them to be accurate
+stephen
+yeah that that
+to that question is a good one um
+and i think distinguish because often
+they might get conflated in many ways
+but it's good to pull apart precision
+and accuracy because it is a
+you know you could have
+um you know you you could be very
+precise in the fuzzy set that you have
+and you could but it could still be
+fuzzy you could have something
+like you say more accurate but it moves
+around a lot and i think that
+that's that's an important distinction
+that might be lost in many cases
+yes and it's actually one reason why
+it's important to sort of
+stick with the uncertainty and pass
+the estimate
+the state estimate as well as like the
+uncertainty around a state estimate pass
+that through
+because if you collapse the uncertainty
+and you treat all estimates as being
+equally precise there's this whole
+dimension of the data that has been
+dropped
+for example in gene expression analysis
+sometimes there's uncertainty over
+whether a gene is differentially
+expressed or not like it has a
+distribution and you pick some cut off
+but then sometimes people take the genes
+on one side of that line
+and then they just move forward with
+them like these are the differentially
+expressed genes as if it was a discrete
+categorization now take a continuum
+and then discretize it which makes
+certain kinds of analyses really simple
+or straightforward but
+a whole aspect of the variability of the
+data has been completely crunched out
+stephen
+yeah and this also then ties into scale
+as well um you know you could
+and and how much so like you mentioned
+the thermometer so the thermometer gives
+a fairly
+um well fairly precise
+sense of the
+of of the reading it's fairly consistent
+and um it's averaging out the average is
+is fairly
+relatively accurate in terms of the
+average but it's not going to give you
+the range or the
+the spread within that and that that can
+apply to a number of things and then you
+as you go down to less and less if you
+for instance i suppose like you would
+say if someone's purely looking at one
+ant
+or one ants
+behavior at a time
+then
+you you might have this sense of i'm
+being very accurate in terms of my ant
+analysis
+so to speak however
+at the level of the
+you know the larger colony
+you're you're you're not as accurate you
+know so there's some interesting
+sort of
+scale things that can't be avoided
+really
+yeah are ants accurate or and or are
+ants precise the nest mates
+so
+it's almost like maybe we could think of
+them as being um
+high accuracy but low precision like
+let's just imagine what that would be
+like for the colony so
+each forager
+is
+in the neighborhood of making adequate
+foraging decisions but there's a lot of
+noise around that so over thousands of
+interactions and foraging trips
+you're going to end up getting
+a lot of your points
+in the middle so it's cheap because it's
+lower precision so you can have simpler
+subunits
+but it's centered around the target
+whereas if you have it centered over
+something that's not the target
+it's going to be sub optimally adaptive
+for the colony
+but i think ants just show that um it's
+not about making every single action
+perfectly
+um
+the right one it's about being right
+more often than not and then just doing
+it many many many times which is related
+to that sort of um
+develop slash fails succeed forward
+sorry go ahead steven
+just just one thing i think this is also
+useful just in the sense of
+and it's almost implicit with the
+agent-based modeling approaches that get
+used in biology but it's quite
+interesting in the sense that that
+brings in that inter-subjective piece
+what are these ants trying to do for
+instance how are they trying to organize
+what's going on
+rather than the first person perspective
+i what do i see
+what's my perspective on the ant as an
+observer which might be more
+psychological in our
+world or
+what is it that i see the group doing on
+average like the temperature
+but when you start to get into
+agent-based
+approaches um
+it it does allow this second person um
+stuff to happen which is really
+i know in psychology is the missing
+piece really in a lot of cases
+so um you know how this how this in a
+way also ties into
+thinking about agents
+rather than thinking about what i see
+someone or something doing from the
+outside and
+inferring from their behaviors
+externally
+qualitatively sets up a different type
+of um
+experiment or modelling
+so i wonder about the different
+um scales like as we scale from the nest
+me to the colony like are
+are they comparable like are they asking
+the same question like the colony wants
+to know like will there be enough food
+and the forager never asked that
+question the forager always wants to
+know where is the food right like so so
+they're asking very different kinds of
+because the forager knows it has no
+uncertainty that that its job is to find
+food right and and so the colony wants
+to have enough food but the forager
+always wants to get the food and i
+wonder how this kind of asking different
+questions
+scales to things like the brain and
+components of the brain like
+or the internet and components of the
+internet like like what are our is is
+what defines a scale whether we're
+asking the the same question or not like
+or or is it the goal of the system that
+defines the scale of the system i don't
+know it just made me think about
+yeah i mean that's a good
+that's a really good point i mean yeah
+you could if you're starting to look
+from the agent
+and you could even think about that in
+the brain like yeah if different parts
+of the brain
+are
+foraging information
+so it's not like that that would explain
+a little bit why you have these kind of
+parts
+you know
+you know parts the you know different
+parts of the brain have different
+personality
+um queries going on even when certain
+parts of the brain get sort of put to
+sleep so to speak so
+um
+rather than yeah i mean that could be
+that could
+explain and if they're if they're each
+working away i mean
+like a colony
+um and
+yeah who which one is in some of them
+get to be in the driving seat
+and some just
+yeah some get to ask different questions
+or some get to sort of have their
+questions to influence other questions
+and some of them just get on and do
+their thing if that makes sense you're a
+forager basically you're gonna forage
+right that's the deal but someone else
+it might be like i'm hungry
+you got a forage more
+right
+oh just i i
+rapidly assembling some image memes
+it actually breaks down well into the
+the chess and other
+fields other serious games
+of tactics and strategy
+so
+um strategy so like blue your question
+the colony was asking do
+we slash i we don't know what pronouns
+the colony uses do we slash i have
+enough food it's as if it's asking that
+question
+does it identify as a entity
+an i
+or does it identify as an ensemble
+we don't know but then the nest may is
+asking the more tactical
+and action-oriented question
+which at a first pass is like where is
+the food but we know that
+in active inference what matters isn't
+just like simply inference on the
+location of the food out there but what
+matters is inference on our action
+selection for how we're going to get
+that food or how we're going to
+implement a strategy that
+has a good trade-off of us finding it so
+like here
+chess meme
+um
+tactics
+mean doing what you can with what you
+have so like whatever pieces are on the
+board
+you're gonna have to do some sort of
+action selection for your next move
+here strategy requires thought tactics
+require observation so it's kind of
+interesting because observation is one
+of our terms in the ontology like the
+agent is receiving observation without
+observations
+tactics cannot be implemented
+and then strategies requiring mental
+action just like our previous
+discussions in 28 the thought is
+actually the planning
+over
+observation strategies
+uh nice double blue
+and um there's other definitions of
+strategy and tactics and how they're
+similar or different so that's just kind
+of like
+cool that um it's a way to think about
+maybe not just that
+are the levels asking different or the
+same questions but might levels
+be defined or delineated by the
+difference in the questions that they
+ask
+with
+independent of the spatial size of the
+subunit
+the more tactical is like more agent
+level and then the more strategic
+requiring reflection or cumulative
+culture or mental action
+that level is being implemented by
+higher and higher
+nestings wait blew your mute because you
+went down to just one
+can you hear me yeah
+perfect
+um i i went down to just one so you can
+share the names with us because i'm
+missing out on the meme action and i
+like i can't stand it a little bit
+i'm so sorry
+um
+so so speaking of action and and
+different levels so this is something
+that i've really like been thinking
+about over the course of the last week
+uh this is like the next question on on
+on this slide 11.
+is this this prospect of
+intergenerational stigmergy
+and i just wonder like you know as we
+were both foraging for memes and slide
+content like creating the
+29.0 like we have this internet right
+and so like we just google search for
+whatever and informational foraging i
+know is not the same as maybe ants
+foraging for you know a
+food
+but um you know we're both foraging we
+come across the same kind of content and
+ended up like putting it into the 29.0
+in different ways in different places
+and and i just wonder you know there's
+this concept of of intergenerational
+stigmargy that's very uh i
+and i wonder if this is human-centric or
+if there are other examples of this in
+the animal kingdom and perhaps among
+ants i know daniel we've talked at
+length about
+um
+the different foraging habits for
+example of
+different um
+different foraging habits of different
+species or the same species of different
+colonies
+and so where do they get this habit like
+to forage differently like at different
+times of the day or whatever and and it
+spans generations and so is there some
+trace left in the environment like
+humans we leave traces for the next
+generation i mean we directly do some
+cumulative cultural evolution transfer
+um and there are other species i know
+that that teach like dolphins i know
+teach like some foraging habits and so
+forth so so
+what other examples do we have of this
+kind of intergenerational stigmergy or
+like you know we leave traces like the
+time capsule of you know like what to
+find like every decade we open up the
+time capsule from you know whatever the
+previous decade was and find things like
+eight tracks and
+like whatever things that are put in the
+time capsule that are just like oh look
+way back in the day um so i don't know
+what do you think about that um just
+relative to ants and relative to this
+intergenerational stigma g and the
+different foraging habits of colonies
+from the same species
+good
+question
+and
+uh
+where did the priors for foraging come
+from
+and then to what extent is there
+scaffolding of one nest mate in their
+foraging activity by
+older nest mates which is actually
+within a generation that's like sort of
+some skin cells being scaffolded by
+previous skin cells it's like if you
+just kill all the foragers of a colony
+the foragers that step into those rules
+will perform
+sub optimally that's actually related to
+colony collapse in the honeybees
+so there's some element of like they
+have an inkling
+of how to
+adapt their foraging
+yet um also there's flexibility um i
+mean
+it just makes me think of how we could
+actually
+study it like putting nest mates in
+different environments or
+having uh
+one colony and splitting it and
+training it a certain way and then
+reintegrating them and seeing if
+um
+[Music]
+what mattered more was like the
+environment at that generation or
+whether it was possible to have
+epigenomic or genomic
+changes that sort of lock in and and uh
+shape foraging
+and then on um
+12 you know i'm
+doing a little live meme modification
+like foraging is not an act but a habit
+with a probably misattributed aristotle
+quote
+so it's almost like forging is not an
+act
+it's a policy
+it's a policy over
+specific motor actions
+uh
+but yeah the intergenerational part is
+very interesting
+and it
+i'm just thinking if there's other true
+intergenerational ant scaffolding one
+example not in foraging is like when a
+leaf cutter ant
+queen goes on her nuptial flight she
+takes a
+little sub-sample of the fungal garden
+and uses that to start the next
+generation
+which
+actually i think relates to the second
+point you had about 30.
+so that's super interesting and also um
+directly related to
+um the microbe transfer right like you
+think about um microbial transfer that
+happens um
+like through the birth canal like
+there's a difference between
+c-sections delivered babies and babies
+that actually pass through the birth
+canal
+just in terms of how they're inoculated
+as well as breastfed babies versus
+formula fed babies
+there's a huge like inoculation
+difference with your like but just
+microbial flora
+and so that that is the
+uh and i wonder what um you know this
+speaks to the holobiont concept
+like we're not just humans we're humans
+inoculated with all kinds of things and
+maybe ants aren't just ants they're ants
+plus that fungal and i have there's been
+studies on that fungus
+like on the fungal composition is it
+different from colony to colony
+um do you know i don't know
+i know that uh one
+group in my previous lab they tr they
+isolated nest mates and then they
+treated them with antibiotics and
+changed their microbiome and they
+and others have also shown that there's
+a role for the microbiome in recognition
+so um
+because it modifies the smell
+of the ants that modifies how they
+recognize each other
+um maybe that's more like a dialect
+like that's kind of how they recognize
+that they're in the very short time
+range like in the same
+group or they're they're likely to be
+collaborative but i i returned to eight
+to think about what you just described
+about like the body and the inheritance
+of
+microbial forms like
+is there a way to refer to that human is
+the species but then you know if humans
+contain and are
+multitudes
+you know there's the body there's the
+other life forms
+there's social
+uh interactors
+humans aren't the species but the host
+which ties in very nicely to our next um
+live stream which i'm very excited about
+uh
+which um
+with matthew sims he's gonna come and
+talk to us about
+uh the symbiosis between
+squid and vibrio fischeri in the light
+organ
+which is something near and dear to my
+heart i worked in new mexico i don't
+know
+uh how is this possible in um right
+upstairs you know you have those labs
+that like you know everybody in the lab
+and you guys can come and work and
+um like share equipment sometimes and so
+i knew this lab and our lab were very
+close uh the lab of michelle nishiguchi
+and she studied vibrio fisheries and the
+light organ so i knew all these people
+doing directly related projects
+but that's it's a really cool uh concept
+that you know
+maybe we're all in some form of
+symbiosis and i know in mice they have
+sterilized mice and the mice grow up
+totally neurotic like mice lacking the
+microbiome free mice like they're
+completely neurotic and have way
+abnormal behavior and they've linked a
+lot of you know human behavior or human
+abnormal or abnormal behavior or
+neuroatypical behavior to microbiome
+stuff as well so so it's really
+interesting to think about maybe we're
+all symbians in some
+fashion i mean and like maybe we're not
+the species but we're just the host
+reminds me of um
+demetrius bolus
+speaking about the through others we
+become ourselves and it was situating
+active inference in the dialectical
+tradition
+and um you have a coming together
+of different pieces and they don't
+reduce their distinction they actually
+become especially over evolutionary time
+more polarized like the nuclear genome
+becomes more nuclear the mitochondrial
+genome becomes more reduced in
+mitochondrial or the host becomes
+on one trajectory and the parasite goes
+in the other they don't converge and
+equalize each other they end up becoming
+increasingly specialized parts
+in
+a newly emergent type of system
+and then these multi-specified
+systems can be fragile because maybe now
+there's a failure mode of the part
+and then that causes the whole system to
+fail so like bucky fuller would always
+talk about how
+um all cases of biological extinction
+are due to over-specialization
+might be a bit of an overstatement but
+that's sort of the idea is like
+generalists can deal with changing
+niches better
+because they're always able to
+hedge their bets
+amidst uncertainty and average out over
+all the different um foraging
+investments whereas a specialist does
+really well until they don't but in life
+it's not just like you can do well most
+the time and then you can fail sometimes
+living systems need to
+be
+succeeding at least adequately all the
+time
+if any part of your body was under
+producing atp for like five minutes
+it would get tissue damage so it's
+better to be adequate all the time
+rather than hyper successful for even
+almost all the time
+and then what kinds of strategies are
+resilient amongst that kind of
+uncertainty and situation
+so about halfway through what you were
+saying i wondered when we started having
+a political discussion
+because it just really you know speaks
+to
+specialization or maybe
+polarization um which we see in society
+so like you know we have these different
+factions or different like sub
+types or sub classes
+of of people and biological systems
+that don't
+become
+more like one another they become
+more separate from one another and i
+think um you know in the resounding echo
+chamber that is um
+you know
+a self similar political
+environment or class environment you
+know it becomes this this echo chamber
+that that um
+you know just increases our
+uh
+certainty right increases the the
+validity of our own model
+and it makes us question
+the model of others so i wonder
+uh and this brings us back to uh what
+we're going to discuss with matthew sims
+next week
+um
+is that right or is the jet like is the
+generative model
+becoming more similar for the fisheries
+vapor fisheries in the squid or is it
+becoming
+more different
+i i just wonder yep uh um
+so through interaction do we become more
+similar or different
+or what kinds of systems through
+interaction become more similar or
+different
+and then
+how can systems be
+more anti-fragile given that
+relationship amongst the subunits
+versus which which failure modes are you
+de-risking on and which failure modes
+are you increasing the risk on
+like
+so it's an interesting question i mean
+it's not just political it is very
+um broad question
+blue let's look at the code
+and maybe just scan through some
+sections of it and then start to see um
+in on 11
+before we get to the code it's just like
+what else could we include in an ant
+model like this was um we talked about
+the natural history of the ant that we
+templated off of the formica species in
+the paper
+but um we used one pheromone we didn't
+have interactions you know we had such
+um a sparse
+uh
+pulling over of features of ants into
+our model so that's why it's just like a
+introductory framework so what what
+other pieces could exist for ants
+and we can kind of use the active
+inference
+um breakdown of what perceptions could
+we add in tactile interactions other
+olfactory interactions
+light
+the
+intensity the color the polarization of
+light
+another type of polarization what type
+of cognition could we add in so this was
+like a one-step decision-making ants it
+just makes a decision for the next time
+step based upon the local pheromone
+density what kind of cognitive processes
+actually exist in ants or what kind
+might be interesting to see
+in different systems like memory
+and then what actions exist
+here we had a movement action affordance
+any of the directions and then we had
+sort of a pheromone deposit affordance
+that didn't actually have a specific um
+control policy it was just a if then if
+you already touch the seed then you
+deposit pheromone if you're still
+looking for the seed then you don't
+deposit fairmont so we can think what
+are the perceptions cognitions and
+actions of the aliens as currently
+modeled in the paper and then where can
+we go with that
+and then
+to go from that question about the
+simulation
+to meet the empirical data the other
+side of the table
+what kinds of ant data
+already exist
+there are several very fascinating
+databases
+that include genomics
+gene expression transcriptomic and
+epigenome or epigenomics datasets
+they're sparser for ants than they are
+for humans and mice but
+they are out there and there will be
+more of them in the future
+what kind of behavioral data already
+exists ethology
+the study of animal behavior
+video data
+maybe they analyzed it under a certain
+framework but now it could be
+readdressed
+and then like rfid and qr codes that can
+do semi-automated high-throughput
+tracking so people attach rfid chips to
+honeybees and
+track their foraging activity
+and then we also have information on
+their ecology and morphology so features
+of which we're not in our simulation so
+this is just this sort of prime looking
+at the code
+by asking like how could the code be
+modified
+and then how
+could the world
+already be seen as reaching out to us
+with these helpful pieces of data
+and then where are we going to be in the
+middle like what kind of model is going
+to connect the empirical data sets that
+do or could exist
+to the models
+that do or could exist and then what
+questions are most important because we
+want to be asking relevant questions and
+so it's better to be keeping the goals
+in mind as we look through everything
+okay let me just
+re-crop this window while i get the code
+up
+anything you would just say on the
+overview or like
+general thoughts on the kind of
+multi-agent simulations or foraging
+simulations that you've made
+uh just i have some questions about this
+simulation actually or some some things
+that i would think about to include as
+parameters like in a dream simulation
+where we you know could can simulate
+whatever with unlimited computational
+power and
+relative world data um so i think that
+uh
+here i'm interested in nestmate
+interactions so i think that that would
+be something that would be interesting
+to model like the different types of
+ants that exist like the nurse maids and
+the foragers and the queen and the uh
+reproducers i can't remember we went
+through all the different types of nest
+meats last time but i would just be
+interested in
+in kind of simulating how
+as a colony ants interact and function i
+know that that's like you know
+very
+whatever big and i mean in most
+simulations that i've always done it's
+like the same type of um
+the same type of agent right like so you
+give the agent different options but
+it's never like
+this agent doesn't forage and this agent
+does i don't know but i mean i know that
+they do have different people do do some
+modeling with different types of agents
+but i just wonder what the compute power
+is and
+what the validity of that is
+yes great
+okay
+so
+we're gonna um
+take a sort of uh a stepwise approach
+and one thing that i think will be fun
+is
+there's people who know way more about
+python and coding
+than both of us for sure including alec
+chance and others and then there might
+be others for whom
+they've learned about active inference
+or they've read a lot about it maybe
+even looked at the math
+but here is going to be where we see how
+it looks in code so there are these
+multiple languages and ways of
+communicating and learning by doing
+active inference like natural language
+math as a language
+programming as a language art as a
+language maybe there's other ways too
+but at the very least we know that we
+have natural language
+mathematical formalisms like the
+equations that we're always putting up
+and then here's the code
+those
+threads might be
+looking more similar or different
+as we start to learn more about like
+interactive notebooks
+and ways to
+integrate our language use
+of the natural kind with the programming
+kind
+so
+we're gonna do kind of a a step down
+first we're going to look at the config
+file so the readme file in this case is
+not super informative which is fine
+um but the config file is where we're
+going to start that's going to tell us
+about like what kinds of variables and
+parameters matter
+then we're gonna look at figure one and
+that's just sort of gonna be like okay
+this is how you run it and then we're
+gonna pull back to the ans dot py
+and look at what functions and
+subroutines are actually defined inside
+the code
+so inside of the config file it's only
+30 lines long 31 lines long
+and it has
+some pretty
+clearly defined variables that are being
+set
+and the idea is that all the parameters
+are stored in this file so that you can
+kind of hit play and then it will look
+to this config file we'll see where that
+happens in a second
+and so
+the first block relates to um
+if you want to add the ants in a
+staggered fashion how many how many time
+steps should happen between adding new
+ants in
+um
+uh how many or what's the location of
+where the ants should begin
+nest factor we can
+look at i'm not exactly sure
+um
+it is here
+it relate i'm not exactly sure where
+what the nest factor has to do it might
+have to do with the distance of the nest
+but
+let's ask alec on that one the grid is
+the side size of the map so here's a 40
+by 40.
+um
+and then here
+is a very interesting block it's the
+focal area which is three by three so
+that's the grid around each nest mate is
+just three cells by three cells
+and so this could be changed to you know
+like four by four or
+something like what happens when the ant
+has a broader range of perception than
+it might have for action
+and that's the action map
+and so those are the um the actions that
+can be undertaken
+relating to basically moving like down
+into the left or up into the right
+the food location
+and the size of the food are provided
+then the wall
+so that specifies like within the grid
+what is the shape of the maze inside of
+the map
+24 and 25 describe the
+the number of discretized levels of
+pheromone that exist and then a factor
+that is the stochastic decay of the
+pheromone trail
+and then
+here the observation states so like the
+o in the active inference model
+are
+defined as the number of pheromone
+levels so in this case
+those are both 1 or 10 discrete models
+but
+it's so interesting because it opens up
+the door for the generative process to
+differ from the generative model so like
+the observations
+could be there could be um
+three categories of observation low
+medium and high
+and so you could still have a continuous
+variable or discretized variable in the
+world in the generative process but the
+generative model could be over a reduced
+version of that which might be all you
+need to know maybe there's enough
+stochasticity such that just knowing if
+you're in high medium low
+tells you whether to put on a jacket or
+not you know you don't need five decimal
+points on the temperature
+and um the number of action states is
+also reduced to the focal size but just
+as mentioned that could also diverge
+and then the um the length of the
+simulation i think is specified in 31.
+so those are some of the parameters that
+exist just in the
+base simulation some of the degrees of
+freedom that do exist and that's even
+before introducing these like other
+sorts of um pieces that could exist okay
+any thoughts here before we go to figure
+one
+just like you know i mean i i always
+want to know like why
+like why did you choose this or like did
+you play with the decay factor or did
+you play with like the length the time
+steps i'm sure like maybe your reviewers
+commented that as well but um i just
+wanted like i'm always curious to see
+like was there any
+like
+unexpected outcomes or optimal outcomes
+that occurred like peak like did you
+pick 500 time steps because that was you
+know best or the decay factor of 0.01
+because that was most real realistic or
+those types of things
+good questions
+and i think we we probably could have um
+organized these with some sub headers
+and some comments a little bit more
+clearly
+so
+we're going to look at how the
+simulation gets specified and then pull
+back to like what are the subroutines
+so the the top part of a python program
+is basically pulling in and then giving
+nicknames to other resources that are
+required so these resources can include
+packages like numpy which is a common
+toolkit used for
+um
+math and statistics in python i'm sure
+blue can say more on that one and then
+there's this um
+the config
+as the cf
+so that's when we call like cf dot
+number of observations
+that's going to call like this
+which is defined as this which is 10
+but of course that can be changed so
+that's where the variables that are set
+in the config file come into play
+so the header
+sort of introduces the um
+the background libraries and resources
+that need to be imported
+then
+um a few parameters are defined so that
+you can have like a base config set
+and then you can also just um locally
+define some variables like the number of
+initial ants is um
+like
+you can define variables that are in
+the config file or you can add some new
+variables in
+and then um
+basically
+uh
+the
+uh
+for
+the observations
+in the length of the range of
+observations
+this runs
+a routine
+and um
+the routine is going to be defined
+better in and stop py
+but it basically says we're going to run
+it
+for that many steps for that many
+starting ants for that many maximum ants
+we're gonna save it
+we're gonna switch the location of the
+food
+and then we're gonna just print some
+summary descriptors
+like the number of round trips
+uh
+and then
+save that
+in
+[Music]
+a file
+so that's like sort of the
+interface wrapper
+for running a simulation and then
+outputting some of the descriptive
+statistics and then also saving
+that file
+now ants.py is
+353 lines long so
+um it's a little bit longer
+but there are some parts that we could i
+think walk through
+the first is that like
+the ant is a class
+of object
+and it has um a few routines
+it has its initiation routine
+which is where its x and y position for
+example are given
+the starting location
+and then there's updating a forward and
+a backwards step
+there's the class of the environment so
+this is kind of like if you do net logo
+modeling agent-based modeling you know
+you have like the turtle like the agent
+and then the environment so here we're
+defining the agent and we're defining
+the environment
+and the relationship between the two of
+them is really whether we have um
+a stigmatic type multi-agent system or
+not
+so you could have the environment
+influencing the behavior of agents
+like the sunshine is influencing the
+behavior of the ants but then the ants
+don't modify the sunshine so that
+wouldn't be stigmargy but
+if there's a possibility for the agent
+to modify the environment and for the
+environment to modify the probability of
+agent behaviors there's some sort of
+bi-directional relationship then it is
+stigmargy
+and um
+basically some of the functions that are
+defined for the environment
+have to do with uh
+which
+observations are at a given
+cell
+whether the food exists at a given cell
+whether the walls
+exist at a given cell
+and then the step forward a step
+backward relate to the outgoing and the
+homecoming
+trip and this is basically just um
+[Music]
+uh
+doing a delta which i think is a which
+is the action map it's the delta in
+position
+and then it checks whether the ant is
+returning which is like a gonna be i
+believe on the step backwards side
+and um
+[Music]
+versus the ant
+going forward
+decay is a function that's also inside
+of environments
+because decay has to do with the decay
+of the pheromone at that cell
+and then the plotting has to do with
+just saving
+um the file so that's some of this like
+uh the gif and the save fig
+another object type that's defined and
+this is really where there was the main
+carry over from the previous models is
+the markov decision process
+so here just like we've talked about in
+various contexts like the a b c and d
+are all
+uh
+defined and initiated here
+those are um
+used as you'd expect
+and then the mdp needs to have these
+functions that relate to setting and
+resetting certain variables
+and taking a step and then i love this
+line 210
+action inference like this is sort of
+the kernel
+that
+is where it's happening
+here's the negative expected free energy
+and then there's a calculation
+of the negative expected energy of the
+uh negative
+utility calculations
+divided by the scale factor
+pretty interesting and i don't think we
+experimented with modifying this scale
+factor
+and then um so can i just interrupt you
+what does that scale factor do really
+well
+it's mentioned only two times in here
+and
+um
+i'm not exactly sure what it does here
+i think that uh when you're comparing
+relative policies
+as long as you're dividing them all by
+the same scale factor
+it shouldn't change the relative
+preference for different policies if
+they're all being scaled down by the
+same level
+so
+i'm not sure why the calculation exists
+this way
+yeah that i mean it makes sense that
+they're all like whatever you scaled by
+something maybe it's just to make the
+numbers more manageable who knows
+yes
+but we'll let's definitely think about
+that
+and then um
+[Music]
+it yeah
+we could get more explanation from alec
+um but
+the uh
+negative expected free energies
+get so
+okay well okay one possible
+option would be this is like over
+observations
+so we know that the observations are
+discretized between one and ten
+so if we divide
+by 10 maybe we're going from like a 1 to
+10 scale to a 0 to 1 scale
+which then lets us interpret
+more cleanly as like probabilities
+because
+um the action
+ends up being selected based upon the
+soft max of the negative expected free
+energies
+so instead of like you know eight one
+and one
+if you do
+0.8 0.1 and 0.1 it's really easy to then
+say okay right 80 likelihood of choosing
+this action
+here's a colony level function
+related to an ant being initiated and
+just appearing on the map
+plotting and saving functions and then
+here's the main
+so um
+a lot of times in the python
+programs
+there's like a lot of sort of upstream
+functions that are going to get called
+and then main is called and then when
+main is called that's like where the
+main program actually happens
+so this instantiates the environment the
+ants and the paths
+it for the number of ants in that are to
+be specified that many ants are created
+with reset
+mdps
+all of the image files are set to zero
+the descriptive statistics like how many
+completed trips and the ant locations
+are reset
+and then here
+is the time point time step based
+simulation so here
+for each ant in the ants that exist
+there's going to be some calculations
+this is related to the distance
+calculation
+um
+here's adding the ants
+here's switching the food
+and then here is um checking for each
+ant trajectory
+whether it's returning or completed
+and then saving the file
+so
+again i think there could be a lot more
+organization and commenting
+to sort of understand what these
+different pieces do but
+yeah i believe that's some of the main
+pieces
+nice
+are we gonna move to the figures now
+um
+sure i can actually try to download the
+videos and i can play the videos
+oh yeah that's great so yeah i thought
+we were going to go switch back and
+forth from the code to the
+okay so we'll go to the paper
+supplemental data
+let's see if we can play it in the
+stream directly
+will it play
+oh great it will play okay so here is
+like the ants
+you'll you won't see it blue but um
+diffusing around the red ones are going
+out and the blue ones are coming home so
+this is just as if you were um watching
+the colony with video
+um video two
+i think we're gonna add in
+the pheromone density so here the
+brighter colors are the pheromone
+density
+and like there like one ant made at home
+but then it didn't
+here comes another one
+it didn't um
+[Music]
+sort of lock on but now we can see
+there's a light ridge
+it's locked on
+to the trail and it's going to reinforce
+the trail
+and then
+it seems like the food has switched
+because now we're seeing some pheromone
+getting deposited on the left side
+and then there's not as much deposition
+on the right side but this is what
+really happens in ants like if there's
+high density of pheromone on that top
+right
+then
+an ants are spending a lot of their time
+there
+especially if they're carrying food they
+might actually be reinforcing
+that part so some of the videos are
+described their similarities and
+differences
+in the text but i think the interesting
+one to look at would be
+i think six and seven
+so here
+there's um here there's a preference for
+high pheromone density
+and then
+i believe it's seven
+where the ants can lay down pheromone
+but they don't have a preference for it
+and so it ends up getting laid down but
+then it doesn't get reinforced because
+they um
+they just don't prefer it so they act
+randomly with respect to pheromone
+um
+but these are just like fun
+simulations and yeah a total
+obvious next step an important one would
+be to
+explore what sets of parameters certain
+outcomes occur within like when do they
+always lock in when do they fail to lock
+in
+um
+but yeah good
+supplemental info
+awesome
+um
+yeah so what what is the next obvious um
+step for you or where would you like to
+see this simulation go
+most like what is the the next if you
+were to you know
+have unlimited time with alec to say
+like let's code xyz
+um what what would you uh dream of
+first i'd probably go for the annotation
+and clarification
+because that's like where coding
+expertise really comes into play and
+that helps other people
+modify and build on the code the most
+um
+when it were a little more reorganized i
+think it would make sense where other
+sensory and action affordances could be
+plugged in
+but the piece that's
+such as like adding another pheromone so
+instead of just having like you know
+pheromone one through ten density like
+make it specific pheromone sent one
+and then that would allow us to go okay
+now let's just copy and paste pheromone
+sent two
+and then we could have
+um more flavors
+so well so what what would you make the
+pheromone scent to
+do would you make it like fairmont said
+one drives you to the food and if
+everyone send two drives you home or
+would you just make different decay
+rates or what would you do with the
+different fair ones
+one duality would be like plus and minus
+if there was the appropriate behavior
+around using them
+another one would be fast and slow decay
+which maps on to the way that ants
+actually use the sense with like some
+longer chain
+hydrocarbons that are longer lasting and
+some shorter chain ones that are
+volatile
+um another interesting cognitive model
+would be like there's two or three
+pheromones
+and then what the inference is on
+is the ratio
+and then it could be shown like you know
+no cheating the ant is only perceiving
+the ratio of these two things
+so that would be kind of
+uh
+it's kind of like bimetallism
+like you tie to the idea of a ratio
+rather than to just the absolute amount
+of one
+so like
+um
+it could be food could be a little sweet
+and a little salty or a lot sweet and a
+lot salty or then the inference of
+whether it's tasty is like whether it's
+balanced
+so then if we're thinking about the ant
+tasting
+balances in the world
+maybe that could help it have an
+internal manifold
+that by definition would be simpler
+than the state space of the pheromone
+densities out there in the generative
+process
+um
+so i i heard that there are two types of
+ants like that there are grease eating
+ants and sweet eating ants are they just
+like different
+like what is that what makes that
+distinction actually and like does the
+same ant really eat those things or
+what's up with that
+um
+just reminded me of you know like uh uh
+evil neutral good like the
+classifications for characters
+and then what are the major macro
+molecules what are the nutritious
+molecules other than vitamins well
+there's like protein carbohydrates and
+fats lipids
+and
+different parts of the colony life cycle
+might use these different nutrients
+differently but then what are the
+resources that could be obtained like
+sweet that could come from like an extra
+floral nectary so like a plant that's
+secreting a honeydew or scale insects
+and the the carbohydrate-rich fluids
+that they secrete and ants that love
+sugar and pies and stuff
+then there's oil
+and then there's also like protein like
+there's meat ants
+and um
+the turtle ants
+in the in the canopy forests in some
+rainforests i've heard from many ant
+researchers like that the most effective
+traps
+use human urine
+and like those ants well that's high
+nitrogen high protein relatively
+speaking if you're a tiny guy
+so
+um
+[Music]
+it's interesting why some species would
+um
+prefer
+more or the other if you're putting on
+more biomass
+like if you're making larger colonies
+you probably need a lot more protein and
+lipids
+whereas if you have longer lived workers
+then you don't need as much lipid and
+protein but you might use a lot of
+carbohydrates
+so that's sort of the fun way to think
+about the workers like a car like you
+need the metal to make the car
+but then you only need gas it's like you
+need the protein and lipids to make
+the ants
+but then afterwards you really use more
+carbohydrates
+even though they probably also digest
+other nutrients but i think the the
+piece that um to connect would be like
+um
+find some
+student or person who loves
+meta-analysis it could be us or it could
+be someone else
+and establish like which data sets
+are already there
+what's a recent impactful and
+publication that already has done a lot
+of the meta analytic work
+of at least compiling data sets and
+there are several ants databases that
+have compiled behavioral data
+morphological data ecological data
+genomic data
+and then um
+how could that
+data format play into
+this
+model
+what are we going to
+put in
+and then i think uh a good step would
+just be to show like
+what does the octave inference
+ant model
+explain predict suggest
+that
+uh
+other first principles approaches like
+reinforcement learning might not
+perceive
+very nice
+yeah so my question about the different
+types of food that ants eat was was
+really
+linked to different pheromone
+um
+like types or ratios or concentrations
+like if i have a high preference for
+lipids but i'll eat sugar like
+you know maybe my ratio preference is
+different like this is another way to
+like enable different like types of ants
+or just to give them different
+preferences over the food that they eat
+and then where like if we initiate the
+same kind of agent and the same kind of
+food did they all like proportionately
+distribute or do some carbohydrate
+referring ants go to lipids instead of
+lipid preferring antibiotic
+carbohydrates i just wonder and like
+does it have to do with proximity or the
+number of ants that were there before or
+i think that all of that is is
+interesting and kind of relates to
+like this multi-goal
+aspect of active inference it's always
+really kind of difficult to
+i mean it's easy when we think about and
+get food right like so the active
+inference model is as easy it's
+manageable is what it is so it becomes
+computationally tractable and like
+mathematically tractable when it's a
+single type of agent with a single goal
+or even like two different types of
+agents with two different types of goals
+that are overlapping i mean so you can
+see just how but it exponentially
+expands when you have this kind of
+multi-goal
+thing and like some goals are like more
+pressing than others right like my
+immediate needs have to be met for me to
+like you know desire to go to college
+like i have to have food water shelter
+clothing etc
+and so these kinds of
+multi-goal and like prioritizing goal
+setups
+are um really interesting and
+a great way i think to start to
+approach
+modeling real
+or
+us
+or
+complex
+systems that have multiple conflicting
+sometimes conflicting goals
+another setting to transpose and explore
+that where there's a ton of data would
+be first make active beefarence with a
+honeybees so there they don't use stigma
+g
+um on the trail because they're on the
+wing they're flying
+but in the nest you could have like us
+in the hive as it were you could have a
+special dance floor and so that is where
+maybe like a active inference
+communication model could come into play
+so
+that this would be less on the stigmargy
+side but more on like the multi-agent
+distributed communication side so flip
+out the trail um
+modification with a symbolic waggle
+dance
+whether it actually does a waggle dance
+or whether we just say okay there was a
+waggle dance that occurred and it had
+this precision and these estimates
+then
+honeybees are well studied for making
+the trade-offs between foraging for
+nectar carbohydrate pollen which has
+like lipid and protein and water
+and
+a lot of work on like
+is it that um
+a hundred percent of the variance in
+that foraging outcome being different is
+about the needs of the colony and all
+workers respond to the needs of the
+colony
+is it that
+the workers have their own nest mate
+level preferences
+and then the colony outcome just is what
+it is or is it somewhere in between
+where there's preferences that differ
+between workers maybe as a function of
+their genetic backgrounds but then the
+colony outcomes are also in feedback
+with them
+so that could be um a case
+and i think this kind of takes us back
+to um
+to slide eight which is like when we
+have
+the systems lined up
+and we understand their similarities and
+differences
+then
+we'll be able to transpose
+across different systems
+in a really interesting way and then ask
+um it's kind of like biomimicry on
+behavioral systems
+is this more like a honeybee situation
+where people are exchanging information
+and then going their own way
+or is this more like a trail stigmergy
+situation
+and um
+so like there's going to be some
+early work transposing into these major
+different domains like again this was
+the first paper that transposed active
+inference and included stigma g although
+that had been discussed by axel constant
+and others
+regarding ecology it had always been
+qualitatively a part of the discussion
+that niche modification was relevant and
+that agents were able to be in feedback
+with their surroundings
+and then it went from the natural
+language
+through the formalism to the code and
+then now it can feed back change how we
+think and write and speak and then we'll
+transpose into a few of these major
+domains start to sub-specify into
+situations and it'll be very
+cool so it's super interesting about
+like the um communication versus like
+the trail like which of these like
+and i just wonder what you think like
+as humans
+which are we more like are we more like
+bees or are we more like ants like do we
+communicate and then go on our separate
+way or do we just like follow in a row
+like
+where do you think we're at
+in the b ant trajectory
+it makes me think of a drive that we
+went on this weekend and um there was
+the street signs and then there was a
+big field and then there was the
+pleasure path that was cutting the
+hypotenuse across the field so it was
+like a big block with an empty field in
+it and so people were walking and so
+they were making that trail and so there
+was this juxtaposition between the um
+[Music]
+societally imposed and scaffold
+infrastructure like the streets and the
+symbolic signs you know the stop sign
+here and this is where this street and
+that street intersect and then there's
+the people
+who were moving on that landscape and
+then even if you don't see any other
+people at that moment it's their
+stigmargy with the trail
+and so it is an interesting question and
+it's almost like we have symbolic rules
+and scaffolds like law and norms and
+culture
+that are even though there's ways to
+think about those as stigma energy
+themselves
+for the agent level that's more like a
+symbolic communication
+and then
+it's like the ant stigma g is like
+blurring the lines
+that the symbolism provides for us
+so
+i think there's um
+there's some components of both plus
+other insects
+maybe not insects too but that's quite
+contentious so that that brings me back
+to like the concept of of
+intergenerational sigmoidy but but
+really like maybe my question was not
+like phrased correctly like sure we
+leave some stigmatic traces as humans
+for like the the next generations but
+but also like we leave
+like sigmoidy for strangers right like
+like so i wonder if like and i know that
+the ant colonies like the pheromones are
+different and the different species of
+ant they're different and so i wonder um
+maybe is it like the fact that total
+strangers can go you know searching for
+um collective intelligence or collective
+behavior or something like that on the
+internet and come to the same result or
+certain like total strangers see the
+stop sign and know that there's some
+sort of behavioral norm that's supposed
+to be enacted just by seeing the signs
+in the street and so we leave this like
+you know we do this externalization of
+of cognition a lot as humans and so
+this is what i want to see in the animal
+kingdom like like i want to see traces
+of like can strange animals say like oh
+i see a rock stack i know the trail goes
+this way right like like does that
+happen in the animal kingdom or is that
+what's maybe uniquely human
+good question
+and i think this is why we can study
+these systems and gain insight without
+naively copying their strategies or
+thinking that we must be
+them or they must be us because
+our
+whatever it is that we're doing it's at
+the intersection of like stigma g and
+cumulative culture modification and
+symbolism
+so in a way the ant and the be
+foraging paradigms not no hashtag not
+all ants because some don't do pheromone
+trails etc but one extreme
+is like the syntax of the foraging trail
+and there's no symbolic communication
+it's just stigma g
+and then the other extreme is
+no stigmatic modification there's no
+trace left in the environment at all
+there's just transient symbolic
+communication
+so it's this continuum from the
+transient symbolic
+like i'm going to pass you a message and
+then you're going to be off on your way
+to
+the stigmatic and often sub symbolic
+like the path crossing that field
+it isn't directly a symbol
+saying walk on me
+but
+it isn't
+in affordance we perceive it as an
+ecological affordance but it doesn't
+have it that's not what it symbolizes
+that's what it is and that's how we
+enact it um so like we could have some
+types of active inference models that
+highlight
+that um
+transient among agents
+meaning based communication
+versus models that um
+don't need to take on any grandiose
+hermeneutic
+communication and what does
+communication mean and how does thinking
+through other minds happen
+we just
+look to the ground and about how agents
+respond to their niche which is a
+combination of biotic and abiotic
+nice
+fun times
+yeah just any final thoughts or or any
+anything else for me i've given all my
+all my thoughts out i think oh me too
+over the years but thanks for um pushing
+for this paper for 29
+and uh 30 is gonna be
+hot on the heels slash
+abdomen of this paper because i think
+we're going to be able to operationalize
+a lot of the discussions that we had
+about extended cognition i know it's
+also going to bring back
+what we talked about with the
+definitions of a self and individuality
+so
+another one in the books on to our third
+decade
+of um
+papers on the live stream
+and uh
+yeah i hope people found it interesting
+as with other
+papers except this is one where
+hopefully they can
+get in touch with the authors and
+understand that it's a totally open area
+and a collaborative one too
+awesome well thanks for giving us your
+time and and always giving us your time
+thanks youtube luke so
+um i'll flip to the closing slide
+that's
+what we can still think about
+and uh
+awesome see everyone around next time

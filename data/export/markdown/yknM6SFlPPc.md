@@ -1,0 +1,1369 @@
+---
+title: "ActInf GuestStream 083.1 ~ "Embodied intelligence", Joshua Bongard"
+category: "GuestStream"
+series: "GuestStream_083"
+episode: "1"
+speakers:
+  - "Joshua Bongard"
+duration: "59:23"
+url: "https://www.youtube.com/watch?v=yknM6SFlPPc"
+views: 585
+exported_at: "2026-02-18T22:37:37.961512+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 083.1 ~ "Embodied intelligence", Joshua Bongard
+
+hello and welcome it is July 17th 2024
+we're in active inference guest stream
+83.1 with Josh bongard thank you for
+joining this should be very exciting
+we'll have a presentation and then some
+discussion so if you're in the live chat
+please feel free to write any questions
+and thank you again Josh looking forward
+to
+this yeah thank you Daniel and thanks to
+those of you that are attending online
+um so my name is Josh bongard I'm a
+professor of computer science uh here at
+the University of Vermont and um my
+bread and butter in my lab is the study
+of Robotics and Ai and obviously we're
+in the middle of the uh a current AI
+summer um so what I wanted to do today
+is uh show a couple highlights from my
+group things that I've worked on in the
+past and that we're working on at the
+moment
+um that I hope in the long term will
+help us realize sort of the long-term
+vision for a lot of those trying to
+create intelligent machines which is to
+create machines that are helpful but but
+also safe um we're part of the way there
+but as anyone who's worked with chat GPT
+or stable diffusion NOS or even has a
+robot vacuum cleaner at home there's
+some limitations to our current
+technology it's hard to create machines
+that are
+autonomous and useful and safe all
+simultaneously so what are the things
+that we're missing um that's what I
+wanted to sort of um seed the pool with
+today and hopefully we can move on to an
+interactive discussion about it so uh
+I'm going to leave this slide up and
+just sort of talk over this slide for a
+few minutes that'll hopefully generate
+some food for thought and then
+questions um this is a snapshot from uh
+some of the projects I've worked on over
+the years um first thing you'll probably
+notice is there's a lot of different
+robots that have very different
+structural properties they not only act
+differently but look very different and
+that is a fundamental foundation in
+everything we do uh in my research Group
+which is to try and understand how the
+body facilitates uh cognition uh years
+ago with my PhD advisor we wrote a
+popular science book called How the body
+shapes the way we think and we can mean
+that literally or figuratively um we
+wrote that book a while ago we made some
+arguments about how the body shapes the
+way we think and since that time my
+group and others have formulated uh
+other uh Arguments for why or how the
+body shapes the way we think and I'm
+hoping to survey some of those uh today
+so as I mentioned you can see a lot of
+different robots here very different
+structure they're they're they've got
+very different Form and Function but
+across each of the um pair of videos
+that you see here you'll notice that
+there's also a common pattern which is
+on the left side you tend to see
+something that's virtual and on the
+right side of the video pair you tend to
+see something that's physical and this
+illustrates the basic approach that my
+group takes to understanding how the
+body shapes the way we think which is to
+create AI that creates robots creates
+embodied AI so what do I mean by that uh
+what I mean is that in all of the
+projects that you see here um we create
+an AI that searches the space of all
+possible
+robots that could solve the tasks that
+we want the robots to solve um most
+people that are familiar with AI and
+Robotics and autonomous cars and drones
+have a rough understanding that AI is
+somehow optimizing or tuning the brain
+of the autonomous car or the Drone or
+the the robot what have you there's an
+underlying assumption in all of that
+current in in most current robotics
+which is that the AI Tunes the brain but
+does not tune the body Tesla cars are
+dreamed up mostly by humans and an AI
+Tunes their their brain or their control
+policy but of course nature doesn't work
+that way nature produced us and all the
+other intelligent organisms on this
+planet by carefully tuning body and
+brain
+simultaneously certain bodies facilitate
+certain kinds of behaviors and certain
+kinds of intelligent behavior and other
+bodies don't they obstruct that
+particular Behavior or that intelligent
+Behavior so in all of our work we ask
+the AI not just to tune the brain of a
+robot but its body
+simultaneously and as you can see
+visually here the AI often comes up with
+uh bodies that are well suited to
+whatever we want them to do so uh if you
+direct your attention to the very top
+left of the screen for a moment this is
+now a 22-year-old experiment but I think
+it's still visualizes the potential of
+this
+approach in this case we were interested
+in uh creating a robot that can
+brachiate that can swim swing across
+beams or tree branches or electrical
+wires for various inspection tasks and
+you'll notice that in this case the AI
+came up with a solution that in
+retrospect seems intuitive um the robot
+has to carry a very heavy battery which
+you can see in the physical robot in the
+top left there um the box that's at the
+bottom and the AI has figured out how to
+design the body of this robot so that it
+passive it's actually able to exploit
+the forward momentum of this heavy
+object this battery to facilitate its
+movement or brachiation across this
+physical beam so it's a simple example a
+simple robot a simple task but it
+demonstrates uh this interplay between
+AI robotics body and brain
+if the AI was not free to place the body
+uh to place the battery at a particular
+place on the robot's body it would be
+much harder it would require more energy
+it would require a more complex brain
+for the robot to figure out how to move
+its heavy weight uh across this this be
+so that idea of tuning body and brain
+has suffused everything that we we work
+on um some other examples you can see in
+the top Center and the top right uh here
+we have a robot um that uh suffers
+damage its body changes over time so now
+the AI has to Grapple with not just
+designing a body but grappling with a
+body that changes one of the things that
+we as intelligent organisms here in the
+world and all embodied AI all autonomous
+cars all drones all robots have to deal
+with is entropy the world throws a lot
+of stuff at us we have to deal with wear
+and tear injury in our case we grow from
+a single cell into about 10 to the 12
+cells we change massively in terms of
+our physical
+magnitude how do you continue to operate
+keep yourself alive and do whatever it
+is you need to do across massive
+morphological change that is not an easy
+thing to do and again it requires an AI
+if it's going to do this with robots
+it's got to figure out how to carefully
+tune body and brain to
+deal with the generation of behavior
+inside a body that is changing either
+unexpectedly due to injury and wear and
+tear uh or
+intentionally uh you can see in the very
+center panel um this is again a pretty
+good visualization of uh where designing
+body along with brain comes in handy um
+if we want to make flying machines or
+swimming machines we have to very very
+carefully tune the geometry and material
+properties of the body itself to realize
+flight um so what you're seeing in this
+middle panel here this is partway
+through the AI experimenting with the
+design of different kinds of wings for
+an ornithopter a drone that flies by
+flapping its its
+wings this uh flexible Wing that you see
+here in the center of the screen this is
+a bit of a transition from traditional
+robots that are made of rigid structures
+like you can see in the top row
+into a more modern era in robotics which
+is sometimes referred to as Soft
+Robotics Material Science has come a
+long way in the last 20 years so we can
+now start to build robots embodied AI we
+can start to build uh robots out of
+materials other than rigid plastic and
+metals um and we can again we can start
+to move into an era in which robots like
+organisms can exploit the material
+properties of their bodies to facilitate
+whatever behaviors they need to do to
+survive or be useful to humans and so on
+so in the middle right panel um this is
+a highlight of some work that my group
+has done in collaboration with Rebecca
+Kramer Boo's Lab at Yale uh Rebecca's
+lab uh is famously advancing the
+state-of-the-art in Soft Robotics what
+can you get robots to do when they're
+made out of soft materials you can see
+an example of some of those soft robots
+middle right and a very different soft
+robot lower left which is exploiting its
+uh body properties in order to move in
+interesting ways one of the interesting
+things about Soft Robotics in my
+perspective is that it starts to usher
+in uh an era in which robots can
+actually grow and complexify their
+bodies you can see these Hollow cubes in
+the middle right and these uh Hollow
+sort of uh Chambers in the bottom left
+expanding and Contracting as we push and
+pull air into and then out of the body
+of the
+robot suddenly now you have robots that
+can change their geometry they can
+change their
+volume they become what's known as
+thermodynamically open it's a fancy term
+for meaning that they can draw new
+material and new energy into themselves
+the thermodynamically open machines that
+you see middle right and lower left the
+only thing they're drawing into their
+body is more air but it's a start I
+mentioned already that humans grow from
+a single cell into 10 to the 12 cells
+every organism on this planet with a few
+exceptions starts small and gets bigger
+over its
+lifetime that fundamental morphological
+change
+start small start simple and gradually
+grow in size and
+complexity that provides scaffolding it
+provides a gradient on which to learn
+how to gradually grapple with the world
+around you most organisms again there
+are exceptions are not thrust into this
+world with all of their Machinery online
+from the
+beginning just the way I'm phrasing this
+is obviously int to to sort of
+dichotomize growing organisms and robots
+with fixed
+bodies autonomous cars are still very
+dangerous autonomous drones are still
+very dangerous to be around because
+99.99% of the time they do the right
+thing but every once in a while they
+don't know what to do and no one knows
+what they're going to do in those
+uncertain
+circumstances that that is a very
+concerning situation as we start to now
+deploy robots and autonomous vehicles
+into everyday environments where they
+are in close proximity to
+humans why is it that in even with
+state-of-the-art AI and with all of
+Google's data centers and AI training
+algorithms we still can't rub out that
+0.01% where no one knows what's going to
+happen part of the reason again is these
+machines are born with complex bodies we
+drop a controller into a one ton
+autonomous car made of metal and and
+plastics it's very dangerous we we don't
+grow autonomous cars from a very small
+simple lightweight machine that can't
+cause anyone any harm whatsoever and
+then when that simple small machine
+demonstrates and verifies to us that
+it's safe then we allow it to become
+larger and more complex it sounds like
+silly sci-fi why would we build a
+machine like that but again every
+organism starts simple and grows in
+complexity and if it doesn't do the
+right thing if it performs dangerous
+actions that are harmful to itself or
+fatal to Itself by definition it doesn't
+get any
+further that's again one of the ways of
+thinking about how the body shapes the
+way we think in my in my personal
+professional opinion
+any ma physical machines that we deploy
+into the real world they should start as
+very small lightweight machines that
+can't harm anyone they have a very
+limited number of actions that they can
+perform and they sort of cycle through
+all those actions and verify everything
+and only then can they take more mass
+more energy into themselves can they
+recruit more material they can sort of
+be allowed to be thermodynamically open
+and grow and complexify themselves
+there's lots of ways in which we we're
+starting to create machines that grow
+and complexify themselves I just talked
+about these uh soft robots that can pull
+in air or or pass possibly fluids they
+could be hydrodynamic machines they
+could mechanically or magnetically
+connect to other robots that's Sort Of
+Swarm robotics that's another path to
+Growing
+machines at the moment most of these
+machines are still restricted to
+academic labs they also are not safe yet
+but I think in the long run they're
+going to be a safer alternative to
+dropping AI into very large complex
+heavy dangerous machines and crossing
+our fingers and hoping for the best okay
+so I've talked a little bit about rigid
+robots and soft robots um I want to try
+and talk as little as possible so
+there's some time for a good discussion
+but I I want to talk about what I see as
+sort of a third era of robot otics and
+embodied AI which is just starting to
+open up in the last few years which is
+biotics or creating
+biots and you can see two biobots uh on
+display at the bottom center of my slide
+here um a biobot is a robot that's made
+up of only biological components no
+technological components whatsoever so
+in the bottom left here uh krigman
+blackest and Len and myself in 2020
+published a paper demonstrating the
+first biobot um this became known after
+publication in the popular media as
+xenobots x n o Zeno
+xenobots because these xenobots are
+built from about 2,000 frog cells and
+the cells were taken from a particular
+species of frog which is xenopus leis uh
+Michael Levan uh our biology colleague
+at T University uh is world-renowned for
+demonstrating that you can reconfigure
+genetically unmodified materials like
+for example frog
+cells and that rearrangement of living
+tissues not only does not kill the
+organism the organism is able to in some
+cases continue on doing what it does
+what it needs to do uh ingest materials
+survive reproduce in this reconfigured
+state there's a lot of biological
+implications for that one of the
+biological implications is that frog DNA
+does not code for frog what you're
+looking at in the bottom left the
+xenobot is about a millimeter in
+diameter so it looks like a speck of
+pepper to the UN to the unmagnified eye
+and yet it's able to walk around the
+bottom of a petri dish it's not quite
+doesn't have all the features of a
+living organism but it's got enough of
+them that it's motile it's able to get
+itself from point A to point B
+so one of the one of the the other
+implications for AI of this biological
+discovery that you can rearrange
+genetically unmodified living tissues is
+that maybe we can task an AI with
+discovering novel rearrangements of
+living tissue to produce robots to
+produce something that moves around and
+does something useful on a human's
+behalf so that that's what I mean by a
+biobot biobot that's made from in this
+case genetically unmodified
+cells um the the swarm of xenobots that
+you see in the bottom uh right uh as you
+can see they're sort of pushing around
+some material in their their dish this
+um sort of visually hints at
+applications for this this type of
+robotic technology which is they might
+be able to act like very very small
+Roomba uh Robot vacuum cleaners in the
+future they might be able to collect
+microplastics out of waterways or cancer
+cells out of
+bloodstreams the the Swarm that you see
+that's cleaning up uh in this slide at
+the bottom right the material that
+they're cleaning up is actually other
+frog
+cells it turns out that if the AI
+designs this swarm just right and the
+Swarm that you're looking at this is an
+AI designed swarm the SW the AI came up
+with the shape for each member of the
+Swarm the Swarm is pushing these little
+white circles these which are individual
+frog cells pushing them into piles turns
+out these frog individual frog skin
+cells at a certain stage of development
+are sticky and they Clump together into
+a pile and some of these piles if
+they're big enough if they contain
+enough frog cells they will grow very
+small hairs on the surface cells the
+cells that are on the surface of the
+pile
+and those uh those little small hairs
+are called cyia they're usually used to
+pull uh dirt and pathogens off the skin
+off the body of of frogs adult frogs
+here when those cyia grow on small piles
+of frog cells they're able to uh exert
+enough Force against the surrounding
+water that these piles start to move and
+so what you have in essence is a child
+xenobot this swarm wor pushes cells
+together and in essence makes copies of
+themselves this is another implication
+of this work is that in this case the AI
+has figured out how to design
+robots that replicate they make copies
+of themselves by by finding raw material
+in their environment and constructing
+copies of themselves this has been a
+long-standing dream in robotics dating
+back to um dating back a very long time
+to John Von noyman in the 19 50s who had
+a thought experiment it would be great
+if we could create robots that would
+create copies of themselves which would
+create copies of themselves and if those
+robots do useful work for humans as a
+side effect for Von noyman that was
+creating moon bases and then Mars bases
+and then colonizing the Galaxy which
+sounds great um but but the the seed of
+this idea is if we want uh robots to
+really be useful at scale instead of
+manually constructing billions of robots
+and then deploying them to do something
+useful which is expensive would be much
+cheaper to make one robot that does
+something useful for us and by the way
+it also makes two copies of itself which
+does more useful work for us and four
+and 8 and 16 and so on we're not there
+yet with the xenobots but it's a
+demonstration that that is possible and
+again all of that becomes possible
+because the AI is designing both both
+the bodies and the brains of these
+robots this is very far now from the
+traditional view of AI and Robotics
+where we build a robot body we humans
+build a robot body and then the AI
+Tinkers with the brain of that fixed
+machine so part of the reason why I'm
+here today and part of the message of my
+group is we need to think more broadly
+about how to combine Ai and Robotics and
+possibly synthetic biology
+and when we do when we think more
+broadly there are Whole New Paths that
+open up to ways in which we might create
+in the future not yet but in the future
+create intelligent useful and safe
+machines in the current ERA in AI there
+is one particular approach which is
+autoc completion of tokens which has
+come to dominate the field and and come
+to dominate the popular imagination we
+all kind of have an understanding more
+or less of what chat GPT is doing and
+there are some very strong lobbying
+organizations out there that are bent on
+convincing us that if we just do this
+with more compute more data we will
+eventually get to Safe machines my
+contention is there just isn't enough
+data out there to make non-embodied AI
+like chat GPT and stable diffusion and
+all the rest to make them safe we have
+to think differently
+about designing bodies and brains of
+machines simultaneously to realize this
+long-term
+goal okay um I've been talking for a
+while um I'm going to stop and I'm happy
+to take questions or uh engage in some
+discussion and I'm happy to come back to
+any of these experiments and provide
+more detail if that's
+helpful over to you
+Daniel thank you wow awesome what a
+cornucopia of bodies and
+Minds it was a great overview I was
+really struck by some of the
+similarities and the convergence on
+whole of life cycle design and kind of
+holistic Design coming from on one hand
+a systems engineering and a materials
+perspective and on the other hand from
+the biology perspective with like Eco
+evoo and this convergence upon needing
+to think about how the endtoend function
+maybe even past the point of
+functionality like into the
+planned graceful decay of a robot as
+well so it it brings in a lot of topics
+that even from an outsider's perspective
+seem to be put as kind of secondary so
+that's very cool okay great I'm looking
+forward to what people in the live chat
+write my first question is how over
+these uh 22 years how have the materials
+the theories like the contexts advances
+and Turing computation all these kinds
+of things how have they intersected and
+just what has the ride been like as you
+pursued these
+questions yeah I think it's um the short
+answer again is is is focusing on the
+physical aspect of AI and Robotics so
+the materials from which we can build
+machines has changed over 20 years and
+from from my perspective the the
+experiment the top left there that was
+something I did as part of my PhD you
+know the materials at the time it was it
+was very hard to build a robot you got
+you bought some Motors you bought a
+battery you bought some metal you bought
+some wires and you wired everything up
+there was there was the assumption that
+bodies were fixed and not only that but
+they were difficult to make so once you
+made one you were very careful with it
+to make sure it didn't change that it
+didn't become damaged and that's seemed
+to comport with a lot of the theory in
+Ai and
+Neuroscience which which had the same
+sort of idea that that the brain or in
+the case of Robotics the control policy
+is the Puppeteer it's something that's
+pulling the strings of a fixed thing
+either the body of an organism or a
+robot and if you look at a lot of a lot
+of theory in both Fields Ai and
+Neuroscience that that assumption runs
+so deep so for example an active inter
+inference or you know uh the free energy
+principle we want to reduce surprisal
+that there's a fixed set of actions that
+we perform to try and reduce the
+surprise between what we're sensing and
+what we predicted we would sense given
+the past action where do those actions
+come from why are they fixed does the
+set of actions grow over time maybe the
+the sensory data that's coming is coming
+from a new sensor that's just coming
+online or a sensor that's recently
+duplicated now there's two of them but
+they're not quite reporting exactly the
+same thing there there's a whole bunch
+of assumptions underlying a lot of the
+theory about active inference uh
+predictive coding you name it you pick
+your concept from Neuroscience or
+cognitive science or
+AI once you once you peel back those
+assumptions imagine the robot's body
+changes imagine the robot splits in two
+and becomes two copies of itself you
+know a lot of the the theory and the
+formal the the formal underpinnings of
+that theory break down you start to get
+into ill-posed questions which force you
+to now think about how do you
+fundamentally change the theory if you
+have a hierarchy of actions like in
+predictive coding or active inference
+what if that hierarchy is growing and
+changing over itself is growing and
+changing over time how do we address
+that in a formal manner so to get back
+to your question I think these advances
+in what we can do physically we can
+build robots now out of soft materials
+we can build robots out of living
+materials which on their own will grow
+and divide and seek out energy and
+material on their own that th those
+physical machines these odd new kinds of
+creatures are militating they're pushing
+against the theory and specifically
+they're pushing against these unspoken
+assumptions that lie underneath a lot of
+this theory about what's required to act
+intelligently in a complex
+world that's awesome like the real world
+and the territory expanding into our
+unknown unknown okay there's a bunch of
+questions in the live chat so okay I'm
+just going to go for them give any
+answer that you like okay sure
+David Williams wrote how do you think
+about the controllers in your robotics
+embedded AI at least today is rather
+hard batteries and chips pcbs not soft
+and not easily synthesized locally so
+how do you think about the controllers
+in your robotics yeah great question so
+right exactly the controllers are
+dealing with hard rigid fixed
+components we need we need to start
+thinking about controllers that can in
+which for example the input layer and
+the output layer can grow and Shrink
+over time there may be new sensors or
+new input coordinates that are growing
+or being attached to a machine and the
+controller needs to be able to carefully
+deal with those new input channels while
+the machine is
+operating same thing goes for the output
+Channel there may be new actions or New
+Dimensions of action
+along which the machine uh can act and
+control policies reinforcement learning
+uh all the rest of it does not all those
+assumptions that make reinforcement
+learning work which is what drives most
+autonomous vehicles at the moment
+assumes that the dimensionality of input
+and the dimensionality of output the
+things that the machine can do and sense
+are fixed during training or during
+Behavior generation during execution
+that is absolutely not true in any
+organism on the planet and that's
+becoming increasingly untrue for for our
+our coming machines now how to do it
+well I I don't have any answers but we
+have to figure it out that's you were
+asking a question about thinking about
+controllers that's a a concrete example
+about how we have to rethink control
+policy optimization even if we're not
+thinking directly about the body even if
+we just focus on the control policy
+and ask what happens as the input and
+output channel the dimensionalities of
+the input and output channels change
+during Behavior
+execution yeah just one short point on
+that it's like training with a fixed set
+of perceptual elements or of affordances
+or of actuators it's like training on
+one point in a larger space of the
+adjacent possible of like bodies or of
+architectures so then okay we're
+bringing all this compute to train a
+special case in the fixed setting and
+that's not even how the smallest
+organism works so that just again like
+kind of shows that point okay I ju sorry
+before we move on from that point I just
+to again illustrate how the body shapes
+the way we think in the case of a
+growing biological body there are new
+input channels that come online you know
+throughout our life time but they don't
+appear denovo you know whatever it is
+whatever that new input channel is as as
+we're growing we just have more you know
+more s sensory more sense cells the
+signals that they're sending into the
+peripheral and central nervous system
+are not orthogonal to whatever else is
+already coming in as input because new
+input channels or new cells are slowly
+dividing and at the moment of division
+they're providing exactly the same
+signal as some other sensory channel
+that already exists so the body or in
+this case biological growth provides an
+immediate scaffold a gradient in in
+robotics it's it can be very scary to
+think about like attaching a sensor to
+an autonomous vehicle what the hell does
+it do with this new information that's
+coming in because we haven't thought
+carefully about how to add that new
+sense modality to the machine again we
+have to look to Nature that every new
+sense sense modality is gradually coming
+online and gradually drifts away or
+becomes increasingly orthogonal to the
+starting input modality so that's how we
+should if we did that physically with
+machines it would
+simplify reinforcement learning or would
+make it easier for reinforcement
+learning or what have you sorry let me
+re share my screen here it would simply
+make it easier for
+the uh sorry something seems to have
+gone wrong here give me a
+moment yep okay all right yeah it what
+makes things easier on the control
+policy optimization process if new sense
+organs and new motor outputs are coming
+online but they resemble things that
+already
+exist that's super interesting um brings
+up a lot of questions about like self
+and on self recognition and what is a
+self as new and different senses and
+actions come online sure um okay Pros
+kavi
+asks do these biobots have any sense of
+agency what is your sense I'm quite
+intrigued by the idea that Beyond a
+critical point they start growing hair
+and do these biobots act independently
+of each other and also what happens at a
+group level so what's your sense of
+agency in bio Bots and I guess the
+biobot and the group
+level yeah it's a great question so I'll
+start with a disclaimer I'm not a
+biologist I'm a computer Scientist by
+formal uh training so I I can only say
+so much about what the cells are doing
+and what they want to do um I I
+definitely uh I I definitely follow in
+the footsteps of the late Daniel Dennett
+in that when we talk about agency we all
+each of us individually has to decide
+whether or not we take the intentional
+stance or not it's in my opinion it's a
+point of view if it's easier to explain
+what the xenobots are
+doing by talking about what the cells
+want to do like grow cyia and coordinate
+their actions fine if it's easier to
+explain what the xenobots are doing by
+not taking the intentional stance and
+describing cells as mechanical
+components that are transforming input
+into out into actions that's fine too
+it's uh this is something also that
+comes from my colleague Mike Levan it
+depends if as scientists if we want to
+try and explain and understand what
+these machines are doing if taking the
+intentional stance makes explanation
+easier fine if not then not but
+attributing agency is sort of an
+objective property of the Bots or the
+cells themselves independent of us is
+observers to me that's philosophically
+and practically uh
+problematic as far as I know there is no
+objective measure of
+agency in cells let alone inorganic
+robots super interesting that's like the
+second order cybernetics or the Observer
+Theory or the poly Computing question
+which is to say just looking at
+something and then treating one's
+perspective um objectively the case it
+is objectively the subjective
+experience absolutely now that being
+said again there is there is an
+empirical side to this we can make some
+progress in understanding the
+xenobots uh by comparing them against a
+control so instead of cells if these
+were you know magnets or some complex
+mechanical system in which more of us
+are comfortable in saying there is no
+agency it's just a you know it's a
+bucket of cogs doing
+something and that control does not
+exhibit kinematic self-replication for
+example or it's much harder for the AI
+to figure out how to put together non
+agential
+components to do what it is then then it
+I feel a little bit more comfortable by
+saying the cells are doing something
+more now I don't know whether it's
+agential or they want to do something or
+if it's free will or Consciousness I
+don't know but if but if we can point at
+biobots or machines that are built from
+biological components and say it's
+easier to get them to do things because
+they start to um they become complicit
+in the overall goal compared to
+Mechanical Parts which don't okay and
+again as a roboticist in the in the top
+the top and the middle rows that you see
+on my slide here when we do build things
+out of metal and rubber and Plastics and
+Ceramics it's usually super hard it's
+really hard to get them to do whatever
+we want them to
+do we've been working on robotics since
+the end of the second world war and
+we've got the Roomba and you know maybe
+we've got autonomous cars we're getting
+there it's taking a really long time
+because robotics is really hard it's
+really hard to convince physical
+materials to to adapt and do something
+useful and safe on the flip side we've
+been working on Xeno Bots at the bottom
+here we've been working on them for
+about five or six years and we've got
+roombas we we're making faster progress
+in robotics when we build from cells
+then when we build from metal suggests
+you know the cells are somehow helping I
+don't know that they want to help got to
+be careful there that's the intentional
+stance but when you deal with smart when
+you when you try and compose machines
+from Smart machines and cells are smart
+machines we're making f i I know I'm
+biased but I think we're making faster
+progress than when we build machines out
+of inert
+materials yeah super interesting um okay
+I'll read some comments from sure David
+Clement David
+wrote does your work incorporate
+agential hierarchies for example the
+xenobots grow by replicating the initial
+seed cell into a higher order system and
+is it critical for lower order systems
+to act as a component of a virtual
+machine meaning that they have a Target
+behavior that is less than the higher
+order system and that's kind of related
+to to precautious question as well like
+how do you bridge that from the
+individual component into the Swarm or
+the
+aggregate yeah it's a really it's a
+really good question so absolutely I
+think the the when we started working on
+the xenobots and Mike Mike Levens
+started to talk about machines made of
+machines made of machines that
+definitely has influenced the work in my
+group to focus on this issue of
+hierarchy I don't know about agential
+hierarchy again we just talked about
+agential agency that's maybe a a
+subjective stance but we but definitely
+you know why would you want to build
+machines out of machines out of machines
+at the moment our state-of-the-art
+robots like autonomous vehicles are not
+hierarchical they the control policy
+operates at the level of the uh of the
+machine as a whole for example if
+there's an emergency blowout of the tire
+in an autonomous vehicle the tire itself
+the rubber that makes up the tire
+doesn't deform and try and fix or reduce
+surprisal locally it can't it's rubber
+it's inert material we don't we don't
+have machines built of machines built of
+machines yet but as biology in general
+and the noots in particular demonstrate
+there's an Adaptive advantage to being a
+hierarchy of physical things of physical
+machines if there is a surprising event
+at the level of the machine as a whole
+but that surprise trickles down through
+the hierarchy it's unlikely that
+everyone at every level of the hierarchy
+is going to be surprised someone
+somewhere in the hierarchy is going to
+say from my local View at least on this
+bigger surprising issue issue I know
+what to do so let me start to
+communicate to my peers and up the
+hierarchy to deal with surprise that
+would be from a engineering point of
+view that would be a good thing to have
+in you know big heavy fast-moving robots
+that are near humans you there's always
+going to be some surprising event that
+the vehicle as a whole has never seen
+before there's great YouTube videos of
+you know horrifyingly
+you know scary surprising edge cases for
+autonomous vehicles okay we're never
+going to fix every Edge case what we can
+fix is to make hierarchies and maybe
+agential hierarchies where local
+surprise can be handled or or Global
+surprise can be broken down into local
+surprising events which can be handled
+locally um if I understood the second
+part of your question is how do we
+design that hierarchy should the small
+Parts be trying to pull in the same
+direction or be trying to solve some
+part the goal of the higher level I
+think that's a super interesting
+question and I don't think that the
+answer is obvious it may be that smaller
+parts pursuing orthogonal goals ends up
+actually being useful uh may end up
+being
+useful just to give you a quick example
+um if you want if there's a surprising
+event and you've got a whole bunch of
+semi-independent machines organized in a
+hierarchy I would argue that every
+single one of those members of the
+hierarchy should have a slightly
+different body and brain it should have
+a slightly different Form and Function
+you don't want a monoculture you don't
+want all the parts being smaller
+versions of the bigger parts and trying
+to achieve smaller versions of the same
+goals because then you've got you've
+basically got a committee in which
+everybody thinks and feels the same way
+and as we know from humans that's a
+dangerous thing right you get group
+think or group act you actually want a
+hetero culture you want a whole bunch of
+things that are unique in terms of Form
+and Function and that maximizes your
+chances that someone somewhere in the
+hierarchy says just because of the way
+I'm built and the way I think with my
+local control policy I know what's going
+on and I have the seed of a solution
+here's the seed you all figure out what
+you need to do to make it a reality at
+the larger level
+that's another aspect of where the body
+comes into
+play yeah thank you like everywhere is
+the last mile from somewhere things have
+to be addressed locally no matter how
+you think about a Communications
+architecture
+distally everything and embodiment calls
+our attention back to that like it has
+to be somewhere locally so then why not
+take that as the starting point instead
+of like this kind of resource Challenge
+and then about like the multiple
+subunits when there's a uh damage to the
+nest of an ant colony or there's some
+things spilled on the surface it's like
+not that every single nestmate makes a
+perfect Pebble move it's that 51%
+accuracy with a bunch of
+nonspecific flurrying of activity just
+like kind of stress or these more
+generic higher order in that is what
+allows nestmates with different brains
+and bodies to fulfill their own Paths of
+least action and then colonies for which
+that doesn't clean up the mess or it
+cleans up too well and there's
+externalities those colonies are swept
+off the table and then we see the
+Persistence of collective systems that
+could figure that out in their growth
+from a little colony to a big
+Colony absolutely great great example um
+i a question you you mentioned uh both
+safety as well as like
+reliability and how do you think
+about capacities and evaluations on
+diverse intelligences we're all familiar
+with ram CPU hard drive storage some of
+the Von noyman type architectural
+descriptors however how do we even think
+about what does that rubric or report
+card even start to look like when we we
+know that there's complex interactions
+with the niche and when the kinds of
+capacities that we're talking about may
+have even
+open-endedness yeah great great Point
+great point right so you know we we are
+the beneficiaries of you know two big
+revolutions one of them is the AI
+Revolution but then the older one is the
+digital electronics Revolution right so
+Digital Electronics works we all have
+you know a supercomputer in our pocket
+like there's no arguing with it it's an
+incredibly powerful way to make machines
+that internally communicate quickly and
+richly and then can communicate with
+other machines I mean that's it that's
+that's the that's the information age
+that we're in it's been so
+successful that it's hard to think about
+Alternatives or why we would even bother
+thinking about
+Alternatives but again living systems a
+lot of what cells do they rely on
+electrical
+communication but they also rely on
+mechanical communication chemical
+communication uh thermal communication
+cells are using all mod physical
+modalities not all physical modalities
+but as many as they can get their hands
+on simultaneously all the time why why
+don't they just abandon everything and
+do everything purely electrically like
+our modern civilization has done because
+it's dangerous you don't have a
+diversified
+portfolio so uh one panel here that I
+haven't talked about is the one in the
+bottom right
+which is basically just uh what you're
+looking at is what's called a granular
+material it's a material that's made up
+of a bunch of grains in this case the
+blue circles that you see these are
+little just rubber rubber pucks and
+there is an oscillation being supplied
+at the left hand side and you can see
+that this leads to interesting non uh
+nonlinear vibrational Behavior within
+this material what does that have to do
+with robotics or AI
+if you view the vibrations as the
+carrier of information so if a if a puck
+is vibrating that's a one if the puck is
+not vibrating that's a
+zero now you can start to imagine
+creating materials that communicate
+Shannon
+information throughout the physical
+structure not with electricity but with
+a different uh a different modality
+Dynamics or
+vibration and it turns out that can
+actually compose these metam materials
+to embody logic gates if you vibrate one
+particle or another particle but not
+both and not neither you can see watch a
+third particle and it will either
+vibrate or not in accordance with an
+exclusive ore gate and you can build
+this up now again why would you do that
+we can make an exor gate that's
+vanishingly small and vanishingly fast
+in digital electronics why would you
+ever want to do something different
+because it turns out there are
+advantages of communicating with
+vibration rather than electricity under
+certain
+conditions having a machine that can
+communicate between distant parts of its
+body through mechanical vibration as
+well as electricity has an advantage
+over a machine that can only communicate
+long distances within its body
+electrically I won't go into the reasons
+but you can intuitively start to
+understand that so again I think we need
+to if we if we re if we're serious about
+creating safe and useful autonomous
+machines we have to break out of the
+digital electronics assumption that
+that's the only way to do things we have
+to break out of the assumption that
+non-embodied cognition is the way to go
+and it's easy to just drop it into a
+physical body and we're good to go we
+have to peel back some of these very
+deep assumptions about the right way to
+do things that have built up in our
+society since the second world War
+because a lot of those technologies have
+been very successful nothing wrong with
+them but when we come to apply them to
+creating safe and useful
+machines not always the right thing or
+the only way to approach
+things that's really interesting it's
+like a sort of generalized compute
+concept where we could talk about well
+these are the chemicals that it can
+detect with this Fidelity and here's its
+tactile interface here's its electrom
+magnetic capacity for sending and
+receiving that's what kind of motivates
+or complement the generic Theory like
+free energy principle which doesn't tell
+us about how anything is in particular
+but then sets us up with kind of the
+framework to plug in these different
+modules and then it's an empirical
+question and then right here is sort of
+the
+um virtual body and a real body in
+that's also very interesting H how how
+does that work like in a collaboration
+or with a graduate student like how do
+you bounce this digital adjacent
+possible off of the material and the
+more costly um implementation with
+embodiment yeah well with so with grad
+students and postdocs or whoever you
+know I'm collaborating with that's kind
+of starting out you know this can be a
+very frightening Prospect for someone
+who's trying to get into Ai and Robotics
+because it looks like everything's been
+done it's solved like we all we got you
+know we just have to wait for Google and
+Microsoft to buy more compute and data
+and they'll they're going to finish off
+the last 1% of the dangerous Behavior so
+if you're trying to contribute to
+society's goal of making useful and
+autonomous safe machines as starting out
+what do you do it it looks like this
+massive brick wall there's there's no
+entry point so my take on this is again
+is that we may be going about this all
+wrong right the assumption that
+electricity should be the carrier of
+information inside an autonomous machine
+that's an assumption why electricity why
+not vibration why not something else so
+even if you start to think about the
+Alternatives the immediate reaction is
+well it's it's not going to be as good
+maybe maybe but if you think about
+vibration you were just mentioning like
+compute we can use vibration for compute
+but vibration is movement so the minute
+you start to think about vibration as
+the carrier of Shannon information
+you're now conflating action with
+computation they cannot be
+separated dayart convinced the West 400
+years ago that they're separate they
+just are and you you look at Ai and
+Robotics what a surprise these you know
+the our attempts to create you know AGI
+is by Camal there's one team that says
+it's going to happen in computers and
+the other side that says it's going to
+happen in physical machines that's the
+cartisian Legacy that they're separate
+but the minute you look at some very
+humble material like the one in the
+bottom right it's a bunch it's 12 hockey
+pucks next to one another there's no
+cartisian division anymore between body
+and brain there there is a body and
+there is a brain there but it looks very
+different from anything we we would
+usually consider and it's there's no
+there's no value judgment here it's not
+better or worse maybe it is depending on
+what your metric is it's just very
+different and so with grad students and
+posts I encourage them to pursue that
+what you know could we do things
+completely differently and in the long
+run might that be a better way to do
+things what who knows we'll
+see awesome I I'll make one comment and
+then ask a last question you brought up
+Dart and and that's the r extensa r
+cognant uh dualism between the the the
+the thinking and the non-thinking
+substance and embodied cognition
+embodied intelligence provides both a an
+operational instrumental and an
+ontological counterargument or comp
+mentary perspective which is just well
+in practice and in actuality take it or
+leave it they are inseparable and so so
+at the very least that that starts to
+ratchet and LeapFrog the discussion
+about what is mind and body and uh you
+know you started with with pointing out
+how important it was to co-evolve in the
+complimentarity of mind and body and
+it's like they're two separate things
+that need to be complimentary and
+tangling and also maybe they're
+integrated and blurred in even deeper
+ways than the dance so that's like it's
+it's an empirical entry point into what
+otherwise is a thought experiments which
+can have utility but also can be just
+arbitrarily misleading absolutely one of
+my one of my former mentors Inman Harvey
+at the University of Sussex used to talk
+about robotics as philosophy with a
+screwdriver you know it's not just
+armchair philosophy it's when you start
+to build some of these machines maybe in
+retrospect you you in in the case of the
+metam materials project for me in
+retrospect I said oh my god there you
+know mo action and cognition are not
+complimentary separate things that are
+complimentary they're one and the same
+thing it's not embodied cognition it's
+not an adjective of a noun it's
+embodiment is cognition there they're
+not there are no they're not there are
+not two things here there's just one
+thing very hard to think about it's so
+alien to a western mind but you know it
+just is sometimes I think about that in
+terms of like adjectives getting added
+in front of a word and then the term
+expanding and then it it just
+encompassing oh of course cognition is
+ecological embodied inacted etc etc etc
+etc and then so it kind of like needs to
+be distinguished and then it subsumes
+again and that's part of um in closing
+like what are you excited about where
+can people continue to learn more what
+would you say to a person who's wanting
+to like go in this
+area yeah um okay great question
+so Google my name and it'll take you
+into lectures and papers and tutorials
+and and people want folks want to email
+me that's perfectly fine again Google my
+name you can find my email happy to put
+you in touch with the right people um I
+think it's you know it's easier than
+ever to get started you can go to chat
+GPT and say you know create some
+tutorials for me to start coding up
+robots you know they're I ironically
+non-embodied AI provides a good on-ramp
+now not just for reading about these
+ideas or listening to people talk about
+these ideas you can start coding them up
+in a way that was easier than ever
+that's easier than ever the old days you
+know you had to learn C and then you
+know go on from there very easy to get
+your hands dirty maybe not with physical
+materials but you can create like you
+see in the left of each of these panels
+you can create machines that are virtual
+they're not physical but they're
+embodied it's another Point that's
+important to make embodiment does not
+imply
+physicality you need to be able to push
+against the world and observe how the
+world pushes back but the world and you
+may be virtual like you see on the left
+or physical like you see on the right so
+you can actually relatively quickly get
+your hands dirty with playing around
+with embodied AI uh these days and I
+encourage everyone to do
+so cool any last
+comments I I would just say um I was at
+the uh computer vision and pattern
+recognition conference cvpr a few weeks
+back this is one of the flagship AI
+conferences 15,000 attendees and after
+my talk a lot of grad students came up
+and they said listen I you know you you
+sort of demonstrated there's another
+path here that I was feeling depressed
+or anxious about how to make progress in
+AI when these goliaths are you know have
+these data centers at their beck and
+call I would just uh encourage everyone
+that when you think differently about
+all this stuff there are New Paths that
+open up they may not in the long run be
+the right path but there are
+alternatives to this monolithic predict
+the next token idea which is currently
+you know invogue it's it may be the
+beginning of the end
+um but I think this is just the end of
+the beginning we've we've figured a few
+things out there are some things that
+work but they're still producing not
+quite useful and definitely dangerous
+machines there is room for improvement
+and there's nothing that says that only
+Google Google with all its resources is
+going to be the one that can figure out
+these improvements think differently try
+some of these uh alternative approaches
+and maybe you will be the one um you
+know uh that comes up with the answer
+whatever it is cool good luck awesome
+thank you Josh really appreciate it
+thanks for having me yeah and uh till
+next
+time thank you
+bye e

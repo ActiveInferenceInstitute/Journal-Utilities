@@ -1,0 +1,2368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream #003.1 ~ Ozan Catal & Tim Verbelen</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream #003.1 ~ Ozan Catal & Tim Verbelen</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_003 &middot; Episode 1 &middot; Speakers: Ozan Catal & Tim Verbelen &middot; Duration: 1:27:32 &middot; Views: 312</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=G-S-kq42evw">https://www.youtube.com/watch?v=G-S-kq42evw</a></div>
+<article>
+<p>hello</p>
+<p>everyone welcome to actin flab this</p>
+<p>is actin flab model stream number 3.1</p>
+<p>it's may 27th 2021</p>
+<p>and we're here with tim verbellen and</p>
+<p>ozone catal</p>
+<p>today we're going to have a model stream</p>
+<p>on some of their recent work</p>
+<p>on learning generative state-space</p>
+<p>models for active inference</p>
+<p>we're gonna have a presentation followed</p>
+<p>by some time</p>
+<p>for question and answer so please feel</p>
+<p>free to write</p>
+<p>any questions in the chat and we will</p>
+<p>get to them</p>
+<p>in the conversation so thanks again to</p>
+<p>tim and ozon for</p>
+<p>joining us today we're really looking</p>
+<p>forward to what you have to share</p>
+<p>so please take it away and thanks again</p>
+<p>so thank you daniel for having us um</p>
+<p>so i'm tim verde and together with uh</p>
+<p>rosencattel we will</p>
+<p>talk a bit on our paper on learning</p>
+<p>alternative state space models for</p>
+<p>active inference so we are both</p>
+<p>researchers at</p>
+<p>imek kent university in belgium</p>
+<p>if you want to know more about what we</p>
+<p>do you can</p>
+<p>read about it on our blog or follow us</p>
+<p>on twitter</p>
+<p>under under at the smart robots</p>
+<p>so before we</p>
+<p>dive in maybe a short introduction on on</p>
+<p>what we do what our goal is</p>
+<p>so basically we want to build</p>
+<p>intelligent robots so in our lab</p>
+<p>here in gans we have a really big</p>
+<p>pretty pretty large space where we have</p>
+<p>some room for robot manipulators on the</p>
+<p>one hand but also</p>
+<p>driving and flying robots on the other</p>
+<p>hand</p>
+<p>and we typically attach all kinds of</p>
+<p>sensors on these things</p>
+<p>and then we want to process the sensor</p>
+<p>information</p>
+<p>and infer some useful actions for these</p>
+<p>things and</p>
+<p>of course active inference is a cool</p>
+<p>methodology</p>
+<p>to try out and to</p>
+<p>further investigate and it's in this</p>
+<p>context that basically this this work</p>
+<p>is being done</p>
+<p>so why would you bother learning the</p>
+<p>state space so if you look at</p>
+<p>active inference papers from the</p>
+<p>recent years then typically you will</p>
+<p>find a figure</p>
+<p>like the ones that are on the slide</p>
+<p>so you have this figure of what is the</p>
+<p>kind of environments</p>
+<p>that that you're that you're modeling</p>
+<p>that you're investigating</p>
+<p>and then a whole description on how the</p>
+<p>model should look like</p>
+<p>so you define the state space and then</p>
+<p>possibly or in the case of discrete</p>
+<p>state spaces you you</p>
+<p>define the the so-called a b c and d</p>
+<p>matrix that's</p>
+<p>uh that defines the the likelihood model</p>
+<p>so what what is the</p>
+<p>likelihood to see a certain observation</p>
+<p>when you are in certain state</p>
+<p>or whether the transition models uh how</p>
+<p>do you transition from</p>
+<p>one state to another and so forth</p>
+<p>um and recently while we were doing this</p>
+<p>research</p>
+<p>research we saw some other people also</p>
+<p>thinking about</p>
+<p>yeah um can we do more</p>
+<p>learning using these these kind of novel</p>
+<p>deep learning techniques</p>
+<p>in these uh in these active inference</p>
+<p>methods so yet for example kai will</p>
+<p>suffer</p>
+<p>um who said uh you proposed to to</p>
+<p>basically learn kind of a state space</p>
+<p>for</p>
+<p>for the mountain car but then still he</p>
+<p>needed to</p>
+<p>explicitly encode some of the of the</p>
+<p>environment information</p>
+<p>in in the state vector</p>
+<p>there was also some work from from from</p>
+<p>baron millage</p>
+<p>who basically did some learning</p>
+<p>a bit more on learning the policy rather</p>
+<p>than</p>
+<p>the state space so um basically used um</p>
+<p>work of decision process with small</p>
+<p>state spaces where you could basically</p>
+<p>just</p>
+<p>deal with the the raw state space</p>
+<p>the the observations that the</p>
+<p>environment gave you where</p>
+<p>were basically suited as a state space</p>
+<p>and he could then</p>
+<p>he would then investigate how to learn</p>
+<p>the</p>
+<p>actions given given these states but so</p>
+<p>our work is basically on what if you</p>
+<p>don't know the state space what if your</p>
+<p>observations are</p>
+<p>high dimensional and you cannot really</p>
+<p>use this directly as your state space</p>
+<p>how do you define</p>
+<p>the model how you can come up with it</p>
+<p>and maybe as a concrete example suppose</p>
+<p>we have</p>
+<p>one of our driving robots in the lab so</p>
+<p>this this is a first-person view of the</p>
+<p>robots</p>
+<p>this is the kind of observation that you</p>
+<p>get is just a square of pixels</p>
+<p>and then yeah what's what is your state</p>
+<p>space in this case</p>
+<p>it might be an xy position on the map</p>
+<p>that might be something relevant for a</p>
+<p>robot</p>
+<p>as a state it might also be uh</p>
+<p>watch out you're approaching a cable</p>
+<p>getter so there might be a</p>
+<p>that might also be something useful</p>
+<p>maybe the items that are stored in your</p>
+<p>wrecks are</p>
+<p>are relevant for for whatever task you</p>
+<p>have so that might also be part of the</p>
+<p>state space</p>
+<p>maybe there are human workers that walk</p>
+<p>around that you also need to model these</p>
+<p>so</p>
+<p>depending on your robot and the use case</p>
+<p>you have it does get hands and what can</p>
+<p>happen in the environment</p>
+<p>it it becomes non-trivial to to define</p>
+<p>kind of a concise set of states that you</p>
+<p>want to track</p>
+<p>let alone that you need some model</p>
+<p>that's that's</p>
+<p>that models this like how do you get</p>
+<p>from pixels to</p>
+<p>your expired position so there are</p>
+<p>certain methods</p>
+<p>uh in robotics that's to do</p>
+<p>part of these things but none of them</p>
+<p>really just figure out what is the</p>
+<p>complete</p>
+<p>uh state space that you you need for for</p>
+<p>whatever you want to do</p>
+<p>and especially not in in kind of an</p>
+<p>active inference setting</p>
+<p>so before we go into our methods i'll</p>
+<p>briefly</p>
+<p>talk about active inference probably</p>
+<p>most of you are already familiar with</p>
+<p>the topic but i'll just</p>
+<p>rehearse some of the stuff even if it's</p>
+<p>just to to get accustomed to our way of</p>
+<p>of notation let's say because everybody</p>
+<p>has his own</p>
+<p>notation and it at least it will</p>
+<p>put us all in on the same page for for</p>
+<p>an expert</p>
+<p>so um it all starts with having an agent</p>
+<p>that needs to interact</p>
+<p>with the environment and the agent is</p>
+<p>assumed to be kind of separated</p>
+<p>from the environments from the so-called</p>
+<p>markov blankets</p>
+<p>so on the one hand the agents can come</p>
+<p>from actions</p>
+<p>these actions these will impact the</p>
+<p>environment which is kind of</p>
+<p>a generative process that has some</p>
+<p>some some hidden states and that provide</p>
+<p>you given your action</p>
+<p>it provides you with some sensory</p>
+<p>observation so in this case</p>
+<p>an action could be for the robot to</p>
+<p>drive around</p>
+<p>and put some currents on on the motors</p>
+<p>and observation could be some pixels</p>
+<p>from from the camera</p>
+<p>and then the goal of the agent is to</p>
+<p>build a generative model</p>
+<p>where he has his own uh he builds his</p>
+<p>own state space basically</p>
+<p>he derives how actions um</p>
+<p>have effects on on the states and how</p>
+<p>these states then then would generate</p>
+<p>these observations</p>
+<p>so the question is how can we build a</p>
+<p>generative model</p>
+<p>that actually comes up automatically</p>
+<p>with kind of a proper state space to</p>
+<p>learn this model so basically</p>
+<p>the generative model then looks like a</p>
+<p>probably be a partially observable</p>
+<p>markov decision process so it just means</p>
+<p>that</p>
+<p>we assume that that's the state at a</p>
+<p>given time step</p>
+<p>it only depends on the previous states</p>
+<p>and the action that's that</p>
+<p>you were doing and each state</p>
+<p>gives gives rise to a certain</p>
+<p>observation</p>
+<p>and so then we end up with the</p>
+<p>the so-called free energy principle that</p>
+<p>basically what we want to do</p>
+<p>is going to build a model uh that's that</p>
+<p>maximizes log evidence so here</p>
+<p>you see the formula for the free energy</p>
+<p>and you can unpack it in in several ways</p>
+<p>so the first uh uh way is basically by</p>
+<p>by</p>
+<p>stating that minimizing free energy is</p>
+<p>actually</p>
+<p>uh maximizing the uh</p>
+<p>evidence lower bound let's say and if</p>
+<p>you're</p>
+<p>uh at this free energy minimum then</p>
+<p>basically you have your approximate</p>
+<p>posterior that this is actually equals</p>
+<p>to your or</p>
+<p>very close to your your troops but then</p>
+<p>the</p>
+<p>the third line is basically what we</p>
+<p>typically use</p>
+<p>for optimizing our model which is</p>
+<p>basically on the one hand</p>
+<p>a complexity term you want to</p>
+<p>have your your states explain</p>
+<p>explain the way as simple as possible</p>
+<p>whereas you want to have the highest</p>
+<p>accuracy to predict</p>
+<p>whatever you're observing so in this</p>
+<p>case our</p>
+<p>variational approximate posterior is</p>
+<p>something that</p>
+<p>maps observations and actions into</p>
+<p>inferring your current your current</p>
+<p>state</p>
+<p>but what about the future so in in the</p>
+<p>past you basically knew</p>
+<p>which actions you were doing and you you</p>
+<p>saw the observations</p>
+<p>uh that came in so you could kind of</p>
+<p>infer which states would have given rise</p>
+<p>to the observations so</p>
+<p>that's basically the priority of the</p>
+<p>past but then in the future</p>
+<p>things change a bit because now you</p>
+<p>don't know what you will observe</p>
+<p>and also you have to select the actions</p>
+<p>you will do</p>
+<p>so the actions we will basically</p>
+<p>denote them as being generated by</p>
+<p>so-called policy</p>
+<p>but in in this case the policy is</p>
+<p>basically just</p>
+<p>yeah what is a certain sequence</p>
+<p>of actions basically um</p>
+<p>and you now have to create some</p>
+<p>expectations</p>
+<p>not only on future states but also on uh</p>
+<p>future observations so what</p>
+<p>which states do i think i will visit by</p>
+<p>doing some actions</p>
+<p>but also what kind of observations do i</p>
+<p>think that i will see if i visit these</p>
+<p>states so then</p>
+<p>the free energy becomes the so-called</p>
+<p>expected free energy</p>
+<p>and again you can unpack this</p>
+<p>this thing um as follows</p>
+<p>so basically what happens is again you</p>
+<p>have</p>
+<p>on the one hand your uh the love</p>
+<p>probability of your</p>
+<p>uh steer model minus log probability of</p>
+<p>your</p>
+<p>um uh of your gender</p>
+<p>model uh and now the difference is that</p>
+<p>um that you don't know yet the</p>
+<p>observations in the future</p>
+<p>so yeah you conditioned it on the policy</p>
+<p>so everything will depend on the</p>
+<p>actions you will do and you also have to</p>
+<p>take the expectation over all kinds of</p>
+<p>of</p>
+<p>outcomes you expect and then going to</p>
+<p>the second line you basically</p>
+<p>make the move that after</p>
+<p>if you if your model is sufficiently</p>
+<p>trained then basically</p>
+<p>um your</p>
+<p>[Music]</p>
+<p>your true your approximate posterior</p>
+<p>will be very close to the</p>
+<p>the true posterior and this then</p>
+<p>basically allows you to</p>
+<p>uh to rewrite the final term well i</p>
+<p>i see now that i uh that i</p>
+<p>wrote it in in a different way but you</p>
+<p>can you can rewrite this</p>
+<p>either as an information game on</p>
+<p>and moving towards preferred outcomes</p>
+<p>but you can also rewrite the way read it</p>
+<p>here</p>
+<p>where you basically state okay at some</p>
+<p>point in the future</p>
+<p>i will visit some states so this is the</p>
+<p>sloppy of s</p>
+<p>esta given the policy and you basically</p>
+<p>replace this</p>
+<p>by by some prior belief that regardless</p>
+<p>which</p>
+<p>policy i'm actually choosing i believe</p>
+<p>that</p>
+<p>some point in the future i will realize</p>
+<p>my preferences so that's why you lose</p>
+<p>the</p>
+<p>the conditioning on the policy uh</p>
+<p>in in the in the last equation so this</p>
+<p>then basically becomes a kl divergence</p>
+<p>that says</p>
+<p>okay i i want to find the policies that</p>
+<p>actually bring me close to the states</p>
+<p>that i</p>
+<p>that i prefer that i like to be into and</p>
+<p>then on the other hand you have this</p>
+<p>ambiguity term that says okay what i</p>
+<p>don't like is to visit states that can</p>
+<p>give me like any observation</p>
+<p>that i cannot predict so i don't like</p>
+<p>these</p>
+<p>ambiguous states where i don't really</p>
+<p>understand basically what's</p>
+<p>happening</p>
+<p>so that that brings us to the</p>
+<p>whole active inference scheme so at each</p>
+<p>time step</p>
+<p>you basically evaluate your expected</p>
+<p>free energy</p>
+<p>for each of your policies and you then</p>
+<p>basically assume that you will choose</p>
+<p>the policy</p>
+<p>that will actually minimize your</p>
+<p>expected free energy so you</p>
+<p>you take the softmax over uh minus g</p>
+<p>and you also weigh this with this gamma</p>
+<p>parameter which is just like the</p>
+<p>precision so if you have a high</p>
+<p>precision</p>
+<p>then basically you will you will have a</p>
+<p>very big</p>
+<p>output of a soft max function so the the</p>
+<p>softmax will basically</p>
+<p>become a max so you then</p>
+<p>definitely choose the policy with with</p>
+<p>lowest</p>
+<p>expected free energy if you relax the</p>
+<p>the precision a bit then basically you</p>
+<p>you</p>
+<p>allow for some or some more randomness</p>
+<p>in the system and then basically you end</p>
+<p>up inferring the next action</p>
+<p>according to what is the the the next</p>
+<p>action that i should</p>
+<p>take according to this policy but so</p>
+<p>when the forward follows</p>
+<p>the actual the action selection given</p>
+<p>the policy is basically</p>
+<p>just a deterministic mapping so the</p>
+<p>policies are just</p>
+<p>like certain sequence of actions so</p>
+<p>given</p>
+<p>once you choose the policy the the</p>
+<p>action is basically fixed but</p>
+<p>in theory you could also make this a</p>
+<p>probabilistic mapping</p>
+<p>so let's now go to the</p>
+<p>the real interesting parts of the work</p>
+<p>is is how how do we</p>
+<p>learn state spaces with deep neural</p>
+<p>networks in such an</p>
+<p>an active inference key</p>
+<p>well basically</p>
+<p>we have two components one is the</p>
+<p>generative model that</p>
+<p>i rehearse from the first</p>
+<p>slide and we have our approximate</p>
+<p>posterior model</p>
+<p>and basically you can see that there are</p>
+<p>three</p>
+<p>parts in these equations and the first</p>
+<p>part</p>
+<p>is basically a transition model so</p>
+<p>it's outputs the probability of</p>
+<p>your state given your previous states</p>
+<p>and the action you did in that state</p>
+<p>second part oh yeah and also the</p>
+<p>the initial state is basically uh also</p>
+<p>part of the transition model but then</p>
+<p>you just</p>
+<p>provide with a zero action for example</p>
+<p>just to bootstrap it</p>
+<p>the second part is under accurate model</p>
+<p>so given state you want to have a model</p>
+<p>that</p>
+<p>that predicts what kind of observation</p>
+<p>you will you will</p>
+<p>see and then finally you have the</p>
+<p>posterior model that's given the</p>
+<p>previous state</p>
+<p>action and your current observation also</p>
+<p>has to predict</p>
+<p>um which state your also has to infer</p>
+<p>which state you're in</p>
+<p>so basically the posterior model has to</p>
+<p>come up with the same thing as a</p>
+<p>transition model but in addition</p>
+<p>it has access to your circulation</p>
+<p>basically</p>
+<p>and again similar to a transition model</p>
+<p>to bootstrap this for the initial</p>
+<p>observation you don't have</p>
+<p>any action but it can be modeled by by</p>
+<p>the same thing</p>
+<p>as all these these three components we</p>
+<p>basically instance the ids</p>
+<p>as deep neural nets where</p>
+<p>[Music]</p>
+<p>they have to basically be trained</p>
+<p>to come up with these three</p>
+<p>modes so if we</p>
+<p>uh put it in a schematic we basically</p>
+<p>have</p>
+<p>something like this so given your state</p>
+<p>an action from the previous time step</p>
+<p>and the observation from the current</p>
+<p>time step</p>
+<p>you on the one hand provides the</p>
+<p>previous state and action to your</p>
+<p>transition model</p>
+<p>which will then output</p>
+<p>the distribution over the current state</p>
+<p>and in this case this distribution is</p>
+<p>basically</p>
+<p>modeled as a multivariate gaussian</p>
+<p>distribution so basically</p>
+<p>the output of the neural nets will be</p>
+<p>the means</p>
+<p>and the standard deviations of a</p>
+<p>gaussian</p>
+<p>and now you basically use this</p>
+<p>distribution to then</p>
+<p>generate samples for the next time step</p>
+<p>so the posterior model</p>
+<p>gets also as input to the state and the</p>
+<p>action from the previous time step</p>
+<p>but also in addition the current</p>
+<p>observation</p>
+<p>and it also does a prediction on the</p>
+<p>the current time step and after sampling</p>
+<p>you basically have the likelihood model</p>
+<p>that can then uh generate</p>
+<p>a prediction of the outcome</p>
+<p>and then this state is put into the</p>
+<p>next time step and this the story</p>
+<p>repeats</p>
+<p>so as i already mentioned the output of</p>
+<p>each of our neural nets is basically</p>
+<p>some mean and standard deviation of uh</p>
+<p>of a multivariate gaussian with</p>
+<p>um with the diagonal</p>
+<p>covariance matrix and we use the</p>
+<p>reparameterization trick to generate</p>
+<p>samples so basically</p>
+<p>we generate sample by uh having the the</p>
+<p>means</p>
+<p>and then adds the standard deviation</p>
+<p>times</p>
+<p>some standard normal noise and this</p>
+<p>basically allows you to</p>
+<p>back propagates gradients all the way</p>
+<p>through</p>
+<p>this neural net also if you if you draw</p>
+<p>samples from from the models</p>
+<p>and then of course for the next time</p>
+<p>step you just propagate the sample and</p>
+<p>then the story repeats basically</p>
+<p>so creating such a model is then</p>
+<p>basically</p>
+<p>first collecting the data sets of</p>
+<p>action observation sequences so you</p>
+<p>you take your your your agent you either</p>
+<p>let it randomly generate sequences in</p>
+<p>the environment or</p>
+<p>in case of a real robot for example you</p>
+<p>you drive it around yourself</p>
+<p>in the environments while you record the</p>
+<p>actions and the observations</p>
+<p>and while the models aren't converged</p>
+<p>you sample some subsequences from your</p>
+<p>data sets</p>
+<p>you um you estimate the</p>
+<p>states that are visited and you</p>
+<p>reconstruct</p>
+<p>all the observations and then you</p>
+<p>basically back propagates the free</p>
+<p>energy loss so</p>
+<p>this is the the same formula as the free</p>
+<p>energy in the start so on the one hand</p>
+<p>you have</p>
+<p>the kl divergence between the output of</p>
+<p>your</p>
+<p>posterior neural nets and your prior</p>
+<p>neural nets</p>
+<p>and on the other on the other hand you</p>
+<p>have this reconstruction error</p>
+<p>that basically scores how how good</p>
+<p>you're reconstructing the the actual</p>
+<p>service</p>
+<p>and using this loss function you just</p>
+<p>update</p>
+<p>the parameters of your real nets and</p>
+<p>you basically build a model that is able</p>
+<p>on the one hand</p>
+<p>to infer</p>
+<p>your current state given your</p>
+<p>observation that is able to</p>
+<p>generate new observations if you know</p>
+<p>which state you're in</p>
+<p>you can reconstruct these observations</p>
+<p>but also you have a transition model</p>
+<p>that you can then just use to</p>
+<p>in the state space plan ahead what would</p>
+<p>happen</p>
+<p>if i if i would do this action and it</p>
+<p>will give you a distribution over</p>
+<p>over the next state basically</p>
+<p>so then we come to uh the planning part</p>
+<p>so once you have this model how can you</p>
+<p>use it to let your agent do</p>
+<p>useful useful useful things so there we</p>
+<p>we will use monte carlo sampling so one</p>
+<p>of the things</p>
+<p>uh one of the limitations of these kind</p>
+<p>of architectures</p>
+<p>is that basically we only approximate</p>
+<p>the distribution for the next state so</p>
+<p>given the sample from</p>
+<p>uh from the previous state and given the</p>
+<p>action</p>
+<p>we approximate the distribution for the</p>
+<p>next stage but then</p>
+<p>we sample during training as well so we</p>
+<p>will never have like a</p>
+<p>good distribution for let's say 10 steps</p>
+<p>ahead</p>
+<p>so to predict them distributions for for</p>
+<p>further in the future</p>
+<p>we we approximate these by by doing</p>
+<p>multiple</p>
+<p>sampling so for each of the policies we</p>
+<p>we want to be</p>
+<p>uh we want to evaluate</p>
+<p>the sample and trajectories that uh</p>
+<p>that all do the same actions but that's</p>
+<p>due to the sampling might</p>
+<p>give us different results in terms of</p>
+<p>future states and</p>
+<p>and observations so for each time step</p>
+<p>we then have a bunch of states and a</p>
+<p>bunch of predicted observations</p>
+<p>we then fit a gaussian distribution</p>
+<p>using the</p>
+<p>sample means and variances and then we</p>
+<p>estimate the expected free energy as</p>
+<p>follows</p>
+<p>so on the one hand we have this</p>
+<p>scale divergence if you remember that</p>
+<p>scores</p>
+<p>how good your distribution of states</p>
+<p>is according to some some prior uh</p>
+<p>some prior preferences of states so you</p>
+<p>use this this</p>
+<p>this normal this is disgusting</p>
+<p>distribution to calculate the gel</p>
+<p>divergence with respect to these priors</p>
+<p>now on the other hand you have this</p>
+<p>entropy term</p>
+<p>that scores the the ambiguity of these</p>
+<p>states</p>
+<p>so here we basically use then the</p>
+<p>entropy of</p>
+<p>the observations uh generated</p>
+<p>in our trajectories and we also added a</p>
+<p>scale factor</p>
+<p>row to just kind of weigh two terms</p>
+<p>uh from one another</p>
+<p>which allows you to make an agent</p>
+<p>more risky let's say if it's it's more</p>
+<p>weight on</p>
+<p>realizing preferences early whether you</p>
+<p>could also</p>
+<p>make a more cautious agent let's say</p>
+<p>that's that's really</p>
+<p>does not want to end up in some</p>
+<p>ambiguous states and crucially here</p>
+<p>we also have kind of this recursive</p>
+<p>notion in here so</p>
+<p>we we do this rollout for k time steps</p>
+<p>ahead</p>
+<p>and then for the future you could kind</p>
+<p>of recursively</p>
+<p>look further into the future let's say</p>
+<p>and and aggregate</p>
+<p>also expectatory energies from from that</p>
+<p>point</p>
+<p>and make it a bit more clear um</p>
+<p>let's try to visualize it a bit better</p>
+<p>so suppose at some current time step d</p>
+<p>you're in the states</p>
+<p>then basically what you do is you use</p>
+<p>your transition model to</p>
+<p>say okay given that i follow or c1</p>
+<p>um what will be the the next</p>
+<p>state and you draw a sample from the</p>
+<p>distribution so this is then</p>
+<p>s d plus one by following paul c1</p>
+<p>and this thing you can repeat for k</p>
+<p>times so we</p>
+<p>we put in this this k to just have some</p>
+<p>kind of</p>
+<p>um some force grading of actions</p>
+<p>say for example in the case of a driving</p>
+<p>robot</p>
+<p>it might not make sense to switch action</p>
+<p>every uh 10 milliseconds let's say so if</p>
+<p>you</p>
+<p>if you decide to drive forward you want</p>
+<p>to keep on driving forward for at least</p>
+<p>some time so that's basically what</p>
+<p>where this this k comes from so you</p>
+<p>follow the same</p>
+<p>uh policy for for some time steps</p>
+<p>and you basically sample this end time</p>
+<p>so</p>
+<p>you you um you repeat</p>
+<p>this this process end time so you have</p>
+<p>now at each time step and samples for</p>
+<p>the kind of states you you think you</p>
+<p>will visit after following</p>
+<p>the first policy and then if you have a</p>
+<p>second policy you can do the same thing</p>
+<p>for that policy uh so in this case um</p>
+<p>we only consider two potential policies</p>
+<p>for instance uh go left or go right</p>
+<p>let's say</p>
+<p>[Music]</p>
+<p>and then of at this point so at</p>
+<p>time step t plus k we can basically</p>
+<p>repeat</p>
+<p>this procedure and say okay what if what</p>
+<p>if after k time steps i</p>
+<p>switch policy and maybe maybe i first</p>
+<p>have to go left and</p>
+<p>and before turning right</p>
+<p>or maybe i have to turn left twice</p>
+<p>so then basically you repeat this</p>
+<p>process and this you can basically</p>
+<p>keep on adding to the search tree for as</p>
+<p>long as</p>
+<p>your computation power allows you let's</p>
+<p>say</p>
+<p>so then how do we calculate the expected</p>
+<p>free energy from this</p>
+<p>so we we take our uh our formula</p>
+<p>so basically what we do is at each time</p>
+<p>step</p>
+<p>we first use likelihood model to also</p>
+<p>predict</p>
+<p>what are the observations that i expect</p>
+<p>in these states</p>
+<p>and you then um look at all your state</p>
+<p>samples from a certain time step</p>
+<p>and this then gives you this this uh</p>
+<p>approximate</p>
+<p>gaussian distribution for both the</p>
+<p>states and</p>
+<p>the observations so you plug these into</p>
+<p>the formula</p>
+<p>and this then gives you kind of a number</p>
+<p>that says this is the</p>
+<p>expected free energy if i think i will</p>
+<p>i am in states t plus k and i will</p>
+<p>follow along with policy</p>
+<p>one from uh thereafter and then</p>
+<p>basically you can</p>
+<p>do this for each each of these sub</p>
+<p>branches</p>
+<p>and this is then where the recursion</p>
+<p>comes in so then we basically</p>
+<p>state well i assume that's my active</p>
+<p>entrance agent also</p>
+<p>at at that time step will</p>
+<p>most likely choose the policy with the</p>
+<p>the the lowest free energy so basically</p>
+<p>we combine</p>
+<p>uh the the the free energy for policy</p>
+<p>one and</p>
+<p>policy two according to uh the rates</p>
+<p>that that are provided</p>
+<p>using this softmax function so if one of</p>
+<p>the</p>
+<p>if policy one has a very very low um</p>
+<p>expected free energy compared to pulse</p>
+<p>c2</p>
+<p>then basically only the expected free</p>
+<p>energy of policy one will be added</p>
+<p>um thereafter if they are kind of the</p>
+<p>same</p>
+<p>then they will both have kind of a</p>
+<p>0.5 weight or if the other one is the</p>
+<p>clear winner then it will mainly</p>
+<p>be the contribution of this thing but so</p>
+<p>we basically combine these</p>
+<p>assuming that your agent will at that</p>
+<p>point also select</p>
+<p>the the policy with the the least free</p>
+<p>energy</p>
+<p>so now we basically have an estimate of</p>
+<p>what will be the expected free energy</p>
+<p>for the future given that we are at time</p>
+<p>step d plus three</p>
+<p>and then we can further uh go up to</p>
+<p>three</p>
+<p>and so then for um for each branch again</p>
+<p>we will use the first part of the</p>
+<p>formula to</p>
+<p>estimate these these gaussians uh to</p>
+<p>calculate the gale divergence and the</p>
+<p>entropy term</p>
+<p>and then add this together with what we</p>
+<p>already had for the</p>
+<p>for the the the the remaining part of</p>
+<p>the tree basically</p>
+<p>and this is uh this is very similar i</p>
+<p>think to what</p>
+<p>uh uh call fristen uh proposes</p>
+<p>sophisticated</p>
+<p>uh inference paper so basically that's</p>
+<p>at each step in the future you you kind</p>
+<p>of</p>
+<p>only consider the the free energy of the</p>
+<p>branches</p>
+<p>that you think will basically be the the</p>
+<p>best ones</p>
+<p>so in the end you'll end up with an</p>
+<p>expected free energy for</p>
+<p>both of your policies and you then</p>
+<p>select</p>
+<p>the best one and start acting</p>
+<p>accordingly so</p>
+<p>i'll now turn to ozon who will give some</p>
+<p>more details on the various</p>
+<p>experiments that we did that hopefully</p>
+<p>give some more insights on how this</p>
+<p>can work in practice so take it away</p>
+<p>yeah hi um</p>
+<p>i have some echo on my um</p>
+<p>maybe it's resolved now yeah sounds fine</p>
+<p>thank you</p>
+<p>okay um so i'll go briefly</p>
+<p>through our initial experiences uh</p>
+<p>experiments so</p>
+<p>that these are the experiments we did in</p>
+<p>like the past one or two years</p>
+<p>and so one of the first experiments we</p>
+<p>did and reported on was the mountain car</p>
+<p>which is a a fairly well-known benchmark</p>
+<p>i think</p>
+<p>so the goal is to have this under</p>
+<p>actuated car so it has not does not have</p>
+<p>enough power to reach the top of</p>
+<p>the hand mountain but you want to reach</p>
+<p>it anyway</p>
+<p>so ideally your agent should learn here</p>
+<p>that it should first go back there to</p>
+<p>the left</p>
+<p>to gain momentum to gain enough momentum</p>
+<p>so it can</p>
+<p>climb the steeper mountain on the right</p>
+<p>and</p>
+<p>even though this is such a low</p>
+<p>dimensional problem it only has</p>
+<p>positions and velocities</p>
+<p>it is actually a very interesting</p>
+<p>benchmark to</p>
+<p>experiment upon because there's no</p>
+<p>greedy solution so any agent that is</p>
+<p>just wants to realize its preferences</p>
+<p>immediately will fail at this because it</p>
+<p>will always</p>
+<p>fail to drive up the mountain</p>
+<p>um now for our experiments we made it a</p>
+<p>bit more difficult</p>
+<p>we made the fully observable mountain</p>
+<p>car partially observable</p>
+<p>so what we did was we omitted the</p>
+<p>velocity information</p>
+<p>and only provided some noisy estimates</p>
+<p>of the actual position</p>
+<p>so the agent actually had to learn two</p>
+<p>things it had to learn first of all what</p>
+<p>its</p>
+<p>precise position was and then also how</p>
+<p>this</p>
+<p>position relates to the momentum by</p>
+<p>its uh velocity and then if we take</p>
+<p>if we start from the setup and we train</p>
+<p>the model that</p>
+<p>tim explained a bit earlier um</p>
+<p>in its most basic form you can actually</p>
+<p>learn</p>
+<p>a state space that closely mimics these</p>
+<p>physical constraints of the system</p>
+<p>by minimizing energy so if you look at</p>
+<p>the</p>
+<p>right utmost figure you'll see that</p>
+<p>um you see this sinusoidal uh</p>
+<p>state space dimensions and these</p>
+<p>closely mimic the actual observations of</p>
+<p>the real world</p>
+<p>in the lower image so as you can see in</p>
+<p>the lower image we have the</p>
+<p>ground truth in green which is an actual</p>
+<p>trajectory through</p>
+<p>its position of the cards and then also</p>
+<p>our state transition model estimate so</p>
+<p>our prior estimates on the position</p>
+<p>without observing and then also in the</p>
+<p>blue line which is a bit harder to see</p>
+<p>you can see the same estimate but now</p>
+<p>corrected with the observation so it's</p>
+<p>actually just the posterior model</p>
+<p>outputs</p>
+<p>and you can see these shapes returning</p>
+<p>in the state space</p>
+<p>which in itself does not say that much</p>
+<p>but it gives you at least</p>
+<p>an kind of vague idea that at least the</p>
+<p>state space is capturing something</p>
+<p>relevant for the problem i think there</p>
+<p>is one more</p>
+<p>animation on this yes so</p>
+<p>yeah it's the same conclusion as i said</p>
+<p>right now you can predict the future</p>
+<p>as you can see in the orange line and</p>
+<p>it appears to learn the velocity in its</p>
+<p>state space</p>
+<p>now if you can go to the next slides</p>
+<p>uh yeah um now we want to</p>
+<p>actually figure out how how we can use</p>
+<p>this model that we learned for active</p>
+<p>infants</p>
+<p>and typically in our audi would give</p>
+<p>some sparse</p>
+<p>reward for driving up the mountain but</p>
+<p>in our initial experiments we were more</p>
+<p>interested</p>
+<p>in how an agent could learn from</p>
+<p>human observation or demonstrations so</p>
+<p>we recorded seven i think yeah or five</p>
+<p>sorry</p>
+<p>five um human rollout in the environment</p>
+<p>just like driving around with the cards</p>
+<p>so you go first left and right</p>
+<p>and then we push these trajectories</p>
+<p>through our models</p>
+<p>together to our through our posterior</p>
+<p>model to get a preferred state</p>
+<p>distribution</p>
+<p>so here on this figure you can see the</p>
+<p>eight different dimensions how these</p>
+<p>evolve through</p>
+<p>time if you follow these trajectories</p>
+<p>so in the spread of course give gives</p>
+<p>you the standard deviation at each time</p>
+<p>point for</p>
+<p>for that state value and then</p>
+<p>if you use this these at this</p>
+<p>preferred state distribution and you</p>
+<p>calculate the g or this or even only the</p>
+<p>kl divergence between your posterior and</p>
+<p>your</p>
+<p>um preferred distribution for different</p>
+<p>trajectories through time</p>
+<p>so you hear every different color every</p>
+<p>different trajectory is a different</p>
+<p>rollout in the environment or imaginary</p>
+<p>rollout for the environment</p>
+<p>you can see that you can actually use</p>
+<p>this this prefer distribution to rank</p>
+<p>trajectories according to uh</p>
+<p>lowest free energy so you see that the</p>
+<p>blue</p>
+<p>curve is is the only one that reaches</p>
+<p>the top</p>
+<p>and is also the one that the model seems</p>
+<p>to prefer</p>
+<p>and then in the next slide yes</p>
+<p>um we experiment a bit what this means</p>
+<p>in terms of the actual free energy so</p>
+<p>also compensated with the entropy</p>
+<p>um and what we did here was we if</p>
+<p>we had the agent observe the world for</p>
+<p>one time step so we give it an initial</p>
+<p>observation to get a</p>
+<p>sort of bootstrap latent sample</p>
+<p>and then we will only use the prior</p>
+<p>model to imagine</p>
+<p>what will happen if you follow certain</p>
+<p>policies</p>
+<p>so here we considered three policies or</p>
+<p>like</p>
+<p>uh two possible policies that you can</p>
+<p>switch at three time steps</p>
+<p>so you either go left right right left</p>
+<p>right left at</p>
+<p>etc or you can start with right and then</p>
+<p>these are the blue curves</p>
+<p>and what we see that if there is no</p>
+<p>initial velocity</p>
+<p>then um you see that the</p>
+<p>agent imagines that the optimal policy</p>
+<p>which is left right right</p>
+<p>so first go as far up left and then just</p>
+<p>blast your way to the top um</p>
+<p>gives actually the left the least amount</p>
+<p>of spread and also he believes that this</p>
+<p>will</p>
+<p>reach the top earlier than any other</p>
+<p>policy</p>
+<p>inversely if you look at the policies</p>
+<p>that</p>
+<p>first go right um then you see that</p>
+<p>there is still a little and no doesn't</p>
+<p>close to no spreads</p>
+<p>due to the lack of initial velocity but</p>
+<p>the agent already knows that</p>
+<p>it's impossible to reach the top</p>
+<p>now if you go to the next slides</p>
+<p>uh the slide so here we do the exa the</p>
+<p>same experiment</p>
+<p>but we add some random initial velocity</p>
+<p>and again we let the agent observe the</p>
+<p>world for one time step</p>
+<p>and then let plan according to the same</p>
+<p>policies as before</p>
+<p>and first of all you see that the agents</p>
+<p>has a lot of</p>
+<p>much larger spread on its believed</p>
+<p>outcomes this is due to this</p>
+<p>external extra uncertainty on</p>
+<p>what the initial velocity is and also</p>
+<p>this initial velocity might render</p>
+<p>previously</p>
+<p>infeasible policies feasible as you can</p>
+<p>see at the bottom because</p>
+<p>now if the agent thinks yes my initial</p>
+<p>velocity is high enough</p>
+<p>even with the one of the more</p>
+<p>sub-optimal policies</p>
+<p>it might still be possible for me to</p>
+<p>reach the top</p>
+<p>um and if you go to the next slide</p>
+<p>please</p>
+<p>here we can then see this in action so</p>
+<p>this animation</p>
+<p>we collapse the imagine trajectories to</p>
+<p>the actual</p>
+<p>trajectory and you see that</p>
+<p>in the beginning if we can maybe play it</p>
+<p>again in the beginning</p>
+<p>it believes that more red policies will</p>
+<p>reach the top and then</p>
+<p>as it gains more momentum oh</p>
+<p>it will believe that all blue policies</p>
+<p>will reach the top and even it will know</p>
+<p>that if i now</p>
+<p>go left so i decelerate then i will less</p>
+<p>likely</p>
+<p>reach the top so i think yeah</p>
+<p>so as you can see now he knows that red</p>
+<p>will not reach the top</p>
+<p>and yes</p>
+<p>um then another experiment we did</p>
+<p>building upon this was</p>
+<p>what if we take this same approach but</p>
+<p>now</p>
+<p>we move to the task the kind of problems</p>
+<p>we want to solve this so the high</p>
+<p>dimensional</p>
+<p>uh observations that you cannot model by</p>
+<p>hands</p>
+<p>so we took another opening agm</p>
+<p>environments the</p>
+<p>the car racer and here the goal is to</p>
+<p>drive the red card as you can see on the</p>
+<p>high resolution image on the right</p>
+<p>left um on the road</p>
+<p>for as long as you can and then we</p>
+<p>trained our model on a handful of human</p>
+<p>demonstrations of this and then you can</p>
+<p>see that</p>
+<p>in the reconstructed image on the right</p>
+<p>it already it's even on a handful of</p>
+<p>observations that can learn to predict</p>
+<p>this</p>
+<p>so we did exactly the same thing as</p>
+<p>before and i think this is an animation</p>
+<p>now</p>
+<p>yeah so if you then use the exact</p>
+<p>the the the planning tree that tim</p>
+<p>explained on</p>
+<p>this little card it will have learned to</p>
+<p>that</p>
+<p>the the road so the gray area is</p>
+<p>important and it should stay on this</p>
+<p>now the this agent is a bit more greedy</p>
+<p>since it tries to</p>
+<p>shortcut corners to get quicker on the</p>
+<p>gray part as you can see here</p>
+<p>okay if we can go to the next slide</p>
+<p>maybe</p>
+<p>so now and also an important point here</p>
+<p>is that</p>
+<p>our active entrance approach which is</p>
+<p>model based</p>
+<p>um seems to be a lot uh more data</p>
+<p>efficient</p>
+<p>it seems to be a lot more data efficient</p>
+<p>than for example</p>
+<p>uh a baseline rl agent so we took dqm</p>
+<p>since this is also an off policy</p>
+<p>algorithm</p>
+<p>to be able to compare it kind of</p>
+<p>similar to our approach and as you can</p>
+<p>see in the</p>
+<p>first graph so for the mounting car um</p>
+<p>our model quickly um</p>
+<p>so sorry our our models are in is the</p>
+<p>orange</p>
+<p>our mo quickly learns that at least some</p>
+<p>method to reach the top and then</p>
+<p>afterwards it just improves upon the</p>
+<p>smiles</p>
+<p>due to the sparseness of the rewards dqn</p>
+<p>is not able to</p>
+<p>learn as quickly and even after having</p>
+<p>1000 times more thousand times more</p>
+<p>observations itself</p>
+<p>isn't capable of climbing the mountain</p>
+<p>and even for the car racer it's even</p>
+<p>worse</p>
+<p>so here we trained on seven or ten</p>
+<p>uh rollouts and immediately we're able</p>
+<p>to get a reward of six hundreds</p>
+<p>whilst dqn just fails to get that</p>
+<p>same level of performance even after</p>
+<p>thousands of</p>
+<p>rollouts in the environment so if we can</p>
+<p>go to the next slide</p>
+<p>yeah and then a final experiment i want</p>
+<p>to discuss today is a</p>
+<p>the robotic navigation or like</p>
+<p>maybe more accurately robotic control so</p>
+<p>here we took</p>
+<p>our kuka platform and we mounted some</p>
+<p>sensors on top of it</p>
+<p>and then also put on a laptop for good</p>
+<p>measure to have some compute</p>
+<p>um i don't think the sensors are really</p>
+<p>relevant for what we're going to discuss</p>
+<p>now so</p>
+<p>then we drove around to the robot in our</p>
+<p>lap as you can see on this movie just</p>
+<p>like with the joystick and</p>
+<p>captured a lot of data and we just drove</p>
+<p>up and down the aisles</p>
+<p>with robots now this environment is also</p>
+<p>a bit challenging for robots since all</p>
+<p>these aisles</p>
+<p>are super similar like for a robot</p>
+<p>knowing if it's an aisle one or two is</p>
+<p>nearly the same thing it's very</p>
+<p>difficult to comprehend for the</p>
+<p>machine so then in this slide you see</p>
+<p>what a recording might look like so you</p>
+<p>have a rider a</p>
+<p>lighter and radar feet and some images</p>
+<p>yeah sorry tim this is now the correct</p>
+<p>slide</p>
+<p>and and then the goal is to</p>
+<p>um again train a model that will be able</p>
+<p>to generate</p>
+<p>future observations for the robots i</p>
+<p>don't know if there's an animation on</p>
+<p>the slides</p>
+<p>so yeah so you saw the first the high</p>
+<p>resolution image was the real</p>
+<p>observation</p>
+<p>and this is then what the model thinks</p>
+<p>will happen</p>
+<p>if the robot first turns right and then</p>
+<p>continues to drive</p>
+<p>the little ghost artifact you saw a bit</p>
+<p>a couple of frames ago so yeah we'll</p>
+<p>first</p>
+<p>look at it again so we drive and then it</p>
+<p>will turn and suddenly you will see a</p>
+<p>ghost</p>
+<p>them appear um</p>
+<p>this is because the model doesn't</p>
+<p>actually know what will happen it can</p>
+<p>only</p>
+<p>try to guess based on its previously</p>
+<p>learned experiences in the model and</p>
+<p>there's a lot of people walking around</p>
+<p>in the data set</p>
+<p>so there was a some chance that somebody</p>
+<p>would be walking there</p>
+<p>so it just might imagine that there's</p>
+<p>somebody there</p>
+<p>then maybe if we go to the next slides</p>
+<p>um this is also an animation</p>
+<p>so here you can see for example how</p>
+<p>these imaginary samples deviate</p>
+<p>and this is also the reason why we need</p>
+<p>this sampling and so the the different</p>
+<p>sampling and the planning tree</p>
+<p>four different outcomes so you see that</p>
+<p>given the same starting position and</p>
+<p>observation</p>
+<p>the model learns that turning left might</p>
+<p>have different outcomes depending where</p>
+<p>it is in there</p>
+<p>in which either this and we wear it in</p>
+<p>the air for example the top right</p>
+<p>then it the robot imagines that it is at</p>
+<p>the end of the aisle</p>
+<p>whilst in the bottom two it imagines</p>
+<p>that it is in the aisle so it just</p>
+<p>imagines some</p>
+<p>stuff on the racks</p>
+<p>then here is and how we can evaluate the</p>
+<p>policies</p>
+<p>so we typically we provided three</p>
+<p>possible policies turn left fourth and</p>
+<p>turn right</p>
+<p>and then you can imagine what all these</p>
+<p>things will do in the environments</p>
+<p>and then similarly as before you can</p>
+<p>calculate the g and select the one that</p>
+<p>will most likely</p>
+<p>bring you to your preferred sequences</p>
+<p>um</p>
+<p>yeah right so also the nice thing of our</p>
+<p>model</p>
+<p>is that you can</p>
+<p>you can uh because of its because it's a</p>
+<p>neural network you can put</p>
+<p>multiple types of observation into your</p>
+<p>posterior model you can fuse them</p>
+<p>in various ways so what you can see here</p>
+<p>is that</p>
+<p>similar to the camera feeds the robot</p>
+<p>will also learn the effect for example</p>
+<p>in a lighter scan and also it will learn</p>
+<p>the effects on the velocity bins in a</p>
+<p>radar</p>
+<p>scan and this gives you of course</p>
+<p>extra robustness in your planning</p>
+<p>because you can</p>
+<p>now reason on multiple modalities</p>
+<p>then maybe in the next slides um</p>
+<p>there are of course still some</p>
+<p>limitations to</p>
+<p>using robotic to doing robotic control</p>
+<p>this way</p>
+<p>first of all our robot is extremely</p>
+<p>short-sighted in time</p>
+<p>it can only learn to predict as far</p>
+<p>as the length of the sequences we</p>
+<p>provided during training</p>
+<p>and also the longer you roll out the</p>
+<p>larger your</p>
+<p>search tree becomes the more</p>
+<p>computational</p>
+<p>limits you will reach so</p>
+<p>this is also then an area we are now</p>
+<p>actively working on</p>
+<p>um then currently our models still</p>
+<p>require that we pre-record the data set</p>
+<p>so</p>
+<p>our models require that we drive around</p>
+<p>ourselves and then</p>
+<p>fit the model so there's also a point</p>
+<p>we're</p>
+<p>currently at this moment working on and</p>
+<p>then</p>
+<p>tying into this our models currently do</p>
+<p>not really know how to explore</p>
+<p>whilst there's probably a sensible way</p>
+<p>to do exploration based</p>
+<p>on the free energy principle since your</p>
+<p>mobile uncertainty can be baked in</p>
+<p>i think i don't know if you have any</p>
+<p>more slides actually now</p>
+<p>no desserts or maybe it's insane for</p>
+<p>questions</p>
+<p>awesome you can um unshare</p>
+<p>and we can ask some questions so i</p>
+<p>wrote down a bunch of stuff and also</p>
+<p>anybody who's</p>
+<p>watching live please ask some questions</p>
+<p>so nice presentation though and</p>
+<p>awesome very instructive videos</p>
+<p>hopefully made us think made us laugh a</p>
+<p>little bit when it cut</p>
+<p>corners so maybe just a starting</p>
+<p>question while people are</p>
+<p>writing their question um what</p>
+<p>brought you to be studying this topic</p>
+<p>in this way were you coming from active</p>
+<p>inference and saw</p>
+<p>robotics as an interesting application</p>
+<p>or</p>
+<p>were you in the area of robotics and</p>
+<p>then found active inference to be</p>
+<p>a useful model</p>
+<p>yeah so basically we were in the area of</p>
+<p>um of robotics and reports of learning</p>
+<p>and we were working on building</p>
+<p>better low dimensional state</p>
+<p>representations</p>
+<p>to feed into a reinforcement learning</p>
+<p>algorithm let's say that was our initial</p>
+<p>idea</p>
+<p>so just building representations</p>
+<p>or for better reinforcement learning and</p>
+<p>now we stumbled upon the</p>
+<p>active inference framework which which</p>
+<p>basically not only gave us a way</p>
+<p>of</p>
+<p>of how to uh to build degenerative</p>
+<p>models because</p>
+<p>basically we we found ourselves the</p>
+<p>let's say the free energy of the that we</p>
+<p>were basically already doing that</p>
+<p>but we saw that it also gives us in the</p>
+<p>same mathematical framework a way of</p>
+<p>how to project these things to the</p>
+<p>future and use these for planning</p>
+<p>therefore resolving ambiguity and also</p>
+<p>for</p>
+<p>um scoring novelty and all these nice</p>
+<p>properties that are basically lacking</p>
+<p>in in rl so that's why we we basically</p>
+<p>started</p>
+<p>digging into this mathematical framework</p>
+<p>to</p>
+<p>go through all the the papers of call</p>
+<p>and see how</p>
+<p>all the ends are tied together and and</p>
+<p>see whether this</p>
+<p>would still work if you if you don't</p>
+<p>have</p>
+<p>your your state space defined the prompt</p>
+<p>but you just learn it from</p>
+<p>from data so that's how you start this</p>
+<p>endeavor and that's</p>
+<p>pretty much where we are at this point</p>
+<p>and still investigating it further</p>
+<p>awesome that was gonna be my second</p>
+<p>question was like</p>
+<p>what differences or advantages would you</p>
+<p>describe for active inference</p>
+<p>over reinforcement learning or other</p>
+<p>machine learning frameworks</p>
+<p>if you answered it in previously that's</p>
+<p>great or do you want to add any other</p>
+<p>thoughts yeah i think</p>
+<p>i think the nice part is that</p>
+<p>[Music]</p>
+<p>you you automatically get the</p>
+<p>the nice properties of of resolving</p>
+<p>ambiguity and of</p>
+<p>um potentially exploration if you also</p>
+<p>um estimate posterior distributions over</p>
+<p>your your parameters for example</p>
+<p>so these are very interesting properties</p>
+<p>uh mathematically however it's still</p>
+<p>um it's there's still a gap to to</p>
+<p>actually</p>
+<p>um get this out of um</p>
+<p>these real-world cases if you if you if</p>
+<p>you don't have the degenerative model</p>
+<p>uh predefined let's say so there are</p>
+<p>still some challenges</p>
+<p>but the theory at least this is is very</p>
+<p>much appealing</p>
+<p>um and i but i think if you look at</p>
+<p>what's going on at the url side that we</p>
+<p>refer to inside</p>
+<p>then there's not that big of a gap</p>
+<p>between</p>
+<p>the two wheels i think because you get</p>
+<p>all the curiosity bonuses that they try</p>
+<p>to come up with</p>
+<p>in in reinforcement learning and if you</p>
+<p>look at the model based</p>
+<p>stuff from like the niger hoffner with</p>
+<p>this dreamer approach then everything is</p>
+<p>kind of</p>
+<p>similarly converging to it's a good idea</p>
+<p>to build a model of your world</p>
+<p>and get more sample efficiency and it</p>
+<p>seems like a good idea to have some</p>
+<p>planning in there</p>
+<p>and maybe there is some and there's some</p>
+<p>gaining</p>
+<p>curiosity and so you you see that a lot</p>
+<p>in a lot of different independent</p>
+<p>research tracks</p>
+<p>we all converge along the same lines and</p>
+<p>i think what's what is so appealing to</p>
+<p>active inference is that basically</p>
+<p>it brings this all together from from a</p>
+<p>single principle</p>
+<p>which makes it a a very nice framework</p>
+<p>to</p>
+<p>work with i think anything to add on</p>
+<p>that ozone</p>
+<p>oh yeah i was before tim mentioned that</p>
+<p>i was already thinking along the lines</p>
+<p>of</p>
+<p>the work of the ninja however so i mean</p>
+<p>if you look at his models and i think</p>
+<p>that is currently</p>
+<p>almost state of the art and mobile based</p>
+<p>rl then</p>
+<p>you'll find that the models they are</p>
+<p>building are very similar to the models</p>
+<p>we are building or other active</p>
+<p>infrastructures are building</p>
+<p>so yeah i mean it makes sense that all</p>
+<p>these</p>
+<p>approaches converge on a single id of</p>
+<p>the idea works</p>
+<p>yep very interesting that like plan to</p>
+<p>dream and dream or imagine so that you</p>
+<p>can sample</p>
+<p>appropriately why put that as a second</p>
+<p>layer on the model or have to</p>
+<p>incentivize it</p>
+<p>in a sort of ad hoc way why not have</p>
+<p>that be the basis of the model so that's</p>
+<p>a very nice</p>
+<p>point so dean in the chat</p>
+<p>asks have the authors heard of the</p>
+<p>missionary and cannibals</p>
+<p>game slash problem which is moving um</p>
+<p>two kinds of mutually incompatible</p>
+<p>agents back and forth from</p>
+<p>two sides of a river and um if they have</p>
+<p>heard of this or</p>
+<p>thought of any kind of analogous cases</p>
+<p>do you see any applications</p>
+<p>yeah and i haven't heard of the game</p>
+<p>before i think</p>
+<p>it's probably similar to the like</p>
+<p>crossing the river with a chicken the</p>
+<p>fox and a</p>
+<p>goat or what yes what was it yeah</p>
+<p>there's like animal versions there's all</p>
+<p>kinds of versions of this one but</p>
+<p>going back and forth with different</p>
+<p>kinds of incompatible agents and you</p>
+<p>need to sort of</p>
+<p>go to the left before you can make it up</p>
+<p>the hill but it's a little bit of a</p>
+<p>different setting so what does that make</p>
+<p>you think of</p>
+<p>i haven't actually really considered it</p>
+<p>for our models but it might be</p>
+<p>if we find a way to mod in an</p>
+<p>environment and maybe</p>
+<p>collect some data on it yeah i think</p>
+<p>this is a problem that is very nicely</p>
+<p>suited for</p>
+<p>for doing it let's say the the vanilla</p>
+<p>way where you basically</p>
+<p>write out all the different states that</p>
+<p>can happen</p>
+<p>and kind of observe the outcomes that</p>
+<p>you can have</p>
+<p>so i i think you could actually</p>
+<p>formalize it in such a way and then</p>
+<p>run an active instrument simulation on</p>
+<p>on that</p>
+<p>and see and see what happens so</p>
+<p>that's less of our interest because</p>
+<p>in our cases we are mainly interested in</p>
+<p>what if your</p>
+<p>observations are so high dimensional</p>
+<p>that you cannot even</p>
+<p>start thinking about writing out</p>
+<p>the the joint model let's say and the</p>
+<p>only thing you can do</p>
+<p>is interact with your environment and</p>
+<p>try to</p>
+<p>try to learn it from from the data</p>
+<p>which is a slightly different take on</p>
+<p>on the on the active inference problem</p>
+<p>great another question is</p>
+<p>you are all deploying these models sort</p>
+<p>of</p>
+<p>real time with physical agents embodied</p>
+<p>agents so what surprised you or what was</p>
+<p>interesting to note</p>
+<p>as far as going from the simulation only</p>
+<p>where you can sort of put everything in</p>
+<p>a box and know exactly what's going to</p>
+<p>influence what</p>
+<p>to the world of embodiment where i don't</p>
+<p>know some dust could get into the robot</p>
+<p>or</p>
+<p>i saw a person walk by so what</p>
+<p>comes into play when you actually deploy</p>
+<p>physically and how does the model deal</p>
+<p>with that</p>
+<p>for me it's actually the thing i like</p>
+<p>well first we</p>
+<p>i played around a lot with the mountain</p>
+<p>car and the car racer</p>
+<p>but the first thing actually was a real</p>
+<p>hurdle for me personally was</p>
+<p>deploying it on a real robot you</p>
+<p>suddenly have all these</p>
+<p>uh hardware constraints like you can you</p>
+<p>don't have infinite memory you don't</p>
+<p>have server great compute anymore</p>
+<p>and you all have to you have to yeah</p>
+<p>fit it for example i think tim and i</p>
+<p>spent a lot of time to make a demo</p>
+<p>working</p>
+<p>where we could roll this out real time</p>
+<p>and</p>
+<p>just the hardware constraints of doing</p>
+<p>something as complex as active inference</p>
+<p>real time</p>
+<p>on a real power constraint robot is</p>
+<p>another challenge</p>
+<p>in and of itself yeah so i think</p>
+<p>uh if if the question was what uh</p>
+<p>what do you get from uh from doing it on</p>
+<p>the real system well a lot of</p>
+<p>frustration and pain i think is the</p>
+<p>answer</p>
+<p>but likewise if we then if it doesn't</p>
+<p>works then the</p>
+<p>gratitude is the satisfaction is so much</p>
+<p>higher</p>
+<p>so i i still remember ozone and me</p>
+<p>cheering in the lab because we gave the</p>
+<p>robot a preferred state of being like</p>
+<p>nicely in the center of the ale</p>
+<p>and it was actually moving along the ale</p>
+<p>and then at the very end</p>
+<p>they decided hmm this is not the center</p>
+<p>of the animal and it just made a 360</p>
+<p>degree turn</p>
+<p>and started driving back and we were</p>
+<p>like oh this is awesome</p>
+<p>so i think the there's a lot of pain</p>
+<p>frustration to get it work but then once</p>
+<p>something comes out then then the</p>
+<p>satisfaction is so much higher than</p>
+<p>than when you see a mountain car which</p>
+<p>reaches also</p>
+<p>interesting you could set up a physical</p>
+<p>valley</p>
+<p>maybe make a physical mountain car</p>
+<p>because there's so much comparison</p>
+<p>of the software realization but</p>
+<p>maybe that would be even taking it to</p>
+<p>the next level</p>
+<p>so another um thing that you talked</p>
+<p>about repeatedly</p>
+<p>maybe even in every example was actually</p>
+<p>training the model</p>
+<p>from just a handful of human cases like</p>
+<p>you drove the car</p>
+<p>you had people play the mountain car</p>
+<p>game so</p>
+<p>what exactly is happening there and how</p>
+<p>does the model</p>
+<p>like not over fit to the few</p>
+<p>trajectories you show</p>
+<p>or not just say hey you only gave me</p>
+<p>three what's the deal</p>
+<p>with these three totally different</p>
+<p>trajectories like what exactly is being</p>
+<p>learned or updated in the model when you</p>
+<p>provide just a handful of human examples</p>
+<p>i thought then we're going to answer</p>
+<p>this one</p>
+<p>yeah i think overfitting is is uh</p>
+<p>is clearly an issue um</p>
+<p>you you're no matter what you do you're</p>
+<p>constrained kind of to the the data you</p>
+<p>provide to the model so it cannot really</p>
+<p>learn anything</p>
+<p>else than than what it discovers so</p>
+<p>that that's also what we pointed out at</p>
+<p>the last slide that's a severe</p>
+<p>limitation of our current</p>
+<p>current work clearly but there is</p>
+<p>um there is no other way when there is a</p>
+<p>real robot involved</p>
+<p>to get started say so that's the easier</p>
+<p>way to get started so that's mainly the</p>
+<p>driver but at the moment we're actually</p>
+<p>working both in simulation but also on</p>
+<p>real robots to see</p>
+<p>can we actually get these systems to to</p>
+<p>decide how to</p>
+<p>um gather their own experience uh what</p>
+<p>is</p>
+<p>interesting to learn from because that's</p>
+<p>actually one of the</p>
+<p>to um shortcut to one of your previous</p>
+<p>questions</p>
+<p>what does active entrance give you well</p>
+<p>that it actually can</p>
+<p>can deal with these these kind of things</p>
+<p>like my my robot needs to collect its</p>
+<p>own experience what will you do that</p>
+<p>would be always the same or</p>
+<p>the explorer or this kind of thing so</p>
+<p>these are really</p>
+<p>some active areas of research but then</p>
+<p>so to come back to</p>
+<p>the overfitting problem so one thing</p>
+<p>that</p>
+<p>mitigates overfitting a bit is that the</p>
+<p>the fact that you have all these</p>
+<p>stochastics</p>
+<p>even in the system it becomes sample</p>
+<p>states</p>
+<p>which makes it a bit more um but it</p>
+<p>it's not like a classifier that that</p>
+<p>always fits to</p>
+<p>the test of let's say there's always</p>
+<p>some kind of</p>
+<p>noise in there but you're right um</p>
+<p>it is in some sense overfitting the data</p>
+<p>in the sense that it cannot predict</p>
+<p>uh scenarios that it clearly hasn't seen</p>
+<p>before</p>
+<p>but so one of the one of the nice things</p>
+<p>of having this uh</p>
+<p>this expected energy formulation is that</p>
+<p>you actually finish</p>
+<p>um uh you're planning to</p>
+<p>um with this entropy term which</p>
+<p>basically means that</p>
+<p>if you plan ahead in some space that</p>
+<p>the the model wasn't trained on then</p>
+<p>typically</p>
+<p>you will have some more variation some</p>
+<p>higher entropy</p>
+<p>or that area because typically your your</p>
+<p>observation becomes</p>
+<p>very bad or um very blurry or</p>
+<p>out of distribution and so so in some</p>
+<p>sense the</p>
+<p>the model is kind of robust against that</p>
+<p>and it will also</p>
+<p>if you then deploy a policy or like a</p>
+<p>do the planning it will kind of try to</p>
+<p>stay close to</p>
+<p>where the model to the regime where the</p>
+<p>model was restrained okay because there</p>
+<p>you</p>
+<p>basically get the the better predictions</p>
+<p>so</p>
+<p>uh in some sense that also mitigates the</p>
+<p>the</p>
+<p>problem also i want to add that</p>
+<p>the by we we could use as</p>
+<p>uh little of the uh rollouts as we did</p>
+<p>because actually</p>
+<p>if you had let a human do the rollout</p>
+<p>you</p>
+<p>solve the exploration problem for the</p>
+<p>agent you already</p>
+<p>get a very good coverage of the</p>
+<p>relevant feasible state space you get</p>
+<p>like for the car racer</p>
+<p>if you let a random agent drive around</p>
+<p>as exploration</p>
+<p>99 of your day still just be grass and</p>
+<p>the robot will</p>
+<p>age will learn nothing about roads so by</p>
+<p>having a human</p>
+<p>human derive it you know okay this is</p>
+<p>the road and</p>
+<p>apparently this is important because</p>
+<p>it's in every observation i've had</p>
+<p>that almost makes me think of two ways</p>
+<p>that we're seeing</p>
+<p>these large models be trained with a</p>
+<p>sort of mentor</p>
+<p>like a human who says you know here's</p>
+<p>the first places you want to be sampling</p>
+<p>here's how you drive the first time</p>
+<p>that's the driving instructor side by</p>
+<p>side</p>
+<p>and then there's the degenerative</p>
+<p>adversarial approach</p>
+<p>which is just the almost opposite like</p>
+<p>we're going to be passing the model</p>
+<p>the most confusing possible data</p>
+<p>and so it's sort of like with this</p>
+<p>carrot and the stick or the push in the</p>
+<p>pole</p>
+<p>these models from both of them maybe one</p>
+<p>or maybe</p>
+<p>both that they figure out how to be on</p>
+<p>that razor's edge</p>
+<p>and then in the race car example um</p>
+<p>it was cutting corners so that just made</p>
+<p>me wonder about</p>
+<p>autonomous vehicles and you say okay</p>
+<p>well the goal is to stay on the road</p>
+<p>and to get there fast but then sometimes</p>
+<p>get there fast</p>
+<p>is gonna take priority and then all of a</p>
+<p>sudden you're way off the road and maybe</p>
+<p>now your car is ruined or something like</p>
+<p>that so</p>
+<p>if these were to be deployed like how</p>
+<p>will we even know</p>
+<p>what kind of preferences to</p>
+<p>instantiate the model with</p>
+<p>yeah that's a that's a very good point</p>
+<p>in fact because</p>
+<p>um how nice active entrance might look</p>
+<p>in in theory i think there it doesn't</p>
+<p>it's not a silver bullet to autonomous</p>
+<p>agents because</p>
+<p>a lot of the a lot of the civility is</p>
+<p>still in how do you</p>
+<p>how do you provide it with like the</p>
+<p>preferred</p>
+<p>prior distribution and that will be</p>
+<p>crucial in a real world system</p>
+<p>it's it's similar to</p>
+<p>a reward basically it's a bit more</p>
+<p>informative than just the scalar rewards</p>
+<p>you know let's say</p>
+<p>but it suffers from the same issues as</p>
+<p>in um</p>
+<p>if if it's gets a way to</p>
+<p>do shortcuts um you get this preferred</p>
+<p>state that you didn't envision before as</p>
+<p>a</p>
+<p>as a designer of the of the experiment</p>
+<p>let's say</p>
+<p>it basically has the same issues as as</p>
+<p>reinforcements learning</p>
+<p>so i don't see it as as a silver bullet</p>
+<p>of</p>
+<p>solving autonomy um but at least it has</p>
+<p>some</p>
+<p>um it has some um</p>
+<p>burning knobs that you can you can you</p>
+<p>can use to</p>
+<p>at least avoid some cases like avoid</p>
+<p>these ambiguity</p>
+<p>ambiguous states or at least make it</p>
+<p>first learn the model properly</p>
+<p>so it has some nice properties but it's</p>
+<p>not</p>
+<p>a silver bullet to solving autonomous</p>
+<p>systems i think</p>
+<p>anything to add on that ozone i think</p>
+<p>tim said it very well</p>
+<p>yes the model is not a silver bullet</p>
+<p>definitely</p>
+<p>recognized what areas might be</p>
+<p>interesting</p>
+<p>shooting ranges first applications where</p>
+<p>we can at least</p>
+<p>explore it um are those the same use</p>
+<p>cases that people</p>
+<p>have been talking about just more</p>
+<p>broadly</p>
+<p>in terms of autonomous vehicles or might</p>
+<p>there be</p>
+<p>a sort of division of labor where active</p>
+<p>inference is going to specialize like in</p>
+<p>those</p>
+<p>ambiguous scenarios or i just was</p>
+<p>curious about that</p>
+<p>okay so yeah i was i was also still</p>
+<p>thinking but</p>
+<p>like for us there i think the real next</p>
+<p>application we're targeting</p>
+<p>is just still the constrained navigation</p>
+<p>and then for example a warehouse where</p>
+<p>the impact of uh misplanning</p>
+<p>is still fairly limited so actually more</p>
+<p>realistic versions</p>
+<p>of the situation we have in our lab</p>
+<p>maybe it's also</p>
+<p>the trajectory we're currently still on</p>
+<p>so i think we still believe that there</p>
+<p>is some value in</p>
+<p>developing autonomous active entrance</p>
+<p>agents</p>
+<p>for this more industry-like settings</p>
+<p>where you</p>
+<p>can at least separate it the general</p>
+<p>public</p>
+<p>and more you right you have also some</p>
+<p>level of control of the environment</p>
+<p>yeah i think i i think you it's similar</p>
+<p>to</p>
+<p>to mitigating the same problem in your</p>
+<p>learning is basically that you before</p>
+<p>before you just let the system</p>
+<p>randomly pick actions or pick any action</p>
+<p>at once you kind of</p>
+<p>or an environment where at least as a</p>
+<p>human you can</p>
+<p>you can shortcut the system and say okay</p>
+<p>you want to drive forward into this rack</p>
+<p>that's not a good idea so</p>
+<p>you have at least some some ways of</p>
+<p>defining some rules to keep it within</p>
+<p>some safety range let's say</p>
+<p>and within this boundary it can it can</p>
+<p>for example</p>
+<p>move autonomously but still then you you</p>
+<p>might have the</p>
+<p>nicer properties of the active inference</p>
+<p>agent</p>
+<p>that it if uh if you're driving around</p>
+<p>in in some ales and somebody just</p>
+<p>dropped dropped off the box in the</p>
+<p>middle of the air</p>
+<p>it will not freak out because the the</p>
+<p>the slam map</p>
+<p>is is uh it's no longer uh</p>
+<p>consistent with with with how the robot</p>
+<p>was programmed for example but we'll</p>
+<p>just</p>
+<p>say okay this is another case either it</p>
+<p>experienced this before and it has in</p>
+<p>his</p>
+<p>in his world model an idea how to cope</p>
+<p>with this</p>
+<p>part will just be intrigued and start</p>
+<p>learning on about this news information</p>
+<p>so i think these are the nice properties</p>
+<p>you have</p>
+<p>in this agent and you kind of bypass the</p>
+<p>all um um it's it's getting too greedy</p>
+<p>to realize its preferences because you</p>
+<p>kind of</p>
+<p>shortcut these um these situations by by</p>
+<p>having this</p>
+<p>this based system in place that kind of</p>
+<p>limits the the the</p>
+<p>choice of actions in this game thanks</p>
+<p>for the answer here's a</p>
+<p>question from the chat as the code is</p>
+<p>not disclosed</p>
+<p>would you say sticking to what you write</p>
+<p>in your paper</p>
+<p>is sufficient to reproduce your results</p>
+<p>or are there any further tricks you use</p>
+<p>in designing and training the models</p>
+<p>are you taking the art i'm sorry go</p>
+<p>ahead tim first</p>
+<p>yeah i think that together with the</p>
+<p>appendices it should be</p>
+<p>sufficient what do you think goes on</p>
+<p>well i think</p>
+<p>well we had some experience with that</p>
+<p>where i tried to help somebody out who</p>
+<p>was</p>
+<p>trying to replicate our results um</p>
+<p>i think them we had some tricks for the</p>
+<p>planning</p>
+<p>like that isn't as straightforward to</p>
+<p>replicate but</p>
+<p>the model prediction part</p>
+<p>we explained the architectures and i uh</p>
+<p>pretty detailed in the appendages so i</p>
+<p>think</p>
+<p>and we don't do any extra tricks for</p>
+<p>example on on</p>
+<p>data processing or our loss terms so</p>
+<p>this should be easy to mimic but i think</p>
+<p>the planning</p>
+<p>is a bit more involved as we sometimes</p>
+<p>ourselves have difficulties replicating</p>
+<p>it</p>
+<p>planning is hard yeah</p>
+<p>um okay if anyone else has questions in</p>
+<p>the live chat they can type that</p>
+<p>um another piece that i thought was</p>
+<p>really fascinating</p>
+<p>in the mountain car example at least was</p>
+<p>how you talked about</p>
+<p>the noise allowing for the previously</p>
+<p>implausible policies to become</p>
+<p>possible like we saw a broader spread of</p>
+<p>the</p>
+<p>of the trajectories when there was noise</p>
+<p>um how how is that being like</p>
+<p>integrated in real time or how are the</p>
+<p>noise</p>
+<p>which are often very small how does that</p>
+<p>change the model's understanding of</p>
+<p>where it can go and what it should do</p>
+<p>yeah so in the multi-car example there</p>
+<p>are basically two sources of noise let's</p>
+<p>say one is on</p>
+<p>on the the noise on your observation</p>
+<p>that you get so you get the</p>
+<p>annoying estimate of your position and</p>
+<p>so</p>
+<p>this is typically not not so large</p>
+<p>because yeah you need to have a</p>
+<p>sufficient signal to noise ratio just to</p>
+<p>learn anything let's say um</p>
+<p>but the second part was</p>
+<p>whether your agent starts with zero</p>
+<p>velocity or with</p>
+<p>a random velocity and these are</p>
+<p>basically</p>
+<p>two separately trained um models</p>
+<p>so either you you have an agent always</p>
+<p>starts with</p>
+<p>a zero initial velocity and then</p>
+<p>basically the model learns that</p>
+<p>um the initial observation uh has</p>
+<p>zero velocity and it's it basically</p>
+<p>knows how to properly predict</p>
+<p>from from the first observation on let's</p>
+<p>say</p>
+<p>if you train the model where the agent</p>
+<p>constantly has</p>
+<p>a random velocity then it basically</p>
+<p>learns yeah from the first observation</p>
+<p>still a lot of options can happen</p>
+<p>depending on my velocity and</p>
+<p>the more observations get in you see how</p>
+<p>the model kind of</p>
+<p>picks up okay this is now my velocity</p>
+<p>and from then on</p>
+<p>you see how the the wide range of</p>
+<p>options collapses to</p>
+<p>the most the most likely ones</p>
+<p>anything on that or son well i was just</p>
+<p>also thinking for example in the robotic</p>
+<p>planning example we gave um</p>
+<p>there you also see this spread but then</p>
+<p>it's</p>
+<p>more as in that the model learned that</p>
+<p>at</p>
+<p>different at similar state values</p>
+<p>different outcomes are possible so it</p>
+<p>will try to maybe</p>
+<p>make the gaussian and the latent speeds</p>
+<p>a bit wider so that if you sample from</p>
+<p>it</p>
+<p>you might get the slightly different</p>
+<p>sample value</p>
+<p>and that will then generate the</p>
+<p>different outcome you want</p>
+<p>you want to visualize so that's also so</p>
+<p>even though the</p>
+<p>standard normal you're sampling from</p>
+<p>initially for your reparameterization</p>
+<p>trick is</p>
+<p>very as just standard normal the the</p>
+<p>model can learn to inflate or deflate</p>
+<p>this distribution so that you get a</p>
+<p>wider coverage</p>
+<p>for example you also saw in the in the</p>
+<p>navigation example is that</p>
+<p>basically the the model since we train</p>
+<p>it on</p>
+<p>on pretty short temporal subsequences of</p>
+<p>like</p>
+<p>i think one or two seconds in real time</p>
+<p>um so it's not able to cause</p>
+<p>to have a very consistent prediction for</p>
+<p>for longer</p>
+<p>times uh frames than that and also given</p>
+<p>the fact that every ale</p>
+<p>in the lab looks very similar it learns</p>
+<p>the general structure like</p>
+<p>there are wrecks left and right and</p>
+<p>there might be boxes or</p>
+<p>uh you saw that kind of the boxes or the</p>
+<p>the stuff in the in this actually in the</p>
+<p>racks is kind of very blurry and</p>
+<p>it's kind of brownish uh blackish but</p>
+<p>there's no real you don't really it</p>
+<p>can identify what is in that wreck for</p>
+<p>example and it's</p>
+<p>so it has basically no spatial awareness</p>
+<p>of</p>
+<p>where in the wreck where in the air am i</p>
+<p>am i at the very end or in the beginning</p>
+<p>or in the middle</p>
+<p>it has no idea that's why you saw if you</p>
+<p>then say okay</p>
+<p>turn right for a certain amount of time</p>
+<p>and then it will either predict i'm in</p>
+<p>the middle so the next</p>
+<p>the if i turn 360 it will still be ale</p>
+<p>after me</p>
+<p>or i'm at the very end so if i turn</p>
+<p>around i will see a wall</p>
+<p>um so it it basically has no um</p>
+<p>consistent knowledge of of where it is</p>
+<p>and so the this is basically</p>
+<p>model this kind of noise in the in</p>
+<p>in distributions and if you if you draw</p>
+<p>a different trajectory it will either</p>
+<p>think</p>
+<p>it's at the wall or it's facing the</p>
+<p>other ale or there's a human passing by</p>
+<p>so i see some</p>
+<p>shady people-like structures so all</p>
+<p>these kind of things are then</p>
+<p>modeled as as as kind of uh</p>
+<p>yeah noise in your in your distribution</p>
+<p>that</p>
+<p>just appears to be happening there</p>
+<p>makes sense um what might be</p>
+<p>helpful or required for long-term</p>
+<p>planning</p>
+<p>because the the tree that you had with a</p>
+<p>multiple um</p>
+<p>i guess bifurcations or whatever they</p>
+<p>represented</p>
+<p>that was very interesting how you had a</p>
+<p>very fully fleshed out tree</p>
+<p>and then you showed kind of how you</p>
+<p>recursed to prune back down to make a</p>
+<p>policy selection</p>
+<p>so as you suggested that exponentially</p>
+<p>explodes the computation what</p>
+<p>might be helpful or how can long-term</p>
+<p>planning be</p>
+<p>achieved with reasonable hardware</p>
+<p>yeah so so the the key thing here is</p>
+<p>hierarchical models i think and that's</p>
+<p>what we're</p>
+<p>uh we're pushing very hard on now</p>
+<p>is basically that you given your</p>
+<p>even a model like we trade now you</p>
+<p>basically put</p>
+<p>a new model on top of that that now as</p>
+<p>observations does not get uh does not</p>
+<p>get pixels</p>
+<p>but it gets state samples from this</p>
+<p>model</p>
+<p>and the the time step now is not to</p>
+<p>predict</p>
+<p>the next time step ahead but like to</p>
+<p>predict 10 times at the head or</p>
+<p>20 or whatever or however you want to</p>
+<p>course grain basically</p>
+<p>and once you're at that point then you</p>
+<p>have basically a system that can</p>
+<p>can plan um if you plan ten time steps</p>
+<p>you're actually planning 100 time steps</p>
+<p>for the lower level model and so this</p>
+<p>way you can keep on course grading that</p>
+<p>you only have to explore</p>
+<p>a few policies at each level and then</p>
+<p>down below</p>
+<p>again you only have to predict for like</p>
+<p>one second that happens because</p>
+<p>the other plan was made for by the</p>
+<p>models on top</p>
+<p>and so this way you can you can easily</p>
+<p>uh bypass the and scale down the</p>
+<p>complexity of the planning procedure</p>
+<p>it reminds me a lot of driving where it</p>
+<p>will be like okay</p>
+<p>in five streets take a right turn so</p>
+<p>you're not</p>
+<p>pre-saging the right turn on okay one</p>
+<p>two three four all right now i should</p>
+<p>get ready</p>
+<p>um what about symbolic information</p>
+<p>like what if the aisle had a color</p>
+<p>gradient or</p>
+<p>if it had one dot two dot three dot</p>
+<p>could that be learnt in an unsupervised</p>
+<p>way um a symbol in that pixel level</p>
+<p>model</p>
+<p>or is that where a hierarchical model</p>
+<p>would come into play</p>
+<p>well i think the problem currently is</p>
+<p>for us</p>
+<p>architecture-wise our model isn't</p>
+<p>capable of</p>
+<p>capturing very like low level</p>
+<p>details about environments just because</p>
+<p>we are based on a va approach and then</p>
+<p>the</p>
+<p>mean squared error objective we use for</p>
+<p>reconstruction and the wavy sample is</p>
+<p>already inhibiting for example</p>
+<p>recognizing dots</p>
+<p>in your inputs um</p>
+<p>maybe actually i don't know what thing</p>
+<p>10 things about it i think color</p>
+<p>gradients is something</p>
+<p>like the model might learn if given</p>
+<p>enough data and incentive</p>
+<p>yeah so i think there's a number of</p>
+<p>problems</p>
+<p>with um with the approach in the sense</p>
+<p>that</p>
+<p>we're now doing prediction in in in</p>
+<p>pixel space let's say</p>
+<p>and the way you you calculate the</p>
+<p>likelihoods</p>
+<p>uh you evaluate the likelihood and you</p>
+<p>you calculate the</p>
+<p>reconstruction error it basically means</p>
+<p>that</p>
+<p>you want to have each pixel</p>
+<p>independently predicted</p>
+<p>on average quite right which means that</p>
+<p>if you have very fine</p>
+<p>grained details it easily um</p>
+<p>ignores this you also have the</p>
+<p>the complexity term that basically says</p>
+<p>okay i want to have the</p>
+<p>the least complex representation for for</p>
+<p>reconstruction</p>
+<p>for reconstruction but this basically</p>
+<p>also means that</p>
+<p>depending on on how much you you you put</p>
+<p>pressure on</p>
+<p>restricting the complexity the less</p>
+<p>information you will actually encode and</p>
+<p>the more blurrier basically your uh your</p>
+<p>your your reconstruction will become so</p>
+<p>it's very similar to</p>
+<p>the bed of the ie uh to those behavior</p>
+<p>where you have this better parameter</p>
+<p>that</p>
+<p>detunes how much weight you put on the</p>
+<p>gal</p>
+<p>divergence term versus the</p>
+<p>reconstruction term</p>
+<p>and this also has his impact on on what</p>
+<p>the model will</p>
+<p>actually put in the state representation</p>
+<p>and and which details will</p>
+<p>will be will be ignored</p>
+<p>so yeah i think a lot of these things</p>
+<p>are very difficult for the model</p>
+<p>straight now just because the way we we</p>
+<p>built</p>
+<p>and parameterize the lightweight model</p>
+<p>very interesting um how might somebody</p>
+<p>go about learning or exploring this</p>
+<p>like is there a textbook or the</p>
+<p>citations that</p>
+<p>are in your paper or hands-on what</p>
+<p>would you encourage somebody who is</p>
+<p>curious about this and wanted to</p>
+<p>over the next maybe a few years be</p>
+<p>following</p>
+<p>yeah i mean we had a lot of like in the</p>
+<p>active infant sports i think</p>
+<p>when we started out there wasn't that</p>
+<p>much information on how to do active</p>
+<p>inference so we</p>
+<p>had to figure it out the hard way by</p>
+<p>trying a lot and failing a lot</p>
+<p>but now currently i think even in this</p>
+<p>model stream there was some</p>
+<p>cool information and accessible</p>
+<p>information on active inference</p>
+<p>so and i mean specific implementation</p>
+<p>wise</p>
+<p>if you want to build a model</p>
+<p>like this i think the current state of</p>
+<p>the art in rl</p>
+<p>and active inference i learned active</p>
+<p>inference is</p>
+<p>all pretty similar</p>
+<p>yeah i i agree so</p>
+<p>a lot of uh things have changed</p>
+<p>regarding</p>
+<p>how accessible the information on on</p>
+<p>active influence has become</p>
+<p>if you look now at a tutorial from ryan</p>
+<p>smith for example which was also</p>
+<p>extensively covered in one of your</p>
+<p>videos</p>
+<p>so i think that really it really knows</p>
+<p>the the the entry</p>
+<p>uh bar to just get to know the theory</p>
+<p>and how everything</p>
+<p>works or should work and to play around</p>
+<p>with some</p>
+<p>small toy examples and simulations that</p>
+<p>you can get some insights on</p>
+<p>on what does this thing do and how does</p>
+<p>it work</p>
+<p>for the deep learning part let's say to</p>
+<p>build these models</p>
+<p>then probably the the resources to go to</p>
+<p>are just like</p>
+<p>tutorials on on variational auto</p>
+<p>encoders i think these are the</p>
+<p>the things in deep learning that are</p>
+<p>most</p>
+<p>relevant for for for the active</p>
+<p>inference work</p>
+<p>we discuss here and if you can build a</p>
+<p>variational auto encoder</p>
+<p>and you know how active inference work</p>
+<p>and you put the two together</p>
+<p>together with some details from our</p>
+<p>paper for example i think it should be</p>
+<p>pretty straightforward to get to the</p>
+<p>first working example cool</p>
+<p>any closing thoughts or even</p>
+<p>questions for our lab or</p>
+<p>just to leave um for people to be</p>
+<p>thinking about as they dream in</p>
+<p>preparation for action</p>
+<p>um yeah maybe i just want to</p>
+<p>continue a bit on what tim said earlier</p>
+<p>that</p>
+<p>for example if you want to build</p>
+<p>hierarchical models</p>
+<p>you don't have to build an active</p>
+<p>inference model on top of an active</p>
+<p>inference model</p>
+<p>we experimented some we did some</p>
+<p>preliminary experiments on</p>
+<p>for example just using our active</p>
+<p>inference model as</p>
+<p>dynamics model for a slam algorithm and</p>
+<p>then you also already get</p>
+<p>hierarchical modeling and</p>
+<p>some of the long-term benefits so</p>
+<p>maybe that's also interesting like to</p>
+<p>think about is how this</p>
+<p>active infrastructure fits in in already</p>
+<p>existing techniques</p>
+<p>yeah so i think what uh</p>
+<p>what ozone wants to say is that in in</p>
+<p>this case we use</p>
+<p>like these deep neural nets to to</p>
+<p>compare eyes</p>
+<p>this transition model likely model and</p>
+<p>posterior model but you shouldn't</p>
+<p>always revert automatically to</p>
+<p>these learning techniques so these are</p>
+<p>kind of very popular right now and very</p>
+<p>very cool but um in some cases you might</p>
+<p>it might be sufficient if you know your</p>
+<p>environment then</p>
+<p>yeah you shouldn't bother learning the</p>
+<p>state-space model if you know the state</p>
+<p>space model just</p>
+<p>yeah use it uh i know we used</p>
+<p>the mountain car example here this would</p>
+<p>be a good example of</p>
+<p>uh why we shouldn't just use uh the deep</p>
+<p>learning approach this was basically</p>
+<p>just that like a proof of</p>
+<p>principle for for us to get some simple</p>
+<p>example working</p>
+<p>but it only pays off i think if you have</p>
+<p>like these real</p>
+<p>high dimensional observations uh and you</p>
+<p>don't</p>
+<p>you have no clue how to characterize</p>
+<p>your space-based mode but it's not that</p>
+<p>this is like the</p>
+<p>the default way to go let's say and</p>
+<p>we're also like kind of</p>
+<p>evolving especially uh also that if you</p>
+<p>move to these hierarchical models</p>
+<p>then we're kind of looking at how can we</p>
+<p>make a more kind of discrete style</p>
+<p>um paragraph state space model on top</p>
+<p>where where we basically um</p>
+<p>try to fit the whole um state space into</p>
+<p>discrete</p>
+<p>parts and then have like a simple</p>
+<p>transition model like you</p>
+<p>you gave the example yourself danielle</p>
+<p>if you if you think about</p>
+<p>navigating yourself you're not thinking</p>
+<p>about predicting</p>
+<p>all the pixels of all the houses uh or</p>
+<p>but you just think about i i need to go</p>
+<p>forward now and then the second street</p>
+<p>to the left so you basically chunk up</p>
+<p>the whole continuously state space into</p>
+<p>some</p>
+<p>relevant parts and then your transition</p>
+<p>model</p>
+<p>also becomes like a very simple</p>
+<p>matrix with with transition</p>
+<p>probabilities um</p>
+<p>so i think the future is in erectile</p>
+<p>models</p>
+<p>and the future is in a mixture of um</p>
+<p>some learned parts but also some um</p>
+<p>some very discretized um intuitively</p>
+<p>comprehensible parts just</p>
+<p>two points on that um one is something</p>
+<p>that's always drawn me to active</p>
+<p>inference is that</p>
+<p>it's inference conditioned and about</p>
+<p>action</p>
+<p>so you're not going for that 4k</p>
+<p>google street view what does every house</p>
+<p>look like</p>
+<p>and again when that's the input data</p>
+<p>even if you have a generative model</p>
+<p>that's the output data</p>
+<p>so active inference is a really</p>
+<p>principled way to just sort of reduce</p>
+<p>what you're predicting</p>
+<p>to like which way should my elbow move</p>
+<p>not</p>
+<p>what will the pixels look like when my</p>
+<p>elbow moves which may be just</p>
+<p>taking gigabytes of data but if it's</p>
+<p>just reduced to</p>
+<p>the state space then it's easier to</p>
+<p>learn and that's why</p>
+<p>it was such an interesting contribution</p>
+<p>with your paper</p>
+<p>to actually learn that state space in</p>
+<p>the context of</p>
+<p>high resolution and real time and</p>
+<p>heterogeneous</p>
+<p>sensors and then also it's something</p>
+<p>that we've seen</p>
+<p>many perspectives on in the lab and in</p>
+<p>these discussions</p>
+<p>is there's the philosophical discussion</p>
+<p>map and territory</p>
+<p>who's really an active inference agent</p>
+<p>is it everything a dust particle</p>
+<p>a bacteria you know is the world built</p>
+<p>this way</p>
+<p>and then there's this sort of</p>
+<p>engineering approach</p>
+<p>where you have your preferences for how</p>
+<p>you want to see the robot work</p>
+<p>and then whatever you can tinker and</p>
+<p>cobble together</p>
+<p>that satisfies you and it reduced your</p>
+<p>uncertainty about performing the task</p>
+<p>you're trying to perform so it's sort of</p>
+<p>sidesteps but then</p>
+<p>it sidesteps those questions in a way</p>
+<p>that actually brings us</p>
+<p>to a higher level of understanding</p>
+<p>because i know that</p>
+<p>many listeners who are not as advanced</p>
+<p>in the machine learning will be inspired</p>
+<p>and have</p>
+<p>qualitative thoughts based upon what you</p>
+<p>brought here today</p>
+<p>so thanks again for this awesome</p>
+<p>presentation and conversation</p>
+<p>and we'll always appreciate hearing any</p>
+<p>follow-up whenever the time is right</p>
+<p>yeah thank you daniel for having us</p>
+<p>really nice discussion</p>
+<p>okay peace see you later see ya bye</p>
+<p>bye</p>
+</article>
+</body>
+</html>

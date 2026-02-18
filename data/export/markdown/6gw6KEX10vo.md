@@ -1,0 +1,681 @@
+---
+title: "ActInf GuestStream 082.1 ~ Robert Worden "Bayesian Model-Based Cognition: The Requirement Equation""
+category: "GuestStream"
+series: "GuestStream_082"
+episode: "1"
+speakers:
+  - "Robert Worden"
+duration: "58:33"
+url: "https://www.youtube.com/watch?v=6gw6KEX10vo"
+views: 301
+exported_at: "2026-02-18T22:37:37.702591+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 082.1 ~ Robert Worden "Bayesian Model-Based Cognition: The Requirement Equation"
+
+Hello and welcome. It is April 29th, 2024. We're in Active Guest Stream 82.1 with Robert
+Worden discussing Bayesian Model-Based Cognition, the requirement equation. Thank you, Robert,
+to you for introduction and jumping into a presentation and discussion. Thanks for joining.
+Hi, I'm Robert Worden and I work Theoretical Neurobiology Group at UCL London. I'm going
+to talk in this live stream about an equation called the requirement equation, which has a lot
+to do with free energy principle and active inference, but it's not the same thing. And I
+hope this is the first of a series of live streams talking about how we apply these ideas to 3D
+spatial cognition, particularly, and eventually to consciousness. But to get on with this
+presentation, here's a summary of the key ideas. The main idea of this requirement equation is to ask,
+not ask what brains have to do, not ask how they do it. And so this approach is different from the free
+energy principle and active inference, but I believe it complements it in a way I'll try to explain.
+So, as a statement of what brains have to do, there is this requirement equation, which is a
+mathematical equation, essentially brains need to compute it or to give the same answer as if they
+computed it to give the greatest possible fitness to their owners. So that's, it's a statement of what
+brains need to do. And it's not a statement of how they need to do it. Doesn't say anything about neurons or
+pre-energy minimization or anything like that. It simply says to get as fit as possible, a brain has
+to do this. And I'll describe what this is. And it turns out this requirement equation is like Bayes'
+theorem. It's very similar to Bayes' theorem, but it has some extra terms in it. And you'll see that.
+And because it's the fittest possible brain, brains have to evolve towards the requirement equation,
+towards doing that thing. And the trouble is the requirement equation itself is too expensive to
+compute and brains don't compute it. So animals don't compute it, but they have to produce very similar
+results to that. But we can compute the requirement equation. We can compute it by brute force.
+And this makes no assumptions about how brains do it. And so that gives the best possible fitness.
+That's a kind of yardstick against which you can calibrate any model of cognition.
+And particularly you can use it to calibrate and test free FEP and active inference models.
+And I'll put the viewpoint that they are really approximations to this equation. And so we can test
+active inference models by comparing their results with the requirement equation results.
+So the first part of this talk is to derive this equation and show you how it works.
+The second part of the talk is to show how it can be used to test and calibrate
+active inference models. And the third part in point six is just a few remarks about internal Bayesian models.
+Okay, so to start, how do we characterize what a brain does without making assumptions about how it does it?
+And the first characterization is a black box that takes sense data as it inputs
+and produces choices of actions as it outputs. So that's all a brain does.
+It takes a set of sense data, D, which can include vision, touch, all sorts of stuff.
+And then it chooses an action.
+Now, we want to go a little beyond that black box model.
+And we're going to what I call a gray box model shown in the lower diagram.
+And what happens is this.
+The brain examines it has a set of possible actions, AI.
+I is one, two, three, etc.
+Now, for each of those possible actions, it calculates some real function,
+F of D and A.
+And that real function depends on both the sense data and the action it's going to choose.
+So F is a kind of expected payoff for that action in these circumstances.
+And then the brain compares all the possible Fs.
+So here we are on the bottom left diagram.
+It's computing a bunch of different Fs in parallel.
+And then it puts them all to a comparison.
+And it picks the biggest one.
+It picks the best possible payoff from any action.
+And so this is the gray box model.
+It's assuming the brain looks at all the alternatives and chooses the best one.
+But it doesn't assume anything more than that.
+It doesn't assume how it computes the Fs or what the Fs are.
+It just assumes that it compares them all and picks the best one.
+So that's kind of minimal set of assumptions about how a brain works.
+Now we'll go on to put that set of assumptions inside
+a real-life situation where we've got probabilities.
+And this comes in the next diagram.
+This is a kind of meta model of how brains work.
+Life for an animal is divided into a number of different domains,
+where it has different kinds of decisions to make.
+And it has encounters in each domain.
+And we'll show here a picture of one encounter in one domain.
+So we start on the left.
+There is S, which is a state of affairs.
+That's a state of the world.
+And it has a certain probability, a prior probability, P of S.
+And the animal doesn't know what that state is, of course.
+But the state gives rise to sense data in the animal.
+And these two arrows here show sense data about the external world
+and sense data about the animal's internal state.
+So the animal has some sense data of D, which it receives with a conditional probability.
+For any given state S, it gets sense data of D with a conditional probability P of D given S.
+And then there's a decision function F that I talked about in the previous slide.
+And it computes F of D and A for all the possible A's it might think of doing.
+And then it chooses one of the actions A.
+And what happens when it chooses an action is the action A and the previous state S
+lead to a next state, which are called S prime.
+And so that comes about with a certain conditional probability.
+Again, P of S prime given S and A.
+And that next state has a certain value to the animal.
+And that value relates in some way to its lifetime fitness.
+And so that's in principle the computation.
+And the assumption is the brains act as if they've computed F of D, A to choose their actions.
+And this as if will turn out to be very important.
+And so how do we use the probabilities in terms of an actual situation?
+The mean payoff.
+An animal has loads of different encounters in its life.
+And the mean payoff is just given by this expression.
+And so W is the average over all the states of affairs it's going to encounter, weighted by their probabilities.
+And then each state of affairs gives us some sense data D with a certain probability.
+So it gets all the possible sense status that it might have.
+And then it makes a decision, chooses an action A of D.
+And that produces a new state, S prime, with a probability P of S prime given S and A of D.
+And there's a value for the new state, value for the animal of a new state.
+For instance, if it's dead, the value is zero and so on.
+So this is just a straight application of probabilities, the previous diagram, and you get that formula.
+And then you just rearrange the formula slightly.
+What you do is you shove this first term, PS, inside the second term, and then you write it this way.
+W is a sum of functions J of D.
+And J of D is this thing.
+And it's already beginning to look very like Bayes' theorem, you can see.
+But it's got some extra stuff at the end.
+It's got these values stuck in at the end.
+So that is the first step towards this requirement equation.
+And to understand how it's used, what I'm going to do is to choose a very simple example of an animal.
+A simple special case.
+And the simple special case, come out here, is an animal that has only two actions.
+And I think you can imagine something like a clam living in the sea.
+A, it has two actions.
+It can open up and try to consume food, or it can shut down.
+It can clam up.
+And so those two actions are called action one and action two.
+And this simple animal has very little sense data.
+It only has one piece of sense data.
+It can say detect the salinity of the water or the temperature of the water.
+And that thing it can detect with its sense data has values between 0 and 1.
+And now we consider various kinds of this simple animal.
+Firstly, we consider two no-brainer animals.
+And no-brainer is an animal that doesn't use its sense data and just makes the same choice of actions the whole time.
+And so the animal that is open all the time, it gets value H1 of D.
+And depending on D, it gets a payoff positive, less positive, more positive, and so on.
+An animal that stays closed all the time gets a payoff H2 of G.
+And so you can see that for each of these two no-brainer animals,
+the average payoff is just the integral of P of D times H of D over this interval 0 to 1.
+So that's the payoff for a no-brainer animals, either W1 or W2.
+But an animal can do better than that if it uses its sense data to choose which action to take.
+So a brainy animal can choose the correct H that gives a bigger payoff in terms of any sense data D.
+So a brainy animal can ride the top of this curve.
+It can go down here along the green curve, along the red curve, and finally along the green curve.
+Now that gives the greatest possible payoff, the greatest possible average payoff in all situations.
+So it's the greatest possible fitness.
+So a brainy animal that can compute these two functions, H1 and H2,
+and can always choose the largest one, is going to get the best possible fitness.
+And if it gets it wrong, if it's got some inaccuracy in the way it computes H1 or H2,
+so these overlap points move around a little, it gets less average fitness.
+Or actually away from that best point.
+So that's what happens in a very simple case where you've got two actions and one real piece of sense data.
+Now we're going to generalize back again.
+And you can see what kind of decision function this simple animal's got to make.
+The decision function it's got to calculate is basically the average fitness.
+And that gives it the greatest possible fitness overall situations.
+So if we generalize away from this to the more general case, can you see all that slide?
+I hope you can. Yes.
+So we generalize this case to when the animal's got more choices of action,
+say five actions or an infinite number of actions and more sense data, different dimensions of sense data.
+And you can see when you generalize away from the simple case to the general case that the best possible decision function
+is given by this equation.
+The decision function F is the sum of rule states of the probability of the state
+weighted by the post theory of probability,
+the value of the final state.
+And we could simplify that by this equation.
+But that equation is basically a definition which doesn't say anything about what happens inside a brain,
+how it computes it.
+It says if a brain chooses the same actions as if it had worked out these equations,
+it gets the best possible fitness.
+So the requirement equation, which is here, says what brains are required to do.
+And any brain chooses actions as if it had done all this as the best possible fitness.
+So that means that brains will evolve to choose actions as if they computed this equation,
+which you can see is very like Bayes' theorem.
+And so that's the first result that comes out of this work is that
+Bayesian cognition, the assumption that animals use Bayesian cognition is not really a hypothesis.
+I believe Carl Friston has said and has been quoted as saying that it is a hypothesis.
+This result implies it's not really a hypothesis.
+It follows from a piece of analysis that makes no assumptions about how brains do what they do.
+So I should say this derivation of the requirement equation has some similarities to
+partially observable Markov decision processes and some differences.
+And you'll have to look at the paper to find out those.
+So that, if you like, is the end of the first part of the talk, which is deriving this equation and
+uh saying that is a way of analyzing what any brain is needed to do.
+The second part of the talk is how you use this equation.
+So all terms that you put in the requirement equation, all those probabilities
+depend on things happening outside the brain. They depend on states for fairs in in the environment.
+They depend on sense data. They depend on what's the payoff.
+What's what happens to the animal after it takes various actions.
+So it's all external biology.
+And you don't have to make assumptions about what's going on in the brain to compute it.
+And that I think is a big advantage.
+Now we can write down the requirement equation in lots of different domains.
+And to do that, we have to model biology, which we can observe directly,
+rather than modeling brains, which we can't observe very well.
+The trouble is computing this requirement equation is very expensive.
+It's expensive in four different ways.
+Because to really compute it, you have to sum over all possible states s.
+You have to do the parallel computation over all possible actions a.
+You have to sum over all possible subsequent states s prime.
+And in some domains, you have to come to compute the value.
+You have to have branching look into different future situations.
+So it's very expensive and it's not tractable in animal brains.
+It will be too slow to try and too expensive to compute.
+So animal brains don't compute this equation.
+They do much cheaper as if calculations.
+Now, having said that, animals don't compute it.
+We can compute it because we have digital computers.
+And we can do the Monte Carlo integrations and we do the optimizations and so on to do all of this by brute force.
+And that's what I will call brute force Bayesian computation.
+And that we can compute it.
+It acts as a kind of yardstick which we can use to compare actual animal behavior.
+How well they compute their choices of action and any cognitive model, including models built in active inference.
+So that I'll skip over this slide just to say you can apply this equation in all sorts of domains.
+Skip. Right.
+So coming on to active inference.
+FEP and AI models are not like the requirement equation in that they do make assumptions about what happens in brains.
+They assume there's a generative model, which is a simplified version of the actual generative process.
+Some simplification that the animal uses in his brain.
+They use variational model fitting.
+They minimize a variation on free energy, minimize a KL divergence between that and minimizing a KL divergence is the process.
+And they have a certain model of the fitness payoffs of actions and they are represented as biased prior probabilities.
+And the animal has a goal to minimize its survival.
+And then active inference.
+It predicts how animals make the tradeoff between exploration,
+trying to get sense data to help better future decisions and exploitation here and now.
+So there's a whole load of assumptions in there which are different from the requirement equation.
+And so for any FEP or active inference model, we can test those assumptions against the requirement equation.
+And this procedure to do that is here.
+You first compute the FEP-AR model, which you've been doing already anyway.
+And you define the equivalent requirement equation.
+And so you make biological assumptions about the states in the environment, about the sense data, about the consequences of actions and so on.
+And then you compute the requirement equation.
+And that, as I said, you can do by brute force integration and optimization.
+And then you compare the two sets of results.
+Requirement equation and FEP results.
+You compare them in terms of the lifetime fitness.
+How many encounters of this kind does an animal have in its lifetime?
+How much does the fitness vary between the two?
+And you get a fitness gap between the requirement equation and the FEP result.
+And the requirement equation is in some sense bound to come out fitter.
+And so there'll be a gap.
+And if that gap is significant, even a very small gap, one percent, natural selection will have improved on the FEP model.
+In other words, if there's a one percent difference in fitness between two animals in 100 generations, the fitter animal comes to dominate the population.
+And based on that, you can refine the FEP model.
+In other words, you can ask questions like what's the sense data which makes the largest fitness gap?
+What can we do to get the FEP model better for those kinds of sense data?
+So I'll illustrate this process here.
+Some animal has a lifetime fitness between measure percentages.
+We compute what that is in the requirement equation.
+So that's that point there.
+We also compute what it is in the FEP.
+And those are different.
+And we can also, by the way, look at no brainer animals.
+We just make the same stupid decision every time.
+Or real animals.
+All four points on this graph can be computed.
+And the interesting comparison is here between the FEP active inference and the requirement equation.
+So the question we're asking is how close is the FEP model to the optimum?
+And what is the gap between the two?
+And what difference is that going to make over, say, 100 generations of natural selection?
+Now, I think this comparing with the requirement equation is a very useful thing to do for an FEP and AI models.
+It's a win-win test.
+If the model comes very close to the optimum, then you've confirmed it.
+You can't do better than that.
+But if it's not very close, you can work out how to improve it.
+You work out what sense data it's not doing so well for,
+and how to make it do better for those sense data.
+Right.
+Now we come on to the third part of the talk, and the headline is that brains are not always Bayesian.
+I know it has been stated an assumption that brains are Bayesian.
+The requirement equation tells you exactly what are the circumstances under which they are Bayesian,
+and under what circumstances they don't need to be Bayesian.
+And it turns out that in complex domains where there are complicated choices of actions,
+the brain needs to build an internal model.
+And the two most complex domains in that respect are two-dimensional navigation,
+finding your way around, and 3D spatial cognition.
+And there's always been a kind of debate between in modeling people and inactivist
+people who say the brain just reacts to events.
+And you can prove this way that in complex domains, an inactivist brain may do a job,
+but it doesn't do as good a job as a brain that makes an internal model.
+And so you can prove in certain domains, mainly the complicated ones, that you need to build internal models.
+You can't prove that in all domains.
+In simple domains, models aren't needed.
+And these are domains in which there are very few choices of action or very simple states or simple sense data.
+And in these simple domains, the as if computation can be very simple.
+It can just be a matter of some very simple neural relay and no internal model is needed.
+And an example of that is a special case that I use to motivate the requirement equation,
+where you've only got two possible actions.
+You don't have to build a complete internal model of what's going on.
+You simply have to know the thresholds at which you switch from one action to the other.
+This can be seen in terms of information capacity.
+What comes into the brain is some Bayesian priors, which have made it evolve,
+and some sense data.
+And it makes an internal model, or may or may not make an internal model,
+and then it chooses actions.
+And it's a very small information content.
+Then it doesn't need to make a big complicated internal model in order to make that simple choice.
+So the information in the internal model needs to be less than the information in the choice of actions.
+And if the choice of actions is very simple, small information content,
+there is no point in constructing a very complicated internal model.
+It's a waste of effort.
+So if you regard the brain's internal models as an informational channel between sense data and actions,
+then you can see the information model is very necessary in complex domains,
+but not so necessary in simple domains.
+So if you're not interested in the brain, you should not trust the good regulator theorem.
+Now in FEP literature, the good regulator theorem is often cited as support for the idea that brains need internal models.
+I'll just very briefly say I don't believe it does give them support.
+When you compare it with the requirement meta model and the good regulator theorem,
+which was a paper in 1970 by Conan and Ashby,
+that has a couple of different meta models of what cognition is about.
+So I think that's a good idea.
+And it's based on Ashby's ideas of homeostasis.
+But I think the argument they make, Conan and Ashby make from the good regulator theorem,
+I don't think it really holds up.
+And I've just listed the reasons here.
+There's the good regulator result.
+That every good regulator of the system is a model of that system.
+And here's the requirement equation result.
+In complex domains only, the fittest brains compute a model of the domain.
+Now the regulator model, I'll assert, is not a realistic model.
+It lacks some key ingredient.
+And it's less realistic.
+It assumes a homeostatic picture of a brain.
+Whereas the requirement equation analysis is much more flexible and realistic.
+But mainly this fourth point, the regulator concept of a model is not a graduated.
+It's a yes, no, all or nothing concept.
+And what it says is a model.
+How do they define a model?
+You can have any function of the system variables can be a model of the system,
+even a very trivial function.
+And so the concept of a model they use is a binary yes, no concept.
+But the real meaning of a model in everyday life and in science is a graduated.
+In other words, the more complicated, the more detail there is in a model,
+the more it counts as a model.
+So this is just my personal beef.
+You should not be using the Goodner Regulator Theorem to justify internal models.
+A few remarks about how brains evolve because obviously this analysis
+depends totally on the idea that the requirement equation defines the fittest possible brain
+and brains evolve towards that optimum.
+And as I said, even a small deficit in lifetime fitness, even a 1% deficit in lifetime fitness,
+over 100 generations, that gives enough selection pressure to make something start dominating the population.
+But if the properties in the habitat change rapidly,
+brains can't catch up.
+They only evolve very slowly by random mutations.
+And therefore, if the properties in the habitat are changing,
+brains need to learn and they need to learn fast within a short animal lifetime.
+And you can actually apply this requirement equation analysis to learning.
+And animal learning, it turns out, is very close to the kind of learning you get out of the requirement equation.
+On the other hand, if properties in the habitat stay constant for a very long time,
+brains can evolve to come very close to the optimum.
+And the key place where this is the case is spatial cognition, 3D spatial cognition.
+And the key place where the states of the world have to obey some very strong constraints.
+They have to obey Euclidean geometry and they obey constraints of physics.
+And these constraints have been true for all even evolutionary time.
+So animal brains have evolved to embody those constraints very precisely.
+A final point is that animals we know have very precise and sensitive sense organs.
+They would not have evolved if the brain couldn't make the very best use of the data from them.
+So here's a plug for the next live stream.
+The next live stream is applying these ideas to 3D spatial cognition.
+Understanding three dimensional local space is actually the most important thing a brain can do,
+because it has a very huge impact on survival.
+Because it's a 3D model of local space is used to control physical movements at every moment in the day.
+And if the model is as inaccurate, mistakes in movement can cost the animal's life any time.
+And they're also used for recognizing things and actions.
+So the selection pressure to get the internal model of 3D space good has been very strong and sustained
+over 500 million years since the Cambrian explosion when animals first had limbs and precise sense data.
+Even insects control their movements very well.
+And consciousness shows that our own internal human internal model of space is a good precise model.
+So the 3D model of space is a very good model.
+And what this next live stream is going to talk about is how you build that,
+how you build neural models of 3D local space.
+Now, people have, there have been very few attempts to do this.
+There are no working
+neural models of 3D spatial cognition that I know about.
+One of the reasons is the architecture.
+How do you, what's the neural architecture to represent three dimensions of space?
+Neural sheets can represent two dimensional space, but there's no equivalent architecture for 3D.
+And the key problem is neural spatial memory.
+If you represent spatial coordinates by neuron firing rates,
+it turns out that that memory is too imprecise and too slow.
+Insects, for instance, have a tiny fraction of a second to work out what their surroundings are like.
+And in that space of time, you can't get precise representation of 3D space using neuron firing.
+So in the next live stream, I will introduce the proposal that 3D space is not represented by neuron firing at all,
+but it's represented by a wave in the brain.
+And that wave is actually a projective transform of 3D space.
+And that's the same transform was used in the projective consciousness model, PCM, which is an FEP derived model of consciousness.
+So that's a commercial for the next live stream.
+So that's a commercial for the next live stream.
+
+Gosh, I've been quick.
+30 minutes.
+There are two kinds of modeling you can do.
+You can model biology or you can model the brain.
+And modeling biology is a great deal easier because we can observe it.
+We can observe easily what's happening to animals in their habitat.
+Whereas modeling what happens inside the brain is more difficult.
+There's much more hypothesis and guesswork about it.
+And the requirement equation approach, which I've talked about in this talk,
+only requires modeling biology, only to model events outside the brain.
+And you can compute this requirement equation in any domain in your life.
+And it defines the very best a brain can do.
+So it's a kind of yardstick against which you compare actual brains and models of brains.
+And so you compare the requirement equation with any active inference model.
+And that I say is a win win for the model, because if the model comes close to the optimum,
+then you've confirmed it.
+But it doesn't come close.
+You can use what you learn to work out how to improve it.
+And I would offer to work with anybody who wants to make that kind of comparison with their active inference models.
+Okay, so I finished rather ahead of time.
+Questions?
+Thank you, Robert.
+Thank you, Robert.
+All right.
+Thank you for the presentation.
+There's a lot to discuss.
+And also people can write questions in a live chat while I'm just like recropping everything.
+Do you want to give any like context?
+How did you come to study this question?
+And how did you get to this equation and why?
+I got to this equation about 25 years ago, actually.
+And I came back to it when I joined Carl's group and got interested in the requirements in FEP and so on.
+And I realized there was a link between it and FEP and active inference.
+And I've just been working recently to work out what the link is.
+And this is what I think the link is.
+But I think it's a very basic foundation for studying the brain is to not make hypotheses about
+how brains do what they do, but to just analyze what they have to do.
+And I think this is quite a powerful approach in all sorts of domains.
+Hope to convert one to other people.
+Okay.
+Yeah.
+Okay.
+While questions are kind of coming in, I'll go over a few of my notes just to go over some of these core
+pieces because I think there's a lot to say and it's really exciting.
+In quantitative evolutionary population biology, fitness is conceived of as like a top-down force,
+whereas the generative model is built up as like an agent level view from the inside, like agent-based
+modeling with kind of a top-down pressure.
+And that's one way to look at that kind of setting.
+And I got the sense that I want to explore and learn more about that the requirements equation
+sits basically between those two and sets the high bar that gives a requirements for the agent-based model.
+Because you can always just build an agent-based model and then have a constraining force.
+We know from simulations that that does give improvement of algorithms in simulations,
+but it's kind of an open-ended search and there isn't necessarily a calibration.
+What do you think about this?
+This is a calibration.
+If you are prepared to analyze an animal's lifetime in terms of a number of different encounters,
+like each time it goes out to get food or each time it meets a potential mate or each time it comes
+across a predator and say, what's its probability of surviving all those encounters?
+If you are prepared to do the requirement equation analysis, then you can start doing the requirement equation analysis.
+In principle, you can find the very best it can do.
+That is an endpoint.
+If you've got your FEP model and you're improving it, improving it, this is the kind of endpoint
+beyond which you don't expect to get, but you know when you're getting near.
+Awesome.
+And here's one other kind of angle that I was noting.
+So the standalone Bayes equation, Bayes with no additional terms, is like this unified imperative
+for sense-making.
+It can cover discrete or continuous state spaces, single dimension, multiple dimensions.
+There's even considerations for like how many parameters should be Bayes optimal,
+but it's all framed in terms of this unified sense-making imperative.
+The requirements equation, and so then one of the key steps in active inference is to expand
+that unified Bayesian imperative to not just the sense-making, but include action,
+like a variational auto-encoder with action.
+The requirements equation says, well, it's a little bit more over the lifespan than just optimal
+sense-making.
+Action, but not sense-making has fitness or survival consequences.
+So then there's another term that applies to only actions, because there's a direct fitness consequence
+of actions and phenotypes.
+Whereas the internal sense-making is actually shielded from direct selection,
+action because it has no consequence except through the actions in the black or the gray box.
+Yeah, I mean, I think active inference is a particular way of making the trade-off between,
+I mean, the way I understand it is a bit simple, the trade-off between exploration and exploitation.
+In other words, do I fly higher so I can see more prey, or do I go down and actually catch that bit of prey?
+And the requirement equation can encompass that, because the value that an animal gets from an action
+can be direct exploitation, that it gets a piece of food, or it can be exploration, that it learns
+something that it can use downstream.
+So that kind of trade-off is made in active inference. There is also the apparatus in the
+requirement equation making the same trade-off and seeing if you get the same answers.
+Just one last framing, and then I'll go to the live chat questions. Just at the purely empirical,
+even just putting aside the evolutionary setting, it's a common theme to make a model and then do
+a variance partitioning on the residual and find if it's loaded or associated with anything. So when
+we're studying bird migration and empirically 80% survive some stage, and then we're making an agent-based
+model, well, we don't want a model where 100% of them survive,
+because we've kind of overshot how successful. So then the empirical path could be like, okay,
+we just made a simple version and 50% of the simulated birds make the migration.
+How is that correlated with the actual? And then what's left in the residual? Oh, it's associated
+with age. Okay. Now we include age as a factor in the agent-based model. That eats up some of that
+variants. How is the remaining variants associated with known or unknown factors? And so there's an
+iterative process where you can discover potentially associated variables and have that in feedback with
+the agent-based constructions. Like the agent responds to the requirements as modeled, and then
+it looks like they're doing something else that's required that you don't have in your requirements
+equation. But it sets a kind of local calibrator again to what kind of performance envelope could
+even be expected or relevance so that you don't have in silico experiments where bacteria are trying to
+read a book and a person is trying to do a metabolic thing that they can't do. It doesn't make sense. We all
+have a feeling like, well, that's not the niche. It's not what they are being selected on for. And so
+this again helps put an adapter in between the kind of bulk properties of the niche and then the specific
+performance that gets all the way down to thinking like you mentioned about the survival through time
+as being the joint distribution of many, many, many, many, many encounters.
+Yeah, I mean, I agree with all that. I think the requirement equation can be used to do those kinds of analysis.
+When you formulate it, you're really looking at lifetime fitness.
+And so you should be looking at all the things that influence lifetime fitness, including things that are nothing to do with
+brains at all, as you say, old age or whatever. But nevertheless, the requirement equation, it gives you, I think,
+starting just from FEP models and AI models, you have the model on the one hand and
+practical observation of animals on the other hand, and you've got nothing in between. But
+requirement equation is somehow in between them. But you can say, here's this requirement for what a brain
+needs to do. And if a brain does it absolutely as well as that, then here's the survival. So you've got a midpoint in the calibration
+between your brain model and your real life.
+Awesome. Okay, I'm gonna go to read some questions in the chat, if whatever you want to say or answer or we'll just however you see. Okay.
+Bert asks, is inactivism exclusive to internal representations?
+I always think of it that way. Inactivism is generally the idea that you don't need internal
+representations. You can just sort of do something.
+And in simple cases, you can in that simple clam case, the clam case only has to know what are the three
+thresholds at which he has to switch over from open to closed.
+And that's an activist.
+I think an activist is usually hostile to internal representations, and they are in opposition.
+And what I'm saying is the requirement equation tells you which circumstances one is right,
+and which circumstances the other is right.
+Awesome. One other free energy principle paper that this reminded me of, and I'll go back to the live
+chats, was by Jelle Brunberg and others in 2018, The Anticipating Brain is Not a Scientist, The Free Energy Principle
+from an Ecological and Active Perspective, which discusses it's kind of like the good scientist and the good
+engineer. Like it's not just the pure sense-making imperative when action is considered. It's not
+just about accuracy in action because actions have consequences in a way that the sense-making
+component doesn't because the black or the gray box is set up so that the sense-making doesn't have
+consequences except their action. That's that partitioning. If you explored a model with telepathy,
+where there was direct consequence for internal states, then it would be basically as if that
+was an external or an action state because it would just make those representations external facing.
+So it's like whichever states aren't external facing are the internal ones, whichever ones are
+external facing. And then those can be under, quote, no selective pressure. If they're all,
+that's like a novelty type or just an open diffusion space, or it can be under strong selection pressure,
+which just means that there are higher consequences for a certain distribution. But that's a distribution
+that you're actually having the agent's model converge towards. And maybe the populations convert,
+maybe the optimal height would be like 15 feet. And it just, there's so many other trade-offs that
+that actually the population just continues to push up against five. But at least there was a way to
+say, well, it only got to a third of the value, but that's the highest score is 30%.
+Yeah. And that sort of approach sounds very congenial to what I'm doing. I have to read the paper. I'm
+afraid I haven't read it yet. I certainly will do.
+Okay. All right. Benjamin asks, how does the amalgamation of Markovian dynamics and Bayesian
+theory reflect the necessity for brains in complex domains to construct internal models for better
+adaptation and decision-making? How does the combination of... Markovian dynamics? Can you start
+the question? Yeah. How does how you brought together... Well, I think this equation...
+Okay. Sorry. This equation certainly builds in Markovian dynamics. I mean,
+the probabilistic model of the states is a Markovian model. If there are certain state transitions in the
+world, then those are modeled. So I believe that that's encompassing this approach. I don't know the
+word Markovian changes things particularly. Okay. Benjamin asks another question. As the brain has
+evolved, do we know which of these definitions of brain functions are inherent versus emergent? And how
+does this potentially impact their functioning as they evolve collaboratively or independently?
+Markovian dynamics. There seems to be two questions there. Can you read it again?
+Yes. Oh, we have many amazing conjugate question askers. How do we know which of the definitions of
+brain functions are inherent versus emergent? I think that's the first part.
+Inherent versus emergent, right.
+Markovian dynamics. And then how does that impact their functioning as they evolve
+potentially collaboratively or independently?
+Well, the requirement... I've tried to state the requirement.
+You know, what brains are required to do as in the abstract and making no mention of how they've
+actually evolved to do it. And that applies to brains at the very beginning of their evolution,
+when they were totally unfit and they gradually got fitter by natural selection. So inherent versus
+emergent. I mean, what was emergent is brains getting closer and closer to an optimum given by that
+equation. The equation doesn't describe how brains are. It describes where brains are evolving towards.
+So that's the first part of the question. Now, the second part of the question was a different
+contrast, which was... How does that potentially impact their functioning as they evolve collaboratively
+or independently? Now, collaboratively or independently, there's a huge amount of question there. I mean,
+obviously, social insects, for instance, their brains work collaboratively. Is that the distinction we're
+talking about? I mean, again, I think the requirement equation is applicable to social insects that don't have...
+They're not so concerned about individual survival. They're concerned about survival of the genotype of the hive, if you like.
+But I think the equation still applies to that. But collaboration and competition are very complicated areas to analyze.
+Well, definitely, especially next time, I look forward to going very deep into the insect questions.
+I'll give some thoughts, though. I mean, to the first half, inherent versus emergent, without just saying it depends on how you define it.
+It can be emergent through development that certain functions arise. So that can be both inherent features.
+That was the sense of the question. Was it emergent in a lifetime?
+I don't know what the sense of the question is. Maybe I didn't get that right. Certainly.
+Emergent in a lifetime. Yeah.
+Because it's optimizing a lifetime fitness, you have to consider different periods in the lifetime and
+whether the brain gets fit in adulthood by having learnt along the way or having inherent innate traits is a choice that brains have.
+As I said, the requirement equation can be applied to learning.
+And that's a very interesting application. I haven't talked about it at all here, but it can be.
+And there's a result, a book from Anderson in 1990, which shows that data on animal conditioning,
+the sort of rats and pigeons in cages and so on, agrees very well with the Bayesian model,
+the requirement equation model of how what the best possible learning is.
+So that's another domain in which the Bayesian assumptions are confirmed.
+So, interesting. This is making me wonder about abiotic constraints and biotic constraints for the requirements equation.
+So, maybe one setting is that the external environment of the organism is very harsh.
+Like, it's a desert ant colony.
+And so, a lot of the selective pressure and the differences amongst colonies, like in their persistence or their survival,
+is related to their performance against the environment.
+And there's another setting where maybe the environment is materially abundant, but then there's a lot of dynamics like game theory and sexual selection and like these internal...
+So, how does the requirements equation... I mean, if we have to change that as often as the weather changes,
+then what are we really getting by just setting this local requirement, which itself could be changing all the time, or variable across settings?
+That's a great question. I mean, in principle, the requirement equation takes as its starting point natural selection, not sexual selection.
+But sexual selection, as you know, doesn't make animals... doesn't always make animals fitter.
+And sometimes makes them less fit, as in the peacock's tail.
+And I've got a whole separate interest in how sexual selection is acted on the human brain, particularly.
+And in terms of social and sexual competition.
+And that, I think, the requirement equation is not a result of that.
+The requirement equation is what you get after natural selection.
+What do you mean after natural selection?
+Well, natural selection.
+You have to have the fittest possible.
+The fittest possible animal is one that survives to adulthood with the greatest probability and gets a mate with the greatest probability.
+Getting a mate with the greatest probability is not as simple as surviving with the greatest probability,
+because it's a competitive activity.
+And you get positive feedback effects.
+For instance, as in the classic peacock case, where female peacocks prefer males with long tails.
+And so that gets baked into the genotype by a kind of conspiracy between female genes preferring long tails and male genes having long tails.
+And you can have similar things like that happening inside the brain.
+And I have a whole separate set of ideas, which I would love to give a talk about sometime.
+That human language is actually a consequence of sexual selection.
+Perhaps we could live stream that sometime.
+But human language hasn't made us more fit in natural habitats.
+There's some controversy for you.
+Wow.
+So, to return to one other potentially interesting aspect of Benjamin's question there, with the second half, collaborative or independent challenges.
+So, this made me think about how the factorization of the problem to be solved, like the sparsity of what depends on what in the problem,
+may be very disjoint from what is connected to what in the organism.
+So, that's kind of widely been recognized by evolutionary constraints or just evolutionary or trait architectures.
+In spandals.
+Yeah.
+If there's a covariance in the niche between two factors and then that is not the case in the organism, then there can be like separated movement of those traits.
+Or you can have the opposite setting, where two things are, I mean, there's also pieces that are correlated just like having length and volume.
+Like having a longer body leads other traits to change.
+I would guess that in terms of physical evolution of bodies, you can get two traits that have to be correlated, like long legs inevitably correlated with something else.
+But in terms of evolution of the brain, it's not so constrained.
+And you can have different cognitive functions that evolve independent of each other.
+Much, much more freedom there.
+That's just a guess.
+Yeah.
+That's very interesting.
+And the kind of, there's a lot to say about that.
+Yeah.
+And also with, um, very fruitful to consider the differences with the mammal nervous system and with the insect nervous system and the ways in which the insect nervous system helps clarify certain sensory mappings that get very lost in the large mammal brain.
+Yeah.
+I agree.
+Insects are very worth looking at.
+Um, okay.
+So anyone else can write questions in the live chat, but I mean, what other directions would you like to explore?
+How do you think this moves forward given where it is now?
+Well, as I say, I'd be very interested in, if anybody's interested in taking an active inference model and kind of trying to calibrate it this way, I'd be very happy to work with them too.
+I would do the requirement equation side of things.
+And, uh, that'd be a very interesting comparison for me to make.
+Hmm.
+But, um, say we're going to make the next live stream in a, in a month's time.
+And that's be about spatial cognition.
+That's the main direction I want to take this.
+Yes.
+Moving things, animals with spatialized nervous systems, and then also nervous systems that enable movement, but don't necessarily need to be spatialized.
+Like a worm may just have a topological or a tactile mapping, but it may not need to have the kinds of echolocation or center place foraging components of a bat or a bee.
+I agree.
+I agree.
+Um, am I allowed to play with Robert's equation?
+Is that okay?
+Of course you are.
+Of course you are.
+Okay.
+Um, all right.
+So this is very cool.
+It sounds like in around one month, we will have a session on insect brain and foraging spatial cognition.
+And then there's probably many other things we can continue to talk about.
+And also it would be awesome if, um, somebody has a active inference model or some other kind of model that they could reach out to you and try to get some more empirical and specific.
+Have you applied this to any specific like empirical or published cases yet?
+So people could see like what the kind of analysis is?
+Um, well, the main analysis is coming in the second live stream.
+Can I just, um, can I just, uh, move to the slide that, um, shows where you can get hold of the paper?
+Yes.
+So there is the link to get hold of the papers.
+Yeah.
+Uh, and there's an application which we'll look at next time as well, but there's a very, um, interesting video game slash executable simulation.
+Um, base language.org base language.org.
+Cool.
+All right.
+Thank you very much, Robert.
+Thanks to everyone for the comments, the questions and chat.
+All right.
+Okay.
+Great.
+Thanks.
+Farewell.
+Bye.
+Bye.
+Bye.

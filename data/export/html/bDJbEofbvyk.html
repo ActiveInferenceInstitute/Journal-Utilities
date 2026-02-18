@@ -1,0 +1,4365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream #001.2: "A Step-by-Step Tutorial on Active Inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream #001.2: "A Step-by-Step Tutorial on Active Inference"</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_001 &middot; Episode 2 &middot; Duration: 2:25:11 &middot; Views: 1,700</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=bDJbEofbvyk">https://www.youtube.com/watch?v=bDJbEofbvyk</a></div>
+<article>
+<p>hello everyone</p>
+<p>welcome to the active inference lab and</p>
+<p>to the model stream</p>
+<p>2.0 today is going to be a really</p>
+<p>awesome discussion so let's just</p>
+<p>introduce ourselves and get right into</p>
+<p>it i'm daniel friedman i'm a</p>
+<p>postdoctoral researcher</p>
+<p>in davis california ryan</p>
+<p>um yep so i'm ryan smith i'm an</p>
+<p>associate investigator at</p>
+<p>the uh laureate institute for brain</p>
+<p>research</p>
+<p>hi i'm christopher i'm a phd student at</p>
+<p>the university of cambridge</p>
+<p>and i'm max murphy and i'll be starting</p>
+<p>my post-doctoral fellowship at carnegie</p>
+<p>mellon</p>
+<p>in hopefully a week awesome thanks to</p>
+<p>ryan and christopher the authors uh or</p>
+<p>two of the three authors of this paper</p>
+<p>for joining today and for max for</p>
+<p>lending your expertise as well</p>
+<p>so this is the second model stream in a</p>
+<p>multi-part series</p>
+<p>that is going to be highlighting</p>
+<p>perspectives and addressing questions</p>
+<p>related to applied active inference and</p>
+<p>so right now we're looking at the</p>
+<p>tutorial paper of</p>
+<p>smith at all a step-by-step tutorial on</p>
+<p>active inference</p>
+<p>and its application to empirical data</p>
+<p>the link</p>
+<p>uh you can find in the video description</p>
+<p>so if you have any questions or</p>
+<p>thoughts or comments during the live</p>
+<p>stream type it in the youtube live chat</p>
+<p>and we'll be monitoring that</p>
+<p>and then if you have any questions after</p>
+<p>the live stream leave a comment on the</p>
+<p>video or get in touch with us another</p>
+<p>way</p>
+<p>and we'll try to address it in a future</p>
+<p>session and if you want to learn more or</p>
+<p>if you want to participate</p>
+<p>go to activeinference.org all right</p>
+<p>so today in our second session we're</p>
+<p>going to be picking up</p>
+<p>with a brief overview and summary of</p>
+<p>where we're at where we've been</p>
+<p>we're going to go through a few</p>
+<p>clarifying questions that have been</p>
+<p>raised in the last week and then we're</p>
+<p>going to dive into the specific examples</p>
+<p>and</p>
+<p>into the code and do some code walk</p>
+<p>through so that will be really exciting</p>
+<p>all right so i'll just throw out the</p>
+<p>first opening question which is</p>
+<p>who is this session for what kinds of</p>
+<p>tools</p>
+<p>and skills would you say are required</p>
+<p>and which kinds of tools or skills might</p>
+<p>be</p>
+<p>helpful</p>
+<p>um okay well um</p>
+<p>i mean i would say that the session and</p>
+<p>i mean really the entire tutorial is for</p>
+<p>people who</p>
+<p>um are just kind of i mean mainly people</p>
+<p>who are just starting out people who</p>
+<p>want to be able who are interested in</p>
+<p>active inference</p>
+<p>um but maybe don't have a lot of</p>
+<p>background in mathematics you know</p>
+<p>especially like people coming from like</p>
+<p>neuroscience and psychology backgrounds</p>
+<p>for example that</p>
+<p>want to or people who do some</p>
+<p>computational modeling</p>
+<p>but like maybe like simpler</p>
+<p>reinforcement learning models things</p>
+<p>like that</p>
+<p>where active inference is kind of</p>
+<p>notoriously a little bit more</p>
+<p>kind of like black box you know it's</p>
+<p>harder to kind of break into</p>
+<p>um a lot of people think that the models</p>
+<p>are described in a way that's kind of</p>
+<p>like opaque</p>
+<p>um you know and so the the idea was to</p>
+<p>give people</p>
+<p>the background needed um and the actual</p>
+<p>example</p>
+<p>code um that would be needed that could</p>
+<p>be adapted to</p>
+<p>build your own models do your own</p>
+<p>simulation studies and apply</p>
+<p>and build models of task studies and be</p>
+<p>able to fit models to data</p>
+<p>in other words to kind of start to</p>
+<p>finish to be able for a person who wants</p>
+<p>to to be able to</p>
+<p>use active inference models to model</p>
+<p>data in empirical studies and actually</p>
+<p>use them in their own research</p>
+<p>so as far as tools necessary um you know</p>
+<p>the main thing</p>
+<p>right now is going to be having some</p>
+<p>minimal understanding or</p>
+<p>motivation to learn how to use matlab</p>
+<p>you know so you know we in the um</p>
+<p>tutorial code so i mean we have</p>
+<p>like seven or eight different you know</p>
+<p>tutorial scripts you know this point but</p>
+<p>the main one</p>
+<p>is um the one that i'll be focusing on</p>
+<p>today and it's very heavily commented</p>
+<p>um so it kind of best we did try to</p>
+<p>describe kind of like line by line each</p>
+<p>thing that's going on i mean it's</p>
+<p>honestly</p>
+<p>there's enough comments and there'd</p>
+<p>almost be kind of like a second paper in</p>
+<p>and of itself</p>
+<p>um so um you know we're hoping</p>
+<p>um that even someone who doesn't have a</p>
+<p>ton of background in matlab will be able</p>
+<p>to kind of</p>
+<p>bootstrap their way up um but</p>
+<p>you definitely need to have a little bit</p>
+<p>or be motivated to learn at least a</p>
+<p>little bit</p>
+<p>anything else to add on that christopher</p>
+<p>or max</p>
+<p>no i think that sums it up well just one</p>
+<p>note on the code there so you mentioned</p>
+<p>it's in matlab now what about other</p>
+<p>programming languages or backgrounds</p>
+<p>like</p>
+<p>python so what other languages are</p>
+<p>people in the active inference space</p>
+<p>developing in</p>
+<p>and how could we include more computer</p>
+<p>languages as well as</p>
+<p>natural human languages so i mean</p>
+<p>there are so at present everything is</p>
+<p>almost exclusively in matlab</p>
+<p>unfortunately</p>
+<p>and the reason for that is is that a lot</p>
+<p>of this is actually built off of</p>
+<p>spm scripts you know that carl fristen</p>
+<p>originally wrote</p>
+<p>in relation to uh neural imaging</p>
+<p>approaches so things like</p>
+<p>dynamic puzzle modeling and so</p>
+<p>a lot of a lot of the current scripts</p>
+<p>for doing active inference</p>
+<p>call on a broad range of other spm</p>
+<p>scripts that are used for a lot of</p>
+<p>different purposes</p>
+<p>for instance in sort of</p>
+<p>dealing with large matrices in like</p>
+<p>neuroimaging</p>
+<p>so that so for that reason</p>
+<p>and because carl is primarily worked in</p>
+<p>matlab and relation spm</p>
+<p>everything has kind of been in spm and</p>
+<p>specifically in what's called the</p>
+<p>dem toolbox in spm12</p>
+<p>stands for dynamic expectation</p>
+<p>maximization</p>
+<p>there's a ton of active inference</p>
+<p>scripts as well as a ton of other</p>
+<p>modeling scripts for say like continuous</p>
+<p>models and other sorts of things</p>
+<p>in there and we just make use of</p>
+<p>a couple of those um the main ones not</p>
+<p>the ones they call on but</p>
+<p>um but uh that being said</p>
+<p>there are people who are trying at the</p>
+<p>moment</p>
+<p>to um translate some of the stuff into</p>
+<p>python</p>
+<p>uh alec schatz for example um</p>
+<p>is currently in the process of trying to</p>
+<p>put together uh</p>
+<p>python versions of some of the main</p>
+<p>simulation and inversion scripts um</p>
+<p>i don't i mean they're very kind of in</p>
+<p>beta at the moment as i understand them</p>
+<p>but i know i know that that's something</p>
+<p>that's in progress</p>
+<p>cool so it sounds like because this</p>
+<p>project has such a history</p>
+<p>of being developed in matlab and the spm</p>
+<p>toolkit and carl fristan's</p>
+<p>research and collaborations were um</p>
+<p>drawing heavily on matlab</p>
+<p>however in the modern development</p>
+<p>context</p>
+<p>there's a lot of open source projects</p>
+<p>that are developing in python</p>
+<p>so that's definitely an area we'll hope</p>
+<p>to be expanding and also a great</p>
+<p>opportunity</p>
+<p>for people who are experienced in python</p>
+<p>or matlab and want to be curious about</p>
+<p>active inference</p>
+<p>this is the opening to help contribute</p>
+<p>to something that could be really</p>
+<p>exciting</p>
+<p>so just a last um last uh</p>
+<p>warm-up introduction question what kinds</p>
+<p>of projects</p>
+<p>or questions or investigations do you</p>
+<p>think</p>
+<p>this could apply to for somebody who</p>
+<p>they've heard of scientific modeling but</p>
+<p>not active inference modeling</p>
+<p>what do you think are some low-hanging</p>
+<p>fruit or really straightforward</p>
+<p>interpretations where you think it could</p>
+<p>be applied</p>
+<p>so i mean i guess there's a couple</p>
+<p>questions here i mean one is</p>
+<p>um you know like well i guess the main</p>
+<p>one is</p>
+<p>given that the kind of history of</p>
+<p>computational modeling has um</p>
+<p>largely um than in the um like</p>
+<p>reinforcement learning</p>
+<p>i mean a sort of literature or i mean</p>
+<p>there are others like drift of fusion</p>
+<p>modeling and things like that but</p>
+<p>um um the you know one of the kind of</p>
+<p>major questions is oh well active</p>
+<p>inference models seem</p>
+<p>like they're really complicated you know</p>
+<p>relative to some of these</p>
+<p>simpler uh sort of traditional</p>
+<p>reinforcement learning models</p>
+<p>um so what is it that active inference</p>
+<p>actually adds right</p>
+<p>like what can you do using an active</p>
+<p>inference model in a study</p>
+<p>that um you maybe couldn't do or</p>
+<p>could do as naturally using standard</p>
+<p>sorts of existing reinforcement learning</p>
+<p>models</p>
+<p>and you know here the the kind of answer</p>
+<p>that i would want to give is there's a</p>
+<p>few parts to this</p>
+<p>one is that um because</p>
+<p>the kind of value or cost function in</p>
+<p>active inference is expected for energy</p>
+<p>as opposed to a reward function</p>
+<p>and because the expected free energy has</p>
+<p>a reward a reward component and an</p>
+<p>information</p>
+<p>value component then it's it's quite a</p>
+<p>bit more natural</p>
+<p>in active inference models to</p>
+<p>model explore exploit tasks you know so</p>
+<p>tasks where</p>
+<p>the agent has to somehow intrinsically</p>
+<p>assign value to seeking information</p>
+<p>as a means of knowing how to maximize</p>
+<p>reward eventually</p>
+<p>so there are and there are actually two</p>
+<p>different types</p>
+<p>of um sort of directed or goal driven</p>
+<p>explanation</p>
+<p>or exploration in active inference one</p>
+<p>is um</p>
+<p>which is called parameter exploration</p>
+<p>and the idea here is this is probably</p>
+<p>the closest thing to um reinforcement</p>
+<p>learning where say the agent might not</p>
+<p>start out knowing what the reward</p>
+<p>probabilities are</p>
+<p>if they choose one action versus another</p>
+<p>so they will choose actions</p>
+<p>that will help them essentially learn</p>
+<p>best what the reward probabilities are</p>
+<p>before you know just reliably you're</p>
+<p>continuously selecting the same option</p>
+<p>right because that's the kind of know</p>
+<p>which one's the most rewarding</p>
+<p>first so that's called parameter</p>
+<p>exploration</p>
+<p>and that that like i said has analogs</p>
+<p>in reinforcement learning but doesn't</p>
+<p>have like a</p>
+<p>specific in in standard models anyway it</p>
+<p>doesn't have a very specific</p>
+<p>sort of information drive um</p>
+<p>to uh to seek that out um but there are</p>
+<p>some so things like information bonus</p>
+<p>terms uh</p>
+<p>there's different things like that in</p>
+<p>reinforcement learning that can do</p>
+<p>something like that</p>
+<p>um but they're kind of tacked on their</p>
+<p>little little they have a little more</p>
+<p>kind of like ad hoc feeling to them i</p>
+<p>guess um</p>
+<p>whereas it kind of emerges naturally</p>
+<p>from expected free energy in active</p>
+<p>inference</p>
+<p>um there's also something that's a</p>
+<p>little more unique in active inference</p>
+<p>which is called state exploration</p>
+<p>and that's more where you're just kind</p>
+<p>of choosing to move to states</p>
+<p>that you expect will give you the most</p>
+<p>precise observations</p>
+<p>about what state you're in um you know</p>
+<p>so this would be the thing like</p>
+<p>you don't know whether you're in the</p>
+<p>green room or the red room so you should</p>
+<p>go turn on a light</p>
+<p>so you'll know which which room you're</p>
+<p>in um</p>
+<p>right so that also falls out of expected</p>
+<p>free energy very naturally</p>
+<p>but not out of a lot of other</p>
+<p>traditional computational modeling</p>
+<p>approaches um</p>
+<p>the uh there's also sorry i could go out</p>
+<p>for a while about this but</p>
+<p>there's also something in reinforcement</p>
+<p>learning models that has to do with</p>
+<p>explore exploit called random</p>
+<p>exploration</p>
+<p>where people essentially start behaving</p>
+<p>more randomly</p>
+<p>if they're uncertain if they know they</p>
+<p>have to make a bunch more future choices</p>
+<p>but those values are typically fixed in</p>
+<p>reinforcement learning models</p>
+<p>whereas the uh expected free energy</p>
+<p>precision</p>
+<p>uh parameter and active inference is</p>
+<p>actually a dynamically updated</p>
+<p>version of that so it changes to remain</p>
+<p>driving essentially the amount of</p>
+<p>randomness and behavior that's</p>
+<p>um expected given past observations</p>
+<p>um and so that's kind of nice um</p>
+<p>the last thing i would say is is that</p>
+<p>active inference has a very kind of</p>
+<p>specific neural process theory</p>
+<p>associated with it</p>
+<p>so it makes very specific predictions</p>
+<p>about the neural responses you ought to</p>
+<p>see</p>
+<p>in studies whereas most other models</p>
+<p>don't</p>
+<p>so those are that's what i would say</p>
+<p>thanks for the answer</p>
+<p>any thoughts on that or any of the</p>
+<p>questions christopher or max</p>
+<p>i would just say very broadly speaking</p>
+<p>active inference is really great for</p>
+<p>modeling decision-making under</p>
+<p>uncertainty</p>
+<p>and in particular perceptual</p>
+<p>various types of perceptual decision</p>
+<p>making and</p>
+<p>indiscreet state spaces so you can do</p>
+<p>anything from modeling</p>
+<p>so like ryan and i have some previous</p>
+<p>work where we show</p>
+<p>that you can reproduce a whole lot of</p>
+<p>kind of classic</p>
+<p>visual awareness neural correlates and</p>
+<p>like the classic visual awareness</p>
+<p>paradigms</p>
+<p>for example using a hierarchical model</p>
+<p>and the reason we can do that is because</p>
+<p>it had</p>
+<p>active inference has such a detailed and</p>
+<p>rich process theory attached to it</p>
+<p>and so for me i think what's really</p>
+<p>unique about it is that</p>
+<p>so there's lots of different ways of</p>
+<p>providing unified explanations but one</p>
+<p>way that you might want to provide a</p>
+<p>unifying explanation is just have a</p>
+<p>unifying set</p>
+<p>of kind of uh com unifying computation</p>
+<p>or one computational architecture where</p>
+<p>you can draw in all of these different</p>
+<p>things</p>
+<p>into one paradigm and then understand or</p>
+<p>well one computational paradigm that is</p>
+<p>then understand how they're related</p>
+<p>through the different parameters that</p>
+<p>are being modulated when you</p>
+<p>or being fit when you build models for</p>
+<p>example</p>
+<p>so i'm not aware of any other modeling</p>
+<p>paradigm really where you could model</p>
+<p>things as diverse</p>
+<p>as a basic kind of explore exploit task</p>
+<p>or looking at kind of phasic dopamine</p>
+<p>dynamics</p>
+<p>and then something that goes all the way</p>
+<p>up to something like visual awareness</p>
+<p>or even like planning and bellman</p>
+<p>optimal planning</p>
+<p>so to me that's what's so special about</p>
+<p>this if you</p>
+<p>if you want to unify things under one</p>
+<p>umbrella this is really</p>
+<p>um yeah one one last thing i'll say and</p>
+<p>this is just kind of a practical</p>
+<p>nice thing is this is that the in most</p>
+<p>other um</p>
+<p>modeling approaches you actually have to</p>
+<p>kind of change the equations</p>
+<p>you know like to fit it to a specific um</p>
+<p>you know task</p>
+<p>whereas an active inference technically</p>
+<p>you don't all you do</p>
+<p>is the the actual update equations are</p>
+<p>always identical</p>
+<p>all you have to do is write down the</p>
+<p>appropriate generative model</p>
+<p>um so it's nice because it's really</p>
+<p>generic and</p>
+<p>and you know once you have the</p>
+<p>generative model specified everything</p>
+<p>else kind of just comes for free</p>
+<p>and just to jump in off of that uh</p>
+<p>generalizability the the</p>
+<p>reason i'm interested i'm somebody who</p>
+<p>studies movement a totally</p>
+<p>different area of neuroscience than</p>
+<p>decision making</p>
+<p>and uncertainty modeling but at the same</p>
+<p>time</p>
+<p>this framework what kind of interests me</p>
+<p>about it is that</p>
+<p>exactly that which is that it seems that</p>
+<p>i can start out with kind of a structure</p>
+<p>generative model that is consistent even</p>
+<p>across domains</p>
+<p>and then potentially use that to to</p>
+<p>apply it to my own neuroscientific</p>
+<p>research</p>
+<p>um the the main questions that i have</p>
+<p>and things that i'll be interested to</p>
+<p>hear about moving forward would be</p>
+<p>um you know we talked about that we can</p>
+<p>use it both for parameter exploration</p>
+<p>and state exploration but when we're in</p>
+<p>in the empirical context of the</p>
+<p>experiments being performed for</p>
+<p>um it might be the case that i'm</p>
+<p>uncertain about certain parameters</p>
+<p>or i'm uncertain about the state and i</p>
+<p>may be uncertain about both of those</p>
+<p>things simultaneously</p>
+<p>so um finding a way to either design my</p>
+<p>experiments so that i impose certainty</p>
+<p>on either the state or the parameters is</p>
+<p>probably</p>
+<p>seems to me an important part of using</p>
+<p>this model</p>
+<p>no no it's a great point actually me and</p>
+<p>chris we're just talking about this like</p>
+<p>like yesterday or something right like</p>
+<p>how to design an optimal task to</p>
+<p>disambiguate but include both having to</p>
+<p>solve</p>
+<p>problems that involve state and</p>
+<p>parameter exploration simultaneously</p>
+<p>technically the example model that we</p>
+<p>have for the tutorial</p>
+<p>is able to do that um but not</p>
+<p>in an incredibly interesting way uh</p>
+<p>justin justin kind of way to show that</p>
+<p>how you could do it very interesting</p>
+<p>about the experimental design because</p>
+<p>the kind of statistical techniques like</p>
+<p>a t-test</p>
+<p>we know the statistical power</p>
+<p>calculations or we might know the kinds</p>
+<p>of experimental designs</p>
+<p>that lead to good clean t-tests but it's</p>
+<p>a great point about the experimental</p>
+<p>design</p>
+<p>and just to highlight this generalizable</p>
+<p>and also generative</p>
+<p>nature we talked about a lot of</p>
+<p>different areas of research a lot of</p>
+<p>different frameworks</p>
+<p>but the parts that stood out to me were</p>
+<p>christopher you said decision making</p>
+<p>under uncertainty</p>
+<p>and action and perception that covers a</p>
+<p>lot a lot of different areas of</p>
+<p>neuroscience</p>
+<p>and then we are looking for this kind of</p>
+<p>unified explanation</p>
+<p>but rather than an explanation which</p>
+<p>might be philosophical or based upon how</p>
+<p>much we understand it or how we feel</p>
+<p>that one day</p>
+<p>we're rather going to look for a unified</p>
+<p>computational</p>
+<p>architecture or a computational paradigm</p>
+<p>as you said</p>
+<p>that will let us compare and design and</p>
+<p>develop</p>
+<p>these generative and generalizable</p>
+<p>models so really</p>
+<p>cool discussion and i'm just going to</p>
+<p>ask one question from the youtube live</p>
+<p>chat then we'll go to ryan with a screen</p>
+<p>share</p>
+<p>cb asks can active inference research</p>
+<p>help us understand the neuroscience of</p>
+<p>stimulus independent thoughts when there</p>
+<p>isn't any sensory input at all</p>
+<p>thanks for elaboration in this regard</p>
+<p>i mean i guess i mean the broader answer</p>
+<p>would say yes</p>
+<p>but um the way that you would do it</p>
+<p>would probably be</p>
+<p>pretty task specific um you know so</p>
+<p>so i'm um i'm not necessarily sure how</p>
+<p>to give a really precise detailed answer</p>
+<p>without knowing the particular like task</p>
+<p>or even just general psychological</p>
+<p>context</p>
+<p>that's being imagined um so i mean it's</p>
+<p>actually</p>
+<p>really easy to model for instance like</p>
+<p>working memory tasks</p>
+<p>where you might get a stimulus at one</p>
+<p>point but then there's no stimulus for a</p>
+<p>really long time</p>
+<p>and somehow the thing has to continue to</p>
+<p>maintain representations</p>
+<p>um in the absence of any stimulus to</p>
+<p>know what to do you know at some</p>
+<p>distant future point um um you know</p>
+<p>just there's that kind of thing um i</p>
+<p>mean just as one example i</p>
+<p>again i like i said it the way to answer</p>
+<p>the question is probably is</p>
+<p>it would be different depending on the</p>
+<p>exact sort of psychological or task</p>
+<p>context in question</p>
+<p>cool so just like explore exploit there</p>
+<p>are tasks that looked more exploratory</p>
+<p>or more exploitative</p>
+<p>almost within this action of perception</p>
+<p>we're going to be talking about some</p>
+<p>tasks that</p>
+<p>are more towards the action-oriented</p>
+<p>side like the policy planning or the</p>
+<p>motor behavior</p>
+<p>and other tasks that are more towards</p>
+<p>almost the perceptive side like this</p>
+<p>visual awareness</p>
+<p>task now ocular motor movement the</p>
+<p>movement of the eye muscles is still a</p>
+<p>behavior</p>
+<p>and there's papers that model that but</p>
+<p>it's almost like we're looking at the</p>
+<p>whole spectrum of explore exploit or</p>
+<p>action perception reinforcement learning</p>
+<p>and wondering how we can</p>
+<p>again make this unified framework for</p>
+<p>talking about these different kinds of</p>
+<p>systems</p>
+<p>so shall we jump right in ryan or go</p>
+<p>ahead anything else</p>
+<p>well i mean unless i mean just just one</p>
+<p>last point to bring up in relation to</p>
+<p>their you know this person's question is</p>
+<p>just that it's actually</p>
+<p>what's really important and probably a</p>
+<p>more recent development and this is</p>
+<p>stuff that um some of the visual</p>
+<p>awareness stuff that me and chris have</p>
+<p>done and also</p>
+<p>um some stuff uh that i've done</p>
+<p>previously with like emotional awareness</p>
+<p>for example like models of emotional</p>
+<p>awareness</p>
+<p>um there's there's a really important</p>
+<p>sense of what you're doing</p>
+<p>not just behavioral actions but actually</p>
+<p>cognitive</p>
+<p>actions um right so you're selecting</p>
+<p>policies that</p>
+<p>just do something like in the neural</p>
+<p>implementation just do something like</p>
+<p>change the the functional connectivity</p>
+<p>between two brain regions or or change</p>
+<p>in other words it is stimulus</p>
+<p>independent uh</p>
+<p>action they're actions that that have to</p>
+<p>do with changing what you're doing</p>
+<p>cognitively and not what you're doing</p>
+<p>behaviorally</p>
+<p>um you know so that's also an important</p>
+<p>uh part of it that's been done in</p>
+<p>you know a few previous papers that um i</p>
+<p>think</p>
+<p>uh relates an important way to this kind</p>
+<p>of stimulus independence sort of</p>
+<p>question um but again only if i</p>
+<p>understood it right</p>
+<p>cool good answer and thanks for that so</p>
+<p>go ahead and</p>
+<p>share your screen and just however we</p>
+<p>can help whatever you want us to do or</p>
+<p>not do we're there but i'm really</p>
+<p>looking forward to this</p>
+<p>okay so the um you know the main</p>
+<p>the main thing here that i want to do</p>
+<p>just to start as you know and this is in</p>
+<p>part just because i'm assuming that not</p>
+<p>everyone who's watching today was</p>
+<p>watching</p>
+<p>uh last week um so i'm not going to be</p>
+<p>able to give you</p>
+<p>a full understanding of where we're sort</p>
+<p>of of how we're segueing from last week</p>
+<p>to this week but i just want to give</p>
+<p>kind of like a really sort of uh rapid</p>
+<p>overview of where we're kind of going um</p>
+<p>you know so first we covered this slide</p>
+<p>here</p>
+<p>which just um shows an example of how</p>
+<p>you can do</p>
+<p>um how you can do perception as bayesian</p>
+<p>inference</p>
+<p>and then and this is just an example a</p>
+<p>mathematical example of how it works</p>
+<p>um but the idea is where you're you see</p>
+<p>this sort of two-dimensional image</p>
+<p>and you're this gray thing under great</p>
+<p>disc under observation you're trying to</p>
+<p>infer</p>
+<p>based on prior expectations whether it's</p>
+<p>a</p>
+<p>three dimensionally it's a concave or</p>
+<p>convex shape</p>
+<p>and so the idea is is that in simple</p>
+<p>problems you can do that exactly by</p>
+<p>solving</p>
+<p>um bayes theorem so this equation up</p>
+<p>here on the upper left</p>
+<p>but in most cases that's actually</p>
+<p>intractable to do</p>
+<p>and so what you do in active inference</p>
+<p>is you instead um define this thing</p>
+<p>f here which is called expected free</p>
+<p>energy</p>
+<p>um and it's more or less</p>
+<p>a measure of the accuracy of predictions</p>
+<p>minus</p>
+<p>the accuracy of beliefs and combined</p>
+<p>with the complexity</p>
+<p>of those beliefs essentially how much</p>
+<p>you have to change your beliefs to</p>
+<p>to get a model that's accurate so by</p>
+<p>finding</p>
+<p>a set of beliefs that minimize</p>
+<p>expected free energy in other words ones</p>
+<p>that are accurate</p>
+<p>while changing as little as possible um</p>
+<p>this is just an example of how by doing</p>
+<p>that</p>
+<p>by just kind of searching around for</p>
+<p>different qs's here</p>
+<p>different beliefs about the probability</p>
+<p>of states</p>
+<p>then you can find one that when you</p>
+<p>calculate it gives the lowest value for</p>
+<p>f and that's going to be the one that's</p>
+<p>as close as possible</p>
+<p>to the true uh answer the bayes theorem</p>
+<p>would give you</p>
+<p>um and so uh</p>
+<p>so what you're um i'll kind of skip this</p>
+<p>one but</p>
+<p>well so what you're trying to do then an</p>
+<p>active inference is you have some true</p>
+<p>thing going on out in the world true</p>
+<p>states and the observations that they</p>
+<p>generate</p>
+<p>um but then the brain has this model</p>
+<p>where it's trying to say okay</p>
+<p>what state must i be in given that</p>
+<p>i got this observation so the brain is</p>
+<p>trying to essentially</p>
+<p>come up with the representation that</p>
+<p>best matches</p>
+<p>what's going on in the generative</p>
+<p>process in other words the thing that's</p>
+<p>truly generating the observations</p>
+<p>um and so that's probability of</p>
+<p>o and s so states and observations this</p>
+<p>pi thing is policies</p>
+<p>so it's what's the most likely action i</p>
+<p>ought to choose</p>
+<p>given that the world is this way and</p>
+<p>given that i prefer some observations</p>
+<p>over others</p>
+<p>and what's going to be important for</p>
+<p>what i cover</p>
+<p>today is the way that you actually</p>
+<p>set up these generative models</p>
+<p>and the way that these are set up is you</p>
+<p>have these states</p>
+<p>s and you have these observations o um</p>
+<p>and then you have prior initial prior</p>
+<p>expectations</p>
+<p>that we just called d um</p>
+<p>and if you solve this right if you get</p>
+<p>some observations</p>
+<p>and you say given my generative model</p>
+<p>what states are most likely</p>
+<p>given those observations and given my</p>
+<p>prior expectations d</p>
+<p>then you get your sort of optimal belief</p>
+<p>about what the</p>
+<p>what the states ought to be given those</p>
+<p>observations</p>
+<p>but in active inference we do this in a</p>
+<p>way that's also dynamic</p>
+<p>so for instance states at one at time</p>
+<p>one</p>
+<p>are going to transition into states at</p>
+<p>time two</p>
+<p>and so you also have beliefs this thing</p>
+<p>in b</p>
+<p>about what states are most likely to</p>
+<p>transition into what other states</p>
+<p>um and then um</p>
+<p>and this is kind of one of the unique</p>
+<p>moves in active inference is that</p>
+<p>policies so the different action</p>
+<p>sequences you might choose</p>
+<p>are just models as things that entail</p>
+<p>different transitions between states</p>
+<p>so b matrix 1 for example here would</p>
+<p>entail</p>
+<p>choosing to move from one state to</p>
+<p>another state whereas some different</p>
+<p>policy would entail a different b matrix</p>
+<p>that means you transition</p>
+<p>from one state to some other state</p>
+<p>and the choice of policy depends</p>
+<p>on g here which is the expected free</p>
+<p>energy which is a function of</p>
+<p>c which is your preferences so</p>
+<p>essentially what you're trying to do is</p>
+<p>you're trying to find the policy</p>
+<p>which corresponds to a set of state</p>
+<p>transitions</p>
+<p>that will generate the observations over</p>
+<p>time</p>
+<p>that are going to be as consistent as</p>
+<p>possible with uh your preferences which</p>
+<p>corresponds to having the lowest</p>
+<p>g um and so and then there's</p>
+<p>some other sort of parameters up here</p>
+<p>that can say</p>
+<p>add habits so e here can give you kind</p>
+<p>of an additional prior over policies</p>
+<p>that</p>
+<p>gives you kind of habits to do one thing</p>
+<p>over another it can have this</p>
+<p>beta gamma thing that also controls how</p>
+<p>uh precise or how reliable um</p>
+<p>the model expects uh the expected free</p>
+<p>energy estimates to be</p>
+<p>um so i realize that's a lot um but we</p>
+<p>kind of covered this</p>
+<p>more slowly last time</p>
+<p>but what you really need to know um when</p>
+<p>we're actually putting together the code</p>
+<p>like i'm going to walk you through</p>
+<p>this is what we're going to be</p>
+<p>specifying step by step we're going to</p>
+<p>be specifying what the observations are</p>
+<p>um we're going to be specifying the</p>
+<p>likelihood a</p>
+<p>so in other words what states generate</p>
+<p>what observations with what probability</p>
+<p>we're going to be specifying d and b</p>
+<p>which are the</p>
+<p>priors of our initial states and beliefs</p>
+<p>about how states are going to transition</p>
+<p>um and we're going to define policies</p>
+<p>this pi</p>
+<p>thing which is going to tell us the</p>
+<p>different possible</p>
+<p>state transitions we could choose um and</p>
+<p>then we're going to find</p>
+<p>c here which is what the agent's</p>
+<p>preferences are what observations</p>
+<p>it wants to get over others um</p>
+<p>as well as the habits and this beta</p>
+<p>thing the expected</p>
+<p>free energy precision so</p>
+<p>building a model in the code amounts to</p>
+<p>just specifying</p>
+<p>what all these things are what the state</p>
+<p>space is what the observation</p>
+<p>space looks like what a and d and b look</p>
+<p>like</p>
+<p>and what c looks like and maybe e and</p>
+<p>beta and so if you want to know the</p>
+<p>exact equations for solving this</p>
+<p>um you know we've shown them here but</p>
+<p>again i'm not gonna</p>
+<p>describe them in detail um but basically</p>
+<p>all they're doing is they're saying</p>
+<p>given my beliefs about state transitions</p>
+<p>so my priors</p>
+<p>and given a my likelihood what's my most</p>
+<p>likely posterior belief going to be</p>
+<p>which is just bayesian inference right</p>
+<p>priors and likelihoods together</p>
+<p>equal posteriors um or</p>
+<p>are approximate to posteriors</p>
+<p>technically um</p>
+<p>but so that's what we're doing</p>
+<p>we're going to make one comment on that</p>
+<p>slide ryan yeah</p>
+<p>yes so on the top left we have state</p>
+<p>inference given priors and given</p>
+<p>observations so that's kind of inference</p>
+<p>and we're going to be building on the</p>
+<p>strata</p>
+<p>to go from inference bayesian inference</p>
+<p>to</p>
+<p>active inference so you go from the top</p>
+<p>left which is just</p>
+<p>perception at one moment in time that's</p>
+<p>static to the bottom</p>
+<p>left where you have states that are</p>
+<p>updating through time</p>
+<p>given priors and given observations</p>
+<p>you're updating your estimate through</p>
+<p>time</p>
+<p>then you go to the top right so that so</p>
+<p>the bottom left square adds in time</p>
+<p>now on the top right we add in this</p>
+<p>element of policy selection or control</p>
+<p>theory</p>
+<p>and then on the bottom right we get all</p>
+<p>the way up to this full active inference</p>
+<p>model which not just has a control</p>
+<p>theory element through policy</p>
+<p>but some extra parameters that help us</p>
+<p>as we're going to find out soon like e</p>
+<p>and beta</p>
+<p>so just to give that one more time</p>
+<p>because this is what's unique about</p>
+<p>active inference</p>
+<p>and this is the skeleton of the model</p>
+<p>that everything else is going to be</p>
+<p>scaffolded onto</p>
+<p>thanks ryan continue yeah no thank you</p>
+<p>that was definitely a good</p>
+<p>uh quicker uh clear summary um</p>
+<p>so appreciate it um okay so</p>
+<p>and then again just to remind people the</p>
+<p>end goal of all of this is to learn how</p>
+<p>to put together</p>
+<p>um particular generative models right</p>
+<p>particular sets of</p>
+<p>a matrices d vectors b matrices c</p>
+<p>matrices etc for</p>
+<p>empirical so for behavioral tasks that</p>
+<p>participants can do and then you can fit</p>
+<p>these models</p>
+<p>to actual behavior to learn things</p>
+<p>about participants for instance you</p>
+<p>might learn</p>
+<p>what their parameters are for a or for b</p>
+<p>or for instance what their beta value is</p>
+<p>um you know etc um so</p>
+<p>that's the that's the kind of ultimate</p>
+<p>goal here</p>
+<p>but the kind of first step to do that</p>
+<p>beyond just understanding the structure</p>
+<p>i was talking about</p>
+<p>is to know how to actually put that</p>
+<p>together in the code</p>
+<p>and so last time you know i gave a bunch</p>
+<p>of examples</p>
+<p>of past experiments that we and others</p>
+<p>have done where we have built</p>
+<p>active inference models for tasks fit</p>
+<p>them to data and</p>
+<p>learn things for instance about</p>
+<p>differences in</p>
+<p>substance use and learning rates for</p>
+<p>example or differences in beta and</p>
+<p>decision uncertainty</p>
+<p>in between healthy people and people</p>
+<p>with depression and anxiety or substance</p>
+<p>use um or differences in um perception</p>
+<p>of uh precision of precision estimates</p>
+<p>for</p>
+<p>uh interceptive perception for instance</p>
+<p>um</p>
+<p>you know so so i just kind of went</p>
+<p>through these examples</p>
+<p>of specific tasks and empirical results</p>
+<p>just to show the kind of thing that you</p>
+<p>can do with this in practice</p>
+<p>and but um and then the the task that</p>
+<p>we're</p>
+<p>modeling is one that's designed to be</p>
+<p>really simple but</p>
+<p>that also kind of showcases um</p>
+<p>the major important elements of active</p>
+<p>inference models</p>
+<p>um and so here what we're doing is we</p>
+<p>have a task</p>
+<p>where the agent starts in a start state</p>
+<p>and they can either directly choose to</p>
+<p>pull the left to choose the left slot</p>
+<p>machine or the right slot machine</p>
+<p>and if they do that they can either win</p>
+<p>four dollars or zero dollars depending</p>
+<p>on which machine is better</p>
+<p>the left one or the right one but they</p>
+<p>don't know ahead of time which one's</p>
+<p>better so they can either kind of</p>
+<p>take a risky guess and either get four</p>
+<p>dollars or zero</p>
+<p>or they can choose to seek information</p>
+<p>first to ask for this hint</p>
+<p>and the hint will tell them which uh the</p>
+<p>left one which of the left one of the</p>
+<p>right one is better</p>
+<p>on that trial um and if it's the left</p>
+<p>better</p>
+<p>context that means the left one will win</p>
+<p>80 of the time</p>
+<p>and if the hint says the right one's</p>
+<p>better then the right one will</p>
+<p>pay out 80 of the time but there's a</p>
+<p>cost</p>
+<p>to taking the hint which is that if you</p>
+<p>take the hint and then choose a machine</p>
+<p>then you can only win two dollars</p>
+<p>instead of four um so that's</p>
+<p>what we're going to be modeling um and</p>
+<p>so what we need to specify for that is</p>
+<p>we need to specify</p>
+<p>that there are two types of hidden</p>
+<p>states one is</p>
+<p>whether it's the left better or the</p>
+<p>right better context whether it's a left</p>
+<p>better or a better trial</p>
+<p>and also the behavior states so choosing</p>
+<p>to move from the start state to the hint</p>
+<p>state</p>
+<p>or choosing to move from the start state</p>
+<p>directly to the</p>
+<p>left or right slot machine</p>
+<p>so that's two types of states um we have</p>
+<p>to specify</p>
+<p>the observations where in this case</p>
+<p>the major observations are winning the</p>
+<p>four dollars two dollars or zero dollars</p>
+<p>um or in this case we're actually just</p>
+<p>gonna model you win or you don't win and</p>
+<p>i'll show you how that works</p>
+<p>um and um</p>
+<p>and we'll have to define uh the agent's</p>
+<p>preferences so essentially saying it</p>
+<p>prefers four dollars more than two</p>
+<p>dollars and two dollars more than zero</p>
+<p>dollars and that's going to be that</p>
+<p>c thing um so</p>
+<p>uh so that's kind of the general task</p>
+<p>structure</p>
+<p>and i went through um</p>
+<p>you know the way to do this kind of</p>
+<p>simply outside of the code which is</p>
+<p>you define your initial state priors you</p>
+<p>define your state outcome mapping</p>
+<p>you define your preference outcome</p>
+<p>preferences over outcomes</p>
+<p>you define the state transitions slash</p>
+<p>actions</p>
+<p>um so b and then you define the policies</p>
+<p>which you define as</p>
+<p>this letter of v um and then the final</p>
+<p>thing i'll talk about before going into</p>
+<p>the code</p>
+<p>is that in these models you can separate</p>
+<p>out</p>
+<p>the generative process so it's actually</p>
+<p>out in the world generating observations</p>
+<p>from the generative model which is the</p>
+<p>agent's beliefs</p>
+<p>about what's generating the observations</p>
+<p>um and if we want to separate those in</p>
+<p>the code</p>
+<p>then what we do is big d or big a</p>
+<p>um or big b um those are the generative</p>
+<p>process</p>
+<p>um but if you also specify a little d</p>
+<p>or a little a or a little b then that's</p>
+<p>the generative</p>
+<p>model so that's the agent's beliefs and</p>
+<p>if you specify those then they will be</p>
+<p>separate</p>
+<p>from the generative process and that's</p>
+<p>typically what you need to do</p>
+<p>that is what you need to do if you want</p>
+<p>to model learning which uh i'll show</p>
+<p>ryan just just two two quick points so</p>
+<p>first off</p>
+<p>um someone has asked will these slides</p>
+<p>be available</p>
+<p>or is there any resource where we can</p>
+<p>look at these slides because there's a</p>
+<p>lot of great information</p>
+<p>on them um i can make them available</p>
+<p>everything everything here is i mean</p>
+<p>almost all the figures that i'm showing</p>
+<p>um other than the actual task figure</p>
+<p>here are</p>
+<p>in the are in the tutorial paper and um</p>
+<p>everything i'm showing about how to</p>
+<p>actually build the models is is in the</p>
+<p>code and well explained in the code like</p>
+<p>i'll show</p>
+<p>um but i'm also happy to provide you</p>
+<p>know these</p>
+<p>slides i mean just just let me know um</p>
+<p>like i said the vast majority of them</p>
+<p>are literally just the figures in the</p>
+<p>paper</p>
+<p>um so uh so yeah i mean like i said i'm</p>
+<p>happy to make them available or send</p>
+<p>them</p>
+<p>um to anyone i could even just put them</p>
+<p>as supplementary</p>
+<p>additional supplementary material at the</p>
+<p>tutorial as well so i mean yeah just</p>
+<p>whatever whatever people want great idea</p>
+<p>and what a</p>
+<p>fun and accessible science we can have</p>
+<p>when we just</p>
+<p>receive questions like that and can put</p>
+<p>up our slides and then i think max there</p>
+<p>was a</p>
+<p>question that you had about the b matrix</p>
+<p>just while we're defining our</p>
+<p>terms what would you like to say about</p>
+<p>that</p>
+<p>all right so uh but just real quick uh</p>
+<p>for anybody who's just jumping in on the</p>
+<p>stream</p>
+<p>the link is is below the video you can</p>
+<p>go to their paper if you're looking for</p>
+<p>that supplementary code it's in the</p>
+<p>supplementary materials you can download</p>
+<p>all of the code from their supplementary</p>
+<p>materials there</p>
+<p>the question i had was um one thing to</p>
+<p>touch on is as we walk through the code</p>
+<p>one thing i noticed is that we have kind</p>
+<p>of a tensorial structure</p>
+<p>for these matrices um where</p>
+<p>we could also specify a transition</p>
+<p>matrix that was that had like a 2d</p>
+<p>structure</p>
+<p>with you know d with with probability of</p>
+<p>0.8 0.2 but instead we have a tensorial</p>
+<p>structure where we have</p>
+<p>a fixed probability of one for</p>
+<p>transitioning from any given state</p>
+<p>to another state and i just thought uh</p>
+<p>if you wanted to touch on maybe the</p>
+<p>motivation for that i i</p>
+<p>believe it's related to how the model</p>
+<p>like basically interpreting the model</p>
+<p>and</p>
+<p>and and how the model gets used um</p>
+<p>is that uh i don't know if you wanted to</p>
+<p>elaborate on that any</p>
+<p>yeah i mean i mean yes i mean so</p>
+<p>technically you know we call these</p>
+<p>things like that we call like</p>
+<p>a matrix to the b matrix matrices but</p>
+<p>technically they're tensors</p>
+<p>um so they're high dimensional matrices</p>
+<p>um</p>
+<p>and um so so and</p>
+<p>you know obviously go through this when</p>
+<p>we go through the code but</p>
+<p>because you can have different um types</p>
+<p>of states</p>
+<p>right so the state of being in the left</p>
+<p>better or the right better context</p>
+<p>versus the type of state that has to do</p>
+<p>with you know where you move to or what</p>
+<p>you choose right the</p>
+<p>being in a start state versus the hint</p>
+<p>state versus you know the left or right</p>
+<p>bandit or yeah slot machine choice state</p>
+<p>um because you have two different types</p>
+<p>of states those are called state factors</p>
+<p>and so essentially what you need to do</p>
+<p>is you need to</p>
+<p>specify these matrices or like i said</p>
+<p>really tensors</p>
+<p>that again this is for a that</p>
+<p>say um what outcomes for each type of</p>
+<p>outcome will be generated</p>
+<p>for each combination of each value for</p>
+<p>each state factor</p>
+<p>um you know which makes which makes it</p>
+<p>um</p>
+<p>you know higher dimensional um which is</p>
+<p>probably the trickiest part i'll explain</p>
+<p>this as well as i</p>
+<p>as i can when we go through the code um</p>
+<p>but so but so that's that's that and</p>
+<p>also so simultaneously because you have</p>
+<p>two um types of states here that also</p>
+<p>means you have to have</p>
+<p>a b matrix a transition matrix for each</p>
+<p>um type of state um</p>
+<p>and when you when the agent doesn't have</p>
+<p>control</p>
+<p>about state about transitions for a</p>
+<p>certain state um</p>
+<p>then there's only going to be one of</p>
+<p>these</p>
+<p>uh b matrices um</p>
+<p>so for example here so this just says b</p>
+<p>for factor one which is what context</p>
+<p>you're in</p>
+<p>um this is just a simple uh 2d</p>
+<p>matrix um although technically for</p>
+<p>reasons in the code you define it as a</p>
+<p>as a three-dimensional thing with just a</p>
+<p>one here this is just</p>
+<p>but that's just because the third</p>
+<p>dimension here defines the</p>
+<p>the number label for the action um</p>
+<p>so this is basically just saying there's</p>
+<p>only one action</p>
+<p>for state factor one and that is</p>
+<p>an identity matrix here which just means</p>
+<p>that for each trial</p>
+<p>it's gonna be the left better context</p>
+<p>through the whole trial</p>
+<p>right in other words within a trial it's</p>
+<p>not gonna like after they take the hint</p>
+<p>it's not gonna like switch on them you</p>
+<p>know so really the right one is better</p>
+<p>if they got the hint that the left one</p>
+<p>was better</p>
+<p>this is just saying if you start in the</p>
+<p>left better one you're going to stay in</p>
+<p>the left better one the whole trial</p>
+<p>and that's it whereas</p>
+<p>for stay factor two so the b matrices</p>
+<p>for state factor two</p>
+<p>um there are four of these which</p>
+<p>correspond to four different possible</p>
+<p>actions</p>
+<p>um so here the third dimension says this</p>
+<p>is action one</p>
+<p>which means that from any state which</p>
+<p>are the columns</p>
+<p>you can move to state 1 which is the</p>
+<p>first row</p>
+<p>whereas the second one says if i pick</p>
+<p>action 2</p>
+<p>so third dimension value 2 then i can</p>
+<p>move from any of the four states</p>
+<p>again columns 2 state 2 which is the</p>
+<p>hint state</p>
+<p>and so forth for action 3 and action 4</p>
+<p>moving to</p>
+<p>choose the left bandit or the left</p>
+<p>machine</p>
+<p>or choosing the right machine so these</p>
+<p>are going to be the four</p>
+<p>actions which are just the four possible</p>
+<p>transitions</p>
+<p>um and then when you specify policies</p>
+<p>this thing in v this is just saying for</p>
+<p>each state factor</p>
+<p>which of those actions can i string</p>
+<p>together</p>
+<p>um so v for</p>
+<p>one here for state factor one is just a</p>
+<p>bunch of ones because again</p>
+<p>there's only one action it just stays in</p>
+<p>whatever state it started in</p>
+<p>um and each column here is a policy and</p>
+<p>each row is a time</p>
+<p>is a an action time point basically so</p>
+<p>this is saying</p>
+<p>so the first row here is what action</p>
+<p>could i take</p>
+<p>when moving from time one to time two</p>
+<p>and the</p>
+<p>third row and the second row here is</p>
+<p>what action could i take when moving</p>
+<p>from time to time</p>
+<p>three and again each of these columns</p>
+<p>just says stay in ones because there is</p>
+<p>no</p>
+<p>possible action for uh</p>
+<p>changing the context but</p>
+<p>policy the policy for a space for data</p>
+<p>or for</p>
+<p>factor two here um so again the the</p>
+<p>actions</p>
+<p>um there's these five columns and this</p>
+<p>just says</p>
+<p>i can move to the start state and i can</p>
+<p>stay in the start state right so that's</p>
+<p>just</p>
+<p>action one up here twice um then the</p>
+<p>second column here says</p>
+<p>i could take action two so look at the</p>
+<p>hint</p>
+<p>and then yeah</p>
+<p>and then uh move to</p>
+<p>action three which is choose the left</p>
+<p>machine or i could take the hint two</p>
+<p>and then choose four which is move to</p>
+<p>the right machine or i can go straight</p>
+<p>to the right machine</p>
+<p>and then go back to start or i can go</p>
+<p>straight</p>
+<p>to the or straight to the sorry three is</p>
+<p>the left machine or straight to the</p>
+<p>right machine</p>
+<p>action four and then go back to start so</p>
+<p>so in other words</p>
+<p>you know there's a bunch of other</p>
+<p>possible transitions right strings that</p>
+<p>you might think of right you might</p>
+<p>for instance go to the left machine and</p>
+<p>then go take the hint or something like</p>
+<p>that but we're not allowing that we're</p>
+<p>saying</p>
+<p>these are the allowable transitions so</p>
+<p>these are the different policies</p>
+<p>or action sequences that can be chosen</p>
+<p>so correct me if i'm wrong but it seems</p>
+<p>that this tensorial structure kind of</p>
+<p>allows us to compress</p>
+<p>all those different combinatorial you</p>
+<p>know combinations that we might have so</p>
+<p>it allows</p>
+<p>the structure of basically just allows</p>
+<p>the code to be a little more efficient</p>
+<p>is that</p>
+<p>at the end of the day yeah that's a</p>
+<p>perfectly reasonable way to talk about</p>
+<p>it</p>
+<p>um so so okay so so that already gives</p>
+<p>you kind of a</p>
+<p>little bit of a start here um so now</p>
+<p>um um and then and then in</p>
+<p>so at the end of the day what we're</p>
+<p>going to be doing is we're going to be</p>
+<p>specifying</p>
+<p>each of these things so t the amount of</p>
+<p>time steps v the policy space</p>
+<p>a the likelihood the state outcome</p>
+<p>mapping</p>
+<p>b the transition probabilities or</p>
+<p>transition matrices</p>
+<p>c which is the preferred uh observations</p>
+<p>this is preferred states here but it</p>
+<p>should be preferred observations</p>
+<p>um d it would be the priors of our</p>
+<p>initial states</p>
+<p>um and then all these other extra little</p>
+<p>parameters that you</p>
+<p>can or cannot include i'll talk about</p>
+<p>those later</p>
+<p>um but then we also specify this little</p>
+<p>d which basically says the thing doesn't</p>
+<p>start out knowing the context</p>
+<p>so it has to learn the context over</p>
+<p>trials it has to sort of build up</p>
+<p>beliefs about d</p>
+<p>over trials um so</p>
+<p>with that as a kind of quick background</p>
+<p>um</p>
+<p>i'm going to now kind of move into the</p>
+<p>code</p>
+<p>it's cool that the whole thing is stored</p>
+<p>as one</p>
+<p>object with a bunch of fields because</p>
+<p>it's almost like you could have</p>
+<p>ensembles of these different models or</p>
+<p>you might have a bunch of ants in a</p>
+<p>colony</p>
+<p>it really lends itself to being</p>
+<p>reproducible and transparent</p>
+<p>with what each parameter is and</p>
+<p>comparing a whole host of them alongside</p>
+<p>or different kinds of models</p>
+<p>just really cool to see that instead of</p>
+<p>just a tangle of parameters</p>
+<p>that you can get lost in this is like a</p>
+<p>column of things that each has a very</p>
+<p>clear</p>
+<p>purpose uh yeah so i should say so you</p>
+<p>you do yeah put all these things into</p>
+<p>the structure</p>
+<p>that would usually just call little mvp</p>
+<p>which just stands for markov decision</p>
+<p>process</p>
+<p>um and then when you actually run the</p>
+<p>thing then you run it through</p>
+<p>the uh the uh vb the spm mdp vb</p>
+<p>underscore x</p>
+<p>uh code and we've provided a version</p>
+<p>that just</p>
+<p>appends it with the word tutorial um</p>
+<p>and you make that big mdp and then you</p>
+<p>can take</p>
+<p>use sub commands like this that just um</p>
+<p>generate figures</p>
+<p>that will show you the outcomes of the</p>
+<p>the simulation</p>
+<p>um and these are examples sort of</p>
+<p>simulation results</p>
+<p>but again i'll go into these after um we</p>
+<p>go through some of the code</p>
+<p>because to know how to actually use this</p>
+<p>stuff you need to understand the code</p>
+<p>um so hopefully i can make this not</p>
+<p>too monotonous you know walking through</p>
+<p>code isn't always the most exciting</p>
+<p>but um the way that we have this set up</p>
+<p>um is you know like i said we have</p>
+<p>comments that kind of try our best to</p>
+<p>explain what every little command means</p>
+<p>you know like what clear and close</p>
+<p>all mean what uh rng default means you</p>
+<p>know etc</p>
+<p>um i'm actually going to change this to</p>
+<p>shuffle</p>
+<p>and what that means is just that um the</p>
+<p>matlab will use a random number</p>
+<p>generator that um</p>
+<p>won't do the exact same thing each time</p>
+<p>so we can get</p>
+<p>variable results when we run it</p>
+<p>so we've provided um several different</p>
+<p>simulation</p>
+<p>options that we can use after building</p>
+<p>the model below which is what i'll walk</p>
+<p>through</p>
+<p>so if you set the sim variable equal to</p>
+<p>one</p>
+<p>then that will just simulate a single</p>
+<p>trial which will</p>
+<p>reproduce uh figure seven um</p>
+<p>in in the paper um so that'd just be a</p>
+<p>single trial simulation</p>
+<p>if you set sim equal to two then that'll</p>
+<p>simulate multiple trials</p>
+<p>um where the left context is always</p>
+<p>active but um</p>
+<p>the agent won't know that right the</p>
+<p>agent has to learn okay the the</p>
+<p>left one is the one it always is so</p>
+<p>after a while it'll be confident and</p>
+<p>won't</p>
+<p>need to take the hint anymore um if i</p>
+<p>could just briefly interject there so</p>
+<p>that would be</p>
+<p>for example an example of what we talked</p>
+<p>about earlier as parameter exploration</p>
+<p>yes uh well well not exactly it would be</p>
+<p>an example</p>
+<p>of learning the parameters over</p>
+<p>successive um</p>
+<p>yeah so state i mean state exploration</p>
+<p>is a bigger thing here right because</p>
+<p>either they choose to move to the queue</p>
+<p>or not to learn which context it is yeah</p>
+<p>i agree that so yeah the tricky thing is</p>
+<p>is that when you only have two options</p>
+<p>then</p>
+<p>parameter exploration would just amount</p>
+<p>to even though i've gotten some good</p>
+<p>results from</p>
+<p>choosing the left one</p>
+<p>i might also instead try to choose the</p>
+<p>right one a few times to be more</p>
+<p>confident in what the</p>
+<p>reward probability is for the right one</p>
+<p>but typically to get good dynamics like</p>
+<p>that you're probably</p>
+<p>gonna need something that has um has</p>
+<p>more like three arms</p>
+<p>like three different options instead of</p>
+<p>two</p>
+<p>if you're also going to include the</p>
+<p>state exploration thing with the q</p>
+<p>um it would get a little more</p>
+<p>complicated like a standard kind of</p>
+<p>paradigm for doing parameter exploration</p>
+<p>would be something where</p>
+<p>you don't have the queue and the um the</p>
+<p>agent just has like three choices</p>
+<p>and it just kind of has to choose</p>
+<p>different ones over time until it</p>
+<p>becomes confident</p>
+<p>which one is the best and then it'll</p>
+<p>just keep choosing that one</p>
+<p>so the parameter exploration would</p>
+<p>amount to how many times kind of it</p>
+<p>it chooses each slot machine initially</p>
+<p>just to figure out which one is best um</p>
+<p>and um a standard reinforcement learning</p>
+<p>agent will do that differently</p>
+<p>than an active inference agent um and</p>
+<p>the the substance use study i mentioned</p>
+<p>above actually specifically did that</p>
+<p>um but uh but yeah so just one question</p>
+<p>here</p>
+<p>in this sim equals one two three four</p>
+<p>five they're like</p>
+<p>scenarios that you're going to be able</p>
+<p>to rapidly</p>
+<p>plug and play so scenario one is like a</p>
+<p>static or scenario two is</p>
+<p>multi-trial so this is what is going to</p>
+<p>allow reproducible construction of the</p>
+<p>figures</p>
+<p>and understanding of how different</p>
+<p>parameter changes influence behavior but</p>
+<p>that's what we're laying out right now</p>
+<p>it's kind of like the scenarios</p>
+<p>for the agent right okay yeah i don't</p>
+<p>know about it quick</p>
+<p>is one thing i think sim five would take</p>
+<p>about half an hour to run</p>
+<p>yeah don't do it sim five we'll talk</p>
+<p>about with when we talk about parameter</p>
+<p>fitting which will be a different</p>
+<p>session</p>
+<p>um but mainly we'll be talking about sim</p>
+<p>one two and three here which just has to</p>
+<p>do with perception and learning</p>
+<p>as opposed to the real empirical stuff</p>
+<p>which is estimating parameters um</p>
+<p>and uh you know using them you know</p>
+<p>for group level analyses and things like</p>
+<p>that well it's just so helpful though</p>
+<p>how it's laid out</p>
+<p>from the most static straightforward</p>
+<p>perceptive</p>
+<p>inference to action in the loop and then</p>
+<p>now that action's in the loop</p>
+<p>we're gonna think about the simplest</p>
+<p>setting to explore action in a loop on a</p>
+<p>single trial</p>
+<p>unchanging and then we're going to keep</p>
+<p>on adding layers of ecological</p>
+<p>variability or other</p>
+<p>features into the model so thanks for</p>
+<p>making it so step wise and that's why</p>
+<p>it's a step-by-step tutorial</p>
+<p>yeah yeah we tried um but that's the</p>
+<p>last thing for</p>
+<p>for today so if you set sem equal to</p>
+<p>three</p>
+<p>then um that will simulate a reversal</p>
+<p>learning uh situation</p>
+<p>and that's where basically the left</p>
+<p>context is active for a certain number</p>
+<p>of trials</p>
+<p>and so the agent should build up a prior</p>
+<p>expectation that it's just the left one</p>
+<p>every time</p>
+<p>so it'll stop taking the hint and just</p>
+<p>start choosing left</p>
+<p>but then it switches and so now the</p>
+<p>right context is the right one</p>
+<p>is the correct one and you see basically</p>
+<p>how long it takes</p>
+<p>before the agent again says okay now i</p>
+<p>need to start taking the hint again</p>
+<p>and then eventually when it becomes</p>
+<p>confident to just choosing the right one</p>
+<p>you know directly um and not needing to</p>
+<p>take the hint</p>
+<p>um so it's kind of like a standard</p>
+<p>reversal learning</p>
+<p>kind of task um so those are the three</p>
+<p>that hopefully we'll get through today</p>
+<p>um and um there are several parameters</p>
+<p>you know that can be kind of messed with</p>
+<p>but the one that i've focused on mainly</p>
+<p>here at least</p>
+<p>we can set in the beginning is um this</p>
+<p>rs1 thing which just turns into rs</p>
+<p>later down um but that stands for risk</p>
+<p>seeking or it could also be reward</p>
+<p>seeking</p>
+<p>um but more or less the bigger this</p>
+<p>value is the</p>
+<p>stronger the agent's preference is for</p>
+<p>uh winning as much money as possible</p>
+<p>so it's this is the value that's in the</p>
+<p>c matrix that defines preferences</p>
+<p>over winning versus losing um so the</p>
+<p>bigger this number</p>
+<p>the the more the agent</p>
+<p>is going to say okay i care more about</p>
+<p>reward than about information and</p>
+<p>therefore i'm just going to take the</p>
+<p>risky choice to go for</p>
+<p>one of the slot machines directly so the</p>
+<p>the higher this the less information</p>
+<p>seeking the more</p>
+<p>the lower this is the more the more</p>
+<p>information seeking the agent will be</p>
+<p>um and so that's just kind of a really</p>
+<p>simple one</p>
+<p>to show how by tweaking parameters you</p>
+<p>can get different</p>
+<p>results here just allowing you to weight</p>
+<p>how strong the reward value component</p>
+<p>is in the expected free energy versus</p>
+<p>how</p>
+<p>strong the weight is of the information</p>
+<p>seeking component of the expected free</p>
+<p>energy</p>
+<p>um and then um you can kind of ignore</p>
+<p>this</p>
+<p>pebb thing down here this is basically</p>
+<p>you can turn this on if when you do sim</p>
+<p>equals five</p>
+<p>you want to actually do group level</p>
+<p>bayesian analyses on the parameters</p>
+<p>um this will also save the outputs of</p>
+<p>sim</p>
+<p>like chris said sim 5 like takes like a</p>
+<p>half hour to run</p>
+<p>so if you turn this thing on it'll also</p>
+<p>save</p>
+<p>the results of sim 5 so you can run this</p>
+<p>peb thing</p>
+<p>without having to reduce m5 every time</p>
+<p>um</p>
+<p>so we just figured hopefully that would</p>
+<p>help i just i just want to jump in and</p>
+<p>point out that it's really nice in this</p>
+<p>part where</p>
+<p>for example with ourselves set there now</p>
+<p>let's say that i'm designing my</p>
+<p>experiment and i need to know how many</p>
+<p>trials and how many</p>
+<p>uh subjects do i need when i'm doing my</p>
+<p>power analysis</p>
+<p>i can run a simulation like this set</p>
+<p>that parameter at what i think might be</p>
+<p>a reasonable range of values from the</p>
+<p>literature</p>
+<p>and then i can say well this is the</p>
+<p>expected difference in my groups based</p>
+<p>on what i think this range of values</p>
+<p>might be so it's a really powerful tool</p>
+<p>to be able to plug and play a single</p>
+<p>parameter like that</p>
+<p>yeah i know it's nice i mean typically</p>
+<p>with experimental you know with</p>
+<p>experiments what you do want to do first</p>
+<p>is you want to kind of see hey</p>
+<p>can tweaking different parameters in the</p>
+<p>model</p>
+<p>produce simulated behavior that looks a</p>
+<p>lot like the type of behavior i actually</p>
+<p>see in</p>
+<p>real participants um you know so</p>
+<p>yeah so exactly you'd be hoping for is</p>
+<p>hey like there's a chunk of people</p>
+<p>that look like that act as though they</p>
+<p>have a high risk seeking</p>
+<p>value and another group of people they</p>
+<p>have a lower</p>
+<p>risk seeking value based on their</p>
+<p>behavior</p>
+<p>you can fit the model to that explicitly</p>
+<p>and then you can say hey</p>
+<p>is the difference in the rs value</p>
+<p>between these two groups of people does</p>
+<p>that predict anything interesting</p>
+<p>you know does that tell you something</p>
+<p>about you know how well they're going to</p>
+<p>respond to like</p>
+<p>drug a versus drug b or does it tell you</p>
+<p>something about</p>
+<p>um you know their general cognitive</p>
+<p>ability or you know their current</p>
+<p>emotional state or</p>
+<p>you know like you can do all that kind</p>
+<p>of stuff which is the ultimate goal of</p>
+<p>all of this</p>
+<p>um but so okay</p>
+<p>so the first thing we need to do um at</p>
+<p>least in the order i have it set up</p>
+<p>is to set t so t is the number of time</p>
+<p>steps in the trial</p>
+<p>so in this case there are three time</p>
+<p>steps remember because</p>
+<p>the uh the agent</p>
+<p>the agent has to start in the start</p>
+<p>state and then</p>
+<p>move to the second time step choose the</p>
+<p>hint state</p>
+<p>and then third time step choose one of</p>
+<p>the machines</p>
+<p>or it can go straight from the start</p>
+<p>state to one of the machines</p>
+<p>but then at the third time step it'll</p>
+<p>just go back to the start state</p>
+<p>that's how we have it set up anyway so</p>
+<p>you need three time steps</p>
+<p>um so then</p>
+<p>um what's typically easiest is to first</p>
+<p>out</p>
+<p>start out by specifying the uh prior</p>
+<p>expectations over states um and so in</p>
+<p>the</p>
+<p>in big d which is the generative process</p>
+<p>for factor number one which is in the</p>
+<p>braces here</p>
+<p>we just specify this as a column vector</p>
+<p>so a row and then this means that it's</p>
+<p>transposed and becomes a column</p>
+<p>this uh apostrophe thing here</p>
+<p>and so we set this as one and zero which</p>
+<p>just means</p>
+<p>that it's with 100 probability gonna be</p>
+<p>in the left better context</p>
+<p>and then for the second state factor so</p>
+<p>this d2</p>
+<p>thing here we set it so the agent</p>
+<p>always starts out in the start state so</p>
+<p>a one in that first</p>
+<p>entry and then zeros for all the rest</p>
+<p>because it's never going to start</p>
+<p>in the hidden state or in the choose</p>
+<p>left state or in the choose right state</p>
+<p>so we're just saying absolutely the</p>
+<p>agent will always start in the start</p>
+<p>state</p>
+<p>but then and this is all explained but</p>
+<p>then for</p>
+<p>little d this is the agent's actual</p>
+<p>beliefs we say</p>
+<p>the agent has no idea what context it's</p>
+<p>going to be</p>
+<p>to start with so we set these to values</p>
+<p>that are flat so where each uh the left</p>
+<p>better and the right better context have</p>
+<p>the same values</p>
+<p>um but notice here that we didn't set</p>
+<p>these up to add up to one</p>
+<p>um like we did for big d i mean the</p>
+<p>reason</p>
+<p>is is that these are technically what</p>
+<p>are called dirichlet distributions</p>
+<p>um and dirichlet distributions um</p>
+<p>are uh basically they say</p>
+<p>um the smaller these numbers are the</p>
+<p>less confident the agent</p>
+<p>is um in its beliefs so if these are</p>
+<p>0.25 and 0.25</p>
+<p>it thinks it's a flat distribution but</p>
+<p>it's really unconfident</p>
+<p>whereas this thing was like 20 and 20</p>
+<p>then</p>
+<p>it would also believe it's a flat</p>
+<p>distribution but it'd be really really</p>
+<p>confident</p>
+<p>that its beliefs are about a flat</p>
+<p>distribution um</p>
+<p>and to explain that better um i we're</p>
+<p>actually going to transition over to</p>
+<p>chris who's going to give you a little</p>
+<p>bit of am a kind of more</p>
+<p>general explanation of how learning</p>
+<p>works here since you actually do need to</p>
+<p>understand this now</p>
+<p>um so we can transition over to chris</p>
+<p>here briefly</p>
+<p>yep because usually a probability people</p>
+<p>would imagine it sums to one</p>
+<p>something has to happen you know the</p>
+<p>coin has to go heads or tails so it has</p>
+<p>to add up to</p>
+<p>100 has to add up to one to be a</p>
+<p>classical probability</p>
+<p>but this is a little bit of a tweak on</p>
+<p>that some similar features but some</p>
+<p>unique features so</p>
+<p>thanks for switching over there and</p>
+<p>helping us understand it</p>
+<p>yep so can you guys see my screen yes we</p>
+<p>don't see you but we see your screen all</p>
+<p>right</p>
+<p>go ahead all good okay</p>
+<p>so as ryan was saying before essentially</p>
+<p>our likelihood</p>
+<p>what we were talking about before say</p>
+<p>we're talking about the a matrix there</p>
+<p>is technically speaking a</p>
+<p>dirichlet so all of the distributions</p>
+<p>will be categorical distributions our</p>
+<p>d's</p>
+<p>our b's and our a's they're all</p>
+<p>categorical distributions</p>
+<p>um and they all have a pro prior</p>
+<p>or a distribution over the parameter</p>
+<p>space which is a dirichlet distribution</p>
+<p>um and so just kind of the people who</p>
+<p>are technically like in the know as it</p>
+<p>were uh</p>
+<p>a categorical distribution is just a</p>
+<p>special case of</p>
+<p>a multinomial distribution</p>
+<p>and a dirichlet distribution is what's</p>
+<p>called a conjugate prior</p>
+<p>for the categorical and the multinomial</p>
+<p>distributions which just means that</p>
+<p>if you multiply these two things</p>
+<p>together these two distributions</p>
+<p>you get out the distribution that has</p>
+<p>the same form</p>
+<p>as the prior and that's really important</p>
+<p>if you're doing like</p>
+<p>empirical bays for example where the</p>
+<p>prior or</p>
+<p>the posterior after round one serves as</p>
+<p>the prior</p>
+<p>in round the second round of inference</p>
+<p>that kind of thing</p>
+<p>um and so just to briefly go through</p>
+<p>this so um</p>
+<p>you guys can see my cursor right yep</p>
+<p>yeah cool okay</p>
+<p>this is the categorical distribution</p>
+<p>where x is some</p>
+<p>uh categorical variable that occupies</p>
+<p>one of</p>
+<p>one decay mutually exclusive states of</p>
+<p>the world</p>
+<p>that is to say say i have a distribution</p>
+<p>over a grid world</p>
+<p>where my agent is my agent can't be in</p>
+<p>two places at once it's either in like</p>
+<p>it's either left or it's right</p>
+<p>for example um and theta are just the</p>
+<p>parameters of that distribution</p>
+<p>and so this function here this thing's</p>
+<p>sticking out the front</p>
+<p>is this normalization constant we can</p>
+<p>adjust this it just counts the</p>
+<p>combinatorics of the distribution and</p>
+<p>assume and</p>
+<p>ensures that sums to one exactly the</p>
+<p>same thing here with the dirichlet</p>
+<p>distribution</p>
+<p>although it is a distribution over the</p>
+<p>parameter space</p>
+<p>of our likelihood right and so dirichlet</p>
+<p>distributions often kind of colloquially</p>
+<p>called distributions of distributions</p>
+<p>um because they're a distribution over a</p>
+<p>vector that has to sum to one</p>
+<p>and then what's really beautiful about</p>
+<p>these two distributions is that when you</p>
+<p>multiply them together</p>
+<p>and we'll just ignore the normalization</p>
+<p>constant because things get pretty messy</p>
+<p>but you end up with a distribution that</p>
+<p>it has</p>
+<p>at the same functional form as the prior</p>
+<p>it's also a dirichlet distribution so</p>
+<p>our posterior distribution</p>
+<p>over the parameters of our likelihood is</p>
+<p>also</p>
+<p>a dirichlet distribution and all that</p>
+<p>changes when we go from the prior</p>
+<p>likelihood is we add to this little</p>
+<p>alpha thing here it's called a count</p>
+<p>so we essentially just add a count to</p>
+<p>whatever it was that was observed to the</p>
+<p>variable that was observed</p>
+<p>so i'm just going to go into a little</p>
+<p>bit more detail than that on the next</p>
+<p>slide</p>
+<p>is there anything you want to add to</p>
+<p>that ryan um</p>
+<p>no i mean just just i mean at the at the</p>
+<p>end of the day and you know</p>
+<p>chris will chris will cover this you</p>
+<p>know i'm sure is that</p>
+<p>while this might look really complicated</p>
+<p>to somebody who doesn't have a lot of</p>
+<p>math background it really just amounts</p>
+<p>to</p>
+<p>um they're being like what i showed you</p>
+<p>with d there being a number</p>
+<p>that's assigned to each entry um and</p>
+<p>when you observe something</p>
+<p>that number will get bigger um so that</p>
+<p>just</p>
+<p>means that um like what i said that</p>
+<p>uh for instance if i believe that i was</p>
+<p>in the</p>
+<p>left better state the last five times</p>
+<p>then</p>
+<p>i'll add like five numbers</p>
+<p>you know i'll add one five times to that</p>
+<p>left one so now it would be like</p>
+<p>5.25 as opposed to just 0.25</p>
+<p>um and ultimately those numbers</p>
+<p>get soft maxed so they just get</p>
+<p>normalized and turned back into a</p>
+<p>probability distribution</p>
+<p>um but but like i said at the end of the</p>
+<p>day you're just adding</p>
+<p>counts each time you observe something</p>
+<p>yeah</p>
+<p>this is just like how you might be a</p>
+<p>little bit more confident about the true</p>
+<p>ratio of different kinds of colors of</p>
+<p>balls in an urn if you had three of one</p>
+<p>color and then one of the other color</p>
+<p>you're not quite sure</p>
+<p>if you had three million and one million</p>
+<p>you'd be very sure</p>
+<p>and then max you had a question yeah</p>
+<p>so just going to the other end of the</p>
+<p>spectrum then if i'm somebody</p>
+<p>who's in probability theory and i'm</p>
+<p>talking about a dirichlet distribution</p>
+<p>and i'm talking about the support for</p>
+<p>that distribution on the</p>
+<p>open interval 0 1 and as we can see here</p>
+<p>from these equations that are provided</p>
+<p>uh that you know if i if i go to zero</p>
+<p>then i'm basically going to end up with</p>
+<p>a</p>
+<p>since it's multiplying each time then</p>
+<p>there could be problems so</p>
+<p>in practice however uh my question</p>
+<p>not being very experienced with using</p>
+<p>these things in practice</p>
+<p>when we implement this does that have</p>
+<p>much of an effect on any of the</p>
+<p>estimated parameters</p>
+<p>um no but</p>
+<p>one thing to say is that because you</p>
+<p>always work with log</p>
+<p>you we're always in log space we end up</p>
+<p>once you just have basically a little</p>
+<p>numerical trick where</p>
+<p>all of your to make sure that you never</p>
+<p>have a log of 0 we add</p>
+<p>e to the negative 16 to all the entries</p>
+<p>um does that kind of answer your</p>
+<p>question</p>
+<p>yeah so if for example if i see at the</p>
+<p>end of the day</p>
+<p>uh i might have a a converged parameter</p>
+<p>that has apparently a very low</p>
+<p>log likelihood of uh you know when i</p>
+<p>when i converge on that estimate is it</p>
+<p>you know maybe part of that could be</p>
+<p>related to okay</p>
+<p>there's some times where i'm entering in</p>
+<p>a state that might be</p>
+<p>unlikely to occur most of the time or</p>
+<p>maybe it wasn't observed in this</p>
+<p>particular set of experiments but the</p>
+<p>rest of it kind of</p>
+<p>holds up is that maybe one way to think</p>
+<p>about low low</p>
+<p>uh values uh when i converge to my</p>
+<p>parameter estimates</p>
+<p>um i'm not sure i totally understand the</p>
+<p>example just because it's a bit a little</p>
+<p>bit abstract could we give it</p>
+<p>how about the the slot machine example</p>
+<p>it's like you go into the casino you've</p>
+<p>never done any of the slot machines</p>
+<p>it's like you haven't had much</p>
+<p>experience so even if you're</p>
+<p>um not sure about which one's better</p>
+<p>it's like you're not sure</p>
+<p>overall and then as you try more of the</p>
+<p>slot machines just like ryan was saying</p>
+<p>you increment up observations so to</p>
+<p>speak in those columns</p>
+<p>so after you've made a thousand slot</p>
+<p>machine visits you're a little bit more</p>
+<p>confident than after you had made</p>
+<p>zero or one or few is that the case just</p>
+<p>to bring it to the example</p>
+<p>that we're gonna be sure yeah or i could</p>
+<p>pull the slot machine three times and</p>
+<p>get</p>
+<p>only one result observed and i would</p>
+<p>never have um</p>
+<p>the complement to that result observed</p>
+<p>and so then effectively my my</p>
+<p>probability distribution is</p>
+<p>then one and zero on my posterior um</p>
+<p>so if i end up having like weird looking</p>
+<p>numbers</p>
+<p>in my on my converged parameter</p>
+<p>estimates in terms of the log</p>
+<p>likelihoods for the different things</p>
+<p>it's kind of maybe just relates to this</p>
+<p>particular property but at the end of</p>
+<p>the day</p>
+<p>what it sounds like is that i'm still</p>
+<p>going to converge to the correct values</p>
+<p>using this</p>
+<p>approach that's just like kind of an</p>
+<p>insurance um</p>
+<p>yeah i'm not sure honestly about any if</p>
+<p>there are any formal results that relate</p>
+<p>to this</p>
+<p>um but in practice because</p>
+<p>we always basically the categorical</p>
+<p>distribution is just and</p>
+<p>it just ends up being a soft max</p>
+<p>function over the concentration</p>
+<p>parameters</p>
+<p>um you'll always have something that's</p>
+<p>between zero and one</p>
+<p>um and the concentration parameters are</p>
+<p>basically will always kind of be</p>
+<p>somewhere between</p>
+<p>zero if it's never been observed and</p>
+<p>at whatever it is it goes to however</p>
+<p>high your</p>
+<p>however many experiments you run or</p>
+<p>simulations you run</p>
+<p>um i've never encountered a problem with</p>
+<p>this</p>
+<p>but then again i've never actually</p>
+<p>really looked into</p>
+<p>um possible consequences of</p>
+<p>that so i just don't know i'm sorry ryan</p>
+<p>do you ever think so um i mean the only</p>
+<p>thing i would say</p>
+<p>yeah and maybe maybe i misunderstood the</p>
+<p>question but i mean if it has to do with</p>
+<p>whether or not you'll</p>
+<p>there's certainly no guarantee that</p>
+<p>you'll converge on the</p>
+<p>on the uh on the true generative process</p>
+<p>yeah there's there's lots of cases where</p>
+<p>things can go wrong and you'll get stuck</p>
+<p>in local minima and things like that</p>
+<p>um we actually show several examples of</p>
+<p>that in this uh structure learning</p>
+<p>paper um where we show how you can use</p>
+<p>how you can use active inference for</p>
+<p>structure learning and um</p>
+<p>like bayesian model expansion or state</p>
+<p>space expansion and safe space</p>
+<p>production and things like that</p>
+<p>there's lots of cases where you'll</p>
+<p>end up with the wrong likelihood um</p>
+<p>so so it's not uh yeah it's</p>
+<p>or maybe in my mind just a caveat would</p>
+<p>then be</p>
+<p>you know if going to that example with</p>
+<p>the posterior distribution i only have</p>
+<p>uh pulled the or picked a machine three</p>
+<p>times</p>
+<p>um when we're designing our experiment</p>
+<p>it might be important to consider</p>
+<p>setting it up so that</p>
+<p>you know we're not going to get into the</p>
+<p>case where we only have a sample of n of</p>
+<p>three because obviously that doesn't</p>
+<p>sound like good science to anybody</p>
+<p>anyways but</p>
+<p>it's just kind of the oversimplified</p>
+<p>case where as you add more categories</p>
+<p>you could run into that scenario for one</p>
+<p>of your particular categories which</p>
+<p>could cause some problems</p>
+<p>it sounds like if there's a hundred</p>
+<p>kinds of cereal and you only</p>
+<p>let people choose one time you're not</p>
+<p>going to get a good estimate it's kind</p>
+<p>of like a</p>
+<p>sample size and an experimental design</p>
+<p>question</p>
+<p>so just to kind of pull back for those</p>
+<p>because that's that's a</p>
+<p>really interesting question about where</p>
+<p>there's probability or</p>
+<p>how different sample sizes are related</p>
+<p>to each other but</p>
+<p>we're just thinking about this the</p>
+<p>structure for how</p>
+<p>additional observations are going to</p>
+<p>increase</p>
+<p>the kind or the the quality of this</p>
+<p>estimate of a parameter yeah and you'll</p>
+<p>and you'll see and what</p>
+<p>and what chris shows you that that um</p>
+<p>like the</p>
+<p>basically the the lower the</p>
+<p>concentration val the concentration</p>
+<p>priority values are</p>
+<p>generally the more the expected free</p>
+<p>energy will be weighted</p>
+<p>toward um choosing like uh parameter</p>
+<p>exploration policies</p>
+<p>right so it'll be a thing where if it's</p>
+<p>never chosen the</p>
+<p>99th serial before it'll be driven to go</p>
+<p>choose that one</p>
+<p>just because it wants to be more</p>
+<p>confident in what the actual parameters</p>
+<p>are</p>
+<p>but but anyway i uh crystal yeah go go</p>
+<p>ahead</p>
+<p>yeah yeah so we actually don't yeah we</p>
+<p>actually don't have any numerical</p>
+<p>examples in the paper where we</p>
+<p>kind of have show the free energy values</p>
+<p>um for different parameter</p>
+<p>values we only kind of have state</p>
+<p>exploration</p>
+<p>terms but um there are i mean</p>
+<p>maybe that's something we could add to</p>
+<p>the paper actually that would be</p>
+<p>something interesting</p>
+<p>yeah people yeah okay</p>
+<p>so essentially just to kind of give a</p>
+<p>little recap we just have</p>
+<p>our uh our</p>
+<p>probability distribution over a or the</p>
+<p>parameters of a is just a dirichlet</p>
+<p>distribution</p>
+<p>over kind of over a and then so we</p>
+<p>just end up with a matrix that has</p>
+<p>the number right where the rows are our</p>
+<p>possible observations</p>
+<p>and the columns are our hidden states</p>
+<p>and</p>
+<p>literally all that we're doing this so</p>
+<p>this little term this little kind of</p>
+<p>cross inside a circle is called a</p>
+<p>kronecker tensor product</p>
+<p>um actually that goodness is that</p>
+<p>correct i actually don't know</p>
+<p>that's the notation cross product</p>
+<p>it's in the spm textbook that notation</p>
+<p>is used for the chronicler</p>
+<p>product yeah thank you okay good um</p>
+<p>sorry i just had a brief mind blank i</p>
+<p>was like oh god anyway so and this eta</p>
+<p>thing here is just a learning rate and</p>
+<p>so whatever it will just multiply</p>
+<p>essentially this here so say i'll just</p>
+<p>give an example</p>
+<p>and we'll just add that to our previous</p>
+<p>values of whatever these a's are so just</p>
+<p>very simply say we have our posterior</p>
+<p>over states</p>
+<p>is something like 0.7.3 and</p>
+<p>our op we receive observation so this is</p>
+<p>a</p>
+<p>transpose vector so this corresponds to</p>
+<p>row 2. this all that this would do is</p>
+<p>we're literally adding</p>
+<p>a value of 0.7 and 0.3 to</p>
+<p>this matrix that's all that learning is</p>
+<p>really it's very simple um and then</p>
+<p>both of these things will get both of</p>
+<p>these uh columns will get passed through</p>
+<p>a softmax function at the end of the day</p>
+<p>and just kind of give</p>
+<p>a give an example of what we're talking</p>
+<p>about before so because they're both</p>
+<p>soft maxed</p>
+<p>all that soft all soft max cares about</p>
+<p>is</p>
+<p>that the difference between the two</p>
+<p>numbers in</p>
+<p>all the two elements of the vector so 51</p>
+<p>and 50 and two and one</p>
+<p>the same same value in the softmax but</p>
+<p>in one case the model is incredibly</p>
+<p>confident and in the other case it's not</p>
+<p>confident at all</p>
+<p>for example so if you had an agent that</p>
+<p>was actually doing parameter exploration</p>
+<p>there would be no the agent would have</p>
+<p>no motivation whatsoever</p>
+<p>to explore the parameters in the first</p>
+<p>case of 5150 but it would be quite</p>
+<p>motivated in the case of two one</p>
+<p>for example even though the likelihood</p>
+<p>distribution you end up getting out of</p>
+<p>that</p>
+<p>is the same okay good</p>
+<p>um so that is actually i think all that</p>
+<p>we really had that's all that i'd</p>
+<p>prepared for this is because</p>
+<p>it's really is in practice it's so</p>
+<p>simple</p>
+<p>um so back to you ryan okay</p>
+<p>sorry</p>
+<p>okay so anyway with that as a little bit</p>
+<p>of the background</p>
+<p>always all we're doing here is we're</p>
+<p>saying to start with the agent believes</p>
+<p>it's a flat distribution it has no idea</p>
+<p>which one's going to be better</p>
+<p>left or right on each trial that's in</p>
+<p>little d because that's our model</p>
+<p>so each time it believes that it was in</p>
+<p>the left better context it's just going</p>
+<p>to keep adding</p>
+<p>you know numbers to this 0.25 here</p>
+<p>and those will be scaled by the learning</p>
+<p>rate thing that uh</p>
+<p>that um chris showed where uh you know</p>
+<p>if</p>
+<p>if learning rate is one then each time</p>
+<p>it observes the left better context</p>
+<p>it'll just add a one so it'll become</p>
+<p>1.25 and then 2.25</p>
+<p>etc but if the learning rate was like</p>
+<p>0.5</p>
+<p>so it was like lower then it would add</p>
+<p>0.5</p>
+<p>each time so it'd be 0.75 1.25</p>
+<p>etc so the learning rate just scales how</p>
+<p>big the counts are they get added</p>
+<p>um and the learning rate could be zero</p>
+<p>at which case there wouldn't be an</p>
+<p>updating just</p>
+<p>thinking about just what could the whole</p>
+<p>range be from</p>
+<p>not a learning agent to very slowly</p>
+<p>incorporating new information</p>
+<p>using this dirichlet framework that</p>
+<p>christopher just described</p>
+<p>all the way up to just ridiculously high</p>
+<p>values so that</p>
+<p>it just yeah i should just highlight as</p>
+<p>well i think there's this is</p>
+<p>i just kind of want to this probably</p>
+<p>isn't a good point for discussion just</p>
+<p>to keep things moving but one thing</p>
+<p>that's worth highlighting is there's a</p>
+<p>genuine kind of</p>
+<p>debate or maybe debates a bit too strong</p>
+<p>word but discussion to be had</p>
+<p>about whether we should actually be</p>
+<p>moduling modulating learning rate</p>
+<p>given that the model is bayes optimal or</p>
+<p>approximately bayes optimal one would</p>
+<p>assume that there should be a way of</p>
+<p>modeling things without actually</p>
+<p>changing the learning rate from one</p>
+<p>um but in practice i'm not sure if that</p>
+<p>actually works but</p>
+<p>anyway so yeah so i mean i mean</p>
+<p>technically technically a learning rate</p>
+<p>of one is optimal</p>
+<p>yeah but for but for um</p>
+<p>for when you're fitting behavior when</p>
+<p>you're fitting the model to behavior</p>
+<p>um most people are not</p>
+<p>optimal um and so uh you have to</p>
+<p>estimate</p>
+<p>typically the learning rate for each</p>
+<p>person</p>
+<p>and oftentimes it's quite a bit below</p>
+<p>one but that's actually an interesting</p>
+<p>attribute and again it's an example</p>
+<p>about how using these generative</p>
+<p>and generalizable frameworks help us</p>
+<p>compare not just</p>
+<p>who could remember more numbers or who</p>
+<p>had a faster reaction time</p>
+<p>as far as just observable</p>
+<p>characteristics we're moving a step back</p>
+<p>and asking whether</p>
+<p>people might differ in their learning</p>
+<p>rate or in other attributes of this</p>
+<p>model</p>
+<p>yeah and there's also and again i mean</p>
+<p>this isn't something to really get into</p>
+<p>so much but</p>
+<p>there is effectively a learning rate</p>
+<p>that comes out of the</p>
+<p>precision of your posterior beliefs over</p>
+<p>states</p>
+<p>um like for instance if your posterior</p>
+<p>beliefs over states are really imprecise</p>
+<p>like say it's like point say afterwards</p>
+<p>you know this is like</p>
+<p>0.6.4 then whatever observation that you</p>
+<p>get</p>
+<p>is just going to add counts of 0.6 and</p>
+<p>0.4</p>
+<p>which means that you're not really going</p>
+<p>to build up</p>
+<p>strong priors um you know uh</p>
+<p>um a straw a more precise prior for one</p>
+<p>over the other</p>
+<p>um because uh you're you're not</p>
+<p>confident about which state you're in</p>
+<p>just a quick</p>
+<p>example of that you go into the casino</p>
+<p>and you're drawn a card</p>
+<p>and you can't read the card or it's the</p>
+<p>number is rubbed off so if there's no</p>
+<p>precision at the sensory level</p>
+<p>with which card you drew you're not</p>
+<p>going to be updating</p>
+<p>your estimate of how likely different</p>
+<p>numbers are and then if there's a</p>
+<p>perfectly legible card</p>
+<p>so it's 100 you have no error about</p>
+<p>which card it is</p>
+<p>there's the secondary question about how</p>
+<p>much you update your internal</p>
+<p>model but it's not a precision about the</p>
+<p>perception</p>
+<p>question so it's really a nice point and</p>
+<p>it's worth</p>
+<p>understanding that you can have</p>
+<p>uncertainty about observations</p>
+<p>that then is captured by this model but</p>
+<p>also</p>
+<p>even in the case of precise or even</p>
+<p>totally observable scenarios</p>
+<p>there's additional uncertainty related</p>
+<p>to learning</p>
+<p>yeah i mean again there's still</p>
+<p>potential problems i mean what tends to</p>
+<p>happen in these models is especially if</p>
+<p>learning rate is one then like</p>
+<p>the agent kind of becomes too confident</p>
+<p>too quickly</p>
+<p>or or a better way to put it as they</p>
+<p>once they've like observed a certain</p>
+<p>number of like</p>
+<p>lefts for example becomes really hard</p>
+<p>for it to</p>
+<p>unlearn that um which is different from</p>
+<p>what humans do</p>
+<p>humans tend to infer that there's a</p>
+<p>different context like okay no now it's</p>
+<p>the</p>
+<p>now it's a new context where right is</p>
+<p>better so it doesn't necessarily unlearn</p>
+<p>the original uh counts</p>
+<p>it instead sort of infers now i'm in a</p>
+<p>new state and i need to accrue</p>
+<p>different counts for that state um and</p>
+<p>that requires more complex</p>
+<p>models which can also be built just but</p>
+<p>couple couple little notes that that's</p>
+<p>kind of like humans using narrative</p>
+<p>to help reset local parameter</p>
+<p>estimations like oh well now it's a new</p>
+<p>day</p>
+<p>so now things that were unlikely</p>
+<p>yesterday now it can be likely today</p>
+<p>and also it relates to this question</p>
+<p>about the optimal learning rate in a</p>
+<p>mathematical or an analytical framework</p>
+<p>maybe one or</p>
+<p>some other number is quote optimal but</p>
+<p>then in a realized</p>
+<p>ecological setting it might be actually</p>
+<p>not</p>
+<p>the best solution in that setting</p>
+<p>yeah um so i mean yeah typically people</p>
+<p>talk about this in other literature as</p>
+<p>being like laden cause inference or leia</p>
+<p>like inferring the latent causes um</p>
+<p>behind things there's different latent</p>
+<p>cause it's kind of the same thing as</p>
+<p>saying there's a different context and</p>
+<p>therefore a different likelihood</p>
+<p>um but uh but yeah so so i'll just kind</p>
+<p>of you know go through this here you</p>
+<p>know kind of step by step so</p>
+<p>you know so i so i'm gonna set up right</p>
+<p>so i have</p>
+<p>um i have my big d and my little d</p>
+<p>here um and then the next thing i'm</p>
+<p>going to do</p>
+<p>is i'm doing this a little bit you know</p>
+<p>condensed is to just</p>
+<p>set the number of states here for each</p>
+<p>state factor so that's going to be the</p>
+<p>length of d1 and the length</p>
+<p>of d2 so this one's going to be the two</p>
+<p>contacts so there's going to be two</p>
+<p>states</p>
+<p>and this one's going to be the length of</p>
+<p>d2 which is going to be four states</p>
+<p>so at the end of the day this ns thing</p>
+<p>if you look on the right</p>
+<p>is just going to look like that 2 and 4.</p>
+<p>just one</p>
+<p>note there for those who are unfamiliar</p>
+<p>with matlab so at line 148 where ns</p>
+<p>is you put a little red dot like a stop</p>
+<p>sign and then</p>
+<p>you hit run which ran everything that we</p>
+<p>had just discussed from a clean slate</p>
+<p>up to that line and then it halted so</p>
+<p>that's what allowed us to actually</p>
+<p>instantiate all these variables we were</p>
+<p>just talking about</p>
+<p>and then you stepped just one line at a</p>
+<p>time</p>
+<p>so that you could run this line 148 with</p>
+<p>all of its prerequisites fulfilled so</p>
+<p>it's kind of like a break point in the</p>
+<p>program</p>
+<p>we took a breath and then we ran one</p>
+<p>line and so now we're going to go step</p>
+<p>by step</p>
+<p>yeah it just allows you to kind of see</p>
+<p>what it's doing step by step which is</p>
+<p>yeah it's helpful so sorry</p>
+<p>i should have said what plays and step</p>
+<p>and stuff like that um</p>
+<p>so so now that i've specified that i can</p>
+<p>put this little for loop thing which</p>
+<p>just says</p>
+<p>um for that for i equals one to the</p>
+<p>number of states</p>
+<p>for factor two um i'm just going to make</p>
+<p>it all</p>
+<p>the no hint this is just saying for all</p>
+<p>the matrices</p>
+<p>in a1 to start with um</p>
+<p>everything is just going to generate the</p>
+<p>no hint observation</p>
+<p>um so it will end up just looking</p>
+<p>like this where uh</p>
+<p>right so i just have so this is just</p>
+<p>saying um and i should say that</p>
+<p>the columns correspond to the first day</p>
+<p>factor so</p>
+<p>left context right context and these</p>
+<p>third the third</p>
+<p>dimension here one two three four that's</p>
+<p>what corresponds to the</p>
+<p>second state factor which is the um</p>
+<p>the behavior so this is saying</p>
+<p>when i'm in the start state one each</p>
+<p>context</p>
+<p>is going to generate the no hint</p>
+<p>observation when i'm in the hint stay</p>
+<p>factor</p>
+<p>it's going to generate the no hint</p>
+<p>observation and so forth so i'm just</p>
+<p>starting it that way</p>
+<p>for ease to say that they're all that</p>
+<p>way but then what i'm going to do</p>
+<p>is i'm going to define this thing pha</p>
+<p>which is the probability</p>
+<p>of the hint being accurate</p>
+<p>and again this is just kind of to make</p>
+<p>things uh</p>
+<p>a little bit concise and convenient and</p>
+<p>then i'm going to replace</p>
+<p>that a2 because remember a2 means i'm in</p>
+<p>the hint state</p>
+<p>um and so i'm going to say when i'm in</p>
+<p>the hint state</p>
+<p>column one in column one here</p>
+<p>i'm gonna observe the machine left hint</p>
+<p>with some probability if i'm in the</p>
+<p>machine left state which is the left</p>
+<p>column</p>
+<p>and then one minus that for the no hint</p>
+<p>state</p>
+<p>and again if i'm in the right the right</p>
+<p>better</p>
+<p>context so the the right column here</p>
+<p>then it's going to be the reverse</p>
+<p>i'm going to observe the right machine</p>
+<p>with some probability</p>
+<p>just one one note on that ryan so people</p>
+<p>might look at this and wonder why didn't</p>
+<p>you just say hint or no hint instead of</p>
+<p>this one minus one equals zero</p>
+<p>and this is because as you've had it it</p>
+<p>generalizes to cues</p>
+<p>that are less than a hundred percent</p>
+<p>accurate so then you could have the</p>
+<p>probability of the hint being accurate</p>
+<p>to being 90 or less or some other value</p>
+<p>and so if you have a probabilistic</p>
+<p>learning task you can model it</p>
+<p>with this exact framework just by</p>
+<p>changing pha equals</p>
+<p>point something rather than reimagining</p>
+<p>the entire</p>
+<p>matrix multiplication which is really</p>
+<p>the hard part</p>
+<p>yeah exactly so so if i step through</p>
+<p>that then in this case i've set pha to 1</p>
+<p>which just means the hint is completely</p>
+<p>accurate</p>
+<p>so now if i look at a1 again</p>
+<p>then it's going to look like this where</p>
+<p>all the other</p>
+<p>behavioral states so in the start state</p>
+<p>in choosing the left state or choosing a</p>
+<p>left machine and choosing the right</p>
+<p>machine</p>
+<p>they those still generate row one here</p>
+<p>both of both contacts do because the no</p>
+<p>hint</p>
+<p>but if i'm in state two which is the</p>
+<p>hint behavioral state then if i'm in the</p>
+<p>left machine</p>
+<p>or if i'm in the left state then i will</p>
+<p>observe</p>
+<p>the left is better hint um with</p>
+<p>probability one and if i'm in the right</p>
+<p>column here the right</p>
+<p>context is better state then i'm going</p>
+<p>to observe</p>
+<p>the right hint observation so the bottom</p>
+<p>row here</p>
+<p>with 100 probability so in other words</p>
+<p>if i observe this thing then i'm going</p>
+<p>to know for sure</p>
+<p>that i i'm now in the left better</p>
+<p>context</p>
+<p>um but if again if i made this like</p>
+<p>0.8.2.2</p>
+<p>then that would just mean you know</p>
+<p>there's some probability that the hints</p>
+<p>gonna</p>
+<p>give me the wrong answer um so that's</p>
+<p>so that's all that is so remember the</p>
+<p>first state factor is the columns the</p>
+<p>second state factor</p>
+<p>is going to be the third dimension</p>
+<p>that's kind of key</p>
+<p>so now what i'm going to do is i'm going</p>
+<p>to define the</p>
+<p>second output modality so this is</p>
+<p>another thing that's important</p>
+<p>is that the uh the number here for a</p>
+<p>that's in the braces that corresponds to</p>
+<p>the outcome</p>
+<p>modality um so the first</p>
+<p>set of observations i can get is</p>
+<p>no hint machine left hint and machine</p>
+<p>right hint</p>
+<p>so that's one set of observations that</p>
+<p>we call like an observation or an</p>
+<p>outcome modality</p>
+<p>um now for a two the second</p>
+<p>observation or outcome modality the</p>
+<p>possible observations</p>
+<p>are null loss</p>
+<p>and win um so what this is saying</p>
+<p>is for the first two behavioral states</p>
+<p>for i equals one and two</p>
+<p>um the uh so being in the start state or</p>
+<p>the hint state is always going to</p>
+<p>generate</p>
+<p>the null observation so it's not going</p>
+<p>to generate a loss or a win</p>
+<p>now after that if i step through here</p>
+<p>i can set what i just called p win so</p>
+<p>the probability of winning</p>
+<p>and i set that to be 0.8 and this is the</p>
+<p>part where the actual reinforcement or</p>
+<p>reward learning</p>
+<p>comes in um because what i can do</p>
+<p>is i can say okay if i'm in</p>
+<p>the left choose the left machine state</p>
+<p>so</p>
+<p>3 then</p>
+<p>the probability of winning the</p>
+<p>probability of losing</p>
+<p>is 1 minus</p>
+<p>p win and the probability of winning in</p>
+<p>the right one</p>
+<p>or the probability of losing in the</p>
+<p>right one if i choose the right one</p>
+<p>is high right which makes sense right</p>
+<p>because if i'm in the left better</p>
+<p>context</p>
+<p>then if i choose the right column right</p>
+<p>if i choose the right</p>
+<p>machine then i'm most likely going to</p>
+<p>lose</p>
+<p>in contrast if i'm in the</p>
+<p>right better context</p>
+<p>and i choose uh if i choose the right</p>
+<p>machine and i'm in the right better</p>
+<p>context</p>
+<p>then the right column here should</p>
+<p>generate a win</p>
+<p>with high probability this is just</p>
+<p>saying if i choose the right machine</p>
+<p>that's the four and i'm in the right con</p>
+<p>right better context which is the right</p>
+<p>column</p>
+<p>then i have a high probability of</p>
+<p>winning</p>
+<p>and vice versa up here if i choose the</p>
+<p>left one</p>
+<p>again just to talk about how this is the</p>
+<p>minimal example we're talking about</p>
+<p>two options with the two slot machines</p>
+<p>there could be more options</p>
+<p>we're talking about how much it costs to</p>
+<p>get the hint and how much it costs when</p>
+<p>you win or how much you receive when you</p>
+<p>win</p>
+<p>that's a parameter you can change how</p>
+<p>accurate the hint is you could have a</p>
+<p>perfectly accurate hint that sends you</p>
+<p>to the slot machine</p>
+<p>that wins 100 of the time so the</p>
+<p>probability of winning</p>
+<p>can now be changed so then you can say</p>
+<p>okay i'm imagining a situation where</p>
+<p>there's a perfect messenger with a hint</p>
+<p>and then it's free to visit that person</p>
+<p>and then it's 100 likely which slot</p>
+<p>machine is the winning one</p>
+<p>or you can imagine these more gray zone</p>
+<p>scenarios where different things are</p>
+<p>associated with each other in a less</p>
+<p>direct way or there's more than two</p>
+<p>options</p>
+<p>just for those who are like seeing this</p>
+<p>one example for the first time</p>
+<p>this is kind of like the tip of the</p>
+<p>iceberg of a big big family of different</p>
+<p>kinds of models that have a lot more</p>
+<p>options and a lot more nuance</p>
+<p>yeah i mean you could have you know 20</p>
+<p>outcome modalities and</p>
+<p>10 state factors if you wanted to it</p>
+<p>would just mean that like there'd be a</p>
+<p>fourth dimension for the third state</p>
+<p>factor and a fifth dimension for the</p>
+<p>fourth state factor and you know it'll</p>
+<p>just get really big really fast</p>
+<p>um but so now that i've done this</p>
+<p>because i set the probability of winning</p>
+<p>to 2.8</p>
+<p>um given that you're you know in the</p>
+<p>correct</p>
+<p>context then a2 will look like this</p>
+<p>so this just says if i choose</p>
+<p>if i'm in the start state i don't</p>
+<p>observe a i never observe a win or a</p>
+<p>loss if i'm in the hit state</p>
+<p>i never observe a win or a loss um</p>
+<p>if i'm if i choose the left option</p>
+<p>the left machine then i will win with</p>
+<p>point eight</p>
+<p>and lose with 0.2 and the opposite</p>
+<p>for if i choose the right one right i'll</p>
+<p>lose with 0.8 if i</p>
+<p>if i choose the left machine and i'm in</p>
+<p>the right</p>
+<p>context and if i choose the right</p>
+<p>machine</p>
+<p>so state 4 here then the probability of</p>
+<p>winning</p>
+<p>is point eight so the third row here is</p>
+<p>winning right</p>
+<p>um and point two and vice versa so this</p>
+<p>is just defining the probability of</p>
+<p>winning</p>
+<p>given your choice given whether it's the</p>
+<p>left better or write better context</p>
+<p>um and i know that's a mouthful but uh</p>
+<p>yeah um so then finally</p>
+<p>um and you know this isn't really all</p>
+<p>that practically interesting</p>
+<p>but it's important to include is is that</p>
+<p>what this just says</p>
+<p>um so outcome modality three is just the</p>
+<p>agent's own behavior</p>
+<p>so what this means is every single time</p>
+<p>it makes a choice it observes itself</p>
+<p>making that choice and all that does is</p>
+<p>make the agent completely confident</p>
+<p>about what it did um but you could</p>
+<p>imagine</p>
+<p>if somebody weren't aware of their own</p>
+<p>decision-making behavior</p>
+<p>you could imagine that might lead to</p>
+<p>decision-making that's not in line with</p>
+<p>what you would do if you could observe</p>
+<p>your behavior</p>
+<p>yeah so you know i mean if you if you</p>
+<p>get rid of this then in some cases the</p>
+<p>agent</p>
+<p>yeah won't be all that confident what he</p>
+<p>did and so therefore it'll be hard for</p>
+<p>him to</p>
+<p>uh hard to learn what actions were the</p>
+<p>right one because we won't know like</p>
+<p>what it shows basically</p>
+<p>uh it'd be like choosing a slot machine</p>
+<p>blind um</p>
+<p>i just want to jump in with a question</p>
+<p>about my</p>
+<p>motor systems context so for example if</p>
+<p>i'm studying sensory motor integration</p>
+<p>and i'm measuring motor cortex signals</p>
+<p>from neurons and motor cortex</p>
+<p>and i'm measuring uh outputs such as the</p>
+<p>kinematics</p>
+<p>the kinetic forces that are generated</p>
+<p>and the emg signals in the periphery</p>
+<p>i could then use that that context to</p>
+<p>say</p>
+<p>i could specify it as either one one or</p>
+<p>a zero one for example if i didn't</p>
+<p>think that it was a capable observing</p>
+<p>its past history or</p>
+<p>its its decision states in the form of</p>
+<p>some kind of a sensory blockade</p>
+<p>uh related to my experiments would that</p>
+<p>be a practical application would does</p>
+<p>that</p>
+<p>have face validity in this context given</p>
+<p>that i'm measuring those signals</p>
+<p>uh one thing that just collect with flag</p>
+<p>generally speaking in motor control</p>
+<p>domains you're working with like</p>
+<p>continuous quantities right</p>
+<p>right and that's why you use things like</p>
+<p>kalman filters etc</p>
+<p>as your models um i'm not sure to what</p>
+<p>extent</p>
+<p>a partially observable markov decision</p>
+<p>process would actually be the</p>
+<p>appropriate generative model for the</p>
+<p>situation</p>
+<p>i think it would be if you want to model</p>
+<p>like the decision making processes</p>
+<p>observ for motor control</p>
+<p>so am i going to move my arm to left or</p>
+<p>the right that is a discrete decision</p>
+<p>but actually measuring motor control and</p>
+<p>a lot of those things that you're</p>
+<p>talking about those continuous signals</p>
+<p>i'm not actually sure p o mdp is the</p>
+<p>appropriate generative model</p>
+<p>but for example if i thought that i had</p>
+<p>a state space that consisted of a</p>
+<p>a fixed point or any kind of you know</p>
+<p>however i'm abstracting those continuous</p>
+<p>processes into the realm of you know a</p>
+<p>discrete state</p>
+<p>uh just glossing over that</p>
+<p>this kind of model could maybe uh</p>
+<p>account for that</p>
+<p>or do you usually use in that way in any</p>
+<p>i mean in any case you know where where</p>
+<p>signal is technically continuous</p>
+<p>i mean you know to use these sorts of</p>
+<p>models right you're going to have to</p>
+<p>just pick some</p>
+<p>quasi-arbitrary or maybe justify in some</p>
+<p>sense</p>
+<p>a way to kind of bin you know bin time</p>
+<p>right you'd have to desperatize</p>
+<p>time in some in some way um you know the</p>
+<p>signal was</p>
+<p>x for these three milliseconds and now</p>
+<p>it changed to y</p>
+<p>these next three milliseconds that'd be</p>
+<p>some kind of like funny average or</p>
+<p>something like that</p>
+<p>um i guess i guess the you know</p>
+<p>potential concern</p>
+<p>here is also that like like there has to</p>
+<p>be some way to to link</p>
+<p>the uh the the states as here as you're</p>
+<p>kind of bending them</p>
+<p>to some sort of policy selection process</p>
+<p>presumably</p>
+<p>um so no i'm not completely sure at</p>
+<p>least i can't imagine</p>
+<p>exactly how that would work it's almost</p>
+<p>like this one is about the agent</p>
+<p>deciding which way to walk</p>
+<p>and then maybe there's some</p>
+<p>proprioceptive feedback but let's</p>
+<p>think about what this decision making</p>
+<p>example is and then wonder about where</p>
+<p>the motor and where these other</p>
+<p>modalities and the continuous signal</p>
+<p>processing also interesting</p>
+<p>let's just walk through this discrete</p>
+<p>time discrete opportunity space</p>
+<p>model and then we talked about like in</p>
+<p>active infrastream</p>
+<p>eight with alec chance about what does</p>
+<p>it look like to move active inference</p>
+<p>from a discrete</p>
+<p>into a continuous space so it's the</p>
+<p>kinds of things that are</p>
+<p>actively being developed and it sounds</p>
+<p>exciting about the motor example max</p>
+<p>yeah i mean i mean so there are you know</p>
+<p>and you know</p>
+<p>thomas parr has done you know a bunch of</p>
+<p>this like we use mixed models right</p>
+<p>where the top</p>
+<p>the top layer is a discrete state space</p>
+<p>markov decision process model like this</p>
+<p>you know deciding left arm right arm but</p>
+<p>then it feeds into a continuous</p>
+<p>uh state space below um that actually</p>
+<p>controls the dynamics of the movement</p>
+<p>itself based on the decision</p>
+<p>um my guess is it would be more uh</p>
+<p>something more like that would be better</p>
+<p>you know that being said these sorts of</p>
+<p>these sorts of models are much more</p>
+<p>about</p>
+<p>you know behavior and choice i mean when</p>
+<p>you're talking about neural responses</p>
+<p>i would think that would come more be</p>
+<p>more useful in these models to</p>
+<p>to use them to predict the neural</p>
+<p>responses that you would get</p>
+<p>when a person does x versus y and see if</p>
+<p>that matches with</p>
+<p>the firing rates that you see</p>
+<p>there's a paper on the mix model thing</p>
+<p>there's a paper i think it's called like</p>
+<p>discrete movements</p>
+<p>to decisions and back again or something</p>
+<p>along those lines it's in your</p>
+<p>computation</p>
+<p>um yeah i think it deals with all the</p>
+<p>formal issues that kind of arise with</p>
+<p>this</p>
+<p>yeah thanks about it okay so</p>
+<p>just for the sake of time here um</p>
+<p>so so again what i did here and this is</p>
+<p>for the agent observing</p>
+<p>their own behavior all i did was i made</p>
+<p>it like this</p>
+<p>right so this is just saying when the</p>
+<p>agent chose</p>
+<p>uh uh state one</p>
+<p>then it observes the observation</p>
+<p>associated with state one</p>
+<p>right row one with a hundred percent</p>
+<p>probability</p>
+<p>when it was in the hint state then it</p>
+<p>observes that it was in the hidden state</p>
+<p>row two with a hundred percent</p>
+<p>probability and so forth so it's just</p>
+<p>providing</p>
+<p>maximally precise evidence so that it</p>
+<p>knows what it did</p>
+<p>um so now notice that this was</p>
+<p>big a right so that's the generative</p>
+<p>process</p>
+<p>if i wanted to if we wanted to do reward</p>
+<p>learning right if we wanted it to learn</p>
+<p>p when the what the reward probabilities</p>
+<p>are</p>
+<p>then we'd have to set little a here um</p>
+<p>and you might start out just sort of</p>
+<p>making big a</p>
+<p>making a little a equivalent to big a</p>
+<p>um to start with and</p>
+<p>and uh multiplying each of the values</p>
+<p>in little a by a big number like 200</p>
+<p>and what that does is it just makes it</p>
+<p>so</p>
+<p>the agent is really really really</p>
+<p>confident about</p>
+<p>um its beliefs um um</p>
+<p>in a in that are associated with big a</p>
+<p>um and what that does is it just</p>
+<p>prevents learning</p>
+<p>for anything you don't want it to learn</p>
+<p>so if you multiply this thing by really</p>
+<p>big number then it won't learn anything</p>
+<p>even though technically it's learning</p>
+<p>because it's just already too confident</p>
+<p>um but then what you could do is for</p>
+<p>anything that you do want it to learn</p>
+<p>you can just redefine those with really</p>
+<p>small numbers</p>
+<p>right so you can say a3 here so the</p>
+<p>probability of choosing</p>
+<p>uh of winning choose if you choose the</p>
+<p>left machine</p>
+<p>you know is 0.5 so just 0.5 is all</p>
+<p>around</p>
+<p>right or 0.25 or whatever so this is</p>
+<p>just saying that the agent would start</p>
+<p>with uh completely imprecise beliefs</p>
+<p>about whether it would win or lose</p>
+<p>depending on what it chose depending on</p>
+<p>context</p>
+<p>so it would so this is what you would do</p>
+<p>you'd kind of turn on little a</p>
+<p>if you wanted it to learn the reward</p>
+<p>probabilities but we're not doing that</p>
+<p>here</p>
+<p>so we're just showing this as examples</p>
+<p>and same thing if you wanted to you</p>
+<p>could do the same thing but for</p>
+<p>outcome modality one um to have it learn</p>
+<p>like the accuracy of the hint</p>
+<p>um so again these are just kind of</p>
+<p>commented on examples if you wanted to</p>
+<p>do that kind of thing</p>
+<p>um so now we've defined the the</p>
+<p>likelihood matrix right the a matrix</p>
+<p>like what states generate what outcomes</p>
+<p>with what probabilities now we're moving</p>
+<p>on into b</p>
+<p>which are the transition probabilities</p>
+<p>um</p>
+<p>and remember that there's one of these</p>
+<p>per state factor per action um</p>
+<p>so and this is what i showed before that</p>
+<p>for b1</p>
+<p>so for state factor one the context</p>
+<p>there's only one action quote unquote</p>
+<p>and it's just an identity matrix this</p>
+<p>just says the left better context</p>
+<p>never changes within a trial um</p>
+<p>and again i showed this before for the</p>
+<p>second state factor</p>
+<p>the transitions there's four different</p>
+<p>possible transitions</p>
+<p>transitioning from state one to any of</p>
+<p>the other states so just to be clear</p>
+<p>here</p>
+<p>these transition matrices the columns</p>
+<p>are the states you're in now</p>
+<p>and the rows of the states that you</p>
+<p>would move to so this is saying from any</p>
+<p>state</p>
+<p>you could move to state one um you know</p>
+<p>from any state you could move to state</p>
+<p>two et cetera</p>
+<p>um so you end up having you know</p>
+<p>one two three four different</p>
+<p>actions for that state factor four</p>
+<p>different possible transitions</p>
+<p>so now the next thing that we do is um</p>
+<p>we move to the preference distribution</p>
+<p>so that's c right so this is what the</p>
+<p>agent</p>
+<p>wants or what the agent finds rewarding</p>
+<p>and how rewarding the agent finds it</p>
+<p>so to do that initially we just with no</p>
+<p>we just say</p>
+<p>what are the different number of</p>
+<p>outcomes for each outcome modality</p>
+<p>and that just looks at the size of the</p>
+<p>row dimensions</p>
+<p>in a so</p>
+<p>if i do that and again this is just</p>
+<p>using this you know</p>
+<p>size function which is just you know</p>
+<p>again to make it</p>
+<p>more uh convenient or generalizable so</p>
+<p>if i do that</p>
+<p>then no is going to look like that</p>
+<p>that's just saying i have three i have</p>
+<p>three different outcome</p>
+<p>modalities one is no hair</p>
+<p>null no hint and hint one is</p>
+<p>null lose and win and one is</p>
+<p>the agent observing its own behavior</p>
+<p>right observing action one two three or</p>
+<p>four</p>
+<p>um many people have asked</p>
+<p>in the past weeks about dimensionality</p>
+<p>of</p>
+<p>not to go into the markov blanket</p>
+<p>discussion but the dimensionality of</p>
+<p>observations</p>
+<p>and how we talk about different kinds of</p>
+<p>outcomes</p>
+<p>different kinds of senses for example</p>
+<p>and it's almost looking like</p>
+<p>it's just about the way it's specified</p>
+<p>so</p>
+<p>the hint could be in your ear and the</p>
+<p>observation could be visual</p>
+<p>or something and so you could get</p>
+<p>philosophical and ask whether there's</p>
+<p>really</p>
+<p>one or two different sensory modalities</p>
+<p>but in the context of this</p>
+<p>inferential model that we're writing</p>
+<p>it's almost like those things don't</p>
+<p>really matter they're just</p>
+<p>variables that are observed yeah i mean</p>
+<p>so again we call these modality outcome</p>
+<p>modalities so in this case there's three</p>
+<p>right so like you said the hint this</p>
+<p>could be the auditory modality and</p>
+<p>there's three things that could hear</p>
+<p>this could be the visual modality and</p>
+<p>it's the three</p>
+<p>whether it wins or loses or hasn't seen</p>
+<p>that yet right this could be visual</p>
+<p>and this fourth thing the third one</p>
+<p>could be proprioception right it could</p>
+<p>be observing or feeling what it did</p>
+<p>i mean in this case it's probably also</p>
+<p>somewhat visual right it observes what</p>
+<p>it does but</p>
+<p>um you get the point yeah so yeah so</p>
+<p>there's just a</p>
+<p>nice factorized you know dimensionality</p>
+<p>for each</p>
+<p>modality yeah um</p>
+<p>but okay so now i've</p>
+<p>what i've done is i've started out by</p>
+<p>just putting zeros</p>
+<p>in the c matrix the preference</p>
+<p>distribution</p>
+<p>for each outcome modality so this is</p>
+<p>just saying for outcome modality one so</p>
+<p>the hint</p>
+<p>the agent has no preferences and i</p>
+<p>should say the</p>
+<p>the rows or the observations um for the</p>
+<p>you know</p>
+<p>null hint no hint i mean the columns are</p>
+<p>time</p>
+<p>so this is saying at time one the agent</p>
+<p>doesn't care</p>
+<p>whether it gets the hint or not in terms</p>
+<p>of rewardingness</p>
+<p>um same thing at time two same thing at</p>
+<p>time three and i've just done that for</p>
+<p>all three how come modalities to start</p>
+<p>with</p>
+<p>the only thing that we want to add</p>
+<p>preferences for</p>
+<p>is the win lose observations</p>
+<p>um so in this case so that's c</p>
+<p>for outcome modality 2 which is the win</p>
+<p>loss thing here</p>
+<p>so what i've done again for</p>
+<p>generalizability is i've set this</p>
+<p>parameter</p>
+<p>la that is called loss of version and</p>
+<p>i've set this parameter rs</p>
+<p>which is that reward seeking thing which</p>
+<p>i just defined above as rs1</p>
+<p>and again that's just convenience so i</p>
+<p>don't have to go down here to reset it</p>
+<p>every time</p>
+<p>so i define these just for again just</p>
+<p>for convenience</p>
+<p>and then what i say here is</p>
+<p>so the observations again are no lose</p>
+<p>when so this is at time</p>
+<p>zero the agent doesn't care whether it</p>
+<p>observes a null a loss or a win and</p>
+<p>that's just because</p>
+<p>it can't observe anything but a null</p>
+<p>at time two it just prefers losing</p>
+<p>with a value of again negative one here</p>
+<p>for both time two and time three</p>
+<p>but here's a little bit of a trick is</p>
+<p>that i define</p>
+<p>the preference for winning</p>
+<p>as rs at time two and remember that rs</p>
+<p>is four right now because that's what we</p>
+<p>set it above then at time</p>
+<p>three i set the preference as rs divided</p>
+<p>by two</p>
+<p>um so what that ultimately means</p>
+<p>is that um</p>
+<p>the this state factor will look like</p>
+<p>this</p>
+<p>or i mean sorry this this preference</p>
+<p>distribution will look like this saying</p>
+<p>it dislikes losing equally at each time</p>
+<p>but it</p>
+<p>wants but it gets more reward for</p>
+<p>winning at time two than at time three</p>
+<p>um and so that's our that's our</p>
+<p>preference distribution</p>
+<p>um and uh this is just all</p>
+<p>that's basically it this is all in how</p>
+<p>the details of how</p>
+<p>the sketched out scenario okay four</p>
+<p>dollars but then you got to wait 20</p>
+<p>minutes and</p>
+<p>however your scenario is this is about</p>
+<p>the detail</p>
+<p>in matrix form of how the payoffs work</p>
+<p>and so it could be minus one or you</p>
+<p>might ask if another number is</p>
+<p>appropriate there</p>
+<p>but it's kind of like that's the detail</p>
+<p>level that's the applications and that's</p>
+<p>where we hope to see</p>
+<p>a lot of people exploring different</p>
+<p>scenarios so that we can understand</p>
+<p>better yeah and so and so you'll see</p>
+<p>that when we actually do the like</p>
+<p>fitting</p>
+<p>like parameter fitting to behavior you</p>
+<p>know one thing we'll do is we'll fit</p>
+<p>this</p>
+<p>right so for some people rs might be</p>
+<p>like eight and for other people it might</p>
+<p>be like two</p>
+<p>um so you you find this value for each</p>
+<p>person that best explains or</p>
+<p>reproduces their behavior um</p>
+<p>i mean you gave that example last week</p>
+<p>right in the substance abuse example</p>
+<p>where that actually has really</p>
+<p>meaningful</p>
+<p>or that parameter has a really</p>
+<p>meaningful interpretation</p>
+<p>yeah exactly um because it has to do</p>
+<p>with</p>
+<p>in the case of an explore exploit task</p>
+<p>the lower rs is</p>
+<p>basically means the more people the more</p>
+<p>like someone is</p>
+<p>driven to explore you know before they</p>
+<p>kind of</p>
+<p>jump to conclusions about which one's</p>
+<p>the best and just keep choosing that one</p>
+<p>it makes me makes me think about maybe</p>
+<p>in the um</p>
+<p>substance example or another example</p>
+<p>it's like if we're going to have a</p>
+<p>society that rewards good behavior and</p>
+<p>punishes</p>
+<p>negative behavior or something on some</p>
+<p>issue do you go with</p>
+<p>here's how much you get positive and</p>
+<p>here's how much the punishment should be</p>
+<p>should be small punishment versus large</p>
+<p>these kinds of questions which are</p>
+<p>really important at the individual and</p>
+<p>the group level</p>
+<p>not that this is even close to the</p>
+<p>answer but it's almost like it's a way</p>
+<p>for us to start talking about</p>
+<p>how much do we value and how much do</p>
+<p>individuals need different blends of</p>
+<p>these different</p>
+<p>attributes so really a good way to talk</p>
+<p>about this</p>
+<p>yeah absolutely um you know and so</p>
+<p>like uh oh so one thing that i did want</p>
+<p>to clarify here</p>
+<p>is you'll notice that you know these are</p>
+<p>supposed to be probability distributions</p>
+<p>right</p>
+<p>c you know each column here is supposed</p>
+<p>to be</p>
+<p>something that adds up to to one and</p>
+<p>technically we work with log</p>
+<p>probabilities</p>
+<p>um so uh you know negative one and four</p>
+<p>and negative one and two obviously don't</p>
+<p>uh aren't</p>
+<p>probabilities or log probabilities um so</p>
+<p>in practice</p>
+<p>um these each column here is softmaxed</p>
+<p>and then each element is logged</p>
+<p>which is which is how you end up with</p>
+<p>the actual log probability distributions</p>
+<p>that define the preferences when they're</p>
+<p>actually used in the code</p>
+<p>and i show that i show an example of the</p>
+<p>numbers they turn into in the</p>
+<p>in the or we show them in the in the</p>
+<p>paper</p>
+<p>um so you know last</p>
+<p>kind of really central thing is to</p>
+<p>define the</p>
+<p>policies so here i'm just going to use</p>
+<p>np here to define the number of policies</p>
+<p>i want to allow</p>
+<p>and here the nf thing is just the number</p>
+<p>of actual state factors</p>
+<p>um and that will just allow me in a</p>
+<p>generalizable way</p>
+<p>to say that v has</p>
+<p>uh t minus one rows right so it's gonna</p>
+<p>be</p>
+<p>uh the number of actions minus</p>
+<p>the number of times because you have to</p>
+<p>move from time one to time two time two</p>
+<p>to time three so there's always</p>
+<p>one less action possibility than there</p>
+<p>are</p>
+<p>times in a trial um and the number of</p>
+<p>policies again is going to be columns a</p>
+<p>number of state factors is going to be</p>
+<p>that third dimension</p>
+<p>so i can start by just defining that as</p>
+<p>ones</p>
+<p>um and i can you know keep it that way i</p>
+<p>just wrote this explicitly so you can</p>
+<p>see it</p>
+<p>and this just means again it can only</p>
+<p>choose to stay in the same context every</p>
+<p>time so that's not something the agent</p>
+<p>knows or can control</p>
+<p>whereas for state factor two i can</p>
+<p>define each of these possible policies</p>
+<p>stay in the start state take the hint</p>
+<p>and then choose the left</p>
+<p>machine you know take the hint choose</p>
+<p>the right machine</p>
+<p>choose the left machine and then go back</p>
+<p>to start choose the right machine and go</p>
+<p>back to start</p>
+<p>and i you know i describe what each of</p>
+<p>those means and this kind of one two</p>
+<p>three four five thing down here</p>
+<p>um so then if we want to and i'm not</p>
+<p>going to do this here</p>
+<p>um you could specify e which is the</p>
+<p>kind of like habits you know essentially</p>
+<p>it's just a pry over policies that</p>
+<p>biases you</p>
+<p>towards choosing one thing versus</p>
+<p>another and it's just one</p>
+<p>is in in the previous active inference</p>
+<p>streams we talked about that as the</p>
+<p>field of affordances</p>
+<p>for those who are connecting it to the</p>
+<p>ecological psychology or to the um in</p>
+<p>activism</p>
+<p>the prior the prior on what can be done</p>
+<p>among</p>
+<p>policies is the affordances of the</p>
+<p>organism in their niche</p>
+<p>so if you don't have the object it's not</p>
+<p>going to be a policy under consideration</p>
+<p>and so e is this mathematical device</p>
+<p>that's going to be weighting policies by</p>
+<p>their habit basically excellence is a</p>
+<p>habit</p>
+<p>that kind of thing</p>
+<p>yeah i mean i i guess like i mean</p>
+<p>technically</p>
+<p>what you're doing is you know like the</p>
+<p>when this makes sense functionally is is</p>
+<p>when you're learning it</p>
+<p>so so what you would do with little e um</p>
+<p>and so this might start out</p>
+<p>you know flat right with just counts of</p>
+<p>one for the dirichlet distribution</p>
+<p>but if you choose the same policy 20</p>
+<p>times let's say you choose policy 3</p>
+<p>20 times then this one this</p>
+<p>third one here would become a 20.</p>
+<p>and so that just means that you'd start</p>
+<p>out with a strong bias now</p>
+<p>for choosing policy three because you've</p>
+<p>chosen it a bunch of times before</p>
+<p>um and that's um an optimal thing to do</p>
+<p>under the assumption that option three</p>
+<p>was the one that continued to have the</p>
+<p>lowest expected free energy every time</p>
+<p>right so if in this model based way</p>
+<p>based on minimizing expected free energy</p>
+<p>you succeeded over and over again when</p>
+<p>you chose option three</p>
+<p>then it makes sense to build up this</p>
+<p>kind of bias</p>
+<p>so that you don't actually have to work</p>
+<p>that hard cognitively to just keep doing</p>
+<p>the thing that's right once you build up</p>
+<p>a prior that's going to keep being right</p>
+<p>so i guess i can see how if you</p>
+<p>do the same sorts of things in a given</p>
+<p>niche over and over again then you</p>
+<p>develop priors</p>
+<p>that bias you toward doing the things</p>
+<p>that are successful in that niche and if</p>
+<p>something's</p>
+<p>if something's never been if somebody's</p>
+<p>ever been observed then</p>
+<p>it's unlikely it takes a different mode</p>
+<p>of operation outside this script</p>
+<p>if something's never been observed for</p>
+<p>it to be considered</p>
+<p>this is just a basic they know the pop</p>
+<p>that's why you initiate with a non-zero</p>
+<p>value because it's something that could</p>
+<p>happen</p>
+<p>yeah yeah yeah no that's true if you set</p>
+<p>a zero anywhere in in e</p>
+<p>then it's it's as though they don't have</p>
+<p>that option um</p>
+<p>yeah that's true um one other thing to</p>
+<p>say is just like</p>
+<p>agents can get stuck if you have</p>
+<p>non-stationary environments</p>
+<p>so say you have a hundred trials of one</p>
+<p>thing</p>
+<p>and then you switch contexts</p>
+<p>the agent will probably be stuck</p>
+<p>um and so i know it's just useful with</p>
+<p>all of these parameters</p>
+<p>they have kind of we can have our</p>
+<p>favorite interpretations related to like</p>
+<p>ecological psychology or whatever but</p>
+<p>i think it's always useful to kind of</p>
+<p>consider them functionally and use them</p>
+<p>kind of</p>
+<p>appropriately for this for whatever</p>
+<p>situation it is you're modeling</p>
+<p>yeah like that's the thing is you know</p>
+<p>the the most useful places with this and</p>
+<p>say like computational psychiatry are</p>
+<p>that</p>
+<p>if you have the right set of experiences</p>
+<p>in these models</p>
+<p>and you get stuck doing what's</p>
+<p>technically base optimal given your past</p>
+<p>experience</p>
+<p>but that like makes you really really</p>
+<p>maladaptive in what you're</p>
+<p>doing uh in the new context that you're</p>
+<p>you're in</p>
+<p>right so you can get stuck in really</p>
+<p>maladaptive places in parameter space</p>
+<p>that could lead to</p>
+<p>symptoms that look like psychiatric</p>
+<p>symptoms for example</p>
+<p>um so i mean this is this kind of idea</p>
+<p>you know like</p>
+<p>philip shortenbeck has a paper on this</p>
+<p>as like you know uh</p>
+<p>optimal inference and sub-optimal models</p>
+<p>i think but uh</p>
+<p>the whole point is you're doing the</p>
+<p>optimal thing but your model is wrong</p>
+<p>right um outside the optimal thing under</p>
+<p>the assumption that your model is right</p>
+<p>just outside of this model stream which</p>
+<p>is really</p>
+<p>amazing and i hope it will continue we</p>
+<p>would also like to feature these kinds</p>
+<p>of</p>
+<p>direct discussions about the</p>
+<p>computational psychiatry</p>
+<p>so this is awesome with a walkthrough in</p>
+<p>the code it's going to be helpful for a</p>
+<p>lot of people who are learning that</p>
+<p>and then let's table and find the right</p>
+<p>time to talk about these issues because</p>
+<p>it's really awesome</p>
+<p>what you're describing yeah you know i</p>
+<p>mean obviously</p>
+<p>computational psychiatry is what i do in</p>
+<p>practice right so yeah i'd love to</p>
+<p>um okay so finally there's a bunch of</p>
+<p>kind of additional parameters</p>
+<p>right so we talked about learning rate</p>
+<p>um which here we're just setting to 0.5</p>
+<p>for you know arbitrarily um</p>
+<p>beta this is the expected free energy</p>
+<p>precision</p>
+<p>so it controls essentially how confident</p>
+<p>the agent is</p>
+<p>in uh its expected free energy estimates</p>
+<p>um so if this value is low or sorry if</p>
+<p>this value is</p>
+<p>high that means that the agent is really</p>
+<p>unconfident in its expected free energy</p>
+<p>estimates</p>
+<p>and when that's the case then behavior</p>
+<p>will be</p>
+<p>a lot more random unless the agent has</p>
+<p>strong habits</p>
+<p>if agent has strong habits then having a</p>
+<p>high beta value means that the habits</p>
+<p>will have a much stronger influence</p>
+<p>on on policy uh ultimate policy</p>
+<p>selection</p>
+<p>um and we actually show this is the</p>
+<p>thing that i was talking about it's kind</p>
+<p>of like a</p>
+<p>random exploration sort of thing where</p>
+<p>it's actually updated over time</p>
+<p>so with each observation the agent</p>
+<p>essentially updates its confidence</p>
+<p>in its expected free energy estimates um</p>
+<p>and then alpha is kind of like a</p>
+<p>standard what are called inverse</p>
+<p>temperature parameters</p>
+<p>where it just kind of controls</p>
+<p>randomness and action selection so once</p>
+<p>you've chosen a policy</p>
+<p>then that policy might say this action</p>
+<p>is better than that action but</p>
+<p>occasionally the</p>
+<p>agent might still choose a different</p>
+<p>action kind of randomly</p>
+<p>um and uh this is actually</p>
+<p>again this is technically like a</p>
+<p>sub-optimal thing right you want to just</p>
+<p>always choose the best thing</p>
+<p>but this is actually quite important to</p>
+<p>fit in practice because in</p>
+<p>actual human behavior there tends to be</p>
+<p>a notable amount of randomness and so</p>
+<p>you need to actually fit something like</p>
+<p>alpha</p>
+<p>to get a model that fits behavior well</p>
+<p>now these other two things i'll probably</p>
+<p>skip over largely because they only have</p>
+<p>to do with the neural process theory</p>
+<p>primarily</p>
+<p>but this erp thing it just controls how</p>
+<p>much beliefs</p>
+<p>reset at each time point um with respect</p>
+<p>to the modeled</p>
+<p>firing rate changes so it basically</p>
+<p>controls how much priors at one time</p>
+<p>point</p>
+<p>carry over at the next time point</p>
+<p>with respect to the neural process</p>
+<p>theory</p>
+<p>and then tau is um basically like an</p>
+<p>evidence accumulation rate so it</p>
+<p>controls how quickly</p>
+<p>um you update your beliefs based on new</p>
+<p>observations um</p>
+<p>uh as attached to uh the neural process</p>
+<p>theory um</p>
+<p>yeah anyone digs into the code it's just</p>
+<p>a time constant on gradient descent</p>
+<p>yeah um</p>
+<p>so and i go through a couple other ones</p>
+<p>here that i explain but i'm gonna kind</p>
+<p>of</p>
+<p>skip over those for now so then that's</p>
+<p>basically it</p>
+<p>if we wanted to we could hard code what</p>
+<p>the states what the initial states are</p>
+<p>and what the observations are</p>
+<p>like that by setting sno but typically</p>
+<p>what we will do is we won't do that</p>
+<p>we'll just let the generative process</p>
+<p>generate the observations itself</p>
+<p>which is probabilistic so it'll generate</p>
+<p>with whatever the probability is of d</p>
+<p>over d what states are actually the true</p>
+<p>states in that context and therefore</p>
+<p>what observations get generated</p>
+<p>and so last thing and again i already</p>
+<p>covered this is you just stick all these</p>
+<p>things you defined into this</p>
+<p>mdp right and we allow little d</p>
+<p>which means we're going to allow it to</p>
+<p>learn whether the left or the right</p>
+<p>context is more likely</p>
+<p>we set all these things you know the</p>
+<p>learning rate and the</p>
+<p>action precision or inverse temperature</p>
+<p>so alpha</p>
+<p>etc we're going to leave out</p>
+<p>other things we could have defined like</p>
+<p>e or like</p>
+<p>learning a or learning b or learning c</p>
+<p>or learning e</p>
+<p>etc we're not going to define the states</p>
+<p>ahead of time</p>
+<p>and we're not going to define some of</p>
+<p>these additional parameters that we</p>
+<p>could include um</p>
+<p>and then we can just kind of do some uh</p>
+<p>nice labeling here just to so we label</p>
+<p>what the</p>
+<p>contexts uh mean right the semantics</p>
+<p>we're laying on it for the figures</p>
+<p>um and that's it</p>
+<p>and then once we do that then we can use</p>
+<p>this</p>
+<p>uh little check script here just to make</p>
+<p>sure we didn't mess anything</p>
+<p>up in building the model and it'll kind</p>
+<p>of nicely tell you or give you a hint</p>
+<p>anyway about what</p>
+<p>you might have messed up um and then</p>
+<p>this script that i mentioned before that</p>
+<p>we provide is the one that actually runs</p>
+<p>the simulation</p>
+<p>um and then finally once we have</p>
+<p>these simulations run which will be</p>
+<p>stored in this big mdp</p>
+<p>then we can use these plotting scripts</p>
+<p>to</p>
+<p>actually show the results um</p>
+<p>and if i set sim equals one then it's</p>
+<p>going to do that it's just going to do a</p>
+<p>single trial simulation which i'm going</p>
+<p>to do</p>
+<p>now um so i'll just let the thing run</p>
+<p>the rest of the way</p>
+<p>so i won't i'll get rid of these</p>
+<p>stoppers well just to give a quick</p>
+<p>let's give a coding recap just to where</p>
+<p>we are at the end of the second</p>
+<p>session while you're going through the</p>
+<p>stop signs so</p>
+<p>in the first session we talked a lot</p>
+<p>about the basis of this paper</p>
+<p>and the rationale we talked a little bit</p>
+<p>more about who might be interested or</p>
+<p>what kinds of experiments it was</p>
+<p>adjacent to</p>
+<p>and then today that was awesome with the</p>
+<p>code because we went through a full</p>
+<p>definition and we moved from that sort</p>
+<p>of analytical definitions that we went</p>
+<p>through in the first session</p>
+<p>into seeing how they're realized in the</p>
+<p>code and</p>
+<p>for me at least it was really helpful to</p>
+<p>see how a lot of these things were put</p>
+<p>down</p>
+<p>and then we got all the way up to line</p>
+<p>631 or something but it could be</p>
+<p>different in a little different version</p>
+<p>but we got to the definition of the full</p>
+<p>model and then the call out from that</p>
+<p>object to another script</p>
+<p>and then we're going to be storing all</p>
+<p>the outputs in this kind of big</p>
+<p>container called mdp so today we went</p>
+<p>from</p>
+<p>0 to 60 with the code getting all these</p>
+<p>things</p>
+<p>run through and defined and operated on</p>
+<p>now we're going to look at the output</p>
+<p>and then it sounds like in future</p>
+<p>sessions we're going to be fitting</p>
+<p>parameters and maybe doing a few other</p>
+<p>things</p>
+<p>yeah and future stuff will i mean it</p>
+<p>sounds like maybe we're going to</p>
+<p>wait to do to show learning next time i</p>
+<p>guess depending on the amount of time</p>
+<p>but</p>
+<p>um yeah next time then we'd be in a</p>
+<p>position to</p>
+<p>do um actual code for learning um</p>
+<p>we're planning on covering the neural</p>
+<p>process theory and uh</p>
+<p>building hierarchical models um and then</p>
+<p>the last thing is yeah actually fitting</p>
+<p>models to data</p>
+<p>um so uh so yeah we'll see how much of</p>
+<p>that we can</p>
+<p>get through but um okay so just to</p>
+<p>finish here</p>
+<p>so i'm i got rid of all my little</p>
+<p>stoppers so now i'm just gonna click</p>
+<p>continue</p>
+<p>and it's going to run same equals one</p>
+<p>and what i'm going to get out of this is</p>
+<p>a little plot like this</p>
+<p>and also there'll be a neural neural</p>
+<p>process there you want under here but</p>
+<p>i'm going to ignore this for now because</p>
+<p>we're not talking about the neural</p>
+<p>process theory right now</p>
+<p>um so what this top one here is</p>
+<p>is it's hidden states so contexts um</p>
+<p>now black equals a high probable higher</p>
+<p>probability white equals a low</p>
+<p>probability and so there's you know the</p>
+<p>gray is kind of in between right so this</p>
+<p>is saying</p>
+<p>and these are all posteriors over states</p>
+<p>at the end of a trial</p>
+<p>so that's important so what this is</p>
+<p>saying is</p>
+<p>at the end of the trial at time three</p>
+<p>these are the beliefs that the agent has</p>
+<p>about what state it was in across all</p>
+<p>these time steps</p>
+<p>so saying at the end of the trial the</p>
+<p>agent was completely confident</p>
+<p>that it was in the left better context</p>
+<p>and these little cyan blue dots here</p>
+<p>mean that that's what the true context</p>
+<p>was</p>
+<p>so in other words the agent was right so</p>
+<p>this is saying at the end of the trial</p>
+<p>the thing was the agent was really</p>
+<p>confident it was in the left better</p>
+<p>context</p>
+<p>the other state factor is choice states</p>
+<p>down here and this is just saying that</p>
+<p>it observed itself go from the start</p>
+<p>state</p>
+<p>to the hint state and then well sorry it</p>
+<p>moved from the start state to the hidden</p>
+<p>state to the choose left state</p>
+<p>so those are the states the actions</p>
+<p>correspond to that well so this is</p>
+<p>saying it first chose the hint state</p>
+<p>and then it shows the choose left state</p>
+<p>or choose left action sorry these are</p>
+<p>the actions</p>
+<p>um this thing in the middle on the left</p>
+<p>it's not really important</p>
+<p>it's just kind of depicting what the</p>
+<p>different policy options are</p>
+<p>kind of arbitrarily based on the numbers</p>
+<p>so i just ignored that</p>
+<p>down here at the bottom we have the</p>
+<p>outcomes and the outcome preference</p>
+<p>distributions</p>
+<p>so this is just saying it observed null</p>
+<p>and then the left hint</p>
+<p>and then null again this uh the third</p>
+<p>one just says it observed</p>
+<p>it go to the start state then to hint</p>
+<p>state and then to choose left so just</p>
+<p>observed its own behavior</p>
+<p>the second one here is the win loss one</p>
+<p>which is the most important</p>
+<p>so you can see that this one actually</p>
+<p>has a non-zero distribution over it</p>
+<p>which is what means it prefers some</p>
+<p>observations over others</p>
+<p>and so in this case what it's saying is</p>
+<p>it started the null state</p>
+<p>at time two it stated in the null state</p>
+<p>right because it took the hint</p>
+<p>um and then it observed the win um</p>
+<p>so in other words it got the hint it</p>
+<p>knew what context it was</p>
+<p>it chose left chose left</p>
+<p>and so it observed a win so that's what</p>
+<p>that means</p>
+<p>um and then this distribution over</p>
+<p>policies here is just saying at the</p>
+<p>beginning it wasn't that confident right</p>
+<p>so there's a lot of gray across all the</p>
+<p>policy options</p>
+<p>but after the hint it became really</p>
+<p>confident at time two about what the</p>
+<p>right policy was</p>
+<p>um this bottom thing is um part of the</p>
+<p>neural process theory it's simulating um</p>
+<p>dopamine so dopamine responses quote</p>
+<p>unquote it's the updates in the expected</p>
+<p>precision that beta thing</p>
+<p>um but that's how you read um these</p>
+<p>plots um and again i won't i won't go</p>
+<p>over the neural process theory one</p>
+<p>because we're gonna do that next time</p>
+<p>hopefully</p>
+<p>um but just the last thing to show is if</p>
+<p>you noticed</p>
+<p>in that case the agent went to the hint</p>
+<p>first right so it went for the hint</p>
+<p>first i'll just do that one more time</p>
+<p>so you can see it's very reliable that</p>
+<p>it will</p>
+<p>um that it will choose the hint um with</p>
+<p>a lot of confidence</p>
+<p>but now look what happens if i make this</p>
+<p>rs value</p>
+<p>higher if i make it eight which means</p>
+<p>that the thing is uh</p>
+<p>really really really wants to win the</p>
+<p>four dollars basically</p>
+<p>so in this case it should be risk taking</p>
+<p>it should just forego the hint and just</p>
+<p>take a guess immediately you can see</p>
+<p>that's what it does</p>
+<p>it has a flat distribution has no idea</p>
+<p>whether it should choose the left one or</p>
+<p>the right one</p>
+<p>but it just takes a chance because it</p>
+<p>really wants to win the four dollars and</p>
+<p>the</p>
+<p>value of information and the expected</p>
+<p>free energy is low</p>
+<p>because the reward value is really high</p>
+<p>and so it just takes a guess</p>
+<p>and it guesses right and it turns out</p>
+<p>that it was in the left context so it</p>
+<p>observes that it</p>
+<p>lost um at time two</p>
+<p>and because it observed that it lost in</p>
+<p>the first o i must have been in the left</p>
+<p>context as opposed to the right one so</p>
+<p>at the end it still knows now that it</p>
+<p>was in the left better context</p>
+<p>so that's so that's what that means you</p>
+<p>can see right away that by changing</p>
+<p>how much the thing values reward in the</p>
+<p>preference distribution</p>
+<p>changes how information seeking it is</p>
+<p>versus how risk seeking it is um</p>
+<p>so that's uh so that's the way that that</p>
+<p>works</p>
+<p>um so uh do we want to</p>
+<p>end here or do we want or is there time</p>
+<p>to show learning</p>
+<p>um we can absolutely go through learning</p>
+<p>if you would like</p>
+<p>so the topics that i've written down i</p>
+<p>have learning which it sounds like would</p>
+<p>be awesome to run through now</p>
+<p>then we have actual data hierarchical</p>
+<p>models</p>
+<p>neural process theories and then</p>
+<p>computational psychiatry</p>
+<p>so that's the stack of topics let's get</p>
+<p>to</p>
+<p>learning today and then another time</p>
+<p>another model stream</p>
+<p>okay sounds good so learning</p>
+<p>um so if you could see i sort of said</p>
+<p>how to do this here i said for to</p>
+<p>reproduce figure seven</p>
+<p>so for figure nine here which is sim2</p>
+<p>which is the initial learning</p>
+<p>i'm gonna first set uh rs to</p>
+<p>three um it's just a value that turns</p>
+<p>out it's nice for showing the dynamics</p>
+<p>of learning in a way that's</p>
+<p>clear um so because it should start</p>
+<p>out being information seeking and what</p>
+<p>we want to show is how it learns to be</p>
+<p>more uh confident and therefore starts</p>
+<p>to forego the hint</p>
+<p>as it builds up a stronger prior that</p>
+<p>the left context is the</p>
+<p>one that keeps being the case so now</p>
+<p>what i'll do is i'll set sum equals two</p>
+<p>but i'll show you what this does down</p>
+<p>when i go to same equals two</p>
+<p>um okay</p>
+<p>so this is actually incredibly simple um</p>
+<p>so when sem equals two is set all i do</p>
+<p>is i say okay i want 30 trials so n</p>
+<p>equals 30.</p>
+<p>um to keep the mdp thing</p>
+<p>something that um remains in that just</p>
+<p>kind of single structure</p>
+<p>um i redefine little mvp as big mdp and</p>
+<p>again this is just for convenience</p>
+<p>and then i can use this uh deal function</p>
+<p>which is just kind of a nice convenient</p>
+<p>function in matlab</p>
+<p>which more or less just says repeat the</p>
+<p>mdp</p>
+<p>structure 30 times so now there's mdp1</p>
+<p>mdb2 mdp3 and</p>
+<p>all those are just the same just</p>
+<p>identical as the initial</p>
+<p>mdp that we built um so if i do that</p>
+<p>then what will happen is it will look</p>
+<p>like so okay so i'll do</p>
+<p>so i'll do two things one is</p>
+<p>so before um so now i just have</p>
+<p>big mdp equals mdp so now big mdp will</p>
+<p>look like this</p>
+<p>right there's just a single field for t</p>
+<p>v a b blah blah blah</p>
+<p>right everything that we set um</p>
+<p>now once i run this deal thing</p>
+<p>then if i step then all of a sudden mdp</p>
+<p>will now look like this</p>
+<p>um where you can see now that same</p>
+<p>structure</p>
+<p>is repeated uh in 30 rows</p>
+<p>and this will all start out being</p>
+<p>identical</p>
+<p>so what will happen now though is if i</p>
+<p>run it</p>
+<p>through the vbx tutorial script</p>
+<p>then and this will take a second it will</p>
+<p>run through</p>
+<p>the whole thing 30 times and again this</p>
+<p>will just take a sec</p>
+<p>so wait let me ask something so first</p>
+<p>maybe someone's</p>
+<p>maybe has a little noise in their</p>
+<p>background but it seems like this</p>
+<p>little mdp is like a column that conveys</p>
+<p>all the details for a single trial and</p>
+<p>then we're making</p>
+<p>a meta matrix we're just generalizing</p>
+<p>the matrix into many dimensions</p>
+<p>and now we're stacking all of the total</p>
+<p>model as like a column</p>
+<p>into in this case 30 trials</p>
+<p>but you could do 100 trials in a row or</p>
+<p>you could have 20 sets of 10 trials</p>
+<p>so it's the idea of concatenating total</p>
+<p>model setups</p>
+<p>like a column so that you can do</p>
+<p>operations on</p>
+<p>big big potentially hierarchical sets of</p>
+<p>models</p>
+<p>in this keys each mdp is a row really</p>
+<p>it's just a</p>
+<p>giant model yeah it's just a giant</p>
+<p>structure with gp over and over again</p>
+<p>yeah i meant bro sorry good good call my</p>
+<p>r centrism i'm always like thinking in</p>
+<p>column</p>
+<p>yeah all right but okay so now i ran it</p>
+<p>i ran the mdp with all those different</p>
+<p>repeated</p>
+<p>repeated rows repeated models through</p>
+<p>this mdp</p>
+<p>script here and now</p>
+<p>what you'll see is now the mdp structure</p>
+<p>will look a little different</p>
+<p>um</p>
+<p>so now in addition to how the stuff in</p>
+<p>it</p>
+<p>had before it's also now going to have</p>
+<p>um all this</p>
+<p>this thing is like bin</p>
+<p>now it's going to have all this other</p>
+<p>stuff it's going to have</p>
+<p>the free energy f it's going to have the</p>
+<p>expected free energy g it's going to</p>
+<p>have the total free energy h</p>
+<p>it's going to have the actions u it's</p>
+<p>gonna have the free energy</p>
+<p>for the uh learned parameters d</p>
+<p>um a bunch of other stuff and we have a</p>
+<p>whole table in the in the tutorial that</p>
+<p>says what each of these fields mean so</p>
+<p>you can interpret them</p>
+<p>they don't all matter enough for me to</p>
+<p>go through them right now um</p>
+<p>but so then once i have that then</p>
+<p>i can generate a plot</p>
+<p>with this little game underscore</p>
+<p>tutorial script that i</p>
+<p>for plotting multiple trials that we put</p>
+<p>together</p>
+<p>and i can run that</p>
+<p>and it will generate a multi-trial</p>
+<p>behavior um so so what this is showing</p>
+<p>is the first action on each</p>
+<p>trial um so here what you can see is</p>
+<p>that in the</p>
+<p>start and the colors are the probability</p>
+<p>so dark equals higher probability and</p>
+<p>the the blue circles are the actual</p>
+<p>chosen actions</p>
+<p>um so you can see for the first several</p>
+<p>trials the agent kept taking</p>
+<p>the hint but after a while because the</p>
+<p>left one if the left context kept being</p>
+<p>the one the the one that</p>
+<p>it thought it was in at the end it</p>
+<p>starts to be confident around trial 9</p>
+<p>10 here that it's always just gonna be</p>
+<p>the left one so it just immediately</p>
+<p>chooses the uh the left arm or the left</p>
+<p>machine um but now what you can see is</p>
+<p>is that</p>
+<p>it gets one wrong right because the it's</p>
+<p>only eighty percent right that the left</p>
+<p>one is going to be the right one</p>
+<p>um and uh once um</p>
+<p>could a dog be metered or is that yours</p>
+<p>yes it is it is a dog wanting to</p>
+<p>want to be in my lap if the dog is a</p>
+<p>contributor then absolutely</p>
+<p>welcome to speak yes</p>
+<p>but uh but anyway so it starts to get</p>
+<p>one wrong here around trial</p>
+<p>12 right because 13 because again it's</p>
+<p>only even when it's in the left better</p>
+<p>context it still will lose 20</p>
+<p>of the time right and so once it loses</p>
+<p>it says okay actually i'm not confident</p>
+<p>anymore so it starts</p>
+<p>taking the hint again and that happens a</p>
+<p>couple of times</p>
+<p>um and so it starts kind of going uh</p>
+<p>bouncing around um and also note that</p>
+<p>this uh</p>
+<p>this is under um an alpha value</p>
+<p>right like the action precision value</p>
+<p>that's not that high</p>
+<p>so its behavior is a little random right</p>
+<p>there's a little bit of randomness in it</p>
+<p>like what a real human would do</p>
+<p>um and so this next column this next</p>
+<p>plot here below is just green is a win</p>
+<p>black is a loss and the um you can see</p>
+<p>when it loses</p>
+<p>the uh negative free energies are larger</p>
+<p>and again this i won't go through these</p>
+<p>last uh</p>
+<p>these two here just part of the neural</p>
+<p>process theory they're like the expected</p>
+<p>uh erps and expected dopamine responses</p>
+<p>the model</p>
+<p>that the theory would predict and then</p>
+<p>this bottom one is just kind of the</p>
+<p>evolution of the agent's priors about</p>
+<p>whether it's going to be the left wing</p>
+<p>or the right-wing context</p>
+<p>um so that's how to read this</p>
+<p>so it learns and then but</p>
+<p>look what happens if i instead make the</p>
+<p>thing a little bit more</p>
+<p>uh risk seeking so i make the the value</p>
+<p>of the the subjective value of winning</p>
+<p>four dollars more</p>
+<p>um and i do that just by setting</p>
+<p>rs to four instead of three in this case</p>
+<p>um so now</p>
+<p>by the way it's awesome that basically</p>
+<p>by hitting play on this script it seems</p>
+<p>like even with minimal</p>
+<p>tweaking people can reproduce this in</p>
+<p>their own</p>
+<p>setup start to play with some of the</p>
+<p>variables</p>
+<p>and it's just really an awesome toolkit</p>
+<p>this is pretty cool</p>
+<p>yeah no thank you yeah we we definitely</p>
+<p>tried to make it as</p>
+<p>easy as uh user-friendly as possible for</p>
+<p>you know people who have minimal</p>
+<p>background so i'm glad if you guys think</p>
+<p>so</p>
+<p>um but okay so so in this case right i</p>
+<p>set the</p>
+<p>uh risk seeking parameter and the</p>
+<p>preference distribution to be a higher</p>
+<p>number</p>
+<p>um so now if you look the agent is now</p>
+<p>it takes the hint twice and then just</p>
+<p>sticks with the left every single time</p>
+<p>even if it loses a couple of times it</p>
+<p>just continues to be risk seeking</p>
+<p>um and again everything else is</p>
+<p>basically the same except the um the</p>
+<p>predicted dopamine responses and erps</p>
+<p>and things like that are different</p>
+<p>um but but so that</p>
+<p>is what it looks like when you just do</p>
+<p>like a normal learning</p>
+<p>um just where it says the same the</p>
+<p>context is the same across trials and</p>
+<p>the last thing i'll show you guys</p>
+<p>is if i set it to three then we</p>
+<p>engineered this kind of this reward</p>
+<p>learning</p>
+<p>um or this reversal learning version</p>
+<p>right so reversal learning is for the</p>
+<p>first several trials the left context is</p>
+<p>better</p>
+<p>so it's going to build up a prior that</p>
+<p>the left context is better</p>
+<p>but then it's going to switch to the</p>
+<p>right context being better and we're</p>
+<p>going to see how the agent does</p>
+<p>now i'll show you how we do that which</p>
+<p>is also very simple</p>
+<p>here we're going to set n to be 32</p>
+<p>trials</p>
+<p>do the same kind of you know deal thing</p>
+<p>but now what i did is i just said for</p>
+<p>one two uh the number of trials divided</p>
+<p>by eight</p>
+<p>we're going to make big d one zero this</p>
+<p>is saying the true neural process</p>
+<p>or the true degenerative process is</p>
+<p>going to be the left one</p>
+<p>but then i say in the mdp for n divided</p>
+<p>by eight plus</p>
+<p>one day plus one to n so basically one</p>
+<p>after this number</p>
+<p>to the end then it's going to now be</p>
+<p>switched to the generative process as</p>
+<p>the right context</p>
+<p>so in this case it just means the fir</p>
+<p>the first eight trials</p>
+<p>are left better and the rest of the</p>
+<p>trials up to 32 are going to be the</p>
+<p>right better context</p>
+<p>so that's literally it then you just run</p>
+<p>the same thing through the same vbx</p>
+<p>function and you plot it with the same</p>
+<p>plotting script so that's really very</p>
+<p>very simple so if i do that</p>
+<p>with risk seeking of 3 then</p>
+<p>what we'll see happen is</p>
+<p>um then you know</p>
+<p>give it a second to cook here just to</p>
+<p>give one though on that software design</p>
+<p>instead of having five scripts called</p>
+<p>simulation one simulation two simulation</p>
+<p>three</p>
+<p>it's that there's a common core and then</p>
+<p>the simulation</p>
+<p>scenarios are defined basically like</p>
+<p>variables</p>
+<p>down here in the 600s lines and then</p>
+<p>by changing which simulation is in play</p>
+<p>at the very top it seems like ryan is</p>
+<p>being able to change which simulation</p>
+<p>we're in</p>
+<p>very uh fluidly so we can change the</p>
+<p>simulation look at a variable change a</p>
+<p>variable</p>
+<p>go back up change the simulation go back</p>
+<p>in</p>
+<p>yeah i mean it's basically it's just</p>
+<p>it's just an</p>
+<p>if then function it just says if same</p>
+<p>equals three then</p>
+<p>do this or else if sem equals four do</p>
+<p>this</p>
+<p>yeah i mean it's just a very simple</p>
+<p>if-then statement um</p>
+<p>but uh but okay so in this case um</p>
+<p>so i set rs equals three</p>
+<p>um and what you can see is is in this</p>
+<p>case</p>
+<p>the agent just continued to take the</p>
+<p>hint the entire time</p>
+<p>um because it was never</p>
+<p>it was never confident enough and the uh</p>
+<p>you know it happened to get the first</p>
+<p>one wrong in this case which is part of</p>
+<p>what drove that</p>
+<p>um but so if the if the actual</p>
+<p>observations i got were a little</p>
+<p>different let's actually try that again</p>
+<p>and see</p>
+<p>uh what um</p>
+<p>what i would get here but this</p>
+<p>characterizes all these interesting</p>
+<p>things like a um</p>
+<p>perhaps over or under eagerness to</p>
+<p>ask for hints or acquire more</p>
+<p>information it's showing how the model</p>
+<p>this one is not trying to fit human</p>
+<p>behavior we're really playing with the</p>
+<p>bare bones</p>
+<p>but already we're seeing that's kind of</p>
+<p>pathological hint</p>
+<p>behavior but it never goes when it knows</p>
+<p>and so now something else</p>
+<p>yeah well it's just it's parameter play</p>
+<p>but it's going to</p>
+<p>play out differently yeah so like in</p>
+<p>this case where it does take the hint</p>
+<p>every time it does</p>
+<p>kind of start you can see on trial five</p>
+<p>here it starts to have a little bit of</p>
+<p>like ah maybe i should just choose the</p>
+<p>left choose the left one immediately</p>
+<p>but then it gets a couple wrong and then</p>
+<p>the context changes</p>
+<p>you can see in context learning here it</p>
+<p>starts out oh i think the left one's</p>
+<p>better and then it starts switching and</p>
+<p>then around trial</p>
+<p>11 and 12 now it starts to become more</p>
+<p>and more confident that it's in the</p>
+<p>right win</p>
+<p>context so now last thing i'll</p>
+<p>show you is what happens under that same</p>
+<p>thing</p>
+<p>but when i set rs equal to four so it's</p>
+<p>a little more risk seeking</p>
+<p>um because this actually gets</p>
+<p>a little more fun so the risk seeking is</p>
+<p>like a multiplication</p>
+<p>on the money so it's like one to two</p>
+<p>dollars versus one million to two</p>
+<p>million like how high the stakes are</p>
+<p>because it sounds like you're kind of</p>
+<p>tuning up whether the agent wants the</p>
+<p>big wins or what is it really conveying</p>
+<p>in this model</p>
+<p>it's just it's just essentially the</p>
+<p>precision of the preference distribution</p>
+<p>so it's just it's just how big the</p>
+<p>number is</p>
+<p>uh over win at time step</p>
+<p>two uh but that's really all it is it's</p>
+<p>just how high the probability is for a</p>
+<p>win</p>
+<p>um in the agent's model which just</p>
+<p>encodes how strongly they prefer winning</p>
+<p>um you could think about it as like four</p>
+<p>dollars for them subjectively being like</p>
+<p>the value of ten dollars or something</p>
+<p>like that but</p>
+<p>but all it ends up doing in practice is</p>
+<p>it ends up saying</p>
+<p>the uh reward value component of</p>
+<p>expected free energy</p>
+<p>has a higher weight than the information</p>
+<p>value component</p>
+<p>um is is all it ends up being in</p>
+<p>practice</p>
+<p>um so here you can see that the behavior</p>
+<p>is actually you know again it's more</p>
+<p>interesting</p>
+<p>so you can see it takes a hint twice and</p>
+<p>all of a sudden it's like all right i'm</p>
+<p>confident enough i'm going to go for</p>
+<p>choosing left immediately right it does</p>
+<p>that for a few trials</p>
+<p>and then the context switches you know</p>
+<p>so it trilate it switches to being the</p>
+<p>right context</p>
+<p>and then it's like oh nope i'm going to</p>
+<p>start taking the hint again and then it</p>
+<p>observes the right one</p>
+<p>uh a bunch of times and then it's like</p>
+<p>okay now i'm confident it's the right</p>
+<p>one</p>
+<p>and then it starts choosing the right</p>
+<p>one without taking a hit a bunch of</p>
+<p>times now</p>
+<p>the behavior is quite a bit more</p>
+<p>interesting because it becomes confident</p>
+<p>it loses confidence and then it switches</p>
+<p>to being confident again in the other</p>
+<p>thing</p>
+<p>it gets one wrong around 23 it gets a</p>
+<p>wrong one</p>
+<p>and then it does one hint and it's like</p>
+<p>nope i'm on the right track i just lost</p>
+<p>one time</p>
+<p>it's all good yep exactly</p>
+<p>um so so that's that's the way the</p>
+<p>learning works and if i show you you</p>
+<p>know like i mean i'm plotting this here</p>
+<p>but like</p>
+<p>literally in the mvp like</p>
+<p>it will just be if i go to the things</p>
+<p>learning d</p>
+<p>right so if i go to little d</p>
+<p>trial one</p>
+<p>um</p>
+<p>then you know it observes you know it's</p>
+<p>0.75.25 because it observed left the</p>
+<p>first time</p>
+<p>right and then at you know say like</p>
+<p>trial eight</p>
+<p>it's two point two</p>
+<p>two point two uh so it didn't make</p>
+<p>it's because that's what it's considered</p>
+<p>it was flat still but that's because it</p>
+<p>got something wrong that's when it was</p>
+<p>confused</p>
+<p>yeah and then but if i go down to say</p>
+<p>like</p>
+<p>you know at the end say like trial i</p>
+<p>don't know 31 or something</p>
+<p>then all of a sudden um it's</p>
+<p>2 versus 13 right so it's way more</p>
+<p>confident it's added a lot more counts</p>
+<p>to</p>
+<p>it being the right context that's better</p>
+<p>um and that's you know that's really it</p>
+<p>um</p>
+<p>so and that's literally all the learning</p>
+<p>is and um</p>
+<p>you know like uh uh</p>
+<p>chris showed you the equation for</p>
+<p>learning um</p>
+<p>a but you know in the um in the tutorial</p>
+<p>paper</p>
+<p>we also show it for um for learning</p>
+<p>d which is even simpler it's just uh</p>
+<p>see if i can get to it real quick here</p>
+<p>um</p>
+<p>learning process theory</p>
+<p>learning uh yeah it's literally just</p>
+<p>this</p>
+<p>so d for the next trial is d for the</p>
+<p>previous trial</p>
+<p>plus eta times whatever the posterior</p>
+<p>states were</p>
+<p>for the previous trial um that's</p>
+<p>you know that's literally it um</p>
+<p>although i'm realizing uh that should be</p>
+<p>a minus not an equals i think</p>
+<p>but um a little typos here and there</p>
+<p>um but anyway that's you know that's</p>
+<p>really it</p>
+<p>um so it's not uh it's not complicated</p>
+<p>at all</p>
+<p>it's just add account based on what your</p>
+<p>posterior was over states at the end of</p>
+<p>the last trial</p>
+<p>um so i mean that's</p>
+<p>you know if we're stopping at the end of</p>
+<p>of basic learning then then that's</p>
+<p>really it</p>
+<p>um uh like i said four and five have to</p>
+<p>do with estimating parameters based on</p>
+<p>data and then</p>
+<p>recovering parameter estimates and</p>
+<p>fitting behavior to data and things like</p>
+<p>that so</p>
+<p>we'll cover that at another time awesome</p>
+<p>well just</p>
+<p>to um catch our breath at the end of</p>
+<p>this really</p>
+<p>fascinating and very appreciated stream</p>
+<p>um</p>
+<p>and if anyone wants to put any last</p>
+<p>comments in the live chat they'll have</p>
+<p>just a couple minutes to do so</p>
+<p>let's just each take a final recap</p>
+<p>or a final thought what do we want to</p>
+<p>remember from this time what are we</p>
+<p>gonna take forward into next time what</p>
+<p>are we looking forward to</p>
+<p>learning more about so whoever wants to</p>
+<p>go first</p>
+<p>maybe christopher any remarks on ryan's</p>
+<p>presentation</p>
+<p>and then on the code and also like your</p>
+<p>role or which parts had you</p>
+<p>done i was just curious about that with</p>
+<p>all those things for the last</p>
+<p>um so no i think i agreed with</p>
+<p>everything that was said there</p>
+<p>uh one thing to just say very</p>
+<p>when when you really get your hand get a</p>
+<p>handle on building these models</p>
+<p>it will take i think for the most time</p>
+<p>i've ever spent</p>
+<p>building these models once we'd actually</p>
+<p>figured out the model structure</p>
+<p>was a couple of days like you you might</p>
+<p>spend a very</p>
+<p>very long time figuring out the model</p>
+<p>structure but once you've figured out</p>
+<p>the model structure everything falls in</p>
+<p>place and it's super easy</p>
+<p>um so it's kind of interesting in the</p>
+<p>sense that i have some friends do like</p>
+<p>neural network or modeling with like</p>
+<p>spiking neural nets</p>
+<p>and they can spend like weeks building</p>
+<p>these models</p>
+<p>um</p>
+<p>the the hard work here is really</p>
+<p>conceptual um</p>
+<p>and then do you ask like what part of</p>
+<p>the tutorial i wrote or versus ryan</p>
+<p>um was that the question not a uh</p>
+<p>partitioning just which parts were</p>
+<p>your background drawing from or just how</p>
+<p>how do you see similar differently i</p>
+<p>wrote them generally speaking i wrote</p>
+<p>the mathematical appendices and then did</p>
+<p>like</p>
+<p>first drafts of a lot of the techie</p>
+<p>sections but that was kind of like my</p>
+<p>i really really asked ryan to do that</p>
+<p>just because i wanted to kind of get a</p>
+<p>better understanding of</p>
+<p>myself um and send ryan kind of</p>
+<p>wrote a lot of the broader sections that</p>
+<p>was kind of how that stuff worked out</p>
+<p>um yeah i mean i mean</p>
+<p>yeah i wrote i mean i wrote the the code</p>
+<p>we're going through now</p>
+<p>was was you know i took the first pass</p>
+<p>of it um</p>
+<p>chris wrote uh the um</p>
+<p>the hierarchical modeling code um</p>
+<p>which uh another another day you'll see</p>
+<p>in a lot of the neural process</p>
+<p>uh simulation uh code um or the</p>
+<p>kind of custom one uh the the ones i was</p>
+<p>showing you now are just kind of like</p>
+<p>carl standard the ones that are in spm</p>
+<p>but uh chris made some way way cooler</p>
+<p>ones for the the hierarchical</p>
+<p>neural process simulation stuff um so um</p>
+<p>but yeah i mean a lot of this was fully</p>
+<p>collaborative you know i wouldn't</p>
+<p>necessarily say</p>
+<p>you know one person did anything more</p>
+<p>than the other um</p>
+<p>so yeah every anyone who's like written</p>
+<p>a scientific paper knows like</p>
+<p>it's after the first draft has been</p>
+<p>written it's kind of hard to tell</p>
+<p>the finished product because when you</p>
+<p>have heavy backwood and fold editing it</p>
+<p>yeah i totally agree it's a great</p>
+<p>perspective so also thanks for</p>
+<p>sharing that so maybe now let's have our</p>
+<p>last little</p>
+<p>round maybe max or we'll each take a</p>
+<p>last</p>
+<p>step yeah i'm just uh you know to</p>
+<p>as a lead into next week i'm excited to</p>
+<p>hear about the neural process theory and</p>
+<p>really</p>
+<p>about you know looking at those dopamine</p>
+<p>traces and it's cool to see the spiking</p>
+<p>that you</p>
+<p>are able to reproduce with this kind of</p>
+<p>a model structure that does reflect</p>
+<p>you know kind of how the exact phone</p>
+<p>neurobiological processes might look</p>
+<p>um one thing i'm really keen to hear</p>
+<p>about is um the</p>
+<p>you know the link function between your</p>
+<p>your gradient</p>
+<p>um on free energy and your dopamine</p>
+<p>expression or simulated dopamine</p>
+<p>expression levels</p>
+<p>and the the postulated link between um</p>
+<p>you know precision</p>
+<p>insofar as i mean i mean these are</p>
+<p>things that i'm just it's a little out</p>
+<p>of my realm but um</p>
+<p>i think it's really interesting because</p>
+<p>fundamentally that's that's such an</p>
+<p>elegant</p>
+<p>uh mechanism if it's that gradient only</p>
+<p>um from a mathematical standpoint that</p>
+<p>it's really cool to tie that</p>
+<p>from the math and theory into empirical</p>
+<p>observation and using that to validate</p>
+<p>the model</p>
+<p>cool christopher definitely we're</p>
+<p>excited we're excited to show you</p>
+<p>nice do either of you want to make any</p>
+<p>last comments</p>
+<p>no uh this has been really fun thanks</p>
+<p>daniel yeah yeah yeah thanks everyone</p>
+<p>talking this whole time so yeah</p>
+<p>people probably don't want to hear me</p>
+<p>ramble anymore not till next time at</p>
+<p>least but yeah</p>
+<p>thanks everyone for watching live and in</p>
+<p>replay and everything and just for</p>
+<p>participating because it's the</p>
+<p>conversations we're having the real time</p>
+<p>errors we're</p>
+<p>finding and the learning that we're all</p>
+<p>contributing to so just thanks everyone</p>
+<p>for participating and</p>
+<p>we'll see you later for</p>
+</article>
+</body>
+</html>

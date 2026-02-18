@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 079.1 ~ Ryota Kanai: "Meta-Representations as Representations of Processes"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 079.1 ~ Ryota Kanai: "Meta-Representations as Representations of Processes"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_079 &middot; Episode 1 &middot; Speakers: Ryota Kanai &middot; Duration: 1:10:45 &middot; Views: 317</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=7AtInJ-q7Hk">https://www.youtube.com/watch?v=7AtInJ-q7Hk</a></div>
+<article>
+<p>Hello and welcome. This is ActiveInference Gueststream 79.1 on April 3rd, 2024. We're</p>
+<p>here with Ryoto Kanai talking about meta representations as representations of processes.</p>
+<p>We'll have a presentation then a discussion. So thank you very much for joining and looking</p>
+<p>forward to hearing the presentation and talking.</p>
+<p>So go for it. Yes. Okay. Right. Yeah. Yeah. Thank you very much for this opportunity to present our</p>
+<p>recent work. Yeah. And thank you for supporting our very recent paper, which just</p>
+<p>uploaded preprint. So in this talk, I want to talk about what meta representations are.</p>
+<p>And to explain my motivation, I want to start from my kind of frustration in theories of consciousness.</p>
+<p>So a lot of theories of consciousness tend to be described semantically. And then,</p>
+<p>you know, for example, like in today's talk, I mainly focus on the higher order theories of consciousness.</p>
+<p>But it kind of makes sense at the semantic level. But when we think about how we can implement such</p>
+<p>high level theories with neural networks, we realize there are a lot of uncertainties about how we might be able to implement them.</p>
+<p>So by thinking about how we might be able to implement the theories, we can actually reveal vagueness and make the concepts more precise.</p>
+<p>So that's the main topic.</p>
+<p>So as I said, I want to talk about higher order theories of consciousness.</p>
+<p>Maybe many of you might have heard of it.</p>
+<p>But just broadly speaking, a higher order theory of consciousness claims that mental state is conscious,</p>
+<p>not just by having the processing, but it becomes conscious if it's represented by a higher order mental state.</p>
+<p>So by higher order mental state or higher order representation, generally it means it's a representation about another representation.</p>
+<p>So intuitively, I think this makes sense. So for example, when your part of your brain is processing something red,</p>
+<p>people ask whether that's sufficient for consciousness, conscious experience of seeing red.</p>
+<p>But when you have an additional representation that represents that you are processing something red,</p>
+<p>so that kind of meta representation seems to be functionally related to awareness.</p>
+<p>So that kind of makes an intuitive sense.</p>
+<p>But once we start thinking about how we can implement this sort of meta representation,</p>
+<p>it's very unclear what it really means.</p>
+<p>So we try to find a way where we can sort of represent the meta representations.</p>
+<p>But let me explain why it's difficult.</p>
+<p>Okay, so this is a very naive way to think about constructing meta representation.</p>
+<p>So let's say you have an image as an input, and then there's some processing in the brain or deep neural networks,</p>
+<p>then you can represent the contents of the input or an image.</p>
+<p>But if you transform this first order representation by another neural network,</p>
+<p>that's like really naive way to implement meta representation.</p>
+<p>So let's say if we think of this as the visual information processing in the brain,</p>
+<p>maybe this could be the retina, and this could be LGN, this could be V1, V2, and so on.</p>
+<p>And but with this, somehow, like everything is just a representation of the first input.</p>
+<p>So somehow like this doesn't work.</p>
+<p>Or like if you think this is enough for meta representation,</p>
+<p>then like everything is a meta representation of something else.</p>
+<p>So yeah, so that seemed a little bit strange.</p>
+<p>And another way to conceive meta representation is to think about confidence.</p>
+<p>So but in the context of metacognition of and cognitive neuroscience, we often take confidence report</p>
+<p>from participants in an experiment.</p>
+<p>So for example, like, you know, we could present some visual stimulus, and then people report what they saw,</p>
+<p>like, you know, if it's a color discrimination task, you know, they could say blue versus red,</p>
+<p>or something like that.</p>
+<p>But then you use this first order information to make a perceptual decision.</p>
+<p>But also you can report the confidence of seeing that stimulus.</p>
+<p>So this is a frame a bit better than just the like very simplistic.</p>
+<p>So any transformation as a meta representation.</p>
+<p>So on the other hand, if we think about implementing this, this is a very simple operation.</p>
+<p>So people who are working in artificial neural networks,</p>
+<p>easily use something called softmax, where you convert this kind of representation to some sort of</p>
+<p>probability interpretation.</p>
+<p>So basically, if you convert like activation patterns of this layer</p>
+<p>layer to that, so that it normalizes to, you know, one, then it is confident.</p>
+<p>So in a way, this is just one very simple transformation of first order representation.</p>
+<p>So, okay, maybe, you know, this is still meaningful when we think about how the brain processes this kind of uncertainty.</p>
+<p>But, but this may not be, this, it was not really satisfying for me as a way to also</p>
+<p>characterize meta representations.</p>
+<p>So the, the main solution we came up with this idea.</p>
+<p>So, so you can, so, so we always tended to think about transforming first order representation to something else.</p>
+<p>But, but here, what we are proposing is to construct a representation of processes rather than this kind of states.</p>
+<p>So the idea is, okay, so like, like, like, no, any neural network can be conceived as some sort of function from input to output.</p>
+<p>But, but there's a way to represent these functions or processes.</p>
+<p>So, so, so instead of re-representing first order representation,</p>
+<p>we are proposing, we can, if we represent this function f to some meta representation,</p>
+<p>you know, you know, we can have a potentially better interpretation of meta representation.</p>
+<p>And because this makes a qualitative difference.</p>
+<p>So, but maybe, you know, this might be somehow confusing.</p>
+<p>So I wanted to give you an example using artificial neural networks.</p>
+<p>So that's the main topic of the paper.</p>
+<p>Okay.</p>
+<p>So here, I just want to briefly sort of introduce the concept of latent space or embedding for</p>
+<p>people who are not familiar with this kind of stuff.</p>
+<p>So in artificial neural networks, there's a concept of encoder and decoder.</p>
+<p>And so, for example, this is, let's say, you train an auto encoder neural networks,</p>
+<p>where the input is an image, and then output is an image.</p>
+<p>So, so basically, you want to reconstruct the input using encoder and decoder.</p>
+<p>But there's a low dimensional bottleneck in the middle.</p>
+<p>And, and then usually, you know, when you have this kind of construction,</p>
+<p>you find interesting features where, you know, the states in this,</p>
+<p>the vector in this space captures the, you know, the important characteristics of the</p>
+<p>dataset in this case, images.</p>
+<p>So, yeah, so that's the idea.</p>
+<p>So, so basically, it's a, you know, they compress nice representation of the dataset.</p>
+<p>And, but what we are proposing is to create some sort of meta auto encoder,</p>
+<p>where the input and outputs are neural networks.</p>
+<p>So you can use a neural network, which can be parameterized by, or represented by the weights</p>
+<p>and biases, or, you know, you can use like many different ways to sort of convert neural networks</p>
+<p>into some vectors, and then you reconstruct the neural network.</p>
+<p>So, so now maybe you can already see this is somewhat meta.</p>
+<p>And so with this construction, you can have a representation of neural networks.</p>
+<p>So in this case, you know, like, you know, each point in this space corresponds to some sort</p>
+<p>of neural network or function.</p>
+<p>So, yeah, so, so in a way, this is a space of functions, parameterized some, you know, like latent</p>
+<p>axes.</p>
+<p>So, so that's the general idea.</p>
+<p>So I hope you get the idea so far.</p>
+<p>Yeah.</p>
+<p>And so, but from here, you know, I want to explain the actual experiments we did.</p>
+<p>And so this is a little bit more detailed construction of what we did.</p>
+<p>So we first created a lot of encoders by training auto encoders for all kinds of different stimuli.</p>
+<p>So, for example, like in one case, you know, let's say like we trained this kind of first order</p>
+<p>neural network on just on cars or just on flowers or sometimes just, you know, the sound of dog barking</p>
+<p>and so on.</p>
+<p>So like each and, you know, first order neural network is specialized in some kind of stimulus</p>
+<p>category.</p>
+<p>And we use both visual and audio stimuli, but each network is trained on just one type of stimulus.</p>
+<p>But, but for example, one category.</p>
+<p>And so, and then this encoder can be represented as 256 by 16 elements.</p>
+<p>So like each column.</p>
+<p>Okay.</p>
+<p>So here, like in the first order latent space, we have 16 dimensions and then input images</p>
+<p>are 256 pixels.</p>
+<p>And yeah, so basically, you know, you can see this number as the sort of, you know, parameter</p>
+<p>for the dispersal than your network and then each column corresponds to, okay, so now you can see</p>
+<p>that this is a very simple neural network.</p>
+<p>So just one transformation, right.</p>
+<p>And then, then we took each of these as the input as a filter, and then we get like, like this kind of</p>
+<p>So, okay, so this, just one column here is a filter in this network, and then we use this as input.</p>
+<p>So, so we, you know, we trained another autoencoder to represent individual filters, and then we</p>
+<p>computed representation of this whole network using these two networks.</p>
+<p>So, so this might be slightly confusing, but the main thing is, you know, we get representation</p>
+<p>of a network at this stage.</p>
+<p>And then we created another meta autoencoder using this kind of latent representation of</p>
+<p>first network.</p>
+<p>So, so it might be a little bit confusing compared to the previous image, but, but this is more,</p>
+<p>you know, more to deal with the technical aspect.</p>
+<p>But the main thing is, you know, we trained, we got a lot of small networks on the specialized</p>
+<p>stimulus category, and then we tried to get representations of those networks.</p>
+<p>So, so that's the idea.</p>
+<p>Okay.</p>
+<p>So, so then, you know, we applied the Tizmi to visualize latent representations.</p>
+<p>And so here, like all the blue dots correspond to some visual stimuli,</p>
+<p>some sort of category, and then the orange, the points correspond to some auditory stimuli.</p>
+<p>So that clearly you can see there's a separation between visual and the audio stimuli.</p>
+<p>So that's kind of interesting, right?</p>
+<p>So, because this suggests that when you have a meta representation, you can already tell</p>
+<p>whether the network is specialized in visual stimulus or auditory stimulus.</p>
+<p>So, so that's a, that's a, that's what we were excited about.</p>
+<p>Yeah.</p>
+<p>But also, you might be able to see like some clustering of same shapes.</p>
+<p>It might be a bit difficult to see this in this image, but, but there might be something like,</p>
+<p>you know, like some, you might be able to tell whether a network is specialized in cars</p>
+<p>or buses or buses or things like that.</p>
+<p>So, so we tested that by trying to predict the original data set just by looking at the</p>
+<p>meta representations.</p>
+<p>So, yeah, so, so as you can see, like there's a clear separation between modalities,</p>
+<p>and, but there's a little bit brighter, like diagonal elements, which suggest that, you know,</p>
+<p>sometimes we succeed in predicting like really specific stimulus category.</p>
+<p>So, so that's, that's really exciting.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>So, so, so based on this, it seems we can, you know, there's already some information about the</p>
+<p>structure of the weight of the network, which tells us about what kind of information they were trained</p>
+<p>on or specialized in.</p>
+<p>That's an interesting observation, but also like we tried this in the original weight space, but in</p>
+<p>that case, we cannot really predict, like which, you know, category the network was trained on.</p>
+<p>So, so in that sense, you actually have to have this kind of meta representation to be able to make</p>
+<p>these predictions.</p>
+<p>Okay.</p>
+<p>So, but maybe one crucial question is, you know, why is it possible?</p>
+<p>So, especially when we try to compare like vision versus audition,</p>
+<p>or maybe the key differences, they may have different kinds of invariances or equivalencies.</p>
+<p>So, yeah.</p>
+<p>So for example, like, you know, in images, you know, the object,</p>
+<p>or category or labels, do not change if we make like, you know, translation or a change in scale and so</p>
+<p>on. So like, the classical convolutional neural networks are kind of rely on like this kind of</p>
+<p>invariances. And but, but maybe for auditory stimuli, you know, if you sort of move the,</p>
+<p>you know, if you translate the input image or the sound differently, so you experience</p>
+<p>different kinds of sounds and also the identity of the sounds changes. So, so there might be some</p>
+<p>modality specific invariances. So that, so maybe after training a network, they learn to capture that</p>
+<p>kind of invariances. And meta representation may also find this kind of representation of invariances</p>
+<p>or equivalencies in the structure of the weight. So, so that's our current explanation why this works.</p>
+<p>Okay. And I'll come back to this later. So, and so, so in a way, like our experiment</p>
+<p>is also motivated by the classical question of what it's like to be a bat. And the interesting thing is,</p>
+<p>we don't, so, you know, bats can do echolocation of, you know, by emitting sound and then receiving sound,</p>
+<p>but, but, but, but they use it for navigation. So maybe it's, you know, it's like vision for them,</p>
+<p>but it's hard to say like whether they are experiencing visual quality or auditory quality.</p>
+<p>So, so we've been, you know, we want to answer that kind of question eventually in consciousness research.</p>
+<p>So, but, but to introduce an interesting context. So, so this is a very exciting series of research from</p>
+<p>American science group in at MIT in the early 2000s. And so maybe many of you are already familiar with</p>
+<p>this experiment, but, but they managed to do an experiment where they rewired the input from the</p>
+<p>retina to the auditory cortex. So, yeah, I think it's like really amazing that they can actually do this</p>
+<p>sort of thing. But yeah, so, but the, the idea is that their auditory cortex developed by receiving input</p>
+<p>from visual images, the data coming from the retina. And the interesting, so they had several</p>
+<p>of nature papers, and they were all very interesting. But the, one of the key findings is that after</p>
+<p>auditory cortex was kind of trained on visual input, their connectivity pattern looked more like</p>
+<p>normal visual cortex. So, yeah, so this kind of connectivity to, not their connection to the</p>
+<p>other neurons, you know, probably with like similar, like orientation properties. And so, so somehow the</p>
+<p>connectivity seems to reflect the sort of like statistics or structure in the data they learned. And</p>
+<p>but there's an additional interesting experiment behavioural experiment they did. And the main question</p>
+<p>they asked is whether they see or hear the activation of this rewired auditory cortex. And</p>
+<p>And the short answer to that is the animals seem to see the brain activities in the rewired</p>
+<p>auditory cortex.</p>
+<p>So that's like a really amazing result.</p>
+<p>So yeah, so based on this, I thought like this could be a really useful way to think</p>
+<p>about whether we are, you know, whether some activities or some neural networks is more</p>
+<p>like for hearing or seeing.</p>
+<p>And so yeah, so that's something I always wanted to ask.</p>
+<p>So yeah, so maybe, you know, I've been thinking about like testing IIT using this</p>
+<p>kind of visual versus auditory, and yeah.</p>
+<p>So the question is whether we can tell whether a piece of cortex is visual or auditory just</p>
+<p>by looking at their connectivity.</p>
+<p>So now of course, you know, IIT is very difficult to apply and we don't know yet whether IIT</p>
+<p>is true or not, but at least, I don't know, we need to think about how we can test implications</p>
+<p>by IT by empirical research.</p>
+<p>Okay, so this was what I was thinking originally.</p>
+<p>So let's say, you know, you take some, you know, like anatomy from visual cortex or auditory</p>
+<p>cortex, and then there are many techniques to look at anatomical connections and functional</p>
+<p>connections.</p>
+<p>It's pretty still very difficult to read out the weights from the actual brain.</p>
+<p>But, but if we have this, we should be able to compute information structures as suggested</p>
+<p>by IIT, and we can probably match the structure to the report of visual quality or auditory quality.</p>
+<p>So that's the ideal experiment I wanted to do.</p>
+<p>But there are a lot of challenges.</p>
+<p>So the first one is in the actual brain, it's, it's very difficult to have like complete</p>
+<p>characterization of anatomical connections.</p>
+<p>And, you know, it's also impossible to look at the causal patterns in the activation from all the neurons</p>
+<p>in question.</p>
+<p>So that's, that's very hard.</p>
+<p>Seems impossible.</p>
+<p>And another difficulty is the, the computation of phi in IIT is very hard.</p>
+<p>So, yeah, we've been also trying to compute some surrogate of phi or earlier version of phi.</p>
+<p>But it's still very hard if we want to compute phi from, let's say 10,000 neurons.</p>
+<p>So that's, that's pretty hard.</p>
+<p>And so, and also maybe a third thing is, you know, how can we match the structure of the report of</p>
+<p>experience to the structure of information?</p>
+<p>So that's, again, a difficult question.</p>
+<p>So, but this, you know, with the approach I showed you earlier,</p>
+<p>we can kind of replace some of the problems.</p>
+<p>So, so instead of looking at the complete anatomy of the human visual cortex and human auditory cortex,</p>
+<p>we can create sort of artificial neural networks by training them on specific stimuli,</p>
+<p>or in this case, like sounds and images.</p>
+<p>So that's, you know, the great thing about artificial neural networks is we can see all the weights</p>
+<p>and connectivity patterns.</p>
+<p>So, of course, you know, we don't know whether they are conscious or not,</p>
+<p>but, but this, this approach gives us something concrete to work with.</p>
+<p>And another thing is about computing phi in IIB, we can do something slightly different.</p>
+<p>So there's a really interesting paper by Mediano and colleagues where they propose the concept of weak IITs.</p>
+<p>So if you take the original IITs, it has like both mathematical and philosophical aspects.</p>
+<p>So, so that's my interpretation.</p>
+<p>And, but, but if we can use the mathematical implications, or, you know, if we use phi as a</p>
+<p>kind of index of complexity or something, then,</p>
+<p>we can use IIT in a more pragmatic manner.</p>
+<p>So, so that's their proposal, weak IIT.</p>
+<p>So I think, I think, you know, there have been like a lot of empirical research driven by IIT.</p>
+<p>So I think that's a good thing.</p>
+<p>But, but here, what I'm proposing is like, more like conceptual IIT.</p>
+<p>So, so in the,</p>
+<p>meta representation work I presented today,</p>
+<p>I, I also took some inspiration from IIT as well.</p>
+<p>So the idea is like in IIT, whether the, you know, some network generates</p>
+<p>a visual or auditory quality should be fully described in terms of their connectivity patterns.</p>
+<p>So, so that's a kind of conceptual implication of IIT.</p>
+<p>So, but instead of applying the mathematical formalisms of IIT,</p>
+<p>we just use autoencoder to find or embed neural networks</p>
+<p>in a practical computationally tractable manner.</p>
+<p>So, so, so, so I think this kind of the conceptual IIT approach could be</p>
+<p>also a useful way to make progress in consciousness research.</p>
+<p>Okay, so the final points.</p>
+<p>So, so maybe one question is whether meta representations,</p>
+<p>the other questions as, as we presented today, actually,</p>
+<p>actually exist in biological brains.</p>
+<p>So that's highly questionable.</p>
+<p>So, for example,</p>
+<p>you know, today I embedded neural networks just by the weight of first order networks.</p>
+<p>So, so, so, so instead of using weights, if you have like many sort of input output,</p>
+<p>you know, you can use the weight of the weight of the weight of the weight of the weight of the weight.</p>
+<p>So, so, so, so maybe in the brain, there might be a different mechanism to achieve this.</p>
+<p>So, so instead of using weights, if you have like many sort of input output pairs, you can also</p>
+<p>construct a representation of that kind of relationship.</p>
+<p>So, so maybe without some figure of, or equations, it might be a bit difficult to understand this.</p>
+<p>But, but let's say, you know, you have two brain regions, like, you know, V1 and V5.</p>
+<p>And, but if a third region receives the input from both regions, the third region can learn to represent</p>
+<p>the pair, pair of representations.</p>
+<p>So that kind of meta representation may exist in the brain.</p>
+<p>And also now we've been thinking how we may be able to find such representations with fMRI.</p>
+<p>So that's a topic for future study.</p>
+<p>Yeah.</p>
+<p>And another question is, you know, what, what's the point of having this kind of meta representation?</p>
+<p>So what's the functional role?</p>
+<p>So our current interpretation is when you have this kind of meta representation, you can sort of</p>
+<p>compare different networks or you can have some sort of qualitative characterization of first order</p>
+<p>networks. So let's say, you know, you have meta representation of, you know, red, neural, red color</p>
+<p>processing network, or like, oh, no, you could have like, you know, meta representation of like many,</p>
+<p>many different first order neural networks. But then in this space, you know, you can talk about whether</p>
+<p>two processes are similar or different. So for example, in that space, you can say that visual</p>
+<p>experiences are very different from auditory experiences. But within the visual experiences,</p>
+<p>there are many different types of experiences. And here, you know, you can talk about the distances</p>
+<p>and similarities. So maybe it's a bit similar to the idea of the world to back on a way, words are embedded in a</p>
+<p>latent vector space. And when you have that kind of space, you can actually have some reasonable</p>
+<p>representations of semantics of the words. But here, if you embed neural networks, you can have some sort of</p>
+<p>semantic or representations of those networks. So, so that might be the potential functional role. And so,</p>
+<p>so in a way, like, you know, this has like very, this already has a flavor of something like</p>
+<p>quality. So when we talk about quality, we always compare certain experiences to other experiences.</p>
+<p>And we can talk about whether not two experiences are similar, and so on. So, so in that sense, maybe,</p>
+<p>you know, this kind of meta representation might be very important for us to be able to report</p>
+<p>the qualitative aspects of the qualitative aspects of the other one experience. Okay, yeah, that's all. And thank you very much.</p>
+<p>Thank you. Awesome.</p>
+<p>Cool. Great. I wrote down some questions. And</p>
+<p>also anyone watching live can can write questions. Well, thanks for sharing it. And it's definitely very</p>
+<p>striking finding about the visual and the audio differing. So just kind of a preliminary question</p>
+<p>here. How was time handled in the audio setting?</p>
+<p>Oh, good question. Well, we just converted the raw signal into an image. So it's basically time and frequency. So, so that we can use the same network for handling to different</p>
+<p>properties.</p>
+<p>Yeah, interesting, because it's also difference between those two features.</p>
+<p>And it made me wonder about video, video chatting or watching a video,</p>
+<p>video, perhaps as being a meta representation with audio and visual.</p>
+<p>Because if there's like a lag, or if there's a disconnect or any other number of relations,</p>
+<p>it can be noticeable as a contrast.</p>
+<p>Like, oh, they're talking louder than it looks like they're talking,</p>
+<p>or something like that. So I mean, have you looked at that kind of</p>
+<p>fusion? Or how could you look at it with the architecture that you had here?</p>
+<p>Oh, that's a great question. So, you know, we have very simplistic architecture, you know, since this was just a peripheral concept. But</p>
+<p>yeah, but I think</p>
+<p>you know, in the brain, we must have like really</p>
+<p>multimodal representations at the same time.</p>
+<p>So that way, we should be able to compare different experiences at the same time.</p>
+<p>And so that's where we get somehow close to the idea of global workspace.</p>
+<p>So, yeah, so we are not directly, you know, addressing your question. But,</p>
+<p>but we are on a separate project, we are actually training global workspace, like neural networks,</p>
+<p>so that, you know, they learn kind of multimodal representations. And also, so in that context,</p>
+<p>we believe it's very important to look at the latent space structures from different modalities,</p>
+<p>and then see how they are related to each other. So with Rufan Van Ruren, we wrote a paper in Trending</p>
+<p>Neuroscience, where we propose that global workspace, maybe a kind of shared latent space across different</p>
+<p>specialized modules. So, yeah, so I think that part is also an important, like next step to sort of</p>
+<p>to understand theories of consciousness from the perspective of deep learning.</p>
+<p>Interesting. I found it also very interesting how you began with the uncertainty estimate,</p>
+<p>because in active inference, a lot gets loaded on to uncertainty estimates of different parameters.</p>
+<p>And that made me think about for, yeah, thanks for the slide. It made me think about for,</p>
+<p>if you only have two parameters to encode, then you can encode like the mean and the variance.</p>
+<p>However, with the neural network auto encoder concept, you could project down to just two,</p>
+<p>or it could be more. And so then there's a much richer palette for, and more bandwidth than just a</p>
+<p>statistical distribution, even though it's also composed of statistical distributions. But the</p>
+<p>minimal and the simplest and like the kind of most essential is really the statistical single distribution.</p>
+<p>But this is basically just talking about the connectivity of multiple distributions.</p>
+<p>Yeah, that's an interesting comment.</p>
+<p>Yeah, I guess maybe a crucial question is whether and how uncertainties are represented in the brain.</p>
+<p>So like, when we think of uncertainty estimation in terms of two parameters,</p>
+<p>you know, that's kind of mathematical notion. But, but uncertainties, maybe, you know, probably we don't</p>
+<p>use just a single neuron to represent all uncertainty. So there might be also population representation for</p>
+<p>uncertainty. So, so in the actual implementation in the brain. Yeah, you may actually use like many neurons as well.</p>
+<p>But I've been also like really interested in the this topic, and especially like uncertainty estimation</p>
+<p>neurons in the palatine, in the palatine, in the palatine, in the palatine, for visual experiences. So I thought that was like really cool study. And I thought, you know, there seems to be like a close link between</p>
+<p>having having having high confidence and conscious experience. So I thought this must be like, like a really key ingredient. But somehow, like when we think about uncertainty, in terms of deep learning, it's kind of, it seems like really trivial. So I feel like there's a gap there.</p>
+<p>Yeah.</p>
+<p>Hmm.</p>
+<p>Hmm.</p>
+<p>Hmm.</p>
+<p>Hmm.</p>
+<p>That's very interesting.</p>
+<p>Hmm.</p>
+<p>Hmm.</p>
+<p>There's a lot of ways to go with that.</p>
+<p>Hmm.</p>
+<p>Hmm.</p>
+<p>In the, the last two points that you had up there, you return to this kind of functionalist question, or at least just perspective, like what is it doing?</p>
+<p>So that made me wonder when you look at the meta representations for the networks you construct, do they seem to convey something like summary statistics of the network, like the sparseness overall, the connection or like some kind of network descriptions.</p>
+<p>You also mentioned the differences in the stimuli type.</p>
+<p>So like does the, what parts of the represent of the meta representation reflect what the network is and then also like what it does input output wise.</p>
+<p>Oh, that's a great.</p>
+<p>Yeah.</p>
+<p>So we, we don't know really what's in the meta representations of our, uh, networks.</p>
+<p>Um, but maybe, but maybe this slide might be relevant.</p>
+<p>So, uh, so each neural network, the first order neural network, uh, tries to find like good basis functions or kind of good filters so that they can efficiently encode the images or sounds.</p>
+<p>And, uh, but they, they really come from the statistical patterns in the stimulus.</p>
+<p>So, so, so that, so that should be somehow reflected in the, you know, weight structure.</p>
+<p>So, so that may be related to, you know, this kind of invariancies or grid variances, uh, that, that's our speculation, but also, you know, for like, like really specific type of things.</p>
+<p>So for example, like these are all like different kind of specific stimulus that maybe this is air conditioning or car sound and so on.</p>
+<p>So, so, so they may have like really specific, uh, sort of structure.</p>
+<p>Um, so, so then they may be embedded in the new networks, but the interesting thing is when you train a network, uh, you get different things every time.</p>
+<p>Uh, but, but they have something common across every training, but on the surface, they look very different.</p>
+<p>Right.</p>
+<p>So yeah, but, but, but across the results of many different training, uh, uh, different networks trained on the same stimulus, there is something common across them.</p>
+<p>And so that's the kind of, uh, features we wanted to sort of capture with metal.</p>
+<p>Okay.</p>
+<p>So, okay.</p>
+<p>Okay.</p>
+<p>This may be reading too much into the image, but the, um, it's V for visual, a for audio.</p>
+<p>Oh yeah.</p>
+<p>Yeah.</p>
+<p>That's right.</p>
+<p>Yeah.</p>
+<p>The big off diagonal blocks are just the differences between the audio and visual that are solid purple.</p>
+<p>But then, um, and then, um, the audio stimuli has more a little bit with other audio, but then like in the visual it's, I dunno, it's like related to the syllable air.</p>
+<p>So it's kind of like a natural association, even though it wasn't trained or maybe it's just cause it's not a diagonal.</p>
+<p>Uh, yeah.</p>
+<p>Yeah.</p>
+<p>Well, there might be some bias.</p>
+<p>Uh, yeah.</p>
+<p>So this one, yeah.</p>
+<p>So somehow the, you know, predictor thought, like all images come from this one.</p>
+<p>Um, yeah.</p>
+<p>But it seems like, you know, from this figure, like, different audio stimuli are very distinct, whereas like in the visual things, what they seem to kind of, you know, yeah.</p>
+<p>Yeah.</p>
+<p>But probably the, but this may be more, uh, due to like technical constraints.</p>
+<p>So, so here we have to use like really like small patches.</p>
+<p>So, so maybe, you know, like, but instead of looking at object categories per se, maybe those networks looked at the texture patterns across different categories.</p>
+<p>So there might be still some information, but, uh, but maybe they're not very specific to individual students.</p>
+<p>Hmm.</p>
+<p>Yeah.</p>
+<p>I think, I mean, you're, you're shooting for the moon with the consciousness component, but even making simpler networks to understand what aspects latent spaces learn is a very useful method that I think this provides a strong example of.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>I hope so.</p>
+<p>And, but also, since we work in the domain of, uh, like AI research as well, uh, we encountered something called mechanistic interpretability, right?</p>
+<p>It's a kind of field of AI research where people try to understand what's happening inside neural networks, because, you know, like a lot of people playing deep learning is black box and we don't understand what's going on inside.</p>
+<p>But, but I think eventually we want to understand what's happening in neural networks as well.</p>
+<p>And, uh, it should be still, uh, easier, uh, compared to understanding the brain.</p>
+<p>So, you know, maybe, you know, in the context, I, I talked about this a little bit, but in deep learning, we know all the weights we can do that.</p>
+<p>Any experiments and we can do ablation or, you know, we can look at the function of part of the network and, and we can, you know, give them millions of trials.</p>
+<p>So, so it's like an ideal experimental setup for neuroscientists.</p>
+<p>And so if we don't understand, uh, deep learning, uh, neural networks, uh, it's hopeless to understand the brain because, you know, it's much harder to do experiments in the brain.</p>
+<p>We cannot know the weights and connectivity.</p>
+<p>So we, we only have very limited, uh, access to the actual material.</p>
+<p>So, so it's in a way we can practice how to understand systems, uh, using a simple neural networks and then try to sort of use that experience to understand the brain.</p>
+<p>So I think that kind of collaboration is potentially very interesting.</p>
+<p>Yeah, very well said.</p>
+<p>Um, it reminds me of some work by Jonas and Cording from 2017.</p>
+<p>The paper's called, could a neuroscientist understand a microprocessor?</p>
+<p>And they had an in silico simulation of a whole microprocessor doing different operations.</p>
+<p>So they could do the lesions and the double lesions, make all the recordings.</p>
+<p>And so that kind of revealed on one hand, the limitations of different methods that people often use to ascribe function to the brain.</p>
+<p>However, there's always this component where it's like, well, maybe that's just because the processor is a weird architecture or because the operations that they do are very synthetic and they don't really have a natural component.</p>
+<p>Whereas when you're proposing that the base neural networks must deal with the symmetries of audio visual and so on.</p>
+<p>And so it's the kinds of challenges that organisms actually have to solve with nervous systems, as opposed to being software, which could have been written in an arbitrary way.</p>
+<p>And so the results are a little bit different, but it kind of makes the proof points, which is that to have the in silico version that you can do the digital simulations on can help you identify like where your studies are well powered or not.</p>
+<p>And do all these other useful functions, even if they don't directly answer the question itself.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>I'm also a big fan of that, like, coding papers.</p>
+<p>I think, I think, you know, that, yeah, they made a really important point.</p>
+<p>So even if we have access to all the things, you know, we still may not understand it.</p>
+<p>And, and it's hard to say whether, you know, the organic systems are easier to understand compared to synthetic systems.</p>
+<p>So I guess we, you know, we just don't know, but yeah, but without making any assumption, I think it's just very hard to sort of understand any computation happening, happening in many different ways.</p>
+<p>In many different scales, not just in the brain, but inside individual cells, or maybe at the smaller scale or, you know, larger scale like galaxy.</p>
+<p>And so, yeah, I think we still lack the science to connect physics to computation.</p>
+<p>So, yeah, so on a different paper, we also propose something called universality.</p>
+<p>So the idea is, well, so the point is a theory of consciousness should be also universal in the sense that we can apply it to non-biological brains.</p>
+<p>So, you know, like a lot of times when people ask whether current LNMs are conscious or not, but it's kind of, it depends on the theory you subscribe to.</p>
+<p>So, but the current theories like the current theories, like higher order theory or global workspace theory, do not tell us whether, you know, AI is conscious or not.</p>
+<p>But I think the reason is we need to define theories based on some physical systems.</p>
+<p>So, you know, what, so for example, it's hard to say whether a neural, artificial neural network has a global workspace.</p>
+<p>We can, we have those concepts, but when we try to analyze physical systems and then try to see whether there's a global workspace inside, it's very hard.</p>
+<p>So, you know, we need to make such theories universally applicable so that, you know, they, they can tell us about, you know, computations happening at many different scales correspond to, you know, the concepts in those theories.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>That definitely kind of calls back to the alien slide.</p>
+<p>And if we had a tissue sample with only the static topology with no function, what could be assessed on a different note in active inference?</p>
+<p>I mean, half of it is action.</p>
+<p>So when we're thinking about variational autoencoders and the transformation from observations like down into state spaces, often that's in terms of the policy rather than only a compression, which is kind of like a sense making and reverse sense making layer.</p>
+<p>That's the predictive coding, predictive processing origins, and then also to bring in the action representations.</p>
+<p>So that's kind of like being able to distinguish the primary audio and the primary visual from the motor cortices.</p>
+<p>And those may have very simple or very sophisticated representations, but they're also ones that could be directly correlated with like bodily movement or muscle activity rather than being correlated at some level, if you go that way, like with something you can't measure.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>I think, you know, like here, like we only talk about sensory experience, but like you said,</p>
+<p>I think some of the meaning of sensory experience comes from action or in relation to your body.</p>
+<p>So for example, you know, without body, there's no up or down or left or right.</p>
+<p>So there's no direction, but you get this kind of, you know, so direction in the visual image, or reactivity to your body, for example.</p>
+<p>So, and so, and also maybe you get kind of representations related to affordances.</p>
+<p>So whether something is actionable, that also, you know, relies on some combination of sort of action and like sensory representations.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>But I think it's very interesting to think about how we can extend our current research into, you know, more like agent based architecture.</p>
+<p>That makes me think of the possibility that the meta representations could be higher judgments, whether those are experienced.</p>
+<p>So like a very cross modal judgment would be like, can a human make this?</p>
+<p>And then that could be asked across modalities or could reflect multiple modalities, but it has to draw information from also not just the sensory data, but like other kinds of memory.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>It connects with the broader cognitive modeling and the agent architecture.</p>
+<p>Whereas here it's really reducing it to just the streams of vision and audio, which is the right starting place.</p>
+<p>And then there's going to be other streams that aren't just the sensory.</p>
+<p>Mm-hmm.</p>
+<p>Oh, okay.</p>
+<p>Yeah.</p>
+<p>That's a great comment.</p>
+<p>So this reminded me of something I had in mind and forgot to mention.</p>
+<p>So we, we are thinking of this kind of meta representation as one of the modules attached to the global workspace.</p>
+<p>So when you have something like global workspace, you want to use functions, not just from the sensory inputs, but you want to combine that with action, reward and so on.</p>
+<p>So in principle, okay.</p>
+<p>So we want to use representations of potential actions or even like mental operations.</p>
+<p>So like, you know, adding two numbers is a kind of mental action.</p>
+<p>So when you try, so, so we are actually like thinking about connecting like this kind of meta representation to general intelligence.</p>
+<p>So when you are, you know, you have a representation of the task.</p>
+<p>And, but, but to solve a new task, you want to find a potential combination of, you know, specialized modules you can use to solve that task.</p>
+<p>So, so, so, so in a way, you know, this kind of meta representation can be used to match the tools you have in your brain with the current past.</p>
+<p>So, so in that toolbox, you know, you don't just have this kind of visual representations, but, but you may also want to use potential future actions you can use.</p>
+<p>So, so, but you can also use the same meta representation approach to represent the repertoire of actions you can make.</p>
+<p>So that's the, you know, that's the connection.</p>
+<p>Hmm.</p>
+<p>Hmm.</p>
+<p>Yeah.</p>
+<p>Potentially in the active inference model, like you had the slices with the different filters.</p>
+<p>Mm-hmm.</p>
+<p>Potentially in the B matrix in active inference or just the transition matrix.</p>
+<p>It's the policy dependent transitions on the world.</p>
+<p>So that's kind of like the policy dependent filter applied.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Oh yeah.</p>
+<p>That's a good connection too.</p>
+<p>Yeah.</p>
+<p>And then also on the thalamus, I'm not familiar with the mammal neuroanatomy very much, but when you said that clarity was important, did you mean like.</p>
+<p>Like what.</p>
+<p>Yeah.</p>
+<p>So, so I think a lot of interest.</p>
+<p>Oh, in confidence or metacognition comes from the literature blind side or blind side like phenomena.</p>
+<p>Yeah.</p>
+<p>So it seems like even when you have, you have the ability to report the stimulus, without confidence, you know, you report, you didn't see it.</p>
+<p>Right.</p>
+<p>So it seems, you know, this kind of confidence is explicitly present in the brain.</p>
+<p>So for example, like in the thalamus and but so when you deactivate those neurons somehow, you know, this, you know, monkeys, they lose the confidence as a bit.</p>
+<p>So in terms of confidence rating, they seem to become like blind side patients.</p>
+<p>So, so, so in, in my introduction, I kind of criticize the kind of simplicity of confidence as meta representation.</p>
+<p>But, but at the same time in the literature of consciousness research, it's also very important.</p>
+<p>Right.</p>
+<p>So somehow like without confidence, you know, you don't really report it.</p>
+<p>But, but I think maybe, you know, we need to have like further studies about how confidence or like lack of confidence changes the way information enters something like global workspace or I don't know, some stage of consciousness.</p>
+<p>So, but I think that's like really likely in the context of like, you know, precision weighting and stuff, right.</p>
+<p>So without confidence, maybe confidence works as a way for way to get information to something like global workspace.</p>
+<p>I don't know.</p>
+<p>Maybe I talk about global workspace too much, but yeah, I think it's a good way to like think about it.</p>
+<p>Yeah, I, I agree.</p>
+<p>There, these are just like kind of the labels and the, the models that can then be applied.</p>
+<p>So what that made me think of was the, again, an active inference.</p>
+<p>If we're thinking about attention or precision confidence, it's usually just one variable in the minimal case, just changing the variance on a statistical distribution.</p>
+<p>Latent spaces makes it much richer.</p>
+<p>So then let's just think about what sources are we paying attention to?</p>
+<p>Which sources, if are we allowing to like ignite the global workspace or have more of a percolating effect?</p>
+<p>And then there could be like, it's like the dinner party problem.</p>
+<p>So one part of the problem is just distinguishing and interpreting the sounds.</p>
+<p>So that might be a simpler, like left side louder or quieter and, or, or moving to something like that.</p>
+<p>But then you would have a higher order evaluation space with like this person.</p>
+<p>You can trust on this topic and that topic, but not this one and vice versa here.</p>
+<p>So that's invoking more of the world model.</p>
+<p>And then that could control to what extent different things that those people said after they'd been parsed out.</p>
+<p>So like the primary sensory mapping is simpler because this is just a very sensor actuator type problem.</p>
+<p>Whereas the higher order latent spaces could be just very large.</p>
+<p>So, yeah, I guess maybe for like a simple presence versus absence kind of judgment, this confidence may be critical for a stimulus to enter conscious awareness.</p>
+<p>Whereas probably meta representation I talked about maybe more related to sort of evaluation of the quality of the content of consciousness.</p>
+<p>So if we want to make comparisons across like different sensory experiences, you know, we need this kind of meta representation.</p>
+<p>I think that's a kind of different aspect of metacognition.</p>
+<p>Yeah, so I guess maybe like, like in like earlier days of consciousness research, like people did a lot of like present versus absent report.</p>
+<p>And it's all about detection, but I think detection is very different from kind of qualitative assessment of experience.</p>
+<p>And so I think that's kind of transition in the focus of consciousness research from, you know, like,</p>
+<p>like present versus absent report versus more like structured report, like comparing like two experiences are similar or not.</p>
+<p>So I know now it's GS group has been developing this method to sort of capture four-year structure.</p>
+<p>So, so I think, you know, we want to understand why certain experiences feel the way they do, right?</p>
+<p>And then that those things seem to be very difficult to approach, but, but by looking at, you know, sort of comparisons of different experiences,</p>
+<p>seems to be able to capture the overall structure of the experience.</p>
+<p>So maybe, you know, our meta representation approach here is also more about capturing more sort of structured structure of the quality of experience,</p>
+<p>rather than, you know, whether we consciously perceive something or just subliminary process that information.</p>
+<p>That's a very interesting point.</p>
+<p>It's almost like the early global workspace and Ignition were focused on the extent of the causal efficacy and the binding,</p>
+<p>but it was sort of left for later what the semantics or the contents were because the question was,</p>
+<p>at least from how I've seen it more like whether it percolated to awareness or not,</p>
+<p>or like whether there was a binding or reportable versus unreportable stimuli.</p>
+<p>And so it totally makes sense that within the space of the aware, the question of how to bring it to awareness is kind of already taken.</p>
+<p>So then it requires a much richer state space like you have here to even approach it because it's just not an all or none question at this point.</p>
+<p>Yeah, yeah, yeah, I agree.</p>
+<p>Yeah, I think that's a really interesting tradition.</p>
+<p>Although like, I feel like we haven't really solved this report reportable versus unreportable question yet,</p>
+<p>because we still don't know where consciousness is really happening in the brain.</p>
+<p>But I think we need just several different approaches to tackle the same problem.</p>
+<p>Cool. Well, I guess sort of in closing, what are you going to continue working on or what are you excited about?</p>
+<p>Yeah, so we want to do empirical research based on this.</p>
+<p>So I think we know here we are proposing a new way to look at meta representation.</p>
+<p>So one thing we are interested in doing is to find whether such meta representations exist in the brain.</p>
+<p>So that's an open question.</p>
+<p>But we have some ideas about how to try that.</p>
+<p>And another thing is this is kind of beyond my ability, but there might be a way to do this better using mathematical tools.</p>
+<p>So intuitively, you know, so now like some people talk about category theories and things like that.</p>
+<p>So it seems like what we are doing is can be made more abstract and formalized so that we can have better insight about what we are trying to do.</p>
+<p>So here, you know, what we did was kind of like naive way to express our thought about the representations.</p>
+<p>But here, yeah, so we are kind of transforming functions into an object.</p>
+<p>So basically one function is a point in some function space.</p>
+<p>And this point in functional space seems to be somehow related to the core.</p>
+<p>So that's my current intuition.</p>
+<p>But I think like in mathematics, there must be useful tools to sort of deal with this sort of idea.</p>
+<p>So I'm curious that if there's any math machine, please.</p>
+<p>Well, I think you could formulate this nicely.</p>
+<p>I think that would be an interesting thing to do next.</p>
+<p>Very interesting.</p>
+<p>And also to the little I know about it and people have discussed it, that is sort of a category theoretic move to have a handle like a point around a mapping so that you can have the space of the models.</p>
+<p>So you took a very constructivist engineering, empirical approach.</p>
+<p>And then it's an exciting open question.</p>
+<p>Like what are the formal structures that generalize that?</p>
+<p>And then you could spin up a million experiments just like the one that you probably built by hands.</p>
+<p>And then learn from that.</p>
+<p>Pick up that as a point.</p>
+<p>Any last comments?</p>
+<p>Oh, I have just one announcement, which is this one.</p>
+<p>Yeah, so sorry about advertising, but we have a consciousness conference called ASSC.</p>
+<p>I think that's one of the main consciousness conferences.</p>
+<p>And that's happening in Tokyo this July.</p>
+<p>So like if you're interested, please come.</p>
+<p>I'm one of the main organizers.</p>
+<p>I think that's a great idea.</p>
+<p>I think that's a great idea.</p>
+<p>That sounds awesome.</p>
+<p>Cool.</p>
+<p>Thank you very much for this presentation.</p>
+<p>Good luck with the work in the conference and hope to talk to you again.</p>
+<p>Yeah, thank you.</p>
+<p>That's fine.</p>
+<p>Yep.</p>
+<p>See you.</p>
+<p>Thank you.</p>
+<p>Thank you.</p>
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

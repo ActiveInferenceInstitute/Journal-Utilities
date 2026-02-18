@@ -1,0 +1,3422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active InferAnt Stream 017.1 ~ "Of Course I Can": Active Inference Courses for All</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active InferAnt Stream 017.1 ~ "Of Course I Can": Active Inference Courses for All</h1>
+<div class="meta">Category: ActiveInferAntStream &middot; Series: ActiveInferAntStream_017 &middot; Episode 1 &middot; Speakers: Active Inference Courses for All &middot; Duration: 1:43:24 &middot; Views: 194</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=GngvdY7-w10">https://www.youtube.com/watch?v=GngvdY7-w10</a></div>
+<article>
+<p>All right. Welcome, everyone. Happy Valentine's Day, February 14th, 2026. We're going to start</p>
+<p>off the Active Inference Stream 17.1 with a very large GitHub push to the new Repo Active</p>
+<p>Inference Institute courses. Here's where we're going. We are going to lectures, lab, practice quiz,</p>
+<p>homeworks, all these kinds of different learning experiences for Active Inference courses. We have</p>
+<p>a Keystone course, Active Inference. We have 101 for undergrads, 401 for the advanced student,</p>
+<p>elementary school, family time, high school, middle school, and domains. We're going all over the place</p>
+<p>with this stream today. We're going to look at all of the open source tooling that lets you publish</p>
+<p>this kind of work, as well as make LLM summaries and translations, and take a look at some of the</p>
+<p>content of these courses, play around with learning, take people's suggestions, ideas in the live chat</p>
+<p>for what other kinds of courses we want to make. So while the push is going, let's get right into it.</p>
+<p>So starting off with the, of course I can. Of course I can is a poster meme, famously.</p>
+<p>And here we're using it because yes, we can with these courses, meeting everyone where they are for</p>
+<p>their pragmatic and epistemic orientation, and exploring a little bit of how generative AI today</p>
+<p>and tomorrow can be used to bring education where, when, and why ever it needs to be.</p>
+<p>Finishing that GitHub push. And yes, welcome to everybody. Please write any comments or ideas,</p>
+<p>suggestions, questions in the live chat, and we'll make some courses for what people are interested in.</p>
+<p>So first off, what is this repo? It's a single open source starting place repo for currently 10 courses</p>
+<p>covering now 320 modules and 3400 plus contents. Some of them are pretty thin, a little bit placeholdery,</p>
+<p>but other courses are quite well developed as we will see. And this is intended as, and also the repo has</p>
+<p>all of the software needed to do all of the processing, all of the configuration, file validation, HTML</p>
+<p>websites, PDF export, LLM summaries, translations, speech to text, text to speech, validation, all these</p>
+<p>kinds of tools for even doing other kinds of course material. Heavily learning from my experiences this</p>
+<p>semester teaching introductory biology. And let's check that it's all on GitHub. There we go.</p>
+<p>Welcome to this open source curriculum infrastructure. And this is a first pass on course materials. Of</p>
+<p>course, educational accessibility, rigor and applicability is core to the mission of the</p>
+<p>Active Inference Institute. And so I hope that others who are excited about this topic, if you're on this</p>
+<p>channel watching along, this is you get involved email blanket at active inference dot institute with</p>
+<p>subject education, and we can go so many different directions. We can polish, curate and present some of</p>
+<p>these courses, run them interactively. You could run it locally where you're at. We can explore micro,</p>
+<p>miso, macro, credentialing, de-schooling, unschooling, translation, localization, embodiment, all those</p>
+<p>cool things. And what we're going to do today is walk through every layer of the repository, explore some of</p>
+<p>the existing courses, make a few new courses, and basically with credible, legible software, get very</p>
+<p>excited about active inference education today and tomorrow. So that was the opening of this stream.</p>
+<p>Okay. Let's look at how we enter into running the scripts. And then we will look at the output of the</p>
+<p>courses themselves. Greetings, Shroopy. Greetings, Curious Penguin. Wrote, what am I watching right now?</p>
+<p>Just joined and lacked context. Well, welcome to the Active Inference Institute. We're an open science</p>
+<p>institute and we support teaching and learning and applying active inference. I'm sharing an open source</p>
+<p>software repository, which I'll put in the chat right below your message, Curious Penguin. And you can go to find</p>
+<p>all of the published courses that we're going to look at and also look at the methods, kind of like the course</p>
+<p>factory for how those were made. So if you're interested in open source software, software engineering in</p>
+<p>general, as well as active inference education for people with a little through a lot of math background,</p>
+<p>computer science background, that's what you're watching. So at the top level of the repo,</p>
+<p>close all these extra windows. And I'm working with anti-gravity, which is Google's kind of version of</p>
+<p>cursor. And this was a prompt that I did a lot over the last several days. Check and improve</p>
+<p>intelligently. We'll have this just chugging away in the background. And then I drag in,</p>
+<p>for example, the organizations, domain specific education for people interested in active inference</p>
+<p>and organizational setting. Okay, we'll add some more domain courses, if anybody wants to. Soon as</p>
+<p>someone suggests a domain course to add, I'm going to finish this prompt to cloud code,</p>
+<p>and we're going to dispatch that. All right. So at the top level of the course,</p>
+<p>repo is publish.toml, which is a configuration for all the different kinds of which courses you want to</p>
+<p>render. And then which courses, which materials you want to have for each course. So</p>
+<p>I have disabled the MP3 because this is a very slow, but I've tested it. It works so we can</p>
+<p>download all the YouTube videos, six or 700 from the Institute channel, and then re-upload them with</p>
+<p>MP3 transcripts, all of that translation, AI generated voice in multiple language. We sort of knew that this</p>
+<p>was going to be possible when we started the Institute a couple of years ago, but today it is in everyone's</p>
+<p>hands. So we're going to export into PDF, docs, HTML, text, and markdown, but not MP3, just for purposes of</p>
+<p>during this stream. And then here's the other courses. Here's the YouTube transcript archive.</p>
+<p>And what you do is you go to publish.toml, get it all working, how you configured, how you want. And then at the top level,</p>
+<p>again, of the repo, just write publish,</p>
+<p>python, publish.py.</p>
+<p>And that is going to blaze through rendering all of the different courses. And so let's just look at that python.py.</p>
+<p>This is a thin orchestrator, which is going to call scripts that are in the scripts folder of software.</p>
+<p>And those scripts are thin orchestrators of SRC module methods files, which are tested by the unit tests in the tests folder.</p>
+<p>So that's the kind of division of labor architecture of the software package.</p>
+<p>And once you run publish, it's going to publish every course into its own folder, which we're going to get to in a second.</p>
+<p>And then it's going to dump all of the published versions into this published folder.</p>
+<p>So if you ever just want to go to the state of the art of the published version, you go to the published folder,</p>
+<p>for example, here for the core active inference course.</p>
+<p>Course development is where the underlying source code for the course is.</p>
+<p>So again, let's focus on the core kind of keystone course.</p>
+<p>And as you might imagine, this work is a synthesis of my own and some of my colleagues who I've spoken with,</p>
+<p>are ideas on possible ways to structure education just to move things forward along today.</p>
+<p>Not only our final, always just milestones and checkpoints.</p>
+<p>And that's going to get rendered into a bunch of different ways.</p>
+<p>So right now we're just going to focus on the keystone active inference course.</p>
+<p>There are four modules in this course, and they're intended to be kind of like a learning spiral.</p>
+<p>So first is philosophy, then cognitive science, then math, then computer science.</p>
+<p>And this is also based around our learnings in the textbook group and a lot of other active</p>
+<p>inference educational experiences where people have a lot or little experience with math,</p>
+<p>a lot or little experience with computer science, a lot or little experience with cognitive science,</p>
+<p>all these different kinds of differences in background that make our community so exciting and diverse.</p>
+<p>And so with generative AI, we can sort of meet everyone where they are.</p>
+<p>And still, it's helpful to give a little bit of a flag to rally around.</p>
+<p>And so this order seems to be a pretty useful ordering.</p>
+<p>First, we start pretty big picture qualitatively with philosophy.</p>
+<p>We dive into cognitive science.</p>
+<p>Then we get into the state-space formalisms with math.</p>
+<p>And then last, and their publishing is complete.</p>
+<p>And then we go to the computer science where we have a heavily tested package that's going to focus on</p>
+<p>the software methods of the state spaces.</p>
+<p>Okay.</p>
+<p>So let us go into, now that we've published that, we will go,</p>
+<p>thank you, De Boisvoir.</p>
+<p>Anyone can write a suggestion or an idea.</p>
+<p>And again, we'll make a new course, domain-specific course in the background.</p>
+<p>Okay.</p>
+<p>So I'm going to go to published to the active inference course.</p>
+<p>Now, each of those four modules, philosophy, cognitive science, math, and computer science,</p>
+<p>is going to have eight sub-modules.</p>
+<p>And those eight sub-modules, again, have their own sort of intrinsic logic of order.</p>
+<p>And those are systems, agent, perception, cognition, action, learning, communication, and planning.</p>
+<p>So the idea is, again, within each module, within each of those sort of domains,</p>
+<p>as we used to know them, back in the legacy, academia, back before we had epistemia like we have today and tomorrow.</p>
+<p>So within the published version, we have the outputs of each of the modules.</p>
+<p>So we're in philosophy systems.</p>
+<p>So here's the dashboard for philosophy systems.</p>
+<p>Oop, a little blocked.</p>
+<p>Huh.</p>
+<p>There we go.</p>
+<p>All right.</p>
+<p>So module one, here's the materials that we have.</p>
+<p>We have the lecture content.</p>
+<p>So this is, again, the philosophy lecture section on systems theory.</p>
+<p>And here's key concepts.</p>
+<p>We have demarcation, problems and solutions, autopoiesis, life-mind continuity, applications and conclusions.</p>
+<p>So the module is sort of the lecture notes.</p>
+<p>Then we have the questions.</p>
+<p>So here's about 20 practice questions.</p>
+<p>Explain the concept of a Markov blanket in non-mathematical language.</p>
+<p>Pretty cool.</p>
+<p>All these different practice questions.</p>
+<p>And also a practice quiz with multiple choice and short answer.</p>
+<p>Then we have a lab.</p>
+<p>So this is a thought experiment around drawing boundaries.</p>
+<p>So here's a formatted lab.</p>
+<p>And then we can also have that lab in HTML.</p>
+<p>And that is that module.</p>
+<p>So again, now to go to the next sub-module within philosophy.</p>
+<p>Here's module two on agents.</p>
+<p>So we're still within philosophy.</p>
+<p>Now we're talking about philosophy of agents.</p>
+<p>And we have a lab on agency.</p>
+<p>Study guides, practice quizzes on agency.</p>
+<p>Okay.</p>
+<p>So that's the philosophy sub-module.</p>
+<p>Then let's look at systems and agents heading into cognitive science.</p>
+<p>Here we have neural assembly.</p>
+<p>This is systems, cognitive science.</p>
+<p>Cortical columns, self-organization, clinical connection.</p>
+<p>Lab protocol is going to be a neural self-organization.</p>
+<p>Study guides, practice tests, practice questions.</p>
+<p>These are all things people can explore on their very own.</p>
+<p>Either with this material exactly or taking and forking it however they would like to.</p>
+<p>All right.</p>
+<p>Then we get into the units three and four, which is math and computer science.</p>
+<p>So this is where we start getting into some of the mathematical notation.</p>
+<p>One of the things that keeps this coherent for human and non-human learners is first off a cross-course map.</p>
+<p>So this is going to map across those eight subsections of each module.</p>
+<p>There's a map for the different topics.</p>
+<p>And then also there's a notation table.</p>
+<p>So this is going to keep the notation used exactly coherent across the different modules.</p>
+<p>So like F is always going to be variational free energy.</p>
+<p>G is going to be used for expected free energy.</p>
+<p>And so on.</p>
+<p>And then also a glossary.</p>
+<p>So for everyone always looking and exploring how to make the ontology more accessible, more available.</p>
+<p>That's what this is about.</p>
+<p>In the math section, let's go to system.</p>
+<p>So here we have the lecture content for system.</p>
+<p>So again, staying with this concept of boundaries and system.</p>
+<p>Now working within a mathematical setting, talking about the factorization of joint distribution,</p>
+<p>looking at stochastic dynamics, looking at variational free energy and KL divergence,</p>
+<p>and having some math exercises.</p>
+<p>We have practice quiz and short answer.</p>
+<p>And then these kinds of questions.</p>
+<p>Again, revisiting.</p>
+<p>Define a Markov blanket formally.</p>
+<p>What conditional independence does it encode?</p>
+<p>And then we return to some of the same topics</p>
+<p>in the fourth subsection, which is the computer science.</p>
+<p>Now this one has an extensive SRC source software module that has all of the math that's going to be used.</p>
+<p>And so including the agent, math, and visualization.</p>
+<p>And it is going to output</p>
+<p>So we're going to output, ranging from the matrix visualizations for the A, the slice of B, C, D,</p>
+<p>looking more at A, looking more at all the slices of B, looking at the Markov transitions, C, D, E,</p>
+<p>looking at the T-mays, the grid world, belief trajectories, VFE, VFE decompositions,</p>
+<p>prediction error, surprisal, entropy, convergence, expected free energy decomposition components,</p>
+<p>gamma, precision sweeping, learning trajectories, concentrations, learning curves, all these different kinds of things.</p>
+<p>And that makes up that course.</p>
+<p>Let's look at the YouTube section.</p>
+<p>And again, if you're watching live, please write any ideas or suggestions in the chat.</p>
+<p>The first person who suggests a domain that they want to see the educational course written for,</p>
+<p>we're going to dispatch a cloud code on the case.</p>
+<p>So, in the YouTube published YouTube,</p>
+<p>let's look at Active Frist Insights with Darius.</p>
+<p>So let's look at Fristin on Insights.</p>
+<p>So here we have,</p>
+<p>close extra ones,</p>
+<p>Crochet Circles.</p>
+<p>Thank you, JL.</p>
+<p>In the style of, and then I dragged in the course development template,</p>
+<p>create another new domain-specific educational course for active inference in the setting of</p>
+<p>Crochet Circles.</p>
+<p>All right.</p>
+<p>And then, just to kind of,</p>
+<p>on the cloud code side,</p>
+<p>is the,</p>
+<p>oh,</p>
+<p>is that better audio?</p>
+<p>Thank you.</p>
+<p>Thank you, Stroopy.</p>
+<p>That should be better audio.</p>
+<p>I had not checked on something.</p>
+<p>Yep.</p>
+<p>Apologies for the earlier audio.</p>
+<p>Hope that makes it kind of funny.</p>
+<p>Um,</p>
+<p>the other way that that could work,</p>
+<p>I'm going to drag in the domains.</p>
+<p>In the style of these domain-specific courses,</p>
+<p>write a whole new course,</p>
+<p>focused on,</p>
+<p>thank you, Stroopy.</p>
+<p>Write a whole new course,</p>
+<p>focused on,</p>
+<p>active,</p>
+<p>inference, and,</p>
+<p>metallurgy.</p>
+<p>So we could see that happening in the headless setting.</p>
+<p>Okay.</p>
+<p>To clarify, circles was in reference to groups,</p>
+<p>not crocheting,</p>
+<p>crocheting circles.</p>
+<p>Funny.</p>
+<p>Ambiguous.</p>
+<p>Language is funny like that, huh?</p>
+<p>We'll see what the</p>
+<p>Opus 4.6</p>
+<p>interprets it as.</p>
+<p>So, both of them,</p>
+<p>Opus 4.6 also using through this side.</p>
+<p>Um,</p>
+<p>and,</p>
+<p>uh,</p>
+<p>they're both doing a sort of similar pattern,</p>
+<p>with a little bit of a different back-end,</p>
+<p>which is first looking at the existing domain education,</p>
+<p>and then,</p>
+<p>finding out what the format is,</p>
+<p>and then it's going to write those files.</p>
+<p>And so we will let that go for a little bit.</p>
+<p>Um,</p>
+<p>I'll briefly just return to,</p>
+<p>while that's writing,</p>
+<p>to the YouTube.</p>
+<p>So here,</p>
+<p>we have scraped every single YouTube video on the Active Inference Institute channel.</p>
+<p>So there's like six or seven hundred.</p>
+<p>And each of those playlists are going to be like,</p>
+<p>kind of like a course.</p>
+<p>So here's,</p>
+<p>here's,</p>
+<p>Friston,</p>
+<p>talking with Darius.</p>
+<p>Up.</p>
+<p>Let's check in here.</p>
+
+<p>Insights,</p>
+<p>Friston.</p>
+<p>Up.</p>
+<p>It's being just,</p>
+<p>we'll,</p>
+<p>we'll let the clod do the crocheting.</p>
+<p>And meanwhile,</p>
+<p>ensure that the YouTube transcripts are from the videos,</p>
+<p>and transcripts all rendered properly,</p>
+<p>actually.</p>
+<p>All right.</p>
+<p>Um,</p>
+<p>but it has those,</p>
+<p>uh,</p>
+<p>YouTube transcript capacities.</p>
+<p>And then,</p>
+<p>also we can do,</p>
+<p>we'll,</p>
+<p>we'll get there,</p>
+<p>some of these summaries.</p>
+<p>So this is like an LLM summary,</p>
+<p>kind of a one pager of the course.</p>
+<p>So,</p>
+<p>the workflow from this</p>
+<p>teacher's desk is like,</p>
+<p>I'm working on the underlying source code</p>
+<p>in the,</p>
+<p>um,</p>
+<p>course development folder.</p>
+<p>Modifying the underlying dashboard,</p>
+<p>lab,</p>
+<p>module,</p>
+<p>practice,</p>
+<p>quiz,</p>
+<p>and questions.</p>
+<p>And then at any time,</p>
+<p>I can just spin over,</p>
+<p>and just republish,</p>
+<p>and it will clear the existing publications,</p>
+<p>and then republish the updated.</p>
+<p>So I can look at the published.</p>
+<p>Oh,</p>
+<p>maybe we could add another question here,</p>
+<p>and then just republish.</p>
+<p>Okay.</p>
+<p>Here,</p>
+<p>we have the,</p>
+<p>um,</p>
+<p>perception,</p>
+<p>cognition.</p>
+<p>So it's using those same modules</p>
+<p>to,</p>
+<p>to build the crocheting course.</p>
+<p>And that's in</p>
+<p>domains.</p>
+<p>Here's crochet.</p>
+<p>And here's system.</p>
+<p>So now it's made those.</p>
+<p>And it's just continuing to,</p>
+<p>continuing to orchestrate,</p>
+<p>dispatch these sub agents,</p>
+<p>stitch and structure,</p>
+<p>fiber and flow,</p>
+<p>pattern and prediction,</p>
+<p>circle and community.</p>
+<p>So kind of cool.</p>
+<p>Captured both of those.</p>
+<p>Senses of circle there.</p>
+<p>Um,</p>
+<p>okay.</p>
+<p>While it's fixing that,</p>
+<p>um,</p>
+<p>let's look at.</p>
+<p>So let's just continue to make these.</p>
+<p>GitHub pushes up.</p>
+<p>It'll,</p>
+<p>it'll be able to be pushed later.</p>
+<p>Um,</p>
+<p>let's look at the.</p>
+<p>The 401.</p>
+<p>Course.</p>
+<p>So this is going to be the sort of.</p>
+<p>Advanced,</p>
+<p>advanced,</p>
+<p>uh,</p>
+<p>PhD seminar.</p>
+<p>Course.</p>
+<p>So we'll just take a few.</p>
+<p>Looks there.</p>
+<p>Right.</p>
+<p>We have.</p>
+<p>The same.</p>
+<p>Sort of four module.</p>
+<p>Eight sub module.</p>
+<p>Structure.</p>
+<p>So here,</p>
+<p>if we look at the.</p>
+<p>Delete the metallurgy.</p>
+<p>Okay.</p>
+<p>401.</p>
+<p>Published.</p>
+<p>401.</p>
+<p>So starting out.</p>
+<p>!</p>
+<p>!</p>
+
+<p>Model defines what counts as evidence.</p>
+<p>Evidence.</p>
+<p>The model.</p>
+<p>Evidence updates the model.</p>
+<p>There's no view from nowhere to check the model against ground truth.</p>
+<p>Which some love.</p>
+<p>Some appear irked by.</p>
+<p>This connects to Quine's naturalized epistemology.</p>
+<p>Heidegger's hermeneutic circle and the autopoetic tradition of Maturina and Varela.</p>
+<p>Okay.</p>
+<p>So that's the kind of philosophy lecture.</p>
+<p>Here's the lab protocol.</p>
+<p>So mapping epistemological traditions, similarities and differences.</p>
+<p>Writing analysis.</p>
+<p>Markov blanket debate.</p>
+<p>Positivists.</p>
+<p>Realists.</p>
+<p>Constructivists.</p>
+<p>Taking different positions.</p>
+<p>Writing for and contra.</p>
+<p>Circularity analysis.</p>
+<p>Is the FEP falsifiable?</p>
+<p>I mean.</p>
+<p>How many blog posts.</p>
+<p>Papers.</p>
+<p>Etc.</p>
+<p>Etc.</p>
+<p>Etc.</p>
+<p>Those are awesome.</p>
+<p>And now we're in a position where.</p>
+<p>That's part of our educational curricula.</p>
+<p>Hashtag teach the controversy.</p>
+<p>And then we have the study guides.</p>
+<p>Multiple choice.</p>
+<p>Maybe we'll.</p>
+<p>Maybe we'll do one of these later.</p>
+<p>Maybe we'll go through one of these.</p>
+<p>These 20 questions.</p>
+<p>And see where we get.</p>
+<p>Okay.</p>
+<p>So that's in philosophical foundations.</p>
+<p>Then we go to the neuroscientific frontiers.</p>
+<p>Let's go to action.</p>
+<p>Lecture content on PhD level neuroscience of action.</p>
+<p>So proprioceptive commands.</p>
+<p>Forward and reverse models.</p>
+<p>Basal ganglia.</p>
+<p>Supplementary motor areas.</p>
+<p>Cicadic eye movements.</p>
+<p>Sensory attenuation.</p>
+<p>Agency signaling.</p>
+<p>Let's go to advanced theory.</p>
+<p>Advanced perception.</p>
+<p>So perception.</p>
+<p>Bayesian mechanics.</p>
+<p>Non-equilibrium steady state.</p>
+<p>Path integral.</p>
+<p>Bayesian mechanics research program.</p>
+<p>Here's the lab.</p>
+<p>Critique.</p>
+<p>That's fun.</p>
+<p>Lab protocol.</p>
+<p>Perception lab.</p>
+<p>Okay.</p>
+<p>FEP is unfalsifiable.</p>
+<p>Any system at non-equilibrium steady state can be described this way.</p>
+<p>How strong do you feel that is?</p>
+<p>You know.</p>
+<p>No right answers.</p>
+<p>No wrong answers.</p>
+<p>Just how well.</p>
+<p>And then.</p>
+<p>How confident are you in your belief?</p>
+<p>And then.</p>
+<p>How confident are you in your confidence estimator?</p>
+<p>The dual aspect interpretation over relates inference in physics.</p>
+<p>Oh boy.</p>
+<p>If I had an ounce of silver for every time I heard that at the bar.</p>
+<p>Bayesian mechanics is just a re-description.</p>
+<p>Not an explanation.</p>
+<p>The gauge freedom makes the beliefs unidentifiable.</p>
+<p>Okay.</p>
+<p>And then.</p>
+<p>What's really fun about this.</p>
+<p>PhD course.</p>
+<p>Which I didn't exactly.</p>
+<p>Expect.</p>
+<p>Is the fourth.</p>
+<p>Module.</p>
+<p>Again.</p>
+<p>Think about who might be taking this course.</p>
+<p>Is actually about.</p>
+<p>Research program.</p>
+<p>Design.</p>
+<p>And communication.</p>
+<p>So the communication module.</p>
+<p>Is about interdisciplinary methods and collaborative research programs.</p>
+<p>So then the questions related to the communications module.</p>
+<p>Why is active inference inherently interdisciplinary?</p>
+<p>Or of course you can.</p>
+<p>Expand on this.</p>
+<p>You could fork on that.</p>
+<p>What other word would you put there?</p>
+<p>What are common misunderstandings?</p>
+<p>How does open source software benefit the active inference community?</p>
+<p>What training does a graduate student in active inference need across disciplines?</p>
+<p>How do multi-site collaborations strengthen active research?</p>
+<p>How can active inference be communicated to general audience without jargon?</p>
+<p>So that's the communication module for our PhD 2.0 colleagues.</p>
+<p>And then we have planning.</p>
+<p>Which is also super fun.</p>
+<p>List the five main research frontiers for active inference.</p>
+<p>Which is most promising and why?</p>
+<p>What are the components of a strong active inference research proposal?</p>
+<p>That's what we're on both sides of that desk every day.</p>
+<p>How do you demonstrate innovation in an active inference grant proposal?</p>
+<p>What does philosophy contribute that mathematics cannot alone?</p>
+<p>What does neuroscience contribute that theory alone cannot?</p>
+<p>How might active inference integrate with deep learning architecture?</p>
+<p>How should active inference engage with its critics?</p>
+<p>That empathize with empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath empath</p>
+<p>Then we'll republish the all courses and then let's see where we're at with crocheting.</p>
+<p>Yep.</p>
+<p>We'll just say continue to make any other improvements.</p>
+<p>Okay.</p>
+<p>All right.</p>
+<p>And then we'll...</p>
+<p>All right.</p>
+<p>Let's just do republish.</p>
+<p>See where that takes us.</p>
+<p>All right.</p>
+<p>I'm going to look at some of the comments that people have written and then we'll write down some questions for later and we'll see what else we can get to right now.</p>
+<p>Okay.</p>
+<p>So just to, while it's publishing, finishing this out.</p>
+<p>Okay.</p>
+<p>Remember, there is the top level course development, which has the source code underlying all of the courses.</p>
+<p>Then there's published, which is where the courses go.</p>
+<p>So just the published outputs, which includes the underlying plain text.</p>
+<p>There's the software, which includes all of the tests, methods, and scripts and documentation for the package itself.</p>
+<p>The summaries, which is the LLM generated summaries.</p>
+<p>And then every folder has an agents and a readme.</p>
+<p>I sort of think of readme for the people, agents for our agent colleagues.</p>
+<p>However, a little bit of both, right?</p>
+<p>So, you know, I think it's a little bit of both.</p>
+<p>Design philosophies.</p>
+
+
+
+
+<p>Design philosophies.</p>
+<p>Development.</p>
+<p>So, shared and overlapping, but also well-partitioned and signposted separations of source and artifact.</p>
+<p>Eight-topic spine.</p>
+<p>Modular software configuration-driven publishing.</p>
+<p>So, that's the architecture.</p>
+<p>Right now, the courses follow this eight-topic spine.</p>
+<p>System, agent, perception, cognition, action, learning, communication, planning.</p>
+<p>However, of course, anyone is welcome to make a suggestion in the live chat or clone this repo and make a suggestion.</p>
+<p>Contribute to the institute.</p>
+<p>Get involved.</p>
+<p>Explore what other topics are three topics or a different order or a 21-topic spine.</p>
+<p>Absolutely all of the above.</p>
+<p>The core course has a special focus on the tested software methods to facilitate integration between the learning and the lab content and the software.</p>
+<p>And shared resources.</p>
+<p>Then, there are the level-adapted curricula.</p>
+<p>So, young families.</p>
+<p>Children.</p>
+<p>Elementary school.</p>
+<p>Middle school.</p>
+<p>High school.</p>
+<p>101 for our undergraduate 2.0.</p>
+<p>And 401 for our PhD 2.0s.</p>
+<p>So, if we look at the published.</p>
+<p>Now, it looks like the transcripts are coming through.</p>
+<p>If we look at the elementary school.</p>
+<p>Let's start with story time.</p>
+<p>Our bodies.</p>
+<p>Counting patterns.</p>
+<p>And robot helpers.</p>
+<p>So, here's story time.</p>
+<p>Action.</p>
+<p>Lecture content.</p>
+<p>What is action?</p>
+<p>How does action change the world?</p>
+<p>See how actions make your predictions come true.</p>
+<p>Benny the beaver looked at the Russian river.</p>
+<p>It was loud and fast.</p>
+<p>I predict this river will be a quiet pond.</p>
+<p>Thought Benny.</p>
+<p>But just thinking about it didn't change the river.</p>
+<p>Benny had to take action.</p>
+<p>Dun-da-dun.</p>
+<p>Chomp-chomp-chomp.</p>
+<p>Benny gnawed on a tree.</p>
+<p>Splash.</p>
+<p>The tree fell into the water.</p>
+<p>Drag.</p>
+<p>Push.</p>
+<p>Pow.</p>
+<p>Benny built a dam with muds and sticks.</p>
+<p>Slowly, the rushing river stopped rushing.</p>
+<p>It became a quiet, still pond.</p>
+<p>Benny smiled.</p>
+<p>His action made the world match his prediction.</p>
+<p>Activities.</p>
+<p>Simon says.</p>
+<p>Here's a flat piece of paper.</p>
+<p>Can you use action to turn it into a ball?</p>
+<p>Crumple it up.</p>
+<p>You change the world.</p>
+<p>Amazing.</p>
+<p>The little engine that could.</p>
+<p>Harold and the purple crayon.</p>
+<p>Great.</p>
+<p>Not always seen within the traditional scope of active inference literature.</p>
+<p>But absolutely they are.</p>
+<p>Practice quiz.</p>
+<p>What is action?</p>
+<p>And then here's the homework quiz.</p>
+<p>Only 10 homeworks.</p>
+<p>We kind of, we take it easy.</p>
+<p>What is your favorite action?</p>
+<p>How does action change the world?</p>
+<p>Is listening an action?</p>
+<p>Why or why not?</p>
+<p>Awesome.</p>
+<p>That's elementary school action.</p>
+<p>Let's look at middle school.</p>
+<p>Math detective.</p>
+<p>Planning.</p>
+<p>Study questions.</p>
+<p>This is some stub content.</p>
+<p>So it just was auto generated from a course production suite.</p>
+<p>But I just wanted to get it out there while we're, you know, strike while the iron is hot.</p>
+<p>Let's go to confirm that those YouTube publications are working.</p>
+<p>Okay.</p>
+
+
+
+
+
+<p>Okay.</p>
+<p>Okay.</p>
+
+
+<p>Okay.</p>
+<p>Okay.</p>
+
+<p>I'll do yes.</p>
+<p>Ensure that when we run.</p>
+<p>We.</p>
+<p>We.</p>
+<p>Always publish the real full transcripts.</p>
+<p>All right.</p>
+<p>I'm going to.</p>
+<p>Let's look at published and see if the crochet course was published.</p>
+<p>We haven't run it yet.</p>
+<p>So here we go.</p>
+<p>I'll just.</p>
+<p>I'll.</p>
+<p>I'll clear.</p>
+<p>The published courses just so we can see it work.</p>
+<p>So there's published.</p>
+<p>It's empty.</p>
+<p>There we go.</p>
+<p>Now we're publishing.</p>
+<p>All right.</p>
+<p>Turn to the.</p>
+<p>Live stream agenda.</p>
+<p>And then.</p>
+<p>Start to look at some people's questions.</p>
+<p>Suggestions.</p>
+<p>All right.</p>
+<p>So that was the level adapted curriculum.</p>
+<p>Then we have the.</p>
+<p>Domain.</p>
+<p>Curricula.</p>
+<p>So that was the different ages.</p>
+<p>There is the.</p>
+<p>Transcript archive.</p>
+<p>Which is.</p>
+<p>All of the.</p>
+<p>Hundreds of.</p>
+<p>Our.</p>
+<p>Videos.</p>
+<p>Over the years.</p>
+<p>That.</p>
+<p>Are now.</p>
+<p>Transcribed.</p>
+<p>They basically now constitute.</p>
+<p>An educational curriculum.</p>
+<p>We looked.</p>
+<p>A little bit.</p>
+<p>At the.</p>
+<p>Software.</p>
+<p>Section.</p>
+<p>Where.</p>
+<p>Okay.</p>
+<p>Here's.</p>
+<p>This is pretty cool.</p>
+<p>Here's.</p>
+<p>Anti-gravity.</p>
+<p>The IDE.</p>
+<p>Right.</p>
+<p>Opening.</p>
+<p>Chrome.</p>
+<p>On its own.</p>
+<p>You can tell.</p>
+<p>Because it has this sort of breathing blue part.</p>
+<p>And then.</p>
+<p>It will actually.</p>
+<p>Work through.</p>
+<p>The browser.</p>
+<p>So you can say like.</p>
+<p>Open up that HTML.</p>
+<p>And triple check.</p>
+<p>That it's accessible.</p>
+<p>To somebody.</p>
+<p>Who.</p>
+<p>Dot.</p>
+<p>Dot.</p>
+<p>Dot.</p>
+<p>And then.</p>
+<p>It will use.</p>
+<p>Vision models.</p>
+<p>And screenshotting.</p>
+<p>And all these other kinds of features.</p>
+<p>So that.</p>
+<p>It can actually.</p>
+<p>Use your full browser.</p>
+<p>So this is pretty.</p>
+<p>Agentically driven.</p>
+<p>Okay.</p>
+<p>So the.</p>
+<p>SRC.</p>
+<p>Has the different.</p>
+<p>Modules.</p>
+<p>There's also.</p>
+<p>A little bit of a.</p>
+<p>Little bit of an Easter egg.</p>
+<p>Danvis.</p>
+<p>Definitely not.</p>
+<p>Satire.</p>
+<p>Or copyright infringement.</p>
+<p>Of any kind.</p>
+<p>But it's related to.</p>
+<p>Sort of course management.</p>
+<p>Software.</p>
+<p>The other ones are.</p>
+<p>More about.</p>
+<p>Text to speech.</p>
+<p>Speech to text.</p>
+<p>Publishing.</p>
+<p>Organizing.</p>
+<p>File conversions.</p>
+<p>Using local LLMs.</p>
+<p>All that kind of stuff.</p>
+<p>Then the scripts.</p>
+<p>Are the thin orchestrators.</p>
+<p>That do.</p>
+<p>Different things.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Documentation.</p>
+<p>Is the documentation.</p>
+<p>For the repo itself.</p>
+<p>Testing.</p>
+<p>Are the unit tests.</p>
+<p>So that we can.</p>
+<p>Make sure that everything.</p>
+<p>Is really functional.</p>
+<p>And then there's.</p>
+<p>The publishing.</p>
+<p>Pipeline.</p>
+<p>Where we enter.</p>
+<p>Through publish.py.</p>
+<p>At the top.</p>
+<p>Okay.</p>
+<p>All right.</p>
+<p>Now let's just.</p>
+<p>Double check.</p>
+<p>So there we go.</p>
+<p>Now here's the output.</p>
+<p>Here's the.</p>
+<p>You can even hear.</p>
+<p>Darius saying.</p>
+<p>Excellent.</p>
+<p>And we're away.</p>
+<p>So that's the.</p>
+<p>Transcript.</p>
+<p>From YouTube.</p>
+<p>So it's not.</p>
+<p>Diarized.</p>
+<p>It's not broken up.</p>
+<p>But you can.</p>
+<p>See how it could be.</p>
+<p>Edited.</p>
+<p>And versioned.</p>
+<p>Along the way.</p>
+<p>All right.</p>
+<p>So here's.</p>
+<p>It's still translating.</p>
+<p>Takes a couple minutes.</p>
+<p>Translation.</p>
+<p>Let's do.</p>
+<p>Once it.</p>
+<p>Let's.</p>
+<p>Please use the.</p>
+<p>Translation feature.</p>
+<p>To.</p>
+<p>Translate.</p>
+<p>The main.</p>
+<p>Course.</p>
+<p>Fully.</p>
+<p>Into.</p>
+<p>Japanese.</p>
+<p>Language.</p>
+<p>All right.</p>
+<p>And so.</p>
+<p>That is going to.</p>
+<p>And then here's all the.</p>
+<p>Transcripts.</p>
+<p>Like the captions.</p>
+<p>And the transcripts.</p>
+<p>All the VTTs.</p>
+<p>And then this is the English VTT.</p>
+<p>But then we can also.</p>
+<p>Download all of the.</p>
+<p>Captions.</p>
+<p>And transcripts.</p>
+<p>So here's.</p>
+<p>On a single line.</p>
+<p>All of those.</p>
+<p>YouTubes.</p>
+<p>All right.</p>
+<p>Very cool.</p>
+<p>So.</p>
+<p>Here's translation.</p>
+<p>Documentation.</p>
+<p>Architecture.</p>
+<p>Metrics.</p>
+<p>All right.</p>
+<p>All right.</p>
+<p>Q&amp;A.</p>
+<p>And discussion.</p>
+<p>So.</p>
+<p>Here.</p>
+<p>We go.</p>
+<p>I'm going to just start to copy out some of the questions that people have written.</p>
+<p>And then we'll.</p>
+<p>See where that gets us.</p>
+<p>Okay.</p>
+<p>All right.</p>
+<p>Here's.</p>
+<p>Here's a question from the live chat.</p>
+<p>So.</p>
+<p>3DX3M.</p>
+<p>Wrote.</p>
+<p>Is this AI tool applicable for inventions?</p>
+<p>Yeah.</p>
+<p>Definitely.</p>
+<p>Give a little bit more.</p>
+<p>Give a little bit more of what you were thinking of.</p>
+<p>I can imagine a few different.</p>
+<p>Ways.</p>
+<p>So.</p>
+<p>I'll clear that.</p>
+<p>Claude.</p>
+<p>And then I'll write.</p>
+<p>In the style of.</p>
+<p>Domains.</p>
+<p>Write a new course.</p>
+<p>That is all about.</p>
+<p>Active inference.</p>
+<p>And.</p>
+<p>Inventions.</p>
+<p>Have all modules.</p>
+<p>Lab.</p>
+<p>Quizzes.</p>
+<p>Questions.</p>
+<p>And more.</p>
+<p>All fully relevant.</p>
+<p>Adaptive.</p>
+<p>And about.</p>
+<p>Inventions.</p>
+<p>Even.</p>
+<p>Guiding the.</p>
+<p>Individuals.</p>
+<p>And working groups.</p>
+<p>In the class.</p>
+<p>Towards.</p>
+<p>Using.</p>
+<p>Active inference.</p>
+<p>Whatever.</p>
+<p>Their.</p>
+<p>Skills.</p>
+<p>And backgrounds.</p>
+<p>Using that.</p>
+<p>For.</p>
+<p>Their.</p>
+<p>Their.</p>
+<p>Own.</p>
+<p>Inventions.</p>
+<p>All right.</p>
+<p>And.</p>
+<p>So yes.</p>
+<p>You could.</p>
+<p>Definitely.</p>
+<p>Give a little more information.</p>
+<p>On what you were thinking of.</p>
+<p>We'll see where this.</p>
+<p>Takes us to.</p>
+<p>Okay.</p>
+<p>Meanwhile.</p>
+<p>We're using.</p>
+<p>We're using the.</p>
+<p>Gemma.</p>
+<p>Three.</p>
+<p>Four B.</p>
+<p>Model.</p>
+<p>With.</p>
+<p>Olama.</p>
+<p>And we are.</p>
+<p>Publishing.</p>
+<p>Into.</p>
+<p>Japanese.</p>
+<p>While this.</p>
+<p>Rendering is happening.</p>
+<p>All right.</p>
+<p>So.</p>
+<p>That was a great.</p>
+<p>Question.</p>
+<p>3x.</p>
+<p>3dx.</p>
+<p>3m.</p>
+<p>Okay.</p>
+<p>Saskia.</p>
+<p>Wrote.</p>
+<p>Contrasting.</p>
+<p>Maturana.</p>
+<p>With.</p>
+<p>Simondon.</p>
+<p>And Piaget.</p>
+<p>Let's go.</p>
+<p>Okay.</p>
+<p>Thank you.</p>
+<p>JL.</p>
+<p>Wrote.</p>
+<p>What about.</p>
+<p>Topology.</p>
+<p>Of neural networks.</p>
+<p>And crochet models.</p>
+<p>Cool.</p>
+<p>I'm going to.</p>
+<p>Start up another.</p>
+<p>Claude instance.</p>
+<p>Crochet.</p>
+<p>So drag that in.</p>
+<p>In the.</p>
+<p>Crochet.</p>
+<p>Course.</p>
+<p>Add.</p>
+<p>Some.</p>
+<p>Modules.</p>
+<p>And.</p>
+<p>Resources.</p>
+<p>And questions.</p>
+<p>All in theme.</p>
+<p>And in the.</p>
+<p>Same.</p>
+<p>Spirit.</p>
+<p>About.</p>
+<p>Topology.</p>
+<p>Of.</p>
+<p>Neural.</p>
+<p>Networks.</p>
+<p>And.</p>
+<p>Crochet.</p>
+<p>Models.</p>
+<p>So we'll come back to that.</p>
+<p>Re-render it later.</p>
+<p>All right.</p>
+<p>Saskia.</p>
+<p>Wrote.</p>
+<p>Non-falsifiable.</p>
+<p>As psychoanalysis.</p>
+<p>Of Marxism.</p>
+<p>LOL.</p>
+<p>Total.</p>
+<p>LOL.</p>
+<p>Okay.</p>
+<p>Stroopy.</p>
+<p>Wrote.</p>
+<p>My favorite action.</p>
+<p>Is the weaving.</p>
+<p>Of space time.</p>
+<p>Cool.</p>
+<p>Okay.</p>
+<p>JL.</p>
+<p>Wrote.</p>
+<p>Predictions.</p>
+<p>Cannot be things.</p>
+<p>You had a hand.</p>
+<p>In generating.</p>
+<p>Their outcomes.</p>
+<p>That's more like.</p>
+<p>A self-fulfilling.</p>
+<p>Occurrence.</p>
+<p>You had a thing.</p>
+<p>You wanted.</p>
+<p>And you made it happen.</p>
+<p>That is not prediction.</p>
+<p>Yeah.</p>
+<p>Very interesting.</p>
+<p>Like.</p>
+<p>I can see.</p>
+<p>A student.</p>
+<p>In an active.</p>
+<p>Inference.</p>
+<p>Classroom.</p>
+<p>Having.</p>
+<p>A discussion.</p>
+<p>Around that.</p>
+<p>Exact.</p>
+<p>Topic.</p>
+<p>You know.</p>
+<p>If I.</p>
+<p>Predict.</p>
+<p>That I'm going to.</p>
+<p>Scratch.</p>
+<p>My arm.</p>
+<p>Or stand up.</p>
+<p>Or look around the room.</p>
+<p>Does.</p>
+<p>The fact that I made that prediction.</p>
+<p>About my own motor behavior.</p>
+<p>Made it.</p>
+<p>Make it.</p>
+<p>Not a prediction.</p>
+<p>I mean.</p>
+<p>Does a prediction.</p>
+<p>Can we not.</p>
+<p>Predict.</p>
+<p>Aspects of our own.</p>
+<p>Internal states.</p>
+<p>And action.</p>
+<p>Okay.</p>
+<p>Curious.</p>
+<p>Penguin.</p>
+<p>Wrote.</p>
+<p>Who's facilitating.</p>
+<p>The textbook group.</p>
+<p>In March.</p>
+<p>Yeah.</p>
+<p>Great question.</p>
+<p>So that's the.</p>
+<p>The.</p>
+
+<p>If you go to.</p>
+<p>Textbook.</p>
+<p>Hyphen.</p>
+<p>Group.</p>
+<p>Dot.</p>
+<p>Active.</p>
+<p>Inference.</p>
+<p>Dot.</p>
+<p>Institute.</p>
+<p>You will get to our.</p>
+<p>Living.</p>
+<p>Site.</p>
+<p>And yes.</p>
+<p>In March.</p>
+<p>2026.</p>
+<p>We will be having.</p>
+<p>A textbook group.</p>
+<p>On the fundamentals.</p>
+<p>Of active inference.</p>
+<p>By Sanjeev.</p>
+<p>Namjoshi.</p>
+<p>A few people.</p>
+<p>Have expressed interest.</p>
+<p>In facilitating it.</p>
+<p>So far.</p>
+<p>Andrew.</p>
+<p>Pachea.</p>
+<p>And Fraser.</p>
+<p>Patterson.</p>
+<p>For sure.</p>
+<p>And I hope some other people.</p>
+<p>Get involved.</p>
+<p>I'll be there.</p>
+<p>So.</p>
+<p>It should be.</p>
+<p>Awesome.</p>
+<p>I hope everybody.</p>
+<p>Joins that.</p>
+<p>Stroopy.</p>
+<p>Are your synergetic.</p>
+<p>Live streams.</p>
+<p>In there too?</p>
+<p>No.</p>
+<p>This is only.</p>
+<p>Downloading.</p>
+<p>The transcripts.</p>
+<p>From.</p>
+<p>The active inference.</p>
+<p>Institute channel.</p>
+<p>Not my personal channel.</p>
+<p>But.</p>
+<p>All you have to do is.</p>
+<p>Point it at a different channel.</p>
+<p>And it will.</p>
+<p>Get there.</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>These.</p>
+
+<p>YouTube transcripts.</p>
+<p>For the.</p>
+<p>Here's the.</p>
+<p>Here's the fifth applied.</p>
+<p>Active inference symposium.</p>
+<p>But look at how long.</p>
+<p>This transcript is.</p>
+<p>This was like a 10 hour.</p>
+<p>Like a 15 hour video.</p>
+<p>Okay.</p>
+<p>Dark mode.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Very.</p>
+<p>Okay.</p>
+<p>Again.</p>
+<p>Close these.</p>
+<p>Extra tabs.</p>
+<p>All right.</p>
+<p>Very nice username.</p>
+<p>A guess.</p>
+<p>At the riddle.</p>
+<p>Isn't that everything in degrees?</p>
+<p>Inquiry is only an abstraction.</p>
+<p>From participation.</p>
+<p>Yeah.</p>
+<p>So.</p>
+<p>Like.</p>
+<p>These are the discussions.</p>
+<p>They are the discussions happening.</p>
+<p>Today.</p>
+<p>In a YouTube.</p>
+<p>Live chat.</p>
+<p>Today.</p>
+<p>And tomorrow.</p>
+<p>In a classroom.</p>
+<p>And a forest.</p>
+<p>And a beach.</p>
+<p>And a mountain top.</p>
+<p>Near you.</p>
+<p>Okay.</p>
+<p>So I'm just going to stop that.</p>
+<p>Translation.</p>
+<p>Process.</p>
+<p>And let's just kind of.</p>
+<p>A little bit.</p>
+<p>Take stock.</p>
+<p>Where we're at.</p>
+
+<p>Okay.</p>
+<p>So we have.</p>
+<p>Here's the active inference.</p>
+<p>Inventions.</p>
+<p>Course.</p>
+<p>That's still.</p>
+<p>Exploring.</p>
+<p>Here's the.</p>
+<p>Topology.</p>
+<p>Neural.</p>
+<p>Crochet.</p>
+<p>Task.</p>
+<p>Updating the existing.</p>
+<p>Crochet.</p>
+<p>Course.</p>
+<p>Here.</p>
+<p>We have.</p>
+<p>The processing.</p>
+<p>Of the YouTube.</p>
+<p>Transcripts.</p>
+<p>In the publication.</p>
+<p>Pipeline.</p>
+<p>But again.</p>
+<p>That's very.</p>
+<p>Long.</p>
+<p>Because.</p>
+<p>There's.</p>
+<p>Several.</p>
+<p>Thousand hours.</p>
+<p>Of.</p>
+<p>Video.</p>
+<p>I'm not exactly sure.</p>
+<p>But.</p>
+<p>It's.</p>
+<p>Making its way.</p>
+<p>Through.</p>
+<p>And it's generating.</p>
+<p>Websites.</p>
+<p>So every.</p>
+<p>YouTube video.</p>
+<p>Has its own.</p>
+<p>Website.</p>
+<p>That's just.</p>
+<p>So cool.</p>
+<p>We might want to just.</p>
+<p>Modify the.</p>
+<p>Meanwhile.</p>
+<p>On the sidebar here.</p>
+<p>Let's.</p>
+<p>I'll just pull in that graduate course.</p>
+<p>Triple check.</p>
+<p>That all.</p>
+<p>The questions.</p>
+<p>Are.</p>
+<p>Accurate.</p>
+<p>And complete.</p>
+
+
+<p>So.</p>
+<p>We will just.</p>
+<p>Continue for a little bit more.</p>
+<p>People can continue to write their.</p>
+<p>Ideas and questions.</p>
+<p>Remember though.</p>
+<p>It's all.</p>
+<p>Open source.</p>
+<p>All.</p>
+<p>Freely.</p>
+<p>Available.</p>
+<p>Maybe.</p>
+<p>There will be.</p>
+<p>Groups.</p>
+<p>Converging.</p>
+<p>Around it.</p>
+<p>Maybe there'll be.</p>
+<p>Certifications.</p>
+<p>Different.</p>
+<p>Acknowledgements.</p>
+<p>But for those who.</p>
+<p>Want to jump in.</p>
+<p>The material is there.</p>
+<p>Contributing.</p>
+<p>I hope.</p>
+
+<p>I hope.</p>
+<p>People do.</p>
+<p>Have interest in.</p>
+<p>Contributing through a variety of ways.</p>
+<p>On the repo itself.</p>
+<p>To make improvements to the curriculum.</p>
+<p>And also.</p>
+<p>Again.</p>
+<p>Bigger picture.</p>
+<p>Supporting the institute.</p>
+<p>Developing our ecosystem.</p>
+<p>We.</p>
+<p>Could make.</p>
+<p>Domain.</p>
+<p>Courses.</p>
+<p>We could.</p>
+<p>Just.</p>
+<p>List.</p>
+<p>Every single.</p>
+<p>Domain.</p>
+<p>We could have a course.</p>
+<p>For every single.</p>
+<p>Word.</p>
+<p>Every.</p>
+<p>Blade of grass.</p>
+<p>Could have a course.</p>
+<p>And that's sort of the.</p>
+<p>Triangulation.</p>
+<p>With.</p>
+<p>Domain.</p>
+<p>Language.</p>
+<p>So we can.</p>
+<p>Say.</p>
+<p>Okay.</p>
+<p>We're going to have a course.</p>
+<p>About.</p>
+<p>Domain.</p>
+<p>A.</p>
+<p>In place.</p>
+<p>B.</p>
+<p>In language.</p>
+<p>C.</p>
+<p>And we could.</p>
+<p>Just.</p>
+<p>Make that.</p>
+<p>Pre-render that.</p>
+<p>Send that on a flash drive.</p>
+<p>Have that on an open source course.</p>
+<p>Website.</p>
+<p>Put it on github.</p>
+<p>Or.</p>
+<p>Especially with.</p>
+<p>Models.</p>
+<p>Cloud.</p>
+<p>LLM.</p>
+<p>And also local.</p>
+<p>LLM.</p>
+<p>Getting even better.</p>
+<p>Day by day.</p>
+<p>It's possible to just sort of.</p>
+<p>Know that we could.</p>
+<p>And then.</p>
+<p>Generate it.</p>
+<p>On demand.</p>
+<p>So.</p>
+<p>All the domains.</p>
+<p>All the translations.</p>
+<p>Improving that dashboard.</p>
+<p>Building out the learning management.</p>
+<p>And the learning integration systems.</p>
+<p>And then the community resources.</p>
+<p>That's what the institute focuses on.</p>
+<p>So.</p>
+<p>Once again.</p>
+<p>This is all on the.</p>
+<p>Course.</p>
+<p>GitHub.com.</p>
+<p>Slash.</p>
+<p>Active inference institute.</p>
+<p>Slash.</p>
+<p>Courses.</p>
+<p>And you can.</p>
+<p>Run the publishing pipeline yourself.</p>
+<p>Or you could just go to.</p>
+<p>Published.</p>
+<p>And enjoy the courses there.</p>
+<p>Um.</p>
+<p>We are going to continue.</p>
+<p>To.</p>
+<p>Version.</p>
+<p>And update.</p>
+<p>Some of the.</p>
+<p>Courses.</p>
+<p>Then we'll republish.</p>
+<p>With the YouTube.</p>
+<p>Temporarily disabled.</p>
+<p>So we'll turn.</p>
+<p>YouTube transcript archive.</p>
+<p>To false.</p>
+<p>Just so that.</p>
+<p>That part goes faster.</p>
+<p>Otherwise.</p>
+<p>It's still.</p>
+<p>Processing these.</p>
+<p>So I'm going to clear that.</p>
+<p>Publishing pipeline.</p>
+<p>Without the.</p>
+<p>YouTube.</p>
+<p>Transcripts.</p>
+<p>It takes about a minute.</p>
+<p>Okay.</p>
+<p>So here.</p>
+<p>Here it starts.</p>
+<p>Here's all the directories.</p>
+<p>Here's the four.</p>
+<p>Text.</p>
+<p>Four.</p>
+<p>PDFs.</p>
+<p>Four.</p>
+<p>Websites.</p>
+<p>So just.</p>
+<p>Chunking away.</p>
+<p>Bit by bit.</p>
+<p>Okay.</p>
+<p>Here is the creation of.</p>
+<p>Here's the.</p>
+<p>Invention course.</p>
+<p>Which is.</p>
+<p>Claude is still.</p>
+<p>Building it in the background.</p>
+<p>Invention foundations.</p>
+<p>Creative engineering.</p>
+<p>Prototyping and testing.</p>
+<p>Innovation ecosystems.</p>
+<p>Making that right now.</p>
+<p>Here's invention foundations.</p>
+<p>One.</p>
+<p>Module one.</p>
+<p>Systems.</p>
+<p>Module.</p>
+<p>So.</p>
+<p>There it is.</p>
+<p>Exploring.</p>
+<p>Learning active inference.</p>
+<p>In the context of invention.</p>
+<p>So that's going to chug away.</p>
+<p>Here's the.</p>
+<p>Neural topology.</p>
+<p>Most modules are done.</p>
+<p>But some of those.</p>
+<p>Parallel dispatch.</p>
+<p>Whoa.</p>
+<p>That is in.</p>
+<p>Notation table.</p>
+<p>Here are.</p>
+<p>Stitch abbreviations.</p>
+
+<p>With active inference.</p>
+<p>Mappings.</p>
+<p>Slip stitch.</p>
+<p>A minimal stitch.</p>
+<p>A minimal stitch used for joining or moving position.</p>
+<p>Zero cost transition action.</p>
+<p>Repositioning without generating new fabric.</p>
+<p>Which course will you learn about that in?</p>
+<p>Topology and network notation.</p>
+<p>Magic ring.</p>
+<p>Adjustable starting loop for circular work.</p>
+<p>Topological origin point.</p>
+<p>Singularity from which the surface emanates.</p>
+<p>With deferred commitment until surrounding structure constrains it.</p>
+<p>Course 5.</p>
+<p>M1.</p>
+<p>So that's loop and lattice.</p>
+<p>M1.</p>
+<p>And then here's the modules.</p>
+<p>Okay.</p>
+<p>Very cool.</p>
+<p>Here.</p>
+<p>Publishing is making its way through high school.</p>
+<p>Now it's making its way through college.</p>
+<p>So that will.</p>
+<p>Export.</p>
+<p>Everything.</p>
+<p>Within.</p>
+<p>Each course development.</p>
+<p>And then it's going to.</p>
+<p>Right now.</p>
+<p>So published is still empty.</p>
+<p>Because the publishing pipeline is going to.</p>
+<p>Publish each course in place.</p>
+<p>Into the output folder.</p>
+<p>And then it copies all of those output folders to the published folder.</p>
+<p>Okay.</p>
+<p>All right.</p>
+<p>Curious Penguin wrote.</p>
+<p>Do professionals.</p>
+<p>E.g.</p>
+<p>Psychotherapists.</p>
+<p>Savvy to an active inference account of their field.</p>
+<p>Perform better at their job.</p>
+<p>It's a great question.</p>
+<p>I don't have any specific quantitative data on that.</p>
+<p>Qualitatively or anecdotally.</p>
+<p>I have a lot of data on that.</p>
+<p>Personally.</p>
+<p>I have a lot of data on that.</p>
+<p>And I think it's a great question.</p>
+<p>Great thing to investigate.</p>
+<p>All right.</p>
+<p>So finishing up this round of republication.</p>
+<p>And I'll just say.</p>
+<p>Do a full GitHub push.</p>
+<p>Now.</p>
+<p>Wait a few seconds until it finishes publishing.</p>
+<p>So.</p>
+<p>Hopefully this.</p>
+<p>This gives people a little bit of a window into.</p>
+<p>A little bit of how some of these tools can be used.</p>
+<p>The combination of the clawed code in the terminal.</p>
+<p>And the agent manager sidebar.</p>
+<p>In anti-gravity.</p>
+<p>Or in cursor.</p>
+<p>Or whatever other system you're using.</p>
+<p>And then also.</p>
+<p>Like.</p>
+<p>Whether you want to be.</p>
+<p>In that mode.</p>
+<p>Where you're.</p>
+<p>Kind of.</p>
+<p>Building the education factory.</p>
+<p>Or.</p>
+<p>Whether you're.</p>
+<p>Interested just in the published courses.</p>
+<p>So that was.</p>
+<p>7800 courses.</p>
+<p>Published.</p>
+<p>And there they are.</p>
+<p>So.</p>
+<p>Looks like it didn't catch the crochet.</p>
+<p>Course.</p>
+<p>So we'll make sure.</p>
+<p>Make sure that this.</p>
+<p>Renders and publishes.</p>
+<p>All the courses.</p>
+<p>Including.</p>
+<p>Wow.</p>
+<p>So then the metallurgy course.</p>
+<p>Proceeded.</p>
+<p>To be built.</p>
+<p>Okay.</p>
+<p>So now it's.</p>
+<p>There.</p>
+<p>Pushed.</p>
+<p>Everything.</p>
+<p>Or.</p>
+<p>This is just.</p>
+<p>Just because there's so many different.</p>
+<p>Agents.</p>
+<p>And I'm not using the work trees right now.</p>
+<p>The.</p>
+<p>Git.</p>
+<p>Lock.</p>
+<p>File.</p>
+<p>Sometimes gets in the way.</p>
+<p>But.</p>
+<p>Now it'll.</p>
+<p>Go.</p>
+<p>Go.</p>
+<p>All right.</p>
+<p>Okay.</p>
+<p>So just.</p>
+<p>I'm going to.</p>
+<p>Just for.</p>
+<p>Study.</p>
+<p>Okay.</p>
+<p>Now it'll push.</p>
+<p>Then we'll.</p>
+<p>Update it.</p>
+<p>Just so that it.</p>
+<p>Successfully.</p>
+<p>Does.</p>
+<p>Render.</p>
+<p>And publish.</p>
+<p>These new courses.</p>
+<p>That we've made.</p>
+<p>Okay.</p>
+<p>Commit was successful.</p>
+<p>Push it.</p>
+<p>There's the objects.</p>
+<p>Writing the objects.</p>
+<p>I'm going to look a little bit more.</p>
+<p>At the.</p>
+<p>Keystone course.</p>
+<p>And just talk through some of the questions.</p>
+<p>Meanwhile.</p>
+<p>If anyone has.</p>
+<p>Some other.</p>
+<p>Suggestions or ideas.</p>
+<p>So we'll just sort of.</p>
+<p>Tweak.</p>
+<p>Lock in the testing.</p>
+<p>And the documentation.</p>
+<p>Make sure that everything is working.</p>
+<p>How we expect it to be.</p>
+<p>Yep.</p>
+<p>So that all pushed.</p>
+<p>So if you.</p>
+<p>There's the push right now.</p>
+<p>So published.</p>
+<p>Right there.</p>
+<p>Here's all those courses.</p>
+<p>But.</p>
+<p>We.</p>
+<p>Want to.</p>
+<p>Yeah.</p>
+<p>All right.</p>
+<p>So.</p>
+<p>All right.</p>
+<p>Before we look at the courses.</p>
+<p>Stroopy has asked a great question.</p>
+<p>All right.</p>
+<p>How would we know.</p>
+<p>If someone who took.</p>
+<p>Any of these courses.</p>
+<p>Would receive proper information.</p>
+<p>Without somebody doing everything.</p>
+<p>To check it.</p>
+<p>Yeah.</p>
+<p>Absolutely.</p>
+<p>This has been.</p>
+<p>As over the last several years.</p>
+<p>I.</p>
+<p>I have engaged in this.</p>
+<p>Generative AI.</p>
+<p>Education journey.</p>
+<p>It's.</p>
+<p>Been.</p>
+<p>On top of my mind.</p>
+<p>Every day.</p>
+<p>It's just.</p>
+<p>The trade-offs.</p>
+<p>Associated.</p>
+<p>With different.</p>
+<p>Means of.</p>
+<p>Production.</p>
+<p>So.</p>
+<p>Just because.</p>
+<p>Somebody had.</p>
+<p>Glanced.</p>
+<p>Or glazed.</p>
+<p>Their eyes.</p>
+<p>Over the course.</p>
+<p>Still doesn't mean.</p>
+<p>That it's.</p>
+<p>Intrinsically.</p>
+<p>Coherent.</p>
+<p>Or extrinsically.</p>
+<p>Coherent.</p>
+<p>Or accessible.</p>
+<p>Rigorous.</p>
+<p>Applicable.</p>
+<p>Factually accurate.</p>
+<p>Any of those things.</p>
+<p>So.</p>
+<p>Mirror.</p>
+<p>Person.</p>
+<p>Attention.</p>
+<p>Is not.</p>
+<p>A gold standard.</p>
+<p>Ordered.</p>
+<p>However.</p>
+<p>It can be.</p>
+<p>Very helpful.</p>
+<p>So.</p>
+<p>Where.</p>
+<p>I feel like.</p>
+<p>In the short term.</p>
+<p>This is sort of.</p>
+<p>Navigating towards.</p>
+<p>Is.</p>
+<p>Using.</p>
+<p>State-of-the-art.</p>
+<p>Models.</p>
+<p>To.</p>
+<p>To do the best.</p>
+<p>To generate.</p>
+<p>And check.</p>
+<p>The material.</p>
+<p>But then.</p>
+<p>Making it very clear.</p>
+<p>Like.</p>
+<p>Where.</p>
+<p>Are we.</p>
+<p>Sort of.</p>
+<p>Generating.</p>
+<p>Draft.</p>
+<p>Primary.</p>
+<p>Contents.</p>
+<p>Like.</p>
+<p>This is.</p>
+<p>And then.</p>
+<p>If there were to be.</p>
+<p>Like.</p>
+<p>A course.</p>
+<p>Offered.</p>
+<p>Where.</p>
+<p>Somebody was going to.</p>
+<p>Give that lecture.</p>
+<p>Or grade those.</p>
+<p>Homework questions.</p>
+<p>Or it was going to come into play.</p>
+<p>For a certification.</p>
+<p>Then.</p>
+<p>There would be.</p>
+<p>An appropriately.</p>
+<p>Higher.</p>
+<p>Amount.</p>
+<p>Of.</p>
+<p>Expert.</p>
+<p>Attention.</p>
+<p>So.</p>
+<p>I don't think.</p>
+<p>That.</p>
+<p>Simply.</p>
+<p>Having someone.</p>
+<p>Look through it.</p>
+<p>Is always going to be.</p>
+<p>The answer.</p>
+<p>However.</p>
+<p>If.</p>
+<p>A course.</p>
+<p>Is going to be.</p>
+<p>Raised up.</p>
+<p>And.</p>
+<p>Right now.</p>
+<p>It's like.</p>
+<p>This is very clearly.</p>
+<p>Like.</p>
+<p>We have this whole portfolio.</p>
+<p>Of courses.</p>
+<p>And we're just.</p>
+<p>Editing them.</p>
+<p>En masse.</p>
+<p>That's.</p>
+<p>Different.</p>
+<p>Than.</p>
+<p>Going into.</p>
+<p>A classroom.</p>
+<p>Of.</p>
+<p>People.</p>
+<p>And.</p>
+<p>So.</p>
+<p>Yes.</p>
+<p>If you were going to.</p>
+<p>Teach.</p>
+<p>Or lead.</p>
+<p>Or facilitate.</p>
+<p>One of these courses.</p>
+<p>You would definitely.</p>
+<p>Want to check.</p>
+<p>And then.</p>
+<p>Also.</p>
+<p>Another.</p>
+<p>Key aspect.</p>
+<p>Of what's.</p>
+<p>Happening here.</p>
+<p>Is.</p>
+<p>If someone.</p>
+<p>Detects an error.</p>
+<p>Or wants to suggest.</p>
+<p>An improvement.</p>
+<p>They can do that.</p>
+<p>At the line by line.</p>
+<p>Level of detail.</p>
+<p>And so.</p>
+<p>Then we can continue.</p>
+<p>To version.</p>
+<p>The underlying.</p>
+<p>Source code.</p>
+<p>Or fork.</p>
+<p>And edit.</p>
+<p>And version.</p>
+<p>The source code.</p>
+<p>Of.</p>
+<p>The courses.</p>
+<p>While.</p>
+<p>Continuing.</p>
+<p>Um.</p>
+<p>Continuing.</p>
+<p>To.</p>
+<p>Publish.</p>
+<p>The best.</p>
+<p>Versions.</p>
+<p>So.</p>
+<p>Um.</p>
+<p>There isn't.</p>
+<p>Going to be.</p>
+<p>Any.</p>
+<p>Permanent.</p>
+<p>Slam dunk.</p>
+<p>Way.</p>
+<p>To make sure.</p>
+<p>That all.</p>
+<p>The course.</p>
+<p>Material.</p>
+<p>Is accurate.</p>
+<p>Relevant.</p>
+<p>Accessible.</p>
+<p>All that.</p>
+<p>But.</p>
+<p>We can.</p>
+<p>Have all.</p>
+<p>These different.</p>
+<p>Repo level.</p>
+<p>Strategies.</p>
+<p>And just.</p>
+<p>Basically.</p>
+<p>Make it clear.</p>
+<p>Where are we.</p>
+<p>Generating.</p>
+<p>Things.</p>
+<p>Pretty freely.</p>
+<p>Off the cuff.</p>
+<p>And where are we.</p>
+<p>Making something.</p>
+<p>That's going to be.</p>
+<p>Actually like.</p>
+<p>Used.</p>
+<p>In a.</p>
+<p>College course.</p>
+<p>For example.</p>
+<p>Right.</p>
+<p>So now we've added.</p>
+<p>To the.</p>
+<p>Config.</p>
+<p>File.</p>
+<p>These extra.</p>
+<p>Courses.</p>
+<p>So now.</p>
+<p>They'll be.</p>
+<p>Discovered.</p>
+<p>Now.</p>
+<p>Let's.</p>
+<p>Clear it.</p>
+<p>Run the whole.</p>
+<p>Publishing.</p>
+<p>Pipeline.</p>
+<p>Again.</p>
+<p>Okay.</p>
+<p>Meanwhile.</p>
+<p>In the.</p>
+<p>Domains.</p>
+<p>Folder.</p>
+<p>Add a.</p>
+<p>Domains.</p>
+<p>To.</p>
+<p>Do.</p>
+<p>Dot.</p>
+<p>Md.</p>
+<p>File.</p>
+<p>With.</p>
+<p>Hundreds.</p>
+<p>Of.</p>
+<p>Domains.</p>
+<p>That.</p>
+<p>We.</p>
+<p>Will.</p>
+<p>Eventually.</p>
+<p>Make.</p>
+<p>Courses.</p>
+<p>For.</p>
+<p>Have it.</p>
+<p>All.</p>
+<p>In a.</p>
+<p>Massive.</p>
+<p>Table.</p>
+<p>So that.</p>
+<p>We.</p>
+<p>Can.</p>
+<p>Signpost.</p>
+<p>And.</p>
+<p>Determine.</p>
+<p>The status.</p>
+<p>Of.</p>
+<p>Each.</p>
+<p>Course.</p>
+<p>By.</p>
+<p>Domain.</p>
+<p>So.</p>
+<p>Then.</p>
+<p>Somebody.</p>
+<p>Could.</p>
+<p>Just.</p>
+<p>Make.</p>
+<p>A.</p>
+<p>Prompt.</p>
+<p>Or.</p>
+<p>You know.</p>
+<p>Could.</p>
+<p>Be.</p>
+<p>In.</p>
+<p>Two.</p>
+<p>Weeks.</p>
+<p>Could.</p>
+<p>Be.</p>
+<p>In.</p>
+<p>Two.</p>
+<p>Years.</p>
+<p>Just.</p>
+<p>Blast.</p>
+<p>Through.</p>
+<p>These.</p>
+<p>Domains.</p>
+<p>And.</p>
+<p>Then.</p>
+<p>We'll.</p>
+<p>Have.</p>
+<p>N.</p>
+<p>Domains.</p>
+<p>By.</p>
+<p>N.</p>
+<p>Languages.</p>
+<p>Even.</p>
+<p>Then.</p>
+<p>Even.</p>
+<p>If.</p>
+<p>It was.</p>
+<p>Taking.</p>
+<p>Into.</p>
+<p>Account.</p>
+<p>Somebody's.</p>
+<p>Personal.</p>
+<p>Context.</p>
+<p>Their.</p>
+<p>Language.</p>
+<p>Their.</p>
+<p>Interests.</p>
+<p>All.</p>
+<p>Of.</p>
+<p>That.</p>
+<p>This.</p>
+<p>Is.</p>
+<p>Something.</p>
+<p>That.</p>
+<p>Dean.</p>
+<p>And.</p>
+<p>I.</p>
+<p>Have.</p>
+<p>Also.</p>
+<p>Talked.</p>
+<p>About.</p>
+<p>For.</p>
+<p>Many.</p>
+<p>Years.</p>
+<p>And.</p>
+<p>Something.</p>
+<p>He's.</p>
+<p>Lived.</p>
+<p>And.</p>
+<p>Breathed.</p>
+<p>For.</p>
+<p>Many.</p>
+<p>Years.</p>
+<p>Which.</p>
+<p>Is.</p>
+<p>Like.</p>
+<p>Teaching.</p>
+<p>Is.</p>
+<p>Not.</p>
+<p>Learning.</p>
+<p>Course.</p>
+<p>Content.</p>
+<p>Production.</p>
+<p>Is.</p>
+<p>Not.</p>
+<p>Learning.</p>
+<p>Lecturing.</p>
+<p>Is.</p>
+<p>Not.</p>
+<p>Learning.</p>
+<p>It's.</p>
+<p>Easy.</p>
+<p>To.</p>
+<p>Be.</p>
+<p>On.</p>
+<p>This.</p>
+<p>Side.</p>
+<p>Of.</p>
+<p>The.</p>
+<p>Desk.</p>
+<p>That.</p>
+<p>I'm.</p>
+<p>On.</p>
+<p>On.</p>
+<p>Though.</p>
+<p>I'm.</p>
+<p>On.</p>
+<p>Both.</p>
+<p>Sides.</p>
+<p>Of.</p>
+<p>The.</p>
+<p>Desk.</p>
+<p>And.</p>
+<p>Just.</p>
+<p>Imagine.</p>
+<p>That.</p>
+<p>Because.</p>
+<p>The.</p>
+<p>Material.</p>
+<p>Looks.</p>
+<p>Vast.</p>
+<p>And.</p>
+<p>Comprehensive.</p>
+<p>That.</p>
+<p>The.</p>
+<p>Student.</p>
+<p>Will.</p>
+<p>Be.</p>
+<p>Type.</p>
+<p>And.</p>
+<p>Extent.</p>
+<p>Of.</p>
+<p>Content.</p>
+<p>Only.</p>
+<p>Makes.</p>
+<p>That.</p>
+<p>Easier.</p>
+<p>For.</p>
+<p>Me.</p>
+<p>To.</p>
+<p>See.</p>
+<p>The.</p>
+<p>Gap.</p>
+<p>Between.</p>
+<p>The.</p>
+<p>Content.</p>
+<p>And.</p>
+<p>The.</p>
+<p>Learning.</p>
+<p>Like.</p>
+<p>For.</p>
+<p>Years.</p>
+<p>It.</p>
+<p>Was.</p>
+<p>Where's.</p>
+<p>The.</p>
+<p>Educational.</p>
+<p>Material.</p>
+<p>Where's.</p>
+<p>The.</p>
+<p>Educational.</p>
+<p>Material.</p>
+<p>Well.</p>
+<p>Here.</p>
+<p>Is.</p>
+<p>Great.</p>
+<p>Educational.</p>
+<p>Material.</p>
+<p>It.</p>
+<p>Is.</p>
+<p>Produced.</p>
+<p>At.</p>
+<p>A.</p>
+<p>Technical.</p>
+<p>Level.</p>
+<p>And.</p>
+<p>A.</p>
+<p>Professional.</p>
+<p>Level.</p>
+<p>That.</p>
+<p>I.</p>
+<p>Don't.</p>
+<p>Think.</p>
+<p>People.</p>
+<p>Really.</p>
+<p>Expected.</p>
+<p>Several.</p>
+<p>Years.</p>
+<p>Ago.</p>
+<p>But.</p>
+<p>Again.</p>
+<p>It.</p>
+<p>Just.</p>
+<p>Shows.</p>
+<p>That.</p>
+<p>There's.</p>
+<p>More.</p>
+<p>To.</p>
+<p>Learning.</p>
+<p>Than.</p>
+<p>Teaching.</p>
+<p>There's.</p>
+<p>All.</p>
+<p>Of.</p>
+<p>The.</p>
+<p>Doing.</p>
+<p>And.</p>
+<p>That.</p>
+<p>Is.</p>
+<p>One.</p>
+<p>Of.</p>
+<p>The.</p>
+<p>Next.</p>
+<p>Steps.</p>
+<p>At.</p>
+<p>The.</p>
+<p>Institute.</p>
+<p>And.</p>
+<p>Beyond.</p>
+<p>For.</p>
+<p>Us.</p>
+<p>Really.</p>
+<p>All.</p>
+<p>To.</p>
+<p>Take.</p>
+<p>Which.</p>
+<p>Is.</p>
+<p>To.</p>
+<p>Go.</p>
+<p>From.</p>
+<p>Okay.</p>
+<p>So.</p>
+<p>We.</p>
+<p>Have.</p>
+<p>These.</p>
+<p>Courses.</p>
+<p>But.</p>
+<p>Then.</p>
+<p>What.</p>
+<p>Else.</p>
+<p>What.</p>
+<p>Goes.</p>
+<p>Around.</p>
+<p>The.</p>
+<p>Course.</p>
+<p>So.</p>
+<p>We.</p>
+<p>Can.</p>
+<p>Go.</p>
+<p>Through.</p>
+<p>These.</p>
+<p>Questions.</p>
+<p>And.</p>
+<p>Even.</p>
+<p>At.</p>
+<p>The.</p>
+<p>Level.</p>
+<p>Of.</p>
+<p>Familiarity.</p>
+<p>That.</p>
+<p>I.</p>
+<p>Am.</p>
+<p>Or.</p>
+<p>Many.</p>
+<p>Of.</p>
+<p>The.</p>
+<p>People.</p>
+<p>And.</p>
+<p>Beyond.</p>
+<p>Are.</p>
+<p>At.</p>
+<p>These.</p>
+<p>Are.</p>
+<p>Great.</p>
+<p>And.</p>
+<p>Important.</p>
+<p>Questions.</p>
+<p>To.</p>
+<p>Look.</p>
+<p>Through.</p>
+<p>So.</p>
+<p>Let's.</p>
+<p>Go.</p>
+<p>Through.</p>
+<p>We'll.</p>
+<p>Let it.</p>
+<p>Republish it.</p>
+<p>Output it.</p>
+<p>Then.</p>
+<p>We will.</p>
+<p>Look.</p>
+<p>Through.</p>
+<p>The.</p>
+<p>Questions.</p>
+<p>We'll.</p>
+<p>Try.</p>
+<p>To.</p>
+<p>Do.</p>
+<p>It.</p>
+<p>We'll.</p>
+<p>We'll.</p>
+<p>Speed.</p>
+<p>Run.</p>
+<p>Some.</p>
+<p>Of.</p>
+<p>The.</p>
+<p>Questions.</p>
+<p>Just.</p>
+<p>Just.</p>
+<p>For.</p>
+<p>Our.</p>
+<p>Kind.</p>
+<p>Of.</p>
+<p>Intense.</p>
+<p>Epistemic.</p>
+<p>Pleasure.</p>
+<p>Then.</p>
+<p>I.</p>
+<p>Will.</p>
+<p>Look.</p>
+<p>At.</p>
+<p>The.</p>
+<p>Chat.</p>
+<p>For.</p>
+<p>Any.</p>
+<p>Last.</p>
+<p>Ideas.</p>
+<p>Or.</p>
+<p>Comments.</p>
+<p>Or.</p>
+<p>Questions.</p>
+<p>That.</p>
+<p>People.</p>
+<p>Have.</p>
+<p>Okay.</p>
+<p>Yana.</p>
+<p>Another.</p>
+<p>Great.</p>
+<p>Question.</p>
+<p>Doesn't.</p>
+<p>The.</p>
+<p>Greater.</p>
+<p>Degree.</p>
+<p>Of.</p>
+<p>Tailoring.</p>
+<p>And.</p>
+<p>Individualizing.</p>
+<p>Information.</p>
+<p>Just.</p>
+<p>Isolate.</p>
+<p>Us.</p>
+<p>Further.</p>
+<p>Don't.</p>
+<p>We.</p>
+<p>Need.</p>
+<p>Tools.</p>
+<p>To.</p>
+<p>Improve.</p>
+<p>Opportunities.</p>
+<p>For.</p>
+<p>Convergence.</p>
+<p>Not.</p>
+<p>Isolation.</p>
+<p>Yeah.</p>
+<p>Absolutely.</p>
+<p>Like.</p>
+<p>Think.</p>
+<p>About.</p>
+<p>The.</p>
+<p>Kind.</p>
+<p>Of.</p>
+<p>Echo.</p>
+<p>Chamber.</p>
+<p>Filter.</p>
+<p>Bubble.</p>
+<p>Algorithmic.</p>
+<p>Bias.</p>
+<p>All.</p>
+<p>Those.</p>
+<p>Kinds.</p>
+<p>Of.</p>
+<p>Topics.</p>
+<p>And.</p>
+<p>The.</p>
+<p>Way.</p>
+<p>That.</p>
+<p>Different.</p>
+<p>Recommendation.</p>
+<p>And.</p>
+<p>Visibility.</p>
+<p>Of.</p>
+<p>Material.</p>
+<p>Led.</p>
+<p>To.</p>
+<p>Fragmentation.</p>
+<p>That.</p>
+<p>Will.</p>
+<p>Come.</p>
+<p>Across.</p>
+<p>Probably.</p>
+<p>To.</p>
+<p>Be.</p>
+<p>Like.</p>
+<p>The.</p>
+<p>Good.</p>
+<p>Old.</p>
+<p>Days.</p>
+<p>Back.</p>
+<p>When.</p>
+<p>At least.</p>
+<p>There.</p>
+<p>Was.</p>
+<p>Shared.</p>
+<p>Content.</p>
+<p>And.</p>
+<p>People.</p>
+<p>Were.</p>
+<p>Yes.</p>
+<p>Recommended.</p>
+<p>Them.</p>
+<p>Or.</p>
+<p>Given.</p>
+<p>Availability.</p>
+<p>Of.</p>
+<p>Those.</p>
+<p>Materials.</p>
+<p>Asymmetrically.</p>
+<p>But.</p>
+<p>There.</p>
+<p>Was.</p>
+<p>A.</p>
+<p>Shared.</p>
+<p>Common.</p>
+<p>Static.</p>
+<p>Artifact.</p>
+<p>And.</p>
+<p>Again.</p>
+<p>Today.</p>
+<p>It's.</p>
+<p>Impressive.</p>
+<p>To.</p>
+<p>See.</p>
+<p>All.</p>
+<p>This.</p>
+<p>Rendered.</p>
+<p>Course.</p>
+<p>And.</p>
+<p>The.</p>
+<p>Dashboard.</p>
+<p>And.</p>
+<p>The.</p>
+<p>PDF.</p>
+<p>And.</p>
+<p>The.</p>
+<p>MP3.</p>
+<p>The.</p>
+<p>Text.</p>
+<p>To.</p>
+<p>Speech.</p>
+<p>All.</p>
+<p>Those.</p>
+<p>Kinds.</p>
+<p>Of.</p>
+<p>Things.</p>
+<p>Are.</p>
+<p>Really.</p>
+<p>Impressive.</p>
+<p>But.</p>
+<p>It.</p>
+<p>Could.</p>
+<p>Just.</p>
+<p>Be.</p>
+<p>Regenerated.</p>
+<p>On.</p>
+<p>Demand.</p>
+<p>Basically.</p>
+<p>Just.</p>
+<p>In.</p>
+<p>Time.</p>
+<p>Information.</p>
+<p>Supply.</p>
+<p>Chains.</p>
+<p>And.</p>
+<p>Supply.</p>
+<p>Engines.</p>
+<p>Information.</p>
+<p>Engines.</p>
+<p>And.</p>
+<p>So.</p>
+<p>Yes.</p>
+<p>Absolutely.</p>
+<p>It is.</p>
+<p>Forward.</p>
+<p>Looking.</p>
+<p>To.</p>
+<p>Skate.</p>
+<p>To.</p>
+<p>Where.</p>
+<p>The.</p>
+<p>Puck.</p>
+<p>Will.</p>
+<p>Be.</p>
+<p>Which.</p>
+<p>Is.</p>
+<p>Going.</p>
+<p>To.</p>
+<p>Be.</p>
+<p>Our.</p>
+<p>Learning.</p>
+<p>Communities.</p>
+<p>And.</p>
+<p>Our.</p>
+<p>Learning.</p>
+<p>Ecosystems.</p>
+<p>That's.</p>
+<p>Been.</p>
+<p>A.</p>
+<p>Huge.</p>
+<p>Aspect.</p>
+<p>Of.</p>
+
+<p>We.</p>
+<p>Do.</p>
+<p>That's.</p>
+<p>Why.</p>
+<p>This.</p>
+<p>Is.</p>
+<p>A.</p>
+<p>Live.</p>
+<p>Stream.</p>
+<p>And.</p>
+<p>Not.</p>
+<p>Just.</p>
+<p>Me.</p>
+<p>Behind.</p>
+<p>A.</p>
+<p>Wall.</p>
+<p>Or.</p>
+<p>In.</p>
+<p>Some.</p>
+<p>What.</p>
+<p>Can.</p>
+<p>Be.</p>
+<p>Done.</p>
+<p>Of.</p>
+<p>Course.</p>
+<p>You.</p>
+<p>Can.</p>
+<p>Of.</p>
+<p>Course.</p>
+<p>We.</p>
+<p>Can.</p>
+<p>Of.</p>
+<p>Course.</p>
+<p>AI.</p>
+<p>Can.</p>
+<p>Active.</p>
+<p>Inference.</p>
+<p>Courses.</p>
+<p>For.</p>
+<p>Everyone.</p>
+<p>And.</p>
+<p>Course.</p>
+<p>Could.</p>
+<p>Be.</p>
+<p>For.</p>
+<p>Those.</p>
+<p>Who.</p>
+<p>Want.</p>
+<p>It.</p>
+<p>Just.</p>
+<p>Working.</p>
+<p>Through.</p>
+<p>This.</p>
+<p>Material.</p>
+<p>As.</p>
+<p>It.</p>
+<p>Is.</p>
+<p>Right.</p>
+<p>Now.</p>
+<p>With.</p>
+<p>A.</p>
+<p>Static.</p>
+<p>Version.</p>
+<p>Or.</p>
+<p>You.</p>
+<p>Could.</p>
+<p>Swim.</p>
+<p>A.</p>
+<p>Little.</p>
+<p>Upstream.</p>
+<p>And.</p>
+<p>You.</p>
+<p>Could.</p>
+<p>And.</p>
+<p>Then.</p>
+<p>Maybe.</p>
+<p>That.</p>
+<p>Is.</p>
+<p>Your.</p>
+<p>Sweet.</p>
+<p>Spot.</p>
+<p>Maybe.</p>
+<p>That's.</p>
+<p>Your.</p>
+<p>Goldilocks.</p>
+<p>Harmony.</p>
+<p>Zone.</p>
+<p>And.</p>
+<p>Or.</p>
+<p>Maybe.</p>
+<p>As.</p>
+<p>Part.</p>
+<p>Of.</p>
+<p>Your.</p>
+<p>Balanced.</p>
+<p>And.</p>
+<p>Healthy.</p>
+<p>Information.</p>
+<p>And.</p>
+<p>Action.</p>
+<p>Diet.</p>
+<p>You.</p>
+<p>Want.</p>
+<p>To.</p>
+<p>Connect.</p>
+<p>You.</p>
+<p>Want.</p>
+<p>To.</p>
+<p>Have.</p>
+<p>Colleagues.</p>
+<p>Peers.</p>
+<p>You.</p>
+<p>Want.</p>
+<p>To.</p>
+<p>Be.</p>
+<p>Mentored.</p>
+<p>And.</p>
+<p>Mentor.</p>
+<p>And.</p>
+<p>Co-learn.</p>
+<p>You.</p>
+<p>Want.</p>
+<p>To.</p>
+<p>Have.</p>
+<p>Community.</p>
+<p>You.</p>
+<p>Want.</p>
+<p>To.</p>
+<p>Have.</p>
+<p>Shared.</p>
+<p>Fellowship.</p>
+<p>All.</p>
+<p>These.</p>
+<p>Kinds.</p>
+<p>Of.</p>
+<p>Things.</p>
+<p>That.</p>
+<p>Are.</p>
+<p>Not.</p>
+<p>Going.</p>
+<p>To.</p>
+<p>Come.</p>
+<p>From.</p>
+<p>The.</p>
+<p>PDF.</p>
+<p>Again.</p>
+<p>That.</p>
+<p>Being.</p>
+<p>Said.</p>
+<p>Having.</p>
+<p>The.</p>
+<p>Text.</p>
+<p>To.</p>
+<p>Speech.</p>
+<p>And.</p>
+<p>The.</p>
+<p>Speech.</p>
+<p>To.</p>
+<p>Text.</p>
+<p>Is.</p>
+<p>An.</p>
+<p>Incredible.</p>
+<p>Opportunity.</p>
+<p>So.</p>
+<p>I.</p>
+<p>Think.</p>
+<p>It's.</p>
+<p>Truly.</p>
+<p>Both.</p>
+<p>It's.</p>
+<p>Truly.</p>
+<p>Both.</p>
+<p>So.</p>
+<p>Here's.</p>
+<p>330.</p>
+<p>New.</p>
+<p>Domain.</p>
+<p>330.</p>
+<p>Domains.</p>
+<p>To.</p>
+<p>Do.</p>
+<p>That.</p>
+<p>Could.</p>
+<p>Be.</p>
+<p>Dispatched.</p>
+<p>With.</p>
+<p>330.</p>
+<p>Claude.</p>
+<p>Codes.</p>
+<p>Let's.</p>
+<p>Look.</p>
+<p>At.</p>
+<p>That.</p>
+<p>Domain.</p>
+<p>So.</p>
+<p>That's.</p>
+<p>In.</p>
+<p>Course.</p>
+<p>Development.</p>
+<p>Domains.</p>
+<p>Pushing.</p>
+<p>It.</p>
+<p>Reload.</p>
+<p>Domains.</p>
+<p>To.</p>
+<p>Do.</p>
+<p>There.</p>
+<p>It is.</p>
+<p>Physical.</p>
+<p>Sciences.</p>
+<p>Life.</p>
+<p>Sciences.</p>
+<p>So.</p>
+<p>Active inference.</p>
+<p>Epigenetics.</p>
+<p>For this place.</p>
+<p>For this background.</p>
+<p>In this language.</p>
+<p>Okay.</p>
+<p>Yana wrote.</p>
+<p>So.</p>
+<p>Here.</p>
+<p>The point.</p>
+<p>Of convergence.</p>
+<p>Is.</p>
+<p>Active inference.</p>
+<p>And.</p>
+<p>All.</p>
+<p>Those.</p>
+<p>Courses.</p>
+<p>Can.</p>
+<p>Be.</p>
+<p>Divergent.</p>
+<p>Starting.</p>
+<p>Points.</p>
+<p>That.</p>
+<p>Converge.</p>
+<p>And.</p>
+<p>Active.</p>
+<p>Inf.</p>
+<p>Great.</p>
+<p>Then.</p>
+<p>The stream.</p>
+<p>Was.</p>
+<p>A success.</p>
+<p>Indeed.</p>
+<p>Though.</p>
+<p>Convergent.</p>
+<p>And.</p>
+<p>Divergent.</p>
+<p>The relationship.</p>
+<p>Between.</p>
+<p>What we can.</p>
+<p>And can't.</p>
+<p>Take with us.</p>
+<p>Between.</p>
+<p>A stigmargy.</p>
+<p>In our digital niche.</p>
+<p>The modifications.</p>
+<p>Of our digital niche.</p>
+<p>And our own.</p>
+<p>Ephemeral.</p>
+<p>Thought.</p>
+<p>And just the ways.</p>
+<p>That we can.</p>
+<p>Connect.</p>
+<p>All these different.</p>
+<p>Domains.</p>
+<p>Like complexity.</p>
+<p>And.</p>
+<p>More.</p>
+<p>So let's.</p>
+<p>Um.</p>
+<p>Write.</p>
+<p>A new course.</p>
+<p>Write one.</p>
+<p>Comprehensive.</p>
+<p>Advanced.</p>
+<p>Though.</p>
+<p>Curiously.</p>
+<p>Accessible.</p>
+<p>Hilariously.</p>
+<p>Esoteric.</p>
+<p>Absolutely.</p>
+<p>Relevant.</p>
+<p>Course.</p>
+<p>In the style.</p>
+<p>Of.</p>
+<p>The whole.</p>
+<p>Course.</p>
+<p>Is.</p>
+<p>An.</p>
+<p>Extended.</p>
+<p>Meditation.</p>
+<p>On.</p>
+<p>Quote.</p>
+<p>Who's on first.</p>
+<p>Going so.</p>
+<p>Deep.</p>
+<p>Into.</p>
+<p>Technical.</p>
+<p>Contents.</p>
+<p>Without.</p>
+<p>Falling.</p>
+<p>Into.</p>
+<p>Stereotype.</p>
+<p>Or.</p>
+<p>Cliche.</p>
+<p>This.</p>
+<p>Course.</p>
+<p>Is.</p>
+<p>Properly.</p>
+<p>Syntactically.</p>
+<p>Formatted.</p>
+<p>For the repo.</p>
+<p>While.</p>
+<p>Properly.</p>
+<p>Semantically.</p>
+<p>Formatted.</p>
+<p>For the future.</p>
+<p>Of learning.</p>
+<p>All right.</p>
+<p>While that is chugging away.</p>
+<p>Let's.</p>
+
+<p>Speed run.</p>
+<p>The.</p>
+<p>401.</p>
+<p>Questions.</p>
+<p>Oop.</p>
+<p>So.</p>
+<p>Published.</p>
+<p>401.</p>
+<p>One.</p>
+<p>All right.</p>
+<p>I haven't.</p>
+<p>Necessarily.</p>
+<p>Looked at these.</p>
+<p>Questions.</p>
+<p>But.</p>
+<p>I'm going to just try to do.</p>
+<p>A little bit of a.</p>
+<p>Rapid fire.</p>
+<p>See if it can be a one sentence answer.</p>
+<p>And.</p>
+<p>Let's just think about this.</p>
+<p>In terms of like.</p>
+<p>Well.</p>
+<p>For all these.</p>
+<p>Topics.</p>
+<p>And subtopics.</p>
+<p>What really.</p>
+<p>Are those questions.</p>
+<p>To ask.</p>
+<p>So.</p>
+<p>Not every single question.</p>
+<p>We'll.</p>
+<p>We'll jump around.</p>
+<p>But they're just.</p>
+<p>They're so fascinating.</p>
+<p>Again.</p>
+<p>It's like.</p>
+<p>This.</p>
+<p>Is.</p>
+<p>Epistemically.</p>
+<p>Intense.</p>
+<p>Material.</p>
+<p>Generative.</p>
+<p>AI.</p>
+<p>Is.</p>
+<p>Extremely.</p>
+<p>Cognitively.</p>
+<p>Intense.</p>
+<p>And.</p>
+<p>It.</p>
+<p>Can be a lot of fun.</p>
+<p>It can be.</p>
+<p>Thrilling.</p>
+<p>It can be.</p>
+<p>Kind of.</p>
+<p>Mind boggling.</p>
+<p>And.</p>
+<p>These are.</p>
+<p>Corners.</p>
+<p>Of.</p>
+<p>Epistemia.</p>
+<p>And.</p>
+<p>Semantic space.</p>
+<p>That.</p>
+<p>People.</p>
+<p>Have not.</p>
+<p>Necessarily.</p>
+<p>Seen.</p>
+<p>Before.</p>
+<p>So.</p>
+<p>It's just.</p>
+<p>A wild time.</p>
+<p>To be.</p>
+<p>Learning.</p>
+<p>And applying.</p>
+<p>On the frontier.</p>
+<p>Here we go.</p>
+<p>How does active inference relate to Descartes mind-body problem?</p>
+<p>It aims for a unified whole iguana perspective that at least accounts for both mind and body.</p>
+<p>Why is the Markov blanket a dissolution of the problem rather than a solution?</p>
+<p>Because it's a choice of the modeler which node is identified as the blanket.</p>
+<p>And so identifying the blanket is more of a post hoc pointing rather than a solution in and of itself.</p>
+<p>How does the generative model correspond to Kant's transcendental categories?</p>
+<p>I'm not sure.</p>
+<p>What is the active inference equivalent of Kant's claim that we never access the thing in itself?</p>
+<p>Could be that we never access the external states like the real temperature in the room.</p>
+<p>We only access the thermometer measurement.</p>
+<p>What is the difference between classical Bayesian epistemology and active inference variational inference?</p>
+<p>Well, classical Bayesian epistemology might have the approximately, probably approximately correct footing or an exact Bayes footing.</p>
+<p>In variational inference, we are explicitly dealing with a variational approximation distribution.</p>
+<p>Why is the shift from ideal to approximate inference philosophically significant?</p>
+<p>Because it not only gives us tractable formalism and computer science tools,</p>
+<p>it gives us a totally different heuristic posture that isn't predicated around the false ideal, pun pun pun intended, of the ideal.</p>
+<p>Explain process epistemology.</p>
+<p>Oh, if only I could.</p>
+<p>If only there was a way to livestream process epistemology.</p>
+<p>I would be doing that.</p>
+<p>How does the FEP replace static notions of knowledge, justification, and truth with dynamic ones?</p>
+<p>What is the circular epistemology problem?</p>
+<p>The circular epistemology problem is the circular epistemology problem.</p>
+<p>The model defines what counts as evidence and evidence updates the model.</p>
+<p>How does the FEP embrace this circularity?</p>
+<p>In a big, round, actionable hug.</p>
+<p>How does the FEP's circularity relate to Quine's naturalized epistemology?</p>
+<p>I'm not sure.</p>
+<p>Heidegger's hermeneutic circle?</p>
+<p>Not sure.</p>
+<p>Maturana and Varela's autopoiesis?</p>
+<p>By leaving the door open, whether to constructor theory or other kinds of material properties,</p>
+<p>to this mortal computing construction of the substrate along with the cognitive.</p>
+<p>In what ways are these comparisons illuminating and where do they break down?</p>
+<p>Is the Markov blanket discovery, which is realism, or construction, anti-realism, or constructivism, or instrumentalism?</p>
+<p>What would a structural realist say?</p>
+<p>Argue each position.</p>
+<p>What is self-evidencing?</p>
+<p>How does the FEP relate to pragmatism?</p>
+<p>I love this question.</p>
+<p>William James argued that truth is what works.</p>
+<p>Active inference implies good models are those that minimize free energy.</p>
+<p>Are these the same claim?</p>
+<p>Connect the FEP to Nishida's concept of pure existence, Japanese philosophy,</p>
+<p>or Zhangji's forgetting of self, Chinese philosophy.</p>
+<p>Does active inference have non-Western philosophical roots?</p>
+<p>Should it?</p>
+<p>Okay.</p>
+<p>Fun.</p>
+<p>Just imagine.</p>
+<p>You know, week one of your PhD.</p>
+<p>This piece of paper.</p>
+<p>Double-sided.</p>
+<p>Slipped on a desk in front of you.</p>
+<p>Let's look at what the lab for that one is.</p>
+<p>So this is, okay.</p>
+<p>Having mapping, debate.</p>
+<p>All right.</p>
+<p>Let's go to another module.</p>
+<p>Let's go to action.</p>
+<p>Actually, let's look at learning.</p>
+<p>Learning.</p>
+<p>So this is kind of a graduate level philosophy of science.</p>
+<p>Kuhn, Lakatos, Popper, demarcation, induction, underdetermination, scientific realism.</p>
+<p>Dewey's pragmatism.</p>
+<p>Learning by doing.</p>
+<p>Learning.</p>
+<p>Education.</p>
+<p>Education.</p>
+<p>Habit as crystallized inference.</p>
+<p>Okay.</p>
+<p>Pretty fun.</p>
+<p>Let's look at what the questions would be.</p>
+<p>How does Kuhn's cycle of normal science to crisis to revolution map onto parameter learning to model selection?</p>
+<p>How does free energy equals complexity minus accuracy formalize Occam's razor?</p>
+<p>How does Bayesian model comparison differ from classical hypothesis testing?</p>
+<p>Okay.</p>
+<p>How about action?</p>
+<p>Here's the dashboard for action.</p>
+<p>So here's the quiz.</p>
+<p>All right.</p>
+<p>Let's take this quiz.</p>
+<p>Here we go.</p>
+<p>Okay.</p>
+<p>No wrong answers.</p>
+<p>No wrong answers.</p>
+<p>No wrong answers.</p>
+<p>Which of the following best describe epistemic actions?</p>
+<p>A. Passive perception involves micro actions.</p>
+<p>If the agent acts to gather information not to achieve goals.</p>
+<p>Looks good.</p>
+<p>Policy prior sharpened through repeated action.</p>
+<p>No, that's habit.</p>
+<p>Hierarchical generative model refined through practice.</p>
+<p>I'm going to say yes.</p>
+<p>Which of the following best describe motor theories of perception?</p>
+<p>Oh, okay.</p>
+<p>Same answers.</p>
+<p>Motor theories of perception.</p>
+<p>Which of the following describe habit?</p>
+<p>Policy prior.</p>
+<p>Which of the following describes skill?</p>
+<p>That's the skill.</p>
+<p>Oh, clicked the wrong one.</p>
+<p>Which of the following best describes expertise?</p>
+<p>Peace.</p>
+<p>I was tricked.</p>
+<p>A primary learning goal of the module is to...</p>
+<p>Wow, hilarious.</p>
+<p>Is it to review content from a different area?</p>
+<p>No.</p>
+<p>Memorize definitions without applying them?</p>
+<p>No.</p>
+<p>Skip foundational concepts?</p>
+<p>No.</p>
+<p>Connect active inference to American pragmatism.</p>
+<p>By the end of the module, you should be able to...</p>
+<p>examine the relationship between affordances and expected free energy.</p>
+<p>Okay.</p>
+<p>Let's take a brief little break.</p>
+<p>Let's go to...</p>
+<p>Middle school...</p>
+<p>Real life skills...</p>
+<p>Communication...</p>
+<p>Website.</p>
+<p>All right.</p>
+<p>This one's not fully written out.</p>
+<p>MS.</p>
+<p>So that's just sort of a little placeholder for the middle school.</p>
+<p>Okay.</p>
+<p>So we won't do that one.</p>
+<p>Go to...</p>
+<p>Core class.</p>
+<p>We'll do math.</p>
+<p>Planning.</p>
+<p>Planning.</p>
+<p>Should be able to...</p>
+<p>So tests, learning objectives, navigating through the modules.</p>
+<p>So...</p>
+<p>Wildly exciting...</p>
+<p>That this is out there...</p>
+<p>Free and open source.</p>
+<p>And...</p>
+<p>That the institute...</p>
+<p>Is a place where...</p>
+<p>You can come and learn that.</p>
+<p>And you can engage with other people.</p>
+<p>And you can come together and ask...</p>
+<p>What now?</p>
+<p>What's next?</p>
+<p>Let's go back to 401.</p>
+<p>That was...</p>
+<p>That was...</p>
+<p>I mean...</p>
+<p>It was good learning.</p>
+<p>It was good learning.</p>
+<p>Website.</p>
+<p>All right.</p>
+<p>We'll go to...</p>
+<p>Published.</p>
+<p>401.</p>
+<p>Advanced Theory.</p>
+<p>Action.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>All right.</p>
+<p>Renormalization group...</p>
+<p>And scale-free active inference.</p>
+<p>All right.</p>
+<p>We have the multiple choice questions.</p>
+<p>Wow.</p>
+<p>Perform a detailed...</p>
+<p>Renormalization group analysis of a multi-scale biological system.</p>
+<p>Identify three scales, the states at each scale, the course-graining procedure between scales,</p>
+<p>and whether the effective active inference equations preserve their form.</p>
+<p>Where does the analysis work well?</p>
+<p>Where does it break down?</p>
+<p>I mean...</p>
+<p>That was the kind of stuff that...</p>
+<p>Took us many hours in 2023.</p>
+<p>Evaluate the brain at criticality hypothesis.</p>
+<p>Present strong evidence for and against.</p>
+<p>Write a theoretical essay on how active inference applies to social systems.</p>
+<p>Okay.</p>
+<p>Renormalization group.</p>
+<p>So interesting that the renormalization group is very dominant in the action module.</p>
+<p>Let's look at Advanced Theory of Planning.</p>
+<p>Okay.</p>
+<p>Perception, action, learning, and planning.</p>
+<p>Thermodynamics, reinforcement learning, information theory.</p>
+<p>Here's the lab.</p>
+<p>Okay.</p>
+<p>Comparison tables.</p>
+<p>Connect mathematical tools across the entire advanced theory track.</p>
+<p>Active inference versus reinforcement learning deep dive.</p>
+<p>Open problems.</p>
+<p>Consciousness, scalability, emergence, falsifiability, AGI.</p>
+<p>Right?</p>
+<p>Capstone synthesis.</p>
+<p>Again, just imagine.</p>
+<p>You open up that day one.</p>
+<p>That course website on day one.</p>
+<p>You look a little bit ahead.</p>
+<p>Oh, where are we going to be?</p>
+<p>At the end of the third semester.</p>
+<p>Oh.</p>
+<p>Looks epic.</p>
+<p>And we'll have plenty of time.</p>
+<p>All the tools and the resources.</p>
+<p>All the digital and social resources that you need.</p>
+<p>So, what you can only imagine today, you will know fluently tomorrow.</p>
+<p>And then again, as we sort of explored, the research methods section of 401 starts getting into basically being a professional researcher and science investigator and communicator by exploring how you design a research program and how you justify a research program.</p>
+<p>How does pupil dilation relate to prediction error?</p>
+<p>That's one of my favorite topics.</p>
+<p>What's the relationship between tonic pupil size and decision uncertainty?</p>
+<p>And then like, what about substances or situations that expand your pupil?</p>
+<p>Is that change uncertainty and the pupil is downstream or does it change something upstream?</p>
+<p>What is the sampling problem?</p>
+<p>How does active inference provide a stopping rule?</p>
+<p>Okay.</p>
+<p>Let's check back in with who's on first.</p>
+<p>That's in course development.</p>
+<p>Domains.</p>
+<p>Comedy.</p>
+<p>I guess it's called a comedy.</p>
+<p>Okay.</p>
+<p>Bit and boundary.</p>
+<p>Straight and setup.</p>
+<p>Timing and tension.</p>
+<p>Crowd and callback.</p>
+<p>Riff and repertoire.</p>
+<p>Interesting that it kind of comes up with this double alliterative BB, SS, TT, CC, RR.</p>
+<p>Okay.</p>
+<p>Perfect.</p>
+<p>Module two.</p>
+<p>Model Abbott and Costello as distinct inference agents with competing generative models.</p>
+<p>What doth Abbott know that Costello knows not?</p>
+<p>Distinguish between the straight man's high precision priors and the comic's volatile model.</p>
+<p>Formalize the audience as a third inference agent that tracks both performers' beliefs.</p>
+<p>Okay.</p>
+<p>That's the module.</p>
+<p>Then there's the lab.</p>
+<p>Oh.</p>
+<p>Two.</p>
+<p>Actually hilarious.</p>
+<p>Hilarious.</p>
+<p>Perform a two-person comedy exercise to experience the dynamics of competing generative models first hands.</p>
+<p>Then analyze the experience using active inference agent concepts.</p>
+<p>Use these words, each of which can be a proper noun, name, and an ordinary English word.</p>
+<p>Grace, Mark, Bill, Rose, Art.</p>
+<p>Okay.</p>
+<p>So that's a funny lab.</p>
+<p>Very funny.</p>
+<p>You have experienced the agent dynamics of comedy from the inside.</p>
+<p>Oh boy.</p>
+<p>Have we ever.</p>
+<p>Here's module one.</p>
+<p>Identify the boundary between the internal logic of a comedy routine and the external world using the concept of a Markov blanket.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Let's see if we can take this test in this sort of format.</p>
+<p>Alright.</p>
+<p>Multiple choice.</p>
+<p>In who's on first viewed as active inference system, what represents the Markov blankets?</p>
+<p>Abbott's private knowledge of the player's names.</p>
+<p>Costello's confusion.</p>
+<p>The spoken dialogue.</p>
+<p>And the audience's laughter.</p>
+<p>I think you gotta ask, you know, blanket from whose perspective.</p>
+<p>When the routine bombs, fails to generate laughter, what happens from a system's perspective?</p>
+<p>The word who in the routine is best described as?</p>
+<p>A degenerate observation.</p>
+<p>A single sensory input consistent with two incompatible hidden states.</p>
+<p>Get it?</p>
+<p>Which of the following is an internal state of the whose on first system?</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Again, these are very deep.</p>
+<p>Very deep.</p>
+<p>Very hilarious questions.</p>
+<p>The routine is described as non-ergotic.</p>
+<p>This means it reaches equilibrium quickly.</p>
+<p>Free energy steadily decreases over time.</p>
+<p>Or the system does not converge to a steady state.</p>
+<p>Confusion escalates rather than resolving.</p>
+<p>Okay.</p>
+<p>Explain how Abbott's utterance,</p>
+<p>whose on first functions simultaneously as an active state from Abbott's perspective,</p>
+<p>and a sensory state from Costello's perspective.</p>
+<p>A comedian tells a joke from...</p>
+<p>Okay, okay.</p>
+<p>Let me start that one again.</p>
+<p>A comedian tells a joke to a wall.</p>
+<p>Is this a system in the active inference sense?</p>
+<p>Describe what is missing compared to a live performance of whose on first.</p>
+<p>The routine has been performed for nearly a century.</p>
+<p>Describe the system-level properties that make it so durable.</p>
+<p>What is invariant across performances, and what varies?</p>
+<p>Like,</p>
+<p>did we think we'd be here?</p>
+<p>Five and a half layers deep into active inference, generative AI semantics.</p>
+<p>Writing courses on whose on first.</p>
+<p>Analyzing it in a way that actually has some epistemic value.</p>
+<p>Incredible.</p>
+<p>Action.</p>
+<p>All right, these parts have not been written yet.</p>
+<p>Perception.</p>
+<p>Okay.</p>
+<p>Learning objectives.</p>
+<p>Analyze how the phoneme,</p>
+<p>who,</p>
+<p>is parsed differently by agents with different generative models,</p>
+<p>the core likelihood degeneracy of the routine.</p>
+<p>Understand perceptual inference as the process by which observations are mapped to hidden states.</p>
+<p>Identify how comedic timing exploits the temporal dynamics of perception.</p>
+<p>Perception in active inference is not passive perception.</p>
+<p>It is active inference about hidden states from ambiguous observations.</p>
+<p>When your ears receive the phoneme sequence,</p>
+<p>who's on first,</p>
+<p>your brain runs a rapid inference.</p>
+<p>What hidden state of the world produces observation?</p>
+<p>The answer depends on your generative model,</p>
+<p>your prior belief about what kinds of things people say and mean.</p>
+<p>Like there's explaining the joke,</p>
+<p>and then there's explaining the joke,</p>
+<p>and then there's explaining the joke,</p>
+<p>and then there's explaining the joke.</p>
+<p>And I think this has basically broken all of those levels.</p>
+<p>That is funny.</p>
+<p>Okay.</p>
+<p>Let's see how our clods are doing.</p>
+<p>Okay.</p>
+<p>That was the innovation course.</p>
+<p>That's here.</p>
+<p>So here's perception.</p>
+<p>Here's the lab.</p>
+<p>So innovation,</p>
+<p>prototyping module,</p>
+<p>perception.</p>
+<p>So this is about the perception of the prototype,</p>
+<p>or we have the innovation,</p>
+<p>creative engineering,</p>
+<p>communication,</p>
+<p>lab.</p>
+<p>Develop a complete communication package for your invention.</p>
+<p>Or we have the innovation ecosystem,</p>
+<p>learning,</p>
+<p>lab.</p>
+<p>Develop,</p>
+<p>design a comprehensive organizational learning system for your invention</p>
+<p>that processes post-launch prediction error,</p>
+<p>captures knowledge,</p>
+<p>and enables continuous model improvements.</p>
+<p>You will build customer feedback loops,</p>
+<p>practice pivot analysis,</p>
+<p>and design knowledge management processes,</p>
+<p>all grounded in active inference learning principles.</p>
+<p>All right.</p>
+<p>work as a team to keep a balloon in the air.</p>
+<p>Look at these nice short sections.</p>
+<p>Learning,</p>
+<p>lab.</p>
+<p>experience the learning curve of a new hard skill.</p>
+<p>Juggling.</p>
+<p>Juggling.</p>
+<p>small.</p>
+<p>Practice quiz.</p>
+<p>Tiny bodies,</p>
+<p>big brains,</p>
+<p>agents.</p>
+<p>Dashboard.</p>
+<p>Website.</p>
+<p>The little scientist.</p>
+
+<p>Babies are the best scientists in the world.</p>
+<p>You are an agent.</p>
+<p>A scientist.</p>
+<p>Agency means doing things on purpose.</p>
+<p>Sink or float.</p>
+<p>Sink or float.</p>
+<p>Practice quiz.</p>
+<p>Okay.</p>
+<p>Anti-gravity still chugging away.</p>
+<p>Writing our who's on first course.</p>
+<p>Science.</p>
+<p>Okay.</p>
+<p>Let's go to advanced theory.</p>
+<p>Planning.</p>
+<p>Lab.</p>
+<p>Okay.</p>
+<p>We looked at that one.</p>
+<p>About systems.</p>
+<p>Lab.</p>
+<p>Wow.</p>
+<p>Derivation of variational free energy.</p>
+<p>Decomposition analyses.</p>
+<p>Energy minus entropy.</p>
+<p>Complexity minus accuracy.</p>
+<p>Surprise and the KL divergence.</p>
+<p>Mean field variational updates.</p>
+<p>Free energy on the factor graph.</p>
+<p>Approximation comparisons.</p>
+<p>Mean field.</p>
+<p>Factorized Gaussian.</p>
+<p>Laplace.</p>
+<p>Befe.</p>
+<p>Monte Carlo.</p>
+<p>Markov chain.</p>
+<p>Very nice.</p>
+<p>Okay.</p>
+<p>Um.</p>
+<p>So I'm going to.</p>
+<p>Just do.</p>
+<p>One last.</p>
+<p>Publishing run.</p>
+<p>And then I'm going to end the stream.</p>
+<p>But I'll keep chugging away.</p>
+<p>And.</p>
+<p>So.</p>
+<p>If.</p>
+<p>If some of the files are still placeholders.</p>
+<p>Just check back in a few days.</p>
+<p>Or.</p>
+<p>Email blanket.</p>
+<p>At active inference.</p>
+<p>Institute.</p>
+<p>If you have any feedback.</p>
+<p>Or if this is interesting.</p>
+<p>Or fun.</p>
+<p>Or exciting for you.</p>
+<p>Certainly it has been for me.</p>
+<p>I hope that.</p>
+
+<p>People.</p>
+<p>People.</p>
+<p>You know.</p>
+<p>Got some.</p>
+<p>Pragmatic and epistemic value.</p>
+<p>Out of this.</p>
+<p>It's stuff that was not really on the table.</p>
+<p>One.</p>
+<p>Two.</p>
+<p>Three.</p>
+<p>Four.</p>
+<p>Plus.</p>
+<p>Years ago.</p>
+<p>And.</p>
+<p>Today.</p>
+<p>You can just.</p>
+<p>Go to.</p>
+<p>Get this material.</p>
+<p>Yourself.</p>
+<p>The final product.</p>
+<p>Or.</p>
+<p>You can rerun the course factory.</p>
+<p>Or.</p>
+<p>You can modify.</p>
+<p>The course factory.</p>
+<p>Or.</p>
+<p>You can be inspired.</p>
+<p>And take it in a totally different direction.</p>
+<p>Curious Penguin.</p>
+<p>I'm going to copy your comment in.</p>
+<p>I'm almost more impressed by the AI capability demonstrated here than the curriculum itself.</p>
+<p>Yeah.</p>
+<p>I basically agree with you.</p>
+<p>This.</p>
+<p>Like.</p>
+<p>Seeing.</p>
+<p>What was possible.</p>
+<p>Seeing.</p>
+<p>Going from.</p>
+<p>Can I.</p>
+<p>To.</p>
+<p>Of course.</p>
+<p>AI.</p>
+<p>Can.</p>
+<p>Was.</p>
+<p>An eye.</p>
+<p>Opener.</p>
+<p>I don't think.</p>
+<p>The curriculum.</p>
+<p>Is.</p>
+<p>Perfect.</p>
+<p>Nor that there is.</p>
+<p>Perfect.</p>
+<p>Curriculum.</p>
+<p>In general.</p>
+<p>Or even in the particular.</p>
+<p>In the minute particulars.</p>
+<p>But just seeing that this is what's out there.</p>
+<p>And that.</p>
+<p>If.</p>
+<p>People want.</p>
+<p>They can do this all on their own.</p>
+<p>For any.</p>
+<p>Domain.</p>
+<p>Any topic.</p>
+<p>Any topic.</p>
+<p>Is.</p>
+<p>Incredible.</p>
+<p>So.</p>
+<p>I'm just.</p>
+<p>Letting it finish that publishing.</p>
+<p>And then.</p>
+<p>We will.</p>
+<p>Push.</p>
+<p>To.</p>
+<p>Git.</p>
+<p>And that'll be the stream.</p>
+<p>So.</p>
+<p>Just one more minute.</p>
+<p>If anyone has a.</p>
+<p>Last.</p>
+<p>Comment.</p>
+<p>Or question.</p>
+<p>They want.</p>
+<p>Written on here.</p>
+<p>But yeah.</p>
+<p>And then I'll.</p>
+<p>And then I'll.</p>
+<p>I'm going to make the publish.</p>
+<p>Dot.</p>
+<p>Dot.</p>
+<p>Tomil.</p>
+<p>Um.</p>
+<p>I'll make sure.</p>
+<p>YouTube transcript.</p>
+<p>True.</p>
+<p>And then.</p>
+<p>MP3.</p>
+<p>True.</p>
+<p>Well.</p>
+<p>Not yet.</p>
+<p>Not yet.</p>
+<p>Not yet.</p>
+<p>I'll do that in a few days.</p>
+<p>But it will take several days.</p>
+<p>To.</p>
+<p>To render.</p>
+<p>All the MP3s.</p>
+<p>But then every single.</p>
+<p>Document.</p>
+<p>That we looked at.</p>
+<p>Every.</p>
+<p>Lecture.</p>
+<p>Lab.</p>
+<p>Everything.</p>
+<p>Is going to have a.</p>
+<p>MP3.</p>
+<p>Yeah.</p>
+<p>So that was just one fifth.</p>
+<p>Of the who's on first course.</p>
+<p>So that's why.</p>
+<p>They were not all done.</p>
+<p>The stub is there.</p>
+<p>But.</p>
+<p>That was.</p>
+<p>Oh that was.</p>
+<p>No that was just.</p>
+<p>Yeah.</p>
+<p>Just bit and boundary.</p>
+<p>Eight modules.</p>
+<p>Okay.</p>
+<p>Quick quiz.</p>
+<p>Which of the following.</p>
+<p>Describes audience adaptation?</p>
+<p>I mean.</p>
+<p>An hour and 40 minutes.</p>
+<p>Into this live stream.</p>
+<p>Are we there?</p>
+<p>A purely theoretical construct.</p>
+<p>With no practical application.</p>
+<p>Regular audiences.</p>
+<p>Have different generative models.</p>
+<p>Than first time viewers.</p>
+<p>Okay.</p>
+<p>Within the planned structure.</p>
+<p>Performers vary timing.</p>
+<p>Emphasis.</p>
+<p>And specific word choices.</p>
+<p>The performers must plan.</p>
+<p>Their own emotional states.</p>
+<p>Audience adaptation.</p>
+<p>Is learning.</p>
+<p>Which of the following.</p>
+<p>Describes performance.</p>
+<p>Variation.</p>
+<p>Okay.</p>
+<p>Which of the following.</p>
+<p>Describes self monitoring.</p>
+<p>A primary learning goal.</p>
+<p>Is to.</p>
+<p>And by the end of the.</p>
+<p>Module.</p>
+<p>You should be able to.</p>
+<p>Apply planning.</p>
+<p>As inference.</p>
+<p>To the construction.</p>
+<p>And direction.</p>
+<p>Of comedy routines.</p>
+<p>Okay.</p>
+<p>Publishing is complete.</p>
+<p>Ending the stream.</p>
+<p>Number.</p>
+<p>Number.</p>
+<p>Zero.</p>
+<p>One.</p>
+<p>Seven point.</p>
+<p>One.</p>
+<p>One.</p>
+<p>Yeah.</p>
+<p>That sounds weird.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>There it is. Ending the stream. Thank you everyone for watching live or in replay.</p>
+<p>It is just the beginning. It's only the bottom of the first. So stay in the game. Join the Institute. See you later.</p>
+<p>Thank you.</p>
+</article>
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream 020.1: Kenric Nelson: "Learning extreme models with the Coupled Free Energy"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream 020.1: Kenric Nelson: "Learning extreme models with the Coupled Free Energy"</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_020 &middot; Episode 1 &middot; Duration: 1:10:33 &middot; Views: 110</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=CFqMSSJ1X5g">https://www.youtube.com/watch?v=CFqMSSJ1X5g</a></div>
+<article>
+<p>Hello, welcome everyone. This is Active Inference Model Stream number 20.1 on January 30th,</p>
+<p>2026. And we will be discussing learning extreme models with a coupled free energy</p>
+<p>by Kenrick Nelson here and colleagues. So Kenrick, thanks a lot for joining.</p>
+<p>You will provide a presentation. And if anyone is watching live, feel free to put any questions</p>
+<p>in the live chat and I will read them when we have a discussion. So thanks again for joining</p>
+<p>and to you for the presentation. Thank you, Daniel. Really appreciate you hosting this talk.</p>
+<p>Folktrek has been doing a deep dive into Active Inference, including reading the new book that's</p>
+<p>come out in the last few years. And so we're looking forward to talking with your community about our</p>
+<p>own work in modeling extremes and how that can be used to improve artificial intelligence.</p>
+<p>My colleagues that worked on this presentation with me are Igor Olivera from Brazil and Amina</p>
+<p>Al-Najafi from Iraq. And so what I'm going to go through is sort of an introduction to complex systems</p>
+<p>and why they have properties that are unique in terms of trying to do modeling in AI.</p>
+<p>And then I'm going to go through a variety of entropy measures, including the standard ones of the</p>
+<p>Shannon entropy, but also generalizations that apply to complex systems. And then show why there's a</p>
+<p>unique one that I call the coupled entropy and how we can use that in variational inference to generalize</p>
+<p>the free energy function and thereby be able to model quite extreme environments and their distributions.</p>
+<p>And we'll go over some machine learning about results for that. And then I look forward to</p>
+<p>discussing it with you and the community. So FOTREC is building capabilities and risk aware intelligence.</p>
+<p>There's a couple aspects of that. There's a technical aspect, which I'm going to brief today with regard</p>
+<p>to our work in machine learning and risk risk. There's also a Dow governance piece in terms of</p>
+<p>using ideas from complex systems regarding how you design protocols for our communities to make good</p>
+<p>decisions. And then we see these two threads coming together in terms of how we can better mitigate</p>
+<p>extreme risks like the issues around climate change. The team is diverse. I'm in the Cambridge,</p>
+<p>Massachusetts area, but we have working partners around the globe. And then we also collaborate with</p>
+<p>universities. I was on the faculty at Boston University, collaborating with Mark Khan for several</p>
+<p>years and Eugene Stanley. And then I have also collaborated with Sabir Umaroff at the University of</p>
+<p>New Haven. And then we have several other university partners. I was in Turkey for two months this year</p>
+<p>collaborating with Ugar Turknali, which was a fantastic opportunity. So here's the challenge. When it comes to</p>
+<p>catastrophic risk, we know that it's that those very low probability events that have high impact that are</p>
+<p>a real concern. But machine learning has grown out of traditions in statistics that revolve around</p>
+<p>what's called the exponential family and the Gaussian being the most popular example of that.</p>
+<p>And even the metrics are based on the inverse of that, which is the logarithmic function. That gives us the</p>
+<p>maximum likelihood metric that gives us the Boltzmann gives Shannon entropy. But these distributions and</p>
+<p>these metrics don't really account for the heavy tailed properties and the nonlinear properties that we</p>
+<p>experience in complex systems. And they're quite difficult because the moments can diverge. So there can be</p>
+<p>situations where you can't measure the variance, which is the most common thing that you're trying to</p>
+<p>characterize in in machine learning. So we need ways to account for this. And just just as one example to</p>
+<p>visualize this, you know, the cryptocurrency space is one of the areas that we work in as a community. And</p>
+<p>Bitcoin is notoriously very volatile. And you can see that in these spikes that are not modeled by a Gaussian</p>
+<p>distribution. Here we have in the middle an agent based model where in red, you would see something like a</p>
+<p>Gaussian process. And you can see that yes, there's noise, but there's not these large fluctuations. But we can model</p>
+<p>these with a distribution that I refer to as the coupled Gaussian. And the coupling has to do with the fact that</p>
+<p>we can map the tail decay shape to the source of nonlinearity in the system. And I'm going to go into more detail about that.</p>
+<p>So we're generalizing the exponential family. And just to remind people what that is, first of all, of course, it</p>
+<p>evolves around the exponential function. And then you have a set of parameters that are dot multiplied with a</p>
+<p>set of statistics, the traditional ones being just x and x squared. There can be some other terms that involve</p>
+<p>x. But we'll typically just set that h to one for today's discussion. And then all of this is normalized by</p>
+<p>what's called the partition function. When we go to the coupled exponential family, what we're doing is</p>
+<p>we're modifying this exponential function to be a power law type of function. And I show that here. So this</p>
+<p>coupled exponential, I'll highlight it right here, whoops, I got ahead of myself.</p>
+<p>It multiplies the variable by this coupling, adds one, and then renormalizes, or rather takes it to a</p>
+<p>power one over the coupling. And that plus one is a critical feature of the map. That's what enables it</p>
+<p>to converge back to the exponential. But it's also what complicates things in terms of analysis of nonlinear</p>
+<p>systems. Now we keep the statistic and the parameters. And there's an additional factor here.</p>
+<p>This one plus d kappa has to do with the change from a cumulative distribution. When you take the</p>
+<p>derivative, you get this additional parameter in the exponent. The most common distributions that we'll</p>
+<p>talk about today are the generalized Pareto distribution, which I refer to as the coupled</p>
+<p>exponential. That's when this alpha term is equal to one. And the student t distribution, when alpha is</p>
+<p>equal to two. And I refer to that as a coupled Gaussian. The critical thing is that the moments diverge.</p>
+<p>And this, as this coupling grows, more and more of the moments diverge. And I'll go into more detail of</p>
+<p>that as we go forward. But taking a look at an example here, that's going to be used a lot in</p>
+<p>machine learning, because this is the distribution that will, you know, be our latent distribution,</p>
+<p>is the coupled Gaussian. So in black here, you'll see the traditional bell curve with the coupling equal</p>
+<p>to zero, that's your Gaussian. And that's what traditional machine learning algorithms are built around.</p>
+<p>In blue is what's called a compact support distribution, where it actually decays faster</p>
+<p>and truncates. I'm not going to talk a lot about that today, but that would be a negative coupling.</p>
+<p>And then what we're really focused on is these heavy tail distributions. In this case, the one in red</p>
+<p>has a coupling of one, which is the Cauchy distribution. And the critical insight in defining</p>
+<p>this family is that the shape, that tail shape parameter, is exactly equal to the nonlinear</p>
+<p>statistical coupling, or the source of nonlinearity in the system. And these are proportional to a</p>
+<p>measure of complexity of the system. So we're going to show that we can model now the most extreme</p>
+<p>complex systems with these techniques. One of the early insights about this work that I showed</p>
+<p>in a paper several years ago, that actually introduced the coupled entropy function,</p>
+<p>was a concept of an average density. So it's, people are fairly familiar that the center of a</p>
+<p>distribution is the mean, and that the variation is expressed for the Gaussian as the standard deviation.</p>
+<p>And more generally for these non-exponential distributions, it's referred to as a scale.</p>
+<p>But people have a difficult time conceptualizing what entropy is measuring. You should think of entropy as</p>
+<p>the measurement of uncertainty along the y-axis of a distribution. And you can always take the entropy,</p>
+<p>which is in the log space, take the inverse of that, the exponential, and bring it back to the</p>
+<p>probability space. When you do that, you get a function that I refer to as the average density of the</p>
+<p>distribution. And this is a translation of a generalized entropy function. And what the key thing here is</p>
+<p>that that average density always lines up at the scale. This is the invariant. And so this particular</p>
+<p>scale of the distribution has a number of things that are unique about it.</p>
+<p>And in particular, what I've proven this past year is that while there's literally dozens of candidates</p>
+<p>for generalizing the Boltzmann-Gibbs-Shannon entropy, there has, during this 50-year period of development</p>
+<p>in the modeling of complex systems, been a missing requirement. And that requirement is that your</p>
+<p>generalized entropy has to be a measure of this particular point of the distribution where</p>
+<p>you have what I call the information scale. And the reason that's important is because that</p>
+<p>point in the distribution is sensitive to the linear sources of uncertainty, whereas the tail decay is</p>
+<p>sensitive to the nonlinear sources of uncertainty. And these two parameters are the only way to precisely</p>
+<p>separate the role of linear and nonlinear processes. So let's take a closer look. These distributions here</p>
+<p>are from the family of the coupled exponentials or the generalized Pareto distribution. So if we start</p>
+<p>at the top, this is one of those compact support distributions. And we can see it for two different</p>
+<p>parameters of the scale. On the top, the scale is equal to two. And on the bottom, the scale is</p>
+<p>equal to half. And you can see here clearly how it truncates. Now, the Boltzmann-Gibbs-Shannon is,</p>
+<p>in that case, lower than this scale point. And when we go to Heavytale, these lower curves, what happens is the</p>
+<p>Boltzmann-Gibbs-Gibbs scale gets, its probability gets very low. And that is to say, its entropy gets very high.</p>
+<p>And it becomes dominated by the tail shape. And you lose sensitivity to this scale parameter.</p>
+<p>So this is what motivates the need for a generalization. And the first significant</p>
+<p>generalization was done in the 1950s and 60s by Alfred Rene, where he showed that you could match</p>
+<p>a generalized mean to that tail shape and then still take the natural logarithm and get a very effective</p>
+<p>measurement of uncertainty in these complex systems. And indeed, it's a good metric. It's used quite a lot</p>
+<p>in machine learning and in other applications. But it doesn't match up with this, what I'm saying is a</p>
+<p>requirement here to actually measure the shape, the uncertainty right at this scale.</p>
+<p>So there was another significant proposal that dates back to 1988 and has gotten a lot of attention</p>
+<p>recently known as the solace entropy. It introduces a concept that I'm going to talk about more that's</p>
+<p>quite important called an independent equals distribution. However, I've since proven that</p>
+<p>it is not in fact the correct function for generalizing entropy. And there's a missing piece</p>
+<p>to it that was left out. But if you look at this requirement, this is what I'll show is equal to this</p>
+<p>coupled entropy that I've defined. I'm going to show that in a moment. But the fascinating thing about</p>
+<p>this is that the solution right along this scale is equal to one plus a generalized logarithm of the scale.</p>
+<p>And this is the beauty of it. And this was sort of the eureka moment when I saw this solution that I</p>
+<p>realized that there is something quite unique about the coupled entropy and about this requirement. Because</p>
+<p>now I'm maintaining in my entropy function a dominant metric about this scale parameter. And the only thing</p>
+<p>I'm doing is I'm changing what logarithm function is measuring that. So let's dig into it a little bit</p>
+<p>more and see what is where this function comes from. So as I said, we start with a coupled exponential</p>
+<p>function that forms these non-exponential family of distributions. And then we take the inverse of that</p>
+<p>to form the metrics known as the coupled logarithm. And here you can see clearly that the coupling is</p>
+<p>directly that power. And there's a minus one in order for it to converge properly. And there's a normalization.</p>
+<p>Now, when we go to forming the entropy function, there's some additional features that have to come into</p>
+<p>this. So the first thing you'll see is that this generalized logarithm now is the coupling times alpha.</p>
+<p>You can think of alpha as the shape near the location of the distribution. So again, the most common ones is</p>
+<p>one for the exponential distributions, two for the Gaussians, but it can be a real number.</p>
+<p>So the other critical piece, and this is what was left out of the formation of the solace entropy,</p>
+<p>is that you can't just take this natural, this generalized logarithm of the probabilities.</p>
+<p>You have to account for how dimensions affect the metric. And this, again, has to do with the fact that</p>
+<p>you can think of the coupled logarithm and the coupled exponential being appropriate</p>
+<p>that you can't do with the cumulative distributions. But once you take a derivative, you have to account</p>
+<p>for additional terms in the exponent. And each dimension involves another derivative. So you get</p>
+<p>this factor here that you have to raise the probabilities to. Now, this term in the right, this generalized logarithm,</p>
+<p>let me go back, that is exactly equal to the inverse of this generalized exponential.</p>
+<p>And so what that gives you is the interior of this. And you can bring this inside the parentheses, too.</p>
+<p>I'm not going to show that today. But basically, you're going to get the argument of this distribution.</p>
+<p>However, that's not enough. There's another piece here that pulls the whole thing together.</p>
+<p>And that is that you do not average over the distribution itself. You average over something that's</p>
+<p>I refer to as the independent equals distribution because what this is modeling is how many random variables are</p>
+<p>sort of independent but equal to each other. And this is the metric that will give you the parameters of that distribution.</p>
+<p>So this is the proper statistic. That function, I can show here, it's taking the original distribution, p,</p>
+<p>and raising it to this power and then renormalizing. And the effect of this, particularly all the way here</p>
+<p>on the right, is that it reduces the original coupling value. So now I have a modified coupling value.</p>
+<p>And the critical thing is that as you go to infinity, you always, you know, for alpha equal to 2,</p>
+<p>is the case we're going to be most interested in, this will converge to a half. And that half is the boundary</p>
+<p>where the distribution would go to infinite variance. So now what I have is this balanced metric in which</p>
+<p>I'm going to put a very high penalty on low probability events through this generalized logarithm.</p>
+<p>But at the same time, I'm going to sample over a distribution that makes sure that those rare events</p>
+<p>events don't occur too often. So let's see what the impact of this is now on variational inference.</p>
+<p>Um, if, you know, Dan, if there's been any questions in the chat, this would be a good</p>
+<p>place to break and maybe answer some questions. Um, let me just ask one clarifying question.</p>
+<p>What is coupled, what is coupled to what? Yeah. Okay. Excellent question. So I originally coined this</p>
+<p>phrase nonlinear statistical coupling, because you can think of it as treating the states of a</p>
+<p>distribution as not being independent from each other, but rather the states are coupled together.</p>
+<p>Um, it comes out explicitly from this, um, coupled exponential, this, this independent equals distribution.</p>
+<p>You can kind of rearrange this function and show that it's also equal to multiplying all of the states</p>
+<p>together where you have the state you're interested in, but the other states are raised to this power.</p>
+<p>Now, since then, what's become more</p>
+<p>relevant is the fact that this coupling term is the source of non-linearity in the system.</p>
+<p>So a classic example, which I'm not going to show today, but is very relevant to the fluctuations in</p>
+<p>Bitcoin is multiplicative noise. So, um, our, our link, when we studied linear systems,</p>
+<p>we typically have a deterministic component that we're trying to learn.</p>
+<p>And then we model, say the Gaussian noise as being additive, but in complex systems,</p>
+<p>you're going to have a third term in which the deterministic process and the noise process</p>
+<p>are multiplied together. And you can show that, um, the coefficient on that third term is equal to this</p>
+<p>coupling.</p>
+<p>Okay. So just to kind of echo that back in a Gaussian mixture model, whether you have just</p>
+<p>one Gaussian or multiple Galseans, you're superimposing different means and variances,</p>
+<p>but the variances never interact. It's just kind of like you're stacking a bunch of</p>
+<p>Galseans on top of each other. Whereas here we can get something that's looking more like</p>
+<p>multiplicative noise because of this multiple, um, coupling that, that extends the tails of the</p>
+<p>distributions.</p>
+
+<p>And I guess maybe address it at the end or when, right. But how do we know how much to</p>
+<p>inflate those tails? When, how do we calibrate that factor to empirical data? And how would that differ</p>
+<p>in its calibration or, or, or precision or recall than just using one of these other traditional heavy</p>
+<p>tail distributions?</p>
+<p>Yeah. All right. So I, that's a good, I'll answer that now as a preview of where we're going to go</p>
+<p>with the talk. Um, so one thing we haven't shown all of this, but I would argue that this coupled</p>
+<p>exponential family has the ability to model any heavy tail distribution, because what I'm doing is</p>
+<p>that coupling parameter is, um, the asymptotic tail decay. So you can figure out what that is.</p>
+<p>And then the parameters and statistics measure our measurements of all, all that's happening in the</p>
+<p>distribution in between. So there's not a limitation in what kinds of distributions you can model with</p>
+<p>this method. That's number one. Number two is a very tricky question. Um,</p>
+<p>I'm going to talk about the fact that the way I see it, there's kind of two purposes for the coupling,</p>
+<p>two or three. Um, the first is you're describing is the system itself that you're trying to learn</p>
+<p>can have these fluctuations, and you're going to want to characterize that and then use that</p>
+<p>in the way we're doing it right now. It's a hyper parameter, but you can,</p>
+<p>you can analyze the data and determine a tail that fits to the data you're interested in. That's one.</p>
+<p>But I think actually the more important thing is a way to make systems robust, because whenever we</p>
+<p>train, we always have limited data. And we also also have data that might not exactly fit what we know</p>
+<p>we're going to experience out in the field. So I, we can also use this tail decay as a way to improve</p>
+<p>the robustness against things that weren't in the training set. So there's these two components to</p>
+<p>how you will use the tail. All right, with that, I'll press forward. Um, so we're particularly interested</p>
+<p>in how we can apply this to variational inference and active inference. So variational inference is a</p>
+<p>Bayesian learning method where we try to approximate a complex true posterior distribution with a</p>
+<p>attractable distribution where we're going to learn the parameters of that distribution. And the goal is</p>
+<p>to minimize the divergence between the true posterior and the, and the approximate model. Now recently,</p>
+<p>and what Daniel is, uh, and his team at the active inference Institute is focused on is that this basic</p>
+<p>framework has now been applied much more broadly to neuroscience, artificial intelligence, and even, uh,</p>
+<p>socio-economic problems where you can think of every single node in a neural network as doing a comparison</p>
+<p>between a top-down prediction or a bottom-up observation. And then the difference becomes a way to, um, build</p>
+<p>an inference model as you optimize and minimize those differences. Likewise, you can apply this to</p>
+<p>actions and policies by using the prior or the prior top-down, um, as a preference of what you want to have</p>
+<p>happen. And then the observations are now expected observations, and then that can be, that can control,</p>
+<p>uh, the actions of a system. So the challenge is how can we modify the cost function, this evidence lower</p>
+<p>bound or the negative free energy, uh, to be able to learn heavy tail distributions. Um, so let's, we're in our</p>
+<p>own experiments today, we've been using the variational auto encoder as a foundation for the experiments. So let me just</p>
+<p>go over what that is. Um, here you can take a complex dataset such as, uh, the Celeb A, uh, photographs,</p>
+<p>and you use a neural network to encode a mean and a covariance matrix. Again, in the standard VAE, this is a</p>
+<p>Gaussian or a mixture of Gaussians that you're modeling in the latent space. And then you can sample from that</p>
+<p>and decode it in order to get a new sample generated. And the thing that you're optimizing here is what's</p>
+<p>called the negative elbow or the free energy. It has two components. It measures the quality of the</p>
+<p>reconstruction and it measures how simple, um, your latent space was in terms of staying constrained to</p>
+<p>the traditionally, uh, a mean vector of zero and a covariance of one.</p>
+<p>Now, uh, we can generalize this and what we do now is we're going to use a coupled Gaussian</p>
+<p>and then we're going to match that coupling with a metric, which is the coupled free energy.</p>
+<p>And it turns out while the derivations are complicated, in the end, we get out the same</p>
+<p>metrics that are used traditionally with some additional coefficients. So if we assume the</p>
+<p>pixels are continuous approximately, then, um, uh, well, let me start actually the latent layer then</p>
+<p>is measuring the divergence. And that's basically just the trace over the, um, the, the, what's now</p>
+<p>called the correlation metrics. And then also the differences in the means between the prior</p>
+<p>distribution and the posterior distribution. So that's one component. And that is a, just a</p>
+<p>calculation. And then, uh, we also measure the mean square average. And again, this isn't changed.</p>
+<p>It's just some coefficients that have changed. It's, it turns out we still get the same metric,</p>
+<p>but now what happens is because we have this heavy tailed distribution as the model, um,</p>
+<p>where this mean squared average is going to be highly sensitive to what's happening in the tails.</p>
+<p>And the way we balance that now is that rather than sampling the latent space</p>
+<p>and the way we balance that we balance directly, we rather sample this independent equals modification to</p>
+<p>it. And this is the real innovation that's made a big difference now. Um, and again, what happens is</p>
+<p>as the coupling of the Gaussian goes to infinity, the coupling of the samples we're going to generate</p>
+<p>is limited to less to be less than one half. So we always guarantee that there's a well-defined mean</p>
+<p>and variance, uh, uh, from the samples that we're, uh, drawing from. So let's see how this works. Uh, show a</p>
+<p>couple of pictures of this. So on the left, I have, um, a log linear plot. And then on the right</p>
+<p>side is the log log plots. And if we start with this light blue curve, that looks like a parabola here,</p>
+<p>this is the Gaussian and the coupling is 10 to the minus five, which is essentially zero. And the</p>
+<p>modification doesn't really change that at all. It's still just 10 to the minus five. And again,</p>
+<p>we see this Gaussian here as a knee on the log log curve and a very sharp decay of the exponential.</p>
+<p>Then if we go to a Cauchy distribution in this dark, darker blue, we see this very flat tail curve</p>
+<p>here and you see the longer tail here on the log log plot, but the knee is still in the same place.</p>
+<p>Now, when we take that independent equals curve, um, we have a much softer decay, excuse me,</p>
+<p>we have a much faster decay here. Now the coupling is one third. And again, that's less than a half,</p>
+<p>which is the critical point here. So we took a distribution, the Cauchy that doesn't have a</p>
+<p>defined mean, the variance is infinite and we modified it into a distribution that's well behaved.</p>
+<p>And again, so we see that as this sharper curve here on the log log plot. And then finally, we can go</p>
+<p>all the way to the extreme of a distribution with 10 to the five coupling. There's not necessarily</p>
+<p>practical use cases for such an extreme distribution, but the point that we can actually still have</p>
+<p>convergent learning with such an extreme distribution is a unique capability. So we start with this sharp</p>
+<p>spike here, this very long tail, but both the coupling and the, um, correlation matrix get modified</p>
+<p>such that the modification is more like a delta function here, showed here in red with the dash.</p>
+<p>And you can see the, on the right here, the very sharp turn here has to do with the fact that the</p>
+<p>coupling is so high, but now, um, we have a curve that's more balanced here at the top. And again,</p>
+<p>this, uh, new curve or distribution has approximately one half as its coupling value.</p>
+<p>So what does that enable us to do? Um, going back to this example of modeling the Bitcoin returns</p>
+<p>in traditional machine learning with the, uh, CVAE, we would be using a Gaussian as the model and it's,</p>
+<p>it's a mixture. So it's going to get a little bit of the tail, but ultimately it fails to capture these</p>
+<p>extreme elements of the Bitcoin log returns. Um, so the blue is the actual data. And then this sort of,</p>
+<p>um, orangey gray color is, um, the model. If we set our coupling to be 0.6, which we measured to be approximately</p>
+<p>what that, uh, particular, uh, set of data was characterized by. Now we can see that we do have, uh, samples</p>
+<p>all the way out into these extreme tails. And so this is the key point here now is that we can, we can now have a way to</p>
+<p>model and learn, uh, these extreme distributions. Now to date we'll, we'll make progress on this,</p>
+<p>but to date the coupling is a hyper parameter, um, that we're setting a priority to the training.</p>
+<p>And that, but what is important is that we can then learn that correlation matrix, um, to fit, uh, the data.</p>
+<p>Is this still over dispersed on the Bitcoin there?</p>
+<p>The model isn't perfect if that's what you're referring to. Um, so yes, it, you know, um,</p>
+<p>it does look like we're getting, um, some character, some samples that are further out than what the data was.</p>
+<p>Is that what you mean? But yeah. And, and then, and then again, just how would this differ</p>
+<p>than, than an inflated tail? Was it, does it have a different computational requirement or does it just</p>
+<p>move probability density from a central tendency out to a tail in a way that has a certain, um, I guess,</p>
+<p>as kurtosis? Yeah. So let me, let me talk about that in two ways. If we stayed with the Gaussian</p>
+<p>distribution, uh, the problem is that we would end up with this very fat distribution, potentially,</p>
+<p>like if we really wanted to capture this sample out here, we'd have to have a very fat standard</p>
+<p>deviation. And then that would mischaracterize the fact that most of the samples are in near the mean.</p>
+<p>Um, if you go, let's see if I go all the way back to this curve, we often talk about the tail being</p>
+<p>slower, but another feature of these heavy tail distributions is that around the mean, it's more</p>
+<p>spiky. So there's a lot of mass near the mean, and then it spreads out. And so what ha so, so it's both of these</p>
+<p>characteristics that you want to be able to capture in your model. So that's one aspect. So the Gaussian</p>
+<p>isn't going to be able to do that. Now there's a second question. Oh, is the, the second point is the</p>
+<p>following. And maybe the easiest graph to show this is if I go to this graph here, the question might arise,</p>
+<p>why can't I just use a heavy tail distribution in the latent space, but keep the Shannon entropy metric,</p>
+<p>right? Well, the problem is what happens is</p>
+<p>Dr. Michael Hicks- The Shannon metric is going to be so sensitive to, uh, the uncertainty caused by the tail</p>
+<p>that it will not have any uns, uh, it will not be sensitive to the scale, which is what you're</p>
+<p>trying to learn and modify the parameters of in your neural network. Um, and in particular,</p>
+<p>what happens even when, so I'll go one other thing here in the early work, we have a paper,</p>
+<p>we're running a new paper on this currently. There's a paper that we published around 2020</p>
+<p>on the couple VAE where we use the generalized logarithm, but we sampled from the latent distribution.</p>
+<p>We didn't really use this part of the function. And what we found there is we were limited to around</p>
+<p>a coupling value of 0.5 to one. And as you tried to go to higher values of coupling, the training process</p>
+<p>just wouldn't converge. Uh, so eventually you'd get, um, such extreme measurements that the training</p>
+<p>process would just crash and, and you wouldn't have any learning process at all. And so</p>
+<p>to date, the state of the art is that yes, you can train heavy tail distributions, but typically</p>
+<p>they're limited to distributions that are of, uh, faster decay than the Cauchy distribution,</p>
+<p>you know, which is coupling equal to one. And it really doesn't work very reliably unless the coupling</p>
+<p>is less than 0.5. And I'll, I'll just jump ahead here. What we're showing now is that even in this</p>
+<p>most extreme case of 10 to the fifth, where you can, I'm not convinced that it has practical value,</p>
+<p>but it's still converges. I still get a, a neural network with a model. Um, so this is showing now,</p>
+<p>um, let me, let me just back up a second. So we're, we're doing this test over the, um,</p>
+<p>celeb a dataset, uh, where we have hundreds of thousands of images of celebrities. Um, and again,</p>
+<p>the key thing here is that in this latent distribute, I'm going to learn the latent distribution. And</p>
+<p>after the training, I am going to sample from that latent distribution directly,</p>
+<p>but during the training process, I'm going to sample from this modified distribution</p>
+<p>to guarantee that the training process converges. Um, and we show that in fact it does. Um, so</p>
+<p>against this metric of the coupled free energy, we get continual improvement as we, um, increase the</p>
+<p>coupling all the way up to 10 to the five and 10 to the five, it's just a flat line here. Now there is a</p>
+<p>caveat that, um, this is not a one-to-one comparison because we're modifying the model and we're modifying</p>
+<p>the metric. Um, but the point thing is, is we do show that, you know, the amount of variation we get</p>
+<p>as we, as we increase this coupling value gets quite low. And, and also just it's, I think it's a brand new</p>
+<p>result just to be able to learn anything about a distribution so extreme. Um, now.</p>
+<p>What is the, the free energy there? The Y axis?</p>
+<p>The Y axis that is this coupled free energy. So it's the generalization of the free energy.</p>
+<p>And again, the way it is, is that as we go to higher coupling values, it's more sensitive to what's</p>
+<p>happening in the tail of the distribution. So you can think of it as like a robustness metric.</p>
+<p>But at the same time, we've modified what, what samples we're drawing over in order to make sure that</p>
+<p>this very stringent metric can still converge. Um, now in order to do, uh, we, we have then looked at,</p>
+<p>um, metrics where we keep the metric constant in order to do the, um, head to head comparison.</p>
+<p>And here we see what we would kind of expect is that we get improvements in the accuracy.</p>
+<p>And I'll call coupling equal to zero still a accurate measurement. Whereas the positive values</p>
+<p>of coupling I'll refer to as robust metrics. We do get, um, as we go from 10 to the minus five to 10 to</p>
+<p>the minus two, we do get improvements in the accuracy and throughout the whole epic. Um, we're getting an</p>
+<p>accurate model. Um, and that is up to, I guess the, I think the darker one here is, um, 10 to the zero.</p>
+<p>Oh, actually 10 to the minus one is the darker one. Now, when we go to the Cauchy distribution and</p>
+<p>beyond the Cauchy distribution, we do see that the accuracy metric with this free energy does show</p>
+<p>decays in the performance. So you, in this case, the training has kind of us optimized</p>
+<p>point very early in the epic cycles. And then as you continue to train it, the model actually gets</p>
+<p>worse with regard to accuracy. Now that's not unexpected because we weren't optimizing for the accuracy.</p>
+<p>We were optimizing for something else. Um, and then the other thing, this is labeled incorrectly, but the, um,</p>
+<p>the last one here is the extreme case of 10 to the five. And it does show that this extreme model</p>
+<p>has kind of funky behavior and that that's sort of typical of what would have been expected.</p>
+<p>But again, I emphasize without that use of the independent equals, the whole thing breaks down</p>
+<p>at more like 10 to the, uh, 10 to the zero here. That was sort of the limit of the prior results.</p>
+<p>Now we also looked at how, uh, the reconstruction fidelity is for this. Um, and the, on the left,</p>
+<p>is the original samples in the middle is the, uh, traditional VAE with the coupling equal to zero.</p>
+<p>And by I, you can maybe make out a little bit of improvement with the coupling value, but the</p>
+<p>metrics are actually quite impressive. Um, so against a metric known as the multi-scale structural similarity,</p>
+<p>we see 25% improvement and that stays, uh, consistent across all of the coupling values.</p>
+<p>So even just a little bit of coupling, getting away from that, the extremes sharpness of the exponential</p>
+<p>tail, right away, you get performance improvement and that performance improvement stays consistent</p>
+<p>across all the coupling values that we used. Um, likewise, um, something called the learn perceptual</p>
+<p>image patch similarity had a 10% improvement. Um, and I guess, okay, so that, that's it. So</p>
+<p>the conclusion here is that we now have the ability to model the most extreme distributions,</p>
+<p>and we're particularly, um, interested in how this could be applied to catastrophic risk modeling,</p>
+<p>number one. Um, but also I, I have a lot of scientific interest, uh, in terms of how it will improve active</p>
+<p>inference for the following reason. If you're going to measure errors in every single node. So again,</p>
+<p>just remember the contrast here right now, the way machine learning algorithms are trained</p>
+<p>is that you have one cost function that's going to, um, be used to modify the parameters of a large network.</p>
+<p>Um, you can argue that in that situation, uh, the Gaussian and the entropy measurements</p>
+<p>may be adequate for most use cases. Maybe not if you were trying to model catastrophic risk, but for</p>
+<p>other use cases, we've seen that it's very powerful technique. This is the engine of AI. But in active</p>
+<p>inference, because you're measuring errors at every single node, you necessarily have very limited amount of</p>
+<p>data characterizing those errors. And that's exactly the original use case for the student T distribution</p>
+<p>was that a low amount of data corresponds to a low degree of freedom. And it's, and that degree of</p>
+<p>freedom is actually just the inverse of what I'm calling the nonlinear statistical coupling.</p>
+<p>So another way that these models are grounded in traditional statistics is that, uh, the nonlinear coupling is</p>
+<p>just the inverse of the degree of freedom.</p>
+<p>So I think that in the active inference models, um, there's a real necessity for this type of metric</p>
+<p>because there's a necessity, um, to be able to, uh, model accurately the fact that you're trying to take</p>
+<p>these error measurements over a limited amount of data.</p>
+<p>And, and the novelty here is to have both a generalization of the metric in this coupled logarithm</p>
+<p>and the generalization of the samples you're using with this independent equals, um, and new work that</p>
+<p>we're making progress on is, uh, the theoretical proofs, um, using information, GMR geometric techniques,</p>
+<p>you know, that the, this is exactly the correct statistic.</p>
+<p>Um, and I'll also say like, just for maybe going to future reading here. So I have a preprint that's</p>
+<p>currently under review that provides the proofs that there's a unique scale called the independent,</p>
+<p>um, uh, excuse me, um, that I refer to as the informational scale that is required for the modeling</p>
+<p>of heavy tail distributions. And then from that, there's only one generalization of the entropy</p>
+<p>function that gives you the correct measurements. Um, and so the paper is called on the uniqueness of</p>
+<p>the coupled entropy. And this, a variation of this presentation was presented with a paper at the,</p>
+<p>um, artificial general intelligence conference 2025. Um, we have a new paper that's, we'll have more</p>
+<p>details coming out soon. Uh, but the original paper, um, from a few years ago is called coupled VAE.</p>
+<p>And there we showed improvements in the robustness using these techniques. And then another interesting</p>
+<p>paper I wrote several years ago was a book chapter, um, called reduced perplexity, which was a play on words.</p>
+<p>Um, but it was showing this idea that you can think of entropy as your measurement of uncertainty along</p>
+<p>the Y axis of a distribution. So with that, I can, uh, thank you all. I really appreciate</p>
+<p>the opportunity to talk to this community, learn more about what you're doing and looking forward</p>
+<p>to some nice collaborations together. Great. Yeah. So people watching live can</p>
+<p>write some questions. I'll ask some, some random things. So these are all central tendency distributions.</p>
+<p>How do you deal with situations where you just are not mean centered around zero?</p>
+<p>Yeah. Okay. Excellent question. Um, so alpha equal to one is the generalized Pareto distribution, which</p>
+<p>typically is a one sided distribution. Um, so that could also be the model. Um, and then, um, with Ugar</p>
+<p>Turcnelli, we are doing, um, some research now in which alpha is not equal to an integer. And those models</p>
+<p>have different kinds of characteristics. That's number one. The other thing is that the family itself</p>
+<p>includes that, um, H of X parameter. So another generalization is what we call the coupled Weibull</p>
+<p>distribution. So the Weibull distribution is another popular one sided, uh, distribution from the exponential</p>
+<p>family. And then you can generalize that with this coupled exponential. So we're also looking at that</p>
+<p>as an interesting case. Yeah. Okay. Okay. Now I have, uh, um, I'm happy to take questions from the audience,</p>
+<p>but I have a question for you, Dan, in your work on active inference, have you noticed this feature that</p>
+<p>because you're trying to learn at every node of a network that you have difficulties with the limited</p>
+<p>amount of data that each node, um, experiences. So there's nothing about these models that</p>
+<p>intrinsically has low or high amounts of data. You could train a massive data set on a single parameter</p>
+<p>or, or have a situation where there's very little data. Um, not always just a low number of</p>
+<p>data points per parameter to learn like the sort of large, uh, P small N issue, but especially getting</p>
+<p>into thinking about causal effects of action, having world models or just having generative models that</p>
+<p>have a lot of conditional aspects makes it such that you will not have data for a large number of</p>
+<p>conditional aspects, which sort of forces factorizing or simplifying the problem back down to</p>
+<p>simpler, uh, lower dimensional sub problems. And so the challenge would be, well, if those lower</p>
+<p>dimensional sub problems could be solved, but then you have even a lot of combinatorics of which smaller</p>
+<p>dimensional sub problems to tackle. And again, if you knew the structure of the problem, then that is</p>
+<p>very tractable structure learning, but then in a situation where you might be dealing, um, with just</p>
+<p>different kinds of data streams and not necessarily have a well-structured world model, then even that</p>
+<p>structure learning problems becomes very challenging.</p>
+<p>Mm-hmm. Mm-hmm.</p>
+<p>Yeah. Uh, well, and yeah, you actually bring up another interesting use case, which is the curse of</p>
+<p>dimensionality. So as you go to higher dimensions, this issue of needing to use the heavy tails to, in</p>
+<p>order to make sure that your models are more robust and more accurate becomes more prominent.</p>
+<p>Yeah.</p>
+<p>On the heavy tails, I wondered, have you thought about any of the physical connections with the entropy?</p>
+<p>Yeah.</p>
+<p>So there's obviously more generalized and informational entropies than necessarily happening in a cup of</p>
+<p>water. But how do these different tail distributions, for example, connect with temperature</p>
+<p>distributions and thermal movements of particles? Do they all follow one type of tail distribution or</p>
+<p>do different materials or different physical situations follow one of these differently?</p>
+<p>Yeah. This is actually the heart of what scientists in the field of complex systems work very actively on.</p>
+<p>And, you know, thermodynamics grew out of modeling equilibrium type things. So temperature, for instance,</p>
+<p>is a measurement that basically has a requirement that you're in equilibrium. But of course,</p>
+<p>we're very interested in being able to characterize non-equilibrium systems</p>
+<p>or what can be called non-equilibrium steady state systems, where it's not in equilibrium, but it does,</p>
+<p>but the state does persist over time. And there's a lot of work in that area. This is a big part of what</p>
+<p>motivated a field called non-extensive statistical mechanics that was originated by Constantino Salas.</p>
+<p>And there's been proposals to generalize thermodynamics using modified entropy functions.</p>
+<p>Now, I would argue, but it's not fully proved that mostly those attempts have not been very successful.</p>
+<p>They've had modest success, but they've not really come up with a complete model.</p>
+<p>And in this new paper, I have a section showing that you do get a rigorous definition of the temperature</p>
+<p>as being equal to this scale parameter. And again, this is another thing that I think makes</p>
+<p>both the way I'm characterizing the distributions and this particular entropy function unique,</p>
+<p>because I show that you can, that basically that scale parameter is your generalized temperature.</p>
+<p>And the interesting thing about that calculation is that</p>
+<p>that in order to get that, what came out of the mathematics is that the free energy function</p>
+<p>that underlies thermodynamics, it's that function that gets generalized and has an additional nonlinear term</p>
+<p>in it. And so that's where the generalization comes. And then the other thing is, I showed that</p>
+<p>there can be a complementary model where I can define the temperature to be the scale raised to a power</p>
+<p>related to that coupling term. Now, my definition of temperature is more complex</p>
+<p>and involves the non-linearity. But in that case, then I can have no modifications to the free energy</p>
+<p>equation. So there's also sort of this interesting duality in terms of how you build</p>
+<p>the models. But I think with that result, there's a strong case and it would be very worthwhile for people to look at whether the full</p>
+<p>laws of thermodynamics can be generalized using the coupled entropy.</p>
+<p>So back to the data, it's interesting that you highlight learning from little data, whereas almost</p>
+<p>one of the key advantages is that you will not deflate the variance when you have a lot of data.</p>
+<p>Because the main issue is not having a wide estimator on sparse data. That's free.</p>
+<p>The hard thing is when you have a lot of samples not to just converge back to a training data set. And that's why</p>
+<p>variational methods and all other kinds of entropy-regulized methods kind of are out there.</p>
+<p>Because you don't want a collapse simply to recapitulating the training data or even narrower.</p>
+<p>Yeah, yeah. Well, I yeah, you know, it was, it's funny how just in the process of working on these things,</p>
+<p>you learn a different connection. So I have, my background is in electrical engineering. And as</p>
+<p>part of that, I've studied both mathematics and physics quite a bit. So I had not, I would say a</p>
+<p>strong background, but certainly a background in thermodynamic processes. At the same time, as we</p>
+<p>were developing the variational autoencoder, we were learning about the importance of the evidence</p>
+<p>lower bound. And it's a basic way that it can be decomposed into a measure of accuracy in your</p>
+<p>generative process. And then also a measure of the regularization of making sure that you using a</p>
+<p>simple model. And that it's the balance between these two things that's important. And ultimately,</p>
+<p>what gives you a good model. So it's not just accuracy, but it's accuracy with the simplest model</p>
+<p>possible. Now, it was only through, it was only through reading Carl Fristen's work on the active</p>
+<p>inference that I had this, gained this understanding that the evidence lower bound function is exactly the</p>
+<p>free energy. And so there is a direct connection between the thermodynamics of complex systems and the</p>
+<p>training of artificial general intelligence and generative models. And so I, as we as a team have</p>
+<p>been reading, um, par and Pristin's new book on active inference, it's been fascinating to see</p>
+<p>just how general the concept is. And, you know, again, another thing that's exciting for us is that we've</p>
+<p>mostly focused on variational inference. And six months ago, I was sort of expecting that as we migrated to</p>
+<p>decision making, and wrote, you know, kind of robotic control, that that would require a whole other set</p>
+<p>of algorithms and a whole another set of generalizations that we would have to work on. But now, of course,</p>
+<p>active inference has integrated all of these techniques. You know, so, so now I have a better understanding that</p>
+<p>when it comes to action, you can think of your utility function as just a prior distribution.</p>
+<p>And then what action you want to take, you can think of as an expected</p>
+<p>! Um, minimization of the free energy. So it's a beautiful representation. And we're really excited</p>
+<p>about working on these different kinds of problems.</p>
+<p>Let's sort of foreshadow and head off on one area that we've talked a little bit about, which is when</p>
+<p>we're dealing with causal models and structured learning, we're in a little bit more of an expanded</p>
+<p>setting than just like a financial returns model. So the financial returns, we're dealing with</p>
+<p>something that might be tightly clustered, or widely dispersed, or have an average trend, or be zero</p>
+<p>centered on a given fixed, you know, 24 hours percentage change. But yeah, and as you get, there's</p>
+<p>more and more ways to be extreme. And there's fewer and fewer ways to be essentially conformist.</p>
+<p>Yeah.</p>
+<p>Now when we open the door to cognitive systems and multi-agent systems, and we're thinking about</p>
+<p>complex systems in general. So there's more and more and more and more ways that couplings amongst</p>
+<p>actual subunits can interact. So what kinds of macro properties or approaches</p>
+<p>might help us bound where we have uncertainty, not just over kurtosis properties within a distribution,</p>
+<p>but where we actually have a structural uncertainty about like geospatial causal models?</p>
+<p>So I'll answer this a little bit indirectly. But I think something fascinating that comes out of this</p>
+<p>is another core principle in the active inference model is the idea of a Markov blanket, where you</p>
+<p>separate your internal model from the external model. And then a market blanket is where you declare</p>
+<p>independence and sort of the, and another way it can also be thought of, like one way you can think</p>
+<p>of it as the Markov blanket between the past, the now and the future, right?</p>
+<p>Well, that's certainly foundational. But one of the things that comes out of this coupled algebra is</p>
+<p>the ability to relax that assumption of independence. Because if I apply now rather than a Markov blanket,</p>
+<p>what I might refer to as a coupled Markov blanket, I am going to have independence in terms of correlation</p>
+<p>matrices. But I'm going to have, be able to maintain a model in which there's actually coupling across the</p>
+<p>blanket. So the coupling parameter is now going to have, be a way of storing long-term correlation.</p>
+<p>And I have done a little bit of work on this in papers that either refer to coupled Markov processes</p>
+<p>or coupled Bayesian processes. And, and, and at the heart of each of these, again, the Bayesian calculation</p>
+<p>is similar. One of the basic assumptions in Bayesian analysis is that the prior distribution gets multiplied</p>
+<p>by the likelihood. And then that gives you the posterior distribution. Well, that multiplication is</p>
+<p>assuming that the prior and the likelihood are independent of each other. But with the coupled</p>
+<p>algebra, you can relax them. And you, you can have a nonlinear coupling between your prior state and your</p>
+<p>posterior state. So for instance, there's a scientist topsoy who's used that model in models of cognition.</p>
+<p>And, and the way I think about his models is sort of like how,</p>
+<p>how strongly you care about your prior. And so, you know, you, you might be a person that's sort of tied to</p>
+<p>a particular set of beliefs, right? And no amount of data is going to change those beliefs. And you can model</p>
+<p>that with this coupled algebra and then vice versa, you might be someone who doesn't have, you know,</p>
+<p>you're very loose in your priors and you're very loose in your beliefs and you kind of then easily</p>
+<p>swayed by whatever data comes in next. And these kinds of differentials are some of the more interesting</p>
+<p>models that can be created with this mathematics.</p>
+<p>Now, I don't think that answered your question directly, but it, but the point is that there's</p>
+<p>much more subtle kinds of causal models that can be created using these techniques.</p>
+<p>Well, I like the idea of the Markov blanket as the declaration of independence, the fun idea,</p>
+<p>and definitely the attention to past, present, future, or just the Markovian property of time</p>
+<p>with the past influencing the future through the present with this Bayesian moment of the intersection</p>
+<p>of how you couple the prior and the likelihood. And then also in that, it makes me think about,</p>
+<p>yes, we could talk about all of the interactions among subunits and there's combinatorics of structural</p>
+<p>possibilities for the system of interest. However, the variational modeling agents may have a much simpler</p>
+<p>model that they would have more defined properties of. So the estimators model properties,</p>
+<p>the map, do not need to recapitulate actual structural adjacencies or aspects of the world.</p>
+<p>And intelligence is about that kind of Bayesian information criteria or similar driven approach</p>
+<p>to ride on that edge with a dual imperative of accurate and small.</p>
+<p>Yeah. Ultimately, it is part of the goal is to get simpler models. I agree with that. And one way you can</p>
+<p>picture that is that if you have these heavy tail issues, one way you can get a model still using</p>
+<p>the Gaussian is to have a mixture of many Gaussians with different variances, right? And so in a sense,</p>
+<p>what the heavy tail is giving you is the ability to have one distribution that can characterize</p>
+<p>a large mixture model of many Gaussian distributions. So it does… So I do think that as you incorporate</p>
+<p>the heavy tail into the foundation of these models, you'll also be able to simplify how</p>
+<p>how many mixtures you need in order to get a good characterization.</p>
+<p>So I think that's a good question.</p>
+<p>I think that's a good question.</p>
+<p>Just last comment or note here. What kind of software tooling or what repos or which of the papers</p>
+<p>should people explore for if they wanted to get hands-on?</p>
+<p>Yeah. Right. So the two papers on the machine learning have references to our non-linear statistical</p>
+<p>coupling and CVAE repositories on GitHub. And we… The NSC library just uses a basic Python tools.</p>
+<p>And then we originally did the work in… I'm sorry, TensorFlow. And then we migrated more recently to using PyTorch.</p>
+<p>Cool. So I hope that people walk through this and explore the tooling. And if there's anything else,</p>
+<p>there's anything else, please feel free to add it. Otherwise, this has been very interesting,</p>
+<p>connects some of these basic statistical principles, basic but advanced statistical principles,</p>
+<p>to some of the real situations that embedded systems and intelligence systems are finding with,</p>
+<p>you know, too little, too much data, events that have more variability than we have seen in training</p>
+<p>data. These are issues that beset all. So it's awesome to see how you're researching and applying that.</p>
+<p>Yeah. Super. Thank you very much for the invitation, Daniel.</p>
+<p>Okay. Farewell. Bye.</p>
+<p>Take care.</p>
+<p>Bye.</p>
+</article>
+</body>
+</html>

@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Textbook Group ~ Cohort 5 ~ Session 20 (Chapter 9, Part 1) ~ 3/18/2024</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Textbook Group ~ Cohort 5 ~ Session 20 (Chapter 9, Part 1) ~ 3/18/2024</h1>
+<div class="meta">Category: TextbookGroup/ParrPezzuloFriston2022/Cohort_5 &middot; Series: Meeting_020 &middot; Speakers: Cohort 5 ~ Session 20 (Chapter 9, Part 1) ~ 3/18/2024 &middot; Duration: 1:00:58 &middot; Views: 30</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=DgppOdct0JE">https://www.youtube.com/watch?v=DgppOdct0JE</a></div>
+<article>
+<p>all right welcome thanks for joining</p>
+<p>um we're in cohort 5 in the first</p>
+<p>discussion of chapter</p>
+<p>nine in terms of the book we made our</p>
+<p>way through the epistemic first half the</p>
+<p>recipe for making a generative model in</p>
+<p>chapter 6 then the discr and the</p>
+<p>continuous time generative models in</p>
+<p>seven and 8 now we get to chapter nine</p>
+<p>which is the data driven component so</p>
+<p>pretty much up to this point everything</p>
+<p>has been like you think of it</p>
+<p>conceptually you create the model and</p>
+<p>then it generates synthetic</p>
+<p>data that's using a generative model in</p>
+<p>the direction that's usually called</p>
+<p>generative it's generating data the</p>
+<p>other direction of use for an active</p>
+<p>inference model or statistical model is</p>
+<p>as a recognition model so that taking in</p>
+<p>empirical data and then fitting</p>
+<p>parameters that recognize the patterns</p>
+<p>in the empirical data so chapter nine</p>
+<p>highlights that kind of back and</p>
+<p>forth about designing generative models</p>
+<p>that take in data that's being emitted</p>
+<p>by empirical experiments like behavioral</p>
+<p>experiments in lab so that's what</p>
+<p>chapter N9 is about um you if you want</p>
+<p>to ask the question that you had first</p>
+<p>and then we can like jump in there</p>
+<p>explore empirical data look at some pmdp</p>
+<p>and empirical code just see what happens</p>
+<p>but what what um was your question</p>
+<p>before we</p>
+<p>begin oh I I have no uh specific</p>
+<p>question it's just I I noticed a lot of</p>
+<p>people have commented on that paper so I</p>
+<p>suspect it's</p>
+<p>something completely a completely new</p>
+<p>Direction in in the field so um</p>
+<p>yes so could you could you comment</p>
+<p>on the main point of this uh of of this</p>
+<p>paper yes yeah great so this was the the</p>
+<p>paper path integrals particular kinds</p>
+<p>and strange things it was first uploaded</p>
+<p>to Archive in</p>
+<p>2022 and then it was um submitted to</p>
+<p>This Journal called physics life reviews</p>
+<p>so physics of Life reviews has a very</p>
+<p>interesting um scope if you look at the</p>
+<p>structure of this journal um they</p>
+<p>publish like regular research as well as</p>
+<p>comments on research and so during the</p>
+<p>process of this paper being like kind of</p>
+<p>undergoing peer review from the archive</p>
+<p>version they also once they get to</p>
+<p>basically the final version they solicit</p>
+<p>from a pretty Broad and open Community</p>
+<p>these short comment papers so like Ali</p>
+<p>and I wrote a paper commenting on this</p>
+<p>like just like a two-page paper those</p>
+<p>comment papers are not peer reviewed</p>
+<p>exactly they're more like editorially</p>
+<p>overviewed um so I mean we see many many</p>
+<p>names that we know because it's kind of</p>
+<p>like an easy and fun way to to be part</p>
+<p>of a bigger discussion get a citation</p>
+<p>pump up the citations to the target</p>
+<p>paper um so that's kind of the the The</p>
+<p>Meta um on this okay so as for the</p>
+<p>contents</p>
+<p>itself um it is not entirely new it</p>
+<p>builds on especially the 2019 fris and</p>
+<p>work free energy principle for a</p>
+<p>particular</p>
+<p>physics um to connect it to the text</p>
+<p>book all throughout the 2022 textbook</p>
+<p>like we're talking about the continuous</p>
+<p>time and the discrete time</p>
+<p>models so um let's look at figure</p>
+<p>4.3 so in the discreete time setting we</p>
+<p>have a transition operator that</p>
+<p>basically jumps you forward a discret</p>
+<p>Time Step In The Continuous time setting</p>
+<p>the way that we've been discussing it in</p>
+<p>the textbook is in in terms of the</p>
+<p>tailor series approximation so starting</p>
+<p>with a point evaluating at the point</p>
+<p>then taking the first derivative around</p>
+<p>the point and then the second derivative</p>
+<p>around the point and so on um so that is</p>
+<p>in a continuous</p>
+<p>setting that idea of like doing active</p>
+<p>inference in a continuous</p>
+<p>setting is is generalized and formalized</p>
+<p>by Framing the free energy principle not</p>
+<p>just in terms of the transition</p>
+<p>probabilities in a discret model not</p>
+<p>just in terms of the Taylor series</p>
+<p>approximation or the generalized State</p>
+<p>space of continuous time model but</p>
+<p>actually in a path integral formation so</p>
+<p>that's kind of like there's like a</p>
+<p>thread that's like the likeliest thing</p>
+<p>to happen that's the path of least</p>
+<p>action like the baseball doing a</p>
+<p>parabola like whether you knew about it</p>
+<p>right at the beginning with the initial</p>
+<p>conditions or whether you had tracked</p>
+<p>the whole baseball it's like it does do</p>
+<p>a parabola that's classical movement but</p>
+<p>still and then it's kind of like there's</p>
+<p>like a sheath around that</p>
+<p>Trace with paths that the baseball could</p>
+<p>have taken that are just exponentially</p>
+<p>less and less likely like it could have</p>
+<p>hit just a bunch of molecules in a</p>
+<p>certain way at this one point and kind</p>
+<p>of diverted off</p>
+<p>course but because the baseball is very</p>
+<p>large relative to air molecules it</p>
+<p>follows like a classical trajectory um</p>
+<p>so the first thing they do is they kind</p>
+<p>of</p>
+<p>reconsolidate the free energy principle</p>
+<p>in terms of ath</p>
+<p>integrals which can then be like dropped</p>
+<p>back down into the continuous time that</p>
+<p>we talk about in the textbook or the</p>
+<p>discreet time but like especially with</p>
+<p>maybe the ways that they're taking it</p>
+<p>even further like the path integral is</p>
+<p>kind of like the richest formalization</p>
+<p>like if you go back to the variational</p>
+<p>calculus or Origins with Richard fan</p>
+<p>they have to do with path integrals for</p>
+<p>particles so it's kind of like coming</p>
+<p>full circle in a way because the findan</p>
+<p>diagram was developed in the setting of</p>
+<p>of those exact</p>
+<p>questions now they're applying it to</p>
+<p>cognitive particles and then so that's</p>
+<p>one that's kind of like the</p>
+<p>consolidation of the formalism</p>
+<p>component and then the second major</p>
+<p>contribution and this is also piece I</p>
+<p>think that um Olie and I focused on in</p>
+<p>our commentary is like</p>
+<p>previously people had always talked</p>
+<p>about well active inference can apply</p>
+<p>from kind of simpler inert systems to</p>
+<p>simpler active systems all the way on</p>
+<p>through complex systems and people had</p>
+<p>introduced like this notion of like</p>
+<p>mirror versus active inference for</p>
+<p>something that a mere active inference</p>
+<p>system is something you could model as</p>
+<p>doing active inference but it might be</p>
+<p>kind of simpler boring like yeah you</p>
+<p>could model that rock as flying but</p>
+<p>choosing not to fly but you've kind of</p>
+<p>brought out a big apparatus to model</p>
+<p>something that's not moving and so here</p>
+<p>with this figure and the</p>
+<p>discussion they brought a lot more</p>
+<p>clarity to these kind of</p>
+<p>classifications systems that don't</p>
+<p>evidence active States in an interesting</p>
+<p>way to a given Observer not to say they</p>
+<p>don't right map and territory then</p>
+<p>systems that have</p>
+<p>activity but the activity is kind of</p>
+<p>classical or conservative I don't know</p>
+<p>if a bacterium is really the Right image</p>
+<p>here I think something like a pendulum</p>
+<p>might be clearer because bacteria can</p>
+<p>also have Rich behavior all all the way</p>
+<p>on through what they want to highlight</p>
+<p>here which is like a</p>
+<p>metacognitive or a strange particle and</p>
+<p>that's also what um Lars and Lancelot</p>
+<p>highlighted in their</p>
+<p>comment was about the basian mechanics</p>
+<p>not just across the partition but okay</p>
+<p>do the partition and now in the internal</p>
+<p>States partition those again as if those</p>
+<p>internal states have metac</p>
+<p>cognition so it's it was a it was a big</p>
+<p>paper for</p>
+<p>consolidating um the formalism and for</p>
+<p>clarifying some of the different scopes</p>
+<p>I</p>
+<p>see</p>
+<p>yeah so so it's one of the top down</p>
+<p>approach to look at active</p>
+<p>inference yeah I I think so I</p>
+<p>mean it it doesn't start from modeling a</p>
+<p>particular system it starts from more</p>
+<p>axiomatic</p>
+<p>considerations so in that kind of like</p>
+<p>physics based free energy principle</p>
+<p>side</p>
+<p>whereas like active inference isn't</p>
+<p>mentioned in the</p>
+<p>abstract so it's like path integral</p>
+<p>formulation of the free energy principle</p>
+<p>systems that do that are active</p>
+<p>inference</p>
+<p>systems but here they're</p>
+<p>highlighting that that high road</p>
+<p>formulation</p>
+<p>see there there might be other pieces</p>
+<p>too and I think I mean the commentaries</p>
+<p>are I haven't read them all but they're</p>
+<p>probably people always</p>
+<p>do funny</p>
+<p>titles that</p>
+<p>suggest what they're</p>
+<p>about uhuh so maybe we can review</p>
+<p>them but in terms of</p>
+<p>getting diverse</p>
+<p>comments on a major piece of work this</p>
+<p>format which physics of Life reviews</p>
+<p>does and a few other journals is really</p>
+<p>useful and like Carl and others have</p>
+<p>used it multiple</p>
+<p>times well um we can look at any part of</p>
+<p>nine look at any</p>
+<p>questions also I have um pmdp up in</p>
+<p>cursor so we could explore with language</p>
+<p>SL</p>
+<p>models like how you incorporate</p>
+<p>empirical data with the generative</p>
+<p>models depends on whatever people want</p>
+<p>to</p>
+<p>do yeah I think looking at codes would</p>
+<p>be</p>
+<p>great okay</p>
+<p>okay okay</p>
+<p>[Music]</p>
+<p>um okay we we'll we'll see what we can</p>
+<p>do without um I I I didn't like prepare</p>
+<p>anything specific so we might have to</p>
+<p>debug a little bit or have a little fun</p>
+<p>but</p>
+<p>um Let's uh see</p>
+<p>okay</p>
+<p>um just just through context PDP</p>
+<p>documentation and the uh package</p>
+<p>itself infer actively SL pmdp so this I</p>
+<p>just cloned in that repo so everything</p>
+<p>that's in the GitHub I just pulled that</p>
+<p>in um okay</p>
+<p>so what do we want to look at or make a</p>
+<p>model</p>
+<p>of or is there an empirical data set</p>
+<p>that we want to connect it to or a type</p>
+<p>of empirical data that we want to</p>
+<p>connect it</p>
+<p>uh I I have nothing specific in</p>
+<p>mind let's do a discreete Time</p>
+<p>of we could we could try to recapitulate</p>
+<p>one of the examples in the</p>
+<p>textbook</p>
+<p>like the L M listening to</p>
+<p>music</p>
+<p>from chapter</p>
+<p>7 or if there's some other like</p>
+<p>structure or type of data or kind of</p>
+<p>action selection that people want to</p>
+<p>explore we might be able to to do</p>
+<p>it music is great</p>
+<p>okay okay here just just</p>
+<p>um</p>
+<p>the there's a lot of ways to</p>
+<p>um go go into this but um</p>
+<p>okay let's start with</p>
+<p>um let's just if this all runs then</p>
+<p>it'll be good to</p>
+<p>go okay so agents agent demo so let's</p>
+<p>just see where where it is in the</p>
+<p>documents</p>
+<p>I just want to find one that already has</p>
+<p>some</p>
+<p>visualizations</p>
+<p>um and then we can see if how how it's</p>
+<p>built and how we can modify</p>
+<p>it okay okay maybe the</p>
+<p>Tas let's let's look at the teamas and</p>
+<p>and go through it and then see where the</p>
+<p>empirical data come into play but then</p>
+<p>we can we could</p>
+<p>like</p>
+<p>um it doesn't have to be a spatial model</p>
+<p>like maybe the um we we could see if</p>
+<p>it's possible or like what would need to</p>
+<p>happen to modify the teamas to be more</p>
+<p>like a music example or</p>
+<p>something I mean this is</p>
+<p>um in in chapter 9 when they</p>
+<p>overview here are the key figures then</p>
+<p>we'll go to the code first it's taking</p>
+<p>everything that was looked at before</p>
+<p>with a generative model and it's saying</p>
+<p>like Okay we were making a map of the</p>
+<p>rat in the</p>
+<p>te-as now let's zoom out to having the</p>
+<p>laboratory that encloses that rat in a</p>
+<p>teamas so we're choosing experimental</p>
+<p>stimuli and passing them to the rat</p>
+<p>those are given the label o because</p>
+<p>they're observations for the</p>
+<p>subject and then the actions of the</p>
+<p>subject are our observations in the lab</p>
+<p>setting so this kind of you you could</p>
+<p>have another layer outside of the</p>
+<p>laboratory too but this is just with</p>
+<p>focus on the the system of Interest this</p>
+<p>is like what the cognitive models</p>
+<p>enclosed in um 9.2 shows kind of the</p>
+<p>process of like kind of what you need to</p>
+<p>get for empirical results in a paper</p>
+<p>where you have a te-as build a PDP which</p>
+<p>we'll look at the code in a second then</p>
+<p>chapter nine is which I don't think will</p>
+<p>exist in the code so we can try building</p>
+<p>that part</p>
+<p>out um you go from empirical data and</p>
+<p>you kind of invert the model to run it</p>
+<p>backwards so that then you could test</p>
+<p>like five different rats and look at the</p>
+<p>statistics of how they differ five</p>
+<p>different treatments of of a drug</p>
+<p>so first just to kind of play with</p>
+<p>cursor I just said explain this</p>
+<p>notebook so right now for coding in</p>
+<p>active inference it it's like literally</p>
+<p>the most exciting it's ever been because</p>
+<p>of tools Like This Way Way Beyond most</p>
+<p>people's coding</p>
+<p>potential at in a moment certainly far</p>
+<p>beyond mine is the ability to actually</p>
+<p>use cursor and other tools to to have a</p>
+<p>conversation with the material so</p>
+<p>there's a lot of questions that people</p>
+<p>might be like kind of having burning</p>
+<p>inside of them or like wanting to ask</p>
+<p>another person that are very possible to</p>
+<p>just ask through language models of the</p>
+<p>code</p>
+<p>itself here um is</p>
+<p>importing the kind of General packages</p>
+<p>that are needed and then specifically</p>
+<p>importing the pieces of pmdp that are</p>
+<p>needed that's</p>
+<p>Imports</p>
+<p>um here's the environment the</p>
+<p>environment is going to be like where</p>
+<p>the game or the setting is defined</p>
+<p>we're we're in the discreete time</p>
+<p>setting</p>
+<p>um interestingly it's it's not a 100</p>
+<p>like when when the setting is like right</p>
+<p>arm wins it still is 98 and two so</p>
+<p>there's a little</p>
+<p>stochasticity even when the the context</p>
+<p>is</p>
+<p>like you know when when the it's on the</p>
+<p>left arm or the right arm um maybe</p>
+<p>that's just to keep keep it kind of a</p>
+<p>little bit more in and</p>
+<p>noisy um just if if you want to</p>
+<p>highlight the kind of action amidst</p>
+<p>uncertainty then you know you could just</p>
+<p>change this to one and zero but but um</p>
+<p>keeping it this way highlights the</p>
+<p>uncertainty part and here they call a</p>
+<p>Tas environment</p>
+<p>function searching the code base</p>
+<p>describing what this teamas environment</p>
+<p>call makes but it stores what's needed</p>
+<p>for the teamas and puts it into</p>
+<p>environment it's that method is in</p>
+<p>another</p>
+<p>file okay</p>
+<p>here's going to be the hidden state to</p>
+<p>outcome mapping that's the quote</p>
+<p>collection of probabilistic</p>
+<p>relationships called the a matrix this</p>
+<p>is the mapping between hidden State and</p>
+<p>observation that's a likelihood um</p>
+<p>function and here there's there's</p>
+<p>um we can</p>
+<p>say output the</p>
+<p>A and it will provide us but but this is</p>
+<p>basically showing um</p>
+<p>there's no</p>
+<p>reward yes reward and there's there's</p>
+<p>the the null State like with respect to</p>
+<p>whether you're observing getting the</p>
+<p>food or not let's just call it food um</p>
+<p>but just call it reward because they</p>
+<p>call it reward</p>
+<p>um uh the top row ref The Columns</p>
+<p>represent the locations that you could</p>
+<p>be in the top row represents not tasting</p>
+<p>anything the middle row</p>
+<p>represents um tasting the the reward and</p>
+<p>then the bottom row represents tasting</p>
+<p>like the opposite of the reward like the</p>
+<p>other arm so this is saying like the</p>
+<p>starting and the Q location</p>
+<p>hidden States map on to not tasting</p>
+<p>anything the right maps on to tasting</p>
+<p>the reward hidden State and then the</p>
+<p>left arm in this case maps on to tasting</p>
+<p>the</p>
+<p>opposite the Q mapping so we were in</p>
+<p>slice one of the a so the first kind of</p>
+<p>type of a matrix that comes into play is</p>
+<p>the one between location and</p>
+<p>taste there's also a second a which is</p>
+<p>going to be just a 2X two and this</p>
+<p>represents the mapping between the</p>
+<p>observed Q in the bottom of the</p>
+<p>te-as and what context you're in so in</p>
+<p>this setting it's kind of like an honest</p>
+<p>Q saying if you're if the um Q is saying</p>
+<p>that you're in the left better context</p>
+<p>it's it's accurate</p>
+<p>but you could flip that to make like a</p>
+<p>deceptive</p>
+<p>Q so that defines the two components of</p>
+<p>the a</p>
+<p>matrix now we're going to just go</p>
+<p>through literally a b c d b um is the</p>
+<p>transition</p>
+<p>Dynamics so here they start with kind of</p>
+<p>the simpler B which is going to be the</p>
+<p>transition dynamics of what context</p>
+<p>you're in so this one corresponds to the</p>
+<p>smaller 2x two</p>
+<p>a this is saying when you're in left</p>
+<p>better</p>
+<p>context as a true hidden state that</p>
+<p>stays that way whereas if it was like a</p>
+<p>situation where the context was shifting</p>
+<p>between time steps within a trial you</p>
+<p>would have an off</p>
+<p>diagonal now th those are</p>
+<p>uncontrollable Dynamics</p>
+<p>now they're going to get to controllable</p>
+<p>transition Dynamics this is really the</p>
+<p>key piece in active inference because</p>
+<p>when when all we have is</p>
+<p>the um downstairs part this is just a</p>
+<p>partially observable marov process</p>
+<p>that's just the a matrix and the B</p>
+<p>Matrix being inferred but there's no</p>
+<p>policy selection so to get into the</p>
+<p>policy</p>
+<p>selection that is equivalent to making</p>
+<p>oh to making B not just a trans a</p>
+<p>singular transition Matrix but B has</p>
+<p>like multiple files or</p>
+<p>slices and then Pi selects choosing a</p>
+<p>policy choosing an affordance is</p>
+<p>equivalent to selecting which B Matrix</p>
+<p>is going to be applied to the</p>
+<p>continuation of the Hidden State</p>
+<p>transition so it's called controllable</p>
+<p>because there's a policy selection</p>
+<p>possibility for choosing which slice of</p>
+<p>B is applied whereas if you're just like</p>
+<p>listening to a song then you could infer</p>
+<p>the B Matrix but you wouldn't be able to</p>
+<p>choose the B</p>
+<p>Matrix</p>
+<p>um there is um it's sometimes</p>
+<p>unintuitive the structure of these</p>
+<p>variables but again through printing</p>
+<p>them and asking you can get pretty far</p>
+<p>and they're they're they're</p>
+<p>formulaically laid out and also a lot of</p>
+<p>development effort like in the open and</p>
+<p>the closed Source spases has to do with</p>
+<p>making the specification of generative</p>
+<p>models overall and especially the B</p>
+<p>Matrix a little bit more intuitive so</p>
+<p>that it can be like make it so</p>
+<p>that this action does</p>
+<p>that at this point you kind of have to</p>
+<p>look at the Matrix and and encode how</p>
+<p>that works so here this is like we're</p>
+<p>looking at the um controllable</p>
+<p>component of those two modalities so we</p>
+<p>can't control the context left or right</p>
+<p>better but we can control the location</p>
+<p>so we're going from hidden state to</p>
+<p>Hidden State at the next time step</p>
+<p>there's four locations going to mapping</p>
+<p>to the four</p>
+<p>locations in this case because the</p>
+<p>center is reachable from all</p>
+<p>locations you can choose to move um to</p>
+<p>the center from</p>
+<p>anywhere similarly</p>
+<p>they're just laying out these movement</p>
+<p>options so those are the slices these</p>
+<p>slice one two and three on</p>
+<p>B those are the</p>
+<p>affordances</p>
+<p>okay they copy</p>
+<p>in they copy in the variables they kind</p>
+<p>of defined them just</p>
+<p>um by themselves and now they're going</p>
+<p>to copy them into thisor GM</p>
+<p>format it's not necessary that the</p>
+<p>generative model is of vertical</p>
+<p>representation of the generative process</p>
+<p>at this point we were just defining A</p>
+<p>and B like the veritical A and B but</p>
+<p>we've just copied them in to be the part</p>
+<p>of the agent's generative model but it</p>
+<p>doesn't have to be that way you could</p>
+<p>have the generative model of the agents</p>
+<p>having a different structure than the</p>
+<p>structure of like the map in the game</p>
+<p>but that's just would take more code and</p>
+<p>everything</p>
+<p>um now they're going to continue with</p>
+<p>the agent</p>
+<p>class PDP is um like the major method is</p>
+<p>the agent class PDP is built to get to</p>
+<p>being able to build a discreet time</p>
+<p>agents as fast as possible essentially</p>
+<p>and make easy methods for calling that</p>
+<p>once it's there</p>
+<p>so we're defining just zero is the</p>
+<p>controllable index because here</p>
+<p>b0 the first b0o indexed is the</p>
+<p>controllable one but then the</p>
+<p>uncontrollable one it was B one so the</p>
+<p>second type of B</p>
+<p>tensor this is just telling as we work</p>
+<p>towards building the agent that zero is</p>
+<p>the one that's under control whereas if</p>
+<p>it believes they control the context at</p>
+<p>the at the very best case you'd be</p>
+<p>wasting computational resources on</p>
+<p>Computing that</p>
+<p>um here the agent is defined in terms of</p>
+<p>just the a the B and um the control</p>
+<p>indices now it gets defaults for</p>
+<p>everything else and those are going to</p>
+<p>be kind of like investigated a little</p>
+<p>bit it starts out with a flat</p>
+<p>prior for the hidden state it starts out</p>
+<p>with a flat so it has it it doesn't know</p>
+<p>where it is in the beginning it has an</p>
+<p>equal belief across the four</p>
+<p>possibilities of</p>
+<p>location and that's plotting d0</p>
+<p>corresponding to location that's the</p>
+<p>controllable index so d0 corresponds to</p>
+<p>the prior on hidden State B 0</p>
+<p>corresponds to Transitions of hidden</p>
+<p>State a z corresponds to Hidden State</p>
+<p>and observations it's like and then the</p>
+<p>context is that second um</p>
+<p>modality and so here it has a um even</p>
+<p>prior on which contexted</p>
+<p>it then they modify it so that it has a</p>
+<p>precise and accurate belief one hot just</p>
+<p>means a variable with a one in one</p>
+<p>location and then the rest of them are</p>
+<p>zeros so they've modified that to now um</p>
+<p>look like a strong belief that it's in</p>
+<p>the zero</p>
+<p>position um okay now they get to see so</p>
+<p>after having done this they will have</p>
+<p>defined a b c and d then that will have</p>
+<p>basically constructed the agent so</p>
+<p>they're going to um go to that um reward</p>
+<p>modality there's some interesting</p>
+<p>discussion about like how do you</p>
+<p>actually connect up like an observation</p>
+<p>to to be</p>
+<p>incentivizing and and here's their um</p>
+<p>here here's the C preference</p>
+<p>variable okay that was it defining the</p>
+<p>teamas ABCD of the agents here's the</p>
+<p>active inference</p>
+<p>Loop</p>
+<p>so let's let's do something</p>
+<p>like doesn't always work on the one shot</p>
+<p>but a shocking percentage of the time it</p>
+<p>does fine</p>
+<p>it literally did it it literally did</p>
+<p>it so here's three or here's four time</p>
+<p>steps it's funny you know it's the half</p>
+<p>time steps obviously don't matter so</p>
+<p>here it's</p>
+<p>um these plots</p>
+<p>represent that octave inference</p>
+<p>simulation so it's</p>
+<p>like that's always what's super</p>
+<p>interesting is defining the agent like</p>
+<p>the kind of scaffold or the template of</p>
+<p>the agent is really just the</p>
+<p>beginning because then there's a ton of</p>
+<p>methods to describe like to visualize</p>
+<p>the outputs of the</p>
+<p>agent and to sweep across different</p>
+<p>parameter</p>
+<p>combinations</p>
+<p>okay they're kind of now</p>
+<p>plotting</p>
+<p>um they're kind of inspecting the</p>
+<p>beliefs plotting the updated</p>
+<p>beliefs and then earlier I was just I I</p>
+<p>I I didn't really make any but just</p>
+<p>started to visualize a few</p>
+<p>things</p>
+<p>okay let's copy this</p>
+<p>again</p>
+<p>so here we'll do the the chapter nine</p>
+<p>thing and bring in empirical</p>
+<p>data it's just some some it's doing a</p>
+<p>few just</p>
+<p>minor um just format adding but these</p>
+<p>lines are not being changed but green</p>
+<p>means it's adding in a line red it's</p>
+<p>leeting</p>
+<p>you yeah uh I I want to ask about the</p>
+<p>the gp4 does it actually read the paper</p>
+<p>and the documentation why I this</p>
+<p>understand yeah good good question like</p>
+<p>in this</p>
+<p>case um well first off if if you were</p>
+<p>just using like the chat interface for</p>
+<p>GPT or like whatever Cloud 3 Etc um you</p>
+<p>could just copy in code and then say</p>
+<p>like improve this script and then it</p>
+<p>would you know based upon the statistics</p>
+<p>of all the code it had seen it would</p>
+<p>update that</p>
+<p>script cser takes that a lot</p>
+<p>further because</p>
+<p>um it does code base in</p>
+<p>indexing</p>
+<p>so when you type in a prompt to GPT</p>
+<p>first it tokenizes your input converts</p>
+<p>the words into tokens then those tokens</p>
+<p>are um calculated in terms of their</p>
+<p>embeddings in the semantic</p>
+<p>spaces then like that embedding can be</p>
+<p>used to then generate more things in</p>
+<p>that semantic neighborhood</p>
+<p>shortly the cheap part of using a trans</p>
+<p>formal model is actually going from the</p>
+<p>tokens to the</p>
+<p>embeddings whereas going from the</p>
+<p>embeddings to generating new synthetic</p>
+<p>material is costly and then obviously</p>
+<p>fine-tuning it and training it is even</p>
+<p>more costly so what cursor does is in</p>
+<p>the folder that you're</p>
+<p>in it it indexes the</p>
+<p>code so it runs all the code through the</p>
+<p>first part to embed it and then when you</p>
+<p>do a</p>
+<p>Quest it like</p>
+<p>um so control</p>
+<p>enter so here it's scanning across it's</p>
+<p>here GPT is going to be tokenizing and</p>
+<p>then checking the embeddings of this</p>
+<p>prompt I wrote then it uses basically</p>
+<p>what's called retrieval augmented</p>
+<p>generation rag you might be using that</p>
+<p>in some other variants to find which</p>
+<p>sections in the code</p>
+<p>itself actually have relevant</p>
+<p>information in terms of having a similar</p>
+<p>embedding so like if you had PDFs of a</p>
+<p>bunch of different disciplines and then</p>
+<p>you said well like what reacts with</p>
+<p>methane and then it would look for where</p>
+<p>methane had been introduced or methane</p>
+<p>is similar to butane</p>
+<p>if that if there was a paper that said</p>
+<p>methane is like butane then it would to</p>
+<p>a lesser extent draw on papers that</p>
+<p>talked about</p>
+<p>butane so this is not co-pilot no you</p>
+<p>can use co-pilot as well in this setting</p>
+<p>but this is cursor. sh cursor do okay</p>
+<p>got it thank you this is yeah it's a vs</p>
+<p>fork and and and even if you've been</p>
+<p>away from it for like a few days you</p>
+<p>should download a new version of it</p>
+<p>because like they're the the changing is</p>
+<p>very</p>
+<p>rapid</p>
+<p>so okay let's let's see how well this</p>
+<p>did here's the here's what it wrote</p>
+<p>for visualizing a</p>
+<p>teamas she it's like it didn't output</p>
+<p>anything I'm not seeing</p>
+<p>anything</p>
+<p>so there's there's the side chat</p>
+<p>mode where um you can chat with the</p>
+<p>codebase and then there's kind of this</p>
+<p>inline editing mode and there's also</p>
+<p>kind of a tab autocomplete mode that's</p>
+<p>more like the</p>
+<p>co-pilot but this inline</p>
+<p>version is</p>
+<p>there's probably so many in its training</p>
+<p>data set so many simple code examples</p>
+<p>like just checking if there's a folder</p>
+<p>like this kind of</p>
+<p>logic except the changes</p>
+<p>let's</p>
+<p>see teamm a</p>
+<p>e</p>
+<p>so that's kind of the danger sometimes</p>
+<p>to to an extent is like it's really easy</p>
+<p>sometimes like be spinning your</p>
+<p>wheels with with code that can be like</p>
+<p>kind of overwhelming and look relevant</p>
+<p>and the code might not be like bad by</p>
+<p>itself but then like you start stacking</p>
+<p>all this code and then like the</p>
+<p>maintenance and interpretability costs</p>
+<p>can be very high</p>
+<p>he</p>
+<p>like it's fun also just like this is</p>
+<p>where we're at I mean this is a chapter</p>
+<p>nine you know this is kind of where</p>
+<p>we're</p>
+<p>at as we continue and other people</p>
+<p>continue to first off ask GPT about</p>
+<p>active</p>
+<p>inference and it includes more and more</p>
+<p>recent checkpoints in its training and</p>
+<p>of course web enabled search like</p>
+<p>perplexity and all this like it gets</p>
+<p>better at doing active inference second</p>
+<p>huge piece is going to be</p>
+<p>um more and</p>
+<p>more actual examples of active inference</p>
+<p>code especially for like higher</p>
+<p>reliability</p>
+<p>settings it's cool that there are PDP</p>
+<p>demos at the same time like I know that</p>
+<p>the community has more than just a</p>
+<p>couple</p>
+<p>notebooks but they're not in the pmdp</p>
+<p>repo so then the cursor only has a</p>
+<p>of examples to go off</p>
+<p>of so adding more working examples</p>
+<p>updated language models with internet</p>
+<p>access and better code</p>
+<p>scoping um fine-tuning language models</p>
+<p>on transcripts from the active inference</p>
+<p>journal from like our live streams and</p>
+<p>model streams and the textbook</p>
+<p>group questions that people ask getting</p>
+<p>folded back in to fine-tuning and to Rag</p>
+<p>and model scope if we pulled in the</p>
+<p>Journal transcripts for all the live</p>
+<p>streams</p>
+<p>then we could say something</p>
+<p>like um make it into continuous time and</p>
+<p>then maybe in several discussions</p>
+<p>somebody said like well what's the</p>
+<p>difference between discreet and</p>
+<p>continuous time and then that was</p>
+<p>addressed and then it could go off of</p>
+<p>those</p>
+<p>questions to actually inform it so</p>
+<p>especially for a field like active</p>
+<p>inference where it's like this is the</p>
+<p>domain expertise so that being invoked</p>
+<p>will help a</p>
+<p>lot but just for doing things</p>
+<p>like improve and</p>
+<p>generalize and professionalize this</p>
+<p>code uh so to pulling data from active</p>
+<p>Journal does it require</p>
+<p>tuning like we're not totally set up to</p>
+<p>do it today but yeah in principle you</p>
+<p>could pull in the the GitHub repository</p>
+<p>for the octave inference</p>
+<p>journal and then it would have the</p>
+<p>transcripts in the plain text but there</p>
+<p>might be a bunch of redundant stuff like</p>
+<p>we might have four different versions of</p>
+<p>the plain text or different translations</p>
+<p>or something like that but yeah we could</p>
+<p>we would prepare a kind of rendering</p>
+<p>flag like output a single version of</p>
+<p>every transcript rpt with no time steps</p>
+<p>and have</p>
+<p>that and then and and also have papers</p>
+<p>and more code examples and all of</p>
+<p>this so like even just playing around</p>
+<p>with where it's</p>
+<p>at helps</p>
+<p>calibrate</p>
+<p>um we we can say generate</p>
+<p>so with these kinds of</p>
+<p>functions like here it this is not</p>
+<p>um it's not outputting the data exactly</p>
+<p>like we need it to</p>
+<p>so even just playing with these like</p>
+<p>it's it's really some of the most and</p>
+<p>fastest</p>
+<p>fun I've ever had using active</p>
+<p>inference because um as long as I yeah</p>
+<p>go ahead so as as I don't uh exceed the</p>
+<p>context length I can just put in</p>
+<p>whatever repo I</p>
+<p>want actually you can pull in repos that</p>
+<p>are Way Beyond the context length so</p>
+<p>let's just say that the context length</p>
+<p>was 100 just just make it simple and you</p>
+<p>pulled in um a repository that was a</p>
+<p>thousand so the first thing that would</p>
+<p>happen is the Thousand lines of code</p>
+<p>would be embedded that's the syncing of</p>
+<p>the embeddings then then let's just say</p>
+<p>you did a 20 um a prompt of length 20 so</p>
+<p>you've used up 20 of the 100 of the</p>
+<p>context window with your prompt then</p>
+<p>that is going to get embedded and</p>
+<p>dispatched to cursor and then cursor is</p>
+<p>going to do its best to fill the other</p>
+<p>80 of the context window with the most</p>
+<p>relevant 80 from the code</p>
+<p>base that's this part where it's</p>
+<p>scanning the codebase and then pulling</p>
+<p>in in the</p>
+<p>context so then the final execution from</p>
+<p>cursor is your 20 prompt plus the 80</p>
+<p>most relevant that rag</p>
+<p>obtains so it may pull in like</p>
+<p>misleading</p>
+<p>examples but to the extent that that</p>
+<p>that the the macros and the patterns do</p>
+<p>exist in the code base it's</p>
+<p>basically</p>
+<p>effective then the less that what you're</p>
+<p>asking for exists in the code base the</p>
+<p>less of course it can rely on it and so</p>
+<p>then the more it's just relying on the</p>
+<p>overall statistics of the language</p>
+<p>model another thing is that um cursor</p>
+<p>you you can</p>
+<p>um you can set um I I don't know where</p>
+<p>it moved the setting to but you can</p>
+<p>force it to call another you can force</p>
+<p>it to call a different endpoint for the</p>
+<p>language model so then you can use like</p>
+<p>jan. a or LM studio. a or another one to</p>
+<p>have a local language model so then</p>
+<p>cursor is dispatching to a local</p>
+<p>language</p>
+<p>model and these are also including code</p>
+<p>enabled and so</p>
+<p>on so it's like kind of interesting</p>
+<p>because it's like it's not the math of</p>
+<p>but as that gets brought in and then for</p>
+<p>the equations like we already have every</p>
+<p>equation</p>
+<p>um in the latc</p>
+<p>form so this is highly</p>
+<p>readable by the</p>
+<p>models many can also look at images too</p>
+<p>but what it's going to do when it gets</p>
+<p>an image is basically OCR and try to</p>
+<p>reverse to latch anyway so it's</p>
+<p>enormously costly so there could be some</p>
+<p>repos like maybe the textbook group repo</p>
+<p>that just have like all the equations in</p>
+<p>latch or the whole text in plain text</p>
+<p>stripped of some you know um just spaces</p>
+<p>and kind of cleaned up a little bit and</p>
+<p>then those kinds of those kinds of plain</p>
+<p>text files</p>
+<p>can be brought in with one line in in</p>
+<p>git and then you functionally would have</p>
+<p>material because it's not it's not only</p>
+<p>looking at code when it's doing its</p>
+<p>scoping like here it it looked into just</p>
+<p>plain</p>
+<p>text</p>
+<p>so you know Long Live digital stigma gy</p>
+<p>contributions and questions that people</p>
+<p>make really do</p>
+<p>matter even if they're a starting place</p>
+<p>for being improved and</p>
+<p>corrected it it really it really does</p>
+<p>have compounding</p>
+<p>effects on the total active EOS</p>
+<p>system like we could we could have a</p>
+<p>function to generate synthetic teamas</p>
+<p>data so that might be one step would be</p>
+<p>okay we made the team's generative model</p>
+<p>now let's make a generate synthetic data</p>
+<p>and then let's do chapter nine kind of</p>
+<p>get this pairing between the generated</p>
+<p>synthetic data and the the generative</p>
+<p>model then you build another function to</p>
+<p>go from video</p>
+<p>data to the same format as the synthetic</p>
+<p>data but you already established that</p>
+<p>that synthetic data format was able to</p>
+<p>be parametrically useful for the</p>
+<p>GM and you could have already developed</p>
+<p>the visualization sweeping other</p>
+<p>methods so it can be quite a large code</p>
+<p>base and you can you can write like</p>
+<p>thousands of lines in a</p>
+<p>day because it it just spills out these</p>
+<p>functions so I think a lot of the</p>
+<p>previous discussions in chapter 9 in the</p>
+<p>textbook like they're they're either</p>
+<p>philosophical or analytical I mean or</p>
+<p>both and um yet the</p>
+<p>applying is very much</p>
+<p>like Computer Engineering and</p>
+<p>statistics and as the models and the</p>
+<p>programs get</p>
+<p>like in 6 months I think a lot of these</p>
+<p>will be even</p>
+<p>better uh sorry one more</p>
+<p>question uh agent based modeling uh I</p>
+<p>wonder if that's a field suitable for</p>
+<p>inference yes I mean that's why pmdp the</p>
+<p>central type is the</p>
+<p>agent active inference is Agent based</p>
+<p>agent based modeling whether you do it</p>
+<p>at net logo or any other like</p>
+<p>kind has always had like the kind of</p>
+<p>incoming perceptual and outgoing action</p>
+<p>selection so that kind of cybernetic</p>
+<p>framing of single and multi-agent</p>
+<p>ecosystems of shared intelligence is not</p>
+<p>new to active</p>
+<p>inference really the essential piece is</p>
+<p>that that entire</p>
+<p>generative model of the agent is being</p>
+<p>understood in a unified way right memory</p>
+<p>attention etc etc etc all the diverse</p>
+<p>cognitive phenomena are</p>
+<p>being approached in a unified Manner and</p>
+<p>with a unified loss or fitting function</p>
+<p>free energy under the free energy</p>
+<p>principle but you'll find other agent</p>
+<p>based models that have a perception and</p>
+<p>action</p>
+<p>component</p>
+<p>uh if I just look at net logo uh it's</p>
+<p>not explicitly uh done in in the</p>
+<p>language of active</p>
+<p>inference right so I I wonder if there</p>
+<p>is value to be added if you if you bring</p>
+<p>the active inference discipline into</p>
+<p>that</p>
+<p>field yes</p>
+<p>certainly yes yeah like going to the</p>
+<p>classic net logo simulations re wrting</p>
+<p>them to be more active inference and</p>
+<p>like it's a two-way street people in net</p>
+<p>logo then can compare active inference</p>
+<p>you can make um portfolios or models</p>
+<p>that have actm and non- ACM agents in</p>
+<p>net</p>
+<p>logo and then it's instead of like oh</p>
+<p>well you need to learn this like other</p>
+<p>software it just brings active inference</p>
+<p>into whatever software is being used and</p>
+<p>it might be like as simple as just using</p>
+<p>a different loss</p>
+<p>function so my I think oh sorry yeah</p>
+<p>yeah sorry uh okay I just finished my</p>
+<p>question I wonder if that's a good uh</p>
+<p>topic for a master</p>
+<p>thesis uh I I I think it could be I mean</p>
+<p>like uh in terms of the implementations</p>
+<p>we have I've never seen a net log</p>
+<p>go so it could be it could be</p>
+<p>interesting you know something else that</p>
+<p>that U my adviser works on is mut Mutant</p>
+<p>agents and I haven't really seen</p>
+<p>anything in the literature so far on</p>
+<p>active inference about</p>
+<p>mutation like between</p>
+<p>Generations</p>
+<p>yes yeah that could be really</p>
+<p>interesting like just lock in the schema</p>
+<p>and the understanding for the teamas and</p>
+<p>then do a lifetime where it does 100</p>
+<p>teames and that's the fitness function</p>
+<p>and then have Rec</p>
+<p>combination I mean I I I I don't I'm not</p>
+<p>set up to Run net logo exactly right now</p>
+<p>but this looks like net</p>
+<p>logo so this just gets super far this</p>
+<p>gets like past</p>
+<p>80% in a few minutes in terms of getting</p>
+<p>somewhere so that's that's Mega</p>
+<p>exciting for for a lot of</p>
+<p>reasons butan sorry did did Jeff yeah</p>
+<p>what uh did Jeff mention mutation</p>
+<p>agents</p>
+<p>yeah is there a paper</p>
+<p>somewhere yes I can link it give me a</p>
+<p>second cool but yeah f um fun times</p>
+<p>interesting chapter n um</p>
+<p>discussions one interesting meta repo</p>
+<p>would be if we made a repo that just I</p>
+<p>mean like literally I may do this</p>
+<p>tomorrow just brings in all these other</p>
+<p>repos but then at that point it might</p>
+<p>start like pulling context from like</p>
+<p>across repositories and it's not useful</p>
+<p>again so there's a lot of</p>
+<p>metaprogramming work and documentation</p>
+<p>that will make it more accessible and</p>
+<p>useful and and and vastly more</p>
+<p>unexplored than</p>
+<p>explored let see there's the paper cool</p>
+<p>yeah</p>
+<p>thanks sometimes I like like just</p>
+<p>just cing</p>
+<p>through okay so it's on the screen for</p>
+<p>you know like two frames at you know for</p>
+<p>a tenth of a second or half half a</p>
+<p>second or whatever it</p>
+<p>is future</p>
+<p>screenshotter will do</p>
+<p>better cool all</p>
+<p>right that</p>
+<p>was the first discussion on chapter n</p>
+<p>yep</p>
+<p>Susan uh yeah yeah I'm my brain's you</p>
+<p>going 100 miles a minute and so the the</p>
+<p>existing models that's in there are</p>
+<p>um where would you say the level of</p>
+<p>sophistication um what what would be the</p>
+<p>next level of</p>
+<p>sophistication that's not there yet in</p>
+<p>PDP yep in terms of yeah the the</p>
+<p>artifacts that are are are there now in</p>
+<p>terms of</p>
+<p>of going yeah get going up into levels</p>
+<p>of abstraction for example um modeling</p>
+<p>um agents</p>
+<p>negotiating um you know which I'm</p>
+<p>assuming you know we're not even close</p>
+<p>to there yet but um</p>
+<p>but so beyond the yeah the rat of the</p>
+<p>maze what do you what do you see will be</p>
+<p>the next step in evolution of the</p>
+<p>models yeah like currently the main PDP</p>
+<p>package only has these several</p>
+<p>documentations and simple examples um</p>
+<p>like I know there's a THX more work not</p>
+<p>in the repo so I would like to see the</p>
+<p>next consolidating step to be many many</p>
+<p>diverse success uccessful simple</p>
+<p>examples and then the introduction of</p>
+<p>motifs like metac cognition and other</p>
+<p>things like that and then that provides</p>
+<p>like the pallets to be recomposed into</p>
+<p>these more composite simulations so</p>
+<p>we're in the game it's all happening yep</p>
+<p>and saying and asking and writing is</p>
+<p>more than enough so thank you all for</p>
+<p>this fun time see you next time thank</p>
+<p>you by see you next bye</p>
+</article>
+</body>
+</html>

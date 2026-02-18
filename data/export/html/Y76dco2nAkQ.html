@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 095.1 ~ Rithvik Prakki: Active Inference for Self-Organizing Multi-LLM Systems</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 095.1 ~ Rithvik Prakki: Active Inference for Self-Organizing Multi-LLM Systems</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_095 &middot; Episode 1 &middot; Speakers: Rithvik Prakki: Active Inference for Self-Organizing Multi-LLM Systems &middot; Duration: 56:50 &middot; Views: 373</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=Y76dco2nAkQ">https://www.youtube.com/watch?v=Y76dco2nAkQ</a></div>
+<article>
+<p>Hello and welcome everyone. It's January 16th, 2025. We're in Active Inference Guest Stream</p>
+<p>number 95.1 with Ritvik Praki discussing Active Inference for Self-Organizing Multi-LLM Systems,</p>
+<p>a Bayesian Thermodynamic Approach to Adaptation. So Ritvik, thank you for joining. Looking forward</p>
+<p>to your presentation and sharing more and discussing. So thank you to you. Great. Thank you.</p>
+<p>Thank you, Daniel, for having me. Yeah. So I'm going to talk about kind of Active Inference for</p>
+<p>self-organizing multi-LLM systems. So basically making LLM agents better with Active Inference.</p>
+<p>So to motivate the problem a little bit, current multi-LLM agents kind of have a lot of complex</p>
+<p>parameters. For example, prompts, agent architecture, tool use. Like these are things that you can't</p>
+<p>just kind of fix with hyperparameter optimization. You have to find better, more intelligent ways to</p>
+<p>improve these in time. And that's not really a thing right now. Also, another thing is that LLMs</p>
+<p>themselves are used as a vector adaptation for the agent in many ways. So for example, in the Voyager</p>
+<p>paper, LLMs are used to acquire new skills and then use those skills to explore the environment of</p>
+<p>Minecraft further, which is useful, but also quite limited. And then the third thing is that there's</p>
+<p>no formalized mechanism of balancing the exploration and exploitation trade-off. Right now, it's kind of</p>
+<p>just using LLMs internal abilities to go about that, but there's no formalized mechanism. And that kind of</p>
+<p>limits a lot of the potential. Now, our solution is using Active Inference to kind of overcome a lot of</p>
+<p>these problems. So the first thing is that the best possible prompt for different LLMs within the agent</p>
+<p>can be learned over time. These things are something that we can figure out from the environment. We can</p>
+<p>do search to figure out what are the best new prompting techniques. So we can test out different</p>
+<p>prompts to see which ones give better scores on certain metrics. So these things can be learned over</p>
+<p>time. And the Active Inference agent can help with that because now the Active Inference agent becomes</p>
+<p>the vector adaptation, allowing for real learning through belief updates and structural updates</p>
+<p>versus just solely in-context adaptation, which is what LLMs can do. So we're actually learning and</p>
+<p>we're actually adding information and updating beliefs within our model. And Active Inference</p>
+<p>acts as the formalized mechanism to balance the explore-explore boundary, allowing for a more</p>
+<p>principled understanding of uncertainty, and also giving us the option to verify optimality.</p>
+<p>See if the path of selecting actions is actually an optimal one or not, which we can't do with LLMs directly.</p>
+<p>So Active Inference works through a generative model. And the generative model we typically use for</p>
+<p>active inference in discrete time is called the Partially Observable Markov Decision Process,</p>
+<p>POMDP. Now it's Markov because current states are only influenced directly by past states and it's</p>
+<p>partially observable as opposed to a regular MDP because the agent doesn't have the ability to</p>
+<p>directly observe the states. It must go through an observation, which allows it to update beliefs</p>
+<p>about the states without any direct observation of the states. So within Active Inference, we have</p>
+<p>several matrices that we put into these POMDPs to encode the actual information that we're learning</p>
+<p>from the environment or that is contained within the environment. So the first thing is the A matrix</p>
+<p>or the likelihood matrix. This is basically just showing the relationships between the likelihood,</p>
+<p>showing the relationships between states and observations. So what are the chances that this</p>
+<p>observation is related to this state or this state produces this type of observation?</p>
+<p>The B matrix is showing the relationship between states at T plus one and states at T, time T. So</p>
+<p>basically, what is the probability that this state will occur at this time, given that this state</p>
+<p>occurred at a past time? Now the C matrix encodes the preferences at the active inference agent.</p>
+<p>So for example, if some of the states that this model had was sunny weather and rainy weather,</p>
+<p>the C matrix would encode that the model likes sunny weather. And then the D matrix encodes the</p>
+<p>prior beliefs of the states. Now the ultimate goal is to minimize surprise. Because low surprise means</p>
+<p>that the model we have is actually a good representation of its environment. But if we don't,</p>
+<p>if we have high surprise, that means we're not really understanding the environment well,</p>
+<p>because every observation we're getting is surprising us. So the goal is to minimize surprise.</p>
+<p>And however, the issue with just directly minimizing surprise, which is shown in this equation here as</p>
+<p>negative log of the probability over all observations, is that this is typically intractable when the state</p>
+<p>space gets really big, and it grows exponentially. So we can't directly minimize the surprise. So we have to</p>
+<p>turn that into a new quantity that we can more easily approximate to instead of directly computing.</p>
+<p>So this is how we derive variational free energy, by doing a variety of steps from Bayes' theorem to get to</p>
+<p>this final equation. Now the variational free energy equation is constituted of two terms,</p>
+<p>the complexity term and the accuracy term. So the complexity term is basically just showing us</p>
+<p>the difference between the distributions for the prior beliefs and the posterior beliefs.</p>
+<p>And the accuracy term is just trying to show us how close, how well the observations that,</p>
+<p>how well the states that we're seeing, and how well those observations align with the states that we're</p>
+<p>seeing, or the states that we believe in. So effectively, the goal is to minimize the difference</p>
+<p>between our prior beliefs and posterior beliefs, and also to have our beliefs be as accurate as</p>
+<p>possible given the observations. Now the way this actually happens is a minimization process.</p>
+<p>Like we said before, this is a quantity we want to approximate to. So this equation right here,</p>
+<p>the df over dqs, is just the partial derivative of free energy in terms of the posterior beliefs.</p>
+<p>This is, this first equation is just showing the, showing it in terms for one state factor.</p>
+<p>And when we do this, we want the derivative to equal zero over time. But in practice,</p>
+<p>what happens is the max, we have a max number of iterations. Once those max number of iterations</p>
+<p>are reached, or the change in variational free energy falls below a certain threshold,</p>
+<p>the optimization process stops, and we have our final posterior beliefs that have minimized the</p>
+<p>quantities we want to minimize. This is the final posterior belief equation shown right here,</p>
+<p>basically just showing how the final posterior beliefs will look, how they're influenced by the</p>
+<p>prior beliefs, and how they're influenced by the observations, the current state factor, and also the</p>
+<p>other state factors. Now the second quantity in active inference that we're trying to minimize is the</p>
+<p>expected free energy. Now this is related to policies and actions and future states, as opposed to</p>
+<p>variational free energy, which is very in the present. So expected free energy is made up of two terms,</p>
+<p>information gain and pragmatic value. So information gain is just trying to show how much we expect to</p>
+<p>gain by doing a certain action. So the way that transitions are determined is they're conditioned on an action.</p>
+<p>So if we do this action, what is the likely outcome? So right here we're saying if we do this specific</p>
+<p>action, so a policy, if we execute the certain policy, what is the likelihood of having significant</p>
+<p>information gain? If we have a lot of information gain, that means it's a useful action because it's</p>
+<p>highly informative and that's what we want to optimize for. So the second term is called pragmatic value,</p>
+<p>also known as expected utility. This term is useful for comparing the expected observations to our</p>
+<p>preferred observations. So as I said before, the C matrix is the one that encodes the preferred</p>
+<p>observations. And we want to, since we know, since we have some idea of what the expected states are</p>
+<p>from the B matrix, we also have some idea of what the expected states are in the A matrix,</p>
+<p>we can figure out what the expected observation should be as well. And on those expected observations,</p>
+<p>we can do a computation with the C matrix to see how high the expected utility or the expected level</p>
+<p>of preferred observations exists in the action we're about to commit.</p>
+<p>The final part of the final part we need for this paper, at least, is the A matrix updates. So the A</p>
+<p>matrix is the, like I said before, the matrix that encodes the relationship between states and observations.</p>
+<p>But in our specific implementation, the agent doesn't initially know exactly how the states mapped</p>
+<p>observations. It's intended to learn that over time by getting in new observations.</p>
+<p>So to do that, we need to have some mechanism to update it. And this is the mechanism. So</p>
+<p>we do a similar thing we did with variational free energy, where we take the derivative of</p>
+<p>variational free energy with respect to the modality at, or like the A matrix with a certain modality.</p>
+<p>And we basically compute that over time.</p>
+<p>And then we take this equation, and then this equation turns into</p>
+<p>the final derived equation below. This final derived equation below is just explaining how we should</p>
+<p>update the A matrix. So the main updates are going to come from the outer product between the observation</p>
+<p>and the current belief. So for example, if you get enough, if you have two states that are sunny and rainy,</p>
+<p>and the observation that you get is that it's sunny, all we would do is update the,</p>
+<p>we would update the aspect of the sunny, the sunny part of the A matrix to say that sunny,</p>
+<p>to say that we're getting an observation that's sunny, and then add those to the counts of the A matrix.</p>
+<p>So getting to the actual specific work done.</p>
+<p>So this whole generative model consists of three state factors. So the first is prompt combinations.</p>
+<p>The second is search states or search terms. And the third is the info state.</p>
+<p>And then there's seven observation modalities. So the accuracy, relevance, and comprehensiveness</p>
+<p>observation modalities are directly tied to the prompt states. The information relevance,</p>
+<p>information usefulness, and source quality modalities are directly related to the search state.</p>
+<p>And then the info state just has three modalities with an info state observation modality and an info</p>
+<p>state state factor. So they're directly related to each other. So that means any observation</p>
+<p>observation, and the info state modality is just a direct reflection of the state factor.</p>
+<p>So this just kind of shows, this figure just kind of shows the A matrices for each of these state</p>
+<p>factors and their relationship with the observation modality. So the first three is just for the prompt</p>
+<p>quality matrix. So this is basically just showing the relationship between the three quality metrics</p>
+<p>we described, the accuracy, relevance, and comprehensiveness, and the prompt states. Now initially,</p>
+<p>you see all these squares are just blue. This is because the model has engaged in no learning.</p>
+<p>It's starting with a complete blank slate and has no understanding of the environment in this specific</p>
+<p>case. Now, the way the generative process actually works is that agents can select actions. So they can</p>
+<p>either select prompt actions or search actions like we showed before. These are the two controllable states.</p>
+<p>Now what a prompt action will do is it'll take a certain set of prompts that the agent selects,</p>
+<p>it'll run them through the actual research agent that we're trying to optimize here. It'll run them</p>
+<p>through an agent, it'll give certain observations. So as you can see this kind of JSON structure here,</p>
+<p>what we're doing is we're using a chat to T4O mini. And that's just going to give us a score from 0.0 to 1.0,</p>
+<p>counting up by 0.1 on the three different metrics we need. So for example, if an agent selects a prompt</p>
+<p>action, we first run that prompt, run those set of prompts through the agent, we get a final result.</p>
+<p>On that final result, Chesh T4O mini will evaluate it and then give us three scores. Those three scores will</p>
+<p>then get turned into an observation vector. And that observation vector will get passed back to the</p>
+<p>active inference agent to use as observation. Now this is the exact same process that happens for the</p>
+<p>search action as well, just with a different prompt. So this is actually the prompt for the search</p>
+<p>action. As you can see, we're telling Chesh T4O to return scores on info relevance, usefulness,</p>
+<p>and source quality. Now the info state is unique because it's determined purely by the amount of</p>
+<p>knowledge base. So the way that knowledge base works is by the amount as search actions are carried out</p>
+<p>and more information is added to the knowledge base. The info state goes from no knowledge to</p>
+<p>some knowledge to a high level of knowledge. And those are observations that are directly getting</p>
+<p>passed from the environment to the agent. So the agent doesn't actually have any encoding</p>
+<p>of the information it's getting from the search actions. All it knows is that there's some</p>
+<p>knowledge state coming from the environment and it's using that as a way to determine what to do next</p>
+<p>and what observations it prefers. So yeah, that's where that's where that's coming from.</p>
+<p>Now for the results, this is the same figure I showed before, but now with learned</p>
+<p>environment mappings. So as you can see for the first three matrices, these are the prompts,</p>
+<p>the agent for each prompt has a distribution over what scores of expecting. So for example,</p>
+<p>for the first prompt, it's going for eight and nine. So it has a distribution saying it's most likely</p>
+<p>expecting. So this is the accuracy. This is the accuracy metric. So saying that for prompt one, for prompt</p>
+<p>combination one, it's generally going to expect an eight or nine on the accuracy metric. And it does</p>
+<p>that all the way through for all the prompts. And it does the same thing for search as well.</p>
+<p>So this is the info relevance metric. So for example, it's saying that for prompt one, it's generally going</p>
+<p>to expect a score of nine out of 10, or point nine out of 1.0 on the info relevance metric. So kind of all</p>
+<p>that and then the info state metric is just concentrated around the second observation, the second observation</p>
+<p>is just high info. So like detailed information from the environment. This is because the agent was running over</p>
+<p>20 trials. And once and the info state metric gets to the knowledge base that we have gets to a high level</p>
+<p>pretty quickly, and then so that the info state kind of just keeps getting observations about that it's in</p>
+<p>a high level of information has high level of information and she keeps getting those observations.</p>
+<p>So it's all concentrated around that observation specifically. Now, one of the main points of this</p>
+<p>was to show how we could show how we could go through the explore exploit trade off really well</p>
+<p>by using active inference. And this is kind of showing that so this is some time series data from</p>
+<p>time step zero all the way to time step 80. The red dots are search actions, and the blue dots are prompt</p>
+<p>actions. So as you can see, we have a preponderance of search actions in the initial stages because the</p>
+<p>agent is trying to learn the environment, trying to get more information and stuff like that. So it's</p>
+<p>trying to kind of understand how prompts work, how prompt prompting works. And then at the towards the</p>
+<p>end is there's mainly search actions or sorry, mainly prompt actions as the agent is testing these prompts</p>
+<p>to see if they work well, or if they work don't work well, kind of using the information it's gotten from the</p>
+<p>search actions. Now we know it's not actually using this is more kind of a simulation.</p>
+<p>But it's using it in the sense that it knows that we already have a lot of information from the</p>
+<p>environment because of that info state observation it's getting.</p>
+<p>So in conclusion, what we what we did here was that we had the model effectively learn the</p>
+<p>environment's generative process, mapping the hidden mapping the observations to the hidden states.</p>
+<p>And we were able to simulate human like exploratory behavior with active searching and testing</p>
+<p>multiple possibilities. And then the main thing is that we were able to enhance the capability of</p>
+<p>LLMs as well as enhanced capability of active inference, because we gave LLMs a formalized structure</p>
+<p>that they didn't have before to execute learning through. And we gave active inference the ability to</p>
+<p>operate in high dimensional spaces by integrating LLMs. What if we had to try to encode this functionality</p>
+<p>directly into the active inference agent, it would have been much more harder and much more complex</p>
+<p>than just having the LLM outsource everything to the LLM and have it do a lot of the work.</p>
+<p>So we kind of had improvements on both ends through the system.</p>
+<p>Now I just want to talk about some</p>
+<p>some future directions for this. So obviously, the one big thing that this model doesn't have is encoding</p>
+<p>actual knowledge from the environment. So as we perform search actions, we're getting information</p>
+<p>about prompts, right? So we're saying, so if we look up, if we look up, what are the best ways to prompt</p>
+<p>for ChatGPT? It'll say like tree of thought, chain of thought, blah, blah, blah, et cetera, et cetera. But none of</p>
+<p>this information is actually getting encoded into the agent. All that's happening is that there's an info</p>
+<p>state, right? And it's using that info state to determine future actions. But it would be much</p>
+<p>more useful if the active inference agent actually knew why search certain prompts or certain prompt</p>
+<p>combinations were good based on the search actions, and then use that information directly to influence</p>
+<p>those actions. So making that that would require some sort of hierarchical model and making that would</p>
+<p>be a good future direction for this. Another thing is giving the ability, giving the agent the ability</p>
+<p>to dynamically expand its state space to not be constrained to a fixed set of prompts. So here, what we</p>
+<p>did was we just had a fixed set of prompts for prompts for each part of the agent. And obviously, like,</p>
+<p>there's much more the space of possible prompts is infinite space. And there's, there's a lot more we could</p>
+<p>explore if we weren't constrained by a fixed state space. So expanding on that would be very useful.</p>
+<p>And also, the third thing would be to equip the agent with the ability to modify other complex</p>
+<p>parameters, such as instead of just prompts, maybe also be able to modify the architecture of the agent,</p>
+<p>or the tools it's using, and stuff like that. The initial goal is to make a general kind of agent</p>
+<p>brain that has the capability to plug be plugged into any LLM agent and exhibit human levels of learning,</p>
+<p>modification, structure learning, and stuff like that. So yeah, I think that's it.</p>
+<p>Awesome. Thank you for the presentation. For those watching live, they can write questions while I'm just</p>
+<p>cropping and getting everything back. Maybe share a little bit, how did you come to this project?</p>
+<p>Where are you at in your education and research and all of this?</p>
+<p>Yeah, sure. So yeah, my, well, I only found out about active inference, maybe a year ago, and kind of how</p>
+<p>I happened upon it is that I wanted to kind of do this general idea that I just said, like the agent</p>
+<p>brain. So because I noticed that LLMs were pretty static, and they're like LLM agents were pretty static,</p>
+<p>and then humans had to directly go in and like, Oh, let me fix this prompt, or let me, let me change</p>
+<p>the order of these two nodes and stuff like that. And the same kind of, you know, LLMs, LLMs themselves can</p>
+<p>do a lot of that improvement work. But it seemed like there was a big hole there that we could just</p>
+<p>fill by having some sort of self organizing behavior. And that's kind of how it happened</p>
+<p>upon active inference, because it was this like model based. So we were responsible for figuring</p>
+<p>out how to like actually structure the generative model and the generative process that the agent was</p>
+<p>going to work with. And it was very sample efficient, which I really liked because there's</p>
+<p>generally don't get that many samples in a typical workload. So for example, if we're using an agent in</p>
+<p>production, we wouldn't really be getting unless it was being used that massive scale, we wouldn't be</p>
+<p>getting too many examples that we could work with to improve certain functions. And the sample efficiency</p>
+<p>of active inference really kind of helps with that issue. And then the other thing was the</p>
+<p>reinforcement learning, obviously, just having some aspect of being able to learn over time.</p>
+<p>With LLMs, you can't really do that. It's all in context. And I'm suspicious that in context</p>
+<p>learning is or just having information in context is enough to replicate the abilities that a</p>
+<p>reinforcement learning scheme can provide. So that's kind of how I happened upon this and started</p>
+<p>looking into it. I actually read the Thomas Parr, Karl Friston textbook on this. And</p>
+<p>that's kind of how I got into it started doing some work. And yeah, kind of came to this.</p>
+<p>Cool. Okay, I'm gonna read some questions from Arun Naranjan, a colleague at the Institute, and then</p>
+<p>any other questions in the live chat, we'll see. Okay, so thanks. Thanks, Arun for the awesome</p>
+<p>submitted questions. All right. What does it mean to ask an LLM for a numerical score of something?</p>
+<p>Can we really convert the sampling of the next token's probability distribution of an LLM</p>
+<p>into a meaningful quantitative observation?</p>
+<p>Hmm. So</p>
+<p>It's kind of a, the LLM observation is kind of a, maybe like approximation or like, kind of a,</p>
+<p>maybe an easy way to do this, basically. So all we're doing is, we're saying like, because the best,</p>
+<p>the best text readers at this time in AI, or text understanding machines kind of are LLMs. Because</p>
+<p>the way this whole, the way this is working is that the LLMs are getting just a bunch of text,</p>
+<p>because the research agent is outputting a bunch of text. And the active inference agent directly</p>
+<p>can't really do much with this, because language is a hard space to understand. And active inference</p>
+<p>agents would need a lot more improvements to be able to understand that space. So basically,</p>
+<p>all we're doing is that we're kind of simplifying the complex state space of just the English language,</p>
+<p>and we're simplifying it into something the active inference agent can understand. So what we're doing</p>
+<p>is that the LLM can understand language, and it can kind of generate certain scores. Obviously,</p>
+<p>the LLM scores aren't as useful or nuanced as a human scoring certain like text would be. So for</p>
+<p>example, if there's an essay competition, an LLM would probably be a much worse score for this,</p>
+<p>for those essays in a consistent manner than a human would be. Because it's kind of hard to determine</p>
+<p>what the standards are. But for something like this, where the text is relatively simple,</p>
+<p>it's pretty easy for the LLM to just say, this is the score I'm giving to the text, we give it certain</p>
+<p>like guidelines to follow when assigning scores. So it just gives a certain score, and that score is</p>
+<p>kind of a, basically a simplification of the state space of all possible language into just three</p>
+<p>values that we can use to kind of help the active inference agent learn. Now, ideally, it would just</p>
+<p>be the active inference agent directly digesting the language. But this is kind of an easy way to</p>
+<p>overcome that massive gap in complexity.</p>
+<p>Yeah, great response. I'll add a few comments. You pointed right there that a longer term research agenda is like an</p>
+<p>active inference linguistics model using some kind of syntax and semantics on the natural language itself. And so</p>
+<p>some kind of, you know, mega hierarchical model or something cool like that. But in the meanwhile, for specific purposes, we can take natural language</p>
+<p>expressions, use LLMs, especially with the JSON or structured output, and project them onto numerical lower</p>
+<p>dimensional state spaces, like how many bird species are mentioned in this paragraph, only respond with a specific number, three.</p>
+<p>And then you have an A matrix that takes in as an observation, the number of bird species observed, and then maps to</p>
+<p>some other variable for the ecosystem, or how many facts in this paragraph correspond to this circumstance.</p>
+<p>And so then the active inference generative model can pick up at the interface of the output of the structured LLM return.</p>
+<p>So it's a design pattern, I think that's very rapidly emerging, and it's exciting to see that you're working on it,</p>
+<p>because it really does bring together this mega parametric, you know, millions to billions of parameters,</p>
+<p>high dimensional state spaces, more generic architectures for LLM and such.</p>
+<p>And then take the output, sometimes crystallized down to just like a single scalar value, or to a vector of numerical values,</p>
+<p>pick up there with the more interpretable smaller and sample efficiency, and direct belief updating.</p>
+<p>And then just one more piece I'll say there's, you can get an LLM to give a quantitative or natural linguistic representation of its own uncertainty.</p>
+<p>But then there's this kind of head scratching moment where it's like, well, even if it says that it's 55% confident,</p>
+<p>that is the most likely chain of tokens for it to say.</p>
+<p>It's not a true introspection of its actual uncertainty.</p>
+<p>And so again, further down the road, that's a promising avenue for active inference models that can introspect and accurately have their own uncertainties.</p>
+<p>However, in the meanwhile, this is one way that we can make the best of what exists today and what we can build tomorrow.</p>
+<p>Exactly. And one other thing I'll add is that some kind of what I'm trying to do as well is</p>
+<p>LLMs can already do a lot. So kind of have LLMs do as much as possible, but also try to</p>
+<p>kind of like what I was saying before, like having the active inference nature be able to encode the information itself from the environment.</p>
+<p>Like add things to the active inference agent over time and then offset some of the responsibility of the LLM so that we're getting the actual interpretability of like proper uncertainty estimation and all that stuff within the active inference agent without having to rely on the LLM.</p>
+<p>But we kind of can like, basically like if active inference is here and the LLM is doing all this, we can kind of just like, you know, move that gap over time as we develop more.</p>
+<p>But we're still getting the performance to start with.</p>
+<p>You know, that's kind of funny. It makes me think of like a grass is always greener or some kind of compliment where for the LLMs, we might gain interpretability by projecting down to smaller states based models that have real quantitative variance estimators.</p>
+<p>Whereas for active inference models, we can gain interpretability and accessibility by translating them out to natural language.</p>
+<p>So, you know, yeah, yeah, that's a great way to put it. Yeah.</p>
+<p>More tools better. Okay. Arun asks the next question.</p>
+<p>Over what timescales did your active inference plus LLM agent execute?</p>
+<p>How did that change with the complexity of the questions asked?</p>
+<p>What was the time, the runtime dynamics?</p>
+<p>Like how long does one full loop take?</p>
+<p>Yeah.</p>
+<p>I mean, it's pretty short.</p>
+<p>So it was 20.</p>
+<p>It was, it was about like 80, 80 time steps.</p>
+<p>So kind of just 80, like 20 trials, four time steps for trial.</p>
+<p>So the time steps only were relevant to the info state, the info state or information state, because the other two didn't really have any transition dynamics.</p>
+<p>But effectively, yeah, what it would just be is that for each time step, there'd be some sort of action.</p>
+<p>The LLM would run through all the stuff it had to run through for the agent.</p>
+<p>So the research agent would run that we're trying to optimize.</p>
+<p>And then the evaluation on that result would run.</p>
+<p>And then we would have that observation.</p>
+<p>We'd put it back into the active inference model.</p>
+<p>So that would be one full time step.</p>
+<p>So that maybe took like in terms of actual time to run the research agent, run the evaluation, and then the active inference model itself.</p>
+<p>Maybe each time step took like 10 seconds.</p>
+<p>It was relatively quick, especially because we're using like 4.0 mini, which is like faster than something like 4.0 maybe.</p>
+<p>And the active inference agent was like the state space was pretty small.</p>
+<p>So it didn't take much time for the active inference agent to run as well.</p>
+<p>So, yeah.</p>
+<p>Cool.</p>
+<p>Yeah, I could see the latency of the LLM being a major determinant, whether you use kind of a smaller or a faster call or whether you do something that takes a bit to get chugging.</p>
+<p>Okay, cool.</p>
+<p>All right.</p>
+<p>Arun's next question.</p>
+<p>Did you actually get good answers to research questions you asked?</p>
+<p>Well, the LLM itself already worked.</p>
+<p>So, or the research agent itself already worked.</p>
+<p>So like it had certain prompts and it would output something.</p>
+<p>So, for example, if I asked like, give me like a report on coffee or something.</p>
+<p>It'll go through the entire, you know, it was basically five aspects of the research agent.</p>
+<p>It was planning, reviewing, actually like, or getting information from the internet, answering the question.</p>
+<p>And if there's like any issues with the answer, then it would route back to the initial planning stage and then kind of go back from there.</p>
+<p>So, the agent itself was already like relatively good at giving answers, giving good answers or giving good reports on whatever question you asked.</p>
+<p>And mainly the point of this was just to show that, because like if you think about it in time, like the prompts will become like worse and worse every time.</p>
+<p>Because prompting techniques get better.</p>
+<p>Well, they'll get worse and worse in the sense that like we, our knowledge of how to prompt increases, for example.</p>
+<p>Like we initially used to only think about like, oh, like step-by-step prompting.</p>
+<p>That was like the max of what prompting could be.</p>
+<p>Now we have like so many different techniques.</p>
+<p>Like we have like tree of thought, chain of thought, react framework, blah, blah, blah.</p>
+<p>There's like so many different techniques.</p>
+<p>And if we had started in like 2023 with just the step-by-step prompting and we as a human didn't go back in there and fix it ourselves,</p>
+<p>then we would just be stuck with those bad prompts compared to where the literature is at right now.</p>
+<p>So the idea was that, well, for this was a fixed state space with just like, it was like five prompts for agent that we had to work with.</p>
+<p>And then those would be formulated into combinations of prompts that the active inference agent could select.</p>
+<p>So it's just kind of a, like a simple way to show that like the active inference agent could pick these prompts, pick the best one, research from the environment,</p>
+<p>and then kind of do this whole process to try to learn like, which is the best prompt in that very small state space over time.</p>
+<p>So it wasn't like, it's not going to change the effectiveness of the research agent too much because the state space of the prompts is so small.</p>
+<p>But I mean, it was already good to begin with and it was good to end with.</p>
+<p>Yeah.</p>
+<p>Thanks.</p>
+<p>A few comments on that.</p>
+<p>We're seeing at this moment, just such an exponential increase in the capacity.</p>
+<p>So as you point out, even six months or a year can be very different.</p>
+<p>And it's an exciting time for understanding research and cognitive science agents overall.</p>
+<p>Like I think about the graph structured knowledge bases, like Bueller's graph preflexor type models where, where, you know, limitations of in context learning that you pointed to can be addressed with some operations on knowledge graphs.</p>
+<p>And it's like, we're kind of exploring motifs and initial pattern designs and proofs of concepts for how these kinds of synthetic intelligence systems and augmented systems with human and non-human entities can be collaborating in information spaces epistemically.</p>
+<p>And like everything from the user interface and the accessibility and the human computer side on through what are we really yielding?</p>
+<p>Are we synthesizing new molecules?</p>
+<p>Are these revealing errors in previous derivations in papers?</p>
+<p>Are these, you know, shorter algorithms?</p>
+<p>Like, so it's just like, wow, happy 2025, huh?</p>
+<p>Right.</p>
+<p>Right.</p>
+<p>Um, how, uh, Arun asked, how did this compare to purely LLM driven agents?</p>
+<p>For example, LLM plus while loop plus tool calling.</p>
+<p>Yeah.</p>
+<p>So using LLMs, um, we can definitely use like LLMs directly to improve the agents.</p>
+<p>So kind of just say like, so we have this research agent, we just have the LLM go in and say,</p>
+<p>um, like if every time, like every, like let's say like every day do research on like all these topics around prompting, um, synthesize that research, put it in your context and then use that context to like, look at all these five prompts, make them better.</p>
+<p>Now, if we just said that the LLM is going to do way better than the active inference model right</p>
+<p>now, because obviously LLM can explore an infinite state space of language.</p>
+<p>And we only have like five prompts we're looking at and we can't really like we're right now.</p>
+<p>There's no actual thing where like the search doing the search is actually changing the prompts</p>
+<p>or changing the prompt selection mechanism or anything like that.</p>
+<p>So yeah, LLM by itself would perform way better than the model currently.</p>
+<p>It's more like, but the issue is that like at the end of the day, it's all in context</p>
+<p>learning with LLMs and there's no way to maintain like a real understanding of the environment</p>
+<p>over time.</p>
+<p>Like actually encoded within belief updates and these matrices and that's what the active</p>
+<p>inference is bringing.</p>
+<p>And this is more kind of like a proof of concept to show that like we could do that at some</p>
+<p>point because just thinking about it theoretically, an easier way to improve this is just to say</p>
+<p>kind of like how I said, like the LLM could just take in context, blah, blah, blah.</p>
+<p>Now we could just do something simpler where we could say, now the LLM go do this research</p>
+<p>every day, take in that, put it in your context.</p>
+<p>Now turn that into states that we can, or state factors that we can put within an active inference</p>
+<p>agent.</p>
+<p>Now the active inference agent has a whole new set of state factors and states within those</p>
+<p>factors, and now it can use that directly to learn about new prompting techniques.</p>
+<p>And it has new, like it's dynamic, state space is dynamically going to change because the LLM</p>
+<p>is adding new prompts all the time.</p>
+<p>And this way, like it's a much better way of having the active inference agent actually</p>
+<p>learn these prompts.</p>
+<p>And it's probably, I mean, we don't know yet, but most likely it's going to perform better</p>
+<p>than the LLM just doing it in context by itself.</p>
+<p>But it's like a pretty simple way because of just like having the LLM do a lot of the work.</p>
+<p>Because without that, the active inference agent, like the same kind of process I described,</p>
+<p>just purely within active inference would take a really long time to figure out.</p>
+<p>Yeah, that reminds me of how many ways we're seeing pop up that computer science and AI is</p>
+<p>sort of rediscovering or reinventing cognitive science.</p>
+<p>Like knowing that versus knowing how, knowing where to look to get more information.</p>
+<p>And then it's like, okay, well, let's just say we are going to have our grad student, I</p>
+<p>mean research agent, and they're going to be doing some daily task.</p>
+<p>We say, well, I want the report to be balancing accuracy and complexity.</p>
+<p>Well, that's variational free energy.</p>
+<p>Or in terms of prospective experimental design, what should be the criterion?</p>
+<p>Well, the reinforcement strategy is with some sort of large or curated or labeled database,</p>
+<p>train an auxiliary reward function, and then just go ahead and try to hill climb on that reward</p>
+<p>function.</p>
+<p>Well, what if we're into the unknown?</p>
+<p>We're on the frontier.</p>
+<p>We don't necessarily have a training data set.</p>
+<p>Or maybe we wouldn't even want one, even if we could.</p>
+<p>So then what criteria should we use that's directly based on the model?</p>
+<p>That yields pragmatic and epistemic value in the expected free energy, this explicit explore,</p>
+<p>exploit trade-off.</p>
+<p>And the ability to modulate between returning expected results with the high expected utility</p>
+<p>to learning.</p>
+<p>And then it's like, just like you gave that kind of daily duty cycle with like every day</p>
+<p>go and research something.</p>
+<p>And then that could be encoded kind of during sleep into beliefs.</p>
+<p>Like what is the zero to one and a variance on what is the likelihood that this is going</p>
+<p>to happen?</p>
+<p>Or what's the efficacy of this treatment over that treatment?</p>
+<p>And then that gives an actual information gain term so that it doesn't just continue to do</p>
+<p>the same internet searches again and again.</p>
+<p>Rather, those searches are tuned for epistemic value.</p>
+<p>So it's like, and then even to the chain of thought and tree of thought, well, this is</p>
+<p>where we get into questions like rumination, where you could have at a hyperparametric level,</p>
+<p>you could think too little and leave good thoughts kind of unthought on the table, so to speak.</p>
+<p>Or you could ruminate and you could think too long and be past the point of diminishing</p>
+<p>return.</p>
+<p>Well, where is the Pareto optimal point for how long you should be thinking?</p>
+<p>That's a metacognition question.</p>
+<p>That's a cognitive security question.</p>
+<p>And so it's like, it's really interesting to see, even though they've been coming from</p>
+<p>the horizon with these mega parametric models, they're actually converging to some of the formalisms</p>
+<p>and the trade-offs that cognitive science has been working with for a long time related</p>
+<p>to everything from like epistemic foraging and memory and skill to metacognition.</p>
+<p>So, I mean, so cool how it's all coming together.</p>
+<p>Right.</p>
+<p>I think like Google even recently was focusing one of their models on Surprise.</p>
+<p>So they were using Surprise as the reward function to kind of improve their models.</p>
+<p>And it's kind of like, that's, I mean, that's active inference right there.</p>
+<p>So it's kind of, it is kind of cool that we're seeing these concepts and active inference kind</p>
+<p>of extend out to just like LLMs and diffusion models and stuff like that.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>And, and although minimizing Surprise is maximizing model evidence, there isn't a tractable heuristic</p>
+<p>to bound success or evidence.</p>
+<p>Whereas there is one to bound Surprise, again, even though they're kind of dual.</p>
+<p>So there's an interesting relationship there.</p>
+<p>Sure.</p>
+<p>Okay.</p>
+<p>Next Arun question.</p>
+<p>Why does the A matrix need a specific action dependence?</p>
+<p>I believe PyMDP should create a B control state for every action anyway.</p>
+<p>So you should be able to set those out of the box as it were.</p>
+<p>Well, the A matrix doesn't have any action dependence.</p>
+<p>It's just the, the actions are able to provide observations that the A matrix can use to update</p>
+<p>itself.</p>
+<p>But the A matrix itself doesn't have any like action dependence.</p>
+<p>It is all through the B matrix.</p>
+<p>So the one thing is that like the B matrix, like the prompt and search states are controllable,</p>
+<p>but they don't have any real, like any like legitimate transition dynamics.</p>
+<p>So like, just because like, if we commit some sort of action, it's not actually causing the</p>
+<p>prompt combination at one state to transition to the prompt combination at another state.</p>
+<p>It's more that we are picking those prompt combinations independently or independently in the sense</p>
+<p>that like, it's basically just going to be deriving from expected free energy.</p>
+<p>So whichever is the lowest expected free energy is the one we're picking.</p>
+<p>But there's no, like the action isn't directly causing the transition from prompt combination</p>
+<p>one to prompt combination two.</p>
+<p>The only thing where that's actually happening is the info state.</p>
+<p>So like, I think in the code or in the code, there's like B matrix learning as well, but</p>
+<p>it really only happens for the info state.</p>
+<p>The other, the B matrices for the prompt states and the search states are completely the same</p>
+<p>over time.</p>
+<p>Kind of showing that like, they really don't have any direct, this action causes this state</p>
+<p>to this state kind of, you know, dynamics there.</p>
+<p>Cool.</p>
+<p>Thanks for clarifying.</p>
+<p>And this is sort of a classic design degree of freedom or openness for those who have explored</p>
+<p>these cognitive models, which is what exactly should the agents know about the consequences</p>
+<p>of its action?</p>
+<p>Because if it doesn't know the consequences of action, it's just going to be flailing wildly.</p>
+<p>Whereas if it's given too much information about the consequences of action, it's kind of</p>
+<p>like putting the cat in the hat because it's going to know exactly what it's going to do.</p>
+<p>So that's where having the B matrix learning and having these learning methods is really</p>
+<p>cool and really helpful because then you can see, okay, with what learning rate and what</p>
+<p>kind of variability in action and in the generative process in the niche, what dynamics yield over</p>
+<p>what time scales, the convergence to veridical learning of the consequences of action.</p>
+<p>So maybe it needs to spin 10,000 prompts out before understands the consequences of certain</p>
+<p>kinds of prompting.</p>
+<p>Maybe it only needs to throw out a few depending on what it is.</p>
+<p>So, okay.</p>
+<p>And then one more question from Arun.</p>
+<p>And then if anyone in the live chat has questions, they can write it.</p>
+<p>He wrote similar question to our Bellamy, another discord colleague.</p>
+<p>How did you find using land graph?</p>
+<p>Land graph.</p>
+<p>It seems like quite a polarizing framework, but still probably easier to use than PyMDP sweating</p>
+<p>emoji.</p>
+<p>Yeah, definitely easier to use than PyMDP.</p>
+<p>I had to do a lot of like going into PyMDP and changing like a lot of those like source</p>
+<p>code kind of to like make all of this work, which was useful for me, but it was, but yeah,</p>
+<p>land graph.</p>
+<p>Actually, I, I've run a company where we build AI agents for other clients and companies like</p>
+<p>that.</p>
+<p>And we typically use land graph for everything.</p>
+<p>So it wasn't too hard because I'm kind of, I have a lot of experience in that, but yeah,</p>
+<p>but the PyMDP was definitely harder.</p>
+<p>That's for sure.</p>
+<p>What, what, what functionality does the land graph provide?</p>
+<p>Like how does it, and how does it interface or pass to PyMDP?</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>So, um, the land graph is basically just a framework to kind of create nodes and edges.</p>
+<p>And the main other thing is that it can save state between like agent runs.</p>
+<p>So you could define nodes and for each node for this land graph agent, for example, each node was a LLM that executed a certain action.</p>
+<p>So it would be like, either it was answering the question or it was doing research or it was planning or something like that.</p>
+<p>And each node would do certain things.</p>
+<p>Um, land graph allows you to like kind of simply define controlled edges between those nodes.</p>
+<p>So you can say this node directly needs to this node.</p>
+<p>Um, but if some, if this happens, then it should lead to this node, just kind of conditional edges.</p>
+<p>And, um, it also allows you to save state.</p>
+<p>So within, as the agent is running, you can kind of save, uh, just save like each, the results at each, uh, stage.</p>
+<p>So like if this node ran, like it's saved in the list.</p>
+<p>If this node ran, it's saved in the list.</p>
+<p>And that kind of allows you to call back to use this information from this past node to inform your answer for this, this specific node.</p>
+<p>And kind of just, it's just like a simple framework to kind of allow you to just build, um, agents effectively.</p>
+<p>Um, I don't really, yeah, I think, I think it is hard if you don't have like a good framework to go off of, but we've kind of like built a framework over time.</p>
+<p>And actually the agent that's used in the, um, the, the code I put out is, uh, is using that framework.</p>
+<p>So if you might find that helpful, if you want to build some LandGraph agents.</p>
+<p>Yeah.</p>
+<p>Where do you see it all sort of going with different agentic AI and where, where would it look more like a fusion agents or, or collaborative swarms or mesh?</p>
+<p>Like, what do you think we might see?</p>
+<p>Yeah.</p>
+<p>I think I'm a big proponent of the idea that we're going to have like billions of AI agents, just kind of all talking to each other.</p>
+<p>Like basically just like a whole AI population.</p>
+<p>Like we have a human population.</p>
+<p>I think that's probably very likely to happen because at the end of the day, like there's probably going to, I'm skeptical that one model is going to be able to vastly overpower humans.</p>
+<p>To the extent that like a bunch of models will be able to.</p>
+<p>So like, as you can see in like the typical, like LLM literature, like if you combine, for example, like if you're in your reasoning cycles combined Claude, um, Chatsubut, um, Llama.</p>
+<p>And like, if you combine those together in your reasoning, it typically performs better than if you just use only Chatsubut in loops or only Claude in loops.</p>
+<p>So kind of having different models trained in slightly different ways is probably going to help increase performance by a significant amount.</p>
+<p>So I think we're going to probably have a lot like billions of agents just communicating with each other, maybe at the speed of light, because it's all just information and they don't have to communicate in language like we do as humans.</p>
+<p>But, um, yeah, I kind of see that going there.</p>
+<p>And then at least in the near future, I think we're like kind of what we were saying, um, we're probably going to see a big rise in using these kinds of formalized frameworks to improve agents.</p>
+<p>So like active inference, or there's like a lot of, there's other Bayesian reinforcement learning schemes.</p>
+<p>There's typical reinforcement learning schemes.</p>
+<p>Um, those stuff are already being used, but I think there's probably going to be a big rise in that as the, um, as the kind of benefits from just purely using like LLM reasoning kind of taper off.</p>
+<p>I think we're going to see a big rise in that as well.</p>
+<p>That's very interesting.</p>
+<p>Like going back to the sort of grass greener, we could see a situation where smaller interpretable active inference type models are using high dimensional interfaces like natural language sharing information.</p>
+<p>And the opposite setting where large sort of opaque models are communicating through well-structured narrow channels.</p>
+<p>That are active inference, like state spaces and just sending each other that Jason kind of like as a semantically encrypted communication.</p>
+<p>You know, right.</p>
+<p>It just says three, one, two.</p>
+<p>And it's just like, oh, no,</p>
+<p>that's not the really insightful point.</p>
+<p>Yeah.</p>
+<p>It might just be that all these LMs are communicating through.</p>
+<p>Yeah.</p>
+<p>These narrow cut.</p>
+<p>It's kind of like how we communicate too.</p>
+<p>It's not like I can't just directly pass my thoughts to you, you know, like ideally if I could, like you would get a lot more information about what I'm thinking, like what I'm feeling, stuff like that.</p>
+<p>We have to communicate through words, which is kind of a narrow representation of what our thoughts actually are.</p>
+<p>So maybe LLMs have like a similar, you know.</p>
+<p>A lot to say about that, but that again comes to the cognitive science topics of communication, semantics, theory of minds.</p>
+<p>You know, how cool.</p>
+<p>Right.</p>
+<p>How cool.</p>
+<p>Exactly.</p>
+<p>Um, yeah.</p>
+<p>What are your next moves with your education and everything?</p>
+<p>And then if there's anything else you want to add, you can go for it.</p>
+<p>Hmm.</p>
+<p>Let's just continue to do, um, continue to do this research, try to expand.</p>
+<p>Um, right now, actually what I'm working on is the thing I said about like actually encoding knowledge within the agents, instead of just using some like, like, um, unknown kind of info state modality.</p>
+<p>Um, I'm working on that right now, um, kind of using a hierarchical model.</p>
+<p>Um, so I think that's like the near future kind of, yeah, I just want to continue working on this whole idea of like combining active inference and LLMs to do as like much interesting things as possible and improve LLMs and active inference at the same time.</p>
+<p>Um, one other thing is actually, I thought was really interesting, um, was I was reading the paper on, uh, renormalizing generative models from, uh, Carl Pristen and all of them.</p>
+<p>But I think that, that seems really interesting because obviously one of the big problems with active inference is just scale.</p>
+<p>It's, it's kind of hard to just keep making more and more and more complex models over and over again.</p>
+<p>Like, like LLMs and like typical reinforcement learning have it easy because they just put a policy on it and they just like put a bunch of data in there and then they're good to go.</p>
+<p>You know, but we actually have to like painstakingly like build all these generative models and it kind of slows our progress down a lot.</p>
+<p>So using these renormalizing generative models, um, to kind of just take away that whole scale problem.</p>
+<p>It can just kind of run these group transformations on any, any space of any scale, um, would be pretty useful.</p>
+<p>I'm trying to explore, see how I can use that as well.</p>
+<p>I think one interesting thing with that is doing it, doing the RGM transformation and more like abstract state spaces.</p>
+<p>So like in the paper, they use stuff like, um, like pixels and stuff like that, like physical spatial spaces.</p>
+<p>Right.</p>
+<p>But maybe doing it on something like language might be a little harder because how exactly do you like, there's no, there's no like exactly pixel equivalent of language.</p>
+<p>You know, cause pixels are simple.</p>
+<p>You could just say this is a discrete quantity.</p>
+<p>The only way you can differentiate this discrete quantities is by RGB values and you're like good to go.</p>
+<p>But with language, it's kind of like you have each, it's not like each letter really means anything and putting letters together has different meaning and putting words together has different meaning.</p>
+<p>So it's kind of a hard, it's a much harder problem to solve to use the ger, like renormalizing generative models on these language spaces versus just spatial spaces.</p>
+<p>So I think that's also an interesting problem, but yeah, kind of just try to think about these things, see what contributions I can make.</p>
+<p>Yeah.</p>
+<p>Cool.</p>
+<p>Yeah.</p>
+<p>Great comments from earlier.</p>
+<p>Par and Friston et al work on reading as multi-scale active inference.</p>
+<p>There's the eye saccade.</p>
+<p>It's reducing uncertainty on the letter.</p>
+<p>Then letter to letter to reduce uncertainty on the word.</p>
+<p>And then they go up to the third level with a narrative, you know, cat ate bird, or was it the bird ate the cat?</p>
+<p>So those kinds of things you get priors over letters, transition matrices, all these kinds of things.</p>
+<p>And then, but that was, as you put it, painstakingly crafted.</p>
+<p>And where could we abstract and have generalized templates so that perhaps an adapter module is crafted to connect a given domain or system of interest to some known interoperable scheme.</p>
+<p>And then something like an RGM can take over from there.</p>
+<p>Okay.</p>
+<p>I'm going to ask one more question from the chat and then that'll be great.</p>
+<p>Okay.</p>
+<p>All right.</p>
+<p>Are you using meta learning aspects in the system to enable self-guided research and are direction opinions guided simply by act-inth?</p>
+<p>What was that last part?</p>
+<p>Are direction opinions guided simply by act-inth?</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>There's really no meta learning.</p>
+<p>The learning rate is stable throughout the entire thing.</p>
+<p>Yeah.</p>
+<p>The direction opinions are, are like in which, like which search action should be taking or should it, should a search action be taken or should a prompt actually be taking?</p>
+<p>That's all purely guided by active inference.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>So that was kind of the main point was that the active inference has this formalized structure that can allow for like optimality in terms of like exploration exploitation.</p>
+<p>So the active inference agent is purely responsible for picking the actions and determining where to go next.</p>
+<p>Yeah.</p>
+<p>Epic.</p>
+<p>Epic.</p>
+<p>Well, thank you very much for joining.</p>
+<p>I hope you engage and, and find collaborators and replicators who are interested in this hot topic of active inference and LLMs and come back when you're ready for 95.2.</p>
+<p>All right.</p>
+<p>Cool.</p>
+<p>Okay.</p>
+<p>Thank you.</p>
+<p>Thank you.</p>
+<p>Peace.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+</body>
+</html>

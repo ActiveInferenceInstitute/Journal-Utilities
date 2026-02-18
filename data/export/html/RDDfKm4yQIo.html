@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active Inference in Rust.... For Ants? (4-4-2024 Active InferAnts bundle of updates)</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active Inference in Rust.... For Ants? (4-4-2024 Active InferAnts bundle of updates)</h1>
+<div class="meta">Duration: 11:52 &middot; Views: 201</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=RDDfKm4yQIo">https://www.youtube.com/watch?v=RDDfKm4yQIo</a></div>
+<article>
+<p>all right it's April 4th 2024 this is an</p>
+<p>update from the active infer ants</p>
+<p>project where we're applying active</p>
+<p>inference models to ants in</p>
+<p>2021 working with other authors we</p>
+<p>published an initial python code model</p>
+<p>ant simulation with Niche modification</p>
+<p>and forging with the single phermone</p>
+<p>code was written initially by Alec in</p>
+<p>that case adapting it from a previous</p>
+<p>publication with axle at all that was</p>
+<p>looking at cultural patterns of iates</p>
+<p>and with other nestmates in the</p>
+<p>subsequent years we continued to work on</p>
+<p>and explore these different ideas</p>
+<p>related to social physiology cyber</p>
+<p>physical systems multiscale planning and</p>
+<p>behavior and ant colonies and so on and</p>
+<p>today I wanted to bundle together a</p>
+<p>couple of updates related to the project</p>
+<p>as there's just a great Confluence of</p>
+<p>factors ranging from the RX and fur</p>
+<p>team's live stream on building a drone</p>
+<p>earlier today to just the inspiring work</p>
+<p>in the RX andur project at the instit</p>
+<p>and Holly's encouragement to look into</p>
+<p>rust so the big announcement SLT</p>
+<p>takeaway over at active inference</p>
+<p>Institute GitHub slactive infer ant</p>
+<p>let's start from scratch and multiple</p>
+<p>places and converge and diverge and have</p>
+<p>fun with ants and active inference and</p>
+<p>for the rest of this video I'm going to</p>
+<p>start zoomed in in the first section</p>
+<p>talking a little bit methodologically</p>
+<p>about how I used cursor. sh to translate</p>
+<p>RX and F Julia code and pmdp python code</p>
+<p>into new rust code and publish that open</p>
+<p>source using a method with cursor that</p>
+<p>pulls in GitHub repos and then we'll</p>
+<p>zoom out a little bit and look at how</p>
+<p>this draft SL sketch of the active</p>
+<p>inference package is laid out and what</p>
+<p>was retained through iterating locally</p>
+<p>on my side and as mentioned before I</p>
+<p>expect that we'll start from multiple</p>
+<p>places and multiple step by steps so I</p>
+<p>encourage that people get involved this</p>
+<p>fun project and today I'll just show a</p>
+<p>little bit that might spark some</p>
+<p>thoughts and uh let's just see how to</p>
+<p>also use these tools in a cool way so</p>
+<p>I'm starting in folder _ other with the</p>
+<p>Clone GitHub users python script this</p>
+<p>script does work not all the scripts</p>
+<p>work and the payload of this script is</p>
+<p>that for whichever GitHub usernames are</p>
+<p>provided it downloads all of the open</p>
+<p>repos that that user has into a folder</p>
+<p>called repo so here I've only left</p>
+<p>selected bias lab which is the</p>
+<p>developers of RX andur Julia and infer</p>
+<p>actively which is the hosting group of</p>
+<p>pmdp however I also curated some lists</p>
+<p>of a bunch of other active inference</p>
+<p>usernames and also some other things</p>
+<p>that are fun to bring in like bringing</p>
+<p>in energetics and quadres tetrahedral</p>
+<p>coordination geometries as well as a lot</p>
+<p>of ants and bioinformatics and also the</p>
+<p>exciting development in multi-agent</p>
+<p>Frameworks many could be added to all</p>
+<p>these lists but just to kind of show the</p>
+<p>minimal example what the current status</p>
+<p>of the repo does is it clones in the</p>
+<p>repos of bias lab and infer actively and</p>
+<p>puts it into other then by going to the</p>
+<p>gear on the top right of cursor</p>
+<p>and then features resync</p>
+<p>index cursor re indexes all of the code</p>
+<p>which helps it for when you do the AI</p>
+<p>chat you can do control enter and chat</p>
+<p>with the code base so that is a super</p>
+<p>helpful feature as is selecting text and</p>
+<p>control K or doing control shift L to</p>
+<p>move something over into the side window</p>
+<p>so all these are methods that I'm sure</p>
+<p>other people also have things that are</p>
+<p>exciting for them and there's probably</p>
+<p>many more improvements and meta</p>
+<p>improvements to come but this clone</p>
+<p>GitHub user script allowed me to bring</p>
+<p>in exactly the genres and the repos one</p>
+<p>by one in the repo script or in a batch</p>
+<p>download with the</p>
+<p>users and then cursor enabled me to chat</p>
+<p>with the codebase to explain it better</p>
+<p>and also to ask now write a pmdp styled</p>
+<p>script for this situation so um two ways</p>
+<p>in which I use that first I'll go</p>
+<p>through the rust read me and then some</p>
+<p>of the rust translations from the PDP</p>
+<p>and RX and fer and then we'll return to</p>
+<p>how the ants looked in the second</p>
+<p>section so this is in the systems design</p>
+<p>section of the repo because it's very</p>
+<p>preliminary the goals of today's work</p>
+<p>essentially where to use language models</p>
+<p>and code and document methods to</p>
+<p>translate and transform some open source</p>
+<p>Python and Julia active inference code</p>
+<p>into open source rust active inference</p>
+<p>code to develop a noisy non-expert draft</p>
+<p>sketch of an active inference ant colony</p>
+<p>boldy scale simulation in Rust language</p>
+<p>in order to learn highlight and explore</p>
+<p>the unique performance and security</p>
+<p>features of rust language for beginners</p>
+<p>such as myself and to provide an initial</p>
+<p>basis for further open source</p>
+<p>development at the intersection of</p>
+<p>active inference rust and ants so I used</p>
+<p>cursor</p>
+<p>0.331 with the GPT form model I use the</p>
+<p>Clone GitHub user script to bring in as</p>
+<p>many repos as possible related to active</p>
+<p>inference or just a few resync the index</p>
+<p>in cursor copied over from the rest of</p>
+<p>the script some of the Python files and</p>
+<p>renamed them to be rust files and then</p>
+<p>here's some of the prompts that I used</p>
+<p>in the side chat and in the control K</p>
+<p>chat popup to help transform and iterate</p>
+<p>on improve the code so these were just a</p>
+<p>few of the prompts that</p>
+<p>helped where it got me was some Rust</p>
+<p>looking PDP style ants that I copied</p>
+<p>over and multiple separate attempts to</p>
+<p>write rust looking code not all of it</p>
+<p>was tested and a lot of it is still</p>
+<p>schematic but it's outlining at least an</p>
+<p>approach that with a rust expert in the</p>
+<p>loop I think we could have a great time</p>
+<p>with the generalized multiscale modeling</p>
+<p>of</p>
+<p>things thing</p>
+<p>class and this rust things starts in the</p>
+<p>kind of agent-based approach along the</p>
+<p>lines of the AOS active entity ontology</p>
+<p>for Science and then I also tried</p>
+<p>several other features based upon the</p>
+<p>code models know of rust so rust meta</p>
+<p>has some simulation</p>
+<p>environment aspects rust system check</p>
+<p>prints a lot of information about the</p>
+<p>computer rust meta</p>
+<p>configs has different kinds of</p>
+<p>affordances for the then configuration</p>
+<p>file which sets a bunch of the</p>
+<p>parameters which are used later and then</p>
+<p>in the rust worlds folder under config</p>
+<p>this is even more speculative</p>
+<p>so here we have cognitive security</p>
+<p>classes in</p>
+<p>Rust security classes in Rust and</p>
+<p>porting over from 4D Solutions quadres</p>
+<p>tetrahedral coordinates and Tetra</p>
+<p>volumes those were both translated from</p>
+<p>python so this just shows that by</p>
+<p>bringing in repos related to active</p>
+<p>inference we can transfer the semantics</p>
+<p>of examples and hopefully there will be</p>
+<p>a growing library of open- source</p>
+<p>examples in all these different</p>
+<p>languages and transfer and interpolate</p>
+<p>within and outside of those bounds to</p>
+<p>translate code and to get somewhere fast</p>
+<p>with natural conversation which is super</p>
+<p>exciting so now pulling back a little</p>
+<p>bit folder zero in the</p>
+<p>repo has some system specifications that</p>
+<p>were also iteratively written with</p>
+<p>language models and my put and then the</p>
+<p>folders are as follows nine other has</p>
+<p>some scripts related to cloning in repos</p>
+<p>six API is for API calls which is also</p>
+<p>just a kind of broadly outlined set of</p>
+<p>methods most of the simulating and</p>
+<p>preparing and all of the operating is in</p>
+<p>the scripts 1 through five so in one</p>
+<p>there's prepare so this has all of the</p>
+<p>agent-based definitions including pmdp</p>
+<p>ants that are defined and the general</p>
+<p>and the config set different configs</p>
+<p>most of these variables are not called</p>
+<p>however it's fun to explore and just</p>
+<p>build these hypothetical meta</p>
+<p>configuration files and then in the</p>
+<p>general preparation we have some scripts</p>
+<p>pointing towards aspects of cognitive</p>
+<p>security the course ordinates the IVM</p>
+<p>and the XYZ coordinates being able to</p>
+<p>flip between the coordination systems</p>
+<p>implementing some cryptographic</p>
+<p>metaphysical systems</p>
+<p>nesting networking Network science</p>
+<p>different physics including the</p>
+<p>metaphysics and the cognitive physics</p>
+<p>and then also for a little comedic</p>
+<p>relief the Salt Fat acid heat simulator</p>
+<p>in pmdp format so prepare gets all of</p>
+<p>the configurations ready for assembling</p>
+<p>the different things operate has a plan</p>
+<p>render and execute three-step process</p>
+<p>with a situational ant awareness</p>
+<p>Observer role that actually</p>
+<p>prepares plans out and then executes</p>
+<p>computationally the</p>
+<p>simulation measure has a set of scripts</p>
+<p>and methods related to specif ifying how</p>
+<p>you want to measure in a Quantum</p>
+<p>cognitive frame and then how you're</p>
+<p>going to summarize categorize and apply</p>
+<p>statistics to the</p>
+<p>measurements report is currently just</p>
+<p>for this release the specify report</p>
+<p>methods that detail how reporting is</p>
+<p>going to occur and then the</p>
+<p>specifications for followup which are</p>
+<p>the implications of the report so that's</p>
+<p>just one top level folder scheme for</p>
+<p>multi-layer simulations like the active</p>
+<p>inference package has to be and I look</p>
+<p>forward to hearing about some radically</p>
+<p>alternative starting points that we can</p>
+<p>also have in our Colony so hope this is</p>
+<p>at least interesting to some of you I</p>
+<p>encourage people with some or a lot or</p>
+<p>in between amount of familiarity with</p>
+<p>active inference and ants and all these</p>
+<p>different topics to come get involved</p>
+<p>and come to our weekly RX and fur</p>
+<p>meetings on Thursday join The Institute</p>
+<p>Discord or email blanket active</p>
+<p>inference do Institute or get in touch</p>
+<p>another way because this is going to be</p>
+<p>a fun project and really looking forward</p>
+<p>to seeing how we can all start over and</p>
+<p>collaborate on this further all</p>
+<p>right</p>
+</article>
+</body>
+</html>

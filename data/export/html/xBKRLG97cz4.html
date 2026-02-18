@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream #006.1 ~ "Branching Time Active Inference: the theory and its generality"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream #006.1 ~ "Branching Time Active Inference: the theory and its generality"</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_006 &middot; Episode 1 &middot; Duration: 1:37:07 &middot; Views: 248</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=xBKRLG97cz4">https://www.youtube.com/watch?v=xBKRLG97cz4</a></div>
+<article>
+<p>hello and welcome everyone it is</p>
+<p>September 1st 2022.</p>
+<p>and we are here in model stream number</p>
+<p>6.1</p>
+<p>we're going to be discussing branching</p>
+<p>time active inference the theory and its</p>
+<p>generality</p>
+<p>we're going to have a presentation</p>
+<p>followed by a discussion so thank you</p>
+<p>Ali and Jacob for joining and anyone</p>
+<p>else to be adding their questions in the</p>
+<p>live chat</p>
+<p>without further Ado over to geophilia</p>
+<p>Champions</p>
+<p>and thanks so much for joining really</p>
+<p>appreciate it</p>
+<p>hello thank you very much for the kind</p>
+<p>introduction uh and thank you for</p>
+<p>inviting me to present today I'm very</p>
+<p>glad I had this opportunity</p>
+<p>so today I will be speaking about</p>
+<p>branching time active inference</p>
+<p>um basically it's really different</p>
+<p>version of the of the the approach the</p>
+<p>first reason is Dash passing so second</p>
+<p>using Belgian filtering and the third</p>
+<p>one is using believe propagation and</p>
+<p>allows the model to contain several</p>
+<p>observations and several item States</p>
+<p>this works has been realized in</p>
+<p>collaboration to we've lost Acosta Mike</p>
+<p>Josh and Hogwart Bowman</p>
+<p>so first of all I want to speak a bit</p>
+<p>about the action perception cycle which</p>
+<p>is a core ID in active inference</p>
+<p>and the second is the agent which is all</p>
+<p>of them the environments provide</p>
+<p>observation to the agent for example an</p>
+<p>image of the environments</p>
+<p>and then the agent need to take this</p>
+<p>input and perform inference on it and</p>
+<p>the goal of the entrance process is to</p>
+<p>extract high-level iron states such as</p>
+<p>the position of black man in X and Y</p>
+<p>or the position of the ghost or whatever</p>
+<p>information may be relevant</p>
+<p>then based on those States we can</p>
+<p>perform planning and action selection</p>
+<p>and action selection how it puts the</p>
+<p>action to perform maybe the action going</p>
+<p>up which is fed into its environment</p>
+<p>which produce another observation and</p>
+<p>this cycle continues until the Trail</p>
+<p>Ends</p>
+<p>now that we have the core</p>
+<p>there is a core idea of Arctic inference</p>
+<p>which is action perception cycle I will</p>
+<p>be speaking about active inference in a</p>
+<p>bit more depth</p>
+<p>so basically active inference is about</p>
+<p>an agents which is equips of a model</p>
+<p>this agent makes as I said observation</p>
+<p>which are represented here at the bottom</p>
+<p>of the screen</p>
+<p>and those observation depends on the</p>
+<p>island States</p>
+<p>through the a matrix so that it is a</p>
+<p>matrix</p>
+<p>provide a distribution of the</p>
+<p>observation for each possible Latin</p>
+<p>States</p>
+<p>we also have the G Vector which contains</p>
+<p>the parameter of the prior over the</p>
+<p>initial item States</p>
+<p>as well as the B Matrix which explain</p>
+<p>how the transition of the environment</p>
+<p>works so basically it explains how given</p>
+<p>a state and an action we get the new</p>
+<p>state</p>
+<p>at time t plus one</p>
+<p>we as I said uh have an action or here</p>
+<p>is a policy variable and this action</p>
+<p>variable or policy depends on the</p>
+<p>Precision parameter which is called</p>
+<p>gamma and as we will see influence how</p>
+<p>stochastic or deterministic the policy</p>
+<p>of the agents will be</p>
+<p>so</p>
+<p>here we see how the prior over action is</p>
+<p>being defined</p>
+<p>so it depends as I said on the game</p>
+<p>parameter and it is and it is defined as</p>
+<p>a soft Max function of minus</p>
+<p>the gamma the Precision parameter times</p>
+<p>the expected free energy</p>
+<p>and the expected free energy for</p>
+<p>particular policy is basically a sum of</p>
+<p>all future time steps so from t plus 1</p>
+<p>which is the first time step into the</p>
+<p>future to uppercase team which is a Time</p>
+<p>Horizon</p>
+<p>and for each time step the expected free</p>
+<p>energy is defined as the expected Cost</p>
+<p>Plus xiaomi equity</p>
+<p>the expected cost is the K Divergence</p>
+<p>between as a predictive post trial or</p>
+<p>the future observation</p>
+<p>and the prior preferences but the prior</p>
+<p>preferences defines which observation</p>
+<p>the agent want to to observe and this</p>
+<p>the predictive posterior defines How</p>
+<p>likely its observation is</p>
+<p>and so what we want to do is to minimize</p>
+<p>the Divergence between the distribution</p>
+<p>so that we actually observe what we</p>
+<p>learned</p>
+<p>okay and the second term is about the</p>
+<p>entropy of the likelihood mapping uh</p>
+<p>expected under the directional posterior</p>
+<p>of a state</p>
+<p>so I'm speaking about directional</p>
+<p>posterior I will explain what this is in</p>
+<p>a minute uh that's that's the definition</p>
+<p>of the expected energy risk plus</p>
+<p>ambiguity or also called expected cost</p>
+<p>per solubility</p>
+<p>so I presented the model here's a more</p>
+<p>formal definition here we have a joint</p>
+<p>over all the variable in the model we</p>
+<p>saw that the policy depends upon the</p>
+<p>Precision parameter we have a gamma</p>
+<p>distribution for the Precision</p>
+<p>for each of the tonsor of parameters so</p>
+<p>a b and d and we see that s indeed</p>
+<p>depends on D</p>
+<p>and that's the observation depends on</p>
+<p>the state through the a matrix</p>
+<p>and 10 thing for the transition mapping</p>
+<p>we have a state which depends on the</p>
+<p>previous States and the B Matrix as well</p>
+<p>as the action being performed in the</p>
+<p>environments</p>
+<p>okay so now we have the model that what</p>
+<p>we want to do is given some observation</p>
+<p>we want to be able to compute posterior</p>
+<p>beliefs over the lateral variables</p>
+<p>in a probabilities in probability we</p>
+<p>call that Computing the posterior</p>
+<p>distribution</p>
+<p>and we do that through a process which</p>
+<p>is called inference</p>
+<p>we can for example use exact inference</p>
+<p>which is based on bias theorem so that's</p>
+<p>a complex the posterior is equal to the</p>
+<p>likelihood times the prior and then we</p>
+<p>normalize using the evidence</p>
+<p>and basically the evidence is just</p>
+<p>obtained from the numerators by summing</p>
+<p>out all the Latin variable X</p>
+<p>the problem is that when X is a</p>
+<p>continuous random variable as this</p>
+<p>summation turns into an integral and we</p>
+<p>may not have analytical solution for</p>
+<p>this interval</p>
+<p>so this method the exact inference can</p>
+<p>become intractable because of this</p>
+<p>what we do instead when using via snap</p>
+<p>inference is that maybe this Trooper</p>
+<p>stereo is very complex but we are going</p>
+<p>to approximate it using this Q this</p>
+<p>viational distribution</p>
+<p>and try to make the Divergence between</p>
+<p>those two distribution as close as</p>
+<p>possible so here we have the trooper</p>
+<p>stereo on your writer and here we have</p>
+<p>an example of how</p>
+<p>the directional posterior may be fit to</p>
+<p>the true posterior in red</p>
+<p>in the context of active inference the</p>
+<p>directionality distribution is defined</p>
+<p>as follows so it is a joint distribution</p>
+<p>although all the electron variable of</p>
+<p>the model and we are doing what we call</p>
+<p>the mean field approximation</p>
+<p>which means that all the variable within</p>
+<p>this distribution are assumed to be</p>
+<p>independent thus there is no more</p>
+<p>dependency for the pi a b d and Gamma</p>
+<p>parameters and we do a slight exception</p>
+<p>where the state still depends on the</p>
+<p>policy point</p>
+<p>okay so that's the definition of the</p>
+<p>violational distribution</p>
+<p>and now that we have the virational</p>
+<p>distribution and the generative model we</p>
+<p>can Define the biational Primitive so</p>
+<p>the goal of the violational free energy</p>
+<p>is to make sure that the</p>
+<p>approximate post child so that our</p>
+<p>variational distribution remains as</p>
+<p>close as possible to the super style and</p>
+<p>it is defined as the scale Divergence</p>
+<p>between the approximate question and the</p>
+<p>generative model</p>
+<p>this via style free energy is also</p>
+<p>called like the negative evidence lower</p>
+<p>bound or elbow in machine learning and</p>
+<p>it decomposes into</p>
+<p>two intuitive terms so this is the wire</p>
+<p>style for energy I decompose it into the</p>
+<p>K Divergence</p>
+<p>between the approximate and the true</p>
+<p>posterior this is the term that will</p>
+<p>make the approximate booster will be as</p>
+<p>good as possible to the true posterior</p>
+<p>and here we have as evidence but which</p>
+<p>is a constant with respect to the</p>
+<p>viational distribution which we are</p>
+<p>optimizing for so yeah really the Via</p>
+<p>Sharp Energy is a proxy for the first</p>
+<p>term over there</p>
+<p>okay so what is</p>
+<p>passing is an inference algorithm</p>
+<p>basically it is based on what is called</p>
+<p>The Mark of blankets so let's suppose we</p>
+<p>want to compute the like the virtual</p>
+<p>posterior for one specific node in a</p>
+<p>graphical model</p>
+<p>what national expressing is about is</p>
+<p>saying that this node a only depends on</p>
+<p>its Mark of blankets</p>
+<p>more specifically it depends on the</p>
+<p>child of a so here D and C</p>
+<p>it depends on the balance of a here f</p>
+<p>and g and also in the co balance of a</p>
+<p>for example e and B in this picture</p>
+<p>and what this macro blanket says that's</p>
+<p>really we only need to know the values</p>
+<p>of the variable inside the Markov</p>
+<p>bracket to be able to perform inference</p>
+<p>over a</p>
+<p>here is a bit of a bit more formal</p>
+<p>um view on this question</p>
+<p>so here we have the optimal</p>
+<p>virational distribution for one random</p>
+<p>variable so this could be for example a</p>
+<p>and the query on the right gives us</p>
+<p>analytical solution for this uh</p>
+<p>posterior and we see that it's only</p>
+<p>depending on the Node itself its parents</p>
+<p>its children and the cobalance</p>
+<p>and that's all we need to know</p>
+<p>um okay so why by</p>
+<p>saying the message bits comes from the</p>
+<p>decomposition of this</p>
+<p>iatical solution into messages which are</p>
+<p>added together to form the variational</p>
+<p>posterior</p>
+<p>here we can see the first message which</p>
+<p>basically comes from the parents here we</p>
+<p>can see one message for each chapter and</p>
+<p>what we do and that all those messages</p>
+<p>will be added to form the parameter of</p>
+<p>the approximate plus tribe</p>
+<p>here's a practical example basically we</p>
+<p>are trying to perform influence over the</p>
+<p>random variable y so we want to compute</p>
+<p>the parameter of</p>
+<p>um the distribution like the posterior</p>
+<p>distribution of a y and the way we go</p>
+<p>about doing this is that we send</p>
+<p>messages from the parents all the way</p>
+<p>through the random variable y</p>
+<p>and same thing for the child</p>
+<p>and the components and each time we</p>
+<p>reach the factor node we combine the</p>
+<p>input messages and forward the results</p>
+<p>toward y</p>
+<p>when we have received all the messages</p>
+<p>we just add them together and this</p>
+<p>provide us with the parameter of the</p>
+<p>violational distribution over y</p>
+<p>so this was buyer's Diamond which is</p>
+<p>basically the algorithm that we use to</p>
+<p>perform in France</p>
+<p>now I will be speaking about multicarage</p>
+<p>research which is a planning algorithm</p>
+<p>that we use to look forward into the</p>
+<p>future and estimate the quality of each</p>
+<p>product</p>
+<p>so before to do that I want just to</p>
+<p>introduce the notion of community index</p>
+<p>um so here we can see the roots of the</p>
+<p>tree which is a state at the present</p>
+<p>time step</p>
+<p>and then from there we see</p>
+<p>[Music]</p>
+<p>um</p>
+<p>that we have not in the future which are</p>
+<p>indexed by sequences of indices for</p>
+<p>example here's a sequence of sequence of</p>
+<p>size 1 which contains just the action of</p>
+<p>the index uh one</p>
+<p>so this is a state which after taking</p>
+<p>actual one</p>
+<p>and then here</p>
+<p>we have the states which when performing</p>
+<p>action 1 followed by action 2. and this</p>
+<p>those indices are called multi-index</p>
+<p>because we are they are composed of</p>
+<p>several indices</p>
+<p>which here represents actions</p>
+<p>okay so now that we have this in mind I</p>
+<p>can discuss multi-clarative research so</p>
+<p>the way Multicultural research is</p>
+<p>structure is in four steps first we have</p>
+<p>the selection step where we start at the</p>
+<p>root node and compute the UCT criteria</p>
+<p>so this is just a real value I can</p>
+<p>remember for each of the track</p>
+<p>and then we select the node which</p>
+<p>actually has the highest velocity value</p>
+<p>for example maybe it is S1 so the state</p>
+<p>with which after taking action</p>
+<p>then from this we can compute the</p>
+<p>velocity of each children and maybe this</p>
+<p>node will be the highest value</p>
+<p>okay once we have reached the left node</p>
+<p>we can move towards the second phase</p>
+<p>which is about expanding the the</p>
+<p>children of this node and for each child</p>
+<p>what we are going to do is just</p>
+<p>simulating some rule outs from this node</p>
+<p>I'm Computing the average expected</p>
+<p>frequency for this node</p>
+<p>once we have this there is a fourth base</p>
+<p>which is about updating the expected</p>
+<p>finity of the ancestor of uh then that</p>
+<p>we just expanded</p>
+<p>as well as a number of visits because we</p>
+<p>want to explore part of the tree which</p>
+<p>have not been explored a lot in the past</p>
+<p>so we need to keep track of how many</p>
+<p>times each branch has been exploded okay</p>
+<p>so that was the algorithm for planning</p>
+<p>and I now have introduced always a</p>
+<p>background required to discuss the first</p>
+<p>approach which is branching time active</p>
+<p>infants with bilational massage person</p>
+<p>so first we need to define the model it</p>
+<p>is basically splitted into two parts the</p>
+<p>first one</p>
+<p>represents the past and the present and</p>
+<p>it is basically a partial observable</p>
+<p>micro decision process which is just</p>
+<p>offensive word to say that we have</p>
+<p>observations which depends on State this</p>
+<p>is with a matrix</p>
+<p>we have action variables over there and</p>
+<p>we have States</p>
+<p>as as I said</p>
+<p>so electrical machine as I said is</p>
+<p>adding like it's parameterized by the a</p>
+<p>matrix the transition as usual is</p>
+<p>parameterized by the B metric and we</p>
+<p>also have here</p>
+<p>the Z Vector which defines a prior over</p>
+<p>the initial ion States so this is coming</p>
+<p>from standard artificial and then the</p>
+<p>novelty is that we are expanding the</p>
+<p>basically the future</p>
+<p>well each time so we okay so we have</p>
+<p>this model then we perform active like</p>
+<p>um multi-carot research and each time we</p>
+<p>want to expand the node what we do that</p>
+<p>we are going to add some parts some bits</p>
+<p>to the generative model so for example</p>
+<p>if we want to add this part of the</p>
+<p>generative volume we are going to add</p>
+<p>one transition mapping</p>
+<p>B this will add a random variable uh is</p>
+<p>here it's like S12 and then we will add</p>
+<p>the associated observation using the</p>
+<p>likelihood map</p>
+<p>so this is how we expand the generative</p>
+<p>model as we go</p>
+<p>mathematically this is defined like this</p>
+<p>so we see here a generative model of all</p>
+<p>the variable in the model we have the</p>
+<p>original prior over the parameters like</p>
+<p>of the models so the A B and G matrices</p>
+<p>the state at times type zero depends on</p>
+<p>D each observation depends on the states</p>
+<p>Associated to it and the a matrix</p>
+<p>and then we have prior distribution over</p>
+<p>actions which depends on some data</p>
+<p>parameters for which we have a division</p>
+<p>prior</p>
+<p>thank you okay and then the state as</p>
+<p>usual depend on the previous state and</p>
+<p>the previous actions as well as on the B</p>
+<p>Matrix which defines the transition</p>
+<p>probabilities</p>
+<p>so this is upon GP version like so</p>
+<p>from GP part of the model and this is a</p>
+<p>tree life structure that it expands as</p>
+<p>planning is going on</p>
+<p>so it is a set of all multi-indexes</p>
+<p>which has been expanded in the model for</p>
+<p>example if I come back here</p>
+<p>we see that there are three multi</p>
+<p>indices that have been expanded</p>
+<p>so I is equal to</p>
+<p>the multi index is one the militant says</p>
+<p>two</p>
+<p>and the multi-index uh one one</p>
+<p>okay and now for each of those military</p>
+<p>index we add to the generality model a</p>
+<p>transition and likelihood mapping</p>
+<p>so that's exactly what we are doing for</p>
+<p>each index in the set of loot index</p>
+<p>which has been expanded we had</p>
+<p>in the future</p>
+<p>so now we need to</p>
+<p>we need to test this approach in an</p>
+<p>environment and for now we will be</p>
+<p>testing it inside a maze environment</p>
+<p>where we have here is the exit of the</p>
+<p>maze here the starting position</p>
+<p>and then the prior preferences of the</p>
+<p>items will be that the closer we are</p>
+<p>from the exits the more the happier the</p>
+<p>audience will be</p>
+<p>so here we have a distance of zero one</p>
+<p>one two three four</p>
+<p>um one feature which is really important</p>
+<p>is that the prior preferences</p>
+<p>fly across fours so here we have we have</p>
+<p>a three and here we have four in terms</p>
+<p>of distance we don't have like five six</p>
+<p>seven eight we have four and what this</p>
+<p>produce is a blue cell and what this</p>
+<p>blue side blue cell actually is is a</p>
+<p>local minimum in which the agent can be</p>
+<p>stuck if it is not careful and the way</p>
+<p>to avoid this local minimum will be to</p>
+<p>be able to plan</p>
+<p>final into the future to see that the</p>
+<p>rewarding path is actually this one</p>
+<p>and notes is the one leading to the</p>
+<p>local minimum so this is basically a</p>
+<p>challenge that we are adding uh to the</p>
+<p>task</p>
+<p>and here what we can see so here is</p>
+<p>basically an illustration of the tree</p>
+<p>which is being expanded and here we have</p>
+<p>the table of results we see that as we</p>
+<p>increase the number of planning</p>
+<p>iteration we go from the agent being</p>
+<p>stuck inside the local minimum so never</p>
+<p>reaching the limits to an agent which is</p>
+<p>basically behaving properly on which</p>
+<p>zero sets 100 of the top</p>
+<p>next we need to compare how a partial</p>
+<p>bunch in time active inference to the</p>
+<p>previous like state of the art which is</p>
+<p>activated Plus</p>
+<p>and basically we designed an environment</p>
+<p>in which for the agent to be able to</p>
+<p>solve it it has to plan three five and</p>
+<p>then eight time step into the future</p>
+<p>for active influence what happened is</p>
+<p>that it was able to properly solve the</p>
+<p>two plus task but then what happened is</p>
+<p>that because the number of policy it has</p>
+<p>to evaluate into the future grows</p>
+<p>exponentially with the number of times</p>
+<p>that it has to plan for the last one</p>
+<p>which is the biggest crushed</p>
+<p>with how</p>
+<p>um environments like with our approach</p>
+<p>which is the exact same thing and where</p>
+<p>we increase once again the number of</p>
+<p>planning iterations we see that the</p>
+<p>agent becomes able to sort that all the</p>
+<p>time</p>
+<p>and does not crash because it is able to</p>
+<p>explore in a clever fashion the space of</p>
+<p>all possible possible policy using</p>
+<p>multi-carot research</p>
+<p>this was a bit of a non-pherical</p>
+<p>comparison between bti and active inputs</p>
+<p>now what I want to do in this slide is</p>
+<p>to compare them in demo like in terms of</p>
+<p>implicity classes which is a lot more</p>
+<p>theoretical</p>
+<p>so basically here each circle</p>
+<p>corresponds to a categorical</p>
+<p>distribution of the states which means</p>
+<p>that to store one of those Circle we</p>
+<p>need to store the number of states so so</p>
+<p>a number of parameters which is equal to</p>
+<p>the number of State value okay so if we</p>
+<p>have a state which takes three values we</p>
+<p>need to store three parameters</p>
+<p>then for each time step into the future</p>
+<p>we need to store one more parameters one</p>
+<p>more categorical when it comes to active</p>
+<p>inference and we also need to store</p>
+<p>um one more category called for each</p>
+<p>possible person so the total complexity</p>
+<p>class is equal to the number of policies</p>
+<p>times the number of time steps until the</p>
+<p>time Horizon</p>
+<p>times the number of parameters we need</p>
+<p>to store for each categorical</p>
+<p>distribution</p>
+<p>now in the worst case scenario BCI need</p>
+<p>to store so the first thing to say is</p>
+<p>that bti does not store every single</p>
+<p>possible combination it's using the tree</p>
+<p>structure of the generative model to</p>
+<p>store only one</p>
+<p>distribution for the past and present</p>
+<p>so first time step in the past and</p>
+<p>present and then it's if we expand all</p>
+<p>the trade then it's going to ex to store</p>
+<p>uh the number of action to the power of</p>
+<p>the timer is on minus G</p>
+<p>so this is still exponential in terms of</p>
+<p>course because of this change over there</p>
+<p>but in practice we never expand the</p>
+<p>entirety of the trade so what we do is</p>
+<p>maybe we will expand this this this and</p>
+<p>this but not the two other so in</p>
+<p>practice the real complexity class of</p>
+<p>this algorithm is a linear in the number</p>
+<p>of expansion that we are making</p>
+<p>foreign</p>
+<p>does not require as much storage space</p>
+<p>as standard occupations</p>
+<p>now we want I want to speak about the</p>
+<p>second approach which is based on</p>
+<p>Bayesian filtering</p>
+<p>so first what is bias and filtering well</p>
+<p>benefit is an inference algorithm which</p>
+<p>starts with just a simple generative</p>
+<p>model with a state</p>
+<p>and an observation we actually know</p>
+<p>which observation we are making and we</p>
+<p>have we also know what the prior State</p>
+<p>and the likelihood is and then we can</p>
+<p>for example use</p>
+<p>by asteroid to compute the posterior of</p>
+<p>the states given some observations</p>
+<p>and we just yeah we just complete it</p>
+<p>like this</p>
+<p>once we have a posterior of a state</p>
+<p>we can use it as an empirical prior</p>
+<p>so here is our empirical prior and we</p>
+<p>also know the transition</p>
+<p>probability that lead us to the next</p>
+<p>time step</p>
+<p>so we can use this information as well</p>
+<p>as the action that we're actually</p>
+<p>performing in the environment to compute</p>
+<p>the predictive posterior over the state</p>
+<p>at time step one given the action that</p>
+<p>we just made which is u0 and the</p>
+<p>observation that we made before</p>
+<p>and the way this is done is just by</p>
+<p>performing base and prediction as</p>
+<p>through the like like the transition</p>
+<p>mapping so averaging out the dimension</p>
+<p>of s0</p>
+<p>and then comes another observation and</p>
+<p>we can just use our predictive post</p>
+<p>channel that we got from the previous</p>
+<p>prediction step to now</p>
+<p>um</p>
+<p>over S1 according to this new</p>
+<p>observation and those two steps of</p>
+<p>integrating evidence and then prediction</p>
+<p>um through the transition mapping are</p>
+<p>going to be iterated as many times as we</p>
+<p>as we need to</p>
+<p>so this lead us to the second approach</p>
+<p>that I want to present today which is</p>
+<p>branching time active inference with</p>
+<p>Bayesian filtering</p>
+<p>so first thing we are not storing any</p>
+<p>more uh the past</p>
+<p>the past observation on state because</p>
+<p>all the information we need is stored</p>
+<p>within the beliefs over the initial</p>
+<p>State like the Quran timestamp</p>
+<p>the state as a strong time step</p>
+<p>okay so we have an observation attempty</p>
+<p>we can perform the integration of</p>
+<p>evidence step to get a belief about this</p>
+<p>the state at time step T and then we can</p>
+<p>perform forward prediction for each of</p>
+<p>the children that we want to expand</p>
+<p>for example maybe we'll compute this one</p>
+<p>and then this one and so on and so forth</p>
+<p>and if multiculties are status to expand</p>
+<p>this chart then we will just forward</p>
+<p>prediction as well for this one and</p>
+<p>expand its Associated observations</p>
+<p>so that's the main idea so really the</p>
+<p>only difference here is that we don't</p>
+<p>even have any more departure observable</p>
+<p>lack of decision process for the past</p>
+<p>we only have</p>
+<p>magnification time step and we are also</p>
+<p>changing the inference algorithm from</p>
+<p>violation passing to bazel patreon</p>
+<p>and here's a more formal definition</p>
+<p>of the generality model so we can see</p>
+<p>here</p>
+<p>the likelihood and prior overstate for</p>
+<p>the initial downstep here is the example</p>
+<p>team and then for each uh</p>
+<p>like</p>
+<p>for each future State and observation or</p>
+<p>each routine says that we already are</p>
+<p>expanded we have</p>
+<p>the likelihood mapping and the</p>
+<p>transition mapping Associated to it</p>
+<p>in terms of performance We compare here</p>
+<p>bunching time active inference using</p>
+<p>Biogen filtering to the same algorithm</p>
+<p>so btai but with various times person</p>
+<p>and we see that for the same task one of</p>
+<p>them is performing with an order of</p>
+<p>magnitude which is about minute scale so</p>
+<p>around four minutes between four and</p>
+<p>seven minutes one of the other</p>
+<p>performers faster between 2 and 11</p>
+<p>seconds</p>
+<p>so this speed up in performance is</p>
+<p>basically uh made possible by the change</p>
+<p>of</p>
+<p>inference algorithm</p>
+<p>but now what we want to do is to be able</p>
+<p>to Define more than one observation and</p>
+<p>state at each time time point</p>
+<p>so what we are going to do this is by</p>
+<p>changing once again the insurance</p>
+<p>algorithm from</p>
+<p>better than filtering to believe</p>
+<p>propagation</p>
+<p>so what is belief propagation basically</p>
+<p>belief propagation is an algorithm that</p>
+<p>takes as inputs a function over some</p>
+<p>State variables</p>
+<p>and this function we know that it</p>
+<p>factorizes into a set of n factors which</p>
+<p>we call f i</p>
+<p>and the question is how can we compute</p>
+<p>the marginal distribution like the</p>
+<p>national over the marginal of this</p>
+<p>function when we marginalize out all the</p>
+<p>other random variable except for one SM</p>
+<p>okay so we want to marginalize the</p>
+<p>distribution of all that SM</p>
+<p>and the way I believe propagation is</p>
+<p>solving this task is basically by</p>
+<p>passing messages</p>
+<p>through the computational graph</p>
+<p>so in the graph we have two kinds of</p>
+<p>nodes we have Factor nodes which</p>
+<p>represent factors of the distribution</p>
+<p>for example F1 and then we have random</p>
+<p>variable</p>
+<p>maybe a X1</p>
+<p>and we may have several of them so F2</p>
+<p>and then X2</p>
+<p>okay and maybe</p>
+<p>we have a transition mapping between the</p>
+<p>two</p>
+<p>so this is the second and now what we</p>
+<p>want to do is to pass some messages</p>
+<p>through the graph so when it comes to a</p>
+<p>message from a node X to a factual</p>
+<p>so that's because we have one more here</p>
+<p>what we are going to do to compute the</p>
+<p>output message is just multiply the</p>
+<p>input messages</p>
+<p>that comes from the other arrows that</p>
+<p>you know goes toward this note and we</p>
+<p>just multiply all of the input message</p>
+<p>and outputs the result</p>
+<p>when it comes to a message from</p>
+<p>for a factor</p>
+<p>we basically are going to</p>
+<p>so take the factors for this Associated</p>
+<p>to this Factor node</p>
+<p>and multiply it by all the incoming</p>
+<p>messages so we take all the incoming</p>
+<p>messages and multiply them by the</p>
+<p>factual associated with this Factor node</p>
+<p>and then we marginalize out all the</p>
+<p>input Dimensions so that the message at</p>
+<p>the exact same shape as the this one the</p>
+<p>output as a Target random variables</p>
+<p>so this is the marginalization and</p>
+<p>speaking of that</p>
+<p>we do that for every single messages we</p>
+<p>can inside of the photograph and then we</p>
+<p>use those messages to compute the</p>
+<p>marginal that was the goal of uh of this</p>
+<p>algorithm and the way we do that is that</p>
+<p>we just take all the input messages</p>
+<p>and multiply them together and this</p>
+<p>gives us the marginal distribution over</p>
+<p>the specific State we wanted to</p>
+<p>so this lead us to multimodal on</p>
+<p>multi-factor branching time activities</p>
+<p>which is the last approach that we have</p>
+<p>been developing</p>
+<p>before to be able to speak a bit more</p>
+<p>about this approach I had to introduce</p>
+<p>the notion of temporal styles</p>
+<p>so the top work slides is just a set of</p>
+<p>states</p>
+<p>and observations we have Estates and all</p>
+<p>observation</p>
+<p>which so this is a plate rotation which</p>
+<p>just duplicates a variable all time or</p>
+<p>as time</p>
+<p>and then we have those dashed line what</p>
+<p>those dashed line are doing is just</p>
+<p>connecting the observation to a subset</p>
+<p>on the states over there so for example</p>
+<p>maybe we have an observation one which</p>
+<p>depends on stage 1 and state two</p>
+<p>and then maybe we have observation too</p>
+<p>but this observation 2 only depends on</p>
+<p>state two so the reason for which it's a</p>
+<p>dashed line is because we can have a</p>
+<p>path sparse mapping in uh between the</p>
+<p>state and observation we don't have to</p>
+<p>have all the possible connection</p>
+<p>okay and two slides total product slides</p>
+<p>can be connected through the transition</p>
+<p>mapping which is these arrows and this</p>
+<p>arrows mean is exactly the same but</p>
+<p>between two time steps so for example</p>
+<p>this uh the state over there can depend</p>
+<p>on the state as a previous time step in</p>
+<p>arbitrary fashion exactly like the</p>
+<p>observation depends on the an arbitrary</p>
+<p>subset of the states</p>
+<p>but this representation is a bit</p>
+<p>unpractical when it comes to presenting</p>
+<p>the entire generative model so what we</p>
+<p>do is that we just represent these top</p>
+<p>wire size</p>
+<p>as a square which is called t s t so the</p>
+<p>top right size attention and the</p>
+<p>background here here is gray because</p>
+<p>observation within the top slides are</p>
+<p>provided they are actually observed</p>
+<p>while in the future the background will</p>
+<p>be white uh because the observation are</p>
+<p>just not observed</p>
+<p>okay so now let's grab this more compact</p>
+<p>presentation we can present the</p>
+<p>generative model so here we see the</p>
+<p>initial time step</p>
+<p>and then from there we can expand some</p>
+<p>neutral plus size exactly when a</p>
+<p>multicult research has asked us to so we</p>
+<p>start there maybe we compute the UC</p>
+<p>Criterion this is a the highest uh the</p>
+<p>node with the highest Criterion so we</p>
+<p>are basically asked to expand those</p>
+<p>children</p>
+<p>and we can do so by just using the</p>
+<p>forward prediction</p>
+<p>for computing the state here and then</p>
+<p>from the state we use forward prediction</p>
+<p>once again to predict the future</p>
+<p>observation Associated to this top one</p>
+<p>slice</p>
+<p>foreign</p>
+<p>variable once again and it is a product</p>
+<p>of the probability of the temporal size</p>
+<p>at time T multiplied by all the future</p>
+<p>time control size okay so all the top</p>
+<p>right size we have already been</p>
+<p>expanding during multi-current research</p>
+<p>each observation depends uh so in the</p>
+<p>initial type of slide so this is the</p>
+<p>initial couple of times this observation</p>
+<p>depends on the subset of the state</p>
+<p>within this topmost size and because we</p>
+<p>are at the top of the tree the state at</p>
+<p>time step T does not depend on anything</p>
+<p>after that for each popular size in the</p>
+<p>future we still have the dependency</p>
+<p>on uh that we still have the fact that</p>
+<p>the observation depends on the state</p>
+<p>within the stopwatch slides but we also</p>
+<p>have the fact that the state in this</p>
+<p>topic slides depends on the state in the</p>
+<p>previous like the current top one slides</p>
+<p>so for example</p>
+<p>the state within this top right size</p>
+<p>half balance in inside this top one</p>
+<p>slice</p>
+<p>okay so this is the way the generative</p>
+<p>model is defined</p>
+<p>now the way we perform instance is using</p>
+<p>what we call the IP IP algorithm so I</p>
+<p>stand for inference and P will stand for</p>
+<p>prediction</p>
+<p>so this slide is about the inference Tab</p>
+<p>and the goal is to compute the posterior</p>
+<p>over the stage within uh the initial</p>
+<p>like the current template slides given</p>
+<p>the observations I'm not going to go</p>
+<p>through this derivation but you can</p>
+<p>pause the video if you are watching it</p>
+<p>on YouTube</p>
+<p>um</p>
+<p>but yeah so basically we do some</p>
+<p>derivation and then we obtain this</p>
+<p>solution</p>
+<p>which just tell us to take the product</p>
+<p>over all the electrical mapping with all</p>
+<p>the players and then use the build</p>
+<p>propagation to actually marginalize out</p>
+<p>this function</p>
+<p>and that's exactly uh what we are going</p>
+<p>to do we use big propagation within the</p>
+<p>current timestamp so if I go back here</p>
+<p>we have some observation here and we use</p>
+<p>build propagation to compute the state</p>
+<p>within the initial topographies</p>
+<p>so this is the each step the ISTEP which</p>
+<p>is the interest of</p>
+<p>then we need to perform the p-step each</p>
+<p>time the multicult research tells us to</p>
+<p>expand a part of the generality model</p>
+<p>so once again I'm not going to go</p>
+<p>through this derivation but basically</p>
+<p>the ID is to compute the posterior over</p>
+<p>the state in the next component size</p>
+<p>given the observation that we made in</p>
+<p>the current template slides</p>
+<p>so here we see that balcony once again</p>
+<p>we have some kind of summation over all</p>
+<p>the parents of the states</p>
+<p>in the top five slides that we want to</p>
+<p>to compute the posterior form</p>
+<p>and this is the transition mapping that</p>
+<p>we know and this</p>
+<p>is a posterior distribution from the</p>
+<p>previous sample size</p>
+<p>so basically what we are doing is just</p>
+<p>doing forward prediction in this case</p>
+<p>taking the expectation of the transition</p>
+<p>level</p>
+<p>we can do this for the stage</p>
+<p>and pause the observations</p>
+<p>so to come back to the main picture we</p>
+<p>first use the ISTEP to compute the</p>
+<p>posterior over the state and the initial</p>
+<p>couple of slides</p>
+<p>so this is the ISTEP and then we can use</p>
+<p>this those posterior distribution to</p>
+<p>compute the posterior over the states in</p>
+<p>the future so maybe the state in this</p>
+<p>double slides and then we can use once</p>
+<p>again the key step</p>
+<p>to compute the distribution of the</p>
+<p>future observations that correspond to</p>
+<p>the stop butterflies and we are going to</p>
+<p>do that to do that or time step like a</p>
+<p>all top of our slides we want to expand</p>
+<p>in the future</p>
+<p>okay and the next thing that we need to</p>
+<p>Define and last for this approach is the</p>
+<p>expected free launch so basically is</p>
+<p>where we are going to Define this is by</p>
+<p>first grouping all the observation into</p>
+<p>distant subsets</p>
+<p>so basically o i is a set of all</p>
+<p>observations in the top right size index</p>
+<p>by the muting this ion okay</p>
+<p>and now we are going to explain</p>
+<p>once we have grouped those observations</p>
+<p>into subset the way we Define the</p>
+<p>expected free energy is just as a sum</p>
+<p>over all possible</p>
+<p>uh groups of random variables so each of</p>
+<p>those will be iterate over those</p>
+<p>and then</p>
+<p>into the calendar versions between the</p>
+<p>prior</p>
+<p>um the predictive post style process</p>
+<p>observations</p>
+<p>so this is the risk term the color</p>
+<p>version between what will happen and</p>
+<p>what we want to about</p>
+<p>and then we will we will compute the</p>
+<p>ambiguity for each of the observation</p>
+<p>which is as usual defined as expected</p>
+<p>entropy of the likelihood mapping</p>
+<p>so this build equation is probably new</p>
+<p>for people for for people that have not</p>
+<p>created paper</p>
+<p>but we can look at one specific case</p>
+<p>which makes it more more intuitive and</p>
+<p>basically the specific case is just when</p>
+<p>each subset corresponds to one</p>
+<p>observation in the top five and in this</p>
+<p>case the expected frenergy for a</p>
+<p>specific processing so for one specific</p>
+<p>multi-index</p>
+<p>is just the risk for the specific</p>
+<p>observation</p>
+<p>plus the ambiguity or the specific</p>
+<p>observation so we still have ambiguity</p>
+<p>plus risk</p>
+<p>and now we need</p>
+<p>um to present like to test those</p>
+<p>approaches together so compare branching</p>
+<p>time and second chance with various time</p>
+<p>in such testing that isn't filtering and</p>
+<p>the last approach which is based on the</p>
+<p>propagation</p>
+<p>the way we are going to do that is by</p>
+<p>using a variance of these five datasets</p>
+<p>basically</p>
+<p>um we represent</p>
+<p>the the environment as a guide</p>
+<p>and</p>
+<p>so we okay in this environment we have</p>
+<p>three different shapes we have additives</p>
+<p>us that need to be pulled towards the</p>
+<p>bottom right corner of the image and we</p>
+<p>have squares and the squares needs to be</p>
+<p>pulled on the bottom left corner of the</p>
+<p>image</p>
+<p>and because there are way too many</p>
+<p>positions in X and Y what we do is that</p>
+<p>we do some form of State aggregation and</p>
+<p>for the eighth first position in the</p>
+<p>right left corner</p>
+<p>um upper left corner</p>
+<p>if the shape is in one of those eight</p>
+<p>position we are going to aggregate them</p>
+<p>into one state with index 0. and for</p>
+<p>this it will be in index one and then</p>
+<p>and so on so forth two three four add to</p>
+<p>19 for the squares and if it hurts we</p>
+<p>will just allocate those States</p>
+<p>um the indices between 20 and 39.</p>
+<p>and something for instance</p>
+<p>so what we are doing is basically</p>
+<p>reducing the state space so that some of</p>
+<p>those approaches can still do something</p>
+<p>because they are not powerful enough to</p>
+<p>solve the entire</p>
+<p>um State space</p>
+<p>so here are the results where we compare</p>
+<p>Financial expressing but Bayesian</p>
+<p>filtering and the last one which is</p>
+<p>based on belief propagation</p>
+<p>research passing we had to use a</p>
+<p>granularity of 4 which means that the</p>
+<p>length like the size of the square</p>
+<p>is like a 4x4 set of like a square so as</p>
+<p>a cell has a size of four by four</p>
+<p>and with this setting we were able to</p>
+<p>solve 96 of the times</p>
+<p>and the average time for one</p>
+<p>um</p>
+<p>for one trial is around five seconds</p>
+<p>with the base and filtering approach we</p>
+<p>were able to go down to the granularity</p>
+<p>of two so this times the cells have a</p>
+<p>size of two by two</p>
+<p>and with this I have with this</p>
+<p>granularity the hydrogen becomes able to</p>
+<p>solve the task 98 of the time</p>
+<p>while</p>
+<p>um</p>
+<p>but the thing is that because we reduce</p>
+<p>the size of the granularity we also</p>
+<p>increase the size of the stage space and</p>
+<p>this produces an like an increase in</p>
+<p>computational times uh which means that</p>
+<p>each trailer now requires around 17</p>
+<p>seconds to be executed</p>
+<p>for the last approach likely we use the</p>
+<p>fact that we now know the factorization</p>
+<p>of the likelihood and transition mapping</p>
+<p>and this allows us to go down all the</p>
+<p>way to un like only one the range of one</p>
+<p>that's cool so we are now able to</p>
+<p>differentiate between every single X and</p>
+<p>Y position inside the image</p>
+<p>and with this granularity we can solve</p>
+<p>the task perfectly and because we can</p>
+<p>take advantage of the</p>
+<p>like factorization of the distribution</p>
+<p>we go a lot faster than all of the</p>
+<p>previous approaches and we can solve the</p>
+<p>task in around 2.5 seconds</p>
+<p>so just I would just want to make one</p>
+<p>thing uh very clear here because this</p>
+<p>approach directly was able to model</p>
+<p>every y position every Exposition every</p>
+<p>shapes inside</p>
+<p>like you know shapes uh of the display</p>
+<p>of environments what is the orientation</p>
+<p>like possible orientation of the shape</p>
+<p>and or the scale</p>
+<p>um so basically each</p>
+<p>each shape can have different sizes and</p>
+<p>this scale Dimension represent that so</p>
+<p>basically this is approach reliable to</p>
+<p>to deal with around 700</p>
+<p>000 configuration of the state space</p>
+<p>now we have presented the results and</p>
+<p>show that this approach approaches</p>
+<p>daily performance like can lead to very</p>
+<p>good performance but now how do we trade</p>
+<p>that uh well here I've got a very small</p>
+<p>uh code example well directly I'm</p>
+<p>retrieving from the environments the a b</p>
+<p>c and d matrices</p>
+<p>the C Matrix</p>
+<p>symmetrics correspond to the</p>
+<p>prior preferences of the agent and as I</p>
+<p>already said several time a corresponds</p>
+<p>to likelihood a b corresponds to the</p>
+<p>transition and the is a prior of the</p>
+<p>initial States</p>
+<p>and then the way we'll go about creating</p>
+<p>the bti three agents is just by creating</p>
+<p>the top wire slides Builder telling him</p>
+<p>that we have one action which is called</p>
+<p>a underscore zero and then giving it the</p>
+<p>number of value that is that this</p>
+<p>instruction can take</p>
+<p>then we just add one state for every</p>
+<p>single state of our system so the X</p>
+<p>position y position shape scale and</p>
+<p>orientation and we provide as a second</p>
+<p>parameter the pack is the parameter of</p>
+<p>the trial over the state so now within</p>
+<p>our generative model we have the state</p>
+<p>of the system</p>
+<p>then we need to add the observation</p>
+<p>directly for each of the stage we add</p>
+<p>one different one observation which</p>
+<p>depends on this state through a matrix</p>
+<p>so we provide a matrix and the list of</p>
+<p>parents over there</p>
+<p>and this basically we add an observation</p>
+<p>for each state in the generality model</p>
+<p>so before last step is just</p>
+<p>um to add transition so basically for</p>
+<p>each stage in the system we say what is</p>
+<p>the B Matrix that need to be used and</p>
+<p>what are the prime the parents for this</p>
+<p>text so for example the position in X of</p>
+<p>the agent depends on the pronunciation</p>
+<p>in X at the previous previous term time</p>
+<p>step and the action which is being</p>
+<p>performed</p>
+<p>foreign</p>
+<p>probabilities within the model</p>
+<p>and the last step before to build the</p>
+<p>top right size is just to Define our</p>
+<p>prior preferences and because in the</p>
+<p>display data set we need to apply our</p>
+<p>preferences about the X Y and the shape</p>
+<p>of a blob what we do that we we say here</p>
+<p>is one factor so this is one of the X</p>
+<p>subsets of observations</p>
+<p>and we provide those three Matrix</p>
+<p>Associated to that</p>
+<p>then we call the the function build</p>
+<p>which just returned the top one slice</p>
+<p>and we create a PCI three map agent</p>
+<p>which uses the stock price slides and we</p>
+<p>provide a number of planning iteration</p>
+<p>we want the algorithm to use as well as</p>
+<p>the exploration constants that Traders</p>
+<p>exploration versus exploration</p>
+<p>expression exploitation</p>
+<p>and this is a graphical user interface</p>
+<p>that we have been developing</p>
+<p>particularly here we can see the initial</p>
+<p>supplys uh if we were in the software we</p>
+<p>can click on the standpoint slides and</p>
+<p>see the different post style over all</p>
+<p>the the state variable</p>
+<p>we can also see different information</p>
+<p>about those as a stopwatch Styles so the</p>
+<p>number of times have been visited on all</p>
+<p>this time and then we can use a button</p>
+<p>on the on the right on the left to</p>
+<p>basically perform a step-by-step</p>
+<p>multicarage research so what will happen</p>
+<p>in the interface is just we are going to</p>
+<p>add the children</p>
+<p>and then we will be able to click on</p>
+<p>those children to explore those parts of</p>
+<p>the trees so and we have information</p>
+<p>about the term water slides in the</p>
+<p>future</p>
+<p>so that's another tool that you can use</p>
+<p>to analyze both planning and the beliefs</p>
+<p>of the agents</p>
+<p>okay so I'm now</p>
+<p>um done with presenting the different</p>
+<p>approach it's now time for me to</p>
+<p>conclude this presentation</p>
+<p>so we have seen three different</p>
+<p>approaches the first is based on</p>
+<p>bioslamic slash passing and obviously</p>
+<p>using active entrance and Medical Art</p>
+<p>research</p>
+<p>the third one is based on business</p>
+<p>and the last one is based on the IP</p>
+<p>algorithm which is a mixture of belief</p>
+<p>propagation and forward prediction</p>
+<p>in terms of performance the first so bti</p>
+<p>vnp was basically slower like less</p>
+<p>performant than the second one which is</p>
+<p>once uh less performant than the third</p>
+<p>one</p>
+<p>okay but even with this uh increase in</p>
+<p>terms of performance ability on one</p>
+<p>approach to the next there are still</p>
+<p>some tasks that we can solve for example</p>
+<p>how do we solve image based problem or</p>
+<p>which is not clear how we can learn the</p>
+<p>structure of the generative model for</p>
+<p>now the the modeler has to provide the</p>
+<p>description of the model</p>
+<p>but it would be very nice if we could</p>
+<p>learn it from the data and also</p>
+<p>for now we have been basically providing</p>
+<p>the actions for like with useful</p>
+<p>sequence of actions for example if we go</p>
+<p>back to the described compartments we</p>
+<p>could imagine a task where each time we</p>
+<p>go right it's only pushing the shape one</p>
+<p>one position on the right and then one</p>
+<p>more and then one more but what we have</p>
+<p>been doing to make plan instructable is</p>
+<p>just by chunking all those actions</p>
+<p>together and maybe executing like eight</p>
+<p>action altogether or maybe four action</p>
+<p>altogether but this has its limitation</p>
+<p>and it will be really nice if we could</p>
+<p>run sequences of function like this</p>
+<p>automatically</p>
+<p>but that's all I wanted to say here are</p>
+<p>sugarfrances if you want to to give them</p>
+<p>up after the presentation and yeah thank</p>
+<p>you</p>
+<p>thank you for the presentation indeed</p>
+<p>use our reactions</p>
+<p>well</p>
+<p>very interesting a lot of</p>
+<p>material and things for us to discuss</p>
+<p>I'll start with just one general</p>
+<p>question and then Jacob and Ali looking</p>
+<p>forward to your questions</p>
+<p>just for some context</p>
+<p>how did this team and you come to be</p>
+<p>working on this problem were you working</p>
+<p>on active inference and interested in</p>
+<p>extensions or were you working in a</p>
+<p>different adjacent area and came to this</p>
+<p>algorithm</p>
+<p>okay so maybe one thing that I should</p>
+<p>have said is that I'm I've been starting</p>
+<p>like I started a PhD at the University</p>
+<p>of Kent and</p>
+<p>um</p>
+<p>basically whole world and Marek which</p>
+<p>are two of microbial laboratories on</p>
+<p>this project are my supervisors so this</p>
+<p>is how we we came up to to work together</p>
+<p>just through my PhD and lost to La Costa</p>
+<p>is a collaborator that I've been working</p>
+<p>with because I've been doing some</p>
+<p>presentation at the field which is the</p>
+<p>Institute of Neuroscience</p>
+<p>um where California is and that is</p>
+<p>through a presentation like during a</p>
+<p>pronunciation you know to me that he was</p>
+<p>um interested in working with me so this</p>
+<p>is how I started working with Larson</p>
+<p>Acosta and um so in time apply</p>
+<p>background I'm coming from a very</p>
+<p>computer science like school like follow</p>
+<p>into coding and then I arrived at um the</p>
+<p>University of Kent where I started to</p>
+<p>study about machine learning and this is</p>
+<p>where I started to gain some experience</p>
+<p>into</p>
+<p>reinforcement learning or even active</p>
+<p>influence and uh that woman was</p>
+<p>initially and Michael just as well was</p>
+<p>uh were two of my teachers and robot</p>
+<p>woman was already interested in active</p>
+<p>inference and one one day when she acted</p>
+<p>as a classes I came on scene and saying</p>
+<p>well I will be interested to a side</p>
+<p>project and that's how of course</p>
+<p>everything started and I ended up doing</p>
+<p>a PhD after that so</p>
+<p>that's it so basically a bit of both I</p>
+<p>come from machine learning my address as</p>
+<p>well uh long story comes from pure</p>
+<p>mathematics and what come from uh like</p>
+<p>neuroscience and easy guy which bring in</p>
+<p>the marketing from subject to the table</p>
+<p>excellent thank you so</p>
+<p>I have many more questions but how about</p>
+<p>ali first with a question</p>
+<p>yeah uh well first of all thanks a lot</p>
+<p>for your uh amazing presentation uh I've</p>
+<p>really learned a lot uh well I'd like to</p>
+<p>make a couple of comments if I may</p>
+<p>um and maybe a bunch of questions uh</p>
+<p>well as you're well aware active</p>
+<p>inference slash fep research has been</p>
+<p>going on recently in um basically two</p>
+<p>distinct paths uh the theoretical work</p>
+<p>geared mostly toward developing the</p>
+<p>underlying foundational principles for</p>
+<p>example the work of uh Dalton sector by</p>
+<p>development Max with Randstad and</p>
+<p>colleagues comes to mind and the more</p>
+<p>application oriented research</p>
+<p>perhaps not unlike the distinction</p>
+<p>between theoretical and experimental</p>
+<p>physics line of researchers uh but I'm</p>
+<p>not sure if you'd agree with me on this</p>
+<p>but it seems to me that sadly the</p>
+<p>application-oriented research and</p>
+<p>especially the work and the various</p>
+<p>algorithmic implementations of active</p>
+<p>imprints has not gained as much</p>
+<p>recognition as it should at least as</p>
+<p>compared to the research and theoretical</p>
+<p>side I mean the amount of related</p>
+<p>published literature is a previous cares</p>
+<p>comparatively so in light of this</p>
+<p>context</p>
+<p>your line of research seems to me a lot</p>
+<p>more daring and gains much more</p>
+<p>significant so I wanted to congratulate</p>
+<p>on that but uh you see I'm a big fan of</p>
+<p>unification in science and technology so</p>
+<p>my first question is about</p>
+<p>your opinion on the possibility of uh</p>
+<p>kind of unifying the different unifying</p>
+<p>the different algorithmic</p>
+<p>implementations of active imprints as an</p>
+<p>example you just mentioned the</p>
+<p>automatic learning is the structure of</p>
+<p>the generative model as a possible</p>
+<p>subject for a future and research I'm</p>
+<p>not sure if you've seen uh with here at</p>
+<p>all's a very recent paper from a couple</p>
+<p>of weeks ago namely the learning</p>
+<p>generative models for active imprints</p>
+<p>using tensor networks if I'm correct</p>
+<p>which outlines an interesting physics</p>
+<p>inspired approach for that task but it</p>
+<p>doesn't include any citations to any of</p>
+<p>the branching time active inference the</p>
+<p>papers probably because they weren't</p>
+<p>aware of your work at the time of their</p>
+<p>writing but this works work looks to me</p>
+<p>as a pretty good candidate for a</p>
+<p>potential integration with btai in order</p>
+<p>to overcome some of the limitations you</p>
+<p>just mentioned uh or another recent</p>
+<p>example uh that would probably be uh</p>
+<p>sanish rolls paper deriving time</p>
+<p>averaged active influence from control</p>
+<p>principles uh which is an attempt to</p>
+<p>derive an infinite Horizon</p>
+<p>um average uh surprise formulation of</p>
+<p>active inference</p>
+<p>um so I really liked your comparative</p>
+<p>overview of the different variants of</p>
+<p>branching time active imprints</p>
+<p>especially the Benchmark analyzes and</p>
+<p>um I know you described a sophisticated</p>
+<p>active inference in your work as a</p>
+<p>subset of branching time active interest</p>
+<p>but regardless of these are specific</p>
+<p>examples I just mentioned I wanted to</p>
+<p>ask how do you see the future of btai in</p>
+<p>terms of its possible unification with</p>
+<p>the other variants of active inference</p>
+<p>implementations each with its own pros</p>
+<p>and cons in order to overcome some of</p>
+<p>the uh some of their limitations without</p>
+<p>compromising the advantage messages of</p>
+<p>each I mean do you see it as a</p>
+<p>possibility that branching time active</p>
+<p>imprints will one day subsume all the</p>
+<p>other approaches somehow in a truly</p>
+<p>integrated kind of framework</p>
+<p>so to be honest I don't exactly know I I</p>
+<p>the only</p>
+<p>like part of the chapter that I've been</p>
+<p>exploring is a connection with launching</p>
+<p>time active inference has been active in</p>
+<p>France and sophisticated entrance and I</p>
+<p>haven't been really speak about based on</p>
+<p>the pronunciation but I can quickly give</p>
+<p>the idea of uh what my worker has been</p>
+<p>like what has been the conclusion of</p>
+<p>this</p>
+<p>and basically</p>
+<p>um it is really about</p>
+<p>how we back propagate</p>
+<p>um what I call the local spectator</p>
+<p>energy which is basically as the</p>
+<p>expected for energy associated with uh</p>
+<p>one node in the future and</p>
+<p>so if you back propagate those upward in</p>
+<p>the trade following</p>
+<p>um</p>
+<p>like multi-carot research which</p>
+<p>basically comes from bandman's equations</p>
+<p>and all this kind of</p>
+<p>um literature in reinforcement learning</p>
+<p>you will fall into you will underprove</p>
+<p>an approach which is very close to</p>
+<p>sophisticated imprints basically because</p>
+<p>sophisticated inference is also taking</p>
+<p>some inspiration into the benman</p>
+<p>equations just applying it to the</p>
+<p>expected free energy instead of just</p>
+<p>having reward uh if you go downward</p>
+<p>search that propagates those local costs</p>
+<p>towards the future then what you are</p>
+<p>effectively doing is just Computing like</p>
+<p>the path integral of the expected free</p>
+<p>energy and so this will be active</p>
+<p>inference just taking the sum of all</p>
+<p>future timestart of</p>
+<p>of the expected friendship as a great so</p>
+<p>this was sophisticated inference and</p>
+<p>this will be active influence now</p>
+<p>concerning the other approaches that you</p>
+<p>mentioned I haven't been reading</p>
+<p>um those papers so I consciously State</p>
+<p>on that</p>
+<p>um but yeah I believe that punching time</p>
+<p>actually runs is a very general</p>
+<p>framework so it may be the case that</p>
+<p>some of them will be related but more</p>
+<p>research is not on this this</p>
+<p>thank you very much</p>
+<p>great comments Jakob do you have any</p>
+<p>question</p>
+<p>yeah um once again thanks a lot for the</p>
+<p>awesome presentation and definite it</p>
+<p>definitely explained a lot of uh things</p>
+<p>that I didn't understand uh on my uh</p>
+<p>reading through through the original</p>
+<p>paper</p>
+<p>uh I'm wondering uh again going back to</p>
+<p>the question of learning the structure</p>
+<p>of of the different components of the</p>
+<p>generative model</p>
+<p>um in in your paper you mentioned you</p>
+<p>mentioned uh using</p>
+<p>um</p>
+<p>deep neural networks as general function</p>
+<p>approximators for learning this uh the</p>
+<p>state space representation and I'm</p>
+<p>wondering whether you have given some</p>
+<p>thought of into how neural networks</p>
+<p>might fit into this Factory graph</p>
+<p>representation of the generative model</p>
+<p>and I guess I guess there are perhaps</p>
+<p>also two ways to look at learning the</p>
+<p>structure of of these different</p>
+<p>components one is just the initial step</p>
+<p>of uh</p>
+<p>in your slide when you showed the kind</p>
+<p>of initialization of the model uh</p>
+<p>getting the</p>
+<p>A and B tensors the the prior the</p>
+<p>preferences and and um the prior beliefs</p>
+<p>kind of replacing that step with uh with</p>
+<p>deep neural networks to learn the</p>
+<p>representations but perhaps there's also</p>
+<p>another another side to</p>
+<p>um where you could dynamically change</p>
+<p>the dimensions of these different</p>
+<p>components as in perhaps the Asian</p>
+<p>receives an observation that wasn't</p>
+<p>captured in the likelihood mapping of</p>
+<p>the a tensor or perhaps it's a</p>
+<p>multi-agent setting where One agent has</p>
+<p>affordances the other agent doesn't and</p>
+<p>a new transition mapping needs to be</p>
+<p>learned through observations uh so um uh</p>
+<p>wondering what your thoughts are on this</p>
+<p>and</p>
+<p>how you think this might be compatible</p>
+<p>with branching time active inference</p>
+<p>okay so what is the Deep learning</p>
+<p>um area is I think pretty interesting</p>
+<p>and should be enabling active interns to</p>
+<p>scale to a more complicated tasks and</p>
+<p>more recently so this paper is not yet</p>
+<p>out but I'm working on a deep learning</p>
+<p>version of active inference so for now</p>
+<p>there is no branching time inside the</p>
+<p>picture so there is no more takeout</p>
+<p>research</p>
+<p>and the reason is because it's already</p>
+<p>surprisingly difficult to make it work</p>
+<p>just for active influence and</p>
+<p>um basically I've been reviewing some of</p>
+<p>the paper into Etc and uh and then I</p>
+<p>provide my own implementation of a deep</p>
+<p>active entrance but for example I speak</p>
+<p>I spoke about the display data set and I</p>
+<p>was not able to make a deep active</p>
+<p>influence work on these approaches on</p>
+<p>this on these environments</p>
+<p>so yeah and I've been doing a</p>
+<p>presentation as a field about this uh</p>
+<p>but basically some of the implementation</p>
+<p>on the internet contain mistakes</p>
+<p>um and yeah some of the paper also</p>
+<p>contains some like I mean I'm not sure</p>
+<p>if possible paper exact mistake that's</p>
+<p>that I don't understand and um for</p>
+<p>another zooters I've not been able to to</p>
+<p>answer my questions</p>
+<p>um so basically what I'm trying to say</p>
+<p>that I've been trying to finance deep</p>
+<p>active inference and</p>
+<p>surprisingly</p>
+<p>it's quite difficult to make it work at</p>
+<p>least on the despite environment</p>
+<p>so there will be a first paper about</p>
+<p>analysis analyzing what the Deep neural</p>
+<p>networks are actually learning and why</p>
+<p>it is failing on this environment</p>
+<p>and then</p>
+<p>um what I wanted to do is try to apply</p>
+<p>this implementation that I hope is</p>
+<p>correct</p>
+<p>um two different tasks uh most</p>
+<p>especially like the target games and</p>
+<p>stuff like this and try to find out</p>
+<p>whether there are some tasks for which</p>
+<p>the expected freemergy and you know is</p>
+<p>implementation of the effective</p>
+<p>inference can actually solve the task</p>
+<p>and the parameter preliminary result</p>
+<p>that I have on this</p>
+<p>um is that there seems to be some tasks</p>
+<p>or which uh deep active influence</p>
+<p>is actually performing better than for</p>
+<p>example dqm which is a benchmark from</p>
+<p>the reinforcement learning literature</p>
+<p>and uh yeah that's it's not as</p>
+<p>a straightforward basket since</p>
+<p>um when I was it's quite challenging to</p>
+<p>to implement that was more for large um</p>
+<p>deep learning aspects I think it's we</p>
+<p>still need to work quite a lot before to</p>
+<p>to make something very robust that can</p>
+<p>beat uh more standard reinforcement</p>
+<p>learning for like benchmarks</p>
+<p>and yeah the other opportunities to</p>
+<p>structural learning I have not been able</p>
+<p>like I have not researched it for now so</p>
+<p>we need more time to to think about a</p>
+<p>more robust answer to your question</p>
+<p>that's yeah that's basically what I had</p>
+<p>to say</p>
+<p>thank you excellence</p>
+<p>one really striking aspect of the</p>
+<p>presentation was the analysis of the</p>
+<p>computational complexity</p>
+<p>so maybe we could return to this because</p>
+<p>it's something that we've wondered about</p>
+<p>and discussed on a few occasions</p>
+<p>yeah you presented the theoretical</p>
+<p>complexity classes with a Big O notation</p>
+<p>and then also discussed some of the</p>
+<p>Practical aspects of the actual like</p>
+<p>clock time on a given Hardware wasn't</p>
+<p>exactly sure what language or um</p>
+<p>Hardware you ran it on but provided the</p>
+<p>theoretical complexity class as well as</p>
+<p>some runtime provisioning so I was</p>
+<p>curious to hear some</p>
+<p>thoughts on how does this big O</p>
+<p>computational complexity analysis shine</p>
+<p>light on different variants of active</p>
+<p>inference as well as branchy time active</p>
+<p>inference and what real computational</p>
+<p>resources were taxed in the analysis was</p>
+<p>this a ram overflow that caused the</p>
+<p>crash that you referenced earlier is it</p>
+<p>a CPU throttling is it paralyzable does</p>
+<p>it require temp files like what in</p>
+<p>theory is happening with a computational</p>
+<p>complexity and the exponential blow up</p>
+<p>and then what in practice is going to</p>
+<p>facilitate this kind of analysis to</p>
+<p>scale</p>
+<p>okay so first thing like this complexity</p>
+<p>analysis was done in terms of the space</p>
+<p>which is required to store all the</p>
+<p>parameter of the you know distribution</p>
+<p>of the states okay so here we are really</p>
+<p>interested in how much space do I need</p>
+<p>in order to store all the distribution</p>
+<p>of the states like all the posterior</p>
+<p>distribution of the states</p>
+<p>and but if what happens uh in standard</p>
+<p>active inference is that the number of</p>
+<p>policy that's will be available to the</p>
+<p>agent so let's suppose we have two</p>
+<p>actions</p>
+<p>we have one here one here okay action</p>
+<p>zero action one here at the first time</p>
+<p>step there are two actions at the second</p>
+<p>time step that we deformed black policy</p>
+<p>basically that the agent can</p>
+<p>um</p>
+<p>can actually perform it can go for zero</p>
+<p>zero zero one one zero and one one and</p>
+<p>this number of classes will basically be</p>
+<p>multiplied by two each time step uh like</p>
+<p>for instance on the road right because</p>
+<p>each time we can now click each of the</p>
+<p>action again for each of the previous</p>
+<p>processes</p>
+<p>and this exponential growth is quite</p>
+<p>problematic</p>
+<p>for for example the prior of a policy</p>
+<p>social member</p>
+<p>um</p>
+<p>this definition for the prior of the</p>
+<p>policies we see that in order to define</p>
+<p>the prior over the policy we need to</p>
+<p>confuse the expected free energy for</p>
+<p>each of those bonuses</p>
+<p>but we need to do that for an</p>
+<p>exponential number of them as uh the</p>
+<p>timer wasn't applying increases</p>
+<p>so this is the first problem</p>
+<p>and also</p>
+<p>this explanationally exponential</p>
+<p>explosion is not limited to the number</p>
+<p>of policy because we still remember okay</p>
+<p>so maybe for this one I need to go</p>
+<p>um and look at the variational</p>
+<p>distribution which is used in buyer</p>
+<p>style inference but we see that the</p>
+<p>number like the biracial posterior of</p>
+<p>the states depends on the policy</p>
+<p>so for each of the policy we need to</p>
+<p>store a distribution of a state</p>
+<p>and this is once again a problem because</p>
+<p>there's an exponential number of policy</p>
+<p>which means that there is an exponential</p>
+<p>number of</p>
+<p>of</p>
+<p>stereo that we need to store</p>
+<p>so this is the kind of problem that</p>
+<p>appears</p>
+<p>um within</p>
+<p>um standard Arctic inference the number</p>
+<p>of policy is growing exponentially</p>
+<p>and we also need to store the</p>
+<p>distribution of a state for each time</p>
+<p>step</p>
+<p>now where launching time active</p>
+<p>inference becomes useful is that it uses</p>
+<p>a structure like there's a graph</p>
+<p>structure to avoid to have to store</p>
+<p>every single single possible combination</p>
+<p>of uh you know time step versus policy</p>
+<p>and so</p>
+<p>this those two we see that is growing</p>
+<p>linearly is because we just keep in</p>
+<p>memory one distribution for each state</p>
+<p>in the past and presence</p>
+<p>and only when it comes uh the current</p>
+<p>time step do we start imagining what's</p>
+<p>going to happen in the future</p>
+<p>and this growth is still exponential</p>
+<p>like if we add if we had to explore</p>
+<p>every single possible polar in the</p>
+<p>future we will still have an exponential</p>
+<p>growth but because we are using</p>
+<p>multicarage research</p>
+<p>basically we are going to only explore a</p>
+<p>small amount of the tree</p>
+<p>and this is where the complexity moved</p>
+<p>from exponential to linear into the with</p>
+<p>respect to the number of expansion of</p>
+<p>the model so each time we expand</p>
+<p>a new branch in this model we need to</p>
+<p>store one more categorical for this uh</p>
+<p>future timestamp that's good</p>
+<p>and so this is how</p>
+<p>uh like we can move from an exponential</p>
+<p>[Music]</p>
+<p>complexity plus into linear one with</p>
+<p>respect to the number of expansion of</p>
+<p>the generative model</p>
+<p>so that was for the capacity class</p>
+<p>in terms of Hardware it was basically</p>
+<p>just on my own computer uh some real</p>
+<p>critical uh GPU used nothing like this</p>
+<p>just CPU basically</p>
+<p>very interesting and on the hardware or</p>
+<p>on the implementation side where do you</p>
+<p>see</p>
+<p>packages in python or Julia like Forney</p>
+<p>lab and the reactive message passing</p>
+<p>Paradigm being developed or do you see</p>
+<p>gpus as being relevant like this is the</p>
+<p>storage consideration what kinds of</p>
+<p>scaling relationships or in theory and</p>
+<p>practice how are the operational aspects</p>
+<p>of the Computing rather than the space</p>
+<p>requirements computed</p>
+<p>so the first thing to say is that the</p>
+<p>space complexity is also linked to the</p>
+<p>time and you know computational</p>
+<p>complexity and because for example as I</p>
+<p>said when I was speaking about</p>
+<p>the</p>
+<p>the prior over policy if we have an</p>
+<p>exponential number of products you need</p>
+<p>to compute an exponential number of</p>
+<p>expected free energy on each of those</p>
+<p>policies so and same thing for when it</p>
+<p>comes to the posterior when we have to</p>
+<p>store the Via style posterior and that</p>
+<p>there is an exponential number of them</p>
+<p>then we also need to compute them so</p>
+<p>this will also become extractable in</p>
+<p>solution</p>
+<p>and um in terms of implementation I know</p>
+<p>that's some people have been developing</p>
+<p>a phone lab in in Julia I've been</p>
+<p>providing my own implementation in</p>
+<p>Python</p>
+<p>um so yeah those are possibilities in</p>
+<p>terms of uh gpus I guess their usage</p>
+<p>will be</p>
+<p>um</p>
+<p>really useful only if the</p>
+<p>isographical model allows for</p>
+<p>parallelization</p>
+<p>for example one case where the gpus are</p>
+<p>very useful is for images because each</p>
+<p>position in the image can generally be</p>
+<p>processed in parallel</p>
+<p>so if we had like an alternative model</p>
+<p>where we had I don't know likelihood</p>
+<p>mapping purchase 4 pixel next to each</p>
+<p>others like a patch in the image and we</p>
+<p>had to compute the all the posterior for</p>
+<p>all the image then there is a very large</p>
+<p>potential for parallelization</p>
+<p>but if for example a message as a</p>
+<p>dependency on a previous message</p>
+<p>then there will be um just a part of the</p>
+<p>GPU which is just waiting for the input</p>
+<p>message to arrive so there is also</p>
+<p>um basically limitation on that because</p>
+<p>some of the analytical solution requires</p>
+<p>some other messages so there are some</p>
+<p>dependency throughout the dependency</p>
+<p>like the the graphical model by the way</p>
+<p>so using GPU yes but probably in</p>
+<p>specific generator model for which it's</p>
+<p>useful such as image based generative</p>
+<p>model or um so yeah discount if we have</p>
+<p>something which is very simple then I</p>
+<p>think it's not going to benefit a lot</p>
+<p>from gpu's complication</p>
+<p>excellent</p>
+<p>thank you</p>
+<p>[Music]</p>
+<p>um</p>
+<p>Ali again or Jakob if you'd like another</p>
+<p>question or I can ask one</p>
+<p>yeah I also wanted to ask about the</p>
+<p>different</p>
+<p>um the possible future implementations</p>
+<p>of branching time accident Prince</p>
+<p>because</p>
+<p>um Daniel and Jacob knows know that I'm</p>
+<p>a big Julia fan so I wanted to know if</p>
+<p>there's a plan to have a jewelry</p>
+<p>implementation a branching time active</p>
+<p>inference because I think we already</p>
+<p>have a C plus plus and python if I'm</p>
+<p>quite right the first branching time</p>
+<p>active inference was implemented in C</p>
+<p>plus plus and the multimodal one in</p>
+<p>Python so what are the future plans for</p>
+<p>uh</p>
+<p>the other other forms implementation of</p>
+<p>btai</p>
+<p>so for now I was just planning to just</p>
+<p>use Python</p>
+<p>um but I guess it should not be too hard</p>
+<p>to report it in Julia and just for now I</p>
+<p>don't have the usage voice</p>
+<p>um let's share that and also for like</p>
+<p>future possibility when it comes to</p>
+<p>punching time active inference I've been</p>
+<p>starting to work on trying to implement</p>
+<p>a slant algorithm</p>
+<p>um</p>
+<p>so this is a simultaneously location and</p>
+<p>mapping so that if we create a map of</p>
+<p>these environments as we navigate</p>
+<p>through it so this is also like a</p>
+<p>possibility but within this uh context</p>
+<p>basically I was going to go</p>
+<p>exponentially that we can have</p>
+<p>observation that depends on a very large</p>
+<p>number of states and therefore what we</p>
+<p>need to have is more like a conditional</p>
+<p>probability table which is stored as a</p>
+<p>tree so it's biologically</p>
+<p>um you can encourage rules with</p>
+<p>interconditional probability table for</p>
+<p>example you have a school that you have</p>
+<p>okay probability of C given a and b</p>
+<p>then maybe if a is equal to 1</p>
+<p>you want to have</p>
+<p>a branching on B and then we have 0 1.</p>
+<p>and maybe this is real points okay nine</p>
+<p>okay so what this means is that if a is</p>
+<p>equal to one and B is equal to zero then</p>
+<p>the probability distribution of a c is</p>
+<p>going to be 0.1 for the first value on</p>
+<p>0.9 inches for the second value and so</p>
+<p>basically says the idea is to try to</p>
+<p>not represents the entire table but</p>
+<p>choose a tree structure to uncut rules</p>
+<p>about the dynamic of the world and the</p>
+<p>likelihood function as well</p>
+<p>and then the challenge is to be able to</p>
+<p>perform forward prediction from this</p>
+<p>tree and in France also from the stream</p>
+<p>and so this is another picture which may</p>
+<p>be integrated inside</p>
+<p>um which UI in the future</p>
+<p>definitely a theme that runs through a</p>
+<p>lot of these discussions is representing</p>
+<p>objects as trees and then taking the</p>
+<p>tree turn or in the forest turn</p>
+<p>seriously because the tree structure</p>
+<p>allows us to</p>
+<p>avoid redundancies and enable some new</p>
+<p>types of analyzes Jacob do you have a</p>
+<p>question or I can ask one</p>
+<p>yeah uh maybe</p>
+<p>um continuing on the slam thread I'm</p>
+<p>wondering whether uh</p>
+<p>you're consider considering the</p>
+<p>application of Slam to the</p>
+<p>um image classification problem and</p>
+<p>perhaps how the image classification</p>
+<p>problem needs to be reframed to even fit</p>
+<p>this uh well first of all branching time</p>
+<p>active inference scheme but overall</p>
+<p>active inference scheme because</p>
+<p>um it seems that active imprints overall</p>
+<p>is</p>
+<p>much better suited to these kind of</p>
+<p>continuously evolving problems where the</p>
+<p>generative process uh changes whenever</p>
+<p>um the agent takes actions whereas an</p>
+<p>image classification problem</p>
+<p>seems to be way more static which uh at</p>
+<p>least in the in the machine learning</p>
+<p>scheme it's</p>
+<p>just input and output and then perhaps</p>
+<p>uh some um error</p>
+<p>um that gets back propagated through the</p>
+<p>network</p>
+<p>um so</p>
+<p>I'm wondering how you um how you are</p>
+<p>thinking about</p>
+<p>um</p>
+<p>image image classification with uh</p>
+<p>active inference and overall just how</p>
+<p>images can act</p>
+<p>um as input in in</p>
+<p>um dynamical environments</p>
+<p>So yeah thank you for the impression</p>
+<p>once again</p>
+<p>um this uh so basically the thing with</p>
+<p>like image classification is that we</p>
+<p>don't have this stopwatch structure like</p>
+<p>you just mentioned which make it quite</p>
+<p>difficult for an active in France engine</p>
+<p>to be applied to this in some sense it's</p>
+<p>a bit like the transition mapping is</p>
+<p>is like an identity function in some</p>
+<p>stuff like</p>
+<p>um yeah it's a bit difficult to think</p>
+<p>about how you can bring it but</p>
+<p>yeah because each time step could be one</p>
+<p>image for example is a classification</p>
+<p>um but I think active inference is just</p>
+<p>not really well suited to to something</p>
+<p>like this for classification I think</p>
+<p>they are like just classification models</p>
+<p>like you know whatever resonate or</p>
+<p>whatever which are much better suited</p>
+<p>um</p>
+<p>basically if you had to apply active</p>
+<p>inference it would have to you have to</p>
+<p>have to change the structure of the</p>
+<p>model uh to remove that it is a top wall</p>
+<p>uh transition and just to have</p>
+<p>observation and otherwise you will need</p>
+<p>some kind of dynamic or violence like</p>
+<p>the Atari games black manuals kind of of</p>
+<p>a thing or like the despite environments</p>
+<p>and in this case you can model the</p>
+<p>temporal dynamics of the environments</p>
+<p>and so here active influence really</p>
+<p>helps because you can you know think</p>
+<p>about action and how they impact the</p>
+<p>transition and you can have</p>
+<p>so basically an encoder that will</p>
+<p>compress the image so you will have</p>
+<p>technically an image here you will have</p>
+<p>an encoder networks a bit like in a via</p>
+<p>channel to encoder that will produce a</p>
+<p>parameter so the mean and a variance of</p>
+<p>a distribution of the states and then we</p>
+<p>will have the decoder over there which</p>
+<p>produce another image</p>
+<p>from the latent variable basically and</p>
+<p>then we will have here like a transition</p>
+<p>Networks</p>
+<p>which is also a digital networks which</p>
+<p>outputs as a mean and variance of a</p>
+<p>distribution over the state as a next</p>
+<p>time step</p>
+<p>and yeah and then here you have another</p>
+<p>encoder for the future image and another</p>
+<p>decoder for the the future image as well</p>
+<p>and these transition networks will have</p>
+<p>to take into account basically the</p>
+<p>action as well as the states to predict</p>
+<p>the next state so that's the kind of</p>
+<p>architecture you will need to create a</p>
+<p>deep active inference address</p>
+<p>and I think it's better suited to</p>
+<p>Dynamic environments like attack against</p>
+<p>identities or static environments and</p>
+<p>this is indeed a lot more complicated to</p>
+<p>apply it to</p>
+<p>if I could give a few thoughts on image</p>
+<p>slam</p>
+<p>very fascinating point about static</p>
+<p>analyzes</p>
+<p>and dynamic analyzes and so</p>
+<p>what are some ways that we could pseudo</p>
+<p>dynamicize the image classification task</p>
+<p>so a few options one of them is</p>
+<p>navigation amongst large databases of</p>
+<p>images so potentially choosing</p>
+<p>informative examples for training in</p>
+<p>large empirical image databases or</p>
+<p>frames from video or in a dynamic</p>
+<p>feedback with prompt engineering for AI</p>
+<p>generated images so then it makes it</p>
+<p>into a dynamic question response task</p>
+<p>that would be using Dynamics at the</p>
+<p>level across images but still taking in</p>
+<p>the whole image and one other approach</p>
+<p>could be building on some of the oculum</p>
+<p>motor active inference models of</p>
+<p>attention</p>
+<p>only taking in a small amount of the</p>
+<p>image potentially reducing the state</p>
+<p>space or the computational complexity</p>
+<p>vastly and then making the Dynamics of</p>
+<p>some lower level entity related to</p>
+<p>policy selections on eye movements or</p>
+<p>attention and then treat that as like</p>
+<p>the lower level of the slam and the</p>
+<p>classification what kind of image am I</p>
+<p>looking at as a higher level of a slam</p>
+<p>but the policy is being enacted at the</p>
+<p>level of which parts of the image are</p>
+<p>being scanned</p>
+<p>right</p>
+<p>yeah that's indeed a very nice setting</p>
+<p>for other ideas</p>
+<p>which require registration as a task uh</p>
+<p>but as indeed bring you much more like</p>
+<p>much better suited to active influence</p>
+<p>um so very interesting</p>
+<p>I wanted to also ask about</p>
+<p>um two</p>
+<p>modules or functions that various other</p>
+<p>active proposals have had which are</p>
+<p>hierarchical nesting of models and</p>
+<p>learning</p>
+<p>so how do nesting and learning influence</p>
+<p>the theoretical and the realized</p>
+<p>computational complexity</p>
+<p>so I think like I think you actually can</p>
+<p>really help but use a computational</p>
+<p>complexity of an active infants agents</p>
+<p>um for example one idea would be to so I</p>
+<p>was speaking about generative model over</p>
+<p>images</p>
+<p>uh imagine you had like an image and</p>
+<p>then so an image can be like it's</p>
+<p>millions of possible combination rights</p>
+<p>like not even more than that but</p>
+<p>probably more than atoms in the universe</p>
+<p>but what you could do is like a bit</p>
+<p>by imitating the structure of a</p>
+<p>convolutional neural networks maybe you</p>
+<p>can create over patch of pixels a</p>
+<p>generative world that we extract for</p>
+<p>example different line patterns so maybe</p>
+<p>uh horizontal like or diagonal lines or</p>
+<p>horizontal lines and we will have a</p>
+<p>first level of your the hierarchy which</p>
+<p>will extract those informations and then</p>
+<p>you will have you know pattern of</p>
+<p>patterns and so on so forth I think you</p>
+<p>can create this</p>
+<p>um you know as a categorical</p>
+<p>distribution but in a VR other model</p>
+<p>basically it's a very beginning you have</p>
+<p>pixels and then you have small edges and</p>
+<p>stuff like this and combination of edges</p>
+<p>and all the way up basically to to</p>
+<p>having objects</p>
+<p>um but this is very complicated like</p>
+<p>um in terms of implementation we will</p>
+<p>require to like probably use GPU for the</p>
+<p>inference process because there will be</p>
+<p>very large number of patches so we will</p>
+<p>need to speed up the training</p>
+<p>but still I think this is a very good</p>
+<p>way to reduce the state space of the of</p>
+<p>the agents because if you try to to</p>
+<p>basically put an image as input of a</p>
+<p>standard active influence agents you</p>
+<p>will have to have like yeah like more</p>
+<p>possible images and numbered or pattern</p>
+<p>in the universe even probability with</p>
+<p>small images</p>
+<p>so hierarchy can really help on that</p>
+<p>um and so you had another question right</p>
+<p>other than uh this the second aspect was</p>
+<p>about learning for example what if we</p>
+<p>update our priors as the tree continues</p>
+<p>or we want to consider policies on</p>
+<p>priors or other types of updating of our</p>
+<p>different parameters that might be fixed</p>
+<p>in other settings</p>
+<p>yeah so one thing to say about</p>
+<p>um having learnable prayers is that</p>
+<p>in some cases this could go really wrong</p>
+<p>so</p>
+<p>if you don't like okay imagine you have</p>
+<p>observations</p>
+<p>and you have States so those are the</p>
+<p>observations uh or sorry this is the</p>
+<p>states and this will be the observations</p>
+<p>so three possible States two possible</p>
+<p>observations and if you start with a</p>
+<p>Jewish layer prior which is just fully</p>
+<p>uniform so maybe the parameters are all</p>
+<p>one everywhere</p>
+<p>well what's going to happen is that if</p>
+<p>you make one of the observation it's</p>
+<p>just going to give you as much</p>
+<p>um like the entrance process within her</p>
+<p>uniform distribution of the states</p>
+<p>because the weights within the Matrix</p>
+<p>are basically all one so there's for</p>
+<p>each observation there is no real</p>
+<p>like state which will be more likely to</p>
+<p>to basically generate it</p>
+<p>which means that the inference process</p>
+<p>will have a uniform distribution of a</p>
+<p>state and basically</p>
+<p>this is a problem because what you will</p>
+<p>end up having</p>
+<p>is like a a matrix where maybe some</p>
+<p>states are more likely but each state is</p>
+<p>not more likely to generate different</p>
+<p>observations and so basically there is a</p>
+<p>failure of learning</p>
+<p>because</p>
+<p>it's just not able to like if you happen</p>
+<p>again so if you remember the way we</p>
+<p>update the parameters it's just by</p>
+<p>counting the number of states</p>
+<p>observation pair that we are being</p>
+<p>observing and if the state which is</p>
+<p>observed is already is always like one</p>
+<p>point like one third for example</p>
+<p>like it's a uniform distribution then</p>
+<p>it's going to count one third of the</p>
+<p>observation for all the state at the</p>
+<p>same time and we are not able to</p>
+<p>identify which states has been able to</p>
+<p>generate this observation because they</p>
+<p>are all as likely to generate these</p>
+<p>observations and so what is going to</p>
+<p>happen that you deviously just cannot</p>
+<p>learn which states generate which</p>
+<p>observation is just countings in above</p>
+<p>time a state has appeared but not you</p>
+<p>know with respect to observations</p>
+<p>so this is a Visionary case which shows</p>
+<p>that adding matrices for example with</p>
+<p>derivative and stuff like this can fail</p>
+<p>to ruin the dynamic of the environments</p>
+<p>and the likelihood of the environment as</p>
+<p>well</p>
+<p>so maybe having digital networks can you</p>
+<p>know avoid this problem uh but yeah it</p>
+<p>seems that's a real challenge like</p>
+<p>learning the parameters within electric</p>
+<p>influence model seems to requires like a</p>
+<p>human to cross give it a first drafts</p>
+<p>where the</p>
+<p>likelihood like that's a cryo is not</p>
+<p>uniform when it comes to the Jewish flag</p>
+<p>if the model is to be able to run</p>
+<p>so this is one of the challenge for</p>
+<p>learning in active influence</p>
+<p>it's something we've come across in</p>
+<p>specifying the state space and what</p>
+<p>policies are possible and it it's an</p>
+<p>interesting conversation because it</p>
+<p>brings us as modelers into engagement</p>
+<p>with the model</p>
+<p>and helps clarify where are we setting</p>
+<p>scaffolds and constraints what</p>
+<p>information are we what manifolds are we</p>
+<p>placing that agent into that set it up</p>
+<p>oh it's rolling downhill within some</p>
+<p>super local context even if that local</p>
+<p>context is still enormous in its state</p>
+<p>space it may still be just the tip of</p>
+<p>the iceberg in terms of the total model</p>
+<p>structures and that's not even to say we</p>
+<p>need to explore the total model</p>
+<p>structure in practice but in theory it's</p>
+<p>quite important or we might just be</p>
+<p>looking where the light is and putting</p>
+<p>the rabbit in the Hat making these</p>
+<p>models that play out a certain way maybe</p>
+<p>even deterministically because they've</p>
+<p>been kind of told the secret in the</p>
+<p>beginning</p>
+<p>um</p>
+<p>I have one more um question and then and</p>
+<p>then I'll your jaka so</p>
+<p>um</p>
+<p>you juxtaposed and contrasted three</p>
+<p>different approaches which were</p>
+<p>variational message passing</p>
+<p>Bayesian filtering and belief</p>
+<p>propagation</p>
+<p>and whether for didactic or pragmatic</p>
+<p>use</p>
+<p>where do you see these different</p>
+<p>approaches as being useful or</p>
+<p>specialized</p>
+<p>yeah where are they better or where is</p>
+<p>one a generalization or a special case</p>
+<p>of another</p>
+<p>so for example</p>
+<p>so the way we structure the model in</p>
+<p>bias language especially that we keep</p>
+<p>track of the past and each time we get</p>
+<p>new observation into the inside of into</p>
+<p>the future so let me maybe just go here</p>
+<p>um</p>
+<p>oh no yeah so okay so invest time is</p>
+<p>expressing for example we keep the past</p>
+<p>and this is quite interesting because</p>
+<p>when you have biochemist passing you can</p>
+<p>also have backward messages</p>
+<p>which means that as you get a new</p>
+<p>observation you will have a network like</p>
+<p>the state Associated to it</p>
+<p>and what is going to happen is that you</p>
+<p>will have a message like this and you</p>
+<p>will also have message that go backward</p>
+<p>in times and this those messages will</p>
+<p>enable you to refine your understanding</p>
+<p>of what happened in the past</p>
+<p>so this ability to revisit like or you</p>
+<p>know update your understanding about the</p>
+<p>past is something which is quite uh</p>
+<p>specific to the various time massage</p>
+<p>passing algorithm and does not appear</p>
+<p>for example in base and filterings in</p>
+<p>the Basin filtering setting because we</p>
+<p>only keep a belief state of of the</p>
+<p>current random viable and when we expand</p>
+<p>like when it gets a new observation and</p>
+<p>a new state Associated to it we are just</p>
+<p>going to perform prediction to get the</p>
+<p>posterior and then we are going to get</p>
+<p>rid of that so we cannot have those</p>
+<p>badboard messages</p>
+<p>um to address for your beliefs over past</p>
+<p>States so we can't really have this kind</p>
+<p>of counterfeitual abilities</p>
+<p>now with the belief propagation</p>
+<p>algorithm that it is very similar in ID</p>
+<p>to what is done uh with the belief</p>
+<p>propagate in the belief propagation</p>
+<p>settings it is just a more scalable</p>
+<p>approach which enables one to have a</p>
+<p>different item States and different</p>
+<p>observation because this</p>
+<p>ptibf approach was only restricted to</p>
+<p>one observation and one States and if</p>
+<p>you have for example the X position</p>
+<p>neutral applications of text of as a</p>
+<p>displayed environment then you will need</p>
+<p>to create one random variable that</p>
+<p>corresponds to all the combination of</p>
+<p>those X and Y position so maybe it will</p>
+<p>be the random viable describing the</p>
+<p>position and if we had two value for</p>
+<p>each of the you know for the exposition</p>
+<p>and the Y position then all the</p>
+<p>combination will be like or each of the</p>
+<p>value for one times all the password</p>
+<p>and and this goes exponentially with a</p>
+<p>number of variables so let's suppose we</p>
+<p>are now scalable</p>
+<p>and that this can variable can take two</p>
+<p>additional values then the total number</p>
+<p>of combination of those three random</p>
+<p>variables will be like eight</p>
+<p>eight possible combination basically all</p>
+<p>the X and Y position or h of the two</p>
+<p>scale possibility maybe scale 1 and</p>
+<p>scale two</p>
+<p>and this exponential growth becomes</p>
+<p>fully magic if you don't have this</p>
+<p>ability to have several observation and</p>
+<p>several States because you will have an</p>
+<p>expansion growth in the number of state</p>
+<p>and observation you try to model</p>
+<p>and this is where really Alexa the other</p>
+<p>approach multi multi-factor and</p>
+<p>multimodality is really uh useful to</p>
+<p>scale to more complicated approach with</p>
+<p>more States and observations</p>
+<p>excellent are there Jacob any closing</p>
+<p>questions or thoughts</p>
+<p>uh well uh you see I came across your</p>
+<p>work a few months ago</p>
+<p>and it got me truly excited so much that</p>
+<p>I read all five of your papers uh is it</p>
+<p>is the number five rights I mean uh you</p>
+<p>published yeah five papers up to notes</p>
+<p>uh because you see more often than not</p>
+<p>people see active inference and uh the</p>
+<p>free energy Principle as uh basically</p>
+<p>speculative uh thinking and Endeavor</p>
+<p>without so much pragmatic value in the</p>
+<p>real applications so in my opinion uh</p>
+<p>your work as I mentioned there's a very</p>
+<p>welcome addition to this uh nascent yet</p>
+<p>exponentially uh growing feel uh and I</p>
+<p>hope to see uh more exciting</p>
+<p>developments in the future for branching</p>
+<p>time active inference or possibly the</p>
+<p>other</p>
+<p>uh variants you might come up with in</p>
+<p>the future uh and uh I'll definitely</p>
+<p>keep following your work from now on</p>
+<p>exactly thanks so much for your</p>
+<p>joining us today</p>
+<p>oh no problem thank you for inviting me</p>
+<p>I'm really excited I could present here</p>
+<p>so thank you for the invitation</p>
+<p>Jacob any final thoughts</p>
+<p>yeah uh well this has been a really</p>
+<p>great presentation and discussion uh</p>
+<p>Ali also uh linked uh your work a couple</p>
+<p>of months ago and also uh got me very</p>
+<p>excited for uh for the</p>
+<p>um future of active inference modeling</p>
+<p>and it's a it's a topic that we're</p>
+<p>um discussing uh quite a lot in the in</p>
+<p>the Institute and</p>
+<p>um I think that</p>
+<p>this approach to reducing the</p>
+<p>computational cost of of uh</p>
+<p>of perform of Performing</p>
+<p>um active inference in more and more</p>
+<p>complex State spaces is</p>
+<p>probably the best way to go uh to really</p>
+<p>um reach adoption of of these models in</p>
+<p>in</p>
+<p>different in different domains so yeah</p>
+<p>I'm</p>
+<p>thank you thank you very much for uh for</p>
+<p>joining today and uh I look forward to</p>
+<p>reading that paper on on the Deep active</p>
+<p>inference deep branching time active</p>
+<p>interns sure thank you</p>
+<p>well you're welcome back anytime and we</p>
+<p>will um certainly be</p>
+<p>observing</p>
+<p>thank you sure thank you</p>
+<p>bye-bye thanks bye</p>
+<p>perfect</p>
+<p>yeah great</p>
+<p>brilliant</p>
+</article>
+</body>
+</html>

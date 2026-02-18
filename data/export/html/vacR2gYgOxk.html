@@ -1,0 +1,4773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream #001.3: "A Step-by-Step Tutorial on Active Inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream #001.3: "A Step-by-Step Tutorial on Active Inference"</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_001 &middot; Episode 3 &middot; Duration: 2:40:56 &middot; Views: 932</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=vacR2gYgOxk">https://www.youtube.com/watch?v=vacR2gYgOxk</a></div>
+<article>
+<p>and we are live</p>
+<p>hello everyone and welcome to active</p>
+<p>inference lab</p>
+<p>this is the third part in a four part</p>
+<p>series</p>
+<p>it is model stream 3.0 and today we are</p>
+<p>here with ryan smith</p>
+<p>and christopher white and max murphy and</p>
+<p>we're going to be having a really</p>
+<p>interesting discussion so thanks</p>
+<p>everyone for joining just to quickly</p>
+<p>introduce ourselves</p>
+<p>before we go to points of process and</p>
+<p>then into the material</p>
+<p>i'm daniel friedman i'm a postdoc in</p>
+<p>california</p>
+<p>i'm ryan smith um i'm an investigator at</p>
+<p>the laureate institute for brain</p>
+<p>research in</p>
+<p>tulsa oklahoma hi i'm christopher white</p>
+<p>i'm a phd student at the mrc cognition</p>
+<p>brain sciences unit in cambridge england</p>
+<p>hi i'm max murphy i'm a postdoctoral</p>
+<p>fellow at carnegie mellon</p>
+<p>awesome thanks everyone for joining for</p>
+<p>our panelists and the authors for max</p>
+<p>for contributing your</p>
+<p>experience and also for everybody who's</p>
+<p>going to be live and in replay</p>
+<p>asking us questions this is the third in</p>
+<p>a four-part series that is going to be</p>
+<p>highlighting different perspectives and</p>
+<p>addressing questions related to</p>
+<p>the active inference tutorial paper of</p>
+<p>smith</p>
+<p>at all from uh i guess you could say</p>
+<p>2020 but it's been versioned several</p>
+<p>times</p>
+<p>and that tutorial is called a</p>
+<p>step-by-step tutorial on</p>
+<p>active inference and its applications to</p>
+<p>empirical data</p>
+<p>so if you have any questions during the</p>
+<p>live stream you're more than welcome to</p>
+<p>type it in the live chat and we'll try</p>
+<p>to get to it</p>
+<p>if you have questions after this live</p>
+<p>stream just leave a comment and we're</p>
+<p>gonna try to address it as well</p>
+<p>to learn more and to find out about</p>
+<p>participating</p>
+<p>check out activeinference.org that's all</p>
+<p>so for today in our third session we're</p>
+<p>going to be picking up with just a brief</p>
+<p>overview even shorter than the second</p>
+<p>parts overview and then we're going to</p>
+<p>be diving into two main sections today</p>
+<p>ryan is going to be leading a section on</p>
+<p>the neural process theory</p>
+<p>and then christopher is going to be</p>
+<p>leading a section on hierarchical models</p>
+<p>so two very interesting topics let's</p>
+<p>just start with</p>
+<p>one warm-up introductory question before</p>
+<p>we go to the neural process theory</p>
+<p>and my question would be let's say</p>
+<p>somebody were sent</p>
+<p>just this third part of this four part</p>
+<p>series</p>
+<p>what would you say is the summary of the</p>
+<p>first two parts that we can catch them</p>
+<p>up with right now before we jump into</p>
+<p>these next two parts so what happened in</p>
+<p>the first two parts</p>
+<p>that led us to want to talk about the</p>
+<p>neural process theory and the</p>
+<p>hierarchical modeling today</p>
+<p>um okay well i can try to start to take</p>
+<p>a stab chris feel free to add anything</p>
+<p>but it's obviously a lot to summarize in</p>
+<p>uh just a couple</p>
+<p>uh seconds here but in session</p>
+<p>one primarily we went over the kind of</p>
+<p>like</p>
+<p>broad um broad stroke sort of</p>
+<p>description of active inference</p>
+<p>um the ideas of how you can do</p>
+<p>approximate bayesian inference to solve</p>
+<p>problems with perception and learning</p>
+<p>and decision making</p>
+<p>using uh free energy minimization and</p>
+<p>expected free energy</p>
+<p>energy minimization um where exact</p>
+<p>bayesian inference just becomes</p>
+<p>intractable</p>
+<p>for most kind of real world problems</p>
+<p>when you're trying to</p>
+<p>do something cognitive or perceptual</p>
+<p>and then we went over how to build</p>
+<p>specific</p>
+<p>task models um and specifically</p>
+<p>we used an explore exploit a simple sort</p>
+<p>of explore exploit model</p>
+<p>um similar to any you know a kind of</p>
+<p>behavioral task that you might use</p>
+<p>in an empirical study and we just showed</p>
+<p>how</p>
+<p>at the level of matrices and vectors and</p>
+<p>things like that how you specify a</p>
+<p>generative model</p>
+<p>in order to simulate behavior on that</p>
+<p>kind of task</p>
+<p>and that's more or less what we've</p>
+<p>covered so far so</p>
+<p>the kind of general mathematics and</p>
+<p>motivation of active inference</p>
+<p>and how to apply it to um to</p>
+<p>model tasks but that was all</p>
+<p>like i said at the kind of computational</p>
+<p>and algorithmic level of description</p>
+<p>um whereas one of the really nice things</p>
+<p>about active inference is that</p>
+<p>you have not only the computational</p>
+<p>algorithmic level but you</p>
+<p>also have an attached what's called a</p>
+<p>neural process theory</p>
+<p>which more or less corresponds to a</p>
+<p>specific hypothesis</p>
+<p>about ways that neurons and neural</p>
+<p>populations can be connected up</p>
+<p>in plausible ways to implement the</p>
+<p>active inference algorithms</p>
+<p>and specifically the variational</p>
+<p>updating algorithms that are used</p>
+<p>to solve the sorts of tasks</p>
+<p>that you use to model with active</p>
+<p>inference so that's kind of where we're</p>
+<p>picking up is</p>
+<p>now that we've got the now that we can</p>
+<p>build models and understand their</p>
+<p>background</p>
+<p>and motivation you know how can we</p>
+<p>actually move this into neuroscience and</p>
+<p>make</p>
+<p>um make uh trial by trial predictions</p>
+<p>about what neural responses you ought to</p>
+<p>see</p>
+<p>which you could for example feed in um</p>
+<p>to like an fmri experiment</p>
+<p>to see if you can actually find</p>
+<p>correlates of those uh predicted trial</p>
+<p>by trial responses</p>
+<p>and just kind of add to that i think the</p>
+<p>general way that you would</p>
+<p>feed it into an fmri experiment would</p>
+<p>just be the standard way that people</p>
+<p>usually do this stuff so you just put it</p>
+<p>in and add it as a regressor</p>
+<p>in um into a glam yeah</p>
+<p>and as you'll as you'll see we can also</p>
+<p>do it's not just fmri you can also do it</p>
+<p>i mean we</p>
+<p>the the most direct predictions it makes</p>
+<p>are about earpiece</p>
+<p>and eeg so and we're going to talk about</p>
+<p>what the erp is and the biology of it a</p>
+<p>little bit along the way</p>
+<p>and other frameworks for how people have</p>
+<p>interpreted it but yes</p>
+<p>as we've kind of looked at a few</p>
+<p>different times there's the observables</p>
+<p>which are the behavior</p>
+<p>or the neural imaging whether it's fmri</p>
+<p>or eeg or some other type of measurement</p>
+<p>technique and then there's the</p>
+<p>measurement of behavior</p>
+<p>and we're talking about models that</p>
+<p>start from those observables</p>
+<p>and then do some interesting generative</p>
+<p>modeling under the hood</p>
+<p>and that's where the power arises from</p>
+<p>so any other comments on that max before</p>
+<p>we jump</p>
+<p>into part one with the neural process</p>
+<p>theory</p>
+<p>no i'm just uh like i said last time i'm</p>
+<p>excited to hear about</p>
+<p>um tying and relating specifically you</p>
+<p>know gradients</p>
+<p>on you know variational free energy to</p>
+<p>you know dopamine expression and just</p>
+<p>hearing about like the links between</p>
+<p>those</p>
+<p>and why that might be an elegant way um</p>
+<p>to um kind of express things in terms of</p>
+<p>the neural process theory</p>
+<p>and what we know about the connectivity</p>
+<p>of these regions and things like that</p>
+<p>sounds good then ryan take it away</p>
+<p>okay so let me just</p>
+<p>share my screen here</p>
+<p>um okay so just um</p>
+<p>as a kind of very brief um you know sort</p>
+<p>of just</p>
+<p>catch people up a bit um</p>
+<p>um so we we started out</p>
+<p>you know like describing active</p>
+<p>inference um like i said at the level of</p>
+<p>generative models</p>
+<p>um and those uh sorry i'm trying to find</p>
+<p>the right</p>
+<p>figure here yeah</p>
+<p>um and those have</p>
+<p>this particular sort of graphical</p>
+<p>structure</p>
+<p>and just focusing on the one on the</p>
+<p>bottom right here which is the full</p>
+<p>generative model</p>
+<p>you have a particular set of</p>
+<p>observations over time this 010203 thing</p>
+<p>and then you have particular hidden</p>
+<p>states so beliefs about what's going on</p>
+<p>out in the world</p>
+<p>outside of the brain and so you have</p>
+<p>your beliefs about what happened at time</p>
+<p>one</p>
+<p>and then time two and then time three</p>
+<p>and this a matrix thing</p>
+<p>um is what encodes the likelihood</p>
+<p>mapping or the belief about what</p>
+<p>outcomes</p>
+<p>will be present if particular states out</p>
+<p>in the world</p>
+<p>are the case um and then you have</p>
+<p>beliefs about how</p>
+<p>in this b matrix thing here about how if</p>
+<p>you're in particular states at time one</p>
+<p>how that's going to transition into</p>
+<p>different states at time two</p>
+<p>um and so forth and uh this d</p>
+<p>thing is just an initial prior um about</p>
+<p>what states are going to be at time one</p>
+<p>um and then you have policies pi up here</p>
+<p>which control which allow the agent to</p>
+<p>control some of the</p>
+<p>transitions between states um so for</p>
+<p>instance the transition of</p>
+<p>moving my leg up versus down right would</p>
+<p>be something that the agent could</p>
+<p>control</p>
+<p>and then policies are selected based on</p>
+<p>this g thing which is the expected free</p>
+<p>energy which is a function of</p>
+<p>c which is your preferences so the</p>
+<p>outcomes that you prefer over others</p>
+<p>so policies are selected that are gonna</p>
+<p>transition between states that generate</p>
+<p>outcomes or observations that are as</p>
+<p>close to preferences</p>
+<p>as possible um and then policies</p>
+<p>are also um in part controlled by e</p>
+<p>which is a prior over policies that acts</p>
+<p>as a kind of</p>
+<p>influence of habits and this gamma thing</p>
+<p>which will be important in the neural</p>
+<p>process theory i'll talk about</p>
+<p>which is um it's essentially it's like a</p>
+<p>temperature parameter more or less</p>
+<p>on like a dynamically updated</p>
+<p>temperature parameter that</p>
+<p>basically controls um how much</p>
+<p>the expected free energy contributes to</p>
+<p>policy selection so it's basically</p>
+<p>saying if i don't trust my model very</p>
+<p>much</p>
+<p>then policy selection is going to be</p>
+<p>influenced by expected free energy less</p>
+<p>and by habits uh more um and the way the</p>
+<p>gamma is updated is</p>
+<p>through this hyperparameter beta</p>
+<p>which again i'll uh i'll uh you know we</p>
+<p>covered this a little more detail last</p>
+<p>time but i'm just kind of reminding the</p>
+<p>reader about</p>
+<p>the elements that are going to</p>
+<p>correspond</p>
+<p>to different aspects of the of the</p>
+<p>neural process theory</p>
+<p>um so it just might only happen</p>
+<p>my only comment on this is again think</p>
+<p>about incremental</p>
+<p>layers of complexity in the model on the</p>
+<p>top left is static perception</p>
+<p>hidden states observable states and</p>
+<p>you're doing inference on the hidden</p>
+<p>states s given your prior d so</p>
+<p>instantaneous</p>
+<p>hidden state inference given observables</p>
+<p>bottom left you're talking about hidden</p>
+<p>states</p>
+<p>changing through time with the inference</p>
+<p>of a b matrix</p>
+<p>top right you introduce the idea that pi</p>
+<p>policy</p>
+<p>is going to intervene into how states</p>
+<p>change through time</p>
+<p>and that that policy is selected by a</p>
+<p>preference c</p>
+<p>that gets transmuted into a free energy</p>
+<p>g and then the bottom right is the full</p>
+<p>fleshed-out skeleton where we also see e</p>
+<p>gamma and beta as described by right so</p>
+<p>just start top left</p>
+<p>bottom left top right bottom right and</p>
+<p>that's adding up</p>
+<p>one more thing for each layer of the</p>
+<p>model and then now we're going to be</p>
+<p>working with the bottom right model</p>
+<p>yep and um and the the last sort of</p>
+<p>important thing is is about the</p>
+<p>the underlying way so each of these</p>
+<p>equations</p>
+<p>um on the at each of these boxes</p>
+<p>um the the way that you infer beliefs</p>
+<p>about</p>
+<p>states based on observations is through</p>
+<p>a set of equations that correspond to</p>
+<p>approximate bayesian inference through</p>
+<p>minimizing free energy and expected for</p>
+<p>energy</p>
+<p>so the idea is more or less how the</p>
+<p>system how in the neural process theory</p>
+<p>does the system settle on</p>
+<p>a set of posterior beliefs over states</p>
+<p>through free energy</p>
+<p>free energy minimization and how in the</p>
+<p>brain um that's going to correspond to</p>
+<p>the neural process theory</p>
+<p>to minimizing particular types of</p>
+<p>prediction errors</p>
+<p>um now but i want to be clear though the</p>
+<p>these sorts of prediction errors are not</p>
+<p>identical</p>
+<p>right this is not the same process</p>
+<p>theory as what's associated with</p>
+<p>predictive coding and perception</p>
+<p>where predictive coding is a continuous</p>
+<p>state-space model as opposed to the</p>
+<p>discrete state-space models we're</p>
+<p>talking about that have categories</p>
+<p>right you can only be in state one state</p>
+<p>two state three as opposed to</p>
+<p>these sorts of continuous state spaces</p>
+<p>associated with things like</p>
+<p>brightness for example um</p>
+<p>so so this is this has a similar kind of</p>
+<p>prediction or minimization flavor</p>
+<p>to predictive coding models but it's not</p>
+<p>the same thing um</p>
+<p>so now um</p>
+<p>to start with um kind of abstractly</p>
+<p>the the way to see how prediction errors</p>
+<p>come in really naturally</p>
+<p>is just to remember that free energy</p>
+<p>right one one decomposition that we've</p>
+<p>talked about in previous sessions</p>
+<p>is you can think of free energy as to be</p>
+<p>being decomposed into a complexity term</p>
+<p>minus an accuracy term um where accuracy</p>
+<p>just</p>
+<p>means basically how close your predicted</p>
+<p>outcomes are</p>
+<p>to um the observed outcomes</p>
+<p>and complexity corresponds to basically</p>
+<p>how much you have to move your beliefs</p>
+<p>um from prior beliefs to posterior</p>
+<p>beliefs so</p>
+<p>minimizing free energy means coming to</p>
+<p>the beliefs that</p>
+<p>um change your beliefs as little as</p>
+<p>possible while also maximizing accuracy</p>
+<p>um so so that's the kind of idea and a</p>
+<p>very kind of intuitive way to think</p>
+<p>of free energy</p>
+<p>and so given that definition</p>
+<p>you can think of the gradients or the</p>
+<p>way that free energy changes</p>
+<p>with respect to these approximate</p>
+<p>posterior beliefs that we're trying to</p>
+<p>come to</p>
+<p>right these can always be expressed as a</p>
+<p>particular mixture of prediction errors</p>
+<p>and you think about this is pretty</p>
+<p>intuitive because complexity like i said</p>
+<p>is</p>
+<p>just the average difference between</p>
+<p>posterior and prior beliefs</p>
+<p>so minimizing that difference can be</p>
+<p>seen as a type of prediction error</p>
+<p>and minimizing and then accuracy is</p>
+<p>similarly just the difference between</p>
+<p>predicted and observed outcomes</p>
+<p>so minimizing that difference can also</p>
+<p>be seen as a</p>
+<p>as a type of prediction error so</p>
+<p>active inference can be implemented then</p>
+<p>um</p>
+<p>as this kind of prediction error</p>
+<p>minimization that just corresponds to a</p>
+<p>minimization of these two</p>
+<p>differences at a computational level of</p>
+<p>description as opposed to an algorithmic</p>
+<p>or neural</p>
+<p>level description so the</p>
+<p>the kind of standard and fairly daunting</p>
+<p>looking figures that you'll typically</p>
+<p>see</p>
+<p>in active inference papers associated</p>
+<p>with the neural process theory</p>
+<p>looks something like this so on the left</p>
+<p>you have a bunch of initially pretty</p>
+<p>scary um you know equations</p>
+<p>that correspond to the the actual kind</p>
+<p>of dynamics that a neural system is</p>
+<p>going to have to implement</p>
+<p>um and then on the right these kind of</p>
+<p>little</p>
+<p>fun kind of schematic ball neuron setups</p>
+<p>where you have particular</p>
+<p>layers that are supposed to kind of um</p>
+<p>you know kind of heuristically perhaps</p>
+<p>correspond to different</p>
+<p>um different layers of neurons and</p>
+<p>cortical columns</p>
+<p>um and each of these layers of neurons</p>
+<p>are sort of proposed again very just</p>
+<p>kind of like schematically</p>
+<p>to correspond to different variables in</p>
+<p>the equations over here</p>
+<p>and the synaptic connections correspond</p>
+<p>to particular</p>
+<p>mathematical operations so</p>
+<p>um so here kind of the easy way to think</p>
+<p>about it is that</p>
+<p>these uh red connections here are</p>
+<p>excitatory or excitatory just means</p>
+<p>addition</p>
+<p>in the equations whereas these</p>
+<p>inhibitory</p>
+<p>uh blueish purple connections with the</p>
+<p>balls at the end instead of the arrows</p>
+<p>are inhibitory which just means</p>
+<p>subtraction in the equations</p>
+<p>whereas the green modulatory connections</p>
+<p>um that just corresponds to</p>
+<p>multiplication um</p>
+<p>in the update equations on the in the</p>
+<p>other side of the panel so the idea is</p>
+<p>that</p>
+<p>you can use this kind of using this kind</p>
+<p>of scheme you can just follow along</p>
+<p>you know just follow the synapses and</p>
+<p>the ball neurons that correspond to the</p>
+<p>particular variables</p>
+<p>um and you can kind of get a sense of</p>
+<p>how</p>
+<p>you can just connect up neurons like</p>
+<p>this to</p>
+<p>solve the equations that need to be</p>
+<p>solved to implement active inference</p>
+<p>just say one thing about this i think</p>
+<p>makes it a little bit more intuitive</p>
+<p>so because all of the updates are done</p>
+<p>in log space</p>
+<p>addition and um face click adding or</p>
+<p>putting probability distributions</p>
+<p>together is just addition and</p>
+<p>subtraction</p>
+<p>which is nice thinking about in terms of</p>
+<p>this scheme and then generally speaking</p>
+<p>the modulatory connections will</p>
+<p>correspond to some precision parameter</p>
+<p>which will modulate the precision of a</p>
+<p>distribution if that makes sense</p>
+<p>so that's kind of how you can think</p>
+<p>about the rule or i find that helpful in</p>
+<p>thinking about the relationship between</p>
+<p>something like this</p>
+<p>and the actual update equations</p>
+<p>themselves</p>
+<p>yeah no absolutely uh yeah thanks for</p>
+<p>adding that it's almost like</p>
+<p>the anatomy of the model we're doing a</p>
+<p>schematic</p>
+<p>neuroanatomy that's simplified or</p>
+<p>abstracted based upon the actual</p>
+<p>patterns of neural connections</p>
+<p>and then we're looking at the anatomy of</p>
+<p>this computational</p>
+<p>model and thinking about how it could be</p>
+<p>plausibly carried out on</p>
+<p>neural uh systems neural processes but</p>
+<p>also it stands alone and so this is just</p>
+<p>another way that we can look at it</p>
+<p>yeah so so another thing that i really</p>
+<p>want to be</p>
+<p>clear about is that active inference per</p>
+<p>se</p>
+<p>isn't committed to this particular</p>
+<p>implementation</p>
+<p>there's there's quite a few different</p>
+<p>ways that you could come up with</p>
+<p>to connect a bunch of neurons together</p>
+<p>to solve these equations</p>
+<p>so there's there's not kind of a</p>
+<p>one-to-one mapping between</p>
+<p>the way that the equations look and the</p>
+<p>way that neurons could solve those</p>
+<p>equations</p>
+<p>so this is an example but ultimately</p>
+<p>it's a separate empirical</p>
+<p>question what way uh the brain is</p>
+<p>actually set up</p>
+<p>to solve these equations even if those</p>
+<p>equations are what are being solved</p>
+<p>um yeah exactly and even if so then we</p>
+<p>can also</p>
+<p>let's say it turns out variational</p>
+<p>message passing or like marginal message</p>
+<p>passing is just a really bad</p>
+<p>metaphor well that's fine because we've</p>
+<p>got all sorts of other things like</p>
+<p>belief propagation blah blah blah</p>
+<p>and they can all i think</p>
+<p>the main thing is that you're minimizing</p>
+<p>variational free energy</p>
+<p>and expected free energy the rest is</p>
+<p>part of</p>
+<p>specific parts of a process theory that</p>
+<p>we can</p>
+<p>hopefully falsify or at least more</p>
+<p>realistically</p>
+<p>not find useful anymore yeah so let's</p>
+<p>just sorry one more note on that you</p>
+<p>brought up how there's the computational</p>
+<p>and the algorithmic levels and we're in</p>
+<p>the process theory realm so for those</p>
+<p>who might not be familiar with process</p>
+<p>theory or</p>
+<p>mars levels of analysis the</p>
+<p>computational level is like the function</p>
+<p>like you have to sort a list from the</p>
+<p>biggest to the smallest</p>
+<p>you can't falsify that idea it's</p>
+<p>computational it's functional</p>
+<p>then you go one layer down into the</p>
+<p>algorithm so you say i have a sorting</p>
+<p>algorithm there's many</p>
+<p>sorting algorithms but this is the</p>
+<p>implementation as</p>
+<p>it's actually going to be written in a</p>
+<p>certain pseudo code</p>
+<p>so that's one of many possible</p>
+<p>algorithms that do a certain</p>
+<p>computational task like sorting</p>
+<p>and then the process theory is like the</p>
+<p>specific program you can think of</p>
+<p>it's the actual implementation now as to</p>
+<p>whether it's actually being implemented</p>
+<p>that way</p>
+<p>you might be right or wrong so that's</p>
+<p>what we're talking about with the false</p>
+<p>falsification of the process theory but</p>
+<p>at the computational level</p>
+<p>it's what christopher just said it's the</p>
+<p>imperatives that there's a free energy</p>
+<p>minimization happening</p>
+<p>and now we want to be building up</p>
+<p>specific plausible examples to work</p>
+<p>within that framework</p>
+<p>for just to jump in real quick it sounds</p>
+<p>like in the next stream we might be</p>
+<p>discussing more of these empirical</p>
+<p>examples and instantiations but just to</p>
+<p>say</p>
+<p>that from the bio biological standpoint</p>
+<p>of what's going on for example when we</p>
+<p>talk about a</p>
+<p>modulatory layer or that that could</p>
+<p>happen in a multitude of different ways</p>
+<p>um in in terms of you know changing what</p>
+<p>the membrane potential of the cell is</p>
+<p>and making it more responsive or</p>
+<p>receptive to being activated</p>
+<p>or it could happen through you know</p>
+<p>gradual um plastic processes that</p>
+<p>recruit</p>
+<p>more receptors to the um to the surface</p>
+<p>and cause it to become more responsive</p>
+<p>to any individual message so it's really</p>
+<p>going to be context specific</p>
+<p>and depend on the experiment and what um</p>
+<p>circuit we are specifically studying</p>
+<p>uh yeah absolutely and i mean the the</p>
+<p>thing you mentioned about plasticity</p>
+<p>uh makes an important point that i yeah</p>
+<p>i should make sure that</p>
+<p>i you know i might have forgot to</p>
+<p>mention but but so</p>
+<p>in the context of inference right over</p>
+<p>the shortest time scales</p>
+<p>we're just getting observations right</p>
+<p>and based on the way that these</p>
+<p>the current weights of all these</p>
+<p>connections the system is just going to</p>
+<p>settle</p>
+<p>on a free energy minimum right like a</p>
+<p>predictionary minimum</p>
+<p>and then the the activation patterns in</p>
+<p>these neurons</p>
+<p>specifically these ones at the top here</p>
+<p>the s pi t and</p>
+<p>s or s pythau and s tau are gonna be the</p>
+<p>posterior</p>
+<p>beliefs about what states you're in um</p>
+<p>and uh but that's again just given a</p>
+<p>fixed set of synaptic connections that</p>
+<p>corresponds to</p>
+<p>your generative model now um</p>
+<p>but with learning like we discussed last</p>
+<p>time when we shift learning simulations</p>
+<p>learning corresponds to slowly changing</p>
+<p>the synaptic the strength of the uh each</p>
+<p>of these synaptic connections</p>
+<p>themselves um so you also over slower</p>
+<p>time scales</p>
+<p>minimize expected free energy and</p>
+<p>variational free energy</p>
+<p>um through um through changing these</p>
+<p>connection strengths</p>
+<p>um again over slower time scales via</p>
+<p>kind of synaptic plasticity processes</p>
+<p>um like long-term potentiation and</p>
+<p>long-term depression for example</p>
+<p>um as a way of improving the accuracy of</p>
+<p>your generative model</p>
+<p>um so so just to kind of reiterate</p>
+<p>inference corresponds to changing</p>
+<p>activity levels whereas learning</p>
+<p>corresponds to changing synaptic</p>
+<p>strengths</p>
+<p>um so if that's if that's uh helpful</p>
+<p>um so so again yeah i mean like like</p>
+<p>they were saying you have</p>
+<p>basically three different levels of</p>
+<p>hypotheses to test one is</p>
+<p>at the computational level does the</p>
+<p>brain uh</p>
+<p>minimize free energy and expected free</p>
+<p>energy or at least</p>
+<p>is it helpful to describe it as doing</p>
+<p>that</p>
+<p>um and then second question is given</p>
+<p>that that first one is true</p>
+<p>which of several different algorithms is</p>
+<p>the brain using</p>
+<p>and then question three is given that</p>
+<p>it's using a given a specific algorithm</p>
+<p>how are the how is the brain set up to</p>
+<p>uh</p>
+<p>implement that algorithm so there's kind</p>
+<p>of a one-to-many mapping between each</p>
+<p>level</p>
+<p>um and a final point to make is actually</p>
+<p>some people talk about these different</p>
+<p>you know are called quote unquote marion</p>
+<p>levels</p>
+<p>of computational level algorithmic level</p>
+<p>and implementation level</p>
+<p>people talk about them as though they're</p>
+<p>entirely independent um but they're</p>
+<p>actually</p>
+<p>not necessarily independent in all cases</p>
+<p>because sometimes</p>
+<p>the algorithm can depend a bit that can</p>
+<p>be dependencies</p>
+<p>between the algorithm and the</p>
+<p>implementation because some of the</p>
+<p>things that the</p>
+<p>algorithm is going to have to compute</p>
+<p>are things about for instance like</p>
+<p>energy costs</p>
+<p>which are going to depend on the</p>
+<p>implementation um</p>
+<p>so anyway just as kind of a side point</p>
+<p>um</p>
+<p>but um but in general um just to kind of</p>
+<p>you know walk you through</p>
+<p>you know a sense here so you might start</p>
+<p>out with these observations at the</p>
+<p>bottom</p>
+<p>right and these are going to go up</p>
+<p>through these excitatory connections</p>
+<p>to this pink layer 3 here which is going</p>
+<p>to correspond to the state prediction</p>
+<p>error</p>
+<p>we'll talk about so these excitatory</p>
+<p>connections are going to drive increases</p>
+<p>in activity in these pink guys</p>
+<p>and those are going to be inhibited by</p>
+<p>prior beliefs about states at this</p>
+<p>higher level</p>
+<p>which jointly right is going to lead</p>
+<p>this uh</p>
+<p>this level to decrease</p>
+<p>while the system finds states up here at</p>
+<p>the</p>
+<p>level above that best account for</p>
+<p>um or predict those observations um</p>
+<p>so these red arrows going up here um</p>
+<p>can correspond to interactions between a</p>
+<p>and o in these equations um</p>
+<p>and so you can kind of you can walk your</p>
+<p>way through kind of step by step and we</p>
+<p>do this kind of step by step in the</p>
+<p>paper</p>
+<p>where each of these interactions</p>
+<p>corresponds to elements in the equations</p>
+<p>so for instance like to get states</p>
+<p>to get states up here right that</p>
+<p>corresponds to this</p>
+<p>fourth equation down and that's by</p>
+<p>multiplying</p>
+<p>policies um by states given policies</p>
+<p>right so pi here</p>
+<p>multiplying the</p>
+<p>the s's and the t's here that are added</p>
+<p>so</p>
+<p>we'll lead to the posteriors over states</p>
+<p>just as one example</p>
+<p>um and then another thing that's</p>
+<p>important to</p>
+<p>um to stress is a lot of times you'll</p>
+<p>you'll notice in these uh diagrams that</p>
+<p>there are kind of</p>
+<p>multiple uh rows kind of going back</p>
+<p>right so there's like these three</p>
+<p>pink ones and then these three other</p>
+<p>pink ones behind them um</p>
+<p>and that's because um each of these</p>
+<p>uh posterior beliefs over states the</p>
+<p>system is trying to come to</p>
+<p>um are with respect to a particular</p>
+<p>policy</p>
+<p>so the thing is actually calculating</p>
+<p>what its beliefs would be</p>
+<p>under each of many policies where each</p>
+<p>of these rows corresponds to</p>
+<p>a policy and that's what allows it to</p>
+<p>then infer a distribution over policies</p>
+<p>based on the states</p>
+<p>that are expected under each policy and</p>
+<p>the outcomes that they would are</p>
+<p>expected to generate</p>
+<p>so so again i'm not going to kind of do</p>
+<p>this for you</p>
+<p>now just because it would take forever</p>
+<p>but if you just kind of look at each of</p>
+<p>these equations</p>
+<p>you know where addition is where</p>
+<p>multiplication is etcetera then you'll</p>
+<p>find</p>
+<p>um that these connections um</p>
+<p>you know basically reiterate or or show</p>
+<p>how</p>
+<p>uh uh how this can implement</p>
+<p>uh how the neural connections can</p>
+<p>implement each of these equation</p>
+<p>equations</p>
+<p>um but um</p>
+<p>to uh to kind of go into certain</p>
+<p>aspects of how this would work and where</p>
+<p>the neural processor really really comes</p>
+<p>in in terms of making</p>
+<p>um empirical predictions just</p>
+<p>just just to jump in real quick um for</p>
+<p>the sake of moving forward um just to</p>
+<p>help me thinking about</p>
+<p>what the biology is as we start to talk</p>
+<p>about the neural process theory</p>
+<p>here you have um pie and you have kind</p>
+<p>of like</p>
+<p>you know connections that are inhibitory</p>
+<p>excitatory um</p>
+<p>sometimes when i think about phenomena</p>
+<p>in in the biology</p>
+<p>you know you have an emergent concept</p>
+<p>that that's the result</p>
+<p>of kind of a population of cells in this</p>
+<p>case would it be</p>
+<p>um better to think of this uh like a</p>
+<p>policy as the actual</p>
+<p>like you know the activation i'm looking</p>
+<p>at a single neuron or am i going to be</p>
+<p>thinking about</p>
+<p>that like at a you know a layer or a</p>
+<p>population level</p>
+<p>oh yeah yeah very very good point i mean</p>
+<p>like i said these are very schematic and</p>
+<p>in any active inference paper you'll see</p>
+<p>that you know the statement as the</p>
+<p>cheese balls is supposed to correspond</p>
+<p>to a population of neurons</p>
+<p>okay right so a population where i mean</p>
+<p>just as one example</p>
+<p>right like one subset of neurons in a</p>
+<p>given population might encode the</p>
+<p>expected free energy of</p>
+<p>each policy right so activation across</p>
+<p>the population of neurons would code</p>
+<p>for instance a distribution over um all</p>
+<p>the policies being considered</p>
+<p>um or something something along those</p>
+<p>lines so yeah no no no one's</p>
+<p>no one's thinking about this as uh each</p>
+<p>of these being you know single neurons</p>
+<p>that are solving um all this i mean that</p>
+<p>would be</p>
+<p>um uh really it'd be a really vulnerable</p>
+<p>system</p>
+<p>very little damage that system would uh</p>
+<p>would knock the whole thing out</p>
+<p>um so um so so yes definitely they're</p>
+<p>they're</p>
+<p>supposed to correspond to populations</p>
+<p>but a lot of the details of that is</p>
+<p>really um kind of underspecified in the</p>
+<p>in the theory as stated it's still</p>
+<p>fairly abstract</p>
+<p>um kind of at the level i'm showing here</p>
+<p>um</p>
+<p>so uh so is that is that</p>
+<p>that helpful yeah yeah that does</p>
+<p>okay um so okay</p>
+<p>so the first ones here to focus on the</p>
+<p>left are</p>
+<p>so this epsilon pi tau thing</p>
+<p>um and this is what's called state</p>
+<p>prediction error</p>
+<p>um and more or less what this does</p>
+<p>is by minimizing this we end up with a</p>
+<p>posterior over states</p>
+<p>um and then the actual variational free</p>
+<p>energy for each policy is just</p>
+<p>calculated</p>
+<p>based on beliefs about states and that</p>
+<p>error signal</p>
+<p>um so and this corresponds to</p>
+<p>layer three um and layer two here</p>
+<p>um in the um in the uh</p>
+<p>schematic on the on the right um</p>
+<p>so to um to give you a sense so in the</p>
+<p>paper we show a specific example like a</p>
+<p>worked example of calculating this kind</p>
+<p>of prediction error</p>
+<p>um and so what this says so this is the</p>
+<p>prediction error for each</p>
+<p>policy for each time point tau</p>
+<p>and the the first part here this one</p>
+<p>half ln</p>
+<p>b pi tau s pi tau minus one et cetera</p>
+<p>all the way over</p>
+<p>the whole thing here with the b's that</p>
+<p>are multiplied</p>
+<p>by one half you can think of this whole</p>
+<p>entire thing</p>
+<p>as your prior expectation so</p>
+<p>b from pi tau minus one um</p>
+<p>this is saying what do i expect about my</p>
+<p>current state</p>
+<p>given the state that i was just in</p>
+<p>before</p>
+<p>um whereas this one is something a</p>
+<p>little more interesting</p>
+<p>it's saying um this is saying sort of</p>
+<p>beliefs about</p>
+<p>um expectations that come from the</p>
+<p>future</p>
+<p>so you know what are my beliefs about a</p>
+<p>state at a given time</p>
+<p>given my beliefs about the state after</p>
+<p>that um</p>
+<p>and um you know this this might seem a</p>
+<p>little bit counterintuitive but um</p>
+<p>it allows for uh retrospective inference</p>
+<p>um which is something that humans</p>
+<p>definitely do so think about think about</p>
+<p>a case where you're sitting in a room</p>
+<p>and it's dark and you don't know whether</p>
+<p>the room is the green room or the red</p>
+<p>room um</p>
+<p>and but you sit there for like five</p>
+<p>minutes and then all of a sudden you</p>
+<p>turn on the light</p>
+<p>and you see that the room is red you</p>
+<p>don't just infer i'm in a red room now</p>
+<p>you infer i've been in a red room the</p>
+<p>whole time</p>
+<p>so your beliefs about the past are</p>
+<p>updated based on your</p>
+<p>beliefs about the current time point so</p>
+<p>what this this second be here so</p>
+<p>expectations</p>
+<p>propagating from the future to the past</p>
+<p>allows you to come</p>
+<p>to beliefs about the states you were in</p>
+<p>at earlier times based on beliefs about</p>
+<p>later times</p>
+<p>um and um and so so it's important to</p>
+<p>also reiterate here that</p>
+<p>each of these s's um s for pi you know s</p>
+<p>pi</p>
+<p>tau minus one um these beliefs about</p>
+<p>each s at each time point are updated</p>
+<p>at every time point so at time three i</p>
+<p>can observe something and update my</p>
+<p>belief about</p>
+<p>the state at time one um so this is kind</p>
+<p>of being</p>
+<p>recomputed at each time point with a new</p>
+<p>observation but about each time point</p>
+<p>um you know in both the past and the</p>
+<p>future um</p>
+<p>as well as the the present so</p>
+<p>so broadly then this whole thing this</p>
+<p>one half times</p>
+<p>both of these b's and s's is your prior</p>
+<p>expectation</p>
+<p>and then that gets added to the</p>
+<p>likelihood function here which is so a</p>
+<p>um times o which is the actual</p>
+<p>observation</p>
+<p>um at a given time and so this is like</p>
+<p>your</p>
+<p>uh this thing together is like your</p>
+<p>likelihood um</p>
+<p>so this again is very similar um</p>
+<p>to uh just kind of another form of</p>
+<p>representing uh</p>
+<p>bayes theorem where you have priors and</p>
+<p>you have a likelihood and you're trying</p>
+<p>to come to</p>
+<p>something that will inform your</p>
+<p>posterior beliefs over states</p>
+<p>and then that whole thing is subtracted</p>
+<p>from</p>
+<p>beliefs about the current state at that</p>
+<p>moment</p>
+<p>and more or less if you just kind of run</p>
+<p>this over and over again</p>
+<p>you'll settle on a set of beliefs about</p>
+<p>states that minimizes</p>
+<p>um this thing um and just to show an</p>
+<p>example of that</p>
+<p>um we specify here um</p>
+<p>you know what a could look like right so</p>
+<p>in this case</p>
+<p>um state one versus state two the two</p>
+<p>columns state one would generate</p>
+<p>say observation one um with point</p>
+<p>eight um whereas state two here</p>
+<p>right and the right column would</p>
+<p>generate outcome one with point 0.4</p>
+<p>and so forth so that would be your</p>
+<p>likelihood</p>
+<p>now b here like i said before this is</p>
+<p>your prior from</p>
+<p>based on the previous time point and</p>
+<p>here we're just saying</p>
+<p>column again here is state at time</p>
+<p>tau and rho is at time tau minus one or</p>
+<p>uh you know from tau minus one or</p>
+<p>this is basically this is saying given</p>
+<p>that i was in a given that i</p>
+<p>was in a state at time tau what is my</p>
+<p>belief about the state i'll transition</p>
+<p>to</p>
+<p>so this is saying i believe if i'm in</p>
+<p>state one</p>
+<p>i'm most likely staying at state one</p>
+<p>but there's a point two probability that</p>
+<p>i could move to state two um</p>
+<p>whereas the um be pi tau</p>
+<p>is point three point three and point</p>
+<p>seven point seven which means no matter</p>
+<p>what i expect it's more likely i'm gonna</p>
+<p>move to state two</p>
+<p>um and then what i actually observe is</p>
+<p>outcome one um and my prior beliefs</p>
+<p>are just 0.5.5 so i have no</p>
+<p>i didn't have a strong prior either way</p>
+<p>to start with</p>
+<p>um and this v thing is um just a</p>
+<p>depolarization</p>
+<p>uh variable which doesn't come into this</p>
+<p>uh predictionary equation</p>
+<p>well so i'll just kind of leave that for</p>
+<p>below</p>
+<p>but so this is just an example of how if</p>
+<p>you plug in</p>
+<p>each of these things into this equation</p>
+<p>then just kind of follow along with the</p>
+<p>numbers eventually</p>
+<p>you'll end up with this prediction error</p>
+<p>this negative point two two three one</p>
+<p>negative point nine nine</p>
+<p>nine one six three um and uh</p>
+<p>and you can think about so then if we</p>
+<p>move</p>
+<p>uh here</p>
+<p>then we can take this v which is your</p>
+<p>initial</p>
+<p>kind of depolarization um uh</p>
+<p>level in a given neuron then you add the</p>
+<p>prediction error to that</p>
+<p>um so the depolarization depolarization</p>
+<p>level changes</p>
+<p>so this would be a change in the</p>
+<p>activity level of the neuron in terms of</p>
+<p>depolarization</p>
+<p>but then posteriors over states then</p>
+<p>correspond to</p>
+<p>normalizing putting a softmax over this</p>
+<p>depolarization</p>
+<p>which then turns it into your actual</p>
+<p>posterior over states</p>
+<p>so this is b so this ultimately says my</p>
+<p>posterior belief is that</p>
+<p>i'm more likely in state one you know</p>
+<p>0.66767</p>
+<p>then in being in state two point three</p>
+<p>through three three</p>
+<p>um and this then would correspond to the</p>
+<p>firing rates</p>
+<p>um in the process theory um associated</p>
+<p>with</p>
+<p>um uh each possible state</p>
+<p>so v is to be your depolarization</p>
+<p>um and s is going to be the resulting</p>
+<p>firing rates</p>
+<p>yeah just add something to this so</p>
+<p>generally thinking</p>
+<p>e here or sorry not e epsilon yeah</p>
+<p>yeah a little epsilon is a free energy</p>
+<p>gradient</p>
+<p>um it is a variational free energy</p>
+<p>gradient</p>
+<p>and then this also what would what we</p>
+<p>end up doing here when we're adding</p>
+<p>essentially when we have v when we're</p>
+<p>plussing our free</p>
+<p>our negative friendship gradient we're</p>
+<p>essentially just doing a gradient</p>
+<p>descent</p>
+<p>on variational free energy that's</p>
+<p>exactly what this is actually</p>
+<p>and that's how it's implemented in the</p>
+<p>code the only difference between this</p>
+<p>and what we're doing in the code is that</p>
+<p>we have little steps</p>
+<p>have a little step thing so we divide</p>
+<p>our epsilon by like two or whatever our</p>
+<p>time constant for gradient descent is so</p>
+<p>when</p>
+<p>you know tying it back to that previous</p>
+<p>uh schematic that we had</p>
+<p>where we had the arrows that were</p>
+<p>excitatory and here we're adding this on</p>
+<p>to the</p>
+<p>putative you know membrane potential</p>
+<p>that we have described here that might</p>
+<p>reflect these kind of probabilities</p>
+<p>then if we have this kind of perhaps</p>
+<p>this if this were an excitatory</p>
+<p>interaction that we were looking</p>
+<p>at then maybe if that excitatory</p>
+<p>interaction from</p>
+<p>one particular layer to another was</p>
+<p>representing that</p>
+<p>uh variational free energy gradient we</p>
+<p>might expect to see this kind of</p>
+<p>response and we might measure that in</p>
+<p>terms of some kind of related</p>
+<p>you know uh bio like biomarker</p>
+<p>um of interest is that more or less than</p>
+<p>just</p>
+<p>yeah i mean so well i mean just to go</p>
+<p>back to the kind of schematic here</p>
+<p>like where this is happening is like</p>
+<p>right here right so you have b</p>
+<p>from time one right which is this purple</p>
+<p>guy</p>
+<p>so s through b from the previous time</p>
+<p>point</p>
+<p>adds on to the prediction error at the</p>
+<p>current time point</p>
+<p>and s from the future</p>
+<p>belief about the future also adds here</p>
+<p>whereas</p>
+<p>the likelihood a um</p>
+<p>yeah is added from from oh uh</p>
+<p>there's this inventory thing here um</p>
+<p>anyway i mean so that's that's the uh</p>
+<p>i have to walk through a little bit to</p>
+<p>figure out where this uh</p>
+<p>inhibitory what this inhibitory one is</p>
+<p>coming from um</p>
+<p>oh this is the minus ln yeah the current</p>
+<p>state</p>
+<p>yeah um yeah okay but anyway so that's</p>
+<p>that's kind of as an example um but</p>
+<p>uh but yeah so</p>
+<p>so by doing that you get this posterior</p>
+<p>over states that gives you</p>
+<p>both uh predicted depolarization levels</p>
+<p>in cells and predicted firing rates</p>
+<p>um that being said um</p>
+<p>those and of themselves are not that</p>
+<p>easy to</p>
+<p>to measure empirically unless you're</p>
+<p>doing like single cell recording or</p>
+<p>something like that</p>
+<p>so the idea that gets taken sort of from</p>
+<p>here</p>
+<p>is how you can get from these predicted</p>
+<p>firing rates to something that you can</p>
+<p>measure</p>
+<p>um like event related potentials in um</p>
+<p>doing eeg or electroencephalography</p>
+<p>where you have a bunch of electrodes</p>
+<p>basically attached to somebody's scalp</p>
+<p>and you're measuring</p>
+<p>changes in neural activity changes in</p>
+<p>potentials</p>
+<p>through the scalp from the brain when a</p>
+<p>person is exposed to a particular</p>
+<p>stimulus</p>
+<p>and the uh the neural process theory</p>
+<p>uh the kind of prediction is that um the</p>
+<p>erps are gonna correspond to the rate of</p>
+<p>change um</p>
+<p>um in beliefs uh which is gonna be the</p>
+<p>rate of change in um</p>
+<p>where's this slide</p>
+<p>the rate of change in um in v very i've</p>
+<p>changed this</p>
+<p>depolarization thing which is going to</p>
+<p>be the prediction error</p>
+<p>so so just to show an example of this</p>
+<p>um that me and chris uh published</p>
+<p>recently</p>
+<p>um in the uh literature on the um on</p>
+<p>visual consciousness</p>
+<p>um you know there's a big interest in in</p>
+<p>what erp's</p>
+<p>um are specific to having conscious</p>
+<p>experience</p>
+<p>um and an example of an erp that</p>
+<p>in the past has been linked to conscious</p>
+<p>experience but</p>
+<p>more recently there's been some sort of</p>
+<p>controversy because it looks like you</p>
+<p>can get</p>
+<p>these p3 potentials in a way that's</p>
+<p>not specific to conscious experience um</p>
+<p>and so we're interested in seeing</p>
+<p>whether the neural process theory</p>
+<p>would allow us to kind of show um where</p>
+<p>this is coming from and could reconcile</p>
+<p>these sorts of results and so it was</p>
+<p>based on this really kind of simple</p>
+<p>paradigm</p>
+<p>where you start out the person starts</p>
+<p>out looking at a stimulus like this</p>
+<p>where there's just these red discs and</p>
+<p>these um kind of slanty lines</p>
+<p>um and then in some trials</p>
+<p>what will happen is they'll kind of</p>
+<p>transiently be a little square here</p>
+<p>that comes up um in the midst of these</p>
+<p>slanty lines</p>
+<p>um then it'll go away um</p>
+<p>and basically what what um what the</p>
+<p>manipulation is</p>
+<p>is in some cases you have the person you</p>
+<p>know focus specifically on these red</p>
+<p>discs on the outside to see if they</p>
+<p>change color</p>
+<p>and then you ask at the end you know did</p>
+<p>you ever notice</p>
+<p>these square things that pop up um</p>
+<p>and there are cases when um</p>
+<p>when they do see the square in cases</p>
+<p>when they don't and you're looking for</p>
+<p>differences in erps corresponding to</p>
+<p>when they do versus they don't</p>
+<p>under conditions of different sorts of</p>
+<p>attention um</p>
+<p>and so what so what we were trying to do</p>
+<p>is to see whether um when you built</p>
+<p>um a an active inference model</p>
+<p>that um that corresponded to this</p>
+<p>particular</p>
+<p>um attention uh</p>
+<p>task um that's called an intentional</p>
+<p>blindness task</p>
+<p>um you know could we reproduce the the</p>
+<p>p3 pattern so this kind of in red here</p>
+<p>this extra um</p>
+<p>dip um in uh</p>
+<p>neural activity as measured by eeg that</p>
+<p>um looks like it typically only happens</p>
+<p>when a person consciously experiences</p>
+<p>something</p>
+<p>but with these recent exceptions where</p>
+<p>it looks like it depends just on whether</p>
+<p>a stimulus is a</p>
+<p>task relevant or not um and chris</p>
+<p>actually i think you know this was</p>
+<p>primarily your work so</p>
+<p>so maybe you could describe this in a</p>
+<p>little more detail yeah yeah so first of</p>
+<p>all i think that just</p>
+<p>give a shout out because we've got to</p>
+<p>reference it on the slides is um this</p>
+<p>paradigm was designed by michael pitts</p>
+<p>um and he has done a lot of really</p>
+<p>incredible empirical work on um visual</p>
+<p>consciousness so</p>
+<p>just kind of important to acknowledge</p>
+<p>that anyway um</p>
+<p>so generally they speak there's three</p>
+<p>phases in this experiment so phase one</p>
+<p>is they're not told there's going to be</p>
+<p>a square kind of self-assemble</p>
+<p>and they're asked just to monitor the</p>
+<p>disks on the outside</p>
+<p>and then there's a huge literature on</p>
+<p>this but generally speaking in</p>
+<p>intentional blindness when you have a</p>
+<p>setup</p>
+<p>that's kind of analogous to that about</p>
+<p>50 percent of people</p>
+<p>are intentionally blind to whatever your</p>
+<p>manipulation is</p>
+<p>so i think the really famous one is like</p>
+<p>a group if you ask</p>
+<p>people like monitor um how many times a</p>
+<p>basketball is being passed back and</p>
+<p>forth between a group of people a</p>
+<p>gorilla can walk past and wave at people</p>
+<p>and about 50 of them um don't report</p>
+<p>seeing it</p>
+<p>um so the idea here is just kind of</p>
+<p>operationalize that a little bit more</p>
+<p>carefully</p>
+<p>um and then in phase two is after</p>
+<p>everyone's kind of been because like</p>
+<p>literally when you ask people after</p>
+<p>phase one hey did you see a square</p>
+<p>you're kind of alerting to them the fact</p>
+<p>that there was a square present there</p>
+<p>but it's still not top the square's</p>
+<p>still not task relevant so in phase two</p>
+<p>they just do exactly the same tasks</p>
+<p>monitor the external disks</p>
+<p>um and in phase three the manipulation</p>
+<p>is they</p>
+<p>then say okay well we now want you to</p>
+<p>count how many times like hit a button</p>
+<p>whenever the square appears</p>
+<p>and so the idea was was that if you kind</p>
+<p>of see here when we say percent scene we</p>
+<p>basically said a hierarchical model</p>
+<p>which we're going to look at in a minute</p>
+<p>and we just had it kind of report what</p>
+<p>type of trial</p>
+<p>it thought it was in did it see a line</p>
+<p>or not</p>
+<p>where a line was like this categorical</p>
+<p>variable</p>
+<p>or did it see a square um</p>
+<p>and essentially we just in the same way</p>
+<p>that you might in psychophysics like</p>
+<p>titrate</p>
+<p>the stimulus or the contrast of a</p>
+<p>stimulus or whatever</p>
+<p>until people see it 50 of the time</p>
+<p>basically what we did was we titrated it</p>
+<p>until the model saw it 50 of the time or</p>
+<p>titrated the precision of the a matrix</p>
+<p>kind of corresponding to contrast or</p>
+<p>whatever and then</p>
+<p>we just manipulated attention where</p>
+<p>attention corresponds to basically</p>
+<p>how precise the model's a matrix was</p>
+<p>um and what we showed was that when</p>
+<p>attention which we operationalized was</p>
+<p>basically like we had two steps of</p>
+<p>attention we had focal attention</p>
+<p>and um like</p>
+<p>super precise task relevant attention</p>
+<p>when there was just the focal attention</p>
+<p>condition the model reported seeing the</p>
+<p>thing</p>
+<p>99 of the time so basically all the time</p>
+<p>and</p>
+<p>when there was precise like task</p>
+<p>relevant detention the model reported</p>
+<p>seeing 100 of the time again</p>
+<p>but we see a dissociation between the</p>
+<p>presence of the p3</p>
+<p>in line with empirical results and so</p>
+<p>the idea so i can actually just</p>
+<p>highlight this since i'm the one with</p>
+<p>the cursor</p>
+<p>so so in this first condition so this is</p>
+<p>when uh like chris said the</p>
+<p>you know the thing had no expectation</p>
+<p>right that it was gonna that there's</p>
+<p>gonna be any square there</p>
+<p>and um and the precision of the a matrix</p>
+<p>was low because there was no attention</p>
+<p>um so as a result the erp is totally the</p>
+<p>simulated erp is flat</p>
+<p>and similarly this uh the second</p>
+<p>the second dip here which is what would</p>
+<p>correspond to a dip here</p>
+<p>is absent and here at the bottom</p>
+<p>are the simulated firing rates so in the</p>
+<p>first level basically when black at the</p>
+<p>bottom changes to</p>
+<p>black at the top that just means it</p>
+<p>starts to believe the upper row is a</p>
+<p>belief that the</p>
+<p>square was present and the bottom is the</p>
+<p>belief that the square was absent</p>
+<p>so basically what this means is when it</p>
+<p>goes from black at the bottom to black</p>
+<p>at the top</p>
+<p>that the belief changes so it's more</p>
+<p>likely that the stimulus was</p>
+<p>uh present um and then</p>
+<p>but you can see because the a matrix is</p>
+<p>uh imprecise</p>
+<p>then um which corresponds to like a low</p>
+<p>stimulus strength and this</p>
+<p>um then this is not very uh</p>
+<p>you know it's still pretty blurry and</p>
+<p>then at the second level</p>
+<p>these are beliefs about sequences that</p>
+<p>are what's actually gonna in other words</p>
+<p>did it go from no square to square and</p>
+<p>back to no square</p>
+<p>um and you can see that the beliefs</p>
+<p>remain really imprecise</p>
+<p>um because it's not uh it's not</p>
+<p>attending to it it's not task relevant</p>
+<p>um in this case though</p>
+<p>like chris was talking about you can see</p>
+<p>that even though it's not task</p>
+<p>relevant the beliefs at the higher level</p>
+<p>ultimately do converge onto this top row</p>
+<p>which is the one where</p>
+<p>the square was present but you can see</p>
+<p>that the beliefs change pretty gradually</p>
+<p>whereas when attention was precise</p>
+<p>because it was task relevant</p>
+<p>then you can see that the belief changes</p>
+<p>from being kind of flat</p>
+<p>over these two possible top states to</p>
+<p>being</p>
+<p>black fully confident that the square</p>
+<p>uh turned on and off and that</p>
+<p>really quick change in beliefs is what</p>
+<p>corresponds to</p>
+<p>the strong erp and in this case because</p>
+<p>of the higher level it's a kind of late</p>
+<p>erp</p>
+<p>corresponding to the p3 so really what's</p>
+<p>going on is the prediction of the neural</p>
+<p>process theory</p>
+<p>is that it's going to be the rate of</p>
+<p>change in in beliefs</p>
+<p>basically that is what's going to be</p>
+<p>measured as as an erp</p>
+<p>um you have anything further you want to</p>
+<p>say about that chris</p>
+<p>no no not at all i mean one thing i just</p>
+<p>want to highlight is like the the only</p>
+<p>difference between phase one and phase</p>
+<p>two is a very slight difference in the</p>
+<p>precision</p>
+<p>of the a matrix that we um took to</p>
+<p>basically be the addition of some uh</p>
+<p>some slight focal attention</p>
+<p>um and but you can see like just looking</p>
+<p>at the figures like it really made very</p>
+<p>a very minor difference but it still</p>
+<p>bumped it up enough</p>
+<p>above the threshold just enough for it</p>
+<p>to basically go from 50</p>
+<p>report to basically 100 report just</p>
+<p>also one point on the erp or the event</p>
+<p>related potential it's defined on the</p>
+<p>bottom left of the slide</p>
+<p>it's like a population level measure of</p>
+<p>the electromagnetic activity</p>
+<p>in populations of cells in the brain</p>
+<p>and so it's kind of like on the left if</p>
+<p>something's passing under the radar</p>
+<p>the population is not changing in</p>
+<p>broad strokes but then when there's this</p>
+<p>event that's task relevant</p>
+<p>it transiently synchronizes the</p>
+<p>population to be doing certain things in</p>
+<p>a certain timing</p>
+<p>and then that's reflected by changes in</p>
+<p>the population level</p>
+<p>electromagnetism patterns reflected by</p>
+<p>what are called erps but there's a whole</p>
+<p>literature with fristen and many others</p>
+<p>on this topic</p>
+<p>yeah so basic erps are just</p>
+<p>depolarization of</p>
+<p>dendritic trees</p>
+<p>yeah which corresponds to the prediction</p>
+<p>error yeah which corresponds to</p>
+<p>prediction</p>
+<p>yeah cool so basically as prediction</p>
+<p>error</p>
+<p>initially goes up and then goes back</p>
+<p>down then that would be</p>
+<p>the uh the predicted erp</p>
+<p>um so um</p>
+<p>and this um is kind of related to</p>
+<p>uh you know pretty standard neural mass</p>
+<p>models um that are used</p>
+<p>in the in the literature that make</p>
+<p>pretty similar assumptions</p>
+<p>right they assume that the average</p>
+<p>firing rate of a population can be</p>
+<p>treated as</p>
+<p>a sigmoid function so a function that</p>
+<p>looks like this</p>
+<p>of the average membrane potential um</p>
+<p>and you can do things like for instance</p>
+<p>shift</p>
+<p>this function to the left or the right</p>
+<p>based on things that uh control the uh</p>
+<p>the firing rate threshold um you know</p>
+<p>which could relate to inhibitory</p>
+<p>interneurons or you know there's a bunch</p>
+<p>of</p>
+<p>different neural mechanisms involved but</p>
+<p>basically this</p>
+<p>the point is just that um this idea</p>
+<p>about where you get</p>
+<p>um firing rates um from average membrane</p>
+<p>potentials is is not kind of out of</p>
+<p>nowhere it's</p>
+<p>something that's kind of used as a</p>
+<p>standard assumption</p>
+<p>in um in uh these sorts of</p>
+<p>models and one interesting note is the</p>
+<p>soft max that sigma</p>
+<p>that we use to kind of renormalize</p>
+<p>probability</p>
+<p>it's actually utilized in artificial</p>
+<p>neurons in neural networks</p>
+<p>as also a probability renormalizing</p>
+<p>trick</p>
+<p>so we're thinking about it in kind of</p>
+<p>like the intersection of the physical</p>
+<p>thing and the instrumentalist approach</p>
+<p>realism and instrumentalism</p>
+<p>and we're sailing our active inference</p>
+<p>ship together through there</p>
+<p>yeah so so that's and and you know later</p>
+<p>chris will show</p>
+<p>specific simulations based on an actual</p>
+<p>task that will produce</p>
+<p>predicted erps that are consistent with</p>
+<p>existing literature</p>
+<p>um when he goes through the code um in</p>
+<p>the second part of this uh</p>
+<p>this session um but so i'm gonna</p>
+<p>sort of stop talking about the state</p>
+<p>prediction errors at this point which</p>
+<p>again</p>
+<p>chris will pick up um in his part the</p>
+<p>second thing</p>
+<p>that's kind of commonly talked about as</p>
+<p>part of the neural process theory</p>
+<p>in inactive inference is this idea</p>
+<p>of expected free energy precision um</p>
+<p>being associated with dopamine so let's</p>
+<p>say right from the start that</p>
+<p>to be technically correct we call this</p>
+<p>expected for energy precision</p>
+<p>in the literature it's often just called</p>
+<p>policy precision</p>
+<p>but that can be slightly confusing</p>
+<p>just because the precision</p>
+<p>of the actual posterior distribution of</p>
+<p>our policies right this bolded pi</p>
+<p>here corresponds not just to</p>
+<p>the precision of expected free energy g</p>
+<p>here</p>
+<p>but also to f and to e um</p>
+<p>so there are ways in which the expected</p>
+<p>free energy precision this gamma thing</p>
+<p>that scales g</p>
+<p>um you know could be precise or</p>
+<p>imprecise while the actual posterior</p>
+<p>distribution of her policies could still</p>
+<p>be</p>
+<p>precise or imprecise in a way that</p>
+<p>differs from um</p>
+<p>the precision of g yep so you can be not</p>
+<p>sure what to do</p>
+<p>but have very clear understanding of two</p>
+<p>policies and their implications it's two</p>
+<p>separate levels of uncertainty</p>
+<p>no it's not quite that it's my life yeah</p>
+<p>it's not yeah like like so so a good a</p>
+<p>good example would be for instance so</p>
+<p>um in the um you know in uh</p>
+<p>you know the paper uh you know that i</p>
+<p>wrote with casper um</p>
+<p>and others on the on deeply felt alpha</p>
+<p>so deeply felt affect so the idea about</p>
+<p>um changes in emotional states or</p>
+<p>affective states</p>
+<p>um relates specifically to this uh beta</p>
+<p>term here that controls the expected for</p>
+<p>energy precision</p>
+<p>um now when expected free energy</p>
+<p>precision goes down</p>
+<p>um then that will often correspond to</p>
+<p>right a negative or when expected for</p>
+<p>energy goes up sorry then that will</p>
+<p>correspond to a decrease</p>
+<p>and expected for energy precision um</p>
+<p>but uh or a difference between f and g</p>
+<p>um but uh but there will be cases where</p>
+<p>gamma will go down meaning the the model</p>
+<p>becomes less confident</p>
+<p>in its beliefs about uh its ability to</p>
+<p>minimize expected free energy</p>
+<p>essentially it decreases its beliefs</p>
+<p>its confidence in its action model but</p>
+<p>there are cases when that can happen</p>
+<p>despite the fact that the actual</p>
+<p>posterior additional distribution over</p>
+<p>policies becomes really precise</p>
+<p>so so a kind of nice example of this</p>
+<p>would be</p>
+<p>you know say you're kind of walking</p>
+<p>around in the woods and at the moment</p>
+<p>you're really confident in the</p>
+<p>walking around policy right so there's a</p>
+<p>precise distribution</p>
+<p>over you know i should be walking around</p>
+<p>um</p>
+<p>but now you unexpectedly see a bear um</p>
+<p>now immediately you're going to switch</p>
+<p>to having a very precise poster</p>
+<p>posterior distribution over the runaway</p>
+<p>policy so</p>
+<p>you're going to have two policies two</p>
+<p>distributions of our policies that are</p>
+<p>both very precise</p>
+<p>but they also but they change rapidly</p>
+<p>so the the policy that the that the</p>
+<p>model was confident in before is very</p>
+<p>different than the policy</p>
+<p>that the model was confident in after so</p>
+<p>despite that the</p>
+<p>posterior distribution is still over</p>
+<p>policies is still precise</p>
+<p>that things very confident what to do um</p>
+<p>gamma will still go</p>
+<p>down um so the thing will feel negative</p>
+<p>like in motion despite being very</p>
+<p>confident and running away</p>
+<p>so the thing that the thing that's</p>
+<p>driving that is f i think that's</p>
+<p>important to put in</p>
+<p>or to say</p>
+<p>if you want to cash it out ryan oh well</p>
+<p>i mean yes i mean just in the sense</p>
+<p>so f is f is going to be so based on a</p>
+<p>new observation</p>
+<p>f is the um is the kind of evidence for</p>
+<p>each policy</p>
+<p>at the time of the new observation so if</p>
+<p>f</p>
+<p>strongly contradicts g then that means</p>
+<p>that the distribution is going to change</p>
+<p>in a way</p>
+<p>that suggests that you ought to have</p>
+<p>less confidence in g</p>
+<p>and um and we can we can i'll show a</p>
+<p>specific example of that below</p>
+<p>um when we actually show simulations of</p>
+<p>the um</p>
+<p>you know postulated dopamine responses</p>
+<p>but</p>
+<p>so the idea here is is that dopamine</p>
+<p>phasic dopamine responses correspond to</p>
+<p>changes in this parameter beta which</p>
+<p>controls</p>
+<p>gamma which is the expected free energy</p>
+<p>precision um</p>
+<p>and the way that these updates in beta</p>
+<p>so</p>
+<p>this equation here just corresponds to</p>
+<p>the initial beta</p>
+<p>so the non-bolded one here plus</p>
+<p>this thing so the posterior distribution</p>
+<p>of our policies</p>
+<p>minus the prior distribution of our</p>
+<p>policies so basically how much did</p>
+<p>beliefs about policies change</p>
+<p>and then dotted with the negative</p>
+<p>expected free energy</p>
+<p>um that was that you know that</p>
+<p>correspond to that trial</p>
+<p>and then minus the previous uh beta</p>
+<p>which allows this thing to just</p>
+<p>continually iterate um</p>
+<p>but because the change from posterior</p>
+<p>release or policies</p>
+<p>from prior beliefs or policies um</p>
+<p>just adds f basically the prior over</p>
+<p>policies we don't show it here is just</p>
+<p>ln e minus gamma g</p>
+<p>so the f only comes in to turn the prior</p>
+<p>over policies into a posterior policies</p>
+<p>um and so this change is driven by f</p>
+<p>um and so the more that f</p>
+<p>is consistent versus inconsistent with g</p>
+<p>um is what uh is what controls</p>
+<p>the the agent's sort of changes in</p>
+<p>confidence about</p>
+<p>about its g estimates um</p>
+<p>and so changes in that are what are</p>
+<p>expected or</p>
+<p>proposed to correspond to phasic</p>
+<p>dopamine responses</p>
+<p>and then the kind of tonic level of beta</p>
+<p>is also</p>
+<p>proposed to be associated with tonic</p>
+<p>dopamine</p>
+<p>levels so if i can just very briefly say</p>
+<p>something</p>
+<p>um so essentially gamma is a</p>
+<p>gamma is a a rate or bright beta sorry</p>
+<p>is a rate parameter from a gamma</p>
+<p>distribution</p>
+<p>and essentially we get you get this</p>
+<p>derivation so beta dot</p>
+<p>that that technically that's a that's a</p>
+<p>temporal derivative right</p>
+<p>and so this isn't exact it's a little</p>
+<p>misleading kind of because this</p>
+<p>actually is a variational derivative</p>
+<p>of gamma</p>
+<p>with respect to variational free energy</p>
+<p>if that makes sense so the idea is is</p>
+<p>that updates or changes</p>
+<p>in essentially this beta value will</p>
+<p>minimize variational free energy</p>
+<p>and if you want to see like the so the</p>
+<p>actual um</p>
+<p>the actual derivations of that get kind</p>
+<p>of kind of gnarly</p>
+<p>but if you're interested if anyone's</p>
+<p>interested i would just say</p>
+<p>um go and read and the appendix of</p>
+<p>ann sales paper that's in plus</p>
+<p>computational biology</p>
+<p>on the locus cerealia cyrillus and</p>
+<p>um learning rate and prediction error um</p>
+<p>where they show motivations yeah ana's</p>
+<p>yeah anna's</p>
+<p>anna's the appendix and this paper is</p>
+<p>like actually really great for this</p>
+<p>because</p>
+<p>plus cb uh basically like required</p>
+<p>it looks like that she spell like every</p>
+<p>little detail about</p>
+<p>deriving everything um in active</p>
+<p>inference so it</p>
+<p>has a really great paper both in the</p>
+<p>main text and in the appendix for</p>
+<p>showing kind of exactly where you get</p>
+<p>each of these things um</p>
+<p>uh yeah like pretty much as clearly as</p>
+<p>i've seen it</p>
+<p>anything else to add on the neural</p>
+<p>process front because there's some</p>
+<p>questions and then we'll head into the</p>
+<p>second section but this is awesome</p>
+<p>uh there's a lot more actually let's</p>
+<p>keep going then</p>
+<p>then so yeah we'll do more neural</p>
+<p>process theory however much</p>
+<p>and then we'll be taking questions we'll</p>
+<p>have a intermission with a few questions</p>
+<p>that are really nice and then</p>
+<p>christopher will</p>
+<p>launch into the hierarchical modeling</p>
+<p>so so to actually give examples here</p>
+<p>because you know everything we've said</p>
+<p>about the about dopamine and beta</p>
+<p>updates is</p>
+<p>um still pretty abstract um so</p>
+<p>you know in the in the tutorial we give</p>
+<p>specific numerical examples of this as</p>
+<p>well</p>
+<p>um um to show and give a kind of like</p>
+<p>geometric actually um intuition</p>
+<p>um about this um and um</p>
+<p>so here you can see so so here we show</p>
+<p>right that the prior over policies this</p>
+<p>pi zero</p>
+<p>like i said is just the soft max of ln e</p>
+<p>minus gamma g</p>
+<p>and then the posterior is the softmax of</p>
+<p>lne</p>
+<p>minus f minus gamma g which we showed</p>
+<p>before</p>
+<p>and so and these are the equations for</p>
+<p>quote unquote dopamine phasic dopamine</p>
+<p>responses</p>
+<p>um and so if you just take a specific</p>
+<p>really simple example</p>
+<p>so let's say there's no hat so let's say</p>
+<p>that beta 0</p>
+<p>and therefore gamma 0 and the initial</p>
+<p>beta posterior those are all just one so</p>
+<p>we're just starting out</p>
+<p>you know totally flat basically um</p>
+<p>and and we'll say that the agent has no</p>
+<p>habits</p>
+<p>um so there are two possible policies</p>
+<p>here i should say so the agent has no</p>
+<p>habit so it's just one and one</p>
+<p>for counts over uh policies</p>
+<p>now let's say that g</p>
+<p>is 10 and nine so in other words there's</p>
+<p>slightly higher expected free energy for</p>
+<p>the first policy then the second policy</p>
+<p>so now let's say that f the agent gets a</p>
+<p>new observation</p>
+<p>and the free energy for each policy</p>
+<p>corresponds to 20 and one</p>
+<p>so as you can see this is still</p>
+<p>consistent with</p>
+<p>um the 10 and 9 right it's not like</p>
+<p>contradicting the um</p>
+<p>the you know policy one still has higher</p>
+<p>uh free energy than policy two um</p>
+<p>so when you calculate uh pi zero</p>
+<p>using this equation and these numbers up</p>
+<p>here you end up</p>
+<p>initially having a probability over</p>
+<p>policies of 0.218 and 0.728</p>
+<p>so policy 2 is the one that</p>
+<p>is has is uh more likely uh given the</p>
+<p>expected free energy because it's lower</p>
+<p>right expected for energy is nine</p>
+<p>um now the posterior policies after</p>
+<p>we put in f just ends up being zero one</p>
+<p>um and so if you take the difference</p>
+<p>here so we're just called pi diff so pi</p>
+<p>minus pi 0</p>
+<p>that ends up being negative 0.218.218</p>
+<p>and then if you do this a dot pi diff</p>
+<p>with negative g um and these two betas</p>
+<p>just cancel out because it's just one</p>
+<p>minus one</p>
+<p>and so you end up with 0.22 and then</p>
+<p>if you compute the update</p>
+<p>then uh the yeah what the change will be</p>
+<p>then gamma ends up equaling 1.28 which</p>
+<p>went up from one um which means that</p>
+<p>you'd have a</p>
+<p>positive uh phasic dopamine predicted</p>
+<p>positive physic dopamine response</p>
+<p>um and a way to kind of think about it</p>
+<p>geometrically is</p>
+<p>um whether or not the vectors</p>
+<p>corresponding to</p>
+<p>uh pi diff so the difference between pi</p>
+<p>and pi zero point in the same direction</p>
+<p>as negative g</p>
+<p>um because that implies that they're uh</p>
+<p>consistent with one another that implies</p>
+<p>that essentially the</p>
+<p>g was on track um and that's worth a</p>
+<p>a re-run so what is this geometric space</p>
+<p>and then what would it mean if the</p>
+<p>vectors were totally correlated and they</p>
+<p>were like</p>
+<p>pointing the same exact direction versus</p>
+<p>here they're almost at 90 degrees or</p>
+<p>what would it mean for different arrows</p>
+<p>to be pointing in different directions</p>
+<p>so these are the vectors corresponding</p>
+<p>to</p>
+<p>the vectors here in g and the vector</p>
+<p>um that corresponds to pi minus pi zero</p>
+<p>one so this is so this is and i should</p>
+<p>say that these are scaled</p>
+<p>um so that they're similar lengths</p>
+<p>but the same directions because</p>
+<p>otherwise one arrow would be way</p>
+<p>way longer than the other and the kind</p>
+<p>of point isn't clear</p>
+<p>wouldn't be clear but so basically pi</p>
+<p>diff right is negative 0.218.218 so it's</p>
+<p>pointing left and up so negative x</p>
+<p>positive y um whereas g is</p>
+<p>um negative g would be negative 10</p>
+<p>negative 9 so it will be</p>
+<p>down and left um and so the</p>
+<p>the general kind of um intuition that's</p>
+<p>supposed to be given is that</p>
+<p>um when these two vectors point in the</p>
+<p>same direction where that just means</p>
+<p>that the angle is less</p>
+<p>than 90 degrees um then uh</p>
+<p>the gamma update will be positive um</p>
+<p>whereas</p>
+<p>if for instance instead we do a</p>
+<p>different example</p>
+<p>now the only thing we're going to do</p>
+<p>here is we're going to change f we're</p>
+<p>going to change off from 20 and one</p>
+<p>to or no sorry we're gonna change</p>
+<p>g so g is going from 10 to nine</p>
+<p>to only being one and nine so in other</p>
+<p>words</p>
+<p>while in this case the first policy at</p>
+<p>higher expected free energy</p>
+<p>now the first policy has lower expected</p>
+<p>free energy</p>
+<p>now if you run through the exact same</p>
+<p>set of steps</p>
+<p>to solve the equations you're going to</p>
+<p>end up with a gamma of 0.14</p>
+<p>which means there's going to be a</p>
+<p>negative</p>
+<p>there should be a drop in dopamine in</p>
+<p>other words the agent should become less</p>
+<p>confident</p>
+<p>in its uh g estimates</p>
+<p>and you can see that if you look at</p>
+<p>where the vectors are pointing in this</p>
+<p>case</p>
+<p>um then they're then the angle</p>
+<p>difference is 128.66 degrees so</p>
+<p>more than 90 degrees so therefore they</p>
+<p>point in different directions</p>
+<p>therefore they provide evidence against</p>
+<p>g um</p>
+<p>if uh if that uh makes sense</p>
+<p>yep let me try with the dopamine so</p>
+<p>we're thinking of dopamine</p>
+<p>as a tracker of confidence it has many</p>
+<p>roles and colombo and others have</p>
+<p>talked about pluralism in dopamine so</p>
+<p>we're not this is not a lecture on</p>
+<p>dopamine we're thinking about dopamine</p>
+<p>as like confidence and</p>
+<p>we're headed in a direction we're on our</p>
+<p>road trip and the dope means coursing</p>
+<p>through our brain</p>
+<p>and we want to know how confident we are</p>
+<p>that we're on the right path as new</p>
+<p>observations are coming in</p>
+<p>now as we've seen from the earlier</p>
+<p>sections we're doing a lot of</p>
+<p>matrix math and just like a vector</p>
+<p>is a simpler version of a matrix and a</p>
+<p>tensor is a more complicated version of</p>
+<p>a matrix they're all kind of in the same</p>
+<p>math space and a given vector</p>
+<p>from computer science it's like two</p>
+<p>numbers that are in a column</p>
+<p>but also a vector has this arrow</p>
+<p>interpretation</p>
+<p>so if someone says the coordinate 3</p>
+<p>comma 3 it's like a vector from 0 0</p>
+<p>pointing to 3 3. so lists of numbers</p>
+<p>like a computer science vector</p>
+<p>is basically the same thing as a vector</p>
+<p>with a</p>
+<p>star and a head at the at the end so</p>
+<p>it's physics and computer science</p>
+<p>and we're thinking about vectors and</p>
+<p>matrices and tensors</p>
+<p>and then we're laying out after scaling</p>
+<p>and renormalizing</p>
+<p>which direction these different vectors</p>
+<p>are pointing</p>
+<p>and then it's kind of like it are we</p>
+<p>headed on the basically the same path</p>
+<p>is the the vector of the evidence sort</p>
+<p>of pointing us in a similar direction</p>
+<p>that we're already believing in</p>
+<p>or is the new evidence coming in like a</p>
+<p>tailwind or a headwind</p>
+<p>that's kind of surprising us and it's</p>
+<p>not in line it's not headed in the same</p>
+<p>direction as what we're already</p>
+<p>believing</p>
+<p>and then this meta with a gamma the</p>
+<p>hyper parameter</p>
+<p>is about how much reliance we're putting</p>
+<p>in to g</p>
+<p>versus our observations yeah so i mean</p>
+<p>another kind of</p>
+<p>a nice a nice thing here is that so as</p>
+<p>as gamma goes down right so if you look</p>
+<p>if you look at this posterior</p>
+<p>you know distribution of our policies</p>
+<p>equation as this gamma value gets lower</p>
+<p>right so as the agent becomes less</p>
+<p>confident in its</p>
+<p>in its action model more or less it's</p>
+<p>less confident that its model</p>
+<p>will be good at minimizing expected free</p>
+<p>energy right as that goes down then g</p>
+<p>contributes less</p>
+<p>which means that f and e contribute more</p>
+<p>so</p>
+<p>if an agent has built up really strong</p>
+<p>habits</p>
+<p>um then its beliefs in its model will</p>
+<p>control</p>
+<p>action if gamma is high but if gamma's</p>
+<p>really low</p>
+<p>then the agent will just kind of choose</p>
+<p>whatever it's</p>
+<p>uh habitually chosen in the past so</p>
+<p>habits will kind of take over</p>
+<p>if it's not confident in its model um</p>
+<p>which is kind of a nice way to think</p>
+<p>about it has some kind of analogs to</p>
+<p>like model based versus model free</p>
+<p>um uh algorithms and reinforcement</p>
+<p>learning</p>
+<p>for example that um again we could think</p>
+<p>about in terms of actually</p>
+<p>making decisions based on you know</p>
+<p>explicitly simulating what's going to</p>
+<p>happen in the future</p>
+<p>if i make one choice versus another</p>
+<p>versus just doing what's typically</p>
+<p>worked in the past</p>
+<p>um is another kind of way to think about</p>
+<p>what gamma is</p>
+<p>arbitrating um did you uh do you want to</p>
+<p>say anything else chris</p>
+<p>no i was just going to say there's some</p>
+<p>really nice numerical results um</p>
+<p>so i think i've forgotten i'm sorry if</p>
+<p>i've gotten the name um i think it's</p>
+<p>thomas fitzgerald</p>
+<p>is the lead author on this but um they</p>
+<p>have some stuff</p>
+<p>just showing that related schemes i</p>
+<p>think that the equations have changed a</p>
+<p>little bit since then but they're</p>
+<p>pretty much the same um that this scheme</p>
+<p>gives very very similar</p>
+<p>answers as something like temporal</p>
+<p>difference learning which is a very</p>
+<p>simple model-free algorithm in</p>
+<p>reinforcement learning</p>
+<p>um and that's also i think the the gold</p>
+<p>standard model of dope phasic dopamine</p>
+<p>at the moment ryan correct me on that</p>
+<p>but no i mean yeah i mean it's like</p>
+<p>temporal the</p>
+<p>temporal difference account of of uh</p>
+<p>reward prediction error is definitely</p>
+<p>yeah</p>
+<p>treating phasic dopamine responses as</p>
+<p>reward prediction errors in temporal</p>
+<p>difference learning models is</p>
+<p>definitely a very standard and kind of</p>
+<p>like widely supported</p>
+<p>view um and this i mean the idea is that</p>
+<p>this</p>
+<p>this can um this sort of um</p>
+<p>this sort of active inference model of</p>
+<p>dopamine um</p>
+<p>is kind of saying something different</p>
+<p>it's not saying it's a reward prediction</p>
+<p>error</p>
+<p>but it's something that will have the</p>
+<p>same kind of dynamics as reward</p>
+<p>prediction error</p>
+<p>because if you think about it so say you</p>
+<p>know i'm walking along and i'm not</p>
+<p>expecting a reward</p>
+<p>and then all of a sudden i get a cue</p>
+<p>that</p>
+<p>makes it so now that i expect now i</p>
+<p>expect</p>
+<p>um reward um so you know for instance</p>
+<p>like</p>
+<p>or say like in like a simple kind of</p>
+<p>like experiment like a like</p>
+<p>auburn condition experiment conditioning</p>
+<p>experiment with like a rat or something</p>
+<p>you know it learns</p>
+<p>that every time it sees a light it's</p>
+<p>going to get a reward in five seconds</p>
+<p>um then the reward prediction area story</p>
+<p>would say</p>
+<p>oh you're going to get a real word</p>
+<p>prediction error when the rat sees the</p>
+<p>light because now</p>
+<p>it's going to get it knows it's going to</p>
+<p>get a reward that it wasn't expecting</p>
+<p>um so in this case though you'll get</p>
+<p>something kind of similar but for a</p>
+<p>different reason</p>
+<p>where you can think about the rat</p>
+<p>initially just kind of wandering around</p>
+<p>not being super confident</p>
+<p>you know in in any particular policy</p>
+<p>but then it gets that cue that it's</p>
+<p>going to get rewarded</p>
+<p>you know if it goes up and pushes the</p>
+<p>the lever right as a standard way this</p>
+<p>works</p>
+<p>um so so instead of it being a reward</p>
+<p>prediction error</p>
+<p>what would be happening is the queue is</p>
+<p>actually um</p>
+<p>unexpectedly making the rat a lot more</p>
+<p>confident in what to do</p>
+<p>right a lot more confident in the policy</p>
+<p>of going and pushing the lever</p>
+<p>um so you're going to get something that</p>
+<p>looks just like</p>
+<p>a reward prediction error at least in</p>
+<p>that sort of setup</p>
+<p>um but actually has to do with an update</p>
+<p>and confidence about what to do</p>
+<p>so so that's kind of in part</p>
+<p>that's one kind of intuitive way to</p>
+<p>think about um you know where</p>
+<p>similar looking dynamics come from but</p>
+<p>but i should also kind of be be clear</p>
+<p>that i mean this is</p>
+<p>definitely not meant</p>
+<p>necessarily to be kind of a universal uh</p>
+<p>unifying account of dopamine you know at</p>
+<p>least</p>
+<p>at least as far as um you know i can</p>
+<p>tell a present there's lots of</p>
+<p>other things that dopamine does that you</p>
+<p>know look like they couldn't be</p>
+<p>explained by</p>
+<p>just this sort of model but this sort of</p>
+<p>model</p>
+<p>um looks like it's decent as a contender</p>
+<p>for</p>
+<p>making sense of things like um why</p>
+<p>dopamine doesn't just respond for</p>
+<p>prediction errors but also responds for</p>
+<p>events that are salient</p>
+<p>um for example um this kind of saliency</p>
+<p>versus word prediction or sort of thing</p>
+<p>there's a couple others but</p>
+<p>but um this is not necessarily meant to</p>
+<p>be a</p>
+<p>you know this is all dopamine does um</p>
+<p>but anyway um so</p>
+<p>uh so just making that clear um</p>
+<p>so now the kind of last thing to show</p>
+<p>and this is the actual figure in the</p>
+<p>paper that just shows both of these</p>
+<p>things</p>
+<p>is that um if you do the actual</p>
+<p>variational updating</p>
+<p>where just beta continually changes then</p>
+<p>the uh the actual kind of</p>
+<p>gradient like that the changes look like</p>
+<p>this where the thing would start out for</p>
+<p>instance</p>
+<p>at um around at a certain value</p>
+<p>um and then for for this case right so</p>
+<p>it starts at</p>
+<p>um you know down coming from one and</p>
+<p>then it will</p>
+<p>gradually go up and converge um after</p>
+<p>uh 16 iterations is the what's set in</p>
+<p>the code um</p>
+<p>to that posterior value over what gamma</p>
+<p>ought to be</p>
+<p>whereas in this case it will drop coming</p>
+<p>up from one</p>
+<p>down and then converge over those</p>
+<p>iterations onto</p>
+<p>um this value of 0.14 so it's not as</p>
+<p>though in the neural model this is</p>
+<p>kind of happening with one little step</p>
+<p>it's it's kind of a</p>
+<p>it's a you know it's a convergence um</p>
+<p>that you can think of as related to a</p>
+<p>kind of prediction error</p>
+<p>um essentially kind of like an expected</p>
+<p>free energy prediction error uh some</p>
+<p>people have talked about it that way</p>
+<p>um in previous papers and for those</p>
+<p>following along in the code would this</p>
+<p>be in the efe precisionupdating.com yeah</p>
+<p>yeah yeah thanks so yeah there's a yeah</p>
+<p>to play around with this exact</p>
+<p>this this exact example um as well as</p>
+<p>ones where you can specify</p>
+<p>uh bigger policy spaces so like like</p>
+<p>when the agent has like five policies to</p>
+<p>choose from instead of one</p>
+<p>um you know which is a little more</p>
+<p>realistic it's just um</p>
+<p>it's hard to show uh vectors um</p>
+<p>sorry to illustrate those in like five</p>
+<p>dimensions um so we went with two for</p>
+<p>this simple examples</p>
+<p>um but yes um in that efe precision</p>
+<p>updating</p>
+<p>you can reproduce these results and then</p>
+<p>try changing like private beta values or</p>
+<p>changing g and f um to see to get more</p>
+<p>of an intuitive sense of the dynamics</p>
+<p>um and so like in the um</p>
+<p>in the eq in the the um what you might</p>
+<p>call it</p>
+<p>when we were showing in the explore</p>
+<p>exploit test model last time</p>
+<p>um these sorts of simulated simulated</p>
+<p>behaviors</p>
+<p>right where the agent either chooses to</p>
+<p>take the hint and then go left or right</p>
+<p>to get a reward oh it just makes</p>
+<p>or it's just rick's risk seeking and</p>
+<p>just goes left versus right</p>
+<p>automatically instead of taking the hint</p>
+<p>first</p>
+<p>um in in the previous session we went</p>
+<p>over this</p>
+<p>and but we kind of ignored this bottom</p>
+<p>right section on expected</p>
+<p>uh free energy precision and these</p>
+<p>dopamine plots</p>
+<p>but now that we've kind of walked</p>
+<p>through that a little bit</p>
+<p>um you know we can kind of come back to</p>
+<p>that and see that in this case</p>
+<p>um the agent started out</p>
+<p>in the beginning and it chose to take</p>
+<p>the hint um and then it knew</p>
+<p>um whether to choose left</p>
+<p>uh choose the left machine or choose the</p>
+<p>right machine so you can see what</p>
+<p>happens here is</p>
+<p>when it takes the hint then it becomes a</p>
+<p>lot more confident about what to do</p>
+<p>and so it's at that point that you</p>
+<p>simulate a big jump in dopamine</p>
+<p>right so in this case it's not because</p>
+<p>it's got a reward immediately it's</p>
+<p>because it got a</p>
+<p>cue where it learned what to be able to</p>
+<p>do to get a reward</p>
+<p>um so then it chooses left and then it</p>
+<p>observes a win here at the third</p>
+<p>uh time point or this third column um</p>
+<p>so so this is kind of an example um</p>
+<p>and then in the learning simulations</p>
+<p>that we showed last time as well</p>
+<p>before we leave that slide could i just</p>
+<p>jump in real quick and i had a quick</p>
+<p>clarification about that</p>
+<p>figure um so in that middle panel for</p>
+<p>win lose and you look at that matrix</p>
+<p>it actually looks like if that's the</p>
+<p>expected probabilities for</p>
+<p>win loss at any given uh time</p>
+<p>epoch one two and three um he actually</p>
+<p>it actually looks like in this</p>
+<p>case the way that the simulation goes</p>
+<p>it's more confident about winning</p>
+<p>on this time step when it knows to take</p>
+<p>the hint and then after it's taken a</p>
+<p>hint</p>
+<p>um it becomes less confident about</p>
+<p>winning</p>
+<p>is or is that it's actually to do with</p>
+<p>the fact that those aren't so they're</p>
+<p>probabilities but they're not</p>
+<p>probabilities</p>
+<p>in the way that the rest of the modulus</p>
+<p>probabilities so these are</p>
+<p>these are preferences where we model</p>
+<p>preferences as a probability</p>
+<p>distribution</p>
+<p>i see i see so that has to do with more</p>
+<p>of the</p>
+<p>you know it's had more update it's had</p>
+<p>more observations at time</p>
+<p>three and so as you're going since</p>
+<p>you're it's an accumulator</p>
+<p>um in that optimization process is that</p>
+<p>no</p>
+<p>it's just it's just so when you're</p>
+<p>trying to encode essentially what's</p>
+<p>rewarding for the agent</p>
+<p>right you're just setting you're just</p>
+<p>saying that</p>
+<p>it has a particular distribution over</p>
+<p>each possible set of outcomes for each</p>
+<p>outcome modality and that distribution</p>
+<p>just encodes</p>
+<p>which observations are more preferred</p>
+<p>than</p>
+<p>others and formally that's just a fixed</p>
+<p>uh probability distribution over the</p>
+<p>different observations you might get</p>
+<p>where the higher the probability is</p>
+<p>quote unquote the more the agent prefers</p>
+<p>that observation</p>
+<p>um so this is so this is just saying</p>
+<p>like for the first output modality it's</p>
+<p>just all</p>
+<p>gray here because the agent doesn't</p>
+<p>prefer a hint or</p>
+<p>not a hint um and then the third one</p>
+<p>here observed action it doesn't</p>
+<p>prefer innately to observe itself do one</p>
+<p>action or another</p>
+<p>but in this middle one observing wins</p>
+<p>versus losses versus null</p>
+<p>just not observing an outcome yet um at</p>
+<p>the first time point so the first column</p>
+<p>it just does it doesn't have any</p>
+<p>preferences at the second</p>
+<p>time point so this middle column the</p>
+<p>thing has a strong preference for</p>
+<p>wind so this black one which corresponds</p>
+<p>to high probability</p>
+<p>it has a strong preference against</p>
+<p>losing observing a loss which is a very</p>
+<p>low probability</p>
+<p>and then the null state is just this</p>
+<p>kind of like intermediate thing it's not</p>
+<p>like</p>
+<p>it's not bad like a loss but it's not</p>
+<p>good like a win and so the person that</p>
+<p>shows the null</p>
+<p>there or there is is because it shows a</p>
+<p>hint because of the epistemic value of</p>
+<p>the hint</p>
+<p>i should say yeah so it so basically</p>
+<p>what's</p>
+<p>happening is if you remember that the uh</p>
+<p>this distribution is a little</p>
+<p>lighter at time two because the value of</p>
+<p>winning is higher</p>
+<p>at the second time step than the third</p>
+<p>remember because it can win four dollars</p>
+<p>if it tries to get us it just chooses</p>
+<p>one right away</p>
+<p>but at the third time point this is a</p>
+<p>little less</p>
+<p>precise it's a little flatter which is</p>
+<p>like looks darker gray because the black</p>
+<p>here</p>
+<p>only corresponds to winning two dollars</p>
+<p>instead of four um so the difference</p>
+<p>between winning and losing isn't quite</p>
+<p>as</p>
+<p>stark i think okay yeah um</p>
+<p>so but the point is it's not actually</p>
+<p>getting a big bump in dopamine when it</p>
+<p>wins</p>
+<p>you know it's getting a big bump in</p>
+<p>dopamine when it observes the hint</p>
+<p>because that's</p>
+<p>when it becomes confident in what to do</p>
+<p>to get the win</p>
+<p>um and that's to re-emphasize that we're</p>
+<p>doing this trajectory of policy which is</p>
+<p>what ties it to the path integral as</p>
+<p>well</p>
+<p>so at each time point that it's being</p>
+<p>evaluated at it's in the past and in the</p>
+<p>future and it's conditioned</p>
+<p>on policy so it's almost like the reward</p>
+<p>if you always expect the envelope has</p>
+<p>the paycheck</p>
+<p>if you get it and then you open it it's</p>
+<p>like neutral with respect to what you</p>
+<p>already believed about the way the world</p>
+<p>worked</p>
+<p>and you'd get a negative if it was less</p>
+<p>than expected and a positive if more</p>
+<p>than expected</p>
+<p>and so in that way the reward of what is</p>
+<p>initially just pure stimuli that could</p>
+<p>be rewarding or thought of in that way</p>
+<p>gets moved up that's kind of like re</p>
+<p>reinforcement learning or reward</p>
+<p>learning</p>
+<p>and that's why we're in this area of</p>
+<p>thinking about stimuli and policy and</p>
+<p>rewards and risks</p>
+<p>yeah i mean the idea is just that in in</p>
+<p>that context</p>
+<p>uh these dopamine responses the</p>
+<p>simulated dopamine responses here</p>
+<p>corresponding</p>
+<p>to changes in confidence about what to</p>
+<p>do or changes in confidence</p>
+<p>that your model will give you the right</p>
+<p>answer about what to do</p>
+<p>and uh and that will look that will have</p>
+<p>the same dynamics</p>
+<p>as a reward prediction error</p>
+<p>from a queue that predicts reward</p>
+<p>so so the dynamics will look like a</p>
+<p>reward prediction area even though</p>
+<p>in these models it corresponds to</p>
+<p>something different</p>
+<p>um so it's kind of like in behaviorism</p>
+<p>everybody can agree on the behavior we</p>
+<p>agree that if we train up the animal it</p>
+<p>learns to do this after</p>
+<p>x um experimental paradigm is carried</p>
+<p>out</p>
+<p>and then now we're talking about</p>
+<p>internal we're thinking either at a</p>
+<p>neural process level like which regions</p>
+<p>of the brain or</p>
+<p>computationally like what is happening</p>
+<p>and then</p>
+<p>here there's a common trunk with the</p>
+<p>predictive processing the reward</p>
+<p>prediction error all of that</p>
+<p>and the active inference models we're</p>
+<p>talking about which is and reinforcement</p>
+<p>learning which is that</p>
+<p>over time the reward gets moved up to be</p>
+<p>associated</p>
+<p>apparently more with the queue than with</p>
+<p>the actual stimulus delivery</p>
+<p>but we're taking a point of divergence</p>
+<p>in that we're adding in a few</p>
+<p>different pieces that differentiate an</p>
+<p>active inference free energy</p>
+<p>gradient descent driven policy selection</p>
+<p>from</p>
+<p>just q association even though they do</p>
+<p>have some similarities</p>
+<p>this is like a generalization or a much</p>
+<p>more nuanced way to approach similar</p>
+<p>situations</p>
+<p>yeah and you know ultimately right the</p>
+<p>hope is to find situations</p>
+<p>where active inference and reinforcement</p>
+<p>learning models are going to be going to</p>
+<p>make different predictions</p>
+<p>right about what dopamine will do um</p>
+<p>and uh because that's where you can</p>
+<p>actually say you know which model has</p>
+<p>more</p>
+<p>you know empirical support um and um</p>
+<p>yeah thomas fitzgerald i think it was</p>
+<p>the paper that chris was talking about</p>
+<p>before you know he did show</p>
+<p>there are interesting findings where</p>
+<p>when you</p>
+<p>get rid of dopamine when there's</p>
+<p>dopamine depletion there's some kind of</p>
+<p>lack of dopamine in the system for one</p>
+<p>reason or another</p>
+<p>um that doesn't actually get rid of</p>
+<p>uh reward learning like an agent can</p>
+<p>still learn about rewards despite</p>
+<p>um the dopaminergic function being</p>
+<p>impaired um you know which makes it look</p>
+<p>as though um</p>
+<p>you know dopamine uh might not be</p>
+<p>serving this reward prediction error</p>
+<p>function at least if you think that</p>
+<p>reward prediction</p>
+<p>is necessary for reward learning um</p>
+<p>and um and so there was he showed some</p>
+<p>simulations again with a slightly</p>
+<p>different formalism than the current one</p>
+<p>showing how you can get the same</p>
+<p>dopamine responses</p>
+<p>um as you would expect in a</p>
+<p>reinforcement learning model</p>
+<p>but it explains why you don't need</p>
+<p>dopamine to do the reward learning</p>
+<p>um but uh but like i mentioned the</p>
+<p>formalism isn't exactly the same as it</p>
+<p>is</p>
+<p>now because that was a slightly older</p>
+<p>paper um so</p>
+<p>you know i think there's just a lot more</p>
+<p>kind of empirical work to do to try to</p>
+<p>kind of</p>
+<p>find uh you know differential support</p>
+<p>for one model of dopamine or another</p>
+<p>here</p>
+<p>very uh any other any other uh comments</p>
+<p>chris</p>
+<p>um no i think just looking at the time</p>
+<p>um do you want to kind of speed through</p>
+<p>the slides and then you can get onto the</p>
+<p>stuff yeah</p>
+<p>okay so yeah i mean i can skip i can</p>
+<p>skip or to skim over a lot of this i</p>
+<p>mean the last thing i was going to talk</p>
+<p>about is</p>
+<p>that this isn't used as much um because</p>
+<p>it's not actually implemented in this</p>
+<p>way in the code</p>
+<p>but carl has made this point that you</p>
+<p>can also implement</p>
+<p>minimizing expected free energy i'm</p>
+<p>using a different kind of prediction</p>
+<p>error called an outcome prediction error</p>
+<p>and that just corresponds to the</p>
+<p>different elements</p>
+<p>in expected free energy so which is here</p>
+<p>just</p>
+<p>um here is just minimizing</p>
+<p>the expected difference between the</p>
+<p>preferred outcomes c</p>
+<p>and the outcomes that you expect under a</p>
+<p>policy</p>
+<p>right so um under some policy uh</p>
+<p>for under some policy the state for that</p>
+<p>pi um</p>
+<p>multiplied with a will give you the</p>
+<p>expected outcomes of a policy</p>
+<p>so you're just trying to um this</p>
+<p>prediction error minimizing this</p>
+<p>prediction or just corresponds to</p>
+<p>finding the policy that</p>
+<p>min or that minimizes the the difference</p>
+<p>between basically what you want and what</p>
+<p>you expect</p>
+<p>given what you choose to do and the</p>
+<p>second term</p>
+<p>is the ambiguity or information seeking</p>
+<p>term and it effectively you can think</p>
+<p>about it as the expected difference</p>
+<p>between</p>
+<p>beliefs about states before and after a</p>
+<p>new observation</p>
+<p>so you're trying to find basically um</p>
+<p>a difference that like uh the state that</p>
+<p>maximizes how much information you gain</p>
+<p>about what state you're in um but</p>
+<p>formally it's the</p>
+<p>it's the entropy of the likelihood</p>
+<p>distribution for a state or how kind of</p>
+<p>flat or uninformative the distribution</p>
+<p>is</p>
+<p>of expected outcomes given that you're</p>
+<p>in one state versus another</p>
+<p>um and in the paper we um we uh go</p>
+<p>through</p>
+<p>uh numeric numerical examples of um</p>
+<p>computing these sorts of outcome</p>
+<p>prediction errors as well</p>
+<p>um but the the basic point again i won't</p>
+<p>go through them in detail is just</p>
+<p>if you have some policy that is going to</p>
+<p>generate the state</p>
+<p>uh state one with probability point nine</p>
+<p>and state two probability point one</p>
+<p>and your preference is perfectly precise</p>
+<p>over observing outcome one um and that's</p>
+<p>your likelihood mapping</p>
+<p>then um policy whereas policy two</p>
+<p>is gonna is expected to um just</p>
+<p>uh generate 0.5.5 over states</p>
+<p>um then um and the outcomes</p>
+<p>that are associated with those states</p>
+<p>look like this</p>
+<p>then what you're going to get is</p>
+<p>a policy one is going to end up if you</p>
+<p>just</p>
+<p>do the math um out policy one is going</p>
+<p>to have a value of 2.4</p>
+<p>for that for that term whereas policy 2</p>
+<p>is going to have a value of 7.3 so this</p>
+<p>difference is going to be a lot bigger</p>
+<p>and therefore there's going to be more</p>
+<p>outcome prediction error and so the the</p>
+<p>policy that</p>
+<p>the first policy that's going to</p>
+<p>generate the outcomes that are closer to</p>
+<p>what you want</p>
+<p>is going to minimize that prediction</p>
+<p>error more</p>
+<p>and so again we just show examples we</p>
+<p>also have some examples of</p>
+<p>of this part but the basic idea here is</p>
+<p>if this is your likelihood function</p>
+<p>then state one here is kind of imprecise</p>
+<p>in what it predicts right it predicts</p>
+<p>one outcome with 0.4 and another outcome</p>
+<p>with 0.6</p>
+<p>whereas state 2 has a more precise</p>
+<p>distribution</p>
+<p>it generates outcome 1 with 0.2 and</p>
+<p>outcome 2 with 0.8</p>
+<p>so the agent would learn more if it</p>
+<p>moves to state 2</p>
+<p>because the outcomes are more</p>
+<p>informative</p>
+<p>and so basically these work examples</p>
+<p>just show how</p>
+<p>um the agent should to minimize outcome</p>
+<p>prediction or the age shouldn't the</p>
+<p>agent should be</p>
+<p>driven to uh choose to move to state two</p>
+<p>um and so um finally and i'm not going</p>
+<p>to go into this</p>
+<p>at all but we also show this um</p>
+<p>panel here that corresponds to another</p>
+<p>kind of element</p>
+<p>um that's been proposed in the neural</p>
+<p>process theory that has to do with</p>
+<p>model reduction and sleep and the basic</p>
+<p>idea is that sleep</p>
+<p>allows you to search for other models</p>
+<p>that you might you might entertain that</p>
+<p>can produce the same experiences you've</p>
+<p>had during the day but can do so in a</p>
+<p>simpler way</p>
+<p>so it's finding so sleep is basically</p>
+<p>still trying to minimize free energy</p>
+<p>but not with respect to new observations</p>
+<p>but just with respect to</p>
+<p>your model based on the experiences that</p>
+<p>you already had earlier</p>
+<p>and that corresponds to</p>
+<p>internal dynamics that can essentially</p>
+<p>prune away or reduce</p>
+<p>the weights of synaptic connections that</p>
+<p>are contributing less</p>
+<p>to explaining um what you did so</p>
+<p>essentially kind of noise</p>
+<p>uh like like if there's a bunch of kind</p>
+<p>of coincidental</p>
+<p>um uh you know connections between</p>
+<p>different things you observe then</p>
+<p>there's some kind of noise in what</p>
+<p>you've learned</p>
+<p>and so you can during sleep you can</p>
+<p>reduce that um</p>
+<p>and here's just a few papers that have</p>
+<p>talked about that and shown</p>
+<p>simulations um in case people are</p>
+<p>interested</p>
+<p>um but so now</p>
+<p>moving on to what chris is going to talk</p>
+<p>about</p>
+<p>are hierarchical models and the idea</p>
+<p>here is you can just take</p>
+<p>the same exact structure of the model</p>
+<p>here</p>
+<p>that we've shown before um but instead</p>
+<p>of</p>
+<p>um but put a layer kind of below it</p>
+<p>that's the same kind of thing but</p>
+<p>instead of the observations being</p>
+<p>actual outcomes the observations are</p>
+<p>just whatever</p>
+<p>the states the beliefs over states are</p>
+<p>at the lower level or the observations</p>
+<p>the observations for the second level</p>
+<p>are just the posteriors over states</p>
+<p>at the first level and so that</p>
+<p>just looks like this where you see here</p>
+<p>that you still are selecting policies at</p>
+<p>the higher level</p>
+<p>although you can also select policies at</p>
+<p>the lower level but</p>
+<p>states at time two here just generate</p>
+<p>states at time one and states at time</p>
+<p>one or states of</p>
+<p>sorry states at level one act does the</p>
+<p>observations</p>
+<p>for level two</p>
+<p>as you can see necessarily these operate</p>
+<p>over a slower time scale as well</p>
+<p>so for instance at time one level two</p>
+<p>the first state state of time one is</p>
+<p>gonna generate</p>
+<p>the uh first state</p>
+<p>at time one at the lower level but then</p>
+<p>the lower level is gonna move to its</p>
+<p>beliefs at state two</p>
+<p>over a faster time scale</p>
+<p>and so this whole thing is going to</p>
+<p>repeat at the lower level so the thing</p>
+<p>is going to infer posteriors over states</p>
+<p>based on two</p>
+<p>observations at fast time scales</p>
+<p>and then the posterior beliefs over</p>
+<p>states at the lower level are then going</p>
+<p>to propagate up and act as</p>
+<p>the observations um for</p>
+<p>state one at time one at the higher</p>
+<p>level</p>
+<p>and then that's going to transition</p>
+<p>through a second level b matrix</p>
+<p>to beliefs over states at time two</p>
+<p>which then is just going to provide</p>
+<p>priors</p>
+<p>to a second trial to the start of a</p>
+<p>second trial</p>
+<p>at the lower level which again operates</p>
+<p>over a faster time scale so essentially</p>
+<p>this whole lower level model</p>
+<p>completes its belief update um before</p>
+<p>the higher level transitions to its next</p>
+<p>state um</p>
+<p>and in the neural process theory it</p>
+<p>really just involves taking</p>
+<p>the first level just kind of tacking on</p>
+<p>another level of neurons on top</p>
+<p>and making the observations of the</p>
+<p>second level the things that drive the</p>
+<p>prediction error</p>
+<p>and the states as just the posteriors</p>
+<p>over states at the first level so it's</p>
+<p>just kind of repeating the same thing</p>
+<p>but at a higher level in treating the uh</p>
+<p>the interactions between the second and</p>
+<p>the first level the same way that</p>
+<p>observations feed into the first level</p>
+<p>um and so if i raise a question on this</p>
+<p>slide</p>
+<p>from the chat someone asked can you</p>
+<p>please explain the relationship or</p>
+<p>difference between models based upon</p>
+<p>deep active inference versus</p>
+<p>sophisticated inference</p>
+<p>and how is that related to the current</p>
+<p>discussion around</p>
+<p>dopamine signaling whether it's phasic</p>
+<p>or non-basic so</p>
+<p>two questions one is what is deep</p>
+<p>active inference and how is that related</p>
+<p>to sophisticated active inference and</p>
+<p>how are those</p>
+<p>related to what we're discussing now</p>
+<p>about dopamine and i have i thought if</p>
+<p>but you can go ahead i can answer all</p>
+<p>these very quickly</p>
+<p>this is perfect answer go for it so</p>
+<p>deep active inference can kind of</p>
+<p>correspond to two things uh you can talk</p>
+<p>about it in terms of using deep neural</p>
+<p>networks to</p>
+<p>parameterize your your essentially your</p>
+<p>a's and b's</p>
+<p>a and b matrices or your policies uh</p>
+<p>that would be kind of like a machine</p>
+<p>learning application in when i</p>
+<p>say deep active inference what i</p>
+<p>generally and what other people have</p>
+<p>talked about like the paper that first</p>
+<p>came out called like deep whatever</p>
+<p>the impact of inference it was just one</p>
+<p>of these hierarchical models whereas</p>
+<p>deep in the sense that there's this</p>
+<p>uh temporally deep uh or temporally</p>
+<p>thicker</p>
+<p>one could say uh time time scale stacked</p>
+<p>on top</p>
+<p>and so then in terms of sophisticated</p>
+<p>active inference that's just to do with</p>
+<p>policy selection</p>
+<p>um and where you're essentially doing</p>
+<p>something that</p>
+<p>looks more like a tree search</p>
+<p>um so i would just say i don't know it's</p>
+<p>equivalent to backward induction and</p>
+<p>reinforcement learning</p>
+<p>so you essentially instead of saying</p>
+<p>kind of propagating forwards on a tree</p>
+<p>you start at your terminal node and then</p>
+<p>you propagate backwards</p>
+<p>so you say given where i want to go how</p>
+<p>do i best get there</p>
+<p>and then propagate backwards uh and then</p>
+<p>i don't really know what the</p>
+<p>phasic non-phasic thing means uh</p>
+<p>yeah yeah i'm not i'm not aware of</p>
+<p>anybody</p>
+<p>sort of saying anything about um if</p>
+<p>there's any change in the dopamine story</p>
+<p>in sophisticated active inference um in</p>
+<p>that</p>
+<p>sophisticated act of inference you're</p>
+<p>still you're still obviously updating</p>
+<p>beliefs about policies when you make a</p>
+<p>new observation</p>
+<p>um but uh but yeah i mean the main</p>
+<p>difference like chris said is just it's</p>
+<p>just</p>
+<p>how you come to post your beliefs over</p>
+<p>policies</p>
+<p>by doing this sort of more thorough</p>
+<p>research where you have this</p>
+<p>additional element where you say you</p>
+<p>know given that i observe a thing</p>
+<p>at time two at a given branch and a tree</p>
+<p>what will my beliefs be at time two</p>
+<p>um and like like chris said it's</p>
+<p>equivalent to backward induction</p>
+<p>um and uh it's it's um</p>
+<p>anyway yeah so i without without again i</p>
+<p>don't think anyone's talked about this</p>
+<p>much but</p>
+<p>presumably you still make new</p>
+<p>observations that update your beliefs</p>
+<p>over policies as you move through time</p>
+<p>um and so i don't necessarily see how</p>
+<p>the dopamine story would need to change</p>
+<p>um but uh but yeah um</p>
+<p>and i will say in addition to what chris</p>
+<p>said um</p>
+<p>they're really um two kind of related</p>
+<p>uh meeting meanings um independent of</p>
+<p>the kind of machine learning deep neural</p>
+<p>network thing that chris talked about</p>
+<p>one is and like you said the standard</p>
+<p>one is talking about deep temporal</p>
+<p>models</p>
+<p>yes and that's just exactly what i am</p>
+<p>was showing here where the second level</p>
+<p>necessarily operates at a slower time</p>
+<p>scale than the first level</p>
+<p>because the first level has to kind of</p>
+<p>complete all of its time steps</p>
+<p>um before it can provide an observation</p>
+<p>to the higher level</p>
+<p>and then the higher level so basically</p>
+<p>each higher level state</p>
+<p>corresponds to a whole lower level trial</p>
+<p>um</p>
+<p>you know so if you wanted to you could</p>
+<p>make a lower level trial have ten time</p>
+<p>steps</p>
+<p>but the posterior beliefs at that lower</p>
+<p>level at the end of this whole time step</p>
+<p>all those time steps</p>
+<p>would be you know what the observation</p>
+<p>um</p>
+<p>is that you know provides evidence for</p>
+<p>the first state at the first</p>
+<p>the state at the first time point at the</p>
+<p>second level</p>
+<p>so and then second level states</p>
+<p>transition</p>
+<p>and then the second level state so that</p>
+<p>basically one trial</p>
+<p>at the higher level with a two time</p>
+<p>points</p>
+<p>each of those time points corresponds to</p>
+<p>providing priors for a whole</p>
+<p>trial at the lower level so you're going</p>
+<p>to have</p>
+<p>as many trials at the lower level as you</p>
+<p>have time steps in one trial at the</p>
+<p>higher level</p>
+<p>so so that's what deep temporal models</p>
+<p>means</p>
+<p>it's just that the second level operates</p>
+<p>at a slower time scale than the first</p>
+<p>and provides priors for</p>
+<p>initial states at the first level um</p>
+<p>another</p>
+<p>another meaning that some people use</p>
+<p>like in the deeply failed affect paper</p>
+<p>is just d parametric models</p>
+<p>which basically just means the first</p>
+<p>level</p>
+<p>out things that happen at the first</p>
+<p>level can be used as evidence for</p>
+<p>updating</p>
+<p>hyper parameters for the higher level um</p>
+<p>and like in the deeply filled effect</p>
+<p>paper basically we had second level</p>
+<p>states that corresponded to</p>
+<p>valence um but those were updated not by</p>
+<p>first level beliefs but by changes in</p>
+<p>beta</p>
+<p>at the lower level so when gamma updates</p>
+<p>were positive</p>
+<p>right when the confident and expected</p>
+<p>free energy went up</p>
+<p>there was a ascending signal that then</p>
+<p>updated beliefs at the second level</p>
+<p>that corresponded to feeling better</p>
+<p>right so positive valence</p>
+<p>um and those also that state could also</p>
+<p>act as</p>
+<p>a prior on um what the beta update</p>
+<p>should be right how confident the agent</p>
+<p>should be um</p>
+<p>at the lower level as trials go forward</p>
+<p>so it can also have to do with</p>
+<p>with um with uh and it's quote unquote</p>
+<p>deeper</p>
+<p>parameters um as opposed to just deeper</p>
+<p>uh</p>
+<p>deeper uh levels that control priors</p>
+<p>over states at the lower level</p>
+<p>um but that's not as commonly</p>
+<p>used um by far the most common is just</p>
+<p>deep temporal models</p>
+<p>do you have any more to add on the</p>
+<p>neural process or can we do our switch</p>
+<p>over</p>
+<p>um no neural process is pretty done um</p>
+<p>the only thing</p>
+<p>is is that before chris starts</p>
+<p>because what we're simulating when we're</p>
+<p>doing this</p>
+<p>example in the code of a hierarchical</p>
+<p>model the example we're using</p>
+<p>is an empirical task called a local</p>
+<p>global</p>
+<p>or oddball paradigm so chris is just</p>
+<p>gonna i'm just putting up this slide so</p>
+<p>that chris can</p>
+<p>walk us through the um the uh</p>
+<p>design of this task so just before we</p>
+<p>cross over just while we take a breath i</p>
+<p>want to make one</p>
+<p>ultra rapid summary for um just contrast</p>
+<p>and then ask one question from the chat</p>
+<p>so the brief summary is</p>
+<p>we're dealing with the active inference</p>
+<p>framework we are within free energy</p>
+<p>principle we're talking about active</p>
+<p>inference that's why it's active</p>
+<p>inference lab</p>
+<p>now we've heard about a couple of</p>
+<p>adjectives deep sophisticated</p>
+<p>affective and even inactive inference</p>
+<p>and those have been in the titles of</p>
+<p>papers or they've been the titles and</p>
+<p>models</p>
+<p>we heard about just very um concisely</p>
+<p>about what deep can mean</p>
+<p>whether deep neural networks or deep</p>
+<p>time and then there's a third definition</p>
+<p>of deep meaning like</p>
+<p>fully or radically parametric and that</p>
+<p>is interpreted within within the affect</p>
+<p>of valence framework</p>
+<p>within the paper that ryan just</p>
+<p>mentioned so that's deep and affective</p>
+<p>which are related</p>
+<p>then sophisticated is related to this</p>
+<p>tree surge counterfactual</p>
+<p>policy and state estimation we talked</p>
+<p>about the</p>
+<p>sophisticated inference in a previous</p>
+<p>stream and an active</p>
+<p>is highlighting more from an ecological</p>
+<p>or even a philosophical perspective</p>
+<p>about the embodied and enacted aspects</p>
+<p>of cognition</p>
+<p>so that's just a summary about a few of</p>
+<p>the flavors</p>
+<p>under the umbrella of active inference</p>
+<p>and</p>
+<p>they don't necessitate a renaming of the</p>
+<p>lab because they're like variants or</p>
+<p>paper titles</p>
+<p>but this is the total umbrella that</p>
+<p>we're working under</p>
+<p>and then the general question from the</p>
+<p>chat which i hope that set it up for</p>
+<p>and then we'll address this question</p>
+<p>each person give a very you know short</p>
+<p>response that we launched into</p>
+<p>chris's when preparing a model for</p>
+<p>exploring</p>
+<p>free energy principle active inference</p>
+<p>in matlab do you often sketch out</p>
+<p>equations</p>
+<p>with sample bayesian calculations for</p>
+<p>each term to help clarify your thinking</p>
+<p>and track what will happen</p>
+<p>or in other words how do you go from</p>
+<p>thinking or specifying the generative</p>
+<p>model of even</p>
+<p>a experiment into what you do when</p>
+<p>you're</p>
+<p>talking like you go from this behavioral</p>
+<p>example to the code</p>
+<p>how do you do that um i mean</p>
+<p>so for me honestly like when i'm</p>
+<p>actually setting up</p>
+<p>a model for a task um i don't really</p>
+<p>think about the equations hardly at all</p>
+<p>because you don't need to right i mean</p>
+<p>what you need to what you need to focus</p>
+<p>on</p>
+<p>is just what the necessary elements are</p>
+<p>in terms of states and observations</p>
+<p>um and policies um</p>
+<p>that are just in a task right so you</p>
+<p>have to think okay</p>
+<p>in a task what are the observations</p>
+<p>that the participant has right is there</p>
+<p>just</p>
+<p>one possible observation modality they</p>
+<p>either observe this or that</p>
+<p>or are there multiple observation</p>
+<p>modalities like maybe they observe a cue</p>
+<p>and then they observe a reward right and</p>
+<p>so then you need two observation</p>
+<p>modalities</p>
+<p>um right you think about how many in</p>
+<p>each modality right is it just q</p>
+<p>or no queue you know is it just reward</p>
+<p>or no reward or is it</p>
+<p>no reward reward or loss</p>
+<p>you know so you just think okay what are</p>
+<p>the different types of observations</p>
+<p>and how many observations within each</p>
+<p>type just you know what does the actual</p>
+<p>participant observe</p>
+<p>um and then you have to think about the</p>
+<p>states right what are the what is the</p>
+<p>participants beliefs what is the minimal</p>
+<p>set of beliefs they need</p>
+<p>to be able to make a decision right</p>
+<p>about</p>
+<p>how to get reward if it's a reward task</p>
+<p>um</p>
+<p>you know so that might be beliefs about</p>
+<p>what uh trial type</p>
+<p>it is right or might be beliefs about</p>
+<p>what are the different</p>
+<p>choices i might make um right like</p>
+<p>moving into the state of choosing</p>
+<p>say option one versus option two um</p>
+<p>you know and then you have to think okay</p>
+<p>what are the different action sequences</p>
+<p>right like</p>
+<p>does the agent just push a button and</p>
+<p>get lucky you know</p>
+<p>reward or no reward or you know does the</p>
+<p>agent have to</p>
+<p>you know make a couple choices in a row</p>
+<p>you know just what are the actual</p>
+<p>options</p>
+<p>right and so i mean that's that's really</p>
+<p>what it boils down to is just</p>
+<p>figuring out what things do the</p>
+<p>participant observe</p>
+<p>you know what beliefs do they need to</p>
+<p>make choices</p>
+<p>what choices are available um you know</p>
+<p>and</p>
+<p>i mean it kind of it kind of builds</p>
+<p>itself beyond that um i mean you have to</p>
+<p>you have to realize that the the update</p>
+<p>equations in active inference you know</p>
+<p>we've actually been showing</p>
+<p>are are very general right they don't</p>
+<p>change at all</p>
+<p>depending on what task you're</p>
+<p>implementing so you're not changing the</p>
+<p>equations all you're doing</p>
+<p>is using the exact same update equations</p>
+<p>on a generative model</p>
+<p>that can successfully simulate behavior</p>
+<p>on a task so i i mainly think you just</p>
+<p>have to think about matrix and vector</p>
+<p>structure</p>
+<p>so i can actually answer this question</p>
+<p>just by building or showing how you get</p>
+<p>from this</p>
+<p>task structure to the code in question</p>
+<p>perfect</p>
+<p>um and so just to basically build on</p>
+<p>that um all that you think that's</p>
+<p>is the structure of the generated model</p>
+<p>because the update equations are totally</p>
+<p>generic</p>
+<p>and unless you're doing something like</p>
+<p>fairly advanced</p>
+<p>where you actually do need to specify</p>
+<p>some type of</p>
+<p>addition to the generative model use a</p>
+<p>new type of distribution whatever</p>
+<p>then you would need to rederive the</p>
+<p>update equations and you're going to</p>
+<p>have</p>
+<p>some time on your hands using taking all</p>
+<p>the functional derivatives and setting</p>
+<p>setting it setting the result equal to</p>
+<p>zero and figuring out what the answer is</p>
+<p>but i have never had to do that</p>
+<p>personally and i think very very few</p>
+<p>people in the active infants literature</p>
+<p>have had to do that</p>
+<p>okay so in terms of</p>
+<p>this task this is a local global or</p>
+<p>basic like auditory modified auditory</p>
+<p>oddball paradigm</p>
+<p>um it was kind of i think this was the</p>
+<p>first paper that used it although i'm</p>
+<p>not completely sure about that</p>
+<p>but basically they just have play you a</p>
+<p>series of tones</p>
+<p>and there are four possible conditions</p>
+<p>and what they're trying to manipulate</p>
+<p>is your level of or the the time scale</p>
+<p>over which your expectations operate</p>
+<p>because they're trying to get at</p>
+<p>expectations at different levels of the</p>
+<p>cortical hierarchy</p>
+<p>and so the idea is is that you can have</p>
+<p>regularities at two time scales</p>
+<p>so the first time scale is the local</p>
+<p>time scale and that is just</p>
+<p>the series of five tones say so it might</p>
+<p>be</p>
+<p>and these tones can be two different</p>
+<p>frequencies so it might be beep beep</p>
+<p>beep</p>
+<p>beep beep beep beep beep beep that type</p>
+<p>of thing</p>
+<p>um and the idea is is that</p>
+<p>let's say you violate an expectation on</p>
+<p>this local time scale this might be</p>
+<p>something like the bottom row here</p>
+<p>um this would be beep beep beep beep</p>
+<p>beep beep</p>
+<p>beep beep beep beep and if that happens</p>
+<p>80 percent of the time or 80</p>
+<p>of the trials you would have like a</p>
+<p>global expectation or expectation over a</p>
+<p>long time scale</p>
+<p>that there would be a violation on the</p>
+<p>four on the fifth</p>
+<p>um beep if that makes sense but on a</p>
+<p>local time scale for neuronal processes</p>
+<p>say in primary auditory cortex or</p>
+<p>wherever</p>
+<p>that are operating over this very rapid</p>
+<p>time scale they are blind</p>
+<p>to this more global regularity and so</p>
+<p>you will get</p>
+<p>essentially what this will give you is</p>
+<p>global</p>
+<p>expectations and violations of global</p>
+<p>expectations particularly</p>
+<p>give you a p300 so essentially that is a</p>
+<p>large</p>
+<p>positive potential over kind of like</p>
+<p>fronto-central electrode sites</p>
+<p>and that corresponds to a violation of</p>
+<p>global</p>
+<p>regularities whereas a mismatch</p>
+<p>negativity</p>
+<p>correspond which is kind of a negative</p>
+<p>uh</p>
+<p>i think i actually haven't i'm not an</p>
+<p>auditory neuroscientist so</p>
+<p>i'm sorry about this if i get it wrong</p>
+<p>but broadly speaking</p>
+<p>it's kind of over association cortices</p>
+<p>in like all the tree association</p>
+<p>courtesies</p>
+<p>not a hundred percent about that though</p>
+<p>sorry i should look that up</p>
+<p>um anyway and that will correspond</p>
+<p>that's a negative going potential that's</p>
+<p>corresponds to violations of local</p>
+<p>expectations</p>
+<p>and so kind of i just the reason we use</p>
+<p>this is because it's kind of the</p>
+<p>simplest possible model</p>
+<p>that gives you some type of realistic</p>
+<p>dynamics</p>
+<p>and also kind of highlights the face</p>
+<p>validity of</p>
+<p>this computational framework if that</p>
+<p>makes sense um so any any questions</p>
+<p>would you like to add anything ryan</p>
+<p>before i</p>
+<p>pull out the code i mean i guess you</p>
+<p>know just just because i'm the one in</p>
+<p>control of the slide and the pointer</p>
+<p>here i mean i just just want to make</p>
+<p>sure that people understand exactly what</p>
+<p>what's corresponding to what you say so</p>
+<p>so basically the idea is just that</p>
+<p>at each short time scale right you could</p>
+<p>have each green one corresponds to a</p>
+<p>beep and the red one corresponds to a</p>
+<p>boop</p>
+<p>right so at the fast time scale you</p>
+<p>could be surprised that there's a boop</p>
+<p>at the end of four beeps um for instance</p>
+<p>if</p>
+<p>if most of the time for example it was</p>
+<p>just bpp beep</p>
+<p>then whenever there's a bbb boop then</p>
+<p>that's unexpected</p>
+<p>right so that's an expectation violation</p>
+<p>at a low fast time scale</p>
+<p>um but um what chris is saying is</p>
+<p>is that um you can also have a long time</p>
+<p>scale thing which is like</p>
+<p>how many times in a row is it bpb boop</p>
+<p>versus bbb beep</p>
+<p>right so one longer time skill pattern</p>
+<p>would be</p>
+<p>four bpp beeps in a row um</p>
+<p>and so if you come to expect four bpp</p>
+<p>beefs in a row</p>
+<p>then if you hear a bbb boop then your</p>
+<p>belief about the expected sequence</p>
+<p>you know of these four trials um is what</p>
+<p>would be violated</p>
+<p>or or not so at the fast time scale you</p>
+<p>can have</p>
+<p>violations for each series of bpp beeps</p>
+<p>at the higher time scale you can have i</p>
+<p>expect expectation violation</p>
+<p>about the sequence of bpp beeps</p>
+<p>um so that's so that's the idea is you</p>
+<p>can have long time skill violations and</p>
+<p>short time scale violations</p>
+<p>where the short test time scale ones</p>
+<p>correspond to the low level and the</p>
+<p>highest</p>
+<p>high uh the high level</p>
+<p>the second level of the model</p>
+<p>corresponds to the beliefs about the</p>
+<p>sequence</p>
+<p>of ppp beeps um so anyway so that's</p>
+<p>what's called global regularity versus</p>
+<p>local regularity</p>
+<p>yeah just for simplicity i just</p>
+<p>simulated the local deviation global</p>
+<p>standard condition</p>
+<p>so that would be um if you kind of look</p>
+<p>the third from the bottom</p>
+<p>on the right hand side of the screen</p>
+<p>imagine that um</p>
+<p>and the local standard global deviation</p>
+<p>um so that might be yeah exactly</p>
+<p>which is the very top um on the right</p>
+<p>hand side of the screen</p>
+<p>and so i'll just pull out the code um</p>
+<p>sorry</p>
+<p>okay so now we gotta switch screens yep</p>
+<p>cool nice very interesting so far thanks</p>
+<p>a lot</p>
+<p>everyone and great questions too so can</p>
+<p>everyone see my screen</p>
+<p>yeah it looks good it's coming let's see</p>
+<p>cool</p>
+<p>okay let me just okay</p>
+<p>cool um so i now cannot see the chat or</p>
+<p>any of the anything so if you need to</p>
+<p>get my attention just like you'll have</p>
+<p>to shout out</p>
+<p>cool okay or just ask us periodically</p>
+<p>yeah yeah yeah so at the first level um</p>
+<p>so there's two levels this model</p>
+<p>and at the first level it's very simple</p>
+<p>the model there are</p>
+<p>there is one hidden state factor and it</p>
+<p>has two mutually exclusive states</p>
+<p>um high and it just corresponds to the</p>
+<p>tone of the stimulus and just high</p>
+<p>or low</p>
+<p>then in terms of we then separate the</p>
+<p>generative model from the generative</p>
+<p>process</p>
+<p>here like we talked about in the</p>
+<p>previous code walkthrough</p>
+<p>and then as we're going through kind of</p>
+<p>in terms of the likelihood mapping it's</p>
+<p>again really simple</p>
+<p>uh it's just an a matrix so the a matrix</p>
+<p>is just an identity mapping</p>
+<p>where sorry these just to go through it</p>
+<p>very briefly to revise a bit</p>
+<p>the columns correspond to hidden states</p>
+<p>and the rows correspond to the</p>
+<p>observations so this is saying when you</p>
+<p>are</p>
+<p>in uh hidden state high tone</p>
+<p>you what is the probability that you</p>
+<p>will see a high tone well it's an</p>
+<p>identity matrix so it's probability one</p>
+<p>um when you're in state low tone what is</p>
+<p>the probability that you'll see a low</p>
+<p>tone and it's again hidden state one</p>
+<p>we can then separate the generated model</p>
+<p>from the generative process</p>
+<p>and the reason we do that is because</p>
+<p>this idea of there being uh</p>
+<p>so the generative process it is going to</p>
+<p>be the probability of a high tone</p>
+<p>hidden state or high tone state out</p>
+<p>there in the world giving rise to a</p>
+<p>high toned observation is is probability</p>
+<p>one</p>
+<p>but our generative model is noisy and if</p>
+<p>you want to actually simulate have an</p>
+<p>insular co-brain that's at all realistic</p>
+<p>you need to have some level of noise in</p>
+<p>that so what i did what we do there is</p>
+<p>we just run it through a soft max</p>
+<p>function</p>
+<p>run the a matrix through a softmax</p>
+<p>function</p>
+<p>with a temperature parameter that will</p>
+<p>very slightly</p>
+<p>turn down the precision so if i just</p>
+<p>kind of</p>
+<p>i'll just run all this</p>
+<p>and then if we just open up little a</p>
+<p>we see that's now not a perfect identity</p>
+<p>mapping but it's something pretty close</p>
+<p>by the way so the reason i do that is</p>
+<p>because one it's realistic but</p>
+<p>also if you want to get erps at all</p>
+<p>where erps are essentially changes in</p>
+<p>belief</p>
+<p>if you have a perfect identity mapping</p>
+<p>you'll never get erps because the agent</p>
+<p>is 100</p>
+<p>confident all the time</p>
+<p>so you never have to change your beliefs</p>
+<p>if you've got perfect beliefs</p>
+<p>um okay then in terms of transitions</p>
+<p>um this is just the bees it is again</p>
+<p>a identity mapping so that's just saying</p>
+<p>these</p>
+<p>that's perfectly stable uh high tones</p>
+<p>don't turn into low tones low tones</p>
+<p>don't turn into hype tones</p>
+<p>and at this first level of the model</p>
+<p>this is now we essentially plug all</p>
+<p>those variables into our mdp structures</p>
+<p>that we saw last time</p>
+<p>and at the first level of the model the</p>
+<p>thing that we need to specify</p>
+<p>is this t how many time steps are going</p>
+<p>to be at the first level</p>
+<p>per time steps at the second level and</p>
+<p>we only want there to be one so i'm just</p>
+<p>going to set that to one here</p>
+<p>and again erp we need to set that to one</p>
+<p>this is essentially a resetting</p>
+<p>parameter mdp.erp</p>
+<p>is the extent to which you reset your</p>
+<p>beliefs at each hidden</p>
+<p>after each time step at each new time</p>
+<p>step and the reason so say you are</p>
+<p>modeling a</p>
+<p>human being wandering through a maze</p>
+<p>where your time steps correspond to say</p>
+<p>a couple of seconds in between things it</p>
+<p>actually you actually should to be</p>
+<p>realistic</p>
+<p>or to be kind of have a realistic model</p>
+<p>you should have a little bit of</p>
+<p>resetting in your</p>
+<p>posterior expectations if however</p>
+<p>in this case there's uh where on the</p>
+<p>scale of seconds or milliseconds</p>
+<p>then it makes absolutely no sense to</p>
+<p>have resetting going on in your</p>
+<p>posterior expectations so we set erp</p>
+<p>equal to one</p>
+<p>and um</p>
+<p>that will yeah the only thing the only</p>
+<p>thing i'll say here is this is this is</p>
+<p>something that you got to kind of watch</p>
+<p>out for because</p>
+<p>for whatever reason the default in the</p>
+<p>uh standard routines in the vbac the</p>
+<p>spm underscore mdp underscore vb</p>
+<p>underscore x script</p>
+<p>default is the default is four the</p>
+<p>default value for erp is four</p>
+<p>if you don't specify it and so you'll</p>
+<p>get</p>
+<p>pretty funny probably inaccurate um</p>
+<p>simulations for erps if you don't set it</p>
+<p>back to one explicitly</p>
+<p>so there's a time scaling factor for how</p>
+<p>things are playing out at the</p>
+<p>neurophysiological versus the behavioral</p>
+<p>time scale</p>
+<p>well i mean it affects behavior too it's</p>
+<p>just saying it's just saying basically</p>
+<p>like</p>
+<p>yeah like chris said it's just how much</p>
+<p>do your beliefs go back to baseline</p>
+<p>um could compare to your posterior</p>
+<p>beliefs about that time about the</p>
+<p>you know like after the first</p>
+<p>observation um</p>
+<p>so like you could be just as surprised</p>
+<p>or more surprised at time step two</p>
+<p>even if your beliefs at time step one</p>
+<p>already favored what was going to happen</p>
+<p>in time step two yeah</p>
+<p>in a lot of cases you just don't want</p>
+<p>that you want priors to carry over</p>
+<p>so just in terms you could have</p>
+<p>something like complete resetting which</p>
+<p>would be completely ridiculous but you</p>
+<p>could do it if you wanted to</p>
+<p>or you could have no resetting at all</p>
+<p>which is what makes sense in this</p>
+<p>situation because we want there to be</p>
+<p>complete carryover</p>
+<p>you can do model fitting on empirical</p>
+<p>data and ask whether it's a better</p>
+<p>fitting model</p>
+<p>to have a empirically a 0.6 or a 1 or a</p>
+<p>1.5</p>
+<p>could you could fit this you could you</p>
+<p>treat this as</p>
+<p>a parameter that you fit as well yeah</p>
+<p>yeah if you were fitting to like match</p>
+<p>erp waveforms or something yeah</p>
+<p>yeah i would definitely fit it um okay</p>
+<p>so this is now this this next part is</p>
+<p>where</p>
+<p>there are two key points in this where</p>
+<p>we kind of there is a</p>
+<p>separation from how we would do</p>
+<p>a first level model or what a single</p>
+<p>level model so</p>
+<p>we need to clear so essentially usually</p>
+<p>you'll just clear all of your a's b's</p>
+<p>and d's because you're going to reuse</p>
+<p>those matrices at the second level</p>
+<p>and then you'll save your mdp structure</p>
+<p>and run it through this little mdp check</p>
+<p>thing which should give you some nice</p>
+<p>little error</p>
+<p>like very usually pretty helpful error</p>
+<p>messages telling you if you've got some</p>
+<p>weird shaped matrices or i don't know</p>
+<p>if i uh if i just have a zero here and</p>
+<p>ran it for example</p>
+<p>it would tell me hey your b matrix</p>
+<p>doesn't make any sense</p>
+<p>um so then</p>
+<p>you'll then generally clear this mdp</p>
+<p>structure and</p>
+<p>save the mdp1 into this little mdp</p>
+<p>this other mdp structure here so then</p>
+<p>moving on to</p>
+<p>the slower time scale or second level</p>
+<p>beliefs so this is where things get a</p>
+<p>little bit more complicated</p>
+<p>and so there are three hidden state</p>
+<p>factors where these are all independent</p>
+<p>probability distributions the first</p>
+<p>is sequence type and so this</p>
+<p>this is essentially there are three</p>
+<p>sequence types</p>
+<p>where this corresponds to sequences of</p>
+<p>tones at the first level so there can be</p>
+<p>a whole sequence</p>
+<p>where it's just there's no boobs</p>
+<p>and so that would be all high there</p>
+<p>could be all low so it's all boots</p>
+<p>there could be a high and then a low for</p>
+<p>example</p>
+<p>and there could be a low and then a high</p>
+<p>so this would be does that kind of all</p>
+<p>make sense and this correspond where</p>
+<p>this corresponds to</p>
+<p>different sequences of hidden states at</p>
+<p>the first level</p>
+<p>got it not all of them have to be used</p>
+<p>in each experiment but that's the whole</p>
+<p>state space</p>
+<p>yep exactly then this is this is</p>
+<p>actually where things get interesting so</p>
+<p>you have to specify when you build this</p>
+<p>type of models</p>
+<p>you have to specify a time in trial</p>
+<p>hidden state factor which is essentially</p>
+<p>the agent's beliefs about how things</p>
+<p>evolve over time</p>
+<p>and there's actually some really it</p>
+<p>seems kind of</p>
+<p>like when i first ryan first taught me</p>
+<p>how to build these things i kind of just</p>
+<p>just had the assumption like oh yeah</p>
+<p>this is just like a</p>
+<p>this is something that you need to build</p>
+<p>for the model to work but it doesn't</p>
+<p>it's just kind of a bit of formal</p>
+<p>machinery that doesn't track what the</p>
+<p>brain's doing</p>
+<p>to my delight and surprise there</p>
+<p>actually is quite a bit of</p>
+<p>neurophysiological evidence</p>
+<p>that there are factorized</p>
+<p>representations of task phase in both</p>
+<p>medial temporal lobes</p>
+<p>and lateral prefrontal cortex which is</p>
+<p>really cool but essentially this would</p>
+<p>be something like</p>
+<p>the time in trial that so i'm at time</p>
+<p>point one</p>
+<p>regardless of what stimulus there is i'm</p>
+<p>at time point two regardless of what</p>
+<p>stimulus there is i'm at time point</p>
+<p>n or i'm in the final time point where i</p>
+<p>have to give a response</p>
+<p>um regardless of what my response will</p>
+<p>actually be does that kind of all make</p>
+<p>sense</p>
+<p>cool and then the last hidden state</p>
+<p>factor is just the agent's response</p>
+<p>so we make the to make this interesting</p>
+<p>so we could have just set this up as a</p>
+<p>hidden markov model and not had the</p>
+<p>agent give responses</p>
+<p>um which would have been fine just would</p>
+<p>have been a very passive</p>
+<p>model and just kind of to make this</p>
+<p>interesting and then</p>
+<p>so that people can read it and then</p>
+<p>build their own more sophisticated</p>
+<p>models and see how you would specify</p>
+<p>policies in a deep model</p>
+<p>i basically had the agent at the last</p>
+<p>time step so the sixth</p>
+<p>time step just say whether the last</p>
+<p>beep or boop in the trial was the same</p>
+<p>as or different from the previous</p>
+<p>the previous beeps or boobs</p>
+<p>is that all clear so far yep</p>
+<p>yeah and then so the idea is is that</p>
+<p>these sequent types the agent has no</p>
+<p>prior expectations over all of them it's</p>
+<p>totally flat</p>
+<p>so when this gets when this d first d1</p>
+<p>gets run to a softmax function this will</p>
+<p>just be a completely flat vector</p>
+<p>now but the agent always has a perfect</p>
+<p>prior belief</p>
+<p>that it is in state one</p>
+<p>and it also has the perfect prior belief</p>
+<p>that it doesn't know or it's just not</p>
+<p>it doesn't have any response prepared in</p>
+<p>terms of</p>
+<p>what report it will make</p>
+<p>again and what we do here is essentially</p>
+<p>we separate the generative model from</p>
+<p>the generative process</p>
+<p>so just put little d2 just so it's kind</p>
+<p>of not to confuse people with</p>
+<p>these different levels and we multiply</p>
+<p>what's this is actually really crucial</p>
+<p>so when you specify a d and separate it</p>
+<p>there's a little flag in the vbx script</p>
+<p>or the model inversion script that</p>
+<p>tells it okay you are now learning d</p>
+<p>and you'll get updates to d but</p>
+<p>sometimes you don't actually want to</p>
+<p>simulate learning</p>
+<p>you want in the very same way that you</p>
+<p>want to like simulate</p>
+<p>some process outside of learning or some</p>
+<p>process independent of other things</p>
+<p>in a lab when you actually run</p>
+<p>experiments sometimes you just want to</p>
+<p>isolate one process and simulation</p>
+<p>so to essentially turn off learning you</p>
+<p>just make the concentration parameters</p>
+<p>in these which are concentration</p>
+<p>parameters from dirichlet distribution</p>
+<p>like really massive and so the</p>
+<p>difference between say</p>
+<p>100 and if adding one adding a count of</p>
+<p>one will essentially do</p>
+<p>nothing to the agent's behavior then if</p>
+<p>the concentration parameter is already</p>
+<p>at 100</p>
+<p>which is why we specify this way</p>
+<p>yeah so if you think about it i mean</p>
+<p>depending on the type of task</p>
+<p>if if the thing thinks that learning is</p>
+<p>going on because you're separating the</p>
+<p>generative model from the generative</p>
+<p>process</p>
+<p>then if you have low concentration</p>
+<p>parameter values</p>
+<p>then the uh then the epistemic value for</p>
+<p>parameter exploration will will make a</p>
+<p>big difference</p>
+<p>right the thing will actually be driven</p>
+<p>to move to states</p>
+<p>that will help it learn something about</p>
+<p>what those concentration parameters</p>
+<p>should be um so it can affect behavior</p>
+<p>in ways that kind of um uh</p>
+<p>cause problems for the kind of tasks</p>
+<p>that you're trying to model</p>
+<p>um so so one thing yes is that</p>
+<p>having them at really high values means</p>
+<p>that the agent just isn't going to do</p>
+<p>any</p>
+<p>seeking information about parameters</p>
+<p>because it just thinks it already knows</p>
+<p>them</p>
+<p>really well um but also it still</p>
+<p>is going to add counts to those</p>
+<p>distributions after each observation</p>
+<p>so like you know changing a distribution</p>
+<p>from like 100 to 100</p>
+<p>2 100 to 101 the actual distribution</p>
+<p>is like still basically the same whereas</p>
+<p>if it was like</p>
+<p>one and one and you add a count so it's</p>
+<p>not one and two</p>
+<p>that's a very big change in the</p>
+<p>distribution um</p>
+<p>so both of those things together just</p>
+<p>kind of make it as though</p>
+<p>it doesn't think it it's learning</p>
+<p>anything</p>
+<p>cool okay um is that cleared everyone</p>
+<p>all good to</p>
+<p>move on</p>
+<p>yep so okay so then the next thing so i</p>
+<p>think</p>
+<p>the hardest part of doing active</p>
+<p>inference or building these models is</p>
+<p>factorizing the a matrix so these are</p>
+<p>all independent distributions</p>
+<p>right but they interact in the a matrix</p>
+<p>and so you have to that you have to</p>
+<p>think about that when you're specifying</p>
+<p>it</p>
+<p>and so what this one what this matrix</p>
+<p>says is so remember that</p>
+<p>our first hidden state is uh sequence</p>
+<p>type</p>
+<p>so this is just and our first outcome</p>
+<p>modality is just the stimulus</p>
+<p>and i'm just going to quickly dip down</p>
+<p>to see how these how this level is</p>
+<p>connected to the bottom level</p>
+<p>we have to specify something called a</p>
+<p>link function and this will just be a</p>
+<p>little matrix or a vector depending on</p>
+<p>how</p>
+<p>many states hidden state modalities you</p>
+<p>have at the first and second level</p>
+<p>where the rows in this matrix correspond</p>
+<p>to lower level hidden state factors</p>
+<p>and the columns correspond to high level</p>
+<p>uh outcome modalities and so all that</p>
+<p>we're saying and so when you specify</p>
+<p>these things you actually need to be</p>
+<p>careful</p>
+<p>that say the number of even states</p>
+<p>you have at the higher level well sorry</p>
+<p>the number of outcomes</p>
+<p>that are possible in your outcome</p>
+<p>modality match the number of hidden</p>
+<p>states that you have</p>
+<p>in your first level</p>
+<p>at the first level does that make sense</p>
+<p>because</p>
+<p>your second level of your model is</p>
+<p>treating those first level hidden states</p>
+<p>as observations</p>
+<p>so here the two observations are high</p>
+<p>tone or low tone and all this is saying</p>
+<p>so this this</p>
+<p>first column is high tone second column</p>
+<p>is</p>
+<p>or high sequence second column is low</p>
+<p>sequence</p>
+<p>third column is high then low</p>
+<p>and last one is high is low than high</p>
+<p>this is</p>
+<p>and we're specifying this for time step</p>
+<p>one to three</p>
+<p>so what we're doing here is we are going</p>
+<p>to</p>
+<p>so we have a set up at a matrix where</p>
+<p>there's four hidden states</p>
+<p>corresponding to sequence type and two</p>
+<p>outcomes just to reiterate and then what</p>
+<p>we're going to do is we're going to loop</p>
+<p>over</p>
+<p>the six time points in the trial and</p>
+<p>loop over the order of states in the</p>
+<p>report and so then we're just going to</p>
+<p>step</p>
+<p>but um</p>
+<p>then basically i'm just going to set set</p>
+<p>set this up so that</p>
+<p>um the time that there's just an</p>
+<p>identity mapping</p>
+<p>essentially between hidden states and</p>
+<p>observations</p>
+<p>and i've done this i've looped this over</p>
+<p>all but this is actually not an accurate</p>
+<p>generated model because we want there</p>
+<p>to be an oddball at the fourth time step</p>
+<p>and so i</p>
+<p>just specify that here so i take this i</p>
+<p>set which corresponds to</p>
+<p>this kind of second hidden state factor</p>
+<p>and i set it equal to four</p>
+<p>and what you can see here is that</p>
+<p>there's now a change in the mapping</p>
+<p>so remember this first column is high</p>
+<p>second column is</p>
+<p>low third column is high low third</p>
+<p>and then fourth column is low high so we</p>
+<p>now see a change so this is then saying</p>
+<p>when you're in a high hidden state</p>
+<p>at the fourth time step you'll see</p>
+<p>a high tone when you're in a low tone at</p>
+<p>the same thing</p>
+<p>but it gets interesting or it gets a</p>
+<p>change you get a change from the matrix</p>
+<p>above</p>
+<p>at the fourth time step because when</p>
+<p>it's in a high low</p>
+<p>at the fourth time step it will it will</p>
+<p>hear a low</p>
+<p>low tone and at in low high you'll hear</p>
+<p>a high tone</p>
+<p>is everyone pretty clear about that</p>
+<p>yes and we're looping over</p>
+<p>all this one what j equals one to three</p>
+<p>in both of these is just saying we're</p>
+<p>looping over all possible responses</p>
+<p>so we're not making that identity that</p>
+<p>mapping between those hidden states</p>
+<p>between</p>
+<p>the first sequence sequence um first</p>
+<p>hidden state sequence</p>
+<p>and in any way dependent on the response</p>
+<p>so it's independent of that</p>
+<p>so then the second outcome modality that</p>
+<p>we need to specify is just report</p>
+<p>feedback</p>
+<p>so with the agent we're going to have it</p>
+<p>make an action</p>
+<p>or specify a policy allowing it to make</p>
+<p>an action at</p>
+<p>the fifth time step at the end of the</p>
+<p>fifth time step</p>
+<p>so i'm sorry the sixth time step rather</p>
+<p>um</p>
+<p>and we then</p>
+<p>need to kind of give the agent feedback</p>
+<p>so</p>
+<p>there are three hidden states and this</p>
+<p>is no longer</p>
+<p>this feedback modality is not connected</p>
+<p>to the first level</p>
+<p>and so there are three outcomes null</p>
+<p>which is just we don't give the agent</p>
+<p>any feedback so it just has a totally</p>
+<p>flat</p>
+<p>preference distribution essentially over</p>
+<p>this</p>
+<p>over null doesn't care for the first</p>
+<p>five time steps</p>
+<p>and then at the sixth time step we need</p>
+<p>to start messing with</p>
+<p>whether it thinks it's going to be</p>
+<p>whether agents thinks it's going to</p>
+<p>receive</p>
+<p>wrong versus right feedback so</p>
+<p>this would be saying something like okay</p>
+<p>so here you report that they</p>
+<p>are the same so this is response</p>
+<p>two so j equals two and i</p>
+<p>equals six correspond to the six time</p>
+<p>step so these where these correspond to</p>
+<p>what we're indexing into elements of</p>
+<p>these hidden state factors</p>
+<p>and then so the idea is then what this</p>
+<p>is saying is that</p>
+<p>at hidden state for one and two if you</p>
+<p>say they're the same remember this is</p>
+<p>all highs all lows if you then say it's</p>
+<p>the same you will get correct</p>
+<p>feedback and because this is high</p>
+<p>low and low high if you say it's the</p>
+<p>same will give you incorrect feedback</p>
+<p>then we see this is reversed when we say</p>
+<p>the agent is going to give the agent the</p>
+<p>option to report</p>
+<p>different so these two will be incorrect</p>
+<p>for high and low sequences and correct</p>
+<p>for low high and high low</p>
+<p>everyone with me</p>
+<p>yep cool okay then again</p>
+<p>just like we did before we're going to</p>
+<p>reduce</p>
+<p>the um constant we're going to separate</p>
+<p>the hidden states in the</p>
+<p>um sorry the uh hidden uh</p>
+<p>generative model from the generative</p>
+<p>process and reduce the precision</p>
+<p>by with a temperature parameter of two</p>
+<p>which is super precise it's just not a</p>
+<p>perfect identity mapping</p>
+<p>and we're then going to disable learning</p>
+<p>again because we're not interested in</p>
+<p>learning at the moment</p>
+<p>um by the way you do get fairly similar</p>
+<p>results if you do learning so i'm not</p>
+<p>kind of like uh cooking the books</p>
+<p>it's just that in terms of the tutorial</p>
+<p>it didn't really make sense</p>
+<p>to add an extra several lines on</p>
+<p>learning for a fairly simple simulation</p>
+<p>it's awesome and just to highlight that</p>
+<p>is a similar design move</p>
+<p>as when you mentioned several times</p>
+<p>separating the generative process from</p>
+<p>the model</p>
+<p>it allows you to have a cue that isn't</p>
+<p>always associated like</p>
+<p>high tone is the high tone they hear it</p>
+<p>perfectly but now it's a situation where</p>
+<p>they can't really tell if it's one shade</p>
+<p>of a color or another so</p>
+<p>it it allows a lot of expressivity and</p>
+<p>it will just be really awesome to</p>
+<p>in the coming months and years see and</p>
+<p>return to the code</p>
+<p>to understand exactly how different</p>
+<p>groups are implementing it to model</p>
+<p>different specific situations that kind</p>
+<p>of just go down these roads that you're</p>
+<p>just pointing out but we're staying on</p>
+<p>the</p>
+<p>on the freeway but you're pointing out</p>
+<p>different exits that really are</p>
+<p>interesting</p>
+<p>yeah exactly so there's lots of i mean</p>
+<p>there's quite a few different</p>
+<p>like like in previous papers you know</p>
+<p>for instance like</p>
+<p>we've modeled things like noisy like</p>
+<p>noisy learning right so where for</p>
+<p>instance like in the generative process</p>
+<p>it is</p>
+<p>you're always being presented with one</p>
+<p>object right and that's like 100</p>
+<p>true but the the a matrix and the</p>
+<p>generative model</p>
+<p>you know you kind of soft max it with</p>
+<p>some precision parameter like chris was</p>
+<p>doing so it's</p>
+<p>it's um not very precise so it's kind of</p>
+<p>like for instance like seeing an object</p>
+<p>but having it be blurry</p>
+<p>you know or something like that um you</p>
+<p>know so it's how well do you learn</p>
+<p>uh from stuff even if what you're seeing</p>
+<p>is kind of imprecise or like for</p>
+<p>instance figuring out where</p>
+<p>whether a tone was present in some like</p>
+<p>white noise you know like into some</p>
+<p>experiments to do that kind of thing so</p>
+<p>yeah i mean these models are incredibly</p>
+<p>flexible um for whether you want to do</p>
+<p>just perception or just learning or just</p>
+<p>decision making or decision making with</p>
+<p>or without learning</p>
+<p>um so it's i mean that's part of why</p>
+<p>they're so why they're so uh</p>
+<p>nice yeah and so then just kind of</p>
+<p>moving on to the transition</p>
+<p>probabilities</p>
+<p>um so b b2 this is just</p>
+<p>so this corresponds to our first ident</p>
+<p>uh sequence</p>
+<p>of tones hidden state factor and this is</p>
+<p>an identity matrix</p>
+<p>four by four identity matrix because</p>
+<p>there are four hidden steps</p>
+<p>um this is just saying that our our</p>
+<p>sequence doesn't change to another</p>
+<p>sequence halfway through that makes</p>
+<p>sense right</p>
+<p>um now our things get interesting in</p>
+<p>terms of specifying the transition</p>
+<p>functions</p>
+<p>uh when we talk about the second our</p>
+<p>kind of</p>
+<p>trial phase uh</p>
+<p>transitions and our policies so the idea</p>
+<p>here is that</p>
+<p>we then specify this trial phase</p>
+<p>transition function so that</p>
+<p>it will kind of deterministically step</p>
+<p>through</p>
+<p>all of the phases in the sequence so</p>
+<p>this is state one</p>
+<p>or row sorry columns r state hidden</p>
+<p>state one</p>
+<p>rows are will be kind of hidden state</p>
+<p>one hidden state two</p>
+<p>so what this is saying is that at time</p>
+<p>one a hidden state one transitions to</p>
+<p>hidden state two</p>
+<p>hidden state two transitions to hidden</p>
+<p>state three and so on and if i wanted to</p>
+<p>if i wanted to</p>
+<p>to simulate some infinite number like</p>
+<p>it's not actually infinite this is a</p>
+<p>finite horizon mdp</p>
+<p>but if i wanted this infinite sum or</p>
+<p>sorry simulate some very large number of</p>
+<p>these trials</p>
+<p>i could put the last one so this last</p>
+<p>trial</p>
+<p>or sorry when it's in the last report</p>
+<p>phase it will transition back</p>
+<p>to the first phase for example but i</p>
+<p>don't want to do that i just want to</p>
+<p>have the last time step in the trial as</p>
+<p>an absorbing state</p>
+<p>that it'll that the simulation will stop</p>
+<p>on and then</p>
+<p>uh simulate each trial as kind of a</p>
+<p>separate thing</p>
+<p>but just highlight that in case you</p>
+<p>wanted to do it if you wanted to like</p>
+<p>simulate um</p>
+<p>there are some ways of simulating kind</p>
+<p>of heartbeats and things like that where</p>
+<p>you specify</p>
+<p>a transition function that has an orbit</p>
+<p>built into it</p>
+<p>so then in terms of report this is this</p>
+<p>is the controllable hidden state factor</p>
+<p>and these it'll will add will now have</p>
+<p>like a multi-dimensional matrix</p>
+<p>um where the third dimension in the</p>
+<p>matrix just corresponds to</p>
+<p>basically the control state so this</p>
+<p>would just be uh i am in null and i am</p>
+<p>going to stay in null</p>
+<p>i'm not going to do anything the second</p>
+<p>one would be you can get</p>
+<p>from any hidden state you can chorus you</p>
+<p>can transition yourself into reporting</p>
+<p>same</p>
+<p>and this third one is from any hidden</p>
+<p>state you can transition yourself into</p>
+<p>reporting different</p>
+<p>then in terms of the policies there are</p>
+<p>six hidden</p>
+<p>six time steps so we specify that here</p>
+<p>we specify the number of</p>
+<p>hidden state factors so remember again</p>
+<p>there's uh sequence type</p>
+<p>uh time and trial and report modality so</p>
+<p>three then we've got two policies so</p>
+<p>these are the number of options that the</p>
+<p>agent will have</p>
+<p>and then these are deep policies so the</p>
+<p>agent which is consistent throughout the</p>
+<p>whole trial and so basically</p>
+<p>or this is to say the agent will be</p>
+<p>computing these</p>
+<p>over the course of the whole trial if</p>
+<p>that makes sense</p>
+<p>um and so all this is saying is that the</p>
+<p>agent stays in state hidden kind of</p>
+<p>action one which is just null it doesn't</p>
+<p>do anything it doesn't do anything it</p>
+<p>doesn't do anything can't do anything</p>
+<p>and at the last time step we allow it to</p>
+<p>choose</p>
+<p>and that just corresponds to kind of you</p>
+<p>can imagine not actually presenting the</p>
+<p>participant with</p>
+<p>in a psychophysics experiment or</p>
+<p>whatever not</p>
+<p>presenting it with an option to actually</p>
+<p>move change the key</p>
+<p>hit a keyboard or anything like that</p>
+<p>until the last time step of the trial</p>
+<p>um okay so last bit uh any questions so</p>
+<p>far</p>
+<p>no looks pretty good though thank you</p>
+<p>um then okay so then we've got the first</p>
+<p>c matrix</p>
+<p>this will just be a two by t</p>
+<p>or two by six matrix</p>
+<p>of zeros so if i just kind of hit go on</p>
+<p>this we can take a look at it</p>
+<p>[Music]</p>
+<p>whoops</p>
+<p>i'm going to hit run at some point soon</p>
+<p>we can check out everything</p>
+<p>but this is just what the c matrix looks</p>
+<p>like so it this is the preference</p>
+<p>for the agent's preference for hearing a</p>
+<p>particular tone so this is just saying</p>
+<p>agent doesn't care at all it has no</p>
+<p>preference for tone</p>
+<p>then our report hidden state this is</p>
+<p>again it's going to be completely flat</p>
+<p>essentially except for at the last time</p>
+<p>step when it receives feedback</p>
+<p>it has a preference for not being</p>
+<p>incorrect and</p>
+<p>a uh preference for being correct</p>
+<p>um so i just uh just i just want to make</p>
+<p>sure people understand that that</p>
+<p>so the uh the brackets um you know we</p>
+<p>went over this last time but the</p>
+<p>brackets</p>
+<p>cor like are what say what outcome</p>
+<p>modality corresponds to what a matrix</p>
+<p>oh yeah so like c2 brackets two means</p>
+<p>that that corresponds to the</p>
+<p>observations</p>
+<p>in uh the a matrix uh with brackets too</p>
+<p>right so so that's how you that's how</p>
+<p>you know</p>
+<p>that this is the one that corresponds to</p>
+<p>observing</p>
+<p>feedback um whereas the first one is the</p>
+<p>one that corresponds to just observing</p>
+<p>tone</p>
+<p>so just just to make it clear that you</p>
+<p>use the bracket numbers to assign</p>
+<p>to the outcome modalities yeah</p>
+<p>and then so then that's basically we've</p>
+<p>built our mdp so we're just going to</p>
+<p>specify it so we've we've now got our</p>
+<p>earlier mdp structure if we remember</p>
+<p>so this is mdp one and this is the thing</p>
+<p>that we specified all the way back when</p>
+<p>we were talking about level one</p>
+<p>um and we then plugged that into our new</p>
+<p>mdp</p>
+<p>structure so we'll have mdp.mdp so this</p>
+<p>is the</p>
+<p>the markov decision process at the lower</p>
+<p>level</p>
+<p>we then plug it into this our new mdp</p>
+<p>structure</p>
+<p>or this will just be a subordinate mdp</p>
+<p>and we have to specify a link function</p>
+<p>we talked about that before but just to</p>
+<p>reiterate</p>
+<p>rows here are or sorry i'll start with</p>
+<p>rows are lower level hidden state</p>
+<p>factors</p>
+<p>and columns are higher level observation</p>
+<p>modalities so all that we're saying here</p>
+<p>is that we want the low level</p>
+<p>observation modality or</p>
+<p>low level hidden state one to plug into</p>
+<p>observation modality</p>
+<p>one so the hidden states the first level</p>
+<p>will be treated but as observations at</p>
+<p>the second level</p>
+<p>um okay then we just plug in all of our</p>
+<p>variables that we saw before</p>
+<p>time our likelihood mapping the</p>
+<p>generative</p>
+<p>model for our likelihood mapping um etc</p>
+<p>etc</p>
+<p>and so c's these and our v which is</p>
+<p>our policies and then again we need to</p>
+<p>reset our</p>
+<p>decay reset parameter to number one</p>
+<p>then in terms of mdp that we can just</p>
+<p>specify names</p>
+<p>for our outcome modalities and our</p>
+<p>transition functions which will just</p>
+<p>kind of make</p>
+<p>interpreting the plots a little bit</p>
+<p>nicer and then lastly</p>
+<p>you just plug the whole thing this whole</p>
+<p>mdp structure into spm</p>
+<p>mdp check thing which will again give</p>
+<p>you some nice informative error messages</p>
+<p>which are extremely helpful</p>
+<p>um i still use that thing all the time</p>
+<p>um and then we can just run it</p>
+<p>and so let's do that right now and by</p>
+<p>the way so i i do have a lot</p>
+<p>of uh i'm just going to run it and kind</p>
+<p>of show you what it looks like and then</p>
+<p>i'm going to go through how i simulated</p>
+<p>each of the specific conditions</p>
+<p>because we did something similar to how</p>
+<p>we simulate ryan simulated learning</p>
+<p>um</p>
+<p>okay</p>
+<p>cool so i'm gonna hide this stuff for</p>
+<p>now um</p>
+<p>slight spoiler</p>
+<p>um okay and so this is just i'll just</p>
+<p>look at one of them</p>
+<p>sorry just so we get an idea of what's</p>
+<p>going on</p>
+<p>um so this is just hidden state sequence</p>
+<p>the sequence is the same</p>
+<p>the agent believes it was the same</p>
+<p>throughout the whole trial great that's</p>
+<p>true</p>
+<p>uh time in trial transition to the next</p>
+<p>point just as we expected it</p>
+<p>and then at the last time step because</p>
+<p>this was a</p>
+<p>um all kind of uh all high</p>
+<p>it just said they would um they were the</p>
+<p>same</p>
+<p>and so then would it got the answer</p>
+<p>right and</p>
+<p>i think it's only sharing your uh it's</p>
+<p>only yeah it's only showing</p>
+<p>the matlab window we don't see that we</p>
+<p>don't see the</p>
+<p>plots oh really</p>
+<p>uh um okay</p>
+<p>let's see if i can goddamn it</p>
+<p>if you if you dock if you dock them you</p>
+<p>might you might be able to pull it up</p>
+<p>yep slide into the ide</p>
+<p>i can try um or share</p>
+<p>a whole spring one can you see the</p>
+<p>screen</p>
+<p>now yep yes now yes okay thanks now we</p>
+<p>get to the plot</p>
+<p>yeah sorry i was just like talking to</p>
+<p>myself then that sucks</p>
+<p>it was fun um yeah okay</p>
+<p>um so this again this is the stable</p>
+<p>hidden state</p>
+<p>hi this is our trend this is our kind of</p>
+<p>time</p>
+<p>time and trial thing stably</p>
+<p>transitioning from one point to another</p>
+<p>and this is our report hidden state</p>
+<p>which just says at the second time step</p>
+<p>the agent reported</p>
+<p>same and then it got feedback that it</p>
+<p>was correct</p>
+<p>cool so then i'm just going to quickly</p>
+<p>go through</p>
+<p>essentially how i simulated all the</p>
+<p>conditions because remember we want to</p>
+<p>simulate local deviation and global</p>
+<p>standard and local standard</p>
+<p>global deviation that makes sense so i'm</p>
+<p>going to simulate 10 trials where that's</p>
+<p>10 collections of</p>
+<p>beeps or big boops in a row</p>
+<p>um and what we want to do</p>
+<p>is essentially have the agent where it</p>
+<p>is going to be doing some learning it's</p>
+<p>going to be learning a prior expectation</p>
+<p>over what sequence it should be in</p>
+<p>if that makes sense and so yes</p>
+<p>just to make sure they understand this</p>
+<p>so go back up to the diddy's</p>
+<p>so if you notice he's only multiplying</p>
+<p>d2 and d3</p>
+<p>by a hundred yeah</p>
+<p>d2 brackets one the first the first up</p>
+<p>the first state factor</p>
+<p>is still just one one one so</p>
+<p>which allows it to learn one but not</p>
+<p>learn stay factor two and say factor</p>
+<p>three</p>
+<p>yeah exactly um and so what we should</p>
+<p>have at the end of our local deviation</p>
+<p>thing for example</p>
+<p>so we have two oh sorry wrong part of</p>
+<p>the code</p>
+<p>okay so for our local deviation global</p>
+<p>standard manipulation</p>
+<p>or simulation what we're going to do is</p>
+<p>just the first nine trials</p>
+<p>will all be a</p>
+<p>high low so it will be</p>
+<p>boop and then the global so then our</p>
+<p>tenth trial however</p>
+<p>is going to be a um</p>
+<p>is going to be the same because it's a</p>
+<p>global standard so the global standard</p>
+<p>is</p>
+<p>the bbb boop but we should get a kind of</p>
+<p>local deviation and we should always get</p>
+<p>a mismatch negativity</p>
+<p>because there's the last one deviates</p>
+<p>from the kind of the local temporal</p>
+<p>regularity if that makes sense</p>
+<p>then in our local standard global</p>
+<p>deviation we're going to invert that</p>
+<p>structure</p>
+<p>so the first nine trials are all high</p>
+<p>low</p>
+<p>so again we've got bbb boops</p>
+<p>but at the last time it's time step</p>
+<p>there</p>
+<p>is a beep beep beep</p>
+<p>and when we do that what we we won't get</p>
+<p>a um we won't get any type of mismatch</p>
+<p>negativity or first level erp to that</p>
+<p>last</p>
+<p>kind of surprise response that last at</p>
+<p>the last time step</p>
+<p>we will however get a a global deviation</p>
+<p>because the second level is now really</p>
+<p>surprised that there wasn't</p>
+<p>a deviation at the first level does that</p>
+<p>all kind of make sense</p>
+<p>nice cool and basically what we do is</p>
+<p>we'll just specify</p>
+<p>n equals 10 this number of trials we'll</p>
+<p>put our we'll get our mdp structure that</p>
+<p>we kind of</p>
+<p>put together before we'll put it into</p>
+<p>our mdp deal</p>
+<p>so that will just be give us 10 mdps</p>
+<p>which are to start with</p>
+<p>all identical and then we're just going</p>
+<p>to choose to select the 10th one</p>
+<p>and change either have</p>
+<p>and mess with the hidden state factor so</p>
+<p>here we're not actually changing it's</p>
+<p>the same as</p>
+<p>the first 10 uh the first nine but in</p>
+<p>the second example we're changing it</p>
+<p>we're changing it from a</p>
+<p>local deviation to a local standard</p>
+<p>or um which will give rise to a global</p>
+<p>deviation and so now if i just</p>
+<p>i've then kind of i'm actually not going</p>
+<p>to for the sake of time i'm actually not</p>
+<p>going to go through all of the code for</p>
+<p>kind of just plugging this stuff in</p>
+<p>because this is literally just putting</p>
+<p>our structures into a</p>
+<p>plotting script and here things get more</p>
+<p>interesting</p>
+<p>here is where i make some custom erp</p>
+<p>plots which i think are kind of cool</p>
+<p>but again i actually don't think walking</p>
+<p>through the code is particularly helpful</p>
+<p>i think it's just the type of thing like</p>
+<p>the way i learned this was i just spent</p>
+<p>like a day or</p>
+<p>half a day just reading through uh</p>
+<p>someone else's code</p>
+<p>and figuring it out um so the the only</p>
+<p>thing that i would</p>
+<p>make sure is that so when you um</p>
+<p>when you're doing this uh u1 underscore</p>
+<p>one</p>
+<p>i'm sorry like it's just these are ways</p>
+<p>of indexing and pulling</p>
+<p>the uh the actual simulated um</p>
+<p>firing rates and erps um out of the spm</p>
+<p>out of the mdp structure after you run</p>
+<p>it through the vbx code</p>
+<p>yeah so these are this is just</p>
+<p>representing uh kind of the</p>
+<p>the most straightforward way of pulling</p>
+<p>those similar simulation results out of</p>
+<p>particular</p>
+<p>cells in the um in the mdp structure</p>
+<p>after it's run</p>
+<p>and we have a table in the tutorial i</p>
+<p>think it's table three</p>
+<p>that explains the structure of each of</p>
+<p>those cells and where each of those</p>
+<p>um each of those uh simulation results</p>
+<p>are</p>
+<p>yeah exactly and so then i'm just going</p>
+<p>to hit run or kind of walk through what</p>
+<p>this stuff looks</p>
+<p>what these plots look like together um</p>
+<p>nice cool okay</p>
+<p>so these are my custom erp plots</p>
+<p>on the right and so i'm going to start</p>
+<p>start there actually because i think</p>
+<p>they're kind of nicer</p>
+<p>okay so</p>
+<p>cool so far left we have a</p>
+<p>or top top left sorry we have a</p>
+<p>global standard versus a global</p>
+<p>deviation</p>
+<p>and the way you calculate the mismatched</p>
+<p>negativity is you just subtract</p>
+<p>the global step the global deviation</p>
+<p>from the global</p>
+<p>standard and then you get this nice</p>
+<p>that's what we have on our top right</p>
+<p>we have this nice kind of negative going</p>
+<p>erp that looks exactly</p>
+<p>i mean i'm not going to show you this</p>
+<p>but if you want to satisfy yourself with</p>
+<p>this</p>
+<p>it this looks like kind of for such a</p>
+<p>simple model this is it's kind of</p>
+<p>shocking how much this looks like a</p>
+<p>standard mismatched negativity</p>
+<p>so that's really cool then on our second</p>
+<p>one here this is our two this is our</p>
+<p>global standard</p>
+<p>which is in blue and our global</p>
+<p>deviation which is in red</p>
+<p>and then we can subtract them from one</p>
+<p>another and what we can we can just look</p>
+<p>at</p>
+<p>kind of the um the</p>
+<p>we get a nice large positive going</p>
+<p>potential</p>
+<p>that looks a lot like a p300</p>
+<p>so then in terms of</p>
+<p>our i'm just going to show you a couple</p>
+<p>of the local deviation local standard</p>
+<p>things um sorry i'm gonna close these</p>
+<p>and these just kind of clean up the</p>
+<p>screen it's nice though that someone can</p>
+<p>just download this and also</p>
+<p>an important note is installing all of</p>
+<p>the spm</p>
+<p>prerequisites maybe we could do a</p>
+<p>standalone in the future but</p>
+<p>once the packages are installed someone</p>
+<p>can just run the script and have</p>
+<p>also all of these figures be spit out</p>
+<p>and then it looks like there's enough</p>
+<p>commentary and hopefully these videos</p>
+<p>are enough of a</p>
+<p>walk through at least of early versions</p>
+<p>of the code where you can tweak</p>
+<p>different things and start seeing how it</p>
+<p>plugs into other</p>
+<p>things you might want to explore with</p>
+<p>the model but all these figures just</p>
+<p>come out in one batch and</p>
+<p>just fighting them away over there</p>
+<p>christopher yeah exactly</p>
+<p>so i guess one thing to say is one</p>
+<p>reason why i'm not particularly</p>
+<p>motivated to</p>
+<p>make a big standalone kind of thing is</p>
+<p>by the time even if i were to do that</p>
+<p>which i don't want to do but even if i</p>
+<p>were to do that</p>
+<p>by the time i'd written all rewritten</p>
+<p>all of the functions i would essentially</p>
+<p>have a package</p>
+<p>that is as cumbersome to download as spm</p>
+<p>but spm is written in a really nice way</p>
+<p>and it's super easy</p>
+<p>to install um and so it would actually</p>
+<p>be a lot easier</p>
+<p>it's just a lot easier to install spm</p>
+<p>that would be to go to my github say</p>
+<p>and put all of this stuff onto your</p>
+<p>laptop make sure all the paths work nice</p>
+<p>because they've automated</p>
+<p>a future supplement could just be start</p>
+<p>with a virtual machine</p>
+<p>and let's just install the prerequisites</p>
+<p>and just actually do a full</p>
+<p>clean installation could be a good point</p>
+<p>of reference but thanks for that</p>
+<p>point continue yeah i mean it's i mean</p>
+<p>it's really very it'd be very</p>
+<p>short and sweet to do i mean downloading</p>
+<p>spm like is</p>
+<p>you know it's freeware i mean it doesn't</p>
+<p>just takes a couple of minutes to</p>
+<p>download and really all you have to do</p>
+<p>is just once you download it is just go</p>
+<p>into matlab and set the path like that's</p>
+<p>it yeah</p>
+<p>i think there's a function called</p>
+<p>install spm so you go into matlab and</p>
+<p>run the</p>
+<p>run the function install sp</p>
+<p>um okay but returning to this so</p>
+<p>each of these points kind of everyone</p>
+<p>see my my pointer i'm hoping yes yes yep</p>
+<p>each of these pointers this is all a</p>
+<p>time step at the first level</p>
+<p>and so this is kind of local standard</p>
+<p>and</p>
+<p>a global deviation right</p>
+<p>um so this will be we see there's a</p>
+<p>little erp each time there's new</p>
+<p>stimulus presented</p>
+<p>but there's not not a major one that</p>
+<p>makes sense because it's the same</p>
+<p>um and our this is trial 10 by the way</p>
+<p>i should say this is trial 10 so i i</p>
+<p>have trial one</p>
+<p>versus uh maybe i'll just maybe i'll</p>
+<p>just contrast all the trial tens because</p>
+<p>otherwise things get messy okay</p>
+<p>cool this is trial ten um</p>
+<p>and so this is trial 10 for local</p>
+<p>standard</p>
+<p>global deviation and so we see kind of</p>
+<p>no</p>
+<p>first level erps really all no enhanced</p>
+<p>erps they're all the same</p>
+<p>but this last one because it this last</p>
+<p>or sixth</p>
+<p>erp right because it disconfirmed</p>
+<p>a prediction essentially there is</p>
+<p>a enhancement in higher level beliefs</p>
+<p>when the model suddenly changes from</p>
+<p>thinking it was a</p>
+<p>high high low high high low</p>
+<p>to a high high if that makes sense</p>
+<p>and then if you compare that second</p>
+<p>level erp to this one over here which is</p>
+<p>this local deviation</p>
+<p>global standard it's smaller</p>
+<p>that p300 there is smaller amplitude</p>
+<p>but at this first level because it kind</p>
+<p>of confirmed that there was a deviation</p>
+<p>at this first level you see this first</p>
+<p>level there's this</p>
+<p>massive like deviation response in</p>
+<p>um so does that all is that all fairly</p>
+<p>clear because i think that's just about</p>
+<p>all i have to show</p>
+<p>um i i do think this stuff is really</p>
+<p>cool it's kind of nice to chat about it</p>
+<p>um</p>
+<p>so just to i want to be very clear that</p>
+<p>i'm understanding</p>
+<p>with the um event-related event-related</p>
+<p>potentials that you're</p>
+<p>showing that you superimposed and you</p>
+<p>got</p>
+<p>based off your hierarchical model um you</p>
+<p>could then superimpose those</p>
+<p>uh erps which are related</p>
+<p>to gradient descent on the variational</p>
+<p>free energy which is related</p>
+<p>to dopamine expression and as we showed</p>
+<p>uh way at the beginning of this video</p>
+<p>that relationship between membrane</p>
+<p>voltage and</p>
+<p>expected firing rate mean population</p>
+<p>firing rate and we're taking all of</p>
+<p>these things together</p>
+<p>to provide the superimposed traces of</p>
+<p>the local fuel potentials at any given</p>
+<p>instant</p>
+<p>um and we're showing how this oddball</p>
+<p>paradigm</p>
+<p>could play out uh conceivably by</p>
+<p>re you know with a simulated version of</p>
+<p>this model how it could be realized is</p>
+<p>that</p>
+<p>yeah exactly the only thing i would say</p>
+<p>is that this</p>
+<p>these these simulations have like</p>
+<p>nothing to do with the dopamine stuff</p>
+<p>yeah i was i was about to say the same</p>
+<p>thing inside</p>
+<p>okay with the exception of like dopamine</p>
+<p>having to do with how you choose</p>
+<p>policies</p>
+<p>so if we just like blew up the dopamine</p>
+<p>receptors</p>
+<p>or sorry this like in silico dopamine</p>
+<p>and just made it like</p>
+<p>we could make the agent behave totally</p>
+<p>randomly or we could make it behave in a</p>
+<p>super precise impulsive way</p>
+<p>um or something something along those</p>
+<p>lines</p>
+<p>sorry i shouldn't have said that uh</p>
+<p>impulsivity is a bit complicated</p>
+<p>um but we could make the um agent behave</p>
+<p>in a totally random way and choose</p>
+<p>random actions which would again</p>
+<p>have effects on the sensory sense on the</p>
+<p>sensations that the agent would receive</p>
+<p>so it would indirectly affect erps</p>
+<p>but there's nothing about like that</p>
+<p>gamma term that would affect</p>
+<p>uh state prediction error which is there</p>
+<p>so the primary could effectively turn</p>
+<p>off</p>
+<p>you could just turn off gamma right and</p>
+<p>like</p>
+<p>and it wouldn't yeah it wouldn't make</p>
+<p>any difference to this exactly</p>
+<p>so so then just so that i'm getting it</p>
+<p>correct</p>
+<p>the more important thing then would be</p>
+<p>the membrane voltage which is related to</p>
+<p>the</p>
+<p>free energy minimization and your</p>
+<p>schematic diagram of those excitatory</p>
+<p>imputative inhibitory connections that</p>
+<p>you're realizing in this model</p>
+<p>exactly yeah it's just it's just about</p>
+<p>rate of change and posteriors over</p>
+<p>states</p>
+<p>okay totally so i'm just going to stop</p>
+<p>showing my screen at this point um</p>
+<p>so hopefully you guys can no longer see</p>
+<p>my screen</p>
+<p>nope we're back to just just you</p>
+<p>know cool well wow what a fun and</p>
+<p>interesting</p>
+<p>session let's uh</p>
+<p>first just really appreciate everyone</p>
+<p>for coming on because these are</p>
+<p>extremely</p>
+<p>didactic and it's really just something</p>
+<p>else to be walking through the code and</p>
+<p>seeing how many degrees of freedom there</p>
+<p>could be and also how</p>
+<p>real it can be when we actually specify</p>
+<p>it so any closing thoughts</p>
+<p>or and what can people look forward to</p>
+<p>for part four which is the final part</p>
+<p>before the</p>
+<p>semester begins for some of us</p>
+<p>yeah no i mean uh like i said i mean the</p>
+<p>last the last one is just the last</p>
+<p>section of the of the tutorial which is</p>
+<p>kind of where we're</p>
+<p>building to this whole time right is how</p>
+<p>to actually</p>
+<p>apply this stuff to empirical data and</p>
+<p>do real experiments</p>
+<p>uh can i ask a question on that is</p>
+<p>someone asks</p>
+<p>can we use this tutorial to construct a</p>
+<p>generative model</p>
+<p>of metacognitive control of attention or</p>
+<p>meta awareness</p>
+<p>i.e modeling task-free conditions say</p>
+<p>while doing meditation for example so we</p>
+<p>talked a lot about task modeling</p>
+<p>how does this generalize yes i mean you</p>
+<p>kind of have to</p>
+<p>so i mean uh you know the first question</p>
+<p>is just how do you make that</p>
+<p>you know like really concrete right</p>
+<p>so i mean there's there's very easy ways</p>
+<p>you know like i've published a couple of</p>
+<p>papers and so has um</p>
+<p>you know several other people um doing</p>
+<p>something like cognitive actions</p>
+<p>selecting cognitive policies as opposed</p>
+<p>to behavioral policies</p>
+<p>and these are things like where you like</p>
+<p>selectively choose what to pay attention</p>
+<p>to</p>
+<p>um you know or selectively choosing you</p>
+<p>know what to kind of hold in working</p>
+<p>memory</p>
+<p>or you know like things things along</p>
+<p>these lines that don't involve any kind</p>
+<p>of like over</p>
+<p>observable behavior but involve um</p>
+<p>selecting cognitive fully internal</p>
+<p>actions</p>
+<p>right like something like selecting ways</p>
+<p>of manipulating lower level</p>
+<p>representations things like that</p>
+<p>um so that's certainly possible but what</p>
+<p>you would need to do then</p>
+<p>is say okay you know what does</p>
+<p>uh meditate what does a meditative</p>
+<p>action look like</p>
+<p>right like it could be something like</p>
+<p>for instance making a</p>
+<p>like choosing a policy at a higher level</p>
+<p>that say like for instance like</p>
+<p>really really really reduces the</p>
+<p>precision of like</p>
+<p>an a matrix or something right if you</p>
+<p>wanted to completely</p>
+<p>you know like cease to attend to</p>
+<p>anything like in the external world</p>
+<p>you know for example um you know or for</p>
+<p>instance</p>
+<p>maybe the opposite right maybe like</p>
+<p>mindfulness you know has to do with</p>
+<p>actually paying really really precise</p>
+<p>attention to the present</p>
+<p>but like making your uh transition</p>
+<p>matrices</p>
+<p>super imprecise so essentially it's all</p>
+<p>about the present and like you're not</p>
+<p>thinking about anything in the past or</p>
+<p>the future</p>
+<p>you know or i mean i could i could think</p>
+<p>of lots of different ways you might do</p>
+<p>something like that but</p>
+<p>to really make it you have to turn it in</p>
+<p>to something task ish right you have to</p>
+<p>define actions</p>
+<p>you know even if they're fully internal</p>
+<p>actions you have to define the way they</p>
+<p>relate to perception the way they</p>
+<p>manipulate the processing perception</p>
+<p>um you know i guess like you have to</p>
+<p>ultimately boil it down to something</p>
+<p>really concrete with an exact</p>
+<p>quantitative structure</p>
+<p>but all the resources are certainly</p>
+<p>there to do it</p>
+<p>if you're creative enough to come up</p>
+<p>with a regenerative model so i have a</p>
+<p>yeah i have two things to add to that so</p>
+<p>first is that i think there's a really</p>
+<p>there's a really cool kind of like early</p>
+<p>pre-print i'm not sure if it's been</p>
+<p>published anywhere it's just called</p>
+<p>towards a formal neurophenomenology of</p>
+<p>metacognition</p>
+<p>um lars sandoval smith is first author</p>
+<p>maxwell ramstead who i think has been on</p>
+<p>the podcast before right there he's the</p>
+<p>he's the senior</p>
+<p>um they actually do try and model</p>
+<p>metacognition and</p>
+<p>specifically in meditation and</p>
+<p>meditation context</p>
+<p>um i would just say one thing that i am</p>
+<p>personally skeptical about um i</p>
+<p>encourage everyone to do this kind of</p>
+<p>work but this is just</p>
+<p>this probably highlights my biases but</p>
+<p>i think if something is hard to study</p>
+<p>empirically that is to say</p>
+<p>it's very hard to study in terms of</p>
+<p>urine imaging</p>
+<p>for example how are you in creating like</p>
+<p>an event related design</p>
+<p>where you can get precise time locking</p>
+<p>to neuro between neuronal responses</p>
+<p>and cognitive processes for example if</p>
+<p>something's hard to do that in an</p>
+<p>experimental context</p>
+<p>it's going to be extremely difficult if</p>
+<p>not more difficult</p>
+<p>to do it meaningfully in terms of the</p>
+<p>generative model because i think</p>
+<p>these generative models are only</p>
+<p>meaningful and helpful to the extent to</p>
+<p>and other people are free to disagree</p>
+<p>with this um this is just very much</p>
+<p>you're going off on my own kind of</p>
+<p>tangent that's just to say it's almost</p>
+<p>like you need to get more rigorous it's</p>
+<p>no longer just like well this one thing</p>
+<p>happened with this one setup</p>
+<p>it actually demands a higher standard</p>
+<p>but things that it lets</p>
+<p>above that higher standard are very</p>
+<p>cross-referenceable very interoperable</p>
+<p>so very nice very nice statement</p>
+<p>yeah i mean i should i should say that</p>
+<p>like like i guess you can think about</p>
+<p>these models as you know beyond the kind</p>
+<p>of more specific applications we've been</p>
+<p>talking about</p>
+<p>is doing kind of two you know doing like</p>
+<p>a couple of like broader things</p>
+<p>one is is that you can use them for kind</p>
+<p>of</p>
+<p>theory making theories precise</p>
+<p>right so for example like um so a lot of</p>
+<p>my past work like</p>
+<p>i focus a lot on like like theories of</p>
+<p>like emotion and emotional awareness and</p>
+<p>how that light still</p>
+<p>relates to like you know psychiatric you</p>
+<p>know like clinical</p>
+<p>contacts and things like that um but</p>
+<p>you know prior to doing a lot of this</p>
+<p>modeling stuff</p>
+<p>um it kind of comes out of these like</p>
+<p>fairly hand wavy conceptual review</p>
+<p>papers right where it's like boxes and</p>
+<p>arrows and</p>
+<p>you know like it's and sometimes in</p>
+<p>those cases it's hard to</p>
+<p>go from kind of the theoretical boxes</p>
+<p>and arrows</p>
+<p>um you know even if you assign say</p>
+<p>neural regions or systems to them</p>
+<p>it's hard to to make those things really</p>
+<p>precise so that like</p>
+<p>it's very clear that one empirical</p>
+<p>result would actually confirm or just</p>
+<p>confirm it</p>
+<p>um whereas so you can take you know like</p>
+<p>a kind of conceptual you know somewhat</p>
+<p>hand-wavy model like that and then turn</p>
+<p>it into an exact</p>
+<p>generative model which can just make</p>
+<p>your theory really precise you know so</p>
+<p>so like one day you know it'd be really</p>
+<p>cool if instead of like review papers</p>
+<p>it's like review paper plus</p>
+<p>actually here's a model you know like a</p>
+<p>precise quantitative</p>
+<p>model that we think comes out of</p>
+<p>unifying all the results</p>
+<p>as opposed to um less precise</p>
+<p>um theories one one other nice thing you</p>
+<p>can do with these models is just like</p>
+<p>have a</p>
+<p>total proof of principle someone someone</p>
+<p>might make a radical claim like there is</p>
+<p>no way that you can conceivably do</p>
+<p>x and then the response that is here is</p>
+<p>a model that does</p>
+<p>x um and that's useful right</p>
+<p>that might not be it might even not be</p>
+<p>an empirically tractable example like i</p>
+<p>think the dark room problem is an</p>
+<p>example of this right</p>
+<p>like you could say there is no possible</p>
+<p>way of designing an active inference</p>
+<p>model</p>
+<p>that will escape the dark room and then</p>
+<p>you can build a model and say</p>
+<p>active inference agent escaping the dark</p>
+<p>room like</p>
+<p>that would be a really shitty boring</p>
+<p>experiment to run i hope one</p>
+<p>but it's a argument about argument by</p>
+<p>construction</p>
+<p>but especially when people have these</p>
+<p>edge cases or perceived to be edge cases</p>
+<p>but that's how philosophy</p>
+<p>is at the fringe and at the border and</p>
+<p>expanding and critiquing and improving</p>
+<p>all these different metaphors that have</p>
+<p>come up</p>
+<p>in discussing like 14 was what is the</p>
+<p>dialogue</p>
+<p>between science and the modeling and the</p>
+<p>actual</p>
+<p>quantitative components of it and the</p>
+<p>empirical work and</p>
+<p>philosophy so it's really just we're</p>
+<p>coming at that same question from a</p>
+<p>little bit of a different angle</p>
+<p>so i think this has been a great length</p>
+<p>and a great</p>
+<p>session ryan christopher max really</p>
+<p>appreciate all of you for</p>
+<p>coming on so that's going to be it for</p>
+<p>today but it will be</p>
+<p>our final session next friday</p>
+<p>at the same time at 9 00 a.m pacific</p>
+<p>on february 5th is going to be</p>
+<p>number four so thanks everyone for</p>
+<p>watching live and replay thanks again</p>
+<p>to authors and participants so peace out</p>
+<p>everyone</p>
+<p>yeah thank you bye thanks</p>
+</article>
+</body>
+</html>

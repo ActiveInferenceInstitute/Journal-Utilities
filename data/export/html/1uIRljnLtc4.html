@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 057.1~ Andy Keller, "Natural Neural Structure in Artificial Neural Networks"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 057.1~ Andy Keller, "Natural Neural Structure in Artificial Neural Networks"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_057 &middot; Episode 1 &middot; Speakers: Andy Keller &middot; Duration: 1:21:57 &middot; Views: 361</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=1uIRljnLtc4">https://www.youtube.com/watch?v=1uIRljnLtc4</a></div>
+<article>
+<p>Hello and welcome. It's September 18th, 2023, and it's ACTIMF Guest Stream 57.1 with Andy Keller.</p>
+<p>We're going to be talking about natural neural structure for artificial intelligence.</p>
+<p>There will be a presentation followed by a discussion. So if you're watching live,</p>
+<p>please feel free to write questions in the live chat. Otherwise, thank you, Andy, for this.</p>
+<p>Really looking forward to it and to you for the presentation.</p>
+<p>Yeah, thanks so much. Thanks for having me. I'm super excited to be able to present this stuff with the Active Inference Group.</p>
+<p>I'm a fan and very interested. So hopefully, yeah, get to have a good discussion and see what you guys think about it.</p>
+<p>So my name is Andy. I'm finishing up my PhD, supervised by Max Welling at the University of Amsterdam.</p>
+<p>I'm starting a postdoc at Pervert after this.</p>
+<p>So I'll start out just talking about the goal of my work in general is to try to bring modern artificial intelligence</p>
+<p>closer to more human-like generalization.</p>
+<p>And so what we mean by this is maybe some sort of structured generalization or maybe more familiar to the Active Inference Committee,</p>
+<p>like a structured world model, which we believe that humans have.</p>
+<p>And the way that we propose to do this is by integrating natural neural structure into artificial intelligence.</p>
+<p>So first, let's define what we mean by structured generalization.</p>
+<p>So I think it's fairly uncontroversial to say that modern machine learning generalizes beyond its training set in the traditional sense.</p>
+<p>So, for example, even the earliest artificial neural networks, multilayer perceptrons could be trained on data sets of images like this and achieve high accuracy.</p>
+<p>Then when they're presented with a held out test set of images that they've never seen before,</p>
+<p>they can still classify them relatively easily with the same level of accuracy.</p>
+<p>And this is what we typically call generalization.</p>
+<p>However, even fairly early on, it was noticed that these systems really struggle with small shifts or deformations applied to the images.</p>
+<p>For example,</p>
+<p>So we think, why is this surprising?</p>
+<p>And I argue it's really due to our innate ability to perform this type of structure generalization that this example is a failure.</p>
+<p>So, for example, this shift is nearly imperceptible to us and we handle it automatically.</p>
+<p>Whereas in these systems, it's very clearly a major problem.</p>
+<p>So in words, we can say that structure generalization is a generalization to some symmetry transformations of the input,</p>
+<p>or in this case, the symmetry transformation is a small shift that leaves the digit class unchanged.</p>
+<p>So the obvious question then is, what precisely do we mean by this natural structure?</p>
+<p>And why do we think that this would help us with these settings?</p>
+<p>So first, let's talk about what we mean by natural neural structure.</p>
+<p>One way to talk about structure or any type of bias in a system is an inductive bias.</p>
+<p>And so an inductive bias can loosely be defined as an a priori restriction of a set of realizable hypotheses when you're doing model selection.</p>
+<p>More colloquially, we can call this something like before seeing any data, it's a restriction of what and how you can learn.</p>
+<p>So very broadly, this can include anything from model class to optimization procedures or even hyperparameters.</p>
+<p>And in some sense, they really define what is possible to learn.</p>
+<p>And it defines generalization in that you actually can't generalize beyond a training set without having some inductive biases.</p>
+<p>And this is explained more thoroughly in this paper by David Wolpert.</p>
+<p>So what we mean by natural inductive biases then is biases that stem from the restrictions and limitations that are faced by natural systems,</p>
+<p>by the nature of having to live in the real world.</p>
+<p>For example, the brain has many efficiency constraints and physical constraints by nature of its construction.</p>
+<p>And following this logic, then these constraints are really playing some role in our generalization abilities,</p>
+<p>which currently exceed modern artificial intelligence, as we'll go into next.</p>
+<p>So in this talk, I'll be focusing specifically on two types of structure which my work has studied.</p>
+<p>These are topographic organization and spatiotemporal dynamics.</p>
+<p>And before I go into my work, I'll give a short example for why I believe that natural structure may be useful to achieve the structure generalization that I was talking about before.</p>
+<p>So the first example comes from Fukushima's neocognitron architecture from the 1980s,</p>
+<p>which was actually built to directly address the problem of robustness to these small shifts and deformations.</p>
+<p>So in the paper, he writes about inspiration from pupil and Riesel's measurements of hierarchy and pooling in order to achieve robustness to these distortions.</p>
+<p>And so if you look at the figure, he writes U sub S1, U sub C1, and these stand for simple and complex cells.</p>
+<p>And so this was a fairly radical approach at the time, but it really served to improve robustness and shifts that were plaguing these early artificial neural networks.</p>
+<p>And over time, these ideas were simplified and abstracted and obviously yielded the convolutional neural networks that we know today,</p>
+<p>which ultimately drove the success of the deep learning revolution.</p>
+<p>So this is really an example of a natural inductive bias, which achieved structured generalization.</p>
+<p>So for our research, it's really of utmost interest to try and understand what makes these models work so well</p>
+<p>and see if this principle can potentially be generalized to cover more abstract transformations and symmetries.</p>
+<p>So what makes a convolution achieve this structured generalization?</p>
+<p>Intuitively, you can see this is done by applying the same filter or feature extractor at various spatial locations.</p>
+<p>So here we see a single convolutional filter being applied at all locations of an image.</p>
+<p>And this means that no matter where your input is, whether it's kind of in the middle of the image or on the right,</p>
+<p>you'll have the exact same features.</p>
+<p>With one exception, they'll be equivalently shifted.</p>
+<p>So mathematically, this type of a mapping is called a homomorphism.</p>
+<p>It preserves the algebraic structure of the input space and the output space.</p>
+<p>In this case, it's with respect to translation.</p>
+<p>And at a simple level, something that will be important to remember for the rest of this talk</p>
+<p>is that we can verify homomorphisms of our feature extractor</p>
+<p>if we can see that there's this commutation with the transformation, this commutative diagram.</p>
+<p>And so we can write this also algebraically by showing that the feature extractor F commutes with the transformation operator T.</p>
+<p>And basically, what we want is there to be no difference between first extracting the features</p>
+<p>and then performing the transformation or performing the transformation and then extracting the features.</p>
+<p>So the challenges to date is we don't really know how to construct homomorphisms</p>
+<p>with respect to more complex transformations that we see in the real world.</p>
+<p>For example, our brain is able to handle changes in lighting and season naturally.</p>
+<p>So here we see lighting on a person's face or the change of seasons.</p>
+<p>We can tell us the same face or the same road.</p>
+<p>But we don't know how to build models which respect these transformations.</p>
+<p>And so it makes us hard to build systems which handle them in a robust and predictable way.</p>
+<p>To give an even more abstract example of what I mean by this</p>
+<p>and the potential negative repercussions of models which don't handle symmetry transformations,</p>
+<p>consider modern text-to-image generation programs.</p>
+<p>So in this example, I asked Dali 2 to generate an image of a teddy bear on the moon.</p>
+<p>And it does this incredibly well, right?</p>
+<p>It's probably better than I could.</p>
+<p>It has texture, fur, incredibly detailed.</p>
+<p>However, if I ask it to do something which I see as conceptually simpler,</p>
+<p>such as draw a blue cube on top of a red cube, it fails to do this.</p>
+<p>And to me, this seems unintuitive since the second task seems significantly easier.</p>
+<p>But what I'm arguing is that the reason that this is surprising</p>
+<p>is precisely the same reason that the MNIST translation example was surprising.</p>
+<p>There is this symmetry transformation happening here,</p>
+<p>namely the transformation between these complex objects of a teddy bear and the moon</p>
+<p>and these simple objects of cubes,</p>
+<p>which we intuitively expect the network to be able to handle and respect.</p>
+<p>And we see that it doesn't.</p>
+<p>So just like how Fukushima's work showed that these natural structure of hierarchy</p>
+<p>and pooling of our visual system are effective for making generalizations to small transformations,</p>
+<p>I argue that potentially higher level structure may be necessary to fix these abstract generalization problems.</p>
+<p>And so the question then that I'm studying and that I'm asking is,</p>
+<p>what might this structure be and how do we implement this in artificial neural network architecture</p>
+<p>that can actually be used for performing computation?</p>
+<p>So to begin to answer that, I'll jump into my first line of work on topographic organization.</p>
+<p>So topographic organization is observed widely throughout the brain from primary visual cortex to higher level areas.</p>
+<p>And it can very loosely be described as this property that neurons which are close to one another tend to respond to similar things.</p>
+<p>For example, on the left, we show the color-coded preference of each neuron in the macaque primary visual cortex</p>
+<p>as a response to oriented lines.</p>
+<p>And we see this smoothly varying set of selectivities.</p>
+<p>Another type of organization is known as retinotopic organization,</p>
+<p>where nearby neurons in the visual cortex tend to respond to nearby receptive fields.</p>
+<p>However, this organization isn't limited to these low-level features.</p>
+<p>It extends to more complex features, such as those present in faces or objects or places.</p>
+<p>And this relates to the so-called functionally specific areas of the brain,</p>
+<p>such as the fusiform face area, FFA, and the parahippocampal face area, PPA.</p>
+<p>So in this work, the main idea, again, is that perhaps this topographic organization, in some sense,</p>
+<p>which is intimately related to the convolution operation and Fukushima's architecture,</p>
+<p>we can maybe generalize the benefits of this to more abstract transformations.</p>
+<p>In other words, learn how to build more complex homomorphisms that we can't do analytically right now.</p>
+<p>So just to show that we're not completely insane with this idea,</p>
+<p>there is some prior work in this domain from people such as Caponen,</p>
+<p>Yann LeCun, Apohé-Bahranen in the early 90s and 2000s.</p>
+<p>And they studied how topographic organization may be useful for learning in variances,</p>
+<p>mostly in linear models.</p>
+<p>So the question for us when we entered this space is,</p>
+<p>what is the most scalable abstract mechanism that can be leveraged from these approaches,</p>
+<p>which we can integrate into modern deep neural network architectures?</p>
+<p>And ultimately, we settled on a generative modeling approach,</p>
+<p>which I think might be interesting to the people in this community,</p>
+<p>which then allows us to relate it more closely to topographic independent component analysis,</p>
+<p>with the basic idea being that we can learn a topographic feature space</p>
+<p>by imposing a topographic prior distribution over our latent variables.</p>
+<p>So just to give a brief background, I assume most people are already familiar with this,</p>
+<p>but the kind of general assumption is that the brain is a generative model.</p>
+<p>And this idea, in some sense, can be attributed to Helmholtz from the 19th century,</p>
+<p>where he said that what we see is the solution to a computational problem.</p>
+<p>Our brains compute the most likely causes from photon absorptions within our eyes.</p>
+<p>And so as an example, if I show you this image,</p>
+<p>you immediately recognize it as a globe with some curvature.</p>
+<p>However, it could just as equally be a disk with a distorted perspective on it.</p>
+<p>So this is how we get optical illusions or images.</p>
+<p>So like this one, your brain infers that there is a cube here because of the structure,</p>
+<p>but really it's just a flat piece of paper.</p>
+<p>So you can think of this generative model aspect as kind of like an inverse graphics program.</p>
+<p>In the program, the abstract properties of the sphere are known,</p>
+<p>the position, the size, the lighting.</p>
+<p>And these are used to project the sphere to create the 2D image that is rendered.</p>
+<p>So in effect, what Helmholtz and others are saying is that as a generative model,</p>
+<p>the brain is actually trying to invert this generative process and doing inference</p>
+<p>and infer the underlying causes of our sensations.</p>
+<p>So the reason I'm kind of belaboring this point is that there's a lot of talk of generative models today.</p>
+<p>And I'm not necessarily just talking about generating images or pretty pictures.</p>
+<p>I really want to mean a framework for unsupervised learning.</p>
+<p>So then to get a little bit more into the details, what do I mean by a topographic prior?</p>
+<p>So generative models are typically described as a joint distribution over observations,</p>
+<p>x and latent variables, which we'll call z.</p>
+<p>And this is typically factorized, or one way that this is done is factorized in terms of a prior p of z</p>
+<p>and this true generative model, conditional generative model, p of x given z.</p>
+<p>And so one way that we can think about this is that the prior can be seen to encode relative penalties</p>
+<p>for each type of code that is produced when we invert our generative model.</p>
+<p>This is called computing the posterior p of z given x.</p>
+<p>And so to develop a topographic latent space, we want to introduce some sort of a topographic prior,</p>
+<p>which has been, or which this topographic ICA work showed is equivalent to something like a group sparsity penalty.</p>
+<p>So people might be familiar with typical sparsity penalties from independent component analysis.</p>
+<p>You want your activations to be sparse, meaning many of them are zero.</p>
+<p>So that could look something like this.</p>
+<p>You have a bunch of blue squares that are active, but most of them are not active.</p>
+<p>But specifically with a group sparsity penalty, we want these priors to assign lower probability to</p>
+<p>these distributed sparse activations and higher probability to these grouped, densely packed representations.</p>
+<p>You can also think of this like a higher penalty when things are spread out,</p>
+<p>a lower penalty when things are closer together.</p>
+<p>So again, this can be written abstractly like this, but I want to make clear that these neurons,</p>
+<p>each one of these squares here represents kind of a neuron in our model, and they're organized in this 2D grid.</p>
+<p>So when we're talking about grouping, we really mean grouping in that 2D topology.</p>
+<p>So one thing that's really interesting and kind of important is that these priors don't just give us topographic organization,</p>
+<p>but they've also been noted by people like or studied by people like Erosi Manchelli and Bruno Olshausen</p>
+<p>to actually fit the statistics of natural data better, specifically natural images.</p>
+<p>They've shown that using this type of a prior, you actually get a sparser set of activations,</p>
+<p>meaning that the prior fits the true generative process a little bit better.</p>
+<p>And as we're aware, the brain has a high degree of sparsity,</p>
+<p>and this is believed to be very relevant for efficiency.</p>
+<p>So to get a little bit more into the details, to implement this type of a group sparse prior,</p>
+<p>we use a hierarchical generative model, and this is basically introduced by some of the topographic ICA work.</p>
+<p>The idea is that you have a higher level latent variable U,</p>
+<p>which simultaneously regulates the variance of multiple lower level variables T,</p>
+<p>and this is how we get group sparsity.</p>
+<p>Then to get topographic organization, you can have multiple of these latent variables,</p>
+<p>U slightly overlapping with their fields of influence, so their neighborhoods, we can call them.</p>
+<p>And this will give you this smooth correlation structure you're after.</p>
+<p>So get the intuition for this.</p>
+<p>You see that this variable T down on the bottom here is not getting any input from this U on the top,</p>
+<p>but it is sharing a U variable with this T in the middle.</p>
+<p>So it's like they're sharing variants, they're sharing some components with their neighbors,</p>
+<p>but not all components, and that's really due to this local connectivity of these higher level variables U.</p>
+<p>So to keep it simple about how we use this generative model, let's go back to a single U variable.</p>
+<p>And the challenge in this type of architecture, which made it difficult for many years,</p>
+<p>is how do you infer the approximate posterior over these intermediate latent variables in this hierarchical architecture?</p>
+<p>And this is not super straightforward.</p>
+<p>So prior works have used heuristics developed for linear models,</p>
+<p>and in our work we found that this really didn't extend to modern neural network architectures.</p>
+<p>So really our insight is to leverage a factorization, a specific reparameterization of this distribution.</p>
+<p>And so this reparameterization specifically is achieved by defining the prior to be what's known as a Gaussian scale mixture,</p>
+<p>meaning that our conditional distribution of T given U is actually a normal distribution</p>
+<p>where the variance is defined by this variable U.</p>
+<p>And for certain choices of U, this distribution is indeed sparse and encompasses a range of distributions such as Laplacians as student T distributions.</p>
+<p>One way of defining it is a Gaussian scale mixture admits a particular reparameterization</p>
+<p>in terms of independent Gaussian random variables Z and U.</p>
+<p>So specifically then we see that this T variable, which was originally fairly complex,</p>
+<p>is actually just a product of a bunch of Gaussian random variables,</p>
+<p>which we now know how to work with much more efficiently in generative models.</p>
+<p>And specifically what we're going to do is so that we can actually get approximate posteriors for U and Z separately,</p>
+<p>and then do a deterministic combination of them in order to compute our topographic variable T.</p>
+<p>And this is much easier to do.</p>
+<p>So without going into too many details,</p>
+<p>the method that we decided to use is known as a variational autoencoder,</p>
+<p>which leverages techniques from variational inference to derive a lower bound on the likelihood,</p>
+<p>allowing us to parameterize these approximate posteriors with powerful nonlinear deep neural networks</p>
+<p>and optimize them with gradient descent.</p>
+<p>This is going to be familiar to the active inference community,</p>
+<p>but really what we've done is instead of having a single encoder and decoder as is typical VAEs,</p>
+<p>we now have two encoders, one for U and one for Z separately.</p>
+<p>And then we combine them in this deterministic manner to construct our topographic T variable.</p>
+<p>If you see that this is actually the construction of a student's T distribution from Gaussians.</p>
+<p>And then we can plug this, we do this before decoding and then maximize the likelihood of the data altogether.</p>
+<p>So this is the elbow, the evidence lower bound, abound on the likelihood of the data,</p>
+<p>and it's actually very similar to the variational free energy that is used in the active inference community.</p>
+<p>So with these details out of the way,</p>
+<p>what's really interesting is what happens when we train this generative model,</p>
+<p>which has relatively simple group sparsity penalty in its latent space,</p>
+<p>and we want to look at kind of what it's learning in terms of its organization of features.</p>
+<p>And first we start with the simplest possible data set.</p>
+<p>We have a black background with white squares at random XY locations.</p>
+<p>If we train our auto encoder with this group sparsity penalty on it,</p>
+<p>and then we look at the weight vectors of our decoder,</p>
+<p>which we're plotting in blue here, again organized in this 2D grid,</p>
+<p>we see that indeed they learn to be organized according to spatial location.</p>
+<p>So this can be seen as similar to convolutional receptive fields,</p>
+<p>where the receptive field of each neuron is really given by the kind of inputs at its location.</p>
+<p>And this makes sense intuitively from the group sparsity perspective,</p>
+<p>since for any given region, which we highlight in yellow here,</p>
+<p>the filters in a given group are much more highly correlated.</p>
+<p>They have these overlapping receptive fields than other random locations.</p>
+<p>So essentially we see that our model is learning to cluster activities together</p>
+<p>in sort of a simulated cortical sheet, according to the correlations in the data set.</p>
+<p>So instead of in convolution, where you're actually doing weight tying</p>
+<p>and you're manually specifying, I want to copy this weight everywhere,</p>
+<p>you can maybe think of this as like approximate weight tying.</p>
+<p>And really we're learning this from the correlation structure of the data set itself.</p>
+<p>And just to give a little bit more of a biological inspiration for this,</p>
+<p>we know that retinotopy is present in the brain.</p>
+<p>This is an example of retinotopy in the macaque visual cortex.</p>
+<p>And you can see if you show the macaque an image like this,</p>
+<p>it gets projected into this topology preserving space actually on the surface of the cortex.</p>
+<p>So the idea is that topographic organization and even learn topographic organization</p>
+<p>is preserving the input correlations of our data set.</p>
+<p>And potentially this may be beneficial for generalizing these ideas a little bit further.</p>
+<p>So like I said at the beginning, it would be even better if we could just learn something</p>
+<p>more than just convolution, maybe more complicated equivariances.</p>
+<p>So how do we do that?</p>
+<p>One thing that's clear in natural intelligence is that we don't exist in this world of IID frames, right?</p>
+<p>We exist in a world of continuous sequences of transformations.</p>
+<p>So maybe we can extend our model to this setting to learn, observe transformations.</p>
+<p>This is an idea of temporal coherence.</p>
+<p>So what would happen if we just simply extended our previous framework over the time dimension, right?</p>
+<p>So instead of just grouping, saying we want our neurons to be group sparse in terms of spatial extent on the cortex,</p>
+<p>we actually want them to be group sparse over time.</p>
+<p>Meaning that if one set of neurons is active now, we want that same set of neurons to be active into the future as well.</p>
+<p>If we look at, if we kind of intuitively think about this,</p>
+<p>we see that this is actually more encouraging invariance than equivariance.</p>
+<p>The way to understand this is we're saying we want the same neurons to be active constantly,</p>
+<p>but the input transformation is changing, right?</p>
+<p>The feet of this little fox are moving.</p>
+<p>So if the same neurons are coding for the same thing over and over again, but the feet are moving,</p>
+<p>those neurons are going to learn to be invariant to the motion of that leg of this dog, for example.</p>
+<p>So instead is that...</p>
+<p>Oops, I went the wrong way here.</p>
+<p>So instead, our insight was that this group star city could instead be shifted with respect to time.</p>
+<p>So this would mean that sequentially shifted sets of activations would be encouraged to activate together.</p>
+<p>And then our latent space would really be structured with respect to the observed transformations.</p>
+<p>So you can see here that rather than the same set of neurons being active at all time steps,</p>
+<p>it's really a sequentially permuted set of neurons that we're grouping together in this sparse way.</p>
+<p>And then this allows us to model different observations over time,</p>
+<p>but they're still connected in terms of learning a transformation</p>
+<p>and preserving this correlation structure of the input dataset.</p>
+<p>So if we put this together into our topographic VAE architecture,</p>
+<p>you can get something that looks like this.</p>
+<p>You see that we have an input sequence.</p>
+<p>We're again encoding a Z variable and then multiple U variables in the denominator here.</p>
+<p>And then each one of these U variables is shifted,</p>
+<p>kind of like we were showing before,</p>
+<p>in order to achieve this shift equivariant structure that we're looking for.</p>
+<p>When we combine these in this student T product distribution,</p>
+<p>we get a single latent variable.</p>
+<p>This is now our topographic latent variable T.</p>
+<p>And now that we have this known structure in our latent space,</p>
+<p>you can think of it like a structured world model.</p>
+<p>We know how to transform this latent space.</p>
+<p>In this case, it's by permuting these activations around these circles,</p>
+<p>doing like a cyclic role, a cyclic shift.</p>
+<p>We know that this is going to correspond to our learned input transformations.</p>
+<p>And we can verify that by saying,</p>
+<p>okay, what if I continue this input transformation,</p>
+<p>the true transformation in the data set, which is a rotation.</p>
+<p>And then I compare that with how I've done my role in my latent space</p>
+<p>by moving my activations around in my brain.</p>
+<p>And then we decode and we see that we get the exact same thing.</p>
+<p>And so this is demonstrating this commutivity property that I was talking about before</p>
+<p>for verifying homomorphism.</p>
+<p>And so to measure this a little bit more qualitatively, we can measure what's called an</p>
+<p>equivariance loss.</p>
+<p>So this is really the quantification of this difference between our rolled</p>
+<p>capsule activation or rolling in our head versus watching the rolling of unfold and for the watching</p>
+<p>the transformation unfold before us.</p>
+<p>So we see that topographic VAE achieves significantly lower equivariance error.</p>
+<p>This bubble VAE is what I was talking about before where it's learning invariance.</p>
+<p>So it doesn't have the shift operation.</p>
+<p>And then the traditional VAE kind of has no notion of organization or temporal components.</p>
+<p>So it performs very poorly.</p>
+<p>In addition to this, we see that the model is a better generative model of sequences.</p>
+<p>It just gets a lower negative log likelihood on the dataset.</p>
+<p>So it's better able to model this dataset because it has a notion of the structure of the transformations.</p>
+<p>We can test this on multiple different transformation types.</p>
+<p>On the top row, we're showing the true transformation.</p>
+<p>We hold out these grayed out images.</p>
+<p>And then on the bottom row, we encode.</p>
+<p>And then we just kind of roll our activations around and we keep decoding to see what the</p>
+<p>model has learned as the current transformation that's being observed.</p>
+<p>And we see that it can basically perfectly reconstruct these elements of the sequence that</p>
+<p>it's never seen before.</p>
+<p>Additionally, with images that are from the test set that it's never seen before,</p>
+<p>simply because it knows what the transformation is that it's currently encoding.</p>
+<p>And it can generalize that to new examples.</p>
+<p>So the takeaway from this part is really topographic organization.</p>
+<p>We showed that it preserved input structure and now we're showing it can potentially improve</p>
+<p>efficiency and generalization as we would hope that a structured world model would be able to do.</p>
+<p>So finally, something that surprised us and I thought was potentially the most interesting</p>
+<p>is that these these transformations that are learned by our model actually generalize</p>
+<p>the combinations of transformations that we're not seeing during training.</p>
+<p>So for example, despite only training on color and rotation transformations in isolation,</p>
+<p>if the model is presented with a combined color rotation transformation at test time,</p>
+<p>we see that it's able to completely model and complete these transformations perfectly through</p>
+<p>the capsule role, implying that it's learned to factorize representation with respect to</p>
+<p>these different transformations and it can flexibly combine them at inference time.</p>
+<p>So again, maybe we also don't just get officially efficiency and generalization,</p>
+<p>we also get some basic compositionality.</p>
+<p>So let's talk about the limitations and what we could do next.</p>
+<p>The main limitation is that there's a predefined transformation that we're imposing in both space</p>
+<p>and time.</p>
+<p>So although we freed ourselves from group transformations and specifically like translation or rotation as</p>
+<p>is currently done in the machine learning world, we still have this hard coded latent role in our</p>
+<p>heads for everything we see and to make this a little bit more flexible. So hopefully we can model a</p>
+<p>greater diversity of transformations.</p>
+<p>We think maybe we can take inspiration from</p>
+<p>more structured spatiotemporal dynamics that are observed in the brain.</p>
+<p>And so that takes us to the second part of this talk, which is</p>
+<p>spatiotemporal dynamics that we're going to try to integrate into artificial neural networks.</p>
+<p>One example of that is traveling waves like I showed here.</p>
+<p>So what do we mean by that?</p>
+<p>Well, here's a very recent paper where they used a nine Tesla fMRI operating at 36 millisecond</p>
+<p>resolution to image a single slice of a rat brain under anesthesia.</p>
+<p>And what we see is this very clearly structured spatiotemporal activity and correlations.</p>
+<p>And these authors of the paper go on to analyze this activity in terms of the</p>
+<p>principal modes as depicted on the right.</p>
+<p>So our hypothesis is that perhaps some sort of a correlation structure like this may be</p>
+<p>beneficial for structuring the representations of our model with respect to observed transformations,</p>
+<p>but in a much more flexible way than simply just a cyclic shift like we were doing before.</p>
+<p>And let me say that this is not just observed in anesthetized rats.</p>
+<p>This is, you can see these traveling waves happen in the MT cortex of awake behaving primates.</p>
+<p>So for example, on the left here, they show traveling waves that actually change how likely a primate is to see a low contrast stimuli based on the phase of the wave.</p>
+<p>Furthermore, they show that the like a high contrast stimulus on the right can induce a traveling wave activity that propagates outwards,</p>
+<p>even in primary visual cortex. So these are really ubiquitous throughout the brain at multiple levels.</p>
+<p>And it would be interesting to study what their implications are for structured representation learning in our case or generally.</p>
+<p>There is prior work which has studied these types of dynamics and they build models.</p>
+<p>So on the top, these are the equations which describe a spiking neural network, which they show if you implement time delays,</p>
+<p>actually axonal time delays between neurons, you do get these structured dynamics of traveling waves as long as your network size is large enough.</p>
+<p>However, as many people probably know, it's relatively challenging to train spiking neural networks.</p>
+<p>of the same size and performance as deep neural networks.</p>
+<p>Similarly, on the bottom, another system which is significantly simpler, but perhaps too simple</p>
+<p>is a network of coupled oscillators. These are known to exhibit synchrony and spatial temporal dynamics and complex patterns.</p>
+<p>But this is called like a phase reduced system and doesn't quite capture the full complexity that we're interested in.</p>
+<p>So we're looking at something that's potentially in between these two.</p>
+<p>And what we settled on is this work in this work is to parameterize a network of coupled oscillators slightly more flexibly than a Karamoto model.</p>
+<p>So this is really built on this coupled oscillatory recurrent neural network of Konstantin Ruch and Nischa,</p>
+<p>where they basically took the equation which describes the simple harmonic oscillator to second order differential equation.</p>
+<p>The acceleration on a ball on a spring is proportional to its displacement.</p>
+<p>So this is a little bit more of a time that we're going to do with the same thing.</p>
+<p>You can add additional terms such as damping so that the oscillations slowly die out over time.</p>
+<p>You can drive this oscillator with an external input to kind of counteract this damping or to give slightly more complexity to the dynamics.</p>
+<p>And then furthermore, if you have many of these oscillators, you can couple them together with these coupling matrices W,</p>
+<p>as we demonstrate kind of in this picture here.</p>
+<p>So you can really think of this network as a bunch of balls on springs,</p>
+<p>and they're maybe connected to each other also by springs or elastic bands, whatever you want.</p>
+<p>And this is the coupled oscillatory recurrent neural network of Ruch and Nischa with these various terms.</p>
+<p>And this has been shown to be very powerful for modeling long sequences.</p>
+<p>They also mentioned they were inspired by the brain building this, and there's a lot of good analysis in that paper.</p>
+<p>For example, they show that this has really beneficial properties with respect to</p>
+<p>vanishing gradient problems that typically happen in recurrent neural networks.</p>
+<p>But if we want to look at spatial temporal dynamics in this type of a model,</p>
+<p>it's slightly challenging because these coupling matrices here, the W's</p>
+<p>are the two of these oscillators that connect each oscillators position to one another.</p>
+<p>These are densely connected matrices like I've tried to depict on the left here.</p>
+<p>So if you try to visualize the dynamics of this network, you don't see any spatial organization,</p>
+<p>there's no inherent topology to the latent space of this model.</p>
+<p>So you can think of this like in our previous example, a neuron is connected to a potentially</p>
+<p>arbitrary set of other neurons, those neurons are connected to another</p>
+<p>arbitrary set of neurons, you know, just get oscillatory dynamics, certainly, but kind of</p>
+<p>fluctuations that don't make a lot of structured sense.</p>
+<p>So in our work, then we thought, okay, how can we convert this more to the types of dynamics</p>
+<p>that we're interested in this structured propagation of activity.</p>
+<p>And one clear way to do that is to have a more structured connectivity matrix W,</p>
+<p>which we found is easily implemented and efficiently implemented through a convolution operation,</p>
+<p>which you can think of like a local, a locally connected layer. So instead of having every</p>
+<p>neuron connected to every neuron, neurons are just connected to their nearby neighbors.</p>
+<p>And then you after training, you'll end up getting something that looks like a smooth spatial temporal</p>
+<p>dynamics.</p>
+<p>So to be a little bit more clear to train this model, we take this separate second order differential</p>
+<p>equation that we were describing before, you discretize it into two first order equations,</p>
+<p>you can think of this as like numerically integrating the ODE. We now have a velocity and then we update the</p>
+<p>positions with this velocity. And, and we can train this model as something like an auto encoder or an</p>
+<p>auto regressive model. So we take an input, we encode it to our latent space, really, the input is</p>
+<p>direct is this f of x term, which acts as the driving term. So it's like driving these oscillators from the</p>
+<p>bottom. And then they have their own dynamics, which are defined by the coupling terms, these local</p>
+<p>couplings. And then at each time step, we take this latent state, this wave state, and we decode to try</p>
+<p>and reconstruct the input, be at the current time step or a future time step. We can do some analysis of</p>
+<p>these models during training to see what happens before training and after training, we can compute the</p>
+<p>phase and the velocity of the dynamics and the latent space. Basically, we see at the beginning of</p>
+<p>training, there's no waves in our model. But after training after 50 epochs, we see that there's this</p>
+<p>smooth structured activity propagating downwards, in service of this sequence modeling task that we're</p>
+<p>doing like rotating objects. So what's what's the benefit of this? I mean, the whole reason I motivated</p>
+<p>this was to say, we wanted to have more flexibly learned structure, are we actually doing that? Or are we</p>
+<p>just getting pretty waves? So what we showed in our paper is that we really are learning some sort of</p>
+<p>useful structure. And the way we showed that is, again, with something like this commutative diagram,</p>
+<p>if you take an input and you encode it, and you get a wave state, and then you propagate waves</p>
+<p>artificially in that wave state, and then decode, you can observe that it's actually exactly the same as</p>
+<p>if you had just performed that transformation in the input space originally. So what we're, in effect,</p>
+<p>showing here is the commutivity of our feature extract during the transformation. And in our</p>
+<p>case, the transformation, the operator in the latent space is now the traveling wave of activity.</p>
+<p>And so in a sense, it is structuring our latent space with respect to observed transformations,</p>
+<p>that structure comes in the form of waves. So natural spatiotemporal structure yields preserved</p>
+<p>input structure, again, as we were looking for. And one of the benefits of this, as opposed to</p>
+<p>previously, is that now this is slightly more flexible. And we can see this just by showing</p>
+<p>a bunch of different images of different transformations. So a lot of different</p>
+<p>digits, different features, and we see that we get different types of wave activity in each case,</p>
+<p>in order to model that different transformation. If we train it on different data sets as well, we</p>
+<p>similarly see more complex dynamics, in this case, maybe not even traveling waves or standing waves,</p>
+<p>which can be thought of as traveling waves in opposite directions. So we see if we're modeling</p>
+<p>these orbital dynamics, we get these kind of smoothly moving blobs of activity in our latent space. If</p>
+<p>we're modeling a pendulum, we similarly get kind of complex oscillatory activity.</p>
+<p>So it's preserved input structure, but additionally, more flexibility than we had before, which is kind</p>
+<p>of our ultimate goal. So finally, I want to talk a bit about how I think the outcome of this research</p>
+<p>may not only improve artificial intelligence, but also how it helps us understand why our measurements of</p>
+<p>the brain look the way they do. So to give a brief example of what I mean by this, I talked a bit about</p>
+<p>before about these localized areas that respond to faces and places. So in this fantastic work with</p>
+<p>Ching-Hee Gao, we studied if our simple topographic prior, as we discussed, may be able to reproduce these</p>
+<p>same effects. So specifically, we plot the value of this Cohen's D selectivity metric for each of our neurons with</p>
+<p>respect to a different data set of images potentially containing just faces or just objects or bodies. And so we</p>
+<p>measure for every neuron, is it more likely to respond to faces or the rest of the images, and we see that</p>
+<p>we get these spatially localized clusters that share many of the properties that we actually see in the</p>
+<p>visual system of humans and primates and many animals. So one of these properties that's shared</p>
+<p>beyond just the fact that we have these spatially localized clusters is like the relative placement of</p>
+<p>faces and bodies, we see that the face cluster is overlapping with the body cluster, which is</p>
+<p>makes a lot of sense and is also seen in humans and faces and bodies are most often seen together.</p>
+<p>And this isn't just a single, a single fluke or cherry picked example, if we rerun this model many times,</p>
+<p>you virtually always get place and body clusters which are overlapping or right next to one each other,</p>
+<p>one another. So to be clear, I'm not suggesting that this is exactly how the brain works or how topographic</p>
+<p>organization emerges in the brain. But I do think that it tells us that the relative organization of</p>
+<p>selectivity may at least be partially attributable to correlation statistics in the data after repass,</p>
+<p>after being passed through a highly nonlinear feature extractor, such as a deep neural network.</p>
+<p>So in a similar vein, something that's interesting, there's a known what's called tripartite organization,</p>
+<p>the visual stream. So images of our objects are the selectivity with respect to objects is organized by</p>
+<p>more abstract properties such as animacy is this thing alive or inanimate versus also real world object</p>
+<p>size, like what is the size of a teapot versus a car. And what we see is that in the</p>
+<p>in humans, this the selectivity is organized in this tripartite structure, you typically have small</p>
+<p>objects that are in between animate and inanimate objects in terms of their selectivity. And we see</p>
+<p>the same thing kind of happens here. So these are measuring the selectivity of the same set of neurons,</p>
+<p>but with respect to these different sets of stimuli, we see that the small cluster is in between</p>
+<p>animate and inanimate cluster. And again, this happens for multiple different initializations.</p>
+<p>So this is something I hope we can explore a bit further. For this community, I think it's</p>
+<p>interesting because it's, it's really a way of showing that we built a structured world model,</p>
+<p>and potentially this world model is beneficial for better representing real world data in a</p>
+<p>structured way. And you get lower free energy in that sense. So yeah, I think by developing these</p>
+<p>models, like like we showed here, we may get insights into new mechanisms for how this structure emerges,</p>
+<p>including topographic organization that we never thought of before. So as an example,</p>
+<p>and in developing this neural wave machine model, I was looking at the orientation selectivity</p>
+<p>of neurons, which I wasn't particularly expecting something to happen. But you're looking at kind of</p>
+<p>these waves propagate over the simulated cortical surface. And I thought, okay, maybe I'm showing</p>
+<p>rotated images, maybe this has some effect on the orientation selectivity. And actually, if you go in</p>
+<p>and you measure the selectivity of each neuron with respect to these differently oriented lines,</p>
+<p>what you see is that it's surprisingly reminiscent of the orientation columns and hyper columns that are</p>
+<p>seen in primary visual cortex. This is stuff going back to Hubel and Weasel. And this is something that</p>
+<p>just kind of came out of this model, and the fact that it has the spatial temporal structure with respect to</p>
+<p>transformations. So of course, this is a really coarse analogy. But I think this is an example of how</p>
+<p>building these types of models can help us think about how the brain builds representational structure</p>
+<p>and the why the way it's organized in a way that maybe we haven't thought about before.</p>
+<p>I think I'm not the only one who's doing this type of work. And so I want to talk a little bit about</p>
+<p>some other people who are doing this. So I've been talking about like this equivariant structure,</p>
+<p>people such as James Whittington, and Tim Behrens, and Sir Ganguly have shown recently that by</p>
+<p>introducing algebraic constraints into into a learning process, in this case, it was like the motion of</p>
+<p>an agent in an environment by saying, you need to preserve kind of this algebraic structure of if I move</p>
+<p>in a circle west, north, east, south, I end up back at the same point again. By introducing these types of</p>
+<p>constraints, you get the emergence of grid cell like representations. So I'd be interested to see how</p>
+<p>this idea of representational structure can help us explain maybe more than our scientific findings</p>
+<p>we're finding as well. And and how this relates to generative models as a whole. And then finally,</p>
+<p>I think there's something to be said about cognitive plausibility of these models as well, maybe we're not</p>
+<p>just going to be testing them from a neuroscience perspective, but also from a cognitive science</p>
+<p>perspective. For example, there's these ravens progressive matrices on the left where you have to</p>
+<p>like, say which one of these images is more likely to fit in this pattern. Or for example, how likely is it</p>
+<p>that this Jenga tower falls over when you pull over a full specific block or, or with a given structure.</p>
+<p>And I think these things are these types of tests are really testing if our world models that we're</p>
+<p>building are similar to the types of models that we innately have our own common sense as humans or as</p>
+<p>beings living in a natural world. And I've done some preliminary work in this direction, I think very</p>
+<p>preliminary and not nearly this complicated, but kind of trying to model visual illusions. So if you take a</p>
+<p>really simple data set of a moving bar stimuli or a static bar and you flash, you take out a frame and</p>
+<p>you move it a little bit, you can see that the model will actually infer that missing frame and then</p>
+<p>actually also infer continued motion. So it's like overshooting the trajectory of what the actual</p>
+<p>stimuli is providing it before correcting again. So I think modeling illusions is certainly an interesting</p>
+<p>way to study if our world models are similar to the types of models that we have ourselves.</p>
+<p>So in conclusion, yeah, I think topographic priors, we could show that they effectively learn structured</p>
+<p>representations or structured world models. This learned structure is flexible and adaptable to</p>
+<p>arbitrary transformations, unlike traditional equivariants. And topographic writers can be induced</p>
+<p>statistically as we did in the topographic VAE or through dynamics like we were showing in these</p>
+<p>neural wave machine type models. So to conclude, I'll leave you with this quote that I found in</p>
+<p>Fukushima's paper from 1980, I thought was pretty far ahead of its time, where he says,</p>
+<p>if we could make a neural network model, which has the same capability for pattern recognition as a human</p>
+<p>being, it would give us a powerful clue to the mechanism of the neural mechanism or understanding</p>
+<p>the neural mechanism in the brain. And so that's kind of, I think, some of the goals that we're going for</p>
+<p>here. So I'll say thanks to my advisor, Max, my coauthors, Patrick, Yue, Emile, Jinghian, and Yorn,</p>
+<p>and interested in discussion. Thanks.</p>
+<p>All right.</p>
+<p>All right. Thank you. Great. Very interesting presentation. A lot of places to start. Maybe just</p>
+<p>what brought you to this work, a little context on how you came into this work for your PhD direction.</p>
+<p>Yeah. I mean, my group has been studying, not my group, the group that I'm in at the university has</p>
+<p>been studying structured representations from a mathematical point of view for a while. And we're</p>
+<p>some of the people to introduce equivariate neural networks, as well as generative models, or for like</p>
+<p>the variational encoder. And I guess what's something that had always been somewhat challenging to me</p>
+<p>is that these structured representations were fairly rigidly defined in terms of group structure,</p>
+<p>mathematical group structure. So for example, we can build a model that respects rotations,</p>
+<p>2D rotations perfectly well. But if we want to do 3D rotations, we can't do that because that's not a</p>
+<p>group in terms of a projection onto a 2D plane. There's, you're losing information when this thing</p>
+<p>rotates around, for example. Or just any sort of natural transformations like I was trying to plan</p>
+<p>out at the beginning, I think it was trying to think about how the brain models natural transformations</p>
+<p>is something that these current frameworks couldn't really explain. And yeah, my advisor Max was had</p>
+<p>worked on this topographic stuff a long time ago during his postdoc. And so he kind of had this</p>
+<p>intuition that maybe topographic organization has a relationship here. So then COVID happened,</p>
+<p>and I got really deep in neuroscience literature and got into this stuff. And yeah, I haven't left ever since.</p>
+<p>So I think that's a good question.</p>
+<p>Cool. Where do you see action playing a role in terms of variational autoencoder models that include</p>
+<p>not just external patterns, but also the consequences of action or world models structured with action?</p>
+<p>Right? Yeah, no, it's a good question. I think active inferences is effectively the answer to that. I mean,</p>
+<p>I think it's a good answer to that. I know there are reinforcement learning frameworks that do use</p>
+<p>kind of externally trained world models. So you train a VAE or something, and then you use that representation</p>
+<p>in your reinforcement learning system. But I think having a fully kind of a system that is a single objective</p>
+<p>with action as part of the likelihood of the data. And yeah, I think that's much more elegant. And so I'm</p>
+<p>a big proponent of that.</p>
+<p>I have not gotten so far as to study how these structured world models in a VAE or I haven't</p>
+<p>worked on that at all. But I think it would certainly be very interesting to see if having a more</p>
+<p>structured world model in a variational autoencoder would be beneficial in an active setting as well.</p>
+<p>I think that would be awesome. I mean, I think some of these examples, like showing before, like emergence of</p>
+<p>grid cells and things like this, maybe point towards that direction. Hey, maybe the brain is doing</p>
+<p>something. It's really obviously has a lot of structure. This clearly has to be useful for performing actions</p>
+<p>in some way.</p>
+<p>Oh, yeah, I thought a really nice parallel that you brought in with the talk was the locally connected</p>
+<p>units enabled your models to structurally embody the convolutional constraint and pattern. And that</p>
+<p>led to these arising patterns. And then analogously, there was the Doral et al where they had the path</p>
+<p>exploration constraint. And so then it's interesting to think about these action or policy</p>
+<p>heuristics or sparsities like a joint through babbling and motor exploration. Eventually,</p>
+<p>it becomes understood that there's like two mutually opposing ways to move a joint. And then the</p>
+<p>compositionality across joints can be learned to these higher levels once it's locked in at lower levels.</p>
+<p>So it's a very appealing and niche relevant way to generalize because it's both based upon the actual</p>
+<p>constraints of the world, but then especially through action, potentially embedding something</p>
+<p>that's quite simple.</p>
+<p>Right? Yeah, no, I think that's definitely true. That's a really good point. If you do have constraints</p>
+<p>coming from your actions themselves, then that's, that would be hugely beneficial for helping to</p>
+<p>structure your, your latent space. And I think, yeah, I guess one thing I wanted to mention, there's</p>
+<p>something made me think of like Stefano Fusi's work on kind of the representational geometry,</p>
+<p>and how that determines how we how, how generalizable a given understanding of a system is.</p>
+<p>And I think, if you can understand your representations in terms of geometry of like these</p>
+<p>sets of activities are separable or highly parallel separable with a linear classifier,</p>
+<p>essentially, then you're going to be able to do generalization. And I think by imposing these types</p>
+<p>of biases are potentially through constraints that are imposed by action, something like this,</p>
+<p>you are yielding or kind of inducing a better representational geometry. And this has all</p>
+<p>sorts of benefits for like compositionality or, yeah, or generalization. So it's a great point.</p>
+<p>Cool. Yeah, very interesting area. All right, I'll read some questions from the live chat.</p>
+<p>Love Evolve wrote, Any practical or observed limitations on modeling illusions?</p>
+<p>Ah.</p>
+<p>Um, yeah, it's really hard.</p>
+<p>One of the challenges is most models that we use, that I use that like the learning community uses,</p>
+<p>they're not foveated, you don't have a center of gaze. And you also don't have</p>
+<p>like a time, I mean, most convolutional neural networks, I'm using these kind of recurrent neural</p>
+<p>networks, but time is not as clearly defined in these models as it is in a continuous time setting</p>
+<p>for human undergoing an illusion trial. And I think the combination of these two of the fact that as a</p>
+<p>human, for most things, your gaze, your shifting locations in your gaze, and a lot of these illusions</p>
+<p>are dependent on like, you looking to a particular area, a lot of cognitive science tests. And so I think</p>
+<p>it would be really helpful if we had models that, yeah, I mean, learn that you can think of this as</p>
+<p>a type of action, right? Learning where to move your gaze is one of the simplest possible actions. And</p>
+<p>that would help a lot for being able to model illusions. And just, I mean, for me, it's like I</p>
+<p>read a paper of some cognitive science experiments or about some illusion. And it's like, I think of,</p>
+<p>okay, can I put this data set into my model and test it? And most of the time, the answer is no,</p>
+<p>because I don't have a model that looks around or has a restricted field of views.</p>
+<p>So yeah, I think that's one of the limitations. Another one is</p>
+<p>the models that were trained, you have to think about what you train your model on before you test</p>
+<p>it on the illusion, because that has a huge impact. So it's like, do I train this on</p>
+<p>MS digits? Or do I train it on image net? Do I train it on natural video,</p>
+<p>do I train it on a huge data set of natural video? To say it's like now it's kind of like learning</p>
+<p>what a human sees, and then you test it on these illusion data sets. But obviously, then you're</p>
+<p>going to need a huge model. And yeah, makes the experiment much more complicated. So that's one</p>
+<p>of the practical limitations. Wow, great answer makes me think of a paper with letters rotating on a table.</p>
+<p>That's the digit rotation task. And then great points about the foveation and the dynamics of the illusion.</p>
+<p>I think you actually did mention an illusion, which is, however, you mentioned the generalization context,</p>
+<p>which is rotating on the two dimensional screen doesn't generalize to three dimensions. And that</p>
+<p>dimensional collapse or reduction is the basis of the cube projection illusions and cube and figure</p>
+<p>rotation illusions. It's on your screen. And there's a silhouette, or there's some ambiguous</p>
+<p>stimuli that a generative, it's near a criticality or a bifurcation in the generative model. So it could</p>
+<p>represent it one way or another way. And so a lot of the switching illusions are just based upon the</p>
+<p>flatness of images and the limitations in generalization that are revealed by that.</p>
+<p>Right? Yeah. Yeah, I think there's even some work, sorry, there's some work where they</p>
+<p>you can argue people have a kind of three dimensional image in their heads. Like even Nancy</p>
+<p>Ken, which her lab had a paper on this recently, but, and showing, yeah, I don't know. Do our models have that?</p>
+<p>It's not super clear.</p>
+<p>Anyway.</p>
+<p>Yeah, that's pretty interesting. All right. From Upcycle Club in the chat, they wrote,</p>
+<p>Kudos. Is it true that by inducing sparsity beyond a certain threshold, runaway behavior in artificial neural</p>
+<p>networks is triggered, depending on the task architecture and sparsification method?</p>
+<p>Um, I'm not sure what they mean by runaway behavior, but, um,</p>
+<p>yeah, I think too much sparsity is, is a problem. And so there could be a point, uh,</p>
+<p>uh, where the model is no longer able to learn nearly as effectively. If you imagine you only</p>
+<p>want a single neuron to be active for every example, uh, your model is going to be trying</p>
+<p>to memorize the data set to some extent or something like this. Um, and you're not going to have enough</p>
+<p>capacity. So yeah, I think tuning that level of sparsity is certainly, uh, an important factor.</p>
+<p>Um, and yeah, when you look at the likelihood, if you're talking, if you're doing a generative</p>
+<p>modeling framework, typically this is balanced automatically with the likelihood itself. Um,</p>
+<p>if you're not doing generative modeling, you just have a sparsity penalty. You're going to want to</p>
+<p>tune that parameter. Okay. They added just, just to clarify, runaway behavior in artificial neural</p>
+<p>networks can refer to a phenomena where the network becomes unstable or chaotic due to various factors,</p>
+<p>such as feedback loops, noise, or adversarial inputs.</p>
+<p>Mm. Yeah. I guess I haven't looked at this in, in like a recurrent setting where you would get</p>
+<p>feedback loops. Um, but I could, yeah, I could see adversarial examples being potentially</p>
+<p>affected by your level of sparsity. Um, the interesting point is what would you be more</p>
+<p>susceptible or less susceptible to examples? I don't know.</p>
+<p>Yeah. Well, sparsification projecting from a fully connected higher dimensional model,</p>
+<p>just into progressively smaller. It's pretty well understood in general, what the trade-offs are.</p>
+<p>It's easier computation. It's a smaller model sparser. The Bayesie graph is going to be clearer</p>
+<p>to represent. And then also it will have all of the other trade-offs with false positive and negatives of</p>
+<p>generalizing, but that's why it's an iterative fit process. So I guess, how does your sparsification</p>
+<p>approach balance? Does it use AIC or BIC or some other model fitting approach to determine the relevant</p>
+<p>sparsification for a given input? How do you determine how, how like in lasso regression, like how, how do you</p>
+<p>know, how, how much, how do you threshold, how many, how sparse do you want it to be?</p>
+<p>Right. Yeah. I think there's a lot of good literature on this. And even so, some people like</p>
+<p>Demba Ba at Harvard and some people I'm working with now, uh, have done these</p>
+<p>kind of unrolled, um, iterative sparsification networks where it's like a recurrent neural network</p>
+<p>and it iteratively sparsifies. And you can show that this yields something like relu's or, uh,</p>
+<p>uh, group act like group active groups for its activations, like we're using here.</p>
+<p>Um, in this setting, uh, it's really just by having this, um, this construction of this T variable</p>
+<p>where we have Z on top and, uh, and then it's in some effect gated by these, the sum of U variables</p>
+<p>in the bottom. So W, maybe I wasn't super clear about this, is a matrix that is connecting. That's</p>
+<p>what defines the groups when I'm defining the group sparsity, uh, that connects all of these</p>
+<p>U's together. And so the idea is, uh, like here, if all of one of the other examples, if all of your</p>
+<p>U's, uh, are not active for a given T, or if all of your U's are active for a given T, uh, that T</p>
+<p>variable is going to be very small, right? Because your denominator is going to be very big and that</p>
+<p>induces sparsity. So it's, uh, it's like constraint satisfaction. If you have a, if you have a set of U's that</p>
+<p>are all small, uh, then that, that constraint is satisfied and now Z is allowed to kind of express</p>
+<p>itself and that's what then, uh, kind of, yeah, achieves the sparse activation. So this is induced by</p>
+<p>these two, uh, K-L divergence terms here. These are saying like how far is the each U and each Z from</p>
+<p>the Gaussian. And then through this construction of the student T variable, we're effectively constructing a</p>
+<p>sparse prior distribution just from these Gaussians. But in terms of the act, the actual objective,</p>
+<p>uh, the terms and the objective that we're optimizing are just these two K-L terms that are</p>
+<p>pushing it towards sparsity to some extent. And this is balanced automatically with the likelihood</p>
+<p>term here through the decoder. So we don't have terms that we're tuning, but we're learning the</p>
+<p>parameters of these different encoders and then analyzing the K-L divergence.</p>
+<p>Okay. Cool. All right. Another question from Dave Douglas who wrote,</p>
+<p>Speaking of gaze and illusion, can the studies on constancies in infants be separated into lower</p>
+<p>level illusion relevant neural activities versus perhaps higher level conceptual constancy?</p>
+<p>Uh, can you read it again? Sorry. I don't know.</p>
+<p>Speaking of gaze and illusion, the two features that you highlighted were absent from the current kind of</p>
+<p>architecture. Might the studies on constancies in infants, cognitive constancies, be separated into lower</p>
+<p>level illusion relevant neural activities versus perhaps higher level conceptual constancy.</p>
+<p>Ah, interesting. Um,</p>
+<p>yeah, probably. I'm not, I'm not, uh,</p>
+<p>an expert or actually even very familiar with like object permanency studies and infants and constancy stuff.</p>
+<p>So, but I think that would be incredibly interesting to study in neural network architectures. And that</p>
+<p>was kind of some of the idea with this, uh, illusion that I was trying to model down here with this line.</p>
+<p>I don't know if I was super clear about this, but the top row is the input and we're effectively like</p>
+<p>blocking the input for a single frame. And I wanted to see, does the network kind of encode that, that, that,</p>
+<p>the thing is still there when that frame is gone. Can I still decode the presence of the object from</p>
+<p>the neural activity? Uh, and then what is it also inferring about the motion because of the fact that</p>
+<p>it saw the bars at a slightly different location than from before when the, after the frame is gone.</p>
+<p>Um, so yeah, I think there's definitely multiple levels to it, um, where some would probably be much lower</p>
+<p>level and, uh, maybe long-term object permanency, I would guess would be significantly higher level.</p>
+<p>Um, it just makes me think of those experiments with cats back in the day where it's like they raised</p>
+<p>them in darkness, except for an hour a day, they put them in vertical world or horizontal world, or they</p>
+<p>only saw horizontal lines or vertical lines. Uh, and you can see the, the organization of their cortex</p>
+<p>changes. Like they have less receptivity to horizontal lines if they've never seen horizontal lines before.</p>
+<p>And then you take a stick and you wave it in front of their face. And if the stick is horizontal, they just,</p>
+<p>they do nothing. If it's vertical, they're swatting at it, they're trying to hit it. It's like, they just</p>
+<p>literally don't see it at all. If there's a horizontal bar in front of their face. So I think in that case,</p>
+<p>then this is evidence of a low level deficiency in vision, um, contributing to some sort of an illusion.</p>
+<p>So I think, yeah, there could certainly be some aspect to that in infants as well.</p>
+<p>One very curious point you brought up was the animate and inanimate</p>
+<p>manifold with small things being intermediate. Right. What does that represent?</p>
+<p>Or, or, or is it because they're handleable or it might be an insect or it might be something that</p>
+<p>might move away just with wind or what does that say?</p>
+<p>Right. Yeah. Uh, so this is work by like Talia Conkle, I think was the one who discovered this,</p>
+<p>um, organization and they, they tried to figure it out and they think, I don't, I might be getting this</p>
+<p>wrong. So I recommend people to read her work on that. If they call it tripartite organization,</p>
+<p>but if I remember correctly, they did a lot of followup work on why it's there's this organization</p>
+<p>and some evidence points to kind of mid-level statistics of curvature of these objects and</p>
+<p>kind of like the distance that you see objects from or like, um, animate objects or maybe more curvy or</p>
+<p>there's there, regardless of what the actual answer is, there were a lot of different hypotheses that</p>
+<p>were stemming from like properties of these objects, um, maybe mid-level or low-level properties,</p>
+<p>more so than higher level properties. I still don't know if it's exactly been solved of whether it's</p>
+<p>like interaction, like you said, with the objects causes the separation or, um, or yeah, the general</p>
+<p>shapes of these objects. I would bet as with most things, it's like some combination of all of the</p>
+<p>above. Uh, but I think the interesting thing from this modeling point of view is that, um, this is only</p>
+<p>trained on correlation statistics from the image data sets itself. So this has no interaction. This</p>
+<p>has no notion of animacy. Uh, I mean, this is really just training a model on image net, just images of</p>
+<p>dogs, cats, boats, whatever. And yet it still achieves this type of organization. So there's some sort of,</p>
+<p>it could be semantic characteristics, right? We have image, we have a network that can classify</p>
+<p>boats versus dogs versus 20 other breeds of dogs.</p>
+<p>Uh, but it, it might also have some correspondence with lower level image statistics as well.</p>
+<p>So yeah, I don't know, I guess it's my answer.</p>
+<p>Yeah. And also a very provocative analogy was the translational shift in the MNIST, in the handwriting</p>
+<p>recognition setting. What are the translational shifts that exist today? What's the three pixel example?</p>
+<p>Is that some prompt engineered attack on an LLM or something or something, a special character being inserted</p>
+<p>or, or, or a, um, uh, some overlay on an image that we can't even detect that? So what do you think those</p>
+<p>challenges are and what are ways that we can pursue that?</p>
+<p>Yeah, absolutely. I mean, I think it's kind of the way I was thinking about it is like these symmetry</p>
+<p>transformations. Um, if you're thinking about language models, you can imagine a symmetry transformation.</p>
+<p>It's just like replacing a word with a synonym or something. Uh, you have the sentence to us means</p>
+<p>the exact same thing, but now suddenly the model is going to respond very differently. Um,</p>
+<p>or, or, or, or like translation between languages. Uh, this can be seen as a type of transformation. It</p>
+<p>preserves the underlying meaning of the input to us, but to the model, it looks completely different. And we</p>
+<p>would like to have models which behave in a predictable way with respect to these types of</p>
+<p>transformations, because I think humans behave very predictably with the type of these transformations.</p>
+<p>And when we're dealing with AI systems, we expect them to also behave that way. And I think that's part</p>
+<p>of what causes a lot of challenges interacting with these systems. And I kind of tried to do a rough,</p>
+<p>cheeky demonstration of that with, with this bear and squares and stuff like, um, we expect it to be</p>
+<p>able to do something simple like this because we think most humans could, and yet it doesn't. And if</p>
+<p>you imagine this is a critical scenario where you expect this, then that's a big problem. Um, how do we</p>
+<p>handle that? That's, and I think that's kind of the, what I'm searching for. I think my direction I'm</p>
+<p>taking it is looking for more simple and like bottom up building blocks of neural network architectures or</p>
+<p>algorithms that kind of yield these emergent structural properties. And I think that's a much more</p>
+<p>generalizable way rather than building something on top of what we already have. Um, I think that's</p>
+<p>something that would scale much better and also matches more with the brain does.</p>
+<p>Very cool. One kind of implementational question. What are the computational requirements of just running</p>
+<p>this or what's the day to day, like being a student or researcher running variants of these? Like, do they</p>
+<p>use terabytes of data and you're using large computation or is this something that people can run on their own</p>
+<p>laptops? I think almost everything I presented today can be run locally. So like this stuff is super simple.</p>
+<p>You can run, I mean, you're gonna, you're, I think you can run it on your laptop if you want to like train</p>
+<p>and experiment with different things, it's going to be pretty slow. So I'd recommend some commercial GPU</p>
+<p>like a, I run pretty much everything on like Nvidia 1080s, pretty old, pretty cheap, but they have 12 gigs</p>
+<p>of RAM or whatever. And it's kind of more than enough for these models. Most of these are only a couple</p>
+<p>gigabytes of RAM. I think one thing that some people think is weird is I do most of my experiments on stuff</p>
+<p>like MNIST. So it's 32 by 32 pixel images because I can train it small and locally. If you want to do</p>
+<p>stuff like, like, yeah, most of my experiments are on MNIST. If you want to do stuff like this,</p>
+<p>these are much more complicated. This Hamiltonian dynamics suite here, you're getting into bigger</p>
+<p>models that are running across multiple GPUs. And so here I was using a cluster to run these types of models.</p>
+<p>But I'd say most of these types of ideas you can start to play with on a single machine with the GPU</p>
+<p>is more than enough. Or even just like in a collab notebook, something like that. If you want to train</p>
+<p>something on ImageNet, it gets more complicated. And you need at least one GPU, ideally more. But yeah, I don't</p>
+<p>do a whole lot of big scale stuff yet. I think it's certainly interesting. And there's definitely</p>
+<p>a lot more you can do there. But for some of these kind of simpler or more fundamental questions,</p>
+<p>I don't know what you want to call it. A smaller machine is nice and fast. So.</p>
+<p>Cool. Useful. All right, I'll read a comment from Dave. Recalling Bert DeVry's comment during the</p>
+<p>Applied Active Inference Symposium about the desirability of spending less effort or ATP on</p>
+<p>foraging or control situations where we don't need much precision. I don't know if you listen to this,</p>
+<p>but Professor DeVry's mentioned about variable precision models and how they could be used to</p>
+<p>enable different features of generalization and actual structural course training, as well as like</p>
+<p>reduced computational requirements. Does he have any suggestions on how to introduce this distinction</p>
+<p>into active inference theory? What kinds of experiments could wrinkle this out?</p>
+<p>Oh, wow. Yeah, that's something I don't, I don't think I have too much intelligence to say about,</p>
+<p>to be completely honest.</p>
+<p>What kind of this is. Hmm. It's super interesting question, because I think the intuition makes a lot</p>
+<p>of sense to me that you're talking about. If I understand correctly, variable rates of precision,</p>
+<p>when you're encoding and or in your model in general, doing computation.</p>
+<p>I think that somehow has an impact on your, your future performance as a relation to some energy</p>
+<p>store, I think. Yeah, and if you wanted to build this into an active inference system, you would need to</p>
+<p>have really an embodied system where the agent has some notion of energy, like an internal energy store. And</p>
+<p>yeah, something, something that is trying to conserve while it's performing its actions.</p>
+<p>And running out of energy would need to mean something bad for the agent.</p>
+<p>And then maybe you could observe kind of an emergent reduction in encoding precision or something like</p>
+<p>this, as the agent is trying to learn to act more effectively, you might have to give it an ability to</p>
+<p>control its precision. Yeah, like I said, definitely out of my expertise, but it's good thoughts.</p>
+<p>Cool. Okay, on this slide right here, first very cool image, it's kind of like a digital Jackson Pollock.</p>
+<p>Thanks.</p>
+<p>If it were a simpler input, or reduced data size, or just reduced complexity of patterns, or if it were an</p>
+<p>increased complexity, how would this image look different?</p>
+<p>Yeah, so I did some experiments trying to change these orientation columns. And</p>
+<p>you can, yeah, basically changing the parameters of the model, you can get these columns to be bigger,</p>
+<p>you can get them to not have very similar structure to what we see in the humans, or</p>
+<p>we have you can get them to have more bands of activity. And it also, like you said, it depends</p>
+<p>on the data set that you're using. If I use like really simple sinusoidal gradings of input, I get</p>
+<p>something like this. If I use rotating eminist digits, I get something that's a little bit more</p>
+<p>more rotational, curvy, higher entropy. So I think these are all interesting things. If you want to</p>
+<p>study the emergence of this type of organization in a natural system, if you have a model that now</p>
+<p>yields different organization for different settings, that's a great way to see, okay, then what settings</p>
+<p>best match our observed data. So, so yeah, I can, I can send those around it if you're interested. But</p>
+<p>yeah, I think one also other, sorry, one, one other interesting point there is that the</p>
+<p>different animals have different types of orientation selectivity and different numbers of pinwheels,</p>
+<p>some animals don't have it at all. I think maybe mice, if I'm correct, have this kind of, they call it</p>
+<p>salt and pepper selectivity. So it's basically random, you don't have any sort of like topographic</p>
+<p>orientation selectivity. So there is evidence that, yeah, different systems do this differently.</p>
+<p>And it's interesting to figure out why.</p>
+<p>Yeah, it's very cool. It reminds me of first the reaction diffusion</p>
+<p>visual space where there's different skin patterns and fur and bands and speckles. And then also</p>
+<p>these islands of activity enable the multiplexing, which you described with the encapsulation through</p>
+<p>through space and time. So it's actually possible that a region might have no activity from a given</p>
+<p>granularity. Like if it was being looked at, at fMRI spatial and temporal timescale, if the pockets of</p>
+<p>activity, first off, if they're even reflected by what is being measured, but, but if the pockets of</p>
+<p>activity are slower or faster, then that measurement is going to not be different than noise, it'll all</p>
+<p>have been averaged out. So then there might be some, yeah, interesting things, like data sets that do</p>
+<p>actually have a lot of richness, but then for one reason or another, it just was averaged out over because</p>
+<p>it wasn't being connected to the right scale. Absolutely. I think that is one of the main reason that</p>
+<p>brain reasons that, that traveling waves in the brain have been difficult to study to this point. And</p>
+<p>there's a fantastic review by Tarasynoski and and mile Miller nature reviews where they basically</p>
+<p>go through all the evidence of traveling waves and they're, and they go and show like,</p>
+<p>uh, if you're averaging over trials, uh, you're going to completely miss this traveling wave activity.</p>
+<p>It's going to look like some mean value or something like this. You really need to go at the single trial</p>
+<p>level. You need to have high enough spatial resolution such that it's, you know, it satisfies</p>
+<p>micro frequencies. Uh, and, and this just is something that people didn't do for a long time,</p>
+<p>especially if you're doing single electrode recordings, you're not going to see a traveling</p>
+<p>wave. You're going to see oscillations. Um, so you need like multi-electrode arrays and basically</p>
+<p>they're saying, okay, yeah, now that we have the technology to do this as much, we're seeing this</p>
+<p>structure that, that exists that we didn't see before. Potentially this is an explanation for</p>
+<p>a lot of the noise that we were seeing before. Maybe it really is just traveling waves.</p>
+<p>Um, so yeah, I think there's a lot to be done in the future with increased abilities for recording.</p>
+<p>That's very cool. Well, any final thoughts or questions or where are you going to take this work?</p>
+<p>Yeah, no, thanks for having me. Um, hopefully in the active infrastructure,</p>
+<p>I would love to, I think it would be super fun. So yeah, I'm not really sure I'm looking at maybe music,</p>
+<p>uh, right now. Um, looking at, uh,</p>
+<p>other kind of crazy directions. I don't want to sound too crazy.</p>
+<p>But I'll go down. Yeah, a lot of things. So one thing that's coming up, something we submitted</p>
+<p>to NeurIPS is studying memory with traveling waves. So that paper just came out on archive</p>
+<p>today of how waves are really good at encoding long term memories, which I think is super</p>
+<p>interesting. So I might go a little more in that direction. Sounds good. And yes, would be very</p>
+<p>exciting to see action come into play. When there was the neurons that stayed active, even as the</p>
+<p>dog's feet were moving. There's a lot of like action sequences, like throwing a baseball,</p>
+<p>and then it goes and it's like, there's something about that action that's continuing to influence.</p>
+<p>And so having like a deep temporal representation of alternative actions. And then the variational</p>
+<p>autoencoder is already basically the right Bayesian statistical architecture to discuss the variational</p>
+<p>and the expected free energy. So I think it's a very promising area.</p>
+<p>Yeah, I'm super excited about that. So I really hope to get over there and happy that if people</p>
+<p>have ideas, I would love to hear from you via email or anything like that. So really appreciate</p>
+<p>it.</p>
+<p>All right. Thank you till next time.</p>
+<p>Thanks so much.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+<p>Thank you.</p>
+</article>
+</body>
+</html>

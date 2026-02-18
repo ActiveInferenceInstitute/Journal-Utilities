@@ -1,0 +1,907 @@
+---
+title: "ActInf GuestStream 087.2 ~ John Boik "CogNarr Ecosystem: Preliminary Thoughts on a Story Graph...""
+category: "GuestStream"
+series: "GuestStream_087"
+episode: "2"
+speakers:
+  - "John Boik"
+duration: "1:49:49"
+url: "https://www.youtube.com/watch?v=52eHP5ReG34"
+views: 218
+exported_at: "2026-02-18T22:37:37.691600+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 087.2 ~ John Boik "CogNarr Ecosystem: Preliminary Thoughts on a Story Graph..."
+
+Hello and welcome. This is ACTIMF Guest Stream number 87.2 on September 10th, 2024. We're
+continuing on with the Cognar Ecosystem Series with John Boyk. So, John, thank you again.
+Go for it and we'll look forward to people's comments and questions.
+Great. Thank you, Daniel.
+My name is John Boyk. I'm an Active Inference Institute Research Fellow. I have two new papers
+published or, excuse me, posted as preprints. And that's what this live stream, these two
+live streams are about. Next slide, please, Daniel. So, on September 5th, we had our first
+one. I encourage listeners to check that out. The links are in the PDF. And today we're talking
+about the second paper, which is the Cognar Ecosystem Preliminary Thoughts on a Storygraph
+of Meaning Representation. Next slide, please.
+The next several slides are brief recaps of what we discussed before. The Cognar project
+project is new and it's large and it's fairly complex. And it might help a little bit to set
+the stage for this talk just by quickly reviewing some of the main components of the Cognar system.
+So, Cognar means cognitive narrative. And it's a, it's a, it's a, it's a, the Cognar system is still a concept. It's, it's new. It's very much being created as we speak.
+It's conceived to be an open source on the online ecosystem of tools and services, et cetera, that facilitates group cognition, especially for large groups, and especially with regard to, to just deliberation, strategizing, and collective problem, problem solving.
+Cognar helps users. The phrase I like to use is tell their story. So I use the word story and I use the word narrative in, in, in the paper and I will in this talk, but I don't, I don't mean story as in fable or I mean story as in actually what I mean by story is, is the, a belief model of a user.
+So the idea is that relative to some problem or situation of interest, a group is having a online discussion, you could say, and the users are contributing their externalization of their belief model to this discussion.
+So they are, they are in this, in this story, they're, they're describing what's the situation or problem, what happened, why did it happen, what might happen next?
+What, what, what might happen next clearly is predictive, right? So there's predictions are part of a, generally are part of a story. Who does this situation affect? Who was involved? What does it mean? What should be done? What can be learned? All those kinds of questions are, are, are, can be addressed in a story.
+And a story really is a model, a, a, an externalization of beliefs about how a, a user sees the world and sees the situation and thinks that the world works.
+Um, next slide, please.
+So, um, so, uh, stories can be rich and by rich, I mean, potentially long, complex, nuanced, informative, conditional dynamic, et cetera.
+So maybe a typical story might be the equivalent of a few pages of text, perhaps, but, uh, but, uh, could be even be longer. It could be like a equivalent to a book chapter, for example, or a story could be very short, equivalent to a paragraph.
+That really depends on what the user wants to communicate, but they can be rich.
+Um, and this is much different from other, uh, online services that are aimed at collaborative decision-making and, and similar, similar tasks.
+So this is not a, um, this is not a, a, you know, choose multiple choice sort of, uh, uh, system, you know, where you, where the user can contribute to the conversation by choosing A, B, C, or D,
+or filling in a blank with a couple of words. This, this stories can be much, much richer, richer than that.
+Uh, there is a backend computational system and that system, uh, assists and guides users in constructing their stories, um, uh, assess the stories for quality.
+But for example, is the story on topic, is it comprehensible? Did, did, did the user follow the, whatever rules the group set out for submitting stories?
+Um, and primarily the backend computational systems helps the user to dig, helps the group to digest and make sense of the many stories that might've been submitted.
+And when I say many stories and group and, and large group, I mean, potentially a group of, of thousands to tens of thousands to hundreds of thousands, even to millions of peoples.
+So, um, you know, potentially very, very large groups. Um, and the backend system also performs inference for, for queries that users generate.
+For example, I'm part of a group, we're all sharing our stories and I might have some question about some, uh, some particular story.
+Like did, did, does, does that, in that story, does the economy, um, you know, are there, does, uh, unemployment go down or, you know, some question like that.
+And I can pose a query or even a more specific query to, to the, either to the storyteller of that story or to the story itself.
+And the system can also generate, uh, queries all by itself. The, the system might ask when you're creating a story, the system might ask you, I'm, I'm confused.
+Do you mean that the, uh, unemployment is going to go down because of this or, you know, some, some such question like that.
+But the system, this is quite important. The system does not predict the future.
+So it's not going to assess a story for how useful that will be in real life or how accurate it will be.
+Um, that's the purpose of a story. A user does this in their story.
+The user says, I believe that if we take actions, A, B, C, and D, then unemployment will, um, go down, for example.
+And, uh, the system does also not assess the realism or accuracy of the story or a group of stories.
+And that's really, uh, the responsibility of the group that's, that's, that's collecting the stories.
+Uh, next slide, please.
+Importantly, those last two bullets means that the, the, the system, the backend system does not have to have its own model of how the world works in reality.
+Like, um, it does not need to know mechanics, for example, or biology.
+It just, it's really just needs to communicate stories and help users digest stories and help users create stories in such a way that users can communicate their belief systems and share their belief systems together.
+So if the purpose of, uh, the Cognar system is to facilitate group cognition, you know, the obvious question is, well, what is cognition?
+And in this project, I'm looking at cognition through the active inference lens and active inference is a normative Bayesian description of cognition.
+There in the previous PDFs for the first series, there's links that users that, um, listeners could follow to find some literature on this.
+And obviously there's references in my papers also.
+Uh, so an, uh, an agent has.
+In, in active inference, an agent has an internal probabilistic model about how the world works.
+And that is the model that is conveyed really, that is externalized into the story.
+So cognition is, uh, idealized, uh, here simplified as a four part cyclic process of predict, act, sense, and learn.
+Uh, so I underlined the word act here because often that's really not considered a part of cognition, but in the active inference, uh, world it is.
+So, um, for example, I'm, uh, I'm learning how to play football.
+I predict that if I jump up high and, uh, and raise my arms, I might catch a high pass.
+I, I act on those predictions.
+I sense whether I actually caught the ball or not.
+And if I, and if I didn't catch the ball, I learned from my mistakes.
+I learned that I need to jump higher or reach higher or, or do some, take some other action.
+And then we would repeat the process.
+And over time I, I get better and better at catching that ball.
+Um, and, and, and, and action, an agent favors choices that ensure the greatest resolution of uncertainty under the constraint, that's constraints that are preferred outcomes are realized.
+So my, my preferences are that I catch that ball and I really want to reduce the uncertainty that I'm going to miss it.
+So I repeat this learning process over and over.
+And my certainty about catching that ball goes up and up as I get better.
+Um, and active inference, uh, is, uh, uh, it's normative.
+So it offers a description of, uh, offers a description of functional cognition.
+And that's what we're after in the cognitive system is to facilitate functional cognition as opposed to dysfunctional cognition.
+So for example, dysfunctional cognition would, would not ensure the greatest resolution of uncertainty under the constraints that preferred outcomes are realized.
+That would be the, that would, if, if, if, if uncertainty does not decrease about preferred outcomes, then that's a sign that, that, uh, cognition is, is, is, you know, may have problems.
+Um, next slide please.
+So what is Cognar really then?
+Um, I, in, in this project, I, I look at a group as an organism, as a cognitive organism.
+So just like any organism, it needs to, needs to react in the world.
+It needs to do those, that four step process of, uh, you know, sense, act, learn, uh, uh, uh, a cognitive architecture.
+Uh, uh, uh, integrates information and coordinates action.
+And every organism has a cognitive architecture.
+And so do groups.
+So do groups viewed as organisms and the cognitive architecture for an individual human say is the human biology, central nervous system, the body, and also, uh, tools that a human might use.
+Uh, computers, for example, could be considered a part of that cognitive architecture.
+Notes to remember is an extension of the brain's capacity to remember, for example.
+And cognitive architecture for a group, it might include rules, methods, institutions, sensors, uh, you know, sensors for air pollution, for example, for a group that might be a nation.
+And essentially all the components by which, and through which cognition occurs, as an aside, in a previous series of paper, three, uh, series of three papers that we discussed in the previous, uh, uh, guest streams a few years ago.
+I, I look at a society's core systems, that is governance systems, uh, economic systems, financial systems, legal systems, as part of that society's cognitive architecture.
+And this Cognar project is, is kind of, uh, uh, closely related, or maybe you could say an offshoot of that initial series.
+Um, so Cognar is a component of the cognitive architecture of the groups that use it.
+And its purpose again is to facilitate, facilitate functional cognition.
+And I, and as I've, I mentioned, a story is a potentially dynamic externalized reputation, representation of a user's internal belief model about the, how, how the world works.
+Next slide.
+Just a couple more of these recaps, and then we're onto the meat of today's talk.
+Um, so, um, under the hood, this is how the Cognar system works.
+Um, I've used the word structure for the first time.
+I've used the word story.
+I've used the word narrative, but, um, I do not mean textual, uh, information.
+So it's not, users don't convey and discuss and, and share their stories in, in text form, but rather in a very special kind of meaning representation that I call a story graph.
+Um, and story graphs really are the core innovation of the Cognar system.
+It's, it's really what, uh, allows the Cognar system to function well.
+Um, this diagram shows how the story graphs are constructed.
+A user might either speak or write a short text passages, a sentence, a few sentences, maybe with some metadata associated with that.
+Perhaps a table, perhaps the graphs, you know, something like that, perhaps a, a few words about how the sentence is supposed to be interpreted.
+Um, uh, uh, the system accepts that, uh, those passages, uh, translates that into a story graph fragment, and then merges that story graph fragment into the growing story graph.
+And the story graph fragment and the story graph, that's, that's, that's, that's the meaning representation, uh, for the Cognar system.
+Once the story graph is constructed, then several things can happen.
+It could be translated into a natural language potentially.
+So, uh, one day you should be able to, you know, instruct the system to take the story graph and then read it back to me, you know, play it back to me so I can hear how it sounds.
+Uh, or translate that story graph into some other alternative meaning representation that's maybe better suited for a particular logical or inference, some kind of inference model or some kind of analysis.
+Or translate it directly into, uh, you know, either in part or in whole into some kind of probabilistic model or logical model or other kind of model to conduct, uh, either analysis or inference.
+Next slide, please.
+Here's an example of a meaning representation that's used.
+Uh, this is a very popular, uh, uh, meaning representation called abstract meaning representation.
+This is for the sentence, uh, similar technique is almost always is almost impossible to apply to other crops, such as cotton, soybeans, and rice.
+Uh, you can, you know, you can see at a glance from this meaning representation that it's graph-based.
+That's one thing.
+
+And that the edges in this graph represent some kind of relationship between words in the sentence.
+The rest of it is not important.
+And I don't use, we don't use, uh, AMR in the Cognar system.
+We're actually, the, the purpose of this second paper and, uh, is to, is to explore what is the best meaning representation for Cognar.
+Um, what does, what should it do?
+What should it, how should it be constructed?
+What should it be able to accomplish?
+Those kinds of questions.
+But this gives you a, this, this graphical, this graph picture gives you a very rough idea of, of what we might be after.
+Next slide, please.
+Next slide, please.
+So, um, the purpose of the, of the story graph meaning representation is to represent a story in a format that's less ambiguous than natural language.
+Natural language can be very ambiguous.
+And, uh, it should be a representation that is readable and understandable, both by humans and computers.
+As a, as a creator of a story, I should be able to look at that, at that graph and, and confirm or validate that, yes, that the system understood what I was trying to tell it.
+You know, things like that.
+It provides a structure for inference and analysis.
+It, it, it serves as, as I noted in the previous slide, it serves as input to various kinds of inference and analytical models.
+And it serves as an interling, which is a, a natural language independent representation that's suitable for, for translation into other languages and, and models.
+Next slide.
+Next slide.
+So now we, now we can really begin with today's talk.
+So what is the Cognar meaning representation?
+That's the question, but whatever it is, it's, it's fit for purpose.
+And what is fit for purpose mean?
+Daniel, if you back up one slide, this is the purpose.
+So the task at hand is to, is to, uh, design a meaning representation that, that is capable of performing these tasks.
+Okay.
+Now let's go forward two slides.
+All right.
+So, um, I've already showed you a, uh, an example of AMR, abstract meaning representation.
+Um, and I've mentioned that that's a common, uh, meaning representation used in, in, in research.
+So, uh, there's others.
+So before we, before we jump into, you know, questions about what should the Cognar, um, meaning representation look like, it's useful to look at the meaning representations that are used in the research world, particularly in the natural language inference.
+Uh, natural language inferences, uh, it falls under the general category of natural language processing.
+Um, there's many tasks that, that fall into the categories of NLP and, uh, uh, NLU, natural language understanding, uh, and natural language inference is one of them.
+And perhaps it's, uh, NLI is the, in a sense, the most difficult because in, in, in NLI for inference, this, the, the system or the model really needs to understand the meaning of some text.
+So this is, uh, this is the way that NLI is conducted, uh, in re in the research study.
+Uh, some text is selected.
+Usually that text is just a single sentence or maybe, you know, a short, a small number of sentences at the most.
+Um, and that text might be selected from some, some database of, of sentences, you know, where the meaning is, is well understood.
+And that text then is sent to a natural language processing system.
+So for, for parsing word sense, disambiguation, um, the, the result of that is then sent to some meaning representation such as AMR.
+And then the, the meaning representation is used within the inference method.
+So this is, um, this is typically how it's done, but it, Cognar, the, the, the Cognar is, is much different.
+The, the, the setting is much different in Cognar numbers one, two, and three here happen almost at the same time.
+So, and it's, and it's interactive.
+So, uh, Cognar doesn't select text out of a database to make a story.
+It users are, are contributing text to make a story.
+And they're doing that for some reason.
+They want to, they want to, a user wants to convey some information that some aspect of their beliefs about how the world works.
+So, um, so in, in a, in a, in a NLI study, that text is fixed.
+It, it, you know, you, you, you're given a sentence and then the whole system is going to be scored on how well it understands that particular sentence.
+But, uh, in Cognar, if the system doesn't understand what you tried to say, it can, it can ask you for feedback.
+It can say, I don't understand who, who is the word he referring to, for example, or do you mean flame?
+Do you mean flame as in a hot, uh, burning candle, or do you mean flame as in, uh, you know, uh, a romantic interest?
+So the system can ask you for, ask you questions, give you feedback, uh, maybe suggest phrasing, or, or just simply say, I don't understand what you, what you just entered.
+And then the user is able to adjust that text to something that the system can understand, uh, which of course can reduce ambiguity and error and, uh, and, uh, you know, improve the quality of the story that the, the text that is being, uh, converted into a story.
+Um, and, uh, and, uh, and, uh, and as I showed in one of the graphs, a few slides ago, uh, the system then takes that text and, and converts that into a story graph fragment.
+And, and, uh, uh, depending on the use case for the Cognar system, say in the, in a use case that involves group decision-making, um, the editing of that story might occur in over a series of rounds.
+We're people edit their stories, share their stories.
+The system helps digest the set of stories in a given round and what, you know, how they've changed and what they entail and, you know, how they're different and how they're similar.
+And, um, then at the end of each round, uh, users would have the opportunity to maybe to read other people's stories, digest the information from other stories and maybe change their story.
+If they see an idea that they like, or they think, oh, that's, I should have included that I meant to, but I didn't.
+And I'm going to include that in my story now.
+So in that process of iteration and rounds, the quality of the story increases even further.
+So that's, that's really quite different from the research setting that is typically used in NLI.
+And it gives the Cognar system a lot more flexibility as to how it operates it because it can interact with the user and ask questions and get feedback, you know, give feedback to the user, uh, and tell the user that it doesn't understand something when it doesn't understand something.
+Um, it really has the capacity, at least in, you know, the potential capacity to create much, uh, higher quality, uh, stories, uh, and, and perform even more complex forms of inference than would be possible in normal NLI studies.
+Okay.
+Next slide.
+So in the literature over the years, many meaning representations have been proposed.
+This is a table from the second article, but there's even more than this.
+This is just some selected meaning representations.
+And actually, meaning representations are being developed and created regularly.
+So it's not that there's three fixed meaning representations and you have to pick one of them.
+That's not really the way it works.
+People are creating new ones as new situations arises, new tasks arises that they're trying to address.
+We will focus on a few of them today.
+And the second paper focuses on a few of them, particularly discourse representation theory, which is, I don't know, about the fifth one down or so.
+And there's a few others.
+Type theory with records, the last one.
+And we'll also look at Disco Cirque towards the bottom there, which is not exactly a meaning representation, but it's related.
+Next slide.
+This is a graphic from Lou 2021.
+And he was interested in meaning representations for document length text.
+And so are we.
+Document length text means potentially the equivalent of a book or a book chapter, for example.
+So we have the same interest as Lou.
+He's also interested in graphical meaning representations.
+Not all meaning representations are graphical.
+And the reason that you might prefer a graphical meaning representation is because graphs, computers understand graphs very well.
+It's a way to encode text information such that computers are able to process it well.
+And I might back up just a minute here and say, why is it even necessary that a backend computational system assesses stories and does inference on stories?
+Why not just write your story in text form and share it with the group?
+Why not that?
+Well, the reason is because we're interested here in group cognition in the large group setting.
+So if you have a group of, say, 100,000 people and each of them is submitting some long story that's complicated and nuanced and dynamic,
+then they're going to change it maybe next week as they learn something new.
+There's no human that's able to digest 100,000 long stories.
+It's just not going to happen.
+So the purpose of that backend system is to help the group to digest all of that information and make sense of all that information.
+And that's why the computer needs to understand what is written.
+And that is one way to do that is to use a graph-based meaning representation.
+So in Lou's table, you can see that discourse representation theory really scores quite well for all the many things that are necessary for understanding aspects of text.
+And for the very same reasons, DRT looks interesting for the Cognar system also.
+Next slide, please.
+So this is an example of discourse representation theory.
+This is the box form, and DRT is not graph-based, inherently graph-based, but people have proposed ways to convert this into a graph.
+This is a DRT for the two sentences Max fell.
+John might have pushed him.
+We have some reference, reference X1, X2.
+X1 is a person named Max, and some event happens.
+He fell, and he fell before some event, and that event being pushed by John.
+And the two boxes represent roughly the two sentences, and they're related in the sense that this word because, because of K1, K2.
+Yeah, Max fell because John might have pushed him.
+Yeah, I think it's kind of straightforward how you would read a DRT box.
+Next slide, please.
+As I said, DRT itself is not inherently graph-based, and Lou came up with a version of DRT that he calls discourse representation tree structure,
+DRTS, that is graph-based, and that really is aimed at document length text.
+And this looks particularly interesting, you know, in the Cognar setting because, you know, it's graph-based.
+It's really constructed for long text, and it has all the benefits that DRT has.
+So you could imagine a story graph looking a little bit like this, but still far more sophisticated.
+Next slide, please.
+By the way, that was a DRTS for the very same two sentences.
+Max fell.
+John might have pushed him.
+Another type, this is not really a meaning representation per se, but closely related,
+something that would be of interest in the Cognar setting, is type theory with records.
+So type theory actually is closely related to category theory.
+Types are really like category objects.
+Types are really like, you know, a type theory with records.
+Types are really like a hybrid type theory.
+Types are really like a hybrid type theory.
+Types are really like a hybrid type theory.
+Types are really like, we are known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be
+And then there has to be, if that event is perceived in life or in a story or in the imagination, there becomes a witness for that event.
+So Type Theory with Records has both record types and witnesses.
+And a witness really is like a proof.
+And the proof of this boy hugs dog event is that I witnessed a boy and I witnessed a dog and I witnessed this boy hugging the dog.
+So there we go.
+That's the proof.
+And this is actually, Type Theory with Records really kind of captures in a way the way human cognition works.
+Because we have in our minds these kind of possible things that could happen.
+And then we witness the world and process our sense information.
+And we usually make then probabilistic judgments about whether something happened.
+It's dark.
+I think that was a horse in the front yard.
+It looked like a horse.
+It was big.
+It sounded like a horse.
+I don't know why a horse would be in my front yard, but I think I'm pretty sure that was a horse.
+So that would be a potential witness for a horse in the yard type event.
+TTR is very flexible.
+Records can be nested.
+It can be as complex as you would like.
+You know, it's kind of closely related to DRT, but it can do some things and has some capabilities that maybe DRT doesn't have.
+And its inference using Type Theory through Records is potentially fast in that it depends mostly on type checking.
+So, you know, was there a boy, you know, an individual of type boy?
+Was there a dog?
+And so on.
+And because it depends mostly on type checking, it should play well with proof assistance for which there's, you know, sophisticated software programs to do that service proof assistance, logical proof assistance.
+So inference with TTR could be potentially fast.
+And as I said, it mimics Seaman cognition more so than interpretation of logical formulas.
+It's more flexible than that.
+Next slide.
+So what I'm doing here, maybe I should have introduced what I'm doing a little bit, but I'm just going through some of the, you know, kind of meaning representations that look, you know, potentially useful for the Cognar setting.
+So I'm going to take a quick diversion from that, though.
+We'll get back to it.
+I'm going to take a quick diversion and talk about large language models in this setting.
+I think, you know, probably most users are familiar now with long, large language models.
+In the paper, I call them pre-trained language models.
+But they're large in the sense that they have billions of parameters, as the top graph is showing, and the number, the size of the models is increasing over the years.
+So they essentially ingest an enormous amount of text that's available via the web and other sources, and then process that text and find associations between words, between words and between words in a sentence and between words in different sentences and things like that.
+So that through those, you know, it learns those associations and then can perform various tasks based on the information in those associations.
+And the large language models typically use some kind of transformer attention mechanism.
+It's shown in the, you know, high-level view is shown in the bottom graph there.
+There's some text comes in at the bottom.
+This is a few French words.
+And that's encoded through an encoder.
+That information is sent to the decoder.
+There's attention mechanisms mixed in there.
+And then the output of the decoder is going to be some, you know, answer to a query.
+And in this sense, in this case, it's the translation of the French into English.
+I won't go into any, you know, it's not necessary to go into any more detail about how transformers and large language model works, but that's the high-level overview.
+Next slide.
+And the reason that I'm injecting this LLM discussion here is that I really wanted to talk about vector embedding, because that'll be important to the next meaning representation we talk about.
+So, you know, in using large language models, words are converted, embedded, really, into vectors to capture their meaning.
+So, this is just a really simple sort of example, but suppose you have the word cat, and suppose you have a list of a vector, really a list of vector, of 30 other words, like mom and dog and tree and run and, you know, a variety of other words.
+Well, cat is going to be more similar to the meaning of cat is going to be more similar to some of those and less similar to others.
+So, cat might be very similar to tiger.
+So, if tiger is one of the possibilities in this list, then that's going to get a high similarity score.
+So, from that process, you can imagine constructing a series of numbers that are reflecting how similar some query object is to some reference objects, or at least reference vectors.
+So, that's basically how words are, the meaning of words is embedded into vectors.
+And then these vectors can be used in a variety of, you know, of computational tasks.
+It also opens up the possibility for what's called a vector database, where on the left there, at the bottom left, the user has some kind of query.
+For example, how do you translate this sentence from French into English?
+Maybe has some extra content that, you know, that kind of gives more information about the setting.
+So, maybe the content in this example is the French phrase has to do with the petroleum industry, for example.
+It's like a little hint as to, you know, a little hint as to what this phrase might mean.
+And those, you know, that information then is embedded in vectors.
+And those vectors could be saved in a vector database, a very large vector database.
+And then at the bottom right, the LLM could communicate back and forth with the vector database,
+looking for vectors that are good matches for what the query is.
+And then eventually the LLM spits out some kind of answer.
+So, that's a brief overview of vector embedding.
+And that'll be important in the next meaning representation we discuss.
+Next slide, please.
+I'm calling the DISCO-CERC here a meaning representation, but that's not actually true.
+It's not a formal meaning representation.
+It's really more a computational method.
+So, DISCO-CERC, Distributional Compositional Circuits, is kind of a mixture of category theory and distributional semantics.
+Distributional semantics is really what I was just referring to with a vector embedding of word meaning.
+And it presents a graphical calculus via string diagrams.
+An example of a string diagram is shown there.
+And this is not just a diagram that sort of shows relationships.
+It's actually a computational diagram.
+It's the way string diagrams are processed really implies that there's some computational aspect going on here.
+So, let's just look at the very top left there.
+We have some entity Alice.
+And Alice is sober.
+And the meaning of Alice and the meaning of sober should be merged in some way to create the concept of a sober Alice.
+Right?
+And how is that merging done?
+Well, it's depicted as a string diagram as shown here.
+But the vector representations of Alice and sober are then multiplied.
+You know, you can think another word for vectors or complicated vectors is tensors.
+So, these tensors might be very high dimensional.
+And then you have some multiplication happening in a high dimensional space.
+And that is merging the ideas of Alice and sober.
+And then it continues on through the rest of the graph.
+Multiplication of high dimensional tensors.
+And then the answer is whatever the output of the last tensor product.
+The last event in that tensor product line of events.
+So, just a little bit.
+I don't want to really get into category theory too much.
+But category theory obviously is important in this sort of approach.
+And as we'll discuss later, it has applied category theory.
+Really, it may be applicable in many of the computational tasks that Cognar has to perform.
+So, I'll just say a few quick words on it.
+So, string diagrams represent morphisms and monodal categories.
+Category objects are the nouns, the strings.
+So, the string for Alice, that's an object.
+And the boxes are morphisms.
+Morphisms are like maps, like functions sort of.
+And they transform one type into another.
+So, we have the type Alice and we have the type sober.
+And then we're going to do something to merge those two types together.
+And then functors map the monodal category of string diagrams into another category, vector, of vector spaces.
+And that's where this multiplication, linear maps can happen, multiplication.
+So, again, this string diagram is really a computational diagram more than anything else.
+And the other thing maybe that's important here is that since we're talking about linear multiplication operations in high-dimensional space,
+this system becomes a little – it's really best suited maybe for quantum computers.
+Quantum computers could handle – as they become more and more available and as they improve,
+quantum computers could handle this kind of situation very, very well.
+It can still be done on current systems, but would really be ideally suited for quantum computation.
+Next slide, please.
+Next slide, please.
+Next slide, please.
+This is the computational graph that we're looking at.
+It's for the sentence, no man is an island.
+And the pink areas in there, that is the areas where the actual vector multiplication is happening.
+But because it's offering this higher order function, it can do things that Discuser can't do.
+It can easily handle adverbs, propositions, negation, quantifiers, and more.
+So this is really interesting.
+It has potential.
+It may offer a way to use the system that is less – that is more applicable to conventional computing rather than quantum computing.
+It's obviously more flexible and can convey – can process meaning, you know, new other kinds of meanings that Discuser has trouble with.
+But it's new.
+But it's new.
+And this higher order version.
+And this higher order version, there's not a higher order version of Discuser yet.
+This is a higher order version for DiscoCat.
+Nevertheless, quite interesting.
+Next slide, please.
+Okay, so now we're going to jump back and talk a little bit about the potential roles of large language models in Cogner.
+But just to kind of summarize what we've already discussed, we've talked about a couple of meaning representations or things like DiscoCirc and higher order DiscoCat that are closely related.
+So we have a few ideas now about maybe what a Cogner meaning representation might look like.
+It's probably going to be graph-based.
+It might look like Lue's, you know, tree structures.
+Potential for, you know, especially with quantum computers, potential for kind of using a very different approach of the DiscoCat and higher order.
+DiscoCirc when it's available.
+So we have a few ideas that we might work from.
+And now the question arises, well, why do we even want to use a meaning representation?
+Why can't you just take text, you know, some sentences and feed that into a large language model and get the kind of inference that you seek?
+Do the kinds of analysis that you seek?
+So I want to address that question.
+So large language models, you know, they're pretty amazing.
+They can do a lot of things.
+And they've really, you know, in a sense taken the research world by a storm in the last few years.
+And they've been used in NLI.
+So there's numerous studies that have used large language models to perform a variety of NLI tasks.
+And there's many NLI tasks and different databases and, you know, complexities of sentences and types of, you know, linguistic phenomena that are used for various kinds of NLI tests in various kinds of NLI tests.
+So from everything that's been written so far that I've digested, LLMs can be amazing, but they can also really struggle in certain situations.
+And it happens that some of those situations are the situations of Cognor.
+So LLMs struggle with complex text, long text.
+If it's not domain specific, they can struggle.
+You know, stories can be about anything.
+They can be about industrial processes or environmental issues or social issues or political issues or whatever.
+You know, a story can be about anything.
+And LLMs struggle with that kind of variable, you know, setting, variable domains, and also struggle regarding logical reasoning, especially over long texts.
+And in some NLI tests, LLMs can really do quite poorly.
+You know, some they do okay and some they can really fail.
+So LLMs can also hallucinate.
+They can kind of make up people in situations.
+And they don't generally, I'm really talking about vanilla LLMs here, but they generally don't provide explainable answers.
+And that's kind of important because, for example, I'm writing a story and maybe the system scores my story quality in some way.
+Maybe I get a low score for story quality because perhaps the story is off, you know, in theory, perhaps the story is off topic or it's not just not comprehensible or it's incomplete or, you know, some kind of problem like that.
+And I maybe want to know why, why am I getting a low quality score in the story?
+What's going on?
+Why did you give me this score?
+And in general, at least a vanilla LLM wouldn't be able to provide that answer.
+Its answer would be, well, I multiplied all these numbers in some high dimensional space and came up with this value.
+And that's why you got a low score.
+And in contrast to that, this is just one of many contrasts, using a story graph as an intermediary in the computational process provides, you know, several utilities.
+utilities, one of which is that that story graph can then be inspected visually by a user to see if the system has understood the story correctly.
+I can, if I'm, as I'm creating a story, I can view aspects of the story graph to see that, that, you know, these two persons in the story are related.
+So, one works for the other, for example, the system understood that correctly.
+So, you know, the question here is, it's not whether LLMs should be used at all in Cognar.
+It's really more the question of, there's two approaches, an approach to natural language inference that does not use any kind of intermediate meaning representation, just text as input.
+And the approach where there is a intermediate meaning representation, in this case, a story graph.
+And from what I can tell, in reading the literature, the LLMs are just not capable of doing all the things, all the sort of inference and analytical processes that would be necessary in the Cognar setting.
+So, using story graphs as an intermediary in that computational process could be, I think, more useful.
+And also keep in mind that suppose that the group is very large, suppose that hundreds of thousands of people are gathering for some event to, you know, explore some situation.
+And many of them are submitting long stories, long complex stories, long complex stories.
+Well, you know, you would have to somehow compare all these stories to each other.
+You'd have to have LLMs ingesting very large masses of textual information and then comparing their various, you know, parts, parts.
+And, you know, and then following the logical line of reasoning through a story.
+And really, LLMs are just not up to that task, you know, as it sits today and as it looks even in the near future.
+Next slide, please.
+But that doesn't mean that LLMs couldn't still be useful.
+So, the combination of LLMs and story graphs or story graph fragments is potentially useful and makes sense, you know, from what's in the literature today and what looks to be coming down the pike.
+So, for example, as a user starts to create a story graph and inputs text or spoken language into the system to create a story graph fragment, an LLM might be very useful to help understand the words of those passages and to put them into a proper story graph fragment.
+That might be one example.
+And another interesting, really interesting approach is to use a graph, a story graph, as a contextual input to an LLM.
+So, in theory, LLMs could digest graphical information and use that to provide a context for the query.
+And LLMs might be useful, for example, in transforming story graphs or story graph fragments into natural language to, you know, to export a written story of, you know, what the story graph is saying.
+And several new, more sophisticated approaches are being developed for LLM.
+There's many of them.
+Some of them are actually what I've just mentioned, using graphical information as input to the LLM.
+That's one of the approaches.
+And another is processing the outputs of the LLM through some kind of other program, maybe a logic program, to enforce semantic constraints.
+And you can think of that, actually, as tool use by LLMs.
+So that's really an interesting possibility, too.
+And there's many others.
+And these newer, more sophisticated approaches, you know, could be useful in many areas of Cognar, potentially.
+But nevertheless, it still appears to me that using a meaning representation as an intermediary, either as input to an LLM or as something that, you know, that the LLM is creating from text or spoken language, would seem to be the most useful and productive path to follow at this point.
+Next slide.
+Next slide.
+Okay.
+So now we've talked about several possible meaning representations, graph-based and not graph-based.
+Well, most of them, yeah, graph-based and not graph-based.
+TTR is not, type theory with records is not really graph-based, but potentially it could be converted to graphs.
+So now we get an idea of what's out there.
+And now the task is, so what is the Cognar meaning representation?
+And I said in one of the early slides, whatever that meaning representation is, it's fit for purpose.
+And then we talked about what that purpose is, you know, be, for example, be readable by both humans and computers and facilitate analytical and inference computations, etc.
+So in the paper, I offer a desiderata of about 20 or so items, roughly 20 items.
+That this, you know, these are the things that we would want a Cognar meaning representation to do or to qualities that we would want it to have.
+And these seven that I list here is just kind of a smattering out of that larger set of about 20 or so.
+We would want, obviously, we would want the graph to be readable by humans and computers for inference and analysis.
+And for computational reasons, I think we would want the meaning representation to be graph-based.
+It should be capable of handling document-length text, stories that contain varied linguistic phenomena.
+And there's a lot of linguistic phenomena.
+If you really want to understand natural language, there's a lot of linguistic phenomena to understand.
+And some of it is quite challenging.
+I give examples of that kind of phenomena in the papers, in the two papers.
+The story graph should be reproducible in the sense that similar stories should have similar graphs.
+Otherwise, comparing graphs would not be so meaningful.
+You know, comparing two stories by comparing the graphs wouldn't be very meaningful.
+The system should be able to handle metadata.
+For example, if I'm typing in a passage of text, but I want to refer to a table, I input a table of data or maybe a figure or something.
+And the meaning representation ought to be able to handle that.
+It ought to be able to handle fluid beliefs because we're not creating a story that is static.
+We're creating a story that is live and amenable.
+And if this happens to be a group event that's going in rounds, I might change my story, parts of it, you know, over the next hour or the next day or something.
+And it should also be able to handle beliefs about beliefs.
+Right.
+So that in this story, I'm telling you, I believe that such and such person is acting the way they're acting because they think that such and such is the case.
+So beliefs about beliefs, you know, and non-symmetric information, like in this story, I know that John is a murderer, but my neighbor doesn't know that.
+And the meaning representation has to handle uncertainty in all its forms, in particular, uncertainty about predictions.
+So part of the inactive inference, part of the cognitive process is anticipation of what will happen if some action is taken or not taken.
+So these are predictions, anticipations of what will happen if certain actions are taken.
+And a story, stories in general, will have predictions in them, you know, typically will have predictions in them.
+For example, if we tax rich, wealthy people more, the economy will get better or will get worse or, you know, something will happen.
+And so stories often usually typically have predictions in them.
+And there's uncertainty associated with those predictions and uncertainty even about what the story is saying.
+Like, I think I saw a horse in my front yard, but I'm not sure.
+And if it's a horse, I really better go close the gate to the garden or, you know, sue my neighbor for letting their horse eat my corn or, you know, whatever.
+So now suddenly, you know, I showed you the picture of the AMR, the little graph for a sentence, and showed you the graphs for two sentences put together.
+Maxwell, John Pushdom.
+Now we're, you can see that we're talking about something much more sophisticated here.
+We're talking about, you know, predictions and models, models, you know, the output of probabilistic models.
+And we're talking about beliefs about beliefs.
+So one could imagine a meaning representation that maybe has multiple layers to it, a graph-based meaning representation that has multiple nodes and multiple layers.
+And that, that a user should be able to zoom in to, to look at a particular part or zoom out.
+So there should be very, you should be able to have various views of this meaning representation.
+And as you zoom, maybe as you zoom out, it should be possible to just kind of summarize what you're looking at.
+If you zoom out all the way out of a story, maybe you end up with something like a similar to a tagline to a movie.
+Like this is a story about how, how, how once, how a man who was once a thief turns his life around and it's, you know, he says it's possible for anyone in his position to do so.
+You know, maybe that's the overall meaning of the story, but then you can zoom in to the different details.
+You should also be able to confer nodes and edges in this meaning representation with, with meaning.
+So maybe a group of nodes and edges really represents say a bank, you know, a bank has some complicated transactions that occur within it.
+And there's ports to this bank, the bank, the, you know, people can, uh, put their savings money in this bank or take out loans and various things.
+So you could imagine some kind of a compositional or, or, uh, you know, um, uh, set of nodes and edges that have meaning in, in, in, in, of themselves and are also reusable.
+So to make it really useful, if you, if I want, if, if, if many of us are telling stories about banks, well, it might be very useful to have some bank objects that we have in a library that we can, uh, include in our story.
+That makes it much easier to construct the story.
+Okay.
+And, uh, ideally this, uh, whole meaning representation would be compositional in the, in the category sense, right?
+And so in category theory, G of F, there's a, there's a function or map F and G, uh, mapping, um, and you apply one to the results of the other.
+That's called a composition, uh, that, uh, and in category theory, that, that composition preserves algebraic structure.
+And then there's functors between categories that preserve structure and including the composition of morphisms.
+So if, if, if, if it's possible, that sort of approach should be, uh, could be used so that it, it makes sense when you link, uh, you know, computational events together in this graph.
+Uh, you can, that the, in a sense, the meaning is, is, is preserved or conveyed through some series of computations and transformations.
+Uh, and that's different than just modularity.
+Modularity really means just the ability to chain things together.
+So, uh, compositional is, uh, is, you know, uh, uh, uh, kind of a more sophisticated, uh, setting.
+And as I said, um, you should be able to reuse objects to make it really easy and fast to create graphs for some particular story.
+So these are just a small selection of the many, uh, desiderata that are listed in the paper.
+And we, whatever the meaning representation is, you know, it would be really good if all or many of these could be fulfilled.
+Next slide, please.
+So, um, I've already mentioned category theory, applied category theory.
+So there's just a few more thoughts on that.
+Um, it, category theory can be used to reduce the complexity of a, of a, you know, of a system to understand the complexity of the system and then to work with the complexity of the system, to manage complexity.
+And, uh, compositionality is part of that.
+Uh, uh, and in particular.
+There, there's a, it is, I think possible to use C sets, which is a, you know, an object from applied category theory as, uh, as property graphs for, as the basis of story graphs.
+So, you know, I've already showed you graph pictures of, you know, like say AMR of what kind of a simple, simple meaning representation might look like a simple cognitive meaning representation might look like,
+but that could actually be stored under the hood as property graphs where a node has various, you know, flexible properties that can be attributed to it.
+And same with edges, edges can have properties.
+And all of that could be stored, uh, could be really, uh, uh, constructed as C sets, uh, C sets from applied category theory.
+Um, and then there's also functors for various kinds of transformations, graph to graph, graph to text transformations that pervert, that, uh, kind of preserve meaning through the transformations.
+Uh, I've mentioned, uh, zooming in, zooming out and summarization, uh, uh, uh, that as there's an interesting paper, uh, where.
+Uh, an applied category approach has been used to make a system, uh, uh, this in the chemical world, but, uh, a system of, uh, uh, uh, systems dynamic model of, of, of, of, of a, of a, of a situation.
+And then convert that into causal loop diagrams and causal loop diagrams are kind of a simplified version of a systems dynamic model.
+And, um, cause the loops diagrams are sort of more, uh, uh, you know, approachable for the lay public and, uh, but still convey some of the main information.
+
+That would be contained in the systems dynamic model.
+So that would be, that offers kind of one possibility of how you might zoom in and out and summarize, uh, meaning for story graphs.
+And then there's also mathematical models of in group interactions and belief sharing, uh, that could be, uh, constructed using, uh, you know, concepts like sheaf and topos theory from, from category theory.
+So that's, that's, uh, the, the, the application of category theory to the Cognar, um, meaning representation and Cognar computational process processes, I think is a really rich area for, for exploration.
+Next slide.
+So, uh, given all of that, uh, in the paper, I, I suggest maybe the best approach for a meaning representation is to base the meaning representation on the, on the tree structure, the, the discourse representation tree structure.
+And then with TTR, uh, type theory with records and higher order disco circ as being also potentially interesting.
+Uh, but, uh, uh, if the DRTS is, is used sort of as the, as kind of the main idea, then it would still have to have numerous extensions as per the desiderata.
+So layers, compositionality and so forth.
+Um, and as, also, I think it might be useful to use a categorical grammar, like, uh, common, commonatory, a categorical grammar, uh, CCG.
+And, uh, that kind of grammar is for example, patterns in a language.
+So, uh, you know, verb, noun, adjective, noun, big dog, uh, dog runs, you know, those sort of patterns are, would be, uh, uh, contained in a category of grammar.
+And then the system would understand if you use those patterns, the system would better understand what, what it is you're trying to say.
+So that's a form of a restriction of input, user input to a categorical grammar, but, uh, it, it probably makes sense to do so, to improve the capacity of the system to understand what is being said.
+And if you were to use some kind of pattern, uh, in text that wasn't part of the category of grammar, then the system could say, I don't understand what you're trying to tell me.
+Can you rephrase that?
+Do you mean this, or do you mean this, you know, something like that.
+You know, something like that.
+And then, uh, one inference, one potential inference pipeline is to use a categorical grammar, create the story graph, and then send, uh, uh, convert the story into a logical forms.
+Like for example, suitable for natural logic, and then send the results of that to a proof assistance, a proof assistant for a fast inference.
+So, uh, these are just some ideas, but, uh, at this point, it looks like this, this approach might be, uh, the most productive of, of the, of the approaches that we've discussed.
+Next slide.
+Um, so some research questions, um, there, I should say that this is a, this is a, it looks like a long list, but this is a short list of all the possible, uh, you know,
+to do's and questions that could be raised about, uh, about the Cognar system and about the Cognar meaning representation.
+I mean, there's, there's really all kinds of questions like, uh, you know, questions that don't have anything to do with the meaning representation per se.
+Like how, how do you ensure that, um, the information being shared is, is, you know, not manipulated?
+How do you, how do you, um, you know, ensure the quality of information that's, that's being submitted and discussed in, in this Cognar setting?
+Uh, what are the social implications of this?
+What are the legal implications of this?
+You know, there's, how do you protect privacy of, of, you know, a person's information and their stories?
+Well, there's all kinds of big picture questions like that.
+And then there's detailed questions that need to be answered too, but, uh, you know, how do you construct, what is a, what is the meaning graph, uh, representation?
+What is the role of, of, uh, of category theory in developing the system?
+Um, what kinds of stories are, are going to be applied here?
+What are the, what are the categories of stories?
+Uh, so just looking at the second bullet there, you know, maybe one early step is just to create a, uh, or excuse me, the first bullet is just to create a small set of very simple stories.
+Maybe the stories are only, you know, a short paragraph in size and those serve then as the kind of, uh, you know, proof of concept or that as the, as the, as the core of what the rest of the, of the machinery is constructed on.
+Um, so perhaps that's a good start to generate a small set of simple stories, you know, could it even be like three or four or five simple stories just to start.
+And then using those simple stories, perhaps develop a, some kind of simplistic meeting representation, perhaps building on a discourse representation tree structures, you know, convey these simple stories in that representation.
+And then maybe that process is even done manually at first, not, not in some automated fashion, automated fashion.
+The automation would come later as you, as you know, we get more familiar from comfortable with the approach and the chosen meaning representation.
+Um, uh, as I mentioned, uh, category theory and in particular algebraic Julia, which is a software in the Julia system, uh, that is aimed at, uh, applied category theory.
+Uh, could be useful to various kinds of models in algebraic Julia that could be useful.
+Uh, explore C sets as property graphs for meaning representations.
+That's, that's would be, I think, useful.
+Um, uh, given a simple, the next bullet, given a simple meaning representation, explore version control systems for that.
+How do, how, how, how are we keeping track of edits to stories so that they can, so that we have a history of edits and so that, uh, we can construct a, uh, you know, we can regenerate a story from the various original inputs and the edits.
+Um, and then how are stories, uh, stored, what kind of database is used for storage and recall?
+Um, what, how do we zoom in and out of stories, uh, and summarize meaning, uh, when, you know, when you zoom out, what kind of query language is used for story graphs?
+You have a graph and you have various questions that you want to, uh, ask about the graph for inference.
+Uh, what kind of, how do you query a story graph?
+Uh, story graph, how are LLMs used?
+What role do they have?
+Could they be used for generating a story graph fragment from a, a small text passage?
+Um, what is the initial simple inference pipeline?
+Is, does it involve, uh, for example, uh, natural, uh, um, natural logic and, and, uh, and proof, uh, software, proof assistance?
+Um, uh, how about a simple analysis on story graphs?
+How do you compare the similarity between two story graphs?
+Uh, uh, maybe how do you, what is the first simple probabilistic model for handling story graph uncertainty and predictions?
+How does that occur?
+You know, there's various software, uh, programs that handle a probabilistic model.
+So, you know, choosing one of them and, um, and, uh, uh, uh, uh, you know, incorporating uncertainty and uncertainty really means to, uh, you know, the, in predictions, maybe the future comes out this way.
+Maybe the, you know, in this, this time I run the story, I execute the story computationally.
+The result is that, you know, events a and b happen.
+And then I execute the story again.
+And because it's a probabilistic story, events a and b don't happen in the second round.
+They, they happen in the, the, some other event happens, event c happens.
+And then I run the story again and again, a and b happen.
+And I run the story again and again, c happens.
+And then I run the story again and now d happens.
+So, uh, you know, the outcomes of a story are, uh, uh, are variable because stories are probabilistic.
+That's the way we understand the world.
+So all of those are research questions to, uh, to consider, uh, ideas for, um, uh, moving forward ideas for getting involved.
+Next slide, please.
+And, uh, that's really kind of, uh, where we're at right now.
+We have, uh, uh, in the series of papers, I've laid out the ideas of Cognar, the sort of the vision of Cognar really.
+Um, and that's all that's been done on the Cognar project to date is these two papers.
+There's no, there's no, there's no, uh, you know, GitHub repository for Cognar code.
+There's nothing has happened yet.
+This is fresh.
+I hope that the vision, uh, is interesting to not just to other researchers, but the public at large and civic organizations and people who are interested in improving the ability of society to cognitive functionally cognate and make better decisions and, um, be functional in the group setting.
+Uh, so, uh, I, I, I hope this project is of interest and, uh, Cognar really needs your help to move forward.
+Um, there's numerous interesting questions to explore.
+Um, so please reach out to me, uh, you know, if you, uh, have interest, um, upcoming, uh, I, I, I believe that I'll be submitting a project to the Active Inference Institute.
+So that'll be kind of one hub to work through, uh, uh, uh, uh, I'll be involved in some additional talks, the Active Inference Institute symposium coming up and so on.
+I think my email address is in the papers, so people can reach me that way.
+And, or I think they can reach me through the Institute and I, I encourage, uh, anyone who is interested to reach out.
+So that's what I, that's all I got, Daniel.
+Thank you.
+A lot of places to, uh, continue for people who are watching live, feel free to write a question.
+How about just to start it off?
+What did you get more curious about during the course of this path?
+Oh, well, um, you know, I, obviously it was a process to create these papers.
+And, uh, I, I, you know, at first when I started, I didn't realize what I was up against.
+I didn't realize how complicated this project was.
+And I thought that I could, I thought that I could create a working model of, you know, some code of, uh, of, uh, of a story graph and doing inference on a story graph and things like that.
+And I suppose that could still be possible, but I realized as I went through the process that there were so many, there was so much to, uh, you know, think about.
+There was so much meat to this whole thing that it would be better for me to write two introductory papers that lay out the vision.
+Then actually constructing some initial version of the cognitive system.
+So, uh, you know, that, uh, it was kind of humbling in a sense, the process of humbling in a sense, in that I realized I really didn't know enough to actually start constructing the cognitive system.
+I really needed to like lay out some of the fundamentals before that step could even be taken.
+Yeah.
+The, the papers and the presentation, it's like a whirlwind tour of linguistics and semantics.
+You're dealing and invoking with, well, you said like natural language is ambiguous.
+And then it's like, well, what does that mean when it's precisely what it is?
+And then here's the vector representation.
+Here's string diagrams and all these different like proofs.
+What, and all these interacting pieces, like the backend could have multiple parallel or, or related processing methods.
+One, just doing like how many words are there over, under 300 words defined by a space between the two words.
+And then some other part could, could go through LLMs.
+It's like, it's more like a linguistics fusion approach.
+And also you're really focusing in on the representation, not so much on the social process around how people would convene and narrativize around what it is.
+Right, right, right.
+That's a, that's a good point.
+The, the papers really are focused on sort of the nuts and bolts parts of this, but clearly there would be a large, if, if Cognar were to be successful, there would be a very large,
+potentially large social impact.
+And then there would be all kinds of questions, some of which I already raised about, you know, how do you protect user privacy?
+And how do you, how do you ensure that the, you know, quality information is being shared and discussed, you know, all that kind of stuff.
+So my thinking is, is that really, I think maybe it's better to focus on the nuts and bolts parts first to get a simple, you know, to get simple, you know,
+to get simple meaning representations constructed, you know, convey a few simple stories in them, figure out some of the inference methods that might work best for this, those kinds of nuts and bolts questions.
+And then once you have something to kind of show and tell, once you have a little small working model, then start to explore, you know, how this, how you use this in the social setting.
+How do you, you know, how do you engage people to participate in Cognar?
+You know, how does that work?
+And, and even there, I imagine the process that'll happen if, if the pro if project moves forward is that there'll be, you know, maybe the initial work on this will become slow and detailed, but as things as artifacts start to be developed, and there's, you know, starts to be something to kind of put you, you know, something you can hold in your hand, then there'll be a little wider circle of researchers and, you know, others from the civic society.
+And just ordinary people who become interested in the project and start to contribute.
+And as that grows, eventually, there'll be a, you know, start to be a little bit more of a critical mass that, oh, this is really starting to be a thing.
+We have, you know, there's, we're starting to get a repository for this.
+We're starting to understand how it could be used, what it would look like, how we engage people, how, how, how we make this, you know, you, easy to construct stories, story graphs out of stories, how, you know, how we ensure that this, the dialogue and the, and the discussions and the sharing, you know, are healthy and, and useful for cognition.
+And, and, and also, also numerous questions, you know, as that happens, you know, there'll be more, more and more of the social questions will come into play.
+But there's also like all kinds of other questions.
+Like how do you like in a, in the NLI setting, it's really, uh, straightforward how you measure success.
+You know, you, you, you have a fixed set of sentences, you know, you know, this is their gold standard.
+So, you know what the actual meaning of these sentences is, and then you score the model or system that you're constructing on how well they reached the actual meaning of these sentences.
+Well, they convey the actual meaning.
+Well, how do you do that in the, in the Cognar setting?
+Like how would you actually do a study to prove that the Cognar system is understanding properly what you're saying?
+It becomes a little more complicated because now you're engaging the user in creating the story in an interactive fashion.
+So it's, um, you know, even studying the Cognar system, you know, from a scientific standpoint becomes a little bit more complex, right?
+Because users are actively engaged in, in the dynamics.
+And, and for that matter, you know, how do you, how do you, how do you assess the quality of cognition?
+That's a really interesting question.
+I, I, in one of the slides, I, early slides, I suggested that active inference can be used as a means to assess what functional cognition looks like versus dysfunctional cognition.
+And, and maybe you can think just off the top of your head of a few, a few kind of examples where that would clearly be dysfunctional, you know, symptom of dysfunctional cognition.
+For example, if I, if I, as a, as a person, if I have a pattern of, of making really poor predictions about what's going to happen next.
+Um, uh, you know, I see a lion in the, in the road and I think, oh, that's a pet lion.
+Uh, I'll walk up to it and pet it on the head.
+That's a really poor prediction, right?
+So that's a, those kinds of, a pattern of poor predictions might be a sign of dysfunctional cognition.
+Well, what is that?
+How do you assess functional versus dysfunctional cognition in this group setting?
+Right.
+There's many interesting avenues to just in that question alone, many interesting avenues to explore.
+Um, uh, for example, the brain seems to, uh, you know, information flow in the human brain seems to occur at the edge of chaos concept.
+You know, it's, it's not, it's stable.
+The system is stable, but almost unstable.
+And because it's almost unstable, potentially, uh, an input from off to the side and, uh, uh, intuition from off to the side can rapidly change the setup so that I switch gears.
+And now I realize that that lion really is dangerous and I'm going to, uh, you know, jump out of the way really fast.
+So, uh, that's a system on the edge of chaos really is in many ways, a, uh, the most efficient processing system.
+You know, it's most amenable to input.
+It's most flexible and yet it retains its, you know, kind of core stability.
+So these ideas, uh, ideas of chaos and other ideas from complex system science could actually be used for, uh, assessing information flow in the cognitive system and, and kind of the, the quality of information flow.
+It's just one idea, but you know, there's dozens of related, you know, avenues you could follow just on that question alone.
+I'll ask a live chat question and then anyone else write a live chat question or I'll add anything if we have time.
+Andrew writes, Dr. Boyk, thank you for presenting your work.
+It's a very interesting project.
+Do you have any thoughts on implementation in terms of code, eg.
+Any particular programming languages or libraries?
+Um, well, um, I'm a, I'm a fan of Julia.
+So, so in the papers, I, I, I, uh, I, uh, suggest various, uh, probabilistic software programs and, uh, uh, uh, algebraic Julia system that I've already mentioned in this talk.
+Uh, Julia is fantastic, uh, for a variety of reasons, speed and other reasons.
+Now, that being said, this project doesn't have to be constructed in Julia, but I see, I see Julia as a potential resource for constructing this and, and, um, maybe as a place to start, you know, initially.
+But, you know, certainly, uh, Julia is an open source project.
+So is Python, but, um, you would want to engage the open source community as much as possible in this project.
+Uh, because there's, you know, around the world, there's just so much talent and some, you know, so many good ideas can come from that, um, from that world.
+Uh, it was just on that topic, uh, on that topic, maybe this is kind of a, an aside, but, um, this is, this is conceived to be an open source project.
+And one of the reasons I conceive it to be that way is, um, you could imagine, suppose that Cognar was successful.
+And suppose that you had a repository of stories.
+And again, each story is conveying the belief system of a human in relation to some situation.
+Suppose you had a repository of a million stories.
+You have this really rich information about how people think, you know, in, in different situations, in a variety of different situations.
+And, um, that kind of information is very powerful, very powerful.
+And you would not necessarily want some private entity.
+So, you know, like a corporate entity to have control over that whole thing.
+I think you would really want some kind of, uh, you know, open governance, you know, an open source project controlled by some governance.
+Uh, uh, you know, sit framework is to ensure that this whole thing is used for the common good that it's really used for purpose for its purpose intended purpose, which is to facilitate a group cognition.
+A comment in the chat.
+Saskia wrote life is thriving on the edge of chaos and order.
+So it's this kind of paradox and the precarious nature of the body.
+Like how much oxygen storage does the body have?
+Very little, how much water, how much nutrition, like there's different kinds of reservoirs, but it isn't just trying to hold on to flows.
+So that gives a streamlined nature.
+Right.
+Adaptive and on, on the critical frontier.
+And then at the same time, also precarious over different timescales.
+And this is making it explicit with the narrative and cognitive infrastructure.
+As the information processing, semantic, linguistic narrative elements of our ecosystem become like more and more intermediative, more and more active, more and more powerful.
+Yeah.
+Yeah.
+You know, as an offshoot to that comment.
+I, I, I, I think that democracy, the idea of democracy could be framed in that edge of chaos, you know, view.
+In the sense that in a democracy, what you would really like is that each person has the potential to influence the group as a whole, this, you know, the condition of the group as a whole.
+And that's, that's what that edge of chaos, you know, allows, because it allows, it's, it's, it's, it's, as I said before, this system is stable, but just on the edge of, of, of, of maximal flexibility.
+So that.
+An input from some person, like, you know, an, an idea, an idea, an idea, a comment, you know, in a democratic system can actually change the system, you know, or, or a group of, a small group of people can actually change the system with some good input.
+So I think that, you know, not only was, is that an edge of chaos model maybe useful for Cognar, but it might actually be useful as we explore, you know, the, the interplay between, you know, what is a political system?
+What is a political system?
+What really even what is an economic system?
+What is a political system?
+What is an economic system?
+What is a legal system in the context of the goal of group cognition, either societal cognition or otherwise?
+Yeah, another, I think, really important point with the juxtaposition you made of graph based, more formalized, non distributional semantics, and using LLMs like to project onto those formal structures generate from them.
+First off, how incredible that from a semantic graph, we could generate materials in many natural languages, many lengths to many different audiences, if only for a starting point.
+So just on the generation side, that's, that's very powerful.
+And then an interesting thing to consider is like the information supply chain, for example, for someone's voice in a group.
+So then if people's inputs are taken as a blob of text smashed into a very large model, and then it comes out, then the information supply chain of that perspective has been collided with a very large billions of parameters, lot of tokens of training.
+And then the supply chain of the resulting outcome is like group perspectives provided and whatever the question mark unknown training and inputs supply chain that are obscured for a proprietary LLM.
+Or even if it's an open source, totally open LLM, you'd still have a complex information supply chain.
+So this opens up an opportunity for end to end, or in early stages or later stages or parallel stages, to be able to have the kind of, for example, counterfactual reasoning, like here's how this graph looked with and without.
+Here's the distribution of outcomes with and without what this trace back had done.
+And then there's kind of a trade off.
+If there's a more simple, more symbolic system, like more code, like more formal semantics, then the traceability will be deeper.
+Explainability.
+And then if you make it more statistical, it'll start getting blurred in with more and more other factors, just probabilistically, but it still could be disentangled.
+So it's like the LLM route has the fluency and a lot of other advantages and strengths.
+And then also having more traceable like rails and flesh in tandem could give, it's just a design palette.
+It's not that one or the other, the blender, it's situational, but using the two together.
+Good point.
+You actually raise numerous good issues there that are worthy of, you know, prolonged discussion.
+But one of the points you raise, and it's a really good point, is that there isn't just one model in Cognar to, you know, to digest information from a group of stories and present it to the group as a summary.
+That's not just a single model doing that.
+There can be many different views, many different questions, many different queries.
+You can just like, you know, just like the, like, how do you summarize the information about a nation?
+Well, there's all kinds of, you know, ways to do that.
+There's graphs about the economy.
+There's graphs about health.
+There's graph, you know, like there's, there's many ways to, to, to put together the information from a, from a body of information to make sense of it.
+And Cognar would, you know, there most likely would be multiple models.
+Some, some of which would be maybe more explainable than other models.
+Maybe, you know, some logic models might be very explainable.
+Some results of LLM models might be less explainable.
+But nevertheless, there would be a, a history of, you know, edits to story graphs, a history of how story graphs evolved.
+There would be, there would be the possibility of looking backwards in retrospect to assess how the evolution happened, how, what, how ideas developed, you know, how different models might, you know, might've looked at that information differently.
+Then you can assess, you could assess the, the, the capability of Cognar in retrospect about how it, how it handled various situations.
+You could assess the functionality of the group process.
+Like, was this functional cognition where did, did, did, did, were many voices heard?
+Was that information used?
+Did, was it, did it represent anything on the edge of chaos where, you know, a single voice could have an influence over the whole, you know, the, the, the, the, the, the, you know, because there's a history.
+Say, you could examine that trajectory in, in, in various ways and, you know, assess your system and assess the group process.
+One interesting side, inter point one to point two discussion was around like classical and quantum information, fungible and non fungible information.
+And how like the single source of truth that you invoked last time, even though that's a fractal concept, just this get branch as its own sort of time cone of, of traceability of classical information.
+There are certain operations that you can do like the diff, the merge, the rebase, and all those kinds of different decisions.
+However, the actual non fungible cognitive entities, it doesn't work like that.
+So it's this interesting tension between how enabled on certain dimensions these representations are, but of course, those are not the first person perspective on semantics.
+The whole point of, of the second paper is to, to throw some approaches to this question of, well, what can you make that represents semantics, but then immediately to whom slash how, and, and they do, they, they represent and are different things to different views.
+Like, for example, like for example, just the visual view of a figure.
+And then the more statistical analysis on the graph, that is that the same semantics is that different semantics, even though it's like the same representation.
+representation.
+And so how does the representation do relevant work in a specific cognitive ecosystem?
+And that's sort of like the systems design and the metacognitive engineering question, especially if not too strong of, even though this is hard to, to peel back to, but what, what biases and what priors and what biases.
+And those are, those are the same distribution.
+Right.
+And, and clearly the system would have to be very transparent to be able to, you know, assess all of that, to assess biases in the system, to assess biases in, you know, the way Cognar assesses similarity between stories or something like that.
+So there's, there's certainly a lot to unpack with that.
+I do want to just briefly mention something that we talked about in the first talk.
+And that is just to emphasize that, you know, we've been talking about groups forming to, you know, explore some topic that are situation of interest to them.
+Cognar actually has a wide range of use cases, some of which don't look like that at all.
+Cognar could be used for example, in customer service for a corporation where people are maybe submitting a story graph to explain why their gadget broke or didn't work or, you know, why, why it broke or how it broke or whatever.
+So there's really a wide range of use cases for this.
+And secondly, as I conceive of Cognar, it's, it's agnostic to what the group, how the group wants to operate.
+Right.
+So it's not forcing a group to use, you know, if say it's engaged, a group is engaged in decision making, it's not forcing a group to use majority, you know, you know, in voting use majority rules.
+Or, or, or rank choice voting or some other system of voting or some other, you know, arrangement of how the group is structured, you know, whether it's an autocratic group or democratic group or whatever.
+The Cognar is intended to be kind of agnostic to the group setting.
+The Cognar is intended to be a part of the group setting.
+And so that means that there's a variety of types of groups with different interests and different structures and different rules and different methods and different approaches can all use Cognar in the way that they see fit.
+You know, there obviously might be some restrictions on how it's used, but by and large, it's flexible and, and a kind of an open system.
+So that, so that, you know, various kinds of groups can use it for various purposes, but whatever the, you know, the, the, the system is whatever group uses it for whatever purpose.
+The, the system is learning from the engagement.
+The system is, you know, the, the back end computational system is learning, you know, how people think what they, what they, what they think will happen next.
+When this and that happens, how, how better to, how better to summarize information or, you know, present information or encourage a group to move towards well-supported decisions when they're trying to make decisions or, you know, like all of that kind of stuff.
+The system is learning in the background, you know, uh, uh, just like, uh, uh, an intelligent agent would learn in a, in a new setting.
+Cool.
+So maybe just what are some of the possible anticipated milestones for the rest of the year?
+Oh, um, I, I most likely will try to, these are, these two papers are in preprint.
+So I most likely will try to, um, submit them to journals for publication, although they are, um, kind of conceptual papers.
+They're, they're, you know, uh, not the normal type of research paper.
+They're concept papers.
+Uh, uh, so that'll happen.
+Uh, I, I'll start that, uh, uh, a group, a project at, uh, the, uh, active inference Institute.
+And I encourage people to reach out to me on that.
+Um, and really we'll kind of, I, I hope to pick one or two of these research questions myself and focus on that next.
+And so hopefully there'll be a couple of more papers coming out at some point here.
+And, um, you know, really it's up to the community as to what happens from there.
+I'll, I'll do what I can.
+And if people like the idea, maybe someone will jump in and, you know, participate.
+And, and maybe just in closing, we're almost done now at the end of these two sessions.
+And maybe it's, uh, would be just a good idea to kind of look at the big picture a little bit as to like, why are we doing, why is this of any interest to anyone?
+Right.
+Right.
+It's an interesting academic excursion for, for certain there's all kinds of, you know, basically touches on, on numerous scientific fields.
+So there's all kinds of good research questions, but why should we even do this, you know?
+And, uh, to that, I would say there is a, you know, at least I'm, I'm proposing that, um, groups can be thought of as organisms, cognitive organisms.
+And as cognitive organisms groups, you know, whether they're societies or corporations or civic clubs or whatever, um, need to be able to be functional, like make good decisions, act in the way that active inference kind of lays out in that they're.
+Uh, you know, a functional group is going to reduce the uncertainty about achieving the kinds of conditions that are good for it.
+You certainly would want that for society and you even want it for human civilization as a whole, right?
+It would be good if humans reduce the uncertainty that we live in a good kind of world that people flourish in, right?
+We would want that for everybody.
+And, um, when you look around today, there's obviously, uh, many, many examples of what appear to be more decision-making on the part of humans, because we face.
+We face really a poly crisis, climate change and, and, uh, uh, uh, extinction rates are skyrocketing and, um, we are in danger.
+Humans are in danger, serious danger.
+And, um, new ways of, of looking at our situation, our condition, I think are needed in order to maybe steer a different direction, to inspire a different kind of,
+organization for society that is more functional, that, that does exactly what a functional organism does.
+It senses its world.
+It makes decisions that are good for it, that reduce the uncertainty about achieving the conditions that it needs to thrive and continue.
+And I think that, uh, high level approach to, uh, the, to, you know, small groups, large groups, societies holds great promise, great potential to, to suggest ways that where we might not be doing well and where we could do better.
+And, and opens up a whole host of really, I think, useful questions about how could humans, humans, groups, whether we're talking about small human groups or nations and civilization as a whole, how can we reorganize ourselves to achieve what we actually want?
+But to, to function, you know, purposefully, fit through, through organizations and institutions and rules and mechanisms that are fit for purpose.
+But actually our quality functional processes through which we can sense our world, uh, you know, anticipate what's going to happen next, make good decisions and reduce the uncertainty that there are future conditions are really what exactly we need to thrive.
+So there's, there's, there's, uh, there's nitty gritty detail to this project that, that are important and interesting.
+Uh, and then there's this big picture that I think is really, really useful to, to think of, you know, uh, of, of how, how, uh, viewing groups as organisms that are cognitive and that cognition has a purpose.
+Functional cognition can be, you know, uh, uh, described and, uh, used as a target for moving human groups towards a future where we are simply more functional.
+And I, and I suspect that through the process of evolution, each of us or most of us crave, you know, are missing that maybe we don't even know what we're missing, but we're, but once you get a whiff of that.
+You get a whiff of what we, what functional cognition and good decision-making and, and fairness and all that other kind of, you know, things that go with it.
+Once that, what, what, once you get a whiff of what that feels like, I suspect that there would be a great sense of relief, you know, for people.
+They would go like, oh God, I, I'm so glad we, you know, we can get together as a group and be functional and make, you know, good decisions.
+And we have a, we have some clue as to how to assess the quality of our interactions and our, and our cognitive process so that we, we know that we're aiming towards a future that is really substantially better than the poly crisis that we now exist in.
+All right.
+Thank you, John.
+Great times.
+Thanks for having, thanks for having me.
+Yep.
+Okay.
+Thanks everybody in live chats too.
+Thank you.
+Thank you.
+Thank you.
+Thank you.

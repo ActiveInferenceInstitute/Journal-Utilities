@@ -1,0 +1,2676 @@
+---
+title: "ActInf Livestream #004.1 “Cultural Affordances: Scaffolding Local Worlds""
+category: "Livestream"
+series: "Livestream_004"
+episode: "1"
+duration: "1:37:46"
+url: "https://www.youtube.com/watch?v=Y6qx6C1tmjs"
+views: 340
+exported_at: "2026-02-18T22:37:37.832832+00:00"
+format: markdown
+---
+
+# ActInf Livestream #004.1 “Cultural Affordances: Scaffolding Local Worlds"
+
+live streaming
+hello everyone and welcome this is team
+com podcast 4.1 on september 15th 2020.
+welcome to everybody hello all
+participants
+i'm going to
+share my screen and we will jump right
+in
+this is team com podcast 4.1
+and this is team com
+teamcom is an experiment in online team
+communication and learning related to
+active inference
+you can find us on twitter at
+inferenceactive
+you can email us you can find us on the
+public key base team
+as well as at the youtube channel
+this is a recorded and archived live
+stream
+so please provide us with any feedback
+participants as well as viewers so that
+we can improve our work
+all backgrounds and perspectives are
+welcome here and also just on a note of
+video etiquette if people are muted in a
+noisy background or raising their hands
+when there's this many participants in
+the chat it would be excellent and help
+us with our turn taking and reduction of
+uncertainty about who's to speak next
+so here we are in stream 4.1 and the
+structure of today is going to go like
+this first we're going to have a few
+check-in questions and warm-up
+discussion
+then we'll get to the paper itself which
+is ramstead at all 2016.
+we'll talk about the big aims of the
+paper
+go through a roadmap of the paper to see
+how the authors get from a to z
+we'll go through the abstract to
+understand how the authors represent
+their own work
+then we'll go through the box of
+definitions as well as the figures
+at that point we'll have time for
+questions and other insights and also
+we've implicitly prepared for a podcast
+4.2 where we'll be able to have further
+discussions on some key quotations or
+anything arising that we don't get to
+this week
+so
+thanks for that part here we are in the
+check-in and everybody can feel free to
+introduce themselves in their location
+if they would like the first question is
+pretty broad but that's what the warm-up
+is about so what is culture
+it's a good question
+or in the sense of this paper in the
+sense of culture that's being scaffolded
+within a kind of framework that we might
+want to build out what would that kind
+of culture refer to
+well so i'm maxwell ramstad i'm uh the
+first author on this paper cultural
+affordances
+um by the way i'm really grateful uh for
+this uh podcast you all have been so
+great just in general over the last few
+weeks and i'm i'm particularly touched
+that you're giving uh the work that
+we've developed so much attention um and
+it's like just i'm just so full of
+gratitude
+this is so cool um so culture
+at least in the sense that we're using
+uh
+the term here means something like the
+taken for granted
+i think is sort of the heuristic way
+that i like to think about it it's sort
+of like in a given local frame of
+reference
+uh in a given environment shared by a
+group of people a living together what
+are the things that are taken for
+granted what are the
+uh
+sets of expectations and beliefs and
+sets of practices and norms
+um
+you know that that are shared and that
+essentially uh structure people's
+intuitive grip on their shared social
+world
+any other thoughts on culture there yeah
+in sociology uh we define culture it's
+kind of three different dimensions
+you have the symbolic ideal dimension
+which is really i think equivalent to or
+equivalent to semantic knowledge uh we
+break it up in terms of norms values and
+beliefs
+uh we have a psychobehavioral dimension
+which is really about in body culture
+how your body moves um the skills that
+you have in in terms of psychological
+kind of terminology i would really say
+your skills and habits um in in kind of
+that non-declarative memory sense and
+then the third dimension is really our
+material dimensions of the physical
+things that we create the tools the
+buildings the fashion
+um which i think
+the degree to which i understand the
+affordance literature i think all three
+of those dimensions definitely have
+versions of affordances that could
+connect to that um
+i think that was one thing i did see in
+the paper that it did seem to be very
+much focused on just that semantic
+kind of symbolic dimension and not
+really uh explicitly incorporating the
+other dimensions that at least in
+sociology we would kind of um include in
+that definition of culture
+cool
+yeah thanks for that that was very rich
+actually uh
+very interesting uh points that you're
+raising yeah i should just give some
+maybe some historical background on this
+paper this was the first in a series of
+papers that have been developed into
+basically like a a variational or free
+energy approach to culture
+and i think a lot of the elements that
+you're mentioning were only sketched in
+this paper uh and were developed in i
+think further iterations of the model
+uh so everything that you're that you
+just outlined uh richard i think are are
+very essential and crucial things that
+need to be
+tackled when studying culture so it's
+great that you're raising them
+cool and i think the question about
+multiple kinds of culture ranging from
+the semantic concepts to the
+externalized productions or the
+artifacts of culture
+bring us this idea of scaffolding
+culture so what is a way that culture is
+scaffolded
+someone can raise their hand maybe
+someone new but something that guides
+the construction just like a scaffold
+i'll give one way which is education
+because pedagogy is sort of the guide
+rails for how individuals learn about
+those norms as well as how to use the
+artifacts and construct new artifacts
+these are ways in which culture is
+scaffolded because it provides structure
+for the growth to happen within
+any other comments on that
+okay and then the last warm-up question
+is what is shared intentionality or
+what's a way in which somebody has seen
+shared intentionality play out in their
+recent experience
+well so there are two parts to that
+right there's shared and there's
+intentionality so intentionality at
+least in the sense that we're using it
+in the paper draws on the philosophical
+construct of intentionality that we we
+can
+basically uh
+you know
+you can draw a lineage all the way back
+to brentano effectively but so by
+intentionality we mean orientation
+towards the world
+uh we don't necessarily mean
+intentionality in the sense of uh having
+the intention to do this or that
+it really
+it's from the latin i think intensio
+which is the word that was used to
+describe what a uh
+what an archer is doing with his arrow
+uh to hit the target it is intensio with
+the target and so it
+it it's this that we're trying to get at
+and one of the things that we're trying
+to argue here is that what part of what
+makes um a shared social world just that
+a shared social world is that
+there are forms of relating to that
+world so forms of intentionality that
+are also shared
+uh among the the people who live in that
+world together so that's that's what we
+were trying to get at ultimately i think
+and i think what's interesting in terms
+of if you take that definition and you
+look back at the scaffolding um you know
+if you look within the individual
+there's this network of semantic and
+episodic memory and non-declarative
+memory that's organized in the brain
+if you put me in contact with another
+individual from my culture who shares my
+language and we begin to construct this
+we space if you look at the
+phenomenology um and then now what
+happens with this dyad
+either we introduce a third person or we
+then one of us leaves the relationship
+and we go uh interact with someone else
+if you spread that dyadic interaction
+out to a network and then you look at
+the fractal scaling of that network
+there's this way to i think to very
+deliberately keep track and build up
+from organized memory and brain
+to an institution of 25 000 people
+dynamically interacting by following
+this
+this these mechanisms by which you
+create the shared space and looking at
+those emerging properties and trying to
+model them mathematically
+couldn't agree
+and there's a quote from the paper which
+i'll spare maxwell from reading is uh
+near the end it says to address more
+complex social situations it is useful
+to revise current sociocognitive models
+of joint attention to encompass
+fundamentally triadic situations in
+which the third
+is the socially constituted niche of
+affordances supported by local
+ontologies and abilities so we're just
+jumping in today but that's sort of
+where we're wanting to go with this
+paper and in discussion is towards
+understanding what is that third space
+and how does the aim or does the intent
+play in yeah stephen
+yeah and i think this cultural thing
+also brings in that into subjectivity
+it gives a way to
+understand how to approach it beyond
+education
+beyond
+sort of the banking of
+programming people saying well what's in
+the environment particularly now that
+we've got situations of
+cross-cultural
+what cultures have to try and
+understand and work together is it all
+about teaching us how to tolerate each
+other
+or is it about understanding
+how we perform in the environment
+so i think it's got a lot of
+well here we are finally at the paper
+uh cultural affordances scaffolding
+local worlds through shared
+intentionality and regimes of attention
+so we'll definitely want to unpack each
+of these concepts and it's in frontiers
+in psychology from 2016.
+the big aim of the paper grasped from
+the abstract in the
+introduction section is to better
+understand how culture and context
+interact with human biology to shape
+human behavior cognition and experience
+so kind of all of it kind of things that
+richard was bringing up early on
+and from the introduction the
+integrative framework we propose bridges
+cognitive and social sciences to provide
+two things first an expanded concept of
+affordance that extends to
+socio-cultural forms of life which will
+unpack in box one and two a multi-level
+account of the socio-culturally
+scaffolded forms of affordance learning
+and the transmission of affordances in
+pattern sociocultural practices
+so the key piece there is that
+multi-level account because we're not
+going to have an individual level
+account by which collective outcomes
+arise or a group level account by which
+individuals are shaped in their behavior
+uniquely those are sort of two sides of
+the same coin or
+some of the sides of a many-sided coin
+that constitute this top down and
+bottom-up relationship that we see in a
+lot of multi-scale systems like the
+brain being nested within a body inside
+of a niche inside of these institutions
+that last beyond the lifespan of the
+organism
+any thoughts on the aim here
+or questions about anything
+cool well then let's get to the roadmap
+so the roadmap i just copied out the
+section headers
+how that takes us on a journey or on a
+narrative in our learning odyssey in a
+sense
+in the beginning there's an introduction
+and a theoretical framework for
+affordances is provided and that
+includes i know the font may be a little
+small perspectives importances and
+phenomenology
+landscapes and fields meanings and
+affordances and then we reach figure one
+which has a basic cognitive formula for
+automatic intentionality and figure two
+that expands on that formula slash
+comment format so that's a theoretical
+framework for affordances maybe could
+anyone chime in what what is an
+affordance in this uh context or in the
+cultural context or in the context of
+whichever field you're familiar with
+yeah so i
+guess just for a simple definition it's
+something that invites action or
+interaction
+and the the cartoon example is always a
+chair a ford sitting
+um but in the context of a social
+interaction it could be some
+environment that affords or that
+elicits our interaction maybe
+conversation or music making with
+another person
+great and it makes sense to start the
+paper off with this framework for
+affordances because action opportunities
+are so fundamental to active inference
+and to action-oriented frameworks this
+is really what defines action-oriented
+frameworks is they focus on actions and
+the stimuli or the cues that lead to
+action so affordance is their
+opportunity
+the second section here is the
+neurodynamics of affordances so this is
+the integration of the cognitive and the
+neurosciences with the more behavioral
+ecological concept of an affordance
+computation representation and minimal
+neural models is addressed and also many
+of these ideas
+later papers include other or different
+depictions and this is already four
+years past so that equates to about 400
+papers
+in between us and here
+yeah i should say um like this is
+probably the weakest section of the
+paper as it currently
+is formulated
+um
+i mean yeah as you're pointing out it
+was published in 2016 and we started
+really working on this in 2015
+and i mean since i did a whole phd
+focused on the free energy principle and
+uh what it what it entails and how it
+works and so on and i think uh
+i i mean i wouldn't disavow what we say
+here uh
+but i think that
+definitely our our understanding of the
+representational implications
+of the theory have been refined over the
+years but i mean this this is basically
+in a nutshell what we tried to pursue
+since 2016 so as you're saying like
+several papers have been published since
+um and the uh you know
+the the the framework has moved a little
+bit
+absolutely richard
+yeah i think i mean definitely whenever
+we look back on our earlier papers we're
+always like i should have said all these
+different things but i i actually really
+appreciate this paper because you know
+for reading it just as a complete
+non-expert in
+a lot of these fields um the free energy
+principle is very very difficult to find
+an entry point into
+and sort of have something that i think
+is very conceptual and grounded in
+neuroscience i think a lot of social
+sciences could wrap their head around
+you know relatively easily and then to
+trace this as breadcrumbs to the more
+advanced
+um free energy principle stuff um i i
+really appreciate i thought it was a
+great entry point into this literature
+and kind of gave me a
+you know a foundation to kind of start
+to wrap my head around how these these
+concepts are being applied in that more
+mathematical context
+you're saying that
+it's one of the reasons why we chose
+this paper other than shannon suggesting
+it is for me at least when i can see the
+path in the literature well okay here's
+what they thought in 2016 which means in
+years leading up to 2016
+and then yes it can be refined or
+represented or enriched in later work
+but seeing the breadcrumbs or the
+pheromone trail is how i get a
+calibration of the derivatives of how
+the ideas are changing through time and
+i found that um yeah one way maybe
+weaker but the most growth has happened
+here and this is one of the areas where
+the most growth can happen so this is
+why we continue to dip back into the
+literature
+even longer than four years in the past
+i know it feels like forever though
+because sometimes there's a uniqueness
+to that cultural artifact that isn't
+just about how well it conveys what the
+relationship is between neuroscience and
+free energy but rather how well it
+conveys the what the researchers were
+working on in that intersection so we're
+thinking through other minds for some of
+us it was us in the past for some of us
+it was just another paper
+yeah and i will say this just really
+quick too
+a lot of the affordances that concept of
+affordance in sociology is very much
+grounded in kind of a pragmatic process
+philosophy you know whitehead the idea
+that you know reality reaches out to the
+other reality and so if you if if that
+is where our literature is grounded to
+be able to have something like this
+that's very conceptual to work through
+those philosophical ramifications and
+then begin to ask how would this fit
+with uh the free energy principle and i
+think vice versa as well having the free
+energy principle community kind of
+understanding some of these
+philosophical concepts and ideas to kind
+of ground more conceptually not so much
+mathematically what it is that their
+perspective is offering to other
+disciplines
+[Music]
+well said
+then we move to figure three now i found
+that figure three four and five make a
+really nice sequence and we'll go
+through them in sequence because it
+enriches one level of detail on top of
+one level of detail of a hierarchical
+prediction error minimization framework
+figure four diagrams it a little bit
+more clearly from a bayesian perspective
+and then five brings on another level of
+realism
+then we talk a little bit in this
+section about predictive processing and
+attention and that returns our attention
+to the idea of culture as regimes of
+attention from the title
+at this point if i had to rewrite this
+paper this would be two papers and this
+would be the split
+so i really think that the first part of
+the paper really uh tells a story about
+affordances uh affordances the
+affordances that are avail available in
+the human landscape uh you know in terms
+of their depend the dependence of
+certain kinds of affordance on
+convention whereas others are more just
+dependent on the kind of spontaneous you
+know action biology of human bodies and
+then the second half of the paper turns
+to this concept of attention
+and with with all this in place says
+okay so how is culture acquired in these
+what we're calling regimes of attention
+which are effectively shared patterns of
+allocating your attention to this rather
+than that as being salient so and this
+all is bit you can read this as kind of
+computational goffman uh for richard
+who's done comes from sociology uh yet
+it's an attempt to kind of spell out
+how
+what would a mechanistic model of you
+know regimes of like civic inattention
+and so on look like effectively uh when
+you're trying to bridge these different
+levels
+but you know i think there's a lot in
+this paper and this is a good kind of
+split point if you want to see what the
+paper is doing effectively
+nice very helpful for us because it just
+reads as a turing tape to those who are
+reading it line by line but to know that
+there's a conceptual demarcation is
+helpful
+and regimes of attention i just think is
+a great term to capture it because it's
+kind of like well where's the regime
+it's everywhere and it's nowhere it just
+is the water that culture is existing
+within
+in this section we have figure 6 of a
+diagram of the looping effects or the
+rolling loops
+that mediate cultural affordance
+learning
+there's a discussion of skilled
+intentionality and affordance
+competition with some nice citations to
+other work about the skilled
+intentionality framework
+there's a section on shared expectations
+local ontologies and cultural
+affordances and we think a lot about
+ontologies here and about the words that
+we use to locally organize our thought
+and cultures this kind of multi-scale
+ontology that helps organize stimuli in
+a sense
+and the section closes with a discussion
+of shared expectation and implicit
+learning
+then the last
+section major section of the paper is
+the regimes of shared attention and
+shared intentionality
+reflecting gating abilities and
+affordances
+and moving the loop regimes of shared
+attention and skilled intentionality
+before a
+conclusion so that is the roadmap that's
+how you get from discussion of the
+ecological psychological or behavioral
+inactive concept of an affordance
+then into the neuroscience of
+affordances and then as suggested by
+maxwell there's a bit of a intermission
+conceptually here before turning to a
+second half of the paper that has to do
+with the actual ways in which culture is
+scaffolded through these regimes of
+expectations and attention
+any questions on the roadmap
+cool
+all right here we are in the abstract
+which i often find helpful to read
+because i know that authors put a lot of
+care into the abstract because it
+represents to the in group to the field
+as well as to the out group to the
+reviewers to the editor to the reader it
+reflects what the paper is going to be
+about and people get surprised and even
+disappointed when the abstract is off
+base relative to what the paper actually
+delivers on
+they write
+in this paper we outline a framework for
+the study of mechanisms involved in the
+engagement of human agents with cultural
+affordances which we're going to define
+soon
+our aim is to better understand how
+culture and context interact with human
+biology to shape human behavior
+cognition and experience
+we attempt to integrate several related
+approaches in the study of the embodied
+cognitive and affective substrates of
+sociality and culture and the
+socio-cultural scaffolding of experience
+that's the first half the abstract
+then they write
+the integrative framework we propose is
+we propose bridges cognitive and social
+sciences to provide
+one an expanded concept of affordance
+that extends to sociocultural forms of
+life and two a multi-level account of
+the socioculturally scaffolded forms of
+affordance learning and the transmission
+of affordances in a patterned
+socio-cultural practices and regimes of
+shared attention
+the framework provides an account of how
+cultural content and normative practices
+are built on a foundation of contentless
+basic mental processes definitely
+something we'll return to
+the acquire content through immersive
+participation of the agent in social
+practices that regulate joint attention
+and shared intentionality
+okay
+any
+thoughts on the abstract or questions
+before we turn to the box
+cool
+well box one i thought it would be
+helpful just to list out the terms
+of the different types of affordances
+then go through them what is an example
+of each of these kinds of affordances or
+what are the differences between these
+types of affordances so maybe we could
+start there if someone could raise their
+hand and pick one of these types of
+affordances natural cultural or
+conventional and then define uh what it
+means to them or an example of it
+yep maxwell
+um well essentially what we're
+suggesting is that well cultural
+affordances by the way um i i just
+noticed that my um my camera is frozen
+is that the case for everyone as well
+your screen looks dark you can either
+toggle the camera on and off or just
+reload the page um
+after talking i might try to rejoin just
+so the camera freezes um yeah so what
+we're essentially arguing is that in
+humans all affordances are at least
+minimally cultural
+in the sense that i mean i don't know
+about you but as i was growing up uh my
+mother told me not to slouch uh while i
+was at at the dinner table
+uh and so you know it's something as
+simple and natural as
+sitting um does actually come with a
+cultural scaffold and what we're saying
+is that there's basically a spectrum of
+affordances
+you can think about the space of
+affordances with his with which humans
+interact as going on a kind of continuum
+from natural to conventional where
+natural affordances depend mainly just
+on the biophysics of the human body in
+its interaction with the environment
+whereas conventional affordances depend
+on these implicit or explicit sets of uh
+conventions or shared beliefs
+uh so you know an example of the latter
+would be um a king's throne right you
+don't sit on the king's throne unless
+you're a very specific agent
+uh so a king's throne doesn't afford
+sitting
+uh for everyone in the same way that say
+just a chair or a stool might afford
+sitting
+there there are conventions shared
+conventions
+uh the kind of uh structure
+which affordances are available uh and
+which are not for a given agent
+cool richard
+yeah i was just curious
+in the neuroscience about like actually
+distinguishing that so if i if i see a
+cup my mirror neuron system fires and i
+begin to kind of enact the act of
+reaching out and grabbing it but then
+semantically i know that you know as a
+a lowly surf i'm not allowed to touch
+that is there actually any research
+showing the conflict between semantic
+knowledge about you know and
+self-related knowledge that i'm not
+allowed to do that
+with the automatic kind of reaching out
+mirror neuron system simulation of
+touching the cup
+that's really interesting i'm not sure i
+i don't know if there's any
+data about this particularly it would be
+very interesting though
+one thought i had was some experiments i
+believe by michael von elk with hands
+grasping cups at incorrect ways so it's
+something when you're here and you're on
+c oh that's not how you're supposed to
+grab a cup well why not well because i
+can't rotate my wrist again to drink it
+so it's the wrong way to hold it because
+it's not really a cup of water if i
+can't drink from it in that functional
+affordance based sense but i agree it
+would be interesting and we'll follow up
+on that and stephen did you have any
+class
+yeah i actually had a workshop when i i
+was working with a group with um who
+with disability who um
+and i mentioned about affordances as
+part of it and partly having done this
+paper and one of the participants she
+was saying how when she sees a cup
+because she can't pick it up and she
+doesn't see it as a cup unless it's one
+that's got a handle that she can reach
+her hand into
+and do that so that kind of
+sense of things presenting is quite true
+and i like this breakdown because
+the i get a sense that the following on
+from the later work that maxwell did
+like natural affordances is like you
+know if there's a cliff it doesn't
+afford me to walk any further whereas
+cultural is a bit more of like this
+mixing sort of egotic
+kind of space where it's conventional
+it's like the the throne it's like it's
+not up for negotiation it's like you
+don't sit on the chair it's like a fixed
+rule there's no
+kind of
+inter-subjective piece going on so in
+some ways the cultural piece seems to
+have some sort of negotiation associated
+with it which is quite quite cool
+would it be accurate to say that that in
+a sense of if if i
+i had the simulation to reach out and
+grab the cup but then my semantic memory
+says no we're not allowed to do that
+could that almost be like a prediction
+error in the sense of like i'm
+predicting that i'm going to do this
+well no we don't do that precisely and
+the way that you would do that is
+probably by having a hierarchical model
+where basically you know so the the
+notion of hierarchy i mean it has
+political implications and we can kind
+of ditch those
+uh so
+i prefer thinking about it in terms of
+center and periphery right where like
+the the periphery is the the end of it
+that's closer to the sensory motor like
+interactions and the center is something
+more like you know what we would think
+of as the top of uh of a processing
+hierarchy where representations are
+progressively more compressed uh so
+if you look at the hierarchy from from
+periphery to center or from bottom to
+top what you have represented there uh
+if you'll allow me the
+language of representation for a second
+we can finesse it later but what's
+essentially represented there is as you
+progress towards the center slower and
+slower or more and more abstract
+regularities
+so you might think that yeah as you see
+the chair at a kind of more automatic uh
+kind of a sensory motor level you you
+see it as something that you could sit
+on but as that ascends the processing
+hierarchy at some point it registers an
+error as in like semantically i'm not
+allowed to sit on this because it's a
+king's chair
+so precisely that's how that would work
+as and you can you can accommodate for
+this kind of conflict by allowing the
+system to have a layered or hierarchical
+structure
+and
+great
+point and this relates to how it's a
+spectrum of affordances so for example a
+violin when i look at a violin i have
+the biophysics to bend my fingers but i
+can't play violin so i see an affordance
+for something i could pick up
+potentially and not everybody may see
+that affordance however somebody else
+sees that and culturally they think oh i
+could play this
+uh song or i could play that song and so
+what song they see the device as being
+able to be used for is going to be part
+of their enculturation part of their
+education which builds upon the
+biophysics of the human body and that's
+why we have different dance styles in
+different places
+from different cultures even though
+everybody's elbows still move the same
+way sasha
+yeah
+so in trying to understand affordances
+um i
+tend to think of it as like the space of
+what is allowed
+but in walking through the different
+kinds of um affordances that we have um
+it becomes pretty clear that it's not
+just what is allowed it's
+very strongly gated by the top-down
+priors of what you think should be
+allowed in your space
+and it just kind of reminds me of this
+um
+anecdotal understanding of how children
+interact with an environment versus
+adults
+and
+how children would use or sit on objects
+that adults would never think of sitting
+on
+and kind of the the different ways that
+they
+see and use the world um because they
+don't have these top-down priors of um
+what one should and should not do
+and so that that's a nice way of um kind
+of circling back to the point of this
+paper that um everything is embedded in
+culture and you don't just start from
+kind of the biophysics of sitting and
+work your way up
+you're always going back and forth with
+this is uh this is such a great point
+thank you for thank you for uh pointing
+that out sasha like the
+the agenda here is to
+uh pursue this kind of
+excuse me this kind of cooperative turn
+in the anthropology literature which is
+to say that
+um
+you know as joseph henrich who's one of
+my uh one of my favorite like
+anthropologists uh psychologists uh out
+there as he points as he puts it we've
+crossed the evolutionary rubicon in a
+way our our survival as humans depends
+on our ability to reliably access and
+use
+uh stored cultural information
+effectively
+and that's had an influence on the way
+that our biology has evolved so you know
+compared to chimps for example we have
+uh really weak digestive juices
+and that's because we've we've been able
+to offload the metabolic cost of you
+know having this extremely elaborate
+digestive system
+uh to our technology effectively you
+know so tool use the use of fire cooking
+technology has allowed us to process
+food in a way that then co-evolves with
+our bodies and takes the kind of
+processing load of the food uh off the
+body itself towards these cultural
+artifacts and practices that have
+co-evolved with our biology and that's
+really the the point is that uh all
+human affordances are cultural
+affordances which exist on a spectrum
+from more natural to more conventional
+but human biology is a cultural biology
+and biologic and
+yeah culture is a biological phenomenon
+i think that the two are kind of
+irreconcilably joined in the case of
+humans
+and i'll
+build on that to describe the difference
+between the field and the landscape of
+affordance sorry
+i meant insurmountably you're uh
+irreducibly joy not not here uh
+yeah sorry
+oh yeah it works so the field of
+affordances are the affordances in the
+landscape with which the organism can
+dynamically cope and intelligently adapt
+so that's at an organismal level the
+field of affordances is like the field
+of play it's the field of action for
+that agent
+the landscape of affordances on the
+other hand like the landscape exists
+beyond me even when i can't interact
+with it directly and similarly the
+landscape of affordances
+is defined here as the total ensemble of
+available affordances for a population
+in a given environment and so the
+concept of chair just as sasha was
+bringing up the landscape of affordances
+of chairs includes things for little
+people for tall people for people with
+small hands for larger hands the
+landscape of affordances is at the
+population level which means it includes
+all these differences that are
+biophysical and developmental and
+cultural as well so the field is what
+one individual agent is able to interact
+with and that's sort of where the rubber
+hits the road of action-oriented
+frameworks and then when we pull back a
+level to this evolutionary perspective
+on action-oriented frameworks we get to
+this landscape of affordance's idea
+any thoughts on that
+yes stephen
+yeah i think that
+that
+way that things are embedded it comes
+back to that piece with the throne as
+well is
+where
+where that chair is for it to be
+ascribed as a throne that you don't sit
+on
+is partly processed by what's going on
+around
+in that setting at that moment like if
+there's no one around and it's an empty
+room
+you may sit on the chair if you don't
+think anyone's going to see you but when
+the cultural
+kind of rules of the game are in play
+or if you
+see you know if it was a room where
+there's only children in there compared
+to a room where there was an adult
+watching so
+there's this kind of negotiation going
+on
+um which is quite
+quite complex
+and i think previously without free
+energy i don't think there was a way to
+be able to take that many different
+parameters
+and sort of integrate them
+richard
+yeah i think what's really fascinating
+too when we talk about this is that um
+the role of language in the role of
+imitation and the role of just watching
+other people where i can walk into a
+room and know absolutely nothing about
+the norms values and beliefs that that
+constrain it but if somebody just tells
+me you know four or five words they can
+immediately bring me up to speed and
+kind of and to use the terminology that
+sasha was using earlier those top-down
+priors i can gain a lifetime of
+experience in 2500 words and watching
+four or five people
+seeing who's rewarded who's punished and
+i think that i i i'm curious to see and
+we don't have to talk about this now but
+just you know rhetorically i'm curious
+to see
+how can you take in that notion of
+symbolic communication and quickly
+affect somebody's you know prior
+understanding of situation how do you
+fit that into a network of free energy
+or agents running off this free energy
+principle and how does that is it like a
+synchronization of oscillators on a
+network like how exactly do you model
+model that process
+yeah i'm just imagining you're walking
+with somebody to a meeting and right
+before they open the door to reduce your
+uncertainty about what's behind the door
+they say hey it's going to be tense in
+there or hey just so you know it's a
+non-smoking room and just like you're
+saying with four or five words the way
+that that person unpacks
+those words symbolically and the way
+that that communication channel is
+utilized to attune the agents on a
+narrative level
+that's what dictates how well the scene
+is going to go when the room is actually
+being inactive and so there's so much
+that we tell each other when we're
+leading into events that that does set
+the tune and that has to be unpacked
+within each person's own perspective
+and also one bonus word that's not here
+but
+umvelt does anyone have a sense of what
+that means but i figured i just throw it
+out there as they sort of complement to
+affordance
+well if i can just uh comment on uh
+richard's point uh before getting into
+unveiled i think the way that you can
+understand it from a free energy
+perspective is uh i mean andy clark i
+think and andrus robstorff has have
+called this top top
+effects
+so
+basically uh passing information from
+the top or the center of one's hierarchy
+to the top of another directly through
+these kinds of uh of linguistic tokens
+that we're exchanging i think that's uh
+that's a powerful intuition what we've
+done in more recent work is extend that
+to a kind of horizontal top
+kind of communication where it's
+literally destruct the shared physical
+structure of the niche whether it's in
+the in terms of
+shared artifacts like stories that we uh
+create and and share with one another
+that so these uh
+effectively these uh parts of models
+that are offloaded onto the physical
+structure of the environment can also
+come and have these uh kind of uh
+top-down structuring effects where we're
+we're effectively installing shared
+environmental priors at into the top
+levels of our hierarchy through
+enculturation
+nice and how about maxwell what's your
+take on him belt
+i mean i think you know so
+i think those of us uh you know working
+in uh more specifically on ecological
+psychology we'll have some beef with the
+way that i kind of uh just generally put
+all of this together but i think like
+you know affordances umvelts uh
+phenomenology
+i'm sure many people are not going to
+agree with me so you know feel free to
+discuss this but that they're they're
+all perspectives on the same kind of
+thing which is that if we're trying to
+talk about you know the meaning making
+of organisms living organisms that share
+a world we can't uh we can't just not
+talk about the first person perspective
+and the way that meaning appears from a
+specific vantage point
+and that's sort of what the affordances
+and umvelt stuff gets at
+uh and effectively what we tried to do
+in in this paper
+and that's why i think it's it's the
+kind of contribution to the broader
+project of neurophenomenology is we we
+start from
+the kind of first-person
+perspective so we we're kind of trying
+to cash out you know some some subtle
+social effects like enculturation in
+terms of learning affordances and then
+we ask the question what's going on
+under the hood and as it were around the
+hood uh
+for that kind of affordance story to be
+cashed out in mechanistic terms
+uh so umvelt is a term uh by a biologist
+i think it's pronounced von ushakul
+yeah and he uh
+i mean it's it's essentially it's very
+close to the uh
+the uh
+affordances story although it's it's
+more directly centered on um
+the perspective of the organism i mean
+so gibsonians i should say like uh you
+know the ecological psychology was
+introduced by uh you know jj gibson the
+famous psychologist and a lot of
+ecological psychologists have uh take
+issue with our use of affordances here
+uh i think for interesting reasons the
+so the for for ecological psychologists
+the idea is that perception is the
+direct perception of a possibility for
+for well
+it's it's the directly we're directly
+picking up information about our
+environment like so they're trying to
+emphasize that we don't have to go
+through this elaborate kind of
+inference process there's a sense in
+which like we just directly read off the
+regularities in our sensory array uh
+what what what is possible and what is
+doable and it so in
+gibson's original formulation this is
+what
+affordances meant
+what we're doing is more drawing on tony
+camaro's
+reinterpretation of this concept as
+affordances 2.0 he calls it where an
+affordance is a relation
+between some relevant features of the
+environment and skills ultimately
+you know expectations and skills had by
+an organism so this is already a a more
+inactive embodied reading of affordances
+and i mean we've gotten into some very
+interesting disagreements with people
+from ecological psychology precisely
+about this difference in interpretation
+so i say this because umvelt is very
+much focused on this kind of affordances
+2.0 perspective where what we're trying
+to do is really capture what the world
+is like for the organism that inhabits
+it from its perspective
+this is also where i think it connects
+with phenomenology which is also this
+kind of more systematic attempt to
+describe things from the first person
+perspective
+great
+and
+that okay alex first
+and then shannon
+yeah thanks um
+as usual i'm trying to
+connect uh to my domain is the
+engineering domain
+and
+it's more like a question
+about
+could we consider importances from some
+kind of functionalities view
+as for example
+if i need to drive in a nail
+the hammer
+the provide provides me affordance
+to use it
+but if i don't have a hammer
+i could use even microscope to do the
+same
+only one or two times but anyway for my
+engineering task it could be enough
+and if i see a chair
+and it's provide the affordance to sit
+it's like a basic function of the chair
+to
+to to sit on it
+so from
+this perspective how it could be
+considered like when agent
+need to do something and need some kind
+of functionality and this functionality
+or maybe
+service
+to do it how it's possible link
+oh absolutely this has been pursued by a
+lot of work there's a really cool group
+based in um
+in the netherlands
+uh eric rietveld and julia keverstein in
+particular uh work from this perspective
+where eric uh eric ridwell's work is in
+architecture and affordances
+so he he really tries to bring this
+whole affordance's perspective uh into
+the design of the spaces that we live in
+uh so what you're saying is totally uh
+consonant with uh at least some really
+interesting uses of the concept of
+affordances in the literature since the
+early 2000s
+cool shannon
+i think yeah so
+i'm just thinking of this this
+field landscape difference and umvelt
+and
+it's really helpful considering the
+perspective of the agent you're
+investigating
+especially um so i'm in music
+neuroscience so we can learn a lot about
+how
+people or brains interact with music by
+putting a person in an fmri scanner and
+playing some music but that's not
+exactly how we interact with music in
+our day-to-day life maybe now more so
+because we can turn on our ipod and just
+sorry iphone we don't have ipods anymore
+um and listen to music alone as this
+um solo endeavor but in general for the
+history of human evolution music has
+been this really interactive
+participatory
+activity and in order to understand
+um from where i am how we interact with
+understand or process music it really
+is also a question of how we understand
+and interact with
+um other people
+and it's so when we bring in these
+um
+affordances we can have an affordance
+for music um in a certain field that's
+you know us listening to music alone but
+as soon as the landscape
+is
+is a little bit bigger and maybe our our
+small field incorporates one other
+person or one more other person
+um then the perspective that we need to
+take
+needs to change to adapt the perspective
+of each of those individuals or of that
+musical sort of environment as a whole
+that's such a great point i don't know
+if you're familiar with this paper that
+i just linked
+in the chat it's by anna anderson and
+tom zimkia
+uh called exploring the multi-layered
+affordances of confor of composing and
+performing interactive music with
+responsive technologies
+and it was one of the first papers to
+pick up our cultural affordances work
+and in precisely the context that you're
+proposing shannon like um
+what they're saying is uh our concepts
+need to be enriched with a kind of
+intermediate scale concept
+so their idea is like when you're when
+you're performing live electronic music
+there's something intermediary between
+the field of affordances that each
+individual is coping with at any moment
+and this evolutionary level kind of
+landscape of affordances or this
+population level uh landscape of
+affordances where there's
+you know the there are special
+affordances that open up in this uh
+performance
+uh context
+kind of a
+a meso scale
+in between the landscape and the field
+uh i forget the precise term that they
+that they introduced but uh yeah the
+music is definitely one of the cooler
+domains of application of this uh this
+stuff
+nice
+sorry all right
+shannon and then
+just saying this is really great thank
+you
+cool sasha um yeah just a brief comment
+to follow up on what alex said um
+uh from the engineering perspective you
+know if you have a hammer everything's a
+nail it kind of made me think uh about
+crime
+where um if you need something and
+you're not um
+inhibited by uh law or social norms you
+can just take it
+and
+maybe that's a uh
+you know
+overly simplistic understanding of
+why people commit crime but in in that
+context
+if you're not inhibited by
+uh
+laws then your affordances are quite
+different than if you are
+okay and perfect richard
+you're uh
+yeah in terms of the the field versus
+the landscape
+would it be accurate to kind of
+conceptualize this the field of force is
+kind of the episodic knowledge of the
+individual so what are their their
+personal
+learned experiences their personal body
+capabilities kind of this really
+episodic self you know um
+form of memory where landscape of
+performance is more about the semantic
+knowledge the if there was a way for me
+to kind of look at the population and
+ask what are all the skills and habits
+that this population has that would be
+the landscape if i was to drill down on
+one person
+how well do you know how to ride a bike
+that would be more of your fuel
+performance precisely that's precisely
+the idea and the idea also is that not
+all affordances are equally salient at a
+given time but they're still there in a
+sense right uh
+so i don't know like um
+24 7 uh coffee shop there's times a day
+where it's a salient affordance to some
+people well i was gonna precisely give a
+a food and coffee related example uh
+yeah i i drink coffee in the morning but
+i tend to uh have insomnia if i if i
+drink it too late in the evening so
+there are times in the day when coffee
+affords drinking more than other times
+in the day and so you know it it's still
+the case that at any moment i could go
+into the kitchen and make myself a
+coffee right
+so the field of affordances has more to
+do with those those affordances that are
+soliciting me at a given moment uh you
+know it corresponds to the more the
+phenomenology of interacting with
+affordances whereas the landscape is
+more an anthropological or sociological
+statement as as richard you were just
+saying about the kinds of things that a
+population can do
+in a given space
+it
+that you talk about that idea of
+sailings in the moment because one thing
+we talk about a lot in sociology is is
+identity and so if you activate my
+identity prime me to think of as a
+professor i'm going to notice certain
+things in environment differently than
+if you prime me to think of my identity
+as a husband or a son or a brother
+um so that kind of then again but
+identity means you know my identity as a
+professor may be different from any one
+of your identities as a professor based
+on socialization and culture and
+disciplines even as well right so
+okay interesting thank you yep and just
+one point
+to tie it back they write as high digger
+famously argued it is only when my
+smooth coping breaks down say when i run
+out of coffee or when the cut breaks
+that the objective properties the cup
+becomes salient present in perceptual
+experience at all and depending on if
+you're at home you run out of coffee
+maybe you go back to the coffee machine
+you set up a new brew if you're in a
+restaurant culturally maybe you raise
+your hand or maybe you whistle or maybe
+there's some other thing that's done
+culturally to signal that somebody else
+should see that as their affordance to
+come over and ask you what you need so
+the landscape of affordances is a very
+role specific uh it's realized through
+specific roles but it represents that
+population level and that's so yeah lots
+to say here that was an excellent
+discussion let's turn to these first two
+figures that are cartoons about basic
+cognitive formulas and a little bit more
+of a full formula so in this first three
+panel cartoon i'll read out the captions
+and then maybe somebody can give an
+example or a thought the first caption
+is the person thinking
+i think they think i think
+the second panel says what would others
+expect me to do here and the third panel
+says i inferred that they intend that i
+should think feel or do x
+so what is a thought or an
+interpretation or a punch line to this
+cartoon
+what would mommy want me to do
+in this context and i you know
+it's i think this is
+sociality is kind of scaling that up to
+an anonymous kind of third
+or other or
+that is you know
+yeah this kind of anonymous sociality is
+kind of
+scaling that
+like kind of
+you know parental expectation thing
+up a bit
+yeah it's like peer pressure made me do
+it well yeah they move your joints for
+you well no but people expected me to do
+it well just because they expected you
+to do it even if that's true why did you
+do it and it comes back to this that is
+an account
+of what peer pressure is from from this
+perspective even if the actual
+biophysics of the joints are not being
+pushed by other people and the the point
+that we're making here i mean it's
+really developed in our bbs paper uh
+thinking through other minds but that
+it's that human thinking really is not
+just thinking about other humans but
+thinking through their own perspective
+uh and that much of our social
+interactions actually are structured by
+the beliefs that we have
+about other people's beliefs about our
+own behavior and beliefs
+so you get this kind of nicely
+recursive intentionality structure
+uh
+yeah
+so that that's like the simple kind of
+you know the basic cognitive formula
+that we're calling it but the i we think
+that this really applies to almost all
+human thinking
+we're really always kind of trying to
+understand the situation
+uh from the perspective of you know
+shared beliefs about what's appropriate
+in that situation which which implies
+the ability to kind of perspective take
+and to think through the minds of others
+yep when someone's talking to hear
+themselves talk as we say it's off the
+rails because it's not in feedback with
+other minds but when somebody is attuned
+to the narrative and the culture of the
+local world the local actual interaction
+not just the hypothetical then there's
+the opportunity for communication to be
+targeted and direct and actually move
+towards shared goals and under
+shared values as well instead of just
+individuals biophysically running their
+mouth which is an affordance that we
+also have so how do we move our
+communication patterns towards this
+higher level
+um instead of just using the
+opportunities that we know that we can
+also have
+any other thoughts on figure one figure
+two is related
+is that we talk a lot about
+perspectivism and you know we go up to
+higher and higher levels but i think
+you see a point at which you can only
+take a perspective on what you think to
+a certain level it gets too complex too
+multi-sensory too many inputs
+and it is that kind of phenomenological
+embodied feel for what you need to do
+which is not something you even have a
+perspective on that idea of the flow
+so
+there's this info inferential kind of
+approach as well as a perspective
+approach which just comes from
+just feeling what you should do and i
+think this this kind of shows that
+because i think you can only go up so
+far
+and take perspectives on things
+when
+how you act in the moment sometimes you
+just have to be there and feel it
+yeah and we can't perfectly emulate what
+somebody else wants and it's just not
+that simple we're in the bodies that we
+have with the affordances that we see
+and so to try to over engineer what the
+other person wants or should want or
+should want to want it's uh it's a good
+thought experiment and it helps in a lot
+of situations but it is not the end game
+of relating
+well it might also explain some of the
+difficulties that we're having currently
+in our political landscape
+uh so i mean as a as a canadian i'm very
+sold on the idea of multiculturalism
+and diversity and pluralism but i think
+these are not intuitive
+modes of sociality precisely because
+uh they oblige us to multiply the
+different perspectives
+through which we're trying to
+you know relate to a shared social world
+um and you know like uh
+things like dunbar's number i'm sure
+you're all familiar with dunbar's number
+right if you if you uh basically plot
+the size of primate brains against the
+size of their social groups there's
+almost a linear relation and if you
+extrapolate that to humans we would you
+know live in groups of about 100
+150ish
+and you know the
+the
+that's that probably has a lot to do
+with you know the the kind of sweet spot
+where it's easy to kind of share
+uh you know a bunch of uh beliefs and
+norms and patterns of behavior with the
+group and things get more and more
+complicated as the group expands and
+diversity is included which is not to
+say that diversity is a bad thing by all
+means i think uh you know we should move
+in that direction
+uh
+but i think it speaks to some
+difficulties that we're seeing
+politically that it's not an intuitive
+mode of sociality
+cool
+we'll return to that when we can
+and here in figure 2 we're almost
+rephrasing figure 1 a little bit more
+from an improvisational perspective
+so the left panel
+the person is thinking how much can i
+improvise here the middle panel
+is what do i know they know about me
+right now
+and how much room to improvise does that
+give me
+the third
+panel reads how much can i improvise
+here given what the local cues tell me
+about what others expect
+so a lot to
+say and think there's probably other
+ways that these recursive questions
+could be formulated but is there
+anything that we haven't addressed in
+one that people might want to address
+here
+cool this just reminded me of fellow
+jitzer yes
+yeah um
+i was i was thinking that um
+maybe in the adolescent period um
+we are kind of rebel we are rebels
+against society and trying to find
+our identity
+um
+maybe in other words um minimizing our
+self
+prediction errors so we are like
+trying to test
+these norms um
+by being uh level so actually by
+impairing uh what others intend that i
+should think and feel
+maybe if i do the contrary
+i'm going to
+learn something about me
+so
+how can we deal with this um
+like landscape affordances and cultural
+affordances or even
+what our mom
+is saying and what we are really
+um
+trying to find out
+um
+about ourselves
+nice maxwell
+uh oh
+well
+uh yeah uh uh so i thought that was very
+insightful uh thank you very much uh for
+that very uh very interesting um
+well i would have just added that so the
+point here is to kind of say well
+the
+it's it's not it's not merely just about
+you know inferring
+uh what others think i should do it's
+it's really more about the situational
+coping right
+so it's about like learning different
+contexts
+and learning about what's allowable in
+all of these different contexts and then
+being able to juggle that and to
+reactivate the right constellation of
+you know semantic knowledge for example
+or rules and norms that pertain to each
+context
+and and also then you know moving from
+one context to the next and seeing what
+kind of flexibility that allows for
+ultimately uh because you know human
+reality is improvisational like it it's
+it's it's about kind of you know uh
+coping with
+uh
+with a situation given the constraints
+of that situation in real time
+um yeah
+yeah it's a controlled novelty question
+like a lot of improvisation it's a on
+the edge the leading edge of the
+trade-off between explore and exploit
+where successful systems are at and so
+the teenage rebellion
+if the teenagers just
+mindlessly
+fell into the line of whatever was
+happening before
+maybe in some niche that was unchanging
+that would be a successful evolutionary
+strategy but the niches are always
+changing
+not for the least of which is ecology
+but also improvisation has this always
+moving dynamic and so the teenage
+rebelliousness is there's the element of
+the individual coming to precision about
+who am i and who am i in this broader
+sense and then at the higher level
+there's this explore exploit where some
+element of contrarianism it comes across
+like a negative word but if you've ever
+had contrarian models then you couldn't
+know if you were just in a very very
+local optima or whether there are other
+realms to explore
+so there's there's so
+much there and the details are all in
+actually formulating these specific
+situations and understanding what are
+the affordances what is precision uh
+doing here so maybe in the next bit we
+can pretty
+briefly look through figures three four
+and five so
+maxwell it will be helpful to have your
+perspective on these but let's start
+with three
+so figure three is a hierarchical
+prediction error minimization framework
+and maxwell maybe could you give a shot
+on what was being summarized here sure
+um i mean we're just describing uh
+bayesian predictive coding here
+so
+most uh
+predictive coding schemes are
+hierarchical as we were just discussing
+uh above
+where um basically what i mean this is
+more explained in i think figure four or
+five
+but essentially what this figure in
+particular is supposed to illustrate is
+uh the kind of bi-directional message
+passing that's implicit
+uh in in all of this so
+as we were discussing you know the top
+or the center
+uh is where the more kind of abstract or
+slow regularities uh are represented and
+they they effectively the the top layers
+provide context for the bottom layers in
+the same way that slow regularities
+provide the context
+or the embedding against which
+uh you know faster regularities unfold
+well these slower regularities or priors
+provide context for the the ones below
+so what you have descending or you know
+coming from the center to the periphery
+is effectively predictions about the
+kind of
+data that each
+subsequent lower layer should be
+receiving
+and the way these schemes work
+uh is uh i i think consonant with the
+phenomenology
+uh you know that so
+essentially if the brain doesn't have to
+process something then it doesn't uh the
+brain is a lazy organ so the the thing i
+i often say to drive this home is what
+was the color of the last door handle
+you opened
+there's a large
+there's a high probability that you
+didn't register that at all
+uh well because there's no reason to
+right like you just smoothly coped with
+with the door what you needed to do is
+open the door to get to the other side
+of it and you know there was no reason
+to even register the color of the door
+handle
+so what with this kind of framework says
+is the signal that the brain is
+processing at any time is the
+discrepancy between the data that it was
+expecting to register and the data that
+it actually does and this difference is
+called a prediction error
+and uh if you can go just back to figure
+3 for one second um i just want to make
+the point that well
+so uh this relates to base in the sense
+that descending messages
+carry prior probabilities so essentially
+you can think of this as the base rate
+for a given phenomenon independent of
+the data that i'm collecting and then
+the prediction error kind of combines
+that knowledge with data so it's
+something like the likelihood if if the
+prior is just the probability of an
+event that i'm considering the
+likelihood is the probability of that
+event given some data that i've actually
+uh
+registered effectively
+so
+this is why these frameworks are often
+called bayesian the ascending messages
+carry prediction errors which are
+likelihoods and the descending messages
+carry prior probabilities which which
+are the predictions that the predictive
+brain and so on are all about
+perfect and then from here uh we move on
+to
+um a
+specific hypothesis
+the predictive coding i'm not sure 100
+the degree to which we're still
+committed to this functional distinction
+but the idea is that um in at least in
+the brain they're going to be two kinds
+of neural populations
+uh the ones which encode effectively
+yeah these generative model units which
+are the ones that are encoding the the
+kind of base rates about the phenomena
+that you're interested in and then
+another uh functionally distinct
+sub-population of neurons that's
+responsible for computing the difference
+between the data you expected given
+these predictions
+and the data that you're actually
+receiving
+and again the unexplained signal that
+the part of the signal that wasn't
+predicted by
+uh the descending uh messages is passed
+upstream
+uh in the hopes that it'll be explained
+away at some point
+and also one note that can help
+understand this
+is this caption in the empirical base
+framework the system can then use the
+posterior obtained from one iteration as
+the prior in the next iteration and so
+the empirical base framework is in a way
+what it cuts the gordian knot it
+prevents us from just saying well it's
+just simply priors all the way up and we
+start somewhere by starting our prior
+for one level
+with just empirically what we're getting
+from the posterior at the lower level at
+that time point as a starting point and
+so this can be instantiated in physical
+not infinite systems
+because there's a possibility that
+empirical phase just as it's used in
+data analysis in a variety of fields you
+can use the data to inform a prior and
+then have a generative model that starts
+working from there yeah precisely and
+what bayes does in this context is just
+provide a way to optimally combine what
+you knew before sampling any data
+uh with what you've learned from that
+data
+uh so as you're saying uh what you're
+essentially doing is multiplying your
+posterior so you calculate your
+posterior by multiplying your prior by
+your likelihood and then uh normalizing
+uh which can get a bit hairy at times
+but
+that's effectively what you're doing
+here
+and let's just look at this example so
+here we have the same architecture as
+figure four so we're building it out
+figure three
+this is a uh it's a graph it's just
+nodes and edges it's the pure
+representation now we're thinking about
+a little bit more of a plausible neural
+architecture and maybe in some brain
+regions it is this way and maybe in
+other brain regions it isn't this way
+but this is a plausible architecture and
+now we have an example so what is being
+shown with the dog
+well this is just to re-illustrate the
+center versus periphery distinction
+uh well so the the image of the dog has
+just undergone a fourier decomposition
+which basically means that you're kind
+of separating out the different spatial
+frequencies
+uh that are used to generate the image
+and i mean the hypothesis is always sort
+of the same is that the closer you are
+to the sensory periphery the the more
+you're dealing with faster changing
+regularities uh so high spatial
+frequency information is represented at
+the bottom or the periphery of the
+hierarchy and as you ascend the
+hierarchy what you see is essentially
+lower and lower uh spatial uh frequency
+information
+uh so this is the kind of idea here is
+that like the the the fast regularities
+are represented closer to the sensory
+periphery slow ones closer to uh the
+center
+uh
+yeah
+i hope i said that right and um
+and and yeah uh most sensory modalities
+are gonna be
+uh deconstructed in this way i mean you
+know for the visual uh
+brain regions
+uh you start off you know detecting uh
+essentially lines and you know like
+grading patterns and the more primary
+us visual areas like v1 and everything
+and then as you ascend the cortical
+hierarchy what the neurons become
+sensitive to are
+groupings of these patterns so things
+that change at a slightly slower
+time scale
+i mean if you did one of these fourier
+decompositions to an image of the face
+what you'll see is that the gross
+morphological features of the face like
+you know where your cheekbones are and
+where your uh you know jawline is
+are
+much coarser than the fast changing
+things in your face like your eyes and
+your mouth
+uh and so again you you might assume
+that this is represented hierarchically
+uh in the brain um
+and let me see
+i'll add one more level to the specific
+visual example because it's in the
+specifics that we can see what we're
+getting out of this framework so low
+spatial frequency is like a blur filter
+it's a very uh it's averaged out over
+large regions of visual space on in
+contrast the very high spatial frequency
+it looks grainy and that's kind of like
+turning the contrast very high up to
+over emphasize differences between
+neighboring pixels but when you do that
+you lose the global structure so we know
+that from playing around in photoshop
+well it would be really cool if we could
+just see the world in total high
+resolution and just optimize this with
+one level but it turns out that in the
+retina the cells are activated even
+before the lines detection it's like
+light first dark it can only detect
+whether it's on or off extremely locally
+and so how does that signal which is
+ultimately an extremely local contrast
+signal how does that percolate up in the
+context of deep priors about
+regularities in nature to look at deep
+mind look at the images that are
+produced in deep dream these
+regularities that appear natural they're
+not just any kind of natural they're
+human visual niche natural like grass
+and clouds
+these kinds of things have structures
+that certain other kinds of repeating uh
+like a grid just doesn't appear in
+nature and so this is a structure by
+which the hyper local contracts to
+contrasts literally between pixels in
+this image can be passed up and you can
+end up getting this full spectrum for
+your uh resolution on the image
+and then to add one more level of detail
+what we experience
+isn't any single one of these levels
+because we experience a world in full
+color though there's no uh color
+receptors at our periphery and also a
+world that's at full resolution though
+we have very very different resolution
+as far as the pixels are uh
+the retinal detection units are
+concerned in this phobia in the center
+of the eye versus the periphery so that
+to me is demonstrative that we're
+experiencing our degenerative model of
+the world which is that the world has
+similar resolution no matter which way
+my head is looking
+and there's color everywhere and then
+subconsciously or sub personally our
+eyes are engaged in an oculomotor
+informational foraging task and where do
+the eyes secade it turns out that they
+look where the most informative place to
+look would be
+given the structure of this bayesian
+algorithm so so many things that are
+suggested with just this architecture
+and there's so many aspects of the
+signal processing cascade and especially
+the top down priors that aren't
+reflected by this idea that the eye is a
+camera and the brain is a cpu and it's
+just doing image classification
+like a convolutional neural network
+there are convolutional elements to be
+sure in vision but they're playing out
+in this type of framework not in a
+tic-tac-toe framework
+yeah absolutely
+um
+couldn't agree more with that that's uh
+that's a great point i mean uh the i
+think an often overlooked element of
+this picture is that it's not just
+saying
+like this is a criticism of bottom-up
+passive
+you know a passive picture of the brain
+that just kind of bottom up
+aggregates uh you know simple properties
+until you get something like a percept
+it's so we're not just saying that this
+is a top-down approach it's the
+bi-directional processing cascade that
+really gets you uh where you want to go
+ultimately
+and you know as you were just saying uh
+dan like you know the the experience
+that we're having
+implicates all these different levels
+and it's precisely because this whole
+multi-level architecture is implicated
+at all times that you get this kind of
+rich
+uh you know equally multi-level
+experience
+cool maybe we can turn to this last
+figure for the last section of our
+discussion so now we've built out this
+bayesian framework from the previous
+images first from its most austere
+framing to something that looks a little
+bit more naturalistic and now we're
+going to bring it back to our discussion
+about culture and about expectations
+norms and affordances so here we have
+the same
+structure where we have predictions
+moving
+down and prediction errors moving up or
+in or out these are just spatial
+metaphors and there's only in and out
+there isn't top or bottom
+and then we're adding a few more levels
+of details to the model the first is
+this blue
+and that's the precision weighting and
+so that's entering this hierarchy at a
+few different places and it's tuning the
+temperature so to speak on the precision
+so how much should we
+value how much stock should we take
+about this uh information that's coming
+up although there's a lot more nuance
+there and then also there's a top-down
+modulation of attention and that's where
+this regime of attention enters so the
+precision story is really key to all
+this and you know honestly as i was
+learning this framework uh you know like
+five years ago initially i was hoping
+that the precision stuff wouldn't be so
+central to the argument because it's
+really complicated
+but uh it turns out that it you get you
+get some of the most interesting effects
+from uh the precision stuff so it's it's
+it's a little bit
+it's a little bit difficult sometimes to
+wrap your head around but i think the
+effort is worth it the the idea is just
+to say at every level of the hierarchy
+the the brain doesn't just register a
+signal but it evaluates how confident or
+relia it is in that signal or how
+reliable the signal is and this is what
+this precision construct effectively
+uh quantifies and you know uh dan you
+were relating this to temperature
+informally that's correct uh a more
+intuitive way perhaps of framing it is
+as volume so it's sort of like the the
+brain's volume on each of its different
+kind of sensory streams so sensory and
+predictive streams effectively
+and yeah so uh precision waiting is what
+uh allows you to according to this story
+at least arbitrate uh different sources
+of information so for example 2018 2019
+i spent a lot of time in london and
+london was surprisingly foggy
+um so it it so far i mean as a canadian
+i never experienced anything like this i
+think once when i was a child there was
+just so much fog and there were days
+when i would come out of my flat in
+london and i couldn't see two feet ahead
+of me there was so much fog and so uh
+you know in in circumstances like that
+what you learn to do is to rely on your
+other senses like you're hearing for
+example so there's a there's a story
+about the way that the brain is kind of
+dynamically it's sort of like a dynamic
+balancing act
+in a sense the brain is trying to see
+which which of the signals that it's
+dealing with are the most reliable um so
+i'll stop now richard has yeah
+yeah so and this is the the criticism i
+get a lot uh when i present at
+conferences and even when i publish on
+ideas related to this in the sense of
+you know if i'm let's imagine i'm a
+master burglar and i i walk into a
+neighborhood and i'm looking i'm chasing
+the neighborhood to find out what i want
+to what i want to break into which house
+i want to break into and so i have these
+priors i had the sensory information
+highly motivated to steal things and
+then there's always that old guy in the
+back who raises his hand and says that's
+really cool so how do i test any of that
+how what do i measure what variables do
+i need to collect and if at the end of
+the day all you're giving me is a more
+refined version of what i'm already
+talking about
+who cares and i i my gut tells me that's
+wrong that i mean as we clean in all
+these different disciplines we can go
+back and forth and translate you know
+our concepts back and forth and see that
+we're all talking about the same thing
+but if it doesn't lead to something
+empirical that then we can then start
+doing critical tests and show
+this version of the theory is wrong
+because my predictive priors or whatever
+would have looked differently if it had
+been that way
+so i i guess like to me that's the thing
+that i i'm always struggling with it and
+i'm hoping i can get some insight from
+everyone here is
+how do we translate this figure six into
+an empirical test that i can write up
+for an nsf grant and then gather data
+and show my theory is right
+parsons from 1950 was wrong right or
+something
+that's a great question um
+i think the where this has been done the
+most extensively is in psychiatry
+uh
+where
+and this is why you know uh this is what
+really drove the message home for me
+that the precision story was so central
+to this
+is that you can understand a lot of uh
+psychiatric conditions uh in terms of uh
+you know altered precision weighting
+profiles
+um
+so
+like uh i think a
+kind of well understood
+example has to do with the cycle the
+course of schizophrenia
+uh so we think that
+and phil corlet uh has great work on
+this uh i mean several people uh have
+worked on this uh
+from different kind of perspectives but
+all kind of relying on this construct of
+precision and backing it that then
+backing it up with fmri data so the
+course of schizophrenia for example it's
+thought to maybe start out as a you know
+a break a physiological break in your
+dopamine signaling so say d2 receptors
+start to misfire for no reason so
+they're generating
+uh what we would consider to be a
+spurious prediction error so like a
+prediction error that isn't really
+tracking anything
+and initially this gets resolved
+perceptually in the lower levels of the
+hierarchy it's kind of contained through
+hallucination like the brain is
+generating a prediction error signal and
+what it what it ends up doing is
+underweighting uh
+its priors are overweighting its
+prediction error uh because that's
+essentially what's going on like there's
+a breakdown and these prediction errors
+that aren't tracking anything are given
+too much uh importance and as the
+condition worsens they're given more and
+more importance because they're
+consistent like the brain is just
+consistently generating this prediction
+error and at some point it gets so it
+intense in the brain that it starts to
+be resolved through learning rather than
+through a hallucination so then you know
+for those of you who do a little bit of
+research in psychiatry you'll know that
+there is a typical course of
+schizophrenia that starts off as a more
+kind of hallucination experience where
+people are still to some degree
+cognizant of the fact that they're
+they're undergoing an abnormal
+experience and they're hallucinating but
+late stage you know uh schizophrenia
+has more to do with uh persistent
+delusional beliefs and now your actual
+cognitive structure is adapting to the
+error signals that you're generating and
+learning from
+learning the error essentially uh which
+is not tracking anything in reality
+because it's just due to a breakdown
+so
+from that point of view uh to answer the
+well to to address the points that you
+just raised richard the i think the
+uh like a lot of the power of the
+approach in terms of proof of principle
+comes from psychiatry
+these predictions uh and precisions are
+are computed by parts of the brain that
+you can identify and so phil corlet i
+think in particular
+has done uh some really really cool work
+uh on um
+on hallucinate uh on the uh on
+schizophrenia and the uh effectively the
+kind of uh presentation of schizophrenia
+and the chorus of schizophrenia
+very cool work from that point of view
+it feels at yale uh for those of you who
+are interested
+cool um steven and then we'll return to
+the unique
+predictions question
+yeah i suppose just adding to that um
+this this challenge of
+things happening over time like a time
+series
+of
+things happening rather than kind of
+some snapshot in time which i think
+traditionally a lot of research sort of
+does that
+so
+even what maxwell was saying there is
+what's presented as a pattern over time
+if you took one moment it might not show
+that and i think that's where
+it's kind of hard to analyze that that's
+why these models that they create
+show how things pan out over time
+on a low dimensionality and then you can
+get something from that and i'm kind of
+that does present a problem about real
+life scenarios and i'm my i'm interested
+in whether maybe
+approaching it from the direction of
+affordances and the environment and
+working backwards
+to how people are tuned to an
+environment might be the way to look at
+the more macro because it becomes so
+high dimensional if you take someone at
+the individual level but i think this is
+up for grabs
+let's bring that back to the question
+about crime uh by richard so let's think
+about the shared expectations so the
+shared expectations might be people
+don't walk uh onto someone else's
+private property so in that case even
+somebody who's highly motivated and has
+the tools the affordance to do a
+burglary
+there's still uncertainty about what's
+inside the house now let's imagine
+changing the norm so that people are
+have wide windows and you can see
+exactly which house has which uh
+equipment now somebody who's motivated
+and with the affordance is enabled by a
+cultural norm that allows passing close
+to the window as well as an
+architectural affordance to see inside
+the house they're reducing their
+uncertainty
+about what's inside of the house and
+that is going to change not just that
+agent's behavior in their own field of
+affordances but also some macro trends
+and so this is in one sense this is
+looking at within the brain these are
+different neuronal populations and that
+would be precision could be played by uh
+dopamine and by dopaminergic synapses
+like maxwell's talking about and
+personally i find it fascinating that so
+many stories about reward like oh well
+gambling is about people trying to
+maximize reward or bank robberies about
+people trying to maximize reward really
+is it though or is it about people
+optimizing their precision or perhaps
+even operating under maladaptive uh
+precision regimes so it doesn't have
+just because it's an optimization and a
+precision oriented framework doesn't
+mean that aberrant events don't happen
+so within the brain level we can think
+about that type of precision but then
+also socially what is the feedback that
+somebody receives along the way that
+have has other people give them feedback
+to keep them uh
+on the straight and narrow as it were
+and then how do we as cultures define
+what that path is are there on-ramps
+from the fringes of society that help
+onboard people into a healthy and
+cooperative way of living or do we push
+people who even deviate in some way out
+of the center where they're even more
+likely to deviate further from the
+increasingly narrow perspective of the
+center so there's really so many levels
+that this can come into play at
+so i think just because of the time
+let's have a few closing thoughts from
+anybody who would like to share and then
+also please through text if you're
+listening as well as participating
+submit us questions or topics or quotes
+because we have a bunch of quotes that
+we've selected and some other things
+that we felt like we could have spent
+more time talking about but we'll save
+that for next week with this first
+week's podcast being the figures the
+definitions the on-ramps and the
+accessibility from a lot of different
+fields and then the next week we'll
+bridge out even further so any closing
+thoughts from our
+participants
+shannon
+i think that's a really good point that
+question of how do you
+study this you know how how is how do
+you
+bring this entire story of
+the free energy principle or predictive
+processing or act of inference and
+actually study it in
+a
+social context like in a group of people
+so not just the stationary burglar who's
+alone in a neighborhood
+at night but in the context of
+a group of people who are interacting
+and i think that would be a really great
+topic for part of next week or like when
+we revisit
+and just you know a plug from music
+that's a great uh
+little model system to study these kind
+of interactions um and starting from
+western music just because i grew up
+here and that's kind of music i've
+interacted with but if you have an
+ensemble you know who are the leaders of
+the ensemble who are the followers
+and you can kind of manipulate that um
+and
+really study how you can play with
+changing the regimes of attention or
+changing who in the group
+dictates uh what the particular field
+of affordance is that this piece of
+music needs to play
+um and there are a lot of really
+exciting and fun ways to get creative in
+the lab to study these kind of social
+exchanges and maybe put some of these
+um super complex mathematical models to
+like bring it give it some empirical
+testing
+great richard anyone else can raise
+their hand as well yeah uh building off
+that i think that's a great idea to talk
+about people in groups and you know the
+things that i've seen coming out with
+with hyperscanning and the ability to
+have two three four or five people all
+being scanned at the same time whether
+socially interacting and and then asking
+okay so what is this mathematical model
+of the free energy principle or active
+inference or whatever embedded an
+individual how does it what i mean does
+it come down to a couple of oscillators
+i mean that's the thing i keep coming
+back to you is this right this is just
+another version of coupled oscillators
+and if that's true
+then the notion of how do i empirically
+deal with this is because these coupled
+models can deal with 10 15 20
+1 000 people interacting that our
+current concepts in sociology we can
+talk about abstractly but no one can
+really figure out a way to measure it so
+i think that'd be really interesting to
+look at the intersection between the
+models
+our our current scanning abilities and
+empirical design and the theory and
+really see
+where they what are they talking about
+and what is a more unified
+you know
+operationalization of these concepts in
+light of this technology and these
+models what would that look like in
+terms of experimental design
+that's really exciting um i'll i'll try
+to rejoin uh because my camera crashed
+again after this comment but i wanted to
+say to both of you shannon and richard
+if these are lines of research that
+you're interested in exploring this is
+definitely something that my group is
+very keen on exploring uh i mean you're
+talking about hyper scanning i really
+think this is the direction ford uh
+we're working with uh
+a few people now uh
+so robin murphy
+uh santiago castillo uh
+in particular
+are all
+people who do eeg and fmri hyper
+scanning and uh the the new kind of
+thing that we're trying to do is uh to
+combine multi-agent modeling with uh
+multi-brain neuro imaging
+you know because the problem with that i
+have with social neuroscience is that
+we're and i'm sure those of you who do
+social sciences will concur
+they're what we're essentially doing is
+looking at the brain with this really
+deep level
+of you know inquiry we're
+you know
+we're looking at like hundreds of
+different uh sensors on the scalp or
+whatever and so we have all of these
+this brain data that we're looking at
+but really when we're looking at like
+the kind of social measures that we're
+using it's it's these kind of toy
+measures like empathy or whatever that
+are supposed to tell us like something
+broad about culture
+and the problem with that is that we're
+effectively flattening all of the causal
+structure and complexity of the social
+world onto these kind of toy dummy
+variables that are supposed to tell us
+something really deep about uh you know
+social interactions and
+uh by combining this multi-scale
+perspective opened up by the free energy
+principle with uh hyper scanning and
+other uh social neuroscience techniques
+we're hoping to really
+be able to uh talk about and understand
+and model the social world in all its
+complexity while also looking at
+uh brain dynamics so i have people for
+example interact in ecologically
+realistic situations for humans
+uh and then see stuff about you know
+like uh so edwileck for example if you
+don't know her you should absolutely
+check out her work um
+e-d-d-a-b-i-l-e-k
+edward
+she's currently carl fristan's postdoc
+uh and i think she's also at mannheim in
+germany and what she's developed is uh
+effectively a measure of brain to brain
+synchrony or uh brain tumor real-time
+brain-to-brain information transfer
+and you can get to this by uh looking at
+basically real-time interactions between
+humans
+uh you know engaging in some kind of
+shared participatory task like you know
+aligning gaze direction or whatever and
+simultaneously recording their brains as
+they interact and i really think that
+this is like the golden way forward so
+if any of you actually are interested in
+pursuing this please uh send me a dm or
+something and we can get started
+perfect and i'll just close i think with
+one short note on flattening versus
+deflationary theory because it really
+does come back to what are we doing here
+is this another metaphor and it's just
+pendulums on a table um or is there
+something actually more here and
+flattening maxwell was suggesting is
+when we're just projecting that's
+psychological as well as a dimensional
+term we project onto simple constructs
+we want to have a simple concept of
+empathy and in a sense by projecting
+into that representation at a lower
+dimension we've created a world that
+isn't necessarily reflective of the
+whole system
+in uh in contrast with a flattening
+account we can have a deflation a
+deflationary account where what's
+happening is really communicating brains
+it's really just those brains
+communicating and we're deflating away
+the extra the second level where is the
+empathy where's the regime where's the
+attention the answer is it's the whole
+system and it's not just the whole
+system meaning the person it's the whole
+system with the niche and the culture
+and so it's a lot to grasp grasp with
+because it is a multi-level system and
+we can design an experiment that
+isolates a certain component but we
+never truly have isolated from the
+evolutionary context or the
+developmental context and so the goal
+to pursue inflationary rich accounts
+that provide all of these humanistic
+things that we want to see like inactive
+embodied in cultured cognition
+rather than flattening it onto something
+and then saying well maybe they're the
+same between different cultures we can
+actually
+go into that richness and look at what
+we actually have and stephen with a
+closing thought
+yeah thanks i totally agree and i like
+this idea of being able to feel
+where we look this idea of feeling
+texture it would be sort of analogous to
+that because you have empathy and
+someone like i work a lot in the
+development field and community work and
+you get this idea of empathy but there's
+no
+time variation and empathy it's just
+like dump there resistance and it's like
+well how is that changing
+moments moment isn't there's none of
+that no one really thinks about that how
+things change over time so i think this
+this is actually really useful
+it's clarified a lot of stuff in my head
+actually just hearing that discussion
+about
+i think it's a different way of thinking
+about
+looking normally all that granularity
+would be seen as a problem but actually
+it can be seen as data which is really
+cool
+beautiful maxwell first author last
+thought
+i just wanna it's less of a thought than
+a feeling i just wanted to re-express my
+gratitude to everyone in the
+conversation um this is really exciting
+and
+awesome and uh like yeah i i
+so
+if anyone does want to develop these
+ideas like i was saying please get in
+touch with me and uh our our group is
+very keen on collaborating with the
+we've established a a multi-site
+international network of research called
+the nested minds network uh we're gonna
+give uh we're gonna launch the website
+pretty soon but uh for those of you who
+uh are looking for international uh
+collaboration and so on please get in
+touch with me uh
+like what we're trying to do is build a
+community uh around this and you know
+this podcast is definitely part of the
+consolidation process
+and uh yeah so thanks thank you all uh
+you're all really cool and this is
+really fun
+thank you maxwell we built the on-ramps
+together that are bigger than we can
+build individually and build the
+on-ramps we want to see we build the
+culture that we want to see and that's
+a lot of work to be done but it's
+empowering to know that together we'll
+make it happen
+okay thank you all for the live stream
+thanks for listening and i will end the
+live stream

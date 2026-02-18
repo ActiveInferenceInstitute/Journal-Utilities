@@ -1,0 +1,3205 @@
+---
+title: "ActInf Livestream #026.1 ~ “Bayesian Mechanics for Stationary Processes”"
+category: "Livestream"
+series: "Livestream_026"
+episode: "1"
+duration: "1:53:02"
+url: "https://www.youtube.com/watch?v=1rHz3Ir5v9c"
+views: 187
+exported_at: "2026-02-18T22:37:37.673359+00:00"
+format: markdown
+---
+
+# ActInf Livestream #026.1 ~ “Bayesian Mechanics for Stationary Processes”
+
+hello everyone welcome to the active
+inference lab today it is august 10th
+2021 and we're here in live stream
+number 26.1 discussing bayesian
+mechanics for stationary processes
+welcome to the active inference lab if
+it's your first time or not
+we are a participatory online lab that
+is communicating learning and practicing
+applied active inference you can find us
+at the links here on this slide
+this is a recorded and an archived live
+stream so please provide us with
+feedback so that we can improve on our
+work
+all backgrounds and perspectives are
+welcome here and we'll be following good
+video etiquette for live streams so
+people can just raise their hand
+visually or in the jitsi if they want to
+speak
+this short link here has our calendar of
+live streams for the year
+and we're here in number 26 where today
+on the 10th and then next week on the
+17th we're going to be continuing
+discussion on the bayesian mechanics for
+stationary processes paper
+and then we're going to launch into some
+other papers so take a look at that link
+if you want to learn more
+today in live stream number 26.1 the
+goal is going to be to learn and discuss
+thankfully and really appreciatively
+with some of the authors of the paper
+we're going to be discussing this
+bayesian mechanics for stationary
+processes paper
+and
+asking questions writing things down we
+want to look up over the coming week and
+just seeing
+what is uh
+fun to talk about in this paper
+so we'll start with just an introduction
+and a warm-up of the non-authors and
+then we'll go to the authors for
+conveying anything that they'd like to
+just at the outset
+so i'm daniel and i'm a postdoc in
+california i'll pass it to awful
+work in the air modern collective
+intelligence
+i founded and coordinate the kerosene
+research laboratory on building
+inactive models for navigating the
+anthropocene
+thank you let's go to stephen and then
+dean
+hello welcome my name's steven syllett
+i'm based in toronto and uh looking
+forward to hearing the new developments
+in active influence this paper covers
+great and then
+dean
+good morning i'm i'm dean i'm a
+retired guy i live in calgary and i'm
+trying to
+see what uh new insights can be provided
+by all this math because it's quite
+impressive to me
+cool so on to lance and conor whichever
+one of you would like to go first and
+sort of
+give us the give us the big picture and
+how we got here and how you got to this
+work before we jump into the paper
+do you want to go
+uh you you should go headlines right
+um so so hi everyone and thanks for
+inviting me daniel
+so my name is lance and i'm doing a phd
+in math and neuroscience in london
+with uh cal pristine and greg pavliotis
+and basically i i came to writing this
+paper and doing this kind of research
+because i'm interested in the question
+of artificial intelligence
+and i think
+a lot of people who are doing machine
+learning are approaching the question
+from an engineering perspective
+but i'm more interested in the
+scientific perspective the scientific
+question of what intelligence is what
+intelligence is
+and what do we really need to to create
+an intelligent system
+and so
+um
+researching around what what people were
+doing i i found about i found out about
+the free energy principle
+and to me was um
+the most mathematical piece of work
+that i had that i had seen in
+neuroscience and it seemed like it could
+encompass many things
+and he also had applications in active
+inference
+to model the brain and
+ungenerate autonomous agents
+and so now in my phd my goal is to
+deeply understand the free energy
+principle
+and
+to to lay out the mathematical
+foundations because i think the free
+energy principle started out as an
+intuition
+and gradually people have
+tried to to make it more formal and
+grounded in mathematics
+um and so this is what we're trying to
+do in this paper so it's not
+this paper is not the end but i think
+it's a step forward
+so i'm really excited to
+to share it and
+ex
+like talk about it with you guys
+awesome sounds really cool about
+starting as an intuition and then
+working to ground in mathematics or or
+then would it be grounded in intuition
+and then elaborated with mathematics so
+connor
+yeah thanks i'm happy to be here um and
+good morning good afternoon to some of
+you depending on the time zone
+so yeah my name is connor heinz i'm a
+phd student at the max punk institute
+for animal behavior the department of
+collective behavior in constance germany
+and i'm co-advised by
+carl fristen at ucl and then ian cousin
+who's my advisor in constance i'm in the
+u.s at the moment uh but yeah so i
+i'm also generally interested in
+bayesian mechanics i think so lance and
+i started our our phds at the same time
+and ever since i found out that lance
+was also interested in kind of the
+mathematical foundations of the free
+energy principle we've been in
+discussions about bayesian mechanics for
+a long time so i was really grateful
+that he invited me to contribute to this
+paper
+and kind of it relates to my own
+interests because i actually used to be
+more involved in neuroscience now i've
+moved more onto the idea that
+any generic complex system can be
+described as engaging in a kind of
+process of approximate bayesian
+inference and so i'm exploring that in
+my own research in the context of
+collective collective behavior so in
+particular things like collective motion
+like schooling and fish and flocking and
+birds
+so this paper i think
+it gets at kind of the mathematical
+foundations of sentience and autonomy in
+all kinds of systems not just
+nervous systems so that's why the the
+framing in terms of stochastic processes
+i think is really powerful because it
+allows us to extend the framework to all
+kinds of complex adaptive systems not
+just the ones we might associate the
+predictive coding free energy
+formulation with like brains
+thanks and a really nice point that like
+there's activity in the nervous system
+but it's not moving or the subunits are
+not moving around so what are the
+similarities and the differences or
+what's the framework that's going to
+allow us to
+accommodate systems that are moving
+around like the schools of fish flocks
+of bird and then systems where the
+topology is either fixed or slowly
+changing
+and
+we have to do similar kinds of dynamical
+analyses so also welcome dave
+so stephen i see your hand raised go for
+it and then anyone else who wants to ask
+a question at this stage yeah just i'd
+like to comment i think that was thanks
+for the introductions and those insights
+i think um you know as there's been this
+progression oh
+we've gone from bayesian approaches and
+how we had predictive processing
+approaches and active influence approach
+approaches it's it's nice to also think
+about okay once we start to generalize
+it can be nice to go back
+um to the bayesian
+for idea more broadly and see okay
+now the active influence supports all of
+that you could then start to open the
+net so to speak so i'm interested in a
+lot of community psychology approaches
+and
+even interactive theater and immersive
+theater where you're trying to work with
+people's sense-making so i like that
+re-broadening to maybe a more heuristic
+mindset
+so i thought that was interesting
+cool so anyone can raise their hand um
+if at any point but
+let me just maybe start with our as we
+tiptoe to the edge of the paper like
+what brought you
+either of the authors to this framing
+did you find something in the junkyard
+that was looked over or was there
+something that was already being worked
+on and you wanted to introduce a new
+thread or how did it come to be composed
+and worked on in this way
+um
+well so that there has been um
+so i think kel fristen has been working
+like for the past decade
+trying to put
+mathematics uh on the free energy
+principle and trying to explain why
+um
+so as i mentioned before i think the
+free energy principle started out as an
+intuition
+and i think he has been working for the
+past decade
+in on a mathematical theory or a
+physical theory for why the free energy
+principle
+should hold um
+as an explanation for
+what the brain is doing
+and so
+what we wanted to do in this paper is to
+um to actually take take these
+developments uh that were mostly coming
+from physics
+um and that weren't necessarily as
+general as they could be or as
+mathematically rigorous as they could be
+and actually put it on a fair
+mathematical framework
+and try to explain it clearly and
+i mean as clearly as possible
+so that was the goal here
+so what do you think that intuition was
+or maybe there's a lot of ways that i'm
+sure fristen and others have said it but
+what is the intuition that at least you
+are pursuing with this work
+right um so i think
+the the intuition
+so i think it came it came from two two
+different ways um from from two
+different ideas so so the first idea is
+if you come from machine learning
+and you look at machine learning from a
+very broad perspective you look at many
+different algorithms
+and you look at what they do you look at
+many different problems and you look at
+what they do
+and it actually turns out um and i think
+that's something that people started to
+realize in the early like 2000s
+that a lot of these
+algorithms arguably all of these
+algorithms they can be seen as
+minimizing free energy
+um
+and so we without getting
+deeply into that um i think the moral of
+the story is that
+a lot of the things that working in
+machine learning
+are special cases of minimizing free
+energy so of doing some kind of base and
+inference
+and so many of these problems you can
+think of them as like special cases of
+base and inference
+so i think if you come from machine
+learning
+then would be quite natural to say
+or at least you could say oh
+approximate inference or free energy
+minimization
+is the most general thing you can do in
+machine learning
+and therefore since the brain engages in
+some kind of cognition
+it seems reasonable to assume that it
+may be doing some kind of basin
+difference
+an approximate base inference so
+minimizing free energy is the most
+general way to look at it so that's one
+way to get to a free energy principle
+but maybe it's not very convincing so i
+think
+the other
+the other way you could get to a free
+energy principle
+um which is more grounded in physics
+and i think that was like um the content
+of the original papers
+is that if you look at a system that
+persists over time
+um
+so a system that does not dissipate
+then you can show
+that it has to be optimizing something
+um
+and there and then you
+there has to be optimizing some what
+people call model evidence
+so the this system must have like uh
+implicitly or explicitly a model of its
+environment
+and it has to be optimizing in order not
+to dissipate it has to be optimizing
+that model
+and then you can show that
+um
+actually minimizing free energy enables
+you to do that
+so i think that's the the other way um
+anyway so so what we did in this paper
+is we we took this intuition
+of what it means to persist
+so so we
+there's like actually a clear way of
+thinking about those things in uh in
+mathematics and stochastic processes
+so what we do in this paper is we look
+at systems that persist over time
+and
+we also look at systems so that's the
+first assumption and then the second
+assumption
+is that the system has to be separated
+by a boundary with its environment
+and i think i mean intuitively it makes
+sense because we we're looking at
+systems that are bounded
+uh with their environment so they
+interact
+via a markup blanket but they cannot mix
+per se with the system it's not like
+milk and coffee if you wish
+it's like a person in an environment so
+it's
+well defined in space
+um so these are the two things that we
+assume in this paper and then we show
+that
+you can actually
+describe the system as minimizing free
+energy in some way
+thanks for that it's interesting about
+the machine learning branch towards the
+fep and then the physics branch because
+of course there's also sort of the third
+leg of that triangle with the physics
+and machine learning so
+we go from that just a interdisciplinary
+connection or an interface
+to add in the third which is this active
+inference or the free energy type
+framings and all of a sudden some of the
+ideas that were a little bit hard to to
+map from machine learning and physics
+kind of come around the horn and maybe
+there's a way that we can
+see active inference playing a role
+there so again anyone can just raise
+their hand if they have a question or
+write a question in the live chat
+here's the road map
+so these were the sections of the paper
+which
+introduced that boundedness notion of
+the markov blanket
+discussed basic mechanics active
+inference and stochastic control and
+then had a nice discussion and
+conclusion with a few
+supplemental sections so
+what went into how you laid out the
+arguments or
+what sections do you think were um
+condensed or which ones would you want
+to expand on more so first just to the
+authors on that and then avo your
+question
+hello lance and
+[Music]
+wait commer
+i have a question uh before we get into
+detail i'm curious whether you were
+aware
+of the kind of criticism that an
+activist launched at the french
+principle in suffocation in cognitive
+science
+right could you mention what what
+specific criticism we're talking about
+okay so i'm referring to the paper
+laying down a path by di paolo
+thomson and beer
+um there is a lot of criticism that is
+just
+completely out
+unrelated to anything that uh acting
+says but the core
+thing that seems relevant to me
+is the role of creation and historicity
+and
+well self-creation
+in cognition intelligence and life
+so yeah the paper just i'm going to put
+it in the chat is laying down a forking
+path incompatibilities between an action
+and the free energy
+principle so
+first to the authors for any thoughts on
+that and then see stephen with a hand
+raised
+right um
+so so i haven't read this particular
+paper
+um
+so i i can i can't give you an answer
+that's specific to this particular paper
+um i would say
+i would say from a general point of view
+so yeah there's a lot of criticism on
+the free energy principle
+and i think it's natural because the
+free energy principle aims to be
+seems to be very general it's also an
+extremely ambitious
+um in in regards to to the criticism so
+far
+it's it's either been on the on the
+mathematics
+and so this is something that we've
+fixed with the with the current paper so
+i think a lot of the mathematical
+criticism in the literature
+is void
+i mean is rendered void by by this paper
+and there are there are other um
+i would say philosophical criticisms uh
+on the free energy principle so it's not
+something i'm
+expert about because i'm i'm a
+mathematician so i wouldn't be able to
+to really debate about the philosophy
+here
+um i i so i i'm not aware of
+like uh daniel you said you put the link
+to the paper in the chat oh i'll put it
+in this i'll put it in the jitsi chat in
+just a second okay because i i meant i
+noticed you mentioned the words like
+creation and historicity
+um i'm not aware of the particular
+argument but an argument that
+i've heard against the free energy
+principle that reminds me of what you
+just said and this is one of the more
+philosophical arguments not the
+mathematical things that lance just
+mentioned is the idea that
+the free energy principle the inference
+interpretation of a system with a markup
+blanket at steady state it rests on the
+idea of a steady state so basically
+there's an invariant measure of the
+system over time
+and when people have tried to say relate
+or claim that something like societies
+or
+large-scale socio-cultural or
+socio-technical systems are engaging in
+free energy you kind of have to enforce
+this assumption of a stationary uh a
+stationary steady-state distribution on
+the system
+and so when you say things like
+historicity i think of like revolutions
+or something right so that kind of
+things where the the kind of intrinsic
+nature of the system seems to shatter or
+fundamentally change and that would seem
+to question
+um
+the or violate the steady-state
+assumption which is kind of a baseline
+thing you need in order for the free
+energy principle maths to apply
+um i can respond to that argument but i
+don't actually know if that's the
+argument laid out in this paper that's
+just kind of what my brain jumped to
+when you mention things like historicity
+and
+creation and destruction
+is that is that the the core of the
+argument though or
+uh so thing like a revolution is not
+necessarily a sign of historicity it can
+be a predetermined in the um
+in the formulation of the dynamical
+system but uh
+what i'm speaking about in the medical
+terms is the presence of the of
+difficulties that will be reversible if
+for example uh we have we drive on the
+uh where am i right of the road because
+uh some guy said so like 200 years ago
+and this
+does not leave the law ever this is an
+example of uh
+walking
+or path dependency or historicity
+uh so that is the kind of argument that
+di paulo and thompson and beer are
+averaging
+but it is um formally not proportionate
+because advocacy does not entail the
+absence of historicity
+it's bernoulli systems that do not show
+historicity ergotic system only do not
+show like irreversible
+transitions which is a much quicker
+condition
+but where
+there is a convergence
+to a better argument is that
+to have a space or description of a
+dynamical system you have to assume as
+you assume
+wait
+english is broken assume that this space
+is
+fixed throughout the evolution of a
+system and if we agree with an activists
+and a system biologists like kaufman and
+montebell and
+metro monteville
+that
+core property of the integrity system is
+to uh well make sense uh to find
+observables and to create solutions to
+problems did not exist
+beforehand then the um
+the stat space is not fixed it's created
+along the systems evolution this is not
+something you can account with a
+stat space description of chemical
+system
+uh that has a state attractive state
+distribution sorry
+yeah i i think i would agree that
+as it currently stands the free energy
+principle couldn't deal the math
+couldn't deal with um varying state
+spaces where literally the actual
+interpretations or like the the finite
+dimensionality of the system states is
+changing over time usually you assume
+some fixed integer dimension for all the
+stochastic processing stuff although i'm
+maybe lance could comment on that i'm
+sure that could potentially be extended
+to infinite dimensional like partial
+differential equation style formulations
+but uh based i if i understood you
+correctly the first part of what you
+said about path dependence and
+irreversibility
+that is all totally acute uh
+accommodated by the maths laid out in
+lance's paper so there's a very you know
+strong part of the flow that is
+irreversible another way of describing
+that as you could say there's a strong
+degree of path dependence in the
+trajectories of the system so path
+dependence per se is totally
+accommodated
+and easily um you know path dependent
+systems can can fit into the free energy
+framework but the state space changing
+itself over time that's something that i
+haven't really even thought about um
+it's an interesting argument but i i
+would agree that i don't think the free
+energy principle currently is equipped
+to deal with like the state space itself
+being altered over time that's usually
+assumed to be fixed but i don't know
+maybe lance has a different opinion on
+that
+right um yeah i completely agree with
+conor so in this paper we don't discuss
+changing state spaces
+and i think in terms of future work that
+would be really
+really the next step
+um so so i think the the current
+formulation
+uh gives a mathematical framework to
+think about adapting systems
+but it doesn't
+um
+it doesn't really talk about
+like environments that structurally
+change over time for example
+thanks um steven and then we can
+continue on on this
+i think this also speaks to that the
+legs of that stool that was being talked
+about earlier if you're coming from a
+math and machine learning you've got
+um
+you know you've got more
+lower dimensional approaches but they
+show the principles and then when you
+get into the inactive approaches
+they're looking more from a biological
+perspective
+so it might also be a little bit around
+the very high complexity but the my
+understanding is that
+the
+dependency and ergodicity and also the
+ability to do approximation
+science
+uh interpretations of the machine
+learning
+does start to make
+this math
+overcome some of those limitations um
+because it it has more
+i i i that's my understanding is that
+the the reliance on ergodicity is not as
+rigid now
+so
+let's
+go to the markov blanket and then return
+to some of these important distinctions
+like ergotic systems steady state
+stationary
+so i'm gonna put the uh markov blanket
+up through time figure three um figure
+one has just sort of the the timeless
+the classic blanket and then figure
+three
+is adding a subscript t
+so having that
+uh those variables describe time
+dependent functions since that's kind of
+what we're talking about with the
+dynamical systems
+so maybe
+to the authors like how do you
+summarize what this graphical figure
+means what is it being what is being
+blanketed what does it mean to blankets
+and then how does that relate to steady
+state or stationary distributions which
+are in the title of the paper
+right
+so the the mark of blanket is really the
+way the mathematical way in which you
+you talk about boundaries
+um
+and so having a markup blanket simply
+means that the internal states here
+they're separated by
+they're separated from the external
+states by the blanket states
+and then
+the fact that uh the system is at steady
+state uh means that the the blanket
+persists over time
+and so this is really the two things
+that we need when we're talking about
+um a biological system
+or or a stone
+so we need we need something internal
+to the stone or the biological system
+something external and then some kind of
+interface
+and of course when you're talking about
+something very simple like a stone it's
+not very interesting because you don't
+have
+any exchanges between what's internal
+and external
+via the blanket but when you're talking
+about biological systems like like cells
+or or bacillus you do have exchanges
+of matter of energy and information and
+that's something that you can
+accommodate with the markup blanket
+that's
+it's almost a tension in the definition
+of boundedness which is you said well
+there is a boundary but then also it's
+exchanging matter energy information
+so what
+is the boundaries meaning
+uh if those are allowed to pass through
+it conor and then anyone else
+uh i'm unmuted right no no you're good
+i'm good okay yeah yeah so i would uh i
+would say
+that's a great question because
+basically the the boundary we're talking
+about isn't when you take a boundary for
+like a physical system people often
+make assumptions about causality so that
+something on one side of the blanket
+can't affect something on the other side
+of the blanket but because of this
+exchange of matter and energy across the
+blanket the the actual definition of the
+markup blanket is a statistical one it
+just means that this boundary
+is
+statistically in a sense segregates the
+internal on the outside and and that
+statistical separation can actually
+critically differ from just direct
+causal interactions so the actual
+definition of the markov blink in a
+statistical sense
+is that the internal states when
+conditioned
+on the blanket states
+are statistically independent of the
+external states and vice versa the
+external states when conditioned on
+blanket states are statistically
+independent of the internal states and
+just saying that definition might not
+make the intuition any more clear but
+that really is all that it is
+um so then when we actually look at the
+dynamics of particular physical or
+systems or stochastic processes
+that statement cannot entail all kinds
+of causal graphs and all kinds of
+influences between those subsets
+um it's really the statistical
+independence
+which which defines the boundary
+um yeah so i think that's that's kind of
+the kernel of the definition and for
+certain kinds of statistical
+distributions we can actually really
+precisely look at the structure of
+things like the stationary covariance
+which is basically the covariance matrix
+of the process at steady state and you
+can read off
+what systems are outside the blanket
+what what subsets of variables outside
+the blanket what subsets are inside the
+blanket which subsets the variables are
+the blanket
+um so it's a really precise definition
+that kind of
+goes beyond whatever intuitions you
+might bake into that on your own about
+causality
+awesome points so survival
+sorry
+does this not entail that blanket if
+there is any causal interaction between
+internal and external states then
+blanket states would mediate this causal
+interaction because if they did not then
+you would have information that will go
+directly from external to internal or
+vice versa so um
+settlement is correct then there is some
+causal sense to blankets
+is it correct or not
+yeah yeah definitely and that's a really
+good point
+um so really what the blanket does
+is uh to to separate the inside from the
+outside statistically and so what that
+means is that
+any information
+about the internal states that
+any transmission of information on
+anything about the internal states that
+influences external states has to do
+through the blanket states
+um so there is a notion of causality but
+but it's like they
+as you said the internal and external
+cannot affect each other directly they
+have to do it through the blanket
+okay thank you
+awesome so dean
+and then stephen
+yeah this might be a strange question
+but that's fine so the blank so the
+blankets kind of we just use that as a
+way of describing the interface my
+question is and i cuz i
+most of the math that you guys use is is
+over my head but i appreciate that
+you've been able to come up with it my
+question is
+we're thinking about this metaphorically
+does the blanket
+come with its own perforations i mean we
+talk about it acting as a mediator but
+is there a math that can kind of show
+it's it's it's it's managing this
+information flow back and forth but does
+it already exist with these perforations
+present or
+is the how is the math going to tell us
+how that that
+medium works or is it did you guys
+already explain that because maybe i
+just didn't appreciate it when i read
+the paper
+um
+yeah that's a really good question so we
+didn't expand on that in the paper um
+and so it's good that we talk about it
+now
+so
+the definition of markup blanket
+as it is taking the paper
+allows for boundaries that are
+completely opaque so without any kind of
+transmission but also boundaries that
+would let anything through
+so
+so it with this formalism is is quite
+general um
+and so far we don't make any assumptions
+about the structure of the blanket and
+so it could be very permeable not very
+permeable
+you could have all sorts of things
+um and and i think that that's also
+really interesting because
+then i mean ultimately we want a theory
+that describes biological systems and so
+the blanket states have some degree of
+permeability in
+in in biological systems that we can
+actually exploit mathematically
+so we don't we don't do that here here
+the blanket is
+completely arbitrary and so you could
+describe a stone but it could also
+describe
+maybe a brain or a rat or something like
+this
+but then in the future would be really
+interesting to actually
+impose some more structure on the
+blanket to see whether we can say
+anything more interesting about the
+system that we're looking at
+thanks
+steven
+i think this is a
+an area that's probably going to be
+growing a lot is how much of that
+transfer
+process of information from the infinite
+almost external states
+gets onto a blanket and then gets
+transferred to the internal states
+so the question is normally everyone
+talks about changing the generative
+model
+but there is obviously a question what
+what can you change in terms of the
+blanket but i think
+i don't think that's been
+fully explored yet so but i think that's
+a big area that
+i suppose could be seen as part of the
+generative model or the regime of
+attention but
+it sounds like this the mathematical
+model here is starting to be able to
+engage that more if it was expanded
+yeah let's walk through a few
+steps of the paper because that's really
+where we're we're building up this
+intuition or moving from the intuition
+and scaffolding it with the math
+so first you phrase
+the blanket as intervening states
+between internal and external states
+and defined the state space
+that those
+different internal external and blanket
+states can exist in so totally subject
+to to servals
+comments about state space
+and
+um maybe it'd be helpful to explain this
+big pie so what is the covariance
+precision
+what are we talking about with these
+matrices
+what's a system with a certain type of
+matrix structure that might help us get
+a grasp on what the covariance matrix at
+steady state is actually representing
+about systems
+right so so in the in our in our
+scenario here the the matrix pi
+actually encodes everything about um the
+permeability of the branch of the
+blanket but more generally
+um how do the
+internal states interact with blanket
+states and how do the external states
+interact with blanket state
+so matrix spy really gives you
+um yeah the structure of the interaction
+and um
+and yeah and so so we just simply showed
+that the mark of blanket condition so
+this boundary
+actually is equivalent to some kind of
+structure of the matrix by but then when
+we try to differentiate um
+living systems with non-living systems
+and then intelligent systems from
+non-intelligent systems then probably we
+could say a lot more about this matrix
+by
+so like if there was non-zero everywhere
+in pi
+what would that correspond to or what
+would it correspond to have all zeros
+what does a big number or small number
+mean in this precision matrix because
+this is truly a key variable in these
+formalisms
+right
+um
+so so the
+so one extreme would be the matrix by to
+be the identity matrix
+and then this would mean that
+uh each state only interacts with itself
+and so that that's like kind of an
+extreme case of a markov blanket because
+you have a boundary
+but then you don't even have any
+transmission with the boundary like you
+have just three separate states external
+blanket and internal that don't talk to
+each other
+and then the
+the other extreme would be to
+um to to have a non-zero non-zero entry
+in the in the equation that we have
+there
+and then it would mean that
+internal states and external states can
+talk to each other directly without
+interacting via the blanket scene so
+then you don't have a blanket you just
+have three states that mix with each
+other
+and so
+yeah you do you lose
+you lose kind of the the basic point
+that says oh we're looking at systems
+that have a boundary
+um and and then in terms of the the
+magnitude of the entries so a big
+magnitude
+would say um
+i think i may get get it the
+wrong way wrong way around but i think a
+big magnitude is like you have a lot of
+interaction and if you have a very low
+magnitude you have very little
+interaction
+okay
+great because this
+variable is important and this
+relationship between the one over the
+precision and the variance is gonna come
+up um a lot so we go from this idea of
+using a matrix to represent
+basically the statistical connectivity
+of different nodes and then hope that
+the structure of that matrix is such
+that it falls out or designing
+systems such that the structure of the
+matrix falls out into internal external
+and mediating blanket states
+and then
+you develop this notion that the
+that there's an expected
+uh internal state and external state
+that are downstream of the blanket
+states so what is happening with these
+formalisms or how can it be that the
+blanket state tells us about what to
+expect internally and externally
+um
+so because you have a because you have a
+boundary because you have these blanket
+states
+so so the whole
+um so let me give you an example
+uh if you think about a human
+then for example part of the blanket
+states would be what happens on your
+retina so the impression from the world
+that you get from in on the retina
+and so
+this is to say that if you have some
+kind of sensory impression on your
+retina then this gives you some
+information about what's going on
+outside
+and so
+um if if on your retina you see kind of
+like a a certain shape maybe you you
+maybe
+the most like the thing that's going on
+in the environment that corresponds to
+that shape is a chair
+and maybe actually that shape that you
+see on your eyes like looks like a chair
+so then you would say oh the most likely
+external state
+is a chair
+um so this is all formalizing the fact
+that the blanket states
+what what you have on on your retina
+gives you information about what's going
+on outside
+and also influences what's going on in
+your brain because
+you need to process that information
+um
+and so yeah so we have a most likely
+external state and a most likely
+internal state
+any other
+um uh thoughts on this because then
+that's where we go from
+oh
+yes so connor go for it
+yeah i'll just add that uh
+it's critical that we're talking about
+expectations here so that's why
+we're
+writing down like a normal distribution
+that's centered on this expectation
+because remember these are stochastic
+processes so for any given blanket state
+it doesn't mean that the internal state
+on the other that directly is downstream
+of that blanket state will always be
+that expected one but this is just the
+mean of the distribution but the
+powerful thing about this uh the
+bayesian mechanics for these uh gaussian
+processes
+is that those um expected states are
+basically just linear functions of the
+blanket states just given by these sub
+matrices of the covariance and then
+their inverses and such like that so
+it's just important to know that if
+we're to pursue this example of the
+retina it's like
+for any given retinal impression it
+doesn't mean there's always going to be
+the same cortical response right in
+visual cortex or what have you but
+there's going to be some distribution of
+cortical responses and what we're
+talking about right here is the mean of
+that distribution
+very
+good point so steven and then anyone
+else with a raised hand and then we'll
+move forward
+so
+from what is you're saying there with
+the
+stochastic
+processes is there's there's some
+transfer
+in a in a sort of a random kind of
+informational sense
+and obviously it's lossy as it goes
+through and it's the ex the expectations
+i suppose at some level have to have
+have to be able to be confirmed or
+disconfirmed or find some sort of
+um
+statistical correlation
+to then actually use the information
+that has to be i suppose at some point
+there's just not enough there
+to work anything out or the model's not
+good enough to find it
+i'll be interested in how much
+do you have a sense of how much
+tends to get through
+or like how long it takes for
+information to
+be processable like if that's if there's
+some sort of heuristic or whether that's
+a little bit too unrealistic
+yeah that's a really great question i
+mean in the in the brain there's
+evidence that you know
+you can get pretty complex i'm not a
+vision neuroscientist but you can get
+pretty deep in the cortical hierarchy
+even up to the level of a decision
+within you know 150 or sometimes less
+milliseconds
+um so that's almost kind of so this is
+another big important thing to discuss
+about this paper is
+the information processing we're talking
+about here is on the level of
+expectations right so if the brain is
+really
+processing like an immediate retinal
+impression it doesn't have time to
+average across a ton of no like tons of
+parallel noise realizations
+like
+and then and then use the expected value
+to actually do its processing this so
+the the brain in any given moment is
+actually just getting stochastic
+realizations and then it's using
+information processing on those
+realizations
+so i would also i don't know how lance
+feels about this but i would hesitate in
+reading in like the expected
+cortical state given a particular
+blanket state i would i would with
+restraint from reading that as the
+informational currency that the brain
+actually works with
+um
+so there is information uh transfer but
+it's not like the brain always has to
+work with expectations it can work with
+um stochastic samples
+at any given moment but that's also like
+a controversial thing in
+in neuroscience right now it's like what
+is the actual information the brain is
+working with but the fact that the
+latency on decision making can be so
+short suggests that the brain isn't
+really averaging over a bunch of
+parallel realizations of something in
+order to do a computation
+another piece is that on this slide
+we're talking about the expectation in
+terms of the the mean the average value
+of a distribution conditioned upon
+blanket states we're talking about
+average value
+of internal states conditioned on
+blanket states we haven't yet introduced
+this question about internal states
+expecting or making a prediction about
+external states so it's almost like
+expectation is being used um as just the
+sort of broad statistical concept that
+you can condition expectation on some
+other variables or
+the systems that we kind of care about
+and are interested in the ones where the
+internal states are acting as if they
+are
+making expectations or predictions about
+external states which is where
+it's taken in the immediate following
+section of the paper
+that's a really good point yeah
+what is the sigma
+function so i know there's some related
+um work
+uh like with miguel that we saw a little
+bit about like
+what is the sigma what kinds of
+gaps in the formalism does the sigma
+cover
+um
+how did it come to be this way with the
+mapping function and what does it
+reflect
+right um so i would say that the sigma
+is the most
+fundamental
+ingredient to get to the free energy
+principle
+because ultimately we want to be able to
+save uh what we want to be able to say
+or or say
+say that happens or or doesn't happen is
+that
+the internal states have some kind of
+representation about the external states
+uh and so the way to get there is to
+actually have a sigma function
+that
+gives that maps from the
+expected internal state or expected
+cortical response
+to
+the expected external state like what's
+going on around you
+so there there needs to be some
+uh we need we need to find uh like a
+relationship between internal states and
+external states to be able to say
+anything about inference
+and so what what we do in in this paper
+is we give
+conditions
+under which um you you have this mapping
+sigma
+and then you you're able to say oh we
+have some kind of inference going on
+and
+i think in in terms of like a historical
+perspective
+so in previous papers the the sigma was
+assumed
+um and then and then miguel wrote this
+paper saying oh the sigma
+uh you need some assumptions to for the
+sigma to work it doesn't it doesn't
+always
+uh sigma doesn't always exist
+and so what we do in this paper is we we
+give conditions under which sigma exists
+and if these conditions fail and sigma
+doesn't exist
+and crucially i think
+these conditions can be verified from
+data
+great
+points here
+um the
+synchronization map and a few of these
+other pieces relate to
+the idea of an image
+and a kernel
+so
+maybe it'd be helpful to learn a little
+bit about what what are the image and
+the kernel reflecting i found one
+representation
+about mapping the the uh two different
+spaces to each other using that sort of
+kernel and image notation but when
+you're talking about um in lemma 2.1 the
+existence of the sigma function
+entailing
+an image function that maps the internal
+to the external states like what is an
+image
+what is the difference between just the
+variable in itself versus an image of it
+or a kernel of it
+right so what we're trying to do is to
+to map the expected internal state to
+the expected external state
+and so what we mean by image in the
+first line here
+is is simply that
+yeah we're we're trying to map variables
+that could be your expected cortical
+responses so we don't care about
+anything
+that's not your expected political
+response where
+so we care about specific type of
+variables
+um
+and then we're trying to map these to
+expected external states so so that's
+the first line
+and so then here we
+we just say that basically the the gist
+of this result is that
+if
+if you have something that's going on in
+the environment let's say there's a
+chair in front of you and you get some
+kind of expected cortical response
+and then let's suppose there's a sofa in
+front of you and you get the ex the same
+expected political response
+then you will have a problem because it
+means that your organism cannot
+differentiate between chairs and sofas
+because it has the same cortical
+response for the for the two
+two different external states
+and so what we're saying is that we
+actually don't want that to happen
+we want our organism to be able to
+differentiate between different external
+states
+and so this is
+um the the condition three and the
+conditions for
+uh they're both i mean each of them is
+equivalent to one and so it puts on the
+mathematical footing what it means to be
+able to differentiate between
+different states in the environment
+[Music]
+awesome thank you um serval and then
+we'll ask a question from the live chat
+so
+for this thing to work you need organism
+to be able to discriminate between any
+two states of its environment is that
+correct
+um yeah so any two states that we model
+not necessarily
+um
+yes i see that mapping like four b1 and
+b2 being equal to each other
+then it implies that the that the
+external predictions are going to be the
+same
+yeah so if your expected cortical
+responses are the same
+then the expected states must be the
+same
+um so then again okay
+this needs to be thought about in terms
+of representations
+so the the external world does not need
+to be model modeled at the molecular
+level so it's like
+a model about the external world and so
+maybe
+in that model there there's things
+yeah so so it can be like a coarse
+grained model of the external world
+okay so you use the example of a chair
+in your sofa i'm pretty sure that
+most of the listening people can do the
+difference they're pretty sure that most
+cats cannot
+well i said a cat i fly it's smaller
+why would a certain organism develop
+representation of certain states under
+the cringey principle
+um so that that's a really good point
+and i think to
+to address that mathematically we would
+need to
+to actually investigate
+a state space that changes over time
+to actually to actually address the
+question of how how things learn
+representations
+so that's not that's not what
+uh we haven't done that far that far yet
+but that's definitely an important thing
+to to address in the future so what we
+the the starting point here is
+you start with a steady state you start
+with a markov blanket
+and you have uh so the representation is
+already baked in in the markov blanket
+and and so in the in this result we just
+say oh if the mark of blanket looks like
+this
+then you have a good representation
+if the markup blanket is uh sort of more
+degenerate then you have a bad
+representation
+so in the in the next slide actually um
+um
+if you can put up the next slide
+um so we show that if the if the
+condition from the previous slide is not
+met
+then you then the organism would have a
+degenerate type of representation where
+for example it cannot differentiate
+between cats and between uh chairs and
+and sofas
+and and that that i suppose is still
+fine uh but it's
+um
+so so yeah it would like conflate
+complete different external states
+um so in this paper we assume that this
+wouldn't happen because then it enables
+you to
+like derive results exactly
+but you could assume that um the
+organism conflates
+different things and then you would have
+some kind of semi-degenerate type of
+representation
+and then everything still carries out
+but instead of saying oh
+my organism does exact basic inference
+and it's like super accurate and so on
+uh you can only
+um you can only say oh my organism maybe
+is doing some kind of approximate
+inference that's good in some instances
+and bad in some other instances
+so i think
+um you can definitely relax relax that
+condition and sort of assess and
+directly
+how accurate is your representation
+okay
+to reformulate any representation must
+have a precursor sensory active state in
+this framework
+okay very interesting and also we're
+still in the um inference section we
+haven't introduced
+policy planning or planning as inference
+so it doesn't need to be the perfect
+state estimator in order to make
+adequate policy so
+we've talked about that in many other
+situations about action and loop and
+everything so let's
+look through the paper and then as we
+build in pieces we can see where these
+these different segments come into play
+because we haven't talked about like
+policy or conditioning inference on
+policy yet so stephen and then i'll ask
+the question from the chat
+one thing that can also help think about
+expectations and simplify or or
+get away from the pressure of
+representations is
+that
+the the blanket can be seen more like or
+the perception visual perception is more
+like an impressionist painter
+painting
+dabs
+on a painting and then stepping out and
+looking at it and we're just continually
+like trying to find the textures and the
+patterns in
+that might help confirm our expectations
+rather than it being like we see
+the shape of the object it could be that
+as long as we've seen the type of
+textures
+um that we're feeling in the space
+um and that that some of that could be
+done at the retina level there could be
+certain things that just gets processed
+so i i suppose just couching that in the
+inactivist
+world of you know really
+when we say representation that's a bit
+unloaded in that world so it could be
+statistically
+uh
+predictable in some way
+yep and we've talked about
+representation and some of the different
+views on representation and
+axial constants uh work on the the
+armstis and the representation war
+so blue's question before we continue on
+with exploring the formalism blue asked
+uh do the maths that you have been
+working with allow for altering the
+structure or boundary of the blanket
+itself for example if i go blind that
+sensory state is no longer available
+so how do we deal which is a little bit
+we addressed earlier but there's like
+different
+senses that the models can be changing
+they can be within the box
+changing at steady state
+or there are these other types of
+changes that actually change the
+structure of
+the whole boundary or the internal model
+itself so what kinds of changes
+violate the model and which kinds of
+changes are allowing us to continue
+using the model
+so uh
+at the moment um
+what the what this paper accommodates
+are
+sudden changes in the blanket so you
+could at any point change change the
+blanket and then see what happens so if
+for example if you go blind you could
+change the blanket accordingly and
+and then everything would carry out
+what this doesn't account for is
+blankets that continuously change over
+time
+so for example if you're looking at an
+organism throughout its lifetime
+the organism would
+after being born it would like grow and
+age and so on
+um so we do not accommodate that
+but we we can accommodate sudden changes
+in the nine kids
+awesome thank you and also just anytime
+people need to drop off is totally cool
+so let's
+take another look at that
+markov blanket persisting through time
+and
+maybe even return a little bit to what
+kinds of systems are we talking about
+here
+there was this very interesting piece in
+example 3.1
+about describing which types of
+stochastic processes at the gaussian
+steady state p
+might fit under this phrasing
+so several things were mentioned
+conor how would you summarize this list
+or is this an exhaustive list is this
+just the tip of the iceberg what kinds
+of attributes do these examples share
+that allow them to fall under this
+framework and then what violates it and
+moves us into a different space
+yeah so this is um so basically the
+the the core set of stochastic processes
+that we we deal with in this paper are
+diffusion processes
+um so that's just a particular type of
+markov process
+which means that basically the
+current moment is totally
+uh statistically dependent on the last
+moment
+um that's not to say that there
+can't exist mathematics that uh apply
+the free energy principle to other sorts
+of stochastic processes that's probably
+something that lance is also working on
+at the moment
+but um
+if i was to give like some
+i mean
+markov prosthesis are very generic in
+the sense that tons of
+biological processes i think
+and non-biological processes could be
+cast as as markov processes
+and i think there's also an important
+aspect this is kind of
+touched uh on a little bit in the next
+section with integrator chains even
+though you might say oh but like humans
+have memory there's all kinds of deep
+temporal dependencies
+you can have very high dimensional
+markov processes where with with
+different
+levels of time scales but at the lowest
+level i think it's
+a safe mathematical assumption to make
+that things are markov process at the
+most fine grained level so i think that
+the these kinds of systems are
+like pretty unrestricted in the kinds of
+things they can capture everything you
+know from financial markets are modeled
+as diffusion processes the orange
+dynamic process which is what we use in
+this paper is a really popular
+um process used to model things like uh
+decision making like the drift diffusion
+process which is used in kind of
+alternative force choice decision making
+tasks
+um and then things like evolutionary
+dynamics like genetic frequencies
+drifting over time are modeled
+as a stochastic like linear diffusion
+processes
+um
+but i should also say that we use orange
+strength
+basically linear diffusions in this work
+and that's how we get these nice linear
+synchronization maps the mathematics are
+all linear and easy
+but uh this also applies to non-linear
+um diffusion processes so where the
+drift term basically isn't just a linear
+map like a b like a big matrix like it
+would be for an ou process but it could
+also be some non-linear
+very you know kind of
+harsh function
+um one some some other restrictions is
+that the drift function so basically the
+flow that
+determines the motion of the next set of
+states given the current state that mo
+that drift function has to be smooth
+that's another condition um in these
+kinds of diffusion processes
+um yeah that is i think i pretty much
+cover it there's like some technical
+things like a zigzag process i'm
+actually not sure what that is that's
+something to ask uh lance
+great thanks
+and what you said about that um the the
+multiple levels of integration with the
+integrator chains and about how that
+addresses some of the comments about
+historiosity um we can return to that
+because there's some i think it's really
+instructive so serval with a question
+and then anyone else who wants to ask
+one
+yeah i have a question which is
+mathematical in nature for a change
+um
+i don't get what this means for random
+nuclear systems to other three states if
+it is not ergotic because if it is
+ergodic then due to well erasity
+you can find a measure that says
+something about how likely i am to find
+a system in such or such
+subspace you should not have the
+hybridic conditions and you cannot
+exchange a distribution for time average
+i don't get
+where what
+where the distribution is coming from
+exactly in the case uh where the system
+is um
+kind of deterministic
+at least
+yeah i can't think of an example off the
+moment but there are processes that have
+an invariant measure
+where the time and the space averages
+are not equivalent so if you just look
+up
+non-ergotic stationary processes i think
+there's some
+examples with
+like discrete switching processes like
+um bernoulli variables
+where the the time and the space
+averages will actually not be equivalent
+so that so i think this
+is
+explicitly taking into account those
+those kinds of systems
+um where the time and the space average
+wouldn't be equivalent so
+for instance if you think about systems
+with multiple basins of attraction that
+might like stochastically jump between
+those two basins of attraction
+the space average there at any given
+moment will not necessarily be
+um equivalent like a bunch of parallel
+realizations at any given moment the
+space average of that might be centered
+around one of the modes of that process
+and that will actually be different than
+the time average which would actually
+give your distribution over both modes
+so that's just something that that jumps
+to mind but there are other examples of
+stationary processes
+where the space and time average are not
+equivalent which is the definition of
+ergodicity
+okay but uh how do you define this as
+the sorry steady state distribution then
+what does it mean and what are the
+conditions for it to be defined
+so a steady state distribution
+basically just means that the statistic
+the sufficient statistics that define it
+uh do not vary over time
+um so they're invariant they're constant
+basically
+um so
+for for a gaussian process the mean does
+not change over time
+and the covariance does not change over
+time
+so that's that's an example
+um yeah i mean so the the definition of
+the stationary state actually if
+if you get down to the fundamentals of
+it i would more say the stationary state
+is actually just a property of the flow
+so the flow that the stochastic
+differential equation itself like the
+ito style differential equation that's
+the most fundamental structure of any
+system
+and the stationary state actually is
+just something whose gradients drive the
+flow
+so rather than um
+but but that's more an interpretational
+point but in terms of the actual okay
+stationary i guess so steady state
+okay but you have stationary i guess i
+know what stationary is and you have as
+a state which is defined if i understand
+well but distribution p
+the question is how do you define a
+distribution of a generical system in
+the general case of a stationary nickel
+system
+so the way you define it formally is you
+define basically the the a partial
+differential equation that tells you the
+density of the of the system at every
+time point and that partial differential
+equation is called the fock or planck
+operator and then you basically set the
+derivative of that partial differential
+equation equal to zero and then you
+solve for the density
+so that's the most like minimal bare
+bones definition i can give you of the
+of the steady state is the density which
+is the solution to the focker plank
+operator when the focker plank operates
+derivative with respect to time zero
+that's the stationary state so another
+way of saying that is if i start the
+stochastic process in a bunch of
+different places and run it over time
+all those processes will converge to the
+solution to the focker blank operator
+which is the the steady state density
+okay and for what kind of system do we
+have a stable solution
+for this
+rather than say uh
+i don't have the words original
+attractor something that switches and uh
+i don't know goes to uh
+new places like expensive process
+um yeah so the precise condition there's
+basically conditions on the drift that
+will tell you whether the system
+explodes or whether it converges so for
+instance for an ou process
+those solutions to the focker plank
+operator
+are
+defined when the eigen values of the
+drift matrix are not too big for
+instance
+but what the actual conditions are for
+all sorts of stochastic processes such
+that there are unique solutions to the
+focker plank operator i am i'm not sure
+i'm not an expert on
+uh on stochastic processes that's
+something that lance might be able to
+give a more rigorous definition to but
+it really depends on the drift um
+basically the f function which tells you
+whether the system has a invariant
+measure or basically a unique solution
+and sometimes there's multiple solutions
+to the focker blank operator which means
+that you know the system will end up in
+one thing or another
+thanks for these
+helpful explanations just one comment
+before dean's question is that sometimes
+the steady state can be at a higher
+moment so like in the example of a car
+there's like the position and then
+there's how fast it's moving and then
+etc higher and higher derivatives and so
+the integrator chains and variational
+inference allow us to find an invariance
+at a higher level of the distribution
+that even as the actual position of the
+car is changing like that a stationary
+process doesn't mean the car is not
+moving it just means there's something
+about the car's movement
+that we can continue to integrate or
+derive towards
+finding a statistical invariance
+specifically one that's structured kind
+of like this
+where it's almost like a diffusion
+process or a flow
+across a field
+so those are some of the pieces that
+link together and so it's not just that
+that the position has to be well behaved
+it might look very non-linear but we're
+using certain ways of breaking down the
+problem so that at each level we can
+frame it as this like linked
+sequence of tractable calculations
+so
+connor if you have anything to add on
+that or dean you can question yeah i
+think that's a really good point like uh
+so basically you can correct for a
+moving frame of reference through
+differentiation
+and that's kind of the basis of these
+integrator chains is something that
+might be a moving frame of reference if
+you center it by its frame of reference
+then it can actually look like something
+like a stationary diffusion process and
+you get around that by encoding the
+system rather in terms of absolute
+position something like the velocity or
+the momentum of these higher orders of
+motion
+so yeah i just totally agree with
+everything you said basically and it's
+like the historical um critique or
+comment like well that race car has a
+historiosity it's like it is but its
+position at the next time point is
+determined by its position and
+momentum and etc etc etc now
+and then that is happening through time
+so there is historiosity
+we're not ignoring that but we're
+setting up the problem with this like
+vector of higher derivatives such that
+it actually
+is being only determined by the next
+moment so
+absolutely dean
+well thanks for stealing all my under
+there daniel
+i basically was going to ask so
+just to make this clear in my head the
+metaphor that i drew is you've got
+classical mechanics and quantum
+mechanics in the room and then busy
+mechanics is kind of acting like the
+marriage counselor it doesn't really
+actually determine
+what what is
+the you know
+the math can't just be precise it just
+keeps the two other parties in the room
+and has them work out what's
+what's a gist and what's a reflection or
+am i
+am i kind of way
+way off in the in the in the reads here
+yep so the connection to quantum
+mechanics which was made in this one
+section of the paper this was actually
+something that was suggested by
+um
+by uh greg pavliotis who is uh lance's
+supervisor imperial i'm actually not
+convinced that the connection to quantum
+mechanics
+is as fundamental like so i i basically
+i don't think that uh bayesian mechanics
+is in between classical and
+um
+uh classical and quantum mechanics i see
+bayesian mechanics
+more as
+the mechanics of statistical
+distributions or basically the moments
+of statistical distributions
+so in that way if i was to put it in
+between two branches of physics i would
+probably put it more
+at the
+three-way in between
+classical mechanics
+statistical thermodynamics and
+stochastic thermodynamics because it's
+really uniting
+the um
+the kinds of coarse-grained expect
+expected variables that you deal with
+with something like statistical
+thermodynamics
+with the sorts of motion that you deal
+with in things like stochastic
+thermodynamics or classical mechanics so
+we're talking about the motion of
+beliefs or about probability
+distributions
+and it gets interesting when you have a
+markov blanket because then you can
+start imbuing the system with these like
+quasi-teleological
+interpretations of one thing being a
+belief about another thing
+but the bayesian mechanics per se
+actually i think it even
+i mean it's it's it's controversial
+whether you would call it bayesian
+mechanics but there is definitely this
+kind of statistical or belief-based
+dynamics that you get even in systems
+without a mark-off blanket even a
+one-dimensional diffusion process where
+there's no boundaries or anything you
+can describe that system as optimizing
+model evidence or minimizing free energy
+it's just
+it's it's unclear how where where the
+bayesian this is because
+the bayesian interpretation really comes
+in when you're conditioning something on
+observations and then you have
+uncertainty about another variable that
+you can only perceive via the
+observations so that's why the markov
+blanket i think actually is kind of
+fundamental to the bayesian slant on the
+mechanics
+but even without it you have free energy
+minimization and you have
+the evolution of beliefs or evolution of
+belief distributions it's just they're
+not they're not as
+they don't have a nice analogy with like
+representational mechanics or the things
+we're interested in in cognitive science
+or biology
+yeah that's the part where lance was
+talking about gist
+and reflection and how a gist
+morphs into a reflection and that's
+i don't even know how you would put the
+math to that but because i don't know i
+wouldn't know where to begin but that's
+that's where i thought you guys were
+headed
+am i
+am i misled no i think that's right
+that's kind of um
+it gets that kind of i think the thing
+that daniel was saying earlier where
+there's
+there's the expected internal state
+given a particular blanket state but
+then there's the idea that any
+instantaneous internal state is actually
+also encoding an expected external state
+whether or not that particular internal
+state is the most likely one given the
+blanket state so i don't know which of
+those would map to gist versus
+reflection but that's basically the idea
+is that any given realization of the
+stochastic process
+at any given moment even if it's off is
+kind of always parameterizing some just
+perception about something on the other
+side of the blanket so the markov
+blanket the fact that there's a
+multivariate system with these kinds of
+conditional independencies that really
+is fundamental to the interpretation of
+saying one side is doing some kind of
+just perception of the other side
+[Music]
+you just don't have one side or the
+other without the ability to distinguish
+them which i think is a good example
+about how the intuition that there are
+separable systems
+is being built upon in this nexus as you
+described with thermodynamics and
+statistics and statistical mechanics and
+there's other approaches to delineate
+subsystems like synergetics trying to
+define subsystems geometrically or
+trying to define subsystems through
+various ways and maybe those will become
+integrated as well so steven and then
+anyone can write a question or raise
+their hand
+okay thanks connor for that that
+explanation is quite useful as well that
+you know when you mentioned that there
+can be bayesian inference say on
+information coming in
+but the blanket
+you know gives
+it gives a way to to hold that
+information i suppose but it i can see
+it giving a much more viable route to
+integrate many sources
+of information which might be also sort
+of staggered over time as they come in
+and they can be integrated i mean you
+can integrate across blankets whereas
+if everything's coming in as one mush of
+you know all data is coming in through
+the same
+or or even if it's not directly data but
+if if you've only got one
+causal
+pathway
+then you can't necessarily
+i can't see a way that you could
+disambiguate
+and do bayesian inference
+between
+what we would use blankets for or you
+could even say multi-sensory integration
+then that becomes a physical channel so
+i suppose one question is how would you
+think about
+different channels of information
+as opposed to
+different blankets in terms of bayesian
+integration
+yeah i think the the actual the
+multi-channel or multi-sensory
+integration story is pretty nicely
+accommodated by this and this kind of
+brings back to an earlier question that
+daniel had about what is the
+interpretation of that pi matrix so when
+you're thinking about the system
+minimizing free energy another way of
+thinking about that is it's minimizing
+prediction errors
+for each of the sensory modalities so if
+our blanket states say we have a
+three-dimensional external state a
+three-dimensional internal state and a
+three-dimensional blanket state because
+this generalizes to infinite i mean not
+infinite but very high integer dimension
+our three-dimensional blanket state you
+could think of as like eyes ears and
+somatosensation or something
+and then the the distinct elements of
+that pi matrix are basically the weights
+that the system that the internal states
+are assigning to each of those sensory
+channels so if you actually rewrite the
+flow of the internal states as a
+function of that pi matrix
+you can basically see that the internal
+states has differential sensitivity to
+each of the three
+blanket states in fact it's literally
+integrating them and the weights it uses
+to do that that sum or that average are
+provided by the elements of the pi
+matrix
+so i think the multi-sensory integration
+is basically just a higher dimensional
+blanket state
+what it doesn't get at with what i've
+just said is your idea of information
+from different channels coming in at
+different time lags or different
+delays that is what you would have to
+accommodate with something like an
+integrator chain where
+one blanket state is actually a high
+order derivative of some other blanket
+state or something like that or of an
+external state so you can have different
+blanket states that from the perspective
+of internal states are all coming in at
+once but the actual blanket states
+themselves are like
+longer scale temporal summaries of other
+variables one could be the instantaneous
+temperature the other could be the time
+derivative of temperature the other one
+could be the average temperature over an
+hour or something like that
+also sometimes i think about it like
+from a data science example like imagine
+if we had three variables that are
+getting passed to us like height weight
+and favorite color
+um maybe that reflects this covariance
+matrix like height and weight up there
+on the first two
+have highest correlation with themself
+and then they have less correlation with
+each other and then
+the off diagonal is not having any
+covariance we don't get information
+about the favorite color based upon the
+other variables say so
+multi-sensory
+can just be different state variables
+that are getting passed through that
+vector it doesn't have to be that all
+the blanket states are of the same type
+the blanket states are just the set of
+insulating states
+and they don't all have to be
+retinal cells now if you were making
+this type of a model of the retina it
+would be that way but then if you wanted
+to make a model of a person who had
+sound input light input
+etc
+you could have the blanket states
+reflecting multiple different types then
+you get this challenge of
+how is the brain integrating different
+lags and different precisions etc across
+different modalities so that's not the
+end of the story but
+it it um
+is phrased generally enough in the state
+space representation
+such that we can be discussing in the
+same matrix multiple kinds of inputs
+yeah exactly
+yeah actually conor if you had any
+thoughts on this example like how should
+we read the you know pi equals what and
+then q equals what
+right yeah so this is a point where i i
+kind of wanted to bring this up earlier
+because
+i think i i don't know
+it would be good i good to talk to lance
+about this um i think he's coming to the
+next one so maybe he can follow up
+but
+basically this is actually an example of
+a system where
+causality does not imply
+does basically not exactly correlate
+with the markov blanket so in that pi
+matrix that's not actually the
+covariance right that's the inverse of
+the covariance
+so that's a really important point
+the inverse of the stationary covariance
+is not going to have necessarily zeros
+in all the same places that the
+covariance does
+so you could have two variables that
+actually have positive or negative
+correlation with each other as measured
+by the square root of the covariance
+that are actually conditionally
+independent
+so for instance in this example um the
+internal which is the first row or the
+first column
+and the external which is the third row
+or the third column they're
+conditionally independent of each other
+which means there's a zero in the
+corresponding entry one three or three
+one
+so that doesn't mean that the variables
+are uncorrelated it means that if i
+condition on blanket states the middle
+row slash middle column
+then there's no more information i can
+get
+from external states about internal
+states or from internal states about
+external states it's basically saying
+that the internal states get all the
+information they possibly can from the
+blanket states and the external states
+don't add anything else that's actually
+a different statement than saying that
+there's no stationary
+steady-state correlation between
+internal and external
+and it goes further than that then if
+you actually looked at the drift matrix
+which is the second equation here
+you can see
+from the presence of uh elements in the
+1 3 and three one elements of that
+second equation that big thing that's
+like one one point five two
+there's actually a direct influence of
+internal states on external states in
+the sense that the motion
+of external states is directly
+influenced by internal states so if you
+were to integrate that stochastic
+differential equation there would be a
+causal
+if you want to call it that a causal
+connection going from internal to
+external
+but nevertheless because of the way that
+the stationary covariance is designed
+when you take its inverse
+internal is still conditionally
+independent of external
+so this is a really interesting and kind
+of counter-intuitive result that is
+talked about a little bit in miguel's
+paper it's also talked about a little
+bit in an upcoming paper
+that is um in review right now
+uh that that basically rigorously
+defines the conditions under which a
+causal connection actually results in
+conditional independence between two
+variables
+so that's basically what the example
+here is showing is that you could have
+internal directly influence the motion
+of external or vice versa but in the
+stationary sense they're still
+conditionally independent and therefore
+the markov blanket is still needed to
+mediate information between them
+awesome and it was
+we'll look forward to these papers um
+but that's a really great way of laying
+out how we build upon this idea of just
+bayesian variables and the graph that
+describes them
+to dynamical systems and their
+covariances through time
+and then frame that in terms of flow
+which can then be decomposed into this
+time reversible and a time irreversible
+component ties us into this entire flow
+uh
+areas of
+thermal flow but also information flow
+and so also just conor while we have you
+let's take this next step which is
+let's partition
+the blanket states into two kinds of
+states
+sensory on the incoming and action or
+active states on the outgoing so what is
+going on with this blanket partitioning
+and
+how does it relate to active inference
+how does active inference relate to this
+bayesian graphical approach more
+generally
+yeah so um here we're basically making
+the move of taking the blanket states
+and they could be again
+of general dimension and then
+partitioning them themselves into two
+subsets of states
+uh active states and sensory states
+so if we
+if if you basically look at the dynamics
+of the system
+and you look at the expected variables
+you can say that you know the expected
+internal state given blanket states is
+doing inference about
+external states at the same time you can
+say that the expected active state
+given sensory states is in some sense
+minimizing prediction error
+so basically minimizing the the
+deviation between the expected internal
+and the expected external state so
+that's where you get along the lines of
+uh of basically an active inference
+interpretation and i think it's
+figure six if i'm not mistaken where
+that
+yeah or no that's predictive processing
+figure eight is where you can basically
+show that the active the uh most likely
+active state so again this is an
+expected active state is minimizing the
+sum of precision weighted prediction
+errors so the the move here is then you
+relate minimizing when you're minimizing
+um prediction errors in the context of
+inference it's like i'm doing optimal
+bayesian inference when i'm minimizing
+precision weighted prediction errors in
+the context of control it's like i'm
+doing pid control which basically
+manuel baltierra has shown this in a
+paper from a few years ago that is the
+sort of prediction error minimization so
+now the
+elements of that pi matrix become the
+weights that you
+that you associate to each variable that
+you're trying to control in like a pid
+system so pid is this kind of
+proportional integral derivative control
+mechanism
+so we don't do this in the paper but if
+you were to associate different blanket
+states with different like derivatives
+along an integrator chain like
+the the um integral the derivative and
+then the second derivative of some
+process
+and then those were your blanket states
+then you could say that the active the
+most likely active state was basically
+trying to control the integral
+the
+first order and then the derivative of a
+given system
+trying to control them using a pid
+control scheme
+and where the weights that the pid
+controller is assigned to the integral
+the first order value and the derivative
+those weights would be exactly given by
+the entries of the pi matrix that
+correspond to the blanket variables
+awesome and actually the integrator
+chain idea
+really connects some dots between this
+variational
+higher and higher derivatives of
+challenging functions variational
+inference on nonlinear functions with
+planning as inference
+so again it's like going back to that
+car with the position and the momentum
+etc
+um
+there's one way of working where you
+just want to
+fit the function of the car
+using its again position and higher
+derivatives but then what does it look
+like when you need to predict the
+position of the car so that you can act
+and intervene
+and so this just connects between this
+uh
+graphical structure where you can have
+arbitrary number of layers of nodes so
+from left to right is going through time
+but then
+vertically within a column
+is in a differentiation an integration
+relationship so we connect from looking
+at a vector
+of
+position and higher derivatives
+connect that to
+the kinds of systems that
+have uh blanket states
+that's just really cool to see
+um
+yeah
+so with yeah go ahead
+yeah sorry was there someone else had a
+question or go for it connor but anyone
+can raise their hand or any questions in
+the chat is awesome
+i was just going to say
+like it's essentially that it's that um
+this so if if we were to cast the
+blanket variables as these different
+higher this vector of higher order
+derivatives of a system
+just by that system conversion to its
+stationary state it would be implicitly
+if we started far away from the steady
+state it would be implicitly essentially
+controlling each of those variables to
+some desired set point so that's often
+the terminology using control theory is
+that i'm trying to keep the velocity
+within some range keep the position
+within some range keep the acceleration
+within some range so if you interpret
+the dynamics of the most likely active
+state as doing pid control basically
+what it's doing is it's punishing
+deviations around those desired set
+points with some control cost where the
+control cost exactly is given by the pid
+weight assigned to the acceleration
+velocity position which is you can read
+off from the inverse of the stationary
+covariance i.e the the pi matrix
+to kind of give a fun example of that um
+one way of looking at this figure 10 in
+the helmholtz supplement
+is kind of like there's an ink blot and
+so there's some forces that have it
+dispersing and some that have it staying
+together and then when you look down
+from the top that's like the steady
+state distribution of the ink plot and
+so that's sort of a diffusiony way to
+look at it but let's look at this as
+like a physical hill so the z-score the
+the height is they're not not the
+statistical z-scores the height is like
+um the concentration at steady state of
+ink so whatever the diffusion processes
+are it's densest right in the middle and
+then it gets less so we can think about
+that as being like the bottom of the
+bowl
+and then it gets higher up so when you
+drop the marble in the bowl
+it's going to on average go to the
+bottom of the bowl
+and then if you were to think about that
+marble as like a control theoretic agent
+with its position which is initially not
+at the bottom of the bowl and then all
+of the higher order derivatives so
+initially if it's stopped on the side of
+the bowl it's like you're holding the
+higher derivatives to be zero then you
+release it and gravity takes effect etc
+it would almost look like it was like a
+plane landing on the bottom of the bull
+because it would like accelerate and
+then it would slow down its acceleration
+and the higher order derivative it would
+act
+as if it were doing pid control
+to converge all of its and then diminish
+all the derivatives so that it would end
+up
+with zero
+velocity and the differential from the
+mean of the expectation of zero so
+that's like kind of an inanimate system
+but that shows how this diffusion
+flow
+field
+and then the free energy interpretation
+of kind of like the gibbs free energy
+dropping into the bowl finding yourself
+on the bottom of a physical bowl
+is also related to control theory so
+there's like
+so many of these
+important threads to connect together
+any other
+uh
+general comments otherwise i think just
+because
+we love active inference
+what is happening in figure eight like
+what is happening on the right side and
+maybe why is it not a monotonic uh
+drop in free energy which is what we saw
+in the other figures
+yes so this is um this is basically the
+demonstration of what you just said that
+on average the system um and that's a
+very key point of what of uh just to add
+that on to what you said on average the
+marble will look like it's trying to get
+to the bottom of the bowl
+and minimize those deviations from the
+different set points for position
+acceleration velocity what have you so
+this is basically showing that
+so i'll just explain the figure on the
+left that the white line is basically
+the most ac the most likely active state
+which is one of the two blanket states
+given
+various settings of the sensory state so
+the white line is saying for any given
+setting of the x-axis what is the most
+likely setting of the y-axis
+but then we also show overlaid on that
+expectation which is just a linear line
+a linear function of the sensory state
+we also show an actual realization of
+the process and that's really the the
+key thing to note here there's a
+difference between expectations
+and which are derived from the steady
+state to statistics versus realizations
+of the process which are contaminated
+with all the
+nitty-gritty messy things of the real
+world like noise and solenoidal flow and
+stuff like that so this also goes to
+answer your second question about the
+plot on the right is why is the system
+not doing monotonic decrease on
+uh free energy
+and the reason is because there's
+solenoidal flow
+so if there is no solenoidal flow and
+you average this descent across
+trajectories
+an individual trajectory even without
+solenoidal flow might still not do
+monotonic free energy descent because of
+noise so the stack stochastic noise
+you're adding to these diffusion
+processes can temporarily drive it up
+the gradients of the free energy
+but if i average across like a thousand
+trajectories it would look like a smooth
+descent on free energy because all the
+noise realizations would be averaged out
+and then there would basically just be a
+straight line going from wherever you
+started this
+ensemble of parallel simulations to the
+to the bowl the minimum free energy but
+because of solenoidal flow which is this
+component of the drift that drives the
+system along the iso contours of the
+probability density which is not
+pointing in the direction of the free
+energy minimum
+because of that even after you average
+across trajectories the free energy will
+not monotonically go down but it'll
+actually follow some average trajectory
+that has some curvature to it
+um so that's an actually interesting
+interpretation in the active inference
+sense because it's so showing that on
+the way to the free energy minimum it's
+not necessarily going to take
+the the path laid out by the most likely
+active state given sensory states it
+might actually take a more circuitous
+route and it will end up on the white
+line by the time it's at the minimum but
+its journey to that white line on
+average and in individual realizations
+will not actually be along the white
+line um and that's a really interesting
+there's a connection there to be drawn
+to the study of
+basically efficient um
+diffusion processes that are used in
+things like
+markov chain monte carlo so people
+basically define design diffusions in
+order to accelerate convergence to
+a stationary target distribution this is
+used a lot in like
+stochastic
+sampling based approximate bayesian
+inference and there's actually a lot of
+evidence and there's mathematical proof
+behind this too that diffusion processes
+with this kind of curvature solenoidal
+flow are actually better at reaching the
+minimum and they do so faster rather
+than one that's just doing a direct
+descent
+on the log probability
+which is equivalent to the free energy
+nice thank you one one thing i'll point
+out about this figure on the left is
+that the x-axis has twice the uh
+scale as the y-axis
+so you can also this white line is like
+the y equals x line like it's right at 0
+0
+is that that's the bottom of the bowl
+and then
+it's it's
+it's just stretched out a little bit in
+one way but it's kind of like that's
+just the y equals x line that would be
+if the um
+that's just the one to one and then it
+starts up here with the s of t a of t
+and then it kind of finds its way to the
+bottom and that connects to figure 10
+with the helmholtz decomposition where
+just like conor was saying we can
+separate out into this solenoidal which
+is going like around the isocontour
+and then this
+um straight-line component and so the
+extreme of one case um assuming that
+such a line of sight exists is like
+you're at the bottom of the mountain and
+then you just like straight line up to
+the top
+but then the kinds of systems that we're
+looking at here
+are where we can decompose their actions
+into an as if straight line that's
+always going up the maximum possible
+elevation gain to the mountain top or
+the maximum possible descent to the
+bottom of the bowl
+but also there's this wiggle with a
+solenoidal coupling that's guaranteed to
+be orthogonal to that first component
+and that was an interesting point about
+designing the kinds of diffusion
+processes that do help us
+find
+whether you phrase it as the top or the
+bottom but find the free energy optimal
+place on a landscape that might be very
+rugged so a lot of misleading
+elevation changes
+hey daniel
+doesn't that just give another feather
+in the cap for
+interactionism over instructionalism
+can you maybe explain that a little more
+and then we'll see congress
+yeah i think what conor just pointed out
+was really
+critical if you're if we're optimizing
+we have to be
+willing to set up condition where
+we're not enforcing
+a linear
+path
+that we're actually allowing for the um
+what do you want to call it the
+degree of variability and that's what
+interactionism supports so
+i just i was just listening to that
+going yeah there's another
+there's another proof now we've got the
+mathematical evidence
+cool it's like work and play a little
+bit with um
+the most direct way
+to get those instructions might be with
+a little bit of interaction along the
+way they're just they're um
+inseparable in the actual realization of
+the process
+any thoughts on that connor
+yeah i think i think that's i mean i'm
+always excited when people kind of can
+connect solenoidal flow to specific
+domains i'm not sure what instructionism
+or or interactionism are but i'm
+assuming that it's basically saying that
+just a linear classic optimization
+taking the path of steepest descent is
+actually kind of maybe
+counterintuitively not always the best
+option i think that's just what
+solenoidal flow captures in any
+stochastic dynamical system is the fact
+that there's some curvature
+uh to the actual dynamics of systems
+where they're not always trying to go to
+the mode of the density but they might
+actually get where you're trying to go
+by kind of taking an alternative route
+on the way there and it's just really
+cool that mathematically you can show
+that that's actually better than taking
+the path of steepest descent
+it's like the ball can't just go down to
+the bottom in a straight line then put
+on the brakes the real path takes a
+little bit of a different route so
+oh yeah oh i want to slip one more thing
+in because i i want to give steven a
+boost before he speaks
+and that is that i've heard steven a
+number of times
+mention the word trust
+and trust takes time
+and i think again that interaction and
+that that trust piece this this math
+confirms that we don't just have to
+intuit that there's actually now some
+some support for what takes time and
+what will actually optimize
+maybe the most
+sought after outcome
+not always necessarily the best but at
+least it gives you a
+higher likelihood of achieving an
+outcome
+because you can you can you can now say
+trust
+takes time but there's there's a sort of
+a almost a mathematical imperative to
+give more time over to something to
+arrive at the best answer
+sorry stephen but i just wanted to
+you know sort of boost what you've been
+saying a lot and i because i i agree
+with it
+thanks dean
+stephen
+yeah it's an interesting yeah i think
+the trust piece and what you could call
+real life i don't know if we would talk
+about real life but
+a couple of questions that sort of come
+from that is saying is like you know if
+you're talking about
+um this this solenoidal flow is is that
+property or that
+um does that become
+a more
+optimal
+um
+way of achieving
+radiant descent when there's more noise
+or the more
+rugged the landscape i suppose that's my
+first question and the other question is
+i just wanted your thoughts you
+mentioned here like active states so
+this idea of like
+it's almost like sensory data coming in
+on active
+states and we often talk about active
+states and action states i
+what's the states of action
+that starts the organism does but i
+suppose
+internally
+you've just got the active states which
+are kind of like almost mathematical
+codependencies so i'd be interested in
+like i say the amount of noise or
+ruggedness or approximation that has to
+happen and how much the solenoidal if it
+if it really makes a difference or
+whether the math just is the same if
+it's smooth and and and
+just your thoughts on how states are
+talked about in terms of active or
+action
+oh if that's something you think about
+yeah
+um yeah so for your first point so when
+you say the ruggedness of the landscape
+you mean like it's not just a quadratic
+single bump but there might be multiple
+bumps
+yeah i'm actually not sure i i don't i
+don't have any intuitions about why what
+solenoidal flow would do in that case i
+think like daniel was kind of saying it
+might actually be better at finding the
+global optimum
+the research i'm aware of is just saying
+that for even
+unimodal distributions like this
+sometimes the solenoid flow actually
+gets you to
+the
+unique optimum faster
+even though you would think that direct
+descent should be fastest in the
+presence of noise in the dynamics so not
+a rugged landscape but just the dynamics
+are perturbed by noise the solar nodal
+flow will actually get you to the
+optimum faster but in the case of the
+actual probability distribution of the
+steady state is multimodal and rugged
+itself that's a very interesting
+question i don't know
+i just don't know the research what it
+says and i personally don't have any
+intuition about whether solano flow
+would accelerate convergence to the
+global optimum
+um or not but i i i would be surprised
+if no one's researched that because it's
+a very interesting question
+and then regarding the active states
+versus action
+yeah i mean
+i guess that i haven't thought that much
+about what like what
+semantically jumps out to me or what i
+associate when i hear active state
+versus action but i guess i think of
+fluctuations in the active states as
+actions so as the active state evolves
+that's what i would call an action or an
+or a particular realization of an active
+state as an action and then the active
+state itself we just refer to as the
+random variable that's a stochastic
+process that evolves over time and we
+refer to that as the active state
+um so we have the both the
+two-dimensional in this case
+two-dimensional blanket states one is a
+random variable that we call the sensory
+state another one is a random variable
+we call an active state so that whole
+stochastic process
+is the active state and maybe individual
+realizations of it would be an action
+thanks connor
+stephen and then anyone else and then
+also in this last few minutes if anyone
+in the live chat has a question they can
+write it so stephen
+thanks that that's helpful i think like
+you mentioned that i was thinking maybe
+particularly about noise so yeah that
+makes sense if there's more noise when
+there's more
+rugged landscape yeah that's an
+interesting question
+that maybe someone's worked on i was
+wondering what you're basically saying
+with active states is
+there are more flux there's a there's a
+greater flux a bit like sensory state
+like the information coming in as is
+more fluctuating and i.e like well you
+could say lights going at billions of
+hertz you know or whatever
+and then it's the the regularities are
+slowing down as it comes in the active
+states would be a greater flux
+compared to going through the blanket
+and the transferring it
+to whatever
+the perturbations
+that are relevant to our model are on
+the outside so that's kind of
+interesting
+one comment on that is um
+the actual error dynamics or just
+baseline dynamics of each of these kinds
+of states it's going to depend on the
+system but when we're thinking about
+biological systems yes the action states
+can be conditioned on what the system is
+like if there's one degree of freedom on
+the elbow joint then it's a
+dimensionally reduced
+in comparison to the incoming
+sensory data for example so
+active states end up kind of saving the
+day in a lot of ways which is why it is
+such a clutch advance in the field to
+partition the otherwise just co-mingling
+blanket states into this kind of
+incoming and outgoing because then we
+can assign those incoming states and the
+statistically causal chains coming
+inbound we can associate that with
+inference and with
+everything related to predictive
+processing and then on the outbound from
+the internal states going back out to
+the active states we can associate that
+with cybernetics control theory and also
+planning as inference so the
+partitioning is is a is an immensely
+important maneuver steven and then
+anyone else
+yeah and also the active states become a
+proprioceptive
+form of i mean really appropriate
+perceptive form of sensory input in a
+funny sort of way like
+in the sense that how much they change
+so for instance you push your i'm kind
+of curious where there's this blending
+you know you put your hand on a on a hot
+on a wall and you push you're sensing
+the wall
+but you're also sensing your active
+states aren't changing as much
+that makes sense because the wall is
+stopping them
+there's an interest in
+but that that all could be happening at
+this kind of
+fluctuating speed
+however like you just mentioned
+the system structure will
+the fact that you've got an elbow and
+the fact that it allows certain things
+to happen is going to make all that come
+into
+context of the system you know so that's
+quite cool
+yep um sorry if there's any noise there
+but yes when the um person is pushing on
+the wall they might be getting a
+different than expected or less than
+expected
+amount of change in their sensory input
+wow it's really loud i'm just going to
+view it for a second
+incredible times so
+um both conor and lance have uh departed
+for today and i believe that we'll be
+talking with at least lance next week in
+the 26.2
+so in this last 10 minutes or so
+let's look back over the paper and any
+of the other figures and let's think
+about what we want to ask or what we'd
+like to explore
+in that dot too
+so
+who has any thoughts of this
+i got i have a thought
+i didn't raise my hand sorry um
+at some point the the 60 year old me
+would like
+some of this be to be brought down to
+six-year-old me in terms of the
+sophistication of the math and sort of
+maybe
+maybe walk through some more of those um
+the ability to be able to explain to
+somebody that there isn't that there is
+a an underpinning of math that explains
+what this medium is about and why
+things pass through it and and
+and necessarily allow these two
+differentiated states to work
+i know that i know that they have to be
+able to explain it in
+in on the level because it's it's
+complexity so they have to be able to
+use a certain sophistication of math but
+if there's some way for them
+to be able to bring that down to the my
+pedestrian level my six-year-old level
+that would be fantastic because then
+i think it would be a lot easier for
+people to climb on board with the idea
+that
+some of this some of this
+bayesian mechanics stuff
+um doesn't have to remain remain elusive
+or out there but it's actually
+something useful that we can incorporate
+into a lot of the practices that we
+would like people to adopt
+thanks
+dean agreed good thing to think about
+and also dave wrote in the chat we seem
+to be convinced that some kinds of
+partitioning simplify analysis great
+point so
+um internal external blanket is not the
+only partitioning of how you can
+partition nodes in a bayesian network
+and sense an action isn't the only
+partitioning that is possible for
+blanket states so different ways of
+partitioning the problem
+are going to
+variously set it up in a way that's
+going to be confusing
+or impossible to solve or
+challenging to solve or potentially easy
+to solve and sort of the exemplar of the
+easy problem to solve
+computationally not the only example but
+just one example is like again the ball
+rolling to the bottom of a hill smooth
+ball
+perfect gravity
+convex optimization it's very easy if
+you know that the shape of the bowl is a
+quadratic function then all you have to
+do is just yep go downhill wherever you
+are really simple heuristic algorithm
+for getting to the bottom of that
+quadratic bowl
+and then we look out on the ruggedness
+and on the changingness of the fitness
+landscapes or of the free energy
+landscapes for real systems
+and the entire question is again how can
+we partition nodes or take the
+derivative of sets of nodes or of
+different random variables so that we
+can make that rugged landscape and
+transform it or at least act on a smooth
+landscape
+so that's sort of the broad theme is can
+we just
+cut things up
+and reframe them
+so that our challenge is more like the
+marble going down the bowl
+rather than bushwhacking you know and
+we're just totally lost and we don't
+even have a sense of whether we're going
+up or down and all of our motion is for
+naught so stephen and then anyone else
+yeah i suppose in a way our cognition is
+trying to help us make things look more
+and more like things are rolling down a
+bowl
+and it's a smoother more
+clear picture of the world you know as
+we get older so it'd be interesting
+maybe to ask a couple more questions
+about how noise um
+i know
+how noise i mean often they use the
+infomax
+or softmax the infomax function i think
+in a lot of active inference modeling
+you know to add
+some noise
+or to add some distributions so i'd be
+interested in how
+where does the covariance
+break down where does it
+start to become more coherent smoother
+and just their thoughts on that seems to
+be quite
+that seems to be relevant
+beyond
+this particular paper thanks dean
+yeah one last thing
+so
+to me
+what i see is is
+the math now
+on paper talking about possibility not
+talking about
+certainty i still think that what this
+does is it opens up
+the possibility this this map opens up
+the possibility as opposed to arriving
+at a certain outcome i think all it does
+is open up that space that's what that
+markov blanket to me essentially does is
+it keeps the door open
+i know it's described as a as a blanket
+but i honestly think it what it does is
+it it creates an openness for more math
+to be able to flow in and so
+just i know they're not philosophers but
+i'd like to hear some of their
+philosophy around
+what that what that does because i think
+if people want to say oh well your math
+doesn't answer all the all the all the
+questions
+fine but it does open up a lot of things
+that previously we couldn't even say
+we're open to your point
+so i'd like to find out what their
+philosophical
+positions are now that they've been able
+to
+sort of bring this math to a place where
+it does
+prove out
+cool dean thank you and yes what you
+said there about like
+uh from certainty into uncertainty and
+of course always leaving that room for
+the interaction
+it puts everything
+on the the uncertainty
+and the precision are there two sides of
+the same coin the precision is the
+inverse covariance so if two things are
+perfectly covariate there's like a one
+or a high number in that matrix
+then your precision is high
+um uh so
+or
+just
+it's in the math but yes if they're
+variable with respect to each other then
+knowing one doesn't tell you about the
+other if they're not variable with
+respect to each other then knowing one
+gives you high precision on the other
+and it puts all kinds of state
+inferences
+on this continuum of precision so
+pretty awesome conversation really
+helpful that we were able to speak with
+the authors and yeah next week in 26.2
+we'll look forward to maybe seeing some
+more of you on the stream
+having any people submit questions if
+they want to ask something or
+just have us
+digest it or
+modify a question at all
+but as you said very
+important contributions and scales
+beyond the paper so thanks again
+everybody and we'll see you next week
+thanks daniel bye thanks bye

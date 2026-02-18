@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf MathStream 010.1 ~ Thomas Varley "Generalized decomposition of multivariate information"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf MathStream 010.1 ~ Thomas Varley "Generalized decomposition of multivariate information"</h1>
+<div class="meta">Category: MathStream &middot; Series: MathStream_010 &middot; Episode 1 &middot; Speakers: Thomas Varley &middot; Duration: 1:22:50 &middot; Views: 742</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=3iY8ICcmd2E">https://www.youtube.com/watch?v=3iY8ICcmd2E</a></div>
+<article>
+<p>All right, hello and welcome.</p>
+<p>This is Active Inference Math Stream number 10.1, March 28th, 2024 or 29th, not exactly</p>
+<p>sure.</p>
+<p>And we're here with Thomas Farley discussing generalized decomposition of multivariate</p>
+<p>information.</p>
+<p>There will be a presentation followed by a discussion.</p>
+<p>So Thomas, thank you very much.</p>
+<p>Thank you for joining.</p>
+<p>Looking forward to this and everyone's questions.</p>
+<p>Yeah, thank you for having me.</p>
+<p>I'm really excited to get to talk about this with people who are also interested.</p>
+<p>And I think it's the 29th because I compiled this LaTeX last night was the last time I compiled</p>
+<p>it.</p>
+<p>So I think it's a one day out of sync.</p>
+<p>All right.</p>
+<p>And so yeah, so I'll be talking today about generalized decomposition of multivariate information.</p>
+<p>This is sort of walking through a paper that I recently published in PLOS One, and I'll</p>
+<p>have a link to that at the end of the talk if you want to read more or sort of interested</p>
+<p>in what I've covered here.</p>
+<p>And so we'll start with a little bit of a background, sort of the intuitions around information theory</p>
+<p>and then introducing these two ideas of the partial information decomposition and the partial</p>
+<p>entropy decomposition.</p>
+<p>And I can't see who's in the audience, but you know, if you are an expert in multivariate</p>
+<p>information theory, you can just go watch YouTube videos for five minutes or so while we get</p>
+<p>everybody else up to stream.</p>
+<p>And then once we've got sort of all the necessary mathematical machinery built, then I'll talk</p>
+<p>about how I can tell I've taken the PID and the PED and sort of generalize them to this</p>
+<p>thing I'm calling the GID, the generalized information decomposition, which is based on the Kohlbach-Liebler</p>
+<p>divergence.</p>
+<p>And once we've kind of built that, we'll talk a little bit about how the GID can be used to</p>
+<p>get insight into other information theoretic measures, you know, well-known things like the</p>
+<p>total correlation or the Tononi-Sporne-Edelmann complexity.</p>
+<p>And then finally, to show that it is, you know, truly a generalization of the PID, I'll actually</p>
+<p>walk through the derivation of the classic Williams and Beer bivariate partial information decomposition</p>
+<p>from the generalized information decomposition.</p>
+<p>And there are actually some kind of interesting sort of mathematical questions that kind of</p>
+<p>that you discover as you do that derivation that, you know, I'll talk a little bit about.</p>
+<p>And then I have a brief section at the end sort of talking about sort of future work, what we</p>
+<p>could do with this.</p>
+<p>And since this is the active inference stream, you know, I'll end with a little bit of discussion</p>
+<p>of sort of predictive coding and neuroscience.</p>
+<p>And then I would be really interested in talking in some way to people in the audience who might be more</p>
+<p>expert in active inference or free energy than I am, you know, because there, you know, maybe things that could be</p>
+<p>done with this that are not super obvious to me just because I'm sort of coming at this from a slightly different angle.</p>
+<p>So with that in mind, let's get started.</p>
+<p>Background.</p>
+<p>So, you know, this is the active inference stream.</p>
+<p>So I sort of assume that we're all familiar with sort of information theory and complex systems.</p>
+<p>You know, it's really, I think, become the case that information theory is sort of emerging as a lingua franca for complex systems.</p>
+<p>Right. It's nonparametric.</p>
+<p>It's model free, which makes it very useful for complex or, you know, nonlinear systems that are not well modeled just by, you know, linear regressions.</p>
+<p>It has some really deep and interesting connections to thermodynamics that I won't talk about here, but, you know, that's something I think is really interesting.</p>
+<p>And there's some very cool work pushing that forward.</p>
+<p>And then what makes it most relevant for complex systems is that it really elegantly handles multivariate interactions.</p>
+<p>Right. You know, it's hard to sort of imagine what a five way Pearson correlation might look like besides just a covariance matrix of pairwise correlations.</p>
+<p>But information theory can really handle multivariate interactions sort of on their own terms.</p>
+<p>OK. And then so I'm sure again, we're all familiar that the basic object of study is this thing called the entropy.</p>
+<p>This is Shannon's classic entropy function, negative sum of P log P.</p>
+<p>I'll introduce a little bit of notation here.</p>
+<p>So random variables I will be denoting with italic, uppercase italics, the support set.</p>
+<p>So that is to say, all of the states that, you know, italicized X can take will be indicated with the MathCal calligraphic font.</p>
+<p>And in the specific state that, you know, X is all of the elements of the support set, I denote with lowercase italics.</p>
+<p>All right. And so, you know, as we as we, you know, continue to leverage this notation,</p>
+<p>this distinction between sort of average general random variables and their specific local instances is going to be quite important.</p>
+<p>Right. So classic Shannon information. We're just iterating over all of the possible states that X can take and computing the probability of that state times the log of the probability of that state.</p>
+<p>OK. And so this quantifies sort of our average uncertainty about the state of X.</p>
+<p>Right. You know, if you were to take X, you know, with a coin, say you're a coin that you were flipping, you know, it quantifies how uncertain are you about the state of X, you know?</p>
+<p>And from this, we built, you know, the classic mutual information, Shannon mutual information is a pairwise measure correlation.</p>
+<p>And it is arguably, I think, the most fundamental, one of the most fundamental ideas in modern information theory.</p>
+<p>And so, you know, we would read this as the information that X discloses about Y or alternately the information that Y discloses about X is the difference between our initial uncertainty about X.</p>
+<p>So this is, you know, the entropy of X. And then we subtract off the uncertainty about X that remains after we have learned Y. Right.</p>
+<p>So this is the conditional entropy here. And when I when I teach this in class, you know, I like to think, you know, we start with some big pile of uncertainty.</p>
+<p>We we scoop some uncertainty out when we learn Y. And so we have a slightly smaller pile of uncertainty left.</p>
+<p>The difference between, you know, the big pile and the small pile is the amount of uncertainty that we scooped out. Right.</p>
+<p>Right. That's the uncertainty that is resolved by learning Y. OK.</p>
+<p>And so, you know, since we're all big fans of sort of Bayesian thinking here, you know, I like to think of this, you know, our initial uncertainty about X.</p>
+<p>This is our prior. Right. This is the uncertainty about X that sort of we come into without having learned anything. OK.</p>
+<p>OK. Then we observe Y and we compute a new uncertainty about X.</p>
+<p>And that is our posterior uncertainty about X after learning Y.</p>
+<p>And thinking about this in terms of prior and posterior is really helpful because this is just a particular case of a prior posterior relationship. Right.</p>
+<p>You could sort of heuristically propose a more general definition of information.</p>
+<p>It's just the difference between a prior uncertainty and a posterior uncertainty and how you sort of formally specify the prior and the posterior is sort of largely up to you. OK.</p>
+<p>And so mutual information is just the special case of this broader definition where the prior and posterior are related by this, by these sort of joint marginal relationships.</p>
+<p>OK. But again, it's just a special case of this much larger sort of definition.</p>
+<p>And we're going to come back to this, come back to this in a moment. OK.</p>
+<p>But continuing on sort of our information theory background, you can do the multivariate mutual information if you want.</p>
+<p>So here now we have two sources, X1 and X2, that are together disclosing information about Y.</p>
+<p>Right. And again, you have our prior, which is just our uncertainty about Y.</p>
+<p>And then we're going to subtract off the uncertainty about Y that remains after learning X1 and X2.</p>
+<p>OK. So far, so good. Any questions, Dan, in the chat, people hanging on for dear life? Good.</p>
+<p>All right. And so when you start looking at like multivariate mutual information, things can get really interesting.</p>
+<p>Really interesting, really fast. Right. And so like the first thing is that, you know, this mutual information, the information that X1 and X2 disclose about Y is not trivially reducible to the sum of the mutual information.</p>
+<p>Right. The mutual information is right.</p>
+<p>Right. The mutual information that X1 and X2 disclose about Y is not equal to not generally, let's say, equal to the information that X1 discloses about Y.</p>
+<p>Plus the information that X2 discloses about Y. Right. The whole, in this case, X1 and X2 is not trivially reducible to the sum of the parts. OK.</p>
+<p>And you can have both cases. Right. If the joint mutual information is less than the sum of the marginal mutual information, then what that tells us is that there is information about Y that is duplicated over X1 and X2.</p>
+<p>And so when you sum the two together independently, you are double counting that information. Right. And so this is what we call redundancy. Right. It's the information about Y that is copied over both of the inputs and gets, you know, double counted when you add them together.</p>
+<p>Arguably, the more interesting case is the opposite. Right. The case where the whole, the information that X1 and X2 disclose about Y jointly is greater than the sum of the two marginal mutual information.</p>
+<p>OK. And if you're familiar with Y. OK. And if you're familiar with Y, not Z, I apologize. That's a typo.</p>
+<p>And so if you're familiar with sort of like integrated information theory, some of the stuff that Giulio Tannone has been doing, you know, you might recognize this as something like integrated information.</p>
+<p>All right. It's information that is in the whole as the joint state of X1 and X2 that is not present in the sum of the parts. OK.</p>
+<p>And so, you know, people call that, like I said, integrated information. We're going to call it here synergy.</p>
+<p>All right. And so we have these two sort of interesting things that are happening.</p>
+<p>We've got a three way interaction between X1, X2 and Y. And it has like two different, it can have two different flavors.</p>
+<p>This redundancy, which is duplicated information and a synergy, which is information that is only accessible on the whole and not any of the parts. OK.</p>
+<p>And so, you know, if we sort of take these two ideas, we can kind of make them a little bit more formal and a little bit more rigorous by noticing that we can talk about them in terms of logical connectives.</p>
+<p>OK. So redundancy, I like to think of as that information that could be learned by observing X1 or X2 or X3 or, you know, as many X's as you have in the in your data set.</p>
+<p>Right. And so, for instance, if X1 and X2 are just, you know, linked by a copy gate, you know, X2 is just a copy of X1.</p>
+<p>Then you could look at either one on its own and get all of the information. Right.</p>
+<p>Because they are just copies of each other. In contrast, synergy is information that can only be learned by observing X1 and X2 and X3 and yada, yada, yada.</p>
+<p>OK. And, you know, this link between logical connectives and higher order information lets us do like really interesting things like we can construct very exotic combinations of information.</p>
+<p>And this will come up more when we talk about the information decomposition.</p>
+<p>But you could ask, for instance, OK, what information could only be learned by observing X1 and X2 or X3 and X4? Right.</p>
+<p>And so, you know, we're starting to see like what the structure of, you know, multivariate information might look like.</p>
+<p>It's going to be these sort of chains of atomic, it's going to be these chains of sort of atomic subsets of the collection of inputs joined by logical connectives ands and ors.</p>
+<p>OK. Any questions about this? Because this link between redundancy and synergy and ors and ands is very helpful for thinking about what's to come.</p>
+<p>So far so good. OK, cool. So this brings us to the partial information decomposition.</p>
+<p>All right. And so the idea is that we would like to take this joint mutual information, the information that X1 and X2 disclose about y.</p>
+<p>And these atomic components that resolves this ambiguity about the relationship between the parts and the holes.</p>
+<p>Right. Remember, we said that the sum of the two marginal mutual information can be greater than or less than the joint mutual information.</p>
+<p>Right. So, you know, how can we extract a relationship that sort of brings all of these in harmony?</p>
+<p>OK. And the way we're going to do this is with this sort of branch of modern information theory called the PID, partial information decomposition.</p>
+<p>What it does is it takes the mutual information that X1 and X2 to close out Y and it breaks it down into the redundancy.</p>
+<p>So this would be the information about Y that could be learned by observing X1 alone or X2 alone.</p>
+<p>Plus the synergy. So this would be the information about Y that can only be learned when X1 and X2 are known together.</p>
+<p>And then these two unique terms. Right. Which is the information about Y that can only be learned when observing X1 or only learned when observing X2.</p>
+<p>X2 and then to force harmony between the joint and the marginal mutual information, we will also say that the marginal mutual information should be decomposed in the same way.</p>
+<p>So even though, you know, the information that X1 discloses about Y makes no obvious reference to X2.</p>
+<p>If there is still that redundant information about Y that could be learned by observing X1 or X2 plus the unique information from X1 and likewise for X2.</p>
+<p>OK. And I'm sure many of you have seen these this kind of classic Venn diagram.</p>
+<p>This goes back to the original Williams and Beard paper.</p>
+<p>But I find that it's really helpful to sort of build the intuition here. Right.</p>
+<p>So the big oval is the joint mutual information.</p>
+<p>The two circles are the marginal mutual information.</p>
+<p>And then so we have the redundancy is the overlap between the two marginal mutual information.</p>
+<p>The unique information is the difference between the marginal mutual information and the redundancy.</p>
+<p>And then this purple synergy is the sort of extra special sauce that you get in the whole mutual information that is not, you know, present in either of the two, the two marginal mutual information.</p>
+<p>All right. And so, you know, this is a very restricted case.</p>
+<p>You know, we just have two inputs and one target Y.</p>
+<p>But I find it's really helpful for sort of getting a handle on the underlying logic of this thing.</p>
+<p>OK. But of course, we typically are not looking at us at systems that just have two inputs and one target.</p>
+<p>We often have many, many systems.</p>
+<p>And so, you know, there is a general case for the PID.</p>
+<p>And you can take for an arbitrary number of inputs, you know, X1 to XK, all disclosing information about Y.</p>
+<p>It can always be decomposed into a finite set of atoms that are structured into a what we call a partial information lattice.</p>
+<p>This is also an anti-chain lattice, whether we were into order theory.</p>
+<p>But again, you know, over here we have the two element case.</p>
+<p>So this is X1 and X2 predicting information about Y.</p>
+<p>And here, you know, we can see this has the same structure as this Venn diagram.</p>
+<p>We have the redundancy down here at the middle, which is subsumed by the unique information.</p>
+<p>We have the information and then we have the synergy up at the top.</p>
+<p>Right.</p>
+<p>And as the number of sources of information grows, the lattice grows, you know, super exponentially.</p>
+<p>And you start to get, you know, more complicated information theoretic relationships.</p>
+<p>Right. So like this little guy that I'm circling right here is the information about Y that could be learned by observing X2 or the joint state of X1 and X3.</p>
+<p>OK, you know, I'm not going to.</p>
+<p>You know, spend too much time dwelling on these more complicated partial information atoms.</p>
+<p>But, you know, the idea here is that for an arbitrary number of sources, you can decompose the information using this very elegant lattice structure.</p>
+<p>OK. And so formally, you know, if we were going to try to do this all out of notation, what we would say is that we want to, we have a decomposition that takes the mutual information that X1 all the way up to XK discloses about Y and decomposes it into a sum of all of these partial information atoms.</p>
+<p>Right. And so math cal L here is our calligraphic L here is the lattice.</p>
+<p>Each of these alpha sub i's is a vertex on the lattice.</p>
+<p>And then, you know, we're computing the partial information that that vertex or that atom discloses about Y.</p>
+<p>OK. And so again, you know, you have a partial information atom like this.</p>
+<p>This is the information about Y that could be learned by observing X1 and X2 and X3 or X4 and X5 or X6.</p>
+<p>OK. There's a certain amount of sort of detail that I'm kind of eliding here, like how you actually compute the value of these partial information atoms.</p>
+<p>I can talk about that at the end. But for our purposes, you don't really need to know that it's just sort of sufficient to know that this decomposition exists and has this form that is connected by logical ands and ors.</p>
+<p>OK. So the PID is very powerful.</p>
+<p>It's very cool. I'm a big fan of it. But it has a pretty severe limitation that it requires distinguishing between source elements.</p>
+<p>That would be all of these guys and a single target elements. Right.</p>
+<p>And complex systems aren't typically that nicely organized. Right.</p>
+<p>You know, there are many cases where it doesn't make sense to say, OK, what are our sources and what are our targets?</p>
+<p>We would like to be able to sort of decompose the structure of a system qua itself.</p>
+<p>OK. And we can do that by playing a really fun little mathematical trick, which is for a given multivariate system, which I'll denote as bold X,</p>
+<p>which is just, you know, X1 through X and what we're going to do is we're going to decompose the mutual information that all of the parts, the individual, you know, X eyes disclose about the whole.</p>
+<p>All right. So here, you know, our sources, our sources of information are the parts, all of the individual variables.</p>
+<p>And the target is not some other variable that's exogenous to them.</p>
+<p>It's actually just their own joint states. And so we know, you know, from this basic identity that the mutual information that all of the parts disclose about the whole is just the entropy of the whole.</p>
+<p>And so when we do the PID on this particular mutual information, we know that all of the atoms have the sum to the entropy.</p>
+<p>And so this becomes the partial entropy decomposition. OK, this is the information that all of the parts disclose about the whole, you know, of which they are apart, essentially.</p>
+<p>OK, and I spent a lot of time working on working on this partial entropy decomposition.</p>
+<p>Shout out to Robin Incy and Connor Finn and Joe Lizzier, who were working on this a little bit before me as well,</p>
+<p>and laid down a lot of the mathematical sort of fundamentals about this.</p>
+<p>And for a long time, I was sort of satisfied with the partial entropy decomposition because, you know, it seems, you know, to provide this decomposition of the system quo itself.</p>
+<p>But it still has now a new limitation. It gets rid of the source target distinction.</p>
+<p>But the problem is, is that entropy is no longer really a measure of information. Right.</p>
+<p>In the way that we introduced it before. Right. It's more of this measure of uncertainty about the state of the whole.</p>
+<p>It's not really a reduction in uncertainty. And so, for instance, you can see that, you know, entropy is maximal if all of the elements are independent of each other,</p>
+<p>but it doesn't really fit our information, the intuitions about information. Right.</p>
+<p>If entropy is maximal, we have minimal information. So it seems kind of odd that, you know, our partial entropy decomposition.</p>
+<p>It's not odd, I shouldn't say. It makes perfect sense that the partial entropy decomposition is, you know, maximized in the case of total independence.</p>
+<p>But that's not really information, you know, as we typically would like it to be. All right.</p>
+<p>And so.</p>
+<p>To try to resolve this problem and really get a general decomposition of multivariate information, I turn here to the Kolbach-Leibler divergence. OK.</p>
+<p>And so the Kolbach-Leibler divergence is a nice target free definition of information.</p>
+<p>And it's actually sort of a generalization of the classic Shannon mutual information in its own right.</p>
+<p>You know, the the divergence of P, P of X from Q of X is the amount of information that you gain when you update your beliefs about, you know, the system X from some prior distribution, Q of X to a posterior distribution, P of X.</p>
+<p>Right. And so now we're starting to think about priors and posteriors again, coming back to this initial definition of information that I introduced earlier.</p>
+<p>Right. You know, in the particular case where Q of X is, you know, the product of the marginals and P of X is the joint state.</p>
+<p>You know, the Kolbach-Leibler divergence just reduces again back to the classic Shannon mutual information.</p>
+<p>But again, we can, you know, plug in any prior and any posterior and we still have a meaningful definition of information.</p>
+<p>OK. So, you know, my goal then was to say, OK, can I take the vertical entropy decomposition, which almost gets us to where I want it to be.</p>
+<p>And can I somehow remix it so that instead of decomposing the entropy decomposes the Kolbach-Leibler divergence instead.</p>
+<p>And spoilers. Yes, we actually can do that. It's not that hard.</p>
+<p>And so the the basic idea comes down to this very simple sort of algebraic manipulation of the Kolbach-Leibler divergence.</p>
+<p>Right. So, you know, up here we have it written in terms of, you know, something that looks a lot like a</p>
+<p>Shannon's entropy, right? You know, you have the sum over all of the states and the support sets times the probability of that state.</p>
+<p>Then we have this log ratio, P of X over Q of X. OK.</p>
+<p>This is an expected value computed with respect to P of X.</p>
+<p>So I'm just going to take the summation and the P of X and I'm just going to shift it out into the expected value operator and not think about it again.</p>
+<p>So that leaves us with the expected value of this log ratio.</p>
+<p>By the rules of logs, you can split it apart into a difference of two logs.</p>
+<p>And then these two things look a lot like the Shannon information content, right?</p>
+<p>The local entropy. And so we can take these two things and we can actually rewrite them in terms of two different local local entropies.</p>
+<p>Right. So we ultimately have the difference between the Shannon information of surprise of seeing, you know, this particular state little X computed with respect to the probability distribution Q minus the surprise at seeing this little state of X computed with respect to the probability distribution P.</p>
+<p>OK. And so if we go back to thinking about our prior and our posteriors, this looks very, very similar to the heuristic definition of information that I gave earlier. Right.</p>
+<p>We have the difference between a prior uncertainty, although in this case, it's a local uncertainty or a local surprise.</p>
+<p>And then this posterior surprise attributable to each local configuration of X as well.</p>
+<p>All right. So again, this is, you know, matches all of our definitions about our intuitions, I should say, about information.</p>
+<p>And, you know, we can see that it falls out of the Kohlbach-Liebler divergence very nicely.</p>
+<p>OK. And this is really, this is sort of, this is the most, the crux of the whole sort of derivation that I'm doing here.</p>
+<p>Right. Is that you can recognize that the Kohlbach-Liebler divergence is the expected value of the difference between two local entropies, which is, you know, I've never seen it written out this way.</p>
+<p>Although this is, I don't think this should be surprising to anybody who's familiar with this.</p>
+<p>You know, it's not groundbreaking discovery or anything.</p>
+<p>But now we can actually bring in the partial entropy decomposition that I introduced earlier.</p>
+<p>Right. Because this thing, this, you know, local entropy, well, we can write this out as a local mutual information, you know,</p>
+<p>but now we're just looking at specific states as opposed to, you know, average states.</p>
+<p>But the logic is exactly the same. You know, we decompose the sort of a surprise that all of the parts disclose about the whole.</p>
+<p>And we end up with a localized partial entropy decomposition that we can apply to every realization that our system X can adopt.</p>
+<p>And so this gets us to the Kohlbach-Liebler divergence decomposition that I wanted.</p>
+<p>So, you know, we start with the definition.</p>
+<p>It's the expected value of this difference between two local, two local entropies.</p>
+<p>And then we can just use our local partial entropy decomposition to decompose each one of these into its components, atomic bits, essentially.</p>
+<p>And so we end up for a given atomic information or information atom, the partial divergence, as we go from to P from Q,</p>
+<p>and the actual value is just equal to the expected value of the partial entropy atoms, the local partial entropy atoms from the prior and the posterior.</p>
+<p>All right. And, you know, because this inherits a lot of the nice properties of the partial partial entropy decomposition,</p>
+<p>we can then just get the original Kohlbach-Liebler divergence back by summing all of these partial Kohlbach-Liebler divergences over all of the atoms in the lattice.</p>
+<p>Okay. And so I realized that there has been a lot of notation here, a lot of partials and superscripts and subscripts.</p>
+<p>But, you know, really what we're doing is we're just, you know, we're computing two different partial entropy decomposition lattices.</p>
+<p>So this is the prior lattice and the posterior lattice. And then we're just subtracting them element wise.</p>
+<p>That's really what this works out to be. And you just do this for every possible state that X can adopt and then average over all of the states, essentially.</p>
+<p>Okay. But, you know, I like to think of it literally just in terms of subtracting one of these lattices from another.</p>
+<p>I find that it's much more sort of visually intuitive than all of the symbology and the mathematical notation and everything.</p>
+<p>And so that is the generalized information decomposition, right? It's really just the difference between two localized partial entropy decompositions.</p>
+<p>And so before we sort of jump into the fun applications, are there any questions about, you know, what I've worked through?</p>
+<p>Everybody again, hanging on for dear life.</p>
+<p>Yeah, that's awesome. I definitely will have questions and I'm sure people in the chat will too, but let's hear about the generalized information decomposition that we can get to it.</p>
+<p>Thank you. I'm plugging it. Okay, cool. And so the really nice thing about this generalized information decomposition is that any information theoretic measure that can be written in terms of a coldlock legal divergence can now be decomposed.</p>
+<p>Right. You know, beforehand we were kind of stuck with like various special cases, right?</p>
+<p>The PID works for multiple sources disclosing information about one target, the partial entropy decomposition work for the entropy.</p>
+<p>But now with the GID, you know, any measure that can be written as a coldlock legal divergence is now fair game.</p>
+<p>So for instance, you know, I just picked the total correlation as kind of an example.</p>
+<p>It's one of the multivariate generalizations of the mutual information.</p>
+<p>And it just generalizes this idea that we're looking at the divergence of the true joint statistics from the product of all the marginals.</p>
+<p>Okay. And this is very nice. It's, you know, zero if all of the elements are independent.</p>
+<p>And in contrast, it's maximal if every X, if all the elements are copies of each other, essentially.</p>
+<p>And so that makes it a very nice generalization of mutual information.</p>
+<p>But it doesn't really distinguish between lower order and higher order deviations from independence.</p>
+<p>Right. It doesn't see any kind of distinction between redundancy and synergy that I introduced earlier.</p>
+<p>But by taking the total correlation and plugging it into the generalized information decomposition,</p>
+<p>we can start to tease out the lower order and the higher order interactions.</p>
+<p>So, for instance, you know, just as an example, I use the logical exclusive OR gates.</p>
+<p>This is sort of a classic example of synergy and discrete systems.</p>
+<p>The information that any XI discloses about Y is just zero bit.</p>
+<p>But then the information about Y that's disclosed by X1 and X2 is one bit.</p>
+<p>Right. So this is pure synergy. The all of the information about Y is in the whole and not in any of the parts.</p>
+<p>Okay. And so if we take this and we plug it into the generalized information decomposition, you'll get a lot of zeros.</p>
+<p>But I just want to bring your attention to this last column over here.</p>
+<p>So this is the total correlation. And all of the information here is in this, you know, the very tippy top of the lattice.</p>
+<p>You know, the highest, the highest order synergy term and not anywhere lower.</p>
+<p>Okay. And so, you know, a big table full of zeros is probably not that exciting, but it does a really good job, I think, of illustrating that, you know, this GID is sort of is doing what we want it to.</p>
+<p>You know, this is a very good sanity check that, you know, yes, the synergy, the logical XOR gate is purely synergistic.</p>
+<p>And we get that back from our generalized information decomposition.</p>
+<p>And I should note that I'm using the H min redundancy function from Connor Finn and Joe Lizier.</p>
+<p>If that doesn't mean anything to you, that's fine. But it's, you know, that helps describe values to to all of these.</p>
+<p>Okay. Similarly, if we have some measure that is built on multiple Kohlbeck-Wiebler divergences, you can also decompose that as well.</p>
+<p>So here I looked at the pretty well known Tononi-Spaugh-Spaugh-Edelmann complexity.</p>
+<p>And, you know, I won't go into all of the details, but the idea is that it's this measure of complexity that was designed to be low, both in the case where everything is just random.</p>
+<p>So every XI is independent of every other XJ, you know, that's kind of like an ideal gas.</p>
+<p>There's no structure there. Right. You know, so TSE should be low.</p>
+<p>But also when every XI is just a copy of, you know, XJ, well, then the system is also sort of not complex, but it's crystallized.</p>
+<p>You know, it's sort of highly synchronized, highly redundant, very boring.</p>
+<p>And so the TSE complexity is sort of high in this interstitial zone where integration, segregation kind of coexist.</p>
+<p>Right. And that sort of matches a lot of our intuitions about complexity.</p>
+<p>And then if we, but, and if so, if we take, you know, the GID and apply it to each of these total correlations and then add and subtract sort of the sums and differences between these two.</p>
+<p>What we end up with is this really nice decomposition where we can see that the redundancy.</p>
+<p>So these are all the, these are total correlation atoms, but I've just, you know, removed the total correlation notation just to make this visually more accessible.</p>
+<p>You know, we can see that it really penalizes redundancy, right.</p>
+<p>And sort of the more redundant you are, the stronger the penalty for being redundant is.</p>
+<p>And then as you climb up the lattice, so, you know, here are the redundancies at the bottom of the lattice.</p>
+<p>As you start to climb up, eventually you hit a point of increasing synergy and then suddenly it starts to reward that synergy.</p>
+<p>Okay. And so we have this very nice transition as you go from low on the lattice to high on the lattice, you know, going from penalty to reward.</p>
+<p>And so I think that this shows us something really interesting about how the Tononi-Sforne-Edelmann complexity relates this idea of, you know, complexity and integration segregation balance to this idea of synergy.</p>
+<p>Right. You know, the TSE complexity was developed like two decades before we had a really rigorous understanding of synergy.</p>
+<p>It was not designed to be a measure of synergy. It was designed to be a measure of complexity.</p>
+<p>And then it's, you know, only now much later that we learn that, you know, there seems to be something very deep linking this idea of balanced integration segregation to synergy.</p>
+<p>Okay. And so again, if you're not, you know, super up on the TSE complexity, that's not necessarily like the main takeaway here.</p>
+<p>What I'm really trying to demonstrate is that the GID can be used to give us insights into other measures, right?</p>
+<p>That it can help us understand, you know, what are these measures telling us in information theoretic terms?</p>
+<p>Okay. And there are a ton of other measures that we could be using here and that we could also decompose in the same way and get sort of similar insights.</p>
+<p>That's something that I would be really interested in doing sort of in the future.</p>
+<p>But finally, the last thing that I wanted to show was that we could recover the single target partial information decomposition from the GID, right?</p>
+<p>If the GID is a true generalization of the PID, we should be able to recover the PID as a special case, right?</p>
+<p>We started with the PID. We turned it into the partial entropy decomposition by doing this weird sort of thing where we made the target the joint state of all the parts.</p>
+<p>And then from that, we built the GID. Can we close the loop and go all the way back to the PID?</p>
+<p>Okay. And so just to remind you, the PID takes the information that X1 and X2 just closed about Y and breaks it down into redundant, unique and synergistic components,</p>
+<p>and then does the same thing for the two marginal mutual informations.</p>
+<p>Okay. Can we recover this from the GID?</p>
+<p>And it turns out that, yes, you can, right?</p>
+<p>We can write this joint mutual information in terms of an expected value of Kolbach-Leibler divergences, right?</p>
+<p>And so our prior is just the statistics of X1 and X2 together.</p>
+<p>And then our posterior is the statistics of X1 and X2 after conditioning on Y being in some particular state, right?</p>
+<p>And then so we compute the expected value of this thing over all possible states that Y can adopt, right?</p>
+<p>And so this just works out to computing, you know, a bunch of lattices, essentially.</p>
+<p>So we can actually, you know, two element lattices because we have, you know, two variables, X1 and X2.</p>
+<p>And then we just average, you know, so if we were to take the expected value of all of the top lattice synergy terms,</p>
+<p>we would get the PID synergy back, you know?</p>
+<p>If we were to take the average or the expected value over all of the redundancies down here at the bottom,</p>
+<p>we would get the PID redundancy back, okay?</p>
+<p>And this does recapture the partial information decomposition as we would expect.</p>
+<p>If you use the Hmin redundancy function for your generalized information decomposition,</p>
+<p>you get the PID back that uses the Imin redundancy function for the partial information decomposition.</p>
+<p>So, you know, we can see very clearly how the entropy terms turn into the information terms, okay?</p>
+<p>And that all sort of looks well and good.</p>
+<p>And I was, you know, pretty happy to be putting a bow on this project until I realized</p>
+<p>that there is another way that you can write the joint mutual information out as a Klobock-Liebler divergence.</p>
+<p>And that's this way, right?</p>
+<p>So, you know, we can also write the same thing out as the Klobock-Liebler divergence from a prior,</p>
+<p>which is the product of, you know, the probability of x1 and x2 times the probability of y.</p>
+<p>And then the posterior is our joint state, okay?</p>
+<p>But this requires decomposing a three-dimensional probability distribution, Px, probability of x1, x2, and y.</p>
+<p>Whereas before, we only ever were decomposing two variable probability distributions, okay?</p>
+<p>So this is why, you know, in this case, we had a nice four-element lattice.</p>
+<p>Here, we're actually decomposing a three-dimensional probability distribution.</p>
+<p>And so the resulting lattice will have 18 partial information atoms rather than four, right?</p>
+<p>So we're going to end up with this decomposition of the joint mutual information as opposed to the expected four-element decomposition, okay?</p>
+<p>And I spent a long time trying to, you know, find some way that I could squish this 18-element lattice back down into the four-element lattices that I sort of, you know, expected to get.</p>
+<p>And I was not successful.</p>
+<p>The people who peer-reviewed the paper were also, you know, didn't have any suggestions either.</p>
+<p>So I won't say that it can't be done, but if there is a way to do it, it is currently beyond me.</p>
+<p>And so this sort of puts us in a little bit of a pickle, right?</p>
+<p>Like, we would expect the decomposition, we would expect a unique decomposition, I don't want to maybe not say expect.</p>
+<p>We would hope that there would be a unique decomposition for a single mutual information, right?</p>
+<p>It's kind of odd that you can take one mutual information and depending on how you, like, choose to denote it, you know, how you choose to write out the Kolbach-Liebler divergence, you could end up with two sort of non-identical, non-interconvertible decompositions.</p>
+<p>So what's happening here? Like, this was very odd to me.</p>
+<p>And so my working theory, and this is just a theory, if any other mathematicians are in the audience and want to take a stab at it, you're more than welcome to.</p>
+<p>I think what's actually happening is that, you know, these two ways of writing out the joint-neutral information are actually sort of fundamentally different, right?</p>
+<p>In the first case, we're looking at a three-way interaction, right?</p>
+<p>We're looking at the case of the interaction between x1 and x2 and y, okay?</p>
+<p>Whereas in the second case, we are sort of abstracting y out, we're sort of removing it from the divergence and sort of wrapping it all of this together.</p>
+<p>sort of wrapping it all of this expectation value of y, okay?</p>
+<p>And so what you're doing here is you're actually, like, these are two different kinds of dependencies, right?</p>
+<p>They're mathematically interconvertible, and they'll always resolve to the same value when you plug in numbers, but they are in some fundamental way different kinds of structure in the system, right?</p>
+<p>And so the classic Shannon information theory sort of can't see this difference, right?</p>
+<p>And so it just says, oh, you know, these two things can be, you know, algebraically turned into each other, and therefore they must be the same.</p>
+<p>But actually kind of under the hood, they are, you know, two different ways of looking at this interaction between x1, x2, and y.</p>
+<p>And so again, classic Shannon information theory can't see this difference, but the information decomposition can.</p>
+<p>And I sort of should note that this is not the first time this is sort of turned up.</p>
+<p>There are a couple of other cases where classic Shannon information theory has been unable to see a distinction between two, you know, categories of object.</p>
+<p>But, you know, when you start looking at the information decomposition, suddenly you can, okay?</p>
+<p>I'm sure there's a lot more to say about this, and I'd be interested in talking to people about it after the fact.</p>
+<p>But, you know, I'll just sort of leave you with this question now of sort of non-identical decompositions of the same value.</p>
+<p>And let's see, I think I'm coming to the end of my time here.</p>
+<p>So I want to talk just a little bit about sort of possible applications and some future work that I would like to do, and I'd be happy to collaborate with other people with as well.</p>
+<p>And so I think that this sort of is a big step towards what I call like a grand unified theory of multivariate information, right?</p>
+<p>You know, we have this sort of interesting case where you have, you know, the, we started with the PID, right?</p>
+<p>And then from the PID, we can construct, you know, the partial entropy decomposition, right?</p>
+<p>The PED is a special case of the PID.</p>
+<p>And then from the PED, the partial entropy decomposition, we can construct the generalized information decomposition, right?</p>
+<p>And then we can take the generalized information decomposition, and we can re-extract the partial information decomposition from it with sort of these weird caveats, right?</p>
+<p>And so, you know, this kind of, you know, Ouroboros sort of thing where we have all of these different information decompositions that are kind of fundamentally built out of each other,</p>
+<p>I think is really, you know, getting at something fundamental with how we can think about sort of these part-whole relationships in multivariate systems.</p>
+<p>And the last thing that I sort of haven't been able to do is incorporate the integrated information decomposition.</p>
+<p>And so this was proposed by Pedro Mediano and Fernando Rosas and the, you know, other people at, in England.</p>
+<p>And I'm not sure where everybody is now.</p>
+<p>But, you know, this, they provided a very, very elegant generalization of the PID that allows you to have multiple sources and multiple targets.</p>
+<p>And so, you know, I would really like to be able to find a way to incorporate that into this PID, PED, GID framework for sort of a truly brand unified theory of multivariate information decomposition.</p>
+<p>Still working on that, open to collaborating with anybody who's also interested in taking that project on.</p>
+<p>And then finally, so let's talk about predictive coding because this is an active inference stream.</p>
+<p>And so I assume everybody is sort of familiar with the basic idea of predictive coding that the brain, that the brain is sort of acting as a kind of Bayesian inference engine.</p>
+<p>Right. You know, it has a world model. It has some set of beliefs about the world and it updates those beliefs, you know, as it navigates through it and receives sensory stimuli.</p>
+<p>Okay.</p>
+<p>And so, you know, one of the things that I'm really interested in is, you know, how might this predictive information about the environment be redundantly or synergistically distributed over different sensory channels?</p>
+<p>Right. Like we're not just learning, you know, we don't just have vision.</p>
+<p>Right. You know, we have vision, we have hearing, we have touch, we have proprioception.</p>
+<p>There are other animals that have senses that are totally alien to us.</p>
+<p>And so when we take in all of that sensory information and build a world model, you know, we can't just treat every one of these incoming information streams as independent of everyone else.</p>
+<p>Right. We are have to learn these complex higher order interactions between different incoming streams of sensory information.</p>
+<p>And we use that to build a really rich world model.</p>
+<p>Okay. And so a great example that I first heard from Andrea Lupi, who is, you know, a friend and sort of collaborator of mine, you know, he was talking to me about stereoscopic depth perception.</p>
+<p>Right. For this is a sort of an example of synergy between two incoming sensory channels.</p>
+<p>Right. If you cover one eye, you lose the ability to perceive, you know, depth.</p>
+<p>Right. So there's, you know, redundant information, you know, that, you know,</p>
+<p>both eyes get simultaneously.</p>
+<p>There's unique information that, you know, sort of at the corners of your visual field.</p>
+<p>And then finally you have synergy, which is the sort of emergent perception of depth, this qualia of, you know, receding distance that you only get when you're getting information from the right eye and the left eye simultaneously.</p>
+<p>Right. So from sort of a cognitive modeling standpoint, our ability to extract sort of higher order information from multiple, multiple,</p>
+<p>incoming sensory channels is clearly very relevant to our perception and our behavior in the world.</p>
+<p>And so, you know, I'm sort of tempted to propose, you know, a hypothesis of maximum synergy.</p>
+<p>Right. So, you know, if there are two different channels that are totally redundant, right.</p>
+<p>You know, an agent that only have, you know, some minimal number of calories that it can burn, you know, keeping itself alive, isn't going to want to spend calories, you know, perceiving both, both senses independently.</p>
+<p>Right. Like all the information you could get from one, you can get from the other.</p>
+<p>So, you know, why spend money on both? Right.</p>
+<p>But in contrast, if there's, you know, synergistic information in X1 and X2 that you can only get when both are present, well, then modeling or having channels to, you know, sense all of them becomes essential. Right.</p>
+<p>And if it's truly synergistic, then, you know, having just X1 on its own or just X2 on its own may not be, you know, giving you any information, you know, it's, you know, if there's synergy in the environment, then you need to, you know, spend calories maintaining both channels.</p>
+<p>And so, you know, my guess is that there's probably some kind of evolutionary pressure that says, you know, agents with limited resources and complex environments probably want to maximize the number of synergies that they are sensitive to when building their world model while simultaneously minimizing the redundancies.</p>
+<p>Right. So redundancies are basically just wasted calories while the synergies are, you know, potentially very informative, you know, higher order interactions that are well worth the calories.</p>
+<p>And so this is about as far as I've gotten on this hypothesis, but I think it would be something really interesting to explore down the line, you know, maybe either in very simple animal models or in some kind of in silico, minimally conscious, or not minimally conscious, minimally cognitive agent kind of approach.</p>
+<p>And again, that's something that I would love to talk to really anybody else about.</p>
+<p>And then so, you know, that's sort of the end of my spiel here. This is the paper. It was published in PLOS ONE a couple of months ago.</p>
+<p>You know, here is the link and I'll send around the slides afterwards if anybody wants to, I guess, send them to Dan, hopefully. Yeah.</p>
+<p>And yeah, so, so that's it. This is work that I sort of largely did on my own. So I don't have the usual sort of acknowledgement slides, but I'll just say, let's jump right to questions.</p>
+<p>And I'd love to get feedback from anybody else on the work, but you might think about it or what your own thoughts might be.</p>
+<p>Awesome. Thank you for the very, very clear, great presentation.</p>
+<p>A lot of places to jump in.</p>
+<p>A lot of places to jump in. Could you speak a little bit about redundancy and synergy with respect to fragility and other system properties?</p>
+<p>Because having redundancy, although like as you brought up in those last slides, it might cost more energy.</p>
+<p>And so in the short term, it might appear like, well, why do we need to have redundant information when there are like component failures or other kinds of perturbations to the system?</p>
+<p>What's redundant in one moment might come to be not redundant.</p>
+<p>So how do you think about these kind of informational properties of systems or networks with respect to other systems properties?</p>
+<p>So that's a great question. And I'd be curious who asked it because I actually just put up a preprint about exactly that, exactly that topic.</p>
+<p>So I don't know if they're aware of it. So, yeah, that's a really good question.</p>
+<p>You know, redundancy and synergy, how do they relate to things like fragility and robustness?</p>
+<p>I don't have slides for this, but I can give you just sort of the verbal TLDR.</p>
+<p>I just did this project where we took very simple Boolean networks and I evolved them either to be very redundant or very synergistic.</p>
+<p>And then since Boolean networks, you know, there's a lot of ways to characterize their dynamics, I asked sort of what are the dynamics that kind of come along with evolution for redundancy or evolution for synergy?</p>
+<p>And what I found was that the redundant Boolean networks were extremely stable, right?</p>
+<p>You know, you could perturb them and they would almost always fall back to, you know, one of a very small number of attractors.</p>
+<p>You know, they had very restricted state spaces. They were kind of crystallized.</p>
+<p>OK. In contrast, the synergistic networks were basically chaotic.</p>
+<p>It was very hard to find ways in which they did not just appear to be, you know, chaotic systems.</p>
+<p>And I'm using chaos in sort of the technical sense here, sort of sensitive dependence on initial conditions.</p>
+<p>You know, very large state spaces, lots of, you know, attractors, you know, small perturbations sent them off onto very different, you know, possible futures.</p>
+<p>And the, you know, the punchline then was that, you know, if we took these two different networks and then asked, you know, about their capacity to integrate information, and I use this measure of integrated information from integrated information theory, you know, what I found was that the synergistic networks could integrate lots of information, whereas the redundant networks were very stable, but could not be stable.</p>
+<p>But could not integrate information at all, right?</p>
+<p>So there was sort of this, you know, when you were at the extremes, you could, you know, be very stable and totally unable to integrate information, or you could be hilariously unstable with lots of integrated information, right?</p>
+<p>And so the last thing that I tried then was I actually then evolved networks that had, you know, this, this, the, the TSE complexity that I mentioned before, you know, this, this, this,</p>
+<p>balance of integration and segregation.</p>
+<p>And what I found was actually that the complex networks were able to sort of split this difference, right?</p>
+<p>You know, they were sort of, they were more stable than the purely synergistic networks, you know, they weren't as chaotic, but they also had, you know, more capacity to integrate information than the crystallized networks, right?</p>
+<p>So, you know, we proposed this kind of sort of multi-way trade-off where redundancy brings stability, but restricts your ability to integrate information, whereas synergy, you know, brings integrative capacity, but is destabilizing or fragilizing.</p>
+<p>And then you can kind of balance those two things with this idea of complexity that, you know, brings together integration and segregation in a kind of, you know, sort of modular, modular structure.</p>
+<p>And so that's been sitting under review at chaos for like the last six months.</p>
+<p>I have no idea what they're doing over there.</p>
+<p>But hopefully, you know, we will, you know, that will be in press before the end of my postdoc, hopefully.</p>
+<p>And I would, you know, there's a lot of work that I want to do going on sort of trying to build on that as well.</p>
+<p>So great question.</p>
+<p>That's awesome.</p>
+<p>I mean, you've approached from very informational first.</p>
+<p>Sorry, you've approached it from very informational first principles and recovered a lot of these topological and dynamical features of complex systems and how they have to trade off against these like multiple properties of systemsness that sometimes might be like directly contradictory.</p>
+<p>A question in the live chat, Celeste wrote, how might GID be related with network controllability?</p>
+<p>Oh, that's a really good question.</p>
+<p>And I know I'll be honest, I have no idea.</p>
+<p>Network control theory is something that I, you know, I am a consumer of network control theory.</p>
+<p>I'm not a producer, you know, so I'll see these papers, you know, like Harper Singleton had a great one looking at like network control theory.</p>
+<p>Like network control theory and, you know, LSD and psilocybin.</p>
+<p>I was like, oh, that's really cool.</p>
+<p>But I don't, I don't know enough about the theory to really get at it.</p>
+<p>I, my guess just sort of just off the cuff would be that redundancy would make the network perhaps less controllable because, you know, it always wants to fall back into, you know, like its main attractor.</p>
+<p>Whereas synergy, you know, probably lowers the energy needed to, you know, push you onto a different, you know, part of the configuration space.</p>
+<p>But, you know, it's maybe less stable, maybe more fragile.</p>
+<p>So, so I, I think that this is a great case where, you know, some, some simple toy models, maybe some analysis of FMRI data could go a long way to, you know, answering a really interesting question.</p>
+<p>But I, you know, I, I can't say for certain, other than just sort of those very sort of hand wavy predictions, but I'd love to see it.</p>
+<p>I'd love to see it done.</p>
+<p>Cool.</p>
+<p>Yeah.</p>
+<p>One thing that you brought at the ends with the two eyes looking at the object and getting depth, it really made me think about the multiple scales of redundant and synergistic information.</p>
+<p>Like you have two photo receptors that are right next to each other.</p>
+<p>So just from a first pass correlational value, it would seem like they're going to be highly correlated sensors.</p>
+<p>I mean, they're in a sensor array, like on the retina.</p>
+<p>And yet also the differences between retinal receptors are used to improve like signal to noise characteristics at multiple steps in the relay of visual processing.</p>
+<p>Then you have the two eyes and depth perception.</p>
+<p>And then there's also cross modal synergistic information.</p>
+<p>Like maybe if you just saw the video of somebody or only heard what they had to say, it might convey certain information and yet putting them together, that is very important for understanding like, well, how do different kinds of multi modal experiences convey information about real world things?</p>
+<p>And for cognitive modeling, like of biological systems or design of cognitive systems, these kinds of redundancies and synergies would basically be ignored at one's peril.</p>
+<p>Because you can always describe kind of the syntactic flow of information and say, like, this is how much data at each moment we're pushing through this connectivity.</p>
+<p>But that might be misleading or fragile or over designed or under designed with respect to relatively obvious intuitive ways in which we fuse streams of information to reduce our action oriented uncertainty about the world.</p>
+<p>Yeah, the idea that, you know, the idea that, you know, at different scales, you could have different sort of balances of redundancy and synergy is I think, like, there's a whole universe of interesting work that could be done there.</p>
+<p>And my guess is that, you know, somewhere there is a system that has every combination of, you know, micro scale, macro scale redundancies and synergies.</p>
+<p>And sort of like different contexts in which, you know, that might make those would be useful, I think would be really cool to think about.</p>
+<p>Another kind of connection is those lattices.</p>
+<p>Even just from the two to the three, we could see that kind of explosion of ways to parse the information.</p>
+<p>And then it made me think about where is time and the foraging or the attentional path of a given cognitive entity, because while you're able to represent all the possible partitions and like you as a mathematician can can pick up that and handle it.</p>
+<p>We might, from like an attentional networks in the brain perspective, we might ask like, well, which node on this lattice should we be looking at?</p>
+<p>Like, how should we blend the indicators from person one and two to the exclusion of three or two and three, but not one?</p>
+<p>Those are like different attentional modes you can have, and you can have a uniform prior across that lattice and just say, well, we're going to blur across all them.</p>
+<p>But then once you start saying, oh, but I like this one and this one's irrelevant and these two are the same, then you're getting into the business of reshaping the portfolio across the lattice.</p>
+<p>And then that, how do we deal with that when outside of dealing with these systems purely symbolically, if we actually want to be using certain partitions and identifying useful decomposed components?</p>
+<p>Like, how do you think about that?</p>
+<p>Well, so, I mean, first thing is, you know, you mentioned time, again, I again want to shout out Pedro and Fernando and Andrea's work on integrated information decomposition, because they really, you know, I introduced it as this, like multiple sources, multiple targets, but they have this incredibly cool application of that where they say, okay, well, all the sources are the states of the elements at time t, and all of the targets are the states of the elements at time t plus one, right?</p>
+<p>So now you're decomposing the information that sort of the past discloses about the future.</p>
+<p>So you can ask, you know, what redundant information in the past, you know, discloses information about the synergies, you know, in the future?</p>
+<p>And, you know, what information in the synergies in the past stays synergistic in the future?</p>
+<p>And so, you know, there's a whole sort of universe of temporal information dynamics, you know, that can be brought to bear here that I just, you know, didn't really have time to talk about.</p>
+<p>On the topic of, you know, sort of which atoms do we care about?</p>
+<p>You know, one of the things that I think a lot about is so these lattices explode super exponentially, right?</p>
+<p>Like, we don't know how big the lattice for like, a 10 element system is, because it's the 10th DD kind number.</p>
+<p>And that's like, so large that nobody has ever, like, computed it, right?</p>
+<p>So finding ways to kind of, you know, figure out, you know, how will we get sort of the information, how do we make this information accessible to us as modelers, you know, is sort of an outstanding problem as well.</p>
+<p>Which is kind of, I think, kind of getting what you're saying.</p>
+<p>And then the other thing is that, like, as the lattice gets bigger, the particular atoms become, like, hilariously arcane, right?</p>
+<p>It's like, okay, well, what information could be learned by observing x1 and x2 and x9 and x10, or x1 and x2 and x3 and x9, or x1 and x2 and x7?</p>
+<p>You know, like, you end up with these incredibly long chains of logical dependencies that, you know, my guesses almost certainly don't mean anything, right?</p>
+<p>And so, again, figuring out some way to extract or decide what are the meaningful dependencies, right?</p>
+<p>Not just, like, what are all of the dependencies, you know, as a mathematician, I like completeness, right?</p>
+<p>I like having the whole, the whole pie.</p>
+<p>But, you know, again, outside of that, you know, the question of how do we figure out what information is sort of relevant to us?</p>
+<p>That's, that I think is a standing problem.</p>
+<p>You know, I think there's a lot of space there for creative, you know, attacks on the question.</p>
+<p>Because there isn't, you know, I've taken my own swing at it, other people have as well.</p>
+<p>I think, you know, again, there's a lot of work still to be done in that space.</p>
+<p>And it's very exciting to see what people will come up with in the coming, you know, next 5, 10 years.</p>
+<p>Yeah, a few thoughts on that.</p>
+<p>First, I think what you said there about even with 10 retinal receptors or, like, an insect eye with multiple ometidia.</p>
+<p>Like, once you get to 10, enumerating the lattice is not even finitely accomplishable.</p>
+<p>And I think that, in a way, must speak to the relevance of coarse graining and nesting of models.</p>
+<p>Because you couldn't, you couldn't have 10 people in a room and all those pairwise combinations happen.</p>
+<p>So, like, there has to be some clustering and nesting.</p>
+<p>And then also that, what you said about the specific atoms being, like, hilariously arcane reminded me of random forest modeling.</p>
+<p>And you also had the kind of logical framework.</p>
+<p>So, then it's sort of like, tell me either your favorite cereal and what color of this car you would want or this and that.</p>
+<p>And, like, the concept is, yeah, those are drawn from a massive state space of possible thresholds or choices.</p>
+<p>Yet, through statistics and iteration, some of those thresholds may identify kind of critical decision points within an empirical state space,</p>
+<p>which is probably going to be existing on, like, manifolds or subspaces that don't require the full unpacking of the lattice.</p>
+<p>But there might be whole, like, territories of the lattice that you can just average over.</p>
+<p>But the question is, how nicely are those distributed on the whole lattice?</p>
+<p>If those are distributed randomly, then there may not be many ways to work with it.</p>
+<p>But if those are all on one side, then a random forest with a simple first question might, like, bring one into a useful area.</p>
+<p>Yeah, that's a really interesting idea.</p>
+<p>I'd never thought about the link to a random forest before, but I'm going to write that down and, you know, take a stab at it.</p>
+<p>I like that a lot.</p>
+<p>Cool.</p>
+<p>Yeah.</p>
+<p>I guess one of the interesting questions, too, is information for whom and about what?</p>
+<p>Like, in the math, that's kind of generalized over.</p>
+<p>Appropriately so.</p>
+<p>But then when we're constructing active inference models and we're actually using the KL divergence, like, in the variational free energy, where the KL divergence is used, like, in the complexity minus accuracy way to talk about it, or when we're using KL divergence in the expected free energy prospective setting, thinking about, like, the divergence between what we prefer for observations and for how we think differently.</p>
+<p>And so, like, the different kinds of courses of action are going to play out.</p>
+<p>But looking at those divergences, it does get very specific what we're talking about, the reduction with respect to.</p>
+<p>So, how do you bring something that's kind of generalized across observers and types of variables and bring that from being kind of an analytical result into being something like the air conditioner is reducing the KL divergence about preferred temperatures with respect to courses of air conditioning?</p>
+<p>So, like, what happens between having this math and being able to use it in those settings?</p>
+<p>So, that's a really good question.</p>
+<p>So, that's a really good question.</p>
+<p>And, you know, like, again, coming from a math perspective, like, I'm always, like, gunning for full generality, right?</p>
+<p>Like, the less useful this is, like, the happier I am.</p>
+<p>But, you know, like, the GID really is just, you know, it is a decomposition of the KL divergence, right?</p>
+<p>Like, all of the general stuff is kind of, you know, it's sort of an added bonus.</p>
+<p>So, you know, you could have a KL divergence where, you know, your prior and your posterior are very well defined, right?</p>
+<p>And you're like, I know exactly what my prior is, I know exactly what my posterior is, I know exactly how to interpret it.</p>
+<p>And then you can just go ahead and, you know, crank the GID handle, and, you know, you'll get the decomposition back out.</p>
+<p>So, I think, you know, the, you know, the, again, I approach it from sort of a general perspective, but if you want to sort of take it and make it specific, you know, that's, I, there's no, I think, fundamental mathematical problem with that.</p>
+<p>It's really just a question of, you know, how, to what extent can you specify exactly sort of what your priors and posteriors are, and how do you then interpret the resulting numbers, right?</p>
+<p>Because the GID itself doesn't care about the interpretation, it just says, like, we have one distribution, we have another distribution, and, like, they have this structure that relates them.</p>
+<p>But, you know, if you, you know, have your interpretation and your, you know, sort of, let's say maybe domain knowledge that sort of specifies everything, then yeah, I think that that's, you know, that the generality is not necessarily a problem, you know?</p>
+<p>How would you connect this to the concept of, like, known unknowns and unknown unknowns?</p>
+<p>Oh, boy. So the problem in information theory is it has a very hard time with unknown unknowns, right? Like, it kind of assumes that you have the distributions, you know, that you have all of the distribution, like, how do I say this? This is a little bit...</p>
+<p>Getting all tongue-tied here. So, you know, from the perspective of the KL divergence, like, all it sees is what's in the distribution, right? You know, and, you know, so you plug the distributions in, you turn the math crank, and you get numbers out.</p>
+<p>There's not an obvious or real way, I think, to account for the possibility that there is sort of, you know, meta uncertainty, right? Like, you can be uncertain about, you know, what's the probability of x1? What's the probability of x2? Right? But there's, you know, what is the problem? Like, how are you, like, how certain are you about these certainties?</p>
+
+
+<p>then how certain are we or how do we get a p-value on the uncertainty? And then in the hierarchical</p>
+<p>Bayesian modeling approach, you can just keep on going, but the buck has to stop somewhere.</p>
+<p>And then you can go to kind of another set of methods and pick different prior distributions</p>
+<p>for that highest possible prior or take other approaches. But that's like a very kind of</p>
+<p>composite approach that is not necessarily returning back down to the simplicity of the</p>
+<p>initial question. You're just getting into like higher orders. Like what is the probability that</p>
+<p>there was another element that we were missing? And then that, but that could increase the complexity</p>
+<p>of the problem so much that even a simple question would be kind of like unnecessarily</p>
+<p>exploded because of even a very small probability of something happening that changes the state space</p>
+<p>of the initial question very greatly. And then that would kind of like potentially forego a lot of</p>
+<p>low hanging fruit to kind of cover the bases against some rare events, which still might not even be</p>
+<p>detected because you would have just basically turned some kind of unknown unknown into a known unknown</p>
+<p>unknown, but at expensive cost and making the problem quite different. So it's kind of like,</p>
+<p>is that something that can be resolved in an airtight way? Or is that kind of like the openness</p>
+<p>that just requires iterated engagements?</p>
+<p>Yeah. I mean, my, my, my, my sort of, my intuition is always, you know, sort of keep things as simple as</p>
+<p>possible, you know, but not too simple. Like that, the, the, the quote, the quote says, you know, I, I, I,</p>
+<p>I, in, in the paper, I write a lot about like all of the contexts in which you shouldn't use the GID,</p>
+<p>right? That was like something that I spent a lot of time on. And so, you know, the Kolok-Liebler</p>
+<p>divergence does have sort of these odd limitations, or for instance, you know, anywhere that, you know,</p>
+<p>q of x is zero, you know, where, you know, you have a, you know, something happens in the posterior that you</p>
+<p>didn't think could happen the prior, like the whole thing blows up, right? And so I do think that if you wanted to use this in an</p>
+<p>analytical context, you know, practical context, not just a theoretical one, you know, would require a lot of</p>
+<p>thoughts about like, is this actually the right pool, you know, for the question that I want to answer, you</p>
+<p>know, and it's entirely possible that no, it's not the GID, the PID is not the right pool for, you know, a</p>
+<p>system where you have, you know, changing support sets, you know, or unknown unknowns, and, and that's fine, you</p>
+<p>know, there's, you know, plenty of mathematical toys in the box for us to play with. And so I guess,</p>
+<p>like, my response to that would be like, if you find yourself asking those questions, like, maybe</p>
+<p>just don't use the GID, or the PID, maybe there's something else that would be a more appropriate,</p>
+<p>appropriate tool for your question.</p>
+<p>Hmm. That also makes me think about like, the concept of, I guess, different ways to approach</p>
+<p>it, but like, information, or stimuli that have an informational impact, information cannot be</p>
+<p>negative, per se, yet, there are ways to move distributions up and down. And then there are ways</p>
+<p>in which the movement of that distribution up or down would have like an adaptivity benefit or</p>
+<p>detriment to an organism. So information is just kind of at this level, this is coming in lower</p>
+<p>in the processing, that it is not necessarily a complete answer to questions about complex systems.</p>
+<p>However, it helps ground and anchor some subsequent questions about their higher order dynamics,</p>
+<p>in a way that skipping directly to inferring higher order dynamics might not be able to realize.</p>
+<p>Yeah, the question of whether, you know, is this something that we use to model, you know, these</p>
+<p>certain kinds of information theoretic dependencies, or is there something in the brain that is actually,</p>
+<p>you know, computing something like a little GID as it tries to learn, like, what are the patterns that I</p>
+<p>need to be sensitive to? That's, you know, my guess is there's probably nothing like that.</p>
+<p>But, you know, yeah, the question of how do organisms sort of represent information and represent</p>
+<p>potentially higher order interactions, you know, that's a really interesting question.</p>
+<p>I don't know if that's exactly what you were talking about, but that's kind of where my mind went.</p>
+<p>Ooh, um, well, just, we'll wait a minute, if anyone in the chat has any last questions, but I mean,</p>
+<p>where and how are you going to take it forward?</p>
+<p>So I'm really interested, you know, I spent most of my PhD, I kind of spent working on like, the</p>
+<p>mathematics of these things, you know, I wrote about the PED, I wrote about this, you know, I've</p>
+<p>worked on some other stuff. I'm really curious about like, where can this be applied to real data?</p>
+<p>Right. And so, you know, I'm working currently, man, at the University of Vermont, I'm working with</p>
+<p>Josh Banger and Michael Evan, on some sort of interesting projects and like evolutionary computing</p>
+<p>and evolutionary biology to see like, you know, where are these, you know, are these synergies in nature?</p>
+<p>And are they telling us anything about the sort of behavior or structure of organisms? You know,</p>
+<p>I'm still interested in neuroscience, you know, I sort of a long standing interest in like psychedelic</p>
+<p>neuroscience. And so, you know, whether there are changes to redundancies and synergies in the brain,</p>
+<p>you know, when you're, you know, on DMT or whatever, could that help explain why phenomenological</p>
+<p>consciousness changes? That's something I've worked on before as well. And so really trying to find ways</p>
+<p>to get out of like, sort of math theory land and see like, does this actually tell us something about</p>
+<p>nature, as opposed to just like the structure of information theory is sort of what I'd like to do.</p>
+<p>Um, next. Well, that's also expensive and requires data, whereas pure theory just needs a whiteboard</p>
+<p>and a, a LaTeX compiler. So it's a lower overhead. Just on that kind of like altered states of</p>
+<p>consciousness and, and, um, and all of those possibilities, it's almost like what,</p>
+<p>what, what decompositions help one like gain knowledge about themselves or about something else.</p>
+<p>And it might be like a decomposition of like this amount of that in this setting, or this amount in</p>
+<p>that setting provide information on a common target distribution. And that maps out like an architecture,</p>
+<p>that's not this part of the brain's connected to that one. It's not even necessarily the architecture</p>
+<p>of kind of like the dynamic causal modeling of the neuroanatomy, but it really would be toward like</p>
+<p>architectures of beliefs and how they have different equivalences or, or relationships.</p>
+<p>Yeah, there's, um, there's a really interesting, uh, set of papers by Robin Carrard Harris and Carl</p>
+<p>Friston looking at sort of a free energy or a Bayesian approach to like psychedelic therapy. Like how do our</p>
+<p>beliefs change and how does, you know, tickling the serotonin receptors change our, change our beliefs.</p>
+<p>And so I think that would be a really interesting place to try to, uh, apply something like this. If</p>
+<p>you could get like meaningful keys and cues, right? Like, you know, if you're looking at something like,</p>
+<p>you know, post-traumatic stress disorder, right? You know, you're changing your beliefs,</p>
+<p>not just about like the world around you, but also like your own interoception, you know, is the capacity</p>
+<p>to, you know, heal from trauma or something. Does that require a higher order, a synergistic, you know, change</p>
+<p>in sort of the joint states of your beliefs about the world and yourself that is sort of not figuratively</p>
+<p>reducible to like just tweaking one or tweaking the other. Right. And so, you know, getting into sort of more of</p>
+<p>this, um, sort of cognitive, cognitive kind of stuff, I think would be really interesting. I also, you know, one, one</p>
+<p>thing I didn't mention when you're talking about future stuff is one that I've been working on quite</p>
+<p>recently is, you know, that the PID and the PED, you know, it's all gamed out currently in terms of</p>
+<p>entropies and mutual informations. But as long as you have a function, a general function that satisfies</p>
+<p>certain axioms, you know, non-negativity, um, you know, monotonicity, yadda yadda yadda,</p>
+<p>you can also get a lattice and you can also do like the Mobius inversion and get the decomposition. So</p>
+<p>I've been working a lot on, you know, taking, you know, what I'm calling sort of like structure</p>
+<p>decomposition. Like if you have a network, you know, you know, and you have a measure like the</p>
+<p>communicability, which does satisfy all of the sort of the desiderata to induce the decomposition,</p>
+<p>information decomposition, you could do a communicability decomposition, right? Looking at</p>
+<p>like the influence of edges or nodes to just measure the communicability instead of the information,</p>
+<p>you know, or you could look at the shortest path efficiency. This one also satisfies all of those</p>
+<p>requirements. And so, you know, can we take these logical mathematical structures that were developed</p>
+<p>in the context of information and entropy and apply them to other things, you know? Um, I'm looking,</p>
+<p>I'm a networks guy by training, so I'm looking at network measures now, but, you know, could you,</p>
+<p>how far could you push this, right? Could you start looking at maybe psychological constructs? Could you</p>
+<p>start looking at, you know, dynamical properties like the, I don't know, the, the, I, having a stroke,</p>
+<p>I'm drawing a blank on any good dynamical properties, but you get the sort of the idea of what I'm,</p>
+<p>you know, what I'm trying to say, like how far can we push this logical structure to look at higher</p>
+<p>order interactions in other contexts that are information theoretic?</p>
+<p>Yes. That just makes me feel like networks give a discretized and topological handle on families of</p>
+<p>continuous phenomena or the phenomena could be discrete at the node level, but we could just be</p>
+<p>talking about a continuous statistical distribution. So that at the node level gives us continuity and</p>
+<p>connection with empirical data and statistics. And then the math picks up with these discretized</p>
+<p>lattices and kind of like studying a tree is like studying a tree. And then you pull back and you have</p>
+<p>a model of the forest. And then what could you know by studying two trees? Well, they could be giving</p>
+<p>redundant information. They could be giving synergistic information about what? And then it's kind of like,</p>
+<p>off one goes on that inquiry. Yeah, huge potential there, I think,</p>
+<p>for a lot of really cool sort of new ways of thinking about complex systems.</p>
+<p>Awesome. If you have any last comments, feel free to go for it. Otherwise, this has been epic and very</p>
+<p>informative. You know, all I'll say is, you know, you can find me, you can find me on Twitter, you know,</p>
+<p>you can, you know, my, you can find me on my email. You know, I'm always open. I don't know how many</p>
+<p>people are on the, on the YouTube right now, but I was good. I'm always open to like collaboration,</p>
+<p>talking to people, you know, like I am, you know, if any of this is interesting to you, shoot me an</p>
+<p>email, please. And I would be happy to talk, you know, about any and all of this, like my inbox is open.</p>
+<p>So I look forward to hearing from folks. Thank you for that. And thank you again for joining. So till 10.2.</p>
+<p>See you.</p>
+<p>Cheers.</p>
+<p>Bye.</p>
+
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

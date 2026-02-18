@@ -1,0 +1,732 @@
+---
+title: "ActInf Livestream #050.0~ "Interoception as modeling, allostasis as control""
+category: "Livestream"
+series: "Livestream_050"
+episode: "0"
+duration: "1:18:16"
+url: "https://www.youtube.com/watch?v=l7r0ISlr-Hc"
+views: 405
+exported_at: "2026-02-18T22:37:37.907029+00:00"
+format: markdown
+---
+
+# ActInf Livestream #050.0~ "Interoception as modeling, allostasis as control"
+
+all right welcome to
+act inf livestream number 50.0 it is october 17th 2022 and we are starting the series on
+interoception as modeling allostasis as control welcome to the active inference institute we're a
+participatory online institute that is communicating learning and practicing applied active inference
+this is recorded in an archive live stream so please provide us with feedback so we can improve
+our work all backgrounds and perspectives are welcome and we'll be following good video
+etiquette for live streams today in 50.0 we're starting this series discussing the paper
+interoception as modeling allostasis as control the authors are eli sinesh jordan thuryalt dana brooks
+john wilhelm van de mint lisa feldman barrett and karen s quigley it is a paper published in the
+journal biological psychology in january of 2022 and this is just an introduction and context video
+as dean here and i work through this paper and discuss some related topics we're going to go over
+some big questions basic aims and abstract roadmap of the paper then go into the paper touch on a few
+key points and images and themes and then primarily look forward to discussing it with any authors or
+anyone else who'd like to join in the coming weeks all right so i'm daniel i'm a researcher in california
+and the paper was selected by decentralized upvote it was uh fun to read and it brings some new topics
+into our regime of attention so i'm looking forward to this and i'll pass to dean thanks tally i'm dean
+i'm here in calgary i think what's interesting about any paper that um pulls two seemingly discrete
+things and puts them proximal and gets them entangling um and then pulls them apart again and
+tries to look at sort of what happens when things get combined is always something that i'm always
+interested in that in fact it was the title of this and the fact that they were bringing allostasis and
+interoception together and what what does that mean was the reason why i spent a little bit of time
+on this and really am quite interested in hearing what the authors have to say now that they put this
+idea to to uh work all right how would you describe the big question
+well i mean i think the focus here is on on what happens and what we can say about control
+requirements necessary to carry out physiological tasks varying degrees of complexity um
+i'm i've never been really sure how the the specificity of different outcomes and behaviors
+looks in aggregate but i think one of the things that we can say is if there's a predictive component
+and there's a feedback component and they're focusing on two particular types of that um
+it's interesting perhaps what kind of generalities we can walk away with um never you know sort of not
+getting lost in the weeds of well this happened here and then that happened there but just on that general
+level what what sorts of things when those two things are put together um should we say
+we say has a certain pattern or commonality nice i agree i would put it in the category of asking how
+a given system independent or modality independent phenomena like allostasis which is anticipatory
+changes in physiology connects with a domain or a use case like interoception and it does seem like a lot
+of the models that we've explored have been visual or conceptual or symbolic and the interoceptive
+modality has popped up again and again in discussions and so this is a cool opportunity to look at some
+formalisms for interoception
+interoception
+okay here's the paper uh as described earlier just a few of the highlights that were written by the
+authors on the publication page interoception enables the brain to anticipate the body's upcoming
+metabolic needs interoception provides performance metrics for viscera motor regulation we connect control
+theory with decision making and motor control of the body we model allostatic control as optimal control
+with the time varying reference signal they talk about some limitations of previous models and some
+unique aspects of what their model does and the way that they formulate the apic model anything to add
+no i think their answer is straightforward
+okay on claim so dean and i were uh looking into
+thinking of ourselves in terms of claims adjusters appraisers examiners and investigators
+as we pulled out a whole handful of really important and salient
+within the argument of this relatively long and technically scaffolded paper
+and pulling out a bunch of claims that are written that connect the dots and
+set some of the relevant uh interpretations for the formalisms
+states states states states states states states states states states states states states states states
+of this but i will say this there there is a i think a parallel trying to be drawn here between
+predictive predictive uh processing no i'm not saying that predictive processing but
+processing as a as a predictive device and feelings and control and feedback and so i think
+there are a lot of claims that can be made but that's a really really nuanced and also a very very
+complex uh space to play in and so i can understand why um there's lots and lots of claims
+um again whether or not or how far those claims can hold before they break down will be an interesting
+thing to talk to with the authors yeah well said it's a very intertwined area maybe that's what
+you're pointing towards when you say it's complex braiding yeah i have a lot of hair so it's it's
+tricky for me all right abstract okay i'll read the first three the brain regulates the body by
+anticipating its needs and attempting to meet them before they arise a process called allostasis
+allostasis requires a model of the changing sensory conditions within the body a process
+called interoception in this paper we examine how interoception may provide performance feedback for
+allostasis we suggest studying allostasis in terms of control theory reviewing control theory's
+applications to related issues in physiology motor control and decision making we synthesize these by
+relating them to the important properties of allostatic regulation as a control problem we then
+sketch a novel formalism for how the brain might perform allostatic control of the viscera by analogy
+to skeletal motor control including a mathematical view on how interoception acts as a performance feedback
+for allostasis finally we suggest ways to test implications of our hypothesis
+okay on to the roadmap the paper starts with introduction the functions of the brain in the body
+and then introduces some of the key pillars or foundations of their synthesis and interpretation
+which is interoception control theory as an approach for unifying physiology motor control decision making
+and allostasis as a trajectory tracking stochastic optimal control the fifth section is a discussion
+and then there's an appendix b and c and in their words four sections in this paper connect interoception to
+allostasis section two establishes how interoception enables the brain to estimate the physiological efficiency of the body in the present moment
+which is precisely what it needs to know to evaluate and refine action section three introduces control theory
+section four applies the principles of control theory to derive a novel format model of how the brain might estimate the
+desirability of physiological trajectories and make prospective regulatory decisions
+the key words finally section five synthesizes the previous three sections to explore the direct implications
+of the proposed formalism appendix a provides a glossary of terms but this is moved up and it's no longer an appendix
+so there's no appendix a appendix b1 provides mathematical details related to section three and appendix c1 provides mathematical details
+related to section four
+the keywords were interoception allostasis and predictive processing we're going to talk a lot about interoception
+and allostasis somewhat in this dot zero but certainly in the coming discussions and for predictive processing
+a good recent stream is live stream number 43 with maria
+the word for predictive processing
+okay also just for reference we'll pause on these just long enough for you to screenshot them if you want
+there's a nomenclature table with the definition of many words so here's the first nomenclature terms
+1 through 25
+and then here's the second half of the nomenclature 26 to 49
+sorted alphabetically
+anything to add on the nomenclature other than to say that
+it's good that they provided it and it'll be used in the coming sections
+well i think it's interesting that you pointed out that the um they pulled they pulled the definitions forward
+and then they look at the formalisms and so i think from the standpoint of what they what they want to
+message around this this braiding um requires us to at least get a common sense around what things mean
+before we start trying to pull apart what they equal
+so yeah i kind of what i like that
+well said
+all right section one introduction the functions of the brain in the body
+okay
+there's an evocative beginning to this paper
+um playing a simple game of dodgeball then requires your brain to continually coordinate the systems of your body
+and this
+motif of dodgeball is going to be
+returning again
+and on the left is a hugging face
+implementation of a stable diffusion algorithm
+the prompt of the image was dodgeball playful ants active inference free energy principle
+and while we were making the slides we were engaged in active inference with some of these image generating
+affordances and allowing that to
+do what
+well i think it's really interesting that this what the what the generator said
+this would be the result of a coordinated
+um what's the word i'm looking for
+entanglement of these of these prompts
+but it doesn't talk anything about what what strategy each one of those
+um silhouettes is now employing
+and i think that
+there is an implied sense that there's a strategy going on
+is known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known
+they just inferred. All right. Next keyword, you can go for it. People can read the definition
+here, but just give your own take. What is interoception? Well, I think at the end of the
+day, there's a certain amount of signaling going on that we become aware of. Sometimes young people
+or all people might sort of categorize them all under the umbrella of feelings. And I've
+grabbed this from Tots on Target, just because I've always worked in that kind of space of
+how do we keep this as simple as we can. And so when you get these signals, these sensory
+signals originating from within the body, these are the feelings you get. And whether or not
+you connect them to the world outside of your skin or your margins, sometimes you do, sometimes
+you don't, you just wake up with a tummy ache, right? So what does that mean about today?
+Nice. I would say a little narrowly, interoception is referring to some observation and inference on
+hidden states with a referent that's in tarot inside of the body, as opposed to ex-tarot outside
+of the body. But there's probably also a lot of like blurring and what is the retina really doing?
+Is it doing inference on itself? And where is it actually doing inference on the outside world structure?
+All right. Interoceptive internal models, you added some images. So what are they?
+Yeah, so I'll just read this real quick. So psychologists refer to the internal model,
+including interoception by many terms. And I think it, I think that's important because there hasn't
+always been agreement about clearly defining what an internal model is. Things like unconscious
+inference seems to fit under this umbrella, embodied simulation, concepts and categories,
+controlled hallucination, which was new to me, because I don't know what that even means.
+And regardless of what it's called, the brain is hypothesized to construct a dynamic model of its
+body in the world. In this paper, we use the terms prediction, simulation and concept. And so
+for somebody with sort of my deep research background in terms of abduction, the signal, the
+interpretant, the object, what is that model? How do we, how do we avoid getting into another
+ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+up in the room but my temperature might also be going up because i ate a bad shrimp and it's
+sometimes difficult to figure out whether or not it's because the heat gone up or whether my body's
+responding with an inflammatory gesture yeah that's a nice point like sometimes called a difference
+making cause or a difference that makes a difference does a viral infection cause the
+body temperature to rise and or to what extent can that be decomposed into factors from the virus
+versus this the dynamics changing of the immune system so interesting image on the left knows
+i can i can't tell whether the image on the left by the image on the left what's what speed the image
+on the right is actually moving down the road and that's kind of why i wanted the ambiguity there
+for an interoceptive model because you know damasio talks a lot about what what can we really
+describe and proceed price precise terms and what remains somewhat ambiguous and the authors in this
+paper talk a little bit about that as well yeah when the referent is external it's objective then
+there's the opportunity for multiple external perspectives to align not even saying that's better
+but just the opportunity to whereas if the embodied behavior of your physiological set point for some
+physiological regulation is changed it doesn't have the same opportunity for external alignment again for
+better and for worse and almost always with difficulty communicating or sometimes measuring in laboratory settings as well and and quote controlling
+so speaking with uh authors on this and why they study this modality will be interesting
+all right as for the computational or system independent phenomena that they're going to be trying to
+integrate with allis uh with interoception is allostasis they define this term as allostasis is to anticipate
+changing needs evaluate priorities and prepare the organism to satisfy them before they lead to errors
+a process called allostasis so let's just say that you have an allostatic model of the temperature in the room
+and the core body temperature doesn't change so then can one look back and say it didn't change because
+it was expected to change and somebody will just say well how do you know it worked then because it didn't
+raise the body temperature
+i focused on the part that the fact that they describe it as a three-part process
+so me being always talking about what's the minimum here what's the minimum here we need in order to be able to
+to do this i find that really that really quite interesting why three not four or five or breaking
+it out into into smaller slices that's again another one of those questions i'd like to be able to talk
+to the authors about all right active inference
+they wrote before diving into formal modeling details below which we're going to get to later in the paper
+it might be helpful to compare and contrast the approach here
+with the prominent modeling framework active inference and we're going to return to some of these details and i'm sure
+have a lot of discussion on it
+But you made a really interesting point in our preparation about how they're not treating their model as downstream or a corollary of any commitment to a particular physics, which is how we often hear about free energy principle and Bayesian mechanics.
+But rather they're treating the model as a first order construction.
+Anything you want to add on that? Because I thought that was really like helped me frame what the paper was about.
+Yeah, that's straightforward. I think that the fourth bullet, unlike most active interest models in the literature, the material below considers an indefinite time or infinite horizon control setting is interesting because that makes it really, really clear between what they're talking about and what we often see in a lot of the representations, which is T0, T1.
+T1, T1, T1, whatever, in terms of being able to figure out what is going on sequentially.
+All right, cool.
+This section in the introduction talks about some issues with other models.
+They talk about how existing models of interoception have either formulated allostasis as a prospective decision-making problem without considering how these decisions are enacted, which has a bunch of different interpretations, but maybe, for example, requiring the enumeration of policies and then the selection from policies, or as a motor control problem without considering where motor commands come from.
+Another issue they have another issue they have.
+They have a set of points.
+They have a set point with a set point with a fixed set point and an empirical tolerance for error, as well as maybe some points of no return and so on.
+But seeing all those outcomes as the realization of a dynamical system that actually doesn't pursue a set point, but rather pursues a slope on a graph that we'll explore.
+And that zone of maximum controllability and reduction of surprisal around the zone of maximum controllability over evolutionary time will come to be associated with this kind of a survival variable.
+And some other points.
+And some other points.
+
+Anything else?
+Well, it's relationship, relationship, relationship.
+And then they say this paper aims to fill this gap.
+I think relationship doesn't necessarily imply that things have to get closed in terms of whatever the gap is by filling something in.
+I think the fact that they talk about targeting, I think about the fact that they see relationship as playing kind of the key role in what they think is happening here means that maybe the gap continues.
+I mean, they're putting stuff in here for us to consider and contemplate, but I'm not sure if we're actually filling a gap or if we're just sort of understanding what's in this space.
+Right.
+Section two.
+So at the beginning of section two, the top paragraphs, interception, modeling the body, estimating its efficiency.
+And then the below the fold section 2.5, the summary.
+So both of these pre and post two, two dot zero, two dot two contains a lot of structural information about the key points in this paper.
+Anything to add on this specific slide to, or we'll just go into the sections.
+I just put a quick star down at the very bottom there.
+People might want to have a read on that because I think that's, I'm not saying that that's controversial, but I do think it's interesting.
+Yeah.
+So what does it mean to move into a non-reward centric understanding of physiology or reinterpreting reward?
+Okay.
+Section 2.1 introduces a distinction that is going to be key in the rest of the paper, which is the difference between two types of viscero sensory variables, interoceptive.
+Those which represent quantities of resources, regulated resources, and those which represents rates at which processes act, controlled processes.
+Regulated resources are kept stable, relatively stable over time.
+Examples include blood glucose and core body temperature.
+So of note is they don't have to be a depletable resource.
+The regulated resource is kind of like the bounded variable in a physiologist, in a homeostasis context.
+It's not necessarily a depletable like metabolite.
+A regulated resource like blood glucose or core body temperature represents a physical quantity or a substance like glucose.
+Its quantity cannot change instantaneously.
+So I think it will be interesting to ask like what different regulated resources of different modalities are.
+And then controlled processes are the rates at which physiological processes operate.
+So in that case would be like the kind of input output relationships of blood glucose.
+Okay.
+Yeah, we just talked about that.
+We talked about that recently is what's the difference between gripper and gripped and can both exist at once.
+Nice.
+2.2.
+Back to the dodgeball example.
+The heart rate and blood pressure must increase during aerobic exercise as noted in the dodgeball example.
+So there has to be some physiological adaptation in order to start exercising and continue exercising.
+So upon resting conditions, the baroreceptor, that's pressure receptor, heart rate reflex would normally counter any rise in blood pressure by slowing the heartbeat.
+However, with exertion, your blood pressure and heart rate both must increase to support the needed increase in blood flow required by your exercising muscles.
+And so then there's a discussion of how this kind of modulation of reflex allows for shifting of an entire function relating a change in blood pressure to a change in your heart rate.
+So this is describing like a dynamical systems approach and physiological model for how the causal or correlational structure of different physiological variables can be modeled pretty generally, but it's going to get more specific.
+Yeah, a little bit of co-variation there and physiology and away we go.
+Okay, 2.2. Predicting and modeling the ranges of regulated and controlled processes.
+This is describing some of the parameters of the curve, the threshold and saturation points, which partly define curves that are derived from functions, which physiologists commonly use to model the connection between perturbations and regulatory responses, usually naming them response curves or transfer functions.
+And then the term capacity curves will be used to emphasize the fact that while such curves can shift over time, in any one instance, they represent the current range of limited regulatory resources available to an organism.
+So one could imagine like a financial capacity curve to maintain some market at some point, like kind of like the depth, but by analogy.
+And then this idea of modeling how a system responds to perturbations doesn't necessarily require modeling the internal model of that system.
+But as you build a better generative model of the system being perturbed, then the better experiments and the further you can have kind of perturbability of the system that allows you to approach a system without a strong hypothesis about its structure.
+The capacity curve in figure one has a mathematical form.
+And then figure one is shown alongside with equation one.
+The parameters are defined.
+The function Y is taking in U, mu, K, big R, big B, and combining those into an equation.
+The figure one on the X axis is showing the blood pressure.
+And then the Y axis is showing the baseline activation percentage of the reflex modulating this physiological variable.
+So at 100, which is the target blood pressure or sort of what would be called the homeostatic set point because it seems to be an attractor.
+At that point, the baseline activation of the baroreflex is happening.
+When the blood pressure increases, then the baroreflex activates up to 2X, thresholding at 2X activation of baseline.
+And then as the blood pressure decreases, the baroreflex, again with this sigmoid symmetry, decreases.
+That's a dynamical model of regulation of blood pressure.
+Equations 2, 3, and 4.
+Outline the form of a generative model, a procedure for probabilistically predicting observed variables in terms of unobserved variables.
+The variables listed are unobserved variables, which are sampled from an a priori probability distribution not dependent on data.
+So that's referring to using a generative model and how these equations constitute it.
+The proposal here has an unusual feature.
+The equations for X, the mean arterial blood pressure, and Y, the baroreflex activation as a percentage of baseline, so figure 1, X, and Y, are in terms of the quantile variable U.
+The quantile variable uniformly represents the relationship between the blood pressure and the baroreflex activation,
+irrespective of changes in the capacity curve's operating point mu and gain K.
+The quantile depends only on the functional form of the capacity curve and not on the parameters.
+So we'll unpack that a little more technically, but they point to that as a feature of their model.
+Here again is figure 1, a little bigger with more space to discuss later.
+And here's figure 2, which is the capacity curve from figure 1 in blue with a linearized response in orange around the operating point, the blue diamond marker.
+So one can see this as the maximum positive slope of this sigmoid curve, and that under the specification that the reflex is going to be activated in a sigmoidal way.
+Then, depending on whether one is in like a curving up part or a curving down part, or thinks about it as pursuing the maximum positive slope, then pursuing that point and being rewarded by movements towards maximum maneuverability and control would have the equivalent of pursuing a homeostatic model where this is like a fixed point attractor.
+So it puts the bottom of the bowl in this orange line being maximized in slope rather than the blue diamond being reduced in its distance from 100.
+So it's like a fixed point to 100.
+Right?
+I think we copied this section twice.
+It was so unusual.
+We copied it twice.
+Yeah.
+2.3.
+Return to the dodgeball example.
+And they're going to widen their scope beyond just the barrow, reflex, blood pressure to circumference.
+2.
+Circulating levels of oxygen, glucose, and carbon dioxide.
+3.
+Next, we focus on blood glucose as a regulated resource with glucagon as the controlled process enabling secretion of glucose into the blood, and insulin as the controlled process enabling removal of glucose from the blood.
+So the barrow reflex was like a single volume knob or a triage nurse that can lower or raise the single response.
+So if some physiological variable is high, it's like it can be like removed.
+So if you're going to be a little bit more, it's going to be like buffered from two different sides in a slightly different way, but using a lot of the same formalisms and logic to introduce a slightly different and more complex physiological system.
+Okay.
+So the section discusses some findings that blood glucose levels are not actively defended at a biologically hard-coded set point any more than heart rate is.
+Instead, glucagon and insulin, two hormones, activity balance each other's effects to bring the blood glucose to a point within its settling range, with glucose entering the blood after the person ingests food and glucose then crossing from the blood into other bodily tissues to support their function.
+So the question is, is that the blood glucose?
+Anything to add on this slide?
+Not specifically.
+I'll wait till we get to the end of section, the section two stuff.
+So here is figure three.
+They're writing figure three shows plots of the resulting functions of this equation applied to the insulin case, which can be interpreted as capacity curves.
+Orange sigmoid is insulin.
+The blue sigmoid is glucagon.
+They have different hormone levels at different X axis, which is the level of glucose in the blood.
+And so you kind of see familiar behavior when glucose is high, then insulin is at high secretion, which drives the absorption of glucose.
+And when glucose gets low, in this case below 2.5 or 3 or so, then glucagon is secreted to elicit glucose to enter the blood.
+Okay.
+Okay.
+Okay.
+Okay.
+Okay.
+And so one can imagine that the glucose level will be oscillating in this space, but not exactly set at a set point with a residual being minimized.
+Okay.
+Okay.
+Okay.
+So here's section 2.4 is where they move from discussing this kind of a regulatory model into viable ranges and capacities could obviate a modular reward system.
+
+And a bit more on this topic.
+Anything to add?
+No, let's get to 37.
+All right.
+The rewards of control.
+So here I wanted to highlight two papers with some nice images by both papers involving Tobias Morville.
+And these papers are cited in the paper under discussion, and they all show some pretty interesting features.
+So just to highlight some of these graphs, here's movements within a glucose and temperature space.
+So regulation of multiple physiological variables.
+Here on the bottom left is the integration of interoception, homeostatic set point, and motor commands like related to foraging.
+Here is some Bayesian visualizations with a prior posterior and likelihood, and about this two-way relationship of inference and a forward dynamical model, the tail of two densities.
+And then last one, this is another body temperature glucose modeling approach that gets to that notion that we describe as going to the bottom of the bowl, where the shape of this napkin could be designed or evolved or selected so that the marble spends most of its time in a certain zone.
+And this is like just one other way to think about these types of attractor systems rather than as like traces or so on.
+Okay. Anything to add?
+Well, I think section two basically confirms that if you're going to be doing any kind of predictive performance that has an element of continuity to it, that depends on sort of recognizable finite limits and also variability within whatever those limits are.
+And I think that kind of speaks to the idea that there's in a sort of two-factor situation.
+There's signaling that looks like this.
+And they sort of pointed out a couple of examples of the barot reflex and the glucagon thing.
+And they also are trying to avoid oversimplifying or over reducing like they, they tried to keep the complexity of those two examples retained in terms of what they were trying to hold up as something that allows us to start looking at these capacity curves.
+All right. Section three control theory, the unifying lens for physiology, motor control and decision making.
+And then one of their summaries of the chapter, this section introduces concepts from engineering control theory, then reviews its applications in the life sciences.
+These include physiology, section 3.1, skeletal motor movement, section 3.2, and decision making section 3.3.
+Section 3.4 will connect future interoceptive states to present movements, illuminating what makes allostatic regulation more energy efficient than homeostatic.
+Regulation. The next section 4 will build off the account of control used in physiology to suggest how interoception supports allostasis.
+Okay, here we're not going to read everything on the slide, but this is from section 3.1 control theory for physiology.
+A reliable body built from unreliable parts. Anything to add on this?
+Nope. People just want to read this.
+Yep. I'll just call out for a controller to perform well.
+It must contain some sort of copy or mirror of the plant's expected behavior, which is referred to as an internal model.
+Control theorists call the driven system the plant and its desired trajectory the reference trajectory.
+And there's some interesting discussion of this kind of thread of control theory.
+Figure 4.
+So figure 4 is a functional block diagram of a model based control system.
+The plant in orange is the object or system whose motion or other behavior is controlled.
+The controller purple sends signals, controls, solid block arrows.
+The change how the plant moves and signals the expected outcome predictions, solid yellow arrow to the state estimator in yellow.
+And so on. People can read the rest of it.
+For these figures, Daniel, as we get further down in the slides, why don't I read and then you can run the cursor over the different parts of the model.
+So people can kind of see and can real time with how the two things align.
+Sounds good. We'll do that for the future ones.
+And this is going to revoke or recall some of our earlier discussions in live stream 23 skillful performance and interaction ism and instruction ism and how to think about motor plants and so on.
+Right.
+Section 3.2, moving the body, the reference control hypothesis.
+So the reference control hypothesis, the citations provided were to Feldman 2015 and Latosh 2021.
+And the reference control hypothesis describes the skeletal motor system in terms of a hierarchy of controllers with higher level controllers in the brain prescribing reference trajectories to the lower level reflexes in the spinal cord.
+These reflexes then compare the actual length of the muscle as signaled by afferent proprioceptor neurons to the reference length sent down by the brain and contracts the muscle to bring the two into agreement.
+So here is the top part of the table of content of Feldman's 2015 book,
+Referent control of action and perception and the paper of Latosh in physics of life review 2021 with some graphics around this type of approach.
+You can start this slide on the real world.
+Okay, well, I'll just point out a couple things the authors say because they do not want to be accused of sort of overfitting here.
+Structure motor control experiments only limited overlap with the actual structure of motor control.
+So only limited overlap.
+Experiment on reaching behaviors involves an experimenter prescribing the reaching task to the participants.
+Participants brain does not function specifically to follow instructions from an experimenter, but rather to regulate their own body.
+The actual organization of the central nervous system, of course, better with an inside out view of motor function movement of the body by either some out of some
+So Mattel motor pathways serve regulation of the body.
+of the body.
+For example, in the game of Dr. Paul, you if you unexpectedly step on a hard or sharp rock or object, usually don't purposely impale yourself who I stepped on it.
+So I just wanted to go through my foot now because I might my focus is still on stabilizing my posture rather you recoil in pain.
+You feel that interoceptively and the unplanned disturbance of any tissue damage requires you to make a decision about what to do next.
+Excuse yourself to nurse your foot or play through the pain.
+I think the fact that they're trying to limit what they are saying is the extent to which the control piece of this can be said to apply is a good thing,
+because I think there's a couple of areas around.
+So what is in this relationship between a command system or a control system and a demand system?
+Where do things like like when your body is starting to suffer from mild hypothermia and you know, people know that that your brain stops functioning correctly?
+How do you differentiate between, for example, I'm getting a slurpee headache and you put the slurpee down and stop drinking it?
+Because you know that that's the effect versus you have your limbs, which aren't, you know, frostbitten at this point, or at least hopefully not frostbitten, continue to move so that you don't stop you, you avoid stopping moving altogether, which is which essentially is death.
+So here we've got to wonder whether or not, without getting into the argument of because it's pretty obvious if your brain is dead, you're dead.
+But if your hands are dead and you are still alive, that clear distinction between a command center consequence and a demand center consequence.
+What does that mean in terms of, okay, so there's things that happen that you do automatically in order to keep yourself alive in some of the most critical situations.
+And it's not like your, your, your, your, your hand has the brain.
+And yet it may, in just simply moving around beyond a reflexive thing, be able to keep you alive long enough until somebody comes to your rescue as a, as a, for example.
+So I don't know if that's confusing or not, but I think that there's a reconciliation, but that goes on between command and demand and maybe some of control is the ability to give up command at times in order for a new, a new response to take over and keep you alive.
+And you may not necessarily know how to do that from a command center.
+So we'll have to talk to the authors about that.
+Cause these are questions that I have, and I got a bit of a physiological background.
+So I wonder about these extreme situations.
+All right.
+Section three, three, making decisions, constructing future reference trajectories.
+They use the word demands.
+So we'll talk about it later.
+Yep.
+More quotes from three, three, for those who want a screenshot.
+Talking about ergodicity, which is also raised in the appendix B, which we're not going to focus on.
+Okay.
+You can read figure five and I'll use the mouse.
+Go for it.
+So a functional block diagram for an experiment, experimental psychologist, task oriented view of motor control.
+The diagram shows a formal logic structure here at a conceptual level.
+The boxes and arrows do not map onto the anatomy of the brain or nervous system.
+In contrast to figure four, this diagram differentiates between skeletal motor brain and peripheral stretch reflex controllers.
+And between sensory state estimators, brain and peripheral sense organs, sensory surfaces, sensory surfaces.
+The diagram shows an engineering perspective.
+Important to note that.
+The problem is on a psychology experiment in which the experiment prescribes a task for behavior to participants.
+So there's an externality and a participant's brain then access control system to achieve the behavior, the prescribed behavior systems that maintain the body.
+Therefore serve systems that move the body, which in turn serve a prescribed behavior.
+So again, focus on the prescriptive, the externality, the information coming in.
+All right.
+Functional block diagram.
+Yeah.
+Next one.
+Functional block diagram for a control theoretic view of allostasis.
+In contrast to figure five, this diagram shows a closed loop control system designed for autonomous regulation of the body.
+An experimenter's desired task behavior is replaced with or by the allostatic capacity estimator, which sends predictions of capacity curves, which we've already looked at, to the interoceptive state estimator and receives prediction errors with which to update its estimates.
+The updated estimates are issued as a reference signal to the visceral motor controller.
+This diagram shows a formal logical structure, a conceptual level.
+The hypothesis depicted is constrained by the inferred anatomical structures in Barrett 2017, but the boxes and arrows do not map, I'll repeat, do not map one to one onto the anatomy of the brain or nervous system.
+All right.
+Great.
+So just to highlight the difference here.
+The left is almost like an instructional list arrangement.
+And this is how the experimental psychologist thinks about this task, which is like, we write down the instructions, the pseudocode for the task.
+Keep your heart rate within this range.
+Keep your heart rate within this range.
+And then there's some decision making with the skeletal motor system, whether capable of conscious action and stretching or more subconscious.
+And then acting through physiology in the body or in the external world, that interoceptive state estimator comes into alignment with the desired implementation of the skeletal motor decision.
+And then, in contrast, the role of the task instructions, so to speak, is substituted in this control theoretic view with the allostatic capacity estimator as the imperative.
+And that feeds on through a very similar set on the right side.
+So, here we actually have the viscero motor decision controller in contrast to a skeletal motor decision controller because this is more focused on, like, choose the left button or the right button.
+And figure six is focused more on the kind of barrel reflex control theory view, but that also generalizes beyond.
+Okay, I think that's just another view.
+Section four, allostasis as trajectory tracking stochastic optimal control.
+This section will describe our formal model of allostatic decision making, the allostatic path integral control, APIC model.
+APIC has a simple idea at its core.
+Just as perceptual concepts serve as internal models of the body's sensory surfaces,
+action concepts also serve as internal models of potential behaviors and their predicted outcomes.
+Section 4.1 derives an SOC objective function from the mathematical form by which section 2 represented capacity curves.
+Then section 4.2, 4.3, and 4.4 are described fleshing out this APIC model.
+
+No, let's go there.
+All right, 4.1. Transforming capacity curves into objective functions.
+Since any given capacity curve, such as the one in figure one above, reaches a maximum value on the vertical axis,
+it can be divided by its maximum y-value to normalize it to range between 0 and 1.
+Once normalized in this way, it can be interpreted as a cumulative distribution function from probability theory.
+This is precisely, in fact, precisely what Srinivasan, Laughlin, and Dubs did to interpret the firing of retinal neurons and flies as a form of predictive coding.
+See there, figure one.
+The derivative of a CDF, cumulative distribution function, yields a probability density function, PDF.
+So, the derivative of a CDF gives a PDF.
+This is the more familiar way of representing a probability distribution where the height on the vertical axis corresponds to likelihood in the PDF.
+But for a PDF derived from a capacity curve, it represents relative responsiveness to perturbation.
+We will call such distribution a reference distribution.
+So, this is a transformation of statistical distributions between the PDF, which is the probability density function, and CDF, cumulative distribution function.
+It might be very familiar to some, it might be totally new to some, so that's all good.
+Hopefully, this is useful still to consider the relationship between the two.
+So, here on the left of these three images, the PDF, which is the more familiar way of representing a probability distribution,
+we would say, this is a uniform distribution.
+There's a 1 in 6 chance of getting each outcome from a 6-sided die.
+Or, in the Gaussian bell curve situation, which both of these two, middle and right images show,
+the PDF of the bell curve is the bell curve.
+So, the PDF is the most familiar one.
+The uniform distribution is like a flat line in the PDF.
+The bell curve is like a bell curve in the PDF.
+So, the maximum and minimum values, if only asymptotically,
+then you can make a cumulative distribution function, which starts basically as low as the function can go,
+the support for that distribution, and it just accumulates cumulatively.
+So, it's like useful to answer the question, what is the probability of getting a 4 or 3 or 2 or 1?
+That is 2 thirds.
+Or, what is the probability of getting a z-score of below 2?
+Like two standard deviations positive, what fraction of the curve is below that z-score on the PDF,
+and that is addressable by quickly just looking up a point on this CDF.
+It turns out that that relationship between the PDF and the CDF,
+which is more familiar to, again, like rolling a die,
+or evaluating like height in a classroom,
+can be used on the capacity curve discussed earlier
+to move to a distribution which, when maximized, is in this spot of maximum control.
+So, here the CDF from figure 2 gets the derivative,
+and then it becomes the PDF with this sort of negative curve shape.
+And that's kind of what was being hinted at with this orange line being maximized.
+Orange line being maximized is the high point on this bell curve-like,
+but it's not a classical bell curve, but it is a mountain.
+It's one peak that you can know which side you're on,
+and therefore pretty easily optimized towards.
+For analytical convenience, we take the practice from Todorov, 2006, of using a log density,
+the logarithm of a PDF, as an objective function rather than the PDF itself.
+The operating point then continues to appear as local maximum,
+while the gain determines the cost of movement away from the operating point and the value of movement towards it.
+Figure 8 shows the objective function, log density, corresponding to the original Barrow reflex capacity curve.
+Figure 9 further clarifies the relationship between the various forms of capacity curve by showing all three alongside each other.
+So this is a really nice figure.
+On the top left of the figure is the figure one with the reflex that gets dialed up or dialed down to regulate blood pressure.
+That's when interpreted as a CDF can result in a PDF.
+And that is a single peak that you can maximize instead of trying to calculate a residual.
+The shape of this curve becomes slightly nicer to optimize computationally
+when you make it so that it's like a smoother bowl rather than this kind of like inverted funnel shape.
+It just, we can go into more detail why. I think that'll be cool.
+Why does this log step matter or does it matter?
+But suffice to say that this is the big move that lets you turn the sigmoid juggling act into the mountain climb.
+Table 1 summarizes some key...
+Table 1 summarizes some key notations.
+We do not claim our graphical model accurately captures the anatomy of the brain.
+It captures reference-based sensory motor control across a hierarchy of time scales, a single feature shared with the brain.
+Variables in a table.
+Equations 5 and 6 about the instantaneous capture rate.
+We'll discuss it in the .1.2.
+
+Section 4.2 also will be nice to discuss.
+It is optimal foraging theory suggests a functional form for allostatic control.
+Do you want to add anything upfront about optimal foraging?
+No, other than I want to talk with the authors about what does that even mean?
+That'll be great.
+All right.
+Equation 8.
+Global capture rate.
+Section 4.3.
+Feed forward control with generative action concepts.
+So here's some more formalisms.
+And this is within not the experimental psychologist framework, but rather the control theoretic framework with allostatic capacity estimator on the left.
+Section 4.3.
+Equation 10.
+Equation 11.
+More variables.
+Stochastic optimal control.
+SoC.
+Which was mentioned earlier.
+
+Figure 10.
+This one will be nice to discuss.
+A hierarchical generative model capturing multiple timescales and reference distributions at each level.
+Without addressing empirical questions about neural hierarchies, here we employ a model with L equal 4 models to match figure 6.
+It defines what some of these nodes mean.
+But the y-axis is increasing timescale.
+So perhaps slower things higher up.
+And then on the right is the passage of time.
+So what does this make you think about?
+Or what is like a way we can approach the interpretation of this?
+Well, I'm not trying to be a smart apple, but I do find it interesting that L4 gives you quite a bit of information.
+I mean, there's maybe, and they talk about the fact that there's more than four levels, but they want to focus on those four.
+I mean, where my brain goes is, okay, so we've got the water, we've got the yeast, we've got the hops, and we've got the grains.
+And that can create quite the product.
+So we can go past that you can add juice or whatever, but you got the four basic ingredients.
+So now moving through time, what does that enable?
+So again, it'd be nice for them to pull that apart, because I think even in this, there's enough there to figure a lot of stuff out.
+All right, 4.4 feedback control with generative action concepts.
+Still, there is equation 13, equation 14.
+Equation 14, and then a nice quote.
+
+So it's pretty interesting how different lower bounds, variational lower bounds, negative free energies exist.
+Like there's expected free energy, and then there's free energy of the expected future, and there's all of these variants.
+And then each of those energies can be decomposed differently.
+Like equation 2.6 in the textbook.
+So it's interesting to see how, first off, how did they converge to this kind of a bound?
+And from why should it have such resonance with free energy principle?
+And what does that mean?
+And then how can different partitionings of these energy bounds help us think about systems that survive?
+I'll just add here, Daniel, that we're going to get to these things.
+But up into this point in the paper, I guess I had a bit of familiarity, and I didn't really struggle with the sort of the lockstep way that they were going through this.
+But as soon as we got to equations 13, and the jump to equation 15 and 16, somebody, somebody brighter than me is going to have to be able to explain that jump in real simple terms.
+Because even though I've read it a number of times, I'm still not exactly sure how it works.
+So again, the authors will really want to bring their softest gloves because I need my handheld.
+Yeah, agreed.
+Section 4.4 still, here's equation 15.
+Section 4.4, here's equation 16.
+Substituting the augmented objective, fancy j, equation 14, and the analytical expression for the optimal feedback controller alone, equation 15, into the Bellman equation, equation 12, would yield equation 16.
+Let's learn what it is.
+Yep.
+Now the intractable recursive term in the equation is, etc.
+Finding a way to replace this term will yield a more computationally tractable problem.
+The information divergence term in fancy j provides just such a way since it can be written as precisely the difference between the intractable hard maximum under q star sub phi, and the more tractable smooth maximum under the preplanned action concept.
+In symbols, equation 17.
+Pretty interesting.
+Okay.
+Equation 17 through 21.
+Then the final section.
+Section 5, discussion.
+Section 5, maybe you can help me today.
+So, were 13 through 17, and then 18, 19, and 20, a way of being able to put together some of the scale free formalisms with the scale specific or scale friendly details and particulars?
+When you read this, is that what you saw them trying to clarify?
+That's a great question.
+As you talk about global, and I think they have to be able to spell that out, and I think they did.
+But again, I'm, it was all of a sudden, things went off into the ditch for me.
+Here's what I would venture.
+In the early section, there's a contrasting of homeostasis with allostasis.
+Right.
+And about how reward systems are no longer required under certain distributed models of brain neuroanatomy and a function.
+So, I believe that the following formalisms substitute the augmented objective into an optimality and optimization framework, like the Bellman equation, which is often used for reward maximization.
+Okay.
+So, I'm rewarded by getting to the top of the mountain.
+Okay.
+So, I'm going to evaluate paths based upon how much reward they accrue.
+Okay.
+And then curiosity or so on will be valuable to the extent over the time horizon that I considered.
+It facilitates reward in terms of elevation.
+Okay.
+Whereas, we here are seeing the move towards that like optimal maneuverability maximization with the PDF-CDF relationship.
+Like instead of trying to reduce divergence to the midpoint of the CDF, you maximize your responsiveness in terms of maximizing the log PDF.
+Okay.
+So, I think that's the augmented reward function, which is tractable.
+And then some work remains to specify that function and how it behaves, perhaps.
+Okay.
+Then section five, discussion.
+Interoception stabilizes action and constructs allostatic references.
+People can look at the quotes.
+Anything to summarize here?
+No.
+All right.
+5.1.
+Viewing the brain as an allostatic optimal controller.
+The allostatic path integral control API C model in section four implies a number of specific hypotheses beyond those generic to stochastic optimum control.
+There's some discussion of shared modeling choices with active inference models.
+Perhaps enough for API C to be considered an active inference model of sorts.
+And then a few other features that are shared with active inference models in the strict sense, if one even exists, and also related modeling efforts.
+Anything to add?
+No.
+No.
+No.
+They spelled it out pretty clearly here.
+You just want to read through this.
+All right.
+5.1.
+Provide some predictions and some contrasts with the API C model.
+5.2.
+The body and the brain through the lens of control theory.
+Figure six.
+Show how viscera sense data ascend in effect to become exafferent interoceptive prediction errors.
+Do you want to explain briefly what exafferent means?
+Because people might, they do explain that in the glossary, but it's, it's basically an apparent signal on an apparent signal.
+There's a bit of recursion there.
+Do you want to add anything to that?
+Um, I see the distinction just to highlight what afferent is.
+Afferent is conducting or conducted inwards or towards something for the nerves, the central nervous system for blood vessels, the organs supplied.
+Right.
+And, um, how would you distinguish exafferent?
+Just, it's just that it's that sort of cumulative.
+It's not, it's not sort of the, the, the initial is what I took away from that.
+The accumulation of those afferent signals.
+Interesting.
+I might go wrong.
+That's what I took away from it.
+5.3. Interoception and capacity curves.
+Theories of peripheral predictive coding.
+Reason that a neuron's most metabolically cheap responses should represent the predictable stimuli, whereas expensive responses are reserved for the most surprising stimuli.
+Some predictions and suggestions from Barrett 2017 and findings of Dworkin 2013.
+Certain peripheral interoceptors in humans reduce their afferent firing rate to zero under a constant stimulus.
+So that's kind of interesting.
+Like if no change, don't tell me about it.
+Right.
+And that should be cheap under a model where something is changing less often than not.
+And there's some more hypotheses.
+We have hypothesized that increases in such responsiveness, which is the imperative in this APIC model, could function as rewards, positively reinforcing behavioral trajectories, while decreases in responsiveness could function as costs, negatively reinforcing behavioral trajectories.
+So keeping options open over the infinite time horizon becomes equivalent to keeping the business floating or keeping physiology bounded.
+Yeah.
+Continuity.
+Continuity.
+Instead of just maximizing amount of USD or calories.
+Right.
+But rather having reduced or bounded surprisal about a range and a trajectory and a strategy, not in this model as stated here, to generate that.
+5.3 interoception and capacity curves.
+More.
+5.4 conclusions.
+Finally, we return to the amateur dodgeball player.
+The amateur.
+Yeah.
+And some summarizations of the APIC model.
+And suggestions about its compatibility with the referent control hypothesis and some of its tractability.
+That's the discussion.
+That's the discussion.
+Then, Appendix B, ergodicity, which we've talked about before, but it's kind of a cool topic.
+So just to skip through these appendices, just discussing them with the authors, we hope.
+Then, some more equations.
+In equation B, formulating perception and control ergodically leads to the free energy principle.
+FEP.
+More of Appendix B.
+Appendix C.
+APIC model derivation details.
+Equations.
+C.1.2.
+Full derivation of optimal value function and transition dynamics.
+More equations.
+The path integral form for the value desirability function gives its name to the technique of path integral control.
+And so, on a kind of closing note, we wondered how this connects to the Bayesian mechanics and to the path formulation, the rightmost of the three phases of Bayesian mechanics.
+And about how coming potentially from quite a different starting point and with different approaches and constraints, some similar features might have arisen and been highlighted in APIC that are also highlighted and relevant for Bayesian mechanics in the path formulization.
+And maybe there's like a kind of unmapped Venn diagram there and some similarities and differences.
+The proximity to the last live stream, whether by accident or by intent, makes the way that you look at this paper interesting, I'll just say.
+Yeah.
+Yeah.
+Agreed.
+Well, anything you want to close with?
+I think the idea of being able to look at modeling, internal modeling and sort of the coordination of that either, again, kind of as a minimum two, either as a risk management or risk minimizing exercise, therefore limiting strategy, or as an option generating or an expanding strategy.
+It would be something really interesting to talk to the authors about because again, I can't really figure out whether or not the APIC model works in both domains until I get past the jump between Formalism 13 and all the way up to 17, 18, 19, or 20.
+But I mean, with an explanation of that, and a gentle prod, it'd be interesting to find out how that works when those things seem to be, we as physiological entities are able to juggle both the risk management and the option generating or option expanding.
+So I am really actually quite excited about that from a, here's what I'm feeling.
+How should I read that in terms of what I can, how far out I can make my next bet from an allostatic perspective.
+I think that's really exciting.
+I think that's really exciting.
+If you, if, if, like I said, if I can get a better sense of how that jump works in their model.
+Yeah, definitely interested in that infinite time horizon and that mentality of like, what's the best physiological decision over the infinite horizon?
+Right.
+Right.
+Right.
+That's a great question.
+And yeah, the eternal now, the presence.
+And then also just a little bit more mundanely, like what kind of data are relevant for this type of model?
+Is it data that already exists for people?
+Is it something where you can extrapolate a lot from a sparse data set?
+Or do you need a bunch of replication to get good statistical confidence on the model parameter and extract findings that are like non-trivial?
+And where's this technology or approach being used or where could it be used?
+There's like a lot of things that'll be interesting to talk about.
+Well, thank you for all the preparation and help on this one, Dean, and see you in the dot one and beyond.
+All right, my friend.
+Take care.
+Bye.
+Bye.
+Bye.
+Bye.
+Bye.
+
+
+Bye.

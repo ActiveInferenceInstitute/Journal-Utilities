@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf MorphStream 003.1 ~ Anand Subramoney "Principles of scalability and biological inspirations"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf MorphStream 003.1 ~ Anand Subramoney "Principles of scalability and biological inspirations"</h1>
+<div class="meta">Category: MorphStream &middot; Series: MorphStream_003 &middot; Episode 1 &middot; Speakers: Anand Subramoney &middot; Duration: 1:01:30 &middot; Views: 309</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=T5nG_5UZ_yk">https://www.youtube.com/watch?v=T5nG_5UZ_yk</a></div>
+<article>
+<p>[Laughter]</p>
+<p>so hello everybody oh can you just go on</p>
+<p>mute if you're not speaking sorry I'm</p>
+<p>just going to do a bit of an</p>
+<p>introduction um so welcome to the third</p>
+<p>um morph stream series the others are on</p>
+<p>YouTube if you've not had a chance to</p>
+<p>catch those so just a reminder of the</p>
+<p>purpose of these meetings are to educate</p>
+<p>and Inspire at the intersection of</p>
+<p>active inference and neuromorphic</p>
+<p>Computing um if you've not met me before</p>
+<p>I'm Sarah Hamburg so I'm predominantly a</p>
+<p>neuroscientist I did my PhD neuroscience</p>
+<p>at UCR which is where I first came</p>
+<p>across active inference um and I've just</p>
+<p>finished a postto in neurom morit</p>
+<p>Computing and I'm part of the Sab for</p>
+<p>the active inference Institute and I've</p>
+<p>think I've been involved with them since</p>
+<p>about 2020 when I was trying to work out</p>
+<p>earlier but I'm really pleased today</p>
+<p>that we're joined by Professor Annan sub</p>
+<p>money so he's an assistant professor in</p>
+<p>the Department of computer science at</p>
+<p>Royal Holloway London he's broadly</p>
+<p>interested in learning and intelligence</p>
+<p>so that's both algorithmic and</p>
+<p>biological his current research is</p>
+<p>focusing on understanding the principles</p>
+<p>of scalability in deep learning which is</p>
+<p>what he'll be talking about today sorry</p>
+<p>I'm just admitting some people um so he</p>
+<p>aims to use principles of scalability to</p>
+<p>build models that are more efficient and</p>
+<p>can scale up seamlessly his research</p>
+<p>draws inspiration from neuroscience and</p>
+<p>biology in his Quest To Build a Better</p>
+<p>and more General artificial intelligence</p>
+<p>and you can visit his website onand</p>
+<p>subber money for more information I'll</p>
+<p>pop that in the chat as well so his talk</p>
+<p>today is on principles of scalability</p>
+<p>and biological Inspirations he's going</p>
+<p>to talk about how current models scale</p>
+<p>and what we can learn from the</p>
+<p>efficiency of biological brains one of</p>
+<p>the central themes will be sparsity its</p>
+<p>significant role in scalable systems and</p>
+<p>its synergies with neuromorphic Hardware</p>
+<p>he'll present existing ideas based on</p>
+<p>spiking networks and recent work from</p>
+<p>his group which is focused on using</p>
+<p>various forms of sparity and distributed</p>
+<p>learning to improve the scalability and</p>
+<p>efficiency of our learning models so the</p>
+<p>format will be that the first part um</p>
+<p>arnand will speak and then we'll sort of</p>
+<p>have a more General open conversation</p>
+<p>between all of us um arand I don't know</p>
+<p>if you want people to in interrupt you</p>
+<p>with questions or not if you just want</p>
+<p>to take them at the end that's entirely</p>
+<p>up to you yeah I'm actually completely</p>
+<p>fine with taking questions during the</p>
+<p>talk cool okay right well without</p>
+<p>further Ado uh yeah we'd love to hear</p>
+<p>your</p>
+<p>presentation yeah thank you Sarah and</p>
+<p>thank you very much for the invitation</p>
+<p>uh so yeah like Sarah mentioned I'm</p>
+<p>going to be talking about principles of</p>
+<p>scalability and biological</p>
+<p>Inspirations uh so I've been working</p>
+<p>with computation neuroscience and</p>
+<p>machine learning for quite a long time</p>
+<p>and have been thinking about uh well I</p>
+<p>mean how intelligence Works to some</p>
+<p>extent but also really</p>
+<p>uh a big part of it is about</p>
+<p>understanding how various how biological</p>
+<p>models scale and by extension how</p>
+<p>artificial intelligence model scale and</p>
+<p>that's what I'm going to be talking</p>
+<p>about today so just to start off with uh</p>
+<p>things that we already</p>
+<p>know I mean so AI is really starting to</p>
+<p>become better than humans at lots of</p>
+<p>things right so this is kind of like a a</p>
+<p>plot of performance of various AI models</p>
+<p>in relation to humans and you see that</p>
+<p>handwriting recognition and speech</p>
+<p>recognition image recognition so this</p>
+<p>all of these have been like improving</p>
+<p>very very fast uh but recently things</p>
+<p>like language understanding and reading</p>
+<p>comparation have also in imp improved</p>
+<p>and become better than humans so there</p>
+<p>is really some kind of like a</p>
+<p>major movement going on in AI where</p>
+<p>things are really becoming uh better</p>
+<p>very fast and so the question is what is</p>
+<p>happening or why does it so work so well</p>
+<p>so there have been a lot of uh advances</p>
+<p>in the past do decades uh because we've</p>
+<p>started using deep neural networks with</p>
+<p>lots of layers and lots of parameters</p>
+<p>and we have uh as as a the machine</p>
+<p>Learning Community has figured out how</p>
+<p>to train these models well and get them</p>
+<p>to work well so there has been</p>
+<p>algorithmic advances in stochastic</p>
+<p>radient descent using Rao layer skip</p>
+<p>connections normalization layers and all</p>
+<p>of these have been like very important</p>
+<p>in</p>
+<p>giving us the ability to train these</p>
+<p>very deep</p>
+<p>networks the other aspect uh that's</p>
+<p>things the other thing that has changed</p>
+<p>in the past two decades is that we have</p>
+<p>lots more data right so we have access</p>
+<p>to a lot more data so uh which helps a</p>
+<p>lot with supervised learning but then</p>
+<p>we've also uh as a community figured out</p>
+<p>how self-supervised learning can be used</p>
+<p>to train these models and get them to do</p>
+<p>interesting</p>
+<p>things and the third thing is we have a</p>
+<p>lot more compute and I will talk about</p>
+<p>this so this is uh actually going to be</p>
+<p>one of the focus of my</p>
+<p>talk uh and we also have scalable</p>
+<p>architectures right so even if you have</p>
+<p>lots of compute it doesn't really help</p>
+<p>if uh the machine learning architectures</p>
+<p>that we have don't scale and make use of</p>
+<p>the compute that we have so that's</p>
+<p>obviously like a very closely related</p>
+<p>and important part so just to look at</p>
+<p>compute itself so this is kind of like a</p>
+<p>plot of various models all the way from</p>
+<p>1985 to modern day and so what's</p>
+<p>interesting here is I mean first of all</p>
+<p>uh before GPU Computing which is this</p>
+<p>left side of the plot over</p>
+<p>here uh what you see is that um the</p>
+<p>computer has been doubling every 24</p>
+<p>months so this has been just standard M</p>
+<p>law we' have been getting faster and</p>
+<p>faster processes but there is this sort</p>
+<p>of discontinuity where people figured</p>
+<p>out that they could use gpus that were</p>
+<p>originally designed for for graphics uh</p>
+<p>they could use that to do machine</p>
+<p>learning and so what you see here is</p>
+<p>that the slope of the uh increase in per</p>
+<p>in amount of compute available changes</p>
+<p>quite significantly it becomes a lot</p>
+<p>more</p>
+<p>Steep and so here the compute starts</p>
+<p>doubling every 3.4 months starting about</p>
+<p>2012 or</p>
+<p>so and then the third major aspect is</p>
+<p>these set of models uh that we're</p>
+<p>familiar with now the Transformer models</p>
+<p>and you see that uh the comput has been</p>
+<p>doubling every two months uh with with</p>
+<p>these models so uh so it looks like</p>
+<p>compute obviously plays a very very</p>
+<p>major role in the AI capabilities that</p>
+<p>we have but also the models that are</p>
+<p>able to take advantage of this</p>
+<p>computer so what happened since 2018</p>
+<p>which is what uh uh which is when uh</p>
+<p>this comput started doubling every two</p>
+<p>months so one of the major advances in</p>
+<p>2018 was uh a new scalable deep learning</p>
+<p>architectures that were published uh</p>
+<p>that actually was able to take use of</p>
+<p>this or make use of the compute very</p>
+<p>well and then a lot of engineering</p>
+<p>effort and um money</p>
+<p>spent uh actually getting these models</p>
+<p>uh scaling up these models built on</p>
+<p>these architectures right actually</p>
+<p>making use of the computer and this is</p>
+<p>kind of uh always a separate concern</p>
+<p>because even if you have a great model</p>
+<p>that scales really well there needs to</p>
+<p>be like a lot of engineering done to</p>
+<p>actually scale it</p>
+<p>up and the scalable model that was</p>
+<p>published in 2018 was the</p>
+<p>Transformers so most of you might have</p>
+<p>seen this</p>
+<p>already so this is the paper attention</p>
+<p>is all you need which was published in</p>
+<p>two first published in</p>
+<p>2017 and has already gotten tens of</p>
+<p>thousands of citations if not more close</p>
+<p>to 100,000 cations and uh this is an</p>
+<p>architecture that replaced lstms which</p>
+<p>were the dominant recurrent Network</p>
+<p>architecture for sequence processing at</p>
+<p>the</p>
+<p>time so</p>
+<p>um so there are various reasons why</p>
+<p>Transformers are scalable uh and what</p>
+<p>was kind of interesting is</p>
+<p>that so they're scalable not just in the</p>
+<p>ability to be able to run them across a</p>
+<p>lot of gpus or to use up a lot of</p>
+<p>compute but uh the important aspect of</p>
+<p>scaling up over here is that as you</p>
+<p>spent more compute uh the model</p>
+<p>performance</p>
+<p>improved right and that's that's a</p>
+<p>really important aspect and this is kind</p>
+<p>of the scaling plot from the now famous</p>
+<p>uh gpt3 paper and what you see is uh on</p>
+<p>the x-axis is the amount of compute that</p>
+<p>was used to train the model so this kind</p>
+<p>of includes a combination of the model</p>
+<p>size and the uh length of the training</p>
+<p>which is also like very closely related</p>
+<p>to the amount of data that was available</p>
+<p>and uh the y axis here is the validation</p>
+<p>error and and what you see here is that</p>
+<p>as you spend more and more compute as</p>
+<p>you have larger models and as you train</p>
+<p>them for longer uh with with certain</p>
+<p>amounts of data the validation error</p>
+<p>goes</p>
+<p>down and uh so uh you can you can really</p>
+<p>like invest comp and get</p>
+<p>returns out of using using a poet comput</p>
+<p>and here there's like a power law</p>
+<p>relationship between these two and</p>
+<p>depending upon the model more recently</p>
+<p>people have observed there's like a much</p>
+<p>more complicated relationship but these</p>
+<p>models do tend to improve in performance</p>
+<p>as you invest more compute in them uh up</p>
+<p>till up to a certain limit</p>
+<p>obviously okay so why do these uh</p>
+<p>architecture scale well is I mean</p>
+<p>obviously one of the main questions and</p>
+<p>then by extension can we scale these</p>
+<p>models even better and how do we do</p>
+<p>this so to answer the question of why do</p>
+<p>Transformers scale so well I mean there</p>
+<p>are lots of reasons I'm just like</p>
+<p>focusing on a few of them but uh like I</p>
+<p>said Transformers were uh proposed as a</p>
+<p>replacement to recurrent networks in the</p>
+<p>form of</p>
+<p>lstms and they use something called self</p>
+<p>attention to process a quences so U what</p>
+<p>they did was they replaced recurrent</p>
+<p>networks which which are known to be</p>
+<p>hard to train with feed forward networks</p>
+<p>that are easier to train and uh the</p>
+<p>other kind of very important U advantage</p>
+<p>of Transformers was that they allow</p>
+<p>parallelization across the length of the</p>
+<p>sequence right and so when you have like</p>
+<p>really long sequences or I mean any</p>
+<p>number of sequences in any length of</p>
+<p>sequence the recur Network you always</p>
+<p>have to uh process it one SE sequence</p>
+<p>element at a time and with Transformers</p>
+<p>you could process the entire length of a</p>
+<p>sequence in one go because of the</p>
+<p>particular way the architecture is</p>
+<p>designed and that's a pretty huge</p>
+<p>Advantage because now you have a whole</p>
+<p>new dimension of</p>
+<p>parallelization and um so the second</p>
+<p>reason why Transformers scale so well is</p>
+<p>because uh we already figured out that</p>
+<p>gpus work well for machine learning and</p>
+<p>Transformers were really really uh great</p>
+<p>fit for gpus right so you could a</p>
+<p>Transformer and a GPU and really make</p>
+<p>full use of the compute provided by the</p>
+<p>GPU I mean we don't know if uh</p>
+<p>Transformers are intrinsically better as</p>
+<p>a model or if it is just because of the</p>
+<p>good fit between Transformers and the</p>
+<p>available compute U the available types</p>
+<p>of compute that we have today so gpus</p>
+<p>primarily so uh which is which is kind</p>
+<p>of this uh question of was it a hardware</p>
+<p>Lottery right um so a hardware Lottery</p>
+<p>is used to describe when a research idea</p>
+<p>wins because it is suited to the</p>
+<p>available software and Hardware better</p>
+<p>and not because the idea is superior to</p>
+<p>the alternative research directions and</p>
+<p>so for Transformers it's not fully clear</p>
+<p>if it was just a hardware lottery or if</p>
+<p>there's like something uh very</p>
+<p>intrinsically advantageous about</p>
+<p>it okay</p>
+<p>so so so the scaling of Transformers I</p>
+<p>mean I'm not going to go into any</p>
+<p>further Det because there's a lot of uh</p>
+<p>literature published on this but now the</p>
+<p>question is can we scale even better</p>
+<p>than Transformers and this is kind of a</p>
+<p>plot U uh taken from this paper by uh</p>
+<p>boan who's a professor in neuromorphic</p>
+<p>professor in trans</p>
+<p>Stanford and uh so this is a plot of the</p>
+<p>uh on the x-axis you see the number of</p>
+<p>neurons and y axis the energy</p>
+<p>consumption right and uh so this Gray</p>
+<p>Line over here is where we are at</p>
+<p>currently so that's kind of the standard</p>
+<p>silicon chips uh in</p>
+<p>2D and U the</p>
+<p>biological uh systems that we know of so</p>
+<p>biological brains is this darker line</p>
+<p>over here which kind of uh you see has a</p>
+<p>much steeper slope of scaling compared</p>
+<p>to the Silicon chips that we have so</p>
+<p>I'll talk about what this line in</p>
+<p>between is in a moment but</p>
+<p>uh because of just like very practical</p>
+<p>reasons just physical constraints and</p>
+<p>the sizes of things and the amount of</p>
+<p>energy that it can consume and just the</p>
+<p>proportion of things like proportion of</p>
+<p>wiring uh versus the amount of compute</p>
+<p>that you have available so for various</p>
+<p>different reasons you really want the</p>
+<p>steeper slope uh in both the algorithms</p>
+<p>and the hardware that you have because</p>
+<p>otherwise it makes it like close to</p>
+<p>impossible to achieve aieve the same</p>
+<p>level of scale so over here biological</p>
+<p>brains have reached like 86 billion</p>
+<p>neurons and uh well I mean this is a</p>
+<p>little bit uh older but this because of</p>
+<p>the steep slope if you wanted to reach</p>
+<p>the same number of units you're going to</p>
+<p>consume quite a bit more energy right so</p>
+<p>Transformers are probably like somewhere</p>
+<p>up there and biological brains are over</p>
+<p>here and at some point this becomes a</p>
+<p>deal breaker so you can this this starts</p>
+<p>like uh providing like an uh upper limit</p>
+<p>on how big you can scale the models so</p>
+<p>Energy Efficiency in that sense is like</p>
+<p>uh like a very fundamentally important</p>
+<p>uh aspect u i mean assuming that scaling</p>
+<p>models always gives you this U dividend</p>
+<p>of better performance then uh it it at</p>
+<p>some point without efficient models it</p>
+<p>becomes impossible to reach sizes that</p>
+<p>can do interesting</p>
+<p>things</p>
+<p>okay so uh what does biology do how does</p>
+<p>biology scale because we see that it has</p>
+<p>this steep slope of scaling and one of</p>
+<p>the things that it does is um it uses a</p>
+<p>lot of sparity I mean a lot of it is</p>
+<p>also again like just because of physical</p>
+<p>limits and the amount</p>
+<p>of uh cells the density of the cells</p>
+<p>that you can have the amount of energy</p>
+<p>available to the brain and so on</p>
+<p>but mean since this has evolved under</p>
+<p>these constraints what we have ended up</p>
+<p>with are</p>
+<p>uh is a substrate for computation that</p>
+<p>is extremely sparse both in time and</p>
+<p>space so uh this is kind of like a plot</p>
+<p>of What U the neuron activity looks like</p>
+<p>uh for for like one of these typical</p>
+<p>neurons and what you usually see is that</p>
+<p>there are these kind of spikes so there</p>
+<p>are times when the neuron decides to</p>
+<p>communicate with the rest of the neurons</p>
+<p>and then most of the rest of the time</p>
+<p>it's really not doing much and then so</p>
+<p>you have like these spikes of outputs</p>
+<p>and this is sparsity in time so um in</p>
+<p>terms of activity and then you also have</p>
+<p>sparsity in terms of space which is just</p>
+<p>the connectivity of the neuron is very</p>
+<p>very sparse so not all neurons in the</p>
+<p>brain are connected to all the other</p>
+<p>neurons so second thing is uh neurons uh</p>
+<p>use event based</p>
+<p>communication uh which means that</p>
+<p>communication really happens only</p>
+<p>through discrete events that send</p>
+<p>messages between units and so it's not</p>
+<p>the case that each neuron is talking</p>
+<p>with the next neuron all the time right</p>
+<p>which is uh on the other hand most of</p>
+<p>our artificial neural networks really do</p>
+<p>work like that so there's like an output</p>
+<p>that goes to the next unit or the</p>
+<p>connected units pretty much all the</p>
+<p>time uh the third thing and again this</p>
+<p>is because of just uh very practical</p>
+<p>constraints in biology is that learning</p>
+<p>is local in time and space so you cannot</p>
+<p>uh have uh altw communication between</p>
+<p>like neurons in the brain to do learning</p>
+<p>because it's just</p>
+<p>impractical and uh so what this means is</p>
+<p>that each synapse has to use information</p>
+<p>that's</p>
+<p>available mostly locally to the synapse</p>
+<p>and then with like very very low</p>
+<p>dimensional Global signals incorporated</p>
+<p>into this so uh and and and so this this</p>
+<p>is par in uh is it's local in time as</p>
+<p>well and the fourth aspect is uh temp</p>
+<p>oral coding so because time is available</p>
+<p>in some sense for free quote</p>
+<p>unquote uh neurons can use time to</p>
+<p>compute they can use time to actually</p>
+<p>send</p>
+<p>messages uh and it can be used in</p>
+<p>various different ways uh so you can</p>
+<p>neurons are able to trade off</p>
+<p>computation for time in that sense there</p>
+<p>are lots of other interesting properties</p>
+<p>asynchrony for example uh and then also</p>
+<p>some sort of like distributed learning</p>
+<p>that happens in various parts of the</p>
+<p>brain so I won't be talk going into</p>
+<p>detail into any of those at the</p>
+<p>moment okay so let's come back to this</p>
+<p>plot which showed the scaling of various</p>
+<p>things and so now I've added back the</p>
+<p>labels from the original plot and so uh</p>
+<p>this Gray Line over here is the dense 2D</p>
+<p>silicon scaling that we have and so this</p>
+<p>middle line over here is what would</p>
+<p>happen if you actually took the silicon</p>
+<p>and put it in three dimensions but</p>
+<p>without sparity and so you you obviously</p>
+<p>do get like better scaling but there are</p>
+<p>some practical challenges that need to</p>
+<p>be overcome to actually have</p>
+<p>three-dimensional silicon uh mostly</p>
+<p>related to heating</p>
+<p>issues and uh the biological brains are</p>
+<p>all in this regime of sparse</p>
+<p>three-dimensional um substrates right so</p>
+<p>this sparity is really what makes the</p>
+<p>difference uh I mean given you have a</p>
+<p>three dimensional substrate sparity is</p>
+<p>really what makes a difference in uh</p>
+<p>allowing this much better scaling</p>
+<p>property of these U computational</p>
+<p>devices as it</p>
+<p>were so this really means that we need</p>
+<p>uh apart from uh the right algorithms we</p>
+<p>also need the right</p>
+<p>hardware and uh there has been quite a</p>
+<p>lot of work on biologically inspired</p>
+<p>Hardware that can make use of the SP</p>
+<p>asynchronous communicating neural</p>
+<p>network units uh so uh and this is kind</p>
+<p>of like this illustration uh that Intel</p>
+<p>has so they they've been like also</p>
+<p>working on one of the uh neuromorphic</p>
+<p>Pro processors called lii and uh this is</p>
+<p>like a really great illustration of like</p>
+<p>the differences between conventional</p>
+<p>Computing and neuromorphic Computing but</p>
+<p>essentially in conventional Computing</p>
+<p>you have synchronous clocking you have</p>
+<p>sequential threads of control whereas in</p>
+<p>neuromorphic Computing you have</p>
+<p>completely asynchronous even based</p>
+<p>spikes and parallel and sparse compute</p>
+<p>and uh it's also I mean so gpus are kind</p>
+<p>of in between so which allows parallel</p>
+<p>Computing but it's still synchronous</p>
+<p>clocking and it's kind of kind of more</p>
+<p>optimized for dense</p>
+<p>computation and uh so these neuromorphic</p>
+<p>chips are essentially chips that use</p>
+<p>these biological um ideas and are able</p>
+<p>to work with</p>
+<p>sparsity in both time and space and also</p>
+<p>able to work with asynchronous</p>
+<p>computition and so the state of the</p>
+<p>neuromorphic chips right now just to</p>
+<p>kind of uh summarize uh what's what's</p>
+<p>been happening so I mean I I personally</p>
+<p>don't work on the hardware aspect of it</p>
+<p>but mostly in uh the algorithms but</p>
+<p>there has been recable amount of</p>
+<p>progress with neuromorphic chips so for</p>
+<p>example um in 2021 at least uh so this</p>
+<p>is like a plot which shows U the uh</p>
+<p>relative performance of various uh</p>
+<p>devices in comparison with this Intel</p>
+<p>Loi chip which is a neuromorphic device</p>
+<p>and uh so if a device is if a point is</p>
+<p>above this dotted line it means that um</p>
+<p>Loi the neuromorphic device does better</p>
+<p>and if it's below it means the</p>
+<p>conventional device does better and all</p>
+<p>of the points here are conventional</p>
+<p>devices so you have a CP you have CPUs</p>
+<p>gpus</p>
+<p>um some kind of like accelerator deep</p>
+<p>learning accelerator and IBM True North</p>
+<p>which is also a neuromorphic device but</p>
+<p>a little bit older and uh the bat size</p>
+<p>also makes a huge difference if you have</p>
+<p>bat size of one the neuromorphic devices</p>
+<p>tend to do better in general and larger</p>
+<p>bat sizes</p>
+<p>uh gpus T to do better and so uh so so</p>
+<p>what you see over here is uh well first</p>
+<p>of all uh there are certain like</p>
+<p>biologically inspired models which are</p>
+<p>these blue ones over here that do much</p>
+<p>better on a neuromorphic device compared</p>
+<p>to uh conventional</p>
+<p>Hardware on the other hand uh what you</p>
+<p>see is that even for some of these</p>
+<p>biologically</p>
+<p>inspired uh models if you start using</p>
+<p>large patch sizes so if you look at this</p>
+<p>purple Square over here uh it uses</p>
+<p>something called an LSN which was one of</p>
+<p>the uh papers that I was involved in uh</p>
+<p>a few years ago and if you combine that</p>
+<p>combine that with deep neural networks</p>
+<p>for a bat size of one uh the</p>
+<p>neuromorphic device does better but then</p>
+<p>if you improve increase the batch sizes</p>
+<p>then uh gpus suddenly start doing</p>
+<p>better so uh so neuromorphic devices are</p>
+<p>still not there yet it's still work in</p>
+<p>progress and uh Loi for example is a</p>
+<p>digital neuromorphic device and there's</p>
+<p>lot of uh variety of possible</p>
+<p>neuromorphic devices out there a lot of</p>
+<p>people working on very cool interesting</p>
+<p>ideas uh but there is this promise of uh</p>
+<p>uh the neuromorphic devices having</p>
+<p>really intrinsically better scaling</p>
+<p>curves if the engineering is done</p>
+<p>right okay so</p>
+<p>now uh I'm going to talk about</p>
+<p>algorithms a little bit so let's just go</p>
+<p>back to this slide uh where we looked at</p>
+<p>what biology does uh that uh I think is</p>
+<p>important for scaling up these</p>
+<p>models and uh one of the initial kind of</p>
+<p>attempts at using some of these</p>
+<p>principles was what are called spiking</p>
+<p>neural</p>
+<p>networks and uh spiking neural networks</p>
+<p>are essentially a direct biological</p>
+<p>uh I mean it's it's a model of a neuron</p>
+<p>that is really directly uh derived from</p>
+<p>biology so as I said in biology you have</p>
+<p>neurons and then if you kind of stick</p>
+<p>electrone in the neuron and measure</p>
+<p>um uh measure what it's doing uh what</p>
+<p>you see is that it has this action</p>
+<p>potential right so it's suddenly there</p>
+<p>is this surge uh this the sudden change</p>
+<p>in like the potential and I'll tell you</p>
+<p>what this potential is in a minute and</p>
+<p>uh but this uh action potential as it's</p>
+<p>called is a spike and uh that's what is</p>
+<p>used for communicating and most of the</p>
+<p>rest of the time the neuron doesn't do</p>
+<p>much and so this action potential is</p>
+<p>essentially uh because the neuron is</p>
+<p>constructed in such a way that there is</p>
+<p>a voltage potential difference between</p>
+<p>the inside and outside of the neuron and</p>
+<p>most of the U and this potential is kind</p>
+<p>of uh constructed through uh the</p>
+<p>movement of ions the neurons control the</p>
+<p>movement of ions but across the membrane</p>
+<p>across the cell membrane and which kind</p>
+<p>of creates a membrane potential and this</p>
+<p>is used to kind of trigger the action</p>
+<p>potential of a neuron which leads to</p>
+<p>ionic currents inside the neuron which</p>
+<p>teaches the synapsis and then there's a</p>
+<p>chemical messaging across the synapse</p>
+<p>which goes to the next neuron and so on</p>
+<p>so that's kind of like the biological</p>
+<p>process and this can be simplified into</p>
+<p>like like a circuit uh if you will an RC</p>
+<p>circuit and then it can further be</p>
+<p>simplified into a computational model</p>
+<p>where uh there are in inputs coming in</p>
+<p>as spikes which are just zero or one</p>
+<p>values and the neuron does a weighted</p>
+<p>sum of all the inputs coming in so this</p>
+<p>is kind of very similar to what</p>
+<p>artificial neural networks do except</p>
+<p>that in the case of spiking neural</p>
+<p>networks the inputs are binary and very</p>
+<p>very sparse in</p>
+<p>and uh so the neuron kind of integrates</p>
+<p>this and then if the internal state of</p>
+<p>the neuron goes above certain threshold</p>
+<p>then it also emits a sparse discrete</p>
+<p>Spike and uh so if</p>
+<p>you uh kind of uh look at the activity</p>
+<p>of the neuron this is what it looks like</p>
+<p>so the membrane potential if if if there</p>
+<p>is a input that looks like this so some</p>
+<p>sort of uh constant input then the</p>
+<p>membrane potential goes up every time a</p>
+<p>SP Pike arrives at the cell body so in</p>
+<p>this case just the neuron the</p>
+<p>computational neuron and whenever this</p>
+<p>membrane potential goes above a certain</p>
+<p>threshold then the neuron emits a</p>
+<p>spike right okay so this is a very very</p>
+<p>simplified model and this model is</p>
+<p>called The Leaky integrated and fire</p>
+<p>model U so you can kind of write this</p>
+<p>down in terms of equations and</p>
+<p>essentially uh uh okay I mean so I I</p>
+<p>don't think I will go through this but</p>
+<p>um maybe the important thing to kind of</p>
+<p>note is that uh there is some sort of uh</p>
+<p>the output of the neuron which is Z over</p>
+<p>here is one if the me internal membrane</p>
+<p>potential is above thresold and zero if</p>
+<p>it is not and this Zed is the only thing</p>
+<p>that other neurons see so the membrane</p>
+<p>potential is completely internal to this</p>
+<p>neuron and no no other part of the model</p>
+<p>has access to it uh but this one zero</p>
+<p>value this binary value the spike that's</p>
+<p>emitted is what uh the other neurons see</p>
+<p>and this this kind of depends on the</p>
+<p>threshold okay</p>
+<p>so now uh spiking neurons are great</p>
+<p>because you have this temporal sparity</p>
+<p>now right so you're not like sending</p>
+<p>messages all the time but you're only</p>
+<p>sending messages every now and</p>
+<p>then but uh you need to train these</p>
+<p>models and in a standard RNN you can</p>
+<p>just use back propagation Through Time</p>
+<p>by defining a loss function and then</p>
+<p>calculating the gradients of the loss</p>
+<p>function back propagate It Through Time</p>
+<p>into the model and then update the the</p>
+<p>weights based on this gradient but the</p>
+<p>problem with spiking neural networks is</p>
+<p>that the spike emission function is non-</p>
+<p>differentiable which means that it's not</p>
+<p>so straightforward to just apply back</p>
+<p>propagation Through Time</p>
+<p>directly because that depends on all the</p>
+<p>parts of the model being</p>
+<p>differentiable but there is kind of like</p>
+<p>this uh very crude trick as it were that</p>
+<p>works surprisingly well uh that we</p>
+<p>discovered uh back back in 2018 along</p>
+<p>with colleagues which is that you can I</p>
+<p>mean so this uh blue curve over here is</p>
+<p>the spike emission function which is</p>
+<p>this kind</p>
+<p>of thres uh step function which where</p>
+<p>the derivative is not defined at the</p>
+<p>threshold and uh we kind of realized and</p>
+<p>I mean a lot of people realized at</p>
+<p>around the same time that you could just</p>
+<p>Define a pseudo derivative so you could</p>
+<p>Define a derivative at that point quite</p>
+<p>AR</p>
+<p>Lily and uh within within some</p>
+<p>constraints if you uh so for example we</p>
+<p>uh defined it in this uh P linear</p>
+<p>function and uh it tends to work really</p>
+<p>really well so you just replace the</p>
+<p>derivatives of this uh non</p>
+<p>differentiable function at that</p>
+<p>particular point with the value that's</p>
+<p>derived from the pseudo derivative and</p>
+<p>then you can just train all these models</p>
+<p>with back propagation through time and</p>
+<p>they work work really great but turns</p>
+<p>out that that's not enough I mean so if</p>
+<p>you have spiking neuron and use back</p>
+<p>propagation through time uh that's</p>
+<p>really not enough to get the same level</p>
+<p>of performance as artificial neur</p>
+<p>networks because the second aspect of</p>
+<p>recurrent networks that we needed was</p>
+<p>long short-term memory and recurrent</p>
+<p>networks uh need to have some sort of</p>
+<p>memory by default U so just standard</p>
+<p>artificial uh recurrent networks and</p>
+<p>leaky integrated fire neurons neither of</p>
+<p>them have this long shortterm memory so</p>
+<p>in the uh deep Learning Community people</p>
+<p>tended to use this model called</p>
+<p>LSM uh which was really really powerful</p>
+<p>because it had this specific mechanism</p>
+<p>for storing and updating a me something</p>
+<p>called a memory cell so it could U gate</p>
+<p>the input coming into the memory cell it</p>
+<p>could uh decide to forget things it</p>
+<p>could also gate the things going out of</p>
+<p>the memory cell and this really helped</p>
+<p>uh this model to work really work</p>
+<p>have have long memory essentially long</p>
+<p>short-term</p>
+<p>memory and so we wanted to do something</p>
+<p>very similar for spiking neural networks</p>
+<p>because leaky integrated fire neurons by</p>
+<p>default do not have uh this memory and</p>
+<p>so one of the interesting observations</p>
+<p>uh that we had was that in</p>
+<p>Neuroscience the activity of the neurons</p>
+<p>don't really correspond to like a very</p>
+<p>typical leaky integrated fire Neuron</p>
+<p>model pi because there seems to be some</p>
+<p>sort of adaptation happening so if</p>
+<p>the neuron has constant input so I mean</p>
+<p>this is this is kind of an example where</p>
+<p>if if you give the neuron constant input</p>
+<p>for leaky integrated fire neuron you</p>
+<p>mostly expect the spikes to be evenly</p>
+<p>spaced U because every time it hits the</p>
+<p>threshold uh the neuron spikes and then</p>
+<p>it's reset to a lower value and then the</p>
+<p>input kind of drives the mem brain</p>
+<p>potential up again it spikes again and</p>
+<p>so on but what you actually see in</p>
+<p>biology is some sort of adaptation so if</p>
+<p>a neuron spikes then after every Spike</p>
+<p>the next Spike uh is pushed back it it</p>
+<p>spikes less for a while and then after</p>
+<p>that uh it spikes again and then again</p>
+<p>it spikes less for a while and SW on</p>
+<p>there's kind of like adaptation of the</p>
+<p>Dynamics uh and you see this everywhere</p>
+<p>so in the pyramidal cells in the mouse</p>
+<p>and in the human neocortex so this is</p>
+<p>data from the Allen Institute where they</p>
+<p>kind of characterize cells from various</p>
+<p>different animals and um so this kind of</p>
+<p>measure of this adaptation is called an</p>
+<p>adaptation index and essentially what</p>
+<p>you see is there's a big chunk of</p>
+<p>neurons in uh humans and mice which are</p>
+<p>which have an adaptation index that is</p>
+<p>large which means that there is this</p>
+<p>adaptation</p>
+<p>happening and so what we did uh was to</p>
+<p>try to model this uh and include this F</p>
+<p>and leaky integrated neurons and we came</p>
+<p>up with a model called uh an Adaptive</p>
+<p>leaky integrated INF fire neuron where</p>
+<p>the idea was quite simple it was uh to</p>
+<p>adapt the threshold every time a spike</p>
+<p>happened so every time a spike happened</p>
+<p>the threshold would go up a little bit</p>
+<p>and then DEC back to the base</p>
+<p>value and so as it turned out this</p>
+<p>simple mechanism so this this kind of</p>
+<p>threshold adaptation was enough to uh</p>
+<p>put the performance of spiking neurons</p>
+<p>on like very very close to lstms when</p>
+<p>trained with back propagation through</p>
+<p>time so this is a plot where you see</p>
+<p>this uh so this was uh tested on mnist a</p>
+<p>sequential Mist where you give the uh</p>
+<p>input one pixel at a time to the</p>
+<p>recurrent Network and then it actually</p>
+<p>to classify what the digit was at the</p>
+<p>end and uh so just standard leaky</p>
+<p>integrated fire neurons does really</p>
+<p>really poorly so it has like 50% test</p>
+<p>accuracy whereas just adding this</p>
+<p>adaptive threshold which is the model</p>
+<p>that we called LSN gets the performance</p>
+<p>up to 93.7 right and lstms are up here</p>
+<p>at</p>
+<p>98% and um so with with some other</p>
+<p>additions uh and using parameter</p>
+<p>sparcity uh it goes up to 96.4 right and</p>
+<p>this is with spiking neurons so it turns</p>
+<p>out that uh so this this was like one</p>
+<p>one example of like using like</p>
+<p>biological data and basing the model on</p>
+<p>that and seeing a huge Improvement in</p>
+<p>what the models could</p>
+<p>do okay uh so how am I doing on time uh</p>
+<p>uh so we're about halfway through the</p>
+<p>session now so how how long do you much</p>
+<p>more do you think you'd</p>
+<p>like um probably about 15 more minutes</p>
+<p>is that okay we're halfway through the</p>
+<p>hour H you can take an extra 15 more</p>
+<p>minutes it means we'll have sort of 15</p>
+<p>minutes for chat at the end so it's up</p>
+<p>to you kind of how you want to uh divide</p>
+<p>it I would like to remind everybody if</p>
+<p>questions they can kind of jump in as we</p>
+<p>go as well there's it's it's really</p>
+<p>dense this one I'm loving it but like I</p>
+<p>I guess yeah the timing we might have a</p>
+<p>little bit less time for chat at the end</p>
+<p>but if people want to stay on um the</p>
+<p>call like I can stay on as well for a</p>
+<p>bit longer if you can as well and and</p>
+<p>yeah absolutely sure I mean yeah so I</p>
+<p>will I will try to like uh do speed it</p>
+<p>up a little bit at least like skip some</p>
+<p>parts and then you can go and look up</p>
+<p>the paper right okay don't go all the</p>
+<p>details okay but uh so uh so we kind of</p>
+<p>also had um um models that were able to</p>
+<p>take advantage of this temporal coding</p>
+<p>that I mentioned actually using time to</p>
+<p>do computation and uh so to kind of</p>
+<p>quickly uh summarized this the idea was</p>
+<p>that so in the brain uh</p>
+<p>you kind of have a specific mechanism</p>
+<p>that controls the speed of transmission</p>
+<p>of signals uh so this is called um um so</p>
+<p>there's this thing called a milein</p>
+<p>sheath and there's there's been like a</p>
+<p>lot of recent evidence that uh so the</p>
+<p>milin sheath is has been known to</p>
+<p>control the speed of the signal</p>
+<p>transmission there's been a lot of</p>
+<p>recent evidence that the m and sheath</p>
+<p>actually</p>
+<p>adapts u in adults which means that that</p>
+<p>seems to be like an additional dimension</p>
+<p>of learning that happens in the</p>
+<p>biological brain in adult brains and um</p>
+<p>so we wanted to kind of see what can be</p>
+<p>done with just controlling the speed of</p>
+<p>transmission so which in a computational</p>
+<p>model translates to a delay so a delay</p>
+<p>in communication between one neuron and</p>
+<p>another neuron and so what we tried to</p>
+<p>do was to test out uh if we could train</p>
+<p>a model with only synaptic delays uh</p>
+<p>without training the weights at all and</p>
+<p>see how far we could go on deep learning</p>
+<p>benchmarks right and so we did this and</p>
+<p>uh so we had like a temporal encoding</p>
+<p>and we constrained the weights to only</p>
+<p>three values so some so it was something</p>
+<p>likeus 10 0 and plus 10 uh and the</p>
+<p>weights were randomly initialized and</p>
+<p>then fixed and then we trained only the</p>
+<p>delays of the uh Network synaptic delays</p>
+<p>and it was quite interesting to see that</p>
+<p>just by training delays you can get</p>
+<p>performance that's comparable to like</p>
+<p>your standard uh both both uh standard</p>
+<p>artificial neural networks uh without</p>
+<p>convolutions and uh standard spiking</p>
+<p>neural networks uh where the weights are</p>
+<p>trint can I can I just ask is that with</p>
+<p>the Adaptive neurons as well that you</p>
+<p>were just talking about or is this just</p>
+<p>with the</p>
+<p>delay uh so this does have some form of</p>
+<p>adaptation in the neuron uh so it's</p>
+<p>actually a slightly different form but</p>
+<p>in this particular case uh we were</p>
+<p>working with feet forward networks and</p>
+<p>not tricker networks okay so uh the</p>
+<p>memory didn't matter so much okay thank</p>
+<p>MH so this is an example of like using</p>
+<p>uh time uh for computation and we</p>
+<p>there's ongoing work to kind of extend</p>
+<p>this even further and to see really how</p>
+<p>far we can uh push using time as to</p>
+<p>compute because so what is interesting</p>
+<p>is uh when when you use delays for</p>
+<p>example uh in a computational model if</p>
+<p>it's implemented properly in appropriate</p>
+<p>Hardware a delay is just uh a neuron not</p>
+<p>doing anything until a certain point</p>
+<p>right which means that when you're when</p>
+<p>it's not really doing anything when it's</p>
+<p>not sending um message to the following</p>
+<p>neurons you're not consuming any energy</p>
+<p>and so this is a very uh nice way to</p>
+<p>make the models more efficient by tra by</p>
+<p>having delays and uh by using by kind of</p>
+<p>like reducing the activity of the</p>
+<p>overall</p>
+<p>Network</p>
+<p>okay</p>
+<p>so uh so so far we've been like looking</p>
+<p>at at spiking neural network so which</p>
+<p>were these models that were based kind</p>
+<p>of like very very closely based on</p>
+<p>biological Dynamics and uh still using</p>
+<p>all of these principles of sparity and</p>
+<p>event based communication and temporal</p>
+<p>coding but spiking neural networks of</p>
+<p>this particular form still don't work um</p>
+<p>as well as the best deep uh Network</p>
+<p>models so essentially in 2018 lstms were</p>
+<p>when when we were doing this adap</p>
+<p>neurons lsms were the dominant model but</p>
+<p>then as we as I mentioned in the</p>
+<p>beginning of the talk uh there have been</p>
+<p>like newer models that have been</p>
+<p>performing even even better and so now</p>
+<p>we really have these Transformers and</p>
+<p>related models that do really really</p>
+<p>well and scale really really well and</p>
+<p>spiking neural networks pretty soon kind</p>
+<p>of hit a uh ceiling in terms of how well</p>
+<p>they could do and we had to think about</p>
+<p>uh ways to push the effectiveness of</p>
+<p>these models beyond that while keeping</p>
+<p>all the advantages in terms of sparcity</p>
+<p>and</p>
+<p>efficiency so we started thinking about</p>
+<p>uh really using these principles</p>
+<p>biological principles and designing</p>
+<p>models uh from first principles uh to</p>
+<p>take advantage of sparsity and event</p>
+<p>driven Computing and so on but then</p>
+<p>without really modeling the neuron</p>
+<p>directly based on</p>
+<p>biology uh and the I mean in for the</p>
+<p>sparsity in time the basic idea really</p>
+<p>was that you had like this threshold</p>
+<p>gating function uh that would decide</p>
+<p>when communication went uh to other</p>
+<p>neurons and when it did not and we</p>
+<p>realized that we could just put this use</p>
+<p>this for other uh architectures that</p>
+<p>tended to work really really well for</p>
+<p>things like language modeling</p>
+<p>so uh and and with both uh these models</p>
+<p>and with spiking Dr networks what</p>
+<p>happens is that uh because you have this</p>
+<p>uh activity sparcity which is</p>
+<p>essentially that not all the units are</p>
+<p>active all the time when you train these</p>
+<p>models the backward pass is also sparse</p>
+<p>because you only really need to</p>
+<p>propagate the gradients through the uh</p>
+<p>units that were active and a few other</p>
+<p>units because of the particular shape of</p>
+<p>the pseudo derivative that we chose but</p>
+<p>you do not have to propagate the</p>
+<p>gradients through all the units and if</p>
+<p>you can actually take have some Hardware</p>
+<p>that can take advantage of this you end</p>
+<p>up getting like way more efficient</p>
+<p>training as well so not just the forward</p>
+<p>bus so this is kind of uh uh an</p>
+<p>illustration of this so the forward pass</p>
+<p>over here with these blue arrows is uh</p>
+<p>only goes through units that are active</p>
+<p>and the backward pass uh when you're</p>
+<p>calculating the gradients again only</p>
+<p>goes to the units that are active and a</p>
+<p>couple of other units uh that were close</p>
+<p>to being active but most of the other</p>
+<p>units are skipped entirely in this</p>
+<p>computation and we decided to to take</p>
+<p>this model called a gated recurrent unit</p>
+<p>which is another recurrent Network model</p>
+<p>that works uh quite well I mean it's</p>
+<p>still lot on par with Transformers but</p>
+<p>uh it works uh so mean it was it was one</p>
+<p>of these models that had like a really</p>
+<p>quantitative advantage over leaky</p>
+<p>integrated Fire based spiking networks</p>
+<p>and we wanted to make it activity sparse</p>
+<p>as well and uh so we took the Gru and</p>
+<p>added a even generating mechanism to it</p>
+<p>using a gate and uh few a few other</p>
+<p>features like having a reset and having</p>
+<p>um refractory period and so on and with</p>
+<p>this model we were actually quite easily</p>
+<p>able to match the performance of lstms</p>
+<p>or or like the best language models</p>
+<p>recurrent language models u in terms of</p>
+<p>perplexity so that's that's kind of like</p>
+<p>what you see over here so there are like</p>
+<p>two different data sets one is the</p>
+<p>pentry pentry bank and one is the</p>
+<p>wikitex 2 and the</p>
+<p>uh bold values are like the best</p>
+<p>recurrent Network model performance on</p>
+<p>these two data sets and with our uh</p>
+<p>event based Gru model as we called it we</p>
+<p>were able to get um perplexities that</p>
+<p>were very very close to these um</p>
+<p>recurrent models but we had extremely</p>
+<p>high activity sparcity right so if you</p>
+<p>look at just maybe this one example uh</p>
+<p>with the egru on the penry bank we had</p>
+<p>about 80 85% activity sparcity and so if</p>
+<p>you had had Hardware that could actually</p>
+<p>take advantage of it it would uh it</p>
+<p>would use like 85% less computation if</p>
+<p>the hardware could actually take full</p>
+<p>advantage of it and the backwards parity</p>
+<p>was close to 50% so you really end up</p>
+<p>doing like 50% less computation for</p>
+<p>training the same model right and we</p>
+<p>were also able to use like way fewer</p>
+<p>parameters uh to do this so overall uh</p>
+<p>these models I mean so the thing is this</p>
+<p>these resarch that we showed uh all the</p>
+<p>training was done on gpus because we</p>
+<p>actually don't have the hardware that</p>
+<p>can take advantage of all of this</p>
+<p>sparsity uh but this is uh in some sense</p>
+<p>like calculation of exactly how much</p>
+<p>energy we would be able to save if we</p>
+<p>had this</p>
+<p>hardware and U so we we were we were</p>
+<p>also kind of able to tune uh kind of</p>
+<p>tradeoff uh sparity with performance</p>
+<p>within certain limit so you see here</p>
+<p>that we don't even though we are very</p>
+<p>close to the recurrent model uh</p>
+<p>performance we don't actually reach it</p>
+<p>and then there is a way to kind of make</p>
+<p>it less spse and reach this uh close and</p>
+<p>you still kind of end up with some</p>
+<p>Energy</p>
+<p>savings uh so for example uh so we</p>
+<p>actually implemented this on a</p>
+<p>neuromorphic chip uh recently uh is a</p>
+<p>neuromorphic chip called Spiner 2 which</p>
+<p>is developed by uh some folks at T</p>
+<p>Reston in Germany and what was kind of</p>
+<p>interesting is uh in if you if the</p>
+<p>energy consumption for single batch</p>
+<p>uh for Spiner 2 which is this green bar</p>
+<p>over here as you can see is</p>
+<p>significantly lower than running it on a</p>
+<p>GPU so uh this blue bar is the a100 GPU</p>
+<p>which is like the one of the more recent</p>
+<p>ones and the orange one is like a</p>
+<p>slightly older GPU so it's like a little</p>
+<p>bit slower and uh Spiner 2 and this was</p>
+<p>like actually a very uh Proto uh the</p>
+<p>implementation was essentially a</p>
+<p>prototype so we were not actually making</p>
+<p>full use of the chip but uh it was able</p>
+<p>to make use of some of the sparity um on</p>
+<p>the device and you kind of get like a</p>
+<p>huge energy Advantage even with that</p>
+<p>although for larger batches you don't</p>
+<p>right so this is kind of still one of</p>
+<p>the uh difficult areas of neuromorphic</p>
+<p>computing where it's not able to take</p>
+<p>advantage of lar larger batches so um</p>
+<p>yeah so this is kind of uh on archive</p>
+<p>you can go look look it up uh but uh so</p>
+<p>we kind of like getting there slowly um</p>
+<p>getting getting all of the sparsities on</p>
+<p>Hardware okay so we can also use</p>
+<p>sparsity to make training very efficient</p>
+<p>I won't go into this in detail but</p>
+<p>essentially you can use algorithms that</p>
+<p>so far were considered</p>
+<p>completely uh computationally</p>
+<p>prohibitive uh in terms of the</p>
+<p>computational expense you can actually</p>
+<p>that so these algorithms uh become more</p>
+<p>practical if there is activity sparsity</p>
+<p>and parameter</p>
+<p>sparity okay so so and we we have</p>
+<p>explored like a really really really</p>
+<p>tiny part of the properties that can</p>
+<p>make model scalable which is just</p>
+<p>activity sparity and parameter sparcity</p>
+<p>and we have mostly explored it only in</p>
+<p>terms of algorithms and so there's</p>
+<p>obviously like a long way to go before</p>
+<p>we start reaching this scaling uh of</p>
+<p>biological uh substrates and biological</p>
+<p>algorithms but we're kind of like trying</p>
+<p>to move towards this direction so that's</p>
+<p>kind of like the conclusion ution which</p>
+<p>is that um sparity and locality are</p>
+<p>essential for scaling up models due to</p>
+<p>energy constraints and there might there</p>
+<p>are also other clever ways to use</p>
+<p>physical substrates uh to use to improve</p>
+<p>Energy Efficiency so using time to</p>
+<p>compute communication and others and the</p>
+<p>next step is to really like try to scale</p>
+<p>it up and start to catch up with uh</p>
+<p>Transformer based models on tasks that</p>
+<p>are a lot more closer to what people use</p>
+<p>in the real world so a lot of this work</p>
+<p>was done with lots of other people uh so</p>
+<p>this is the group that uh group and</p>
+<p>collaborators that we have we have like</p>
+<p>a large group in ruer University bohome</p>
+<p>so you might you some of you might have</p>
+<p>actually seen a talk by David Capel who</p>
+<p>gave a talk at mream a while ago so uh</p>
+<p>and we have a few people from T Tron and</p>
+<p>uh there's is the group that actually</p>
+<p>develops the Spiner to hardware and</p>
+<p>makes all of this possible so thank you</p>
+<p>very much um yeah hopefully we have some</p>
+<p>time for discussions thank you so much</p>
+<p>that was absolutely fascinating there's</p>
+<p>a lot to unpack there so Harris you've</p>
+<p>got your hand up if you want to ask a</p>
+<p>question yeah ER I just wanted to uh say</p>
+<p>Kudos it was very interesting and I have</p>
+<p>a couple of uh questions related to this</p>
+<p>presentation uh first of all H you you</p>
+<p>poed one um very interesting question</p>
+<p>that has to do uh with the following um</p>
+<p>can we scale even better let's say</p>
+<p>moving effectively moving beyond</p>
+<p>Transformers and as far as I understand</p>
+<p>it uh because uh these large language</p>
+<p>models the llms are very are all the</p>
+<p>hype these days so as far as I</p>
+<p>understand it not all llms are are</p>
+<p>Transformers</p>
+<p>uh but the other way around is true and</p>
+<p>the reason for for that H is because uh</p>
+<p>there are some um llms that are not</p>
+<p>based in in</p>
+<p>Transformers as you mentioned uh you</p>
+<p>mention the recurrent neural networks of</p>
+<p>course and that's one one type let's say</p>
+<p>and uh another uh uh subtype that is is</p>
+<p>based on rnet is</p>
+<p>the long shortterm memory networks that</p>
+<p>you are group is is actually</p>
+<p>investigating and uh what I wanted to</p>
+<p>say is</p>
+<p>that trying to uh put everything</p>
+<p>together is there a</p>
+<p>possibility for moving beyond uh the</p>
+<p>Transformers and scaling even better by</p>
+<p>opting for what is called poly</p>
+<p>Computing and and I mean poly Computing</p>
+<p>that is capable to uh to combine uh</p>
+<p>different types of computing in a multi</p>
+<p>Computing Paradigm like classical</p>
+<p>Computing Quantum comp Computing</p>
+<p>neuromorphic and even Optical so what do</p>
+<p>you think about</p>
+<p>that yeah that's a very interesting</p>
+<p>question I mean so there's definitely</p>
+<p>like a lot of potential in these</p>
+<p>unconventional Computing devices that</p>
+<p>various people are developing right and</p>
+<p>each of them have different strengths</p>
+<p>and different</p>
+<p>weaknesses so it would make sense to</p>
+<p>combine them together in a way that uh</p>
+<p>we use the strengths of like some of</p>
+<p>them without uh being affected by their</p>
+<p>weakness so much but uh well I mean at</p>
+<p>least in terms of efficiency</p>
+<p>itself if using like multiple devices or</p>
+<p>multiple different uh Computing</p>
+<p>nodes always kind of leads to this</p>
+<p>problem where you do a lot of</p>
+<p>communication and communication is</p>
+<p>expensive right so even on a CPU or a</p>
+<p>GPU or like most Computing devices that</p>
+<p>we have today uh the communication is</p>
+<p>really the bottleneck so that's probably</p>
+<p>uh I mean that's actually like one of</p>
+<p>the main reasons why we are looking at</p>
+<p>activity sparsity because that's that</p>
+<p>has to do with communication so</p>
+<p>communication tends to take a lot of</p>
+<p>energy it consumes a lot of time and so</p>
+<p>uh when with like multiple different</p>
+<p>types of commun computing the main</p>
+<p>problem that would have that would need</p>
+<p>to be solved is how do you make</p>
+<p>communication</p>
+<p>efficient both like on a physical</p>
+<p>substrate you know like both both in</p>
+<p>terms of like the device itself and also</p>
+<p>in terms of</p>
+<p>algorithms okay thank you thank you very</p>
+<p>much um yeah I had a couple of questions</p>
+<p>as well I think it's it's fascinating um</p>
+<p>that you're saying essentially that you</p>
+<p>can get get the same performance of the</p>
+<p>lstms but like with about 80% less power</p>
+<p>like I think that's really amazing do</p>
+<p>you think that this these types of</p>
+<p>architectures will be used sort of in</p>
+<p>the near future to make say gpus more</p>
+<p>efficient or or implemented in some</p>
+<p>specific use cases maybe where sort of</p>
+<p>the sort of temporal sparity is is</p>
+<p>particularly important the temporal</p>
+<p>coding is particularly important so I'm</p>
+<p>quite interested to hear your take</p>
+<p>console what the applications where you</p>
+<p>see this being used in in the near</p>
+<p>future MH so the temporal coding I mean</p>
+<p>I've not really</p>
+<p>seen uh much attempts to make use of it</p>
+<p>I think it's it's probably like one of</p>
+<p>those things which is like the hardest</p>
+<p>to make use of both both from algorithms</p>
+<p>and Hardware point of view but people</p>
+<p>are trying to make use of uh this</p>
+<p>activity sparity so Nvidia for example</p>
+<p>recently uh added support for a certain</p>
+<p>type of sparity like it's still like</p>
+<p>very very limited but uh they started</p>
+<p>adding support for a certain type of</p>
+<p>sparcity which in principle could be</p>
+<p>used for activities parity quite well</p>
+<p>and there have also been like a couple</p>
+<p>of deep learning accelerator companies</p>
+<p>that uh do activities or I mean so okay</p>
+<p>I mean so actually like the I mean</p>
+<p>there's probably like a bit of context</p>
+<p>that's required so the reason that</p>
+<p>activity sparcity is really hard to make</p>
+<p>use of in Hardware is because it's</p>
+<p>Dynamic right so if you have parameter</p>
+<p>sparcity and if the parameter spacity is</p>
+<p>fixed you kind of know which uh</p>
+<p>particular weights you need to load at</p>
+<p>what times and which ones you don't but</p>
+<p>if this is changing all the time then</p>
+<p>it's really really hard to optimize uh</p>
+<p>its use and so this Dynamic sparcity is</p>
+<p>what is like extremely challenging for</p>
+<p>gpus and like most conventional devices</p>
+<p>so uh nvidia's attempt at adding this</p>
+<p>support for sparcity is to to some</p>
+<p>extent address uh being able to use</p>
+<p>Dynamic sparcity although in's case you</p>
+<p>cannot use uh I mean so basically using</p>
+<p>even static spity is very very hard</p>
+<p>unless it's designed in like a very</p>
+<p>specific</p>
+<p>way uh</p>
+<p>so and and so this deep learning</p>
+<p>accelerator company that I was</p>
+<p>mentioning so they really have done</p>
+<p>they've designed a chip completely from</p>
+<p>scratch so it's a company called</p>
+<p>cerebras which can make use of Dynamics</p>
+<p>parcity and uh and it's also like super</p>
+<p>scalable because essentially what</p>
+<p>they've done is created like this huge</p>
+<p>chip on a single wafer which means that</p>
+<p>the communication overhead is much much</p>
+<p>lower and uh it works like really really</p>
+<p>great for training like extremely large</p>
+<p>models if if you have the right kind of</p>
+<p>sparcity on them right so it's still not</p>
+<p>like completely general purpose it's</p>
+<p>still like very closely tied to</p>
+<p>Transformer architectures but it can use</p>
+<p>activity sparcity really well uh if</p>
+<p>implemented correctly but uh they don't</p>
+<p>really go beyond that so they don't do</p>
+<p>like time based Computing or make use of</p>
+<p>like any of the other aspects especially</p>
+<p>asynchronous Compu Computing for example</p>
+<p>is as far as I know only</p>
+<p>neuromorphic people working on</p>
+<p>neuromorphic devices seem to even use it</p>
+<p>although well I mean I guess like</p>
+<p>somewhat ironically we haven't fully</p>
+<p>figured out how to use it</p>
+<p>effectively interest I was actually just</p>
+<p>going to ask you a bit about Dynamics</p>
+<p>vast because I'm in interested in um</p>
+<p>sort of neuro neur taking inspiration</p>
+<p>from neurod development and I I think</p>
+<p>it's really interesting that in the</p>
+<p>developing brand like say from about Age</p>
+<p>2 to 10 you have huge amounts of</p>
+<p>synaptic pruning like you actually lose</p>
+<p>about 50% of your synapses and that's</p>
+<p>essentially a a key component of how we</p>
+<p>learn um so before I saw this talk I was</p>
+<p>thinking about how if anyone's actually</p>
+<p>taking inspiration from neurod</p>
+<p>development for example thinking about</p>
+<p>sparity and how the brain sort of</p>
+<p>develops by pruning away all the sort of</p>
+<p>unwanted connections is is that which is</p>
+<p>people are thinking about does that fit</p>
+<p>into what you were just saying a little</p>
+<p>bit about Dynamics B here is that</p>
+<p>slightly</p>
+<p>different uh no I mean it's actually</p>
+<p>very very closely related and uh I mean</p>
+<p>we've been like thinking about it a</p>
+<p>little bit also but so essentially uh</p>
+<p>what we have come to realize is that so</p>
+<p>there are two</p>
+<p>different aspects to having a model that</p>
+<p>performs well so one is just the</p>
+<p>inference so if you have sparity uh you</p>
+<p>can make predictions with this model or</p>
+<p>like kind of run the model forward uh</p>
+<p>and uh any sort of sparity helps it</p>
+<p>makes it very very efficient but this</p>
+<p>does not necessarily make the model easy</p>
+<p>to</p>
+<p>train right so you need to have there is</p>
+<p>this like really orthogonal uh concern</p>
+<p>where you need to be able to train the</p>
+<p>model well and it's little bit in</p>
+<p>conflict with having sparsity so like</p>
+<p>one of the well at least like from a</p>
+<p>very very non-expert perspective what it</p>
+<p>seems like is this neuro development uh</p>
+<p>this kind of like pruning that happens</p>
+<p>it seems like there might be like a</p>
+<p>learning phase where a certain type of</p>
+<p>learning happens that is a lot harder to</p>
+<p>do if the overall network was really</p>
+<p>sparse and then you have this like huge</p>
+<p>pruning space face uh and then you have</p>
+<p>like a different network that learns</p>
+<p>that can still learn but like a lot more</p>
+<p>slowly perhaps or but but it's like a</p>
+<p>lot more energy</p>
+<p>efficient it interesting because yeah</p>
+<p>like the brain although it's pruning</p>
+<p>it's also growing and and the part of</p>
+<p>the reason why it's growing so much is</p>
+<p>because the myelination which is</p>
+<p>interesting because you talk about that</p>
+<p>in terms of the synaptic delays so maybe</p>
+<p>sort of there's some balance between the</p>
+<p>sparity pruning and then sort of the</p>
+<p>delay marination that's introduced</p>
+<p>somewhere in a dynamic way um that's</p>
+<p>important to do I don't know yeah I mean</p>
+<p>I think uh I mean yeah so I mean</p>
+<p>obviously like in biology uh you know</p>
+<p>like specific things don't just do one</p>
+<p>thing right they do like a number of</p>
+<p>different things so that's that's the</p>
+<p>case with Malin as well for sure uh but</p>
+<p>uh so kind of what what is interesting</p>
+<p>is that with delays I mean if you can</p>
+<p>control the delays and if you can work</p>
+<p>with longer delays then you actually</p>
+<p>need less activity in the network</p>
+<p>because uh I mean so if you take like a</p>
+<p>network with like absolutely no</p>
+<p>long-term memory so like Ley integrated</p>
+<p>F neuron or a v Network and you kind of</p>
+<p>try to train this network to store</p>
+<p>something for a longer time one of the</p>
+<p>ways that it can discover to store</p>
+<p>things is literally uh persistent</p>
+<p>activity so you have like one neuron</p>
+<p>that keeps firing all the time because</p>
+<p>it's storing one particular bit of</p>
+<p>information and then at the end if this</p>
+<p>neuron is firing you know that bit is</p>
+<p>stored and if not it's not right so it's</p>
+<p>kind of I mean it doesn't always emerge</p>
+<p>and it's pretty hard there's a reason</p>
+<p>why these R networks don't work well for</p>
+<p>like long-term memory but uh if you if</p>
+<p>you make the problem simple enough you</p>
+<p>do see this right and in when you train</p>
+<p>like a spiking Network or an lstm you do</p>
+<p>see like persistent activity on and off</p>
+<p>for various things and if you had delays</p>
+<p>you could just completely avoid this</p>
+<p>right you could just like uh say this</p>
+<p>neuron will will send the message when</p>
+<p>it's ready after like a few time steps</p>
+<p>or so and only then the other neuron</p>
+<p>needs to process this</p>
+<p>information okay interesting that might</p>
+<p>touch on my which I'll make my final</p>
+<p>question because we have to drop and</p>
+<p>everyone's dropping off absolutely</p>
+<p>unshare your screen sorry I should have</p>
+<p>probably asked to do that earlier um I'm</p>
+<p>I'm quite interested in this idea of so</p>
+<p>artificial neural networks they have the</p>
+<p>sort of this like always on an</p>
+<p>activation function whereas people</p>
+<p>contrast that with spiking neuron</p>
+<p>networks which are like neurons and like</p>
+<p>they're on or they're off and what's</p>
+<p>interesting I guess from a neuroscience</p>
+<p>perspective is because a lot of the</p>
+<p>brain is actually gal cells which</p>
+<p>actually do have more this continuous</p>
+<p>Activation so the brain is actually</p>
+<p>quite a hybrid between more like Anns</p>
+<p>and snns essentially so I'm super</p>
+<p>interested in sort of if if you think um</p>
+<p>like maybe the future will be um hybrid</p>
+<p>in some way um oh Carl Frist has entered</p>
+<p>the way waiting room I think I'll ad</p>
+<p>admit him I don't know if he's in the</p>
+<p>right</p>
+<p>meeting we're meant to have an sa</p>
+<p>meeting</p>
+<p>okay maybe yeah so that was my last and</p>
+<p>final question sort of do you think the</p>
+<p>hybrid system um would uh be something</p>
+<p>which people are interested in or</p>
+<p>looking at in the future or is that not</p>
+<p>something that I see uh that's an</p>
+<p>interesting question</p>
+<p>so well I mean the qu I mean so I think</p>
+<p>the related question that needs to be</p>
+<p>answered is do hybrid systems really</p>
+<p>provide any sort of advantage in terms</p>
+<p>of uh computational Power or any any</p>
+<p>other thing and at least like as far as</p>
+<p>I know there is no reason I mean so if</p>
+<p>you can get like this uh event based</p>
+<p>system to work and at least like</p>
+<p>theoretically it's they're like</p>
+<p>equivalent they're supposed to be</p>
+<p>equivalent to artificial like you know</p>
+<p>non-even based systems then there</p>
+<p>wouldn't be any reason to use a hybrid</p>
+<p>system but it could very well be the</p>
+<p>case that there are certain constraints</p>
+<p>where just an even bit system would be a</p>
+<p>way to slow or you know so that that</p>
+<p>might be like a concern so it just like</p>
+<p>takes too long to reach decisions or</p>
+<p>something like that and then and then</p>
+<p>you might need like hybrid systems as</p>
+<p>well yeah I mean so I'm happy to discuss</p>
+<p>I mean if you're interested in this area</p>
+<p>I'm happy to discuss with you offline as</p>
+<p>well I'm super interesting because as</p>
+<p>well I like the sort of you get with the</p>
+<p>gal cells there actually some electrical</p>
+<p>communication they have Gap Junctions</p>
+<p>and they have these sort of slow</p>
+<p>oscillations which almost like f event</p>
+<p>based oscillations almost take advantage</p>
+<p>of or ride so there's sort of an</p>
+<p>embedding nesting there of the the uh</p>
+<p>spiking and non-spiking so um yeah it's</p>
+<p>something I'm super interesting I don't</p>
+<p>I just yeah I don't know if the Silicon</p>
+<p>world is is as interested in it as me</p>
+<p>though as a</p>
+<p>neuroscientist yeah but I'm happy to chy</p>
+<p>to it</p>
+<p>offl okay well thank you so much that</p>
+<p>was absolutely fascinating um I'm sure</p>
+<p>people might want to reach out to you</p>
+<p>with some questions s of offline because</p>
+<p>this will be put on YouTube so if they</p>
+<p>do what would be the best way for them</p>
+<p>to contact you if that's okay yeah</p>
+<p>absolutely it's okay I mean I have my</p>
+<p>contact information on my website okay</p>
+<p>great so email is probably like the best</p>
+<p>way to contact me cool okay right thank</p>
+<p>you so much and that's everything that I</p>
+<p>have to cover um yeah thank you thank</p>
+<p>you very much for inviting me to the</p>
+<p>talk it was it was very interesting yeah</p>
+<p>amazing yeah I'd love to stay in touch</p>
+<p>and chat some more about this as well so</p>
+<p>thank you so much</p>
+<p>absolutely all right see you</p>
+<p>byebye</p>
+</article>
+</body>
+</html>

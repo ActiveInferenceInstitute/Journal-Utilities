@@ -1,20 +1,43 @@
-"""Test suite for audit trail functions in journal_utilities."""
+"""
+Test suite for audit trail functions in journal_utilities.data.database.
 
-import json
-import os
-import tempfile
-from typing import Any
+Tests get_recent_import_runs, get_import_summary, get_failed_imports,
+and rollback_import against mocked SurrealDB connections.
+"""
 
 import pytest
-from surrealdb import AsyncSurreal
+from unittest.mock import AsyncMock, patch
 
-from journal_utilities.ingest_db_create_wav import (
+from journal_utilities.data.database import (
     get_failed_imports,
     get_import_summary,
     get_recent_import_runs,
-    insert_missing_sessions_from_json,
     rollback_import,
 )
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+DB_PATCH_TARGET = "journal_utilities.data.database.AsyncSurreal"
+
+
+def _make_mock_surreal(query_return_value=None):
+    """Create a mocked AsyncSurreal with sensible defaults."""
+    mock = AsyncMock()
+    mock.connect = AsyncMock()
+    mock.signin = AsyncMock()
+    mock.use = AsyncMock()
+    mock.close = AsyncMock()
+    mock.create = AsyncMock(return_value={"id": "audit:1"})
+    mock.query = AsyncMock(return_value=query_return_value if query_return_value is not None else [])
+    return mock
+
+
+# ---------------------------------------------------------------------------
+# Tests — get_recent_import_runs
+# ---------------------------------------------------------------------------
 
 
 @pytest.mark.asyncio
@@ -25,74 +48,108 @@ async def test_get_recent_import_runs(
     db_name: str,
     db_namespace: str,
 ) -> None:
-    """Test getting recent import runs."""
-    runs = await get_recent_import_runs(
-        db_url, db_user, db_password, db_name, db_namespace, limit=5
-    )
+    """get_recent_import_runs returns formatted list of runs."""
+    mock_runs = [
+        {
+            "import_run_id": "run_123",
+            "timestamp": "2023-01-01T12:00:00Z",
+            "source_file": "test.json",
+            "result_data": {"total": 10, "inserted": 5, "skipped": 3, "failed": 2},
+        }
+    ]
 
-    # Check that we get a list
+    mock = _make_mock_surreal(query_return_value=mock_runs)
+    with patch(DB_PATCH_TARGET, return_value=mock):
+        runs = await get_recent_import_runs(
+            db_url, db_user, db_password, db_name, db_namespace, limit=5
+        )
+
     assert isinstance(runs, list)
-
-    # If there are runs, check their structure
-    if runs:
-        first_run = runs[0]
-        assert "import_run_id" in first_run
-        assert "timestamp" in first_run
-        assert "source_file" in first_run
-        assert "stats" in first_run
-
-        # Check stats structure
-        stats = first_run["stats"]
-        assert "total" in stats
-        assert "inserted" in stats
-        assert "skipped" in stats
-        assert "failed" in stats
-
-        print(f"Found {len(runs)} import runs")
+    assert len(runs) == 1
+    first = runs[0]
+    assert first["import_run_id"] == "run_123"
+    assert first["source_file"] == "test.json"
+    assert first["stats"]["total"] == 10
 
 
 @pytest.mark.asyncio
-async def test_get_import_summary(
+async def test_get_recent_import_runs_empty(
     db_url: str,
     db_user: str,
     db_password: str,
     db_name: str,
     db_namespace: str,
 ) -> None:
-    """Test getting import summary for a specific run."""
-    # First get a recent run to test with
-    runs = await get_recent_import_runs(
-        db_url, db_user, db_password, db_name, db_namespace, limit=1
-    )
+    """get_recent_import_runs returns empty list when no runs exist."""
+    mock = _make_mock_surreal(query_return_value=[])
+    with patch(DB_PATCH_TARGET, return_value=mock):
+        runs = await get_recent_import_runs(
+            db_url, db_user, db_password, db_name, db_namespace
+        )
 
-    if not runs:
-        pytest.skip("No import runs found in database")
+    assert runs == []
 
-    import_run_id = runs[0]["import_run_id"]
 
-    # Get the summary
-    summary = await get_import_summary(
-        import_run_id, db_url, db_user, db_password, db_name, db_namespace
-    )
+# ---------------------------------------------------------------------------
+# Tests — get_import_summary
+# ---------------------------------------------------------------------------
 
-    # Check summary structure
-    assert isinstance(summary, dict)
-    assert "total" in summary
-    assert "inserted" in summary
-    assert "skipped" in summary
-    assert "failed" in summary
 
-    # Check that numbers are non-negative
-    assert summary["total"] >= 0
-    assert summary["inserted"] >= 0
-    assert summary["skipped"] >= 0
-    assert summary["failed"] >= 0
+@pytest.mark.asyncio
+async def test_get_import_summary_from_record(
+    db_url: str,
+    db_user: str,
+    db_password: str,
+    db_name: str,
+    db_namespace: str,
+) -> None:
+    """get_import_summary returns stats from a summary record."""
+    mock_result = [
+        {"result_data": {"total": 10, "inserted": 5, "skipped": 3, "failed": 2}}
+    ]
 
-    # Check that components add up to total (approximately)
-    components_sum = summary["inserted"] + summary["skipped"] + summary["failed"]
-    assert components_sum <= summary["total"]
+    mock = _make_mock_surreal(query_return_value=mock_result)
+    with patch(DB_PATCH_TARGET, return_value=mock):
+        summary = await get_import_summary(
+            "run_123", db_url, db_user, db_password, db_name, db_namespace
+        )
 
-    print(f"Import summary: {summary}")
+    assert summary["total"] == 10
+    assert summary["inserted"] == 5
+
+
+@pytest.mark.asyncio
+async def test_get_import_summary_calculates(
+    db_url: str,
+    db_user: str,
+    db_password: str,
+    db_name: str,
+    db_namespace: str,
+) -> None:
+    """get_import_summary calculates stats when no summary record exists."""
+    individual_records = [
+        {"operation": "insert", "status": "success"},
+        {"operation": "insert", "status": "success"},
+        {"operation": "skip", "status": "skipped"},
+        {"operation": "insert", "status": "failed"},
+    ]
+
+    mock = _make_mock_surreal()
+    mock.query = AsyncMock(side_effect=[[], individual_records])
+    with patch(DB_PATCH_TARGET, return_value=mock):
+        summary = await get_import_summary(
+            "run_123", db_url, db_user, db_password, db_name, db_namespace
+        )
+
+    assert summary["total"] == 4
+    assert summary["inserted"] == 2
+    assert summary["skipped"] == 1
+    assert summary["failed"] == 1
+
+
+# ---------------------------------------------------------------------------
+# Tests — get_failed_imports
+# ---------------------------------------------------------------------------
 
 
 @pytest.mark.asyncio
@@ -103,101 +160,97 @@ async def test_get_failed_imports(
     db_name: str,
     db_namespace: str,
 ) -> None:
-    """Test getting failed imports from a run."""
-    # Get a recent run
-    runs = await get_recent_import_runs(
-        db_url, db_user, db_password, db_name, db_namespace, limit=1
-    )
+    """get_failed_imports returns formatted failure records."""
+    mock_failures = [
+        {
+            "session_name": "Session 1",
+            "operation": "insert",
+            "error_message": "Duplicate key",
+            "timestamp": "2023-01-01T01:00:00",
+            "data_attempted": {"title": "Test"},
+        }
+    ]
 
-    if not runs:
-        pytest.skip("No import runs found in database")
+    mock = _make_mock_surreal(query_return_value=mock_failures)
+    with patch(DB_PATCH_TARGET, return_value=mock):
+        failed = await get_failed_imports(
+            "run_123", db_url, db_user, db_password, db_name, db_namespace
+        )
 
-    import_run_id = runs[0]["import_run_id"]
-
-    # Get failed imports
-    failed = await get_failed_imports(
-        import_run_id, db_url, db_user, db_password, db_name, db_namespace
-    )
-
-    # Check that we get a list
     assert isinstance(failed, list)
-
-    # If there are failures, check their structure
-    if failed:
-        first_failure = failed[0]
-        assert "session_name" in first_failure
-        assert "operation" in first_failure
-        assert "error" in first_failure
-        assert "timestamp" in first_failure
-        assert "data_attempted" in first_failure
-
-        print(f"Found {len(failed)} failed imports")
+    assert len(failed) == 1
+    assert failed[0]["session_name"] == "Session 1"
+    assert failed[0]["error"] == "Duplicate key"
 
 
 @pytest.mark.asyncio
-async def test_audit_trail_creation(
+async def test_get_failed_imports_empty(
     db_url: str,
     db_user: str,
     db_password: str,
     db_name: str,
     db_namespace: str,
 ) -> None:
-    """Test that audit records are created during import."""
-    # Create a test JSON file with minimal data
-    test_json = {
-        "items": [
-            {
-                "values": {
-                    "YouTube": "https://www.youtube.com/watch?v=TEST12345AB",
-                    "Unique event name": "Test Event",
-                    "Title or name of stream": "Test Stream",
-                }
-            }
-        ]
-    }
-
-    # Write test JSON to temporary file
-    with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-        json.dump(test_json, f)
-        test_file = f.name
-
-    try:
-        # Run the import
-        await insert_missing_sessions_from_json(
-            test_file, db_url, db_user, db_password, db_name, db_namespace
+    """get_failed_imports returns empty list when no failures."""
+    mock = _make_mock_surreal(query_return_value=[])
+    with patch(DB_PATCH_TARGET, return_value=mock):
+        failed = await get_failed_imports(
+            "run_123", db_url, db_user, db_password, db_name, db_namespace
         )
 
-        # Check that audit records were created
-        async with AsyncSurreal(db_url) as db:
-            await db.signin({"username": db_user, "password": db_password})
-            await db.use(db_namespace, db_name)
+    assert failed == []
 
-            # Find audit records for this import
-            result = await db.query(
-                f"""
-                SELECT * FROM import_audit
-                WHERE source_file = '{test_file}'
-                ORDER BY timestamp DESC
-            """
-            )
 
-            assert result is not None
-            assert len(result) > 0
+# ---------------------------------------------------------------------------
+# Tests — rollback_import
+# ---------------------------------------------------------------------------
 
-            # Should have at least a summary record
-            summary_found = False
-            for record in result:
-                if record.get("operation") == "import_summary":
-                    summary_found = True
-                    break
 
-            assert summary_found, "No import summary record found"
+@pytest.mark.asyncio
+async def test_rollback_import(
+    db_url: str,
+    db_user: str,
+    db_password: str,
+    db_name: str,
+    db_namespace: str,
+) -> None:
+    """rollback_import deletes sessions and returns count."""
+    mock = _make_mock_surreal()
+    mock.query = AsyncMock(
+        side_effect=[
+            # 1. Get successful inserts
+            [{"id": "audit:1", "session_name": "Session A"}],
+            # 2. Lookup sessions to delete
+            [{"id": "session:1"}],
+            # 3. Delete session
+            [],
+            # 4. Update audit record
+            [],
+        ]
+    )
 
-            # Clean up: delete the test session if it was created
-            await db.query("DELETE session WHERE session_name = 'TEST12345AB'")
+    with patch(DB_PATCH_TARGET, return_value=mock):
+        result = await rollback_import(
+            "run_123", db_url, db_user, db_password, db_name, db_namespace
+        )
 
-    finally:
-        # Clean up temporary file
-        os.unlink(test_file)
+    assert result["rollback_count"] == 1
+    assert result["errors"] == []
 
-    print("Audit trail creation test passed")
+
+@pytest.mark.asyncio
+async def test_rollback_import_empty(
+    db_url: str,
+    db_user: str,
+    db_password: str,
+    db_name: str,
+    db_namespace: str,
+) -> None:
+    """rollback_import handles case with nothing to rollback."""
+    mock = _make_mock_surreal(query_return_value=[])
+    with patch(DB_PATCH_TARGET, return_value=mock):
+        result = await rollback_import(
+            "run_123", db_url, db_user, db_password, db_name, db_namespace
+        )
+
+    assert result["rollback_count"] == 0

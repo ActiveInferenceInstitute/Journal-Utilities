@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Textbook Group ~ Cohort 5 ~ Session 17 (Chapter 7, Part 2) ~ 2/26/2024</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Textbook Group ~ Cohort 5 ~ Session 17 (Chapter 7, Part 2) ~ 2/26/2024</h1>
+<div class="meta">Category: TextbookGroup/ParrPezzuloFriston2022/Cohort_5 &middot; Series: Meeting_017 &middot; Speakers: Cohort 5 ~ Session 17 (Chapter 7, Part 2) ~ 2/26/2024 &middot; Duration: 56:36 &middot; Views: 27</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=0pd6BtofNkY">https://www.youtube.com/watch?v=0pd6BtofNkY</a></div>
+<article>
+<p>all right welcome back cohort</p>
+<p>5 we're in our second discussion on</p>
+<p>chapter</p>
+<p>so is there anything anybody wants to</p>
+<p>begin with can look at the text we can</p>
+<p>look at any question we can add a new</p>
+<p>question we could look at</p>
+<p>pmdp</p>
+<p>anything</p>
+<p>um</p>
+<p>anyone can write in the chat or raise</p>
+<p>their hand or just go for</p>
+<p>it yeah so I have a sort of more more</p>
+<p>open-ended question I've been sort of</p>
+<p>um thinking about you know doing a</p>
+<p>little little modeling project</p>
+<p>and um what I would like to se what what</p>
+<p>I'm thinking about is that I'm just</p>
+<p>wondering how I can use this active</p>
+<p>inference Machinery to model some kind</p>
+<p>of um kind of like a recognition task</p>
+<p>like how would you approach doing</p>
+<p>something like an amness classification</p>
+<p>with um um active inference but what I</p>
+<p>am interested in is is bringing this you</p>
+<p>know one key difference um from the</p>
+<p>active inference like um approach to um</p>
+<p>the problem</p>
+<p>that's you know basically completely</p>
+<p>solved in the using artificial neural</p>
+<p>networks but in a in a way that um you</p>
+<p>know when you if you feed amnest to um</p>
+<p>like a Transformer based classifier you</p>
+<p>patchy it so it turn it into small</p>
+<p>little chunks of image and you feed that</p>
+<p>into a Transformer and the Transformer</p>
+<p>kind of like sees the whole sequence and</p>
+<p>then finally learns how to classify an</p>
+<p>image I'm just sort of wondering um</p>
+<p>thinking about like how to find some</p>
+<p>sort of connection between between doing</p>
+<p>something like that except getting the</p>
+<p>neural network or some other kind of you</p>
+<p>know um system to choose where to look</p>
+<p>to to to sort of model the behavior to</p>
+<p>be almost like like a sakad like I'm</p>
+<p>seeing a part of an image and then I</p>
+<p>have to make a decision where to look</p>
+<p>next to</p>
+<p>um you know</p>
+<p>um resolve as much uncertainty as I can</p>
+<p>about what what am I seeing and it</p>
+<p>doesn't have to be something like an</p>
+<p>amist it could be like a really really</p>
+<p>simple images to start with you know</p>
+<p>like 8 by8 pixels some generated I don't</p>
+<p>know kns and Crosses or whatever but I I</p>
+<p>don't really even know where to start</p>
+<p>with that um it's a it's a very</p>
+<p>open-ended big big thing but if you have</p>
+<p>any any suggestions worth look I would</p>
+<p>love uh some pointers yeah great great</p>
+<p>questions well certainly what I'll show</p>
+<p>now is not the end of the story but I</p>
+<p>think it'll provide some motifs that you</p>
+<p>can pick up</p>
+<p>on here's a 2020 one paper with axle</p>
+<p>constant so in this setting it was an</p>
+<p>icade</p>
+<p>Visual and one of their Novelties was</p>
+<p>that they made a bounding box that was</p>
+<p>kind of like the zone that was visible</p>
+<p>in the Cade so the Cross Focus is the</p>
+<p>center of vision and then the affordance</p>
+<p>of the iate is to move to another cross</p>
+<p>um and then that would move the bounding</p>
+<p>box</p>
+<p>um and it's a</p>
+<p>cultural pattern recognition</p>
+<p>task like based upon identifying these</p>
+<p>higher order patterns of</p>
+<p>Pottery so that's one visual way I think</p>
+<p>this is a super fascinating thing</p>
+<p>because in almost all visual recognition</p>
+<p>tasks um either the whole image is</p>
+<p>passed through if it's sufficiently</p>
+<p>small like mnist or it's ch tokenized or</p>
+<p>chunked or however um but here we bring</p>
+<p>the action into Vision with actual</p>
+<p>guided cognitive Vision moving to</p>
+<p>uncertainty so that might be</p>
+<p>um way more efficient in certain</p>
+<p>settings um for example recognizing a</p>
+<p>person like first there's like the</p>
+<p>movement just empirically like there's</p>
+<p>like movement to the body and then</p>
+<p>there's a movement to the face and then</p>
+<p>identifiable parts of the face that's</p>
+<p>the pyade model and then on the mnist</p>
+<p>the recent uh structure learning paper</p>
+<p>actually specifically they they do</p>
+<p>amnest um</p>
+<p>and they</p>
+<p>[Music]</p>
+<p>um so the labeled data in amnest are the</p>
+<p>true identity of the digit and then they</p>
+<p>use their structure learning technique</p>
+<p>to um develop the the Styles handwriting</p>
+<p>styles of the digit so they're not doing</p>
+<p>structure learning on how many digits</p>
+<p>there are as as far as my reading but</p>
+<p>they do look at different</p>
+<p>styles like these are different styles</p>
+<p>of the</p>
+<p>digits so then it is learning a it's</p>
+<p>doing it's saying how many styles of one</p>
+<p>are</p>
+<p>there and then it's finding it through</p>
+<p>um structure learning which is the</p>
+<p>proposal of a additional latent factor</p>
+<p>and then basian model reduction pruning</p>
+<p>the model back down for</p>
+<p>redundancy</p>
+<p>um they find strong performance on The</p>
+<p>Mist the code is in mat lab and I've</p>
+<p>looked into</p>
+<p>it</p>
+<p>with some language models you might be</p>
+<p>able to bring it into something out of</p>
+<p>Matlab or just isolate it into pseudo</p>
+<p>code but the mat lb code itself it's a</p>
+<p>little bit of</p>
+<p>a</p>
+<p>um it it it integrates a lot with the</p>
+<p>broader SPM package so it's not just</p>
+<p>like you can just pop out the the mat</p>
+<p>lab script and run it because if you</p>
+<p>follow the the the rabbit's Trail it</p>
+<p>goes into a few other SPM scripts that I</p>
+<p>don't think have been brought over into</p>
+<p>pmdp yet but from a pseudo code</p>
+<p>perspective it's very um</p>
+<p>informative awesome that looks super</p>
+<p>relevant thank you yeah but this one</p>
+<p>does not have Cade this one the amness</p>
+<p>digit is coming</p>
+<p>in um</p>
+<p>fully one interesting thing also on the</p>
+<p>on the cultural</p>
+<p>one</p>
+<p>this um generative</p>
+<p>model was actually this is before P</p>
+<p>DP this generative model is the one that</p>
+<p>we utilized for active INF for ants we</p>
+<p>just said well what if instead of it was</p>
+<p>an iade in a bounding box without</p>
+<p>leaving a trace what if it was a</p>
+<p>nestmate moving in a Zone leaving a</p>
+<p>trace so that kind of opened up the the</p>
+<p>like observing from afar moving your</p>
+<p>eyes but not leaving Trace versus skin</p>
+<p>in the game where the movement from here</p>
+<p>to here is interpreted as a physical</p>
+<p>movement cool great stuff thank</p>
+<p>you this this paper Al I mean has other</p>
+<p>benchmarks like the the recognition um</p>
+<p>Sprite data</p>
+<p>set maybe even a third</p>
+<p>one towers of Hanoi classic TI 83</p>
+<p>game there some very</p>
+<p>interesting</p>
+<p>shapes</p>
+<p>cool any other thought or part on</p>
+<p>seven why mdp right now is only in</p>
+<p>discrete time so pretty much everything</p>
+<p>that you encounter in Pim DP today will</p>
+<p>be in the chapter 7 Spirit um</p>
+<p>sanj's</p>
+<p>python work as well as RX and fur and</p>
+<p>Julia have continuous time</p>
+<p>models okay can we go through the</p>
+<p>matrices other than a to d so you're</p>
+<p>talking about in here um Pros or in</p>
+<p>which figure do you um uh maybe yeah</p>
+<p>this this seems good sure</p>
+<p>okay</p>
+<p>okay okay so here's the progression of</p>
+<p>how they introduce the the matrices in</p>
+<p>seven o is the observation Vector at</p>
+<p>each time point so if you just had one</p>
+<p>binary sensor o would be a Zer or one if</p>
+<p>you had eight floats sensors it would be</p>
+<p>eight float numbers s is a vector</p>
+<p>carried Through Time Each time point of</p>
+<p>the latent States so let's say we're</p>
+<p>talking about temperature in the room</p>
+<p>thermometer observations latent</p>
+<p>temperature hidden State s agents</p>
+<p>estimate of hidden State S A is a matrix</p>
+<p>that has um rows and columns</p>
+<p>corresponding to O and S A is a mapping</p>
+<p>between o and s and so it can be used to</p>
+<p>start with s and then emit a</p>
+<p>distribution of expected observations or</p>
+<p>it could be taking in an observation</p>
+<p>conditioning upon an observation like</p>
+<p>Bas theorem does and then updating um a</p>
+<p>hidden State belief D has the same</p>
+<p>dimensionality as s being carried</p>
+<p>through time so D is just like a vector</p>
+<p>it's kind of like t0 it just starts the</p>
+<p>chain going and it gives you s at the</p>
+<p>first time point and then B is a</p>
+<p>transition Matrix that has edges and</p>
+<p>rows and columns edges of the</p>
+<p>dimensionality of s because it Maps s at</p>
+<p>tus1 to S at T so this is a standard</p>
+<p>hidden marov model ambiguity Matrix a</p>
+<p>between hidden States and observations</p>
+<p>transition Matrix B between Ates at</p>
+<p>times there's no action in this model</p>
+<p>yet um the next thing that they do is</p>
+<p>they take that exact downstairs Model E</p>
+<p>coming</p>
+<p>down and then this is where the action</p>
+<p>enters the picture which is pi which is</p>
+<p>a the policy space expressed as a</p>
+<p>probability distribution over actions so</p>
+<p>Pi sums up to one it could be sampled</p>
+<p>from or it could be just pick the</p>
+<p>highest number or it could be you know</p>
+<p>pick the second highest or all these</p>
+<p>different things that you can do</p>
+<p>regarding how to pick a policy from PI</p>
+<p>but Pi intervenes with a policy in B and</p>
+<p>so while previously B was just a single</p>
+<p>Matrix going from s of T minus one to S</p>
+<p>of T now B is going to be having a</p>
+<p>matrix slice for every single affordance</p>
+<p>that we have so each slice of B is like</p>
+<p>an index card that describes the world</p>
+<p>transition model conditioned upon action</p>
+<p>selection G is expected free energy and</p>
+<p>G is a distribution that essentially</p>
+<p>updates the policy prior habit with</p>
+<p>respect to epistemic and pragmatic value</p>
+<p>equation</p>
+<p>2.6 so that gets us to this kind of</p>
+<p>figure 4.3 or figure</p>
+<p>7.3 discreet time classic Model we have</p>
+<p>downstairs hidden Markov model with no</p>
+<p>action and then</p>
+<p>actions select which B Matrix is going</p>
+<p>to be</p>
+<p>applied as s unrolls through time and</p>
+<p>then um in seven figure</p>
+<p>710 we see a lowercase letter above each</p>
+<p>of these other letters that we've talked</p>
+<p>about</p>
+<p>that represents um a hyper prior or</p>
+<p>however you want to think about it but</p>
+<p>it's a distribution which that uppercase</p>
+<p>variable is drawn from so instead of</p>
+<p>just saying well um there's four states</p>
+<p>in the world so r d Vector could be 0.</p>
+<p>2525 2525 that' be like a uniform prior</p>
+<p>across initial location or it could be</p>
+<p>one z00</p>
+<p>Z just unambiguously starting in the</p>
+<p>first distribution or you could</p>
+<p>parameterize Little D which would be a</p>
+<p>distribution which D Big D is sampled</p>
+<p>from for example across individuals or</p>
+<p>across nestmates or across trials so</p>
+<p>then learning could happen on Little</p>
+<p>D across trials so you could begin with</p>
+<p>like a uniform prior of where I begin</p>
+<p>and then with learning by counting you</p>
+<p>could just say okay I'm going to um with</p>
+<p>the conjugate prior the de lay</p>
+<p>distribution</p>
+<p>I'm going to add one count to Little D</p>
+<p>every time I observe myself starting in</p>
+<p>a certain location and then trial after</p>
+<p>trial you'll end up drawing Big D from a</p>
+<p>prior distribution that does resemble</p>
+<p>the experienced history that's the</p>
+<p>learning by counting part and then the</p>
+<p>end of the chapter they just kind of</p>
+<p>present one more Motif which is now that</p>
+<p>exact 7.3 three or figure 4.3 exact</p>
+<p>Motif they're just demonstrating a</p>
+<p>little bit of the composability of the</p>
+<p>base graph by showing that like the</p>
+<p>observation being emitted from a top</p>
+<p>level model here level two that</p>
+<p>observation could be understood as for</p>
+<p>example a prior on a lower level</p>
+<p>model but figure 4.3 or figure 7.3 is</p>
+<p>kind of where in the descript every</p>
+<p>time we get the</p>
+<p>downstairs sense making part sense</p>
+<p>making from</p>
+<p>observations transition World model and</p>
+<p>then finally to the action dependent</p>
+<p>World transition</p>
+<p>model yeah thank you it's I think it's a</p>
+<p>very good overview and uh I'll refer it</p>
+<p>back again but I think it's I just have</p>
+<p>one question when you use the word</p>
+<p>motive all the time what does it exactly</p>
+<p>mean like I think I I just don't</p>
+<p>understand that word actually sorry</p>
+<p>Motif I use yeah what do you mean by</p>
+<p>Motif sorry I I use it to like a pattern</p>
+<p>like a pattern language or like an</p>
+<p>identifiable theme so um like let's just</p>
+<p>say we were looking at cars as</p>
+<p>generative models like one of them is</p>
+<p>red another one has convertible top</p>
+<p>another one has six wheels another one</p>
+<p>has a trailer like those are just kind</p>
+<p>of like</p>
+<p>motifs some motifs might be mutually</p>
+<p>incompatible but other motifs it might</p>
+<p>just be like well</p>
+<p>like um here we're looking at the motif</p>
+<p>of having a hyper</p>
+<p>prior here we're looking at the motif of</p>
+<p>nesting now the lower the lowercase</p>
+<p>letters are not shown but of course you</p>
+<p>could have lowercase</p>
+<p>letters so there's nothing contradictory</p>
+<p>about those two motifs it just and this</p>
+<p>is definitely not like the only or</p>
+<p>formal way to think about it it just</p>
+<p>like here in figure</p>
+<p>7.3 we kind of have like the kernel</p>
+<p>nucleus um there isn't much you could</p>
+<p>remove here if you wanted to remove</p>
+<p>something you could remove like this</p>
+<p>part so it was just focus on the</p>
+<p>transition of two time</p>
+<p>steps but that's very minor um this kind</p>
+<p>of shows the basic</p>
+<p>initialization and then the step from</p>
+<p>the previous moment and then the step to</p>
+<p>the next moment of</p>
+<p>action as reweighted by expected free</p>
+<p>energy so here we have kind of an</p>
+<p>essential kernel and then there's all</p>
+<p>these motifs or there's other ways</p>
+<p>probably to say it but there's all these</p>
+<p>other strategies that we could start to</p>
+<p>see or</p>
+<p>use Sor right thank</p>
+<p>you and and</p>
+<p>um yeah I mean I don't know how far the</p>
+<p>uh Linux kernel metaphor will will go</p>
+<p>but like this model doesn't have just as</p>
+<p>written various of the more</p>
+<p>sophisticated cognitive</p>
+<p>phenomena so it's not the advanced</p>
+<p>cognitive phenomena or higher order</p>
+<p>human type thinking um is already in</p>
+<p>this</p>
+<p>image it's like this is the</p>
+<p>canvas that is a starting</p>
+<p>point for like learning a</p>
+<p>novelty so it's not not that all these</p>
+<p>different diverse cognitive phenomena</p>
+<p>are like intrinsically essentially</p>
+<p>within the active inference formalism</p>
+<p>per set it's that we have something</p>
+<p>that's General and modular enough to</p>
+<p>accept and even entertain multiple</p>
+<p>different Renditions of a given</p>
+<p>phenomena like there's not just</p>
+<p>learning a narrow definition of learning</p>
+<p>would be like each parameter being</p>
+<p>updated and then if somebody wanted to</p>
+<p>engage with a higher order like kind of</p>
+<p>conversationally what we might talk of</p>
+<p>as</p>
+<p>learning like chapter 6 is there for us</p>
+<p>we could go through it and we would find</p>
+<p>like a room of 10 people could come up</p>
+<p>with a thousand ways to implement</p>
+<p>learning at a higher level in active</p>
+<p>inference and</p>
+<p>a lot of emphasis on like what's the</p>
+<p>core and then what are some of those</p>
+<p>like decorators and modifications</p>
+<p>augmentations and so</p>
+<p>on because chapter 6 Plus The Core</p>
+<p>Essence plus the confidence to play with</p>
+<p>motifs gets very</p>
+<p>far um would people be up for maybe a</p>
+<p>little if we take a look at figure</p>
+<p>7.10 would people may be up for trying</p>
+<p>to walk through it perhaps like and I</p>
+<p>don't know if this is applicable it's a</p>
+<p>long way from the teamas but like</p>
+<p>walking through it like with like a real</p>
+<p>life kind of decision idea like what I'm</p>
+<p>thinking is and try to map that process</p>
+<p>onto the</p>
+<p>model so like what I was thinking it's</p>
+<p>like I'm sitting in my room and I'm</p>
+<p>looking outside of my window and I'm</p>
+<p>trying to</p>
+<p>decide whether I'm going to go outside</p>
+<p>or not and like looking at okay what are</p>
+<p>the parameters of that decision what are</p>
+<p>the different</p>
+<p>um you know observable States or part</p>
+<p>like or hidden states that are going</p>
+<p>to influence you know that that</p>
+<p>policy is you think that's an</p>
+<p>appropriate exercise Daniel or something</p>
+<p>along those lines would people be into</p>
+<p>that I mean it it definitely is I'm just</p>
+<p>finding a table that I'll copy</p>
+<p>in</p>
+<p>okay I'll make this under chapter</p>
+<p>okay this is just one little</p>
+<p>template so here we have the ab B CDE e</p>
+<p>and pi and O and S so we um have we</p>
+<p>don't have the the the lower case</p>
+<p>letters yet but we could add them and um</p>
+<p>each of those discrete time</p>
+<p>variables is linked up to an ontology</p>
+<p>term most of which which are all of</p>
+<p>which have been used um and then here is</p>
+<p>an example like for an ant calling</p>
+<p>estimate how those got mapped um but I</p>
+<p>mean let's hi hide these and then let's</p>
+<p>just go for</p>
+<p>okay what's the</p>
+<p>setting what is the</p>
+<p>agents living room living room in New</p>
+<p>Mexico okay if that makes sense</p>
+<p>yeah aren't we all okay</p>
+<p>observing the the window out the outside</p>
+<p>through the window so I guess outdoor</p>
+<p>Outdoors through through the lens of</p>
+<p>window okay pixels coming from outside</p>
+<p>sure and then what's truly out</p>
+<p>there could be is it raining or not yeah</p>
+<p>the weather I guess you know is it is it</p>
+<p>that's the decision I'm trying to make</p>
+<p>yeah</p>
+<p>okay well and and and this just goes to</p>
+<p>show like first off how open it it like</p>
+<p>what actions are but um I</p>
+<p>mean we'll get there but can we control</p>
+<p>the</p>
+<p>rain so then there's already such</p>
+<p>differences between a model where like</p>
+<p>there's a hidden state that you can't</p>
+<p>control but you still could make a</p>
+<p>policy decision to like take an umbrella</p>
+<p>or Not Right But then there would be</p>
+<p>like another level of kind of</p>
+<p>interactivity of a model when the policy</p>
+<p>can also control the hidden State like</p>
+<p>when there like a like an air</p>
+<p>conditioner with a temperature versus</p>
+<p>just sort of like a put on a jacket if</p>
+<p>it's raining okay so now given that we</p>
+<p>already said SN</p>
+<p>o what is the dimensionality of a and</p>
+<p>what is the semantics of</p>
+<p>a let's just say just just to be clear</p>
+<p>that the the visual stimuli that we're</p>
+<p>getting is 10</p>
+<p>pixels and then they have a continuous</p>
+<p>level of brightness like we could go</p>
+<p>into the RGB and all this other stuff</p>
+<p>but there's 10 pixels and then raining</p>
+<p>or not is a binary state</p>
+<p>so what is the dimensionality of a or</p>
+<p>what does a</p>
+<p>map I mean not the the site of raindrops</p>
+<p>are not right so like it</p>
+<p>yes it it it it Maps but that's two</p>
+<p>dimensional</p>
+<p>yeah Maps between the observations in</p>
+<p>the hidden state so its shape is 2 by1</p>
+<p>Matrix okay I see</p>
+<p>yeah there there's other we're just</p>
+<p>going with just the first sketch pass</p>
+<p>okay so this is mapping the these pixels</p>
+<p>from the pixels down to beliefs about</p>
+<p>the rain or vice versa so if we said</p>
+<p>condition upon I know it's raining we</p>
+<p>could emit a profile of pixels that's</p>
+<p>the likeliest thing or we could take in</p>
+<p>an empirical pixel distribution and then</p>
+<p>ask what is our conditional probability</p>
+<p>of it being</p>
+<p>raining so that this is and then last</p>
+<p>piece of the</p>
+<p>downstairs sense making part what is the</p>
+<p>B Matrix</p>
+<p>shape given it's a transition</p>
+<p>Matrix should be 2 by two I guess</p>
+<p>yes these are just the transition</p>
+<p>probabilities of staying</p>
+<p>raining staying not raining or</p>
+<p>switching the the on the</p>
+<p>identity Matrix the diagonal on B is</p>
+<p>like stay because you're mapping from</p>
+<p>let's just say that the first um row is</p>
+<p>raining the second one is not raining</p>
+<p>the upper left corner on B is rain to</p>
+<p>rain and then the lower right corner on</p>
+<p>B is not rain to not rain and then the</p>
+<p>off diagonals are</p>
+<p>switching</p>
+<p>okay this is the</p>
+<p>downstairs part this is a partially</p>
+<p>observable marov decision or sorry this</p>
+<p>is just a partially observable marov</p>
+<p>model no decision has come yet right now</p>
+<p>we're going to come into the decision</p>
+<p>okay so what is the action</p>
+<p>space go outside or</p>
+<p>not okay now if we go outside then we</p>
+<p>we're going to get different</p>
+<p>observations but we'll just say yes go</p>
+<p>outside or not</p>
+<p>okay um what is what are the</p>
+<p>affordances basically not</p>
+<p>raining it's an affordance for us to go</p>
+<p>outside yeah um almost here the</p>
+<p>affordances are the same as the policy</p>
+<p>space because there's no planning okay</p>
+<p>so affordances are what you can do in a</p>
+<p>moment like up down left right and then</p>
+<p>the policy space is the forance space</p>
+<p>exponentiated to the time Horizon of</p>
+<p>Planet so if it's a non-planning model</p>
+<p>then affordances equals the policy space</p>
+<p>but if it was um a two-step model then</p>
+<p>you could plan I'm going to not go</p>
+<p>outside and then I'm going to go outside</p>
+<p>or I'm like I'm going to go outside and</p>
+<p>then I'm going to come back so then that</p>
+<p>is considering over multiple time steps</p>
+<p>but here</p>
+<p>single single time step no</p>
+<p>blame okay um oh we need d as part of</p>
+<p>our downstairs D</p>
+<p>is prior on it</p>
+<p>raining and so this is just this has the</p>
+<p>same shape as</p>
+<p>s so this basically is just this could</p>
+<p>be like one zero which is</p>
+<p>like we start sure it is</p>
+<p>raining or it could be 0. 5.5</p>
+<p>we start unsure if it's</p>
+<p>raining okay and then um</p>
+<p>actions are selected different ways</p>
+<p>obviously that's what we're interested</p>
+<p>in so what are some different ways you</p>
+<p>could select actions well you could just</p>
+<p>draw from your habit</p>
+<p>distribution that's one approach in</p>
+<p>um okay now we're going into the the the</p>
+<p>New Mexico dopamine</p>
+<p>brain on the left</p>
+<p>side this is where we have actions being</p>
+<p>drawn from The Habit</p>
+<p>distribution so that's a totally totally</p>
+<p>um viable decision- making strategy</p>
+<p>that's kind of like thinking fast like</p>
+<p>type one is drawing from</p>
+<p>habit</p>
+<p>um another approach is to use expected</p>
+<p>free energy to re weight the policy</p>
+<p>prior into a policy</p>
+<p>posterior according to equation 2.6</p>
+<p>which is to say reweighting policies</p>
+<p>according to their epistemic plus</p>
+<p>pragmatic</p>
+<p>value so in this setting the epistemic</p>
+<p>value</p>
+<p>um right now like everything's pretty</p>
+<p>much</p>
+<p>fixed so there really isn't much</p>
+<p>epistemic</p>
+<p>value to gain</p>
+<p>yet pragmatic value though is going to</p>
+<p>be about preference</p>
+<p>satisfaction so what would the</p>
+<p>preference</p>
+<p>be preferen is over</p>
+<p>observations all I'll just note like</p>
+<p>this recent one on intentional</p>
+<p>Behavior</p>
+<p>that they do explore like essentially</p>
+<p>preferences over whether it's raining or</p>
+<p>not but suffice to say in the textbook</p>
+<p>and in this kind of primary version the</p>
+<p>preferences are over</p>
+<p>observations so let's just say that um</p>
+<p>let's just say that it's um darker when</p>
+<p>raining</p>
+<p>lighter when</p>
+<p>not so if our kind of if our</p>
+<p>conversational preference is like I</p>
+<p>prefer it to rain our C preference</p>
+<p>variable because it's over observations</p>
+<p>would say I I prefer I expect and prefer</p>
+<p>it to be</p>
+<p>darker because the preferences are</p>
+<p>grounded in sensory</p>
+<p>observations that haven't come in</p>
+<p>yet</p>
+<p>I mean uploading the textbook to a</p>
+<p>language model or not copying in this</p>
+<p>table and then saying write active</p>
+<p>inference python code given that this is</p>
+<p>my</p>
+<p>PDP you will get a</p>
+<p>script with just this much</p>
+<p>information because you've given all of</p>
+<p>the information</p>
+<p>needed there's there's no other there's</p>
+<p>no</p>
+<p>there's way more complex models to make</p>
+<p>but in terms of describing all of this I</p>
+<p>mean G is not really a variable it's a</p>
+<p>functional that gets applied to Pi</p>
+<p>conditioned upon c and e so by defining</p>
+<p>a b CDE e s</p>
+<p>o and then the generative</p>
+<p>process</p>
+<p>the true</p>
+<p>rain but that doesn't have to be active</p>
+<p>inference that could be um a random</p>
+<p>number that could be an API to a weather</p>
+<p>station that that it could just be</p>
+<p>anything else that plugs in and outputs</p>
+<p>observations and then intakes actions</p>
+<p>but here it's kind of a a null action</p>
+<p>intake because you're choice to go</p>
+<p>outside does not</p>
+<p>affect yeah that makes</p>
+<p>sense all right yeah thank thank you for</p>
+<p>that cool yeah I mean plug it in and see</p>
+<p>where it goes or um look at a</p>
+<p>um documentation and see which one it</p>
+<p>looks most</p>
+<p>like I think we looked at it a previous</p>
+<p>time but this one is a moving grid World</p>
+<p>agent in</p>
+<p>one and then</p>
+<p>two</p>
+<p>um Pros that this is</p>
+<p>a under chapter</p>
+<p>7 yeah um and then chapter</p>
+<p>two here is</p>
+<p>is again similar and then the</p>
+<p>uh I</p>
+<p>mean make some kind of Fusion variants</p>
+<p>like there's a t- maze it's like your</p>
+<p>living room is the starting position in</p>
+<p>Maze and then like you know you could</p>
+<p>check the weather that's the epistemic Q</p>
+<p>or you could choose to bring an umbrella</p>
+<p>or</p>
+<p>not and then it would already have</p>
+<p>almost isomorphic relationship with it</p>
+<p>with a</p>
+<p>tutorial</p>
+<p>and especially when when starting this</p>
+<p>is like why the iterating on having a</p>
+<p>model is so informative like ironically</p>
+<p>or or appropriately depending on how you</p>
+<p>see it's like it's epistemic chaining</p>
+<p>the modeler is in an epistemic chain</p>
+<p>with their own</p>
+<p>modeling it's super easy to wait on the</p>
+<p>sideline until what I really don't know</p>
+<p>but by putting something down then</p>
+<p>there's all these other things that open</p>
+<p>up so that's the epistemic chaining as a</p>
+<p>um okay Francis let me just see what you</p>
+<p>wrote is it straightforward to download</p>
+<p>either the PMD the PDP notebook is the</p>
+<p>chapter 7 document also okay</p>
+<p>um about</p>
+<p>PDP yes at the top of each page like</p>
+<p>I'll just put it in the</p>
+<p>chat you can open it in collab super</p>
+<p>easy and then just make a copy so those</p>
+<p>are very nice notebooks to pull um is</p>
+<p>the chapter 7 document also a Jupiter</p>
+<p>notebook</p>
+<p>no um that would probably</p>
+<p>require going to appendix</p>
+<p>C and uh going to the mat lab</p>
+<p>code or um this the team is</p>
+<p>foraging and bringing this Matlab code</p>
+<p>into something like a notebook I'm not</p>
+<p>actually sure if mat lab even has</p>
+<p>notebook or realistically since it's the</p>
+<p>teamas</p>
+<p>like this pmdp Taz</p>
+<p>demo it's the same exact</p>
+<p>thing so this notebook is probably a</p>
+<p>good one to go</p>
+<p>with uh I don't have collab uh as a</p>
+<p>non-academic it's</p>
+<p>expensive uh or used to be expensive is</p>
+<p>it um sorry you said you don't have Koda</p>
+<p>or mat lab</p>
+<p>collab Co it's free you just click on</p>
+<p>the link and then just duplicate</p>
+<p>it okay right so</p>
+<p>okay that lab does have a costly license</p>
+<p>except there's the octave like variant</p>
+<p>that's open source but like rather than</p>
+<p>get into this whole like octave mat lab</p>
+<p>situation</p>
+<p>like the the python and Julia are the</p>
+<p>way to</p>
+<p>go and rust when the time is</p>
+<p>right</p>
+<p>this is</p>
+<p>interesting recommend breaking the demo</p>
+<p>to change generative model only by doing</p>
+<p>this will an intuitive sense mechanics</p>
+<p>of active inference</p>
+<p>develop pretty interesting that's</p>
+<p>exactly what I was exactly what I was</p>
+<p>planning to</p>
+<p>do thank you okay yeah I mean it's it's</p>
+<p>super fun and then also so like again</p>
+<p>seeing the kernel execute like just</p>
+<p>seeing a decision be</p>
+<p>made that helps open up like oh there's</p>
+<p>so there's like all these levels of</p>
+<p>Diagnostics or analytics about the trace</p>
+<p>of the model that you might be</p>
+<p>interested in now is that active</p>
+<p>inference well it's about an active</p>
+<p>inference model but then a Next Step</p>
+<p>might be like to do a parameter sweep</p>
+<p>across parameter combination and then</p>
+<p>summarize the outcomes of those swept</p>
+<p>parameters with another heat</p>
+<p>map and then what do you do from there</p>
+<p>you know then you could fold that back</p>
+<p>into the base model or maybe you make</p>
+<p>another active inference agent that</p>
+<p>looks at the heat map and then does</p>
+<p>something from</p>
+<p>there hence it being more like lines or</p>
+<p>journeys of</p>
+<p>inquiry rather than like developing an</p>
+<p>artifact that just kind of slams the</p>
+<p>door</p>
+<p>especially with these kind of more</p>
+<p>intuition</p>
+<p>pump</p>
+<p>examples</p>
+<p>um without wishing to derail things uh I</p>
+<p>have an interest in doing uh test</p>
+<p>automation for code and I was looking in</p>
+<p>um chapter 7 at the</p>
+<p>uh way that the agent uh explores</p>
+<p>little maze quite efficiently because</p>
+<p>it's</p>
+<p>seeking</p>
+<p>novelty um and I was wondering whether I</p>
+<p>could do something like that to um do</p>
+<p>exploratory testing of say an</p>
+<p>API</p>
+<p>um that that sounds very interesting</p>
+<p>I've never specifically seen it but</p>
+<p>something like adaptive fuzzing or</p>
+<p>testing</p>
+<p>and then that's where the epistemic</p>
+<p>value comes into play like let's say</p>
+<p>pragmatic value is I prefer the program</p>
+<p>to work so and then epistemic value is</p>
+<p>I'm going to find out about where and</p>
+<p>how it does or doesn't work so if you</p>
+<p>only um made the breaking changes that</p>
+<p>you knew were going to break it it would</p>
+<p>be very confirmatory but it wouldn't be</p>
+<p>epistemic because you would only have</p>
+<p>been confirming which which might be</p>
+<p>valid exercise but you'd only be</p>
+<p>confirming the consequences of the</p>
+<p>actions that you already suspected but</p>
+<p>maybe that's important and then another</p>
+<p>setting would be like with a kind of</p>
+<p>uniform prior or with an informed prior</p>
+<p>what kinds of changes would actually</p>
+<p>reveal more learning about the structure</p>
+<p>of the program or the API and then it's</p>
+<p>like but once we figured out that that's</p>
+<p>a breaking change like we've kind of</p>
+<p>mapped that part of the</p>
+<p>maze there's probably a lot of cool ways</p>
+<p>to go</p>
+<p>there</p>
+<p>Kristoff so I think it's it's an</p>
+<p>interesting problem what to do with the</p>
+<p>something like you know exploring an API</p>
+<p>um there's this paper um</p>
+<p>for planning uh no certain that planning</p>
+<p>navigation</p>
+<p>um uh active inference and int in</p>
+<p>intentional behavior and they have this</p>
+<p>um uh notion of um uh sort of like</p>
+<p>inductive planning where there is a</p>
+<p>certain goal that the agent wants to um</p>
+<p>uh reach and it works backwards to</p>
+<p>figure out what are the steps to get</p>
+<p>there uh for something like you know</p>
+<p>exploring API and I think a lot of for a</p>
+<p>lot of applications though I think</p>
+<p>what's going to be eventually necessary</p>
+<p>somehow is to have a hybrid model that</p>
+<p>you will be you will have to be able to</p>
+<p>attach almost like an llm to it to</p>
+<p>basically at some point say like well I</p>
+<p>would like to actually you know I</p>
+<p>decided on my course of action I want to</p>
+<p>write some code that actually invokes</p>
+<p>the API and here with this decision um</p>
+<p>the structure of decision- making we're</p>
+<p>looking kind of like at assembly level</p>
+<p>of intelligence and at some point just</p>
+<p>like we are attached to an to an llm</p>
+<p>that continuously pumps out</p>
+<p>words um and I I'm just you know sort of</p>
+<p>choosing over over the distribution of</p>
+<p>those words they're being pumped out um</p>
+<p>but I'm not actually generating them</p>
+<p>right like I'm not aware of how that's</p>
+<p>happening um in the same way you would</p>
+<p>have to kind of attach an llm to almost</p>
+<p>like an active inference Ang that does</p>
+<p>some kind of goal oriented exploration</p>
+<p>of the API so that would be very</p>
+<p>interesting if you could achieve</p>
+<p>something like that it's probably you</p>
+<p>know um quite a quite a lot of money to</p>
+<p>be made on on on this sort of</p>
+<p>intelligent exploration of apis given</p>
+<p>how how much um uh trouble bugs are</p>
+<p>causing cool thanks yeah like and then</p>
+<p>in it kind of like in in that um like we</p>
+<p>were talking about right before began</p>
+<p>with like the feedback and the training</p>
+<p>examples like you can have a data set of</p>
+<p>correct API calls and incorrect API</p>
+<p>calls or something like that um and then</p>
+<p>like plan to make it</p>
+<p>work and those are kind of the semantics</p>
+<p>of perception and</p>
+<p>action that like ecosystems of shared</p>
+<p>intelligence synthetic intelligence if</p>
+<p>we can construct a formalism that has</p>
+<p>the semantics that are how we think</p>
+<p>about it Andor co-evolve that with</p>
+<p>updating how we think about</p>
+<p>it then we would have kind of a high</p>
+<p>bandwidth or a low</p>
+<p>loss or some other good property of the</p>
+<p>edge between us and the constructed</p>
+<p>artifacts yeah I think this is where you</p>
+<p>know like lm's really kind of suckut</p>
+<p>that you can you can sort of ask it to</p>
+<p>do something like this but it will not</p>
+<p>really have any kind of notion of</p>
+<p>thinking about the problem deeply about</p>
+<p>how would you go about breaking uh</p>
+<p>something for an API because that</p>
+<p>requires a sophisticated model of what</p>
+<p>the API might be doing under the hood</p>
+<p>for instance like some kind of buffer</p>
+<p>overflow and something like that but if</p>
+<p>you could if you could come up with a</p>
+<p>minimal example that would Muer that</p>
+<p>would model something like you know</p>
+<p>assume there is a possibility of a</p>
+<p>buffer overflow in an API how would you</p>
+<p>go about making some kind of inference</p>
+<p>about um or planning to exploit that</p>
+<p>that would be super interesting as a</p>
+<p>minimum as as a kind of a minimum</p>
+<p>example even for just a simple you know</p>
+<p>very simple IPI that takes like a a car</p>
+<p>star in in a size or something some</p>
+<p>something like this um how would you go</p>
+<p>about you know inferring whether it's</p>
+<p>possible to to do the buffer overflow in</p>
+<p>this one one funny um piece there would</p>
+<p>be use check out the PDP API</p>
+<p>and then the what would be appropriate</p>
+<p>the appropriate um the</p>
+<p>latitude within that API is active</p>
+<p>inference that's kind of one that would</p>
+<p>be a plot twist and then also on the</p>
+<p>interpretability here's um a paper with</p>
+<p>MAO and others from last year um like</p>
+<p>largely there aren't technical advances</p>
+<p>in this paper the images are drawn from</p>
+<p>saned Smith's live stream 28 paper</p>
+<p>so it's not like this is breaking new</p>
+<p>theoretical ground but the whole point</p>
+<p>is when you ask a neural network or llm</p>
+<p>Etc you know how sure are you about that</p>
+<p>it can come up with a sequence of</p>
+<p>tokens but that sequence of tokens is</p>
+<p>only going to be coincidentally related</p>
+<p>to anything like an uncertainty</p>
+<p>evaluation whereas if uncertainty</p>
+<p>parameters are explicitly</p>
+<p>encoded then</p>
+<p>self access</p>
+<p>introspection is just like a parameter</p>
+<p>lookup it's not like some second it's</p>
+<p>like part of the real time function of</p>
+<p>the system is um uncertainty estimates</p>
+<p>of different kinds at different levels</p>
+<p>so then to ask about how certain it is</p>
+<p>about a certain thing at a certain level</p>
+<p>you just ask that question and then</p>
+<p>return that</p>
+<p>variable um you know maybe even that's</p>
+<p>on some kind of special chip or</p>
+<p>something like with um verified access</p>
+<p>or something so it opens up to all these</p>
+<p>different</p>
+<p>architectures rather than like well</p>
+<p>let's train like another adversarial</p>
+<p>neural network to like you know try to</p>
+<p>infer this about this one and then that</p>
+<p>gets into this whole like deception game</p>
+<p>versus having these introspect</p>
+<p>architectures</p>
+<p>yours to what extent does this differ</p>
+<p>from basan reinforcement</p>
+<p>learning</p>
+<p>great what what what about that or what</p>
+<p>what you you mean overall house active</p>
+<p>is inference different than</p>
+<p>reinforcement learning or yeah yeah</p>
+<p>maybe indeed even overall but uh yeah if</p>
+<p>if you want this kind of uncertainty</p>
+<p>measure with whatever you infer then I I</p>
+<p>guess both Frameworks will allow this or</p>
+<p>is there yeah</p>
+<p>uh is it's probably very unclear</p>
+<p>question but yeah okay there's there's</p>
+<p>there's a few a few works and a few</p>
+<p>approaches there so</p>
+<p>um models that aren't active inference</p>
+<p>still do deal in uncertainty so there</p>
+<p>still is an uncertainty parameterization</p>
+<p>in even a linear aggression however a</p>
+<p>neural network or reinforcement learner</p>
+<p>that's trained to generate</p>
+<p>language its outputs of languages don't</p>
+<p>necessarily represent a veritical</p>
+<p>introspection maybe there's a way to</p>
+<p>train it so that the output is a</p>
+<p>vertical representation but that would</p>
+<p>be a secondary kind of an U welding</p>
+<p>together whereas this architecture that</p>
+<p>we just looked at like it's it's a</p>
+<p>trally part that's kind of on the the</p>
+<p>uncertainty as part of the architecture</p>
+<p>part um the key the key difference</p>
+<p>between active inference and the</p>
+<p>reinforcement learning is in reinfor</p>
+<p>ment learning a reward distribution is</p>
+<p>proposed secondary or auxilary or cor</p>
+<p>corollary distribution is proposed</p>
+<p>that's like layered over the</p>
+<p>observations so in the homeostatic</p>
+<p>environment we'd say we're getting</p>
+<p>observations about temperature and we</p>
+<p>are rewarded by 37c and we seek out High</p>
+<p>reward in active inference we do away</p>
+<p>with this secondary auxilary function</p>
+<p>and we directly work on on the</p>
+<p>observation distribution by calling our</p>
+<p>preferences not a preference for higher</p>
+<p>score on this proposed distribution but</p>
+<p>rather we have an expectation and a</p>
+<p>preference that connects directly to the</p>
+<p>observations</p>
+<p>themselves</p>
+<p>um yes I I understand that but I have</p>
+<p>been</p>
+<p>uh vaguely looking at uh um things that</p>
+<p>Benjamin V Roy and uh his lab are doing</p>
+<p>and but I I don't really understand it</p>
+<p>yet but that's there is some kind of</p>
+<p>thing like beijan reinforcement learning</p>
+<p>uh and I uh I wonder if they have I I</p>
+<p>would expect it to have a um a measure</p>
+<p>of uncertainty that comes with with any</p>
+<p>prediction there but I might have uh</p>
+<p>yeah it might just be a too vague</p>
+<p>Concept in my mind it no you're right</p>
+<p>there it is there I mean this work on</p>
+<p>um demystified and compared and there's</p>
+<p>several</p>
+<p>other works that do directly tackle</p>
+<p>it it it's not out of the picture that I</p>
+<p>mean architectures can include arbitrary</p>
+<p>components so it is possible to be like</p>
+<p>well let's have an epistemic module well</p>
+<p>yes but then epistemic and pragmatic</p>
+<p>value at the end of the day in the RL</p>
+<p>learner or the Deep Q learner or</p>
+<p>whatever epistemic and pragmatic value</p>
+<p>are going to get Blended back</p>
+<p>together into the reward function right</p>
+<p>you have these like artificial curiosity</p>
+<p>and and other uh intrinsic motivations</p>
+<p>that you could add add on to a classic</p>
+<p>canonical reinforcement learner but and</p>
+<p>I see quite a lot of</p>
+<p>of research on that but then it it seems</p>
+<p>that from an active inference framework</p>
+<p>it it kind of emerges from the from from</p>
+<p>the the system but</p>
+<p>um absolutely that is the Hope like that</p>
+<p>that there's a variety of cognitive</p>
+<p>phenomena from planning to epistemic</p>
+<p>Value curiosity intentionality variety</p>
+<p>of phenomena that could be implemented</p>
+<p>in a in a range of</p>
+<p>architectures but will pursuing a first</p>
+<p>principles approach lead to simpler more</p>
+<p>interpretable more efficacious models</p>
+<p>possibly possibly um if if somebody</p>
+<p>needed uh uh you know there might there</p>
+<p>might be a better model for a situation</p>
+<p>today because there are such incredible</p>
+<p>gyms and toolkits for reinforcement</p>
+<p>learning um so but but</p>
+<p>yes hence the moment of the</p>
+<p>epistemic excitement that we have and</p>
+<p>share here plus the accelerating</p>
+<p>conversion and understanding like yeah</p>
+<p>where is this</p>
+<p>useful because it's it's all good for</p>
+<p>something to be</p>
+<p>insightful but then um I mean there</p>
+<p>could be a situation where active</p>
+<p>inference just gives us an intuition</p>
+<p>pump and then we use a neural network or</p>
+<p>there are hybrid architectures that that</p>
+<p>do this or that and um but if utility is</p>
+<p>is what is</p>
+<p>desired or or some other property that</p>
+<p>another system already has then yeah</p>
+<p>definitely active inference has to work</p>
+<p>to to to be superior there one really</p>
+<p>interesting um moment</p>
+<p>from um this was a couple days ago</p>
+<p>with uh Ryan Smith and two of his PhD</p>
+<p>students so the empirical status of</p>
+<p>predictive coding um what was super</p>
+<p>interesting about this paper was</p>
+<p>like in this textbook group if someone</p>
+<p>said like what's the status like of of f</p>
+<p>or status of ACM people would often take</p>
+<p>it like in a metaphysical</p>
+<p>Direction however they um took it the</p>
+<p>other way and asked what's the empirical</p>
+<p>status of predictive coding and active</p>
+<p>inference in explaining</p>
+<p>neuroimaging and</p>
+<p>neurobiology</p>
+<p>um so the it's very interesting and</p>
+<p>these are these are the ongoing</p>
+<p>questions and curating the models and</p>
+<p>being able to compare them based upon</p>
+<p>how they do treat these</p>
+<p>phenomena that would be super</p>
+<p>informative and then if we can have a</p>
+<p>similar</p>
+<p>um Syntax for the variable similar API</p>
+<p>use agent I mean this</p>
+<p>um the demystified and compared it uses</p>
+<p>the open AI</p>
+<p>gy so</p>
+<p>like they presented some promising</p>
+<p>interesting results and that was several</p>
+<p>years ago and a lot of the work has</p>
+<p>probably not been published on the open</p>
+<p>AI octave inference side but it is right</p>
+<p>there like with frozen lake or with um</p>
+<p>the other reinforcement learning</p>
+<p>settings then look at where they're</p>
+<p>different find out where does the super</p>
+<p>high performance large scale RL model do</p>
+<p>well that this simple act imp one</p>
+<p>doesn't and then what would we need to</p>
+<p>do to make it</p>
+<p>different well fun yeah chapter 7</p>
+<p>is pretty</p>
+<p>fun um next next weeks we'll head into</p>
+<p>chapter eight on the continuous time</p>
+<p>maybe we'll look at some RX and fur</p>
+<p>examples because there aren't going to</p>
+<p>be pmdp examples for chapter</p>
+<p>8 um The Continuous time models there's</p>
+<p>there's a lot to say there on the math</p>
+<p>and on the philosophy and so</p>
+<p>on chapter nine integrating with data</p>
+<p>and then chapter 10 just a long wrap up</p>
+<p>with no figures or equations</p>
+<p>so thank you all see you next time thank</p>
+<p>you Daniel</p>
+<p>bye everybody</p>
+</article>
+</body>
+</html>

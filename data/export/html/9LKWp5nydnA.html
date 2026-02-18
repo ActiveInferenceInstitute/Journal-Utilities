@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active InferAnt Stream 011.1 ~ April Agents Bring May Simulations: OpenManus, RxInfer.jl, and ...</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active InferAnt Stream 011.1 ~ April Agents Bring May Simulations: OpenManus, RxInfer.jl, and ...</h1>
+<div class="meta">Category: ActiveInferAntStream &middot; Series: ActiveInferAntStream_011 &middot; Episode 1 &middot; Speakers: April Agents Bring May Simulations: OpenManus, RxInfer.jl, and ... &middot; Duration: 1:28:01 &middot; Views: 157</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=9LKWp5nydnA">https://www.youtube.com/watch?v=9LKWp5nydnA</a></div>
+<article>
+<p>All right, welcome everyone.</p>
+<p>It is April 2nd, 2025, and this is Active Inference Stream number 11.1.</p>
+<p>And I'll begin with a GitHub push.</p>
+<p>Looking forward to everyone's updates and ideas and questions in the chat.</p>
+<p>This should be an interesting stream.</p>
+<p>So, the title is April Agents Bring May Simulations.</p>
+<p>OpenManusRxInfer.jl</p>
+<p>and Agent Laboratory.</p>
+<p>I have a few things prepared, a few software implementations we can play around with.</p>
+<p>Also, some topics to explore.</p>
+<p>Not sure how any of the demos will go live.</p>
+<p>However, it's the hope that a few things will be pretty interesting</p>
+<p>and we can fix and explore along the way.</p>
+<p>So, April Agents Bring May Simulations.</p>
+<p>Or as Alexandra just pointed out, April Agents May Bring Simulations.</p>
+<p>There are many exciting developments and advancements in the multi-agent synthetic intelligence systems space right now.</p>
+<p>In a pretty broad sense.</p>
+<p>Short-term, medium-term, all the terms.</p>
+<p>Let's explore a few articulating, complementary, interesting kinds of multi-agent frameworks.</p>
+<p>Autonomous frameworks.</p>
+<p>Look at different ways of looking at what makes agentic.</p>
+<p>What kinds of systems engineering are being done within and among the agents.</p>
+<p>All these kinds of orchestration questions.</p>
+<p>Looking where we're at instantaneously in April 2025.</p>
+<p>And more broadly.</p>
+<p>So, there will be some jumping around since some of the pieces take different amounts of time to load or play out.</p>
+<p>So, again, I'm not sure what exactly will come through.</p>
+<p>That'll be part of the fun though.</p>
+<p>On all of these branches, I've been having some interesting times.</p>
+<p>There are three cursor windows open.</p>
+<p>So, starting with the two LLM type models.</p>
+<p>Right now is running in this terminal.</p>
+<p>The work of Samuel Schmidgall, Agent Laboratory.</p>
+<p>I'll read the overview.</p>
+<p>Agent Laboratory is an end-to-end autonomous research workflow meant to assist you as the human researcher towards implementing your research ideas.</p>
+<p>Agent Laboratory consists of specialized agents driven by large language models to support you through the entire research workflow.</p>
+<p>From conducting literature reviews and formulating plans to executing experiments and writing comprehensive reports.</p>
+<p>This system is not designed to replace your creativity, but to complement it.</p>
+<p>Enabling you to focus on ideation and critical thinking while automating repetitive and time-intensive tasks like coding and documentation.</p>
+<p>By accommodating varying levels of computational resources and human involvement,</p>
+<p>Agent Laboratory aims to accelerate scientific discovery and optimize your research productivity.</p>
+<p>This has an associated paper describing more.</p>
+<p>So, I got it to work initially.</p>
+<p>Output a really awesome 17-page paper, images, equations.</p>
+<p>I have the PDF around.</p>
+<p>Then I started modifying it, trying to get more logging, get more access to it.</p>
+<p>And kind of went too far.</p>
+<p>And now I've just pulled back to the main branch that they've provided.</p>
+<p>Just to show this experiment while this one's running.</p>
+<p>And then we'll see how long it takes.</p>
+<p>Hopefully it'll finish within the stream.</p>
+<p>This YAML file, which they provide some initial examples of.</p>
+<p>I made a variant that has the following sections.</p>
+<p>Copying it over with control-I, write a new YAML compliant file that has this semantics.</p>
+<p>The goal is to develop a partially observable Markov decision process, POMDP,</p>
+<p>implementing active inference that is in a thermal homeostatic setting.</p>
+<p>So, kind of the classic air conditioner, do-nothing heater temperature.</p>
+<p>The API key for OpenAI is put here.</p>
+<p>And the model is provided for the LLM backend and the review, I guess, separately.</p>
+<p>Language.</p>
+<p>Here's different stages.</p>
+<p>So, I found that when larger numbers were used, there were some interruptions.</p>
+<p>I don't know if that was because of stepping away from the computer.</p>
+<p>So, these are relatively low levels of steps, but it'd be conceivable and interesting to see what happens when literature review is huge numbers or what happens there.</p>
+<p>How to use a structured knowledge base for literature review.</p>
+<p>It's also possible to run multiple labs in parallel.</p>
+<p>Then there's these solver steps.</p>
+<p>I wonder if that will throw an error later.</p>
+<p>We'll see.</p>
+<p>These solver steps, which are described in the MLE solver and the paper solver.</p>
+<p>Load an existing save.</p>
+<p>And to compile all the way on through the LaTeX PDF output.</p>
+<p>And then this copies over the notes format.</p>
+<p>And it's doing a pretty multi-staged effort.</p>
+<p>The package setup did have a few other packages that on my computer I needed to set up.</p>
+<p>But it was pretty easy to get through those with help of cursor 2.</p>
+<p>And get the virtual environment.</p>
+<p>And at least get it along the way using the API key.</p>
+<p>So, this is pretty cool.</p>
+<p>And, again, keeping with this sort of just snapshot.</p>
+<p>I'm sure with slightly different setups or just different settings, these are all really functional.</p>
+<p>I'm just showing how they're running for me at this moment.</p>
+<p>And hopefully come across useful outputs.</p>
+<p>But big picture.</p>
+<p>Agent laboratory.</p>
+<p>Really cool.</p>
+<p>And partnering it in this sort of multi-agent, autonomous agent, LLM type coordination.</p>
+<p>In the second window, we have OpenManus.</p>
+<p>So, I'll read the description.</p>
+<p>Manus is incredible.</p>
+<p>But OpenManus can achieve any idea without an invite code.</p>
+<p>It's a simple implementation.</p>
+<p>So, we welcome any suggestions, contributions, and feedback.</p>
+<p>Enjoy your own agent with OpenManus.</p>
+<p>So, look at the demo.</p>
+<p>Okay.</p>
+<p>So, we'll see.</p>
+<p>Here's videoing into their setup.</p>
+<p>Describing the task.</p>
+<p>Basically carrying out this task within the repo that it's running from.</p>
+<p>So, here.</p>
+<p>There was.</p>
+<p>I started with a request.</p>
+<p>Write a research report on Davis, California.</p>
+<p>And I output this after 20 steps.</p>
+<p>But it popped up a browser.</p>
+<p>And now running an enhanced version.</p>
+
+<p>To see if it's possible to get a longer report.</p>
+<p>So, it could just be how I'm running it or setting it up.</p>
+<p>It could.</p>
+<p>But just sort of conceptually, we'll look at the architecture of how it's set up.</p>
+<p>Even if nothing too impressive comes from it.</p>
+<p>And those will be the two LLM type processes running.</p>
+<p>Here we are back in the PMDP research.</p>
+<p>Review writing.</p>
+<p>Code writing.</p>
+<p>We'll see if we can tell what the output.</p>
+<p>But there are subtasks.</p>
+<p>To what extent these are explicitly described.</p>
+<p>Or to what extent there's an initial plan or hierarchical plan formulation.</p>
+<p>How many steps that's taken in.</p>
+<p>How general the prompting.</p>
+<p>All those kinds of things.</p>
+<p>A lot of degrees of freedom.</p>
+<p>Just seeing how it works here.</p>
+<p>It's just interesting.</p>
+<p>And then also, again, openManus.</p>
+<p>Where here, let's start this one again.</p>
+<p>With a new.</p>
+<p>But did it even result.</p>
+<p>Let's try to improve the logging.</p>
+<p>On openManus.</p>
+<p>Then we'll go to the third window.</p>
+<p>Which is the rxinfer.jl.</p>
+<p>Given this type of quote.</p>
+<p>Successful output.</p>
+<p>We ensure we are capturing.</p>
+<p>All outputs of.</p>
+<p>Who will use better.</p>
+<p>And enabling.</p>
+<p>Running tools more intelligently.</p>
+<p>In order.</p>
+<p>To achieve.</p>
+<p>Sequential.</p>
+<p>Incrementally.</p>
+<p>Improving.</p>
+<p>Outputs.</p>
+<p>Outputs.</p>
+<p>General case.</p>
+<p>All right.</p>
+<p>And then the third window.</p>
+<p>Is going to be.</p>
+<p>The.</p>
+<p>Rxinfer.jl.</p>
+<p>Rxinfer.jl.</p>
+<p>Examples.</p>
+<p>Repo.</p>
+<p>So here's the openManus.</p>
+<p>Now in the third window.</p>
+<p>Will be.</p>
+<p>A.</p>
+<p>Para repo.</p>
+<p>For Rxinfer.jl.</p>
+<p>rx infer which is uh under some very interesting and good open source development as part of this</p>
+<p>growing interesting rx infer ecosystem including also recently rx environments not going to be</p>
+<p>probably covered here and also this recent rx and first server so opening up the possibility for</p>
+<p>different languages to use api calls into these rx and for type pipelines through their their server</p>
+<p>and uh this might connect with some general topics and multi-agent just depends what people</p>
+<p>write in the chat and where these tools sort of take us okay</p>
+<p>using cursor 0.48</p>
+<p>using for the most part claude 3.7</p>
+<p>agent mode</p>
+<p>all right started with the github push and let's just check on each of the uh</p>
+<p>uh ongoing language model uh windows</p>
+<p>then look to some of these recent examples from rx infer including how they integrate with neural</p>
+<p>networks and see if we can generalize that or connect that also to these llm type methods</p>
+<p>um and yeah see where the different work products from these more llm tool use agents where that gets us</p>
+<p>and where we get with okay here we go</p>
+<p>yep</p>
+<p>mle max steps</p>
+<p>let's just do one max of everything so that it happens from all the stages</p>
+<p>okay i'm gonna um make a new api key</p>
+<p>to put into this</p>
+
+<p>moving it off screen so i can put in this api key this way and save the file</p>
+<p>So that'd be one way I thought of modifying it, having a environment file or other method for the</p>
+<p>API. A lot of flexibility with which LLM and how to call it. So that could just be one thing and</p>
+<p>then here's okay. So let's run that again. AI lab repo is the script and then it looks to the location of the</p>
+<p>YAML file. So AI lab repo. All right, looking at it while it sets up, gives a different language default</p>
+<p>model, maybe overridden. The laboratory workflow is a 400 line, 500 line method. The archive agent.</p>
+<p>Here's the argument that parses, argument parsing for the YAML.</p>
+<p>Parsing a YAML and then main. Or the main logic of this main script that's now playing out here.</p>
+<p>Sets the LLM backbone. Determines whether it's in human mode or not. We can try that, look at the YAML</p>
+<p>and flip that value. Compile PDF. Go from the LaTeX plaintext all the way through at least trying</p>
+<p>to compile the PDF. Load in the previous workspace. If there are parallel labs, what to do in exception,</p>
+<p>failure. Whether there's an archive research agent and the indices of the lab. Then there's those limits</p>
+<p>states on each of those steps, number of times to iterate through these different steps, um,</p>
+<p>and how to parallelize. Getting the API keys from the YAML, whether the OpenAI key or the DeepSeq key.</p>
+<p>Has a logic for if it's in the human interactive type mode, asking questions or whether it uses the</p>
+<p>YAML information. Language, human in loop mode, possibility for different stages to have different</p>
+<p>human in or on the loop. Agent models, which LLM to use for different phases. Here it looks like this is</p>
+<p>a set sequence of phases. It could be specified in a ton of different ways. Parallelism instructions.</p>
+<p>Some exception clauses. Checklist. Practical. Make a better config system. YAML. Advancements. Make</p>
+<p>the ability to have agent build on top of the research run agent labs parallel. I'm not sure if</p>
+<p>that's to do or what was done. So this is going to keep running. Hopefully we will not hit that same</p>
+<p>error. Should be a little faster, but still might be a couple minutes on that one. All right, now to this one.</p>
+<p>So something was happening in the OpenManus.</p>
+<p>So we asked cursor in the agent mode to enhance our ability to understand because the research report</p>
+<p>was not very long. So maybe it's just handled differently with the database and the shared state.</p>
+<p>And this is an example of kind of a classic and durable type of trade-off in multi-agent modeling.</p>
+<p>So we have different kinds of information interactions ranging from this just kind of informally implicit,</p>
+<p>multi-agent hub and spoke type computational architecture, if not Bayes graph,</p>
+<p>and spoke type of data. So we have different types of data. And this can be in certain digital settings,</p>
+<p>and even probably some physical ones too, describe the possible layouts of how to organize shared state.</p>
+<p>In contrast with where there can be direct interactions, like interactions among nest mates, as well as with the shared environment.</p>
+<p>And in the context of doing these computational agents, it is like, what is being remembered and modified? How?</p>
+<p>How? Where's that statistical updating of a probability distribution, like the Rx and Fur side of things?</p>
+<p>Where is it some other kind of model update? Where is it context for a language model? Or</p>
+<p>where is it context for a language model? Or to what extent is that update private within that agent?</p>
+<p>Carried like sort of like a nest mate level memory? To what extent is it accessible by different processes?</p>
+<p>And it kind of just ends up being just in some particular way that's very situational. So this is just showing a few of the tools.</p>
+<p>And hopefully with people's comments or suggestions, let's just see how many minutes it takes to look into a few different functions,</p>
+<p>or at least connect how certain package analyzes this, connect that to ways we can integrate amongst these different frameworks.</p>
+<p>Okay, now we have...</p>
+<p>Agent laboratory is running in the first one. Open madness. We ask for these improvements.</p>
+<p>Agent laboratory is running in the first one.</p>
+<p>Now run the improved open madness.</p>
+<p>So sometimes there's a really obvious way or an entry point.</p>
+<p>Um, and I think good code-based design can go a long way. I know there's a lot of cool work being done with the cursor rules and the MDC files,</p>
+<p>uh, as well as the MCP server calls. Those are all things to, uh, look into, but even, uh, uh, a code base of this level.</p>
+<p>Sometimes it's a little bit hard to even know, uh, which, which script to run or which entry point.</p>
+<p>So sometimes it's even useful just to ask in the agents on the right side to even write that</p>
+<p>as it, as it needs to be.</p>
+<p>So let's see, um, let's see, um, let's see.</p>
+<p>And also to update that experience. Like, okay, I don't want to do any terminal, uh, extra arguments.</p>
+<p>Just make it so that this works.</p>
+<p>Um, so let's let cursor work on that while we look onto the third</p>
+<p>of the three, um, modeling approaches, the RxInfer.</p>
+<p>Okay.</p>
+<p>So the RxInfer examples repo is maintained by the Reactive Bayes organization,</p>
+<p>um, lazy dynamics fellows. And what I have in the doxology fork is a, another folder called support.</p>
+<p>And right now it has a few, two scripts. There's setup.jl, which is at least a starting point for</p>
+<p>setting up the packages and, and gives a, a scaffold for adding other packages that you might</p>
+<p>want to install or something like that. And then importantly, the notebooks to scripts</p>
+<p>script. So this can be run from here with Julia notebooks to scripts, the file name, Julia space,</p>
+<p>the file name, and takes the documents that are in the original repo.</p>
+<p>So this can be run from here with Julia notebooks. And then, uh, the, uh, the, uh, the, uh, the, uh,</p>
+<p>this script converts those into a matching scripts folder. So we will look at, uh, two or maybe more of these</p>
+<p>script, uh, uh, analogues of some RxInfer examples. Um, they're a little bit more flexible to work with.</p>
+<p>It's possible to break them out into multiple components. And some of them probably run a little</p>
+<p>smoother in the notebook setting. Uh, but by and large, they, uh, all work to, with just a, a few tweaks or</p>
+<p>ordering changes. So we'll look at some that are already, uh, some variants have been made of,</p>
+<p>and then just drone or, um, some other interesting one. Let's, let's explore it. Okay.</p>
+<p>Agent laboratory continuing.</p>
+<p>Um, cursor improvement of open Manus proceeding on this site. So it's like their agent orchestration,</p>
+<p>their microservice, um, process orchestration, all, all these really advanced, um, services and software,</p>
+<p>perplexity, et cetera. Pretty interesting how they, how they do it and, and, and surface it. So we'll</p>
+<p>leave that going and wait for it to complete while looking at the RxInfer, uh, examples.</p>
+<p>So, um, first example will be, uh, the recently written recurrent switching linear dynamical system.</p>
+<p>This one, uh, where we're getting to with it, just to sort of put the, um, and this is not,</p>
+<p>not to say that this is perfectly statistically optimized, just to show some of the expression</p>
+<p>capacities of where, where we can model. And then from there figuring out, um, is RxInfer,</p>
+<p>where, where, where might it be at different stages and different projects,</p>
+<p>and what if probabilistic modeling in, uh, in, uh, in, uh, in, uh, in, uh, in, uh, in, uh,</p>
+<p>with different machine learning pipelines, like where, where and how might, and what if probabilistic</p>
+<p>modeling in, in fusion with some more dynamical systems type, uh, time series modeling, neural networks,</p>
+<p>networks, LLMs, uh, all these different architectures of statistical models.</p>
+<p>Uh, it's, um, where, how do we compose useful systems for variously more on the recognition</p>
+<p>direction, doing, uh, latent state inference from noisy data, which is a commonality of, of the models that,</p>
+<p>that will be looked at. So in this, um, you know, or using it to recognize latent states from noisy data</p>
+<p>and or generating predictions from latent state estimates. So here in this setting, there's a noisy</p>
+<p>sequence of measurements and at a, uh, discrete layer, there's, there's a switch between two regimes,</p>
+<p>one and two, where the second discrete state has this higher amplitude oscillation.</p>
+<p>And so there's a switching between these two modalities and we can explore how, how hard is</p>
+<p>it to have a three state switch model? Um, so at the sort of faster layer, there's this time series</p>
+<p>interpolation, uh, auto-regressive type model, which we can look at with the app model statements. And then</p>
+<p>at the slower level, there's this linear. Um, and then the other example that has, uh, a lot to do with</p>
+<p>this first example is, um, uh, three-dimensional in time Lorenz attractor with noisy sampling coming from it.</p>
+<p>And in this, uh, and in this, uh, example, integrating neural networks with flux.jl,</p>
+<p>there's a two-step process that has a lot to do with the continuous time, time series interpolation,</p>
+<p>and the slower switching model. Here at the first level, there's the learning of a, uh, uh,</p>
+<p>statistical model of the Lorenz attractor state space using a flux neural network in Julia. Then</p>
+<p>probabilistic parameters, according to a at model statement in RxInfer are used to model</p>
+<p>certain distributions of that trained neural network. So it's like a common theme is, so here's now the</p>
+<p>three dimensions of the Lorenz attractor. So the blue line is the inferred from the actual Bayesian</p>
+<p>posterior. Um, in terms of not possibly miscalibrated. It's not to say that this makes this an accurate</p>
+<p>posterior assessment. I think there's a lot to, um, to, to look at in there, but these are posterior estimates</p>
+<p>that in certain conditions or situations or data sets can give better estimates and other alternatives</p>
+<p>that have, for example, in this situation on this dimension for the Lorenz is a, uh, parametric estimate</p>
+<p>in terms of a mean and a variance of this posterior distribution constrained to the</p>
+<p>Gaussian family of just mean and variance parametric statistics. Uh, rather, and that can be</p>
+<p>computationally implemented, typed, simulated, et cetera, in a number of ways with an explicitly distributional</p>
+<p>analytical nature, knowing that it's going to be this normal distribution. Now, if the underlying state</p>
+<p>is, is bimodal, then there are all the sorts of attractor states depending on where it goes and how</p>
+<p>the optimization unfolds, like whether it over disperses to capture the mean or whether it sharpens to go</p>
+<p>onto the median, like a local optima. So, but all that being said, it gives this parametric estimate in</p>
+<p>terms of an explicit mean and variance, which can be used in any statistical method for what would otherwise</p>
+<p>be distributed throughout the weights of like the neural network with many parameters needing to be</p>
+<p>simulated for inference. Whereas with these more distilled summary statistics on the posteriors,</p>
+<p>it can be compressed to a very small, um, scale. Even though as, as, uh, more parameters are added,</p>
+<p>the fit might be better because the neural network might be able to, to know that there was some more</p>
+<p>structure than just the, the two parameters that are allowed to be specifying this distribution.</p>
+<p>So that's kind of the, um, topic that I think in, in a lot of ways, regardless of what the agent orchestration</p>
+<p>layer is, which this is giving us some windows into, there's sort of this orthogonal analytical or</p>
+<p>behavioral scientific framing of this information environment using these, uh, using probability</p>
+<p>distributions to model outputs of other models. Some places and motifs where that could be like</p>
+<p>parameter on parameter on parameter, or it could be LLM on LLM on LLM.</p>
+<p>So that's the, um, all these different chains of, uh, of interactions between models that are more like,</p>
+<p>let's have a ton of parameters and try to interpolate a function and pick the size of the model out of</p>
+<p>convenience or, or compute. Like why 7 billion parameter language model? Because maybe, uh, just in the short</p>
+<p>term, it's easier to fork or use the, the training methods that are known or whatever it may be, but use</p>
+<p>a certain given large number of parameters, choose your own or some other common number, and then hope that</p>
+<p>there's enough degrees of freedom and in the curriculum of the training that it's, uh, that it interpolates</p>
+<p>and learns the space and does the good function approximation. And, and you don't have to do an</p>
+<p>analytical description of like the information space, yet it can learn a lot of the important</p>
+<p>structural features. Um, whereas for example, uh, explicit probability distribution over words,</p>
+<p>which is kind of has a functional encoding in the, the larger, um,</p>
+<p>many parameter type, LLM type, learn all the statistical associations, including higher order ones</p>
+<p>among different textual inputs, and then learn the, the specifics of that from, from the training data.</p>
+<p>But specif-, letting those weights and coefficients amongst all of the billions of parameters become fit through</p>
+<p>the training. Uh, in this app model type, RxInfer, um, setting, and then also in, in the textbook group, there was, um,</p>
+<p>the, um, one person was interested in posture, so we modified it. So maybe we can modify it another.</p>
+<p>Of gray is the proprioception, noisy signaling coming from the body. Then there's the perceived and the actual</p>
+<p>ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>tractor systems could be sampled from, or mixtures of systems could be</p>
+<p>multiple ways of modeling the generative process that's giving rise to these</p>
+<p>noisy observations. It doesn't have to be just fit with Lorenz, but similar theme.</p>
+<p>Look at the app model that defines the probabilistic part of it.</p>
+<p>Here's the state space model which can be in certain places and ways</p>
+<p>run in situations where the larger neural network might not necessarily be able to operate.</p>
+<p>Like all the variables that have to be stored within a semantics of this being the arguments passed to</p>
+<p>this SSM. These can be interpretable, true variance, posterior estimates,</p>
+<p>explicit composition of different statistical distributions. There's more to it for</p>
+<p>logging and for coordinating the calls and the orchestration of how these app models get used</p>
+<p>in the rhythms of other API calls and program logics. But the app model is kind of this statistical</p>
+<p>kernel that is the one that gets parsed and rendered and used as the underlying declarative base graph</p>
+<p>for the RxInfer model that then gets a certain scheduling of either the standard sort of pass over</p>
+<p>all of the nodes and update them in this order, imperative style, update this and then do this and</p>
+<p>then do that. And then to what extent that scheduling of updating strategies on that base graph,</p>
+<p>that is what reactive message passing in principle kind of opens the degrees of freedom around. So it's like,</p>
+<p>well, this can be under this timing, this one can be triggered by this or react to this rather than the whole graph</p>
+<p>being either updated sort of in a sweep or just in any given fixed for loop type computational execution</p>
+<p>or approach to that distribution. So this is the joint generative model of the state space model inferred from the neural network.</p>
+<p>So the of the, uh, from the noisy Lorenz data.</p>
+<p>So, um, let's check the other. Okay, Agent Laboratory still writing.</p>
+<p>Cursor finished.</p>
+<p>Well, commands to run to run and log the demos written.</p>
+<p>Hello, Zig.</p>
+<p>I'm going to go to the neural network.</p>
+<p>Train the neural network on the Lorenz noisy data.</p>
+<p>So using just a ton of parameters, throwing it out the problem.</p>
+<p>Training the neural network.</p>
+<p>Training the neural network.</p>
+
+<p>ail</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>This is what we get. There should be at full function logging of the vast</p>
+<p>sequentially improved actual plans, documents, research outputs, etc. logged and enacted by this system.</p>
+<p>Agent laboratory is still going.</p>
+<p>Okay, that was the neural network. Learning the neural network and then describing parameters of a specific app model.</p>
+<p>So those were two of the... but let's look at a new one like drone dynamics.</p>
+<p>Alright. So I've done this one. Let's see what it results in. Let's see what it looks like.</p>
+<p>So this is in advanced examples.</p>
+<p>Drone dynamics.</p>
+<p>Notebook.</p>
+<p>Drone.gif.</p>
+
+
+<p>Drone.gif.</p>
+<p>2D drone.</p>
+<p>Drone 3D multi.</p>
+<p>Looks awesome.</p>
+<p>So if we can recapitulate this and start extending it a little bit and understand the app model.</p>
+<p>Add in some logging.</p>
+<p>Look at some other visualizations.</p>
+<p>Adapt it to foraging and the honeybee or something like that.</p>
+<p>Like there's so many.</p>
+<p>So this is just as we watch these three processes play out.</p>
+<p>Which again under total.</p>
+<p>No.</p>
+<p>Make it happen.</p>
+<p>And do it.</p>
+<p>Comprehensively now.</p>
+<p>These.</p>
+<p>You know.</p>
+<p>Two weeks later.</p>
+<p>The level of function could be.</p>
+<p>I guess somehow.</p>
+<p>Deteriorated in some way.</p>
+<p>But.</p>
+<p>Considering just for the most part.</p>
+<p>Largely improved.</p>
+<p>A lot of the things that I'm doing.</p>
+<p>Certainly someone with different or more development experience.</p>
+<p>And or.</p>
+<p>Another more advanced version of cursor.</p>
+<p>That could just iterate a few more times.</p>
+<p>Or a little bit better with coding.</p>
+<p>So it's.</p>
+<p>It's pretty wild.</p>
+<p>And.</p>
+
+<p>I'm excited to see like what people.</p>
+<p>Do with.</p>
+<p>It's not just vibe coding.</p>
+<p>It's.</p>
+<p>It's more and different than that.</p>
+<p>I think in.</p>
+<p>In ways.</p>
+<p>Or at least it can be.</p>
+<p>Okay.</p>
+<p>Quick scan over the drone.</p>
+<p>Example.</p>
+<p>These examples demonstrate the use of.</p>
+<p>RxInfer for motion planning.</p>
+<p>The animation show the inferred trajectories.</p>
+<p>From probabilistic inference.</p>
+<p>Rather than simulated executions.</p>
+<p>For more realistic simulations.</p>
+<p>Especially in the 3D drone example.</p>
+<p>The model would need to be.</p>
+<p>Extended with reactive environment.</p>
+<p>Hashtag Rx environments.</p>
+<p>That responds to the drones actions.</p>
+<p>During plan execution.</p>
+<p>If you're interested in collaborating.</p>
+<p>On a more realistic implementation.</p>
+<p>Please open a discussion.</p>
+<p>And let's work on it together.</p>
+<p>And that links to.</p>
+<p>A discussion.</p>
+<p>On reactive base.</p>
+<p>Okay.</p>
+<p>Let's quickly.</p>
+<p>Look.</p>
+<p>Through it.</p>
+<p>Import packages.</p>
+<p>Environmental features.</p>
+<p>Like gravity.</p>
+<p>Physics.</p>
+<p>Physics.</p>
+
+<p>Inertia.</p>
+<p>Radius.</p>
+
+<p>Properties.</p>
+<p>Of the drone.</p>
+<p>Aerial properties.</p>
+<p>The drone.</p>
+<p>State of the drone.</p>
+<p>Vector.</p>
+<p>Of these variables.</p>
+<p>Model specification.</p>
+<p>Location.</p>
+
+
+
+<p>And that's the.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>The drone.</p>
+<p>Model.</p>
+
+<p>Location state transition based upon this declarative statistical style.</p>
+<p>Graphical model specification for the drone model that's going to get rendered</p>
+<p>up and done all these ways with the RxInfer using the at model macro.</p>
+<p>Planning loop included inside of the at model macro for the time horizon involving</p>
+<p>something like rolling out the prior on consequences of action, physics related,</p>
+<p>with the state transitions.</p>
+<p>But how does it select action?</p>
+<p>Then, probabilistic inference.</p>
+<p>Not sure what unscented means here, but some kind of state transition approximator.</p>
+<p>This is an interesting function.</p>
+<p>I think it'll be like, is it really this easy to make a wrapper function called move to target?</p>
+<p>If so, that feels like a really high level function, even for a 3D nav system to be able just to be like,</p>
+<p>move the target and have it have this definite-ness.</p>
+<p>That'll be interesting to look at how that happens.</p>
+<p>So, hopefully getting the script running will get us to understand all these different visualizations,</p>
+<p>and maybe make a few new visualizations just using the script and generalizing it from there.</p>
+<p>Let's check on the LLMs, then continue with the drone.</p>
+<p>Alright, Agent Laboratory continues to use this.</p>
+<p>We had some really fun, interesting discussions in the Discord.</p>
+<p>So, like, just taking a little snippet here.</p>
+<p>These are LLM costs.</p>
+<p>Postdoc.</p>
+<p>Let's take a fresh perspective in developing our POMDP model for thermal homeostasis,</p>
+<p>focusing on agile design that prioritizes user-centric features while maintaining strong mathematical integrity.</p>
+<p>Here's a newly formulated plan that emphasizes practical user engagement and theoretical robustness.</p>
+<p>Three action states of the POMDP.</p>
+<p>Five continuous band on a continuum making a discrete state space five option latent space.</p>
+<p>So, it's laying out different aspects.</p>
+<p>Certain parts of it are repeating things.</p>
+<p>It could just be logging.</p>
+<p>It could be other ways to do the prompt engineering.</p>
+<p>Like, this just looks like it's repeating things right now.</p>
+<p>Maybe it's actually asking if we're ready or something.</p>
+<p>But, yeah, I think that'll interrupt.</p>
+<p>Let's see.</p>
+<p>Okay.</p>
+<p>Something is happening.</p>
+<p>Let's leave that highlighted and return to it.</p>
+<p>Here looks like the cursor agents.</p>
+<p>Make the updates and run it.</p>
+<p>And fun it.</p>
+<p>Okay.</p>
+<p>Back to the drone.</p>
+<p>So, we looked at the readme for the drone.</p>
+<p>This is in the scripts folder, which basically takes the notebook that we looked at with the interspersed comments and pulls out just the Julia code.</p>
+<p>So, right click on the code.</p>
+<p>Open an integrated terminal.</p>
+<p>Open an integrated ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>broader service of living and computation. Start out with just running it as it first converts.</p>
+<p>Julia Drone Dynamics. It may need a slight reordering or it could just be like my environment,</p>
+<p>but we'll see. One feature that comes up a lot in the RxInfer group and in learning about it is just like</p>
+<p>this very Julia-esque usage of statistical variables very close to as they are analytically,</p>
+<p>isomorphically, I mean ideally, and learning the syntax of what is allowed in plausibility</p>
+<p>where is it speculative realism, distributional specification, where and how does the</p>
+<p>does the current ability to make different kinds of nodes and implement different kinds of edges in</p>
+<p>RxInfer, which could be more general or robust in the future. I'd expect so just from an open source</p>
+<p>software development side, like what kinds of app models will what kinds of statistical behavior</p>
+<p>arise from, what kinds of logics and functions like go to target are being</p>
+<p>put within the app model, what's in the logic of updating and calling</p>
+<p>different nodes. There's just a lot of interesting areas and spaces for taking these functional examples</p>
+<p>and if if if and being clear about where where are we having problems in implementing these examples, like I don't expect it to run the first one</p>
+<p>because it was a notebook but then it hopefully is just one or a few</p>
+<p>prompts away and then we can start taking these things apart, looking at it and making more logging,</p>
+<p>testing different variants. Please update this to run.</p>
+<p>to run....</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>it just hangs, it was converted from notebook.</p>
+<p>Break it up, out, into any separable modules properly invoked if you think it best.</p>
+<p>Okay, looks possibly...</p>
+<p>Let's just see what happens if we say move ahead.</p>
+<p>Okay.</p>
+<p>Let's...</p>
+<p>This one seems to be hanging again.</p>
+<p>So here, one affordance that they sort of point to is new chat.</p>
+<p>So this is back to OpenManus.</p>
+<p>Here is what we get.</p>
+<p>We can now use a chain of OpenManus calls and tool use on incrementally writing reports and doing dispatch of document writing.</p>
+<p>Then stitching together as editor at the end.</p>
+<p>Okay, this is still happening.</p>
+<p>So that took 1800 seconds.</p>
+<p>Okay.</p>
+<p>It's loading some information.</p>
+<p>This is like...</p>
+<p>This is getting into the...</p>
+<p>Yeah.</p>
+<p>Stuff is coming out.</p>
+<p>This is one of the big open questions that hopefully we won't get too off the rails with in this...</p>
+<p>With the tools.</p>
+<p>But even with the...</p>
+<p>And perhaps even especially with the haphazard and just open source grabbing these tools.</p>
+<p>But even if it were a much more well orchestrated, documented approach, even that would be an especially important like what is really being empowered in the environment that I'm running this in.</p>
+<p>So, where are different kinds of real consequences possible?</p>
+<p>It's just...</p>
+<p>It's pretty interesting.</p>
+<p>And how does that relate to the actual technical basis of what the model is and does and how it's interpreted?</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>So, let's move some...</p>
+<p>Drone core.</p>
+<p>We can use perplexity to make a drone core image.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Yeah, so in the time when it wrote the 17 page PDF....</p>
+
+<p>Okay....</p>
+<p>Yeah....</p>
+<p>Okay....</p>
+<p>Yeah....</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>studio Ghibli.</p>
+<p>Okay.</p>
+<p>Yeah, so in the time when it wrote the 17 page PDF, so it didn't output the other</p>
+<p>discourses, but a lot of more stuff was happening. But it just saved in the time that I previously</p>
+<p>ran this just a 17 page PDF on this thermal POMDP model and concept. But it really did have files</p>
+<p>like this file, partially haphazardly outside of its lane, but not few files were made</p>
+<p>in the same way. Hugging face datasets really may be coming here. There really were Python scripts</p>
+<p>that did have some outputs and some source code was written. So we'll see where that goes. And I</p>
+<p>think that's another sort of general topic is this file structure handling. To what extent should more</p>
+<p>relational databases and general high performance databases, and maybe they're already being used in</p>
+<p>in different ways. To make some of the handling of the reference of these different system components</p>
+<p>more facilitated. Doing it locally, like all of these examples, has a lot of interpretability. It's</p>
+<p>like very hands-on, but for high reliability there's some other methods, but those have their own sort of</p>
+<p>trade-offs. So okay, so we got... OpenManus being improved by cursor to make more sequential incremental state sharing amongst runs.</p>
+<p>So let's just run the main...</p>
+<p>This is...</p>
+<p>Let's run...</p>
+<p>This is the initialized script.</p>
+<p>Activate the virtual environment... yes.</p>
+<p>Run OpenManus... yes.</p>
+<p>Okay.</p>
+
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Drone example.</p>
+<p>March is on.</p>
+<p>Pop-out terminal.</p>
+<p>So it is happening.</p>
+<p>Could be hanging in a really useless place.</p>
+<p>Okay.</p>
+<p>Code execution.</p>
+<p>In the agent laboratory test train split.</p>
+<p>Loading some data from HuggingFace.</p>
+<p>Lab number two is the index of that lab.</p>
+<p>So it's like...</p>
+<p>Where...</p>
+<p>I don't know where...</p>
+<p>This is happening in the doc cache.</p>
+<p>So where do different files get stored?</p>
+<p>Where does that get stored in databases, etc.?</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+
+<p>Okay.</p>
+<p>Looks like some kind of error.</p>
+<p>But what was very interesting to see is...</p>
+<p>This...</p>
+<p>So, hmm.</p>
+<p>This is a...</p>
+<p>I just wasn't sure what level of code this even was in terms of errors happening in certain tasks.</p>
+<p>Blurring with written scripts because the scripts for the tasks are in this repo which also has edit access to these tools and to cursor.</p>
+<p>So it's just...</p>
+<p>It's probably not the most crystallized high reliability setting but it has this sort of open-ended evolution element with the agent laboratory especially.</p>
+<p>Um...</p>
+<p>Okay.</p>
+<p>Open Manus.</p>
+<p>Common Cursor Pathology.</p>
+<p>Let's...</p>
+<p>Let's...</p>
+<p>Let's do something totally different.</p>
+<p>Use the open...</p>
+<p>Let's just start a new chat.</p>
+<p>Fix this.</p>
+<p>So that...</p>
+<p>Main.py works...</p>
+<p>Fully functionally as it should.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>RxInfer Drone Model is running.</p>
+<p>Postdocs....</p>
+
+<p>Just....</p>
+<p>Postdocs just being postdocs.</p>
+<p>2D.</p>
+<p>Okay.</p>
+<p>While that's running.</p>
+<p>Add more logging to the outputting so we better with emoji structuring.</p>
+<p>Understand and can report on the timing and resource of different stages.</p>
+<p>Okay.</p>
+<p>So, RxN4 at least is doing some logging here.</p>
+<p>Running the...</p>
+<p>DroneDynamics...</p>
+<p>Simulation.</p>
+<p>Break out the...</p>
+<p>Core Program...</p>
+<p>SPAC and Logic...</p>
+<p>Flow...</p>
+<p>From the...</p>
+<p>Statistical...</p>
+<p>Description...</p>
+<p>Of...</p>
+<p>The G...</p>
+<p>Model...</p>
+<p>Statements.</p>
+<p>Okay.</p>
+<p>Errors from Julia.</p>
+<p>Okay.</p>
+
+<p>Okay.</p>
+<p>Errors from Julia.</p>
+<p>Okay.</p>
+<p>Errors from Julia.</p>
+<p>So now with the errors from the logging from it.</p>
+<p>Fix this and add more there.</p>
+
+<p>Okay.</p>
+<p>Now main is working.</p>
+<p>Alright.</p>
+<p>So here's what the OpenManus functionality.</p>
+<p>Just running the main.</p>
+
+<p>Enter your prompt.</p>
+<p>Enter your prompt.</p>
+<p>I am in a...</p>
+<p>LiveShift.</p>
+<p>Now I'm going to click on the logging from it.</p>
+<p>Now I'm going to click on the logging from it.</p>
+<p>Fix this and add more there.</p>
+<p>OpenManus.</p>
+<p>Okay.</p>
+<p>Now main is working.</p>
+<p>Alright.</p>
+<p>So here's what the OpenManus functionality.</p>
+<p>Just running the main.</p>
+<p>Enter your prompt.</p>
+<p>Enter your prompt. I am in a live stream on multi-agent dynamics.</p>
+<p>Research and report on with five paragraph essays and code stories</p>
+<p>about what kinds of state-of-the-art methods it would make sense to</p>
+<p>comprehensively understand in April 2025.</p>
+<p>Oh, already.</p>
+<p>Let's see what time it is.</p>
+<p>Okay, let the open manis repair.</p>
+<p>Still writing</p>
+<p>PhD dialogue. Now it's into the storying of the</p>
+<p>paper.</p>
+<p>All right, back to the drone.</p>
+<p>Working on drone dynamics.</p>
+<p>So hopefully that even though I'll do about 10 or 15 more minutes,</p>
+<p>these are all right in the zone of just hit and miss right now.</p>
+<p>I'm just sort of, that's why I'm showing from a more reset state.</p>
+<p>But I think people can report back and obviously we will see what is really possible</p>
+<p>that we're going to do with making these systems a lot more higher liability in multiple</p>
+<p>flexible keyways</p>
+<p>so okay so yeah this is coming from open manis this is with the browser</p>
+<p>so let's pop this out yeah incredible</p>
+<p>okay it popped up this window with these analysis boxes</p>
+<p>brought here</p>
+<p>is going to be the terminal</p>
+<p>this is manis selecting these tools is it the uh you know is it the best possible way to look at</p>
+<p>this action selection or you know how to interact best with sites without so many degrees of freedom</p>
+<p>but that's a pretty cool outcome so let's let that browse and and and consider the watershed moment</p>
+<p>while agent laboratory is writing the thermal p omdp and now we have the improved logging</p>
+<p>rx infer drone form</p>
+<p>let's do another drone</p>
+<p>script same total functionality with fewer time steps</p>
+<p>well let's just let let let's reduce the number of time steps</p>
+<p>in</p>
+<p>our simulation</p>
+<p>okay</p>
+<p>add to chat</p>
+<p>add to chat</p>
+<p>and fix this</p>
+<p>so here's the step 11</p>
+<p>so that's what that was the chain of of tool use that was leading to that website the news website</p>
+<p>okay</p>
+<p>all right it has popped up</p>
+<p>family center dot meta dot com looks like possibly slash brazil in portuguese</p>
+<p>unexpected but okay</p>
+<p>okay grab the tension again with that paper continuing on in the open ai</p>
+<p>so</p>
+<p>variably successful</p>
+<p>um modification using llms of</p>
+<p>rx infer code</p>
+<p>so that's one one reason it's fun to do this script first off it allows a lot more articulation and</p>
+<p>separation between different parts of the code and better logging for for when things are not working</p>
+<p>it can break things too</p>
+<p>but that's the helper script so as long as they keep the main rx infer</p>
+<p>examples notebook functional or or similar reference models of code</p>
+<p>then it's a lot easier to regenerate functional scripts and start modifying from there</p>
+<p>yeah</p>
+<p>yeah i'm going to do about 10 minutes more</p>
+<p>so if anyone has any comments or questions they want to have mentioned in the last 10 minutes write them</p>
+<p>okay let's look at how tool use really</p>
+<p>output</p>
+<p>make sure</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>running just 2d quick. So let's see if this will successfully save an output.</p>
+<p>It was working a little more earlier on with the numbers in the outputs, so let's see if we can at</p>
+<p>least recover that. If not, save into... but once we have the scripts and the ability to to</p>
+<p>modularly break it out in pretty simple steps, then there can be different logging and saving.</p>
+<p>It can be okay, we'll now just deposit that vector into this matrix form and then just keep on working</p>
+<p>from there. So there's a lot of ways to use even just the state space clarity that making these</p>
+<p>probabilistic models can provide. That's kind of the systems modeling part that's always really</p>
+<p>interesting. So 15 steps deep, possibly just... what did we even ask for? What time is it?</p>
+<p>Overkill, right? But general.</p>
+<p>So Open Man is probably not even pretending to be otherwise than such. Seems like a little bit</p>
+<p>less of a functional version. It's... but it's a great direction to at least point in that direction.</p>
+<p>Agent Laboratory has the associated paper.</p>
+<p>Let's hope that it will finish in the last...</p>
+<p>Again, things are happening with Open Man is so it has that sort of tool architecture.</p>
+<p>Paper is still writing over there.</p>
+<p>16 out of 20 Open Man is.</p>
+<p>Drone Air.</p>
+<p>Yeah, and also it's helpful to have the notebook form available in the codebase.</p>
+<p>So then it can be referenced say, okay, this was working, especially early on.</p>
+<p>Yeah, I feel that this will not finish and render PDF, but the PDF</p>
+<p>that it did render previously was... keeps on going to this website.</p>
+<p>Let's see what one it opens next. The PDF was stymied probably one or two times,</p>
+<p>but then generally was rendering totally fine.</p>
+<p>So they've used a bunch of different methods.</p>
+<p>It's really cool work.</p>
+<p>Yeah, multi-agent, active block prints, where we've for a few years sort of with ebbs and flows,</p>
+<p>and talked a lot about these topics, about approaches for cognitive modeling,</p>
+<p>ways to take procedural approaches, ontologically driven approaches to modeling, connecting that with</p>
+<p>data integrity stuff like from block science with different and other requirements engineering,</p>
+<p>p3if, these kinds of modeling layers.</p>
+<p>Oh, it detected that the browser window is closed. Maybe that shouldn't be done next time.</p>
+<p>Let's see if it can fix the drone example in the next seven minutes.</p>
+<p>Let's see if anyone has any last comments. Go for it.</p>
+<p>Okay, I'll close that. Oh yeah, the drone core.</p>
+<p>Images and perplexity. Not sure why they kind of broke it out. It was nice when it was on that side tab.</p>
+<p>I gave a talk earlier today,</p>
+<p>I gave a talk earlier today.</p>
+<p>And this was a one of the themes was the two sides of this coin.</p>
+<p>Natural foraging systems and engineering forging systems and algorithms in this sort of bi-directional</p>
+<p>relation in this perspective swap systems as they are and the empirical data, the inspiration they provide.</p>
+<p>And then also these computer scientific, more engineered or more mathematical</p>
+<p>models of multi-agent settings and the ways that those are kind of coming together,</p>
+<p>giving all these different optionalities for modeling.</p>
+<p>Okay.</p>
+<p>See stunning sites only accessible by rail.</p>
+<p>Okay, drone at least has started up.</p>
+<p>This one always looks like it's halting but I think at these stages, maybe when it runs the paper solver,</p>
+<p>even just one time, this could be a lot faster probably with the parallelized labs and with not just this</p>
+<p>older laptop that I'm running this from.</p>
+<p>This seems like there's a lot of back-end</p>
+<p>possibilities and from the requirements installation. Like there are some packages.</p>
+<p>It's sort of like, oh, I wonder why they're doing that.</p>
+<p>And so it seems like there's some pretty</p>
+<p>advanced methods that are being used sequentially.</p>
+<p>And that was what I sort of broke it trying to get at.</p>
+<p>And that, and, and, but what I know will, will be part of it in, in the bigger picture is that kind of</p>
+<p>expressivity graphical user interface from no to low to very medium and high code, high touch</p>
+<p>ways of working with these informations.</p>
+<p>And these are all just sort of, again, haphazard archetypes.</p>
+<p>And, um, the, they will already in their own description of frictions and just looking at functions here</p>
+<p>as randomly assembled on a given afternoon.</p>
+<p>Um, and pointed to by these repos and peers and sort of adjacent from, from this sort of concept.</p>
+<p>There's just a lot of space to think about how, how to get this to all work.</p>
+<p>And whether this is the best agent orchestration framework or as several times,</p>
+<p>I've just built it from scratch with just a few prompts or whether using some other agent orchestration</p>
+<p>frameworks in any given moment, that's, that's a super important question.</p>
+<p>And I, I hope that we continue to develop down those lines and stay multiple there.</p>
+<p>Um, there's just sort of overlapping and complimentary functions that different modeling approaches can</p>
+<p>yield.</p>
+<p>And, uh, having the, the modeling capabilities connected with like requirements, engineering,</p>
+<p>pattern languages, those kinds of features so that there can be formal and natural language,</p>
+<p>um, effective descriptions of systems.</p>
+<p>So, connecting that to the compositionality of multi-agent LLM browser type,</p>
+<p>code writing and, uh, reviewing, improving the code, which at least the first time that I got it to work,</p>
+<p>it, it totally did do sequential code improvement and running.</p>
+<p>I don't know with what resourcing it was running the code or how it was getting to the outputs of the code,</p>
+<p>um, in terms of its workspace and all of that.</p>
+<p>But, but, but those are just the questions.</p>
+<p>Um, 20 steps or what, what's the right number of what compositions, okay, content empty.</p>
+<p>So, even though while the outputs are in many ways less impressive than just one perplexity,</p>
+<p>um, search might get you, it's about these functionalities</p>
+<p>and different compositionalities being more and more accessible, more multimodal, um, part of larger</p>
+<p>orchestration frameworks, more open to calling and receiving API calls and different information measures</p>
+<p>on the input and the output and the cognitive nature of different systems, um, that sort of low road, high road,</p>
+<p>um, whether it's as systems, uh, must be for a given observer, all these different ways that people talk about the different,</p>
+<p>um, relational modeling stance and pragmatism, how that's all connecting with just the ability to vibe code</p>
+<p>and, uh, make documentation tests, logging functions, a lot of different things that, okay, this, this finished.</p>
+<p>Did it even save a file? Maybe.</p>
+<p>But, it did do some browser opening, so, okay. Goodbye, open manis.</p>
+<p>So, now we have just in this last minute, see what happens, we have the, uh, agent lab,</p>
+<p>which does the, and, and, and prior did get some artifacts being built</p>
+<p>of just multi-agent coordination and the RxInfer giving some issues for the drone example, but was</p>
+<p>much easier to move over to the script form for the neural network and the recurrent, uh, switching</p>
+<p>linear dynamical systems model. So, thank you all. Hope that was interesting and or useful.</p>
+<p>Not as much baseball and so on as there could have been, but c'est la vie. So, thank you till next time. Bye.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

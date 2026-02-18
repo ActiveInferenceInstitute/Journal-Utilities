@@ -1,0 +1,3231 @@
+---
+title: "ActInf Livestream #025.1 ~ "The Computational Boundary of a Self""
+category: "Livestream"
+series: "Livestream_025"
+episode: "1"
+duration: "1:54:10"
+url: "https://www.youtube.com/watch?v=v0oJvbVuAF0"
+views: 163
+exported_at: "2026-02-18T22:37:37.945659+00:00"
+format: markdown
+---
+
+# ActInf Livestream #025.1 ~ "The Computational Boundary of a Self"
+
+hello everyone
+welcome to acton flab live stream number
+25.1
+today is july 6th 2021 and we're going
+to be talking about the paper
+the computational boundary of a self
+developmental bioelectricity
+drives multicellularity and scale-free
+cognition
+we are a participatory and online lab
+that is communicating
+learning and practicing applied active
+inference you can find us at the links
+here on this page
+this is a recorded and archived live
+stream so please provide us with
+feedback
+so that we can improve our work all
+backgrounds and perspectives
+are welcome here we will be following
+good video etiquette for
+live streams here at the short link you
+will see all of the live streams and
+different series that we've done leading
+up to this in the communications unit of
+the active inference lab
+and today we're going to be jumping into
+the first half of
+a discussion of the paper uh in july and
+on the 13th
+we will have 25.2 which is also on this
+paper and hopefully with
+the author joining today
+in act in flab live stream number 25.1
+we're going to be learning and
+discussing this paper
+uh so i will um pass it off i'm blue and
+i am an independent research consultant
+based out of new mexico and
+i will pass it to steven for a quick
+round of introductions
+thanks blue hi so this is stephen here
+i'm based in toronto
+um i'm doing a practice-based phd and uh
+i'm interested in how active inference
+can help unify
+lots of threads that have been very
+confusing to me over the last few years
+and if it's okay i'm gonna throw this
+over to dave
+douglas yes hi i'm in the philippines up
+in the mountains uh the rainy season has
+begun
+and we just survived the fourth of july
+so all is good
+thanks back to dan i guess thanks uh i'm
+daniel
+i'm in davis and yep looking forward to
+this
+point one discussion and also nice job
+with the broadcasting and facilitating
+blue
+thanks so we can just start off with
+just some questions about
+what you liked about the paper or what
+was something you remembered or
+something that you're curious about
+well i am embarrassed to say i didn't
+read it at
+all and i was you know i i started
+looking over it as oh my goodness
+we're going to talk about wilhelm reich
+we're going to talk about orgones and
+orgasms and cloud busters and
+and living flying saucers and i guess
+we're not going to get any of that so
+i don't know
+cool well the aims and claims of the
+paper um
+so here the paper the author says the
+aims were to define
+individuals themselves in a way that
+facilitates taxonomy comparison and
+communication
+with evolved created biological
+artificial and
+exobiological agents and he proposes a
+fundamental definition of an individual
+based on the ability to pursue
+goals at an appropriate level of scale
+and organization
+and suggests a formalism for defining
+and comparing the cognitive capacities
+of highly diverse types of agents
+what does anybody think about that
+yeah i i think that the multi-scale
+part of this is very very interesting
+very exciting because
+this is one of the big offerings that
+active influence has
+and it's been offered in a a lot of
+simulations in silico context but
+to have it actually described from a
+real biological
+kind of cellular perspective
+and is for me really really useful
+because i'm kind of looking partly at
+how the heuristics of all this are as
+much as the
+you know the mathematics of it so yeah i
+think that's really really interesting
+cool daniel i liked the part about
+taxonomy because that kind of speaks to
+this evolutionary
+worldview and it always seemed
+interesting to me
+studying collective behavior like in the
+ants that there were really precise ways
+of talking about comparing
+some physical properties in biosystems
+like
+how hard is the material or its density
+and then there was
+less of a way to talk about similarities
+in
+cognitive processes whether on an
+organism or
+how they interacted with their niche
+especially so
+just the idea that there could be a new
+sort of tool
+in the toolbox to help us compare
+different cognitive systems
+that might have hybrid aspects like
+computer and human or
+agent and niche those are kind of cool
+areas to explore so i think that's a
+big topic
+definitely like the other maybe um
+like comparison of like cognitive
+capacities
+isn't really related to cognition but
+it's integrated information theory right
+so
+you know when you can compare like the
+consciousness of
+a slime mold versus the consciousness of
+a human
+this kind of stands uh alongside of that
+in in terms of
+you know being able to to maybe not
+quantitatively yet but
+hopefully um you know people will
+run with this and be able to apply some
+quantitative methods to that
+uh cool so he the author
+also proposes a plausible naturalistic
+framework for the evolutionary
+scale-up of cognition from the earliest
+origins of life
+and hypothesizes about the forces that
+drove it and the major transitions along
+the continuum and the goal is to show
+how complex agency and goal directedness
+evolves naturally
+from ancient mechanisms
+uh so some questions how do multiple
+nested scales of individuality work
+uh that's super interesting to me let's
+see
+um daniel yeah
+well i wrote the question so maybe i'll
+ask or bring up why i thought it was
+interesting
+uh is there like a total value
+of cognition in the full full stack here
+the full cone
+and then there's going to be certain
+levels that are more relevant than
+others
+because they're a total amount of
+individuality
+or are there just certain ways
+that like the the cones for example
+don't overlap
+like there's certain spaces almost that
+are implied that are
+more than the sum of the parts and so
+how's
+how are we gonna even just first draw it
+out
+think about it
+actually one thing that comes to mind
+when you talk about the sum of the parts
+i think
+what i i'm interested by when he talks
+about a cell
+and then he talks about these groups of
+cells and how they are sort of joined
+and there's this kind of bioelectric
+dynamic that sort of helps them
+communicate i think that's a really
+um making a bit of a jump here but i
+think it's interesting
+to the difference between people
+communicating in a community
+context where there's this kind of
+resonance going on between people
+and what it's like when there's just
+separate entities
+sending messages to each other so to
+speak um
+there's something about this um ability
+to
+form some sort of bioelectric
+um dynamic which i think is
+in itself quite interesting as a
+heuristic
+yeah for sure daniel agreed we're gonna
+bring it go to bioelectricity soon
+because i think
+with um the author visiting next week
+it'll be good to
+get some of these notions that we're
+having about where
+bioelectricity plays a role like those
+are some of the
+big theoretical questions like what is
+individuality across
+levels is it informational is it
+evolutionary
+is it functional all these questions
+about like holism and reductionism more
+than the sum of the parts
+what is collective behavior what is
+emergence there's that whole
+body of thinking and then
+the piece that's tying it all together
+is the bioelectric
+and there's a few reasons why in the
+paper that
+is being proposed as important like the
+primacy or the primitiveness
+um and also just the um signaling
+dynamics and the
+what it appears to allow cells to be
+able to do we can explore that later
+so agree like how is bioelectricity
+supporting this broader story about
+multi-scale systems
+which doesn't just just by drawing it
+out this way doesn't imply
+bioelectricity
+so where is bioelectricity coming into
+the picture
+we'll keep thinking about that
+yeah absolutely i'll be we'll talk about
+that later i think and it's it's
+something that i don't think
+and correct me if i'm wrong other papers
+on active inference
+they have not tended to come at that
+aspect it's it's they've tended to come
+at it from a
+in silico kind of statistical
+state-based
+process so this this does give something
+that's a bit more um
+organic i suppose potentially so i think
+that
+there's maybe there's much more that can
+be drawn from that going forward so
+thanks
+yeah i think the um you know people have
+done
+more organic uh stuff but it's always
+like even related to bioelectricity but
+i think
+it's always related to neural
+bioelectricity as opposed to non-neural
+bioelectricity which is what kind of
+drives this paper forward and the you
+know of course there's a relationship
+between bioelectricity and the
+homeostatic drive
+which the author talks about as driving
+the major evolutionary transitions
+and you know probably much of what we do
+much of how organisms think and behave
+is driven by you know that that drive
+for uh homeostasis
+so uh more questions what do we
+learn or enable when we understand
+multi-scale individuality
+daniel maybe one way to
+frame what we could learn or enable here
+would be like in a read
+and write with respect to
+designing new kinds of multi-skill
+systems that's like the right
+and then to look around and discover the
+kinds of multi-scale systems that we're
+already interested in with like reading
+so it's kind of there's an interpretive
+ability when we can look across
+multi-skill systems but then also
+within a virtual machine or within some
+sort of
+physical system there's ways to just
+design systems that have certain kinds
+of relationships between the parts and
+the holes like
+a governance system where such and such
+a distribution
+of of uh influence exists or something
+like that
+stephen stephen
+one area that's been of interest and i
+think this can relate to
+is in an area called mental space
+psychology they've been looking at
+peripersonal
+neurons the mirror neurons as people
+talk about them as well
+and how they resonate and i think that
+um
+this that ability to get that dynamic
+relationship between people or with
+objects
+in our shared model and the ability for
+these
+to see that there's some sort of
+resonance in terms of how things relate
+to others in space
+that that seems to tie into what you
+were saying about the bioelectrics
+of um neurons tightenings
+have been sort of related to this and
+ties into that ability
+for maybe us to re or reconnect some of
+these
+um inference processes
+across distance you know because
+obviously the cells they're touching
+each other
+there's a plausible root but how do we
+maybe get some of these
+resonances between cells which are not
+touching each other
+or even organisms which are not touching
+each other or maybe they need to touch
+and that gets us into intimacy and stuff
+but
+yeah good point that like brings us so i
+just pulled up the slide
+um talking about gap junctions which
+these are like
+you know it's their little holes that
+enable
+you know those proximal cells to
+share information essentially um about
+their environment or
+their intracellular um
+like state of existence and that's a
+cool
+um way for you know that it facilitates
+the
+the informational spread um and
+we see that in the figure also let's see
+let's come to that figure
+um so this one yeah
+so that gives you like you know if if
+there was a boundary like a solid
+boundary
+or maybe even a lipid bilayer that
+wasn't didn't have a little hole in it
+connecting cells then there would just
+be the individual spatial
+perception that's shown here in figure
+three but
+because of the gap junctions um you know
+a cell
+communicates to all the proximal cells
+and
+this expands the spatial perception and
+the memory and the
+anticipation and so it's like this group
+integration here
+uh dave
+yeah going even farther into field
+effects
+um i heard a presentation by some
+students in china
+recently who were tracking down
+non-uh
+tracking down electrical effects in
+mammalian nervous systems that
+didn't that were not confined to
+local chemical and electrical effects so
+they didn't even need to use the pores
+they said this is not dominant
+but it's there and under certain
+circumstance it does become pretty
+important like in um
+long-term potentiation they're saying
+that's part of what's going on that you
+get these standing waves
+and they're then they're uh conjecturing
+that
+that part of the classic brain waves are
+literally are waves in the brain
+rather than a summation of these
+local uh synaptic jumps
+don't know daniel oh
+daniel yeah just one comment on
+what dave just said there about these
+kind of traveling
+fields that is really related to
+kristin and collaborators work with spm
+which was basically a toolkit for
+looking at dynamical systems
+and then integrating imaging based
+modalities for like neuroimaging and
+with the field-based measurements like
+eeg
+so kind of taking a certain anatomical
+shape into account
+when you are integrating these different
+projections or different
+modeling ways of kind of
+two different uh perspectives on the
+same underlying system so that's kind of
+an interesting
+link that you just
+made there yeah it's hard to under it
+it's hard to overestimate the importance
+of
+professor fristen's enormous amount of
+hands-on
+work with interpreting brain
+direct physical brain data and how
+important that is in just implicitly
+shaping how he
+uh approaches uh these system
+activities and system effects yeah i
+keep
+yeah i keep slapping myself wait a
+minute what does this guy spend the last
+40 years
+doing you know don't get stuck in the
+peculiarities of the
+mathematical descriptions he has a real
+reason for doing this stuff
+that way dania
+you go first stephen oh okay yeah sure
+well i suppose
+being a bit speculative here but with
+the brain waves in the way that we've
+got this bioelectrics on the cell
+i mean different scales of i think this
+is an open question but it certainly
+seems to have plausible
+roots to being thought about is how much
+of these
+brain waves or this electrical activity
+across
+regions of the brain analogous or in
+some way
+similar to the the descriptions at the
+cellular
+and multi-cellular level so i think
+that's a good point that
+dave brings up there
+thanks daniel yep great point
+stephen and that's one of the main
+i think arguments or the ways that the
+field or understanding of
+biology would sort of shift if
+bioelectric were given a
+larger role there'd be more of a
+continuum of
+chemical and electrical function between
+internal nervous systems and
+the epithelial cells which like we
+talked about in the dot zero
+are closely related through development
+and other cell types and seeing that as
+more of a unifying framework within an
+organism's
+cognition as well as in an evolutionary
+sense like all these
+different affordances that the
+bioelectric reconfiguration
+allows for which is some of the work
+that's cited in the paper and
+has continued since then is just
+empirical demonstrations that the
+bioelectric field can like lead to
+different morphologies
+and so then there's kind of a way to
+move on that phenotype landscape that
+doesn't
+involve like only the um sequence based
+remodeling of gene regulatory networks
+like transcription factor binding site
+evolution could still be important
+and also there could be certain points
+where the bioelectricity
+enables new uh things to new phenotypes
+to change as well
+yeah definitely and um maybe a little
+bit in this paper but
+a lot of mike's work is really great uh
+talking about
+um or or demonstrating you know the the
+role of
+bioelectricity in shape and you know
+when you think about like
+you there the form and the function are
+just coupled together
+so like the function of
+a cell and the shape of a cell and all
+that is is really
+um interesting and how bioelectricity
+is connected to the form and the
+um function uh stephen
+yeah and i think this also ties or
+certain gives reason to look at some
+other
+people who presented such as the work on
+um
+quantum contextuality that we had and
+that some of the information geometry
+work and there's the new paper on um
+bayesian mechanics and active inference
+this whole idea of
+the shape of information which
+i mean that is very cutting edge but i
+think they
+they don't seem incompatible let's put
+it like that
+i don't want to put my name to how
+they're compatible exactly but this
+certainly seems to be an awful lot of
+things here that would
+suggest their plausible connection
+definitely uh daniel oh
+daniel so one other aspect there's the
+extended spatial that's this horizontal
+representation where whether it's the
+bacteria that are aggregating in the
+biofilm
+or the development of the embryo
+or whatever extended spatial system
+maybe even like networks of computers or
+something
+like that that's extended spatial extent
+in the snapshot and then there's also
+this
+blue going down visualization here like
+with memory
+fading off into the past and then also
+the green
+like the anticipation so that's the
+current state
+anticipating out forward so just kind of
+using a uh visualization of kind of
+space going out and time as this
+axis that goes through the current
+moment that
+turns out to be something that
+visualizes the past present and future
+really nicely but then also like we saw
+with the light cones
+and probably other approaches it kind of
+sets up the
+integration of memory action in the
+moment and
+anticipation in a way that's almost like
+set up to be addressed
+with a commonality rather than a future
+oriented framework
+that has to bolt on this like memory
+module it doesn't really make sense
+but this is a more integrated way to
+think about the past present and future
+nice uh stephen yeah i like thanks
+daniel for bringing that up actually
+that's really helpful and and i one
+thing that i find curious as well is
+even though we're talking about cells
+we think about how that diagram puts the
+future up
+and the past down right as we think
+about could have done it the other way
+but that's naturally how we look up
+and the air you know to see things and
+things go down
+and a bit more in the earths and that's
+where our history is so
+even though it probably was not
+conscious that would have just felt like
+the right way to design the diagram you
+see how
+um you know the way we make our meaning
+is
+is embodied as well the way we make our
+diagrams is
+in ways embodied
+yeah nice definitely daniel so that
+steven that kind of uh whether
+something's pointing up or down
+it reminds me of in evolutionary biology
+where some subfields
+would have a tree that branched up so it
+looked like a tree
+other fields would show it branching
+down and then there was like apparently
+disciplinary
+like debates over which which rotation
+of the same information it quote really
+was is it a tree or is it you know
+something else but then that was related
+to a question that
+i just had about the visualization
+so it's cool that these panels were kind
+of
+maybe something we can ask about next
+week they seem to be made like in
+collaboration
+with an artist so that sounded like
+something kind of interesting
+to have in a scientific paper it helps
+it be more discussable
+sometimes but maybe there's a learning
+experience for
+the people involved and then also just
+like it's
+pretty easy to visualize the chemical
+part like we have these beautiful you
+know walking protein visualizations
+kind of like okay proteins kind of look
+like that and they bump into each other
+but then how will we visualize the role
+of the
+bioelectric greeting scott nice to have
+you
+how will we visualize that um
+in new ways maybe by integrating the
+future and the past into it or i don't
+know maybe there's some other way like
+the diamonds that we saw
+so yeah yeah i think that's that's to be
+a really good question to ask actually
+because um
+yeah i work quite a lot with in graphics
+studios where they do
+different types of diagrams for
+different things and i think
+there's a lot of stuff that conventions
+that are out there so they must have had
+to
+also bring in and sort of make it make
+sense in the scientific paradigm but i
+do like the way that
+they've they've used the term perception
+there and brought that in for a cell
+i think that's um again unusual but
+makes sense if we think of perception in
+a much more deflationary sense than how
+people traditionally think about
+perception and active inference as well
+as
+just some sort of way of knowing um so i
+really and again that also starts to
+bring in
+like cells when we think about
+what is the meaning that's not how a
+cell is
+cells could have a sense of knowing and
+there could be a hundred billion cells
+knowing which is pretty much what
+indigenous knowledge says
+about knowing so it's another it ties in
+with that regime of knowing which
+is often minimalized and excluded so i
+think this is quite
+quite useful nice and just kind of to
+talk about like different
+renditions of like the light cone i mean
+this is a question that i
+definitely have for the author uh here
+this is like not the traditional way
+that i'm used to seeing a light cone so
+this in this slide you can kind of see
+how it's more of like a conical shape
+as opposed to like a diamond um and like
+in space and time um and even like so
+this is up and down
+um but you know there's also this
+rendition that i've seen as well that's
+left and right
+so like from the from the state of right
+now to the
+future and so it's interesting to think
+about
+why is the space and time bigger
+in the present and going to a more
+narrow
+point in the future like for me that's
+kind of not
+how i'm used to conceptualizing um these
+diagrams so i think about the space
+of right now like i can't do anything
+other than what i'm doing right at this
+moment
+but you know potentially the the as time
+goes on my
+my state space gets bigger if that makes
+sense
+potential state space i i really like
+that as well because
+the thing is it's interesting that cone
+is a bit it's very popular in this
+strategic foresight field of looking at
+futures
+and strategic futures work but there is
+a slight
+like when it's done as a cone going into
+the future it's very
+visual it's like it's like using the
+analogy of a beam of light
+effectively again using one modality and
+it assumes it's kind of
+travels in a straight line and it
+projects and it's
+whereas when you start to get into this
+non-linear swarming
+type thing i mean in some ways it's you
+just see what rises up in the future you
+know i mean it's like
+what what structures emerge into the
+future um
+they don't project into the future in
+the way that a lot of strategic
+foresight so i think this does
+that question about how those two
+different models
+manifest and get used and how this other
+type of model actually while it's not as
+easy to intuit
+may actually be more more i don't know
+if we say accurate but
+yeah maybe more accurate is better way
+of saying it yeah i
+i actually um definitely agree because
+you know not to be morbid but we all are
+progressing
+to the same end right so
+and as we age our affordances are less
+and less like you know we may we might
+not be able to
+you know cognate as well or or we might
+be less mobile as we as we get older
+uh daniel sorry did i take the words out
+of your mouth
+um how about dave first and then i'll go
+okay dave
+yeah so is that becoming more focused
+into the future does that have anything
+to do
+with most of us becoming more and more
+subject matter experts rather than the
+other kind of
+expert
+daniel nice
+question dave so um the the sort of
+duality of the time cone and the time
+diamond
+it just it just suggests that there's
+certain things that we want to think
+about as being maximized in the present
+maybe and certain things that are being
+as if they're minimized in the presence
+so it's just two different and we'll
+figure out maybe
+in some ways there's some things that we
+know off into the future
+and there's other things that are
+maximally constrained in the present
+but then to connect that to the
+stephen's question about um
+strategy and um you know ask scott what
+he was
+uh interested in with uh you know
+joining us it made me think about the
+width of this cone
+going out into the future or the the
+length of the one that's more like a
+diamond
+it's kind of like the horizon which you
+need to consider
+for de-risking or for strategy and so
+that space
+just like the butterflies wings that
+space expands
+super rapidly now you might have a
+hypothesis about the space that only one
+region is likely to be
+um explored or that all of your strategy
+would
+would you know work across this whole
+space but it just sets up
+the discussion instead of like time
+points and
+bifurcating points it's like actually
+it's going out really vastly
+so there has to be some more adaptive
+way of realigning because
+the time cone is going to be too large
+to search through in the future
+even on a short time step so how could
+we enact a strategy in the current
+moment
+given what something what we are
+maximizing so that
+we could actually have an adaptive
+strategy moving forward
+nice dave and then stephen
+no i just hit the button wrong got it
+stephen
+yeah i saw scott's got his ice cream
+cones there so i'm gonna be curious to
+hear his his point but
+um tying with what we're saying is also
+we have this because swarming dynamics
+and non-linear dynamics basically
+aren't part of the most systems
+approaches
+really there's an assumption that it's a
+volume of information problem
+going from the present to the future and
+it's just finding ourselves in all of
+that
+but um and at times when we've got the
+like in modern world we've kind of
+thought the world is much more
+predictable than it is and maybe it was
+when it was in a very constrained
+system but now you know we can see that
+even in
+our own social systems the things can
+once they bifurcate that whole
+cone thing breaks down because it
+suddenly it's
+it just um so i think that there's
+there's
+there's something quite um useful here
+actually in rethinking and
+using this alternative or maybe
+something which is a
+other version of this um this this this
+version of this cone
+um which doesn't rely on ocular
+light visual because there's no eyes in
+a cell
+for instance they're not seen into the
+future right there
+that's only something that happens at a
+quite a aggregated organism
+so um this is this is actually probably
+has some other spin-offs that's quite
+useful
+scott this is a
+fascinating conversation so by the way
+this is a cone that i saw in new york
+that it was an ice cream cone it was
+very impressive it had nine scoops on it
+so that was that's the kind of light
+cone i like
+the um you know i was thinking back of
+that now the knowing
+that you were saying before blue and
+it's so interesting
+so what if we perceived a group as a
+bunch of cones
+a bunch of simultaneous cones and
+because if they have embodiments or
+shared meaning
+physically or mentally then their cones
+have a overlap or a similarity or
+shared space and but you can't really
+experience another
+party's cones or or can you indirectly
+um so that notion of knowing that really
+hooked me when i just
+came into the call that you have these
+cones going on at the same time these
+experiences
+that are through time and maybe
+when we read literature what we're doing
+is we're experiencing someone else's
+cone in the past
+in order to try to project it onto
+our experience in the future and then
+maybe you live by that rhetoric maybe
+the rhetoric actually becomes your
+future
+right so if your mind can have a certain
+state that gets acquired by contact with
+other states
+it makes a conformational change kind of
+like prionic
+governance we have a conformational
+change in a protein when it misfolds
+maybe have a conformational change in
+your cone
+state when it comes in contact with
+another cone that has a different
+folding
+so that the narrative maybe there's a
+narrative
+element to the contiguousness of the
+cones and because they have a temporal
+and a physical element to them but you
+can only experience them in the present
+then the rest of it is just projection
+either in the past or the future
+and so maybe that's maybe the cone is
+entirely rhetorical
+and maybe it's convincing yourself and
+others
+of the state that you have for
+existential continuity
+and the ways of knowing maybe goes to
+that in terms of multiple
+cone generators trying to get together
+and figure out if their little cones
+equal a big cone
+it's really just a fascinating way to
+visualize the space
+there's one other reference i want to
+make which is from the museum of
+jurassic technology
+in california culver city they have been
+displayed by a guy named uh theory by
+sono bend
+s-o-n-n-a-b-e-n-d and it's called
+theories uh theories of memory or
+theories of forgetting something like
+that
+and his whole thing was cones
+reseeding and approaching light cones
+and the way he divides up space and
+knowledge
+is by taking different arcs and sections
+of these cones is really kind of
+fascinating stuff
+so really nice scott i'm reminded a lot
+of
+um shanna dobson and like the way that
+she
+perceives time and like also
+in microscopy like you can take a
+projection of an image
+which is where like all of the stacks
+from the angles that you're using in the
+light cone come together
+and you can see it all at the same like
+point or it's like flattened out
+and it makes me think about visualizing
+time like that um
+daniel and then stephen so
+thanks scott i totally agree one of the
+big questions is about
+the intersections of time cones what
+kind of happens at that intersection do
+we think about them getting
+like folded up or having some new shape
+that arises
+and i think a way that we could have a
+simple
+hands-on intuition there is like with
+the two-dimensional game of life
+where there are certain shapes like
+gliders that kind of propagate on the
+landscape
+and then there's certain moving shapes
+that
+perfectly annihilate each other there's
+certain ones that leave only rubble
+there are certain ones that replicate
+but then there's other ones that you
+know pass through each other
+depending on some feature interaction of
+the shape in the
+game and then there's ones that uh
+do computation like there's of course
+great videos of the game of life being
+set up to do
+an emulation of a of a computer like the
+ones that we're on
+but slower um so
+that really maybe connects a few pieces
+this sort of
+um agent-based interaction through time
+we get our intuition in this grid zone
+like the game of life
+and then maybe some of those
+interactions are happening in
+the natural systems just like some game
+theory mechanisms that were in the
+matrix
+of mathematics sort of also play out in
+biological systems really nice daniel
+uh stephen yeah this this question of
+time
+also relates to when we say the now
+you know we know from even to say the
+participatory sense making that
+we're anticipating when something's
+going to happen often
+what we sense is is that there's a lag
+so in a way we're always
+a little bit behind what's just happened
+yet at the same time at certain times
+we're anticipating things
+before they happen and maybe before we
+realize we're doing the anticipating
+and then we've made the decision before
+we knew we made the decision and then
+we've done it so
+and which is where maybe reason partly
+why sports is so satisfying because
+we're
+we're making it have to be the baseball
+bat has to hit the ball
+and you're somehow bringing in that you
+know there's no you either hit it and it
+goes out there
+the baseball diamond or it doesn't but
+the same time
+when you made the the the cognitive
+process
+happened earlier the realization of what
+you actually hit it
+might be later than the now that you
+think you're in
+so there's this interesting window there
+of of what is now
+or can you even find the now um as i
+think shanna argued in
+in her math stream daniel
+so stephen with a sports example and
+that kind of relates us back to our uh
+the skilled
+performance discussions that we had
+previously so that reminds me of
+a bf skinner book beyond freedom and
+dignity
+where he's like if you imagine a
+situation where somebody is like
+unconscious or um they're forced to do
+something you don't give them that much
+agency or autonomy
+but then in the uh situations that look
+unprompted like somebody walking up on
+stage then playing like a
+violin performance which is still a
+mechanical performance
+we regard that highly and we
+shower that with the um sort of
+aura of agency so he was kind of
+questioning that from his own
+behaviorist perspective and it's just
+kind of cool to think about how
+active inference and multi-scale systems
+those same questions come up
+like there are cases where things seem
+really constrained as far as actions are
+concerned
+and then there's other times where
+behavior just seems like come out of
+nowhere
+from by like a bird song or something
+like that so
+having a framework for behavior that can
+connect
+the thoughts across those isolated
+occurrences
+is really promising
+nice and yeah we've talked about
+planning as inference and really
+the author brings up here um planning in
+relation to
+the homeostatic space right so so
+really this might be the first like like
+how planning came to be
+is like planning for some potential
+state that is not my ideal homeostatic
+space steven
+yeah both a good point yeah because if
+it's already my ideal homeostatic space
+why use all that energy valuable energy
+to try and predict it when it's already
+being done quite well and like
+daniel was saying there about skillful
+performance i mean
+once you get into this groove and
+someone's in the zone
+you know more and more of the processes
+have probably been taken care of by
+morphological computing which is
+basically the cellular processes and
+then when it's at these other temporal
+depths
+i i'm predicting and just getting right
+the emphasis on the third note
+before the crescendo or whatever it is
+you know it may be that in some ways
+when you're in the flow
+which is that term when people are kind
+of immersed in an experience
+you know are you in some ways less
+conscious of
+more rapid dynamics and
+uh if without getting into a debate
+about consciousness i think we've got
+enough on the table but
+um but just just that question about um
+yes
+it is it is encompassing many more areas
+of what we've talked about than that
+first
+had been apparent
+nice and this touches on memory also so
+i flipped over to that slide
+scott you know it's interesting that
+notion just a minute ago about being in
+an optimal
+or zone space um i heard somebody
+quote somebody a few years ago was
+talking about different personalities
+where some people
+like the social equivalent of classical
+music and some people like the social
+equivalent of jazz
+and so the people like the social
+equivalent of classical music want to
+hang out with the same people
+all the time and then oh bill how's
+bill's drinking problem going oh how's
+mary's
+you know uh kids doing you know it's the
+same story just incremental changes
+kind of like if you hear beethoven's
+fifth and it's like
+you're like whoa that's slightly off
+because your expectation is different
+whereas jazz you don't know what it's
+gonna be
+boop just all different things right so
+it's kind of interesting what your
+expectations are and what that
+optimization
+is jazz is a different kind of
+optimization right
+and so it made me think about the
+anterior
+cingulate nucleus my understanding is
+that's the part of the brain that if
+you're
+eating at a ripe berry bush and enjoying
+ripe
+berries the anterior cingulate nucleus
+if it fires off
+will make you think huh i wonder if
+there's a riper berry
+on the next bush and so it's the and and
+i
+i call it the commitment area where men
+can't commit to a relationship i believe
+it's probably the anterior cingulate
+nucleus they're looking for a riper
+berry so to speak
+so so that i wonder
+if there's an interesting rand i'll use
+a notion of random number generation
+here but
+it's probably not that but if there's a
+randomness factor that is
+in your optimum so is your state when
+it's optimized
+what is there something in the model
+itself that can throw randomness in
+there besides the externality
+so that and then you become like a
+novelty seeking person who has a highly
+active anterior cingulate nucleus
+is that an optimization which is
+superior for instance if you have a
+changing highly
+rapidly changing environment things like
+that just a couple of thoughts on
+optimization and what the zone might
+look like in different settings for
+different
+embodiments yeah that reminds me like
+i mean it's like a life plan or like an
+organismal life plan like some
+organisms like have to be in their niche
+environment like you can never
+take them out but then like some
+organisms like prepare for maximum
+randomness like i think about a
+tardigrade
+you know like you can do anything to
+them like you can dehydrate them and
+send them to the moon and
+have them come back and all these things
+but but they are they're
+you know built they're well suited for
+maximum randomness
+daniel i liked scott's
+point there about the genre of
+optimization um
+i'm i'm personally always surprised
+listening to both jazz and
+classical it's just that it's a
+different genre and so
+a musician in either or both of those
+areas though would have like a deep
+enough generative model
+to know when one thing was off by even a
+tiny bit even in a song that might sound
+like
+um discordant to somebody from
+because the improvisation tradition of
+one genre like might be
+more uh i don't know non-linear in some
+way
+but definitely this idea of like having
+interpretable
+or experienceable ways of interacting
+with
+different optimization processes
+different distributed processes
+are there more jazz like or more
+classical like
+uh collective behaviors and then also
+this broader
+question that is returned to centrally
+which is like that cognition
+is related to individuality that's
+really uh relevant for talking about
+where is cognition offloaded or how does
+cognition offload into the environment
+through development like through
+modification of the niche
+and then also through evolution where
+also the niche can be modified in the
+long term but
+evolution can select for like
+canalization so stabilization
+of things that were accessed plastically
+in one generation
+nice stephen and then scott
+yeah i mean falling in on what you're
+saying about the environment and and the
+jazz and classical um
+i used to live in prague for for a year
+or so and and what was interesting there
+so you've got a lot of classical music
+venues and operas and you've got
+lots of jazz as well but they're very
+different spaces as well right you've
+got the basement
+jazz bar in some cellar and you've got
+so there's a question as well about
+yeah once when you start going to one or
+the other you probably will keep going
+to one or the other for a while
+if that makes sense you sort of even
+though so beyond the music once you yeah
+there is a kind of um
+a dynamic because those those two are
+fairly clear it's
+relatively extremes i suppose even
+though they're both what you would call
+high art
+um in some ways as well so you've got
+that interesting
+thing about how you bring in the
+environment and that's one thing active
+inference does which
+many forms of psychology and that don't
+is how much is it about
+changing your generative model and how
+or how much is it about another model
+about
+choosing your environment and letting
+the environment do a lot of the
+uh motivating for you um so that's
+interesting i was just also on a call
+um about metaphors and andrew austin who
+does that work he talks about
+if you want to motivate yourself it's
+actually easier to change your
+environment
+it's an externality that can be helpful
+if you want to
+change your choice making that can be
+internal so like don't try and choose
+get others to make better choices
+make better choices yourself you might
+not be able to motivate yourself maybe
+find things out there that help motivate
+you
+so in the same way that you know maybe
+that's good if i want to get a more
+ordered kind of structured view of the
+world for a while maybe i'll start going
+to some classical concerts for a while
+if i want to release and start sort of
+being more free-flowing maybe i'll go
+and watch some jazz
+um so anyway kind of interesting
+thanks scott i love all of you i gotta
+say
+this is i mean it's been a few weeks
+since i've been able to be
+on the calls just for different reasons
+and this is
+beautiful it's such a beautiful thing
+okay so
+so i was just showing you my tardigrade
+banjo ukulele which is what i was
+holding up to the screen so that's a
+target painted
+a couple of things so you know it's
+interesting love the last couple of
+comments and that notion of
+um access to other
+right and that kind of recreational and
+de-risking access to the other right you
+want to know the externality
+because you want to render it innocuous
+for survival purposes
+and then render it delicious for
+aesthetic purposes
+right and so a couple of books this is
+the the past is a foreign country
+by lowenthal which is kind of like okay
+temporally
+the assertion in the book is the past
+actually isn't a foreign country they're
+the same
+it's us right and so the same thing
+temporally
+oh they're so different oh that's other
+right oh we've come beyond this
+but that's our own aspiration then
+another book
+introduction to comparative study of
+private law comparative law you got
+in law and language i my assertion that
+the mind exists in language and the
+brain is just an antenna tuned to it
+well law is a formalization of language
+and understanding so you have again
+comparative study there's another book i
+have i couldn't put my hands on
+it's the cambridge handbook of
+adaptation studies in theater
+and the articles on how do you adapt
+german theater for a greek
+audience or whatever right so all these
+things
+there's a exotic element to it
+right and which is both threatening and
+reaffirming and delicious
+and scary right and so
+these isn't it interesting that those
+states
+are we other than novelty
+perceiving either by resistance or
+seeking is is that the essence of
+consciousness and so if you had the
+equivalent of isothermy
+where you had it in isotherm you have
+temperature equivalence in two systems
+and you can't perform work because
+there's no temperature differential heat
+differentials
+well what if we had no meaning
+differential
+between two systems is that describable
+vis-a-vis that variable as one system
+and is that something that starts to get
+to you sociality
+or shared narrative and is that why
+that becomes so existential because the
+reinforcements of that becomes
+the amplifying wave essentially the
+amplifying embodiment
+becomes so powerful that it overtakes
+the system the system has no other
+internal state that's as reinforced and
+as amplified
+so therefore that one becomes
+overwhelming and maybe that's a source
+of why it's hard to crack misinformation
+by feeding fact or something like that
+anyway just a couple of random thoughts
+there
+really nice scott i um took the tony
+robbins
+test one time like what's your driving
+force in life and i'm totally driven by
+instability which makes me like a a
+desperate novelty
+seeking person um and i'm also reminded
+in your points about language i've been
+thinking a lot about language
+because of some projects i'm involved in
+and uh i was listening to
+josh tanenbaum speak yesterday about
+his um like uh program that he developed
+it's like a
+neural network neural network like a
+sleep wake helmholtz machine
+that actually like composes language i
+mean it doesn't
+it does some like phone numbers and it
+but it writes code like computer
+programs
+um and you know it draws symbols and it
+does these cool like things
+based on a framework that's um you know
+kind of analogous to
+active inference where the exploration
+phase
+happens in the sleep phase of the
+machine so
+exploration is like this recombination
+of all of the potential
+like factors right so like in the
+training phase it's it's trained on you
+know constructs the generative model
+or it constructs the recognition model
+based on all of the training input like
+if it's drawings it's going to be all of
+like
+you know potential shapes and then it
+recombines these
+while it thinks about recombining them
+to kind of become
+a field expert it was really an
+interesting paper
+uh sorry to detour there daniel
+you you go for it scott and then i'll
+give a thought
+uh thanks yeah just that's fantastic and
+it makes me think one of the things i've
+been fussing with for a while
+and you probably heard me say it is that
+the mind does not exist
+in the brain it exists in language and
+culture and the brain is tuned to the
+mind and the example i give is my
+niece who was adopted from china at five
+months old
+now has graduated from cornell she's
+looks like a chinese person she doesn't
+speak chinese she doesn't like chinese
+food she doesn't like chinese music
+she speaks spanish and english and she's
+a central pennsylvania gal
+right so her mind was not there's no
+feral consciousness
+and her mind was developed in central
+pennsylvania
+so what it makes me think what you were
+just saying is so interesting
+so maybe the mind where maybe our models
+are just so
+so much hubris there and we think the
+mind precedes communication
+and maybe it just doesn't maybe it is no
+mind affordance
+other than communication and language so
+like plato when he said
+the reason that authors were the
+challenge is you couldn't query the
+consciousness of the author
+maybe it was an even a deeper comment
+about mind that the the queering of
+consciousness
+is mind itself and so maybe active
+inference
+is the function of mind it's not a mind
+seeking to
+to refine its state more but it is the
+fact of mind
+is the the act of active inference
+it just feels that was that was a shift
+that i hadn't thought about before
+and it gets away from centralizing mind
+in
+individual brains that then come in
+contact to try to fix up their models
+and rather putting situating mind in the
+edge itself not the node from a graph
+theory perspective
+that's fascinating stuff uh
+daniel and then dave
+yep to kind of bring it to active
+inference but really just any kind of
+dynamical modeling we shouldn't let this
+like snapshot
+govern the way that the system works
+because systems change through time
+so they're not just the snapshot picture
+maybe the prevalence of photography
+makes it easier sometimes to
+imagine this sort of snap shotting and
+yes
+active inference is hopefully providing
+a way to just
+think about it again whether
+instrumentally or more
+in this sort of like philosophical or
+metaphysical
+way which everyone is welcome
+to do but the actual uh core
+is just going to be leading to many
+questions for a long time
+dave one of the yeah one of the uh
+environments that is extraordinarily
+powerful
+at putting people in altered states of
+consciousness
+and especially distorting their time
+sense is a device an enter an
+entertainment device which was also
+a psychological research device called
+music color
+stephen may have seen references to that
+this was developed in the 1950s and
+was in some shows and clubs in london in
+the late 50s and early 60s
+um it's been mentioned a few times
+um andrew pickering mentions that a few
+other people in passing
+um and there was an exhibit that that
+was
+uh developed by the same engineer
+that tried to play in paris but got
+coveted out
+if none of you have seen that i should i
+have most of the material that's ever
+been captured as far as i can tell
+because it was
+a series of talks a series of literally
+chats
+uh um in the 1980s so i better gather
+that up
+and um it's all it's all in a single
+series on youtube that i have in a
+playlist
+so let's do that yeah the the guy would
+literally his musicians would believe
+that five minutes had passed when it was
+actually eight hours they had been
+playing solos
+for 10 hours at night risking a rest for
+trespass
+when they thought oh no no the guard you
+know everybody's still here i've only
+been here 10 minutes buying my flute
+and people would get so spaced out they
+would
+drive their cars into the middle of
+roundabouts
+up on and bang into the posts because it
+just didn't occur to them not to do that
+or they'd they'd look into the the u
+tracks and watch the train come to them
+and
+if people hadn't grabbed them and pulled
+them off what were you doing
+what do you mean i was i was looking at
+the lights
+and no drugs and they had fun
+and the bystanders had no idea this was
+happening because the
+oh these guys are just playing jazz but
+no they were
+on cloud9 that's cool it reminds me of a
+virtual reality daniel
+so it's interesting that with
+frameworks for communication like active
+inference we can think about
+syntactic repetition like repeating the
+same word
+semantic repetition and novelty like
+somebody saying the same thing
+differently
+but also narrative novelty and uh
+similarity
+or at least consistency coherency and so
+the other piece from what scott had said
+earlier was
+going back to some of our earliest
+streams on
+narrative and communication as active
+inference
+there's a ton of ways to think about
+that like
+is narrative like a summary statistic
+of the agent-based generative models
+like you got 25 at this parameter and
+75 at this parameter and then narrative
+is just like a descriptive state
+but what happens when narratives or
+various representations of them
+can actually through mechanisms feedback
+onto sensory and therefore internal
+states
+so how do we think about narrative and
+active inference
+and narrative and communication as like
+higher order
+semantic structures that help reduce
+uncertainty
+allow for efficient information transfer
+all the imperatives of
+cell to cell communication bioelectric
+but it's happening on a spatial and a
+temporal scale
+that demands auditory transmission but
+of course can also be done electrically
+really nice scott
+this is i'm my again my face hurts from
+smiling
+so i so i had this book a rhetorical
+style
+it's called and it has dozens of
+rhetorical
+flourishes like the use of french
+suggests
+style and the use of german in words
+suggests
+engineering excellence and then there's
+different placements
+i mean it's just all these different
+ways to construct the sentence all these
+differences
+and it's so fascinating that notion that
+is that what what's the cellular
+equivalent of rhetoric
+right is that when a cell wants to
+persuade let's say there's a growing tip
+of a mesenchyme tissue or some whatever
+in a plant or
+a human whatever and it's then and
+there's a decision to be made based on a
+turing wave that's coming in and what
+finger orientation you have right and
+the
+turing wave responsible for finger
+growth there's a periodicity to the
+starting and stopping of the chemicals
+and that's why you have multiple fingers
+so what what's the
+notion of persuasion
+in non-human speech so a peacock's
+feathers are persuading the female
+of its fitness because the coloration
+one assertion is with coloration if it's
+a healthy looking color
+or the dance is healthily performed it
+suggests a healthy individual and that's
+persuasion for mating
+let's say i'm just asserting possible
+rhetoric
+and is all communication
+rhetorical in that it's made to persuade
+and the persuasion is not necessarily in
+the
+it may be in the self-interest of both
+the speaker
+and the externality right because
+i'm talking about situations where
+you're running an internal model
+and you're trying to recruit other
+internal models which are your
+externality but for other people are
+there into or other things are there
+internal models right
+and so if you want to get some
+externality that's an
+organism to do something consistent with
+your model you need to
+er entrain them harmonically couple with
+them
+so is rhetoric what's the equivalent of
+rhetoric in
+other non-i guess non-language systems i
+use the word language
+in non-human language systems
+really nice um and i'm reminded of uh
+well it made me think of how does the
+narrative play across
+scales really like from the cellular to
+the organ level to the organism all
+stephen yeah i think that
+also bringing that into what daniel was
+saying was structure
+and narrative so there's um and actually
+that i just looking that up that color
+you know the color and how that wheel
+relates to sound
+music um so you've got these questions
+of when do structures start to be
+present
+that gives something else another type
+of geometry and where is that
+present so it could literally be um
+there could be a type of geometric space
+in the way the neurons have arranged
+themselves and that
+could be a certain level at which
+they're getting fed in
+embodied information about light sources
+so it will only really happen when
+you've got an
+eye that's measuring light data that
+then
+starts to structure itself in that form
+and that could then underneath so and
+that could also apply to
+there may be a sort of a quality to the
+way sound is
+based on it being a whole level of you
+know hertz
+or half levels of hurts and half tones
+so there's something around i think
+there's an interesting
+point around when we have structure
+and we then this rhetorical piece may
+happen once we can
+oh crikey yeah so you got that as well
+the hell so you've got you've got you've
+got then you've got systems that we can
+see now the question with rhetorical
+stuff is
+is rhetorical stuff the stuff that we
+can see as a system
+that you can then argue your point you
+know some sort of way this and i suppose
+at another level the cells could come to
+a point where they could
+argue a case with each other and so
+there's some system in place that sits
+on that structure
+but the thing that always is in the
+background which is
+again what i was saying earlier most
+people doing systems
+don't think about when they talk about
+emergence
+they is is there some sort of swarming
+dynamics happening
+now whether this bioelectric stuff
+sits and adds a new layer i mean i
+noticed on one of the slides there it
+talked about kind of like a new layer
+of um uh like does this add a new layer
+to um to to this dynamic and i'm
+i'm curious about whether that your
+thoughts on that
+in in the sense of um
+you know do you do you see this as being
+an a new
+layer that's been added or is this
+somehow
+something which builds a bridge to the
+way the structures could
+emerge at the swarming um
+is it because it talks about memory i
+know yet the slide that talks about
+memory i can't quite find which one it
+is now but
+one of the slides talks about memory is
+that
+significant in allowing the structuring
+to happen
+you know is it something about forming
+that memory in that structure
+or does the structure need to be there
+first i'm sort of putting that out to us
+and i don't know whether that's
+something we could ask michael but
+and maybe just refine that thought but
+it seems to be
+something which is a question that
+relates to how this all fits together
+nice dave
+yeah for scott um if you want to see
+how rhetoric is founded
+in the basic emotions and also get an
+evolutionary
+biological evolutionary perspective on
+that read the chapter on
+play in yak poncep's
+affective neuroscience
+and once you've gotten through that look
+at the later piaget's later work
+on the role of play when he really got
+very subtle about the socialization and
+how
+how kids uh use play to
+become very expert in the in the ideal
+case
+in role taking and the creation of
+uh uh social uh relations and
+being able to play without anybody's
+feelings getting hurt and so on
+yeah the the concept of play i think is
+really important
+um in the space of active inference
+because it really
+kind of represents that that exploratory
+component
+scott
+i'll give a thought while he stepped
+away it was related to his
+point about persuasion so if anything
+it's not going to be a binary it's going
+to be first off instrumental it's about
+how it's being modeled we're not looking
+for something that we're going to see
+under a microscope or it
+wouldn't even matter if we could we're
+talking about categorization
+so that we can reduce our uncertainty
+about action
+so the models that we set up could be a
+binary state model or not
+and that wouldn't be a metaphysical
+claim but just thinking about it as
+far as biological systems are concerned
+and taking it to that sort of like
+cellular
+level like what if one molecule is
+secreted
+that sensitizes the cell to a second
+molecule
+you know is that type of sequencing
+would that be considered a minimal
+viable rhetoric or intracellular
+narrative
+and uh just made me think about how
+there's sort of different types of
+interactions
+and that they convey different
+information something that
+my advisor professor gordon really
+explored a lot in the ant colony
+case how different types of interactions
+just
+update how likely an individual is to do
+different kinds of actions
+and that's seen across systems so
+sometimes that's just a simple enough
+statement like there's symbols that we
+see you know
+one or fifty or a thousand times a day
+and then there's things that are more
+explicitly
+narrated more rarely so then in the case
+of the human culture human narratives
+it just opens up the design space
+because there's multiple kinds of
+interactions
+nice scott did you want to give a
+thought yeah a couple of things that is
+really nice daniel that's like kind of
+the notion
+in introducing something like discretion
+in a sense
+so if a system is
+running a let's let's call it active
+inference
+that running that model are they
+are they bringing their model to bear on
+the environment
+because it embodies the information
+of their past genetically and
+epigenetically and behaviorally
+so a three-legged dog is it running with
+three legs just because now it has three
+legs and that's it that's the affordance
+or or is there discretion
+in the active part of active inference
+that may be an interesting dividing
+point
+in terms of rhetoric is rhetoric can
+rhetoric be a persuasion
+brought by and thing that's intrinsic so
+a tiger jumps in front of me on a path
+and i'm walking
+the tiger is ferocious because it's an
+apex predator
+and has big teeth and i'm not is the
+tiger
+exercising discretion on being ferocious
+or is it just
+intrinsically ferocious to me
+right so is so that's that to me that
+feels like there may be something there
+on rhetoric
+if there's a choice maybe that the
+organism has
+or choices not maybe maybe the
+organism's not a single
+individual maybe it's a hive so
+that's one thing then that gets to that
+quorum sensing
+which is really rhetorical argument
+seems like it's because there there's a
+choice shall we
+swarm or not now when it's locusts and
+it's a pheromone for gregariousness
+right that's what switches the pheromone
+switches on and off when they're in
+close contact
+so question is is that a discretionary
+thing when there's a pheromone
+impact you know again it doesn't have to
+be in either or it's just that maybe
+there's gradations of discretion that
+are exercised
+in different ways and so the other then
+it gets to me
+to get to synesthesia so
+if i could sense something um i could
+make a decision but
+instead i'm fed a pheromone that makes
+me fee
+make a decision without my conscious
+awareness
+is that still rhetoric and is that a
+quorum if it's a non-conscious
+quorum maybe it's a different state when
+it's non-conscious
+and also when you have internal
+synesthesia one of the things that's
+fascinating to me i once heard that
+the assertion that people with perfect
+pitch might be synesthetes
+because they're perceiving sound as
+color for instance and they can discern
+colors more readily in their mental
+capacity
+so therefore they can discern the notes
+better than people who can't discern
+notes as color
+so again all those things feel like they
+work together
+in terms of is the consciousness that's
+held is the mind
+held in the individual brain of an
+individual organism
+and or in the communications among the
+organisms
+and so maybe that takes the rhetoric
+question and renders it
+a nullity because maybe it's degrees
+of quorum that resemble discretion
+and maybe the internal acts of
+discretion are merely
+priors that were learned from an
+externality anyway anyway a few thoughts
+yeah i'm really reminded scott and this
+is going to turn you
+up a lot this is going to turn up your
+volume a lot
+the uh so i just learned about the work
+of um
+asifa majeed i'm not sure if i'm saying
+her name right but
+she does this amazing work on language
+how language shapes thought and how she
+thought
+shapes language um and she looks at at
+like in cultures they have you know
+there's was one i think it's the jahi
+culture they have like
+17 different kinds of smells that they
+like smell and it's like you know one of
+them is like
+i mean we don't have words for smell we
+just have it smells like a rose or it
+smells like meat or
+whatever so she you know but they have
+actual in their vernacular
+they have different words for different
+smells and and
+like in english we have you know a
+gazillion words for color but like in
+some cultures the color
+blue and green are the same so so uh
+and you know it's the words for like one
+that was super amazing like we have all
+this word for like fingertip fingernail
+uh finger hand forearm bicep like
+a shoulder i mean all of this in some
+cultures is one word
+your entire arm every part of it like so
+you don't discern
+that there's no difference between your
+thumb and your shoulder like that's wild
+to me right
+and so how does that that shape the way
+that we think about it uh sorry if i'm
+rambling daniel
+no fun points so as far as how
+connectivity of communications related
+to rhetorical
+outcomes rhetorical ecosystems i think
+there
+an analogy to look for would be in the
+connectivity of brain regions and
+of course in the spm toolkit and the
+dynamic causal modeling that we
+referenced a bit earlier because there's
+brain regions that are
+anatomically connected so whether
+they're next-door cells or whether
+there's a long-range connection
+and then there's also like functional
+and effective connectivity which are
+different ways of looking at the
+signal of dynamical data and then
+drawing edges
+in a network where the nodes are the
+regions and then the edges reflect like
+a dynamical correlation or
+grainger causation which does of course
+bring it into this whole
+dynamic causal modeling the whole
+question about multi-level
+cause cause across different uh
+parts of a system that aren't directly
+touching is it just our physicalism and
+our assumptions of materialism
+that like require something to be
+touching to have a direct influence
+is it just some sort of anti-you know
+non-locality
+type stance that's very deep prior is
+that something that when relaxed
+provides useful solutions or just ones
+that are
+a bit less susceptible to one argument
+but totally susceptible to other
+arguments
+nice questions very nice uh
+stephen and then dave
+yeah this idea like you the the question
+about structure and the relationship
+between
+how things can relate or touch i think
+it makes uh
+the way that we bring in date our
+sensorial information
+and these cones in a way with a cell you
+kind of
+each cell presumably can have this
+perception that can extend
+we have these multiple threads of
+perception that come in you know we've
+got the visual perception we've got the
+auditory perception we've got
+and then how do we structure our
+narratives
+well if we have a culture which
+structures the ability to
+smell think about smell in that sort of
+refined way compared to
+us who maybe gets very involved in the
+musculature and the nail and the
+you know the amount of time people spend
+now on their nails you know
+in in in our culture so that will change
+the structure of the narratives that
+you're going to tell each other
+and um that would be interesting and i
+actually just did a laban
+laban dance sort of workshop recently
+and they have
+they did the verticalities one of them
+like you've got the base which is the uh
+the feet and the floor you've got the
+bowl of the pelvis that you can sort of
+rock on you've got the diaphragm
+you've got the base of the mouth and
+you've got the top of the head as if
+they're almost different
+ways of grounding your ways of being
+right and as you go up and down i think
+that again
+speaks to that structuring how much
+would that change the structure of
+the narrative and that would change the
+structure of the memory
+and how does that structure of memory
+play into the structure and memory in
+this
+paper you know could be interesting
+nice dave
+yeah the uh different ways of
+structuring language are
+quite striking to me my um tagalog is
+just dramatically different
+in the way it expresses ideas from the
+european languages
+there's no gender for instance um
+there are three cases nominative
+genitive and
+ablative and almost everything is
+expressed in
+all circumstances expects expressed in
+the ablative
+so where
+when for what purpose by means of what
+for whose benefit that's all just
+expressed by putting
+however many of those causes there are
+into the ablative and if you need to be
+specific
+you throw particles in but they're
+always optional
+so uh if you challenge somebody well how
+do you know whether you're
+you know how what something means in
+in a sentence so well isn't it obvious
+if i talk about
+monday that when you translate it to
+english you'd say
+on and when we're saying when i'm saying
+at new york of course you would
+translate that to
+in and uh
+for well of course you translate it
+forth but when our before our son had
+been in the u.s for a long time he was
+constantly using this at
+for everything at three o'clock at
+manhattan
+at um pittsburgh
+at my girlfriend anything
+other than who's doing the action but
+who's doing the action isn't
+expressed in a straightforward way
+either so it's it's
+it's pretty wacky
+cool nice thoughts yeah
+sorry pretty wacky is what anybody with
+a highly precise language like russian
+or chinese would say you know when they
+hear somebody speaking even careful
+english this is wait a minute you had a
+not in your sense what is it exactly
+that you're negating
+there's no way to tell what an english
+speaker means once he's put not into a
+sense or in russian
+it's so strict and so specific same
+thing
+you know how do you know in english well
+you just figure it out
+what don't you just say what you mean no
+we don't
+let you figure that out definitely some
+ambiguity there i wonder like in cell to
+cell communication
+um if there's ambiguity like in in the
+bioelectric
+signal um like what which way does
+should a cell grow or go
+like touching back onto the the language
+of this multi-scale cognition
+daniel so i think to connect this uh
+language discussion to the um like
+the goal and the whole sensing point of
+the paper
+these different ways in which human
+languages
+are communicating state updates about
+the world
+people are able to live living people
+use all these languages
+so that says a lot it means they're able
+to be uptaken
+and transmitted by our cognitive
+apparatus
+and then also they're able to persist in
+a niche
+it doesn't mean that every language is
+going to be as successful in
+any niche but there is a place where
+it's successful so just like
+ants it's like that algorithms working
+there
+might be working somewhere else but it
+might not be
+so then we can look at this amazing
+diversity of language and communication
+structures including ones that don't
+even
+only use audio or ones that use audio
+dimensions that we're not
+you know using certain sounds or
+something but then also the syntactic
+and then like what is the invariance
+what is actually being communicated
+that's the structure of what is is being
+shared
+between agents that are like one another
+in certain dimensions
+and they're sharing state updates so
+that
+they can make it happen in their niche
+so it's like there's the total
+the diversity is because there's enough
+invariance for us to recognize it as
+part of the same category
+and then there's important things to
+look at in what it is that's
+in common
+yeah definitely um it's definitely like
+interesting to think about how
+the the communication shapes
+the structure shapes the all of that the
+structure of society and the structure
+of a human body
+uh scott
+you know it's so you guys are this is so
+fantastic i
+this is like everything
+comes together in these conversations so
+i was
+i was thinking what is this reminding me
+of i just read an article and i was like
+is it this does it remind me of this
+article which is about
+universal chemical synthesis computing
+no
+was it about this highly multiplex
+spatial mapping
+of microbial communities sort of but no
+what this reminds me of is this space
+time from bits
+this guy i just read this article it's
+about quantum gravity
+and what he asserts is gravity is what
+we perceive
+as it's actually entanglement of bits of
+information
+and so if you take out the entanglement
+you have no space time
+and what i'm thinking is the
+entanglements we just described
+that's everything we call it mind we
+call it society we call it eusociality
+we call it space-time
+it's edges and we're characterizing
+these edges
+and our affordances are so constrained
+that we try to describe it but we're
+describing it
+it's the shadows in the cave right we're
+seeing in
+just indirectly what's actually out
+there and one of the things that's
+enriching about this active inference
+notion
+is it provides us with a framing that's
+sufficiently
+generic but also sufficiently robust
+that it explains things in the stack and
+the time stack and the space stack
+it's kind of like wow this may be how
+things interact
+maybe things are entangled and
+we use the word internal model and
+external reality
+but maybe the nature of rhetoric and
+maybe the nature of entanglement
+is the seeking of connection
+by neg entropy systems so i you know
+my life definition is um that
+living systems are auto catalytic and
+entropy secreting
+my son said i just wanted to use the
+word secreting because it sounded gushy
+but if they're auto catalytic and
+entropy secreting then if you're a
+system that's living you're going to
+want to seek out other living systems
+because you need reproductive and
+nutritional opportunities
+in order to be auto catalytic and
+entropy secreting
+and you know it goes to the frog nervous
+system rules right if you if frog
+encounters something that's smaller than
+it and it moves it eats it if it's
+larger than it and it moves it runs away
+and if it's the same size as it and it
+moves it mates with it
+very simple rules that let a frog be a
+frog
+right so it feels like maybe what we're
+banging up against
+is too much too many words that we're
+throwing at
+simple concept and maybe we're talking
+about is harmonic
+coupling of living systems that are
+seeking other neg entropy states
+either to consume or mate with
+the last point i have a poster that i
+got from a guy in san francisco
+and it's in my shop and it says futurism
+imagining a fake future in the hope that
+the real future will come along and mate
+with it
+and that's kind of like what we're we do
+in active inference we're imagining
+our way into a we're perceiving an
+externality just because our perception
+say okay there's something you don't
+control
+out there and then we try to mate with
+it or eat it or run away from it
+i was reminded of the light cone slide
+here when we're talking about space and
+time and edges and
+um how that daniel included the slide
+how
+like light is is the boundary between
+space and time
+like that's kind of that trips me out um
+steven and then daniel
+yeah i think when we be interesting to
+also i think this
+opens up maybe a revisiting or with this
+with chris fields and some of this work
+about
+quantum contextuality as well because as
+you start to
+because one thing he did mention in his
+presentation you know
+there's this question about when it goes
+from being contextual which is
+or quantum like which is a highly
+constrained
+set of options basically
+once you've got more options for
+movement things start to move into
+more classical even if there's loads of
+quantum stuff going on at the small
+scale they all average out and
+effectively
+the gas in my room is behaving similar
+to the gases in all the rooms that we're
+in
+in a general generic sense only if we
+went into the sort of and and there's a
+question that comes up then around this
+sequence in
+um and um because
+where where is that sequencing possibly
+constrained enough
+that you might hit some things like that
+and is that part of what happens
+at these well you could call them
+meso levels i mean the cell the surface
+of a
+cell is small but it's not small from
+an atomic point of view it's still
+relatively aggregated
+yet we're getting these distinct flips
+in
+charge and is it plausible that anything
+as
+big as the brain can also do something
+like that
+and it may be that the term quantum is
+not necessary that in that sense but
+um yeah it'd be interesting to think
+about what it what what
+importance is there to be a constrained
+set of sequences a bit like daniel
+mentioned if
+a certain molecule is released and then
+another one's released and then another
+one's released
+that could be some sort of type of
+rhetorical dynamic but that
+there needs to be a constraint so that
+it's not just part of the
+classical noise you know it's not just
+swamped by
+a big flux of um randomness right that
+it actually is a sequence
+even if it's not as clear as you know
+so that might be an interesting question
+i don't know whether it's a fair
+question to put
+to mike if that's is or maybe it's more
+of a chris fields type question but i
+know they work together so
+they might have talked about some of
+this
+definitely daniel and then scott
+yep it was a key theme in this paper
+and in cybernetics in general that like
+goal seeking and
+planning as inference is a big area
+that's why we're always talking about
+like control theory
+and it is interesting to wonder how does
+the bioelectricity play a role in
+goal setting and then in basically
+policy selection because you know active
+inference we don't
+just specify which trajectory is going
+to be like the preferred one and then
+condense it down to a single summary
+statistic it's like
+there's the preferred states with the c
+and then the affordances with the e
+and then there's a equation that is
+selecting policies
+based upon you know a combination of
+different ways of phrasing some of the
+variables
+so then it's like how does that framing
+which is not just one way of
+going about doing what is it gonna allow
+us to say about
+like how systems actually plan
+i think that's kind of related to the
+hint in figure 2
+on 32 like possible alien come
+ai it's saying that this framework
+wouldn't just help us describe
+systems but recognize systems that we
+didn't
+have ways of recognizing otherwise
+perhaps
+nice point and if um you know if another
+system
+was communicating with us how would we
+know right like what what would that
+even look like scott
+i was um have you guys seen this article
+decoding and perturbing decision states
+in real time now
+it's um p-e-i-x-o-t-o diogo
+pixoto it's it's about decision states
+it seems like it's very similar to what
+we're talking about here
+um 25th of march 2021 from nature
+magazine
+um and then bearheim v-e-r-h-e-i-n is
+another author
+um one of the things the reason the
+reason i was holding that up
+one of the things i was just writing
+down you know light cones
+lights um bosons right
+photons are bot or bosons and one of the
+things i always fuss with a little bit
+is
+okay is there a difference between
+fermionic and bosonic
+physics here that we need to attend to
+so the idea
+of fermions i always think of them as
+firm so they make up matter and bosons
+make up energy stuff
+and information is carried by bosons but
+also carried by embodiments in
+in fermions and stuff and so
+it's so interesting to me that how does
+the
+persuasion the rhetoric
+the the history
+get embodied both both sonically and
+fermionically again you have the peacock
+and you have the birds and the and the
+animals that develop certain
+physicalities over time as communication
+right it and it's a deep time
+communication and there's less
+discretion in it let's say they can
+exercise it or not but they have the
+embodi it's embodied in the physicality
+and then there's the
+action that they take which is
+again they have the physicality with
+which they act
+so what are the instruments given them
+physically but then they
+convey information by the behaviors they
+engage in and i keep coming back and
+thinking
+well it's kind of interesting if we look
+at the carrier signal
+again of information um
+is it in fact bosonic always it's
+things are carried by light i guess
+things carried by sound are being
+carried fermionically by the
+pressure in the sound wave i'm not sure
+but
+so maybe the medium i was just wondering
+whether the medium
+relates to the notion of rhetoric and if
+there's a pure
+form of information transfer when it's
+bosonic rather than fermionic and maybe
+that's getting
+way too reductionist on the thing but it
+i wondered whether
+light cones in their purest form which
+presumably are
+involved light right the original light
+traveling out and it can only go this
+way and you can't be beyond it
+and blue when you said before it was a
+statement
+that what is it outside the light cone
+there is no
+it's like the defines the edge of space
+time for the observer
+and so what's what's out there is an
+externality
+it feels like that boundary
+when that's known to other parties maybe
+in communication we're trying to do
+is think outside the light cone
+i don't know
+uh daniel and then stephen so the
+part of the light cone going forward in
+time is anticipation
+and if we take anticipation again not to
+be like a metaphysical claim about what
+systems are really doing
+but what the system is anticipating
+outwards
+that entails a generative model through
+time
+of the states that matter for this kind
+of an agent which is
+the internal state of the model itself
+the blanket states which are sense in
+action
+expected outcomes and expected actions
+and then the state of the niche the
+external states
+so kind of operationalizing the light
+cone as a specific
+prediction on specific variables
+might be helpful and kind of give a
+little bit more insight into how it
+could be used
+in a computer and then also just to
+scout your point about like the media's
+the message essentially
+it's like a multi-scale media is the
+message it's not just
+um bold print type versus cursive
+it's actually like you know you're
+bringing up types of subatomic particles
+like that media you know is ether the
+ultimate media
+like the nature of the media does matter
+and yeah
+it's a trade-off space like with
+peptides
+you have a larger signaling space than
+with small molecules like the
+combinatorics are just different
+but that entails totally new challenges
+like with specificity or
+cross-activation of neuropeptides or
+how do you keep them linked through
+evolutionary time and then we see sort
+of
+insights into those design trade-offs
+when we see like
+wow there are like a lot of
+neuropeptides that come from one
+precursor
+longer protein so that suggests that
+their co-regulation is held together
+through specific design principles so
+those are really interesting
+questions about how like the speed and
+the frequency and the bandwidth
+of different information channels
+structure
+how they end up performing
+nice stephen and then scott
+yeah i think daniel you're making a good
+point and it feeds on
+with um this question about time scales
+and
+is if we i assume that slides up the one
+that's there with the tick and the dog
+and
+human and possible alien um and
+so the cones there yes it's very useful
+to think of it
+in terms of i've got my maximum
+information now maybe my maximum
+information was even a little bit in the
+past
+but it depends on what regime of
+attention i was applying right i
+i made choices so as i make choices into
+the present
+i reduce the possible cone
+extent i've got available you know um
+and
+as i bring things only into my conscious
+awareness you know um
+certain things are going to be left out
+and then bringing that
+into okay this is a particular type of
+future i might predict
+based on my regime of attention is
+actually probably
+more useful in some ways
+to this because the cone going out it's
+a nice idea but it can lead to thinking
+that we know more and more in the future
+there's more more futures out there
+which is there is more more futures but
+not necessarily coming out from us
+um so it could be this is a bit more
+like okay my cone could move around a
+lot
+and there is actually a lot of analogy
+with that because now a lot of
+futures work they're actually saying
+you're better off picking a scenario in
+the future
+building out the scenario in the future
+as a separate thing
+not inheriting your present because that
+will always bias you
+and then bring it back bring your
+present which is what you
+know and your assumptions here and sort
+of bridging the two
+in terms of the narrative rather than
+this idea of i can
+go because i'm could just be going with
+all my
+assumptions and all my pre-assumptions
+from the present
+and making all these stories about the
+future um
+and um and starting it almost starts
+from a singularity in those other
+diagrams it's like goes from a
+singularity and opens up whereas
+actually really
+the widest is now potentially this is
+the most information i have potentially
+available
+or at least within the 10 or 20 seconds
+of this moment
+um so i think that actually
+there's other ways that this could
+change the way people think about
+sense making in time and space
+really super nice point stephen um scott
+wow stephen wow i mean that's so
+awesome when it makes me think okay
+first of all
+encoding and decoding okay so something
+i i just wrote down mutations
+encode new speculative space time
+so mutation gives you access it's a
+random mutation
+that gives you access to space time you
+weren't intending to access
+and the same thing with externalities if
+another thing comes in then this is jazz
+this is jazz genetics right is you get
+mutations and it's like whoa i didn't
+want to access that
+that new like cone area but i guess i'm
+there now
+okay let's see what we got here and
+that's pretty awesome
+because otherwise you'd be settled in
+your ways and you'd never see that space
+that this flight cone area would never
+open up
+and you don't know what it's going to be
+you don't know it's like it's
+i always said to my kids life is a
+one-act play no rehearsals
+that's a light cone right you just go
+through and it's like okay here we go
+so that idea of encoding
+and decoding is kind of interesting so
+you have this the
+we we go out there in the world and
+we're like okay i want to interpret the
+world
+now some things were encoded with
+intention to communicate
+music speech some things were encoded
+with intention to observate right
+cryptography stuff whatever
+some things were encoded with no
+intention to communicate but they do
+communicate like
+oh leaves are green so therefore over
+time we figure out that they have
+magnesium in the photosynthetic cycle or
+whatever right so they're not
+the color is encoded in the thing but
+the tree is not intending to say i'm
+doing photosynthesis right it's just
+we now take that perception
+and can decode something that was never
+encoded with
+discretion i guess or intention by the
+organism or whatever you know we don't
+run going with that
+so this notion of these light cones
+and it from the perceiver's perspective
+we can decode within a light cone we can
+decide an
+artist decodes a light cone and somebody
+else seeing the same perceptions would
+not have the same light cone
+right somebody with different priors can
+see things a person who knows history
+will not repeat it because they're like
+they see the same history now and they
+go
+whoa whoa whoa whoa that looks like an
+insurrection
+like their light cone is more trained to
+the possibility that's an insurrection
+so this last couple of comments are
+fascinating to me
+that we're moving through space we have
+this active inference model
+we're running a model there's myriad
+other models and non-models out there
+that we're seeking to decode
+some subset of them were intended to be
+coding information
+some subset or not and we're just moving
+through space decoding everything
+some of it will be false signal some of
+the actual signal
+and so the light cones the experience we
+have
+obviously can never be replicated by
+another person with different priors
+but also in real time
+it's a i don't know what the equivalent
+is of a cacophony of light cones
+a babble of light cones or it's like
+that ice cream cone again there's too
+much ice cream maybe in the cone
+anyway it's fascinating notion of that
+over
+decoding in a way and what and maybe the
+scientific method
+has something to do with a rigor on the
+over decoding that can happen with
+alchemy or something like that
+nice point daniel and then stephen
+so to scott's point about the mutation
+as uh
+accessing spatial temporal uh
+zones like expanding uh into space-time
+i thought okay maybe there's some like
+quantum you know 4d
+three plus one interpretation of that
+but
+how can we think about that with the
+information that we already empirically
+know
+and it's actually that mutations in
+developmental biology
+developmental genetics facilitate the
+exploration
+of new developmental space and time like
+by slowing down or speeding up the way
+that a certain cell type
+is uh susceptible to a hormone or
+something like that
+so what's being played with is actually
+the level faster
+because that's why there's the
+intergenerational transmission of those
+mutations
+but then what they're actually modifying
+like the source code but
+not exactly in that way of course is how
+the system bootstraps and modifies
+itself through development and learning
+and then how can we think about active
+inference in that way
+well we can think about the mutations as
+modifying like the initial parameters or
+some of the
+state variables for the parameters that
+are important for an active inference
+agent like
+the structure of its internal generative
+model its blanket states like its
+sensory and action affordances and then
+the niche
+so that's a way where we can have the
+generality to talk about like
+potentially a system across different
+scales
+but then when we're ready to actually
+formalize it and then
+ask how to design communication in that
+niche
+nice point stephen
+yeah that's a good point thinking about
+those different time scales and
+and sort of following on from that
+you've got
+this question of
+the um so maybe the things are happening
+at this
+light speed and there's a lot of
+electrical activity
+happening in these cells and groups of
+cells and
+and we've got these structures that we
+can come together and of course
+we then have this intermodal
+integration between different cells
+nerves coming in and the question then
+also is
+as it's coming in say from my body to my
+brain
+and my feet are seeing the world
+in the past cons compared to my nose
+right because it takes longer for the
+sort of information to travel up from my
+foot
+the signals at the speed of light
+traveling but by the time it does that
+through all the chemical
+interactions it you know it's
+milliseconds not
+billionths of a second so it's coming
+together
+in this structure of the body which is
+grown
+to you know to integrate it but at some
+point the system has to calibrate
+it has to calibrate so that it doesn't
+think that my foot is in a different
+time to my
+nose or my ears or my fingers right
+so that sort of brings that question of
+of
+um you know some of this multi-scale
+stuff
+will come out of these kind of
+electrical
+light speed dynamics but then it's going
+to also
+come into the uh the structures i think
+the daniel was talking about structures
+we all sort of mentioned structures and
+then
+there's going to be a system that sort
+of at times
+has to sort of tweak it you know and
+maybe that system's not needed when
+you've got a small set of cells that are
+all firing electrically and
+doing other chemical signals they just
+the structure's enough in a way
+but uh um so yeah i thought that that
+might be kind of
+that might be an interesting question to
+ask michael as well if this
+you know how does how does that kind of
+play out with this
+nice daniel and then scott yeah just a
+quick comment on that so the signal
+processing
+or the sort of outside in perspective
+would suggest that there would have to
+be like a recalibration
+then the generative model out way of
+thinking is that the generative model
+is that like your hands clap and the
+sound and the visual
+are the same event so there isn't as
+much of a calibration of
+inputs as there is a reconciliation
+of deep temporal models which are timed
+based upon
+the inferred causal structure of the
+world which is usually not two separate
+events
+but rather one and then that is actually
+just
+embodied in the sensory relay which does
+take different amounts of time
+to transfer from different parts of the
+body
+nice scott yeah okay so i just was just
+one thing on that i'm just before scott
+that's a good point i think
+that's interesting you know thinking
+about predictive processing
+and not getting caught up in the in
+that's where it's tricky because it's
+it's not directly an input it's a kind
+of
+error message so yeah that's cool that's
+not the part that's experienced
+yeah and the parsing of that opens up
+awareness right if you can parse the
+different
+pieces and start to break it down this
+last couple of pieces i
+thought you know the occupy movement
+occupy wall street
+it feels like active inference we should
+have t-shirts made up occupy light cone
+because everyone's every organism is
+trying to occupy everyone else's light
+cone
+i think i mean and when i so we worked
+for microsoft for
+at the law school we had a program
+microsoft paid
+professors intellectual property
+professors to go to china
+to teach intellectual property
+professors in china and in india
+usip law concepts
+now why why was microsoft doing that
+they were doing that because they were
+trying to render
+the externality innocuous there was a
+piracy externality
+that they were dealing with and so they
+thought if they teach
+the teachers in those jurisdictions
+about the value of intellectual property
+and then teach the lawyers at the law
+schools
+the teachers teach the lawyers those
+notions then the microsoft notions of
+intellectual property
+they'll be left software privacy so that
+was they weren't doing it for
+beneficence they were doing it to render
+the externality innocuous
+they were trying to occupy the light
+cone
+of a bit of a culture right with this
+affordance
+uh shifting by mutating the
+teachers views and the way they taught
+intellectual property law
+so that that to me
+there's a i once heard a quote that
+trees were bullies because trees suck up
+the water and the light
+in an area right you know they bully
+other plants and i always thought you
+know trees are so nice and i always
+think of trees as bullies now
+and it's kind of interesting when some
+when an organism
+is applying rhetoric or other vehicles
+to sweep in and
+you know like pigeons when they do
+pigeon racing when you try to pigeons
+try to
+flock and you try to grab everyone
+else's pigeons right
+or i don't know in hive behaviors if
+hives pick up other bees
+and that makes them fitter as hives or
+if there's mixing of bees when they do
+swarming i don't know the answer to that
+i just don't know enough about bee
+biology
+but it is kind of interesting that light
+cones
+maybe are pretty darn aggressive for
+living things
+trying to render externalities innocuous
+and maybe that goes to gaia theory
+that ultimately what what's the light
+cone for gaia
+yeah the biggest light cone of them all
+just what you were saying made me think
+of maybe
+you know we think about it as a light
+cone but maybe what we're looking at is
+like an information cone you know and so
+like
+like a concentration of information
+within an individual because in the end
+we dissipate
+you know there's no more information
+concentrated there uh stephen
+yeah and it might be a question when we
+think about this term light cone
+and i was walking home last night and
+i could see the clouds and i could see
+the lightning
+but i could only hear the thunder you
+know five seconds late or whatever so
+the information cone on the audio was
+different to the information
+if it is an information cone and then i
+don't know the smell of the
+the rain or the change of that so um
+i might be interested in how much the
+the
+there may be some elements in certain
+scales where really it's light
+it's about the speed of light i mean
+near enough so that's what it is or
+maybe it's a broader category which
+could roll
+out into these other spatial temporal
+modalities
+yeah the uh so i mean you know when
+you're in a space if you wake up in a
+dark room what's the first thing you do
+like where am i right turn on the light
+that's a very human um way to maximize
+your information gain
+i mean not every organism obviously can
+see like uh daniel
+i think my closing thought on this would
+just be that
+it really speaks steven's story about
+how there actually was a temporal
+structuring even though you cognitively
+knew it was a single event
+you actually classified it into a
+separate kind of event which is like the
+exception that proves the rule
+that suggested long long ago that the
+speed of sound and light were
+different how are we going to make sense
+of this total continuum of
+signaling in the niche we can think
+about ostensive cues and helping you
+plan
+there's something when you smell
+something and you have eight hours to
+plan for the storm versus you know you
+hear the lightning strike you have a
+half second to plan
+et cetera so we can think about the
+structuring of different kinds of cues
+in the niche as giving information that
+is
+in light of a generative model able to
+be used for anticipation in action
+so that's just speaking to how
+core active inferences to thinking about
+these different processes coming
+together
+and that's why it'll be awesome to get
+the author's perspective
+on all of this and what active inference
+is going to do
+nice scott you have a final thought for
+us
+yeah just again that i'm still intrigued
+by the notion of the entanglement
+creating space time and this whole
+discussion of
+time cones and the time cones in the
+relation of space-time
+relativity theory etc and uh i feel like
+this
+one thing that active inference has done
+whatever it's and there's so it's
+powerful in many ways
+one thing it's done is allowed me to
+open up my mind to processes
+that feel like they're replicated
+across time and scales
+and that's interesting because whether
+or not they're strictly
+fall within active inference math and
+rigor
+the the model has
+uh opened up so many different ways of
+thinking about things
+and the entanglement notion where we
+think of two
+is it two particles or one spooky action
+at a distance
+it feels like everything else we're
+talking about active inference is spooky
+action at a distance for me
+it's just that it's a different spooky
+action at a distance and so
+it's fascinating the notion of
+entanglements and it feels like light
+cones
+may be describing the things that are
+amenable to in
+be entangled or coupled and so maybe
+if it's an information cone that's an
+interesting
+notion that we can start to say
+communities expand out
+that which is amenable to coupling
+because they widen
+the light cones so that using that
+rhetoric
+may start to be a way that we can
+illustrate the benefits
+of community-based behaviors
+and things like that so we can start to
+bring this back and say look
+you can't see around the corner but that
+person who's up there they're standing
+there and they can see around the corner
+and if they can talk to you they can
+tell you what's around the corner
+so maybe that's good right and so maybe
+that's contact tracing for
+pandemics maybe that's you know giving
+the neighborhood watch for
+other toxic things in the neighborhood
+environment whatever
+so it feels like this gets simple enough
+you know people may not want to know
+about light cones or whatever but they
+it starts to get the entanglement and
+that notion of
+cause and effect feels like there's a
+story that we can tell here
+and illustrate pretty simply
+anyway it's exciting it's an exciting
+conversation some wonderful stuff and
+it's delightful to be back in the
+conversation
+so just uh to come to the author's like
+final point
+in this um you know the dissolution
+of the self right this is like the the
+practice of of
+zen um he says it is striking that the
+process which
+zen practice is meant to reverse
+attachment to past memories and high
+valence for future expectations or fears
+is precisely the process suggested to be
+responsible for the creation of complex
+selves
+so i want to know what happens to the
+informational
+light cone in this like dissolution of
+the self does it like you know turn into
+lots of little light cones as is kind of
+implied in like the
+the one figure but or does it just like
+poof and like dissipate i don't know
+it's it's interesting to think about
+um that for me he says it's unclear
+whether it's beneficial or even possible
+to truly live in the moment and let go
+of past memories and future expectations
+but anyone who succeeded in doing this
+would achieve precisely what zen
+promises
+the dissolution of the self um so thanks
+everyone this has been a super
+interesting discussion
+and i am looking forward to our
+conversation hopefully with the author
+next week thanks nice work blue
+thanks thanks very much take care have a
+great day bye everyone

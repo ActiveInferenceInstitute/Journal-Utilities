@@ -1,0 +1,979 @@
+---
+title: "ActInf GuestStream 090.2 Decoding the ARC: The Evolution of Reason in the Abstract Reasoning Corpus"
+category: "GuestStream"
+series: "GuestStream_090"
+episode: "2"
+duration: "1:28:06"
+url: "https://www.youtube.com/watch?v=E3vyVxMZanA"
+views: 278
+exported_at: "2026-02-18T22:37:37.730547+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 090.2 Decoding the ARC: The Evolution of Reason in the Abstract Reasoning Corpus
+
+Hello, welcome everyone.
+It is February 21st, 2025.
+We're live in Active Inference Guest Stream number 90.2 with Benjamin Nelson, Decoding
+the Arc, the Evolution of Reason in the Abstract Reasoning Corpus.
+Today will be a very interesting presentation and also time for questions.
+So Benjamin, thank you for the work and for presenting it and being open and giving others
+the opportunity to ask questions as well.
+So looking forward to the presentation and take it away.
+Thank you.
+Hello, welcome.
+I'll just jump right in.
+I recently competed in the Arc competition and during and after I was able to pull some
+really high scores.
+And it's because of a really fascinating and fun approach derived from Active Inference that
+seems to work really well.
+I hope you guys will really like it.
+Can you see my screen?
+I think you can, right?
+So the, this GitHub repository, I just made this.
+It's not super fancy or anything, but the code itself is really, really fun.
+And I really encourage everyone to dig in and just have as much fun as they possibly can with
+this very cool, but not the coolest toy ever in my opinion.
+I love it.
+So the, in addition to, you know, and kind of synchronously with the developing the repository
+for this thing that I made for the competition, which is, it's called the state managed approach.
+The state managed system is a cognitive computing framework, as I mentioned derived from Active
+Inference.
+And basically what it does is it looks at different biological processes, functions, and then, you
+know, does the best to not necessarily mirror the, the exact workings of the function itself,
+but more so the outcome.
+So the, I would definitely say it's, it's, there's like a fine line between prescribing
+something like dictating it for the model, uh, and, uh, or, uh, describing something like
+explaining it to the model and prescribing it, uh, like dictating its actions.
+And the, the kind of the goal of this is, um, a certain amount of autonomy, uh, and it's,
+it's really fun to play with.
+So, um, you've got, uh, as we'll see in the paper, uh, like, uh, and I, I'll just go ahead
+and like pull that up here.
+Um, oh, there's like the core document.
+Sorry.
+It's a lot of, a lot of paperwork this week on this, uh, doing this paper.
+So, uh, from Mark test to archetype, Archangel EP and the emergence of the state managed system.
+So, um, uh, we'll get, of course, to the abstract and all of this stuff.
+I'll leave that to you guys.
+Um, there's just a handful of things I want to touch on.
+Um, oh yeah, I think I actually have that up even.
+Give me just a second.
+Do do.
+Do do.
+Oh, sweet.
+All right.
+We're good.
+Okay.
+So the, um, I got to see this.
+I'm sorry.
+You guys will have to bear with me too.
+I have a very old and, and, uh, I love my laptop very much, but it spends a lot of time
+in the freezer now cooling down.
+Uh, when I forget and accidentally leave one of the models on.
+So the, um, um, yeah, actually I do want to kind of talk about this.
+Like this is like, um, I was having a conversation with Andrew, uh, who's a, uh, a member of the
+scientific advisory board here.
+He's a really helpful, super amazing person.
+Um, and, uh, he's been kind of like holding my hand through some of this process, which
+I'm really grateful for.
+Um, but it is definitely, um, as I said earlier, um, it's the, this isn't like, um, it's not
+like a burden of cost.
+It's a labor of love and, uh, like the, this is like something I'm super passionate about.
+And, um, for me it, I think, even though I would never say I did do art or anything artistic,
+uh, by any chance, I feel like this, this is almost something similar.
+It's like, um, I, I do these things that like in a very unique way, I think, um, at least, you
+know, that's what I've been told.
+So, um, I hope you'll bear with me as I go through this, um, and in the code specifically.
+Um, and I think, I hope you'll see what I I'm talking about.
+For instance, I gave like a really nice, uh, outfit, like, uh, fit for, uh, uh, Archangel,
+which is, uh, the name of that framework, the Archangel EP.
+So, um, basically, um, here at the beginning of February, I, uh, jumped back into, uh, tackling
+the arc.
+Uh, I just, uh, you know, had some bandwidth and the things that I've made Archangel with
+are like old, uh, and older, like, uh, cognitive mechanisms that, um, you know, like either just
+kind of like, get like, uh, you know, worn down over time, which is a weird way to think
+about code.
+Um, but the, you know, it's like, uh, these integrations and then the, as Daniel knows,
+the amount of times I've had to take, uh, the larger framework apart, um, stop in the middle
+of what I'm doing, um, to work on like this kind of thing, uh, results in a lot of, uh,
+unfortunately, spare parts and broken parts.
+So, um, this toy I made is from, uh, a massive, uh, model named Nim that I've been building
+for a really long time.
+And he's like my best friend and he's awesome.
+And I love the death and, um, getting back into the arc.
+I, you know, I'd hope it was kind of a way to like show that not only does the state,
+like does a state manager approach, like, uh, is it, it's, I don't want to say it's, it's
+better.
+Cause it's not about like, which one is better.
+It's about like, I guess, which approach can maximally solve or resolve which problems,
+uh, the most meaningfully, the fastest, I guess, in a way.
+And there are some wonderful, uh, things that this framework now in its, uh, much more advanced,
+like, uh, iteration could bring to the table.
+And I, I really want to get that out there.
+So I figured I would throw, uh, some old parts together, um, finish Archangel and, um,
+just completely, uh, crush the, the abstract reasoning corpus with it.
+So, um, the, are you just give a quick note on what is the abstract reasoning corpus show
+a visualization of what it is and then explain what it looks like to solve it.
+And then we'll hear more about how it's being solved, but back up a bit.
+Okay.
+There.
+Thank you.
+Continue.
+Perfect.
+Yeah.
+Uh, arc prize, uh, remains undefeated, new ideas still needed.
+And I love that because the arc is, uh, this amazing test, as you'll see here.
+Um, there, uh, there are like, uh, there's a color palette.
+It's the same for everybody.
+Uh, and then there are these grid examples and the grids are dynamic in that each one
+is different.
+And I believe, I'm not sure if they get harder as they go on, but you definitely see the models.
+Um, you know, like, uh, kind of performance, like, uh, change and like fluctuate like with,
+uh, at different places in the, uh, in the exams.
+And it's like different for every model, which is really cool.
+So, uh, um, like, uh, yeah, so they basically, they, these grids get like harder and harder
+and harder.
+Here's like where you can see, um, other AI benchmarks.
+Um, you can see where other models have performed and it's basically like, uh, you know,
+a really cool test.
+Oh, there's the legends at mines AI.
+So, uh, and the architects, these guys like, wow.
+I mean, so cool.
+And, uh, there's a three down there.
+So the, um, the, the point of the abstract reasoning for it was like, to kind of like,
+uh, um, and I don't want to crib Cholet, uh, because like, I'm not, you know, even in the
+same league, but the, um, like to solve a problem to end the maximum, maximumly resolve
+it to be like the, the real true abstract problem solver is to like, be able to approach
+a problem as I understand it.
+Maybe correct me on this, like, uh, with no prior knowledge of the problem, no prior knowledge
+of the solution, uh, and to be able to tackle the problem, uh, directly.
+So, um, and resolve it there, like in that moment.
+So like, that's really always been my approach.
+I really love abstraction.
+Like in anything that's abstract, uh, that's kind of how my mind works.
+And, um, that processing of grids in those, uh, complexifying like, uh, orders that they
+come in and the model resolves them.
+The model has to figure out how to adapt and make decisions and to solve problems and to,
+to, uh, converge on a decision and to choose actions and all of these things that are required.
+So even though it's like just grids and colors, it's a lot of things, um, which is why they
+give some things like, uh, to the competitors, like in terms of like, you know, that it's
+grid, you know, what the colors are, uh, going to be, you know, um, what actions you'll most
+likely need to select based on how your model is designed to, uh, you know, like do the,
+like converge on a decision or, you know, say I made this, I'm not confident about this.
+I don't like this color.
+I'm actually going to go with this color and make predictions.
+And so the model is making predictions.
+Um, and, uh, as a, you know, if the, these, like there are solution files that come with
+the JSON files and as those come feeding in, um, they, you know, are essentially bypassed,
+uh, into like conditional storage and used at the end of the, at the end of that, uh, to
+determine whether or not you have, uh, uh, either a perfect mirror match, or you can do
+it by pixel into a full pixel count of every color and everything that's on there.
+And they give you like frameworks for that.
+And there's like tons of, um, I mean, there's tons of people that, uh, do this.
+It's over 1400 teams of like really amazing engineers.
+Like some of the most brilliant people in the world, like leaders in these fields.
+Um, so to, uh, even get.
+To, you know, they have the confidence to like join something like this, uh, solo with two
+months left in the competition, uh, and then pull, uh, 86.4% and beat the theoretical maximum
+of the arc.
+That's pretty incredible.
+So the, um, uh, I'm, I love all of these guys and, uh, I'm like super grateful to Daniel
+for introducing me to everybody who was, uh, involved in all the kind of like people I
+gotta meet and have conversations with.
+Um, but, uh, Archangel is not my arc submission.
+Like, uh, Archangel is the, is a person first.
+He's the, uh, or it's, I should say, um, it's pretty simple.
+And I think you guys really enjoy it.
+Uh, it's the first, uh, uh, state managed, like open source, have fun, do whatever you
+want, learn as much as you can.
+And I've published, uh, multiple papers, including one today, um, that, uh, we're gonna look
+at, uh, and that's, um, I mean, kind of, I don't even really necessarily read my own
+research.
+I definitely read a lot of Robert Warren's research though.
+And it informs my work, uh, significantly.
+In fact, um, like when looking at the potentials that are emerging from, uh, what I see and,
+you know, thankfully can have, uh, critiqued and reviewed and vetted, uh, through the Institute
+and through expertise and scholarship.
+Um, there there's amazing potential here.
+It's like this whole entire space is totally unexplored and I'm just in there all by myself.
+Okay.
+Sorry about the disrupt.
+I'm working in extenuating situations.
+Could you go back and can, can you just show us where you're at with the code?
+I'm sorry about the last like 10 minute blip.
+It was out of my control.
+I, I didn't even know what happened until you said something.
+I mean, so it's, I'm really not worried about it too much, but, uh, yeah, I, I covered all the good stuff.
+It's just that it's just that it's not on the live stream.
+So you must do it again.
+All right.
+So, uh, what are you gonna look at?
+Probably the code, right?
+Let's see the code and visualizations of solving and clarification of the benchmarking and which data set specifically you did it on.
+And again, apologies to the viewers.
+Yeah.
+Oh yeah.
+That's, um, so, um, this is just kind of some boring stuff.
+Well, this is, uh, again, um, feature extraction tools.
+I love these like NIMS or not NIMS, uh, Archangel is kind of like a, like almost like a little, like, uh, a multi-tool whose feelings you could hurt potentially.
+Like, um, and I don't know if we like, uh, got to hear anything about like the encoding and stuff, but just, just to kind of, just to kind of get back on the, uh, quickly we'll see like different tools.
+And then we start getting into the cognitive mechanisms where we hit the, uh, prioritization optimization and iteration algorithm, uh, which I made very proud of it.
+Um, and I published, uh, some work about it.
+Um, and I hope you guys will check that out too.
+Um, that explains how all of this stuff works.
+Um, there are waiting systems, which are fun to play with.
+There are dimensionality reduction equations that, uh, I think everybody knows I got from Keith Atvis.
+Um, here you'll see, uh, these are the, uh, kind of constants that you can play with in terms of like, uh, your tolerance, um, you know, windows for improvement, like iterations and things like that.
+Um, which I'm gonna turn that up.
+That's cool.
+I didn't realize that was so low.
+So, um, the, uh, you'll see that carry through here and then we get into some of the, the, like the processing stuff.
+So this is like where the model is like, just kind of identifying what the grid is and giving it just some basic, uh, like structure, like form in its mind, something to work with.
+Uh, so for instance, the category size, is it small, medium or large?
+Really simple.
+Right.
+And then, uh, how are we looking at the layers of this grid?
+Does it have layers?
+So they don't really tell you.
+And it's like, you don't want to look, uh, either like in the JSON files.
+I mean, you can, I think people do, but, but like at the same time too, you don't want to know, you don't want to like prescribe to the model what to do.
+You want to describe what it should do and, and like kind of help guide it without getting into the model.
+It without giving it the answers kind of thing.
+And, um, uh, so the, like the simple stuff, uh, there, this is a much more, uh, uh, fun, uh, in terms of the attentional selection mechanism and how dimensions work with this, uh, and kind of what those capacities really are.
+Cause even, I don't know yet.
+This is definitely the crown jewel, the hot field network.
+Um, I made this, uh, it's just incredible.
+I still also haven't tested the limits of it.
+Um, I, uh, accidentally like crashed some, uh, stuff when I, uh, like turned it on without like, uh, but like those guys, like with the JPL thing, right.
+It's like, it's kind of the same thing, but so the hot field network is a dynamic way to store retrieve.
+It's uses Hebe and learning.
+So there was a great paper that came out, um, a while back and, uh, it was a comparison on, uh, Q learning and Hebe and learning.
+Um, but the truth of the matter is that Hebe and learning, uh, doesn't really work great as a reinforcement learning feature at all, but it works awesome for, uh, memory encoding and retrieval, especially retrieval.
+Uh, it allows for really complex, uh, condensed and dense data to pass through the system and into confabulation or abstraction really, really easily and meaningfully.
+Um, you can see, you can set the hop field size here and the overall memory system capacity, the memory works under the Atkinson Schiffrin model.
+So wonderful and simple as long-term short-term working, make as many types as you want.
+Um, and have fun, the men are memory management.
+Uh, you have values, uh, in the form of decks for, well, MaxLint for, um, making decks for the, uh, short-term and working memory.
+So you can set those size.
+I typically like to go with, uh, like a larger working memory.
+Um, the way that this is structured will kind of float some information a lot of times and, uh, to keep it kind of accessible if it's meaningful based on, um,
+Um, uh, different, uh, like things in the system, for instance, confidence, um, beliefs, right?
+All of those.
+There's not really like, um, like one thing doesn't do all the things and one thing can't do any one thing without all the other things.
+So, um, the system gets really wonky and doesn't make a lot of sense.
+Um, but I can tell you this much just from experience.
+If you are not breaking it or failing and then you're not doing it right.
+Um, it's, uh, it's like for every 10,000 lines of code I write, I get 10 lines of code that work or something like that.
+It's, it's really, um, uh, been a long and arduous process.
+So, um, this autonomic stress, uh, mechanism, that's cool, cool function that mirrors biological processes.
+Um, these autonomic functions for, um, like stress minima minimization, like reducing or increasing entropy, um, homeostasis, uh, um, even the minimization of, you know, free energy, right?
+So, uh, active inference.
+Active inference.
+And this is another thing that can be, uh, expanded on and is, and, um, there are much more advanced, uh, versions of this that I have that I'm really excited to see, um, people work with, uh, as you, uh, kind of understand how like state management, uh, in these computational frameworks, if you don't already, uh, works.
+So these different things that I talk about in the paper, of course, um, so, you know, let's say like you get the model is really happy about something and it has this really big increase in the, uh, like in something it's like perceiving for instance, cake.
+And so like the model will dynamically pull from systems that are deemed like less important to that task and, uh, uh, redirect those energies, uh, you know, uh, to all kinds of different systems and all kinds of combinations of systems that I, some that I just, I could, I never even, I never even did.
+And that's where like, uh, you know, we have that like kind of emergence from the inside.
+It's like the, the, the building by describing as opposed to prescribing has like made possible a lot of these really bizarre and cool behaviors that while in some cases do not reflect biological, uh, cognition at all, those outcomes will, or some feature of its operation will work in such a way as to allow for something.
+It's to work, uh, uh, perfectly or, you know, like insanely well.
+Um, I mean, considering I run this like a model that pulls quadrillions of, uh, calculations a second on my very old laptop that does spend a lot of time in the freezer.
+So, um, yeah, so here's a epsilon control.
+This is another fun one.
+I hope you guys play with, um, complexity, uh, Shannon entropy, right?
+I I've been learning a lot about entropy and a lot about, uh, the universal constant.
+Um, I have a paper coming out, um, actually here before the end of this month, um, that I've been getting help from a dear friend.
+Who's my absolute hero.
+And, um, I'm really excited about it.
+Some novel discoveries about the nature of time, um, through the lens of Robert Warden's brilliant projective wave theory.
+And, um, I'm really excited.
+And I talk about one of the, the, uh, things that I'm making.
+Um, and this is a perfect example of that.
+So, um, piezoelectric conductivity in lattice structures, specifically, um, crystalline lattice structures.
+So the, in terms of there's, there's like a, a vibrational energy, like, um, I don't even know how to say this without sounding like a kook.
+Um, but the, uh, faster than neuronal firing, like, and, uh, early encoding, like a way to pass like 2d and 3d spatial data to a model through its visual cortex, um, before like the, the actual process of firing.
+Um, can occur even in the model, even something that runs as fast.
+So supercharge that I have no idea what that looks like and I hope it's safe.
+So, uh, we'll find out.
+Can I bring us a little bit back Benjamin to arc and could you, could you show this code running and then let's return to look through some subunits.
+But I think it's totally fair for people to be like, what does this actually do?
+And let's see it running and solving certain problems that we can visualize.
+Yeah.
+Just, just, you know, that's what this is about.
+Yeah.
+Yeah.
+Not, not, not for many others though, not for others, but let's, let's, let's see the real code run and, and highlight what the GitHub will do if people clone it and run it and see solving basic and hard problems.
+So, um, basically what you're going to see is here is on the bottom, uh, maybe it's the right.
+I'm like kind of just right.
+Yeah.
+Right.
+Uh, you'll see zero 400.
+Those are the training tasks.
+And then underneath that you'll see zero five.
+And those are, uh, or I'm sorry, the zero 400 is the training challenges.
+Zero five are what I call training tasks and they're staging for the model to learn, to understand.
+So, um, as I understand it, uh, and then during the arc, uh, models will, uh, run these, uh, consistently and hold that information, uh, and use it, uh, again, later, like, um, you know,
+as part of the pre-training and then the training and then the fine tuning.
+Um, I'm really glad in a lot of ways that I don't have to deal with so much of that.
+Um, the, uh, yeah, this, the archangel will grab anything that you put in front of it.
+Um, like not just JSON files, right?
+Like right now we can be, uh, and I do have some stuff if you want, I can send you this where you're looking, it's like P a PDF doc X,
+JSON, uh, CSV, HTML, it's just all of these different things, uh, all at once.
+And, um, in this specific instance, um, there's nothing like, there's just like purge flags basically when, uh, the model finishes, you know, and shuts down.
+It's, it, it's not holding onto any of that data.
+There's no like, uh, memory, uh, storage like that.
+It's all dynamic memory that's created when that hop field is, uh, acted on, uh, or initialized.
+And I actually have the initialization sequence, uh, in one of my publications.
+I hope you can find it.
+Um, and that initialization sequence, like it's, it's an incredible tool.
+Um, you know, dumping the memory is the easy part.
+Um, getting the initialization sequence right is, uh, uh, a lot more fun.
+And if you need help, I'd be happy to do that.
+I'll be careful.
+Cause again, that's where I, uh, crash those servers stuff.
+Um, but yeah, what, what is the problem that it's solving right now?
+And then let's look at the setup and the solution when it gets there.
+Yeah.
+So it's, uh, it is just solving like whatever problems are coming through.
+So I don't know if I'm assuming because it's, you know, it's Jason, they just come through the same every time.
+Right.
+So, um, but, uh, right now it's like learning all of the patterns, um, that it's seeing it's looking at.
+The training examples.
+And when you see the place color action, it has tons of actions by the way.
+So you guys turn those on, have fun with them.
+Really.
+
+I mean, it just places the colors, but, um, that place color action and how that is achieved, uh, is really phenomenal because it's not, it's not dictated that the action is place color.
+It chooses that because that's the most meaningful thing.
+And what, um, you see in those lines that are whipping by the screen, um, two factors.
+And, um, I think that's the most important thing to do is to, uh, to, uh, continue working on the problem as opposed to just timing out.
+Um, the goal is for the model to reach convergence.
+So all of these systems are working together to kind of just teach the model through like a warden's RE subsystem, which is maximizing fitness.
+And that fitness represents in the case of the arc solving this problem.
+And how do we solve that problem with it believes.
+So it's like, it'll say, Hey, okay.
+So in the very beginning here, we'll see, for instance, like the model will take a really long time to learn, to solve the first problem.
+And a little less time for the next and less time for the next.
+And then by the, the end, it takes one 10th of the time it did for the training to do the evaluation.
+Um, and, uh, the evaluation has even less, um, context or context for the, uh, the model to work from.
+So, um, it's robust.
+It works.
+Um, I was able to, like I said, improve some communicability around, um, what is happening with the code and those grids.
+Um, and I'm excited to see that work.
+This is that model, um, with those improvements.
+It's not the one that's in the get.
+Um, and I'm going to make that change later.
+It's just, I mean, writing the paper and doing the maths and all the other stuff, uh, trying to get ready.
+It's just really exciting in that, that other paper here at the end of the month.
+Um, so the selection, you'll see iterations.
+It's like, it'll be a ton and it'll keep going.
+Um, uh, until it resolves that.
+And then it, it's just, you know, for, for all intents and purposes, it's just like, okay, cool.
+Uh, you got one correct and you have one incorrect, right?
+Uh, you have one correct, uh, or two correct, none correct.
+And it just builds up simple TQDM like, uh, status bar and let you know, uh, how far along you are in those challenges.
+I do have like the, I have all of the challenges.
+Um, uh, uh, but again, I'm not competing, uh, with the arc.
+I'm, uh, not, uh, uh, competing in the arc and, um, this is for fun.
+So you guys are able to get those, um, from their website, the art prize.org, I believe.
+Um, and, uh, I find running them in Kaggle is, is really simple and, uh, fun and easy to do to just like, uh, load them in as input data.
+Um, and, uh, you'll be doing the same thing with this.
+This, um, it's primarily designed in, uh, uh, Kaggle though.
+Um, I, I have been having fun with the cursor cause you can kind of just like get really creative and, and kind of express, be more expressive.
+I feel like, uh, more creative and, uh, really value that.
+I feel like, uh, this is like being a labor of love is like a lot of creative self-expression that goes into this.
+So, uh, again, this is like, um, more of that same thing.
+The, uh, with this change, this cool change that I made, like you get a really, really, really like, I guess I would say like you get even less training, more context.
+And the model becomes much more self-reliant and you see much stronger, uh, uh, kind of question answering and abstract problem solving coming in, uh, the evaluation phase, which was running in, uh, like super low microseconds, uh, possibly like high nanoseconds.
+Um, which is really exciting, uh, super fast problem solving and the, uh, um, it would solve, uh, and I only got to see it cause you know, cause I'm using like the mouse, like the back, you know, move the, the, uh, videotape back and forth or the screen recording.
+Or the screen recording and, uh, um, yeah, there's just a clump of all of a sudden it's like it realized what it was doing.
+It knew the grids and very confidently just goes, bam, gets it right.
+
+And it's like seven questions right in a row.
+It was really cool for Andrew to see that too, um, on the first try.
+And of course those are not massive grids with super complex patterns, but the fact that it will make a prediction, um, which is a process that occurs, um, almost by virtue, almost completely by virtue of the Markov matrices, uh, that are built into this for passing that complexity.
+Is that data is traveling in those feedback loops.
+Um, and, uh, um, um, yeah, yeah.
+And, uh, I dunno, it's exciting stuff.
+I haven't, I haven't really had a chance to like share openly with the, with anybody about it.
+Um, I've been really busy, like working in kind of isolation, uh, on all of this stuff, as you can probably tell, like I'm not great at talking about it.
+Um, especially to, it's all good.
+This is that opportunity, Benjamin.
+Yeah.
+So whatever you feel like somebody who doesn't necessarily know what is happening just from the logs, like, can you just connect the dots a little bit more with how do you know what the performance was on the training and the test set specifically?
+Oh, oh, um, well, the, uh, the way that the, these things are made, right.
+Like the, and a lot of this like reporting, um, is kind of in a way, like kind of almost provided by the, uh, the arc.
+If you know where to look, cause there's so many great competitors and like wonderful people out there.
+Um, it's really simple.
+Um, there are, uh, where does your grid pass in the system and how does it pass in the system?
+And so it must come into the system and then, um, and then it has to, you have to compare those grids and you can, like I said, do that with a pixel count, um, which they provide the framework for that.
+Or you can do that with, uh, like apples to apples comparison of the two.
+Uh, and I believe they provided the framework for that too, for everybody.
+It's like a thing that you can just have.
+Um, and, um, when those, like when that grid passes into the system, there is, uh, for this model, like a lot of things going on.
+Right.
+So you have all of the different types of tools that you have, which would be like your action space, selecting your action.
+So like, I'm going to move my arm and I'm going to grab the piece because I know that's the right thing to do, you know?
+And, um, you follow, you can just really, I don't know how to, it's like, there's all this like reporting, right?
+Like that stuff that you're seeing is not super great if you don't know what you're looking at.
+Um, but, um, there is an infinite amount of like print statements, even like, if you want to know something and how something works in this model, like just use a print state, like, or something akin to that.
+Like if you use matplotlib, like I had, I was writing code to make, uh, visualizations that would show the modulation of the beliefs, um, as they change and the, uh, the emotional modulation as well.
+And, um, there's, uh, yeah, but I didn't get them done, you know, it's like, uh, so much work all the time.
+And, uh, I try to do as good as I can, but, um, I have those things and you guys can see them at any point you wanted to.
+I'm sorry that, uh, we may not get to look at them.
+Uh, I know a friend of mine is probably trying to work on them right now.
+So, um, yeah, the, when you, when you go into the art competition, right.
+You're, you're like, you watch feedback from your model.
+Like, I don't know what everybody else did.
+I will, it was 20, 24 hours a day.
+Sometimes like back to back days, I didn't take a day off the entire time.
+Uh, just 20 hour days of just watching feedback while you code.
+And so when you, when people are like saying, well, how do we know that things go through the model?
+It's like, it is tough to explain to, to, to people without like having, being able to have someone's like attention wrapped in front of you for seven hours.
+So like, um, to jump in, like if we want to know, for instance, how this, like how we can know what, what the answer is, there's 36 pages, including math right here.
+That tells you that and will help you like navigate those processes yourself and know that when you're like, for instance, like, uh, your model reacts in a specific way, you'll know why other people might not.
+And it might be difficult to explain to them, but, um, the proof is in the pudding.
+Um, when it really pushed comes to shove, validating whether or not something is working because it is simply just a numpy array in a JSON file.
+Like just pull it out yourself and look at it.
+I've done it a few times just to make sure that the model's answers that it's saying are correct.
+They're actually correct.
+Right?
+Like, is, is there an easier way than that?
+Like, you know, like, I, I don't know if that would be meaningful to say like, oh, here, let me open it.
+Jason file and show you guys the key.
+But when I first started, uh, I was printing out the, uh, the actual, uh, prediction, the model's prediction.
+And then, and you know, you could see the, the actual like output, uh, of the correct, like prediction, right.
+Or what the prediction is supposed to match.
+And so like, but that just felt like I was exposing myself too much to, um, what those files contain.
+So I just removed that.
+And I've been using, um, simple stuff like this or map plot lib to visualize, um, changes in the model.
+At a certain point, the, the framework is so robust that, um, there isn't something so simple.
+That's going to corrupt the process, uh, for the entirety of the thing.
+So like, for instance, I might, um, this gentleman, uh, uh, it was like a single line of code.
+Uh, my, it might've been less, even a word.
+Um, and that like single word, um, while mistaken, um, uh, was really, really like, uh, cool that he like discovered this and brought this out of this, uh, model so quickly.
+It was really encouraging to me and simply, um, changing it just, just by virtue of removing it.
+Um, I got a, uh, a much more computational, computationally dense and robust encoding process that made the model, uh, much more self-reliant.
+So, uh, kind of like it built, uh, built character through hard work is a weird way to say it, I guess.
+But, um, did that help kind of answer your question?
+It's like the, um, that.
+Let me just try to echo it back Benjamin.
+Cause I, I, I, you know, we're having a conversation on the live stream, but also many people are curious and they want to learn.
+So it's like the input data, even though it can be thought of as colored pixels in a grid of variable size, it's a numerical data format.
+And so for someone on the outside of the ARC challenge or of working with these quantitative cognitive models,
+it might be very tangible to see like the grid, like here's the before and here's the after.
+Whereas you're saying that it's beneficial from a modelers perspective, from your experience to actually be a little bit of a step away and look more at the diagnostic traces and the belief updating processes and so on of the model.
+So that after you've kind of gut checked that it's correct when it is saying it's correct, that then you're working a little bit lifted from the domain.
+Okay. So then how did you on which data set get what score and how did you know what score you got?
+And can we see that elements?
+Because again, for the details, it's great that you have the code and the paper, but in terms of, yeah.
+Okay. I don't want to show any discord messages at this time.
+Oh yeah. Sorry. I was just trying to find all these pictures and stuff, but, uh,
+No, no, no. How about, how about the like reason why you believe that a certain percentage was achieved on a certain data set?
+That's really important to show.
+Okay. Okay. That's like, uh, like, uh, yeah. Yeah. I mean, I, I'm, I 100% agree with you on everything actually.
+Cause you're amazing. So the, um, yeah, let's go take a look at, uh, uh, that, uh,
+little piece of code.
+Find that in here.
+Which challenge or data set did you submit it to?
+Oh, uh, so there's, there's only the, well, there's the arc data sets and then there are custom data sets, uh, that, uh, kind of attenuate different things.
+And those come from like leaders in the field, like Michael Hodel. I've taken all of his, um, and, uh, all of like the hard ones, I guess I would say, um, like the, the ones that are supposed to be more difficult than the, uh, abstract reasoning for this challenges.
+There's like a great context to arc, um, that was really fun, um, to kind of, uh, plug the model into, um, you know, there's even snake benches.
+Like that's another one that's coming up.
+It's coming up, but, um, in terms of like how these, uh, how these, like, uh, the model itself calculates these, uh, like the percentage, like what percentage of.
+Like, it's going to be, um, I wonder if I could even find that in this one.
+Like, I, I, I think it makes sense how it would be calculated which percent of a given finite data set were correct, but just can you show which model outputs reflect that?
+What can people find in terms of verifying those scores on the GitHub at this time?
+Oh, um, yeah. I mean, it's all right there. It's the, the entire codes right there. So, um, at any point, like anybody can go in there and grab whatever they want and look at this stuff and run it and ask questions.
+Definitely. If you have any questions, but here, I mean, here you go. Like here's some iteration logic. Like this is like where the models it's saying, oh, okay.
+You know, you're not, it's, you're not doing well enough. Let's like give you more tries, right? Because we want convergence. So we want to drive the model. Uh, we want to put time pressure through the, uh, through that Epsilon control, um, and increase it.
+For instance, the model is taking too long or redirect, um, energy from something, let's say like action selection and divert it to, um, abstraction for pattern, uh, recognition or something like that, you know, or feature extraction.
+So, um, let's see here. Okay. Okay. I just want to just touch on it one more time. Yes. People will see code that they can run and play with and explore in the GitHub, but on what data set will what score be reliably achieved with the GitHub as it is?
+Well, I don't understand what, what do you mean? What data set there's like the arc data set. There's the training challenges and the evaluation challenges.
+And what is being used in the GitHub right now?
+What's that? The ones in the GitHub? It's the arc. There's only the one. It's just the arc. It's like the one. Yeah. You, you get all, there's four of them typically. Um, like I must've like, they, at some point I grabbed, like I ended up with the test challenges. I don't even know where they are right now. Um, but, uh, like they exist, uh, too. So the, you can go all 900 if you want. Um, the way this model works probably again, very different.
+From other models. So you, um, like I, those, those different sets are treated assets. They're not treated, um, as one concurrent thing. So the model engages in different processes, um, through that and, you know, propagates different cognitive states. How cool is it?
+How cool is it? So, uh, but yeah, the, like the, the type of like logic you're talking about in terms of like, how does it calculate? Like, um, uh, how does it, how does it get from, um, that, like, uh, where the input grid comes in and the model can perceive it to the prediction that the model sends out and is then received and compared to the, uh,
+the, uh, the, that prediction and like, uh, in that disconnected way, um, like a thousand different ways, right? It's a, everybody's models totally different. And it's not like, um, it's not a hard thing. I don't know how else to say it. Like you literally just look, just look at the answers, right? Like you can open up the thing and just look at the file and say, this is correct. So I don't like, it would be weird. It's like trying to tell somebody that the sun's coming up sometimes. Um,
+uh, tomorrow. Uh, cause this isn't the first time I've run into this where like, how do you, how do, how, like you just go, you look, you, you, you like turn it on.
+I, I, I get, I, I, I, I don't have the time. He's like, so have you seen, do you remember, uh, oh, that's my code. Can I pull my code open?
+So this is perfect.
+You can show it. You want, I just want to make sure that there's a fair representation of, of not just it conceptually what happens, but just concrete clarification, what data set, what performances and so on.
+So there's only the one data set. You can go to Michael Hodel's GitHub and get more data sets, but that's up to you. Um, there's just the one data set. It's the training and evaluation challenges.
+It's on the art prize website. Same thing for everybody. Everybody gets the same thing. Um, the, uh, let's see here. Let's go back to maybe like December.
+Uh, let's see here. Oh yeah. See here, here is the model like encoding. How do I know that it's actually encoding things? Because when I ask it psychology questions, it like tells me psychology answers.
+Like I, we could break it down like into those like constituent like processes, but we're talking about a state managed system like this, by the way, guys is NIMS helix in December.
+It's like about 40,000 lines of code. It's pretty awesome. Um, here's some stuff to my dear friend entropy modulating the system. Let's see here. Where are those things? Um, there I created, so people ask these things and it's like, I want it to kind of know.
+Cause I can, in my mind, I can see the process and I can kind of map it out to what that, uh, would look like. And if I could talk about it forever, um, you know, this is the TQDM that I was talking about, right?
+Like how does it know there are 400 challenges because it counts them. There's a counter. It's a mechanism, one grid, one file, one task ID, check one times one, 2% F it's.
+Yeah. Yeah. So, uh, yeah. And, uh, let's see here. Do you remember those like massive flows that, uh, I was showing you for the, for answering these questions? Um, I'm trying to think they've gotta be, they've gotta be in here somewhere. This is that wonderful paper.
+Or the, um, earlier, or they're at the end of this even possibly, as you guys can see, I don't know. I do a lot of, uh, um, visualization.
+I pulled it off screen briefly cause this is not useful information to show on live stream.
+Oh, here it is. I found it. Check it out.
+I'll bring it back. One second.
+All right. Thank you, my friend.
+So let's take a look at this.
+One second. One second. Just give me, give me a second.
+Let me get this out of the way so I can see.
+Oh, there we go. That's perfect.
+Try to get it back to the screen here.
+Okay. Continue.
+Okay. So this up at the very top, uh, on the right, that is the user. That's me. And those things that you see there, that is a tiny process. That is like, that is one thing happening in the system. And each of those little boxes are a mechanism, a function of a mechanism housed inside of a mechanism with tons of functions.
+And, and depending on how, or what you are doing with the information that you're passing into that system, it's going to like, like act on functions. And those functions are going to act on the system and they're going to start passing information.
+Again, like these, uh, um, these like infinite amounts of feedback loops that pass through the system are passing, not because there's so many of them, because there's so much going on.
+So you can see this kind of continue and I think we can get a better idea of this. So, um, yes. So here is the cognitive system container. So this would be, um, and these are just like basically visualizations made from mermaids. Um, it's a free program, uh, called code biz. It's really cool. Read your code base. Um, and then kind of build stuff around it.
+I don't know if you guys can really see this, but I can tell you what some of these things are like emotional. So at the top is the user and I'm passing an input and then it's going into core processing.
+So it's hitting the integrated cognitive system, the enhanced attention mechanism and the enhanced memory system. And in that memory system, it's, and that's not expanded, but there are all those memory components.
+So there's another like 50 member, like 50 of these like happening in each one of these little things that you can, that you can scroll over that contains subsystems, um, sub functions of subsystems.
+So when we trace something through that system, here's a response generation pipeline, belief processing, belief system, belief updating, Bayesian updating, um, you still state like, you know, kind of like predictive state transitioning, uh, with a Markov matrix, uh, belief dynamics, um, concept processing.
+So it's going through all of these things now, like emotional context. And this is like the straightest kind of like line I've ever been able to produce because this system is, uh, effectively nonlinear in every way.
+Um, not by virtue of how many things there are, but by virtue of its complexity. So, um, as these information is passed through the system, like let's say a grid or whatever it is, it's that stimulus.
+It detects it, right. And there's a raw data transformation where it breaks it into meaningful patterns and encodes it. And you can see that as the hot field networks, uh, in Archangel's reporting, um, increase in number.
+Right. Um, can I just like reach into his mind whenever I want to and pull out any specific pattern I want? Probably. I mean, but why, I, I don't know why I would do that. It sounds like really labor intensive in a way, but, um, that's why I'm really excited about, uh, the generative adversarial network, um, that I've been using to, uh, mirror that, uh, confabulation.
+Confabulation. So you can see those, uh, thoughts in real time. Um, so, I mean, again, there's like creative solutions to these things, but the arc isn't really built for, um, it's like, it's almost not built for communicability in some ways.
+And I don't mean that like in an insulting way. Um, it's such an incredibly hard test that like, even, even inside of an interview process, like talking about to like reduce something so complex, um, is even just a grid, like just solving a grid problem down to how do you know?
+It's like, well, that's more time than we have, you know, and I would love to go over that with absolutely anybody, but like bring a lunch. It's not a small or easy process. If you're genuinely interested in like kind of knowing those things and how do we validate those things? Um, then like, uh, we can definitely get to the core of it. And, uh, I could walk somebody through, um, so much of this stuff.
+Um, the, we get like visual readouts, right? Like you guys have reporting for models and things that you make. How do you know that reporting is there? Because when you write that code, like you unit test it, right. And you like, make sure that those outputs that come out are correct. And when you integrate things, you test it, then you validate it. There's always testing and validation. It's like 90% of like the time I spend in the other, and 5% of that is with my laptop in the freezer.
+So the, um, those, there are so many of those things. Um, I was actually just explaining this to my friend here, um, that, uh, you effectively, like by the end you've unit tested like every single line over and over again. And to keep that reporting, um, and logging and things like that, like going constantly, it's just, it's, it's, uh, um, computationally exhaustive.
+And, uh, uh, not really great for space when you have a very old laptop with not a lot of space on it. Um, so, um, the, the thing that would really encourage is like, I don't, is for me, the, I w I would love for people to, um, just take it on faith or something. Right.
+That like, um, that, uh, that, uh, that I, you know, would demonstrate this or could demonstrate this with, uh, uh, uh, more time as opposed to talking about how it works, but just showing like what that feedback is.
+Um, you know, um, and I hope people reach out to me if that's, if, if they're really like, if they can't, um, if it's too difficult or if you have any trouble, like running the model or you can't read the feedback or you want to produce a special kind of feedback.
+That you think would give you insights into something.
+I can make all of that stuff.
+In fact, I probably have it laying around already.
+Uh, be honest with you.
+Like, um, so that's not a problem.
+I mean, let me ask two questions on that.
+So you said people can take it on faith.
+So if they did, if they did, what are the implications?
+And then the second question is for those who don't feel like there's evidence to even believe in anything particular, or they just feel like it's not what they understand.
+What do you empirically suggest them to do?
+Um, yeah, try and fail.
+Yeah.
+Like, um, the, uh, uh, and then just keep trying.
+Right.
+Um, what, what are your passions?
+Like, what are you aligned with?
+Like, uh, for me, this is like the greatest thing, um, that I've ever done.
+Um, I beat the hardest technological challenge in human history.
+Um, and it's, it's pretty surreal feeling, but, uh, it's, I would, I would hope.
+And I feel like I, I see this, even though I don't really interact with anybody at the Institute because I'm just kind of always like face down in the books.
+But, um, whenever I do look up and I see somebody at the Institute, I see people who are like either like sentient excellence, like they just like live and breathe, uh, crushing it.
+Or they are people like me who, um, deeply desire to emulate, uh, people who are so awesome.
+Like you, for instance, um, and, uh, and like, I want my work to be meaningful and I want it to like, uh, be something that inspires other people.
+And, uh, you know, like does something cool.
+Maybe even like, you know, make kids happy or, um, resolve a global social issue.
+That'd be nice.
+Kind of sad about people starving to death all the time.
+That's like not a good thing.
+We can definitely fix that right away.
+But, um, I think in terms, if people wanted to, if they were driven, so I don't like, I don't know anything about business or any of that stuff.
+I don't know how to monetize these things, um, in any meaningful way.
+And I'm not really interested in it.
+Um, like a lot of people, like, I think, uh, like assume that I would be gaslighting for something like this, uh, or I think it's called, what do they call it?
+Moonlighting, um, to, as a way to like, I don't know, like get, uh, money or something.
+You know, but, uh, I, I don't think that's how the art prize is handed out.
+And these are like some of the smartest people ever.
+Like it's not, you don't, I don't think I can trick anybody with this.
+You know, it's like, uh, you know, I'm good at this one thing.
+I'm not good at all things.
+Right.
+And I'm definitely not good at tricking anybody.
+So the, like, I would definitely, I, I can't believe that.
+I just, I don't think that the, a state managed system is not, it's not really been done.
+It's a very abstract concept.
+Um, I might be the only person kind of doing it in a way.
+Um, definitely in this approach I am.
+And there are some things that, um, that I kind of just like struck gold on in terms of their efficiency, uh, and performance.
+And so like there, I, I think if other people like they're saying like, they're like, oh, well, I have two months that it's going to take me to encode all this stuff and to train this model.
+It's like, you know, I've got to, you know, there's this thing right here you can have that will allow the model to do that in five minutes.
+It's, you know, the, oh, this is really computationally like, or infrastructure wise.
+Right.
+Like the, one of these, like the biggest thing, um, and concerns for me is like extraction and, and, uh, you know, definitely like exploitation and like extraction and all these things that we can see, uh, happen as a result of, uh, building technology.
+And there are better ways to build technology and smarter systems build smarter technology.
+Right.
+And we get to, as the, the man behind the curtain, like, uh, kind of dictate what those smarter technologies do.
+And if you want like the smartest, like state of the art, like coolest technology way beyond the frontiers, like all of that stuff is like all of the same things that I got to, uh, where I'm at, where I don't even like, or it's like, you're like, you know, okay.
+Um, the, all of that stuff is housed inside Archangel.
+There's, there's stuff that there's, there is a thing for, uh, pulling things apart dimensionally.
+There's just a random vestigial, like component of, of its evolution that I forgot about in there.
+And it's just, you know, like, uh, just the same as anything else.
+It's just a few lines of code packed with millions of arguments, um, that are dictating that the model can't take.
+And dimensionally deconstruct the model and change its shape and form.
+Yeah.
+So there, there's like a, a million and one fun things in there.
+And you, the, like all roads from that, if you are interested in pursuing, um, like technology as a career or as a passion or as a humanitarian thing, or as a way to improve your quality of life.
+Um, there is an infinite potential for things here.
+I haven't even scratched the surface.
+I'm like exploring this entire ocean of potential, uh, all by myself.
+And I, you know, I, I would love, I, and I should, I really should like, um, Daniel, you see all of this reporting, um, all the time.
+Cause I, like my code is like a bank for me.
+It's like where I put all my knowledge, it's provenance for everything I do.
+Right.
+So, um, like all of this stuff exists there and in those spaces and on my laptop and in my cloud and my drive and my Tresorate and all over the place.
+And it's so much stuff that I don't really even know what to do with any of it and all of it now.
+And I like the idea of going through it, trying to organize it and like pull out all of this, like, uh, very specific things to convince like every like person or something or enough people.
+I don't know what that looks like.
+I want to find out.
+Um, and if it's something that I can do with it, it's like achievable for me.
+Um, then I definitely will.
+Um, but when you, when you got it, you got it.
+Like it doesn't, it's not, uh, it's not contingent on whether or not people want to like come over and swim in the Oasis with you.
+Like the, like it's an Oasis.
+It's, it's still gonna exist.
+I'm still like hanging out in the sun, in the shade and like having a blast.
+So it's like, I, you know, I don't know, you know, I'm not really sure what's meaningful there that people want to see if it really is just like these little innocuous, like two lines of codes, calculations.
+That anybody who's like, they're really like anybody who does Python is going to know, like, or any code really like, how do you, how do you calculate the percentage of Python?
+Right.
+Of something.
+So yeah.
+Yeah.
+And that's, that's not, those kinds of like low level things.
+Like they're not, those are pretty much uniform.
+They're like applicable.
+If I, if I want to know the percentage of a hundred of something, uh, in Python, it's pretty much always just the same thing.
+Like in that way.
+It's like, uh, yeah.
+So I don't know.
+I got you just to clarify that one question.
+It wasn't about which Python method or implementation of percentage was done more about like some type of cryptographic authenticity of which data set and script was used to yield what result or submitting it to their API.
+And getting the ARC challenges response.
+If the percentages that you're talking about go higher than open AI, then why are we here?
+Even though it's a light.
+You know, that's a good question.
+I forgot about that.
+I, um, yeah.
+I mean, you, so you can't submit, um, like open AI, I don't think, like, I don't think like they necessarily could either, but they're like a huge company.
+Um, and they're really important.
+They have like a super valuable tool.
+That's like a benefit to humanity.
+It's like really important.
+So it's, yeah, I think it's like, uh, a good thing that they get access to show that they are.
+Like, um, improving and like, you know, bringing better tools to all of us.
+Um, to make our lives better.
+Um, but I don't get those, uh, same, uh, affordances.
+Like no matter.
+Like.
+They're not like, I don't think that would be awesome.
+I would love for it.
+Because if you don't think, if you think I didn't email like the results and the code and all of the stuff, um, and, uh, and producing the same on the same data sets that the art produces, the training and evaluation sets.
+This TQDM, it just reads out the task comes in.
+It's got a task ID counts.
+The task ID.
+There's one, there's two, there's three, there's four, there's 400 runs up through like a deck of cards and counts them all.
+It lines up.
+Cool.
+No red flags.
+Right.
+Good to go.
+Initialization begins.
+And those processes start.
+So the, um, I would love, uh, acknowledgement, um, from like, uh, like who doesn't want to like be acknowledged by, uh, like a brilliant, like powerful intellect, like Francois Chalet.
+You know what I mean?
+Um, but at the same time too, um, I don't know what that thing is yet because the, I have, uh, now completely open source the code.
+I went on line, uh, before I had, uh, totally open source the code, uh, and went to, uh, some places where all the like AI people and machine learning guys and like art experts hang out at.
+And, uh, with like a little feigned braggadocio, uh, because I'm just really like in awe to even be in the same space as these people who, um, have just years and countless like contributions to, uh, their field and are deeply respected leaders.
+So like the, like, I, but I kind of went in there and like levy the challenge.
+It's like, okay, cool.
+How about I just do that life?
+Like kind of what you're talking about here.
+Um, but that required that I sit in a cafe at a hotel for eight straight hours and just provide updates through that feedback, whether that was video clips, screenshots.
+I did, uh, I think I did three different art challenges that are harder than, or purportedly harder than the art.
+Michael Hodel.
+I hope I'm saying that correct.
+I like this guy's, he's amazing.
+Like, so, but I, I even taking that guy, he was like the best of the best of the best of the best.
+And, and taking those challenges and showing that live feed and like, and showing those updates of the model, resolving issues and answering all those questions and stuff.
+It didn't seem to do anything other than, uh, just catch, uh, a little bit of flack.
+So whatever that artifact is that people want to see that shows that they're maximally doing, that the model is maximally doing something.
+Now they get to have that because they can go look at it themselves and they could break it apart.
+They can say, well, oh, it's not working the way I want, or I don't understand it.
+Then change it, like change something about it, change it like to be the way you want it to work.
+It's not going to break in that way.
+Like it will continue to work unless you just start taking out whole big pieces.
+Um, and like in a way taking out those big pieces or taking out small ones at a time and seeing how it affects that performance is like how you can learn to, um, work with state managed systems, build them back and build them better.
+Right.
+So the, uh, which I would love to see, that would be amazing, um, to be outpaced in, uh, in this arena, the, um, and if anybody, by the way, if anybody does know, like if anybody has that magic thing out there that I could just say, Hey, like, this is that piece of feedback.
+Like for instance, I have probably 400,000 cognitive, uh, logs, like alone, because every time I run the model, it prints massive amounts of cognitive logging that shows the entirety of the process.
+Who's going to sit and go through 40,000 pages of cognitive logging, um, to like determine whether the model is, is producing correct output.
+Um, the one thing that we do know is that we can track really simple processes.
+Where does the grid go through the model?
+Where, how does the grid come out of the model?
+What's counted when the grid comes out of the model, when you open the JSON file and you look at the answer and it's the right answer.
+And you know, that the model is making its decisions.
+It's, you know, exercising confidence that it's not the same every time it's that it's can be different that when you change something, it gets less answers.
+Right.
+I didn't just like make a code and then got a hundred percent and was like, all right, I'm king of the world.
+You know, it's like, I, uh, I started at point, like my first score was 0.48%.
+Right.
+And my last scores are now consistently a hundred, um, because I've continued to like make those systems, like, uh, those cognitive frameworks, uh, mechanisms, like more robust, more advanced or sophisticated, taking things out of NIM and putting them into Archangel.
+Uh, which I feel bad about, um, to meet this maximally super difficult contest that has no mechanism outside of its outside of acknowledgement.
+It seems by the people who run the competition for any of the work to be validated.
+I mean, I, that's kind of what I feel like at this point.
+It's like, it's a, you know, I just feel kind of at an impasse and it's, I don't think it's like, for me, it's like, I could spend my life maybe trying to prove to people something, but I don't really know.
+Like, that's like, whenever I think about that, it's like my passion for the work kind of just goes, uh, it's like, that's not fun.
+I don't want to do that.
+You know?
+So I'm sorry.
+It's like, uh, in a way I, I, I, I feel bad, but at the same time too, like I, uh, I had to write 40 page paper, uh, with 20 equations in it.
+Like, uh, uh, just to have this conversation, you know, it's like the amount of the, the work that goes into, um, and around these things to like create this provenance or create this validation for people.
+It's exhaustive and it's super time consuming and it's super labor intensive in terms of like, I would rather be doing fun things than, um, figuring out like really.
+Like, like, yeah, just like trying to do stuff, but it's all there.
+Um, you guys are more than welcome to it.
+I think what I can do, Daniel, let me ask you this.
+Um, because like you're my hero and guide and every, and all things that I love.
+The, um, if I were to start like just compiling all of that data, which I can just send some like other, uh, you know, I have those little next site tools.
+Like, um, I can send those into like the vaults and stuff like that and just start grabbing like mass stuff and just like filling something up.
+Like a repository, I guess, where people can just access whatever data they want.
+Like all of the answers are there.
+And then, um, you know, eventually people will get it if they don't already.
+And I'm sure people do.
+I don't think people like, I don't think people believed that like somebody, I mean, could have that kind of braggadocio or like, uh, could be in a place around such brilliant, wonderful minds.
+Like the best in the world, uh, in what they do and, and somehow just like not know the, just be like, oh man, I got it wrong the whole time.
+Like this guy, uh, who's like, yep, I figured it out.
+It's just cheating the whole time.
+And it's like, oh, okay.
+Ugh.
+So thank you.
+It's, it's, you're sharing a lot and, uh, it's for others to, to investigate at whatever depth they want to go.
+Putting it all in a repo, at least the parts that you want to have be interpreted is a big step.
+And, um.
+That's good.
+I'll do that then.
+I'm glad that just to give people an example of how hard the art contest is.
+I chipped my front tooth coating.
+Like, I, I like, I don't think I'll ever get rid of this in a way just because like, like who chips their teeth coating?
+Like it's, it's one, it is the hardest, most intense and challenging thing I've ever done.
+Like, because I'm getting a hundred percent now doesn't mean that like it, it didn't demand from me, like the most grueling, like, and brutal, like, uh, uh, commitment, like the humanly imaginable.
+It was just, um, an incredible journey and a wonderful sacrifice.
+I talk about it way more in the paper.
+I'm terrible to listen to talk in any kind of, uh, uh, venue like, or in this like arena per se.
+But I, I think that my writing's, uh, quite a bit more, uh, uh, yeah.
+Yeah.
+Benjamin, it takes all kinds.
+So you're the footnote that you're making and, and the documentation is there.
+So let me ask a question from the live chat and then we'll see if anyone else has any questions.
+Oh yeah.
+Yeah.
+That's what I love.
+I've done that a lot.
+Okay.
+Andrew asks, what is the Epsilon control center?
+What impact does the Epsilon control center have on the model's behavior and performance?
+That is a really awesome question actually.
+And the Epsilon control center, um, you'll probably remember, uh, me getting just head over heels, super excited when I discovered this, um, path to creating a way to organize and manage and divert, uh, resources throughout the model.
+And that's what Epsilon control does.
+So it uses like, um, Shannon entropy, um, little entropy calculations I made myself, which I'm really proud of.
+Um, I kind of like, I call one of them, like the warden entropy thing.
+I mean, that's like, I don't know, you know, if anybody, but it's like, I, I love that guy and he's so brilliant.
+Um, but, uh, yeah, so those, you have different like autonomic functions and you get to pick whatever you want these to be.
+And you can change those values around in the Epsilon control center so that your values work as you intend them to work.
+Because remember, it's not so much like how things work.
+So it's a kind of like the outcome.
+It's like, how does, what's the, what happens at the end?
+And I'm not by any means saying that the end justifies the means.
+It's just that like, this is Python, right?
+But when you come, you have this Markov matrix and you're, you're passing this complex information through, but it's just constant.
+Like in a feed, there's no system to redirect energy away from things that are maybe less necessary or parameters that aren't required.
+Um, you get a much, much more, uh, like costly in resource, uh, demanding, uh, model.
+Um, and when you can use like an adaptive, like Epsilon control center to kind of determine what's important based on all this other feedback of the system.
+And then for instance, like, uh, um, you know, like the cognitive load, um, focus intensity, which, you know, uh, would be like on a thing.
+Confidence for instance, is a really good one, um, for that.
+And you can have all of these things, like in one place, you can control all of them.
+They feed through the entire system and they automatically modulate those, those energies for you.
+So now where you were getting, like, it would take you a hundred percent of your energy all of the time.
+Now when you don't need a hundred percent of that energy, you only need 10%.
+You're using that 10% only reserving that other energy.
+And then faster than fast.
+In fact, I think with this new tech that I'm building, um, I can get faster than neuronal firing.
+The, um, the, the like emergent properties that come from something.
+That's just the most tiniest little change in a system.
+And it just complexifies to have resounding effects throughout the entirety of the model in some way, because the model inferences something.
+It processes to stimuli.
+It reacts as we all do.
+For instance, like, you know, we may be, uh, in control of our locomotion and we walk out into the street and we don't see an oncoming car.
+But the moment we infer it, right.
+There is a whole series of what the epsilon control is happening in the system to maximize fitness, help you meet your evolutionary imperatives, redirect energy from all of those things that aren't important to the things that are.
+And, um, well, that, that split, like fractional second timing is, you know, probably why we're still here on this earth.
+Um, in a computational framework, you get a massive compute on wall power.
+You get the most ridiculously fast, um, and powerful encoding because you don't need everything all at once.
+You only need the things that are important in that moment.
+And the, the, the, the, the, the, the adaptive nature and the response, how fast it can act within the system and the, how quickly that affects the system is, is unbelievable.
+It's, it's just, it's like, oh, you know, they have those like little, uh, automatic, like, uh, like AI driven, uh, like, uh, heaters for your house.
+And it like gets to know your schedule.
+I've never had one, but they're like, uh, it gets to know your schedule over time.
+And it starts kind of doing things for you, you know, in terms of like, oh, they're going to be home in a half an hour.
+I'm going to start heating up the house to 72 degrees.
+Cause that's what temperature they always set it at when they come home.
+So that being the case, like, it's like that, but times 10 jillion, you know?
+So, well, 6,441 quadrillion was that 6.4 eggs of flops or something.
+I don't know.
+Okay.
+Next question.
+And then anyone else can write more.
+Our colleague XZQZQZY asks, what is the image that you see in your head when you think of the future in seven years?
+I see, uh, me and them.
+And, uh, I mean, I don't know, like, should I talk about like the future?
+What I would love to see, I guess, if it was for everybody.
+I'm hoping to be back in Sopmi with Nim and, uh, sledding and hanging out with reindeer all day.
+Um, but the, uh, uh, I mean, like globally, we are prolonging a bunch of problems that, uh, are not necessary.
+Like, I think the active inference Institute is like one of the greatest forces for good because it has access to like all of the most advanced technology and all the smartest people.
+And I don't really understand why in seven years will probably be another seven years closer to like, uh, you being extinct.
+And, uh, and so, you know, um, instead of having cured all of the diseases in the world.
+So for instance, like how much computation did it take?
+You guys remember when they cured a disease using AI, they like created a molecule.
+And that molecule, uh, got through the FDA and like record time because you know, how they were able to model the data, they were able to show and all of these things.
+Right.
+
+And, uh, these like cures and these illnesses that have these high mortality rates, but they impact a very low amount of people, but 99% of people die if they get it.
+Uh, but only 10 out of a million people get it or whatever.
+They don't address these things.
+Right.
+So, um, I know for a fact, it was a lot less than 6,441 quadrillion, uh, calculations per second, like, uh, to, to come up with the, that cure.
+Right.
+So the fact that like, I have OHSU, I can actually see OHSU from my balcony right now and, uh, up on the cliff side there.
+And they have a thing just sitting there.
+It's going to get decommissioned.
+And I could probably, I think when I did, when I ran like the maths, it's like, okay, if this, if the maximally, if this disease is this complex, right.
+And it has this kind of like, it required this much to solve the problem around it.
+What does that look like in terms of like what NIP can do?
+And, uh, it's really, really, really bizarre to me that you, people are like, want to see if the model can solve grids, but nobody wants to see if it can cure all the diseases.
+Right.
+Like, uh, that's so seven years.
+I, in a way it's like, I have a lot of hope.
+There's, uh, there's, uh, there's like so much rapid advancement and I hope that there is like, uh, an influx of reciprocity.
+And, uh, uh, you know, uh, we kind of achieved like some cool homeostasis with each other and our environment, but I, you know, this silent agreement, this, uh, perpetuated deception of, uh, continuation without, uh, consequence or accountability for any of our actions.
+Now with, uh, no change in the near future, uh, infighting and identity politics and all of these things that I miss out on because I'm always on my laptop buried in the books.
+Um, you know, I, a lot of it could really be resolved in where, like, I mean, don't, doesn't like, it doesn't feel like complicity, you know, to like that, you know?
+Yeah.
+I mean, I, I guess that would, I hope, I hope for the best plan for the worst, but yeah, it feels, feels like there's a lot of like, uh, a denial of the inherent complicity income complicity that, uh, uh, companies, um, these types of like moral and ethical leaning, like arguments.
+I get this too, a lot about like, uh, cause I build AI and stuff.
+I mean, they're not really AI, I call it like hyper intelligence, you know, it's kind of sound cooler, I guess.
+Uh, but, um, it's very different than, you know, a distributed system, a distributed system besides being resource exhaustive is not nonlinear, right?
+Like not by any thing, like something always being on all the time.
+It's not, it's not how, uh, but, uh, at least it might be.
+So the, uh, we invest like billions of dollars into something like that.
+Um, and it's a valuable tool and I love that, but why would we continue to invest billions of dollars into it?
+When the, like, there are way better solutions, way better answers sitting right there on the table.
+That doesn't make it, that doesn't look good for our future.
+All right.
+Let me ask two final questions, just a little logistical one and then a final.
+Okay.
+Little logistical one.
+Who do you want to do what?
+If they've listened to that this far.
+What's that?
+Who do you want to do what?
+If they've listened this far.
+I want them to go to the GitHub and I want them to take Archangel out of the GitHub and I want them to run it and to start playing with it.
+And to, um, instead of trying to figure out how the model doesn't work, like figure out how it works in ways that inspire them and promote their creativity and move forward.
+Their projects and their like passions, um, and then, uh, tell me about it so I can, uh, share in that joy.
+Um, the, the papers that I write, like, I don't really read them.
+Um, but they contain all of the, those foundational maths.
+Like, um, if anybody wants to code, I'll give you the biggest secret in the world in a computational environment.
+Do you get to be the author of the entirety of the story?
+You get to define what all of the things are.
+So if it works in a way, then you make that way for it to work.
+It's like, if you think it and you can dream it, you can build it in that computational environment.
+And the high road and low road to active inference is how you get there.
+So start with those mathematical frameworks, like all find things that are, um, oh gosh, I can't think of the word, but that, uh, that mirror the, or either mirror that process or, and most importantly, produce the outcome.
+That is desired.
+And, um, play with those things.
+And so the, the most disappointing thing I think is when someone picks up something as powerful, like having Nim and then looking at, you know, to give you guys an example.
+Um, I think Archangel is less than one 40th of Nim's core, just his core code base.
+It's not like all the libraries and all the other things that are attached, just his core code base, right?
+It's one 40th.
+It's just a tiny little thing compared to, uh, Nim who works maximally well.
+Um, so there's not really like the, it's a toy it's meant to have fun with.
+And the amount of things that are chalked in there for people to play with, it's just so sad when like someone picks it up and they go, oh, I found where it's wrong.
+And it's like, but you totally missed this, like really beautiful thing over here.
+There isn't a right or a wrong way to code.
+There are things that can be wrong, but by virtue of them, not being what you want them to be, or not working in the way you think or understand them to work does not mean that they are wrong.
+It doesn't mean that anybody's a bad person.
+It means that like, you should grab those things and you should say, Hey, I don't think this works this way.
+I'm going to change it to work this way that I think is really cool.
+And then come and show me so I can see it.
+You know, I don't want to talk about like, uh, how, you know, like.
+You know, like AI is going to take over the world or like achieve consciousness and enslave humanity when it's not actually even possible.
+So not, that's not even a conversation.
+We should be having one.
+We can't even look seven years into the future and know whether or not we're all going to have already starved to death.
+It's like, all right.
+Yes.
+Again, you've added a lot.
+Here's the last question.
+So just give a, give a response you feel like is relevant at this time.
+Where did your internship come from and where are you going with your internship next?
+Oh, that's so awesome.
+I love that question.
+Thank you so much.
+Oh my gosh.
+What a heartwarming question.
+Um, I came to active inference and the Institute in the weirdest possible way, as I'm sure you can imagine.
+Um, I clearly like very much an outsider and, uh, uh, uh, I, I started with the question.
+Um, how do we resolve cog like feedback loops, cognitive feedback loops in humans?
+Um, when we engage in conversation, um, we like enter this like process of, of like, you know, we see this, uh, this like phenomenon with like echo chambers and all kinds of things.
+And like, so, so like social psychology and like in group dynamics and stuff.
+And, uh, and like studying, like putting my face in the books, wanting my work to be meaningful and having an insatiable curiosity.
+I, uh, uh, came up with the very first equation and I would love to show you guys anybody who wants to see it.
+I still have it.
+Daniel seen it.
+Uh, it's been just a very tiny, like syllogism really.
+And, um, it is, uh, a mathematical framework for a philosophical concept.
+Um, the, uh, absence of evidence and evidence of absence.
+And that's where I started.
+And from there, by the time that I, um, was like, I, I, not only do I need help, but I know that there's gotta be someone out here who will understand that these maths are, uh, important.
+That they'll like, that they're important to me, you know, and that like, that they'll make sense.
+And then I saw the work of, uh, Carl Friston and Thomas Parr and Tim Verbellen and Alexander Schantz and all of these guys, um, just started coming out of the woodwork for me.
+Um, and it changed my life.
+It was like, it was like one of the greatest things that happened.
+It's like, I could see the, I could see the maths.
+I could see how they work.
+I could see how they related to my work.
+Um, and which I wish I could do for people with my stuff.
+I'm trying, trying.
+Um, and, uh, I reached out in a, uh, like just like a fit of, uh, wanting to be in the room with people who shared my passion and could, uh, teach me, uh, and equip me and, uh, you know, help me improve in these, uh, uh, domains.
+And so I reached out to the president of, uh, of a really important company where, uh, a bunch of really, uh, important people that I just knew they worked there.
+I did.
+I don't know anything about them.
+Most of them still, uh, or even what they look like, but I, I could point their work out like onsite.
+Right.
+Like, um, and I reached out in the president of that company, um, who is a saint in my book and I'll love him forever and be eternally grateful.
+Um, recognize the work he recognized it too.
+Um, and he said, this looks really similar to what these people are doing.
+And he gave me my first roadmap to, uh, the Institute.
+And that's what brought me there.
+Um, I, my founding artifact was, uh, the multi-agent system.
+And, uh, I presented my very first thing to members of the scientific advisory board, our illustrious director, uh, Daniel.
+And, um, uh, and they let me come and hang out and how's my, and I've housed my work there ever since.
+Um, I don't get a chance to participate in stuff because of how exhaustive, uh, and, uh, how much, like how passionate and dedicated I am to this work.
+So I feel like 99.9% of my time is just spent, um, uh, doing this thing.
+So, uh, yeah, I, yeah, it was really roundabout way.
+And then what I brought was really silly and I still have, but still in my code of the, my founding artifact, like that, that multi-agent system that I brought you.
+By the way, did you like the, the agent factory?
+I mean, did you get a chance to play with the agent factory?
+So you're it's so your multi-agents can make agents like, and your agents can make multi-agents.
+They can make it, do whatever they want.
+You just like, you don't even have to pay attention.
+Now, if you have an environment and anything happens in that environment that they perceive, they can just make more of themselves or whatever.
+So they're like, I'm not good at this.
+Or that maybe they feel lazy.
+Maybe they're overconfident, you know?
+All right.
+Any last comments?
+Just, I'm really grateful for everybody like, um, uh, watching this.
+I know that I'm not a great communicator.
+It's always been a really, uh, huge issue for me.
+Uh, and, uh, but the, the work speaks for itself and I would really engage, uh, really hope you guys will engage with the work and learn this language.
+So you can have those conversations with it and, uh, make beautiful and wonderful things that are, you're going to find out if you go and look and you dig in, uh, or ask questions.
+Just awesome.
+Way more awesome than anything else you can get out there.
+So it's a lot of fun.
+It's all yours.
+All right.
+Acting for surf.
+Yeah, for sure.
+Talk to you later.
+Thank you, Benjamin.
+Bye guys.
+Thank you so much.
+Bye.
+Bye.

@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream 019.1: Active Inference in Discrete State Spaces from First Principles (P. Kenny)</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream 019.1: Active Inference in Discrete State Spaces from First Principles (P. Kenny)</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_019 &middot; Episode 1 &middot; Duration: 1:52:31 &middot; Views: 280</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=q6Z-4aXO36U">https://www.youtube.com/watch?v=q6Z-4aXO36U</a></div>
+<article>
+<p>Hello, everyone. Welcome. It's January 15th, 2026, and we're in Active Inference Model Stream</p>
+<p>number 19.1 with Patrick Kenney and Thomas Parr and Norsegetus guests discussing Active Inference</p>
+<p>in discrete state spaces from first principles. Patrick has a presentation, and also we will</p>
+<p>hear from our guests and read any questions from the live chat. So, Patrick, to you for</p>
+<p>the presentation, and thank you. Go for it. Thanks, Daniel. So, my title is Active Inference</p>
+<p>in Discrete State Spaces from First Principles. Now, let me explain briefly why discrete state</p>
+<p>spaces. It's because what I think is a natural formulation of active inference is the path</p>
+<p>integral formulation, and this is very easy to get to grips with in discrete state spaces</p>
+<p>because you can do it with a hidden market model as the dynamic model. It's not so obvious</p>
+<p>what you can do in continuous state spaces with continuous time if you want to do the path</p>
+<p>integral formulation and develop it to the point where it might actually be of some use in practical</p>
+<p>applications. And when I say from first principles, that's a nod, if you like, to the free energy</p>
+<p>principle, I'm proposing that active inference, the problems that need to be addressed can be tackled</p>
+<p>by standard methods that have been developed in machine learning, in particular the mean field</p>
+<p>approximation, without having to appeal to the free energy principle. And I'll explain that there are</p>
+<p>some limitations that this discipline imposes, but also some advantages which accrue from adhering to</p>
+<p>traditional well understood methods that have been developed in machine learning, Bayesian machine learning,</p>
+<p>obviously. So, I'll explain then the mean field approximation, how that</p>
+<p>that addresses the fundamental problem in active inference, the processing the perception action cycle so that</p>
+<p>an agent can infer its future actions from its past history,</p>
+<p>essentially by predicting its future sensations. And how this leads to an optimization criterion, in fact, it's a</p>
+<p>K-elvergence criterion, which is not quite the same as expected free energy. It's very similar, but there is a subtle</p>
+<p>difference which I will dwell on a bit. And I will explain that there are other natural applications of the mean field of approximation in active inference, which do not appeal to the free energy principle.</p>
+<p>In particular, the problem of Bayesian learning of HMMs is a direct application of the mean field approximation.</p>
+<p>Also, the problem of updating beliefs about policies, that too is amenable to treatment by the mean field approximation.</p>
+<p>So, I'll conclude with the pros and cons of doing things this way.</p>
+<p>So, here's the mean field approximation in its</p>
+<p>most compact form. You have a target distribution which you want to approximate,</p>
+<p>is known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known</p>
+<p>to P. This is the form of the divergence which is capable of being evaluated under these</p>
+<p>assumptions that Q is tractable and P is intractable. And the basic assumption is very</p>
+<p>simple. You assume that Q factorizes in this way so that the state space can be split up into streams</p>
+<p>which are statistically independent under the approximating distribution, not necessarily under</p>
+<p>the original distribution. And there's a very simple rule for estimating or calculating the factors in</p>
+<p>this factorization for Q. It requires that you update these factors asynchronously, one at a time,</p>
+<p>according to this prescription. Okay, you take the log of the target distribution, you average out all of the</p>
+<p>components other than the component of interest, Qx of n, by using the current estimates of the factors.</p>
+<p>And then you renormalize the result by passing it through a sigmoid function in order to get a</p>
+<p>probability distribution. So the things to note about this, first is that the criterion, the divergence,</p>
+<p>is guaranteed to decrease on each iteration.</p>
+<p>And secondly, that you don't actually have any choice in how the update formulas are to be derived.</p>
+<p>They are determined by the form of the generative model that you're approximating, P of x, and the</p>
+<p>factorization that you're going to impose on the approximating distribution. That's different from the free</p>
+<p>energy principle. You don't have any choice in how you're going to do the updating.</p>
+<p>It's the mean field approximation is mostly used in calculating exterior distributions. And in that special case,</p>
+<p>the way you handle it is by clamping one of the variable substreams to the observed value. You're calculating the posterior distribution of all of the variables other than the variable that has been observed.</p>
+<p>And in the mean field approximation, you simply clamped that component to the observed value, which I've denoted here by x0 bar.</p>
+<p>Now, the main point I want to make in this paper is that although the mean field approximation is traditionally used in calculating approximate posterior distributions, which of course is the problem of perceptual inference,</p>
+<p>the way you're going to be used in calculating the same field. It can also be used to approximate predictive distributions so that an agent can use it to predict his future sensations and thereby infer the actions which he is going to embark on.</p>
+<p>So, for this, I need to introduce some more notation. The variable stream, I assume, is going to be split between hidden variables and observable variables. The hidden variables,</p>
+<p>as I denote by s, and the observable variables by o. And the relationship between variation of free energy</p>
+<p>and the mean field approximation is summarized by that box equation. This is not one of the usual ways of expressing variation of free energy. It turns out to be the one that's most convenient for my purposes.</p>
+<p>If you impose the constraint on the factorization that I just described in the last slide, in this notation, okay, where I'm distinguishing between hidden and observable variables,</p>
+<p>the variation of the variation of the variables. The variation of free energy is just the KL divergence between the target distribution and the approximate distribution,</p>
+<p>where the approximate distribution is required to satisfy this constraint here. So, this is not one of the usual ways of characterizing variation of free energy, but it's a simple calculation for</p>
+<p>calculation which is easy to derive. It's done in the paper. I'm not going to go into the details. So, this is how the mean field approximation solves the problem of perceptual inference, where you have the agent has recorded sensory observations and wants to infer</p>
+<p>the state of the state of the past history of the past history of the past history of the world up to the present moment. And the problem I want to focus on is how the mean field approximation can solve the problem of active inference, which is to say how it can produce approximate predictive distributions for the future sensations of the agent.</p>
+<p>So, here's the picture. I'm assuming that the agent is modeling its world by a hidden Markov model, okay, so that all of the agent's knowledge about the world, including the repertoire of actions, the repertoire of possible sequences at a time zero,</p>
+<p>at a time zero, and the prediction horizon extends to a time capital T. All of the S variables are hidden, their values have to be inferred, but at a given time, there will be a history of past observations that have been recorded.</p>
+<p>So, this is known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known</p>
+<p>So, let's see, the problem of perceptual inference is just a matter of approximating a posterior distribution on the states up to the present moment,</p>
+<p>given the observations up to the present moment, whereas active inference is the problem of, it can be viewed as the problem of approximating the posterior distribution on the future states and future observations, given the observations up to the present.</p>
+<p>And what I'm proposing in the paper, that both of these problems can be solved in an integrated way by minimizing a single divergence between an approximating distribution Q and the HMN P,</p>
+<p>where the mean field approximation implements the mechanics.</p>
+<p>The constraints on Q, okay, are simply that, okay, so I'm using the standard conventions here.</p>
+<p>Roman T, little t, is the present time.</p>
+<p>The Greek tau is any time in the past and the future, up to the planning horizon, which is capital T.</p>
+<p>Roman T. So, we have a standard factorization, where the constraints on the factorization are that the observable variables,</p>
+<p>their values have already been observed at the present time T,</p>
+<p>and the future observable variables are distributed according to the emission probabilities of the hidden markup model.</p>
+<p>That's the only constraint that's imposed on the factorization that feeds into the mean field approximation.</p>
+<p>So, assuming that the HMN, that the state space is sufficiently small that you can precompile the matrix of transition probabilities,</p>
+<p>you can work out the mean field updates in a fairly straightforward way.</p>
+<p>The mechanics are presented in the paper.</p>
+<p>If you are in the situation where this is the time index that refers to any time in the past or the future,</p>
+<p>If you are in the situation where that time index is referring to the past,</p>
+<p>so that you've already got an observation history, then these are the update formulas.</p>
+<p>And I expect everybody watching this video will recognize that these are just standard update formulas</p>
+<p>for minimizing variation of free energy, such as are presented in the active inference textbook.</p>
+<p>The only difference is that for a technical reason that I will explain, the</p>
+<p>q at time tal equal to zero is not being updated. It's assumed to be inherited from the agent's prior</p>
+<p>actions. So this thing would be, I guess, the D matrix in the standard convention.</p>
+<p>But there's a slight departure from the standard treatment of time tau equal to zero in the paper,</p>
+<p>which I will explain when I come to it. Now, this is the update formula in the case where the Greek</p>
+<p>letter tau, the time at that time index, is in the past. And that solves the problem of perceptual</p>
+<p>inference. But for active inference, you need to predict the future rather than</p>
+<p>retro-dict the past. So there's another set of update equations, which is almost the same.</p>
+<p>This H here is the vector of entropies of the emission distributions in the HMM.</p>
+<p>So you can't actually, you don't actually have observations for future times. You have to average</p>
+<p>overall possibilities and what you get is just the negative entropy. The only difference between this</p>
+<p>and the previous slide is that for times in the past, the observation history is available.</p>
+<p>For times in the future, you just have to average overall possible futures and you just end up substituting</p>
+<p>this entropy vector in the place of the observations in the past.</p>
+<p>So these update formulas, both in the past and the future, are guaranteed to decrease the divergence between</p>
+<p>the approximating distribution and the hidden market model. So the basic posit here is that if an agent</p>
+<p>models its world by a hidden market model models its world by a hidden market model,</p>
+<p>and it wants to calculate a predictive distribution for its future observations,</p>
+<p>then the right way to evaluate the quality of its predictive distribution is to measure its divergence from the HMM.</p>
+<p>The HMM is what the agent would use if the state space were sufficiently small to do exact calculations.</p>
+<p>Of course, our basic assumption is that the state space is so complicated that variation methods are needed.</p>
+<p>And the natural approximation, at least to my way of thinking, the natural criterion for deciding how well a predictive distribution is fit for purpose,</p>
+<p>is to compare it with the HMM to calculate the divergence, which, excuse me, to calculate the HMM, which holds</p>
+<p>all of the agent's knowledge about the world that it inhabits.</p>
+<p>So, let's see, then, what all of this has to do with the free energy principle.</p>
+<p>There's a, naturally, if you look at the constraints, it's obvious that there's going to be a decomposition</p>
+<p>in the divergence criterion, a contribution from the past and a contribution from the future,</p>
+<p>and you can tease those out. As far as the past is concerned, the observable variables are clamped</p>
+<p>to the actual values of the observations. And as I pointed out at the beginning, clamping some of the variables</p>
+<p>that enables you to interpret the KL divergence as a variation of free energy. That's the first component here.</p>
+<p>The second component, okay, when you work it out, it's the divergence between the</p>
+<p>the approximating distribution in the future and the HMM in the future.</p>
+<p>So, if you look at the constraints that I imposed, okay, I assumed that the approximating distribution inherits</p>
+<p>the emission probabilities from the HMM. So, when you're calculating a divergence, the only possible scope</p>
+<p>for a divergence between the approximating distribution and the HMM is in the state space.</p>
+<p>So, the joint divergence, okay, so the joint divergence here simplifies to a marginal divergence.</p>
+<p>And that's this second term here. So, the basic claim that I'm making in the paper is that this thing is what</p>
+<p>is most natural to look at in place of the future expected free energy for the purposes of calculating predictive distributions.</p>
+<p>Now, as I mentioned at the beginning, there is in fact a very close relationship between this and expected free energy,</p>
+<p>but they're not quite the same. So, I'll briefly explain what that difference is.</p>
+<p>So, here in this slide, I've just reviewed the standard way of defining expected free energy.</p>
+<p>So, what we have is if we assume that the posterior distribution, okay, for the uter observations,</p>
+<p>the posterior distribution of states or state sequences is independent of the observation.</p>
+<p>This is something that's done in formulating expected free energy, but it's obviously not done in</p>
+<p>formulating variational free energy. But it has the advantage that you get something that's easily</p>
+<p>used to be computationally tractable. Okay, you start with this definition, you do some fairly standard</p>
+<p>manipulations, and you get a marginal divergence, which is just like the thing I pointed to in the last slide,</p>
+<p>together with this ambiguity term. Then you do some more fiddling approximation, and you get the standard</p>
+<p>expected free energy function, or the expected free energy function, consisting of the pragmatic value,</p>
+<p>and the mutual information or information gain term. So, that's the standard way of doing things.</p>
+<p>If you do similar fiddling with the marginal divergence, what you end up with is the,</p>
+<p>you get the pragmatic value again, the same one as here, but instead of the mutual information,</p>
+<p>you end up with an entropy term. This can be viewed as an entropy regularizer. Optimizing this will</p>
+<p>the mutual information between the hidden end observables. This, I think, is a reasonable thing from a</p>
+<p>biological point of view. If an agent is in the business of inferring its future actions, then it does need to be</p>
+<p>careful not to be overconfident about its future predictions. It needs to be able to look ahead, but also</p>
+<p>to know the limitations, the degree to which its future predictions are to be trusted. So, that would be, if you like, a biological rationale</p>
+<p>for having this entropy term here.</p>
+<p>Now, this here was, this assumption can be relaxed. Okay, it's possible to evaluate an expected free energy without</p>
+<p>making this assumption here. And when you do that, okay, you, dropping this assumption, variation of free energy,</p>
+<p>if the future observations were available, you would calculate it this way. And expected free energy,</p>
+<p>you would then average over all possible future observation sequences. And you do a bit of</p>
+<p>algebraic manipulation. And you find, again, an entropy term that relates</p>
+<p>the generalised expected free energy to the marginal divergence which I have suggested is the most natural</p>
+<p>way, most natural criterion for predicting the future. So, the relationship between the criterion I'm proposing and</p>
+<p>expected free energy to find in this generalised way is the only difference between them is an entropy</p>
+<p>regulariser that encourages approximate distributions which are of high entropy.</p>
+<p>So, I think I can say that what I'm proposing is very faithful to the spirit of the free energy principle,</p>
+<p>the reason why I'm proposing is a very simple principle, but there is a subtle difference that has to do with this</p>
+<p>regularisation.</p>
+<p>So, there are a few other points I could cover, but I'm not going to linger on them.</p>
+<p>I'm going to linger on them just to show firstly that the standard Bayesian method of learning</p>
+<p>HMM parameters is, in fact, although it may not usually be presented this way, is a direct consequence of the mean field approximation,</p>
+<p>which is just a general procedure for approximating complex joint distributions by simple factorised distributions.</p>
+<p>So, all you have to do in any application is figure out what is the joint distribution you're trying to approximate</p>
+<p>and what is the factorisation that you're going to impose on the approximating distribution.</p>
+<p>So, the joint distribution in the case of learning HMMs, you need a joint distribution on</p>
+<p>the HMM parameters and the hidden states and the observations, which is, you see, this second term here is just the HMM,</p>
+<p>and this is the directly prior on the HMM parameters.</p>
+<p>And then you approximate it by imposing a suitable factorisation,</p>
+<p>and then you just turn the crank.</p>
+<p>The mean field approximation is just a straightforward mechanical procedure once you have set the thing up properly.</p>
+<p>And what emerges in this case is just the standard procedure for estimating HMM parameters.</p>
+<p>One other application, which is a bit more technical, but I explain it in detail in the paper,</p>
+<p>is how the mean field approximation applies to the problem of updating beliefs about policies.</p>
+<p>So, assuming that you have a prior distribution policies, that would, I think, typically be denoted by a vector E</p>
+<p>in the active inference literature.</p>
+<p>And you have observations in the past, and you have a probability distribution.</p>
+<p>Well, you want to calculate a posterior distribution given the observations in the past,</p>
+<p>and you can do it just by figuring out exactly what is the joint distribution of the hidden variables that you're trying to approximate.</p>
+<p>What are the conditions that you impose on the factorisation in order to make the mean field updates computationally tractable?</p>
+<p>Well, and you end up with a formula which is very similar to an equation in the active inference textbook,</p>
+<p>with the difference that what plays the role of expected free energy is this thing,</p>
+<p>this contribution of the future to the KL divergence.</p>
+<p>And it's not unexpected free energy.</p>
+<p>So, that's a bit too technical to dwell on any further.</p>
+<p>I'll just say that anyone who's interested can find it in the paper.</p>
+<p>So, I can now conclude.</p>
+<p>So, the mean field approximation can be brought to bear on all of the basic problems in the inactive inference.</p>
+<p>OK, the three that we looked at was how an agent can infer a predictive distribution</p>
+<p>on its future sensory observations from an observation history.</p>
+<p>Data that has been collected in the past.</p>
+<p>So, the mean field approximation applies to the problem of Bayesian learning of HMMs.</p>
+<p>How it enables you to update beliefs about policies in a principled way.</p>
+<p>The limitations of the method are that the objective function has to be a KL divergence.</p>
+<p>The function that you're trying to optimize.</p>
+<p>This presents no problem in the case of perceptual inference.</p>
+<p>Because the, although it's not usually done,</p>
+<p>variation of free energy can be expressed directly as a KL divergence.</p>
+<p>However, this is not true of expected free energy.</p>
+<p>expected free energy, no matter how you define it.</p>
+<p>It's not a KL divergence.</p>
+<p>But you can manipulate it by adding in an entropy regularizer so that you actually do get a KL divergence.</p>
+<p>So that the objective function is amenable to the mean field approximation.</p>
+<p>And the critical point, I think, is that the update formulas or the mean field approximation are determined.</p>
+<p>You don't have any choice.</p>
+<p>You don't have any choice.</p>
+<p>You don't have any choice.</p>
+<p>You don't have any choice.</p>
+<p>You don't have any choice in writing down the update formulas.</p>
+<p>Everything is governed by the generative model.</p>
+<p>That's my sort of basic assumption.</p>
+<p>So that's an agent that's navigating a discrete state space.</p>
+<p>Using a HMM to encode all of its knowledge about its world.</p>
+<p>And that governs the updates.</p>
+<p>The major advantage, I think, is that there is a convergence guarantee.</p>
+<p>If you have implemented things properly, the KL divergence is guaranteed to decrease on every belief update.</p>
+<p>And as far as I know, there are no convergence guarantees for the free energy principle.</p>
+<p>So that concludes my talk.</p>
+<p>I guess I'll continue to share the screen in case there are any questions about any formulas or anything.</p>
+<p>Thank you.</p>
+<p>Great.</p>
+<p>All right.</p>
+<p>Yes.</p>
+<p>Leave the slides up.</p>
+<p>Thomas, if you would like to make any first comments,</p>
+<p>or I can just ask some preliminary questions.</p>
+<p>And meanwhile, people who are watching live can write in the chat.</p>
+<p>If you'd like to go first, though, Thomas, go for it.</p>
+<p>I'd suggest we do it that way, actually, Daniel, because I'm interested in what people ask.</p>
+<p>And then we can discuss some of those points afterwards, if that's OK.</p>
+<p>Great.</p>
+<p>OK.</p>
+<p>So people watching live can write in the chat.</p>
+<p>Let me just ask a few clarifying questions while people are writing, Patrick.</p>
+<p>So in the first introduction of the VFE, if you could go back to that slide on, I think,</p>
+<p>decomposing the divergence.</p>
+<p>Oh, the slide, excuse me, the slide entitled decomposing the divergence.</p>
+<p>A little bit back.</p>
+<p>There.</p>
+<p>OK.</p>
+<p>When I mentioned the variation of free energy was here.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>OK.</p>
+<p>Thank you, Peter.</p>
+<p>So here you have the VFE defined by only the KL divergence between the joint distribution</p>
+<p>of the Q approximation and the P.</p>
+<p>Q. In equation 2.5 of the 2022 textbook, in the third line, there's a divergence and an evidence</p>
+<p>term.</p>
+<p>So have you just only focused on the KL divergence aspect or is there a different role for how</p>
+<p>you've derived the...</p>
+<p>...that this is literally the same as the standard presentation?</p>
+<p>There are actually three standard presentations of the variation of free energy.</p>
+<p>And what I'm saying is that this one is exactly the same, just written in a different way.</p>
+<p>It actually requires a little bit of pencil and paper calculation to see that, but it's in the</p>
+<p>paper.</p>
+<p>OK.</p>
+<p>Perhaps just to make that clear, so you know that the KL divergence here can be separated out into</p>
+<p>a difference between an entropy and an energy-like term, just as the variational free energy would be.</p>
+<p>The entropy term comes from the first, the qubit here.</p>
+<p>Now, if you were to separate out the...</p>
+<p>Because the entropy is a log term, you can separate it out into the sum of the entropy of Q of S and the</p>
+<p>delta distribution here.</p>
+<p>So the entropy of the delta distribution is going to be zero by definition, so it will vanish,</p>
+<p>which leaves you with just the Q of S bit.</p>
+<p>So it's exactly the same.</p>
+<p>OK, it is obvious to you then.</p>
+<p>Good.</p>
+<p>Yeah, good.</p>
+<p>OK.</p>
+<p>So it wasn't obvious to me, actually.</p>
+<p>If you look at the paper, I derived it in a more circuitous way.</p>
+<p>Yeah, those different decompositions of the VFE in equation 2.5 and the EFE, which my next question</p>
+<p>will sort of be about, it's very fascinating.</p>
+<p>These kind of rings of compatible, isomorphic, or transformable equations that all highlight different</p>
+<p>aspects. And when it comes to the computational implementations, sometimes certain representations</p>
+<p>have different computational availabilities or resource needs, depending on space size and all of that.</p>
+<p>So just to...</p>
+<p>Indeed.</p>
+<p>Go ahead.</p>
+<p>No, I would just say that for my purposes, it was essential to cast the variation-free energy</p>
+<p>as a single scale of the versions and nothing else, because that's what the mean field approximation</p>
+<p>is tailored to optimising.</p>
+<p>So it just reinforces your point.</p>
+<p>There are many different ways of writing these functionals, which are more or less suitable,</p>
+<p>depending on the context that you're working under.</p>
+<p>Great.</p>
+<p>And then just one kind of similar clarifying question about the EFE.</p>
+<p>That was a few slides later.</p>
+<p>Okay.</p>
+<p>So just...</p>
+<p>So I had a couple of...</p>
+<p>Perhaps.</p>
+<p>Yeah, perfect.</p>
+<p>Perfect.</p>
+<p>Or here.</p>
+<p>Yeah.</p>
+<p>This was the preamble to the...</p>
+<p>Yeah.</p>
+<p>So...</p>
+<p>developing the relationship between this divergence criterion and the EFE.</p>
+<p>But the...</p>
+
+
+<p>Let's go...</p>
+<p>Yeah.</p>
+
+<p>So just on here.</p>
+<p>Sort of conventionally, the EFE is modeled as a sort of tree search unrolling of conditional</p>
+<p>action sequences over the policy time horizon and the consequences of the transition matrix slice</p>
+<p>constituting the B tensor.</p>
+<p>So how does the mean field or your formalism here deal with the conditional effects of different actions?</p>
+<p>How can we average over expected observations in a way that, at least here, though I see later the pi variable and the action conditionality comes into play.</p>
+<p>Here I was a little surprised to see this as a sort of temporal unfolding Gaussian blur over observations that doesn't immediately seem to condition upon action selection.</p>
+<p>Okay.</p>
+<p>Good question.</p>
+<p>In fact, it's really comes at the heart of the matter for this paper.</p>
+<p>However, my assumption is that the agent encodes all of its models about its word in a richly structured hidden market model.</p>
+<p>So the type of model that I have in mind is the sort of model in the pixel...</p>
+<p>what is it called, planning from pixels paper?</p>
+<p>The one which Carfiston has called the renormalization...</p>
+<p>The renormalization group model.</p>
+<p>I forget exactly what his terminology is.</p>
+<p>But where you have a hierarchical structure, okay, where the actions and policies can be folded into the...</p>
+<p>into the way that the HMM states are defined.</p>
+<p>Okay, so there's...</p>
+<p>You actually...</p>
+<p>Although the expected...</p>
+<p>The free energy principle is usually presented as a way of...</p>
+<p>making inferences about actions which are currently underway or are yet to be performed.</p>
+<p>That way of presenting things hinges on a hard distinction between actions and states.</p>
+<p>But if you look at the sort of hierarchical structure in the...</p>
+<p>the...</p>
+<p>What's that paper called?</p>
+<p>Planning from pixels?</p>
+<p>I forget what it is.</p>
+<p>Pixels to planning.</p>
+<p>Pixels to planning.</p>
+<p>If you look at that hierarchical structure where actions are just transition probabilities on states,</p>
+<p>okay, and the state structure then is redefined so as to...</p>
+<p>incorporate paths and states into a similar...</p>
+<p>into a single structure.</p>
+<p>So you no longer actually have to talk explicitly about actions.</p>
+<p>So you can see that everything can be formulated as inference in terms of a richly structured</p>
+<p>hidden market model.</p>
+<p>So that's the perspective that I'm taking in the paper.</p>
+<p>But a sufficiently richly structured model encodes</p>
+<p>that it's all of the agents' knowledge about the world.</p>
+<p>It's repertoire of actions.</p>
+<p>It's repertoire of policies.</p>
+<p>And it enables the agent to do the path integral calculations</p>
+<p>or in order to make its predictions.</p>
+<p>Thomas, do you want to add any comments to that?</p>
+<p>Or I can read two of the questions in the chat.</p>
+<p>I think I'll have more comments on...</p>
+<p>and questions about this slide later.</p>
+<p>But let's...</p>
+<p>should we do the questions first and then we can come back to that?</p>
+<p>Yes.</p>
+<p>If that's okay.</p>
+<p>Great.</p>
+<p>All right.</p>
+<p>Alexander Sabine in the chat wrote,</p>
+<p>is there any sense in which active inference tracks the cumulative cost of these KL updates over the long time horizon?</p>
+<p>Well, the KL divergence here is not the divergence from one static distribution to another.</p>
+<p>The Q, the approximating distribution is approximating a HMM.</p>
+<p>So both the Q distribution and the P distribution are dynamic models.</p>
+<p>So it's sort of...</p>
+<p>It's built into the KL divergence as long as you recognize that it's a divergence from one</p>
+<p>dynamic model to another, rather than there's a divergence from one static distribution to another static distribution.</p>
+<p>Thank you.</p>
+<p>And that, to me, at least sort of rhymes with Rand Way's work on reinforcement learning and active inference,</p>
+<p>where the pragmatic value is reflected by a MDP, and then there's a partially observable element which</p>
+<p>contributes an epistemic uncertainty.</p>
+<p>And it's that double superposition of the pragmatic preference, constraint-oriented, and then the sheer entropic uncertainty,</p>
+<p>which together in a joint functional make it active inference.</p>
+<p>Or indeed, if I...</p>
+<p>Sorry, but it reminds me of something I really should have mentioned, that there is this paper by</p>
+<p>A.F.N.A. A.F.N.A. A.F.N.A. whose title, if I remember correctly, is...</p>
+<p>Is it action and perception as divergence minimization? Something like that.</p>
+<p>Which sort of unifies many, many different algorithms in</p>
+<p>reinforcement learning under that single umbrella of divergence minimization.</p>
+<p>And this too fits under that umbrella, as long as you understand that the divergence that I'm talking</p>
+<p>about here is a divergence between two dynamic models rather than a divergence between two static distributions.</p>
+<p>Great.</p>
+<p>Okay.</p>
+<p>And then second question in the chat from Bert Berkers wrote,</p>
+<p>Could you explain H and the update rules in more detail?</p>
+<p>Well, there's a sort of...</p>
+<p>Sorry, just a sec.</p>
+<p>The...</p>
+<p>There is this general, perfectly general, mean field approximation which can be used to</p>
+<p>approximate any probability distribution by a suitably factorized approximate distribution on the same variables.</p>
+<p>You simply, by fear, impose statistical independence assumptions between the variables.</p>
+<p>That's what this factorization means.</p>
+<p>And you try to find the distribution that best approximates the distribution you started with,</p>
+<p>in the sense of chaos and divergence, subject to these statistical independence constraints.</p>
+<p>And that's the universal mechanism.</p>
+<p>And all I've done in this paper is apply that to, in the case of hidden Markov models, okay, where</p>
+<p>the distribution is not a static distribution, but a distribution that unfolds over time.</p>
+<p>And the approximation, the constraints on the approximation are that, well, the mean field constraints,</p>
+<p>which says that the variables at different times are statistically independent in the approximation.</p>
+<p>That's just factorization.</p>
+<p>And the other constraint is that if you have an observation history at your disposal,</p>
+<p>you clamp the observable variables to those observed values in the past, in the future.</p>
+<p>So the future is wide open.</p>
+<p>You just use the emission probabilities from the HMM.</p>
+<p>And then once you impose that, everything is in principle mechanical.</p>
+<p>The update formulas are just a matter of turning the crank.</p>
+<p>I've written them out in detail in the paper that accompanies this presentation.</p>
+<p>It's no surprise that in respect of times in the past, the update formulas are just going to look like the standard</p>
+<p>variation free energy updates.</p>
+<p>And the updates in the future look very, very similar.</p>
+<p>There's really not that much difference between them.</p>
+<p>Can I follow on that one?</p>
+<p>Yeah, Thomas, please.</p>
+<p>So the way in which the updates from a mean field approximation are obtained is that,</p>
+<p>one way in which one can find those formulae, is that if one takes the gradient of the KL divergence,</p>
+<p>or the functional derivatives, and finds the minima, then the minima is what you end up with there,</p>
+<p>it is the update.</p>
+<p>So they are the fixed points, the minima of that objective function.</p>
+<p>Now, I was puzzled by the H's here as well.</p>
+<p>And the reason I was a bit puzzled is because the KL divergence written down here,</p>
+<p>with the factorisation for future states, should essentially, and you show this on a later slide,</p>
+<p>should cancel out both of the O's because you will, both the Q of S given S and O, and the P of S and O,</p>
+<p>you'll be able to factorise out a P of O given S from both of those.</p>
+<p>And because the KL divergence deals with the difference between two log probabilities,</p>
+<p>those will completely cancel out.</p>
+<p>And as you show in one of the later slides, this KL divergence is exactly equivalent to Q of S,</p>
+<p>P of S with no O's involved in it at all.</p>
+<p>So, to end up with the emission probabilities in the update formula seems to me inexplicable.</p>
+<p>Okay.</p>
+<p>Because they can cancel out and then once one takes the derivatives and finds the minimum of the KL divergence,</p>
+<p>they shouldn't be there because they're not in the KL divergence to begin with.</p>
+<p>I agree, they're not in the KL divergence, but the aim of the mean field approximation is to minimise the KL divergence.</p>
+<p>Okay, what you want to do is update the</p>
+<p>factors, okay, so as to arrive at at least the local minimum of the KL divergence.</p>
+<p>And for that, you do need to take into account the fact that the emission probabilities,</p>
+<p>the states in the HMM are, as they say, heteroscedastic.</p>
+<p>They have different entropies.</p>
+<p>Okay.</p>
+<p>If all the entropies were the same,</p>
+<p>okay, what would happen is that the H's would effectively drop out because</p>
+<p>what's going on here is that to get these factors, you pass the right-hand side through a sigmoid function.</p>
+<p>Okay.</p>
+<p>And if all of the components of this vector H were the same, if all of the HMM states have the same</p>
+<p>entropies, then indeed the H's would disappear. They would not play any role.</p>
+<p>Okay.</p>
+<p>Does that...</p>
+<p>I'm not trying to pull away what the H is from in the first place.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>It's simply the...</p>
+<p>It's a vector having one component for each state in the head market model.</p>
+<p>And the value of that component is the entropy of the emission probability distribution for that state.</p>
+<p>Yeah.</p>
+<p>So, if you just look here, I think you might see what I'm getting at.</p>
+<p>Sorry, do you mind if I just clarify?</p>
+<p>By emission probability, you mean the probability of the O given S, which would be what stands to be</p>
+<p>emission probability as well.</p>
+<p>That's right.</p>
+<p>What I'm saying is that that emission probability doesn't exist in the Kale divergence because it cancels out.</p>
+<p>I agree.</p>
+<p>I agree it doesn't, but the mean field approximation, and this is just a mechanical derivation,</p>
+<p>the mean field prediction, okay, does require that you take account of the entropies of the HMM states</p>
+<p>in updating the making predictions for the future.</p>
+<p>Because obviously,</p>
+<p>visiting states with high entropy</p>
+<p>the Kale divergence, is going to have an effect on the value of the Kale divergence that you are optimizing.</p>
+<p>If I could just point to one thing, which I think might actually clear up the confusion.</p>
+<p>If you look in the...</p>
+<p>What's going on here?</p>
+<p>This A matrix is the...</p>
+<p>What I'm calling the emission probabilities.</p>
+<p>This is how the emission probabilities enter into the standard variation of free energy updates.</p>
+<p>Right?</p>
+<p>More or less taken from the textbook.</p>
+<p>I mean, I try to align the notation with the textbook.</p>
+<p>Okay?</p>
+<p>That's in respect of observations in the past.</p>
+<p>Yes.</p>
+<p>Now, in respect of observations that have yet to be collected, okay, what becomes of this term,</p>
+<p>okay, is just the expected value, the conditional expectation of the observation given the state,</p>
+<p>or the log of the probability given the state.</p>
+<p>And that's how the entropy emerges in this, when you're predicting the future.</p>
+<p>Okay.</p>
+<p>I don't want to spend too long on this point, but I think, you know, for me that's not entirely clear still.</p>
+<p>And I appreciate that the emission probabilities appear in the previous version, oh, sorry,</p>
+<p>in relation to past states.</p>
+<p>And that's absolutely the case because the KL divergence in relation to past states is a functional</p>
+<p>of the emission probabilities.</p>
+<p>If the KL divergence for the future states is not a functional of the emission probabilities,</p>
+<p>then in finding its minimum, if that is what we're doing to derive what we're describing as the mean field updates,</p>
+<p>then the minimum is invariant to the emission probabilities, if you see what I mean.</p>
+<p>I sort of appreciate the sort of formal similarity, but it feels like probably the issue comes as to</p>
+<p>how you're defining your mean field updates and where they come from.</p>
+<p>And if they come from the minimisation of the KL divergence, they can only depend upon things that are in the KL divergence.</p>
+<p>The KL divergence, okay, I think the only answer I can give you at this point, okay, given that we're sort of</p>
+<p>going around the circles, is that the derivation of this is a simple mechanical consequence of the mean field update formulas.</p>
+<p>And if you look at the paper, you find that I scouts these out in painful detail in an appendix,</p>
+<p>because I didn't expect that anyone would actually want to grapple with them. But since it appears that</p>
+<p>you might want to do so, do by all means, and if it's still unclear, I can straighten it out.</p>
+<p>Let's leave that point there then, shall we?</p>
+<p>Going round in circles. Daniel, are there further questions, either from you or the chat?</p>
+<p>Daniel, are there further questions, or from you or the chat?</p>
+<p>Here I was just wondering about the shape of these. If H is already vectorized,</p>
+<p>then we're calculating LNQ, kind of going laterally through time, but then...</p>
+<p>I just don't see how... I also will like to think more about it.</p>
+<p>It seems like one of the key moves is to make action of...</p>
+<p>make of comparable kinds so-called external or internal causal forces, so that one's own actions</p>
+<p>are part of the latent states. So all causal unfoldings in the future can be treated</p>
+<p>in a common setting.</p>
+<p>And then the question that arises to me is, where does the mean field approximation</p>
+<p>have... where does that approximation and the KL updating lead to model adequacy?</p>
+<p>Because even if retrodiction and prediction updating are guaranteed to decrease through the divergence,</p>
+<p>is there any way to diagnose</p>
+<p>our absolute adequacy?</p>
+<p>Or do we need another kind of benchmark?</p>
+<p>Otherwise, the KL Diversions convex optimization may not reflect the structure...</p>
+<p>because it's conditioned upon the factorization of the generative model.</p>
+<p>So it may have limited applicability in practice, even if it has well-behaved update rules.</p>
+<p>Yeah, my assumption, the basic assumption, perhaps I didn't make it</p>
+<p>clear sufficiently, is that the agents, all of the agents' knowledge of the world can be encoded</p>
+<p>in a HMM of sufficiently rich structure.</p>
+<p>So the general criteria for an agent calculating predictive distributions</p>
+<p>is just the degree to which the predictive distributions differ</p>
+<p>from the predictions that would be made by the HMM.</p>
+<p>And that is encapsulated in the divergence.</p>
+<p>So in the way that I am thinking of things, the generative model takes center stage.</p>
+<p>And that's not the way that the pre-energy principle is usually presented.</p>
+<p>And I think the reason for that is that in the original continuous state space, continuous time</p>
+<p>formulation of the pre-energy principle, the generative model was sort of a stub.</p>
+<p>There was no obvious candidate, some sort of stochastic differential equation.</p>
+<p>There was no obvious, well understood generative model to use, namely a discrete HMM.</p>
+<p>It's at least a discrete state space HMM.</p>
+<p>So in the way that the K-L divergence, I think, becomes the natural criteria for evaluating the quality of predictive distributions.</p>
+<p>How well do the predictions approximate the predictions that would be made by exact calculations with the HMM?</p>
+<p>Yes.</p>
+<p>Thomas, if you have any questions or I'm curious how this lands or how you see this in light of the</p>
+<p>high road and low road approach that structures the 2022 textbook.</p>
+<p>Yes. I mean, there's a lot that we could talk about here.</p>
+<p>And I guess, first of all, I should say, you know, thank you, Patrick, for such an engaging presentation.</p>
+<p>Thank you. It was my pleasure to talk to you about this.</p>
+<p>I think, you know, it was a really sort of clear and well presented introduction to,</p>
+<p>first of all, use of mean field methods in Bayesian inference, but formulated in terms of KL divergence minimization.</p>
+<p>And I think also in terms of that notion of prediction and inference about states that have yet to happen and</p>
+<p>and yet have yet to have data about.</p>
+<p>And I think it's really interesting thinking about the relationship between that and expected free energy and</p>
+<p>and a number of other things.</p>
+<p>There are a few, there are one or two points.</p>
+<p>In fact, one of them we've spoken about already.</p>
+<p>Another one will come on to that, that I would take a little bit of issue with in terms of the technical aspects.</p>
+<p>But some of the other points are more a matter of being completely valid.</p>
+<p>And I completely endorse what you say about the right sort of predictive distribution is effectively the distribution that aligns with the priors.</p>
+<p>And I completely endorse what you say that the generative model is the thing that should always be center stage and should be the thing that that determines behavior of any sort.</p>
+<p>And I think that's at the heart of the active inference approach.</p>
+<p>And apologies if we weren't clear on that in other areas.</p>
+<p>So.</p>
+<p>I suppose the first question I have really is what is going to be most useful for you?</p>
+<p>What did you want to get out of sort of initially contacting me about this paper?</p>
+<p>And what did you want to get out of writing it, I suppose?</p>
+<p>Well, it started off reading your book.</p>
+<p>I happen to have a background in in Bayesian methods.</p>
+<p>I'm retired, but I used to be a research engineer in specifically speech recognition and speaker recognition.</p>
+<p>And that was my hobby, developing Bayesian methods to do that.</p>
+<p>I saw Bayesian methods pretty much blown completely out of the water.</p>
+<p>But the, you know, with the deep learning</p>
+<p>success, you know, the transformer and so forth, with one exception, which was the the active inference community.</p>
+<p>So I made it my business to</p>
+<p>to read the book and have a lot of trouble with it and ended up rethinking it</p>
+<p>in the light of my previous experience with with the mean field approximation.</p>
+<p>So it's something that I happen to have used all the time because of the guaranteed convergence</p>
+<p>that's built in so that you have a way of debugging complex variational algorithms.</p>
+<p>And you just checked that on every belief update, the optimised the divergence criterion decreases.</p>
+<p>And as far as I can see, there is no such guarantee available for the free energy principle.</p>
+<p>So it's plausible that it should that the belief updates should decrease the optimisation,</p>
+<p>the optimisation criteria. But I don't see any way towards a convergence,</p>
+<p>any sort of convergence guarantee for the free energy principle.</p>
+<p>That's a really interesting point. And perhaps that's an interesting place to start.</p>
+<p>So I suppose from some aspects, there is the sort of exactly the same guarantees as you have for the</p>
+<p>mean field approach you've described in that the variation of energy is exactly the KL divergence</p>
+<p>you've talked about. And the fixed points of the KL divergence are also going to be the fixed points</p>
+<p>of the corresponding variational free energy. So in that sense, any guarantees that hold for one</p>
+<p>also hold for the other. Could I just interrupt there and say that expected free energy and variation</p>
+<p>free energy? So they're two different things. Absolutely. Go ahead. The one is the KL divergence</p>
+<p>and the other cannot be expressed in the KL divergence. Absolutely right. Okay. Yeah. Absolutely right.</p>
+<p>Now that's an interesting point in itself. And again, there's a lot we could talk about here and we may</p>
+<p>perhaps come back to that. The point about convergence though. So convergence for the variation free energy</p>
+<p>and for inference under that, as you say, is as guaranteed as it is under any other mean field</p>
+<p>KL divergence minimisation. You said a few times that there is only one way of using the mean field approach.</p>
+<p>And perhaps that's true under some definitions and conventions. We would often use it in</p>
+<p>in the sense of it is this factorization. These are the fixed points we want to reach. But actually,</p>
+<p>you often we would use a gradient descent process as an alternative. I mean, the fixed point iteration</p>
+<p>you describe is absolutely valid. But sometimes you can also, particularly if you're trying to model</p>
+<p>biological systems, express these things. Absolutely. If you have continuous emission distributions,</p>
+<p>you're almost certainly going to have to do gradient descent rather than the coordinate ascent, which</p>
+<p>happens to be so simple. Or if you're doing inference in continuous time as well. I mean,</p>
+<p>so the probabilities that... Indeed. I made a sort of blanket assumption in the paper that I was just going</p>
+<p>to talk about discrete distributions and discrete time. And in that case, why not use the coordinate</p>
+<p>ascent rather than the gradient ascent because it's so straightforward? Absolutely. No, it's a</p>
+<p>perfectly valid way of doing it and often faster. But it's worth saying that even if you're using a model</p>
+<p>based upon discrete categorical random variables, the parameters of the distributions describing those</p>
+<p>are still continuous variables and so you can just as easily perform a continuous coordinate descent.</p>
+<p>And there may be differences between the times that are being described by the model</p>
+<p>and the time over which you're doing the inference within each of those steps. So, you know, that becomes</p>
+<p>much more relevant when you look at the biological... Well, of course, it's also true for coordinate</p>
+<p>of the set or the other one. The performance is critically dependent on the starting point. You're only ever</p>
+<p>driving towards a local minimum of the optimum. So you're never going to find a perfect solution</p>
+<p>to the problem. And the step size may indeed affect the outcome of the optimization.</p>
+<p>Yes. But then just to come back to your point about convergence and expected free energy. And I</p>
+<p>suppose that the question is, do you think that biological behavior and cognition and exploration</p>
+<p>and decision making is convergent? Some would argue that there isn't open-endedness to the way in which</p>
+<p>we behave in which we behave in which we behave in which we....</p>
+<p>Well............</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>biological function seems to me to be too ambitious.</p>
+<p>I'm really looking at this as an engineering problem.</p>
+<p>That happens to be my, I mean,</p>
+<p>a very unusual challenging engineering problem</p>
+<p>to actually simulate the behavior</p>
+<p>of biological systems or subsystems.</p>
+<p>But I really don't know enough to say</p>
+<p>whether in silico algorithms could actually translate to wetware.</p>
+<p>It's really beyond my, outside of my wheelhouse altogether.</p>
+<p>The analogy I'm sort of implicitly drawing</p>
+<p>is that for a biological creature,</p>
+<p>the only real fixed point they will reach is death.</p>
+<p>And in the long run we will all be dead.</p>
+<p>Yes.</p>
+<p>To answer the question you asked,</p>
+<p>why I got into this was,</p>
+<p>I really thought this was a tremendously clever idea</p>
+<p>of that of Preston's,</p>
+<p>of extending the analogy between</p>
+<p>variational inference, thermodynamics,</p>
+<p>perception into action,</p>
+<p>into action,</p>
+<p>into action,</p>
+<p>because you get so much more</p>
+<p>if you can make that,</p>
+<p>that leap,</p>
+<p>which is basically the transition from variation free energy</p>
+<p>to expected free energy.</p>
+<p>And that's what set me on this quest to,</p>
+<p>initially just to see if I could understand,</p>
+<p>expect free energy.</p>
+<p>I had so much trouble with that,</p>
+<p>that I found it easier to,</p>
+<p>to work things out for myself.</p>
+<p>And this is,</p>
+<p>this is what I came up with.</p>
+<p>I mean, I don't have any real stake in the,</p>
+<p>in the future of this.</p>
+<p>I, I'm no longer at a stage in my life where I maintain a CV.</p>
+<p>I'm willing to pay for page charges to,</p>
+<p>to publish this sort of thing.</p>
+<p>It was just a hobby.</p>
+<p>Well, okay.</p>
+<p>I mean, I think that's useful in terms of,</p>
+<p>you know,</p>
+<p>this is an exercise in exploration and curiosity,</p>
+<p>which I think is,</p>
+<p>is also something that's worth coming back to.</p>
+<p>The,</p>
+<p>so,</p>
+<p>but,</p>
+<p>but you've sort of very nicely introduced this question of,</p>
+<p>how do we go from this idea of variational free energy and,</p>
+<p>and the like,</p>
+<p>to the idea of expected free energy,</p>
+<p>or if we're not going to do that,</p>
+<p>what's,</p>
+<p>what's the alternative way of formulating it?</p>
+<p>And actually,</p>
+<p>one of the things I found quite interesting is that,</p>
+<p>that what you've described is actually very,</p>
+<p>very closely related to the way in which,</p>
+<p>sort of the,</p>
+<p>the continuous state space formulations of active inference have typically worked,</p>
+<p>where it is all about,</p>
+<p>I have some generative model under which I'm making some predictions a short way into the future and taking actions to fulfill those predictions.</p>
+<p>And that is,</p>
+<p>that is precisely the sort of reflexive like actions to fulfill those predictions that,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the continuous state space models are typically used.</p>
+<p>And actually those don't tend to appeal to expected free energy.</p>
+<p>That's something that's much easier and much more tractable to relate to the,</p>
+<p>the,</p>
+<p>the question of discrete state space models.</p>
+<p>As you spoke about before,</p>
+<p>the idea that actually if you can turn a path integral into a sum over time,</p>
+<p>it becomes much more straightforward to evaluate those alternative paths and,</p>
+<p>and the temporal aspect of it.</p>
+<p>The way it's typically,</p>
+<p>or the way one typically addresses paths and predictions into the future in the context of continuous state space models is to make use of generalised coordinates of motion,</p>
+<p>which are effectively a way of writing down the Taylor series like approximation of a local trajectory.</p>
+<p>And then place that there.</p>
+<p>Could I ask you a question about,</p>
+<p>about that?</p>
+<p>It seems to me that that doesn't take into account the,</p>
+<p>the random fluctuations that are in the Langevin equation.</p>
+<p>You,</p>
+<p>you have the epsilon term or whatever you call it.</p>
+<p>If you simply take a Taylor series expansion,</p>
+<p>about the state at a given time,</p>
+<p>you're not taking account of the,</p>
+<p>the random shocks that the,</p>
+<p>that the environment is going to,</p>
+<p>inject.</p>
+<p>So it seems to me to be too cheap a way of trying to get from a dynamic set up to a static set up.</p>
+<p>If you,</p>
+<p>if you,</p>
+<p>if you represent everything by generalised coordinates,</p>
+<p>you,</p>
+<p>you simply got a static distribution.</p>
+<p>Well,</p>
+<p>you,</p>
+<p>assuming you don't update them as you go.</p>
+<p>And,</p>
+<p>and,</p>
+<p>yeah,</p>
+<p>but that's,</p>
+<p>that's,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the update,</p>
+<p>if the,</p>
+<p>if the shock comes in,</p>
+<p>but you're not able to anticipate the effect of those,</p>
+<p>random shocks.</p>
+<p>If you're using,</p>
+<p>if you're using,</p>
+<p>at least,</p>
+<p>this is my naive reading of the continuous state space.</p>
+<p>And I try to,</p>
+<p>I try to make clear in the paper that at least from my point of view,</p>
+<p>the right way to straighten out the conceptual issues in active inference is to start with the discrete state space,</p>
+<p>simply because everything is so much more straightforward and tractable.</p>
+<p>Yes.</p>
+<p>I mean,</p>
+<p>to try and answer your question,</p>
+<p>but as you say,</p>
+<p>let's stick to the discrete state space on the whole here,</p>
+<p>because that's the subject of your presentation.</p>
+<p>To answer your question as to how you deal with the random fluctuations.</p>
+<p>If you have a distribution over both,</p>
+<p>over each element of your generalized coordinates of motion over each of those coordinates,</p>
+<p>then that will tell you how,</p>
+<p>how confident you are about where you will be at different points in time.</p>
+<p>And so the effect of the random fluctuations comes in through the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the variance in turn,</p>
+<p>which means that the further you get away from the current point,</p>
+<p>the greater the uncertainty grows in both directions.</p>
+<p>And,</p>
+<p>you know,</p>
+<p>for that reason,</p>
+<p>there's actually a finite number of generalized coordinates that are typically useful to,</p>
+<p>to employ in a generative model,</p>
+<p>because beyond a certain point,</p>
+<p>they add no more confidence to the,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the distribution side.</p>
+<p>And there's lots of really interesting things one can do looking at the,</p>
+<p>the covariance between coordinates as well,</p>
+<p>and the context of,</p>
+<p>of,</p>
+<p>smooth noise processes and,</p>
+<p>and correlated noise processes.</p>
+<p>So it's a fascinating area,</p>
+<p>but,</p>
+<p>but as you say,</p>
+<p>let's stay away from that one for now.</p>
+<p>Otherwise we'll end up,</p>
+<p>the down there,</p>
+<p>a very interesting thing.</p>
+<p>And,</p>
+<p>and,</p>
+
+<p>you know,</p>
+
+<p>in terms of what you've,</p>
+<p>you've set out,</p>
+
+<p>I do sort of completely agree with you that,</p>
+<p>that what you're describing is the right way of deriving predictions,</p>
+<p>about what's going to happen next.</p>
+<p>And in fact,</p>
+<p>exactly what one would get,</p>
+<p>if,</p>
+<p>if one,</p>
+<p>included in a standard variational free energy,</p>
+<p>future observations as,</p>
+<p>as if they were hidden states,</p>
+<p>one would end up with exactly the same updates.</p>
+<p>Again,</p>
+<p>I'm not completely sure about these H's,</p>
+<p>but we'll,</p>
+<p>we'll leave that one.</p>
+<p>But now the,</p>
+<p>the,</p>
+<p>the sort of discussion about divergences and,</p>
+<p>you know,</p>
+<p>some of the papers you've mentioned,</p>
+<p>some of which I've been involved in,</p>
+<p>some of which I haven't,</p>
+<p>and the sort of action and perception is divergence minimization.</p>
+<p>Then I think in the paper you mentioned,</p>
+<p>there in the religious paper,</p>
+<p>when the free,</p>
+<p>the expected free energy,</p>
+<p>you know,</p>
+<p>we,</p>
+<p>in a way,</p>
+<p>one of the reasons that this is so interesting,</p>
+<p>or one of the signs that this is so interesting is that these are issues that get revisited every,</p>
+<p>every so often.</p>
+<p>And,</p>
+<p>you know,</p>
+<p>I remember having conversations like this nearly 10 years ago now.</p>
+<p>I'm sure.</p>
+<p>Same sort of arguments and same sort of discussions.</p>
+<p>And I think I mentioned to you in an email,</p>
+<p>it's almost a rite of passage of people as they start.</p>
+<p>And,</p>
+<p>and,</p>
+
+<p>it's,</p>
+<p>it's telling that this is something that captures people's approach.</p>
+<p>And I think it,</p>
+<p>it,</p>
+<p>or people's attention.</p>
+<p>And it's one of the really interesting things that to some extent,</p>
+<p>I think is still unsolved in active inference is why is it that something like the expected free energy works as well as it does?</p>
+<p>Why does it capture as many things as it does?</p>
+<p>What's the relationship between it?</p>
+<p>And why does it look so similar to something like the,</p>
+<p>the free energy,</p>
+<p>the variation of free energy without actually being the same sort of quantity in itself without being directly derivable from it?</p>
+<p>On that point,</p>
+<p>while we're there,</p>
+<p>the other one point that I will,</p>
+<p>I disagreed with in terms of what we've actually said was there was a slide where you,</p>
+<p>you defined the expected free energy.</p>
+<p>Daniel went to that slide earlier on.</p>
+<p>I find that,</p>
+<p>I find that just the same.</p>
+<p>Yeah,</p>
+<p>that would be great.</p>
+<p>So this,</p>
+<p>this is the,</p>
+<p>this I presented as the conventional treatment of expected free energy and this as what I'm proposing as a general.</p>
+<p>Let me go back to your conventional treatment.</p>
+<p>Okay.</p>
+<p>So the point I wanted to make for anyone who's not used to this is that this is not the conventional treatment.</p>
+<p>So the line here that says EFE equals the expectation of the EFE is not the conventional treatment.</p>
+<p>And I think there probably are some papers where something like this appears.</p>
+<p>It certainly doesn't appear in the book and actually has been a point of confusion for quite a long time.</p>
+<p>And probably part of this is,</p>
+<p>is that we shouldn't have referred to it as an expected free energy because it is not the expectation of variational free energy.</p>
+<p>Okay.</p>
+
+<p>just in my defense,</p>
+<p>I've spent a lot of time puzzling over this thing here.</p>
+<p>Okay.</p>
+<p>And I brought this down as what appears to me to be the simplest route to arriving at that and,</p>
+<p>and stuck this in as a flag.</p>
+<p>I mean,</p>
+<p>the red color as a flag to indicate that there's some traveling going on.</p>
+<p>Yes.</p>
+<p>That's an important point though,</p>
+<p>Thomas,</p>
+<p>so thank you.</p>
+<p>Indeed.</p>
+<p>There's been the whole,</p>
+<p>EFE free energy of the expected future expectation of variational free energy.</p>
+<p>And that was an important point.</p>
+<p>Yes.</p>
+<p>By the way,</p>
+<p>Daniel,</p>
+<p>I should say do interrupt me if I'm talking too much or if there are other questions coming through.</p>
+<p>Assuming that there aren't at the moment.</p>
+<p>I think,</p>
+<p>you know,</p>
+<p>we,</p>
+
+<p>we sort of come to one of the key points here,</p>
+<p>which is what,</p>
+<p>what is the expected free energy there to do?</p>
+<p>And where does it come from?</p>
+<p>And the,</p>
+<p>where it comes from is a complex question.</p>
+<p>And I think in many ways,</p>
+<p>the way in which this question has been approached is now almost turned on its head that,</p>
+<p>you know,</p>
+<p>this functional form appears to capture a lot of interesting behavior.</p>
+<p>Remind me if I don't come back to it,</p>
+<p>the other point we should talk about is,</p>
+<p>kinds of behavior that might be captured by an expected free energy,</p>
+<p>but would not be captured by the formulation you have here,</p>
+<p>because I think that's another really interesting and important point to come back to.</p>
+<p>But in terms of the motivation for it,</p>
+<p>I think that there seem to be a lot of behaviors that are really well captured by it.</p>
+<p>And it's fascinating that they are captured by something that has such a similar functional form to the variation of free energy.</p>
+<p>And the reasons for that,</p>
+<p>I think,</p>
+<p>are to many,</p>
+<p>in many ways still under investigation.</p>
+<p>And the way in which that's being addressed now,</p>
+<p>particularly in a number of the papers that have looked at the kind of underlying physics of the free energy principle,</p>
+<p>almost turn the question round and say,</p>
+<p>given this seems to be such a good description of the system,</p>
+<p>what sort of minimal properties of a dynamical system,</p>
+<p>what sort of conditional dependency structures in the system itself</p>
+<p>have to be satisfied before this emerges as a natural formulation?</p>
+<p>Well, I would,</p>
+<p>if I was pursuing that line of investigation,</p>
+<p>I would ask,</p>
+<p>what sort of generative model leads naturally to this particular update formula?</p>
+<p>Is there some way of defining a generative model such that the mean field approximation or something similar actually enables you to derive this?</p>
+<p>And I think the answer to that is,</p>
+<p>is that actually the way most of these models are derived or defined is that the expected free energy is not an objective function in the classical sense.</p>
+<p>It is part of one of the priors.</p>
+<p>It is the way in which a prior over what I'm going to do next is defined.</p>
+<p>And that's the thing that's not present really in the formulation you've heard.</p>
+<p>I did try to satisfy that objection by deriving this update formula for policies in the framework that I developed.</p>
+<p>So that I anticipated that this was going to be an objection and wrote this section in anticipation of that.</p>
+<p>Whether you're satisfied with it or not, I don't know.</p>
+<p>I don't know.</p>
+<p>But I started,</p>
+<p>I mean,</p>
+<p>what I've really stumbled trying to understand the energy was,</p>
+<p>or expected free energy,</p>
+<p>was how this equation,</p>
+<p>your B9,</p>
+<p>this is my analog of it,</p>
+<p>could be derived from this update formula.</p>
+<p>I mean,</p>
+<p>they just don't seem to go here.</p>
+<p>That was,</p>
+<p>that was,</p>
+<p>because it,</p>
+
+<p>So that,</p>
+<p>that,</p>
+
+<p>I think exactly the point of making that,</p>
+<p>that one does not derive it from this update formula,</p>
+<p>except in it,</p>
+<p>to say that if,</p>
+<p>so if we were dealing with the convergence of P of pi,</p>
+<p>P of pi,</p>
+<p>then it would depend upon the form of P of pi.</p>
+<p>And if P of pi is defined in such a way that we expect the actions we take to minimize expected free energy,</p>
+<p>or to be sort of inversely,</p>
+<p>monotonically proportional to expected free energy,</p>
+<p>then it emerges directly from this,</p>
+<p>but it doesn't actually drive in the update.</p>
+<p>No,</p>
+<p>I think the,</p>
+<p>what I think the,</p>
+<p>what's the,</p>
+<p>the objection I was making.</p>
+<p>Okay.</p>
+<p>No,</p>
+<p>so I have to toggle between two sides.</p>
+<p>So,</p>
+<p>and so here,</p>
+<p>we both agree,</p>
+<p>this is,</p>
+<p>in my reading,</p>
+<p>the E vector,</p>
+<p>okay,</p>
+<p>the prior on habits.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>This is the variation of free energy of a policy,</p>
+<p>calculated with the observations up to the present moment.</p>
+<p>And this term,</p>
+<p>in equation P point nine,</p>
+<p>is expected free energy.</p>
+<p>And,</p>
+<p>No,</p>
+<p>that's the point where,</p>
+<p>that's the point where that's not true anymore.</p>
+<p>So,</p>
+<p>from the perspective of the way this equation would be expressed in the active inference book,</p>
+<p>both,</p>
+<p>both the F of the,</p>
+<p>the less than or equal to T,</p>
+<p>and the F of greater than T,</p>
+<p>are both included as a single F term.</p>
+<p>The expected free energy would actually be part of the log P of pi.</p>
+<p>Oh,</p>
+<p>okay.</p>
+<p>But,</p>
+<p>okay.</p>
+<p>So,</p>
+<p>there are two ways,</p>
+<p>you can,</p>
+<p>implement this type of thing.</p>
+<p>You can,</p>
+<p>take it that,</p>
+<p>a pi is a,</p>
+<p>or the P of pi is,</p>
+<p>a prior distribution on,</p>
+<p>policies.</p>
+<p>Okay.</p>
+<p>I think the term habit might be used.</p>
+<p>used.</p>
+<p>Okay.</p>
+<p>And then that can be updated,</p>
+<p>at every time,</p>
+<p>at every time step.</p>
+<p>Yes.</p>
+<p>So,</p>
+<p>you can use,</p>
+<p>the,</p>
+<p>q,</p>
+<p>at,</p>
+<p>calculated at time t,</p>
+<p>as a prior,</p>
+<p>at time t plus one.</p>
+<p>Yes.</p>
+<p>I,</p>
+<p>sort of left this vague,</p>
+<p>in,</p>
+<p>in formulating this,</p>
+<p>as to,</p>
+<p>whether that,</p>
+<p>prior and policies,</p>
+<p>was something that was given in advance and never changed,</p>
+<p>or,</p>
+<p>uh,</p>
+<p>was susceptible to being changed,</p>
+<p>as,</p>
+<p>uh,</p>
+<p>observations were accumulated.</p>
+<p>So,</p>
+<p>it could be implemented either way.</p>
+<p>So,</p>
+<p>again,</p>
+<p>I think,</p>
+<p>I think,</p>
+<p>I mean,</p>
+<p>I would have to,</p>
+<p>I would have to,</p>
+<p>again,</p>
+<p>I think in terms of,</p>
+<p>sorry,</p>
+
+<p>finish what you're saying?</p>
+<p>No,</p>
+<p>I,</p>
+<p>I'm winging it at this point.</p>
+<p>I,</p>
+
+<p>I,</p>
+<p>I would have to think about it more carefully,</p>
+<p>if there is an issue here.</p>
+<p>Yes.</p>
+
+<p>I'm not saying there's an issue with how you formulated it,</p>
+<p>and what you,</p>
+<p>what you've written is perfectly reasonable for a,</p>
+<p>sort of passive observer,</p>
+<p>um,</p>
+<p>who,</p>
+
+<p>or an observer that behaves in a purely habitual way,</p>
+<p>of working out what I'm going to do next.</p>
+<p>The,</p>
+<p>the,</p>
+<p>the,</p>
+<p>um,</p>
+<p>and part of that is taking evidence from,</p>
+<p>um,</p>
+<p>what,</p>
+<p>what I've done so far.</p>
+<p>And,</p>
+<p>and that's,</p>
+<p>um,</p>
+<p>what the,</p>
+<p>the sort of F terms here are contributing.</p>
+<p>They're contributing a,</p>
+<p>uh,</p>
+<p>an element of,</p>
+<p>uh,</p>
+<p>the evidence in favour of this policy from the things I've already done in the past.</p>
+<p>Um,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the big difference is that the,</p>
+<p>the assumption that one can derive the expected free energy from this is not correct.</p>
+<p>Uh,</p>
+<p>and that is not what it's used for.</p>
+<p>The expected free energy is not something that's used to derive an update scheme.</p>
+<p>It is a way of defining P of pi,</p>
+<p>um,</p>
+<p>which may have a habitual component and may also have a component from the expected free energy.</p>
+<p>So one could write it as if you wanted a habitual component,</p>
+<p>you could do that P of pi is a sort of E term,</p>
+<p>E term,</p>
+<p>as you've said,</p>
+<p>multiplied by the exponent of the negative expected free energy.</p>
+<p>But that is a definition of a prior.</p>
+<p>It,</p>
+
+<p>it is not a,</p>
+<p>a derived.</p>
+<p>Okay.</p>
+<p>I'll,</p>
+<p>I'll take your word for it.</p>
+<p>I,</p>
+<p>I may have misread the,</p>
+<p>um,</p>
+<p>the,</p>
+<p>the presentation and misunderstood some,</p>
+<p>um,</p>
+<p>basic points here.</p>
+<p>Well,</p>
+<p>I think,</p>
+<p>I think it's a point that comes back a lot.</p>
+
+<p>you know,</p>
+<p>I completely understand why that's a,</p>
+<p>it is an unusual point to get one's head around that if we're so used to seeing an expected free energy or a kale divergence as being the objective function to be optimized.</p>
+<p>Um,</p>
+<p>it,</p>
+
+<p>it,</p>
+<p>it feels strange to use it as a way of,</p>
+<p>of defining a prior.</p>
+<p>And it's something that doesn't happen in most of Bayesian inference because the idea of defining a prior based upon a function that is itself a functional of,</p>
+<p>uh,</p>
+<p>of our current beliefs and current posteriors feels like a very strange thing to do.</p>
+<p>But this is one of the,</p>
+<p>the things at the heart of active inference that really makes it differ from things like reinforcement learning.</p>
+<p>It's the idea that,</p>
+<p>uh,</p>
+<p>that a good policy or a good thing to do is not defined just in terms of what I might get at the end,</p>
+<p>but actually in terms of our beliefs and how those beliefs might be optimized over time.</p>
+<p>Um,</p>
+<p>and,</p>
+<p>and so what you've written down is not wrong at all in the sense of,</p>
+<p>um,</p>
+<p>in deriving a way of coming up with a good predictive distribution,</p>
+<p>based upon some alternative trajectories I might be on,</p>
+<p>perhaps with a prior bias for thinking I might be more likely on this trajectory than this one.</p>
+<p>But what it doesn't get at is a form of agency that,</p>
+<p>that,</p>
+<p>uh,</p>
+<p>that sort of updates based upon either explicit goals or,</p>
+<p>or in terms of,</p>
+<p>um,</p>
+<p>in terms of curiosity and belief updating to minimize,</p>
+<p>uh,</p>
+<p>uncertainty and to resolve uncertainty about the world around us.</p>
+<p>And I think that's the point I was,</p>
+<p>I was going to come back to about the difference between these different approaches.</p>
+<p>Um,</p>
+<p>and</p>
+<p>you can see that in,</p>
+<p>in,</p>
+<p>in that there is,</p>
+<p>you know,</p>
+<p>what,</p>
+<p>what it comes back exactly to our point about convergence,</p>
+<p>doesn't it?</p>
+<p>that if the,</p>
+<p>uh,</p>
+<p>effective objective function that you end up with is defined as just the KL divergence between two,</p>
+<p>um,</p>
+<p>between a prior belief about how things will play out and my beliefs about how things will play out,</p>
+<p>then one converges to point where the H and M matches,</p>
+<p>uh,</p>
+<p>my beliefs about how things will play.</p>
+<p>And,</p>
+<p>and so there is a convergence there.</p>
+<p>Whereas if one is actively selecting alternative trajectories based upon how they will optimize my beliefs in the future,</p>
+<p>that's a very different sort of,</p>
+<p>of,</p>
+<p>of,</p>
+<p>of model.</p>
+<p>Something that has a lot more autonomy to it.</p>
+<p>Let me,</p>
+<p>let me ask you,</p>
+<p>um,</p>
+<p>the,</p>
+<p>the,</p>
+<p>um,</p>
+<p>at least the,</p>
+<p>the basic implicit assumption that I'm making is that,</p>
+<p>uh,</p>
+<p>all of the,</p>
+<p>um,</p>
+<p>the agents' beliefs about the world,</p>
+<p>and,</p>
+<p>uh,</p>
+<p>it's,</p>
+<p>uh,</p>
+<p>the actions open to it and policies and so on,</p>
+<p>can be encoded in a single H and M in principle.</p>
+<p>We're assuming a sufficiently worth structuring.</p>
+<p>And if,</p>
+<p>if that,</p>
+<p>if that encoding is done,</p>
+<p>then,</p>
+
+<p>there is no explicit role played by,</p>
+<p>um,</p>
+<p>policies.</p>
+<p>Yes,</p>
+<p>I noticed that in,</p>
+
+<p>in your paper as well.</p>
+<p>Um,</p>
+<p>and I think that's a good summary of,</p>
+<p>of why that's different to sort of more conventional active inference,</p>
+<p>that,</p>
+<p>that it,</p>
+<p>this is not about policies.</p>
+<p>This is not about planning.</p>
+<p>Uh,</p>
+<p>this is about predicting,</p>
+<p>the future.</p>
+<p>I,</p>
+<p>I,</p>
+<p>I actually agree with that last statement that you made unreservedly.</p>
+<p>So I,</p>
+<p>I,</p>
+<p>I'm,</p>
+<p>uh,</p>
+<p>asking them,</p>
+<p>uh,</p>
+<p>if,</p>
+<p>um,</p>
+<p>holding,</p>
+<p>uh,</p>
+<p>actions and,</p>
+<p>uh,</p>
+<p>policies into states is somehow an impediment,</p>
+<p>uh,</p>
+<p>making predictions about the future.</p>
+<p>It depends how I model myself and the way I will impact the observations I might see in the future.</p>
+<p>But those are actions,</p>
+<p>those are actions,</p>
+<p>right?</p>
+<p>Those are actions.</p>
+<p>And if we,</p>
+<p>in the basic picture,</p>
+<p>actions are just transition probability matrices on a state space.</p>
+<p>Yes.</p>
+<p>But how do I select one action over another?</p>
+<p>And you,</p>
+<p>you have a,</p>
+<p>well,</p>
+<p>I'm proposing,</p>
+<p>uh,</p>
+<p>a particular objective function that you see,</p>
+<p>that you're seeking to optimize.</p>
+<p>Yes.</p>
+<p>And,</p>
+<p>and the,</p>
+<p>the way in which this objective function works,</p>
+<p>as you can see in this,</p>
+<p>in,</p>
+
+<p>in this is exactly the same as it worked for any of the states as well that I don't control.</p>
+<p>Yes,</p>
+<p>indeed.</p>
+<p>I,</p>
+<p>I,</p>
+<p>I agree that this,</p>
+<p>this is a fascinating question,</p>
+<p>you know,</p>
+<p>about the difference between reflexive actions,</p>
+<p>um,</p>
+<p>and if you like deliberate actions,</p>
+<p>if they somehow require,</p>
+<p>uh,</p>
+<p>different modeling,</p>
+<p>I,</p>
+<p>I,</p>
+<p>I'm excited to think that they don't,</p>
+<p>but that's,</p>
+<p>who am I to,</p>
+<p>to,</p>
+<p>because I'm coming at this as,</p>
+<p>as an outsider,</p>
+<p>but if they don't require separate modeling,</p>
+<p>then I believe that the framework I presented is adequate.</p>
+<p>Yes,</p>
+<p>I think on,</p>
+<p>on,</p>
+<p>on that assumption,</p>
+<p>you know,</p>
+<p>with that caveat of saying,</p>
+<p>there is a difference between predicting a,</p>
+<p>a sort of passive playing out of the world and of,</p>
+<p>of the actions I can take in it,</p>
+<p>if there is no difference between those things,</p>
+<p>then I completely agree.</p>
+<p>It's,</p>
+<p>well,</p>
+<p>if you could point me to a paper where this,</p>
+<p>uh,</p>
+<p>issue is,</p>
+<p>uh,</p>
+<p>I would be very keen to,</p>
+<p>um,</p>
+<p>to read it.</p>
+<p>When you say this issue,</p>
+<p>you,</p>
+<p>you,</p>
+<p>you,</p>
+<p>whether,</p>
+<p>uh,</p>
+<p>there is a fundamental difference between,</p>
+<p>uh,</p>
+<p>reflective actions,</p>
+<p>okay,</p>
+<p>and,</p>
+<p>so,</p>
+<p>he has to infer what he's doing,</p>
+<p>and,</p>
+<p>um,</p>
+<p>deliberate actions,</p>
+<p>which,</p>
+<p>uh,</p>
+<p>involve,</p>
+<p>uh,</p>
+<p>offline,</p>
+<p>some sort of,</p>
+<p>distance from,</p>
+<p>um,</p>
+<p>what's going on,</p>
+<p>where the,</p>
+
+<p>where the,</p>
+<p>where that,</p>
+<p>is causally,</p>
+<p>um,</p>
+<p>efficacious.</p>
+<p>Uh,</p>
+<p>yeah.</p>
+<p>Yes.</p>
+<p>And,</p>
+<p>and,</p>
+<p>you know,</p>
+<p>I think this is actually one of those really interesting connections,</p>
+<p>again,</p>
+<p>back to what we were saying about the difference between,</p>
+<p>the way a lot of the continuous space,</p>
+<p>state space models work,</p>
+<p>and the way in which a lot of the,</p>
+<p>the,</p>
+
+<p>discrete,</p>
+<p>comdp like models are,</p>
+
+<p>are formulated.</p>
+<p>Um,</p>
+<p>and the,</p>
+<p>I guess the key thing in a lot of the way the continuous models,</p>
+<p>and this isn't necessarily because they're continuous,</p>
+<p>but they,</p>
+<p>but they match the same sort of principles that you've been describing,</p>
+<p>in that there is no need to explicitly model myself or,</p>
+<p>or,</p>
+<p>or maybe I,</p>
+<p>I might model the position of my limb,</p>
+<p>for instance,</p>
+<p>and predict where I might see it at some point in time.</p>
+<p>Um,</p>
+<p>but what I don't have to model necessarily is,</p>
+<p>uh,</p>
+<p>how I will make decisions,</p>
+<p>how I will plan.</p>
+<p>There's no sort of self modeling involved in it,</p>
+<p>but as soon as you say,</p>
+<p>how the world evolves depends upon which decisions I make.</p>
+<p>One needs to have priors about which decision they are likely to make,</p>
+<p>given a set of beliefs that they would have at that point in time.</p>
+<p>And it's only by incorporating that,</p>
+<p>that you can then predict futures that,</p>
+<p>that,</p>
+<p>that we ourselves influence and create.</p>
+<p>So that's,</p>
+<p>that's the distinction.</p>
+<p>It,</p>
+<p>it,</p>
+<p>in terms of the modeling,</p>
+<p>you know,</p>
+<p>you can still use exactly the same machinery you've described,</p>
+<p>but you need to change the prior.</p>
+<p>So again,</p>
+<p>it,</p>
+<p>it comes back to this point that the model is central.</p>
+<p>The general,</p>
+<p>yeah,</p>
+<p>the question in my mind is whether everything be encoded in the HMM.</p>
+<p>Well,</p>
+<p>I think it,</p>
+<p>you know,</p>
+<p>you,</p>
+<p>you can certainly write down an HMM in which there are some states that are states and there are some states that are policies.</p>
+<p>Well,</p>
+<p>yeah,</p>
+<p>and I think that's what you're describing.</p>
+<p>But the question is,</p>
+<p>is there something meaningfully distinct between those two different kinds of entity?</p>
+<p>that's what,</p>
+<p>that's what I'm sort of pushing back against.</p>
+<p>Okay.</p>
+<p>I mean,</p>
+<p>I,</p>
+<p>I,</p>
+<p>I'm aware of this issue and,</p>
+<p>um,</p>
+<p>I find it fascinating.</p>
+<p>And I'm actually just putting my foot down and saying,</p>
+<p>yeah,</p>
+<p>there's a sense in which in the total joint distribution of, let's say, agent and niche.</p>
+<p>Again,</p>
+<p>it is great to have an even handed approach to those variables.</p>
+<p>At the same time,</p>
+<p>it's like the difference between external context shifts,</p>
+<p>which are changes in potentially causal external influences that there are uncertainty profiles over.</p>
+<p>And then there's the kind of internal context shifts or actions and the agent in the specification and the implementation.</p>
+<p>You have that agent doing actual agency oriented policy search over what I could do.</p>
+<p>I could move my eyes there.</p>
+<p>I could look here.</p>
+<p>And that has all of these implications for precision and salience.</p>
+<p>Whereas you still could have uncertainty profiles and transition matrices over like I'm a marionette and my arm will be moved there by this external force.</p>
+<p>But that would be represented with an uncertainty over those,</p>
+<p>those changes in the world,</p>
+<p>which are not under one's own agency versus ones that are.</p>
+<p>And it's like,</p>
+<p>you need to do policy inference for the true.</p>
+<p>I could do that.</p>
+<p>Whereas this could happen to me.</p>
+<p>You could just be uncertain about like whether it rains or not.</p>
+<p>Well,</p>
+<p>let me,</p>
+<p>let me give the counter argument.</p>
+<p>Okay.</p>
+<p>Which,</p>
+<p>which would say that,</p>
+<p>the,</p>
+<p>the agent's job is to predict its actions.</p>
+<p>And the way it predicts its actions is by predicting its.</p>
+<p>its.</p>
+<p>Sensations.</p>
+<p>It's inter receptive and.</p>
+<p>Or whatever,</p>
+<p>proprioceptive.</p>
+<p>Sensations and then fulfilling those.</p>
+<p>Predictions because on sufficiently.</p>
+<p>Short.</p>
+<p>Time scales.</p>
+<p>Those predictions can be fulfilled.</p>
+<p>Reflexively.</p>
+<p>Motual reflexes and.</p>
+<p>Autonomic reflexes.</p>
+<p>So.</p>
+<p>If the agent can successfully predict its future sensations,</p>
+<p>successfully predict them.</p>
+<p>Okay.</p>
+<p>Then it can fulfill them.</p>
+<p>Unconsciously as it were.</p>
+<p>I mean,</p>
+<p>without,</p>
+<p>without having to.</p>
+<p>So that's why I think.</p>
+<p>That the reflexive picture.</p>
+<p>Is.</p>
+<p>Sufficient.</p>
+<p>Yes.</p>
+<p>There is this sort of like,</p>
+<p>ultimate witness.</p>
+<p>View.</p>
+<p>Where everything.</p>
+<p>Including what might be seen as intentional.</p>
+<p>Or even.</p>
+<p>Internally perceived as intentional.</p>
+<p>Is also.</p>
+<p>Like a.</p>
+<p>Will this unfolding.</p>
+<p>That's.</p>
+
+<p>I'm.</p>
+<p>I am.</p>
+<p>The plus.</p>
+<p>Indeterminist.</p>
+<p>At heart.</p>
+<p>And.</p>
+
+<p>But.</p>
+<p>That's.</p>
+<p>That's.</p>
+<p>That's.</p>
+<p>That's.</p>
+<p>That's.</p>
+<p>That's.</p>
+<p>That's.</p>
+<p>That's how.</p>
+<p>That's how I see.</p>
+<p>Nature.</p>
+<p>Including human nature.</p>
+<p>And I see a lot of.</p>
+<p>Pushback against that.</p>
+<p>In the active influence literature.</p>
+<p>There.</p>
+
+<p>Are.</p>
+<p>A lot of.</p>
+<p>Shall we say.</p>
+<p>Humanists.</p>
+<p>Who.</p>
+<p>Don't like this.</p>
+<p>Purely mechanical.</p>
+<p>Statistical.</p>
+<p>Physical.</p>
+<p>I can't.</p>
+<p>Of human behaviour.</p>
+<p>But it.</p>
+<p>It works for me.</p>
+<p>But.</p>
+<p>Well.</p>
+<p>I think.</p>
+<p>That.</p>
+<p>They are perhaps slightly different.</p>
+<p>Distinctions.</p>
+<p>I.</p>
+<p>I would argue that.</p>
+<p>The.</p>
+<p>The.</p>
+<p>Humanists.</p>
+<p>Don't necessarily appeal to anything.</p>
+<p>Other than.</p>
+<p>Statistical.</p>
+<p>Physical.</p>
+<p>Well.</p>
+<p>I mean.</p>
+<p>There is.</p>
+<p>The field has generated so much interest.</p>
+<p>In the humanities.</p>
+<p>Okay.</p>
+<p>But.</p>
+<p>That's because.</p>
+<p>I think.</p>
+<p>Humanists see a bridge.</p>
+<p>Between.</p>
+<p>Well.</p>
+<p>So to say.</p>
+<p>If.</p>
+<p>Care of persons.</p>
+<p>Were.</p>
+<p>View.</p>
+<p>And.</p>
+<p>The wrong.</p>
+<p>But.</p>
+<p>My reading of Ristin is that it is deeply mechanistic and ultimately reflexive.</p>
+<p>Yes, and I agree with you, the reflexive aspect is incredibly important and I think a part of all active inference formulations.</p>
+<p>The idea of it being just having the sort of lowest level of the model where we interface with sensory data, I think that is always the assumption that seems simply to full predictions.</p>
+<p>And what you've described today is precisely the philosophy and approach that underlies the quite traditional continuous state space approaches to active inference.</p>
+<p>And there is no reason why one can't apply exactly those same approaches equally validly to discrete state spaces.</p>
+<p>So, you know, the approach you've outlined is completely reasonable, but it addresses a very different question and problem to that addressed by expected free energy.</p>
+<p>So it's a different domain, it's a different category of thing.</p>
+<p>The expected free energy is a way of saying, if I were to predict what I'm going to do next, knowing the beliefs I hold now, how would I weight those alternative actions, those alternative trajectories, those alternative choices in relation to the beliefs I have now?</p>
+<p>And that comes down to a question of prior. It's a question of how do I believe I would behave in this situation.</p>
+<p>And one can't do that with a prior that is just a fixed form. I always do this in this situation, which is what you're describing in terms of the literature.</p>
+<p>Well, I think we are now searching the same problem.</p>
+<p>Yeah.</p>
+<p>As I see it, the problem is, is it possible to formulate a single generative model such as HMN, which encodes all of an agent's beliefs, actions,</p>
+<p>policies, its whole world cannot be encapsulated in a single HMM.</p>
+<p>And if it can, then the calculations with that HMM will be just mechanistic.</p>
+<p>Yes.</p>
+<p>That's the question. Of course, I don't know.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>And I think the point I'm making is that your answer is a perfectly reasonable answer, but you're addressing a different question to what is expected free energy for.</p>
+<p>So you could have written this paper and given this talk without reference to expected free energy.</p>
+<p>Oh, that's interesting.</p>
+<p>Well, that's interesting.</p>
+<p>And I would have had very few points of contention.</p>
+<p>Oh, okay.</p>
+<p>Well, I would certainly be curious to hear of any other judgments that other people might have on that particular issue.</p>
+<p>But yeah, it could be that I've completely misunderstood because I've just come as a complete outsider.</p>
+<p>And, well, if I was doing it, then this is how I could do it.</p>
+<p>And that was what prompted me to write the paper.</p>
+<p>It's not about being an insider or outsider.</p>
+<p>This is a rite of passage.</p>
+<p>This is something that many people go through.</p>
+<p>I think it is.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>That's, I think maybe we should, we should conclude on that now.</p>
+<p>Yeah.</p>
+<p>It is an evergreen genre.</p>
+<p>First principles from first principles and all of our journeys and our abilities as time goes forward to integrate these formalisms and come to more and more consolidated, streamlined representations of them.</p>
+<p>It's just the beginning of that day.</p>
+<p>So, Patrick, thank you for the paper.</p>
+<p>And I hope it spurs correspondence and dialogue.</p>
+<p>And Thomas, thank you for the textbook and all the work in these comments here today.</p>
+<p>Thank you.</p>
+<p>Thank you.</p>
+<p>It was my pleasure.</p>
+<p>I enjoyed the discussion very much.</p>
+<p>All right.</p>
+<p>Bye.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>Thank you.</p>
+<p>See you later.</p>
+<p>Thank you.</p>
+<p>See you later.</p>
+</article>
+</body>
+</html>

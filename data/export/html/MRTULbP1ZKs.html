@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introducing Activelnference jl, a julia package for simulating active inference models and fitting t</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Introducing Activelnference jl, a julia package for simulating active inference models and fitting t</h1>
+<div class="meta">Duration: 58:34 &middot; Views: 183</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=MRTULbP1ZKs">https://www.youtube.com/watch?v=MRTULbP1ZKs</a></div>
+<article>
+<p>hello we're back with Samuel ner</p>
+<p>Jonathan Larson and Peter Wade</p>
+<p>discussing active inference djl staying</p>
+<p>with the active inference plus Julia</p>
+<p>theme thank you all for coming on and</p>
+<p>sharing this work so looking forward to</p>
+<p>[Music]</p>
+<p>it hi everyone it is a pleasure to be</p>
+<p>here so like Daniel said we'll present</p>
+<p>um a new package for doing active</p>
+<p>influence simulations but also for</p>
+<p>applying it to data in</p>
+<p>Jia and we will leave time for questions</p>
+<p>at some moments during the presentation</p>
+<p>and then sometime in the end</p>
+<p>additionally um we're three people</p>
+<p>because we've been working on this</p>
+<p>together so we'll alternate a little bit</p>
+<p>with the</p>
+<p>the all right let's work the first uh</p>
+<p>it's nice just to mention who we are so</p>
+<p>we're all at o University I'm a PhD</p>
+<p>candidate and Sam and Jonathan are</p>
+<p>students who have been working on</p>
+<p>developing this package with me and we</p>
+<p>all come from computational cognitive</p>
+<p>science specifically it's called</p>
+<p>cognitive modeling you Model Behavior</p>
+<p>with competition models and of course</p>
+<p>within that specifically predict presing</p>
+<p>models H including active influence</p>
+<p>models and that's why we made this</p>
+<p>package</p>
+<p>um and we use this in the context of</p>
+<p>competition Psychiatry for clinical</p>
+<p>questions and also more broadly for just</p>
+<p>modeling behavior and this package is</p>
+<p>part of a somewhat larger um process of</p>
+<p>project of</p>
+<p>developing a software for these kinds of</p>
+<p>research questions in</p>
+<p>Julia and I'll start with just giving a</p>
+<p>brush up on what cognitive modeling is</p>
+<p>in general so some members of the</p>
+<p>audience might be familiar with this but</p>
+<p>others might not um just to set the</p>
+<p>stage</p>
+<p>for an introduction to active inference</p>
+<p>you all have seen this before so we'll</p>
+<p>go through it briefly but it's nice to</p>
+<p>have this finger tips then we'll get to</p>
+<p>the meat of the matter which is of</p>
+<p>course how to do this specifically in</p>
+<p>code with active inference JL and both</p>
+<p>simulating behavior and also fing into</p>
+<p>data and finally if there's time we have</p>
+<p>somec</p>
+<p>and some future work that we'll be happy</p>
+<p>to spend some time we might skip that as</p>
+<p>well all right cognitive modeling or</p>
+<p>computational cognitive modeling um</p>
+<p>comes out of psychology C to science</p>
+<p>where the main question in those fields</p>
+<p>is to find out what are the mental</p>
+<p>mechanisms that makes us do the things</p>
+<p>we do and so the classic perception</p>
+<p>action Loop we have to pick here people</p>
+<p>maybe be familiar with that too it's</p>
+<p>going be our AC book where you have some</p>
+<p>agent which could be a person but it</p>
+<p>could actually also be an animal or even</p>
+<p>an organoid or even a simulated um thing</p>
+<p>system that receives inputs from its</p>
+<p>environment and takes actions that</p>
+<p>changes its environment and we are here</p>
+<p>interested in essentially and I don't</p>
+<p>know if you can see my cursor um but</p>
+<p>essentially the relation between those</p>
+<p>observations and the actions that are</p>
+<p>created so basically the</p>
+<p>part um after the observation error ends</p>
+<p>and before the action error</p>
+<p>starts and um traditionally in</p>
+<p>Psychology and cognitive science this</p>
+<p>been done experimentally so um you take</p>
+<p>people out of natural situations and</p>
+<p>controlled laboratory situations where</p>
+<p>you measure well you you control both so</p>
+<p>you decide what they observe and you</p>
+<p>measure what they do and so the kind of</p>
+<p>classical example of this is have a</p>
+<p>computer screen you show people some</p>
+<p>image or something maybe you're asked</p>
+<p>them to classify them or predict what's</p>
+<p>going to happen and you measure what</p>
+<p>they do and then you have a measurement</p>
+<p>of inputs and measurements of</p>
+<p>outputs and you then create some theory</p>
+<p>that will make some prediction as to how</p>
+<p>they would</p>
+<p>made and of course this is a big field</p>
+<p>you might have theories of personality</p>
+<p>types where you predict that</p>
+<p>actions will change faster depending on</p>
+<p>inputs there's theories of reinforcement</p>
+<p>learning</p>
+<p>Etc and so importantly here we're using</p>
+<p>already Natural Science approaches</p>
+<p>experimental approaches with</p>
+<p>quantitative analyses but still with</p>
+<p>purely</p>
+<p>conceptual theories so the theories are</p>
+<p>not formal as they are from are let's</p>
+<p>say physics you have mathematical</p>
+<p>theor and the trick is often to go from</p>
+<p>some conceptual Theory to a Quant</p>
+<p>prediction that you can then</p>
+<p>test and</p>
+<p>specifically give me a moment</p>
+<p>here sorry about</p>
+<p>that and</p>
+<p>specifically as many people know there's</p>
+<p>been a what's called a replication</p>
+<p>crisis in Psychology and cognitive</p>
+<p>science where the whole issue is that</p>
+<p>the experiments don't replicate and</p>
+<p>that's part of due to statistical</p>
+<p>methods issues but also partly due to</p>
+<p>problems stemming from the fact that our</p>
+<p>theories are not um clearly formulated</p>
+<p>so one sentence that's saying that there</p>
+<p>is social learning might mean many</p>
+<p>different things and so um a Recon</p>
+<p>attempt to address them is to move into</p>
+<p>formal theories just like in physics so</p>
+<p>computational models of this again</p>
+<p>relation between observations and action</p>
+<p>um and and this is inspired by physics</p>
+<p>so in physics people are no strangers to</p>
+<p>having things they can</p>
+<p>observe in our case it's the behavior</p>
+<p>but in physics it can be let's say</p>
+<p>radiation from the Sun and then trying</p>
+<p>to make inference about something you</p>
+<p>can't obsorb in now case the mind and</p>
+<p>this cases perhaps the molecules of</p>
+<p>the of the</p>
+<p>Sun and so the methodology is exactly</p>
+<p>the same create mathematical equations</p>
+<p>that will describe how CS evolve over</p>
+<p>time given observations in the</p>
+<p>environment and test them on how well</p>
+<p>they describe empirical</p>
+<p>collected actions observations and here</p>
+<p>I just put on one of the very classic</p>
+<p>cognitive models which is the scholar</p>
+<p>wagna where you have some very very</p>
+<p>simple equations that describe how</p>
+<p>actions depend on the observations in</p>
+<p>the previous time step with some</p>
+<p>learning and a classic learning dat and</p>
+<p>that's to say that the many the first C</p>
+<p>models were very simple in a few</p>
+<p>equations you would kind of describe</p>
+<p>these</p>
+<p>Rel I think primarily in three Fields is</p>
+<p>this approach used where you have some</p>
+<p>person or some system and you want to</p>
+<p>find formal models of its behavior and</p>
+<p>that's in computation Psychiatry where</p>
+<p>you want to use it to understand</p>
+<p>psychiatric conditions mathematical</p>
+<p>psychology which traditionally has been</p>
+<p>broader it's essentially the same</p>
+<p>questions but a different community and</p>
+<p>different types of models used but also</p>
+<p>broader just behavior in general not</p>
+<p>specifically Psychiatry and</p>
+<p>competitional Neuroscience where you</p>
+<p>want to relate these</p>
+<p>um models to for example neurobiological</p>
+<p>processes that could</p>
+<p>Implement and they also overly like a</p>
+<p>overlap with artificial intelligence and</p>
+<p>Eng engineering and so on</p>
+<p>where all right so I think a primary use</p>
+<p>case especially in our field of active</p>
+<p>influence is theoretical simulations</p>
+<p>where you just take some phenomenon</p>
+<p>let's say learning or let's say learned</p>
+<p>helplessness you create a</p>
+<p>simulation that can do that uh create</p>
+<p>that kind of behavior and you suggest</p>
+<p>this as a proposed mechanism of how that</p>
+<p>behavior comes about you can use this</p>
+<p>for one agent doing one type of behavior</p>
+<p>or you can use it for many and then</p>
+<p>you're doing agent based models uh</p>
+<p>specifically cognitive agent based</p>
+<p>models where you rely on actual theories</p>
+<p>to but you can also apply it to</p>
+<p>behavioral data</p>
+<p>and here you're often trying to either</p>
+<p>find out what</p>
+<p>mechanisms provide actually observed</p>
+<p>data you might want to distinguish let's</p>
+<p>say clinical populations from each other</p>
+<p>and what's called computational</p>
+<p>fingerprinting you might also use</p>
+<p>results here to inform future theortical</p>
+<p>simulations so you can have abms where</p>
+<p>every agent has perative values you</p>
+<p>found an experiment and you can also use</p>
+<p>this to design future experiment where</p>
+<p>you use simulation to make sure that</p>
+<p>your experiment design will give you as</p>
+<p>good results as</p>
+<p>possible and finally you can also apply</p>
+<p>these approaches in machine learning and</p>
+<p>engineering and here of course you can</p>
+<p>make robots that use cognitive models</p>
+<p>that people might also use in the way</p>
+<p>that in general technology and knowledge</p>
+<p>of biological systems have always work</p>
+<p>with each other so in the same way you</p>
+<p>might be inspired how to build a plane</p>
+<p>by looking at a bird you might also be</p>
+<p>inspired on how to build an image</p>
+<p>recognizer by looking at human</p>
+<p>being our packages specifically Target</p>
+<p>the application to behavioral</p>
+<p>data so they can do theoretical</p>
+<p>simulations and also in principle be</p>
+<p>used for engineering purposes but we've</p>
+<p>optimized them for this situation where</p>
+<p>you have participants you put them in an</p>
+<p>experiment you get behavioral data and</p>
+<p>you use those models to understand that</p>
+<p>data and that's um what distinguishes it</p>
+<p>from some of the other software tools</p>
+<p>that are present um so PP now has this</p>
+<p>capability also and but otherwise many</p>
+<p>of you and there is in the metlab SPM</p>
+<p>software also some ways to apply to data</p>
+<p>otherwise the focus has often been on</p>
+<p>thetical simulations or on machine</p>
+<p>learning and if you look at packages</p>
+<p>like RX and fur which is incredibly</p>
+<p>powerful and well made um that also at</p>
+<p>least to my understanding focuses more</p>
+<p>on the machine learning engineering part</p>
+<p>where the ultimate goal is to use these</p>
+<p>models to build tools that can do things</p>
+<p>um or maybe for simulations but not to</p>
+<p>specifically appli to</p>
+<p>beh all right um and I'll just give a</p>
+<p>sense of what the workflow here looks</p>
+<p>like because if you come from</p>
+<p>theoretical simulations or engineering</p>
+<p>this might seem really well to start off</p>
+<p>designing hypothesized models for how</p>
+<p>people</p>
+<p>work you then check these models before</p>
+<p>applying them to anything but whether</p>
+<p>they are worth applying so you do what's</p>
+<p>called parameter recovery and model</p>
+<p>recovery where you first simulate</p>
+<p>Behavior with some parameters you then</p>
+<p>estimate those parameters and you see if</p>
+<p>you can actually estimate the real</p>
+<p>parameters if you</p>
+<p>can't recover parameters that you know</p>
+<p>are true you can't trust this in when</p>
+<p>appli to real</p>
+<p>data and also prior and posterior</p>
+<p>predictive checks where you just check</p>
+<p>that your model can actually generate</p>
+<p>the kind of data that you might see in</p>
+<p>an experiment and if you can't it's also</p>
+<p>not where the clients will be able</p>
+<p>then you fit it to data which means uh</p>
+<p>finding out what parameters of my model</p>
+<p>what they must have been to generate the</p>
+<p>data that I did so In classical models</p>
+<p>it would be learning rates we ask oh</p>
+<p>this person adapted this fast so his</p>
+<p>learning rate must be this and this in</p>
+<p>the context of active influence it's</p>
+<p>usually um parameters of the generative</p>
+<p>model the a matrix and B matrices for</p>
+<p>example that we want estimate and</p>
+<p>finally we can also estimate how well</p>
+<p>the model fits our given given data</p>
+<p>because some models might describe some</p>
+<p>data better than others we might want to</p>
+<p>use this to</p>
+<p>select we use this to relate parameter</p>
+<p>estimates to some measure that's a cross</p>
+<p>participant often this is clinical</p>
+<p>populations we might say our learning</p>
+<p>rates or are a matri parameters</p>
+<p>different between clinical populations</p>
+<p>but it might also be relations to let's</p>
+<p>say age or psycho pharmacological</p>
+<p>interventions</p>
+<p>you can also relate it to within</p>
+<p>participant things let's say</p>
+<p>physiological correlates and could be</p>
+<p>pup dation Etc but the primary use case</p>
+<p>of course is neurer Imaging where you</p>
+<p>say oh according to my model he now this</p>
+<p>participant now has a high prediction</p>
+<p>error do I see a difference in brain</p>
+<p>activity at this moment compared to when</p>
+<p>he has low prediction</p>
+<p>error this often to find out what the</p>
+<p>neurobiological implementation of the</p>
+<p>computations of think people</p>
+<p>do and finally um you might compare</p>
+<p>models and ask questions like which of</p>
+<p>these hypothesized models are the ones</p>
+<p>that best describe the data and</p>
+<p>therefore perhaps the actual</p>
+<p>mechanism within people and so you could</p>
+<p>compare an active inference and re</p>
+<p>enforcement learning model or let's say</p>
+<p>two active inference models with</p>
+<p>different generative models</p>
+<p>inside finally it's worth mentioning</p>
+<p>that fitting this to data there are many</p>
+<p>different approaches</p>
+<p>um broadly speaking they are basion and</p>
+<p>frequency to methods they have different</p>
+<p>advantages and disadvantages we usually</p>
+<p>use basan approaches and that's a long</p>
+<p>discussion of why that's nice they</p>
+<p>propagate uncertainty they're good you</p>
+<p>don't have so much data but I W go into</p>
+<p>that just to say that there are also</p>
+<p>other ways to fit models to</p>
+<p>data and within basion methods because</p>
+<p>you can't do exact base to fit them</p>
+<p>there are also approximations one</p>
+<p>classical approximation is very</p>
+<p>methods where you choose some arbitrary</p>
+<p>distribution we call it q and you make</p>
+<p>it be as similar as possible to the true</p>
+<p>posterior belief about the so the</p>
+<p>optimal parameter estimate you do this</p>
+<p>by minimizing a variational re energy</p>
+<p>and as it happens that's also what</p>
+<p>active INF agents</p>
+<p>use another in cognitive modeling widely</p>
+<p>used method is sampling approaches like</p>
+<p>Mark of chain C there are also others</p>
+<p>where essentially you try out many</p>
+<p>different parameter values and for each</p>
+<p>of them you calculate the likelihood of</p>
+<p>that value you do this in a smart way</p>
+<p>but it still takes a long time and you</p>
+<p>get a full estimate of the probabilities</p>
+<p>of different par</p>
+<p>values they have different claims to</p>
+<p>being useful for different um use cases</p>
+<p>so assembling is good um for parameter</p>
+<p>estimates but they take a long time they</p>
+<p>might Nota work varation base has some</p>
+<p>claims to being a better estimate of</p>
+<p>quality of fit or model evidence there's</p>
+<p>a whole few where people are still</p>
+<p>writing</p>
+<p>and if anyone's interested we can take</p>
+<p>questions on that but importantly the</p>
+<p>tools we make here can do either these</p>
+<p>two finally it's just worth mentioning</p>
+<p>that we as researchers use ban methods</p>
+<p>to understand people's behavior but</p>
+<p>within active influence we also theorize</p>
+<p>that people use basian methods to</p>
+<p>understand the world</p>
+<p>it's nice to keep those separate so we</p>
+<p>might use a sampling approximation to</p>
+<p>Patient influence to fit our models to</p>
+<p>data but still believe that people use</p>
+<p>variational Bas to understand their</p>
+<p>environment and so in the following when</p>
+<p>we talk of generative models we're not</p>
+<p>talking about our model of people we're</p>
+<p>talking about people's models of the</p>
+<p>world and again do ask questions that</p>
+<p>that's one of the tricky points</p>
+<p>sometimes when we're doing this what's</p>
+<p>called metapas</p>
+<p>good there are many paradigms within</p>
+<p>cognitive modeling mathematical</p>
+<p>psychology have many many ways of</p>
+<p>modeling often specific behavioral tasks</p>
+<p>there are these old cognitive</p>
+<p>architecture models actr and sore are</p>
+<p>biggest ones where people also trying to</p>
+<p>do unified models of behavior in general</p>
+<p>which rely on very different assumptions</p>
+<p>than active inflence and often we're not</p>
+<p>aware of them perhaps we should be so</p>
+<p>I'll just bring up here and they are</p>
+<p>kind of raw old school computationalist</p>
+<p>models different modules interacting</p>
+<p>there of course reinforcement learning</p>
+<p>models where you assume that par people</p>
+<p>do actions get rewards from their</p>
+<p>environment and try to find actions that</p>
+<p>maximize those rewards there many others</p>
+<p>like deep learning models Etc and but of</p>
+<p>course today most relevantly there are</p>
+<p>basian mind models you think that</p>
+<p>people's minds use ban influence of some</p>
+<p>sort to understand the</p>
+<p>there are many schools of Bas mind</p>
+<p>models might look at just ten Bound for</p>
+<p>a different School than ours but active</p>
+<p>inflence specifically belongs to a</p>
+<p>variational ban mind model we use</p>
+<p>variational approximate basian inference</p>
+<p>as a model of how people</p>
+<p>work and this has close ties to</p>
+<p>predictive coding and predictive</p>
+<p>processing so broadly speaking we might</p>
+<p>call this rational basan predictive</p>
+<p>processing models they can be just a</p>
+<p>perception like harion filters or</p>
+<p>plenty of models out there or they can</p>
+<p>include action as well and when they</p>
+<p>include</p>
+<p>action it's called active INF so</p>
+<p>variational Vision predictive processing</p>
+<p>models of perception and action is</p>
+<p>active and and now we'll give an</p>
+<p>introduction to that but we'll leave</p>
+<p>time for one question before we move on</p>
+<p>are there any</p>
+<p>questions here I'll ask one maybe you'll</p>
+<p>revisit it later to aun</p>
+<p>asked what's the biggest challenge you</p>
+<p>faced building this</p>
+<p>package that's a long and Technical</p>
+<p>discussion I think the main thing is</p>
+<p>that in Julia there are many ways of um</p>
+<p>doing what's called the auto</p>
+<p>differentiation which is a technical</p>
+<p>thing that you need to do the the</p>
+<p>parameter estimation and there's just a</p>
+<p>whole ecosystem of packages doing that</p>
+<p>and we've had to become very familiar</p>
+<p>with those to find the ones that work</p>
+<p>the best and and that's not an easy TK</p>
+<p>the part of the package is to hide that</p>
+<p>from the user so they don't have to</p>
+<p>engage with</p>
+<p>it I don't know if you agree with</p>
+<p>that probably yeah we can revisit it</p>
+<p>okay all right one more question just</p>
+<p>while we're while we're pause Frasier</p>
+<p>asked is there anything in active</p>
+<p>inference JL that is particularly suited</p>
+<p>to compositional agents or collectives</p>
+<p>kind of leading you into your paper I</p>
+<p>know so I'll return to that in the end</p>
+<p>if we have time but um</p>
+<p>basically you can use the same method</p>
+<p>that we use to make inferences about a</p>
+<p>given human participant in an</p>
+<p>experiment on instead of a human</p>
+<p>participant you can use it on a</p>
+<p>simulated Collective and treat that</p>
+<p>Collective as if it that is also doing</p>
+<p>some kind of cognition or active</p>
+<p>inference at least which is of course</p>
+<p>fundamental to active inference in</p>
+<p>general we expect a cell to do active</p>
+<p>inference but also person and also</p>
+<p>Collective and so if we treat a</p>
+<p>simulated Collective as let's say a</p>
+<p>foreign system that's doing something we</p>
+<p>don't know what is we can fit a model to</p>
+<p>that in exactly the same way we do to a</p>
+<p>person and make inferences about let's</p>
+<p>say the parameters of that simulated</p>
+<p>collectives D model of the mind and in</p>
+<p>the end time I'll just show like results</p>
+<p>from that paperwor we do exactly this</p>
+<p>just demonstrating it examp that's an</p>
+<p>exciting question</p>
+<p>obviously all right all right I will</p>
+<p>just briefly uh touch on the software</p>
+<p>ecosystem um that we build the package</p>
+<p>in um so firstly why jya uh it's fast</p>
+<p>and it's very intuitive meaning that if</p>
+<p>you come from python or madlab you can</p>
+<p>carry a lot of the same inations um over</p>
+<p>into Julia and then it has a community</p>
+<p>that is growing quite fast of people</p>
+<p>doing data science machine learning and</p>
+<p>Caron modelings we're doing then Julia</p>
+<p>is natively auto differentiable which</p>
+<p>means that you don't need to have a back</p>
+<p>end in another language to do auto</p>
+<p>differentiation uh which makes it very</p>
+<p>fast in Julia for this there's a very uh</p>
+<p>nice package package called touring. JL</p>
+<p>uh which is just a package for</p>
+<p>probabalistic programming in general and</p>
+<p>it can do both uh sampling methods such</p>
+<p>as mcmc or no uturn sampler um and and</p>
+<p>variational inference uh as well then in</p>
+<p>Jula there's also a sister package to</p>
+<p>active inference which takes different</p>
+<p>kinds of cognitive models and make it</p>
+<p>very easy to fit data and to those kind</p>
+<p>of models uh by kind of like wrapping</p>
+<p>touring uh and that's where kind of like</p>
+<p>our active inference JL package comes</p>
+<p>into um play as this is a cognitive</p>
+<p>model that through action models can be</p>
+<p>used uh to touring to fit uh data quite</p>
+<p>easily and we'll show</p>
+<p>later in the presentation as</p>
+<p>well then we'll just briefly touch on</p>
+<p>some of the core elements of active</p>
+<p>inference uh with regards to perception</p>
+<p>action and learning so for the</p>
+<p>perception part this is uh the</p>
+<p>minimization of the quantity variational</p>
+<p>free energy where we through this uh</p>
+<p>minimization we can infer States</p>
+<p>optimally based on observations and</p>
+<p>there's different kinds of variational</p>
+<p>inference or sorry different kinds of</p>
+<p>algorithms um that we can use to do this</p>
+<p>uh I'll later go into the specific</p>
+<p>algorithm that we're using uh in this</p>
+<p>package then we have action and active</p>
+<p>inference which is Guided by the</p>
+<p>minimization of a quantity called</p>
+<p>expected free energy and this can have a</p>
+<p>have a lot of different kind of</p>
+<p>Expressions if you look at the ones that</p>
+<p>we show here in the slide we have one</p>
+<p>that's Information Gain versus pragmatic</p>
+<p>value which is basically where you get</p>
+<p>the Explorer exploit behavior for free</p>
+<p>in active inference which is really nice</p>
+<p>um and then we also use uh the expected</p>
+<p>free energy to calculate a posterior</p>
+<p>probability over policies</p>
+<p>uh where policies are actions so this is</p>
+<p>kind of like the quanti that we use to</p>
+<p>kind of like guide the action selection</p>
+<p>uh we're also going to go into that a</p>
+<p>bit later then we have learning in</p>
+<p>active inference this is uh specifically</p>
+<p>for categorical distribution beliefs so</p>
+<p>there's other ways of learning for</p>
+<p>continuous um cases however here we take</p>
+<p>it for categorical</p>
+<p>distributions uh for this we use derish</p>
+<p>lay Prius over the generative model</p>
+<p>parameters this is basically derish lays</p>
+<p>they have concentration parameters that</p>
+<p>we can then add counts to and this is</p>
+<p>the update equation that we show here</p>
+<p>where we have an Omega which is the</p>
+<p>forgetting value times current</p>
+<p>concentration parameter and then you add</p>
+<p>the new here is the learning rate and</p>
+<p>then you then add the kai which is the</p>
+<p>data observed and in this sense you just</p>
+<p>add counts to the concentration</p>
+<p>parameters and then through normalizing</p>
+<p>it uh it becomes your new updated uh</p>
+<p>generative model parameter um we will</p>
+<p>come back to how that's implemented in</p>
+<p>the package as well and then uh a quick</p>
+<p>refresher on partially observable Market</p>
+<p>decision disas so we just want to make</p>
+<p>sure to say that this is one type of</p>
+<p>generative model uh in active inference</p>
+<p>there's other types of generative models</p>
+<p>as well and uh pmps they are not active</p>
+<p>inance</p>
+<p>specific um in the sense you can also</p>
+<p>use it in other Frameworks um and then</p>
+<p>this uh what we have done in this</p>
+<p>package is a discrete State space uh</p>
+<p>implementation of pmps you can have</p>
+<p>continued Stace space implementation of</p>
+<p>pmpd uh pmpd is the mov element of it</p>
+<p>though is that the time steps they are</p>
+<p>discreete and not continuous um so we'll</p>
+<p>just briefly go over conceptually uh the</p>
+<p>different parameters in the pmdp and for</p>
+<p>this uh we have created sort of like</p>
+<p>this little um toy environment uh to</p>
+<p>explain this and if you can see this</p>
+<p>thing here where you kind of like if you</p>
+<p>imagine that it's a dial uh where we can</p>
+<p>spin it in different ways uh and then</p>
+<p>the goal is to get state three on top in</p>
+<p>the little rectangle um so then you have</p>
+<p>three action you can spin</p>
+<p>counterclockwise clockwise or you can</p>
+<p>just make it stay in place which you</p>
+<p>would do if you have uh state three on</p>
+<p>top for example um but we'll start with</p>
+<p>the observation State likelihood model</p>
+<p>basically what this encodes is the agent</p>
+<p>beliefs on how States generate</p>
+<p>observations so it's a categorical</p>
+<p>distribution where each column uh has to</p>
+<p>sum up to one so in this state uh in</p>
+<p>this case as we have a identity Matrix</p>
+<p>uh this indicates that the agent can uh</p>
+<p>determine istically infer uh the state</p>
+<p>based on the observation so if the agent</p>
+<p>observes observation one then it will</p>
+<p>infer that it is in state one and this</p>
+<p>can be more or less entropic in the</p>
+<p>sense we could also have a completely</p>
+<p>uniform uh column where we just have 3.3</p>
+<p>for all of these and then the agent</p>
+<p>wouldn't be able to infert the states</p>
+<p>based on the based on the</p>
+<p>observation all right so this was the</p>
+<p>observation State liih model then we're</p>
+<p>going to go to the state transition liih</p>
+<p>model and this is basically how the</p>
+<p>agents believe beles that the states</p>
+<p>change over time um so in this case I've</p>
+<p>taken the example of doing it for the</p>
+<p>action of going counterclockwise because</p>
+<p>this is usually dependent um on actions</p>
+<p>so here we see that for example if the</p>
+<p>agent is in uh State one and it does the</p>
+<p>action spin counterclockwise then it</p>
+<p>believes that the next state it's going</p>
+<p>to be in uh is going to be state two and</p>
+<p>the same if it's in state two then it</p>
+<p>believes that it's going to be in state</p>
+<p>three um so that's the state likelihood</p>
+<p>uh transition model then we have the</p>
+<p>prior preference and so this is</p>
+<p>basically where we kind of like get to</p>
+<p>encode uh kind of like the preferences</p>
+<p>or the goals of the agent Um this can be</p>
+<p>done both Over States and observations</p>
+<p>but in our case we have done it for</p>
+<p>observations and this is the case in our</p>
+<p>package as well so here for example for</p>
+<p>observation one we have encoded a</p>
+<p>dislike uh for this observation which is</p>
+<p>coupled to the state one and then for</p>
+<p>observation two we have neither dislike</p>
+<p>nor preference and then for observation</p>
+<p>three which is uh coupled um to state</p>
+<p>three which is kind of like the goal</p>
+<p>that we want we have set a preference</p>
+<p>and this is important uh as this kind of</p>
+<p>encodes the pragmatic value um which is</p>
+<p>then part of the calculation of the</p>
+<p>expected free energy as you can see here</p>
+<p>below um yes and that's the C parameters</p>
+<p>then we'll continue to the D parameters</p>
+<p>which are basically just the agents</p>
+<p>initial belief at time one uh which</p>
+<p>state is it going to be in and here we</p>
+<p>just encoded to be certain that it's</p>
+<p>going to be in state one then we have</p>
+<p>the prior over policies you'll just uh</p>
+<p>quickly introduce the notion of policies</p>
+<p>where policies are collections of</p>
+<p>actions that can have a specific L</p>
+<p>length determined by the policy length</p>
+<p>which is basically how long in the</p>
+<p>future how many time steps in the future</p>
+<p>should the agent uh plan so for this</p>
+<p>case we only have one time setep in the</p>
+<p>future which is why we only have the</p>
+<p>three actions here and this is also</p>
+<p>sometimes described as the agent's kind</p>
+<p>of habits meaning that it has a</p>
+<p>preference for certain actions in this</p>
+<p>case we have given it a uniform</p>
+<p>distribution meaning that the agent</p>
+<p>doesn't really have any preference over</p>
+<p>uh any policies all right so now that we</p>
+<p>have the generative model down uh I'm</p>
+<p>going to show you how to implement this</p>
+<p>in our package um and we're going to do</p>
+<p>this um by providing a worked example of</p>
+<p>a teammates environment where the agent</p>
+<p>is going to learn the reward probability</p>
+<p>in the arms and for this I'll just</p>
+<p>quickly have to introduce the notion of</p>
+<p>factors and modalities so factors uh are</p>
+<p>basically different kinds of States so</p>
+<p>in this case it would be we have</p>
+<p>location States and we have reward</p>
+<p>condition states where reward condition</p>
+<p>states are whether the left arm or the</p>
+<p>right arm is going to provide the reward</p>
+<p>then we have modalities um modalities</p>
+<p>are basically different kinds of</p>
+<p>observations um so here we have a</p>
+<p>location observation we have a reward</p>
+<p>observation and we have a queue</p>
+<p>observation and I'll go into these uh</p>
+<p>when we get to Define them uh in the</p>
+<p>generative model to start using our</p>
+<p>package you can just add it from the</p>
+<p>Julia registry using the Julia package</p>
+<p>man manager uh as shown here um</p>
+<p>basically for this code you can run</p>
+<p>through it uh by yourself and it should</p>
+<p>be able to run um then we initialize the</p>
+<p>package and we also import the</p>
+<p>environments module which is important</p>
+<p>uh for the teammates environment that</p>
+<p>we're using as an example here and then</p>
+<p>we initialize the tmas environment and</p>
+<p>here we just set a 95% probability of</p>
+<p>providing reward in the reward condition</p>
+<p>arm so now we can create uh the actual</p>
+<p>generative model uh the pmdp generative</p>
+<p>model and you can do this manually by</p>
+<p>yourself um but then you have to make</p>
+<p>sure that the generative model</p>
+<p>parameters are typed in the correct</p>
+<p>manner uh which is shown here where it</p>
+<p>have to be vectors of rays for ab and</p>
+<p>vectors of vectors for c and d and</p>
+<p>Vector of floats for E uh it's very</p>
+<p>similar to object arrays in numpy</p>
+<p>however we have created a helper</p>
+<p>function that makes this uh a lot easier</p>
+<p>and so I'll just quickly go through the</p>
+<p>arguments that the helper function uh</p>
+<p>takes so the first argument um is um the</p>
+<p>number of states in each factor um so</p>
+<p>remember we had two factors we had the</p>
+<p>location State factor and the reward</p>
+<p>condition Factor where we had in the</p>
+<p>location factor we had four states we</p>
+<p>had the sense the Q location and the two</p>
+<p>right arms so that's four and then we</p>
+<p>have two reward condition States reward</p>
+<p>condition right and reward condition</p>
+<p>left um so we take this as a vector and</p>
+<p>give it uh to this function as the first</p>
+<p>argument um then the second argument is</p>
+<p>the number of observations in each</p>
+<p>modality so we have uh four we have</p>
+<p>three different modalities in this case</p>
+<p>where we have four observations in the</p>
+<p>first modality the location modality we</p>
+<p>have the location sensor Q and The Arms</p>
+<p>then we have uh the second modality</p>
+<p>which is the reward modality it has</p>
+<p>three observations it has the</p>
+<p>observation of no reward reward and loss</p>
+<p>uh um then we have the last observation</p>
+<p>modality which is the cure observation</p>
+<p>modality this we also take as a vector</p>
+<p>and give to the function as the second</p>
+<p>argument the third argument is a number</p>
+<p>of controls for each of these factors so</p>
+<p>we have two factors the location factor</p>
+<p>and the reward condition Factor um we</p>
+<p>only want the agent to be able to</p>
+<p>control the location factor so it can</p>
+<p>move freely uh between the locations but</p>
+<p>in the reward condition State Factor it</p>
+<p>shouldn't be able to control what arm</p>
+<p>should be the reward arm and so</p>
+<p>therefore we just give it one in this</p>
+<p>case then we have the policy link which</p>
+<p>I have described before it's how many</p>
+<p>steps in the future does the agent plan</p>
+<p>and then we have uh the fifth and last</p>
+<p>argument which is the initial fill which</p>
+<p>basically says like when we have cons</p>
+<p>when we have made the structure of these</p>
+<p>turn to model parameters uh what should</p>
+<p>be the initial filling of these and here</p>
+<p>it takes both uh it takes zeros which we</p>
+<p>have chosen in this instance and then</p>
+<p>also takes the argument random which is</p>
+<p>nice for testing and uniform uh which is</p>
+<p>the default</p>
+<p>uh in this case good so now we just uh</p>
+<p>having created uh this helper or these</p>
+<p>generative model parameters we just need</p>
+<p>to fill them with the appropriate values</p>
+<p>so we'll start out uh with the</p>
+<p>observation State likelihood model and</p>
+<p>remember this is the one that encodes</p>
+<p>the agent beliefs of how States</p>
+<p>generates observations and then infers</p>
+<p>States based on the observations it</p>
+<p>receives so in this case we have the</p>
+<p>location OBS observation which is not as</p>
+<p>interesting to us um basically it's an</p>
+<p>identity Matrix meaning that the agent</p>
+<p>just infers the correct State because we</p>
+<p>have encoded to do so um and then we</p>
+<p>have two matrices here because we have</p>
+<p>for each of the location states which is</p>
+<p>one Matrix and then we have two uh</p>
+<p>matrices one for each reward condition</p>
+<p>State Factor um if you go to the second</p>
+<p>modality which is the reward uh modality</p>
+<p>this is the one that is interesting to</p>
+<p>us because if you look at the First</p>
+<p>Column and the last column this is the Q</p>
+<p>and Cent location we see that it expects</p>
+<p>that these are going to provide the</p>
+<p>observation of no reward however for the</p>
+<p>second and third column which are the</p>
+<p>right and left arms uh we see that in</p>
+<p>the second uh row that it has a 50%</p>
+<p>chance uh that it believes that this</p>
+<p>state is going to produce a reward</p>
+<p>observation and then if we go to the</p>
+<p>third row we see that it has a 50%</p>
+<p>chance of generating this or the agent</p>
+<p>believe that there's a 50% chance of</p>
+<p>generating this observation so in this</p>
+<p>sense the agent doesn't know which of</p>
+<p>the arms is going to provide the reward</p>
+<p>observation and this is the the modality</p>
+<p>that we want the agent to learn we</p>
+<p>wanted to approximate the actual reward</p>
+<p>probabilities in the tmas environment</p>
+<p>then we have um the Q observation</p>
+<p>modality which basically just tells the</p>
+<p>agent that only when it's in the Q</p>
+<p>location does it uh correctly get an</p>
+<p>observation that informs it on the</p>
+<p>reward condition state of the</p>
+<p>environment um and then we're going to</p>
+<p>add uh a prior over a and this is where</p>
+<p>the learning part comes in um the prior</p>
+<p>over a um is the dlay distribution and</p>
+<p>the way that we create this is basically</p>
+<p>just that we copy uh the structure of a</p>
+<p>and then we add a scaling uh</p>
+<p>concentration parameter which basically</p>
+<p>says that these counts in the DeRay</p>
+<p>distribution if they are very high like</p>
+<p>if we give it high scaling concentration</p>
+<p>parameter each uh new data observation</p>
+<p>is not going to matter as much if we set</p>
+<p>the scaling uh concentration parameter</p>
+<p>low then each data observation we have</p>
+<p>is going to going to matter a bit more</p>
+<p>and then it's important to say that and</p>
+<p>this is bit clunky but uh this is now</p>
+<p>going to define the a matrix so the uh</p>
+<p>the prior over a is going to define the</p>
+<p>a matrix meaning that the a matric that</p>
+<p>we just made is not going to be exactly</p>
+<p>used however we used it as a template to</p>
+<p>create the prior over the</p>
+<p>a um great so now we have the</p>
+<p>observation State likelihood model now</p>
+<p>we need to encode the state transition</p>
+<p>likelihood model and this is uh the</p>
+<p>matrices for the first uh Factor the</p>
+<p>location factor and basically we just</p>
+<p>note here that we have rows that are</p>
+<p>filled with ones meaning that from</p>
+<p>wherever the agent is for that action it</p>
+<p>goes to that place that it wants to go</p>
+<p>to um and then we have the second uh</p>
+<p>factor which is the uncontrollable one</p>
+<p>um which is the reward condition factor</p>
+<p>and basically this identity Matrix just</p>
+<p>tells the agent or the agent believes</p>
+<p>that the reward condition State uh</p>
+<p>doesn't change uh over time that it</p>
+<p>stays the same good so now uh we come to</p>
+<p>an interesting parameter which is the</p>
+<p>prior preference over observations so</p>
+<p>we're we have a vector here for each of</p>
+<p>the modalities however the one that we</p>
+<p>are interested in is the reward</p>
+<p>observation so in this case the first</p>
+<p>index is the index of the observation no</p>
+<p>reward and we said no preference or</p>
+<p>dislike for this the second index is the</p>
+<p>uh observation of reward which we said</p>
+<p>to have a preference for that it wants</p>
+<p>the reward and then we have the third</p>
+<p>index which is the uh loss observation</p>
+<p>which we set a dislike</p>
+<p>for yes and then we continue to the D uh</p>
+<p>parameters uh where we have a vector for</p>
+<p>each of the factors we have the location</p>
+<p>factor um where we basically tell it</p>
+<p>that it's going to start the first index</p>
+<p>is the center location then we're just</p>
+<p>telling it that it it's going to start</p>
+<p>in the center location and then for the</p>
+<p>second factor which is the reward</p>
+<p>condition Factor we just have a uniform</p>
+<p>distribution meaning that the agent does</p>
+<p>not know what the reward condition uh is</p>
+<p>going to be good then we have the last</p>
+<p>of these parameters uh which which is</p>
+<p>the prior over</p>
+<p>policies and we're just going to hear</p>
+<p>provide it with a uniform U prior so</p>
+<p>this means that as the E parameters are</p>
+<p>the habits uh it's not going to have uh</p>
+<p>any habits in this case we see here that</p>
+<p>we have 16 different policies because we</p>
+<p>have a policy length of two and we have</p>
+<p>four actions so the total number of</p>
+<p>combinations of these two actions is</p>
+<p>going to be 16 um and then as said we</p>
+<p>just give it a uniform distribution over</p>
+<p>these um</p>
+<p>policies good so now we're almost ready</p>
+<p>uh to initialize the acted inference</p>
+<p>agent before we do that we have to</p>
+<p>specify some settings um and I'll just</p>
+<p>briefly go into these what they do uh</p>
+<p>the policy length we have talked about</p>
+<p>the use utility uh basically means</p>
+<p>should we include the C parameter</p>
+<p>preferences that we just said and we've</p>
+<p>said this to true then we have the use</p>
+<p>States info gain which basically says</p>
+<p>that in the calculation of the expected</p>
+<p>free energies which is going to guide</p>
+<p>action um should we include the expected</p>
+<p>Information Gain and then we have the</p>
+<p>used parameter info gain uh setting</p>
+<p>which basically says that when we</p>
+<p>calculate the expected free energy</p>
+<p>should we include the expected learning</p>
+<p>or updating of the generative model then</p>
+<p>we have action selection which which can</p>
+<p>take two values either stochastic or</p>
+<p>deterministic um I'll go into what they</p>
+<p>do when we come to the function that</p>
+<p>actually uses the setting then we have</p>
+<p>modalities to learn um which basically</p>
+<p>specifies what modality do we want the</p>
+<p>agent to learn um in our case we want</p>
+<p>wanted to learn the reward observation</p>
+<p>modality so we specify this by giving it</p>
+<p>two we also have factors to learn uh</p>
+<p>this is only relevant when we're doing B</p>
+<p>and D Matrix learning so it's not going</p>
+<p>to be relevant in our case then we have</p>
+<p>the fix Point iteration number of</p>
+<p>iterations and the fix Point iteration</p>
+<p>uh tolerance which is basically saying</p>
+<p>that um when should the inference</p>
+<p>algorithm stop so you can set it to</p>
+<p>either as we do here after 10 iterations</p>
+<p>or when the difference between</p>
+<p>iterations are equal to a lower between</p>
+<p>this threshold</p>
+<p>yes the last thing that we need to</p>
+<p>Define to initialize the agent is the</p>
+<p>parameters here I'll just briefly go</p>
+<p>over what they do the gamma is an</p>
+<p>inverse temperature function on the</p>
+<p>expected free energies uh then we have</p>
+<p>the alpha which is inverse temperature</p>
+<p>on the action uh selection and then we</p>
+<p>have the learning and forgetting rates</p>
+<p>uh for the priors over a b and d uh</p>
+<p>parameters which are the ones that we</p>
+<p>currently have learning for the ones</p>
+<p>that we are interested in at the moment</p>
+<p>though is the prior over a uh which is</p>
+<p>the learning rate and forgetting rate</p>
+<p>for this which we're going to set to its</p>
+<p>default value of one and the the values</p>
+<p>here are all the default uh values good</p>
+<p>so now we can initialize our active</p>
+<p>inference uh agent by providing it with</p>
+<p>the generative model and the settings</p>
+<p>and these</p>
+<p>parameters and we're almost ready for</p>
+<p>the perception and action Loop in itself</p>
+<p>and before we do that uh we just have to</p>
+<p>specify how many iterations does this</p>
+<p>Loop need to contain and then we re at</p>
+<p>the teamas which just gives the agent</p>
+<p>like an initial</p>
+<p>observation and this is the perception</p>
+<p>action learning uh loop and it has five</p>
+<p>functions and I'm going to go through</p>
+<p>them and just briefly explain how they</p>
+<p>relate to active inference um so the</p>
+<p>infast states function is the one that</p>
+<p>actually does the minimization of the</p>
+<p>variational free action uh the</p>
+<p>variational free energy um and this is</p>
+<p>the perception part of active inference</p>
+<p>um here in our package we use an</p>
+<p>algorithm called fixo iteration also</p>
+<p>known as coordinate Ascent variational</p>
+<p>inference um and here we also just uh we</p>
+<p>provided a picture of an observation</p>
+<p>where you can see that we have these</p>
+<p>three observations the location</p>
+<p>observation reward</p>
+<p>observation um and the Q observation</p>
+<p>then we have the infer policies uh this</p>
+<p>is the one that actually calculates the</p>
+<p>expected free energies and it's affected</p>
+<p>by uh the settings that we talked about</p>
+<p>before uh and the gamma and the E</p>
+<p>parameter</p>
+<p>it Returns the expected free energies</p>
+<p>and it also returns uh the posterior uh</p>
+<p>over policies which is and it's this</p>
+<p>posterior probability that we are going</p>
+<p>to be sampling from when we are sampling</p>
+<p>actions um so basically this function</p>
+<p>sample action uh just samples from this</p>
+<p>posterior probability over policies um</p>
+<p>and it is affected by the action</p>
+<p>selection where it could be either</p>
+<p>stochastic or deterministic if it's</p>
+<p>stochastic it just samples from the</p>
+<p>probability distribution but if it's</p>
+<p>deterministic it all always takes the</p>
+<p>policy with the highest</p>
+<p>probability then we have the update a uh</p>
+<p>which is where the learning occurs and</p>
+<p>this is where we basically add the D lay</p>
+<p>counts uh to the prior over a and then</p>
+<p>it updates the a by normalizing the</p>
+<p>concentration</p>
+<p>parameters then we have the step teamas</p>
+<p>which is basically just the agent</p>
+<p>interacting with the environment and</p>
+<p>then it provides uh the observation uh</p>
+<p>for the next iteration uh in the</p>
+<p>perception action learning Loop um so</p>
+<p>this is the the loop um and this is the</p>
+<p>one that's is also going to be used uh</p>
+<p>in the model fitting part um and we are</p>
+<p>I think we're taking some questions now</p>
+<p>one question one question one question</p>
+<p>yes okay I I'll ask one question from</p>
+<p>Tintin in the chat they wrote hello</p>
+<p>thanks all for this great work have you</p>
+<p>implemented basian model reduction or</p>
+<p>incremental model construction</p>
+<p>structure learning with active inference</p>
+<p>JL rather than manual</p>
+<p>construction no that's the short so U</p>
+<p>the package is just now ready for</p>
+<p>deployment and there's many ways to</p>
+<p>extend it which we work on but also I</p>
+<p>mean if people are interested in</p>
+<p>collaboration to develop the package it</p>
+<p>will also be one thing so this is</p>
+<p>exciting for two reasons like in two</p>
+<p>ways by the way um basically model</p>
+<p>structure learning it can either be</p>
+<p>model structure learning from the</p>
+<p>perspective of the</p>
+<p>agent learning the structure of the</p>
+<p>environment but it can also be model</p>
+<p>structure learning from the perspective</p>
+<p>of us researchers wanting to find out</p>
+<p>what kind of structure a given agent</p>
+<p>Hason and and both of these</p>
+<p>purposes something we we would like to</p>
+<p>do I I think a useful um kind of</p>
+<p>connective tissue question where would</p>
+<p>you put active inference JL in</p>
+<p>relationship to pmdp does in Python and</p>
+<p>what RX infer does in</p>
+<p>Julia so pmdp was originally um a port</p>
+<p>of the SPM functions into python</p>
+<p>brilliant work by con and colleagues</p>
+<p>where they make it modular and easy to</p>
+<p>use but made for theoretical simulations</p>
+<p>only and I think this summer they just</p>
+<p>finished Jack's reimplementation of pp</p>
+<p>which means now you can also use it to</p>
+<p>fit to</p>
+<p>behavior but it's not</p>
+<p>designed wasn't primarily designed for</p>
+<p>that and um it was also not made for</p>
+<p>engineering purposes python is too slow</p>
+<p>although I'm sure could in</p>
+<p>principle and since then has come the</p>
+<p>C++ package right um which is much</p>
+<p>faster and I think but hard to use</p>
+<p>because it's C although there are</p>
+<p>rappers in different languages that</p>
+<p>would be useful for machine</p>
+<p>learning RX and Fir implements active</p>
+<p>inflence and many other things on b</p>
+<p>style cograph which is a very efficient</p>
+<p>and Powerful way of thinking bent</p>
+<p>inference and variation bent inference</p>
+<p>and that is optimized much more for</p>
+<p>engineering if you want to build</p>
+<p>something that does something using</p>
+<p>active inference go C++ or</p>
+<p>um or RX info</p>
+<p>if you want to apply to behavioral data</p>
+<p>then go PDP or active inf. JL um and</p>
+<p>there are some tools for this also in</p>
+<p>metl but I think our package and mdp</p>
+<p>are made for to make this easier and as</p>
+<p>you might notice we use much of the</p>
+<p>syntax from PP so we're heavily inspired</p>
+<p>by that and in the next part you will</p>
+<p>see how to use it to apply the package</p>
+<p>to behavior does that answer those</p>
+<p>questions oh yeah perfect definitely the</p>
+<p>functions look great and your your</p>
+<p>team's understanding and Clarity</p>
+<p>around the problem setup taking that all</p>
+<p>the way through the helper functions for</p>
+<p>the matricies that's where so much of</p>
+<p>the friction is so this makes it really</p>
+<p>clear it's a great open source</p>
+<p>point it's also where a kind of future</p>
+<p>development will be also there so the</p>
+<p>API can be improved for sure and we will</p>
+<p>work on this also to make it because I</p>
+<p>think one of the main challenges active</p>
+<p>influence has faced as a tool for C</p>
+<p>modeling is that it's hard to use and</p>
+<p>hard to understand and that's why much</p>
+<p>of the mathematical psychology world for</p>
+<p>example just leaves it they say we have</p>
+<p>a two or three equation model why would</p>
+<p>we use your beam of of a mon machine</p>
+<p>instead but just as it has been the case</p>
+<p>with many other methods making tools</p>
+<p>that make it easy to use and</p>
+<p>conceptualizations that make it easy to</p>
+<p>understand is the kind of thing that</p>
+<p>will make these</p>
+<p>models um feasible and therefore used</p>
+<p>more</p>
+<p>building yeah that's that's making me</p>
+<p>think like RX and fur is the car factory</p>
+<p>this is the bike and active inference is</p>
+<p>the</p>
+<p>wheel you can think of it</p>
+<p>yeah you need the logo</p>
+<p>yeah all right let's do the the last</p>
+<p>important section and then see how much</p>
+<p>time</p>
+<p>okay and because we're short in time I</p>
+<p>will need to skip through a few of the</p>
+<p>sections but I hope it's going to be all</p>
+<p>right yeah so I think Peter already</p>
+<p>mentioned that we the sort of</p>
+<p>environment of packages in Julia and one</p>
+<p>of them is uh action models which is</p>
+<p>sort of a sister package uh for us which</p>
+<p>mediates the data fitting process for us</p>
+<p>right so here we are essentially going</p>
+<p>in the opposite direction where our</p>
+<p>inputs and the the actions of our let's</p>
+<p>say experimental subjects uh are known</p>
+<p>but now we are interested in the hidden</p>
+<p>or latent uh parameters of the</p>
+<p>subjective um generative</p>
+<p>model um so this a sort of core</p>
+<p>component of action models is the action</p>
+<p>model function which depending on our on</p>
+<p>our model can be an arbitrary function</p>
+<p>which takes a single input which in our</p>
+<p>case is a single observation it updates</p>
+<p>the states of the agent and then it sort</p>
+<p>of quantifies the probabilities of</p>
+<p>actions so we end up with a probability</p>
+<p>distribution from which we can sample uh</p>
+<p>our</p>
+<p>actions right and so in our case we have</p>
+<p>this nice function called action</p>
+<p>pmdp um which is our active inference</p>
+<p>action model and it takes these two</p>
+<p>arguments which is our initialized aif</p>
+<p>object with the parameters of the</p>
+<p>generative model settings Etc and it</p>
+<p>takes the the takes a single observation</p>
+<p>and then the out it outputs the action</p>
+<p>distribution so in this particular case</p>
+<p>we have two action distributions one for</p>
+<p>each state</p>
+<p>Factor right and then another core</p>
+<p>component of action models is an agent</p>
+<p>so it sort of wraps our action model</p>
+<p>function and our um active inference um</p>
+<p>object in more more uh abstract</p>
+<p>structure which with the use will be</p>
+<p>will be using for fitting and for um</p>
+<p>simulation as well and it also stores</p>
+<p>parameters States uh history</p>
+<p>Etc right now I will just allow myself</p>
+<p>to skip through some of the convenience</p>
+<p>functions so I can just go straight to</p>
+<p>the data fitting if it's all right okay</p>
+<p>so um this is I would assume the most</p>
+<p>interesting interesting part of this so</p>
+<p>how to actually fit active inference uh</p>
+<p>models to data so um all all of our</p>
+<p>fitting functions kind of operate on</p>
+<p>touring and we wrap all of the necessary</p>
+<p>touring operations in our convenience</p>
+<p>functions for fitting so let's say for</p>
+<p>example we want to fit a single subject</p>
+<p>and we want to recover a single</p>
+<p>parameter this sort of minimal simple</p>
+<p>example so we start by specifying the</p>
+<p>prior so here let's say we want to</p>
+<p>recover our action Precision parameter</p>
+<p>Alpha so we set the prior for it let's</p>
+<p>say a gan with a mean of six and sigma 2</p>
+<p>and set it in dictionary in any casee we</p>
+<p>want to put more parameters at once we</p>
+<p>just add them to the same dictionary in</p>
+<p>their corresponding prior</p>
+<p>distributions and so now we can use the</p>
+<p>create model function which will</p>
+<p>instantiate our probabilistic model on</p>
+<p>our data and it takes these uh inputs</p>
+<p>which is our initialized agents takes</p>
+<p>our priors and our collected</p>
+<p>observations and actions which we</p>
+<p>collect let's say from from a behavioral</p>
+<p>uh experiment and in in this case</p>
+<p>uh we're just using some data from</p>
+<p>simulated teamas so here we um our</p>
+<p>actions um is a matrix which um which</p>
+<p>has rows corresponding to time steps or</p>
+<p>let's say trials and columns</p>
+<p>corresponding to State factors and</p>
+<p>similarly in observations uh we have</p>
+<p>columns corresponding to Observation</p>
+<p>modalities right and then we'll have our</p>
+<p>model object instantiated which we can</p>
+<p>easily fit in a single line using arit</p>
+<p>model function which will run the</p>
+<p>sampler with appropriate defaults and</p>
+<p>then we can like obviously people would</p>
+<p>want to pass some some more specific</p>
+<p>settings then to the sampler so here I'm</p>
+<p>passing for example uh the number of</p>
+<p>iterations per chain and I'm running</p>
+<p>four chains and then I'm using the</p>
+<p>distributed module to run the chains um</p>
+<p>in</p>
+<p>parallel right and then we after the</p>
+<p>sampling is finished then we will end up</p>
+<p>with the results object which which</p>
+<p>contains our chains and then we can work</p>
+<p>further with this right so here I'm just</p>
+<p>going to quickly go through some of our</p>
+<p>other convenience functions for example</p>
+<p>to rename chains which will rename the</p>
+<p>names of the parameters in our chain so</p>
+<p>something more more intuitive and we can</p>
+<p>extract quantities from our chains so we</p>
+<p>can just simply display the results of</p>
+<p>of our chain so we can get the summary</p>
+<p>statistics some information about about</p>
+<p>the conversions of our chains quantal</p>
+<p>Etc right or then we can just use the</p>
+<p>sort of native jly uploading functions</p>
+<p>we can pass our our chains to it uh to</p>
+<p>take a look at chain traces or posterior</p>
+<p>distributions or we can uh what we can</p>
+<p>do is we can sample from our prior so</p>
+<p>here I'm taking a th samples from the</p>
+<p>prior and I'm I'm using our plot</p>
+<p>parameters function to plot um the the</p>
+<p>posterior distribution against um</p>
+<p>against the prior distribution um for</p>
+<p>our um synthetic participant let's</p>
+<p>say okay and this is a part is going to</p>
+<p>be mostly interesting I think for people</p>
+<p>in computational Psychiatry and</p>
+<p>cognitive modeling and it's the case</p>
+<p>where we want to fit uh full data set so</p>
+<p>in this case let's say that we have some</p>
+<p>data with 10 participants and let's</p>
+<p>assume that we have two clinical groups</p>
+<p>um in our data it can be I don't know um</p>
+<p>control and um whatever psychotic or it</p>
+<p>can be young um</p>
+<p>old um right and we can simply pass the</p>
+<p>wall data set with our collected um data</p>
+<p>let's say from from our behavioral</p>
+<p>experiment there same create model</p>
+<p>function so instantiates the the</p>
+<p>probabilistic model um on the world data</p>
+<p>set and then an additional things that</p>
+<p>we need to tell the function is which</p>
+<p>columns to use to differentiate between</p>
+<p>individual subjects and which columns uh</p>
+<p>contain our observations and which</p>
+<p>columns contain our actions and again we</p>
+<p>have our model instantiated on the W</p>
+<p>data set and we can just pass it on to</p>
+<p>to our fit model</p>
+<p>function right and again this following</p>
+<p>is sort of the same procedure as before</p>
+<p>we can play around with our recovered</p>
+<p>chains here we have the the recovered</p>
+<p>values of alpha for for each participant</p>
+<p>and I'm using um Native J functions to</p>
+<p>topl the chain</p>
+<p>traces and again we can let's say sample</p>
+<p>from the prior and quot the posterior</p>
+<p>against prior distributions for each</p>
+<p>participant right and then so of keeping</p>
+<p>also with the with this default</p>
+<p>procedure in cognitive</p>
+<p>modeling now let's say that we have our</p>
+<p>estimates and we want to see where there</p>
+<p>is actually</p>
+<p>a difference right in in our two groups</p>
+<p>right so here I'm just extracting the</p>
+<p>quantities from the chain and I'm</p>
+<p>getting the estimates which these case</p>
+<p>are medians and we can see here that</p>
+<p>there are indeed um two groups present</p>
+<p>in our data right and then after let's</p>
+<p>say that we run some statistics on our</p>
+<p>estimates then we might be also</p>
+<p>interested uh to see whether there's any</p>
+<p>correlation with other states of our</p>
+<p>agent and let's say some physiological</p>
+<p>data</p>
+<p>here I'm pling the state action</p>
+<p>prediction eror reason why people want</p>
+<p>to correlate let's say with with brain</p>
+<p>data or pupilometry for</p>
+<p>example and uh for people who might want</p>
+<p>to use variational inference for uh</p>
+<p>various reasons over over sampling the</p>
+<p>good news is that touring can do</p>
+<p>variational inference to so here I just</p>
+<p>sort of remade the tutorial which you</p>
+<p>can find on the official ing um web page</p>
+<p>where I'm in the beginning just</p>
+<p>initializing the variational inference</p>
+<p>uh algorithm with a sort of default</p>
+<p>number of samples and a default number</p>
+<p>of iterations and importantly I'm</p>
+<p>setting the automatic differentiation</p>
+<p>back end to reverse mode automatic</p>
+<p>differentiation and then in the vi</p>
+<p>function which runs the variational</p>
+<p>inference algorithm I'm just reusing our</p>
+<p>probabilistic model uh which we have</p>
+<p>already created</p>
+<p>previously right so this is this is very</p>
+<p>nice and what we end up with is our</p>
+<p>variational posterior which is a tpe of</p>
+<p>distribution so we can sample from it or</p>
+<p>work further with</p>
+<p>it right and just to rather quickly wrap</p>
+<p>up so um we're currently working on the</p>
+<p>documentation uh we know it's important</p>
+<p>so um it should be done in the next few</p>
+<p>weeks let's say uh until then you can</p>
+<p>either Reach Out or uh you can refer to</p>
+<p>action models documentation which is uh</p>
+<p>really nice to wrate</p>
+<p>in okay and yeah just briefly just to</p>
+<p>summarize what we need to do in our in</p>
+<p>our um next potential future uh so we</p>
+<p>need to optimize the package is fast but</p>
+<p>there are still a lot of things that</p>
+<p>need to be improved then the idea was to</p>
+<p>for example uh be able to fit all</p>
+<p>parameters because for now we we're only</p>
+<p>able to to recover the the sort of hyper</p>
+<p>parameters or what been called the</p>
+<p>non-matrix parameters but in principle</p>
+<p>one can also one should be also able to</p>
+<p>fit an entire let's say a matrix or C</p>
+<p>Matrix which would be really nice and</p>
+<p>then okay we can um extend the parameter</p>
+<p>learning to all other uh parameters of</p>
+<p>the of the generative model and that</p>
+<p>idea was to introduce a sort of custom</p>
+<p>parameterizations where a user could</p>
+<p>introduce a sort of temperature par also</p>
+<p>on on on an a matrix and this could be</p>
+<p>also in principle then recovered using</p>
+<p>data fitting from empirical</p>
+<p>data um and lastly I'm just going to say</p>
+<p>that um for our fitting we are using</p>
+<p>reverse automatic differentiation which</p>
+<p>is fast but we are also planning to</p>
+<p>start experimenting with other uh</p>
+<p>engines which are currently under</p>
+<p>development in Chula also which includes</p>
+<p>enzyme and moon cake which might be</p>
+<p>potentially uh faster and and then on</p>
+<p>the side of action models um Peter has</p>
+<p>been working for some time also on the</p>
+<p>possibility of adding uh linear</p>
+<p>regressions so the idea would be that we</p>
+<p>could fit the data we could recover our</p>
+<p>estimates and we could run linear</p>
+<p>regressions with our with our estimates</p>
+<p>or with with other um other variables</p>
+<p>that we might have in one model yes</p>
+<p>which is statistically optimal yes okay</p>
+<p>and the last thing we're going to hear</p>
+<p>from is that uh when you decide that you</p>
+<p>want to start experimenting with our</p>
+<p>package and you encounter any issue or</p>
+<p>do you have any specific feature in mind</p>
+<p>that you wouldd like us to implement</p>
+<p>please feel free to your open issue uh</p>
+<p>any kind of feedback will be greatly um</p>
+<p>appreciated thank you and we're out of</p>
+<p>time so I'll I'll just briefly mention</p>
+<p>this point that you can treat a whole</p>
+<p>group of Agents as one agent and do c</p>
+<p>modeling art it's a separate paper so</p>
+<p>I'm sure there'll be time to talk about</p>
+<p>that at another time to reach out if</p>
+<p>that's interesting as well</p>
+<p>um yes I think that's it thanks Soul</p>
+<p>this is a huge Advance it's really</p>
+<p>awesome brings a lot of features a lot</p>
+<p>closer to people's hands and</p>
+<p>minds and and it's exciting that that</p>
+<p>we'll continue developing and learning</p>
+<p>about</p>
+<p>it thank you okay thank you till next</p>
+<p>time time</p>
+</article>
+</body>
+</html>

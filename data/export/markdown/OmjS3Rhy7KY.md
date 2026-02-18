@@ -1,0 +1,1317 @@
+---
+title: "Active Inference ~ Parr, Pezzulo, Friston ~ Chapter 7 ~ BookStream #002.02"
+category: "BookStream"
+series: "BookStream_002"
+episode: "02"
+speakers:
+  - "Parr"
+  - "Pezzulo"
+  - "Friston ~ Chapter 7 ~ BookStream #002.02"
+duration: "22:01"
+url: "https://www.youtube.com/watch?v=OmjS3Rhy7KY"
+views: 137
+exported_at: "2026-02-18T22:37:37.785451+00:00"
+format: markdown
+---
+
+# Active Inference ~ Parr, Pezzulo, Friston ~ Chapter 7 ~ BookStream #002.02
+
+Chapter 7 is called Active Inference and Discrete Time.
+Chapter 7 is the first in a pair of chapters with Chapter 8 on discrete and continuous time.
+So they're kind of like two forks of a river that we discussed in Chapter 4 and before.
+And described the recipe in Chapter 6.
+Now 7 and 8 are kind of like one level deeper.
+Going from the kind of all of this group of animals to one level deeper into its classification scheme.
+On the way to the specific generative model for which it's actually given in its totality.
+But everything prior to that is about the learning about its principles.
+And this is kind of on the trunk of the path to discrete time modeling.
+Just like Chapter 8 will be about continuous time modeling.
+What would you add in?
+Okay, so I think Chapters 7 and 8 really helps to understand in a more practical way.
+how the materials from particularly Chapters 1 through 5 applies in real-time situations.
+So even if we somehow didn't get to understand every detail of Chapters 1 through 4.
+When we come to Chapters 7 and 8, I think some of those uncertainties about our understandings can be clarified,
+at least in a practical sense.
+So I believe these two chapters are really helpful in order to consolidate our understandings from the previous chapters.
+Awesome. Well said.
+So it's going to involve specifying some discrete time models.
+7.2 goes into perceptual processing.
+And the general structure of the chapter is going to walk through a series of examples that build in complexity,
+where they first start with perception in 7.2,
+introduce decision-making,
+and then describe a few more types of motifs or cognitive structure or patterns.
+And also check out step-by-step and model stream 1,
+where it's built up to in a different way.
+So the first example is,
+I'll let you describe it,
+since it's musical.
+Okay.
+So, yeah,
+the first example is the situation in which we try to describe the performance of an amateur musician
+in terms of how we listen to the performance of an amateur musician
+in terms of the predictions we get from our anticipation of the following notes,
+as opposed to the actual notes that's being played.
+So these kinds of anticipatory reaction,
+listening reaction to the musician can be successfully formalized using discrete time active inference
+by putting together the matrices A for the states
+and matrix B for the transition between the states
+or the transition probabilities,
+which in this case describes the probability from going from one node to the other.
+And obviously the actual sequence that's been played,
+which can be described with the matrix D.
+So,
+and another point I wanted to point,
+I wanted to mention is,
+for anyone who has downloaded this chapter before,
+I don't know,
+I think about June or something,
+I recommend redownloading it from MIT's website
+because they have corrected some of the typos
+that was previously present in this chapter,
+particularly in figure 7.2.
+Cool.
+So,
+this graphical model
+where a person is listening,
+this is a general perceptual Bayesian framing,
+it's specified.
+Just like with any other equations,
+there's a lot to look into,
+but
+A indicates the probability of an outcome
+given a state.
+This is saying,
+if it were all
+on the diagonal,
+like an identity matrix,
+this is kind of a common motif,
+then states kind of map to themselves.
+So,
+in the context of,
+in the context of this model,
+A represents the mapping between the observed note
+and the underlying hidden true note,
+and then B describes the transition matrix
+of how those change to time,
+D is the prior.
+They're specified.
+Figure 7.2,
+do you want to describe it?
+All right.
+So,
+in figure 7.2,
+or at least
+the incomplete version
+of figure 7.2
+we see here,
+well,
+at the upper left
+part of the picture,
+we see,
+I mean,
+the beliefs about,
+about each note
+at each step,
+at each time step,
+and at upper right,
+we somehow translate
+those beliefs
+into specific numerical values.
+So,
+instead of just
+assigning some continuous values,
+we've simplified
+the situation
+by assigning some
+discrete numerical values
+for each note.
+and then
+the lower left
+is supposed to show
+the free energy gradients
+over time,
+or in other terms,
+the prediction errors
+we get
+from,
+I mean,
+comparing our predictions
+with the actual outcomes.
+So,
+lastly,
+the lower right picture
+shows,
+in parallel
+to the upper right picture,
+determines
+the values
+of these errors.
+so,
+we can see both
+the continuous,
+the initial,
+or at least
+initial,
+continuous
+assignment
+and values,
+and then
+the further
+discretizing
+of the values
+in order to
+get the
+discrete time
+situation,
+or the more
+tractable
+discrete time
+situations.
+Okay.
+So,
+it's a general
+passive
+inference
+task
+where
+there's
+priors
+about
+how
+states
+are
+going
+to
+change
+through
+time,
+and then
+there's
+real data
+coming in.
+So,
+that's
+the kind
+of
+classical
+predictive
+coding,
+video
+compression,
+Kalman
+filter,
+Bayesian
+setting.
+7.3
+introduces
+a key
+motif,
+which is
+decision-making
+and planning
+as
+inference.
+So,
+this is
+the idea
+of having
+a Bayes
+graph
+where the
+variables can
+relate to
+different things.
+There's
+high
+composability.
+And here,
+the idea
+is that
+a variable
+is going
+to be
+proposed
+that we
+can do
+inference
+about
+that
+describes
+the process
+of decision-making
+or policy
+selection.
+So,
+what would
+you say
+about
+7.3?
+Okay.
+So,
+7.3
+is
+obviously
+similar
+to what
+we
+saw
+in
+chapter
+4.
+And
+if I'm
+not
+mistaken,
+even the
+topology
+is
+exactly
+the
+same
+with
+that
+picture
+we
+saw
+previously.
+So,
+this is
+the
+initial
+setup
+which
+acts
+also
+as a
+review
+about
+how
+these
+different
+components
+of
+POMDP
+generative
+models
+needs to
+be
+described
+in
+such
+situations.
+But
+ultimately,
+the
+specific
+case
+study
+we
+come across
+in this
+section
+is
+the
+attempt
+to model
+the
+behavior
+of
+a
+mouse
+and
+a
+rat
+and
+a
+teammate.
+So,
+especially
+teammates
+containing
+an
+aversive
+stimulus
+in one
+arm
+and an
+attractive
+stimulus
+on the
+other.
+So,
+this
+can
+act
+as
+a
+toy
+example
+to
+use
+this
+kind
+of
+probabilistic
+modeling
+to
+describe
+these
+situations.
+Thanks.
+So,
+that leads
+us right
+to figure
+7.4.
+Here's a
+visualization
+of the
+situation
+with
+the
+rat
+in this
+case
+where
+there's
+a
+pleasant
+and
+aversive
+stimuli
+on each
+end
+of a
+decision
+point
+and
+there's
+also
+an
+epistemic
+opportunity
+to
+receive
+some
+information
+about
+the
+context
+that
+the
+animal
+is
+in.
+And
+so,
+that
+setting
+is
+described
+for
+both
+the
+case
+with
+white
+on
+the
+left
+and
+black
+on
+the
+right
+and
+black
+on
+the
+left
+and
+those
+are
+shown
+in
+terms
+of
+their
+differences
+in
+the
+matrices
+the
+explicit
+specification
+of
+the
+generative
+model.
+Visualizations
+show
+some
+of the
+slices
+of
+the
+B
+variable
+which
+reflect
+different
+transition
+probabilities.
+C
+represents
+the
+preferences
+which
+are
+expressed
+over
+the
+observable
+states.
+D
+reflects
+the
+priors
+on
+the
+different
+states
+that
+need
+priors.
+7.4
+what
+would
+you
+say
+about
+this?
+Okay
+so
+in
+7.4
+it
+builds
+up
+on
+the
+previous
+section
+and
+adds
+other
+elements
+that
+we
+previously
+saw
+in
+chapters
+3
+and
+sorry
+2
+and
+4
+which
+is
+how
+the
+exact
+formulation
+for
+expected
+free
+energy
+can be
+used
+sorry
+variation
+free
+energy
+can be
+used
+to
+formulate
+the
+trade-off
+between
+the
+I mean
+information
+seeking
+and
+or at
+least
+between
+the epistemic
+value and
+information
+seeking.
+so
+here
+it
+uses
+again
+that
+rat
+example
+in a
+bit
+more
+more
+extended
+and
+elaborate
+form
+to
+formulate
+the
+epistemic
+value
+of
+observing
+Q
+in a
+given
+location
+and
+figure
+7.7
+is a
+representation
+of
+this
+situation
+but
+another
+situation
+that's
+been
+let me
+see
+yeah
+in
+7.9
+another
+case study
+discussed
+here
+is
+the
+situation
+of
+the
+saccotic
+eye
+movements
+and
+because
+it is
+something
+that can
+be quite
+successfully
+described
+or characterized
+in terms
+of
+information
+seeking
+versus
+the
+epistemic
+value
+and the
+situation
+here
+is
+let me
+see
+yeah
+shown
+visually
+in
+figure
+7.9
+which
+clearly
+shows
+how
+our
+visual
+saccotic
+eye
+movements
+can be
+described
+in such
+a way
+as to
+kind of
+trace
+trajectory
+
+of our
+eye
+movement
+among
+different
+regions
+of the
+visual
+space
+so
+and how
+the information
+we gather
+from
+a given
+region
+can
+affect
+the
+subsequent
+trajectories
+of our
+saccotic
+eye
+movements
+so
+yeah
+that's
+basically
+the
+main
+premise
+of
+this
+section
+I guess
+nice
+great
+7.5
+what
+would you
+say about
+it
+okay
+so
+7.5
+again
+adds
+another
+dimension
+to
+the
+previous
+formulations
+and
+this
+time
+we
+get
+to
+update
+the
+generative
+models
+by
+learning
+and
+the
+so
+the
+generative
+models
+for this
+situation
+is a bit
+more
+complicated
+than the
+previous
+ones
+because
+it now
+needs to
+account
+for
+a
+mechanism
+or
+a way
+to
+update
+the
+matrices
+we had
+before
+so
+in the
+previous
+situations
+we
+didn't
+account
+for
+learning
+per se
+but
+here
+we
+directly
+update
+our
+general
+sorry
+the word
+update
+can be
+confusing
+here
+we
+get to
+somehow
+improve
+our
+generative
+models
+to
+accommodate
+for
+these
+updating
+accounts
+and
+yeah
+so
+this
+the situation
+here
+or the
+case
+study
+
+here
+which
+somehow
+elucidate
+the way
+that
+the
+learning
+can be
+accounted
+for
+with these
+models
+is
+again a toy
+example
+of a
+creature
+in a
+simple
+world
+black
+and white
+tiles
+which
+kind of
+tries to
+find
+a
+path
+to
+reach
+a
+given
+destination
+a
+certain
+destination
+so
+it is
+more
+complicated
+than
+the
+situation
+we had
+for
+the rat
+example
+because
+it only
+had
+I mean
+simple
+trajectories
+that needed
+to
+traverse
+but
+here
+the
+creature
+or the
+agent
+in this
+case
+needs
+to
+do
+lots
+more
+learning
+and
+information
+seeking
+and so
+on
+so
+all the
+previous
+elements
+is
+kind of
+combined
+in this
+example
+and
+it's a
+really
+good
+example
+to see
+how the
+different
+components
+of active
+inference
+can be
+connected
+to each
+other
+nice
+and
+7.6
+hierarchical
+or deep
+inference
+first
+a box
+7.3
+interlude
+on
+structure
+learning
+boxed
+off
+topic
+and a
+lot
+to say
+but
+structure
+learning
+broadly
+refers
+to
+learning
+the
+structure
+about
+a
+model
+using
+the
+same
+types
+of
+methods
+that
+you
+might
+to
+do
+inference
+on
+for
+example
+a
+more
+observable
+sensor
+data
+reading
+something
+like
+that
+this
+section
+works
+towards
+the
+idea
+of
+nested
+inference
+or
+multi-scale
+modeling
+what would
+you say
+about
+figure
+712
+okay
+so
+again
+this
+situation
+is
+I think
+the most
+complex
+situations
+of this
+chapter
+which
+builds
+up
+from
+the
+previous
+sections
+and
+this
+time
+it
+adds
+another
+layer
+to
+accommodate
+!
+for
+the
+inferences
+that
+happen
+in
+different
+time
+steps
+so
+in
+this
+case
+we
+have
+multi-time
+or
+multi-scale
+inference
+and learning
+happening
+both
+at the
+levels
+of
+learning
+and
+at the
+levels
+of
+information
+seeking
+so
+this
+is
+represented
+in
+figure
+7.12
+which
+represents
+how
+kind
+of
+this
+fractal
+generative
+model
+can be
+seen
+as
+a
+component
+in
+this
+multi-scale
+bigger
+generative
+or
+as a
+kind
+of
+leaf
+in
+this
+bigger
+generative
+model
+so
+it
+can
+be
+seen
+as
+a
+lower
+level
+inference
+happening
+at
+the
+leaf
+level
+going
+up
+to
+the
+hierarchy
+and
+influencing
+sorry
+collaborating
+and the
+whole
+process
+of
+learning
+and
+inference
+at
+the
+higher
+level
+so
+yeah
+I guess
+that's
+somehow
+summarizes
+this
+figure
+so
+if you
+have
+anything
+to add
+that's
+that's
+great
+it's
+an
+example
+of
+the
+composability
+of
+generative
+models
+what
+we've
+talked
+about
+and had
+Toby
+Sinclair
+Smith
+describe
+as
+the
+compositional
+cognitive
+cartography
+and just
+what
+kinds of
+connectors
+can and
+can't
+you do
+and how
+can that
+motif
+that the
+discrete
+time
+model
+introduces
+and then
+the rest
+of these
+features
+including
+action
+and learning
+and so
+on
+get layered
+in on
+top
+what can
+you do
+with that
+7.13
+gives another
+example
+do you want
+to say
+anything about
+it or
+maybe
+continue
+on
+yeah
+so the
+case study
+here is
+the example
+of
+linguistic
+language
+learning
+through
+reading
+so
+not
+language
+learning
+maybe
+just
+what
+happens
+in
+reading
+yeah
+yeah
+in
+comprehension
+so what
+happens
+when
+reading
+in an
+anticipatory
+way
+the
+words
+that
+comes
+each
+after
+the
+other
+so
+why
+this
+kind
+of
+situation
+can
+be
+most
+successfully
+characterized
+with
+this
+kind
+of
+modeling
+because
+it
+involves
+different
+scales
+of
+learning
+and
+comprehension
+both
+at the
+level
+of
+I mean
+reading
+at the
+level
+of
+somehow
+observing
+the
+letters
+and then
+going
+on to
+the words
+and then
+word groups
+and so
+on
+so
+yeah
+that's
+really
+interesting
+way to
+again
+combine
+all of
+those
+elements
+into a
+single
+unified
+model
+to see
+how those
+different
+time scales
+slow and
+fast time
+scales
+operate
+together
+to
+build
+this
+more
+encompassing
+model
+generative
+model
+of
+the
+situation
+more
+encompassing
+generative
+model
+of
+the
+situation
+more
+encompassing
+generative
+model
+of
+the
+situation

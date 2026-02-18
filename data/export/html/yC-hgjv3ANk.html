@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #039.0 ~ "Morphogenesis as Bayesian inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #039.0 ~ "Morphogenesis as Bayesian inference"</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_039 &middot; Episode 0 &middot; Duration: 1:23:38 &middot; Views: 157</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=yC-hgjv3ANk">https://www.youtube.com/watch?v=yC-hgjv3ANk</a></div>
+<article>
+<p>[Music]</p>
+<p>[Music]</p>
+<p>all right hello and welcome everyone to</p>
+<p>active lab live stream number 39.0</p>
+<p>it's february 25th 2022</p>
+<p>welcome to the active lab we are a</p>
+<p>participatory online lab that is</p>
+<p>communicating learning and practicing</p>
+<p>applied active inference you can find us</p>
+<p>at the links here on the slide</p>
+<p>this is a recorded in an archived live</p>
+<p>stream so please provide us with</p>
+<p>feedback so we can improve our work</p>
+<p>all backgrounds and perspectives are</p>
+<p>welcome and we'll be following good</p>
+<p>video etiquette for live streams</p>
+<p>if you want to learn more about</p>
+<p>coms which is the organizational unit</p>
+<p>that puts on all these live streams and</p>
+<p>many other products or any of the other</p>
+<p>activities in the active lab go to</p>
+<p>activeinference.org</p>
+<p>all right well</p>
+<p>today in active stream number 39.0 the</p>
+<p>goal is to learn and discuss</p>
+<p>this really awesome paper called</p>
+<p>morphogenesis as bayesian inference</p>
+<p>a variational approach to pattern</p>
+<p>formation and control in complex</p>
+<p>biological systems it's by franz</p>
+<p>koochling carl firsten georgiegiv and</p>
+<p>michael levin from 2020</p>
+<p>and just like all the dot zero videos</p>
+<p>and indeed all our videos it's just an</p>
+<p>introduction to some of these ideas it's</p>
+<p>not a review</p>
+<p>or a final word</p>
+<p>that being said we're going to go over</p>
+<p>the aims claims abstract roadmap keyword</p>
+<p>etc of the paper and then</p>
+<p>with a focus on the first parts of the</p>
+<p>paper and less so on the formalism and</p>
+<p>more on the big ideas we're going to go</p>
+<p>over the paper and the figures</p>
+<p>and that will put us in a good position</p>
+<p>cognitively or morphologically we might</p>
+<p>even say for</p>
+<p>the discussions in the coming weeks 39.1</p>
+<p>and 39.2</p>
+<p>when we'll get to unpack this so if you</p>
+<p>would like to it'd be awesome to have</p>
+<p>you participate live or if it's past</p>
+<p>39.2 you can still ask questions</p>
+<p>all right we'll start with introductions</p>
+<p>and warm-ups</p>
+<p>we can each</p>
+<p>say hi and maybe one thing that was</p>
+<p>exciting or interesting about the paper</p>
+<p>which all reserved for after you but i'm</p>
+<p>daniel i'm a researcher in california</p>
+<p>and dean thanks a ton for joining</p>
+<p>uh thanks natalie i'm dean i'm here in</p>
+<p>calgary</p>
+<p>and</p>
+<p>what really got me excited about this</p>
+<p>was</p>
+<p>uh the idea that they talk a little bit</p>
+<p>later close to the end we may not even</p>
+<p>talk about it today is</p>
+<p>the uh role that epigenetics might play</p>
+<p>in terms of how cells behave and</p>
+<p>and what sorts of things we might be</p>
+<p>able to turn turn in terms of</p>
+<p>simply um what we see in biological form</p>
+<p>into some sort of static</p>
+<p>statistical prediction device so i'm</p>
+<p>really excited about that awesome</p>
+<p>yeah</p>
+<p>it's a</p>
+<p>complex paper about complex systems so</p>
+<p>we'll see what we can get done today but</p>
+<p>i'm really excited to bring</p>
+<p>active inference into</p>
+<p>this domain at least as far as our</p>
+<p>discussions go into the morphological</p>
+<p>and the morphogenetic areas</p>
+<p>and it's just bringing like another</p>
+<p>lens another way that we can apply</p>
+<p>active inference as a filter</p>
+<p>another set of phenomena that we're</p>
+<p>bringing into</p>
+<p>this active inference</p>
+<p>realm</p>
+<p>so we'll just go right into the big</p>
+<p>question so i'll read this and then feel</p>
+<p>free to give a thought</p>
+<p>the big question or at least one way to</p>
+<p>put one of the questions is how can we</p>
+<p>find an integrative path between math</p>
+<p>and morphogenesis morphogenesis means</p>
+<p>form</p>
+<p>like physical form morpho and genesis</p>
+<p>meaning how it arises so how does</p>
+<p>physical form arise and how is that</p>
+<p>related to math</p>
+<p>and to kind of unpack that here's some</p>
+<p>quotes</p>
+<p>the molecular mechanisms</p>
+<p>which are like signaling pathways of all</p>
+<p>different kinds</p>
+<p>underlying development and regeneration</p>
+<p>in biological organisms</p>
+<p>have undergone a tremendous amount of</p>
+<p>knowledge gain in the last several years</p>
+<p>due to genomics and biotechnology</p>
+<p>advances</p>
+<p>so that's kind of the</p>
+<p>one side with the biological and then</p>
+<p>from the mathematical and the formal the</p>
+<p>emerging field of the free energy</p>
+<p>principle in pattern formation</p>
+<p>not always morphogenetic patterns but</p>
+<p>can be cognitive patterns rhythmic</p>
+<p>patterns</p>
+<p>provides an essential quantitative</p>
+<p>formalism for understanding cellular</p>
+<p>decision making in the context of</p>
+<p>embryogenesis regeneration and cancer</p>
+<p>suppression</p>
+<p>so if that's the if</p>
+<p>then</p>
+<p>how might the mathematical formalism</p>
+<p>reveal new understandings about</p>
+<p>developmental change in evolution</p>
+<p>and for designing new interventions in</p>
+<p>regenerative medicine settings so what</p>
+<p>do you think about that</p>
+<p>well i just love anytime that two things</p>
+<p>that seem disparate or distant are are</p>
+<p>brought together because i think all</p>
+<p>sorts of good things can happen and i'm</p>
+<p>going to do a little shout out that's</p>
+<p>kind of what i would like to</p>
+<p>see if we can organize in august with a</p>
+<p>couple of other papers that don't start</p>
+<p>out necessarily appearing to be</p>
+<p>close or proximal but by bringing</p>
+<p>together all kinds of interesting things</p>
+<p>can happen</p>
+<p>awesome</p>
+<p>okay</p>
+<p>to the main aims and claims of the paper</p>
+<p>so the paper is in physics of life</p>
+<p>reviews 2020 and we already mentioned</p>
+<p>the title and the authors</p>
+<p>just to select a few aims that the</p>
+<p>authors represent and then a couple of</p>
+<p>key claims that are relevant for the</p>
+<p>paper</p>
+<p>so as far as aims go one of their aims</p>
+<p>is to introduce an overarching concept</p>
+<p>that can predict the emergence of form</p>
+<p>and the robust maintenance of complex</p>
+<p>anatomy</p>
+<p>another aim is to</p>
+<p>derive the mathematics behind bayesian</p>
+<p>inference and use simulations to show</p>
+<p>simulations that are consistent and</p>
+<p>within the bayesian framework to show</p>
+<p>that the formalism can reproduce</p>
+<p>experimental top-down manipulations of</p>
+<p>complex morphogenesis</p>
+<p>and then just a few of their claims more</p>
+<p>of which we'll be unpacking in the</p>
+<p>coming minutes</p>
+<p>classic</p>
+<p>i.e dynamical systems and analytical</p>
+<p>mechanics</p>
+<p>approaches such as last at least action</p>
+<p>principles</p>
+<p>are difficult to use when characterizing</p>
+<p>open far from equilibrium systems that</p>
+<p>predominate in biology so that's kind of</p>
+<p>a big challenge that's come up again and</p>
+<p>again which is we might have really</p>
+<p>great equations for a pendulum maybe</p>
+<p>even a pendulum with friction but how</p>
+<p>about an active pendulum that's doing</p>
+<p>strategy and trying to run away from you</p>
+<p>a bit harder to put those same equations</p>
+<p>on</p>
+<p>the bayesian inference framework treats</p>
+<p>cells as</p>
+<p>information processing agents</p>
+<p>where the driving force behind</p>
+<p>morphogenesis is the maximization of a</p>
+<p>cell's model evidence</p>
+<p>which is to say its reduction of</p>
+<p>uncertainty relative to a generative</p>
+<p>model which is what we're going to be</p>
+<p>unpacking</p>
+<p>and</p>
+<p>we had previously read this</p>
+<p>about how they're applying free energy</p>
+<p>principle to morphogenesis</p>
+<p>when it goes well</p>
+<p>like during embryogenesis</p>
+<p>and results in a zygote becoming like an</p>
+<p>adult life form as well as all of the</p>
+<p>ways that it's maintained during that</p>
+<p>stationarity of healthy life and</p>
+<p>including cases where it might be</p>
+<p>relevant to even think about making</p>
+<p>interventions like medical settings</p>
+<p>so those are a few of the aims and</p>
+<p>claims</p>
+<p>anything to add on it</p>
+<p>yeah just real quick it's really</p>
+<p>interesting that they said top down and</p>
+<p>then we're going to see some</p>
+<p>slides where there's a top top</p>
+<p>and</p>
+<p>a down down so</p>
+<p>stick around</p>
+<p>because there's actually going to be</p>
+<p>something kind of interesting happening</p>
+<p>here</p>
+<p>okay</p>
+<p>how about you read the first half of the</p>
+<p>um the top half of this abstract slide</p>
+<p>yeah sure recent advances in molecular</p>
+<p>biology such as gene editing bioelectric</p>
+<p>recording and manipulation and live cell</p>
+<p>microsc</p>
+<p>microscopy</p>
+<p>using fluorescent reporters especially</p>
+<p>with the advent of light controlled</p>
+<p>protein activation through optogenetics</p>
+<p>have provided the tools to measure and</p>
+<p>manipulate molecular signaling pathways</p>
+<p>with unprecedented spatial temporal</p>
+<p>precision this has produced</p>
+<p>ever-increasing detail about the</p>
+<p>molecular mechanisms underlying</p>
+<p>development and regeneration bought in</p>
+<p>biological organisms however</p>
+<p>an overarching concept</p>
+<p>that can predict the emergence</p>
+<p>of form and the robust maintenance of</p>
+<p>complex anatomy is largely missing in</p>
+<p>the field</p>
+<p>classic</p>
+<p>i.e dynamic systems and analytical</p>
+<p>mechanics approaches such</p>
+<p>at least action as least action</p>
+<p>principles are difficult to use when</p>
+<p>characterizing open</p>
+<p>far from equilibrium systems that</p>
+<p>predominate in biology similar issues</p>
+<p>arise in neuroscience when trying to</p>
+<p>understand neuronal dynamics from first</p>
+<p>principles so they're basically covering</p>
+<p>their</p>
+<p>bases here by making sure that we</p>
+<p>understand this is open</p>
+<p>system</p>
+<p>yes</p>
+<p>increases in tools</p>
+<p>in biological systems like genomics</p>
+<p>microscopy optogenetics are helping us</p>
+<p>reduce our uncertainty about the what</p>
+<p>but without</p>
+<p>a bit more information about the how and</p>
+<p>the why etc that's the overarching</p>
+<p>concept that's largely missing</p>
+<p>so we can grind up the cells and</p>
+<p>sequence the genome we can extract the</p>
+<p>rna and we can even tell what the ratio</p>
+<p>of different rna molecules is but it</p>
+<p>turns out that that type of information</p>
+<p>alone</p>
+<p>doesn't help us understand why two</p>
+<p>related species or the same species in</p>
+<p>two different contexts or the same</p>
+<p>genome in two different tissues or the</p>
+<p>same tissue in two different</p>
+<p>environments has such different</p>
+<p>morphology</p>
+<p>okay</p>
+<p>and then the second half in this</p>
+<p>neurobiology setting a variational free</p>
+<p>energy principle has emerged based upon</p>
+<p>a formulation of self-organization in</p>
+<p>terms of active bayesian inference</p>
+<p>the free energy principle has recently</p>
+<p>been applied to biological</p>
+<p>self-organization beyond the</p>
+<p>neurosciences</p>
+<p>for biological processes that underwrite</p>
+<p>development or regeneration</p>
+<p>the bayesian inference framework treats</p>
+<p>cells as information processing agents</p>
+<p>where the driving force behind</p>
+<p>morphogenesis is the maximization of a</p>
+<p>cell's model evidence</p>
+<p>this is realized by the appropriate</p>
+<p>expression of receptors and other</p>
+<p>signals that correspond to the cell's</p>
+<p>internal ie generative</p>
+<p>model of what type of receptors and</p>
+<p>other signals it should express</p>
+<p>the emerging field of the free energy</p>
+<p>principle in pattern formation provides</p>
+<p>an essential quantitative formalism for</p>
+<p>understanding cellular decision making</p>
+<p>in the context of embryogenesis</p>
+<p>regeneration and cancer suppression</p>
+<p>okay and then if you read the first</p>
+<p>um two parts here on the second slide</p>
+<p>yeah no problem in this paper we derive</p>
+<p>the mathematics behind</p>
+<p>bayesian inference as understood in this</p>
+<p>framework and use simulations to show</p>
+<p>that formalism can reproduce</p>
+<p>interesting experimental top-down</p>
+<p>manipulations of complex morphogenesis</p>
+<p>first we illustrate the first principle</p>
+<p>approach to morphogenesis through</p>
+<p>simulated alterations of anterior</p>
+<p>posterior</p>
+<p>axial polarity</p>
+<p>the induction of two heads or two tails</p>
+<p>ah spoiler alert as a planarian</p>
+<p>regeneration</p>
+<p>don't you hate it when the abstract</p>
+<p>spoils the paper</p>
+<p>then we consider aberrant signaling and</p>
+<p>functional behavior of a single cell</p>
+<p>within a cellular ensemble as a first</p>
+<p>step in carcinogenesis the formation of</p>
+<p>cancer</p>
+<p>as false beliefs about what a cell</p>
+<p>should sense and do</p>
+<p>inference perception action inference</p>
+<p>we further show that simple</p>
+<p>modifications of the inference process</p>
+<p>can cause</p>
+<p>and rescue</p>
+<p>mispatterning of developmental and</p>
+<p>regenerative events without changing the</p>
+<p>implicit generative model of a cell as</p>
+<p>specified for example</p>
+<p>by its dna</p>
+<p>this formalism offers a new roadmap</p>
+<p>for understanding developmental change</p>
+<p>in evolution and for designing new</p>
+<p>interventions in regenerative medicine</p>
+<p>settings</p>
+<p>speaking of the new roadmap</p>
+<p>let's look at the roadmap</p>
+<p>kind of cool that they actually</p>
+<p>say that it is</p>
+<p>providing a road map so we've talked</p>
+<p>about guides</p>
+<p>we've talked about road maps where do</p>
+<p>you see all of that before we look at</p>
+<p>the section titles</p>
+<p>well</p>
+<p>a guide i think</p>
+<p>basically gives</p>
+<p>sort of gives you um</p>
+<p>the parameters i think a roadmap is a</p>
+<p>lot more specific in terms of the</p>
+<p>sequencing but that's just my</p>
+<p>interpretation of it i think</p>
+<p>other people can interpret roadmap</p>
+<p>roadmap differently in terms of sort of</p>
+<p>the relational aspect of how the</p>
+<p>different parts come together and we've</p>
+<p>talked about that in other live streams</p>
+<p>but</p>
+<p>i don't want to get bogged down in this</p>
+<p>part right now because</p>
+<p>i think we got a lot of stuff to cover</p>
+<p>here</p>
+<p>cool yeah so the paper begins with an</p>
+<p>introduction to bayesian inference</p>
+<p>section 2 is mathematical foundations</p>
+<p>that are building on bayesian inference</p>
+<p>so going from kind of bayes theorem to</p>
+<p>several dynamical systems</p>
+<p>representations some of which we've</p>
+<p>discussed before others which will push</p>
+<p>it into a little bit of a new area</p>
+<p>then</p>
+<p>the key</p>
+<p>contribution and the focus of the paper</p>
+<p>is modeling morphogenesis</p>
+<p>and so instead of just presenting bays</p>
+<p>and then variational bays and then free</p>
+<p>energy minimization on</p>
+<p>a bacterium like we saw axle constant do</p>
+<p>in live stream number 34</p>
+<p>we're going to take that</p>
+<p>momentum</p>
+<p>and move it towards an application of</p>
+<p>modeling in morphogenesis</p>
+<p>and that's where we'll talk about like</p>
+<p>what model they construct and how it</p>
+<p>relates to some of the formalisms that</p>
+<p>were brought up earlier</p>
+<p>and then</p>
+<p>there's a discussion and conclusion</p>
+<p>section which we won't go too much into</p>
+<p>today in the dot zero but it's going to</p>
+<p>be awesome to go into it in the dot one</p>
+<p>and dot two</p>
+<p>because there's a ton of awesome</p>
+<p>content and material</p>
+<p>all right</p>
+<p>so here's the keywords that were listed</p>
+<p>and we won't go into um</p>
+<p>[Music]</p>
+<p>most of them</p>
+<p>just to say that they're going to come</p>
+<p>up in this discussion we have free</p>
+<p>energy principle bayesian inference</p>
+<p>morphogenesis and developmental biology</p>
+<p>regeneration</p>
+<p>kind of got some mathematical stuff</p>
+<p>we've seen before</p>
+<p>we have a triad</p>
+<p>of</p>
+<p>developmental biology which broadly</p>
+<p>understood includes embryogenesis as</p>
+<p>well as</p>
+<p>aging and cancer and all these other</p>
+<p>developmental things that happened</p>
+<p>during biology and top-down muddling and</p>
+<p>maybe we'll see what that means coming</p>
+<p>up</p>
+<p>okay well to get right into it</p>
+<p>section one is an introduction to</p>
+<p>bayesian inference</p>
+<p>so</p>
+<p>here's a nice picture by sasha</p>
+<p>and here are the opening lines of the</p>
+<p>paper</p>
+<p>they wrote and then feel free to give a</p>
+<p>thought</p>
+<p>evolutionary change results from</p>
+<p>mutations in dna and selection acting on</p>
+<p>functional bodies</p>
+<p>thus it is essential to understand how</p>
+<p>the hardware encoded by the genome</p>
+<p>enables the behavioral plasticity of</p>
+<p>cells that can cooperate to build and</p>
+<p>repair complex anatomies</p>
+<p>indeed most problems of biomedicine</p>
+<p>repair of birth defects regeneration of</p>
+<p>traumatic injury tumor reprogramming etc</p>
+<p>could be addressed if prediction and</p>
+<p>control could be gained over the</p>
+<p>processes by which cells implement</p>
+<p>dynamic pattern homeostasis</p>
+<p>the fundamental knowledge gap and</p>
+<p>opportunity of the next decades in the</p>
+<p>biosciences</p>
+<p>is to complement bottom-up molecular</p>
+<p>understanding of mechanisms</p>
+<p>with a top-down computational theory of</p>
+<p>cellular decision making and info taxes</p>
+<p>movements towards information</p>
+<p>so</p>
+<p>dean what do you think</p>
+<p>what should we study and why and how is</p>
+<p>this related to active and fep</p>
+<p>okay well my background in genetics is</p>
+<p>is near zero but what i did come away</p>
+<p>from with that last bullet in particular</p>
+<p>was</p>
+<p>uh some one of the things that i</p>
+<p>beat like a dead animal which is that</p>
+<p>you need a minimum of two and i think</p>
+<p>that the</p>
+<p>the bottom up sort of building blocks</p>
+<p>aspect of it with the top down how do we</p>
+<p>get a better grip on what the signals</p>
+<p>are that are passing between</p>
+<p>all of those bricks um was really</p>
+<p>interesting and so</p>
+<p>carrying on through</p>
+<p>i i kind of wanted to open that up and</p>
+<p>see what that um that marriage looked</p>
+<p>like</p>
+<p>awesome</p>
+<p>so speaking as someone who started in</p>
+<p>the science journey with genetics pretty</p>
+<p>much</p>
+<p>it always was so interesting how</p>
+<p>genetics would frame itself as if the</p>
+<p>bottom-up information flow could just</p>
+<p>simply replace theory we'll sequence so</p>
+<p>many genomes we won't need to speculate</p>
+<p>about evolution or we'll have your</p>
+<p>genome so we won't even need to ask</p>
+<p>about what medicine is best</p>
+<p>and that's kind of this bottom-up</p>
+<p>molecular understanding which is vital</p>
+<p>it's essential it's important it's</p>
+<p>changing a lot</p>
+<p>but it's this bottom-up</p>
+<p>sub-unit description</p>
+<p>the what and the where of the subunits</p>
+<p>and how they touch and all of that</p>
+<p>and that is always met implicitly and</p>
+<p>increasingly explicitly with a top-down</p>
+<p>theory of cellular decision-making and</p>
+<p>infotaxes and so we're always kind of</p>
+<p>meeting in the middle with empirical wet</p>
+<p>lab biology revealing these mechanisms</p>
+<p>and these findings</p>
+<p>and we're meeting that as researchers</p>
+<p>doing model-based science with what are</p>
+<p>being called here top-down modeling</p>
+<p>top-down computational theories</p>
+<p>okay that's just how they open up and</p>
+<p>also set a challenge for the coming</p>
+<p>decades</p>
+<p>it's their expectation of the next few</p>
+<p>decades</p>
+<p>then they provide a math roadmap</p>
+<p>which is an awesome paragraph</p>
+<p>so they write we lay out the</p>
+<p>mathematical foundations of a type of</p>
+<p>bayesian modeling</p>
+<p>that they're going to use to simulate</p>
+<p>pattern formation</p>
+<p>so red bayesian modeling</p>
+<p>orange we start by identifying a</p>
+<p>lyapunov function</p>
+<p>that can be used to analyze and solve</p>
+<p>any dynamic system using the fundamental</p>
+<p>theorem of vector calculus i.e the</p>
+<p>helmholtz decomposition</p>
+<p>so we're using bayesian modeling and</p>
+<p>layering in what we'll talk about soon</p>
+<p>the leopard function</p>
+<p>green we use it to characterize the</p>
+<p>generalized flow of systemic states</p>
+<p>states of the whole system in terms of</p>
+<p>conversions to a non-equilibrium steady</p>
+<p>state a ness</p>
+<p>next layer blue</p>
+<p>we then introduce the notion of a markov</p>
+<p>blanket that separates the external and</p>
+<p>internal states of the system</p>
+<p>and finally purple</p>
+<p>we can then replace the leopard function</p>
+<p>with a variational free energy function</p>
+<p>to solve for the evolution of internal</p>
+<p>and active states</p>
+<p>that's</p>
+<p>of the particle</p>
+<p>and thereby characterize</p>
+<p>self-organization in far from</p>
+<p>equilibrium systems that can be</p>
+<p>partitioned into a cell</p>
+<p>and an external milieu</p>
+<p>that's the math that they go through</p>
+<p>that's the math rainbow then</p>
+<p>sections after that</p>
+<p>apply this formalism to illustrate</p>
+<p>morphogenesis and neoplasia which is the</p>
+<p>growth of new forms neoplasia</p>
+<p>using simulations</p>
+<p>and what's so cool is this</p>
+<p>trajectory</p>
+<p>from 400 to 700 nanometers</p>
+<p>from the bays</p>
+<p>through the vector calculus and flow</p>
+<p>states</p>
+<p>to the finding or the figuring out of a</p>
+<p>markov blanket</p>
+<p>and then</p>
+<p>the usage of the markov partitioning</p>
+<p>legitimated</p>
+<p>by the orange and the green steps</p>
+<p>to find a heuristic way to go about</p>
+<p>solving</p>
+<p>what was</p>
+<p>needing to be addressed right in the</p>
+<p>beginning</p>
+<p>we've seen some variants of this</p>
+<p>trajectory multiple times</p>
+<p>and then</p>
+<p>in this paper they studied morphogenesis</p>
+<p>and so then they model morphogenesis but</p>
+<p>say for a couple of words</p>
+<p>a different paper could have said we do</p>
+<p>the base thing the lyapunov thing the</p>
+<p>helmholtz</p>
+<p>the nest the markov and then we're back</p>
+<p>to doing far from equilibrium</p>
+<p>strategy in</p>
+<p>online teams</p>
+<p>and then we applied it to online teams</p>
+<p>and so</p>
+<p>let's keep in mind like the paper can be</p>
+<p>long there are a lot of equations but</p>
+<p>where is this broader trajectory that's</p>
+<p>helping us fine-tune our regime of</p>
+<p>attention and update our generative</p>
+<p>model about what we are doing here and</p>
+<p>how it's different than other approaches</p>
+<p>and then where is the part that's</p>
+<p>actually studying morphogenesis</p>
+<p>just things to keep in mind okay</p>
+<p>anything to add on this</p>
+<p>well you</p>
+<p>correct me if i'm wrong on this but i</p>
+<p>think what we're doing is</p>
+<p>essentially</p>
+<p>taking</p>
+<p>as you said we can we can look at a</p>
+<p>variety of things we can look at</p>
+<p>the physical nature of ants we can look</p>
+<p>at cells we can look at</p>
+<p>online teams</p>
+<p>whatever we're looking at what they</p>
+<p>basically said is</p>
+<p>there is a there is a parallel</p>
+<p>way of looking at the formalisms</p>
+<p>that exist in those contexts with that</p>
+<p>with that</p>
+<p>type of content</p>
+<p>that's essentially what this said to me</p>
+<p>there's a way of bumping it up into that</p>
+<p>sort of statistical mathematical realm</p>
+<p>and now we're going to walk you through</p>
+<p>what that is</p>
+<p>great</p>
+<p>okay so into</p>
+<p>the bay</p>
+<p>the bay's area where i grew up</p>
+<p>so</p>
+<p>sitting by the dock of the base all</p>
+<p>right oh i thought so i'm gonna say</p>
+<p>where the water well where the</p>
+<p>watermelons grow carry on</p>
+<p>base theorem rests on three basic axioms</p>
+<p>of probability theory and is used to</p>
+<p>relate</p>
+<p>the conditional probability of an</p>
+<p>unobservable event a okay so the</p>
+<p>vertical bar means conditioned upon or</p>
+<p>given</p>
+<p>and so what we really want to know is</p>
+<p>like the probability of something that</p>
+<p>we cannot observe</p>
+<p>conditioned on what we did observe be</p>
+<p>so you're never observing the lightning</p>
+<p>strike you're observing photons on your</p>
+<p>receptor and then you want to know about</p>
+<p>whether there was lightning in that</p>
+<p>cloud over a few miles away so we want</p>
+<p>to know the conditional probability of</p>
+<p>an unobservable event a that's this left</p>
+<p>hand side</p>
+<p>we want to relate that to</p>
+<p>an observable quantity b</p>
+<p>that's what the data are</p>
+<p>and that's going to be calculated using</p>
+<p>the bayes theorem as</p>
+<p>the probability of the data</p>
+<p>given</p>
+<p>the unobservable state which is called a</p>
+<p>prior so that's like</p>
+<p>had to do with cats and meowing or in a</p>
+<p>previous example or it has to do with</p>
+<p>like</p>
+<p>if there were lightning yes or no what</p>
+<p>would be the likelihood of me observing</p>
+<p>photons</p>
+<p>multiplied by the probability of those</p>
+<p>unobservable states happening which is</p>
+<p>of course a prior about them but it</p>
+<p>could be</p>
+<p>set with empirical data</p>
+<p>divided by how likely the data are which</p>
+<p>is called p of b the marginal likelihood</p>
+<p>or evidence</p>
+<p>okay so p of a given b is called the</p>
+<p>posterior because it's like after</p>
+<p>you've done your inference you want the</p>
+<p>correct posterior which is like updated</p>
+<p>beliefs about how likely the thing that</p>
+<p>you care about a is given what has come</p>
+<p>in</p>
+<p>priors are like prior to this round of</p>
+<p>inference</p>
+<p>what are your beliefs about how likely a</p>
+<p>is</p>
+<p>and then</p>
+<p>the evidence coming in is be</p>
+<p>okay</p>
+<p>and the likelihood is how likely the</p>
+<p>data are</p>
+<p>under the prior distribution</p>
+<p>so that's bayes theorem and we've talked</p>
+<p>about it multiple times and i'm sure</p>
+<p>there's other awesome videos and courses</p>
+<p>that can explain it even better</p>
+<p>how are they using it here</p>
+<p>to describe the dynamics of an ensemble</p>
+<p>of information processing agent like</p>
+<p>cells</p>
+<p>as a process of bayesian belief updating</p>
+<p>we need to relate the stochastic</p>
+<p>differential equations governing</p>
+<p>newtonian motion</p>
+<p>and biochemical activity to the</p>
+<p>probabilistic quantities above</p>
+<p>long sentence but</p>
+<p>it's kind of saying we need to connect</p>
+<p>these variables which are informational</p>
+<p>they're probabilistic they're</p>
+<p>statistical to</p>
+<p>movement in space</p>
+<p>movement in a newtonian coordinate</p>
+<p>system</p>
+<p>because we need these variables to</p>
+<p>measure spatial movement so we can study</p>
+<p>morphogenesis this is fairly</p>
+<p>straightforward to do if we</p>
+<p>associate biophysical states with the</p>
+<p>parameters of a probability density</p>
+<p>and ensure their dynamics perform a</p>
+<p>gradient flow on a quantity called</p>
+<p>variational free energy</p>
+<p>variational free energy is a quantity in</p>
+<p>bayesian statistics that</p>
+<p>when minimized</p>
+<p>ensures the parameterized density</p>
+<p>converges to the posterior belief as we</p>
+<p>will see below</p>
+<p>so yes this is our first slide on bayes</p>
+<p>theorem and we did just kind of go from</p>
+<p>the total</p>
+<p>description of the variables and what is</p>
+<p>bayes theorem out of first pass to this</p>
+<p>introduction of the variational free</p>
+<p>energy so</p>
+<p>it can be accordioned out and unpacked a</p>
+<p>lot more but</p>
+<p>what variational free energy is doing</p>
+<p>is helping us tractably</p>
+<p>converge to</p>
+<p>the appropriate posterior</p>
+<p>belief and that's its role here</p>
+<p>okay</p>
+<p>anything to add on this one dean</p>
+<p>well i'll ask you a question so if you</p>
+<p>were to talk to this to somebody for the</p>
+<p>first time</p>
+<p>not people who probably listened to</p>
+<p>other of our live streams</p>
+<p>would you say that it would be</p>
+<p>um dangerous to say that we're taking</p>
+<p>something that's kind of ratio based</p>
+<p>and now</p>
+<p>using that to try to build a model of</p>
+<p>what our predictions</p>
+<p>are going to</p>
+<p>be based on</p>
+<p>is that</p>
+<p>is that fair to say</p>
+<p>i believe so</p>
+<p>it's like</p>
+<p>one way to approach that</p>
+<p>i hope this would be accessible the</p>
+<p>ratio-based part is on the right-hand</p>
+<p>side</p>
+<p>and um one could say depending on like</p>
+<p>how much data you're getting and what</p>
+<p>you're trying to estimate it could be</p>
+<p>very hard to go from</p>
+<p>observations to inference on hidden</p>
+<p>states</p>
+<p>pretty fair conclusion</p>
+<p>so</p>
+<p>what we could do</p>
+<p>would be construct a smooth</p>
+<p>approximatable model</p>
+<p>so that when we slide to the bottom of</p>
+<p>our model just like the ball sliding</p>
+<p>down the hill</p>
+<p>we would actually be doing the same</p>
+<p>thing as</p>
+<p>fitting this effectively</p>
+<p>so instead of like number crunching and</p>
+<p>putting everything into this equation</p>
+<p>and running the calculation</p>
+<p>we're going to construct</p>
+<p>a bowl</p>
+<p>which is the variational free energy</p>
+<p>that we can do gradient descent on that</p>
+<p>is going to converge to a really good</p>
+<p>solution</p>
+<p>do we construct it or do they do they</p>
+<p>kind of tell us that</p>
+<p>we should assume it if we want to make</p>
+<p>it tractable</p>
+<p>assume the bowl</p>
+<p>when we pick up this instrument</p>
+<p>we're making variational free energy</p>
+<p>bowls</p>
+<p>yeah okay good</p>
+<p>and we've seen this before</p>
+<p>um</p>
+<p>in</p>
+<p>live streams</p>
+<p>26</p>
+<p>32 and 34</p>
+<p>we did some variants on moving from</p>
+<p>bayes theorem and exact base</p>
+<p>to</p>
+<p>variational inference which uses this</p>
+<p>variational free energy value</p>
+<p>so those are a few times that we've seen</p>
+<p>this discussed before</p>
+<p>in neuroscience the minimization of</p>
+<p>variational free energy</p>
+<p>is referred to as</p>
+<p>active inference</p>
+<p>we will see that the basic when the</p>
+<p>basic condition for an inference type</p>
+<p>description of a system</p>
+<p>namely the existence of a markov blanket</p>
+<p>separating external and internal states</p>
+<p>is satisfied</p>
+<p>agents such as biological cells form</p>
+<p>into organized conglomerations based on</p>
+<p>their generative model of how their</p>
+<p>blanket states influence</p>
+<p>and are influenced by</p>
+<p>external states in the external milieu</p>
+<p>so the connection between bayes theorem</p>
+<p>and markov blankets is the unobservables</p>
+<p>are external states</p>
+<p>the observables are blanket states</p>
+<p>it's a pretty fair model</p>
+<p>whether it also provides like strong</p>
+<p>guarantees on optimal perception or</p>
+<p>optional action that's another</p>
+<p>discussion but</p>
+<p>at the very least it's a fair framing</p>
+<p>that external states are unobserved if</p>
+<p>you could observe them they'd be</p>
+<p>observables then they'd be more like b</p>
+<p>than a</p>
+<p>so we're talking about a situation where</p>
+<p>we have some a's and we have some b's</p>
+<p>and we're going to think about that in</p>
+<p>terms of a blanket formalism</p>
+<p>and</p>
+<p>the dynamics of a system with a markov</p>
+<p>blanket that self-organizes to</p>
+<p>non-equilibrium steady states can be</p>
+<p>described as a gradient flow on this</p>
+<p>computable variational free energy bound</p>
+<p>so we can set up the blanket and it</p>
+<p>turns out that we don't have to do the</p>
+<p>ratio number crunch we can do</p>
+<p>the bowl gliding down</p>
+<p>that's the beginning part on just bays</p>
+<p>that takes us from bayes theorem to</p>
+<p>introducing variational free energy and</p>
+<p>doing gradient descent on variational</p>
+<p>free energy</p>
+<p>so that one can effectively essentially</p>
+<p>perform bayesian inference</p>
+<p>cool</p>
+<p>perfect okay section two mathematical</p>
+<p>foundations</p>
+<p>all right</p>
+<p>so section 2.1 stability and convergence</p>
+<p>in coupled dynamical systems and</p>
+<p>subsection 1 the helmholtz decomposition</p>
+<p>so they write the helmholtz</p>
+<p>decomposition states that any</p>
+<p>sufficiently smooth</p>
+<p>i.e possessing continuous derivatives</p>
+<p>vector field f</p>
+<p>can be decomposed into an irrotational</p>
+<p>curl free</p>
+<p>so kind of</p>
+<p>straight up and down putting the ruler</p>
+<p>and finding the slope of a hill</p>
+<p>and</p>
+<p>a solenoidal divergence-free vector</p>
+<p>field the divergence free solenoidal is</p>
+<p>like putting the ruler</p>
+<p>at ground level</p>
+<p>and then being able to make an iso</p>
+<p>contour around a hill</p>
+<p>because an irrotational vector field has</p>
+<p>only a scalar potential</p>
+<p>and the solenoidal vector field has only</p>
+<p>a vector potential we can express the</p>
+<p>vector field as</p>
+<p>insert formalism two</p>
+<p>and just so people know the upside down</p>
+<p>triangle is called del or nabla which</p>
+<p>means harp due to the shape</p>
+<p>so del</p>
+<p>phi</p>
+<p>is</p>
+<p>the irrotational</p>
+<p>vector field</p>
+<p>del a is the solenoidal field</p>
+<p>we talked about this mostly in</p>
+<p>um</p>
+<p>number 26 and 32</p>
+<p>where we talked about the partition or</p>
+<p>the decomposition</p>
+<p>into a solenoidal and a gradient</p>
+<p>as well as this housekeeping term which</p>
+<p>was</p>
+<p>everyone's favorite housekeeping term so</p>
+<p>we're not um</p>
+<p>having a housekeeping term here</p>
+<p>but we're keeping in mind that it's not</p>
+<p>implausible that</p>
+<p>it's</p>
+<p>still there</p>
+<p>it's just that there was a whole paper</p>
+<p>coming out after</p>
+<p>this morphogenesis paper</p>
+<p>that</p>
+<p>talked about the housekeeping etc so</p>
+<p>again it wouldn't be surprising if a</p>
+<p>future morphogenesis paper or project</p>
+<p>did have this housekeeping term but um</p>
+<p>32 was actually a later paper so that</p>
+<p>might be a more advanced placed um or</p>
+<p>updated place to check out</p>
+<p>how the partition i'm sorry the um</p>
+<p>helmholtz decomposition works</p>
+<p>and here was a image from</p>
+<p>just showing how you could have like a</p>
+<p>kind of</p>
+<p>um</p>
+<p>hill</p>
+<p>and in physics you could have hill</p>
+<p>climbing and trying to get to the top</p>
+<p>or</p>
+<p>sometimes it's easier to think about</p>
+<p>that as like the flip</p>
+<p>and the ball rolling to the bottom of</p>
+<p>the hill so whether it's the optimistic</p>
+<p>biologists talking about going up to the</p>
+<p>fitness peak or whether it's the</p>
+<p>pessimistic physicists talking about</p>
+<p>going to the bottom of the energy well</p>
+<p>it's the same idea</p>
+<p>that there's a particle on a landscape</p>
+<p>and there's been a ton of work on</p>
+<p>passive particles that's not to say</p>
+<p>immobile particles but particles that</p>
+<p>roll and get trapped and then once</p>
+<p>they're trapped they stay or they jiggle</p>
+<p>stochastically</p>
+<p>we're studying active particles and so</p>
+<p>that's where action selection comes into</p>
+<p>play landscapes of energy with balls</p>
+<p>rolling down them but they're kind of</p>
+<p>like jumping beans where they also have</p>
+<p>a few tricks that they can play</p>
+<p>okay anything to add here</p>
+<p>just just a reminder to people that</p>
+<p>that's a density that we're looking at</p>
+<p>not not a</p>
+<p>not a</p>
+<p>not a vacuum it's a</p>
+<p>i know most people when they hear like</p>
+<p>if i was to talk to younger people and</p>
+<p>they started imagining a ball rolling</p>
+<p>down a hill they would they wouldn't</p>
+<p>necessarily</p>
+<p>confirm that it's an</p>
+<p>actual density that we're looking at so</p>
+<p>just reinforce that</p>
+<p>yeah like the bottom right here it's</p>
+<p>kind of like you're looking down at an</p>
+<p>ink drop</p>
+<p>and that's where it's densest is where</p>
+<p>it's darkest and then that is like a</p>
+<p>landscape where where it's darkest is</p>
+<p>highest</p>
+<p>right</p>
+<p>okay</p>
+<p>section two one two the openiv functions</p>
+<p>okay so the opposite functions have been</p>
+<p>used extensively in dynamical systems</p>
+<p>theory and engineering</p>
+<p>to characterize the stability of fixed</p>
+<p>points of a dynamical system</p>
+<p>the operative functions are generally</p>
+<p>defined for smooth systems through the</p>
+<p>following conditions</p>
+<p>so l is going to be the leopard if</p>
+<p>function</p>
+<p>and x is going to be a point</p>
+<p>so</p>
+<p>a fixed point is going to be x star</p>
+<p>and a non-fixed point is going to be</p>
+<p>just regular x so x star the special</p>
+<p>points where if you are there you're</p>
+<p>perfectly balanced</p>
+<p>so</p>
+<p>this is saying that</p>
+<p>at fixed points</p>
+<p>the lyapunov function</p>
+<p>evaluates as zero</p>
+<p>and it's not zero</p>
+<p>if it's not a fixed point</p>
+<p>and</p>
+<p>the leaping function</p>
+<p>change in l with respect to time</p>
+<p>it's below zero</p>
+<p>for all x</p>
+<p>equation three a requires the leopard</p>
+<p>function to be minimal for fixed points</p>
+<p>x star representing local minima</p>
+<p>and b denotes conversions to these fixed</p>
+<p>points over time so what does it mean to</p>
+<p>have a leopard value of 0</p>
+<p>above zero or below zero so if you're at</p>
+<p>zero just like it said with the fixed</p>
+<p>points that means that it's not moving</p>
+<p>at all</p>
+<p>a leopard if exponent below zero means</p>
+<p>that things are converging towards</p>
+<p>the openiv</p>
+<p>bigger than zero means diverging away</p>
+<p>specifically what it means is two points</p>
+<p>that are really really close to each</p>
+<p>other</p>
+<p>do they stay exactly the same distance</p>
+<p>away that's zero</p>
+<p>a negatively operative means that two</p>
+<p>points close to each other will converge</p>
+<p>so that's a convergence attractor</p>
+<p>and then positively open of exponents</p>
+<p>the opposite values</p>
+<p>mean that two points that are placed</p>
+<p>very close to each other will diverge</p>
+<p>away from each other</p>
+<p>i hope i have not oversimplified or made</p>
+<p>unforced errors about the opponent</p>
+<p>functions because it's obviously a</p>
+<p>really technical area</p>
+<p>and they write following 16 we can</p>
+<p>generalize this local leopard function</p>
+<p>of stability</p>
+<p>so zero equal fixed point positive</p>
+<p>equals divergence negative equals</p>
+<p>convergence to a globally open a</p>
+<p>function that plays the role of a</p>
+<p>potential function of any dynamical</p>
+<p>system</p>
+<p>and we won't go into it but it is the</p>
+<p>citation to this ryoshi</p>
+<p>paper from 2013</p>
+<p>and they do some pretty interesting math</p>
+<p>so if somebody's more familiar with this</p>
+<p>it would be awesome to hear about</p>
+<p>but what this is doing is it's taking</p>
+<p>this same dynamical systems perspective</p>
+<p>that we've been thinking about about</p>
+<p>things changing through time and then</p>
+<p>overlaying</p>
+<p>on that landscape</p>
+<p>a stability landscape and so if we think</p>
+<p>about like this hill on the top right</p>
+<p>again hopefully not</p>
+<p>being</p>
+<p>wrong or misleading here</p>
+<p>at the very top of the hill</p>
+<p>it's like a fixed point it's an unstable</p>
+<p>fixed point but if one were perfectly</p>
+<p>balanced there we could just say</p>
+<p>um it could get knocked off by</p>
+<p>stochastic things which we'll come back</p>
+<p>later but it's perfectly balanced it's</p>
+<p>like a fixed point</p>
+<p>two points that were very close to each</p>
+<p>other</p>
+<p>on a hill</p>
+<p>two balls placed right next to each</p>
+<p>other would start to diverge as they</p>
+<p>rolled down the hill</p>
+<p>so that would be like a slight</p>
+<p>divergence</p>
+<p>and so that is what the lyapunov</p>
+<p>function as potential function is</p>
+<p>allowing it's allowing us to take the</p>
+<p>landscape of ball rolling where gravity</p>
+<p>is the potential function</p>
+<p>the higher up the more potential you</p>
+<p>have and then it rolls down because the</p>
+<p>dissipation of potential energy</p>
+<p>and they're going to</p>
+<p>um</p>
+<p>show that any dynamics with lyapunov</p>
+<p>function so any smooth differentiable</p>
+<p>etc landscape has a corresponding</p>
+<p>physical realization a friction force a</p>
+<p>lorentz force and a potential function</p>
+<p>so we can think about this leopard</p>
+<p>function being related to potential</p>
+<p>functions like something that draws the</p>
+<p>system back</p>
+<p>that's where the negative lyapunov comes</p>
+<p>into play okay dean</p>
+<p>just a quick thing daniel</p>
+<p>when we were setting up the slides</p>
+<p>between those two bullets um they they</p>
+<p>talked about something called a saddle</p>
+<p>point did you understand what a saddle</p>
+<p>point was</p>
+<p>previous to reading this or do you know</p>
+<p>what a saddle point is now</p>
+<p>yes let us i'm just pulling up the um</p>
+<p>paper in the window okay so people can</p>
+<p>see it</p>
+<p>um okay so</p>
+<p>yeah the stability um okay</p>
+<p>so it's the following sentence so we can</p>
+<p>generalize the leop the function to a</p>
+<p>global function that plays the role of a</p>
+<p>potential function of any system</p>
+<p>this follows by generalizing condition a</p>
+<p>to allow for saddle points</p>
+<p>so a saddle point is when the landscape</p>
+<p>is shaped like a saddle</p>
+<p>and there's like um</p>
+<p>so if it were on top of a hill</p>
+<p>the curvature is negative with respect</p>
+<p>to all directions</p>
+<p>right in a saddle point the curvature is</p>
+<p>negative with respect to one of the</p>
+<p>dimensions</p>
+<p>but it's positive with respect to</p>
+<p>another dimension</p>
+<p>and so it's just like just like a saddle</p>
+<p>yeah</p>
+<p>okay</p>
+<p>why do they call it that um and so</p>
+<p>the ball on the top of the hill</p>
+<p>is like an infinite multifurcator</p>
+<p>like a little jiggle it could go any</p>
+<p>direction</p>
+<p>because it's unstable in every direction</p>
+<p>saddle points</p>
+<p>induce a symmetry</p>
+<p>where that ball is never going to roll</p>
+<p>up the hill</p>
+<p>it's going to fall to one side of the</p>
+<p>saddle or the other side of the saddle</p>
+<p>and one of those could be like um</p>
+<p>a certain attractor and the other one</p>
+<p>could be like another elevation</p>
+<p>basically</p>
+<p>um</p>
+<p>though i don't know the details of how</p>
+<p>the saddle point is related to</p>
+<p>some of this lyapunov stuff</p>
+<p>okay</p>
+<p>all right so following</p>
+<p>16</p>
+<p>so this is they're showing that the</p>
+<p>leopardive is equivalent to a potential</p>
+<p>function</p>
+<p>in physics a potential function psi</p>
+<p>can be constructed to describe the flow</p>
+<p>of</p>
+<p>or forces acting on</p>
+<p>a particle through a potential energy</p>
+<p>gradient</p>
+<p>so the potential</p>
+<p>energy function f is</p>
+<p>del</p>
+<p>psi</p>
+<p>so here's just one way to state the big</p>
+<p>idea of equations five through nine</p>
+<p>which are not discussed here</p>
+<p>so the idea is create a potential</p>
+<p>function</p>
+<p>and when you think of potential function</p>
+<p>think it's like kinetic energy</p>
+<p>based upon elevation</p>
+<p>but it's not for gravity and elevation</p>
+<p>it's like balls falling down tall</p>
+<p>buildings</p>
+<p>but for</p>
+<p>not gravity</p>
+<p>for something that's related to</p>
+<p>dynamical conversions</p>
+<p>so if you were like at the bottom of the</p>
+<p>bowl you'd only have a little bit of</p>
+<p>potential energy</p>
+<p>the potential function would be low if</p>
+<p>you were really far up the ball</p>
+<p>wall you'd have a high potential</p>
+<p>function you'd have a long way to fall</p>
+<p>that</p>
+<p>is going to be reflected by a balance of</p>
+<p>forces</p>
+<p>namely an attractor force</p>
+<p>which is the combination of the lorenz</p>
+<p>force and the potential energy-induced</p>
+<p>force</p>
+<p>and then there's the dissipative force</p>
+<p>and that's the frictional force</p>
+<p>due to dissipative random fluctuations</p>
+<p>so</p>
+<p>that's like the velcro ball on the</p>
+<p>velcro bowl</p>
+<p>the friction is so high</p>
+<p>that it still is being kept on the side</p>
+<p>or it's rolling down very slowly or</p>
+<p>something like that</p>
+<p>combining these definitions we can</p>
+<p>express the total balance total force as</p>
+<p>a balance of the forces defined above</p>
+<p>resulting in</p>
+<p>and so just like if it was two colliding</p>
+<p>vectors and then we were gonna express</p>
+<p>the outcome resultant as like the total</p>
+<p>forces being applied on something</p>
+<p>it's like that but it's not about the</p>
+<p>physical forces in the gravity it's like</p>
+<p>more about</p>
+<p>these forces</p>
+<p>abstractly and so equation 10 is</p>
+<p>expressing this balance of forces</p>
+<p>on</p>
+<p>x using a gradient landscape so there's</p>
+<p>that</p>
+<p>del psi</p>
+<p>and here's the combination of forces</p>
+<p>being expressed as</p>
+<p>del psi dean</p>
+<p>so</p>
+<p>they use the word tensor here and when i</p>
+<p>was reading this i didn't</p>
+<p>i didn't see it i mean okay so if we're</p>
+<p>having a tug of war on a rope</p>
+<p>it might appear to the outsider upside</p>
+<p>outside observer that there's a balance</p>
+<p>but really what i read into this and</p>
+<p>maybe i'm wrong was that there's a</p>
+<p>tension</p>
+<p>between these two forces</p>
+<p>between the attractive force and the</p>
+<p>dissipative force am i</p>
+<p>am i misinterpreting that</p>
+<p>someone has a different answer would be</p>
+<p>awesome to hear it a tensor is like a</p>
+<p>generalization of a matrix it's like a</p>
+<p>matrix through time</p>
+<p>i don't think that</p>
+<p>it is directly related to tensile or</p>
+<p>tensegrity</p>
+<p>okay that being said you're right that</p>
+<p>there is</p>
+<p>a tension between these forces or there</p>
+<p>can be</p>
+<p>and that they like tension</p>
+<p>can reflect</p>
+<p>like a compromised position like if you</p>
+<p>have a rope with tension on it</p>
+<p>then the ending of the rope is going to</p>
+<p>be like some compromise between the</p>
+<p>various forces</p>
+<p>and so we're thinking about like the</p>
+<p>various forces</p>
+<p>and then we're expressing it as like</p>
+<p>this matrix</p>
+<p>through time</p>
+<p>that's what makes it a tensor not the</p>
+<p>fact that the forces are in tension or</p>
+<p>um opposition with each other yeah okay</p>
+<p>i hope that's accurate okay</p>
+<p>um</p>
+<p>and then they follow 16 again</p>
+<p>and transform that expression in 10</p>
+<p>into a more standard form using the</p>
+<p>diffusion tensor gamma</p>
+<p>and a tensor q</p>
+<p>this is like a rewriting</p>
+<p>that helps them get to this format</p>
+<p>where f x is describing the flow of</p>
+<p>states so that's the change in states</p>
+<p>through time</p>
+<p>and it's like a vector field</p>
+<p>and it is going to be q minus gamma</p>
+<p>so</p>
+<p>tensor</p>
+<p>minus diffusion</p>
+<p>both of that so that multiplied by</p>
+<p>that landscape</p>
+<p>so that's kind of like the</p>
+<p>decomposition</p>
+<p>but if someone could explain this more</p>
+<p>let's hear it</p>
+<p>and my simple words this is where i i i</p>
+<p>keep bringing up the idea that</p>
+<p>maybe when we're looking at these things</p>
+<p>through an active inference lens we're</p>
+<p>not just looking through a frame</p>
+<p>we're also looking through and they talk</p>
+<p>about filters later on</p>
+<p>so</p>
+<p>so like</p>
+<p>how do we how do we make sure that we're</p>
+<p>including both</p>
+<p>and that and sort of the tension between</p>
+<p>both of those views working</p>
+<p>together and being in tension with one</p>
+<p>another so yeah</p>
+<p>this is very this is very formal</p>
+<p>but i think it kind of reinforces that</p>
+<p>there's there's</p>
+<p>what's inside the</p>
+<p>the</p>
+<p>the partitions and then what's going on</p>
+<p>within them as well</p>
+<p>yeah</p>
+<p>and it um so it's describing the flow of</p>
+<p>states resulting from this conservative</p>
+<p>and dissipative forces so if q and gamma</p>
+<p>were the same</p>
+<p>then the flow would be zero</p>
+<p>if one is larger than the other then</p>
+<p>it's going to be dominated by that</p>
+<p>component with respect to being</p>
+<p>multiplied by this landscape</p>
+<p>so</p>
+<p>we'll return to it many times</p>
+<p>okay</p>
+<p>variational free energy um</p>
+<p>what did you want to add on this slide</p>
+<p>well i i don't know that there any i</p>
+<p>mean most people already know what we're</p>
+<p>talking about in terms of variation free</p>
+<p>energy but what they what they're doing</p>
+<p>is introducing it in terms of so now</p>
+<p>where does the model</p>
+<p>the model of a of a</p>
+<p>biological entity</p>
+<p>where is that sourced from and that's</p>
+<p>this sort of idea of these</p>
+<p>these</p>
+<p>these things like</p>
+<p>posterior beliefs the foundation or the</p>
+<p>the idea that we we don't walk into a</p>
+<p>situation completely blind we have some</p>
+<p>sort of prior</p>
+<p>and we're modeling situations where</p>
+<p>internal states can be interpreted and</p>
+<p>framed as a generative model so it's not</p>
+<p>they're focusing on the model aspect of</p>
+<p>this as opposed to the generative</p>
+<p>processing side they're gonna they're</p>
+<p>going to talk about what the external</p>
+<p>milieu is and where the generative</p>
+<p>process is here shortly</p>
+<p>great so</p>
+<p>good point to pause the video and read</p>
+<p>this because we're not going to read it</p>
+<p>out here but you're absolutely right</p>
+<p>they're focusing on the generative model</p>
+<p>of the agent of the cell</p>
+<p>not</p>
+<p>doing that</p>
+<p>analysis on the niche for example</p>
+<p>all right</p>
+<p>section 2.2.1</p>
+<p>okay so this is a fun part</p>
+<p>we can describe dynamics in generalized</p>
+<p>coordinates of motion denoted with a</p>
+<p>tilde</p>
+<p>where x tilde is defined as</p>
+<p>x tilde equals x that's like the</p>
+<p>absolute state of x and then x with a</p>
+<p>dot is the first derivative of x that's</p>
+<p>called velocity</p>
+<p>x with two dots is um or a two double</p>
+<p>prime depending on the notation is the</p>
+<p>acceleration</p>
+<p>what people don't always know is that</p>
+<p>there are higher derivatives and they</p>
+<p>also have names so the third derivative</p>
+<p>is the jerk and then the fourth fifth</p>
+<p>and sixth are the snap crackle and pop</p>
+<p>so that's just kind of funny</p>
+<p>but the generalized coordinates of</p>
+<p>motion which came up in</p>
+<p>number 26</p>
+<p>have to do with doing</p>
+<p>prediction on not just</p>
+<p>um</p>
+<p>how high or low something is or like on</p>
+<p>the number line left and right that</p>
+<p>would be like if x were just one number</p>
+<p>but even if it's just one number that</p>
+<p>we're tracking like body temperature for</p>
+<p>example</p>
+<p>we might be interested in kind of</p>
+<p>unpacking that</p>
+<p>into this generalized coordinate where</p>
+<p>we want to know body temperature and how</p>
+<p>fast it's changing</p>
+<p>and how fast that is changing</p>
+<p>and so one can imagine that once a zero</p>
+<p>has been achieved</p>
+<p>the higher derivatives are also zero if</p>
+<p>it's zero through time the higher</p>
+<p>derivatives are also zero</p>
+<p>if it's zero instantaneously that's not</p>
+<p>always the case</p>
+<p>but if it's zero through time then it's</p>
+<p>kind of like you've cashed out the</p>
+<p>derivatives the derivative of zero just</p>
+<p>stays at zero and so it's like if the</p>
+<p>position is unchanging</p>
+<p>the velocity is zero</p>
+<p>ends</p>
+<p>if the position is five miles an hour</p>
+<p>going in the same direction the velocity</p>
+<p>is constant but the acceleration is zero</p>
+<p>so keep on carrying that out to how fast</p>
+<p>things are changing how fast they change</p>
+<p>et cetera et cetera</p>
+<p>and then they're going to take that x</p>
+<p>tilde</p>
+<p>how x tilde changes with time x tilde</p>
+<p>dot</p>
+<p>equals</p>
+<p>the flow on tilde</p>
+<p>plus</p>
+<p>a variance</p>
+<p>so a noise or fluctuation a random</p>
+<p>fluctuation term</p>
+<p>this is the form of the langfine</p>
+<p>equation</p>
+<p>generalized coordinates of motion</p>
+<p>plus</p>
+<p>a random fluctuation term</p>
+<p>um</p>
+<p>any of the</p>
+<p>mathematical colleagues would be awesome</p>
+<p>to hear</p>
+<p>how this is related to the weiner</p>
+<p>assumptions</p>
+<p>etc but we're going to continue</p>
+<p>so</p>
+<p>using the helmholtz decomposition we can</p>
+<p>now express steady state flow in terms</p>
+<p>of a divergence free component and a</p>
+<p>curl free descent on a scalar of the</p>
+<p>operative function l of x tilde</p>
+<p>to obtain</p>
+<p>f of x tilde</p>
+<p>equals there's the q minus gamma that we</p>
+<p>saw a few slides ago multiplied by now</p>
+<p>the l</p>
+<p>so here we had f of x</p>
+<p>not generalized coordinates of motion</p>
+<p>q minus gamma</p>
+<p>del</p>
+<p>psi of x that was the potential function</p>
+<p>now because the potential function and</p>
+<p>lyapunov are related to each other</p>
+<p>we're looking at the generalized</p>
+<p>coordinates of motion</p>
+<p>using the same q minus gamma helmholtz</p>
+<p>decomposition but multiplying it now by</p>
+<p>the opening of exponents or i'm sorry</p>
+<p>the lyapunov function on</p>
+<p>x tilde</p>
+<p>it's the solution at non-equilibrium</p>
+<p>steady state and is exactly the same</p>
+<p>solution</p>
+<p>for</p>
+<p>the flow of particles in the classical</p>
+<p>treatment above</p>
+<p>crucially we can now see the operative</p>
+<p>function is the negative log probability</p>
+<p>of finding the system in any generalized</p>
+<p>state</p>
+<p>the leopard of x tilde is the negative</p>
+<p>natural log of</p>
+<p>how surprised</p>
+<p>one should be p of x tilde this is known</p>
+<p>as self-information of a state in</p>
+<p>information theory surprisal or surprise</p>
+<p>in bayesian statistics it is the</p>
+<p>negative log evidence so</p>
+<p>the change in the generalized</p>
+<p>coordinates of motion</p>
+<p>f of x tilde</p>
+<p>breathe</p>
+<p>is an irrotational solenoidal</p>
+<p>decomposition</p>
+<p>that's the left part of the right hand</p>
+<p>side</p>
+<p>multiplied by a lyapunov function</p>
+<p>which also has the interpretation of</p>
+<p>surprisal</p>
+<p>so if you are exactly</p>
+<p>resting so to speak</p>
+<p>you'd be totally unsurprised</p>
+<p>in summary any weekly mixing dynamical</p>
+<p>system at non-equilibrium steady state</p>
+<p>will events give us evidence for or look</p>
+<p>like it is</p>
+<p>a flow that can be decomposed into a</p>
+<p>gradient flow on surprise and an</p>
+<p>accompanying solenoidal flow</p>
+<p>because we can associate the lyapunov</p>
+<p>function in 18 with a free energy</p>
+<p>the system is effectively minimizing</p>
+<p>a free energy in its convergence to a</p>
+<p>set of attracting states</p>
+<p>which have a high probability of being</p>
+<p>occupied</p>
+<p>so it's a little</p>
+<p>circular it's like</p>
+<p>we're finding ourselves where we expect</p>
+<p>to find ourself</p>
+<p>and so if we just said well how</p>
+<p>surprised are we</p>
+<p>and let's gradient descend towards not</p>
+<p>being surprised</p>
+<p>just at a first approximation</p>
+<p>we would find ourselves</p>
+<p>in regions of low surprise</p>
+<p>and we would be surprised to find</p>
+<p>ourselves in regions of high surprise</p>
+<p>is it is it circular or is it kind of</p>
+<p>the byproduct of a recursive</p>
+<p>process</p>
+<p>again i'm asking i'm not questioning</p>
+<p>it's a great question</p>
+<p>in like a really</p>
+<p>meta way all of math is circular once</p>
+<p>the axioms have been stated because like</p>
+<p>the equal sign is there so we're just</p>
+<p>you can add one to both sides and it</p>
+<p>would still be equal so is that circular</p>
+<p>right um it's useful</p>
+<p>and that's what matters for this paper</p>
+<p>okay yeah</p>
+<p>um</p>
+<p>we're not going to talk about it too</p>
+<p>much but in a dot one we absolutely will</p>
+<p>and that's this least action principles</p>
+<p>in 2-2-2</p>
+<p>and they even give the example we love</p>
+<p>to see</p>
+<p>for example in colonies ants find the</p>
+<p>path of least action to harvest food and</p>
+<p>bring it to the colony</p>
+<p>citation needed slash let's see that</p>
+<p>but conceptually</p>
+<p>no problem</p>
+<p>this example considers their paths as</p>
+<p>flow channels or trajectories finding</p>
+<p>the least average action for each</p>
+<p>instance of foraging given available</p>
+<p>resources</p>
+<p>so</p>
+<p>what does least action principle mean</p>
+<p>what does least action mean</p>
+<p>and what is it necessary or sufficient</p>
+<p>for because certainly foraging is not</p>
+<p>the least biochemical expenditure of</p>
+<p>energy</p>
+<p>that's like the sort of</p>
+<p>naive interpretation of least action</p>
+<p>meaning just stay where you are</p>
+<p>but we're thinking about a usage of</p>
+<p>least</p>
+<p>action that impels this ant to forage in</p>
+<p>an adaptive way</p>
+<p>such that even when it's foraging trip</p>
+<p>is hard and the seat is heavy and it</p>
+<p>gets like lost or something</p>
+<p>that is still a realization of at least</p>
+<p>action on something it's still a ball</p>
+<p>rolling down a hill as efficiently as it</p>
+<p>can</p>
+<p>in a space</p>
+<p>so it's a</p>
+<p>nuanced topic that</p>
+<p>it will be great to discuss</p>
+<p>because they also write minimization of</p>
+<p>action in an open system leads to</p>
+<p>structure formation</p>
+<p>so that'd be a good thing to unpack okay</p>
+<p>carrying on</p>
+<p>in dissipative random dynamical systems</p>
+<p>action is not minimized for each element</p>
+<p>of the system</p>
+<p>but on average over an ensemble of</p>
+<p>elements or repeated trajectories of the</p>
+<p>same element</p>
+<p>since self-organizing open systems are</p>
+<p>not conservative</p>
+<p>their structured flow is</p>
+<p>quintessentially dissipative</p>
+<p>good to</p>
+<p>think about that and hear many</p>
+<p>perspectives and questions on it</p>
+<p>classically for a conservative system</p>
+<p>the lagrangian is defined as l</p>
+<p>this is</p>
+<p>l not the operative now it's lagrangian</p>
+<p>equals t minus v</p>
+<p>so t is the kinetic energy</p>
+<p>of the particles and v is the potential</p>
+<p>energy</p>
+<p>[Music]</p>
+<p>and so that's how</p>
+<p>the</p>
+<p>trajectory of system states could be</p>
+<p>solved for a conservative system</p>
+<p>where the total energy is going to be</p>
+<p>conserved</p>
+<p>but</p>
+<p>they're</p>
+<p>opening up into this</p>
+<p>dissipative and open</p>
+<p>scenario</p>
+<p>where this is not going to cut it</p>
+<p>um</p>
+<p>[Music]</p>
+<p>a little bit more detail on least action</p>
+<p>which we're not going to go into</p>
+<p>okay</p>
+<p>continuing on</p>
+<p>two two three markov blanket</p>
+<p>okay</p>
+<p>a robust literature is developing about</p>
+<p>around the ability of cells and other a</p>
+<p>neural non-neural systems measuring</p>
+<p>aspects of their environment via</p>
+<p>specific sensors</p>
+<p>they introduce here the markov partition</p>
+<p>as this general case of</p>
+<p>separation of states into four</p>
+<p>categories</p>
+<p>e</p>
+<p>external states</p>
+<p>sensory states s</p>
+<p>active states a internal states i</p>
+<p>and so the little e is like it's a</p>
+<p>realization of big e that's the bigger</p>
+<p>space</p>
+<p>and then</p>
+<p>x tilde</p>
+<p>comes back</p>
+<p>and the generalized coordinates are</p>
+<p>going to be</p>
+<p>a realization of values of those</p>
+<p>partitioned states</p>
+<p>so we've talked about the markov blanket</p>
+<p>before</p>
+<p>but now we're interested in</p>
+<p>the generalized</p>
+<p>flow on</p>
+<p>the blanket partition states</p>
+<p>so</p>
+<p>here's what the markov blanket looks</p>
+<p>like</p>
+<p>and</p>
+<p>we'll talk more about it in the dot one</p>
+<p>and dot two what do the arrows mean and</p>
+<p>why are sense and action connected</p>
+<p>what part of the cell are we looking at</p>
+<p>is it a part of the cell is it a model</p>
+<p>of a cell</p>
+<p>all these things that have come up</p>
+<p>before but just to say that's their</p>
+<p>figure one and table one gives the math</p>
+<p>formalisms</p>
+<p>okay anything to add on markov before we</p>
+<p>continue</p>
+<p>no because we'll we'll unpack yeah</p>
+<p>so</p>
+<p>this is where they apply the markov</p>
+<p>blanket</p>
+<p>so m is describing the markov partition</p>
+<p>that defines the underlying random</p>
+<p>dynamical system such the cell</p>
+<p>so that is like um</p>
+<p>the uh</p>
+<p>model that's the partition markov</p>
+<p>partition of the cell</p>
+<p>so inserting c into a and b is going to</p>
+<p>give</p>
+<p>there's</p>
+<p>a is actions and i is internal states</p>
+<p>so the top equation is basically saying</p>
+<p>the flow</p>
+<p>on action</p>
+<p>is a function of sense action and</p>
+<p>internal</p>
+<p>and then</p>
+<p>it has a right hand side so the flow on</p>
+<p>action</p>
+<p>the performance of action</p>
+<p>is</p>
+<p>and then there's that gamma minus q</p>
+<p>but now they have a subscript a because</p>
+<p>it's those about the action landscape</p>
+<p>multiplied by del triangle on action</p>
+<p>tilde generalized action</p>
+<p>and then a self-surprisal</p>
+<p>looking like</p>
+<p>the self-surprise of</p>
+<p>sense action and internal conditioned on</p>
+<p>m partition</p>
+<p>and the bottom equation in b 30 b is</p>
+<p>basically the same</p>
+<p>but it's the flow on internal states</p>
+<p>f sub i on</p>
+<p>generalized states of sense action and i</p>
+<p>and that same gamma minus q</p>
+<p>del self-surprise condition on model</p>
+<p>so we're seeing some patterns come up</p>
+<p>and even if um it's like confusing and</p>
+<p>we all definitely are confused by it to</p>
+<p>some extent we're starting to see like</p>
+<p>some patterns</p>
+<p>why does it matter to focus so much on a</p>
+<p>and i the action</p>
+<p>and the internal states because those</p>
+<p>are like the ones we control</p>
+<p>we know we don't control external states</p>
+<p>directly</p>
+<p>maybe we can intervene so that they</p>
+<p>change differently but we know we don't</p>
+<p>control them</p>
+<p>we also don't directly control sense</p>
+<p>states we're getting dealt this hand</p>
+<p>every second by the niche the generative</p>
+<p>process</p>
+<p>and so we can</p>
+<p>take action so that we can expect</p>
+<p>different sensory outcomes but even then</p>
+<p>we wouldn't be controlling sensory</p>
+<p>outcomes</p>
+<p>and so</p>
+<p>a lot of active inference comes down to</p>
+<p>doing inference on</p>
+<p>internal model</p>
+<p>internal states</p>
+<p>generative model learning</p>
+<p>and</p>
+<p>action action selection</p>
+<p>flows on action</p>
+<p>um</p>
+<p>[Music]</p>
+<p>this</p>
+<p>bounds the surprise</p>
+<p>on the particular states which is the</p>
+<p>internal and the blanket states</p>
+<p>through</p>
+<p>control of the autonomous states which</p>
+<p>is just the action and internal states</p>
+<p>the states we control</p>
+<p>because of the sparsity</p>
+<p>of the blanket</p>
+<p>not every node is connected to every</p>
+<p>node</p>
+<p>there might be a factorized and</p>
+<p>tractable form</p>
+<p>to bound our surprise</p>
+<p>about the particular states</p>
+<p>in general it would be very difficult</p>
+<p>problem to solve</p>
+<p>however we can replace the lagrangian</p>
+<p>that's the one</p>
+<p>here</p>
+<p>that was like going to be used for</p>
+<p>conservative systems but it didn't</p>
+<p>really apply</p>
+<p>um</p>
+<p>with a variational free energy</p>
+<p>functional or of a probabilistic model</p>
+<p>of how a system thinks it should behave</p>
+<p>or how we think the system should think</p>
+<p>it should behave</p>
+<p>so it's hard to solve these</p>
+<p>generally but</p>
+<p>in practice there are heuristics such</p>
+<p>that these are approximatable</p>
+<p>section 2.4 goes like one layer deeper</p>
+<p>into kl divergence in the vfe but we're</p>
+<p>not going to go into it</p>
+<p>okay</p>
+<p>we're just going to keep on plowing</p>
+<p>through</p>
+<p>two three is bayesian filtering and</p>
+<p>self-organization</p>
+<p>we're not going to talk about it now but</p>
+<p>the big questions here are like how does</p>
+<p>bayesian statistics relate to identity</p>
+<p>and what is self-evidencing</p>
+<p>and there's probably a lot of other good</p>
+<p>questions we could ask like why does</p>
+<p>bayesian filtering and self-organization</p>
+<p>come here</p>
+<p>all right</p>
+<p>modeling morphogenesis so now we</p>
+<p>actually get to the contribution of the</p>
+<p>paper</p>
+<p>um which is the modeling of</p>
+<p>morphogenesis so they're going to</p>
+<p>illustrate self-organization to ness</p>
+<p>using the variational principles above</p>
+<p>by trying to explain the behavior of a</p>
+<p>model of pattern regulation by</p>
+<p>consideration of information processing</p>
+<p>and error minimization with respect to a</p>
+<p>specific target morphology in this</p>
+<p>setting the game changes subtly but</p>
+<p>profoundly</p>
+<p>it's a dean line if i ever read one</p>
+<p>um</p>
+<p>above</p>
+<p>which is what we've reviewed</p>
+<p>the dynamics of any random dynamical</p>
+<p>system equipped with a mark called</p>
+<p>blanket can be formulated in terms of a</p>
+<p>gradient flow on variational free energy</p>
+<p>that was just</p>
+<p>here the flow on action and the flow on</p>
+<p>internal states</p>
+<p>here we turn this formulation on its</p>
+<p>head</p>
+<p>by specifying a generative model</p>
+<p>an implicit vfe function</p>
+<p>and simulate self-organization by</p>
+<p>solving the equations of motion in</p>
+<p>equation 34.</p>
+<p>so they're going to specify the form of</p>
+<p>the attracting set</p>
+<p>v</p>
+<p>uh the generative model</p>
+<p>and then they're going to let it ride</p>
+<p>so</p>
+<p>we have to just talk down</p>
+<p>yeah</p>
+<p>they specify the external dynamics as</p>
+<p>the generative process</p>
+<p>that's the niche</p>
+<p>and the generative model</p>
+<p>of that process which is being described</p>
+<p>by the flow of internal states okay so</p>
+<p>we're going to look at the figures</p>
+<p>and then we're not going to even like go</p>
+<p>into the details so let's just look at</p>
+<p>the figures and see what they're doing</p>
+<p>so</p>
+<p>here's some empirical biology happening</p>
+<p>in the lab of mike levin and others</p>
+<p>so</p>
+<p>in a</p>
+<p>it turns out that when you dissect out</p>
+<p>the center of a flatworm a planarian</p>
+<p>those cells will remodel into a new worm</p>
+<p>so cutting out the middle and it reforms</p>
+<p>into this</p>
+<p>new</p>
+<p>flatworm and red is the head and then</p>
+<p>like blue is the tail</p>
+<p>so</p>
+<p>there's a self-organization</p>
+<p>of this target morphology even from an</p>
+<p>initially clumpy cell</p>
+<p>what they're going to do in b</p>
+<p>is showing like the final fixed point</p>
+<p>of these different cells so here we have</p>
+<p>like four different cell types there's</p>
+<p>like the red neural or head cells then</p>
+<p>yellow cells green cells and blue cell</p>
+<p>and then basically like this like three</p>
+<p>two one one</p>
+<p>um and then the bottom one it's this one</p>
+<p>maybe they change the green and the blue</p>
+<p>like i think these two should be green</p>
+<p>and the bottom should be blue but</p>
+<p>minor point but it's an attractor</p>
+<p>on</p>
+<p>this target morphology</p>
+<p>um</p>
+<p>and then</p>
+<p>c</p>
+<p>is describing a little bit about how it</p>
+<p>happens which is that cells are</p>
+<p>constantly comparing their sensed signal</p>
+<p>concentration like of a gradient of some</p>
+<p>um morphogen</p>
+<p>to expectations by minimizing their free</p>
+<p>energy functional</p>
+<p>so it's like what kind of a cell type am</p>
+<p>i</p>
+<p>and what should i be expecting</p>
+<p>flip side what should i be surprised by</p>
+<p>because to say what i expect is</p>
+<p>the other side of the coin of what one</p>
+<p>is surprised by okay so they're modeling</p>
+<p>this empirical scenario where a flatworm</p>
+<p>can regenerate its form from just a</p>
+<p>clump of cells here</p>
+<p>and that</p>
+<p>if we think about the location of these</p>
+<p>cells as being like a steady state</p>
+<p>attractor like we want to have this body</p>
+<p>form last</p>
+<p>then if all the cells just get in line</p>
+<p>like that everything's going to work out</p>
+<p>all right</p>
+<p>how do we take this</p>
+<p>first jump that we made from the</p>
+<p>empirical biology</p>
+<p>to the</p>
+<p>state space framing</p>
+<p>here it is an x y state space</p>
+<p>and now take the next jump</p>
+<p>one more mathematical</p>
+<p>here on the right side</p>
+<p>is</p>
+<p>that</p>
+<p>x y positioning of each cell</p>
+<p>this is reflected by the position</p>
+<p>in</p>
+<p>x and y</p>
+<p>of the cells so like negative nine and</p>
+<p>zero so that's like this top red one</p>
+<p>zero is the midline so it's like y and x</p>
+<p>and here like negative five it's a</p>
+<p>little lower</p>
+<p>and then like negative four and four</p>
+<p>it's like one is on they're on the same</p>
+<p>y elevation</p>
+<p>but then one is four to the left and one</p>
+<p>is um four to the right</p>
+<p>and so this e star of x</p>
+<p>is the position</p>
+<p>so it's um a matrix of position because</p>
+<p>there's like</p>
+<p>um eight cells</p>
+<p>and two location variables per cell so</p>
+<p>it's like a two by eight matrix</p>
+<p>and it changes through time so it's a</p>
+<p>tensor</p>
+<p>the e star c</p>
+<p>is the external signals</p>
+<p>and so</p>
+<p>in this</p>
+<p>steady state attractor</p>
+<p>all three red cells are getting like</p>
+<p>signal one here's the binary signal</p>
+<p>there are four signals but they only</p>
+<p>have an on or off state in reality</p>
+<p>there's many many more signals than four</p>
+<p>and there's a lot more uh nuance than</p>
+<p>just on or off but it's a</p>
+<p>it's a toy example all three red cells</p>
+<p>are getting the exact same signaling</p>
+<p>milieu</p>
+<p>of one one zero zero so factor a and b</p>
+<p>are diffusing near me</p>
+<p>but not c and d</p>
+<p>the yellow cells are experiencing</p>
+<p>those two diffuses and one other one</p>
+<p>the blue cells are experiencing the</p>
+<p>first the fourth and then the green one</p>
+<p>is another</p>
+<p>and so</p>
+<p>this is like the attractor state</p>
+<p>for a stable</p>
+<p>location</p>
+<p>and signaling expression</p>
+<p>so converging to this spatially makes</p>
+<p>your body look like that but the way</p>
+<p>that you get a beach ready planarian</p>
+<p>body like that</p>
+<p>is actually by reducing your</p>
+<p>your surprise on signal expression</p>
+<p>okay so here's them</p>
+<p>running it through time</p>
+<p>so it's a time-lapse movie montage</p>
+<p>of simulations of morphogenesis</p>
+<p>and so here it is converging towards on</p>
+<p>the right side</p>
+<p>the morphology that's been discussed</p>
+<p>here</p>
+<p>and so the cells start out with</p>
+<p>undifferentiated they know what they're</p>
+<p>sensing</p>
+<p>they don't know what kind of cell they</p>
+<p>are</p>
+<p>and they</p>
+<p>don't know where they are</p>
+<p>and then</p>
+<p>they sharpen</p>
+<p>their expectations about what kind of</p>
+<p>cell they are</p>
+<p>while also</p>
+<p>moving into a different spatial niche</p>
+<p>but they're not tracking their location</p>
+<p>like i'm at three comma two where are</p>
+<p>you</p>
+<p>it's like this is what i'm biochemically</p>
+<p>sensing</p>
+<p>and so it's a relational morphology</p>
+<p>that doesn't need the blueprint in the</p>
+<p>nucleus</p>
+<p>so it's a lot like an ant colony there's</p>
+<p>not the nest architecture blueprint in</p>
+<p>the brain there's the process for stigma</p>
+<p>g</p>
+<p>and then they show that with some other</p>
+<p>um changes</p>
+<p>in</p>
+<p>the generative process</p>
+<p>a positive squared gradient in the</p>
+<p>generative process</p>
+<p>they get double head formation</p>
+<p>which some modulations have been shown</p>
+<p>to empirically result in in the lab and</p>
+<p>they can also make it so it gets double</p>
+<p>tail formation</p>
+<p>so it's just recapitulating this basic</p>
+<p>example and then showing that like</p>
+<p>modifying the external field changes the</p>
+<p>morphology that gets attracted to</p>
+<p>so those are the key pieces that's</p>
+<p>modeling morphogenesis</p>
+<p>as</p>
+<p>bayesian inference</p>
+<p>reducing surprise</p>
+<p>with a variational free energy flow on</p>
+<p>action and internal states action states</p>
+<p>internal states</p>
+<p>okay</p>
+<p>um</p>
+<p>we're not gonna go into it here</p>
+<p>definitely for the dot one and dot two</p>
+<p>so um 3.1 is the construction of the</p>
+<p>model</p>
+<p>they then</p>
+<p>unpack that signal</p>
+<p>matrix</p>
+<p>the combination of the signals</p>
+<p>and then um</p>
+<p>[Music]</p>
+<p>they give even more information about</p>
+<p>modeling signals</p>
+<p>and they also imbue it here with like</p>
+<p>this steminess</p>
+<p>which helps the cells start out with um</p>
+<p>i believe a weaker prior</p>
+<p>about what kind of cell they are which</p>
+<p>translates to where they should be</p>
+<p>um</p>
+<p>in figure five</p>
+<p>they do a targeted intervention in their</p>
+<p>studying of anomalous cell behavior</p>
+<p>and so basically they start off with</p>
+<p>these um cells that have initially</p>
+<p>unspecified state and they converge in a</p>
+<p>this panels on a by 32 time points</p>
+<p>they're converged to the target</p>
+<p>morphology</p>
+<p>but in b</p>
+<p>they show that if one of the cells that</p>
+<p>gets hit with a white arrow here</p>
+<p>has a perturbed signaling response it</p>
+<p>fails to correctly infer its place in</p>
+<p>the ensemble</p>
+<p>so b is like sort of like um it could be</p>
+<p>like a genetic mutation or a targeted</p>
+<p>modification of the signaling and it's</p>
+<p>like that third red cell</p>
+<p>never forms</p>
+<p>and then in c</p>
+<p>the same aberrant cell from b is</p>
+<p>initially is rescued by an increased</p>
+<p>signaling sensitivity of other cells</p>
+<p>leading another cell</p>
+<p>green arrow</p>
+<p>to switch position with the aberrant</p>
+<p>cell pink arrow</p>
+<p>pretty</p>
+<p>cool okay yeah i wanted to come up with</p>
+<p>an analogy that would actually work that</p>
+<p>would explain this like if</p>
+<p>you're out geocaching one afternoon and</p>
+<p>then all of a sudden</p>
+<p>some</p>
+<p>something was able to turn all the</p>
+<p>lights off and then the person that was</p>
+<p>geocaching beside you change their</p>
+<p>behavior but i couldn't even come up</p>
+<p>with a valid analogy to try to explain</p>
+<p>this</p>
+<p>how about um</p>
+<p>uh we're playing american football</p>
+<p>and so there's a plan and everyone's</p>
+<p>trying to reduce their uncertainty about</p>
+<p>how the plan is playing out from their</p>
+<p>perspective</p>
+<p>and so if all goes to plan we're all</p>
+<p>going to deploy into the exact right</p>
+<p>positions</p>
+<p>but then</p>
+<p>somebody um doesn't move</p>
+<p>if each nestmate on the football team</p>
+<p>has low sensitivity</p>
+<p>then they're going to continue in their</p>
+<p>own expected trajectory as if nothing</p>
+<p>had happened that's kind of like what we</p>
+<p>see in b it's like a partial rollout</p>
+<p>whereas</p>
+<p>this is changing the environment mixing</p>
+<p>our metaphors etc</p>
+<p>so that a high sensitivity</p>
+<p>teammate</p>
+<p>fills in for that critical position so</p>
+<p>that the attractor state of the strategy</p>
+<p>can still be morphologically realized</p>
+<p>even though</p>
+<p>um there still is that one individual</p>
+<p>who's not moving</p>
+<p>but but they're not interfering</p>
+<p>with the strategy's attraction</p>
+<p>but we'll come up with probably some</p>
+<p>other and better ways to talk about it</p>
+<p>okay</p>
+<p>and then they um just mentioned that</p>
+<p>this is something that can be modeled</p>
+<p>and it's in spm</p>
+<p>and also on franz kuchling's um</p>
+<p>github</p>
+<p>so maybe we will um look at the code</p>
+<p>and then</p>
+<p>just to say that we're not going to go</p>
+<p>into it at all today but all of section</p>
+<p>4 is super interesting</p>
+<p>they review some of the mathematical</p>
+<p>assumptions and limitations of the model</p>
+<p>there's a really fascinating discussion</p>
+<p>about variational principles and open</p>
+<p>systems</p>
+<p>and so um</p>
+<p>[Music]</p>
+<p>like just to read we have shown that the</p>
+<p>variational free energy minimization in</p>
+<p>active inference is related to the</p>
+<p>variational principle of least action</p>
+<p>it is worth pointing out with where</p>
+<p>these two approaches</p>
+<p>diverge</p>
+<p>two instruments</p>
+<p>in a wood diverged</p>
+<p>and then it's all about that divergence</p>
+<p>and the contrasting</p>
+<p>and so</p>
+<p>i think there's gonna be a lot of</p>
+<p>unpacked there</p>
+<p>and then they have some closing remarks</p>
+<p>on the applicability in biological</p>
+<p>systems and some of the predictive</p>
+<p>capacities of the simulations</p>
+<p>um in terms of like you could make a</p>
+<p>simulation of a healthy functioning</p>
+<p>tissue and then have predictive capacity</p>
+<p>about asking counter factuals well what</p>
+<p>if this happened what might i expect so</p>
+<p>that is</p>
+<p>a lot of info so</p>
+<p>thanks to everybody who's been</p>
+<p>watching and</p>
+<p>again hope that especially with some of</p>
+<p>these technical parts</p>
+<p>that we were able to represent it with</p>
+<p>high integrity</p>
+<p>so you won't have the last word but what</p>
+<p>would you say in closing as we move from</p>
+<p>the dot zero into the one two and beyond</p>
+<p>well first of all you went through a</p>
+<p>heck of a lot of stuff in a very</p>
+<p>short period of time so that's that's</p>
+<p>quite the gradient flow right there so</p>
+<p>that's impressive</p>
+<p>um</p>
+<p>i don't think much in terms of i mean</p>
+<p>this is a classic example of where you</p>
+<p>have to unpack</p>
+<p>as opposed to</p>
+<p>lots of the other papers that are maybe</p>
+<p>more philosophically based whether you</p>
+<p>you</p>
+<p>provision like you pack a bunch of stuff</p>
+<p>and then you kind of go off on a bit of</p>
+<p>a journey and i think in the point one</p>
+<p>and the point two we may still be doing</p>
+<p>a little bit more unpacking just because</p>
+<p>of the</p>
+<p>the the density of this kind of</p>
+<p>information but that doesn't i mean you</p>
+<p>want to be able to do both so i think i</p>
+<p>think being able to cover</p>
+<p>this and</p>
+<p>hopefully we got it right like i</p>
+<p>i did my best to try to understand it</p>
+<p>and i think he did a good job of</p>
+<p>explaining it so we'll see who shows up</p>
+<p>in the point one and two whether the</p>
+<p>point one and two or more unpacking or</p>
+<p>maybe</p>
+<p>starting to actually</p>
+<p>think of ways that we could employ this</p>
+<p>you already mentioned that we could we</p>
+<p>can apply it to digital teams but</p>
+<p>whether or not people have the</p>
+<p>confidence to be able to take this and</p>
+<p>apply it like they've done to</p>
+<p>morphogenesis</p>
+<p>maybe that's part of that conversation</p>
+<p>cool</p>
+<p>yeah i'll be looking forward to</p>
+<p>going through with multiple</p>
+<p>concurrent regimes of attention</p>
+<p>some of the formalisms that we either um</p>
+<p>disgraced or skipped in this discussion</p>
+<p>and then keeping it open</p>
+<p>to think about</p>
+<p>morphogenesis like</p>
+<p>where has morphogenesis been in numbers</p>
+<p>1 through 38</p>
+<p>why haven't we been talking about</p>
+<p>morphogenesis and if not morphogenesis</p>
+<p>then what else have we been focusing on</p>
+<p>um</p>
+<p>[Music]</p>
+<p>how does it relate to embodiment</p>
+<p>and to spatial and physical aspects of</p>
+<p>cognition</p>
+<p>there's so many interesting angles</p>
+<p>and uh</p>
+<p>i'm sure we'll have a lot to discuss so</p>
+<p>dean thanks a ton for all the help on</p>
+<p>the slides and for this discussion</p>
+<p>um</p>
+<p>[Music]</p>
+<p>hope to see you in the coming weeks</p>
+<p>all right thanks daniel take care peace</p>
+<p>see you later</p>
+</article>
+</body>
+</html>

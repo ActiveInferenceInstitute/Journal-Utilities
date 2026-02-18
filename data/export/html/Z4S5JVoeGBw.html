@@ -1,0 +1,2831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #029.2 ~ “Active Inferants: An Active Inference Framework for Ant Colony Behavior”</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #029.2 ~ “Active Inferants: An Active Inference Framework for Ant Colony Behavior”</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_029 &middot; Episode 2 &middot; Duration: 1:41:20 &middot; Views: 75</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=Z4S5JVoeGBw">https://www.youtube.com/watch?v=Z4S5JVoeGBw</a></div>
+<article>
+<p>welcome to the active inference lab live</p>
+<p>stream number</p>
+<p>29.2</p>
+<p>today is september 28</p>
+<p>2021 and we will be discussing the paper</p>
+<p>active in france</p>
+<p>an active inference framework for ant</p>
+<p>colony behavior and today we are here</p>
+<p>with the first author daniel friedman</p>
+<p>the active inference lab is the</p>
+<p>participatory online lab that is</p>
+<p>communicating learning and practicing</p>
+<p>applied active inference you can find us</p>
+<p>at all of the links shown here</p>
+<p>this is a recorded and an archive live</p>
+<p>stream so please provide us with</p>
+<p>feedback so that we can</p>
+<p>improve upon our work</p>
+<p>all backgrounds and perspectives are</p>
+<p>welcome here and we will be following</p>
+<p>good video etiquette for live streams</p>
+<p>here at the short link you can find all</p>
+<p>of the upcoming and recent live streams</p>
+<p>that we have done so please get in touch</p>
+<p>if you would like to participate</p>
+<p>today our goal is to discuss the paper</p>
+<p>um that we just said active in france</p>
+<p>and we are going to um</p>
+<p>do some different papers in the upcoming</p>
+<p>weeks like i said get in touch if you</p>
+<p>want to participate</p>
+<p>so</p>
+<p>we're just going to introduce ourselves</p>
+<p>and go through a little bit of warming</p>
+<p>up i am blue knight i'm an independent</p>
+<p>research consultant from new mexico and</p>
+<p>i'll pass it to</p>
+<p>thanks blue for facilitating i'm daniel</p>
+<p>and i'm a researcher in california</p>
+<p>and i guess i'll</p>
+<p>start with what i'm excited about today</p>
+<p>i was just excited that in 2091 we could</p>
+<p>sort of forage out in a lot of different</p>
+<p>directions and make some initial trails</p>
+<p>to a few different ideas</p>
+<p>and then now in the 29.2</p>
+<p>maybe we can develop some of those</p>
+<p>threads splash trails and maybe uh get</p>
+<p>some of it down in writing so it should</p>
+<p>look um</p>
+<p>pretty good</p>
+<p>nice yeah i'm excited too um there are</p>
+<p>some questions that i've been rolling</p>
+<p>over over the last week</p>
+<p>and so i'm kind of excited to</p>
+<p>delve into those and also into the code</p>
+<p>for the model today if we have time um</p>
+<p>being that it's just us i think we might</p>
+<p>get there well maybe though maybe more</p>
+<p>people will join</p>
+<p>there might be a little bit of lag</p>
+<p>i'm not sure</p>
+<p>so you might want to check that</p>
+<p>okay</p>
+<p>yeah</p>
+<p>um</p>
+<p>i don't know if it's my internet</p>
+<p>um</p>
+<p>so the big question of this paper is um</p>
+<p>how can a group of active inference</p>
+<p>agents</p>
+<p>solve complex group foraging problems</p>
+<p>well first what i'll say is if you're</p>
+<p>recording it locally as well as</p>
+<p>streaming then</p>
+<p>we can always upload a high quality</p>
+<p>recording</p>
+<p>and it does sort of bear on this big</p>
+<p>question this is a quote from the paper</p>
+<p>and that's sort of the big question in</p>
+<p>collective behavioral studies which is</p>
+<p>okay if greeting stephen if each agent</p>
+<p>if each subunit of the system had all</p>
+<p>the information needed well then there</p>
+<p>wouldn't necessarily be a challenge for</p>
+<p>coordination it's like if if it already</p>
+<p>knew what to do then</p>
+<p>it would be a challenge but how do</p>
+<p>systems make adaptive decisions when</p>
+<p>subunits don't have all the information</p>
+<p>so in the case of an online team each</p>
+<p>person's only seeing a different</p>
+<p>part of the picture in the case the ants</p>
+<p>they're each in a little bit different</p>
+<p>part of their niche but those are some</p>
+<p>of the similarities which is that each</p>
+<p>nest mate is only going to be</p>
+<p>experiencing its local environment</p>
+<p>and</p>
+<p>we want to have colonies that work</p>
+<p>so welcome stephen maybe you can say</p>
+<p>hello while blue's just testing some</p>
+<p>stuff out</p>
+<p>oh great yeah good morning um</p>
+<p>well in north america anyway um yeah i'm</p>
+<p>based in toronto um</p>
+<p>and i</p>
+<p>work with communities and</p>
+<p>sort of systemic coaching approaches and</p>
+<p>very interested in how active influence</p>
+<p>scales in different ways so</p>
+<p>even though this is about small things</p>
+<p>it's also about lots of small things</p>
+<p>so</p>
+<p>well your audio also just had some</p>
+<p>weirdness steve maybe talk directly into</p>
+<p>it</p>
+<p>oh okay is that better yeah</p>
+<p>oh okay but you mentioned the scaling</p>
+<p>and small the one one funny thought</p>
+<p>again this picture is from the ants</p>
+<p>that i was studying for five years in</p>
+<p>arizona</p>
+<p>and</p>
+<p>um yes the nest mate looks</p>
+<p>like a tiny guy like a small ant</p>
+<p>but then</p>
+<p>we know that these colonies can live for</p>
+<p>20 30 plus years</p>
+<p>they're also several meters</p>
+<p>under the ground</p>
+<p>and they weigh you know dozens of</p>
+<p>kilograms so then i'm thinking okay it's</p>
+<p>a similar age</p>
+<p>weight and height to myself</p>
+<p>and it's sub-use but</p>
+<p>let's see how's that is it any better</p>
+<p>it still is not doing anything i just</p>
+<p>reopened it but if it's not yeah then i</p>
+<p>guess okay now it's uh just the slides</p>
+<p>or just a jitsi so it looks like it's</p>
+<p>working now okay perfect yeah it's the</p>
+<p>slides open also it just is too much um</p>
+<p>yeah</p>
+<p>yeah welcome back everybody fun times</p>
+<p>the show goes on</p>
+<p>foraging never stops so it does and</p>
+<p>steven will rejoin us hopefully he's</p>
+<p>having audio issues also it's a good day</p>
+<p>for technical uh mishaps we're having</p>
+<p>rainy weather in new mexico which is</p>
+<p>never ever happens so all the ants are</p>
+<p>underground hiding and the internet does</p>
+<p>not want to cooperate</p>
+<p>apparently this is so</p>
+<p>all right so speaking of multi-scale uh</p>
+<p>integration and and across systems as</p>
+<p>happens in ants and in the ant colony um</p>
+<p>so we we talked about making this table</p>
+<p>last time</p>
+<p>and so here like what how is each system</p>
+<p>related to</p>
+<p>the agent the niche the interaction and</p>
+<p>stigma v</p>
+<p>so we started this this table do you</p>
+<p>want to uh maybe take us through what</p>
+<p>you've started here daniel</p>
+<p>yeah um</p>
+<p>see if you can</p>
+<p>[Music]</p>
+<p>get the slides again because it's not</p>
+<p>going to be visible at all on the stream</p>
+<p>oh okay i can also switch yeah i can</p>
+<p>switch the also yeah</p>
+<p>um so</p>
+<p>a lot of informal analogies and</p>
+<p>connections were being drawn amongst</p>
+<p>different systems</p>
+<p>and that's kind of what complexity and</p>
+<p>systems thinking and active inference is</p>
+<p>about like finding patterns across</p>
+<p>systems so</p>
+<p>maybe there's other ways to break it up</p>
+<p>but at least one way we could at least</p>
+<p>start to classify</p>
+<p>and find similarities and differences</p>
+<p>between different systems would be</p>
+<p>this way with the columns so we have the</p>
+<p>system of interest like the ant colony</p>
+<p>as a system of interest</p>
+<p>then we can think about what is the</p>
+<p>agent level what is the sub unit level</p>
+<p>and</p>
+<p>that might be the level where the active</p>
+<p>inference agent is being specified</p>
+<p>we then have the niche that the agent is</p>
+<p>operating in so that's the generative</p>
+<p>process</p>
+<p>that's presenting observations or</p>
+<p>outcomes to</p>
+<p>the agent which is embodying a</p>
+<p>generative model so that's related to</p>
+<p>this generative process versus</p>
+<p>generative model distinction</p>
+<p>the process is the</p>
+<p>the process actually outputs</p>
+<p>the like temperature or the observations</p>
+<p>whereas the generative model is a model</p>
+<p>of the process</p>
+<p>and then there's two kinds of</p>
+<p>interactions that are possible</p>
+<p>so there's sort of a transient</p>
+<p>interaction</p>
+<p>that might be amongst agents welcome</p>
+<p>back stephen there's the transient</p>
+<p>interactions amongst agents</p>
+<p>and in the case of the ants that's like</p>
+<p>an antennal contact and then there's the</p>
+<p>stigmatic</p>
+<p>interactions</p>
+<p>where there's a modification of the</p>
+<p>niche</p>
+<p>and so</p>
+<p>sometimes it helps to think about these</p>
+<p>interactions amongst agents that</p>
+<p>are um without memory as being like the</p>
+<p>transient horizontal interactions like</p>
+<p>the common example of the bird flock</p>
+<p>those are the birds looking at each</p>
+<p>other their interactions amongst agents</p>
+<p>that modify the likelihood of agents</p>
+<p>doing certain future behaviors but they</p>
+<p>don't leave a trace on the environment</p>
+<p>and that can be contrasted with</p>
+<p>stigmatic</p>
+<p>or niche modification behaviors which</p>
+<p>are defined by being the ones that do</p>
+<p>leave a trace on the environment so</p>
+<p>maybe we'll</p>
+<p>explore different sections today</p>
+<p>but we can always say okay let's return</p>
+<p>to slide eight and let's add a row</p>
+<p>what's a system of interest let's add a</p>
+<p>column or let's fill in some columns so</p>
+<p>so far we have ant colony brain and</p>
+<p>internet slash computer abcs</p>
+<p>geb the systems that matter um steven</p>
+<p>what what would be um a fun system to</p>
+<p>throw into this mix and to look for</p>
+<p>parallelisms among</p>
+<p>we can't hear you steven</p>
+<p>yeah we still don't hear you steven</p>
+<p>yeah your microphone's definitely not</p>
+<p>working</p>
+<p>okay</p>
+<p>so i've started filling in for for brain</p>
+<p>and you know it all really is so</p>
+<p>dependent on what the</p>
+<p>what level you want to evaluate right so</p>
+<p>you know on one level there's like the</p>
+<p>little sub regions of the brain and you</p>
+<p>took us through i think in the dog zero</p>
+<p>video a very nice um</p>
+<p>example for ants that has been kind of</p>
+<p>done describing the different like</p>
+<p>organoids or substructures within the</p>
+<p>brain because definitely there are</p>
+<p>structures that all have</p>
+<p>different functions like the cerebellum</p>
+<p>is motor function primarily and you know</p>
+<p>the cortex is like higher level thought</p>
+<p>and and so there's you know these</p>
+<p>different sub regions of the brain but</p>
+<p>then also at the cellular level there</p>
+<p>are interactions you know that that</p>
+<p>expand those regions that are from you</p>
+<p>know the cellular cellular level um</p>
+<p>and what is the so what the niches or</p>
+<p>the interaction</p>
+<p>um you know might might be different</p>
+<p>depending on like the the cells are</p>
+<p>responsible for driving the interactions</p>
+<p>between the organoids</p>
+<p>so i'm not sure what the level of um</p>
+<p>of</p>
+<p>the level of analysis the right one is</p>
+<p>and then stigmatizing modification i</p>
+<p>think about you know long-term</p>
+<p>potentiation</p>
+<p>um and like adaptation within the brain</p>
+<p>is very um</p>
+<p>maybe not stigmatic but it's a it's a</p>
+<p>really important modification i think</p>
+<p>um and sensitivity to different</p>
+<p>neurotransmitters and</p>
+<p>things like that</p>
+<p>blue it's still really lagging can you</p>
+<p>just stop streaming and i'm gonna pick</p>
+<p>it up on my side okay perfect go for it</p>
+<p>so stop the streaming and then just let</p>
+<p>me know when you did it let's see how</p>
+<p>this</p>
+<p>okay let's see what happens</p>
+<p>this could be very very interesting</p>
+<p>to do the live hack like this</p>
+<p>okay youtube we're gonna wait for it to</p>
+<p>catch up sorry everybody um</p>
+<p>so it goes okay</p>
+<p>wow we just hot swapped</p>
+<p>live stream feeds</p>
+<p>so we're back in the game</p>
+<p>no level of preparation that can prepare</p>
+<p>for laggy internet i suppose no and it's</p>
+<p>like half the time of mine and a half a</p>
+<p>time on your side but um</p>
+<p>if you're watching live definitely add</p>
+<p>any comments or questions because we're</p>
+<p>just going to be kind of exploring and</p>
+<p>chilling today</p>
+<p>but continue to um facilitate and i'll</p>
+<p>just be broadcaster role</p>
+<p>cool so the um</p>
+<p>[Music]</p>
+<p>yeah we were talking about the brain and</p>
+<p>the interaction and the sigmoidy and</p>
+<p>then for the internet</p>
+<p>i don't know what do you think is the</p>
+<p>is the agent or what what is the sub</p>
+<p>unit of the internet like is it each</p>
+<p>server or</p>
+<p>where do you have the sub unit at</p>
+<p>daniel or stephen what do you guys think</p>
+<p>well so this this sort of ties into what</p>
+<p>they might say in in research you know</p>
+<p>unit of analysis as well but that's not</p>
+<p>necessarily quite the same</p>
+<p>thing as an agent um</p>
+<p>i i suppose on the internet</p>
+<p>ultimately</p>
+<p>it's the um</p>
+<p>it's it's whoever's um</p>
+<p>making</p>
+<p>who's that whoever's triggering choices</p>
+<p>um</p>
+<p>in the system</p>
+<p>um which is normally a yeah it's</p>
+<p>normally a person</p>
+<p>um</p>
+<p>interacting with the screen in some way</p>
+<p>i think the overwhelming amount of</p>
+<p>interactions on the internet are</p>
+<p>probably not human driven</p>
+<p>because any human</p>
+<p>interaction</p>
+<p>is going to</p>
+<p>trigger truly a vast number of</p>
+<p>communications</p>
+<p>amongst other systems</p>
+<p>inside of the computer and probably</p>
+<p>remotely</p>
+<p>so maybe</p>
+<p>and i think this is one of the unique</p>
+<p>uh challenges but also interesting areas</p>
+<p>is like</p>
+<p>the internet is a cyber physical system</p>
+<p>so we could have one model where the</p>
+<p>agent like the subunit are physical</p>
+<p>devices so we kind of draw</p>
+<p>the blanket</p>
+<p>we um</p>
+<p>focus on the partitioning</p>
+<p>around a physical object like internet</p>
+<p>of things we have partitionings around</p>
+<p>things</p>
+<p>we could also have a human-centered</p>
+<p>partitioning so partitioning around</p>
+<p>humans but then there's a lot of</p>
+<p>gray space in between the humans</p>
+<p>a lot of links that aren't human between</p>
+<p>the human links</p>
+<p>and then another approach might be</p>
+<p>purely informational or computational</p>
+<p>and seeing the agents as software agents</p>
+<p>but i think that</p>
+<p>interface where how will we talk about</p>
+<p>the</p>
+<p>software and the hardware agents coming</p>
+<p>together is where</p>
+<p>the internet of things is</p>
+<p>developing and what it's coming to mean</p>
+<p>i mean one thing you could think about</p>
+<p>there also is when say for instance i</p>
+<p>make a choice or i do something</p>
+<p>on the internet</p>
+<p>and there's a whole load of there's a</p>
+<p>cascade of other things going on through</p>
+<p>the different routers and the servers</p>
+<p>etc is that more like the pheromone</p>
+<p>trail</p>
+<p>that sort of dissipates off into the</p>
+<p>distance leaving records</p>
+<p>and how much of its like other agents</p>
+<p>initiating because often</p>
+<p>you know</p>
+<p>every time you do something to some</p>
+<p>extent yeah databases might update</p>
+<p>um</p>
+<p>however</p>
+<p>and this may change</p>
+<p>to what extent</p>
+<p>that is alive is another question</p>
+<p>you know is it is is it sort of a</p>
+<p>computational form of niche modification</p>
+<p>that's going on in most cases in terms</p>
+<p>of the internet</p>
+<p>but what they're trying to do because</p>
+<p>it's that idea of the battle for your</p>
+<p>mind they're trying to make it so that</p>
+<p>in most cases that</p>
+<p>the user</p>
+<p>has less</p>
+<p>has less thinking to do</p>
+<p>in terms of the choices they make</p>
+<p>and the design there's this there's a</p>
+<p>great book in web design called don't</p>
+<p>make me think</p>
+<p>and the idea is that you go somewhere</p>
+<p>it's almost obvious what you need to do</p>
+<p>a bit like when you pick up a newspaper</p>
+<p>you know that you're just going to turn</p>
+<p>the pages</p>
+<p>so</p>
+<p>how</p>
+<p>how much of all this</p>
+<p>architecture in the background is to</p>
+<p>support giving you what you expect to be</p>
+<p>given when you expect to be given it</p>
+<p>um and how much of it is um</p>
+<p>which you know how much of it is</p>
+<p>actually um what you might term an agent</p>
+<p>with with some sort of</p>
+<p>teleology</p>
+<p>well</p>
+<p>you mentioned expectation there and um</p>
+<p>expectation is something that agents</p>
+<p>engage in so maybe it's even we could</p>
+<p>keep on forking this off but</p>
+<p>what do we know from the active</p>
+<p>inference ontology what defines an agent</p>
+<p>external states blanket states internal</p>
+<p>generative model what does the internal</p>
+<p>generative model entail well it includes</p>
+<p>predictions about external states it</p>
+<p>includes policy affordances it includes</p>
+<p>preferences and includes expectations</p>
+<p>over some of these things as well</p>
+<p>so when we say agents</p>
+<p>we can be</p>
+<p>referring to the whole markov decision</p>
+<p>process or other ways of viewing the</p>
+<p>active agents</p>
+<p>and then the expectations of the agent</p>
+<p>are really important because it's not</p>
+<p>just that psychologically it's going to</p>
+<p>determine whether the agent</p>
+<p>likes it or not but it helps us connect</p>
+<p>these systems like the ant colony and</p>
+<p>subunits of the brain</p>
+<p>so we don't need to use only the</p>
+<p>psychological interpretation</p>
+<p>but then we can have a psychological</p>
+<p>interpretation where one seems warranted</p>
+<p>given the system of interest but also</p>
+<p>we're going to be able to compare that</p>
+<p>and look for similar functional features</p>
+<p>in systems without getting into just</p>
+<p>some sort of abstract debate over</p>
+<p>whether it's alive or whether it's</p>
+<p>certain feels a certain way to be that</p>
+<p>system</p>
+<p>so daniel you brought up the generative</p>
+<p>model and i was just going to bring it</p>
+<p>up um right before this and so i've been</p>
+<p>really uh</p>
+<p>you know thinking a lot about the</p>
+<p>generative model and like where is the</p>
+<p>generative model which is like i think</p>
+<p>probably my favorite podcast episode</p>
+<p>that i've ever cut is going to come out</p>
+<p>next week</p>
+<p>and it talks about like the location of</p>
+<p>the generative model and so</p>
+<p>you know it doesn't necessarily have to</p>
+<p>have a location</p>
+<p>because</p>
+<p>it's like software right like so i mean</p>
+<p>that yeah there's like a copy of the</p>
+<p>software running on disk</p>
+<p>maybe maybe it's in the cloud like it</p>
+<p>does but it doesn't matter because it's</p>
+<p>the program that's running so the</p>
+<p>location of the program is is almost not</p>
+<p>even relevant</p>
+<p>um so i just i think about like what is</p>
+<p>the generative model</p>
+<p>of the internet right like what does</p>
+<p>that look like</p>
+<p>great question um inactivism for cyber</p>
+<p>physical systems</p>
+<p>and embodiment</p>
+<p>uh in encodement maybe there's some</p>
+<p>analogous term</p>
+<p>to what would describe</p>
+<p>what we call 4e in the embodied extended</p>
+<p>and cultured</p>
+<p>etc</p>
+<p>for digital systems</p>
+<p>because they do have</p>
+<p>important attributes</p>
+<p>that</p>
+<p>in a strange way almost suggest that</p>
+<p>some of these attributes some of these</p>
+<p>features that are suggested to be</p>
+<p>quintessentially related to having a</p>
+<p>body and embodiment</p>
+<p>also exist for software</p>
+<p>could i putting something on to that</p>
+<p>is say we think about rather than and</p>
+<p>you've got the active inference</p>
+<p>generative model</p>
+<p>but say you've got an active niche</p>
+<p>modification</p>
+<p>algorithm</p>
+<p>so ie</p>
+<p>it's still</p>
+<p>working</p>
+<p>off the agents being making choices but</p>
+<p>what's happening is so for instance say</p>
+<p>you've got abc testing happening on a</p>
+<p>website so basically they send out three</p>
+<p>different campaigns with three different</p>
+<p>types of</p>
+<p>profiles</p>
+<p>now the user makes choices</p>
+<p>based on how the user</p>
+<p>makes a choice</p>
+<p>they may be</p>
+<p>across the whole of the</p>
+<p>a whole market</p>
+<p>the abc choices might get modified in</p>
+<p>that niche but eventually maybe then</p>
+<p>actual</p>
+<p>clients get sent down certain routes</p>
+<p>um i mean a classic case of this is also</p>
+<p>what happens with those in-store cards</p>
+<p>because i actually i ended up going i</p>
+<p>didn't get go for it again i had an</p>
+<p>interview with the nectar card people in</p>
+<p>the uk once and they uh</p>
+<p>they do these cards that you get in</p>
+<p>store and basically i think it worked</p>
+<p>out they have like a million</p>
+<p>permutations of offer that they can give</p>
+<p>you based on what your</p>
+<p>different buy-in options are so in a way</p>
+<p>they're kind of</p>
+<p>that but they only serve you up then</p>
+<p>whatever you see one of those right you</p>
+<p>don't see what all the other people are</p>
+<p>getting and some of them are small</p>
+<p>changes some of them might be bigger</p>
+<p>changes so in some ways it's like it's</p>
+<p>still the it's still like it's like the</p>
+<p>niche is modifying</p>
+<p>to the agent's adaptive behavior</p>
+<p>but the actual niche isn't necessarily</p>
+<p>doing adaptive active inference but</p>
+<p>there may be some sort of active</p>
+<p>inference in a more kind of</p>
+<p>i don't know non-living way</p>
+<p>um</p>
+<p>there might be um we'll probably have</p>
+<p>better words and ontologically informed</p>
+<p>ways of talking about it but there's</p>
+<p>kind of like low bar active inference or</p>
+<p>like austere active inference that is</p>
+<p>just any input output structure</p>
+<p>it's going to be able to be fit into</p>
+<p>something like</p>
+<p>a partially observable markov decision</p>
+<p>process so whatever it is that the niche</p>
+<p>is doing it's emitting</p>
+<p>observations so we can model it under</p>
+<p>this certain low bar active inference</p>
+<p>versus the uh sort of</p>
+<p>anti-dissipative</p>
+<p>truly cognitive</p>
+<p>strategic active inference</p>
+<p>and um</p>
+<p>also there's no reason why we can't have</p>
+<p>hybrid models where there's like active</p>
+<p>inference agents</p>
+<p>in a niche that isn't an active</p>
+<p>inference agent so like in</p>
+<p>this ant model</p>
+<p>the niche is just</p>
+<p>a landscape of pheromone densities with</p>
+<p>a random dissipation factor</p>
+<p>so</p>
+<p>that</p>
+<p>external niche</p>
+<p>could be made very</p>
+<p>um much more complicated</p>
+<p>and the observations that it passes back</p>
+<p>to the agents could be like customized</p>
+<p>to them</p>
+<p>and that could be</p>
+<p>calculated by an active inference niche</p>
+<p>or not and that's sort of the extremely</p>
+<p>interesting</p>
+<p>work of axel constant and others</p>
+<p>with</p>
+<p>some type of symmetry occurring with the</p>
+<p>agent and the niche jointly inferring</p>
+<p>each other so like what is the niche's</p>
+<p>generative model of the organism what is</p>
+<p>the internet's generative model</p>
+<p>of the user so it's</p>
+<p>interesting questions</p>
+<p>i love that idea of</p>
+<p>symmetry especially between the agent</p>
+<p>and the niche um and its relationship or</p>
+<p>potential relationship to the kind of</p>
+<p>gaia theory</p>
+<p>that the the niche has to</p>
+<p>expect or have an expectation of the</p>
+<p>organism that's going to</p>
+<p>interact with it or create it or modify</p>
+<p>it or</p>
+<p>exploit it in some way um in order for</p>
+<p>there to be some kind of reciprocal</p>
+<p>um interaction there</p>
+<p>so uh super nice</p>
+<p>um maybe</p>
+<p>we can come back to looking at this um</p>
+<p>table and maybe think of other systems</p>
+<p>that might be</p>
+<p>interesting to go through</p>
+<p>and move on to</p>
+<p>some of the um</p>
+<p>questions</p>
+<p>for</p>
+<p>29.2 but wait before we go to this one i</p>
+<p>want to go to this one hold on</p>
+<p>ha</p>
+<p>so we were talking about um</p>
+<p>the role of dopamine last time which</p>
+<p>slide</p>
+<p>uh so sorry this is slide</p>
+<p>um i skip to</p>
+<p>i'm sorry i can't see</p>
+<p>um</p>
+<p>i think it's number seven</p>
+<p>yeah number number eleven</p>
+<p>oh wait okay</p>
+<p>so um</p>
+<p>so we were talking about last time the</p>
+<p>role of dopamine</p>
+<p>and like influencing the affordances and</p>
+<p>and this really kind of speaks to the</p>
+<p>role of reward</p>
+<p>um</p>
+<p>in a generative model and and so you</p>
+<p>know we talk about one of the beautiful</p>
+<p>things about active inference is it kind</p>
+<p>of</p>
+<p>changes the reward um structure</p>
+<p>in the model</p>
+<p>because you know there's some kind of</p>
+<p>reward that's given</p>
+<p>to</p>
+<p>you know actually finding the food right</p>
+<p>so so there's some some reward for</p>
+<p>finding the food but also and and even</p>
+<p>in this model so</p>
+<p>the the reward structures has changed</p>
+<p>right so there's um it's not just about</p>
+<p>finding the food um and maybe this is a</p>
+<p>good opportunity to to look through the</p>
+<p>code maybe</p>
+<p>as well but but you know we think about</p>
+<p>the change in the reward structure and</p>
+<p>we place some value on the epistemic um</p>
+<p>you know the knowledge about the model</p>
+<p>of the world so if we can build a more</p>
+<p>precise model of the world</p>
+<p>we can also um</p>
+<p>gain more food overall</p>
+<p>so i don't know if uh you guys have</p>
+<p>comments on that or yes steven guide</p>
+<p>yeah i think also as well as built like</p>
+<p>you say building that model of the world</p>
+<p>becomes a it's an action model okay so</p>
+<p>it can be</p>
+<p>what might be seen factually</p>
+<p>spurious but practically useful</p>
+<p>you know so it may be really useful to</p>
+<p>have some bizarre</p>
+<p>ritual about how to get on a soccer</p>
+<p>pitch and try and kick the ball right</p>
+<p>but if it</p>
+<p>does something better than</p>
+<p>what you're doing otherwise</p>
+<p>go for it</p>
+<p>and i think the challenge comes with um</p>
+<p>increasingly esoteric rituals if they're</p>
+<p>not related to the actual causal</p>
+<p>structure of the world</p>
+<p>if they work for a moment they're not</p>
+<p>going to be adaptive because if your</p>
+<p>only strategy is you know</p>
+<p>praying to the kicking god instead of</p>
+<p>practicing</p>
+<p>it might work or it might indirectly</p>
+<p>induce some sort of outcome but</p>
+<p>is that a long-term strategy</p>
+<p>um but</p>
+<p>agree that the generative model is</p>
+<p>including a model of action it's not</p>
+<p>just about getting precision about how</p>
+<p>things are out there</p>
+<p>because what ultimately matters is</p>
+<p>getting precision on our actions</p>
+<p>and then there's sort of these two</p>
+<p>parallel paths or two intertwining paths</p>
+<p>which is do we take a reward centered</p>
+<p>approach</p>
+<p>is behavior dominated by reward</p>
+<p>and then the other side of the reward</p>
+<p>coin is like the um punishment aversion</p>
+<p>so carrot in the stick that's sort of a</p>
+<p>sister road two-lane road do we pursue</p>
+<p>reward or do we avoid</p>
+<p>regret and suffering</p>
+<p>and then a third road is this</p>
+<p>uncertainty minimization approach</p>
+<p>so i pasted in this</p>
+<p>paper by columbo explanatory pluralism</p>
+<p>and um</p>
+<p>they review</p>
+<p>three prominent hypotheses of dopamine</p>
+<p>activity so anhedonia which is</p>
+<p>unpleasurable states incentive salience</p>
+<p>and reward prediction errors</p>
+<p>and i i think this is a really</p>
+<p>fascinating paper and it does apply to</p>
+<p>the ant context because they make a very</p>
+<p>specific</p>
+<p>system point</p>
+<p>talking about the role of dopamine in</p>
+<p>the mammalian brain reviewing empirical</p>
+<p>evidence and then also</p>
+<p>pull back to the broader implications</p>
+<p>for the philosophy of science</p>
+<p>so</p>
+<p>they conclude that the evidence</p>
+<p>currently vindicates explanatory</p>
+<p>pluralism in other words these</p>
+<p>explanations do not subsume</p>
+<p>or</p>
+<p>knock out each other there's a pluralism</p>
+<p>there's</p>
+<p>multiple explanations that exist that</p>
+<p>capture different parts of how the</p>
+<p>system really works</p>
+<p>the vindication implies that grand</p>
+<p>unified incl uh claims</p>
+<p>of the advocates of the ptb are</p>
+<p>unwarranted</p>
+<p>um</p>
+<p>look at what that is again but more</p>
+<p>generally we suggest that the form of</p>
+<p>scientific progress in the cognitive</p>
+<p>sciences</p>
+<p>is unlikely to be a single overarching</p>
+<p>grand unified theory</p>
+<p>little possible indirect</p>
+<p>reference to those who claim that the</p>
+<p>value or the utility of for example the</p>
+<p>free energy principle or active</p>
+<p>inference is just simply that it</p>
+<p>explains everything i don't need to even</p>
+<p>say any more or detail where i used it</p>
+<p>or show you the code or show you that</p>
+<p>it's better than another model the fact</p>
+<p>that this model</p>
+<p>i can fit everything into</p>
+<p>is the utility and it will subsume other</p>
+<p>models and other frameworks</p>
+<p>now that's a contentious point that has</p>
+<p>to be either empirically supported or</p>
+<p>not but it just is so interesting how</p>
+<p>dopamine is reward molecule or the other</p>
+<p>side of that coin with the punishment</p>
+<p>or as a precision molecule the empirical</p>
+<p>evidence alone</p>
+<p>are not enough to disambiguate that and</p>
+<p>so you know trust the data let the data</p>
+<p>speak but then this is just showing us a</p>
+<p>kind of real time</p>
+<p>that our models of the world</p>
+<p>get projected as we do sense making on</p>
+<p>the experimental outcomes</p>
+<p>and um it's not always as clear as it</p>
+<p>seems</p>
+<p>well you know it just reminds me like so</p>
+<p>i mean</p>
+<p>just from a very literal sense if we</p>
+<p>think about dopamine as um</p>
+<p>a reward for minimizing prediction error</p>
+<p>like how much do we all like to be right</p>
+<p>all of us so i mean like just just for</p>
+<p>being correct like that in and of itself</p>
+<p>is a huge like dopamine reward and i</p>
+<p>think about like i'm a super ultra nerd</p>
+<p>and so i geek out on things like</p>
+<p>difficult math problems or solving a</p>
+<p>rubik's cube or or these kinds of things</p>
+<p>and i'm just like finally when i get or</p>
+<p>even code right like finally when the</p>
+<p>code runs</p>
+<p>there's like this huge like something</p>
+<p>that you've been working on for a really</p>
+<p>long time it's like a huge like dopamine</p>
+<p>rush for me which is why like i keep</p>
+<p>going back to doing these kinds of</p>
+<p>things but but ultimately that's a</p>
+<p>prediction error reward</p>
+<p>so it's interesting to think about</p>
+<p>and here's sort of the two ways that</p>
+<p>they're phrased and it's</p>
+<p>somewhat subtle but i think it gets at</p>
+<p>the difference between reinforcement</p>
+<p>learning and active inference</p>
+<p>is there a drive for being right</p>
+<p>and then we prefer to be certain</p>
+<p>or is the drive</p>
+<p>for certainty and then there's a</p>
+<p>preference over being right or being</p>
+<p>accurate</p>
+<p>so are there situations where it</p>
+<p>actually brings us solace</p>
+<p>even though the direction of the outcome</p>
+<p>isn't what we expected</p>
+<p>or isn't what on some sense conversation</p>
+<p>is what we prefer</p>
+<p>but actually the fact that we're able to</p>
+<p>have certainty</p>
+<p>outweighs</p>
+<p>the fact that the outcome went the way</p>
+<p>it went</p>
+<p>so and maybe there's other phrasings too</p>
+<p>but it's just again which one do we put</p>
+<p>in the driver's seat precision or reward</p>
+<p>well so what's the difference between</p>
+<p>being certain and being correct like</p>
+<p>being right and being certain</p>
+<p>like okay if i'm really certain but then</p>
+<p>that that certainty is unwarranted</p>
+<p>then that's when i'm wrong but then i'll</p>
+<p>i have this prediction error gap right</p>
+<p>so either way so what's the difference</p>
+<p>really between being certain and being</p>
+<p>correct</p>
+<p>well i think one if i could just jump in</p>
+<p>there i think one thing is really</p>
+<p>interesting is if everything's based on</p>
+<p>energy minimization like you've got</p>
+<p>you've got a process you're going to</p>
+<p>keep doing it and it's optimizing to</p>
+<p>make it basically if i use less energy</p>
+<p>i'm being more efficient i'm being</p>
+<p>faster i've been smoother so it always</p>
+<p>seems like yeah go for the reward the</p>
+<p>thing is though</p>
+<p>once you get into something where it's</p>
+<p>more</p>
+<p>complex or uncertain</p>
+<p>um</p>
+<p>you know the idea and they talk about</p>
+<p>this now actually there's a whole area</p>
+<p>in um</p>
+<p>development work and design thinking</p>
+<p>called failing forward fail forward so</p>
+<p>the idea is fail fast fail quick but</p>
+<p>part of this is like</p>
+<p>in</p>
+<p>you know and i always say within ethical</p>
+<p>bounds right because it might be great</p>
+<p>for the designer as long as it's not a</p>
+<p>community member being sort of</p>
+<p>being frustrated by this but but it</p>
+<p>makes sense in the sense that and i</p>
+<p>don't think reinforcement learning can</p>
+<p>really account for this is the benefit</p>
+<p>of doing something</p>
+<p>because it might be something which</p>
+<p>doesn't work</p>
+<p>but now you can take from it it's almost</p>
+<p>like</p>
+<p>you're</p>
+<p>giving yourself</p>
+<p>a sample of the counter factuals</p>
+<p>in a way by something going wrong but</p>
+<p>you don't obviously we can then break it</p>
+<p>apart and say well there might be</p>
+<p>something right still in that</p>
+<p>you know and some bits which are more</p>
+<p>wrong and we can sort of</p>
+<p>do stuff with that information</p>
+<p>almost like succeeding forward would be</p>
+<p>better than failing forward i mean</p>
+<p>failing forward has this psychological</p>
+<p>benefit of helping people recognize that</p>
+<p>it's okay to not get it right the first</p>
+<p>time and just get something on the paper</p>
+<p>and we'll iterate from there so the</p>
+<p>rhetoric of fail forward</p>
+<p>makes sense but</p>
+<p>having something that's even positive</p>
+<p>like succeed forward or win forward or</p>
+<p>contribute forward or learn forward or</p>
+<p>develop forward those actually capture</p>
+<p>the functional spirit that um</p>
+<p>is here and let's think about how that</p>
+<p>relates to blue's question so what's the</p>
+<p>difference between being certain and</p>
+<p>correct</p>
+<p>so there could probably be many takes on</p>
+<p>this but</p>
+<p>i thought of this classic</p>
+<p>science textbook</p>
+<p>you know when when they give you the</p>
+<p>science textbook um</p>
+<p>the difference between accuracy and</p>
+<p>precision now in many cases now this</p>
+<p>also is not coming from the active</p>
+<p>inference ontology so they may be using</p>
+<p>these terms in a slightly different way</p>
+<p>but the point is we're getting at two</p>
+<p>complementary components of precision</p>
+<p>and um</p>
+<p>basically</p>
+<p>uh we can see that there's these two off</p>
+<p>diagonals the top left and the bottom</p>
+<p>right so high accuracy high precision</p>
+<p>it's like your average is on target</p>
+<p>so that's the accuracy</p>
+<p>is where you're aiming at accuracy aim</p>
+<p>and then the precision is referring to</p>
+<p>the tightness of the distribution around</p>
+<p>that mean</p>
+<p>and so you could have high accuracy like</p>
+<p>it's always at the bullseye but the</p>
+<p>precision is low or the uncertainty the</p>
+<p>spread is high</p>
+<p>you could also have like a thermometer</p>
+<p>with it giving you very tight readings</p>
+<p>high precision</p>
+<p>but</p>
+<p>it's</p>
+<p>systematically biased in a certain</p>
+<p>direction</p>
+<p>and</p>
+<p>[Music]</p>
+<p>this is just one way to get at two</p>
+<p>different aspects now we've seen this in</p>
+<p>a few different cases in variational</p>
+<p>inference as being the um difference</p>
+<p>between the expectations</p>
+<p>the means of the distributions</p>
+<p>that's like the accuracy</p>
+<p>and then the precision is like the</p>
+<p>variance of that distribution</p>
+<p>so you could have a very tight</p>
+<p>distribution</p>
+<p>um the the q distribution very tight and</p>
+<p>close to the p distribution that would</p>
+<p>be accurate and precise you could also</p>
+<p>have a really over fit over confident</p>
+<p>model that is just simply quite</p>
+<p>divergent from the underlying p</p>
+<p>distribution</p>
+<p>so um which one is being optimized are</p>
+<p>we trying to aim for a tight scatter</p>
+<p>and then we and then second order is we</p>
+<p>want it to be in the middle or do we aim</p>
+<p>for the middle and then the second order</p>
+<p>is we want them to be accurate</p>
+<p>stephen</p>
+<p>yeah that that</p>
+<p>to that question is a good one um</p>
+<p>and i think distinguish because often</p>
+<p>they might get conflated in many ways</p>
+<p>but it's good to pull apart precision</p>
+<p>and accuracy because it is a</p>
+<p>you know you could have</p>
+<p>um you know you you could be very</p>
+<p>precise in the fuzzy set that you have</p>
+<p>and you could but it could still be</p>
+<p>fuzzy you could have something</p>
+<p>like you say more accurate but it moves</p>
+<p>around a lot and i think that</p>
+<p>that's that's an important distinction</p>
+<p>that might be lost in many cases</p>
+<p>yes and it's actually one reason why</p>
+<p>it's important to sort of</p>
+<p>stick with the uncertainty and pass</p>
+<p>the estimate</p>
+<p>the state estimate as well as like the</p>
+<p>uncertainty around a state estimate pass</p>
+<p>that through</p>
+<p>because if you collapse the uncertainty</p>
+<p>and you treat all estimates as being</p>
+<p>equally precise there's this whole</p>
+<p>dimension of the data that has been</p>
+<p>dropped</p>
+<p>for example in gene expression analysis</p>
+<p>sometimes there's uncertainty over</p>
+<p>whether a gene is differentially</p>
+<p>expressed or not like it has a</p>
+<p>distribution and you pick some cut off</p>
+<p>but then sometimes people take the genes</p>
+<p>on one side of that line</p>
+<p>and then they just move forward with</p>
+<p>them like these are the differentially</p>
+<p>expressed genes as if it was a discrete</p>
+<p>categorization now take a continuum</p>
+<p>and then discretize it which makes</p>
+<p>certain kinds of analyses really simple</p>
+<p>or straightforward but</p>
+<p>a whole aspect of the variability of the</p>
+<p>data has been completely crunched out</p>
+<p>stephen</p>
+<p>yeah and this also then ties into scale</p>
+<p>as well um you know you could</p>
+<p>and and how much so like you mentioned</p>
+<p>the thermometer so the thermometer gives</p>
+<p>a fairly</p>
+<p>um well fairly precise</p>
+<p>sense of the</p>
+<p>of of the reading it's fairly consistent</p>
+<p>and um it's averaging out the average is</p>
+<p>is fairly</p>
+<p>relatively accurate in terms of the</p>
+<p>average but it's not going to give you</p>
+<p>the range or the</p>
+<p>the spread within that and that that can</p>
+<p>apply to a number of things and then you</p>
+<p>as you go down to less and less if you</p>
+<p>for instance i suppose like you would</p>
+<p>say if someone's purely looking at one</p>
+<p>ant</p>
+<p>or one ants</p>
+<p>behavior at a time</p>
+<p>then</p>
+<p>you you might have this sense of i'm</p>
+<p>being very accurate in terms of my ant</p>
+<p>analysis</p>
+<p>so to speak however</p>
+<p>at the level of the</p>
+<p>you know the larger colony</p>
+<p>you're you're you're not as accurate you</p>
+<p>know so there's some interesting</p>
+<p>sort of</p>
+<p>scale things that can't be avoided</p>
+<p>really</p>
+<p>yeah are ants accurate or and or are</p>
+<p>ants precise the nest mates</p>
+<p>so</p>
+<p>it's almost like maybe we could think of</p>
+<p>them as being um</p>
+<p>high accuracy but low precision like</p>
+<p>let's just imagine what that would be</p>
+<p>like for the colony so</p>
+<p>each forager</p>
+<p>is</p>
+<p>in the neighborhood of making adequate</p>
+<p>foraging decisions but there's a lot of</p>
+<p>noise around that so over thousands of</p>
+<p>interactions and foraging trips</p>
+<p>you're going to end up getting</p>
+<p>a lot of your points</p>
+<p>in the middle so it's cheap because it's</p>
+<p>lower precision so you can have simpler</p>
+<p>subunits</p>
+<p>but it's centered around the target</p>
+<p>whereas if you have it centered over</p>
+<p>something that's not the target</p>
+<p>it's going to be sub optimally adaptive</p>
+<p>for the colony</p>
+<p>but i think ants just show that um it's</p>
+<p>not about making every single action</p>
+<p>perfectly</p>
+<p>um</p>
+<p>the right one it's about being right</p>
+<p>more often than not and then just doing</p>
+<p>it many many many times which is related</p>
+<p>to that sort of um</p>
+<p>develop slash fails succeed forward</p>
+<p>sorry go ahead steven</p>
+<p>just just one thing i think this is also</p>
+<p>useful just in the sense of</p>
+<p>and it's almost implicit with the</p>
+<p>agent-based modeling approaches that get</p>
+<p>used in biology but it's quite</p>
+<p>interesting in the sense that that</p>
+<p>brings in that inter-subjective piece</p>
+<p>what are these ants trying to do for</p>
+<p>instance how are they trying to organize</p>
+<p>what's going on</p>
+<p>rather than the first person perspective</p>
+<p>i what do i see</p>
+<p>what's my perspective on the ant as an</p>
+<p>observer which might be more</p>
+<p>psychological in our</p>
+<p>world or</p>
+<p>what is it that i see the group doing on</p>
+<p>average like the temperature</p>
+<p>but when you start to get into</p>
+<p>agent-based</p>
+<p>approaches um</p>
+<p>it it does allow this second person um</p>
+<p>stuff to happen which is really</p>
+<p>i know in psychology is the missing</p>
+<p>piece really in a lot of cases</p>
+<p>so um you know how this how this in a</p>
+<p>way also ties into</p>
+<p>thinking about agents</p>
+<p>rather than thinking about what i see</p>
+<p>someone or something doing from the</p>
+<p>outside and</p>
+<p>inferring from their behaviors</p>
+<p>externally</p>
+<p>qualitatively sets up a different type</p>
+<p>of um</p>
+<p>experiment or modelling</p>
+<p>so i wonder about the different</p>
+<p>um scales like as we scale from the nest</p>
+<p>me to the colony like are</p>
+<p>are they comparable like are they asking</p>
+<p>the same question like the colony wants</p>
+<p>to know like will there be enough food</p>
+<p>and the forager never asked that</p>
+<p>question the forager always wants to</p>
+<p>know where is the food right like so so</p>
+<p>they're asking very different kinds of</p>
+<p>because the forager knows it has no</p>
+<p>uncertainty that that its job is to find</p>
+<p>food right and and so the colony wants</p>
+<p>to have enough food but the forager</p>
+<p>always wants to get the food and i</p>
+<p>wonder how this kind of asking different</p>
+<p>questions</p>
+<p>scales to things like the brain and</p>
+<p>components of the brain like</p>
+<p>or the internet and components of the</p>
+<p>internet like like what are our is is</p>
+<p>what defines a scale whether we're</p>
+<p>asking the the same question or not like</p>
+<p>or or is it the goal of the system that</p>
+<p>defines the scale of the system i don't</p>
+<p>know it just made me think about</p>
+<p>yeah i mean that's a good</p>
+<p>that's a really good point i mean yeah</p>
+<p>you could if you're starting to look</p>
+<p>from the agent</p>
+<p>and you could even think about that in</p>
+<p>the brain like yeah if different parts</p>
+<p>of the brain</p>
+<p>are</p>
+<p>foraging information</p>
+<p>so it's not like that that would explain</p>
+<p>a little bit why you have these kind of</p>
+<p>parts</p>
+<p>you know</p>
+<p>you know parts the you know different</p>
+<p>parts of the brain have different</p>
+<p>personality</p>
+<p>um queries going on even when certain</p>
+<p>parts of the brain get sort of put to</p>
+<p>sleep so to speak so</p>
+<p>um</p>
+<p>rather than yeah i mean that could be</p>
+<p>that could</p>
+<p>explain and if they're if they're each</p>
+<p>working away i mean</p>
+<p>like a colony</p>
+<p>um and</p>
+<p>yeah who which one is in some of them</p>
+<p>get to be in the driving seat</p>
+<p>and some just</p>
+<p>yeah some get to ask different questions</p>
+<p>or some get to sort of have their</p>
+<p>questions to influence other questions</p>
+<p>and some of them just get on and do</p>
+<p>their thing if that makes sense you're a</p>
+<p>forager basically you're gonna forage</p>
+<p>right that's the deal but someone else</p>
+<p>it might be like i'm hungry</p>
+<p>you got a forage more</p>
+<p>right</p>
+<p>oh just i i</p>
+<p>rapidly assembling some image memes</p>
+<p>it actually breaks down well into the</p>
+<p>the chess and other</p>
+<p>fields other serious games</p>
+<p>of tactics and strategy</p>
+<p>so</p>
+<p>um strategy so like blue your question</p>
+<p>the colony was asking do</p>
+<p>we slash i we don't know what pronouns</p>
+<p>the colony uses do we slash i have</p>
+<p>enough food it's as if it's asking that</p>
+<p>question</p>
+<p>does it identify as a entity</p>
+<p>an i</p>
+<p>or does it identify as an ensemble</p>
+<p>we don't know but then the nest may is</p>
+<p>asking the more tactical</p>
+<p>and action-oriented question</p>
+<p>which at a first pass is like where is</p>
+<p>the food but we know that</p>
+<p>in active inference what matters isn't</p>
+<p>just like simply inference on the</p>
+<p>location of the food out there but what</p>
+<p>matters is inference on our action</p>
+<p>selection for how we're going to get</p>
+<p>that food or how we're going to</p>
+<p>implement a strategy that</p>
+<p>has a good trade-off of us finding it so</p>
+<p>like here</p>
+<p>chess meme</p>
+<p>um</p>
+<p>tactics</p>
+<p>mean doing what you can with what you</p>
+<p>have so like whatever pieces are on the</p>
+<p>board</p>
+<p>you're gonna have to do some sort of</p>
+<p>action selection for your next move</p>
+<p>here strategy requires thought tactics</p>
+<p>require observation so it's kind of</p>
+<p>interesting because observation is one</p>
+<p>of our terms in the ontology like the</p>
+<p>agent is receiving observation without</p>
+<p>observations</p>
+<p>tactics cannot be implemented</p>
+<p>and then strategies requiring mental</p>
+<p>action just like our previous</p>
+<p>discussions in 28 the thought is</p>
+<p>actually the planning</p>
+<p>over</p>
+<p>observation strategies</p>
+<p>uh nice double blue</p>
+<p>and um there's other definitions of</p>
+<p>strategy and tactics and how they're</p>
+<p>similar or different so that's just kind</p>
+<p>of like</p>
+<p>cool that um it's a way to think about</p>
+<p>maybe not just that</p>
+<p>are the levels asking different or the</p>
+<p>same questions but might levels</p>
+<p>be defined or delineated by the</p>
+<p>difference in the questions that they</p>
+<p>ask</p>
+<p>with</p>
+<p>independent of the spatial size of the</p>
+<p>subunit</p>
+<p>the more tactical is like more agent</p>
+<p>level and then the more strategic</p>
+<p>requiring reflection or cumulative</p>
+<p>culture or mental action</p>
+<p>that level is being implemented by</p>
+<p>higher and higher</p>
+<p>nestings wait blew your mute because you</p>
+<p>went down to just one</p>
+<p>can you hear me yeah</p>
+<p>perfect</p>
+<p>um i i went down to just one so you can</p>
+<p>share the names with us because i'm</p>
+<p>missing out on the meme action and i</p>
+<p>like i can't stand it a little bit</p>
+<p>i'm so sorry</p>
+<p>um</p>
+<p>so so speaking of action and and</p>
+<p>different levels so this is something</p>
+<p>that i've really like been thinking</p>
+<p>about over the course of the last week</p>
+<p>uh this is like the next question on on</p>
+<p>on this slide 11.</p>
+<p>is this this prospect of</p>
+<p>intergenerational stigmergy</p>
+<p>and i just wonder like you know as we</p>
+<p>were both foraging for memes and slide</p>
+<p>content like creating the</p>
+<p>29.0 like we have this internet right</p>
+<p>and so like we just google search for</p>
+<p>whatever and informational foraging i</p>
+<p>know is not the same as maybe ants</p>
+<p>foraging for you know a</p>
+<p>food</p>
+<p>but um you know we're both foraging we</p>
+<p>come across the same kind of content and</p>
+<p>ended up like putting it into the 29.0</p>
+<p>in different ways in different places</p>
+<p>and and i just wonder you know there's</p>
+<p>this concept of of intergenerational</p>
+<p>stigmargy that's very uh i</p>
+<p>and i wonder if this is human-centric or</p>
+<p>if there are other examples of this in</p>
+<p>the animal kingdom and perhaps among</p>
+<p>ants i know daniel we've talked at</p>
+<p>length about</p>
+<p>um</p>
+<p>the different foraging habits for</p>
+<p>example of</p>
+<p>different um</p>
+<p>different foraging habits of different</p>
+<p>species or the same species of different</p>
+<p>colonies</p>
+<p>and so where do they get this habit like</p>
+<p>to forage differently like at different</p>
+<p>times of the day or whatever and and it</p>
+<p>spans generations and so is there some</p>
+<p>trace left in the environment like</p>
+<p>humans we leave traces for the next</p>
+<p>generation i mean we directly do some</p>
+<p>cumulative cultural evolution transfer</p>
+<p>um and there are other species i know</p>
+<p>that that teach like dolphins i know</p>
+<p>teach like some foraging habits and so</p>
+<p>forth so so</p>
+<p>what other examples do we have of this</p>
+<p>kind of intergenerational stigmergy or</p>
+<p>like you know we leave traces like the</p>
+<p>time capsule of you know like what to</p>
+<p>find like every decade we open up the</p>
+<p>time capsule from you know whatever the</p>
+<p>previous decade was and find things like</p>
+<p>eight tracks and</p>
+<p>like whatever things that are put in the</p>
+<p>time capsule that are just like oh look</p>
+<p>way back in the day um so i don't know</p>
+<p>what do you think about that um just</p>
+<p>relative to ants and relative to this</p>
+<p>intergenerational stigma g and the</p>
+<p>different foraging habits of colonies</p>
+<p>from the same species</p>
+<p>good</p>
+<p>question</p>
+<p>and</p>
+<p>uh</p>
+<p>where did the priors for foraging come</p>
+<p>from</p>
+<p>and then to what extent is there</p>
+<p>scaffolding of one nest mate in their</p>
+<p>foraging activity by</p>
+<p>older nest mates which is actually</p>
+<p>within a generation that's like sort of</p>
+<p>some skin cells being scaffolded by</p>
+<p>previous skin cells it's like if you</p>
+<p>just kill all the foragers of a colony</p>
+<p>the foragers that step into those rules</p>
+<p>will perform</p>
+<p>sub optimally that's actually related to</p>
+<p>colony collapse in the honeybees</p>
+<p>so there's some element of like they</p>
+<p>have an inkling</p>
+<p>of how to</p>
+<p>adapt their foraging</p>
+<p>yet um also there's flexibility um i</p>
+<p>mean</p>
+<p>it just makes me think of how we could</p>
+<p>actually</p>
+<p>study it like putting nest mates in</p>
+<p>different environments or</p>
+<p>having uh</p>
+<p>one colony and splitting it and</p>
+<p>training it a certain way and then</p>
+<p>reintegrating them and seeing if</p>
+<p>um</p>
+<p>[Music]</p>
+<p>what mattered more was like the</p>
+<p>environment at that generation or</p>
+<p>whether it was possible to have</p>
+<p>epigenomic or genomic</p>
+<p>changes that sort of lock in and and uh</p>
+<p>shape foraging</p>
+<p>and then on um</p>
+<p>12 you know i'm</p>
+<p>doing a little live meme modification</p>
+<p>like foraging is not an act but a habit</p>
+<p>with a probably misattributed aristotle</p>
+<p>quote</p>
+<p>so it's almost like forging is not an</p>
+<p>act</p>
+<p>it's a policy</p>
+<p>it's a policy over</p>
+<p>specific motor actions</p>
+<p>uh</p>
+<p>but yeah the intergenerational part is</p>
+<p>very interesting</p>
+<p>and it</p>
+<p>i'm just thinking if there's other true</p>
+<p>intergenerational ant scaffolding one</p>
+<p>example not in foraging is like when a</p>
+<p>leaf cutter ant</p>
+<p>queen goes on her nuptial flight she</p>
+<p>takes a</p>
+<p>little sub-sample of the fungal garden</p>
+<p>and uses that to start the next</p>
+<p>generation</p>
+<p>which</p>
+<p>actually i think relates to the second</p>
+<p>point you had about 30.</p>
+<p>so that's super interesting and also um</p>
+<p>directly related to</p>
+<p>um the microbe transfer right like you</p>
+<p>think about um microbial transfer that</p>
+<p>happens um</p>
+<p>like through the birth canal like</p>
+<p>there's a difference between</p>
+<p>c-sections delivered babies and babies</p>
+<p>that actually pass through the birth</p>
+<p>canal</p>
+<p>just in terms of how they're inoculated</p>
+<p>as well as breastfed babies versus</p>
+<p>formula fed babies</p>
+<p>there's a huge like inoculation</p>
+<p>difference with your like but just</p>
+<p>microbial flora</p>
+<p>and so that that is the</p>
+<p>uh and i wonder what um you know this</p>
+<p>speaks to the holobiont concept</p>
+<p>like we're not just humans we're humans</p>
+<p>inoculated with all kinds of things and</p>
+<p>maybe ants aren't just ants they're ants</p>
+<p>plus that fungal and i have there's been</p>
+<p>studies on that fungus</p>
+<p>like on the fungal composition is it</p>
+<p>different from colony to colony</p>
+<p>um do you know i don't know</p>
+<p>i know that uh one</p>
+<p>group in my previous lab they tr they</p>
+<p>isolated nest mates and then they</p>
+<p>treated them with antibiotics and</p>
+<p>changed their microbiome and they</p>
+<p>and others have also shown that there's</p>
+<p>a role for the microbiome in recognition</p>
+<p>so um</p>
+<p>because it modifies the smell</p>
+<p>of the ants that modifies how they</p>
+<p>recognize each other</p>
+<p>um maybe that's more like a dialect</p>
+<p>like that's kind of how they recognize</p>
+<p>that they're in the very short time</p>
+<p>range like in the same</p>
+<p>group or they're they're likely to be</p>
+<p>collaborative but i i returned to eight</p>
+<p>to think about what you just described</p>
+<p>about like the body and the inheritance</p>
+<p>of</p>
+<p>microbial forms like</p>
+<p>is there a way to refer to that human is</p>
+<p>the species but then you know if humans</p>
+<p>contain and are</p>
+<p>multitudes</p>
+<p>you know there's the body there's the</p>
+<p>other life forms</p>
+<p>there's social</p>
+<p>uh interactors</p>
+<p>humans aren't the species but the host</p>
+<p>which ties in very nicely to our next um</p>
+<p>live stream which i'm very excited about</p>
+<p>uh</p>
+<p>which um</p>
+<p>with matthew sims he's gonna come and</p>
+<p>talk to us about</p>
+<p>uh the symbiosis between</p>
+<p>squid and vibrio fischeri in the light</p>
+<p>organ</p>
+<p>which is something near and dear to my</p>
+<p>heart i worked in new mexico i don't</p>
+<p>know</p>
+<p>uh how is this possible in um right</p>
+<p>upstairs you know you have those labs</p>
+<p>that like you know everybody in the lab</p>
+<p>and you guys can come and work and</p>
+<p>um like share equipment sometimes and so</p>
+<p>i knew this lab and our lab were very</p>
+<p>close uh the lab of michelle nishiguchi</p>
+<p>and she studied vibrio fisheries and the</p>
+<p>light organ so i knew all these people</p>
+<p>doing directly related projects</p>
+<p>but that's it's a really cool uh concept</p>
+<p>that you know</p>
+<p>maybe we're all in some form of</p>
+<p>symbiosis and i know in mice they have</p>
+<p>sterilized mice and the mice grow up</p>
+<p>totally neurotic like mice lacking the</p>
+<p>microbiome free mice like they're</p>
+<p>completely neurotic and have way</p>
+<p>abnormal behavior and they've linked a</p>
+<p>lot of you know human behavior or human</p>
+<p>abnormal or abnormal behavior or</p>
+<p>neuroatypical behavior to microbiome</p>
+<p>stuff as well so so it's really</p>
+<p>interesting to think about maybe we're</p>
+<p>all symbians in some</p>
+<p>fashion i mean and like maybe we're not</p>
+<p>the species but we're just the host</p>
+<p>reminds me of um</p>
+<p>demetrius bolus</p>
+<p>speaking about the through others we</p>
+<p>become ourselves and it was situating</p>
+<p>active inference in the dialectical</p>
+<p>tradition</p>
+<p>and um you have a coming together</p>
+<p>of different pieces and they don't</p>
+<p>reduce their distinction they actually</p>
+<p>become especially over evolutionary time</p>
+<p>more polarized like the nuclear genome</p>
+<p>becomes more nuclear the mitochondrial</p>
+<p>genome becomes more reduced in</p>
+<p>mitochondrial or the host becomes</p>
+<p>on one trajectory and the parasite goes</p>
+<p>in the other they don't converge and</p>
+<p>equalize each other they end up becoming</p>
+<p>increasingly specialized parts</p>
+<p>in</p>
+<p>a newly emergent type of system</p>
+<p>and then these multi-specified</p>
+<p>systems can be fragile because maybe now</p>
+<p>there's a failure mode of the part</p>
+<p>and then that causes the whole system to</p>
+<p>fail so like bucky fuller would always</p>
+<p>talk about how</p>
+<p>um all cases of biological extinction</p>
+<p>are due to over-specialization</p>
+<p>might be a bit of an overstatement but</p>
+<p>that's sort of the idea is like</p>
+<p>generalists can deal with changing</p>
+<p>niches better</p>
+<p>because they're always able to</p>
+<p>hedge their bets</p>
+<p>amidst uncertainty and average out over</p>
+<p>all the different um foraging</p>
+<p>investments whereas a specialist does</p>
+<p>really well until they don't but in life</p>
+<p>it's not just like you can do well most</p>
+<p>the time and then you can fail sometimes</p>
+<p>living systems need to</p>
+<p>be</p>
+<p>succeeding at least adequately all the</p>
+<p>time</p>
+<p>if any part of your body was under</p>
+<p>producing atp for like five minutes</p>
+<p>it would get tissue damage so it's</p>
+<p>better to be adequate all the time</p>
+<p>rather than hyper successful for even</p>
+<p>almost all the time</p>
+<p>and then what kinds of strategies are</p>
+<p>resilient amongst that kind of</p>
+<p>uncertainty and situation</p>
+<p>so about halfway through what you were</p>
+<p>saying i wondered when we started having</p>
+<p>a political discussion</p>
+<p>because it just really you know speaks</p>
+<p>to</p>
+<p>specialization or maybe</p>
+<p>polarization um which we see in society</p>
+<p>so like you know we have these different</p>
+<p>factions or different like sub</p>
+<p>types or sub classes</p>
+<p>of of people and biological systems</p>
+<p>that don't</p>
+<p>become</p>
+<p>more like one another they become</p>
+<p>more separate from one another and i</p>
+<p>think um you know in the resounding echo</p>
+<p>chamber that is um</p>
+<p>you know</p>
+<p>a self similar political</p>
+<p>environment or class environment you</p>
+<p>know it becomes this this echo chamber</p>
+<p>that that um</p>
+<p>you know just increases our</p>
+<p>uh</p>
+<p>certainty right increases the the</p>
+<p>validity of our own model</p>
+<p>and it makes us question</p>
+<p>the model of others so i wonder</p>
+<p>uh and this brings us back to uh what</p>
+<p>we're going to discuss with matthew sims</p>
+<p>next week</p>
+<p>um</p>
+<p>is that right or is the jet like is the</p>
+<p>generative model</p>
+<p>becoming more similar for the fisheries</p>
+<p>vapor fisheries in the squid or is it</p>
+<p>becoming</p>
+<p>more different</p>
+<p>i i just wonder yep uh um</p>
+<p>so through interaction do we become more</p>
+<p>similar or different</p>
+<p>or what kinds of systems through</p>
+<p>interaction become more similar or</p>
+<p>different</p>
+<p>and then</p>
+<p>how can systems be</p>
+<p>more anti-fragile given that</p>
+<p>relationship amongst the subunits</p>
+<p>versus which which failure modes are you</p>
+<p>de-risking on and which failure modes</p>
+<p>are you increasing the risk on</p>
+<p>like</p>
+<p>so it's an interesting question i mean</p>
+<p>it's not just political it is very</p>
+<p>um broad question</p>
+<p>blue let's look at the code</p>
+<p>and maybe just scan through some</p>
+<p>sections of it and then start to see um</p>
+<p>in on 11</p>
+<p>before we get to the code it's just like</p>
+<p>what else could we include in an ant</p>
+<p>model like this was um we talked about</p>
+<p>the natural history of the ant that we</p>
+<p>templated off of the formica species in</p>
+<p>the paper</p>
+<p>but um we used one pheromone we didn't</p>
+<p>have interactions you know we had such</p>
+<p>um a sparse</p>
+<p>uh</p>
+<p>pulling over of features of ants into</p>
+<p>our model so that's why it's just like a</p>
+<p>introductory framework so what what</p>
+<p>other pieces could exist for ants</p>
+<p>and we can kind of use the active</p>
+<p>inference</p>
+<p>um breakdown of what perceptions could</p>
+<p>we add in tactile interactions other</p>
+<p>olfactory interactions</p>
+<p>light</p>
+<p>the</p>
+<p>intensity the color the polarization of</p>
+<p>light</p>
+<p>another type of polarization what type</p>
+<p>of cognition could we add in so this was</p>
+<p>like a one-step decision-making ants it</p>
+<p>just makes a decision for the next time</p>
+<p>step based upon the local pheromone</p>
+<p>density what kind of cognitive processes</p>
+<p>actually exist in ants or what kind</p>
+<p>might be interesting to see</p>
+<p>in different systems like memory</p>
+<p>and then what actions exist</p>
+<p>here we had a movement action affordance</p>
+<p>any of the directions and then we had</p>
+<p>sort of a pheromone deposit affordance</p>
+<p>that didn't actually have a specific um</p>
+<p>control policy it was just a if then if</p>
+<p>you already touch the seed then you</p>
+<p>deposit pheromone if you're still</p>
+<p>looking for the seed then you don't</p>
+<p>deposit fairmont so we can think what</p>
+<p>are the perceptions cognitions and</p>
+<p>actions of the aliens as currently</p>
+<p>modeled in the paper and then where can</p>
+<p>we go with that</p>
+<p>and then</p>
+<p>to go from that question about the</p>
+<p>simulation</p>
+<p>to meet the empirical data the other</p>
+<p>side of the table</p>
+<p>what kinds of ant data</p>
+<p>already exist</p>
+<p>there are several very fascinating</p>
+<p>databases</p>
+<p>that include genomics</p>
+<p>gene expression transcriptomic and</p>
+<p>epigenome or epigenomics datasets</p>
+<p>they're sparser for ants than they are</p>
+<p>for humans and mice but</p>
+<p>they are out there and there will be</p>
+<p>more of them in the future</p>
+<p>what kind of behavioral data already</p>
+<p>exists ethology</p>
+<p>the study of animal behavior</p>
+<p>video data</p>
+<p>maybe they analyzed it under a certain</p>
+<p>framework but now it could be</p>
+<p>readdressed</p>
+<p>and then like rfid and qr codes that can</p>
+<p>do semi-automated high-throughput</p>
+<p>tracking so people attach rfid chips to</p>
+<p>honeybees and</p>
+<p>track their foraging activity</p>
+<p>and then we also have information on</p>
+<p>their ecology and morphology so features</p>
+<p>of which we're not in our simulation so</p>
+<p>this is just this sort of prime looking</p>
+<p>at the code</p>
+<p>by asking like how could the code be</p>
+<p>modified</p>
+<p>and then how</p>
+<p>could the world</p>
+<p>already be seen as reaching out to us</p>
+<p>with these helpful pieces of data</p>
+<p>and then where are we going to be in the</p>
+<p>middle like what kind of model is going</p>
+<p>to connect the empirical data sets that</p>
+<p>do or could exist</p>
+<p>to the models</p>
+<p>that do or could exist and then what</p>
+<p>questions are most important because we</p>
+<p>want to be asking relevant questions and</p>
+<p>so it's better to be keeping the goals</p>
+<p>in mind as we look through everything</p>
+<p>okay let me just</p>
+<p>re-crop this window while i get the code</p>
+<p>up</p>
+<p>anything you would just say on the</p>
+<p>overview or like</p>
+<p>general thoughts on the kind of</p>
+<p>multi-agent simulations or foraging</p>
+<p>simulations that you've made</p>
+<p>uh just i have some questions about this</p>
+<p>simulation actually or some some things</p>
+<p>that i would think about to include as</p>
+<p>parameters like in a dream simulation</p>
+<p>where we you know could can simulate</p>
+<p>whatever with unlimited computational</p>
+<p>power and</p>
+<p>relative world data um so i think that</p>
+<p>uh</p>
+<p>here i'm interested in nestmate</p>
+<p>interactions so i think that that would</p>
+<p>be something that would be interesting</p>
+<p>to model like the different types of</p>
+<p>ants that exist like the nurse maids and</p>
+<p>the foragers and the queen and the uh</p>
+<p>reproducers i can't remember we went</p>
+<p>through all the different types of nest</p>
+<p>meats last time but i would just be</p>
+<p>interested in</p>
+<p>in kind of simulating how</p>
+<p>as a colony ants interact and function i</p>
+<p>know that that's like you know</p>
+<p>very</p>
+<p>whatever big and i mean in most</p>
+<p>simulations that i've always done it's</p>
+<p>like the same type of um</p>
+<p>the same type of agent right like so you</p>
+<p>give the agent different options but</p>
+<p>it's never like</p>
+<p>this agent doesn't forage and this agent</p>
+<p>does i don't know but i mean i know that</p>
+<p>they do have different people do do some</p>
+<p>modeling with different types of agents</p>
+<p>but i just wonder what the compute power</p>
+<p>is and</p>
+<p>what the validity of that is</p>
+<p>yes great</p>
+<p>okay</p>
+<p>so</p>
+<p>we're gonna um</p>
+<p>take a sort of uh a stepwise approach</p>
+<p>and one thing that i think will be fun</p>
+<p>is</p>
+<p>there's people who know way more about</p>
+<p>python and coding</p>
+<p>than both of us for sure including alec</p>
+<p>chance and others and then there might</p>
+<p>be others for whom</p>
+<p>they've learned about active inference</p>
+<p>or they've read a lot about it maybe</p>
+<p>even looked at the math</p>
+<p>but here is going to be where we see how</p>
+<p>it looks in code so there are these</p>
+<p>multiple languages and ways of</p>
+<p>communicating and learning by doing</p>
+<p>active inference like natural language</p>
+<p>math as a language</p>
+<p>programming as a language art as a</p>
+<p>language maybe there's other ways too</p>
+<p>but at the very least we know that we</p>
+<p>have natural language</p>
+<p>mathematical formalisms like the</p>
+<p>equations that we're always putting up</p>
+<p>and then here's the code</p>
+<p>those</p>
+<p>threads might be</p>
+<p>looking more similar or different</p>
+<p>as we start to learn more about like</p>
+<p>interactive notebooks</p>
+<p>and ways to</p>
+<p>integrate our language use</p>
+<p>of the natural kind with the programming</p>
+<p>kind</p>
+<p>so</p>
+<p>we're gonna do kind of a a step down</p>
+<p>first we're going to look at the config</p>
+<p>file so the readme file in this case is</p>
+<p>not super informative which is fine</p>
+<p>um but the config file is where we're</p>
+<p>going to start that's going to tell us</p>
+<p>about like what kinds of variables and</p>
+<p>parameters matter</p>
+<p>then we're gonna look at figure one and</p>
+<p>that's just sort of gonna be like okay</p>
+<p>this is how you run it and then we're</p>
+<p>gonna pull back to the ans dot py</p>
+<p>and look at what functions and</p>
+<p>subroutines are actually defined inside</p>
+<p>the code</p>
+<p>so inside of the config file it's only</p>
+<p>30 lines long 31 lines long</p>
+<p>and it has</p>
+<p>some pretty</p>
+<p>clearly defined variables that are being</p>
+<p>set</p>
+<p>and the idea is that all the parameters</p>
+<p>are stored in this file so that you can</p>
+<p>kind of hit play and then it will look</p>
+<p>to this config file we'll see where that</p>
+<p>happens in a second</p>
+<p>and so</p>
+<p>the first block relates to um</p>
+<p>if you want to add the ants in a</p>
+<p>staggered fashion how many how many time</p>
+<p>steps should happen between adding new</p>
+<p>ants in</p>
+<p>um</p>
+<p>uh how many or what's the location of</p>
+<p>where the ants should begin</p>
+<p>nest factor we can</p>
+<p>look at i'm not exactly sure</p>
+<p>um</p>
+<p>it is here</p>
+<p>it relate i'm not exactly sure where</p>
+<p>what the nest factor has to do it might</p>
+<p>have to do with the distance of the nest</p>
+<p>but</p>
+<p>let's ask alec on that one the grid is</p>
+<p>the side size of the map so here's a 40</p>
+<p>by 40.</p>
+<p>um</p>
+<p>and then here</p>
+<p>is a very interesting block it's the</p>
+<p>focal area which is three by three so</p>
+<p>that's the grid around each nest mate is</p>
+<p>just three cells by three cells</p>
+<p>and so this could be changed to you know</p>
+<p>like four by four or</p>
+<p>something like what happens when the ant</p>
+<p>has a broader range of perception than</p>
+<p>it might have for action</p>
+<p>and that's the action map</p>
+<p>and so those are the um the actions that</p>
+<p>can be undertaken</p>
+<p>relating to basically moving like down</p>
+<p>into the left or up into the right</p>
+<p>the food location</p>
+<p>and the size of the food are provided</p>
+<p>then the wall</p>
+<p>so that specifies like within the grid</p>
+<p>what is the shape of the maze inside of</p>
+<p>the map</p>
+<p>24 and 25 describe the</p>
+<p>the number of discretized levels of</p>
+<p>pheromone that exist and then a factor</p>
+<p>that is the stochastic decay of the</p>
+<p>pheromone trail</p>
+<p>and then</p>
+<p>here the observation states so like the</p>
+<p>o in the active inference model</p>
+<p>are</p>
+<p>defined as the number of pheromone</p>
+<p>levels so in this case</p>
+<p>those are both 1 or 10 discrete models</p>
+<p>but</p>
+<p>it's so interesting because it opens up</p>
+<p>the door for the generative process to</p>
+<p>differ from the generative model so like</p>
+<p>the observations</p>
+<p>could be there could be um</p>
+<p>three categories of observation low</p>
+<p>medium and high</p>
+<p>and so you could still have a continuous</p>
+<p>variable or discretized variable in the</p>
+<p>world in the generative process but the</p>
+<p>generative model could be over a reduced</p>
+<p>version of that which might be all you</p>
+<p>need to know maybe there's enough</p>
+<p>stochasticity such that just knowing if</p>
+<p>you're in high medium low</p>
+<p>tells you whether to put on a jacket or</p>
+<p>not you know you don't need five decimal</p>
+<p>points on the temperature</p>
+<p>and um the number of action states is</p>
+<p>also reduced to the focal size but just</p>
+<p>as mentioned that could also diverge</p>
+<p>and then the um the length of the</p>
+<p>simulation i think is specified in 31.</p>
+<p>so those are some of the parameters that</p>
+<p>exist just in the</p>
+<p>base simulation some of the degrees of</p>
+<p>freedom that do exist and that's even</p>
+<p>before introducing these like other</p>
+<p>sorts of um pieces that could exist okay</p>
+<p>any thoughts here before we go to figure</p>
+<p>one</p>
+<p>just like you know i mean i i always</p>
+<p>want to know like why</p>
+<p>like why did you choose this or like did</p>
+<p>you play with the decay factor or did</p>
+<p>you play with like the length the time</p>
+<p>steps i'm sure like maybe your reviewers</p>
+<p>commented that as well but um i just</p>
+<p>wanted like i'm always curious to see</p>
+<p>like was there any</p>
+<p>like</p>
+<p>unexpected outcomes or optimal outcomes</p>
+<p>that occurred like peak like did you</p>
+<p>pick 500 time steps because that was you</p>
+<p>know best or the decay factor of 0.01</p>
+<p>because that was most real realistic or</p>
+<p>those types of things</p>
+<p>good questions</p>
+<p>and i think we we probably could have um</p>
+<p>organized these with some sub headers</p>
+<p>and some comments a little bit more</p>
+<p>clearly</p>
+<p>so</p>
+<p>we're going to look at how the</p>
+<p>simulation gets specified and then pull</p>
+<p>back to like what are the subroutines</p>
+<p>so the the top part of a python program</p>
+<p>is basically pulling in and then giving</p>
+<p>nicknames to other resources that are</p>
+<p>required so these resources can include</p>
+<p>packages like numpy which is a common</p>
+<p>toolkit used for</p>
+<p>um</p>
+<p>math and statistics in python i'm sure</p>
+<p>blue can say more on that one and then</p>
+<p>there's this um</p>
+<p>the config</p>
+<p>as the cf</p>
+<p>so that's when we call like cf dot</p>
+<p>number of observations</p>
+<p>that's going to call like this</p>
+<p>which is defined as this which is 10</p>
+<p>but of course that can be changed so</p>
+<p>that's where the variables that are set</p>
+<p>in the config file come into play</p>
+<p>so the header</p>
+<p>sort of introduces the um</p>
+<p>the background libraries and resources</p>
+<p>that need to be imported</p>
+<p>then</p>
+<p>um a few parameters are defined so that</p>
+<p>you can have like a base config set</p>
+<p>and then you can also just um locally</p>
+<p>define some variables like the number of</p>
+<p>initial ants is um</p>
+<p>like</p>
+<p>you can define variables that are in</p>
+<p>the config file or you can add some new</p>
+<p>variables in</p>
+<p>and then um</p>
+<p>basically</p>
+<p>uh</p>
+<p>the</p>
+<p>uh</p>
+<p>for</p>
+<p>the observations</p>
+<p>in the length of the range of</p>
+<p>observations</p>
+<p>this runs</p>
+<p>a routine</p>
+<p>and um</p>
+<p>the routine is going to be defined</p>
+<p>better in and stop py</p>
+<p>but it basically says we're going to run</p>
+<p>it</p>
+<p>for that many steps for that many</p>
+<p>starting ants for that many maximum ants</p>
+<p>we're gonna save it</p>
+<p>we're gonna switch the location of the</p>
+<p>food</p>
+<p>and then we're gonna just print some</p>
+<p>summary descriptors</p>
+<p>like the number of round trips</p>
+<p>uh</p>
+<p>and then</p>
+<p>save that</p>
+<p>in</p>
+<p>[Music]</p>
+<p>a file</p>
+<p>so that's like sort of the</p>
+<p>interface wrapper</p>
+<p>for running a simulation and then</p>
+<p>outputting some of the descriptive</p>
+<p>statistics and then also saving</p>
+<p>that file</p>
+<p>now ants.py is</p>
+<p>353 lines long so</p>
+<p>um it's a little bit longer</p>
+<p>but there are some parts that we could i</p>
+<p>think walk through</p>
+<p>the first is that like</p>
+<p>the ant is a class</p>
+<p>of object</p>
+<p>and it has um a few routines</p>
+<p>it has its initiation routine</p>
+<p>which is where its x and y position for</p>
+<p>example are given</p>
+<p>the starting location</p>
+<p>and then there's updating a forward and</p>
+<p>a backwards step</p>
+<p>there's the class of the environment so</p>
+<p>this is kind of like if you do net logo</p>
+<p>modeling agent-based modeling you know</p>
+<p>you have like the turtle like the agent</p>
+<p>and then the environment so here we're</p>
+<p>defining the agent and we're defining</p>
+<p>the environment</p>
+<p>and the relationship between the two of</p>
+<p>them is really whether we have um</p>
+<p>a stigmatic type multi-agent system or</p>
+<p>not</p>
+<p>so you could have the environment</p>
+<p>influencing the behavior of agents</p>
+<p>like the sunshine is influencing the</p>
+<p>behavior of the ants but then the ants</p>
+<p>don't modify the sunshine so that</p>
+<p>wouldn't be stigmargy but</p>
+<p>if there's a possibility for the agent</p>
+<p>to modify the environment and for the</p>
+<p>environment to modify the probability of</p>
+<p>agent behaviors there's some sort of</p>
+<p>bi-directional relationship then it is</p>
+<p>stigmargy</p>
+<p>and um</p>
+<p>basically some of the functions that are</p>
+<p>defined for the environment</p>
+<p>have to do with uh</p>
+<p>which</p>
+<p>observations are at a given</p>
+<p>cell</p>
+<p>whether the food exists at a given cell</p>
+<p>whether the walls</p>
+<p>exist at a given cell</p>
+<p>and then the step forward a step</p>
+<p>backward relate to the outgoing and the</p>
+<p>homecoming</p>
+<p>trip and this is basically just um</p>
+<p>[Music]</p>
+<p>uh</p>
+<p>doing a delta which i think is a which</p>
+<p>is the action map it's the delta in</p>
+<p>position</p>
+<p>and then it checks whether the ant is</p>
+<p>returning which is like a gonna be i</p>
+<p>believe on the step backwards side</p>
+<p>and um</p>
+<p>[Music]</p>
+<p>versus the ant</p>
+<p>going forward</p>
+<p>decay is a function that's also inside</p>
+<p>of environments</p>
+<p>because decay has to do with the decay</p>
+<p>of the pheromone at that cell</p>
+<p>and then the plotting has to do with</p>
+<p>just saving</p>
+<p>um the file so that's some of this like</p>
+<p>uh the gif and the save fig</p>
+<p>another object type that's defined and</p>
+<p>this is really where there was the main</p>
+<p>carry over from the previous models is</p>
+<p>the markov decision process</p>
+<p>so here just like we've talked about in</p>
+<p>various contexts like the a b c and d</p>
+<p>are all</p>
+<p>uh</p>
+<p>defined and initiated here</p>
+<p>those are um</p>
+<p>used as you'd expect</p>
+<p>and then the mdp needs to have these</p>
+<p>functions that relate to setting and</p>
+<p>resetting certain variables</p>
+<p>and taking a step and then i love this</p>
+<p>line 210</p>
+<p>action inference like this is sort of</p>
+<p>the kernel</p>
+<p>that</p>
+<p>is where it's happening</p>
+<p>here's the negative expected free energy</p>
+<p>and then there's a calculation</p>
+<p>of the negative expected energy of the</p>
+<p>uh negative</p>
+<p>utility calculations</p>
+<p>divided by the scale factor</p>
+<p>pretty interesting and i don't think we</p>
+<p>experimented with modifying this scale</p>
+<p>factor</p>
+<p>and then um so can i just interrupt you</p>
+<p>what does that scale factor do really</p>
+<p>well</p>
+<p>it's mentioned only two times in here</p>
+<p>and</p>
+<p>um</p>
+<p>i'm not exactly sure what it does here</p>
+<p>i think that uh when you're comparing</p>
+<p>relative policies</p>
+<p>as long as you're dividing them all by</p>
+<p>the same scale factor</p>
+<p>it shouldn't change the relative</p>
+<p>preference for different policies if</p>
+<p>they're all being scaled down by the</p>
+<p>same level</p>
+<p>so</p>
+<p>i'm not sure why the calculation exists</p>
+<p>this way</p>
+<p>yeah that i mean it makes sense that</p>
+<p>they're all like whatever you scaled by</p>
+<p>something maybe it's just to make the</p>
+<p>numbers more manageable who knows</p>
+<p>yes</p>
+<p>but we'll let's definitely think about</p>
+<p>that</p>
+<p>and then um</p>
+<p>[Music]</p>
+<p>it yeah</p>
+<p>we could get more explanation from alec</p>
+<p>um but</p>
+<p>the uh</p>
+<p>negative expected free energies</p>
+<p>get so</p>
+<p>okay well okay one possible</p>
+<p>option would be this is like over</p>
+<p>observations</p>
+<p>so we know that the observations are</p>
+<p>discretized between one and ten</p>
+<p>so if we divide</p>
+<p>by 10 maybe we're going from like a 1 to</p>
+<p>10 scale to a 0 to 1 scale</p>
+<p>which then lets us interpret</p>
+<p>more cleanly as like probabilities</p>
+<p>because</p>
+<p>um the action</p>
+<p>ends up being selected based upon the</p>
+<p>soft max of the negative expected free</p>
+<p>energies</p>
+<p>so instead of like you know eight one</p>
+<p>and one</p>
+<p>if you do</p>
+<p>0.8 0.1 and 0.1 it's really easy to then</p>
+<p>say okay right 80 likelihood of choosing</p>
+<p>this action</p>
+<p>here's a colony level function</p>
+<p>related to an ant being initiated and</p>
+<p>just appearing on the map</p>
+<p>plotting and saving functions and then</p>
+<p>here's the main</p>
+<p>so um</p>
+<p>a lot of times in the python</p>
+<p>programs</p>
+<p>there's like a lot of sort of upstream</p>
+<p>functions that are going to get called</p>
+<p>and then main is called and then when</p>
+<p>main is called that's like where the</p>
+<p>main program actually happens</p>
+<p>so this instantiates the environment the</p>
+<p>ants and the paths</p>
+<p>it for the number of ants in that are to</p>
+<p>be specified that many ants are created</p>
+<p>with reset</p>
+<p>mdps</p>
+<p>all of the image files are set to zero</p>
+<p>the descriptive statistics like how many</p>
+<p>completed trips and the ant locations</p>
+<p>are reset</p>
+<p>and then here</p>
+<p>is the time point time step based</p>
+<p>simulation so here</p>
+<p>for each ant in the ants that exist</p>
+<p>there's going to be some calculations</p>
+<p>this is related to the distance</p>
+<p>calculation</p>
+<p>um</p>
+<p>here's adding the ants</p>
+<p>here's switching the food</p>
+<p>and then here is um checking for each</p>
+<p>ant trajectory</p>
+<p>whether it's returning or completed</p>
+<p>and then saving the file</p>
+<p>so</p>
+<p>again i think there could be a lot more</p>
+<p>organization and commenting</p>
+<p>to sort of understand what these</p>
+<p>different pieces do but</p>
+<p>yeah i believe that's some of the main</p>
+<p>pieces</p>
+<p>nice</p>
+<p>are we gonna move to the figures now</p>
+<p>um</p>
+<p>sure i can actually try to download the</p>
+<p>videos and i can play the videos</p>
+<p>oh yeah that's great so yeah i thought</p>
+<p>we were going to go switch back and</p>
+<p>forth from the code to the</p>
+<p>okay so we'll go to the paper</p>
+<p>supplemental data</p>
+<p>let's see if we can play it in the</p>
+<p>stream directly</p>
+<p>will it play</p>
+<p>oh great it will play okay so here is</p>
+<p>like the ants</p>
+<p>you'll you won't see it blue but um</p>
+<p>diffusing around the red ones are going</p>
+<p>out and the blue ones are coming home so</p>
+<p>this is just as if you were um watching</p>
+<p>the colony with video</p>
+<p>um video two</p>
+<p>i think we're gonna add in</p>
+<p>the pheromone density so here the</p>
+<p>brighter colors are the pheromone</p>
+<p>density</p>
+<p>and like there like one ant made at home</p>
+<p>but then it didn't</p>
+<p>here comes another one</p>
+<p>it didn't um</p>
+<p>[Music]</p>
+<p>sort of lock on but now we can see</p>
+<p>there's a light ridge</p>
+<p>it's locked on</p>
+<p>to the trail and it's going to reinforce</p>
+<p>the trail</p>
+<p>and then</p>
+<p>it seems like the food has switched</p>
+<p>because now we're seeing some pheromone</p>
+<p>getting deposited on the left side</p>
+<p>and then there's not as much deposition</p>
+<p>on the right side but this is what</p>
+<p>really happens in ants like if there's</p>
+<p>high density of pheromone on that top</p>
+<p>right</p>
+<p>then</p>
+<p>an ants are spending a lot of their time</p>
+<p>there</p>
+<p>especially if they're carrying food they</p>
+<p>might actually be reinforcing</p>
+<p>that part so some of the videos are</p>
+<p>described their similarities and</p>
+<p>differences</p>
+<p>in the text but i think the interesting</p>
+<p>one to look at would be</p>
+<p>i think six and seven</p>
+<p>so here</p>
+<p>there's um here there's a preference for</p>
+<p>high pheromone density</p>
+<p>and then</p>
+<p>i believe it's seven</p>
+<p>where the ants can lay down pheromone</p>
+<p>but they don't have a preference for it</p>
+<p>and so it ends up getting laid down but</p>
+<p>then it doesn't get reinforced because</p>
+<p>they um</p>
+<p>they just don't prefer it so they act</p>
+<p>randomly with respect to pheromone</p>
+<p>um</p>
+<p>but these are just like fun</p>
+<p>simulations and yeah a total</p>
+<p>obvious next step an important one would</p>
+<p>be to</p>
+<p>explore what sets of parameters certain</p>
+<p>outcomes occur within like when do they</p>
+<p>always lock in when do they fail to lock</p>
+<p>in</p>
+<p>um</p>
+<p>but yeah good</p>
+<p>supplemental info</p>
+<p>awesome</p>
+<p>um</p>
+<p>yeah so what what is the next obvious um</p>
+<p>step for you or where would you like to</p>
+<p>see this simulation go</p>
+<p>most like what is the the next if you</p>
+<p>were to you know</p>
+<p>have unlimited time with alec to say</p>
+<p>like let's code xyz</p>
+<p>um what what would you uh dream of</p>
+<p>first i'd probably go for the annotation</p>
+<p>and clarification</p>
+<p>because that's like where coding</p>
+<p>expertise really comes into play and</p>
+<p>that helps other people</p>
+<p>modify and build on the code the most</p>
+<p>um</p>
+<p>when it were a little more reorganized i</p>
+<p>think it would make sense where other</p>
+<p>sensory and action affordances could be</p>
+<p>plugged in</p>
+<p>but the piece that's</p>
+<p>such as like adding another pheromone so</p>
+<p>instead of just having like you know</p>
+<p>pheromone one through ten density like</p>
+<p>make it specific pheromone sent one</p>
+<p>and then that would allow us to go okay</p>
+<p>now let's just copy and paste pheromone</p>
+<p>sent two</p>
+<p>and then we could have</p>
+<p>um more flavors</p>
+<p>so well so what what would you make the</p>
+<p>pheromone scent to</p>
+<p>do would you make it like fairmont said</p>
+<p>one drives you to the food and if</p>
+<p>everyone send two drives you home or</p>
+<p>would you just make different decay</p>
+<p>rates or what would you do with the</p>
+<p>different fair ones</p>
+<p>one duality would be like plus and minus</p>
+<p>if there was the appropriate behavior</p>
+<p>around using them</p>
+<p>another one would be fast and slow decay</p>
+<p>which maps on to the way that ants</p>
+<p>actually use the sense with like some</p>
+<p>longer chain</p>
+<p>hydrocarbons that are longer lasting and</p>
+<p>some shorter chain ones that are</p>
+<p>volatile</p>
+<p>um another interesting cognitive model</p>
+<p>would be like there's two or three</p>
+<p>pheromones</p>
+<p>and then what the inference is on</p>
+<p>is the ratio</p>
+<p>and then it could be shown like you know</p>
+<p>no cheating the ant is only perceiving</p>
+<p>the ratio of these two things</p>
+<p>so that would be kind of</p>
+<p>uh</p>
+<p>it's kind of like bimetallism</p>
+<p>like you tie to the idea of a ratio</p>
+<p>rather than to just the absolute amount</p>
+<p>of one</p>
+<p>so like</p>
+<p>um</p>
+<p>it could be food could be a little sweet</p>
+<p>and a little salty or a lot sweet and a</p>
+<p>lot salty or then the inference of</p>
+<p>whether it's tasty is like whether it's</p>
+<p>balanced</p>
+<p>so then if we're thinking about the ant</p>
+<p>tasting</p>
+<p>balances in the world</p>
+<p>maybe that could help it have an</p>
+<p>internal manifold</p>
+<p>that by definition would be simpler</p>
+<p>than the state space of the pheromone</p>
+<p>densities out there in the generative</p>
+<p>process</p>
+<p>um</p>
+<p>so i i heard that there are two types of</p>
+<p>ants like that there are grease eating</p>
+<p>ants and sweet eating ants are they just</p>
+<p>like different</p>
+<p>like what is that what makes that</p>
+<p>distinction actually and like does the</p>
+<p>same ant really eat those things or</p>
+<p>what's up with that</p>
+<p>um</p>
+<p>just reminded me of you know like uh uh</p>
+<p>evil neutral good like the</p>
+<p>classifications for characters</p>
+<p>and then what are the major macro</p>
+<p>molecules what are the nutritious</p>
+<p>molecules other than vitamins well</p>
+<p>there's like protein carbohydrates and</p>
+<p>fats lipids</p>
+<p>and</p>
+<p>different parts of the colony life cycle</p>
+<p>might use these different nutrients</p>
+<p>differently but then what are the</p>
+<p>resources that could be obtained like</p>
+<p>sweet that could come from like an extra</p>
+<p>floral nectary so like a plant that's</p>
+<p>secreting a honeydew or scale insects</p>
+<p>and the the carbohydrate-rich fluids</p>
+<p>that they secrete and ants that love</p>
+<p>sugar and pies and stuff</p>
+<p>then there's oil</p>
+<p>and then there's also like protein like</p>
+<p>there's meat ants</p>
+<p>and um</p>
+<p>the turtle ants</p>
+<p>in the in the canopy forests in some</p>
+<p>rainforests i've heard from many ant</p>
+<p>researchers like that the most effective</p>
+<p>traps</p>
+<p>use human urine</p>
+<p>and like those ants well that's high</p>
+<p>nitrogen high protein relatively</p>
+<p>speaking if you're a tiny guy</p>
+<p>so</p>
+<p>um</p>
+<p>[Music]</p>
+<p>it's interesting why some species would</p>
+<p>um</p>
+<p>prefer</p>
+<p>more or the other if you're putting on</p>
+<p>more biomass</p>
+<p>like if you're making larger colonies</p>
+<p>you probably need a lot more protein and</p>
+<p>lipids</p>
+<p>whereas if you have longer lived workers</p>
+<p>then you don't need as much lipid and</p>
+<p>protein but you might use a lot of</p>
+<p>carbohydrates</p>
+<p>so that's sort of the fun way to think</p>
+<p>about the workers like a car like you</p>
+<p>need the metal to make the car</p>
+<p>but then you only need gas it's like you</p>
+<p>need the protein and lipids to make</p>
+<p>the ants</p>
+<p>but then afterwards you really use more</p>
+<p>carbohydrates</p>
+<p>even though they probably also digest</p>
+<p>other nutrients but i think the the</p>
+<p>piece that um to connect would be like</p>
+<p>um</p>
+<p>find some</p>
+<p>student or person who loves</p>
+<p>meta-analysis it could be us or it could</p>
+<p>be someone else</p>
+<p>and establish like which data sets</p>
+<p>are already there</p>
+<p>what's a recent impactful and</p>
+<p>publication that already has done a lot</p>
+<p>of the meta analytic work</p>
+<p>of at least compiling data sets and</p>
+<p>there are several ants databases that</p>
+<p>have compiled behavioral data</p>
+<p>morphological data ecological data</p>
+<p>genomic data</p>
+<p>and then um</p>
+<p>how could that</p>
+<p>data format play into</p>
+<p>this</p>
+<p>model</p>
+<p>what are we going to</p>
+<p>put in</p>
+<p>and then i think uh a good step would</p>
+<p>just be to show like</p>
+<p>what does the octave inference</p>
+<p>ant model</p>
+<p>explain predict suggest</p>
+<p>that</p>
+<p>uh</p>
+<p>other first principles approaches like</p>
+<p>reinforcement learning might not</p>
+<p>perceive</p>
+<p>very nice</p>
+<p>yeah so my question about the different</p>
+<p>types of food that ants eat was was</p>
+<p>really</p>
+<p>linked to different pheromone</p>
+<p>um</p>
+<p>like types or ratios or concentrations</p>
+<p>like if i have a high preference for</p>
+<p>lipids but i'll eat sugar like</p>
+<p>you know maybe my ratio preference is</p>
+<p>different like this is another way to</p>
+<p>like enable different like types of ants</p>
+<p>or just to give them different</p>
+<p>preferences over the food that they eat</p>
+<p>and then where like if we initiate the</p>
+<p>same kind of agent and the same kind of</p>
+<p>food did they all like proportionately</p>
+<p>distribute or do some carbohydrate</p>
+<p>referring ants go to lipids instead of</p>
+<p>lipid preferring antibiotic</p>
+<p>carbohydrates i just wonder and like</p>
+<p>does it have to do with proximity or the</p>
+<p>number of ants that were there before or</p>
+<p>i think that all of that is is</p>
+<p>interesting and kind of relates to</p>
+<p>like this multi-goal</p>
+<p>aspect of active inference it's always</p>
+<p>really kind of difficult to</p>
+<p>i mean it's easy when we think about and</p>
+<p>get food right like so the active</p>
+<p>inference model is as easy it's</p>
+<p>manageable is what it is so it becomes</p>
+<p>computationally tractable and like</p>
+<p>mathematically tractable when it's a</p>
+<p>single type of agent with a single goal</p>
+<p>or even like two different types of</p>
+<p>agents with two different types of goals</p>
+<p>that are overlapping i mean so you can</p>
+<p>see just how but it exponentially</p>
+<p>expands when you have this kind of</p>
+<p>multi-goal</p>
+<p>thing and like some goals are like more</p>
+<p>pressing than others right like my</p>
+<p>immediate needs have to be met for me to</p>
+<p>like you know desire to go to college</p>
+<p>like i have to have food water shelter</p>
+<p>clothing etc</p>
+<p>and so these kinds of</p>
+<p>multi-goal and like prioritizing goal</p>
+<p>setups</p>
+<p>are um really interesting and</p>
+<p>a great way i think to start to</p>
+<p>approach</p>
+<p>modeling real</p>
+<p>or</p>
+<p>us</p>
+<p>or</p>
+<p>complex</p>
+<p>systems that have multiple conflicting</p>
+<p>sometimes conflicting goals</p>
+<p>another setting to transpose and explore</p>
+<p>that where there's a ton of data would</p>
+<p>be first make active beefarence with a</p>
+<p>honeybees so there they don't use stigma</p>
+<p>g</p>
+<p>um on the trail because they're on the</p>
+<p>wing they're flying</p>
+<p>but in the nest you could have like us</p>
+<p>in the hive as it were you could have a</p>
+<p>special dance floor and so that is where</p>
+<p>maybe like a active inference</p>
+<p>communication model could come into play</p>
+<p>so</p>
+<p>that this would be less on the stigmargy</p>
+<p>side but more on like the multi-agent</p>
+<p>distributed communication side so flip</p>
+<p>out the trail um</p>
+<p>modification with a symbolic waggle</p>
+<p>dance</p>
+<p>whether it actually does a waggle dance</p>
+<p>or whether we just say okay there was a</p>
+<p>waggle dance that occurred and it had</p>
+<p>this precision and these estimates</p>
+<p>then</p>
+<p>honeybees are well studied for making</p>
+<p>the trade-offs between foraging for</p>
+<p>nectar carbohydrate pollen which has</p>
+<p>like lipid and protein and water</p>
+<p>and</p>
+<p>a lot of work on like</p>
+<p>is it that um</p>
+<p>a hundred percent of the variance in</p>
+<p>that foraging outcome being different is</p>
+<p>about the needs of the colony and all</p>
+<p>workers respond to the needs of the</p>
+<p>colony</p>
+<p>is it that</p>
+<p>the workers have their own nest mate</p>
+<p>level preferences</p>
+<p>and then the colony outcome just is what</p>
+<p>it is or is it somewhere in between</p>
+<p>where there's preferences that differ</p>
+<p>between workers maybe as a function of</p>
+<p>their genetic backgrounds but then the</p>
+<p>colony outcomes are also in feedback</p>
+<p>with them</p>
+<p>so that could be um a case</p>
+<p>and i think this kind of takes us back</p>
+<p>to um</p>
+<p>to slide eight which is like when we</p>
+<p>have</p>
+<p>the systems lined up</p>
+<p>and we understand their similarities and</p>
+<p>differences</p>
+<p>then</p>
+<p>we'll be able to transpose</p>
+<p>across different systems</p>
+<p>in a really interesting way and then ask</p>
+<p>um it's kind of like biomimicry on</p>
+<p>behavioral systems</p>
+<p>is this more like a honeybee situation</p>
+<p>where people are exchanging information</p>
+<p>and then going their own way</p>
+<p>or is this more like a trail stigmergy</p>
+<p>situation</p>
+<p>and um</p>
+<p>so like there's going to be some</p>
+<p>early work transposing into these major</p>
+<p>different domains like again this was</p>
+<p>the first paper that transposed active</p>
+<p>inference and included stigma g although</p>
+<p>that had been discussed by axel constant</p>
+<p>and others</p>
+<p>regarding ecology it had always been</p>
+<p>qualitatively a part of the discussion</p>
+<p>that niche modification was relevant and</p>
+<p>that agents were able to be in feedback</p>
+<p>with their surroundings</p>
+<p>and then it went from the natural</p>
+<p>language</p>
+<p>through the formalism to the code and</p>
+<p>then now it can feed back change how we</p>
+<p>think and write and speak and then we'll</p>
+<p>transpose into a few of these major</p>
+<p>domains start to sub-specify into</p>
+<p>situations and it'll be very</p>
+<p>cool so it's super interesting about</p>
+<p>like the um communication versus like</p>
+<p>the trail like which of these like</p>
+<p>and i just wonder what you think like</p>
+<p>as humans</p>
+<p>which are we more like are we more like</p>
+<p>bees or are we more like ants like do we</p>
+<p>communicate and then go on our separate</p>
+<p>way or do we just like follow in a row</p>
+<p>like</p>
+<p>where do you think we're at</p>
+<p>in the b ant trajectory</p>
+<p>it makes me think of a drive that we</p>
+<p>went on this weekend and um there was</p>
+<p>the street signs and then there was a</p>
+<p>big field and then there was the</p>
+<p>pleasure path that was cutting the</p>
+<p>hypotenuse across the field so it was</p>
+<p>like a big block with an empty field in</p>
+<p>it and so people were walking and so</p>
+<p>they were making that trail and so there</p>
+<p>was this juxtaposition between the um</p>
+<p>[Music]</p>
+<p>societally imposed and scaffold</p>
+<p>infrastructure like the streets and the</p>
+<p>symbolic signs you know the stop sign</p>
+<p>here and this is where this street and</p>
+<p>that street intersect and then there's</p>
+<p>the people</p>
+<p>who were moving on that landscape and</p>
+<p>then even if you don't see any other</p>
+<p>people at that moment it's their</p>
+<p>stigmargy with the trail</p>
+<p>and so it is an interesting question and</p>
+<p>it's almost like we have symbolic rules</p>
+<p>and scaffolds like law and norms and</p>
+<p>culture</p>
+<p>that are even though there's ways to</p>
+<p>think about those as stigma energy</p>
+<p>themselves</p>
+<p>for the agent level that's more like a</p>
+<p>symbolic communication</p>
+<p>and then</p>
+<p>it's like the ant stigma g is like</p>
+<p>blurring the lines</p>
+<p>that the symbolism provides for us</p>
+<p>so</p>
+<p>i think there's um</p>
+<p>there's some components of both plus</p>
+<p>other insects</p>
+<p>maybe not insects too but that's quite</p>
+<p>contentious so that that brings me back</p>
+<p>to like the concept of of</p>
+<p>intergenerational sigmoidy but but</p>
+<p>really like maybe my question was not</p>
+<p>like phrased correctly like sure we</p>
+<p>leave some stigmatic traces as humans</p>
+<p>for like the the next generations but</p>
+<p>but also like we leave</p>
+<p>like sigmoidy for strangers right like</p>
+<p>like so i wonder if like and i know that</p>
+<p>the ant colonies like the pheromones are</p>
+<p>different and the different species of</p>
+<p>ant they're different and so i wonder um</p>
+<p>maybe is it like the fact that total</p>
+<p>strangers can go you know searching for</p>
+<p>um collective intelligence or collective</p>
+<p>behavior or something like that on the</p>
+<p>internet and come to the same result or</p>
+<p>certain like total strangers see the</p>
+<p>stop sign and know that there's some</p>
+<p>sort of behavioral norm that's supposed</p>
+<p>to be enacted just by seeing the signs</p>
+<p>in the street and so we leave this like</p>
+<p>you know we do this externalization of</p>
+<p>of cognition a lot as humans and so</p>
+<p>this is what i want to see in the animal</p>
+<p>kingdom like like i want to see traces</p>
+<p>of like can strange animals say like oh</p>
+<p>i see a rock stack i know the trail goes</p>
+<p>this way right like like does that</p>
+<p>happen in the animal kingdom or is that</p>
+<p>what's maybe uniquely human</p>
+<p>good question</p>
+<p>and i think this is why we can study</p>
+<p>these systems and gain insight without</p>
+<p>naively copying their strategies or</p>
+<p>thinking that we must be</p>
+<p>them or they must be us because</p>
+<p>our</p>
+<p>whatever it is that we're doing it's at</p>
+<p>the intersection of like stigma g and</p>
+<p>cumulative culture modification and</p>
+<p>symbolism</p>
+<p>so in a way the ant and the be</p>
+<p>foraging paradigms not no hashtag not</p>
+<p>all ants because some don't do pheromone</p>
+<p>trails etc but one extreme</p>
+<p>is like the syntax of the foraging trail</p>
+<p>and there's no symbolic communication</p>
+<p>it's just stigma g</p>
+<p>and then the other extreme is</p>
+<p>no stigmatic modification there's no</p>
+<p>trace left in the environment at all</p>
+<p>there's just transient symbolic</p>
+<p>communication</p>
+<p>so it's this continuum from the</p>
+<p>transient symbolic</p>
+<p>like i'm going to pass you a message and</p>
+<p>then you're going to be off on your way</p>
+<p>to</p>
+<p>the stigmatic and often sub symbolic</p>
+<p>like the path crossing that field</p>
+<p>it isn't directly a symbol</p>
+<p>saying walk on me</p>
+<p>but</p>
+<p>it isn't</p>
+<p>in affordance we perceive it as an</p>
+<p>ecological affordance but it doesn't</p>
+<p>have it that's not what it symbolizes</p>
+<p>that's what it is and that's how we</p>
+<p>enact it um so like we could have some</p>
+<p>types of active inference models that</p>
+<p>highlight</p>
+<p>that um</p>
+<p>transient among agents</p>
+<p>meaning based communication</p>
+<p>versus models that um</p>
+<p>don't need to take on any grandiose</p>
+<p>hermeneutic</p>
+<p>communication and what does</p>
+<p>communication mean and how does thinking</p>
+<p>through other minds happen</p>
+<p>we just</p>
+<p>look to the ground and about how agents</p>
+<p>respond to their niche which is a</p>
+<p>combination of biotic and abiotic</p>
+<p>nice</p>
+<p>fun times</p>
+<p>yeah just any final thoughts or or any</p>
+<p>anything else for me i've given all my</p>
+<p>all my thoughts out i think oh me too</p>
+<p>over the years but thanks for um pushing</p>
+<p>for this paper for 29</p>
+<p>and uh 30 is gonna be</p>
+<p>hot on the heels slash</p>
+<p>abdomen of this paper because i think</p>
+<p>we're going to be able to operationalize</p>
+<p>a lot of the discussions that we had</p>
+<p>about extended cognition i know it's</p>
+<p>also going to bring back</p>
+<p>what we talked about with the</p>
+<p>definitions of a self and individuality</p>
+<p>so</p>
+<p>another one in the books on to our third</p>
+<p>decade</p>
+<p>of um</p>
+<p>papers on the live stream</p>
+<p>and uh</p>
+<p>yeah i hope people found it interesting</p>
+<p>as with other</p>
+<p>papers except this is one where</p>
+<p>hopefully they can</p>
+<p>get in touch with the authors and</p>
+<p>understand that it's a totally open area</p>
+<p>and a collaborative one too</p>
+<p>awesome well thanks for giving us your</p>
+<p>time and and always giving us your time</p>
+<p>thanks youtube luke so</p>
+<p>um i'll flip to the closing slide</p>
+<p>that's</p>
+<p>what we can still think about</p>
+<p>and uh</p>
+<p>awesome see everyone around next time</p>
+</article>
+</body>
+</html>

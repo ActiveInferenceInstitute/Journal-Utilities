@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 094.1 ~ Joséphine Pazem:, "Free Energy Projective Simulation (FEPS)"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 094.1 ~ Joséphine Pazem:, "Free Energy Projective Simulation (FEPS)"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_094 &middot; Episode 1 &middot; Speakers: Joséphine Pazem &middot; Duration: 1:28:39 &middot; Views: 351</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=1Qr7um2W-Rc">https://www.youtube.com/watch?v=1Qr7um2W-Rc</a></div>
+<article>
+<p>Hello and welcome. It's December 17th, 2024. We're here with Josephine Pizam and colleagues</p>
+<p>discussing free energy projective simulation. There will be a presentation followed by a</p>
+<p>discussion. So thank you to all the authors for joining. Looking forward to it. Take it away.</p>
+<p>Thank you. Hi, and thanks for having us. Today I wanted to present the paper that we have</p>
+<p>recently made public on the archive. You can have the number here, which treats the free energy</p>
+<p>projective simulation active in France with interpretability. And our goal there was to</p>
+<p>combine an existing framework for agency called projective simulation with the free energy principle.</p>
+<p>And active inference where we have an agent that is able to learn from his experience in the world,</p>
+<p>gathering percepts and remembering a history of actions to learn a representation of its environment</p>
+<p>and behave adaptively in its environment by performing active inference to determine its behaviors.</p>
+<p>I want to, I have structured my presentation in three main points. First, I want to introduce projective</p>
+<p>simulation to the community. Then I want to introduce the formulation and the aspects of active inference</p>
+<p>analysis that I have used in these works, especially the notation will be important.</p>
+<p>And then the main body of the presentation will deal with the free energy projective simulation,</p>
+<p>how, what is it architecture, how does it work, how do we train it, and then some</p>
+<p>numerical analysis about it before I conclude. So first, what is projective simulation?</p>
+<p>The goal of projective simulation is to model intelligent agents with a framework that is rooted</p>
+<p>in embodied cognitive science. So now what I want to do is to look at the keywords of this sentence and</p>
+<p>understand what we mean behind those words, starting with the notion of intelligence for an agent, where</p>
+<p>what we really mean here is that the agents we consider are able to perceive the environment with,</p>
+<p>to perceive their environment and are able to influence and change their environment by acting on it. And in doing so,</p>
+<p>they are settling matters in the environment in a flexible way. And then the agent, a broad definition for it, or</p>
+<p>its support would be a system that has a memory. As I said, I want my agent to be able to remember its experience in the environment.</p>
+<p>And it's also able to interact with this environment. And that leads us then to embody cognitive science, where instead of</p>
+<p>having the agent learning from a set of predefined rules that we as designers would give to the agent, such that it learns</p>
+<p>high order concepts, the agent has to learn from the information it has gathered from its interaction history with the</p>
+<p>environment. That is how it has perceived the environment and the action it has taken on this environment.</p>
+<p>And now I have spoken about memory earlier, and I want to make a precision for this intelligence.</p>
+<p>It should also, the agent should also be able to adapt to situations that it hasn't experienced yet by comparing it to its existing</p>
+<p>moments in memory and to be able to compare them and see which elements of its past history are useful to adapt to unprecedented situations.</p>
+<p>Now I want to dive into the way we are modeling the agent to implement projective simulation.</p>
+<p>The agent is engaged in a precept action loop with the environment in that it has two types of subsystems.</p>
+<p>A sensor system is able to perceive precepts and stimuli from the environment.</p>
+<p>The agent is able to act on the environment and change its state through its actuators.</p>
+<p>And the key of projective simulation, the place where projective simulation will be important, is the memory of the agent</p>
+<p>that is decoupled from its physical interface with the environment. And that should allow the agent to</p>
+<p>reflect such that it can display some more complex behaviors in the environment going beyond stimuli response behaviors.</p>
+<p>The idea here is that the agent is able to</p>
+<p>simulate possible scenarios using its memories in order to plan or deliberate for its next action.</p>
+<p>So this diagram should already be reminiscent of the free energy principle and active inference in general.</p>
+<p>Now projective simulation is a specific process that runs on the memory to deliberate.</p>
+<p>For this, the memory is depicted as a network that connects different clips.</p>
+<p>If you want to clip, if an event were a movie, a clip would be a snippet of that movie, just a few seconds of it,</p>
+<p>where the agent would recall the sensations it has had the precepts it has had during this</p>
+<p>mini movie and the actions it has taken.</p>
+<p>So the different clips are connected in a directed network such that the different events are connected with one another following the experience of the agent.</p>
+<p>Upon receiving a precept from the environment on its sensor system, a clip in the memory of the agent, in the episodic and compositional memory of the agent,</p>
+<p>you will hear me saying ECM very often.</p>
+<p>So a clip is excited by a precept from the sensors.</p>
+<p>And then the deliberation of the agent will take place by hopping on those edges to go from one clip to the next and simulate forward the possible events that can unravel from this excited clip.</p>
+<p>So the agent does a random work on that network until it reaches a specific type of clip that will then decouple from the memory and this fictitious random work such that an action comment will be sent to the actuator and the action will actually be implemented in the environment.</p>
+<p>So here I want to emphasize two types of states that can happen.</p>
+<p>Any state that is any clip that is visited in the memory is either a remembered clip,</p>
+<p>a remembered event from the past or something that has been created that is fictitious.</p>
+<p>An all the ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>the action clips.</p>
+<p>Now, how do we train this memory and how does the agent adapt and learn something using</p>
+<p>this memory?</p>
+<p>There are two ways that this can happen.</p>
+<p>Either the agent is creating new clips in its network, either because it has received</p>
+<p>a new percept on its sensors or because it has created new clips from existing clips in</p>
+<p>its network.</p>
+<p>Another mechanism that is more important for the present work is an update rule where each</p>
+<p>of the edges in the network is weighted with what we call an age value that can increase</p>
+<p>and decrease as the agent interacts with the environment.</p>
+<p>In particular, at each time step, the updated weight decreases compared to the previous</p>
+<p>weight with a certain forgetting rate.</p>
+<p>And it's brought back to its initial value with the same rate.</p>
+<p>And every time an edge was traversed to make a deliberation that received the reward, it</p>
+<p>is reinforced with a certain reward.</p>
+<p>And from those age values, then we can define a probability distribution that the agent will</p>
+<p>use to sample edges during its random walk to walk from one clip to the next and deliberate.</p>
+<p>This is it for the mechanics of projective simulation and its conceptual meaning.</p>
+<p>There were a few applications already in the literature.</p>
+<p>For example, it has been applied in robotics and reinforcement learning, where a group in</p>
+<p>Innsbruck had a robot learn new skills from existing skills by preparing new configuration</p>
+<p>of the environment that would enable the agent to extend its previous skills.</p>
+<p>It has also been used to simulate biological agents, especially the behaviors of honeybees when they</p>
+<p>are trained to defend themselves.</p>
+<p>So it's a multi-agent scenario where each of the individual agents are coordinating their</p>
+<p>decisions to be efficient.</p>
+<p>And there have been a number of evolutions that have been proposed on this standard projective</p>
+<p>simulation.</p>
+<p>Multi-excitation projective simulation proposes that the clips are truly compositional and</p>
+<p>a net is not only between two clips, but rather between groups of clips that would represent</p>
+<p>the current situation.</p>
+<p>And there have been also quantization of projective simulation in this seminal paper.</p>
+<p>But also this has already been implemented experimentally on a small problem.</p>
+<p>So this brings me now to the second part of this presentation, where I want to give an overview</p>
+<p>of the free energy principle and active inference so that we are all agreeing on what we mean</p>
+<p>by our notations and active inference here.</p>
+<p>So the claim of the free energy principle is that any adaptive system can be modeled as performing</p>
+<p>an approximate form of Bayesian inference.</p>
+<p>So let's do as we did for projective simulation and look at keywords here.</p>
+<p>What do we mean by an adaptive system?</p>
+<p>It means that we have a system that is able to persist in its environment and to do so it</p>
+<p>has to exhibit some form of flexible behavior and it has to be able to act on its environment</p>
+<p>so that it can change it if needed.</p>
+<p>And the main keyword is Bayesian inference here, which means that we can describe an agent as</p>
+<p>building an internal model.</p>
+<p>That it is using data from this environment in order to update this model and that the update</p>
+<p>takes the form of an optimization.</p>
+<p>And another keyword I want to emphasize here is that it's modeled as performing Bayesian inference.</p>
+<p>That is it looks as if.</p>
+<p>So here we want to distinguish between the internal mechanics of an agent learning from stimuli it</p>
+<p>receives from the environment and its actions.</p>
+<p>And the mathematical description that we can give of that agent as updating a model in a Bayesian</p>
+<p>way.</p>
+<p>And hopefully these two would be reconciled at some point in the presentation.</p>
+<p>First, to introduce active inference, before we introduce active inference, I would like to</p>
+<p>introduce perceptual inference, which is describing the process in which the agent is constructing</p>
+<p>its representation of the environment using the observations it receives from it.</p>
+<p>The environment can be described as having hidden states and the agent acting on these hidden states will</p>
+<p>cause or in.</p>
+<p>Yeah, we result in a change in that hidden state.</p>
+<p>However, the environment is not fully accessible to the agent, it's only partially observable.</p>
+<p>So the agent would not see these hidden states, but instead only a small part of them, which</p>
+<p>are the observations.</p>
+<p>And in order to understand the dynamics on those observations and being able to predict those</p>
+<p>observations, the agent will construct a world model in the form of a partially observable</p>
+<p>Markov decision problem, a PONDP, using what we call belief states, where here I use capital</p>
+<p>letters for the random variable and lowercase letters for the value that those random variables</p>
+<p>can take.</p>
+<p>And the idea of those belief states here is that they mirror the role of the hidden states,</p>
+<p>such that the agent can use them then to make prediction about its observations.</p>
+<p>So similar to, I'm sorry, similar to the actions in the environment, taking action will also result</p>
+<p>in a transition in the belief states.</p>
+<p>And those belief states have to be connected to the observations.</p>
+<p>The transition between belief states is usually qualified as a transition function and the</p>
+<p>association of belief states with observations as the emission function.</p>
+<p>And those two functions can be modeled as probability distributions.</p>
+<p>Here the probability of the next belief state given the current belief state and its action.</p>
+<p>the likelihood is the probability of an observation given the current belief state.</p>
+<p>Which means that then we obtain a world model that factorizes nicely into two functions.</p>
+<p>The likelihood on the one hand and the transition function on the other hand.</p>
+<p>Now we have said that the agent learns by performing Bayesian inference, which means that we need</p>
+<p>to bring another component to the table for the agent to update its model.</p>
+<p>And that is distinguishing between a prior and a posterior.</p>
+<p>The prior is the previous state of knowledge of the agent, but it believed was true for the transition function</p>
+<p>before updating its model.</p>
+<p>And the posterior is a distribution function that is part of a variational family.</p>
+<p>And that can be parameterized with here a parameter phi.</p>
+<p>And this phi will then be tuned such that we land on a distribution here that enables the agent to make better predictions in the future</p>
+<p>using its current observation.</p>
+<p>And the way this parameter is tuned is by minimizing a quantity called a variational free energy that then gives its name to the free energy principle.</p>
+<p>The free energy, or variational free energy to be precise, has the following form where I want to first look at the second term.</p>
+<p>This term here is called the surprise and that's the surprise of the agent getting observation, a C environment here, given it was currently in the belief state PT.</p>
+<p>And we are averaging this over the variational, over the posterior, such that this term becomes minimal when the current belief state is able to predict the current observation.</p>
+<p>This also means that the best way to minimize this term is to forget everything we knew in the past and to only update the variational distribution here, such that it ticks only at the belief state that is able to predict this observation.</p>
+<p>And to prevent that, we add an energy term to the variational free energy that is zero only when those two distributions remain the same.</p>
+<p>And that is that having a new observation does not do anything to the model.</p>
+<p>So this motivates the agent to remember his previous model and to make a compromise between updating its model and generalizing also to its past observations.</p>
+<p>Okay, so in this whole scheme, so far the actions were externally given.</p>
+<p>I didn't say anything about how the actions are actually chosen in this whole model and how they impact the ability of the agent to predict its observations.</p>
+<p>And to include actions in this framework, active inference gives us a recipe to plan for actions.</p>
+<p>And mainly the agent will try to choose actions that are expected to minimize the surprise about future observations in the long run.</p>
+<p>To do that, the agent is endowed with a form of intrinsic motivation that guides it towards states of the environment that are beneficial for it.</p>
+<p>For example, that are helpful in persisting in an environment or in doing homeostasis, for example.</p>
+<p>The way this is modeled in this whole framework is by giving another distribution to the agent that we call the preference distribution.</p>
+<p>That is a probability distribution over the future belief states and the future observations.</p>
+<p>And as for perceptual inference, now the optimal actions will be those that minimize a quantity derived from the free energy, which is the expected free energy.</p>
+<p>So a sort of estimation of the surprise about future observations in the future.</p>
+<p>The form that this takes is often qualified as a trade-off between an exploration and exploitation.</p>
+<p>Where this first term, we are, just let me remind you that we are trying to minimize this expected free energy.</p>
+<p>So here we are trying to make this term as negative as possible.</p>
+<p>And what this is, is the entropy of the belief states given the current world model.</p>
+<p>So the agent will select an action that leads to the most uncertain transition in the world model such that this uncertainty is resolved by taking the action.</p>
+<p>So this is an exploration term.</p>
+<p>It fosters discovery in the environment.</p>
+<p>It wants to resolve uncertainty.</p>
+<p>Whereas the second term is derived from the surprise calculated from the preference distribution that I introduced earlier.</p>
+<p>And it is a utility term because this term becomes minimal when the surprise over the preference distribution is minimal.</p>
+<p>That is when the chances that we do not fulfill our preferences are as low as possible.</p>
+<p>And now from this expected free energy, there are multiple ways that one can choose and plan for actions.</p>
+<p>A very popular one is to do tree search or using Monte Gallo methods.</p>
+<p>And the method we want to use here is to define a policy from this expected free energy by feeding it into a softmax function, for example.</p>
+<p>And having a scaling parameter in front of it that would be negative such that we ensure that actions with the lowest expected free energy are more probable.</p>
+<p>So this is the end for the little summary for active inference.</p>
+<p>And now I want to move on to the model we are proposing, the free energy projective simulation.</p>
+<p>Some key features of our model is that inheriting from active inference, the agent is endowed with internal motivations and also internal rewards in the form of prediction accuracy that we model using a concept we call confidence, which will become clear shortly.</p>
+<p>And it's also it counts among the implementations of model based reinforcement learning using projective simulation.</p>
+<p>And it becomes a hybrid model between a form of associative learning between different percepts conditioned on actions that will benefit from the reinforcements and the rewards the agent got from its predictions.</p>
+<p>And the behavior of the agent is completely independent of any reinforcement and is fully determined with active inference.</p>
+<p>And one of the main benefits also of using projective simulation here is that the model the agent learns and the updated rule it learns with are interpretable as a legacy from projective simulation here.</p>
+<p>So let's start with the architecture of the agent where we are trying to gather all the ingredients necessary for the agent to learn a world model and perform Bayesian inference.</p>
+<p>So what we propose here is for the belief states to be encoded in the memory of the agent because we want them to be decoupled from the environment just as those belief states in the free energy principle.</p>
+<p>And in order to avoid having to learn the likelihood at the same time as learning the transition function here, we give this memory specific graph structure inherited from the clone structured hidden Markov models that have been first proposed in this paper here and successfully implemented in this paper here to build cognitive maps.</p>
+<p>And in another following paper, I think in 2023 for navigation tests in this one.</p>
+<p>The way this works is that it postulates that an observation is actually only sort of the tip of the iceberg of the full random variable the agent would need to be able to understand completely and model completely its environment.</p>
+<p>And therefore, it gives each observation a clone that as we train we acquire more meaning and it gives a this likelihood deterministic form such that each clone is linked to a single observation at a time that is the probability is either one or zero in this case.</p>
+<p>To each observation we give a fixed number of clones and the edges that are required to deliberate in the memory will be split into two sets.</p>
+<p>One, I mean here two sets or n sets, one for each action that the agent can choose such that we can learn this prior and posterior.</p>
+<p>In particular here, the parameters that we can update of the weights associated to each edge in this ECM.</p>
+<p>Now we call clone clip any clip in the ECM and we are going to call the belief state an excited clone clip.</p>
+<p>That is where the agent is currently sitting in its deliberation.</p>
+<p>Once the agent has excited a clone clip in its ECM.</p>
+<p>This will define the belief state the agent has to deliberate over in order to sample its action.</p>
+<p>And what we do here is each belief state is connected to all the actions and each edge is weighted with the corresponding expected free energy.</p>
+<p>And then these expected free energies will define a probability distribution that the agent will sample from in order to determine which action to implement in the environment and to use to make predictions using its memory.</p>
+<p>And the prediction will be the observation that the current belief state the agent believes it is in.</p>
+<p>Now I want to introduce the concept of confidence in this model that is crucial in order to update the one model of the agent.</p>
+<p>We use confidence to track the number of correct predictions sampling an edge enabled in the future.</p>
+<p>That is, if I sample this edge to start with, at the end of a trajectory, it would count how many correct predictions it enabled.</p>
+<p>And what I call here a trajectory is a sequence of consecutive correct predictions for the observations.</p>
+<p>Now I want to move on in the next slide to show you how it works exactly going step by step in an interaction loop with the environment.</p>
+<p>So the environment starts in a certain hidden state and emits an observation that the agent is able to receive through its answers.</p>
+<p>Then following this, one of the clones corresponding to that observation will be excited in the ECM, here Bt-4.</p>
+<p>And the agent will sample an action from this state, here A2, and predict the next belief state it believes will be useful in order to make a prediction about its observation in the future.</p>
+<p>Its prediction is then S2 because that's the observation that is linked to it.</p>
+<p>Simultaneously, this action is implemented into the environment and a transition occurs in the environment that then emits a new observation that is again received from the environment.</p>
+<p>And in this case, it confirms the prediction made by the environment and therefore the confidence of the edge that was just traversed is set to 1.</p>
+<p>Because it enables a single prediction in the future for now.</p>
+<p>Now, every time the agent samples a new action and implements it into the environment, the observations are compared with the predictions.</p>
+<p>So, until the agent makes a false prediction.</p>
+<p>So, here the agent predicted S2 instead of S4.</p>
+<p>And that's where the trajectory ends.</p>
+<p>And the network, the weights in the ECM, will be updated following the PS update rule.</p>
+<p>So, here you will remember the standard update rule where we decrease what we believed before going back to the initial state of the distribution.</p>
+<p>And here the reinforcement happens proportionally to the confidence of an edge.</p>
+<p>That is, this edge will receive three times the reward scale because it enables three correct predictions in the future.</p>
+<p>Now, I want to explain how we define the policy and how we sample, how we define the preferences.</p>
+<p>We have two propositions.</p>
+<p>The first one is trying to understand what happens if we give the agent the objective of actually trying to minimize its prediction error directly embedded in its preference distribution.</p>
+<p>So, to do this, we model the preference distribution to be the marginal of the word model.</p>
+<p>So, we have two points here over its actions.</p>
+<p>And after a little bit of feeding this into the expected free energy and a little bit of reorganization of the terms.</p>
+<p>What one finds is that the expected free energy boils down to be the information gain about the next belief state from taking action A in the environment.</p>
+<p>Now, you will recognize very quickly that this is problematic because we are trying to minimize the information about the next belief state.</p>
+<p>And this is a well known problem, which is called the dark room problem where the agent posted in a dark room and without any incentive to go outside of it.</p>
+<p>That is a preference for a state that is not in the dark room would stay there because it's fully predictable.</p>
+<p>However, there is an easy way out using our model where instead of minimizing here the information gain, what we can do is maximizing it by simply making the scaling parameter here positive.</p>
+<p>And we will call an agent that uses this preference distribution a wandering agent.</p>
+<p>And then the magnitude of the zeta will tell how greedy an agent is for information gain.</p>
+<p>It will be like in epsilon greedy algorithms, it will define with which probability the action is actually targeting regions of information gain or of uncertainty to improve the world model.</p>
+<p>And now this, the second option is more directed towards encouraging the agent towards completing a task in that environment.</p>
+<p>And to do this, we first took a modeling assumption that if we are to give a task that is externally given to the agent, it can only be modeled at the interface between the agent and the environment that is on its observations or its actions.</p>
+<p>And here we decided to embed the target in the environment.</p>
+<p>And to call this part of the preference distribution, the absolute preferences.</p>
+<p>And the task of the agent then is to be able to use its world model to propagate these preferences onto the belief state such that any state that can be useful in reaching the target in the observations gets a higher preference overall.</p>
+<p>So, to do this, we define two quantities.</p>
+<p>First, we ask how useful is a belief state in order, how easy is it for from the current belief state to reach the next belief state.</p>
+<p>So, sort of cost of reaching an action from the current belief state.</p>
+<p>And the second quantity that is useful is how valuable is the current belief state to achieve the task in the environment.</p>
+<p>So, looking at the first quantity, we define the reachability as the transition function marginalized over action.</p>
+<p>So, for example, imagine you are in this state B2 here.</p>
+<p>Here you have two actions going to B2 for the darker observation, compared to one with the same probability for those two states.</p>
+<p>So, the reachability of state B2 dark orange will be higher than B3 dark orange, for example.</p>
+<p>A second quantity is the value of a belief state, which is connected to the value of the preference over the observation it is connected to.</p>
+<p>We initialize the value with this, exactly that, actually, the absolute preference of the state it is connected to because we are using this clone structure.</p>
+<p>So, this means that if S4 is our target, then the preference for those three states, the value for those three states will be the highest, and for all the other states it will be the lowest.</p>
+<p>And now what we want is to propagate this preference to the other states in the ECM by using an iterative algorithm over a number of steps that will define a prediction horizon for our agent.</p>
+<p>So, this is the value of our agent.</p>
+<p>And either the belief state stays, keeps the same value as before, so those states will never have their value decreasing as the algorithm progresses.</p>
+<p>Or, the belief states inherit from the value of the belief states they can transition to, as defined with this term here with the reachability and the value.</p>
+<p>So, for example, those two states here, being able to transition to these here, will inherit their value.</p>
+<p>And now to define the lookahead preference distribution, we combine those two quantities, define children of a belief state as the states that can be reached from the current belief states, and combine these two</p>
+<p>define this lookahead preferences.</p>
+<p>And from there, we are going to fit this into the expected free energy and define a new policy that hopefully guides the agent towards the target in the environment.</p>
+<p>So far, we have tackled only two problems that could get in the way of an agent performing a task optimally.</p>
+<p>So, for example, we have solved the first problem of trying to learn the best world model possible to make good predictions about observations.</p>
+<p>The second one is being able to plan actions efficiently for the future using the world model.</p>
+<p>And another problem that arises when we use FEPS is the estimation of belief states.</p>
+<p>And for this, we propose to estimate them in superposition.</p>
+<p>What this means is that every time at the beginning of an interaction with the environment, the agent will receive an observation but won't be able to distinguish between the clones to start with.</p>
+<p>So, it will build a hypothesis that contains all three clones here connected to that observation and each of those clones would be a candidate belief state.</p>
+<p>From there, the agent will use a rule to select its actions, stimulate its transition for each of the candidate belief state and propose a candidate future belief state.</p>
+<p>And while the action is implemented in the environment, the agent will receive an observation from the environment.</p>
+<p>And from there, the hypothesis will be reduced by eliminating any belief state that is not compatible with the observation the agent received from the environment.</p>
+<p>And continuing this cycle of hypothesis predictions and confirmation from the environment, the agent will slowly reduce the size of its hypothesis to a single belief state that the agent is not certain it is in.</p>
+<p>Okay.</p>
+<p>This then solves the three main obstacles we solve for an agent to perform optimally in an environment.</p>
+<p>And now I want to show you how this actually works in practice and in the code in some environment that we use for demonstration purposes.</p>
+<p>The environment of the task we try to simulate was a navigation task in a partially observable grid.</p>
+<p>So, for example, this grid, imagine, has food in its upper right corner that, let's say, has some smell that propagates through the grid.</p>
+<p>We use this to the agent to the agent to the agent.</p>
+<p>We use this to the agent to the food and the more intense the smell is on a scale from 0 to 3.</p>
+<p>The task of the agent would be to then reach the food in there.</p>
+<p>But compared to other applications, for example, grid world, the agent only has access to the smell intensity to orient itself in the grid and determine its behavior.</p>
+<p>And never has access to the coordinates in the grid, for example.</p>
+<p>And what I want to show you first is that even though the agent does not see the coordinates, it's able to learn only from its percepts.</p>
+<p>And it's what I call embodied experience that is receiving percepts from the environment and using its actions to predict.</p>
+<p>What I show here is a figure of merits for the status of learning for the agents.</p>
+<p>And I compare the two types of preference distribution that I introduced earlier.</p>
+<p>The task oriented agent first with the look ahead preferences and the wandering agent here in reddish colors.</p>
+<p>And we see that it seems that at the end of the training, given a fixed number of episodes, it seems that those two models converge to the same length for their trajectories.</p>
+<p>That is just to remind you the number of consecutive transitions that led to correct predictions in the environment.</p>
+<p>It seems that at the end of the training, the optimal agents with either preference distribution perform the same with a slight advantage seems for task oriented agents that seem to converge faster towards this optimal status.</p>
+<p>And here, there are two maybe interesting features too.</p>
+<p>If we set the scaling parameter to a value that is too positive, that is, we make the agent very greedy for information.</p>
+<p>The agent does not learn as optimally as the other agent.</p>
+<p>And in fact, it learns worse than an agent that would just be given a uniform policy.</p>
+<p>So it would be fully act completely at random.</p>
+<p>And this happens.</p>
+<p>And this happens.</p>
+<p>My explanation for it is that the agent then trying to seek transitions that are the most uncertain will never revisit the same.</p>
+<p>And therefore, this won't be enough in our scheme to reinforce the edges such that they are no longer uncertain and that they actually stick.</p>
+<p>So it would be a subtle balance between forgetting and reinforcing that is difficult to implement when the agent becomes too greedy.</p>
+<p>And the second scenario is here one that we already know when we set the scaling parameter to plus three for a task oriented agent.</p>
+<p>We are now maximizing the expected energy and as we would have expected, the agent stays does not learn well in these cases because it doesn't target uncertainty and it's not even trying to fulfill preferences in the environment.</p>
+<p>Now, a second point I want to make is insisting on this look as if in the claim we made for the free energy principle.</p>
+<p>I'm sorry.</p>
+<p>What we have trained the agent on was only using the confidence to reinforce edges and never did we do anything with the variation of free energy.</p>
+<p>However, it seems that if we track the variation of free energy, it is actually a good figure of merits to describe the agent and its learning.</p>
+<p>And as you see here, these are average agents and their variation of free energy.</p>
+<p>And you see that as before, wandering agent and task oriented agent converge to a very small value at the end of the training that the task oriented agent</p>
+<p>can go a bit faster.</p>
+<p>And here are an interesting features.</p>
+<p>If you look at the individual trajectories here of the agents, you will see little steps in the learning curves, which if you actually open the black box and look at what happens at these different stages of learning for the agents, it's actually corresponding to the agent adopting conventions in its clones to properly contextualize its clone clips in</p>
+<p>the grid here to describe its observations and its geographical location in the grid.</p>
+<p>The third claim I want to make is trying to understand this difference between the task oriented agents and the wandering agents.</p>
+<p>Even though it seems that when the agent is able to choose its actions by minimizing the expected free energy, that the task oriented agents learned better than the wandering agents.</p>
+<p>It seems that when we compare their performance by and set their policy to a uniform one, that is the agent no longer are able to seek transitions of maximum certainty.</p>
+<p>It seems that wandering agents equipped with the bare belief state estimation mechanism are able to perform in general a bit better or more uniformly better than the task oriented agents.</p>
+<p>And that if we use this belief state estimation in superposition with the candidate belief states in a hypothesis that we are progressively eliminating that for both types of training, this will double the length of the trajectories for the agent.</p>
+<p>So it seems to be rather efficient, at least in this environment.</p>
+<p>Now, I want to emphasize this slide here, which relates to the interpretability of the model the agent is learning.</p>
+<p>And what you see here is a trained model for an agent that we train in the grid here and the transition functions for all the actions the agent can perform in the grid.</p>
+<p>And if you look closely and try to understand how those transitions happen, you realize that actually each of the clones in the one model that was initially only associated, the only information they had initially was</p>
+<p>the smell intensity that the agent could perceive in the grid.</p>
+<p>You find that those took on some contextual meaning on top of it that differentiates them and that maps them to a unique location on the grid.</p>
+<p>That is, in the end, they are able to represent a geographical location.</p>
+<p>And yeah.</p>
+<p>So in this sense, it's fully interpretable.</p>
+<p>The final model is fully interpretable.</p>
+<p>And one final claim here is that the policy that the agent learns as a result of this look ahead preferences that I described earlier is optimal.</p>
+<p>And what you can see here is we've trained the agent to either reach the target here, that is reach the food or escape the food here by reaching the lower left corner instead.</p>
+<p>And so this has happened without intermediate training.</p>
+<p>We just changed the absolute preferences.</p>
+<p>So this is a very flexible behavior.</p>
+<p>And we've compared the trained agent to a random agent.</p>
+<p>And we see that it's a very clear, nearly optimal behavior.</p>
+<p>And the restrictions on this optimality is not due to the policy itself that is optimal, but rather to the belief state estimation mechanism that we are using.</p>
+<p>And that would require one additional step to be able to fully identify the single belief state the agent is.</p>
+<p>And therefore the agent takes this additional action to understand where it is in the grid exactly.</p>
+<p>So that's the slight overhead you might find in these plots.</p>
+<p>But otherwise fully flexible and optimal.</p>
+<p>And we expect that in a larger environment with a similar structure, we would become optimal.</p>
+<p>Okay, and this brings me to the conclusion for this presentation, where we have presented a model for agency that combines projective simulation together with a free energy principle framework,</p>
+<p>where we have introduced the concept of confidence in order to reinforce edges on the memory that corresponds to associative learning between percepts using this reinforcements.</p>
+<p>And that allows the agent to plan for its actions flexibly and to discover optimal policies using this look ahead preferences.</p>
+<p>And I want to emphasize again, the agent and its model are interpretable both because we can trace back the deliberation path of the agent on its memory.</p>
+<p>And also because at the end product, the world model at the end of the training is interpretable.</p>
+<p>We can map it onto hidden states of the environment so far, the way we would understand the grid.</p>
+<p>And I think a nice follow-up work or a nice connection we see with other fields is that this model comes with aspects that are plausible from a cognitive science perspective.</p>
+<p>Namely, well, active inference has been already connected to, in order to endorse predictive coding and the Bayesian brain hypothesis.</p>
+<p>Namely, well, active inference, the clone structure, hidden Markov models have been proposed as a way to model cognitive maps for to determine behaviors and in memory.</p>
+<p>And in particular here, especially for navigation tasks.</p>
+<p>Namely, it has been proposed that the clone clips can play this similar role as the play cells in the hippocampus.</p>
+<p>Namely, the look ahead preference scheme that we propose here is reminiscent of successor representation that a few years ago was also associated with the role of dopamine in kind of.</p>
+<p>Namely, the role of Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como Como</p>
+<p>Thank you. Would any of the authors like to just give any reflection or share a</p>
+<p>little bit about the paper while people in the chat are writing questions?</p>
+<p>Or I can read some questions from the live chat. Okay. First, is the code available?</p>
+<p>Not yet, but it will be available soon. Yes, I'm working on it.</p>
+<p>Okay. From Leo DeLyon wrote, great work. Would it be possible to make this using continuous</p>
+<p>inputs and outputs? We are also working on it actually. So hopefully, yes, it might be</p>
+<p>a bit harder. But hopefully, yes, in the future. Which would be harder? It takes a little change</p>
+<p>of perspective on how we train the weights. And we're currently trained to model exactly</p>
+<p>that actually. So yes. Cool. Okay. Reconfigurability Trainer wrote, how would task orientation limit</p>
+<p>outcome expectations? Or maybe a little bit more generally there. How do you configure task?</p>
+<p>This is a navigation task. But how would for other kinds of task, cognitive task performance,</p>
+<p>how would you bring that into the structure of the model?</p>
+<p>Okay. So at the moment, one of the limitations that we have with the way we modeled everything</p>
+<p>is that we can only encode the task as an observation, a target observation in an environment. So it doesn't</p>
+<p>have to be imagine the agent is able to perceive I am hungry, I am full. It could also be observation,</p>
+<p>I am full. So it's not necessarily bound to a navigation task. It can go to any, it can transfer</p>
+<p>to many other types of tasks. Now, for sure, there is a limitation. And it was already visible in the grid</p>
+<p>world that I couldn't tell the agent go to the lower left corner directly, I could only reach one of the</p>
+<p>three cells that had observation zero. And what I have in mind or what could be possible is to</p>
+<p>give the agent a few rounds of interaction with the environment and combine this look ahead reference</p>
+<p>scheme with some reinforcement or some rewards that the agent would get from the environment.</p>
+<p>And then this way, the agent could be able to identify which belief state is actually corresponding,</p>
+<p>which unique belief state is corresponding to the successful state in the environment on top of the</p>
+<p>observation that corresponds to it.</p>
+<p>ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>Yes, so what I'm doing at the moment is helping the model. I'm giving as many clones as necessary</p>
+<p>to model the hidden states in the environment. That is, if I have, for example,</p>
+<p>here you see that the maximum number of hidden states that would send the same observation is</p>
+<p>three, so I give three clones to the model for each observation. The way I initialize the ECM</p>
+<p>is at the beginning of the training, the ECM is fully connected, so I'm not saying anything about</p>
+<p>the structure of the environment in the ECM to start with except in the number of clones that I'm</p>
+<p>giving. And then we have been discussing also techniques that could have the agent have an</p>
+<p>adaptive way of defining the number of clones for each observation where, for example, if the agent</p>
+<p>realizes it needs more clones, we could add some and then add a specific rule to connect them to</p>
+<p>the following month. And also what is also very nice is if we give too many to start with,</p>
+<p>and then we are able to reduce to the minimal amount of clones that would be required to represent each</p>
+<p>observation, we could actually learn something called a minimal representation of the environment,</p>
+<p>and that is something that is very valuable from a theoretical perspective as well.</p>
+<p>Yeah, do those clips directly provide the interpretability or what kinds of statements in a grid world or just more generically,</p>
+<p>what kinds of interpretability expressions can you derive here that using some other kind of knowledge graph or graphical</p>
+<p>cognitive model couldn't yield?</p>
+<p>Okay, so I can only talk about the things that I know. So here, what I want to say is that</p>
+<p>in general, clips in projective simulation are understood as a part of the experience of the agent. So by</p>
+<p>construction at the beginning, they have a semantics associated to them. And here, the way we follow this is by saying at the beginning, any clip is something in the environment that emits the same observation. And in that sense, it is it has some interpretability, then this mapping that we can do at the end of the training,</p>
+<p>allows us to map the clones, and the clones onto actual hidden states in the environment.</p>
+<p>And in that sense, because we can kind of open the world model and take it apart, and still understand what's happening in that sense, it's interpretable. And also one way that this model is interpretable and compared to others is that,</p>
+<p>at any time the agent is able to deliberate, we can trace the deliberation path that the agent is taking in its memory. So we know exactly</p>
+<p>why an agent is taking that decision and not another one. And that's also how we reinforce the model. So we understand how it went there, how it came to learn this model in the first place.</p>
+<p>Do any other authors want to add any comments or ideas?</p>
+<p>ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>The semantics derives from the description of its environment,</p>
+<p>how it can act on an environment, what it can perceive from the environment.</p>
+<p>This is the basic semantics there is, and it inherits the semantics onto this clip network in its ECM.</p>
+<p>And so, what Josephine said, if you want to understand why did you do this actually giving this percept,</p>
+<p>you can trace the sequence of hoppings in these elementary clips which are stored,</p>
+<p>percepts and actions it has done in the past.</p>
+<p>So there is a basic interpretability there, how it came about to take a certain action,</p>
+<p>what considerations it went through as it were.</p>
+<p>Now, the clip network can grow and change over time dynamically, then it gets more complicated.</p>
+<p>When there are new clips are created, how do you transfer the semantics to them?</p>
+<p>As long as you can trace how the clip creation processes took place,</p>
+<p>you can connect the semantics of the new clips to the previous clips where it was made from,</p>
+<p>but then it gets more complicated.</p>
+<p>But the statement is that the basic PS comes with a basic structure of interpretability</p>
+<p>that is inherited from the task environment, which is often an MD, Markov decision process.</p>
+<p>Thank you.</p>
+<p>Marius?</p>
+<p>Marius?</p>
+<p>Perhaps to that I might add a few things.</p>
+<p>So first of all, I think there's some additional interpretability in the way the updates are actually done.</p>
+<p>For example, this confidence mechanism and the update rule.</p>
+<p>So perhaps the more obvious machine learning approach to take here would be to use the variation free energy</p>
+<p>as a loss to do a gradient descent on.</p>
+<p>But this can become quite messy because there are all these different terms competing with each other</p>
+<p>and it's not really so clear what one actually gets from that.</p>
+<p>And we now on the other hand have this update rule that very specifically says</p>
+<p>that the probabilities are reinforced exactly dependent on the number of right predictions that they enabled during the training.</p>
+<p>And right now we are taking here and</p>
+<p>like in parts of the tabular approach one could say,</p>
+<p>and there is some strength on it because in principle one can write down everything as a matrix and really inspect it.</p>
+<p>What's the best transition to take?</p>
+<p>What is the best action to take?</p>
+<p>And what is the best state to predict?</p>
+<p>And, you know,</p>
+<p>there are some papers in the variation of free energy literature and active influence literature</p>
+<p>that directly for artificial neural networks at everything.</p>
+<p>And as long as one wants performance,</p>
+<p>it's probably the most the best thing to do.</p>
+<p>But of course they come with all the interpretability disadvantages.</p>
+<p>So currently we are looking on purpose on environments and agents</p>
+<p>that are complex enough to be interesting and difficult,</p>
+<p>but small enough to enable a manual inspection.</p>
+<p>And in the context of this project,</p>
+<p>the idea is really to see how does the agent evolve?</p>
+<p>How does it learn?</p>
+<p>How do all our principles that we have,</p>
+<p>variation of free energy and PS,</p>
+<p>actually manifest itself?</p>
+<p>What do they do in the agent?</p>
+<p>How is the known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known known</p>
+<p>go into the clone index.</p>
+<p>Yes, like here we actually see in this figure here how the clone indices of the agent</p>
+<p>directly relate to the actual true world model or the true states of the environment.</p>
+<p>So we can literally say, okay, like this clone state is this environment state,</p>
+<p>and so on. And we can directly investigate how the world model of the agent actually relates to the</p>
+<p>true environment model. And if you just used like some artificial neural network,</p>
+<p>you could not really draw a map like this or a graph like this.</p>
+<p>If you don't mind, I would also have some additional comments on questions that</p>
+<p>were raised earlier.</p>
+<p>Yeah, go for it.</p>
+<p>Um, so there was the question about the applicability to, um, the con to continuous domains.</p>
+<p>And one thing that's typically done in newer symbolic AI approaches, for example,</p>
+<p>is to only use the tabular methods, um, essentially as one, uh, part of the workflow.</p>
+<p>So, um, for example, something that one sees quite commonly in the newer symbolic AI literature is</p>
+<p>that one has artificial neural networks that act as feature extractors.</p>
+<p>And then the most symbolic methods get applied to the outputs of those feature extractors,</p>
+<p>which is something that could be also applied here.</p>
+<p>Yeah, but as Josephine already mentioned, we are, um, um, um, um, um, um, um, um, um,</p>
+
+<p>that's much more faithful to the methods that were presented here.</p>
+<p>so yeah so i just want to emphasize that it is possible to generalize this to the continuous</p>
+<p>domain and we are actively working on it and we have very a very specific vision in how we want</p>
+<p>to make it happen so just to clarify this image here the location of the grid like the number of</p>
+<p>each cell or the x or y location is not being revealed to the agent but they are being able to</p>
+<p>perceive this ranked score like pheromone intensity or like temperature or something like that and</p>
+<p>they're learning through their embodied activity the transitions amongst that categorical variable</p>
+<p>and it's sort of recapitulating the actual spatial distribution even though they aren't coming to an</p>
+<p>explicit spatial reconstruction exactly yes yes that's a good summary of it</p>
+<p>okay and so then that in the fullest case there could be a clip memorizing</p>
+<p>every single location and then in the in um in then a minimal representation would start to cluster</p>
+<p>coarse grain repetitive transitions between like maybe if there was a vertical border some of those</p>
+<p>could be coarse grains or just sort of simplified because the same action would result in the same</p>
+<p>change yes that's that's quite correct actually if you look at some um some observations actually only</p>
+<p>have two hidden states so we would only need two clones to represent those and what happens is that</p>
+<p>since each clone is relating exactly to a single location in the grid um the two clones are representing</p>
+<p>exactly exactly the same location and we could design a rule such that those two clones collapse and here</p>
+<p>those three clones collapse and then we would have exactly uh the minimum number of clones we would have</p>
+<p>in the in the ecm would correspond exactly to the number of hidden states we need to model in the</p>
+<p>environment to be able to predict observations</p>
+<p>um okay i'll read another question from the live chat and then if any other authors have thoughts or</p>
+<p>anything okay leo wrote how long did it take for it to train to solve the grid task and how scalable</p>
+<p>is this network with the amount of beliefs and actions</p>
+<p>is this network with the elements um i think uh it took a few hours for um the navigation tasks um maybe</p>
+<p>of the order of four hours i think um so it's a trade-off at the moment between typically interpretability</p>
+<p>being able to understand um everything that's happening in the model and the kind of the scale of</p>
+<p>the models we are tackling um so this is work in progress at the moment being able to scale up this</p>
+<p>approach maybe we can um consider that um as um marius was saying this feature instructor could be helpful</p>
+<p>in um scaling up to larger environments this idea of um adaptive number of clones is also interesting for</p>
+<p>this um and yes maybe using a hierarchical scheme could also be useful we don't know yet but this is</p>
+<p>something that we are actually thinking about and um that we would like to try to handle but we don't</p>
+<p>have a solution for it yet what what kinds of settings have these graphs absent the free energy principle</p>
+<p>angle been applied towards and would those be the kinds of settings that then you'd adapt this method</p>
+<p>towards or do you see this as tackling a different set of functions um when you say this kind of graphs do</p>
+<p>you mean the clone structured graphs yeah all right okay so to my knowledge this has been applied to</p>
+<p>navigation tasks um there was another paper i don't remember exactly what kind of tasks that was the</p>
+<p>the more recent paper where they learned schemes um using this loan structured graph</p>
+<p>um i don't remember which kind of tasks they used it on um but i i do expect that they transfer to most of the tasks</p>
+<p>uh what is interesting is to have some some ambiguity in the environment some partially observable</p>
+<p>environment um i think that's where they're interesting um yeah i am not fully certain about the answer</p>
+<p>probably to this maybe a degree of macrobianity also might be necessary since we are only modeling</p>
+<p>hoping from one step to the next at the moment um yeah this is something to look into</p>
+<p>yeah it's it's an interesting challenge with wanting a situation that's simple enough to understand</p>
+<p>but not totally baked in so that it's obvious and these kinds of almost meta modeling considerations come up</p>
+<p>all the time like if the agent doesn't understand the efficacy of their actions</p>
+<p>what are they even doing inference on but if they entirely know the efficacy of actions</p>
+<p>then it's solve it then it's kind of like all loaded up for them to know what to do</p>
+<p>and then how many layers or what ways do you pull back oh well it will learn the efficacy of the action</p>
+<p>but that might also not be realistic and so just figuring out what expressivity of the modeling</p>
+<p>situation do we even want to set up because setting up what cognitive functions for the agent to perform</p>
+<p>is kind of like just the complement of the tasks that it was not set up to perform and sometimes that can be</p>
+<p>a bigger components so i'm just curious i guess as we sort of come to the end like your broader lab and group</p>
+<p>what kinds of questions and applications are you seeking to bring these methods towards</p>
+<p>and how do you see this work on the path of of your broader directions</p>
+<p>um okay so for myself there are two directions that i'm currently interested in and i'm still at the</p>
+<p>beginning of my career i would say so it's up to evolutions um i am interested in the um</p>
+<p>ability of those models to um coincide with actual cognitive processes that happen</p>
+<p>in biological agents to be able to model that to maybe provide a tool that can help us understand</p>
+<p>this kind of deliberation and then to see how we can um um bring this understanding onto artificial</p>
+<p>intelligence models and machine learning models in general this is the first aspect i'm interested in</p>
+<p>the second one would be um how do we discover or from these very basic experience the agent has with the</p>
+<p>world how do we discover how does such a an agent build abstractions um and use them in ways that are</p>
+<p>more efficient in coping with the environment and performing um yeah um fulfilling some preferences</p>
+<p>in the environment i think that's so far the two things i am thinking about i think that projective</p>
+<p>simulation has been used in uh on many problems um as a reinforcement learning methods on you know it has</p>
+<p>been benchmarked on those um traditional problems for um reinforcement learning the mountain car problem</p>
+<p>grid world also it works very well um also on some um yes i guess modeling um is usually the the main</p>
+<p>application does anybody have other application in mind uh be you know better yeah i can i can</p>
+<p>jump in oh hans do you want to go ahead yeah i can jump in a little bit um because i think one of</p>
+<p>the things that really interests me and and i know some of the other folks in this group is um modeling</p>
+<p>in particular animal behavior um and and foraging um and so one of one of the big questions that i think</p>
+<p>of driving some of this work is uh how animals forage for resources that are sparsely but predictably</p>
+<p>concentrated in space and time and in particular when those when those resources are depletable and dynamic</p>
+<p>and so this this poses a problem where um one scheme is not sufficient for the animal to come up with</p>
+<p>forging decisions so in this framework we might see this graph that we have up on the screen on the</p>
+<p>screen as as one scheme that allows an agent to solve a task and so this this work has helped us think about</p>
+<p>how the free energy principle can be used to help learn this scheme in a reinforcement learning paradigm</p>
+<p>through this process of reinforcing deliberative pathways but then what the projective simulation</p>
+<p>model can do for us is start to help us think about how an agent can build up different schemes from</p>
+<p>a set of episodic memories and so i think that this this work is kind of serving as a foundation to help us</p>
+<p>move in that direction of of how we can get use projective simulation to get to a set of schemes</p>
+<p>and think about a deliberative pathway that's helping agents build simple schemes of their current world</p>
+<p>from a more complex and rich set of memories that give them a full scheme of the world and and hopefully</p>
+<p>this can help us to start modeling some of the complex foraging tasks that animals face um that may be</p>
+<p>um kind of the the the filter system for natural selection that has acted on the evolution of</p>
+<p>intelligence and in humans and in other animals cool thank you to bring that back to like what is the</p>
+<p>task that the agent is set up to solve or not like in grid world foraging examples often the location is</p>
+<p>given to the agent and then the agent is doing like this navigation as if it was doing gps</p>
+<p>and that is set up as the challenges and trade-offs are derived from that setup whereas using this</p>
+<p>projective interpretability heuristic scheme</p>
+<p>configuration it could just be the learnt relationships between like shadow and light or</p>
+<p>other kinds of sensory cues that might be pretty coarse grains and so it's not to say that there isn't an</p>
+<p>x and a y location it's just that when that's what's given to the agent or the the id of each cell</p>
+<p>number is given to the agent then it's kind of like way going down this road that animal foraging may not</p>
+<p>even resemble and so this can i think helpfully bring it to a space of having the different experiences or</p>
+<p>clips like the honeybees going on these orienting flights and they go out and they come back before</p>
+<p>they start to go for foraging trips and bring back food and so those kinds of heuristics and and then what</p>
+<p>curriculum would support those transitions and then each edge can also be seen as a node connecting</p>
+<p>to other nodes so what should the structure of that graph be and those are some very flexible ways</p>
+<p>to talk about context switching and all of it yeah i think you're on the nose there</p>
+<p>do any other authors want to add any thoughts or what will they work on next year</p>
+<p>um i mean hans wanted to say something um because um like of course uh so maybe um like the answers</p>
+<p>given so far don't really cover everything that we are doing in the group yet um because most of us</p>
+<p>actually have um have a background in quantum computation so we are physicists um who have mostly</p>
+<p>worked on quantum computation at some of the points of our careers and um i don't know uh hans do you</p>
+<p>want to give like a comprehensive summary of why we care about explainable ai and um</p>
+<p>uh world model building or should i no maybe i can just uh you know say something i i think</p>
+<p>alexander gave a very nice outlook and also embedding of all this uh paper and this research into the</p>
+<p>into the foraging and and behavioral biology projects that we are following and i don't want to add</p>
+<p>much more to it i see the still larger scope of this is that for several years we have now been really</p>
+<p>trying to understand agency and how to to model agency um it really in in a in a physical in a physical</p>
+<p>model so a notion of agency that is you know uh accounts for certain uh philosophical aspects as</p>
+<p>you know planning having an intention and and uh being situated in environment trying to get around</p>
+<p>being adaptive flexible things like there's a non-computational understanding of agency this is what</p>
+<p>we want to model and this is another step forward it connects to some branch that we are also following in the group</p>
+<p>and this is what what marius hinted at and that has to do with the modeling of artificial agency</p>
+<p>yeah easier to what extent can one uh understand or even build artifacts that can also learn but act</p>
+<p>in a meaningful way uh on an environment have a a certain notion of memory that helps them to build model</p>
+<p>and understand their environment yeah and that's of course something in physics and in the in the ongoing</p>
+<p>development of ai and its use in science is uh that is quite relevant so what we want to understand is</p>
+<p>or to develop a perspective on ai that one could call artificial agency you know in the future we envision</p>
+<p>there will be devices that can themselves learn and interact with an environment that do</p>
+<p>you know that perform experiments people are now speaking of self-driving laboratories and stuff like</p>
+<p>that and that is all within a certain paradigm and framework that's being developed at the moment but</p>
+<p>i think what we need to understand is really to to which extent can one call these or future artifacts</p>
+<p>agents to get really a relation to what they do and compared to what we do and how we are and and that's</p>
+<p>the broader scope and of course to understand agency we should also be able to model biological agency</p>
+<p>yeah to have a clear to put what we would call artificial agency into context to what exists already</p>
+<p>that is biological agency these are different directions and dimensions of the of the of the</p>
+<p>research we are following but that's i would say the bigger picture</p>
+<p>the bigger picture thank you for adding that anyone else want to have any comments</p>
+<p>the last piece just makes me think about observing the animal in the grid worlds and that's but you don't see</p>
+<p>the inside with the construction of artificial or synthetic agencies then it opens up</p>
+<p>kinds of interpretability that aren't available like to the bird watcher and so there's some systems</p>
+<p>that we're just watching the bird and then there's other systems where people are talking about designing it</p>
+<p>and so being able to have a shared understanding and formalisms that that connect between those</p>
+<p>interpretability settings and and even know there might be things that are um interpretable from the</p>
+<p>outside but not from the inside or or at least even just the possibility of those kinds of questions</p>
+<p>and understanding where they always sometimes never happen is</p>
+<p>important research on the path towards this sort of more agentic niche that you're pointing towards</p>
+<p>Hans</p>
+<p>awesome well thank you again for the presentation and keep us posted on the work and good luck</p>
+<p>thank you for having us thank you</p>
+<p>thank you</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

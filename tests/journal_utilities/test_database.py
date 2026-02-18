@@ -8,7 +8,7 @@ import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 from datetime import datetime
 
-from journal_utilities.database import (
+from journal_utilities.data.database import (
     DatabaseClient,
     DatabaseConfig,
 )
@@ -78,7 +78,7 @@ class TestDatabaseClient:
     @pytest.mark.asyncio
     async def test_connect(self, mock_surreal, config):
         """Test database connection."""
-        with patch("journal_utilities.database.AsyncSurreal", return_value=mock_surreal):
+        with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             client = DatabaseClient(config)
             await client.connect()
             
@@ -93,7 +93,7 @@ class TestDatabaseClient:
     @pytest.mark.asyncio
     async def test_disconnect(self, mock_surreal, config):
         """Test database disconnection."""
-        with patch("journal_utilities.database.AsyncSurreal", return_value=mock_surreal):
+        with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             client = DatabaseClient(config)
             await client.connect()
             await client.disconnect()
@@ -106,7 +106,7 @@ class TestDatabaseClient:
         """Test query execution."""
         mock_surreal.query.return_value = [{"id": "test:1", "name": "test"}]
         
-        with patch("journal_utilities.database.AsyncSurreal", return_value=mock_surreal):
+        with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             client = DatabaseClient(config)
             result = await client.query("SELECT * FROM test")
             
@@ -118,7 +118,7 @@ class TestDatabaseClient:
         """Test record creation."""
         mock_surreal.create.return_value = {"id": "test:new", "data": "value"}
         
-        with patch("journal_utilities.database.AsyncSurreal", return_value=mock_surreal):
+        with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             client = DatabaseClient(config)
             result = await client.create("test", {"data": "value"})
             
@@ -128,7 +128,7 @@ class TestDatabaseClient:
     @pytest.mark.asyncio
     async def test_context_manager(self, mock_surreal, config):
         """Test async context manager."""
-        with patch("journal_utilities.database.AsyncSurreal", return_value=mock_surreal):
+        with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             async with DatabaseClient(config) as client:
                 assert client._connected is True
             
@@ -137,7 +137,7 @@ class TestDatabaseClient:
     @pytest.mark.asyncio
     async def test_auto_connect_on_query(self, mock_surreal, config):
         """Test auto-connection when querying."""
-        with patch("journal_utilities.database.AsyncSurreal", return_value=mock_surreal):
+        with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             client = DatabaseClient(config)
             assert client._connected is False
             
@@ -148,65 +148,104 @@ class TestDatabaseClient:
 
 
 class TestAuditFunctions:
-    """Tests for audit trail functions with mocks."""
+    """Tests for audit trail functions using correct module patching."""
+
+    DB_PATCH = "journal_utilities.data.database.AsyncSurreal"
+
+    @pytest.fixture
+    def db_params(self) -> dict:
+        return {
+            "db_url": "ws://test:8080/rpc",
+            "db_user": "testuser",
+            "db_password": "testpass",
+            "db_name": "testdb",
+            "db_namespace": "testns",
+        }
+
+    @pytest.fixture
+    def mock_surreal(self):
+        mock = AsyncMock()
+        mock.connect = AsyncMock()
+        mock.signin = AsyncMock()
+        mock.use = AsyncMock()
+        mock.close = AsyncMock()
+        mock.query = AsyncMock(return_value=[])
+        mock.create = AsyncMock(return_value={"id": "audit:1"})
+        return mock
 
     @pytest.mark.asyncio
-    async def test_get_recent_import_runs_structure(self):
-        """Test get_recent_import_runs returns correct structure."""
-        mock_result = [
+    async def test_get_recent_runs(self, mock_surreal, db_params):
+        """get_recent_import_runs returns formatted list."""
+        mock_surreal.query.return_value = [
             {
-                'import_run_id': 'import_2025-01-01',
-                'timestamp': '2025-01-01T00:00:00',
-                'source_file': '/path/to/file.json',
-                'result_data': {'total': 10, 'inserted': 5, 'skipped': 3, 'failed': 2}
+                "import_run_id": "run_1",
+                "timestamp": "2025-01-01T00:00:00",
+                "source_file": "/data/coda.json",
+                "result_data": {"total": 10},
             }
         ]
-        
-        with patch("journal_utilities.database.DatabaseClient") as MockClient:
-            mock_instance = AsyncMock()
-            mock_instance.query = AsyncMock(return_value=mock_result)
-            mock_instance.__aenter__ = AsyncMock(return_value=mock_instance)
-            mock_instance.__aexit__ = AsyncMock(return_value=None)
-            MockClient.return_value = mock_instance
-            
-            from journal_utilities.database import get_recent_import_runs
-            
-            # The function creates its own client, so we need to patch differently
-            with patch("journal_utilities.database.AsyncSurreal") as MockSurreal:
-                mock_db = AsyncMock()
-                mock_db.query = AsyncMock(return_value=mock_result)
-                MockSurreal.return_value = mock_db
-                
-                # This test validates the expected structure
-                # Actual execution would require the real function
+        with patch(self.DB_PATCH, return_value=mock_surreal):
+            from journal_utilities.data.database import get_recent_import_runs
+            runs = await get_recent_import_runs(**db_params)
+        assert len(runs) == 1
+        assert runs[0]["import_run_id"] == "run_1"
+
+    @pytest.mark.asyncio
+    async def test_get_import_summary(self, mock_surreal, db_params):
+        """get_import_summary returns stats from summary record."""
+        mock_surreal.query.return_value = [
+            {"result_data": {"total": 20, "inserted": 15, "skipped": 3, "failed": 2}}
+        ]
+        with patch(self.DB_PATCH, return_value=mock_surreal):
+            from journal_utilities.data.database import get_import_summary
+            summary = await get_import_summary("run_1", **db_params)
+        assert summary["total"] == 20
+
+    @pytest.mark.asyncio
+    async def test_get_failed_imports(self, mock_surreal, db_params):
+        """get_failed_imports returns failure details."""
+        mock_surreal.query.return_value = [
+            {
+                "session_name": "Fail Session",
+                "operation": "insert",
+                "error_message": "Duplicate",
+                "timestamp": "2025-01-01T01:00:00",
+                "data_attempted": {},
+            }
+        ]
+        with patch(self.DB_PATCH, return_value=mock_surreal):
+            from journal_utilities.data.database import get_failed_imports
+            failures = await get_failed_imports("run_1", **db_params)
+        assert len(failures) == 1
+        assert failures[0]["session_name"] == "Fail Session"
 
 
 class TestImportSummary:
-    """Tests for import summary calculation."""
+    """Tests for import summary stats calculation logic."""
 
     def test_stats_calculation(self):
-        """Test that stats are calculated correctly."""
-        # Mock result from database
+        """Stats are calculated correctly from individual records."""
         records = [
-            {'operation': 'insert', 'status': 'success'},
-            {'operation': 'insert', 'status': 'success'},
-            {'operation': 'skip', 'status': 'skipped'},
-            {'operation': 'insert', 'status': 'failed'},
-            {'operation': 'parse_youtube_id', 'status': 'failed'},
+            {"operation": "insert", "status": "success"},
+            {"operation": "insert", "status": "success"},
+            {"operation": "skip", "status": "skipped"},
+            {"operation": "insert", "status": "failed"},
+            {"operation": "parse_youtube_id", "status": "failed"},
         ]
-        
+
         stats = {"total": 0, "inserted": 0, "skipped": 0, "failed": 0}
         for record in records:
-            if record['operation'] in ['insert', 'skip', 'parse_youtube_id']:
+            if record["operation"] in ["insert", "skip", "parse_youtube_id"]:
                 stats["total"] += 1
-                if record['status'] == 'success':
+                if record["status"] == "success":
                     stats["inserted"] += 1
-                elif record['status'] == 'skipped':
+                elif record["status"] == "skipped":
                     stats["skipped"] += 1
-                elif record['status'] == 'failed':
+                elif record["status"] == "failed":
                     stats["failed"] += 1
-        
+
         assert stats["total"] == 5
         assert stats["inserted"] == 2
         assert stats["skipped"] == 1
         assert stats["failed"] == 2
+

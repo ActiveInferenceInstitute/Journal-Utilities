@@ -1,0 +1,3698 @@
+---
+title: "ActInf Livestream #011.2 "Sophisticated Affective Inference Simulating Anticipatory" (2020)"
+category: "Livestream"
+series: "Livestream_011"
+episode: "2"
+duration: "2:25:56"
+url: "https://www.youtube.com/watch?v=gx9yAF607ko"
+views: 122
+exported_at: "2026-02-18T22:37:37.885714+00:00"
+format: markdown
+---
+
+# ActInf Livestream #011.2 "Sophisticated Affective Inference Simulating Anticipatory" (2020)
+
+hello everyone welcome to the active
+inference live stream it is active
+inference Liv stream 11.2 on December
+29th 2020 this is our last group active
+inference live stream of the year so
+thanks so much everyone who is out here
+today and also um watching live for
+those who are and I will share my screen
+for the participants and here we
+go Welcome to the active inference lab
+everyone we are an experiment in online
+team communication learning and practice
+related to active inference you can find
+us at our website on Twitter email
+YouTube or our public keybase team and
+username this is a recorded and an
+archived live stream so please provide
+us with feedback so that we can improve
+on our work all backgrounds and
+perspectives are welcome here and as far
+as video etiquette for live streams mute
+if there's noise in your background
+raise your hands so that we can hear
+from everybody on the Queue and we'll
+use respectful speech Behavior as I
+stated this is the last active inference
+live stream for 2020 but in 2021 it's
+already shaping up to be a great year
+we're going to be meeting Tuesdays from
+7: to 9:00 a.m. Pacific Time PST um or
+Pacific time when the time changes and
+you can go to this link to learn more
+when you go to that link you'll see this
+spreadsheet and it has instructions on
+how you can participate as well as which
+papers we'll be reading in which weeks
+so uh you can see that many authors will
+be joining us and hopefully everybody
+will have the time to read and digest
+these
+papers today in active inference stream
+11.2 we are going to have introductions
+and warm-ups and then we'll go into the
+112 itself we're going to be continuing
+the discussion of sophisticated
+affective inference the paper of hesp at
+all 20120 welcome Sasha we'll run
+through again the aims claims abstract
+and road map and the figures
+and Happy New Year's everyone thanks a
+lot we'll do new stuff in 2021 and so
+stick along let's get to the intros and
+warm-ups we will introduce ourself just
+by giving a short introduction or
+check-in and then passing to somebody
+who hasn't spoken yet so I'll start I'm
+Daniel and I will pass it first to a
+firsttime visitor
+Scott hi I'm Scott David I'm at the
+University of Washington Applied Physics
+lab and I've been a lawyer for 27 years
+I'm trying to use physics principles to
+help structure social relationships and
+I will pass it to
+Stephen hello I'm Stephen I'm based in
+Toronto I'm currently doing a
+practice-based PhD with Canter Christ
+Church University and I'm looking at
+applying the dynamic processes of active
+inference into my work with
+participatory theater and Community
+Development and helping to understand
+the Dynamics of all of that and I will
+pass it to
+Ivan hello my name isan I in Moscow and
+I'm a researcher in system management
+School uh pass it to
+Blue hello I'm blue Knight I am an
+independent research consultant based
+out of New Mexico and I will pass it to
+Sasha hi um I'm Sasha I'm based out of
+Davis California and um I study
+developmental neuroscience and I will
+pass it to uh
+Alex hello my name is Alex I'm in Moscow
+Russia I'm also researcher in systems
+management school and I'm trying to find
+a ways to connect active inference and
+systems engineer
+framework
+thanks cool and Ryan uh it seems like
+has the same situation as last week but
+definitely for 2021 we'll figure it out
+um I'll just tell them it still does not
+work all right let's go to the warm-up
+questions and again if anyone else joins
+we'll just roll with it so for these
+warm-up questions raise your hand it'd
+be great to hear from everybody let's
+just start off with what are some kinds
+of agents that we might want to model in
+active inference so just even before
+reading this paper or after reading the
+paper what was a kind of system or a
+type of agent that we might want to
+frame in this way of thinking so
+emotions makes us think about individual
+people but there's other kinds of
+systems we might want to model as well
+um actually Scott you were mentioning
+some interesting uh types of Agents we
+might be considering right before we
+started so maybe could you pick up there
+sure um I was mentioning in law it feels
+like one of the things one of the
+strategies is to introduce a provisional
+agent a nominal party into an
+interaction so if you have two people
+interacting you can introduce a third by
+introducing the third it changes the
+system because it's now a three-party
+system with three-party
+concerns and that system then will have
+a different markof blanket as I am
+beginning to understand it and so in
+that context you may be able to do
+things you can't do in the other through
+the other markco blanket because it may
+be able to an example is in in tax
+there's a thing called a like kind
+exchange where I can exchange commercial
+property for another commercial property
+taxfree well very often you can't find
+someone with exactly the property you're
+looking for let's say you have a 20 Acre
+Farm you want a 30 Acre Farm there's
+nobody around with a 30 Acre Farm you
+use an exchange facilitator and that
+means there a third party in there they
+take possession possession of both
+properties and act like a mixing bowl
+and so putting the details of that aside
+it essentially changes that system so
+changes your Markov blankets and so one
+of the things I'm wondering about is the
+intentional shifting of the Markov
+blankets to increase solution
+space cool so we have all kinds of
+agents who are going to be interacting
+and potentially by Shifting the
+boundaries the interfaces between agents
+and wrapping them or subpartitioning
+them it's possible to make new kinds of
+swaps um within existing infrastructures
+or new ones so anyone can just raise
+their hand I'll just put up the second
+question which is another General one
+which is how can we learn and
+communicate the technical aspects of
+active inference in an accessible
+fashion Stephen go
+ahead I don't know if I'm going to
+explain how to do this but I'll explain
+a challenge which um um but I think it's
+important to overcome it because it's so
+valuable is I was just in a conversation
+and trying to talk about systems and how
+we can how we think about systems when
+we engage um in communities and thinking
+about how we understand the world and
+there's a lot of stuff in in in the
+world of kind of the social arts and
+participatory theater where it's like we
+need to do something with the system and
+then it flips to we're all a living
+system and it's the body knows and we
+just know how it is we just need to
+listen to the body and it will know and
+um it's both you know it's we're in this
+Dynamic niche of which there's an awful
+lot of stuff we don't know yet we can
+tap into our body and the way that our
+body works and there's a way that we
+construct meaning in the world so I
+suppose trying to find a way to take
+case studies and show how it can help
+would be really
+useful um thank you
+Sasha yeah um thanks Stephen I really um
+agree with what you said and uh
+ironically or I guess in a very meta way
+um Act of inference is the answer to
+that question because um through like
+closing the loop and introducing action
+into the system we can better understand
+thinking about the system and so I I
+think that's an really great point that
+um case studies and uh really specific
+applications of active inference are
+going to be the best way to teach and
+learn about it um so yeah I think that's
+a great Point cool
+blue so just to kind of piggyback on
+that I think um and maybe tie in some of
+what Scott was saying earlier uh when we
+think about um modeling in active
+inference it's interesting to think
+about scaling this not in the way that
+we talked about when we were talking
+about scaling active inference but in
+the way that like we have several
+different systems even just existing
+within the body right like the input and
+output of the stomach and the spleen and
+the liver and and you know also like the
+brain and the the sematic awareness
+right to speak to kind of what what
+Stephen was saying earlier so it's
+interesting to try to think about
+modeling systems within systems in in
+active
+inference yep and actually this brain
+and body uh dialogue and the multi
+systems approach in the way that it
+doesn't say well everyone told you the
+brain was important actually it's the
+body no it's actually it's both and
+similarly it's like quantitative and
+qualitative and so it's not just that
+we're going to throw out one for the
+other but we want to think across that
+Division and integrate them that's the
+Beyond internalism and externalism and
+integrating The Sciences with the
+humanities and other things that we're
+kind of talking about
+Scott I just put in the chat there was
+an article that came out in December 4th
+in Science magazine called the
+exploitative segregation of plant roots
+and so this is helps with that second
+question uh learn communicating it what
+it was talking about is the way that
+plant roots grow specifically you have
+two trees next to each other each has a
+system each has a markof blanket they're
+growing next to each other and they
+differentiate their plant growth roots
+to optimize statistically their nutrient
+uptake and so they don't go and intrude
+on other plants Roots space because that
+would not be optimized for them because
+they'd be putting more resources into
+into growing further roots and and but
+getting fewer nutrients because they'd
+be nearer the other plant and so to me I
+looked at that and I went wow that's a
+real nice way to understand the Dynamics
+of two different organisms interacting
+with statistical gradients there it's a
+nutritional gradient specifically that
+felt to me like it was a nice way to
+kind of introduce that idea of the of
+the contact between the two different
+systems cool so what I'm going to take
+from this second question and all the an
+to it is that through examples that are
+accessible and at hand we can all start
+to learn more about the relational side
+of active inference and also the
+statistical and the quantitative because
+both those sides are going to be
+learning Journeys for everybody because
+no one's going to know all the
+statistics no one's going to know all
+the Deep relational pieces that are so
+uh familiar to Performance artists and
+other areas the last question on the
+warmup is what is something that you are
+wondering about would like to have
+resolved by today's
+discussion so one thing I'm wondering
+about is um was raised right before we
+started as well is like how do we think
+about emotion or this parameter in
+systems that aren't us and I'm also even
+wondering whether the emotions we
+experience are these parameters and how
+do we name parameters or talk about
+parameters of mathematical models in a
+way such that they're recognizable and
+capture meaning but also don't constrain
+or sort of uh falsely limit what it
+means to be that term so we can get into
+a map territory issue when we're talking
+about computational models of emotion
+just like we could with Consciousness
+blue so just to kind of piggyback on
+what you were saying about um emotions
+like I don't know as I'm starting to
+study more about emotion like I'm a a
+logic and science kind of researcher and
+so but learning about emotion and just
+reading personally a lot of it seems to
+be like non-verbal right and so how do
+you like quantify or even measure
+emotion on a scale when it's it's really
+like you know you're you're feeling some
+you know primitive thing from you know
+when you were left in your crib as a
+child that you have no words for because
+you didn't have words for it at that
+time and so how do you kind of like like
+impart some kind of meaning or
+quantitative scale on something that
+that maybe there's not even language for
+yes it's almost like the uh discredited
+but guiding three-part brain model so
+it's like the most prefrontal is the
+numbers in that level of formalization
+and then a little bit lower we have
+language but then below that the
+substrate is actually experience and
+that's the embodied experience that may
+or may not even have words to express it
+and then we can look at expressions like
+poetry or speech and is there a way to
+get more precise or is it merely an
+expression that's arising from an
+emotional state but the emotional State
+isn't a number it's not a words it's
+actually something that's more deep
+Scott I was wondering if with regard to
+dance and performance whether there are
+ways of communicating because we talk
+about embodied I wonder about encoding
+so can emotions be encoded in dance in a
+way that they can't be encoded in speech
+or other movement so that it becomes a
+surrogate or kind of that mirror neuron
+idea that you're projecting out an
+emotion by the projection of your body
+position the morphology uh being the
+encoding of the
+emotion cool question yeah Stephen
+definitely yeah I think this also
+relates to this question of um affect
+and dimensionality so maybe there's a
+way that when we take a perspective on
+things we kind of look at a dimensional
+approach but it can be encoded in some
+sort of
+spatial um aect Ive way and maybe those
+Dimensions aren't they they they become
+like Dimensions but the encoding is is
+not as linear as that a bit like color
+space when we see colors the the space
+of colors you can encode it in sort of
+in in lightness and two different types
+of color Dimensions but the way that
+it's encoded is when people look at
+perception it's not it's not linear in
+that space so maybe there's like an
+affect space which somehow encodes in a
+in a way which is
+n-dimensional so mate oh sorry go ahead
+go ahead so might um
+Aesthetics
+be um
+provisional um efforts at
+encoding very nice to bring in the
+Aesthetics and the intuition because
+intuition is that which can't be
+expressed it's sort of like the dark
+matter it's the submerged part of
+Iceberg but those reflect the deepest
+priors potentially that help us search
+through the state space that as we've
+been exploring is vast to do the
+exponential rollout of a chess game is
+going to be hard it's going to be more
+um basically States than you can keep
+track of however if you think I feel
+good about this uh arrangement of the
+pieces then with just a simple affect
+and a limited roll out you may be able
+to do very well so again we're not sure
+but we'll figure this one out okay uh
+let's is that just one other thing is
+that like the holographic principle
+potentially that on a system the
+information about the system is
+displayed on its surface is a Markov
+blanket potentially that surface that
+you observe to understand the system
+inside I believe so and Chris Fields who
+will be coming onto the stream we'll be
+talking about a paper that's going to be
+uh in early March Chris has done a lot
+of holographic marov blanket research so
+let's keep on thinking about that cuz
+that's very interesting I'm not exactly
+sure but yeah hopefully we'll figure
+that one out within a few months so the
+paper itself and then again we'll have
+enough time just to hear whatever people
+are thinking but uh sophisticated
+affective inference we talked about it
+in 11.0 and 11.1 and the paper is about
+combining these two previous threads of
+research which were
+sophisticated active inference which is
+sophisticated meaning deep through time
+with affective inference or active
+inference where there's an emotional
+state
+component the abstract they state that
+and the road map of this relatively
+short paper is pretty short so today
+let's think about how these two threads
+which are distinct threads that's why
+they each were their own paper can be
+combined into something that is in front
+of us today
+which is this paper that is literally
+sumting these two threads of research
+and then we can think about a few
+directions that this research makes us
+think about whether developing more
+advanced simulations so just asking
+which parameters of the simulation could
+be improved or how could this be
+expanded or generalized but also on the
+more functional side we can look to
+computational Psychiatry because we're
+talking about emotions if we are and
+also even nonhuman agents like robots so
+few different directions we can go and
+to structure that
+discussion it could be useful for us to
+have a few examples like two or three or
+four of sophisticated affective
+inference agents conventional or
+unconventional so certainly one of them
+could be a person but we'll think of
+that person being in a certain context
+and then we'll return to these examples
+that we come up with right now as we go
+through the slides ahead we'll just
+return it to example a BC and then when
+we're talking about parameters we'll be
+able to say okay so in the example a
+this Matrix would represent this in the
+example B it would represent that so who
+has a thought or a suggestion on what
+would be like a cool system to bring
+into this mixture so again one of the
+examples will be a person and people can
+suggest what they think that person's
+like story or situation should be kind
+of like an improv scene and then also if
+people want to provide uh an
+unconventional uh system that'd be good
+too
+so any thoughts on
+that
+Alex um I think maybe we can consider
+the next system scale and see on team
+Behavior great and uh so try to Define
+uh these uh Concepts in a meaning of
+team communication inside and outside
+communication with different
+subsystem of
+organization thanks for suggesting that
+so let's do um example a is going to be
+an individual human so that will be
+hopefully grounding us to our lived
+experience and to realistic situations
+that people and comic book characters
+find themselves in the second example B
+is going to be team communication so
+we'll kind of develop the story but
+we'll see maybe the team is a startup
+team or maybe they're a research team or
+maybe it's uh just an affinity group
+about some other topic and then the
+third example let's think about
+something more organizational and
+institutional so let's think about that
+third example being potentially like uh
+a large company large enough to have a
+legal department and an HR department
+let's just say so we have three examples
+which is going to be the person the team
+and the institution SL Organization
+three levels of analysis and then as we
+walk through these formalisms let's see
+where might be like strengths weaknesses
+limitations insights Etc
+Stephen and I suppose you could apply it
+to all of those this idea you know we
+have this vision and Mission I mean
+that's more for an organization the
+mission and the vision transfers down to
+a team which might be the purpose and
+the roles and then you've got the kind
+of the character and the kind
+of you know meaningfulness for the
+individual so you've got this tempor
+depth being sort of expressed across all
+of those levels of scale yeah exactly
+like the examples in this case they're
+not three disjoint examples in fact the
+individual could be on a team in an
+organization so all three of these
+examples that we're going to be talking
+about could be nested within each other
+or they could be disjoint and so that
+really highlights why it's so important
+to have a multiscale perspective because
+even when we're talking about the
+individual we're going to be thinking
+about the individual it's the system of
+Interest it's what we're talking about
+it's the interface we're talking about
+the marov blanket that we're talking
+about but it's inherently embedded
+within a larger system so we're not
+going to forget the company when we're
+talking about the individual and vice
+versa so it's always all the scales
+happening at once but then depending on
+the system of Interest or the marot
+blanket or the level of course graining
+that is being uh performed in that
+specific analysis it will uh will dive
+into the details as they present
+themselves but that will be kind of fun
+so here's figure one in the paper and we
+went a little bit in the previous videos
+into some of these subcomponents because
+this is like M4 and there's M12 3 as
+well that lead up to M4 but just to
+recap what each of these pieces are o at
+the bottom is observation and S is the
+state that inference is being done upon
+so this is where those examples come
+into play so in the individual case the
+state that that something might be
+having uh that an individual might be
+performing inference on it could be is
+it sunny or cloudy outside and maybe
+that changes how you feel or it could be
+a hidden State like is this person um
+happy with me or sad with me um a is the
+mapping of how the hidden States relate
+to the observations so whether at the
+individual level it's sunny outside and
+then the observations are perceived with
+certain
+probability um and then yeah people just
+raise their hand if they want to like
+jump
+onto another example or uh you know ask
+a question about how some of these
+variables might interact I'll just walk
+through them with no example and then
+we'll go to the example pieces B is how
+the states are inferred to change
+through time so the B is like the
+probability that given that at State one
+it was in such and such a state that at
+the next time point it would be at a
+different state now U is a piece that
+connects to B and this is the policy and
+so the policy is something that
+influences how states are likely to
+transform into each other the policy
+itself is Downstream of the agents
+decisions about uh which actions to
+engage in it turns out that the way that
+the action selection is chosen at the
+level of analysis whichever blanket that
+we're talking about that is uh action
+selection Guided by this set of
+parameters the G is that expected free
+energy that's being minimized and that
+also covers up the C Matrix which is
+like the
+preferences the gamma is the Precision
+or the uncertainty whether it's like one
+over or not and basically this relates
+to how precise the agent believes they
+are in their estimate of which policies
+to be pursuing given this chain of
+things happening down here a um is the
+uh is the okay sorry about that at each
+time point in this model because I want
+to I want to General but I want to be
+specific about what this model actually
+did at each time point in this model
+that's being captured by this top sort
+of pinkish area this is the affect of
+inference question where the affect of
+the agent is uh relating into how it
+simulates rolling out in this whole
+internal Gray Zone all this these future
+time points and um then each model tick
+is going to be like moving from the left
+to the right and at each time point in
+this model the agent is going to be
+running out some uh possibilities for
+what could happen in the future so
+Stephen and then we'll think about the
+examples
+yes sorry I was going to sort of bring
+an example there so maybe go ahead go
+ahead yeah um well one thing that's come
+up and I I've been doing some work with
+this metaphors of movement and Andrew
+Austin who does that work he talks a lot
+about how anxiety he finds anxiety is
+often related to people having trying to
+have elevated status like they're trying
+to have an elevated status and it's and
+it makes a lot of sense with this
+because it could also be like you feel
+like you put yourself in an elevated
+status and you're always going to be
+slightly uncertain unless maybe you're a
+king or someone about that status being
+maintained so being put on a pedestal
+can be so there could be something about
+Western society and Status which is
+partly why we have this overarching
+anxiety because
+um and it would make sense in a way
+because there's always a sense of never
+being completely clear about whether
+your status is going to be maintained so
+I I thought that's kind of interesting
+um and this would sort of tie would
+support that kind of
+observation yep so status or um various
+other sort of social approval metrics we
+can think of it's like the water we swim
+in as social organisms so just like like
+a company might be wanting to stay above
+water financially at least that
+department a person has to be staying
+above water reputationally we can think
+of it in that way and so again let's go
+to the examples and think about these
+different systems and what they might be
+performing inference on
+Scott just going to just going to
+comment on the status U issue that it
+feels like then you can adjust so you're
+making serial adjustments right you're
+trying to minimize the free energy
+minimize the difference between your
+expectation and the reality you're
+experiencing as I understand it so with
+that overall effective status you can do
+what feels like compensating
+controls so you could if you feel like
+you're at risk Visa V the one
+presentation you're making of self you
+can rake in other presentations of self
+to complement or supplement or mitigate
+the impression of one of them because
+because you have Myriad effective
+projections that you're making
+simultaneously so it feels like if you
+have an awareness of this it can help
+you with that presentation of self-
+question by understanding that you okay
+this effective status that I'm
+presenting is not getting me where I
+want to be inside so let me leverage
+another one which is contiguous or a
+neighboring affect I'll call it an
+affectation here but I mean in a present
+ation of a marov binding
+site um so it feels like it gives a
+strategy for hybridizing and
+synthesizing your presentation of your
+Markov blankets anyway keep going just
+it's impressional yes okay so let's go
+to the examples and think about how
+these three potentially even overlapping
+systems are going to be carrying this
+out and an individual at each time point
+maybe let's just say this is every
+second or each minute a a team might be
+interested in organizing on the
+multi-day and the organization is going
+to be more explicitly thinking okay
+quarter to quarter that's going to be
+our next time that we're going to do all
+this simulation so it's not surprising
+that as things get bigger they also get
+slower so that's a common theme we're
+going to see so the individuals affect
+is really where this emotional
+inspiration comes from so there there's
+the closest mapping between affect and
+emotion but let's think about that team
+and the large company example well
+affect again and veilance specifically
+is like that plus to minus axis so is
+this team going well is this company
+going well and if someone says yeah
+we're burning money at an incredible
+rate it's unsustainable but it's going
+well because I have a uh believed
+trajectory that we're going to go on
+where we actually pull out of the nose
+dive and do XYZ so they can still think
+it's going perfectly well even if the
+instantaneous rate of loss is high and
+then on the flip side you can imagine a
+team or a large company where
+instantaneously they're state looks like
+it's good it looks like they have a lot
+of cash or it looks like they have a lot
+of people involved in the team but they
+still feel negative about it so that
+disjoint between the affect about a
+situation and the state of the situation
+is one thing to take into account now
+let's connect the affect at all these
+levels to Precision estimates at
+different levels um especially in the
+active inference framework which frames
+what organisms or any system is doing as
+Precision seeking high anxiety is going
+to be coming from having low Precision
+now it's not that we want zero um
+uncertainty we want to have this
+controlled novelty sort of U curve but
+it can be clearly uh situations where
+your Precision is too low and then
+you're surprised by what is being uh
+emitted to you in the niche whether it's
+your team operating environment or the
+company's operating environment and then
+if your
+Precision it can't get too high because
+if you're overly precise and you're
+incorrect then you're going to die like
+if you have a super super accurate
+understanding but you're just delusional
+then you're going to fall off the cliff
+so in a way what shapes this Precision
+is actually the real world which prunes
+beliefs that are not functionally
+associated with success in the real
+world Stephen and then we'll come back
+to
+it yeah I really like this um this idea
+of of thinking about how we understand
+ourselves within all of this so for
+instance yeah if you could move between
+a different regime of attention or sense
+of self which could be like what happens
+when we do sense making maybe even
+change the operating metaphors of the
+person you know who am I at the moment
+you know what's the context what's my um
+situational um Attunement what's my
+team's purpose what's what's the
+operating metaphor for this team are we
+like all driving together in a car or we
+are we building ourselves a fortress you
+know and that would that almost could
+give a way to jump in and out of these
+kind of effective engines if that makes
+sense so as you seen over time how's it
+going what's the policy um and what's
+the the affective States um that sort of
+thought about in a certain future and
+they could almost then say okay what if
+I shifted maybe that's where You' need
+the body like the metaphor I'm working
+with and then what does that do and um
+and maybe at times that's when you need
+to work with the group to be able to do
+that because maybe an individual can't
+just keep flipping backwards and
+forwards you need to work as a group to
+do that kind of sense making across
+different
+times cool
+Scott I had a question for Sasha you
+were mentioning pruning but you weren't
+talking about dendritic pruning but I
+wonder if dendritic pruning is
+describable by what the type of pruning
+you were just talking about because my
+understanding of dentritic pruning very
+minimal is that you know during the day
+you have the growth of dendrites and
+then this pruned back
+selectively um and that that is
+influenced by your externality each day
+the growth is influenced by your
+externality and then there's this
+pruning process that feels like it's
+iterating itself at that at that level
+is that describable by this here is that
+another scale or is it something else
+that's going on
+there um yeah I think that's a really
+interesting analogy that that's um kind
+of what's happening there I I don't know
+if I would uh kind of draw all the same
+parallels um yeah just from a
+mechanistic standpoint but it's true
+that kind of in
+the uh in the generalities that um uh as
+connections are formed during the day
+then
+um they're pruned or lost um as they're
+not used and yeah
+we think that happens at night um but
+yet I I think that's an interesting um
+analogy to draw that it's uh beliefs
+about the world that aren't
+um I don't know useful or supported are
+the ones that then get
+pruned yes oh um I was also going to say
+uh the other
+aspect is I think we know uh from our
+lived experience is that it's really
+um it it's really interesting when
+people can be uh holding certain beliefs
+and not um not know that and then when
+they finally kind of confront the the
+belief
+um it kind of yeah there's a bit of a
+breakdown and um to me that that moment
+is very interesting um when uh people
+have to confront certain beliefs that um
+maybe they didn't even recognize that
+they held
+so there's a phase change and a
+recontextualization piece in the last
+part you said Sasha and the pruning is
+using a network analogy so it's like
+pruning connections between different
+aspects of the system and so let's think
+about the individual in the uh office
+having a conversation with somebody the
+query the prompt to them let's just say
+is how are you feeling and that is a
+query that's presented to the interface
+which is their ears and also their
+vision and other aspects the query is
+presented to the interface about what's
+inside of the interface and now what's
+happening inside of the interface is a
+generative model of that query
+presenting system so inside of the
+person there's a generative model of for
+example the person who's talking to them
+asking that question and we know it's a
+generative model because if they covered
+up their eyes or if they only heard part
+of it they might be able to still
+recover what was being asked but in
+either case there's a generative model
+inside of the interface and a prompt is
+being presented as an observation
+stimuli to the interface that's querying
+how the system will respond so speech is
+action and that's not even uh a legal
+claim it's that it's a motor claim
+speech is generated by a motor Behavior
+it's not your hand but it is a motor
+behavior and for some people it is with
+their hand so various body parts can be
+used to communicate let's think about
+that interface in the process of the
+team and the company so potentially for
+these organizational entities the
+interface could be like a consultant who
+interfaces with specific questions but
+instead of a counselor who asks how are
+you feeling to an individual there might
+be questions that could be asked to the
+team and there can be questions that
+could be asked such that only the team
+could respond and someone might say well
+how could you ask a question that only a
+team could respond to aren't teams
+composed of people there's two things
+I'd say there the first is that that's
+the reductionist argument the
+reductionist slide is like what do you
+mean get a response from a person aren't
+you just to get a response from skin
+cells and neurons it's like right that's
+what I'm trying to get that response so
+even if the response can be
+reductionistic understood as being
+composed of smaller pieces that's not a
+surprise that should be taken for
+default so questions can be asked to
+teams that of course humans are going to
+be responding uh to as well but also we
+can think about kind of like Colony
+phenotypes we can think about team
+phenotypes so for example let's just say
+I ask a question to a team like uh what
+did you have for lunch or what do you
+think the most exciting project is for
+next year and then I looked at the
+distribution of how long it took people
+to respond to that message that's like a
+colony level trait it's a collective
+trait that distribution is composed of
+people acting but no individual can
+dictate what that distributional
+parameter is so it's like a measurement
+of let's just say some blood cells you
+flow a million blood cells through and
+then you can get a distrib ution across
+all of those blood cells so it's like
+you're querying in the aggregate even
+though each individual sub piece uh
+could have been following that
+distribution or uh somewhat of an
+outlier so those are the kinds of things
+that you could ask presenting to a team
+or an organization and the team or the
+organization is going to have a
+generative model of its Niche so if it's
+involved in a certain type of
+consultancy where it paid a lot of money
+and it really respects what the person
+is going to be uh doing then maybe when
+you ask them the question what's the
+most exciting project and why they give
+one response or what's the most
+challenging project of this year and why
+was it challenging whereas if you were
+in a different context you'd give a
+different response because the
+generative model of the system across
+that interface is very different so the
+response that it gives will be different
+and it's going to be querying different
+things and externalizing different
+aspects of itself could be accurate
+could be inaccurate
+Scott so one of the things that raises
+is I've been in some of the work that
+I've done in cyber security I've been
+parsing principles versus ethics versus
+norms and so it's kind of interesting in
+querying a group you're going to get an
+average right you'll get a gaussian
+distribution or whatever of opinion and
+you'll then will it be informative um in
+and so Norms I assert for these purposes
+that their behaviors with uh behavioral
+expectations that are set through the
+past what was
+normal and one of the assertions I make
+is principles and again they're
+assertions there's different overlap
+here the principles are institutional
+assertions of
+aspiration and ethics also are
+aspirational but they're human
+assertions about human behaviors that's
+the distinction I make whatever words
+you want to use and so it's interesting
+in the context of what you're talking
+about about querying a group because
+there's different evidentiary B group um
+uh chunks that you'll look at right
+normative you would be looking if if
+according to those definitions on hey
+what' we do before and what we do
+against the set of standards that set
+the principles may be more aspirational
+and it may be you know how we doing
+towards that thing but it's not
+necessarily based on what was done
+before you can you know you can say our
+principles are more aspirational than
+what we did before so it's interesting
+just that interface of what's used in
+the discussion of the group dynamics and
+how that relates to what you were just
+describing
+which is the querying of the group and
+individuals the framing of the nature of
+that output you're getting from the
+group is kind of interesting based on
+that question asked right what do you do
+before is one question what do you wish
+to do in the future is a different
+question yes so that query could be what
+do you regularly do so again it could be
+the person in the office and someone
+says what is your morning routine that's
+something we talked about in a previous
+week or it could be a query to a team
+what is your onboarding routine or how
+do you welcome new members um and then
+this question of the aspirational and
+the Norms so it's funny because Norms
+can mean what's normal it means what's
+expected that's what has happened in the
+past because what's not normal you know
+if not if not the past what's normal but
+at the same time normative means uh what
+should be so a normative claim should be
+like I think people should be treated
+this way and that may or may not reflect
+what has been the norm so people all of
+uh belief systems make normative claims
+that sometimes are consistent with norms
+and sometimes are uh almost radically
+Divergent from Norms someone says the
+norm is a but I think the norm should be
+B so I'm making a normative Claim about
+the norms and it should be different and
+so these are all interesting things to
+uh yeah Scott so one big gap that's out
+there in the world right now is the gap
+between law and what and
+interactions that technology allows and
+I'm talking about fractally up and down
+the chain reproductive interactions
+biomedical population wide all these
+different things the law is really
+lagging okay so one of the things that's
+interesting about this is there a
+possibility that this kind of analysis
+can help us to
+discover
+Norms that would
+guide um uh groups and those Norms if
+they're sufficiently interesting to the
+groups can be made enforceable into laws
+and so that to me this is a very
+interesting way of of a possibility of
+discovery of new laws and self-c
+constraints that groups can put on
+themselves in order to function as
+larger systems in the globe kind of
+context but I'll put that aside for now
+but I just wanted to raise that is is
+this a discovery is this a mechanism for
+discovery of new working models of
+larger scale norms
+yes
+Stephen yeah I think that that this is a
+good point because and and discovering
+that with this model here where you've
+got this task specific and then you got
+this effective actually as a as a larger
+sort of scale time scale sort of
+checking I think it's also relevant in
+terms of how we can get mechanized in
+our like if we just keep doing the same
+task and we get the reward and the queue
+and it starts to create a high sense of
+this false sense of certainty in our
+world which is so much about just
+constructing more of our social Niche
+and and alienating or externalizing the
+environmental so we we can start to get
+caught up in this kind of task specific
+ways of working and silos and so that
+maybe there's this this could speak to
+why we need to do some sort of sense
+breaking to sort of take us out of some
+of these mechanizations and look at a
+longer time scale um and use a effect to
+do that integration and not just rely on
+metrics cool let's let's take Scott's
+point about this being not just an
+enforcement understanding but a
+discovery process and connect that to
+some topics we've been considering like
+bottom up versus top down function of
+systems so the bottom up is learning
+that's where the little ants are going
+out and they're finding different things
+or each of the cells in the retina is
+receiving a different Photon each person
+is receiving a different Newsfeed and
+then as it goes quote up or in the
+system it's being aggregated and that is
+updating progressively more and more
+summary like variables like of teams or
+of organizations and then Norms can feed
+back down to lower levels of the system
+whether in the brain like the basing
+brain or the predictive processing
+hypothesis or whether it's team
+communication Norms uh and those can be
+informal or formal when we're talking
+about human organizations we gain this
+level of uh syntactic framing of top-
+down priors so instead of just saying
+this is how things are like uh the red
+blood cells are flowing at this speed so
+that's the speed they're flowing at
+we're going to say there's a speed limit
+and if you don't follow the speed limit
+then we're going to have this type of
+enforcement mechanism and so it could be
+the case Cas that in the legal context
+that if you just apply a law a top down
+law it's kind of like trying to teach
+someone a motor pattern uh let's just
+say a speech law of some type of
+controlling speech it's like controlling
+someone's motor Behavior again because
+it is a motor behavior and so what would
+you do would you put them in the
+exoskeleton and say okay here's a
+perfect golf swing now you're a golfer
+right well no you actually need to
+practice and you need to have feedback
+and so if the law is overly punitive and
+it says oh that one time that you got
+put in the exoskeleton you didn't
+understand how to golf and other sports
+that golfers know how could you not have
+made the connection there from that one
+time that I punished you for messing up
+that is not an extremely helpful
+framework for certain issues so how
+could we have this biral conversation
+where there's experimentation and
+implementation at the edges and then
+people's experience percolates up
+upwards in the system and then the
+system informally but eventually
+formally ends up entrenching healthy or
+productive or agreed upon patterns so
+it's an interesting thought about how
+these type of systems are uh not just
+about learning they're not just about
+exploitation as we've been thinking
+about they're sort of in both domains
+and they can trade off and when they
+need to exploit they can dip into
+exploitative uh type typ Behavior but
+also they can be in an exploratory mode
+Scott and it's also so much wrapped up
+in identity it's amazing how this is a
+new platform for identity because every
+thing has a Markov blanket and it has
+attributes and it external attributes
+that are presented and so the discovery
+when you have things like trade
+associations markets communities of
+Interest were things entities with
+similar um I guess marov blankets and
+attributes can cluster together forming
+those systems which have larger scale
+which enabled drisking and leverage for
+the organism or organization at at at
+larger levels so the discovery process
+of bringing these markets are where
+Markov blankets are um made
+similar right because you go in and
+there's a law it says if you're going
+it's a flea market your table can only
+be 5 by five so if you go in with a 7x5
+table you can't go to that flea market
+you have to follow the rules to be part
+of the club but if you're in the club
+you get the power of having more people
+walking past your table to sell stuff so
+there's the interface the law for the
+vendor to the flea market and then
+within that transaction there's a
+subtransaction which is if you want this
+little pocket knife you're going to give
+me $3 and then I'll give you the pocket
+knife so these are the nesting of
+agreements in the context of identity
+and forced and unenforced Norms blue and
+then
+Stephen so just to kind of tie into what
+both you and Scott were saying so like
+you know if we're ants and we're going
+through the world like building this
+generative model like as we discover as
+we're learning right like so as we learn
+we build the generative model like to
+what extent is our generative model tied
+into our identity like that's um It's
+Curious to think about and and I mean I
+know that like there's a policy update
+and perhaps
+the policy is more based on identity
+like we talked about earlier like the
+running every day uh maybe it's it's a
+policy thing that's identity and so that
+the we pick the the policy that that
+then minimizes the free energy but but I
+just wonder like you know the the
+generative model how frequently that
+that builds upon the identity like what
+the relationship is between those two
+okay and then
+Stephen yeah well one thing that ties
+into that question of identity and this
+this type of model is and the mark of
+blanket I suppose is how much
+changes based on the D the the the
+processing which could be um like this
+um in the brain could be sort of
+structured through the way the brain is
+structured so there could be an
+additional type of
+structuring going on in which all of
+this is able to work together and then
+so how much is is this kind of um the
+observations and the states in the sort
+of brain computating in relation with
+the body and how much is it just
+literally the the way the mark of
+blanket itself is changed you know so
+and I think that's maybe an open
+question at the moment because there's
+the question I don't think as much as
+the the idea of regimes of attention's
+been talked about but literally how
+would that change your computation by
+bringing in different parts of the body
+and the relation to the environment as
+the sort of Mark of blanket to integrate
+information coming in and how much is
+through computation and I sense that
+a that at certain times maybe when
+you're learning something for the first
+time it's very computationally heavy but
+then as you draw things down and it
+becomes kind of tacit knowledge we might
+become subconsciously able to flow and
+shift yes formal systems can become
+integrated through muscle memory so
+somebody who's learning how to play
+violin they don't need to know the math
+of the frequency overlap they might
+learn that in their Journey but also it
+becomes Incorporated through culturally
+acquired practices and muscle memory and
+that could be carried out into other
+areas
+Scott there was an article uh just read
+recently in nature or science which
+relates to the the um Steph's last point
+and it was about how in in cultures
+where there were Deaf culture so there
+isolated populations I think there was
+one in Central America there was one in
+the Middle East of deaf people because
+it was some kind of genetic thing and so
+large populations of isolated people who
+were deaf and what they found is when
+they came up with their independent sign
+languages they were all independently
+generated what they found in this
+research is they used the body in each
+of the isolated populations the body was
+used in the same way different parts
+like first I'm going to make up the
+parts because I can't remember them but
+they would first use the face parts then
+they would use the left arm then they
+would use the right arm then they would
+use the core of the body the morphology
+of speech through sign language was
+identical across the human populations
+even though they were isolated from each
+other in terms of what they added on I
+forget what it was with the bigger
+Concepts or the the things that were
+emotional there were different
+morphologies of that sit I guess
+situating their expression in their
+morphology in other parts of their
+morphology so I thought it would relate
+to that I'm not sure how but it feels
+like that form of expression being
+uniform across humans it's like the um
+theories of humans having a language
+capacity I forget who who's that is
+maybe mclan or somebody anyway but it's
+it's interesting that the morphology of
+the
+body sounds like there's some intrinsic
+um uh tearing of what Express ression
+comes through what parts of the
+body I'll try to find the arle very
+interesting and that actually reminds me
+of William Blake's poetry and the
+four-fold albon which is a metaphor for
+Cosmic Persona as well as all of England
+as well as the individual body and so
+it's a metaphor that he returns to many
+times in an allegorical context and it's
+so evocative because it speaks to a
+multiscale system and it is of
+applying to multi multiscale systems
+Stephen yeah thanks for that uh Scott
+because I think that's I mean that could
+actually also you know there's all this
+thing about this innate language
+capacity which has now been kind of
+discounted but I mean if actions first
+and the morphology is maybe more related
+certainly within certain you know
+environmental niches that people have
+grown up in um that would maybe explain
+why there was that confusion in the
+language world because people s of Saw
+language Universal well actually if the
+morphologies where it's at and language
+is just an another type of morphology
+that's kind of building on the core
+morphology of the body that's where that
+pattering was coming from not the
+language itself or the language in
+process look and I was just going to say
+extending that out further one of the
+assertions that I've started to make and
+and believe is that the mind doesn't
+reside in the brain at all the Mind
+resides in language and in material
+culture and the brain is an antenna that
+we tune into the local mind wherever
+where we're exposed to that's why
+colonialists put indigenous populations
+children in their
+schools right they take they want to
+tune their mind into a colonialist
+culture early because they then renders
+the externality innocuous for their
+colonialism anyway yes that's true of
+all children's education uh including
+cont temporary and to bring in this key
+point of precision um again active
+inference is not about systems finding
+the most rewarding State and then
+sticking with it it's about Precision so
+to connect that to Identity um the
+child's education is being uh it's
+basically being given symbols that will
+help it navigate the regularities in its
+Niche and again there can be
+dysfunctional education that leads to
+children that are incapable of taking
+advantage or of working with the
+regularities in the niche but this is
+where the policy selection piece comes
+into play to kind of return it to the
+figure because that's like important to
+return to what the paper said is the
+policy selection piece is so tied up
+with identity it's not that there's an
+identity like who we are and then
+there's this totally separate question
+of what we do it actually is we are how
+we act and to even take it to another
+level the understanding of how the world
+changes s the states that are external
+that we care about the understanding of
+how those States change is related to
+the policy actions that the system takes
+and so that even brings this relational
+mode another level deeper it's not just
+like saier War oh well the words that
+you use change how you think or they
+influence how you think it's everything
+is influential on how we think because
+how we think is like this emergent
+outcome from all those factors so it's a
+starting point to say that the words
+that we have or the affordances or the
+sensory capacities that we have shape
+our understanding of the niche that's
+the starting point
+blue so just to piggyback on the idea of
+a team and identity like like how and
+also where the mind is like where is the
+mind of a team right like when you're
+when you're thinking about this in terms
+of active inference and so the the
+individual team members I mean we've all
+worked on teams before at at various
+points and it's amazing how the team
+changes based on the like the function
+of its individual components right like
+so there there are different people that
+bring different Dynamics to a team some
+people may be louder stronger or less
+influential or or everyone has their
+different kind of role in a team and and
+these all like really bring changes to
+the overall structure and the way that
+the team will react right like like
+based on a query like when you query a
+team you know what is the best project
+of the Year that'll change based on the
+the individual components of that team
+yep and the team organism mapping let's
+think about team onboarding and the way
+that the interface of the organism is
+like an interface of a team so the
+immune system of a person there's times
+where something is onboarded but in a
+very controlled way and it does not
+trigger the immune system so for example
+if you eat something in the stomach
+which is a specialized chamber that
+digests food it is then absorbed through
+the interface of the gut in a
+controllable way in a way where only the
+safe pieces like you know that sugars
+are coming in and the amino acids are
+coming in lipids are coming in so
+through that controlled and
+evolutionarily selected upon interface
+there is an onboarding process that's
+healthy but if there's a onboarding
+event on your body like a cut in your
+skin it's going to trigger the immune
+system so that's more like a security
+breach for a team whereas eating for a
+team might be like hey we're going to
+get this ingest of new data our
+colleague is going to send us a data set
+it's going to come from this email
+address and it's this type if it's from
+a different email address I'm not going
+to see it or if it's of a different type
+we're going to need to change our
+pipeline but if it's this type of food
+coming at this interface and it's you
+know this structure we're going to be
+able to digest that and then use the
+information latent in that input to help
+our team become more structured or to
+expand just like an organism would break
+down the food and uh use it to grow
+itself or to operate
+Stephen and also with team you've got
+the the teleology of the team like the
+purpose the goals and I think that that
+I mean this figure sort of speaking a
+lot to task based you know ways of of
+things being evaluated with rewards and
+the way that we structure our teams
+often with the way that we then
+construct the environment to sort of
+lead us towards those rewards in a way
+and I'm really interested I've been
+looking at this thing called infusion
+space that I've been working working on
+is when we are in a kind of an organized
+space with a teleology and and a
+direction like a team and organization
+and then when we're in a sort of
+community uh space where which maybe
+this isn't I think it's another process
+of affect where we're sort of attuning
+to um that kind of inter subjective
+dynamic between us and you know there's
+there's one's more efficient the team's
+more efficient if your goal is the right
+goal the danger is that you could be
+they talk about now with the modern
+world is we're getting very good at
+doing the wrong things so it can be the
+Trap you fall into so climate change
+being a classic case we're very good
+doing things we shouldn't be doing um so
+I think there's an interesting question
+there about a teleological Dynamic
+aligned to goals and rewards which
+everything's then and could actually
+remove the The Knowing of your affect
+and you can just ignore it because
+you're getting other kicks and when the
+deeper knowing is like you know it's not
+really going to be good when you talk
+about really long time
+scales okay let's expand on that so
+thology is coming from the word Tios
+which is the end so tileology is the
+study in philosophy of what systems are
+as defined by their ends so the purpose
+of something like houses are to keep
+people warm and what are people for but
+instead of engaging in the philosophy of
+heliology like what is it mean to be a
+human what are we here for we can think
+about it from a cybernetics perspective
+which is also equivalent to like an
+intentional stance in philosophy and
+that's kind of like saying like Okay
+look whether or not we're ever going to
+figure out the ultimate Tios of a human
+or the ultimate Tios of our team at the
+very least as a goal-seeking system that
+has to operate amidst uncertainty and
+communicate through limited and noisy
+channels we need to have Clarity on our
+mission our local
+Tios so that we can have Clarity on
+action and again if your local mission
+is something that is uh pursuable then
+it's it's a second layer whether it's
+quote good or bad and that's the whole
+question about what Scott raised with
+the marov blankets of uh legal entities
+and there it's kind of easy to see some
+of the analogies between let's say a
+society and a person if each cell were
+to fight for its marov blanket then
+things could get hairy pretty pretty
+fast whereas over evolutionary time the
+interfaces between cells of the organism
+have evolved through so many different
+proteins and so many different
+mechanisms to work well together to be
+compatible within the organism and
+similarly within a healthy operating
+system for legal entities you could
+imagine there would be healthy
+interfaces but in the absence of a
+healthy interface then even entities
+whose interests are completely aligned
+might end up in extremely adversarial
+context Together
+Scott and I think that might be the
+problem with kant's Emanuel kant's uh
+what is it called the something
+imperative categorical imperative yes
+and is that the notion that if the a
+human acts a good in human acts in a
+good way it'll be good for
+society so uh the the contient
+imperative as it's uh called a
+categorical imperative sometimes uh it's
+uh I'm just just wanted to look up an
+exact word it is quoted as a rule of
+conduct that is unconditional or
+absolute for all agents the validity of
+claim of which does not depend on any
+desire or end that yeah that reads
+heavily as that classic era of
+abstraction in philosophy and that's one
+of the problems in European law right
+now and identity law like gdpr and those
+kind of things in the real world their
+idea of entities and of identity is
+based on Hegel and kantt
+and those are there there is a real
+focus on that individual being good and
+that being enough to have the entire
+Society work well and I think that's
+part of the pro challenges over there
+that that in Continental law you make
+the law um and you refer back to the
+statute all the time in common law which
+is any place that was part of the
+British Empire you what you do is you
+come up with a half-ass version of the
+law and then you allow common law to fix
+it up so the common law acts as a
+continually Dynamic
+revisiting um because the courts then
+make the law and then when you when you
+have a later case you don't just look at
+the original statute you look at the
+cases as well the other court cases and
+so it's been modified by that so one of
+the things that this gets Tangled Up In
+is
+philosophically the question of how much
+of a teleology you have I believe my
+personal belief is that because they had
+royalty a tradition of royalty on the
+European continent that they're more
+amenable to a single voice
+and so that single voice can act in a
+misdirected way for a longer period of
+time because it projects onto a paradigm
+onto the population but it's just
+something that it's it gets softer at
+that level perhaps because we don't have
+the data and the metrics but it feels
+like those same kind of things are
+iterating from a system perspective if
+you have something that's too stuck in
+the mud it's not going to change as fast
+and now that's happening everywhere
+since technology mors law increases
+interactions exponentially all of our
+institutions all of them were intended
+to drisk and leverage much more
+leisurely institutional context so
+they're no longer fit for function in
+the interaction Landscapes we have and
+so one of the questions is does how in
+what way might this analysis help us to
+not just improve old institutions that
+might not be possible but construct
+institutions that can better be dynamic
+with the increased frequency and volume
+of interactions we have which is
+perceived by any one institution as an
+increase in density interaction density
+that's why your calendar is all jammed
+up because we're still using calendars
+the way we used to use them which is
+linear progression of things they have
+to do things like that so anyway sorry
+about the question there yeah
+interesting
+Stephen well that might that also might
+tie into this idea of when we have
+systems in our Niche that we've created
+when you know when do we need them to be
+more able to our own active inference
+types of Dynamics like if we if this is
+the type of way that we can you know
+what would help us being better at
+attuning and what types of attention
+what types of scale would we want this
+kind of dynamical process and when does
+it want to be fixed and it kind of
+speaks another problem in the
+development world was the rights based
+approach to development so someone
+somewhere defines what people's rights
+are and what's and then it gets dictated
+down but that causes a lot of problems
+when you roll out into cultures which
+value things slightly different to those
+that decided what's right and it's also
+what's right for someone in a poor
+context or a poverty context might not
+be quite is with someone in a in a in a
+developed wealthy context so the same
+you know maybe this is a question that
+needs to be asked is when do we need to
+have this kind of active influence or
+godic help you know thought about create
+and when do we say look this isn't being
+done that way we're just going to Bol it
+down and use a non-ergodic kind of
+structured state of this sort of laws
+okay interesting so let's try to connect
+that to uh cont and then back to action
+because that's the key piece and that's
+what we really want to emphasize with
+the active inference approach is that
+although we generalize we're
+generalizing to reduce our uncertainty
+about observations which could be
+letters or sounds we're hearing we're
+reducing our uncertainty about the
+stimuli that we're as people receiving
+by generalizing so that we can guide
+action and so the categorical imperative
+on Wikipedia it says it's best known
+from its first formulation Act only
+according to that Maxim whereby you can
+at the same time will that it should
+become a universal law so that's
+actually also related in a sense like a
+symmetry relationship with the Rian
+theories of Justice like what would be
+fair would be if you were to be a random
+draw you'd want to be in that Society
+versus another Society but here's where
+active inference and action and the
+reality of the finite world come into
+play different people have different
+risk preference trade-offs so maybe
+somebody says yeah I'll take a one in a
+million chance of being the dictator and
+somebody else says no I'd rather have an
+100% chance of being in this other world
+where everyone has the exact same amount
+of official power for example but even
+at a deeper level that's a thought
+discussion and it's becoming
+increasingly lifted from action and from
+policy selections that we as the agents
+perceiving that question are being faced
+with and so when people bring in the
+things like it should become a universal
+law that's a normative Claim about a
+universalism about a law you know and
+who's the judge jury executioner so
+although the sentence the imperative
+started with act according to dot dot do
+dot dot it ended up in the clouds with
+some speculation about what could or
+would or should become Universal and
+ostensibly enforced by other people with
+weapons but not yourself so how do we
+tie it back to the real system and
+confront oursel with what we actually
+are being faced with from an affordance
+and from a challenges perspective and
+then ask what policies will help guide
+the whole system towards states that we
+want to see but at first we can just
+acquire Precision about who are we what
+are our relationships what are our
+interfaces how can we think in a more
+rigorous multiscale way about how we are
+composed of our relationships so not
+that I'm some Adam and I'm being
+influenced by my relationships but it's
+multiscale relationships all the way up
+and down so what is really happening
+here these are some interesting ways
+that sidestep morality when working
+together but they sidestep the ways that
+morality has been framed in terms of
+well I think it should become a
+universal law that I should get all the
+money and then it's easy for me to act
+within the categorical imperative under
+that understanding and someone says well
+no that's not the real understanding and
+then you're right back to square zero so
+how are we going to use systems thinking
+but also include aspects of
+Intercultural communication and
+understanding that people are going to
+be having different experiences of the
+same deal the same interface different
+people are going to have different
+experiences of it and then work within
+that environment so that's kind of you
+know some big areas that hopefully we'll
+be thinking about in the coming years
+because there are uh serious questions
+about how to interface formal systems
+with people Scott one of the things
+that's interesting right now in law is
+that you know it's really showing wear
+and tear and people are really focusing
+on liability and rights and things like
+that which is terrific but one of the
+things the right is an is an
+expectation and what the law does is it
+constructs a bunch of Duties around that
+right that give life to the right so if
+I say I have a right to free speech and
+nobody has a duty to respect it then I
+don't have anything except words on
+paper and so the duties the construction
+of Duties what that does is it's
+constraint on other uh expression other
+Marco of blankets right you're limiting
+and constraining the environment of
+other individuals you'll meet because
+they have a duty to do x a duty to
+there's a a judge who said years ago in
+in United States your right to swing
+your head arm in public ends where my
+nose
+begins right so you can keep doing this
+until my nose is next to where you're
+swinging your arm so it's interesting
+isn't it that you have this that is
+really that Dynamic element if a nose is
+introduced into that system you got to
+stop swinging your arm right and so the
+anticipation of situations where you
+shouldn't swing your arm don't swing
+your arm in an elevator you know that
+kind of thing right don't don't spit on
+the subway right you start to have these
+rules which are like hey we can
+generalize that duty to a population and
+if it's relatively innocuous like red
+means
+stop purple could mean stop it's not the
+light that stops the car it's the
+behavior elicited by the signal so there
+are a lot of innocuous things we can
+avoid avoidable harms by agreeing on
+innocuous signaling for certain duties
+and behaviors that would render those
+rights to be realized and to be live
+living yep so with this kind of eating
+team metaphor ingestion of stimuli or of
+food at the organism level and that's
+being processed either chemically with
+the food or informationally with the
+stimuli in order to guide action so we
+can think about these teams and
+organizations as getting inputs and then
+engaging in action in their Niche and
+the goal of the inputs and selection is
+going to shape this is so that the
+inputs can be processed in a way that
+leads to outputs that are effective and
+so again another mapping would be to a
+heat system so like an engine if you can
+convert 100% of the potential energy
+into work it's a very efficient system
+and it doesn't lose a lot to heat
+whereas if you have a system that's
+broken or has inefficiencies in it it
+will perform very little work in its
+task specific uh role and it will
+release a lot as heat which is like
+wasted energy that's like data exhaust
+there's wasted data there's so many
+mappings here actually in the last
+couple minutes let's just run through
+the slides see if anything comes to mind
+but other than that I'm sure we could
+keep on you know thinking about this
+figure two of the paper the authors
+showed this roll out game and uh the
+agent at each time point is imagining
+what could happen on future timelines
+and so here's a timeline where I stay in
+this neutral State on the left side
+here's a timeline where I get to state
+three and that's good and then I go to
+state four and it's bad and so as you
+simulate and you roll out more and more
+and more deeply that's the sophisticated
+or the Deep component as you roll that
+out in order to track what uh kind of a
+world you're in are you in a world where
+all the routes are bad or all them are
+good or some are good and some are bad
+the agent is tracking a few things it's
+tracking the state estimates like the
+expected value of different policy
+choices but also the variance or the
+uncertainty and what we saw in this
+paper was that as the agent starts
+initially thinking and simulating deeply
+it starts to be perceiving it self in
+states that are rewarding and it has
+relatively High Precision about being
+able to maintain itself in those States
+but as it continues to simulate deeper
+and deeper the Precision of its model
+drops this is associated with anxiety
+from the computational Psychiatry
+perspective and uh it's also associated
+with the increased percentage of the
+events being negative but not a 10x
+increase in the events being negative
+and as we pointed out last time it's
+actually when the threat perception is
+at a medium level when the anxiety
+skyrockets and again this specific Trace
+is just related to the parameters of
+this model so it's not meant to be a
+general Claim about anxiety or something
+like that it is for future work to
+really map this onto Real World
+Systems we had the formalisms which
+people can pause and look at um the
+formalisms of sophisticated inference
+and the uh real natural language
+translations of some of these variables
+that are interacting in these
+papers we talked about the generalized
+free energy and about how that formalism
+has a few different parts one of those
+parts is conditioned on policies and it
+talks about the relational mapping
+between observations and states and then
+the other function here is conditioned
+on policy and it's uh
+yeah sorry let me just rephrase that one
+of these sides is conditioned on policy
+and relates to States the other side is
+conditioned on observations and states
+and it relates to policy
+selection um we talked about a few other
+topics intrinsic and external value
+General and special cases and uh how
+when you are moving through a prediction
+in this branching way there's an
+exponentially increasing number of
+states and so in order to deal with that
+organisms or systems have to engage in a
+little bit more of a guided kind of
+search and that brings us to this slide
+which is what I kind of wanted to pause
+on because I think blue this is what
+made you say we have to invite Scott so
+what what was interesting to you here
+what made you think of
+that just uh Scott and how um Scott's
+always presenting on risk and this just
+was like well I think that Scott really
+needs to be here and based on also the
+fact that Scott um said he'd been
+studying active inference since the
+October complexity weekend so those two
+things kind of
+nailed it for me it's I feel like it's a
+it's this giant thing smorgus board
+that's in the Next Room that I haven't
+yet entered into that's it's it's so
+delightful I'm so thrilled by my
+ignorance in this this is the best gift
+I could ever get so thank you all you
+know it's like a roomto room party you
+just go room to room and it's always a
+new setting but we're bringing the party
+along because it's enacted it's not that
+there's a room of researchers or a
+community that's waiting for us to be on
+boarded onto we're we're co-
+domesticating each other and creating
+the community that we want to see so
+that's self-organization and multiscale
+organization in action and we can think
+about that actually tying it back to
+this figure so the active inference
+framework under special cases which were
+described in this
+slide we can think about a few different
+cases where certain things are driven to
+zero so when there's no uncertainty
+about States in other words states of
+the world can be perfectly known then
+risk sensitive policies can be
+enacted so um when there's no ambiguity
+about States you can talk about risk
+that's this part right here however when
+there is ambiguity about states you have
+to reduce that uncertainty and that's
+sort of like if you don't know what the
+states of the system are
+you you can't operate but to the extent
+you have reduced ambiguity about the
+observations in States you're able to
+increasingly plan risk sensitive policy
+so Scott that makes me think about in a
+world of digital transactions where we
+can have reduced uncertainty about
+certain types of events happening could
+we then move some of that energy and
+focus to risk aware policy so that's one
+piece here that's why I call what we
+have right now is self boiling
+nice so that's the that's the saddle
+meme this is still within the context of
+how most people think about ambiguity
+and uncertainty
+vuka that's in the terms of minimization
+of two different things minimize
+uncertainty minimize risk first go ahead
+and reduce your uncertainty about the
+states and then to whatever extent you
+can do that reduce our uncertainty about
+the future Vis A reducing risk that's
+the normal framework for most people or
+at least it's one way to think about it
+but now let's think about it um active
+inference not just in a risk control way
+but in this basy and statistical
+framework a variational framework where
+we're actually doing not just a double
+minimization but we're doing like a push
+pull with a minimization and an
+exploration simultaneously so we're
+going to be able to dynamically adjust
+explore exploit it's not exactly explore
+exploit as we talked about but it's like
+explore exploit because we can
+dynamically adjust the relative pressure
+waiting of the in and the out so we're
+always exploring and we're also always
+reducing our
+uncertainty about the system and so
+that's why the uh two arrows are moved
+into an
+overlapping uh area just graphically
+this is just a loose graphical model
+here because not it's not a disjoint
+two-step process ambiguity about States
+and then ambiguity about risk if we have
+certainty about States this is the co-
+joint estimation
+of all these pieces together in a way
+that's a push pull so there's a couple
+Paradigm changing ways of framing risk
+and operating in this uh mode and that
+will it'll lead to different types of
+institutional structures that'll be
+distributed which will resemble
+neighborhood watch but it won't just be
+neighborhood watch it'll be neighborhood
+creation as well that's a fundamental
+change exactly instead of just putting
+up the law at like a trip wire and then
+triggering it you could say how do we
+just have people who are going on a
+neighborhood walk just people walking
+the neighborhood it's like you know like
+they could just having fun and being
+social could that be the actual thing
+and so it fuses several of the previous
+ways of thinking about it well we're
+going to reduce our uncertainty about
+what's happening in the neighborhood and
+then we're going to do a risk
+minimization policy well this makes you
+think about installing surveillance
+cameras but what if you said we're going
+to jointly be discovering what community
+Norms we have and what we want to be
+aspirationally as a neighborhood Hood
+around safety or around communication
+and maybe there's a way where we can
+just go on walks in the afternoon and
+all of a sudden people are connecting
+and it's a safer world and the other
+just one other thing I I once read an
+article about the world champion fly tie
+tire and he tied flies and they were the
+be most successful flies for catching
+fish but all the people complain that
+his flies didn't look like actual
+insects they didn't fool humans and he
+said I don't have to fool the humans I
+just have to fool the
+fish and so the reason I say that here
+is the way we're going to do this is
+we're going to use a left side we're
+going to get people in by saying hey you
+got risk what you been doing about the
+risk let's talk about the risk okay
+that's fine we're going to get other
+people in the room who are going to be
+talking about the same risk but they
+people never met each other before and
+then by the time they leave the room
+they're going to be in the right hand
+side of the design that's where the
+governance is going to shift we're going
+to hook them with something they res
+they recognize like The Fish Guy we're
+going to hook him with the thing on the
+left which is hey r we're going to talk
+about risk that's with the atlas of risk
+I'll send it around to the other folks
+but some of you have it it's 870
+different information risks that are
+shared by people now because digital
+stuff has made everybody have trouble so
+they they come for the the risks they
+know but by the time they leave they're
+going to be organized into different
+groups that aren't going to be dealing
+with the risk the risk was just the
+existing risk description was just a way
+to get them in the
+room yes yes so one metaphor before
+Stephen instead of let's let's measure
+your blood measure your blood measure
+your blood so that we can measure your
+risk of the disease this is like how
+could we be doing active inference on
+health and working towards Health in a
+way that yeah maybe we'll do a
+measurement here or there and we do want
+to reduce risk and we will reduce risk
+but we're actually framing it in a way
+that's like a journey related to health
+in mind rather than ambiguity risk
+disease negative negative negative
+uncertainty anxiety how about
+yin and yang with a little bit of a more
+balanced understanding about how we can
+function and enact policy
+Stephen this is a very important diagram
+actually like you're saying this this
+takes us away from just trying to reduce
+uncertainty about the external stimuli
+and the kind of locked in risk aversion
+and you're actually working more with
+that time dependent or time series um
+approach that active influence gives of
+like well how are things changing and
+how just like that fish looking at the
+the fly how does that um embodied agent
+and the wisdom and recognizing that
+there's a wisdom about how to be in the
+world and how to be with your Niche how
+is that actually being used to inform
+how we make things happen and not just
+this more mechanical
+approach yes and good points there
+um in active inference stream 19 Yonder
+in mid April uh we're going to have
+deeply felt affect which is one of the
+papers that was cited in this paper but
+we're going to go into it in more detail
+we'll talk about perception about
+anticipation
+action metacognition implicit metac
+cognition and just to close out I listed
+a few questions um do people want to
+hang out for a few more minutes and talk
+for uh a little bit yeah sounds good but
+I'll just give the closing slide and
+then we'll return to the question slide
+thanks everyone for participating the
+live viewers uh have a link to a
+feedback form in the event everyone else
+really thanks so much for 2020 super
+special and unique experience for all of
+us so really deeply appreciated for
+those watching live or in replay or
+whenever wherever it was great times so
+thanks a lot and we're just getting
+started so
+for a little bit longer whoever wants to
+stay and if you want to leave just just
+no worries just drop off but um what's
+something that somebody wants to go into
+here or what's something that still
+people want to bring
+up one of the one of the things I'm
+wondering about is just the we've been
+taking this from a single individual
+perspective to some extent and in those
+group perspec Ive is kind of it's
+interesting that the simultaneity of all
+of it that the you you know you
+simultaneously have an individ it's this
+the how do how do we get a handle how do
+we help people get a handle on the the
+many levels that operate
+simultaneously and
+then one of the then then how do we
+bring that to the current time the now
+where everyone is acting in this moment
+I you know reading another paper now on
+fractal time and they say hey the past
+and the future don't exist if they do
+where are they show me right so the idea
+is now is all that exists so we have
+these priors which were that and we have
+these future projections which are that
+but we have the now and we all act in
+the now and all these
+Myriad Dynamics feed into the
+now and so it's such an interesting
+notion to me of how to trim tab systems
+as a lawyer you don't just we don't just
+observe we're always trying to push
+things in One Direction or another for
+clients right or for whatever and so it
+feels like it's such an interesting
+thing that we have it's not just a now
+we have a series of Nows available to us
+I guess because we in the diagram you
+see a series of Nows right in the in the
+steps
+so it's interesting to that temporal
+aspect is something that's just
+not brought into so many systems right
+they're so static in so many ways and so
+in a sense like when you working with
+standards people they'll say oh it has
+to be robust so that we can plan based
+on it but it also has ref flexible and
+it feels like this naturally this
+analysis naturally lends itself once it
+becomes an institutionalized thing
+because our institutions now are not
+built on these analyses but once they're
+built on the Dynamics they're built on
+I'll use the word uncertainty but it's
+really embracing uncertainty or as I
+said in 2014 you called it entropy
+engines we were actually mining disorder
+in order to create
+order so anyway just a couple of things
+that thoughts that came to mind it feels
+like that time issue is relevant to our
+understanding how we can mind
+disorder cool
+Stephen yeah the time issues definitely
+a big part and we see that with these
+papers we' seen that there's the
+narrative approaches there the
+reflective and now they're trying to get
+into the pre-reflective more and
+traditionally that's been you know
+meditation but what is the way that we
+understand these different time scales
+and I what I'd be interested in is is is
+how does this link in with affordances I
+think there's something really
+interesting about that Niche and the
+affordances in a niche because it it
+gives
+away because it's sort of permanent
+before you know like that the path could
+still be there the cups can still be
+there you yet my interaction with it can
+vary so I think that that's a a really
+interesting um way that experiments can
+tie a lot of this information or
+knowledge together sure so one idea
+we've talked a lot about is the idea of
+attracting sets or attracting States so
+for the perspective of your body with
+regards to temperature you want to be
+attracting back to core body temperature
+excursions outside of that range are not
+just bad they lethal so attracting
+states are really important and just
+like you can have attracting sets of
+States on a single number line like
+temperature you can have in the
+wandering itinerant dynamics of thought
+you can have attracting thoughts and you
+can ruminate and you can get too
+attracted or it can be too precise but
+it's an idea that people could be
+familiar with or not that attracting
+States can be thoughts so let's think
+about active inference the framework as
+an attracting State as something where
+we can in a room bring up these ideas
+and refocus the discussion or
+potentially expand or uh zoom in so
+we've brought up this multiscale and the
+Deep past and the Deep future so there
+multiscale through space like the nested
+systems and then there's multiscale
+through time there's molecules vibrating
+and then there's longer term things so
+let's start with the multiscale space
+and time just being our starting
+position and then active inference goes
+further it says not just is it going to
+start being multiscale in space and time
+but there's going to be nonlinearity and
+uncertainty because there are causes in
+the world so RJ and his alarm clock and
+his dog and something that you wouldn't
+expect changed in the world and that
+changed another part of the world that
+you basically wouldn't have expected um
+and also our action is always going to
+be constrained by our situational
+affordances in the niche so to Steven's
+Point there which is like it's all good
+to think about objectively what's
+happening but constrained by affordances
+in the niche that we're actually in is
+the operating conditions we have so it
+makes sense to at least ground the
+discussion in the affordances and then
+we're presented with attracting set of
+questions like how will we work together
+to be agents in a system of the type we
+would like to
+see that's a question that in various
+settings people could say oh well we
+don't have Clarity on what kind of
+system we want to be in we need to
+reduce our uncertainty about what kind
+of system we're in that's visioning and
+clarifying Mission but then there's
+other times where people say yeah how do
+we be the Agents of this kind of a
+system that we want to be in so we're
+not uncertain about the mission about
+the end cybernetically but I'm just like
+honestly confused about what next role I
+should take in this system to make this
+happen according to this mission that
+we've laid out and if my actions are
+consistent with the mission as we've
+laid it out then they're good but if
+they're not then they're just not
+helpful so we can start to combine a lot
+of these ideas and realize hopefully
+that whether we go deep into the physics
+side or into another aspect of active
+inference we'll use it as an attracting
+set and as this range in Phase space
+where we can bring the discussion and
+help ground it in the multiscale
+insights in the nonlinearity of the
+world and a few other
+things but I think it's yeah and they
+really are they really are that
+like we we start our diagram with
+entities that have
+priors right we're not starting with I
+mean you could start with no priors and
+you're just wandering around in the dark
+in the woods but we're starting within
+system that has something that we
+comparing the reality to right so
+they're trying to minimize the
+difference between their expectation in
+reality is that the free energy notion
+right so um so sculpting expectations at
+the front end is what education is an
+experience right and so with you know
+when we can you know our our system is
+our educational system in the United
+States is set up for after the based on
+the Prussian school system right that's
+the um D the deschooling society book by
+um illich um so we're our expectation is
+industrial workers well now we don't
+have industrial workers only we have
+service workers and so our educational
+system is not serving our folks for
+instance right so we have these um th
+those influences it's the I guess the
+the thing that's the thing I keep coming
+back to it's like a situated
+cognition that we situate our cognition
+in externalities well those
+externalities also have are entities
+that have Markoff blankets you know
+right now we're thinking together right
+this is like Plato you said you know
+dialogue lets us query Consciousness so
+we're doing that um and each of us has
+our own view on on the direction of this
+thing right but they're so we're not
+interacting with static things we're
+interacting with Dynamic things that
+have their own Dynamics and the
+recruitment of those
+populations is I think a lot of what
+happens in legal Concepts it's what's
+it's what right now I think this this
+the things we're doing right now could
+make a big impact on ethics
+discussions because ethics anything
+that's not written down in law but is
+bad is now called an ethical problem
+right it's just ethics is carrying a lot
+of water right now for anxieties of
+people generally with the Technologies
+and exponential increase in everything
+so it feels like we have an opportunity
+for
+intervention because there is a
+vacuum um of meaning in the current
+institutions and it feels like this kind
+of explanation might be a nice way to
+get a Toe Hold there let me build on
+that Scott so there was a book um I read
+called Legal systems very different from
+our own by a fellow with the last name
+of fredman but it is not myself or
+relative directly and it really does a
+great job of capturing how different
+legal systems from uh informal like
+criminal or prison legal systems Justice
+systems using the term quite broadly to
+different world traditions very very
+different processes that they followed
+but also they had different ends in mind
+now the current operating environment
+not just are we being confronted with
+different uh interfaces mixing that
+hadn't combined before but also there's
+new challenges and so that's sort of
+like there was a you know a two-stroke
+engine and a two-stroke engine and a
+two-stroke engine and they all were kind
+of coupled in a way where they all were
+working internally and now they're being
+cobbled together and there's a lot of
+heat informationally so to speak there's
+a lot of parts that can burn because
+there's so much heat being wasted with
+the interfaces and so can three
+two-stroke engines be simply rewired
+into a six-stroke engine well no it
+doesn't really work that way how can you
+link those engines together into a
+system and that's really the question
+we're we're um addressing here is
+narratively linguistically mimetically
+but just formally as well how will these
+different systems get C together so that
+we're actually connecting the gasoline
+to the car moving in forward One
+Direction and in one piece not taking
+gasoline and making something that's
+just combustible but only hurting people
+Yep this is this is where I suggested
+people read
+flatland because it's the adding of
+Dimensions right you add Mr sphere comes
+in and lifts Mr square up and he can see
+through you can untie a knot in the
+upper Dimension without crossing the
+knot the Rope right so in law what we do
+is you create a new dimension so there
+was a time when we didn't have credit
+cards and people used to do run IUS at
+the bar and things like that it just
+didn't exist and so credit cards now
+serve this huge function they drisk huge
+sads of interactions right but at one
+point they just didn't exist and this
+guy de Hawk wrote a book called the
+birth of the chaotic age and it's kind
+of a crappy book but it's kind of an
+interesting notion the banks were like
+no no no no no we don't want your credit
+cards go away get out of here was a
+paradigm shift and then eventually they
+got the credit cards got in and now try
+taking the credit card fees away from
+the banks right so what was impossible
+becomes inevitable and it feels like
+because things are so
+stuck this kind of approach that we're
+talking about when taken in markets and
+institutions is going to that extra
+dimension of credit cards or swaps frees
+up it allows for these interactions to
+take place just like the extra dimension
+in flatland allowed for Mr Square to get
+New Perspectives on his life and his
+existence so it's it's a really it's a
+fundamentally different and that's why
+they it's so interesting the Markov
+blanket
+nesting gets really interesting what
+which Marco blanket can Nest within
+another one and when you have community
+of Interest one of the things I always
+remind people of in in New York for
+instance you have Little Italy you have
+a Chinatown you have different areas
+where people go together because their
+markof blankets their language is easier
+it's easier to communicate lowers the
+cost of communication lowers the risk
+you also have the jewelry district the
+the Flower District and the U cookware
+District economically people cluster
+together so communities of Interest
+they're collocating well here if we look
+at your diagram with the four states you
+know the two states on the left two
+states on right every one is now accumul
+they're going to communities of Interest
+based on the Dynamics or rigidity of
+that left-and two states you know oh do
+you share a risk do you share a solution
+but what if we could have communities of
+Interest accumulated based on their
+capacity for change instead or something
+like that just to raise one really
+important piece then Stephen is when
+people align around on the left side of
+that figure reducing risk or shared
+policy or shared culture it's often a
+similarity clustering okay so people
+often cluster based upon similar needs
+similar understanding of the world
+similar affordances but let's imagine um
+the reality of the organism which is
+that actually it's a clustering on the
+opposite in some senses of disjoint
+abilities so in this context of the body
+if you said well there's one kind of
+cell it can't move it just holds a bunch
+of fat and it it literally just does
+hormone and fat processing and there's
+another kind of cell that will just dry
+out in second in the Sun but it can
+contract once and there's this other
+kind of and it's like you'd say they're
+not going to live in the same
+neighborhood together it's like oh wait
+no they do that's the body and so how
+are we going to interpret this all the
+levels of what it means to be a person
+economically and culturally and
+psychologically and understand that it's
+neither simple Affinity nor simple
+disaffinity on any scale that will lead
+to function because function and the
+islands of function are rare in the
+almost unimaginably large State space of
+possible legal codexes or possible
+programmingsoftware
+system it's not a simple imperative but
+at the largest level that accomplishes
+our mission so just such interesting
+topics
+Stephen yeah and this well just like you
+were just saying there about these
+different cultures and the niche
+construction I think this can help
+there's a lot of problems in terms of
+discourse around this not more broadly
+in the world and I've like when we talk
+about systems out there in like City but
+then well how much is a system how much
+has been an
+evolving Niche construction some of
+which is constructed in this kind of
+linear you know this kind of
+teleological strategic way from above
+and and and geographical way and um but
+also some of it's just because that's
+the way it's evolved over time with some
+of this like we say these Dynamics I
+think haven't really been brought in or
+if they are brought in they kind of ends
+up in the s and it it all gets framed in
+whichever metaphor a particular sort of
+school is applying and that you can get
+trapped by that and and I think this
+this actually came up for me today so
+just like you talking about the
+indigenous um ways you could have of
+governance or other ways is I think that
+we we have this idea of systems and
+these different systems and how do we
+integrate them and this this assumption
+that they we need to be integrating them
+but like the these indigenous systems
+you know it flips from one to the other
+so for instance we have our Western
+system which seems to be like and we
+need to attack our system is quite a
+sort of a progressive leftist approach
+or we need to all revert to some sort of
+native indigenous system and they had it
+right and the body knows everything and
+if we just listen to our body and
+there's this kind
+of Gap whereby how do you find a way
+which is kind of maybe configuring
+different approaches so it's like okay
+well where can we
+configure the other ways of knowing
+other ways of governing other ways of
+and it's not just a case of like mash
+them together because they may just have
+a completely different
+dynamical process and then they don't
+integrate they just do different things
+at different times like cells do in the
+body of course it's all going to come
+down to the details so you know none of
+these metaphors or um you know
+questions are even the beginnings of the
+answer but yes that's definitely where
+we want to be understanding at that the
+level of societies is how much formal
+integration will there be now if
+somebody says I have I designed the
+interface for different operations that
+is still coming from a cultural context
+so the challenge and part of the quest
+will be to frame that interface in a way
+that doesn't pretend that it has the
+neutral Arbiter ability cuz that's
+actually one of those Universalist
+fallacies that were fallen into by
+abstractionists now we want to be
+grounded in action and still talk about
+an interface for action and so I think
+actually that's why the task may be
+easier than the thought bringing
+together could be the action bringing
+together I'm always reminded of Scott's
+example that he told me a long time ago
+with two lumber yards that are competing
+in the market for selling Lumber but
+then they have the same insurance and
+then I like wait they also could have
+the same internet provider and they
+could pay taxes to the same local
+government and they could have the same
+lunch service it's like everything
+except for lumber so it's like how many
+fronts they might even share a fence
+they so many areas so they're almost
+collaborative on more fronts than not
+and so how do we take this understanding
+that on overwhelming number of our edges
+and even for each Edge on most of the
+domains there's just massive areas where
+we're in alignment and then risk can be
+catastrophic so it's like if we just
+reduce the amount of cascading failures
+in the
+system by playing to our strengths in
+the areas where we are aligned maybe all
+of a sudden now the lumber yard people
+it's like oh you like this kind of wood
+I like this kind of wood we should just
+Niche partition but we're not going to
+go Niche partition and fork and never
+talk if you're going to be selling the
+luxury and I'm going to be selling the
+consumer wood we need to have a better
+communication interface oh you have
+employees who speak this language and I
+have employees who speak this language
+well let's make an agreement that we're
+going to send numbers back and forth in
+this file type on these dates and here's
+who we're going to go to if that doesn't
+work it's like wow these two companies
+were fighting on the market in a
+previous or a different Paradigm they
+might have you know been wasting money
+on advertising or committing different
+sort of Gray Zone interferences with
+each other's operation but just by
+reframing it in this multiscale system
+even if you're not doing a government
+change whatever government system there
+is those two lumber yards now have a new
+way of talking to each other to their
+employees with their lawyers whatever
+potentially in a way that could lead
+towards them working together better so
+that's just very powerful I think that's
+what it will be cool to continue
+returning to and and we're moving there
+really from a a zero sum game to a
+non-zero sum
+game right there's a winner and loser
+and what you do that's why you add I
+always think of that you add the
+dimensionality and it recasts the game
+as not a winning and losing game and
+that's what we have to do in GA Theory
+right if you want to save the world from
+from us we have to recast the game as
+the is as the entire game right the the
+sustainable development goals even the
+UN has them they're even tripping over
+them because they have some they had one
+power plant they developed the garat
+power plant in Bangladesh and and they
+scored big score on energy sdg and on
+development SG and then they got sued by
+the local fishermen in the local
+population for pollution which was
+screwed them on the other SG they didn't
+even talk among the SGS at the UN now
+that's not surprising if you know the UN
+and the institution but it shows you
+that it's even it's hard to integrate
+even when you have the the same source
+of the Norms or the or the aspirations
+they just go for it on one of them and
+they don't they're not talking to each
+other right
+and here's why preventing failure is so
+critical um which body is healthier each
+organ system at 90% function or most of
+them at 99 and one is at zero well y
+that body is dead so all of the
+functions need to be adequate or better
+and we need to improve adequate improve
+resiliency improve accessibility Etc but
+preventing failure uh cannot be uh just
+part of the discussion on reducing risk
+reducing cascading failure has to be an
+imperative and so in that framework
+where we want multiple components to be
+functioning it just reframes the oh
+should the government be interfering
+here or should this person be
+undertaking this policy and again like I
+said like the task to synchronize on
+action might be easier than thought so
+those two lumber yards getting them to
+go to the same religious institution or
+send their children the same education
+or listen to the same YouTube channels
+why why even go down that road in the
+metaphor when you could just offer them
+a service where they're drisking their
+Lumber business so instead of saying
+we'll synchronize these lumber yard
+people on this and then they'll just act
+nicely together it's like yeah or you
+could just provide the interface so that
+whoever they are however things change
+they'll be able to play nicely together
+instead of just saying well if we
+synchronize them in this way then
+they'll know what to do they won't
+because people don't well and that's why
+one of the things that I talk to people
+about is I say our recruitment that I'm
+doing in the program at the lab is not
+based on on selflessness it's based on
+self-interest and the assertion is that
+they can drisk in ways they cannot do
+unilaterally period that's what I tell
+people and so you get together so it's a
+commitment if they want to drisk in
+these new ways they can't do it by
+themselves just like a stoplight I can't
+I didn't send out around a memo saying
+let's all stop at the red light that was
+done right these are these are scales
+that we can't do unilaterally
+and so that tempting that bait of saying
+you can go over there and like with
+swaps Australia swaps were outlawed when
+they first came out and the banks in
+Australia were getting killed because
+they couldn't swap out their interest
+rate risk so they lobbied the Australian
+government to allow for swaps and then
+they did allow for swaps and they were
+able to swap out their interest rate
+risk like other Banks the downside is
+they all then got hurt in 2008 when the
+swaps were used for speculative purposes
+that's a different problem
+but that invitation to drisk in ways you
+can't do alone it's kind of it's It's a
+crass way of getting people in the space
+but to me it's the hook that joins that
+left hand side and the right hand side
+with those four spheres because you
+right on the left hand side you have
+this characterization of risk as a zero
+sum game on the right hand side well
+maybe it's not a zero sum non-zero sum
+in that context but it allows for a
+bigger the dimensionality of drisking
+increases when you increase the system
+size so if you get those people who are
+similarly situated together it's new
+markets that's what trade associations
+are right trade associations people are
+competing all them potato chips Lumber
+it doesn't matter trade Association
+competitors get together and what do
+they do share information and insurance
+those are the two biggie things they co-
+insure for some whatever risk they share
+andless they can buy insurance cheaper
+of whatever kind and they uh and they
+also share information so they can
+understand situational awareness better
+yep I put up the slide here again
+um yeah Ivon so you want do you have
+anything you want to add or or remark on
+no just chilling yeah okay continue
+Scott wait weirdly I think we just lost
+Scott's audio in between oh no I okay
+okay sorry
+continue uh but I was thinking I there
+was some other thing I was going to say
+but I can't remember now about that that
+oh yes yes this is an example from the
+Fisheries industry so M this Elanor
+Ostrom um worked very closely with
+people in the Fisheries so a lot of
+Fisheries are designed with Ostrum
+Notions and um so uh the of the commons
+and one of the things that a friend of
+mine who works in the um uh hold on a
+second okay Stephen any sorry one of the
+one of the guys sorry one of the guys
+who works in the um fishing industry he
+said they had a problem they have this
+thing called buy catch and it's the fish
+you're not supposed to catch so let's
+say I'm going to make up these numbers
+in the species but let's say you're
+allowed to catch 200,000 pounds of
+flounder but they an orange Rockfish or
+yellow rockfish and if you catch four
+pounds of that you have to stop fishing
+it's a protected species you can't fish
+anymore you can't pay your bills you
+can't buy the oil you can't send your
+kids to school you don't you don't have
+money so what they did they were trying
+to figure out how we going to protect
+orange Rockfish or yellow rockfish so
+what they did is they said okay let's
+pull the allocations of different
+Fisheries so if they had three guys each
+had a four pound allocation so they can
+pull it and make a 12- pound allocation
+so they can then what happens is if one
+of the one of the people goes out and
+fishes and catches five pounds of yellow
+rockfish he can still fish whereas he
+might in the past have had to stop so he
+spread the risk out but then what
+happens is the the other fishermen start
+to be policemen because they're cutting
+into their allocation so they go over
+and they say hey hey hey use a differ
+Siz net or don't fish in that area
+whatever they share information because
+he's cutting in it's an economic loss
+for all of them because they pulled
+their allocation so to me that's a big
+deal that that that idea because what
+they're doing is they're spreading risk
+and when you spread risk it's like
+insurance if more people have claims out
+there and my premium go up right so I'm
+going to encourage things that make
+things
+safer right as a as a stakeholder in
+that system and so similarly here it
+feels like when we move to that right
+side diagram we're going to have more
+Avenues with which to create information
+flows among the parties that will
+actually drisk better than the left side
+and make it cheaper Stephen and then
+I'll have a point on
+that yeah I think this this this use of
+this diagram could be important because
+yeah the in a way I suppose this diagram
+on the left it's like you either just
+put in laws or to to mitigate those
+risks and challenges or the
+transdisciplinary tool that we have at
+our disposal is money money is the thing
+that everyone uses basically as the
+transdisciplinary allocation of what to
+do on projects and it doesn't is it's
+Pro highly problematic and there's not
+really a lot of other things apart from
+what budget gets allocated that allows
+that so is there a way that this can
+provide us and and and at different
+scales because sometimes yeah it's
+fairly clean at kind of a national level
+or you know you have your rulers level
+and the individual but most stuffs
+happen in in between as we're talking
+about how can we somehow get a handle
+which is not too
+culturally metaphoric ly uh constructed
+but it's is is is maybe relatively
+Universal I know it's bad to use that
+term but I think there's something in
+that in in in being able to say okay
+this is how this information gains
+happening this is how this you know and
+now you're starting to have a way to
+talk about um Dynamics um in ways which
+aren't normally possible yeah one
+thought on that and again to this point
+about you want to design the Nexus the
+interface in a way that is inclusive and
+accessible but respects that not just do
+people disagree but they have actually
+different visions and understandings
+about this whole system that we're in
+and so here's and then where we can tie
+it to this figure and how it could be Ed
+to communicate and maybe even organize
+around so on the left side it leads
+towards abstraction because it's like
+well let's let's wait until we're less
+um ambiguous and then once you have no
+ambiguity it's like well let's figure
+out out what the least risky policy is
+but guess what all the policies have
+risks and even if there was one that
+somehow had less risk than strictly all
+the others there's still Black Swan
+events and there's still people with
+different preferences for uh a given
+pipeline for oil or for a given fishing
+agreement so the idea that you're going
+to minimize risk for all parties in a
+way that they're satisfied with is going
+to be this Quest that you're going to be
+at the the drawing board quite probably
+forever let's contrast that with the
+right side and you know the the authors
+I hope will be okay with us taking wide
+latitude because I it's you know we're
+taking this figure beyond what y it's
+framed but that's what's fun right now
+let's go to that drawing board with the
+um the power plant and the Fishers and
+Ostrum and everything like that instead
+of just getting Frozen at the drawing
+board on the left so now we're on the
+right side and we're saying look we are
+at the drawing board so whether we're
+speaking through a translator or you
+believe that we have different interests
+we're here at the Nexus so Universal
+aside what's locally going to be working
+for our system well we have two
+imperatives we want to make maximum
+Information Gain but we want to maximize
+if you look at that ISO given P it's not
+Information Gain on the observations
+that's this part see how it's strictly
+in the O here's ambiguity about State
+observations okay this is maximizing
+Information Gain on States and
+observations given policy in other words
+words we're not just reducing our
+ambiguity about states of the world like
+give me a more accurate stock ticker
+this is like hey what's the most
+informative uh policy that we can enact
+to learn about the states so we want to
+query the markets in a way that isn't
+just getting increased Precision on
+viewing them and so now we're all at the
+table together so whether we believe
+ourselves to have or actually have
+adversarial interest in one dimension of
+300 or all the dimensions or whatever we
+have an expansive maximization growth
+oriented goal together which is
+implementing policy that helps us
+understand our system and the mapping
+between the hidden States and the
+observations better together now by
+doing that we're also engaging in joint
+action which will prepare us for larger
+and better action and what are we doing
+joint action to do well part of it is to
+be consistent with the kind of system
+Who We Believe ourselves to be but the
+other part the minimization what we're
+running away from the stick is disorder
+with respect to the observations so not
+with respect to us getting paralyzed
+about which policy but we want to reduce
+our surprise about our observations in
+the context of optimal policy okay so
+here how much CO2 is there really in the
+world and how much do we really make and
+what would be the riskiest policy and
+should we just remove gas cars and I
+mean you could go down this Rabbit Hole
+forever right here is here's a predicted
+trajectory here's different types of
+models and what they predict about the
+trajectory of CO2 levels through time
+and we want to reduce our uncertainty
+about that model together all kinds of
+people who believe different things
+we're going to reduce our uncertainty
+purely about
+observations as we jointly use policy
+together to learn more it's just such a
+positive way of framing it and again
+people are still going to disagree but
+we're coming to the table together so as
+long as we're not at arms and we're
+coming to the table together we don't
+need to go Universal we don't need to go
+culture free we just say we're here
+we're figuring this out today for
+ourselves now and for other people
+later and when you that's beautiful I
+mean I you're I can't wait till I have
+more facility with the concepts because
+what you're describing the processes
+you're describing are going to become
+governance it's not like we're going to
+find governance of the processes those
+processes will be governance that's
+going to how it's going to happen and so
+it's a very the question is you know
+we're we're on the left side how do we
+get to the right side what are the
+stages that we can do to move us over
+there how do we provide uh prepare
+ourselves as groups to be able to
+function on the right side in a natural
+organic kind of way one of the things
+that I've been advocating for is
+collecting practices from the left side
+but then having groups stare at the
+practices so you can say okay let's it's
+basically making different changing the
+assembly right the
+disintermediation of the left side has
+been done by the Internet it's done by
+covid it's done by the big challenges to
+those systems they reveal the
+limitations of those systems and so the
+disintermediation is done on the right
+side we're going to reintermediate
+because there is still mediation of the
+individual components in the system
+right they're brought together but we're
+reintermediate with a
+fundamentally it's it's fundamentally
+different in some ways in some ways it's
+quite similar and so one of the things
+that I'm interested in is trying to find
+ways to make it so similar that people
+don't even realize you know they or or
+they're comfortable with the move to
+this new framing of analysis very cool
+yeah
+Stephen and this this ties in as well
+actually this is so good that you've
+gone through this diagram it makes makes
+it very much jump out but this like the
+safe to fail approach of of trying to so
+if you imagine that policy wheel um the
+red wheel on the on the right hand side
+you know
+Act of inflence knows that that's really
+our choices are what we do with our
+policy we we a lot of what's out there
+in the world the hidden States you know
+we only have so much control over so if
+we're able
+to almost shift the policies in there
+and and knowing that they're safe to
+shift so these safe to fail experiments
+which is what they talk about with so if
+you do safe to fail policies which means
+that you can then observe the states
+observe the What observations observe
+the overlaps observe the Dynamics over
+time then you've got an awful lot of um
+new information that you can use and
+obviously the key is to do not to have
+something in there which will be um
+there this antifragile comes into that
+as well you know so you can learn as you
+do and and obviously knowing that there
+will be certain times when you got to
+pull away and stick to a you know risk
+minimization Focus but this you know it
+gives a way to talk about that probably
+to people from very different views of
+the world yep so another metaphor there
+with performance would be like a martial
+art and the safe to fail and the
+sparring and the play so there's times
+to play and you know for children and
+there's times to be serious but no
+matter what you're doing it's always
+serious because people can fall if
+you're walking you can fall if you're
+talking you can say something mean if
+you're you know holding data you can
+lose the data so everything is very
+important and so we need to have that
+resilience in mind one other way in
+which this can be used so this is um
+putting a little bit beside this uh
+purely like somebody at the table who
+doesn't want to communicate with us
+scenario so now we're in a situation
+where like people want to work together
+at least they've bought on to that level
+okay we're talking about the system and
+someone just has this figure up you know
+just as they do and Stephen you said it
+like what we control is policy we
+control climate policy you know what we
+don't control the climate but what do we
+control our climate policy we don't
+control biogeochemical cycles we
+influence them but we don't control the
+outcome and so people could be talking
+and someone's like well I want to see
+this okay you're talking about C you're
+talking about your preference vector and
+someone say or are we talking about the
+state of the world are you actually
+saying that this is how people feel or
+are you just stating your preferences
+about the world because it's fine if you
+want to you know I I want to learn about
+your preferences and remember your PR Es
+are the key factor that really go into
+our policy but our policy is not the
+same thing as the states about the world
+yeah so it's like okay now what are the
+observations someone says no no no
+actually it's 80% so okay your your
+inference is that this is 80% is that
+right well here's this observation oh
+well this study is biased okay well
+great let's you know what if it was a
+factor of two so there's so many ways
+just to have this figure up and someone
+says are you sure about that policy
+selection say Okay W it sounds like up
+here it sounds like we're in the
+metacognitive World we're thinking
+implicitly about our own group's
+generative model of this policy decision
+making process and it seems like you're
+uncertain about this and what are you
+uncertain about okay what could we
+figure what could we reduce our
+uncertainty about is it your preferences
+is it the way that your preferences and
+our uncertainty are being combined with
+the affordances and the niche into
+policy that of course is the hardest not
+to untie that's control theory and
+everything but you can at least say hey
+is it your uncertainty is it your
+preferences is it the niche perception
+affordances not just the preferences but
+the niche itself e the prior and is that
+being combined in a way that makes sense
+to generate policy because if you if you
+disagree with the policy which part of
+these was it because that's all that
+went into it so don't just say you
+disagree with a policy tell me do you
+want something to be do you value
+something that wasn't valued by this
+policy okay now that we're talking about
+a given policy do we have
+synchronization at least cely on the
+starting State not on all the details
+but at least like the starting state for
+our scenario and are we talking about
+states of the world do you believe that
+our policy is going to influence the
+beat you think that the cutting the
+miles per gallon to 20 is going to
+change the way that the hidden State CO2
+in the world changes through time you
+think it's going to do that well I don't
+think it's going to do that or I you
+know think it's going to do this instead
+and so now we have an interface okay
+policy is how states of the world are
+changing not just as a function of
+models of prediction but as a function
+of our interference in the system and
+it's going to be manifested in
+observables not just we believe that 80%
+of this will be happening by this future
+time but rather as a function of policy
+we're going to see these observables and
+if we're surprised by the observables we
+see along the way we're going to be
+course correcting and we're going to be
+at the same table again so there's so
+many actual structural ways to talk
+about this I think and and as well as
+narratively that people could even
+having this up maybe it could be simpler
+than this one maybe it could have a few
+more pieces but just separating out
+where people disagree it's like yeah in
+a legal I don't know yeah in a legal
+system I could imagine this being useful
+too oh well it would have to be recast
+as something that people wouldn't you
+know fall out of their chair because
+legal people don't like to see squiggly
+Latin and Greek symbols but but the but
+the absolutely no question I mean the
+way you described it what you're doing
+is you're really mapping I mean it's
+teaching and you're and and and and
+showing people you know whenever you
+have a map that says you are here you
+know when you're lost in the zoo or
+something like that and really it's a
+you are here map right so cge you know
+it's it's allowing more granularity and
+it's offering more dimensionality for
+Solutions right because if people are
+just talking about policy there'll be
+ambiguity if they're not talking about
+CG or E yes yeah what are your
+preferences C what what are the field of
+affordances e and the prior over those
+like the the quote nuclear option it's
+an affordance and it's the last resort
+so tied up in the affordance is How
+likely it is that's your prior over
+policies so you have the field of
+affordances and the prior about them
+then you have your preferences C I want
+to see a world where there isn't
+radioactive fallout and then you have
+your
+uncertainty and then those get combined
+in a way that is formalized with G and
+that relates to Pi policy selection
+being the outcome of the free energy
+being minimized which is again what's
+the most likely policy and someone's
+like wait most likely it's like right
+but most likely under the model of the
+world that you believe will happen not
+just the one that you think is like the
+run-of-the-mill because quote the
+run-of-the mill is not run-of the- Mill
+yep it's really interesting because I
+mean you're integrating subjectivity
+into an analysis of the
+reality in a formal
+way it has that I believe that this is
+where the Dual instrumentalism is the
+most powerful thing in the FP zone so
+the Dual instrumentalism again it's like
+there's it's also kind of like a Bailey
+and mot I don't know if that's being
+mispronounced but like where there's a
+strong and a weak form of an argument so
+again the strong claim would be this is
+what systems are and this is how they're
+um operating that is what a bacteria is
+that is what the Marco blanket is but
+the actual weaker claim is just we're
+going to use it as an instrument it's
+like we use linear aggressions to mod in
+Time series modeling to model GDP
+through time or regression of you know
+height versus risk for some disease it's
+like it didn't say people are linear
+regressions by doing that it did lead to
+a world in which certain types of
+conclusions were reached but it wasn't
+that people were linear models it was
+actually consequences so this is just a
+different statistical model and as we're
+exploring today and we continue to
+explore even qualitatively it helps
+structure messy discussions about
+adversarial relationships and in that
+way which we're only barely scratching
+the surface of like you know really
+formalizing the marov blankets around
+companies and things like that having
+this type of a structuring and being
+able to be uh disambiguous but it could
+be so much more it could be translated
+between languages it could be versioned
+it could have
+impartial um you know trust providing uh
+groups there's so much that could be
+done there and it's funny because so one
+of the books I have on the Shelf here is
+by hanaman it's called doing money and
+it's about how money is a universal risk
+consolidator so you know you get money
+and you can take care of your other
+risks basically so one of the things
+I've been wondering about is well money
+is kind of turned into Data because you
+don't really spend cash anymore so
+why can't data itself without being
+monetized be a universal
+risk um
+mitigator Stephen you cracked me up when
+you said that money was
+transdisciplinary I've never heard you
+know people say that transdisciplinary
+research but I've never it's so true
+though the Departments will pay each
+other in money they won't site each
+other but they'll pay each other so it's
+so true and so and so that but data can
+data now be and can this
+system because money we we you go to an
+airport you got to convert one system
+into another so there's different
+encoding of the bills themselves right
+okay so that's but but ultimately I
+always tell people if I walk out of if
+I'm outside a courthouse and someone
+says I just got a $10,000 judgment I
+don't know if it's for a divorce case a
+slip and fall I mean it's money it's
+$10,000 is identical you can buy the
+same amount of groceries but it could be
+for various different things that you
+were you were compensated right so in
+data it feels like this model might
+allow us to have data be a medium of
+exchange and maybe storage I don't know
+I won't go into that right now but a
+medium of exchange of risk without
+having to go through the monetary
+Loop very very
+interesting yep I I can kind of imagine
+some areas
+Stephen and this this might be where
+bringing the body back in can help too
+as we you know you talk about like
+there's there's money in my hand and
+there's there's money like we talk about
+when you get it for something and then
+there's Capital which is almost like an
+augmented um cognition process which is
+up there in the markets you know that
+we've offloaded onto and is very hard to
+embody what's going on up there it's
+it's like it goes off it does its
+calculation it comes back and we do what
+I mean half the people doing it are
+doing on screens who themselves are
+being proxies for other people you know
+so there's there's there's a question
+about um where this comes back into
+ultimate um sense making at different
+time scales y yep you Ivan was smiling
+before I didn't were you smiling at the
+money thing I let's let's maybe have
+yeah let's have uh anything you want to
+go there Ivon if you want otherwise
+let's have a little closing imagin you
+and new new money and new money of new
+people
+yep so maybe we'll have a final set of
+thoughts so prepare that but the other
+side um Scott of the the money uh
+trading in the airport is that uh in a
+healthy system every sale is
+bidirectionally consensual every
+agreement is not feeling forced it's
+like so somebody wanted your peso the
+other person wanted the Yen so they made
+a deal they met in a Marketplace they
+wouldn't have found it on Craigslist the
+operating cost would have been too high
+but somebody wanted it now when does it
+become deranged well when there's um
+extra Market forces that force people to
+do things or when there's um you know
+devaluation Market manipulation etc etc
+but again it's not like there's a pure
+untrammeled Market out there and then
+it's like oh regulation how dare they
+it's actually we construct the market
+it's like we're building the bowl so
+it's not just like there's a pure bowl
+and then you've defiled it by putting
+Clay on it it's like no what is the
+structure that you're going to be
+interfacing in and can that not just be
+imbued with our values which aren't
+going to always have justification
+they're often acatic but can it actually
+allow diverse agents to act according to
+their deeply held axioms so that there
+is ability of people who have different
+faith in different things and it's been
+a joke for so long oh you don't need to
+believe in the legit the government to
+use the currency of a Fiat and now we're
+just seeing it in a new light so it's
+it's really interesting that market may
+be just an emergence from the fact of
+information seeking in trades yep and
+also leveraging and how that's trust
+like there's Bitcoin on the blockchain I
+just these are the examples I think
+about um yeah but then there's the 10x
+leverag Bitcoin who legitimized that
+exchange or that person to um offer 10x
+leverage or some other type of asset
+based upon leveraged on bitcoin nobody
+gave that permission if that person or
+that operation is reputable um and to
+whatever extent it is it will succeed or
+hopefully and again anything other than
+that is dysfunction so there's a way to
+talk about that in a way that is pretty
+different from the reward optimization
+of different competing agents that's
+previous Paradigm reward optimization
+competitive agents and we're not just
+moving from competitive to to
+Cooperative it's actually not that
+simple it's actually more about from the
+uh reward to the Precision guiding
+mindset and that everything else Falls
+in line after that and the action and
+the Precision are the key pieces some of
+the key pieces and so that's the
+coherence lending Factor yes we want to
+be precise about process together that's
+the minimal meme not we're g to have
+abundance in the future but today we're
+going to have Precision
+here yep so it's really yeah it's a it's
+a different it's really fascinating the
+way it's going to iterate itself into
+it's more scalable but it's not yet
+scaled y you know I I think of it makes
+me think of adaptation studies I have a
+book on Cambridge book on adaptation
+studies in theater where if you take
+Romeo and Juliet and you translate it
+into another language you got a lot of
+work to do because there's a lot of
+phrasing and there's a lot of behavior a
+lot of things for adaptation what we're
+doing here is is just like a giant
+simultaneous
+adaptation
+vehicle right because everyone's coming
+in with priors and this system allows
+people to discover things that they have
+in common it allows them to act in
+common and that's going to have such
+huge
+power it won't and it won't be something
+that will create spaces for it it will
+create the space this the interaction
+space
+will evolve and then be and then it'll
+be parameterized in metrics and you'll
+know if you're in it or not there'll be
+certain behaviors that indicate you're
+in it right but it's it's that's why I
+always say the process becomes the
+governance it's not you don't that's
+what a lot of people there's AI problem
+right now not R AI but the artificial
+intelligence that everyone is trying to
+create everyone that I can find is
+trying to create systems to govern the
+people creating the AI but not the AI
+system
+itself and I'm thinking more along lines
+of azimov which is you need the rules
+for the robots themselves similarly here
+each one of these systems is a
+robot it's not programmed by us per se
+but it's caused by us and it has uh
+features that are the result of our
+desires and needs so it's programmed in
+that way corporations are robots I think
+they're programmed our constructed Niche
+is how we we would consider it it you're
+never going to break away it's intertwin
+with us it's in our Niche yep go on
+right right and so the so it's
+interesting because I think a lot of
+folks look at
+Authority like the Fiat money is I think
+the U us is a Fiat not just because of
+rule of law but because of a monopoly of
+violence we have the most guns and
+bombs and so that it's a violent it's
+violence and imperialism and all that
+stuff that's wrapped up in
+Fiat right there's a power there and I
+think the power is shifting from
+physical violence to other forms of
+information I w't use the word violence
+here but information Authority and it
+feels like the ability of this system to
+declare that it can get you closer to
+reality continuously it's dynamically
+it's like the scientific method it's
+dynamically rejiggering itself I
+wouldn't say closer to truth I would say
+towards a better process together yes
+dynamically that's right yep that's
+right there's no there is no end state
+of Truth yep but that value
+proposition is not characteristic of the
+current
+systems and so it has a unique feature
+of D Dr risks in a way that's
+much uh more effective than the current
+systems it requires people to do the
+Cooperative thing which is like I said
+with credit cards or ATMs or swaps or
+anything with
+mitochondria right you know your free-
+existing things have to come together
+because it's a better deal to be had
+right so that's and so that so the
+convey our conveying why there's a
+better deal to be had we can use the
+existing problems in the world climate
+change
+War it's not even a better deal it's a
+better negotiating table yes and that's
+that's always the reframe is always from
+there will be better states to we're
+going to seek Precision today yes
+beautiful beautiful and that gets back
+to that now versus past and future thing
+that I was struggling with before right
+we're not going to we're not saying it's
+better it's a it's a better way to be
+and we don't know where being takes us
+because that's we have models of it you
+have a model I have a model we have a
+model let's get together figure out
+where we want to be the reality is the
+combin the synthesis of those
+desires I guess as evolving Through Time
+Clos closing statement from first
+Stephen then Ivonne if he want then back
+to
+Scott well yeah I suppose that the the
+takeaway um and there was you had the E
+the G what was the third letter again
+there was um C is the preference Okay C
+I think that's really useful I think
+that's like a nice meeting point there
+between and I keep going back to this
+but ergodicity and noner it in the sense
+that you know as you get down to the
+smaller scales the body and I think even
+when you get into this Outsider
+cognition everything's got to follow
+that growth kind of erodic kind of churn
+and then you start to have this ability
+to bring in these non- erodic as we get
+to larger time scales and you know we
+even see as we get now to the state and
+how you can borrow money in ways which
+an individual can't we've seen this with
+the EU because they're not constrained
+by lifespan in the way that mortgage
+mortages are and so you've got this
+weird ability to bring in preferences in
+that um about of nonergodic sort of ways
+of just making a choice and creating
+deliberately steady state like a fe
+currency the whole point is it's steady
+and non erodic but we actually and this
+is where I think a lot the work with the
+indigenous cultures is they are they
+could say they're trapped in the old
+cyclical way of understanding the world
+but actually that gives you a way to
+tune into your deeper existential way of
+knowing about the long-term future
+because that is where your phenotype
+knowledge comes from not um you know the
+okay we have these structures that give
+us this ability to also do deep temporal
+depth but we do lose the ability to
+integrate free energy in such a new the
+dimensions come down and down and down
+and down to these kind of artifacts so
+yeah this is anyway this is what is
+coming up for me thanks well I hope
+Stephen that you and others can in the
+future you know listen back to what
+you've laid out and hopefully see it in
+a broader perspective what you were
+hinting at Ivonne any closing thoughts
+for 2020
+indeed yeah sure I just want to thank
+you all for brilliant discussion and
+it's the great discussion for the of
+this uh strange
+Year and I hope to see you all next next
+from the beginning from the
+January and thanks for your help in the
+project from the beginning really
+critical yeah so very chill Scott
+closing thought you guys are this is
+this is beautiful you guys are beautiful
+this is awesome I'm I feel like a
+metamorphosis I'm I'm I'm I'm GNA pupate
+a little bit and then I'm going to come
+out after the New Year's and be ready to
+fly with you guys this is this is really
+delightful and fascinating and I think
+it's going to be really um very helpful
+to a lot of problems that are out there
+in the world it feels like there's a lot
+of um uh solution space that gets opened
+up with this and in in introducing it in
+in digestible chunks so I always talk to
+my clients about where are you now now
+where do you want to be that's a tough
+one and and now I see why it's a tough
+one because it's in a way the wrong
+question where do you where do we want
+to be individually and then how do we
+synthesize and then what are the ways to
+get there and then you triage them so
+that's a standard thing I used to use
+now that's changing because it's a um
+the exploration of where we want to be
+is the answer to that really hard second
+question which is people have difficulty
+answering so thank you for inviting me
+on the journey this is great stuff so to
+close um on that um Scott you
+just you laid out a helpful way of
+thinking about it with just where do you
+want to go this is common goal setting
+who are we where do we want to go how
+are we going to get there but you
+brought in two pieces which is the
+values the values are what is not
+explicitly described but they're part of
+the preference and the policy and so
+combining all of these disperate threads
+together and not having one Heat engine
+for the refrigerator and one power plant
+for the other one but combining all of
+these threads together so we can have a
+discussion from multi-perspective so
+that's the Intercultural component
+multi-perspective but also bringing
+together these coextn values that we
+have for system function
+exploration so many other features but
+really um my closing thought is for this
+live stream that uh tomorrow probably
+I'm going to record a video called 12.0
+that is going to be the clock striking
+midnight on 2020 and then we will indeed
+head into a very exciting 2021 and
+Beyond so uh both of you uh well
+actually all of you I guess are uh RSD
+for the active inference lab so I'm just
+really looking forward to those three
+projects and just like you said Scott
+with the digestible bits live live
+stream has been our learning process
+we've all learned so much along this
+journey but now we all also want to be
+thinking about kic shorter content ones
+that have interactive Parts who knows
+but there's going to be yeah great
+things happening ahead so thanks
+everyone who's listening live or in
+replay thanks guys for
+participating fantastic and and happy
+New Year to everybody yeah happy year
+happy New
+Year wow what a discussion what a
+discussion all right well I'm going to
+to terminate the live stream so thanks
+everyone and I will talk to you later

@@ -1,0 +1,2012 @@
+---
+title: "ActInf Livestream #030.0 ~ “How to count biological minds: symbiosis, the free energy principle...""
+category: "Livestream"
+series: "Livestream_030"
+episode: "0"
+duration: "1:11:26"
+url: "https://www.youtube.com/watch?v=N3WUpVH8-D8"
+views: 145
+exported_at: "2026-02-18T22:37:37.778342+00:00"
+format: markdown
+---
+
+# ActInf Livestream #030.0 ~ “How to count biological minds: symbiosis, the free energy principle..."
+
+it's life
+okay
+it is
+hello and welcome everyone thank you to
+joining the active inference lab
+it is october 1st 2021 and
+i'm daniel i'm here with blue and we're
+going to be talking about this paper how
+to count biological minds symbiosis the
+free energy principle and reciprocal
+multi-scale integration
+welcome to the active inference lab
+we are a participatory online lab that
+is communicating learning and practicing
+applied active inference you can find us
+at the links here on this page
+this is recorded in an archived live
+stream so please provide us with
+feedback so that we can be improving our
+work
+all backgrounds and perspectives are
+welcome here
+and we'll be following good video
+etiquette for live streams
+we are heading into october and the
+number 30 paper about biological minds
+we currently have the author matt sims
+scheduled to come on the october 5th
+discussion and then we'll have the 30.2
+another participatory group
+discussion so check out the calendar
+here as well as these other series if
+you want to
+join or
+suggest somebody who we can invite
+today in acting stream number 30.0 the
+goal is to learn and discuss
+this paper how to count biological minds
+and it's by matthew sims it's from 2020
+in the journal synthese
+and just like all the other zero videos
+this is just an introduction to some of
+the ideas some background that blue and
+i whip together literally leading up to
+the time of now so it's just an
+introduction and if you want to
+go deeper into an idea then come to the
+discussion
+we're going to go over the aims and
+claims abstract roadmap of the paper and
+then the figures and so on
+so
+let's just get started with the
+introduction readings blue and what
+makes you excited about this paper
+you know daniel i'm always interested in
+studying intelligence and how that
+scales from
+the subcellular to the systemic
+ecosystem level
+um
+and so this is kind of an interesting
+take and it echoes a lot of what we
+talked about in
+the discussion of mike levin's paper the
+computational boundary of the self back
+in july so i was excited that matthew
+agreed to come on the live stream and
+i've been excited about this paper um
+just because it it takes active
+inference
+the multi-scale aspect of active
+inference
+in a really enhanced integrative
+direction
+how about you what did you like
+i liked that it combined uh some general
+ideas
+and questions in philosophy philosophy
+of biology and then tied it to the
+natural history of a specific species
+so it's all good you know make claims
+about distributed systems or the
+microbiome and the host in general but
+then
+tying it to a system that can be studied
+and has a cool
+ecological history is a good approach
+kind of grounds the paper
+here's the
+paper
+and how to count biological minds
+symbiosis the free energy principle and
+reciprocal multi-scale integration
+i'll
+read the first aim and then blue you can
+say something or read the other ones
+to support the notion of symbiotic minds
+and the notion of nested biological
+cognizers that falls out of it this
+paper will develop and deploy the notion
+of reciprocal multiscale integration
+from within the free energy principle
+multiscale integration describes the
+case where each of two or more cognizing
+systems uses the other to provide
+evidence for its own model of the world
+and itself acting in that world
+as a case study in support of the notion
+of symbiotic minds i will look at the
+symbiosis of vibrio fischeri bacteria
+and the bobtail squid
+i will argue that the vibrio squid
+assemblage constitutes a functionally
+integrated cognitive hole the markov
+blanket of which constrains those of
+vibrio and the squid
+and in showing how the notion of a
+symbiotic mind can be supported by
+reciprocal multi-scale integration
+within the free energy principle
+this paper contributes to the philosophy
+of cognitive science
+demonstrating that our folk
+psychological conception of what cogniza
+what cognizers are
+require rethinking
+moreover if the account of symbiotic
+cognizance presented as tenable by
+bringing into relief and accounted for
+at least one possible transition in
+cognition this paper contributes to a
+more complete understanding of the
+evolution of cognition
+so cool claims and the only kind of two
+halves to it of the general argument and
+the specific
+and
+symbiosis and ecological association
+have been
+approached in
+the free energy principle framework but
+i think this reciprocal component
+it's approached a little differently
+here than probably in some works but
+we'll get into that
+okay
+i'll do the first abstract one
+the notion of a physiological individual
+has been developed and applied in the
+philosophy of biology to understand
+symbiosis an understanding of which is
+key to theorizing about the major
+transitions in evolution from
+multi-organismality to multicellularity
+the paper begins by asking what such
+symbiotic individuals can help to reveal
+about a possible transition in the
+evolution of cognition
+it makes me think about the transition
+from a solitary insect cognition to a
+colony
+so there's the change in the level of
+organization and then is that purely
+cognitive do cognitive changes preceded
+do they follow what is the relationship
+between the evolutionary the
+physiological and the cognitive changes
+is what the first part is getting it
+the second part such a transition marks
+the movement from cooperating individual
+biological cognizers to functionally
+integrated cognizing unit
+somewhere along the way did such
+cognizant units simultaneously have
+cognizers as parts
+expanding upon the multi-scale
+integration view of the free energy
+principle this paper develops an account
+of reciprocal integration
+demonstrating how some coupled
+biological cognizing systems when
+certain constraints are met can result
+in a cognizant unit that is in ways
+greater than the sum of its cognizing
+parts um and yeah this paper just shouts
+out a lot to seth mary or smith
+mary a kid says last name and nader
+smith and you know the major transitions
+in evolution uh which is if you haven't
+read that book or thought about those
+transitions i mean you can even probably
+pick up a summary um but it's really um
+amazing to think about
+the evolution in terms of the transition
+from single cell to multi-cell and you
+know from asexual to sexual reproduction
+and there's you know i think seven major
+transitions that happened in the course
+of evolution and i think that this kind
+of
+is hinting at a cognizing evolution or
+cognitive evolution which
+we'll we'll get into a little bit later
+hey parker
+symbiosis between bee fishery
+bacteria and the bobtail squid is used
+to provide an illustration of this
+account a novel manner of
+conceptualizing biological cognizers as
+gradients is then suggested
+lastly it is argued that the reason why
+the notion of ontologically nested
+cognizers may be unintuitive stems from
+the fact that our folk psychology notion
+of what a cognizer is
+has been deeply influenced by our folk
+biological manner of understanding
+biological individuals as units of
+reproduction
+so that's a really cool point because it
+involves um
+our understanding of biology models of
+biology influence the way that we see
+the world which is kind of
+sounds by definition but it's really
+interesting because people have thought
+so many different things about different
+parts of biology about animal biology
+all of evolution
+all of the things we see
+so then how that
+intersects with our understanding of
+cognition and what cognitive levels
+exist what levels of individuality exist
+cool topics
+so just a thought here
+so what uh
+a biological individual like a what a
+cognizer is has been in uh
+influenced by our understanding of
+biological individuals as units of
+reproduction so is a cognizing unit a
+unit of cognition
+it's like
+is there a corresponding in
+to cognitive evolution as um
+corresponding units as there are to
+biological evolution sorry
+good
+so those are the main pieces
+the roadmap
+not that many sub sections starts with
+an introduction and goes through a nice
+description of the free energy principle
+which we're going to
+use
+in multiple slides here
+there's a distinction drawn which we'll
+also go into about mirror versus
+adaptive active inference
+multi-scale integration will be
+discussed
+and different kinds of multi-scale
+integration come up later on
+but then there's two sections about this
+specific bacterial squid symbiosis
+and then that symbiosis is returned to
+with this
+enhanced background on the
+uni-directional and the reciprocal
+multi-scale integration
+so that's kind of the overall roadmap
+keywords or anything to add on that blue
+all right
+keywords were
+free energy principle active inference
+symbiosis nested markov blankets
+multi-scale integration cognitive
+evolution emergence and physiological
+individuals
+so let's start with
+symbiosis
+so
+the quote from the paper was
+symbioses are cooperative heterospecific
+associations
+in which
+each symbiont partner mutually benefits
+from
+eg gaining nourishment shelter etc from
+the presence of the other partners
+so heterospecific means different
+species
+and uh this is a graphic and also those
+interesting the footnote that just said
+we're kind of talking about the positive
+mutualistic form of
+co-living
+not commensalist or parasitic forms of
+co-living or co-existing but even just
+looking at pairwise interactions before
+more complex loops are
+taken into account there's a whole game
+theory space of interactions
+so
+what should our models
+include cooperative interactions
+adversarial interactions
+uh which which one of these edges or
+relationships
+have what game theory what cognitive
+theories
+so it's a it's a cool approach to take
+on symbiosis that respects all the ways
+that different systems like a lycan
+versus a
+eukaryotic cell with a mitochondria all
+these different
+co-living
+styles
+so just a thought on that um
+you know all of these co-living styles
+are transactional whether it's you know
+through a
+voluntary transaction or just straight
+theft
+um these kind of associations
+remind me of how we're we're starting to
+scale into studying
+cities and states and thinking about
+debt right so like the debt that we have
+to each other like i borrow this or or
+you borrow that or i benefit you know
+you in this way and you benefit me in
+this way and
+that scales from
+the you know
+very basic biological unit all the way
+through
+ecosystems so
+okay physiological individuals
+so we're gonna come back to this idea
+of what's an individual but
+one
+wrote in is this quote so one way
+philosophers have addressed this
+question of individuality is by
+conceptually developing and applying the
+notion of a physiological individual
+a biological individual of this kind is
+a highly integrated functional unit
+the heterogeneous parts of which
+cohere together through regulatory
+processes
+like metabolic immunotolerance etc so as
+to maintain the system's integrity and
+resist environmental forces of decay
+and the citation to prado 2011
+looks at the
+role of the immune system
+and the interaction with the foreign
+with the other during development
+and uses that
+relationship
+to
+explore the the notion of the interface
+between the organism and the environment
+and looks at like the physiological
+story involving the microbe and the
+social niche and all these other
+components can come into play and that
+that is in some
+cases
+a better explanation or prediction or
+description
+of a certain scenario such as cool
+another cool topic what do you think
+blue
+so this this is cool the end of this
+quote i reject the idea that there is no
+possible distinction between the
+organism and its environment i just want
+to point that out
+because we'll come back to that in uh in
+two slides actually
+yes it's a qualification of the
+interface and the system but it's not
+the rejection
+that we just give up
+so it's towards useful partitionings of
+the system
+okay
+so
+two models of individual individuality
+more generally
+there was a quote in the paper that said
+the theoretical apparatus that falls out
+of the free energy principle may be used
+to arrive at an account of the kind of
+enrichment of living processes that are
+required for those processes to qualify
+as cognitive processes ascribable to
+physiological individuals so that's
+linking the cognitive perspective
+with the physiological perspective of
+individuality
+making good on the project of strong
+life-mind continuity
+so what models of individuality exist we
+have physiological and cognitive
+we have the um
+view that is going to be implicitly
+described as like folk biological which
+is the darwinian replicator evolutionary
+just a few other ones that exist there's
+like the teleological concept of
+individuality
+which is um the end directedness
+and the cons definition of the organism
+as an end in it in and of itself
+and that's when things are acting at the
+organismal level
+but there's probably a lot of distance
+between what was that simplification and
+what was written
+the information theory of individuality
+which i know blue you have something to
+add on and then integrated information
+theory
+as well as pluralism uh and a sort of
+historical perspective
+that
+looks at shifting boundaries of the
+conception of individuality and then
+tries to find some organization that
+doesn't even use that as a central
+divider i mean these are just some of
+the ways but just also cool like you
+know species but then there's so many
+species concepts but individual seems
+like that's the one that you can pick
+out
+but then it's not always that
+way well and i guess we'll come back to
+that
+remark when we uh talk about markov
+blankets here in a little bit
+um so
+the information theory of individuality
+i absolutely love love love love this
+paper um because for many reasons but
+but i just wanted to highlight um in
+this paper they talk about how
+individuality can be nested and it
+requires a bi-directional information
+flow which which i think that this
+distinction um is important right so
+there has to be like control from the
+top down and from the bottom up so
+information has to go both ways and that
+is what describes
+an individual so
+you know if you have um
+i'm trying to think of like a
+non-individual
+like like okay you can have someone
+broadcasting instructions through a
+megaphone you know right like like
+shouting you know like please move to
+the right please move to the right like
+so that that's like top down control but
+there's no feedback from the crowd like
+the right is blocked there's a path here
+or there's you know a gap here we can't
+walk through it or whatever if there's
+no you know feedback then that's not an
+individual right so you have this you
+know top down control but nothing comes
+back so in an individual there's always
+that that reciprocal uh flow
+and then the the forms of individuality
+that they highlight in this paper are an
+organism which is like you and me uh a
+colonial form of
+uh individual which is like a biofilm
+right and then a driven form and this is
+the part that goes back to that quote
+about i reject the idea that you know
+there can be no step or that
+an organism is not distinct from its
+environment and so in this enviro this
+is environmentally driven um and that's
+this last form of individuality that
+they highlight so it's aware like the
+nature of the individual is entirely
+dependent upon the environment and
+allowing for this type of individual to
+exist
+really allows the formation of life in
+the very beginning because if you just
+have collections of molecules
+you know without a boundary or a barrier
+that's environmentally driven and so
+without that uh
+organism being able to arise from its
+environment you don't get the origin of
+life and so i just wanted to just
+highlight that
+nice great points
+the next key word is the free energy
+principle or fep and this is from
+active livestream 14 from the illusion
+that carl firsten made to the wood lice
+and his kind of
+observations of nature
+leading eventually
+to
+an integrative approach
+that includes some of these areas like
+considering how multi-scale systems work
+and how collectives work so how things
+work laterally within a level like
+across and estimates and then multiscale
+like the colony inside of the ecosystem
+information and thermodynamics and
+control theory and action selection as a
+type of inference
+we're going to
+hear it here from the author and look
+through the four main
+points that they drew out of the fep
+so this is again
+coming from
+the sims 2020 paper so read for more
+detail
+the free energy principle
+starts from a particular view of life
+that is grounded in statistical physics
+so that's
+an introductory claim an interesting way
+to start
+and again just pulling a few highlights
+out to to get at this first key point
+a biological system is one that self
+organizes to a limited set of attracting
+states that is far from thermodynamic
+equilibrium so there it's like our body
+temperature is kept above the room
+temperature
+far from the sort of naive chemical
+equilibrium
+and that's being maintained despite
+dissipation being a prevalent in the
+universe
+and that
+resistance to falling to equilibrium is
+called the non-equilibrium steady state
+density
+importantly the nest density
+towards which an organism's dynamics
+flow corresponds to its phenotype i.e
+its regular patterns of behavior
+morphology and physiology to find itself
+in its characteristic or phenotypic
+states provides the organism evidence
+that its behavior is countering
+dispersive effects of random
+fluctuations
+so
+even static seeming phenotypes like the
+length of your femur it's actively
+maintained by
+cells being renewed and the turnover
+rate and so on
+so sometimes it's easier to think about
+some phenotypes like cognitive
+phenotypes as actually embodying
+parametric values that are being kept
+away from equilibrium
+other times for more static components
+of phenotype it's not that way but it's
+just a cool way to think about phenotype
+as just these measurements that are
+stable over some time frame about the
+world and the persistence of those
+measurements through time
+represents
+the implementation of some strategy that
+resisted dissipation
+hence the maintenance of a
+non-equilibrium steady state through
+some kind of strategy
+anything that
+blue no
+the second
+the right the this brings us to the
+second primary feature of fep
+the markov blanket formalism
+this is used in the context of fep to
+describe a particular kind of
+statistical organization of a system
+relative to that which the system is not
+namely it describes the statistical
+partitioning of internal states and then
+using just the variable names as they
+are here
+internal states are
+the external states phi
+and the sensory states s active states a
+these latter states being
+in the markov blanket which are the
+sensory and the active states
+so what what about this blue
+just i mean we've talked um well on the
+live stream a lot about markov blankets
+and how they can be used to describe um
+or or individual individuals so really
+or to delineate the boundaries of an
+individual and technically the the
+markup blanket
+defines conditional independence
+so like
+under what settings or under what
+settings are these two systems
+conditionally independent
+yes
+so there's some interface that is being
+used and there's a conditional
+independence across either side but yeah
+cool a topic that's come up many times
+and i'm sure this is not the end of it
+this brings us to a third essential
+feature of fep
+the notion of a generative model
+a generative model is a probabilistic
+model that describes how the evolution
+of sensory states of a markov blanket
+could be caused by external states
+it captures prior beliefs in the form of
+probability distributions about
+unobserved external states
+and a likelihood mapping external states
+to the evolution of sensory states
+such models are quote implicit in the
+dynamics of internal states
+palacios at all 2020.
+so
+the mapping between
+external states and the evolution of
+estimates of internal states is this a
+matrix
+that is connecting the observations
+being made through time
+to the s matrix so that's a
+bi-directional relationship with the
+generative and the recognition model
+that's the tail of two densities
+but that's the signal processing uh
+sort of uh
+sampling the external world
+and then having an ongoing estimate of
+world states which could be just
+unobserved world states or causes in the
+world then there's how those states
+change their time b
+how policy interacts with how those
+states change through time pi
+d the prior over the states
+and then the decision making of pi with
+the c g and the e so this is the
+partially observable markov decision
+process
+the pomdp
+framing and it's not the only way we can
+look at it but this gets like many of
+the key
+variables down which is why we and
+there's uncertainties on all of these as
+we've found so
+this just gets a lot of the key pieces
+down
+the generative model could have a
+different structure though this is not
+the only structure
+okay
+good
+so here is from the paper
+importantly uh
+you want to read this one
+sure
+importantly a systems generative model
+may be cast in terms of its
+non-equilibrium steady state
+to see how this is the case requires
+understanding the notion of dual
+information geometry of self-organizing
+systems and he gives several citations
+one of which i guess is this one yep
+so this is just giving the first
+description
+uh not like first in literature just
+like a first introductory description on
+this dual information geometry
+this dual aspect concerns the intrinsic
+information geometry of the
+probabilistic evolution of internal
+states
+so that's like the actual if there's a
+million neurons and they can each take
+10 states
+that's this
+the geometry of the internal states is
+like that many neurons can take on that
+many values that's the internal
+true state space of the actual internal
+states
+and the separate
+in
+extrinsic information geometry of
+probabilistic beliefs about external
+states that are parameterized by
+internal states
+so that n neurons could be fitting a
+binary model is the light switch up or
+down
+or it could be a three-state model is it
+up down or not either or both
+whatever it's specifying that is a lower
+dimensionality
+than
+the actual state space so it's like
+there's a lot of
+decisions in the whole computer but then
+there's this external
+realized component that's a smaller
+state space
+the extrinsic information geometry we
+call these intrinsic ie mechanical or
+state-based
+and extrinsic i.e markovian or
+belief-based information geometries
+and uh
+wanja has come on just to discuss
+several papers so definitely
+look at the work by all of these authors
+because it's like
+interesting topic we could probably
+learn more about that and i know there's
+people who are
+listening who know more about it
+okay
+here
+is
+those intrinsic and extrinsic
+information geometries
+being used in
+i think the sims paper
+but
+uh
+not 100 sure actually but we can see
+either that or it's in this previous
+fristen paper
+so there's the probabilistic flow the
+system states over time that's the
+intrinsic geometry
+and that's that yeah what i think this
+is the first paper okay okay and here's
+the extras so then
+basically this is just a visual showing
+the higher dimensionality of the actual
+components of the system that can
+project onto like just two
+lower areas
+okay
+the fourth
+part
+of fep
+uh in the sims paper this brings us to
+the fourth primary feature of fep
+active inference
+um
+i'll read the yellow and then
+you can give a thought on where you
+think acting fits in
+fep proposes that living systems are
+able to resist the second law of
+thermodynamics in virtue of avoiding
+sensory states which are deleterious and
+actively bringing about those sensory
+states which allow them to maintain
+their structural and functional
+integrity
+it is by engaging in this coupled
+process of active inference that an
+organism minimizes not only current free
+energy encountered but expected free
+energy i.e the free energy that would
+arise were a particular action policy
+selected and followed
+um so instead of giving a thought i'm
+going to give
+an author's thought
+on this
+just to read a quote from the paper the
+reason for using the free energy
+principle to investigate and argue for a
+symbiotic mind is not only because the
+quantity free energy provides a measure
+of cognition across
+spatiotemporal scales but because the
+free energy
+principle and its various corollaries
+suggest a plausible criterion for
+identifying biological cognizers across
+various various spatiotemporal skills
+so that's why they touch the fep um just
+for that reason which i thought was nice
+i'm going to ask a nice question from
+the chat from stephen
+wrote
+is there a dual information geometry
+between intrinsic and extrinsic states
+of active inference
+and another dual information geometry
+between action stage estates and niche
+spaces
+can i give a first answer
+please okay
+i would say that
+the total state space
+which includes the variables for the
+internal the blanket and the external
+space
+that's
+the shape it is
+and then there's going to be sub shapes
+like you could only look at the blanket
+and the internal states that's the
+particular states
+so that's partitioning the system of
+interest away from the niche
+or you could look at it in a in a four
+way or
+there's probably a lot of other ways but
+it seems like the full model is the full
+geometry and then there's going to be
+some reduced geometries
+and then stephen clarified i.e a dual
+information geometry in relation to the
+generative model and what it is modeling
+and a dual information geometry between
+what actions are happening
+and the niche modification
+i think that gets at also that sigma
+mapping function in the decosta paper
+with like okay after there's conditional
+independence
+of the kind that the markov blanket
+partitioning provides there's still so
+are some internal
+state partitions in the world that
+maybe do some prediction about or
+anticipation about external states so
+it's as if they're estimating external
+states
+let's talk to somebody who knows
+information geometry
+that's it i was going to say but my
+guess would be depends on where you put
+the mark on blanket but definitely i
+think uh anybody out there who's
+listening that knows about information
+geometry i'm curious to take a deep dive
+down that
+path so
+so i encourage you to get in touch and
+contact us come talk to us about
+information geometry because i would
+like to learn some more
+there was a distinction drawn in the
+paper between adaptive and mere active
+inference so i actually don't think that
+this has come up
+we've seen several distinctions like
+instrumentalism and realism in terms of
+the interpretation but this is i think
+another
+relevant distinction
+fep falls short of making the claim that
+all markov blankets draw a line around
+cognizers
+it has been suggested that what
+determines whether a living markov
+blanketed system is cognizer
+is whether or not it is the kind of
+thing which engages in adaptive active
+inference
+rather than mere active inference
+kirchoff 2018
+adaptive active inference requires that
+a system autonomously engage in active
+inference maximizing sensory evidence
+for its own existence so there's been a
+coupled oscillator model
+as well as the uh flywheel governor
+model another classic kind of mechanical
+regulatory system
+and uh
+as well as the discussion well does a
+rock have a markov blanket that type of
+question
+and so this is from the kirchoff 2018
+paper just drawing the distinction
+between mere active inference which is
+like the ability to draw a partition
+around a system at all to distinguish it
+from its niche and its interfaces
+and then
+its generative model could be like
+nil or boring or just a coin flip
+to contrast that with adaptive active
+inference which is actually the inactive
+sensory motor affordance semantic
+coupling i'm a strange loop type
+system what do you think about that blue
+so i wonder you know when we talk about
+um
+active inference and adaptive active
+inference
+adaptive active inference um
+implies more than just
+mental action or maybe mental action is
+sufficient but but i think
+i feel like adaptive active inference
+implies that there's more of an action
+component and you know we've talked
+about situations where where
+you can have active inference occurring
+without necessarily taking
+an action or maybe a mental action um
+you can actively infer what's happening
+in the environment without
+performing some kind of action that's
+adaptive to it
+i don't know maybe that's that's that
+exactly it's action and non-action it
+can be adaptive to not act so is that
+mirror
+waiting good question right
+right right and also like you can have
+adaptation that's occurring in the brain
+like you adapt to a noise in the
+environment like it's super loud and
+sound super loud but then eventually
+your brain adapts so are you still is
+that mirror or is that adaptive
+nice so
+emergence
+do you want to read whatever or say
+whatever you'd like to say about
+immersions
+sure so um this is just the wikipedia
+definition so i'll just read it um
+emergence in philosophy systems theory
+science an art emergence occurs when an
+entity is observed to have properties
+its parts do not have on their own
+properties or behaviors which emerge
+only when the parts interact in a wider
+hole
+and i just
+included these
+references
+so so that that definition kind of
+echoes integrated information theory of
+consciousness which
+again implies that like consciousness is
+this emerging property when the parts
+are interacting and create something
+that's bigger than the whole and then um
+both of these um wait oh yeah so both of
+these papers um the roses paper and then
+this paper by varley and eric hole
+start to get into the mathematics of
+emergence and they use similar
+metrics it's like they use the partial
+information decomposition over the the
+five metric that's used in the
+integrated information theory of
+consciousness to kind of quantify
+emergence like what is this
+how much is this emergent property or
+it's what degree is this an emergent
+property of these parts um and then what
+this is a strong and weak emergence um
+paper that you you included daniel oh
+yep so i just i saw it it was really
+cool that first that you
+chose some papers from people in the
+active inference community and that
+their recent papers like within the last
+year or two
+so just shows that there's development
+on these topics and that's interesting
+to think about and then i just thought
+to throw in a third like two truths and
+a lie but like
+two newer citations and one older one
+just the qualitative distinction between
+strong and weak emergence
+was influential by mark badao from 1997
+and
+that paper says i conclude that the
+scientific and philosophical prospects
+for weak emergence are bright and so
+it's easy to be like oh i want like the
+best version of whichever thing but in
+the paper it distinguishes between
+strong emergence as being sort of the
+metaphysical discussion
+about
+how holes take on meanings
+greater than the sum of their parts and
+sort of all versus none like snapping
+into existence in this kind of
+semi-magical way
+versus weak emergence like the ant
+colony the city the actual complex
+systems that can be modeled and so that
+kind of operationalized emergence while
+allowing a channel of
+metaphysical discussion like you just
+mentioned consciousness and other people
+bring up emergent properties
+consciousness all the time like
+integrated information theory it's an
+integrated information theory of
+consciousness so
+it's kind of just interesting how
+there's like a metaphysical thread
+in what this integration means
+as well as a uh operational and a more
+empirical side of this
+discussion
+and i also saw a recent 2021 paper i
+can't remember the author but um dealing
+with fmri and emergence like
+in fmri which is kind of interesting i i
+didn't i didn't include it but um i
+thought that that was cool it was 20 21.
+okay um
+that's the mark of blankets go for it
+that's it so again this camp this comes
+from that uh here cough paper 2018.
+um and you know this this figure is
+called blankets all the way down um so
+you know here they show a single-celled
+organism and they predict what they they
+illustrate one more conflict i model the
+world um and then you have a multi-cell
+organism a blanket of blankets that says
+we modeled the world
+um and then here it shows a pontiff that
+shows blankets within blankets we model
+ourselves modeling the world and that
+was something uh interesting that david
+krakauer actually said at the summer
+institute um this last summer he said
+you know humans is one of the things
+that makes us
+uniquely human is that we build models
+of our model
+we build models of our models um so i
+thought that that was interesting
+cool and then on the right side so
+there's the uh
+ppp example protozoa plants pontiffs
+and then another
+cyber physical way that the markov
+blanket concept and the partitioning of
+systems this way is being used is in
+digital systems
+so this is like
+a team member and then there's
+a certain type of blanket that they're
+interfacing through in terms of sense
+and action
+and the database can also be thought of
+as having different kinds of sensory and
+action
+states as well as internal generative
+model it's dealing with a different
+external set of states
+that's from the vayatkin at all 2020
+paper
+how about
+multi-scale integration you can go for
+it
+so i'll just read the yellow here um and
+so this is from the ramstead owl paper
+2019 which i think that that's where
+this figure is from and then there's
+also the hess but owl 2019 paper
+it says the multi-scale integrationalist
+view is a pluralist's theory about
+cognitive boundaries it uses the notion
+of nested markov blankets to demonstrate
+that cognitive systems have a plurality
+of ontological boundaries each relevant
+to the study of cognition
+according to this view each of the
+spatio-temporally nested components of
+this cognitive system may be
+ontologically picked out by deploying
+the markov blanket formalism at
+different scales
+and that's what we were talking about
+earlier we talked about individuality at
+different scales and we talked about the
+markov blanket
+individuating systems so
+so this is just
+one way that multi-scale integration can
+be approached
+but before the markow blanket even
+was an idea there was other approaches
+to partitioning multi-scale systems
+so let's just go right to the author's
+distinction in the paper
+of what uni scale
+integration is
+and how it relates to the adaptive
+versus mirror active inference
+discussion and this is a question
+stephen also raised in the chat
+so
+multi-skill integration so that's that
+nesting of systems within one another
+just
+not i'm intentionally not adding any
+adjectives just any kind of nesting
+systems
+multi-scale integration of living
+systems that failed to possess
+the high degree of autonomy required of
+adaptive active inference
+and hence fail to be cognizers continue
+to engage in mere active inference at
+fast time scale eg a mitochondria in a
+cell
+so that is visualized here before
+returning to the quote like the circular
+nodes on the bottom let's just say are
+doing mere active inference they're
+simple sensors or actuators
+and then they sort of just in a very
+clean way
+lead to increasingly
+weakly emergent behavior that starts
+approximating adaptive active inference
+so for example you have a python script
+that is adaptive active inference just
+so we don't have to even debate whether
+you know snails or birds are doing it
+just you write a script that is adaptive
+active inference the sub functions
+within it
+even though they might have an input
+output structure
+and even a generative model
+they're going to be a lot more
+mechanical
+or simple or linear not displaying the
+properties of the actual active agent in
+the python script at the higher level
+so that's describing this process of
+uniscale integration
+and
+then
+just the paper describes more about how
+adaptive active inference at the slower
+scale of the cognizing system that's the
+thought bubble here
+drives the continued integration of the
+nested markov blankets at scales below
+it and not vice versa so the pythons
+variables drive the patterns of the
+computation of the lower level functions
+but it does those don't meaningfully
+feed back into higher level
+properties
+so adaptive active influence at the high
+end
+and then that's just being merely
+explained mechanistically
+by unidirectional integration with
+systems that are decreasingly
+cognizer-like
+on some continuum of cognition
+so i i like the the term that's used
+here and i think i'll highlight why when
+we come to um the nested cone slide
+but he says the behavior of constituent
+nested markov blanket systems are
+enslaved to the slower dynamics of the
+autonomizing cognizing organism so i
+like this concept of enslaving
+um the sub routines
+okay
+cognitive evolution do you wanna say
+anything
+uh sure so this is um
+just i'll just read this little excerpt
+from the people paper because the author
+didn't technically use the term
+cognitive evolution and i thought that
+it might um refer to a couple different
+things but uh i'll read this quote
+because i think it's maybe highlights
+the the point that the author was
+getting at so this is a question about
+the kinds of physiological individuals
+that we can reasonably ascribe the term
+cognizer to it's a question about how to
+count biological minds the significance
+of this question lies in the fact that
+its answer may be used to shed light
+upon possible major transitions in
+cognition perhaps there are many such
+transitions the move from reflex
+behavior to sensory motor coordination
+the move from non-sentience to sentience
+to move from
+individual intentionality to group
+intentionality which this again echoes
+the the major transition of of evolution
+um so cognitive evolution i thought
+about it in a couple ways and we're
+coming to the cone slide next so maybe
+we'll make a flow forward
+so
+you know i thought that that's one way
+that we can think about cognitive
+evolution from like the transitions in
+evolution from say multicellular to or
+single cell to multicellular um but here
+this is from um mike levin's paper the
+computational boundary of the self and
+you can see this is like
+the the cognitive um cone right so so
+this is the cognitive cone of an
+individual that the like cones that were
+you know inverted and used in this way
+but you can see that the the cognitive
+cone of a tip
+is much smaller than that of a dog is
+much smaller than that of a human and so
+perhaps this cognitive evolution is um
+you know in terms of of
+scale of of the organism or or
+you know cognitive capacity of an
+organism
+but mike here uses this uh idea of
+nested kind of this multi-scale nested
+cognition
+and here it's
+shown here the cell the organism the
+colony to represent these
+compound intelligences and when we
+talked on the stream back in july like
+we talked about the warping of the um
+the the cone that like the bigger cone
+but like so the colony enslaves the
+behavior of the organism enslaves the
+behavior of the cell and so this goes
+all the way down and that's why i liked
+um what uh matthew sims his term
+enslaving um in these nested more
+complicated structures um because and
+the idea that like if you were to grab
+and twist the top of this cone you would
+grab and twist all the cones in it
+depending on how tight you twisted right
+so so i like this idea of enslaving the
+behavior and this was a good visual to
+kind of tie that all together
+that terminology also arises from
+synergetics from hakken not fuller as
+they say
+um and this is footnote 10 an order
+parameter is a notion taken from
+synergetics and used in
+dynamic systems theory
+it denotes a measure of a global
+system's macro scale unstable slow
+dynamics that's like the sleep wake
+that enslaves the fast dynamics of
+microscale component systems that's like
+the eeg rhythm and results in a globally
+emergent pattern so it's about
+multi-scale systems organizing but
+synergetics
+hackin not fuller approaches it from a
+dynamic systems fuller approaches it
+from a geometric perspective so there's
+other ways to do this partitioning mark
+how blanket is not the only partitioning
+out there
+but this was cool about
+also
+um levin's partitioning which we just
+got to learn about
+all right on to the squid
+so i i don't know if these are the exact
+right species but
+one of the key uh
+empirical examples of the paper the one
+that's uh followed up on do you want to
+describe the system
+um
+sure well so i mean the vibrio fischeri
+um are the bacteria that colonize the
+squid and yes it's the hawaiian bobtail
+squid and shout out to michelle
+nishiguchi and her lab that like was the
+lab underneath my lab when i was in
+biology lab so the juvenile squid um
+recruits the vibrio fisheries into the
+what's called a light organ and that the
+bacteria are bioluminescent um and so it
+becomes essentially like inoculated with
+these um and so then it says i'll just
+read this because it's easy it's
+probably a better description so it's a
+nocturnal predator of the shallow reef
+um the berries and sands during the day
+and hunts at night so it's always
+whether or not it is preyed upon it's
+always influenced with
+this association with these
+bioluminescent bacteria so the juvenile
+is inoculated into the light organ by
+through seawater
+and then the host promotes the
+colonization of uh vibrio fisheries and
+only vibrio fisheries through the
+production of mucus um which is bacteria
+and food the elimination of competing
+bacteria through hemocyte defenses of
+its innate immune system and the
+eventual shedding of the ciliated
+dependent appendages and swelling of the
+crypt membranes preventing further entry
+into the light organ so the switch sucks
+up the vibrio fisheries says we want you
+we only want you
+all of the other bacteria we're not
+going to allow them like we're just not
+going to facilitate that interaction um
+and then it says following gradients
+gradients of chitin which they feed upon
+vibrio fischeri migrate deeper into the
+crypts of the light organized organ
+colonizing it and causing a biochemical
+reaction resulting in their emission of
+bioluminescent light
+this occurs just in time for the
+bobtails nightly comfort prey and
+something else i thought that was
+important for this um
+cycle is that they're expelled every at
+the every morning
+right like so they just get out like so
+so like they colonize the the vocal
+split colonizes and sucks up all the
+bacteria they multiply and divide inside
+of the of the squid and then it shoots
+them out so they're back in the sea
+water and they're available for
+recapture by other um
+squid
+nice so
+we're going to return to
+the markov blanket partitioning
+and then
+consider that
+squid system and how
+using the mark out blanket partitioning
+we can distinguish between
+uni-directional and reciprocal
+multi-scale integration
+so the nomenclature in this paper are
+the internal states maybe because
+there's r in the word
+then s and a are the usual words for the
+state
+of sensory sense states coming in to r
+and then active action states going out
+of r influenced by so these are like the
+set of isolating nodes
+from which
+knowing them you're knowing as much as
+you can about r the internal states and
+then here
+phi or v i don't know which one it is is
+the external states
+okay
+yes
+okay
+figure two is where we uh turn to these
+two different kinds of multi-scale
+integration
+and directly compare them using
+kind of the nomenclature and the
+contribution i believe of this specific
+paper
+so to understand
+the difference
+uh i will deploy the terminology of
+users you and resources are
+users are living systems the internal
+states of which inferentially generate
+subpersonal predictions that allow them
+to use other markov blanketed systems
+that are external to them
+so here is like the spider making its
+web
+so it's a user of this extended
+cognitive resource
+and so we can imagine that there's a
+mark of blanket partitioning
+that's around these entities
+like we don't need to deny that there is
+a partitioning between the web and the
+spider
+we can think about it using this u and r
+maybe this unr is a partition we can ask
+the author like is it a partitioning of
+just markov
+blankets from each other is there going
+to be some sort of interface is that the
+niche or
+that's the unidirectional case
+the bi-directional case
+is where those two interacting systems
+in the same way that the spider can be
+thought of as the unidirectional user of
+the resource of the web that the two
+interactants
+are sort of using and benefiting from
+each other as an extended cognitive
+resource
+so that is the
+one of the main points of the paper
+looking at that difference between
+kind of mere
+multi-scale systems and then ones where
+it's not just like a ladder it's almost
+like a conversation
+that is giving
+some new emergence
+outcomes
+very cool okay
+the next slide just shows some more
+discussion on the
+new
+u and r relationships that arise
+and then how the new non-equilibrium
+steady state density arising from that
+interaction
+then
+in the synergetic sense acts as a
+ordering parameter for u1 and u2 so the
+constituents are part of a new
+ordering regime
+because of the bi-directional
+relationship
+to be clear each constituent biocognizer
+continues to engage in adaptive active
+inference acting in ways that ensure it
+remains statistically separate from its
+environment
+so again in the unidirectional case it's
+mirror active inference on the bottom
+that becomes increasingly cognitive as
+you go towards some level of
+autonomy like a pyramid scheme
+this is like a different structure
+where there's increasing levels of
+autonomy of different kinds of
+interacting systems
+and then there's sort of a bigger
+wrapper around that
+okay
+cool
+it's like the the interaction creates a
+new cone a new tent it builds a tent
+yep makes sense
+though then
+uh
+this slide
+brings this emergence from the
+functional because it's one thing to say
+that the functional um you know these
+two brain regions get coupled together
+now there's a functional difference in
+their firing rates that's kind of a low
+mechanistic bar
+the higher bar to pass is this concept
+of ontological emergence like it really
+becomes
+a thing in and of itself
+and
+the authorized that's related to these
+two ideas
+that uh first that some properties of
+the macro system cannot be reduced to
+the structural properties of the
+component parts and they're governing
+microdynamics so that's sort of
+anti-reductionism
+or holism where that exists there's a
+strong argument that you're kind of
+losing something if you keep on
+dissecting
+and then two because of this irreducible
+properties
+a macro level system has ontological
+status eg is an entity in its own right
+so that just is a good question to think
+about and to ask the author just which
+systems are unidirectional integrators
+which systems are
+bi-directional
+how do we know
+why does it matter
+those are just all
+good questions to ask
+so another question that i have is
+to what degree
+does do these new properties have to
+exist like if we're going to quantify
+emergence
+in the very quantitative sense
+is it any number greater than zero
+or
+where are we drawing the line at
+what
+number of emergent properties or what
+quant what quantity of new properties
+creates a new system
+yeah it comes up with uh integrated
+information theory and a lot of other
+quantitative measures of
+integration and consciousness because
+it's like okay so if this system's one
+and this one's a hundred thousand
+are you gonna have now a second level
+theory like 500 is the cutoff or is it
+true that i could you know trade one of
+these for 100 000 of these like once you
+start putting everything on a numerical
+value
+and then that becomes your action
+selection metric oh
+if it's worth the square root of this
+then it's worth this
+so it sets up a market for action based
+upon these metrics
+which is pretty interesting that's a
+bi-directional emergence
+definitely figure three
+is using the markov blanket partitioning
+to look at the squid system
+so uh
+the squid is like user one resource two
+so for species one it's the squid
+bacteria system so resource species pair
+one is the squid and it's first user and
+second resource v fisheries u2 r1
+so these show the two kinds of
+interfaces like they're encircling each
+other
+so it's kind of like embedded one is
+embedded within the other
+from a causal
+perspective they're the niche for each
+other
+because even though when you put them on
+the two-dimensional map they're all just
+like flat there on the plane
+their nearest neighbors
+are either themselves or the other one
+so that's kind of a cool way to
+expand the topology
+of the just the histology of
+the tissue
+and then pull out like actually you know
+each beta cell in the pancreas is
+surrounded by other cells that aren't
+beta cells something like that and the
+other ones in a weird sense are also
+surrounded by the other kind of cell
+even though there's a lot more of this
+non-beta cell type so just a cool way to
+look at tissue interactions from the
+mark all blanket perspective
+you want to describe for or what
+sure
+or what
+so so here in this um figure it shows
+the the squid cycle um which we have
+talked about uh we just we just kind of
+talked about it so um
+it shows at time zero
+the squid is resting after venting um so
+there's some
+vibrio fishery left inside of the squid
+they're not like you know sterilizing
+themselves and so there's this is the
+repopulation
+of um vibrio fischeri and so then after
+12 hours there's a high density of um
+vibrio fischeri
+and then it shows this degree of
+interest so on the y-axis degree of
+integration is the degree of
+biocognitive individuality and so right
+here when there's the most squid inside
+vibrio fisheries um that's when there's
+the peak of integration presumably
+because the squid with you know three
+vibrio fisheries inside of it is not
+going to light up but when it
+concentrates it has a whole lot of the
+vibrio fischerite inside of the light
+organ then that's when it's luminescent
+um and that's when you know the novel
+properties so like not the you know
+well the you know vibration right alone
+wouldn't be sufficient to be um like
+there's not enough of them to be you
+know luminescent
+and then the split alone without the
+vibrofisherie doesn't light up and then
+it's not capable of of predation in the
+way that it normally does
+and so it's the peak of integration
+happens right before the sun comes up
+and then at dawn the vibrio fisheries
+are expelled
+and then the bioluminescence is over so
+that's that's kind of when there's no
+um integration between the two or
+limited or minimal integration between
+the two species
+thanks for the explanation so a few
+things on this
+it's like there's no single cut off this
+dashed line it's kind of like
+how many grains of sand in the heap
+like one
+is usually you know too few
+but 100 maybe you're getting there
+so
+it's this continuum of
+cognitive embeddedness
+and of emergent function and there is an
+actual time
+that that is most functional and that's
+just because the world has an actual
+structure where there's a certain time
+where there's the most light and it's
+the darkest outside
+and then there's a time where it's
+ineffective so if we can discount it
+when it's ineffective and low density
+and we can say that this is like the
+peak of that
+natural variability when it's the most
+bright
+of the bioluminescence and the most dark
+outside there's something
+that's varying between those two levels
+and so this was just a cool way to show
+that that there's a smooth
+increase and that it's a little bit like
+model specific where
+we choose to draw the line with the with
+who's the biological cognizer
+so this was a cool pattern and to
+include the environmental variation in
+the cognition so it's not like here's
+when you're good at taking tests or not
+it was like here's the environment as it
+changes and then here's how the organism
+is
+this reminds me of like you know
+building a nightlight out of fireflies
+so i don't know in california do you
+guys have fireflies there when i was a
+little kid they were everywhere on the
+east coast and so we would catch
+fireflies but like how many fireflies
+does it take to make a nightlight like
+you can't have one fight well it depends
+on the size of your jar
+and how many can you catch like you
+can't create a nightlight with one
+firefly like there's just not enough
+light but if you get like you know 20 in
+there then you have a good like
+nightlight
+so true how many make a party
+right
+okay this is fun um
+implications of the vibrio squid
+symbiosis
+so just a nice uh
+argument by nature
+approach that i'm sure we could learn
+more about
+that how do you go from an observation
+in the natural world oh this bird you
+know the one with this chromosome set
+does this for this long ergo
+this is possible or this is something
+about nature in general
+so there are three philosophical
+implications that are exposed by this
+striking association between the vibrio
+and the squid
+that are significant to the account of
+symbiotic minds which follows
+so the first one
+is that the vibrio squid is a clear
+example of a symbiotic physiological
+individual
+and that's distinguished uh from the
+other
+non-physiological individual systems
+like collections of physiological
+individuals you know if i eat food the
+other person doesn't get the nutrients
+but then you go okay but
+one person eating does provide the
+nutrients for another person so it's
+going to be a continuum and there's all
+that's like sort of the complexity of it
+but it's a great example of integration
+the like i like it and then the second
+one is um physiological individuals or
+matters of degree over time the same
+living system can be more or less of a
+symbiotic physiological individual so i
+think that really takes
+that um almost unsaid criticism of the
+first point
+and immediately builds on it to say like
+yes it is a continuum
+and
+that's the whole interesting part
+is
+you can see how the system's
+cognitive interfaces change through time
+and that's the interesting story like
+for humans certainly our ability to um
+do something alone in a room is gonna
+change through time when we're born it's
+very low and then there's an age range
+where you can do some task alone in a
+room
+and then eventually there isn't so it's
+like that is something that varies
+continuously just like there's the daily
+rhythm there's a lively rhythm
+to some cognitive elements of all
+systems
+so it's not reducing them or explaining
+them away it's actually looking at that
+variability and what it says about the
+system
+and then
+the last philosophical implication may
+be thrown into relief when asking the
+critical question
+what is it that produces the
+bioluminescence the squid the bacteria
+or the temporary assemblage of these
+organisms
+so
+is that a thing that deserves a noun
+of itself because we have nouns for
+assemblages of other things
+of one type
+like the barrel of oil or something like
+that but is there a unit and a noun or
+are we left to describe this only with a
+process
+and then default implicitly back to the
+darwinian replicator
+oh the squid's just trying to reproduce
+and the bacteria is doing competition so
+they're the individuals ergo is a
+tenuous relationship or it's an interra
+interaction ecologically but it's not a
+thing in and of itself because it's not
+the replicator
+so
+those are great questions raised by the
+author
+so the questions that i maybe have for
+the author um
+so
+the bioluminescence
+is there in the vibrio fisheries
+it's just
+self-detectable by us
+or presumably by the prey that the
+vibrio fisheries hunting right so so i
+think
+um
+it's again like it's a continuum it's
+not uh um
+there is bioluminescence or there's not
+bioluminescence there's like more or
+less bioluminescence or detectable
+bioluminescence that occurs at you know
+x lumens
+so so what is the
+um
+the line there that is wrong
+good question so here's one of the last
+points in the
+discussion today
+it's again integrating cognitive and
+functional and physiological
+individuality together
+and then um what is in the background of
+you why are those
+when we say individuality and we have to
+qualify it by saying well i mean
+informational or i mean physiological
+what are we qualifying it
+implicitly or explicitly against
+um i think the materialist worldview
+might suggest that the individual is
+like just the the one
+corpuscular entity
+like the one thing that can be separated
+out like the ant is the nest mate worker
+now there's an argument for the ampy and
+the colony and the nest made being a
+tissue but people say oh i saw 10 ants
+on the windowsill not like i saw a
+thousandth of an ants on the windowsill
+so there's i think a pure materialist
+argument for just separability
+and that having the more noun-like
+characteristic
+and then
+the author is arguing that
+um there's this folk biological
+concept that sometimes prevents
+thinking about physiological individuals
+as
+real
+uh bona fide
+individuals
+and that's this like evolutionary
+individualism
+model
+uh which can even have a collaborative
+or optimistic bent to it but it still
+draws lines around what levels of
+individuality exist in the world because
+they're the ones that most cleanly
+resemble darwinian replicators so not
+the systems that grow slowly outwards or
+transfer through different media in the
+same way
+and then the argument is that fep
+and its corollary active inference the
+mirror and adaptive and the continuum
+between like we talked about
+offer an ideal program for bringing our
+folk psychological intuitions in line
+with the way nature has carved its own
+joints over evolutionary time skills
+so that's an interesting
+claim
+definitely
+okay
+last
+slide
+this was like a william blake
+line that i thought of when i saw the
+uni-directional
+the bird a nest the spider a web
+man friendship people
+friendship so it's a great
+description of kind of this modification
+and i think
+it's getting at this idea that there's
+niche modification
+in nature
+and we do it
+that's sort of the unambiguous part you
+know we change our environment but then
+we're also our own environment
+so then there's some dynamics of like
+culture and communication and being each
+other's niche
+that are very different than the the
+bacteria changing the ph of a solution
+it can go up it can go down
+but it's still ph
+but then there's this different
+boundedness to
+what can happen with humans working
+together
+so that just brought a close these few
+questions like
+where is the
+multi-scale integration happening
+and then
+how how do we identify the
+unidirectional components
+and the reciprocal components and uh
+great paper
+so just a final thought and something
+that i've thought about a lot um in
+terms of of reading this paper because
+it's this colonization of the squid by
+this bacteria i think a lot about
+us and our colonization i mean there are
+more
+non-human cells in the body than there
+are human cells which is fascinating so
+but we also have the ability to
+manipulate our niche our internal niche
+the niche of the microbes that reside
+within us through taking antibiotics but
+there are lots of other things
+probiotics and not just antibiotics but
+but just even what you eat and where you
+go and how
+whether you're breastfed or not or go
+through vaginal birth or not and all
+these things contribute to your own
+inoculation or how you inoculate your
+children and this is something that you
+can do like literally you can change the
+composition of your microbiota like
+through your lifetime
+so
+is that niche modification is it
+what is that exactly
+i think it's one reason why
+a um
+not neutral or
+um
+unbiased but flexible
+integration
+model like being presented here
+we can just say okay rather than
+wondering whether it falls on one side
+or the other of a binary classification
+like yes it's co
+um symbiotic or not
+we just have a descriptive framework
+first
+and then you can think about the
+implications later or separate them
+somehow but
+we hope that if you're listening in the
+right time you'll join us for the 30.1
+and 0.2
+because
+the author hopefully will join for at
+least the first one and it's cool topics
+and we can do a little bit like we did
+in 29.2
+let's think of some systems
+are they unidirectional are they
+reciprocal
+what reciprocal systems could exist like
+what does that mean so
+sounds good yep thanks uh people who are
+listening and steven for the questions
+live thanks blue for collaborating on
+the slides here
+and thanks to the author too for
+providing us such such great food for
+thought
+totally agreed
+so thanks and see you later

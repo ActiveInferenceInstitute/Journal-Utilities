@@ -6,7 +6,8 @@ readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"
 authors = [
-    { name = "Holly Grimm", email = "holly.grimm@gmail.com" },
+    { name = "Holly Grimm", email = "Holly@ActiveInference.Institute" },
+    { name = "Daniel Ari Friedman", email = "Daniel@ActiveInference.Institute" },
     { name = "Active Inference Institute" }
 ]
 
@@ -27,9 +28,22 @@ dependencies = [
     # Shared dependencies
     "python-dotenv>=1.0.0",
     "surrealdb>=1.0.6",
+    # YouTube channel download
+    "youtube-transcript-api>=0.6.0",
 ]
 
 [project.optional-dependencies]
+transcribe-local = [
+    "mlx-whisper>=0.4.0",
+]
+interface = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.34.0",
+    "httpx>=0.28.0",
+]
+export = [
+    "fpdf2>=2.8.0",
+]
 dev = [
     "pytest>=8.4.2",
     "pytest-asyncio>=1.2.0",
@@ -40,6 +54,9 @@ dev = [
     "ipython>=9.6.0",
 ]
 
+[project.scripts]
+journal-ui = "journal_utilities.interface.app:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
@@ -48,10 +65,10 @@ build-backend = "hatchling.build"
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/journal_utilities", "src/journalrag"]
+packages = ["src/journal_utilities"]
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "ipython>=9.5.0",
 ]
 

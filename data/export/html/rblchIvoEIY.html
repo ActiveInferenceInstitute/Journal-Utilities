@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Textbook Group ~ Cohort 7 ~ Session 3 (Modeling & General Discussion) ~ 7/29/2024</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Textbook Group ~ Cohort 7 ~ Session 3 (Modeling & General Discussion) ~ 7/29/2024</h1>
+<div class="meta">Category: TextbookGroup/ParrPezzuloFriston2022/Cohort_7 &middot; Series: Meeting_003 &middot; Speakers: Cohort 7 ~ Session 3 (Modeling & General Discussion) ~ 7/29/2024 &middot; Duration: 56:58 &middot; Views: 52</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=rblchIvoEIY">https://www.youtube.com/watch?v=rblchIvoEIY</a></div>
+<article>
+<p>all right greetings everyone thank you</p>
+<p>for joining so we're in this first up of</p>
+<p>the third</p>
+<p>weeks for the</p>
+<p>cohort it'll be a bit of a grab bag so</p>
+<p>we'll see where it goes but a few people</p>
+<p>have written some first questions um and</p>
+<p>then we'll look at some prior questions</p>
+<p>see what else comes up all</p>
+<p>right so first I'd be interested in</p>
+<p>examples on how to train an active</p>
+<p>inference</p>
+<p>model what what would anyone say on</p>
+<p>this how is training an active inference</p>
+<p>model similar or different than</p>
+<p>potentially other kinds of</p>
+<p>models um hi uh I can say uh so um I was</p>
+<p>thinking like um there should be a world</p>
+<p>model which would be trained on</p>
+<p>the um on minimizing the variation of</p>
+<p>free energy uh as a loss</p>
+<p>objective so I mean I'm assuming that</p>
+<p>can be for for from from an uh like an</p>
+<p>RL perspective or something like from</p>
+<p>some collected</p>
+<p>trajectories that can be trained but but</p>
+<p>for the expected free energy uh I'm I'm</p>
+<p>not so confident like how H how how that</p>
+<p>can be</p>
+<p>deployed yeah thank you</p>
+<p>Frasier I would just I mean I've only</p>
+<p>successfully made maybe like two or</p>
+<p>three active inference models</p>
+<p>that are like non-toy examples but one</p>
+<p>thing that I found particularly helpful</p>
+<p>was or or Salient was that you had to</p>
+<p>really think about the different time</p>
+<p>scales of things that we're going to be</p>
+<p>training so you know I guess in in a</p>
+<p>machine learning context training refers</p>
+<p>to the updating of parameters of a model</p>
+<p>so you know and and as was just uh said</p>
+<p>by is it three I think it's three we</p>
+<p>need our our model to</p>
+<p>embody uh the environment in some way so</p>
+<p>that's going to be parameterized there G</p>
+<p>to be a bunch of parameters and we need</p>
+<p>to tweak those parameters in a machine</p>
+<p>learning setting um that happens at a</p>
+<p>much slower or at least a slower time</p>
+<p>scale than the actions that we need to</p>
+<p>decide to emit at each time point if</p>
+<p>it's a a discrete time model let's say</p>
+<p>so there's kind of two questions there's</p>
+<p>the question of what actions do we emit</p>
+<p>based upon expected free energy based</p>
+<p>upon maybe just vfe and then there's the</p>
+<p>question of okay what how do we also</p>
+<p>minimize VF with respect to our</p>
+<p>parameters so those two questions Loom</p>
+<p>large at least in my mind when I'm</p>
+<p>thinking about training an active</p>
+<p>agent cool yeah well there's there's a</p>
+<p>lot of pieces to to bring out here um</p>
+<p>one note is</p>
+<p>that variational basian methods like the</p>
+<p>variational auto encoder are also</p>
+<p>trained or updated using variational</p>
+<p>free energy minimization so the concept</p>
+<p>of using the evidence lower bound to to</p>
+<p>um bound and approximate surprise which</p>
+<p>is equivalent to maximizing model</p>
+<p>evidence that's not a new modeling trick</p>
+<p>from active inference part of the</p>
+<p>interesting thing though is bringing the</p>
+<p>perceptual and the action selection</p>
+<p>process into the unified objective and</p>
+<p>then using the evidence lower bound on</p>
+<p>that so so there's like some I mean it</p>
+<p>it will be cool to kind of pull out from</p>
+<p>the conversations and papers and get to</p>
+<p>the vend diagram so that's that's one</p>
+<p>thing is training a model based upon</p>
+<p>free energy minimization is something</p>
+<p>you'll find in a variety of machine</p>
+<p>learning methods um an interesting</p>
+<p>difference in terms of of at least like</p>
+<p>in terms of how chapter six differs uh</p>
+<p>from some other machine learning</p>
+<p>Pathways like nowhere in chapter 6 The</p>
+<p>the recipe for modeling does it say</p>
+<p>anything</p>
+<p>like go find a data set of positive</p>
+<p>examples and then tune your model so</p>
+<p>that it recapitulates the maximum</p>
+<p>performance on the positive data set so</p>
+<p>it's kind of interesting is</p>
+<p>like prior data can have a different</p>
+<p>role in the situation of training an</p>
+<p>active inference model so sometimes in</p>
+<p>machine learning you have a you have a</p>
+<p>basically a</p>
+<p>priori prior setting of a general or a</p>
+<p>large topology of the model like here's</p>
+<p>the architecture of the neural network</p>
+<p>and the layers or I'm training a 7</p>
+<p>billion parameter Transformer</p>
+<p>architecture so you kind of have a large</p>
+<p>generic function</p>
+<p>approximator where the nodes are essenti</p>
+<p>not intended to have any semantic</p>
+<p>meaning and then during the training</p>
+<p>phase you pump cats and dogs with</p>
+<p>labeled examples and then you have the</p>
+<p>data set of cats and dogs and then you</p>
+<p>have some held out data set of cats and</p>
+<p>dogs and you try to improve performance</p>
+<p>on that so in in this situ in the</p>
+<p>machine learning situation you you have</p>
+<p>a kind of generic model</p>
+<p>architecture usually with many many</p>
+<p>parameters like thousands to billions</p>
+<p>and then positive examples are pushed</p>
+<p>through that</p>
+<p>Network so that the weights come to</p>
+<p>embody patterns in in the</p>
+<p>data in contrast in at least in terms of</p>
+<p>how chapter 6 lays out the</p>
+<p>process the basian graphs that are</p>
+<p>constructed in active inference are</p>
+<p>smaller and usually more interpretable</p>
+<p>where the the nodes have distributions</p>
+<p>that are kind of like based</p>
+<p>upon how the problem was carved out to</p>
+<p>be like you have a node that's</p>
+<p>explicitly based upon the cat or the dog</p>
+<p>um so that's kind of a difference is</p>
+<p>rather than walking into the situation</p>
+<p>with a sort of</p>
+<p>General highly parameter</p>
+<p>uh uh architecture and a data set here</p>
+<p>as chapter 6 lays out is you have a bit</p>
+<p>more of like a systems modeling approach</p>
+<p>so that that's one important difference</p>
+<p>but how how do you um update the the</p>
+<p>parameters</p>
+<p>um that's pretty General because there's</p>
+<p>a lot of different parameters to train</p>
+<p>Let's uh look at</p>
+<p>so coming to like chapter</p>
+<p>7 this is just focusing on the</p>
+<p>downstairs sense making piece of what</p>
+<p>later action will get plugged</p>
+<p>into so here prior D hidden State s</p>
+<p>Through Time State transitions B each</p>
+<p>state is emitting</p>
+<p>observations you can think of that as</p>
+<p>being like the hidden state multiplied</p>
+<p>by the a ambiguity Matrix leads to an</p>
+<p>observation distribution that's the</p>
+<p>generative direction or the the the</p>
+<p>synthetic data generating direction or</p>
+<p>you could take an observation multiply</p>
+<p>it by the ambiguity Matrix and kind of</p>
+<p>run it back to reconstruct an</p>
+<p>uncertainty distribution over hidden</p>
+<p>States so that's part part of the</p>
+<p>flexibility um depending on the</p>
+<p>situation you might say well we know the</p>
+<p>OB obervations without error like they</p>
+<p>might be noisy but we measured them</p>
+<p>without error and then we um we want to</p>
+<p>learn some other parameter or we know</p>
+<p>the hidden States through time but we</p>
+<p>want to infer the the prior so this kind</p>
+<p>of gets into which variables are</p>
+<p>fixed and which variables are</p>
+<p>learnable the way that a distribution is</p>
+<p>fixed in a basian setting it's like it</p>
+<p>has a hyper prior so a prior on that</p>
+<p>distribution that's just a</p>
+<p>spike like the the observation was seven</p>
+<p>so just a spike at seven whereas if if</p>
+<p>it was the observation was seven plus or</p>
+<p>minus one then that would take in a</p>
+<p>whole</p>
+<p>distribution so just to conclude and</p>
+<p>give a first pass General answer when</p>
+<p>you're set up the model if a variable is</p>
+<p>entered as fixed and with a kind of</p>
+<p>infinite</p>
+<p>Precision on it it's not learnable</p>
+<p>whereas distributions that have like</p>
+<p>actual</p>
+<p>breadth those parameter updates can be</p>
+<p>updated within that range of the</p>
+<p>distribution what what what there</p>
+<p>there's a lot of other pieces that was</p>
+<p>totally not a complete answer what are</p>
+<p>any thoughts or or questions from</p>
+<p>there I guess most broadly you have to</p>
+<p>choose a model you have to choose a</p>
+<p>particular model something like a pomdp</p>
+<p>or or Gan mixture or or something uh</p>
+<p>whatever it is that discussion applies</p>
+<p>to your your choice of model but you do</p>
+<p>have to you do have to choose a</p>
+<p>model yeah another just well these are</p>
+<p>just thinking of broader modeling</p>
+<p>considerations so it was brought up H</p>
+<p>how do we how do we train on what hasn't</p>
+<p>happened like with expected free</p>
+<p>energy so let's look at just a first</p>
+<p>pass on what the expected free</p>
+<p>energy uh calculation entails it's going</p>
+<p>to take in a policy prior Pi it's a</p>
+<p>vector of policies policy the policy</p>
+<p>space just like in other control</p>
+<p>theoretic formalizations the policy</p>
+<p>space is a vector of all the possible</p>
+<p>policies policies are all the</p>
+<p>combinations of affordances for a given</p>
+<p>time Horizon so if we had four</p>
+<p>affordances up down left right time</p>
+<p>Horizon of two there'd be</p>
+<p>16 policies up up up right Etc we're</p>
+<p>going to take this policy Vector which</p>
+<p>is the probability distribution of</p>
+<p>action it sums to one something must</p>
+<p>happen and we're going to update the</p>
+<p>policy prior into the policy posterior</p>
+<p>policies are going to be sharpened</p>
+<p>according to their score on this unified</p>
+<p>objective a good score can be gained</p>
+<p>from having either a high pragmatic</p>
+<p>value which is to say that the sequence</p>
+<p>of expected future observations is</p>
+<p>aligned with preferences that's</p>
+<p>utility Andor the policy has a high</p>
+<p>expected Information Gain or epistemic</p>
+<p>value which is to say that the KL</p>
+<p>Divergence about beliefs about hidden</p>
+<p>States through time is diverging because</p>
+<p>of the observations that are expected to</p>
+<p>come</p>
+<p>in so different policies might be</p>
+<p>valuated to have different pragmatic</p>
+<p>values and different epistemic</p>
+<p>values there is this question though how</p>
+<p>do you balance these two components of</p>
+<p>the expected free</p>
+<p>energy because just being just having</p>
+<p>both of them in a unified objective</p>
+<p>doesn't mean that there's going to be um</p>
+<p>an Adaptive finessing of this explore</p>
+<p>exploit type tradeoff so um first like</p>
+<p>here at the parametric level here's what</p>
+<p>that updating or training looks like it</p>
+<p>looks like changing the amplitude of a</p>
+<p>variable so</p>
+<p>[Music]</p>
+<p>um let's see what</p>
+<p>chapter okay so here we are in chapter 7</p>
+<p>it's a rat and a teamas it has a</p>
+<p>preference for the attractive</p>
+<p>stimulus so</p>
+<p>um check the script to see whether this</p>
+<p>is written um in terms of log</p>
+<p>probabilities Etc but a six in the</p>
+<p>preference Vector here means that the</p>
+<p>attractive stimulus is considered e to</p>
+<p>the 6 times more</p>
+<p>probable If This Were one and negative</p>
+<p>one the relative preferences would have</p>
+<p>all remained the same If This Were 600</p>
+<p>you know you can imagine it would be</p>
+<p>exponentially more so the way that</p>
+<p>pragmatic value gets scaled is with</p>
+<p>scaling the amplitude of the C</p>
+<p>Vector so you you play around with with</p>
+<p>you could take the C vector and then</p>
+<p>just like in the code you could make a</p>
+<p>series of of C Vector</p>
+<p>Alternatives like multiply by 0.1</p>
+<p>multiply by 0.5 .9 1.1 1.5 2 10 so</p>
+<p>generate this like Suite of</p>
+<p>C's bringing you closer to on one hand a</p>
+<p>flat C like if you said multiply this by</p>
+<p>one</p>
+<p>millionth so it's it's basically zeroed</p>
+<p>out that is equivalent to having a flat</p>
+<p>preference distrib</p>
+<p>distribution having a flat preference</p>
+<p>distribution is equivalent so here's PR</p>
+<p>now pragmatic is on the first term here</p>
+<p>having a flat preference distribution is</p>
+<p>equivalent to</p>
+<p>Infomax on the other hand you could make</p>
+<p>your C Vector super</p>
+<p>massive that would make the epistemic</p>
+<p>component of the expected free energy</p>
+<p>negligible which would essentially look</p>
+<p>like</p>
+<p>utility uh maximizing control so one</p>
+<p>lever that you have is</p>
+<p>modifying the pragmatic value that's</p>
+<p>pretty straightforward because you're</p>
+<p>just doing a vector lengthening or</p>
+<p>shortening and then the other way that</p>
+<p>you can rebalance the scales is with</p>
+<p>epistemic value um if your parameters</p>
+<p>are not learnable like if they're isn't</p>
+<p>anep if there isn't an uncertainty</p>
+<p>distribution so you can imagine</p>
+<p>increasing the Precision on your</p>
+<p>variables until they're essentially</p>
+<p>fixed then epistemic value goes down</p>
+<p>conversely if you were to expand your</p>
+<p>uncertainty on the variables epistemic</p>
+<p>value would go up so whether by</p>
+<p>combination of widening and narrowing</p>
+<p>your uncertainty distributions to</p>
+<p>manipulate epistemic value or stretching</p>
+<p>or shrinking the C Vector to modify the</p>
+<p>pragmatic value so those are kind of the</p>
+<p>two knobs that you have to to to</p>
+<p>manipulate the relative intensities of</p>
+<p>these two terms but then how do you</p>
+<p>really select a given parameterized</p>
+<p>tradeoff so that's a situation where um</p>
+<p>like going back to the um Tas so this</p>
+<p>not not the only way to do this but this</p>
+<p>is just one one way to do it would we we</p>
+<p>set up the teamas with a given setting</p>
+<p>now as with any training the optimal</p>
+<p>parameterization is going to depend on</p>
+<p>the niche so if we had an example where</p>
+<p>the food was always on the left then the</p>
+<p>optimal parameterization is going to be</p>
+<p>different than if it was switching like</p>
+<p>a metronome or if it was switching with</p>
+<p>some autocorrelation function so that's</p>
+<p>why it does depend on how you set up the</p>
+<p>niche then you could take let's just say</p>
+<p>we built five C vectors ranging from a</p>
+<p>kind of like the 0.1 the 0 five the one</p>
+<p>the two and the 10 and then five</p>
+<p>different uncertainty distributions that</p>
+<p>we could choose from so now we have 25</p>
+<p>combinations then we could basically</p>
+<p>simulate with all 25 of those</p>
+<p>combinations and then say well which of</p>
+<p>those mice had the highest performance</p>
+<p>and says okay well it turns out that</p>
+<p>given this Niche setup having this C</p>
+<p>Vector look like this and having the</p>
+<p>uncertainty distribution look like that</p>
+<p>gave the highest</p>
+<p>outcome that's again interesting to</p>
+<p>consider because it wasn't the case that</p>
+<p>we had like any positive data set</p>
+<p>examples so it's a really interesting</p>
+<p>opportunity to Define these</p>
+<p>models and then train and tune them in</p>
+<p>ways that don't necessarily rely on</p>
+<p>specific past data</p>
+<p>sets but you can use this sort of</p>
+<p>synthetic simulation and um method to</p>
+<p>still develop more useful</p>
+<p>tunings so that's about the</p>
+<p>e one option there just being to do</p>
+<p>parameter sweeps over over possibilities</p>
+<p>Fraser yeah I was just going to</p>
+<p>recapitulate that it's so like for you</p>
+<p>to be able to have an active inference</p>
+<p>AG per se you have it seems like you</p>
+<p>have to be able to entertain</p>
+<p>counterfactual you know possibilities</p>
+<p>about what would be the case if you</p>
+<p>didn't an action so you have to be able</p>
+<p>to perform actions and you have to be</p>
+<p>able to evaluate the suitability of</p>
+<p>those actions and the way we do that as</p>
+<p>with the EFA let's say</p>
+<p>um you're you're gonna have to have some</p>
+<p>kind of means of of rank ordering your</p>
+<p>choices that you make at points in time</p>
+<p>um that's that's kind of the the</p>
+<p>ontology of of what you do when you do</p>
+<p>training let's say of this kind you can</p>
+<p>do you can do variational free energy</p>
+<p>minimization but you're not necessarily</p>
+<p>doing active inference if you're doing</p>
+<p>that you kind of have to have this um</p>
+<p>counterfactual uh entertaining of of</p>
+<p>trajectories into the future it seems</p>
+<p>so yeah</p>
+<p>okay let's look over an RX and</p>
+<p>fur Okay it is figure 1.2 or is it or is</p>
+<p>it</p>
+<p>2.1 oh it should be 2.1 is 2.1 yeah</p>
+<p>sorry oh no it's it was a</p>
+<p>blurring the line what table is in what</p>
+<p>document</p>
+<p>um so like let's just look at training</p>
+<p>in the situation of this um this is not</p>
+<p>an action model this is just an</p>
+<p>observation model so this is like the</p>
+<p>listening to music first part of chapter</p>
+<p>7 prior beliefs on the frog and the</p>
+<p>Apple then likelihood model that's going</p>
+<p>to update based upon an observation</p>
+<p>here in this case jumping updates to a</p>
+<p>posterior belief distribution</p>
+<p>now in in spirit slash um in mathematics</p>
+<p>this is exactly what happens with</p>
+<p>updating the action prior into the</p>
+<p>action</p>
+<p>posterior here it's just we're talking</p>
+<p>about a belief prior into a belief</p>
+<p>posterior conditioned upon an</p>
+<p>observation but this is conceptually</p>
+<p>what happens like let's let's just say</p>
+<p>this was I have a 10% chance of turning</p>
+<p>left and then a chance of turning right</p>
+<p>90% And then I do G and then update that</p>
+<p>policy distribution to look more like</p>
+<p>this and then sample the most likely one</p>
+<p>or I sample from this distribution so</p>
+<p>that's the kind of General concept of of</p>
+<p>updating a distribution but this one's</p>
+<p>not about</p>
+<p>action this isn't even an active</p>
+<p>inference model this is just basian</p>
+<p>inference yeah yeah this is just basan</p>
+<p>inference but we can we can say well</p>
+<p>what what would be the here there would</p>
+<p>be two things that that might be learned</p>
+<p>if we were to kind of build this example</p>
+<p>out you could learn your prior that</p>
+<p>could come from just simply the prior</p>
+<p>posterior like from wherever you left</p>
+<p>off in the previous cycle you just pick</p>
+<p>up there with your prior um another</p>
+<p>method for the prior for learning the</p>
+<p>prior</p>
+<p>is learning by</p>
+<p>counting so learning by counting is is</p>
+<p>very related to the earn</p>
+<p>model so in this situation you have an</p>
+<p>nurn like a a a jar and there's a</p>
+<p>certain number of balls of color one and</p>
+<p>color two so initially you don't know</p>
+<p>you may not even know how many colors</p>
+<p>there are or maybe you've been told that</p>
+<p>there's only the two colors</p>
+<p>you pull out color one you but you don't</p>
+<p>necessarily want to only believe that</p>
+<p>there's color one in there so you'd</p>
+<p>start with one in each and then you as</p>
+<p>you make</p>
+<p>observations um you uh</p>
+<p>count and then it's like a coin flip</p>
+<p>like if you just kept on Flipping that</p>
+<p>coin eventually You' get to 100 and 100</p>
+<p>and then if you got to a th and a th</p>
+<p>that would be a sharper prior around</p>
+<p>50/50 whereas in one would be like a</p>
+<p>looser prior so that's one way to learn</p>
+<p>beliefs um learning a likelihood model</p>
+<p>is kind of another topic so it's like</p>
+<p>that's</p>
+<p>that's part of the challenge sometimes</p>
+<p>is the variables with different</p>
+<p>semantics like the hidden State</p>
+<p>distributions the a</p>
+<p>matrix the B Matrix the consequences of</p>
+<p>actions the priors um on preferences c</p>
+<p>those all have kind of different ways</p>
+<p>that you might approach learning</p>
+<p>them because there's different</p>
+<p>considerations like what will yield the</p>
+<p>most</p>
+<p>performance um parameter value then</p>
+<p>there are considerations like what is a</p>
+<p>cognitively</p>
+<p>realistic learning</p>
+<p>mechanism another consideration would be</p>
+<p>to what extent do we want to learn this</p>
+<p>variable and then fix it for</p>
+<p>runtime or to what extent do we want</p>
+<p>this variable to be learnable or</p>
+<p>updatable even in runtime</p>
+<p>so in this RX and</p>
+<p>for</p>
+<p>um model of the figure</p>
+<p>2.1 accurately reflecting the</p>
+<p>textbook the values are all</p>
+<p>fixed and</p>
+<p>given but I think it will be very useful</p>
+<p>for us to with starting with this</p>
+<p>example then continuing on</p>
+<p>what does it look like when these</p>
+<p>distributions are also allowed</p>
+<p>to to be learned in different</p>
+<p>ways and crucially for an active</p>
+<p>inference agent that has to be by means</p>
+<p>of action</p>
+<p>yes thank you</p>
+<p>Dave are any of the implementations of</p>
+<p>RX and fur able to take account of a</p>
+<p>situation where not just the values of</p>
+<p>the variables but what variables there</p>
+<p>are need to be changed in order to</p>
+<p>succeed you don't where you you you</p>
+<p>didn't know that you have to take</p>
+<p>temperature into account where uh to to</p>
+<p>distinguish between Apples and frogs you</p>
+<p>didn't know that you have to hum to</p>
+<p>intervene in to your uh your exploration</p>
+<p>where is is do you just assume that you</p>
+<p>know is that something that we're even</p>
+<p>trying to do at all where there's</p>
+<p>genuine Discovery where there's no</p>
+<p>precedent for what how the model has to</p>
+<p>be changed or change the</p>
+<p>dimensionality</p>
+<p>of not just the number of Dimensions but</p>
+<p>what dimensions there are</p>
+<p>actually Kus if you have any thoughts</p>
+<p>feel free to</p>
+<p>add um I don't really have thoughts uh</p>
+<p>behind how this would be attempted I</p>
+<p>just</p>
+<p>know uh in the AR in first sense that's</p>
+<p>been a desire to have such a setup uh</p>
+<p>for a while as far as I</p>
+<p>understand um for example in the case of</p>
+<p>the team Ma I know they had I think it</p>
+<p>was Magnus codol he had to write</p>
+<p>specifically</p>
+<p>code and hardc code the structure I</p>
+<p>think uh based on his needs and I I I do</p>
+<p>understand how he expressed the need at</p>
+<p>the</p>
+<p>time to have been able to uh you know uh</p>
+<p>to rely on uh structured learning to to</p>
+<p>have that but instead he had to uh</p>
+<p>provide a custom implementation at that</p>
+<p>point but I do believe there's an action</p>
+<p>in the orx in3 development team to take</p>
+<p>care of this structur approach to</p>
+<p>learning in the</p>
+<p>future yeah that'll be that'll be great</p>
+<p>maybe in the worst case you just have to</p>
+<p>do something like uh</p>
+<p>completely jump out and do genetic</p>
+<p>algorithms</p>
+<p>something and entirely outside the</p>
+<p>Paradigm if you're if you're lucky you</p>
+<p>can simply when you discover relevant</p>
+<p>dimensions of actual action or</p>
+<p>sensation just say oh well that was in</p>
+<p>my in the totality of my prior I just</p>
+<p>didn't know it none of the values are</p>
+<p>set just off uh go back can change your</p>
+<p>the dimensionality the priers and then</p>
+<p>recalculate but who knows that that</p>
+<p>that's what that's where you get in some</p>
+<p>really interesting psychology and really</p>
+<p>interesting logical techniques thank you</p>
+<p>I I do know that at the end end of um</p>
+<p>Magnus kol oh sorry uh Dimitri bv's PhD</p>
+<p>thesis which is kind of the founding</p>
+<p>document of ARS INF fur at the end of</p>
+<p>that he kind of gestures to like other</p>
+<p>problems now that we want to be able to</p>
+<p>attack and one of them was this issue of</p>
+<p>model</p>
+<p>uh structure learning learning the</p>
+<p>actual structure of the the the model in</p>
+<p>that case it's a graph it's very high</p>
+<p>problem as far as I understand and no</p>
+<p>one really knows how to do it</p>
+<p>yet yeah like a few things so you could</p>
+<p>have an explicit distribution over</p>
+<p>like I don't know how many lights are</p>
+<p>going to be in the</p>
+<p>room I think it could be from 1 to 10</p>
+<p>and then you're then you could have</p>
+<p>methods that oh it's seven now I'm going</p>
+<p>to spin up seven a matrices for the</p>
+<p>seven</p>
+<p>lights but then that kind of like</p>
+<p>question of unknown unknowns and being</p>
+<p>able to in a potentially open-ended way</p>
+<p>incorporate like new new rows in the</p>
+<p>variables you already have like oh you</p>
+<p>could go before you could go up down</p>
+<p>left right now you can also go a</p>
+<p>diagonal</p>
+<p>Direction so that kind of like expanding</p>
+<p>variables you have and then also like oh</p>
+<p>now you have a new type of affordance or</p>
+<p>you have a new sensory modality that</p>
+<p>um at at least in terms of the examples</p>
+<p>we have in open question um another</p>
+<p>quote that I think is kind of just a</p>
+<p>plant a footnote this is from</p>
+<p>uh Toby St Clair</p>
+<p>smi's uh</p>
+<p>thesis he differentiates between the</p>
+<p>structured learning and the learning</p>
+<p>structure so learning</p>
+<p>structure is about the former extending</p>
+<p>the process of learning to a structured</p>
+<p>setting whereas the latter learning the</p>
+<p>underlying structures</p>
+<p>themselves it's a kind of playful but</p>
+<p>interesting question like are we</p>
+<p>learning the structure of the patterns</p>
+<p>in the</p>
+<p>world with a fixed structure</p>
+<p>internally that's one side of the coin</p>
+<p>and the other side would be given the</p>
+<p>structure of the patterns in the world</p>
+<p>how can the actim model potentially</p>
+<p>modify its own structure to accommodate</p>
+<p>those patterns more</p>
+<p>easily RX infer hopefully provides the</p>
+<p>sandbox to experiment with those things</p>
+<p>because of the possible open-endedness</p>
+<p>of being able to combine different</p>
+<p>nodes um I don't think any of our</p>
+<p>examples from kass's work or from the</p>
+<p>reactive Bas</p>
+<p>team they but Fraser rovas correct me if</p>
+<p>if this is not the case but like they</p>
+<p>have a fixed</p>
+<p>topology in</p>
+<p>runtime it's not that the graph has a</p>
+<p>certain connectedness and then something</p>
+<p>occurs like a policy decision or some</p>
+<p>kind of signal and then the graph</p>
+<p>changes but and then like Dave mentioned</p>
+<p>genetic algorithms</p>
+<p>like there there's so many other pieces</p>
+<p>like the parameter sweep mentioned</p>
+<p>earlier but like parameter sweeping</p>
+<p>isn't necessarily part of active</p>
+<p>inference it's not part of the</p>
+<p>particular partition it's not the</p>
+<p>physics of action and perception it's</p>
+<p>just a computational science method so</p>
+<p>in practice a variety of methods come</p>
+<p>into</p>
+<p>play ranging from parameter sweeps</p>
+<p>parallelization AB</p>
+<p>testing so those all come into play to</p>
+<p>kind of</p>
+<p>tune or or give a bigger view on the</p>
+<p>active inference generative model so</p>
+<p>sometimes you are just interested in</p>
+<p>building one generative</p>
+<p>model other times it's like even for</p>
+<p>just for fun and um speculative realism</p>
+<p>even then you still may want to generate</p>
+<p>a sequence of generative</p>
+<p>models um just like if you were doing</p>
+<p>linear aggression you would make from</p>
+<p>simple on through like you have a um a</p>
+<p>family from the most possible</p>
+<p>interactions and including all the</p>
+<p>variables to like the simplest model and</p>
+<p>then there' be the combinations in in</p>
+<p>between so there's something kind of</p>
+<p>analogous to to to cross calibrating the</p>
+<p>performance of different models that</p>
+<p>have that have different structural</p>
+<p>elements now there was a presentation uh</p>
+<p>might have been a guest stream and I</p>
+<p>suspect it was in 2020 where somebody</p>
+<p>was was addressing these using a formal</p>
+<p>setting uh where</p>
+<p>graphs combine and</p>
+<p>split in response to particular kinds of</p>
+<p>failures do you remember that an</p>
+<p>ecological treatment</p>
+<p>of</p>
+<p>graphs I I do remember Bert D of the</p>
+<p>bias lab saying that this idea of uh 40</p>
+<p>40 St Factor graphs they allow for a</p>
+<p>relatively robust model in the sense</p>
+<p>that you can take out nodes and you know</p>
+<p>the reactive message passing will just</p>
+<p>kind of self-organize around that um I</p>
+<p>don't know if that's actually been</p>
+<p>demonstrated yet with with ar in</p>
+<p>particular I think maybe that's more of</p>
+<p>a theoretical um benefit so far uh but</p>
+<p>yeah I'm not aware of actual examples of</p>
+<p>that just yet there there's several</p>
+<p>other um</p>
+<p>I think it was the</p>
+<p>supervised there's several other</p>
+<p>approaches to to structure learning so</p>
+<p>first off again a Toby paper this is</p>
+<p>more on the category Theory here um this</p>
+<p>is in terms of structured learning</p>
+<p>because it describes agents with</p>
+<p>structured interfaces for learning like</p>
+<p>computer apis so that's super exciting</p>
+<p>but now on the learning structure</p>
+<p>side um there's earlier work</p>
+<p>2020 Smith at all and then there's a</p>
+<p>more recent work um which is is quite</p>
+<p>interesting</p>
+<p>here okay the the notation and the</p>
+<p>letters get a little funny and</p>
+<p>interesting because like here the</p>
+<p>transition probabilities are encoded in</p>
+<p>C</p>
+<p>but in the textbook we're just</p>
+<p>discussing like C is the preference on</p>
+<p>observations but here it's not so it</p>
+<p>just you know see that</p>
+<p>um what happens in this paper</p>
+<p>is</p>
+<p>uh it's in the context of amnest</p>
+<p>handwriting</p>
+<p>data and there are basically these um</p>
+<p>there's an</p>
+<p>unknown unknown and not preset number of</p>
+<p>styles and then there's this uh question</p>
+<p>which is how many styles should we given</p>
+<p>our task is to categorize these digits</p>
+<p>into 0o through</p>
+<p>nine how many styles should we spin up</p>
+<p>so in the extreme case there's only one</p>
+<p>style of zero one style of one one style</p>
+<p>of two that's just just like a big dis</p>
+<p>big circle around the points in in in uh</p>
+<p>space on the Other Extreme like every</p>
+<p>single example is its own</p>
+<p>style so both the one style and the</p>
+<p>every single one has its own style those</p>
+<p>are on two extremes of a structure</p>
+<p>learning parameterization how many</p>
+<p>styles are there and so then the</p>
+<p>question is how do you find that sort of</p>
+<p>prto optimal Bas optimal number of</p>
+<p>styles that actually provide you</p>
+<p>positive classification ability and so</p>
+<p>that's sometimes approach from this idea</p>
+<p>of of on one</p>
+<p>hand adding a latent factor and seeing</p>
+<p>if there's variability that that latent</p>
+<p>factor can</p>
+<p>explain and then testing um you you</p>
+<p>using um BAS model selection okay here's</p>
+<p>my model with n Styles here's n plus one</p>
+<p>style is that extra style punching above</p>
+<p>its weight or if it's diminishing</p>
+<p>returns then the smaller model's better</p>
+<p>so that's the kind of like add a latent</p>
+<p>factor see if it helps and then move</p>
+<p>forward whichever one's better and then</p>
+<p>the other side of that is like the</p>
+<p>pruning which is kind of like the sleep</p>
+<p>or the synaptic pruning in that</p>
+<p>situation you say okay given the N</p>
+<p>parameters I have which one would be</p>
+<p>like the first to go and then you remove</p>
+<p>the least informative of the parameters</p>
+<p>that you</p>
+<p>have so that has led to some interesting</p>
+<p>work probably more not open source than</p>
+<p>open source on systems that are able to</p>
+<p>in in different kinds of</p>
+<p>ways add latent factors to explain and</p>
+<p>explore deeper patterns in like</p>
+<p>observation data or like in the</p>
+<p>consequences of action and then</p>
+<p>cyclically for example like in a sleep</p>
+<p>wake wake type</p>
+<p>situation add parameters during</p>
+<p>wakefulness to explain more</p>
+<p>variance remove parameters that are the</p>
+<p>least informative during sleep to</p>
+<p>promote model sparcity and</p>
+<p>interpretability and simplicity</p>
+<p>another thing just to note since the</p>
+<p>question was like about training is</p>
+<p>chapter nine is where the um the topic</p>
+<p>of connecting to empirical data is</p>
+<p>brought in</p>
+<p>before chapter n it's like all kind of</p>
+<p>like we proposed this model like we've</p>
+<p>just a priori specified this model and</p>
+<p>then we ran the model forward in a</p>
+<p>generative direction to generate</p>
+<p>synthetic</p>
+<p>data the reverse</p>
+<p>direction is let's just say we already</p>
+<p>had a data set so we already have a data</p>
+<p>set of people typing and eye movement or</p>
+<p>of the mouse in the Maze or the particle</p>
+<p>moving or whatever it is so we already</p>
+<p>know what data we want to connect from</p>
+<p>um so then we we still use the same</p>
+<p>generative</p>
+<p>model such that we we know that we want</p>
+<p>these observations to connect up to the</p>
+<p>kinds of observations here like we want</p>
+<p>to have the location observation at</p>
+<p>every time step so kind of you could</p>
+<p>pre-register that model or you could</p>
+<p>build it after the data were</p>
+<p>collected um and then what's called</p>
+<p>Model inversion is so here is</p>
+<p>distribution of the</p>
+<p>parameters given the observations and</p>
+<p>actions and then that is being um</p>
+<p>flipped it's proportional that's the</p>
+<p>kind of infinity sign to here's the</p>
+<p>probability of the parameters given the</p>
+<p>model and then the probability of the</p>
+<p>actions given the observations in the</p>
+<p>model and so then this is</p>
+<p>reconstructing latent parameters</p>
+<p>Theta in this kind of General linear</p>
+<p>regression</p>
+<p>framework against the observations</p>
+<p>conditioned upon the</p>
+<p>observations so when we're generating</p>
+<p>synthetic data you can think about that</p>
+<p>as a distribution of</p>
+<p>observations conditioned</p>
+<p>upon</p>
+<p>parameters like I'm just saying that the</p>
+<p>room is um 30 degrees and now I'm going</p>
+<p>to generate noisy thermometer data so</p>
+<p>that's like generate me thermometer</p>
+<p>observations conditioned upon the hidden</p>
+<p>State</p>
+<p>s the other way to do an inference the</p>
+<p>inverted model would be tell me what you</p>
+<p>can say about s the true temperature and</p>
+<p>the room conditioned upon these</p>
+<p>observations that I'm empirically</p>
+<p>getting so those are kind of the two</p>
+<p>directions of using a basian model and</p>
+<p>um I think there's a lot of good work to</p>
+<p>be done with making examples that do</p>
+<p>that that kind of features just coming</p>
+<p>online in</p>
+<p>pmdp and it's there in RX and furb but</p>
+<p>we don't have any larger scale or even</p>
+<p>medium</p>
+<p>examples but those would be some cool</p>
+<p>things to look</p>
+<p>into it it's it kind of returns to</p>
+<p>chapter 6 like why are we building this</p>
+<p>model like if we wanted to study</p>
+<p>how are the relationships between</p>
+<p>observations and hidden States learned</p>
+<p>well then we would have a distribution</p>
+<p>on a or we'd select from multiple a</p>
+<p>matrices but once we kind of open up all</p>
+<p>the possible directions of learning like</p>
+<p>including preference learning like how</p>
+<p>does the mouse know that it wants the</p>
+<p>the food versus the averse of stimulus</p>
+<p>or how does it come to know the</p>
+<p>consequences of its actions from a</p>
+<p>movement pers</p>
+<p>perspective that that makes the space of</p>
+<p>the model larger and larger and larger</p>
+<p>combinatorically whereas the the case</p>
+<p>where all the parameters are fixed so</p>
+<p>there's like not really learning per se</p>
+<p>there could still be real-time inference</p>
+<p>but just it's it's not doing any deeper</p>
+<p>learning that's like the that's like the</p>
+<p>plug and chug special</p>
+<p>case point</p>
+<p>and then for every time you open up</p>
+<p>learning on a given</p>
+<p>variable um like first you have a</p>
+<p>quantitive learning like just updating</p>
+<p>the values in the cells then you can</p>
+<p>think more of like structural learning</p>
+<p>like the a matrix was 2 x two and now</p>
+<p>it's going to be 2x3 or it's going to be</p>
+<p>3x3 and then you can get even into um</p>
+<p>more kind of severe structure learning</p>
+<p>like what about a second a matrix or</p>
+<p>what about another modification on a</p>
+<p>base graph each of those steps from</p>
+<p>fixed quantitative tuning structural</p>
+<p>tuning within a fix topology opening up</p>
+<p>the topology that's open-ended each of</p>
+<p>those could be like large increases in</p>
+<p>the amount of sweeping that you have to</p>
+<p>do</p>
+<p>so if you want to make a playful example</p>
+<p>with</p>
+<p>open-endedness you can go in that</p>
+<p>direction</p>
+<p>um if you had more of</p>
+<p>a uh if you had a question that defined</p>
+<p>your pragmatic value such that you</p>
+<p>wanted to get some utility out of your</p>
+<p>model at some point you would probably</p>
+<p>choose which distributions you want to</p>
+<p>fix like I I'm just going to say it</p>
+<p>prefers sugar and it avoids poison</p>
+<p>because I'm</p>
+<p>not asking the question how does it come</p>
+<p>to prefer</p>
+<p>sugar but then if you were asking how</p>
+<p>does it come to prefer sugar you would</p>
+<p>want to make that distribution</p>
+<p>learnable because that's what would</p>
+<p>address that question but if the</p>
+<p>question was given that mice like sugar</p>
+<p>how do they learn um associative um you</p>
+<p>know between the color of the room and</p>
+<p>the shock of the foot or something like</p>
+<p>that like so the the</p>
+<p>question from the outset sometimes</p>
+<p>shapes what you situate as learnable or</p>
+<p>not</p>
+<p>yeah FR</p>
+<p>sure I just I just wanted to say with</p>
+<p>respect to the significance that that</p>
+<p>discussion has to modeling uh a lot of</p>
+<p>us you know I'm quite interested in in</p>
+<p>you know building models of of of this</p>
+<p>um the the relevance would be you know</p>
+<p>you you kind of want to hardcode as much</p>
+<p>as possible not worry about the topology</p>
+<p>maybe initially not worry about the</p>
+<p>multiplicity of the a matrices and just</p>
+<p>kind of do the most uh truncated strict</p>
+<p>beian inference you can on the most uh</p>
+<p>you know cut down version of the problem</p>
+<p>and then and then maybe iteratively up</p>
+<p>um expose parts of the the model say</p>
+<p>okay now now we've got our frog jumping</p>
+<p>let's say or I think that classifies</p>
+<p>frogs versus apples but you know what if</p>
+<p>we need to say determine uh also what we</p>
+<p>want to classify you know frogs versus</p>
+<p>app versus oranges versus mice um how do</p>
+<p>you determine that you want to even</p>
+<p>classify frogs and apples that's that's</p>
+<p>another action then you're GNA have to</p>
+<p>build in so that that introduces a huge</p>
+<p>amount of complexity so to to avoid that</p>
+<p>if you're just interested in creating a</p>
+<p>first step in a model the best thing to</p>
+<p>do is just kind of ignore those problems</p>
+<p>and hardcode it um essentially I was</p>
+<p>just just thinking for for the relevance</p>
+<p>that would have to to modeling efforts</p>
+<p>yeah that's a great Point like it makes</p>
+<p>me think about um here like we could</p>
+<p>just draw a circle around each of these</p>
+<p>bar charts and this is kind of like our</p>
+<p>basian</p>
+<p>graph kind of you know these are the</p>
+<p>variables that we're considering it's</p>
+<p>almost like that's an island coming out</p>
+<p>of the ocean or or you know choose</p>
+<p>choose a different way to think about it</p>
+<p>but it's like if we wanted to explicitly</p>
+<p>learn the prior we would have another</p>
+<p>node which is our prior</p>
+<p>on frogs and apples is it 0.</p>
+<p>1.9 plus or minus .05 or is it 0.19 plus</p>
+<p>orus</p>
+<p>01 and then that would be the</p>
+<p>learnability of this prior and then you</p>
+<p>could say well how did it come to</p>
+<p>believe that it was plus or minus 05 on</p>
+<p>frogs and apples and then it's like so</p>
+<p>the Buck has to stop somewhere in</p>
+<p>practice for a particular model but</p>
+<p>depending on what is useful or epistemic</p>
+<p>for you you might pull back multiple</p>
+<p>layers</p>
+<p>Dave yeah there's actually quite a lot</p>
+<p>of data</p>
+<p>that's real world data that's the</p>
+<p>analysis of which is can be relevant to</p>
+<p>what we're talking about talking about</p>
+<p>uh Behavior shaping from animal trainers</p>
+<p>and then the formalization of that in</p>
+<p>Skinner</p>
+<p>style training</p>
+<p>and uh bubbling up against what that</p>
+<p>what what kinds of learning what kind of</p>
+<p>teaching you actually can efficiently</p>
+<p>explain is a nice a nice problem on</p>
+<p>itself there certain you just you just</p>
+<p>cannot readily explain in scenario set</p>
+<p>up but there's a lot that you really</p>
+<p>can yes so figure</p>
+<p>91 where the experimenter's choice of</p>
+<p>which stimuli to provide which test</p>
+<p>questions to send etc those are</p>
+<p>observations for the mouse and then what</p>
+<p>the mouse does in terms of selected</p>
+<p>actions that's the observations for the</p>
+<p>experimenter this is kind of the cool</p>
+<p>thing with with the basian methods is</p>
+<p>you could pre-register or do a</p>
+<p>statistical power</p>
+<p>sweep what trains of experimental stimul</p>
+<p>under the generative model as I</p>
+<p>understand it what trains of</p>
+<p>experimental stimuli would be</p>
+<p>differentiable with to from each other</p>
+<p>or or contrastable or not so like an</p>
+<p>example of this that's that's very um</p>
+<p>empirical is in fmri so the fmri signal</p>
+<p>the Bold the brain oxygen related signal</p>
+<p>that friston and and others have studied</p>
+<p>with SPM for many years so that signal</p>
+<p>happens on a time scale of several</p>
+<p>seconds so they have a a graphical model</p>
+<p>that includes the time scale of several</p>
+<p>seconds and then they can simulate out</p>
+<p>well if we had two stimuli and they were</p>
+<p>alternating at the time scale of half a</p>
+<p>second we wouldn't be able to dis to to</p>
+<p>determine the the relative efficacy of</p>
+<p>these two stimuli because they'd be too</p>
+<p>convoluted by this like 3 second</p>
+<p>response time on the other hand if you</p>
+<p>had the the observations alternating</p>
+<p>every</p>
+<p>minute it would be too slow you'd only</p>
+<p>get one change Point detection per</p>
+<p>minute so then it's like well what time</p>
+<p>scale should the observations be</p>
+<p>alternating on to derive the highest</p>
+<p>statistical</p>
+<p>power then even with that calculation</p>
+<p>there's further considerations like oh</p>
+<p>but then if the the person cognitively</p>
+<p>understands oh they're alternating every</p>
+<p>16 seconds</p>
+<p>so there's always many considerations in</p>
+<p>practice um but that's kind of the the</p>
+<p>fun of the iterated modeling is this</p>
+<p>back and forth with the synthetic</p>
+<p>propositions and the empirical</p>
+<p>data if it's a situation where there is</p>
+<p>empirical</p>
+<p>data I mean the nice thing that it's</p>
+<p>it's Beijing inference all the way down</p>
+<p>on all of these things so we kind of</p>
+<p>know what we're doing in terms of I mean</p>
+<p>in some</p>
+<p>sense um we're still doing be and</p>
+<p>inference on model structure we're still</p>
+<p>doing be and inference on you know the A</p>
+<p>matricies and then versus the parameters</p>
+<p>and so</p>
+<p>on yes unified approach to um handling</p>
+<p>and updating the variables whether</p>
+<p>they're uh beliefs about State beliefs</p>
+<p>about action beliefs about observations</p>
+<p>Etc</p>
+<p>um and and to kind of again bring it</p>
+<p>back to the very</p>
+<p>beginning we could be actually building</p>
+<p>from the inside these active inference</p>
+<p>models or like in figure</p>
+<p>9.1 this could be a Transformer or a</p>
+<p>neural</p>
+<p>network so also these models could be</p>
+<p>used to describe and map cognitive</p>
+<p>architectures or systems are things that</p>
+<p>aren't active inference things per</p>
+<p>se but still have interactions across</p>
+<p>interface</p>
+<p>so sometimes you're actually building</p>
+<p>it other times just observing it and</p>
+<p>then building something to describe the</p>
+<p>observations which would kind of be like</p>
+<p>training a uh machine learning or</p>
+<p>reinforcement learning model on language</p>
+<p>or on something like that and and that</p>
+<p>could be used to generate language so</p>
+<p>again that has a lot in common with</p>
+<p>other</p>
+<p>methods it's just that this is a very</p>
+<p>flexible phrasing of that</p>
+<p>problem um</p>
+<p>okay</p>
+<p>well</p>
+<p>so at least</p>
+<p>this was sort of a</p>
+<p>um General slm modeling</p>
+<p>discussion but if there are topics that</p>
+<p>people like want to explore I would</p>
+<p>highly recommend slash ask put put the</p>
+<p>questions on the page or in the table</p>
+<p>before you can leave a comment to like</p>
+<p>make sure that that they're</p>
+<p>seen um and just kind of frontload what</p>
+<p>you want to ask and that will help like</p>
+<p>bring other people in and</p>
+<p>and make make uh a fun learning</p>
+<p>time okay any</p>
+<p>um last</p>
+<p>questions I I guess for chapter two</p>
+<p>where uh</p>
+<p>we're opening up for just any any uh</p>
+<p>sailing discussions at all about any</p>
+<p>parts of chapter 2 you know it's not</p>
+<p>like it's gonna have to be a modeling</p>
+<p>discussion or anything like that next</p>
+<p>session yeah we can do any correct it'll</p>
+<p>it'll just be we'll do two weeks a</p>
+<p>chapter two and then we'll see if we</p>
+<p>want to have another what we want to do</p>
+<p>in in three weeks from</p>
+<p>now cool cool okay I'll stop the</p>
+<p>recording thank you</p>
+</article>
+</body>
+</html>

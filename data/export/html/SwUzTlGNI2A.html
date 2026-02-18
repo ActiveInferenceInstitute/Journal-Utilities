@@ -1,0 +1,4653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream #021.1 ~  Shannon Proksch "Coordination Dynamics of Multi-agent Interaction"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream #021.1 ~  Shannon Proksch "Coordination Dynamics of Multi-agent Interaction"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_021 &middot; Episode 1 &middot; Speakers: Shannon Proksch &middot; Duration: 1:20:59 &middot; Views: 177</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=SwUzTlGNI2A">https://www.youtube.com/watch?v=SwUzTlGNI2A</a></div>
+<article>
+<p>Hello, this is ActonFlab guest stream number 21.1. It's April 21st, 2022, and we're here</p>
+<p>with Shannon Proksh, and Shannon will be giving a talk, Coordination Dynamics of Multi-Agent</p>
+<p>Interaction. The talk will happen for maybe around an hour, and then there'll be time</p>
+<p>for Q&amp;A, so feel free to ask any questions in the chat during. So off to you, Shannon,</p>
+<p>looking forward to this talk, and thanks again for joining on ActonFlab.</p>
+<p>Awesome, thanks so much. So I'm Shannon, Daniel's already given you the title of our talk,</p>
+<p>and I'm coming to you from the University of California in Merced, where I'm a PhD candidate,</p>
+<p>and I'll actually be defending this summer, so maybe the next time you hear from me,</p>
+<p>I'll be talking to you from Augustana University, where I will be starting a tenure-track professor</p>
+<p>position later this fall as an assistant professor of psychology and neuroscience.</p>
+<p>Oh, applause, nice, thanks. So that said, I'm not going to talk to you about neuroscience today.</p>
+<p>I'm going to talk to you a little bit about the behavior of crowds, and I stole this roadmap idea</p>
+<p>from previous Active Inference Lab sessions, and this is kind of outlining where we'll be going today.</p>
+<p>So first, the first thing we're going to do is really dig into a little bit of theory and data.</p>
+<p>I'm going to give a bit of a brief introduction to multi-agent interaction and what kind of human</p>
+<p>behavior I'm interested in. And I'm going to walk through a couple of ways that</p>
+<p>active inference folks might be interested in crowd dynamics and behavior, but primarily,</p>
+<p>I'm going to be focusing on dynamical systems theory and the notion of synergies and the tools</p>
+<p>that come along with these concepts. And then finally, I'm going to show you a model system where</p>
+<p>we apply these tools to a system of coupled metronomes before I look at some empirical data</p>
+<p>from real world interaction, musical performance, and also of crowds cheering at a basketball game.</p>
+<p>So first, what is multi-agent interaction? This is simply an interaction that's happening between</p>
+<p>two or more agents. In our case, we're looking at people and each of these people, they'll have their</p>
+<p>own personal goals and behaviors, but their individual behaviors are influenced in some way by</p>
+<p>interacting with other agents in their shared environment. And I want to talk about two forms</p>
+<p>of multi-agent coordination today. And the best way to introduce this is through a short thought</p>
+<p>experiment. So I'll just have you imagine the sounds of a crowded coffee shop. Consider how individuals</p>
+<p>in that coffee shop might be interacting with each other. There might be some small groups, there might</p>
+<p>be pairs, but mostly it's many individuals engaging in small temporary interactions. And these</p>
+<p>individuals aren't coordinating with every other individual in some sort of cohesive coffee shop</p>
+<p>group. They're just a jumble of individual individuals who are cohabiting a shared space.</p>
+<p>Now instead, imagine the audience on the floor of a rock concert. They're cheering or singing along with</p>
+<p>the artists on the stage. And alternatively, imagine the fan section at your favorite sporting event</p>
+<p>emerging into a synchronous chant or a chorus of resounding booze. Imagine how individuals in these large crowds</p>
+<p>might be interacting with each other. As they cheer, sing, chant, or boo, they're all sharing in similar</p>
+<p>behavioral states, engaging in similar actions. They're likely sharing similar physiological states,</p>
+<p>like breathing rates, and neural states as well. These crowds are changing together in time. They're behaving</p>
+<p>and they're coordinating like one large interdependent group. And you could refer to these as shared acoustic</p>
+<p>spaces. And they include various levels of interaction from dyads, pairs of individuals, or larger and larger</p>
+<p>groups. And I might even call these acoustic social worlds. The acoustic signal that's generated by these</p>
+<p>crowds, it carries some information about their behavioral dynamics that were employed in creating</p>
+<p>that signal. And the sounds these crowd makes carry some sort of information about the status of that crowd,</p>
+<p>either as an incidental collection of lots of individual coffee goers, or an integrated and</p>
+<p>coordinated crowd, like a crowd of concert goers. And there are, of course, many important factors at play</p>
+<p>when we're evaluating these acoustic social worlds. And we're trying to decide whether that crowd is acting</p>
+<p>as one integrated multi-agent system rather than a collection of independent agents. And these include</p>
+<p>the social context, a coffee shop is different than a concert arena. The development of patterned cultural</p>
+<p>practices in these different contexts, and differing scripts surrounding what events happen, and when these</p>
+<p>events happen, and differing regimes of shared attention between each of these agents. And these are things</p>
+<p>you've talked about in the active inference lab before. And basically, this is all a rather long-winded way</p>
+<p>of saying that we expect coffee shop behavior in a coffee shop and concert behavior in a concert arena.</p>
+<p>If I were going to talk to you in the language of active inference, I might talk to you today about</p>
+<p>Markov blankets. And we might talk about this statistical boundary that might be behind a pair</p>
+<p>of interacting individuals around a pair of interacting individuals separating their internal states of this</p>
+<p>interaction with the rest of the interactions happening in a coffee shop crowd. And I might talk about</p>
+<p>how the statistical boundary expands as we start to engage or interact with larger groups of people</p>
+<p>from three to four to maybe 100 people or more if we're in a large group interaction. And while this can be a</p>
+<p>really useful way to model multi-agent interaction, to talk about a suite of nested Markov blankets, we</p>
+<p>quickly run into questions of how a researcher chooses where to draw a Markov blanket at any given system,</p>
+<p>or where to draw each nested Markov blanket in a given system. And this is a topic that you've</p>
+<p>discussed a lot in the active inference lab. You've spent some time talking with Yella Brunenberg and</p>
+<p>colleagues after their recent BBS article commentaries and how there might be differences from me as a</p>
+<p>researcher applying some sort of Markov blanket around a system versus the actual agents interacting in</p>
+<p>that system. But I just mentioned this idea of Markov blankets to situate the topic for the audience of</p>
+<p>these interactive inference lab live streams. As far as measuring the emergence of an integrated</p>
+<p>interacting crowd, this is an empirical question that I'm asking rather than a modeling question. And</p>
+<p>I'm not a mathematician or a modeler. So for this question about groups of interacting people, I found</p>
+<p>empirical tools from dynamical systems theory and with the concept of interpersonal synergies. So that's</p>
+<p>what I'm going to introduce to you guys next. So dynamical systems theory, this considers a trajectory of</p>
+<p>behavior of a system over time. And the concept of synergies arises from the field of motor control as a</p>
+<p>solution to the degrees of freedom problem. So essentially, the degrees of freedom problem is that fine and</p>
+<p>precise control of every degree of freedom in a motor movement would be computationally intractable for</p>
+<p>the nervous system to solve. And what you see here is a minor hammering. And you see these light</p>
+<p>patterns. This is really sort of the earliest sort of motion capture that we had. And we're seeing the</p>
+<p>trajectory of his arm hammering here. And you can see that even though the hammer is hitting the same</p>
+<p>place every time, you'll have to trust me that's hitting the same place every time, his arm is taking</p>
+<p>a slightly different trajectory to get there. But it generally covers this one swinging behavior.</p>
+<p>And that's because the muscles in his arm here are self organizing into coupled and locally constrained</p>
+<p>degrees of freedom, forming temporary soft assemblies of motor function that's enabling this flexible</p>
+<p>movement and coordination here. Put another way, synergies are identified by their functional specificity,</p>
+<p>dimensional compression, and reciprocal compensation. What are those? Well, the need to perform a specific</p>
+<p>function like hammering that anvil, that functional specificity temporarily shapes the coordination of</p>
+<p>several components into one system. That's dimensional compression. In which external and internal</p>
+<p>perturbations are flexibly dealt with via compensatory adjustments of the components, reciprocal compensation.</p>
+<p>So each muscle in his arm is compensating for the activity of the other muscle. And if he was bumped</p>
+<p>slightly, there would be compensation from other muscles to ensure that anvil hits its location. And this is</p>
+<p>all done in order to preserve the functionality of the whole system for as long as it's needed. And that last</p>
+<p>comment for as long as it's needed, that gets to the notion of soft assembly, where any of these units in</p>
+<p>this picture here might be functionally coupled just for as long as you need to perform that task. So if we're</p>
+<p>talking about a group of people, this group of people might form some sort of complex system just while</p>
+<p>they're interacting for that meeting, while they're at that concert, until they disperse and are ready to move on.</p>
+<p>We can differentiate mere coordination, which might happen between two people as the result of engaging</p>
+<p>with the same stimulus and similar patterns of actions from a true interpersonal synergy. And you see here, we</p>
+<p>might see the same patterns of movement if we have two individuals who are maybe just listening to the same set of</p>
+<p>music. But if these individuals are interacting with each other, where the action of one person and the action of</p>
+<p>the second person is constraining each other, then this is where an interpersonal synergy happens. And these synergies are the result of these micro scale structures of a system,</p>
+<p>giving rise to macro scale dynamics. When a synergy develops, we no longer need to describe the independent dynamics of each micro scale structure. We can instead describe the behavior of this single interaction dominant system,</p>
+<p>which consists of complementary actions from each person's motor activity as it pertains to their role in this softly assembled complex system. And you might even notice some similarities here between these</p>
+<p>graphics and a graphic we might draw of nested Markov blankets. And these might very well be two sides of the same coin, just two perspectives with a very similar conceptual landscape here.</p>
+<p>And there's a variety of methods for studying the coordination dynamics that underlie interpersonal coordination. For example, we might ask two people to sit next to each other and swing pendulums or two rock and rocking chairs.</p>
+<p>And we can measure how these individuals intentionally or unintentionally synchronize their behavior.</p>
+<p>As each individual's action becomes coupled to their partner. Or we can ask musicians to play together in a musical ensemble or a duet.</p>
+<p>And we can measure how these quartets or duets move together in time, forming these loosely coupled interpersonal synergies.</p>
+<p>And in each of these interactions, a motor or acoustic behavioral output of each interacting individual was measured and analyzed for meaningful correlations between these individuals.</p>
+<p>So importantly, in these experiments here, it has been possible to obtain clear measurements of individual behavior.</p>
+<p>In order to correlate the behavior of these individuals and examine the emergent coordination dynamics of multi-agent interaction and social self-organization.</p>
+<p>But what happens when we have this massive crowd of people?</p>
+<p>Can we measure the interpersonal synergies that form in such a large crowd?</p>
+<p>How does a group of people move between novel and habitual patterns of coordination?</p>
+<p>How does a multi-agent system navigate transitions between chaos and stability?</p>
+<p>And let's make it a little bit trickier.</p>
+<p>The real world is messy.</p>
+<p>The measurement is difficult.</p>
+<p>In a naturalistic social interaction and a very large crowd.</p>
+<p>I probably can't measure the behavior of every single individual person.</p>
+<p>I probably can't give everyone an individual microphone.</p>
+<p>I probably can't track each person's individual brain states.</p>
+<p>And I might not even have access to a camera, let alone a set of motion capture cameras and hundreds of markers to track everyone's head and limb movements.</p>
+<p>So let's come back to the crowds we imagined at the start of this discussion.</p>
+<p>When you're imagining this coffee shop crowd and the crowd at the rock concert, you might have also been imagining how these concerts, how these crowds sounded.</p>
+<p>So the difference between this disjointed noise you might hear at the coffee shop and this altogether coordinated singing maybe at a rock concert, it's trivial, trivially easy for you or I to identify.</p>
+<p>An uncoordinated group of independent individuals happening to coexist in a shared space versus a coordinated group of interdependent group members in a crowd.</p>
+<p>We can simply hear that these two groups of people sound different.</p>
+<p>Similarly, we can simply hear when we ourselves are engaged and participating as a collective sort of agent while we're interacting with a large group of people or in a very large musical ensemble.</p>
+<p>So I'm taking that idea.</p>
+<p>And I think we can measure the sounds that a crowd makes and with a well placed microphone or a few microphones, we can generate a single audio recording of the sounds that an interacting group makes over time.</p>
+<p>And I know that a human can make inferences about the interactions and the acoustic social world of a crowd just by listening.</p>
+<p>So similarly, I want to know if this dynamical systems toolkit that I have can allow us to make inferences about the behavior of an entire complex system based on this one acoustic measurement that we have access to.</p>
+<p>So for the next little while, I'm going to walk through a bit of theory and then a toy example until I eventually end this talk with data from real live multi-agent groups that we're analyzing with tools from dynamical systems theory.</p>
+<p>So one of our most simple complex dynamical systems is a metronome or a pendulum.</p>
+<p>So Christopher Huygens first discovered this activity of two pendulums from pendulum clocks will be related to each other when these clocks are hanging from a shared surface.</p>
+<p>And what he found was that these pendulums would swing in anti-synchrony with each other.</p>
+<p>And since then, in 1600s or so, there's been lots of research on pendulums and on coupled metronomes.</p>
+<p>And if we put these metronomes, a timekeeping device for making music on a shared platform and maybe that platform rotates like this,</p>
+<p>you'll see each of these metronomes come into synchrony with each other.</p>
+<p>These are just static pictures. So to really help you visualize this and hear this, I'm recruiting a little bit of help from the Mythbusters.</p>
+<p>The Mythbusters on YouTube, so hopefully it is free and uncopyrighted.</p>
+<p>And I'm just going to skip ahead here to partway into their episode.</p>
+<p>Friction and momentum as I can so that only the metronome is having the effect.</p>
+<p>Now let's try two.</p>
+<p>Adam doubles his trouble with two metronomes set to the same tick mark.</p>
+<p>Look at the movement on this platform.</p>
+<p>And after two minutes, the shimmy takes over.</p>
+<p>Stay with it, boys.</p>
+<p>Nice.</p>
+<p>Nice.</p>
+<p>Nice.</p>
+<p>It's totally working.</p>
+<p>It just took them a little while to find each other's rhythm.</p>
+<p>Cool.</p>
+<p>I have an idea.</p>
+<p>If I stop the platform, they should drop out of phase.</p>
+<p>There it is.</p>
+<p>The moving platform is totally, totally critical to this experiment.</p>
+<p>So.</p>
+<p>All right.</p>
+<p>So that's Adam Savage there with two metronomes.</p>
+<p>One on earth.</p>
+<p>Why does this matter?</p>
+<p>Well, what he's done is replicated the findings of that centuries old experiment that was originally conducted with pendulums on a clock.</p>
+<p>And he noted that this moving platform here is what's totally, totally critical.</p>
+<p>But what I want you to also think of is that you heard these metronomes slowly coming into phase with each other.</p>
+<p>They were becoming interdependent on each other's behavior because they are connected by this coupling mechanism here.</p>
+<p>This the shared platform.</p>
+<p>And as Adam correctly notes, this moving platform is totally, totally critical.</p>
+<p>And in fact, when you saw him stop the platform, the metronomes are no longer coupled and their behavior no longer affects the other.</p>
+<p>This platform here, it can take many forms as long as it is freely flowing and responsive to the metronomes movement.</p>
+<p>And for the metronomes, this platform is the essential coupling mechanism for this emergence of coordinated acoustic behavior.</p>
+<p>In humans, this coordination doesn't have to be a physical platform.</p>
+<p>In fact, I argue that it is the interaction itself which serves as a coupling mechanism for multi-agent human behavior.</p>
+<p>And we're going to spend just a little bit more time with metronomes before I get on to real human groups here.</p>
+<p>So when you have many metronomes on a shared platform, you can have more than two.</p>
+<p>They're going to transition from uncoordinated random phase to coordinated synchronous phase.</p>
+<p>And what you're going to hear next is the acoustic output of 32 metronomes on a freely moving platform.</p>
+<p>And I'm going to justify to you two things that we can identify emergent coordinated behaviors in acoustic data.</p>
+<p>And what all I'm going to justify what state space reconstruction is and how this tool from dynamical systems can help us to analyze that acoustic data.</p>
+<p>So I'm going to start at the beginning with each of the metronomes in random phase.</p>
+<p>And this really takes a bit of a time so we don't have to listen to that for so long.</p>
+<p>I'm going to skip ahead.</p>
+<p>So what you heard was 32 metronomes all ticking at their own tempo at their natural period.</p>
+<p>It sounded like a bunch of random noise.</p>
+<p>But this platform, again, served as a coupling mechanism and synchronization between the metronomes emerge.</p>
+<p>So they began to sound like one group ticking together.</p>
+<p>And this is an example of the type of data we'll be investigating for the emergence of coordination and acoustic signals.</p>
+<p>So keep these metronomes in mind.</p>
+<p>No, don't play the metronomes again.</p>
+<p>The platform is serving as a coupling mechanism.</p>
+<p>As synchronization emerges, they begin to sound like one group.</p>
+<p>So we're going to visit some theory.</p>
+<p>I'm going to introduce you to Totkin's theorem and phase space reconstruction.</p>
+<p>So if we take one time series from a system, this is the Lorenz system here.</p>
+<p>It's defined by a set of three differential equations.</p>
+<p>But what you need to know is that we can reconstruct the behavior of this system as a whole by measuring only one of its parts.</p>
+<p>This is accomplished by embedding delayed copies of a single time series into multiple dimensions on some delay.</p>
+<p>So here's one of these time series extracted from the Lorenz system.</p>
+<p>And we delay that time series to make another time series, delay once more to make a third time series.</p>
+<p>We take these three dimensions and we use them to reconstruct a projection of the Lorenz system.</p>
+<p>And this is phase space reconstruction.</p>
+<p>And you can see that it maintains the topography or the same shape as the original Lorenz system.</p>
+<p>In the case of our acoustic data, I'm going to take a time series of that sound, that acoustic signal.</p>
+<p>And I'm going to follow these steps here to reconstruct the behavior of those metronomes over time.</p>
+<p>And once we've completed this phase space reconstruction, I'm going to visualize the behavior of our reconstructed system by generating what we call recurrence plots.</p>
+<p>This is done by plotting recurrent points from the reconstructive phase space within some radius that we set.</p>
+<p>And we can evaluate the structures in these recurrence plots using recurrence quantification analysis.</p>
+<p>So on the right here, you're seeing a few examples of different time series.</p>
+<p>And you're seeing the reconstructed phase space here.</p>
+<p>And on the bottom, you're seeing the recurrence plot that we generate from these reconstructed phase space.</p>
+<p>So one of the simplest measures that we can glean from recurrence plot is the rate that states recur.</p>
+<p>And this is called recurrence rate.</p>
+<p>And on the left here, we're seeing a time series of a simple sine wave.</p>
+<p>And when we reconstruct it, we end up seeing something a bit like an oval or a circle.</p>
+<p>And when we plot a point on our recurrence system, every time our recurrence plot here, every time our system revisits a space on the circle here.</p>
+<p>So in the sine waves recurrence plot, we're seeing these diagonal lines.</p>
+<p>These diagonal lines are reflecting deterministic behavior.</p>
+<p>And they track how similar sequences of values change over time.</p>
+<p>So this sine wave here, it's reliably deterministic.</p>
+<p>If it starts here, it's going to go here next.</p>
+<p>And it's going to go there next.</p>
+<p>And that gives us these long recurrence values here.</p>
+<p>And as you probably expect, this measure is called determinism.</p>
+<p>In the middle, we see uncorrelated white noise.</p>
+<p>And you can see the signal already looks much more random than our sine wave.</p>
+<p>And when we reconstruct it in phase space, I don't really see a shape here that we can get much out of.</p>
+<p>And underneath, you see our recurrence plot.</p>
+<p>And it looks similarly random.</p>
+<p>You could think of it like white noise on your television even.</p>
+<p>Finally, on the right, we see a time series extracted from speech.</p>
+<p>It's a little bit deterministic, like our sine wave.</p>
+<p>If it goes up, it's going to come down.</p>
+<p>But it's also drifting a bit.</p>
+<p>And you can see if we reconstruct that phase space instead of a simple oval,</p>
+<p>we're seeing a sort of transient signal here.</p>
+<p>And in the recurrence spot, we're also going to be seeing variation in lengths in these diagonals.</p>
+<p>And finally, recurrence spots can contain these vertical structures that you don't see here in addition to diagonals.</p>
+<p>And these are indications of periods of stability.</p>
+<p>We measure these with a value called laminarity.</p>
+<p>And laminarity, you can contrast it with determinism.</p>
+<p>It measures how a signal is organized in terms of simple, similar absolute values that are stable over time.</p>
+<p>And this is one representation of recurrence spots.</p>
+<p>It takes a little bit of time to get comfortable with what a current spot is.</p>
+<p>So I just have a different visualization to show you a little bit of the same thing.</p>
+<p>So these are the same set of RQA measures that we take from our system and plot on recurrence spots.</p>
+<p>This is demonstrating recurrence rate.</p>
+<p>It's just the percentage of recurrent points that we see on this recurrence plot over time.</p>
+<p>And it represents patterns of behavior that repeat over time.</p>
+<p>Determinism is the percentage of points that fall in a diagonal at any time.</p>
+<p>And it represents behaviors that belongs to a longer sequence of behavior.</p>
+<p>Entropy, this is the variability in lengths of these diagonal lines down here.</p>
+<p>And it represents the amount of disorder that there might be in these sequences.</p>
+<p>Finally, laminarity here are the percentage of points that fall on a vertical line.</p>
+<p>And this represents clusters of behavior that might repeat for a length of time.</p>
+<p>Like when a system revisits a period of behavior, leaves and returns to that behavioral state again.</p>
+<p>Alright, so it's a lot of theory.</p>
+<p>I need to bring you back to the metronome so we know what's going on here.</p>
+<p>So what you see here, this is a picture of our uncoordinated metronomes.</p>
+<p>They're moving in all sorts of directions.</p>
+<p>And finally, our coordinated metronomes at the bottom.</p>
+<p>And I took a 30-second acoustic signal from each set of behaviors here.</p>
+<p>And on the right, I have signals from this uncoordinated metronome and the recurrence spot we generated from them.</p>
+<p>And you can see this first recurrence spot, it resembles that kind of uncorrelated white noise.</p>
+<p>I don't see a lot of structure here.</p>
+<p>And then in our time series for the coordinated metronomes, you start to see some periodicities kind of in this signal here.</p>
+<p>And you see a lot more of these laminar structures down here in the bottom, these vertical structures,</p>
+<p>which indicate these periods of stable states in this group metronome behavior.</p>
+<p>I could break that down even smaller and I could look at five seconds of sound.</p>
+<p>And we see the same structures emerging.</p>
+<p>You can also see a bit more clearly these spikes that occur in the coordinated metronomes that correlate with these vertical structures than we did in the last plot.</p>
+<p>So this is great.</p>
+<p>Now you're experts.</p>
+<p>You've learned everything you need to know to evaluate the emergence of coordination when we measure it from a global acoustic signal.</p>
+<p>And you know how to visualize it in a recurrence plot and how to interpret that plot.</p>
+<p>So we're going to apply all of this to human data.</p>
+<p>And I want to remember for the metronomes, this platform is the essential coupling mechanism for the emergence of coordinated behavior.</p>
+<p>For humans, the interaction is totally, totally critical.</p>
+<p>So say me and my colleague, Marlee Reeves from the Applied Mathematics Department here at UC Merced.</p>
+<p>So we don't need a shared platform.</p>
+<p>Instead, we just need to interact with other human beings in order to couple our multi-agent human behavior.</p>
+<p>So now that we've got this far, I promised you some empirical data.</p>
+<p>And I'm going to tell you about multi-agent interaction first in a specific musical ensemble performing a specific musical work.</p>
+<p>And then in the crowd at a basketball game.</p>
+<p>So first, our musical ensemble here.</p>
+<p>They're performing a work called Welcome to the Imagination World by Tasuki Shimizu.</p>
+<p>And this group of musician, they're performing this piece that was composed to do something interesting.</p>
+<p>So the composer wrote the first few minutes of this musical piece to be completely random.</p>
+<p>In music theory terms, we call this alia torque.</p>
+<p>It's when some element of the music is left up to chance or to whatever the performers decide to play in that moment.</p>
+<p>So the start of this piece sounds a little bit like this.</p>
+<p>So.</p>
+<p>So this is not the musicians warming up on stage.</p>
+<p>This is the actual music.</p>
+<p>The musicians themselves are instructed not to interact with each other.</p>
+<p>And you can see this is kind of hard for musicians.</p>
+<p>Because you do hear musicians sort of taking turns starting each musical line a little bit.</p>
+<p>And it's a little bit hard to play completely random.</p>
+<p>You hear some folks playing scales up and down.</p>
+<p>But in general, this is supposed to sound random and they're not supposed to be coordinated.</p>
+<p>And after a few minutes, the musical score actually directs the musicians to begin coordinating with each other.</p>
+<p>And when this happens, I'll show you what that sounds like.</p>
+<p>So this is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of hard to make this music is kind of</p>
+<p>I'm going to stop it right before it gets exciting.</p>
+<p>So once they begin coordinating with each other,</p>
+<p>they begin to sound like one interacting musical ensemble.</p>
+<p>So this musical interaction is serving as the coupling mechanism,</p>
+<p>and the coordination between the musicians arises,</p>
+<p>and they begin to sound like one interacting ensemble.</p>
+<p>Now, we're not seeing emergent or spontaneous interaction</p>
+<p>in this particular musical composition and this performance.</p>
+<p>Musicians are told by the musical score precisely when to begin coordinating their actions,</p>
+<p>and in this particular performance, the divide between uncoordinated and joint music making</p>
+<p>is made even more apparent by a theatrical trick.</p>
+<p>The lights turn on, and then the conductor arrives on stage</p>
+<p>just as the musicians begin to play together as one ensemble.</p>
+<p>But I'm using this as a model system because I know the behavior they're supposed to be engaged in,</p>
+<p>and I know that there's going to be a transition from uncoordinated to coordinated behavior.</p>
+<p>So I can use that knowledge to ask the questions,</p>
+<p>are there any differences in nonlinear recurrence dynamics measured by RQA</p>
+<p>between the uncoordinated acoustic behavior and the coordinated behavior of this musical ensemble?</p>
+<p>And, spoiler alert, there absolutely are.</p>
+<p>So at the top, you're seeing the first and last 30 seconds of that first piece,</p>
+<p>that first part of the performance.</p>
+<p>On the bottom, you're seeing the first and last 30 seconds of the second part of the performance</p>
+<p>once the musicians have become coordinated.</p>
+<p>And we can see that the acoustic behavior from these musicians</p>
+<p>in the coordinated section of the music is more structured.</p>
+<p>We see these bursty vertical lines here</p>
+<p>where you have these stretches of connected sound,</p>
+<p>connected stretches of sound for periods of time.</p>
+<p>And again, we can look even closer at five-second samples,</p>
+<p>and we can see the same structures in,</p>
+<p>same vertical structures in the coordinated, but not the uncoordinated sections.</p>
+<p>So if I take just these little blocks here,</p>
+<p>zoom in to five seconds,</p>
+<p>we see a little bit more structure here,</p>
+<p>and a little bit less or a little bit noisier structure here.</p>
+<p>These are just for visualizations.</p>
+<p>This is not actually the five-second snippet here,</p>
+<p>but it works for getting the idea across.</p>
+<p>Okay, so cool.</p>
+<p>I see these structures in the recurrence plot,</p>
+<p>but is it really more structured when musicians are coordinated?</p>
+<p>We can do some statistics,</p>
+<p>and we can visualize our data in another way.</p>
+<p>So these are distributions of all of those measures</p>
+<p>that we extracted from the recurrence plot.</p>
+<p>And you can see coordinated sections in blue,</p>
+<p>uncoordinated sections in red.</p>
+<p>And we're seeing that when the musicians</p>
+<p>begin interacting with each other</p>
+<p>as a coordinated musical ensemble,</p>
+<p>recurrence and stability measures increased overall.</p>
+<p>So we have higher, also more variable RQA measures</p>
+<p>when they're coordinated,</p>
+<p>and we see lower and less variable RQA measures</p>
+<p>when they're uncoordinated.</p>
+<p>And we can see this even a little more clearly</p>
+<p>if we can plot those same measures over time.</p>
+<p>And the blue and purple lines here</p>
+<p>are representing uncoordinated section of the piece.</p>
+<p>Orange and green is represented.</p>
+<p>Sorry, blue and purple is coordinated.</p>
+<p>Orange and green is uncoordinated.</p>
+<p>And we can see that over time,</p>
+<p>when the musicians are coordinated</p>
+<p>and acting like one interacting ensemble,</p>
+<p>they're able to explore a greater variety</p>
+<p>of recurrence dynamics.</p>
+<p>They're able to explore more behavioral states</p>
+<p>than when they're uncoordinated.</p>
+<p>And we see all of these measures,</p>
+<p>no matter what they are,</p>
+<p>hovering around a small subset of dynamics.</p>
+<p>Now, you would be forgiven</p>
+<p>if you are skeptical of these results.</p>
+<p>After all, the entire musical performance</p>
+<p>is over eight minutes long.</p>
+<p>Maybe I simply chose the most uncoordinated sections</p>
+<p>and the most uncoordinated sections of the song.</p>
+<p>And you'd be smart to have this worry.</p>
+<p>Our peer reviewers shared the same worry.</p>
+<p>So we graphed the time series of RQA metrics</p>
+<p>for the entire piece.</p>
+<p>And it's pretty clear,</p>
+<p>even if you don't know what these values are,</p>
+<p>that there's some difference</p>
+<p>in all of these top pink and blue kind of graphs</p>
+<p>and these bottom orange and green type of graphs.</p>
+<p>We're seeing this same greater variability,</p>
+<p>greater values and more variability</p>
+<p>in each of these RQA metrics</p>
+<p>when the musicians are coordinated</p>
+<p>than when they're performing</p>
+<p>as a bunch of individuals on stage.</p>
+<p>And the takeaway here</p>
+<p>is that these musicians,</p>
+<p>when they're interacting together</p>
+<p>as a musical ensemble,</p>
+<p>they're able to explore</p>
+<p>a greater variety of acoustic behavior</p>
+<p>when they formed a single complex system,</p>
+<p>an interpersonal synergy,</p>
+<p>then when they were acting</p>
+<p>as a lot of individuals on stage.</p>
+<p>And we were able to use</p>
+<p>these nonlinear statistical methods</p>
+<p>from dynamical systems theory</p>
+<p>to measure that change.</p>
+<p>Cool.</p>
+<p>So that's a musical ensemble.</p>
+<p>I'm using it as a model system</p>
+<p>because we know what the behavior should be.</p>
+<p>Can I measure this</p>
+<p>from a different kind of system,</p>
+<p>one that doesn't have a script</p>
+<p>dictating the behavior</p>
+<p>of what's going on on the stage?</p>
+<p>So to do that,</p>
+<p>I look at data recorded</p>
+<p>from the student section</p>
+<p>of a BYU basketball game.</p>
+<p>And this data was collected</p>
+<p>by Butler and colleagues</p>
+<p>and labeled by many hardworking</p>
+<p>undergraduate students.</p>
+<p>And we have basically recordings</p>
+<p>from the crowd</p>
+<p>that are labeled</p>
+<p>based on what kind of crowd sounds</p>
+<p>they're making,</p>
+<p>whether they're cheering,</p>
+<p>this is like a loud,</p>
+<p>positive crowd vocalization,</p>
+<p>whether they're applauding.</p>
+<p>So this is mostly clapping,</p>
+<p>but could include some vocalization.</p>
+<p>Distraction noise</p>
+<p>when you're trying to distract someone</p>
+<p>from a free throw,</p>
+<p>mainly positive chants.</p>
+<p>So this is the fans chanting</p>
+<p>their BYU cougars chant</p>
+<p>or defense.</p>
+<p>Negative chanting,</p>
+<p>it's when they're angry</p>
+<p>rather than cheering positively,</p>
+<p>singing and then silence.</p>
+<p>So we're taking this data</p>
+<p>and we're going to ask</p>
+<p>a similar question.</p>
+<p>So we don't have a clear transition</p>
+<p>from uncoordinated</p>
+<p>to coordinated behavior,</p>
+<p>but we do have all of these</p>
+<p>different types of behavior.</p>
+<p>So we're going to ask,</p>
+<p>is there a relationship</p>
+<p>between nonlinear recurrence dynamics</p>
+<p>measured by RQA</p>
+<p>and these different categories</p>
+<p>of acoustic behavior</p>
+<p>at the crowd</p>
+<p>at this basketball game?</p>
+<p>And we follow the same process.</p>
+<p>We extract acoustic signals</p>
+<p>and we cut them up</p>
+<p>into five second samples here.</p>
+<p>And we use these signals</p>
+<p>to generate recurrence plots.</p>
+<p>And we take the measures</p>
+<p>from that recurrence plot</p>
+<p>to see if there's anything different.</p>
+<p>And I'm going to show you</p>
+<p>just two recurrence plots</p>
+<p>on the next slide.</p>
+<p>I'm going to show you a plot</p>
+<p>from positive chanting</p>
+<p>and from distraction noise.</p>
+<p>So here's distraction noise.</p>
+<p>It looks like white noise.</p>
+<p>It looks like what you would see</p>
+<p>on your television screen.</p>
+<p>And when I show you positive chant,</p>
+<p>there's clearly a striking difference.</p>
+<p>There's almost no structure</p>
+<p>in this distraction noise here,</p>
+<p>but there are very clear</p>
+<p>laminar bursts of activity</p>
+<p>represented in these vertical lines.</p>
+<p>And in fact,</p>
+<p>these two plots look very similar</p>
+<p>to our unsynchronized</p>
+<p>and synchronized metronomes</p>
+<p>way back from the middle</p>
+<p>of this talk.</p>
+<p>And intuitively,</p>
+<p>this makes sense.</p>
+<p>If you're trying to distract someone</p>
+<p>during a free throw,</p>
+<p>you're making all sorts</p>
+<p>of random sounds.</p>
+<p>You might be shaking</p>
+<p>your keys around.</p>
+<p>People are stomping on the stands.</p>
+<p>But if you're cheering your team on,</p>
+<p>trying to motivate them</p>
+<p>to score more points,</p>
+<p>or if you're mounting</p>
+<p>a strong defense,</p>
+<p>you're going to be working together,</p>
+<p>shouting whatever your chant is.</p>
+<p>Go, team, go, defense.</p>
+<p>And it's going to occur</p>
+<p>in a very rhythmic metronomic faction.</p>
+<p>And we can compare</p>
+<p>how all of these distributions</p>
+<p>of our QA metrics look</p>
+<p>between each different</p>
+<p>kind of crowd noise.</p>
+<p>And you can see</p>
+<p>there's quite a lot of overlap,</p>
+<p>but there's also some difference.</p>
+<p>So positive and negative chant</p>
+<p>seem to be a bit similar</p>
+<p>to each other in every category,</p>
+<p>which makes sense</p>
+<p>because whether they're chanting</p>
+<p>in a positive or negative energy,</p>
+<p>it's still this rhythmic,</p>
+<p>isochronous behavior</p>
+<p>that's happening.</p>
+<p>Distraction noise,</p>
+<p>cheer, and applause,</p>
+<p>on the other hand,</p>
+<p>all seem pretty similar</p>
+<p>to each other,</p>
+<p>no matter where we look at them.</p>
+<p>And then finally,</p>
+<p>all the way on the lowest scale</p>
+<p>is angry noise here.</p>
+<p>And one thing to note</p>
+<p>is we had very few samples</p>
+<p>of angry noise here.</p>
+<p>So that could be why</p>
+<p>we're seeing a few</p>
+<p>of these differences.</p>
+<p>And if we had more samples,</p>
+<p>maybe angry noise</p>
+<p>would look a bit more</p>
+<p>like distraction noise.</p>
+<p>So visually,</p>
+<p>we can see there are differences</p>
+<p>in these RQA metrics</p>
+<p>for all of these crowd sounds.</p>
+<p>And we don't want to just do visuals,</p>
+<p>so we can do some statistics here.</p>
+<p>This is just another visualization</p>
+<p>of our estimated marginal means</p>
+<p>showing pairwise comparisons</p>
+<p>between every crowd sound category.</p>
+<p>And it's a graphical representation</p>
+<p>of the estimated marginal means.</p>
+<p>If these red lines overlap,</p>
+<p>that means there are not</p>
+<p>significant differences</p>
+<p>between, for instance,</p>
+<p>distraction noise,</p>
+<p>cheer, and applause here.</p>
+<p>Positive and negative chant</p>
+<p>do look different, however.</p>
+<p>Interesting.</p>
+<p>And then angry noise</p>
+<p>is far out by itself.</p>
+<p>So knowing this,</p>
+<p>I mentioned very briefly earlier,</p>
+<p>I have a colleague</p>
+<p>in the Applied Mathematics Department.</p>
+<p>And one thing she's interested in</p>
+<p>is whether we can give</p>
+<p>a machine learning algorithm</p>
+<p>some of these RQA metrics</p>
+<p>to tell the difference</p>
+<p>between these different crowd sounds.</p>
+<p>The researchers at BYU</p>
+<p>have done this</p>
+<p>with traditional sound metrics,</p>
+<p>spectral analysis,</p>
+<p>captural analysis,</p>
+<p>and we're doing it</p>
+<p>with our RQA metrics.</p>
+<p>So we're focused more</p>
+<p>on the rhythmic content</p>
+<p>rather than pitch</p>
+<p>or spectral content</p>
+<p>of the sound.</p>
+<p>And she is doing this</p>
+<p>in two ways.</p>
+<p>So one is training</p>
+<p>a neural network</p>
+<p>with image classification.</p>
+<p>And what I'm going to show you</p>
+<p>a few results from</p>
+<p>is a random forest</p>
+<p>that is using</p>
+<p>these recurrent features</p>
+<p>as input</p>
+<p>and doing some feature</p>
+<p>vector classification</p>
+<p>using decision trees</p>
+<p>and doing some stuff</p>
+<p>that if you ask me</p>
+<p>questions about</p>
+<p>I will not know the answer</p>
+<p>because I'm not the mathematician</p>
+<p>in this context.</p>
+<p>But once she's trained</p>
+<p>that algorithm,</p>
+<p>it can actually learn</p>
+<p>the differences</p>
+<p>between these crowd sounds.</p>
+<p>So if these are dark blue</p>
+<p>along the diagonal,</p>
+<p>that means that it</p>
+<p>categorized cheer very well.</p>
+<p>If they're light blue,</p>
+<p>that means there was</p>
+<p>some confusion here.</p>
+<p>And if we remember</p>
+<p>through one of the</p>
+<p>previous graphs,</p>
+<p>applause,</p>
+<p>distraction,</p>
+<p>noise all kind of</p>
+<p>look similar to each other.</p>
+<p>So if we sort of</p>
+<p>smush those</p>
+<p>into one distraction category,</p>
+<p>put applause and cheer together</p>
+<p>and put positive</p>
+<p>and negative chance here,</p>
+<p>we get even better classification.</p>
+<p>And this part is something</p>
+<p>we're still working on.</p>
+<p>Hopefully we will be ready</p>
+<p>to submit it in a paper</p>
+<p>kind of soon.</p>
+<p>But now that we're ending</p>
+<p>on this really complex point,</p>
+<p>what have we learned?</p>
+<p>First, we took a</p>
+<p>quick dive into</p>
+<p>dynamical systems theory</p>
+<p>and the notion</p>
+<p>of interpersonal synergies.</p>
+<p>I told you that</p>
+<p>interpersonal synergies form</p>
+<p>when a functional coupling</p>
+<p>emerges between the behavior</p>
+<p>of two or more individuals.</p>
+<p>This kind of synergy</p>
+<p>can arise</p>
+<p>when individuals</p>
+<p>begin to coordinate</p>
+<p>and as an integrated</p>
+<p>multi-aging group of people.</p>
+<p>But measuring</p>
+<p>this emergence</p>
+<p>of coordination</p>
+<p>in large groups</p>
+<p>of people</p>
+<p>is difficult.</p>
+<p>Even if we can</p>
+<p>intuitively hear</p>
+<p>the difference</p>
+<p>between a coffee shop crowd</p>
+<p>and a crowd</p>
+<p>at a concert</p>
+<p>or sporting event.</p>
+<p>Without individual signals</p>
+<p>from each person</p>
+<p>in this interacting group,</p>
+<p>it's very hard</p>
+<p>for scientists</p>
+<p>to measure</p>
+<p>when the coordination occurs.</p>
+<p>But if we can hear</p>
+<p>this difference,</p>
+<p>then maybe</p>
+<p>we can measure it.</p>
+<p>So we practiced</p>
+<p>with a toy model,</p>
+<p>a pair of coupled metronomes,</p>
+<p>transitioning from</p>
+<p>uncoordinated</p>
+<p>to coordinated activity,</p>
+<p>unsynchronized</p>
+<p>to synchronized.</p>
+<p>And then we applied</p>
+<p>these same</p>
+<p>nonlinear statistical</p>
+<p>analysis techniques</p>
+<p>from dynamical systems</p>
+<p>to measure</p>
+<p>uncoordinated</p>
+<p>and coordinated behavior</p>
+<p>in a musical ensemble.</p>
+<p>Transitioned once too far.</p>
+<p>Ah, my musical ensemble</p>
+<p>is behind our graphs here.</p>
+<p>Apologies about that.</p>
+<p>I can come back</p>
+<p>to this slide.</p>
+<p>So when we want</p>
+<p>to learn something</p>
+<p>about social behavior,</p>
+<p>music provides</p>
+<p>a good model system.</p>
+<p>You know roughly</p>
+<p>and can manipulate</p>
+<p>what roles</p>
+<p>each member</p>
+<p>of the musical group</p>
+<p>is performing.</p>
+<p>And sometimes you even</p>
+<p>have the aid</p>
+<p>of a musical script</p>
+<p>like we did</p>
+<p>to be able to carefully</p>
+<p>measure the coordination</p>
+<p>dynamics that emerge</p>
+<p>in this joint music making.</p>
+<p>These same</p>
+<p>intentional interdependencies</p>
+<p>which arise</p>
+<p>from a group of musicians</p>
+<p>co-creating music together</p>
+<p>can also emerge</p>
+<p>as the result</p>
+<p>of local interaction</p>
+<p>between individuals</p>
+<p>in large interaction</p>
+<p>groups of people</p>
+<p>like crowds</p>
+<p>at a basketball game.</p>
+<p>And we investigated</p>
+<p>that by measuring</p>
+<p>the different crowd sounds</p>
+<p>that these fans made</p>
+<p>and the different</p>
+<p>acoustic behavioral dynamics</p>
+<p>we could observe</p>
+<p>in each of these crowd sounds</p>
+<p>with fans</p>
+<p>at a BYU basketball game.</p>
+<p>And all this work</p>
+<p>was not done just by me</p>
+<p>but also my colleague</p>
+<p>Marley Reeves</p>
+<p>in the applied mathematics</p>
+<p>department,</p>
+<p>my advisor</p>
+<p>Mesh Bell-Supermanium</p>
+<p>and also our colleagues</p>
+<p>Chris Kello</p>
+<p>and Michael Spivey.</p>
+<p>So that's all I got.</p>
+<p>Thank you so much</p>
+<p>for having me.</p>
+<p>Awesome.</p>
+<p>Thank you.</p>
+<p>You can unshare</p>
+<p>and I'll ask some questions</p>
+<p>and if anyone</p>
+<p>in the live chat</p>
+<p>has questions</p>
+<p>they can also ask.</p>
+<p>Sounds great.</p>
+<p>Are you going back</p>
+<p>to the slide?</p>
+<p>I was going to go back</p>
+<p>to the slide.</p>
+<p>I also cannot find</p>
+<p>the unshare button.</p>
+<p>Ah, it's fine.</p>
+<p>It's in,</p>
+<p>it's in,</p>
+<p>it's the same</p>
+<p>as the share button</p>
+<p>but yeah.</p>
+<p>Cool.</p>
+<p>Oh.</p>
+<p>All right.</p>
+<p>Well,</p>
+<p>a lot of</p>
+<p>very interesting research</p>
+<p>and really appreciate</p>
+<p>the care</p>
+<p>and to kind of</p>
+<p>speaking it</p>
+<p>very concisely</p>
+<p>and clearly.</p>
+<p>So just if I could</p>
+<p>give one</p>
+<p>takeaway</p>
+<p>that I thought</p>
+<p>was really fascinating.</p>
+<p>So you,</p>
+<p>in the Fusiroli</p>
+<p>2014 quotation,</p>
+<p>you talked about</p>
+<p>how there was</p>
+<p>like synergy</p>
+<p>and about</p>
+<p>the continuum</p>
+<p>and the spaces</p>
+<p>that are</p>
+<p>uncoordinated</p>
+<p>versus increasingly</p>
+<p>coordinated</p>
+<p>from the sheet music</p>
+<p>which is one type</p>
+<p>to the emergent</p>
+<p>coordination</p>
+<p>and then</p>
+<p>I thought</p>
+<p>that was</p>
+<p>an interesting way</p>
+<p>to open up</p>
+<p>coordination</p>
+<p>not in a framework</p>
+<p>of either</p>
+<p>strong versus</p>
+<p>weak emergence</p>
+<p>but rather</p>
+<p>within a</p>
+<p>directly measurable</p>
+<p>dynamical systems</p>
+<p>perspective</p>
+<p>and then</p>
+<p>at the end</p>
+<p>to do the</p>
+<p>machine learning</p>
+<p>and be able</p>
+<p>to train a model</p>
+<p>on the recurrence</p>
+<p>statistics</p>
+<p>and then</p>
+<p>identify the system</p>
+<p>it's like</p>
+<p>there's information</p>
+<p>about the system</p>
+<p>state</p>
+<p>as identified</p>
+<p>by experts</p>
+<p>which is what</p>
+<p>that labeling</p>
+<p>task was about</p>
+<p>that's retained</p>
+<p>like just</p>
+<p>in the coordination</p>
+<p>pattern</p>
+<p>and so</p>
+<p>there's something</p>
+<p>about the patterns</p>
+<p>across systems</p>
+<p>that can be</p>
+<p>generalized</p>
+<p>that captures</p>
+<p>also important</p>
+<p>information</p>
+<p>and that's an</p>
+<p>intuition that I</p>
+<p>think people often</p>
+<p>bring up</p>
+<p>when talking</p>
+<p>about dynamical</p>
+<p>systems</p>
+<p>but I really</p>
+<p>thought it was</p>
+<p>made clear</p>
+<p>with how you</p>
+<p>presented it</p>
+<p>yeah thanks</p>
+<p>I'm glad that</p>
+<p>that got across</p>
+<p>that was kind</p>
+<p>of a message</p>
+<p>I was trying</p>
+<p>to share</p>
+<p>one place</p>
+<p>to maybe start</p>
+<p>is this</p>
+<p>soft assembly</p>
+<p>so where</p>
+<p>does this</p>
+<p>soft assembly</p>
+<p>come into play</p>
+<p>and I guess</p>
+<p>just what</p>
+<p>does it mean</p>
+<p>in human</p>
+<p>teams or</p>
+<p>communication</p>
+<p>yeah</p>
+<p>so this</p>
+<p>this notion</p>
+<p>of soft</p>
+<p>assembly</p>
+<p>let me think</p>
+<p>of something</p>
+<p>that's not</p>
+<p>soft</p>
+<p>something</p>
+<p>that's</p>
+<p>hardwired</p>
+<p>oh I don't</p>
+<p>have I don't</p>
+<p>have an opposite</p>
+<p>example to soft</p>
+<p>assembly</p>
+<p>so if you</p>
+<p>take if you</p>
+<p>take like</p>
+<p>a tool</p>
+<p>like I don't</p>
+<p>know a wrench</p>
+<p>it only can</p>
+<p>move in one</p>
+<p>way the parts</p>
+<p>of the wrench</p>
+<p>or the parts</p>
+<p>of a set</p>
+<p>of pliers</p>
+<p>they're not</p>
+<p>softly</p>
+<p>assembled</p>
+<p>they're always</p>
+<p>attached</p>
+<p>and they're</p>
+<p>always going</p>
+<p>to perform</p>
+<p>that function</p>
+<p>right</p>
+<p>but if we</p>
+<p>think about</p>
+<p>lots of kind</p>
+<p>of systems</p>
+<p>if we think</p>
+<p>about human</p>
+<p>systems</p>
+<p>if we think</p>
+<p>about ant</p>
+<p>colonies</p>
+<p>or if we</p>
+<p>think about</p>
+<p>anything where</p>
+<p>an individual</p>
+<p>member of that</p>
+<p>system could</p>
+<p>leave if it</p>
+<p>wanted to</p>
+<p>or could</p>
+<p>leave when</p>
+<p>they're not</p>
+<p>interacting</p>
+<p>that's what</p>
+<p>we would</p>
+<p>call a</p>
+<p>softly</p>
+<p>assembled</p>
+<p>system</p>
+<p>and a</p>
+<p>group</p>
+<p>of humans</p>
+<p>the example</p>
+<p>that I was</p>
+<p>thinking of</p>
+<p>was any</p>
+<p>group of</p>
+<p>humans that</p>
+<p>comes together</p>
+<p>for some</p>
+<p>amount of</p>
+<p>time if we're</p>
+<p>talking about</p>
+<p>musicians on</p>
+<p>stage they're</p>
+<p>together and</p>
+<p>they function</p>
+<p>as a string</p>
+<p>quartet or as</p>
+<p>an orchestra</p>
+<p>so long as</p>
+<p>they're on stage</p>
+<p>and performing</p>
+<p>together but</p>
+<p>then they can</p>
+<p>pack their</p>
+<p>instruments up</p>
+<p>and they can</p>
+<p>go home</p>
+<p>so there's</p>
+<p>not a strong</p>
+<p>bond or like</p>
+<p>a strong</p>
+<p>physical</p>
+<p>mechanical</p>
+<p>connection</p>
+<p>that's forcing</p>
+<p>their interaction</p>
+<p>to occur</p>
+<p>it's just</p>
+<p>happening</p>
+<p>during that</p>
+<p>process</p>
+<p>because you</p>
+<p>also connected</p>
+<p>that to like</p>
+<p>the transient</p>
+<p>motor chains</p>
+<p>and so that</p>
+<p>was pretty</p>
+<p>interesting</p>
+<p>again anyone</p>
+<p>who's watching</p>
+<p>live can ask</p>
+<p>a question</p>
+<p>otherwise I'll</p>
+<p>just keep on</p>
+<p>asking about a</p>
+<p>few points</p>
+<p>so you use</p>
+<p>the metronome</p>
+<p>as a</p>
+<p>example of</p>
+<p>synchronization</p>
+<p>but also</p>
+<p>there's listening</p>
+<p>to repetitive</p>
+<p>music</p>
+<p>whether it's</p>
+<p>like electronic</p>
+<p>music that's</p>
+<p>repetitive or</p>
+<p>other kinds</p>
+<p>of music</p>
+<p>binaural beats</p>
+<p>so what</p>
+<p>is this</p>
+<p>repetition</p>
+<p>listening</p>
+<p>nature</p>
+<p>and what</p>
+<p>like kind</p>
+<p>of makes</p>
+<p>us select</p>
+<p>a given</p>
+<p>level of</p>
+<p>repetition</p>
+<p>to desire</p>
+<p>like what</p>
+<p>how do</p>
+<p>we think</p>
+<p>about that</p>
+<p>in terms</p>
+<p>of how</p>
+<p>you presented</p>
+<p>it with</p>
+<p>the recurrence</p>
+<p>here</p>
+<p>yeah so</p>
+<p>there's two</p>
+<p>things that</p>
+<p>I would</p>
+<p>I would</p>
+<p>think about</p>
+<p>so first</p>
+<p>you mentioned</p>
+<p>binaural beats</p>
+<p>and we</p>
+<p>want to listen</p>
+<p>to these</p>
+<p>very repetitive</p>
+<p>musical patterns</p>
+<p>and so there's</p>
+<p>two ways</p>
+<p>that our brains</p>
+<p>might be</p>
+<p>interpreting</p>
+<p>rhythmic patterns</p>
+<p>in music</p>
+<p>one notion</p>
+<p>that is probably</p>
+<p>very amenable</p>
+<p>to the active</p>
+<p>inference lab</p>
+<p>and what you</p>
+<p>talk about</p>
+<p>is predictive</p>
+<p>coding</p>
+<p>and the idea</p>
+<p>that we have</p>
+<p>these hierarchical</p>
+<p>predictions that</p>
+<p>are happening</p>
+<p>in the brain</p>
+<p>so when we</p>
+<p>perceive this</p>
+<p>low-level stimulus</p>
+<p>this rhythmic</p>
+<p>input</p>
+<p>we're constantly</p>
+<p>predicting when</p>
+<p>the next input</p>
+<p>is going to</p>
+<p>arrive</p>
+<p>and we're only</p>
+<p>passing up areas</p>
+<p>when our prediction</p>
+<p>is wrong</p>
+<p>and isochronous</p>
+<p>these very rhythmic</p>
+<p>beats</p>
+<p>are really easy</p>
+<p>to predict</p>
+<p>but there's</p>
+<p>another option</p>
+<p>it could be</p>
+<p>that we're not</p>
+<p>doing any prediction</p>
+<p>at all</p>
+<p>and we just</p>
+<p>have these</p>
+<p>inherent</p>
+<p>oscillations</p>
+<p>these natural</p>
+<p>frequencies of</p>
+<p>oscillations</p>
+<p>in our brain</p>
+<p>and when we</p>
+<p>hear a rhythmic</p>
+<p>pattern</p>
+<p>that is similar</p>
+<p>enough</p>
+<p>we naturally</p>
+<p>entrain</p>
+<p>to that beat</p>
+<p>or that rhythm</p>
+<p>drives this</p>
+<p>oscillatory behavior</p>
+<p>and so you have</p>
+<p>this emergent</p>
+<p>entrainment</p>
+<p>and no predictions</p>
+<p>necessary</p>
+<p>and you could be</p>
+<p>in either camp</p>
+<p>I alternate</p>
+<p>between being</p>
+<p>a firmly</p>
+<p>predictive coding</p>
+<p>camp</p>
+<p>and being a</p>
+<p>entrainment</p>
+<p>camp</p>
+<p>but this</p>
+<p>either way</p>
+<p>what seems</p>
+<p>to be really</p>
+<p>important in this</p>
+<p>activity</p>
+<p>is activity</p>
+<p>of your motor</p>
+<p>system</p>
+<p>and your ability</p>
+<p>for your motor</p>
+<p>system</p>
+<p>which is really</p>
+<p>good at making</p>
+<p>periodic movements</p>
+<p>like moving</p>
+<p>walking</p>
+<p>the ability</p>
+<p>of the motor</p>
+<p>system to help</p>
+<p>the auditory</p>
+<p>system</p>
+<p>to communicate</p>
+<p>with the auditory</p>
+<p>system</p>
+<p>in predicting</p>
+<p>when the next</p>
+<p>beat occurs</p>
+<p>or in</p>
+<p>entraining</p>
+<p>to the beat</p>
+<p>of a sound</p>
+<p>like that</p>
+<p>and that's</p>
+<p>with binaural beats</p>
+<p>the second thing</p>
+<p>that I would</p>
+<p>bring up</p>
+<p>is we like</p>
+<p>these binaural beats</p>
+<p>maybe they're</p>
+<p>relaxing for some</p>
+<p>people</p>
+<p>but we're</p>
+<p>listening to music</p>
+<p>there's a phenomenon</p>
+<p>called musical groove</p>
+<p>and this</p>
+<p>is when</p>
+<p>it's very</p>
+<p>scientific</p>
+<p>no it is</p>
+<p>actually the</p>
+<p>scientific term</p>
+<p>Peter Janata</p>
+<p>in 2012</p>
+<p>coined this</p>
+<p>and it's</p>
+<p>when the rhythm</p>
+<p>of a music</p>
+<p>is just</p>
+<p>complicated enough</p>
+<p>that it makes</p>
+<p>us want to</p>
+<p>move</p>
+<p>to music</p>
+<p>so it's just</p>
+<p>in that sweet</p>
+<p>spot where</p>
+<p>it's predictable</p>
+<p>but not quite</p>
+<p>predictable enough</p>
+<p>and it engages</p>
+<p>our motor system</p>
+<p>instead of just</p>
+<p>passively engaging</p>
+<p>it</p>
+<p>it actually makes</p>
+<p>us move</p>
+<p>to the beat</p>
+<p>of the music</p>
+<p>this might be</p>
+<p>because when we</p>
+<p>move</p>
+<p>when we tap</p>
+<p>our foot</p>
+<p>when we dance</p>
+<p>we're better</p>
+<p>able to predict</p>
+<p>when the next</p>
+<p>beat happens</p>
+<p>thanks the</p>
+<p>the groove</p>
+<p>again</p>
+<p>jargon</p>
+<p>so apologies</p>
+<p>it</p>
+<p>it</p>
+<p>reminds me</p>
+<p>of the zone</p>
+<p>of proximal</p>
+<p>development</p>
+<p>and kind of</p>
+<p>what does it</p>
+<p>mean</p>
+<p>if there was</p>
+<p>a build-up</p>
+<p>and too much</p>
+<p>tension being</p>
+<p>built</p>
+<p>like a ramping</p>
+<p>but then there's</p>
+<p>for example</p>
+<p>when there's</p>
+<p>quarter notes</p>
+<p>for two measures</p>
+<p>and then eighths</p>
+<p>and then sixteenths</p>
+<p>and then it's like</p>
+<p>when it goes</p>
+<p>even faster</p>
+<p>and then it</p>
+<p>it's like a meme</p>
+<p>with making it</p>
+<p>more exciting</p>
+<p>because it's</p>
+<p>reflecting a</p>
+<p>cultural</p>
+<p>and potentially</p>
+<p>related to</p>
+<p>biology</p>
+<p>like our priors</p>
+<p>on increasing</p>
+<p>rate of</p>
+<p>the</p>
+<p>the sound</p>
+<p>is like meaning</p>
+<p>something</p>
+<p>because it can't</p>
+<p>go on forever</p>
+<p>so then something</p>
+<p>is exciting</p>
+<p>or something</p>
+<p>is changing</p>
+<p>so then that's</p>
+<p>very interesting</p>
+<p>about how our</p>
+<p>like what is</p>
+<p>quiet</p>
+<p>what is loud</p>
+<p>what do those</p>
+<p>represent</p>
+<p>and what are</p>
+<p>the priors</p>
+<p>of the musical</p>
+<p>experience</p>
+<p>that becoming</p>
+<p>cultured in</p>
+<p>different ways</p>
+<p>so</p>
+<p>yeah</p>
+<p>maybe how does</p>
+<p>it help us</p>
+<p>think about</p>
+<p>like different</p>
+<p>preferences</p>
+<p>amongst individuals</p>
+<p>in the kind</p>
+<p>of music</p>
+<p>that they want</p>
+<p>to play</p>
+<p>or engage</p>
+<p>in or listen</p>
+<p>to or how</p>
+<p>they want</p>
+<p>to engage</p>
+<p>with that</p>
+<p>music</p>
+<p>yeah</p>
+<p>so</p>
+<p>so much</p>
+<p>so much</p>
+<p>content</p>
+<p>in what you</p>
+<p>just said</p>
+<p>um</p>
+<p>the one</p>
+<p>is</p>
+<p>is this</p>
+<p>like notion</p>
+<p>of anticipation</p>
+<p>when the rhythm</p>
+<p>keeps getting</p>
+<p>faster and</p>
+<p>faster</p>
+<p>um</p>
+<p>and</p>
+<p>there's</p>
+<p>um</p>
+<p>a whole</p>
+<p>book by</p>
+<p>leonard meyer</p>
+<p>about</p>
+<p>um</p>
+<p>how</p>
+<p>music</p>
+<p>is correlated</p>
+<p>with emotions</p>
+<p>and how</p>
+<p>there's this idea</p>
+<p>that a composer</p>
+<p>is playing</p>
+<p>with these periods</p>
+<p>of tension</p>
+<p>and release</p>
+<p>so whether</p>
+<p>that tension</p>
+<p>is from</p>
+<p>um</p>
+<p>buildup</p>
+<p>of rhythmic</p>
+<p>events</p>
+<p>and we</p>
+<p>usually</p>
+<p>expect</p>
+<p>um</p>
+<p>the faster</p>
+<p>rhythm gets</p>
+<p>maybe</p>
+<p>it's associated</p>
+<p>with</p>
+<p>a certain</p>
+<p>activity in the</p>
+<p>music</p>
+<p>or we expect</p>
+<p>it to slow</p>
+<p>down after</p>
+<p>it's gotten</p>
+<p>faster for so</p>
+<p>long</p>
+<p>or you're</p>
+<p>thinking about</p>
+<p>um</p>
+<p>when the beat</p>
+<p>drops</p>
+<p>in a piece</p>
+<p>of electronic</p>
+<p>music</p>
+<p>for instance</p>
+<p>um</p>
+<p>we can play</p>
+<p>with the rhythm</p>
+<p>or we can play</p>
+<p>with the musical</p>
+<p>pitch</p>
+<p>and we might</p>
+<p>have a certain</p>
+<p>set of chords</p>
+<p>that usually</p>
+<p>lead up</p>
+<p>to a certain</p>
+<p>resolution</p>
+<p>and we can</p>
+<p>trick everyone</p>
+<p>in the audience</p>
+<p>if we play</p>
+<p>a different</p>
+<p>chord instead</p>
+<p>um</p>
+<p>but you mentioned</p>
+<p>this kind of idea</p>
+<p>of different</p>
+<p>individuals</p>
+<p>liking different</p>
+<p>kinds of music</p>
+<p>and this</p>
+<p>zone of proximal</p>
+<p>development too</p>
+<p>so this is</p>
+<p>really getting</p>
+<p>into how</p>
+<p>the music</p>
+<p>that we're</p>
+<p>exposed to</p>
+<p>shapes the</p>
+<p>expectations</p>
+<p>that we're</p>
+<p>going to have</p>
+<p>um</p>
+<p>so if you</p>
+<p>grew up</p>
+<p>hearing western</p>
+<p>music</p>
+<p>if you</p>
+<p>are trained</p>
+<p>in western</p>
+<p>classical music</p>
+<p>you have</p>
+<p>certain</p>
+<p>expectations</p>
+<p>of what</p>
+<p>rhythms</p>
+<p>are allowed</p>
+<p>of um</p>
+<p>what kind</p>
+<p>of melodic</p>
+<p>or harmonic</p>
+<p>progression</p>
+<p>is going to</p>
+<p>happen</p>
+<p>but when</p>
+<p>you hear</p>
+<p>a different</p>
+<p>kind of music</p>
+<p>it might</p>
+<p>not even</p>
+<p>register</p>
+<p>to you</p>
+<p>as music</p>
+<p>the first</p>
+<p>time you</p>
+<p>hear it</p>
+<p>until you</p>
+<p>learn about</p>
+<p>it</p>
+<p>until you</p>
+<p>learn about</p>
+<p>the music</p>
+<p>of that</p>
+<p>culture</p>
+<p>um</p>
+<p>even if</p>
+<p>it's</p>
+<p>music</p>
+<p>within</p>
+<p>your own</p>
+<p>culture</p>
+<p>say you</p>
+<p>listen to</p>
+<p>uh</p>
+<p>hard rock</p>
+<p>for the</p>
+<p>first time</p>
+<p>or like</p>
+<p>like heavy</p>
+<p>metal for</p>
+<p>the first</p>
+<p>time</p>
+<p>it might</p>
+<p>just sound</p>
+<p>like noise</p>
+<p>until you're</p>
+<p>exposed to it</p>
+<p>enough</p>
+<p>or if you</p>
+<p>study the</p>
+<p>patterns of</p>
+<p>of how</p>
+<p>that music</p>
+<p>um</p>
+<p>moves in</p>
+<p>time</p>
+<p>it's like</p>
+<p>the</p>
+<p>plastic</p>
+<p>learning</p>
+<p>phase</p>
+<p>which is</p>
+<p>always</p>
+<p>continuing</p>
+<p>but especially</p>
+<p>during early</p>
+<p>developmental</p>
+<p>phases</p>
+<p>uh</p>
+<p>it's</p>
+<p>catching on</p>
+<p>to patterns</p>
+<p>and rhythms</p>
+<p>and whether</p>
+<p>the the</p>
+<p>four beat</p>
+<p>measure</p>
+<p>or different</p>
+<p>pitches</p>
+<p>and um</p>
+<p>rhythms</p>
+<p>are familiar</p>
+<p>or not</p>
+<p>that's</p>
+<p>very</p>
+<p>interesting</p>
+<p>area</p>
+<p>so</p>
+<p>how would</p>
+<p>one</p>
+<p>model that</p>
+<p>and or</p>
+<p>where do you</p>
+<p>see active</p>
+<p>inference</p>
+<p>in this</p>
+<p>discussion</p>
+<p>and what</p>
+<p>you've</p>
+<p>discussed</p>
+<p>here</p>
+<p>yeah</p>
+<p>so there's</p>
+<p>um</p>
+<p>then predictive</p>
+<p>coding approaches</p>
+<p>at modeling</p>
+<p>this</p>
+<p>um</p>
+<p>also the</p>
+<p>information</p>
+<p>dynamics</p>
+<p>of music</p>
+<p>um</p>
+<p>it's one</p>
+<p>model that</p>
+<p>comes to</p>
+<p>mind</p>
+<p>um</p>
+<p>or if you</p>
+<p>think of</p>
+<p>any of</p>
+<p>these ai</p>
+<p>music</p>
+<p>generators</p>
+<p>um</p>
+<p>google has</p>
+<p>an ai</p>
+<p>that plays</p>
+<p>music like</p>
+<p>bach</p>
+<p>um</p>
+<p>actually that</p>
+<p>might not</p>
+<p>be google</p>
+<p>but there</p>
+<p>is an ai</p>
+<p>that plays</p>
+<p>music like</p>
+<p>bach</p>
+<p>um</p>
+<p>google has</p>
+<p>uh</p>
+<p>different</p>
+<p>music ais</p>
+<p>that you</p>
+<p>can actually</p>
+<p>interact</p>
+<p>with</p>
+<p>and what</p>
+<p>you do</p>
+<p>here</p>
+<p>is</p>
+<p>you turn</p>
+<p>all of</p>
+<p>the music</p>
+<p>into</p>
+<p>symbols</p>
+<p>for the</p>
+<p>computer</p>
+<p>um</p>
+<p>and you're</p>
+<p>going to</p>
+<p>encode</p>
+<p>what the</p>
+<p>pitch is</p>
+<p>you're going</p>
+<p>to encode</p>
+<p>what the</p>
+<p>the rhythm</p>
+<p>is</p>
+<p>in a set</p>
+<p>of however</p>
+<p>many different</p>
+<p>numbers you</p>
+<p>want</p>
+<p>and then</p>
+<p>you can</p>
+<p>kind of</p>
+<p>take measures</p>
+<p>of of</p>
+<p>maybe the</p>
+<p>shannon</p>
+<p>entropy</p>
+<p>of how</p>
+<p>likely you</p>
+<p>are to</p>
+<p>expect</p>
+<p>this note</p>
+<p>knowing</p>
+<p>that that</p>
+<p>note</p>
+<p>has</p>
+<p>played</p>
+<p>and if</p>
+<p>you've</p>
+<p>only</p>
+<p>trained</p>
+<p>this ai</p>
+<p>on</p>
+<p>bach</p>
+<p>corrals</p>
+<p>maybe</p>
+<p>then you</p>
+<p>know</p>
+<p>the</p>
+<p>notes</p>
+<p>are</p>
+<p>mostly</p>
+<p>going to</p>
+<p>be</p>
+<p>quarter</p>
+<p>notes</p>
+<p>maybe</p>
+<p>half</p>
+<p>notes</p>
+<p>maybe</p>
+<p>an eighth</p>
+<p>note</p>
+<p>here</p>
+<p>there</p>
+<p>and</p>
+<p>some</p>
+<p>whole</p>
+<p>notes</p>
+<p>so you</p>
+<p>already are</p>
+<p>constrained</p>
+<p>with the</p>
+<p>type</p>
+<p>the length</p>
+<p>of note</p>
+<p>that you're</p>
+<p>going to hear</p>
+<p>and bach</p>
+<p>corrals follow</p>
+<p>a similar</p>
+<p>a similar</p>
+<p>pattern</p>
+<p>every single</p>
+<p>corral</p>
+<p>so you</p>
+<p>have</p>
+<p>you know</p>
+<p>the probability</p>
+<p>of you</p>
+<p>hearing</p>
+<p>the tonic</p>
+<p>chord</p>
+<p>at this</p>
+<p>point in</p>
+<p>time</p>
+<p>and not</p>
+<p>hearing</p>
+<p>a major</p>
+<p>second</p>
+<p>or</p>
+<p>hearing</p>
+<p>a</p>
+<p>certain</p>
+<p>step</p>
+<p>at this</p>
+<p>point in</p>
+<p>time</p>
+<p>because you've</p>
+<p>mapped out</p>
+<p>all those</p>
+<p>probabilities</p>
+<p>and lots</p>
+<p>of people</p>
+<p>do that</p>
+<p>I don't</p>
+<p>do that</p>
+<p>kind</p>
+<p>of</p>
+<p>AI</p>
+<p>or</p>
+<p>modeling</p>
+<p>work</p>
+<p>with</p>
+<p>musical</p>
+<p>scores</p>
+<p>myself</p>
+<p>so</p>
+<p>they're</p>
+<p>creating</p>
+<p>musical</p>
+<p>scores</p>
+<p>with</p>
+<p>what</p>
+<p>imperative</p>
+<p>or</p>
+<p>for</p>
+<p>what</p>
+<p>end</p>
+<p>that's</p>
+<p>a good</p>
+<p>question</p>
+<p>so</p>
+<p>I've</p>
+<p>actually</p>
+<p>worked</p>
+<p>with a</p>
+<p>co-author</p>
+<p>who's</p>
+<p>submitted</p>
+<p>a</p>
+<p>manuscript</p>
+<p>and that's</p>
+<p>kind of</p>
+<p>one of</p>
+<p>the</p>
+<p>questions</p>
+<p>we ask</p>
+<p>waiting</p>
+<p>on reviews</p>
+<p>back</p>
+<p>but</p>
+<p>we're</p>
+<p>looking at</p>
+<p>all of</p>
+<p>these</p>
+<p>different</p>
+<p>kind of</p>
+<p>music</p>
+<p>making</p>
+<p>AIs</p>
+<p>and</p>
+<p>we're</p>
+<p>coming at</p>
+<p>the question</p>
+<p>from another</p>
+<p>angle</p>
+<p>we're</p>
+<p>kind of</p>
+<p>asking</p>
+<p>whether</p>
+<p>they can</p>
+<p>make</p>
+<p>music</p>
+<p>and whether</p>
+<p>it's</p>
+<p>good</p>
+<p>music</p>
+<p>and what's</p>
+<p>missing</p>
+<p>if they</p>
+<p>can't</p>
+<p>music</p>
+<p>and</p>
+<p>that's</p>
+<p>because</p>
+<p>when we're</p>
+<p>talking</p>
+<p>about</p>
+<p>humans</p>
+<p>and</p>
+<p>why</p>
+<p>humans</p>
+<p>make</p>
+<p>music</p>
+<p>a lot</p>
+<p>of</p>
+<p>it</p>
+<p>comes</p>
+<p>down</p>
+<p>to</p>
+<p>the</p>
+<p>social</p>
+<p>interaction</p>
+<p>that</p>
+<p>music</p>
+<p>allows</p>
+<p>so</p>
+<p>music</p>
+<p>seems</p>
+<p>to</p>
+<p>facilitate</p>
+<p>social</p>
+<p>bonding</p>
+<p>if</p>
+<p>I</p>
+<p>am</p>
+<p>drumming</p>
+<p>in</p>
+<p>time</p>
+<p>with</p>
+<p>you</p>
+<p>even</p>
+<p>if</p>
+<p>I'm</p>
+<p>walking</p>
+<p>in</p>
+<p>time</p>
+<p>with</p>
+<p>you</p>
+<p>but</p>
+<p>if</p>
+<p>I'm</p>
+<p>doing</p>
+<p>something</p>
+<p>in</p>
+<p>time</p>
+<p>with</p>
+<p>you</p>
+<p>whether</p>
+<p>it's</p>
+<p>drumming</p>
+<p>or</p>
+<p>tapping</p>
+<p>or</p>
+<p>making</p>
+<p>music</p>
+<p>I</p>
+<p>probably</p>
+<p>will</p>
+<p>like</p>
+<p>you</p>
+<p>more</p>
+<p>after</p>
+<p>that</p>
+<p>event</p>
+<p>and</p>
+<p>it's</p>
+<p>also a</p>
+<p>tool</p>
+<p>that we</p>
+<p>use</p>
+<p>parents</p>
+<p>to</p>
+<p>infants</p>
+<p>to</p>
+<p>soothe</p>
+<p>them</p>
+<p>if</p>
+<p>you</p>
+<p>think</p>
+<p>about</p>
+<p>lullabies</p>
+<p>and</p>
+<p>there's</p>
+<p>a lot</p>
+<p>about</p>
+<p>music</p>
+<p>that</p>
+<p>seems</p>
+<p>to</p>
+<p>be</p>
+<p>rooted</p>
+<p>in</p>
+<p>social</p>
+<p>bonding</p>
+<p>and</p>
+<p>music</p>
+<p>also</p>
+<p>activates</p>
+<p>reward</p>
+<p>systems</p>
+<p>in</p>
+<p>our</p>
+<p>brain</p>
+<p>so</p>
+<p>we</p>
+<p>get</p>
+<p>a</p>
+<p>dopamine</p>
+<p>rush</p>
+<p>when</p>
+<p>we</p>
+<p>get</p>
+<p>to</p>
+<p>that</p>
+<p>peak</p>
+<p>experience</p>
+<p>in</p>
+<p>music</p>
+<p>there's</p>
+<p>some</p>
+<p>recent</p>
+<p>work</p>
+<p>and</p>
+<p>I</p>
+<p>can't</p>
+<p>remember</p>
+<p>who</p>
+<p>put</p>
+<p>it</p>
+<p>out</p>
+<p>that</p>
+<p>if</p>
+<p>you</p>
+<p>listen</p>
+<p>to</p>
+<p>music</p>
+<p>you're</p>
+<p>getting</p>
+<p>similar</p>
+<p>activation</p>
+<p>as</p>
+<p>if</p>
+<p>you</p>
+<p>had</p>
+<p>engaged</p>
+<p>in</p>
+<p>exercise</p>
+<p>we</p>
+<p>use</p>
+<p>music</p>
+<p>in</p>
+<p>therapy</p>
+<p>like</p>
+<p>music</p>
+<p>is</p>
+<p>just</p>
+<p>it's</p>
+<p>connected</p>
+<p>to</p>
+<p>a</p>
+<p>lot</p>
+<p>of</p>
+<p>!</p>
+<p>social</p>
+<p>bonding</p>
+<p>functions</p>
+<p>for</p>
+<p>humans</p>
+<p>but</p>
+<p>why</p>
+<p>doesn't</p>
+<p>AI</p>
+<p>make</p>
+<p>music</p>
+<p>like</p>
+<p>the</p>
+<p>AI</p>
+<p>doesn't</p>
+<p>need</p>
+<p>to</p>
+<p>bond</p>
+<p>with</p>
+<p>another</p>
+<p>AI</p>
+<p>maybe</p>
+<p>they're</p>
+<p>getting</p>
+<p>reward</p>
+<p>in</p>
+<p>terms</p>
+<p>of</p>
+<p>a</p>
+<p>value</p>
+<p>function</p>
+<p>that</p>
+<p>we've</p>
+<p>programmed</p>
+<p>into</p>
+<p>the</p>
+<p>AI</p>
+<p>to</p>
+<p>say</p>
+<p>oh</p>
+<p>good</p>
+<p>that</p>
+<p>was</p>
+<p>a</p>
+<p>good</p>
+<p>musical</p>
+<p>line</p>
+<p>that</p>
+<p>you</p>
+<p>made</p>
+<p>now</p>
+<p>do</p>
+<p>it</p>
+<p>again</p>
+<p>but</p>
+<p>what</p>
+<p>motivation</p>
+<p>do</p>
+<p>they</p>
+<p>have</p>
+<p>there's</p>
+<p>also</p>
+<p>no</p>
+<p>connection</p>
+<p>to</p>
+<p>any</p>
+<p>interoceptive</p>
+<p>states</p>
+<p>or</p>
+<p>physiological</p>
+<p>states</p>
+<p>if we</p>
+<p>think</p>
+<p>about</p>
+<p>listening</p>
+<p>to</p>
+<p>music</p>
+<p>before</p>
+<p>we</p>
+<p>go</p>
+<p>to</p>
+<p>the</p>
+<p>gym</p>
+<p>we</p>
+<p>listen</p>
+<p>to</p>
+<p>music</p>
+<p>to</p>
+<p>hype</p>
+<p>us</p>
+<p>up</p>
+<p>and</p>
+<p>get</p>
+<p>us</p>
+<p>pumped</p>
+<p>and</p>
+<p>it's</p>
+<p>raising</p>
+<p>our</p>
+<p>blood</p>
+<p>pressure</p>
+<p>it's</p>
+<p>getting</p>
+<p>us</p>
+<p>our</p>
+<p>body</p>
+<p>prepared</p>
+<p>to</p>
+<p>do</p>
+<p>the</p>
+<p>activity</p>
+<p>we</p>
+<p>want</p>
+<p>to</p>
+<p>do</p>
+<p>and</p>
+<p>at</p>
+<p>night</p>
+<p>we</p>
+<p>might</p>
+<p>listen</p>
+<p>to</p>
+<p>calming</p>
+<p>soothing</p>
+<p>music</p>
+<p>lower</p>
+<p>blood</p>
+<p>pressure</p>
+<p>lower</p>
+<p>breathing</p>
+<p>rate</p>
+<p>to</p>
+<p>prepare</p>
+<p>to</p>
+<p>go</p>
+<p>to</p>
+<p>sleep</p>
+<p>what</p>
+<p>drive</p>
+<p>does</p>
+<p>a</p>
+<p>computer</p>
+<p>have</p>
+<p>to</p>
+<p>your</p>
+<p>life</p>
+<p>compared</p>
+<p>to</p>
+<p>a</p>
+<p>human</p>
+<p>it's</p>
+<p>a</p>
+<p>great</p>
+<p>question</p>
+<p>I</p>
+<p>don't</p>
+<p>know</p>
+<p>if</p>
+<p>the</p>
+<p>people</p>
+<p>who</p>
+<p>are</p>
+<p>making</p>
+<p>AI</p>
+<p>music</p>
+<p>are</p>
+<p>always</p>
+<p>asking</p>
+<p>that</p>
+<p>question</p>
+<p>but</p>
+<p>have</p>
+<p>you</p>
+<p>ever</p>
+<p>heard</p>
+<p>of</p>
+<p>Holly</p>
+<p>Herndon</p>
+<p>no</p>
+<p>so</p>
+<p>she</p>
+<p>is</p>
+<p>a</p>
+<p>electronic</p>
+<p>music</p>
+<p>creator</p>
+<p>who</p>
+<p>has</p>
+<p>created</p>
+<p>a</p>
+<p>music</p>
+<p>AI</p>
+<p>in</p>
+<p>this</p>
+<p>space</p>
+<p>and</p>
+<p>her</p>
+<p>notion</p>
+<p>was</p>
+<p>to</p>
+<p>take</p>
+<p>this</p>
+<p>idea</p>
+<p>of</p>
+<p>cultural</p>
+<p>learning</p>
+<p>and</p>
+<p>if</p>
+<p>you</p>
+<p>think</p>
+<p>of</p>
+<p>the</p>
+<p>zone</p>
+<p>of</p>
+<p>proximal</p>
+
+<p>development</p>
+<p>but</p>
+<p>she</p>
+<p>trained</p>
+<p>her</p>
+<p>AI</p>
+<p>baby</p>
+<p>with</p>
+<p>voices</p>
+<p>of</p>
+<p>a lot</p>
+<p>of</p>
+<p>different</p>
+<p>people</p>
+<p>and</p>
+<p>exposed</p>
+<p>to</p>
+<p>a lot</p>
+<p>of</p>
+<p>like</p>
+<p>basically</p>
+<p>a</p>
+<p>culture</p>
+<p>in order</p>
+<p>for it</p>
+<p>to generate</p>
+<p>some sort</p>
+<p>of music</p>
+<p>from what</p>
+<p>she makes</p>
+<p>and she</p>
+<p>has some</p>
+<p>really</p>
+<p>interesting</p>
+<p>art</p>
+<p>in that</p>
+<p>space</p>
+<p>it's</p>
+<p>a little</p>
+<p>bit like</p>
+<p>the tree</p>
+<p>falling</p>
+<p>in the</p>
+<p>forest</p>
+<p>is it</p>
+<p>a noise</p>
+<p>or a</p>
+<p>sound</p>
+<p>does</p>
+<p>someone</p>
+<p>have</p>
+<p>to</p>
+<p>listen</p>
+<p>to</p>
+<p>it</p>
+<p>if</p>
+<p>you</p>
+<p>have</p>
+<p>a</p>
+<p>bunch</p>
+<p>of</p>
+<p>auto</p>
+<p>generated</p>
+<p>songs</p>
+<p>in a</p>
+<p>genre</p>
+<p>but</p>
+<p>no</p>
+<p>human</p>
+<p>experienced</p>
+<p>writing</p>
+<p>them</p>
+<p>no one</p>
+<p>experienced</p>
+<p>listening</p>
+<p>to them</p>
+<p>it's like</p>
+<p>did it</p>
+<p>ever</p>
+<p>happen</p>
+<p>that's</p>
+<p>quite an</p>
+<p>interesting</p>
+<p>idea</p>
+<p>and it's</p>
+<p>also</p>
+<p>it's a</p>
+<p>cross</p>
+<p>media</p>
+<p>issue</p>
+<p>with</p>
+<p>generated</p>
+<p>text</p>
+<p>and image</p>
+<p>and</p>
+<p>that also</p>
+<p>makes me</p>
+<p>think about</p>
+<p>a John Cage</p>
+<p>quote</p>
+<p>talking about</p>
+<p>music</p>
+<p>and duration</p>
+<p>and time</p>
+<p>so maybe</p>
+<p>what do</p>
+<p>you</p>
+<p>think</p>
+<p>about</p>
+<p>music</p>
+<p>and time</p>
+<p>music</p>
+<p>and time</p>
+<p>so</p>
+<p>stereotypically</p>
+<p>whenever we</p>
+<p>think of</p>
+<p>John Cage</p>
+<p>think of</p>
+<p>that</p>
+<p>four minutes</p>
+<p>and 33</p>
+<p>seconds</p>
+<p>he sits</p>
+<p>in front</p>
+<p>of the</p>
+<p>piano</p>
+<p>starts</p>
+<p>a timer</p>
+<p>and is</p>
+<p>just</p>
+<p>silent</p>
+<p>there's</p>
+<p>a</p>
+<p>Marius Kozak</p>
+<p>if I'm</p>
+<p>remembering</p>
+<p>right</p>
+<p>actually</p>
+<p>writes</p>
+<p>about</p>
+<p>music</p>
+<p>and time</p>
+<p>and the</p>
+<p>idea</p>
+<p>that</p>
+<p>music</p>
+<p>is</p>
+<p>deeply</p>
+<p>linked</p>
+<p>to</p>
+<p>movement</p>
+<p>in time</p>
+<p>and it's</p>
+<p>sort of</p>
+<p>a way</p>
+<p>to</p>
+<p>express</p>
+<p>movement</p>
+<p>in time</p>
+<p>through</p>
+<p>not just</p>
+<p>the auditory</p>
+<p>lens</p>
+<p>but also</p>
+<p>through</p>
+<p>dance</p>
+<p>so</p>
+<p>like</p>
+<p>thinking</p>
+<p>of dance</p>
+<p>as a</p>
+<p>form</p>
+<p>of music</p>
+<p>as well</p>
+<p>and seeing</p>
+<p>how</p>
+<p>not</p>
+<p>only</p>
+<p>something</p>
+<p>like</p>
+<p>auditory</p>
+<p>music</p>
+<p>but dance</p>
+<p>is prevalent</p>
+<p>in every</p>
+<p>culture</p>
+<p>in the</p>
+<p>globe</p>
+<p>and I</p>
+<p>think</p>
+<p>there's</p>
+<p>something</p>
+<p>important</p>
+<p>to</p>
+<p>the</p>
+<p>notion</p>
+<p>of</p>
+<p>time</p>
+<p>and</p>
+<p>maybe</p>
+<p>music</p>
+<p>as</p>
+<p>the</p>
+<p>choreographing</p>
+<p>of</p>
+<p>movement</p>
+<p>through</p>
+<p>time</p>
+<p>because</p>
+<p>if we</p>
+<p>think</p>
+<p>about</p>
+<p>you</p>
+<p>mentioned</p>
+<p>generated</p>
+<p>language</p>
+<p>or images</p>
+<p>these</p>
+<p>are</p>
+<p>static</p>
+<p>pieces</p>
+<p>you know</p>
+<p>you can</p>
+<p>look</p>
+<p>around</p>
+<p>the scene</p>
+<p>or you</p>
+<p>can</p>
+<p>read</p>
+<p>the</p>
+<p>text</p>
+<p>but</p>
+<p>music</p>
+<p>has</p>
+<p>to</p>
+<p>happen</p>
+<p>in the</p>
+<p>temporal</p>
+<p>domain</p>
+<p>you</p>
+<p>have</p>
+<p>to</p>
+<p>listen</p>
+<p>to</p>
+<p>it</p>
+<p>over</p>
+<p>a</p>
+<p>period</p>
+<p>of</p>
+<p>time</p>
+<p>once</p>
+<p>the note</p>
+<p>is</p>
+<p>played</p>
+<p>it's</p>
+<p>gone</p>
+<p>after</p>
+<p>that</p>
+<p>or</p>
+<p>once</p>
+<p>you've</p>
+<p>enacted</p>
+<p>a</p>
+<p>particular</p>
+<p>dance</p>
+<p>it's</p>
+<p>gone</p>
+<p>after</p>
+<p>that</p>
+<p>and</p>
+<p>I</p>
+<p>don't</p>
+<p>know</p>
+<p>I</p>
+<p>don't</p>
+<p>have</p>
+<p>like</p>
+<p>a</p>
+<p>nice</p>
+<p>way</p>
+<p>to</p>
+<p>wrap</p>
+<p>that</p>
+<p>up</p>
+<p>about</p>
+<p>why</p>
+<p>time</p>
+<p>is</p>
+<p>important</p>
+<p>but</p>
+<p>it's</p>
+<p>definitely</p>
+<p>an</p>
+<p>important</p>
+<p>feature</p>
+<p>of</p>
+<p>music</p>
+<p>and</p>
+<p>of</p>
+<p>dance</p>
+<p>that</p>
+<p>you're</p>
+<p>not</p>
+<p>going</p>
+<p>to</p>
+<p>find</p>
+<p>in</p>
+<p>other</p>
+<p>art</p>
+<p>forms</p>
+<p>you</p>
+<p>might</p>
+<p>find</p>
+<p>you</p>
+<p>could</p>
+<p>think</p>
+<p>of</p>
+<p>it</p>
+<p>in</p>
+<p>a</p>
+<p>narrative</p>
+<p>has</p>
+<p>to</p>
+<p>happen</p>
+<p>over</p>
+<p>time</p>
+<p>because</p>
+<p>you're</p>
+<p>reading</p>
+<p>it</p>
+<p>over</p>
+<p>time</p>
+<p>and</p>
+<p>that's</p>
+<p>part</p>
+<p>of</p>
+<p>why</p>
+<p>so</p>
+<p>in</p>
+<p>my</p>
+<p>neuroscience</p>
+<p>work</p>
+<p>I</p>
+<p>study</p>
+<p>how</p>
+<p>we</p>
+<p>perceive</p>
+<p>musical</p>
+<p>rhythm</p>
+<p>so</p>
+<p>if</p>
+<p>we</p>
+<p>perturb</p>
+<p>the</p>
+<p>time</p>
+<p>that</p>
+<p>a</p>
+<p>musical</p>
+<p>rhythm</p>
+<p>is</p>
+<p>happening</p>
+<p>how</p>
+<p>does</p>
+<p>our</p>
+<p>brain</p>
+<p>cope</p>
+<p>with</p>
+<p>that</p>
+<p>or</p>
+<p>if</p>
+<p>we</p>
+<p>perturb</p>
+<p>part</p>
+<p>of</p>
+<p>the</p>
+<p>brain</p>
+<p>that</p>
+<p>is</p>
+<p>thought</p>
+<p>to</p>
+<p>be</p>
+<p>involved</p>
+<p>with</p>
+<p>timing</p>
+<p>perception</p>
+<p>so</p>
+<p>this</p>
+<p>ability</p>
+<p>to</p>
+<p>hear</p>
+<p>beats</p>
+<p>that</p>
+<p>are</p>
+<p>happening</p>
+<p>in</p>
+<p>a</p>
+<p>certain</p>
+<p>phase</p>
+<p>or</p>
+<p>to</p>
+<p>hear</p>
+<p>certain</p>
+<p>rhythms</p>
+<p>if</p>
+<p>we</p>
+<p>perturb</p>
+<p>that</p>
+<p>system</p>
+<p>are</p>
+<p>we</p>
+<p>going</p>
+<p>to</p>
+<p>impair</p>
+<p>how</p>
+<p>people</p>
+<p>perceive</p>
+<p>the</p>
+<p>rhythm</p>
+<p>in</p>
+<p>that</p>
+<p>piece</p>
+<p>of</p>
+<p>music</p>
+<p>and</p>
+<p>these</p>
+<p>are</p>
+<p>questions</p>
+<p>I'm</p>
+<p>asking</p>
+<p>questions</p>
+<p>a lot</p>
+<p>of</p>
+<p>people</p>
+<p>are</p>
+<p>asking</p>
+<p>it's</p>
+<p>a</p>
+<p>very</p>
+<p>bright</p>
+<p>landscape</p>
+<p>right</p>
+<p>now</p>
+<p>for</p>
+<p>that</p>
+<p>kind</p>
+<p>of</p>
+<p>question</p>
+<p>that's</p>
+<p>really</p>
+<p>interesting</p>
+<p>about</p>
+<p>bringing</p>
+<p>the</p>
+<p>action</p>
+<p>in</p>
+<p>and</p>
+<p>maybe</p>
+<p>even</p>
+<p>moving</p>
+<p>music</p>
+<p>outside</p>
+<p>or</p>
+<p>a little</p>
+<p>bit</p>
+<p>beyond</p>
+<p>just</p>
+<p>the</p>
+<p>auditory</p>
+<p>because</p>
+<p>then that</p>
+<p>might open</p>
+<p>up</p>
+<p>auditory</p>
+<p>experiences</p>
+<p>that</p>
+<p>aren't</p>
+<p>music</p>
+<p>and</p>
+<p>musical</p>
+<p>experiences</p>
+<p>that have</p>
+<p>a large</p>
+<p>component</p>
+<p>through time</p>
+<p>but they're</p>
+<p>not necessarily</p>
+<p>auditory</p>
+<p>so one</p>
+<p>other</p>
+<p>thing</p>
+<p>thinking</p>
+<p>about</p>
+<p>the</p>
+<p>development</p>
+<p>of</p>
+<p>auditory</p>
+<p>preferences</p>
+<p>and</p>
+<p>expectations</p>
+<p>for</p>
+<p>probably</p>
+<p>a long</p>
+<p>time</p>
+<p>in human</p>
+<p>history</p>
+<p>the</p>
+<p>sounds</p>
+<p>and the</p>
+<p>music</p>
+<p>that one</p>
+<p>heard</p>
+<p>was local</p>
+<p>and</p>
+<p>performed</p>
+<p>if not</p>
+<p>interactive</p>
+<p>and then</p>
+<p>there was</p>
+<p>a pretty</p>
+<p>short</p>
+<p>period</p>
+<p>of time</p>
+<p>of</p>
+<p>top</p>
+<p>40</p>
+<p>records</p>
+<p>CDs</p>
+<p>and then</p>
+<p>now</p>
+<p>there's</p>
+<p>the</p>
+<p>ability</p>
+<p>to</p>
+<p>listen</p>
+<p>to</p>
+<p>a</p>
+<p>huge</p>
+<p>number</p>
+<p>of</p>
+<p>music</p>
+<p>as well</p>
+<p>as</p>
+<p>listen</p>
+<p>to</p>
+<p>a</p>
+<p>small</p>
+<p>selection</p>
+<p>many</p>
+<p>times</p>
+<p>and</p>
+<p>what</p>
+<p>is that</p>
+<p>doing</p>
+<p>to</p>
+<p>our</p>
+<p>auditory</p>
+<p>cognition</p>
+<p>or</p>
+<p>even</p>
+<p>more</p>
+<p>broadly</p>
+<p>that</p>
+<p>I can</p>
+<p>listen</p>
+<p>to</p>
+<p>the</p>
+<p>same</p>
+<p>song</p>
+<p>with</p>
+<p>50</p>
+<p>different</p>
+<p>versions</p>
+<p>in a</p>
+<p>row</p>
+<p>versus</p>
+<p>that</p>
+<p>just</p>
+<p>not</p>
+<p>being</p>
+<p>plausible</p>
+<p>not</p>
+<p>even</p>
+<p>so</p>
+<p>long</p>
+<p>ago</p>
+<p>yeah</p>
+<p>that's</p>
+<p>an</p>
+<p>interesting</p>
+<p>question</p>
+<p>I</p>
+<p>haven't</p>
+<p>thought</p>
+<p>a lot</p>
+<p>about</p>
+<p>it</p>
+<p>but</p>
+<p>I'm</p>
+<p>basically</p>
+<p>distracting</p>
+<p>from</p>
+<p>music</p>
+<p>in the</p>
+<p>home</p>
+<p>to</p>
+<p>everybody</p>
+<p>hearing</p>
+<p>everything</p>
+<p>the same</p>
+<p>thing</p>
+<p>on the</p>
+<p>radio</p>
+<p>to</p>
+<p>now</p>
+<p>we</p>
+<p>have</p>
+<p>Spotify</p>
+<p>and</p>
+<p>the</p>
+<p>internet</p>
+<p>and</p>
+<p>it's</p>
+<p>probably</p>
+<p>a question</p>
+<p>that's</p>
+<p>not just</p>
+<p>about</p>
+<p>music</p>
+<p>it's</p>
+<p>also</p>
+<p>about</p>
+<p>media</p>
+<p>we</p>
+<p>went</p>
+<p>from</p>
+<p>only</p>
+<p>getting</p>
+<p>our</p>
+<p>media</p>
+<p>or</p>
+<p>news</p>
+<p>from</p>
+<p>people</p>
+<p>that</p>
+<p>we</p>
+<p>locally</p>
+<p>interacted</p>
+<p>with</p>
+<p>everybody</p>
+<p>sitting</p>
+<p>for</p>
+<p>the</p>
+<p>same</p>
+<p>fireside</p>
+<p>chat</p>
+<p>so</p>
+<p>now</p>
+<p>everybody</p>
+<p>is</p>
+<p>in</p>
+<p>their</p>
+<p>different</p>
+<p>bubble</p>
+<p>for</p>
+<p>whatever</p>
+<p>media</p>
+<p>they're</p>
+<p>consuming</p>
+<p>and</p>
+<p>it's</p>
+<p>interesting</p>
+<p>I</p>
+<p>know</p>
+<p>there's</p>
+<p>been</p>
+<p>some</p>
+<p>work</p>
+<p>for</p>
+<p>instance</p>
+<p>Mike</p>
+<p>Hove</p>
+<p>has</p>
+<p>looked</p>
+<p>at</p>
+<p>how</p>
+<p>the</p>
+<p>bass</p>
+<p>sounds</p>
+<p>in</p>
+<p>music</p>
+<p>have</p>
+<p>gotten</p>
+<p>lower</p>
+<p>over</p>
+<p>time</p>
+<p>lower</p>
+<p>and</p>
+<p>louder</p>
+<p>which</p>
+<p>has</p>
+<p>some</p>
+<p>impact</p>
+<p>on</p>
+<p>how</p>
+<p>we</p>
+<p>feel</p>
+<p>musical</p>
+<p>groove</p>
+<p>since</p>
+<p>the</p>
+<p>bass</p>
+<p>is</p>
+<p>usually</p>
+<p>where</p>
+<p>the</p>
+<p>rhythm</p>
+<p>sits</p>
+<p>in</p>
+<p>pop</p>
+<p>music</p>
+<p>but</p>
+<p>yeah</p>
+<p>so</p>
+<p>what</p>
+<p>is it</p>
+<p>doing</p>
+<p>to</p>
+<p>our</p>
+<p>brains</p>
+<p>and</p>
+<p>our</p>
+<p>perception</p>
+<p>of</p>
+<p>music</p>
+<p>that's</p>
+<p>interesting</p>
+<p>and you</p>
+<p>mentioned</p>
+<p>memes</p>
+<p>earlier</p>
+<p>which</p>
+<p>made me</p>
+<p>think</p>
+<p>of</p>
+<p>TikTok</p>
+<p>and</p>
+<p>so</p>
+<p>this</p>
+<p>new</p>
+<p>way</p>
+<p>of</p>
+<p>proliferating</p>
+<p>sounds</p>
+<p>and</p>
+<p>if</p>
+<p>you've</p>
+<p>ever</p>
+<p>spent</p>
+<p>very</p>
+<p>much</p>
+<p>time</p>
+<p>on</p>
+<p>TikTok</p>
+<p>there'll</p>
+<p>be</p>
+<p>like</p>
+<p>one</p>
+<p>sound</p>
+<p>that</p>
+<p>everybody's</p>
+<p>making</p>
+<p>a</p>
+<p>dance</p>
+<p>to</p>
+<p>or</p>
+<p>one</p>
+<p>sound</p>
+<p>that</p>
+<p>people</p>
+<p>are</p>
+<p>just</p>
+<p>playing</p>
+<p>over</p>
+<p>the</p>
+<p>top</p>
+<p>of</p>
+<p>the</p>
+<p>video</p>
+<p>of</p>
+<p>their</p>
+<p>dogs</p>
+<p>running</p>
+<p>around</p>
+<p>because</p>
+<p>that</p>
+<p>sounds</p>
+<p>popular</p>
+<p>and</p>
+<p>then</p>
+<p>when</p>
+<p>you</p>
+<p>hear</p>
+<p>it</p>
+<p>on</p>
+<p>the</p>
+<p>radio</p>
+<p>it's</p>
+<p>a</p>
+<p>little</p>
+<p>bit</p>
+<p>jarring</p>
+<p>because</p>
+<p>you</p>
+<p>only</p>
+<p>know</p>
+<p>this</p>
+<p>like</p>
+<p>15</p>
+<p>second</p>
+<p>snippet</p>
+<p>or</p>
+<p>however</p>
+<p>long</p>
+<p>a</p>
+<p>TikTok</p>
+<p>is</p>
+<p>from</p>
+<p>that</p>
+<p>TikTok</p>
+<p>video</p>
+<p>and</p>
+<p>then</p>
+<p>you</p>
+<p>realize</p>
+<p>this</p>
+<p>is</p>
+<p>a</p>
+<p>real</p>
+<p>song</p>
+<p>like</p>
+<p>a</p>
+<p>real</p>
+<p>work</p>
+<p>of</p>
+<p>art</p>
+<p>that</p>
+<p>somebody</p>
+<p>made</p>
+<p>before</p>
+<p>it</p>
+<p>became</p>
+<p>a</p>
+<p>TikTok</p>
+<p>meet</p>
+<p>which</p>
+<p>is</p>
+<p>just</p>
+<p>pure</p>
+<p>personal</p>
+<p>anecdote</p>
+<p>but</p>
+<p>it's</p>
+<p>interesting</p>
+<p>so</p>
+<p>if</p>
+<p>we're</p>
+<p>getting</p>
+<p>insulated</p>
+<p>by</p>
+<p>the</p>
+<p>media</p>
+<p>we</p>
+<p>consume</p>
+<p>are</p>
+<p>we</p>
+<p>also</p>
+<p>getting</p>
+<p>insulated</p>
+<p>by</p>
+<p>the</p>
+<p>type</p>
+<p>of</p>
+<p>music</p>
+<p>we</p>
+<p>consume</p>
+<p>like</p>
+<p>are</p>
+<p>we</p>
+<p>less</p>
+<p>able</p>
+<p>to</p>
+<p>appreciate</p>
+<p>other</p>
+<p>types</p>
+<p>of</p>
+<p>music</p>
+<p>because</p>
+<p>I'm</p>
+<p>listening</p>
+<p>to</p>
+<p>the</p>
+<p>same</p>
+<p>song</p>
+<p>in</p>
+<p>a lot</p>
+<p>of</p>
+<p>different</p>
+<p>renditions</p>
+<p>or</p>
+<p>are</p>
+<p>we</p>
+<p>broadening</p>
+<p>our</p>
+<p>musical</p>
+<p>consumption</p>
+<p>because</p>
+<p>I'm</p>
+<p>able</p>
+<p>to</p>
+<p>access</p>
+<p>music</p>
+<p>from</p>
+<p>all</p>
+<p>over</p>
+<p>the</p>
+<p>globe</p>
+<p>at</p>
+<p>the</p>
+<p>click</p>
+<p>of</p>
+<p>a</p>
+<p>button</p>
+<p>it's</p>
+<p>probably</p>
+<p>a little</p>
+<p>bit</p>
+<p>of</p>
+<p>both</p>
+<p>yeah</p>
+<p>it's</p>
+<p>like</p>
+<p>the</p>
+<p>space</p>
+<p>of</p>
+<p>the</p>
+<p>action</p>
+<p>opens</p>
+<p>up</p>
+<p>when</p>
+<p>there's</p>
+<p>so many</p>
+<p>affordances</p>
+<p>in our</p>
+<p>niche</p>
+<p>to select</p>
+<p>from</p>
+<p>yet</p>
+<p>also</p>
+<p>quite</p>
+<p>curated</p>
+<p>and</p>
+<p>presented</p>
+<p>in a</p>
+<p>certain</p>
+<p>way</p>
+<p>that</p>
+<p>just</p>
+<p>on</p>
+<p>aggregate</p>
+<p>probably</p>
+<p>still</p>
+<p>does</p>
+<p>drive</p>
+<p>people</p>
+<p>to</p>
+<p>have</p>
+<p>shared</p>
+<p>action</p>
+<p>and</p>
+<p>so</p>
+<p>then</p>
+<p>like</p>
+<p>it's</p>
+<p>literally</p>
+<p>the</p>
+<p>platform</p>
+<p>playing</p>
+<p>that</p>
+<p>role</p>
+<p>of</p>
+<p>the</p>
+<p>metronome</p>
+<p>coupling</p>
+<p>interaction</p>
+<p>there</p>
+<p>that's</p>
+<p>interesting</p>
+<p>that you</p>
+<p>bring</p>
+<p>that up</p>
+<p>and</p>
+<p>also</p>
+<p>so</p>
+<p>if we</p>
+<p>come to</p>
+<p>this</p>
+<p>music</p>
+<p>is</p>
+<p>this</p>
+<p>drive</p>
+<p>for</p>
+<p>social</p>
+<p>bonding</p>
+<p>and</p>
+<p>we've</p>
+<p>just</p>
+<p>been</p>
+<p>in</p>
+<p>this</p>
+<p>global</p>
+<p>pandemic</p>
+<p>or</p>
+<p>we</p>
+<p>still</p>
+<p>are</p>
+<p>but</p>
+<p>for</p>
+<p>many</p>
+<p>people</p>
+<p>we</p>
+<p>were</p>
+<p>on</p>
+<p>various</p>
+<p>stages</p>
+<p>of</p>
+<p>lockdowns</p>
+<p>music</p>
+<p>live</p>
+<p>music</p>
+<p>was</p>
+<p>not</p>
+<p>happening</p>
+<p>choir</p>
+<p>or</p>
+<p>musical</p>
+<p>ensemble</p>
+<p>rehearsals</p>
+<p>were</p>
+<p>not</p>
+<p>happening</p>
+<p>and</p>
+<p>you</p>
+<p>saw</p>
+<p>this</p>
+<p>drive</p>
+<p>to</p>
+<p>continue</p>
+<p>to</p>
+<p>do</p>
+<p>something</p>
+<p>like</p>
+<p>make</p>
+<p>music</p>
+<p>together</p>
+<p>online</p>
+<p>and</p>
+<p>one</p>
+<p>of</p>
+<p>these</p>
+<p>drives</p>
+<p>was</p>
+<p>she</p>
+<p>shanties</p>
+<p>became</p>
+<p>really</p>
+<p>popular</p>
+<p>on</p>
+<p>TikTok</p>
+<p>and</p>
+<p>it's</p>
+<p>not</p>
+<p>something</p>
+<p>that</p>
+<p>people</p>
+<p>were</p>
+<p>doing</p>
+<p>together</p>
+<p>at</p>
+<p>the</p>
+<p>same</p>
+<p>time</p>
+<p>because</p>
+<p>we</p>
+<p>have</p>
+<p>this</p>
+<p>delay</p>
+<p>that's</p>
+<p>happening</p>
+<p>over</p>
+<p>audiovisual</p>
+<p>communication</p>
+<p>like</p>
+<p>this</p>
+<p>it works</p>
+<p>well</p>
+<p>when</p>
+<p>we're</p>
+<p>taking</p>
+<p>turns</p>
+<p>it's</p>
+<p>harder</p>
+<p>for</p>
+<p>trying</p>
+<p>to</p>
+<p>synchronize</p>
+<p>and</p>
+<p>sing</p>
+<p>together</p>
+<p>so</p>
+<p>TikTok</p>
+<p>allowed</p>
+<p>someone</p>
+<p>to</p>
+<p>record</p>
+<p>a</p>
+<p>sea</p>
+<p>shanty</p>
+<p>and</p>
+<p>then</p>
+<p>the</p>
+<p>next</p>
+<p>person</p>
+<p>adds</p>
+<p>their</p>
+<p>voice</p>
+<p>to</p>
+<p>that</p>
+<p>recording</p>
+<p>and</p>
+<p>they</p>
+<p>record</p>
+<p>their</p>
+<p>song</p>
+<p>singing</p>
+<p>the</p>
+<p>sea</p>
+<p>shanty</p>
+<p>and</p>
+<p>then</p>
+<p>the</p>
+<p>next</p>
+<p>person</p>
+<p>does</p>
+<p>the</p>
+<p>same</p>
+<p>thing</p>
+<p>and</p>
+<p>you</p>
+<p>end</p>
+<p>up</p>
+<p>with</p>
+<p>these</p>
+<p>compilations</p>
+<p>not</p>
+<p>compilations</p>
+<p>but</p>
+<p>these</p>
+<p>ensemble</p>
+<p>performances</p>
+<p>of</p>
+<p>a</p>
+<p>song</p>
+<p>that</p>
+<p>people</p>
+<p>would</p>
+<p>sing</p>
+<p>when</p>
+<p>they're</p>
+<p>off</p>
+<p>on</p>
+<p>ships</p>
+<p>at</p>
+<p>sea</p>
+<p>and</p>
+<p>they're</p>
+<p>feeling</p>
+<p>they're</p>
+<p>having</p>
+<p>this</p>
+<p>social</p>
+<p>bond</p>
+<p>with</p>
+<p>the</p>
+<p>people</p>
+<p>that</p>
+<p>they're</p>
+<p>out</p>
+<p>at</p>
+<p>sea</p>
+<p>with</p>
+<p>the</p>
+<p>whole</p>
+<p>time</p>
+<p>and</p>
+<p>now</p>
+<p>it's</p>
+<p>our</p>
+<p>song</p>
+<p>that</p>
+<p>we're</p>
+<p>singing</p>
+<p>through</p>
+<p>the</p>
+<p>internet</p>
+<p>as</p>
+<p>a</p>
+<p>way</p>
+<p>to</p>
+<p>feel</p>
+<p>like</p>
+<p>we're</p>
+<p>having</p>
+<p>some</p>
+<p>sort</p>
+<p>of</p>
+<p>social</p>
+<p>bonding</p>
+<p>!</p>
+<p>interacting</p>
+<p>and</p>
+<p>engaging</p>
+<p>with</p>
+<p>people</p>
+<p>and</p>
+<p>that</p>
+<p>with</p>
+<p>celebrities</p>
+<p>trying</p>
+<p>to sing</p>
+<p>when they</p>
+<p>all</p>
+<p>gathered</p>
+<p>together</p>
+<p>to sing</p>
+<p>Imagine</p>
+<p>we can</p>
+<p>argue</p>
+<p>about</p>
+<p>whether</p>
+<p>that</p>
+<p>went</p>
+<p>well</p>
+<p>or</p>
+<p>not</p>
+<p>or</p>
+<p>when</p>
+<p>we</p>
+<p>saw</p>
+<p>basically</p>
+<p>there was</p>
+<p>kind</p>
+<p>of</p>
+<p>explosion</p>
+<p>of</p>
+<p>different</p>
+<p>types</p>
+<p>of</p>
+<p>online</p>
+<p>music</p>
+<p>interaction</p>
+<p>to</p>
+<p>try</p>
+<p>to</p>
+<p>replace</p>
+<p>this</p>
+<p>local</p>
+<p>interaction</p>
+<p>of going</p>
+<p>to a</p>
+<p>concert</p>
+<p>and</p>
+<p>seeing</p>
+<p>someone</p>
+<p>on</p>
+<p>stage</p>
+<p>around</p>
+<p>a</p>
+<p>group</p>
+<p>of</p>
+<p>people</p>
+<p>that</p>
+<p>you're</p>
+<p>interacting</p>
+<p>with</p>
+<p>together</p>
+<p>or</p>
+<p>going</p>
+<p>to</p>
+<p>perform</p>
+<p>or</p>
+<p>jam</p>
+<p>with</p>
+<p>your</p>
+<p>friends</p>
+<p>in</p>
+<p>your</p>
+<p>garage</p>
+<p>and</p>
+<p>trying</p>
+<p>to</p>
+<p>find</p>
+<p>digital</p>
+<p>avenues</p>
+<p>for</p>
+<p>the</p>
+<p>same</p>
+<p>social</p>
+<p>role</p>
+<p>that</p>
+<p>music</p>
+<p>traditionally</p>
+<p>plays</p>
+<p>Very</p>
+<p>interesting</p>
+<p>like</p>
+<p>and how</p>
+<p>will it</p>
+<p>change</p>
+<p>going</p>
+<p>forward</p>
+<p>some</p>
+<p>people</p>
+<p>may</p>
+<p>find</p>
+<p>very</p>
+<p>immersive</p>
+<p>sensory</p>
+<p>experiences</p>
+<p>to</p>
+<p>be</p>
+<p>powerful</p>
+<p>for</p>
+<p>them</p>
+<p>maybe</p>
+<p>that's</p>
+<p>a</p>
+<p>scalable</p>
+<p>approach</p>
+<p>maybe</p>
+<p>it's</p>
+<p>not</p>
+<p>maybe</p>
+<p>that's</p>
+<p>a</p>
+<p>good</p>
+<p>thing</p>
+<p>maybe</p>
+<p>it's</p>
+<p>not</p>
+<p>so</p>
+<p>one</p>
+<p>other</p>
+<p>part</p>
+<p>was</p>
+<p>like</p>
+<p>when</p>
+<p>you</p>
+<p>were</p>
+<p>contrasting</p>
+<p>the</p>
+<p>musical</p>
+<p>study</p>
+<p>that</p>
+<p>you</p>
+<p>presented</p>
+<p>first</p>
+<p>with</p>
+<p>the</p>
+<p>basketball</p>
+<p>you</p>
+<p>mentioned</p>
+<p>that</p>
+<p>that</p>
+<p>environment</p>
+<p>was</p>
+<p>unscripted</p>
+<p>or</p>
+<p>in</p>
+<p>contrast</p>
+<p>to</p>
+<p>sheet</p>
+<p>music</p>
+<p>or</p>
+<p>like a</p>
+<p>spoken</p>
+<p>dialogue</p>
+<p>that</p>
+<p>was</p>
+<p>scripted</p>
+<p>and</p>
+<p>then</p>
+<p>in</p>
+<p>one</p>
+<p>sense</p>
+<p>it</p>
+<p>is</p>
+<p>unscripted</p>
+<p>but</p>
+<p>then</p>
+<p>as</p>
+<p>per</p>
+<p>the</p>
+<p>paper</p>
+<p>on</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>scripts</p>
+<p>it's</p>
+<p>more</p>
+<p>like</p>
+<p>the</p>
+<p>strong</p>
+<p>and</p>
+<p>the</p>
+<p>weak</p>
+<p>scripts</p>
+<p>like</p>
+<p>the</p>
+<p>basketball</p>
+<p>is</p>
+<p>a</p>
+<p>scripted</p>
+<p>environment</p>
+<p>in</p>
+<p>the</p>
+<p>cultural</p>
+<p>norm</p>
+<p>weak</p>
+<p>script</p>
+<p>sense</p>
+<p>so</p>
+<p>yes</p>
+<p>it doesn't</p>
+<p>have</p>
+<p>the</p>
+<p>stage</p>
+<p>directions</p>
+<p>but</p>
+<p>you</p>
+<p>know</p>
+<p>are</p>
+<p>there</p>
+<p>not</p>
+<p>signs</p>
+<p>helping</p>
+<p>identify</p>
+<p>where</p>
+<p>people</p>
+<p>with a</p>
+<p>given</p>
+<p>ticket</p>
+<p>should</p>
+<p>sit</p>
+<p>and</p>
+<p>signals</p>
+<p>and</p>
+<p>lights</p>
+<p>and</p>
+<p>sounds</p>
+<p>that</p>
+<p>also</p>
+<p>provide</p>
+<p>a lot</p>
+<p>of</p>
+<p>cues</p>
+<p>that</p>
+<p>are</p>
+<p>going</p>
+<p>to</p>
+<p>be</p>
+<p>specific</p>
+<p>like</p>
+<p>the</p>
+<p>seventh</p>
+<p>inning</p>
+<p>stretch</p>
+<p>in</p>
+<p>baseball</p>
+<p>why</p>
+<p>stretch</p>
+<p>then</p>
+<p>but</p>
+<p>then</p>
+<p>that's</p>
+<p>part</p>
+<p>of</p>
+<p>where</p>
+<p>like</p>
+<p>the</p>
+<p>embodiment</p>
+<p>of even</p>
+<p>watching</p>
+<p>the</p>
+<p>game</p>
+<p>and</p>
+<p>participating</p>
+<p>in it</p>
+<p>gets</p>
+<p>to be</p>
+<p>why</p>
+<p>it's</p>
+<p>the</p>
+<p>phenomena</p>
+<p>of</p>
+<p>entertainment</p>
+<p>and</p>
+<p>why</p>
+<p>it's</p>
+<p>something</p>
+<p>that</p>
+<p>people</p>
+<p>spend</p>
+<p>their</p>
+<p>life</p>
+<p>like</p>
+<p>supporting</p>
+<p>directly</p>
+<p>and</p>
+<p>why</p>
+<p>this</p>
+<p>isn't</p>
+<p>just</p>
+<p>like</p>
+<p>a</p>
+<p>neural</p>
+<p>entrainment</p>
+<p>binaural</p>
+<p>beat</p>
+<p>hack</p>
+<p>or</p>
+<p>something</p>
+<p>like</p>
+<p>that</p>
+<p>yeah</p>
+<p>so</p>
+<p>if</p>
+<p>I</p>
+<p>got</p>
+<p>the</p>
+<p>same</p>
+<p>experience</p>
+<p>being</p>
+<p>at</p>
+<p>a</p>
+<p>basketball</p>
+<p>game</p>
+<p>sitting</p>
+<p>in</p>
+<p>the</p>
+<p>student</p>
+<p>section</p>
+<p>that</p>
+<p>I</p>
+<p>got</p>
+<p>from</p>
+<p>sitting</p>
+<p>on</p>
+<p>my</p>
+<p>couch</p>
+<p>and</p>
+<p>watching</p>
+<p>the</p>
+<p>basketball</p>
+<p>game</p>
+<p>at</p>
+<p>home</p>
+<p>then</p>
+<p>you</p>
+<p>would</p>
+<p>imagine</p>
+<p>nobody</p>
+<p>pays</p>
+<p>to</p>
+<p>go</p>
+<p>to</p>
+<p>basketball</p>
+<p>games</p>
+<p>and</p>
+<p>we</p>
+<p>all</p>
+<p>sit</p>
+<p>on</p>
+<p>our</p>
+<p>couch</p>
+<p>and</p>
+<p>watch</p>
+<p>them</p>
+<p>at</p>
+<p>home</p>
+<p>right</p>
+<p>but</p>
+<p>we</p>
+<p>spend</p>
+<p>lots</p>
+<p>of</p>
+<p>money</p>
+<p>to</p>
+<p>go</p>
+<p>to</p>
+<p>basketball</p>
+<p>games</p>
+<p>or</p>
+<p>whatever</p>
+<p>sporting</p>
+<p>events</p>
+<p>we</p>
+<p>have</p>
+<p>student</p>
+<p>sections</p>
+<p>we</p>
+<p>wear</p>
+<p>the</p>
+<p>colors</p>
+<p>of</p>
+<p>our</p>
+<p>sports</p>
+<p>team</p>
+<p>so</p>
+<p>we're</p>
+<p>already</p>
+<p>signaling</p>
+<p>to</p>
+<p>people</p>
+<p>that</p>
+<p>you</p>
+<p>know</p>
+<p>I'm</p>
+<p>wearing</p>
+<p>this</p>
+<p>outfit</p>
+<p>so</p>
+<p>I'm</p>
+<p>a</p>
+<p>BYU</p>
+<p>fan</p>
+<p>I'm</p>
+<p>wearing</p>
+<p>this</p>
+<p>other</p>
+<p>outfit</p>
+<p>so</p>
+<p>I'm</p>
+<p>a</p>
+<p>I</p>
+<p>don't</p>
+<p>know</p>
+<p>basketball</p>
+<p>teams</p>
+<p>I was</p>
+<p>going</p>
+<p>to</p>
+<p>name</p>
+<p>another</p>
+<p>one</p>
+<p>I'm</p>
+<p>that</p>
+<p>kind</p>
+<p>of</p>
+<p>fan</p>
+<p>so</p>
+<p>that's</p>
+<p>already</p>
+<p>signifying</p>
+<p>a</p>
+<p>kind</p>
+<p>of</p>
+<p>script</p>
+<p>where</p>
+<p>I</p>
+<p>know</p>
+<p>oh</p>
+<p>yeah</p>
+<p>you're</p>
+<p>a</p>
+<p>friend</p>
+<p>we're</p>
+<p>going</p>
+<p>to</p>
+<p>cheer</p>
+<p>at</p>
+<p>the</p>
+<p>same</p>
+<p>time</p>
+<p>and</p>
+<p>then</p>
+<p>the</p>
+<p>game</p>
+<p>has</p>
+<p>rules</p>
+<p>and</p>
+<p>the</p>
+<p>game</p>
+<p>has</p>
+<p>good</p>
+<p>things</p>
+<p>to</p>
+<p>happen</p>
+<p>if</p>
+<p>my</p>
+<p>team</p>
+<p>scores</p>
+<p>a</p>
+<p>point</p>
+<p>my</p>
+<p>response</p>
+<p>is</p>
+<p>going</p>
+<p>to</p>
+<p>be</p>
+<p>to</p>
+<p>cheer</p>
+<p>if</p>
+<p>the</p>
+<p>other</p>
+<p>team</p>
+<p>scores</p>
+<p>a</p>
+<p>point</p>
+<p>I'm</p>
+<p>going</p>
+<p>to</p>
+<p>be</p>
+<p>upset</p>
+<p>so</p>
+<p>there's</p>
+<p>already</p>
+<p>a</p>
+<p>relationship</p>
+<p>where</p>
+<p>the</p>
+<p>game</p>
+<p>is</p>
+<p>and</p>
+<p>in</p>
+<p>front</p>
+<p>of</p>
+<p>you</p>
+<p>the</p>
+<p>people</p>
+<p>who</p>
+<p>you</p>
+<p>can</p>
+<p>hear</p>
+<p>also</p>
+<p>behind</p>
+<p>you</p>
+<p>and</p>
+<p>there</p>
+<p>are</p>
+<p>certain</p>
+<p>cheers</p>
+<p>that</p>
+<p>might</p>
+<p>be</p>
+<p>scripted</p>
+<p>just</p>
+<p>like</p>
+<p>that</p>
+<p>musical</p>
+<p>ensemble</p>
+<p>so</p>
+<p>if</p>
+<p>there's</p>
+<p>a</p>
+<p>certain</p>
+<p>idiosyncratic</p>
+<p>chant</p>
+<p>that</p>
+<p>I</p>
+<p>make</p>
+<p>that's</p>
+<p>associated</p>
+<p>with</p>
+<p>this</p>
+<p>team</p>
+<p>and</p>
+<p>this</p>
+<p>mascot</p>
+<p>we</p>
+<p>all</p>
+<p>know</p>
+<p>this</p>
+<p>chant</p>
+<p>we've</p>
+<p>learned</p>
+<p>it</p>
+<p>maybe</p>
+<p>it</p>
+<p>was</p>
+<p>written</p>
+<p>down</p>
+<p>maybe</p>
+<p>it's</p>
+<p>being</p>
+<p>broadcast</p>
+<p>on</p>
+<p>the</p>
+<p>big</p>
+<p>screen</p>
+<p>above</p>
+<p>the</p>
+<p>game</p>
+<p>maybe</p>
+<p>there's</p>
+<p>cheerleaders</p>
+<p>or a</p>
+<p>band</p>
+<p>who's</p>
+<p>leading</p>
+<p>a</p>
+<p>certain</p>
+<p>cheer</p>
+<p>and</p>
+<p>you're</p>
+<p>engaging</p>
+<p>it</p>
+<p>so</p>
+<p>even</p>
+<p>though</p>
+<p>it's</p>
+<p>less</p>
+<p>scripted</p>
+<p>in a</p>
+<p>way</p>
+<p>than</p>
+<p>this</p>
+<p>musical</p>
+<p>ensemble</p>
+<p>in the</p>
+<p>sense</p>
+<p>that</p>
+<p>it's</p>
+<p>not</p>
+<p>written</p>
+<p>on a</p>
+<p>piece</p>
+<p>of</p>
+<p>paper</p>
+<p>that</p>
+<p>every</p>
+<p>person</p>
+<p>is</p>
+<p>looking</p>
+<p>at</p>
+<p>they're</p>
+<p>all</p>
+<p>aware</p>
+<p>of</p>
+<p>the</p>
+<p>social</p>
+<p>scripts</p>
+<p>that</p>
+<p>are</p>
+<p>involved</p>
+<p>in</p>
+<p>a</p>
+<p>basketball</p>
+<p>game</p>
+<p>experience</p>
+<p>and</p>
+<p>a</p>
+<p>basketball</p>
+<p>game</p>
+<p>experience</p>
+<p>with</p>
+<p>that</p>
+<p>team</p>
+<p>or</p>
+<p>with</p>
+<p>that</p>
+<p>student</p>
+<p>section</p>
+<p>that</p>
+<p>you're</p>
+<p>sitting</p>
+<p>in</p>
+<p>so</p>
+<p>you're</p>
+<p>absolutely</p>
+<p>right</p>
+<p>that</p>
+<p>there's</p>
+<p>scripts</p>
+<p>like</p>
+<p>this</p>
+<p>and</p>
+<p>I</p>
+<p>think</p>
+<p>any</p>
+<p>interaction</p>
+<p>you</p>
+<p>get</p>
+<p>to</p>
+<p>there's</p>
+<p>going</p>
+<p>to be</p>
+<p>some</p>
+<p>kind</p>
+<p>of</p>
+<p>script</p>
+<p>there's</p>
+<p>not</p>
+<p>going</p>
+<p>to</p>
+<p>be</p>
+<p>something</p>
+<p>that's</p>
+<p>pure</p>
+<p>interaction</p>
+<p>nobody's</p>
+<p>interacting</p>
+<p>just</p>
+<p>on</p>
+<p>vibes</p>
+<p>you</p>
+<p>know</p>
+<p>there's</p>
+
+<p>some</p>
+<p>social</p>
+<p>script</p>
+<p>based</p>
+<p>on</p>
+<p>where</p>
+<p>the</p>
+<p>people</p>
+<p>are</p>
+<p>based</p>
+<p>on</p>
+<p>what</p>
+<p>context</p>
+<p>they're</p>
+<p>in</p>
+<p>whether</p>
+<p>they</p>
+<p>know</p>
+<p>each</p>
+<p>other</p>
+<p>ahead</p>
+<p>of</p>
+<p>time</p>
+<p>whether</p>
+<p>there's</p>
+<p>some</p>
+<p>external</p>
+<p>signal</p>
+<p>like</p>
+<p>clothing</p>
+<p>or</p>
+<p>you</p>
+<p>look</p>
+<p>like</p>
+<p>me</p>
+<p>or</p>
+<p>you</p>
+<p>don't</p>
+<p>look</p>
+<p>like</p>
+<p>me</p>
+<p>and</p>
+<p>that's</p>
+<p>all</p>
+<p>going</p>
+<p>to</p>
+<p>change</p>
+<p>the</p>
+<p>dynamics</p>
+<p>it</p>
+<p>might</p>
+<p>make</p>
+<p>certain</p>
+<p>forms</p>
+<p>of</p>
+<p>interactions</p>
+<p>occur</p>
+<p>more</p>
+<p>easily</p>
+<p>it</p>
+<p>might</p>
+<p>make</p>
+<p>certain</p>
+<p>kinds</p>
+<p>of</p>
+<p>interactions</p>
+<p>dissipate</p>
+<p>more</p>
+<p>easily</p>
+<p>which</p>
+<p>interestingly</p>
+<p>is</p>
+<p>something</p>
+<p>that</p>
+<p>we're</p>
+<p>still</p>
+<p>studying</p>
+<p>with</p>
+<p>metronomes</p>
+<p>so</p>
+<p>metronomes</p>
+<p>don't</p>
+<p>only</p>
+<p>move</p>
+<p>into</p>
+<p>synchrony</p>
+<p>if</p>
+<p>you</p>
+<p>have</p>
+<p>two</p>
+<p>interacting</p>
+<p>metronomes</p>
+<p>they might</p>
+<p>actually</p>
+<p>cancel</p>
+<p>each</p>
+<p>other</p>
+<p>out</p>
+<p>or</p>
+<p>they</p>
+<p>might</p>
+<p>exhibit</p>
+<p>other</p>
+<p>like</p>
+<p>coming</p>
+<p>in and</p>
+<p>out</p>
+<p>of</p>
+<p>synchronous</p>
+<p>dynamics</p>
+<p>and</p>
+<p>if</p>
+<p>we</p>
+<p>are</p>
+<p>still</p>
+<p>learning</p>
+<p>how</p>
+<p>to</p>
+<p>understand</p>
+<p>that</p>
+<p>in</p>
+<p>that</p>
+<p>physical</p>
+<p>system</p>
+<p>where</p>
+<p>there's</p>
+<p>physical</p>
+<p>properties</p>
+<p>change</p>
+<p>and</p>
+<p>measure</p>
+<p>that</p>
+<p>are</p>
+<p>really</p>
+<p>simple</p>
+<p>just</p>
+<p>moving</p>
+<p>back</p>
+<p>and</p>
+<p>forth</p>
+<p>in a</p>
+<p>certain</p>
+<p>period</p>
+<p>is that</p>
+<p>much more</p>
+<p>complicated</p>
+<p>when we're</p>
+<p>looking at</p>
+<p>humans</p>
+<p>who we</p>
+<p>seem to</p>
+<p>have some</p>
+<p>sort of</p>
+<p>free will</p>
+<p>and we</p>
+<p>can behave</p>
+<p>according to</p>
+<p>some</p>
+<p>social rules</p>
+<p>that we</p>
+<p>know about</p>
+<p>or we</p>
+<p>could behave</p>
+<p>completely</p>
+<p>contrary</p>
+<p>to those</p>
+<p>rules</p>
+<p>awesome</p>
+<p>awesome</p>
+<p>point</p>
+<p>that the</p>
+<p>model</p>
+<p>system</p>
+<p>like you</p>
+<p>brought</p>
+<p>up</p>
+<p>helps</p>
+<p>us</p>
+<p>confirm</p>
+<p>just</p>
+<p>our</p>
+<p>statistics</p>
+<p>like</p>
+<p>before</p>
+<p>the</p>
+<p>linear</p>
+<p>model</p>
+<p>gets</p>
+<p>brought</p>
+<p>out</p>
+<p>in</p>
+<p>one</p>
+<p>setting</p>
+<p>try it</p>
+<p>on the</p>
+<p>piece</p>
+<p>of</p>
+<p>graph</p>
+<p>paper</p>
+<p>and so</p>
+<p>this</p>
+<p>is</p>
+<p>like</p>
+<p>the</p>
+<p>graph</p>
+<p>paper</p>
+<p>for</p>
+<p>thinking</p>
+<p>about</p>
+<p>semantic</p>
+<p>or</p>
+<p>narrative</p>
+<p>coordination</p>
+<p>but</p>
+<p>one</p>
+<p>wouldn't</p>
+<p>want to</p>
+<p>be</p>
+<p>in a</p>
+<p>non</p>
+<p>observable</p>
+<p>territory</p>
+<p>with</p>
+<p>kind of</p>
+<p>flying blind</p>
+<p>that way</p>
+<p>and also</p>
+<p>I think</p>
+<p>the</p>
+<p>examples</p>
+<p>with</p>
+<p>the</p>
+<p>game</p>
+<p>and the</p>
+<p>context</p>
+<p>coordinating</p>
+<p>behavior</p>
+<p>to different</p>
+<p>ends</p>
+<p>it made me</p>
+<p>think about</p>
+<p>where there's</p>
+<p>fans from</p>
+<p>different</p>
+<p>teams</p>
+<p>in the</p>
+<p>same</p>
+<p>setting</p>
+<p>versus</p>
+<p>like</p>
+<p>sections</p>
+<p>that are</p>
+<p>separated</p>
+<p>and then</p>
+<p>there's the</p>
+<p>parents</p>
+<p>at the</p>
+<p>game</p>
+<p>and maybe</p>
+<p>like</p>
+<p>the intention</p>
+<p>is just</p>
+<p>to support</p>
+<p>people</p>
+<p>in their</p>
+<p>play</p>
+<p>versus</p>
+<p>like</p>
+<p>professional</p>
+<p>sports</p>
+<p>and then</p>
+<p>there's</p>
+<p>like</p>
+<p>people</p>
+<p>who</p>
+<p>are</p>
+<p>there</p>
+<p>for</p>
+<p>pragmatic</p>
+<p>value</p>
+<p>they have</p>
+<p>literal</p>
+<p>money</p>
+<p>other</p>
+<p>people</p>
+<p>have</p>
+<p>like</p>
+<p>identity</p>
+<p>currency</p>
+<p>on the</p>
+<p>line</p>
+<p>and</p>
+<p>like</p>
+<p>feeling</p>
+<p>like</p>
+<p>one's</p>
+<p>city</p>
+<p>has a</p>
+<p>good</p>
+<p>baseball</p>
+<p>team</p>
+<p>and all</p>
+<p>these</p>
+<p>very</p>
+<p>complex</p>
+<p>things</p>
+<p>and so</p>
+<p>it's</p>
+<p>kind</p>
+<p>of</p>
+<p>just</p>
+<p>cool</p>
+<p>to</p>
+<p>have</p>
+<p>a</p>
+<p>model</p>
+<p>that</p>
+<p>maybe</p>
+<p>can</p>
+<p>blanket</p>
+<p>off</p>
+<p>some</p>
+<p>of</p>
+<p>that</p>
+<p>complexity</p>
+<p>but</p>
+<p>also</p>
+<p>just</p>
+<p>recognize</p>
+<p>the</p>
+<p>real</p>
+<p>data</p>
+<p>that</p>
+<p>you're</p>
+<p>getting</p>
+<p>from</p>
+<p>these</p>
+<p>systems</p>
+<p>which is</p>
+<p>sometimes</p>
+<p>as you</p>
+<p>pointed</p>
+<p>out</p>
+<p>down</p>
+<p>to</p>
+<p>a</p>
+<p>single</p>
+<p>microphone</p>
+<p>which</p>
+<p>has</p>
+<p>many</p>
+<p>advantages</p>
+<p>over</p>
+<p>visual</p>
+<p>observation</p>
+<p>or like</p>
+<p>sensor</p>
+<p>tracking</p>
+<p>or anything</p>
+<p>and that's</p>
+<p>what</p>
+<p>we're</p>
+<p>observing</p>
+<p>from the</p>
+<p>system</p>
+<p>and then</p>
+<p>there's</p>
+<p>our</p>
+<p>process</p>
+<p>of</p>
+<p>doing</p>
+<p>analysis</p>
+<p>on that</p>
+<p>signal</p>
+<p>because</p>
+<p>that's</p>
+<p>actually</p>
+<p>what</p>
+<p>the</p>
+<p>system</p>
+<p>is</p>
+<p>providing</p>
+<p>as</p>
+<p>measurements</p>
+<p>so</p>
+<p>it</p>
+<p>does</p>
+<p>tie</p>
+<p>in</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>how</p>
+<p>we're</p>
+<p>modeling</p>
+<p>these</p>
+<p>complex</p>
+<p>settings</p>
+<p>without</p>
+<p>getting</p>
+<p>lost</p>
+<p>in how</p>
+<p>many</p>
+<p>possible</p>
+<p>ways</p>
+<p>they</p>
+<p>can</p>
+<p>be</p>
+<p>cool</p>
+<p>do you</p>
+<p>have any</p>
+<p>other</p>
+<p>things you'd</p>
+<p>like to</p>
+<p>add</p>
+<p>or any</p>
+<p>other</p>
+<p>points</p>
+<p>you want</p>
+<p>to</p>
+<p>bring</p>
+<p>up</p>
+<p>no</p>
+<p>no</p>
+<p>I think</p>
+<p>this was</p>
+<p>really</p>
+<p>great</p>
+<p>I</p>
+<p>really</p>
+<p>appreciated</p>
+<p>the</p>
+<p>discussion</p>
+<p>you</p>
+<p>brought</p>
+<p>we</p>
+<p>covered</p>
+<p>a lot</p>
+<p>more</p>
+<p>than</p>
+<p>just</p>
+<p>interacting</p>
+<p>groups</p>
+<p>of</p>
+<p>people</p>
+<p>running</p>
+<p>from</p>
+<p>brains</p>
+<p>to</p>
+<p>music</p>
+<p>AIs</p>
+<p>back</p>
+<p>again</p>
+<p>to</p>
+<p>people</p>
+<p>it</p>
+<p>was</p>
+<p>really</p>
+<p>fun</p>
+<p>cool</p>
+<p>thank</p>
+<p>you</p>
+<p>very</p>
+<p>much</p>
+<p>for</p>
+<p>joining</p>
+<p>so</p>
+<p>see</p>
+<p>you</p>
+<p>anytime</p>
+<p>awesome</p>
+<p>sounds</p>
+<p>!</p>
+<p>Good</p>
+<p>see</p>
+<p>you</p>
+<p>bye</p>
+<p>good</p>
+<p>Thank you.</p>
+</article>
+</body>
+</html>

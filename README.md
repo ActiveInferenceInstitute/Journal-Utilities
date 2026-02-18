@@ -1,328 +1,247 @@
-# Journal-Utilities
-Utilities and Documentation for creating contents for the Active Inference Journal
-https://github.com/ActiveInferenceInstitute/ActiveInferenceJournal
+<div align="center">
 
-This repository provides a complete pipeline for processing Active Inference Journal content:
-- **Transcription**: Local transcription pipeline using WhisperX
-- **Entity Extraction**: Extract entities and relationships from transcripts using Cohere AI
-- **Graph Storage**: Store and query data in SurrealDB graph database
+<img src="docs/ActInferServe.png" alt="Active Inference Institute" width="120">
+
+# Journal-Utilities
+
+**A modular, config-driven pipeline for processing the [Active Inference Institute](https://www.youtube.com/@ActiveInference) video library.**
+
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org)
+[![Tests](https://img.shields.io/badge/tests-389%20passed-brightgreen)](#testing)
+[![Coverage](https://img.shields.io/badge/coverage-78%25-yellow)](#testing)
+[![License](https://img.shields.io/badge/license-see%20repo-lightgrey)](LICENSE)
+
+*Download · Transcribe · Extract · Export · Browse · Chat*
+
+</div>
 
 ---
-## WhisperX Transcription Pipeline
 
-## Installation
+## How It Works
 
-### Prerequisites
+```mermaid
+graph LR
+    subgraph Ingest
+        A[🎬 YouTube Channel] -->|yt-dlp| B[📥 Download]
+        B --> C[📝 Transcripts]
+        B --> D[🎵 Audio]
+    end
 
-1. Install [uv](https://github.com/astral-sh/uv) - Fast Python package installer
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
+    subgraph Process
+        D -->|mlx-whisper / WhisperX| C
+        C -->|Cohere AI| E[🧠 Entities & Graph]
+        C -->|5 formats| F[📄 Export]
+    end
+
+    subgraph Serve
+        C --> G[🌐 Web Interface]
+        E --> G
+        G -->|Ollama RAG| H[� Chat]
+    end
+
+    style A fill:#e63946,color:#fff
+    style G fill:#457b9d,color:#fff
+    style H fill:#2a9d8f,color:#fff
 ```
 
-2. Ensure CUDA 12.8 is installed for GPU support (optional but recommended)
+> **One command** runs the full pipeline: `python run.py`
+> **One file** controls all options: `config.ini` — [see reference →](docs/configuration.md)
 
-### Setup with uv
+---
+
+## ✨ Features
+
+<table>
+<tr>
+<td width="50%">
+
+### 📥 Download & Transcribe
+
+Enumerate 695+ videos from the Active Inference channel. Download transcripts, audio, and video with cookie auth, rate limiting, and resume. Transcribe locally on Apple Silicon or GPU.
+
+**→** [Download Guide](docs/youtube_download.md) · [Transcription Engines](docs/transcription.md) · [YouTube Module](docs/youtube.md)
+
+</td>
+<td width="50%">
+
+### 🌐 Web Interface & Chat
+
+FastAPI SPA with searchable video library, embedded YouTube player, transcript viewer, and category browser. Ollama-powered RAG chat with automatic context retrieval.
+
+**→** [Web Interface](docs/web_interface.md) · [Chat Engine](docs/chat_engine.md)
+
+</td>
+</tr>
+<tr>
+<td>
+
+### 📄 Multi-Format Export
+
+Batch-export to Markdown, JSON, HTML, PDF, and plaintext — each enriched with metadata headers (title, category, series, speakers, duration, URL, views).
+
+**→** [Export Guide](docs/export.md)
+
+</td>
+<td>
+
+### 🧠 Knowledge Extraction
+
+Cohere AI entity extraction (people, concepts, theories, organizations) and relationship mapping into a SurrealDB knowledge graph.
+
+**→** [RAG Pipeline](docs/rag.md) · [Data & Database](docs/data.md)
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🚀 Quick Start
 
 ```bash
-# Clone the repository
+# 1. Clone & install
 git clone https://github.com/ActiveInferenceInstitute/Journal-Utilities.git
 cd Journal-Utilities
+uv venv && source .venv/bin/activate
+uv pip install -e ".[dev,interface,export]"
 
-# Create virtual environment and install dependencies
-uv venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Install all dependencies including PyTorch with CUDA support
-uv pip install -e .
-# For CUDA 12.8 support (required for GPU acceleration)
-uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-
-# Install cuDNN 8 (required for pyannote speaker embeddings)
-sudo apt install libcudnn8 libcudnn8-dev -y
-sudo ldconfig
-
-# For development
-uv pip install -e ".[dev]"
+# 2. Run the default pipeline (Config → Validate → Export → Test → Serve)
+python run.py
 ```
 
-**Note:** After installation, you'll need to apply compatibility patches to WhisperX for pyannote.audio 4.0+. Run:
-```bash
-python scripts/patch_whisperx.py
-```
-
-### Install ffmpeg
-```bash
-wget -O - -q  https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz | xz -qdc| tar -x
-```
-
-### Setup .env file
-
-1. [Generate a Hugging Face Token](https://huggingface.co/settings/tokens) and accept the user agreement for the following models:
-   - [Segmentation](https://huggingface.co/pyannote/segmentation-3.0)
-   - [Speaker-Diarization-3.1](https://huggingface.co/pyannote/speaker-diarization-3.1)
-   - [Speaker-Diarization-Community-1](https://hf.co/pyannote/speaker-diarization-community-1) (for speaker embeddings)
-
-2. Get the YouTube Data API v3 Key from https://console.developers.google.com/apis/
-3. Get Your Coda API Token at https://coda.io/account, scroll to "API settings," and generate an API token.
-
-4. Configure environment variables:
-```bash
-cp .env.example .env
-```
-
-Update the following values in `.env`:
-- `HUGGINGFACE_TOKEN`: Your Hugging Face token
-- `API_KEY`: Your YouTube Data API v3 key
-- `WAV_DIRECTORY`: Directory for WAV file storage
-- `OUTPUT_DIR`: Output directory for processed files
-- `JOURNAL_REPO_DIR`: Path to Active Inference Journal repository
-- `CODA_API_TOKEN`: Your Coda API token (for fetching session data)
-
-## Usage
-
-### Complete Workflow
-
-The typical workflow consists of these steps:
+### Pipeline Commands
 
 ```bash
-# 1. Start the database
-make db-start
-
-# 2. Fetch latest data from Coda API
-make fetch-coda
-
-# 3. Import sessions into SurrealDB (with audit trail)
-make import-sessions
-
-# 4. Fetch metadata from YouTube API
-make fetch-metadata
-
-# 5. Run WhisperX transcription
-make transcribe
-
-# 6. Copy processed files to journal repository
-make copy-to-journal
-```
-
-### Individual Steps
-
-#### Fetch Data from Coda
-```bash
-make fetch-coda
-```
-Downloads the latest session data from Coda API. The JSON file can be formatted in VS Code with `Format Document` for better readability.
-
-#### Import Sessions
-```bash
-make import-sessions
-# Or with custom JSON file:
-python src/ingest_db_create_wav.py --step import --json /path/to/file.json
-```
-Imports sessions with full audit trail tracking. Use rollback functions if needed.
-
-#### Fetch YouTube Metadata
-```bash
-make fetch-metadata
-```
-Any "private video" failures should be added to `src/private_videos.json` to skip youtube metadata fetching and transcription.
-
-#### Run Transcription
-```bash
-make transcribe
-```
-This script:
-- Loads WAV files from the database
-- Performs transcription using WhisperX
-- Applies speaker diarization and alignment
-- Stores results back in SurrealDB
-
-#### Copy to Journal
-```bash
-make copy-to-journal
-```
-Organizes transcripts by category/series/episode in the journal repository.
-
----
-## Entity Extraction Pipeline (JournalRAG)
-
-### Overview
-
-The entity extraction pipeline uses Cohere AI to analyze transcripts and extract:
-- **Entities**: People, organizations, concepts, theories, methodologies, publications, events, and locations
-- **Relationships**: Connections between entities (collaborations, studies, applications, etc.)
-
-All extracted data is stored in the SurrealDB graph database for semantic queries and analysis.
-
-### Entity Types
-
-- **Person**: Researchers, contributors, speakers
-- **Organization**: Institutions, research groups
-- **Concept**: Theoretical concepts, ideas
-- **Theory**: Formal theories, frameworks
-- **Methodology**: Research methods, approaches
-- **Publication**: Papers, books, articles
-- **Event**: Conferences, workshops, meetings
-- **Location**: Physical or virtual locations
-
-### Relationship Types
-
-- `collaborates_with`: Between persons or organizations
-- `studies`: Person studying a concept/theory
-- `applies`: Application of methodology/theory
-- `extends`: One theory extending another
-- `member_of`: Person member of organization
-- `located_at`: Entity at a location
-- `publishes`: Publication relationships
-
-### Usage
-
-#### Process a Transcript for Entity Extraction
-
-```python
-import asyncio
-from pathlib import Path
-from journalrag.main import JournalRAGPipeline
-
-async def main():
-    pipeline = JournalRAGPipeline()
-    await pipeline.connect()
-
-    # Process a transcript file
-    transcript_path = Path("path/to/transcript.txt")
-    stats = await pipeline.process_transcript_file(transcript_path)
-
-    print(f"Extracted {stats['entities']} entities")
-    print(f"Extracted {stats['relationships']} relationships")
-
-    await pipeline.disconnect()
-
-asyncio.run(main())
-```
-
-#### Query Extracted Entities
-
-```python
-import asyncio
-from journalrag.graph import SurrealDBClient
-
-async def main():
-    client = SurrealDBClient()
-    await client.connect()
-
-    # Get an entity by name
-    entity = await client.get_entity_by_name("Active Inference")
-    print(entity)
-
-    # Query entities by type
-    results = await client.query(
-        "SELECT * FROM entity WHERE type = $type",
-        {"type": "concept"}
-    )
-    print(results)
-
-    await client.disconnect()
-
-asyncio.run(main())
-```
-
-### Configuration
-
-The entity extraction pipeline requires additional environment variables in `.env`:
-
-```env
-# Cohere API (for entity extraction)
-COHERE_API_KEY=your_cohere_api_key_here
-COHERE_MODEL=command-a-03-2025
+python run.py config       # Show current configuration
+python run.py download     # Download from YouTube
+python run.py export       # Export transcripts to all enabled formats
+python run.py test         # Run 389-test suite
+python run.py serve        # Launch web UI at http://localhost:8000
+python run.py full         # Full pipeline: download → export
 ```
 
 ---
-### Query Database
-```bash
-surreal sql --endpoint http://localhost:8080 --username root --password root --namespace actinf --database actinf
+
+## 🏗️ Architecture
+
+```mermaid
+graph TB
+    subgraph "CLI Layer"
+        RUN["run.py — Pipeline Runner"]
+        S1["scripts/download_channel.py"]
+        S2["scripts/transcribe_missing.py"]
+        S3["scripts/scaffold_youtube_courses.py"]
+    end
+
+    subgraph "src/journal_utilities/"
+        direction TB
+        YT["youtube/<br/>channel · playlist · categorizer"]
+        DL["download/<br/>downloader"]
+        TR["transcribe/<br/>mlx-whisper · WhisperX"]
+        EX["export/<br/>exporter (5 formats)"]
+        DATA["data/<br/>database · importer"]
+        RAG["rag/<br/>extractors · graph · models"]
+        IF["interface/<br/>app · chat_engine · data_loader"]
+        RN["render/<br/>renderer"]
+    end
+
+    subgraph "External Services"
+        OL["Ollama (LLM)"]
+        DB["SurrealDB"]
+        CO["Cohere AI"]
+        YT_API["YouTube (yt-dlp)"]
+    end
+
+    RUN --> EX & IF & DL
+    S1 --> YT & DL
+    S2 --> TR
+    S3 --> RN
+
+    DL --> YT_API
+    RAG --> CO & DB
+    DATA --> DB
+    IF --> OL
+
+    style RUN fill:#e63946,color:#fff
+    style IF fill:#457b9d,color:#fff
+    style EX fill:#2a9d8f,color:#fff
 ```
 
-Example queries:
-```sql
--- View all sessions
-SELECT * FROM session;
-
--- View transcribed sessions
-SELECT * FROM session WHERE transcribed = true;
-
--- View sessions pending transcription
-SELECT * FROM session WHERE transcribed = false AND is_private != true;
-
--- View specific session by name
-SELECT * FROM session WHERE session_name = 'video_id';
-
--- View import audit trail
-SELECT * FROM import_audit ORDER BY timestamp DESC LIMIT 10;
-
--- View recent import summary
-SELECT * FROM import_audit WHERE operation = 'import_summary' ORDER BY timestamp DESC;
-```
-
-### Database Maintenance
-```bash
-# Upgrade SurrealDB
-sudo surreal upgrade
-
-# Fix database after upgrade
-surreal fix rocksdb://database
-```
-
-## Testing
-
-Run unit tests:
-```bash
-python -m unittest tests.test_output_final_artifacts
-python -m unittest tests.test_transcript
-```
-
-## Project Structure
+<details>
+<summary><strong>Full directory tree</strong></summary>
 
 ```
 Journal-Utilities/
-├── src/
-│   ├── journal_utilities/       # Transcription pipeline
-│   │   ├── ingest_db_create_wav.py
-│   │   ├── transcribe.py
-│   │   └── fix_scheduled_dates.py
-│   ├── journalrag/             # Entity extraction pipeline
-│   │   ├── main.py             # Main pipeline
-│   │   ├── extractors/         # Entity extraction (Cohere)
-│   │   │   └── cohere_extractor.py
-│   │   ├── graph/              # Graph database (SurrealDB)
-│   │   │   └── surreal_client.py
-│   │   ├── models/             # Pydantic data models
-│   │   │   └── entities.py
-│   │   ├── adapters/           # Data adapters
-│   │   │   └── entity_adapter.py
-│   │   ├── schemas/            # JSON schemas for entity extraction
-│   │   ├── settings.py         # Configuration management
-│   │   └── utils/              # Utilities
-│   │       └── logging.py
-│   └── private_videos.json     # List of private video IDs
-├── tests/                      # Unit tests
-├── data/                       # Database and output files
-│   ├── database/               # SurrealDB storage
-│   ├── input/                  # Input data files (Coda JSON)
-│   └── output/                 # Processed outputs
-├── Archive/                    # Archived AssemblyAI tools
-├── Makefile                    # Workflow automation
-├── CLAUDE.md                   # Documentation for Claude Code
-├── README.md                   # This file
-├── .env.example                # Environment configuration template
-└── pyproject.toml              # Python package configuration
+├── src/journal_utilities/        # Main package
+│   ├── youtube/                  #   Channel enumeration, categorizer
+│   ├── download/                 #   yt-dlp download engine
+│   ├── transcribe/               #   MLX-Whisper + WhisperX
+│   ├── data/                     #   SurrealDB client + Coda importer
+│   ├── interface/                #   FastAPI SPA + Ollama chat
+│   ├── rag/                      #   Entity extraction pipeline
+│   ├── render/                   #   Course scaffolding
+│   ├── export/                   #   Multi-format transcript export
+│   └── utils/                    #   Shared utilities
+├── scripts/                      # CLI tools
+├── tests/                        # 389 tests (pytest)
+├── data/                         # Input, output, database storage
+├── docs/                         # 10 module guides
+├── run.py                        # Pipeline runner
+├── config.ini                    # All configuration
+└── pyproject.toml                # Python 3.12+
 ```
 
-## Archived Components
+</details>
 
-The AssemblyAI-based transcription tools have been moved to the `Archive/` directory. These legacy tools provided cloud-based transcription with features like custom vocabulary boosting, spell checking, and document conversion. They remain available for historical reference but are no longer actively maintained.
+---
 
-## Acknowledgements
+## 📚 Documentation
 
-- WhisperX transcription pipeline and SurrealDB integration contributed by Holly Grimm @hollygrimm, 2024
-- Initial AssemblyAI scripts and documentation contributed by Dave Douglass, November 2022
+All technical detail lives in `docs/`. The README you're reading is the overview and entry point.
 
+| Guide | What You'll Find |
+|-------|------------------|
+| [**Configuration**](docs/configuration.md) | `config.ini` sections, environment variables, pipeline step control |
+| [**YouTube**](docs/youtube.md) | Channel enumeration, playlist parsing, title categorization |
+| [**Download**](docs/youtube_download.md) | Cookie auth, 403 troubleshooting, download strategies |
+| [**Transcription**](docs/transcription.md) | MLX-Whisper (Mac), WhisperX (GPU), model selection |
+| [**Export**](docs/export.md) | Format details, metadata enrichment, library API |
+| [**Web Interface**](docs/web_interface.md) | API endpoints, SPA frontend, development server |
+| [**Chat Engine**](docs/chat_engine.md) | Ollama RAG, prompt engineering, model auto-discovery |
+| [**RAG & Graph**](docs/rag.md) | Cohere extraction, entity schema, knowledge graph |
+| [**Data & Database**](docs/data.md) | SurrealDB schema, Coda import, audit trails |
+| [**Render**](docs/render.md) | Playlist → course scaffolding, `module.md` format |
+| [**Agent Guide**](AGENTS.md) | Architecture, code patterns, agent development rules |
 
+---
+
+## 🧪 Testing
+
+```bash
+python run.py test                         # Via pipeline runner
+uv run pytest tests/ -v --cov=src          # With coverage report
+```
+
+## 🔧 Environment
+
+Required in `.env`:
+
+| Variable | Purpose |
+|----------|---------|
+| `HUGGINGFACE_TOKEN` | WhisperX speaker diarization |
+| `COHERE_API_KEY` | Entity extraction (RAG) |
+| `CODA_API_TOKEN` | Coda session data |
+| `OLLAMA_MODEL` | Chat model (default: `gemma3:4b`) |
+| `OLLAMA_BASE_URL` | Ollama API URL (default: `http://localhost:11434`) |
+
+---
+
+<div align="center">
+
+### 🙏 Acknowledgements
+
+WhisperX pipeline & SurrealDB — Holly Grimm @hollygrimm (2024)
+YouTube download & local Whisper — 2025–2026
+AssemblyAI scripts — Dave Douglass (2022)
+
+</div>

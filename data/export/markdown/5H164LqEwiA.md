@@ -1,0 +1,3128 @@
+---
+title: "ActInf Livestream #030.1 ~ “How to count biological minds: symbiosis, the free energy principle...""
+category: "Livestream"
+series: "Livestream_030"
+episode: "1"
+duration: "1:51:27"
+url: "https://www.youtube.com/watch?v=5H164LqEwiA"
+views: 195
+exported_at: "2026-02-18T22:37:37.694826+00:00"
+format: markdown
+---
+
+# ActInf Livestream #030.1 ~ “How to count biological minds: symbiosis, the free energy principle..."
+
+hello and welcome everybody welcome to
+the active inference lab today it's
+october 1st
+5th sorry greeting shannon and 2021
+we're going to be discussing this
+awesome paper
+how to count biological minds symbiosis
+the free energy principle and reciprocal
+multi-scale integration
+welcome to the active inference lab
+everyone we're a participatory online
+lab that is communicating learning and
+practicing applied active inference you
+can find us at the links on this slide
+this is recorded in an archived live
+stream so please provide feedback so
+that we can improve on our work
+all backgrounds and perspectives are
+welcome here and we'll be following good
+video etiquette for live streams like
+muting if there's noise in the
+background and raising our hands so we
+can all speak
+at this short link you'll find the
+calendar of
+past and future live streams the first
+tab is the regular tuesday live stream
+with two weeks per paper with the dot
+one and the dot two but then we have a
+few other
+series of streams related to different
+topics so go to that link to check out
+what's upcoming
+and see if you want to participate in
+one of these streams
+today in
+number 30.1 the goal is to learn and
+discuss
+this awesome paper on counting
+biological minds and we're really
+honored and appreciative that matt sims
+is here to discuss it with us
+so we're just going to introduce
+ourselves and walk through any of the
+figures any of the formalisms we also
+have a few other ideas and questions
+that lab participants have raised
+so this should be a great discussion
+thanks everyone for joining we'll just
+go around and
+say hi and introduce ourselves either
+just an introduction or feel free to say
+something that you are excited about
+with reading the paper and then we'll uh
+all non-authors will go and then we'll
+let matt just provide a little context
+here so i'm daniel i'm a
+postdoc researcher in california
+and i think
+i'm looking forward to drawing out some
+of these threads about collective
+behavior and the timeless questions
+about collective behavior with some of
+the new approaches that are discussed in
+this paper
+so i'll pass it to shannon
+hi there nice to see everyone again um
+i'm shannon i'm a phd candidate at the
+university of california in merced
+um and i've blurred my background but
+there is a dog rolling around so
+hopefully it's not too distracting
+um i will pass it to stephen
+hello i'm stephen sillett i'm based in
+toronto um i'm doing a practice-based
+phd through the uk and
+around sort of psychological
+perspectives on practices particularly
+around social topographies and
+spatial meaning making in participatory
+theater and the arts
+and i'm really interested in this paper
+i like the
+folk psychology questions that it brings
+up and i like this idea of a folk
+biology which i found really interesting
+and the way that
+we have assumptions around that
+it sort of ties in maybe some of the
+folk quantum that came up in some of our
+previous sessions about what people
+think that is so i i'm really excited to
+see this folk idea being extended
+because i think that could be really
+useful so thanks
+thanks stephen and to dave yeah
+yeah dave douglas i'm retired from
+programming machine translation
+software um now i get to get really busy
+working on a history of cybernetic
+learning theory project for a professor
+at carnegie mellon and all this good
+stuff here
+thanks steve so
+matt thanks again for joining we'd be
+really happy to hear some context and
+we'll just take it from there and anyone
+can raise their hand or type in the live
+chat if they have a question
+fantastic thanks so much for having me
+uh so uh the context in this paper i
+suppose it's like i wrote this paper uh
+and
+during my phd over at the university of
+edinburgh i was
+supervised by dave ward who's an auto
+product and activist uh andy clark
+uh who i'm sure all of you know and uh
+julian kaverstein who's up over at the
+university of amsterdam
+and the the focus of this paper
+uh was
+pretty much my obsession on the notion
+of collective intelligence and what
+collective intelligence might be
+and how cognition
+uh has has developed say the evolution
+of cognition with with a background of
+um or taking into taking into account
+the fact that cognition is uh in its
+most basic form something that's going
+to be collective in the first place
+uh so it does pull at there is this kind
+of immediate um
+tension with how we look at cognizers
+and how we look at cognition
+uh
+in the kind of
+folk field with typical
+uh say typical cognitive scientific kind
+of research i suppose a traditional
+should i say
+uh and the point of this paper was to
+okay but look at
+uh the kind of evolution of cognition if
+you if you will through a particular
+lens using some of the kind of the tools
+conceptual tools that were provided by
+our seth morty and and uh john men and
+smith
+and see exactly how this can be
+uh formalized and looked at through the
+perspectives of the free nature
+principle with the process theory active
+inference
+so that that's that's pretty much it
+very
+concise summary major transitions which
+is the zothemary and maynard smith line
+big
+qualitative changes over evolutionary
+history and then just like you kind of
+brought
+to at the end how do we land that plane
+with maybe quantitative differences or
+structural differences in a micro
+process theory
+maybe active inference under the free
+energy principle
+um
+so shannon or dave or steven feel free
+to
+raise your hand um
+otherwise maybe
+a first question that came to mind for
+me was like how do we research
+or understand these folk beliefs
+scientists are folk too
+and is this like sort of the mythical
+average citizen
+what are these beliefs and how do they
+come to be that way
+why are they the way they are these folk
+beliefs about biology because that sets
+up a lot of the discussion and what's
+relevant of the contributions of the
+paper
+absolutely that's a very very good
+question very good question
+uh
+book beliefs we have kind of obviously
+kind of folks psychological beliefs that
+take the form of
+actual uh for psychological notions that
+take the form of say beliefs and desires
+and these things i think uh
+give us a good a good
+very good manner to in which to actually
+approach the notion folks thought
+biology also with beliefs and desires
+being particular type of constructs
+which play an explanatory role
+a psychological explanatory role these
+are successful in for example explaining
+or predicting behavior to us on a
+certain level
+and i think uh on a kind of first blush
+level so to speak and i think folks
+psychology and folk biology are kind of
+um
+bed folk in the sense that
+biology is going to be based upon what
+we initially
+see
+uh
+via
+like in our everyday experience of the
+world for example is what we initially
+see
+so we're going to base the notion of an
+individual
+for example on the on on the ideas of
+things that are going to be easily
+individuated
+uh and like
+biological systems that are going to be
+specifically reproducers and this is
+where you come into the the notion of
+kind of
+the kind of darwinian individual as it
+was called by peter godfrey smith
+uh where
+individuals are going to be demarcated
+by their ability to be categorized under
+under three different types of that
+combined or joint three different three
+different kind of categories which are
+going to be
+they have to involve variation
+uh
+heritability and some type of
+differential fitness which is just
+natural selection right
+and uh
+and this type of individual has been
+kind of uh
+saying we've invested into this notion
+of individual and by the biological
+sciences
+uh
+up into a certain point up into a
+certain point because it helps us answer
+helps us approach certain questions and
+make certain i suppose make certain
+inferences about about systems over the
+long run but it falls short
+and i think this is again one of the
+grounding points of the paper it falls
+short and explaining certain types of
+associations
+uh
+and these associations namely are going
+to be symbiotic associations and this is
+a quite important uh i say transition as
+as as we spoke about before
+uh for the simple fact that without
+symbiotic associations we don't really
+have a manner i think i think of
+explaining
+uh
+multicellularity
+right the the transition from single
+cellularity to multicellularity now that
+this we've had various theories and i
+think one of the theories that kind of
+one of theorists that started this was
+lynn margulis over at the university of
+madison wisconsin
+and her research was fundamental
+and and when she suggested that for
+example you have two
+uh
+two prokaryotes one envelope the other
+through some type of phagocytosis
+and they create some type of
+relationship over time there's just
+thought as ludicrous
+and it did really push against this
+notion of darwin darwinian individual
+uh however over time we've come to
+accept something like this uh and uh i
+think this is like
+the idea that you have some type of
+bacteria that was enveloped by a
+an archaea
+and
+in order to explain in order to actually
+think about what we have in terms of
+this particular type of unit
+uh we really do need the notion of
+uh moving beyond moving past our winning
+individuals and two ways of doing that
+obviously i think that the paper tries
+to point out this
+uh and it's these are not the only two
+ways but one way is one way of doing
+that is through kind of the metabolic
+individual which is something that peter
+gabriel smith himself kind of um
+uh tips his hat off to
+uh which is just to say that metabolic
+individuals are individuals which
+uh
+they can be delineated by their
+metabolic machinery and having uh kind
+of autonomous metabolic machinery and
+other other individuals can play a part
+of that machinery
+and thus you have uh two systems that
+may kind of be
+metabolic coupled to one another making
+one system
+and that's one way to go about it the
+other way to go about it is i was
+introduced by thomas
+and this is a kind of the
+immunological version of
+an individual or a physiological
+individual
+now again these are the only two types
+of individuals or two ways to delineate
+individuals outside of the kind of more
+traditional
+folk biological notion of individual but
+maybe that's something that we can talk
+about perhaps there are other ways that
+it might be interesting
+great points and so interesting how the
+map replaced the territory the map of
+the sort of darwinian triad
+defining an individual in the darwinian
+sense and then people project that back
+out
+and say reality is explained by this
+partitioning scheme yes
+so very cool steven uh with the raised
+hand then anyone else in here or in the
+live chat go for it stephen thank you
+yeah i'll be interested uh i think this
+is really good points about these
+different ways once you start to have um
+these interactions and these
+repres
+reciproc reciprocities across p you know
+then pluralism starts to come into the
+picture yes and i i'm wondering how you
+see um
+this moving between fields of practice
+because i wonder if like people in the
+biological sciences and maybe those who
+work with agents would really
+be getting this right and then people
+who have a theory about thinking they
+know what biology is
+maybe physicists
+who maybe think they know what
+everything is
+um then have you know they have a
+they have a biology understanding of
+biology
+just like maybe other people have a
+physics understanding of quantum physics
+so
+i'd be interested in that and this might
+even bring up some work of chris fields
+that we had on here as well in terms of
+other
+ways of approaching this
+multicellularity but i'd be interested
+in your thoughts first about you know
+that
+tension even within the sciences
+that's a really very good very good
+point i do think this is a uh
+before i hit that point directly
+i do think this is a call for and just
+interdisciplinary work
+it's an absolute call for
+interdisciplinary work this is something
+uh that's that's it's
+i think
+trying to actually
+use
+psychological notions of biological
+notions or physical physics notions uh
+we will turn we will have some success
+doing these things however
+once we run up and there are going to be
+certain constraints
+uh with doing that and we'll run up to
+problems run into problems and these
+problems i think can only be
+uh
+can only be avoided or actually uh
+addressed
+when
+using various disciplines together and i
+think this is one of the things that
+kind of the free energy principle
+actually offers
+uh as a kind of it's an opportunity
+to work interdisciplinarily
+on on various uh various phenomena
+various processes
+uh and
+you're absolutely right in saying that
+like okay well
+uh how how can for example
+in biology you might have
+a typical assumption about what
+cognition is
+so we'll have a lot of biologists for
+example there's a
+there's a
+there's a type of i that we were
+speaking about before the before this
+there was a
+a notion of basel cognition that has
+been kind of pushed
+uh within the last 15 years and a lot of
+various kind of research programs
+scientific research programs whether
+it's going to be plant biology or
+microbiology has
+has kind of
+fed into this which is it's a lovely
+program in the sense that it's
+questioning
+uh how we actually look at cognition
+and these biologists that are kind of
+taking these cognitive terms and using
+these cognitive terms one of the things
+that you know uh
+i think that pushes against this is
+going to be kind of a traditional
+psychology
+that uh
+refuses to
+uh with lack of lack of better words i
+suppose which uses to actually engage in
+some type of interdisciplinary
+discussion
+so it's it's a happiest psychology
+that's happy using
+for example um more focus focus
+traditional and folk uh psychological
+notions
+and
+uh with these kind of limitations i
+think
+we're going to actually be stuck we're
+really going to be stuck
+um and so
+i i guess to summarize the point
+is is that
+it is a call for interdisciplinarity it
+is a call for kind of questioning uh or
+putting aside
+the fact that we can give
+uh satisfactory explanations but whether
+or not our satisfactory explanations are
+are actually the explanations or if
+there is just one explanation uh
+it that's that's the question that's the
+question and i think that the whole
+notion
+of uh
+the whole the whole idea about uh
+biological individuality is that you can
+be a
+once you take into account various
+various angles from various disciplines
+it's fine to be a pluralist
+it's fine to be a pluralist
+thanks i i was thinking of just a
+pluralism of what the word folk even
+means some people might think oh folk
+chemistry that's being wrong that's the
+middle school level of understanding
+chemistry and then the experts they know
+about chemistry that's folk versus
+expert but also
+it seems like focus being used in a way
+appeal to first principles like
+appealing to
+directly intuitive observable processes
+and um what is active inference if not a
+first principles approach
+so
+there's a way to bring in some of the
+technical expertise the computational
+backbone
+but also
+fully retain
+the conversational and the casual
+approaches that appeal and spread to
+people
+in their understandings of different
+sciences
+yes so
+dave with a raised hand and then anyone
+else with a then yes go for it dave yeah
+there has been so much good work done by
+people outside their specialties i guess
+erwin schredinger may be the most
+well known of uh in that
+um
+but um ben malka the swedish uh
+neurophysiologist
+uh wrote a lovely little paper from
+about 1999 i don't think it was ever
+published
+about
+how the development of the mobile eyes
+in
+one extremity of the early vertebrates
+has forced
+neurological developments
+that have resulted in consciousness
+simply because having mobile eyes
+creates such an enormous burden
+on
+sensation
+that you can't just use a simple nervous
+system otherwise it's just overwhelming
+have you looked at any of mercury
+america's uh work
+no okay i'm gonna have to send you that
+and uh
+please do
+yeah yeah and um also mark solemns uh
+who's a direct collaborator with uh
+professor fristen just wrote a popular
+account
+of um
+active inference from the viewpoint of
+his own work with america and yak poncep
+and antonio dimazio on
+the effective
+uh foundations of consciousness and
+especially his own
+thesis that
+in freudian terms
+it is the id that's conscious and the
+ego
+the cortical and the neocortical
+processes
+only
+gain to become conscious when it really
+has to because it's so expensive
+metabolically and in terms of
+distraction
+um
+and he's one of the few people who's
+actually aggressive enough in trying to
+go out and market his
+dissidence
+from the received
+wisdom
+and he's also he's also did a uh an
+amazing update of the original
+um
+project for scientific psychology
+in terms of fristonian
+active inference so
+first word the last word of that 1895
+freud essay is in 2017
+terminology
+but still in exactly freud's order of
+presentation
+wow
+yes please do send me that paper i would
+love to read it
+awesome so
+stephen with a raised hand then shannon
+or blue welcome and anyone else in the
+live chat of course
+yeah just uh also
+this this idea of the folk psychology
+and i agree with your point about
+interdisciplinarity and it's i think
+it's really interesting is how the
+experts perceptions of the world then
+gets translated into a folk publication
+which then becomes the kind of landscape
+which pretty much everyone then
+starts to
+incorporate and one one that i found
+really interesting with active
+inferences i was looking back at pre uh
+older
+ideas of vision
+before they discovered the retina and
+the image on the retina
+and they actually thought of the eye as
+projecting out and sort of feeling the
+world if you go back like 500 years
+and then
+we were told by the experts how it is
+with the retina and the image projected
+like a camera so then folk psychology
+moved to that
+or folk perceptions move to that because
+the experts said that but actually it
+turns out that the original folk
+psychology or the original perception is
+actually more accurate now that we're
+looking at circades and
+uh all of that so this is an interesting
+what is folk and what's expert and where
+does it come from
+absolutely
+it's a it's a both and because it's not
+like the retina emits the photons that
+it then senses back it's not doing echo
+location
+but there is
+a tale of two densities there's a
+generative model and a recognition model
+and there's a process that's a
+conversation which we're going to get to
+with
+users and resources distinction so it's
+like there is that bi-directional
+conversation and then if this direction
+is folk and then that direction is
+expert
+in certain social contexts which
+direction is going to be prioritized as
+an explanation and the other direction
+is going to be seen as a counter current
+literally going against the stream
+mainstream
+so
+how does pluralism allow us to recognize
+both directions in that case yes stephen
+yeah that's a good point daniel um that
+that i do a bi-directional and one
+question i i wonder sometimes
+i often work i'm i'm sort of connected
+to people who are i'm seen in the world
+of coaching and psychology as well in a
+ways
+and the arts where these things like
+bayesian brains sort of did come through
+there about 10 years ago but in a very
+but it's it's normally come from
+research which has been interpreted into
+a book by someone from that field which
+then gets pic which is still quite
+technical which interpreted by someone
+into something else and
+by the time it's rolled down
+into some other areas
+um
+these notions can be quite
+quite watered down you know um so yeah
+this
+this question about how to
+you know have that conversation
+when some of the stuff is quite
+cutting edge from even people in the the
+fields themselves
+um and how to get it used in the real
+world is is a big one
+absolutely very true so dave with a
+raised hand and then anyone else
+i think it's in the panda's thumb where
+um
+there's a rather exasperated essay about
+how you'll have an innovator and if he's
+really lucky he'll have a few people
+that work with him that fill in the gap
+but typically and
+typically they don't he doesn't even
+have one level of competence it just
+immediately goes into the full press and
+becomes just a complete mush with all
+the
+almost all the original valid insights
+just
+buried under
+full foolishness
+possible so i guess just we paused on
+this
+slide because this concept of
+individuality is a central one here and
+we mentioned a few of these different
+uh
+ways of looking at individuality and
+kind of contrasted pluralism the idea
+that multiple perspectives can co-exist
+and that that's okay versus i guess
+absolutism or modernism that one of
+these or some other unlisted criterion
+of individuality is like the the broader
+category or the right one um what is on
+the table with definitions of
+individuality like why
+would it matter in a technical capacity
+or for just all people what what is
+being discussed or what matters
+depending on how we approach this
+question of individuality to matt first
+and then to
+right i think there are a few things
+that we can say why it matters one thing
+is that we ha
+before we engage in some type of
+investigation about a particular type of
+phenomenal process
+it's quite good to know
+how to individuate
+what those process what's what are
+involved in those processes or what that
+process belongs to
+uh
+the relations between elements in a
+network pretty much
+right in order to understand
+those elements or to locate those
+elements we have to have some type of
+criterion in order to in order to
+actually even think about uh the kind of
+larger structure of a network and the
+relationships between them and i think
+this is biological individuals
+uh they they actually play this role
+and i'm reminded by
+something that uh gregory bateson said
+right
+that in order to actually understand
+what the mind is
+we have to actually understand how to
+delineate things with minds
+but those delineations are going to be
+completely dependent upon
+uh the the processes that we're studying
+right
+those delineations are going to actually
+involve the processes that we're like so
+it's going to be a process dependent or
+a phenomenal dependent individuation
+and that doesn't say that doesn't mean
+that uh
+these kind of individuals are going to
+actually uh
+they might contrast or conflict with one
+another in any type of logical matter
+but it's just putting in place as a type
+of pragmatism in terms of uh where we
+delineate things and i think biological
+individuals provide us with a manner of
+talking about for example specific
+phenomena now if we're talking about
+replication we're talking about for
+example competition
+uh with respect to something like
+replication
+then we might want to actually focus on
+darwinian individuals however if we're
+talking about the evolution of cognition
+or we're talking about the evolution of
+multicellularity or these major
+transitions in evolution we might want
+to think about individuals in a
+different way
+so that's that's that's what i think
+thank you matt blue and then shannon
+so hi matt it's nice to meet you i love
+this paper found it super um inspiring
+and um you know i think that the concept
+of an individual um
+is closely related to
+maybe the concept of autonomy and also
+the concept of emergence
+and so
+as and especially
+i mean it's also of course related to
+the concept of a cognizer
+but but
+cognizer aside
+the
+so i've heard a lot of definitions
+thrown around and an individual
+um i liked in the paper how you
+described emergence with the circular
+causation because that like echoes a lot
+of um i mean it's the the information
+theory of internet individuality paper
+by um krakauer and that group and it
+just echoes a lot of i mean what's
+required
+for
+an individual so i i just i'm thinking
+about um
+autonomy and and it's one of the things
+that
+um i mean it depends how you define it
+and in like the artificial intelligence
+world there's no such thing as an
+autonomous system i mean i mean
+really we program in whether we want it
+to learn whatever it wants to do but i
+mean they just don't little baby robots
+aren't just set free with no goal
+there's always a self-directed or a
+human directed goal kind of programmed
+into this system or maybe i'm wrong
+maybe there's examples where it's we
+just create robots for for fun or or
+artificial intelligence just to create
+it but
+like an artificial intelligence system
+doesn't really have that same autonomy
+or at least i don't think about it and
+so i just i'm kind of curious as to
+you know in the paper you kind of hint
+it out or i don't know if you said
+explicitly i was kind of flipping
+through looking for a quote but you know
+you hinted at like maybe a
+cell doesn't also doesn't have that same
+kind of autonomy
+and
+like so i i um
+i i want to challenge that
+so
+in in terms of active inference and the
+fvp like i think about it always as a
+skill-free architecture and a continuum
+and so
+why is a cell not autonomous but an
+organism is or maybe an organ is is an
+organ autonomous or where do you draw
+the line and why are you making a line
+in the sand around
+a system like that
+fantastic question and uh i agree with
+you i agree with you that's one of the
+things in the paper that i think that i
+pushed i did draw a line i didn't try to
+draw a line that was too
+deep in the sand
+uh and i think in one of the footnotes i
+do say something like okay well i'm not
+suggesting that a mitochondria
+is going to be something that's
+non-autonomous
+uh
+however
+autonomy is something that also varies
+in degree
+that i think a certain level there's a
+certain level of autonomy
+uh that it's going to be
+uh
+providers that provide a a different
+degree of of i say degrees of freedom
+with which
+some system can interact with its
+environment in ways
+uh and that integra that environment
+provides perturbations
+uh enough perturbations enough kind of
+uh
+enough surprise
+such that that
+that whatever that system is
+has various strategies
+uh it has to have various strategies
+behavioral strategies or we can talk
+about this in terms of active inference
+uh and in order to actually
+adapt to that particular environment now
+i'm not this this gets us into this
+notion of adaptive active inference
+versus
+uh kind of like
+the non-adaptive active inference
+and i think the way that michael and
+julian have thought about if i'm not
+mistaken i have thought about uh
+adaptive active environments is that it
+is based on a certain level a certain
+degree of autonomy and with respect to
+cells
+you know
+i agree i do agree with you
+cells do have a certain level of
+autonomy however
+cells are again
+dependent upon other cells
+uh in a way that
+other systems other more autonomous
+systems aren't dependent now you'll say
+of course we're dependent upon our
+environments we have to have oxygen
+there are certain constraints in our
+environments that we have to um
+we really have to kind of like our
+environments have to be a certain way so
+we are dependent upon our environments
+but it's it's the distinction i think
+between
+being dependent upon other systems
+uh and cells for example bodily cells
+are dependent upon other cells uh not
+only uh say that plasma but other cells
+in order to actually maintain themselves
+but i think there's a difference in
+degree so that's that's that's and i
+shouldn't again i should impress upon
+that this idea that i'm not saying that
+cells are not uh autonomous
+but most certainly i think there's a
+there's a difference in degree and that
+difference in degree does uh does matter
+uh cells might eat cells might even be
+cognitive to a certain degree and this
+is something that some someone like mike
+11 michael levin suggests and i and i
+agree with him
+uh
+but i suppose the notion about
+adaptivity uh
+there's a degree of addictivity that
+comes along with us uh the emergence of
+a certain kind of uh degree amount of
+degrees of freedom
+so cells are dependent on other cells
+but aren't humans dependent on other
+humans i mean we're born as an infant
+and completely reliant upon our parents
+to provide everything for us for many
+many many years and and even as adults i
+mean still we don't exist in a bubble i
+mean perhaps we can go off to a cave and
+exist in isolation but but i think
+humans are dependent on other humans as
+well
+so maybe it's a degree of dependence or
+not or
+i mean i i really feel like there's a
+continuum here even in terms of adaptive
+active inference and mere active
+inference i mean and i fall in with mike
+levin in
+in a lot of the ways that i think so
+yeah yeah i i think i think that's right
+i do think that's right i think there's
+a distinction to be made also though
+between kind of uh
+developmental dependence
+uh and homeostatic dependence
+right and
+and i think homeosta developmental
+dependence can have an effect on
+homeostasis homeostasis
+most certainly
+but those are two things that
+might not actually uh always always
+overlap and uh for example sure
+we as humans absolutely we have a long
+developmental period in which we're
+absolutely dependent upon our parents or
+being reared by some other human or some
+other animal
+absolutely and that happens that when we
+actually
+uh when we when we get older we probably
+are dependent also i absolutely agree
+with that
+but there isn't any kind of development
+with a cell
+that can be mapped on to
+uh dependence or non-dependence it's
+always dependent
+thanks matt shannon
+that actually uh flows really well into
+my question blue that um i know your
+paper you specifically say we might want
+to talk about humans or groups of humans
+but we're not going to in this paper
+um but i'm going to ask about humans
+and so when you're talking about um
+this
+this
+squid and it's bioluminescence um
+and they form a temporary unit in which
+they are
+together
+an individual
+um and then it sheds the
+the the bioluminescent cells during the
+daytime and then
+they breed again
+afterwards i'm wondering if there is a
+time like a critical time period at
+which
+units would have to be
+uh have
+this symbiotic relationship with each
+other or if there's a necessary strength
+of the coupling or a repetition of how
+many times
+um the organisms need to meet up and if
+that would change for for this
+this animal compared to systems of
+humans because there's a certain way in
+which um the the humans that you
+interact with in everyday life or if
+you're co-living with someone even your
+metabolic states become co-regulated by
+your sleeping patterns with each other
+or
+stress and hormones between different
+humans are affecting each other when
+you're together
+at a fairly regular
+rate and so i wonder
+if we might define individuality or
+collective slightly differently
+depending on the system we're looking at
+and the type of coupling that's
+occurring
+i think that's a great question chad
+it's absolutely i would i would say yes
+i think this has to be some um obviously
+that you know about the the empirical uh
+literature in terms of kind of
+entrainment
+uh
+and i think this is like that's a really
+good point to make in terms of
+having those types of interactions with
+humans whether or not
+for the for the bobtail and uh vibrio
+uh there's a chance that um
+like out after the vibra actually
+colonized the light organ they're
+typically not taken in again
+uh that once they're expelled they're
+out and they might be taken in by
+another squid or juvenile squid but
+they're but the vibrio that continued to
+colonize are the ones that are left over
+uh and
+it might be the case that the ones that
+uh continue to colonize for that shorter
+period of time
+uh
+might become
+the relationship with the script might
+change to a certain degree but i don't
+know any
+uh any empirical evidence and i'm
+ignorant about this point that suggests
+that's the case but i think that's a
+really good really good question to ask
+a very good question to ask
+so blue and then i'll make a question
+i think dave was first oh yeah go for it
+dave at them
+yeah they're from
+dr alan shore has done some um
+i think controversial but really
+evocative work on
+the formation of the not just the
+personality but actually the neural
+functioning of the newborn in the dyadic
+relation the intimate dialogue with the
+mother
+face play and the rhythm of moving in
+and moving back and
+regulating each of them regulating each
+other's expression of interest and each
+other's degree of involvement
+and at a really different
+scale
+um
+gerald edelman's
+topo biology talks about the cell and
+the tissue as being just so dependent he
+points out look we have almost no
+chromosomes we have almost no genes
+compared to how complex we are where
+does the regulation come from it comes
+from adjacent cells adjacent tissues
+right thanks steve blue
+so um shannon kind of what she was
+saying about um becoming co-regulated
+say if you live in an environment with
+someone like it's a super nice
+transition to something that i have
+really been wanting to discuss uh in the
+context of this paper which is like okay
+you become co-regulated with someone
+that you're roommates with and and
+co-regulated perhaps by the environment
+but also perhaps by the microbes that
+live in our environment right so there's
+like the entire micro microbiome concept
+that is is fundamental and key to humans
+and i don't know i mean i'm not like a a
+huge studier of symbiosis but
+i'm not sure if the microbiome like i
+know we depend on a healthy microbiome i
+mean for healthy like brain function and
+you know just regulation of our own
+internal like uh metabolism and so forth
+and so
+is that a symbiosis
+or not um also like the concept of the
+holobionts which is like introduced by
+fields 11 if you've read that paper
+they're the scale free biology paper i
+mean
+it is like to what
+and that they they talk about um
+physiological individuality there as
+well so is that symbiosis is it not is
+symbiosis it's also a spectrum or is it
+like a you know a discrete category of
+things and i also think about like
+symbiogenic viruses
+which like you know the very early
+viruses that it's like you know
+effectively like instantiating
+speciation right like the viruses insert
+into the genome and you know developing
+species and so forth and and it's
+beneficial to the virus and the host
+right so so anyway i just wonder like
+what are your thoughts on that or or or
+um if you have any insight there
+absolutely that's again a wonderful
+question boo um with respect to kind of
+symbiosis i think there's some there's
+been
+some work on that and some very i think
+uh convincing work done by queller and
+strassman
+uh
+who suggests a particular type of xy
+locating symbiosis on uh kind of an axis
+pretty much so you have uh cooperation
+i believe on one part of the axis i have
+to have to look it up again actually i
+should look that up um
+but it's uh you have varying degrees of
+symbiosis
+uh and again symbiosis in the in the
+particular paper that we're discussing
+now i've concentrated on mutualisms but
+you have various forms of symbiosis uh
+that i think you've actually pointed out
+previously uh that can be kind of
+modeled
+quite well with kind of game theoretic
+uh and this is going to be is going to
+rain from parasitism
+to uh communalism to kind of um kind of
+mutualisms
+and i think like these are all again
+degrees and these degrees can change
+uh there have been quite a many theories
+i suppose and i think squadron strassman
+have also suggested this that uh
+depending upon the condition of a system
+uh with respect to another system say
+their symbiotes a parasite can turn into
+a mutual a parasitic parasitic
+relationship can turn into a mutualism
+and vice versa
+so these things move these types of
+things move uh and if you think about
+this is an automatic thing that we can
+even apply this kind of cellular biology
+when you think about something like the
+the origin of cancer
+right
+when you have
+cancerous cells
+uh
+they're they've actually grown within a
+host
+right they're part of a body
+uh but end up being some type of
+competitor
+and i think this is quite interesting to
+think about this it's like through the
+lens of symbiosis obviously it's it's
+not that's that's not a symbiosis but we
+can use symbiosis to kind of think about
+that
+uh
+but with respect to kind of
+uh thinking about
+host cells and parasites our whole cells
+and mutualisms
+uh there's like
+there's there's many many different
+kinds of ways
+areas of the spectrum that one can
+actually analyze uh our relationship
+with our own cells and our relationships
+with uh with micro microbiota microbiota
+like scott gilbert obviously you know
+and scott's work is is quite incredible
+he's the one i believe who introduced
+the notion of the hollow biome
+the hubble genome excuse me in halloween
+and uh
+i think this this notion about uh hollow
+buoyant is specifically
+uh
+it includes symbiosis but includes
+actually a kind of community
+a particular kind of community of
+various systems
+uh that themselves qualify as one system
+can qualify as one system or having you
+know if you would put it in a different
+way they they create a stable state
+right a steady state themselves
+and uh one that's kind of resistant to
+perturbation
+uh and
+that's that's the matter in which i
+think it's like it's it's a very easy
+matter in which i can think of uh
+the
+blind as as an individual
+uh whether or not one wants to call
+two
+two symbiotic say symbiotic uh systems
+um
+that are in a mutualistic relationship a
+hollow bond that's another question but
+i think typically it's been applied to
+um more than two systems
+thank you matt
+so for
+shannon's questions about you know the
+co-regulation and humans and trust it
+made me think about how
+one-off games
+lead to kind of community or
+population-like game theory whereas
+repeated games over evolutionary time
+like in the case of the squid and the
+vibrio or in the case of the eu social
+insects that leads to
+organismal-like dynamics and then what
+you just described and what um levin
+also got at in the paper is the
+breakdown
+of for example organismality into
+population of cell versus population of
+cell dynamics so it's absolutely um a
+cool framework and then also a really
+important part on figure four
+is you have the peak of integration and
+then greeting serval
+the peak of integration
+um and then that's the y-axis so it's
+like instead of saying we're gonna say
+which organisms are tall or short out
+there in the world it's like you do the
+population level survey and they range
+from you know two to four feet and you
+say okay it's in the upper 50th
+percentile it's tall like we're
+renormalizing
+our comparison stick to
+the maximum integration of the squid
+bacteria so we're not comparing it to
+some other system we're re-normalizing
+and we're able to have a system-specific
+understanding here it's relatively more
+integrated here it's relatively less
+it's a second question whether the peak
+of integration of the squid and the
+vibrio is like the integration of some
+computer program with another computer
+program maybe it's apples and oranges
+maybe we'll have the right framework
+that allows us to transmute apples and
+oranges but here you can just relativize
+to the system itself and that's like
+very specific and powerful
+so stephen with a raised hand and then
+anyone else
+yeah
+i'll give you a chance to get a breath
+because we've thrown a lot at you but um
+the you mentioned allostatic and
+homeostatic forces if i imagine there's
+the the so the so you've got that
+difference there between something
+trying to maintain or trying to try to
+move forward and change
+um
+and i'm interested in in how that
+reflects um
+so for instance i suppose you could have
+within a set of cells you could have
+some cells or some
+organs you know trying to maintain
+homeostasis and others
+say even maybe a parasite is trying to
+anaesthetically
+enter that world and create a niche for
+itself
+um and i think that that that
+question about
+you know
+that that balance between the two is a
+useful divide or a useful way to think
+about the same
+cell and of course in cells they change
+to become different types of cells so
+that's something that
+whole organisms have less ability to be
+completely
+completely different types of organisms
+you know they can't um you are what you
+are i suppose that's one defining thing
+about but you can still change your
+focus from homeostasis to allostasis i
+think that is quite common and i wonder
+what your thoughts are around that um
+and how that that itself could be a
+useful
+way to frame things
+that's really interesting
+uh the the man in which i'm looking at
+kind of a homeostasis uh and uh kind of
+coupling of homeostatic regulatory
+systems to allocate regulatory systems
+is based upon kind of
+a more traditional idea that homeostasis
+might be considered more reaction or
+reactive
+where allostasis is anticipatory
+right and then allostasis takes a
+particular form it's quite interesting
+with respect to in the context of active
+inference because we talk about expected
+free energy minimization
+and this is something that uh one can
+tie together with the notion valley
+stasis
+um
+where
+uh and when you start to think about
+kind of homeostatically coupled systems
+one system
+uh with respect to kind of symbiotic
+systems might be playing a kind of a
+larger rule uh and being able to make
+further and further of being able to
+make inferences further and further into
+the future and i think this is something
+that you've you've suggested you've
+looked at previously actually on a slide
+uh mike levin's cone slide that blue
+and daniel actually had up previously
+and i think this is a quite interesting
+manner of thinking about
+uh kind of a transition
+perhaps we've always been allostatic
+systems living systems have always been
+had certain of certain uh capacity to
+anticipate
+however when we start putting systems
+together
+we have a larger capacity or more
+capacity to anticipate further and
+further in the future and i think one of
+the dimensions on this particular cone
+is this dimension of alice like a kind
+of outstanding control
+uh this is this is my interpretation of
+michael's work uh and
+i think this is that's very important
+and again you'll see that there's that
+kind of
+balancing that if one is
+given a type of approximate bayesian
+inference that's going to be uh you know
+what we suggest is going on uh you have
+to actually balance this with priors
+which are going to be respective to the
+past so you have another type uh another
+axis on the cone
+and as these things expand sometimes the
+past is going to uh be a bit deeper on
+the cone than than the than the future
+but out of stasis is on on the top there
+and i think that like with
+with multicellularity
+with uh
+with kind of
+uh the interactions more interactions
+perhaps you will see a capacity a larger
+capacity to go upwards
+and in the kind of future oriented
+direction
+and this is this is something again
+uh and i i appreciate blues bringing
+this out this is this is uh something
+that's again a matter of degree it's not
+a it's not a it's not a line that's cut
+it's a matter of degree
+right
+and so
+uh
+just simply we know that there's certain
+types of
+uh microorganisms that that do
+anticipate
+that do like right uh and
+uh this is kind of outward anticipatory
+behavior whether it's i think it's going
+to be uh
+phaser and polycephalum which is uh the
+kind of
+plasmodium slime mold
+uh various experiments in 2011
+uh had suggested that you know
+uh fuzzerum can actually
+anticipate
+various periodic uh bouts of dryness
+this this type of thing this is an
+outward periodic behavior an outward
+anticipatory behavior
+uh
+that's not to say that anticipation is
+not happening occurring prior to that in
+the internal dynamics of systems that's
+just an uh kind of an outward
+manner of kind of measuring it
+um
+again i i do think that this like it's
+it's a quite important notion allostasis
+uh and
+it's perhaps all systems again i i would
+be
+safe
+at least my position now is that all
+systems are pretty much allostatic
+systems uh that kind of enslave
+homeostatic regulatory systems
+uh to maneuver
+and
+invest their
+metabolic machinery and metabolic
+capacities
+uh to a particular type of
+uh state that perhaps they haven't
+reached yet considering
+uh you know a manner of of trying to
+kind of avoid perturbation
+thank you
+matt very similar to mere adaptive
+inference being more homeostatic more
+like the ball just in the bottom of the
+bowl and then increasingly anticipatory
+rosen's ecology adaptive
+active inference stephen go for it
+yeah this this ties in actually i'm a
+lot of work around um coaching funny
+enough the world of coaching and um
+team coaching is like and team coaching
+so and i think this also brings in you
+know these other types of clusters
+groups
+symbiotic
+um relationships beyond maybe what we
+might just think of as a system you know
+so the idea of a team
+um in a as a
+in a systemic context
+um is really interesting because
+they
+and this might be how allostasis in a
+social context starts to enable that
+larger horizon so each
+even allostasis is sort of stasis and
+then
+working together you may start to break
+your own need for stasis you know and it
+just
+becomes some other organization and i
+think it'd be really interesting and
+looking at how
+the way that team coaching either for
+performance because there's performance
+orientated team coaching or there's
+developmental orientated team coaching
+but that idea of and then the enabling
+context
+becomes what we would call the
+ecological niche i suppose
+becomes
+um
+as much the focus of attention
+as the system in that makes if that
+makes sense and i think this this might
+tie into what you're saying
+thanks steven so dave i know that you
+had a little bit to share but i'll just
+bring up one
+point related to this definitions of
+individuality and then several anything
+you want to ask feel free to raise your
+hand
+we hear a lot of terms like autonomous
+and self-organizing which sort of
+highlight the um
+ability to cleanly partition a system
+like people will say the embryo it's a
+classic self-organizing system
+right except for the context of the womb
+and so there's sort of on one hand the
+desire to individuate and partition and
+look at agentic systems agent-based
+modeling autonomous and self-organizing
+and then that is critiqued by
+the ecological perspective or the
+relational perspective so there's sort
+of a dialectic between like it's all
+individuals all the way down and it's
+all relationships all the way down we
+see that debate in particle physics
+we understand it less than we might some
+of the biological systems are in a
+different way but it's um like two
+pillars that we're navigating between
+and it is a continuum
+in between so that's why it's such a
+nice discussion
+so dave if you're around
+um feel free to um any time you're ready
+you can go for the conversation theory
+otherwise blue go for it
+okay sure um now slide yeah slides 18-19
+we inserted that into the slide show
+that we prepared for dr sims
+presentation
+and these slides bring in some matters
+that he doesn't address in his paper so
+to justify that but not to paraphrase
+the insertions
+the free energy principle and active
+inference jointly constitute a
+relatively mature macro level framework
+for describing living psychological and
+other complex self-stabilizing systems
+as of the moment no comparably mature
+micro level framework has been both
+proposed for and coordinated with this
+macro level of analysis
+i suggest that the basis for such a
+needed micro level framework was
+proposed by my teacher the late
+cybernetics
+professor gordon pasque of brunel
+university in the form of conversation
+theory
+matt's essay how to count biological
+minds considers the puzzle of whether an
+individual can come into existence and
+pass out of in existence repeatedly
+that's account of this puzzle and please
+excuse me if i stray from over
+simplification into parity his solution
+in terms of degrees of integration
+is a perfectly acceptable insightful
+account
+at a macro or molar
+level
+the metaphors of quantity and elsewhere
+probability nicely express falsifiable
+common sense attributes of real-world
+processes
+but if one states this paradox the
+paradox of emergent but transient
+individuals in terms of conversation
+theory then one speaks of a conversation
+recurring over time
+between the same conversants
+this terminology makes the proposal more
+intuitive less shocking and more readily
+assimilable for readers
+better yet familiar ideas attention
+rhythm of discourse punctuation of a
+conversation through understandings or
+through agreements to disagree they all
+play their roles
+now what place would be occupied by the
+special disciplines that have enjoyed
+detailed treatment by conversation
+theory as a micro theory
+during his career professor pask carried
+out an array of experiments studying
+human learning of complex subject
+matters configurations using
+configurations of software and hardware
+to administer and collect data from
+those experiments and develop a
+vocabulary allowing elegant description
+and restatement of the results of those
+experiments
+moreover he developed a theory of micro
+level learning teaching
+as a single literally irreducible
+complex of activities
+regardless of whether they were realized
+by living organisms by machinery or by
+complexes of those two
+fabrics
+i see many deep and broad analogies
+between conversation theory and active
+inference
+each addresses important aspects of real
+world phenomena that assist in a
+systematic way
+such that each treats of matters that
+are not so well handled by the other
+i believe that active inference and
+conversation theory can enrich and
+streamline each other
+by carving natural science scholarship
+closer to its joints
+very nice
+thank you dave so maybe matt any
+thoughts on that and then we'll go to
+blue
+i have to say i have to say that i'm
+absolutely
+uh the
+the cybernetic theory that i've
+concentrated upon have been most
+influenced by
+uh it's it's very limited
+and conversational theory it's i'm
+absolutely interested in seeing
+uh
+more of this more of this
+i suppose analysis and understanding
+more of this analysis so i'm quite
+ignorant about conversation theory and
+it's like he most certainly piqued my
+interest
+um
+yeah let me let me
+think about this for a few minutes i'm
+still kind of internalizing what you've
+just said
+yep and one note on the conversation a
+lot of times cybernetics falls into that
+individualism mode like it's the one
+self-guided missile it's not the
+conversation between the flock of birds
+so cybernetics um isn't just about
+individuals it can be about collectives
+and it was our colleague alex who told
+us um via one of his teachers levinchuk
+just yesterday that um cybernetics died
+when it could explain homeostasis but it
+couldn't go beyond
+so we're talking about the transition
+from individuals to collectives
+and from mere homeostasis to adaptive
+allostasis over developmental and
+evolutionary time scales and so it's
+sort of like you can have homeostatic
+individuals
+and then they can have emergence
+towards allostatic collectives
+and then what is that
+process of emergence
+it's a conversation
+or potentially something like that using
+our folk understanding
+of interacting pieces which are us
+blue
+so um my question is maybe technical but
+also uh maybe serval has some insight to
+provide as well um so i wanted to ask
+here in the beginning of your paper you
+talk about
+free energy being an additive quantity
+so
+the free energy that arises at the macro
+scale is only the free energy that there
+is for the ensemble and may be
+quantified by summing the free energy
+associated with each constituent micro
+scale markov blanketed system so
+is that true and and like does that
+account for emergence
+because i feel like there has to be some
+like greater free energy minimization
+and so like i i'm not i'm not well
+versed in the technical like mathematics
+of the fep um
+because i think about you know like
+just in terms of the bioluminescence of
+vibrio fisheries right right there's
+like a criticality that happens like
+almost like a phase transition that the
+system undergoes to become
+bioluminescent like after there's a
+certain concentration of bacteria in the
+light organ and so like does this
+criticality this phase transition does
+this not like
+to minimize free energy to a greater
+degree like or is it really just the sum
+of its parts
+wonderful question really wonderful
+question
+uh
+i do think that okay there's a might be
+a distinction in terms here in a
+distinction in terms of like what
+uh the free energy
+uh of
+the actual constituents
+as a group have
+as an ensemble have
+uh
+and a distinction between that for
+example and
+bioluminescence as a particular type of
+free energy minimizing strategy
+uh
+the
+it's a i think it's a fantastic question
+i'm getting the the the notion of kind
+of uh
+you know the summation of free energy
+from uh palacios
+and aronstead
+uh and
+this i think that the pretty much the
+idea is that
+i'm not sure if there's going to be any
+well i'd like that maybe i can ask you
+blue do you use do you see that there is
+some type of inconsistency between
+saying that
+uh
+for example
+uh
+free energy is going to be an additive
+quantity
+and
+and the fact that there can be some type
+of emergent property that is not going
+to be reducible to
+uh
+say
+the the constituent relations and and
+the elements
+do you think that there's some type of
+uh inconsistency there
+well so i definitely do think that free
+energy across scales is additive like i
+i agree with that wholeheartedly but but
+i don't think that it reduces to the
+mere sum of the parts
+and i mean this also um
+it's the the work the recent work of
+rosas and also eric hole looking at the
+partial information decomposition over
+the um five metric that's used in
+integrated information theory of
+consciousness and so this kind of speaks
+to that there there's
+it has to be some mathematical i mean i
+just feel like i don't know that there
+has to be but i feel like there should
+be some mathematical
+um
+quantification of more so it should be a
+greater degree of free energy reduction
+when the system is more than a sum of
+its parts and so i think that that's an
+argument that you make in the paper as
+well that it can't be it's it's not
+reducible to just the component parts so
+is the free energy then just reducible
+to the component parts here because that
+to me seems inconsistent
+okay
+okay the matter would i think uh
+i i see absolutely see your point no
+matter what i'm thinking about this
+though i said okay well
+uh
+there's a very informative paper by
+santos he's a philosopher he he actually
+deals with immersions uh and
+uh and
+it's a really nice way i suppose i
+really like this uh the paper that you
+suggested about kind of using the five
+metric
+uh and various manners in which to like
+to do like decom information
+decomposition
+uh
+over various time steps
+uh in order to
+think about
+some way to some some metric for
+emergence
+i think there's been various metrics for
+emergence i haven't picked my favorite
+metric that's something that i'm still
+getting into
+uh
+but i think this is it's quite
+interesting to think about okay well
+uh what makes an emergent system is an
+emergency system going to be more than
+it's
+the kind of relationships and elements
+of a network
+and what makes it so what makes it so
+it's going to be the relationships
+themselves or
+or is it going to be something uh the
+combination of the relationships or is
+it going to be the interaction between
+the system the emergent system and the
+environment and i think when you start
+thinking about the interactions between
+the emergency system and the environment
+uh
+there's there's a distinction between
+what free energy is going to be
+minimized
+uh or
+and the free energy of the system itself
+does that make sense
+is it there's a distinction being made
+uh and perhaps i'm wrong about this
+but
+emergence is not something and one of
+the reasons why you have an emergency
+system
+it's going to be for the simple fact
+okay well you have
+uh
+it's not only the interactions of the
+parts and the parts or the elements it's
+going to be it's going to be the
+interaction
+of a particular type of persistent
+and i think this is the this is the idea
+you have a persistence
+uh with a particular environment or with
+an environment and it's the
+perturbations within that environment
+uh that occur along with that system
+in which kind of free energy is going to
+be a free energy that might have to be
+minimized is going to arise and i think
+it's like so
+um
+you might say of course that the the the
+system itself
+uh when it has component parts and
+relationships between those component
+parts is going to be uh that system can
+be thought about in terms of
+an additive or summation of the free
+energy of the various parts and
+relations in that system but that's
+distinct from that system's engagement
+or interactions with this environment
+then you'll have extra free energy
+you have an additional amount of free
+energy and maybe that's what that's
+that's that's another way a matter of
+thinking about okay well uh and an
+emergence
+as measured i don't know if you can
+measure emergence in terms of free
+energy but of course we're going to be
+able to measure it in terms of some type
+of mutual information
+very nice thank you that's i think that
+was
+a question there i don't know if you can
+measure emergence in terms of free
+energy like you said and you might have
+to look at something like mutual
+information and i was thinking that
+perhaps
+the free energy that's minimized by each
+individual system
+then when they become a symbiotic unit
+or something might end up being
+identical
+and again
+i'm thinking of humans again but if
+humans are walking and they happen to
+start walking in step
+um that's gonna look like an identical
+oscillation
+as as they're coupling with each other
+so there's might not be more free energy
+that's minimized by this coupled system
+walking in step together
+um but it might look like this the same
+free energy once they're a coupled
+system
+and one thing that we talked about i
+think in the dot zero or around there is
+there's situations where the cooperation
+the coordination increases synchrony so
+just increases the mutual information of
+the humans walking in step but also you
+could imagine
+anti-phase relationships which is kind
+of like division of labor or task
+allocation where the emergence is not
+due to um
+copy and conform but the emergence is
+actually you know you go left i go right
+and so in both of those cases
+there would be a change
+in the non-equilibrium steady state
+which is what is introduced throughout
+the paper and so that starts to build
+the road towards quantitative
+discussions
+and you could take a system that
+you suspect already has emergence in
+nature
+and remove a part that's kind of like
+the gene knockout approach so gains of
+functions and loss of functions and all
+the other ways that we study
+function
+can now have something like a common
+grounding potentially using these
+metrics here
+so
+dave and then
+maybe matt if there's a response
+otherwise stephen thank you
+okay now blue asks
+is free energy additive
+there's an exercise that i'd suggest
+it should bring that question to a more
+down-to-earth and more
+poignant focus
+take all the discussions you've heard of
+free energy and substitute for the
+phrase free energy the word
+anxiety
+it already is that way dave what do you
+want me to do
+[Laughter]
+what would that show though or do you
+think it's a natural fit or could it
+could be could we put any word there
+what do you think it means
+well so just using anxiety like it
+totally leads to the mob mentality and
+like ultra paranoia and conspiracy
+theory so like definitely additive
+yeah
+possibly multiplicative though like
+could be exponential
+[Music]
+yes steve
+yeah there actually have been uh
+clinicians that have
+really used free energy although they
+didn't use the term as probably before
+the usage was was coined
+um
+william glasser in control theory and
+his earlier work uh really has this
+quantum of anxiety
+that these patients had to manage these
+tended to be out of control criminal
+adolescence so they were pretty screwed
+up
+um and he found ways to get them to rein
+themselves in and
+control themselves but
+think about the blitz effect london
+blitz
+you had objectively tremendous stress on
+everyone all the time
+but there was almost no hospitalization
+for shell shock among civilians
+including the air raid wardens that were
+in digging you know they a building
+beside them get bombed and they'd rush
+in and try to find people and drag them
+out extraordinarily low rates of
+psychosomatic disorder
+there's a certain there's multiple paths
+you know people people's brains are
+really complex
+there are certain ways that people
+actually do get shocked into rationality
+i've been in situations where the right
+thing had to be done right now with no
+hesitation no anxiety no blame
+uh
+just do the right thing and there was no
+question just do the right thing uh
+whether it's whether it puts me in
+danger or not you know a child's
+endangered you do the right thing so
+it's not predetermined uh but typically
+yes what does happen is
+uh a thing called reorganization it's a
+technical term that
+glasser uses it essentially means going
+crazy and in the really worst case the
+reorganizations get faster and faster
+and faster and more and more drastic as
+the personality becomes more and more
+simplified and that's something that
+kurt levin or lewin worked through in
+his work on driving children crazy by
+giving them more and more complicated
+tasks and under more and more anxiety
+and he was able to make the kids
+personalities and thinking degenerate
+and simplify more and more and become
+more and more infertile and you're right
+blue that is one of the things that
+happens in a mob the it's terrifying to
+be in an even
+unified
+angry mob where everybody's mad at the
+same thing and they're probably not
+going to attack each other it's
+terrifying and people that keep going
+into that situation
+things happen
+remember um
+uh um
+the presentation two weeks ago on
+the mutual suppression of the limbic
+system the reticular activating system
+on the one hand and the prefrontal
+cortex on the other
+you get these things that look like
+beliefs
+they sound like beliefs they act like
+beliefs but they're not beliefs because
+reason has never been
+invoked
+in
+the biological decision whether to
+incorporate this
+magician's spell into my
+feeling
+and my actions
+do you have to have reason to have a
+belief dave
+oh yeah in the sense that uh uh philip
+uh
+gerunds uses it
+yeah
+yeah you have i mean that's that's kind
+of the way he defines it a belief is
+something where the prefrontal cortex
+has been involved it's been in the loop
+and there's way to bypass that um
+i asked him whether he's worked on the
+social psychology of this or the the ego
+psychologist he says no no
+i have enough trouble worrying about
+people with damaged brains and how that
+shows the bypassing
+of rationality in the formation of
+delusions but i think it works the other
+way um you may have seen my my
+shotgunning of the apathetic apothemic
+brawl
+by uh dr
+nathan rosenberg or rather gabriel
+nathan rosenberg he's an academic and i
+think kentucky he says look this is
+what's happening you've got this person
+with a
+a non-existent personality who's doing
+what the mob tells him to do through the
+mob's megaphone called fox news
+why do we like him so much because he's
+less than any of us he will always obey
+us so we'll give him power and then
+he'll give us what we
+feel like
+uh yeah and there's no reason of
+ultimate it's very much a bypass yeah
+rita labonz uh
+study and mackey's study on
+the madness of mobs
+and the mass production of delusions and
+crazes
+and
+mccarthyism and all this
+unhealthy stuff
+thanks dave and that was the guest
+stream 10.1 with philip guerins and so
+just to highlight one point and then
+stephen it's we're really talking about
+control theory
+maybe the first pass the first term in
+the taylor series
+is about control i mean come on narrow
+the error and that's kind of definition
+one
+control as homeostasis even if there's a
+shifting set point but then
+again it's the ecological and the
+relational insight
+and just the emergence of interactions
+that
+control takes on this broader
+anticipatory
+usage to control your body temperature
+is to sometimes do
+a lot of movements that from that first
+pass look like a non-sequitur like
+sprint so that you can get into the
+air-conditioned room
+that's the expected free energy through
+time
+so now we have a common grounding for
+talking about control when it looks
+homeostatic as well as control when it
+looks allostatic or even innovative
+so it's very important to pull out some
+of these threads and also recognize
+their cybernetic origins and other areas
+too
+so steven and then anyone else
+yeah um these are all really good points
+i'm curious when we talk about free
+energy minimization
+i think it's it's interesting to talk
+about that from a systems perspective um
+however if we want to get back to the
+kind of organism
+so the key thing with free energy
+minimization
+that occurs at different scales you know
+physical scales number of
+units scale time scale
+you know teleological scales we think
+about these different scales but
+that reduction there has to be a way for
+that reduction to be meaningfully
+engaged
+through actions or interactions like
+the metric ultimately what's going to be
+filtering through
+probably in some noisy maybe backdoor
+way
+is that um if it's going to be sustained
+over time there needs to be some
+meaningful engagement over time so for
+instance you know the idea of the path
+that we walk
+starting to wear away the grass in our
+niche
+well it's because we walk on the path
+more than
+once that we have an ability to observe
+that you know if we only ever walk that
+path once it wouldn't
+have a way for any variation to be
+noticed but we notice the path being
+worn
+by agents over time so
+when we're talking about these different
+scales
+these variational dynamics in free
+energy it's not just a reduction because
+we don't
+get
+a number each time saying this was lower
+than last we just get
+some
+new state in the world and we have to
+infer if it's changed from some other
+state in the world
+and we it may go up it may go down so we
+may infer
+at times the free energies
+has has not been minimized and we might
+take but overall static processes
+for instance if we have a big room
+that's not tidy and we have a group of
+people and they want to organize it into
+a studio space
+you know they might work together
+initially putting in a lot of extra free
+energy time and
+and then eventually they know that they
+will be able to minimize
+their sort of systemic
+engagement as a group
+while it's not necessarily that they're
+each minimizing free energy as a system
+in the so this is almost where maybe
+challenging to get out of the biological
+sense and maybe come into some other
+disciplines where
+it's not all a system it might be more
+of a systemic context
+which is then more teleological so i'd
+be interested that that question okay
+where does this crop through this idea
+of
+being able to to have a pragmatic metric
+that links the non-equilibrium steady
+state of the organisms
+phenotype or individual so they're
+actually able to then
+infer something from whatever is
+happening to the free energy out there
+or in in there or around them
+and how that changes things if we if we
+frame it away from
+systems per se to something more
+systemic
+different uses of the highly poly semis
+word system systems of systems for some
+people are systems so that's why we
+um increasingly will try to be
+exploring the active inference ontology
+so that we know which pieces of the
+puzzle we're talking about and then that
+will unpack so interestingly into
+different disciplinary contexts stephen
+so nice
+points um so in the last half hour
+i think there's a few different things
+let's maybe get to one of the key
+pieces and specific contributions of the
+paper which i would love to hear matt
+your thoughts on which is just first
+what's going on with users and resources
+and second what is the difference
+between uni-directional multi-scale
+integration and reciprocal multi-scale
+integration
+right um
+those two
+notions i suppose of unidirectional and
+multi-directional
+reciprocal
+and users and resources they're very
+much so connected
+the idea of a user we can think about
+this and i think stephen's uh
+to use stephen's example of an elephant
+path i believe that's what these things
+are called sometimes so you see these
+paths that are treaded
+and are typically you know
+used to refer to when we're thinking
+about kind of nice construction like
+past phones construction
+[Applause]
+[Music]
+this is something that is in the
+environment that's is being used say is
+a resource that's being used and it's
+the effect of previous action on the
+environment
+uh returning to the notion of so that
+that that would be a resource
+uh
+used by a particular cognitive agent or
+an agent that's engaging in adaptive
+active inference uh
+so
+number one it has to be recognizable
+uh and it has to actually in order for
+the system actually to engage with that
+particular resource it has to be
+recognizable as such
+um
+and that recognition can come through
+for example epistemic foraging uh or
+actually just uh be applying particular
+kind of a plan a model to a particular
+type of uh resource that has been
+applied previously
+um this is also the case with something
+like stitch merging right
+where you have uh something
+uh that's it's quite lovely where you
+have for example ants leaving pheromones
+within the environment uh and that
+pheromone acts as a particular type of
+mediator
+uh directing
+further behavior by agents of a similar
+type
+right
+and that's again environmentally
+mediated communication
+or or what they might call an
+environment environmentally mediated uh
+you know
+uh
+conversation between between various
+elements of a system
+uh and
+the pheromones themselves of course are
+resources
+in the environment that's going to be
+perhaps uh contrast with the idea that
+uh not all resources need themselves are
+themselves
+they have to be limited to being
+resources they can also be users also so
+uh to to make a strange case we can
+think about uh stitch mercy actually uh
+what if it wasn't actually the pheromone
+that was being used but the other act
+the presence of the other ant that was
+being used the interaction with the ant
+itself
+so here
+the two
+uh using using using perhaps and perhaps
+you have to tell me if i'm using this
+wrong that's terminology but you have
+two discussions
+right a cinder and receiver both are but
+both active senators and receivers and
+actually they're communicating something
+they're having a conversation uh but
+there isn't any mediation in between the
+two uh that can be offloaded onto
+uh in this particular situation
+offloaded into the environment
+so the signal itself is going to be the
+direct kind of interaction between the
+two
+uh rather than a pheromone now that in
+that case we can map that onto something
+that would be a kind of hypothetical
+case of reciprocal multi-integration
+right uh
+and again
+uh stigma rg just happens to be
+uh typically and in each cases in in the
+way that uh people degrasse uh suggested
+it when he was studying termites
+uh this is something that's actually
+involving a particular type of signal in
+the environment that's offloaded to the
+environment so it's going to be
+naturally something that's going to be a
+unidirectional multi-scale integration
+between a system of team very systems
+whereas for example
+when you have direct interaction between
+two cognizers
+or two systems
+uh two adaptive systems
+uh
+they can also of course use some type of
+resource there can be signaling and this
+is something that of course happens with
+vibro fisheries
+uh
+and the bobtail squid but there's also
+going to be some kind of other direct
+interaction between two systems and
+that's uh that's kind of the reciprocal
+multi-scale integration
+awesome summary i believe the technical
+term would be converse ants
+for that kind of a conversation
+but it's a great point how um when you
+have an adaptive active inference agent
+and then a niche that's being modified
+stigmatically that does mere active
+inference like the spider's web
+that's unidirectional but still
+multi-scale
+whereas when you have adaptive and
+adaptive in discussion in conversation
+even again if only in a folk sense
+you have adaptive on either end and it
+can
+allow for a new
+non-equilibrium steady state to arise so
+not that there isn't a non-equilibrium
+steady state of spider plus web rather
+than them separate in fact there will be
+but it still is a different type it's
+like a double directional or reciprocal
+stigma g so just such a cool way to
+connect that
+blue and then stephen
+so
+like again this like line between mirror
+active inference and adaptive active
+inference like is it like makes me want
+to attack it a little bit um i i think
+about uh the niche modification that for
+example humans do is extensive and
+transcends
+like generations and i mean work it like
+contributes a lot to the collective
+intelligence of the human species and so
+forth and
+i also think about um
+in terms of like the gaia hypothesis
+right like so if
+if the world is one giant organism and
+this is something that we talked about
+with mike levin when he came to the live
+stream so if the world is one giant
+organism
+is the niche constantly
+adapting to the species that are that
+are in it like is this a continuous
+adaptive active inference and just in in
+terms of transcending time scales you
+think about like these you know
+symbiosis i guess they're symbiosis but
+like relationships that develop between
+you know like
+orchids and their pollinators for
+example so i mean these are intense
+co-evolution things that happen over
+many many many times
+time scales and i mean we can think
+about the plant as a plant a cognizer i
+mean that's debatable
+i would say to a degree like i'm not i'm
+not not binary here like yes no is not
+not really a good answer
+but but is the the niche may be
+constantly adapting to
+systems to a degree
+i think that's a great point really
+really great point um i do think the
+niche is adapting to systems absolutely
+but i would say that the niche is
+adapting in a different way
+and we can we can use
+of course we're going to have to be
+specifics because this whole
+adaptation takes a policy in a sense uh
+adaptation in in terms of what the niche
+is doing if if the niche is not itself
+okay perhaps you want to i can be
+accused of being biased interested in
+one sense if the niche itself isn't a
+biological system
+uh
+then
+we can kind of
+perhaps push against this idea that it's
+adapting in the same way that a
+biological system would adapt to and
+this
+may be one way of phrasing this uh i'm
+not sure if this is going to
+hopefully make a bit clearer
+my my point is that
+biological systems one way of
+understanding them is that they have set
+points right moving set points
+throughout a particular trajectory this
+particular trajectory might be
+a trajectory across face space
+throughout their life so you have a
+moving set
+and this moving set
+is something uh that's organized uh
+around a particular type of phase-based
+organization uh and it's recapitulated
+within a particular type of phenotype
+uh defines the phenotype it
+characterizes a phenotype or a genetic
+model
+uh with a particular say a
+a field of dirt
+we might be able to
+actually walk across a field of dirt
+or a set of cement stairs
+the uh it might actually over time for
+what a few hundred years you have these
+interesting stairs at the castle of
+edinburgh that actually dip it and these
+dips in this in the cement are evidence
+that people have walked there before but
+we tend to walk where other people have
+walked and this
+perhaps one might call that an
+adaptation
+to a certain degree but i think that
+might be pushing the limit on the word
+adaptation given that that set of stairs
+does not have a set point it doesn't
+have uh it doesn't have the same type of
+uh it's not the same type i suppose of
+of of self-organized system it's not a
+self-organizing system in that sense
+uh
+and
+as such i would think that okay well
+uh maybe that maybe the niche does adapt
+to a certain degree
+uh but there's an adaptation with
+biological systems that are
+self-organizing and have organizational
+closure and i think this is quite this
+is quite important
+uh that is different than
+say um abiotic systems and this brings i
+suppose we i would love to talk about
+this
+in a bit is that it's a question that
+blue brought up in the last um
+in the last kind of uh
+live stream
+was
+the the manner in which we can actually
+understand
+uh
+systems or i identify
+particular types of individuals uh that
+are involving the environment so it's
+it's not actually saying that the
+environment is separate from the system
+otherwise we wouldn't actually be able
+to actually talk about the emergence of
+actually living systems we can get about
+we can get into that later though
+so i have to just push back on you um
+so think about the earth and the
+atmosphere of the earth okay now this is
+not necessarily a biological system this
+is nitrogen carbon dioxide water clouds
+etc right but here we are humans
+releasing tons and tons of carbon into
+the atmosphere
+totally changing the the the
+set point as you described it like the
+homeostatic set point or whatever the
+non-equilibrium steady-state density
+that the atmosphere of the earth
+currently resides in and has resided in
+for x million years right so but we are
+changing that and we are seeing the
+earth adapt to
+us and the changes that we're making in
+it just in terms of hurricanes storms i
+mean the weather patterns are completely
+and and they're destroying large amounts
+of humans right
+and drought famine all of the things
+that are going to
+cascade through climate change as we see
+it progress so is this not adaptive
+active inference on the part of the
+earth or or what do you think of that
+uh
+really interesting i think in order to
+make that particular type of assumption
+one would actually have to
+you know ascribe to something like a guy
+hypothesis
+like lovelock sky hypothesis or the same
+type of thing that then margulis was
+into later in her life
+um
+and i think that's that's that's an
+assumption that has to be made
+uh given the fact that okay well just
+because uh response happens chemically
+doesn't necessarily mean that it's not
+actually an adaptive response we
+you know uh gene expression is
+biochemical adaptation right so it's not
+about just being chemical
+uh using chemical or or something like
+this uh composition changing molecular
+structure as some type of uh criterion
+for adaptation but there's a i think
+there's an assumption that has to be
+made about what the system is there and
+if you're thinking about the earth as a
+system
+uh
+maybe the earth is adapting to its
+constituent parts
+right
+uh but that would involve that would
+involve
+uh intrinsically the earth being a
+particular type of living system given
+the fact that it has living parts
+one other quick thought on that is as a
+model comparison framework so go back to
+spm dcm all of our categorical model
+comparison techniques in the toolkit we
+can actually evaluate
+should we have cells as the units and
+then organisms then the each system in
+the world or should we use a different
+partitioning which one of these models
+is explaining predicting designing
+controlling better
+or which one is more parsimonious i
+prefer simplicity over utility or i have
+a function that balances simplicity and
+utility there's all kinds of frameworks
+that's kind of part of pluralism is
+starting with and being with
+that
+multiplicity of answers
+and then knowing who we are and what we
+use to decide on which models to use so
+stephen
+you know i'm very much like to keep that
+ecological niche
+in the picture
+so
+you know if it's organism in niche and
+groups of organisms in niche
+and then watershed
+a micro environment or micro climate
+as a niche
+i think that kind of becomes like a
+defining organism or
+unit in a way is like watch the
+watershed what's the kind of
+climate as experienced by that
+ecosystem
+and then of course you've got many
+ecosystems around
+the world
+from the arctic to the antarctic you
+know and it will be in between
+now they might all be
+collectively
+affecting the broader
+carbon dioxide levels of the broader
+ecosystem
+but when but how that then jumps to make
+the whole world an organism
+becomes for me slightly challenging
+right because it's it's always it was
+always a niche up to then and then
+suddenly it jumps to be an organism
+because we look at it from space and we
+see a nice round ball
+and it sort of looks alive so i wonder
+whether there's a so one one of the
+things i'm really interested in is
+is like you're saying how things get
+ascribed
+to
+the niche and we we talked about the
+path walking on the path and
+in a way like
+that dispersive
+thing animals can sort of also intuit
+some of that as well from the
+affordances and the directions
+and again bringing stuff in from
+systemic design type approaches is one
+thing that's interesting is if you then
+say humans like humans what we do is
+as a child and maybe some apes do this
+but not many is we point at something as
+a child
+and then we
+point to the parent and that's becomes
+it's in the niche but it becomes what
+they would call a boundary object in
+systemic design so you're trying to
+bring together a team around something
+which is beyond one discipline
+so what you need to do is you say okay
+we can't just use the
+variational free energy landscape of
+this
+domain ecosystem which we have all
+attuned to in our sort of own way
+because now people are running by
+different rules right we're running by
+the physicists and the biologists right
+they're just going to be so you get a
+boundary object which you point to so
+it's something in the niche
+and then you sort of work to that
+um so anyway i just think there's
+something quite interesting then about
+like daniel was saying there about
+you know what sort of language and do we
+use but
+this scale problem comes back every time
+but i i wondered um
+like the difference between
+a boundary object or something which can
+be defined which i'm not sure if other
+animals can really do
+in the same way maybe a dog when it
+urinates up a tree i was just thinking
+about that does that become a boundary
+object in the in their world i don't
+know but um
+yeah anyways something that comes to
+mind
+thanks steven and with the
+transdisciplinarity
+in cancer biology they've recognized the
+niche
+the tumor and the stem cell niche and
+the micro
+environment and there's so much more to
+say on these very interesting topics
+just in the last
+few minutes we can go to a few of these
+final um
+points in the dot one it's always
+awesome to have the author and unpack
+some of the ideas
+and so this is kind of our little
+fractal.2
+setting us up for our discussion next
+week and thinking about implications and
+how does it influence how we act moving
+forward and what kinds of questions
+we're looking at
+you wrote about some of the implications
+for thinking um
+about
+individuality from a cognitive
+perspective
+you say it broadly
+and
+it'd be awesome to hear your thoughts on
+uh
+the folks psychological notion of the
+cognizer
+and where does the fep come into play
+right
+um
+thanks for the question
+uh so the folk psychological notion of
+cognizer
+again
+um my argument is a piggybacks
+upon this idea of the
+psychological
+biological notion of the individual
+and once we kind of free ourselves from
+thinking about
+uh individuals specifically in terms of
+replication dynamics
+uh that opens up a space
+for us to think about
+uh
+cognizers
+that are discontinuous with uh
+replication or replicators
+and i think this is like that that's
+going to be very important
+uh again
+when taking the uh this particular route
+of thinking about the evolution of
+cognition
+uh when thinking about for example okay
+uh
+if cognition goes all the way down
+to a certain to a certain degree
+uh
+then what part does it actually play in
+the the construction of larger systems
+uh and why would why would the
+construction of larger systems actually
+be some type of adaptation
+what uh for each of the systems involved
+so
+when we're thinking about for example i
+think one particular thing that is quite
+important will be quite important to
+think about this for is
+okay the manner in which we
+think about artificial intelligence for
+example
+um
+one way of course two ways of course of
+doing this
+uh is you know we go for various kind of
+specific tasks
+whether it's going to be kind of
+computer vision or
+uh gpt3 type tasks where we can actually
+analyze large corpus of text
+and kind of recapitulate that
+uh that's one thing the other thing of
+course is the task general or
+kind of domain general
+notion of ai
+and i think in order to perhaps
+tread into the department or turn into
+that field of more kind of
+task generality we're going to have to
+think about even simpler questions as to
+how can a system actually start
+maintaining itself
+uh according to its own tasks and again
+we come back to this notion of how can
+we actually
+uh set a system up
+you know to have its own intrinsic
+motivation
+uh
+and one way to do this is perhaps to
+piggyback on living systems so you
+introduce a living system to an
+artificial system
+uh
+and have to have them communicate in
+such a way
+uh that's
+you know analogous to some type of
+symbiotic system this is something again
+perhaps that mike levin michael levin
+has been thinking about doing actually
+in his lab
+uh and uh
+and i think this this is quite an
+interesting kind of method to think
+about the importance of
+uh of symbiosis in developing
+artificially intelligent systems you
+know um a system that can identify go go
+to go to a room an embodied intelligent
+agent that can like you know
+traverse a room and identify all the
+dogs that's great with it with an
+accuracy a high accuracy level that's
+fantastic but if
+if they can't respond to the dog knowing
+that a dog is going to actually you know
+dismantle it i'm not sure if i would
+want to call how intelligent that system
+would even be in terms of having basic
+intelligence
+and i think that fep and active
+influence allows allows a particular
+type of
+perspective on the notion of basic
+intelligence or intelligence that's
+surrounded or
+uh
+yes that's that's
+grounded in the notion of kind of uh a
+nest a nest density
+or grounded in the notion of a type of
+a moving set point that's equivalent to
+a homeostatic
+moving homeostasis moving from static
+states and autostasis
+uh supporting states
+thank you matt shannon
+thanks for that i wonder um
+how important
+sort of drawing on what flu said and
+dave and steven i think also earlier
+how important
+some sort of effective or emotional
+state or awareness is
+in knowing and cognizing and um
+like how important that is for for a
+symbiotic relationship to be called a
+cognizer
+and whether you know like the neural
+network that is working with the human
+maybe to compose a piece of music um
+how important it is for that neural
+network to have
+cognizing capabilities of its own or
+maybe some sort of effective
+awareness or some sort of effective
+processing
+that it is able to develop in some way
+on its own or maybe only in symbiosis
+with a person
+um
+and i don't know if if this bobtail
+squid and the vibrio like do they have
+sort of effective awareness together or
+does this would seem to you know
+experience something like
+pain i suppose would be one of the most
+basic effective states we might have
+so how important would basically is
+effective processing in
+fi delineating individuals or cognizers
+a great question shannon
+um
+i'll take a go at it um i do think that
+uh
+at a certain level of complexity
+affective uh affective states play a
+huge role
+but i'm but because i'm i'm
+i suppose i'm making an assumption that
+cognition goes all the way down
+and not every system is going to be an
+affect have that capacity to have some
+type of effect actual awareness
+one might actually think about some
+other type of uh the sub-component
+that
+plays a similar role as affect and
+perhaps that just might be something
+like um
+you know
+something that grounds
+uh
+that grounds a particular type of
+motivation to stay uh to stay in
+homostatic states or to remain in
+particular homeostatic states
+and this can be um
+oh pamela lyon has written about this
+just recently actually um
+and
+it's not affect necessarily but it's
+valence negative and positive valence
+that might not and it has less to do
+with awareness
+or sentience in that sense uh but more
+to do with actually
+uh
+a a particular type of organism
+or particular type of system responding
+in ways uh that
+again
+are responding in ways that keep it
+centered
+and whether or not this whether or not
+that kind of valids
+a bacteria might climb a gradient of
+glucose for example
+but bacterium might not have any type of
+uh you know experience of that glucose
+gradient
+but somehow we might say that that
+bacterium is actually it's it's
+positively valenced it's
+something that it's attracted to
+right uh and maybe in maybe in simpler
+systems you have something more like the
+notion of valence rather than affect but
+a certain period of uh you know
+complexity after a certain perhaps a
+degree of complexity arises
+uh
+affect is very important and i think
+particularly when it comes into
+multicellular systems
+that
+perhaps uh
+that have to actually
+compute
+larger like
+much more information has to compete
+much more information and has to
+interact in their environments their
+environmental niches are much more uh
+using a term by chem sterling much more
+con opaque
+so uh
+effective information effective the
+matter in which we can use affect and
+how that effect how that affects
+uh cognition
+i think it becomes quite important
+important but i'm not exactly sure
+what what the
+number one is probably not a line
+uh it probably develops
+but just what that function is is a
+different story i don't know do you have
+any ideas about that
+i
+don't have an idea about where that
+would start but i feel like it would
+fall off so we might have the small
+scale like our bobtail squid and vibrio
+who might have something like valence
+that they're responding to and then as
+we get slightly larger organisms you
+know dogs people
+then affect will play
+a lot more of a role but then as we
+have bigger systems like multiple humans
+what is the effective like
+state of a crowd of people like we can
+ascribe like they look angry or they
+sound angry but they as a crowd are they
+feeling
+something as a crowd kind of like group
+intentionality is there a group
+effective state it might kind of start
+falling off again so you might have this
+sort of u-shaped curve of where
+valence matters and then somewhere here
+in the sweet spot
+effective states or emotions really
+matter
+that's a that's super
+definitely something to absolutely
+something i want to think about
+oh and also reminiscent of the
+discussion of affect as well as higher
+order parameters in deep parametric
+active inference where we even talked
+about which states were opaque or not
+whereas opaque usually meaning like you
+can't see it you can't see in but
+actually the opaque mental states are
+the ones that we do experience so that
+was in the sandved smith paper and
+whether
+other systems feel things what is it
+like to be a squid what is it like to be
+a symbiosis that's the phenomenology and
+the metaphysics but
+what is it like for us to model that
+system as if there's a higher level
+control parameter
+we can know what that's like it's a lot
+like this conversation
+so just
+everybody can provide a last
+comment on this awesome discussion i
+think the takeaway for me
+is that in a um
+post-darwin biology
+it's easy to use the simplified trifecta
+of evolution by natural selection
+phenotypic variability heritability of
+the phenotype fitness correlation and
+variation in fitness and then
+project that onto all the kinds of
+individuality cognitive rights and
+responsibilities the economic unit the
+sentient unit all of those as just
+simply under the coattails of the
+darwinian replicator and i think
+pluralism
+and a bevy of other perspectives
+suggests that that's just not the case
+blue and then anyone else with a last
+comment
+i just wanted to say thanks um for
+coming i really enjoyed this discussion
+and i just started reading your paper
+your 2021 paper with pizzullo uh the
+modeling ourselves um and i hope you'd
+consider coming back to talk about it
+with us
+thanks so much
+it's been a really incredible
+conversation discussion so
+thank you all for inviting me
+um shannon or stephen or dave any last
+comments
+awesome well
+all participants thank you so much
+and matt especially for writing the
+paper and coming to talk about it and
+seeing the dot zero before so
+peace out everybody see you next week
+bye
+[Music]

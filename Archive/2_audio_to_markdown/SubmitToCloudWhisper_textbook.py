@@ -1,1 +1,0 @@
-# SubmitToCloudWhisper_textbook.py is superceded by SubmitToCloudWhisper.py

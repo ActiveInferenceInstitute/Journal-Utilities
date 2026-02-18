@@ -1,0 +1,820 @@
+---
+title: "ActInf GuestStream 066.1 ~ Adrian Bejan, "The Physics of Life: How to Predict Evolution""
+category: "GuestStream"
+series: "GuestStream_066"
+episode: "1"
+speakers:
+  - "Adrian Bejan"
+duration: "1:30:12"
+url: "https://www.youtube.com/watch?v=rF3zyjv2Drw"
+views: 431
+exported_at: "2026-02-18T22:37:37.930374+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 066.1 ~ Adrian Bejan, "The Physics of Life: How to Predict Evolution"
+
+Hello and welcome everyone. This is Active Inference Guest Stream number 66.1 on December
+6th, 2023. Today we are very excited and honored to have a presentation and discussion with Adrian
+Bajon. First in this session, Susan Hastie is going to provide some slides and context.
+Adrian will provide a talk and we'll have a discussion on through the hour and then Susan
+and I will stay on the live stream. So if you have any comments or questions, please feel
+free to write them. So thank you both for joining and Susan to you.
+Thank you, Daniel. And I'm so excited and thank you so much for affording this opportunity,
+Dr. Bajon. I thought that we would actually begin. I wanted to introduce you and as I was
+thinking about it, I could spend probably the entire time just going over all the citations
+and awards that you've received. So I thought though that what I really wanted to share was,
+something that is not necessarily in the public domain. I wanted to really dig into the significance
+of the ConstructoLaw and the difference it's made not only for, I think the world, which most people
+don't appreciate, I think, and also the significance it's made for me.
+It's definitely changing paradigms across the globe. This, of course, is Adrian's many publications
+and his many citations. I think there's 90,000 citations of his work alone to date.
+But what I'd like for the audience to really take away is really thinking about life in a new paradigm
+and how the ConstructoLaw can inform us of how I think about a difference in not only just what is life,
+but also what is power and what is evolution and change. And I'll give you a good example of
+where we will talk about a flow paradigm or flow architecture. And in thinking about architecture,
+one idea that still permeates society and I think holds back progress is how we think about
+hierarchy. And Adrian's books has definitely informed me to think very differently. You know, we still
+think about hierarchy like we built them in pyramids 4,500 years ago, you know, where we housed dead people.
+And so this actually has the potential to change that and to really think differently.
+And one thing that a lot of people don't realize is, is that scientists from around the globe have been
+coming together for over 14 years annually and presenting their findings and how they've taken this
+and spread it into every domain imaginable. This was actually a doctor, Dr. Lucia, who's I believe he's in Italy.
+He shared with me just last night in talking about it and how he's actually taken the ConstructoLaw and
+made innovations in research in cancer. And I thought his quote was just so powerful in terms of how we think
+differently about reality by really understanding and going very deep and contemplating how the ConstructoLaw
+is, is so significant. This actually, what I think is, is what is, what I've discovered and uncovered
+is, is that it's actually spread far beyond the halls of academia. And I'm going to make a bold prediction
+because we're going to be talking about predictions. And I'm going to predict that Dr. Bajan
+Bajan will be awarded the Nobel Prize because, because it's not just the citations that of his work, but when we look at
+and you go deep, you're going to find that this, the people are using the ConstructoLaw. For example,
+yeah, this, this one academic paper has already had
+many, many citations in and of itself. You know, it's being talked about in terms of religion and in terms of
+indigenous societies. It's impacted architectures in how airports and how structures are being made.
+And for me personally, I'm not coming out of academia, but, but reading it and understanding the ConstructoLaw
+really has given me an incredible awe and appreciation for science. It's actually given me a new appreciation
+for life. And, and so here's just a few of the ways that, that ChatGTP just put together. Here is how it's
+already spawned new ways of thinking about every area of, of, of application and innovation. And, and so
+what we're going to be talking about today is really focused on Adrian's books that are accessible to
+people like me. I mean, I would not have been able to dig into the, the many, many publications
+and receive the, the, the depth of understanding of it without reading these books. And I actually call them
+the, the essence of strategic thinking because when we think about prediction, we are thinking about how
+we're strategically going to move forward. So today we're going to focus on the physics of life. And Adrian has
+agreed to, to give us another chance. So we may not be able to cover all the many questions that have
+come through our forum, but we will be digging into them after, after he, after we'll dig into some of them
+that come in on the chat today. And, and then we will also be exploring them in a future, in future sessions.
+So, so with that, I'll turn it over to you, Adrian. And, and I look forward to this and I hope the
+audience really enjoys this and, and is inspired as I've been.
+See.
+Okay.
+Yeah. Thank you, Susan and Daniel for the invitation to, to speak to your audience.
+Thank you,
+of course, I'm very grateful and humbled by the introduction. The, I saw that in order to, to get
+the discussion going, it would help if I show you a few concepts of black on white. And the slides I,
+I happen to have at my disposal are from a very brief lecture I gave at the 13th Constructors Law
+conference in Turin, Italy, just two months ago. It was a lecture about vascular flow structures. But the, the,
+the meat of the presentation is about how to predict the design evolution.
+And vascular is in fact, a good title for the subject that interests your audience, namely how the, the brain works.
+The brain is eminently a vascular architecture. It is the predictable from the Constructors Law
+in, in many ways, in many respects. So, okay. And so I, I start my presentation, first of all, with the definition
+of the meaning, the meaning of the words. I am, I'm a professor, meaning I teach students to,
+how to think and how to question themselves and how to display humility, humility when hearing ideas.
+And so the meaning of the word vascular from Latin is something that looks like
+vessels conveying blood or lymph. This is a design, an architecture that's, that speaks of flow,
+flow, flow, which means movement, and hierarchy, which as you'll see very soon, is one kind of drawing.
+And now, the word design should not scare anybody in, who's in love with science. Design is
+poo-pooed in physics. It shouldn't be because it really means the drawing, drawing. It came into English
+from French, from French, the French, from the Italian, the design. It really means a sign, an image that conveys a message.
+And here I have, I just juxtaposed the
+two versions of the same drawing, a river delta and the human lung, to drive the point that
+the drawing unites the animate with the inanimate. And when the drawing does that, it means that
+the phenomenon that the drawing represents belongs to nature, not to a particular compartment in science
+or a particular department on the university campus. The drawing unites. And that is,
+the drawing unites. And that is, if there is one single message from my introduction here, it is that.
+Another thing about what I'm showing you is that natural things are physical.
+Physical. They're observable, visible, palpable, measurable, and movable. They are common sense.
+They are not jargon. I speak of drawings, of architecture, of images. Natural things have
+configuration, shape, structure, rhythm. They have flow. And their mother is the fact that they have freedom
+to change. That means they have freedom to evolve. And about the, let's call it, the freedom to evolve
+comes from the fact that these things are moving. They are moving because they are set in motion by
+flow architectures that function as engines. Most of these engines are natural. Only a few of them are
+human-made. In any case, every single such engine is driven by one kind of energy source. You can think
+about the sun driving the movement of the atmosphere. The atmosphere is a globe-sized engine. The engine
+produces power and the power drives movement. And while the movement is the source of another phenomenon,
+which is called dissipation or friction, because the mover has to get the environment out of the way.
+The environment, the niche does not get out of the way unless it is pushed. And in the rectangular box,
+I show the engine driven by an energy source, the work or power produced by the engine, and then the fact
+that in the green brakes or interfaces between mover and environment are dissipating the power.
+So if you sum up these white, fat arrows, the energy input from the energy source is dumped 100% into the environment.
+But in the meantime, inside the box, because of flow architecture, something was moved from one spot,
+one place to another. That phenomenon is called locomotion. It could be animal, it could be vehicular,
+it could be, well, oceanic current, and all the other things we know about. So the bottom line is that
+nature is movement with flow architecture that unites, really unites the geophysical with the biological,
+with the social organization, which is emotion. These are images that change over time. They are not
+still art. You can think of them as movies, many, many movies running at the same time, at the same time,
+but every single one having the same plot. The plot is that the movie has direction, meaning the changes
+have a directionality to them. And I recognize this published at first in 1996 several times,
+then. It's called the Construct the Law of Evolution in Nature, or meaning the announcement that, hey, listen,
+it's the design in nature, stupid, has been overlooked everywhere, physics, thermodynamics,
+but not in engineering, which is my background. So I wrote that for a flow system to persist in time,
+and that's the definition of the life state. It must evolve with freedom such that it provides greater access.
+I illustrate that with three drawings from the evolution of a river basin on the floor of a laboratory.
+From time to time, the architecture flows more and more easily because of erosion.
+The construction of a river basin is a tree. The Construct the Law announces, probably screaming from the rooftops,
+that there is a direction of nature that points toward the future. And that if you know this statement,
+the future is a way to go. And if you run it through the wheels of your mind, you have the ability to anticipate the so-called future.
+To continue, again, because I teach the importance of knowing the meaning of the words and the importance of using common sense terminology,
+here is what we mean by evolution. It is a sequence of changes in flow configuration in time.
+Freedom. Freedom is not some intangible. It is actual physical features that allow a system to change.
+And freedom can be measured. In design, freedom is measured in terms of the number of degrees of freedom,
+the number of ways in which you can change something. Freedom can also be measured in terms of the
+effect of increasing the number of degrees of freedom, the effect of increasing this number of degrees of freedom has on the performance,
+on the ability of the mover to move more easily. You can think of it as, okay,
+straightjacketing the flow of a river. Well, that river will flow
+less fast, meaning slower, and not as far as a river that's not straightjacketed. In fact, the river that's straightjacketed
+has a personality of its own to revolt and remove the obstacles out of the way. The fallen tree log,
+the levees at New Orleans, the history of earth is that. It is about removing obstacles in order to secure greater freedom for what moves.
+And this evolutionary design, as I just illustrated, facilitates access. Access to flow in areas, volume, volumes, and that, of course, includes society.
+Access, I checked the dictionary, although I shouldn't have to because I come from a Latin-based language. It means the action of coming toward or near something. It comes from accessus
+accedere in Latin. It is a word available in English. This movement naturally, by itself, untouched, tends toward an architecture that's multi-scale.
+It's called hierarchy or arborescent, if you will. It is a drawing that distinguishes itself through a few large channels,
+cohabitating with many small channels. In fact, they're moving the same stuff and they're moving it in harmony.
+The few are not exploiting the many. The many are not revolting against the few. They're all flowing together in order to facilitate flow over the entire available space.
+And this configuration springs out of nowhere. It is nature itself. My beginning in this line of thinking was in, actually, it was before 1996.
+The problem that got my publishing going is here in the left-hand corner. It was the question of how to shape a rectangular space that generates heat,
+how to shape it so that the generated heat current exits with the greatest ease. That means it is rejected by a rectangle that is the least hot, meaning with the smallest
+temperature difference between itself and the ambient. In other words, I gave myself one degree of freedom, which is the shape of the rectangle,
+a shape that varied from square to shallow rectangle. The answer to my question was the rectangle in the middle, which is not too shallow, not too square.
+But that was the click, because from freedom to change something, I discovered one drawing. Before this exercise, when I posed the problem of how to shape it,
+I was not knowing the answer, I did not have a drawing. And you see, in predicting evolution, the thinking begins with a blank page. It is the most honest kind of beginning,
+meaning the least biased way in which to start posing questions. That beginning has a chapter with a blank page called, the chapter is called,
+I don't know, I don't know. But I discovered this, and the rest is history. And in the year 2000, I wrote the first full length book about the multitude of examples of this type,
+is this is the ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+In science, quite often, the first question is overlooked.
+The first question should be, what is the phenomenon?
+Meaning, what are we talking about?
+In the case of design in nature, the phenomenon is,
+meaning the elephant in the room, is the evolution of flow configuration.
+It could be the room, it could be the field, or the ocean.
+In other words, ocean. In other words, nature itself.
+So, that phenomenon is a change with direction, also known as the passing of time.
+Now, getting closer to the subject of interest, these hierarchical architectures
+are, can be simple or complex. Here, I have two drawings of the same kind of flow.
+It is a flow that connects one point with many, many points on a circle.
+If I, in the first disk design on the left, the maker of the design had a very large number of
+degrees of freedom. They are called L and Phi and Gamma and Beta and X.
+Look, and that took three years to do in the course of a doctoral thesis.
+It's called the perfect design.
+And then, on the right, one example that was done a lot faster by recognizing very few
+degrees of freedom called capital L. And on the next slide, the performance of these two designs,
+the perfect, shown as black dot and the cheaper one with white squares,
+that performance plotted with this lower case f, which is a number proportional to the flow resistance
+between the center and the perimeter. And on the abscissa, the capital N is the number of points on the
+perimeter, which means that migrating to the right, the design is more complex.
+You see here that the two drawings are, in fact, they may look different,
+different, even though they are both point to circle trees, but their performance is quite similar.
+In other words, a simpler and cheaper design will do, you see. In other words, the maker of the design
+does not waste time. The maker of the design is wiser than the one that polishes a,
+what was this, sorry, that gilds the lily, you see. And that leads to another way to organize the
+presentation, which is that if you polish something ad infinitum, you are not creating nothing.
+So perfection is the enemy of evolution. This is a dictum from Voltaire originally. It happens to be true
+true from the point of view of the construct the law. In fact, I discovered it, but I also discovered
+the first discoverer, in this case Voltaire, because I'm a fan of the history of good ideas. And here's how
+the enemy of evolution, if you know it, benefits us. The movement of people on the surface of the earth is
+hierarchical. We don't move around tracing the grid on the surface of the city. We congregate, we gather,
+and we gather together, we collect ourselves to one point of attraction. Use your imagination, you know, public square.
+And then at the end of the event, we migrate outward to the area as a circular river delta.
+And in so doing, we organize our society hierarchically. Here's an even better example of how it is going,
+because you see in the previous drawing, which is as simple as possible, this city block does not show
+the smallest alleys and the cul-de-sacs and the lawns across which people walk. But here, in the drawing of
+the Atlanta airport, we see the walking, this is on the left side, vertically along the concourses.
+The vehicle, there's only one train shown as a black line. By the way, once again, the slow and the fast
+are carrying the same flow, meaning the same crowd of people. Access is provided from any gate to any
+other gate. And the figure of merit, or the performance of the whole, I'm talking about the whole flow system,
+which is rectangular, can be measured in several ways. One of them is the average travel time between
+one gate and all the other gates. So keep that in mind, travel time averaged over the area, that's the
+measure of performance. The movement is with two speeds, fast along the train, slower, perpendicular to the train.
+Any one of us is this capital letter Q. And the territory has a fixed size because area costs money,
+of the way, but a variable shape, a variable ratio of h divided by l. It is possible to show
+almost on the back of an envelope, how the average travel time depends on the shape. Time is on the
+ordinate, the shape is on the abscissa. And you see here a bucket-shaped curve, which is a minimum,
+shown as an empty circle. The shape at that location is called h divided by l optimum. And the time is
+minimum in that particular design. The discovery, meaning to put physics at the disposal of Voltaire,
+is that a little bit of imperfection, meaning travel time that's just slightly longer than the
+smallest imaginable, gives the designer a significant bandwidth of freedom, freedom to choose
+a shape that's comparable with the mathematically best shape, but not exactly the same. In fact, the
+person who is empowered, sorry, endowed with this kind of secret, will not spend time on finessing
+this particular sculpture to the point of identifying the absolute best. So imperfection, imperfection,
+where the freedom, the freedom of choosing and then moving on is the mother of diversity in nature.
+Diversity happens from this freedom, freedom not to fall in love with the absolute best.
+And there are people in several domains, including biology, who would talk about nature makes mistakes. No,
+nature doesn't make mistakes. Nature simply doesn't have time to focus on finessing itself. What works is kept.
+That is the slogan that I think comes closer to how nature works. One aspect of movement, geophysical, biological, and also
+human is the so-called logistics S-curve. Anything that spreads freely on an area or in a volume,
+it spreads not only in space. You can imagine the milk spilled on the kitchen floor. It spreads in time.
+And the invaded territory, which in these rising curves is indicated in the vertical direction,
+the invaded territory grows in S-curve fashion. It grows slow, fast, slow. And the reason for that, by the way,
+here are a few more examples that are relevant to what I'm going to show you next. These are actual measurements.
+Every single curve is the S-curve. On the left is the power production in the United States as an S-curve.
+That is up to 10 years ago. On the right are the total miles driven in the US per year. And at the very bottom are the movers themselves,
+meaning the world population. That is also an S-curve, which is already hitting the ceiling.
+The ceiling. I remember when I was an undergraduate in 1970, the rage was about the fact that there's a population explosion
+and the end of oil and lots of other things of this kind.
+And, well, as I said at the beginning, humility plays a role in science. It's much, much more useful for the thinker to start with.
+I'm not so sure. I'm not so sure. Let me look into it. Even if I believed these things, it's very important that I am the first to question them.
+And the reason why the S-curve should be an S and it is predictable is this. Anything that spreads, again, the milk on the kitchen floor,
+initially it invades the territory as something that moves fast and far and narrow, like a finger.
+And once the finger hits the wall, in this case, the milk spreads laterally. I call these two phases of the occupation by using words from the military,
+invasion and then consolidation. It's always this way.
+And, well, but as you can see in the lower right hand corner, invasion invades the area at an accelerate, accelerating rate.
+And consolidation continues at a decelerating rate.
+And so these two arcs are spliced together, obviously, naturally, and together they make up the S-curve.
+So this is the prediction. Where does the hierarchy come in? The hierarchy is an add-on, meaning the next slide, which I don't have,
+which is that things that spread on a surface spread in arborescent fashion, not as a single needle as in this particular example.
+And the tree spreads the stuff even faster than what I illustrated here. In other words, something that spreads as a tree
+will have an S-curve will have an S that is taller during its viral intervezzo, you see.
+And so let's see, that's basically the, let's call it the preparatory material for showing us who we are.
+The movement, this is an image of human movement today. It is primarily, primarily due to aviation.
+Aviation, we all move on the globe from any point to any other point imaginable.
+Those who originate from, let's say, diametrically opposed points,
+necessarily will have to flow through the heart of this vascular architecture. The heart is where this
+architecture was born, which was Europe and North America. And that is where the architecture
+has grown the most, which is why it is in deep red right now. And so the movement is hierarchical.
+The physics of movement is that to move more, you must burn more fuel. So the burning of fuel on the globe
+must be hierarchical. Meaning I'm looking at this image and I read the movement. Another Adrian reads the
+burning of fuel. And as you'll see next, the burning of fuel is in fact proportional to the
+wealth available on the globe, as in have money will travel. And also on the next slide, I'll show you that
+increasing hand in hand with the wealth and fuel use and movement is freedom.
+And that's, this is the final slide. On the left hand side, these are the facts, these are data. People today like to pray
+to, in the church of data and data, well, here's data. These are the facts. Those dots show that every group on the
+energy on the globe falls on the diagonal between energy use and annual wealth, which means that what is
+annual use of energy in physics and engineering is just another language in which to tell the story of
+the hierarchical distribution of wealth on the globe. Meaning that economics and physics are two sides of the same
+coin. Meaning two ways in which to describe the same drawing. And the drawing is hierarchical.
+All these dots are racing upward along the diagonal. Because as everybody knows, every government reports annually
+its increase in GDP, in wealth. Well, the government doesn't brag about the increase in the burning of fuel,
+energy use of fuel. Which of course means that no country is going to cut down its consumption of fuel.
+And on the right hand side, in other words, the red arrow, the direction of the bicyclists and the peloton
+and to the fronts, is the future. On the right hand side, the same data with the annual energy use,
+on this time on the ordinate, and on the abscissa, the competitiveness with regard to economic freedom.
+The arrow that points toward the future is the same as on the left hand side. The dots are the same as on
+the left hand side. And they tell the story of a world that another peloton of bicyclists that are racing
+upward, even though most governments don't know it, that the evolution of the society of the globe is toward
+not only greater movement, easier movement, but also greater freedom. And that takes me to the slide that
+the moment that Susan showed you. The mother, if I were to say the mother of nature, is in this direction from
+freedom of change is possible, from change evolution is possible. And from evolution, the nature that we are
+and which surrounds us has become possible as well. Thank you.
+Thank you. Thank you. Susan, would you like to provide a first reflection or direction here?
+Susan, would you like to provide a second reflection of the world?
+Um, well, before it evaporates, you were shaking your head so much,
+Janet, I want to see what's allowed for you.
+I wrote down many things. I have many questions to ask. So, but please feel free to ask one first,
+and I'll prepare one. Okay. Okay. Um, what, what really stood out for me, um, and I'm, I'm slightly
+prejudiced because I've been going through the, the physics of life. So, you know, that's, uh, the,
+so many, so many, um, ideas were captured in that. But what really stands out for me, um, Adrian, is, um,
+is I'm seeing the system as object and structure as a verb.
+No, structure, structure is a noun. Um, structure is a, um, um, it comes from the same, uh, word as, uh,
+uh, uh, well, has the same origin as the word strewn, strewn meaning, uh, spread, spread,
+though in this case on a, on a page or on a canvas. Uh, uh, it's a drawing, it's a drawing with, uh,
+with a message streaming out of it. So structure is, um, is, uh, to structure is a verb, uh, clearly most,
+most of, uh, uh, this is now in the, um, uh, in the languages of, uh, the Indo-Europeans, uh, tend to have
+both, uh, they could be both noun and verb, uh, that, um, is, uh, is a feature of, uh, this group of languages.
+But I don't think it's, uh, limited to the Indo-European. The point is that, uh, um, yes, I, uh, applaud, uh, uh,
+everybody's interest in the meaning of the words because quite frankly, um, we are surrounded,
+we're actually drowning in jargon. Uh, jargon is a good term. It applies for, uh, it applies to, uh,
+locker room discussion, a language that's understood only by 20 people, all of them men, you see. Um,
+yes, it's just like, uh, like any, uh, uh, uh, department of physics. Oops, sorry. I didn't mean
+to put it that way, but, uh, you get the idea. Uh, the, uh, the object here, which is why I continue
+to praise, uh, Galileo Galilei and Da Vinci and these people, the object is to, to make these, uh,
+uh, these ideas or ahas are accessible to, uh, to everybody, to everybody. It doesn't mean to, uh, dilute
+them or to dumb them. Not at all. It means, it means, it means to display humility and to speak in a way,
+uh, not only to speak, but to make drawings that, uh, that open, um, the eyes of people. And I'm, uh,
+fortunate because as a professor, I have this, uh, uh, freedom to, in fact, I just, uh, lectured today,
+the freedom to make drawings, the freedom to, uh, to, uh, we asked to tell a joke, uh, every once in a
+while, um, uh, maybe a self-deprecating joke. The point is that the, uh, uh, the, the flow of science,
+the flow of science, uh, benefits from, um, from, um, first of all, modesty, but also
+the ability to, uh, ask questions and, uh, to question the idea, but to question the, the speaker,
+including yourself. So, so let me, let me do that now. Um, um, and, and help me understand where I'm
+confused because I guess I'm, when I say the structure is verb, I'm thinking about how we're
+talking about, um, configuration and reconfiguration and, um, and how the drawing actually turns into a movie
+that, uh, that, you know, that I can get, uh, you know, my head around, um, and, um, and specifically,
+you know, what, when I'm, where I'm grappling with this and it's opening doors is how to think about,
+you know, using the Constructor Law, the difference specifically between the tree structure,
+which to me is shape and, and the S-curve and that is time. So, when I'm thinking about reconfiguration,
+help me understand, you know, where, you know, when I'm thinking about movement and flow and the
+configuration of architecture, um, how, you know, how is that informing me? Well, where am I?
+Well, okay. A, um, a hierarchical drawing like the, uh, the river basin, uh, has, uh, uh, many, many shapes.
+The biggest is the shape of the page. Inside of it, there is the shape of, uh, the angle between two
+tributaries. Uh, the drawing is full of such angles. Those angles are all different. Well, by the, at the
+same time, they're all similar because they're all kind of close to 75 degrees or 50 degrees. Um, so you
+have shapes galore if you, if you, uh, if you, uh, if that is what interests you. Others, others are
+interested in lengths. Uh, well, there are many channels and the, the lengths are themselves hierarchical.
+Some are, uh, you know, uh, longer. Others are shorter. Um, the, um, the more of these, uh, let's call
+them, uh, shapes and lengths, uh, the more complex the drawing is. And complex, you have to be very careful
+with this word is one that, uh, uh, that, uh, uh, that, uh, uh, places the discussion closer to the locker
+room, meaning the, the jargon, because it hides, hides these, uh, elements that I was, uh, uh, um, enumerating.
+Uh, complex, the word itself means, uh, means twisted together. And, um, well, that's, if I use that word,
+I, I declare defeat, not victory, you see, if it's twisted together, uh, I don't even,
+I cannot even wish myself good luck because there is no luck. Um, in any case, I know what it means.
+And to me, a word like that, uh, uh, is an invitation to, to question, to question the word,
+to question the speaker, to ask myself, what is the drawing that's complex? If you ask,
+if you ask this question, you discover that the drawing is not that complex, because if, if you can,
+if you can make it, it, it is not, not twisted together. You see, it is twisted together, uh, meaning,
+uh, like one of these, uh, uh, uh, truly factual, uh, drawings when you cannot draw it, you see. Uh,
+so on and on, look, we can, uh, we can, uh, uh, uh, uh, slice the, uh, orange here in small slices,
+but we're wasting our time if we do that. The point is that, um, uh, to answer you, uh, the words that, uh,
+we use, uh, are very useful, but, uh, they also tend to, to, um, to, to separate us, to keep us apart,
+if we do not agree on their meaning. And that's why I interjected, then I added some, uh, imagery to
+the words that you're speaking. Okay. And, uh, by the way, uh, structure, uh, same origin as strewn.
+Well, that's where the S-curve, uh, phenomenon is, you know, the, the spreading is S-curve, uh,
+it's growth, also known as growth. Um, the collecting is, uh, also S-curve, uh, which is also growth,
+you know, during the, the, the reaping of a harvest, the, uh, the flow of the grain from the area to the
+silo, uh, is a stream that grows slow, fast, slow. Um, the direction of the flow is not the phenomenon.
+The history of the flow is the phenomenon, and it is called the S-curve, um, also known as the logistics,
+uh, S-curve, or the logistics curve. And, um, I can tell you the history of that if you're interested.
+The point is that, uh, logistics are from a military, military, um, um, what is the word?
+Um, yeah, they call it logistics. The, the flow of material, uh, food, uh, not just ammunition, but, uh,
+mobile hospitals and the infirmaries and, uh, all these things that are flowing and moving, uh, behind,
+behind the troops. Um, and, uh, there's a great quote from, uh, Napoleon, Napoleon Bonaparte. Uh, he said, uh,
+um, amateur, he was talking about generals. Amateurs talk, talk strategy. Professionals talk logistics,
+uh, logistics. And, uh, that was Napoleon. Uh, the quote is, uh, uh, even better known because of the
+English language as, uh, belonging to a general Omar Bradley, uh, who used it without crediting Napoleon.
+So, so, so, but in any case, these are two very important figures who knew, uh, which end is up.
+Think about it, uh, highly successful, uh, because you see it today in, uh, in the conflicts that are raging,
+it's not about what goes on, uh, meaning not only what goes on, on the, uh, on the front. It is about, uh, the, um,
+logistics where the, uh, the, the, the, the, the, the, the, the power of the society behind, behind the, uh, the, uh, the military activity.
+This is extremely important to, uh, to, to, to learn from every, uh, news item today.
+Well, thank you. I'll, I'll give a reflection and connect just a few areas of flow that I think really speak to some of the points.
+So the key reflection is nature is not broken by department. It's not broken or mistaken in any way.
+And that is radically different than many organizational structures, including in learning and education.
+And so that's a big question mark and a big open space. And then there was some pictures and some words and some symbols,
+but that's a starting place. That's perennial. Um, I thought of two kind of flows evoked in your description.
+The first was drawing with a ballpoint pen on the page and the ink as it diffuses through the paper and about how there's a trace.
+And then there's, you could imagine filling the channels of the paper and different properties of the paper.
+And just about how the act of drawing is and why the line fixes at a certain point.
+That's the S curve has flowed to its flow. It dries, solvent is gone. So,
+and so you can go into more detail, but just in that act. And then another one, perhaps more in a informational space is the jargon.
+And the jargon can be piercing, but it can be a grappling hook to go a hundred miles out and get really specific.
+I'm talking about theta sub delta of figure four of your 2012 paper, and that can go all the way down.
+And then there's that second phase of expansion. It's not just about throwing needles.
+It's about throwing the needle to the wall. That was your engineered setting. And then if it makes contact,
+then there's this secondary phase. That's the actual overture and the initial precision technical detail
+is a first contact, if even that. And again, that gives science education and praxis, I think, a real
+challenge and opportunity.
+I think you hit the nail on the head three times real hard. And it's the same nail, even though every
+time it issued a different screen. But that is in fact very accurate, very accurate. And it happens. Just a second.
+And it does happen the way that you professed. It does happen even after it hits the wall,
+in all your examples. Because happening is nature itself. Let's say the campus divided into departments that
+don't talk to each other is unnatural. It's unnatural.
+And so, you know, these barriers have been disregarded by clear thinkers.
+All the time, the ones who have made progress or contributions are the professors or researchers
+that had this innate ability to scale fences and jump over them or to get drunk and step off the curb
+and fall on the street. These are the people who made the history of science. They're called polymaths.
+Okay. And we have them. I know even here at Duke, I know the few who are this way. They are my friends.
+And we're too busy to start a revolution. But the future is the way you sketched it. It will be,
+it will continue to be one of the filling in the spaces or rediscovering or repeating what others have
+done in a sketchy fashion or maybe throwing a jargon word out there or perhaps as a joke,
+or even more effective as a non-PC joke. And then the people say, aha, aha. And then,
+and in the beginning, this act, this spark you described, makes roots and fills the space because
+because a good idea is like food for the hungry. It attracts, it attracts participants. It attracts
+students. It attracts disciples, followers, second generation teachers or artists. And I'll come back
+to your first example. When you, when you started speaking, I saw immediately the history of painting.
+The first thing that the Da Vinci and these people, Michelangelo did was to make a very fast pencil sketch.
+Something that only they recognize because it was already in their minds. And today with all this
+instrumentation, people are discovering as traces of graffiti on the canvas that had been covered much
+later with the various colors over and over again. Yes, that's the way, that's the way nature really works.
+And nature is also the brain itself. Let's face it. There's no other, there's no other architecture
+that works except the one that I've sketched crudely in my, in my exposition here.
+Yeah. Susan, do you want to give a kind of closing question or comment while we have Adrian?
+I'm going to begin with a blank slate.
+All right. I'm, I'm, I'm, I'm available a little longer if you, if you have a food for the hungry here.
+I'll ask a question from the live chat if, if, all right. Yeah. Upcycle club writes a question to
+Professor Bijan. What are the biggest unanswered questions or areas of exploration within
+constructal theory that you hope future researchers will investigate?
+Good question.
+Well, the, I've been kicking this ball for what, almost 40 years. Not, not in the direction of
+discovering the biggest that need to be discovered or to be explored, but out of curiosity. Today,
+as you saw in Susan's presentation, there's a world movement. It's populated primarily by,
+by, by younger people who are in fact, uh, competing with me. Uh, clearly, I'm, uh, I'm not at the start of my career,
+but they are beginning, uh, and in fact, they're quite, uh, uh, creative and, uh, productive. Um, the, um,
+um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um, um
+to say, listen, let me, what was that word?
+Let me prove it wrong, but there's this word from Karl Popper.
+Falsification.
+Yeah, let me falsify it.
+Okay.
+And so I'm looking for phenomena that first viewing seemed to contradict the Constructor Law.
+Yes, and because I have the talent of looking around and, yeah, I keep my eyes open.
+Yes, when there is a heavy downpour and the rain falls on dirt, obviously the river basin
+is born, but the river channels flow with cataracts.
+They develop a periodic sequence of little pools interspaced with mini waterfalls.
+Cataracts.
+Yes, the river is putting the brakes on itself.
+Yes, it's a contradiction of the Constructor Law.
+Right?
+So I questioned it and I published it.
+And I discovered in the course of proving the Constructor Law wrong, that the Constructor Law
+is right.
+So the water that flows in a periodic fashion flows faster than in the textbook of water flowing
+uniformly and steadily down an incline, along an inclined plane.
+And the reason why the interrupted flow is faster is there is nothing, nothing more perfect for the flow of water
+than to fall without friction, to fall over a dam.
+So the water and the erodible soil have in themselves this tendency called freedom, freedom to facilitate access.
+And I was, yes, I was excited to not to prove myself right.
+I was actually trying to find the limited applicability of this concept.
+And in this case, I did not find it.
+And I am continuing this sort of, I am the, okay, in the same room, I'm both, you know, prophet and a gadfly.
+I'm trying to prove, prove Adrian wrong.
+Okay.
+And it's exciting.
+But I'm an audience of one.
+I talked to my wife, and she knows where I'm coming from.
+And all of it is worth laughing, in fact.
+But if we don't laugh, we have no future, frankly.
+So, just to kind of wrap up, the, I think I read the paper you're talking about, but I remember something about the eddies.
+Oh, correct.
+And, you know, and that kind of brought me back to what, you know, what Daniel's question was about, as far as, you know, how we break free these silos.
+And, you know, how does, how does that, how does that form?
+And also, I think that also speaks to maybe the second session that we can hold, which is about the freedom.
+Because, you know, we really, that in and of itself, that's a topic that is just so rich.
+I'm happy to mention the eddies, because that was an earlier example of my questioning this principle.
+People all over, people all over, view turbulence, especially in the applied world.
+Turbulence is something bad, something that increases friction.
+Yes, yes, something that's not as good as the smooth flow called laminar flow.
+The one with the smooth streamlines.
+And this is what you see in the textbook.
+Yeah, turbulence, this complicated thing, you know, eddies, rubbing, and meh.
+Well, you know what, turbulent flow is constructed as well, because, because compared with the laminar, turbulent flow answers the question of what really flows.
+What flows is not the fluid, what flows is the movement across the fluid, meaning the movement from the fast to the slow.
+In other words, the mixing, the mixing is, you know, the mixing is known in physics as the transfer of momentum.
+That is what's facilitated by this sudden change in the drawing from smooth layers to things that appear to be complicated.
+By the way, they're not complicated.
+When I did predict the sizes of these eddies and their speeds and their hierarchy, they are hierarchical, the eddies.
+The eddies are basically these trees, the trees that I drew, like the trees of a river basin.
+But the river basin that becomes this turbulent pool is a tree, the channels of which are embedded in the same fluid, which is the pool.
+And every channel is unstable and becomes curved, becomes an eddy, and it rolls over.
+And the tree that I just sketched becomes a bouquet of broken branches that continue to roll, that continue to roll, filling the space.
+But you can see their birth in the little species that I gave.
+And in any case, there's a hierarchy of eddies in every so-called turbulent flow field.
+Now, the doctrine of turbulence research is not like what I just spoke.
+It is about a uniform distribution over the field, over the pool, of eddies of various sizes, as if there are these fruits of various sizes all thrown into a pot and mixed around with chocolate sauce.
+That's not what turbulence is. Turbulence is a broken tree structure, the branches of which keep rolling, embedded in each other.
+And that so-called mixture is the one that vehicles the movement of movement across the volume.
+Without it, there would be no, frankly, without turbulence, there would be no life on Earth.
+Everything would be stagnant, cool of, I don't know what, a layer of no life, and then another layer of no life, and a lot, you know, in other words, no mixing.
+By the way, so mixing, we know this from other stories of science and history. Mixing is in fact, the mother of not only life, you get species from events of encounter, you know, encounter or meeting.
+And new species from, for example, from interbreeding, and so on.
+And so without mixing, there is nothing on Earth. Nothing.
+So one final question, that speaks back to your slide on nothing moves unless it's pushed.
+Yeah.
+That's right.
+And so that's...
+It's a fun thing to explain that.
+Yeah.
+A peasant knows that the horse is needed.
+You don't need only a cart.
+And I come back to the news of the day.
+The logistics, the ability to move things, the ability to power things.
+This is, this is extreme, I would say is the most important because society itself is alive because of the power that it, the society produces.
+And that the power, by the way, something else that people don't realize, is spent as soon as it is produced.
+It is spent and destroyed, dissipated as soon as it is made.
+And that is called movement or life.
+Life means to destroy the power that is available to you.
+You don't have to look at today's advanced society.
+Look at any animal.
+Any animal, the movement of the animal is the physical movie of how the useful energy embodied in the food is being destroyed.
+No food, no animal movement.
+Simple as that.
+No food and no engine, which is the animal itself.
+That means death, not life.
+Death.
+And these are basic facts of physics.
+You don't need an education in whatever, anthropology or…
+Yeah, you could use an education in a veterinarian medicine.
+And that's where you get this much broader picture of who we are.
+Thank you, Adrian.
+We really appreciated it.
+Hope to talk to you another time.
+All right.
+Thank you.
+Thank you for the opportunity to get to know each other.
+Thank you.
+Yes.
+Thank you so much.
+Very insightful.
+Thank you.
+Well, Susan.
+I have many random remarks to share.
+Would you like to share anything?
+Yeah, go ahead.
+Go ahead.
+And then, of course, what's going on in the chat?
+Yeah.
+All right.
+I'll read a few.
+Traveling fast and slow.
+That reminded me of thinking fast and slow.
+And then in the airport, there was the fast backbone and the slow walking on the edges.
+But in terms of thinking fast and slow, actually, the fast part is on the edges of the biological organism with the reflexes and the reactivity.
+And the slower part is the backbone.
+So it's like kind of the same, but different.
+Another piece was he said that the first question is often overlooked.
+Like, what phenomena are we looking at?
+What's the system of interest?
+And then that made me think about like biomechanics, like an elbow moving.
+And so in the physics textbook or in an example, it's like, well, there's a weight on the end of a stiff rod and it's set up.
+But that's kind of the last mile question.
+The phenomena of the arm is a broader phenomena.
+And so you still may want to have that very reduced disciplinary model.
+It's small.
+It's useful.
+It can give insight and so on.
+It's just part of a bigger tapestry about that phenomena.
+And that's a different starting point for the conversation and the collaboration on that topic that's not disciplinary.
+So the entry point of the real system and the entry and returning point is by definition, the broader conversation than the kind of terminal scientific artifact, which, as we discussed, that's kind of the broader conversation.
+And so the broader and kind of softer, but more space enclosing.
+
+
+
+
+Yeah.
+But far as opposed to the broader and kind of softer, but more space enclosing.
+
+
+Yeah.
+When you think about phenomenon.
+Yeah.
+And actually, you know, that brings up.
+
+
+
+
+
+
+You know, when you think about phenomenon.
+
+I almost want to go to, you know, what is the context.
+But phenomenon is actually, you know, what is flowing?
+
+
+What, you know, what, you know, what.
+
+So when we kind of pull that in as far as the fast and the slow.
+
+And, you know, a lot of times.
+By.
+By.
+
+putting turbulence into a conversation, which if somebody is associating turbulence with conflict,
+then they might be actually distorting it, distorting the freedom of what can emerge.
+And so this comes back to the invasion acceleration that you spoke about, and then the consolidation is the deceleration.
+Yeah, a few points on that.
+First, I think a question I'd love to learn more about is trends are not monotonic.
+So just because things have been a certain way for the last 50 or 100 years,
+doesn't even mean the sign is going to be the same.
+So I'd be interested to see how that kind of change comes into play.
+But I'm thinking about a car's engine.
+There's parts where the laminar flow is the desirable trait for transfer.
+And then there's parts where mixing, like liquid and gas and thermal mixing, is more important.
+And they simply are not the functional, they play complementary functional roles.
+It's literally like fast and slow.
+And there's never a reason why, especially considered apart from a specific system,
+it basically can't be said which of those tendencies are, you know, even, you know, how to compare them,
+which is why even though we were looking at a two-dimensional shape with a rectangle,
+there was only one degree of freedom, which was the ratio.
+So that reflects, I think, having a simpler...
+We need to capture that.
+Yeah.
+Yeah.
+Capture that.
+Yeah.
+This actually...
+So if we were to translate this and bring in some active inference,
+what's kind of coming alive for me in this is the difference between exploration and exploitation.
+Yeah.
+Yeah.
+Like, he showed a parabola with a ball rolling to the bottom of the hill,
+and then there was kind of a zone of tolerance, like within 10% of the Y-axis.
+And so it was a pretty shallow bowl, wide bowl.
+So there was a lot of play that would keep it within a 10% tolerance on the Y.
+Now, to persistently optimize that, all the ball needs to know is the slope of which direction it should head it.
+Given that it's already knowing that it's within this zone of controllability, which is how all bodies are.
+Everyone has, you know, been part of an unbroken chain of blood sugar regulation.
+So the evolutionary and the developmental prior is that the physiological state is already in the zone of control.
+And then it's just a directional issue to head towards the bottom of the bowl.
+But you can't stop X change.
+You can't stop climate from changing.
+You can't stop physiology from changing.
+That's not to say you can't de-risk and think about real consequences of action.
+But just taking it at the most narrow technical sense of change through time and evolution, all things are changing.
+There's no point in trying to halt change.
+And it's a simpler actionable heuristic for the ball on the bottom of the bowl.
+Which way is the free energy flowing?
+Yeah.
+Path of least resistance.
+And, you know, this kind of comes back to the phenomenon of how do we predict.
+And, in fact, I would suggest, let me share my screen.
+Because for those people listening, I just...
+Go for it.
+Yeah.
+Do you see it?
+Mm-hmm.
+So, yeah.
+I mean, just putting that...
+You know, being able...
+I constantly go back to and reread this law.
+In fact, the reason I said earlier that I'm going back to a clean slate.
+Because it was like, you know, whenever I have the opportunity to speak with Adrian, he puts something out there.
+And I'm like, what I thought, you know, I was reading into it.
+It was kind of...
+Yeah, that's kind of going to that...
+The phenomenon of exploration.
+And, you know, seeing what's out there.
+You know, how are we perceiving the world, right?
+And then how do we switch to exploitation?
+And when I'm saying exploitation, I'm talking about how do we move from being in the world to how do we move to remaking the world or changing...
+You know, doing what he talked about originally is, is how do we construct the world around us for our niche construction?
+Actually, he does reference niche construction in the book.
+And so how do we do that so that we're using the least amount of necessary energy?
+Because I think that one question that I had, which I think would be a topic for a future conversation, is how do we know when we are violating the constructal law?
+Yeah.
+And this ties back to the belief updating.
+If I could, I'd like to connect a few of the words you have on this slide, the act-inf ontology.
+And that's kind of like, as we explore all the time, that's how we kind of begin that bidirectional conversation.
+So like, for a finite size system, that is a thing.
+System of interest, it's a thing.
+It's the blanket and the internal states of the particular partition, the particle, the thing itself.
+To persist in time, non-equilibrium, steady state, or a similar phrasing, talking about the path of least action, of the stationary state, or the attractor, or the trajectory, or the path of that thing.
+So we're talking about the same kind of system of interest.
+And then evolve with freedom.
+As we heard, these terms are plain.
+And so evolve being changed through time.
+Notably not taking on the kind of intergenerational connotation of evolution.
+Some people, like in biology, would say something like, well, evolution happens between generations and development, and ecology happens within a generation.
+But here, time evolution is being used more generally.
+Freedom was described in terms of degrees of freedom, statistics.
+Degrees of freedom.
+And we could also think about rule-based degrees of freedom as affordances, as the knobs that can be changed.
+Those are the degrees of freedom on that interface.
+And then to the last piece, the providing easier and greater access to what flows.
+Here, I think to the recent guest stream, 63.1, that discussed the philosophical status of material and information flows.
+And more than...
+The logistics.
+Yes.
+And then, of course, the joke, I guess, was like the logistic curve.
+But it's like logistic and logistics.
+And then, what status to accord to material flows and informational flows in integrated autopoetic mortal computational systems, where there's a weaving of like the blood flow of the brain and the ion flow and the nutrients.
+And there's an informational flow, semantic flow, that is not strictly described by the material architecture.
+Hmm.
+Now, to pull back...
+Okay, so put that in the frame of reference in terms of...
+One thing he said that was like blew my mind was...
+It's not the...
+What is flowing?
+When he was referencing what is flowing?
+And I'm...
+You know...
+And so, what you just said...
+Where I'm going with this...
+And, you know, if this...
+If...
+Tell me if...
+If this is...
+Where you're thinking is...
+Epistemic and pragmatic value.
+So, what is flowing?
+I mean, once we...
+
+We can calculate that...
+And he also gave a calculation for degrees of freedom...
+Nice.
+These are great directions.
+I'll just go to a different angle.
+I thought it was...
+I loved his recurrent connection with drawing and art.
+Yeah.
+And about the sketches that are being discovered behind paintings.
+That's like deeper blankets of the painting.
+Deeper levels of historical meaning.
+And cross-referencing like...
+Oh, this one is signed at an earlier date.
+And we have this letter.
+So, we know that they were speaking with this person.
+So, it's like deeper in space and time and causality.
+And then, even artists like Kandinsky would go through many iterations and many sketches on even non-representational or post-representational.
+However you want to think about the kind of art that's not like a landscape.
+But the painting was then synesthetic with the auditory.
+And so, that kind of brings together...
+Not to resolve, but for the beauty of the snapshot, the noun structure, and the dynamics to structure as a verb and as a process.
+And like the fact that you can't disentangle or drop one or the other, prioritize one or the other.
+They're literally snapshots of the movie.
+Yes.
+Yes.
+And to kind of tie that back to the path of least action and...
+And...
+And...
+But it reminds me of a saying...
+And correct me if...
+Correct me if...
+Correct me if I'm not getting this correct.
+But yeah, the difference between...
+The saying goes is the difference between an average artist and a...
+And a expert or a master artist is knowing when to paint the last paint stroke.
+Okay.
+That's cool.
+It reminds me of...
+I would have written a shorter letter if I had more time.
+Like there's these kind of...
+Are they intuitive or are they counterintuitive?
+Because it's knowing what not to do and when to do it.
+Yeah.
+Yes.
+Yes.
+And this...
+Yeah, this...
+Yes.
+Yeah, that's...
+That's a great...
+Way to...
+To wrap that up.
+Yeah.
+Because it comes back to...
+You know, the...
+The path of least resistance and...
+You know, and the...
+And the freedom.
+And so oftentimes the affordances...
+If people don't understand that...
+You know, they're actually pushing too hard or over designing.
+And...
+Yeah.
+How do we...
+How do we use the Constructural Law...
+And Active Inference...
+To...
+Yeah.
+To...
+To his point.
+I mean, it's like...
+Power is spent as soon as it's produced.
+I'll make a few more contact points with Active Inference.
+One question I have is like, where's the observer?
+We've explored a lot this year with Chris Fields' course in the quantum information sciences and so on about the role of the observer.
+So...
+Should we think of these flow processes as only or actually occurring on the material substrate?
+If so, where's the space for the observer or the polycomputing of Mike Levin?
+So that's one open question.
+And then I think another important touchpoint is like notions of hierarchy, which you return to.
+And there was like a very unconventional hierarchy represented with people's diffusion from city blocks.
+Like smaller and bigger parties getting...
+Going to and leaving at different times.
+And then the diffusion maps across the city.
+And so it's like, that's one representation.
+He kind of contrasted that flow hierarchy with like a pyramid type representation.
+Maybe you mentioned this.
+And then that made me think about two ways that we see the hierarchical models in Active Inference.
+One of them...
+That are different than both the pyramid and the city blocks.
+One of them is the spatial enclosure.
+Nested blankets.
+Nested models that are enclosing each other.
+Not just diffusing into the same city.
+And then another is the metacognitive.
+With the work of Sam Ed Smith et al.
+In Livestream 28.
+With the hierarchical model representing metacognitive layers.
+So between the pyramid, the city streets, the enclosure, and the mines, that one symbol bridges us already such that it puts the brunt of the question on what to do and how to do it.
+Yeah.
+Yeah.
+A lot of seminars to explore.
+That's exciting.
+So to wrap up and to capture, is there any other questions?
+Not that we have to answer them now.
+But if you can just kind of read off any other questions that might have shown up in the live chat.
+I'll capture those.
+And we can start kind of a repository of what showed up today.
+And that way we can use it to explore further.
+Yeah.
+We will continue the kind of series and the curating of questions.
+I'll just read one.
+Mills 8102 wrote, what are the factors or conditions that afford the restructuring of a flow system?
+Does it always require the imposition of sufficient demand on that system to change?
+Does it take a crisis?
+Great question.
+One question I have is where are perception and action?
+Do you have any last comments or thoughts?
+Just my head spinning.
+Wow.
+Well.
+Wow.
+Great.
+Thank you, Susan.
+And thank you.
+Thank you.
+Farewell.
+Yes.
+Till next time.
+Absolutely.
+Okay.
+Bye.
+Bye.

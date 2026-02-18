@@ -8,7 +8,7 @@ from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 from datetime import datetime
 
-from journal_utilities.importer import insert_missing_sessions_from_json
+from journal_utilities.data.importer import insert_missing_sessions_from_json
 
 
 class TestInsertMissingSessionsFromJson:

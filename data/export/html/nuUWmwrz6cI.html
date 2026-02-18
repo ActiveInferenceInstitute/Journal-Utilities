@@ -1,0 +1,6944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream 055.0 ~ "Realising Synthetic Active Inference Agents” Part I & Part II</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream 055.0 ~ "Realising Synthetic Active Inference Agents” Part I & Part II</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_055 &middot; Episode 0 &middot; Speakers: Part I & Part II &middot; Duration: 1:34:22 &middot; Views: 464</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=nuUWmwrz6cI">https://www.youtube.com/watch?v=nuUWmwrz6cI</a></div>
+<article>
+<p>All right, hello and welcome everyone.</p>
+<p>It is October 24th, 2023, and we're an ACT-INV livestream number 55.0 on realizing synthetic</p>
+<p>active inference agents.</p>
+<p>Okay, welcome to the Active Inference Institute.</p>
+<p>We're a participatory online institute that is communicating, learning, and practicing</p>
+<p>applied active inference.</p>
+<p>You can find us at some of the links on this page.</p>
+<p>This is a recorded and an archived livestream, so please provide feedback so we can improve</p>
+<p>our work.</p>
+<p>All backgrounds and perspectives are welcome, and we'll be following video etiquette for</p>
+<p>livestreams.</p>
+<p>Head over to activeinference.org if you want to learn more about participating in livestreams</p>
+<p>or other activities.</p>
+<p>All right, well, we're in livestream 55 series with a goal to learn and discuss these two</p>
+<p>very interesting papers on realizing synthetic active inference agents.</p>
+<p>Part 1 on epistemic objectives and graphical specification.</p>
+<p>Part 2 on the variational message updates.</p>
+<p>As with all videos, it's an introduction for some of the ideas, not a review or a final word.</p>
+<p>We're going to introduce ourselves, then jump into a fairly lengthy background section that</p>
+<p>will prepare us to ask the questions and get to a place where the paper's contributions can</p>
+<p>be figured out.</p>
+<p>So, let us begin with introducing ourselves and saying hi and saying maybe something that</p>
+<p>was exciting to us or made us want to participate in this series.</p>
+<p>So, I'm Daniel.</p>
+<p>I'm a researcher in California, and I was interested to go a little deeper on message passing.</p>
+<p>It's something that's brought up a lot in the textbook and implicitly in other papers,</p>
+<p>but this was an opportunity to tackle it head on.</p>
+<p>And I'll pass to Bert.</p>
+<p>Yeah, so I'm Bert.</p>
+<p>I study civil engineering in the Netherlands.</p>
+<p>And I struggle with the math of active inference.</p>
+<p>But recently, I picked up reinforcement learning.</p>
+<p>And together with this paper, I think it really helps.</p>
+<p>Jacob?</p>
+<p>Hi, I'm Jacob.</p>
+<p>I'm also a researcher in California.</p>
+<p>And I'm really excited about this paper from a number of different angles.</p>
+<p>I guess the graphical notation and the notation that the paper introduces, I think, can have</p>
+<p>really profound impact on the field from both a computational and a theoretical viewpoint.</p>
+<p>And I'm interested to learn more about the implications of the new notation for the research.</p>
+<p>Yeah, new notation just dropped.</p>
+<p>Okay.</p>
+<p>There's a pair of papers, as mentioned, and the information is here.</p>
+<p>So, each of us can phrase the big question that brought us to the paper.</p>
+<p>But I wrote it this way, which is, right there in the title, there's at least a triple play,</p>
+<p>a triple pun tondre.</p>
+<p>And there's a diad of papers.</p>
+<p>So, what is this realizing in the context of the title?</p>
+<p>Well, in one sense, we're realizing something in terms of implementing it or manifesting it.</p>
+<p>They're deploying something that is being realized.</p>
+<p>So, there's an accomplishment sense of realizing.</p>
+<p>Also, the work calls attention to our own realizing process, our relevance, realization,</p>
+<p>how we come to appreciate and interact with synthetic intelligence.</p>
+<p>Ours.</p>
+<p>And then, we're also talking about building agents that do some kind of realizing in themselves,</p>
+<p>like realizing agents in that sense.</p>
+<p>So, what kind of inning starts off with a triple play?</p>
+<p>I don't know.</p>
+<p>Bert or Jakob, what big questions brought you to the paper?</p>
+<p>What do you think the paper takes on?</p>
+<p>I think in terms of creating scalable active inference models that are reproducible across a variety of settings is quite exciting.</p>
+<p>So, maybe realizing in that sense across a number of different domains is part of the meaning here.</p>
+<p>And, of course, the triple play that we were exploring with our own work from going from just a simple graphical representation</p>
+<p>to a mathematical description of the generative model and the algorithm for message passing and updating the generative model through time</p>
+<p>to then a code implementation that can be deployed in various dynamic settings.</p>
+<p>That is also what I think is an important part of this paper.</p>
+<p>Oh, yeah.</p>
+<p>Oh, yeah.</p>
+<p>And for me, especially as not an expert on active inference, but someone who is more interested in applying it,</p>
+<p>their work on working towards a PyTorch of active inference is really valuable.</p>
+<p>And I think their way of deconstructing the mechanisms of expected and variational energy and to combine them into one function makes it,</p>
+<p>simplifies it a lot, I think.</p>
+<p>Cool.</p>
+<p>So, we're going to look deeper at the papers, of course, soon.</p>
+<p>But just a few of the aims of the paper.</p>
+<p>Part one, they construct a purely synthetic approach to the active inference framework,</p>
+<p>motivated from the point of view of engineering rather than neurobiology.</p>
+<p>And we're going to talk about what synthetic is.</p>
+<p>And in part two, they use a variety of technical phenomena, variational calculus, message passing,</p>
+<p>and reactive programming to simulate a perception action cycle on the T-MACE.</p>
+<p>Okay.</p>
+<p>One of you, would you like to read the first abstract, and then the other can read the other abstract.</p>
+<p>Whoever wants to go first.</p>
+<p>I can read the first one.</p>
+<p>So, the free energy principle, FEP, is a theoretical framework for describing how intelligent systems</p>
+<p>self-organize into coherent, stable structures by minimizing a free energy functional.</p>
+<p>Active inference is a corollary of the FEP that specifically details how systems that are able to plan for the future agents</p>
+<p>function by minimizing particular free energy functionals that incorporate information-seeking components.</p>
+<p>This paper is the first in a series of two where we derive a synthetic version of active inference on free-form factor graphs.</p>
+<p>The present paper focuses on deriving a local version of the free energy functionals used for active inference.</p>
+<p>This enables us to construct a version of active inference which applies to arbitrary graphical models and interfaces with prior work on message passing algorithms.</p>
+<p>The resulting messages are derived in our companion paper.</p>
+<p>We also identify a gap in the graphical notation used for factor graphs.</p>
+<p>While factor graphs are great at expressing a generative model, they have so far been unable to specify the full optimization problem, including constraints.</p>
+<p>To solve this problem, we develop constrained Forney-style factor graph, CFFG notation, which permits a fully graphical description of variational inference objectives.</p>
+<p>We then proceed to show how CFFGs can be used to reconstruct prior algorithms for active inference, as well as derive new ones.</p>
+<p>The latter is demonstrated by deriving an algorithm that permits direct policy inference for active inference agents, circumventing a long-standing scaling issue that has so far hindered the application of active inference in an industrial setting.</p>
+<p>We demonstrate our algorithm on the classic team-based task, ensure that it reproduces the information-seeking behavior that is a hallmark feature of active inference.</p>
+<p>Thank you.</p>
+<p>The latter is the final step of the final step.</p>
+<p>The final step is to embrace the basic approach to synthetic active inference agents.</p>
+<p>By message passing on free-form Forney-style factor graphs, FFGs, a companion paper part one introduces a constraint FFG notation that visually represents free energy objectives for active inference.</p>
+<p>The current paper derives message passing algorithms that minimize generalized free energy objectives on a constraint Forney-factor graph by variational calculus.</p>
+<p>A comparison between simulated BAT and generalized free energy agents illustrates synthetic</p>
+<p>active inference behavior on a team-based navigation task.</p>
+<p>With full message passing account of synthetic active inference agents, it becomes possible</p>
+<p>to derive and reuse message updates across models and move closer to industrial applications</p>
+<p>of synthetic active inference.</p>
+<p>Great, thank you.</p>
+<p>So here's the roadmap, section titles of the first paper.</p>
+<p>Here are the section headers of the second paper.</p>
+<p>So before we jump into the background and then the papers, let's just have one last train</p>
+<p>stop.</p>
+<p>What is synthetic?</p>
+<p>And what's synthetic about active inference?</p>
+<p>So as it being 2023, we went to the language model and we asked for some adjectives that</p>
+<p>are in the semantic neighborhood of synthetic.</p>
+<p>And you can see them here.</p>
+<p>Artificial, lab-created, synthetic, counterfeit, phony, deceptive, inauthentic, unnatural.</p>
+<p>A lot of these are somewhat negative associations semantically.</p>
+<p>So how does synthetic come to be meaning something negative or deceitful?</p>
+<p>And then in what ways is that a similar or a different sense of synthetic than referring</p>
+<p>to the unified compositionality of something that's blended?</p>
+<p>And similarly, we could talk about artificial, like artificial intelligence.</p>
+<p>Is that artifice, like crafted?</p>
+<p>Or is it artificial, like phony, bogus, false?</p>
+<p>So in the context of the paper, there's probably a bunch of different ways that we can draw out</p>
+<p>with the authors and a little bit here too.</p>
+<p>What is being synthesized?</p>
+<p>If you have any thoughts on this, but what else might be synthetic?</p>
+<p>It might refer to something that's not just a hypothetical, like a real synthesis, a realized synthesis.</p>
+<p>It might refer to information risk and synthetic intelligence.</p>
+<p>It might refer to synthetic judgments.</p>
+<p>Those whose predicates are wholly distinct from their subjects.</p>
+<p>And then recently at the Topos Institute, there was a great talk by Jonathan Sterling,</p>
+<p>synthetic domains in the 21st century.</p>
+<p>So there's a lot of very interesting differences and ways that synthetic is used.</p>
+<p>Do you of us have any preliminary thoughts on what's synthetic about these papers?</p>
+<p>I think, I guess, building on what you already said, part of the synthesis could be the</p>
+<p>decreasing the gap between the mathematical description of a model and its graphical representation</p>
+<p>and its subsequent code implementation.</p>
+<p>So the focus on graphical models on constrained phony cell factor graphs</p>
+<p>combines the aspects of generalized free energy or bethe free energy,</p>
+<p>which is motivated by a phony cell graph structure with the actual implementation of a synthetic agent</p>
+<p>or an artificial agent in code or in synthetic settings,</p>
+<p>which themselves are trying to model some part of reality.</p>
+<p>Okay.</p>
+<p>Cool.</p>
+<p>We'll explore.</p>
+<p>Okay.</p>
+<p>So to Bert for background part one, and thank you for all the work leading up to this dot zero, Bert.</p>
+<p>So take it away with the background.</p>
+<p>Just let me know when to switch slides.</p>
+<p>Yeah.</p>
+<p>All right.</p>
+<p>So for the background of part one, it will delve into what are base graphs,</p>
+<p>and how do you do inference over these graphs,</p>
+<p>and then the authors use, make extensive use of our content to optimize over the graph,</p>
+<p>the phony vector graph,</p>
+<p>and then some miscellaneous stuff that will be relevant to the play smaller parts in the paper.</p>
+<p>All right.</p>
+<p>Next slide.</p>
+<p>So first off base graphs, working up eventually to phony graphs,</p>
+<p>but starting with the simplest one, which is just a Bayesian network.</p>
+<p>And then the classical example is the earthquake network.</p>
+<p>So you can, so each circle is a random variable, and they represent a particular stake.</p>
+<p>So whether, for example, the alarm goes off, yes or no.</p>
+<p>And these variables can be continuous or discrete.</p>
+<p>And so the total generative model is the joint probability of all these random variables,</p>
+<p>and you can factorize them so they only relate to one or two or several others,</p>
+<p>at least a limited set of other variables.</p>
+<p>And then moving on from that is the hidden Markov model,</p>
+<p>where you add time.</p>
+<p>So you have multiple time steps.</p>
+<p>So in this case, X0, X1, X2.</p>
+<p>And this works under the Markov assumption,</p>
+<p>which is that all the relevant information of the past is in the current time step.</p>
+<p>So you only need to consider the current.</p>
+<p>And on top of that, you can only, you cannot observe hidden states directly.</p>
+<p>So you need an observation error.</p>
+<p>So that's the E.</p>
+<p>And then the next step, building on top of the hidden Markov model,</p>
+<p>is the partially observable Markov decision process,</p>
+<p>which is a lot of words.</p>
+<p>But really, it's the same where you have a hidden state,</p>
+<p>S, with an observable state,</p>
+<p>and you transition from states.</p>
+<p>But now you add an action.</p>
+<p>And the action acts the policy.</p>
+<p>And it acts on the B, the transition.</p>
+<p>So for an example would be,</p>
+<p>I expect S1 to have a certain value given my action.</p>
+<p>And this observation O2 should be in line with that.</p>
+<p>And the policy selected using the expected free energy.</p>
+<p>All right, next slide.</p>
+<p>And then how do you actually figure out the values of a base graph?</p>
+<p>And that requires inference.</p>
+<p>And there are multiple ways.</p>
+<p>So the first one is exact inference,</p>
+<p>which is what you would do if you calculated by pen and paper,</p>
+<p>which is really only practical for small discrete models,</p>
+<p>like the example model on the last slide.</p>
+<p>And if you want to go to bigger models, more complex models,</p>
+<p>you need approximate inference.</p>
+<p>And within that Monte Carlo sampling is a key pillar,</p>
+<p>and there are a bunch of algorithms that apply it, that use it.</p>
+<p>So the core idea is the same.</p>
+<p>But the core idea is the same.</p>
+<p>You sample many times from an idealist distribution</p>
+<p>to approximate another distribution of interest.</p>
+<p>Another method is method,</p>
+<p>which you may be familiar with,</p>
+<p>is variation of free energy,</p>
+<p>which active inference uses a lot.</p>
+<p>And then you indirectly minimize the difference</p>
+<p>between two distributions using the KL divergence.</p>
+<p>You try to minimize the KL divergence,</p>
+<p>but you cannot do that directly.</p>
+<p>So instead,</p>
+<p>you maximize the elbow.</p>
+<p>And this works with a family of distributions.</p>
+<p>And a family is,</p>
+<p>for example,</p>
+<p>Gaussian or exponentials,</p>
+<p>which you have to pick one.</p>
+<p>And embedded free energy works on this.</p>
+<p>It's also a free energy,</p>
+<p>but it has the assumption</p>
+<p>that only local interactions matter.</p>
+<p>So instead of going over the entire generative model,</p>
+<p>you only look at one factorized part at a time.</p>
+<p>And optimization,</p>
+<p>which is also used in the paper</p>
+<p>to find some parameters</p>
+<p>and is Newton's method.</p>
+<p>But you have a function</p>
+<p>and you want to know</p>
+<p>where this function goes through the x-axis.</p>
+<p>So you can take the slope</p>
+<p>and iteratively take more slopes</p>
+<p>until you get at approximately the point</p>
+<p>where it goes through the x-axis.</p>
+<p>Next slide.</p>
+<p>And then others use Lagrangian paper.</p>
+<p>And so to quickly introduce this,</p>
+<p>it is a method</p>
+<p>to describe an objective function with constraints.</p>
+<p>So in the first derivative of the Lagrangian,</p>
+<p>if you set it equal to zero,</p>
+<p>those are the optimal points.</p>
+<p>So that would be where the blue and red curve</p>
+<p>intersect in this picture.</p>
+<p>And the Lagrangian multiplier lambda</p>
+<p>is the rate of change</p>
+<p>the objective function would change</p>
+<p>if you relax the constraint.</p>
+<p>So in this example,</p>
+<p>it would be the same</p>
+<p>as changing to constant B</p>
+<p>of the red function.</p>
+<p>So concretely,</p>
+<p>if the lambda was positive here,</p>
+<p>then increasing B</p>
+<p>would result in objective function</p>
+<p>also increasing.</p>
+<p>So you have some leeway to work</p>
+<p>to improve the function even further.</p>
+<p>So you can optimize more.</p>
+<p>That's what it's saying.</p>
+<p>All right.</p>
+<p>Next slide.</p>
+<p>And as for miscellaneous stuff,</p>
+<p>so the term entropy is used a lot,</p>
+<p>especially in terms of epistemic foraging.</p>
+<p>But for now,</p>
+<p>it's just a measure</p>
+<p>of how uncertain a distribution is.</p>
+<p>And in general,</p>
+<p>sampling and uncertain distribution</p>
+<p>gives you more information</p>
+<p>than sampling a certain one.</p>
+<p>For example,</p>
+<p>if it rains every day,</p>
+<p>seeing rain again doesn't tell you much</p>
+<p>because it rains every day anyway.</p>
+<p>A direct delta function</p>
+<p>is a probability distribution</p>
+<p>that is one for a single point</p>
+<p>and zero elsewhere.</p>
+<p>And then a statistical moment.</p>
+<p>I will just read,</p>
+<p>in mathematics,</p>
+<p>the moments of a function</p>
+<p>are certain quantitative measures</p>
+<p>related to the shape</p>
+<p>of a function's graph.</p>
+<p>If a function is a probability distribution,</p>
+<p>then the first moment</p>
+<p>is the expected value,</p>
+<p>so the average,</p>
+<p>the second is the central moment</p>
+<p>of variance,</p>
+<p>the standard deviation.</p>
+<p>The third is the skewness</p>
+<p>and the fourth is the kurtosis.</p>
+<p>And finally,</p>
+<p>the coolback-Leibner control,</p>
+<p>which is a term from control theory,</p>
+<p>which basically attempts</p>
+<p>to make a system converge</p>
+<p>to a set prior</p>
+<p>and adjust it</p>
+<p>by minimizing the KEL divergence.</p>
+<p>Yes.</p>
+<p>Yes.</p>
+<p>Thank you.</p>
+<p>Great background.</p>
+<p>So that kind of speed runs</p>
+<p>Bayesian stats</p>
+<p>first layer.</p>
+<p>Now we're going to head</p>
+<p>into a second layer</p>
+<p>of background</p>
+<p>that's going to bring us</p>
+<p>into the Forney graph space.</p>
+<p>and after the second</p>
+<p>background part,</p>
+<p>we'll be in a position</p>
+<p>to understand</p>
+<p>two papers a little better.</p>
+<p>So,</p>
+<p>here's the big picture</p>
+<p>on background part two.</p>
+<p>Even with all of background</p>
+<p>part one</p>
+<p>in hand,</p>
+<p>there's also some more</p>
+<p>modern,</p>
+<p>important</p>
+<p>ACT-INF</p>
+<p>as well as</p>
+<p>non-ACT-INF</p>
+<p>related advances</p>
+<p>that are going to get us</p>
+<p>up to speed.</p>
+<p>So,</p>
+<p>for a lot of the concepts</p>
+<p>here,</p>
+<p>we're just overviewing</p>
+<p>it first</p>
+<p>and then we'll be</p>
+<p>talking more to the authors</p>
+<p>about them.</p>
+<p>And so,</p>
+<p>I'll take a more</p>
+<p>narrative overview</p>
+<p>of recent updates</p>
+<p>and then we'll steer</p>
+<p>towards the technical.</p>
+<p>So,</p>
+<p>first,</p>
+<p>graphical models,</p>
+<p>active inference,</p>
+<p>and belief propagation.</p>
+<p>Over the last years,</p>
+<p>Carl Friston et al.</p>
+<p>have been collaborating</p>
+<p>with the lab</p>
+<p>and collaborators</p>
+<p>of Bert DeVry.</p>
+<p>And around 2017,</p>
+<p>they released</p>
+<p>several</p>
+<p>very important</p>
+<p>papers.</p>
+<p>One was</p>
+<p>a factor graph</p>
+<p>description of</p>
+<p>deep temporal</p>
+<p>active inference</p>
+<p>and another was</p>
+<p>the graphical brain</p>
+<p>belief propagation</p>
+<p>in active inference.</p>
+<p>So,</p>
+<p>as Bert alluded to</p>
+<p>earlier,</p>
+<p>many of the</p>
+<p>operations or</p>
+<p>formalisms of</p>
+<p>active inference</p>
+<p>can be understood</p>
+<p>as manipulations</p>
+<p>of parameters</p>
+<p>or variables</p>
+<p>that might reflect</p>
+<p>data,</p>
+<p>observations,</p>
+<p>priors,</p>
+<p>precisions,</p>
+<p>different kinds</p>
+<p>of variables.</p>
+<p>And that</p>
+<p>is given</p>
+<p>exact form</p>
+<p>in the</p>
+<p>graphical model,</p>
+<p>specifically the</p>
+<p>Bayesian graph.</p>
+<p>And here we see</p>
+<p>the familiar</p>
+<p>figure 4.3</p>
+<p>from the</p>
+<p>2022</p>
+<p>textbook.</p>
+<p>Now,</p>
+<p>the nodes</p>
+<p>on that</p>
+<p>graphical model</p>
+<p>are variables</p>
+<p>and edges</p>
+<p>are their</p>
+<p>causal</p>
+<p>or their</p>
+<p>informational</p>
+<p>relationship.</p>
+<p>And so,</p>
+<p>especially after</p>
+<p>Perl et al.</p>
+<p>and the causal</p>
+<p>modeling</p>
+<p>developments</p>
+<p>in the</p>
+<p>1980s and</p>
+<p>90s,</p>
+<p>this was</p>
+<p>adapted into</p>
+<p>a probabilistic</p>
+<p>or cybernetic</p>
+<p>setting where</p>
+<p>certain nodes</p>
+<p>on this graph</p>
+<p>were associated</p>
+<p>with action,</p>
+<p>with perception,</p>
+<p>with cognitive</p>
+<p>phenomena.</p>
+<p>And so,</p>
+<p>this is a</p>
+<p>causal model,</p>
+<p>a Bayesian</p>
+<p>graphical model.</p>
+<p>It's the kind</p>
+<p>of thing that we</p>
+<p>see in very</p>
+<p>many active</p>
+<p>inference papers.</p>
+<p>Now,</p>
+<p>the Bayesian</p>
+<p>graph is</p>
+<p>awesome.</p>
+<p>It allows us</p>
+<p>to tackle</p>
+<p>some really</p>
+<p>challenging</p>
+<p>compute problems,</p>
+<p>get a lot</p>
+<p>of semantic</p>
+<p>interpretability,</p>
+<p>and so on.</p>
+<p>However,</p>
+<p>there's also</p>
+<p>a few</p>
+<p>limitations</p>
+<p>or challenges</p>
+<p>in execution.</p>
+<p>So,</p>
+<p>first,</p>
+<p>just epistemically,</p>
+<p>there's some</p>
+<p>side information</p>
+<p>that is needed</p>
+<p>to provide</p>
+<p>in order to</p>
+<p>get to a</p>
+<p>fully reproducible</p>
+<p>Bayesian</p>
+<p>graphical</p>
+<p>simulation.</p>
+<p>And Livestream</p>
+<p>54 shows</p>
+<p>how that</p>
+<p>information is</p>
+<p>provided for</p>
+<p>formally by</p>
+<p>category theory.</p>
+<p>But,</p>
+<p>more to the</p>
+<p>pragmatic point</p>
+<p>for this</p>
+<p>discussion,</p>
+<p>in actual</p>
+<p>computational</p>
+<p>execution,</p>
+<p>whether you're</p>
+<p>running that</p>
+<p>Bayes graph</p>
+<p>on a single</p>
+<p>core,</p>
+<p>single thread,</p>
+<p>or whether</p>
+<p>you're using</p>
+<p>multiple</p>
+<p>computing</p>
+<p>elements,</p>
+<p>a given</p>
+<p>or a</p>
+<p>particular</p>
+<p>generative</p>
+<p>model must</p>
+<p>be implemented</p>
+<p>in a certain</p>
+<p>way or</p>
+<p>order.</p>
+<p>If we were</p>
+<p>doing a</p>
+<p>single agent</p>
+<p>or a</p>
+<p>multi-agent</p>
+<p>simulation,</p>
+<p>we might</p>
+<p>wonder,</p>
+<p>so should we</p>
+<p>update the</p>
+<p>perception of</p>
+<p>everybody and</p>
+<p>then let</p>
+<p>everybody make</p>
+<p>action?</p>
+<p>Or should we</p>
+<p>do action and</p>
+<p>perception of</p>
+<p>number one,</p>
+<p>then number two,</p>
+<p>then number three?</p>
+<p>But then isn't</p>
+<p>that unfair?</p>
+<p>Because then isn't</p>
+<p>one of them always</p>
+<p>getting to see</p>
+<p>and act first?</p>
+<p>And so on.</p>
+<p>So,</p>
+<p>just drawing the</p>
+<p>graph doesn't</p>
+<p>give you the</p>
+<p>actual order of</p>
+<p>operations to</p>
+<p>carry it out</p>
+<p>reproducibly.</p>
+<p>So,</p>
+<p>that underspecification</p>
+<p>of the</p>
+<p>Bayesian</p>
+<p>graphical</p>
+<p>logistics or</p>
+<p>scheduling leads</p>
+<p>to a lot of</p>
+<p>degrees and</p>
+<p>freedom in</p>
+<p>model deployment.</p>
+<p>Now,</p>
+<p>this might be</p>
+<p>an issue or</p>
+<p>not be an</p>
+<p>issue for</p>
+<p>any given</p>
+<p>task.</p>
+<p>However,</p>
+<p>whether you</p>
+<p>use an</p>
+<p>off-the-shelf</p>
+<p>or a custom</p>
+<p>solution to</p>
+<p>address this</p>
+<p>challenge,</p>
+<p>these different</p>
+<p>approaches might</p>
+<p>take time,</p>
+<p>they might not</p>
+<p>transfer,</p>
+<p>they might not</p>
+<p>be general,</p>
+<p>and so on.</p>
+<p>Also,</p>
+<p>there might be</p>
+<p>different simulation</p>
+<p>outcomes or</p>
+<p>different computational</p>
+<p>costs that</p>
+<p>happen when you</p>
+<p>implement the same</p>
+<p>graphical model</p>
+<p>differently.</p>
+<p>So,</p>
+<p>that limits</p>
+<p>high reliability</p>
+<p>use and also</p>
+<p>transfer.</p>
+<p>And then lastly,</p>
+<p>kind of related,</p>
+<p>the computational</p>
+<p>complexity estimations</p>
+<p>are difficult to</p>
+<p>understand just by</p>
+<p>looking at the</p>
+<p>Bayes graph.</p>
+<p>It'd be really nice</p>
+<p>if there was a</p>
+<p>way to have</p>
+<p>the model and</p>
+<p>then know how</p>
+<p>much it's going to</p>
+<p>cost or take</p>
+<p>to run.</p>
+<p>So,</p>
+<p>enter the</p>
+<p>Forney factor</p>
+<p>graphs.</p>
+<p>In 2001,</p>
+<p>Forney wrote a</p>
+<p>technical paper</p>
+<p>called Codes on</p>
+<p>Graphs,</p>
+<p>Normal Realizations,</p>
+<p>just like normal</p>
+<p>2001 stuff.</p>
+<p>And this introduced</p>
+<p>some fundamental</p>
+<p>components.</p>
+<p>Let's ask the</p>
+<p>authors and find out</p>
+<p>what exactly those</p>
+<p>fundamental moves</p>
+<p>were.</p>
+<p>But,</p>
+<p>what was introduced</p>
+<p>led to the</p>
+<p>development of what</p>
+<p>is now called</p>
+<p>a Forney factor</p>
+<p>graph,</p>
+<p>FFG,</p>
+<p>or a normal</p>
+<p>graph?</p>
+<p>Again,</p>
+<p>another interesting</p>
+<p>question,</p>
+<p>how is normal</p>
+<p>being used here?</p>
+<p>The Forney factor</p>
+<p>graph representation</p>
+<p>is dual or</p>
+<p>informationally</p>
+<p>equivalent to</p>
+<p>any given</p>
+<p>Bayesian graph.</p>
+<p>Importantly,</p>
+<p>though,</p>
+<p>FFGs enable</p>
+<p>message passing.</p>
+<p>Message passing</p>
+<p>provides node,</p>
+<p>local,</p>
+<p>and whole graph</p>
+<p>scheduling logistics</p>
+<p>for messages</p>
+<p>in a way that</p>
+<p>allows for more</p>
+<p>tractability in</p>
+<p>execution.</p>
+<p>Importantly,</p>
+<p>these messages</p>
+<p>are being passed</p>
+<p>amongst variables</p>
+<p>at a very granular</p>
+<p>level.</p>
+<p>This is not</p>
+<p>referring to</p>
+<p>two bounded</p>
+<p>agents sending</p>
+<p>each other a</p>
+<p>postcard,</p>
+<p>simply.</p>
+<p>The network</p>
+<p>or the graph,</p>
+<p>it's a very</p>
+<p>general data</p>
+<p>structure,</p>
+<p>so it's not</p>
+<p>surprising that</p>
+<p>we're going to be</p>
+<p>encountering multiple</p>
+<p>kinds of graphs,</p>
+<p>but it is</p>
+<p>relevant to</p>
+<p>know which</p>
+<p>kinds of</p>
+<p>graphs we're</p>
+<p>talking about.</p>
+<p>Because this</p>
+<p>FFG representation</p>
+<p>can be applied to</p>
+<p>anywhere a</p>
+<p>Bayesian graph</p>
+<p>is used,</p>
+<p>people have</p>
+<p>applied both</p>
+<p>Bayesian graphs</p>
+<p>and, to a</p>
+<p>lesser or more</p>
+<p>recent extent,</p>
+<p>40-factor graphs</p>
+<p>to a bunch of</p>
+<p>different statistical</p>
+<p>problems like</p>
+<p>filtering,</p>
+<p>smoothing,</p>
+<p>prediction,</p>
+<p>MDP,</p>
+<p>POMDP,</p>
+<p>and so on.</p>
+<p>So, to</p>
+<p>kind of</p>
+<p>lock this</p>
+<p>in,</p>
+<p>here we see</p>
+<p>on the right</p>
+<p>figure 7.3</p>
+<p>from Par,</p>
+<p>Pizzullo,</p>
+<p>and Friston's</p>
+<p>textbook.</p>
+<p>So this is</p>
+<p>the standard</p>
+<p>discrete-time</p>
+<p>partially</p>
+<p>observable</p>
+<p>Markov decision</p>
+<p>process,</p>
+<p>and on the</p>
+<p>left here</p>
+<p>is a figure</p>
+<p>from the</p>
+<p>graphical</p>
+<p>brain</p>
+<p>paper of</p>
+<p>2017.</p>
+<p>So across</p>
+<p>the top,</p>
+<p>these two</p>
+<p>Bayesian</p>
+<p>graphs are</p>
+<p>actually</p>
+<p>identical.</p>
+<p>They're the</p>
+<p>same exact</p>
+<p>type of</p>
+<p>graph,</p>
+<p>and they're</p>
+<p>both the</p>
+<p>same</p>
+<p>Bayes</p>
+<p>graph.</p>
+<p>And then</p>
+<p>the 2017</p>
+<p>figure shows</p>
+<p>that that</p>
+<p>Bayes</p>
+<p>graph has</p>
+<p>this one-to-one</p>
+<p>relationship</p>
+<p>with a</p>
+<p>Forney</p>
+<p>factor graph.</p>
+<p>What is</p>
+<p>the difference</p>
+<p>with a</p>
+<p>Forney</p>
+<p>factor graph?</p>
+<p>Why do we</p>
+<p>need to have</p>
+<p>a different</p>
+<p>format to</p>
+<p>describe what</p>
+<p>might at</p>
+<p>first glance</p>
+<p>appear to be</p>
+<p>the same</p>
+<p>information?</p>
+<p>Let's go</p>
+<p>to graphical</p>
+<p>brain</p>
+<p>2017.</p>
+<p>We use</p>
+<p>graphical</p>
+<p>representations</p>
+<p>to characterize</p>
+<p>message passing</p>
+<p>under deep</p>
+<p>generative models</p>
+<p>that might be</p>
+<p>used by the</p>
+<p>brain.</p>
+<p>We use</p>
+<p>three sorts</p>
+<p>of graphs</p>
+<p>to emphasize</p>
+<p>the form</p>
+<p>of generative</p>
+<p>models.</p>
+<p>One,</p>
+<p>the nature</p>
+<p>of Bayesian</p>
+<p>belief updating,</p>
+<p>two,</p>
+<p>and how this</p>
+<p>might be</p>
+<p>accomplished</p>
+<p>in neuronal</p>
+<p>circuits,</p>
+<p>three.</p>
+<p>So here's</p>
+<p>the three</p>
+<p>sorts of</p>
+<p>graphs</p>
+<p>that they're</p>
+<p>going to</p>
+<p>talk about.</p>
+<p>First,</p>
+<p>Bayesian</p>
+<p>networks or</p>
+<p>dependency</p>
+<p>graphs.</p>
+<p>That's the</p>
+<p>one that we</p>
+<p>see the most</p>
+<p>commonly.</p>
+<p>Nodes</p>
+<p>correspond to</p>
+<p>unknown</p>
+<p>variables.</p>
+<p>Edges denote</p>
+<p>dependencies</p>
+<p>amongst</p>
+<p>variables.</p>
+<p>Thorney</p>
+<p>factor graphs</p>
+<p>have nodes</p>
+<p>that represent</p>
+<p>local functions</p>
+<p>or factors</p>
+<p>of a probability</p>
+<p>distribution over</p>
+<p>random variables,</p>
+<p>while edges</p>
+<p>come to represent</p>
+<p>variables per se,</p>
+<p>or more exactly,</p>
+<p>a probability</p>
+<p>distribution over</p>
+<p>those variables.</p>
+<p>And finally,</p>
+<p>neural networks</p>
+<p>have nodes</p>
+<p>that are</p>
+<p>constituted by</p>
+<p>the sufficient</p>
+<p>statistics of</p>
+<p>unknown variables</p>
+<p>and other</p>
+<p>auxiliary variables</p>
+<p>like prediction</p>
+<p>errors,</p>
+<p>while the edges</p>
+<p>in those graphs</p>
+<p>denote an</p>
+<p>exchange of</p>
+<p>the functions</p>
+<p>of sufficient</p>
+<p>statistics.</p>
+<p>Crucially,</p>
+<p>these graphical</p>
+<p>representations are</p>
+<p>formally equivalent</p>
+<p>in the sense</p>
+<p>that any</p>
+<p>Bayesian network</p>
+<p>can be expressed</p>
+<p>as a factor</p>
+<p>graph,</p>
+<p>and any</p>
+<p>message passing</p>
+<p>on a factor</p>
+<p>graph can be</p>
+<p>depicted as a</p>
+<p>neural network.</p>
+<p>However,</p>
+<p>as we will see</p>
+<p>later,</p>
+<p>the various</p>
+<p>graphical</p>
+<p>formulations</p>
+<p>offer different</p>
+<p>perspectives on</p>
+<p>belief updating</p>
+<p>or propagation.</p>
+<p>So this is a</p>
+<p>very rich</p>
+<p>topic.</p>
+<p>This background</p>
+<p>section was to</p>
+<p>say that</p>
+<p>Forney graphs</p>
+<p>have a</p>
+<p>different</p>
+<p>style or</p>
+<p>format than</p>
+<p>Bayesian graphs.</p>
+<p>However,</p>
+<p>they exist in</p>
+<p>this dual</p>
+<p>relationship.</p>
+<p>So there's</p>
+<p>things like</p>
+<p>algorithms,</p>
+<p>procedures that</p>
+<p>you can do</p>
+<p>on FFG</p>
+<p>that you</p>
+<p>can't do</p>
+<p>on Bayes</p>
+<p>graphs,</p>
+<p>but it's</p>
+<p>all good</p>
+<p>because you</p>
+<p>can go from</p>
+<p>the Bayes</p>
+<p>graph to</p>
+<p>the FFG</p>
+<p>representation</p>
+<p>and then</p>
+<p>implement some</p>
+<p>procedure on</p>
+<p>the FFG.</p>
+<p>So,</p>
+<p>let's get to</p>
+<p>the papers.</p>
+<p>The background</p>
+<p>one and</p>
+<p>background two</p>
+<p>sections have</p>
+<p>got us to</p>
+<p>perhaps the</p>
+<p>point where</p>
+<p>we're very</p>
+<p>excited to</p>
+<p>see how the</p>
+<p>authors</p>
+<p>implemented</p>
+<p>fully</p>
+<p>synthetic</p>
+<p>active</p>
+<p>inference</p>
+<p>agents</p>
+<p>using</p>
+<p>message</p>
+<p>passing</p>
+<p>logistical</p>
+<p>and</p>
+<p>operational</p>
+<p>scheduling</p>
+<p>algorithms</p>
+<p>on</p>
+<p>40-factor</p>
+<p>graphs</p>
+<p>representing</p>
+<p>Bayesian</p>
+<p>graphical</p>
+<p>models</p>
+<p>crafted to</p>
+<p>calculate</p>
+<p>a</p>
+<p>constrained</p>
+<p>Bethe</p>
+<p>free</p>
+<p>energy</p>
+<p>as a</p>
+<p>generalized</p>
+<p>or unified</p>
+<p>free energy</p>
+<p>imperative</p>
+<p>unifying the</p>
+<p>variational</p>
+<p>and the</p>
+<p>expected free</p>
+<p>energy</p>
+<p>for</p>
+<p>sense</p>
+<p>making</p>
+<p>and</p>
+<p>decision</p>
+<p>making</p>
+<p>inactive</p>
+<p>inference</p>
+<p>agents.</p>
+<p>So,</p>
+<p>now,</p>
+<p>we're heading</p>
+<p>into another</p>
+<p>double movement</p>
+<p>of the</p>
+<p>coming two</p>
+<p>papers.</p>
+<p>The first</p>
+<p>paper is</p>
+<p>itself going</p>
+<p>to be like</p>
+<p>a background</p>
+<p>and a</p>
+<p>notational</p>
+<p>paper,</p>
+<p>but also</p>
+<p>one that</p>
+<p>adds to</p>
+<p>the literature.</p>
+<p>And then</p>
+<p>the second</p>
+<p>paper will</p>
+<p>make the</p>
+<p>addition on</p>
+<p>top of</p>
+<p>the advance</p>
+<p>of the</p>
+<p>first paper.</p>
+<p>So,</p>
+<p>a lot of</p>
+<p>material,</p>
+<p>let's go</p>
+<p>into the</p>
+<p>first paper.</p>
+<p>Bert.</p>
+<p>Yes,</p>
+<p>so,</p>
+<p>for the</p>
+<p>first paper,</p>
+<p>we'll be</p>
+<p>going over</p>
+<p>chapter by</p>
+<p>chapter.</p>
+<p>To start</p>
+<p>with setting</p>
+<p>up the</p>
+<p>Lagrangian,</p>
+<p>then defining</p>
+<p>the epistemic</p>
+<p>objective and</p>
+<p>how to</p>
+<p>include it</p>
+<p>in a</p>
+<p>synthetic</p>
+<p>agent.</p>
+<p>Then in</p>
+<p>chapter 4,</p>
+<p>the layout</p>
+<p>what it</p>
+<p>means,</p>
+<p>what Lagrangian</p>
+<p>active</p>
+<p>inference means.</p>
+<p>In chapter 5,</p>
+<p>they</p>
+<p>describe the</p>
+<p>notation for</p>
+<p>the constrained</p>
+<p>for any</p>
+<p>factor graph.</p>
+<p>In 6,</p>
+<p>they highlight</p>
+<p>why the</p>
+<p>original</p>
+<p>generalized</p>
+<p>why</p>
+<p>classical</p>
+<p>active</p>
+<p>inference</p>
+<p>and the</p>
+<p>original</p>
+<p>generalized</p>
+<p>free</p>
+<p>energy</p>
+<p>algorithm</p>
+<p>are special</p>
+<p>cases of</p>
+<p>the Lagrangian</p>
+<p>active</p>
+<p>inference.</p>
+<p>So,</p>
+<p>of their</p>
+<p>definition of</p>
+<p>the</p>
+<p>for any</p>
+<p>factor</p>
+<p>graph.</p>
+<p>and then</p>
+<p>in 7,</p>
+<p>they do</p>
+<p>an</p>
+<p>experiment</p>
+<p>for</p>
+<p>policy</p>
+<p>inference.</p>
+<p>And then for</p>
+<p>chapter 2,</p>
+<p>the Lagrangian</p>
+<p>approach to</p>
+<p>message</p>
+<p>passing.</p>
+<p>So,</p>
+<p>as Daniel</p>
+<p>described,</p>
+<p>phoney</p>
+<p>factor graphs</p>
+<p>represent a</p>
+<p>factorized</p>
+<p>function over</p>
+<p>variables,</p>
+<p>which you can</p>
+<p>see in</p>
+<p>equation 1</p>
+<p>and figure</p>
+<p>1.</p>
+<p>So,</p>
+<p>on the</p>
+<p>left,</p>
+<p>you see</p>
+<p>equation 1</p>
+<p>that shows</p>
+<p>per node</p>
+<p>where V</p>
+<p>is,</p>
+<p>so A is</p>
+<p>a node</p>
+<p>in the set</p>
+<p>of all</p>
+<p>nodes,</p>
+<p>V.</p>
+<p>And so,</p>
+<p>on the</p>
+<p>height,</p>
+<p>you can see</p>
+<p>the image</p>
+<p>which says</p>
+<p>that each</p>
+<p>node is</p>
+<p>a factor</p>
+<p>of all the</p>
+<p>variables,</p>
+<p>and the</p>
+<p>variables are</p>
+<p>on edges,</p>
+<p>and that's</p>
+<p>really important.</p>
+<p>And as</p>
+<p>mentioned in</p>
+<p>the background,</p>
+<p>approximate</p>
+<p>inference is</p>
+<p>used,</p>
+<p>in this</p>
+<p>case,</p>
+<p>variational</p>
+<p>inference.</p>
+<p>And so,</p>
+<p>we start</p>
+<p>with a</p>
+<p>free energy</p>
+<p>function,</p>
+<p>an equation</p>
+<p>3 on</p>
+<p>the left,</p>
+<p>which is</p>
+<p>used to</p>
+<p>approximate</p>
+<p>variational</p>
+<p>distribution,</p>
+<p>Q star,</p>
+<p>and Q star</p>
+<p>is the</p>
+<p>optimal</p>
+<p>distribution</p>
+<p>that we</p>
+<p>want to</p>
+<p>get to,</p>
+<p>and we</p>
+<p>achieve that</p>
+<p>by minimizing</p>
+<p>it.</p>
+<p>And so,</p>
+<p>Beth free</p>
+<p>energy is</p>
+<p>distinct from</p>
+<p>variational free</p>
+<p>energy by</p>
+<p>factorizing the</p>
+<p>calculation of</p>
+<p>free energy.</p>
+<p>So,</p>
+<p>instead of</p>
+<p>computing it all</p>
+<p>by once,</p>
+<p>out once,</p>
+<p>you compute it</p>
+<p>per node</p>
+<p>and edge,</p>
+<p>and then</p>
+<p>aggregate the</p>
+<p>results,</p>
+<p>which you can</p>
+<p>see on the</p>
+<p>height.</p>
+<p>Each</p>
+<p>local free</p>
+<p>energy will</p>
+<p>include entropy</p>
+<p>terms from all</p>
+<p>connected edges.</p>
+<p>And since edges</p>
+<p>can be connected</p>
+<p>to two nodes,</p>
+<p>the entropy of</p>
+<p>these variables</p>
+<p>would be counted</p>
+<p>twice.</p>
+<p>So,</p>
+<p>one edge is</p>
+<p>a variable,</p>
+<p>and if you're</p>
+<p>connected to two</p>
+<p>nodes,</p>
+<p>you would be</p>
+<p>counting the</p>
+<p>same variable</p>
+<p>twice.</p>
+<p>And so,</p>
+<p>to cancel</p>
+<p>that out,</p>
+<p>they add the</p>
+<p>one minus</p>
+<p>degree of</p>
+<p>the edge.</p>
+<p>And at the</p>
+<p>bottom,</p>
+<p>I've added</p>
+<p>that normally</p>
+<p>an edge has</p>
+<p>always degree</p>
+<p>of two,</p>
+<p>which might</p>
+<p>sound weird</p>
+<p>because how</p>
+<p>can an edge</p>
+<p>have a degree?</p>
+<p>Because normally</p>
+<p>nodes have</p>
+<p>degrees.</p>
+<p>But in chapter</p>
+<p>five,</p>
+<p>we will show</p>
+<p>that it's</p>
+<p>possible to</p>
+<p>have dangling</p>
+<p>edges that</p>
+<p>are not</p>
+<p>connected,</p>
+<p>that are not</p>
+<p>factorized on</p>
+<p>one end.</p>
+<p>So,</p>
+<p>it is</p>
+<p>possible to</p>
+<p>have edges</p>
+<p>with degree</p>
+<p>one.</p>
+<p>And last,</p>
+<p>three constraints</p>
+<p>ensure that the</p>
+<p>sum of probabilities</p>
+<p>for each node</p>
+<p>and edge</p>
+<p>equals one,</p>
+<p>and it's</p>
+<p>normalization.</p>
+<p>And also,</p>
+<p>that it is</p>
+<p>possible to</p>
+<p>retrieve edge</p>
+<p>and node</p>
+<p>probabilities</p>
+<p>from the</p>
+<p>joint distribution</p>
+<p>so that the</p>
+<p>edge says</p>
+<p>something about</p>
+<p>the nodes</p>
+<p>and the nodes</p>
+<p>say something</p>
+<p>about the</p>
+<p>edges.</p>
+<p>Yes,</p>
+<p>next one.</p>
+<p>Yeah,</p>
+<p>just that</p>
+<p>we have the</p>
+<p>variables on</p>
+<p>the edges</p>
+<p>of this</p>
+<p>graph,</p>
+<p>and the</p>
+<p>f's are</p>
+<p>like functions</p>
+<p>or operations</p>
+<p>or little</p>
+<p>factories</p>
+<p>where variables</p>
+<p>can come in,</p>
+<p>potentially multiple</p>
+<p>variables can</p>
+<p>come in,</p>
+<p>and some</p>
+<p>activity happens,</p>
+<p>but we're</p>
+<p>putting the</p>
+<p>variable that</p>
+<p>would be in</p>
+<p>the node</p>
+<p>of the</p>
+<p>base graph,</p>
+<p>and we're</p>
+<p>having it on</p>
+<p>an edge</p>
+<p>connecting</p>
+<p>functions.</p>
+<p>So again,</p>
+<p>the information</p>
+<p>is identical</p>
+<p>or congruent,</p>
+<p>but everything</p>
+<p>that we're</p>
+<p>going to see</p>
+<p>now is</p>
+<p>flipped into</p>
+<p>this space</p>
+<p>where the</p>
+<p>edges are</p>
+<p>the variables,</p>
+<p>and that's</p>
+<p>what is going</p>
+<p>to enable</p>
+<p>the node</p>
+<p>local</p>
+<p>computations.</p>
+<p>in chapter</p>
+<p>three,</p>
+<p>defining</p>
+<p>epistemic</p>
+<p>objectives.</p>
+<p>The</p>
+<p>author</p>
+<p>writes that</p>
+<p>ages interact</p>
+<p>with the</p>
+<p>world they</p>
+<p>inhabit and</p>
+<p>entail a</p>
+<p>generative</p>
+<p>model of</p>
+<p>the</p>
+<p>environment.</p>
+<p>Achieving</p>
+<p>future goals</p>
+<p>can be</p>
+<p>cast as</p>
+<p>free energy</p>
+<p>minimization.</p>
+<p>And then</p>
+<p>they ask</p>
+<p>the question,</p>
+<p>what should</p>
+<p>this free</p>
+<p>energy</p>
+<p>functional look</p>
+<p>like and</p>
+<p>why?</p>
+<p>And that</p>
+<p>sets up</p>
+<p>the rest</p>
+<p>of the</p>
+<p>paper</p>
+<p>basically.</p>
+<p>Only</p>
+<p>optimizing</p>
+<p>bad free</p>
+<p>energy or</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>does not</p>
+<p>lead to</p>
+<p>exploration</p>
+<p>but</p>
+<p>clear</p>
+<p>control,</p>
+<p>which means</p>
+<p>that only</p>
+<p>prior values</p>
+<p>are satisfied.</p>
+<p>A hallmark</p>
+<p>of active</p>
+<p>inference is</p>
+<p>alternative</p>
+<p>functionals</p>
+<p>specifically</p>
+<p>made for</p>
+<p>inferring</p>
+<p>policies</p>
+<p>like expected</p>
+<p>free</p>
+<p>energy,</p>
+<p>which</p>
+<p>includes</p>
+<p>information</p>
+<p>collection.</p>
+<p>And so</p>
+<p>epistemics</p>
+<p>arise</p>
+<p>from</p>
+<p>optimization</p>
+<p>of</p>
+<p>approximate</p>
+<p>mutual</p>
+<p>information.</p>
+<p>Mutual</p>
+<p>information</p>
+<p>on the</p>
+<p>bottom</p>
+<p>height</p>
+<p>is a</p>
+<p>metric</p>
+<p>like</p>
+<p>the</p>
+<p>r-square</p>
+<p>if you</p>
+<p>make</p>
+<p>a linear</p>
+<p>equation</p>
+<p>and that</p>
+<p>it tells</p>
+<p>you</p>
+<p>how much</p>
+<p>one variable</p>
+<p>relates</p>
+<p>to another</p>
+<p>one.</p>
+<p>And to</p>
+<p>go back,</p>
+<p>mutual</p>
+<p>information</p>
+<p>between</p>
+<p>x and</p>
+<p>z</p>
+<p>in</p>
+<p>equation</p>
+<p>10</p>
+<p>on the</p>
+<p>left</p>
+<p>to work</p>
+<p>on it,</p>
+<p>the</p>
+<p>uncertainty</p>
+<p>entropy</p>
+<p>of</p>
+<p>x</p>
+<p>as</p>
+<p>z</p>
+<p>yeah,</p>
+<p>that's</p>
+<p>in the</p>
+<p>height</p>
+<p>equation.</p>
+<p>So it's</p>
+<p>how much</p>
+<p>you know</p>
+<p>about the</p>
+<p>one given</p>
+<p>that you</p>
+<p>know the</p>
+<p>other.</p>
+<p>And so</p>
+<p>say x</p>
+<p>is an</p>
+<p>observation</p>
+<p>and z</p>
+<p>is an</p>
+<p>internal</p>
+<p>state.</p>
+<p>Then an</p>
+<p>agent</p>
+<p>can choose</p>
+<p>x</p>
+<p>and</p>
+<p>to</p>
+<p>see</p>
+<p>and</p>
+<p>gain</p>
+<p>information</p>
+<p>about</p>
+<p>that.</p>
+<p>And then</p>
+<p>how to</p>
+<p>define a</p>
+<p>functional</p>
+<p>that</p>
+<p>combines</p>
+<p>battery</p>
+<p>energy</p>
+<p>and</p>
+<p>dynamics.</p>
+<p>So to</p>
+<p>have</p>
+<p>energy</p>
+<p>and add</p>
+<p>negative</p>
+<p>mutual</p>
+<p>information.</p>
+<p>And</p>
+<p>minimizing</p>
+<p>the free</p>
+<p>energy</p>
+<p>functional</p>
+<p>elbow</p>
+<p>with a</p>
+<p>negative</p>
+<p>mutual</p>
+<p>information</p>
+<p>means</p>
+<p>maximizing</p>
+<p>the mutual</p>
+<p>information.</p>
+<p>So you're</p>
+<p>trying to</p>
+<p>get as</p>
+<p>much</p>
+<p>information</p>
+<p>about</p>
+<p>internal</p>
+<p>and</p>
+<p>observation</p>
+<p>states.</p>
+<p>Yeah,</p>
+<p>just one</p>
+<p>comment there,</p>
+<p>Bert,</p>
+<p>and then</p>
+<p>Jakob,</p>
+<p>feel free</p>
+<p>to add</p>
+<p>anything.</p>
+<p>That's a</p>
+<p>great</p>
+<p>comparison</p>
+<p>you made</p>
+<p>with the</p>
+<p>r-squared</p>
+<p>for a</p>
+<p>linear</p>
+<p>regression.</p>
+<p>So in</p>
+<p>a linear</p>
+<p>regression,</p>
+<p>r-squared</p>
+<p>summarizes</p>
+<p>how much</p>
+<p>the two</p>
+<p>axes,</p>
+<p>the x</p>
+<p>and the</p>
+<p>y-axis,</p>
+<p>resemble</p>
+<p>each other.</p>
+<p>r-square</p>
+<p>of one</p>
+<p>means</p>
+<p>they're</p>
+<p>exactly</p>
+<p>co-linear.</p>
+<p>They're</p>
+<p>on a</p>
+<p>manifold.</p>
+<p>r-squared</p>
+<p>of zero</p>
+<p>is there's</p>
+<p>no linear</p>
+<p>relationship,</p>
+<p>and r-squared</p>
+<p>of negative</p>
+<p>one would</p>
+<p>be a</p>
+<p>negative</p>
+<p>association.</p>
+<p>Mutual</p>
+<p>information</p>
+<p>is kind</p>
+<p>of like</p>
+<p>that,</p>
+<p>but two</p>
+<p>characteristics</p>
+<p>are</p>
+<p>importantly</p>
+<p>different.</p>
+<p>First off,</p>
+<p>you can't</p>
+<p>have</p>
+<p>the worst</p>
+<p>thing that</p>
+<p>two things</p>
+<p>could be,</p>
+<p>or the</p>
+<p>least that</p>
+<p>they could</p>
+<p>be,</p>
+<p>is just</p>
+<p>noise to</p>
+<p>each other.</p>
+<p>So you</p>
+<p>can take</p>
+<p>the negative</p>
+<p>of the</p>
+<p>mutual</p>
+<p>information,</p>
+<p>but you</p>
+<p>can't have</p>
+<p>negative</p>
+<p>information</p>
+<p>on something.</p>
+<p>And then</p>
+<p>secondly,</p>
+<p>it's not</p>
+<p>a linear</p>
+<p>relationship.</p>
+<p>relationship.</p>
+<p>You could</p>
+<p>have</p>
+<p>something</p>
+<p>that is</p>
+<p>an</p>
+<p>inverted</p>
+<p>u,</p>
+<p>and the</p>
+<p>linear</p>
+<p>regression</p>
+<p>might</p>
+<p>find</p>
+<p>that</p>
+<p>that</p>
+<p>had</p>
+<p>a</p>
+<p>low</p>
+<p>r-squared</p>
+<p>because</p>
+<p>the best</p>
+<p>regression line</p>
+<p>might go</p>
+<p>through the</p>
+<p>middle of</p>
+<p>the u.</p>
+<p>But then</p>
+<p>if you</p>
+<p>just think</p>
+<p>about that</p>
+<p>a little</p>
+<p>bit more</p>
+<p>generally,</p>
+<p>of course</p>
+<p>one of</p>
+<p>those</p>
+<p>variables</p>
+<p>has</p>
+<p>information</p>
+<p>on the</p>
+<p>other</p>
+<p>variable.</p>
+<p>And so</p>
+<p>it's</p>
+<p>kind of</p>
+<p>like moving</p>
+<p>a lot</p>
+<p>of our</p>
+<p>intuition</p>
+<p>and also</p>
+<p>some of</p>
+<p>the epistemic</p>
+<p>status of</p>
+<p>linear</p>
+<p>regressions</p>
+<p>into</p>
+<p>more of</p>
+<p>a pure</p>
+<p>information</p>
+<p>geometric</p>
+<p>space.</p>
+<p>And it's</p>
+<p>a really</p>
+<p>important</p>
+<p>point,</p>
+<p>too,</p>
+<p>that the</p>
+<p>VFE</p>
+<p>doesn't</p>
+<p>endogenously</p>
+<p>have an</p>
+<p>epistemic</p>
+<p>drive.</p>
+<p>It's just</p>
+<p>about the</p>
+<p>real-time</p>
+<p>surprise</p>
+<p>level of</p>
+<p>beliefs</p>
+<p>and incoming</p>
+<p>data.</p>
+<p>And so</p>
+<p>a hallmark</p>
+<p>of active</p>
+<p>inference is</p>
+<p>the construction</p>
+<p>of these</p>
+<p>functionals</p>
+<p>such as</p>
+<p>expected</p>
+<p>free energy</p>
+<p>or free</p>
+<p>energy of</p>
+<p>the expected</p>
+<p>future or</p>
+<p>generalized</p>
+<p>free energy.</p>
+<p>Okay.</p>
+<p>And so</p>
+<p>expected free</p>
+<p>energy only</p>
+<p>works for</p>
+<p>future time</p>
+<p>steps,</p>
+<p>whereas</p>
+<p>variational</p>
+<p>and bad</p>
+<p>free energy</p>
+<p>work for</p>
+<p>past and</p>
+<p>the current</p>
+<p>time step.</p>
+<p>And instead</p>
+<p>the authors</p>
+<p>posted</p>
+<p>generalized</p>
+<p>free energy</p>
+<p>works for</p>
+<p>both at the</p>
+<p>same time,</p>
+<p>and it</p>
+<p>includes a</p>
+<p>part that</p>
+<p>tracks</p>
+<p>in equation</p>
+<p>14.</p>
+<p>But that's</p>
+<p>on the</p>
+<p>end.</p>
+<p>You have</p>
+<p>P with a</p>
+<p>curvy</p>
+<p>stripe</p>
+<p>XK,</p>
+<p>and it</p>
+<p>basically</p>
+<p>keeps</p>
+<p>count of</p>
+<p>which time</p>
+<p>step</p>
+<p>at this</p>
+<p>moment.</p>
+<p>And also</p>
+<p>note that</p>
+<p>the policy</p>
+<p>control is</p>
+<p>fixed, so</p>
+<p>that's</p>
+<p>you with</p>
+<p>a roof</p>
+<p>on it.</p>
+<p>And so</p>
+<p>past time</p>
+<p>steps have</p>
+<p>observed data</p>
+<p>and are</p>
+<p>locked</p>
+<p>using the</p>
+<p>direct</p>
+<p>delta</p>
+<p>function,</p>
+<p>which was</p>
+<p>the function</p>
+<p>with a</p>
+<p>probability</p>
+<p>of one</p>
+<p>at a</p>
+<p>specific</p>
+<p>value and</p>
+<p>zero at</p>
+<p>the rest,</p>
+<p>whereas future</p>
+<p>time steps are</p>
+<p>still open to</p>
+<p>optimized using</p>
+<p>generalized</p>
+<p>free energy.</p>
+<p>And so</p>
+<p>below that</p>
+<p>you can see</p>
+<p>this</p>
+<p>free energy,</p>
+<p>how you</p>
+<p>lock some</p>
+<p>values and</p>
+<p>keep them</p>
+<p>open at</p>
+<p>other moments.</p>
+<p>And so for a</p>
+<p>sneak peek on</p>
+<p>the right,</p>
+<p>on the figure</p>
+<p>in the</p>
+<p>right,</p>
+<p>from paper</p>
+<p>two, you can</p>
+<p>see that as</p>
+<p>time goes on</p>
+<p>and time</p>
+<p>steps are</p>
+<p>observed,</p>
+<p>data constraints</p>
+<p>are added.</p>
+<p>And that's</p>
+<p>the little</p>
+<p>black circle</p>
+<p>with a delta</p>
+<p>in it.</p>
+<p>Committing to</p>
+<p>a full modal</p>
+<p>specification</p>
+<p>Rporee limits</p>
+<p>what a generalized</p>
+<p>free energy</p>
+<p>function can</p>
+<p>do.</p>
+<p>Instead,</p>
+<p>making it</p>
+<p>fully node</p>
+<p>local is</p>
+<p>synthetic active</p>
+<p>inference,</p>
+<p>as the</p>
+<p>autoside.</p>
+<p>Okay.</p>
+<p>And then in</p>
+<p>chapter four,</p>
+<p>they discuss</p>
+<p>the Lagrangian</p>
+<p>active inference,</p>
+<p>which is the</p>
+<p>key of the</p>
+<p>paper.</p>
+<p>And so with</p>
+<p>node local</p>
+<p>generalized free</p>
+<p>energy, we can</p>
+<p>construct the</p>
+<p>Lagrangian for</p>
+<p>active inference.</p>
+<p>And the goal</p>
+<p>is to have a</p>
+<p>distributed</p>
+<p>inference</p>
+<p>procedure,</p>
+<p>solving for each</p>
+<p>node individually</p>
+<p>and constraining</p>
+<p>the solution</p>
+<p>as shown in</p>
+<p>equation 13.</p>
+<p>So on the</p>
+<p>height.</p>
+<p>And we need</p>
+<p>to assume that</p>
+<p>actual and</p>
+<p>approximate</p>
+<p>probabilities</p>
+<p>are about</p>
+<p>equal to</p>
+<p>each other.</p>
+<p>We had to</p>
+<p>make that</p>
+<p>assumption.</p>
+<p>So I guess</p>
+<p>we can ask</p>
+<p>that next</p>
+<p>week.</p>
+<p>And now</p>
+<p>with this,</p>
+<p>messages can</p>
+<p>be derived</p>
+<p>as done in</p>
+<p>part two,</p>
+<p>which is the</p>
+<p>next paper.</p>
+<p>However, in</p>
+<p>this paper,</p>
+<p>they attempt</p>
+<p>another way to</p>
+<p>arrive at the</p>
+<p>node local</p>
+<p>generalized free</p>
+<p>energy.</p>
+<p>And this is</p>
+<p>done in two</p>
+<p>steps.</p>
+<p>So first,</p>
+<p>they apply a</p>
+<p>mean field</p>
+<p>factorization.</p>
+<p>That ensures</p>
+<p>edges are</p>
+<p>independent</p>
+<p>for each</p>
+<p>node,</p>
+<p>which you</p>
+<p>can see</p>
+<p>on the</p>
+<p>height.</p>
+<p>We have</p>
+<p>a defractor</p>
+<p>of the</p>
+<p>node as</p>
+<p>a product</p>
+<p>for all</p>
+<p>edges.</p>
+<p>So they</p>
+<p>are independent.</p>
+<p>And then the</p>
+<p>second move</p>
+<p>they make is</p>
+<p>that you can</p>
+<p>partition the</p>
+<p>connecting</p>
+<p>variables,</p>
+<p>edges,</p>
+<p>into two</p>
+<p>sets.</p>
+<p>One that is</p>
+<p>adjusted and</p>
+<p>the other that</p>
+<p>is left</p>
+<p>alone.</p>
+<p>And to the</p>
+<p>adjusted set,</p>
+<p>they apply</p>
+<p>P substitution,</p>
+<p>which is very</p>
+<p>important.</p>
+<p>And this</p>
+<p>basically replaces</p>
+<p>a local</p>
+<p>free energy</p>
+<p>with a local</p>
+<p>generalized</p>
+<p>free energy.</p>
+<p>And on the</p>
+<p>bottom is the</p>
+<p>formula for</p>
+<p>applying P</p>
+<p>substitution,</p>
+<p>which I also</p>
+<p>don't fully</p>
+<p>understand.</p>
+<p>So maybe you</p>
+<p>guys know a</p>
+<p>little more</p>
+<p>about that.</p>
+<p>definitely will</p>
+<p>ask.</p>
+<p>I'll just</p>
+<p>note here</p>
+<p>that the</p>
+<p>slash is</p>
+<p>used to</p>
+<p>mean except</p>
+<p>for.</p>
+<p>I hope this</p>
+<p>is correct.</p>
+<p>So here we're</p>
+<p>able to take</p>
+<p>something that</p>
+<p>contains all</p>
+<p>and we're</p>
+<p>able to</p>
+<p>kind of pull</p>
+<p>out one</p>
+<p>with this</p>
+<p>more intractable</p>
+<p>integral.</p>
+<p>and then</p>
+<p>still do</p>
+<p>the simpler</p>
+<p>log.</p>
+<p>But we'll</p>
+<p>ask.</p>
+<p>The second</p>
+<p>paper will</p>
+<p>show how</p>
+<p>P substituted</p>
+<p>nodes are</p>
+<p>gradually</p>
+<p>removed from</p>
+<p>the</p>
+<p>funny</p>
+<p>factor</p>
+<p>graph over</p>
+<p>time.</p>
+<p>As these</p>
+<p>nodes are</p>
+<p>now in</p>
+<p>the past</p>
+<p>and do</p>
+<p>not need</p>
+<p>to consider</p>
+<p>the future</p>
+<p>anymore.</p>
+<p>Again,</p>
+<p>for a sneak</p>
+<p>peek,</p>
+<p>see on</p>
+<p>the height,</p>
+<p>everywhere</p>
+<p>you add</p>
+<p>the delta</p>
+<p>in the black</p>
+<p>circle,</p>
+<p>you remove</p>
+<p>the square.</p>
+<p>And the</p>
+<p>square is</p>
+<p>the notation</p>
+<p>for P</p>
+<p>substitution.</p>
+<p>And then to</p>
+<p>construct the</p>
+<p>active inference</p>
+<p>Lagrangian,</p>
+<p>it is important</p>
+<p>that P</p>
+<p>substituted nodes</p>
+<p>work with</p>
+<p>different messages,</p>
+<p>generalized free</p>
+<p>energy instead</p>
+<p>of path free</p>
+<p>energy.</p>
+<p>And in this</p>
+<p>way,</p>
+<p>add epistemics.</p>
+<p>lagrangian,</p>
+<p>the optimal</p>
+<p>points of</p>
+<p>Lagrangian,</p>
+<p>where the</p>
+<p>first derivative</p>
+<p>is zero,</p>
+<p>are the</p>
+<p>stationary</p>
+<p>points of</p>
+<p>the message</p>
+<p>passing process,</p>
+<p>which means</p>
+<p>that nodes</p>
+<p>do not change</p>
+<p>anymore if</p>
+<p>you keep</p>
+<p>updating.</p>
+<p>And so</p>
+<p>there's a very</p>
+<p>long formula</p>
+<p>for Lagrangian.</p>
+<p>and I</p>
+<p>said you</p>
+<p>split the</p>
+<p>nodes into</p>
+<p>two,</p>
+<p>one set</p>
+<p>that you</p>
+<p>P</p>
+<p>substitute</p>
+<p>and the</p>
+<p>order that</p>
+<p>you don't.</p>
+<p>And on top</p>
+<p>of that,</p>
+<p>you add</p>
+<p>three constraints</p>
+<p>which have</p>
+<p>a lambda</p>
+<p>in front of</p>
+<p>them,</p>
+<p>and that is</p>
+<p>the marginalization,</p>
+<p>the normalization</p>
+<p>of both nodes</p>
+<p>and edges.</p>
+<p>That's very</p>
+<p>important about</p>
+<p>the stationary</p>
+<p>point of</p>
+<p>message passing</p>
+<p>being kind</p>
+<p>of like</p>
+<p>settled,</p>
+<p>where everybody</p>
+<p>can pass all</p>
+<p>the messages</p>
+<p>they want</p>
+<p>and nothing</p>
+<p>is changing.</p>
+<p>And that's</p>
+<p>going to be</p>
+<p>probably leveraged</p>
+<p>in the</p>
+<p>reactive message</p>
+<p>passing</p>
+<p>programming</p>
+<p>environment,</p>
+<p>where rather</p>
+<p>than needing</p>
+<p>to send</p>
+<p>all messages</p>
+<p>once to</p>
+<p>the calculate</p>
+<p>and send</p>
+<p>all messages</p>
+<p>again,</p>
+<p>it opens</p>
+<p>up the</p>
+<p>ability for</p>
+<p>different regions</p>
+<p>of the graph</p>
+<p>to be sending</p>
+<p>and receiving</p>
+<p>messages at</p>
+<p>different frequencies.</p>
+<p>So if one</p>
+<p>sensor was</p>
+<p>sampling a</p>
+<p>thousand times</p>
+<p>a second,</p>
+<p>one was</p>
+<p>sampling one</p>
+<p>time per</p>
+<p>second,</p>
+<p>no longer</p>
+<p>do you have</p>
+<p>to decide</p>
+<p>should we</p>
+<p>coarse-grained</p>
+<p>to one</p>
+<p>second,</p>
+<p>or should</p>
+<p>we waste</p>
+<p>999 cycles</p>
+<p>on the</p>
+<p>slower cycle</p>
+<p>sensor.</p>
+<p>Now,</p>
+<p>with reactive</p>
+<p>message passing,</p>
+<p>because there's</p>
+<p>no local</p>
+<p>descriptions,</p>
+<p>it's possible</p>
+<p>to open up</p>
+<p>that</p>
+<p>implementational</p>
+<p>space.</p>
+<p>And now</p>
+<p>we'll get</p>
+<p>into</p>
+<p>defining the</p>
+<p>notation for</p>
+<p>the constrained</p>
+<p>for any</p>
+<p>factor graphs.</p>
+<p>And so</p>
+<p>for any</p>
+<p>factor graphs</p>
+<p>are useful</p>
+<p>for describing</p>
+<p>generative models,</p>
+<p>but it is</p>
+<p>important to</p>
+<p>know the</p>
+<p>exact</p>
+<p>functional</p>
+<p>to be</p>
+<p>minimized.</p>
+<p>and the</p>
+<p>authors develop</p>
+<p>a new</p>
+<p>notation for</p>
+<p>writing</p>
+<p>constraints</p>
+<p>directly as</p>
+<p>part of</p>
+<p>the</p>
+<p>for any</p>
+<p>factor</p>
+<p>graph.</p>
+<p>Because</p>
+<p>normal</p>
+<p>for any</p>
+<p>factor graphs</p>
+<p>do not</p>
+<p>show that.</p>
+<p>It's just</p>
+<p>no.</p>
+<p>The figure</p>
+<p>4 on the</p>
+<p>right builds</p>
+<p>upon representing</p>
+<p>vectors with</p>
+<p>squares nodes</p>
+<p>and edges</p>
+<p>as variables</p>
+<p>that can be</p>
+<p>factorized.</p>
+<p>And they</p>
+<p>add circular</p>
+<p>beads which</p>
+<p>indicate</p>
+<p>constraints</p>
+<p>that define</p>
+<p>our family</p>
+<p>cube.</p>
+<p>And that</p>
+<p>has to do</p>
+<p>with the</p>
+<p>variational</p>
+<p>distribution.</p>
+<p>a bead</p>
+<p>on an</p>
+<p>edge</p>
+<p>denotes</p>
+<p>the edge</p>
+<p>QSI</p>
+<p>while a bead</p>
+<p>in the</p>
+<p>center of</p>
+<p>a node</p>
+<p>is</p>
+<p>QSA.</p>
+<p>And then</p>
+<p>they build</p>
+<p>they introduce</p>
+<p>four constraints</p>
+<p>that are</p>
+<p>needed</p>
+<p>as notation</p>
+<p>for the</p>
+<p>for any</p>
+<p>factor graph.</p>
+<p>So the</p>
+<p>first one</p>
+<p>is a</p>
+<p>factorization</p>
+<p>constraint</p>
+<p>and it</p>
+<p>can either</p>
+<p>be a</p>
+<p>naive mean</p>
+<p>field</p>
+<p>or a</p>
+<p>structured</p>
+<p>mean</p>
+<p>field.</p>
+<p>When</p>
+<p>naive</p>
+<p>mean</p>
+<p>field</p>
+<p>is a</p>
+<p>stronger</p>
+<p>constraint</p>
+<p>which</p>
+<p>means</p>
+<p>that</p>
+<p>every</p>
+<p>factor</p>
+<p>is</p>
+<p>independent</p>
+<p>which</p>
+<p>is</p>
+<p>figure</p>
+<p>five</p>
+<p>it's</p>
+<p>in the</p>
+<p>middle</p>
+<p>on the</p>
+<p>right</p>
+<p>and</p>
+<p>structures</p>
+<p>is</p>
+<p>less</p>
+<p>strong</p>
+<p>because</p>
+<p>you can</p>
+<p>factorize</p>
+<p>multiple</p>
+<p>variables</p>
+<p>together</p>
+<p>and I</p>
+<p>added</p>
+<p>some</p>
+<p>example</p>
+<p>for</p>
+<p>mass</p>
+<p>many</p>
+<p>edges</p>
+<p>like</p>
+<p>needed</p>
+<p>for</p>
+<p>if</p>
+<p>you</p>
+<p>want</p>
+<p>to</p>
+<p>have</p>
+<p>many</p>
+<p>edges</p>
+<p>many</p>
+<p>variables</p>
+<p>into</p>
+<p>a</p>
+<p>factor</p>
+<p>they</p>
+<p>introduce</p>
+<p>the</p>
+<p>notation</p>
+<p>with</p>
+<p>dots</p>
+<p>in</p>
+<p>between</p>
+<p>and</p>
+<p>this</p>
+<p>is</p>
+<p>useful</p>
+<p>when</p>
+<p>you</p>
+<p>have</p>
+<p>for</p>
+<p>example</p>
+<p>a</p>
+<p>Gaussian</p>
+<p>mixture</p>
+<p>model</p>
+<p>which</p>
+<p>is a</p>
+<p>bunch</p>
+<p>of</p>
+<p>components</p>
+<p>we'll</p>
+<p>we'll</p>
+<p>see if</p>
+<p>this</p>
+<p>is</p>
+<p>accurate</p>
+<p>but</p>
+<p>let's</p>
+<p>imagine</p>
+<p>these</p>
+<p>four</p>
+<p>variables</p>
+<p>are</p>
+<p>coming</p>
+<p>in</p>
+<p>and</p>
+<p>meeting</p>
+<p>in</p>
+<p>the</p>
+<p>factory</p>
+<p>for</p>
+<p>prerequisite</p>
+<p>components</p>
+<p>of the</p>
+<p>car</p>
+<p>assembly</p>
+<p>process</p>
+<p>the</p>
+<p>fully</p>
+<p>factorized</p>
+<p>way to</p>
+<p>represent</p>
+<p>that</p>
+<p>is shown</p>
+<p>here</p>
+<p>that's</p>
+<p>the</p>
+<p>mean</p>
+<p>field</p>
+<p>assumption</p>
+<p>that we</p>
+<p>can just</p>
+<p>treat</p>
+<p>those</p>
+<p>components</p>
+<p>separately</p>
+<p>like if</p>
+<p>what we</p>
+<p>were doing</p>
+<p>was just</p>
+<p>multiplying</p>
+<p>or I</p>
+<p>mean adding</p>
+<p>the numbers</p>
+<p>together</p>
+<p>maybe we</p>
+<p>could treat</p>
+<p>them</p>
+<p>separately</p>
+<p>but then</p>
+<p>also</p>
+<p>there</p>
+<p>are these</p>
+<p>intermediate</p>
+<p>structural</p>
+<p>factorizations</p>
+<p>where you</p>
+<p>can take</p>
+<p>four</p>
+<p>joint</p>
+<p>coming in</p>
+<p>and then</p>
+<p>you could</p>
+<p>separate it</p>
+<p>into</p>
+<p>these two</p>
+<p>are separate</p>
+<p>and these</p>
+<p>two are</p>
+<p>connected</p>
+<p>or two</p>
+<p>pairs</p>
+<p>so it</p>
+<p>gives you</p>
+<p>the expressivity</p>
+<p>to do</p>
+<p>the continuum</p>
+<p>from fully</p>
+<p>joint</p>
+<p>to fully</p>
+<p>factorized</p>
+<p>mean field</p>
+<p>and everything</p>
+<p>between</p>
+<p>all the</p>
+<p>combinations</p>
+<p>in between</p>
+<p>in a</p>
+<p>per node</p>
+<p>fashion</p>
+<p>rather than</p>
+<p>at the</p>
+<p>whole graph</p>
+<p>level</p>
+<p>whereas</p>
+<p>that is</p>
+<p>often how</p>
+<p>it's discussed</p>
+<p>elsewhere</p>
+<p>somebody</p>
+<p>constructs a</p>
+<p>big generative</p>
+<p>model and</p>
+<p>says and</p>
+<p>then we</p>
+<p>took a</p>
+<p>mean field</p>
+<p>approach</p>
+<p>to the</p>
+<p>graph</p>
+<p>so here</p>
+<p>we have</p>
+<p>that kind</p>
+<p>of expressivity</p>
+<p>in a</p>
+<p>given node</p>
+<p>on</p>
+
+<p>mute</p>
+<p>then</p>
+<p>continue</p>
+<p>Bert</p>
+<p>good call</p>
+<p>so the</p>
+<p>second is a</p>
+<p>form constraint</p>
+<p>which enforces</p>
+<p>a particular</p>
+<p>function</p>
+<p>or distribution</p>
+<p>really</p>
+<p>on a local</p>
+<p>marginal</p>
+<p>of an edge</p>
+<p>or a node</p>
+<p>figure 8</p>
+<p>shows</p>
+<p>what enforcing</p>
+<p>a Gaussian</p>
+<p>constraint</p>
+<p>on an edge</p>
+<p>looks like</p>
+<p>and figure 9</p>
+<p>shows</p>
+<p>two different</p>
+<p>constraints</p>
+<p>on the</p>
+<p>nodes</p>
+<p>and the</p>
+<p>authors</p>
+<p>explicitly</p>
+<p>note that</p>
+<p>a constraint</p>
+<p>on an edge</p>
+<p>is independent</p>
+<p>of the node</p>
+<p>and that it</p>
+<p>factorizes</p>
+<p>into</p>
+<p>and vice</p>
+<p>versa</p>
+<p>so</p>
+<p>the messages</p>
+<p>pass</p>
+<p>and then</p>
+<p>after</p>
+<p>everything is</p>
+<p>done</p>
+<p>it's like</p>
+<p>squeezing</p>
+<p>clay into</p>
+<p>a box</p>
+<p>it just</p>
+<p>has to</p>
+<p>fit</p>
+<p>but it's</p>
+<p>only</p>
+<p>after</p>
+<p>the</p>
+<p>fact</p>
+<p>and then</p>
+<p>they note</p>
+<p>dangling</p>
+<p>edges</p>
+<p>which do not</p>
+<p>terminate</p>
+<p>on a node</p>
+<p>on one</p>
+<p>side</p>
+<p>so</p>
+<p>they wouldn't</p>
+<p>require a</p>
+<p>bead</p>
+<p>but you</p>
+<p>need it</p>
+<p>to be able</p>
+<p>to do</p>
+<p>a form</p>
+<p>constraint</p>
+<p>so they</p>
+<p>still hide</p>
+<p>them in</p>
+<p>and</p>
+<p>you</p>
+<p>have</p>
+<p>that's</p>
+<p>why they</p>
+<p>add a</p>
+<p>sort of</p>
+<p>dummy</p>
+<p>factor</p>
+<p>node</p>
+<p>on one</p>
+<p>end</p>
+<p>and</p>
+<p>then the</p>
+<p>third</p>
+<p>constraint</p>
+<p>is a</p>
+<p>delta</p>
+<p>constraint</p>
+<p>delta</p>
+<p>constraints</p>
+<p>and data</p>
+<p>points</p>
+<p>allow us</p>
+<p>to incorporate</p>
+<p>measurements</p>
+<p>into a</p>
+<p>model</p>
+<p>equation</p>
+<p>30</p>
+<p>and figure</p>
+<p>10</p>
+<p>show this</p>
+<p>for data</p>
+<p>constraints</p>
+<p>these are</p>
+<p>special</p>
+<p>since they</p>
+<p>denote</p>
+<p>observations</p>
+<p>and block</p>
+<p>the flow</p>
+<p>of messages</p>
+<p>so these</p>
+<p>points are</p>
+<p>now fixed</p>
+<p>nothing</p>
+<p>goes through</p>
+<p>it</p>
+<p>because it</p>
+<p>is already</p>
+<p>set</p>
+<p>and then</p>
+<p>another</p>
+<p>option</p>
+<p>is that</p>
+<p>when you</p>
+<p>don't know</p>
+<p>which value</p>
+<p>to fix</p>
+<p>it to</p>
+<p>so the</p>
+<p>s i</p>
+<p>hat</p>
+<p>then you</p>
+<p>can optimize</p>
+<p>the value</p>
+<p>and then it</p>
+<p>is called</p>
+<p>a delta</p>
+<p>constraint</p>
+<p>and the</p>
+<p>optimization</p>
+<p>of this</p>
+<p>is</p>
+<p>using</p>
+<p>expectation</p>
+<p>maximization</p>
+<p>what i</p>
+<p>saw in</p>
+<p>this</p>
+<p>section</p>
+<p>was</p>
+<p>let's</p>
+<p>just say</p>
+<p>that we</p>
+<p>were</p>
+<p>drawing</p>
+<p>height</p>
+<p>observations</p>
+<p>from</p>
+<p>a</p>
+<p>forest</p>
+<p>so</p>
+<p>one way</p>
+<p>to think</p>
+<p>about that</p>
+<p>is</p>
+<p>the</p>
+<p>gaussian</p>
+<p>distribution</p>
+<p>that we're</p>
+<p>drawing</p>
+<p>from</p>
+<p>okay but</p>
+<p>now you</p>
+<p>get the</p>
+<p>data</p>
+<p>point</p>
+<p>and</p>
+<p>you</p>
+<p>can</p>
+<p>think</p>
+<p>about</p>
+<p>that</p>
+<p>data</p>
+<p>point</p>
+<p>as</p>
+<p>just</p>
+<p>an</p>
+<p>entry</p>
+<p>and</p>
+<p>a</p>
+<p>value</p>
+<p>you</p>
+<p>could</p>
+<p>also</p>
+<p>think</p>
+<p>of</p>
+<p>it</p>
+<p>as</p>
+<p>a</p>
+<p>dirac</p>
+<p>delta</p>
+<p>distribution</p>
+<p>parameterized</p>
+<p>exactly</p>
+<p>by the</p>
+<p>value</p>
+<p>of</p>
+<p>the</p>
+<p>data</p>
+<p>point</p>
+<p>and</p>
+<p>so</p>
+<p>thinking</p>
+<p>about</p>
+<p>data</p>
+<p>as</p>
+<p>being</p>
+<p>a</p>
+<p>dirac</p>
+<p>constraint</p>
+<p>variable</p>
+<p>where</p>
+<p>here</p>
+<p>the</p>
+<p>variables</p>
+<p>are</p>
+<p>on</p>
+<p>edges</p>
+<p>brings</p>
+<p>unification</p>
+<p>between</p>
+<p>empirical</p>
+<p>data</p>
+<p>coming in</p>
+<p>from the</p>
+<p>outside</p>
+<p>or passed</p>
+<p>around</p>
+<p>internally</p>
+<p>and</p>
+<p>broader</p>
+<p>distributional</p>
+<p>perspectives</p>
+<p>and</p>
+<p>then</p>
+<p>the</p>
+<p>fourth</p>
+<p>constraint</p>
+<p>is</p>
+<p>moment</p>
+<p>matching</p>
+<p>which</p>
+<p>replates</p>
+<p>the</p>
+<p>hard</p>
+<p>marginalization</p>
+<p>constraint</p>
+<p>used to</p>
+<p>include</p>
+<p>the</p>
+<p>entropy</p>
+<p>of</p>
+<p>edges</p>
+<p>and</p>
+<p>so</p>
+<p>this</p>
+<p>loosens</p>
+<p>the</p>
+<p>marginalization</p>
+<p>as</p>
+<p>now</p>
+<p>only</p>
+<p>the</p>
+<p>moments</p>
+<p>need</p>
+<p>to</p>
+<p>align</p>
+<p>and</p>
+<p>equation</p>
+<p>eight</p>
+<p>contains</p>
+<p>both</p>
+<p>node</p>
+<p>and</p>
+<p>edge</p>
+<p>terms</p>
+<p>since</p>
+<p>the</p>
+<p>moment</p>
+<p>matching</p>
+<p>constraint</p>
+<p>applies</p>
+<p>to</p>
+<p>both</p>
+<p>at</p>
+<p>the</p>
+<p>same</p>
+<p>time</p>
+<p>and</p>
+<p>they</p>
+<p>apply</p>
+<p>to</p>
+<p>both</p>
+<p>at</p>
+<p>the</p>
+<p>same</p>
+<p>time</p>
+<p>because</p>
+<p>of</p>
+<p>the</p>
+<p>top</p>
+<p>formula</p>
+<p>and</p>
+<p>the</p>
+<p>middle</p>
+<p>one</p>
+<p>the</p>
+<p>middle</p>
+<p>formula</p>
+<p>shows</p>
+<p>the</p>
+<p>sufficient</p>
+<p>statistics</p>
+<p>described</p>
+<p>by T</p>
+<p>capital</p>
+<p>T</p>
+<p>and</p>
+<p>so</p>
+<p>basically</p>
+<p>what this</p>
+<p>means</p>
+<p>is that</p>
+<p>you</p>
+<p>pick a</p>
+<p>distribution</p>
+<p>and</p>
+<p>you</p>
+<p>only</p>
+<p>pick</p>
+<p>the</p>
+<p>moments</p>
+<p>so</p>
+<p>the</p>
+<p>first</p>
+<p>would</p>
+<p>be</p>
+<p>the</p>
+<p>mean</p>
+<p>of</p>
+<p>the</p>
+<p>distribution</p>
+<p>and</p>
+<p>the</p>
+<p>second</p>
+<p>would</p>
+<p>be</p>
+<p>the</p>
+<p>standard</p>
+<p>deviation</p>
+<p>and</p>
+<p>so</p>
+<p>only</p>
+<p>those</p>
+<p>need</p>
+<p>to</p>
+<p>fit</p>
+<p>you</p>
+<p>don't</p>
+<p>care</p>
+<p>about</p>
+<p>the</p>
+<p>rest</p>
+<p>and</p>
+<p>piece</p>
+<p>substitution</p>
+<p>is the</p>
+<p>final piece</p>
+<p>needed to</p>
+<p>represent</p>
+<p>the</p>
+<p>active</p>
+<p>inference</p>
+<p>Lagrangian</p>
+<p>on a</p>
+<p>C</p>
+<p>constraint</p>
+<p>for</p>
+<p>any</p>
+<p>vector</p>
+<p>graph</p>
+<p>and</p>
+<p>constructing</p>
+<p>the</p>
+<p>local</p>
+<p>generalized</p>
+<p>free</p>
+<p>energy</p>
+<p>using</p>
+<p>mean</p>
+<p>field</p>
+<p>vectorization</p>
+<p>and</p>
+<p>piece</p>
+<p>substitution</p>
+<p>was</p>
+<p>only</p>
+<p>done</p>
+<p>to</p>
+<p>represent</p>
+<p>the</p>
+<p>Lagrangian</p>
+<p>active</p>
+<p>inference</p>
+<p>on</p>
+<p>a</p>
+<p>constraint</p>
+<p>for</p>
+<p>any</p>
+<p>vector</p>
+<p>graph</p>
+<p>and</p>
+<p>he</p>
+<p>called</p>
+<p>the</p>
+<p>p</p>
+<p>substitution</p>
+<p>involves</p>
+<p>substituting</p>
+<p>part</p>
+<p>of</p>
+<p>the</p>
+<p>model</p>
+<p>p</p>
+<p>for</p>
+<p>q</p>
+<p>in</p>
+<p>expectation</p>
+<p>only</p>
+<p>and</p>
+<p>that</p>
+<p>is</p>
+<p>the</p>
+<p>formula</p>
+<p>on</p>
+<p>the</p>
+<p>bottom</p>
+<p>and</p>
+<p>it's</p>
+<p>represented</p>
+<p>with</p>
+<p>a</p>
+<p>square</p>
+<p>in</p>
+<p>the</p>
+<p>four</p>
+<p>in</p>
+<p>the</p>
+<p>vector</p>
+<p>graph</p>
+<p>and</p>
+<p>it</p>
+<p>shows</p>
+<p>the</p>
+<p>substitution</p>
+<p>on</p>
+<p>figure</p>
+<p>13</p>
+<p>replacing</p>
+<p>the</p>
+<p>local</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>with</p>
+<p>a</p>
+<p>local</p>
+<p>generalized</p>
+<p>free</p>
+<p>energy</p>
+<p>pool</p>
+<p>replacing</p>
+<p>q</p>
+<p>on</p>
+<p>the</p>
+<p>data</p>
+<p>or on</p>
+<p>y</p>
+<p>with</p>
+<p>p</p>
+<p>that</p>
+<p>conditions</p>
+<p>on</p>
+<p>x</p>
+<p>and</p>
+<p>z</p>
+<p>this</p>
+<p>red</p>
+<p>piece</p>
+<p>is</p>
+<p>being</p>
+<p>called</p>
+<p>attention</p>
+<p>to</p>
+<p>and</p>
+<p>we'll</p>
+<p>unpack</p>
+<p>that</p>
+<p>more</p>
+<p>with</p>
+<p>the</p>
+<p>authors</p>
+<p>and</p>
+<p>on</p>
+
+<p>top</p>
+<p>of</p>
+<p>that</p>
+<p>lastly</p>
+<p>the</p>
+<p>authors</p>
+<p>compress</p>
+<p>the</p>
+<p>constraint</p>
+<p>for</p>
+<p>an</p>
+<p>effect</p>
+<p>to</p>
+<p>make</p>
+<p>it</p>
+<p>easier</p>
+<p>to</p>
+<p>read</p>
+<p>and</p>
+<p>only</p>
+<p>deviations</p>
+<p>relative</p>
+<p>to the</p>
+<p>default</p>
+<p>battery</p>
+<p>energy</p>
+<p>are</p>
+<p>shown</p>
+<p>and</p>
+<p>the</p>
+<p>B</p>
+<p>chain</p>
+<p>is</p>
+<p>introduced</p>
+<p>as a</p>
+<p>series</p>
+<p>of</p>
+<p>beads</p>
+<p>connected</p>
+<p>by</p>
+<p>edges</p>
+<p>and</p>
+<p>is</p>
+<p>summarized</p>
+<p>if</p>
+<p>it</p>
+<p>contains</p>
+<p>no</p>
+<p>extra</p>
+<p>information</p>
+<p>and</p>
+<p>the</p>
+<p>authors</p>
+<p>go</p>
+<p>into</p>
+<p>depth</p>
+<p>but</p>
+<p>I</p>
+<p>will</p>
+<p>just</p>
+<p>keep</p>
+<p>it</p>
+<p>to</p>
+<p>this</p>
+<p>where</p>
+<p>they</p>
+<p>go</p>
+<p>from</p>
+<p>the</p>
+<p>left</p>
+<p>image</p>
+<p>to</p>
+<p>the</p>
+<p>height</p>
+<p>so</p>
+<p>the</p>
+<p>height</p>
+<p>is</p>
+<p>the</p>
+<p>cleaned</p>
+<p>up</p>
+<p>for</p>
+<p>an</p>
+<p>effect</p>
+<p>graph</p>
+<p>and</p>
+<p>then</p>
+<p>you</p>
+<p>can</p>
+<p>more</p>
+<p>easily</p>
+<p>compress</p>
+<p>it</p>
+<p>and</p>
+<p>make</p>
+<p>it</p>
+<p>smaller</p>
+<p>for</p>
+<p>very</p>
+<p>large</p>
+<p>diagrams</p>
+<p>allow</p>
+<p>us</p>
+<p>to</p>
+<p>kind</p>
+<p>of</p>
+<p>compress</p>
+<p>or</p>
+<p>skip</p>
+<p>through</p>
+<p>the</p>
+<p>uninformative</p>
+<p>parts</p>
+<p>and</p>
+<p>just</p>
+<p>call</p>
+<p>attention</p>
+<p>to</p>
+<p>the</p>
+<p>new</p>
+<p>information</p>
+<p>that</p>
+<p>is</p>
+<p>being</p>
+<p>intersected</p>
+<p>and</p>
+<p>then</p>
+<p>chapter</p>
+<p>six</p>
+<p>they</p>
+<p>highlight</p>
+<p>how</p>
+<p>classical</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>original</p>
+<p>generalized</p>
+<p>free</p>
+<p>energy</p>
+<p>algorithm</p>
+<p>are</p>
+<p>special</p>
+<p>cases</p>
+<p>of</p>
+<p>the</p>
+<p>developed</p>
+<p>Lagrangian</p>
+<p>active</p>
+<p>inference</p>
+<p>so</p>
+<p>an</p>
+<p>integral</p>
+<p>part</p>
+<p>of</p>
+<p>message</p>
+<p>passing</p>
+<p>algorithms</p>
+<p>is</p>
+<p>the</p>
+<p>choice</p>
+<p>of</p>
+<p>a</p>
+<p>schedule</p>
+<p>which</p>
+<p>Daniel</p>
+<p>already</p>
+<p>explained</p>
+<p>which</p>
+<p>is</p>
+<p>the</p>
+<p>order</p>
+<p>of</p>
+<p>messages</p>
+<p>in</p>
+<p>which</p>
+<p>they</p>
+<p>are</p>
+<p>passed</p>
+<p>iterative</p>
+<p>methods</p>
+<p>are</p>
+<p>sensitive</p>
+<p>to</p>
+<p>the</p>
+<p>order</p>
+<p>and</p>
+<p>Lagrangian</p>
+<p>active</p>
+<p>inference</p>
+<p>is</p>
+<p>an</p>
+<p>iterative</p>
+<p>method</p>
+<p>and</p>
+<p>might</p>
+<p>be</p>
+<p>sensitive</p>
+<p>to</p>
+<p>the</p>
+<p>choice</p>
+<p>of</p>
+<p>schedule</p>
+<p>so</p>
+<p>choosing</p>
+<p>the</p>
+<p>schedule</p>
+<p>carefully</p>
+<p>allows</p>
+<p>us</p>
+<p>to</p>
+<p>recover</p>
+<p>classical</p>
+<p>active</p>
+<p>inference</p>
+<p>planning</p>
+<p>algorithms</p>
+<p>as a</p>
+<p>special</p>
+<p>case</p>
+<p>and</p>
+<p>figure</p>
+<p>20</p>
+<p>shows</p>
+<p>the</p>
+<p>constraint</p>
+<p>for</p>
+<p>an</p>
+<p>factor</p>
+<p>graph</p>
+<p>as a</p>
+<p>composite</p>
+<p>node</p>
+<p>of a</p>
+<p>composite</p>
+<p>node</p>
+<p>for</p>
+<p>the</p>
+<p>Lagrangian</p>
+<p>active</p>
+<p>inference</p>
+<p>on</p>
+<p>discrete</p>
+<p>state</p>
+<p>spaces</p>
+<p>equation</p>
+<p>on the</p>
+<p>height</p>
+<p>show</p>
+<p>the</p>
+<p>corresponding</p>
+<p>factors</p>
+<p>where</p>
+<p>h</p>
+<p>a</p>
+<p>is</p>
+<p>defined</p>
+<p>as a</p>
+<p>function</p>
+<p>of</p>
+<p>the</p>
+<p>transition</p>
+<p>matrix</p>
+<p>required</p>
+<p>for</p>
+<p>the</p>
+<p>order</p>
+<p>equations</p>
+<p>and</p>
+<p>figure</p>
+<p>21</p>
+<p>shows</p>
+<p>the</p>
+<p>message</p>
+<p>updates</p>
+<p>some</p>
+<p>cannot be</p>
+<p>solved</p>
+<p>in closed</p>
+<p>form</p>
+<p>and</p>
+<p>instead</p>
+<p>require</p>
+<p>multicolor</p>
+<p>estimates</p>
+<p>u of</p>
+<p>x is</p>
+<p>the</p>
+<p>average</p>
+<p>free</p>
+<p>energy</p>
+<p>of</p>
+<p>the</p>
+<p>composite</p>
+<p>node</p>
+<p>and</p>
+<p>corresponds</p>
+<p>exactly</p>
+<p>to</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>issues</p>
+<p>and</p>
+<p>standard</p>
+<p>active</p>
+<p>inference</p>
+<p>where</p>
+<p>the</p>
+<p>composite</p>
+<p>nodes</p>
+<p>the</p>
+<p>block</p>
+<p>with</p>
+<p>a</p>
+<p>striped</p>
+<p>block</p>
+<p>around</p>
+<p>it</p>
+<p>and</p>
+<p>M of</p>
+<p>Z</p>
+<p>and</p>
+<p>M of</p>
+<p>A</p>
+<p>are</p>
+<p>solved</p>
+<p>differently</p>
+<p>than</p>
+<p>the</p>
+<p>rest</p>
+<p>they</p>
+<p>require</p>
+<p>Z-bar</p>
+<p>is</p>
+<p>solved</p>
+<p>using</p>
+<p>Newton's</p>
+<p>method</p>
+<p>as it</p>
+<p>tends</p>
+<p>to</p>
+<p>fluctuate</p>
+<p>between</p>
+<p>multiple</p>
+<p>extremes</p>
+<p>and</p>
+<p>M</p>
+<p>A</p>
+<p>is</p>
+<p>estimated</p>
+<p>using</p>
+<p>a</p>
+<p>sampling</p>
+<p>procedure</p>
+<p>and</p>
+<p>so</p>
+<p>below</p>
+<p>shows</p>
+<p>the</p>
+<p>generative</p>
+<p>model</p>
+<p>of</p>
+<p>a</p>
+<p>discrete</p>
+<p>prompt</p>
+<p>and</p>
+<p>the</p>
+<p>equations</p>
+<p>below</p>
+<p>that</p>
+<p>show</p>
+<p>the</p>
+<p>factors</p>
+<p>and</p>
+<p>note</p>
+<p>again</p>
+<p>the</p>
+<p>head</p>
+<p>on</p>
+<p>u</p>
+<p>so</p>
+<p>the</p>
+<p>edges</p>
+<p>are</p>
+<p>fixed</p>
+<p>and</p>
+<p>calculating</p>
+<p>the</p>
+<p>generalized</p>
+<p>free</p>
+<p>energy</p>
+<p>is</p>
+<p>done</p>
+<p>using</p>
+<p>a</p>
+<p>forward</p>
+<p>sweep</p>
+<p>which</p>
+<p>you can</p>
+<p>see</p>
+<p>with</p>
+<p>the</p>
+<p>arrows</p>
+<p>on the</p>
+<p>bottom</p>
+<p>right</p>
+<p>going</p>
+<p>from</p>
+<p>left</p>
+<p>to</p>
+<p>right</p>
+<p>and</p>
+<p>summing</p>
+<p>the</p>
+<p>free</p>
+<p>energy</p>
+<p>terms</p>
+<p>over</p>
+<p>all</p>
+<p>the</p>
+<p>substituted</p>
+<p>composite</p>
+<p>nodes</p>
+<p>and</p>
+<p>these</p>
+<p>should</p>
+<p>then be</p>
+<p>equal</p>
+<p>to the</p>
+<p>result</p>
+<p>from</p>
+<p>the</p>
+<p>shown</p>
+<p>equation</p>
+<p>cool</p>
+<p>these</p>
+<p>images</p>
+<p>are just</p>
+<p>so</p>
+<p>interesting</p>
+<p>even</p>
+<p>without</p>
+<p>knowing</p>
+<p>what</p>
+<p>they</p>
+<p>are</p>
+<p>reconstructing</p>
+<p>original</p>
+<p>generalized</p>
+<p>free</p>
+<p>energy</p>
+<p>method</p>
+<p>is</p>
+<p>then a</p>
+<p>matter</p>
+<p>of</p>
+<p>including</p>
+<p>past</p>
+<p>observations</p>
+<p>for past</p>
+<p>!</p>
+<p>time</p>
+<p>steps</p>
+<p>adding</p>
+<p>data</p>
+<p>constraints</p>
+<p>while</p>
+<p>for future</p>
+<p>type</p>
+<p>steps</p>
+<p>adding</p>
+<p>piece</p>
+<p>substitution</p>
+<p>and</p>
+<p>the</p>
+<p>name</p>
+<p>field</p>
+<p>is</p>
+<p>applied</p>
+<p>to</p>
+<p>all</p>
+<p>the</p>
+<p>nodes</p>
+<p>the</p>
+<p>schedule</p>
+<p>the</p>
+<p>order</p>
+<p>of</p>
+<p>messages</p>
+<p>is</p>
+<p>shown</p>
+<p>below</p>
+<p>the</p>
+<p>update</p>
+<p>equations</p>
+<p>of the</p>
+<p>generalized</p>
+<p>free</p>
+<p>energy</p>
+<p>using</p>
+<p>this</p>
+<p>model</p>
+<p>are</p>
+<p>the</p>
+<p>same</p>
+<p>as</p>
+<p>of</p>
+<p>the</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>and</p>
+<p>then</p>
+<p>the</p>
+<p>authors</p>
+<p>work</p>
+<p>on</p>
+<p>an</p>
+<p>example</p>
+<p>which</p>
+<p>is</p>
+<p>the</p>
+<p>classic</p>
+<p>teammates</p>
+<p>task</p>
+<p>so</p>
+<p>the</p>
+<p>tools</p>
+<p>in</p>
+<p>this</p>
+<p>paper</p>
+<p>are</p>
+<p>not</p>
+<p>limited</p>
+<p>to</p>
+<p>restating</p>
+<p>prior</p>
+<p>work</p>
+<p>it</p>
+<p>offers</p>
+<p>more</p>
+<p>advantages</p>
+<p>one</p>
+<p>of</p>
+<p>which</p>
+<p>is</p>
+<p>the</p>
+<p>ability</p>
+<p>to</p>
+<p>directly</p>
+<p>infer</p>
+<p>a</p>
+<p>policy</p>
+<p>instead</p>
+<p>of</p>
+<p>post</p>
+<p>hoc</p>
+<p>selection</p>
+<p>choosing</p>
+<p>actions</p>
+<p>which</p>
+<p>have</p>
+<p>the</p>
+<p>best</p>
+<p>energy</p>
+<p>terms</p>
+<p>instead</p>
+<p>you</p>
+<p>can</p>
+<p>do</p>
+<p>it</p>
+<p>immediately</p>
+<p>so</p>
+<p>the</p>
+<p>optimal</p>
+<p>action</p>
+<p>to</p>
+<p>take</p>
+<p>is</p>
+<p>therefore</p>
+<p>to</p>
+<p>visit</p>
+
+<p>but</p>
+<p>the</p>
+<p>optimal</p>
+<p>action</p>
+<p>in the</p>
+<p>teammates</p>
+<p>is</p>
+<p>to</p>
+<p>first</p>
+<p>visit</p>
+<p>four</p>
+<p>because</p>
+<p>you</p>
+<p>can</p>
+<p>get</p>
+<p>information</p>
+<p>about</p>
+<p>two</p>
+<p>and</p>
+<p>three</p>
+<p>rather than</p>
+<p>immediately</p>
+<p>try to</p>
+<p>go to</p>
+<p>two</p>
+<p>and</p>
+<p>three</p>
+<p>and</p>
+<p>that</p>
+<p>is</p>
+<p>the</p>
+<p>hallmark</p>
+<p>of an</p>
+<p>active</p>
+<p>inference</p>
+<p>agent</p>
+<p>yeah</p>
+
+<p>lot</p>
+<p>to</p>
+<p>explore</p>
+<p>here</p>
+<p>but</p>
+<p>instead</p>
+<p>of</p>
+<p>relying</p>
+<p>on</p>
+<p>the</p>
+<p>post</p>
+<p>hoc</p>
+<p>comparison</p>
+<p>of</p>
+<p>energy</p>
+<p>terms</p>
+<p>this</p>
+<p>is</p>
+<p>in</p>
+<p>reference</p>
+<p>to</p>
+<p>the</p>
+<p>way</p>
+<p>that</p>
+<p>usually</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>is</p>
+<p>used</p>
+<p>by</p>
+<p>taking</p>
+<p>in</p>
+<p>habit</p>
+<p>the</p>
+<p>policy</p>
+<p>prior</p>
+<p>and</p>
+<p>then</p>
+<p>iterating</p>
+<p>over</p>
+<p>every</p>
+<p>element</p>
+<p>in</p>
+<p>pi</p>
+<p>the</p>
+<p>policy</p>
+<p>prior</p>
+<p>and</p>
+<p>sharpening</p>
+<p>or updating</p>
+<p>them</p>
+<p>according to</p>
+<p>the</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>with a</p>
+<p>pragmatic</p>
+<p>value</p>
+<p>and the</p>
+<p>epistemic</p>
+<p>value</p>
+<p>component</p>
+<p>so you</p>
+<p>get some</p>
+<p>policy</p>
+<p>posterior</p>
+<p>and then</p>
+<p>you might</p>
+<p>select</p>
+<p>simply the</p>
+<p>best one</p>
+<p>or you</p>
+<p>might take</p>
+<p>some</p>
+<p>temperature</p>
+<p>guided</p>
+<p>sampling</p>
+<p>across</p>
+<p>the</p>
+<p>policy</p>
+<p>posterior</p>
+<p>so that's</p>
+<p>a</p>
+<p>post hoc</p>
+<p>comparison</p>
+<p>of</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>terms</p>
+<p>and</p>
+<p>with</p>
+<p>the</p>
+<p>!</p>
+<p>the</p>
+<p>models</p>
+<p>now have</p>
+<p>the ability</p>
+<p>to directly</p>
+<p>infer</p>
+<p>policy</p>
+<p>potentially</p>
+<p>without</p>
+<p>explicit</p>
+<p>consideration</p>
+<p>of</p>
+<p>counterfactuals</p>
+<p>or at the</p>
+<p>very least</p>
+<p>without this</p>
+<p>kind of a</p>
+<p>post hoc</p>
+<p>comparison</p>
+<p>and so</p>
+<p>they build</p>
+<p>on that</p>
+<p>and create</p>
+<p>another</p>
+<p>model</p>
+<p>and note</p>
+<p>that</p>
+<p>in equation</p>
+<p>47 they</p>
+<p>use a</p>
+<p>mixture</p>
+<p>model of</p>
+<p>candidate</p>
+<p>transition</p>
+<p>matrices</p>
+<p>indexed by</p>
+<p>UK</p>
+<p>so each</p>
+<p>action</p>
+<p>has a</p>
+<p>different</p>
+<p>transition</p>
+<p>matrix</p>
+<p>and</p>
+<p>yeah</p>
+<p>a pinch</p>
+<p>of</p>
+<p>illustrations</p>
+<p>and figure</p>
+<p>28 shows</p>
+<p>an agent</p>
+<p>that initially</p>
+<p>prefers the</p>
+<p>epistemic</p>
+<p>action</p>
+<p>and so</p>
+<p>moves</p>
+<p>down</p>
+<p>to state</p>
+<p>4</p>
+<p>and</p>
+<p>subsequently</p>
+<p>exhibits a</p>
+<p>preference</p>
+<p>for either</p>
+<p>of the</p>
+<p>potentially</p>
+<p>rewarding</p>
+<p>arms</p>
+<p>so of course</p>
+<p>left or</p>
+<p>right</p>
+<p>and this</p>
+<p>shows that</p>
+<p>the Lagrangian</p>
+<p>active</p>
+<p>inference</p>
+<p>is able</p>
+<p>to infer</p>
+<p>the optimal</p>
+<p>policy</p>
+<p>and that</p>
+<p>approach</p>
+<p>can reproduce</p>
+<p>prior results</p>
+<p>of the</p>
+<p>teammates</p>
+<p>and then</p>
+<p>the authors</p>
+<p>do it</p>
+<p>again</p>
+<p>but now</p>
+<p>by adding</p>
+<p>a data</p>
+<p>constraint</p>
+<p>and this</p>
+<p>is similar</p>
+<p>to using</p>
+<p>a maximum</p>
+<p>posteriori</p>
+<p>estimate</p>
+<p>which basically</p>
+<p>means that</p>
+<p>the action</p>
+<p>is yes</p>
+<p>or no</p>
+<p>so it's</p>
+<p>100%</p>
+<p>or not</p>
+<p>yeah</p>
+<p>by pushing</p>
+<p>through the</p>
+<p>point mass</p>
+<p>constraint</p>
+<p>kind of like</p>
+<p>that</p>
+<p>Dirac delta</p>
+<p>constraint</p>
+<p>all that can</p>
+<p>be shared</p>
+<p>is the</p>
+<p>first moment</p>
+<p>which is</p>
+<p>just the</p>
+<p>data points</p>
+<p>value</p>
+<p>so here</p>
+<p>it's like</p>
+<p>you might</p>
+<p>have a</p>
+<p>70% chance</p>
+<p>of doing</p>
+<p>thing</p>
+<p>one</p>
+<p>20%</p>
+<p>2%</p>
+<p>1%</p>
+<p>but then</p>
+<p>the action</p>
+<p>selected</p>
+<p>is decisive</p>
+<p>and so you</p>
+<p>have this</p>
+<p>decisive</p>
+<p>passing</p>
+<p>of action</p>
+<p>and the</p>
+<p>decisive</p>
+<p>realization</p>
+<p>of location</p>
+<p>even if</p>
+<p>also</p>
+<p>there's like</p>
+<p>a location</p>
+<p>distribution</p>
+<p>that includes</p>
+<p>support over</p>
+<p>the entire</p>
+<p>maze</p>
+<p>or a</p>
+<p>policy</p>
+<p>distribution</p>
+<p>that includes</p>
+<p>support</p>
+<p>overall</p>
+<p>policies</p>
+<p>and then</p>
+<p>to conclude</p>
+<p>in this</p>
+<p>paper</p>
+<p>we have</p>
+<p>proposed</p>
+<p>a novel</p>
+<p>approach</p>
+<p>to active</p>
+<p>inference</p>
+<p>based on</p>
+<p>Lagrangian</p>
+<p>optimization</p>
+<p>which we</p>
+<p>have named</p>
+<p>Lagrangian</p>
+<p>active</p>
+<p>inference</p>
+<p>we</p>
+<p>demonstrated</p>
+<p>Lagrangian</p>
+<p>active</p>
+<p>inference</p>
+<p>on a</p>
+<p>classic</p>
+<p>benchmark</p>
+<p>problem</p>
+<p>for the</p>
+<p>literature</p>
+<p>and found</p>
+<p>that it</p>
+<p>enhanced</p>
+<p>epistemic</p>
+<p>drive</p>
+<p>that is</p>
+<p>a hallmark</p>
+<p>feature</p>
+<p>it presents</p>
+<p>three main</p>
+<p>advantages</p>
+<p>over previous</p>
+<p>algorithms</p>
+<p>first</p>
+<p>an advantage</p>
+<p>is the</p>
+<p>computational</p>
+<p>efficiency</p>
+<p>afforded</p>
+<p>by being</p>
+<p>able to</p>
+<p>pass</p>
+<p>backwards</p>
+<p>messages</p>
+<p>instead</p>
+<p>of needing</p>
+<p>to perform</p>
+<p>forward</p>
+<p>haulouts</p>
+<p>for every</p>
+<p>policy</p>
+<p>like a</p>
+<p>tree</p>
+<p>search</p>
+<p>so</p>
+<p>it</p>
+<p>scales</p>
+<p>linearly</p>
+<p>over</p>
+<p>time</p>
+<p>a second</p>
+<p>advantage</p>
+<p>is that</p>
+<p>it allows</p>
+<p>for directly</p>
+<p>inferring</p>
+<p>posteriors</p>
+<p>over control</p>
+<p>signals</p>
+<p>instead of</p>
+<p>relying on</p>
+<p>model</p>
+<p>comparison</p>
+<p>like</p>
+<p>Daniel</p>
+<p>just</p>
+<p>explained</p>
+<p>and</p>
+<p>thirdly</p>
+<p>it is</p>
+<p>inherently</p>
+<p>modular</p>
+<p>and</p>
+<p>consequently</p>
+<p>works</p>
+<p>for</p>
+<p>freely</p>
+<p>definable</p>
+<p>constraint</p>
+<p>for any</p>
+<p>factor</p>
+<p>graphs</p>
+<p>while</p>
+<p>prior</p>
+<p>workers</p>
+<p>focused</p>
+<p>mostly</p>
+<p>on</p>
+<p>specific</p>
+<p>generative</p>
+<p>models</p>
+<p>and they</p>
+<p>have also</p>
+<p>introduced</p>
+<p>a notation</p>
+<p>for writing</p>
+<p>down</p>
+<p>constraints</p>
+<p>and piece</p>
+<p>substitutions</p>
+<p>on a</p>
+<p>four-day</p>
+<p>graph</p>
+<p>and the</p>
+<p>constraint</p>
+<p>factor</p>
+<p>four-day</p>
+<p>graphs</p>
+<p>are useful</p>
+<p>not only</p>
+<p>for active</p>
+<p>inference</p>
+<p>but for</p>
+<p>specifying</p>
+<p>free energy</p>
+<p>functionals</p>
+<p>in general</p>
+<p>and the</p>
+<p>authors hope</p>
+<p>that this</p>
+<p>can become</p>
+<p>a standard</p>
+<p>tool</p>
+<p>similar</p>
+<p>to</p>
+<p>four-day</p>
+<p>factor</p>
+<p>graphs</p>
+<p>when it</p>
+<p>is</p>
+<p>desirable</p>
+<p>not</p>
+<p>to just</p>
+<p>write</p>
+<p>the</p>
+<p>model</p>
+<p>but</p>
+<p>also</p>
+<p>a</p>
+<p>family</p>
+<p>of</p>
+<p>distributions</p>
+<p>in the</p>
+<p>future</p>
+<p>work</p>
+<p>to</p>
+<p>expand</p>
+<p>to</p>
+<p>extend</p>
+<p>the</p>
+<p>work</p>
+<p>to</p>
+<p>more</p>
+<p>node</p>
+<p>constructions</p>
+<p>to further</p>
+<p>open the</p>
+<p>scope</p>
+<p>that can be</p>
+<p>attacked</p>
+<p>with active</p>
+<p>inference</p>
+<p>awesome</p>
+<p>work</p>
+<p>great</p>
+<p>job</p>
+<p>preparing</p>
+<p>it</p>
+<p>yakub</p>
+<p>anything</p>
+<p>you want</p>
+<p>to add</p>
+<p>on part</p>
+<p>one</p>
+<p>no</p>
+<p>at the</p>
+<p>moment</p>
+<p>okay</p>
+<p>scaling</p>
+<p>linearly</p>
+<p>in time</p>
+<p>is really</p>
+<p>fascinating</p>
+<p>like</p>
+<p>if you</p>
+<p>planned</p>
+<p>10 time</p>
+<p>steps</p>
+<p>should</p>
+<p>the</p>
+<p>11th</p>
+<p>step</p>
+<p>be</p>
+<p>a</p>
+<p>10%</p>
+<p>bump</p>
+<p>in</p>
+<p>difficulty</p>
+<p>or</p>
+<p>should</p>
+<p>it</p>
+<p>be</p>
+<p>another</p>
+<p>combinatoric</p>
+<p>explosion</p>
+<p>every</p>
+<p>little</p>
+<p>kilometer</p>
+<p>deeper</p>
+<p>into</p>
+<p>the</p>
+<p>future</p>
+<p>so</p>
+<p>second</p>
+<p>paper</p>
+<p>okay</p>
+<p>first</p>
+<p>just</p>
+<p>going</p>
+<p>in</p>
+<p>deeply</p>
+<p>to</p>
+<p>the</p>
+<p>first</p>
+<p>sentences</p>
+<p>before</p>
+<p>accelerating</p>
+<p>across</p>
+<p>so</p>
+<p>they</p>
+<p>begin</p>
+<p>the</p>
+<p>paper</p>
+<p>saying</p>
+<p>free</p>
+<p>energy</p>
+<p>principle</p>
+<p>postulates</p>
+<p>that the</p>
+<p>behavior</p>
+<p>of</p>
+<p>biological</p>
+<p>agents</p>
+<p>can be</p>
+<p>modeled</p>
+<p>as</p>
+<p>minimizing</p>
+<p>a</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>and</p>
+<p>this</p>
+<p>is</p>
+<p>commonly</p>
+<p>brought</p>
+<p>up</p>
+<p>that</p>
+<p>we</p>
+<p>can</p>
+<p>model</p>
+<p>biological</p>
+<p>agents</p>
+<p>as</p>
+<p>or</p>
+<p>through</p>
+<p>or</p>
+<p>with</p>
+<p>minimizing</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>just like</p>
+<p>saying</p>
+<p>we can</p>
+<p>model</p>
+<p>this</p>
+<p>regression</p>
+<p>by</p>
+<p>fitting</p>
+<p>an</p>
+<p>L2</p>
+<p>norm</p>
+<p>we can</p>
+<p>model</p>
+<p>this</p>
+<p>biological</p>
+<p>agent</p>
+<p>by</p>
+<p>fitting</p>
+<p>the</p>
+<p>elbow</p>
+<p>or</p>
+<p>the</p>
+<p>VFE</p>
+<p>active</p>
+<p>inference</p>
+<p>which is</p>
+<p>AIF</p>
+<p>in this</p>
+<p>paper</p>
+<p>is a</p>
+<p>corollary</p>
+<p>of the</p>
+<p>FEP</p>
+<p>that describes</p>
+<p>how agents</p>
+<p>propose</p>
+<p>effective</p>
+<p>agents</p>
+<p>by</p>
+<p>minimizing</p>
+<p>an</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>objective</p>
+<p>that</p>
+<p>internalizes</p>
+<p>a generative</p>
+<p>model</p>
+<p>GM</p>
+<p>of the</p>
+<p>agent's</p>
+<p>environment</p>
+<p>and prior</p>
+<p>beliefs</p>
+<p>about</p>
+<p>desired</p>
+<p>outcomes</p>
+<p>so</p>
+<p>VFE</p>
+<p>is the</p>
+<p>real-time</p>
+<p>behavior</p>
+<p>minimization</p>
+<p>EFE</p>
+<p>EFE</p>
+<p>brings it</p>
+<p>into the</p>
+<p>prospective</p>
+<p>setting</p>
+<p>by</p>
+<p>introducing</p>
+<p>epistemic</p>
+<p>imperative</p>
+<p>and also</p>
+<p>talking about</p>
+<p>observations</p>
+<p>that haven't</p>
+<p>happened</p>
+<p>yet</p>
+<p>Variational</p>
+<p>objectives</p>
+<p>for active</p>
+<p>inference</p>
+<p>can be</p>
+<p>minimized</p>
+<p>by message</p>
+<p>passing</p>
+<p>on a</p>
+<p>Forney</p>
+<p>style</p>
+<p>factor</p>
+<p>graph</p>
+<p>representation</p>
+<p>so</p>
+<p>everything</p>
+<p>we know</p>
+<p>about</p>
+<p>Bayesian</p>
+<p>graphical</p>
+<p>models</p>
+<p>transposes</p>
+<p>into</p>
+<p>the</p>
+<p>FFG</p>
+<p>space</p>
+<p>the</p>
+<p>FFG</p>
+<p>is not</p>
+<p>a kind</p>
+<p>of</p>
+<p>Bayes</p>
+<p>graph</p>
+<p>it is</p>
+<p>a dual</p>
+<p>a different</p>
+<p>kind</p>
+<p>of</p>
+<p>graph</p>
+<p>conveying</p>
+<p>the same</p>
+<p>information</p>
+<p>in a</p>
+<p>restructured</p>
+<p>format</p>
+<p>that we</p>
+<p>can then</p>
+<p>optimize</p>
+<p>or implement</p>
+<p>differently</p>
+<p>several</p>
+<p>authors</p>
+<p>have</p>
+<p>attempted</p>
+<p>to</p>
+<p>scale</p>
+<p>active</p>
+<p>inference</p>
+<p>under</p>
+<p>message</p>
+<p>passing</p>
+<p>framework</p>
+<p>however</p>
+<p>agents</p>
+<p>based</p>
+<p>on</p>
+<p>these</p>
+<p>approaches</p>
+<p>lack</p>
+<p>crucial</p>
+<p>epistemic</p>
+<p>characteristics</p>
+<p>so</p>
+<p>one</p>
+<p>question</p>
+<p>why</p>
+<p>was</p>
+<p>that</p>
+<p>was</p>
+<p>it</p>
+<p>that</p>
+<p>previous</p>
+<p>authors</p>
+<p>only</p>
+<p>modeled</p>
+<p>VFE</p>
+<p>but not</p>
+<p>EFE</p>
+<p>or</p>
+<p>was there</p>
+<p>some</p>
+<p>failure</p>
+<p>of the</p>
+<p>EFE</p>
+<p>loading</p>
+<p>on</p>
+<p>epistemic</p>
+<p>value</p>
+<p>I think</p>
+<p>the answer</p>
+<p>is the</p>
+<p>first</p>
+<p>one</p>
+<p>in</p>
+<p>part</p>
+<p>one</p>
+<p>they</p>
+<p>identified</p>
+<p>this</p>
+<p>hiatus</p>
+<p>in the</p>
+<p>specification</p>
+<p>space</p>
+<p>and</p>
+<p>they</p>
+<p>introduced</p>
+<p>the</p>
+<p>CFFG</p>
+<p>and</p>
+<p>then</p>
+<p>in</p>
+<p>part</p>
+<p>two</p>
+<p>which</p>
+<p>is</p>
+<p>the</p>
+<p>current</p>
+<p>paper</p>
+<p>we</p>
+<p>use</p>
+<p>the</p>
+<p>CFFG</p>
+<p>notation</p>
+<p>as</p>
+<p>introduced</p>
+<p>in</p>
+<p>part</p>
+<p>one</p>
+<p>to</p>
+<p>define</p>
+<p>locally</p>
+<p>constrained</p>
+<p>variational</p>
+<p>objectives</p>
+<p>and</p>
+<p>derive</p>
+<p>variational</p>
+<p>message</p>
+<p>updates</p>
+<p>for</p>
+<p>GFE</p>
+<p>based</p>
+<p>control</p>
+<p>using</p>
+<p>variational</p>
+<p>calculus</p>
+<p>the</p>
+<p>resulting</p>
+<p>control</p>
+<p>algorithms</p>
+<p>introduce</p>
+<p>epistemic</p>
+<p>behavior</p>
+<p>in</p>
+<p>synthetic</p>
+<p>active</p>
+<p>inference</p>
+<p>agents</p>
+<p>we</p>
+<p>reason</p>
+<p>purely</p>
+<p>from</p>
+<p>an</p>
+<p>engineering</p>
+<p>point</p>
+<p>of</p>
+<p>view</p>
+<p>and</p>
+<p>do</p>
+<p>not</p>
+<p>concern</p>
+<p>ourselves</p>
+<p>with</p>
+<p>biological</p>
+<p>plausibility</p>
+<p>what a</p>
+<p>sentence</p>
+<p>in</p>
+<p>this</p>
+<p>paper</p>
+<p>our</p>
+<p>contributions</p>
+<p>are</p>
+<p>threefold</p>
+<p>they</p>
+<p>use</p>
+<p>variational</p>
+<p>calculus</p>
+<p>to</p>
+<p>derive</p>
+<p>message</p>
+<p>update</p>
+<p>expressions</p>
+<p>for</p>
+<p>GFE</p>
+<p>control</p>
+<p>they</p>
+<p>derive</p>
+<p>specialized</p>
+<p>messages</p>
+<p>for</p>
+<p>discrete</p>
+<p>variable</p>
+<p>model</p>
+<p>and</p>
+<p>they</p>
+<p>implement</p>
+<p>the</p>
+<p>results</p>
+<p>in</p>
+<p>a</p>
+<p>reactive</p>
+<p>programming</p>
+<p>framework</p>
+<p>simulating</p>
+<p>a</p>
+<p>perception</p>
+<p>action</p>
+<p>cycle</p>
+<p>on</p>
+<p>the</p>
+<p>teammates</p>
+<p>with</p>
+<p>a</p>
+<p>full</p>
+<p>message</p>
+<p>passing</p>
+<p>account</p>
+<p>and</p>
+<p>reactive</p>
+<p>implementation</p>
+<p>of</p>
+<p>GFE</p>
+<p>optimization</p>
+<p>it</p>
+<p>becomes</p>
+<p>possible</p>
+<p>to</p>
+<p>derive</p>
+<p>and</p>
+<p>reuse</p>
+<p>custom</p>
+<p>message</p>
+<p>updates</p>
+<p>across</p>
+<p>models</p>
+<p>and</p>
+<p>get a</p>
+<p>step</p>
+<p>closer</p>
+<p>to</p>
+<p>realizing</p>
+<p>scalable</p>
+<p>!</p>
+<p>Synthetic</p>
+<p>active</p>
+<p>inference</p>
+<p>agents</p>
+<p>for</p>
+<p>industrial</p>
+<p>applications</p>
+<p>so</p>
+<p>what</p>
+<p>is it</p>
+<p>about</p>
+<p>their</p>
+<p>contributions</p>
+<p>that</p>
+<p>makes</p>
+<p>the</p>
+<p>industrial</p>
+<p>and</p>
+<p>engineering</p>
+<p>work</p>
+<p>more</p>
+<p>transferable</p>
+<p>or</p>
+<p>scalable</p>
+<p>then</p>
+<p>they</p>
+<p>summarize</p>
+<p>the</p>
+<p>coming</p>
+<p>sections</p>
+<p>section</p>
+<p>2</p>
+<p>reviews</p>
+<p>variational</p>
+<p>base</p>
+<p>section</p>
+<p>3</p>
+<p>reviews</p>
+<p>active</p>
+<p>inference</p>
+<p>perception</p>
+<p>learning</p>
+<p>and</p>
+<p>control</p>
+<p>in</p>
+<p>terms</p>
+<p>of</p>
+<p>message</p>
+<p>passing</p>
+<p>on</p>
+<p>the</p>
+<p>CFFG</p>
+<p>section</p>
+<p>4</p>
+<p>focuses</p>
+<p>on</p>
+<p>the</p>
+<p>constraint</p>
+<p>definitions</p>
+<p>around</p>
+<p>a</p>
+<p>sub</p>
+<p>model</p>
+<p>of</p>
+<p>two</p>
+<p>facing</p>
+<p>nodes</p>
+<p>!</p>
+<p>and</p>
+<p>derives</p>
+<p>stationary</p>
+<p>solutions</p>
+<p>and</p>
+<p>messages</p>
+<p>for</p>
+<p>GFE</p>
+<p>based</p>
+<p>control</p>
+<p>section</p>
+<p>5</p>
+<p>applies</p>
+<p>the</p>
+<p>results</p>
+<p>to</p>
+<p>a</p>
+<p>specific</p>
+<p>discrete</p>
+<p>variable</p>
+<p>goal</p>
+<p>observation</p>
+<p>sub</p>
+<p>model</p>
+<p>that</p>
+<p>is</p>
+<p>often</p>
+<p>used</p>
+<p>in</p>
+<p>AIF</p>
+<p>practice</p>
+<p>they</p>
+<p>then</p>
+<p>work</p>
+<p>towards</p>
+<p>implementation</p>
+<p>in a</p>
+<p>simulated</p>
+<p>setting</p>
+<p>and</p>
+<p>describe</p>
+<p>a</p>
+<p>perception</p>
+<p>action</p>
+<p>cycle</p>
+<p>in</p>
+<p>terms</p>
+<p>of</p>
+<p>time</p>
+<p>dependent</p>
+<p>constraints</p>
+<p>section</p>
+<p>6</p>
+<p>the</p>
+<p>teammate's</p>
+<p>task</p>
+<p>is</p>
+<p>described</p>
+<p>in</p>
+<p>section</p>
+<p>7</p>
+<p>and</p>
+<p>simulated</p>
+<p>in</p>
+<p>a</p>
+<p>reactive</p>
+<p>programming</p>
+<p>framework</p>
+<p>in</p>
+<p>section</p>
+<p>8</p>
+<p>section</p>
+<p>9</p>
+<p>has</p>
+<p>a</p>
+<p>summary</p>
+<p>of</p>
+<p>related</p>
+<p>work</p>
+<p>and</p>
+<p>the</p>
+<p>conclusions</p>
+<p>are</p>
+<p>in</p>
+<p>section</p>
+<p>10</p>
+<p>it's</p>
+<p>also</p>
+<p>useful</p>
+<p>to</p>
+<p>put</p>
+<p>table</p>
+<p>1</p>
+<p>and</p>
+<p>table</p>
+<p>2</p>
+<p>up</p>
+<p>here</p>
+<p>table</p>
+<p>1</p>
+<p>is</p>
+<p>an</p>
+<p>overview</p>
+<p>of</p>
+<p>notational</p>
+<p>conventions</p>
+<p>1</p>
+<p>nice</p>
+
+
+
+
+<p>list</p>
+<p>of</p>
+<p>letters</p>
+<p>would</p>
+<p>be</p>
+<p>awesome</p>
+<p>to</p>
+<p>connect</p>
+<p>to</p>
+<p>the</p>
+<p>active</p>
+<p>inference</p>
+<p>ontology</p>
+<p>and</p>
+<p>then</p>
+<p>table</p>
+<p>2</p>
+<p>has</p>
+<p>a</p>
+<p>bunch</p>
+<p>of</p>
+<p>acronyms</p>
+
+<p>okay</p>
+<p>section</p>
+
+<p>2</p>
+<p>review</p>
+<p>of</p>
+<p>variational</p>
+<p>message</p>
+<p>passing</p>
+<p>so</p>
+<p>this</p>
+<p>section</p>
+<p>briefly</p>
+<p>reviews</p>
+<p>variational</p>
+<p>message</p>
+<p>passing</p>
+<p>as a</p>
+<p>distributed</p>
+<p>approach</p>
+<p>to</p>
+<p>minimizing</p>
+
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>so</p>
+<p>first</p>
+<p>they</p>
+<p>review</p>
+<p>variational</p>
+<p>base</p>
+<p>2.1</p>
+<p>then</p>
+<p>2.2</p>
+<p>they</p>
+<p>review</p>
+<p>forney</p>
+<p>style</p>
+<p>factor</p>
+<p>graphs</p>
+<p>2.3</p>
+<p>they</p>
+<p>move</p>
+<p>to</p>
+<p>the</p>
+<p>Beth</p>
+<p>Lagrangian</p>
+<p>optimization</p>
+<p>using</p>
+<p>Lagrange</p>
+<p>multipliers</p>
+<p>we can</p>
+<p>convert</p>
+<p>the</p>
+<p>optimization</p>
+<p>on</p>
+<p>q</p>
+<p>to</p>
+<p>a</p>
+<p>freeform</p>
+<p>optimization</p>
+<p>problem</p>
+<p>of</p>
+<p>Lagrangian</p>
+<p>where</p>
+<p>Lagrangian</p>
+<p>multipliers</p>
+<p>enforce</p>
+<p>local</p>
+<p>constraints</p>
+<p>the</p>
+<p>fully</p>
+<p>local</p>
+<p>optimization</p>
+<p>then</p>
+<p>becomes</p>
+<p>this</p>
+<p>expression</p>
+<p>again</p>
+<p>more</p>
+<p>to say</p>
+<p>they're</p>
+<p>using</p>
+<p>Lagrangian</p>
+<p>constraint</p>
+<p>framework</p>
+<p>and</p>
+<p>the</p>
+<p>Beth</p>
+<p>flavor</p>
+<p>of</p>
+<p>free</p>
+<p>energy</p>
+<p>which</p>
+<p>is</p>
+<p>already</p>
+<p>node</p>
+<p>local</p>
+<p>to</p>
+<p>provide</p>
+<p>a</p>
+<p>very</p>
+<p>constrained</p>
+<p>which</p>
+<p>is to</p>
+<p>say</p>
+<p>possibly</p>
+<p>more</p>
+<p>solvable</p>
+<p>and</p>
+<p>tractable</p>
+<p>node</p>
+<p>local</p>
+<p>computation</p>
+<p>and</p>
+<p>now</p>
+<p>they</p>
+<p>get</p>
+<p>to</p>
+<p>the</p>
+<p>constrained</p>
+<p>Forney</p>
+<p>style</p>
+<p>factor</p>
+<p>graphs</p>
+<p>as we</p>
+<p>heard</p>
+<p>in</p>
+<p>part</p>
+<p>one</p>
+<p>an</p>
+<p>FFG</p>
+<p>alone</p>
+<p>does</p>
+<p>not</p>
+<p>unambiguously</p>
+<p>define</p>
+<p>a</p>
+<p>constrained</p>
+<p>VFE</p>
+<p>objective</p>
+<p>interesting</p>
+<p>question</p>
+<p>what is</p>
+<p>needed</p>
+<p>for that</p>
+<p>unambiguous</p>
+<p>identification</p>
+<p>of the</p>
+<p>VFE</p>
+<p>CFF</p>
+<p>and</p>
+<p>CFF</p>
+<p>and</p>
+<p>so</p>
+<p>here</p>
+<p>they</p>
+<p>review</p>
+<p>their</p>
+<p>CFFG</p>
+<p>notation</p>
+<p>here's</p>
+<p>figure</p>
+<p>one</p>
+<p>and</p>
+<p>we can</p>
+<p>again</p>
+<p>see</p>
+<p>that</p>
+<p>they</p>
+<p>go from</p>
+<p>the</p>
+<p>initial</p>
+<p>factor</p>
+<p>graph</p>
+<p>on the</p>
+<p>top</p>
+<p>left</p>
+<p>with</p>
+<p>an</p>
+<p>explicit</p>
+<p>CFFG</p>
+<p>on the</p>
+<p>top</p>
+<p>right</p>
+<p>then</p>
+<p>they</p>
+<p>compress</p>
+<p>it</p>
+<p>down</p>
+<p>to</p>
+<p>the</p>
+<p>bottom</p>
+<p>left</p>
+<p>and</p>
+<p>then</p>
+<p>that</p>
+<p>uniquely</p>
+<p>identifies</p>
+<p>a</p>
+<p>logistical</p>
+<p>or an</p>
+<p>operational</p>
+<p>schedule</p>
+<p>section</p>
+<p>three</p>
+<p>review</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>by</p>
+<p>variational</p>
+<p>message</p>
+<p>passing</p>
+<p>in</p>
+<p>this</p>
+<p>section</p>
+<p>we</p>
+<p>work</p>
+<p>towards</p>
+<p>a</p>
+<p>message</p>
+<p>passing</p>
+<p>formulation</p>
+<p>of</p>
+<p>synthetic</p>
+<p>active</p>
+<p>inference</p>
+<p>we</p>
+<p>start</p>
+<p>by</p>
+<p>reviewing</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>the</p>
+<p>CFFG</p>
+<p>representation</p>
+<p>for a</p>
+<p>GFE</p>
+<p>objective</p>
+<p>for</p>
+<p>control</p>
+<p>so</p>
+<p>3.1</p>
+<p>they</p>
+<p>define</p>
+<p>active</p>
+<p>inference</p>
+<p>3.2</p>
+<p>they</p>
+<p>define</p>
+<p>generative</p>
+<p>model</p>
+<p>now</p>
+<p>they</p>
+<p>go to</p>
+<p>message</p>
+<p>passing</p>
+<p>in</p>
+<p>this</p>
+<p>section</p>
+<p>we</p>
+<p>formulate</p>
+<p>a</p>
+<p>synthetic</p>
+<p>active</p>
+<p>inference</p>
+<p>as a</p>
+<p>message</p>
+<p>passing</p>
+<p>procedure</p>
+<p>on a</p>
+<p>model</p>
+<p>of</p>
+<p>past</p>
+<p>and</p>
+<p>future</p>
+<p>states</p>
+<p>inference</p>
+<p>on</p>
+<p>a</p>
+<p>model</p>
+<p>of</p>
+<p>past</p>
+<p>states</p>
+<p>relates</p>
+<p>to</p>
+<p>perception</p>
+<p>and</p>
+<p>learning</p>
+<p>while</p>
+<p>inference</p>
+<p>on</p>
+<p>a</p>
+<p>model</p>
+<p>of</p>
+<p>future</p>
+<p>states</p>
+<p>relates</p>
+<p>to</p>
+<p>control</p>
+<p>what</p>
+<p>is</p>
+<p>control</p>
+<p>if</p>
+<p>not</p>
+<p>just</p>
+<p>perception</p>
+<p>and</p>
+<p>learning</p>
+<p>we</p>
+<p>haven't</p>
+<p>had</p>
+<p>yet</p>
+<p>figure</p>
+<p>three</p>
+<p>constraint</p>
+<p>40</p>
+<p>style</p>
+<p>factor</p>
+<p>graph</p>
+<p>representations</p>
+<p>for</p>
+<p>variational</p>
+<p>objectives</p>
+<p>on</p>
+<p>models</p>
+<p>for</p>
+<p>past</p>
+<p>left</p>
+<p>and</p>
+<p>future</p>
+<p>states</p>
+<p>right</p>
+<p>!</p>
+<p>I</p>
+<p>don't</p>
+<p>know</p>
+<p>if</p>
+<p>one</p>
+<p>has</p>
+<p>to</p>
+<p>cross</p>
+<p>their</p>
+<p>eyes</p>
+<p>or</p>
+<p>do</p>
+<p>some</p>
+<p>other</p>
+<p>magic</p>
+<p>visual</p>
+<p>experience</p>
+<p>here</p>
+<p>there</p>
+<p>are</p>
+<p>some</p>
+<p>small</p>
+<p>differences</p>
+<p>like</p>
+<p>here</p>
+<p>there's</p>
+<p>a</p>
+<p>dashed</p>
+<p>box</p>
+<p>that's</p>
+<p>not</p>
+<p>here</p>
+<p>there's</p>
+<p>a</p>
+<p>data</p>
+<p>constraint</p>
+<p>clamp</p>
+<p>dangling</p>
+<p>edge</p>
+<p>here</p>
+<p>whereas</p>
+<p>that</p>
+<p>constraint</p>
+<p>is</p>
+<p>open</p>
+<p>here</p>
+<p>however</p>
+<p>the</p>
+<p>rest</p>
+<p>of</p>
+<p>the</p>
+<p>figure</p>
+<p>looks</p>
+<p>pretty</p>
+<p>similar</p>
+<p>and</p>
+<p>that</p>
+<p>tantalizingly</p>
+<p>points</p>
+<p>to</p>
+<p>some</p>
+<p>similarities</p>
+<p>between</p>
+<p>learning</p>
+<p>and</p>
+<p>memory</p>
+<p>in the</p>
+<p>past</p>
+<p>where</p>
+<p>we can</p>
+<p>clamp</p>
+<p>down</p>
+<p>part of</p>
+<p>the</p>
+<p>model</p>
+<p>to be</p>
+<p>data</p>
+<p>and</p>
+<p>consideration</p>
+<p>of the</p>
+<p>future</p>
+<p>which is</p>
+<p>to say</p>
+<p>action</p>
+<p>and</p>
+<p>control</p>
+<p>where</p>
+<p>the</p>
+<p>observations</p>
+<p>are</p>
+<p>distributional</p>
+<p>beyond</p>
+<p>the</p>
+<p>DRock</p>
+<p>and</p>
+<p>they</p>
+<p>haven't</p>
+<p>happened</p>
+<p>yet</p>
+<p>and</p>
+<p>we</p>
+<p>have</p>
+<p>agency</p>
+<p>over</p>
+<p>them</p>
+<p>happening</p>
+<p>any</p>
+<p>thoughts</p>
+<p>on that</p>
+<p>either</p>
+<p>of you</p>
+<p>it's</p>
+<p>kind of</p>
+<p>cool</p>
+<p>and it's</p>
+<p>kind of</p>
+<p>foresaged</p>
+<p>in</p>
+<p>some of</p>
+<p>the other</p>
+<p>graphical</p>
+<p>models</p>
+<p>but we'll</p>
+<p>ask the</p>
+<p>authors</p>
+<p>331</p>
+<p>talks about</p>
+<p>past</p>
+<p>states</p>
+<p>and then</p>
+<p>332</p>
+<p>goes into</p>
+<p>the model</p>
+<p>of future</p>
+<p>states</p>
+<p>so</p>
+<p>a lot</p>
+<p>to read</p>
+<p>in the</p>
+<p>paper</p>
+<p>but that</p>
+<p>key idea</p>
+<p>because</p>
+<p>future</p>
+<p>outcomes</p>
+<p>are by</p>
+<p>definition</p>
+<p>unobserved</p>
+<p>we include</p>
+<p>goal priors</p>
+<p>on the</p>
+<p>future</p>
+<p>observation</p>
+<p>variables</p>
+<p>those are</p>
+<p>preferences</p>
+<p>we expect</p>
+<p>there to</p>
+<p>be</p>
+<p>observations</p>
+<p>and we</p>
+<p>know that</p>
+<p>they will</p>
+<p>become</p>
+<p>constraints</p>
+<p>to</p>
+<p>DRock</p>
+<p>like</p>
+<p>form</p>
+<p>but</p>
+<p>in</p>
+<p>anticipation</p>
+<p>we take</p>
+<p>a</p>
+<p>distributional</p>
+<p>approach</p>
+<p>to</p>
+<p>observations</p>
+<p>that</p>
+<p>haven't</p>
+<p>happened</p>
+<p>now what</p>
+<p>if we</p>
+<p>had</p>
+<p>uncertainties</p>
+<p>about</p>
+<p>the past</p>
+<p>and we</p>
+<p>were doing</p>
+<p>kind of</p>
+<p>a</p>
+<p>policy</p>
+<p>like</p>
+<p>search</p>
+<p>in our</p>
+<p>fuzzy</p>
+<p>memory</p>
+<p>then where</p>
+<p>would</p>
+<p>time</p>
+<p>be</p>
+<p>section</p>
+<p>four</p>
+<p>they get</p>
+<p>to</p>
+<p>general</p>
+<p>GFE</p>
+<p>based</p>
+<p>message</p>
+<p>updates</p>
+<p>in the</p>
+<p>model</p>
+<p>for</p>
+<p>future</p>
+<p>states</p>
+<p>the</p>
+<p>goal</p>
+<p>prior</p>
+<p>and</p>
+<p>observation</p>
+<p>model</p>
+<p>impose</p>
+<p>simultaneous</p>
+<p>constraints</p>
+<p>on the</p>
+<p>observation</p>
+<p>variable</p>
+<p>in the</p>
+<p>corresponding</p>
+<p>CFFG</p>
+<p>this</p>
+<p>configuration</p>
+<p>is</p>
+<p>modeled</p>
+<p>by</p>
+<p>two</p>
+<p>facing</p>
+<p>nodes</p>
+<p>so</p>
+<p>I</p>
+<p>I</p>
+<p>believe</p>
+<p>those</p>
+<p>nodes</p>
+<p>might be</p>
+<p>the</p>
+<p>two</p>
+<p>in the</p>
+<p>dash</p>
+<p>box</p>
+<p>here</p>
+<p>in this</p>
+<p>section</p>
+<p>we derive</p>
+<p>the</p>
+<p>general</p>
+<p>GFE</p>
+<p>based</p>
+<p>message</p>
+<p>updates</p>
+<p>for</p>
+<p>pair</p>
+<p>facing</p>
+<p>nodes</p>
+<p>we</p>
+<p>express</p>
+<p>the</p>
+<p>local</p>
+<p>optimization</p>
+<p>problem</p>
+<p>as</p>
+<p>Lagrangian</p>
+<p>using</p>
+<p>variational</p>
+<p>calculus</p>
+<p>we then</p>
+<p>derive</p>
+<p>local</p>
+<p>stationary</p>
+<p>solutions</p>
+<p>from which</p>
+<p>we obtain</p>
+<p>general</p>
+<p>update</p>
+<p>expressions</p>
+<p>for</p>
+<p>GFE</p>
+<p>based</p>
+<p>messages</p>
+<p>so</p>
+<p>they</p>
+<p>describe</p>
+<p>the</p>
+<p>goal</p>
+<p>and</p>
+<p>the</p>
+<p>observation</p>
+<p>model</p>
+<p>4.2</p>
+<p>local</p>
+<p>Lagrangian</p>
+<p>after</p>
+<p>the</p>
+<p>substitution</p>
+<p>of</p>
+<p>the</p>
+<p>factorization</p>
+<p>and</p>
+<p>applying</p>
+<p>P</p>
+<p>substitution</p>
+<p>to</p>
+<p>the</p>
+<p>local</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>objective</p>
+<p>they</p>
+<p>get</p>
+<p>the</p>
+<p>local</p>
+<p>GFE</p>
+<p>the</p>
+<p>GFE</p>
+<p>is all</p>
+<p>set up</p>
+<p>to</p>
+<p>construct</p>
+<p>this</p>
+<p>Lagrangian</p>
+<p>and</p>
+<p>to do</p>
+<p>a</p>
+<p>variational</p>
+<p>optimization</p>
+<p>on that</p>
+<p>Lagrangian</p>
+<p>to get</p>
+<p>Q</p>
+<p>star</p>
+<p>4.3</p>
+<p>local</p>
+<p>stationary</p>
+<p>solutions</p>
+<p>Lagrangian</p>
+<p>We are</p>
+<p>now</p>
+<p>prepared</p>
+<p>to</p>
+<p>derive</p>
+<p>the</p>
+<p>stationary</p>
+<p>points</p>
+<p>of</p>
+<p>the</p>
+<p>node</p>
+<p>local</p>
+<p>Lagrangian</p>
+<p>We start</p>
+<p>by considering</p>
+<p>the</p>
+<p>node</p>
+<p>local</p>
+<p>Lagrangian</p>
+<p>as a</p>
+<p>functional</p>
+<p>of the</p>
+<p>variational</p>
+<p>factor</p>
+<p>Q</p>
+<p>sub</p>
+<p>X</p>
+<p>Lemma</p>
+<p>1</p>
+<p>stationary</p>
+<p>points</p>
+<p>of</p>
+<p>L</p>
+<p>as a</p>
+<p>functional</p>
+<p>of</p>
+<p>Q</p>
+<p>What does</p>
+<p>lemma</p>
+<p>1</p>
+<p>do or</p>
+<p>show?</p>
+<p>Lemma</p>
+<p>2</p>
+<p>We derive</p>
+<p>stationary</p>
+<p>points</p>
+<p>of</p>
+<p>equation</p>
+<p>4</p>
+<p>as a</p>
+<p>functional</p>
+<p>of</p>
+<p>Q</p>
+<p>sub</p>
+<p>Z</p>
+<p>Note</p>
+<p>that</p>
+<p>by</p>
+<p>symmetry</p>
+<p>a</p>
+<p>similar</p>
+<p>result</p>
+<p>applies</p>
+<p>to</p>
+<p>Q</p>
+<p>sub</p>
+<p>theta</p>
+<p>What</p>
+<p>does</p>
+<p>lemma</p>
+<p>2</p>
+<p>do</p>
+<p>or</p>
+<p>show?</p>
+<p>In</p>
+<p>this section</p>
+<p>we show</p>
+<p>that the</p>
+<p>stationary</p>
+<p>solutions</p>
+<p>of</p>
+<p>section</p>
+<p>4.3</p>
+<p>correspond</p>
+<p>to the</p>
+<p>fixed</p>
+<p>points</p>
+<p>of a</p>
+<p>fixed</p>
+<p>point</p>
+<p>iteration</p>
+<p>scheme</p>
+<p>Theorem</p>
+<p>1</p>
+<p>Theorem</p>
+<p>2</p>
+<p>What do</p>
+<p>these</p>
+<p>theorems</p>
+<p>do</p>
+<p>and</p>
+<p>show?</p>
+<p>4.5</p>
+<p>Convergence</p>
+<p>Considerations</p>
+<p>Some</p>
+<p>further</p>
+<p>considerations</p>
+<p>and</p>
+<p>a</p>
+<p>corollary</p>
+<p>1</p>
+<p>What does</p>
+<p>it</p>
+<p>do</p>
+<p>or</p>
+<p>show?</p>
+<p>Now</p>
+<p>we get</p>
+<p>to</p>
+<p>5</p>
+<p>Application</p>
+<p>to a</p>
+<p>discrete</p>
+<p>variable</p>
+<p>model</p>
+<p>In</p>
+<p>this</p>
+<p>section</p>
+<p>we</p>
+<p>apply</p>
+<p>the</p>
+<p>general</p>
+<p>message</p>
+<p>update</p>
+<p>rules</p>
+<p>of</p>
+<p>section</p>
+<p>4.4</p>
+<p>to a</p>
+<p>specific</p>
+<p>discrete</p>
+<p>variable</p>
+<p>model</p>
+<p>that</p>
+<p>is</p>
+<p>often</p>
+<p>used</p>
+<p>in</p>
+<p>AIF</p>
+<p>practice</p>
+<p>using</p>
+<p>the</p>
+<p>general</p>
+<p>results</p>
+<p>we</p>
+<p>derive</p>
+<p>messages</p>
+<p>on</p>
+<p>this</p>
+<p>specific</p>
+<p>model</p>
+<p>And</p>
+<p>so</p>
+<p>here</p>
+<p>we</p>
+<p>see</p>
+<p>figure</p>
+<p>5</p>
+<p>with</p>
+<p>all</p>
+<p>it's</p>
+<p>been</p>
+<p>taken</p>
+<p>all</p>
+<p>the</p>
+<p>way</p>
+<p>to</p>
+<p>the</p>
+<p>point</p>
+<p>of</p>
+<p>the</p>
+<p>logistics</p>
+<p>of</p>
+<p>the</p>
+<p>messages</p>
+<p>for</p>
+<p>those</p>
+<p>two</p>
+<p>facing</p>
+<p>nodes</p>
+<p>5.3</p>
+<p>Data</p>
+<p>Constrained</p>
+<p>Message</p>
+<p>Updates</p>
+<p>This</p>
+<p>message</p>
+<p>updates</p>
+<p>for</p>
+<p>data</p>
+<p>constrained</p>
+<p>VFE</p>
+<p>objective</p>
+<p>figure</p>
+<p>6</p>
+<p>on</p>
+<p>the</p>
+<p>left</p>
+<p>reduced</p>
+<p>to</p>
+<p>standard</p>
+<p>variational</p>
+<p>message</p>
+<p>passing</p>
+<p>updates</p>
+<p>as</p>
+<p>derived</p>
+<p>by</p>
+<p>citation</p>
+<p>28</p>
+<p>and</p>
+<p>appendix</p>
+<p>A</p>
+<p>So</p>
+<p>here</p>
+<p>we have</p>
+<p>those</p>
+<p>two</p>
+<p>nodes</p>
+<p>with</p>
+<p>a</p>
+<p>Dirac</p>
+<p>intervening</p>
+<p>Here</p>
+<p>we had</p>
+<p>x</p>
+<p>intervening</p>
+<p>in</p>
+<p>figure</p>
+<p>5</p>
+<p>so</p>
+<p>we had</p>
+<p>a</p>
+<p>distributional</p>
+<p>bandwidth</p>
+<p>now</p>
+<p>we're</p>
+<p>dealing</p>
+<p>with</p>
+<p>a</p>
+<p>Dirac</p>
+<p>distributional</p>
+<p>bandwidth</p>
+<p>or</p>
+<p>channel</p>
+<p>which</p>
+<p>is to</p>
+<p>say</p>
+<p>a</p>
+<p>data</p>
+<p>point</p>
+<p>being</p>
+<p>passed</p>
+<p>Now</p>
+<p>we get</p>
+<p>to</p>
+<p>section</p>
+<p>6</p>
+<p>perception</p>
+<p>action</p>
+<p>cycle</p>
+<p>In</p>
+<p>this</p>
+<p>section</p>
+<p>we</p>
+<p>formulate</p>
+<p>a</p>
+<p>perception</p>
+<p>action</p>
+<p>cycle</p>
+<p>that</p>
+<p>extends</p>
+<p>upon</p>
+<p>the</p>
+<p>GFE</p>
+<p>formulation</p>
+<p>Specifically</p>
+<p>we</p>
+<p>illustrate</p>
+<p>how</p>
+<p>CFFG</p>
+<p>notation</p>
+<p>allows</p>
+<p>us</p>
+<p>to</p>
+<p>be</p>
+<p>explicit</p>
+<p>about</p>
+<p>local</p>
+<p>constraints</p>
+<p>As</p>
+<p>a</p>
+<p>result</p>
+<p>the</p>
+<p>perception</p>
+<p>action</p>
+<p>cycle</p>
+<p>can</p>
+<p>be</p>
+<p>visualized</p>
+<p>as</p>
+<p>a</p>
+<p>process</p>
+<p>that</p>
+<p>modifies</p>
+<p>constraints</p>
+<p>over</p>
+<p>time</p>
+<p>Pretty</p>
+<p>cool</p>
+<p>At</p>
+<p>the</p>
+<p>initial</p>
+<p>time</p>
+<p>t</p>
+<p>equals</p>
+<p>1</p>
+<p>no</p>
+<p>observations</p>
+<p>are</p>
+<p>available</p>
+<p>and</p>
+<p>we</p>
+<p>initialize</p>
+<p>the</p>
+<p>perception</p>
+<p>action</p>
+<p>cycle</p>
+<p>with</p>
+<p>the</p>
+<p>CFFG</p>
+<p>of</p>
+<p>figure</p>
+<p>7</p>
+<p>on</p>
+<p>the</p>
+<p>top</p>
+<p>We</p>
+<p>got</p>
+<p>a</p>
+<p>sneak</p>
+<p>peek</p>
+<p>earlier</p>
+<p>Now</p>
+<p>it's</p>
+<p>real</p>
+<p>figure</p>
+<p>7</p>
+<p>As</p>
+<p>actions</p>
+<p>are</p>
+<p>executed</p>
+<p>and</p>
+<p>observations</p>
+<p>become</p>
+<p>available</p>
+<p>data</p>
+<p>constraints</p>
+<p>replace</p>
+<p>the</p>
+<p>p</p>
+<p>substitution</p>
+<p>on</p>
+<p>the</p>
+<p>observation</p>
+<p>variables</p>
+<p>So</p>
+<p>it's</p>
+<p>almost</p>
+<p>like</p>
+<p>the</p>
+<p>p</p>
+<p>prepared</p>
+<p>us</p>
+<p>to</p>
+<p>flip</p>
+<p>it</p>
+<p>out</p>
+<p>with</p>
+<p>data</p>
+<p>in</p>
+<p>some</p>
+<p>way</p>
+<p>Like</p>
+<p>data</p>
+<p>constraints</p>
+<p>are</p>
+<p>a</p>
+<p>secondary</p>
+<p>or</p>
+<p>a</p>
+<p>further</p>
+<p>constraint</p>
+<p>that</p>
+<p>is</p>
+<p>enabled</p>
+<p>through</p>
+<p>the</p>
+<p>p</p>
+<p>substitution</p>
+<p>When</p>
+<p>the</p>
+<p>time</p>
+<p>horizon</p>
+<p>is</p>
+<p>reached</p>
+<p>and</p>
+<p>all</p>
+<p>observations</p>
+<p>are</p>
+<p>available</p>
+<p>on</p>
+<p>the</p>
+<p>bottom</p>
+<p>data</p>
+<p>constraints</p>
+<p>replace</p>
+<p>the</p>
+<p>p</p>
+<p>substitution</p>
+<p>on</p>
+<p>the</p>
+<p>observation</p>
+<p>variables</p>
+<p>So</p>
+<p>it's</p>
+<p>kind</p>
+<p>of</p>
+<p>like</p>
+<p>we'll</p>
+<p>know</p>
+<p>when</p>
+<p>we'll</p>
+<p>know</p>
+<p>and</p>
+<p>then</p>
+<p>it'll</p>
+<p>all</p>
+<p>be</p>
+<p>inferenced</p>
+<p>like</p>
+<p>memory</p>
+<p>but</p>
+<p>before</p>
+<p>we</p>
+<p>know</p>
+<p>what</p>
+<p>we</p>
+<p>later</p>
+<p>found</p>
+<p>out</p>
+<p>it's</p>
+<p>more</p>
+<p>like</p>
+<p>control</p>
+<p>So</p>
+<p>whether</p>
+<p>we're</p>
+<p>in a</p>
+<p>retrospective</p>
+<p>memory</p>
+<p>setting</p>
+<p>a</p>
+<p>real-time</p>
+<p>sense</p>
+<p>making</p>
+<p>setting</p>
+<p>or</p>
+<p>a</p>
+<p>prospective</p>
+<p>control</p>
+<p>theoretic</p>
+<p>setting</p>
+<p>it would</p>
+<p>be pretty</p>
+<p>cool</p>
+<p>to have</p>
+<p>like</p>
+<p>a</p>
+<p>mega</p>
+<p>unified</p>
+<p>imperative</p>
+<p>and</p>
+<p>attract</p>
+<p>local</p>
+<p>procedure</p>
+<p>to do</p>
+<p>it</p>
+<p>which</p>
+<p>in a</p>
+<p>sense</p>
+<p>is</p>
+<p>what</p>
+<p>they</p>
+<p>do</p>
+<p>So</p>
+<p>the</p>
+<p>perception</p>
+<p>action</p>
+<p>cycle</p>
+<p>with</p>
+<p>time</p>
+<p>dependent</p>
+<p>constraints</p>
+<p>thus</p>
+<p>unifies</p>
+<p>the</p>
+<p>tasks</p>
+<p>of</p>
+<p>perception</p>
+<p>control</p>
+<p>and</p>
+<p>learning</p>
+<p>under</p>
+<p>a</p>
+<p>single</p>
+<p>generative</p>
+<p>model</p>
+<p>and</p>
+<p>schedule</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>huge</p>
+<p>piece</p>
+<p>is</p>
+<p>only</p>
+<p>through</p>
+<p>the</p>
+<p>FFG</p>
+<p>and</p>
+<p>the</p>
+<p>constrained</p>
+<p>FFG</p>
+<p>can</p>
+<p>we</p>
+<p>get</p>
+<p>to</p>
+<p>not</p>
+<p>just</p>
+<p>making</p>
+<p>a</p>
+<p>base</p>
+<p>graph</p>
+<p>of</p>
+<p>perception</p>
+<p>cognition</p>
+<p>and</p>
+<p>action</p>
+<p>cool</p>
+<p>enough</p>
+<p>but</p>
+<p>bringing</p>
+<p>in</p>
+<p>an</p>
+<p>explicit</p>
+<p>node</p>
+<p>local</p>
+<p>scheduling</p>
+<p>and</p>
+<p>logistics</p>
+<p>approach</p>
+<p>Wow</p>
+<p>The</p>
+<p>experimental</p>
+<p>protocol</p>
+<p>is</p>
+<p>summarized</p>
+<p>in</p>
+<p>algorithm</p>
+<p>one</p>
+<p>All it</p>
+<p>requires</p>
+<p>is a</p>
+<p>generative</p>
+<p>model</p>
+<p>and a</p>
+<p>variational</p>
+<p>distribution</p>
+<p>with</p>
+<p>associated</p>
+<p>constraints</p>
+<p>And then</p>
+<p>it's</p>
+<p>kind of</p>
+<p>like a</p>
+<p>dance</p>
+<p>do</p>
+<p>infer</p>
+<p>act</p>
+<p>execute</p>
+<p>observe</p>
+<p>slide</p>
+<p>We</p>
+<p>then get</p>
+<p>to</p>
+<p>section</p>
+<p>7</p>
+<p>with</p>
+<p>the</p>
+<p>experimental</p>
+<p>setting</p>
+<p>In</p>
+<p>this</p>
+<p>section</p>
+<p>we</p>
+<p>describe</p>
+<p>a</p>
+<p>team</p>
+<p>A</p>
+<p>task</p>
+<p>that</p>
+<p>serves</p>
+<p>as</p>
+<p>a</p>
+<p>classical</p>
+<p>setting</p>
+<p>for</p>
+<p>investigating</p>
+<p>epistemic</p>
+<p>behavior</p>
+<p>citation</p>
+<p>10</p>
+<p>The</p>
+<p>setup</p>
+<p>closely</p>
+<p>follows</p>
+<p>the</p>
+<p>definition</p>
+<p>in</p>
+<p>30</p>
+<p>citation</p>
+<p>10</p>
+<p>is</p>
+<p>Friston</p>
+<p>et</p>
+<p>all</p>
+<p>2015</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>epistemic</p>
+<p>value</p>
+<p>and</p>
+<p>citation</p>
+<p>30</p>
+<p>is</p>
+<p>from</p>
+<p>this</p>
+<p>Vandelaar</p>
+<p>et</p>
+<p>all</p>
+<p>same</p>
+<p>authors</p>
+<p>in</p>
+<p>2022</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>epistemic</p>
+<p>value</p>
+<p>and</p>
+<p>graphical</p>
+<p>models</p>
+<p>here</p>
+<p>here</p>
+<p>we</p>
+<p>have</p>
+<p>the</p>
+<p>team</p>
+<p>A's</p>
+<p>that</p>
+<p>was</p>
+<p>shown</p>
+<p>earlier</p>
+<p>with</p>
+<p>a</p>
+<p>smiley</p>
+<p>face</p>
+<p>no</p>
+<p>smiley</p>
+<p>face</p>
+<p>here</p>
+<p>and</p>
+<p>it's</p>
+<p>laid</p>
+<p>out</p>
+<p>and</p>
+<p>labeled</p>
+<p>starting</p>
+<p>position</p>
+<p>O</p>
+<p>Q</p>
+<p>C</p>
+<p>that's</p>
+<p>where</p>
+<p>the</p>
+<p>epistemic</p>
+<p>value</p>
+<p>is</p>
+<p>and</p>
+<p>then</p>
+<p>L</p>
+<p>and</p>
+<p>R</p>
+<p>the</p>
+<p>two</p>
+<p>reward</p>
+<p>arms</p>
+<p>and</p>
+<p>just</p>
+<p>for</p>
+<p>those</p>
+<p>seeking</p>
+<p>continuity</p>
+<p>here's</p>
+<p>figure</p>
+<p>7.4</p>
+<p>from</p>
+<p>the</p>
+<p>2022</p>
+<p>textbook</p>
+<p>here</p>
+<p>we</p>
+<p>have</p>
+<p>the</p>
+<p>2022</p>
+<p>active</p>
+<p>inference</p>
+<p>mouse</p>
+<p>in</p>
+<p>a</p>
+<p>team</p>
+<p>A's</p>
+<p>and</p>
+<p>from</p>
+<p>2021</p>
+<p>here's</p>
+<p>our</p>
+<p>active</p>
+<p>inference</p>
+<p>simulation</p>
+<p>where</p>
+<p>it's</p>
+<p>actually</p>
+<p>appropriate</p>
+<p>the</p>
+<p>nestmate</p>
+<p>is like</p>
+<p>much</p>
+<p>smaller</p>
+<p>so</p>
+<p>for</p>
+<p>the</p>
+<p>nestmate</p>
+<p>they</p>
+<p>can</p>
+<p>wander</p>
+<p>around</p>
+<p>a lot</p>
+<p>inside</p>
+<p>the</p>
+<p>team</p>
+<p>A's</p>
+<p>that</p>
+<p>for</p>
+<p>the</p>
+<p>mouse</p>
+<p>it only</p>
+<p>has one</p>
+<p>location</p>
+<p>it can</p>
+<p>be</p>
+<p>in</p>
+<p>so</p>
+<p>it's</p>
+<p>not</p>
+<p>as</p>
+<p>closely</p>
+<p>allied</p>
+<p>as</p>
+<p>7.4</p>
+<p>is</p>
+<p>with</p>
+<p>figure</p>
+<p>8</p>
+<p>here</p>
+<p>but</p>
+<p>it's</p>
+<p>like</p>
+<p>the</p>
+<p>same</p>
+<p>you</p>
+<p>could</p>
+<p>do</p>
+<p>it</p>
+<p>in</p>
+<p>the</p>
+<p>same</p>
+<p>lap</p>
+<p>they</p>
+<p>further</p>
+<p>specify</p>
+<p>the</p>
+<p>teammates</p>
+<p>and</p>
+<p>the</p>
+<p>probabilities</p>
+<p>of</p>
+<p>different</p>
+<p>things</p>
+<p>happening</p>
+<p>they</p>
+<p>further</p>
+<p>specify</p>
+<p>the</p>
+<p>teammates</p>
+<p>and</p>
+<p>the</p>
+<p>probabilities</p>
+<p>of</p>
+<p>things</p>
+<p>happening</p>
+<p>and</p>
+<p>then</p>
+<p>in</p>
+<p>figure</p>
+<p>9</p>
+<p>they</p>
+<p>get</p>
+<p>to</p>
+<p>a</p>
+<p>CFFG</p>
+<p>describing</p>
+<p>the</p>
+<p>teammates</p>
+<p>let's</p>
+<p>go</p>
+<p>through</p>
+<p>it</p>
+<p>with</p>
+<p>the</p>
+<p>authors</p>
+<p>and</p>
+<p>annotate</p>
+<p>what</p>
+<p>it</p>
+<p>means</p>
+<p>we</p>
+<p>execute</p>
+<p>the</p>
+<p>same</p>
+<p>experimental</p>
+<p>protocol</p>
+<p>as</p>
+<p>before</p>
+<p>and</p>
+<p>plot</p>
+<p>the</p>
+<p>minimal</p>
+<p>free</p>
+<p>energies</p>
+<p>in</p>
+<p>figure</p>
+<p>10</p>
+<p>top</p>
+<p>right</p>
+<p>the</p>
+<p>BFE</p>
+<p>based</p>
+<p>reference</p>
+<p>agent</p>
+<p>fails</p>
+<p>to</p>
+<p>identify</p>
+<p>epistemic</p>
+<p>modes</p>
+<p>of</p>
+<p>behavior</p>
+<p>the</p>
+<p>specific</p>
+<p>choice</p>
+<p>of</p>
+<p>prior</p>
+<p>for</p>
+<p>the</p>
+<p>observation</p>
+<p>matrix</p>
+<p>prevents</p>
+<p>any</p>
+<p>extrinsic</p>
+<p>information</p>
+<p>at least</p>
+<p>initially</p>
+<p>from</p>
+<p>influencing</p>
+<p>policy</p>
+<p>selection</p>
+<p>by</p>
+<p>the</p>
+<p>lack</p>
+<p>of</p>
+<p>an</p>
+<p>epistemic</p>
+<p>drive</p>
+<p>the</p>
+<p>BFE</p>
+<p>based</p>
+<p>agent</p>
+<p>sticks</p>
+<p>to</p>
+<p>policies</p>
+<p>that</p>
+<p>confirm</p>
+<p>its</p>
+<p>prior</p>
+<p>belief</p>
+<p>without</p>
+<p>exploring</p>
+<p>possibilities</p>
+<p>to</p>
+<p>exploit</p>
+<p>available</p>
+<p>information</p>
+<p>in</p>
+<p>the</p>
+<p>team</p>
+<p>a</p>
+<p>histogram</p>
+<p>of</p>
+<p>the</p>
+<p>number</p>
+<p>of</p>
+<p>wins</p>
+<p>per</p>
+<p>run</p>
+<p>is</p>
+<p>plotted</p>
+<p>in</p>
+<p>figure</p>
+<p>11</p>
+<p>on</p>
+<p>left</p>
+<p>the</p>
+<p>histogram</p>
+<p>suggests</p>
+<p>a</p>
+<p>bimodal</p>
+<p>distribution</p>
+<p>with a</p>
+<p>large</p>
+<p>mass</p>
+<p>group</p>
+<p>to</p>
+<p>the</p>
+<p>right</p>
+<p>and a</p>
+<p>smaller</p>
+<p>mass</p>
+<p>in</p>
+<p>the</p>
+<p>middle</p>
+<p>for</p>
+<p>reference</p>
+<p>dashed</p>
+<p>curves</p>
+<p>indicate</p>
+<p>ideal</p>
+<p>performance</p>
+<p>for</p>
+<p>agents</p>
+<p>that</p>
+<p>already</p>
+<p>know</p>
+<p>a</p>
+<p>from</p>
+<p>the</p>
+<p>start</p>
+<p>for</p>
+<p>agents</p>
+<p>that</p>
+<p>first</p>
+<p>must</p>
+<p>learn</p>
+<p>a</p>
+<p>deviations</p>
+<p>from</p>
+<p>ideal</p>
+<p>performance</p>
+<p>are</p>
+<p>expected</p>
+<p>the</p>
+<p>smaller</p>
+<p>middle</p>
+<p>mass</p>
+<p>then</p>
+<p>indicates</p>
+<p>that</p>
+<p>GFE</p>
+<p>optimization</p>
+<p>offers</p>
+<p>no</p>
+<p>silver</p>
+<p>bullet</p>
+<p>for</p>
+<p>simulating</p>
+<p>fully</p>
+<p>successful</p>
+<p>epistemic</p>
+<p>agents</p>
+<p>namely</p>
+<p>for</p>
+<p>some</p>
+<p>choices</p>
+<p>of</p>
+<p>initialization</p>
+<p>the</p>
+<p>GFE</p>
+<p>agent</p>
+<p>may</p>
+<p>still</p>
+<p>become</p>
+<p>stuck</p>
+<p>in</p>
+<p>local</p>
+<p>optima</p>
+<p>section</p>
+<p>9</p>
+<p>I</p>
+<p>won't</p>
+<p>read it</p>
+<p>they</p>
+<p>describe</p>
+<p>a wide</p>
+<p>swath</p>
+<p>of</p>
+<p>related</p>
+<p>work</p>
+<p>ranging</p>
+<p>from</p>
+<p>early</p>
+<p>work</p>
+<p>on the</p>
+<p>introduction</p>
+<p>of</p>
+<p>40</p>
+<p>graphs</p>
+<p>on</p>
+<p>through</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>and</p>
+<p>active</p>
+<p>inference</p>
+<p>and in</p>
+<p>section</p>
+<p>10</p>
+<p>they conclude</p>
+<p>they took</p>
+<p>a constraint</p>
+<p>centric</p>
+<p>approach</p>
+<p>to</p>
+<p>synthetic</p>
+<p>active</p>
+<p>inference</p>
+<p>they</p>
+<p>simulated</p>
+<p>a</p>
+<p>perception</p>
+<p>action</p>
+<p>cycle</p>
+<p>through</p>
+<p>message</p>
+<p>passing</p>
+<p>derived</p>
+<p>from</p>
+<p>a</p>
+<p>single</p>
+<p>generalized</p>
+<p>free</p>
+<p>energy</p>
+<p>objective</p>
+<p>and</p>
+<p>dot</p>
+<p>dot</p>
+<p>dot</p>
+<p>in this</p>
+<p>paper we</p>
+<p>have adopted</p>
+<p>a purely</p>
+<p>engineering</p>
+<p>point of</p>
+<p>view</p>
+<p>and we</p>
+<p>have not</p>
+<p>concerned</p>
+<p>ourselves</p>
+<p>with</p>
+<p>biological</p>
+<p>plausibility</p>
+<p>specifically</p>
+<p>the derived</p>
+<p>message</p>
+<p>updates</p>
+<p>come with</p>
+<p>considerations</p>
+<p>about</p>
+<p>stability</p>
+<p>and</p>
+<p>non-standard</p>
+<p>expressions</p>
+<p>although</p>
+<p>we have</p>
+<p>engineered</p>
+<p>solutions</p>
+<p>to overcome</p>
+<p>these</p>
+<p>complications</p>
+<p>it seems</p>
+<p>unlikely</p>
+<p>to us</p>
+<p>that the</p>
+<p>brain</p>
+<p>resorts</p>
+<p>to such</p>
+<p>strategies</p>
+<p>interesting</p>
+<p>mic drop</p>
+<p>but very</p>
+<p>humble</p>
+<p>and so</p>
+<p>now</p>
+<p>as we</p>
+<p>give our</p>
+<p>last</p>
+<p>thoughts</p>
+<p>we've</p>
+<p>always held</p>
+<p>up the</p>
+<p>side-by-side</p>
+<p>at the</p>
+<p>institute</p>
+<p>with a</p>
+<p>minimum</p>
+<p>of two</p>
+<p>and we've</p>
+<p>talked about</p>
+<p>that before</p>
+<p>in the</p>
+<p>textbook</p>
+<p>figure</p>
+<p>4.3</p>
+<p>setting</p>
+<p>with</p>
+<p>continuous</p>
+<p>and</p>
+<p>discrete</p>
+<p>time</p>
+<p>but there</p>
+<p>have been</p>
+<p>many other</p>
+<p>min-2</p>
+<p>experiences</p>
+<p>that we've</p>
+<p>all shared</p>
+<p>together</p>
+<p>and not</p>
+<p>just with</p>
+<p>this diad</p>
+<p>of papers</p>
+<p>but with</p>
+<p>this new</p>
+<p>intelligibility</p>
+<p>of the</p>
+<p>relationship</p>
+<p>between</p>
+<p>base graphs</p>
+<p>and different</p>
+<p>styles and</p>
+<p>constrained</p>
+<p>forms of</p>
+<p>forny graphs</p>
+<p>we're in</p>
+<p>yet another</p>
+<p>min-2</p>
+<p>setting</p>
+<p>so</p>
+<p>what I</p>
+<p>would like to</p>
+<p>say in</p>
+<p>closing as we</p>
+<p>include the</p>
+<p>dot zero</p>
+<p>yeah I</p>
+<p>look forward</p>
+<p>to the</p>
+<p>point one</p>
+<p>and point</p>
+<p>two</p>
+<p>I have a</p>
+<p>bunch of</p>
+<p>questions about</p>
+<p>for example</p>
+<p>what piece</p>
+<p>substitution</p>
+<p>really means</p>
+<p>and for</p>
+<p>example the</p>
+<p>time window</p>
+<p>how many</p>
+<p>time steps</p>
+<p>you need to</p>
+<p>give your</p>
+<p>model already</p>
+<p>or whether</p>
+<p>it can</p>
+<p>unfold</p>
+<p>automatically</p>
+<p>and just in</p>
+<p>general to</p>
+<p>hear what</p>
+<p>they have to</p>
+<p>say because</p>
+<p>it is a</p>
+<p>very</p>
+<p>interesting</p>
+<p>topic</p>
+<p>yeah</p>
+<p>same here</p>
+<p>also</p>
+<p>interested</p>
+<p>to</p>
+<p>hear what</p>
+<p>the</p>
+<p>authors</p>
+<p>have</p>
+<p>to</p>
+<p>say</p>
+<p>and</p>
+<p>I</p>
+<p>think</p>
+<p>yeah</p>
+<p>whenever</p>
+<p>there's</p>
+<p>a</p>
+<p>generalization</p>
+<p>that</p>
+<p>at least</p>
+<p>in the</p>
+<p>semantic</p>
+<p>space</p>
+<p>affords</p>
+<p>a</p>
+<p>wider</p>
+<p>connection</p>
+<p>to</p>
+<p>different</p>
+<p>methods</p>
+<p>and especially</p>
+<p>in the</p>
+<p>context</p>
+<p>of</p>
+<p>models</p>
+<p>represented</p>
+<p>on the</p>
+<p>graph</p>
+<p>I'd</p>
+<p>be</p>
+<p>interested</p>
+<p>to</p>
+<p>learn more</p>
+<p>about how</p>
+<p>we can</p>
+<p>represent</p>
+<p>agents</p>
+<p>in</p>
+<p>different</p>
+<p>kinds</p>
+<p>of graphs</p>
+<p>or how</p>
+<p>these</p>
+<p>constrained</p>
+<p>for any</p>
+<p>cell</p>
+<p>factor</p>
+<p>graphs</p>
+<p>afford</p>
+<p>different</p>
+<p>types</p>
+<p>of</p>
+<p>optimization</p>
+<p>methods</p>
+<p>to be</p>
+<p>performed</p>
+<p>on them</p>
+<p>and how</p>
+<p>this work</p>
+<p>can help</p>
+<p>active</p>
+<p>inference</p>
+<p>to</p>
+<p>interface</p>
+<p>with</p>
+<p>other</p>
+<p>domains</p>
+<p>which</p>
+<p>try to</p>
+<p>solve</p>
+<p>similar</p>
+<p>problems</p>
+<p>or perhaps</p>
+<p>different</p>
+<p>problems</p>
+<p>from a</p>
+<p>different</p>
+<p>angle</p>
+<p>awesome</p>
+<p>my last</p>
+<p>thought</p>
+<p>is like</p>
+<p>we</p>
+<p>planned</p>
+<p>to</p>
+<p>learn</p>
+<p>at least</p>
+<p>to try</p>
+<p>here</p>
+<p>so I</p>
+<p>commend</p>
+<p>you both</p>
+<p>for that</p>
+<p>policy</p>
+<p>selection</p>
+<p>and now</p>
+<p>looking back</p>
+<p>it's like</p>
+<p>data or a</p>
+<p>memory</p>
+<p>and then</p>
+<p>in science</p>
+<p>it's like</p>
+<p>oh it's</p>
+<p>1994</p>
+<p>this new</p>
+<p>genome is</p>
+<p>available</p>
+<p>or like</p>
+<p>this new</p>
+<p>thing is</p>
+<p>exciting</p>
+<p>and here's</p>
+<p>the next</p>
+<p>step</p>
+<p>and it's</p>
+<p>like</p>
+<p>one</p>
+<p>must be</p>
+<p>as excited</p>
+<p>as can</p>
+<p>be</p>
+<p>in making</p>
+<p>the right</p>
+<p>measured</p>
+<p>decision</p>
+<p>then</p>
+<p>which later</p>
+<p>becomes an</p>
+<p>observation</p>
+<p>at a</p>
+<p>different</p>
+<p>time point</p>
+<p>and a</p>
+<p>different</p>
+<p>perspective</p>
+<p>so</p>
+<p>there are</p>
+<p>probably</p>
+<p>many</p>
+<p>exciting</p>
+<p>and important</p>
+<p>syntheses</p>
+<p>that this</p>
+<p>work</p>
+<p>is gonna</p>
+<p>build</p>
+<p>our</p>
+<p>skills</p>
+<p>and our</p>
+<p>expressivity</p>
+<p>around</p>
+<p>and the</p>
+<p>computational</p>
+<p>element</p>
+<p>is just</p>
+<p>excellent</p>
+<p>so</p>
+<p>thank you</p>
+<p>again</p>
+<p>Bert and</p>
+<p>Jakob</p>
+<p>see you</p>
+<p>fellows</p>
+<p>in the</p>
+<p>dot one</p>
+<p>bye</p>
+<p>bye</p>
+<p>to</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

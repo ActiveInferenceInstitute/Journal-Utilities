@@ -1,0 +1,3678 @@
+---
+title: "ActInf Livestream #014.1 ~ The Math is not the Territory: Navigating the Free Energy Principle"
+category: "Livestream"
+series: "Livestream_014"
+episode: "1"
+speakers:
+  - "The Math is not the Territory: Navigating the Free Energy Principle"
+duration: "2:04:36"
+url: "https://www.youtube.com/watch?v=gQQyd8Hd3AA"
+views: 932
+exported_at: "2026-02-18T22:37:37.882352+00:00"
+format: markdown
+---
+
+# ActInf Livestream #014.1 ~ The Math is not the Territory: Navigating the Free Energy Principle
+
+hello everyone
+welcome to the active inference live
+stream it is active inference live
+stream 14.1
+on january 19 2021
+welcome to the active inference lab
+everyone we are an experiment in
+online team communication learning and
+practice related to
+active inference i'm going to share my
+screen for
+participants you can find us at our
+website
+on twitter gmail youtube or
+our public key based team or shared
+username
+this is a recorded and an archived live
+stream so please provide us with
+feedback so that we can improve on our
+work
+and whether in the live chat or the
+comments just feel free to
+share whatever you're thinking all
+backgrounds and perspectives are welcome
+here and as far as video etiquette for
+live streams
+we'll mute if there's noise in our
+background raise our hands so that we
+can hear from everybody who wants to
+share
+and use respectful speech behavior so
+for the active inference
+live streams in 2021 we're going to be
+having these regular
+tuesday 7 a.m pacific times and then
+we're also going to be having these
+special sessions like the model stream
+and several other kinds of events that
+we're really excited to be planning
+and go to this big red link and you'll
+find a spreadsheet
+and in that spreadsheet you'll find the
+details on past
+and present and upcoming active
+inference live streams
+here we are in 14.1 discussing the math
+is not the territory with author mel
+andrews
+next week we're going to be discussing
+the same paper for a follow-up paper
+and then we're moving on to a different
+paper but for this week and for next
+week we're going to be in
+this awesome paper and this awesome
+group of discussions
+today in active stream 14 we're going to
+have
+introductions and warm-ups then in the
+sections of 14.1
+we're going to be going through the
+paper the math is not the territory
+navigating the free energy principle by
+mel andrews in october
+and we have some slides with aims and
+claims
+abstract roadmap etc but this is pretty
+much going to be whatever people want to
+discuss today
+and whatever questions we want to
+address in next week as well
+so if you have any questions just save
+them and submit them
+however you can and get in touch if you
+want to join
+live okay awesome so
+let's start with the introductions and
+we'll just give a short introduction or
+check in and then pass to somebody who
+hasn't spoken yet
+and especially if it's your first time
+we would love to hear
+what your background or interest in
+active inference is so i'm daniel
+i'm a postdoctoral researcher in
+california
+and i will pass first to mel
+hi there i'm mel andrews and
+uh i think for better for worse my uh
+doctoral work is going to end up being
+largely about the free energy principle
+and
+active inference so
+that's why i'm here cool pass it to
+somebody who
+can then introduce them
+hi there thank you mel um hi my name is
+marco uh i'm from holland
+my background's in psychology and
+concrete neuroscience
+and german masters also worked a bit on
+its independence
+and my interest in active inference is
+um
+well a multitude of things i just i just
+believe that it really has a potential
+uh as alluded to and written about by
+male
+uh in the paper which doesn't today uh
+in general just a lot of potential to
+understand a lot of aspects of the world
+in society that
+we sovereign haven't been able to really
+grasp with alternative minds
+so happy to be here
+then passed an opacity to yvonne
+hi my name is juan i'm from moscow
+russia
+i'm a researcher in system
+school i'm
+i'm an engineer systems engineer and i
+pass it to
+hey guys i'm shannon
+and i'm working in
+i do brain stimulation and i'm also
+interested in
+social cognition and how we interact um
+like in a musical ensemble
+and how the free energy principle
+applies to
+both scales of those questions
+and um pass it to alex
+alex we can't hear you distance x alex
+um but you don't appear muted let's go
+to alex oh
+now we hear you go ahead yeah hi
+everybody
+i'm alex and i'm in moscow russia
+and i'm a researcher in systems
+management school
+and trying to find a way to find
+integration between
+active inference and system engineering
+approaches
+and i bless it to alex
+okay thanks um thanks alex i'm alex
+um i'm interested in uh i'm a
+philosopher i guess
+uh interested in free energy principle
+and active inference and
+sort of fundamental questions about
+mental representation
+and lately i've been more interested in
+applied work and
+sort of um combining eventually maybe
+combining
+these approaches with other approaches
+to machine learning and so active
+inferences like a technology
+but um i will pass it on to um
+let's see uh dave
+dave you muted so we have dave and then
+we have also then the last remaining
+tim stephen i'm retired from information
+technology live in the philippines
+my background is in cybernetics and uh
+machine translation i'm teaching myself
+neuropsychoanalysis
+and i was so pleased to come to mel's
+paper because
+i've been trying to figure out what is
+this thing after all it's like a
+a metaphor among metaphors among
+metaphors and maybe
+uh you can tell us toward the end of the
+presentation whether that has anything
+to do with what you've
+what you're saying in your paper and i
+can't even see who else is not spoken
+uh philippe philippe there we go
+hi i'm philip uh i'm studying
+hero tickle biology in prague and i'm
+interested in
+computational neuroscience and i
+joined because i only read mel's paper
+and i found it interesting but i don't
+know anything about it
+perfect um let's go to tim
+i'm tim i'm in toronto canada it's my
+first time
+joining in the sessions
+really eager to learn about this stuff
+was really fascinating and my background
+is in
+science and engineering uh specifically
+i guess electronic systems and software
+and uh that kind of thing and i'll pass
+to stephen
+go for it stephen or fellow jitzer
+okay and sarah have you gone
+hi i'm uh sarah davis i'm um in berlin
+and um right now i'm a master's student
+in philosophy of science but before that
+i was an artist and the through line i
+guess that's interesting to me is um
+the relationship between information
+and materials and media so i'm
+interested in like reservoir computing
+and how how and when you can separate
+those things and
+you know what is life like all these
+funny things that are circling around
+that so active inference is just yet
+another
+useful thing that um i want to
+understand better because it seems to
+connect to a lot of other
+disciplines
+cool it'll be interesting to hear about
+that soon and then i see
+blue or yes
+hi good morning i'm blue knight i'm an
+independent research consultant based
+out of new mexico
+nice is there anyone who has not
+introduced himself
+otherwise we're just going to keep
+rolling all right great so
+let's go to our warm up questions and
+i'll just put up the first two which are
+what is something you're excited about
+today
+and what is something that you liked or
+remembered about the paper
+and so people can just raise their hands
+and we'll go in order
+and until i see a hand i think something
+i liked or remembered about the paper
+was that there was no figures
+so from the point of view of usually
+reading papers with figures that was
+very notable but then also that there
+was clarity
+and structure despite figures which are
+often used
+as a uh not quite an aid to structure a
+paper
+but it's how we often think about in
+empirical research like oh what is
+figure one gonna show
+but there was clarity in this article
+without the usage of figures so marco
+and then anyone else who wants to
+continue
+yeah i fully agree that that is um
+uniquely clear
+so um i've been kind of lacking behind
+on on the literature but
+for me mel's paper is the best paper so
+far when it comes to
+contextualizing french principle and
+like the title implies
+really mapping it out right
+contextualizing in the big complicated
+epistemic
+landscapes that this all connects to um
+so it's a huge props to know for that um
+i think the only other critical piece
+i've
+read is from colombo which is more
+unwieldy
+um and i think uh the the kind of
+importance of
+mapping really shows in this paper
+because it it opens up a lot of
+directions
+to think about the fdp which stands in
+stark contrast to a lot of other
+papers are read which kind of uh take it
+as authoritative and then just
+move on instead of uh actually
+trying to interpret it and so mel does a
+great job at guiding the reader
+and understanding the nuances and the
+questions that would arise on
+when you see those nuances so excited to
+hear about
+people's thoughts today cool very nice
+uh
+tim and then anyone else who raises
+their hand
+i thought that i was i i noted to myself
+just you know
+as i was reading how clear the writing
+was i thought the writing was really
+clear
+and and expressive and explication
+really well ordered
+and um and there was kind of like a i
+guess uh
+a humility i remember somewhere in this
+content i saw the idea of the list of
+epistemic values i think
+it was you call them and humility was
+one in the list and that kind of comes
+through
+in that paper the way that uh there's no
+sort of diving for like a
+discovery or a conclusion it's really
+just laying it out and
+and and giving it to you to to
+leaving the questions open which was
+really nice
+yep and also lots of nice philosophy
+type things like the idea of defending
+an idea and so
+it's not common to see in an empirical
+paper like we're going to defend this
+it's it's a lot more like a battlefield
+of ideas in philosophy
+and in science it's a little bit of a
+different structure so sarah and then
+anyone else
+to like lather on the praise of like
+uh to mel's paper but yeah the writing
+was really good and actually when i
+first
+read it um i i feel like i understand a
+lot more
+than when i first read it and so now i
+kind of feel like i'm happy to be here
+because i need to read a second time
+i've learned a lot more
+um but yeah the x the exploration of
+kind of the beginning of the exploration
+of all these different models
+it was um uh saw a lot of potential
+cool and that's kind of part of the idea
+with a dot one and a dot two
+is sometimes you read the paper and you
+don't talk to someone about it you have
+thoughts one two three and then you have
+a first conversation about it or you
+listen to one video and all of a sudden
+you have
+thoughts one through ten and then you
+have the discussion and all of a sudden
+you're
+you know up to 20. so that's part of the
+idea of taking the time
+to really read through these papers um
+does anyone else want to add anything
+i'll throw up the third
+warm-up question which is what is
+something you're wondering about
+or would like to have resolved by the
+end of today's discussion
+so alex kiefer then anyone else
+yeah so i think having this resolve by
+the end of today is probably a tall
+order but
+i'm i'm interested in the question that
+sort of
+um explicitly raised it toward the end
+of the paper about whether the fep
+is a very abstract sort of
+uh model of or in some sense maybe
+representation of
+nature or a pure formalism and like
+that's an interesting line
+so i think it's an interesting question
+great question
+sarah then marco
+yeah i was i to me it all just seems
+like mel fix it by the end of the hour
+but um but i yeah i was curious to know
+like if
+if you have any insight into ways that
+the model could never be applied you
+know like just
+trying to situate the model in all these
+worlds that it
+has potential for
+cool any other intro thoughts there
+uh marco and then or anyone else
+yeah um a lot of questions for mel i
+think but but i think what maybe
+i hope so uh possible to to resolve by
+the end of this stream is
+um there's only a very brief note about
+it but but you also said that it's also
+compatible with processionism something
+about possessions i mean they
+i didn't see anything else about it so
+i'm not a philosopher so natural kinds
+for me always
+was a bit a weird iffy concept for me um
+but i was wondering if you could resolve
+maybe um
+the problems of mapping it to natural
+kinds of stuff but
+for professionalism because it seems
+that activation is much more
+sexualist kind of framework not really
+compatible with the
+essentials objects properties framework
+of
+ontology um so yeah i'll leave it at
+that
+cool let's definitely return to that and
+define it and
+get clarity on it shannon than anyone
+else
+hey yeah so i'm really interested in
+what role the free energy principle or
+active inference
+plays in empirical
+hypothesis testing um and
+i think this paper did a really good job
+of explaining that the mathematical
+models can be
+very useful to generate
+questions to generate hypotheses or
+just to further investigate some
+empirical phenomenon
+and i think it would be good this week
+and next week to just sort of talk about
+what it means when you say i have a free
+energy principle characterization of
+system very nice
+agreed and um yes we have several
+fun hours of discussion ahead so i'm
+just going to
+flip to this summary slide and ask
+mel when you're conveying this work to
+different audiences how do you
+communicate it or what would you like to
+start with just how do you give your 30
+000 foot
+overview perhaps to different audiences
+or perspective
+yourself in the past yourself in the
+future however you want to do it
+yeah i guess i saw a lot of um
+confusion about what the fep was and
+what it was doing um and it was
+my before i could really uh
+play with it i had to um i had to get
+clear
+on what it was and and make everyone
+else clear on what it was
+um and and so i
+i tried to tackle kind of like the most
+fundamental questions in this paper
+about what it is that the ftp is and
+what it's doing
+um and in some ways
+in some ways i think a lot of those
+remain
+kind of unanswered by this paper
+but but no longer unexplored like i i i
+i put it all out on paper so you know so
+we can talk about it now whereas before
+there are these things you know like is
+the fep
+science science like is this a
+scientific model or scientific theory
+or is it you know that the demarcus like
+does it does it not belong to the demand
+of science
+um that that was a big one and no one
+had asked that
+um and then uh
+well alex's question that's what you
+know and and i didn't come
+i i i sort of write the first sentence
+right
+is saying i think it's the main explains
+but then i'm gonna i'm i'm
+i'm writing a paper with an as a photo
+um
+where we're gonna come down kind of
+differently on that
+on the i mean you know it's not written
+it's not 100 written yet we're not true
+but but we come
+down a little differently on the
+demonstration problem and then um
+uh in terms of alex's question
+that was that was one of my main driving
+questions the notion of
+as if is the fpp like a really abstract
+representation of natural systems
+central processes
+or is it not a representation of
+anything in nature at all
+and that to me is like totally not
+answered yet
+um and there's some there's almost like
+a queen
+like that that's almost to me it's like
+getting to the heart of like
+naturalism as a as an approach in
+philosophy like
+like uh carl's carl friston's line
+this whole time has been well there's a
+dissolving line
+between just math and
+and physics proper um
+and that drives me crazy but uh
+but i'm coming around to a little bit
+that wasn't a good summary of my paper
+that was a good summary of
+of what i'm excited about exploring
+further
+fun yep well just a few things in there
+that
+might fly above or below those who have
+different
+um you know listening regimes of
+attention
+you said before i could play with it i
+had to be clear on it and also help
+other people be clear
+so that just captured this learn by
+doing learn by playing
+and also learn by serving and teaching
+because those are some of the key
+pieces and without being playful and
+understanding that it's a deep well
+to dive into and then also that there's
+a community that is also curious those
+are some of the key
+aspects and then also it almost goes
+without saying that this is a really
+exciting philosophy paper and it's an
+ongoing philosophical question
+so people are maybe familiar with a
+measurement is made on a protein or a
+new species is found in some forest
+and it gets nature science and people
+are really excited about a measurement
+that's made about nature
+and then the philosophical questions
+potentially because they're fundamental
+or there's no simple sound bite answer
+or there's no figure there's no
+graphical abstract you got to read the
+prose or got to think through it
+the philosophical questions are often
+seen as not contemporary
+or not exciting or not cutting edge but
+we're seeing
+in real time with free energy principle
+and active inference
+the way that maybe we could even call
+them top-down philosophical priors
+on what the fep is are shaping
+the realization of what emerges from the
+bottom up
+for example if it's really from on high
+and fep is part of science and it's part
+of a scientific
+program that's going to be very
+different several years down the line
+than if people said this should be
+thrown over there with the fiction books
+and
+you know with the biography of somebody
+else so it's pretty interesting just how
+these
+top-down and bottom-up ideas are playing
+out
+in the discussion about what this
+framework is
+so pretty interesting and anyone can
+raise their hand or give a thought or a
+question the other
+piece i just wrote down until anyone
+raises their hand was this
+unanswered but not unexplored which is
+taking us back to the map metaphor and
+it's the math is not the territory of
+course
+a little bit of a pun on the map is not
+the territory
+and what is the map what is the
+territory
+and where are their dragons where do we
+have just the coastline but not know
+what's on the interior
+or where are the underlying features of
+the world
+stable or changing and then where's our
+map stable or changing
+in an attempt to understand and just
+like the navigation there's probably
+pure navigators out there but also
+there's those who want to
+move cargo so how are we going to get it
+done with this map
+and this territory so we'll go to alex
+kiefer
+sarah then mel
+um yeah so i guess i'm just following up
+from some of what mel just said um
+um so so i don't want to take this too
+far in the direction i'm thinking about
+because it's it's pretty
+general so so i to me this this paper
+raises questions that are
+uh fundamental like whether or not
+you're interested in the fep
+and then it's it's partly a matter of
+seeing how these two things fit together
+but like
+so mel mentioned quine so one problem
+that i've always had with the
+with the line that the fep is not
+falsifiable or that it's like
+distinct and kind from active inference
+as a process theory is just
+like i guess confirmation holism so
+uh so i just assume that um if this fep
+thing is informing our empirical
+theories at all
+then there must be some semantic logical
+connections of some kind between
+the empirical theories and the fep so um
+and if
+you're if you're a confirmation holist
+do you think that you know
+sensory evidence uh what we observe kind
+of
+back propagates if you will to like all
+of the beliefs in our network
+then i think the fep should be
+vulnerable to that but again that's not
+really about the fep
+so um i just want to sort of raise that
+issue more explicitly and
+um i don't know cool well just before we
+go to sarah could you just define a
+little bit
+better what is the confirmation holism
+oh yeah
+who who would think differently on this
+issue and what would be the implications
+for active inference
+well so i don't i don't know what people
+think about this issue these days um
+actually i'm just this is sort of like a
+i guess it's attributed to quine and
+do do him i'm sorry if i'm
+mispronouncing his name um but the idea
+is just that you
+that sort of scientific theory um does
+it like it meets sensory evidence as a
+corporate body so like
+the idea is that if you observe
+something that's in conflict with your
+total theory
+there's no uh
+i don't know way a priori of telling
+which of the claims in your theory you
+need to revise
+right so like if there's i mean you
+could
+you could for example you could say well
+there must have been an error there must
+have been a malfunction in the measuring
+device
+and so you could you could revise that
+part of your theory or you could say no
+this really does
+falsify my more fundamental assumptions
+and so
+that's kind of what i'm getting at and
+i'm not sure uh if people hold
+of the alternative view these days that
+like no there are certain
+statements that are meaningful but
+immune to falsification
+but that's the kind of question i'm
+raising excellent uh
+sarah mel marco
+i think actually just to not overwhelm
+mel my
+question could fit in anywhere i'd
+rather just give mel a chance to
+yep let's let's go back to mel then
+sarah
+yeah the the web of belief thing yeah
+the the do him applying hypothesis is
+this idea that that we've got an
+integrated web of beliefs and you can't
+test any atomic proposition in isolation
+from you can't you can't protect
+anything in your web of beliefs
+from from revision with by by new
+evidence
+which i think it's almost like very uh
+compatible with
+with this kind of asian frame view right
+there
+you get this you get this spreading its
+propagation
+of of evidence through the network all
+the way up and down
+um i like that idea
+but um what did i want to
+respond to oh yeah someone said
+someone said active interest is a
+process theory and i just want to like
+set the record straight on that um uh
+the the reviewer one on my magazine i
+just i just got reviews back on this
+um it's not published yet i just got
+reviews back
+and they pointed out that um it it's
+probably misleading to refer to accident
+prince of the process theory
+there have been process theories
+on the basis of active inference and
+variational message passing
+developed so when you see the like the
+there's a paper fristen schwab uh
+rivoli joe
+sulo is on their um 2017 it's called
+active influence across the street
+that's that is a process theory that is
+made from active inference that's
+that's set in um variational message
+passing
+but active inference itself is not a
+process through so much as the corollary
+of the fep
+applies to to to activity in an
+environment
+and then processes of that have been
+made so i
+i should probably i'm going to go back
+in and like be more
+careful with the words i use
+cool marco then i'll go ahead
+yeah um i'm not sure if you met me with
+their process theory but but i i i
+intentionally also avoided the phrase
+process theory because i think it's
+what i was trying to say with that
+comment earlier is
+a lot of the treatments of natural kinds
+and mapping to real states or affairs of
+the world
+seems to me more grounded in a more
+object property oriented
+philosophy pathology right but for me
+it sounds more that's the the
+ontological
+uh assumptions or commitments in
+processionalism are far more
+compatible with active inference which i
+wanted to address it later i'm not sure
+now it's very time but but um
+uh there's this issue of not demarcation
+for
+is fap ai scientific but also
+demarcation of markov blankets right so
+as you pointed out rightly
+there's this dilemma of you know where
+do you put the threshold for
+where the boundary of the marked blanket
+is but for me that fuzziness
+is not an issue if you would be more
+professionalist because then the claim
+with the necessity would be more there
+is a boundary
+but that we cannot affirm or confirm
+where it exactly is
+what the you know perfect absolute
+stressful is it's not an issue itself
+simply that there is heterogeneity there
+is certain
+boundarying of states would be
+sufficient i think
+because the procession or dynamic nature
+of these systems
+uh would mean that you can't say there's
+a static on simply that there are
+boundaries between
+subsystems but but that was not my
+question my
+comments um for now was basically one
+thing i i
+think is also interesting is um seeing
+fpai as simply a language
+so there's the canonical kind of typical
+notion of math is a language a physics
+it's a discipline in which
+that's written in in maths and i i kind
+of
+feel that this is the same here so
+daniel gives very beautiful metaphors of
+navigation and mapping
+and to me it seems that uh this whole
+project
+and not just theory but the whole
+project of p and active inference
+is more of a vehicle of toolkits of
+languages and allows you to translate
+back and forth in disciplines
+translate into mathematical abstraction
+and as you explore in the mathematical
+abstract world
+you can translate back so it's like if
+you can't see the patterns in empirical
+data
+translate back to abstraction find
+patterns there
+um see if you can translate them back
+and then you can test them and so it's
+like the
+scientific narrative with a detour but
+um yeah i don't know if you find it
+interesting would love to discuss that
+more later
+but yeah yeah that it is interesting and
+uh also the navigation brings us back to
+cybernetics and the the word cybernetics
+comes from
+navigation and so it's almost like if
+you can't navigate on the water
+surface and then you go you abstract
+beyond
+some sort of limitation and so it's kind
+of funny because the mapping metaphor
+again
+it is a physical one it's related to
+cybernetics but then also there's this
+idea of a map
+in mathematics and a mapping is a
+function and so there's this abstraction
+abstraction mapping and then there's
+also
+that as a map onto the physical world
+because we're embodied agents
+so if mel or anyone else wants to
+raise their hand otherwise i think
+there's a few other threads to highlight
+there go ahead mel
+yeah i just want to flag something marco
+said quickly um
+the markup blanket isn't actually all
+that it's not actually
+as a boundary the markup link is not
+actually all that diffuse and dynamical
+it's actually
+it's actually harnessed to like
+particular
+particles and you know in a sim so
+we think when we think about you know
+the boundaries of an organism
+or the boundaries of a cell wall or
+something right
+you're constantly you are dispersing the
+cell is dispersing right
+the material of which the
+cell the organ the tissue the human
+being
+the society is made up right these are
+these are
+these are diffuse and they are
+dissipating they're the material there's
+a constant turnover in
+like the material composition of these
+things right
+um and and the markov blanket doesn't
+handle that right now right the markov
+blanket is ropes to particular
+particles so to speak in
+in your system so it's um
+there there's a there's a a kind of a
+desire
+in um in the original like burkhoff
+stuff on dynamical systems um you get
+you get uh 1927 first off 1927 you get
+um
+he kind of proposes a notion of
+wandering sets
+and um there's kind of a desire
+carl has a desire to extend the markup
+blanket
+so as it so to be able to accommodate
+wandering sets
+where where there is a turn right that
+where the
+the material makeup goes away and yet
+the boundary persists
+right you get turnover but um it doesn't
+do that yet so it's actually
+it's actually it's not nearly as like
+dynamical as as you'd want it to be i
+think
+the the wandering sets and the
+attracting sets it kind of reminds me
+again with a navigation metaphor
+the attracting set could be like there's
+like a whirlpool and all the boats
+around it are kind of being drawn into
+this attracting
+set if they move away then they're drawn
+back in and then
+the wandering set is like a flotilla of
+ships maybe some are
+joining and some are leaving but they're
+maintaining a coherence
+as they dynamically are moving through
+the ocean
+or as their subunits are changing
+because there's this dissipation
+that was brought up and then the living
+systems that are far from equilibrium
+are the ones that are apparently
+successfully
+resisting that dissolution and so what
+is it
+that those living systems are doing and
+that's the what is life
+question that's schrodinger 1944
+to maxwell 2018 that pipeline so it's
+it's really
+interesting questions marco then any
+other raised hands
+thanks uh and um thanks for the
+clarification um maybe i'm
+misunderstanding something but
+um so so i guess for me maybe it's my my
+personal
+interpretation of it all but for me the
+primacy is actually less about
+the formalism as for example the pro and
+originally uh
+formulated as but what for me is
+interesting is more
+the conceptual interpretation of there's
+an intermediating
+kind of interface right there's a
+unidirectional flow
+um that's that's in its dynamics
+allow for this protection of states that
+shouldn't
+go beyond certain uh boundary for
+example
+um and in that sense it oh wait and one
+more thing is that
+maybe that which is to be bounded or
+protected
+doesn't have to be a particular state as
+such maybe it's like a relation
+for example you're protecting the
+property of certain nodes of certain
+states or certain densities
+that they are adaptively viable for
+other systems that they might be in
+relation with
+um but but i think in general i think
+what this all shows is that
+there's a lot of freedom at least in my
+opinion to interpret the picture that
+follows from ffp ai
+i'm still kind of unclear why it's not
+dynamic
+because the mathematical nodes can be
+variably mapped
+to physical nodes in my opinion because
+i'm not sure what you mean with
+particles right so
+it's something like we we do the
+boundary centers of particles but more
+in terms of
+sensory states or or or that through
+which
+um the activation inference is mediated
+um but yeah that's my but i would love
+to hear more about
+you brothers cool if anyone else
+raises their hand i would just kind of
+almost take stock there's a few
+threads happening here there's some
+philosophy of science
+questions what is a principle what is a
+theory what is falsification
+all these types of questions were um
+brought up from the more philosophical
+side of the literature and then there's
+this
+a little bit related discussion about
+markov blankets dynamical systems the
+definition
+of empirical measurements and how
+cleanly we sort them into
+these different types of uh natural
+kinds if we want to use the
+philosophical
+word or maybe just a functional whole to
+be less
+essentialist about it there's a few
+different threads
+happening here so it's just good to keep
+track of these
+pieces and uh yeah if uh steven i saw
+your
+hand raised or anyone else yeah hi
+thanks
+um i suppose one thing that i've been
+quite interested in
+is dimensionality in the sense that
+entropy is a dimensionless sort of
+property
+so you get this interesting question
+that so the free energy principle
+in a way is mostly dimensionless or
+it's like some sort of trend and then
+when
+that comes into active inference it
+doesn't get fully dimensionalized
+well it doesn't it's like lots of
+different active influence processes
+each one can contribute to
+dimensionalities like multi sort of
+threads
+the actual signal unlike when you
+mention like say in cybernetics where
+you have something that is guiding you
+the signal itself doesn't have
+you know as we say the signal doesn't
+contain per se the data
+particularly the entropic noise it's
+through inference
+of the dynamics within
+the noise that the generative model can
+sort of
+then process that and so it sort of
+raises this question about
+you know when things go from one level
+to another
+blankets in these states um
+is that transference between states also
+dimensionless
+in that sense or you know where did
+dimensions start to come in as we go up
+the blankets or
+maybe as things get aggregated
+interesting question and that reminds me
+of some other questions that have been
+raised about the dimensionality
+of active inference like is each sensory
+modality
+enshrouded in its own blanket or is it
+sort of a tuple that gets passed across
+a single
+organismal blanket that represents
+multiple sensory
+possibilities so interesting
+questions anyone else want to raise
+their hand or we can just
+start to slowly walk through the paper
+and just
+any thoughts that people have will raise
+them
+so we checked out the abstract
+in the dot zero video here's the road
+map
+so this is a pretty thorough road map
+because we can see
+a lot of the sections and a lot of the
+terms that come into play
+so mel i have a question what
+was your intention with writing it you
+said that you wanted to clarify it and
+learn as well
+how did that translate into this
+structure
+and then maybe where are you headed you
+know
+off this road map this was one journey
+what is your next
+journey yeah
+so a friend brought my attention to um
+to the free energy principle and i think
+fall of
+2017 which would have been like my
+penultimate
+semester in undergrad and i was taking a
+course on like mathematical psychology
+so
+um uh if if you
+one of my references is right so the
+reference to this normative model
+this normative versus descriptive
+process versus
+right that that that reference is argon
+can
+minus 95 which is um he's he's one of
+the primary figures in in maths like
+so a lot of cognitive science you know
+has had subsumed
+math like but but the idea of like
+having these formal mathematical models
+of um
+of cognition so that's that's what i was
+immersed in so so i
+i was uh that's what i was thinking
+about most at that time so like oh a new
+you know
+a new mathematical model of psychology
+perfect um
+and i i i was very skeptical at first
+and i dove in
+and i um it
+it brought me under it was really
+there's a lot there
+and um and i really struggled
+so at first i really wanted to do that
+too like you know it was immediately
+apparent to me that there's this big
+complicated thing that
+that very few people understand and
+there's a lot of widespread
+misunderstanding of what it is and what
+it's doing so i tried to do that at
+first and i came up with like a little
+uh a little like dossier on on like the
+basics of the ftp
+in like some of its early formulations
+as an undergrad
+um and i put that up and
+but it it didn't solve kind of a lot of
+the bigger
+uh i guess like philosophy of science
+questions about what it is and what it's
+doing
+um so i this is like a second stab
+at that and and from here
+um i i so i was thinking of the fpp
+one one way it's helped me to think
+about it is is as a model
+and i don't i
+i guess i don't view um
+models as strict
+natural kinds or like strips the
+scientific kinds
+i don't i don't think that there's like
+a a list of necessarily sufficient
+conditions for being a model or like an
+essence
+to being a model and the fep is either
+you know
+definitively a model or not i think i
+think it's helped me quite a lot
+to think of the ftp as a model it's it's
+uh
+reduced my prediction error if you will
+so think of it as a as a very abstract
+formal generic target list model um
+but but you know and i think in a lot of
+ways thinking of it as a modeling
+language or a modeling framework
+is also really fruitful i think that's
+important there's not
+there's not a philosophy of science
+literature on modeling frameworks or
+modeling languages right
+um but but i think that's it it's
+probably more of a modeling framework or
+modeling language than it is
+a model per se um and and next so i i'm
+i'm next i'm going to try to work on a
+paper with um
+within us kind of exploring what it is
+to be a principal
+right like what's the principle because
+there there isn't a philosophy
+to run on principles really right what
+is the principle
+um that's next i also
+um there's been a lot of comparison of
+the fpp
+to to natural selection to darwin's
+theory of natural selection
+and um when you ask people about that
+and this is this is sort of the the the
+core
+like pro fep the core like
+we're working on the fpp camp um
+often draws that comparison and i think
+that this
+so so what they mean to be doing there
+is saying well it's not directly
+falsifiable
+to alex's point i think i think
+everything is sort of falsifiable every
+everything in science is falsifiable in
+so much as it's
+if it if it doesn't get traction it
+falls out of use if it's not useful
+then we don't use it right and then it
+it
+ceases to be kind of part of our
+collective consciousness as
+as researchers and i think that if if
+the fep fails to be useful
+you know it falls by the wayside that's
+that's
+gets confined to dustbins of history um
+so so there is that in that sense i
+think there definitely is that kind of
+like
+confirmation holism there right um
+if it fails to produce useful lower
+order theories than it
+it it's all that of use um
+so so i think that that in in trying to
+draw a comparison between
+natural selection and free energy
+principle people want to say
+well the fep like natural selection is
+not
+directly falsifiable
+um in the way that natural selection
+isn't directly falsifiable
+and it's um it's also
+supremely useful um it has this
+widespread kind of both empirical use
+and
+and you know grand explanatory power
+and i think that this is sort of
+ultimately conflating multiple
+notions of natural segments so multiple
+kind of discrete formulations of natural
+selection
+one of these due to popper and one of
+these
+one of them sort of due to to darwin and
+then it gets formulated in like lewinton
+and got christmas and stuff like that um
+and one of them that safely do the
+proper
+which popular later kind of recounts as
+a as a mistake it's an error news i'm
+thinking
+um so i want to do that and i i also
+think there's kind of a metamark
+because i've been working on models and
+um
+reification in models so so when we
+what's happening with the ftp we can
+think of as reification conceptual
+reflication or pernicious relocation
+where
+you get uh confusing the map
+for the territory basically perfect
+thanks for that response and also
+welcome uh scott
+we will go to alex kiefer then marco
+then tim
+okay um so i guess
+there are a number of things that i want
+to say um so
+as far as okay right so i think what mel
+just brought up
+um reminded me that there's a
+there's a um one way of of i guess i've
+discussed this with mel and others so
+i'm
+um apologies if this isn't in the paper
+i'm not quite sure i need to look at it
+again but basically one way in which
+this thing
+could fail to be falsifiable is if it's
+not so much a claim as like a
+an approach or like a a sort of
+stance that leads you to make certain
+claims so like
+um so to put that in a if you wanted to
+put a negative light on that you could
+say it's a moving target but i
+i don't mean to disparage the fep at all
+i think i think
+um you know one thing that's going on
+here is that carl fristin is a fairly
+creative
+scientist obviously he's sort of trying
+to do something new and so he's
+you know this this is a framework uh mel
+mentioned
+thinking of this as a modeling language
+um it's a framework that's still under
+construction to some extent and um uh so
+you could say it's well
+it's not falsifiable because it's not a
+particular you know mathematical
+description it's a
+uh generator of descriptions like that
+um
+so i'll stop there for now yep and just
+to draw one
+quick thought there it's the principle
+as being metaphor
+uh the metaphor is between the principle
+and the language so could anyone
+falsify english could anyone falsify the
+idea of english grammar
+or is english a moving target is it
+something that can't be falsified
+but you can make claims under the
+umbrella or using the english grammar
+approach
+that the claim could be useful or not or
+it could be useful for one person or not
+for another person
+so once you get into the specific
+process theories the specific claims
+then you're talking empirical data or
+you're talking about the perspective of
+individual researchers
+but then when you pull back to the
+principal level and mel it sounds really
+interesting about the work on fleshing
+out what a principle is
+it's a little bit more like you can't
+falsify python but there's programs that
+don't work
+okay so marco tim and then dave
+thanks um so first of all apologies in
+the fans with philosophers because i'm
+gonna consciously tread into
+pragmatism um so so again i'm not a
+philosopher but but i'm
+kind of interested in in the angle of
+pragmatism on these matters
+so um reiterating again the theme of of
+seeing
+the fringe principle and active
+ingredients as more of a language
+and a framework um we
+also i think obtain an interesting maybe
+mode of falsification that actually mel
+just
+gave us which is um if certain approach
+or framework or
+a system of doing science um is selected
+by the niche that is a scientific
+enterprise then that is maybe an
+interesting form
+uh well the opposite of falsification
+right so if it doesn't
+get adopted then that maybe is some kind
+of classification
+but then an interesting uh implication
+here is
+following the popularity and the strange
+like popularity you must have
+uh of sap in so many different circles
+um is i think a sign that
+that the scientists or the researchers
+who have utilized it have
+experienced an embodied signal of
+usefulness
+and then following that comes a question
+of okay then where does it come from
+right and then for me what's really
+really interesting is then then the fap
+is the perfect kind of approach to
+answering or approaching that question
+right so so upon adopting or upon being
+exposed internalizing the ftp and active
+influence
+what changes within so now we get also
+two kinds of approaches to language not
+just you can communicate to other people
+but also how do the different models you
+you
+you embody communicate with each other
+so the unifying
+uh capacity of free energy principle
+is not just uh in the abstraction in the
+papers
+but also for people themselves at least
+for me and anecdotally also others
+that is i think one of the more unique
+aspects of active influence it really
+evokes the sense of unification
+it allows you to use a single framework
+and lens
+for a variety of phenomena and theories
+and to me that is maybe the biggest
+argument for it being scientific for the
+merits it evokes are genders
+in scientific enterprises including
+their constituents such as people and
+resurgence
+um so uh yeah so
+i would love to hear more from you uh
+especially philosophers on pragmatist
+perspectives sorry i've been binging a
+bit of hasso
+chan recently so maybe that's why i'm
+asking thank you
+marco tim then dave than anyone else who
+raises their hand
+uh did you say pragmatist just now
+yes that was pragmatism yeah a good
+segue to what i
+wanted to mention i guess because i was
+when you mentioned rarification
+that resonated with thoughts as i read
+the paper
+about um whitehead's fallacy of
+misplaced concreteness
+you know the idea that this this this
+knot
+in the processes that exists that's
+being revealed
+um is actually a process and the things
+that we see in the objects of the world
+are really just um uh sort of a
+rarification of the processes
+and you mentioned natural selection that
+was another thing that came up but not
+in the way i don't think you were
+mentioning it now
+the way i thought of it in the reading
+the paper was uh basically the
+objects as we call them are simply
+uh processes that we can take a
+perspective on that survived
+you know they're there because they
+survived they stayed they became
+they sustained themselves as you like to
+call it you know self-organized and all
+that right
+um yeah so anyway interesting thanks
+yeah thanks for
+tying that dave and then alex kiefer
+yeah mel uh you don't seem to give the
+exact
+title of the 1995 loose
+paper what was that i've got his 95
+book but he doesn't seem to ha is it
+just the introduction to that
+uh um the tarot window
+collection oh mel you're muted but
+look it up and then post it in the
+youtube chat or comments not the jitsie
+chat because it will make a noise so
+post it on the youtube and then anybody
+who wants to post
+any of these papers they're mentioning
+really the place to do it is the youtube
+comments
+or send it to me and i'll put it in the
+youtube video description
+so that everybody can access it alex
+kiefer then anyone else who raises their
+hand
+uh yeah i guess i was just gonna create
+some more problems for
+the simple discussion here um
+and well in that okay so so pragmatism's
+on the table and ratification
+um so um i guess for similar quantum
+type reasons i'm not sure how to think
+about these things
+i think what tim brought up about um
+perception
+forgive me if i could get it wrong but
+perception being something like a
+ratification of an ongoing process
+i think is a really good point so like
+um
+i mean there's a sense in which i'm a
+fan of ratification because it's like
+yeah maybe that's just what we're doing
+when we you know we take some we have a
+language
+uh maybe it's an internal neural
+language or something or maybe it's an
+external one and we and we take it to be
+about the world and that's our lens on
+the world so without rarification in
+some sense
+i don't know um how we we would have
+any any kind of perception of things but
+i'm sure that there's a way to
+distinguish bad kinds of ratification
+for good kinds
+um and i was going to say something else
+but it's i completely forget so
+yeah good point it's kind of like
+stability and plasticity
+remember those two top level descriptors
+of the cybernetic paper that we heard
+from in the last couple of weeks
+and it's kind of like they're not
+intrinsically good or bad because you
+could be too plastic or too stable
+and succeed or not and then beyond
+whether something exists or not humans
+have this kind of second layer where
+it's like oh yeah that exists but i
+don't like it
+so it's perpetuating itself but then we
+just don't prefer it
+and so that's just our agent's level
+perspective and so it's not just enough
+to be
+reified there's something else happening
+there so marco then sarah
+yeah oh to build on uh alex's great
+point
+so one of my favorite notions is
+reconstantine ladders
+or in buddhism they also call uh talk
+about the simile of the rounds
+um and i think this is really what it's
+about right so we're kind of like i
+like i said we're kind of stuck with
+reification that's just part and parcel
+how we engage with the world because the
+alternative was believing in nothing and
+then
+if you literally believe nothing then
+how the hell are you going to engage
+with the world right
+so all you can do is have good re as
+good as possible reification or
+at least worse reifications um
+and again for me this is this
+perceptually this kind of approach
+or at least perspective that we are just
+engaging in finding better
+reunifications
+such that that particular reification or
+such that that particular
+um embodiment or incorporation of a
+model leads to better genetic dynamics
+and then to better active inference um
+due to use active infrastructure
+framework here um yeah sorry yeah
+cool sarah then mel
+um i don't know i is this possibly gonna
+be an embarrassing moment for me but i
+feel like that's my job
+um i don't really understand
+like as i was kind of stepping through
+fep the math of it
+there's a there's a point where i'm like
+eh it seems like bayesianism has
+got some like it doesn't seem like even
+it
+the foundations of what feps are a lot
+of things are based on
+i mean this idea of of belief and priors
+and
+and and that something you know
+something is absolutely true
+i guess i just wonder mel if you you
+know if you
+ran up against that or like if there's a
+deeper background that i'm
+probably not aware of in philosophy
+about the limits of bayesianism
+um or these kinds of models so that's i
+don't it's
+really a vague question but it's the
+best i could do
+no that's an excellent question oh sorry
+yeah i'm nice it is it is a great
+question go ahead
+yeah it's an excellent question so
+there's a um
+yeah i think i think when i was first
+grappling with veganism
+there's a way in which um
+there's sort of like a laplacian demon
+smuggled in
+like there's a there's a view from
+nowhere smuggled in
+there's a a a perfect knower
+smuggled him and
+that would be the case for the fep
+but we've we've
+we worked out a way
+for it to be just a
+a cognizer that's like
+self-supervising right it's it's
+knowledge is limited
+it's access to to the true world out
+there is
+is intrinsically limited and yet it's
+able to self-correct and self-supervise
+and if you want um i think sort of the
+best recent explanation of like
+why this is the case and and how it's
+able to do that is um
+yuck hoey's paper and i want to say
+synthesizer and i want to say
+something self-supervision and the fish
+i guess i have to i get i guess i have
+to drop this link as well let me go do
+that
+cool yeah that's what's so fun is the
+discussion yeah i would love it thank
+you
+yeah the discussion we raised so many
+fun links and so many connections and
+then we just
+make sure to post them so that everybody
+can asynchronously or synchronously be
+in the game so marco then anyone else
+oh no raised hand yeah oh go ahead uh
+oh yeah sorry um what i'm gonna say oh
+yeah and i really love that but i
+i i wanna propose saying instead instead
+of a perfect knower because laplacian
+indeed knows everything but for me
+bajanism is really more about
+if we would have to make an analogy it's
+a perfect pragmatic learner
+so in essence what it it the nordic
+principle kind of
+by design says this is the perfect way
+of knowing
+if you also add on a lot of assumptions
+for a particular age
+but but uh yeah i guess a bit half
+jokingly you could say it's a fristen
+steaming
+you know the perfect dramatic learner um
+yeah i just
+i just ran up against this just in my
+everyday life
+i contradict myself in so many ways i
+can't even keep track you know like
+one one part of me thinks this the other
+part of things that and they're
+literally
+and so i yeah i just i just started
+realizing
+my my own limitations with respect to
+knowledge and how knowledge would even
+be modeled
+but that's part of the design i think
+that's something i often like to point
+out
+is it's not about having no conflict
+it's more about given that conflicts
+will arise
+how to best cope with them so the
+adaptive engagement with the world is
+also reflexive
+so your own struggles your own
+challenges your own
+seeming contradictions are also
+opportunities to grow and that's again
+only possible with this
+demon that that is pragmatically
+learning all the time
+i'm curious but hopefully that's a bit
+more optimistic yeah i'm curious about
+this perfect demon
+because i would say that a bayesian
+updating agent
+could make a update that helps it
+survive in its niche or not
+it could over learn or underlearn and
+just simply fail to exist in the future
+and so natural selection again is the
+hand that just sweeps off the table
+the bayesian learners that aren't
+existing and i would challenge you know
+there's many thoughts on bayesianism
+and a lot of debates but alternative
+being what frequentism
+or some other vaguely unspecified
+mathematical framework that somebody
+doesn't want to put a name on to
+and so i think it's an interesting
+question how does
+mathematics and how do formalisms come
+into play
+with philosophy at all what would any
+equation have to say about philosophy
+but then once you're in that world of
+trying to make models that have some
+element of formalism
+whether it's natural language or whether
+it's another language then
+i think you start wandering over towards
+the idea of a learning or updating agent
+and not needing to take the baggage that
+it's a perfect learning agent just that
+it is
+an adaptive agent of some kind sarah and
+then anyone else who raises their hand
+yeah this gets for me though um this
+gets into a kind of a i don't know the
+the clever philosophy word but
+um you know this is also why i asked a
+question in a prior week about the
+markov blanket because it's like
+i i picture like a monster truck rally
+where two
+two fep models are battling it out
+basically in my own
+brain or whatever and so it's like where
+is the
+so so in that paradigm where you have
+these kinds of objectifications you know
+of one fep with another fep like where
+the
+um then you have questions around like
+the boundary between the two
+and there's this kind of a there's a
+there's a thickness about all of this
+that
+um kind of gets me in like an infinite
+regress
+so that's yeah fun alex keefer than
+anyone else
+yeah so i mean i think this this issue
+we're talking about now is really
+interesting i
+uh yeah i was wondering recently whether
+bayesianism is a is a prior
+and what that does when you start
+thinking about it i think this is
+totally
+relevant to the the theme of overall
+theme of the paper because
+well of course it is but i mean it's
+directly relevant because um
+like it we're talking about things that
+get to be so general theories
+theories or frameworks or whatever that
+are so general that they start to raise
+really weird questions but one thing i
+was going to say is just that like
+i think maybe this is implicit or
+explicit what people said already but
+like
+the fact that we're dealing with
+variational inference well for okay
+first of all bayesianism even if it's
+bayes theorem itself is supposed to like
+descend from god or whatever it's like
+actually building subjectivity into
+into science more right explicitly than
+the alternatives i think people mention
+contrasting into frequentism but then
+we're taking a further step
+away from objectivity and saying yeah
+and each each creature sort of
+learns its own approximation to that um
+so i think
+um i don't think you can eliminate uh
+claims to objectivity entirely um i
+don't i
+and so this may be maybe this is the the
+best we can do
+um or at least a step in the right
+direction
+very interesting point marco then anyone
+else
+marco then mel yeah i fully agree um so
+obviously can't be eradicated and i
+think that's kind of the beauty of how
+like alex said uh this act of infant
+stuff is taking the
+the rejection of projectivity even
+further it's really
+approaching or making at least the the
+the
+building the foundations for an
+objective science of subjectivity
+right and and to to add uh to touch back
+on the
+uh of jokey idea of the bistonian demon
+um like alex said right they create
+their own particular approximations um
+they have to have first instantiated
+particular priorities
+but more importantly you also noted on
+i'm sorry also noted on
+infinite regress so so that's another
+beauty for me um
+there's no problem of if need regress
+because traditionally with homunculi and
+stuff and controllers or agents or will
+theirs is yeah but what is controlling
+that and there's this movement
+towards smaller and smaller but that's
+not the case with
+the scenario because the dependency
+is not like a vehicle dependent on the
+driver
+but it's more assistant dependent on
+each other and i think that's kind of
+the beauty
+um where the agents in the perfect demon
+scenario
+it would be more like um minimal
+dependence on the agent's faultiness and
+more about how well the niche of the
+context
+prepares that agent uh for the niches to
+be
+encountered in their life uh and for
+those
+you know with attention for buddhism
+it's also very beautiful how it relates
+to this idea of the mutually arising
+or co-origination um it it's just
+in essence like alex said it's about
+subjectivity
+the the the co-dependency of how
+densities or how
+states or yeah and identities house
+densities kind of
+adapt each other anyways awesome awesome
+mel then tim than anyone else
+yeah so i sort of wanna i guess i want
+to
+push marco maybe to to bring up
+a question he raised when you were
+giving us the
+this sort of like breakdown of this
+paper
+which i i thought
+when he raised i was like wow that's
+that's a really difficult question that
+i can answer
+so um i think that would
+push a very interesting discussion
+if only because it's a question that i
+don't know how to answer and it's a
+question of
+um it was something about
+well aren't aren't physical descriptions
+just kind of formal descriptions
+at some level anyways so you were you
+monica you raised the quest do you
+remember do you know what i'm talking
+about
+no well you raised you raised a question
+about about um
+about this line that i drew between
+a mere you know mathematical formal
+statistical description
+of something at a a physical description
+proper and you sort of
+challenge that that such a line exist
+which is which is tristan's line
+but somehow uh
+i i love carl but but um somehow the way
+he has always raised that
+it feels to me like a cop-out it feels
+to me like
+some sort of evasion but when you
+pushed me on that i was like you know
+yeah you're right maybe there isn't
+maybe there isn't a hard line
+between and and this this sees into
+alex's
+question as well um
+[Music]
+it's it's it's all this it's all
+continuous this this question of like
+well
+you know uh
+is math natural like is is math an
+arbitrary
+formal system um
+where we've invented all the rules and
+it it just has nothing to do with you
+know
+contingent nature or or is it continuous
+you know is it
+is it just descriptions of nature at a
+very abstract level um
+is there a is there a hard line between
+information seriously well you know
+going full change
+is is there uh is there a disappearing
+line
+between um between
+inference techniques between techniques
+for bayesian infants
+um as a you know just
+as a statistical technique and
+thermodynamics right you know
+statistical mechanics
+uh those are the questions that i'm like
+oh man i can't i can't that's
+that seems to me to be the most pressing
+question behind all of this
+to me yes math invented or discovered
+thermodynamics invented or discovered
+fep invented or discovered inference
+overall
+statistics all these kinds of awesome
+interrelated questions
+philosophy invented or discovered tim
+alex kiefer
+then anyone else i was just uh
+just kind of the homunculus infinite
+regress
+thing versus the dependent arising sort
+of co-emergence
+of the of the i think that contrast is
+really
+something neat that i don't know how to
+explore it but they seem like opposite
+ends of
+you know two poles of the same kind of
+consideration
+and i feel uh like i'm repping whitehead
+here today but
+it also touches on what he talks about
+when he talks about the bifurcation of
+nature that he decries right so
+i mean um uh so when we talk about
+taking a perspective and saying that
+object
+emerges to my perception first of all
+because it survived as a self-recreating
+thing
+over time you know that it uh
+you know um and and i did too
+we're we're both in the same we're both
+the same thing you know what i mean like
+it's not like
+i'm apart from the world the reason it's
+in my world is because i'm in its world
+and and the nature's not bifurcated into
+the
+mind and the physical anyway
+awesome point tim because we often say
+in active inference that the organism
+comes to embody the statistical
+regularities of its ecological niche
+and so people look out there at the
+ecology around them and they can say
+okay that's
+natural but then the organism is also
+natural and wouldn't the generative
+model
+of its niche be just like its hand be
+just another phenotype that's generative
+and therefore natural as well so alex
+kiefer
+then blue then marco
+um i i might just i might actually ask
+for now i just wanted to drill down more
+on this idea of like
+mathematics uh what what you know pure
+mathematical formalisms and how they
+might represent but i think there's a
+lot of interesting
+stuff on the table right now i'd rather
+hear about it at the moment perfect
+blue then marco
+so maybe it'll i'll wrap it back for
+alex because i kind of want to
+just touch on this dependent arising
+right or like the mutual arising
+you know the world exists because it
+exists in my mind
+um and also the idea of whether or not
+mathematics is natural right like is is
+this like something that we
+invented or something that we discovered
+but i would like to make the argument
+that that really like
+as humans we are also natural right so
+so
+if it can be discovered in more than one
+place at more than one time by more than
+one human as many
+strong theories in science are they
+bubble up together i think that
+there is some kind of natural arising or
+naturalness
+to these kinds of studies
+thanks blue marco then anyone else
+thanks um so
+so uh i think i know what you meant uh
+with my comments uh
+no i think but but let me allow uh to
+push back on myself
+um so so i think if we're we we only
+have
+just descriptions um and the only kind
+of extra
+qualifiers or properties of these
+descriptions as such
+that's relevant and grounded is their
+etiology or their genealogy where do
+they come from
+right so if we already talk about
+descriptions we already have to be
+talking about
+systems that can generate descriptions
+and so
+i don't think there's a hard line uh in
+terms of
+an essence right that's intrinsic
+property but i think the hard line is
+more about
+their path their genealogy how did that
+description came
+come to be um and then i think we go
+back to
+uh language again and i think this is
+thanks to um
+liam bright shout out to him who
+introduced me to karna
+and he currently talked about valid
+physical languages
+um and i think that's kind of the beauty
+that the fep
+is maybe not perfect for every state of
+affair or space of affairs
+um but i do think it's true that that
+you can transfer a lot of
+what we now at least see as valid
+physical descriptions to the language
+ftp
+but more importantly to me the beauty is
+the generative aspect so if you
+transfer something into um translate
+something into active
+language of active inference then you
+also transfer the generative aspects to
+it
+so if you transfer them to active
+influence and then you explore in the
+space that's generated there
+and you see a pattern or something then
+that hypothesis
+obtained or derived in an abstract space
+can be also translated back
+and so it's the validity of that back
+and forth
+translational path that i think is more
+important
+to the question of is it a physical
+description right is it is it physically
+rooted
+rootable if you have these valid
+languages i don't know if it makes sense
+yeah so small point uh very small points
+is
+um i've always also taken issue with
+carl saying that we embody
+statistical regularities about the world
+not that it's not true but i think
+it's it's it's uh only a partial view
+for me what's more relevant is that
+there are statistical regularities due
+to the fact that the world is systematic
+um and these regularities allow this
+kind of tethering
+right so it's for me it's more about
+embodying a bridge with the world
+and what you then get at least my
+motivation is then that leaves
+a more openness to also give room for
+the unique
+aspect to humanity as in humans are
+weird
+we're like really weird i don't know why
+we're so weird exactly but we're really
+weird
+and that weirdness has less to do with
+cisco regularities and
+more about what is evoked or generated
+or cultivated
+upon embodying this statistical
+regulators and upon being faced
+with the challenges of dealing with the
+world um
+and so i guess we have some physical
+regulators of the world
+and kind of weird irregularities of
+ourselves
+uh if that makes sense yes yeah we we
+swim
+in those regularities of the niche you
+know if the fish were just the
+statistical regularities of water there
+wouldn't be a fish there
+so it has to be something a little bit
+bigger
+now another uh cool thing is we we've
+been talking about this
+uh similarity between the physical
+ecology
+and then our social ecology which is
+also natural so we can think of a
+physical example of stigma g
+like the ants that are digging out their
+nest and they're modifying their
+physical environment
+which then changes how their physical
+behavior is implemented
+but with this conversation and in the
+literature especially
+there's a stigmergy at the level of
+information the informational
+niche which has different perspectives
+within it different agents that have
+different access to different kinds of
+information
+and those kinds of communications in the
+informational niche
+are natural and the generative models
+that we have are natural as well
+so there's just so many fun ways that we
+can think about all right well
+now that we're niche constructing in
+this info niche
+what kinds of uh things do we want to
+put in this
+construction that we're working on
+together so just like the ant
+engineer might say well we could kind of
+have a corollary
+to this tunnel that branches off this
+way maybe there's something useful over
+here
+oh we falsified that corollary tunnel
+it's not useful
+it retracts so in the social world in
+this informational world
+how do we take that natural perspective
+and also make it useful for the colony
+scott and then anyone else who raised
+their hand
+just wanted to say with regard to the
+fish i think some of you heard the
+example i read
+research a number of years ago where
+they took a semi-rigid piece of plastic
+and put it in a stream
+and then they varied and increased the
+speed of the stream and ultimately the
+piece of plastic started undulating with
+the periodicity
+that resembled the fish and so they what
+they realize is the fish doesn't swim
+through water it actually passes through
+the water
+so it was really over deep time fish are
+formed by the water
+now again not the entirety of the fish
+but also formed by other relationships
+with other
+organisms and media but is similar to
+the way that
+insects bats and birds independently
+developed wings
+because they were flying in the medium
+of air
+but i think i think mel has a point yep
+let's go
+here yep we'll go mel ben
+shannon then marco i
+i point there's a it's like a lovely
+little video
+of a of a dead like salmon in a stream
+and it's
+it's it's it's behaving
+in this way that really seems very
+lifelike but sad
+um and and i i think i i once
+like posted this with the caption like
+is this
+is this morphological computation and
+that made a lot of people there was
+there like people were very up in arms
+over whether or not that was
+morphology
+interesting question and synapses and
+neurons being physical
+what isn't morphological computation
+under certain perspectives
+shannon then marco than anyone else
+that was a brilliant picture of what i'm
+thinking in my head right now and
+um to figure back on what um both mel
+and scott just said
+so the dead salmon or the piece of
+plastic
+you know is passing through the water
+in and you can very clearly see how
+the environment or the medium that it's
+in is forming its behavior
+even though it's dead or it's plastic
+and
+as you get into more weird creatures
+creatures with culture
+like humans even fish that interact
+in groups and communicate with other
+fish in a cultural way
+then you end up adding different layers
+of medium so you don't just have
+water you have now the other fish are in
+your medium they're part of
+this social organism and then with
+humans now the other humans are in
+are are making another social medium
+that you're interacting in
+so you have more and more in
+the terminology like nested levels of
+environments that you're
+embodying thanks for that point shannon
+marco then scott than anyone else
+yeah i'm not sure if it's appreciated
+but but i could i'll continue a theme of
+linking active influence to some
+spirituality slash eastern
+traditions it's um so so the notion of
+the dao
+right which stands for the way i think
+it's also
+for me it always evokes his resonance
+with active inference
+um because there's this emphasis on on
+on this
+the way the tao of how the universe
+works efficiently that is unnameable
+right and i think that that is also
+related to this
+issue of reification earlier that there
+is
+modes there's systematicity there's
+rules to how the world works
+but fundamentally it's unnameable the
+moment you name it it's not the real
+way right and uh this kind of finding
+the intermediate part
+the the one of least effort or as often
+as
+described no effort away um
+this this too is is exactly uh resonant
+with that picture of
+the life the dead fish in the stream um
+so yeah i think that's just in general
+there's this theme that i find also very
+exciting
+how much activation actually helped me
+appreciate a lot of
+philosophies and tradition not just
+eastern but a lot of
+let's say forgotten wisdoms and
+forgotten insights
+from not just religion and not just
+spirituality but also arts
+right we often see this false dichotomy
+of
+arts as something frivolous in science
+truth
+but a lot of insights scientific
+insights were actually prefigured
+by a lot of artists into conceptual form
+and so in my experience active influence
+or this generalist
+general um lens or perspective allows us
+to reappreciate that which has become
+too decoupled
+from our modern postmodern over rational
+of analytic
+and a way of engaging with the world
+yeah thank you
+marco it's almost like dare i say it the
+math is not the territory
+so we'll go to scott blue sarah and then
+alex keefer
+so a couple other just observations
+along the lines of what
+um shannon was alluding to i think in
+focal
+um philosopher for co not the pendulum
+he um talked about pastoral control
+which was the idea that the persona of a
+person is formed
+by their external norms and rules and
+laws and
+culture that they're exposed to so the
+same kind of thing like a plastic toy in
+a metal mold
+being formed so that same kind of notion
+and one of the things i think is
+interesting about active inference
+for me is that those differentials
+what is the motivation for closing
+differentials
+and the motivation is de-risking in
+leverage
+grossly stated i think so the idea is if
+you have a differential between you and
+the environment
+you want to protect yourself from the
+harm from that differential or exploit
+the
+opportunities of that differential that
+differential is either temperature
+differential in the case of a heat
+engine
+or an information differential in the
+case of a von neumann or shannon
+extension
+of the second law of thermodynamics so
+those same differentials you have in
+carnot's equation
+for heat and cold you need the
+differentials and information to have
+market exchange
+and i think to have beijing exchange
+so what was what's the status of a
+bayesian process
+if you have no differentials between the
+input and the expectation
+so along those lines what it seems like
+is we have these identity stacks this is
+what i think shannon was
+alluding to not claude shannon but our
+shannon here
+um and both perhaps but that the
+you take these combinations of things
+that in the environment that make you
+who you are we're like bauer birds we
+collect up
+these externalities and internalize them
+for our expectations
+and there's a whole set of them and then
+we go out
+and identify those that are anomalous
+for our expectations so on another call
+earlier there's a
+someone who talked about the difference
+uh narrative and
+story and how your internal narrative
+and your
+story is being told you have to line up
+well to the extent that there's a
+differential
+that motivates activity of interaction
+and markets have been described as
+places where you find
+price discovery and solution discovery
+at large scales so the beijing process
+seems like a way of incrementally
+identifying the externalities that are
+anomalous for your expectations
+and then being able to internalize them
+is kind of that bayesian
+process i think so anyway it's something
+the
+part of the reason that is so appealing
+to me is that
+i've been arguing for a number of years
+that markets and countries and companies
+are biological
+because their iterations and artifacts
+of structures of biological beings which
+is us
+they happen to take on an abstraction in
+an informational
+embodiment but they represent those same
+processes as biological systems in terms
+of those differentials and trying to
+render externalities innocuous or
+exploit externality
+differences anyway there's a lot this is
+feeling very
+like a there's a strange attractor here
+it feels like that's pulling
+the conversation in the direction of
+that um
+generative systems that i define
+the last point i define life as being
+auto catalytic
+entry entropy secreting systems
+so these auto catalytic they keep going
+and entropy secreting they get rid of
+disorder
+but the problem is that the neighboring
+system has to absorb that disorder
+and so how do you manage disorder among
+systems
+is again when shannon arshan and not
+claude shannon
+was talking about the different things
+the different characteristics
+that's the neighbors good neighbors when
+they bang into each other in terms of
+their
+creating anomalies for each other's
+expectations
+manage the anomalies instead of just
+winning over each other so anyway just a
+couple of things there
+thank you scott blue sarah alex
+marco so i'm gonna
+skip over what scott just said and go
+back to what marco had had previously
+said about
+um the connections right between active
+inference
+and eastern religion so i'm a student of
+buddhism for many years and i've been
+wondering right
+do we in fact have free will like if
+we're considering
+karma and also considering active
+inference so this is something that like
+i i find this parallel
+like karmically we're connected we've
+got collective karma with groups with
+systems with
+you know the universe right in this in
+this uh
+philosophy so and then we have our own
+karma like our previous actions and
+and um you know have have collected
+collectively
+formed us right and so when we're faced
+with a choice
+like like i wonder do we in fact have
+free will because
+all we can really do is like if we're
+just the product of our karma we only
+have one choice
+like it's the choice that we're going to
+make but obviously that's the only
+choice that we could have made
+because of all of our previous karma
+right so so
+and in the same way in active inference
+in thinking about active inference
+as um like a computational uh from a
+computational aspect if this is really
+representative of
+you know the brain and how how we think
+and how you know we operate and how we
+make decisions
+so thinking about active inference
+there's really only one decision that we
+could make right like given
+the inputs the sensory inputs and like
+we have this generative model like given
+our model and given the inputs of the
+system and our selected policy
+there's really only one choice that can
+be made like as a result of all this
+like collective computation going
+forward
+anyway it's just something i've been
+thinking about for a while blue it's
+it's awesome and i just
+checked on search engine karma as
+multi-scale bayesian prior the title is
+not taken yet so anybody who wants to
+write that one go for it
+sarah alex keeper then marco
+yeah just more random into the mix i
+guess but um
+you know i was i was reading about like
+early babylonian
+um i don't even know if it was
+philosophers but somebody you know said
+oh those guys
+those guys weren't scientists and
+because xyz
+and um of course i i disagreed uh but i
+was just thinking about just generally
+the
+um evolution of of science and math
+um and there just seems to be this
+constant like bifurcation bifurcation
+and kind of contrasting this
+ever more complex ecosystem to the fact
+that we're
+um really diminishing our like we're
+going through species extinction in the
+actual material world
+but in the model world we're going
+through this this proliferation
+and that just like totally trips me out
+like what does it all mean
+in terms of um connecting those two
+things i
+i often think about the informational
+versus material
+and mourn the loss of um
+i'm more in the loss of analog actually
+like this is a big thing for me and i
+don't quite know where to go with it but
+um at some point when things became
+digitized we really did decouple um
+behavior from material in a way that i
+think is really significant but i can't
+quite get my head around
+where it matters and where to where to
+cut out the joint i love that phrase
+um and how to how to explore that so if
+anybody has advice about that also
+um but yeah thanks sarah it's like
+marshall mcluhan's
+work and other media theorists on the
+innovation of the written word as one
+kind of uncoupling and you're hinting at
+even beyond the written word there's a
+digital uncoupling and how that
+influences
+us and especially just you captured it
+so well there's a diminishing
+biological diversity in some ways as we
+modify our environments but at the same
+time at least over historical time
+periods
+we're proliferating there's more songs
+there's more scientific theories there's
+all these types of things
+but what happens if we reduce our
+uncertainty about the biological world
+till it's just something that can't
+support
+that kind of theoretical proliferation
+alex keeper
+then marco then scott oh man um
+really interesting stuff going on here
+so i mean i originally raised my hand
+just
+because i wanted to explicitly say that
+i do appreciate
+marco's um connecting the stuff to
+buddhism and things like that um that's
+something that like i hope to write
+about once i've
+established myself as a serious
+philosopher a science type person enough
+that then i can say things about that
+and no one will
+react badly um because i think it's
+awesome um but
+and and this issue you're bringing up
+now with like we're kind of enriching
+the model space at the expense of the
+physical world is really deep and
+important i don't know what to say about
+it but it's there
+um and uh
+yeah um i that's uh
+the thing that i was that i wanted to
+bring up i figured since we're all
+talking nicely and getting along about
+this these big you know interesting
+large-scale themes that maybe um what we
+should do is instead
+argue about like some detailed annoying
+thing
+so um so so i just wanted to push um
+this idea that so the reason that i
+that i don't see the fep as innocent of
+representation is just
+this might this might be a sort of
+because of my provincial view of what
+representation is but i figure
+if you think of a mathematical model as
+like a structure right and then we can
+sure you have different windows in that
+structure depending on like the
+the actual mathematical language you use
+to write symbols down
+but maybe this presupposes mathematical
+realism in some sense but like you've
+got a structure
+if you've got any system of equations
+and then on my view that just represents
+whatever
+is isomorphic to that structure and it
+could be like a
+idealized physical system i don't know
+you could argue about applications and
+where applications come in but
+i guess i don't see like how you can
+escape
+representation um so let's see what
+what that does if i say that yep and the
+uh
+infamous representation wars earlier on
+active streams
+marco then scott then anyone else who
+wants to raise their hand
+thanks um uh i'll try to address a lot
+of points
+and hopefully meaningful um so
+i didn't catch everything which you said
+scott but but i fully agree that there's
+this huge
+hugely important issue of dealing with
+externalities right so
+so i i have some issue with saying that
+we simply
+throw disorder out in the world i think
+that's maybe a consequence of taking the
+notion of
+exuding entropy a bit too oversimplified
+entropy isn't strictly disordered um
+because as it's been noted it's all
+about actually almost
+pretty much yet every information
+theoretic measure is
+subjective it needs to be relative to
+something something often forgotten but
+re-emphasize invasionism and now also
+machine learning because they're
+discovering that it's a huge issue
+anyways so the point is that that
+um first of all i want to also let you
+know
+that amongst research and active
+influence this is indeed something
+that's being
+addressed right there's for me one of
+the most exciting applications of active
+influence
+is kind of a philosophy of society or a
+philosophy of how we
+engage with each other in the world and
+how i like to say it and bryce huber
+also took that word i think
+of co-regulation we regulate each other
+so i wouldn't say that that we
+intrinsically exude disorder in the
+colloquial sense
+it's more about the basic knowledge of
+active infants you know you perceive
+something you do something the question
+is to
+what extent is that problematic do the
+changes that you enact in the world
+lead to undesirable consequences that's
+the only question
+really um but indeed we can't really
+address
+questions systematically in my opinion
+without a framework such as active
+influence
+and until then we will be myoptic until
+then we will take these externalities
+for granted
+and have to wait we're at the mercy of
+our discovery when it becomes too
+problematic
+such as what we saw with industrial
+revolution great great progress in the
+terms that you care about
+then way later you find out the
+consequences the catastrophic
+consequences
+of externalities at the point than
+natural revolution um
+ignored um but you know we're working on
+it
+um and a small side point to add to that
+is
+um having said that that our exuding of
+entropy
+is not problematic in itself it comes
+also with a re-emphasis
+on how the entropy we exude are actually
+really great think of children you know
+those children are still learning
+they've taken all this stuff they don't
+understand
+and they just express so much chaos
+but we love it it stimulates us it
+apparently nurtures us you know
+people get happy when they see children
+playing um
+and partly because i think when people
+are
+doing this chaotic what a chaotic
+weird messy behavior in the real world
+we're able to kind of understand what's
+behind that
+and i think that's quite a beautiful way
+to look at it because then you can also
+see that what maybe messy random
+behavior for some person might perceived
+as something stimulating
+nurturing nourishing uh so so there's a
+nice kind of ecology going on there
+um and and as for blue about free will
+so i i hate the notion free will
+mostly used in philosophy because it
+seems it almost
+always seems like free from determinism
+right and i think that's that's that's
+already a trap that you cannot fall into
+instead it's more about autonomy right
+the behavior that you that you engage in
+the actions that you
+that you that you make to what extent
+are they driven by factors that are your
+own
+factors that are more internal rather
+than external
+and then of course you would get the
+problem of oh well we don't have a self
+nothing is true internal
+sure but okay then that is simply
+because that which is internal
+is also cultivated because of the
+external but it doesn't take away the
+fact i think
+that we can say when there's a
+generative process to what extent is set
+due to idiosyncratic factors
+um which i think is beautiful because a
+lot of these idiosyncratic factors
+are cultivated in part their engagement
+with
+other people with other cultural
+artifacts
+and so our cultivation of culture
+of narratives of interactions with each
+other our practices our rituals
+these are all participating to cultivate
+this collective
+kind of autonomy to what extent can we
+as a collective
+shape the world niche construct the
+world in a way that's more adaptive to
+us as an agent
+on multiple skills um so
+so also i actually don't really like the
+notion of district choices but more
+fluid navigation imagine if you're
+conscious your conscious being
+the space that which is conscious you're
+more affluently navigating
+the density and it expresses itself
+maybe as a choice but i think that too
+is the real kind of case we talked about
+earlier um
+so yeah nothing go too long on that um
+yeah and i also really like the notion
+of uh this uncoupling
+so for me what the danger is kind of uh
+to use a word used earlier um
+there's this body catalytic power to
+some
+uh narrative to some practices which
+shifts
+uh the the fitness of these practices to
+a more
+overly pragmatic mode of behavior one
+other way i want to
+want to describe this is basically a lot
+of our digital technologies create a
+training set that is too decoupled from
+the actual test set that we will
+encounter in the world
+um what you see in the kind of rise of
+some people might know the notion of
+meat space and service space when you
+live in service space you're being
+attuned to a world that isn't conforming
+to
+the meat space and i think exactly that
+is a danger
+and i fully agree with that even though
+i'm much very much ancient denizen
+i do think this is a problem that hasn't
+been fully addressed is dangerous
+and the fact that we can't with all
+these smart people here that we can't
+formulate it properly or characterize
+properly
+is another indication that this deserves
+more attention um
+yeah so thanks thanks for all the
+thoughts
+scott and then anyone else who raises
+their hand
+so a small fun point and then a big um
+fun point so the small fun point is
+marco you're talking about children
+throwing off wildness and
+entropy and that's recreational disorder
+right because you know that there's a
+thing there it there's two points on
+that one one
+hot sauce is another one of those right
+because it's it's uncomfortable but
+people like it right
+and so on that there's actually a
+physical there was an article in nature
+this is a small fun point
+article in nature magazine that in your
+senses of taste
+there are five senses right there's
+actually two channels good and bad
+the good channel is sweet which is
+carbohydrates and umami which is
+proteins
+the bad channel is bitter and sour which
+are poisons
+typically an unripe fruit and so salt
+doesn't have its own channel
+salt goes from the good channel until
+the level of blood salinity and then
+switches to the bad channel
+so the reason for mentioning that is in
+food you use bitter and sour
+as highlights as recreational disorder
+right and so they're and they're because
+they're not indicative usually of
+consumables
+in nature so that was just an
+interesting side light on that
+it's a similar to this notion in the
+dentist there's this research now
+that if you have a very painful dental
+procedure you should actually finish up
+the procedure with a little
+extra pain but not but a soreness type
+pain not a difficult pain because the
+mind remembers the last pain experienced
+so the the article said do you want a
+little pain with that
+and the idea was extra irritant and the
+ada said they can't
+because of the do no harm they can't
+administer extra pain
+as a matter of policy but the idea was
+to hijack the sensation the memory of
+the bad experience with the lesser pain
+which is kind of interesting so that was
+the small fun points
+let me get to the bigger point which i
+think um is
+uh it goes back to what sarah was
+alluding to
+so this is that idea of symbolic and
+physical beings
+okay this is something i've been playing
+with for a little while it takes a short
+period to describe
+and so let me try that so what if put
+put aside all your notions of causation
+for a minute i'm going to go back to
+something that seth lloyd raised for me
+a guy at mit wrote programming the
+universe and he asserted in his book
+that all interactions since the big bang
+have increased exponentially
+all interactions in the universe okay so
+two two particles hit each other then
+they get four particles it's 16
+particles whatever
+and then that iterates out to us okay so
+moore's law
+you have this exponential increase in
+transistor density on chips
+that has led the fifth order effect of
+that to an exponential increase in human
+interactions okay
+because the chips are more ubiquitous
+they can digitize more interactions
+we're having this discussion now is not
+possible before
+okay so the more interactions are
+happening exponentially let's go with
+that
+for a second suspend disbelief and just
+imagine that all interactions are
+increasing exponentially
+okay what happened with humans is
+physical space did not offer enough
+vectors of engagement
+to contain interactions increasing
+exponentially and so we had to go to
+symbolic space
+so there were a couple a couple of other
+i'll get back to that in a second
+so think of clonal reproduction versus
+um
+sexual reproduction clonal reproduction
+you resemble your parents
+and for niche space and again this is
+not intelligent design but
+stay with me for niche space clones are
+not sufficiently varied
+so that if the niche space is changing
+rapidly the clones won't have as much
+survivability mutation random mutations
+can introduce that noise that can allow
+the accommodation of
+that change in physical space i think
+what's happening with humans
+is that we are becoming information
+beings increasingly
+and i say that to people like yeah yeah
+yeah and then i say hey
+you know that 401k that you have if
+anybody has any retirement savings
+the i say to them do you think that's a
+pile of groceries
+or or a house waiting for you to retire
+that is data
+that is nothing the system goes you got
+nothing it's
+totally symbolic so one of the if and to
+the extent
+that interactions have and their
+artifacts are increasing exponentially
+throughout
+time throughout deep time it was
+inevitable that we moved to
+information space because the
+the phase space available for solutions
+to our problems was
+insufficient in physical space we needed
+more dimensionality
+in order to address things and that's
+what language does for us it opens up
+dimensions it opens up abstractions it
+opens up things called war
+it opens up things called stock markets
+it opens up things called
+insurance law governance
+all these things that allow for us to be
+human and the thing that separates us
+from other organisms to some extent is
+that language is where the mind exists
+because that's the symbolic element of
+who we've become as information beings
+there's a lot there
+but i think one of the things that's
+been i've been playing with just try to
+understand what this might be
+is what does it mean to be converted
+increasingly to information beings
+and not we're not still have a physical
+presence but
+this came up first and last point here
+this came up first in the identity work
+i did years ago
+where people are saying oh you can't
+control me on the internet i said sure
+you can
+a government a sovereign can put you to
+death they have the monopoly legitimized
+violence
+or they can silence you which is we've
+seen happen now and so the physical body
+if i die right now while i'm talking
+which some people might like with this
+long thing i'm
+saying here if i died right now
+immediately
+my legal agency to do things on the
+internet would change
+and it's an entanglement it's almost
+like a quantum entanglement because it
+would happen instantaneously i cannot
+have agency if i'm dead
+so anything pre-programmed in my
+phys in my symbolic self could keep
+running but the
+physical world then doesn't respect you
+as
+having a will anymore
+so there is an entanglement so as long
+as governments continue to control the
+physical body
+and have the monopoly of legitimate
+violence they can control the digital
+body because putting you to death
+de-animates the in
+and we have uh dave then
+sarah then stephen and we'll steer it
+back to the paper
+and also get towards the last thoughts
+that each person
+wants to share so again dave sarah
+steven and then
+anyone else
+okay the um when the kids make a lot of
+chaos
+uh you look at the the
+especially one-on-one games that kids do
+they are largely dominance games
+one kid is going to tend to monopolize
+being the
+the dominant figure the cowboy the
+sheriff
+for a while and then switch back now if
+they hang with that
+role for more uh more than about 60
+percent
+of the time eventually it gets actually
+almost sadistic
+and it becomes too aggressive the little
+and
+things get out of hand the dominated kid
+cries
+runs off the smart mommy just kind of
+gives a little pat
+and lets the kids go on their way the
+overprotective mom though
+almost takes over the bullying and makes
+it a terrible thing
+which means that kids can't go back and
+achieve restoration so when the
+when the the child who has been
+paranoid doesn't have the reassurance
+that oh well okay the world does
+eventually become okay
+and the kid who's been in the sadistic
+infantile mode
+doesn't get the reassurance well even if
+i was evil mommy for a while
+i'm not evil mommy anymore now i'm good
+mommy
+so another reason to let your kids whack
+on each other and get dirty
+okay thank you sarah stephen and then
+anyone else
+oh um scott's comment kind of reminded
+me of what i
+what i unconsciously was bridging um
+with respect to
+information scott said something i
+verbatim i don't remember but basically
+that um something about language and
+for me you know language uh languages
+as with ecosystems as with um species
+extinction like languages
+are going extinct and so languages are a
+really interesting bridge to this
+you know information space um and it
+seems that
+that fact of language is going extinct
+seems to contradict something you said
+scott but
+again because this is i feel like mel's
+show i want mel to like
+hook this into whatever she's working on
+if if
+that makes sense for her steven
+tim then mel or anyone else
+stephen muted
+all right sorry sorry i'm really i'm
+just trying i was looking for a paper
+that i was trying to find on something
+this okay um
+so what i was gonna say is that
+there's there's a lot of stuff coming up
+here absolutely
+um and one thing i like about this paper
+is it
+it sort of starts from the free energy
+principle and sort of really
+pays attention to that and the active
+inference and i think that there is
+something important
+like because we get into this
+conversations about information and
+stuff is
+it's like the free energy principle
+there's a collary for active inference
+of these stages
+and different scales and then once that
+scaling is happening there's also
+a free energy principle that sort of
+scales up
+anyway the natural nature of how these
+these societies try to work with these
+models
+and there's a paper that was i think in
+the physics review of life
+and i'm trying to find it but it sort of
+talks about how we
+naturally try and reduce free energy
+over time and i think this is
+particularly what's happened
+since capitalism in the last 500 years
+or
+200 years particularly we want to reduce
+or there's a tendency in different ways
+to try and reduce
+the amount of free energy out there and
+we can do it more and more because
+we can construct and our focus is
+constructing
+um these um larger scale
+um societies social networks ecosystems
+a super organism
+as uh mel talks about it and we're kind
+of
+we're sort of constructing this niche to
+such an extent that we just take that
+for granted
+and these perspectives on things and the
+rarification is almost
+um de facto but there's also
+probably more traditionally in history
+and it's probably also true if you think
+like what do you do when you're out in
+the middle of the ocean
+you can't control the ocean so now you
+have to try and adapt whatever the winds
+are doing
+based on what you've got so this
+the organism like as an active inference
+process
+to try and minimize free energy and just
+to stay
+attuned and alive in a niche
+um is is something that the sort of very
+foundational
+understanding from physics and chemistry
+sort of
+still alludes to you know and then we
+have these higher the
+this ability to construct through action
+and um and this is where
+we can start to feel that these actions
+that we do
+like we talk about that we are
+information but
+this is this is the danger of the
+verification of information because
+we at some extent because we've built on
+top of things yeah we kind of construct
+things in our niche
+which makes it and it is kind of an
+informational
+hole in our niche but we're still a
+being
+that has to um
+dynamically engage with that niche
+and that information doesn't travel
+like unlike in traditional inactivism
+that information doesn't come in as like
+that's a tree it comes in again in
+amongst all this noisy
+um statistical variations
+and we infer from that so there's this
+question about
+that danger the information starts to
+get rarified and is
+and becomes seen as something being
+transmitted down the channel
+but that's only something that
+effectively emerges
+once some processing is done so i think
+i think that's that's what sort of came
+up for me thank you steven
+so in our last couple of minutes we will
+go to
+tim marco and then anyone else so let's
+just keep it brief and summary and
+remember that next week in 14.2
+we're going to be on the same paper so
+no need to cram it in in the last minute
+maybe raise some questions or ask
+somebody about their perspective
+so that we can mull on it in the next
+week and then come back next week with
+the links ready and with the ideas ready
+with the questions ready
+and read the paper another time so tim
+marco and then anyone else
+yeah just uh briefly uh the child's play
+maybe it's obvious and it's like what
+everybody already knows about
+things but uh it struck me when you were
+talking about it that that's kind of
+like
+active inference on hyperdrive right
+because the the child's play is this
+you know generating these fanciful
+hypothesis you know like the imagination
+is just going and then that puts them in
+a position to enact with interact with
+the world
+and maximize surprisal as they run all
+over the place and
+trip over things right so it's like it's
+learning on
+hyperdrive and then the only other thing
+i want to say is wrapping up was as i
+was going through and reading the paper
+and all those
+attempts to answer the question what is
+the free energy principle in terms of a
+category
+there was one kind of startling
+reductive idea that came to mind
+it seemed really silly but i'll throw it
+out there it could it just be like an
+idealization like frictionless
+you know because um it's kind of it's
+compared to the um
+principle of at least action right but
+but if you look at the actual free
+energy principle
+through the layers of statistical
+mechanics like all those layers
+going into that uh kind of translation
+uh the free energy principle almost just
+seems like since we can't really see all
+that
+through all that cloudiness of
+statistical and probability and such
+and um it seems like just an
+idealization
+a way to say we can do something with
+this even though it's this distant thing
+that's gone through this probability
+machine
+but we can do things with it because we
+have this idealization that we call the
+free energy principle so it's just
+another another option for your what it
+is thing maybe it seems silly i don't
+know
+yep mel then marco yeah so
+so interestingly um we've had
+we've had in philosophy of science we've
+had series of how
+science works for a long time and we've
+gone through many kinds of
+uh popular accounts and mainstream
+accounts of how science works
+and um these have traditionally
+emphasized um
+series um um and accuracy
+right you want you want you want a an
+accurate true representation of of
+what's going on in nature right um
+but uh and and false circulation this
+sort of thing um
+the the kind of and rogue view right now
+the the the idea du jour
+is is really in a lot of ways focusing
+on models focusing on
+idealization focusing on pluralism um
+there are a lot of great books on this
+um michael weisberg's simulation and
+similarity
+fantastic book great introduction to
+models
+some of the big debates models um steven
+downes has a new like
+tiny little just introduction that just
+gives you a breakdown of all the
+literature and models
+and um angela pertochnick
+in my department has a fantastic book
+called idealization in the aims of
+science
+and then um so what was funny to me is
+like i wrote this
+paper i wrote this paper and then
+the the math is not the territory and
+then a few weeks later someone
+um uh a professor of my apartment clean
+line department
+announced that they were running a
+course for the spring term um
+on on this new book by uh
+called when maps become the world
+which is actually a fantastic book i'm
+really enjoying this book
+and it's touching on all of these things
+that you guys have been
+talking about like kind of different
+modes of representing and
+do these things represents or not um and
+how
+the kind of feedback between our maps of
+the world
+and like cultural differences and how we
+how we
+represent things and um
+where the world is going these kinds of
+kind of big picture questions and
+it's a really lovely read um
+the idea with with models right
+is that what they do is chiefly
+idealized
+right um if if you look at like the the
+the whim facts
+um the one side account of of what's
+going on in modeling
+right the idea is that um
+it's it's not meant to be
+a maximally accurate depiction of some
+natural system or some natural process
+um it's not it's fidelity
+to the world that makes the model useful
+but in fact it's the idealization
+it's what gets coarse-grained black box
+away you know it's it's it's it's about
+finding is but latching on to some kind
+of key feature
+of the system of interest and that's
+always mediated by kind of what our
+what our questions are as researchers
+what our interests are in these natural
+systems and researches so it's kind of
+value-laden
+in a way um and it's discarding the rest
+it's discarding the information that is
+inessential to
+the question at hand so so idealization
+is at the core of what a model is
+awesome response so any very
+rapid final words this is the true
+lightning round marco
+scott alex kiefer oh dear i'm not good
+at lighting around
+um uh well okay very brief
+so so i agree about the importance of a
+notion of friction but i do think it's
+already
+uh you get it for free my colleagues say
+you get it for free with active
+influence i think because
+you have two situations where i think
+you will get friction
+one is pathologically stuck when you're
+overly rigid
+because there's no alternatives of
+sufficient credence the base factor is
+too high
+so you can't move out of it right so
+instead of saying there's a present
+friction
+it's more like there's an absence of a
+lubricant or something or an absence of
+a passive
+and the other side if you have too many
+possibilities your base factor can't get
+too high because everything's kind of
+similar
+so you get stuck in that and i think for
+me those are two forms of friction slash
+inertia um i just very briefly want to
+wrap up
+that big theme of how we scaffold all
+these things upon society which is
+attractive upon extractions
+and the many many dangers that lie there
+where
+indeed you would have i think an auto
+catalytic
+pitfall of um trying to cope with the
+complexity of the world but falling into
+heuristics
+and when these heuristics are used to
+minimize your
+experience consequences of excessive
+free energy
+and then adopt that heuristic then it
+will spread this kind of self-selecting
+manner
+as in the people exposed to these
+notions such as for example q anonymic
+conspiracies
+they heuristically connect everything
+together and so you seemingly experience
+coherent as long as you don't stick too
+far or commit
+to proper epistemic virtues and and
+indeed this will become worse and worse
+unless we have
+an alternative a better ground at least
+in my opinion
+um and i do want to push back a little
+bit on this
+uh mostly true claim that the models
+are just vitalization but i think what's
+really really interesting is not just
+models as presented in papers models as
+defined in maths
+but take into account the human
+enterprise that is science
+because everyone has to adopt this model
+not just program it didn't some code
+way more interesting is what happens
+when you adopt or incorporate or
+internalize
+an idealized model and for me that's the
+expressiveness vacuum
+upon incorporating it you will
+de-idealize it you will
+fill it up you will make it your own
+particular and that expressiveness my
+opinion is what makes
+it interesting and what mel has really
+laid the groundwork for it might be
+but yeah i wish we could have talked
+more about the paper thanks marco
+again it's dot two it's not about
+answering every question in the dot one
+or even the dot two it's about staying
+excited
+about including as many people in the
+conversation hearing from everybody's
+perspective if you're curious and
+listening
+joining the key base actinflab.public is
+a great way to get engaged with action
+not just inference so again single kind
+of closing thoughts but less personal
+review paper my ted talk but more
+what are we going to move forward to
+into 14.2 not that anyone did that
+scott alex kiefer steven sled
+the painter kandinsky said that
+violent societies yield abstract art
+and one of the things i always wondered
+is is the reverse also true
+is abstraction a form of violence
+and so that's something i i posit to you
+that 2008 financial break was
+abstraction
+of mortgage instruments that caused a
+violence
+of people who were kicked out of their
+homes the math
+so the math of the mortgage was not the
+territory of the lived experience and
+the need for housing
+and so that is where the disconnect
+happened so something to be aware of in
+terms of abstraction and the possibility
+of it being a form of violence
+and the monopoly of legitimate violence
+being a definition of the sovereign from
+mills you might think about the monopoly
+of legitimated abstraction
+being a form of sovereignty thanks thank
+you
+scott alex keefer stephen and then sarah
+um so one thing i'm still interested in
+talking about
+um potentially next week is i guess this
+probably is like a microcosm of some of
+the stuff we've talked about but um
+sort of the jaynesian perspective in
+thermodynamics and
+in physics and how this relates to all
+this um because
+um i think there's potentially something
+interesting so i
+one thing i like about this paper i will
+be brief here one thing i like is that
+it goes through sort of the history of
+the formalism of the fep and where it
+came from
+and i think in part that's meant to cast
+doubt on
+any direct connection between the fep
+and physics but at the same time
+the jnz perspective in physics is
+something the fep inherits from and it
+sort of already maybe gets epistemic
+stuff into physics at a lower low level
+so i want to talk about the relationship
+between
+um entropy and thermodynamic sense and
+entropy in the shannon sense
+if we have a chance thank you we're
+gonna go to mel um with uh first author
+privilege and then again anyone can drop
+off if they need to go but let's
+bring it to a close together otherwise
+mel stephen sarah
+yeah actually um i i would really love
+to talk about
+that point that you raised um and
+my other reviewer i know who it is
+they find it um my other reviewer uh
+andrew corcoran actually a great guy um
+raised that there's this new paper um
+like gothwald and brown published
+december 3rd
+2020 that is in
+plus computational biology um
+and it's uh it's it's really getting
+into changes so
+it's really getting into free energy
+it's really getting into the jameson
+perspective it's like the first
+it's like the first time
+anyone has really delved into
+james and the fep um so
+i'd love to discuss that because i
+haven't i haven't read it
+um yet and i'd love to discuss that
+thank you now julian james which jeans
+is that
+no et james so so max thank you maximum
+entropy principle i can i can drop this
+link in the in the comments below and
+i'd also like to talk about
+representation
+like different different approaches
+representation and how models represent
+if they do necessarily excellent steven
+and i'll go back to just my regular
+camera steven go ahead and then anyone
+else
+yeah i think the i would like to hear
+more on that uh james the entropy the
+maximum entry
+approach because i think the whole
+entropy
+agonic thing is really interesting i
+think that's this paper like i say is
+really tapping into that
+and uh and i suppose one thing i'd like
+to say is we talk about models
+is um we're using models to get the
+dynamics
+and there's a slight trap because well
+that makes sense
+um but you have to take a perspective
+and verify it and it's like this modern
+world we just
+do it but the the key thing that's also
+present with the whole
+flows of information is and is that your
+models can reveal
+other ways of knowing which are not
+perspectival
+and are not themselves so the
+interesting thing
+about dropping something out of the
+active inference
+model isn't the model is the dynamic
+shifts that the graphs show
+when the model's running so that and
+that can tap into indigenous ways of
+knowing because the thing with
+indigenous people i'm saying earlier is
+that they're trying to attune to the
+world
+not say what the world is and model it
+and that maybe is what we need to do
+more
+to actually survive on this planet as
+it's an ecological collapse because we
+might need to
+sense what is it that we need to
+dynamically
+embody that isn't entirely more
+liberal so you know we could talk about
+that that's enough for me yes
+sarah did you have something okay
+marco any last thought
+i just want to um echo what's been said
+by mel and
+alex i also think that one of the most
+interesting things especially for the
+next session
+to talk more about the relation with
+thermodynamic and information theoretic
+entropy
+especially because there's one sentence
+in males that i just want to point out
+so it says the elements of the framework
+do not map onto any known features of
+real-world systems
+at least not with any more granularity
+or specificity
+than the constant dynamics of such
+systems but i found a very short
+sentence because it seems that
+the granularity or specificity of their
+causal dynamics would be
+sufficient to act as a model right and i
+think the really really interesting
+thing that hasn't been exported enough
+but
+but mel griff's a good uh starting
+ground for is
+asking more about the relation between
+the topic
+thermodynamic and information theoretic
+entropy where i think we should
+maybe move more or emphasize the the
+perspective of interpreting entropy as
+distribution how fast homogeneous how
+distributed is it
+as a tendency to kind of flat out to
+spread out
+in the thermodynamic sense and then i
+think with that conceptual metaphor
+it's not really a metaphor it's just
+true but with that concept in mind i
+think it's much
+easier to have a conversation about the
+relationship between information
+theoretic
+and thermodynamics that being said
+looking forward to uh
+thanks so much mel any last thoughts as
+the
+first and last author otherwise i'll
+close it out
+phenomenal thank you this is great yep
+it's great
+mel thanks so much for not just the
+paper but for engaging with us you know
+asynchronously on twitter and
+synchronously
+on video chat all of the participants
+there was so much we brought up today
+and it was just awesome to hear what
+everyone
+had to share so if you're listening live
+or in replay
+you're part of the community of practice
+and we want to just
+have you participate however so if
+you're curious about something
+post a question if you want to know how
+you can participate just
+reach out to us through any number of
+these mechanisms
+other than that on january 26th we will
+be right back here
+for 14.2 and we'll deal with some of
+these questions
+everybody will come with a few new
+digested thoughts
+a couple of polished questions and we
+will go from there so thanks again
+everybody
+and we'll see you next week

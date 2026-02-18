@@ -1,0 +1,2593 @@
+---
+title: "ActInf Livestream #019.0 ~ Deeply Felt Affect: The Emergence of Valence in Deep Active Inference"
+category: "Livestream"
+series: "Livestream_019"
+episode: "0"
+speakers:
+  - "Deeply Felt Affect: The Emergence of Valence in Deep Active Inference"
+duration: "1:29:36"
+url: "https://www.youtube.com/watch?v=1FbOzAJ8CRQ"
+views: 401
+exported_at: "2026-02-18T22:37:37.670289+00:00"
+format: markdown
+---
+
+# ActInf Livestream #019.0 ~ Deeply Felt Affect: The Emergence of Valence in Deep Active Inference
+
+hello
+welcome to the active inference live
+stream this is active inference live
+stream
+number 19.0 on april first two thousand
+twenty one
+welcome to the active inference lab we
+are a participatory online lab
+that is communicating learning and
+practicing
+applied active inference you can find us
+at our
+links here this is recorded in an
+archived live stream so please provide
+us with feedback so that we can improve
+on our work
+all backgrounds and perspectives are
+welcome and we'll be following
+good video etiquette for live streams as
+outlined in this checklist
+this is the schedule that we've had so
+far for 2021
+and the upcoming two discussions on
+april 6th
+and the 13th will be number 19.1.2 on
+this
+paper that we're going to be discussing
+today so right now
+in 19.0 the goal is to set the context
+and give a little background for 19.1
+and 19.2
+and people who are just learning about
+the paper which is deeply felt affect
+the emergence of valence in deep active
+inference
+by hesp smith parr allen firsten and
+ramstead in 2021
+and this video is definitely just an
+introduction to the ideas
+it's meant to be a two-way on-off ramp
+from active inference so exposing the
+active inference community
+to ideas outside of active inference and
+people who might be interested in some
+of the bigger ideas connecting them to
+the active inference implementations
+and we have a bunch of sections planned
+for today in 19
+so thanks a lot to stephen and to blue
+for
+helping with the slides and for coming
+on
+today so maybe we can just um
+introduce ourselves briefly and then we
+can go
+on to the rest of the slides we have
+prepared so
+i'm daniel i'm a postdoc in california
+and i'll pass this stephen
+hello i'm stephen i'm in toronto i'm
+doing a practice-based phd
+around social topographies and
+community-based development
+and i'll pass it over to blue
+hi i'm blue knight i am an independent
+research consultant based out of new
+mexico
+cool well i think this was a fun paper
+for us to
+read and we can just go right into
+what were some of the big points of the
+paper and the background ideas
+before we go through the figure and the
+model
+which will take up a lot of the time the
+paper
+is called deeply felt affect the
+immersion surveillance and deep active
+inference
+and it was published in the journal
+neural computation
+in 2021 and so i'll read the first one
+and then
+either of you can give a thought on that
+in this letter meeting paper we
+demonstrate that hierarchical
+deep bayesian networks solved using
+active inference
+afford a principled formulation of
+emotional valence
+building on both the work mentioned
+above as well as prior work on other
+emotional phenomena
+within the active inference framework
+yeah so that's just given us that
+insight into this idea of valence so
+we'll be speaking about that more but
+that's uh
+that's that's an important part of this
+paper
+i'll say the next one our hypothesis
+is that emotional valence can be
+formalized
+as a state of self that is inferred
+on the basis of fluctuations in the
+estimated
+confidence or precision an agent has in
+her generative model of the world that
+informs
+her decisions
+cool so we're going to be connecting
+some of the decision-making
+aspects of agents and inference aspects
+of agents
+to emotional balance and they're going
+to demonstrate it
+so those are the goals and the claims
+that they set out in the paper
+any thoughts blue or do you want to go
+to big questions and maybe introduce a
+big question i'll introduce you to the
+questions
+all right go for it
+so the big questions of this paper were
+how can we make
+more active inference models or agents
+that are expressive
+powerful realistic and interpretable
+what are the implications of this active
+inference
+formalizes our survival and procreation
+in terms of a single imperative
+to minimize the divergence between
+observed outcomes and phenotypically
+expected
+i.e preferred outcomes under a
+generative model that is fine-tuned over
+phylogeny and ontogeny
+thoughts on this well the first one
+this to me is about just developing the
+active inference framework
+to capture more of the patterns that we
+see
+in nature or in designed systems so how
+do we make
+systems that plan for multiple time
+steps that's deep active inference
+how do we make agents that interface
+with the environment
+so that's sort of a big move overall
+and then this is going to be zooming in
+on the valence
+and some of those affective aspects
+that's what
+on the first point and then the second
+this is a quote from the paper
+and it says something that active
+inference
+does it formalizes our survival and
+procreation not in terms of evolutionary
+fitness again you could agree or
+disagree with the authors or think it's
+consistent with fitness or not
+but claiming that the imperative is to
+minimize
+a specific kind of a divergence and so
+what are the implications of that
+if you think okay well if that's the
+imperative then where's the situation
+where we've been acting like there's a
+different imperative
+and is that consistent or inconsistent
+with
+um this and then the last quote and then
+someone could give a dot
+is a quote where they say we conclude
+with a discussion of the implications of
+this work
+such as the relationship between
+implicit metacognition and affect
+connections to reinforcement learning
+and future empirical directions
+so what does active inference or this
+model say about cognition or
+metacognition
+and reinforcement learning
+yeah if i could add something i think
+it's it really opens
+up and a lot of the philosophical
+questions and starts to give a modeling
+interpretation so how the body comes in
+how so the emotion starts to tie in to
+a way that the body comes in an n-active
+inference starts to become modelable
+and it starts to also show how
+affect is somehow connected
+um to all cognition
+and all processes so it's not some
+weird artifact of shame
+which might be more of a freudian trap
+but it's actually an integration
+of the cybernetic process all the way
+through
+in some way very nice it's also captured
+a little bit on this slide which is
+recycled from some
+2020 vintage active which is
+asking about how active inference
+is going to be saying something about
+the relationship between agents in the
+world
+and we're imagining an agent not a
+one-step
+tic-tac-toe player but we're thinking
+about an agent that's imagining through
+deep time
+and they have imagination or the
+capacity to simulate
+and then they have affect and they can
+also predict their affect and have
+precision
+and so on so here's sort of the drama
+masks for the positive and negative
+affect and then there's sort of
+different world trajectories that are
+being estimated through time
+that lead to positive or negative
+sentiment
+and that gets around some of the sort of
+basic considerations like in the paper
+they say
+well wouldn't the agent as they
+meet their demise wouldn't they have
+precision over their sensory states
+and the answer is like yes but it's not
+part of a long-term trajectory that
+involves
+desired preferences so by appealing to
+model nesting
+some of the sort of single layer
+not paradoxes but just scenarios that
+models might fall into like always going
+with what was known before
+never going what was known before these
+can be resolved
+just with empirical modeling interesting
+one reason why it matters and we'll come
+back to this
+when we quote the authors later is that
+these kinds of
+richer models lead more closely to
+experimentally tractable and unique
+predictions of active inference
+because if the only thing the model
+predicts is the reaction time
+that might fit the distribution better
+than some other model now if it can also
+fit the reaction time
+and the eeg and also the self-report
+it's starting to become a very rich
+multi-modal
+and multi-measurement way of talking
+about behavior
+which is what a good instrument should
+do
+so this is helping us come closer
+through these contact points with other
+big important areas of research
+like reinforcement learning and
+autonomous
+computer agents and just inference
+agents of all kinds especially ones with
+action
+but then maybe some of these other areas
+that we'll bring into
+the discussion because if we can have a
+scale-free framework
+that does apply to cognitive agents and
+then we frame it in terms of
+the input and output and the actions and
+the policy the generative model
+all of these terms maybe some of these
+other
+systems like online teams might be able
+to also
+be said to have at least computationally
+affective charge
+or precision or different things like
+that so we kind of talked a little bit
+about that in our 2020 paper
+for online teams any thoughts on sort of
+the bigger
+topics that this paper is up against
+before we jump into the abstract and the
+figures and everything
+if i could just say one one thing i
+think that's very
+interesting is that it opens up
+um the the realities of trying to bring
+in the mind the body and the environment
+and there's been this question well how
+do you do that and
+why didn't we do that before was partly
+because we wanted to be able to measure
+things and lock things down
+and and the question of how do you bring
+this whole dynamic in how could you
+possibly get a handle on all of that
+um well emotion seems to actually make a
+lot of sense in terms of
+or let's say valence should say valence
+more broadly
+it makes sense in terms of how it could
+be calibrating
+the more conscious levels of that
+process
+so i think that has implications
+for scaling psychology and bringing
+consciousness back into
+psychology and helping to
+really move into a ecological
+and ecosystem approach to psychology
+lou any thoughts or do you want to start
+with the first part of the abstract
+i'll hold my thoughts i have somebody
+but i don't want to ruin the surprise of
+the paper so let's start off on abstract
+agreed fun times all right um does
+anybody want to start with the first
+part of the abstract
+i'll take it the positive negative
+access
+of emotional valence has long been
+recognized as fundamental to adaptive
+behavior
+but its origin and underlying function
+have largely eluded
+formal theorizing and computational
+modeling
+using deep active inference a
+hierarchical inference scheme that rests
+on inverting a model of how sensory data
+are generated
+we developed a principal bayesian model
+of emotional valence
+this formulation asserts that agents in
+further valence state
+based on the expected precision of their
+action model
+an internal estimate of overall model
+fitness
+which the author's term subjective
+fitness
+this index of subjective fitness can be
+estimated within any environment
+and exploits the domain general
+generality of sorry my screen is in the
+way
+second order beliefs which are beliefs
+about beliefs there
+nice so in this first part of the
+abstract
+kind of priming what this whole research
+agenda
+is about i'm seeing a few threads
+one is about fitting good models
+overall model fitness especially with a
+subjective
+twist so that's another kind of a bonus
+that it's actually not just
+objective model fitness it's subjective
+so it's about
+good fitting models with this
+recognition that that's like
+personalized
+okay so that's cool thread then there's
+the first words which are about the
+positive and negative
+aspect of emotional valence which is
+despite the richness and the amount of
+experiences and
+all the diversity of altered states of
+consciousness and adjectives
+there's also kind of this um approach
+versus recede binary
+and um this is as they're saying it's
+fundamental
+and we see it in living forms like go
+no go signaling and we also see it in
+computational agents
+and so this is putting a lot of
+different kinds of systems
+that have very nuanced maybe behavior
+in their outputs but at a top level they
+act
+as if they have a sort of go no-go that
+in a way
+helps them be adaptive in their own
+niche
+and then the way that they're going to
+go about that is actually with a second
+level or second order
+cybernetics model which is by enabling
+belief about belief
+maybe some of these gaps between systems
+can be bridged
+so interesting research questions that
+are not always brought out because the
+abstract is so reduced and they have to
+say what they did do
+but for those who are interested in
+those questions that's good to know
+all right i'll read this one and then
+anyone can give a thought
+we show how maintaining internal valence
+representations
+allow the ensuing effective agent to
+optimize confidence in active selection
+action selection preemptively valence
+representations can in turn be optimized
+by leveraging the bayes optimal updating
+term for subjective fitness which we
+label
+affective charge or ac ac
+tracks changes in fitness estimates and
+lends a sign
+to otherwise unsigned divergences
+between predictions and outcomes
+that's pretty interesting we simulate
+the resulting affect of inference by
+subjecting an in-silico
+in the computer affective agent to a
+teammate's paradigm requiring context
+learning followed by context reversal
+this formulation of affective inference
+offers a principled account
+of the link between affect mental action
+and implicit metacognition it
+characterizes
+how a deep biological system can affer
+its affective state
+and reduce uncertainty about such
+inferences through internal action
+i.e top-down modulation of priors that
+underwrite confidence
+so this for me like was a big surprise
+of the paper like the
+the valence and um the relationship with
+valence
+and subjective fitness so or precision
+accuracy
+this was just a really different take
+like compared to the last
+paper that we did just like on valence
+was very much like positive or negative
+in terms of like feeling or emotion
+where this is like really positive or
+negative just based on
+like surprise essentially like what if
+my model doesn't match my expectations
+like or or the outcomes if my
+expectations don't match my outcomes
+that is negative valence which that was
+a kind of surprising take on this for me
+compared to the last valence paper that
+we did and the other thing
+is really this the way that they've
+modeled
+this is totally like a perfect example
+as they talk about in the discussion
+of the bayesian brain and why bayesian
+statistics
+and updating um like especially when
+they talk well
+i'll hold i'll hold my thought for them
+for that time but but really this was
+just an exemplary paper for that for me
+nice yeah one one thing that came up for
+me there is it talks about
+you know representations again and those
+so
+this idea that internal valence
+representation so suddenly we've got a
+way to bring
+representations back into
+um what had become quite a
+non-representational
+modeling approach and that's really
+interesting because it's like normally
+you think of representations previously
+like the most concrete
+is the thought then there's the body and
+there was this fuzzy thing called
+emotions which somehow was there and
+axiology and all this stuff
+but now it's like well wait you've got
+an internal
+valence representation which could
+inform the body and the cybernetic
+thinking metacognition process so it it
+gives a way in for representations but
+it's not representations as we
+normally maybe approach that term so
+that's quite
+cool all right third abstract
+who would like to read it
+okay i'll read this one thus we
+demonstrate
+the potential of active inference to
+provide a formal and
+computationally tractable account of
+affect
+our demonstration of the face validity
+and potential utility of this
+formulation represents the first step
+within a larger research program
+next this model can be leveraged to test
+the
+hypothesized role of valence by
+fitting the model to behavioral and
+neuronal responses
+nice so i set up the problem by being
+about
+using higher order cognition this second
+level modeling
+to approach some of the interesting
+dynamics of
+agents like their apparent
+affective charge influencing their
+behavioral decisions in the present
+moment based upon
+inference about the future and they're
+going to demonstrate a simulation
+there's going to be kind of a model
+layer and then there's going to be a
+simulation that goes down into the t
+maze and a mouse and so there's sort of
+two
+levels of generality that we're going to
+go through here
+they start the paper with the
+qualitative but still
+rigorous level of generality which is
+just talking about
+action in different systems and
+multi-scale biology
+and the need to integrate bayesian
+approaches
+into how we think about evolution and
+development
+ecology and so on and then they
+turn directly to the methods and perform
+this
+four-step walkthrough that will be
+somewhat familiar to those who have seen
+model stream one with ryan smith and
+christopher white
+where they also step through the
+construction of this model but
+it's something that as we'll probably
+see soon it's it's just always worth it
+to kind of build up this model
+incrementally
+then they with this implicit
+metacognitive model
+at step four of their models elaboration
+they discuss a few kinds of
+important key terms that are like
+bridges between
+previous computational psychological
+models
+and their active inference model
+and then they implement a simulation
+with a rat in a team ace which we'll
+discuss as well
+and then they bring up all these very
+interesting questions
+towards the discussion section of the
+paper some of which we've exerted
+and conclude with a discussion on the
+future empirical directions
+so before we go into the affect and
+valence
+model simulation implications any
+thoughts on the roadmap
+all right let's go to affect and valence
+this is quoting from their
+paper so definitely read it to see
+everything that they say
+but they refer to classical constructs
+of valence
+so maybe here just representing the
+classical valence construct
+on a kind of clock chart what would
+either of you
+think or say about valence or what
+motivates the study of valence
+this way or overall
+so i just had a comment and it's based
+on something that
+uh the authors had said about
+surveillance so here
+uh we've got the arousal and like high
+and low arousal on one axis
+and positive and negative on the other
+axis but the authors had mentioned
+that uh some people see valence as like
+a an array of positive like it's a
+positive and negative or two
+separate axes of valence and i thought
+that that was very interesting
+whereas like like it's a it's not a um
+you know a binary choice positive and
+negative but
+there's a range of positive and there's
+a range of negative and ambivalence
+like contains some degree of both i
+thought that that was an interesting
+uh take on valence
+i've thought about before cool and they
+bring up
+good scholarship with bringing up a
+uni-dimensional
+view so that would be like yes there's
+like a thermometer
+and it's kind of just like it goes up or
+down it's a number
+that has to be strictly ordered and less
+than greater than maybe even linearly
+correlated with a hormone or a chemical
+or
+a neural firing in some region or a
+pattern of activity
+then maybe there's multiple dimensions
+maybe
+there's um like as here
+an arousal and a high to low arousal and
+high to low valence positive negative um
+maybe it's multi-dimensional so what's
+cool about the active inference
+framework is
+we could test the computational roles
+of these kinds of variables and ask okay
+this is
+fitting the data better but is it um
+more parameters is this worth the
+trade-off that we're getting here
+so we're kind of taking this single
+dimensional model and thinking about it
+with a family of other models
+where we could test the influence of
+other factors and see if
+such patterns are detectable in the data
+or ask what kind of
+behavioral settings or groups or
+questionnaires or whatever
+it might be would elicit um a
+differentiation on another
+hypothesized axis yeah and just one
+thing that goes with that is
+it sort of shows you the current ways to
+get at this
+is kind of through self-reported
+emotions
+and using this kind of graph and
+actually use this
+a tool with our community with
+disabilities for
+um reporting back on their experiences
+but you you're essentially still getting
+this emotion
+um as as a self-report and trying to
+track back
+um using sort of assumptions about how
+that
+plots with other self-reported emotions
+and
+um whereas the the and this is also used
+a lot
+in uh market research for marketing and
+advertising this tool
+so but actually in this
+approach here they've got a way to
+access this
+without just getting self-reported words
+um so this is this this i think
+shows how it has you know this this is
+an area that's got a lot of
+application potentially cool
+here is a slide just upon uh
+differentiation
+in english between affect
+and effect so not to split hairs or to
+introduce words that they didn't use in
+the paper like effect
+but what would be the point on this
+stephen
+well you've you've got just to give the
+sense that it is often
+confusing those two terms so if we have
+the
+the person these two people on the left
+so you've got um
+the person x has experiences and effect
+some sort of you know relationship
+to person wine it's it's created some
+affect now that could be anger
+if it was reported later and they said
+what was their emotional state
+and this affect contributes to a policy
+selection
+where person x interacts with person y
+and pushes them into the pool so you can
+see that
+okay so that that um the effect
+of this is that that person
+y ends up in the pool so there's there's
+a there's a there's an act and there's a
+cause effect type of um linear
+type of mechanical action that happens
+um and of course
+then there can be additional affects on
+both the parties
+and effect resulting from this
+particularly if the person was to uh
+you know drown or something depending on
+the scenario so
+i think it shows that there's a kind of
+one's more dynamical and relational and
+one is more
+objective i suppose you could say and
+cause and effect related
+sounds good and here is from a previous
+um discussion i think number
+active 11 where we talked also about
+affect
+and about trajectories through affect
+space so whether or not it's like how
+things quote really are
+it might be a behavioral index or
+summary statistics of of someone's
+online activity
+even if you're not directly measuring
+them or getting their self-report
+and there can be trajectories through
+this space
+now one topic that um a sort of
+detail that's a little bit special for
+active inference that
+doesn't get emphasized a ton is that
+basically
+the certainty in the model is
+one and the same thing as having better
+affect
+better affective charge increasing
+certainty and high certainty in the
+model
+are taking the place in a reward centric
+of highest expected for example value
+and it's one major difference between um
+an active inference approach to thinking
+about economics or decision making
+versus a sort of just like classical um
+maximum likelihood
+reward maximization so in
+these active inference frameworks
+they're not modeling
+a happy to sad variable and calling that
+affective charge they're actually
+modeling a precision variable
+and then saying that when things are
+more precise and are getting more
+precise there is
+low negative affect so it's kind of like
+positive and then anxiety like negative
+affect
+arises as a function of
+uncertainty in the model and
+um here's just some words and some
+thoughts that we had
+put on anxiety from a previous one but
+any thoughts on this about the sort of
+integration of valence and certainty
+rather than valence and expected
+average what that means or how that's
+different than other models that others
+have seen
+yeah well i think that does have quite
+important implications
+because it's now prospective it's kind
+of what was the
+contextual expectation on where things
+would go
+um as opposed to just it being this kind
+of static
+expectation on the moment itself
+and it's all collapsed down into sort of
+some sort of reductive
+there's the idea that there's the
+person's valence
+is dynamic in relation to
+um you know their expectation but then
+there's also the precision at which that
+expectation then
+resolved or didn't resolve you know so
+you may expect things to go badly
+and then things went worse than you
+expected or it went better than you
+expected but it still might have gone
+badly
+but it didn't go as bad so it gives you
+that
+much more um well i don't know i
+wouldn't use the word realistic i don't
+know what term you'd use for that
+no yeah that question cool blue
+so i can't remember which paper it was
+exactly but it was
+talking about um anxiety it was one that
+we did on the live stream talking about
+anxiety as like a fixation
+on the future right and i talked about
+depression as a fixation on the past
+was it the big five i feel like it was
+the big five paper
+um but but that is just an interesting
+um
+and kind of different perspective on
+anxiety as as relative to the valence
+that's presented here
+cool and uh the question of how to map
+model parameters to experiences that we
+have which are
+encultured and which are relating to our
+individual
+kind of qualia that's a big jump too
+so we shouldn't just instantly also
+paper over the computational
+psychiatric uh gap but that's what we're
+going to unpack is what does the model
+really
+say and then what is that going to help
+us do or rethink
+one note is that they wrote that they
+are
+referring to their model distincting it
+from just sort of active inference more
+broadly as
+affective inference because it sort of
+has that
+the active in there but it also has
+affect in there
+and they're saying there's what makes it
+different
+than just general active inference and
+uh one of the one attribute that they
+apply here is deep so that's meaning
+deep through time
+or potentially also using deep uh
+learning like deep neural network
+approaches we had i think christopher
+white or someone
+it all blurs together but somebody gave
+a few senses of deep
+active inference and then
+they're also modeling affect
+and so that's why they call it affective
+inference so it's deep affective
+inference
+so if you know what active inference
+kind of is about
+they're taking that skeletal framework
+and extending it through time
+and adding an affective
+parameter or um a
+set of interacting variables way to
+think about
+and model the kinds of things that
+people study affect
+in that's what they want to study with
+this new development
+so that's kind of what i think they're
+doing in this paper
+and um it's
+also a little more general than just
+affect because
+as they say it can generalize to
+potentially other higher level
+explanations
+for conditional dependencies between
+higher level parameters and
+how they reflect behavioral outcomes so
+that's a pretty
+general statement that's very important
+though it's saying that
+it could be possible to have other
+higher hidden states
+that cognitive ideas let's say and those
+don't have to be just the positive or
+negative
+approach or recede that they model here
+it could be something that's a lot more
+subtle or
+symbolic or categorical rather than this
+is more of like
+foraging go no go so this is a initial
+foray into this kind of deep and hyper
+parameter reaching back down
+affective in that sense and it's tied to
+the affect
+rather than to the for example cognitive
+work
+but it's as they say implicitly
+metacognitive and stephen as you said
+it's not that affect is late in late
+late and then like strikes into the
+scene
+it's actually that there's this sort of
+fundamental cybernetic role
+for affect regulation so it's not a red
+flag
+mode that is explosive or something it's
+something that's
+intrinsic like metabolism
+okay they uh bring up a lot of previous
+work and some limitations of the model
+so check out the paper more if you want
+to learn
+about for example if you think well
+that's a very narrow
+uh model definition of valence they
+might bring it up
+in their paper so check that out but
+let's just get right into
+what the model is and
+there's going to be sort of two acts
+coming up here there's going to be
+the model which is just the mathematics
+of what they lay out and the formulisms
+they lay out
+and then we're going to go into the
+simulation with the mouse or the rat
+or the ant or whatever in the t mace so
+the first is going to be general
+and the second is going to go into a
+simulation that they're going to get
+results from as well
+so we're going to walk through kind of
+four clicks in the elaboration
+incrementally as they write on an active
+inference model
+okay so fun stuff thanks everyone also
+for
+joining live so here we are in figure
+one
+who would like to go first maybe blue
+you annotated this really well so what
+did you see in figure one with model one
+and model two
+sure so model one is um
+the generative model of perception which
+we've seen before where s is
+hidden state o stands for observations
+d is prior belief uh a
+is this likelihood mapping or like a
+probability distribution
+and then tau is time which we've seen
+before so
+in m1 there's no time this is the first
+step of a generative model and it's just
+perception so it's it's like sensory
+input
+and the posterior oven over hidden
+states is all that's really taken into
+the model of perception and then the
+m2 so as the models as we go through
+these m1 m2
+m3 and m4 in the next few slides
+there's an increasing layer of
+complexity as we transition from m1 to
+m2
+to m3 and then m4 with m4 being the most
+complex
+and so in m2 which is the generative
+model of
+anticipation the idea of perception
+is then extended forward and backward
+into the past if
+you want to go there using a transition
+matrix which is this
+b sub t for to represent the hidden
+state
+so it's just an extension of of
+perception
+essentially and it includes the
+anticipation what you expect to happen
+as opposed to the just the sensory input
+which is just
+what's present in m1 so it's
+anticipating hidden states over time
+m2 nice
+awesome good explanation
+and we can look at some of their or
+anything else to add actually or
+ask here stephen on figure one was
+really helpful i mean the only thing i
+might
+add is that as you were mentioning that
+is it's almost like
+the the predicted input in that funny
+sort of way
+it's like so we've got what was what's
+the predictions
+of what the sensory input is
+if i could sort of somehow infer that
+and that that's that dynamical so i
+i think this is really helpful though to
+go through it this way yep
+and to give a note on that a lot of
+times when people think
+statistics they think descriptive
+statistics
+like we're going to take the big data
+set the big you know image data set and
+we're going to describe it with a
+summary statistic
+and that does map onto this topology
+like observations get mapped through
+likelihood onto the most optimal state
+of the world
+but where generative bayesian modeling
+comes into play
+is that that model that's inferred that
+hidden state what is the real
+temperature or what is the real average
+height of the classroom
+it can also be used to generate and to
+combine with other models to generate
+testable distinctions you can generate
+data
+and then this duality where you can like
+take a little bit or a ton of data
+and then update your prior already using
+the bayesian terminology and then use
+those prior estimates to generate more
+data
+that is like expectation maximization or
+em
+optimization or the parametric empirical
+bayes approach
+so it's not just taking big data and
+crunching it into a regression
+coordinate and saying all right we found
+the most likely one
+it's done this is actually a framework
+that allows us to bounce back and forth
+between summaries of big data
+and the actual large observations
+themselves and then here you can think
+of the prediction is on a single
+observation with a single hidden state
+and here it's like
+getting a vector through time it's then
+you can imagine that it would be
+more dimensions but this is just the
+skeleton so let's keep on
+walking through yep let me interject
+here really quick sorry
+so can you just go back there we go i
+love this what the authors how they
+describe
+perception i thought it was very clear
+they said perception
+corresponds to a process of inferring
+which hidden states
+or posterior expectations
+provide the best explanation for the
+observed outcomes i thought that that
+was very clear
+cool and the soft max is the sigma
+and that's just saying it's like a
+decision-making criterion
+uh function but we can also ask the
+authors more because that's sort of the
+machine learning
+uh term yeah so just one just one very
+quick thing on that as well i like what
+what blues just said there as well is by
+bringing it on the outcomes
+as opposed to that that outcomes brings
+in action
+so you you you because the out it's it's
+like the perception it's not
+what the data is telling me it's also
+the outcomes
+of what happened in the world with the
+body
+and that that is really quite i don't
+know if that's been so easy to bring in
+before
+um in the language so i thought that's
+quite interesting
+yep and we're going to bring policy in
+in a second but for now
+you're right we have the difference
+between the outcomes and the hidden
+states
+is it raining or not that's the hidden
+state and then is my shirt wet or not
+that's the
+you know sensory state but we have why
+is measured wet right
+is my shirt wet yeah exactly but we
+haven't gotten to this
+policy level which is should i go
+outside so table one
+is just describing in a little bit more
+detail
+the p and the q distributions
+that they use um in their figure one for
+this like basic
+level and that uh comports their
+math with just the broader modeling
+bayesian statistics
+letters used although the a b c d are
+sort of
+specific for active so let's go from
+that
+uh m2 model and
+bring in policy so this is m3
+model this is the next click that
+actually gets us to the first thing that
+looks more like a real active inference
+model beyond just a bayesian time series
+approach so maybe blue go for it again
+with what you would say for m3
+so for m3 this is the third step and
+this is the generative model of
+action so here it's inferring in
+phenotype congruent policies
+from all of the terms that we had talked
+about in
+m1 m2 and then this brings in policies
+which
+that's pi policies and then e sub pi
+is the baseline prior over the policies
+and g sub pi is expected free energy
+c is phenotype congruent preferences
+and then f sub pi is the variational
+free energy
+conditioned on a policy so the policies
+are
+here already here and we just have these
+uh m2 is the what's perceived over
+hidden states
+uh based on perception m1 so this is
+kind of just adding that
+that ex extra layer including policy
+into the into the action model yep so
+it says here posterior policy beliefs
+are informed by the fit
+between anticipated and preferred
+outcomes
+while at the same time minimizing their
+ambiguity
+so to minimize that so
+nice thanks for this a connection
+between variables
+in this kind of a graph represents them
+having like a statistical dependency so
+we can look at pi
+which is policy and then ask okay so we
+had m2
+which was this time series that we that
+looked kind of like a i don't know like
+a
+rake or something or a horse and then
+paul policy pi gets linked in
+not directly with the thumb on the scale
+influencing the hidden state
+but actually influencing b sub t
+which is the transition matrix through
+time
+of that hidden state so one thing
+because there's no pi onto the hidden
+state you can't have policy at a
+snapshot
+like timeless policy all policy is
+intrinsically related to the movement of
+time
+because it's hitting the b matrix not
+because it's not plugging into
+a hidden state directly so you're always
+talking about a temporal model just how
+deep
+are you talking and then it also
+conditions the estimate of how the
+hidden state evolves that's what that
+vertical line like given you know a
+given b
+so this is we're going to do the time
+series how how much
+um bitcoin will i have under the policy
+of not acquiring any
+zero easy estimate easy heuristic
+so then those kinds of conditionalized
+estimates of different kinds of things
+can help agents
+act in the world so that's why policy is
+interesting to think about and so
+instead of thinking about how to
+optimize a massively
+complicated scheme for maximizing
+utility with an unknown variability
+this is allowing the agent to model how
+one is embedded in hidden states
+estimate or changing through time
+so that's the pi part and then also this
+is kind of explore exploit
+so minimizing the ambiguity is one
+imperative
+but also you want it to be fitting the
+whole time
+like i want my shoe to fit but i also
+want to figure out where it doesn't fit
+but i need to be walking the whole time
+and so by keeping a bunch of these
+features
+linked in the model the dials
+at least exist to modulate in really
+creative ways like e is this baseline
+prior
+and so you could modulate it so that the
+prior
+is relatively unperturbed by sensory
+outcomes
+or you could make it very sensitive to
+specific kinds of sensory outcomes
+so this is again like a modeling
+skeleton
+that potentially could be used to
+evaluate
+how different sorts of behavioral
+phenomena
+like approach and recede or something
+like that or freeze
+whatever it happens to be might be
+linked
+by the organism seeking precision
+on an estimate of how things are going
+to change in the niche given its policy
+so of course there's a lot to say
+because that's kind of an interesting
+area
+but that's just the third level so we're
+integrating policy decision
+into how states are changing through
+time and then policy decision
+is the interaction of several variables
+the baseline prior like the affordances
+the habit
+as some have said it here and then
+c the preferences phenotype congruent is
+like
+if if i'm a shoe size 10 i want a shoe
+size 10.
+then if you have a phenotypic preference
+that's different than what your actual
+niche or needs are then it will be
+ill-fit so you won't be fit for your
+niche
+so then the niche will be filled by
+those that are fit to it
+and then f of pi is similar like it's um
+calculating variational free energy
+which we can definitely ask the authors
+more about
+and see how that is related to
+calculation on a specific policy you
+know
+yeah okay any thoughts either of you
+well just one thing i think is quite
+helpful as well
+um is they they call that perceptual
+evidence uh the the variational free
+energy conditioned on a policy
+so it's like um and then that gives you
+the sort of perceptual evidence and then
+the actual
+action model which is kind of like the
+expected
+free energy and that helps sort of
+um show how free energy is coming in at
+this kind of
+larger time scale um and i suppose one
+thing just to mention to the viewers
+there is a whole load of nested free
+energy processes going into all of this
+process but at this scale that we're
+talking about
+it's so that we can understand in terms
+of policies
+that we're trying to understand
+sounds good and so yeah
+here you know um anyone who has small
+children knows that their feet grow very
+fast right so when we're talking about
+the action model
+expected free energy it's it's the
+expected free energy because i don't
+like the actual free energy can't really
+be measured in in this situation so
+we're dealing with expectation
+so there's this phenotypic risk
+component on the left side of the
+equation
+like how much money am i going to spend
+on
+these shoes and minus the the perceptual
+ambiguity like i think
+uh my kid is a size 13 but they might be
+a one
+or two how expensive are these shoes do
+i want to buy shoes that fit them right
+now or do i want to buy shoes
+that they can wear two pairs of socks
+with and wear for a little while so
+you're always
+weighing out this this risk and the
+ambiguity that
+that occurs okay in that specific
+example
+the specific policies are like okay i
+could ever
+measure the feet every day and that's my
+sensory outcome the hidden state is the
+true
+size of the foot and then every day my
+policy could be if they're in a new
+shoe size we change that day another
+policy with a different
+trade-off structure different
+measurement requirements might be
+every two shoe sizes another one might
+be when the perceived
+ill fitness is too high the squeaky
+wheel gets the grease
+then we have an action-oriented response
+policy
+and i'm going to be thinking about all
+the outcomes
+in this model and about the certainty on
+it so
+nice yeah i mean it also relates to that
+when my daughter has a big toe starts to
+get sore
+that's my perceptual evidence it's like
+okay it's like
+that shoe is rubbing a bit now so yeah
+at some point i've got to make a choice
+so that's a good that's a good example
+actually
+it's an error signal that it's ill fit
+into the policy and that's a niche
+modification with a shoe
+um but it's a similar idea so table
+three kind of goes through
+m3 in a little bit more detail
+and that brings us to figure three which
+is the fourth
+click of the active inference uh
+kind of chain here and it adds just
+two more letters it's mostly the same as
+figure two
+like the c g and the e which connect at
+pi
+that was my mistake in the 18 2 and i
+connected the e to the um
+g instead of the e to the pi um they're
+connected
+at the pi as shown here um the c g and e
+are now in m3 with a blue
+box and then m4 one more dependency is
+being clicked in here
+which is gamma which is being clicked to
+g
+so gamma is now an input to like a
+bigger g
+function so the each the g is
+is a function um which you know you
+could input just
+a number you could input a few depending
+on how you write it so
+this is a slightly more expressive
+g function because it includes this
+precision
+variable and gamma and b are kind of
+like one over each other
+the reason why it's kind of like when
+people take logs or do one
+one over or negative this it's just
+sometimes you want to get the most of
+something but it's easier to frame it as
+getting the least of something
+or vice versa um but what this gamma
+represents is the expected precision
+because um this is kind of certainty so
+this one is uncertainty
+so what would either you say about this
+final
+click to m4 blue or steve so this is so
+this is so fun
+so the gamma is like how much did that
+shoe not fit
+and the beta is like how fast are their
+feet growing right
+so i think that that's the i mean i
+guess beta doesn't take into
+consideration time but it was
+um it was described as a rate um
+it was described as a rate so maybe it
+does include time i'm not sure
+i don't want to go too too far down the
+rabbit hole with the shoes but it's
+almost like
+there's more precise shoes like you'd be
+more precise with the steel toe and then
+you could have the more stretchy
+no no no no one take this too seriously
+it's about what it actually does
+say which is basically the um precision
+which is the expected precision is in
+the gamma
+so that the uncertainty can be yeah in
+the b
+and this figure three the reason why
+they even went to this level of
+incrementing it out first off is to
+show us level by level how we're
+building on
+okay it's about a time series that's
+being predicted through time of sensory
+outcomes
+that are like generated from an
+underlying time series of hidden states
+vis-a-vis a likelihood mapping and a
+transition matrix
+and that's getting played into by priors
+at that s1
+level at the first state level and then
+there's policy that's the whole
+cybernetics control theory and then this
+is the machinery of the decision making
+and now we're just adding
+one more level which is the implicit
+metacognition
+so now we're adding this implicit kind
+of always on
+always being integrated into the model
+again not a
+disaster mode recovery mode for the
+otherwise
+non-affective agent but it's an
+affective agent
+whose implicit metacognition its
+kind of key regulator here is related to
+its
+certitude not the thermometer's tracking
+the average
+of um it's its returns on investment or
+its average estimate
+but its uncertainty in its generative
+model
+so that's what we get to with
+their figure three with a fourth click
+so wait wait i think we need to talk
+about here uh because it's the first
+time that it comes up
+is there um affective charge
+here oh yes so in this in this model
+and which also m4 really is the top
+level illustrating like the hierarchical
+um hierarchical nature or the nested
+nature of how this model is
+is normally and then in the effective
+charge
+it's it's described here as phenotypic
+phenotypic progress which is the policy
+in the prior minus the policy in the
+posterior
+and then the free the free energy of the
+prior posterior minus the prior wait no
+i said that wrong
+prior minus the posterior there it is
+yep here here it is in table four
+so let's look at what they say so
+expected precision is gamma
+okay looks like a little dart gamma
+precision
+you want more precision in an optimistic
+world model
+and policy pi okay and it turns out that
+gamma the expected precision is one over
+a gamma distribution that's gonna be the
+beta
+and that's just gonna be a statistical
+distribution that
+plays nicely with statistics just like
+you see like natural log like the gamma
+the normal these are
+tools that statisticians use and so they
+kind of
+work here but we can ask the authors to
+what extent does it have to be this way
+but anyways gamma is the expected
+precision so
+gamma and beta we can kind of think
+about them as like linked because again
+they're one over each other
+so wherever you see a gamma or beta it
+could just be replaced with the other
+one
+and affective charge is being um
+defined as yeah the the uh change in the
+policy
+multiplied by the free energy of that
+policy
+so not just if if it's good but
+unchanging
+then this is gonna cancel out so the
+phenotypic progress is low
+if you expect you know the 10 bitcoin
+and you see them
+and you're not changing your policy in
+this
+formulation that's why we don't need to
+tie it too closely to a specific
+emotional experiences because those are
+going to always be super
+subjective and require a ton more
+specification but we're just kind of
+broadly calling this ac variable
+something that's related to both the way
+that the phenotype is changing the
+policy is changing
+and the way that the free energy
+estimating of that policy is changing
+but there's something important to note
+in that equation is if the policy
+doesn't change
+then the affect of charge is zero
+yes and let's again let's have the
+authors give us
+the authoritative um uh information on
+how to read some of these terms
+but here is what they said about that
+step four
+the fourth level which is again this
+gamma precision
+is required to enable the asian to
+estimate its own success which could be
+thought of a minimal form of implicit
+non-reportable metacognition so even to
+be able to
+semantically express metacognition like
+i am unsure that sentence
+is many levels or another level
+away from just this precision variable
+which is like an in it doesn't have a
+self report
+circuit this is just like a model that
+has an error term that it's
+updating at a slightly higher level than
+just the likelihood mapping and
+the expected precision term that's gamma
+reflects
+prior confidence in the expected free
+energy over policies
+the expected precision term modulates
+the influence of expected free energy
+and policy
+selection relative to the fixed form
+policy prior
+e sub pi which is the habits or that the
+prior
+so it's kind of like should i fall back
+to priors
+or should i go with what
+the g function lean into what my
+g is telling me then
+um yeah formulated this way we can think
+of
+of gamma the precision as an internal
+estimate of model fitness subjective
+fitness
+so higher precision my internal model is
+doing better
+lower precision my internal model is
+doing relatively worse
+than it could be it represents an
+estimate of confidence
+in m4 that fourth click in the phenotype
+congruent model of actions
+given the inferred hidden states of the
+environment so they kind of
+tessellate it back out there they're
+saying
+it's about those outcomes and about what
+generates them
+and how those change and how our
+policies play into it and
+it's about how certain we are in that
+generative model
+and there's a lot of ways the
+environment can change so if we're
+getting good data from our observation
+then we should be reasonably confident
+with staying with what works to some
+extent
+but if that should change there should
+be another mode
+that allows us to rebalance
+preferences affordances um
+and integrate that in a different way in
+a different allocation
+to our policies
+and then to emphasize its relation to
+valence in our formulation remember
+valence is like feeling good or bad
+positive negative going forward we refer
+to gamma
+updates using this term affective charge
+so here's ac affective charges change
+in beta aka change and gamma in a just
+another way of saying it it's change in
+precision
+and then you can imagine if if the
+precision goes up it's going to be good
+precision going down bad and flip it for
+the one over or however it ends up being
+written
+but that's what it's getting at when the
+precision is going up
+as new data are coming in like they're
+you know i'm thinking of a slot machine
+and then it's like oh you won something
+and now the second digit is going to
+spin
+so there's both an increase in charge
+and then that like kind of restabilizes
+and now
+it's about whether that changes again or
+whether the second digit is better
+and so that is how affective charge is
+being tracked through time
+with these gamma updates
+okay any thoughts or continue 32 well i
+think well i think the one thing that
+sort of i find helpful here in this here
+is
+it's it's the general overarching active
+inference
+um parameter of uncertainty
+is like it's it's they're using the term
+confidence and precision more at these
+higher levels because it's like a
+meta intern is still at some level
+uh an interpretation of uncertainty but
+because it's on policies in that
+confidence and precision
+are at play because you're interpreting
+your ability
+to act not just the raw
+sensory sort of mellow so to speak
+right there's a big difference between
+like visual uncertainty it's just
+two shades of grey and they're so
+similar you just don't know what you
+don't even see a difference
+versus two strategies two chess moves
+that are very different and you're just
+not sure which one to do
+that's a very different situation for
+inference
+because the way that your eye scans on
+the page
+is kind of reversible you get you're
+getting to retract your
+your choices but with strategy it might
+be very irreversible very non-linear
+um okay here's another example they give
+on 32.
+so this carrying on right below equation
+3.1 which was
+screenshot there so um
+ac can only be non-zero when the
+inferred policies are different from the
+expected policies
+so blue that's what you had said so if
+it's sort of
+at the bottom of the bowl from a policy
+perspective thermodynamically
+it's not moving the delta is zero it's
+positive when perceptual
+agents when it is positive when
+perceptual evidence favors an agent's
+action model and negative otherwise
+so it's like are the data coming in
+locally
+good for my model or locally not
+congruent with my model
+in other words positive and negative ac
+corresponds respectively
+to increase and decrease confidence in
+one's action model
+so as the data are increasingly good you
+actually like lean into your model
+and prioritize that prediction and then
+you kind of
+start maybe overfitting and then maybe
+the model has to pull
+back and rely a little bit on something
+different
+to to re-equilibrate that to stay on
+this multi-dimensional front with model
+fit
+and optimal learning so that's
+one of the ways that active inference is
+rethinking the explore exploit
+is by relying on the generative model
+and then the trade-off with different
+ways the generative model can get
+combined with priors you can get
+explore and exploit behavior as well as
+a lot of other modes and a rapid
+switching that's informed
+by the instantaneous performance of a
+model
+um then they give some examples of
+different a prey and a predator animal
+okay and then here's three any yeah any
+thoughts on that before five three
+okay five three affective charge lies in
+the mind of the beholder
+so that's cool because it shows that the
+authors in this research
+line have taken up the
+challenge of ecological psychology or
+of action-oriented philosophy or
+whatever it happens to be it's like
+this relational insight that these
+variables have to be about the beholder
+and their relationship to a situation
+partially for computational
+tractability and partially just because
+it's kind of
+how these systems seem to be we are
+modeling things that are in the mind of
+the beholder so it's always going to be
+with the situation and the context and
+we're always going to have to go in
+to the specifics um
+but we're also going to find the
+patterns that are similar for example we
+all
+as they say tend to experience a rush of
+satisfaction
+not five hours of satisfaction unless it
+was a long jigsaw
+when we solve a puzzle or understand the
+punchline of a joke or act of inference
+an aha moment our explanation is
+straightforward
+in active inference biologically
+plausible forms of cognition
+inevitably involve policy selection
+policy as fundamental so policy is not
+the disaster mode this is as fundamental
+as affect
+whether those policy internal selections
+the selections are internal
+citation citation citation or external
+period therefore ac is also elicited by
+mental action
+typically in form of top down modulation
+of lower level priors
+i'm getting the lower level pain signal
+i shan't not think of it
+and then now i'm feeling better
+as that is top down prior is influencing
+the bottom-up signals just to give one
+example
+so this is like bringing a lot of pretty
+interesting areas together
+especially because again it's not just
+about humans as cognitive agents this is
+about
+a scale-free formulation for how
+affective charge works in active
+inference
+but we can look at the specific example
+that they do
+provide with the simulation
+so blue
+any thoughts here or on figure five as
+far as what they do in the simulation
+um maybe should we go through the
+simulation first do you have that figure
+up or no
+yes i think it's is it this one
+yeah figure four okay sorry yeah
+yeah i think that yeah that's probably
+better um
+so in this simulation the way that they
+set up the teammates
+is um it's a rat or it could be i mean
+it's a simulated agent right so it could
+be a router it could be an ant or it
+could be
+anything in a maze where on one side of
+the maze is food
+or so the mouse is placed in the middle
+of the maze and
+on the north end say you have on the
+left side food and on the right side a
+shock
+and on the south end there is an
+informational cue
+about whether the or about which side
+the food is on as opposed to the shock
+and so the food location changes over
+the trials uh and then the um
+the subject is allowed to move
+themselves and so
+typically the subject checks the uh
+queue and then gets the reward so
+there's like some
+there's a uh and a reward
+for like you don't get shocked
+accidentally if you first go see which
+side
+that the food is on so how the cue is
+associated
+how the cue is associated with decision
+making well if
+if they know to epistemically forage
+like that that's more valuable than
+you know accidentally getting shocked
+then they go to do that but i think in
+the trials they changed they kept the
+location of food consistent
+for many trials and then they changed it
+for for many trials
+and so that the mouse had to relearn
+what to do
+yep so let's just imagine the food was
+always on the left side
+never changed well as soon as you went
+to the left side 10 times you'd be like
+i don't even need that q anymore it's
+kind of useless info gain it's going to
+be not good
+time spent so i should just go for the
+policy of going
+right for the food now if it was
+switching every time
+it would make sense every time if the
+shock was painful to get that cue
+every time so the mouse is able to
+in one way make a binary decision which
+arm to follow
+for the food but also there's this
+higher order decision
+about getting information and actually
+in the active
+infra infrarents the ant paper that i
+did with some of these
+um co-authors we also used a tea maze
+but there was no
+metacognition there was just the
+stigmargy of the colony
+so the teammates is really a
+generalizable framework
+and once you have the code to make the
+teammates
+you can just make basically anything
+it's just like
+any other shape maze is just another
+matrix so this is again
+it's like an initial foray and the
+places where people see that it's
+lacking like that's where we want to
+kind of
+build in the gaps let's get to a little
+more
+formal view of how you make
+that active infrarat
+that is doing the act of inference on
+this foraging
+decision so this is a there's a bunch of
+sections
+to this figure and
+blue would you say it's better yeah i
+think five is better before seven
+right yeah okay so there is um
+a generative model uh
+first off i mean there's a lot of entry
+points people should check out the model
+and just read it themselves because it
+will take
+there's a lot of ways to enter into it
+but one thing to notice
+is this c the preference over outcomes
+if it's not if it's food it has a plus
+four points shock is negative six
+these are just numbers you can make it
+scaled differently and then if it's not
+a shock or food it's
+zero and then also it doesn't have a
+preference for going left or right
+so these you can already see are some of
+like the little atoms
+that are going to get fed into a bigger
+model
+so this bigger model is going to be able
+to take
+kind of these variables like how much is
+the relative weighting of
+the food versus the um lightning bolt or
+is there an implicit preference for one
+side versus another and then here the
+prior d
+the priors that they're 50 50 that it's
+on either side
+but again that's actually different than
+a preference
+for left or right branch is different
+than a belief
+that it's likely to be on the left or
+right branch
+so we can separate out those two
+variables i wish it were this
+temperature that's my preference
+but i'm very accurate that it's not that
+and that's why i'm sad
+so then you can talk about those kinds
+of combinations
+of different parts of the model
+and uh b so that's d and c b
+is the state transitions and so these
+are
+it's kind of like a second level matrix
+and this is kind of it's it's like a
+cube
+if you think about it's like a four by
+four by four because there's four
+positions it can be in
+the waiting position that's this front
+one
+then it can go to left to the right or
+to the bottom
+and then there are state transitions
+that are defined
+like if you go from the center to the to
+the left branch
+that's going to be a defined move in a
+matrix that you can make
+then a is the mapping between where
+you're at
+and whether you get the cue left or
+right
+so that's the info that you'd get on the
+bottom the south branch
+and then the reward or the punishment
+and that's the likelihood mapping
+whether you go to the left or the right
+regardless of whether you got the q or
+not and then e is that baseline prior
+over policies
+which um is just it's even here they're
+all 2.3
+we could ask what is the effect of
+different values it might make
+you know you could work that through in
+your head a little bit
+but it could be different but here
+all of the expressivity is in the other
+parts like the preference for the um
+reward
+over the shock so one doesn't need to
+specify like
+yes and i'd rather you know take a left
+turn at this exit while i'm going there
+but that could be specified because
+again it's just sort of a
+um skeletal model of this scenario
+any thoughts on this before we go to
+seven
+nice but isn't it it's cool model and
+it's nice how even with only four
+locations there's so much richness in
+the behavior
+so shows you don't need the little
+scurrying animal
+to simulate the spatial dynamics of the
+maze because then you're going to get
+trapped up
+oh is it a narrow chamber or a broad one
+but this helps you
+look more semantically perhaps at the
+way that the agents interact with their
+environment
+okay so now on seven
+um blue do you want to say the two
+halves of seven
+yeah so this uh part of seven this is
+the
+the generative model that they've
+created for aspect of inference and
+the next slide is going to talk about
+all of the different
+uh matrices that go into producing
+this model so that's why i don't know
+maybe it's this one maybe this is better
+first
+go forward um so the uh here the
+the different matrices that go into the
+the larger model in figure seven
+include the prior expectations d2
+for any initial states so that's this uh
+top left and then the second one which
+is down here on the bottom
+is the affect of prior which is the
+likelihood matrix reflecting some degree
+of uncertainty in the predictions which
+was
+also shown in figure 5 multiplied by
+that beta
+and sets the expectation on expected
+sets the
+expected precision so which varies
+between
+negative point five which would be a
+negative um
+a valence and then uh two which is
+positive valence
+uh and then this contextual prior is
+this matrix
+aac a to the c
+for the likelihood mapping from the
+context states to the lower level
+uh reflecting the fact that the agent is
+always certain which context they
+observed after the trial is over so they
+either got the food or the shock and
+they know that
+right and then this last one is the
+state transitions
+b b2 b to the two um
+and this is state transitions at the
+second level reflecting
+a couple of assumptions that both the
+affective
+and contextual straight states vary but
+have some stability across
+trials 0.2 to 0.3 probability of change
+and that the agent has a positivity bias
+in
+the sense that they are more likely to
+switch from a negative to a positive
+state than vice versa
+thank you blue so what's happening in
+seven is we're adding um another level
+so here we see that beta and gamma
+being connected to the whole cge policy
+and then that rake formation
+and now we're going to tie in this
+implicit metacognitive layer with
+another hidden state
+so that introduces this parentheses
+notation where
+if there's a parenthesis it means which
+level
+of the nested markov decision process it
+is
+so that the s that we knew and loved
+that was giving rise to the sensory
+outcomes is now s one
+and that's the first level of the model
+and then
+the s that is given rise
+to the precision is
+s2 the hidden state so that is now
+what is being called the implicit
+metacognitive component
+which is the second level of the model s
+upper score two which has its own prior
+d
+upper two just like this has a d upper
+one
+it's actually not shown here but it is
+there um
+there are uh the same
+markov decision process structure is
+being recapitulated
+but there's a different interpretation
+because the hidden states at one level
+are now the observations linked through
+an a at the next level
+so here's the observations like what
+square am i on
+the sensory outcome am i and then a
+hidden state what kind of square am i
+on and then that's getting mapped to
+am i happy or what that's the whole
+question of this paper is what does this
+actual
+second state yep stephen oh yep
+now yeah i'm gonna i'm gonna have to
+head out sorry thank you peace thanks a
+lot yeah thank you bye
+so then you get all these kind of
+interesting uh
+different kinds of matrices at the
+second level like
+given that i went left and the food was
+left
+then will i find out about that and so
+you need a few matrices to kind of close
+the doors and make the model run
+but that's a little bit on the
+implementation details and we'll
+probably learn
+from the authors and in 10 we kind of
+just have a summary
+this is i think a great figure because
+it shows how multiple time scales of
+nested processes are linked
+from the inheritance of prior phenotypes
+like how big
+is that foot and also development
+learning like how fast does it change
+get linked in through multiple levels
+that are getting nested closer and
+closer to action and perception
+in the loop and then rippling back out
+so pretty nice overarching
+figure any thoughts on this or continue
+on blue
+this just really like like like you said
+it's a nice figure a good summary and
+just reflects like the deep
+temporal like nature of this model that
+they've
+built next let's uh go through the
+results of the simulation and then just
+deal with a few
+little further implications and then
+that will be a nice
+19. so in figure 6 they
+simulate out that scenario that we just
+talked through a few times with the maze
+for 32 trials
+with food located on the left side so
+this was just testing
+that it will converge to expecting the
+left side
+this was kind of like a little sanity
+check for their model
+but also it shows that we're doing this
+in the in the broader spm toolkit
+and so that means that a lot of these
+things
+like the um ability to visualize and
+easily run these models
+and check that they're complete and
+debug them and run them at scale
+a lot of these things that tie up a lot
+of innovating
+innovative modeling efforts a lot of
+those are simplified somewhat and
+again we'll ask the authors about this
+um
+so they simulated in figure 6 just to
+show that they could do different
+policies from the exploratory policy
+in the first 12 and then switching over
+to just the go left
+policy okay figure eight
+anything to say blue
+no okay yep so figure eight they're kind
+of just
+giving a few trajectories of what can
+happen
+so it's it's characterizing the model in
+a little bit of a playful way but i
+think it's
+fair and as we'll see it's it's at least
+computationally warranted
+so here we have initially anxious
+the state is negative for the first
+eight time steps
+whereas getting the q and the left side
+and then it develops confidence
+and then the green line here in eight is
+where
+the um the situation changes
+so then there's a few time steps where
+it still hasn't
+caught on before it gets shocked and
+then
+it gets anxious again and it gets
+renewed confidence
+so this is capturing a few of the
+just like with the ants how we showed
+how it could switch arms
+here they're showing not just that it
+that that it can switch arms from
+q and left left and stuck then the shock
+unsticks it it's like whoa i was very
+sure
+that going left was the right decision i
+got shocked
+now i need to go take the q and not just
+one time i'm going to get the cue
+multiple times
+okay i think that i have renewed
+confidence in this direction
+so it's really nice model behavior
+yeah what do you think blue so they did
+um
+actually there's one thing and so it's
+not showing here maybe it's gonna show
+in figure nine but maybe they
+um maybe they i don't know if they
+showed it in the figure or maybe
+we'll just let the authors talk about it
+yeah
+so about the model that lacked the the
+last level the metacognition about like
+so
+in one of the models they took that that
+highest level of integration away
+um to see if the mouse would similarly
+adapt so here they changed the position
+of the food right in this in the top
+right figure
+so they changed the position of food it
+was always on the left always on the
+left always on the left the mouse
+adapted it didn't even go look for the
+cue
+and then in the the model without that
+metacognition the model thought the
+metacognition didn't adapt to going to
+look for the queue like they just like
+stayed stuck in the middle like not sure
+do i
+i don't know if i should go up or go
+down i thought that that was really like
+funny so so this is what happened with
+the metacognition initially anxious
+developed confidence
+anxious again and then renewed
+confidence but in the model that left
+that
+uh that integration that metacognition
+it didn't it just like stayed stuck in
+the middle i thought that that was a
+very like
+cool anomalous effect and like a really
+neat control like
+trial for for this um test nice
+and it actually relates again to this
+idea that affect or anxiety is
+in the loop and it's something that's a
+continuous variable
+and in uh you know healthy settings we
+could say
+maybe anxiety is actually warranted here
+there was a shock in a strategy that was
+pre there's nothing wrong with a
+strategy that works
+and there's nothing wrong with switching
+strategies when it doesn't work
+but there is some variable whether we
+associate it with suffering
+again that's a second question but there
+is some feeling
+or some computational need for the
+system to actually
+pull back and re-weight how it
+uses its prior evidence versus how it
+deals with incoming evidence
+so i think this is a really nice example
+of just the categorical the discrete
+kinds of behavior
+that are very different from low
+precision and
+negative valence and then a kind of
+phase transition
+rapidly into a stable phase into
+negative and back again
+and integrating it with decision making
+with as they say
+early on the imperative is that
+reduction of uncertainty with the
+generative model
+not maximize reward not minimize
+suffering
+either but actually to optimize
+its precision aka reduce its uncertainty
+about a generative model of
+the states of the world including its
+own action so it's just really
+nice work some of the reasons why
+active inference is so cool actually and
+then figure 9
+they simulate 64 trials oh i think this
+is what you were speaking to
+an affective agent plotted in orange and
+an agent without higher level contextual
+and affective states plotted in gray
+so there's it's um i mean one could look
+at figure 9 a little more closely to see
+the difference
+but yes the expectations in like just
+looking at the top one
+the expected food location they both
+converge to left
+and the per the orange goes a little bit
+higher so it learns a little faster it's
+like yeah i'm doing really well on this
+test
+this is an easy course then the green
+line happens
+and the gray one slowly updates it's
+like hey i've been right for you know 20
+and i was only wrong twice
+so i'm at 90 percent what's the issue
+and the orange one's like whoa
+something's wrong
+because i'm getting error signals when i
+wasn't so and the green line here
+represents the food changing right like
+that's the context switch i just wanted
+to contextualize yes
+yes the context reversal so it was on
+the left and now it's on the right aka i
+got a shock
+and so then also look at this the
+affective charge the orange one
+anxiety drop
+uh blissful ignorance anxiety drop and
+then the gray one
+doesn't have affect so we don't see it
+there but then
+um yeah or the gray ones uh affective
+charge is actually a little bit all over
+the place but we can ask them what that
+uh means and uh so yeah
+pretty it's it is super interesting
+because like learning you know
+even organic chemistry is an emotional
+learning process
+so how actually affect and policy and
+mental effort and all these things come
+together it's kind of cool
+i wonder if this is like just like to
+take it to the like
+meta level like is it like um
+you know self-reflection right like what
+at what level of integration is that
+right like so you do the action you
+select the policy and i
+think that my doing team mazes don't
+self-reflect but like
+when you integrate at that level there's
+agents that do humans that do
+self-reflection and then humans that
+just kind of don't think about it right
+and so what what is the better
+adaptation there it
+just it provides evidence for that i
+think yep and similarly it's like
+you know i want to be doing the right
+thing
+but then will that preclude you from
+having a thought that where
+that's actually being um that
+expectation is being violated especially
+if there's sensory evidence that that's
+the case
+those are really interesting situations
+right so like psychopathology like are
+they just missing
+some higher level integration like for
+to
+lacking that affect you know
+well ask the authors nice so then
+um just the additional info section of
+the paper as we kind of close out
+in the last little few slides here there
+are four appendices
+and the code is available on casper
+hesp's github
+and so you can see just from the top
+lines of the main
+matlab script yeah it's in matlab it
+uses markov decision processes
+and it involves active inference and
+learning using variational base the
+factorized version
+in the spm toolkit using matlab so check
+out the model streams and
+let us know how it goes to work with the
+code
+we kind of just had one or two more
+random
+areas to cover a few directions that
+this takes us in
+which we've discussed a little bit one
+of them is more advanced
+simulations so can we have two
+dimensions of affect or could we have
+another summary variable that
+represents some other feature of systems
+could we
+bring it more into alignment with
+computational psychiatry and
+translational research and could we
+embody robots that implement these kinds
+of
+algorithms how would that change some
+type of
+situational like physical robot or even
+a software robot if it had these kinds
+of
+estimators internally and then we're
+always just thinking about
+where does active inference come into
+play which is easy for this paper
+because that's the whole model but um
+where
+where are the next empirical steps which
+they mentioned in 5.7 a little bit
+and how does this relate to this realism
+versus instrumentalism question we're
+always getting at like
+is this what the systems are or is this
+how we're gonna model the systems or are
+those one in the same
+thing um
+any broad ideas and questions before
+this little freudian
+interlude yeah okay so thanks dave for
+pointing out um
+a lot of the recent work of mark solms
+specifically this new project for a
+scientific psychology
+general scheme which the link's given
+down below but it's um
+pretty interesting work that has to do
+with
+integrating recent developments in
+neuroscience with some
+freudian and uh ideas and beyond
+and i guess i just like ideas that
+aren't named after people because then
+it gets pretty much like oh who's doing
+darwinian evolution
+what does it really mean to be freudian
+it gets a little bit
+historiographical instead of about the
+ideas
+but the mappings that are made
+are clear and stand on their own and and
+put the sort of history
+hopefully um to the side
+when we see that there are commonalities
+across very disparate models
+and here we see a familiar structure
+which is kind of like that markov
+blanket
+separating the internal and the external
+states but
+the letters are a little bit different
+and so there's an abbreviations table
+given in
+this paper and also
+for many years fristen and carhara
+harris
+and others have been writing papers
+that are about different freudian
+concepts
+and relating it to free energy and drive
+and
+a lot of other points of contact with
+different psychological threads it's
+just not uh
+an area i'm super familiar with with the
+literature and the debates around but
+it's an area that's obviously important
+to many and influences a lot of areas
+and it's just interesting to see how
+these developments play into the
+absolutely still open for evolution
+field of psychology psychiatry
+so that was uh pretty much what we
+wanted to
+cover in 19 so that was pretty fun and a
+little little sprint to get
+the paper finished because it was
+somewhat of a long paper but
+it's really worth it so blue any final
+thoughts or what
+what are you taking moving forward or
+what do you hope that we
+discuss in the 0.1.2
+i don't know i'm looking to really
+discussing uh the bayesian brain
+integration or or like correlation here
+i really think that the
+you know ability to update your
+beliefs based on what your previous um
+experiences is like this is like the
+perfect
+like case study for this kind of
+philosophy and i know like the bayesian
+brain catches some slack sometimes and
+bayesian statistics catch a lot of slack
+but in reality like we
+aren't going to go to the shock side of
+the box if we know that the food is
+always in
+the left side of the box like so having
+that that update so i'm looking forward
+to just see what
+what people have to say about the
+bayesian brain aspect of this paper if
+anything
+we get that far if we can make it all
+the way through the model right
+nice yeah i agree i was also curious
+about okay well what if we could just
+associate
+a like you know like click share
+whatever
+on social media and then maybe you don't
+even need the shock
+or maybe you could add that or something
+but with that matrix
+could there be upvote downvote systems
+where maybe the data already exists
+and then the positions that somebody
+could be in would be like
+i have not seen it or i have seen it
+something like that they're moving
+around
+pages seeing or not seeing things and
+that's influencing
+their beliefs about the world and their
+beliefs about themselves and
+how how accurate am i if this is what
+the info i'm getting
+is and then that's
+without even going into the
+instrumentalism realism at least it's
+something that
+it feels like to be searching for
+information or a question that can be
+useful
+so it's pretty cool stuff thanks a lot
+blue and thanks also stephen for joining
+for 19.0
+we'll uh see everyone for 19.1 and two
+thank you

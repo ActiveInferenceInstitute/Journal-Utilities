@@ -1,0 +1,307 @@
+---
+title: "Active Inference ~ Parr, Pezzulo, Friston ~ Chapter 8 ~ BookStream #002.02"
+category: "BookStream"
+series: "BookStream_002"
+episode: "02"
+speakers:
+  - "Parr"
+  - "Pezzulo"
+  - "Friston ~ Chapter 8 ~ BookStream #002.02"
+duration: "23:12"
+url: "https://www.youtube.com/watch?v=kP9sKFnWBA8"
+views: 125
+exported_at: "2026-02-18T22:37:37.905092+00:00"
+format: markdown
+---
+
+# Active Inference ~ Parr, Pezzulo, Friston ~ Chapter 8 ~ BookStream #002.02
+
+chapter eight is called active inference and continuous time begins with that timeless quote
+everything flows nothing stands still so what would you say about chapter eight
+all right so this chapter uh probably is my most favorite chapter in the book uh because of my
+uh own personal interests in um i don't know the process materials and so on but
+uh yeah so chapter seven um acts as a really good uh starting point for anyone who wants to uh
+develop the discrete time situations uh to model discrete time situations uh inactive within active
+inference framework but in chapter eight uh we kind of get into get to uh model uh a bit more
+more interesting or let's say more involving situations uh and they're not necessarily
+uh kind of toy examples we saw at least at the beginning of chapter seven uh so
+obviously as the title suggests uh this chapter deals with the continuous time situations so
+uh in the in that case uh we need to maybe at this point um refresh our memory about what continuous
+time situation involves uh by reading the relevant parts uh re reading or reviewing relevant parts of
+chapter uh four so uh yeah in chapter four we saw that the generative model for continuous time situation
+uh derives uh derives uh derives from uh the uh ito's stochastic calculus uh in terms of um putting
+the whole process um into two elements uh two stochastic um two elements of stochastic equations uh one of which
+uh is the actual uh the condition of actual uh states um or the behavior of the actual states and the other one
+uh is the randomness that we need to account for in each real-time continuous time situations so that's
+what we get here uh in equation eight eight point one and then uh building up from that equation uh we
+uh it generalizes that equation to involve uh um i mean the fun the functionals of g and f instead of just
+the um the single valued functions of g and f so uh then we get to
+uh put that into uh the situation that can be used for describing the behavior of dynamical systems
+which is a very well-known uh situation to use these kinds of uh stochastic equations uh and uh
+it's widely studied how those uh those kinds of dynamics can be characterized uh especially in recent
+bayesian mechanics paper by uh dalton saktevadevel and others uh so and then it gets to some more
+specific examples such as uh latke-volterra dynamics and uh synchronicity and so on uh in order to show
+how uh these kinds of uh dynamics uh can be uh elaborated upon uh and uh can be generalized
+uh uh to uh and and enables them to characterize more complex uh situations so uh yeah that's a really
+short and brief overview of the whole uh chapter maybe uh we can talk about a bit more details as we go
+through great well said well i'm sure for another day the philosophical implications of eight seven and
+eight and high road and low road and all these other parts of the textbook great topics um i i agree i
+would see chapter eight as demonstrating continuity with some classical continuous time modeling motifs
+from a few different areas of dynamical system science which is applied in like many many many fields but
+these are some classic examples so figure 8.1 goes a little bit more into depth or at least into more
+formalism detail about exactly what we saw in chapter five with the spinal reflex arc with the proprioceptive
+data coming in and then a differential being calculated with the set point which reflects a descending
+prediction prediction from a decision making layer and that can be viewed as this kind of mechanics that
+plays out in a phase space in continuous time like a spring moving around with with someone making a
+certain path with an attractor and a spring being dragged around something in that area box 8.1 goes into a
+very fascinating topic do you want to describe it uh well uh it's uh maybe uh one of the most um thought-provoking uh
+section pages of the whole book and if i remember correctly uh in all of the cohorts this particular box
+uh uh i mean gives always gives rise uh to lots of questions uh because of some of the interesting and uh at least
+initially counterintuitive uh claims uh here uh but uh i don't want to spoil it so um the uh but uh as a kind of
+spoiler alert uh it kind of uh gets to uh really interesting but uh alas very brief discussion about
+the comparing uh these terms precision attention and sensory attenuation and uh the relation and uh
+similarities and difference between these two these uh three terms and how uh each understanding each of
+them is essential to understanding uh the other ones uh but as i said uh it's a really interesting topic
+uh which uh gives rise to lots of uh discussions uh and uh i believe it's one of those uh topics that
+uh that's worth looking a bit more uh looking into uh in some other literature as well great well said what
+a cliffhanger next they go to a classic model family called laca volterra these dynamics inherit from
+characterizations of predator prey dynamics in ecology so it's kind of a classical ecology model shown in
+figure 8.2 on the top it's actually the ecosystem model plants herbivores and carnivores which follow
+different kinds of oscillatory trends in continuous time and so that also has enabled it to be applied
+for other so-called winnerless competitions and that relates to topics like neural darwinism and also
+neural dynamics where things have kind of oscillatory relationships with each other which are being
+modeled as a continuous time underlying process with a lot of measurement noise and discretization through
+space and time those are the kinds of algorithms that spm explores more and there's laca volterra and a lot
+of other dynamical systems theory in spm so active inference kind of adds action and more to what was laid out
+from a pure dynamical systems theory in spm here it really is just showing the ecology example and how
+you can project if you have three different species you can think about that motion in a cube or tetrahedron
+and then you could project onto kind of like uh looking at a lower dimensional manifold relating just two of the three
+species and that evinces this kind of oscillatory but also moving behavior that gets connected in figure 8.3
+to neurobiology what would you say about this
+uh okay so here in figure 8.3 uh we see some applications of um a lot of alterodynamics uh so uh the
+uh left column uh here uh show uh represents um what happens uh in uh i mean uh in eye blinking eye
+blink uh conditioning uh so uh uh of course uh here we uh need to account for uh uh i mean the expected states
+uh uh uh of uh of uh of the of the of the sequence of the sequences of events that uh happens in in uh the eye
+blinking so uh the upper uh upper left figure shows the expectations uh in terms of time and then uh the
+parallel right hand side equation uh sorry right hand uh side uh figures uh shows the uh
+the lot covalterra system uh that that is applied uh in the handwriting situation so as we can see
+although uh the uh i mean mathematical technology is the same or at least the modeling technology is the
+same uh the outcome of each situation uh varies drastically in uh two distinct
+uh uh two distinct uh neurobiological behavior uh not neurobiological but biological behavior uh so
+yeah we can see how uh the same modeling framework can give rise to uh different uh outcomes uh based on uh what parameters uh is uh needs to be optimized what parameters
+uh are selected for the modeling and so on uh so i believe it's a quite uh interesting uh example to compare
+uh handwriting and the blinking uh together and uh how uh those can be compared to each other using the lot
+curve lot cobaltator dynamics great thank you box 8.2 gives a variant on the learning here presented with
+the formalism for continuous models kind of a technical aside section 8.4 is about generalized synchrony
+so figure 8.4 is going to visualize one of the classic dynamical systems which is the lorens attractor
+so what would you say about this figure okay so this section is uh truly interesting because uh when
+one thinks of active inference um probably the first situations that comes to mind is uh the situations in
+which we have uh quite well defined uh probability distributions for different parameters but as we can see
+here uh in section 8.4 uh actually some of the formalism of active inference uh can be successfully used uh to characterize
+even chaotic systems and pretty and in particular the way in which two chaotic systems can be synchronized with
+each other so uh this is a classic example of a chaotic uh lorentz system uh uh and um it it derives
+from it draws upon uh from uh from um some of professor person's earlier work on birdsong uh synchrony uh and as a side note any literature before 2016 is considered earlier
+history in active inference literature because it evolves uh quite rapidly uh so uh yeah
+uh this kind of synchrony between uh two chaotic systems uh can be interpreted as providing evidence or even uh
+let's say uh a way to model uh a kind of primitive theory of mind uh in in the sense that how exactly can we
+uh understand uh or can two two agents can uh trace each other's trajectories uh without
+uh any i mean engaging in any direct exchange of uh observations uh between their uh internal and external states so uh yeah that's a really good uh example and i believe one of the most interesting
+examples of how active inference can even uh account for these kinds of uh behavior so uh and the rest of the section goes into the details of how uh this kind of synchrony between um
+um multi multi-scale uh birds multi-scale um lorentz systems can happen um and how can we uh formulate it mathematically in terms of continuous time active inference
+awesome awesome and there's been more recent work on markov blankets and stochastic chaos but the bird example is a classic
+8.5 goes into hybrid discrete and continuous models so this could be kind of like a in-between chapter of
+seven and eight but now that we've been introduced to the pure form of discrete and the pure form of continuous models
+here shown that that composability extends to so-called hybrid models where here the lower level visually is using the continuous time
+formalism and the higher level is describing the little line added here the discrete time formalism and this was the similar structure
+the similar structure described by the authors of the paper active inference does not contradict folk psychology
+where they described this lower level as motor active inference which was closely allied with the spinal arc reflex
+shown above and then this higher level they called decision active inference because in that case it was referring to a discrete decision
+and so they used that kind of basic motif of continuous activity or continuous time modeling
+at the more peripheral aspects of a cognitive entity and like ali said more discretization and hybridization as well
+at higher levels of the cognitive modeling and that type of an architecture here instead of a
+!
+a new set point or fixed point being specified from the top down muscle command about a new location for a muscle
+followed by movement towards it this is a muscular activity that is realizing that but but not in the elbow coming away from the hot stove
+this is about the eye circading to an epistemic foraging location specified by top down hierarchical systems
+8.3 describes a little technical aside on mixture of gaussian gaussian mixture models kind of a
+technical modeling note and 8.6 closes it says it's a huge topic and much has been left out and so they list in table 8.1 key advances in continuous time models and those areas are
+synthetic birdsong
+
+
+oculomotor delays
+conditioned reflexes
+smooth pursuit eye movements
+
+
+saccades
+action observation
+
+hybrid models
+and self-organization
+and that's chapter 8.
+what else would you say and also what would you kind of lead someone to in the philosophical implications of 8.1 key
+because it sounds kind of cool
+uh okay so
+uh well uh the case of continuous time active inference uh
+uh i think it leads to uh
+
+uh really interesting uh questions uh both in terms of uh philosophical questions and also uh
+uh a more uh
+uh practical modeling questions uh about uh what parameters uh needs to be accounted for and so on
+uh uh and as i said i uh
+uh believe uh it's a more uh
+uh more interesting way of um
+
+it's not uh
+interesting but but at least more
+uh involved way of um
+uh doing active inference modeling
+but uh one thing that uh
+uh one of the uh
+philosophical questions that um
+uh
+mao and i uh have explored
+uh uh in our paper
+uh is uh how
+uh the processes
+uh of uh i mean
+ontological processes
+uh can uh
+philosophically described using
+uh fvp uh
+assertions
+uh in terms of their
+intra action with the environment
+uh
+in which they co-constitute themselves
+and uh we don't necessarily
+uh
+distinguish between uh
+between the internal and the external
+
+so one obvious
+example of this is
+that generalized uh
+synchrony example that we saw in this chapter
+in which we don't
+necessarily uh distinguish between
+which of the birds act as
+the agent and which one is the
+uh environment uh or the vice
+
+uh so these kind of
+co-constitution of
+the environment and the agent which
+gives rise to
+the partitioning of state space
+through a markup blanket
+is uh one of the
+interesting
+um philosophical
+points uh that i think needs
+to be uh elaborated
+uh a bit more
+uh using
+some of the
+recent advances
+in uh philosophy such as
+uh the two the tools
+that's been developed in a new
+materialism uh school
+or some other philosophical
+approach approaches but
+uh yeah these kinds
+of uh uh what exactly
+gives size gives rise to
+emergence what is the um ontological
+status of emergent properties
+and so on uh are some of the
+um burning questions for many
+philosophers today
+and i believe active inference
+and particularly continuous time active
+inference provides
+a clear
+uh precise
+mathematical formalism
+uh
+even uh if not to
+answer these questions
+but at least to explore
+explore it in a more
+rigorous and uh practical
+
+and also
+um
+practical and attract
+attractable way
+so
+uh this is
+the area that i believe
+philosophy and science
+are beautifully intertwined
+uh into a coherent view of
+not only
+uh the phenomena of interest
+but even
+about
+the whole world
+is
+
+
+
+pretty cool
+yeah a lot to say about
+that topic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+after completing chapter seven and eight you've seen the kind of two major branches or two major
+motifs of just one kind of modeling but these kind of models have so many different forms that
+that's why it's such a hands-on process to specify the generative model in chapter six and fit it
+with data in chapter nine those are all what's required and that's kind of the last mile of where
+these discussions about general motifs gets you but also playing with these pedagogical models can be
+really helpful because it will help you understand the basic patterns and relationships and start to
+see see different patterns in the graphical models and know from there what levels of technical
+processes can be kind of coarse grained over
+you

@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livestream 058.2: "From pixels to planning: scale free active inference"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Livestream 058.2: "From pixels to planning: scale free active inference"</h1>
+<div class="meta">Duration: 1:59:21 &middot; Views: 1,200</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=fbz2VUi-MOo">https://www.youtube.com/watch?v=fbz2VUi-MOo</a></div>
+<article>
+<p>hello and welcome everyone it is</p>
+<p>November 13th</p>
+<p>2024 we're live and kicking off the</p>
+<p>fourth applied active inference</p>
+<p>Symposium it will be a great program and</p>
+<p>we will begin with Carl friston and</p>
+<p>Lance</p>
+<p>dcosta discussing scale free active</p>
+<p>inference we discussed in live stream</p>
+<p>58.1 one with Lance last week and in</p>
+<p>58.0 with Aron two weeks ago a bit about</p>
+<p>this work and today Carl thank you so</p>
+<p>much for joining and presenting on it so</p>
+<p>looking forward to it and throughout in</p>
+<p>the live chat please feel free to write</p>
+<p>any comments thanks again everyone for</p>
+<p>joining and looking forward to</p>
+<p>this well thank you Daniel it's a great</p>
+<p>pleasure to H kick off the Symposium</p>
+<p>this year um I'm going</p>
+<p>to rehearse um a</p>
+<p>presentation I made at the um active</p>
+<p>inference Workshop um a few months</p>
+<p>ago but this time I hope in a slightly</p>
+<p>more relaxed uh and unpack way so I'm uh</p>
+<p>fondly hoping for lots of questions and</p>
+<p>uh embellishments from the uh from the</p>
+<p>audience and uh and from Lance um this</p>
+<p>is a bit of a colloquial presentation</p>
+<p>it's just going to focus on something</p>
+<p>specifically that we've been working on</p>
+<p>for the past few months which is</p>
+<p>effectively addressing the question how</p>
+<p>can one scale active inference for high</p>
+<p>dimensional real world problems and the</p>
+<p>solution that we've been pursuing is to</p>
+<p>adopt a scale-free approach um this work</p>
+<p>has been written up um and put on</p>
+<p>archives</p>
+<p>um however it's also been submitted for</p>
+<p>uh publication peer reviewed publication</p>
+<p>to a special collection um in uh memory</p>
+<p>of Herman hen um and we've equipped the</p>
+<p>peer reviewed version with a little</p>
+<p>forwards I just wanted to frame or</p>
+<p>preempt the scientific part of this</p>
+<p>presentation just by motivating why why</p>
+<p>the work of Herman hen is foundational</p>
+<p>and under writes many of the</p>
+<p>um ideas and procedures that underly</p>
+<p>this scale-free approach to active</p>
+<p>inference so Herman hen was famous for</p>
+<p>synergetics um a physics Le approach to</p>
+<p>self-organization um and in particular</p>
+<p>the importance of understanding the</p>
+<p>coupling between different scales of</p>
+<p>Dynamics in self-organization</p>
+<p>and if you go to the Wikipedia entry you</p>
+<p>will read about macroscopic and</p>
+<p>microscopic variables and how they are</p>
+<p>coupled to each other in a in the</p>
+<p>fashion of circular causality um so</p>
+<p>there's both bottom up and top down</p>
+<p>causation where the top down causation</p>
+<p>is sometimes read in terms of um the</p>
+<p>slaving</p>
+<p>principle I'm going to present this</p>
+<p>approach um to harnessing this um notion</p>
+<p>of a scale-free universe uh in terms of</p>
+<p>installing that scale free aspect in the</p>
+<p>generative models that we bring to the</p>
+<p>table to solve decision- making to uh</p>
+<p>simulate or um emulate active inference</p>
+<p>under discrete State space models</p>
+<p>so let me start at the beginning um the</p>
+<p>nature of things and the free energy</p>
+<p>principle um and this is just to</p>
+<p>rehearse the fundaments of the free</p>
+<p>energy principle it all rests upon the</p>
+<p>notion of a Markoff blanket where we can</p>
+<p>separate internal and external states by</p>
+<p>boundary States or states that</p>
+<p>constitute the mark of blanket namely</p>
+<p>the sensory States and the active States</p>
+<p>and for those people not familiar with</p>
+<p>um this particular partition of states</p>
+<p>of any random dynamical system it's just</p>
+<p>specifying systemically um a system say</p>
+<p>a brain in terms of its inputs and</p>
+<p>outputs and um just</p>
+<p>formalizing the conditional dependencies</p>
+<p>that Define what is an input to a brain</p>
+<p>or an agent and what is its output in</p>
+<p>terms of the sensory and active states</p>
+<p>that thereby render the system of</p>
+<p>interest in this instance a brain open</p>
+<p>to the environment the econ Nish um the</p>
+<p>heat bath if you're a physicist or</p>
+<p>chemist um in virtue of the fact that</p>
+<p>the inside can influence the outside via</p>
+<p>the um active States the outputs and the</p>
+<p>outside can influence inside via the</p>
+<p>sensory States or the um or the inputs</p>
+<p>and with this</p>
+<p>setup we can elaborate um a kind of</p>
+<p>physics namely uh um basing mechanics</p>
+<p>that is almost well formally um related</p>
+<p>um and inherits exactly the same</p>
+<p>mathematical and functional form as all</p>
+<p>the other mechanics that we find in</p>
+<p>physics including quantum mechanics sta</p>
+<p>statistical mechanics and classical</p>
+<p>mechanics the the only thing that</p>
+<p>separates the um the basy mechanics is</p>
+<p>the fact that we have in mind explicitly</p>
+<p>this partition between internal States</p>
+<p>and external States and the uh blanket</p>
+<p>states that intervene and couple the</p>
+<p>internal to the external and that</p>
+<p>basically mechanics is is effectively</p>
+<p>summarized here in terms of um</p>
+<p>variational and expected free energy um</p>
+<p>where we can read the expected free</p>
+<p>energy as effectively PRI beliefs about</p>
+<p>the kind of outputs or actions that um</p>
+<p>in this instance a brain could exert on</p>
+<p>the external States um and the</p>
+<p>variational free energy keeping</p>
+<p>implicitly the um the internal States a</p>
+<p>a good model so it's tracking in a</p>
+<p>probalistic sense the um the Dynamics on</p>
+<p>the outside and we can combine this to</p>
+<p>uh create a a generalized free energy um</p>
+<p>that now te logically or or perhaps even</p>
+<p>an anthropomorphically we can now read</p>
+<p>the gradient flows that subtend this</p>
+<p>phasing mechanics in terms of action and</p>
+<p>perception just by</p>
+<p>identifying the internal and active</p>
+<p>states of any agent as autonomous States</p>
+<p>and noting that they effectively um um</p>
+<p>flow on the same free energy functionals</p>
+<p>so that's the basic setup um but what I</p>
+<p>want to do before um applying the free</p>
+<p>principle in the service of things like</p>
+<p>active inference is just back up and</p>
+<p>reflect upon the fundamental role of the</p>
+<p>Markoff blanket and how that leads to a</p>
+<p>scal</p>
+<p>invariant picture or view of Dynamics</p>
+<p>and self</p>
+<p>organization so what I'm going to assume</p>
+<p>is that ultimately we will assume that</p>
+<p>the basic mechanics um means that the</p>
+<p>Dynamics of anything that is defined in</p>
+<p>terms of its boundary or Mark of blank</p>
+<p>it can be described in terms of active</p>
+<p>inference but before that we have to</p>
+<p>think about the nature of things um and</p>
+<p>in particular</p>
+<p>um if one goes back to the particular</p>
+<p>physics paper um the nature of the</p>
+<p>states that constitute things or</p>
+<p>particles um and there's a bit of a</p>
+<p>subtlety here because before you can</p>
+<p>start talking about States you really</p>
+<p>have to Define what is a state is it the</p>
+<p>state of something is it the state of a</p>
+<p>particle um and that presents an issue</p>
+<p>because you're defining a part iCal in</p>
+<p>terms of this particular partition into</p>
+<p>internal external uh and Boundary or</p>
+<p>blanket States so there's a um um</p>
+<p>there's a slight toor not topology but</p>
+<p>there's a slight um problem in resolving</p>
+<p>how you define states of things or</p>
+<p>particles and particles that possess um</p>
+<p>States and the resolution of that is to</p>
+<p>adopt um a recursive definition so that</p>
+<p>the particles constitute a set of</p>
+<p>microscopic blanket and internal</p>
+<p>States while the states are a set of</p>
+<p>macroscopic igen functions igon modes or</p>
+<p>just simply mixtures of the blanket</p>
+<p>States so I'm here deliberately um using</p>
+<p>the notion of microscopic and</p>
+<p>microscopic States just in uh as a um a</p>
+<p>nod to synergetics and particular kind</p>
+<p>of synergetics that um Herman hen</p>
+<p>developed and subsequently uh championed</p>
+<p>so this uh is cartooned or Illustrated</p>
+<p>um on the right hand side here so we</p>
+<p>sort of take some states um and um uh</p>
+<p>and then um apply a particular partition</p>
+<p>on the basis of which states are coupled</p>
+<p>to which other states and the</p>
+<p>conditional independences that</p>
+<p>ensue um and then having done that we</p>
+<p>can then take mixtures zon mixtures of</p>
+<p>the boundary states that then generate</p>
+<p>new States um and then we can um</p>
+<p>effectively by taking those mixtures we</p>
+<p>effectively reduce the dimensionality so</p>
+<p>that the higher scale um coarse grains</p>
+<p>the lower scale and then we reduce it</p>
+<p>and then we just rinse wash and repeat</p>
+<p>and we do that and every time we sort of</p>
+<p>pass through this cycle of RG operators</p>
+<p>um reduction and course graining</p>
+<p>operators we move to one scale above</p>
+<p>successively and this is the scale</p>
+<p>invariant aspect of um that I want to</p>
+<p>leverage in in the remainder um of this</p>
+<p>presentation um I use the word RG uh</p>
+<p>deliberately because um one way of</p>
+<p>looking at this or articulating this is</p>
+<p>to use the apparatus of the</p>
+<p>renormalization group so this is where</p>
+<p>renormalization gets into the game that</p>
+<p>you're recursively um applying these</p>
+<p>operators Co graining things um in a way</p>
+<p>that conserves their Dynamics and that's</p>
+<p>an easy um um uh that's an easy criteria</p>
+<p>to meet for us because we know that</p>
+<p>anything that has a particular petition</p>
+<p>can be described in terms of a gradient</p>
+<p>flow on variation or generalized free</p>
+<p>energy so we have everything that we</p>
+<p>require in order to apply um the</p>
+<p>apparatus of the renormalization group</p>
+<p>so that what that basically does for us</p>
+<p>once we recognize that</p>
+<p>particles are composed of states where</p>
+<p>the states are ion mixtures of particles</p>
+<p>in this scale invariant fashion gives us</p>
+<p>a view of any universe that comprises</p>
+<p>things of things of things</p>
+<p>um as um inherently uh resolving a</p>
+<p>chicken and egg problem through scal</p>
+<p>invariance by application of the</p>
+<p>renormalization group so here's just</p>
+<p>another illustration of how that</p>
+<p>actually works in practice when you</p>
+<p>write down the equations I'm not going</p>
+<p>to bother going through the equations</p>
+<p>this is just used iconically um just to</p>
+<p>make the</p>
+<p>observation that as you move up</p>
+<p>scales um so for example in an</p>
+<p>evolutionary context this would be the</p>
+<p>sort of the Dynamics of phenotypes and</p>
+<p>then we move up to the an evolutionary</p>
+<p>scale by um effectively Co graining in a</p>
+<p>way that Herman hen um would exactly</p>
+<p>prescribe in terms of taking those slow</p>
+<p>macroscopic variables that decay very</p>
+<p>very slowly um which are technically the</p>
+<p>igen mixtures equipped with very small</p>
+<p>um igen values whose real part</p>
+<p>approaches zero From Below effectively</p>
+<p>saying that these patterns Decay very</p>
+<p>very very slowly and they have a kind of</p>
+<p>persistence that lends higher and higher</p>
+<p>scales a temporal dilation so things</p>
+<p>change more and more slowly as you</p>
+<p>increasingly uh cor grain things and</p>
+<p>that this falls out of the maths um when</p>
+<p>you simply apply a particular partition</p>
+<p>and put that partition I in um as the um</p>
+<p>the course grading operator in this uh</p>
+<p>in these in this scale free</p>
+<p>formalism so in short basy mechanics</p>
+<p>entail a generative model of external</p>
+<p>Dynamics but we've just seen that just</p>
+<p>by defining things in terms of particles</p>
+<p>that have States and defining States in</p>
+<p>terms of the ion functions of particles</p>
+<p>that external Dynamics are inevitably</p>
+<p>scal inv variant it can be no other way</p>
+<p>and therefore the generative model must</p>
+<p>be scale invariant or when expressed as</p>
+<p>a graphical model scale free and I just</p>
+<p>slip that in as a</p>
+<p>um a nod to the fact that people often</p>
+<p>talk about scale freeness um generally</p>
+<p>speaking when people apply the notion of</p>
+<p>scale in variance to anything if that</p>
+<p>thing is a graph then you can call it</p>
+<p>scale free so a scale free thing is a um</p>
+<p>is a graph that has has this scal inv</p>
+<p>variance crucially in both time and in</p>
+<p>space because we are dealing with</p>
+<p>dynamical systems and we're doing this</p>
+<p>um Dimension reduction or course</p>
+<p>graining um using these um migen</p>
+<p>functions that necessarily pick out</p>
+<p>these slow macroscopic sometimes called</p>
+<p>stable modes they're stable because they</p>
+<p>they don't Decay or dis ipate um almost</p>
+<p>infinitely quickly so they're stable in</p>
+<p>the sense that they Decay very very</p>
+<p>slowly so how can we harness that</p>
+<p>observation that truism at least truism</p>
+<p>under the world as described by hen um</p>
+<p>in um the construction of plausible</p>
+<p>generative models and in particular um</p>
+<p>generalized Markoff decision or</p>
+<p>partially observed Markoff decision</p>
+<p>processes um well what we can do is we</p>
+<p>can just look at the different kinds of</p>
+<p>depth um and ask at what point would we</p>
+<p>um be able to leverage um this</p>
+<p>renormalizing aspect of the cause effect</p>
+<p>architecture of Any Given world that</p>
+<p>we're trying to navigate and predict so</p>
+<p>here's uh the normal um depiction of a</p>
+<p>um</p>
+<p>a a generalized um Mark of decision</p>
+<p>process and by generalized what I mean</p>
+<p>is that there's um an explicit</p>
+<p>representation of not just the states of</p>
+<p>things that are generating outputs or</p>
+<p>things that can be measured or observed</p>
+<p>on the um on the sensory sector of a</p>
+<p>marov blanket but also their Dynamics in</p>
+<p>terms of the paths that um specify the</p>
+<p>transitions between state</p>
+<p>as we know normally encoded in terms of</p>
+<p>a transition tensor be here um so just</p>
+<p>by putting in the paths as explicit</p>
+<p>random variables that accompany for each</p>
+<p>given Factor um the hidden States we</p>
+<p>have a generalized kind of uh Markoff</p>
+<p>decision process uh encoded in the usual</p>
+<p>way in this instance um in terms of</p>
+<p>tensors um that themselves can be Ariz</p>
+<p>to distributions so um that</p>
+<p>parameterization equips these kinds of</p>
+<p>models with a parametric depth in the</p>
+<p>sense that if something is deep</p>
+<p>parametrically that means that the</p>
+<p>parameters of various probability</p>
+<p>distributions are themselves random</p>
+<p>variables that have their own</p>
+<p>probability distributions so for example</p>
+<p>the likelihood mapping that maps from</p>
+<p>sensory states to outcomes here uh</p>
+<p>usually encoded by um an a tensor here</p>
+<p>mapping from latent states to</p>
+<p>observations is itself encoded in terms</p>
+<p>of um diset parameters um blending this</p>
+<p>uh kind of model A parametric depth and</p>
+<p>um one can ask what the implications of</p>
+<p>that are well the implications are</p>
+<p>another kind of depth in terms of um you</p>
+<p>now have to optimize or the B apply</p>
+<p>basic mechanics to the latent States the</p>
+<p>hidden state and that would be inference</p>
+<p>and then you also have to um consider at</p>
+<p>a slightly slow time scale the</p>
+<p>optimization of the derish parameters</p>
+<p>and that would correspond to learning</p>
+<p>and so on um if I wanted to go to the</p>
+<p>structural learning of the model in of</p>
+<p>it in and of</p>
+<p>itself we also have um implicitly a</p>
+<p>temporal depth in the sense that we're</p>
+<p>going to be raring out into the future</p>
+<p>and that there are dynamics here um and</p>
+<p>this Temple depth is generalized in in</p>
+<p>virtue of having um these explicit uh</p>
+<p>path variables that we're going to uh</p>
+<p>exploit later on we can also have</p>
+<p>hierarchical depth in the sense that we</p>
+<p>can put</p>
+<p>um compose many markof decision</p>
+<p>processes um um in the in the sense that</p>
+<p>the outputs of one process now</p>
+<p>constitute the inputs or the empirical</p>
+<p>prior the top- down constraints the</p>
+<p>induct biases on the Dynamics and states</p>
+<p>of the level below and the Dynamics are</p>
+<p>um um the kind of inputs or sorry</p>
+<p>outputs of the uh upper level that</p>
+<p>provide empirical PL on the paths and</p>
+<p>the initial conditions are supplied or</p>
+<p>mediated by a mapping between higher</p>
+<p>levels slower States um and the initial</p>
+<p>conditions or initial States of the</p>
+<p>lower uh of the lower level by this D</p>
+<p>tensor here that you can lump together</p>
+<p>um in terms of sort of high you can lump</p>
+<p>together the D and the E tensors they</p>
+<p>play the role effectively of the a</p>
+<p>tensors in sort of um mapping from one</p>
+<p>level to the uh the next level there's</p>
+<p>also factorial depth which many people</p>
+<p>will be familiar with in terms of um for</p>
+<p>any one of these um</p>
+<p>lumped States here there may be many</p>
+<p>many different factors that have an a</p>
+<p>certain Independence structure such that</p>
+<p>you have interactions between factors in</p>
+<p>determining outcomes um you can look at</p>
+<p>this in terms of uh agative model when</p>
+<p>equipped with factorial depth</p>
+<p>effectively entangles latent states to</p>
+<p>generate um outputs or outcomes which</p>
+<p>themselves can be prior constraints on</p>
+<p>the states and dynamics of the of the</p>
+<p>level below such that the inversion of</p>
+<p>these models effectively disentangles</p>
+<p>the data the content that is being</p>
+<p>observed to explain it um in terms of a</p>
+<p>disentangled representation which is the</p>
+<p>um the latent State and dynamics of the</p>
+<p>generative model so what we have here</p>
+<p>then is um a generalized discrete State</p>
+<p>space model with Paths of as random</p>
+<p>variables um just to um return to this</p>
+<p>um fundamental aspect that as one</p>
+<p>ascends scales in real life in um you in</p>
+<p>terms of uh the external States things</p>
+<p>slow down in virtue of the um the the</p>
+<p>the the synergetic um mapping from Fast</p>
+<p>microscopic States uh to um slow</p>
+<p>macroscopic States um the same thing can</p>
+<p>now be implemented in these um markof</p>
+<p>decision processes that have a</p>
+<p>hierarchical depth um and the way that</p>
+<p>is done is effectively to discretize or</p>
+<p>quantize time such that there there are</p>
+<p>more updates at any given level than any</p>
+<p>um than the level Above So for every um</p>
+<p>update at this level there are uh say</p>
+<p>three updates or two updates at the</p>
+<p>level below and that um affords a</p>
+<p>temporal scaling um in accord with the</p>
+<p>scaling variance um implied by the</p>
+<p>synergetic view of</p>
+<p>self-organization I've tried to cartoon</p>
+<p>that here in terms of if you imagine</p>
+<p>lots of these um little markof decision</p>
+<p>processes populating this uh</p>
+<p>circumference here and that as we go</p>
+<p>deeper and deeper and deeper into a</p>
+<p>model with hierarchical depth as we</p>
+<p>consider updates in Universal or clock</p>
+<p>time there are more updates at the</p>
+<p>peripheral level exposed say to the the</p>
+<p>um external states of entire brain um</p>
+<p>relative to the relative to the updates</p>
+<p>as you get deeper and deeper and deeper</p>
+<p>in into the</p>
+<p>model so</p>
+<p>where the temporal depth um becomes if</p>
+<p>you like intimately tied to the</p>
+<p>hierarchical depth the higher the</p>
+<p>hierarchy the slower the updates which</p>
+<p>is why um we generally parameterize the</p>
+<p>initial conditions um or generate the</p>
+<p>initial conditions and the initial path</p>
+<p>from the states above and that path can</p>
+<p>pursue um um a trajectory over multiple</p>
+<p>time steps until a certain um Horizon uh</p>
+<p>and which case it then sends messages</p>
+<p>back to the level above likelihood</p>
+<p>messages um that then cause belief</p>
+<p>updating um in the subsequent Step at</p>
+<p>the level above and then generating</p>
+<p>priors about the subsequent path the</p>
+<p>next PATH at the level below and then so</p>
+<p>on recursively uh to the depth of the</p>
+<p>model um so that's the time bit what</p>
+<p>about the spatial bit what about the</p>
+<p>spatial core graining the lumping</p>
+<p>together of various States um and of</p>
+<p>course this depends upon the particular</p>
+<p>partition so in the General Physics</p>
+<p>formulation you'd be looking at uh</p>
+<p>Markoff blankets and markof blankets in</p>
+<p>Practical applications one can take a</p>
+<p>shortcut um and that shortcut</p>
+<p>effectively rests upon um the</p>
+<p>simplifying assumption that for most</p>
+<p>systems that are um composed of um</p>
+<p>coupled um coupled uh dynamical systems</p>
+<p>um the interactions are usually local so</p>
+<p>if we um just think about um some um um</p>
+<p>system that um can be described in terms</p>
+<p>of local interactions so for example um</p>
+<p>in a um a ukian world um that comprises</p>
+<p>some ma massive</p>
+<p>objects that bounce around and if we</p>
+<p>ignore gravity for the moment then</p>
+<p>they're only going to influence each</p>
+<p>other or depend upon each other when</p>
+<p>they're touching when they're um when</p>
+<p>they're proximate um effectively what</p>
+<p>that means is the the the mark the</p>
+<p>particular partition that defines all</p>
+<p>the Markoff blankets in um in this</p>
+<p>particular State space um um is composed</p>
+<p>of lots of local little tiles um so what</p>
+<p>we can do is we can use a um a device um</p>
+<p>very prevalent or indeed ubiquitous and</p>
+<p>applications of the renormalization</p>
+<p>group which is called a uh a block or a</p>
+<p>spin operator that just groups together</p>
+<p>local tiles or quadrants of a say</p>
+<p>two-dimensional arrangement of time</p>
+<p>of of States so I've Illustrated that</p>
+<p>here just by um in terms of um How We Do</p>
+<p>the spatial cor graining in these um</p>
+<p>what will refer to as a renormalizing</p>
+<p>generative uh model with spin block uh</p>
+<p>Transformations um in terms of um this</p>
+<p>little um um this hidden state or hidden</p>
+<p>factor with its states paths here um is</p>
+<p>responsible for generating predictions</p>
+<p>about the Dynamics of these two um</p>
+<p>factors um at the um at the lower level</p>
+<p>and in so doing what we are effectively</p>
+<p>doing is successively grouping together</p>
+<p>sets of sets of sets of sets so that any</p>
+<p>set or group at one level is accountable</p>
+<p>for or trying to generate the Dynamics</p>
+<p>of a small local group at the at the</p>
+<p>lower</p>
+<p>level um this is quite fundamental this</p>
+<p>kind of Architecture is quite</p>
+<p>fundamental because what that means</p>
+<p>is anything at the lower level only has</p>
+<p>one</p>
+<p>parent and if it only has one parent and</p>
+<p>if you remember the markof blanket is</p>
+<p>constituted by the the the um the parent</p>
+<p>and the children the parents of the</p>
+<p>children because there are no co-parents</p>
+<p>there are no parents of the children and</p>
+<p>what this means practically is that we</p>
+<p>can now ignore dependencies between or</p>
+<p>effectively resolve or dissolve any</p>
+<p>dependences between the factors at any</p>
+<p>given level because each factor is only</p>
+<p>responsible for its children and it</p>
+<p>doesn't share any children in virtue of</p>
+<p>this um particular spin block</p>
+<p>transformation so this leads to um a</p>
+<p>very efficient kind of generative model</p>
+<p>um well certainly an efficient kind of</p>
+<p>inversion of the gened model um where</p>
+<p>we've got all these converging streams</p>
+<p>but the streams don't have to um uh talk</p>
+<p>to each other until at the point that</p>
+<p>they come together through these</p>
+<p>blocking or spin block</p>
+<p>um Transformations so at some point all</p>
+<p>the tiles or the groups at the lowest</p>
+<p>level will actually come together in um</p>
+<p>uh at the top or very deep in the model</p>
+<p>at which point we're now encoding quite</p>
+<p>long trajectories technically 2 to the^</p>
+<p>of the depth minus one um in terms of</p>
+<p>updates um but at the lower level um</p>
+<p>there are no interactions between the</p>
+<p>different blocks as we Ascend them and</p>
+<p>this is just to um remind you we can</p>
+<p>treat these D and E the um the initial</p>
+<p>States and the initial paths effectively</p>
+<p>as likelihoods that couple um one scale</p>
+<p>or level to the scale</p>
+<p>below so how uh with if that's the kind</p>
+<p>of model that we aspire to because we</p>
+<p>think that's appropriate for any world</p>
+<p>that shows this scale uh invariant</p>
+<p>aspect in space and in time or in state</p>
+<p>space and in time um how are we going to</p>
+<p>build one of these things</p>
+<p>um and this is the sort of second um if</p>
+<p>you like</p>
+<p>um thing that we have been working on um</p>
+<p>um because it's going to be very</p>
+<p>difficult to specify by hand these um</p>
+<p>scale-free or renormalizing generative</p>
+<p>models we really want the model to learn</p>
+<p>itself so basically how does one build a</p>
+<p>renormalizing generative model and what</p>
+<p>we're going to do we're going to use</p>
+<p>very fast structure learning and this</p>
+<p>particular kind of structure learning is</p>
+<p>necessarily recursive and uh in the</p>
+<p>sense that we're going to build these</p>
+<p>models through the recursive application</p>
+<p>of these um RG operators or</p>
+<p>renormalizing operators so what's fast</p>
+<p>structure learning so fast structure</p>
+<p>learning basically equips the model with</p>
+<p>unique states and transitions as they</p>
+<p>are encountered so to put that simply</p>
+<p>what we're going to do is grow a model</p>
+<p>from scratch from nothing and how are</p>
+<p>we're going to do that well we're</p>
+<p>effectively going to take one</p>
+<p>observation and say okay that was</p>
+<p>generated by some latent State and then</p>
+<p>we're going to take the next</p>
+<p>observation um and say okay I haven't</p>
+<p>seen that particular observation before</p>
+<p>um so I'm going to induce a second</p>
+<p>latent State and furthermore I've seen</p>
+<p>these two of observations in sequence</p>
+<p>therefore I'm going to um encode that</p>
+<p>with a transition from the first to the</p>
+<p>second state and then I just repeat I</p>
+<p>take the the third one and if I haven't</p>
+<p>seen that before I induce a third latent</p>
+<p>State and a third a second transition um</p>
+<p>accumulating all the Unseen or unique</p>
+<p>instances or um um of</p>
+<p>observations in a likelihood M mapping</p>
+<p>that just grows and grows and grows</p>
+<p>until we have seen something before so</p>
+<p>we don't induce a new state or</p>
+<p>implicitly column of the likelihood</p>
+<p>Matrix if we've seen uh the previous</p>
+<p>state that's just a um um an instance of</p>
+<p>something that has been seen before um</p>
+<p>it may well now come along with a</p>
+<p>different uh path so the next state may</p>
+<p>not be the same as the the subsequent</p>
+<p>State following the previously scene</p>
+<p>instance of this state and therefore I'm</p>
+<p>going to induce A New Path and slowly</p>
+<p>grow my B tensors and my probability</p>
+<p>transition matrices until I can um</p>
+<p>basically encode all the dynamical</p>
+<p>structure of the effectively the</p>
+<p>training sequence of observations</p>
+<p>summarized in a a maximally efficient</p>
+<p>way and I mean maximally efficient in a</p>
+<p>technical sense um in the sense that the</p>
+<p>implicit map that we are growing from</p>
+<p>from scratch um has the highest Mutual</p>
+<p>information between the latent States</p>
+<p>and the observations that are at hand um</p>
+<p>the way that you can think of that in</p>
+<p>terms of um free energies that the</p>
+<p>expected free energy um is just the</p>
+<p>mutual information in the absence of any</p>
+<p>expected cost so the expected free</p>
+<p>energy is just the mutual information of</p>
+<p>any mapping um um</p>
+<p>um plus um or minus an expected cost</p>
+<p>where cost is defined the usual way in</p>
+<p>terms of constraints or prior</p>
+<p>preferences</p>
+<p>so one can actually look at this uh fast</p>
+<p>structure learning um as a particular</p>
+<p>kind of active inference but not about</p>
+<p>um it's not active inference Over States</p>
+<p>or Active Learning over parameters it's</p>
+<p>active selection of the right model in</p>
+<p>terms of the size of the likelihood</p>
+<p>tensors um and the transition uh tensors</p>
+<p>um and the criteria for whether we</p>
+<p>accept a new latent state or a new</p>
+<p>transition is simply does it optimize or</p>
+<p>improve the expected free energy namely</p>
+<p>does it preserve or conserve or maximize</p>
+<p>the the the mutual information so we can</p>
+<p>actually look at this structure learning</p>
+<p>as just another instance of act</p>
+<p>inference but here deployed in terms of</p>
+<p>um um in terms of basic model selection</p>
+<p>or some some people call this uh</p>
+<p>structure learning that has exactly the</p>
+<p>same rules as um planning um and um</p>
+<p>uh and um accepting um parameter updates</p>
+<p>provided they they maximize expected</p>
+<p>free energy as well um the applic ation</p>
+<p>of this kind of uh fast structure</p>
+<p>learning to um these renormalizing</p>
+<p>models U looks complicated here's the</p>
+<p>algorithmic description of it um again</p>
+<p>please don't worry about the details</p>
+<p>here it it's relatively simple you know</p>
+<p>all we're doing basically is ingesting</p>
+<p>um observations but we're just doing it</p>
+<p>for local groups um and then we are</p>
+<p>combining the initial conditions and the</p>
+<p>paths into new outcomes for the next</p>
+<p>level um and so because we are doing</p>
+<p>this for local groups the number of</p>
+<p>groups just get smaller and smaller and</p>
+<p>smaller as you as you get higher and</p>
+<p>higher and higher but obviously the</p>
+<p>number of combinations of paths and</p>
+<p>state initial States increases as you</p>
+<p>get deeper and deeper into the model and</p>
+<p>you may be asking well you know how do</p>
+<p>you ban that you know how can you um</p>
+<p>possibly assimilate all the data without</p>
+<p>having an extremely large number of</p>
+<p>latent States very deep in the model</p>
+<p>that are now encoding effectively</p>
+<p>evolving patterns or paths over quite a</p>
+<p>large number of time points into the</p>
+<p>future well it's trivial to do that</p>
+<p>because the size of the highest level</p>
+<p>I'll call them generalized states that</p>
+<p>basically generate paths and initial</p>
+<p>conditions for the lower level</p>
+<p>um is upper bounded by the number of</p>
+<p>elements in your training set um so that</p>
+<p>you can control and upperbound the size</p>
+<p>of these</p>
+<p>renormalizing operators or likelihood</p>
+<p>mappings and transition um um tensors</p>
+<p>simply by giving it canonical training</p>
+<p>data the kind of data that you want this</p>
+<p>um agent to generate or this um um agent</p>
+<p>to recognize</p>
+<p>and thereby</p>
+<p>predict um so here's a a particular</p>
+<p>example of that um what we've done</p>
+<p>here is just ask can we very very</p>
+<p>quickly learn a generative model that</p>
+<p>will generate a um a simple movie and</p>
+<p>this movie is simple because um it</p>
+<p>begins and ends in the same state so it</p>
+<p>just Loops over and over and over again</p>
+<p>um so we only have to supply one Loop um</p>
+<p>to this fast structure learning so that</p>
+<p>the model builds itself and can then be</p>
+<p>used in generative mode to generate the</p>
+<p>movie time and time and time again um so</p>
+<p>here's one depiction of um the results</p>
+<p>of the learning the the F structure</p>
+<p>learning um and subsequent inference</p>
+<p>when exposed to um this kind of image so</p>
+<p>the coarse graining here at the very</p>
+<p>bottom in in fact um uses um um a</p>
+<p>slightly finessed version of the spin</p>
+<p>block Operator by um harvesting um local</p>
+<p>igen modes or igen ion images um of</p>
+<p>little patches of of the video to get it</p>
+<p>into a reduced or coarse grained</p>
+<p>representation that then is just passed</p>
+<p>up using these spin block operators and</p>
+<p>in this in we just need uh two levels to</p>
+<p>the model to uh have the highest level</p>
+<p>see the entire image and then if we</p>
+<p>present the image um um after</p>
+<p>discretization using the singular</p>
+<p>decomposition or the sequences of images</p>
+<p>to a model it learns the model and then</p>
+<p>we can generate um we can generate um</p>
+<p>little movies simply by moving through</p>
+<p>these paths or episodes I use the word</p>
+<p>episode um</p>
+<p>because remember these generalized</p>
+<p>States the highest level encode paths or</p>
+<p>trajectories into over um 2 to the N</p>
+<p>minus one time steps in the future when</p>
+<p>n is the um is is the uh the depth of of</p>
+<p>the model and these episodes themselves</p>
+<p>have Dynamics so we just go through a</p>
+<p>little Loop here go back to the</p>
+<p>beginning and thereby generate um this</p>
+<p>image at the</p>
+<p>bottom what else can we do with these</p>
+<p>kinds of models</p>
+<p>well one thing we can</p>
+<p>do is</p>
+<p>um present not the entire data but just</p>
+<p>a little prompt um</p>
+<p>so in this example what we've done is</p>
+<p>actually show it just the upper right</p>
+<p>quadrant of the</p>
+<p>movie and the and see what this um and</p>
+<p>this generative model um believes is</p>
+<p>going on in terms of the um the</p>
+<p>predictive post area in output space in</p>
+<p>image space in this</p>
+<p>instance now because during training</p>
+<p>it's only learn to recognize a dove</p>
+<p>flapping her</p>
+<p>wings um that's all it can believe can</p>
+<p>is the cause of its Sensations even if</p>
+<p>those Sensations are very partial so</p>
+<p>basically what we have here is a kind of</p>
+<p>completion that inherits from the fact</p>
+<p>that this generative model only knows</p>
+<p>about latent causes that constitute an</p>
+<p>entire Dove flapping her wings so um</p>
+<p>even though this is what the dove is</p>
+<p>actually um exposed to it's sensing this</p>
+<p>is the predicted after a couple of</p>
+<p>frames it very quickly um is able to</p>
+<p>predict um what it would what it should</p>
+<p>be seeing or what it would have seen had</p>
+<p>it been given the entire uh data and</p>
+<p>another way of thinking about this um</p>
+<p>remarkable ability to sort fill in the</p>
+<p>gaps um is from the point of view of</p>
+<p>compression so just a little digression</p>
+<p>here</p>
+<p>um a lot of the basy mechanics and um</p>
+<p>variation inference that uh ensues from</p>
+<p>variational mechanics can also be</p>
+<p>likened to um</p>
+<p>the to</p>
+<p>um the same fundaments underwrite um um</p>
+<p>efficient information transfer so we've</p>
+<p>talked about maximizing Mutual</p>
+<p>information in the context of uh um</p>
+<p>algorithmic complexity and um the</p>
+<p>associated Universal computation um then</p>
+<p>what the objective function looks like</p>
+<p>is basically how much can I compress</p>
+<p>this content um to represent it in the</p>
+<p>most efficient way so you can look at</p>
+<p>this past structure learning under these</p>
+<p>renormalizing or scale-free generative</p>
+<p>models as the most efficient way of</p>
+<p>compressing whatever your data you've</p>
+<p>been exposed to um and because we've</p>
+<p>compressed it in such a way that it can</p>
+<p>only now recognize a dove flapping her</p>
+<p>wings um then it can if you like fill in</p>
+<p>the gaps in a very efficient way when</p>
+<p>it's given partial or noisy data and I</p>
+<p>use the word noisy here because you can</p>
+<p>regard the missing three quadrants here</p>
+<p>as extremely imprecise data data that</p>
+<p>has extremely low signal to noise for</p>
+<p>example so um here's another example in</p>
+<p>the previous example we we um took a um</p>
+<p>effectively uh</p>
+<p>a movie or a dynamic or um a system that</p>
+<p>had a periodic orbit um um which was</p>
+<p>each flap of the Wings will this work</p>
+<p>for um a periodic orbits and and</p>
+<p>generally for um stochastic um uh chaos</p>
+<p>um yes it works it works relatively</p>
+<p>efficiently so this example um we um</p>
+<p>used training data that was generated um</p>
+<p>um through creating images of a white</p>
+<p>ball that moved with a chaotic</p>
+<p>trajectory governed by a uh a loren</p>
+<p>system so this is the kind of system</p>
+<p>that governs or is used to describe</p>
+<p>chaotic events um in meteorological</p>
+<p>systems or in fluid convection</p>
+<p>um so by applying exactly the same</p>
+<p>procedures as in Pre in the previous</p>
+<p>example um we now uh generate this</p>
+<p>instance a three-level um um hierarchal</p>
+<p>or renormalizing model um that now</p>
+<p>accommodates the um stochastic or</p>
+<p>Randomness induced by not only random</p>
+<p>fluctuations on the Dynamics of this</p>
+<p>stochastic uh random dynamical system uh</p>
+<p>but also if there were any deterministic</p>
+<p>aspects the deterministic uh um um chaos</p>
+<p>that ensues from exponential d</p>
+<p>convergence of trajectories that now has</p>
+<p>been summarized stochastically in terms</p>
+<p>of probalistic um uh transition matrices</p>
+<p>here which means that um we can having</p>
+<p>compressed the training data we can now</p>
+<p>withhold not a quadrant but just simply</p>
+<p>withhold the data to stop the data uh</p>
+<p>but the model will keep on generating um</p>
+<p>what it predicts would have happened</p>
+<p>given the statistics of the Dynamics</p>
+<p>that have been in store</p>
+<p>in this renormalizing generative model</p>
+<p>and what we've done here is um um for</p>
+<p>the first um few hundred time bins at</p>
+<p>the lowest level we basically rendered</p>
+<p>the images or the input very very</p>
+<p>imprecise so that everything is governed</p>
+<p>now or everything is generated from this</p>
+<p>top- down Prize or posterior um um</p>
+<p>posterior um predicted posteriors that</p>
+<p>inherit from from precise PRI is because</p>
+<p>there's no precise likelihood um and</p>
+<p>then we've actually uh removed the U um</p>
+<p>removed the um imprecise input</p>
+<p>completely and just allowed the um the</p>
+<p>agent to generate its own beliefs about</p>
+<p>what's about what's going on um so here</p>
+<p>this is fairly precise in the first</p>
+<p>instance and then we remove completely</p>
+<p>the um stimulus but it still uh imagines</p>
+<p>or generates its or predicts</p>
+<p>um what's going on in terms of this</p>
+<p>chaotic um Dynamics um and then um with</p>
+<p>a degree of uncertainty then um</p>
+<p>continues to then generate um the um the</p>
+<p>Dynamics associated with this kind of</p>
+<p>stochastic</p>
+<p>chaos here's a pretty example um using</p>
+<p>exactly the same uh technology and</p>
+<p>approach um but here explicitly um</p>
+<p>talking about um video compression um so</p>
+<p>we literally just presented a video of</p>
+<p>naturalistic Dynamics in this instance a</p>
+<p>little bird a robin um feeding um itself</p>
+<p>um and um compress that using these uh</p>
+<p>this renormalizing um generative model</p>
+<p>um such that we can again simply remove</p>
+<p>stimuli at certain points um in the</p>
+<p>video um and yet the the in in the</p>
+<p>agent's mind nothing has really happened</p>
+<p>because all it knows is that if it was</p>
+<p>like this um previously then this must</p>
+<p>have happened um and so on through this</p>
+<p>in this instance um orbit that doesn't</p>
+<p>have a a closure it's just a trajectory</p>
+<p>through from the beginning to the end of</p>
+<p>the sequence and here's the postor</p>
+<p>prediction after just being exposed to a</p>
+<p>couple of frames right at the beginning</p>
+<p>um in the first um six uh time frames of</p>
+<p>um of about 12 sorry of um 18 um this</p>
+<p>example moves applies exactly the same</p>
+<p>um approach um as</p>
+<p>previously but now we're not talking</p>
+<p>about um ingesting or learning or</p>
+<p>compressing images we're talking now</p>
+<p>about compressing or ingesting sound</p>
+<p>files uh um and that is if you like a</p>
+<p>simple or limiting case of this</p>
+<p>two-dimensional uh compression that we</p>
+<p>talked about before so in this instance</p>
+<p>now what we're doing is</p>
+<p>compressing one-dimensional frequency</p>
+<p>summaries of a particular um wave file</p>
+<p>or a um file um that um describes</p>
+<p>fluctuations and the intensity of uh of</p>
+<p>a sound that then is um summarized into</p>
+<p>terms of a continuous wavelet transform</p>
+<p>um and then the succession of different</p>
+<p>trajectories in this um time frequency</p>
+<p>space is then ingested or assimilated or</p>
+<p>learned by the generative model um now</p>
+<p>unfortunately you can't hear this um so</p>
+<p>I'm not going to bother playing it but</p>
+<p>um it um this is what the agent was</p>
+<p>trained on it's basically J</p>
+<p>piano um and these are the um ensuing</p>
+<p>predictions in the absence of any inputs</p>
+<p>it's been used to generate music um</p>
+<p>using um the stochastic</p>
+<p>transitions um through various bars of</p>
+<p>Music um that it has learned um</p>
+<p>returning to one or other bars of the</p>
+<p>munic of the music when it reaches uh</p>
+<p>the end of the orbit to generate</p>
+<p>something that um sounds at least Jazzy</p>
+<p>if</p>
+<p>not oh no</p>
+<p>started it but you can't hear that so</p>
+<p>I'm not going to pursue that so to</p>
+<p>summarize what we've done so far um</p>
+<p>we've gone beyond generative AI in the</p>
+<p>sense of um</p>
+<p>um having a a true generated model um uh</p>
+<p>that entails active inference in agency</p>
+<p>um and in the setting of these</p>
+<p>um well sorry what we are going to do</p>
+<p>now is go beyond just simply generating</p>
+<p>uh content um having been uh trained on</p>
+<p>the basis of some training data um and</p>
+<p>we're going to now consider um agency by</p>
+<p>putting action into the mix um and in</p>
+<p>the setting of um the simplified setting</p>
+<p>of optimal State action policies where</p>
+<p>we can effectively um ignore the</p>
+<p>imperative to maximize expected</p>
+<p>Information Gain or um um</p>
+<p>explore in the sense of uh responding to</p>
+<p>epistemic affordances um we can</p>
+<p>um do one of two things we can either</p>
+<p>use some Universal function approximator</p>
+<p>say deep learning to optimize the</p>
+<p>mapping from sensory to active states to</p>
+<p>maximize the um expected cost or the</p>
+<p>expected utility part the expected free</p>
+<p>energy um or we can use active inference</p>
+<p>to realize predictions under enormous</p>
+<p>izing generative model of rewarded</p>
+<p>events so what I'm doing here is</p>
+<p>deliberately setting up a dichotomy that</p>
+<p>tries to distinguish the active</p>
+<p>inference approach to purposeful</p>
+<p>Behavior where the purpose is provided</p>
+<p>purely by the prior preferences or the</p>
+<p>um um or the the uh the constraints</p>
+<p>usually encoded in the c um uh tensor um</p>
+<p>against a sort of reinforcement learning</p>
+<p>approach and this is rather busy slide</p>
+<p>but um I think it's probably worth just</p>
+<p>um uh briefly uh rehearsing the</p>
+<p>distinctions between active inflence and</p>
+<p>reinforcement learning so the you know</p>
+<p>the story with respect to action as a</p>
+<p>gradient flow on free energy which</p>
+<p>basically reduces to um picking those</p>
+<p>actions that maximize the predictive</p>
+<p>accuracy um in the sense that if you</p>
+<p>look at the expression for the variation</p>
+<p>free energy the only thing that you can</p>
+<p>change um is the accuracy in the sense</p>
+<p>that free energy can be written as</p>
+<p>accuracy minus complexity minus accuracy</p>
+<p>and the complexity um is does not depend</p>
+<p>upon action whereas the accuracy does so</p>
+<p>that picture basically says um I can</p>
+<p>describe behavior in terms of a</p>
+<p>generative model that um is optimized</p>
+<p>through um perception uh in the usual</p>
+<p>way um cast in terms of say variational</p>
+<p>inference um that basically generates</p>
+<p>predictions about what should happen</p>
+<p>next and then I can pick my actions to</p>
+<p>fulfill those predictions in continuous</p>
+<p>state for formulations this would be</p>
+<p>without minimizing the prediction error</p>
+<p>usually the proceptive domain but you</p>
+<p>can generalize this to any any</p>
+<p>consequence of action I'm just going to</p>
+<p>pick that action that brings about or is</p>
+<p>most likely to bring about what I</p>
+<p>predict will happen next and what I</p>
+<p>predict will happen next um is optimized</p>
+<p>through perception through variational</p>
+<p>inference based upon my learned and</p>
+<p>selected um generative model so this is</p>
+<p>very similar to sort of um model</p>
+<p>predictive control um and neurobiology</p>
+<p>could be cast in terms of um um ual</p>
+<p>control theory</p>
+<p>um which puts action in the game</p>
+<p>basically of</p>
+<p>realizing</p>
+<p>evidencing um predicted States so I've</p>
+<p>tried to summarize that here just in</p>
+<p>terms of um you know our Markoff blanket</p>
+<p>where we're optimizing our beliefs about</p>
+<p>the world um noting that planning in</p>
+<p>this instance so um planning as</p>
+<p>inference uh is all about the path it</p>
+<p>does not have to be about action it's</p>
+<p>just about how does this world</p>
+<p>unfold um and from the point of view of</p>
+<p>these scale-free generative models we're</p>
+<p>really thinking about how do episodes</p>
+<p>follow each other which episode is going</p>
+<p>to follow this going to um um this</p>
+<p>episode and we can say well you know you</p>
+<p>are in control of that um you know</p>
+<p>imagine a um a benevolent World in which</p>
+<p>everything happens according to um your</p>
+<p>beliefs about how to be an expert in</p>
+<p>this particular world and the agent can</p>
+<p>plan a series of episodes generating</p>
+<p>predictions all the way down to the</p>
+<p>bottom which then slavishly action can</p>
+<p>fulfill just by fulfilling those</p>
+<p>predictions um so one could in some</p>
+<p>sense uh think of this in terms of</p>
+<p>controller's inference at the bottom</p>
+<p>level in the spirit of mod predictive</p>
+<p>control and planning as inference on the</p>
+<p>top level so belt and braces in terms of</p>
+<p>realizing active inference in this</p>
+<p>particular example where I repeat um we</p>
+<p>are really just worried about um State</p>
+<p>action policies um why are we worried</p>
+<p>about State action policies well these</p>
+<p>are the kind of policies that reward</p>
+<p>learning schemes um are aimed at um and</p>
+<p>have a similar architecture um but um to</p>
+<p>my mind a slightly more um um engineered</p>
+<p>architecture first of all you actually</p>
+<p>need explicit inputs which are rewards</p>
+<p>um there are some proxy for um the</p>
+<p>constraints uh you know um um under</p>
+<p>which um the basic mechanics would</p>
+<p>normally operate um but more importantly</p>
+<p>you're you're you're basically sending</p>
+<p>um your inference scheme is basically</p>
+<p>about selecting the right policy I've</p>
+<p>used Q learning here um um to maximize</p>
+<p>the disc counted reward um so</p>
+<p>similarities and differences but we're</p>
+<p>going to focus on uh active inference um</p>
+<p>uh in this in the particular setting of</p>
+<p>these renormalizing models where repat</p>
+<p>planning and thinking or imagining a</p>
+<p>future can proceed at the very highest</p>
+<p>level that has no notion of action</p>
+<p>they're just patterns that unfold they</p>
+<p>may or not be caused by me I don't know</p>
+<p>I don't care um but the action at the</p>
+<p>lowest level the refle Es as it were um</p>
+<p>do um are in a position to make my um</p>
+<p>post predictive posters come true simply</p>
+<p>by picking those actions that realize</p>
+<p>the predicted outcomes</p>
+<p>so how are we going to leverage that</p>
+<p>kind of merely reflexive active</p>
+<p>inference um in the context of building</p>
+<p>or learning from scratch um</p>
+<p>models that would be apt for doing</p>
+<p>something implementing a state action</p>
+<p>policy um and I'm going to um appeal</p>
+<p>here again to this notion of um active</p>
+<p>selection as one way of um looking at um</p>
+<p>action which can always be at least phys</p>
+<p>mathematically expressed in terms of</p>
+<p>um of</p>
+<p>um doing something if it minimizes</p>
+<p>expected free energy um and in this</p>
+<p>instance um what we can do is actually</p>
+<p>apply it not to the selection of the</p>
+<p>model but the selection of the training</p>
+<p>data so if we just um apply</p>
+<p>the the dictat that you only select</p>
+<p>something if it um um minimizes expected</p>
+<p>free energy the</p>
+<p>includes um the expected cost what that</p>
+<p>basically means is I'm only going to</p>
+<p>select those data features are those</p>
+<p>training sequences that don't come along</p>
+<p>with a high cost namely those that are</p>
+<p>rewarded um and that's what we're going</p>
+<p>to do here we're basically going to um</p>
+<p>learn to play um a very simplified um</p>
+<p>game of pong where this ball bounces</p>
+<p>around inside a circle um</p>
+<p>and we can move the bat um in a way to</p>
+<p>uh return the ball so that we can avoid</p>
+<p>penalties when the ball hits the upper</p>
+<p>boundary um and secure a reward um</p>
+<p>whenever um those contact of the ball</p>
+<p>and the bat and how can we learn this</p>
+<p>kind of dynamic these episodes in</p>
+<p>exactly the same way we learned the</p>
+<p>video of the robin or the the um the</p>
+<p>Dove flapping her wings well what we can</p>
+<p>do is we can just um select um instances</p>
+<p>of random play that conform with um our</p>
+<p>um dictat that we cannot um include</p>
+<p>those costly events and so what we've</p>
+<p>done here is just generate training data</p>
+<p>training</p>
+<p>sequences using random</p>
+<p>play but om</p>
+<p>anything that does not that contains a</p>
+<p>costly outcome and furthermore just to</p>
+<p>make things more efficient we've</p>
+<p>restarted the random play after a reward</p>
+<p>is secured and then just use the</p>
+<p>subsequent play if it actually attained</p>
+<p>a subsequent reward so basically</p>
+<p>chaining together bootstrapping together</p>
+<p>or splicing together sequences of</p>
+<p>rewarded uh play um and then use that to</p>
+<p>um uh to um submitting that for fast</p>
+<p>structure learning and now we have a</p>
+<p>generative model of expert play</p>
+<p>effectively or a generative model that</p>
+<p>has that entails a state action policy</p>
+<p>that can be realized through um um</p>
+<p>reflexive active inflence so active data</p>
+<p>selection um and I'm um sort of</p>
+<p>cartooning that here in terms of</p>
+<p>applying a certain kind of Maxwell's</p>
+<p>demon that only lets through non-costly</p>
+<p>episodes um basically yes admit the</p>
+<p>sequence for fast structure learning if</p>
+<p>there is a reward if not ignore this</p>
+<p>ignore this sequence um and this</p>
+<p>effectively learns um or furnishes a</p>
+<p>generative model events that lead to a</p>
+<p>reward and nothing else so now this</p>
+<p>agent can only recognize expert play and</p>
+<p>therefore all of its predictions have to</p>
+<p>be uh the predictions of an expert</p>
+<p>player and because action is fulfilling</p>
+<p>the predictions it will look as if it's</p>
+<p>an it is an expert</p>
+<p>player and here are the um the Learned</p>
+<p>trajectories um at the highest level of</p>
+<p>different episodes that we'll see uh um</p>
+<p>shown in in an alternative format uh in</p>
+<p>the next slide so here's the initial</p>
+<p>starting episodes little events here uh</p>
+<p>the red dots correspond to reward so you</p>
+<p>know first hit second hit and then it</p>
+<p>falls into a nice little orbit and this</p>
+<p>comp completes um this orbit</p>
+<p>indefinitely by in it's the way that it</p>
+<p>has learned so remember it's only been</p>
+<p>trained on random data so this</p>
+<p>particular style of play is unique to</p>
+<p>this agent but it is sufficient now to</p>
+<p>play with 100% um um uh performance um</p>
+<p>simply because it's now going round and</p>
+<p>round its orbit very much like the wing</p>
+<p>flapping her dug flapping her wings um</p>
+<p>these are just different ways of</p>
+<p>portraying the same um the same Dynamics</p>
+<p>and the same the things that have been</p>
+<p>learned um the first eight frames and</p>
+<p>then subsequent frames um of expert play</p>
+<p>um this is the usual format showing the</p>
+<p>posteriors at different levels the</p>
+<p>posteriors over the states and the</p>
+<p>posteriors or predicted posteriors over</p>
+<p>the paths and then rewarded players are</p>
+<p>function of the uh free energy at</p>
+<p>different levels here illustrated by the</p>
+<p>by the red dots every time there's a hit</p>
+<p>up until 512 time frames here and here's</p>
+<p>this rather long orbit through 50</p>
+<p>episodes um each four uh time steps in</p>
+<p>in length that subtends this kind of</p>
+<p>play this is an interesting one and</p>
+<p>speaks to the fact that we've actually</p>
+<p>switched on inductive inference at the</p>
+<p>highest level um so what does that mean</p>
+<p>well</p>
+<p>what we've done is just um um</p>
+<p>basically take each of these highest</p>
+<p>level</p>
+<p>States worked out the sequence that it</p>
+<p>encodes as by um um Computing or</p>
+<p>projecting down through the model and if</p>
+<p>that sequence includes a hit um we said</p>
+<p>that's an intended State that's the kind</p>
+<p>of state that I want to work towards</p>
+<p>through the successive um four um time</p>
+<p>step</p>
+<p>epochs um</p>
+<p>and if I want to be at some point in the</p>
+<p>future in one of these intended States</p>
+<p>in this instance rewarded States or</p>
+<p>episodes um what states must I avoid in</p>
+<p>order to preserve or conserve the</p>
+<p>possibility of getting in or getting to</p>
+<p>one of these intended States um</p>
+<p>basically that's the technology behind</p>
+<p>inducting inference and it's sort of</p>
+<p>summarized here in terms of the latent</p>
+<p>States of uh you know 50 or so of these</p>
+<p>latent States in terms of how many time</p>
+<p>steps would it would it what's the</p>
+<p>shortest number of time steps until the</p>
+<p>intended State um and basically um we um</p>
+<p>as we move from state to state to state</p>
+<p>we want to keep in the white areas here</p>
+<p>avoiding these dead ends if you like</p>
+<p>from which there is no possib</p>
+<p>of reaching an intended State and it's</p>
+<p>really trivial to evaluate these um</p>
+<p>areas that you have to avoid because you</p>
+<p>know the probability transition matrices</p>
+<p>so you just multiply it by itself a</p>
+<p>given number of times and you can work</p>
+<p>out can I get from this state to this</p>
+<p>state and if you can't um then you get</p>
+<p>this um black area here and you know you</p>
+<p>have to move from here to here to here</p>
+<p>to here to get to um your um your</p>
+<p>intended state so that's inductive</p>
+<p>inference in brief and we've applied at</p>
+<p>the top level so we just the you just</p>
+<p>told the agent this world um is under</p>
+<p>your control imagine you know imagine</p>
+<p>what you want um noting that these</p>
+<p>particular episodes or events contain</p>
+<p>you are things that you should pass</p>
+<p>through or should experience um and then</p>
+<p>deploying inductive inference to</p>
+<p>basically predict what will happen all</p>
+<p>the way down at the bottom and then</p>
+<p>using reflexes to make that happen</p>
+<p>um we can apply exactly the same um</p>
+<p>technology or the same procedure to</p>
+<p>different kinds of games that a slightly</p>
+<p>more um complicated game um me to</p>
+<p>emulate breakout um where we've</p>
+<p>introduced uh certain stochasticity in</p>
+<p>terms of the initial conditions and uh</p>
+<p>sticky action but the the overall</p>
+<p>behavior is the same it's just basically</p>
+<p>choosing paths through episodes into the</p>
+<p>future given what knows that can be</p>
+<p>achieved in order to get to uh rewarded</p>
+<p>States so um</p>
+<p>effectively what we've done is create um</p>
+<p>an attracting set of episodes at the</p>
+<p>highest level of these scale-free um</p>
+<p>um generative models where all the</p>
+<p>allowable paths and paths now in this</p>
+<p>generalized State space or event space</p>
+<p>lead to reward um we can go a little bit</p>
+<p>further and just um add in uh various</p>
+<p>episodes by merging uh or assimilating</p>
+<p>new data new training data if and only</p>
+<p>if um the path actually leads to an</p>
+<p>existing um part of this attracting set</p>
+<p>and I've just Illustrated that here um</p>
+<p>in this final example so this is the</p>
+<p>path or the orbit or the attracting set</p>
+<p>that was learned at the highest level</p>
+<p>by the um the ping pong playing uh agent</p>
+<p>but now we can um fill in um fill in</p>
+<p>this um effectively um allowable</p>
+<p>Dynamics to include all states that lead</p>
+<p>to a path on the orbit um and or thereby</p>
+<p>all paths will eventually lead to reward</p>
+<p>or to roam so we can augment the model</p>
+<p>of expert play with paths that lead to</p>
+<p>an orbit namely this attracting set um</p>
+<p>and paths that lead to event that lead</p>
+<p>to the orbit um recursively and get</p>
+<p>quite a dense set of allowable</p>
+<p>transitions that we can be guaranteed</p>
+<p>always keep within the attracting set</p>
+<p>that will contain these preferred States</p>
+<p>or um states that we have um constraints</p>
+<p>uh where um we have constrained those</p>
+<p>states that are not visited simply</p>
+<p>because they cannot be recognized and</p>
+<p>that's it thank you very much</p>
+<p>indeed amazing Carl thank you</p>
+<p>awesome okay Aron if you'd like to lead</p>
+<p>in with a</p>
+<p>first question and Lance too thank you</p>
+<p>but go for R</p>
+<p>first uh yeah thanks very much Carl um</p>
+<p>so my first question is um based on a</p>
+<p>sentence in the paper which talks about</p>
+<p>any model being sparse must be</p>
+<p>renormalizable could you say a little</p>
+<p>bit more about why that must be</p>
+<p>oh I can't remember give me a</p>
+<p>clue uh I I'm presuming it has to do</p>
+<p>with Markoff blankets and yes yes yeah</p>
+<p>that's as far as I got I see yes no I I</p>
+<p>remember now um I it may have been in</p>
+<p>reference to some work done by Dalton um</p>
+<p>showing that with probability one</p>
+<p>provided the system is large enough</p>
+<p>there will be markof blankets and as</p>
+<p>soon as there are Markoff blankets there</p>
+<p>is now an opportunity to take Markoff</p>
+<p>blankets or Markoff blankets in the</p>
+<p>spirit of um that applying the</p>
+<p>renormalization group that that I</p>
+<p>started off with um so as soon as you've</p>
+<p>got um as as soon as any um sparely</p>
+<p>coupled random dynamical</p>
+<p>system um can now support a um a</p>
+<p>particular partition into Markoff</p>
+<p>blankets you've now got the opportunity</p>
+<p>to take Markoff blankets and Markoff</p>
+<p>blankets and then apply that</p>
+<p>renormalizing procedure that I said</p>
+<p>before so all you need to posit is any</p>
+<p>system um that has a Markoff blanket at</p>
+<p>any given level and as soon as you've</p>
+<p>got that you've got Markoff blankets all</p>
+<p>the way up um not necessarily all the</p>
+<p>way down but um you certainly got them</p>
+<p>all the way up um the the physics</p>
+<p>approach would would actually um also</p>
+<p>actually um require for for there to be</p>
+<p>markup blankets all the way down as well</p>
+<p>but that's that's that's another issue</p>
+<p>um so um what that basically means is</p>
+<p>that um all you require is a sufficient</p>
+<p>degree of</p>
+<p>sparcity that would um lead to the</p>
+<p>condition</p>
+<p>independences that are definitive of</p>
+<p>Markoff blankets and in one sense much</p>
+<p>of the sort of um the</p>
+<p>um the maths behind the free energy</p>
+<p>Principle as it inherits from random</p>
+<p>dynamical systems or uh in physics say</p>
+<p>Lan um equations is simply</p>
+<p>showing that a sparse coupling a sparse</p>
+<p>causal coupling in a physics or control</p>
+<p>theoretic sense not a philosophical or</p>
+<p>Granger um or um cause effect structure</p>
+<p>sense but in the physics sense of a</p>
+<p>coupling so the the change um this state</p>
+<p>um influences the rate of change of that</p>
+<p>state so that kind of um which could be</p>
+<p>written as an influence graph so if</p>
+<p>there's a sparse coupling on the</p>
+<p>influence graph the equivalent basian</p>
+<p>graph or probabalistic graphical model</p>
+<p>induced by that sparse coupling um now</p>
+<p>uh can be interpreted in the in the</p>
+<p>sense of um um Pearl's Markoff blanking</p>
+<p>um so all you need to get to the</p>
+<p>application of the renormalization group</p>
+<p>to markof blankets is sparse causal</p>
+<p>coupling hence sparse Rand random</p>
+<p>dynamical system that is sparely coupled</p>
+<p>just out of interest um the spin block</p>
+<p>um the motivation for the spin block</p>
+<p>applying the spin block um or blocking</p>
+<p>Transformations that basically comes</p>
+<p>from the assumption that um many systems</p>
+<p>that people deal with both in computer</p>
+<p>vision and in uh and in um idealized um</p>
+<p>models in physics um has an exquisitely</p>
+<p>sparse distribution and that's because</p>
+<p>the causal inferences are all local so</p>
+<p>as soon as you in um you look at a a</p>
+<p>coupled map l ltis or a globally coupled</p>
+<p>map you'll notice let's take the ltis</p>
+<p>for example let's take a sort of</p>
+<p>idealized um uh um um Crystal uh so what</p>
+<p>you're saying when you write down a ltis</p>
+<p>is I'm only connected to my neighbors to</p>
+<p>my more neighborhood or to my Markoff</p>
+<p>blanket um that means that in a large</p>
+<p>latis uh where I could be connected to N</p>
+<p>squared neighbors I'm only connected to</p>
+<p>1 2 3 4 5 6 7 8 so a fantastic Al small</p>
+<p>almost empty set of possible connections</p>
+<p>and I use that phrase because there I</p>
+<p>can't remember who said it now but I</p>
+<p>really liked it the notion that if one</p>
+<p>looks at the connecto in the brain in</p>
+<p>terms of the connections it's almost</p>
+<p>empty you know the number of actual</p>
+<p>connections you know white matter</p>
+<p>connections external connections and</p>
+<p>indeed intrinsic um um exteral</p>
+<p>connections are almost zero in</p>
+<p>comparison to the total number of</p>
+<p>possible connections between the 10 to</p>
+<p>the 11 or whatever uh neurons in the</p>
+<p>brain so that's not surprising and I you</p>
+<p>it's one of those nice examples that the</p>
+<p>the anatomy the functional architecture</p>
+<p>of the brain recapitulates the anatomy</p>
+<p>of the lived World in it has this</p>
+<p>incredible sparcity um um and that just</p>
+<p>means um the universes in which there is</p>
+<p>um the action at a distance is quite</p>
+<p>rare um um means that that you you're</p>
+<p>just interacting you're just coupled to</p>
+<p>your neighbors and that's and that gives</p>
+<p>you if you then look at the mark of</p>
+<p>blanket structure or the particular</p>
+<p>partition for these lattice structures</p>
+<p>you get to the Sim block um blocking</p>
+<p>Transformations as a way of carving up</p>
+<p>nature you know in terms of little</p>
+<p>patches or Markoff</p>
+<p>blankets I do have a followup question</p>
+<p>on that but then I'll hand it back to</p>
+<p>Daniel or Lance um so the ltis example</p>
+<p>is really interesting because I think</p>
+<p>there's a symmetry there that maybe we</p>
+<p>lose when we talk about blankets that</p>
+<p>only have one parent so in a normal lce</p>
+<p>as you say you're just connected to your</p>
+<p>eight Neighbors in 3D</p>
+<p>space when we looked at the spin block</p>
+<p>Transformations before we were going</p>
+<p>let's look at this square and everything</p>
+<p>in this square has one parent but the</p>
+<p>square along is connected to a separate</p>
+<p>parent so now if you're at the</p>
+<p>boundary we are breaking some symmetry</p>
+<p>there yes technically or practically a</p>
+<p>very good point um it doesn't really you</p>
+<p>it doesn't really um</p>
+<p>uh have any material impact upon the the</p>
+<p>the algorithms or the partitioning um so</p>
+<p>just practically what happens is you you</p>
+<p>you you you just take your tiles and</p>
+<p>then you have a half tile or a partial</p>
+<p>tile um until you get to the boundary so</p>
+<p>these these groups in the grouping</p>
+<p>operation or the or the blocking</p>
+<p>operation are not necessarily the same</p>
+<p>um you know they're not the same size um</p>
+<p>and indeed in uh um current um work</p>
+<p>we're actually dealing with sort of</p>
+<p>multiple streams so you can have sort of</p>
+<p>audio files and video files separately</p>
+<p>tiled and then converging right right at</p>
+<p>the top um ideally what you'd want to do</p>
+<p>is is</p>
+<p>um not use this um um blocking</p>
+<p>transformation but to try and identify</p>
+<p>the Markoff blanket structure at the</p>
+<p>particular scale in question actually</p>
+<p>use the Markoff blankets based upon um</p>
+<p>well there are a number of ways of doing</p>
+<p>that you can either use a markof blanket</p>
+<p>Discovery algorithm of the kind that</p>
+<p>Jeff Beck um Works upon um or you can</p>
+<p>use um empirical um analysis of the um</p>
+<p>the dynamical coupling um uh by</p>
+<p>estimating effective the</p>
+<p>jacobians you know for those people are</p>
+<p>interested there's a worked example of</p>
+<p>that in the particles and Parcels in the</p>
+<p>brain paper in network Neuroscience um</p>
+<p>it's really founded in terms of data</p>
+<p>analysis but you can use the same</p>
+<p>principles to um in to identify a</p>
+<p>particular partition from a large number</p>
+<p>of um um States or boxal or or or or or</p>
+<p>pixels um um you in three and 2D um</p>
+<p>respectively um there's another thing</p>
+<p>though that I think your question speaks</p>
+<p>to</p>
+<p>um which is um you know you've got you</p>
+<p>got you know one block of four and then</p>
+<p>another block of four and then um</p>
+<p>because of the sparcity that they're</p>
+<p>separately U modeled at at the level</p>
+<p>above so I thought you were going to ask</p>
+<p>how in Earth now do you start to repair</p>
+<p>the obviously rather facile assumption</p>
+<p>that you've got just local action</p>
+<p>because of course in our world there's</p>
+<p>lots of action to distance you we are um</p>
+<p>talking to each other over over over</p>
+<p>thousands of miles or Kil kilometers and</p>
+<p>you know we have Vision uh so all the</p>
+<p>and we have uh linguistic communication</p>
+<p>via sound so you know it is interesting</p>
+<p>that we have actually violated</p>
+<p>much of the local action if I was a</p>
+<p>virus this would be perfectly okay</p>
+<p>because the only thing that's really</p>
+<p>going to affect me as a virus is the</p>
+<p>things that actually are in molecular</p>
+<p>contact with me but for you and me um</p>
+<p>and the worlds in which we live in um we</p>
+<p>can't there is no such thing as just the</p>
+<p>action distance now starts to really</p>
+<p>matter um and effectively because the</p>
+<p>two um latent States generalized latent</p>
+<p>States generating stuff um initial</p>
+<p>conditions and paths for the two blocks</p>
+<p>below because they themselves now</p>
+<p>constitute a single uh contribute to a</p>
+<p>single um latent State at the at the</p>
+<p>level above as you move deeper and</p>
+<p>deeper you start to now</p>
+<p>repair the simplifying Assumption of</p>
+<p>conditional Independence between the</p>
+<p>groups so it is at the higher levels</p>
+<p>that you now become you're able to see</p>
+<p>these action this action at a distance</p>
+<p>these coupling your what what happens</p>
+<p>over here really matters in terms of</p>
+<p>what's going on over here but you'll</p>
+<p>only ever see that you only have that as</p>
+<p>part of the generative model right at</p>
+<p>the top which is why all the inductive</p>
+<p>inference is implemented right at the</p>
+<p>top level where where you can see</p>
+<p>everything um so that it becomes you</p>
+<p>know if you like you are</p>
+<p>now you are now in a position to um um</p>
+<p>model and thereby generate appropriate</p>
+<p>predictions</p>
+<p>that rest upon um these long range</p>
+<p>dependencies um and of course you know</p>
+<p>us using the word long range I mean in</p>
+<p>the sense of the the coupling distance</p>
+<p>uh you you in a dynamical sense is that</p>
+<p>what you had in mind uh that was exactly</p>
+<p>what I had in mind thank</p>
+<p>you thank youon</p>
+<p>Lance do you have any remarks or want to</p>
+<p>add a question or I can yes please go</p>
+<p>for it yeah I have lots of questions uh</p>
+<p>thanks a lot C for the talk so I'm just</p>
+<p>wondering about this all roads lead to</p>
+<p>Rome slide that you had at the end and</p>
+<p>I'm wondering whether you have some sort</p>
+<p>of curse of</p>
+<p>dimensionality as you increase the</p>
+<p>dimensionality of the system so it</p>
+<p>sounds to me like the manifold of expert</p>
+<p>play because um because you're taking</p>
+<p>temporal trajectories that's going to be</p>
+<p>one dimensional</p>
+<p>manifold now as the state space of the</p>
+<p>game um increases in</p>
+<p>dimensionality you're going to have an</p>
+<p>ambient space of trajectory that's much</p>
+<p>much higher</p>
+<p>dimensional and so it sounds like the</p>
+<p>amount of</p>
+<p>trajectories they need to you know</p>
+<p>construe to bring me back to your um</p>
+<p>onedimensional expert manifold is just</p>
+<p>going to grow and grow and grow and it</p>
+<p>sounds like it might be hard to fill</p>
+<p>that space</p>
+<p>so could you could you comment a little</p>
+<p>bit on that and whether it's a</p>
+<p>problem right yeah in general in my</p>
+<p>world you know these things aren't</p>
+<p>problems but they're challenges um and I</p>
+<p>think that challenge is yet to be met to</p>
+<p>be met um so what I imagine people will</p>
+<p>do um is that you will um ingest</p>
+<p>um extra</p>
+<p>episodes or</p>
+<p>sequences that bring you onto your</p>
+<p>attracting set up until some bound um</p>
+<p>and then you will switch off active</p>
+<p>selection by which I mean the structure</p>
+<p>learning um so you stop growing the</p>
+<p>model and then you switch on parameter</p>
+<p>learning so that now you're forcing the</p>
+<p>Transitions and the um expression of</p>
+<p>various General Iz states to accommodate</p>
+<p>variations around the training data that</p>
+<p>you have been previously exposed to so</p>
+<p>that fixes the size of the tensors and</p>
+<p>hence the dimensionality of the state</p>
+<p>Bas State spaces in question um um but</p>
+<p>will in principle now accommodate by</p>
+<p>preserving by using sort of um Active</p>
+<p>Learning in the technical sense that you</p>
+<p>only update a parameter if it um does</p>
+<p>not uh increase expected free energy or</p>
+<p>decrease Mutual information</p>
+<p>um then um you you you're now in a</p>
+<p>position to become more robust um and</p>
+<p>perhaps I should qualified this answer</p>
+<p>the whole point of this adding in extra</p>
+<p>if you like insets onto an attracting</p>
+<p>set is just to equip the agent with a</p>
+<p>certain robustness should itself find</p>
+<p>itself outside or off that attracting</p>
+<p>set so um I know Lance knows this but</p>
+<p>I'll just make this explicit for for</p>
+<p>everybody else um this kind of learning</p>
+<p>um and state action policy um</p>
+<p>implementation is very much like</p>
+<p>learning to ride a</p>
+<p>bike um so you you basically um just</p>
+<p>accumulate and remember those</p>
+<p>experiences that were successful so for</p>
+<p>example I you know managed to um rotate</p>
+<p>the pedals by one cycle and I don't fall</p>
+<p>off and I remember that and then I</p>
+<p>another go and I wait until I've</p>
+<p>actually done two cycles and I don't</p>
+<p>fall off and I remember that I forget</p>
+<p>everything every time I I I fall off and</p>
+<p>then I keep on going until at some point</p>
+<p>I connect back my last cycle was</p>
+<p>identical to the first cycle and then</p>
+<p>I've learned to ride the bike but</p>
+<p>because I've forgotten all the falling</p>
+<p>off I can't recognize or know where I am</p>
+<p>when I when I've fallen off so I've got</p>
+<p>a very little expertise that will not</p>
+<p>allow me to recover if I fall off the</p>
+<p>edge so another example which makes it</p>
+<p>slightly clear I think is like mountain</p>
+<p>climbing you know if I want to be an</p>
+<p>expert mountain climber I cannot learn</p>
+<p>by my</p>
+<p>mistakes provided I'm climbing a</p>
+<p>sufficiently high mountain should I fall</p>
+<p>off it then I will die another example</p>
+<p>here is learning how to cross the road</p>
+<p>as a child you know you cannot learn by</p>
+<p>um um experiencing being run over but</p>
+<p>the cost you um you pay or the price</p>
+<p>that you pay is you can't recognize when</p>
+<p>you are being run over um and that I</p>
+<p>repeat lends a certain brittleness and a</p>
+<p>lack of robustness to agents who may be</p>
+<p>exposed to Danger that doesn't actually</p>
+<p>terminate them so putting this</p>
+<p>robustness back in by growing the um by</p>
+<p>growing the attracting set or basically</p>
+<p>putting these insets on um in this sort</p>
+<p>of generalized um phase space um you</p>
+<p>know it's just to make it more robust um</p>
+<p>in numerical studies it it does seem to</p>
+<p>um converge it doesn't seem to grow inde</p>
+<p>definitely you so those are likely</p>
+<p>violations are moving off the attracting</p>
+<p>set are themselves quite small</p>
+<p>relatively small in number um yeah</p>
+<p>practically speaking uh if if you've</p>
+<p>control the sources of stochasticity or</p>
+<p>unpredictability so it may not be always</p>
+<p>the case that you need to have an</p>
+<p>explicit bound on the upper the size of</p>
+<p>the um the very high level</p>
+<p>tensors if if you do then one has to now</p>
+<p>think of a principled way of making that</p>
+<p>upper bound an emergent property of um</p>
+<p>um expected for energy minimization it</p>
+<p>may be that you know you violate now the</p>
+<p>mutual information that certain rare</p>
+<p>events are just so rare you're actually</p>
+<p>compromising the mutual information by</p>
+<p>including them as a particular option um</p>
+<p>or a particular column of of a likely</p>
+<p>likelihood mapping or yeah but I don't</p>
+<p>know but these are all really</p>
+<p>interesting questions to</p>
+<p>pursue thank you Carl all right Arun go</p>
+<p>for it</p>
+<p>um yeah so following on from that I</p>
+<p>think there an interesting question on</p>
+<p>the uniqueness part of ingesting data</p>
+<p>and the question is are there many more</p>
+<p>ways to fail than there are to succeed</p>
+<p>so if you're passing your data into a</p>
+<p>sort of Maxwell demon Maxwell's demon uh</p>
+<p>with a gate saying accept this data</p>
+<p>reject this data if this uh improves my</p>
+<p>Mutual information if there are many</p>
+<p>more ways to fail but then get back onto</p>
+<p>the</p>
+<p>a successful path but there are only a</p>
+<p>few paths that actually keep you there</p>
+<p>would it not make sense to just</p>
+<p>continually accumulate these sort of</p>
+<p>recovery</p>
+<p>States because the mutual information</p>
+<p>will keep increasing and then you stop</p>
+<p>there then you parameter you learn</p>
+<p>parameter wise because we're not</p>
+<p>including the sort of Prior distribution</p>
+<p>of How likely you are to be succeeding</p>
+<p>at any given moment because with the</p>
+<p>uniqueness thing you don't know oh 10</p>
+<p>times out of 10 I'm cycling or like nine</p>
+<p>times out of 10 I'm cycling and one</p>
+<p>times out of 10 I'm falling off the</p>
+<p>bike yeah I think it depends</p>
+<p>um again I don't have any explicit</p>
+<p>numerical analyses or analytic analys</p>
+<p>maatic analyses of this but</p>
+<p>intuitively um I think during learning</p>
+<p>there may well be um um good mileage in</p>
+<p>in gesting failures um or roots to</p>
+<p>success if you like or to the attracting</p>
+<p>set that that actually Traverse regimes</p>
+<p>that would normally be excluded by my</p>
+<p>constraints or my PRI preferences um you</p>
+<p>know just taking the view of the role of</p>
+<p>of the sea tensors or prior preferences</p>
+<p>from the point of view of physics what</p>
+<p>that basically is saying is it's</p>
+<p>actually carving out vast regimes of</p>
+<p>State space latent State space that you</p>
+<p>should not be in because the it would be</p>
+<p>uncharacteristic of you to be in these</p>
+<p>things so it it's really not so much</p>
+<p>about the rewards and the preferences uh</p>
+<p>it's really what you where you shouldn't</p>
+<p>be and that's what defines the</p>
+<p>attracting set um however before you've</p>
+<p>learned that attracting set it may be</p>
+<p>useful to include constrained regions of</p>
+<p>State space that offer a root into or</p>
+<p>onto that attracting set so I can</p>
+<p>certainly see that that would be a</p>
+<p>useful device but notice that once</p>
+<p>you're on the attracting set you will</p>
+<p>never visit the constrained</p>
+<p>regions because you now keep yourself on</p>
+<p>the attracting set um um and therefore</p>
+<p>if you've encoded those but you never</p>
+<p>visit them your Mutual information will</p>
+<p>actually</p>
+<p>fall so what that means operationally is</p>
+<p>what you'll probably do is have this</p>
+<p>sort of slightly over inclusive</p>
+<p>structure</p>
+<p>learning learn how to cope with all the</p>
+<p>necessary sources of Randomness so that</p>
+<p>your attracting set is sufficiently</p>
+<p>robust and you do actually visit from</p>
+<p>time to time but not um not never um s</p>
+<p>of excursions from the attracting set</p>
+<p>are drawn back onto the attracting set</p>
+<p>um and then use basing model reduction</p>
+<p>to eliminate all the states that you</p>
+<p>don't want to recognize simply because</p>
+<p>you never go there um you know once in a</p>
+<p>you know when I was younger I would</p>
+<p>certainly be able to rec what it's like</p>
+<p>to fall off my bike but now as an expert</p>
+<p>bike rider I really don't want or need</p>
+<p>that so you know and that's just</p>
+<p>basically getting old and wise and you</p>
+<p>know implementing bising model reduction</p>
+<p>to remove the Redundant parameters which</p>
+<p>would in this instance just be the</p>
+<p>columns um and um</p>
+<p>Associated slices or or rows of the of</p>
+<p>the transition matricies so I think you</p>
+<p>could perhaps another way of then ADV</p>
+<p>answering Lan's question is yeah you</p>
+<p>just keep um</p>
+<p>accumulating um but um start to engage</p>
+<p>Bas in model reduction at some point you</p>
+<p>should reach an equilibrium which will</p>
+<p>be the attracting set that allows you to</p>
+<p>survive in the character states that</p>
+<p>Define you in this particular</p>
+<p>environment with this particular</p>
+<p>volatility thank you</p>
+<p>awesome okay I'm going to bring in a</p>
+<p>question from the live chat</p>
+<p>okay Javier wrote so stochastic plus</p>
+<p>dynamical probabilities learned by the</p>
+<p>agent itself are scale-free will this</p>
+<p>hierarchical learning also be applied to</p>
+<p>the goals of the agent different</p>
+<p>abstractions granularities of goals</p>
+<p>[Music]</p>
+<p>self-learned my answer would be yes but</p>
+<p>I'm going to I'm going to ask Lance to</p>
+<p>to to answer that one</p>
+<p>oh that that's</p>
+<p>cheeky uh yeah I would say for sure um</p>
+<p>because typically when we have when we</p>
+<p>oper operational operationalize sorry</p>
+<p>the goals in our gen model they need to</p>
+<p>have the same structure at our Gena</p>
+<p>model itself so I would imagine then we</p>
+<p>would have a hierarchical renormalizable</p>
+<p>goals which kind of makes sense</p>
+<p>cool okay I'll bring in oh yeah go for</p>
+<p>it Carl I was just going to say um you</p>
+<p>know just to um unpack what Lance just</p>
+<p>said in terms of practical things you</p>
+<p>know if you're trying to um you're</p>
+<p>trying to say um what my goal is is to</p>
+<p>go uh is to have dinner um that</p>
+<p>naturally unpacks hierarchically into</p>
+<p>I've got to move from the living room to</p>
+<p>the kitchen then I have to find the you</p>
+<p>open the fridge then sorry I have to</p>
+<p>find the food which then unpacks into I</p>
+<p>have now open them and all the way down</p>
+<p>to to the finest finest muscle movement</p>
+<p>so almost by definition um your know</p>
+<p>intended</p>
+<p>narratives can always be um decomposed</p>
+<p>in this scale-free way you um there</p>
+<p>there's a this is very similar to sort</p>
+<p>of um motor chunking and hierarchical</p>
+<p>decomposition in in um um theoretical uh</p>
+<p>motor control for example and you</p>
+<p>probably find it a lot in in robotics</p>
+<p>there's a global long-term plan that</p>
+<p>that provides empirical priz of</p>
+<p>constraints on shorter little chunks</p>
+<p>that themselves provide constraints on</p>
+<p>shorter and shorter chunks and that's</p>
+<p>exactly the um if you like the the</p>
+<p>architecture implicit in these scale</p>
+<p>free</p>
+<p>models awesome and totally ties back to</p>
+<p>the synergetics</p>
+<p>okay I'll ask two questions from ml Dawn</p>
+<p>he wrote how can we inject the same</p>
+<p>separation of time scales by imposing</p>
+<p>smoothness constraints on say the</p>
+<p>parameters as opposed to playing with</p>
+<p>proportional update rates at different</p>
+<p>levels and this relates to something</p>
+<p>Arun and I talked a lot about in the</p>
+<p>zero and leading up to it is</p>
+<p>identifying which</p>
+<p>Windows to</p>
+<p>use you could imagine picking the right</p>
+<p>separation of time scales if the classes</p>
+<p>on campus really do shift on the hour</p>
+<p>then the hour course graining is going</p>
+<p>to be great and effective but the 59 or</p>
+<p>the 61 minute might Alias you with the</p>
+<p>real variability of the system and so</p>
+<p>there's not necessarily even a smooth</p>
+<p>landscape for determining the windowing</p>
+<p>or the binning of coar graining and coar</p>
+<p>graining may have dependences on each</p>
+<p>other so how do you go</p>
+<p>about playing and finding viable</p>
+<p>approaches and robust ones amidst all</p>
+<p>these different levels of of meta</p>
+<p>optimization that are opening</p>
+<p>up I'll take this one can take take the</p>
+<p>next one um then that's a really good</p>
+<p>question because there is an implicit</p>
+<p>separation of time scales between</p>
+<p>um so vanilla implementations of</p>
+<p>inference and learning however in these</p>
+<p>schemes there isn't um so the the know</p>
+<p>the um the Matlab version or</p>
+<p>implementation um of um active inflence</p>
+<p>under these and the fact all uh markof</p>
+<p>decision process models um unlike um the</p>
+<p>um procedures that you might find in</p>
+<p>data analysis where you acquire you</p>
+<p>basically do some filtering on the on a</p>
+<p>an Epoch of data and then at the end you</p>
+<p>update your parameters and then you</p>
+<p>rinse wash and repeat um in um in active</p>
+<p>inference um simulations and also in</p>
+<p>some um applications of what's called</p>
+<p>generalized filtering you have continual</p>
+<p>learning so the update of the parameters</p>
+<p>actually occurs a at every time step um</p>
+<p>at each level of the model so the</p>
+<p>likelihood parameters at the lowest</p>
+<p>level are updated every time that</p>
+<p>routine is called um so there is</p>
+<p>continual learning the learning um is</p>
+<p>yes you're absolutely right is smooth in</p>
+<p>the sense that you're slowly</p>
+<p>accumulating drish parameters but the</p>
+<p>tempal scale of that learning is the</p>
+<p>same as the inference um and you could</p>
+<p>also argue well could one also put model</p>
+<p>reduction um into play at the same time</p>
+<p>scale so basically can you at every time</p>
+<p>point at each level in the model um</p>
+<p>identify redundant parameters and remove</p>
+<p>them uh using Bas and model reduction in</p>
+<p>effect that's what's done uh using</p>
+<p>Active Learning what I said before</p>
+<p>Active Learning will only proceed um if</p>
+<p>the expected free energy of mutual</p>
+<p>information improves that's actually</p>
+<p>also implemented so the the kind the the</p>
+<p>the rate the rate at which it looks as</p>
+<p>though things change um between</p>
+<p>inference learning and model</p>
+<p>selection is certainly distinct I don't</p>
+<p>think that's quite the same kind of</p>
+<p>separation of time scales that is</p>
+<p>implied in the renormalization group</p>
+<p>that's as you were intimating uh Daniel</p>
+<p>exactly specified by the number of ticks</p>
+<p>or updates at level n per single update</p>
+<p>date at the uh level n+1 um and that is</p>
+<p>I think you the you the key question</p>
+<p>you're asking how do you get that</p>
+<p>right um and of course the answer to</p>
+<p>that is the model that has the greatest</p>
+<p>model evidence or smallest free energy</p>
+<p>or greatest marginal likelihood for the</p>
+<p>kind of data generated by this</p>
+<p>environment in this world so um are</p>
+<p>there any um sort of useful prizes you</p>
+<p>can can put over this um well what one</p>
+<p>one useful prior is um that um things</p>
+<p>are changing as uh to to well one PRI</p>
+<p>which is actually used in operation is</p>
+<p>you take the lower limit on on What's</p>
+<p>called the the temporal RG flow which is</p>
+<p>basically the the length of the window</p>
+<p>at each and every level um at the moment</p>
+<p>that's two what does that mean how can</p>
+<p>you motivate that well it's the most</p>
+<p>expressive in the following sense</p>
+<p>but if I um just imagine um what imagine</p>
+<p>what this dis discrete discretization of</p>
+<p>time means from the point of view of</p>
+<p>classical Notions in continuous State</p>
+<p>space like position and momentum or</p>
+<p>position and</p>
+<p>velocity if um if I use a</p>
+<p>a um a scaling of two which is basically</p>
+<p>means there are two time steps or every</p>
+<p>time step the um the level above what I</p>
+<p>effectively doing is um um modeling two</p>
+<p>time steps for every state at the level</p>
+<p>above and that basically means I can</p>
+<p>model the initial condition and the</p>
+<p>subsequent condition basically terms of</p>
+<p>the change which of course is the</p>
+<p>velocity um and what does that mean for</p>
+<p>the level above that well it now means</p>
+<p>that I'm modeling the change in the</p>
+<p>velocity so I'm now modeling the</p>
+<p>acceleration and then so on up until um</p>
+<p>you know the high order of motion so</p>
+<p>what that means is by taking this</p>
+<p>limiting case of T the temp temporal</p>
+<p>horizonal the the you the ratio of time</p>
+<p>time steps from one level to the other</p>
+<p>level um as two means that I got a very</p>
+<p>expressive model that can handle um can</p>
+<p>recognize um things that change very</p>
+<p>very quickly and their acceleration</p>
+<p>their jerk and all and the implicit um</p>
+<p>context sensitivity that that that gives</p>
+<p>you if I didn't do that I'd have to</p>
+<p>assume that I C grain over long periods</p>
+<p>of time and</p>
+<p>therefore the path is consistent during</p>
+<p>that time now that sometimes is a useful</p>
+<p>approximation and indeed there's a whole</p>
+<p>industry called you know called linear</p>
+<p>switching linear dynamical systems that</p>
+<p>makes that approximation it means you</p>
+<p>can um approximate all the nonlinear</p>
+<p>complicated high order motions</p>
+<p>in some evolving pattern or system with</p>
+<p>a series of um um linear</p>
+<p>trajectories that basically go you know</p>
+<p>that intercede between a series of</p>
+<p>points at which you which you which you</p>
+<p>switch the problem with</p>
+<p>that is that the length of the linear</p>
+<p>trajectories for as for example I'm</p>
+<p>committed to one Path U so one slice of</p>
+<p>my B Matrix for the next next eight time</p>
+<p>steps the problem with this is that you</p>
+<p>don't know when you when you deviate</p>
+<p>from that transition Dynamics so then</p>
+<p>you get into the game or perhaps I could</p>
+<p>make my scheme reactive so sometimes I</p>
+<p>do three steps sometimes I do eight</p>
+<p>steps sometimes I do one step and I have</p>
+<p>some criteria for saying your</p>
+<p>predictions about my trajectory have now</p>
+<p>been met please um I'm going to tell you</p>
+<p>give you the evidence that I've been</p>
+<p>pursuing this path you up dat your priv</p>
+<p>level above and tell me what you expect</p>
+<p>me to do next so this now speaks to um a</p>
+<p>particular kind of reactive message</p>
+<p>passing um that starts to have</p>
+<p>implications for the computer science</p>
+<p>and the sort of CR the crud um um or um</p>
+<p>as um as I think we've rehearsed before</p>
+<p>um The Institute the the original</p>
+<p>conception uh behind um</p>
+<p>the actor model in computer science from</p>
+<p>the 1990s so it's all about reactive</p>
+<p>message passing I will send you a</p>
+<p>message when you send me I will return a</p>
+<p>message to you if you send me a message</p>
+<p>um and what this um what these um</p>
+<p>renormalizing time models have and I</p>
+<p>should say that this also applies in the</p>
+<p>absence of the the spatial</p>
+<p>renormalization so any deep temporal</p>
+<p>model will have this aspect what that</p>
+<p>means is that from the point of view of</p>
+<p>Any Given</p>
+<p>level I will um be responding to</p>
+<p>messages more quickly from my</p>
+<p>subordinates than from my</p>
+<p>superiors so once in a while I'll get a</p>
+<p>request from a</p>
+<p>superior my response to that is to ask</p>
+<p>my juniors to do a series of things they</p>
+<p>report back to me and when they report I</p>
+<p>give them the next bit bit um request or</p>
+<p>guidance uh until they complete their</p>
+<p>job and when all my juniors have</p>
+<p>completed their job of course they be</p>
+<p>normalizing specially normalizing</p>
+<p>context I'll have a whole group of of</p>
+<p>Juniors to worry about um then um I have</p>
+<p>gathered enough evidence for me to then</p>
+<p>return the the message to my to my</p>
+<p>Superior so you get the in terms of the</p>
+<p>reactive message passing in this sort of</p>
+<p>actor model of um of Compu to message</p>
+<p>passing um you get the the separation of</p>
+<p>temporal scales inherits from the number</p>
+<p>of messages or re um requests and uh</p>
+<p>responses um um exchanged with the</p>
+<p>people lower down in the hierarchy</p>
+<p>relative to the number immediately</p>
+<p>subordinate</p>
+<p>um and in principle they don't have to</p>
+<p>be fixed so there could be a</p>
+<p>criteria um before I pass the message</p>
+<p>back back up to the to the higher level</p>
+<p>I think that's Daniel probably what you</p>
+<p>were getting at um I'm not there may be</p>
+<p>somebody who's done that um um but</p>
+<p>I'm I haven't done that and I I I don't</p>
+<p>know uh I can't give you an example of</p>
+<p>somebody who has done that you may find</p>
+<p>you may find somebody um in Bert de's</p>
+<p>group um who sort of you know some of</p>
+<p>the world experts um in reactive message</p>
+<p>passing who have considered these kinds</p>
+<p>of things</p>
+<p>um you know you in in principle um you</p>
+<p>know there should be a way of</p>
+<p>um each level testing whether I have</p>
+<p>fulfilled the predictions of my</p>
+<p>superiors um and now it's time to get</p>
+<p>more guidance you know uh based upon the</p>
+<p>energy awesome the organizational</p>
+<p>technology I did didn't know that my PhD</p>
+<p>needed okay I'll ask a question as we</p>
+<p>get close to the end and and this will</p>
+<p>be for for</p>
+<p>anyone ml Dawn wrote how does the</p>
+<p>training time of active inference</p>
+<p>compared to that of reinforcement</p>
+<p>learning and how does their scalability</p>
+<p>compare and it would be interesting just</p>
+<p>to hear anyone's very</p>
+<p>2024 takes</p>
+<p>where are we at with that entire Arc</p>
+<p>from problem</p>
+<p>conceptualization on through the</p>
+<p>training and the inference how do we</p>
+<p>even grapple and</p>
+<p>describe with similarities and</p>
+<p>differences in the training time and</p>
+<p>resources and all of this</p>
+<p>that's definitely Lance for for at least</p>
+<p>five minutes I</p>
+<p>think I'm I'm a bit incapacitated in</p>
+<p>terms of talking um I think this is</p>
+<p>actually a good question for Aron um but</p>
+<p>yeah I mean I can say a few</p>
+<p>things um so uh scaleability in actor</p>
+<p>inference I would say it has been a</p>
+<p>challenge and there has been um much</p>
+<p>less man work hours that have been put</p>
+<p>into that than in reinforcement learning</p>
+<p>now for the past few years we we've had</p>
+<p>a lot of work um a lot of it led by C</p>
+<p>actually um trying to scale the</p>
+<p>structure learning in active inference</p>
+<p>and and I think we've done a lot of</p>
+<p>mileage on that so there's been the</p>
+<p>supervised structure learning paper</p>
+<p>there's this paper uh there was also</p>
+<p>some interesting work um presented at</p>
+<p>the international work sh and active</p>
+<p>inference um I personally think there</p>
+<p>are still some uh challenges ahead and</p>
+<p>and I think uh one of them is is the one</p>
+<p>that we just talked um a few questions</p>
+<p>ago about you know if you if you learn</p>
+<p>an expert orbit how do you get back on</p>
+<p>the orbit as the dimensionality of the</p>
+<p>system increases so this is definitely</p>
+<p>um one</p>
+<p>challenge um now I know much less about</p>
+<p>reinforcement learning so um yeah maybe</p>
+<p>Arun has more things to say there um but</p>
+<p>but what I will say is a lot of</p>
+<p>reinforcement learning is powered by</p>
+<p>Deep neural networks when we use deep</p>
+<p>neural networks we sacrifice uh the</p>
+<p>interpretability of our generative model</p>
+<p>this is one of the strength of active</p>
+<p>inference is having more</p>
+<p>interpretable um Dynamic Cal models</p>
+<p>where we can actually peer into them and</p>
+<p>see okay well this representation</p>
+<p>includes this this other one includ that</p>
+<p>and so</p>
+<p>forth um the fact though that</p>
+<p>reinforcement learning typically uses</p>
+<p>deep neural networks means that it has</p>
+<p>been much more scalable uh just because</p>
+<p>there has been so much work done in like</p>
+<p>training deep networks this is a bit of</p>
+<p>my uh my perspective I don't think it</p>
+<p>fully answers the question</p>
+<p>though I can come in with a little bit</p>
+<p>on that but I must admit that I've not</p>
+<p>trained any reinforcement learning</p>
+<p>agents myself I worked with people who</p>
+<p>have uh I'd agree Lance that the</p>
+<p>infrastructure generally is much more</p>
+<p>advanced for training RL agents for</p>
+<p>doing stuff uh and completely agree with</p>
+<p>as you say the explainability and the</p>
+<p>interpretability of why did an RL agent</p>
+<p>pick a particular action is very opaque</p>
+<p>uh and I think the deeper those networks</p>
+<p>become the harder it is to understand</p>
+<p>what's going on in the hidden layers and</p>
+<p>uh generally why they do what they do I</p>
+<p>think with Act of inference yes we do</p>
+<p>have more</p>
+<p>explainability but I do wonder if we go</p>
+<p>the far structure learning approach I</p>
+<p>think Carl had a particular uh comment</p>
+<p>earlier about looking at the highest</p>
+<p>level um identifying the desirable</p>
+<p>States learned by the</p>
+<p>agent from what I understand the</p>
+<p>identification has to be done by a human</p>
+<p>they have to look at the model that's</p>
+<p>been learned by this uh renormalization</p>
+<p>approach look at those top levels and</p>
+<p>then say ah what do these levels mean so</p>
+<p>an example in the paper is the Mist uh</p>
+<p>classification it's the case of a human</p>
+<p>being looking at those top levels and</p>
+<p>going ah these top levels each</p>
+<p>correspond to a digit in the handwriting</p>
+<p>task</p>
+<p>so we are uh sacrificing some</p>
+<p>explainability I think by doing this</p>
+<p>fast structure learning compared to what</p>
+<p>might be the old fashioned way way of</p>
+<p>creating uh G models By Hand by thinking</p>
+<p>sitting in my armchair and thinking this</p>
+<p>is how I might model the world these</p>
+<p>structures these likelihoods these</p>
+<p>states and when you do that I think just</p>
+<p>by hand you have 100% explainability</p>
+<p>that model just might not perform very</p>
+<p>well so I think there's always going to</p>
+<p>be that tension there um but in terms of</p>
+<p>how quickly these things</p>
+<p>learn um having not trained either I'd</p>
+<p>be having a reckon and at the moment I</p>
+<p>would say probably an RG um active</p>
+<p>inference agent would train faster</p>
+<p>simply because it's able to use the</p>
+<p>structure in the data much more</p>
+<p>effectively that would that would be my</p>
+<p>take and I think as well really</p>
+<p>interesting thinking about the active</p>
+<p>data selection part of this too I know</p>
+<p>that there is some stuff in the paper</p>
+<p>about the efficiency being both a curse</p>
+<p>and a burden but I'll hand over to Lance</p>
+<p>and Carl to give more details on that</p>
+<p>yeah</p>
+<p>Lance yeah just to um echo echo what</p>
+<p>Arun said um also so so the structure</p>
+<p>learning active inference and in</p>
+<p>reinforcement learning is is also very</p>
+<p>different um in reinforcement learning</p>
+<p>we typically have a a model with deep n</p>
+<p>networks that's massively</p>
+<p>overparameterized but it has some fixed</p>
+<p>representational capacity from the</p>
+<p>outside because the structure of that of</p>
+<p>that model will be specified and then</p>
+<p>typically the model will learn and then</p>
+<p>probably you would prune it using some</p>
+<p>techniques like Dropout or or other</p>
+<p>things if we looked at that from the</p>
+<p>perspective of active inference it would</p>
+<p>be like specifying a massively</p>
+<p>overparameterized model and then pring</p>
+<p>it with Bas model</p>
+<p>reduction the um but but now in active</p>
+<p>inference we have this Bas and model</p>
+<p>expansion for example in this paper and</p>
+<p>what this Basin model expansion does is</p>
+<p>it learns from the get go the minimal</p>
+<p>model for explaining the data and so in</p>
+<p>that sense it's extremely</p>
+<p>efficient and also provably because it</p>
+<p>extremes the um the marginal likelihood</p>
+<p>or the mutual information</p>
+<p>yeah I just wanted to Echo that last</p>
+<p>Point that's a really important Point um</p>
+<p>so Lance is drawing the distinction and</p>
+<p>there are many distinctions you can draw</p>
+<p>with um deep RL um and um deep active</p>
+<p>inference read in a more in in its um</p>
+<p>generic sense um and that that</p>
+<p>distinction at the level of structure</p>
+<p>learning or model selection I I think is</p>
+<p>absolutely crucial so you</p>
+<p>know deep RL starts with an overly</p>
+<p>expressive model with a known functional</p>
+<p>form um that is deliberately</p>
+<p>overparameterized and then shrinks it or</p>
+<p>reduces it to um maximize the mutual</p>
+<p>information the expected free energy</p>
+<p>sometimes they um referred to as a cross</p>
+<p>entropy in machine learning so the</p>
+<p>reward function now becomes uh there's</p>
+<p>no explicit reward in unsupervised</p>
+<p>learning it's just replaced by the</p>
+<p>mutual information or the cross entropy</p>
+<p>um which should be distinguished between</p>
+<p>supervis enforcement learning such as</p>
+<p>you know digit classification for</p>
+<p>example um whereas the you know active</p>
+<p>inference um under these re under fast</p>
+<p>structure learning is exactly as Lance</p>
+<p>says it starts from nothing and stops</p>
+<p>when it's minimally complex which means</p>
+<p>it's maximally efficient and that</p>
+<p>efficiency translates in many guises</p>
+<p>through to sample efficiency through to</p>
+<p>um um statistical efficiency through to</p>
+<p>thermodynamic efficiency and this</p>
+<p>matters because from the point of view</p>
+<p>of climate</p>
+<p>change this is the right way to do it as</p>
+<p>opposed to building power stations to</p>
+<p>power large language models and</p>
+<p>Transformers that need big data so um</p>
+<p>the efficiency um on all levels whether</p>
+<p>it's the the sample efficiency or using</p>
+<p>the right data uh or whether it's right</p>
+<p>through to how much electricity do you</p>
+<p>need to actually train your model and</p>
+<p>how many millions of dollars do you need</p>
+<p>to trade a foundation model um all of</p>
+<p>these are reflections of the failure of</p>
+<p>um machine learning to write in the</p>
+<p>efficiency into the ultimate objective</p>
+<p>function which is un said is just the</p>
+<p>marginal likelihood of the evidence for</p>
+<p>this model of of this kind of content or</p>
+<p>or</p>
+<p>World awesome okay final question and a</p>
+<p>very apt one as we head into the rest of</p>
+<p>the Symposium so just give any short</p>
+<p>thoughts Tintin wrote hi all thanks for</p>
+<p>the incredible event does the sequence</p>
+<p>does the sequence in which the training</p>
+<p>data is fed to the A structure learning</p>
+<p>model impact what the resulting learn</p>
+<p>structure would be so the learning</p>
+<p>curriculum AKA Symposium program</p>
+<p>challenge well the answer is sorry I'm</p>
+<p>mindful that Lance is recovering from</p>
+<p>his um jaw surgery um yeah absolutely um</p>
+<p>and this is um again just in relation to</p>
+<p>to to to the last question something I</p>
+<p>think that eludes uh conventional RL</p>
+<p>certainly that it rests upon um um</p>
+<p>classification procedures and um because</p>
+<p>um the active inference as an</p>
+<p>application the free energy principle is</p>
+<p>all about the Dynamics of</p>
+<p>self-organization and Dynamics means</p>
+<p>time and time means sequence matters so</p>
+<p>inevitably at some level the order in</p>
+<p>which you see things is absolutely</p>
+<p>crucial for getting the right kind of</p>
+<p>generative model um that is even in the</p>
+<p>case um actually of static image</p>
+<p>recognition because you're assuming that</p>
+<p>there's no ordinal structure or</p>
+<p>correlation structure to the</p>
+<p>presentation say of emus digits you're</p>
+<p>assuming that they are selected at</p>
+<p>random as opposed to seeing all the tens</p>
+<p>and then all the all the ones and then</p>
+<p>all the all the sevens um so even you in</p>
+<p>these edge cases um um which are you</p>
+<p>know the focus of um 20th century RL um</p>
+<p>you know static image classification for</p>
+<p>example um your order does matter but</p>
+<p>they they it matters absolutely acutely</p>
+<p>because of course this the order in</p>
+<p>which you um see um content in</p>
+<p>um the infast structure learning</p>
+<p>determines how you populate the um the</p>
+<p>transition tensors and it's a transition</p>
+<p>tensors that enable the separation of</p>
+<p>temporal scales that enables the ability</p>
+<p>to um encode narratives and plans that</p>
+<p>far transcend the actual rate at which</p>
+<p>you samp sample the environment you</p>
+<p>could also argue that you know this</p>
+<p>issue has emerged um in a in a strange</p>
+<p>kind of guys in Transformer models so</p>
+<p>the attention heads operate on the past</p>
+<p>so the the where you select the from the</p>
+<p>past in terms of which token is going to</p>
+<p>predict the next token most efficiently</p>
+<p>um again is exquisitly dependent upon</p>
+<p>and sensitive to the order in which you</p>
+<p>train train train these</p>
+<p>models So Daniel have you thought</p>
+<p>carefully about your ordinal approach</p>
+<p>today I I let the structure I let the</p>
+<p>structure of the niche and others'</p>
+<p>constraints provide the first pass and</p>
+<p>make requests from there so thank you</p>
+<p>Carl thank you Lance for joining again</p>
+<p>thank you run for all the contributions</p>
+<p>with azero Carl great to see you</p>
+<p>so next up we'll take a 30 second break</p>
+<p>and we'll be back with Michael Lenin so</p>
+<p>thanks fellows see you</p>
+<p>soon e</p>
+</article>
+</body>
+</html>

@@ -1,0 +1,3496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf MathStream 009.1 ~ Jonathan Gorard: A computational perspective on observation and cognition</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf MathStream 009.1 ~ Jonathan Gorard: A computational perspective on observation and cognition</h1>
+<div class="meta">Category: MathStream &middot; Series: MathStream_009 &middot; Episode 1 &middot; Speakers: Jonathan Gorard: A computational perspective on observation, cognition &middot; Duration: 1:25:24 &middot; Views: 3,600</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=I3rhsT-8isk">https://www.youtube.com/watch?v=I3rhsT-8isk</a></div>
+<article>
+<p>Hello and welcome everyone. This is Active Inference Math Stream 9.1 on March 5th, 2024.</p>
+<p>We're here with Jonathan Gorard and we'll be discussing a variety of topics yet to be determined,</p>
+<p>or are they? So thank you for joining and to you for any introduction and we'll really look</p>
+<p>forward to everyone's comments and questions. So thanks again for joining, to you.</p>
+<p>Okay, well yeah, thanks very much, Daniel, for the introduction and for inviting me to be here on Active Inference.</p>
+<p>I'm looking forward to a very, very fun discussion. So I don't have anything especially prepared to talk about,</p>
+<p>which is probably a good thing because it means we'll be able to extend the unstructured part of this for as long as possible.</p>
+<p>But I think just to give a little bit of context, I want to talk about an area where I think some things that I've been working on,</p>
+<p>some collaborators that might have been working on, that might have some kind of intersection of interest with things that,</p>
+<p>you know, active inference type people might care about, right?</p>
+<p>So, and in particular, that concerns the relationship between kind of computation, observation and cognition,</p>
+<p>and specifically using methods that come from category theory and topos theory and some other kind of branches of mathematics and theoretical computer science,</p>
+<p>to understand the relationship between system, specifically the computational and algorithmic complexity of systems,</p>
+<p>versus the computational algorithmic complexity of observers of those systems,</p>
+<p>and how those things trade off between each other.</p>
+<p>So, so just to give a little bit of context to that, I want to show, these are just some visuals from a paper that I put out about a year ago now,</p>
+<p>and that this kind of really defines this research program that I've been working on for the last year and a half in some form or another,</p>
+<p>which is looking at exactly this trade off using category theory theory.</p>
+<p>So, here's a specification of a Turing machine.</p>
+<p>This is just a simple deterministic computation.</p>
+<p>It's saying, you know, you have a Turing machine that has this head state and this tape state,</p>
+<p>and on the next step, you're going to replace the tape state with something that looks like this,</p>
+<p>the head state with something that looks like that,</p>
+<p>and you're going to scroll the Turing machine head left, or in this case, scroll it right, etc.</p>
+<p>So, this is just a, you know, specification of a very simple computation.</p>
+<p>I think this is a two-state, two-color Turing machine on a simple, you know, one-dimensional tape.</p>
+<p>It's about as simple a computation as you could define.</p>
+<p>So, if you run that thing for some initial condition, you'll get an evolution that looks like this.</p>
+<p>And so, right now, this is just a purely deterministic, you know, single-path evolution.</p>
+<p>But from this, we can construct, we can build a mathematical structure, namely, we can build a category.</p>
+<p>So, and the rules for how we build that category are very simple.</p>
+<p>So, you know, each arrow here is some simple computation,</p>
+<p>some application of the Turing machine transition function.</p>
+<p>And then what we can do is we can say, well, anytime we have two arrows that are laid end-to-end like this,</p>
+<p>we can compose them together to create a third arrow that goes like that.</p>
+<p>I may even have a picture.</p>
+<p>Yes, like this.</p>
+<p>So, you know, we have a computation F that takes us from X to Y,</p>
+<p>a computation G that takes us from Y to Z,</p>
+<p>and then we obtain a composite computation G compose F that takes us directly from X to Z.</p>
+<p>And we also add some additional edges, some additional arrows on each state itself,</p>
+<p>a sort of identity, an identity operation that maps a computational state directly to itself.</p>
+<p>And so this, combined with some axioms of associativity and identity,</p>
+<p>forms a category of elementary computations.</p>
+<p>So this is a very, very simple example.</p>
+<p>But what I want to try and build up towards and kind of pump your intuition for is a category which I call comp,</p>
+<p>which is a category whose objects are essentially the class of all data structures</p>
+<p>and whose arrows or morphisms are the class of all elementary computations.</p>
+<p>So you start by just applying, you know, all possible computations or, you know,</p>
+<p>in this case, for the case of Turing machines, all possible, you know,</p>
+<p>Turing machine transition functions.</p>
+<p>And then you do this closure operation where you, you know, where you essentially do what I'm doing here,</p>
+<p>but, you know, you allow those elementary computations to be composed together in arbitrary ways.</p>
+<p>And so that gives you effectively a class of all possible programs.</p>
+<p>So this category comp contains not only all possible data structures as objects,</p>
+<p>but all possible programs as morphisms.</p>
+<p>And this is a very rich category with some very interesting algebraic structure that we'll kind of,</p>
+<p>again, I'm sure we'll allude to in our subsequent discussion.</p>
+<p>But in a sense, when we do this, when we do this operation of taking what mathematically we call a transitive closure,</p>
+<p>right, where we allow two elementary computations to be composed together to produce a third,</p>
+<p>we are essentially kind of neglecting considerations of computational complexity, right?</p>
+<p>Because, you know, this arrow here might correspond to one application of the Turing machine transition function.</p>
+<p>This arrow might correspond to another application of the transition function.</p>
+<p>But this composite arrow might correspond to two applications of the transition function.</p>
+<p>And so somehow when we allow arrows or morphisms to be composed in this way,</p>
+<p>we're neglecting considerations of the complexity of operations.</p>
+<p>So the question then is, you know, could we imagine constructing a generalization of category theory,</p>
+<p>which takes into account computational complexity?</p>
+<p>So here's an example of how that would look, right?</p>
+<p>So here you can see every edge, every morphism has been tagged with certain computational complexity information.</p>
+<p>In particular, it's been tagged with a number specifying what is the minimum number of applications of my transition function?</p>
+<p>What's the minimum number of elementary computations that I need in order to evolve from this data structure to this data structure?</p>
+<p>So here, to go from here to here, it's just one.</p>
+<p>To go from here to here, it's one.</p>
+<p>To go from here to here, it's one, etc.</p>
+<p>But to go from here to here directly, it would be three.</p>
+<p>To go from here to here directly, it would be two.</p>
+<p>And, you know, just for convention, we say that the identity computation, the trivial computation,</p>
+<p>always has complexity zero.</p>
+<p>So this is, again, a fairly simple mathematical structure.</p>
+<p>And you can construct this, again, using purely category theoretic technology</p>
+<p>by building a particular functor from the category of computations</p>
+<p>and from the category of data structures and computations</p>
+<p>to what's called a discrete cobordism category.</p>
+<p>And again, we might discuss that later on if people are interested,</p>
+<p>but let me not get too bogged down into the technical details of how we do that.</p>
+<p>But once you've got this, it gives us immediately a very nice way of characterizing</p>
+<p>phenomena like computational irreducibility.</p>
+<p>So there is this idea that has existed in some form or another</p>
+<p>since the very early days of theoretical computer science,</p>
+<p>since the days of, you know, Gödel and Turing and Post and Church and so on,</p>
+<p>but was given this term computational irreducibility by Stephen Wolfram,</p>
+<p>where the idea is essentially that you just, you know,</p>
+<p>intuitively you describe a computation as being irreducible</p>
+<p>or, you know, the result of the computation as being irreducibly complex</p>
+<p>if it's not possible to shortcut it in any way, right?</p>
+<p>So where, you know, it takes, that computation takes a certain number of steps</p>
+<p>and there does not exist a shorter computation</p>
+<p>that would give you the same answer in less time.</p>
+<p>And one of the nice features of thinking about computations</p>
+<p>and their complexity algebraically like this</p>
+<p>is that it gives you a purely algebraic characterization of irreducibility.</p>
+<p>In particular, what it says is that irreducible computations</p>
+<p>are ones for which the computational complexity acts</p>
+<p>additive, purely additively under composition.</p>
+<p>So if it's the case that if we compose, say,</p>
+<p>two computations of complexity one together,</p>
+<p>if the resulting composite takes, you know, has complexity two,</p>
+<p>then it's an irreducible computation.</p>
+<p>If it has complexity less than two, like one,</p>
+<p>then that means that we could have jumped directly</p>
+<p>from the input to the output</p>
+<p>without having to pass through the two elementary computations</p>
+<p>that made it up.</p>
+<p>So that would be an example of a reducible computation.</p>
+<p>So reducible computations are ones whose complexities</p>
+<p>compose sub-additively in this category theoretic sense.</p>
+<p>And, okay, so here's an example,</p>
+<p>here's an illustration of showing</p>
+<p>what intermediate computational states you had to go through</p>
+<p>in order to get from one data structure to another data structure.</p>
+<p>So to go from here to here, you had to go through steps one to two.</p>
+<p>To go from here to here, you had to go through steps one, two,</p>
+<p>and one, two, three, and four, et cetera.</p>
+<p>So you can build up a kind of complete algebra of complexity this way,</p>
+<p>which has some nice properties, which again, I can talk about,</p>
+<p>but let me not get too bogged down in mathematical details right now.</p>
+<p>But here's the thing I really want to talk about,</p>
+<p>which is what happens when you go to multi-way systems,</p>
+<p>what happens when you go to non-deterministic computations.</p>
+<p>So now imagine having, instead of just a Turing machine</p>
+<p>with a single rule, a single transition function</p>
+<p>that just evolves deterministically with a single thread of time,</p>
+<p>now imagine having a Turing machine that has, say,</p>
+<p>two transition functions, like this one and this one.</p>
+<p>And so at any given point, it can apply one of the two.</p>
+<p>And so now evolution, instead of just being a single path,</p>
+<p>becomes this kind of branching structure,</p>
+<p>which if we didn't have any merging would be a tree,</p>
+<p>but because we are merging equivalent states,</p>
+<p>it's actually just a kind of more general directed graph.</p>
+<p>And so it looks like this, and this we call a multi-way system.</p>
+<p>And so we can build a category out of these multi-way systems as well.</p>
+<p>We can build a category using exactly the same rules.</p>
+<p>So again, we do this transitive closure operation.</p>
+<p>So we add an edge for every possible composition</p>
+<p>of these elementary computations and an identity edge</p>
+<p>that maps every data structure to itself.</p>
+<p>But it turns out this category has even more structure</p>
+<p>than the single-way system that we showed previously,</p>
+<p>because now it's possible to compose computations</p>
+<p>not just sequentially in time using ordinary composition,</p>
+<p>but it's possible to compose them in parallel</p>
+<p>across what is sometimes referred to as branchial space.</p>
+<p>So essentially you're saying,</p>
+<p>instead of, you know,</p>
+<p>the ordinary morphism composition that I showed previously</p>
+<p>is essentially saying, you know,</p>
+<p>I apply this elementary computation,</p>
+<p>then this elementary computation sequentially.</p>
+<p>Whereas this parallel composition is saying,</p>
+<p>I apply this computation and this computation</p>
+<p>in parallel to the same data structure.</p>
+<p>And so that parallel operation</p>
+<p>is what causes these branches, right?</p>
+<p>Effectively, when you have two threads of time</p>
+<p>that are branching from the same state, like here,</p>
+<p>that's arising because we have chosen</p>
+<p>to apply this elementary computation</p>
+<p>and this elementary computation together in parallel</p>
+<p>rather than sequentialized in time.</p>
+<p>And so here you can see this parallelization</p>
+<p>indicated using what's referred to</p>
+<p>as a branchial decomposition,</p>
+<p>which is just a kind of a visual way</p>
+<p>of decomposing what's going on</p>
+<p>between these different threads of time.</p>
+<p>And again, there's a purely algebraic characterization</p>
+<p>of what's going on here,</p>
+<p>which is that what we've done</p>
+<p>is we've taken our simple category</p>
+<p>that we started with</p>
+<p>and we've equipped it</p>
+<p>with a tensor product structure.</p>
+<p>And so it's become what we fantastically call</p>
+<p>a monoidal category</p>
+<p>or actually a symmetric monoidal category.</p>
+<p>So the tensor,</p>
+<p>so we now have these two operations.</p>
+<p>We have sequential composition in time</p>
+<p>and we have this tensor product operation,</p>
+<p>which is a parallel composition</p>
+<p>in branchial space.</p>
+<p>And just like we can have,</p>
+<p>just like before,</p>
+<p>where we equipped our edges,</p>
+<p>our morphisms</p>
+<p>with certain computational complexity information,</p>
+<p>we can do the same thing</p>
+<p>and we described</p>
+<p>how those complexities composed sequentially in time.</p>
+<p>We can do the same thing</p>
+<p>and describe how the complexities compose in parallel</p>
+<p>as one composes morphisms in branchial space.</p>
+<p>And so this allows one,</p>
+<p>by exactly the same token,</p>
+<p>to quantify multi-computational irreducibility</p>
+<p>rather than just computational irreducibility.</p>
+<p>So now multi-computational irreducibility</p>
+<p>becomes a measure</p>
+<p>of how additive or sub-additive</p>
+<p>your time complexities are</p>
+<p>when you compose them</p>
+<p>in parallel through the tensor products</p>
+<p>rather than just in sequence</p>
+<p>through standard morphism composition.</p>
+<p>Okay, but I promise I am,</p>
+<p>and so here's an analogous diagram</p>
+<p>to the one I showed before</p>
+<p>showing all the kind of intermediate steps</p>
+<p>that are being applied</p>
+<p>when one composes computation,</p>
+<p>when one constructs computations</p>
+<p>or indeed multi-computations</p>
+<p>by composing elementary computations</p>
+<p>both sequentially in time</p>
+<p>and in parallel in branchial space.</p>
+<p>Now, but I promise I am,</p>
+<p>the point that I'm trying to get to</p>
+<p>is that it turns out</p>
+<p>that in addition to just being a useful way</p>
+<p>to think about computational complexity theory</p>
+<p>and to formulate complexity classes</p>
+<p>like, you know,</p>
+<p>polynomial time</p>
+<p>or non-deterministic polynomial time, etc.</p>
+<p>It turns out this is also an interesting way</p>
+<p>to think about the role of observation</p>
+<p>in sort of computational models of reality.</p>
+<p>Because, so,</p>
+<p>and here's where I'm going to get</p>
+<p>a little bit philosophical</p>
+<p>and I don't have an,</p>
+<p>I don't immediately have a slide</p>
+<p>or a graphic that I can show</p>
+<p>to illustrate this point.</p>
+<p>But so when we think about</p>
+<p>modeling a system computationally,</p>
+<p>one has to bear in mind</p>
+<p>that there are really two computations going on, right?</p>
+<p>There's the computation</p>
+<p>that the system is itself performing</p>
+<p>and then there's the computation</p>
+<p>that the observer,</p>
+<p>the person who is measuring that system</p>
+<p>and concluding things from it,</p>
+<p>there's the computation</p>
+<p>that they are performing.</p>
+<p>And somehow, you know,</p>
+<p>so when we construct models of reality</p>
+<p>or when we construct models of systems,</p>
+<p>you know,</p>
+<p>and we want to describe</p>
+<p>kind of at a meta level</p>
+<p>what we're doing in computational terms,</p>
+<p>there's our own computation</p>
+<p>that, you know,</p>
+<p>that's going on</p>
+<p>inside our own internal representation</p>
+<p>of the world.</p>
+<p>And then there's presumably</p>
+<p>some external computation</p>
+<p>that's going on outside.</p>
+<p>And then when we make observations</p>
+<p>and when we make measurements,</p>
+<p>when we construct theoretical models,</p>
+<p>what we're doing</p>
+<p>is we're somehow constructing</p>
+<p>some kind of encoding function</p>
+<p>that allows us to take</p>
+<p>a concrete physical state</p>
+<p>of the system we're observing</p>
+<p>and encode it</p>
+<p>as some abstract state</p>
+<p>of the internal model</p>
+<p>that we have</p>
+<p>of what's going on.</p>
+<p>And that's all very well.</p>
+<p>But then now,</p>
+<p>we don't just have</p>
+<p>one computation to care about.</p>
+<p>We have three, right?</p>
+<p>We've got the computation</p>
+<p>of the system,</p>
+<p>computation of the observer,</p>
+<p>and the computation,</p>
+<p>this encoding function computation</p>
+<p>that's responsible</p>
+<p>for their, you know,</p>
+<p>the interface</p>
+<p>between their internal model</p>
+<p>of the world</p>
+<p>and the external reality.</p>
+<p>And the computational complexities</p>
+<p>of these computations</p>
+<p>interplay</p>
+<p>in an extremely interesting way.</p>
+<p>And so the, you know,</p>
+<p>part of the reason</p>
+<p>for trying to develop</p>
+<p>this algebraic semantics</p>
+<p>for thinking about</p>
+<p>computational complexity</p>
+<p>and multi-computational complexity</p>
+<p>was to try to give one</p>
+<p>a systematic way</p>
+<p>to reason about</p>
+<p>exactly this three-way interplay</p>
+<p>between systems,</p>
+<p>observers,</p>
+<p>and encoding functions.</p>
+<p>And so, in particular,</p>
+<p>when we make,</p>
+<p>when an observer</p>
+<p>makes a model of the world,</p>
+<p>one thing that they're doing</p>
+<p>is that they are,</p>
+<p>you know,</p>
+<p>for any model</p>
+<p>isn't just, you know,</p>
+<p>a complete description</p>
+<p>of reality,</p>
+<p>there's a certain amount</p>
+<p>of coarse graining, right?</p>
+<p>There's a certain amount</p>
+<p>of taking a bunch of states</p>
+<p>that in the system itself</p>
+<p>are distinguished,</p>
+<p>but in the internal model</p>
+<p>are treated as the same.</p>
+<p>They're kind of,</p>
+<p>you know,</p>
+<p>they're cast in the same bucket.</p>
+<p>So in some sense,</p>
+<p>you know,</p>
+<p>how coarse a model is</p>
+<p>is a measure of how much</p>
+<p>the encoding function</p>
+<p>fails to be subjective, right?</p>
+<p>And so, again,</p>
+<p>there's a kind of algebraic</p>
+<p>or category theoretic</p>
+<p>characterization</p>
+<p>of what's going on</p>
+<p>that, you know,</p>
+<p>the fewer of your morphisms</p>
+<p>are epimorphisms,</p>
+<p>the more coarse your model is,</p>
+<p>you know,</p>
+<p>the more abstract</p>
+<p>or idealized</p>
+<p>your model of reality is.</p>
+<p>And so then,</p>
+<p>the interesting thing</p>
+<p>is that this characterization</p>
+<p>of multi-computational</p>
+<p>irreducibility,</p>
+<p>this measure of how</p>
+<p>additive or sub-additive</p>
+<p>your complexities are</p>
+<p>as you compose them</p>
+<p>together in parallel</p>
+<p>gives you a measure</p>
+<p>of the relative complexity</p>
+<p>of the evolution function,</p>
+<p>that is,</p>
+<p>the function that evolves</p>
+<p>your computation forwards</p>
+<p>in time,</p>
+<p>versus the equivalence function,</p>
+<p>that is,</p>
+<p>the function that declares</p>
+<p>that two computational states,</p>
+<p>two data structures</p>
+<p>are to be treated</p>
+<p>as equivalent.</p>
+<p>And that interplay,</p>
+<p>I claim,</p>
+<p>is a kind of abstract</p>
+<p>meta way of thinking</p>
+<p>about the interplay</p>
+<p>between the computation</p>
+<p>of systems</p>
+<p>versus the computation</p>
+<p>of observers.</p>
+<p>Because, you know,</p>
+<p>it says the role of the system</p>
+<p>is to evolve forwards</p>
+<p>in time,</p>
+<p>whereas the role</p>
+<p>of the observer</p>
+<p>is to take states</p>
+<p>in the, you know,</p>
+<p>in the system</p>
+<p>that are distinguished</p>
+<p>in reality</p>
+<p>and say,</p>
+<p>you know,</p>
+<p>subject to my idealized model,</p>
+<p>I'm going to treat</p>
+<p>these as the same.</p>
+<p>So, you know,</p>
+<p>the system is defining</p>
+<p>the evolution function,</p>
+<p>but the observer</p>
+<p>is defining</p>
+<p>this equivalence function.</p>
+<p>And so then</p>
+<p>the trade-off</p>
+<p>in their complexities</p>
+<p>becomes exactly</p>
+<p>a trade-off</p>
+<p>between how,</p>
+<p>you know,</p>
+<p>what are the,</p>
+<p>what are the algebraic rules</p>
+<p>that describe the complexities</p>
+<p>as they compose sequentially</p>
+<p>versus the algebraic rules</p>
+<p>that describe the complexities</p>
+<p>as they compose</p>
+<p>under this tensor product operation.</p>
+<p>And so, you know,</p>
+<p>I've shown this in particular</p>
+<p>for Turing machine systems,</p>
+<p>but this is a very,</p>
+<p>as I say,</p>
+<p>this is a very general</p>
+<p>kind of algebraic semantics.</p>
+<p>You can apply it to hypergraphs.</p>
+<p>You can apply it to combinators,</p>
+<p>lambda calculus.</p>
+<p>It doesn't matter.</p>
+<p>In a sense,</p>
+<p>there is just one category</p>
+<p>up to isomorphism</p>
+<p>of computation,</p>
+<p>of data structures</p>
+<p>and computations.</p>
+<p>And there are simply</p>
+<p>many different ways</p>
+<p>of parameterizing</p>
+<p>what that category is doing</p>
+<p>through things like</p>
+<p>Turing machines</p>
+<p>or hypergraphs</p>
+<p>or whatever.</p>
+<p>You know,</p>
+<p>the algebraic formalism</p>
+<p>transcends</p>
+<p>the particular details</p>
+<p>of the computations</p>
+<p>that one's dealing with.</p>
+<p>And so, yeah,</p>
+<p>as I say,</p>
+<p>what one ends up with</p>
+<p>is, I think,</p>
+<p>a fairly general formalism</p>
+<p>for thinking about</p>
+<p>the interplay</p>
+<p>between observers</p>
+<p>and the systems</p>
+<p>that they observe.</p>
+<p>And that gives one a,</p>
+<p>I promise,</p>
+<p>I'll stop monologuing</p>
+<p>in a moment</p>
+<p>and we'll try and</p>
+<p>pick apart</p>
+<p>what I'm really</p>
+<p>talking about here.</p>
+<p>But so I'll just conclude</p>
+<p>with, you know,</p>
+<p>once one has</p>
+<p>that algebraic semantics,</p>
+<p>a whole bunch of things</p>
+<p>which I think</p>
+<p>previously would have been,</p>
+<p>at least to me,</p>
+<p>previously seemed like</p>
+<p>kind of fundamental confusions</p>
+<p>about, you know,</p>
+<p>how scientific observation works</p>
+<p>and how it interplays</p>
+<p>with computational models,</p>
+<p>those confusions</p>
+<p>kind of become</p>
+<p>much easier to clarify</p>
+<p>once you think about it</p>
+<p>in this kind of</p>
+<p>more compositional way.</p>
+<p>So to give a very</p>
+<p>simple example</p>
+<p>or a kind of</p>
+<p>very degenerate example,</p>
+<p>you can, you know,</p>
+<p>within this algebraic semantics,</p>
+<p>you can effectively</p>
+<p>trade off</p>
+<p>the computational complexity</p>
+<p>of the system</p>
+<p>for the computational complexity</p>
+<p>of the observer, right?</p>
+<p>So you can have</p>
+<p>kind of, in effect,</p>
+<p>two degenerate cases.</p>
+<p>You can have the case</p>
+<p>where the system itself</p>
+<p>has a completely trivial</p>
+<p>evolution function.</p>
+<p>The system itself has,</p>
+<p>you know,</p>
+<p>is doing something</p>
+<p>completely elementary</p>
+<p>in how it evolves.</p>
+<p>But then the observer</p>
+<p>has some incredibly</p>
+<p>complicated equivalence function</p>
+<p>that makes the system</p>
+<p>look like it's doing</p>
+<p>something really complicated,</p>
+<p>even though what it's</p>
+<p>actually doing</p>
+<p>is something very simple.</p>
+<p>And so then you have</p>
+<p>the phenomenon where</p>
+<p>actually kind of</p>
+<p>all of the complexity</p>
+<p>is in the eye of the observer.</p>
+<p>You can also have</p>
+<p>the other degenerate case</p>
+<p>where the observer</p>
+<p>is doing something</p>
+<p>absolutely trivial,</p>
+<p>where the, you know,</p>
+<p>the encoding function</p>
+<p>or the observer's</p>
+<p>own internal representation</p>
+<p>is just an identity</p>
+<p>function or something.</p>
+<p>So there's no complexity there.</p>
+<p>But the system</p>
+<p>is doing something</p>
+<p>incredibly complex.</p>
+<p>It's doing some totally,</p>
+<p>some really sophisticated</p>
+<p>universal computation.</p>
+<p>And so that will also</p>
+<p>appear very complex</p>
+<p>to that observer.</p>
+<p>And so,</p>
+<p>and you can also have</p>
+<p>any kind of,</p>
+<p>any intermediate,</p>
+<p>you know,</p>
+<p>there's this vast</p>
+<p>interstitial space</p>
+<p>between these two extremes.</p>
+<p>And so one thing</p>
+<p>that's kind of always,</p>
+<p>one sort of philosophical problem</p>
+<p>that I've always kind of</p>
+<p>been interested in</p>
+<p>ever since I was a kid,</p>
+<p>which is this sort of,</p>
+<p>this tension between</p>
+<p>empiricism versus rationalism,</p>
+<p>right?</p>
+<p>You know,</p>
+<p>the question of,</p>
+<p>you know,</p>
+<p>on the way,</p>
+<p>if you look back</p>
+<p>at the history of,</p>
+<p>you know,</p>
+<p>early European philosophy</p>
+<p>or, you know,</p>
+<p>certainly Western,</p>
+<p>you know,</p>
+<p>Western post-enlightenment</p>
+<p>philosophy,</p>
+<p>you had people like,</p>
+<p>you know,</p>
+<p>Descartes and Leibniz</p>
+<p>and so on who were,</p>
+<p>you know,</p>
+<p>and in a more sophisticated way,</p>
+<p>Bishop Barclay</p>
+<p>with subjective immaterialism</p>
+<p>who were trying to push</p>
+<p>for this idea that,</p>
+<p>oh, you know,</p>
+<p>all the sophistication</p>
+<p>is what's going on</p>
+<p>inside the observer's head</p>
+<p>and, you know,</p>
+<p>what goes on in reality</p>
+<p>is somehow secondary.</p>
+<p>And then you had people like,</p>
+<p>you know,</p>
+<p>Locke and Hume</p>
+<p>and the empiricists</p>
+<p>who are saying,</p>
+<p>no, no,</p>
+<p>we should try and get the observer</p>
+<p>as much out of the picture</p>
+<p>as possible</p>
+<p>and we should say</p>
+<p>all the sophistication</p>
+<p>is going on</p>
+<p>kind of in the external world.</p>
+<p>And this,</p>
+<p>you know,</p>
+<p>one nice consequence of this</p>
+<p>is it gives one,</p>
+<p>one nice consequence</p>
+<p>of this formalism</p>
+<p>is it gives one actually</p>
+<p>an algebraic way</p>
+<p>of kind of parameterizing</p>
+<p>this spectrum</p>
+<p>from rationalism</p>
+<p>to empiricism,</p>
+<p>right?</p>
+<p>That you can choose</p>
+<p>the rationalist extreme</p>
+<p>where, you know,</p>
+<p>you know,</p>
+<p>you just have some</p>
+<p>space of all possible computations</p>
+<p>and the observer</p>
+<p>is doing all of the work</p>
+<p>to try to narrow down</p>
+<p>to a particular one</p>
+<p>or you can have</p>
+<p>the kind of empiricistic stream</p>
+<p>where, you know,</p>
+<p>the observer is</p>
+<p>a completely elementary system</p>
+<p>and, you know,</p>
+<p>and everything they observe</p>
+<p>is just being built up</p>
+<p>from a kind of bottom-up</p>
+<p>construction</p>
+<p>or you can have</p>
+<p>anything in between</p>
+<p>and in a sense</p>
+<p>we now have,</p>
+<p>I think,</p>
+<p>the beginnings</p>
+<p>of a mathematical theory</p>
+<p>that explain,</p>
+<p>that's able to explain</p>
+<p>how those complexities</p>
+<p>trade off</p>
+<p>in a very direct way.</p>
+<p>So I think there's</p>
+<p>potentially places</p>
+<p>of mutual interest</p>
+<p>there in kind of the,</p>
+<p>in thinking about,</p>
+<p>yeah,</p>
+<p>as I say,</p>
+<p>cognition,</p>
+<p>observation,</p>
+<p>measurement,</p>
+<p>scientific modeling</p>
+<p>and so on</p>
+<p>in fundamentally</p>
+<p>computational terms.</p>
+<p>So I think that</p>
+<p>hopefully that will</p>
+<p>provide some context</p>
+<p>for a discussion.</p>
+<p>Thank you.</p>
+<p>Great opening.</p>
+<p>There's so many places</p>
+<p>to spin in</p>
+<p>and jump through.</p>
+<p>I guess I'll start with</p>
+<p>the two things</p>
+<p>I wrote down</p>
+<p>were unity is plural</p>
+<p>and at minimum two</p>
+<p>and beauty is in the eye</p>
+<p>of the beholder</p>
+<p>and the way that</p>
+<p>these kinds of pieces</p>
+<p>of timeless wisdom</p>
+<p>that describe</p>
+<p>that fundamentally</p>
+<p>relational component</p>
+<p>to observers</p>
+<p>in systems,</p>
+<p>which are not</p>
+<p>all kinds of systems</p>
+<p>per se,</p>
+<p>but those kinds of systems,</p>
+<p>those things are true for.</p>
+<p>And then the way</p>
+<p>in which along</p>
+<p>the formalism</p>
+<p>that you described,</p>
+<p>with the system</p>
+<p>observer encoding</p>
+<p>three-way partition</p>
+<p>and then the way</p>
+<p>that in free energy</p>
+<p>principle</p>
+<p>and the particular physics</p>
+<p>that interface</p>
+<p>gets broken out</p>
+<p>from the agent's</p>
+<p>perspective</p>
+<p>into the incoming</p>
+<p>sensory</p>
+<p>and the outgoing</p>
+<p>action.</p>
+<p>So then that results</p>
+<p>in the four-fold</p>
+<p>particular partition.</p>
+<p>So maybe just</p>
+<p>to kind of</p>
+<p>dwell there,</p>
+<p>how do we partition</p>
+<p>the,</p>
+<p>from a category</p>
+<p>theory perspective</p>
+<p>or however,</p>
+<p>the action</p>
+<p>perception loop</p>
+<p>or the engagement</p>
+<p>loop?</p>
+<p>Like,</p>
+<p>how do we</p>
+<p>make a topology</p>
+<p>or compare</p>
+<p>or contrast</p>
+<p>different topologies</p>
+<p>and flows</p>
+<p>over this kind</p>
+<p>of seemingly</p>
+<p>pervasive</p>
+<p>or universal</p>
+<p>interface-like</p>
+<p>concept?</p>
+<p>That's a fascinating</p>
+<p>question.</p>
+<p>So I don't have</p>
+<p>the answer.</p>
+<p>This is maybe</p>
+<p>a place where</p>
+<p>both you, Daniel,</p>
+<p>and perhaps David</p>
+<p>may have useful</p>
+<p>perspectives on this</p>
+<p>because,</p>
+<p>you know,</p>
+<p>I'm,</p>
+<p>you know,</p>
+<p>I read Carl's work</p>
+<p>a few years back</p>
+<p>and so I have some</p>
+<p>familiarity with the terms,</p>
+<p>but I'm by no means</p>
+<p>a kind of,</p>
+<p>you know,</p>
+<p>an expert on free</p>
+<p>energy principle</p>
+<p>or, you know,</p>
+<p>active inference</p>
+<p>and those kinds of things.</p>
+<p>But I think it's a very</p>
+<p>good point that you raise</p>
+<p>and so,</p>
+<p>you know,</p>
+<p>I should begin by just</p>
+<p>being honest and say</p>
+<p>that, you know,</p>
+<p>everything I'm,</p>
+<p>you know,</p>
+<p>all that I just described</p>
+<p>is, of course,</p>
+<p>an idealization</p>
+<p>and that,</p>
+<p>you know,</p>
+<p>in reality,</p>
+<p>you know,</p>
+<p>in particular,</p>
+<p>it's an idealization</p>
+<p>which I think you were</p>
+<p>very right,</p>
+<p>Daniel,</p>
+<p>to kind of pick up on.</p>
+<p>It's an idealization</p>
+<p>in which we say</p>
+<p>the observer is completely</p>
+<p>kind of non-interacting</p>
+<p>with the world somehow,</p>
+<p>right?</p>
+<p>That, you know,</p>
+<p>in a sense that</p>
+<p>there's just input coming in</p>
+<p>and nothing coming out.</p>
+<p>But of course,</p>
+<p>we know that's not</p>
+<p>really how observation works.</p>
+<p>Observation is necessarily</p>
+<p>a kind of two-way process</p>
+<p>and so what's needed</p>
+<p>is not just this kind of</p>
+<p>very clean algebraic semantics</p>
+<p>that I've described here</p>
+<p>which assumes that</p>
+<p>there's essentially</p>
+<p>a one-way function</p>
+<p>from the world</p>
+<p>to the observer</p>
+<p>but actually something</p>
+<p>more like a kind of</p>
+<p>second-order cybernetics</p>
+<p>description of,</p>
+<p>you know,</p>
+<p>of what's really going on</p>
+<p>where you have,</p>
+<p>you know,</p>
+<p>first-order</p>
+<p>and second-order</p>
+<p>interactions</p>
+<p>where it's exactly</p>
+<p>as you say</p>
+<p>you can get these</p>
+<p>sort of feedback loops</p>
+<p>from observation to action</p>
+<p>and back again</p>
+<p>which are probably,</p>
+<p>which is,</p>
+<p>I mean,</p>
+<p>still an idealization</p>
+<p>but probably a more</p>
+<p>realistic idealization</p>
+<p>for how real observers</p>
+<p>and real measurement apparatus work.</p>
+<p>So,</p>
+<p>I just want to begin</p>
+<p>by saying that</p>
+<p>I don't know,</p>
+<p>right,</p>
+<p>and, you know,</p>
+<p>the question of how</p>
+<p>this formalism interplays</p>
+<p>with things like</p>
+<p>second-order cybernetics</p>
+<p>and other areas</p>
+<p>where I know</p>
+<p>these kinds of questions</p>
+<p>have been explored,</p>
+<p>that's something</p>
+<p>I'm very interested</p>
+<p>to find out about,</p>
+<p>you know,</p>
+<p>going forward.</p>
+<p>but I think,</p>
+<p>hmm,</p>
+<p>okay,</p>
+<p>so,</p>
+<p>yeah,</p>
+<p>so at some point</p>
+<p>maybe you could</p>
+<p>help me understand,</p>
+<p>you know,</p>
+<p>potentially where things</p>
+<p>might fit in</p>
+<p>with the,</p>
+<p>you know,</p>
+<p>with the kind of</p>
+<p>broader active inference</p>
+<p>framework.</p>
+<p>I'm not sure</p>
+<p>I necessarily have</p>
+<p>that much more</p>
+<p>to comment on</p>
+<p>than that.</p>
+<p>yeah,</p>
+<p>other than to say</p>
+<p>that,</p>
+<p>you know,</p>
+<p>in a sense,</p>
+<p>okay,</p>
+<p>so maybe,</p>
+<p>you know,</p>
+<p>one further comment</p>
+<p>is that,</p>
+<p>because,</p>
+<p>I mean,</p>
+<p>you asked specifically</p>
+<p>about how the kind</p>
+<p>of compositional</p>
+<p>category theoretic</p>
+<p>perspective might be useful.</p>
+<p>So,</p>
+<p>as I said,</p>
+<p>I don't think category theory</p>
+<p>in itself is going to be</p>
+<p>the complete answer.</p>
+<p>I think it will be</p>
+<p>category theory augmented</p>
+<p>with some other things,</p>
+<p>computational complexity,</p>
+<p>probably second-order</p>
+<p>cybernetics,</p>
+<p>and some other things</p>
+<p>that I may not be aware of.</p>
+<p>But one place</p>
+<p>where I think</p>
+<p>that viewpoint</p>
+<p>is useful,</p>
+<p>at least on a</p>
+<p>philosophical level,</p>
+<p>is the idea that,</p>
+<p>is the idea that comes</p>
+<p>about,</p>
+<p>that you really</p>
+<p>obtain by studying</p>
+<p>mathematical structures</p>
+<p>in a category theoretic way,</p>
+<p>which is that</p>
+<p>the identity of something,</p>
+<p>you can define it</p>
+<p>both in terms</p>
+<p>of its intrinsic properties,</p>
+<p>or you can define it</p>
+<p>in terms of,</p>
+<p>you know,</p>
+<p>the stuff that you</p>
+<p>can do to it,</p>
+<p>right?</p>
+<p>So,</p>
+<p>you know,</p>
+<p>this was really</p>
+<p>the transition</p>
+<p>that happened</p>
+<p>in the foundations</p>
+<p>of mathematics</p>
+<p>as a result of people</p>
+<p>like Samuel Allenberg</p>
+<p>and Saunders-McLean.</p>
+<p>So,</p>
+<p>you know,</p>
+<p>category theory</p>
+<p>has its origins</p>
+<p>in this sort of</p>
+<p>slightly abstruse branch</p>
+<p>of algebraic topology.</p>
+<p>It was,</p>
+<p>you know,</p>
+<p>initially developed</p>
+<p>by people like</p>
+<p>Alexander Grotendieck</p>
+<p>and Jean-Pierre Serre</p>
+<p>for doing homological</p>
+<p>algebra for,</p>
+<p>you know,</p>
+<p>for reasoning</p>
+<p>about sort of</p>
+<p>the algebraic structure</p>
+<p>of topological spaces.</p>
+<p>But then later,</p>
+<p>in the,</p>
+<p>I think,</p>
+<p>1960s,</p>
+<p>1970s,</p>
+<p>these two American</p>
+<p>mathematicians,</p>
+<p>Eilenberg and MacLean,</p>
+<p>realized that it was</p>
+<p>useful not just for</p>
+<p>thinking about topology,</p>
+<p>but for thinking about</p>
+<p>kind of mathematical</p>
+<p>structure in general.</p>
+<p>And then later on,</p>
+<p>applied category theorists</p>
+<p>started saying,</p>
+<p>well,</p>
+<p>maybe it's useful</p>
+<p>for just thinking</p>
+<p>about structure in general.</p>
+<p>But,</p>
+<p>you know,</p>
+<p>the key kind of</p>
+<p>conceptual or philosophical</p>
+<p>shift that it imposes</p>
+<p>is,</p>
+<p>you know,</p>
+<p>historically,</p>
+<p>thanks to the work</p>
+<p>of people like</p>
+<p>Cantor and Frege</p>
+<p>and Russell and so on,</p>
+<p>people have thought</p>
+<p>about mathematical structures</p>
+<p>and the foundations</p>
+<p>of mathematics</p>
+<p>as,</p>
+<p>you know,</p>
+<p>in terms of set theory.</p>
+<p>And the idea in set theory</p>
+<p>is you have this,</p>
+<p>you know,</p>
+<p>things like the axiom</p>
+<p>of extension</p>
+<p>that effectively say</p>
+<p>set is defined</p>
+<p>by what's inside it,</p>
+<p>right?</p>
+<p>So in other words,</p>
+<p>you know,</p>
+<p>you,</p>
+<p>you,</p>
+<p>you,</p>
+<p>a mathematical structure</p>
+<p>obtains its identity</p>
+<p>by,</p>
+<p>you know,</p>
+<p>you break it apart</p>
+<p>and you look at</p>
+<p>what's inside.</p>
+<p>In category theory,</p>
+<p>it's a completely</p>
+<p>different view.</p>
+<p>The view instead</p>
+<p>is you say,</p>
+<p>well,</p>
+<p>no,</p>
+<p>you can't look inside,</p>
+<p>you know,</p>
+<p>it's a fundamental rule</p>
+<p>of category theory</p>
+<p>that you can't look</p>
+<p>inside an object.</p>
+<p>You know,</p>
+<p>its internal structure,</p>
+<p>if it has any,</p>
+<p>is sort of out of bounds</p>
+<p>to you.</p>
+<p>And instead you,</p>
+<p>you give that object</p>
+<p>identity in terms of</p>
+<p>how it relates</p>
+<p>to other objects</p>
+<p>of the same type,</p>
+<p>right?</p>
+<p>So in other words,</p>
+<p>you know,</p>
+<p>you can ask,</p>
+<p>you know,</p>
+<p>what,</p>
+<p>what can I do to this?</p>
+<p>What,</p>
+<p>what functions can I apply to it?</p>
+<p>What functions can,</p>
+<p>can I apply to something else</p>
+<p>that map into this?</p>
+<p>So,</p>
+<p>you know,</p>
+<p>if I want to define,</p>
+<p>I don't know,</p>
+<p>the real numbers</p>
+<p>or the integers</p>
+<p>or something in the set theory,</p>
+<p>you know,</p>
+<p>from a set theory perspective,</p>
+<p>you would say that the,</p>
+<p>you know,</p>
+<p>the,</p>
+<p>the,</p>
+<p>the essence of the real numbers</p>
+<p>are all the numbers</p>
+<p>that are inside that set,</p>
+<p>whereas the category theory</p>
+<p>perspective is no,</p>
+<p>the essence of the real numbers</p>
+<p>are all the functions</p>
+<p>that you can define</p>
+<p>that take real numbers</p>
+<p>to some other number system</p>
+<p>or real numbers to themselves</p>
+<p>or that take some other number system</p>
+<p>into the real numbers</p>
+<p>or et cetera.</p>
+<p>And,</p>
+<p>you know,</p>
+<p>some of the deepest results</p>
+<p>in category theory,</p>
+<p>like the Ornade dilemma</p>
+<p>and other things</p>
+<p>are telling one</p>
+<p>in some very precise sense</p>
+<p>that these two perspectives</p>
+<p>are really the same</p>
+<p>at some fundamental level,</p>
+<p>but that,</p>
+<p>you know,</p>
+<p>identifying an object</p>
+<p>based on its internal structure,</p>
+<p>based on breaking it</p>
+<p>apart and asking</p>
+<p>what's inside</p>
+<p>and identifying an object</p>
+<p>by asking</p>
+<p>what can I do to it</p>
+<p>and what,</p>
+<p>you know,</p>
+<p>what can this object</p>
+<p>be transformed into</p>
+<p>and what things</p>
+<p>can be transformed</p>
+<p>into this object,</p>
+<p>those give you</p>
+<p>exactly the same information.</p>
+<p>It's far from obvious</p>
+<p>that that's true.</p>
+<p>You know,</p>
+<p>the Ornade dilemma</p>
+<p>is a very kind of,</p>
+<p>it's one of those results</p>
+<p>where you can never</p>
+<p>quite work out</p>
+<p>if it's obvious</p>
+<p>or if it's incredibly,</p>
+<p>you know,</p>
+<p>mysterious,</p>
+<p>but I tend to fall</p>
+<p>on the side</p>
+<p>that it's incredibly mysterious.</p>
+<p>It's far from evidence</p>
+<p>that those two perspectives</p>
+<p>would really be the same.</p>
+<p>And yet,</p>
+<p>the point you're making,</p>
+<p>Daniel,</p>
+<p>I think,</p>
+<p>is that,</p>
+<p>in a sense,</p>
+<p>historical ways</p>
+<p>of thinking</p>
+<p>about scientific observation</p>
+<p>have tended</p>
+<p>towards the set</p>
+<p>theoretic viewpoint,</p>
+<p>they're tended</p>
+<p>towards the viewpoint</p>
+<p>that we understand</p>
+<p>systems based on</p>
+<p>kind of breaking</p>
+<p>them apart</p>
+<p>into constituent components.</p>
+<p>But perhaps a more</p>
+<p>realistic view</p>
+<p>is something more</p>
+<p>like the category</p>
+<p>theory perspective</p>
+<p>where we say,</p>
+<p>you know,</p>
+<p>I understand the system</p>
+<p>by interacting with it,</p>
+<p>right,</p>
+<p>by asking what can I do to it</p>
+<p>and how does it behave</p>
+<p>when I perform</p>
+<p>certain operations to it.</p>
+<p>And that's a fundamentally,</p>
+<p>you know,</p>
+<p>that's a fundamentally</p>
+<p>two-way process</p>
+<p>that involves</p>
+<p>not just passive observation</p>
+<p>but also kind of</p>
+<p>active participation.</p>
+<p>And somehow,</p>
+<p>we need to develop</p>
+<p>a formalism</p>
+<p>that kind of</p>
+<p>incorporates those two elements.</p>
+<p>And maybe,</p>
+<p>you know,</p>
+<p>maybe it already exists</p>
+<p>and it exists</p>
+<p>in this large literature tree</p>
+<p>of which I'm largely unaware.</p>
+<p>That's partly why</p>
+<p>I want to be here</p>
+<p>to try and find out,</p>
+<p>you know,</p>
+<p>what things I missed,</p>
+<p>so to speak.</p>
+<p>Excellent.</p>
+<p>All right.</p>
+<p>A few points.</p>
+<p>Self-evident</p>
+<p>is far from evident.</p>
+<p>Also,</p>
+<p>I tend to the mysterious</p>
+<p>which is to say</p>
+<p>saying more with less,</p>
+<p>especially for these frameworks</p>
+<p>because they're less opinionated</p>
+<p>so that their space</p>
+<p>of internal semantics</p>
+<p>can be larger.</p>
+<p>And then</p>
+<p>that description</p>
+<p>that you provided</p>
+<p>with the relationship</p>
+<p>between the set</p>
+<p>and the category theory,</p>
+<p>so I kind of</p>
+<p>summarized it as</p>
+<p>set is to essential</p>
+<p>inclusion</p>
+<p>as category</p>
+<p>is to relational function.</p>
+<p>Now,</p>
+<p>if our concept</p>
+<p>of organismality</p>
+<p>or of action</p>
+<p>in the niche</p>
+<p>is constructive</p>
+<p>compositional material,</p>
+<p>then we are looking</p>
+<p>for like</p>
+<p>what is in or out.</p>
+<p>Is the microbiome in?</p>
+<p>Is the pheromone</p>
+<p>in the ant colony</p>
+<p>in or out of that thing</p>
+<p>because it's looking</p>
+<p>for like a static</p>
+<p>material answer?</p>
+<p>And then,</p>
+<p>in contrast,</p>
+<p>the other side</p>
+<p>of that coin</p>
+<p>highlights the dynamic,</p>
+<p>like whatever it is</p>
+<p>that's self-organizing</p>
+<p>of the tornado</p>
+<p>is the tornado.</p>
+<p>Whatever it is</p>
+<p>that's self-organizing</p>
+<p>for the ant</p>
+<p>is the ant.</p>
+<p>and then also</p>
+<p>this like</p>
+<p>hint slash</p>
+<p>Mobius strip</p>
+<p>or something</p>
+<p>that those two</p>
+<p>in the moment</p>
+<p>are indistinguishable</p>
+<p>and yet systems</p>
+<p>that we choose</p>
+<p>to define one way</p>
+<p>or another</p>
+<p>or keeping both open,</p>
+<p>those design decisions</p>
+<p>do make all the difference</p>
+<p>even if for real systems</p>
+<p>as they're observed,</p>
+<p>there's indistinguishability.</p>
+<p>Right, right.</p>
+<p>I think that's</p>
+<p>a very important point</p>
+<p>and one which,</p>
+<p>I mean,</p>
+<p>this is a,</p>
+<p>it's always a kind</p>
+<p>of concern I have</p>
+<p>whenever I start thinking</p>
+<p>about embodied cognition</p>
+<p>or extended phenotype</p>
+<p>type ideas,</p>
+<p>right?</p>
+<p>That,</p>
+<p>in a sense,</p>
+<p>if what one is trying</p>
+<p>to do here</p>
+<p>is construct</p>
+<p>a kind of formalistic</p>
+<p>model of observation</p>
+<p>or of cognition</p>
+<p>or something,</p>
+<p>then as a kind</p>
+<p>of first order</p>
+<p>approximation,</p>
+<p>one has to start</p>
+<p>by somehow decomposing</p>
+<p>the world</p>
+<p>into observers</p>
+<p>and systems.</p>
+<p>But of course,</p>
+<p>we know that</p>
+<p>that decomposition</p>
+<p>is somehow</p>
+<p>arbitrarily imposed,</p>
+<p>right?</p>
+<p>And that,</p>
+<p>you know,</p>
+<p>if you take these things</p>
+<p>to their extremes</p>
+<p>and you allow</p>
+<p>essentially everything</p>
+<p>that the agent</p>
+<p>is interacting with</p>
+<p>to be considered,</p>
+<p>like not just</p>
+<p>their microbiome,</p>
+<p>as you say,</p>
+<p>but also tools</p>
+<p>that they construct</p>
+<p>or environments</p>
+<p>in which they exist</p>
+<p>and so on.</p>
+<p>If you,</p>
+<p>as you start</p>
+<p>to consider all of that</p>
+<p>to be a component</p>
+<p>of that organism,</p>
+<p>you know,</p>
+<p>of that agent's phenotype,</p>
+<p>which is a completely</p>
+<p>reasonable thing</p>
+<p>to do,</p>
+<p>then,</p>
+<p>and you start</p>
+<p>to,</p>
+<p>you know,</p>
+<p>you start to say,</p>
+<p>okay,</p>
+<p>well,</p>
+<p>their cognitive processes</p>
+<p>are not just localized</p>
+<p>to their brain</p>
+<p>or their spinal column,</p>
+<p>but are kind of</p>
+<p>somehow extended</p>
+<p>to,</p>
+<p>you know,</p>
+<p>the computers they use,</p>
+<p>the paper they write on,</p>
+<p>the books they read,</p>
+<p>et cetera.</p>
+<p>Again,</p>
+<p>perfectly reasonable</p>
+<p>thing to do</p>
+<p>and sort of somehow</p>
+<p>more descriptive</p>
+<p>of what's really going on.</p>
+<p>But my fear is always</p>
+<p>if you take that too far,</p>
+<p>then,</p>
+<p>you know,</p>
+<p>you end up destroying</p>
+<p>the whole assumption</p>
+<p>that the idealization</p>
+<p>was based on,</p>
+<p>which is that you can</p>
+<p>neatly decompose,</p>
+<p>you know,</p>
+<p>the world into observers</p>
+<p>and systems.</p>
+<p>And so I always get a bit</p>
+<p>nervous when thinking</p>
+<p>about that,</p>
+<p>that it's like,</p>
+<p>yes,</p>
+<p>you know,</p>
+<p>in a sense,</p>
+<p>yeah,</p>
+<p>we know this is an approximation</p>
+<p>and we know that</p>
+<p>that approximation</p>
+<p>is not really true,</p>
+<p>but how,</p>
+<p>you know,</p>
+<p>how much can you afford</p>
+<p>to sort of</p>
+<p>loosen your grip</p>
+<p>on that approximation</p>
+<p>before the whole thing</p>
+<p>just kind of falls apart?</p>
+<p>I don't really know</p>
+<p>the answer to that question,</p>
+<p>but I think it's</p>
+<p>an interesting one.</p>
+<p>Yeah.</p>
+<p>How about I'll ask</p>
+<p>some questions from chat</p>
+<p>and then give your first thoughts</p>
+<p>and then we'll see</p>
+<p>maybe where that kind of</p>
+<p>lands with further questions</p>
+<p>or how it connects</p>
+<p>to active inference.</p>
+<p>So that sounds good.</p>
+<p>Oh,</p>
+<p>by the way,</p>
+<p>should I keep my screen share on</p>
+<p>or should I say?</p>
+<p>Yeah,</p>
+<p>we might want to go to a figure,</p>
+<p>so it's fine.</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>All right.</p>
+<p>Quantum Bell wrote,</p>
+<p>how does this help us</p>
+<p>reason about causality?</p>
+<p>That's a fascinating question.</p>
+<p>Okay.</p>
+<p>So that's another major aspect</p>
+<p>of, you know,</p>
+<p>why I think this research program</p>
+<p>is exciting because,</p>
+<p>so,</p>
+<p>and again,</p>
+<p>this is something</p>
+<p>where I'm interested</p>
+<p>to get the kind of</p>
+<p>active inference perspective</p>
+<p>because I know this,</p>
+<p>again,</p>
+<p>it's a topic</p>
+<p>in which much has been written</p>
+<p>and I'm largely ignorant.</p>
+<p>But,</p>
+<p>yes,</p>
+<p>so one question you could ask is,</p>
+<p>yeah,</p>
+<p>if you have a description</p>
+<p>of a computation like this,</p>
+<p>like,</p>
+<p>let's go back up</p>
+<p>to the Turing machine case,</p>
+<p>the single way Turing machine case,</p>
+<p>that's relatively easy to analyze,</p>
+<p>although still far from obvious</p>
+<p>what's going on.</p>
+<p>So suppose you have</p>
+<p>a computation of this kind</p>
+<p>and you want to ask,</p>
+<p>what is its causal structure?</p>
+<p>In other words,</p>
+<p>you know,</p>
+<p>for each edge,</p>
+<p>each time I'm applying</p>
+<p>this Turing machine</p>
+<p>transition function,</p>
+<p>can I construct</p>
+<p>some kind of graph,</p>
+<p>you know,</p>
+<p>some directed graph representation</p>
+<p>that tells me</p>
+<p>how these events</p>
+<p>are linked together?</p>
+<p>So in the,</p>
+<p>within the original</p>
+<p>research program,</p>
+<p>this so-called</p>
+<p>Wolfram model research program</p>
+<p>that kind of started</p>
+<p>a lot of these investigations,</p>
+<p>we were looking at this</p>
+<p>all the time,</p>
+<p>right?</p>
+<p>We were looking at kind of,</p>
+<p>you know,</p>
+<p>taking computations</p>
+<p>and looking at that causal structure</p>
+<p>and trying to,</p>
+<p>you know,</p>
+<p>infer things about</p>
+<p>what was going on</p>
+<p>about the,</p>
+<p>you know,</p>
+<p>the semantics of the computation</p>
+<p>based on causal relationships.</p>
+<p>And at a certain point,</p>
+<p>I started to realize,</p>
+<p>and I think other people</p>
+<p>had realized this before I did,</p>
+<p>but I'm often slow</p>
+<p>to pick these things up.</p>
+<p>I,</p>
+<p>I,</p>
+<p>I,</p>
+<p>I and other people</p>
+<p>started to realize</p>
+<p>that the notion of causality</p>
+<p>we were using</p>
+<p>was kind of nonsense.</p>
+<p>I mean,</p>
+<p>it was not completely hopeless,</p>
+<p>but it wasn't really causality</p>
+<p>or it couldn't really be called causality</p>
+<p>in any,</p>
+<p>in any definite sense.</p>
+<p>So what do I mean by that?</p>
+<p>So first of all,</p>
+<p>it was a very technical problem.</p>
+<p>So if you're looking at something</p>
+<p>like a Turing machine evolution</p>
+<p>or a hypergraph rewriting system</p>
+<p>as we were,</p>
+<p>then there's a very tempting</p>
+<p>and apparently obvious</p>
+<p>natural definition of causality</p>
+<p>that you could use,</p>
+<p>which is to ask,</p>
+<p>you know,</p>
+<p>when you split the world up</p>
+<p>into events that take,</p>
+<p>you know,</p>
+<p>some part of your data structure</p>
+<p>as input and output,</p>
+<p>you know,</p>
+<p>some other part of a data structure</p>
+<p>as output,</p>
+<p>then you can very easily ask,</p>
+<p>well,</p>
+<p>does the output of one event</p>
+<p>intersect with the input</p>
+<p>of another event?</p>
+<p>So if I show the hypergraph example,</p>
+<p>it's perhaps easier to see.</p>
+<p>So you have a hypergraph rewriting rule</p>
+<p>that looks like this,</p>
+<p>right?</p>
+<p>So,</p>
+<p>you know,</p>
+<p>you have,</p>
+<p>you say,</p>
+<p>if I have a piece of hypergraph</p>
+<p>that looks like that,</p>
+<p>I replace it with another piece</p>
+<p>of hypergraph that looks like this.</p>
+<p>So at each,</p>
+<p>each time you apply an event,</p>
+<p>you can think of that event</p>
+<p>as,</p>
+<p>you know,</p>
+<p>ingesting certain hyper edges</p>
+<p>and kind of,</p>
+<p>you know,</p>
+<p>replacing them with others.</p>
+<p>So you can divide it up</p>
+<p>into a sort of the,</p>
+<p>the input hyper edges</p>
+<p>that are being ingested</p>
+<p>versus the output hyper edges</p>
+<p>that are being produced.</p>
+<p>And so then you can ask,</p>
+<p>well,</p>
+<p>do the output,</p>
+<p>did I use,</p>
+<p>did I subsequently ingest</p>
+<p>in some future event</p>
+<p>hyper edges</p>
+<p>that were output</p>
+<p>in some previous event?</p>
+<p>Well,</p>
+<p>if the answer is yes,</p>
+<p>then pretty obviously</p>
+<p>that future event</p>
+<p>couldn't have occurred</p>
+<p>unless the previous event</p>
+<p>had already occurred.</p>
+<p>So then you could say,</p>
+<p>well,</p>
+<p>then one of those events</p>
+<p>causes the other.</p>
+<p>So in general,</p>
+<p>you could say that two of it,</p>
+<p>you know,</p>
+<p>event A causes event B</p>
+<p>if it's the case</p>
+<p>that the output,</p>
+<p>that the,</p>
+<p>the collection of tokens</p>
+<p>that was produced</p>
+<p>in the output of event A</p>
+<p>has a non-zero intersection</p>
+<p>with the collection tokens</p>
+<p>that were ingested</p>
+<p>as part of the input</p>
+<p>of event B.</p>
+<p>And that's a very tempting,</p>
+<p>very natural definition</p>
+<p>of kind of causality</p>
+<p>in these systems.</p>
+<p>Turns out it doesn't really work.</p>
+<p>I mean,</p>
+<p>it works pretty well,</p>
+<p>but there are cases</p>
+<p>in which it fails</p>
+<p>and it fails pretty spectacularly.</p>
+<p>And so the kind of canonical case</p>
+<p>where it fails spectacularly</p>
+<p>is that you can have events</p>
+<p>that don't actually do anything,</p>
+<p>right?</p>
+<p>You can have events</p>
+<p>that just kind of touch an edge,</p>
+<p>touch a token</p>
+<p>and output it again unchanged,</p>
+<p>but maybe,</p>
+<p>you know,</p>
+<p>change the name.</p>
+<p>It modifies the name.</p>
+<p>It modifies the identifier,</p>
+<p>but it doesn't actually change</p>
+<p>anything about the structure</p>
+<p>of the hypergraph</p>
+<p>or the Turing machine state</p>
+<p>or whatever.</p>
+<p>So pretty obviously</p>
+<p>that event doesn't matter.</p>
+<p>It can't,</p>
+<p>it shouldn't be causally related</p>
+<p>to anything in the future,</p>
+<p>but because it modifies,</p>
+<p>because it ingested the edge</p>
+<p>and then didn't do anything,</p>
+<p>you know,</p>
+<p>did some identity operation,</p>
+<p>but then,</p>
+<p>you know,</p>
+<p>produced it in the output again,</p>
+<p>it will kind of register</p>
+<p>as being causally related</p>
+<p>to any future event</p>
+<p>that used that edge,</p>
+<p>even though it didn't</p>
+<p>make any difference.</p>
+<p>That's just one</p>
+<p>very obvious example.</p>
+<p>There are other cases</p>
+<p>where it became clear</p>
+<p>that whatever this thing was,</p>
+<p>whatever this algorithm</p>
+<p>was detecting,</p>
+<p>it wasn't really causality.</p>
+<p>So I tried to think about,</p>
+<p>you know,</p>
+<p>what's a more sensible</p>
+<p>definition of causality,</p>
+<p>and I started working</p>
+<p>on things to do with,</p>
+<p>you know,</p>
+<p>a slightly kind of</p>
+<p>blockchain inspired ideas</p>
+<p>where you say,</p>
+<p>okay,</p>
+<p>well,</p>
+<p>rather than just arbitrarily</p>
+<p>assigning,</p>
+<p>you know,</p>
+<p>identifiers to these tokens</p>
+<p>every time they're created,</p>
+<p>what if I recursively</p>
+<p>construct the identifier</p>
+<p>of the token</p>
+<p>based on its causal history?</p>
+<p>So in other words,</p>
+<p>each token,</p>
+<p>like each hyper edge</p>
+<p>or each state in my,</p>
+<p>each tape square</p>
+<p>on my Turing machine tape,</p>
+<p>the identifier is not just</p>
+<p>some random number</p>
+<p>that gets generated</p>
+<p>by my algorithm,</p>
+<p>but instead,</p>
+<p>its identifier</p>
+<p>is a directive graph</p>
+<p>representation</p>
+<p>of its complete causal history.</p>
+<p>Well,</p>
+<p>then kind of recursively,</p>
+<p>its identifier</p>
+<p>can only change</p>
+<p>if the causal history</p>
+<p>was updated,</p>
+<p>and so you don't end up</p>
+<p>with these kind of</p>
+<p>spurious causal relations</p>
+<p>that I described before.</p>
+<p>So that seemed like</p>
+<p>one tempting way</p>
+<p>of resolving this problem,</p>
+<p>but then I realized,</p>
+<p>actually,</p>
+<p>there's a much more</p>
+<p>fundamental problem.</p>
+<p>There's a philosophical problem</p>
+<p>with the way</p>
+<p>that we're thinking</p>
+<p>about causality,</p>
+<p>which is that</p>
+<p>it's not really,</p>
+<p>you know,</p>
+<p>so,</p>
+<p>okay,</p>
+<p>this is a long tangent,</p>
+<p>which I'll talk about</p>
+<p>a little bit,</p>
+<p>but I won't get into</p>
+<p>the complete details</p>
+<p>unless people are interested,</p>
+<p>but I ended up talking</p>
+<p>to a bunch of philosophers</p>
+<p>who,</p>
+<p>you know,</p>
+<p>who worked on causality</p>
+<p>and people who worked</p>
+<p>on parallel programming</p>
+<p>and quantum information theory</p>
+<p>and other places</p>
+<p>where causality was studied</p>
+<p>and asked them</p>
+<p>kind of basically,</p>
+<p>what do you mean by causality?</p>
+<p>What is causality?</p>
+<p>What is this thing</p>
+<p>we're trying to define?</p>
+<p>And in some form or another,</p>
+<p>all of the definitions</p>
+<p>boil down to,</p>
+<p>you know,</p>
+<p>event A causes event B</p>
+<p>if,</p>
+<p>had event A not occurred,</p>
+<p>then event B</p>
+<p>would not have occurred.</p>
+<p>So in other words,</p>
+<p>you need a counterfactual.</p>
+<p>You need some possible history,</p>
+<p>some possible world</p>
+<p>in which event A</p>
+<p>didn't happen.</p>
+<p>But if you're reasoning</p>
+<p>about a purely deterministic</p>
+<p>event system,</p>
+<p>like a Turing machine,</p>
+<p>that doesn't make any sense.</p>
+<p>Because if you're,</p>
+<p>you know,</p>
+<p>if you have a single</p>
+<p>Turing machine transition function,</p>
+<p>there is no possible world</p>
+<p>in which that transition function</p>
+<p>didn't fire in that particular way.</p>
+<p>Because if it didn't fire</p>
+<p>in that particular way,</p>
+<p>you would not be reasoning</p>
+<p>about that Turing machine anymore.</p>
+<p>You'd be reasoning</p>
+<p>about a different Turing machine.</p>
+<p>So suddenly this,</p>
+<p>you know,</p>
+<p>to make sense of these notions</p>
+<p>of causality,</p>
+<p>you need a kind of</p>
+<p>Leibnizian,</p>
+<p>you know,</p>
+<p>modalities view of reality</p>
+<p>that just doesn't exist</p>
+<p>for these deterministic</p>
+<p>computational systems.</p>
+<p>So either you need</p>
+<p>to define computation,</p>
+<p>you need to define causality</p>
+<p>only at the multi-way level,</p>
+<p>only at the level</p>
+<p>where you have many computations</p>
+<p>or possibly all computations</p>
+<p>happening in parallel,</p>
+<p>and then you can define</p>
+<p>causality relative to all of,</p>
+<p>you know,</p>
+<p>relative between them.</p>
+<p>Or you were kind of hosed,</p>
+<p>right?</p>
+<p>There wasn't really,</p>
+<p>you know,</p>
+<p>that seemed like the only kind</p>
+<p>of,</p>
+<p>the only get out.</p>
+<p>Or you need some fundamentally</p>
+<p>new philosophical theory</p>
+<p>of causality</p>
+<p>that I was not qualified</p>
+<p>to produce.</p>
+<p>And so,</p>
+<p>so that's,</p>
+<p>again,</p>
+<p>part of the reason</p>
+<p>what,</p>
+<p>part of what motivated</p>
+<p>this general research program,</p>
+<p>which is trying to think</p>
+<p>about this category</p>
+<p>of not just a single computation</p>
+<p>and with a single sequence</p>
+<p>of data structures,</p>
+<p>because it's clear</p>
+<p>that you can't,</p>
+<p>in a philosophically meaningful way,</p>
+<p>assign causality in that case,</p>
+<p>but rather,</p>
+<p>you know,</p>
+<p>looking at the algebraic structure</p>
+<p>of the category</p>
+<p>of all possible computations</p>
+<p>and all possible data structures</p>
+<p>and in that situation,</p>
+<p>there is a notion of causality</p>
+<p>you can equip that with.</p>
+<p>And there's a nice,</p>
+<p>again,</p>
+<p>a nice mathematical description</p>
+<p>in terms of,</p>
+<p>in terms of weak two categories</p>
+<p>and so on,</p>
+<p>which again,</p>
+<p>I can,</p>
+<p>I can talk about</p>
+<p>if people are interested.</p>
+<p>But,</p>
+<p>but yeah,</p>
+<p>so it's clear that these things</p>
+<p>are very deeply related,</p>
+<p>that this,</p>
+<p>this sort of theory</p>
+<p>of the category of computations</p>
+<p>and data structures</p>
+<p>and the theory</p>
+<p>of how you assign causality</p>
+<p>in a meaningful way</p>
+<p>are very deeply related.</p>
+<p>And I'll just mention</p>
+<p>one other thing on that topic,</p>
+<p>which is,</p>
+<p>again,</p>
+<p>just an area</p>
+<p>which I find</p>
+<p>quite exciting</p>
+<p>because it's,</p>
+<p>it's an unexpected spin out</p>
+<p>of this program,</p>
+<p>which is that,</p>
+<p>so once you have a way</p>
+<p>of consistently applying causality</p>
+<p>at a per token level</p>
+<p>in these systems,</p>
+<p>it gives you a way</p>
+<p>of vastly generalizing</p>
+<p>what computation is.</p>
+<p>And you can,</p>
+<p>in particular,</p>
+<p>you can get,</p>
+<p>you can derive something</p>
+<p>which I call,</p>
+<p>well,</p>
+<p>which I'm provisionally calling</p>
+<p>covariance computation,</p>
+<p>although it should probably</p>
+<p>have a better name than that,</p>
+<p>which is,</p>
+<p>so,</p>
+<p>you know,</p>
+<p>in our traditional</p>
+<p>kind of Turing-Church</p>
+<p>type,</p>
+<p>you know,</p>
+<p>type models of computation,</p>
+<p>computation is a purely</p>
+<p>forwards-in-time operation,</p>
+<p>you know,</p>
+<p>so at every point,</p>
+<p>you know,</p>
+<p>you have a complete data structure</p>
+<p>and computation is about deriving</p>
+<p>what is the next state</p>
+<p>of that data structure.</p>
+<p>So in a sense,</p>
+<p>it's only a forwards-in-time thing.</p>
+<p>You might be able to kind of</p>
+<p>reconstruct the initial conditions</p>
+<p>based on some subsequent</p>
+<p>data structures,</p>
+<p>you might be able to go backwards</p>
+<p>in time,</p>
+<p>but that's essentially</p>
+<p>what you're doing.</p>
+<p>But then,</p>
+<p>you could imagine,</p>
+<p>okay,</p>
+<p>suppose I don't know</p>
+<p>the complete state</p>
+<p>of my data structure.</p>
+<p>I know,</p>
+<p>instead,</p>
+<p>I know one part</p>
+<p>of my data structure,</p>
+<p>but I know it,</p>
+<p>I know its history</p>
+<p>throughout all of time.</p>
+<p>So you could imagine,</p>
+<p>say,</p>
+<p>an elementary cellular automaton</p>
+<p>or a Turing machine tape</p>
+<p>where you know nothing</p>
+<p>about the tape,</p>
+<p>but you know the state</p>
+<p>of one cell</p>
+<p>and you know it,</p>
+<p>you know,</p>
+<p>throughout all of time.</p>
+<p>And then the question is,</p>
+<p>what can you infer</p>
+<p>about the rest of the computation?</p>
+<p>And it turns out that</p>
+<p>for those kind of structured</p>
+<p>array type systems,</p>
+<p>you can infer a lot.</p>
+<p>You can actually evolve</p>
+<p>the system,</p>
+<p>not forwards in time,</p>
+<p>but sideways in space</p>
+<p>and obtain a kind of</p>
+<p>causal diamond that,</p>
+<p>so,</p>
+<p>okay,</p>
+<p>the top left,</p>
+<p>top right,</p>
+<p>bottom left,</p>
+<p>bottom right corners</p>
+<p>are undetermined,</p>
+<p>but everything inside</p>
+<p>that diamond can be determined</p>
+<p>just from that one row</p>
+<p>or that one column</p>
+<p>that you know,</p>
+<p>you know,</p>
+<p>sort of extended</p>
+<p>throughout time.</p>
+<p>And so,</p>
+<p>you know,</p>
+<p>and that's a fundamentally</p>
+<p>different notion of computation.</p>
+<p>So it's a version of computation</p>
+<p>which is not forwards in time,</p>
+<p>but sideways in space.</p>
+<p>But you can also have,</p>
+<p>version of computation</p>
+<p>that are sideways</p>
+<p>and branchial space</p>
+<p>where you know,</p>
+<p>you know,</p>
+<p>one complete state,</p>
+<p>you know,</p>
+<p>you know one branch</p>
+<p>of the multi-way system</p>
+<p>extended throughout time.</p>
+<p>And then the question is,</p>
+<p>what else can you infer</p>
+<p>about the,</p>
+<p>you know,</p>
+<p>but the rest of the multi-way system</p>
+<p>just from that one branch?</p>
+<p>And again,</p>
+<p>the answer turns out to be,</p>
+<p>you can infer a lot,</p>
+<p>but not everything.</p>
+<p>And so just like in,</p>
+<p>the reason I call this</p>
+<p>covariant computation</p>
+<p>is because it's very analogous</p>
+<p>to what happens in relativity.</p>
+<p>So in relativity,</p>
+<p>once you buy into this notion</p>
+<p>of general covariance</p>
+<p>and the notion that space</p>
+<p>and time are kind of</p>
+<p>fundamentally the same thing,</p>
+<p>then you have to somehow</p>
+<p>relax your traditional view</p>
+<p>of what dynamical systems do,</p>
+<p>which is,</p>
+<p>you know,</p>
+<p>we typically think of systems</p>
+<p>as evolving,</p>
+<p>you know,</p>
+<p>you have a snapshot</p>
+<p>of your data</p>
+<p>at,</p>
+<p>you know,</p>
+<p>localized on a,</p>
+<p>you know,</p>
+<p>for a particular state of space,</p>
+<p>you know,</p>
+<p>on a particular space</p>
+<p>like hypersurface.</p>
+<p>And then your laws of physics</p>
+<p>tell you how that space</p>
+<p>like hypersurface evolves</p>
+<p>forwards or backwards in time.</p>
+<p>But in a covariant picture</p>
+<p>of physics,</p>
+<p>then you must also allow</p>
+<p>for,</p>
+<p>you know,</p>
+<p>your initial data</p>
+<p>to be defined</p>
+<p>on a time-like hypersurface</p>
+<p>and for you to be able</p>
+<p>to evolve that time-like hypersurface</p>
+<p>sideways in space</p>
+<p>or mixtures of the two</p>
+<p>and so on.</p>
+<p>And so it's clear</p>
+<p>that there's a very general,</p>
+<p>a vast generalization</p>
+<p>of ordinary computation theory</p>
+<p>that you can,</p>
+<p>that you can construct</p>
+<p>that's kind of physics inspired</p>
+<p>in that sense.</p>
+<p>In which you can have</p>
+<p>mixing of space,</p>
+<p>time,</p>
+<p>and kind of multi-way directions</p>
+<p>in a completely consistent way.</p>
+<p>But to make those things consistent,</p>
+<p>you need to have a definite way</p>
+<p>of assigning causality.</p>
+<p>You need to,</p>
+<p>because,</p>
+<p>you know,</p>
+<p>any computation that you do,</p>
+<p>even if it permutes</p>
+<p>the directions of space</p>
+<p>and time</p>
+<p>and branchial space</p>
+<p>and so on,</p>
+<p>must always somehow</p>
+<p>preserve the causal structure.</p>
+<p>It has to respect</p>
+<p>the causal structure</p>
+<p>of what's going on</p>
+<p>or else it's inconsistent.</p>
+<p>And so this question</p>
+<p>of how you construct</p>
+<p>a covariant theory</p>
+<p>of computation</p>
+<p>is,</p>
+<p>it turns out,</p>
+<p>intimately related</p>
+<p>to the question</p>
+<p>of how you take</p>
+<p>this category</p>
+<p>of computations</p>
+<p>and data structures</p>
+<p>and equip it</p>
+<p>with a consistent notion</p>
+<p>of causality.</p>
+<p>So,</p>
+<p>very interesting question.</p>
+<p>We could talk about</p>
+<p>that at great length.</p>
+<p>Okay.</p>
+<p>To follow with a few pieces,</p>
+<p>it's very related</p>
+<p>to Professor Mike Levin's</p>
+<p>notion of polycomputing</p>
+<p>and about the necessity</p>
+<p>for a causality concept</p>
+<p>to be created</p>
+<p>or deployed</p>
+<p>when the question arises,</p>
+<p>was that me?</p>
+<p>Was that action</p>
+<p>or change due to me?</p>
+<p>Also,</p>
+<p>connectivities,</p>
+<p>even just in the</p>
+<p>neuroimaging setting,</p>
+<p>which is kind of</p>
+<p>the cradle</p>
+<p>from which active inference</p>
+<p>and free energy principle</p>
+<p>arise from,</p>
+<p>it's really important</p>
+<p>to distinguish</p>
+<p>the functional,</p>
+<p>effective,</p>
+<p>and anatomical</p>
+<p>connectivities.</p>
+<p>And that was one</p>
+<p>of the points</p>
+<p>that Toby Sinclair-Smith</p>
+<p>made in his dissertation,</p>
+<p>which is that</p>
+<p>a lot of times</p>
+<p>the Bayesian graphs</p>
+<p>don't convey</p>
+<p>all of the necessary</p>
+<p>and sufficient information</p>
+<p>to make the</p>
+<p>reproducible computation,</p>
+<p>which is one of those</p>
+<p>kind of,</p>
+<p>what's missing from the graph</p>
+<p>is what motivated</p>
+<p>a lot of the category theory</p>
+<p>developments</p>
+<p>in active inference,</p>
+<p>as well as some of the</p>
+<p>formal ontological works</p>
+<p>with Sumo</p>
+<p>and Dave here</p>
+<p>and Adam Peace</p>
+<p>because implementing</p>
+<p>modal and higher order</p>
+<p>logics is really important</p>
+<p>if it's a possible situation</p>
+<p>where a mind</p>
+<p>can have a perspective</p>
+<p>on a mind</p>
+<p>and all these things</p>
+<p>like that.</p>
+<p>Then the</p>
+<p>ant Turing tape,</p>
+<p>the tape is the pheromone</p>
+<p>and then the decision space</p>
+<p>is the nestmates</p>
+<p>scrolling.</p>
+<p>So when you had</p>
+<p>a deterministic Turing tape,</p>
+<p>that was like a movie</p>
+<p>because the nestmate</p>
+<p>couldn't make any choices</p>
+<p>except for internal action,</p>
+<p>which is kind of</p>
+<p>side topic.</p>
+<p>But it couldn't make</p>
+<p>any choices on the tape.</p>
+<p>Whereas when there's</p>
+<p>a multi-way,</p>
+<p>which is basically</p>
+<p>in active inference,</p>
+<p>what we talk about</p>
+<p>in terms of affordances</p>
+<p>and the policy space</p>
+<p>and the temporal depth</p>
+<p>of planning,</p>
+<p>counterfactuals on action</p>
+<p>and action conditioned</p>
+<p>world transition states</p>
+<p>like the B matrix,</p>
+<p>all those kinds of topics</p>
+<p>come into play</p>
+<p>because if you want</p>
+<p>to have a causal buffer</p>
+<p>or grasp on</p>
+<p>what is it that</p>
+<p>something that could do</p>
+<p>otherwise does,</p>
+<p>what does it cause to do</p>
+<p>when it does or doesn't</p>
+<p>do otherwise,</p>
+<p>you need something</p>
+<p>like a deterministic handle</p>
+<p>around what could be</p>
+<p>a probabilistic</p>
+<p>or deterministic</p>
+<p>but at least multi-way</p>
+<p>map of some kind</p>
+<p>of cognitive territory.</p>
+<p>That's a very,</p>
+<p>very interesting perspective.</p>
+<p>I mean,</p>
+<p>so it's,</p>
+<p>again,</p>
+<p>I'm betraying my ignorance</p>
+<p>of active inference theory here,</p>
+<p>but,</p>
+<p>you know,</p>
+<p>it sounds almost like,</p>
+<p>so these,</p>
+<p>these,</p>
+<p>when you have this</p>
+<p>kind of interplay</p>
+<p>between,</p>
+<p>I don't know,</p>
+<p>the,</p>
+<p>you know,</p>
+<p>between sort of,</p>
+<p>you know,</p>
+<p>epistemic versus,</p>
+<p>is it pragmatic?</p>
+<p>There's,</p>
+<p>you know,</p>
+<p>there's sort of two aspects</p>
+<p>of,</p>
+<p>you know,</p>
+<p>of how,</p>
+<p>how this kind of speculative</p>
+<p>passive cognition works.</p>
+<p>I,</p>
+<p>this is something</p>
+<p>which I thought about,</p>
+<p>I mean,</p>
+<p>I thought about</p>
+<p>in a completely different context</p>
+<p>in relation to things</p>
+<p>like quantum information theory,</p>
+<p>but I wonder if it's,</p>
+<p>I wonder if there's</p>
+<p>a potential overlap there</p>
+<p>between,</p>
+<p>I mean,</p>
+<p>so there are certain</p>
+<p>situations when thinking</p>
+<p>about these kinds of systems</p>
+<p>purely abstractly</p>
+<p>where you kind of need</p>
+<p>two different notions</p>
+<p>of causality.</p>
+<p>You need a kind of</p>
+<p>speculative notion</p>
+<p>that can be,</p>
+<p>that's dynamic,</p>
+<p>that can be rewritten,</p>
+<p>and then you need</p>
+<p>a kind of definite notion</p>
+<p>that's,</p>
+<p>that's immutable,</p>
+<p>right?</p>
+<p>And so,</p>
+<p>you know,</p>
+<p>a classic example of this is,</p>
+<p>you know,</p>
+<p>for something like</p>
+<p>quantum information theory,</p>
+<p>right?</p>
+<p>So you can have</p>
+<p>superpositions of causal orders,</p>
+<p>you can have quantum switches,</p>
+<p>you can have,</p>
+<p>you know,</p>
+<p>you can have,</p>
+<p>causal structure</p>
+<p>that exists in,</p>
+<p>in,</p>
+<p>in superpositions</p>
+<p>of different kind</p>
+<p>of directed graph states,</p>
+<p>but then once you apply</p>
+<p>Hermitian operator,</p>
+<p>once you apply a measurement,</p>
+<p>the causal structure</p>
+<p>is definite</p>
+<p>because then everything</p>
+<p>is relativistic</p>
+<p>and you have covariance.</p>
+<p>And you have similar things</p>
+<p>as I understand</p>
+<p>with,</p>
+<p>with,</p>
+<p>with,</p>
+<p>with distributed computing,</p>
+<p>with parallel computing,</p>
+<p>where you,</p>
+<p>you,</p>
+<p>you potentially allow</p>
+<p>for speculative execution</p>
+<p>for a certain number</p>
+<p>of steps</p>
+<p>where you're kind of</p>
+<p>treeing up this multi-way</p>
+<p>system and you have</p>
+<p>a superposition</p>
+<p>or,</p>
+<p>you know,</p>
+<p>at least a collection</p>
+<p>of possible causal histories,</p>
+<p>but then eventually</p>
+<p>you have to choose</p>
+<p>an actual operation to do</p>
+<p>and then the causal history,</p>
+<p>you know,</p>
+<p>you have this big block</p>
+<p>that gets laid down</p>
+<p>and,</p>
+<p>you know,</p>
+<p>and then the causal history</p>
+<p>is,</p>
+<p>is somehow definite.</p>
+<p>And I wonder</p>
+<p>if there's a,</p>
+<p>there's a way</p>
+<p>of thinking about,</p>
+<p>sort of,</p>
+<p>you know,</p>
+<p>you know,</p>
+<p>speculative</p>
+<p>execution of agents</p>
+<p>and the interrelation</p>
+<p>between that speculative</p>
+<p>execution and,</p>
+<p>you know,</p>
+<p>and agent actions</p>
+<p>in terms of,</p>
+<p>again,</p>
+<p>this interplay</p>
+<p>between,</p>
+<p>you know,</p>
+<p>between two different</p>
+<p>causal structures,</p>
+<p>between a dynamic one</p>
+<p>versus an immutable one.</p>
+<p>Yeah.</p>
+<p>Well,</p>
+<p>one funny way</p>
+<p>to think about that</p>
+<p>is like a single agent</p>
+<p>that has this</p>
+<p>counterfactual</p>
+<p>contemplative ability</p>
+<p>could be</p>
+<p>in the center place</p>
+<p>foraging arena</p>
+<p>and then imagining</p>
+<p>with discrete</p>
+<p>branching paths</p>
+<p>like a chess algorithm</p>
+<p>or like a</p>
+<p>probability distribution</p>
+<p>could be like</p>
+<p>imagining where</p>
+<p>it could go.</p>
+<p>But not all</p>
+<p>cognitive things</p>
+<p>are the kind of things</p>
+<p>that make plans</p>
+<p>of their own actions</p>
+<p>whereas like</p>
+<p>an ant colony</p>
+<p>has nest mates</p>
+<p>on the ground.</p>
+<p>So they're actually</p>
+<p>realizing</p>
+<p>in these finite</p>
+<p>trajectories</p>
+<p>the real</p>
+<p>exoskeleton</p>
+<p>on the ground</p>
+<p>that plays out</p>
+<p>ending up</p>
+<p>with those</p>
+<p>simulated trajectories</p>
+<p>could have been</p>
+<p>simulated</p>
+<p>or could have been</p>
+<p>probabilistically blurred</p>
+<p>but that's kind of</p>
+<p>the difference</p>
+<p>between like</p>
+<p>the embodiment</p>
+<p>and like</p>
+<p>the body moving</p>
+<p>there for a mammal</p>
+<p>or for an animal</p>
+<p>and then like</p>
+<p>the mind simulating it</p>
+<p>and then just to the</p>
+<p>um</p>
+<p>the epistemic</p>
+<p>and pragmatic</p>
+<p>trade-off</p>
+<p>in decision making.</p>
+<p>So</p>
+<p>let's just say that</p>
+<p>we're in that</p>
+<p>multi-way</p>
+<p>moment.</p>
+<p>We'll just have</p>
+<p>two options</p>
+<p>two different slices</p>
+<p>of the B</p>
+<p>variable</p>
+<p>and the policy</p>
+<p>selection question</p>
+<p>is about</p>
+<p>which way</p>
+<p>are you going to go</p>
+<p>which affordance</p>
+<p>in the moment.</p>
+<p>Policy is basically</p>
+<p>the affordances</p>
+<p>for the time horizon</p>
+<p>of planning</p>
+<p>but if it's only</p>
+<p>one time step</p>
+<p>or just the next one</p>
+<p>then the affordance</p>
+<p>space is just</p>
+<p>the actions</p>
+<p>that can be taken.</p>
+<p>Um</p>
+<p>one way</p>
+<p>to</p>
+<p>make it so that</p>
+<p>what happens</p>
+<p>is the likeliest thing</p>
+<p>path of least action</p>
+<p>which is kind of</p>
+<p>what opens up</p>
+<p>the whole physics</p>
+<p>of cognitive systems</p>
+<p>angle</p>
+<p>in contrast</p>
+<p>to like a</p>
+<p>reinforcement</p>
+<p>reward learning</p>
+<p>perspective</p>
+<p>what makes it</p>
+<p>the likeliest thing</p>
+<p>is starting</p>
+<p>with habit</p>
+<p>so it could just</p>
+<p>be drawn from</p>
+<p>a fixed habitual</p>
+<p>distribution</p>
+<p>however for</p>
+<p>adaptive action</p>
+<p>habit gets up</p>
+<p>weighted with</p>
+<p>expected free energy</p>
+<p>which is a</p>
+<p>functional that</p>
+<p>takes in</p>
+<p>the policy space</p>
+<p>which is summing</p>
+<p>up to one</p>
+<p>because there's a</p>
+<p>probability over</p>
+<p>actions</p>
+<p>and then</p>
+<p>up weighting</p>
+<p>policies</p>
+<p>according to</p>
+<p>their score</p>
+<p>on expected</p>
+<p>free energy</p>
+<p>which is</p>
+<p>consisting of</p>
+<p>epistemic plus</p>
+<p>pragmatic value</p>
+<p>so how much</p>
+<p>is it going to</p>
+<p>align the</p>
+<p>observations to</p>
+<p>be what I</p>
+<p>like to see</p>
+<p>that's pragmatic</p>
+<p>value with a</p>
+<p>preference</p>
+<p>what is my</p>
+<p>expected information</p>
+<p>gain</p>
+<p>that's the</p>
+<p>epistemic value</p>
+<p>so how those</p>
+<p>are parameterized</p>
+<p>make the agent</p>
+<p>that always</p>
+<p>seeks out new</p>
+<p>information</p>
+<p>or always goes</p>
+<p>with habit</p>
+<p>there's so much</p>
+<p>policy space</p>
+<p>because the</p>
+<p>knobs are</p>
+<p>not just</p>
+<p>simple sliders</p>
+<p>or there are</p>
+<p>multiple knobs</p>
+<p>even though</p>
+<p>they are seemingly</p>
+<p>quite</p>
+<p>consilient and</p>
+<p>minimal</p>
+<p>like it's hard</p>
+<p>to imagine</p>
+<p>less</p>
+<p>yet especially</p>
+<p>when there's</p>
+<p>richness in the</p>
+<p>environment</p>
+<p>even simple</p>
+<p>systems can</p>
+<p>have like</p>
+<p>enormously</p>
+<p>complex or</p>
+<p>adaptive</p>
+<p>behaviors</p>
+<p>I'll just leave</p>
+<p>it there</p>
+<p>no I never</p>
+<p>really thought</p>
+<p>of the</p>
+<p>so okay</p>
+<p>the yeah</p>
+<p>two things</p>
+<p>right so</p>
+<p>first of all</p>
+<p>the perspective</p>
+<p>of you know</p>
+<p>thinking of an</p>
+<p>ant colony</p>
+<p>or a termite</p>
+<p>colony or</p>
+<p>something as</p>
+<p>being you know</p>
+<p>akin to a</p>
+<p>mind</p>
+<p>that's you</p>
+<p>know I was</p>
+<p>familiar with</p>
+<p>that perspective</p>
+<p>from people</p>
+<p>like Dan</p>
+<p>Dennett and</p>
+<p>so on but</p>
+<p>the idea that</p>
+<p>the individual</p>
+<p>ants in that</p>
+<p>colony are in</p>
+<p>a sense enact</p>
+<p>they're kind of</p>
+<p>the hardware</p>
+<p>enacting the</p>
+<p>speculative</p>
+<p>execution</p>
+<p>that's a</p>
+<p>very interesting</p>
+<p>idea</p>
+<p>it's not</p>
+<p>speculative</p>
+<p>for them</p>
+<p>well yeah</p>
+<p>no exactly</p>
+<p>but it's sort</p>
+<p>of from the</p>
+<p>mind's perspective</p>
+<p>I guess it's</p>
+<p>almost like</p>
+<p>speculative</p>
+<p>execution but</p>
+<p>it's speculative</p>
+<p>execution that's</p>
+<p>being actuated</p>
+<p>in the physical</p>
+<p>world which is</p>
+<p>which is very</p>
+<p>interesting I</p>
+<p>yeah I not</p>
+<p>really thought</p>
+<p>about that</p>
+<p>before</p>
+<p>but then yeah</p>
+<p>okay so</p>
+<p>then the</p>
+<p>yeah the</p>
+<p>point you're</p>
+<p>making about</p>
+<p>connection to</p>
+<p>free energy</p>
+<p>and sort of</p>
+<p>habit formation</p>
+<p>and so on</p>
+<p>okay so</p>
+<p>I wonder if</p>
+<p>so you know</p>
+<p>if we're</p>
+<p>thinking about</p>
+<p>a you know</p>
+<p>a model of</p>
+<p>cognition in</p>
+<p>which there</p>
+<p>are these two</p>
+<p>different you</p>
+<p>know two</p>
+<p>distinct causality</p>
+<p>notions the</p>
+<p>immutable versus</p>
+<p>the dynamic</p>
+<p>one I wonder</p>
+<p>if the so</p>
+<p>you gave a</p>
+<p>very very nice</p>
+<p>account of how</p>
+<p>you know habit</p>
+<p>formation sort</p>
+<p>of works in</p>
+<p>these kinds of</p>
+<p>formalisms based</p>
+<p>on you know</p>
+<p>prior experience</p>
+<p>of expected</p>
+<p>you know free</p>
+<p>energy so</p>
+<p>I wonder if</p>
+<p>there's a way</p>
+<p>of describing</p>
+<p>that abstractly</p>
+<p>in terms of</p>
+<p>something like</p>
+<p>you know you</p>
+<p>you perform the</p>
+<p>speculative execution</p>
+<p>step where</p>
+<p>you know you're</p>
+<p>treeing out</p>
+<p>several multi-way</p>
+<p>possibilities and</p>
+<p>initially you</p>
+<p>kind of you know</p>
+<p>you know nothing</p>
+<p>or you have no</p>
+<p>habits you're just</p>
+<p>kind of you're</p>
+<p>treeing everything</p>
+<p>out with kind of</p>
+<p>equal weighting</p>
+<p>but then you</p>
+<p>know for each</p>
+<p>possible part you're</p>
+<p>calculating either</p>
+<p>an actual or an</p>
+<p>expected free energy</p>
+<p>and then somehow</p>
+<p>you know in</p>
+<p>future speculative</p>
+<p>executions you</p>
+<p>weight those</p>
+<p>paths which you</p>
+<p>previously had found</p>
+<p>to have higher free</p>
+<p>energy as higher</p>
+<p>and so you're you</p>
+<p>know you're more</p>
+<p>likely to explore</p>
+<p>those and less</p>
+<p>likely to explore</p>
+<p>ones which are</p>
+<p>you know which</p>
+<p>have that lower</p>
+<p>expected value</p>
+<p>it feels like</p>
+<p>something something</p>
+<p>like that should</p>
+<p>should fit very</p>
+<p>very nicely into</p>
+<p>an algebraic</p>
+<p>semantics like</p>
+<p>this which would</p>
+<p>be interesting</p>
+<p>cool how about</p>
+<p>more questions from</p>
+<p>the chat</p>
+<p>okay upcycle club</p>
+<p>writes acknowledging</p>
+<p>the limitations of</p>
+<p>traditional entropy</p>
+<p>in multi-computations</p>
+<p>motivates us to</p>
+<p>develop context</p>
+<p>specific entropy</p>
+<p>metrics can you</p>
+<p>share some insights</p>
+<p>towards such</p>
+<p>efforts</p>
+<p>yeah I can</p>
+<p>certainly try</p>
+<p>so yes I mean</p>
+<p>the first point is</p>
+<p>that you know</p>
+<p>it's I think it</p>
+<p>was there's that</p>
+<p>famous conversation</p>
+<p>between John von</p>
+<p>Neumann and Claude</p>
+<p>Shannon where I think</p>
+<p>von Neumann famously</p>
+<p>said that like</p>
+<p>Shannon should call</p>
+<p>his measure entropy</p>
+<p>because no one knows</p>
+<p>what it means right</p>
+<p>and I submit that</p>
+<p>the reason no one</p>
+<p>knows what entropy</p>
+<p>means is because</p>
+<p>it's dependent I</p>
+<p>mean okay one of the</p>
+<p>reasons no one knows</p>
+<p>what entropy means is</p>
+<p>because it's dependent</p>
+<p>on exactly what we've</p>
+<p>been talking about</p>
+<p>it's dependent on the</p>
+<p>equivalence function of</p>
+<p>the observer so it's</p>
+<p>one of these things</p>
+<p>like I don't know</p>
+<p>maybe this is a stupid</p>
+<p>analogy to use but</p>
+<p>it's sorry I'm I'm</p>
+<p>going to go off on a</p>
+<p>tangent but I promise</p>
+<p>it's sort of relevant</p>
+<p>but so one thing is</p>
+<p>okay one thing that</p>
+<p>always breaks my brain</p>
+<p>is when I try and</p>
+<p>think about like</p>
+<p>actuaries and life</p>
+<p>insurance policies</p>
+<p>because it's one of</p>
+<p>those areas where</p>
+<p>those models only</p>
+<p>make sense if</p>
+<p>they're not perfect</p>
+<p>in a sense right</p>
+<p>like so if you</p>
+<p>had an actuary who</p>
+<p>knew exactly how</p>
+<p>long everyone was</p>
+<p>going to live and</p>
+<p>somehow that</p>
+<p>information was kind</p>
+<p>of openly available</p>
+<p>there would be no</p>
+<p>like life insurance</p>
+<p>policies would be</p>
+<p>pointless it's but</p>
+<p>you know whereas</p>
+<p>also if you had a</p>
+<p>model that was</p>
+<p>completely hopeless</p>
+<p>of predicting how</p>
+<p>long people would</p>
+<p>live they would</p>
+<p>also be hope</p>
+<p>they would you</p>
+<p>know life insurance</p>
+<p>policies will also</p>
+<p>be pointless</p>
+<p>that is somehow</p>
+<p>the very existence</p>
+<p>of actuarial science</p>
+<p>relies on your</p>
+<p>model neither being</p>
+<p>perfect nor being</p>
+<p>awful it somehow</p>
+<p>has to exist</p>
+<p>somewhere in between</p>
+<p>and as I say</p>
+<p>that's something</p>
+<p>which I it's one</p>
+<p>of those topics</p>
+<p>where if I think</p>
+<p>about it for too</p>
+<p>long it all just</p>
+<p>stops making sense</p>
+<p>and entropy has</p>
+<p>very much that same</p>
+<p>character right</p>
+<p>because if you if</p>
+<p>you were Laplace's</p>
+<p>demon if you you</p>
+<p>know if you had</p>
+<p>perfect information</p>
+<p>about the system</p>
+<p>that you were</p>
+<p>observing there's no</p>
+<p>notion of entropy</p>
+<p>right it's just</p>
+<p>every you know</p>
+<p>every you know</p>
+<p>every micro state</p>
+<p>so that you know</p>
+<p>so you know the</p>
+<p>Boltzmann formula</p>
+<p>gives you an entropy</p>
+<p>value of zero</p>
+<p>where but you know</p>
+<p>the notion of entropy</p>
+<p>only exists once you</p>
+<p>take once you take</p>
+<p>that that perfect</p>
+<p>knowledge of a system</p>
+<p>and you coarse grain</p>
+<p>it you define as I</p>
+<p>was describing earlier</p>
+<p>you introduce an</p>
+<p>encoding function that</p>
+<p>is not 100%</p>
+<p>subjective so that</p>
+<p>now you are mapping</p>
+<p>certain distinct</p>
+<p>micro states onto the</p>
+<p>same coarse grained</p>
+<p>macro state and then</p>
+<p>now you can ask</p>
+<p>okay what's the</p>
+<p>number of micro</p>
+<p>states that you</p>
+<p>know exactly how</p>
+<p>coarse is my</p>
+<p>coarse graining</p>
+<p>what's the number</p>
+<p>of micro states</p>
+<p>consistent with this</p>
+<p>macro state what's</p>
+<p>the number of</p>
+<p>different values of</p>
+<p>my domain that gets</p>
+<p>mapped to a single</p>
+<p>point in my co</p>
+<p>domain of my</p>
+<p>encoding function and</p>
+<p>that's what entropy</p>
+<p>is and so it's it's</p>
+<p>very closely I mean it</p>
+<p>is effectively a</p>
+<p>measure of how good</p>
+<p>is my coarse</p>
+<p>graining so if you</p>
+<p>had perfect knowledge</p>
+<p>there's no entropy</p>
+<p>if you have no</p>
+<p>knowledge there's no</p>
+<p>entropy it relies upon</p>
+<p>you having a a not</p>
+<p>completely trivial but</p>
+<p>also not 100% you</p>
+<p>know a a slightly</p>
+<p>subjective but not</p>
+<p>100% subjective</p>
+<p>encoding function just</p>
+<p>like with life</p>
+<p>insurance policies but</p>
+<p>so the reason the</p>
+<p>reason I'm stating</p>
+<p>that is because so</p>
+<p>now it kind of I</p>
+<p>think from that</p>
+<p>perspective becomes a</p>
+<p>little bit clearer why</p>
+<p>there are all these</p>
+<p>different notions of</p>
+<p>entropy and why as the</p>
+<p>questioner was alluding</p>
+<p>to why entropy seems to</p>
+<p>be so as a concept</p>
+<p>seems to be so domain</p>
+<p>and system specific</p>
+<p>because every different</p>
+<p>system every different</p>
+<p>observer will in</p>
+<p>principle have a</p>
+<p>different set of</p>
+<p>encoding functions a</p>
+<p>different set of</p>
+<p>equivalence functions and</p>
+<p>each one will give rise</p>
+<p>to a different</p>
+<p>calculation of entropy</p>
+<p>and so one way that</p>
+<p>you can think about</p>
+<p>this program this</p>
+<p>program to try to</p>
+<p>understand the</p>
+<p>algebraic interplay</p>
+<p>between time</p>
+<p>complexity versus kind</p>
+<p>of equivalence in</p>
+<p>complexity or or you</p>
+<p>know computational</p>
+<p>irreducibility</p>
+<p>irreducibility versus</p>
+<p>versus multi</p>
+<p>computational</p>
+<p>irreducibility in</p>
+<p>some sense that is a</p>
+<p>program to try to</p>
+<p>understand how</p>
+<p>different definitions of</p>
+<p>entropy relate to each</p>
+<p>other in these kinds of</p>
+<p>systems and how you</p>
+<p>know if I if I take one</p>
+<p>idealized observer that</p>
+<p>has this equivalence</p>
+<p>function and I and I</p>
+<p>ask okay suppose now</p>
+<p>they communicate with</p>
+<p>this different observer</p>
+<p>with a different</p>
+<p>equivalence function they</p>
+<p>come to different</p>
+<p>understandings of what</p>
+<p>the entropy of the</p>
+<p>system is but what is</p>
+<p>the relationship between</p>
+<p>their measured entropy</p>
+<p>values there clearly is</p>
+<p>one that depends</p>
+<p>algebraically on some</p>
+<p>details of the of the</p>
+<p>distinction between their</p>
+<p>respective equivalence</p>
+<p>functions but there</p>
+<p>doesn't seem to be any</p>
+<p>yet any general theory for</p>
+<p>you know for how those</p>
+<p>things are related and</p>
+<p>that you know that's</p>
+<p>part of the kind of the</p>
+<p>raison d'être of this</p>
+<p>of this research</p>
+<p>program but yeah I</p>
+<p>mean okay so one thing</p>
+<p>that I will comment on</p>
+<p>although this is a</p>
+<p>little bit more</p>
+<p>speculative it's again</p>
+<p>sort of quasi</p>
+<p>philosophical comment</p>
+<p>but so one place where</p>
+<p>these notions of entropy</p>
+<p>become one place where</p>
+<p>the fact that you have</p>
+<p>all these different</p>
+<p>notions of entropy</p>
+<p>becomes kind of</p>
+<p>interesting is in</p>
+<p>fundamental physics so</p>
+<p>when you start to think</p>
+<p>about if you try to</p>
+<p>model physics and the</p>
+<p>universe in these</p>
+<p>fundamentally computational</p>
+<p>terms then one fairly</p>
+<p>generic sort of</p>
+<p>conclusion that you can</p>
+<p>reach is that</p>
+<p>gravitation general</p>
+<p>relativity is essentially</p>
+<p>an entropic</p>
+<p>phenomenon I mean</p>
+<p>Valinde and people</p>
+<p>have kind of talked</p>
+<p>about this in in in</p>
+<p>non-computational</p>
+<p>contexts too but it's</p>
+<p>very very natural if</p>
+<p>you start to think</p>
+<p>about space-like</p>
+<p>hypersurfaces being</p>
+<p>sort of hypergraphs</p>
+<p>then you know in order</p>
+<p>to obtain a continuum</p>
+<p>geometry that's</p>
+<p>compatible with the</p>
+<p>Einstein equations you</p>
+<p>need to have certain</p>
+<p>ergodicity you know you</p>
+<p>need to be able to make</p>
+<p>certain ergodicity</p>
+<p>assumptions on the</p>
+<p>rewriting which in turn</p>
+<p>sort of implies certain</p>
+<p>lower bounds on the</p>
+<p>entropy of the system so</p>
+<p>somehow gravitation general</p>
+<p>relativity is a is a</p>
+<p>coarse-grained theory you</p>
+<p>obtain in the limit as the</p>
+<p>entropy goes to infinity</p>
+<p>but something that's</p>
+<p>interesting is that quantum</p>
+<p>mechanics on the other</p>
+<p>hand is an idealization</p>
+<p>that you obtain in the</p>
+<p>limit as entropy goes to</p>
+<p>zero because in in in kind</p>
+<p>of one of these purely</p>
+<p>computational models of</p>
+<p>physics the quantum</p>
+<p>mechanical state of a</p>
+<p>system is described in</p>
+<p>terms of its multi-way</p>
+<p>structure it's described in</p>
+<p>terms of you know when i</p>
+<p>have a kind of a branching</p>
+<p>program like this let me</p>
+<p>find with these like this</p>
+<p>then you know i can divide</p>
+<p>it up into these into these</p>
+<p>sort of into these</p>
+<p>simultaneity surfaces and</p>
+<p>if i associate each each</p>
+<p>state of the program as</p>
+<p>being like the analog of a</p>
+<p>quantum eigenstate and the</p>
+<p>kind of path weightings as</p>
+<p>being an analogous to the</p>
+<p>amplitudes associated with</p>
+<p>these eigenstates i can</p>
+<p>quickly build up a</p>
+<p>description of this</p>
+<p>multi-way system in terms</p>
+<p>of the evolution of some</p>
+<p>discrete analog of the</p>
+<p>Schrodinger equation and</p>
+<p>it turns out you get a</p>
+<p>theory that is kind of</p>
+<p>equivalent of the</p>
+<p>mathematically isomorphic to</p>
+<p>standard quantum</p>
+<p>mechanics out of it so</p>
+<p>quantum mechanics is sort</p>
+<p>of you know inextricably</p>
+<p>bound up with with with</p>
+<p>the with the with the</p>
+<p>phenomenon of the</p>
+<p>multi-way system but if</p>
+<p>you take the entropy to</p>
+<p>infinity here then you're</p>
+<p>effectively then the</p>
+<p>sophistication of your</p>
+<p>of your equivalence</p>
+<p>function becomes</p>
+<p>arbitrarily large which</p>
+<p>means that you can</p>
+<p>describe any essentially</p>
+<p>any pair of states as</p>
+<p>being equivalent and so</p>
+<p>it turns out that the</p>
+<p>that actually the the</p>
+<p>quantum mechanical case</p>
+<p>corresponds to the zero</p>
+<p>entropy limit whereas the</p>
+<p>kind of general</p>
+<p>relativistic case</p>
+<p>corresponds to the</p>
+<p>infinite entropy limit</p>
+<p>but they're kind of two</p>
+<p>different two</p>
+<p>fundamentally different</p>
+<p>notions of entropy one</p>
+<p>of which exists at the</p>
+<p>single-way level one of</p>
+<p>which exists at the</p>
+<p>multi-way level and</p>
+<p>again the question of how</p>
+<p>these things interplay is</p>
+<p>partly why we're you know</p>
+<p>why we're investigating</p>
+<p>this and it's clear that</p>
+<p>that that question has</p>
+<p>links to these quite</p>
+<p>foundational questions</p>
+<p>in fundamental physics</p>
+<p>the ideal point mass and</p>
+<p>the ideal distribution with</p>
+<p>its center of gravity and</p>
+<p>all this Dave question for</p>
+<p>you from you yes um okay i i</p>
+<p>was can you hear yep go</p>
+<p>for it okay good um yeah i'd</p>
+<p>like to to veer down to</p>
+<p>the low road during this</p>
+<p>discussion uh maybe show</p>
+<p>business when people are</p>
+<p>trying to explain what is</p>
+<p>computational reducibility or</p>
+<p>irreducibility often you'll</p>
+<p>see a graph that says well</p>
+<p>now here's the the</p>
+<p>computation our target running</p>
+<p>along the fox is running</p>
+<p>along and behind it there's a</p>
+<p>team of algorithms that</p>
+<p>would like to catch it and</p>
+<p>yeah it either does or it</p>
+<p>doesn't outrun all of them</p>
+<p>but some can come can seem</p>
+<p>to come pretty close to</p>
+<p>catching it uh now there's</p>
+<p>something else people have</p>
+<p>been looking at for a few</p>
+<p>years the mandelbrot set the</p>
+<p>mandelbrot set really is a</p>
+<p>determined not only a</p>
+<p>deterministic computation it's</p>
+<p>a crisp computation every set</p>
+<p>every point either is inside</p>
+<p>the safe zone it's going to sit</p>
+<p>there and it's happy and quiet</p>
+<p>and it's you color it black</p>
+<p>or it flies off to infinity</p>
+<p>so you could it could just be a</p>
+<p>bunch of yes or no's but</p>
+<p>that's not the way people</p>
+<p>trying to calm down after a day</p>
+<p>of work want to look at it they</p>
+<p>want to say hey i want to see</p>
+<p>the 32 million deep mandelbrot set</p>
+<p>and i want to see it in colors so</p>
+<p>when you get the colors you ask</p>
+<p>how hard did i have to work how</p>
+<p>long did i have to grind along</p>
+<p>before i made that decision oh</p>
+<p>this is a point that's going to</p>
+<p>settle down and be quiet and</p>
+<p>uninteresting or it's going to fly</p>
+<p>out to infinity so you put colors</p>
+<p>it now i just wonder would it be</p>
+<p>interesting to anyone to fuzzify</p>
+<p>these gorgeous causal and</p>
+<p>multi-causal graphs and just show</p>
+<p>this is the portion where we had to</p>
+<p>work really hard rule 35 or what we</p>
+<p>had to go 15 000 generations before</p>
+<p>we gave up and said we're not going</p>
+<p>to follow this anymore the other one</p>
+<p>oh after 30 steps i i see</p>
+<p>that's a really interesting question</p>
+<p>and and i mean yes so uh i mean a</p>
+<p>couple comments on on on that i mean</p>
+<p>so what one is i mean you're right in</p>
+<p>the sense that yes the mandelbrot set is</p>
+<p>a very clean thing to describe i would i</p>
+<p>would say it's not i mean it's i would</p>
+<p>argue it's actually not a crisp computation</p>
+<p>in that sense for precisely for reasons</p>
+<p>of computational irreducibility because</p>
+<p>as you go arbitrarily close to the</p>
+<p>boundary of the set you can have</p>
+<p>complex numbers that stay that have a</p>
+<p>kind of indefinite period of transient</p>
+<p>right there's there's no upper bound on</p>
+<p>how long the you know z n squared plus</p>
+<p>c uh orbit can can last before it either</p>
+<p>diverges or converges to to you know to</p>
+<p>zero um and and and that statement that</p>
+<p>you know that there are there will be</p>
+<p>points that can you know that can remain</p>
+<p>that can get tied up in these orbits</p>
+<p>indefinitely is really a computational</p>
+<p>irreducibility statement um but yeah i</p>
+<p>mean your your question about uh you know</p>
+<p>could you could you construct so i mean</p>
+<p>that that that way of coloring points that</p>
+<p>are on the boundary of the mandelbrot set</p>
+<p>in in that way that this the so-called escape</p>
+<p>time algorithm right where you kind of</p>
+<p>where you color them based on how many steps</p>
+<p>that i need to do before it either converged</p>
+<p>or or escaped off you know above some or</p>
+<p>you know the complex numbers modulus</p>
+<p>uh exceeded some value um yeah it's an</p>
+<p>interesting idea that you could try and</p>
+<p>kind of construct geometrical representations</p>
+<p>of the space of possible computations based</p>
+<p>on a kind of escape time algorithm for</p>
+<p>computational irreducibility yeah so i mean</p>
+<p>there are the possible ways that you could</p>
+<p>do that right that you you say you know we</p>
+<p>know we've known since the days of turing</p>
+<p>that the halting problem for turing machines</p>
+<p>is undecidable right there's no finite</p>
+<p>computation that you can do that will</p>
+<p>determine with an arbitrary computer program</p>
+<p>will terminate in finite time so you could</p>
+<p>do it you could if you once you have a way</p>
+<p>of kind of geometrizing the space of possible</p>
+<p>computations which we which we have now as</p>
+<p>you say um yeah you could easily construct</p>
+<p>a kind of escape time algorithm where you</p>
+<p>know you have your analog of the mandelbrot</p>
+<p>set which is you know here's all the</p>
+<p>halting computations here are all the</p>
+<p>definitely non-halting computations and</p>
+<p>then there's some boundary of very fuzzy</p>
+<p>stuff where we kind of don't really know we</p>
+<p>have to do a lot of work and even then it's</p>
+<p>only heuristic um which is which is so</p>
+<p>yeah i mean very directly analogous um and</p>
+<p>then yeah and then the question becomes you</p>
+<p>know so in the in the case of the m set you</p>
+<p>know that there is some underlying theory</p>
+<p>mostly i think mostly due to like duadi and</p>
+<p>hubbard and people uh that allows you to kind</p>
+<p>of predict like you know if you if you have a</p>
+<p>finite filament you can like of the of the</p>
+<p>mandelbrot set you can kind of predict you</p>
+<p>know where that where that filament is going</p>
+<p>to be based on some complicated complex analysis</p>
+<p>argument and you know i mean the question</p>
+<p>is once you if you once you have a</p>
+<p>geometrization of the space of possible</p>
+<p>computations can you construct some general</p>
+<p>theory like the theory you know developed by</p>
+<p>by duadi and hubbard that tells you things</p>
+<p>about you know the topology of the computations</p>
+<p>where the certain regions of the of the space</p>
+<p>are connected whether they're compact whether</p>
+<p>you can make predict you know whether you can</p>
+<p>do a similar thing where you can make predictions</p>
+<p>based on the geometry of one part of the set</p>
+<p>you know where you can extrapolate to things</p>
+<p>about the geometry of another part of the set</p>
+<p>that's a really interesting question um and uh yeah</p>
+<p>again it's as with so many of these things it's</p>
+<p>it's one of these like i i don't know the answer</p>
+<p>but it's a good reason for investigating you know</p>
+<p>for pursuing the program right yeah from the</p>
+<p>wolfram side as well as from the active</p>
+<p>imprint side there's both the information</p>
+<p>topology and the information geometry side</p>
+<p>and not just in the kind of topological deep</p>
+<p>learning but rather looking at the topology of</p>
+<p>information flows which has been heavily</p>
+<p>developed in the category theory related to</p>
+<p>quantum information sciences and then the</p>
+<p>information geometries that allow us to do like</p>
+<p>machine learning type accelerated optimization</p>
+<p>and gradients all these kinds of concepts that</p>
+<p>come into play with geometry and we just don't get</p>
+<p>them from topology so topology kind of sketches</p>
+<p>the skeleton and then with the computers that we</p>
+<p>have the information geometry is at least on the</p>
+<p>data sets and the ways that we have computation</p>
+<p>today that's kind of like the quantitative numerical</p>
+<p>versus the formal um one question is are these all</p>
+<p>discrete state space discrete time formalisms because in</p>
+<p>active inference we often deal with hybrid models that</p>
+<p>have discrete and continuous state spaces and the same</p>
+<p>generative model or the same system of interest could be</p>
+<p>modeled with like a discrete time chapter seven or a continuous</p>
+<p>time chapter eight model so how does this deal with that</p>
+<p>that's a really good question i mean yeah so so so most of what i've been uh</p>
+<p>looking at so far has as consistent of um discrete time discrete space uh uh models</p>
+<p>for no particularly principled reason other than um they're easier to analyze</p>
+<p>right that that that for the most part because you can do explicit computations</p>
+<p>because they're kind of more amenable to constructive analysis um it's easier to do</p>
+<p>but the beauty of a lot of this you know that's one of the beauty of using beauties of using kind</p>
+<p>of general mathematical formalism is that once you develop it um it's often quite easy to extend</p>
+<p>even to into cases that you know to extrapolate to the cases that you didn't explicitly analyze so</p>
+<p>um in principle this formalism works for for you know for for continuum space and</p>
+<p>continuum time systems as well just with some you know with some slight modification so</p>
+<p>rather than having say branching and merging you instead have you know if you think about</p>
+<p>this thing as now being a dynamical system you know described on some symplectic manifold</p>
+<p>then these kind of branching merging operations of the multi-way system become uh effectively</p>
+<p>divergence and convergence operate you know differential operators are defined on the symplectic manifold</p>
+<p>and uh so you know one place where we can start to analyze that explicitly and which i've done a</p>
+<p>little bit of work on but it's one of these things which i want to go back to very soon um is looking</p>
+<p>at petri nets so petri nets are interesting because they are a discrete time discrete space system but they</p>
+<p>admit a continuum you know continuum space continuum time description in terms of ordinary differential</p>
+<p>equations and so on so they're they're a nice example of a hybrid kind of discrete event versus</p>
+<p>continuum event system where it's clear that this formalism can be used and and is somehow agnostic</p>
+<p>as to whether the you know whether the underlying system is discrete or continuous um again there's</p>
+<p>a broader philosophical point to make here which is that um in a way one of the reasons i don't</p>
+<p>feel embarrassed to be working primarily with discrete systems is because you know again once you start to</p>
+<p>think about things in terms of okay you have to not just care about nature you also have to care</p>
+<p>about the computations the observer can perform and what it's able to infer um then you quickly realize</p>
+<p>that in a sense just like whatever is you were saying earlier daniel you know uh beauty is in the</p>
+<p>eye of the beholder i think discreteness and continue and and and continuity are also in the eye of the</p>
+<p>beholder right i mean so if you have um if you have a you know a universe that is fundamentally</p>
+<p>continuous that's described by you know a continuum lorenzian manifold or something but you're constrained so</p>
+<p>that the only experiments you perform have computable outcomes have discrete outcomes uh where you know</p>
+<p>whether with accountable with the possible number of um uh you know of observables is always countable</p>
+<p>then in a sense it doesn't matter right it's it's irrelevant to you as an observer whether that we</p>
+<p>know whether the whether the system is discrete or continuous uh because you know the only parts of</p>
+<p>it that you can interface with and interact with are discrete and so you could have replaced</p>
+<p>the underlying substrate with a purely discrete mathematical structure and you wouldn't be able to tell</p>
+<p>so in some sense uh i i yes i don't feel too embarrassed discreet dealing with discrete event</p>
+<p>systems because even if i don't necessarily believe that nature is discrete because i don't think that's</p>
+<p>i'm not even sure how we would be able to answer that um i'm reasonably convinced that that you know the</p>
+<p>the experiments that we can perform and the observations that we're able to perform are ultimately</p>
+<p>computable and therefore you know the underlying substrate might as well be discrete even if it's not</p>
+<p>sort of in reality so to speak yeah that's a great comment definitely calls back to your earlier</p>
+<p>points about like discretization being in the eye of the beholder like in the active inference models</p>
+<p>observations raw data may already be discretized depending on the situation but even if it weren't</p>
+<p>like it were a continuous sensory perception or modeled as such analytically still commonly models</p>
+<p>discretize and categorize as they move up cognitive hierarchies and that was like initially explored to</p>
+<p>get more of this discrete either or decision making planning all those kinds of properties um well there's</p>
+<p>many interesting angles like i'm sure also it could be a multiplexed language model prompt but like what are</p>
+<p>you working on or excited about for 2024 uh that's a good question um so i've kind of already given some</p>
+<p>hints about you know the like this this general research program of of trying to understand uh</p>
+<p>computational complexity and algorithmic complexity and interplays between observers and systems through</p>
+<p>this category theoretic lens that's a yeah that's a that's a major thing which i started on say about a</p>
+<p>maybe a couple years ago i mean in some form i was i've been working on it for a long time but but</p>
+<p>this more recent perspective on it is maybe a couple years old but for various reasons over the last year</p>
+<p>or so i've kind of put that to rest and i've been focused on these uh much more physics oriented</p>
+<p>questions about discrete space time and understanding things like you know how the black holes work and how</p>
+<p>does accretion work in discrete space now which is also very important and uh and and very exciting but uh</p>
+<p>i've sort of slightly been missing these more abstract directions and so i have maybe one or two major</p>
+<p>you know physics related things that i need to finish off and then i and then i really want to go back to</p>
+<p>this to to the greatest extent possible and yeah i mean what so one thing is that's quite clear is that</p>
+<p>there's uh um there's great interplay between this formalism and ex you know and existing theories</p>
+<p>of computational and algorithmic complexity so in particular you know so uh one very basic example is i</p>
+<p>mentioned before that you know you you have this kind of coherence between these two different</p>
+<p>algebraic structures between your the the operation of time-like composition versus the operation of</p>
+<p>kind of parallel composition and these two algebraic structures are in general related although the</p>
+<p>precise conditions that relate them are not clear and that's partly what we're trying to you know what</p>
+<p>we're trying to understand um but it turns out that that uh degenerate cases of that of that question</p>
+<p>corresponds to unsolved problems in computational complexity theory so for instance the p versus</p>
+<p>np problem can essentially be recast in these terms that you can recast the p versus np problem</p>
+<p>is the question about uh is the coherence between the time-like composition of computational complexity</p>
+<p>and the parallel composition of computational complexity which are what p and np respectively are</p>
+<p>really about it are those coherent conditions the the strictest they can be um which would be the case</p>
+<p>that that uh the p equals np or are they somehow more lax which would be the case that p does not</p>
+<p>equal np and so there's you know that that's that's one thing that we kind of have already</p>
+<p>investigated but it's clear that a whole bunch of questions about you know um how do time complexity</p>
+<p>and space complexity trade off or how do kolmogorov complexity and time complexity trade off these these</p>
+<p>are questions which can be recast in this kind of more algebraic category theoretic lens and and and um</p>
+<p>will hopefully give insight into this general program of trying to understand observers and</p>
+<p>their relationship to the world and those are kind of major um well with any luck those are major theorems</p>
+<p>that i hope we'll be able to prove at some point in 2024 um that's that uh that's that's awesome and</p>
+<p>it makes me think about parallel more nestmates more cpu threads deeper in times more sequential more</p>
+<p>planning and more cognitive single monolithic agent and then the kind of question is like can</p>
+<p>anything that a single agent mega matrix could do cannot be decomposable at space advantage or even at</p>
+<p>space disadvantage in decomposed it into a single time step operation yeah that's a that's a super</p>
+<p>important question and one that you know uh with the possible exception of this community not many people</p>
+<p>have asked right i mean so uh that's something which comes up in quantum computing right so um</p>
+<p>a lot of the hype around quantum computation comes from these theoretical speed ups that derive from the</p>
+<p>fact that you're able to uh you know you're able to support these superpositions of different you know</p>
+<p>where you know each that each state of your data structure corresponds to a different eigenstate</p>
+<p>and you're able to evolve some super superposition of those eigenstates but then at the end you have to</p>
+<p>actually come to a definite conclusion about what the answer is you have to perform some measurement</p>
+<p>operation and that measurement operation is lossy it's often non-deterministic uh you you know you</p>
+<p>often have to repeat it multiple times um and you know it's it's becoming increasingly clear that for</p>
+<p>a large class of operations that were previously thought to have quantum advantage the additional</p>
+<p>complexity of the measurement step really kills any quantum advantage that you may have had that the</p>
+<p>you you know you get some advantage by doing unitary evolution uh but then you lose all of it by</p>
+<p>having to do the submission projection at the end and that's really a story of again this interplay</p>
+<p>between the time complexity saving of doing a multi doing a computation multi of doing a multi</p>
+<p>computation in parallel versus the loss that comes from the the complexity of the equivalence function</p>
+<p>that you need to apply in order to get to some definite uh conclusion about what the you know about</p>
+<p>about what happened because you know ultimately you need to somehow collapse that that that directed</p>
+<p>graph into a single thread uh of time in order to be able to have some coherent representation of what</p>
+<p>happened and so again understand that you know that's a place where understanding these you know these</p>
+<p>these trade-offs will become very important and as i say in some limiting case that that gives some</p>
+<p>perspective on your question daniel right which is which you know i agree is a very interesting</p>
+<p>question about you know um in principle we know that anything that a deterministic turing machine can</p>
+<p>do a non-deterministic turing machine can do and vice versa with some speed up or slow down um but</p>
+<p>that statement which is a classic result in you know in computability theory neglects all consideration of</p>
+<p>the equivalence function so there may be cases where the equivalence function is so complex that</p>
+<p>essentially the you know the the to do state equivalence becomes undecidable and so in that</p>
+<p>case you have a scenario where actually you you know you've got a multi-computational system but to</p>
+<p>to collapse it to one that's equivalent to a single-way system requires unbounded amounts of computational</p>
+<p>effort and so that so actually they become an equivalent even though you know computability</p>
+<p>theory says they should be the same um so uh it's clear that there's a there's a a a a a more rich</p>
+<p>more subtle theory that's underlying here that we're just beginning to kind of glimpse and that</p>
+<p>i hope we'll you know we'll be able to kind of to prove some new limited results about soon once we</p>
+<p>understand it a bit better awesome and i think definitely a special shout out to all of our</p>
+<p>colleagues on either like the wolfram and or active inference side because we've seen few if any</p>
+<p>active inference models phrased analytically or computationally with the wolfram technology</p>
+<p>um from studying complexity in other areas it's really clear to see how productive and powerful</p>
+<p>the software and the tools can be and changing and growing every day so it's really interesting maybe</p>
+<p>someone can um if they're listening this far in like go from one side to the other and back or make a</p>
+<p>wolfram active inference model or do some other kind of combination because it's very</p>
+<p>very fruitful territory and we know that our um elders have already spoken they've okayed it no but</p>
+<p>really it's so much it's so rich with connections here between um the areas that we're all studying and</p>
+<p>feeling like converging on many common places to to scaffold and jump off from together</p>
+<p>yeah i i i agree and um i mean at least the i mean the the kinds of things that we were discussing here</p>
+<p>about you know speculative execution and and behavior formation through free energy principle and so on</p>
+<p>those things should be relatively easy to implement in the framework that's already been developed here</p>
+<p>i mean so so you know that that's that's just a you know that's a question of just implementing</p>
+<p>some kind of computation of expected free energy and using that to you know to to to weight multi-way</p>
+<p>paths in the speculative execution model um so at least the beginnings of of that implementation i</p>
+<p>think the the path is pretty clear and we will probably end up doing at some point in the future</p>
+<p>anyway uh as part of as part of other research um so yeah so i i agree it's that's it's a very</p>
+<p>interesting it's a very exciting kind of um point of interface yeah well i hope that um we can stay in</p>
+<p>touch if you ever want to come back for a uh double oh 9.2 or if we want to even facilitate some kind of</p>
+<p>working group or some connections to really strengthen and like include the participation</p>
+<p>of more people in this super exciting area that would be amazing yeah that sounds fun let's let's try</p>
+<p>and set something up well dave first penultimate comments then jonathan you can have the kind of last</p>
+<p>comments yes um i hope you do get to continue on the wolfram physics side to think about a more</p>
+<p>general notion of what these ultimate things are uh are they observers or does that already prejudice</p>
+<p>the case of what you might find if you call them workers or actors or you know go back and and ask</p>
+<p>stewart kaufman what must a mind do to earn its way in the world let's make this keep happening thank you</p>
+<p>thank you dave for suggesting it also it was a great suggestion jonathan no and that's i think that's a</p>
+<p>fantastic note to end on i mean and and that that in a sense this this idea that we should start to</p>
+<p>move i mean so it's okay big picture for a moment like we're you know this formalism is being developed</p>
+<p>the the formalism i've described in this uh in this discussion is being developed you know assuming a</p>
+<p>kind of purely passive observer idealization and that's already been incredibly difficult right this</p>
+<p>it's clear there's a lot we don't understand of that but of course david is right that that in a</p>
+<p>sense you know what you know ultimately we want to start transitioning to a to a participatory</p>
+<p>observer model where where you allow for two-way interactions or you know higher order interactions</p>
+<p>between observers and systems and things that don't just go in one direction and yeah you know</p>
+<p>in a sense i view a lot of what we're trying to do with you know trying to nail down these notions of</p>
+<p>causality trying to understand these interplays between different complexity and entropy measures</p>
+<p>as you know the necessary groundwork for developing that subsequent theory right that does you know it's</p>
+<p>clear that if we want to have a a version of the you know of this kind of compositional multi-way</p>
+<p>formalism that is also compatible with things like second order cybernetics then uh you know at the</p>
+<p>very least we need to have a very coherent notion for what causality is and and you know and a robust</p>
+<p>algebraic description of that that's not going to to break or change and so i think um the the the</p>
+<p>non-participatory a participatory observer model is a useful starting point because it's one that is</p>
+<p>just within our grasp of uh you know of being being kind of kind of mathematically tractable um and</p>
+<p>then the hope is that the technology and the the ideas and the conceptual structure that we develop</p>
+<p>for understanding that will then as i say lay the groundwork for for for developing something that's</p>
+<p>that's more like what real you know active participatory observers do um and uh and yeah i</p>
+<p>mean i i think i i don't on the on the scientific side i'm not really sure i have anything any final</p>
+<p>comments apart from just you know as it's obvious this is a you know this is still a story that's being</p>
+<p>that's being developed and uh and yeah as daniel alluded to i hope that we can continue to uh</p>
+<p>to interact and and collaborate where where that makes sense and yeah at the very least i think</p>
+<p>incorporation of um kind of these yeah these active inference models within these uh discrete time</p>
+<p>in in the first instance discrete time uh you know computational frameworks uh and allowing things</p>
+<p>like speculative execution and multi-way path weighting based on um free energy estimates uh i think that's</p>
+<p>you know that that's a um that's a project that's of obvious mutual interest and and and something that i</p>
+<p>that i that i hope will happen in the coming months thank you we just speculatively executed active</p>
+<p>wolfram prince basically sounds excellent all right thank you jonathan thank you dave thank you everyone</p>
+<p>see y'all next time</p>
+<p>is</p>
+<p>Thank you.</p>
+</article>
+</body>
+</html>

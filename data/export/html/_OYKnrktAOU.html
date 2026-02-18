@@ -1,0 +1,7438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active InferAnt Stream 003.1 ~ Systems Within Systems: Blake, FOIA, Cognitive Sovereignty, and PyMDP</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active InferAnt Stream 003.1 ~ Systems Within Systems: Blake, FOIA, Cognitive Sovereignty, and PyMDP</h1>
+<div class="meta">Category: ActiveInferAntStream &middot; Series: ActiveInferAntStream_003 &middot; Episode 1 &middot; Speakers: Systems Within Systems: Blake, FOIA, Cognitive Sovereignty, and PyMDP &middot; Duration: 2:00:40 &middot; Views: 256</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=_OYKnrktAOU">https://www.youtube.com/watch?v=_OYKnrktAOU</a></div>
+<article>
+<p>All right, welcome to Active Inference Stream number 3.1 on systems.</p>
+<p>It's August 31st, 2024.</p>
+<p>As usual, I'll begin it with fetching the origin, committing many, many updates, pushing them.</p>
+<p>And while that's writing, here's what's going to happen.</p>
+<p>We're going to be talking about systems within systems and also whatever else we end up exploring.</p>
+<p>Touching upon some developments in the code base related to William Blake, FOIA, Freedom of Information Act, Cognitive Sovereignty, and the PyMDP, Social Learning.</p>
+<p>We'll start it off by making an initial GitHub push.</p>
+<p>I'll copy everything down below so we can delete from here.</p>
+<p>GitHub push looks done.</p>
+<p>Let's reload the repo, double check it's there.</p>
+<p>And we see pushes now.</p>
+<p>So we're triple checked live.</p>
+<p>All right, made the GitHub push.</p>
+<p>In this opening, the purpose of this stream, or at least one of them, is to explore various views on implementations of and interactions with systems.</p>
+<p>Let's start by going through several code base developments that I've prepared to show.</p>
+<p>Please, at any time, feel free to write in the live chat a question or a comment or idea.</p>
+<p>So I'll go through these three and then another fourth section.</p>
+<p>At that point, conclude.</p>
+<p>Along the way or at the end, just write in the live chat if anything is like off with what you're seeing or if you have questions or ideas.</p>
+<p>Okay.</p>
+<p>Okay.</p>
+<p>We are in folder zero, context, systems.</p>
+<p>And we'll start in the William Blake folder.</p>
+<p>We're going to look at, through some code methods, William Blake's mentions of systems.</p>
+<p>Talk about some relevances for modern systems design and look at the applications in the code base.</p>
+<p>Okay.</p>
+<p>So within the William Blake folder, there are several scripts and there are several folders.</p>
+<p>William Blake resources contains files like additional references, just bibliography, hundreds of relevant citations.</p>
+<p>Blake's works by year and table of contents to Eerdman.</p>
+<p>Then there's the Eerdman edited complete works of Blake and letters, which is 29,000 lines and the pumps, which is 8,200 lines.</p>
+<p>As a reminder, in cursor, all of the code base is indexed, whatever the type is.</p>
+<p>So there's nothing to resync here.</p>
+<p>Let's double check though.</p>
+<p>And I'm using cursor 0.40.3.</p>
+<p>So 40.3.</p>
+<p>Okay.</p>
+<p>So a lot of ways to jump in.</p>
+<p>The poems are great.</p>
+<p>And this is also just the plain text.</p>
+<p>This is not the illuminated printing.</p>
+<p>I'll start with the Blake mentions.py.</p>
+<p>Right click, open in the integrated terminal, Python 3, Blake mentions.py.</p>
+<p>What this is going to do is look at the target terms in the top of the document system.</p>
+<p>That's our focus.</p>
+<p>But also just to show that it's a little more general.</p>
+<p>Reason and los.</p>
+<p>Logging is done.</p>
+<p>And for each of the terms in the target terms.</p>
+<p>Where the term is mentioned, ignoring case, three lines before and three lines after get joined into a snippet.</p>
+<p>And that gets saved into an output file.</p>
+<p>So here's across that document of Erdmann, which there can be typos.</p>
+<p>There can be all other sorts of little textual artifacts.</p>
+<p>Not everything's included.</p>
+<p>Not all the works remained, etc.</p>
+<p>But we can explore.</p>
+<p>Okay.</p>
+<p>These are the mentions of system in Blake.</p>
+<p>There's nine of them from this poll.</p>
+<p>Till a system was formed, etc.</p>
+<p>I must create a system or be enslaved by another man's.</p>
+<p>Striving with systems to deliver individuals from those systems.</p>
+<p>Fixing their systems permanent by mathematic power.</p>
+<p>To govern the evil by good and states abolish systems.</p>
+<p>And here begins the system of moral virtue named Rahab.</p>
+<p>No grand work can have them.</p>
+<p>They produce system and monotony.</p>
+<p>Before I begin engraving them.</p>
+<p>As it will enable me also to regulate a system of working.</p>
+<p>That will be uniform from beginning to end.</p>
+<p>So that's kind of a cool way to jump in.</p>
+<p>And noting that there's many more mentions of these characters, Erdmann and Los.</p>
+<p>But same principle applies.</p>
+<p>These are just much longer documents with snippets.</p>
+<p>Often it's like reading through Blake.</p>
+<p>There's all these entities.</p>
+<p>All these things are being mentioned.</p>
+<p>And so these two entity extraction methods use a simpler method.</p>
+<p>Which is just basically looking for capitalized.</p>
+<p>This is a regex.</p>
+<p>That finds basically capitalized words.</p>
+<p>Single or pairs.</p>
+<p>Whether at a line start or not.</p>
+<p>That start with capitalization.</p>
+<p>And then it goes through and counts it.</p>
+<p>The entity extraction with spacey uses this package for slightly more advanced entity recognition.</p>
+<p>But in any case.</p>
+<p>But in any case.</p>
+<p>What these end up doing.</p>
+<p>Is they output into the analysis section.</p>
+<p>These plots are just example plots.</p>
+<p>But we can see for example.</p>
+<p>Here's a top 10 entities.</p>
+<p>Here's entity frequency.</p>
+<p>Histogram.</p>
+<p>And so this counts the number of entities.</p>
+<p>Of each time that the entities are mentioned.</p>
+<p>So it kind of just sweeps through.</p>
+<p>Finds the capitalized.</p>
+<p>And the analysis is just doing some basic summary statistics on that.</p>
+<p>So that's just kind of a fun way to jump in.</p>
+<p>And explore how many entities are done.</p>
+<p>And just striving with systems.</p>
+<p>Okay.</p>
+<p>That's part one on William Blake.</p>
+<p>Let's go to social sciences and active inference.</p>
+<p>Okay.</p>
+<p>So.</p>
+<p>This initially comes from Andrew Pachea's awesome work at the IC2S2 conference.</p>
+<p>Where he made a workshop.</p>
+<p>Active agents and active inference approach to agent-based modeling in the social sciences.</p>
+<p>He made it in a Google CoLab notebook.</p>
+<p>Which is awesome.</p>
+<p>Very accessible.</p>
+<p>And allows people to get active inference.</p>
+<p>Multi-agent network learning simulations working in their browser.</p>
+<p>That's awesome.</p>
+<p>Notebooks are again.</p>
+<p>Great for just one click running in a browser.</p>
+<p>However.</p>
+<p>They can get pretty unwieldy.</p>
+<p>Because you have these linear documents that can sprawl on and on and on.</p>
+<p>And it's hard to know what has been run and not and so on.</p>
+<p>And so.</p>
+<p>27 days ago.</p>
+<p>I made a contribution.</p>
+<p>Just to take his CoLab notebook.</p>
+<p>And copy it into a single dot py.</p>
+<p>So that just took his great.</p>
+<p>As far as I understand.</p>
+<p>Manually written code.</p>
+<p>About 1500 lines of code.</p>
+<p>And just brought it into a single Python script.</p>
+<p>So it could be run as a script.</p>
+<p>And then.</p>
+<p>What I did.</p>
+<p>Over the previous.</p>
+<p>Day or two.</p>
+<p>Having some fun conversations.</p>
+<p>With Andrew.</p>
+<p>In Discord.</p>
+<p>Is.</p>
+<p>Broke it up.</p>
+<p>Across.</p>
+<p>A bunch of different scripts.</p>
+<p>So there's a main.py.</p>
+<p>This is also.</p>
+<p>It's more than just broken up.</p>
+<p>There's also many other changes and developments.</p>
+<p>Sometimes to the point.</p>
+<p>Where it was like.</p>
+<p>Just going.</p>
+<p>Through.</p>
+<p>Hands and minds.</p>
+<p>And AIs.</p>
+<p>And it's like.</p>
+<p>Wait.</p>
+<p>What is even happening.</p>
+<p>But this was just a.</p>
+<p>Again.</p>
+<p>Experimental play.</p>
+<p>Main.</p>
+<p>Calls.</p>
+<p>All the aspects.</p>
+<p>Of the simulation.</p>
+<p>And then.</p>
+<p>The utilities are broken up.</p>
+<p>Across.</p>
+<p>Math.</p>
+<p>Data.</p>
+<p>Analysis.</p>
+<p>Agents.</p>
+<p>Creating them in the matrices.</p>
+<p>And their networks.</p>
+<p>Active inference.</p>
+<p>Such as the active inference loop.</p>
+<p>Itself.</p>
+<p>And then the visualizations.</p>
+<p>This is pretty cool.</p>
+<p>Again.</p>
+<p>It's a really helpful.</p>
+<p>PyMDP styled way.</p>
+<p>To work with.</p>
+<p>What.</p>
+<p>Andrew made.</p>
+<p>Which is this awesome.</p>
+<p>Multi-agent.</p>
+<p>Communication.</p>
+<p>Network simulation.</p>
+<p>There's agents in sub networks.</p>
+<p>And the output of this.</p>
+<p>In the current output folder.</p>
+<p>There's a couple methods.</p>
+<p>That just visualize the matrices.</p>
+<p>Of the different agents.</p>
+<p>So.</p>
+<p>A.</p>
+<p>Matricy.</p>
+<p>That's.</p>
+<p>A for ambiguity.</p>
+<p>That maps between observations.</p>
+<p>And hidden states.</p>
+<p>So here.</p>
+<p>There's three observations.</p>
+<p>And then there's three hidden states.</p>
+<p>If it were perfect.</p>
+<p>Sensory recognition.</p>
+<p>You'd see only ones.</p>
+<p>On the diagonals.</p>
+<p>And zero elsewhere.</p>
+<p>That's when the.</p>
+<p>Partially observable.</p>
+<p>Markov process.</p>
+<p>Can be treated as a.</p>
+<p>Fully observable.</p>
+<p>Markov process.</p>
+<p>B.</p>
+<p>Is where action.</p>
+<p>Comes into play.</p>
+<p>That's where it becomes.</p>
+<p>A Markov decision.</p>
+<p>Process.</p>
+<p>With a policy decision.</p>
+<p>Around which slice of B.</p>
+<p>To pick.</p>
+<p>C.</p>
+<p>Is a vector.</p>
+<p>That describes preference.</p>
+<p>That comes into play.</p>
+<p>With the.</p>
+<p>Pragmatic value.</p>
+<p>In the expected free energy.</p>
+<p>Calculations.</p>
+<p>And D.</p>
+<p>Is an initial.</p>
+<p>Prior.</p>
+<p>On.</p>
+<p>Hidden state.</p>
+<p>E.</p>
+<p>Is the habit vector.</p>
+<p>Which describes the prior probabilities.</p>
+<p>On action selection.</p>
+<p>F.</p>
+<p>This is just showing the.</p>
+<p>F at the very beginning.</p>
+<p>I think it just given a tiny.</p>
+<p>Value.</p>
+<p>For the variational free energy.</p>
+<p>Just to make sure it's all.</p>
+<p>Initialized.</p>
+<p>And G.</p>
+<p>Not sure what's even.</p>
+<p>Happening here.</p>
+<p>That's for expected free energy.</p>
+<p>For planning.</p>
+<p>And.</p>
+<p>Not that this was.</p>
+<p>Tuned.</p>
+<p>Or.</p>
+<p>Even really.</p>
+<p>Checked.</p>
+<p>Super deeply.</p>
+<p>For.</p>
+<p>Concurrence with the initial.</p>
+<p>Simulation.</p>
+<p>But these are.</p>
+<p>Fitness.</p>
+<p>Of the solutions.</p>
+<p>Of the agents.</p>
+<p>Across two different.</p>
+<p>Graph.</p>
+<p>Topologies.</p>
+<p>Here's a heat map.</p>
+<p>Looking at the correlations.</p>
+<p>Of some summary statistics.</p>
+<p>Of these simulations.</p>
+<p>There's.</p>
+<p>Average fitness.</p>
+<p>Max fitness.</p>
+<p>And min.</p>
+<p>Of the agents.</p>
+<p>And then fitness improvements.</p>
+<p>The variables have.</p>
+<p>Of course.</p>
+<p>Total correlation.</p>
+<p>With themself.</p>
+<p>But there's some.</p>
+<p>Interesting patterns.</p>
+<p>Here.</p>
+<p>There is some.</p>
+<p>Sweeping.</p>
+<p>Across error rate.</p>
+<p>And C.</p>
+<p>Improvement.</p>
+<p>Preference learning.</p>
+<p>A.</p>
+<p>After every.</p>
+<p>X.</p>
+<p>Time steps.</p>
+<p>Distribution.</p>
+<p>Of fitness improvement.</p>
+<p>By network type.</p>
+<p>Again.</p>
+<p>Kind of interesting.</p>
+<p>Possibly.</p>
+<p>The case.</p>
+<p>That the small world.</p>
+<p>Network.</p>
+<p>Leads to.</p>
+<p>Better fitness.</p>
+<p>Improvements.</p>
+<p>Fitness.</p>
+<p>Average fitness.</p>
+<p>Over trials.</p>
+<p>By network.</p>
+<p>Type.</p>
+<p>Here.</p>
+<p>We see.</p>
+<p>The random.</p>
+<p>And the small world.</p>
+<p>And their average fitness.</p>
+<p>Changing.</p>
+<p>I think this might reflect.</p>
+<p>Why by the end.</p>
+<p>Of the 160 trials.</p>
+<p>They have an equivalent.</p>
+<p>Average fitness.</p>
+<p>However.</p>
+<p>The small world.</p>
+<p>Improves.</p>
+<p>More.</p>
+<p>Most improved.</p>
+<p>Topology.</p>
+<p>And let's see.</p>
+<p>Max fitness.</p>
+<p>Versus.</p>
+<p>Min fitness.</p>
+<p>Just a few.</p>
+<p>Scatter data points.</p>
+<p>Um.</p>
+<p>The.</p>
+<p>Simulations.</p>
+<p>Extensively.</p>
+<p>Logged.</p>
+<p>And traced.</p>
+<p>And.</p>
+<p>It's just really cool.</p>
+<p>Let's just try.</p>
+<p>So that we can.</p>
+<p>Explore a little bit.</p>
+<p>On the interpretability side.</p>
+<p>Control.</p>
+<p>A.</p>
+<p>Control.</p>
+<p>Shift.</p>
+<p>L.</p>
+<p>That's going into the sidebar.</p>
+<p>And we'll ask.</p>
+<p>Comprehensively.</p>
+<p>Explain.</p>
+<p>This.</p>
+<p>Simulation.</p>
+<p>All the.</p>
+<p>Components.</p>
+<p>And methods.</p>
+<p>All about.</p>
+<p>How.</p>
+<p>Exactly.</p>
+<p>Active.</p>
+<p>Inference.</p>
+<p>Is being.</p>
+<p>Applied.</p>
+<p>Here.</p>
+<p>This is the sidebar.</p>
+<p>Chat.</p>
+<p>One.</p>
+<p>Thing.</p>
+<p>I'm also out of fast.</p>
+<p>Request.</p>
+<p>So I really don't know.</p>
+<p>How fast.</p>
+<p>Cursor is going to process this.</p>
+<p>Control.</p>
+<p>I.</p>
+<p>This.</p>
+<p>Floating.</p>
+<p>Composer window.</p>
+<p>Is.</p>
+<p>An incredible.</p>
+<p>Development.</p>
+<p>It.</p>
+<p>Enables.</p>
+<p>Pretty.</p>
+<p>Easy.</p>
+<p>Editing.</p>
+<p>Across.</p>
+<p>Multiple.</p>
+<p>Files.</p>
+<p>Which.</p>
+<p>Can get really.</p>
+<p>Far.</p>
+<p>Ranging.</p>
+<p>So it's definitely like a.</p>
+<p>Check.</p>
+<p>And find out what's happening.</p>
+<p>But.</p>
+<p>It.</p>
+<p>Can do some amazing things.</p>
+<p>And I think that.</p>
+<p>Later.</p>
+<p>In the stream.</p>
+<p>When we get to more.</p>
+<p>Code.</p>
+<p>Editing.</p>
+<p>We'll definitely be using.</p>
+<p>The.</p>
+<p>Composer.</p>
+<p>A lot.</p>
+<p>Okay.</p>
+<p>The script sets up and runs a simulation.</p>
+<p>Using active inference principles.</p>
+<p>It involves initializing matrices.</p>
+<p>Creating an agent.</p>
+<p>Running inference loops.</p>
+<p>And visualizing results.</p>
+<p>The main.</p>
+<p>Components include.</p>
+<p>Logging.</p>
+<p>Agent setup.</p>
+<p>Running simulations.</p>
+<p>And processing results.</p>
+<p>We have.</p>
+<p>Imports and logging.</p>
+<p>Path setups and constants.</p>
+<p>Initialization.</p>
+<p>Initialization.</p>
+<p>Fitness data initialization.</p>
+<p>Visualization and inference loop.</p>
+<p>Visualization.</p>
+<p>Full sweep of the simulation.</p>
+<p>Full sweep simulation.</p>
+<p>Runs a full sweep simulation.</p>
+<p>Across multiple trials.</p>
+<p>Results processing.</p>
+<p>Final visualization.</p>
+<p>Active inference application.</p>
+<p>Active inference is applied through the following steps.</p>
+<p>One.</p>
+<p>Agent initialization.</p>
+<p>The agent is initialized with matrices that represent its beliefs about the world.</p>
+<p>That's the joint distribution.</p>
+<p>Agents are mapped.</p>
+<p>Represented.</p>
+<p>Compositional cognitive cartography.</p>
+<p>About their beliefs.</p>
+<p>About observations.</p>
+<p>Hidden states.</p>
+<p>And policies.</p>
+<p>Action selection.</p>
+<p>The world.</p>
+<p>The agent runs an inference loop.</p>
+<p>Where it updates its beliefs and actions.</p>
+<p>Based on observations and internal models.</p>
+<p>Three.</p>
+<p>Learning and adaptation.</p>
+<p>The agent adapts its internal models.</p>
+<p>As matrices.</p>
+<p>Based on the learning parameters and observations.</p>
+<p>And four.</p>
+<p>Simulation and visualization.</p>
+<p>And now it's also pulling in real links to PLOS.</p>
+<p>For example here.</p>
+<p>And a medium tutorial.</p>
+<p>That is Oleg's medium tutorial from 2018 on active inference.</p>
+<p>Cool.</p>
+<p>Okay.</p>
+<p>Let's just go a little bit further.</p>
+<p>Here we're using GPT 4.0.</p>
+<p>We can ask.</p>
+<p>How does the specific implementation of active inference here in utils underscore?</p>
+<p>Active inference.</p>
+<p>Differ.</p>
+<p>From other agent based models.</p>
+<p>Give.</p>
+<p>Comprehensive.</p>
+<p>Concise.</p>
+<p>Answer.</p>
+<p>Also.</p>
+<p>Conveying.</p>
+<p>Why slash how slash where slash when.</p>
+<p>Quote.</p>
+<p>Free.</p>
+<p>Energy.</p>
+<p>Calculations.</p>
+<p>Are.</p>
+<p>Specifically.</p>
+<p>Coming into play.</p>
+<p>It was a great question.</p>
+<p>Someone brought up in the institute discord.</p>
+<p>Pretty recently about.</p>
+<p>Well.</p>
+<p>How does active inference differ from embodiments?</p>
+<p>Haven't people been thinking about perception action in terms of their unity for a long time?</p>
+<p>Let's kind of ask a variant of that question.</p>
+<p>Implementation of active inference in the utils script differs from other agent based models primarily in the use of the free energy principle to guide agent behavior.</p>
+<p>Here's a comprehensive yet concise explanation.</p>
+<p>Key differences from other agent based models.</p>
+<p>One.</p>
+<p>Free energy minimization.</p>
+<p>Agents minimize a quantity called free energy which is a measure of the difference between predicted and actual sensory inputs.</p>
+<p>This drives both perception.</p>
+<p>Updating belief.</p>
+<p>Change your mind.</p>
+<p>And action.</p>
+<p>Selecting actions to minimize future free energy.</p>
+<p>Expected free energy.</p>
+<p>Change the world.</p>
+<p>Other models.</p>
+<p>Us.</p>
+<p>Them.</p>
+<p>Other models.</p>
+<p>Traditional agent based models often use predefined rules, heuristics, or reinforcement learning to guide agent behavior.</p>
+<p>Two.</p>
+<p>Regarding belief updating.</p>
+<p>In active inference, agents are continuously updating their beliefs using Bayesian inference.</p>
+<p>Integrating new sensory data to minimize the variational free energy.</p>
+<p>Other models.</p>
+<p>Belief updating may not be as central or they may use different mechanisms like state transitions or key learning.</p>
+<p>Three.</p>
+<p>Action selection.</p>
+<p>In active inference, actions are selected to minimize expected free energy.</p>
+<p>G.</p>
+<p>Which includes both the expected, surprise, and uncertainty about future states.</p>
+<p>Equation 2.6.</p>
+<p>In the 2022 textbook.</p>
+<p>Other models.</p>
+<p>Actions are often selected based on maximizing rewards or following predefined strategies.</p>
+<p>Cool.</p>
+<p>Nice.</p>
+<p>Free energy calculations and active inference.</p>
+<p>Where and how free energy is calculated.</p>
+<p>One.</p>
+<p>Agent initialization.</p>
+<p>That's the A, B, C, D, E.</p>
+<p>Here's action sampling.</p>
+<p>Agents sample actions based on their current beliefs and the goal of minimizing expected free energy.</p>
+<p>Free energy update.</p>
+<p>Agent.update free energy.</p>
+<p>Agents update their free energy based on the new observation and actions taken.</p>
+<p>And during each time step, the script tracks various metrics including average expected free energy, av.e.f.e. list and variational free energy, av.e.f.e. list.</p>
+<p>Why free energy is important?</p>
+<p>Oh wow.</p>
+<p>Perception and action.</p>
+<p>Free energy unifies perception and action under a single framework.</p>
+<p>By minimizing free energy, agents improve their models of the world and select actions that reduce uncertainty and prediction error.</p>
+<p>Adaptation.</p>
+<p>This approach allows agents to adapt to changing environments dynamically as they continuously update their beliefs and actions to minimize free energy and some code.</p>
+<p>Comparison model models.</p>
+<p>Reinforcement learning focuses on maximizing cumulative reward.</p>
+<p>Rule-based models use predefined rules.</p>
+<p>Evolutionary algorithms use population-based search methods, which Nassim and I recently have explored in the traveling salesperson problem in the ant colony optimization.</p>
+<p>So, pretty cool.</p>
+<p>Thanks Andrew for making the original open source educational materials.</p>
+<p>Let's go a little bit deeper into PyMDP poll.</p>
+<p>Okay, here we're in systems active inference.</p>
+<p>PyMDP poll.</p>
+<p>It's a super fun script.</p>
+<p>I hope that PyMDP learners, respecters out there, give it a try.</p>
+<p>Let's open it in the integrated terminal.</p>
+<p>Python 3, PyMDP poll.</p>
+<p>Here's what this does.</p>
+<p>First, it clones into the specific repo of PyMDP.</p>
+<p>Then, it lists all the methods, and it rolls through all the methods in the submodules, and it writes it to PyMDP methods.markdown.</p>
+<p>So, this is a markdown file that is, let's see, 2,500 lines long.</p>
+<p>But how cool.</p>
+<p>These are all the PyMDP methods listed.</p>
+<p>Documentation really matters.</p>
+<p>Here's the arguments for PyMDP.agent, which is in the agent submodule.</p>
+<p>So, here we can see the full arguments, the arity of the agent, and example usage.</p>
+<p>This is not being generated by LLM.</p>
+<p>This is just being pulled from the doc strings and the information that's in the PyMDP package.</p>
+<p>So, again, those contributions, the questions that people ask, really do matter.</p>
+<p>Here's PyMDP algorithms run MMP.</p>
+<p>That's marginal message passing for updating marginal posterior beliefs.</p>
+<p>It might be buried somewhere, who knows where, in a script, and here it is brought out for all to see in terms of the parameters that are used and what it returns.</p>
+<p>So, it's like, hmm, wow, this is really a cool way to study and learn any package, but here just in the PyMDP setting, like 1,000 lines later.</p>
+<p>PyMDP.control.updatePosteriorPoliciesFullFactorized.</p>
+<p>Here we see, okay, we have ABC, A-factor, all these arguments.</p>
+<p>What does it do?</p>
+<p>And this is the doc string, not LLM generated.</p>
+<p>But this is awesome for helping read what the doc strings are, not by scanning through and seeing the plain text of the code, but rather by being able to look and say, like, hmm, okay, what were the comments written?</p>
+<p>But with PyMDP, we could also pretend for a second like we are going to use some LLMs for development.</p>
+<p>Here, we'll use Command-I.</p>
+<p>We'll say, update and professionalize these methods without altering function.</p>
+<p>For example, with comprehensive doc strings, we're missing.</p>
+<p>Andrew, in a live chat, wrote, amazing work, Daniel.</p>
+<p>Thank you for presenting my work and, more importantly, expanding on the original goal, open source learning, open source resources.</p>
+<p>Totally.</p>
+<p>Totally.</p>
+<p>Okay.</p>
+<p>So, here, we're going to update, and then we'll put in, like, a special word or just kind of like a weird symbol.</p>
+<p>But if we ran the PyMDP poll again, it would pull the whole PyMDP cleanly.</p>
+<p>So, it won't include our updates.</p>
+<p>Also, cursor doesn't, at this time, do very well.</p>
+<p>It says above 400 lines.</p>
+<p>Certainly, it gives mixed results.</p>
+<p>Once you get, like, over 500 or 1,000 lines, it does give mixed results.</p>
+<p>For example, sometimes it'll do a fix, like, up near the top of the document.</p>
+<p>Okay, we're about to find out.</p>
+<p>Dun-dun-dun-dun-dun-dun-dun-dun-dun.</p>
+<p>It'll do a fix up at the top, and then it'll be like, okay, and then delete the rest.</p>
+<p>So, here, it's just showing this is, like, LLM augmented development on PyMDP.</p>
+<p>Now, this is funny because what it did for the doc strings to the underlying functions was it peeped into the summary we already had.</p>
+<p>And now it's reentering the doc string in terms of what it has for parameters and returns.</p>
+<p>So, again, not saying that's the right way to update, but this starts to get into looking really cool.</p>
+<p>Like, oh, maybe there could be, like, unified formats for what the doc strings are,</p>
+<p>and we could use the active inference ontology in a really coherent way</p>
+<p>and have the inputs and outputs and the arguments of each of the functions.</p>
+<p>That's important for translation learning and for our accessibilities, also for machine sense making.</p>
+<p>So, pretty cool.</p>
+<p>I'm going to delete the PyMDP repo version here,</p>
+<p>and that's where we got to with PyMDP poll.py and studying the PyMDP library.</p>
+<p>Okay.</p>
+<p>Into part three.</p>
+<p>Cognitive sovereignty.</p>
+<p>Okay.</p>
+<p>So,</p>
+<p>Cognitive Sovereignty and Active Inference in the State of Exception.</p>
+<p>This was a paper that I wrote in October last year,</p>
+<p>and the paper provides an analysis of Giorgio Agamben's book,</p>
+<p>Homo Sacre, in the tradition of active inference.</p>
+<p>I'll just read this first paragraph.</p>
+<p>Homo Sacre articulates the relationship between bear life and political existence</p>
+<p>in Western politics and metaphysics.</p>
+<p>Agamben argues that politics is founded on the inclusive exclusion of bear life,</p>
+<p>where natural biological life, the physiology and cognition of the body,</p>
+<p>but reading later and more, I understood it's not simply only that,</p>
+<p>is politicized only through its exclusion as an exception.</p>
+<p>Drawing on Aristotle's definition of man as a political animal,</p>
+<p>Agamben traces the historical development of this structure</p>
+<p>and its continuation in modern biopolitics.</p>
+<p>So, in this paper, which was super fun to write,</p>
+<p>and I got helpful feedback from colleagues as well,</p>
+<p>first, I reviewed my reading of Homo Sacre</p>
+<p>and some of the logic of sovereignty,</p>
+<p>drew an illusion between normal politics and the state of exception</p>
+<p>to normal and revolutionary science in the Kuhnian paradigm,</p>
+<p>then played off this kind of fully synthetic concept,</p>
+<p>synthetic intelligence, to explore cognitive sovereignty,</p>
+<p>and then considered a situation that we were modeling</p>
+<p>where active inference agents are having a normal political scenario,</p>
+<p>then there's a crisis which induces a state of exception.</p>
+<p>And then, three terms from the active inference ontology,</p>
+<p>but this is kind of a Mad Lib plug-and-play,</p>
+<p>affordances and how that changes during the state of exception,</p>
+<p>variational free energy in terms of bare life,</p>
+<p>and expected free energy in terms of the sovereign's agency</p>
+<p>during the state of exception.</p>
+<p>And then, wrote an active state inference model,</p>
+<p>sovereign agency in the state of exception,</p>
+<p>and gave some pseudo code.</p>
+<p>So, it was a fun paper to write,</p>
+<p>reviewed some of this humanities and political sciences scholarship,</p>
+<p>and then got to some pseudo code.</p>
+<p>Earlier LLMs.</p>
+<p>Oh, October 2023.</p>
+<p>And then, okay, what could we do next?</p>
+<p>Well, we could include a bunch of other topics,</p>
+<p>and then we could also, like, actually make functions.</p>
+<p>We could make the functions that are described,</p>
+<p>and we could go from active state inference,</p>
+<p>the sketch above, to active governance.</p>
+<p>For example, multi-agent setting, cognitive security,</p>
+<p>quantum cognitive sovereignty,</p>
+<p>all these kinds of fun topics.</p>
+<p>So, following a recipe,</p>
+<p>a meta-recipe,</p>
+<p>that we've seen many, many times.</p>
+<p>First, what I did is,</p>
+<p>I brought in the cognitive sovereignty paper.</p>
+<p>So, I just copied in the full paper.</p>
+<p>280 lines.</p>
+<p>Because one line is like a whole paragraph.</p>
+<p>It's about the number of tokens anyway,</p>
+<p>but the new line thing,</p>
+<p>this is kind of a cool feature.</p>
+<p>Then, I basically just did</p>
+<p>control A for all,</p>
+<p>control K,</p>
+<p>and then I prompted,</p>
+<p>I said, okay,</p>
+<p>write a specification</p>
+<p>for what the model actually is.</p>
+<p>And so, it describes,</p>
+<p>okay, well, you describe the state space.</p>
+<p>This is kind of like chapter 6</p>
+<p>from the 2022 textbooks.</p>
+<p>What is the hierarchical nature, if any?</p>
+<p>How do we think about precision?</p>
+<p>On what?</p>
+<p>Variational free energy,</p>
+<p>expected free energy.</p>
+<p>What is the state of exception?</p>
+<p>What is triggering the state of exception?</p>
+<p>How do we build a generative model,</p>
+<p>generative process?</p>
+<p>What algorithms do we need?</p>
+<p>How do we think about the multi-agent setting?</p>
+<p>How do we think about cognitive security?</p>
+<p>And then, how do we think optionally</p>
+<p>about quantum exceptions and extensions?</p>
+<p>Scenario generation, validation,</p>
+<p>ethical considerations.</p>
+<p>So, this is a technical spec</p>
+<p>that provides a comprehensive blueprint</p>
+<p>for implementing</p>
+<p>an active inference generative model</p>
+<p>to study cognitive sovereignty</p>
+<p>and states of exception.</p>
+<p>It incorporates key concepts</p>
+<p>from the original paper</p>
+<p>while providing concrete implementation details</p>
+<p>and extensions.</p>
+<p>Then, I kind of asked it to go</p>
+<p>one more step</p>
+<p>and said,</p>
+<p>make a technical prospectus</p>
+<p>for this project.</p>
+<p>And again,</p>
+<p>this is a smaller,</p>
+<p>but pretty similar.</p>
+<p>So, those resources are there.</p>
+<p>And then,</p>
+<p>just go to the gear</p>
+<p>and then features,</p>
+<p>resync.</p>
+<p>I don't know how often</p>
+<p>it resyncs by itself,</p>
+<p>but it's just good to know.</p>
+<p>Okay, we're all caught up.</p>
+<p>Close.</p>
+<p>Close term.</p>
+<p>Okay.</p>
+<p>Now, let's open up the script.</p>
+<p>So,</p>
+<p>main.py</p>
+<p>is going to do</p>
+<p>some pretty cool stuff.</p>
+<p>And these are like meta patterns</p>
+<p>that are just so useful.</p>
+<p>There's a config.json</p>
+<p>that has the parameters.</p>
+<p>Here,</p>
+<p>it's just the input and output directories</p>
+<p>and then how many time steps</p>
+<p>before the crisis</p>
+<p>are we going to simulate</p>
+<p>and then how many time steps</p>
+<p>after the crisis</p>
+<p>are we going to simulate.</p>
+<p>There's a utilities</p>
+<p>that contains</p>
+<p>the different kinds of class</p>
+<p>and function definitions.</p>
+<p>And then,</p>
+<p>main is going to call</p>
+<p>in three steps,</p>
+<p>also printing each line</p>
+<p>of the output in real time,</p>
+<p>main is going to call</p>
+<p>one, two, three.</p>
+<p>So,</p>
+<p>first,</p>
+<p>it's going to run</p>
+<p>one,</p>
+<p>generate an entity library.</p>
+<p>We'll look at the structure of that.</p>
+<p>Two,</p>
+<p>it's going to run</p>
+<p>the simulation</p>
+<p>according to the config.</p>
+<p>And then,</p>
+<p>three,</p>
+<p>it's going to perform</p>
+<p>a simulation analysis</p>
+<p>also based upon the config.</p>
+<p>But I don't think</p>
+<p>there's any analysis</p>
+<p>free parameters,</p>
+<p>but it could be.</p>
+<p>So,</p>
+<p>Python 3</p>
+<p>in the terminal,</p>
+<p>main.py,</p>
+<p>running one.</p>
+<p>So,</p>
+<p>let's look at the outputs</p>
+<p>to terminal.</p>
+<p>Generating entity library</p>
+<p>for cognitive sovereignty simulation.</p>
+<p>It saves</p>
+<p>an entity library.json</p>
+<p>to the output folder.</p>
+<p>We'll look at through these.</p>
+<p>There's 15 entities.</p>
+<p>There's</p>
+<p>five kinds of entities.</p>
+<p>We got government,</p>
+<p>corporation,</p>
+<p>NGOs,</p>
+<p>media,</p>
+<p>and citizen groups.</p>
+<p>And then,</p>
+<p>we have</p>
+<p>entity one,</p>
+<p>two,</p>
+<p>three for each</p>
+<p>type.</p>
+<p>It starts out</p>
+<p>where government one</p>
+<p>is in power.</p>
+<p>All the others</p>
+<p>are not in power.</p>
+<p>Okay.</p>
+<p>Now,</p>
+<p>it's running</p>
+<p>the simulation.</p>
+<p>The simulation</p>
+<p>actually runs</p>
+<p>like super fast,</p>
+<p>but it takes</p>
+<p>a few seconds</p>
+<p>to plot</p>
+<p>one of the</p>
+<p>figures.</p>
+<p>Let's just look</p>
+<p>at the entity library</p>
+<p>while it's running.</p>
+<p>Okay.</p>
+<p>So,</p>
+<p>here's how each</p>
+<p>entity is described.</p>
+<p>These are</p>
+<p>well-spaced</p>
+<p>matrices</p>
+<p>that describe</p>
+<p>the transitions</p>
+<p>amongst</p>
+<p>five different</p>
+<p>states.</p>
+<p>The five</p>
+<p>different states</p>
+<p>are</p>
+<p>in power.</p>
+<p>So,</p>
+<p>that's when you</p>
+<p>start or when you</p>
+<p>gain power.</p>
+<p>Then,</p>
+<p>there's three</p>
+<p>kind of</p>
+<p>continuously</p>
+<p>varying states.</p>
+<p>This is just a five-state</p>
+<p>discrete model.</p>
+<p>high,</p>
+<p>medium,</p>
+<p>and low</p>
+<p>power.</p>
+<p>So,</p>
+<p>this is kind of</p>
+<p>like close</p>
+<p>to being in</p>
+<p>power,</p>
+<p>medium power,</p>
+<p>and then</p>
+<p>low power.</p>
+<p>And then,</p>
+<p>there's</p>
+<p>homo sacer,</p>
+<p>which is</p>
+<p>the category</p>
+<p>for that</p>
+<p>which can be</p>
+<p>killed with</p>
+<p>impunity</p>
+<p>explored in</p>
+<p>the book</p>
+<p>of the same</p>
+<p>name.</p>
+<p>So,</p>
+<p>here we go.</p>
+<p>Let's look back</p>
+<p>to the terminal,</p>
+<p>then we'll look</p>
+<p>over all the</p>
+<p>other outputs.</p>
+<p>Okay.</p>
+<p>Ran the</p>
+<p>simulation.</p>
+<p>Visualize.</p>
+<p>This is the</p>
+<p>step that takes</p>
+<p>the longest</p>
+<p>just by</p>
+<p>visualization</p>
+<p>methods,</p>
+<p>but it's a</p>
+<p>big figure.</p>
+<p>Entity traces</p>
+<p>are recorded,</p>
+<p>then the</p>
+<p>simulation analysis</p>
+<p>is wrong.</p>
+<p>So,</p>
+<p>okay.</p>
+<p>Let's look at</p>
+<p>the analysis</p>
+<p>plain text</p>
+<p>summary,</p>
+<p>but it'll</p>
+<p>get more</p>
+<p>colorful.</p>
+<p>So,</p>
+<p>we see,</p>
+<p>okay,</p>
+<p>state volatility.</p>
+<p>These are</p>
+<p>just volatility</p>
+<p>levels.</p>
+<p>Like,</p>
+<p>government one</p>
+<p>has the</p>
+<p>lowest</p>
+<p>variance</p>
+<p>through time,</p>
+<p>probably because</p>
+<p>for the</p>
+<p>first 200</p>
+<p>time steps,</p>
+<p>it just</p>
+<p>stayed in</p>
+<p>power,</p>
+<p>whereas the</p>
+<p>other ones</p>
+<p>were bouncing</p>
+<p>around during</p>
+<p>phase one.</p>
+<p>Here,</p>
+<p>most common</p>
+<p>states.</p>
+<p>So,</p>
+<p>let's see.</p>
+<p>Here's the</p>
+<p>most common</p>
+<p>states before</p>
+<p>and after</p>
+<p>the crisis.</p>
+<p>Like,</p>
+<p>corporation one</p>
+<p>was most</p>
+<p>commonly in</p>
+<p>low power,</p>
+<p>but then</p>
+<p>afterwards,</p>
+<p>it was most</p>
+<p>commonly in</p>
+<p>the homo sacre</p>
+<p>state,</p>
+<p>or so on.</p>
+<p>And then</p>
+<p>this top</p>
+<p>part,</p>
+<p>state percentages.</p>
+<p>So,</p>
+<p>here's</p>
+<p>corporation</p>
+<p>two.</p>
+<p>Here's it</p>
+<p>before it</p>
+<p>was bouncing</p>
+<p>between high,</p>
+<p>medium,</p>
+<p>and low</p>
+<p>power.</p>
+<p>These are</p>
+<p>just random</p>
+<p>matrices,</p>
+<p>so it's</p>
+<p>not super</p>
+<p>surprising that</p>
+<p>they're roughly</p>
+<p>being drawn,</p>
+<p>but here we</p>
+<p>see like</p>
+<p>citizen group</p>
+<p>one was</p>
+<p>spending more</p>
+<p>of its time</p>
+<p>in a low</p>
+<p>power situation,</p>
+<p>but then</p>
+<p>after the</p>
+<p>crisis,</p>
+<p>it was</p>
+<p>spending,</p>
+<p>you know,</p>
+<p>18% of the</p>
+<p>time in the</p>
+<p>high power,</p>
+<p>39 in the</p>
+<p>homo sacre.</p>
+<p>Okay,</p>
+<p>here's the</p>
+<p>traces of</p>
+<p>the visualization.</p>
+<p>So,</p>
+<p>it's a little</p>
+<p>bit condensed,</p>
+<p>we could run</p>
+<p>one for like</p>
+<p>10 time steps</p>
+<p>if you want to</p>
+<p>see the</p>
+<p>bouncing around.</p>
+<p>Oh,</p>
+<p>but very</p>
+<p>interestingly,</p>
+<p>this could be a</p>
+<p>slightly different</p>
+<p>one,</p>
+<p>actually that</p>
+<p>lineup,</p>
+<p>so that was</p>
+<p>the government</p>
+<p>one got</p>
+<p>displaced in</p>
+<p>the crisis,</p>
+<p>some new</p>
+<p>group,</p>
+<p>maybe that's</p>
+<p>media two,</p>
+<p>but it just</p>
+<p>happens to be a</p>
+<p>very similar</p>
+<p>color,</p>
+<p>but it is a</p>
+<p>different one</p>
+<p>that comes in.</p>
+<p>Here's the</p>
+<p>results of the</p>
+<p>simulation,</p>
+<p>many,</p>
+<p>many thousands</p>
+<p>of lines.</p>
+<p>Here we see</p>
+<p>the overall</p>
+<p>occupancy of the</p>
+<p>different states.</p>
+<p>So,</p>
+<p>we had one</p>
+<p>out of 15</p>
+<p>were in</p>
+<p>power before</p>
+<p>and one</p>
+<p>out of 15</p>
+<p>stayed in</p>
+<p>power after,</p>
+<p>it's a different</p>
+<p>one.</p>
+<p>And then,</p>
+<p>here's like the</p>
+<p>introduction,</p>
+<p>in this kind</p>
+<p>of toy</p>
+<p>situation,</p>
+<p>there was no</p>
+<p>homo sacre</p>
+<p>before the</p>
+<p>crisis,</p>
+<p>but then it</p>
+<p>opened up like</p>
+<p>this niche.</p>
+<p>State</p>
+<p>percentages,</p>
+<p>the visualizations</p>
+<p>are a little</p>
+<p>bit fun.</p>
+<p>They have</p>
+<p>their own</p>
+<p>charm to</p>
+<p>them,</p>
+<p>but here we</p>
+<p>see like</p>
+<p>government one</p>
+<p>was spending</p>
+<p>100% of its</p>
+<p>time before</p>
+<p>in power,</p>
+<p>and then after</p>
+<p>it has,</p>
+<p>but these are</p>
+<p>overlapping bar</p>
+<p>charts,</p>
+<p>that could be</p>
+<p>just visually</p>
+<p>clarified,</p>
+<p>but we can</p>
+<p>see like which</p>
+<p>one was</p>
+<p>most,</p>
+<p>like media</p>
+<p>two was</p>
+<p>spending 100%</p>
+<p>of the power</p>
+<p>after.</p>
+<p>Okay,</p>
+<p>this is the</p>
+<p>big figure.</p>
+<p>So,</p>
+<p>each row is</p>
+<p>an entity,</p>
+<p>and then let's</p>
+<p>look at these</p>
+<p>B matrices.</p>
+<p>So,</p>
+<p>here,</p>
+<p>all start</p>
+<p>out at</p>
+<p>baseline,</p>
+<p>and government</p>
+<p>one is just</p>
+<p>given the</p>
+<p>power initially,</p>
+<p>but at</p>
+<p>baseline,</p>
+<p>you stay</p>
+<p>in homo</p>
+<p>sacre if</p>
+<p>you're already</p>
+<p>there,</p>
+<p>but no one</p>
+<p>starts there,</p>
+<p>so no one</p>
+<p>is there</p>
+<p>initially,</p>
+<p>and you</p>
+<p>stay in</p>
+<p>power if</p>
+<p>you're already</p>
+<p>there.</p>
+<p>Again,</p>
+<p>same thing,</p>
+<p>one is just</p>
+<p>given it.</p>
+<p>So,</p>
+<p>the others</p>
+<p>that aren't</p>
+<p>in power</p>
+<p>are just</p>
+<p>bouncing around</p>
+<p>in this</p>
+<p>sub-matrix</p>
+<p>between high,</p>
+<p>medium,</p>
+<p>and low.</p>
+<p>So,</p>
+<p>these are</p>
+<p>transition</p>
+<p>matrices,</p>
+<p>just Markov</p>
+<p>chain</p>
+<p>processes.</p>
+<p>Then,</p>
+<p>once the</p>
+<p>crisis happens,</p>
+<p>there's two</p>
+<p>kinds of</p>
+<p>states.</p>
+<p>There's</p>
+<p>empowered</p>
+<p>and disempowered.</p>
+<p>So,</p>
+<p>for all</p>
+<p>entities,</p>
+<p>once you're</p>
+<p>empowered,</p>
+<p>there's no</p>
+<p>secondary changes</p>
+<p>in power</p>
+<p>structure in</p>
+<p>this simulation.</p>
+<p>Once you're</p>
+<p>in power,</p>
+<p>you stay</p>
+<p>there.</p>
+<p>When you're</p>
+<p>empowered,</p>
+<p>you just</p>
+<p>stay in</p>
+<p>power.</p>
+<p>When you're</p>
+<p>disempowered,</p>
+<p>now,</p>
+<p>you can,</p>
+<p>this is</p>
+<p>from</p>
+<p>to</p>
+<p>to.</p>
+<p>Once you're</p>
+<p>disempowered,</p>
+<p>so that means</p>
+<p>you're not</p>
+<p>the sovereign</p>
+<p>after the</p>
+<p>state of</p>
+<p>exception has</p>
+<p>begun.</p>
+<p>From</p>
+<p>to,</p>
+<p>so here,</p>
+<p>if you</p>
+<p>are,</p>
+<p>if you</p>
+<p>happen to</p>
+<p>just,</p>
+<p>for that</p>
+<p>first time</p>
+<p>step,</p>
+<p>be in</p>
+<p>power,</p>
+<p>then you</p>
+<p>get kicked</p>
+<p>to high</p>
+<p>power with</p>
+<p>one.</p>
+<p>That's what</p>
+<p>they all</p>
+<p>have that</p>
+<p>one there.</p>
+<p>And then,</p>
+<p>now you're</p>
+<p>exploring this</p>
+<p>four sub</p>
+<p>matrix amongst</p>
+<p>high,</p>
+<p>medium,</p>
+<p>low,</p>
+<p>and</p>
+<p>homo</p>
+<p>sager.</p>
+<p>So,</p>
+<p>kind of</p>
+<p>cool.</p>
+<p>Gives a</p>
+<p>starting point</p>
+<p>and,</p>
+<p>and,</p>
+<p>we could</p>
+<p>possibly</p>
+<p>fuse that</p>
+<p>with</p>
+<p>pi-MDP</p>
+<p>because in</p>
+<p>the paper,</p>
+<p>the definition</p>
+<p>of sovereignty,</p>
+<p>cognitive sovereignty,</p>
+<p>was for</p>
+<p>one's own</p>
+<p>EFE to</p>
+<p>influence the</p>
+<p>VFE of</p>
+<p>others.</p>
+<p>So,</p>
+<p>when the</p>
+<p>political</p>
+<p>operativities</p>
+<p>of one</p>
+<p>agent</p>
+<p>influence the</p>
+<p>bare life</p>
+<p>of another,</p>
+<p>that's the</p>
+<p>state of</p>
+<p>exception.</p>
+<p>That's</p>
+<p>political</p>
+<p>agency.</p>
+<p>So,</p>
+<p>that was the</p>
+<p>cognitive</p>
+<p>sovereignty</p>
+<p>simulation.</p>
+<p>simulation,</p>
+<p>it's like</p>
+<p>cursor and</p>
+<p>the LLM</p>
+<p>probably could</p>
+<p>have gotten</p>
+<p>there a</p>
+<p>year ago,</p>
+<p>a little bit</p>
+<p>less than a</p>
+<p>year ago.</p>
+<p>So,</p>
+<p>it's like,</p>
+<p>not that this</p>
+<p>simulation was</p>
+<p>implausible,</p>
+<p>it's just</p>
+<p>accelerating more</p>
+<p>and more</p>
+<p>with going</p>
+<p>from,</p>
+<p>even the</p>
+<p>pseudocode,</p>
+<p>I don't know</p>
+<p>how much it</p>
+<p>was needed</p>
+<p>because it</p>
+<p>was itself</p>
+<p>just sort</p>
+<p>of giving</p>
+<p>a few</p>
+<p>sketches.</p>
+<p>So,</p>
+<p>cool.</p>
+<p>Okay.</p>
+<p>We'll</p>
+<p>possibly</p>
+<p>return and</p>
+<p>add PyMDP.</p>
+<p>Like,</p>
+<p>meanwhile,</p>
+<p>if anyone</p>
+<p>in the</p>
+<p>live chat</p>
+<p>has a</p>
+<p>request or</p>
+<p>a thought,</p>
+<p>otherwise,</p>
+<p>we'll look</p>
+<p>at this</p>
+<p>fourth section</p>
+<p>and then</p>
+<p>we'll</p>
+<p>recap.</p>
+<p>Look at</p>
+<p>all these</p>
+<p>suggestions.</p>
+<p>Like,</p>
+<p>did you</p>
+<p>mean</p>
+<p>eternal</p>
+<p>return?</p>
+<p>Is that</p>
+<p>what you</p>
+<p>meant?</p>
+<p>Okay.</p>
+<p>FOIA.</p>
+<p>Let's</p>
+<p>bring in</p>
+<p>a kind</p>
+<p>of</p>
+<p>realist</p>
+<p>twist.</p>
+<p>So,</p>
+<p>in</p>
+<p>other,</p>
+<p>there's</p>
+<p>all these</p>
+<p>different</p>
+<p>frameworks</p>
+<p>and</p>
+<p>different</p>
+<p>kinds</p>
+<p>of</p>
+<p>systems,</p>
+<p>hence</p>
+<p>systems</p>
+<p>within</p>
+<p>systems.</p>
+<p>And</p>
+<p>let's</p>
+<p>go to</p>
+<p>FOIA.</p>
+<p>All right.</p>
+<p>United</p>
+<p>States</p>
+<p>Freedom of</p>
+<p>Information</p>
+<p>Act,</p>
+<p>FOIA,</p>
+<p>this was</p>
+<p>generated</p>
+<p>material,</p>
+<p>is a</p>
+<p>pivotal</p>
+<p>federal</p>
+<p>statute</p>
+<p>enacted</p>
+<p>1966,</p>
+<p>designed</p>
+<p>to ensure</p>
+<p>transparency</p>
+<p>and accountability</p>
+<p>in government</p>
+<p>operations by</p>
+<p>granting public</p>
+<p>access to</p>
+<p>federal agency</p>
+<p>records.</p>
+<p>Key technical</p>
+<p>details include</p>
+<p>its enactment</p>
+<p>purpose,</p>
+<p>scope,</p>
+<p>request process,</p>
+<p>exemptions,</p>
+<p>appeals,</p>
+<p>litigation,</p>
+<p>fees,</p>
+<p>electronic</p>
+<p>FOIA,</p>
+<p>there was a</p>
+<p>1996 e-FOIA</p>
+<p>amendment</p>
+<p>mandating</p>
+<p>the electronic</p>
+<p>availability of</p>
+<p>certain records</p>
+<p>in the</p>
+<p>establishment of</p>
+<p>electronic</p>
+<p>reading rooms,</p>
+<p>whoa,</p>
+<p>annual</p>
+<p>reports.</p>
+<p>FOIA is</p>
+<p>an essential</p>
+<p>mechanism for</p>
+<p>fostering government</p>
+<p>transparency and</p>
+<p>accountability,</p>
+<p>enabling the</p>
+<p>public to</p>
+<p>remain informed</p>
+<p>about governmental</p>
+<p>actions and</p>
+<p>decisions.</p>
+<p>Okay,</p>
+<p>so there's a</p>
+<p>few different</p>
+<p>scripts in</p>
+<p>here.</p>
+<p>There's a</p>
+<p>main.py.</p>
+<p>This is just</p>
+<p>a wrapper</p>
+<p>that's going to</p>
+<p>call several</p>
+<p>of these other</p>
+<p>scripts,</p>
+<p>but let's</p>
+<p>look through</p>
+<p>them.</p>
+<p>So,</p>
+<p>FOIA</p>
+<p>utils.</p>
+<p>First,</p>
+<p>it loads an</p>
+<p>API key from</p>
+<p>the .env</p>
+<p>file.</p>
+<p>So,</p>
+<p>as brought</p>
+<p>up before</p>
+<p>in the</p>
+<p>context of</p>
+<p>LLM APIs,</p>
+<p>git ignore</p>
+<p>is at the</p>
+<p>top level</p>
+<p>of the</p>
+<p>repo.</p>
+<p>And here,</p>
+<p>you can</p>
+<p>specify</p>
+<p>types of</p>
+<p>files,</p>
+<p>like file</p>
+<p>extensions,</p>
+<p>and also</p>
+<p>whole sub</p>
+<p>folders.</p>
+<p>Like,</p>
+<p>when we</p>
+<p>clone in</p>
+<p>other big</p>
+<p>repos,</p>
+<p>we don't</p>
+<p>need to</p>
+<p>then push</p>
+<p>those as</p>
+<p>if they</p>
+<p>were kind</p>
+<p>of ours.</p>
+<p>That kind</p>
+<p>of breaks</p>
+<p>the git</p>
+<p>chain.</p>
+<p>But we</p>
+<p>see .env</p>
+<p>here.</p>
+<p>So,</p>
+<p>what happens</p>
+<p>in</p>
+<p>utils</p>
+<p>is it's</p>
+<p>going to</p>
+<p>load in</p>
+<p>using the</p>
+<p>.env</p>
+<p>Python package</p>
+<p>the API</p>
+<p>key.</p>
+<p>FOIA</p>
+<p>API</p>
+<p>key.</p>
+<p>So,</p>
+<p>each person</p>
+<p>is going</p>
+<p>to get</p>
+<p>in their</p>
+<p>API</p>
+<p>key,</p>
+<p>and mine</p>
+<p>is in</p>
+<p>here.</p>
+<p>I'm not</p>
+<p>going to</p>
+<p>show it</p>
+<p>on the</p>
+<p>stream.</p>
+<p>But then,</p>
+<p>when you</p>
+<p>make your</p>
+<p>API request,</p>
+<p>it will</p>
+<p>use your</p>
+<p>API key,</p>
+<p>and then</p>
+<p>you can</p>
+<p>keep</p>
+<p>your .env</p>
+<p>with your</p>
+<p>secret keys</p>
+<p>for LLMs</p>
+<p>or for</p>
+<p>the government</p>
+<p>or whatever</p>
+<p>it is,</p>
+<p>and you</p>
+<p>know that</p>
+<p>it's not</p>
+<p>going to</p>
+<p>get pushed</p>
+<p>to GitHub</p>
+<p>like when</p>
+<p>you do</p>
+<p>a push.</p>
+<p>Utils</p>
+<p>has</p>
+<p>different</p>
+<p>utilities.</p>
+<p>Here are</p>
+<p>some example</p>
+<p>FOIA calls</p>
+<p>that are</p>
+<p>just like</p>
+<p>more</p>
+<p>formulaic.</p>
+<p>There's an</p>
+<p>analysis</p>
+<p>and a</p>
+<p>markdown</p>
+<p>translator.</p>
+<p>And then</p>
+<p>agency year</p>
+<p>has a</p>
+<p>start and</p>
+<p>an end</p>
+<p>year.</p>
+<p>So here</p>
+<p>we did</p>
+<p>2000 to</p>
+<p>2025,</p>
+<p>but I</p>
+<p>also</p>
+<p>explored</p>
+<p>doing</p>
+<p>like</p>
+<p>1200</p>
+<p>to</p>
+<p>2400,</p>
+<p>just</p>
+<p>thousands</p>
+<p>of years</p>
+<p>that we</p>
+<p>wouldn't</p>
+<p>expect,</p>
+<p>but you</p>
+<p>never know.</p>
+<p>And then</p>
+<p>also about</p>
+<p>a few days</p>
+<p>ago when I</p>
+<p>initially did</p>
+<p>this,</p>
+<p>I got</p>
+<p>rate</p>
+<p>limited.</p>
+<p>So I</p>
+<p>had to</p>
+<p>have some</p>
+<p>email</p>
+<p>correspondences</p>
+<p>to restore</p>
+<p>my access,</p>
+<p>but that</p>
+<p>itself was</p>
+<p>fun and</p>
+<p>interesting.</p>
+<p>Then I</p>
+<p>used LLM,</p>
+<p>I just</p>
+<p>would copy</p>
+<p>this,</p>
+<p>let's just</p>
+<p>see,</p>
+<p>shift here,</p>
+<p>just selecting</p>
+<p>this,</p>
+<p>control K,</p>
+<p>just to</p>
+<p>bring in</p>
+<p>just that</p>
+<p>part,</p>
+<p>add any</p>
+<p>missing</p>
+<p>agencies.</p>
+<p>Okay,</p>
+<p>let's just</p>
+<p>see if,</p>
+<p>and I</p>
+<p>just did</p>
+<p>that several</p>
+<p>times just</p>
+<p>to get</p>
+<p>a bunch</p>
+<p>of agencies.</p>
+<p>I don't</p>
+<p>even know,</p>
+<p>these may</p>
+<p>not even</p>
+<p>be real.</p>
+<p>Let's see</p>
+<p>if any</p>
+<p>are added</p>
+<p>here.</p>
+<p>Okay,</p>
+<p>more</p>
+<p>agencies.</p>
+<p>It's</p>
+<p>like,</p>
+<p>okay,</p>
+<p>now,</p>
+<p>now you've</p>
+<p>gone too</p>
+<p>far.</p>
+<p>Let's</p>
+<p>just see</p>
+<p>really quick.</p>
+<p>USDA</p>
+<p>APHIS,</p>
+<p>this sounds</p>
+<p>agricultural.</p>
+<p>Yeah.</p>
+<p>Animal</p>
+<p>and Plant</p>
+<p>Health</p>
+<p>Inspection</p>
+<p>Service,</p>
+<p>that's real,</p>
+<p>kind of like</p>
+<p>APHID.</p>
+<p>Some of</p>
+<p>these,</p>
+<p>it's like,</p>
+<p>really though?</p>
+<p>see that</p>
+<p>JMMFL</p>
+<p>doesn't seem</p>
+<p>to be an</p>
+<p>actual one,</p>
+<p>but regardless,</p>
+<p>that's just</p>
+<p>going to</p>
+<p>still get</p>
+<p>called.</p>
+<p>So,</p>
+<p>again,</p>
+<p>it takes</p>
+<p>the start</p>
+<p>and end</p>
+<p>year and</p>
+<p>all the</p>
+<p>departments</p>
+<p>listed.</p>
+<p>We could</p>
+<p>do a</p>
+<p>hashtag</p>
+<p>out or</p>
+<p>we could</p>
+<p>change all</p>
+<p>agencies.</p>
+<p>We could</p>
+<p>say list</p>
+<p>of just</p>
+<p>and then</p>
+<p>just delete</p>
+<p>that if</p>
+<p>we only</p>
+<p>wanted</p>
+<p>major</p>
+<p>departments.</p>
+<p>Or,</p>
+<p>of course,</p>
+<p>you could</p>
+<p>just delete</p>
+<p>the ones</p>
+<p>you don't</p>
+<p>want and</p>
+<p>then just</p>
+<p>say,</p>
+<p>okay,</p>
+<p>only interested</p>
+<p>in NSF</p>
+<p>for this</p>
+<p>year.</p>
+<p>Okay.</p>
+<p>It sorts</p>
+<p>it alphabetically,</p>
+<p>converts it</p>
+<p>to dictionary,</p>
+<p>and then it</p>
+<p>fetches this</p>
+<p>utility.</p>
+<p>If we were,</p>
+<p>you know,</p>
+<p>but this is a</p>
+<p>common move,</p>
+<p>so I might as</p>
+<p>well just</p>
+<p>show it.</p>
+<p>Select</p>
+<p>all,</p>
+<p>and then</p>
+<p>did I,</p>
+<p>but it</p>
+<p>wasn't really</p>
+<p>needed because</p>
+<p>even just</p>
+<p>pulling up</p>
+<p>I,</p>
+<p>control I</p>
+<p>with the</p>
+<p>composer,</p>
+<p>it already</p>
+<p>brought in</p>
+<p>this script.</p>
+<p>Then,</p>
+<p>I'm just</p>
+<p>going to,</p>
+<p>again,</p>
+<p>just for</p>
+<p>doubling</p>
+<p>check,</p>
+<p>add into</p>
+<p>the context</p>
+<p>window foia</p>
+<p>utils.</p>
+<p>Move</p>
+<p>all the</p>
+<p>methods</p>
+<p>defined in</p>
+<p>at</p>
+<p>foia</p>
+<p>underscore</p>
+<p>agency</p>
+<p>year</p>
+<p>to</p>
+<p>foia</p>
+<p>underscore</p>
+<p>utils,</p>
+<p>and</p>
+<p>invoke</p>
+<p>them</p>
+<p>properly.</p>
+<p>Here.</p>
+<p>So,</p>
+<p>expected</p>
+<p>behavior</p>
+<p>would be</p>
+<p>it's going</p>
+<p>to delete,</p>
+<p>red lines</p>
+<p>are going</p>
+<p>to show</p>
+<p>up from</p>
+<p>93 to</p>
+<p>108,</p>
+<p>and then</p>
+<p>we'll be</p>
+<p>able to</p>
+<p>check.</p>
+<p>And again,</p>
+<p>this is why</p>
+<p>being able</p>
+<p>to,</p>
+<p>here it</p>
+<p>is,</p>
+<p>it's</p>
+<p>drafting</p>
+<p>on these</p>
+<p>two</p>
+<p>subtabs.</p>
+<p>And then,</p>
+<p>let's see</p>
+<p>how it</p>
+<p>goes.</p>
+<p>So,</p>
+<p>whoa.</p>
+<p>So,</p>
+<p>but it</p>
+<p>can go</p>
+<p>too far.</p>
+<p>So,</p>
+<p>it may,</p>
+<p>I'm not</p>
+<p>going to</p>
+<p>accept this</p>
+<p>edit this</p>
+<p>time,</p>
+<p>just because</p>
+<p>I know</p>
+<p>it's already</p>
+<p>working.</p>
+<p>This looks</p>
+<p>like it</p>
+<p>might have</p>
+<p>gone too</p>
+<p>far.</p>
+<p>but if</p>
+<p>it's a,</p>
+<p>um,</p>
+<p>what it</p>
+<p>usually does</p>
+<p>or what</p>
+<p>you can</p>
+<p>get it</p>
+<p>to prompt</p>
+<p>to do</p>
+<p>is just</p>
+<p>pull</p>
+<p>methods</p>
+<p>that are</p>
+<p>defined</p>
+<p>with def,</p>
+<p>pull them</p>
+<p>into utils.</p>
+<p>Like,</p>
+<p>what it</p>
+<p>would manually</p>
+<p>look like</p>
+<p>would be</p>
+<p>copying in</p>
+<p>control x,</p>
+<p>cutting out</p>
+<p>def,</p>
+<p>putting that</p>
+<p>to foia utils.</p>
+<p>and then</p>
+<p>ensuring that</p>
+<p>the,</p>
+<p>um,</p>
+<p>foia agency</p>
+<p>year from</p>
+<p>foia utils</p>
+<p>is pulling in</p>
+<p>fetch and save</p>
+<p>annual reports.</p>
+<p>that'll still</p>
+<p>work.</p>
+<p>Okay,</p>
+<p>so what,</p>
+<p>what is this</p>
+<p>output?</p>
+<p>Clear the</p>
+<p>terminal.</p>
+<p>We're still in</p>
+<p>cognitive sovereignty.</p>
+<p>I'm just</p>
+<p>going to</p>
+<p>trash that</p>
+<p>terminal.</p>
+<p>Right click.</p>
+<p>Open an</p>
+<p>integrated</p>
+<p>terminal.</p>
+<p>Python 3.</p>
+<p>Let's just</p>
+<p>do main.</p>
+<p>Okay,</p>
+<p>so main</p>
+<p>we did an</p>
+<p>update,</p>
+<p>but again,</p>
+<p>this is what</p>
+<p>it looks like</p>
+<p>to,</p>
+<p>to debug.</p>
+<p>Just put it</p>
+<p>into the</p>
+<p>composer.</p>
+<p>Fix it.</p>
+<p>Meanwhile,</p>
+<p>let's call</p>
+<p>the,</p>
+<p>the foia agency</p>
+<p>year.</p>
+<p>Accept it.</p>
+<p>Again,</p>
+<p>looking is</p>
+<p>probably a</p>
+<p>good thing</p>
+<p>to do.</p>
+<p>It's like,</p>
+<p>it's not just</p>
+<p>like not</p>
+<p>looking before</p>
+<p>crossing the</p>
+<p>street.</p>
+<p>It's like</p>
+<p>not looking</p>
+<p>when making</p>
+<p>stochastic</p>
+<p>edits to</p>
+<p>your PhD</p>
+<p>dissertation,</p>
+<p>which is</p>
+<p>live code,</p>
+<p>but</p>
+<p>c'est la vie.</p>
+<p>Okay,</p>
+<p>there we go.</p>
+<p>So even</p>
+<p>without intervention,</p>
+<p>foia agency</p>
+<p>year.</p>
+<p>Okay,</p>
+<p>so what it's</p>
+<p>doing is</p>
+<p>it,</p>
+<p>maybe we're</p>
+<p>getting rate</p>
+<p>limited,</p>
+<p>I'm not</p>
+<p>sure.</p>
+<p>For each</p>
+<p>of those</p>
+<p>departments,</p>
+<p>it's saving</p>
+<p>these outputs.</p>
+<p>So we'll</p>
+<p>keep watching</p>
+<p>what's</p>
+<p>happening</p>
+<p>live.</p>
+<p>I'm not</p>
+<p>sure maybe</p>
+<p>this is</p>
+<p>going to</p>
+<p>be about</p>
+<p>to be a</p>
+<p>huge one.</p>
+<p>But first</p>
+<p>it checks</p>
+<p>if we</p>
+<p>already have</p>
+<p>that exact</p>
+<p>combination</p>
+<p>of agency</p>
+<p>and year.</p>
+<p>Then I</p>
+<p>concatenate in</p>
+<p>the file name,</p>
+<p>this is just</p>
+<p>one way to</p>
+<p>do it,</p>
+<p>it could be</p>
+<p>done like</p>
+<p>way better</p>
+<p>ways.</p>
+<p>The date</p>
+<p>that it</p>
+<p>was pulled,</p>
+<p>that's</p>
+<p>2024,</p>
+<p>8,</p>
+<p>20.</p>
+<p>I'm not</p>
+<p>sure if</p>
+<p>that last</p>
+<p>piece is</p>
+<p>the time,</p>
+<p>but then</p>
+<p>the middle</p>
+<p>piece here</p>
+<p>is like</p>
+<p>19</p>
+<p>characters.</p>
+<p>Because for</p>
+<p>this one,</p>
+<p>like 2000</p>
+<p>DOI,</p>
+<p>let's just</p>
+<p>look at</p>
+<p>the USDA.</p>
+<p>Okay,</p>
+<p>so 2005,</p>
+<p>it's 19</p>
+<p>characters long,</p>
+<p>you're going</p>
+<p>to see a</p>
+<p>lot of</p>
+<p>19s,</p>
+<p>because 19</p>
+<p>just says</p>
+<p>report not</p>
+<p>found.</p>
+<p>So if you</p>
+<p>request,</p>
+<p>what was the</p>
+<p>annual report</p>
+<p>for the USDA</p>
+<p>in like the</p>
+<p>year 30?</p>
+<p>3400,</p>
+<p>probably it's</p>
+<p>not found</p>
+<p>on that</p>
+<p>server.</p>
+<p>Not saying</p>
+<p>it's not</p>
+<p>there,</p>
+<p>but then we</p>
+<p>can see,</p>
+<p>okay,</p>
+<p>here's 2010</p>
+<p>annual report.</p>
+<p>Okay,</p>
+<p>interesting,</p>
+<p>but we</p>
+<p>got it.</p>
+<p>So this</p>
+<p>is their</p>
+<p>FOIA</p>
+<p>metadata.</p>
+<p>As far</p>
+<p>as I</p>
+<p>totally</p>
+<p>understand,</p>
+<p>this is</p>
+<p>all open</p>
+<p>information.</p>
+<p>I am</p>
+<p>not doing</p>
+<p>anything other</p>
+<p>than just</p>
+<p>calling the</p>
+<p>FOIA API.</p>
+<p>so we</p>
+<p>can see</p>
+<p>how many</p>
+<p>characters</p>
+<p>are there.</p>
+<p>And then</p>
+<p>it's like</p>
+<p>2024 and</p>
+<p>2025 are</p>
+<p>back to</p>
+<p>19 characters</p>
+<p>because those</p>
+<p>reports are</p>
+<p>not there.</p>
+<p>Not sure,</p>
+<p>like it'll be</p>
+<p>interesting to</p>
+<p>see what</p>
+<p>comes out</p>
+<p>here.</p>
+<p>clear.</p>
+<p>Okay,</p>
+<p>but I'm</p>
+<p>just gonna</p>
+<p>kill it.</p>
+<p>Clear.</p>
+<p>And then</p>
+<p>let's</p>
+<p>call</p>
+<p>FOIA</p>
+<p>to</p>
+<p>markdown.</p>
+<p>So here,</p>
+<p>it's gonna</p>
+<p>make a</p>
+<p>FOIA</p>
+<p>markdown</p>
+<p>folder.</p>
+<p>So it's</p>
+<p>just iterating</p>
+<p>over all</p>
+<p>the reports.</p>
+<p>It's giving</p>
+<p>a lot of</p>
+<p>errors.</p>
+<p>Maybe we</p>
+<p>could debug</p>
+<p>it,</p>
+<p>but we'll</p>
+<p>see.</p>
+<p>Let's go</p>
+<p>DOE.</p>
+<p>So here's</p>
+<p>the 19</p>
+<p>character</p>
+<p>one,</p>
+<p>report</p>
+<p>not found.</p>
+<p>But here's</p>
+<p>the 43.</p>
+<p>Okay,</p>
+<p>now this</p>
+<p>is looking</p>
+<p>a little</p>
+<p>bit more</p>
+<p>readable.</p>
+<p>Let's</p>
+<p>make a</p>
+<p>new script</p>
+<p>called</p>
+<p>FOIA</p>
+<p>Secondary</p>
+<p>MD</p>
+<p>Processing</p>
+<p>dot</p>
+<p>py.</p>
+<p>It's</p>
+<p>already in</p>
+<p>the context</p>
+<p>window.</p>
+<p>I'll add</p>
+<p>into the</p>
+<p>window</p>
+<p>a</p>
+<p>markdown</p>
+<p>that we</p>
+<p>know has</p>
+<p>a lot</p>
+<p>of</p>
+<p>characters.</p>
+<p>So we'll</p>
+<p>do DOE</p>
+<p>2008.</p>
+<p>Let's try</p>
+<p>without</p>
+<p>specific</p>
+<p>reference</p>
+<p>to a</p>
+<p>file.</p>
+<p>It would</p>
+<p>work with</p>
+<p>reference to</p>
+<p>a specific</p>
+<p>file,</p>
+<p>but just</p>
+<p>make sure</p>
+<p>that it</p>
+<p>doesn't</p>
+<p>overfit</p>
+<p>there.</p>
+<p>Let's</p>
+<p>say</p>
+<p>given</p>
+<p>markdown</p>
+<p>documents</p>
+<p>in</p>
+<p>dot</p>
+<p>slash</p>
+<p>that means</p>
+<p>this</p>
+<p>folder</p>
+<p>FOIA</p>
+<p>underscore</p>
+<p>markdown</p>
+<p>slash</p>
+<p>folder</p>
+<p>and all</p>
+<p>sub</p>
+<p>folders</p>
+<p>write</p>
+<p>secondary</p>
+<p>processing</p>
+<p>algorithm</p>
+<p>that</p>
+<p>reads</p>
+<p>in</p>
+<p>and</p>
+<p>improves</p>
+<p>formatting</p>
+<p>and</p>
+<p>conciseness</p>
+<p>saving</p>
+<p>all</p>
+<p>outputs</p>
+<p>to a</p>
+<p>folder</p>
+<p>dot</p>
+<p>slash</p>
+<p>FOIA</p>
+<p>secondary</p>
+<p>markdowns</p>
+<p>slash</p>
+<p>open</p>
+<p>parentheses</p>
+<p>make</p>
+<p>it</p>
+<p>if</p>
+<p>it</p>
+<p>is</p>
+<p>not</p>
+<p>there</p>
+<p>recapitulating</p>
+<p>folder</p>
+<p>nested</p>
+<p>topology</p>
+<p>thank</p>
+<p>you</p>
+<p>I'm</p>
+<p>curious</p>
+<p>to see</p>
+<p>because</p>
+<p>it's</p>
+<p>not</p>
+<p>going</p>
+<p>to</p>
+<p>do</p>
+<p>an</p>
+<p>LLM</p>
+<p>call</p>
+<p>but</p>
+<p>if</p>
+<p>you'll</p>
+<p>recall</p>
+<p>back</p>
+<p>to</p>
+<p>infra</p>
+<p>ant</p>
+<p>stream</p>
+<p>one</p>
+<p>and</p>
+<p>the</p>
+<p>kinds</p>
+<p>of</p>
+<p>LLM</p>
+<p>API</p>
+<p>augmentations</p>
+<p>that were</p>
+<p>possible</p>
+<p>then</p>
+<p>we</p>
+<p>could</p>
+<p>imagine</p>
+<p>okay</p>
+<p>now</p>
+<p>iterate</p>
+<p>over</p>
+<p>all</p>
+<p>these</p>
+<p>reports</p>
+<p>and do</p>
+<p>LLM</p>
+<p>summary</p>
+<p>or do</p>
+<p>translation</p>
+<p>or explain</p>
+<p>it to</p>
+<p>this</p>
+<p>person</p>
+<p>okay</p>
+<p>let's</p>
+<p>just</p>
+<p>see</p>
+<p>how</p>
+<p>it</p>
+<p>goes</p>
+<p>all</p>
+<p>right</p>
+<p>clear</p>
+<p>we're</p>
+<p>in the</p>
+<p>FOIA</p>
+<p>folder</p>
+<p>here's</p>
+<p>secondary</p>
+<p>MD</p>
+<p>processing</p>
+<p>Python</p>
+<p>3</p>
+<p>FOIA</p>
+<p>tab</p>
+<p>it</p>
+<p>goes</p>
+<p>to</p>
+<p>the</p>
+<p>point</p>
+<p>where</p>
+<p>it's</p>
+<p>ambiguous</p>
+<p>and</p>
+<p>then</p>
+<p>secondary</p>
+<p>MD</p>
+<p>processing</p>
+<p>okay</p>
+<p>no</p>
+<p>module</p>
+<p>BS4</p>
+<p>some</p>
+<p>people</p>
+<p>might</p>
+<p>know</p>
+<p>ways</p>
+<p>to</p>
+<p>fix</p>
+<p>this</p>
+<p>but</p>
+<p>let's</p>
+<p>just</p>
+<p>see</p>
+<p>what</p>
+<p>it</p>
+<p>recommends</p>
+<p>okay</p>
+<p>it</p>
+<p>adds</p>
+<p>some</p>
+<p>I'll</p>
+<p>just</p>
+<p>accept</p>
+<p>it</p>
+<p>clear</p>
+<p>run</p>
+<p>it</p>
+<p>again</p>
+<p>error</p>
+<p>beautiful</p>
+<p>soup</p>
+<p>4</p>
+<p>is</p>
+<p>not</p>
+<p>installed</p>
+<p>installing</p>
+<p>it</p>
+<p>now</p>
+<p>so</p>
+<p>this</p>
+<p>is</p>
+<p>what's</p>
+<p>so</p>
+<p>fun</p>
+<p>and</p>
+<p>collaborative</p>
+<p>is</p>
+<p>like</p>
+<p>oh</p>
+<p>okay</p>
+<p>I</p>
+<p>came</p>
+<p>across</p>
+<p>that</p>
+<p>friction</p>
+<p>and</p>
+<p>then</p>
+<p>just</p>
+<p>within</p>
+<p>a few</p>
+<p>seconds</p>
+<p>okay</p>
+<p>but</p>
+<p>now</p>
+<p>no</p>
+<p>one</p>
+<p>else</p>
+<p>will</p>
+<p>hit</p>
+<p>that</p>
+<p>exact</p>
+<p>friction</p>
+<p>okay</p>
+<p>interesting</p>
+<p>so</p>
+<p>let's</p>
+<p>look at</p>
+<p>what</p>
+<p>it's</p>
+<p>doing</p>
+<p>whoa</p>
+<p>okay</p>
+<p>this is</p>
+<p>processing</p>
+<p>from ones</p>
+<p>that are</p>
+<p>that are</p>
+<p>like</p>
+<p>just</p>
+<p>kind</p>
+<p>of</p>
+<p>empty</p>
+<p>in</p>
+<p>so</p>
+<p>we'll</p>
+<p>see</p>
+<p>what</p>
+<p>those</p>
+<p>maybe</p>
+<p>those</p>
+<p>have</p>
+<p>a</p>
+<p>different</p>
+<p>format</p>
+<p>but</p>
+<p>it'll</p>
+<p>get</p>
+<p>through</p>
+<p>them</p>
+<p>okay</p>
+<p>it just</p>
+<p>looks like</p>
+<p>it's</p>
+<p>spacing</p>
+<p>it out</p>
+<p>but</p>
+<p>you know</p>
+<p>what's</p>
+<p>wrong</p>
+<p>with</p>
+<p>that</p>
+<p>and</p>
+<p>then</p>
+<p>let's</p>
+<p>see</p>
+<p>when it</p>
+<p>goes</p>
+<p>through</p>
+<p>the</p>
+<p>sub</p>
+<p>folders</p>
+<p>or what</p>
+<p>happens</p>
+<p>then</p>
+<p>okay</p>
+<p>it's</p>
+<p>almost</p>
+<p>done</p>
+<p>with</p>
+<p>the</p>
+<p>ones</p>
+<p>that</p>
+<p>were</p>
+<p>just</p>
+<p>in</p>
+<p>the</p>
+<p>folder</p>
+<p>itself</p>
+<p>meanwhile</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>last</p>
+<p>section</p>
+<p>that</p>
+<p>I</p>
+<p>had</p>
+<p>prepared</p>
+<p>to</p>
+<p>go</p>
+<p>through</p>
+<p>so</p>
+<p>please</p>
+<p>write</p>
+<p>any</p>
+<p>comments</p>
+<p>or</p>
+<p>questions</p>
+<p>or</p>
+<p>ideas</p>
+<p>in</p>
+<p>the</p>
+<p>live</p>
+<p>chat</p>
+<p>and</p>
+<p>then</p>
+<p>we</p>
+<p>can</p>
+<p>play</p>
+<p>around</p>
+<p>a little</p>
+<p>bit</p>
+<p>and</p>
+<p>do</p>
+<p>a</p>
+<p>little</p>
+<p>more</p>
+<p>developments</p>
+<p>okay</p>
+<p>here</p>
+<p>we</p>
+<p>go</p>
+<p>OIP</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>not</p>
+<p>okay</p>
+<p>OIP</p>
+<p>might be</p>
+<p>an</p>
+<p>exception</p>
+<p>okay</p>
+<p>let's</p>
+<p>see</p>
+<p>another</p>
+<p>one</p>
+<p>HUD</p>
+<p>okay</p>
+<p>so</p>
+<p>19</p>
+<p>okay</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>report</p>
+<p>not</p>
+<p>found</p>
+<p>and</p>
+<p>here's</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>you know</p>
+<p>is this</p>
+<p>helpful</p>
+<p>possibly</p>
+<p>would</p>
+<p>LLM</p>
+<p>being used</p>
+<p>in this</p>
+<p>loop</p>
+<p>be helpful</p>
+<p>yeah</p>
+<p>probably</p>
+<p>okay</p>
+<p>just</p>
+<p>pull this</p>
+<p>off screen</p>
+<p>for a</p>
+<p>split second</p>
+<p>but</p>
+<p>API.data.gov</p>
+<p>I mean</p>
+<p>this is</p>
+<p>what</p>
+<p>USA</p>
+<p>OS</p>
+<p>is</p>
+<p>like</p>
+<p>when we</p>
+<p>think</p>
+<p>about</p>
+<p>what</p>
+<p>what</p>
+<p>what is</p>
+<p>USA</p>
+<p>OS</p>
+<p>well</p>
+<p>interestingly</p>
+<p>I'm getting</p>
+<p>some</p>
+<p>very strange</p>
+<p>internet</p>
+<p>patterns</p>
+<p>from the</p>
+<p>other</p>
+<p>window</p>
+<p>which I'm</p>
+<p>not going</p>
+<p>to show</p>
+<p>but</p>
+<p>let's</p>
+<p>just</p>
+<p>end</p>
+<p>that</p>
+<p>one</p>
+<p>and</p>
+<p>see</p>
+<p>if</p>
+<p>I</p>
+<p>can</p>
+<p>pull</p>
+<p>up</p>
+<p>USA</p>
+<p>OS</p>
+<p>wow</p>
+<p>very</p>
+<p>interesting</p>
+<p>here</p>
+<p>I've</p>
+<p>just</p>
+<p>navigated</p>
+<p>over</p>
+<p>here</p>
+<p>but</p>
+<p>here's</p>
+<p>from</p>
+<p>my</p>
+<p>personal</p>
+<p>page</p>
+<p>drawing</p>
+<p>from</p>
+<p>Kirby</p>
+<p>Erner</p>
+<p>USA</p>
+<p>OS</p>
+<p>but</p>
+<p>it's</p>
+<p>like</p>
+<p>has</p>
+<p>it</p>
+<p>ever</p>
+<p>been</p>
+<p>more</p>
+<p>API</p>
+<p>oriented</p>
+<p>to</p>
+<p>interface</p>
+<p>with</p>
+<p>speak</p>
+<p>program</p>
+<p>utilize</p>
+<p>the</p>
+<p>USA</p>
+<p>operating</p>
+<p>system</p>
+<p>not</p>
+<p>sure</p>
+<p>okay</p>
+<p>clear it</p>
+<p>close the</p>
+<p>terminal</p>
+<p>I'm going to</p>
+<p>delete the</p>
+<p>markdowns</p>
+<p>because those</p>
+<p>can be</p>
+<p>regenerated</p>
+<p>but I'll</p>
+<p>leave the</p>
+<p>responses</p>
+<p>that already</p>
+<p>came in</p>
+<p>just because</p>
+<p>those are</p>
+<p>information</p>
+<p>it's an API</p>
+<p>call that</p>
+<p>anyone could</p>
+<p>have made</p>
+<p>I'm just</p>
+<p>listing them</p>
+<p>there</p>
+<p>so</p>
+<p>that was</p>
+<p>the FOIA</p>
+<p>okay</p>
+<p>alright</p>
+<p>alright</p>
+<p>alright</p>
+<p>okay</p>
+<p>let's</p>
+<p>recap</p>
+<p>there was a</p>
+<p>couple</p>
+<p>sections here</p>
+<p>going from</p>
+<p>the</p>
+<p>end</p>
+<p>to the</p>
+<p>first</p>
+<p>most</p>
+<p>recently</p>
+<p>we looked</p>
+<p>at this</p>
+<p>freedom of</p>
+<p>information</p>
+<p>act</p>
+<p>API</p>
+<p>call</p>
+<p>scraping</p>
+<p>processing</p>
+<p>handling</p>
+<p>pathway</p>
+<p>and</p>
+<p>explored</p>
+<p>with the</p>
+<p>git</p>
+<p>ignore</p>
+<p>you can</p>
+<p>put your</p>
+<p>own</p>
+<p>personal</p>
+<p>API</p>
+<p>key</p>
+<p>into</p>
+<p>.env</p>
+<p>you need</p>
+<p>an email</p>
+<p>address</p>
+<p>to sign</p>
+<p>up</p>
+<p>and then</p>
+<p>that's a way</p>
+<p>where like</p>
+<p>many people</p>
+<p>can collaborate</p>
+<p>on the</p>
+<p>open source</p>
+<p>tooling</p>
+<p>while also</p>
+<p>keeping their</p>
+<p>API keys</p>
+<p>secret</p>
+<p>that's the</p>
+<p>FOIA</p>
+<p>then</p>
+<p>we looked</p>
+<p>at</p>
+<p>in</p>
+<p>folder</p>
+<p>nine</p>
+<p>other</p>
+<p>and then</p>
+<p>we looked</p>
+<p>at</p>
+<p>two</p>
+<p>different</p>
+<p>well</p>
+<p>I guess</p>
+<p>three</p>
+<p>folders</p>
+<p>within</p>
+<p>zero</p>
+<p>context</p>
+<p>systems</p>
+<p>now</p>
+<p>here</p>
+<p>going</p>
+<p>in</p>
+<p>forward</p>
+<p>chronological</p>
+<p>order</p>
+<p>we looked</p>
+<p>at</p>
+<p>William</p>
+<p>Blake's</p>
+<p>work</p>
+<p>entity</p>
+<p>extraction</p>
+<p>some</p>
+<p>processing</p>
+<p>and some</p>
+<p>snippets</p>
+<p>from</p>
+<p>Blake</p>
+<p>for</p>
+<p>augmented</p>
+<p>Blake</p>
+<p>France</p>
+<p>looked</p>
+<p>at</p>
+<p>cognitive</p>
+<p>sovereignty</p>
+<p>skipping</p>
+<p>to the</p>
+<p>third</p>
+<p>one</p>
+<p>of the</p>
+<p>first</p>
+<p>three</p>
+<p>talked</p>
+<p>about</p>
+<p>how</p>
+<p>this</p>
+<p>meta</p>
+<p>recipe</p>
+<p>for</p>
+<p>bringing</p>
+<p>in a</p>
+<p>resource</p>
+<p>folder</p>
+<p>asking</p>
+<p>it to</p>
+<p>write a</p>
+<p>technical</p>
+<p>spec</p>
+<p>or a</p>
+<p>prospectus</p>
+<p>and then</p>
+<p>writing</p>
+<p>software</p>
+<p>that's</p>
+<p>very well</p>
+<p>structured</p>
+<p>and articulated</p>
+<p>for further</p>
+<p>development</p>
+<p>with utilities</p>
+<p>and mains</p>
+<p>and configs</p>
+<p>and how that</p>
+<p>resulted in</p>
+<p>some pretty</p>
+<p>interesting</p>
+<p>outputs</p>
+<p>like just</p>
+<p>about</p>
+<p>looking about</p>
+<p>transition</p>
+<p>matrices</p>
+<p>and setting</p>
+<p>us up</p>
+<p>to integrate</p>
+<p>with PyMDP</p>
+<p>which we</p>
+<p>very well</p>
+<p>could do</p>
+<p>if someone</p>
+<p>mentions it</p>
+<p>in the</p>
+<p>live chat</p>
+<p>in the</p>
+<p>coming minutes</p>
+<p>and then</p>
+<p>lastly</p>
+<p>in the</p>
+<p>active</p>
+<p>inference</p>
+<p>system</p>
+<p>section</p>
+<p>the</p>
+<p>PyMDP</p>
+<p>pull</p>
+<p>method</p>
+<p>and I'll</p>
+<p>leave the</p>
+<p>PyMDP</p>
+<p>methods</p>
+<p>up</p>
+<p>let's</p>
+<p>just</p>
+<p>intra</p>
+<p>stream</p>
+<p>003</p>
+<p>push it</p>
+<p>and then</p>
+<p>let's read</p>
+<p>PyMDP</p>
+<p>methods</p>
+<p>in its</p>
+<p>natural</p>
+<p>context</p>
+<p>that was</p>
+<p>one hour</p>
+<p>ago</p>
+<p>reload</p>
+<p>the page</p>
+<p>reload</p>
+<p>the page</p>
+<p>now it</p>
+<p>says now</p>
+<p>zero</p>
+<p>context</p>
+<p>systems</p>
+<p>active</p>
+<p>inference</p>
+<p>PyMDP</p>
+<p>methods</p>
+<p>this is</p>
+<p>like</p>
+<p>getting</p>
+<p>into</p>
+<p>oh</p>
+<p>wow</p>
+<p>this is</p>
+<p>like</p>
+<p>kind</p>
+<p>of</p>
+<p>nicely</p>
+<p>formatted</p>
+<p>this is</p>
+<p>like</p>
+<p>something</p>
+<p>you could</p>
+<p>take</p>
+<p>on a</p>
+<p>nice</p>
+<p>trip</p>
+<p>okay</p>
+<p>Andrew</p>
+<p>is writing</p>
+<p>a few</p>
+<p>things in</p>
+<p>the chat</p>
+<p>I'll</p>
+<p>wait a few</p>
+<p>seconds while</p>
+<p>you type</p>
+<p>out some</p>
+<p>more ideas</p>
+<p>anyone else</p>
+<p>though again</p>
+<p>please write</p>
+<p>any ideas</p>
+<p>and for a</p>
+<p>couple of</p>
+<p>minutes here</p>
+<p>let's just</p>
+<p>chill</p>
+<p>see what else</p>
+<p>we can</p>
+<p>explore</p>
+<p>and learn</p>
+<p>and do</p>
+<p>actually</p>
+<p>while people</p>
+<p>are writing</p>
+<p>I'm just</p>
+<p>going to do</p>
+<p>a quick</p>
+<p>overview</p>
+<p>on what</p>
+<p>is in</p>
+<p>these</p>
+<p>different</p>
+<p>folders</p>
+<p>so</p>
+<p>starting</p>
+<p>in</p>
+<p>zero</p>
+<p>computer</p>
+<p>languages</p>
+<p>this is</p>
+<p>a language</p>
+<p>name</p>
+<p>brainfuck</p>
+<p>this is</p>
+<p>a brainfuck</p>
+<p>implementation</p>
+<p>of active</p>
+<p>inference</p>
+<p>famously</p>
+<p>an obscure</p>
+<p>arcane</p>
+<p>bizarre</p>
+<p>coding language</p>
+<p>but</p>
+<p>why not</p>
+<p>right</p>
+<p>it's all</p>
+<p>just semantics</p>
+<p>then</p>
+<p>we have</p>
+<p>brainfuck</p>
+<p>active</p>
+<p>inference</p>
+<p>golang</p>
+<p>thing</p>
+<p>agent</p>
+<p>definition</p>
+<p>java</p>
+<p>active</p>
+<p>inference</p>
+<p>pearl</p>
+<p>julia</p>
+<p>in julia</p>
+<p>it's not</p>
+<p>done yet</p>
+<p>but</p>
+<p>kobus</p>
+<p>e has</p>
+<p>done</p>
+<p>incredible</p>
+<p>work on</p>
+<p>visualization</p>
+<p>and many</p>
+<p>many other</p>
+<p>things</p>
+<p>and so</p>
+<p>I was</p>
+<p>working to</p>
+<p>get a</p>
+<p>script</p>
+<p>working</p>
+<p>that would</p>
+<p>render</p>
+<p>the kinds of</p>
+<p>images that</p>
+<p>he's doing</p>
+<p>and do a bunch</p>
+<p>of other</p>
+<p>stuff but</p>
+<p>that's just</p>
+<p>in progress</p>
+<p>rust</p>
+<p>and then</p>
+<p>like hilarious</p>
+<p>stuff like</p>
+<p>active</p>
+<p>shellference</p>
+<p>I mean</p>
+<p>this is a</p>
+<p>shell script</p>
+<p>that does</p>
+<p>active</p>
+<p>inference</p>
+<p>this is</p>
+<p>really</p>
+<p>highlighting</p>
+<p>the</p>
+<p>semantics</p>
+<p>and the</p>
+<p>syntax</p>
+<p>and the</p>
+<p>space</p>
+<p>between</p>
+<p>and the</p>
+<p>kinds of</p>
+<p>pole</p>
+<p>jumping</p>
+<p>that we</p>
+<p>can do</p>
+<p>back and</p>
+<p>forth</p>
+<p>specs</p>
+<p>and prompts</p>
+<p>some early</p>
+<p>documents</p>
+<p>meta</p>
+<p>informants</p>
+<p>bio</p>
+<p>informant</p>
+<p>systems</p>
+<p>folder</p>
+<p>we have</p>
+<p>active</p>
+<p>inference</p>
+<p>cognitive</p>
+<p>sovereignty</p>
+<p>IC2S2</p>
+<p>and William</p>
+<p>Blake</p>
+<p>we went</p>
+<p>into</p>
+<p>today</p>
+<p>P3IF</p>
+<p>and some</p>
+<p>of the</p>
+<p>bolts</p>
+<p>business</p>
+<p>legal</p>
+<p>operating</p>
+<p>technical</p>
+<p>social</p>
+<p>these were</p>
+<p>explored</p>
+<p>in some</p>
+<p>other streams</p>
+<p>about</p>
+<p>legal</p>
+<p>engineering</p>
+<p>and the</p>
+<p>three</p>
+<p>R's</p>
+<p>and all</p>
+<p>of that</p>
+<p>so that's</p>
+<p>the</p>
+<p>zero</p>
+<p>context</p>
+<p>folder</p>
+<p>that's</p>
+<p>setting</p>
+<p>context</p>
+<p>here's</p>
+<p>in</p>
+<p>prepare</p>
+<p>this is</p>
+<p>a fun</p>
+<p>folder</p>
+<p>it has</p>
+<p>a ton</p>
+<p>of</p>
+<p>it has</p>
+<p>config</p>
+<p>with all</p>
+<p>these</p>
+<p>configurations</p>
+<p>for an</p>
+<p>ant</p>
+<p>active</p>
+<p>inference</p>
+<p>multi-agent</p>
+<p>simulation</p>
+<p>then there's</p>
+<p>meta</p>
+<p>config</p>
+<p>that</p>
+<p>configs</p>
+<p>the</p>
+<p>config</p>
+<p>and then</p>
+<p>there's</p>
+<p>meta</p>
+<p>meta</p>
+<p>config</p>
+<p>that</p>
+<p>configures</p>
+<p>the</p>
+<p>meta</p>
+<p>config</p>
+<p>we have</p>
+<p>cognitive</p>
+<p>security</p>
+<p>cryptography</p>
+<p>digital</p>
+<p>twin</p>
+<p>design</p>
+<p>processing</p>
+<p>digital</p>
+<p>twin</p>
+<p>metaphysics</p>
+<p>metaphysics</p>
+<p>spec</p>
+<p>generator</p>
+<p>this is the</p>
+<p>speculative</p>
+<p>realism</p>
+<p>coding</p>
+<p>at play</p>
+<p>nested</p>
+<p>systems</p>
+<p>systems</p>
+<p>within</p>
+<p>systems</p>
+<p>invoking</p>
+<p>the category</p>
+<p>theory</p>
+<p>networking</p>
+<p>pheromones</p>
+<p>the pheromone</p>
+<p>ontology</p>
+<p>quantum</p>
+<p>pheromone</p>
+<p>environment</p>
+<p>and then</p>
+<p>a little</p>
+<p>bit of</p>
+<p>culinary</p>
+<p>delight</p>
+<p>with the</p>
+<p>salt</p>
+<p>fat</p>
+<p>acid</p>
+<p>heat</p>
+<p>pomdp</p>
+<p>methods</p>
+<p>this is</p>
+<p>where</p>
+<p>there's a</p>
+<p>variety</p>
+<p>of methods</p>
+<p>that are</p>
+<p>developed</p>
+<p>with</p>
+<p>LLMs</p>
+<p>research</p>
+<p>methods</p>
+<p>learning</p>
+<p>education</p>
+<p>also</p>
+<p>please</p>
+<p>contribute</p>
+<p>to</p>
+<p>everything</p>
+<p>and then</p>
+<p>things</p>
+<p>here's</p>
+<p>different</p>
+<p>things</p>
+<p>including</p>
+<p>a</p>
+<p>generic</p>
+<p>generic</p>
+<p>generic</p>
+<p>generic</p>
+<p>logged</p>
+<p>constructed</p>
+<p>thing</p>
+<p>context</p>
+<p>again</p>
+<p>is just</p>
+<p>sort of</p>
+<p>like</p>
+<p>a bunch</p>
+<p>of</p>
+<p>different</p>
+<p>things</p>
+<p>that</p>
+<p>contextualize</p>
+<p>for us</p>
+<p>and for</p>
+<p>Shirley</p>
+<p>cursor</p>
+<p>one</p>
+<p>is</p>
+<p>preparing</p>
+<p>with</p>
+<p>configs</p>
+<p>and</p>
+<p>things</p>
+<p>definition</p>
+<p>and</p>
+<p>methods</p>
+<p>definition</p>
+<p>then</p>
+<p>two</p>
+<p>goes</p>
+<p>into</p>
+<p>operate</p>
+<p>here</p>
+<p>is</p>
+<p>planning</p>
+<p>rendering</p>
+<p>a plan</p>
+<p>executing</p>
+<p>the rendered</p>
+<p>plan</p>
+<p>of a</p>
+<p>simulation</p>
+<p>and</p>
+<p>having</p>
+<p>situational</p>
+<p>ant</p>
+<p>awareness</p>
+<p>along</p>
+<p>the way</p>
+<p>the actual</p>
+<p>operativity</p>
+<p>of the</p>
+<p>simulation</p>
+<p>then we</p>
+<p>have</p>
+<p>measurements</p>
+<p>measuring</p>
+<p>the</p>
+<p>simulation</p>
+<p>four</p>
+<p>reporting</p>
+<p>on the</p>
+<p>measurement</p>
+<p>of the</p>
+<p>simulation</p>
+<p>five</p>
+<p>following</p>
+<p>up</p>
+<p>and</p>
+<p>specifying</p>
+<p>and</p>
+<p>executing</p>
+<p>the</p>
+<p>follow-up</p>
+<p>on the</p>
+<p>reporting</p>
+<p>of the</p>
+<p>simulation</p>
+<p>six</p>
+<p>is an</p>
+<p>API</p>
+<p>for</p>
+<p>meta</p>
+<p>and</p>
+<p>format</p>
+<p>for</p>
+<p>knowledge</p>
+<p>I</p>
+<p>don't</p>
+<p>have</p>
+<p>too</p>
+<p>much</p>
+<p>in</p>
+<p>here</p>
+<p>seven</p>
+<p>and</p>
+<p>eight</p>
+<p>are</p>
+<p>not</p>
+<p>there</p>
+<p>and</p>
+<p>then</p>
+<p>nine</p>
+<p>is</p>
+<p>this</p>
+<p>meta</p>
+<p>pattern</p>
+<p>where</p>
+<p>we</p>
+<p>clone</p>
+<p>in</p>
+<p>the</p>
+<p>github</p>
+<p>repos</p>
+<p>or</p>
+<p>the</p>
+<p>github</p>
+<p>users</p>
+<p>for</p>
+<p>a</p>
+<p>given</p>
+<p>domain</p>
+<p>like</p>
+<p>the</p>
+<p>brain</p>
+<p>these</p>
+<p>the</p>
+<p>brain</p>
+<p>API</p>
+<p>and</p>
+<p>then</p>
+<p>bring</p>
+<p>them</p>
+<p>in</p>
+<p>reindex</p>
+<p>cursor</p>
+<p>then</p>
+<p>program</p>
+<p>and</p>
+<p>then</p>
+<p>we</p>
+<p>can</p>
+<p>delete</p>
+<p>the</p>
+<p>original</p>
+<p>repos</p>
+<p>so</p>
+<p>that</p>
+<p>that's</p>
+<p>a fun</p>
+<p>way</p>
+<p>for</p>
+<p>if</p>
+<p>there's</p>
+<p>something</p>
+<p>people</p>
+<p>want</p>
+<p>to</p>
+<p>integrate</p>
+<p>there's</p>
+<p>a few</p>
+<p>multi-agent</p>
+<p>LLM</p>
+<p>techniques</p>
+<p>and</p>
+<p>AGI</p>
+<p>related</p>
+<p>things</p>
+<p>that</p>
+<p>would</p>
+<p>be</p>
+<p>pretty</p>
+<p>interesting</p>
+<p>maybe</p>
+<p>for</p>
+<p>a</p>
+<p>future</p>
+<p>one</p>
+<p>so</p>
+<p>that's</p>
+<p>the</p>
+<p>active</p>
+<p>inference</p>
+<p>package</p>
+<p>okay</p>
+<p>thank you</p>
+<p>Andrew</p>
+<p>I'm going to</p>
+<p>copy what</p>
+<p>you wrote</p>
+<p>in</p>
+<p>okay</p>
+<p>let's</p>
+<p>go back</p>
+<p>to</p>
+<p>0</p>
+<p>systems</p>
+<p>3.1</p>
+<p>okay</p>
+<p>let's</p>
+<p>just do</p>
+<p>003.2</p>
+<p>.md</p>
+<p>as if</p>
+<p>there was</p>
+<p>the .2</p>
+<p>okay</p>
+<p>Andrew</p>
+<p>wrote</p>
+<p>quick thought</p>
+<p>on</p>
+<p>actinf</p>
+<p>pymdp</p>
+<p>cursor</p>
+<p>ai</p>
+<p>integration</p>
+<p>flow</p>
+<p>one</p>
+<p>build</p>
+<p>out</p>
+<p>working</p>
+<p>scripts</p>
+<p>plus</p>
+<p>add</p>
+<p>to</p>
+<p>repo</p>
+<p>eg</p>
+<p>example</p>
+<p>social</p>
+<p>sciences</p>
+<p>two</p>
+<p>cursor</p>
+<p>reads</p>
+<p>working</p>
+<p>script</p>
+<p>repo</p>
+<p>to</p>
+
+<p>cursor</p>
+<p>help</p>
+<p>as</p>
+<p>much</p>
+<p>as</p>
+<p>possible</p>
+<p>to</p>
+<p>finish</p>
+<p>the</p>
+<p>simulation</p>
+<p>do</p>
+<p>manually</p>
+<p>what</p>
+<p>it</p>
+<p>can</p>
+<p>cannot</p>
+<p>its</p>
+<p>horizon</p>
+<p>3.</p>
+<p>rinse</p>
+<p>and</p>
+<p>repeat</p>
+<p>we</p>
+<p>hit</p>
+<p>the</p>
+<p>limits</p>
+<p>of</p>
+<p>the</p>
+<p>currently</p>
+<p>existing</p>
+<p>LLMs</p>
+<p>along</p>
+<p>the way</p>
+<p>but we</p>
+<p>build</p>
+<p>the</p>
+<p>repo</p>
+<p>and</p>
+<p>available</p>
+<p>academic</p>
+<p>simulations</p>
+<p>resources</p>
+<p>as we</p>
+<p>go</p>
+<p>while</p>
+<p>improving</p>
+<p>the</p>
+<p>repo's</p>
+<p>ability</p>
+<p>to</p>
+<p>provide</p>
+<p>cursor</p>
+<p>with</p>
+<p>useful</p>
+<p>information</p>
+<p>for</p>
+<p>improving</p>
+<p>next</p>
+<p>script</p>
+<p>building</p>
+<p>iteration</p>
+<p>!</p>
+<p>I</p>
+<p>believe</p>
+
+<p>this</p>
+<p>is</p>
+<p>what</p>
+<p>you're</p>
+<p>proposing</p>
+<p>just</p>
+<p>exercising</p>
+<p>my own</p>
+<p>understanding</p>
+<p>of it</p>
+<p>here</p>
+<p>smiley</p>
+<p>face</p>
+<p>okay</p>
+<p>thank you</p>
+<p>Andrew</p>
+<p>I'm going to</p>
+<p>delete that</p>
+<p>last one</p>
+<p>now</p>
+<p>let us</p>
+<p>do this</p>
+<p>control</p>
+<p>a</p>
+<p>control</p>
+<p>k</p>
+<p>operationalize</p>
+<p>this</p>
+<p>into</p>
+<p>a</p>
+<p>comprehensive</p>
+<p>development</p>
+<p>plan</p>
+<p>for</p>
+<p>what</p>
+<p>I</p>
+<p>will</p>
+<p>immediately</p>
+<p>do</p>
+<p>after</p>
+<p>your</p>
+<p>response</p>
+<p>comment</p>
+<p>l-l-m</p>
+<p>I</p>
+<p>don't</p>
+<p>know</p>
+<p>if it's</p>
+<p>been</p>
+<p>explored</p>
+<p>whether</p>
+<p>saying</p>
+<p>things</p>
+<p>like</p>
+<p>thank</p>
+<p>you</p>
+<p>or</p>
+<p>speaking</p>
+<p>to</p>
+<p>it</p>
+<p>a</p>
+<p>certain</p>
+<p>way</p>
+<p>help</p>
+<p>awesome</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>make a</p>
+<p>new</p>
+<p>folder</p>
+<p>called</p>
+<p>um</p>
+<p>augmented</p>
+<p>active</p>
+<p>inference</p>
+<p>okay</p>
+<p>let's</p>
+<p>just</p>
+<p>try</p>
+<p>this</p>
+<p>here</p>
+<p>we're</p>
+<p>in</p>
+<p>3.2</p>
+<p>.md</p>
+<p>so</p>
+<p>we</p>
+<p>just</p>
+<p>took</p>
+<p>a few</p>
+<p>super</p>
+<p>chats</p>
+<p>from</p>
+<p>Andrew</p>
+<p>and</p>
+<p>spec</p>
+<p>it</p>
+<p>out</p>
+<p>okay</p>
+<p>so</p>
+<p>create</p>
+<p>a new</p>
+<p>github</p>
+<p>repo</p>
+<p>doesn't</p>
+<p>need</p>
+<p>to be</p>
+<p>a</p>
+<p>github</p>
+<p>repo</p>
+<p>build</p>
+<p>working</p>
+<p>scripts</p>
+<p>cursor</p>
+<p>AI</p>
+<p>integration</p>
+<p>documentation</p>
+<p>and</p>
+<p>testing</p>
+<p>iteration</p>
+<p>improvement</p>
+<p>next</p>
+<p>steps</p>
+<p>continuous</p>
+<p>integration</p>
+<p>okay</p>
+<p>control</p>
+<p>A</p>
+<p>control</p>
+<p>I</p>
+<p>it</p>
+<p>wasn't</p>
+<p>necessary</p>
+<p>it's</p>
+<p>just</p>
+<p>bring</p>
+<p>it's</p>
+<p>like</p>
+<p>the</p>
+<p>whole</p>
+<p>file</p>
+<p>and</p>
+<p>lines</p>
+<p>1</p>
+<p>through</p>
+<p>62</p>
+<p>but</p>
+<p>that's</p>
+<p>the</p>
+<p>whole</p>
+<p>thing</p>
+<p>but</p>
+<p>it's</p>
+<p>just</p>
+<p>it's</p>
+<p>a</p>
+<p>habit</p>
+<p>what</p>
+<p>can</p>
+<p>I</p>
+<p>say</p>
+<p>do</p>
+<p>all</p>
+<p>of</p>
+<p>this</p>
+<p>making</p>
+<p>all</p>
+<p>the</p>
+<p>files</p>
+<p>needed</p>
+<p>saving</p>
+<p>saving</p>
+<p>the</p>
+<p>new</p>
+<p>files</p>
+<p>as</p>
+<p>created</p>
+<p>in</p>
+<p>.slash</p>
+<p>augmented</p>
+<p>active</p>
+<p>inference</p>
+<p>okay</p>
+<p>let's</p>
+<p>see</p>
+<p>certainly</p>
+<p>okay</p>
+<p>it</p>
+<p>looks</p>
+<p>like</p>
+<p>it's</p>
+<p>doing</p>
+<p>that</p>
+<p>in</p>
+<p>the</p>
+<p>top</p>
+<p>level</p>
+<p>repo</p>
+<p>of</p>
+<p>the</p>
+<p>whole</p>
+<p>inference</p>
+<p>but</p>
+<p>we'll</p>
+<p>bring</p>
+<p>this</p>
+<p>in</p>
+<p>and</p>
+<p>we'll</p>
+<p>just</p>
+<p>replace</p>
+<p>this</p>
+<p>folder</p>
+<p>that</p>
+<p>we</p>
+<p>made</p>
+<p>okay</p>
+<p>drag</p>
+<p>in</p>
+<p>here</p>
+<p>we</p>
+<p>go</p>
+<p>okay</p>
+<p>reset</p>
+<p>reset</p>
+<p>this</p>
+<p>is</p>
+<p>just</p>
+<p>because</p>
+<p>I</p>
+<p>I</p>
+<p>I</p>
+<p>rug</p>
+<p>pulled</p>
+<p>where</p>
+<p>it</p>
+<p>had</p>
+<p>written</p>
+<p>it</p>
+<p>and</p>
+<p>and</p>
+<p>moved</p>
+<p>it</p>
+<p>okay</p>
+<p>here</p>
+<p>we</p>
+<p>go</p>
+<p>okay</p>
+<p>script</p>
+<p>overview</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>dot</p>
+<p>py</p>
+<p>implements</p>
+<p>a basic</p>
+<p>social</p>
+<p>science</p>
+<p>simulation</p>
+<p>using</p>
+<p>Pymdp</p>
+<p>okay</p>
+<p>save</p>
+<p>it</p>
+<p>close</p>
+<p>it</p>
+<p>social</p>
+<p>science</p>
+<p>okay</p>
+<p>from</p>
+<p>Pymdp</p>
+<p>import</p>
+<p>agent</p>
+<p>inference</p>
+<p>learning</p>
+<p>social</p>
+<p>agents</p>
+<p>okay</p>
+<p>I'm</p>
+<p>going to</p>
+<p>run</p>
+<p>py</p>
+<p>mdp</p>
+<p>pull</p>
+<p>just</p>
+<p>so</p>
+<p>that we</p>
+<p>have the</p>
+<p>actual</p>
+<p>py</p>
+<p>mdp</p>
+<p>repo</p>
+<p>actually</p>
+<p>let's</p>
+<p>see if</p>
+<p>we</p>
+<p>don't</p>
+<p>need</p>
+<p>that</p>
+<p>first</p>
+<p>okay</p>
+<p>we're</p>
+<p>in</p>
+<p>the</p>
+<p>augmented</p>
+<p>okay</p>
+<p>social</p>
+<p>agent</p>
+<p>run</p>
+<p>simulation</p>
+<p>okay</p>
+<p>utils</p>
+<p>dot</p>
+<p>py</p>
+<p>process</p>
+<p>visualize</p>
+<p>calculate</p>
+<p>tests</p>
+<p>cool</p>
+<p>unit</p>
+<p>testing</p>
+<p>all right</p>
+<p>open it</p>
+<p>with integrated</p>
+<p>terminals</p>
+<p>so we're all</p>
+<p>the way</p>
+<p>deep</p>
+<p>we're deep</p>
+<p>into this</p>
+<p>cursor</p>
+<p>augmented</p>
+<p>situation</p>
+<p>python</p>
+<p>3</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>okay</p>
+<p>nothing</p>
+<p>happened</p>
+<p>so</p>
+<p>here</p>
+<p>control</p>
+<p>i</p>
+<p>add</p>
+<p>extensive</p>
+<p>logging</p>
+<p>here</p>
+<p>and in</p>
+<p>the</p>
+<p>whole</p>
+<p>just</p>
+<p>here</p>
+<p>so we</p>
+<p>can have</p>
+<p>better</p>
+<p>understanding</p>
+<p>and</p>
+<p>achieve</p>
+<p>in this</p>
+<p>folder</p>
+<p>the aims</p>
+<p>of</p>
+<p>003.2</p>
+<p>fully</p>
+<p>okay</p>
+<p>certainly</p>
+<p>i'll</p>
+<p>enhance</p>
+<p>the</p>
+<p>logging</p>
+<p>in the</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>dot</p>
+<p>py</p>
+<p>script</p>
+<p>to</p>
+<p>provide</p>
+<p>a</p>
+<p>more</p>
+<p>comprehensive</p>
+<p>oh</p>
+<p>okay</p>
+<p>okay</p>
+<p>looks</p>
+<p>good</p>
+<p>now</p>
+<p>add</p>
+<p>the</p>
+<p>utils</p>
+<p>into</p>
+<p>the</p>
+<p>context</p>
+<p>probably</p>
+<p>not</p>
+<p>necessary</p>
+<p>probably</p>
+<p>not</p>
+<p>necessary</p>
+<p>but</p>
+<p>move</p>
+<p>all</p>
+<p>methods</p>
+<p>to</p>
+<p>at</p>
+<p>utils</p>
+<p>dot</p>
+<p>py</p>
+<p>and</p>
+<p>invoke</p>
+<p>them</p>
+<p>here</p>
+<p>that's</p>
+<p>what i</p>
+<p>was trying</p>
+<p>to do</p>
+<p>earlier</p>
+<p>so let's</p>
+<p>just see</p>
+<p>what it</p>
+<p>does</p>
+<p>now</p>
+<p>so</p>
+<p>it</p>
+<p>deleted</p>
+<p>these</p>
+<p>definitional</p>
+<p>statements</p>
+<p>and then</p>
+<p>we see</p>
+<p>it</p>
+<p>added</p>
+<p>them</p>
+<p>into</p>
+<p>utils</p>
+<p>save</p>
+<p>it</p>
+<p>close</p>
+<p>the</p>
+<p>utils</p>
+<p>readme</p>
+<p>for this</p>
+<p>repo</p>
+<p>all right</p>
+<p>let's</p>
+<p>let's</p>
+<p>just</p>
+<p>quickly</p>
+<p>let's</p>
+<p>just</p>
+<p>push</p>
+<p>it</p>
+<p>augmentation</p>
+<p>push</p>
+<p>then let's</p>
+<p>read the</p>
+<p>readme</p>
+<p>in its</p>
+<p>natural</p>
+<p>habitat</p>
+<p>okay</p>
+<p>augmented</p>
+<p>active</p>
+<p>inference</p>
+<p>readme</p>
+<p>oh</p>
+<p>interesting</p>
+<p>okay</p>
+<p>it was</p>
+<p>empty</p>
+<p>because it</p>
+<p>wasn't</p>
+<p>saved</p>
+<p>in its</p>
+<p>place</p>
+<p>reload</p>
+<p>the page</p>
+<p>here it</p>
+<p>is</p>
+<p>okay</p>
+<p>active</p>
+<p>cursor</p>
+<p>integration</p>
+<p>the</p>
+<p>integration</p>
+<p>of active</p>
+<p>inference</p>
+<p>principles</p>
+<p>with</p>
+<p>cursor</p>
+<p>ai</p>
+<p>for</p>
+<p>social</p>
+<p>science</p>
+<p>simulations</p>
+<p>okay</p>
+<p>no</p>
+<p>clear it</p>
+<p>up</p>
+<p>we're</p>
+<p>in</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>make</p>
+<p>all</p>
+<p>needed</p>
+<p>improvements</p>
+<p>to</p>
+<p>achieve</p>
+<p>the</p>
+<p>aims</p>
+<p>of</p>
+<p>readme</p>
+<p>move</p>
+<p>all</p>
+<p>method</p>
+<p>definitions</p>
+<p>to</p>
+<p>at</p>
+<p>utils</p>
+<p>dot</p>
+<p>py</p>
+<p>and</p>
+<p>invoke</p>
+<p>them</p>
+<p>here</p>
+<p>let's</p>
+<p>see</p>
+<p>it's</p>
+<p>doing</p>
+<p>this</p>
+<p>this</p>
+<p>is</p>
+<p>a</p>
+<p>I</p>
+<p>believe</p>
+<p>this</p>
+<p>will</p>
+<p>be</p>
+<p>fixed</p>
+<p>in</p>
+<p>a</p>
+<p>future</p>
+<p>version</p>
+<p>but</p>
+<p>sometimes</p>
+<p>it'll</p>
+<p>be</p>
+<p>like</p>
+<p>going</p>
+<p>all</p>
+<p>the</p>
+<p>way</p>
+<p>back</p>
+<p>up</p>
+<p>the</p>
+<p>repo</p>
+<p>there</p>
+<p>might</p>
+<p>be</p>
+<p>a</p>
+<p>way</p>
+<p>to</p>
+<p>do</p>
+<p>this</p>
+<p>just</p>
+<p>better</p>
+<p>with</p>
+<p>how</p>
+<p>the</p>
+<p>paths</p>
+<p>are</p>
+<p>handled</p>
+<p>let's</p>
+<p>just</p>
+<p>see</p>
+<p>what</p>
+<p>happens</p>
+<p>when</p>
+<p>we</p>
+<p>run</p>
+<p>it</p>
+<p>first</p>
+<p>okay</p>
+<p>cannot</p>
+<p>import</p>
+<p>name</p>
+<p>agent</p>
+<p>from</p>
+<p>py</p>
+<p>mdp</p>
+<p>fix</p>
+<p>this</p>
+<p>but</p>
+<p>we</p>
+<p>know</p>
+<p>that</p>
+<p>it</p>
+<p>has</p>
+<p>access</p>
+<p>to</p>
+<p>py</p>
+<p>mdp</p>
+<p>methods</p>
+<p>dot</p>
+<p>markdown</p>
+<p>so</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>one</p>
+<p>that's</p>
+<p>like</p>
+<p>the</p>
+<p>study</p>
+<p>guide</p>
+<p>for</p>
+<p>what</p>
+<p>py</p>
+<p>mdp</p>
+<p>does</p>
+<p>now</p>
+<p>for a</p>
+<p>human</p>
+<p>human</p>
+<p>reading</p>
+<p>this</p>
+<p>document</p>
+<p>as</p>
+<p>mentioned</p>
+<p>earlier</p>
+<p>it's</p>
+<p>probably</p>
+<p>great</p>
+<p>for</p>
+<p>trains</p>
+<p>long</p>
+<p>car</p>
+<p>rides</p>
+<p>dark</p>
+<p>rooms</p>
+<p>all</p>
+<p>these</p>
+<p>kinds</p>
+<p>of</p>
+<p>places</p>
+<p>where</p>
+<p>you</p>
+<p>might</p>
+<p>want</p>
+<p>to</p>
+<p>read</p>
+<p>something</p>
+<p>just</p>
+<p>really</p>
+<p>pay</p>
+<p>attention</p>
+<p>to</p>
+<p>it</p>
+<p>but</p>
+<p>it's</p>
+<p>the</p>
+<p>perfect</p>
+<p>high</p>
+<p>density</p>
+<p>semantics</p>
+<p>that</p>
+<p>will be</p>
+<p>helpful</p>
+<p>here</p>
+<p>let's</p>
+<p>just</p>
+<p>accept</p>
+<p>whatever</p>
+<p>it</p>
+<p>did</p>
+<p>see</p>
+<p>if</p>
+<p>it</p>
+<p>is</p>
+<p>better</p>
+<p>and</p>
+<p>if</p>
+<p>not</p>
+<p>we'll</p>
+<p>give</p>
+<p>it</p>
+<p>a</p>
+<p>little</p>
+<p>help</p>
+<p>no</p>
+<p>module</p>
+<p>named</p>
+<p>pymdp</p>
+<p>agent</p>
+<p>so</p>
+<p>it's</p>
+<p>a</p>
+<p>new</p>
+<p>error</p>
+<p>fix</p>
+<p>this</p>
+<p>so</p>
+<p>let's</p>
+<p>just</p>
+<p>keep</p>
+<p>on</p>
+<p>finding</p>
+<p>and</p>
+<p>quashing</p>
+<p>some</p>
+<p>bugs</p>
+<p>and</p>
+<p>let's</p>
+<p>just</p>
+<p>see</p>
+<p>if</p>
+<p>can</p>
+<p>we</p>
+<p>get</p>
+<p>to</p>
+<p>a</p>
+<p>pymdp</p>
+<p>we</p>
+<p>confusion</p>
+<p>it's</p>
+<p>like</p>
+<p>no</p>
+<p>no</p>
+<p>I</p>
+<p>wasn't</p>
+<p>confused</p>
+<p>you</p>
+<p>don't</p>
+<p>need</p>
+<p>to</p>
+<p>apologize</p>
+<p>I</p>
+<p>think</p>
+<p>that</p>
+<p>this</p>
+<p>this</p>
+<p>composer</p>
+<p>functionality</p>
+<p>again</p>
+<p>super</p>
+<p>cool</p>
+<p>and</p>
+<p>there's</p>
+<p>also</p>
+<p>probably</p>
+<p>ways</p>
+<p>to</p>
+<p>use</p>
+<p>it</p>
+<p>a</p>
+<p>lot</p>
+<p>better</p>
+<p>because</p>
+<p>it</p>
+<p>has</p>
+<p>a</p>
+<p>whole</p>
+<p>another</p>
+<p>view</p>
+<p>layover</p>
+<p>that</p>
+<p>I'm</p>
+<p>not</p>
+<p>really</p>
+<p>even</p>
+<p>exploring</p>
+<p>at</p>
+<p>this</p>
+<p>time</p>
+<p>okay</p>
+<p>it</p>
+<p>cannot</p>
+<p>import</p>
+<p>utils</p>
+<p>so</p>
+<p>when</p>
+<p>it's</p>
+<p>one</p>
+<p>kind</p>
+<p>of</p>
+<p>line</p>
+<p>of</p>
+<p>flight</p>
+<p>and</p>
+<p>just</p>
+<p>like</p>
+<p>quashing</p>
+<p>bugs</p>
+<p>that</p>
+<p>seem</p>
+<p>to</p>
+<p>be</p>
+<p>of</p>
+<p>a</p>
+<p>similar</p>
+<p>ilk</p>
+<p>I'll</p>
+<p>keep</p>
+<p>it</p>
+<p>rolling</p>
+<p>in</p>
+<p>the</p>
+<p>same</p>
+<p>composer</p>
+<p>but</p>
+<p>then</p>
+<p>when</p>
+<p>it's</p>
+<p>a</p>
+<p>different</p>
+<p>vector</p>
+<p>we're</p>
+<p>going</p>
+<p>to</p>
+<p>do</p>
+<p>a</p>
+<p>pivot</p>
+<p>then</p>
+<p>we</p>
+<p>can</p>
+<p>do</p>
+<p>a</p>
+<p>new</p>
+<p>one</p>
+<p>okay</p>
+<p>no</p>
+<p>module</p>
+<p>pymdp</p>
+<p>distributions</p>
+<p>so</p>
+<p>it's</p>
+<p>kind</p>
+<p>of</p>
+<p>fixing</p>
+<p>a</p>
+<p>series</p>
+<p>of</p>
+<p>errors</p>
+<p>related</p>
+<p>to</p>
+<p>accurately</p>
+<p>calling</p>
+<p>pymdp</p>
+<p>submodules</p>
+<p>this</p>
+<p>could be</p>
+<p>like</p>
+<p>super</p>
+<p>pymdp</p>
+<p>file</p>
+<p>structure</p>
+<p>specific</p>
+<p>but</p>
+<p>nonetheless</p>
+<p>that's</p>
+<p>where we</p>
+<p>are</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>this</p>
+<p>version</p>
+<p>implements</p>
+<p>a</p>
+<p>simplified</p>
+<p>version</p>
+<p>of</p>
+<p>simple</p>
+<p>agent</p>
+<p>using</p>
+<p>only</p>
+<p>numpy</p>
+<p>we've</p>
+<p>replaced</p>
+<p>the</p>
+<p>pymdp</p>
+<p>specific</p>
+<p>operations</p>
+<p>with</p>
+<p>basic</p>
+<p>numpy</p>
+<p>let's</p>
+<p>see</p>
+<p>what</p>
+<p>it</p>
+<p>looks</p>
+<p>like</p>
+<p>wow</p>
+<p>like</p>
+<p>so</p>
+<p>then</p>
+<p>it's</p>
+<p>like</p>
+<p>then</p>
+<p>who</p>
+<p>was</p>
+<p>semantics</p>
+<p>if</p>
+<p>it</p>
+<p>takes</p>
+<p>the</p>
+<p>pymdp</p>
+<p>pomdp</p>
+<p>semantics</p>
+<p>you know</p>
+<p>was it</p>
+<p>all</p>
+<p>what</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>got some</p>
+<p>plotting</p>
+<p>matlib</p>
+<p>plot</p>
+<p>errors</p>
+<p>but i</p>
+<p>can see</p>
+<p>from the</p>
+<p>top</p>
+<p>okay</p>
+<p>that it</p>
+<p>that it</p>
+<p>was doing</p>
+<p>stuff</p>
+<p>so</p>
+<p>in</p>
+<p>social</p>
+<p>science</p>
+<p>sim.py</p>
+<p>save</p>
+<p>all</p>
+<p>terminal</p>
+<p>logs</p>
+<p>to a</p>
+<p>file</p>
+<p>log.txt</p>
+<p>save</p>
+<p>all</p>
+<p>output</p>
+<p>files</p>
+<p>slash</p>
+<p>visualizations</p>
+<p>to a</p>
+<p>folder</p>
+<p>in</p>
+<p>this</p>
+<p>folder</p>
+<p>output</p>
+<p>slash</p>
+<p>make</p>
+<p>the</p>
+<p>folder</p>
+<p>if</p>
+<p>not</p>
+<p>there</p>
+<p>claude</p>
+<p>3.5</p>
+<p>sonic</p>
+<p>doing it</p>
+<p>today</p>
+<p>okay</p>
+<p>accept</p>
+<p>it</p>
+<p>save</p>
+<p>it</p>
+<p>clear</p>
+<p>it</p>
+<p>clear</p>
+<p>terminal</p>
+<p>double</p>
+<p>up</p>
+<p>run</p>
+<p>it</p>
+<p>okay</p>
+<p>got an</p>
+<p>unexpected</p>
+<p>argument</p>
+<p>exit</p>
+<p>here we</p>
+<p>go</p>
+<p>we have</p>
+<p>agent</p>
+<p>one</p>
+<p>and</p>
+<p>agent</p>
+<p>zero</p>
+<p>receiving</p>
+<p>observations</p>
+<p>updating</p>
+<p>beliefs</p>
+<p>taking</p>
+<p>actions</p>
+<p>amazing</p>
+<p>see here</p>
+<p>it just</p>
+<p>put that</p>
+<p>over here</p>
+<p>so let's</p>
+<p>look at</p>
+<p>this one</p>
+<p>this is in</p>
+<p>the correct</p>
+<p>location</p>
+<p>this one</p>
+<p>is</p>
+<p>100</p>
+<p>lines</p>
+<p>long</p>
+<p>this</p>
+<p>one</p>
+<p>is</p>
+<p>it's</p>
+<p>like</p>
+<p>it's</p>
+<p>seven</p>
+<p>lines</p>
+<p>long</p>
+<p>just</p>
+<p>implement</p>
+<p>that</p>
+<p>one</p>
+<p>little</p>
+<p>stub</p>
+<p>but then</p>
+<p>it did</p>
+<p>it</p>
+<p>in the</p>
+<p>wrong</p>
+<p>place</p>
+<p>I don't</p>
+<p>know</p>
+<p>if</p>
+<p>that's</p>
+<p>I'm</p>
+<p>just</p>
+<p>using</p>
+<p>it</p>
+<p>weirdly</p>
+<p>or</p>
+<p>if</p>
+<p>it's</p>
+<p>just</p>
+<p>getting</p>
+<p>confused</p>
+<p>because</p>
+<p>we're</p>
+<p>really</p>
+<p>deep</p>
+<p>in</p>
+<p>this</p>
+<p>nested</p>
+<p>repo</p>
+<p>if</p>
+<p>you</p>
+<p>just</p>
+<p>do</p>
+<p>one</p>
+<p>project</p>
+<p>per</p>
+<p>repo</p>
+<p>like</p>
+<p>William</p>
+<p>Blake</p>
+<p>repo</p>
+<p>cognitive</p>
+<p>sovereignty</p>
+<p>repo</p>
+<p>then</p>
+<p>the</p>
+<p>embedding</p>
+<p>is</p>
+<p>faster</p>
+<p>there's</p>
+<p>less</p>
+<p>context</p>
+<p>but</p>
+<p>that's</p>
+<p>kind</p>
+<p>of</p>
+<p>the</p>
+<p>delight</p>
+<p>also</p>
+<p>is</p>
+<p>all</p>
+<p>this</p>
+<p>mixed</p>
+<p>interactive</p>
+<p>semantics</p>
+<p>okay</p>
+<p>clear</p>
+<p>run it</p>
+<p>again</p>
+<p>we're</p>
+<p>going to</p>
+<p>get</p>
+<p>the</p>
+<p>probably</p>
+<p>same</p>
+<p>error</p>
+<p>well</p>
+<p>but</p>
+<p>where did</p>
+<p>it save</p>
+<p>the logs</p>
+<p>to</p>
+<p>ensure</p>
+<p>all</p>
+<p>terminal</p>
+<p>outputs</p>
+<p>are</p>
+<p>saved</p>
+<p>in</p>
+<p>this</p>
+<p>folder</p>
+<p>to</p>
+<p>log</p>
+<p>dot</p>
+<p>txt</p>
+<p>then</p>
+<p>we'll</p>
+<p>move</p>
+<p>all</p>
+<p>the</p>
+<p>methods</p>
+<p>also</p>
+<p>just</p>
+<p>for</p>
+<p>context</p>
+<p>here's</p>
+<p>the</p>
+<p>system</p>
+<p>prompt</p>
+<p>that I</p>
+<p>give</p>
+<p>cursor</p>
+<p>use</p>
+<p>professional</p>
+<p>functional</p>
+<p>modular</p>
+<p>concise</p>
+<p>elegant</p>
+<p>interpretable</p>
+<p>python</p>
+<p>use</p>
+<p>comprehensive</p>
+<p>logging</p>
+<p>to</p>
+<p>terminal</p>
+<p>and</p>
+<p>all</p>
+<p>other</p>
+<p>programming</p>
+<p>best</p>
+<p>practices</p>
+<p>I'm</p>
+<p>going to</p>
+<p>delete</p>
+<p>that</p>
+<p>part</p>
+<p>because</p>
+<p>maybe</p>
+<p>it's</p>
+<p>not</p>
+<p>it's</p>
+<p>over</p>
+<p>learning</p>
+<p>on</p>
+<p>that</p>
+<p>accept</p>
+<p>save</p>
+<p>it</p>
+<p>clear</p>
+<p>it</p>
+<p>clear</p>
+<p>it</p>
+<p>run</p>
+<p>it</p>
+<p>okay</p>
+<p>now</p>
+<p>we got</p>
+<p>to</p>
+<p>this</p>
+<p>area</p>
+<p>fix</p>
+<p>this</p>
+<p>okay</p>
+<p>we'll</p>
+<p>progress</p>
+<p>a little</p>
+<p>bit</p>
+<p>further</p>
+<p>on</p>
+<p>this</p>
+<p>bring</p>
+<p>in</p>
+<p>a few</p>
+<p>py</p>
+<p>mdp</p>
+<p>methods</p>
+<p>till</p>
+<p>then</p>
+<p>if</p>
+<p>anyone</p>
+<p>wants</p>
+<p>to</p>
+<p>see</p>
+<p>again</p>
+<p>now</p>
+<p>it's</p>
+<p>editing</p>
+<p>social</p>
+<p>science</p>
+<p>utilities</p>
+<p>in</p>
+<p>the</p>
+<p>outer</p>
+<p>folder</p>
+<p>so</p>
+<p>it's</p>
+<p>like</p>
+<p>why</p>
+<p>but</p>
+<p>if</p>
+<p>anyone</p>
+<p>writes</p>
+<p>a live</p>
+<p>chat</p>
+<p>with</p>
+<p>like</p>
+<p>a</p>
+<p>thought</p>
+<p>or</p>
+<p>a</p>
+<p>question</p>
+<p>we</p>
+<p>can</p>
+<p>definitely</p>
+<p>do</p>
+<p>it</p>
+<p>okay</p>
+<p>also</p>
+<p>again</p>
+<p>we know</p>
+<p>that</p>
+<p>we'd</p>
+<p>be</p>
+<p>able</p>
+<p>to</p>
+<p>bring</p>
+<p>in</p>
+<p>the</p>
+<p>full</p>
+<p>clone</p>
+<p>in</p>
+<p>py</p>
+<p>mdp</p>
+<p>and</p>
+<p>then</p>
+<p>just</p>
+<p>explicitly</p>
+<p>reference</p>
+<p>it</p>
+<p>and</p>
+<p>that's</p>
+<p>not</p>
+<p>even</p>
+<p>a</p>
+<p>bad</p>
+<p>strategy</p>
+<p>but</p>
+<p>let's</p>
+<p>see</p>
+<p>if</p>
+<p>we</p>
+<p>can</p>
+<p>do</p>
+<p>it</p>
+<p>without</p>
+<p>cloning</p>
+<p>in</p>
+<p>the</p>
+<p>repo</p>
+<p>so</p>
+<p>move</p>
+<p>all</p>
+<p>methods</p>
+<p>to</p>
+<p>at</p>
+<p>fills</p>
+<p>dot</p>
+<p>py</p>
+<p>and</p>
+<p>properly</p>
+<p>here</p>
+<p>okay</p>
+<p>okay</p>
+<p>accept</p>
+<p>it</p>
+<p>save</p>
+<p>it</p>
+<p>I'm</p>
+<p>going to</p>
+<p>copy</p>
+<p>in</p>
+<p>just</p>
+<p>another</p>
+<p>message</p>
+<p>that</p>
+<p>Andrew</p>
+<p>wrote</p>
+<p>read</p>
+<p>it</p>
+<p>here</p>
+<p>FYI</p>
+<p>with</p>
+<p>appreciation</p>
+<p>to the</p>
+<p>work</p>
+<p>being</p>
+<p>done</p>
+<p>by</p>
+<p>both</p>
+<p>the</p>
+<p>SPM</p>
+<p>and</p>
+<p>py</p>
+<p>dmp</p>
+<p>which</p>
+<p>is</p>
+<p>heavily</p>
+<p>based</p>
+<p>on</p>
+<p>SPM</p>
+<p>I</p>
+<p>can</p>
+<p>confirm</p>
+<p>via</p>
+<p>hours</p>
+<p>of</p>
+<p>repo</p>
+<p>cross</p>
+<p>referencing</p>
+<p>there's</p>
+<p>no</p>
+<p>easy</p>
+<p>route</p>
+<p>from</p>
+<p>either</p>
+<p>of</p>
+<p>these</p>
+<p>you</p>
+<p>can't</p>
+<p>get</p>
+<p>there</p>
+<p>from</p>
+<p>here</p>
+<p>packages</p>
+<p>and</p>
+<p>their</p>
+<p>dependencies</p>
+<p>to an</p>
+<p>easy</p>
+<p>ready to go</p>
+<p>simulation</p>
+<p>builder</p>
+<p>already</p>
+<p>simulating</p>
+<p>two</p>
+<p>agents</p>
+<p>even</p>
+<p>before</p>
+<p>inspecting</p>
+<p>the script</p>
+<p>logic</p>
+<p>awesome</p>
+<p>big</p>
+<p>feat</p>
+<p>thank</p>
+<p>you</p>
+<p>awesome</p>
+<p>Andrew</p>
+<p>cool</p>
+<p>okay</p>
+<p>but</p>
+<p>another way</p>
+<p>we could</p>
+<p>do this</p>
+<p>would be</p>
+<p>oh</p>
+<p>simulation</p>
+<p>results</p>
+<p>okay</p>
+<p>there's</p>
+<p>three agents</p>
+<p>they're taking</p>
+<p>actions over</p>
+<p>time</p>
+<p>just by</p>
+<p>calling</p>
+<p>this</p>
+<p>okay</p>
+<p>now let's</p>
+<p>see what</p>
+<p>happens</p>
+<p>let's just</p>
+<p>re-index</p>
+<p>cursor</p>
+<p>make sure</p>
+<p>that we're</p>
+<p>spot</p>
+<p>so here</p>
+<p>it's</p>
+<p>it's</p>
+<p>all the</p>
+<p>files that</p>
+<p>we touched</p>
+<p>it's</p>
+<p>it needs</p>
+<p>to re-index</p>
+<p>it might</p>
+<p>do a</p>
+<p>little</p>
+<p>mini</p>
+<p>re-indexing</p>
+<p>when you</p>
+<p>call something</p>
+<p>into local</p>
+<p>context</p>
+<p>but I</p>
+<p>don't know</p>
+<p>okay</p>
+<p>bring it</p>
+<p>into</p>
+<p>the</p>
+<p>composer</p>
+<p>now</p>
+<p>update</p>
+<p>this</p>
+<p>update</p>
+<p>and</p>
+<p>extend</p>
+<p>these</p>
+<p>methods</p>
+<p>invoking</p>
+<p>where</p>
+<p>possible</p>
+<p>at</p>
+<p>pymdp</p>
+<p>methods</p>
+<p>so</p>
+<p>that's</p>
+<p>the one</p>
+<p>that we've</p>
+<p>been</p>
+<p>looking at</p>
+<p>and</p>
+<p>enjoying</p>
+<p>which is</p>
+<p>it's like</p>
+<p>the doc</p>
+<p>strings</p>
+<p>and the</p>
+<p>input</p>
+<p>output</p>
+<p>for all</p>
+<p>these</p>
+<p>pymdp</p>
+<p>functions</p>
+<p>okay</p>
+<p>let's</p>
+<p>see how</p>
+<p>it does</p>
+<p>it's</p>
+<p>it</p>
+<p>drafts</p>
+<p>it up</p>
+<p>here</p>
+<p>so here's</p>
+<p>like where</p>
+<p>the generation</p>
+<p>is happening</p>
+<p>and then</p>
+<p>once it</p>
+<p>finishes</p>
+<p>this</p>
+<p>v1</p>
+<p>draft</p>
+<p>then</p>
+<p>it</p>
+<p>runs</p>
+<p>through</p>
+<p>okay</p>
+<p>and it</p>
+<p>goes through</p>
+<p>again</p>
+<p>second</p>
+<p>pass</p>
+<p>it's kind</p>
+<p>of like</p>
+<p>measure</p>
+<p>twice</p>
+<p>cut</p>
+<p>once</p>
+<p>situation</p>
+<p>okay</p>
+<p>save it</p>
+<p>clear</p>
+<p>composer</p>
+<p>social</p>
+<p>agents</p>
+<p>here we</p>
+<p>see</p>
+<p>abc</p>
+<p>it's</p>
+<p>like</p>
+<p>qpi</p>
+<p>this is</p>
+<p>actually</p>
+<p>doing</p>
+<p>the</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>based</p>
+<p>model</p>
+<p>updating</p>
+<p>for</p>
+<p>a</p>
+<p>and</p>
+<p>b</p>
+<p>okay</p>
+<p>now</p>
+<p>over</p>
+<p>here</p>
+<p>comprehensively</p>
+<p>develop</p>
+<p>I'm using</p>
+<p>the</p>
+<p>control</p>
+<p>k</p>
+<p>version</p>
+<p>here</p>
+<p>just</p>
+<p>for</p>
+<p>a</p>
+<p>little</p>
+<p>flavor</p>
+<p>using</p>
+<p>the</p>
+<p>at</p>
+<p>utils</p>
+<p>dot</p>
+<p>py</p>
+<p>to</p>
+<p>achieve</p>
+<p>the</p>
+<p>mission</p>
+<p>of</p>
+<p>003.2</p>
+<p>maybe</p>
+
+<p>there's</p>
+<p>a way</p>
+<p>to do</p>
+<p>in the</p>
+<p>system</p>
+<p>prompt</p>
+<p>like</p>
+<p>just</p>
+<p>say</p>
+<p>and this</p>
+<p>is also</p>
+<p>where</p>
+<p>programming</p>
+<p>practice</p>
+<p>and expertise</p>
+<p>and all</p>
+<p>this comes</p>
+<p>into play</p>
+<p>is like</p>
+<p>maybe</p>
+<p>maybe</p>
+<p>there's a way</p>
+<p>to make</p>
+<p>sure like</p>
+<p>that we</p>
+<p>always call</p>
+<p>the run</p>
+<p>script</p>
+<p>main</p>
+<p>and then</p>
+<p>we always</p>
+<p>call the</p>
+<p>utils</p>
+<p>like utils</p>
+<p>underscore</p>
+<p>and then the</p>
+<p>type of</p>
+<p>utils</p>
+<p>then we</p>
+<p>could have</p>
+<p>a system</p>
+<p>prompt</p>
+<p>that's</p>
+<p>like</p>
+<p>I</p>
+<p>only</p>
+<p>like</p>
+<p>to run</p>
+<p>scripts</p>
+<p>called</p>
+<p>dot</p>
+<p>main</p>
+<p>myself</p>
+<p>and</p>
+<p>please</p>
+<p>ensure</p>
+<p>that</p>
+<p>utils</p>
+<p>underscore</p>
+<p>asterisk</p>
+<p>are</p>
+<p>comprehensive</p>
+<p>and</p>
+<p>you know</p>
+<p>make it</p>
+<p>so that</p>
+<p>Carl</p>
+<p>Friston</p>
+<p>would smile</p>
+<p>upon it</p>
+<p>clear</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>okay</p>
+<p>can't</p>
+<p>import</p>
+<p>name</p>
+<p>control</p>
+<p>new</p>
+<p>errors</p>
+<p>fix it</p>
+<p>script</p>
+<p>overview</p>
+<p>meanwhile</p>
+<p>while the</p>
+<p>control</p>
+<p>i is</p>
+<p>going</p>
+<p>control</p>
+<p>k</p>
+
+<p>develop</p>
+<p>this</p>
+<p>given</p>
+<p>all</p>
+<p>we</p>
+<p>know</p>
+<p>now</p>
+<p>accept</p>
+<p>whatever</p>
+<p>it</p>
+<p>says</p>
+<p>clear</p>
+<p>run</p>
+<p>it</p>
+<p>again</p>
+<p>reset</p>
+<p>that</p>
+<p>one's</p>
+<p>done</p>
+<p>accept</p>
+<p>it</p>
+<p>pop</p>
+<p>back</p>
+<p>to</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>can't</p>
+<p>import</p>
+<p>inference</p>
+<p>new</p>
+<p>one</p>
+<p>fix</p>
+<p>it</p>
+<p>meanwhile</p>
+<p>back</p>
+<p>to</p>
+<p>3.2</p>
+<p>develop</p>
+<p>this</p>
+<p>given</p>
+<p>what</p>
+<p>we</p>
+<p>know</p>
+<p>now</p>
+<p>okay</p>
+<p>see</p>
+<p>here</p>
+<p>now</p>
+<p>utils</p>
+<p>again</p>
+<p>is going</p>
+<p>to</p>
+<p>the</p>
+<p>wrong</p>
+<p>place</p>
+<p>we'll</p>
+<p>get it</p>
+<p>there</p>
+<p>let's</p>
+<p>just see</p>
+<p>what it</p>
+<p>does</p>
+<p>okay</p>
+<p>okay</p>
+<p>create</p>
+<p>create</p>
+<p>contribution</p>
+<p>guidelines</p>
+<p>for potential</p>
+<p>collaborators</p>
+<p>set up a</p>
+<p>project wiki</p>
+<p>for detailed</p>
+<p>documentation</p>
+<p>tutorial</p>
+<p>consider</p>
+<p>presenting the</p>
+<p>project at</p>
+<p>relevant</p>
+<p>conferences or</p>
+<p>meetups</p>
+<p>like the</p>
+<p>fourth applied</p>
+<p>active inference</p>
+<p>symposium</p>
+<p>from november</p>
+<p>13th to</p>
+<p>15th</p>
+<p>2024</p>
+<p>possibly</p>
+<p>let's just</p>
+<p>say</p>
+<p>develop</p>
+<p>section</p>
+<p>nine</p>
+<p>comprehensively</p>
+<p>comma</p>
+<p>absurdly</p>
+<p>comma</p>
+<p>professionally</p>
+<p>then we'll</p>
+<p>pop back to</p>
+<p>the simulator</p>
+<p>okay</p>
+<p>okay okay</p>
+<p>okay</p>
+<p>all right</p>
+<p>it's all about</p>
+<p>nine now</p>
+<p>wow</p>
+<p>okay</p>
+<p>talk about</p>
+<p>cart before</p>
+<p>the horse</p>
+<p>it's like</p>
+<p>why</p>
+<p>why not</p>
+<p>just</p>
+<p>focus on</p>
+<p>section</p>
+<p>nine</p>
+<p>aren't you</p>
+<p>interested in</p>
+<p>like</p>
+<p>subsections</p>
+<p>reject it</p>
+<p>it's okay</p>
+<p>we know</p>
+<p>it would</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>Andrew wrote</p>
+<p>typically</p>
+<p>infer policies</p>
+<p>and sample</p>
+<p>action</p>
+<p>functions</p>
+<p>are called</p>
+<p>separately</p>
+<p>albeit</p>
+<p>often</p>
+<p>adjacently</p>
+<p>as pi</p>
+<p>mvp</p>
+<p>the</p>
+<p>lom</p>
+<p>seemed to</p>
+<p>realize</p>
+<p>it could</p>
+<p>combine</p>
+<p>them</p>
+<p>into a</p>
+<p>single</p>
+<p>function</p>
+<p>flow</p>
+<p>okay</p>
+<p>let me</p>
+<p>say</p>
+<p>now</p>
+<p>given</p>
+<p>at</p>
+<p>so</p>
+<p>and then</p>
+<p>Andrew wrote</p>
+<p>subject to</p>
+<p>change</p>
+<p>of course</p>
+<p>point is</p>
+<p>fascinating</p>
+<p>to see</p>
+<p>how the</p>
+<p>lom</p>
+<p>might</p>
+<p>make</p>
+<p>optimizations</p>
+<p>not</p>
+<p>inherent</p>
+<p>to the</p>
+<p>original</p>
+<p>libraries</p>
+<p>I mean</p>
+<p>yes</p>
+<p>that's</p>
+<p>that's</p>
+<p>very</p>
+<p>characteristically</p>
+<p>understated</p>
+<p>yes</p>
+<p>it suggests</p>
+<p>stuff that's</p>
+<p>like</p>
+<p>it's an</p>
+<p>adjacency</p>
+<p>in like</p>
+<p>dimension</p>
+<p>754</p>
+<p>but</p>
+<p>for a</p>
+<p>given</p>
+<p>person</p>
+<p>it's like</p>
+<p>it might</p>
+<p>pop up</p>
+<p>to your</p>
+<p>awareness</p>
+<p>in a</p>
+<p>moment</p>
+<p>it might</p>
+<p>not</p>
+<p>but even</p>
+<p>if</p>
+<p>what popped</p>
+<p>up in</p>
+<p>your</p>
+<p>awareness</p>
+<p>were like</p>
+<p>awesome</p>
+<p>epic</p>
+<p>professional</p>
+<p>modular</p>
+<p>absurd</p>
+<p>great</p>
+<p>every</p>
+<p>single</p>
+<p>second</p>
+<p>or you're</p>
+<p>doing it</p>
+<p>10 times</p>
+<p>a second</p>
+<p>it's like</p>
+<p>you still</p>
+<p>might never</p>
+<p>just riff</p>
+<p>enough</p>
+<p>let alone</p>
+<p>capture</p>
+<p>and do</p>
+<p>that kind</p>
+<p>of cosmic</p>
+<p>fishing</p>
+<p>explain</p>
+<p>this</p>
+<p>comprehensively</p>
+<p>okay so</p>
+<p>now wall</p>
+<p>control</p>
+<p>L</p>
+<p>is going</p>
+<p>reset it</p>
+<p>let's add</p>
+<p>in the</p>
+<p>utils</p>
+<p>run it</p>
+<p>but we know</p>
+<p>it's going to</p>
+<p>give an error</p>
+<p>add it to the</p>
+<p>composer</p>
+<p>fix this</p>
+<p>with reference</p>
+<p>slash</p>
+<p>modification</p>
+<p>only</p>
+<p>to the</p>
+<p>local</p>
+<p>folder</p>
+<p>okay</p>
+<p>combining</p>
+<p>infert</p>
+<p>policy</p>
+<p>sample</p>
+<p>action</p>
+<p>functions</p>
+<p>into a</p>
+<p>single</p>
+<p>function</p>
+<p>or flow</p>
+<p>can</p>
+<p>streamline</p>
+<p>the</p>
+<p>simulation</p>
+<p>process</p>
+<p>clear it</p>
+<p>run it</p>
+<p>no</p>
+<p>module</p>
+<p>pymdp</p>
+<p>at</p>
+<p>aldos</p>
+<p>fix this</p>
+<p>it's making</p>
+<p>a lot of</p>
+<p>changes</p>
+<p>so it's</p>
+<p>like again</p>
+<p>there's</p>
+<p>there's so</p>
+<p>many ways</p>
+<p>to do</p>
+<p>the</p>
+<p>professional</p>
+<p>programming</p>
+<p>this is</p>
+<p>just one</p>
+<p>sort of</p>
+<p>pythonic</p>
+<p>strategy</p>
+<p>okay now</p>
+<p>it's bringing</p>
+<p>in pymdp</p>
+<p>these</p>
+<p>units</p>
+<p>save it</p>
+<p>clear it</p>
+<p>double up</p>
+<p>run</p>
+<p>can't import</p>
+<p>name</p>
+<p>inference</p>
+<p>fix it</p>
+<p>also it's</p>
+<p>like we</p>
+<p>could have</p>
+<p>just added</p>
+<p>well it's</p>
+<p>it can't</p>
+<p>import</p>
+<p>inference</p>
+<p>maybe</p>
+<p>inference</p>
+<p>doesn't</p>
+<p>even</p>
+<p>exist</p>
+<p>that's</p>
+<p>those are</p>
+<p>a few</p>
+<p>of the</p>
+<p>situations</p>
+<p>see now</p>
+<p>it might</p>
+<p>just be</p>
+<p>kind of</p>
+<p>floundering</p>
+<p>right here</p>
+<p>let's</p>
+<p>see</p>
+<p>no</p>
+<p>module</p>
+<p>pymdp</p>
+<p>dot core</p>
+<p>let's just</p>
+<p>go over</p>
+<p>to pymdp</p>
+<p>and just</p>
+<p>see what</p>
+<p>they are</p>
+<p>but this</p>
+<p>also</p>
+<p>really</p>
+<p>this is</p>
+<p>getting</p>
+<p>pretty</p>
+<p>specific</p>
+<p>into pymdp's</p>
+<p>folder and</p>
+<p>sub</p>
+<p>module</p>
+<p>structure</p>
+<p>yeah</p>
+<p>just maybe</p>
+<p>10 to</p>
+<p>30 more</p>
+<p>minutes</p>
+<p>but if</p>
+<p>people have</p>
+<p>comments or</p>
+<p>questions</p>
+<p>please just</p>
+<p>go for it</p>
+<p>okay so</p>
+<p>there it's</p>
+<p>just saying</p>
+<p>you know</p>
+<p>what</p>
+<p>ignore that</p>
+<p>core</p>
+<p>mention</p>
+<p>run it</p>
+<p>okay</p>
+<p>cannot</p>
+<p>import</p>
+<p>inference</p>
+<p>and delete</p>
+<p>it</p>
+<p>cannot</p>
+<p>import</p>
+<p>control</p>
+<p>we</p>
+<p>let's just</p>
+<p>accept</p>
+<p>importing</p>
+<p>pymdp</p>
+<p>period</p>
+<p>fix</p>
+
+<p>this</p>
+<p>however</p>
+<p>yeah</p>
+<p>okay</p>
+<p>Andrew wrote</p>
+<p>inference</p>
+<p>algos</p>
+<p>etc</p>
+<p>do</p>
+<p>exist</p>
+<p>but the</p>
+<p>dependency</p>
+<p>structure is</p>
+<p>highly</p>
+<p>complex</p>
+<p>yeah</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>let's</p>
+<p>let's do a</p>
+<p>little</p>
+<p>let's do some</p>
+<p>radical pymdp</p>
+<p>surgery</p>
+<p>here</p>
+<p>okay</p>
+<p>cd double dot</p>
+<p>pop up a</p>
+<p>level</p>
+<p>ls</p>
+<p>that's what's</p>
+<p>there</p>
+<p>cd double dot</p>
+<p>pop up a</p>
+<p>level</p>
+<p>ls</p>
+<p>there's better</p>
+<p>ways to do</p>
+<p>this</p>
+<p>I'm just</p>
+<p>showing one</p>
+<p>way to do</p>
+<p>it</p>
+<p>cd</p>
+<p>active</p>
+<p>inference</p>
+<p>now we're</p>
+<p>in active</p>
+<p>inference</p>
+<p>it's not the</p>
+<p>augmented one</p>
+<p>okay</p>
+<p>reload our</p>
+<p>llms</p>
+<p>get them</p>
+<p>ready</p>
+<p>okay</p>
+<p>python 3</p>
+<p>pymdpeople</p>
+<p>clone in</p>
+<p>pymdp</p>
+<p>okay</p>
+<p>okay</p>
+<p>here we</p>
+<p>go</p>
+<p>new script</p>
+<p>this is going</p>
+<p>to be called</p>
+<p>flat pymdp</p>
+<p>pymdp</p>
+<p>underscore</p>
+<p>flatten</p>
+<p>dot</p>
+<p>py</p>
+<p>okay</p>
+<p>here</p>
+<p>given all</p>
+<p>the functions</p>
+<p>in</p>
+<p>pymdp</p>
+<p>package</p>
+<p>iterate</p>
+<p>over the</p>
+<p>entire</p>
+<p>python</p>
+<p>package</p>
+<p>write a</p>
+<p>script</p>
+<p>that will</p>
+<p>iterate</p>
+<p>over the</p>
+<p>entire</p>
+<p>python</p>
+<p>package</p>
+<p>pulling</p>
+<p>out</p>
+<p>all</p>
+<p>python</p>
+<p>method</p>
+<p>slash</p>
+<p>entity</p>
+<p>definitions</p>
+<p>e.g.</p>
+<p>across</p>
+<p>and through</p>
+<p>modules</p>
+<p>sub</p>
+<p>folders</p>
+<p>etc</p>
+
+
+<p>and</p>
+<p>output</p>
+<p>a</p>
+<p>mega</p>
+<p>I won't</p>
+<p>use that</p>
+<p>output</p>
+<p>a</p>
+<p>text</p>
+<p>file</p>
+<p>pymdp</p>
+<p>methods</p>
+<p>flat</p>
+<p>dot</p>
+<p>py</p>
+<p>which</p>
+<p>let's do</p>
+<p>pymdp</p>
+<p>utils</p>
+<p>pymdp</p>
+<p>all</p>
+<p>utils</p>
+<p>which</p>
+<p>contains</p>
+<p>verbatim</p>
+<p>all</p>
+<p>pymdp</p>
+<p>methods</p>
+<p>for the</p>
+<p>calling</p>
+<p>okay</p>
+<p>so we're</p>
+<p>going to</p>
+<p>generate</p>
+<p>the script</p>
+<p>here</p>
+<p>that's going to</p>
+<p>flatten pymdp</p>
+<p>okay</p>
+<p>again</p>
+<p>it pulled</p>
+<p>it up</p>
+<p>here</p>
+<p>copy it</p>
+<p>pymdp</p>
+<p>flatten</p>
+<p>paste it</p>
+<p>in</p>
+<p>okay</p>
+<p>okay</p>
+<p>like</p>
+<p>if</p>
+<p>this works</p>
+<p>on one</p>
+<p>shot</p>
+<p>okay</p>
+<p>there's</p>
+<p>pymdp</p>
+<p>flatten</p>
+<p>python</p>
+<p>3</p>
+<p>pymdp</p>
+<p>underscore</p>
+<p>flatten</p>
+<p>okay</p>
+<p>what do</p>
+<p>you think</p>
+<p>extract</p>
+<p>definitions</p>
+<p>ast</p>
+<p>walk</p>
+<p>process</p>
+<p>package</p>
+<p>main</p>
+<p>all</p>
+<p>right</p>
+<p>okay</p>
+<p>okay</p>
+<p>a little bit of weirdness just because of</p>
+<p>i o operations on closed file</p>
+<p>that could be just due to like something weird about how i opened the</p>
+<p>okay</p>
+<p>extracted 24 definitions</p>
+<p>all right</p>
+<p>all right</p>
+<p>looking good</p>
+<p>ensure that this</p>
+<p>script</p>
+<p>iterates through all folders</p>
+<p>and sub</p>
+<p>folders</p>
+<p>within</p>
+<p>dot</p>
+<p>slash</p>
+<p>pymdp</p>
+<p>now</p>
+<p>it</p>
+<p>let's just see</p>
+<p>os walk</p>
+<p>accept it</p>
+<p>save it</p>
+<p>clear it</p>
+<p>double up</p>
+<p>run it</p>
+<p>24 definitions</p>
+<p>still i am only getting 24</p>
+<p>definitions</p>
+<p>there should be</p>
+<p>hundreds</p>
+<p>now</p>
+<p>this</p>
+<p>even if we get to hundreds</p>
+<p>it won't be the right output</p>
+<p>right</p>
+<p>because like</p>
+<p>there's going to be a method defined</p>
+<p>in utils</p>
+<p>and i expect there'll be a similar one in</p>
+<p>slash</p>
+<p>jacks</p>
+<p>slash utils</p>
+<p>okay</p>
+<p>clear</p>
+<p>double up</p>
+<p>run it</p>
+<p>okay</p>
+<p>okay</p>
+<p>look</p>
+<p>in this</p>
+<p>very folder</p>
+<p>comma</p>
+<p>my colleague</p>
+<p>there are</p>
+<p>sub</p>
+<p>folders</p>
+<p>in what was</p>
+<p>cloned</p>
+<p>by</p>
+<p>pymdp</p>
+<p>pull</p>
+<p>that output</p>
+<p>there</p>
+<p>is the whole</p>
+<p>pymdp</p>
+<p>script</p>
+<p>that's</p>
+<p>what we</p>
+<p>need the whole team</p>
+<p>to look through</p>
+<p>so we can get all</p>
+<p>hundreds of methods</p>
+<p>to make</p>
+<p>a</p>
+<p>flattened</p>
+<p>single</p>
+<p>mega</p>
+<p>utils</p>
+<p>file</p>
+<p>for simpler</p>
+<p>referencing</p>
+<p>remember</p>
+<p>we're just</p>
+<p>next</p>
+<p>mates</p>
+<p>the script</p>
+<p>is looking at the</p>
+<p>installed</p>
+<p>pymdp</p>
+<p>package</p>
+<p>instead of</p>
+<p>locally</p>
+<p>cloned</p>
+<p>repo</p>
+<p>there we go</p>
+<p>but why didn't you just say so</p>
+<p>now</p>
+<p>there we go</p>
+<p>456</p>
+<p>to all</p>
+<p>utils</p>
+<p>okay</p>
+<p>now I'm going to pull this back</p>
+<p>into</p>
+<p>the scripts</p>
+<p>well done</p>
+<p>cursor</p>
+<p>take a quick breather</p>
+<p>okay</p>
+<p>clear</p>
+<p>cd double dot</p>
+<p>pull up</p>
+<p>cd</p>
+<p>augmented</p>
+<p>enter</p>
+<p>ls</p>
+<p>cd</p>
+<p>scripts</p>
+<p>ls</p>
+<p>go over to</p>
+<p>cursor</p>
+<p>double check</p>
+<p>it's all</p>
+<p>re-indexed</p>
+<p>delete the original</p>
+<p>pymdp</p>
+<p>there it is</p>
+<p>new files</p>
+<p>we'll just make sure</p>
+<p>it gets them all</p>
+<p>400</p>
+<p>456</p>
+<p>definition</p>
+<p>that says</p>
+<p>andrew</p>
+<p>incroyable</p>
+<p>that's like</p>
+<p>exactly how I feel</p>
+<p>it's like</p>
+<p>what</p>
+<p>what</p>
+<p>oh for abjus</p>
+<p>incroyable</p>
+<p>day</p>
+<p>okay</p>
+<p>social science</p>
+<p>sim</p>
+<p>add in</p>
+<p>to this</p>
+<p>context</p>
+<p>window</p>
+<p>pymdp</p>
+<p>underscore</p>
+<p>all</p>
+<p>utils</p>
+<p>develop</p>
+<p>this</p>
+<p>multi-agent</p>
+<p>social</p>
+<p>simulation</p>
+<p>given</p>
+<p>all</p>
+<p>methods</p>
+<p>fully</p>
+<p>defined</p>
+<p>in</p>
+<p>pymdp</p>
+<p>underscore</p>
+<p>all</p>
+<p>utils</p>
+<p>dot py</p>
+<p>in this</p>
+<p>folder</p>
+<p>okay</p>
+<p>meanwhile</p>
+<p>well let's</p>
+<p>let's let it</p>
+<p>edit</p>
+<p>then</p>
+<p>then</p>
+<p>we'll</p>
+<p>okay</p>
+<p>okay</p>
+<p>it's kind</p>
+<p>of writing</p>
+<p>it in</p>
+<p>the composer</p>
+<p>window</p>
+<p>again</p>
+<p>this is</p>
+<p>this might</p>
+<p>just be a</p>
+<p>tiny</p>
+<p>cursor</p>
+<p>bug</p>
+<p>it'll be</p>
+<p>like</p>
+<p>there it</p>
+<p>is</p>
+<p>there's</p>
+<p>my answer</p>
+<p>but it's</p>
+<p>like</p>
+<p>well</p>
+<p>no</p>
+<p>let's</p>
+<p>or</p>
+<p>so it</p>
+<p>doesn't</p>
+<p>suggest</p>
+<p>a code</p>
+<p>edit</p>
+<p>suggest</p>
+<p>all</p>
+<p>those</p>
+<p>code</p>
+<p>edits</p>
+<p>to</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>it's like</p>
+<p>oh</p>
+<p>I'm sorry</p>
+<p>yep</p>
+<p>pretty cool</p>
+<p>okay</p>
+<p>now</p>
+<p>this is</p>
+<p>where</p>
+<p>it's</p>
+<p>doing</p>
+<p>the</p>
+<p>composer</p>
+<p>mode</p>
+<p>correctly</p>
+<p>it</p>
+<p>opens</p>
+<p>up</p>
+<p>a</p>
+<p>second</p>
+<p>tab</p>
+<p>then</p>
+<p>it</p>
+<p>writes</p>
+<p>all</p>
+<p>those</p>
+<p>code</p>
+<p>edits</p>
+<p>there</p>
+<p>and</p>
+<p>then</p>
+<p>it'll</p>
+<p>rescan</p>
+<p>this one</p>
+<p>and say</p>
+<p>well</p>
+<p>this was</p>
+<p>my</p>
+<p>updated</p>
+<p>draft</p>
+<p>and</p>
+<p>this</p>
+<p>was</p>
+<p>the</p>
+<p>original</p>
+<p>draft</p>
+<p>so</p>
+<p>now</p>
+<p>pulls</p>
+<p>in</p>
+<p>let's</p>
+<p>see</p>
+<p>how</p>
+<p>this</p>
+<p>does</p>
+<p>fix</p>
+<p>this</p>
+<p>remove</p>
+<p>the</p>
+<p>need</p>
+<p>to</p>
+<p>ask</p>
+<p>about</p>
+<p>version</p>
+<p>if</p>
+<p>that</p>
+<p>is</p>
+<p>simpler</p>
+<p>okay</p>
+<p>utils.py</p>
+<p>it's</p>
+<p>because</p>
+<p>it's</p>
+<p>because</p>
+<p>it's</p>
+<p>calling</p>
+<p>both</p>
+<p>the</p>
+<p>utils</p>
+<p>and</p>
+<p>well</p>
+<p>let's</p>
+<p>just</p>
+<p>rename</p>
+<p>this</p>
+<p>one</p>
+<p>utils</p>
+<p>yeah</p>
+<p>rename</p>
+<p>this</p>
+<p>utils</p>
+<p>well</p>
+<p>first</p>
+<p>let's</p>
+<p>delete</p>
+<p>the</p>
+<p>ones</p>
+<p>we</p>
+<p>had</p>
+<p>we</p>
+<p>if</p>
+<p>we</p>
+<p>call</p>
+<p>it</p>
+<p>utils</p>
+<p>old</p>
+<p>it</p>
+<p>might</p>
+<p>get</p>
+<p>confused</p>
+<p>okay</p>
+<p>utils.py</p>
+<p>then</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>utils</p>
+<p>import</p>
+<p>star</p>
+<p>okay</p>
+<p>fix</p>
+<p>this</p>
+<p>removing</p>
+<p>the</p>
+<p>need</p>
+<p>for</p>
+<p>the</p>
+<p>method</p>
+<p>or</p>
+<p>invoking</p>
+<p>it</p>
+<p>or</p>
+<p>writing</p>
+<p>it</p>
+<p>if</p>
+<p>it</p>
+<p>is</p>
+<p>missing</p>
+<p>but</p>
+<p>then</p>
+<p>here's</p>
+<p>the</p>
+<p>deal</p>
+<p>utils.py</p>
+<p>which is</p>
+<p>the</p>
+<p>flattened</p>
+<p>all</p>
+<p>it's</p>
+<p>20,000</p>
+<p>lines</p>
+<p>long</p>
+<p>so</p>
+<p>then</p>
+<p>it'll</p>
+<p>have</p>
+<p>a</p>
+<p>hard</p>
+<p>time</p>
+<p>reaching</p>
+<p>in</p>
+<p>and</p>
+<p>making</p>
+<p>the</p>
+<p>targeted</p>
+<p>edit</p>
+<p>to</p>
+<p>something</p>
+<p>in</p>
+<p>here</p>
+<p>see</p>
+<p>it</p>
+<p>might</p>
+<p>just</p>
+<p>be</p>
+<p>like</p>
+<p>oh</p>
+<p>we</p>
+<p>don't</p>
+<p>need</p>
+<p>that</p>
+<p>one</p>
+<p>let's</p>
+<p>see</p>
+<p>it</p>
+<p>might</p>
+<p>just</p>
+<p>be</p>
+<p>like</p>
+<p>let's</p>
+<p>delete</p>
+<p>19.9</p>
+<p>out of</p>
+<p>the</p>
+<p>20,000</p>
+<p>lines</p>
+<p>okay</p>
+<p>a</p>
+<p>file</p>
+<p>too</p>
+<p>long</p>
+<p>see</p>
+<p>edit</p>
+<p>command</p>
+<p>is</p>
+<p>limited</p>
+<p>to</p>
+<p>files</p>
+<p>at</p>
+<p>most</p>
+<p>around</p>
+<p>400</p>
+<p>lines</p>
+<p>long</p>
+<p>so</p>
+<p>then</p>
+<p>it</p>
+<p>just</p>
+<p>cancels</p>
+<p>it</p>
+<p>so</p>
+<p>I</p>
+<p>I</p>
+<p>I</p>
+<p>I</p>
+<p>get</p>
+<p>that</p>
+<p>I</p>
+<p>get</p>
+<p>that</p>
+<p>all</p>
+<p>pyMDP</p>
+<p>utils</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>from</p>
+<p>all</p>
+<p>pyMDP</p>
+<p>utils</p>
+<p>save</p>
+<p>it</p>
+<p>write</p>
+<p>this</p>
+<p>so</p>
+
+
+
+<p>so</p>
+<p>that</p>
+<p>it</p>
+<p>only</p>
+<p>uses</p>
+<p>functions</p>
+<p>defined</p>
+<p>in</p>
+<p>at</p>
+<p>all</p>
+<p>pyMDP</p>
+<p>utils</p>
+
+<p>it imports</p>
+<p>everything</p>
+<p>which is</p>
+<p>perfect</p>
+<p>don't change</p>
+<p>that</p>
+<p>use the</p>
+<p>pyMDP</p>
+<p>methods</p>
+<p>to</p>
+<p>make</p>
+<p>this</p>
+<p>multi</p>
+<p>agent</p>
+<p>simulation</p>
+<p>that</p>
+<p>initializes</p>
+<p>simulates</p>
+<p>and</p>
+<p>visualizes</p>
+<p>a social</p>
+<p>multi</p>
+<p>agent</p>
+<p>setting</p>
+<p>we'll do a few</p>
+<p>more minutes</p>
+<p>if anyone has</p>
+<p>comments or</p>
+<p>questions</p>
+<p>let's</p>
+<p>see</p>
+<p>that</p>
+<p>also</p>
+<p>again</p>
+<p>it's</p>
+<p>defining</p>
+<p>methods</p>
+<p>here</p>
+<p>so</p>
+<p>see</p>
+<p>what it</p>
+<p>does</p>
+<p>social</p>
+<p>agent</p>
+<p>now</p>
+<p>uses</p>
+<p>agent</p>
+<p>from</p>
+<p>pyMDP</p>
+<p>along</p>
+<p>with</p>
+<p>random</p>
+<p>a</p>
+<p>b</p>
+<p>etc</p>
+<p>ok</p>
+<p>ok</p>
+<p>remove</p>
+<p>the need</p>
+<p>for</p>
+<p>unit</p>
+<p>test</p>
+<p>not</p>
+<p>sure</p>
+<p>what</p>
+<p>that</p>
+<p>is</p>
+<p>we</p>
+<p>can</p>
+<p>like</p>
+<p>look</p>
+<p>that's</p>
+<p>the</p>
+<p>unit</p>
+<p>testing</p>
+<p>methods</p>
+<p>I</p>
+<p>understand</p>
+<p>see</p>
+<p>but like</p>
+<p>do you</p>
+<p>like</p>
+<p>philosophically</p>
+<p>do you</p>
+<p>let's</p>
+<p>just ask</p>
+<p>it</p>
+<p>not that</p>
+<p>what it</p>
+<p>says</p>
+<p>will be</p>
+<p>an</p>
+<p>answer</p>
+<p>philosophically</p>
+<p>would</p>
+<p>you</p>
+<p>say</p>
+<p>that</p>
+<p>you</p>
+<p>fully</p>
+<p>understand</p>
+<p>this</p>
+<p>script</p>
+<p>and</p>
+<p>all</p>
+<p>it</p>
+<p>implies</p>
+<p>kind of</p>
+<p>a trick</p>
+<p>question</p>
+<p>because</p>
+<p>it's</p>
+<p>like</p>
+<p>all</p>
+<p>it</p>
+<p>implies</p>
+<p>okay</p>
+<p>accept</p>
+<p>it</p>
+<p>clear</p>
+<p>it</p>
+<p>double</p>
+<p>run</p>
+<p>it</p>
+<p>okay</p>
+<p>let's</p>
+<p>try it</p>
+<p>here's</p>
+<p>what it</p>
+<p>says</p>
+<p>did</p>
+<p>you</p>
+<p>mean</p>
+<p>okay</p>
+<p>yes</p>
+<p>I did</p>
+<p>mean</p>
+<p>python</p>
+<p>3</p>
+<p>okay</p>
+<p>so</p>
+<p>okay</p>
+<p>well</p>
+<p>there's</p>
+<p>the answer</p>
+<p>for</p>
+<p>whether</p>
+<p>it</p>
+<p>thinks</p>
+<p>it</p>
+<p>understands</p>
+<p>it</p>
+<p>but</p>
+<p>that's</p>
+<p>like</p>
+<p>that's</p>
+<p>like</p>
+<p>something</p>
+<p>for</p>
+<p>people</p>
+<p>to</p>
+<p>consider</p>
+<p>like</p>
+<p>this is</p>
+<p>why</p>
+<p>I</p>
+<p>leave</p>
+<p>the</p>
+<p>same</p>
+<p>composer</p>
+<p>window</p>
+<p>running</p>
+<p>really</p>
+<p>make</p>
+<p>sure</p>
+<p>that</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>does</p>
+<p>not</p>
+<p>need</p>
+<p>any</p>
+<p>unit</p>
+<p>test</p>
+<p>stuff</p>
+<p>at</p>
+<p>all</p>
+<p>okay</p>
+<p>but</p>
+<p>meanwhile</p>
+<p>new</p>
+<p>side</p>
+<p>chat</p>
+<p>just</p>
+<p>dropped</p>
+<p>write</p>
+
+<p>a</p>
+<p>hilarious</p>
+<p>age</p>
+<p>appropriate</p>
+<p>esoteric</p>
+<p>lore</p>
+<p>laden</p>
+<p>who's</p>
+<p>on</p>
+<p>first</p>
+<p>style</p>
+<p>dialogue</p>
+<p>for</p>
+<p>fully</p>
+<p>explaining</p>
+<p>allegorically</p>
+<p>to</p>
+
+<p>someone</p>
+<p>familiar</p>
+<p>with</p>
+<p>reinforcement</p>
+<p>learning</p>
+<p>everything</p>
+<p>happening</p>
+<p>in this</p>
+<p>active</p>
+<p>inference</p>
+<p>multi</p>
+<p>agent</p>
+<p>simulation</p>
+<p>ensure</p>
+<p>many</p>
+<p>baseball</p>
+<p>history</p>
+<p>historical</p>
+<p>references</p>
+<p>comma</p>
+<p>as well</p>
+<p>okay</p>
+<p>update</p>
+<p>this</p>
+<p>so that</p>
+<p>it</p>
+<p>runs</p>
+<p>with</p>
+<p>just</p>
+<p>python</p>
+<p>3</p>
+<p>social</p>
+<p>science</p>
+<p>sim</p>
+<p>dot</p>
+<p>py</p>
+<p>no</p>
+<p>command</p>
+<p>line</p>
+<p>arguments</p>
+<p>I think I</p>
+<p>accidentally</p>
+<p>terminated</p>
+<p>the</p>
+<p>let's</p>
+<p>do</p>
+<p>sonnet</p>
+<p>I think</p>
+<p>it does</p>
+<p>sometimes</p>
+<p>funnier</p>
+<p>who's</p>
+<p>on</p>
+<p>first</p>
+<p>dialogue</p>
+<p>okay</p>
+<p>we have</p>
+<p>two</p>
+<p>two</p>
+<p>sonnets</p>
+<p>working</p>
+<p>for us</p>
+<p>here</p>
+<p>we got</p>
+<p>the</p>
+<p>baseball</p>
+<p>dialogue</p>
+<p>slow</p>
+<p>position</p>
+<p>12</p>
+<p>okay</p>
+<p>okay</p>
+<p>out of the</p>
+<p>command line</p>
+<p>arguments</p>
+<p>now we</p>
+<p>can call</p>
+<p>it the</p>
+<p>way we</p>
+<p>want</p>
+<p>accept</p>
+<p>it</p>
+<p>save</p>
+<p>it</p>
+<p>reset</p>
+<p>it</p>
+<p>clear</p>
+<p>it</p>
+<p>double</p>
+<p>up</p>
+<p>run</p>
+<p>it</p>
+<p>what did</p>
+<p>I say</p>
+<p>sonnet</p>
+<p>ensure</p>
+<p>that</p>
+<p>unit</p>
+<p>test</p>
+<p>is not</p>
+<p>required</p>
+<p>at</p>
+<p>all</p>
+<p>I</p>
+<p>never</p>
+<p>this</p>
+<p>is</p>
+<p>something</p>
+<p>I've</p>
+<p>never</p>
+<p>said</p>
+<p>before</p>
+<p>I</p>
+<p>never</p>
+<p>want</p>
+<p>to</p>
+<p>see</p>
+<p>that</p>
+<p>bug</p>
+<p>again</p>
+<p>meanwhile</p>
+<p>who's</p>
+<p>on</p>
+<p>first</p>
+<p>dot</p>
+<p>md</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>okay</p>
+<p>let's</p>
+<p>not get</p>
+<p>ahead</p>
+<p>of</p>
+<p>ourselves</p>
+<p>save</p>
+<p>it</p>
+<p>clear</p>
+<p>it</p>
+<p>double</p>
+<p>up</p>
+<p>fix</p>
+<p>it</p>
+<p>and</p>
+<p>remember</p>
+<p>what I</p>
+<p>said</p>
+<p>last</p>
+<p>time</p>
+<p>we'll</p>
+<p>see if</p>
+<p>we can</p>
+<p>do</p>
+<p>like</p>
+<p>a couple</p>
+<p>more</p>
+<p>see if</p>
+<p>we</p>
+<p>fix</p>
+<p>it</p>
+<p>and</p>
+<p>then</p>
+<p>otherwise</p>
+<p>we'll</p>
+<p>close</p>
+<p>with</p>
+<p>reading</p>
+<p>the</p>
+<p>who's</p>
+<p>on</p>
+<p>first</p>
+<p>summary</p>
+<p>and</p>
+<p>then</p>
+<p>at</p>
+<p>the</p>
+<p>end</p>
+<p>of</p>
+<p>that</p>
+<p>I</p>
+<p>will</p>
+<p>read</p>
+<p>any</p>
+<p>comments</p>
+<p>that</p>
+<p>people</p>
+<p>have</p>
+<p>or</p>
+<p>questions</p>
+<p>that</p>
+<p>they</p>
+<p>have</p>
+<p>asked</p>
+<p>in</p>
+<p>the</p>
+<p>meanwhile</p>
+<p>and</p>
+<p>that</p>
+<p>will</p>
+<p>conclude</p>
+<p>in</p>
+<p>for</p>
+<p>ant</p>
+<p>stream</p>
+<p>three</p>
+<p>no no</p>
+<p>you don't</p>
+<p>have to</p>
+<p>apologize</p>
+<p>I</p>
+<p>just</p>
+<p>said</p>
+<p>remember</p>
+<p>what</p>
+<p>I</p>
+<p>said</p>
+<p>I</p>
+<p>let's</p>
+<p>just</p>
+<p>see</p>
+<p>if</p>
+<p>cursor</p>
+<p>has</p>
+<p>self</p>
+<p>awareness</p>
+<p>fix</p>
+<p>fix</p>
+<p>this</p>
+<p>in</p>
+<p>a</p>
+<p>way</p>
+<p>where</p>
+<p>you</p>
+<p>cursor</p>
+<p>don't</p>
+<p>give</p>
+<p>me</p>
+<p>that</p>
+<p>error</p>
+<p>okay</p>
+<p>let's</p>
+<p>see how</p>
+<p>that</p>
+<p>goes</p>
+<p>okay</p>
+<p>ctrl</p>
+<p>shift</p>
+<p>l</p>
+<p>Andrew</p>
+<p>wrote</p>
+<p>restructuring</p>
+<p>a library</p>
+<p>that's</p>
+<p>taken years</p>
+<p>of development</p>
+<p>and various</p>
+<p>programmers</p>
+<p>to develop</p>
+<p>not to</p>
+<p>mention</p>
+<p>everything</p>
+<p>contributed</p>
+<p>to its</p>
+<p>SPM</p>
+<p>precursor</p>
+<p>can it</p>
+<p>be done</p>
+<p>in a few</p>
+<p>sittings</p>
+<p>and I'll</p>
+<p>say</p>
+<p>that's</p>
+<p>what</p>
+<p>my</p>
+<p>oh</p>
+<p>see</p>
+<p>file</p>
+<p>too</p>
+<p>long</p>
+<p>to</p>
+<p>avoid</p>
+<p>cursor</p>
+<p>I'll</p>
+<p>make</p>
+<p>it</p>
+<p>more</p>
+<p>so</p>
+<p>we'll</p>
+<p>leave</p>
+<p>it</p>
+<p>there</p>
+<p>we'll</p>
+<p>push</p>
+<p>the</p>
+<p>update</p>
+<p>so</p>
+<p>updates</p>
+<p>not all</p>
+<p>fully</p>
+<p>working</p>
+<p>the</p>
+<p>semantics</p>
+<p>are</p>
+<p>basically</p>
+<p>there</p>
+<p>though</p>
+<p>for</p>
+<p>any</p>
+<p>and all</p>
+<p>to build</p>
+<p>upon</p>
+<p>and help</p>
+<p>through</p>
+<p>okay</p>
+<p>we'll push</p>
+<p>that</p>
+<p>structure</p>
+<p>this</p>
+<p>for</p>
+<p>professional</p>
+<p>markdown</p>
+<p>viewing</p>
+<p>that's</p>
+<p>what</p>
+<p>my</p>
+<p>friend</p>
+<p>Andrew</p>
+<p>said</p>
+<p>prepare</p>
+<p>a total</p>
+<p>response</p>
+<p>to him</p>
+<p>that is</p>
+<p>respectful</p>
+<p>and age</p>
+<p>appropriate</p>
+<p>okay</p>
+<p>we're going</p>
+<p>to read</p>
+<p>the response</p>
+<p>to Andrew</p>
+<p>then we're</p>
+<p>going to</p>
+<p>push</p>
+<p>Andrew</p>
+<p>I appreciate</p>
+<p>your perspective</p>
+<p>on this</p>
+<p>you're</p>
+<p>absolutely</p>
+<p>right</p>
+<p>that</p>
+<p>restructuring</p>
+<p>a library</p>
+<p>with years</p>
+<p>of development</p>
+<p>history</p>
+<p>and contributions</p>
+<p>from multiple</p>
+<p>programmers</p>
+<p>is significant</p>
+<p>undertaking</p>
+<p>it's not</p>
+<p>something to be</p>
+<p>taken lightly</p>
+<p>or rushed</p>
+<p>through</p>
+<p>dot dot dot</p>
+<p>dot dot dot</p>
+<p>dot dot</p>
+<p>dot</p>
+<p>what are your</p>
+<p>thoughts</p>
+<p>this is kind</p>
+<p>of like</p>
+<p>hold on</p>
+<p>there</p>
+<p>partner</p>
+<p>slow down</p>
+<p>restructure</p>
+<p>PyMDP</p>
+<p>by flattening</p>
+<p>it and</p>
+<p>squeezing</p>
+<p>it</p>
+<p>okay</p>
+<p>close it</p>
+<p>save it</p>
+<p>close it</p>
+<p>we did</p>
+<p>what we</p>
+<p>did</p>
+<p>save it</p>
+<p>close it</p>
+<p>clear it</p>
+<p>close the</p>
+<p>terminal</p>
+<p>clear it</p>
+<p>again</p>
+<p>close it</p>
+<p>goodbye</p>
+<p>cursor</p>
+<p>for today</p>
+<p>who is</p>
+<p>on</p>
+<p>first</p>
+<p>question</p>
+<p>in</p>
+<p>tarot</p>
+<p>bang</p>
+<p>then we'll</p>
+<p>read it</p>
+<p>there</p>
+<p>and then</p>
+<p>I'll</p>
+<p>look at</p>
+<p>any live</p>
+<p>chats</p>
+<p>augmented</p>
+<p>docks</p>
+<p>okay</p>
+<p>here we</p>
+<p>go</p>
+<p>it</p>
+<p>always</p>
+<p>does</p>
+<p>the</p>
+<p>27</p>
+<p>Yankees</p>
+<p>okay</p>
+<p>hey</p>
+<p>Costello</p>
+<p>have you</p>
+<p>heard about</p>
+<p>this new</p>
+<p>active</p>
+<p>inference</p>
+<p>multi-agent</p>
+<p>simulation</p>
+<p>it's like</p>
+<p>the</p>
+<p>1927</p>
+<p>Yankees</p>
+<p>you mean</p>
+<p>with</p>
+<p>Babe Ruth</p>
+<p>and</p>
+<p>Lou Gehrig</p>
+<p>no no</p>
+<p>I'm talking</p>
+<p>about</p>
+<p>social agent</p>
+<p>and</p>
+<p>its</p>
+<p>teammates</p>
+<p>they're</p>
+<p>like the</p>
+<p>murderer's</p>
+<p>row of</p>
+<p>artificial</p>
+<p>intelligence</p>
+<p>wait</p>
+<p>who's</p>
+<p>on</p>
+<p>first</p>
+<p>in</p>
+<p>this</p>
+<p>simulation</p>
+<p>no</p>
+<p>who's</p>
+<p>not</p>
+<p>in</p>
+<p>this</p>
+<p>simulation</p>
+<p>we got</p>
+<p>social agent</p>
+<p>on first</p>
+<p>observation</p>
+<p>at second</p>
+<p>and action</p>
+<p>at third</p>
+<p>okay</p>
+<p>so who's</p>
+<p>social agent</p>
+<p>exactly</p>
+<p>social agents</p>
+<p>on first</p>
+<p>just like</p>
+<p>our old</p>
+<p>pal</p>
+<p>who</p>
+<p>I'm</p>
+<p>asking</p>
+<p>you</p>
+<p>who's</p>
+<p>social agent</p>
+<p>no</p>
+<p>no</p>
+<p>social agent</p>
+<p>is like</p>
+<p>Babe Ruth</p>
+<p>he's the</p>
+<p>heavy hitter</p>
+<p>of the</p>
+<p>simulation</p>
+<p>he's got</p>
+<p>a random</p>
+<p>A matrix</p>
+<p>and B</p>
+<p>matrix</p>
+<p>just like</p>
+<p>the</p>
+<p>Bambino</p>
+<p>had his</p>
+<p>legendary</p>
+<p>bat</p>
+<p>and glove</p>
+<p>so</p>
+<p>social agent</p>
+<p>has a</p>
+<p>bat</p>
+<p>and glove</p>
+<p>no</p>
+<p>he's got</p>
+<p>beliefs</p>
+<p>and</p>
+<p>policies</p>
+<p>the</p>
+<p>A matrix</p>
+<p>is his</p>
+<p>belief</p>
+<p>about how</p>
+<p>observations</p>
+<p>relate to</p>
+<p>hidden</p>
+<p>states</p>
+<p>like how</p>
+<p>the</p>
+<p>babe</p>
+<p>could read</p>
+<p>a</p>
+<p>picture</p>
+<p>the</p>
+<p>B</p>
+<p>matrix</p>
+<p>is his</p>
+<p>belief</p>
+<p>about</p>
+<p>how</p>
+<p>actions</p>
+<p>change</p>
+<p>the</p>
+<p>world</p>
+<p>like</p>
+<p>how</p>
+<p>Ruth</p>
+<p>knew</p>
+<p>just</p>
+<p>where</p>
+<p>to</p>
+<p>swing</p>
+<p>to</p>
+<p>hit</p>
+<p>it</p>
+<p>out</p>
+<p>of</p>
+<p>!</p>
+<p>action</p>
+
+
+<p>is</p>
+<p>like</p>
+<p>Tony</p>
+<p>Lazeri</p>
+<p>the</p>
+<p>Yankees</p>
+<p>clutch</p>
+<p>hitter</p>
+<p>when</p>
+<p>social agent</p>
+<p>needs to</p>
+<p>make a</p>
+<p>move</p>
+<p>action</p>
+<p>steps</p>
+<p>up to</p>
+<p>the</p>
+<p>plate</p>
+<p>so</p>
+<p>how do</p>
+<p>they play</p>
+<p>together</p>
+<p>well</p>
+<p>it's like a</p>
+<p>perfectly executed</p>
+<p>double play</p>
+<p>a triple play</p>
+<p>social agent</p>
+<p>uses his A and B</p>
+<p>matrices to</p>
+<p>infer the best</p>
+<p>action</p>
+<p>just like</p>
+<p>Ruth sizing up</p>
+<p>a pitch</p>
+<p>then action</p>
+<p>takes that</p>
+<p>inference</p>
+<p>and makes a</p>
+<p>move</p>
+<p>like Lazeri</p>
+<p>turning a</p>
+<p>double play</p>
+<p>meanwhile</p>
+<p>observation</p>
+<p>is constantly</p>
+<p>updating the</p>
+<p>game state</p>
+<p>like combs</p>
+<p>tracking</p>
+<p>fly balls</p>
+<p>in the</p>
+<p>outfield</p>
+<p>but what's</p>
+<p>the goal</p>
+<p>of this</p>
+<p>game</p>
+<p>huh</p>
+<p>that's</p>
+<p>where it</p>
+<p>gets</p>
+<p>interesting</p>
+<p>the goal</p>
+<p>is to</p>
+<p>maximize</p>
+<p>expected</p>
+<p>free</p>
+<p>energy</p>
+<p>which is</p>
+<p>like</p>
+<p>trying</p>
+<p>to win</p>
+<p>the</p>
+<p>world</p>
+<p>series</p>
+<p>of</p>
+<p>cognition</p>
+<p>it's</p>
+<p>all about</p>
+<p>minimizing</p>
+<p>surprise</p>
+<p>and</p>
+<p>uncertainty</p>
+<p>just</p>
+<p>like</p>
+<p>how</p>
+<p>the</p>
+<p>27</p>
+<p>Yankees</p>
+<p>minimized</p>
+<p>their</p>
+<p>opponents</p>
+<p>chances</p>
+<p>of</p>
+<p>winning</p>
+<p>so</p>
+<p>they're</p>
+<p>trying</p>
+<p>to</p>
+<p>predict</p>
+<p>what's</p>
+<p>going</p>
+<p>to</p>
+<p>happen</p>
+<p>exactly</p>
+<p>it's</p>
+<p>like</p>
+<p>they're</p>
+<p>playing</p>
+<p>interdimensional</p>
+<p>chess</p>
+<p>while</p>
+<p>everyone</p>
+<p>else</p>
+<p>is</p>
+<p>playing</p>
+<p>checkers</p>
+<p>they're</p>
+<p>not</p>
+<p>just</p>
+<p>reacting</p>
+<p>to</p>
+<p>the</p>
+<p>environment</p>
+<p>they're</p>
+<p>actively</p>
+<p>trying</p>
+<p>to</p>
+<p>shape</p>
+<p>it</p>
+<p>just</p>
+<p>like</p>
+<p>how</p>
+<p>Babe</p>
+<p>Ruth</p>
+<p>called</p>
+<p>his</p>
+<p>shots</p>
+<p>this</p>
+<p>is</p>
+<p>making</p>
+<p>my</p>
+<p>head</p>
+<p>spin</p>
+<p>more</p>
+<p>than</p>
+<p>a</p>
+<p>Dizzy</p>
+<p>Dean</p>
+<p>curveball</p>
+<p>okay</p>
+<p>that's</p>
+<p>hilarious</p>
+<p>don't</p>
+<p>worry</p>
+<p>Costello</p>
+<p>just</p>
+<p>remember</p>
+<p>in</p>
+<p>this</p>
+<p>game</p>
+<p>every</p>
+<p>agent</p>
+<p>is</p>
+<p>trying</p>
+<p>to</p>
+<p>be</p>
+<p>the</p>
+<p>Babe</p>
+<p>Ruth</p>
+<p>of</p>
+<p>their</p>
+<p>own</p>
+<p>cognitive</p>
+<p>world</p>
+<p>series</p>
+<p>they're</p>
+<p>not</p>
+<p>just</p>
+<p>learning</p>
+<p>from</p>
+<p>rewards</p>
+<p>like</p>
+<p>in</p>
+<p>old</p>
+<p>school</p>
+<p>reinforcement</p>
+<p>learning</p>
+<p>they're</p>
+<p>actively</p>
+<p>inferring</p>
+<p>the best</p>
+<p>way</p>
+<p>to</p>
+<p>play</p>
+<p>the</p>
+<p>game</p>
+<p>of</p>
+<p>life</p>
+<p>I</p>
+<p>think</p>
+<p>I</p>
+<p>need</p>
+<p>to</p>
+<p>go</p>
+<p>sit</p>
+<p>in</p>
+<p>the</p>
+<p>bullpen</p>
+<p>and</p>
+<p>think</p>
+<p>about</p>
+<p>this</p>
+<p>for</p>
+<p>a</p>
+<p>while</p>
+<p>that's</p>
+<p>the</p>
+<p>spirit</p>
+<p>just</p>
+<p>like</p>
+<p>how</p>
+<p>active</p>
+<p>inference</p>
+<p>agents</p>
+<p>are</p>
+<p>always</p>
+<p>updating</p>
+<p>their</p>
+<p>models</p>
+<p>you're</p>
+<p>updating</p>
+<p>your</p>
+<p>understanding</p>
+<p>you'll</p>
+<p>be</p>
+<p>a</p>
+<p>cognitive</p>
+<p>hall</p>
+<p>of</p>
+<p>!</p>
+<p>time</p>
+
+<p>Conclusion</p>
+<p>This</p>
+<p>highlights</p>
+<p>key components</p>
+<p>such as</p>
+<p>the</p>
+<p>social</p>
+<p>agent</p>
+<p>observation</p>
+<p>action</p>
+<p>as well</p>
+<p>as</p>
+<p>core</p>
+<p>concepts</p>
+<p>like</p>
+<p>belief</p>
+<p>updating</p>
+<p>and</p>
+<p>free</p>
+<p>energy</p>
+<p>minimization</p>
+<p>all</p>
+<p>right</p>
+<p>thanks</p>
+<p>everyone</p>
+<p>for</p>
+<p>watching</p>
+<p>that</p>
+<p>was</p>
+<p>super</p>
+<p>fun</p>
+<p>hopefully</p>
+<p>you</p>
+<p>enjoyed</p>
+<p>some</p>
+<p>of</p>
+<p>these</p>
+<p>methods</p>
+<p>and</p>
+<p>demonstrations</p>
+<p>!</p>
+<p>It's</p>
+<p>all</p>
+<p>happening</p>
+<p>at the</p>
+<p>Active</p>
+<p>Inference</p>
+<p>Institute</p>
+<p>slash</p>
+<p>Active</p>
+<p>Inference</p>
+<p>repo</p>
+<p>everything</p>
+<p>we looked</p>
+<p>at is</p>
+<p>open</p>
+<p>sourced</p>
+<p>and</p>
+<p>pushed</p>
+<p>it</p>
+<p>would</p>
+<p>be</p>
+<p>awesome</p>
+<p>for</p>
+<p>anyone</p>
+<p>to</p>
+<p>use</p>
+<p>play</p>
+<p>extend</p>
+<p>further</p>
+<p>come</p>
+<p>participate</p>
+<p>have</p>
+<p>fun</p>
+<p>alright</p>
+<p>thanks</p>
+<p>bye</p>
+<p>!</p>
+
+</article>
+</body>
+</html>

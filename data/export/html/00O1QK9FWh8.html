@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #052.1 ~ Geometric Methods for Sampling, Optimisation, Inference and Adaptive...</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #052.1 ~ Geometric Methods for Sampling, Optimisation, Inference and Adaptive...</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_052 &middot; Episode 1 &middot; Speakers: Geometric Methods for Sampling, Optimisation, Inference, Adaptive... &middot; Duration: 1:58:09 &middot; Views: 247</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=00O1QK9FWh8">https://www.youtube.com/watch?v=00O1QK9FWh8</a></div>
+<article>
+<p>Hello and welcome. It is March 2nd, 2023 and we're here in ActInf Livestream 52.1.</p>
+<p>Welcome to the ActInf Institute. We're a participatory online institute that is</p>
+<p>communicating, learning, and practicing applied active inference. This is a recorded and an</p>
+<p>archived live stream, so please provide us feedback so we can improve our work.</p>
+<p>All backgrounds and perspectives are welcome and we'll be following video etiquette for live</p>
+<p>streams. Head over to activeinference.org to learn more about getting involved in learning groups and</p>
+<p>projects such as live streams. All right, we are in 52.1 and our goal today is to learn and discuss</p>
+<p>this awesome paper, Geometric Methods for Sampling Optimization, Inference, and Adaptive Agents of</p>
+<p>BARP and DaCosta et al. And we're going to just jump right in. Thanks a lot, Lance, for joining.</p>
+<p>And those who have listened to 52.0 will know me. I'm a researcher and a learner with respect to this</p>
+<p>topic. So thanks again for joining and it'll be great to have you introduce yourself and also tell</p>
+<p>a little bit of the story of how this paper came to be. Sure. Thanks, Daniel, for organizing. I mean,</p>
+<p>this is really great and I'm very happy to be here. So my name is Lance DaCosta. Some of you may know me.</p>
+<p>I'm a PhD student both at Imperial College London and UCL, mostly working on active inference and the</p>
+<p>free energy principle, also some probabilistic machine learning. And today we're going to be discussing</p>
+<p>geometric methods for sampling optimization inference and adaptive agents. So how this paper came to be,</p>
+<p>where I happen to know people who do more like statistics, machine learning and so on. And we've</p>
+<p>always been talking about the similarities and differences between what we do in active inference</p>
+<p>and what they do in, you know, sampling optimization, which are kind of the workhorses of statistics and</p>
+<p>machine learning. And at some point we had a paper invitation for the handbook of statistics and we</p>
+<p>decided to, you know, team up and make a review article to see how all these fields are that come from very</p>
+<p>different places scientifically that have very different contributors as well. And we wanted to</p>
+<p>know how they're interconnected and also how they can help each other. Because we realized for all this</p>
+<p>time that we're actually doing similar things, but the communities are very different. They're not very much</p>
+<p>talking to each other. And I think a main barrier is a difference in language, difference in jargon. So that's,</p>
+<p>that was kind of an issue when we, when we started. And so I wanted to put that all, I mean, as much as</p>
+<p>possible in a paper and see how, how these different approaches to, you know, statistics, whether it is</p>
+<p>sampling optimization inference or decision making, how they can benefit from each other and how they relate</p>
+<p>to each other. And, and so long story short, we're, we're going to delve into this into more detail, but long</p>
+<p>story short, if you want to assemble from a distribution, you can also view that as an optimization problem.</p>
+<p>So optimization is kind of a, you can see it as the root of sampling and you want to optimize</p>
+<p>sampling, make sampling as efficient as possible. In France, you can also see it as an optimization of</p>
+<p>beliefs, optimization of probability distributions. That's also an optimization procedure.</p>
+<p>And if you want to do decision making, which is what we do in active inference and reinforcement learning</p>
+<p>and all, many different places, well, do decision making, you actually need optimization and inference.</p>
+<p>And if you want to do decision making efficiently, you often are going to need something as well.</p>
+<p>So decision making an active inference is kind of like what comes at the very end and requires all of the</p>
+<p>sophisticated machinery of sampling inference and optimization in order to work. So this was really</p>
+<p>the idea of the paper. How does optimization come about? How do you do efficient optimization?</p>
+<p>And of course, there's many different ways to do that. So we decided to focus on natural ways and we'll get</p>
+<p>to that. But one way to do optimization that is very natural is through techniques from geometry.</p>
+<p>And so same with sampling. In sampling and inference, you have geometry that just comes up very naturally</p>
+<p>when you want to solve these problems. And so decision making puts it all together. So that was really the</p>
+<p>idea of the paper. Can we put all these fields together and have like a connecting line which is based on</p>
+<p>geometry and geometry and so that's where we did. Awesome. Great overview. So, so many places to jump in.</p>
+<p>I barely even know where to sample from this distribution. Let's just start with sampling though. So</p>
+<p>what is sampling and how is it being used? How has it been used? And let's characterize sampling and then move on to these other fields.</p>
+<p>Right. Well sampling, I mean, the idea of sampling is very simple and it's also a very difficult thing to do.</p>
+<p>So first explain the idea. The idea is, let's say you have a Gaussian in one dimension. So that's very easy to picture.</p>
+<p>Sampling would be, so for example, the Gaussian I just mentioned describes the temperature in the room.</p>
+<p>So in my room, it's maybe currently 18 degrees Celsius plus or minus some variance representing my uncertainty.</p>
+<p>So sampling from the distribution would be saying it is maybe 19 degrees or maybe 17 degrees, you know, drawing a lot of different temperatures so that if you put them all together as a histogram with like their frequency, for example, if you, if you ask me what temperature it is in my room, I would say that there's a higher chance that I say 18 degrees.</p>
+<p>So I would say more often if you ask me this question many times and you know, if you put my answers, if you collect all my answers in a histogram, for example, I'd say 18 degrees more often.</p>
+<p>So that are around 18 degrees would be higher and the other temperatures would be slightly lower.</p>
+<p>And if you aggregate that you would get a Gaussian, get the Gaussian we started with.</p>
+<p>So sampling in other words, and very simply, it's like drawing a data point or an observation from an underlying probability distribution.</p>
+<p>You have a distribution, let's say a Gaussian that represents your most likely value of what the temperature in the room is and some uncertainty.</p>
+<p>And you just want to draw one or several observations from that distribution.</p>
+<p>And you want to draw these observations so as to preserve the overall statistics of the distribution that you started with.</p>
+<p>So that if you draw infinitely many data points or infinitely many observations from the distribution, then you can recover the original distribution.</p>
+<p>So that's what we want to draw.</p>
+<p>So that's what we want to do.</p>
+<p>And so why is this useful in the first place?</p>
+<p>Well, it just happens all the time in the things that you want to compute integrals.</p>
+<p>It just happens all the time.</p>
+<p>So if you want to, for example, if you have a Bayesian inference problem, you have, you know, you observe some data in the world.</p>
+<p>It could be medical data.</p>
+<p>It could be, it could really be anything.</p>
+<p>And you have a prior and a likelihood of observing that data.</p>
+<p>So these are two terms in like Bayes' rule.</p>
+<p>Then you want to know, then if you apply Bayes' rule, you get a posterior belief about what caused that data that you observed.</p>
+<p>So for example, a practical use case would be some medical data of a patient that's sick.</p>
+<p>And you want to know, so you get, for example, you know, it's blood pressure, collection of symptoms and so on.</p>
+<p>So that's your data.</p>
+<p>And you want to know what kind of disease or what kind of malfunction caused that data.</p>
+<p>So let's say typically you would have a model of if I get this, if I have this malfunction of this disease, I would have these symptoms.</p>
+<p>If I have this other disease, I would get these other symptoms.</p>
+<p>And so Bayes' rule enables you to infer in the best way possible the disease that caused the symptoms that you just saw.</p>
+<p>So this is like a common thing.</p>
+<p>I mean, something that people use every day in statistics all the time.</p>
+<p>And arguably, everybody uses it every day because like the kind of the thesis of the Kriang principle or the result that it provides is that you can describe perception of humans as doing Bayes' end inference.</p>
+<p>So Bayes' end inference is a very ubiquitous thing.</p>
+<p>You can describe it to, you can use it to describe perception in humans.</p>
+<p>And you can also use it to do statistics and solve all kinds of problems.</p>
+<p>So coming back to sampling, actually doing Bayes' end inference, you have this problem of, you know, how do you compute the posterior distribution in the first place?</p>
+<p>And it turns out that this distribution is generally intractable because you have kind of a term in the denominator that's very hard to compute.</p>
+<p>And so one way to compute it is to use what's called Monte Carlo methods.</p>
+<p>And Monte Carlo methods are based on sampling.</p>
+<p>So long story short, in order to do Bayes' end inference, you need to compute this like log likelihood term, which is a high dimensional integral.</p>
+<p>And one way to do it is by using Monte Carlo methods.</p>
+<p>And Monte Carlo methods are based on sampling.</p>
+<p>So the sampling enables you to approximate the high dimensional integral they started with.</p>
+<p>So now many listeners or also readers of this work will wonder, well, one thing that people do in the free energy principle and also like kind of like the resonant of the free energy principle is you're actually not going to compute this denominator.</p>
+<p>That's very expensive to the Bayesian inference, but you're going to approximate the posterior by minimizing free energy, which is called variational inference.</p>
+<p>That's another method of doing Bayesian inference.</p>
+<p>And it has many advantages over sampling.</p>
+<p>Sampling also has advantages with respect to variational inference.</p>
+<p>We can get into that.</p>
+<p>But if you say that's what you're thinking, well, this is not necessarily interesting because we can do variational inference.</p>
+<p>There's so many other places where we need sampling in statistics.</p>
+<p>I would say basically anytime you need to compute an integral and integrals are all over the place.</p>
+<p>But I think the Bayesian inference motivation is a nice one because it just speaks to all of us.</p>
+<p>So how does actually sampling getting to the picture of integration?</p>
+<p>Let's say we have an integral that we need to compute.</p>
+<p>An integral is basically, let's say you have a state space.</p>
+<p>So to be very simple, let's say the state space is my desk.</p>
+<p>It would be like a planner surface.</p>
+<p>And we have a function that's defined on the desk.</p>
+<p>So this would be like a landscape over the desk, right?</p>
+<p>Like a 2D surface landscape that could be rugged or whatever.</p>
+<p>The integral of this function is going to be the volume between the landscape and the desk.</p>
+<p>So this is kind of like the geometric picture of what an integral is.</p>
+<p>So this turns out to be very hard to, you know, compute in practice because you have like, let's say you have a very rough surface and it's not clear how to, you know, compute all this volume, which is very irregular.</p>
+<p>What sampling does, it's going to pick a few locations on the desk, as many as you wish.</p>
+<p>So let's start by one and it's going to compute the height, the height under the function and then pick another location and compute that height as well.</p>
+<p>So this sampling is going to pick locations on the desk at random.</p>
+<p>And from there, it's going to build a histogram that's going to approximate the surface that you started with.</p>
+<p>And so a histogram is very simple because you get a whole bunch of skyscrapers, if you wish, to approximate the surface that we started with.</p>
+<p>And computing the volume of skyscrapers is very simple because, you know, they're like, they're like squares.</p>
+<p>You just, it's like depth times height times width.</p>
+<p>It's very simple to compute the volume of those things.</p>
+<p>So this is kind of the idea.</p>
+<p>We want to compute the volume under a rock surface.</p>
+<p>And to do that, we're going to pick arbitrary locations on the, yeah, on the desk, on the face space and build it.</p>
+<p>And at those locations, build like skyscrapers at the height of the surface.</p>
+<p>So you get like a skyline, a histogram that approximates your original function.</p>
+<p>And it's very simple to know the volume of the histogram, the volume of the skyline.</p>
+<p>And so from then, you get an estimate of the integral that you started with.</p>
+<p>So that's kind of like the geometric picture.</p>
+<p>The beauty of this is that it works in arbitrary dimensions.</p>
+<p>And it doesn't suffer from the curse of dimensionality.</p>
+<p>So this is why it's so powerful.</p>
+<p>If you want to know, so there's a formula that tells you how well the volume of your skyline will approximate the volume of,</p>
+<p>the volume that you initially wanted to compute the integral.</p>
+<p>So this is, this difference between the integral and your estimate basically decreases as a function of the number of skyscrapers that you put in.</p>
+<p>The more skyscrapers, the more precise you get.</p>
+<p>And this bound, this bound on the error that you have on your, on your integral that you started with, it doesn't depend on the dimension.</p>
+<p>So as the higher dimension on your state space.</p>
+<p>So let's say, let's imagine I had a higher, high dimensional desk, which is very hard to imagine.</p>
+<p>And I had a function on top of it.</p>
+<p>And I wanted to compute the area under the function.</p>
+<p>The higher, if my desk was very high dimensional, this would be, the higher the dimension, the harder it would be to, you know, solve this problem numerically.</p>
+<p>But with sampling, actually the, the degree of accuracy that you get through sampling would be agnostic to the dimension.</p>
+<p>So this is why it's so, so powerful.</p>
+<p>And, and just used all the time in physics and machine learning.</p>
+<p>When you imagine, you know, practical problems that you have in machine learning, coming back to medical data, you could get a whole bunch of data about a patient, which could be, you know, heart rate over time.</p>
+<p>Blood oxygen levels, blood glucose levels, body temperature, and whatnot.</p>
+<p>There's so many data modalities that you would have.</p>
+<p>So your state space would have many, many dimensions.</p>
+<p>And also the, the state space of the different diseases that could have given rise to, to all these, all these symptoms would be also very high.</p>
+<p>So it could be, it could be that the patient has, you know, fever, or it could be that it has flu.</p>
+<p>I know fever is a symptom.</p>
+<p>It could be that the disease is flu.</p>
+<p>It could be that the disease is tuberculosis.</p>
+<p>It could be that the disease is AIDS.</p>
+<p>You know, there's so many different conditions or problems that one might want to, you know, examine.</p>
+<p>So in this particular case of medical data, and this is just like a very simple use case, I would say.</p>
+<p>You have a very high dimensional state space.</p>
+<p>And to do Bayesian inference, you, you have a very high dimensional integral to estimate.</p>
+<p>And so one way to do that efficiently, or I wouldn't, maybe efficiently is disingenuous because it's just very hard.</p>
+<p>I mean, it's just very computationally intensive to do these things.</p>
+<p>But one way to do this, that's, you know, state of the art is through sampling, just by drawing different points at random on the state space, and approximating the, the, the function landscape, and approximating the integral like that.</p>
+<p>So, yeah, this is really the, why this is so important.</p>
+<p>Awesome.</p>
+<p>So, we've made a sample.</p>
+<p>Where does these topics of accepting or rejecting a move amongst samples or discretizing, how do we pick that next sample?</p>
+<p>And then what does it mean to accept or reject that sample?</p>
+<p>That's a great question.</p>
+<p>This is basically like the, the heart of sampling, you know.</p>
+<p>So, if you, if you knew how to do that in full generality, sampling would be solved, which it isn't.</p>
+<p>So, so I'm going to tell you a bit like where, where things stand.</p>
+<p>So, the, yeah.</p>
+<p>So, to, so to do sampling, you need to pick places at random.</p>
+<p>And you need to pick places at random so as to preserve probability distribution.</p>
+<p>So, coming back to the example of the desk, you want to pick, in, in the case, in that case, you want to pick samples uniformly on the desk.</p>
+<p>If we come back to the previous example of like a Gaussian distribution, you want to pick samples, you know, that, that preserve the Gaussian distribution.</p>
+<p>So, you want to preserve, to take a lot of samples around the mean and very few samples on the tails.</p>
+<p>So, it turns out that for those very simple distributions, like uniform distribution, Gaussian distribution, there, there are ways to sample that do not require, that do not require what, what this paper is, is talking about.</p>
+<p>So, there are ways to sample, you know, exactly, that, that do not lead to any kind of error, and that are very fast.</p>
+<p>So, for Gaussian and uniform, and a bunch of other distributions from the exponential family, you have ways to sample exactly.</p>
+<p>So, the problem is, these distributions, they, they're not there all the time.</p>
+<p>And it turns out that very often, you don't have these kind of very simple distributions.</p>
+<p>Otherwise, we would be done.</p>
+<p>So, one, one simple example, coming back to Bayesian inference, is the idea of Jeffries-Prior.</p>
+<p>So, Jeffries-Prior is, is the idea that you should take the highest entropy prior that's consistent with what you know about the system.</p>
+<p>So, why, why entropy maximizing?</p>
+<p>So, we know that entropy is a measure of the uncertainty present in the distribution.</p>
+<p>And so, what Jeffries-Prior says is that you should take a prior belief about a system, the belief that is maximally uncertain, but that is also compatible with your knowledge.</p>
+<p>So, out of all priors that are compatible with what you know about the system, you would take the one that's most uncertain.</p>
+<p>And this seems pretty intuitive, right?</p>
+<p>So, when you take Jeffries-Prior, what you, what you get is often a distribution that's in the form of what people call a Gibbs measure.</p>
+<p>So, Gibbs measures or Gibbs distributions, they're of the form exponential minus V.</p>
+<p>So, if V, just as an example, if V were like a parabola, a quadratic function, then the associated Gibbs distribution is a Gaussian.</p>
+<p>So, we all know what Gaussians are, right?</p>
+<p>But V could be pretty much anything.</p>
+<p>If you take V to be like X to the power of 4 minus X to the power of 2, then V is kind of like a camel, but upside down.</p>
+<p>So, you know, it has like two humps.</p>
+<p>And therefore, the exponential minus V distribution, the Gibbs measure, would be like a Gaussian but with two humps.</p>
+<p>So, these Gibbs measures, they just arrive, they're just there like everywhere and they come up all the time.</p>
+<p>So, one example, one other example is in statistical mechanics.</p>
+<p>So, let's say you have like a system of molecules that just interact with each other and these systems of molecules, they could also be subject to, you know, thermal fluctuations and whatnot.</p>
+<p>This system is going to relax to what people call a steady state, often a non-equilibrium steady state.</p>
+<p>These steady states, which is kind of like the end configuration of the system, is in general a Gibbs measure.</p>
+<p>So, yeah, so now you can see that in statistical mechanics and also in statistics, Gibbs measures come up also in, you know, Bayesian inference.</p>
+<p>And it's very hard in general to sample from a Gibbs measure.</p>
+<p>I mean, there's ways to do it and we're going to come back to it.</p>
+<p>But, you know, we need to solve this problem.</p>
+<p>It's a very important problem.</p>
+<p>And so, when, you know, the most common way to solve from this distribution is what's called Markov chain Monte Carlo.</p>
+<p>And so, the idea is to run a Markov chain, so to run like a stochastic process and you could think of it as a stimulating, you know, molecule that interact with each other with some thermal fluctuations and that are going to relax to this Gibbs distribution, this steady state that you originally specified.</p>
+<p>So, coming back to the original examples, the steady state could be like a Gaussian that I want to sample from.</p>
+<p>Coming back to the example of the desk, it could be the uniform distribution on the desk that we want to sample from.</p>
+<p>It could also be a Gibbs measure.</p>
+<p>So, once we know the distribution that we want to sample from, we're going to run, we're going to design a stochastic process, some kind of random motion, that's whose distribution is going to converge to the target distribution.</p>
+<p>So, as you run the process, think of it as running, you know, simulating those molecules that interact and that converge to your target.</p>
+<p>Yeah, so you're just going to like simulate that.</p>
+<p>And once your system has converged to steady state, which is the target distribution, then each movement on the steady state density is going to give you a new sample.</p>
+<p>So, just for intuition, let's come back to the desk and say that we have, you know, this uniform measure, uniform distribution on the desk that we want to sample from.</p>
+<p>So, we're going to design like a dynamic that moves, you know, randomly around.</p>
+<p>And that's going to converge to the uniform distribution, which means that if you run it long enough, it's just going to sample everywhere on the desk and it's going to sample each point equally often.</p>
+<p>And so, you're just going to run this dynamic for a very long time.</p>
+<p>And then you're going to collect the samples.</p>
+<p>Collect the samples and use them to approximate the integral that you started with.</p>
+<p>So, this is how sampling is done.</p>
+<p>Now, there's two, there's, yeah, basically one big question, one big outstanding question is how do you choose this dynamic?</p>
+<p>How do you choose this random motion to converge to your target distribution, to sample from the distribution?</p>
+<p>So, given a target distribution, there's like a closed form formulas for all the possible choices of processes that you can use to sample from them.</p>
+<p>So, that's a closed problem.</p>
+<p>And that's also explained in the paper.</p>
+<p>But then, out of all of these processes, you would like to know which one is going to sample the most efficiently.</p>
+<p>And you also want to know, and second of all, a lot of the analysis of stochastic processes is done in continuous time.</p>
+<p>So, you know that if you implement this process, it's going to converge at this rate to the target distribution.</p>
+<p>And so, the faster it converges, the better.</p>
+<p>But it could be that when you simulate this on a computer, in a computer, you can only, you know, have like discrete time steps or like discrete operations in discrete time.</p>
+<p>So, you cannot really simulate this dynamic in continuous time.</p>
+<p>So, every time you simulate it, it's going to introduce some error.</p>
+<p>Now, it could be that the thing that you simulate on your computer actually goes a lot slower than the original process that you wanted to simulate.</p>
+<p>So, there's these two questions.</p>
+<p>How do you take a process that, you know, samples very efficiently, converges very fast to your target?</p>
+<p>But in addition to that, how do you stimulate the process accurately on your computer so as to retain all the important characteristics of that process?</p>
+<p>So, there's many different criteria.</p>
+<p>And this is what we discuss essentially.</p>
+<p>One method that's state of the art or among the state of the art is called Hamiltonian Monte Carlo.</p>
+<p>Now, Hamiltonian Monte Carlo, without getting into too much detail,</p>
+<p>it takes, it has two advantages.</p>
+<p>The first advantage is that it can be analyzed using mathematical methods.</p>
+<p>So, you can get guarantees based on your target distribution.</p>
+<p>You can get guarantees of how fast you're going to converge, how accurate your samples are going to be and so on.</p>
+<p>It has also many other desirable properties.</p>
+<p>So, one of them, which we discuss a lot in the paper, is the importance of being irreversible.</p>
+<p>So, irreversible means, being irreversible means that if you run the process forward in time,</p>
+<p>or if, and so let's say, let's say you run the process forward in time for like 10 seconds.</p>
+<p>Let's say you run the process backward in time.</p>
+<p>So, you kind of like run the process backward.</p>
+<p>You just like take a movie and play backward and look at how the process behaves.</p>
+<p>Now, a process is reversible if the forward and the backward movies are statistically indistinguishable.</p>
+<p>And a process is irreversible if you run the time, if you run time as time goes forward,</p>
+<p>if you run time forward, it would look statistically different from if you run the process backward.</p>
+<p>So, there's some, yeah, I think that you can kind of like picture what irreversibility is.</p>
+<p>Now, irreversibility is crucial to do efficient sampling because if you're reversible,</p>
+<p>it means that you're going to backtrack very often.</p>
+<p>When you're sampling positions on the desk, say, you're going to start somewhere and go somewhere else,</p>
+<p>and then there's a non-trivial chance, significant chance that you're going to come back to where you started.</p>
+<p>So, they're going to be very slow to explore all the desk and, you know, build skyscrapers everywhere.</p>
+<p>So, then sampling turns out to be very slow.</p>
+<p>Now, when you're irreversible, there's way less chances that you just come back to where you started.</p>
+<p>So, you're going to like explore the desk a lot faster because you're not allowed to come back to the same place so much.</p>
+<p>And so, you're going to sample faster and it's going to be much more efficient.</p>
+<p>So, it's actually by going from a reversible process for sampling to an irreversible process,</p>
+<p>you can gain like orders and orders of magnitude efficiency.</p>
+<p>It's actually like pretty, pretty crazy.</p>
+<p>So, Hamiltonian Monte Carlo has guarantees, is irreversible.</p>
+<p>It has other desirable properties.</p>
+<p>And the main one is that you can actually stimulate it on your computer in a way that the discretized version,</p>
+<p>what you actually simulate on the computer, is going to be very close to the true Hamiltonian Monte Carlo that you get,</p>
+<p>you know, by writing the equation down.</p>
+<p>So, this is like why it's so big and, you know, why people use it.</p>
+<p>So, yeah, I think this is pretty much it.</p>
+<p>Oh, yeah.</p>
+<p>So, Hamiltonian Monte Carlo has an accept-reject step, which is, so coming back to when you simulate a process on your computer,</p>
+<p>every time you, you know, discretize a process, you introduce some error.</p>
+<p>Now, you want to make that discretization error as small as possible</p>
+<p>so that you're, so that the process that you actually simulate on your computer is very close to, to what you want to simulate.</p>
+<p>So, Hamiltonian Monte Carlo has a very, a step, a step, a very important step called Metropolis Hastings,</p>
+<p>which, which, which is going to say, am I, should I keep this sample or should I, you know, drop this sample and go to the next sample?</p>
+<p>And by, by using Metropolis Hastings, it's a, it's a very clever, clever, but also simple procedure.</p>
+<p>By using Metropolis Hastings, you guarantee that the distribution that you're going to sample is exactly the same as the distribution that you want to sample.</p>
+<p>So, just to, just to put in other, maybe simpler terms, simpler terms.</p>
+<p>So, you have this process that you want to simulate.</p>
+<p>This process is going to simulate, is going to sample your target distribution.</p>
+<p>Now, it could be that when you discretize the process, because the discretized process is different,</p>
+<p>you're going to sample from a different, a slightly different distribution.</p>
+<p>Now, by using Metropolis Hastings, you're going to guarantee that this distribution that you sample from in practice is exactly the same as what you really want to sample from.</p>
+<p>And so, that's very important because it, it just tells you that, um, asymptotically, um, as, as the number of samples just grows to infinity,</p>
+<p>you're going to recover exactly what you wanted to recover, which is the high dimensional integral.</p>
+<p>Awesome.</p>
+<p>Awesome.</p>
+<p>I remember the Metropolis Hastings and the Monte Carlo Markov chains in phylogenetics,</p>
+<p>where you might have many, many species and many, many locations in the genome that you're doing phylogenetic inference over,</p>
+<p>and you just sample, sample, sample.</p>
+<p>And so, all these techniques help accelerate what's possible with any given computational hardware.</p>
+<p>So, how would you bring this towards adaptive agents?</p>
+<p>Are we thinking about this sampling process as being guided by an adaptive agent?</p>
+<p>And, or are we sampling distributions about an adaptive agent?</p>
+<p>That, that's, you know, a great question.</p>
+<p>And I think it sort of brings us to the conclusion of this work is you can, so in order to have adaptive agents and you scale adaptive agents so, so that they're able to solve complex problems and you're able to implement them with like finite computational resources.</p>
+<p>One useful tool is sampling and we'll see many different places where sampling can be used and has been used in active inference.</p>
+<p>One useful tool is sampling and you can use sampling and you can use sampling and you can use sampling and you can use sampling and sampling and sampling.</p>
+<p>And that's basically what you said.</p>
+<p>Sampling is at the, at the heart of, at the heart of sampling is, you know, choosing data points intelligently.</p>
+<p>So as to approximate your, your integral or whatever it is that you want to do with those samples.</p>
+<p>So you can think of, um, adaptive agents as solving the sampling problem.</p>
+<p>You can think of an active inference agent.</p>
+<p>When, when you have, let's say that you have a problem of sampling, you can think of an agent, an active inference agent, that's going to choose, oh, I'm going to sample.</p>
+<p>Here and I'm going to sample here and I'm going to sample here.</p>
+<p>So active inference agents in, in the proper sense of the word, they do sampling all the time.</p>
+<p>Um, the only, I would say slight difference with what we've just discussed is that active inference agents, they sample observations so that they're, they comply with their preferences.</p>
+<p>And they, uh, observations that also bring them new information about the world.</p>
+<p>So the, the objective that active inference agents use to, to select new samples is the expected free energy.</p>
+<p>The expected free energy.</p>
+<p>So typically, um, we select actions or, or policies that have the lowest expected free energy, which means that the resulting observations will be, uh, close to your preferences or goal.</p>
+<p>And also bring you new information about the world.</p>
+<p>Um, but you could also con conceivably think of an agent as, you know, uh, selecting actions so that the resulting samples or observations accurately sample distribution.</p>
+<p>Um, so how could sampling be used in the context of active inference and, um, adaptive agents.</p>
+<p>And so this is actually a great slide.</p>
+<p>Um, because, so if you, if you look at the upper panel, um, is, is what we, what I just discussed.</p>
+<p>So in, in the first equation, uh, that's up there, you see that the sequence of actions that you choose in active inference is the one that minimizes this minus log T, this probability distribution over action sequences.</p>
+<p>So this minus log T is actually the expected free energy.</p>
+<p>So we choose action sequences that minimize expected free energy.</p>
+<p>Um, as you see on the equation, just below the expected free energy is a sum of risk and ambiguity.</p>
+<p>So you're going to choose, uh, action sequences that minimize risk, but that also minimize ambiguity about the world.</p>
+<p>And in other words, as shown below, you're going to choose action sequences that maximize extrinsic value.</p>
+<p>So you could think of that as expected reward, intrinsic value.</p>
+<p>So that would be, uh, expected information gain, um, value that's intrinsic because you're getting information.</p>
+<p>Um, so the, really the, the key here is that this expected free energy, it's given as, as it name suggests, it's given by an expectation.</p>
+<p>Uh, so you see this minus log P on the left equals expectation of something.</p>
+<p>Now, when you have a very big gentle model, a very big world model, um, which is going to be the case all the time.</p>
+<p>So, um, when you have, um, um, when you have like, um, um, a real world application or a complex application, because the world around us is so high dimensional, so complex.</p>
+<p>Um, well, the expected free energy, then it's going to be a high dimensional expectation.</p>
+<p>What is an expectation?</p>
+<p>It's an integral with respect to probability distribution.</p>
+<p>So, um, the, the point that I, I, I want to get to is that to do decision-making, you need to evaluate the expected free energy, uh, different action sequences.</p>
+<p>And this expected free energy is an expectation with respect to probability distribution.</p>
+<p>Um, it's a very high dimensional, uh, integration problem, very high dimensional integration, uh, expectation.</p>
+<p>And so how do you approximate that while you use sampling?</p>
+<p>And I think the, the first work that actually used that in the first, uh, in the context of active inference is the work by, uh, Funtas et al.</p>
+<p>Uh, 2020 of, um, it, I think it's called scaling active inference with Monte Carlo method.</p>
+<p>Uh, yeah, Funtas with F O U, um, um,</p>
+<p>Yeah, F O U N. Um, yeah, scaling active inference with Monte Carlo methods.</p>
+<p>So this is what they did.</p>
+<p>They, um, and I think it was published in Eurits.</p>
+<p>Um, so very big machine learning conference.</p>
+<p>And, you know, their observation was, okay, well, we have this, um, active inference method, which theoretically, uh, is very powerful.</p>
+<p>I mean, in the sense that you have this expected free energy objectives that puts a lot of, um, known constructs together.</p>
+<p>Uh, so, you know, the expected free energy as shown in, in figure three here puts together this risk.</p>
+<p>So this is the divergence between your predicted distribution of where you're going to be in the world and your target distribution of where you want to be in the world.</p>
+<p>And it has this ambiguity term as well, uh, which has some nice links with, um, phenomena in psychology, like, uh, the streetlight effect.</p>
+<p>So when you minimize, when you choose actions that minimize ambiguity, you can recover phenomenology that's known in psychology, like the streetlight effect or the drunkard search.</p>
+<p>Um, risk is also an objective that's used in engineering, um, in, in control as inference.</p>
+<p>So you can see it on, on the left panel.</p>
+<p>Uh, so, uh, there are a few methods for, you know, doing adaptive agents that use this scale term.</p>
+<p>One would be contrast inference, uh, which is also known as maximum entropy reinforcement learning and KL control.</p>
+<p>And also, I think, although it needs to be investigated further, um, it hasn't been formally, I think so far, but with the, the KL term there, you can recover, uh, predictions that are made by prospect theory, which is a big theory from, uh, the end of the 20th century about decision making in human agents.</p>
+<p>Um, so this is, um, um, so this is, I think, um, worthwhile to look into further, but, um, I think there's some very clear links between that theory and, and the scale term in the expected free energy.</p>
+<p>Anyway, um, so you have this expected free energy objective.</p>
+<p>That's very powerful, has a lot of, puts a lot of things together.</p>
+<p>So I think theoretically, it's very nice.</p>
+<p>Um, in, in the last line of the upper panel, you can also see that you can view expected free energy as weighing expected reward and expected information gain.</p>
+<p>So extrinsic value, intrinsic value, and extrinsic value it's used, um, you know, in expected utility theory, based in decision theory, RL, optimal control.</p>
+<p>So these are all like equivalent names, uh, for maximizing this extrinsic value.</p>
+<p>And intrinsic value expected information gain.</p>
+<p>It's also used in many different places.</p>
+<p>Um, and, uh, in, for example, in Bayesian experimental design, which is, um, in statistics, it was a seminal paper by Lindy in 1956.</p>
+<p>And Lindy basically said, okay, well, suppose that you, you can do two experiments, um, or many different experiments.</p>
+<p>How, how should you choose between them?</p>
+<p>What's the best experiment that, that you should do?</p>
+<p>And the answer that he came up with is you should use, uh, you should do the experiment that gives you the most information about the world.</p>
+<p>And so you have to keep in mind that in, in that paper, there was no like extrinsic goal.</p>
+<p>It was not like, we're going to do an experiment to, you know, solve this problem or, or, uh, achieve this results.</p>
+<p>It was only, um, doing an experiment for the sake of it.</p>
+<p>And so he came to the conclusion that the best experiment was the one that maximized expected information gain.</p>
+<p>Now, suppose that you have a goal in mind, uh, target, um, target result or, or whatnot.</p>
+<p>Then you would weigh reasonably.</p>
+<p>And one thing you could do is weigh the expected information gain with your expected reward or expected utility, or expected how close you're going to get to your goal.</p>
+<p>And so this is exactly what the expected free energy does.</p>
+<p>It puts these two, uh, things on the same footing.</p>
+<p>Um, so, so you have this expected free energy, which is very nice and which is, you know, uh, what active inference brings to the table.</p>
+<p>And what Funtas et al did in their paper is okay.</p>
+<p>Well, we have this cool method active inference.</p>
+<p>Let's use it to solve non-trivial, uh, machine learning slash reinforcement learning problems.</p>
+<p>Um, and so when you, when you actually want to solve those problems, you have some high dimensional generative models, high dimensional state spaces that just come up and you need to sampling, uh, to evaluate, um, to approximate the expected free energy.</p>
+<p>So this is what they did.</p>
+<p>And they also put together a lot of other cool tricks, uh, based on neural networks and so on.</p>
+<p>Um, so a very cool paper totally recommend, but I think the, the point it suggests, and this is also the point that we make, uh, although in a very different way in this paper is that to actually do decision-making efficiently in practice efficiently, but also you want to do.</p>
+<p>Take good decisions.</p>
+<p>Um, you actually need sampling.</p>
+<p>Um, and, and this is not a new point, by the way.</p>
+<p>Um, I think it's many people would agree with this.</p>
+<p>Um, but I think the, the active inference approach is nice because you have this, um, explicit characterization of expected PNG as an expectation of something.</p>
+<p>So then becomes pretty clear that you want to do sampling because this is what sampling is made for.</p>
+<p>Um, and this is not a new point, by the way.</p>
+<p>Um, and this is not a new point, by the way.</p>
+<p>Um, I think it's many people would agree with this.</p>
+<p>Um, so I initially introduced sampling as, you know, wanting to approximate integrals, but expectations are integrals.</p>
+<p>Um, so yeah, sampling is really what you want.</p>
+<p>It just comes up like extremely directly, uh, when you want to do these kinds of things.</p>
+<p>Awesome.</p>
+<p>Thanks.</p>
+<p>And, and one sensory example of information driven sampling is the eye saccade, the movement of the eyes, which also has been modeled in many works from the active inference perspective.</p>
+<p>And it's even below our level of conscious awareness with the eyes darting around to reduce their uncertainty, such that our visual generative model can have high resolution and color throughout the visual field.</p>
+<p>Even though that doesn't reflect the anatomy of the retina, which has a blind spot and differential resolution and color detection in the periphery.</p>
+<p>So I kind of see that as slam dunk evidence that our visual experience and by extension, other sensory modalities are coming from the generative model.</p>
+<p>They're not just received and processed in an inward bound fashion.</p>
+<p>And that adaptive sampling is vital to maintain the coherence of that generative model.</p>
+<p>Absolutely.</p>
+<p>Absolutely.</p>
+<p>Absolutely.</p>
+<p>You want to do adaptive sampling in order to preserve, preserve the structure.</p>
+<p>I mean, you have this beautiful structure in the expected free energy of expected information gain.</p>
+<p>Um, so let's say we're just like wanting, we're just like looking at stuff.</p>
+<p>So we don't have, we don't have any direct goal.</p>
+<p>The expected free energy reduces to expected information gain or, you know, approximates that.</p>
+<p>And you just want to sample.</p>
+<p>You sampling is the key to approximate, you know, this expected information gain term while preserving the statistics of the generative model.</p>
+<p>So it's very, um, you're very central to scaling active inference.</p>
+<p>I wouldn't say, I wouldn't say it's central to active inference proper, just the theory.</p>
+<p>Um, because in the theory, you get these expectations and, and you know how to select actions.</p>
+<p>But anytime you want to scale active inference, deploy active inference to solve a problem, you want to, I mean, sampling is going to come into play inevitably.</p>
+<p>Um, and if, yeah, yeah, I mean, there's, there's other ways to, to scale active inference.</p>
+<p>Um, one other way could be, uh, what's called amortizing, uh, amortization.</p>
+<p>So with deep neural networks.</p>
+<p>So one thing you could do is train a neural network to predict the expected free energy based on your genitive model and your sensory data.</p>
+<p>Um, but this amortization procedure as does any training of neural networks, it's going to require a lot of data.</p>
+<p>So it's going to be slow.</p>
+<p>It's not something that you can deploy right away.</p>
+<p>Um, so this is a very nice way of, I mean, amortization should, is a very nice way of doing things, but it's not something that, um, you can use like the first time you use active inference to solve a new task.</p>
+<p>So, um, a nice way of, you know, scaling active inference and it's not the only way, or it's not going to solve all the problems, but it would be to, um, use sampling to approximate the expected free energy to make decisions in real time.</p>
+<p>And as you accumulate data, then you can train the neural network to predict the expected free energy.</p>
+<p>I think this is exactly what Funtas et al. did in their paper, by the way.</p>
+<p>So, so if you're interested, make sure to check it out.</p>
+<p>Figure three, it's something that one can just look at for so long because the imperative, what is being utilized in action selection by an active inference agent is something like a generalization of all the words that we see written lower.</p>
+<p>And unless we knew about that generalization or that unified imperative, it seems like these are quite literally orthogonal or disparate from each other.</p>
+<p>I mean, what could be more different than maximum information gain oriented strategies and maximum reward driven strategies.</p>
+<p>And sometimes to get both those flavors in the same model, people might try to coerce one into the other.</p>
+<p>Usually we see that in terms of a novelty bonus or an exploratory impulse bolted on to a reward or a pragmatic value driven agent.</p>
+<p>And so once you start modifying the models and just adding in these arbitrarily constructed components, you may get adaptive behavior.</p>
+<p>It's never been a claim in the active space that other models don't have efficacy.</p>
+<p>Rather that by thinking about all of these special cases as being situationally arising from a more general imperative with expected free energy for future oriented policy selection.</p>
+<p>We might gain the ability to do what?</p>
+<p>What will we gain conceptually or in practice by taking situations where today people are using maybe just one of these terms as an imperative for what their models are doing?</p>
+<p>And what do we gain or what might we expect from potentially generalizing those imperatives?</p>
+<p>You know, that's a brilliant and very difficult question.</p>
+<p>It's also a question that I would say everybody in active inference gets asked at some point.</p>
+<p>Because people, let's say people doing reinforcement learning, they they use many different objectives that would be tailored to solving one particular task or a different task.</p>
+<p>And they would have these ad hoc novelty bonuses that would work very well in certain tasks.</p>
+<p>And so it's a different approach.</p>
+<p>The this this approach that I was just mentioning with reinforcement learning, it tends to be it's much more bottom up.</p>
+<p>It's it's like we want to have an agent that still solve this problem, makes this work and so on.</p>
+<p>So we're going to, you know, build, start building and test it until it works.</p>
+<p>So the active inference approach is top down.</p>
+<p>So it's, you know, it starts from the free energy principle and it's very theoretical and the approach is like, OK, well, let's model how an agent interacts with its environment, the most generic kind of agent.</p>
+<p>And let's impose constraints that an agent has to satisfy.</p>
+<p>So the basic constraint that we have in this paper is that you have three sets of variables.</p>
+<p>You have variables in the external world that you cannot directly have access to.</p>
+<p>So this would be maybe the temperature in the room.</p>
+<p>Then you have sensory variables or observations.</p>
+<p>So by the way, the environmental variables that are denoted as S.</p>
+<p>The sensory observations are the other way or the observations that are denoted as O.</p>
+<p>So this is what's what belongs to the world.</p>
+<p>And you have direct access to.</p>
+<p>This would be like your sensations, what you see and so on.</p>
+<p>And then you have the actions denoted in the paper by A, which is basically what you can do.</p>
+<p>And that I mean the different things, the different options that you can choose from at any point in time.</p>
+<p>And this is what will enable you to influence the world S and influence your observations O.</p>
+<p>So we start from a very generic model of an agent and how it interacts with the world.</p>
+<p>These three sets of variables that evolve in time and just by adding a few other, I would say constraints that agents satisfy or intelligent agents hopefully satisfy.</p>
+<p>You get that these agents can be described as minimizing as taking decisions that minimize expected free energy.</p>
+<p>So the expected free energy just comes up from this general theory of how agents behave.</p>
+<p>So to answer your question, what does this actually bring in practice?</p>
+<p>Well, first of all, there's many methods out there that are similar to active inference.</p>
+<p>In some cases, they're almost the same.</p>
+<p>The first difference is, which is not necessarily an advantage or a disadvantage, but it's the approach.</p>
+<p>These are the methods that you see out there that come very close to active inference.</p>
+<p>They have been designed from a bottom up approach of like, we want to model this system or we want to solve this task.</p>
+<p>So we're going to add all the components that are needed until our agent does what we want it to do.</p>
+<p>And it turns out that sometimes all these ingredients turn out to be exactly what we get in active inference or very similar.</p>
+<p>Other times, maybe the task would be simpler and you would get less ingredients.</p>
+<p>And the disadvantage of that, I would say, is that it can turn out to be very messy.</p>
+<p>So you get a new task or a new thing to model, maybe a new paradigm that some subject would do.</p>
+<p>And you end up using a very different model, a very different objective to describe the behavior at hand.</p>
+<p>So it's not very, you know, it's harder to have like a unified perspective of what's going on.</p>
+<p>Active inference, I would say the key contribution is that you get this unified perspective from it.</p>
+<p>You get this objective that puts together a lot of other constructs that we know and love and put them together.</p>
+<p>And you know that with this objective, you can do a lot of things, which is, for example, decision making.</p>
+<p>That way is exploration and expectation.</p>
+<p>Now, there's there are some challenges with active inference and anybody using active inference would be familiar with them.</p>
+<p>The first one is the scaling up.</p>
+<p>Because you have this approach active inference, which is so complex in a way.</p>
+<p>I mean, you need to have a giant model of the world.</p>
+<p>You need to have to be able to compute all these expectations.</p>
+<p>No, first of all, you need to be able to compute all these posterior distributions using Bayes rule or variational inference.</p>
+<p>Then once you have those posterior or approximate posterior distributions based on your high dimensional model of the world,</p>
+<p>then you need to compute some expectations, very high dimensional expectations using sampling or whatnot to then get the expected free energy.</p>
+<p>So expected free energy doesn't come up for free.</p>
+<p>It's actually a very, I would say it's quite sophisticated.</p>
+<p>It's a quite sophisticated thing.</p>
+<p>I mean, it puts all these things together, but it doesn't come for free.</p>
+<p>It's hard to implement on a practical problem that's non-trivial beyond toy simulations.</p>
+<p>And people have done it, but it's a challenge.</p>
+<p>So the problem that active inference has is, okay, well, we have this nice theory.</p>
+<p>We have this very nice objective that theoretically works very well.</p>
+<p>And theoretically it's like, or it's similar to what you would like to have for any kind of, yeah, any kind of agenda.</p>
+<p>But we need to find ways of scaling this up.</p>
+<p>And so here comes, here comes like, kind of like the beauty of this is that in scaling up active inference, you're going to use sampling.</p>
+<p>You're going to use techniques from optimization from inference.</p>
+<p>And so you're going to get something that's slightly different from the active inference scheme that you started with.</p>
+<p>So you had the active inference scheme proper, which was in the picture in the previous slide.</p>
+<p>And so, you know, this is active inference as you would like to implement it if you could.</p>
+<p>But because the problem is complicated and you have a high dimensional state space and so on, you have many things that are computationally intensive.</p>
+<p>You're going to use sampling, you're going to use optimization, you're going to use inference.</p>
+<p>And so you're going to get something, an active inference algorithm that scales, but that's slightly different from what you started because it has all these other steps.</p>
+<p>Now, in doing so, the active inference agent becomes engineered.</p>
+<p>So it becomes closer to this reinforcement learning and bottom up agents that are built in a bottom up way to solve certain tasks, you know, because you want to engineer the active inference algorithm to be able to work to solve a certain problem, to scale it in a certain way.</p>
+<p>So in doing so, active inference becomes closer to reinforcement learning.</p>
+<p>Now, conversely, in reinforcement learning, people, the amount of compute is increasing.</p>
+<p>People want to, you know, build reinforcement learning agents that are increasingly learned in an unsupervised manner, just because this scales better.</p>
+<p>I mean, you can't, you can't always, you know, design all the components of your reinforcement learning agent to solve any single task.</p>
+<p>It's just too impractical.</p>
+<p>And especially when tasks become more and more complicated.</p>
+<p>You just would like general solutions that, you know, are going to work and are going to handle a lot of different types of situations.</p>
+<p>So reinforcement learning is adding or subtracting ingredients to their algorithms.</p>
+<p>All these algorithms are evolving.</p>
+<p>But in some sense, you can see this is debatable, I suppose, but you can see a general tendency towards moving to world models and generative models, moving to intrinsic motivation, which is another word for expected information gain or</p>
+<p>or variance thereof.</p>
+<p>And intrinsic motivation or intrinsic value that's added on to extrinsic value, which is your expected reward.</p>
+<p>So you see many, I mean, I think we're seeing reinforcement learning evolve in a direction also that is closer to active inference because, yeah, because everybody wants algorithms that solve different tasks and not to have to change the algorithms for, you know, changing environments and so on.</p>
+<p>So in my view, even though we started with two different approaches, a bottom up approach and a top down approach, these are converging.</p>
+<p>Now, the to come back to the contribution of active inference.</p>
+<p>So if one reads through the paper and one looks at the derivation of active inference, the point is that it's very agnostic.</p>
+<p>It's agnostic to the environment that we're in.</p>
+<p>It's agnostic to many things.</p>
+<p>So it's very, very general.</p>
+<p>And so if you take many practical reinforcement learning agents, you will see that they interact with their environment in a way that's compatible with the assumptions of the free energy principle.</p>
+<p>In other words, the reinforcement learning agents can be recast as specific active inference agents with specific giant models.</p>
+<p>models.</p>
+<p>So this is really the key thing.</p>
+<p>So this is really the key thing.</p>
+<p>It's this unifying perspective.</p>
+<p>I'm not saying it unifies everything, but I'm saying that many different reinforcement learning algorithms can be recast as active inference agents.</p>
+<p>And so this is not to say that the active inference implementation of those reinforcement algorithms is going to be better, but it's more like it's more like a theoretical contribution of like this set of equations given by the expected free energy is a complete recipe or almost complete recipe to generate adaptive agents.</p>
+<p>So in some sense, you don't have to go any further than that.</p>
+<p>And so you can view all these reinforcement learning algorithms that comply with the assumptions.</p>
+<p>So that can be recast as active inference algorithms as ways of scaling and making of scaling active inference and making active inference work.</p>
+<p>So it's not like I don't see any, you know, any kind of conflict between active inference and reinforcement learning, but it's more like the reinforcement learning algorithms.</p>
+<p>The reinforcement learning algorithms that work well and that can be recast as active inference algorithms.</p>
+<p>And there are many, I mean, there, I would say more than more algorithms that can be recast that algorithm that cannot.</p>
+<p>When you look at the assumptions of the free energy principle that are super generic.</p>
+<p>So you can view all these algorithms as specific implementations of active inference in a way that active inference is meant to scale well.</p>
+<p>So this is kind of like the thing.</p>
+<p>And so I think ultimately, again, these two fields are going to converge, but I do not see any tension between them.</p>
+<p>It's more like the tools from one can be used in the other.</p>
+<p>And, and, and, and yeah, I see, I mean, I see great work going forward.</p>
+<p>And this is kind of like what we want to do with this paper, you know, put this active inference where it comes from very succinctly.</p>
+<p>And also, you know, make it accessible for people who don't know the jargon from the free energy principle and active reference community.</p>
+<p>And yeah, see, see how, I mean, the exciting developments that, that will follow.</p>
+<p>Wow. Great comments. Two things that, that reflects to me, the constraints that you mentioned, which we sometimes call the particular partition, essentially cleaving the particle, which you show in figure two cleaving the particle from the environment.</p>
+<p>And this is something that's widely applied in agent based modeling.</p>
+<p>Just anytime you're talking about some field of action and a player, we're basically at least qualitatively within the space of partitioning agents from environments.</p>
+<p>And then further saying, well, there's no edge between the internal and the external states.</p>
+<p>So there's no telepathy and there's no telekinesis and incoming information.</p>
+<p>We're going to call sense outgoing.</p>
+<p>We're going to call action.</p>
+<p>We're going to call action.</p>
+<p>That qualitatively and formally is basically consistent with almost any cybernetic formulation of adaptive action.</p>
+<p>So the constraints are really quite minimal and seemingly being generalized year after year with the work so many colleagues are involved in.</p>
+<p>So the constraints are not onerous.</p>
+<p>onerous. And I think it's a really interesting question, which reinforcement learnings are</p>
+<p>compatible. And then coming from the other side, in a lot of active modeling contexts,</p>
+<p>we find ourselves sometimes proposing like auxiliary variables. Like let's just do a</p>
+<p>parameter sweep over this. And then we'll look back to the textbook or to the paper. We think,</p>
+<p>where was that in expected free energy? We just proposed this random thing. Where was that in</p>
+<p>the equation? Or we'll look at step-by-step guide to active inference, where it's all written in terms</p>
+<p>of matrices. It's all very, read it like a sentence. And all of a sudden it's like, wait,</p>
+<p>A could be a neural network. It doesn't just have to be a matrix. So it's kind of like we bring in</p>
+<p>these methods and ingredients that are being used widely empirically. And these are the two</p>
+<p>approaches. Do we build the bottom-up mosaic of approaches, stopping when it works? And, or</p>
+<p>do we start with this most general agent-based cybernetic formulation, and then kind of build</p>
+<p>the castle in the sky and meet in the middle again with something that works? It's just incredibly</p>
+<p>laid out. And this paper is at that saddle point because it has one hand or antenna or whatever in</p>
+<p>this smooth information geometry conceptual area, but the motivator of all of the conceptual moves that</p>
+<p>are made, which honestly are extensive, like page after page, it was just like, where's it going?</p>
+<p>It's going somewhere that can be simulated on everyday hardware. So many of the moves were about</p>
+<p>reshaping or reframing what was to be done in a way that could be simulated. And so those two paths</p>
+<p>are connecting. And like you said, there's not necessarily a tension, but it'll be quite interesting</p>
+<p>to see how this develops on the theory, practice, and social frontiers as more and more of these threads</p>
+<p>start to combine.</p>
+<p>Yeah, I agree. I think it's particularly beautiful when, you know, theory meets practice.</p>
+<p>You oftentimes have, you know, practice that works, but you have no theory, or you have a theory that's</p>
+<p>beautiful, but that doesn't work in practice. And, you know, this just happens all the time.</p>
+<p>Typically, you would have practice that works, and then you would try to build a theory out of it.</p>
+<p>But then often the theory turns out to be too hard. So, you know, make some extra assumptions and so on,</p>
+<p>you end up with a theory, but the theory turns out to be quite removed from the practice, so you cannot</p>
+<p>get that gap. So it's very beautiful and quite unique and also quite rare when the theory meets the practice.</p>
+<p>And I would say when the theory meets the practice, and in particular meets the state of the art,</p>
+<p>when then you kind of have a complete theory.</p>
+<p>So what we wanted to do in this paper is review these different fields in a way that</p>
+<p>we could show how far we, how far the community has gone between making a theory that meets the state of</p>
+<p>the art. And every section was started with theoretical considerations about what should be</p>
+<p>when you need to solve a particular problem, let's say adaptive agents or sampling or optimization. And</p>
+<p>then from there, and from logical steps about, okay, well, it should be like this and not like that,</p>
+<p>because there's this, you know, whatever kind of geometric argument or, or other arguments. And so from there,</p>
+<p>logically, arriving at state of the art methods that are used in practice. The other kind of like sequence of logical</p>
+<p>steps was, okay, well, we're going to start with optimization, which is, in my view, at the root of everything.</p>
+<p>So sampling, it could be about optimizing samples, such to obtain the best approximation to your integral</p>
+<p>inference is about optimizing beliefs, and decision making, it's about optimizing decisions,</p>
+<p>based on their account of actual consequences. So we started out with optimization, because it's the simplest</p>
+<p>thing, both conceptually, and also in terms of use case, you need optimization to do everything else.</p>
+<p>We then went to sampling and to inference, and finally, to decision making, because it just brings</p>
+<p>all the three ingredients together. We didn't go as far as showing, okay, well, this is how you</p>
+<p>should scale active inference in order to solve all the problems in the world, because this just hasn't</p>
+<p>been done, right. But we listed a few ingredients that have gone into the literature, and also a few</p>
+<p>ingredients that this perspective offers to, you know, how to scale active inference and make it more</p>
+<p>effective. So it's actually future work and an open problem to, you know, use the techniques that have</p>
+<p>been developed in the sampling section and the sampling literature to make active inference even more</p>
+<p>scalable. And same with optimization, same with inference. So there's many things, many things that have</p>
+<p>been put forward in this article and also elsewhere that can be used to, you know, scale active inference.</p>
+<p>But at least, yeah, the goal was to be as comprehensive as possible without sacrificing too much of actually</p>
+<p>understanding what's really going on, and show how the theory meets the practice throughout and really where</p>
+<p>the field stands. So one kind of reflection on this again is, if we start with reward as our basal</p>
+<p>imperative, pragmatism, I mean, after all, don't we want to get things done, achieve results in the world,</p>
+<p>realize our preferences? We start with pragmatism, and then it is empirically ad hoc, how people introduce</p>
+<p>these novelty bonus or intrinsic motivations. In contrast, we can start with this information gain</p>
+<p>approach. And then the thumb is put on the scale to bring more and more emphasis onto the alignment with</p>
+<p>of the learning. So it's like two roads, two paths. And maybe this is our bias or corner of the information space that</p>
+<p>starting with a broader epistemic imperative allows the careful introduction of pragmatic value. Whereas a pragmatic</p>
+<p>foundation that it's hard to then recast epistemic value in terms of pragmatic value.</p>
+<p>That's kind of like the question of valuing basic research. And the approach taken here is</p>
+<p>develop an imperative that can look entirely like one or the other or mixtures. But what's</p>
+<p>always so perplexing is that it has this extrinsic and intrinsic value</p>
+<p>phrasing, but there are other ways to decompose the function.</p>
+<p>So even intrinsic and extrinsic value are not necessarily</p>
+<p>the ingredients that were put in. It's more like they were two ingredients that were split out.</p>
+<p>Of something else that is much more integrated. It wasn't like the free energy was constructed</p>
+<p>by composition of any given decomposition of which there are multiple for variational free energy and</p>
+<p>expected free energy. And so then a question that I've often wondered is there might be two policies</p>
+<p>that are very close or have essentially identical expected free energy, but they could be radically</p>
+<p>different. For example, one could be having a good expected free energy because it realizes a lot of</p>
+<p>preferences. Another might because it provides a lot of information gain. So is it really as simple?</p>
+<p>Asterisk, asterisk, asterisk, asterisk, as a unified imperative? Or how do we make sense of the fact that</p>
+<p>one value could rank policies that might have, for example, extremely different danger profiles or</p>
+<p>envelopes of outcomes? How can that seemingly multi-dimensional space be projected into essentially a ranking?</p>
+<p>Yeah, it's a complicated question. I would say the, I mean, as we can see, the expected free energy does this in some way. It provides an answer to this question based on your preferences and how much you would gain by observing this new data, how much information you would gain. You can put these two things on the same footing. This is what expected free energy does. And it gives you a ranking.</p>
+<p>You're right to say that two very different courses of action could have the same expected free energy.</p>
+<p>And so how do you choose between them? Well, the standard formulation that you would see in textbooks or papers has, okay, well, G of action sequence equals this and G of action sequence equals that. So these two action sequences have the same G and you don't know what to do. But here, the theoretical development in this paper makes it very clear that the expected free energy</p>
+<p>is a minus lock probability is a minus lock probability is to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it to make it</p>
+<p>transparent instead of using the letter g that's commonly used in the literature we used uh we</p>
+<p>kept the minus log p throughout so we never used the letter g and so the expected free energy is</p>
+<p>this minus log p of action sequence and so it says okay well if two action sequences have the</p>
+<p>same expected free energy well then you have let's say you just have two of them with the same</p>
+<p>expected energy the lowest one well then you choose probabilistically like half of the time</p>
+<p>you choose one and half of the time you use the other i think it's even a bit more complicated</p>
+<p>because if you since it's a minus log p you could have like um an action sequence with a very high</p>
+<p>expected free energy and so this means that you can still take it but if you would take it like</p>
+<p>not very often so you have an exponentially low chance of taking that action sequence</p>
+<p>so it's it's a probabilistic description it doesn't say um it says that the most likely</p>
+<p>action sequence would be the argument the minimum of the expected free energy so this is like the top</p>
+<p>line in in the figure and so if you have uh two most likely action sequences well then you choose like</p>
+<p>half of the time you choose one half of the time you use the other but then in general if you didn't</p>
+<p>want to simulate the most likely action sequence then you choose probabilistically between all of them</p>
+<p>um and the the action sequences that have the lowest expected free energy has an exponentially higher chance</p>
+<p>of being selected and the others don't that so there's a so sorry one one last thing so this another very</p>
+<p>nice perspective is that the probability over action sequences so this p of a greater than equal to t</p>
+<p>is then the exponential of minus the expected free energy because if you take exponential minus of what</p>
+<p>you get in the equality on on the left then you recover this probability distribution of reaction sequences</p>
+<p>so this probability distribution of reaction sequences is exponential minus expected free energy exponential</p>
+<p>minus what's in there and we saw before that um gives measures they arise everywhere and so this is an</p>
+<p>example of a gives measure you have exponential minus something you basically based on the formalism of</p>
+<p>the free energy principle it comes up that the distribu the probability distribution over actions</p>
+<p>is a gives measure it is uh the gives measure where what's inside is the expected free energy</p>
+<p>so yeah it's kind of like a full circle thing and and this is basically this sort of like</p>
+<p>connections they just happen all the time when we were writing this paper and discussing because there's</p>
+<p>so many things that just uh there's so many crossovers at so many different levels like on the uh sort of</p>
+<p>like object level that you're studying but also on the methodological level like methodologies that are</p>
+<p>used in some field they're used in a different field to do something else uh so there's so many crossovers</p>
+<p>and so this is um i would say an interesting example of why you know gives measures it gives distributions</p>
+<p>they just arise everywhere they arise in active inference and as we saw before they're hard to sample from</p>
+<p>so if you wanted to so let's say you have your gives distribution that says okay well this is my</p>
+<p>distribution of our action sequences that i get from the expected free energy now you have two choices</p>
+<p>other you sample from it to sample like um um yeah an average i would say not a typical a typical action</p>
+<p>sequence or you could optimize the distribution or optimize the expected free energy to sample the most</p>
+<p>likely action sequence in in the two cases after you've done your planning with the expected free energy</p>
+<p>you have a choice between sampling and optimization so you kind of go back full circle</p>
+<p>of like um if i want to select my action in the end i either select the most likely action by optimizing</p>
+<p>the expected free energy or the gibbs measure and this i mean by optimizing this minus log p by taking the</p>
+<p>the yeah the action sequence with the minimal expected free energy or um i have my gives measure and</p>
+<p>it will sample from it to like get a typical action sequence so it's all like super interrelated</p>
+<p>very interesting</p>
+<p>in the par et al textbook from 2022</p>
+<p>that dialectic is mapped onto the mammalian nervous system</p>
+<p>um where policies can be selected by essentially passing through habit proportionally or expected free</p>
+<p>energy can be applied to sharpen or optimize the posterior on action and um</p>
+<p>does this influence how you select micro miso or macro actions</p>
+<p>um you do you mean like for a human being like actions at the cellular level actions at the</p>
+<p>global level or is it something different like at the personal</p>
+<p>grasping a coffee cup at the micro larger scale decisions attention allocation communication</p>
+<p>emissions yeah i think um i think all all of these things are i mean can be formulated in in this</p>
+<p>treatment so for example attention would be where you choose to place your focus or your mental eye</p>
+<p>so to speak um so that's an internal action it could be unconscious it could be undirected but</p>
+<p>still happening um i'm not an expert but there's a lot of talking consciousness research of like</p>
+<p>you being conscious i mean there's some there's a very uh low amount of processes that are conscious</p>
+<p>and these change according to where your inner eye or your conscious eye whatever you want to call it</p>
+<p>like moves um this could be thought of a mental mental action or an inner action that you may or may not</p>
+<p>control but still an action um so all these um all other action whether it is planning at the short</p>
+<p>time scale taking a coffee cup cup standing uh or planning at the longer time scale like what am i</p>
+<p>going to do after my phd and so on um all of these things are actions um so typically and as as you</p>
+<p>know of course we we model that by using hierarchical models where you have um different levels in your</p>
+<p>giant model so uh in in your model of the world and and the higher levels that are like more represent</p>
+<p>more abstract representations more and also longer time scales um so it could be let's say uh at some</p>
+<p>higher level i'm going to take the plane to to go to amsterdam for example and at the lower level okay</p>
+<p>well once in amsterdam we're gonna do this this and this it's like um this action at the higher level of</p>
+<p>taking the plane predates everything that you're going to do at the lower level and so uh factorizing</p>
+<p>these different decisions into different levels of a of a model allow you to be uh computationally</p>
+<p>i mean practical when um practically implementable when you make those decisions and presumably this is why</p>
+<p>why we do in our everyday life factorize uh decisions and representations into low level and high level</p>
+<p>things um the beauty of the of the free energy principle and of the treatment here um but but the treatment</p>
+<p>here is again just the free energy principle in in its most bare bones and and general form is that</p>
+<p>um the expected free energy is formulated for any kind of genetic model um the genetic models that you</p>
+<p>have in in the figure on the on the bottom right there they they could be arbitrary so you could use</p>
+<p>this form of expected free energy for hierarchical genetic models that have all these like high level</p>
+<p>low level decisions and representations um but you could also use it for any other kind of</p>
+<p>genetic model model world models the only difference is that with some world models it would be very hard</p>
+<p>to implement this in practice um and with other world models and in particular those that are highly</p>
+<p>factorized and distributed like hierarchical models like the ones we we just talked about with these it</p>
+<p>would typically be much simpler to um take decisions that minimize expected free energy</p>
+<p>in when it comes to like practical computation just because when you have factorized representations things</p>
+<p>just um computations just factor out a lot and it's just like way simpler to to to do but the</p>
+<p>formulation here is like entirely generic and it could apply to um all kinds of models and all kinds of situations</p>
+<p>very interesting well in our last little segment on the dot one let's hear your perspective or overview on the</p>
+<p>roadmap just walk through what the sections are and you mentioned some related topics but what do the</p>
+<p>subjects broadly cover why are they structured in that order right um so the well first of all the the</p>
+<p>introduction just puts like everything in context um the kind of the the conducting line or or one of the</p>
+<p>common points between all of these sections is that there's a lot of geometry um so this was not purely</p>
+<p>you know uh because the the journal is like the handbook of statistics it was called geometry and</p>
+<p>statistics so this is not just for that but it's because geometry just comes up naturally you know</p>
+<p>in all these places um so this is what we explained in the introduction like the um how geometry comes up</p>
+<p>the different branches that geometry of geometry that come up in in this different field and and how they're</p>
+<p>interrelated and so just from there you kind of get a picture on of okay well this branch let's say</p>
+<p>symplectic geometry for example um it comes up in accelerated optimization and it also comes up in</p>
+<p>sampling and so you can also already see from there like what is going to be discussed of course but also</p>
+<p>like which branches geometry of geometry of geometry occur where and what what kind of like parallels there</p>
+<p>there are um already um so going from the introduction to accelerated optimization so optimization it's um</p>
+<p>conceptually it's a very simple thing it's like okay we have a function uh so coming back to let's say that my</p>
+<p>that the state space come back to where we started with and you have a function uh and a landscape over</p>
+<p>let's say like a mountain um and so the goal is to find like the minimum of of the mountain like go from</p>
+<p>where you start to the minimum there's so many different ways of solving this problem um practically</p>
+<p>speaking the the main challenge of course is that you don't know you you cannot see anywhere else except</p>
+<p>where you where you have been um so you start somewhere and you're completely blind so and you</p>
+<p>need to find the minimum so how do you do that um there's so many ways uh so many approaches to</p>
+<p>optimization i mean it's a whole field and it's a in my opinion a very messy one and this is understandable</p>
+<p>because there's um the no free lunch theorems that are very well known uh that say that under some</p>
+<p>hypotheses um two or two ways of doing optimization will behave the same on average if you if you um</p>
+<p>test them again all all possible sorts of problems um so this is to say that if you have a given problem</p>
+<p>then you need to give then the optimization methods that will work well are those that implicitly use</p>
+<p>the prior information that you have about the problem in other words there's no uh according to the</p>
+<p>theorems there's no optimization methods that will you know beat everything um it just doesn't exist</p>
+<p>because they're all on average the same but this is not to say that you cannot make any you know</p>
+<p>practical meaningful steps by doing optimization because um not all optimization problems are</p>
+<p>you know the optimization problems that we have in life they're not completely random they're not</p>
+<p>completely random landscapes that we need to optimize but they're they actually have some structure</p>
+<p>so we can actually um exploit that in algorithms and have things that just behave that just work a lot</p>
+<p>better for the type of problems that we're interested in than others so this is what um kind of like</p>
+<p>the starting point for all optimization so the the the type of optimization that we considered here is</p>
+<p>optimization of smooth functions um this is already like a big restriction there's so so many methods that</p>
+<p>are designed to optimize functions that are rugged or non-smooth or have discontinuities and so on um when</p>
+<p>when you actually get rugged or discontinuous landscapes it's a whole different problem here we chose to focus on</p>
+<p>smooth functions and uh so the idea is that well so you have a smooth landscape you want to find the minimum</p>
+<p>and one way to to do so and to do so well is through the use of a tool called geometric integration</p>
+<p>um so i'll walk through the main ideas of of this section the the idea first of all is that</p>
+<p>um you may design a method that theoretically works very well but when you implement it in practice on</p>
+<p>your computer your discretization errors uh because you you can only implement it in discrete time</p>
+<p>uh there what you actually end up implementing ends up uh differing significantly from what you</p>
+<p>initially wanted to implement this is a problem that we discussed previously in sampling and it just</p>
+<p>comes up everywhere in applied mathematics and numerical mathematics the fact that you can only do</p>
+<p>discrete computations on your computer is a limb and a big limitation and it's something that needs to be</p>
+<p>looked into it's maybe even the most important thing that needs to be looked into when building a</p>
+<p>numerical method you want the numerical you want to be able to implement numerical methods that are very</p>
+<p>close from what you uh from what you theoretically would like to implement</p>
+<p>so typically you would have some theoretical algorithm that would have some convergence guarantees</p>
+<p>or performance guarantees and so we you would like to wait a way to implement it on your computer</p>
+<p>so as to preserve those guarantees um and this turns out to be very hard in general the one way one way to do it</p>
+<p>um i would say the maybe the most powerful way out there to to do this is through um procedures from the field of geometric integration</p>
+<p>and and so geometric integration in uh is a set of techniques that allow you under certain conditions to</p>
+<p>uh discretize your theoretical dynamic or theoretical optimization procedure your like dynamical system</p>
+<p>into um and and you know make it into a an algorithm that you can practically implement on a computer</p>
+<p>and that's going to respect the performance guarantees that you already have</p>
+<p>um so now the the tricky part geometric integration is based on geometry so you need to find um it's not as simple as like</p>
+<p>okay well um i have my my landscape my function landscape and i'd like to just go down and find the minimum one way to do that is just by</p>
+<p>you know doing like gradient descent and continuous time and you know that that's gonna like go down until it reaches a local minimum at the very</p>
+<p>least so it's not too bad if you were to implement gradient descent and numerically it wouldn't be exactly the same</p>
+<p>um as like the continuous time dynamic it could be that actually by implementing gradient descent numerically you get all sorts of like</p>
+<p>numerical problems or or whatnot um maybe gradient descent it's so simple it's not it's not actually a</p>
+<p>a good example but the the point i want to make is that um it's not as simple as like okay well i have</p>
+<p>this dynamic that works really well and that gets to the minimum and i know that it's going to get to the minimum this fast</p>
+<p>um and so geometric integration will give me will give me an algorithm that i can implement on my computer and that's going to get to the minimum this fast as well it's not as simple as this</p>
+<p>um geometric integration works by preserving geometric structures in the dynamic that that you started</p>
+<p>with uh so in order to be able to apply geometric integration to have algorithms that work for</p>
+<p>optimization you need to design a dynamical system that converges to the minimum and that has some</p>
+<p>geometric uh some important geometric features that can be preserved in this way and so this is basically</p>
+<p>the goal of the whole section and it goes into into the following steps um so one thing that can be um</p>
+<p>you know discretized or implemented on a computer in a way that is close to the true dynamical system is</p>
+<p>what's called um hamiltonian flows so if you specify a hamiltonian which is a kinetic energy and potential energy</p>
+<p>then you get the hamilton jacobi equations of motion that gives you the behavior of the system that has the</p>
+<p>prescribed hamiltonian so if you've um for those who've taken a course in physics you</p>
+<p>probably know or may have seen that all of newtonian mechanics can be reformulated as hamiltonian mechanics</p>
+<p>so all that can be described as when newton's lowers the newton loads of motion can be described</p>
+<p>through through hamiltonian mechanics it's a very general framework or a very general way to look at physics</p>
+<p>um and so because it's such a general point of view on physics and such a and just hamiltonians did they</p>
+<p>come up everywhere this mixture of kinetic and potential energy to concisely summarize the behavior</p>
+<p>of a system um because they occur so much they have been studied extensively and it turns out that</p>
+<p>hamiltonians and specifically the motion they entail so the hamilton jacobi equations of the motion they can be</p>
+<p>discretized or implemented accurately on a computer using symplectic integration which is a part of</p>
+<p>geometric integration so in in short you can use symplectic integration to accurately simulate a hamiltonian</p>
+<p>dynamical system now the problem is um these dynamics are conservative so they preserve the hamiltonian</p>
+<p>so if if you're at some point in state space with like a certain kinetic energy potential energy and you</p>
+<p>run the dynamic forward uh your overall energy is not going to change so that's standard physics energy is</p>
+<p>always conserved uh when there's no friction so in um so all all kind of like ideal physical systems</p>
+<p>with like no friction no uh they the energy is conserved so when you're going to run this</p>
+<p>symplectic optimization scheme to simulate these hamilton jacobi equations of motion the energy is going</p>
+<p>to be conserved now we're in trouble if we want to do optimization because in optimization if you think of</p>
+<p>the function as the energy uh you want to dissipate energy as much as possible to reach the minimum so</p>
+<p>you want to lose energy um so what the what the section does so this section by the way is a review of</p>
+<p>more technical papers what these papers do uh it's a very clever trick is they say okay well we want to</p>
+<p>minimize a function um we're going to say the function is a potential energy and also we're going to add a</p>
+<p>kinetic energy on top of that to get a hamiltonian and so now this hamiltonian we could uh stimulate it</p>
+<p>through um symplectic integration but actually if we did we wouldn't dissipate the function so now um</p>
+<p>what the what the section does is it introduces like a</p>
+<p>um a higher dimensional state space with the hamiltonian that if you if you simulate those dynamics</p>
+<p>it actually optimizes the function so this is like um so this is what was a convoluted way to say it</p>
+<p>reformulates optimization as a conservative system with a different hamiltonian and so by um and</p>
+<p>the way we do that we do that we do that we do that we do that we do that we do that we do that we do</p>
+<p>a good way of doing optimization is by finding a hamiltonian that will so that when you discretize it</p>
+<p>you get the optimization process that you wanted and so if you do that you get a numerical method that's</p>
+<p>stable that works well that has good convergence guarantees and it turns out uh the numerical methods</p>
+<p>that are developed they work for optimization on any kind of smooth manifold for functions on any smooth</p>
+<p>functions on any smooth manifold they work well they're generalized gradient descent in the sense that</p>
+<p>you recover great in the scent in a certain limit and they can be seen as accelerated because they</p>
+<p>have this notion of acceleration in a sense that if you if you um let's say the function that you want</p>
+<p>to optimize like a hill and you want to go down if you just did great in the scent you're like blindingly</p>
+<p>going down at the same speed or or your speed is like proportional to the slope of the of the landscape</p>
+<p>but when you actually let a roll ball a ball rolling down this is not really what happens the ball is</p>
+<p>going to roll faster and faster and it's going to accelerate it's going to go down it's going to</p>
+<p>overshoot the minimum and then it's going to like oscillate until it converges to a minimum</p>
+<p>and so these are the kind of optimization methods that are developed here they're</p>
+<p>optimization methods that are accelerated in a physical sense that has a physical sense</p>
+<p>acceleration of physical meaning because they're going to accelerate as they go down overshoot and then stabilize</p>
+<p>so this is the whole point of of this section now briefly because i think we're running out of time</p>
+<p>but we can of course revisit these sections later um so in the in the third section we have sampling so</p>
+<p>we talked extensively about sampling the um sampling as we discussed can be seen as an optimization of</p>
+<p>probability distributions so we have um we have this distribution that we have when a sample from</p>
+<p>and we just run a pro run a process that is random so it can be described by its own distribution and</p>
+<p>want the process to converge as fast as possible to the target so when that distribution of the process to</p>
+<p>you know um convert as fast as possible to the target distribution um so in a way that it can be seen as</p>
+<p>as i guess i guess complicated for for many people i think it's pretty abstract um but it's been known for</p>
+<p>a long time that you know you can reformulate sampling as just optimization of distributions um</p>
+<p>now it turns out that when you use the the accelerated optimization method of the second section</p>
+<p>uh to um to um to um to sampling so when you use when you do accelerated optimization on the space of</p>
+<p>probability distributions in order to solve the sampling problem you get um a process that's called</p>
+<p>underdumped launch amount dynamics so if you solve that process you're basically gonna get a good samples very</p>
+<p>good samples of your target distribution because that process can be seen as doing an accelerated</p>
+<p>optimization on the space of probability distributions in other words the distribution describing the</p>
+<p>process is going to accelerate towards the target so you're gonna like get there very fast and your</p>
+<p>samples are going to be very good um so this is basically uh this is 2.6 uh where where this is kind of</p>
+<p>derived uh in 3.1 we basically talk about the um the good properties of samplers in general uh so sampling is</p>
+<p>not like a complete field but there's a lot of work showing that certain processes have i mean certain</p>
+<p>characteristics of processes make them better samplers and others make them worse um so this is what we</p>
+<p>discussed and then in 3.2 we put this all together in hamiltonian monte carlo which is the state-of-the-art</p>
+<p>method for sampling um where where um so hamiltonian monte carlo is a way of using if you if you use</p>
+<p>symplectic integration on under down planchevon dynamics which is your accelerated sampling method</p>
+<p>that you cannot simulate directly again you get the same problem if you use symplectic integration to</p>
+<p>simulate that then you get hamiltonian monte carlo so hamiltonian monte carlo is a tractable way of</p>
+<p>doing accelerated sampling that's based on ideas of symplectic integration um now very briefly uh so the</p>
+<p>section four is on inference so inference the inference in its most general form is variational inference so</p>
+<p>what we typically uh do know and love from from active inference and it's i have um a target probability</p>
+<p>distribution that i'm not able to compute directly so i'm going to approximate it as best as i can</p>
+<p>as i can now um these distributions they're often used to compute expectations or in other words um in</p>
+<p>statistics and machine learning we often you we often need to compute expectations with respect to some</p>
+<p>probability distribution what this section does is it derives a whole bunch of divergences</p>
+<p>uh like the kale divergence i mean the kale divergence is not discussed so much in this section i i'll</p>
+<p>explain why uh but it it derives a whole bunch of divergences that can be used to you know approximate</p>
+<p>this unknown distribution with some other distributions that are tractable um so to like put put in a</p>
+<p>different way you have this uh abstract variational inference problem where you have this target</p>
+<p>distribution and then you have this family of distributions that you know and you want to select</p>
+<p>the distribution in your family that best approximates your target distribution now um you in order to do this</p>
+<p>you first need to derive a measure of similarity between distributions to know okay well what what is the</p>
+<p>best distribution like how can you quantify being the best distribution being the best approximation to your</p>
+<p>target distribution and uh to do that you need to specify a divergence like the kale divergence</p>
+<p>the but um the problem is the kale divergence is not always uh practically applicable uh one example is when the target distribution is just given by samples</p>
+<p>so maybe you don't even know the target distribution like you maybe it's a gaussian but you don't know it you just</p>
+<p>have samples from the gaussian so you cannot just have like a histogram and you need to best approximate the histogram</p>
+<p>um with the distribution in some family so when you have a problem like this which uh which just happens all the time you cannot use the</p>
+<p>KL divergence so you need to think about other divergences and so what this section does is um deriving</p>
+<p>other classes of divergences that are more generally applicable than the KL divergence</p>
+<p>and they have also some very nice properties and then showing okay well how is it that i can minimize these divergences to</p>
+<p>solve a variational inference problem um so i think there's um a lot of things to be done there in the</p>
+<p>sense that in active inference we always use the KL divergence to um to you know uh to do variational</p>
+<p>inference and minimize free energy and it this scale divergence is available because we typically have um</p>
+<p>alternative models that are nice and they're expressed are graphical models um but there's this whole other</p>
+<p>uh plethora of um divergences and algorithms to minimize the divergences that's out there and it could be the</p>
+<p>case that there's you know very interesting recipes and methods that can be either brought back to the KL</p>
+<p>case that that we use or just used all together in our setting um in particular when uh for example let's say</p>
+<p>that we wanted to you know approximate the expected free energy in active inference um the expected free</p>
+<p>energy is an expectation and want to approximate that expectation it could be the case uh well i think i think</p>
+<p>these methods uh that are like summarizing section four could be very uh useful because they they basically</p>
+<p>develop uh divergences that quantify how far the expectations are going to be if you choose this uh a</p>
+<p>different distribution so it's all like very natural um in that computational sense and then uh finally</p>
+<p>uh actually adaptive agents through active inference well i think we've discussed that already extensively but</p>
+<p>uh i won't spoil it some more today and we can come back to it next time</p>
+<p>thanks a lot for that overview that was very powerful</p>
+<p>incredible incredible dot one very informative looking forward to starting with some questions</p>
+<p>from the live chat and people's comments on the video between now and next week if anybody else of</p>
+<p>your colleagues or anyone in the institute wants to join we'll be here next week for 52.2 so thank you</p>
+<p>lance for the time really appreciate it thanks daniel farewell see you next week bye</p>
+<p>thank you</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

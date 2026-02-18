@@ -1,0 +1,1610 @@
+---
+title: "ActInf Livestream #007.1: "Variational ecology and the physics of sentient systems" (2019)"
+category: "Livestream"
+series: "Livestream_007"
+episode: "1"
+duration: "54:06"
+url: "https://www.youtube.com/watch?v=72g62XJ-SpA"
+views: 205
+exported_at: "2026-02-18T22:37:37.703547+00:00"
+format: markdown
+---
+
+# ActInf Livestream #007.1: "Variational ecology and the physics of sentient systems" (2019)
+
+all right
+hello and welcome everyone to the active
+inference
+live stream this is active inference
+live stream 7.1
+and it is october 27th 2020.
+welcome to team com everyone we are an
+experiment in
+online team communication learning and
+practice
+related to active inference you can find
+us on
+twitter at inferenceactive at our gmail
+you can find us on key base or youtube
+as well
+this is a recorded and an archived live
+stream so please provide us feedback so
+that we can improve our work
+all backgrounds and perspectives are
+welcome here and as far as video
+etiquette for live streams
+mute raise your hand so that we can get
+to everyone in the queue
+use respectful speech and try not to use
+the jitsi chat
+if possible today in act imp
+7.1 we're going to start with a warm-up
+just briefly introducing ourself and
+checking in
+and then we'll work through some of the
+sections of 7.1
+the paper we're going to be discussing
+is variational ecology and the physics
+of sentient systems by ramstead at all
+in 2019
+and today we'll talk about the goals
+abstract the roadmap
+potentially move through a few key
+quotations and then
+preview the figures mainly with a focus
+on seeing
+what each figure represents and today in
+7.1 and next week in 7.2 where we may or
+may not be in costume
+we will discuss this paper so please
+save and submit your questions whether
+you're on the panel now or whether
+you're watching in replay
+and get in touch if you'd like to
+participate
+so for the intros and check-ins it'd be
+great if everyone could just
+introduce themself and their location
+say hello in a short intro and then pass
+it to somebody who
+hasn't spoken so i'm daniel i'm in
+california
+and i'll pass it to a first time
+discussion cameron
+hi yeah i'm cameron um
+i'm here in zurich in switzerland i just
+started a
+phd in philosophy of mind at the
+university of zurich
+first time at this group um
+shannon
+hi everyone i'm shannon i'm a phd
+student at the university of california
+in merced
+um i'll pass it to lee
+hi everyone uh i'm in london a phd
+student at the university of
+york um a bit of an active inference
+beginner
+and i will pass it to alex
+hello uh i'm in moscow russia
+i'm a researcher at systems management
+school
+yeah and the opposite session
+hello um uh my name is sasha i'm
+in california and i'm a neuroscience
+graduate student
+um and i will pass it to
+muddy hi i'm muddy
+um i'm uh the director of ai at uh
+versus labs in the spatial web
+foundation uh
+my link to active inference is uh i i
+did my phd with karl
+riston four or five years ago still very
+much a beginner
+and i'm currently in uh rainy liverpool
+and so i will pass it to
+anybody who would like to volunteer
+because i can't see the screen i
+apologize
+um hello it's stephen here i'm in
+toronto i'm doing a practice-based phd
+at canterbury christchurch university in
+the uk
+and i'll pass it over to
+maxwell hey everyone i'm maxwell
+ramstead
+i'm a postdoctoral fellow at mcgill
+university in montreal
+i'm skyping to you from the montreal
+suburbs
+um and yeah i work on uh multi-scale
+extensions of active inference i'm the
+um first author on
+on this paper that we'll be discussing
+uh very grateful
+to have such a great group of people as
+discussants
+and i will pass it to i believe lee is
+the only one who hasn't spoken yet right
+no no i've been cool yeah i think that
+gets
+through it perfect sasha has no yeah
+she has okay sorry yep great thanks
+everyone for the intros
+so in these two warm-up questions any
+thoughts related or unrelated
+anything that kind of gets you excited
+and helps on-ramp to the discussion
+we'll be having
+what is a physical or informational
+ecosystem
+that you care about or have studied and
+while people
+are raising their hand um the first
+ecosystem that came to mind for me was
+in southeast arizona where there's a
+grassland ecosystem where there's a lot
+of cool ants and also the grazing
+agricultural use by cows had a big
+effect on the ecosystem kind of pushing
+it from a grassland regime
+into a very um different sort of pebbly
+regime
+so when i was thinking about this
+variational ecology i was kind of
+thinking about
+the desert ecosystem and and the
+southwest
+and go ahead muddy
+um so i'm interested in a slightly
+different non-biological
+ecosystems uh but still ecosystems where
+we have
+agents that make decisions so we build
+our micro service meshes by
+having multiple agents that can make
+decisions and can decide for themselves
+whether they
+are appropriate to a given computation
+or not so we treat them as ecosystems
+and we
+are using active inference very much to
+model the the life cycles of these
+various micro services
+cool and if anyone else wants to raise
+their hand muddy i'm actually
+just kind of curious let's go to steven
+first and then i'll follow up if
+possible yeah i'm interested in kind of
+intentional spaces but learning spaces
+or workspaces and one
+thing that really came up for me was
+when i was in a place called
+inguavuma at poncini school
+back in 2004 when i visited there
+and to do a project or just at that time
+just to engage the community
+i it was at a school then ponchini
+school in a rural area
+where they'd only just built the school
+10 years before so they didn't actually
+have schools there before that
+and um in in and
+you know around the outside you've got
+the fence with the barbed wire on the
+top
+in the middle of this area with no
+electricity and it was
+and i i i sensed at that time there was
+this kind of disconnect between
+the students understanding what this
+niche was that they were
+immersed in and an area where
+um you know while they're learning stuff
+there's also 35
+hiv and big challenges
+and and this kind of learning
+environment which was kind of
+coming from a colonial background so i
+this this kind of
+difference between the world which i was
+seeing in that community in the world in
+this
+this school kind of you know as i've
+seen in certain workplaces you see this
+kind of disconnect this kind of like
+learning isn't just the knowledge it's
+something about how to fit it together
+and that's when i so later became this
+idea of a social topography whether
+somehow what's that kind of landscape of
+meaning and
+when is it more than just knowing the
+facts and i think that's where the
+ecosystem
+sort of comes together cool i like how
+we're exploring a lot of these types of
+ecosystems and those are definitely what
+we want to
+encompass in the variational ecology
+discussion
+sasha
+um yeah so i'm interested in the micro
+environment
+that neurons grow up in and
+how that affects their activity levels
+and how they make connections with
+others
+so one of the things that i'm studying
+for that
+is how different immune molecules
+and turning on immune genes
+affects this process and this is
+something that i want to learn from this
+paper um how to apply that to my own
+system
+but one parallel i'm also thinking about
+is
+uh the immune landscape um
+when people are isolated and aren't
+exposed to as many people what their
+kind of immunity is like um
+especially in a time when we're really
+thinking about our own health and
+immunity
+ooh just from writing down some of these
+little notes there's ecosystems across
+scale
+that's definitely going to come back and
+then there's this idea of community
+ecology
+which in the bio sense is usually about
+different species
+but then there's of course as steven was
+talking about this group and historical
+dynamics to our community ecology
+and then ecosystems that are of
+different technologies
+so the second warm-up question is what
+is something that you're curious about
+or want to explore in today's discussion
+and while people are raising their hand
+i think the question that almost
+motivated or seems to motivate this
+paper is the one i'm curious about which
+is about applying
+the free energy principles formalisms to
+larger scale systems where potentially
+the stability of the markov blanket or
+some of the other dynamics of the system
+are so rapidly changing that it um
+really questions how we're going to
+study it from this framework
+and i know that's something that we'll
+return to
+muddy yeah i i think what's fascinating
+um from from this work that maxwell has
+been
+doing is is helping us actually get
+really fine-grained detail onto the
+computational currents of certain
+problems such as
+you know when do i stop modeling my
+subsystem and when do i start
+representing my subsystem as
+a parameter so when you know this
+transition between a parametric approach
+and a modeling approach to then feed
+into a hierarchical model
+that is uh quite a it's quite an art and
+it's an
+ill-posed sort of problem so i think
+this work is really really fascinating
+from that perspective
+from me personally cool maybe
+maxwell i'd be curious what is that
+relationship with the
+parametric and the modeling approaches
+like how do we go about
+exploring that or what does that mean
+from a modeler's perspective
+i'm not sure i understand your question
+um like
+muddy was talking about how this uh
+question of modeling like when to stop
+and
+when to include a parameter at one level
+versus another what's
+an introductory thought or what's the
+rationale or the motivation behind doing
+that kind of a thing
+i mean so mel andrews has thought about
+this a lot more than i have
+i mean uh i wish they were here
+um that they're sick today so i mean
+roughly speaking the generative models
+that we employ under active inference
+uh they harness the what mel has been
+calling the existential variables of the
+system
+uh so you know the the variables that
+actually make a difference
+to uh survival uh
+so you know you can think of stuff like
+a core body temperature
+and so on i mean ultimately there is
+always going to be an arbitrariness
+uh involved in the modeling effort
+because we have to make
+kind of science science side decisions
+about what are the relevant things that
+we're going to model or not
+but that said there do seem to be some
+some variables that are more critical to
+the continued existence
+of the systems that we're interested in
+so i don't know if that addresses the
+point
+cool i think we'll return to it
+especially as we think about
+what are the vital signatures or the
+vital variables for ecosystems because
+we want to be thinking about them in
+this
+similar framework cool here we go
+so the paper that we're going to be
+discussing in 7.1 today
+and in 7.2 last week as well as in 7.0
+last week
+uh yeah people can figure that one out
+is
+variational ecology in the physics of
+sentient systems by ramstead
+constant badcock and firsten and the
+goal of the paper
+was stated as reviewing a framework for
+modeling complex adaptive systems for
+multi-scale
+free energy bounding organism niche
+dynamics
+thereby integrating the modeling
+strategies and heuristics
+of variational neuroethology or vne with
+a broader perspective on the ecological
+nestedness of biotic systems
+we extend variational neuroethology
+beyond the action perception loops of
+individual organisms i.e active
+inference
+by appealing to the variational approach
+to niche construction
+to explain the dynamics of coupled
+systems constituted by organisms
+and their ecological niche and so i
+quoted that directly from the paper
+because i think it's a really
+direct representation and foreshadows
+the fusion
+of the vne and the va nc which we can
+talk about
+but to kind of rephrase that in non-fep
+language it's a question about how can
+we make
+a multi-level or multi-scale ecology
+framework
+that builds upon eco evo devo that's
+ecology evolution and development
+but also adding in insights from physics
+mathematics and complexity or complex
+adaptive systems
+so it certainly is an ambitious scope
+and it's kind of linking together this
+organism and
+downward story of the variational
+neuroethology
+with the niche construction aspect so
+kind of we have the organism looking
+downwards that's the neuromolecular
+components of behavior
+and then we have the organism looking
+upwards and outwards with the ecology
+yeah if i could comment on that briefly
+yeah so the basically the if you're
+looking at like the history of how this
+came about
+um so i was working
+i mean between 2000 i guess 16 and 18 i
+was mostly focused
+on developing uh you know this
+multi-scale
+active inference story in large part
+with carl fristen
+and that resulted in a framework that we
+called a variational ethology or
+variational neuroethology
+in our 2018 physics of life reviews
+paper
+um answering short ingress question free
+energy formulation
+and so the the variational neuro
+mythology is essentially
+uh a theory about the kind of if you if
+you want to think about it like
+um visually a kind of vertical stack
+of systems we've discussed this on this
+podcast before but like this idea that
+systems are made of nested systems of
+systems so that
+essentially if you look at the ontology
+of a system what you have is a stack of
+segregated
+systems of different spatial spatial and
+temporal scales
+that affect effectively compose each
+other so cells composing
+tissues composing organs composing
+organisms composing
+social groups and composing species and
+so on
+and so following the publication of that
+paper i started working closely with
+axel constant
+who uh was riffing off work that yella
+brinaberg had been doing
+in amsterdam uh with his group over
+there
+and uh axel and i developed um
+a basically a niche construction account
+of
+active inference what we highlighted was
+the fact that active inference is a
+symmetric formulation in the sense that
+it tells a story about how internal and
+external states attune to each other
+internal states of tuning to external
+ones through things like perception and
+and learning and phenotypic
+accommodation and development
+and external states tuning to internal
+states through action notably
+making the world more like uh the way
+that we expect it to be
+so that gave us a kind of horizontal
+dimension where basically
+at every kind of level of this uh
+vertical stack
+which you have is effectively a
+relationship between
+uh an ecological niche and the denizens
+or inhabitants
+of that ecological nation so
+this paper uh aimed to combine both
+frameworks uh so the niche construction
+stuff and the nested systems of system
+stuff
+into a kind of principled uh approach to
+biological systems
+uh and so you know moving from an
+ethology
+and a theory of niche construction so
+ethology being the study of animal
+behavior
+essentially so combining these two
+things into a bona fide
+theory of ecology uh using the
+variational free energy principle
+i'm sure you're going to mention this
+after but the last ingredient that we
+added to this mix
+is the skilled intentionality framework
+from the amsterdam group
+eric groupveld julian kieverstein
+uh yellow greenenberg what they add to
+the mix
+with the skilled intentionality stuff is
+connecting this predictive
+processing framework to the the
+ecological psychology
+notion of affordances um yes so this
+paper essentially takes
+the ecological psychology stuff on
+affordances the so-called skilled
+intentionality framework
+the variational ethology and the
+variational niche construction stuff and
+proposes this integrative model
+uh yeah so that's the kind of history
+awesome
+great summary thanks so much maxwell and
+just to kind of
+restate that in this nested framework
+you have the
+bottom up or emergence features of the
+system you have the top-down
+features of the system and then the
+lateral are kind of like the collective
+behavior
+so we're thinking about all these
+ingredients that maxwell just mentioned
+especially coming from the skilled
+intention intentionality framework and a
+few other areas bringing them all
+together
+so let's check out the abstract this
+paper addresses the challenges faced by
+multi-scale formulations of the
+variational
+or free energy approach to dynamics that
+obtain for large scale ensembles such as
+ecosystems or
+groups of organisms we review a
+framework for modeling
+complex adaptive control systems for
+multi-scale free energy
+bounding organism niche dynamics thereby
+integrating the modeling strategies and
+heuristics of variational
+neuroethology which remember was really
+focused on the organism's feedback with
+its local affordances
+with a broader perspective on the
+ecological nestedness of biotic systems
+so like a lot of times in this podcast
+we've talked about the affordance of
+getting a jacket or of changing the
+thermostat but that's actually
+part of the constructed niche of humans
+it's not just a human in a box it
+doesn't find themselves without
+affordance
+unlike these some of the biomechanical
+affordances perhaps
+we extend the multi-scale variational
+formulation beyond the action perception
+loops of individual organisms
+by appealing to the variational approach
+to niche construction
+to explain the dynamics of coupled
+systems constituted by organisms and
+their ecological niche
+and that relates to the symmetry that
+was being discussed a few minutes ago
+we suggest that the statistical
+robustness of living systems is
+inherited
+in part from their eco-niches as niches
+help coordinate dynamical patterns
+across
+larger spatiotemporal scales we call
+this approach variational ecology
+so it's kind of like the affordance of
+driving in a car
+is part of the constructed niche of the
+highway network and then that
+shapes the movement patterns we argue
+that
+when applied to cultural animals such as
+humans variational ecology enables
+us to formulate not just the physics of
+individual minds but also a physics of
+interacting minds across spatial and
+temporal scales
+of physics of sentient systems that
+range from cells to society
+and this should sort of invoke that
+warm-up discussion about the different
+kinds of ecosystems
+especially when talking about humans and
+our technologically enabled extended
+niches
+part of the ecosystem is informational
+it's symbolic
+and so we also want to be thinking about
+information ecologies in the way that
+these dynamics apply not just to the
+ants on the pebbles
+but also to humans and the paths through
+the parks that are discussed in the
+paper
+and also ways that long-range
+technological communication
+might come into play so just to briefly
+run through the road map this paper is
+zero indexed which i found very
+interesting and it starts with a
+discussion
+of the variational or free energy
+formulation
+and just briefly reviews active
+inference and generative models it's
+really great that every paper
+sort of starts with this uh section on
+just
+what it is that we're talking about with
+active and fvp
+they're so annoying to write though
+honestly you know you don't want to you
+don't want to plagiarize you don't want
+to just copy the paragraphs you've
+written
+uh it's like how many ways can you
+explain the same thing you know
+and it's like a if there really is a
+smooth
+energy landscape underlying these
+explanations
+we're treading many many paths and
+exploring many on-ramps turning these
+ideas around through discussion and
+through
+more papers so yeah there's a repetition
+element and there's also
+potentially a way that we make bigger
+and more accessible explanations by
+rephrasing it
+again and again for different journals
+or different specialties
+so then the second section is on
+variational neuro anthology and
+that brings into question uh multi-scale
+levels of analysis as well as ensembles
+of markov blankets as well as a few
+figures that we'll scan through
+the third section introduces the sort of
+organism
+and upwards perspective that is given by
+the niche construction the variational
+approach to niche construction
+and relates that to ontologies of
+affordances some of which we've talked
+about in previous discussions as well
+another figure on the bayesian mechanics
+and active inference
+and then as usual with these papers
+there's sort of the
+foundation then idea a and idea b
+and then i a and b are linked together
+and so we get to
+section four variational ecology the
+physics of shared mites
+and this also relates to discussions
+we've had about
+what it is that's modeling is the
+organism a model of its environment does
+have a model and agreed that mal's
+thoughts on this are
+super helpful and then there's some
+concluding remarks
+and just to really quickly visually
+outline this
+theory by addition approach that's being
+enacted here
+on the very bottom we have the fep which
+is that paradigmatic ground rock
+that a lot of these other theories are
+going to be built on top of
+then from left to right we have active
+inference tin bergens four
+questions which are explored a little
+bit in
+number 7.0 as well as some previous
+discussions we've had
+est is evolutionary systems theory which
+is basically
+evolutionary biology with a systems
+perspective and eco evo devo
+which is also a very interesting and
+rich area that emphasizes that
+the way that evolution occurs is not
+just ecologically embedded and enacted
+but it occurs through changes in
+development so you don't just get a
+longer femur
+you get the developmental proclivity to
+have your growth plate be open for a
+longer or shorter time
+resulting in a phenotype that is
+changing but it's changing through
+development
+active inference and tin brokens for
+questions and evolutionary systems
+theory
+were basically summated this is not a
+perfect summation it's just sort of
+building it up a little bit to vne which
+was a very organism and biobehavioral
+centric approach to explaining action
+perception loops of organisms
+on the other hand also drawings from
+actinf was the
+variational approach to niche
+construction which drew a little bit
+more extensively from the eco
+evo devo motivating questions and
+literature
+and then to bring in synergetics which
+is this relationship between the higher
+order
+uh parameters the bigger slower things
+and then the lower level parameters the
+faster and smaller things
+of hakan 1983 on the left side uh
+and then the collective behavioral
+approach these lateral relationships
+between nested systems
+it all kind of comes together to get to
+variational ecology
+which hopefully builds upon the
+strengths of all of these different
+antecedent theories
+and gives us something that is going to
+allow us to dip back
+into for example behavioral explanations
+of organisms or
+dip into the niche construction approach
+or the collective behavior across
+different levels of analysis as well as
+providing a helpful
+path back to understanding how previous
+formulations
+for example a modern synthesis type
+evolutionary biological explanation
+or a non-fep eco evo devo explanation
+it gives us an interpretation path that
+we can walk
+to understand a lot of the previous
+literature so let's just
+pause here does anyone have any thoughts
+on this
+theory summation or is there any other
+areas that we think might be relevant to
+draw in
+one that i was wondering about is this
+introduction of the minds
+and the sentient systems and so there
+was a sentence in the paper about the
+sentient systems being
+sensory systems though often when people
+talk about the search for sentient life
+and things like that
+they're talking about the experiential
+dynamics as well and so
+the idea of getting the interacting
+minds
+from the interacting evolutionary
+systems
+i just thought that was kind of a
+curious thing maybe foreshadowing in
+integration with psychology or with
+phenomenology
+well so the the sentience aspect is
+really i think just to highlight what
+the
+the free energy principle stuff does i
+mean at the end of the day
+uh the free energy principle shares with
+perceptual control theory the idea that
+action is about
+uh the control of perceptual input
+namely keeping it within certain bounds
+um so that might be relevant to uh
+to consider i mean yeah so from that
+point of view sentience
+is uh the capacity to be affected
+uh by the world in a way that
+allows us to control how the way
+the world affects us yep like something
+hitting a rock still could be felt or
+is is still as influential on the state
+of the rock but
+it doesn't necessarily have the ability
+to then act especially in a proactive
+way
+to get around that and also just one
+other note is
+actually the schrodinger's question
+paper
+from 1944 and then the answering
+schrodinger's question paper from 2018 i
+think are also
+great places for people who are kind of
+coming at this from a first principles
+of biology perspective because
+schrodinger's question was about how
+organisms
+are organized and very interestingly and
+nine years before the discovery of the
+structure of dna
+and many years before a lot of the other
+approaches that would come on the scene
+with a molecular revolution
+in the second half of the 1900s
+schrodinger said
+there has to be something like a
+quasi-periodic crystal
+and organisms have to organize at least
+locally
+they're not going to violate the laws of
+physics this isn't vitalism but at least
+locally you have to be able to take you
+know the
+bag of sugar and then organize it into
+biomolecules that constitute an organism
+that's a
+increase in order how does that happen
+is that the defining principle of life
+and in some ways as we look on earth and
+elsewhere for life these two
+ideas of schrodinger really uh
+remain as prescient as ever so i find
+that just really interesting
+stephen i know you're probably going to
+mention this but i suppose the idea of
+ergodicity sort of comes in through the
+active inference
+peace more than it normally thought of
+in the other areas
+but that maybe synergetics isn't
+another way that these kind of ergodic
+um ways to extract information at
+present and i suppose the question is
+is that non-ergodic processes the ways
+to tap into things which are non-ergodic
+and sort of causal
+is that something which is when you then
+step
+outside of normal active inference and
+you have this extra
+structure on top which is our cognition
+which allows us to
+sort of process things that are kind of
+non-ergodic so i think that might be
+interesting like in terms of how we
+construct things as humans as opposed to
+that kind of more organic niche
+construction but that
+not that that's really touched on here
+but i suppose it's just just the idea of
+how patterns are extracted and what
+levels of meaning or what processes of
+like attuning or constructing or
+relating what what's that kind of
+dynamic at play
+thanks for that comment i think the word
+ergotic is really what a lot of that
+idea hinges on so if anyone wants to
+have a
+take at what the word ergotic means i
+tried to go through it a little bit
+in 7.0 but um
+if anyone wants to explain what an
+ergotic
+system is and stephen what your question
+gets at is really whether the models of
+ergotic systems
+of systems where the time average is
+equivalent to the ensemble or the
+spatial averaging
+um though there's also other ways to
+phrase that or perspectives on that
+in systems with extreme historiosity
+like niche construction if you build a
+road in one place the whole society kind
+of leverages around that
+or if there's an introduction of a new
+species into an area
+that can irreversibly and extremely
+historically change the trajectory that
+ecosystem
+so how are we to model these systems
+using ergotic frameworks
+steven and then anyone else who wants to
+step in on the ergotic
+question because it's kind of a key term
+yeah i was i think this is a really
+interesting i thought of a relevant
+point
+because the thing with ergodicity is i i
+sort of was
+looking at the video for this session
+that you made and sort of comparing it
+to what i've been thinking is
+it could be that there's lots of small
+patches or periods or blocks where
+there's kind of
+enough ergodicity due to mixing
+to extract information or to find
+patterns
+so it could be that there's not this
+idea that the system is ergodic
+but there might be lots of times where
+there's moments of mixing that
+ergodicity is present and you can
+extract
+or make inferences from that so i think
+that's quite
+um that changes things a little bit in
+terms of how
+you know makes it more plausible maybe
+for how ergodicity
+can creep in um
+and it also i think then starts to give
+you a rationale for how you
+can engage with the whole entropy
+question as well and
+because normally entropy is brought into
+this equation
+talking about multiple levels and things
+dissipating and suddenly it's like well
+um if you've got periods of ergodicity
+then you can you you've got a way
+to extract or
+get get a grip on the noise that's going
+on out there over time
+um and and i think that that that's
+important i think that's also important
+in terms of
+trying to explain it to other people
+because most people
+when they think about the world and
+systems i'm actually
+there's a whole debate on the vibrant
+systems
+group about this is that they kind of
+they just take a snapshot of perspective
+on a system
+and they say this is what the system
+does but
+that's not the same as something which
+is happening over time
+and there's a pattern over time it's
+like it's a different way of thinking
+about
+the world and even think about systems
+in general so
+that that that piece is really important
+about how does it happen over time and
+is it lots of
+bits of ergodicity that add together or
+is
+is it like we have to have ergodicity
+over 100 years over 10 years over five
+years
+nice let's go shannon and then muddy and
+then maxwell if you want
+i i would just like to jump in quickly
+just to clarify a few things about
+ergodicity if that was okay
+uh let's go yeah you might actually
+answer my questions before i ask them
+perfect shannon muddy go ahead okay so
+ergodicity from a mathematical point of
+view
+you can understand it heuristically as
+the
+you know so a system is ergotic if
+the average of our measures of the
+system
+converges to a measure of the average of
+our the value of whatever we're
+measuring so
+another way of thinking about it is that
+like wherever your system starts in its
+state space
+with an ergotic system it will end up in
+in a regime of characteristic states
+like so
+so no matter where you start you end up
+uh
+in in these uh in these states so i mean
+you know you can think of
+uh you know my the my
+my body temperature for example would be
+describable in this
+way you know it varies a bit but it ends
+up
+continuously converging to 36 and a half
+degrees celsius
+so there's a lot of confusion in the
+literature and in discussion
+about this ergodicity thing um one thing
+to point out
+is that uh so to the extent that it is
+implied in the framework uh the
+the notion that we're considering is
+only local ergodicity so we're not
+saying that
+uh you know because the maximal version
+of like an ergotic system
+like a system that's globally ergodic is
+a system that doesn't really have a
+history
+in the sense that it doesn't really
+matter where you start you always end up
+in the same place
+um the notion of ergodicity that we're
+employing in the free energy framework
+to the extent that it's employed at all
+is the notion of local eradicity which
+means that
+uh on some appropriate temporal
+and spatial scale uh it's useful to
+think about the system
+as being ergotic as in that it will
+regularly converge to the same
+uh set of states or values of those
+states rather
+um so i guess there's a lot to say here
+on on the one hand um you know this
+local ergodicity thing
+uh is important so when we say that the
+earth is
+uh is round you know
+uh we're we're not saying that it's not
+flat enough locally for us to build
+buildings on it
+uh so like locally the the earth has
+it has fl is flat enough has a
+negligible enough curvature that we can
+build for example a building on it
+and this is the same kind of idea so the
+the ergodicity at play
+is that you know on some appreciable
+time scale
+systems converge to the same set of
+values effectively
+and uh yeah so i guess that's
+uh one point another related point is
+that
+ergodicity actually isn't um
+they well it's it's not really baked
+into the free energy principle
+all you really need uh to get the free
+energy principle running is a markov
+blanket
+and a non-equilibrium steady state or
+generative model which we've been
+discussing over the last few weeks
+so generally notions like ergodicity and
+weekly mixing
+also appears in some of these
+discussions it only applies to certain
+kinds of systems with
+multiple multiple particles under
+special assumptions
+namely the assumption that all the
+particles are exchangeable
+um so if we're dealing with a single
+particle this kind of probability
+distribution in general doesn't exist
+the only probability distribution
+uh to which we have access is when we
+sample the state of a single particle
+over time
+um so yeah the the real
+assumptions on which the free energy
+stuff is built
+is this non-equilibrium steady-state
+assumption um
+i mean and it's related to the
+ergodicity thing in this in a certain
+sense
+um so non-equilibrium steady state we're
+we're saying that you know the system
+has a set of characteristic states to
+which it it
+tends you know over time uh
+and so if if a system has uh
+a non-equilibrium a steady state then
+you know under the conditions that we
+just described or
+there are particles that are
+exchangeable then uh you can treat the
+system as ergotic
+but it's it's not it's not as crucial to
+the framework as some would suggest so
+like i i've heard
+in the you know in the bushes that uh
+some people are mounting a critique of
+the free energy principle based on the
+idea that
+uh living systems aren't actually
+ergotic
+i think that's a bit of a waste of time
+because we're not we're not claiming
+that
+biological systems are globally ergodic
+just that it's useful
+to treat them as their gothic uh
+at certain scales and you know the way
+that we get get out of this kind of
+weird
+place formally speaking is by pointing
+to this
+nested systems of systems thing so the
+idea is that
+from the perspective of any layer of the
+system the layer above it might as well
+be stationary
+so from the point of view of my bo of my
+cells for example
+my body is essentially stationary you
+know so
+their entire life cycle you know from
+birth to uh cell division
+uh will occur without any major
+structural change happening to
+the non-equilibrium steady state of my
+whole body
+so you know you you you get around
+the implausibility of the strong
+interpretation of these assumptions by
+pointing out that well what's actually
+at play is a nested
+series of systems and you know
+you you only need things to look ergotic
+locally relative to other layers of the
+system
+i think that's really helpful for what
+my question would have been
+which would be like how would if you're
+talking about the behavior of a crowd
+and if there's a certain markov blanket
+that can extend over this
+this group of individuals um the thing
+about a crowd is it's not a cell that's
+not bounded by
+being stuck inside of a body they could
+leave like they could leave the stadium
+or leave the protest
+but if we're talking about ergotic or
+like interacting just enough at just the
+right spatial temporal scale then
+we can talk about some markup blanket
+over some
+whole crowd or subset of a crowd at some
+event at some time
+exactly yeah that's precisely what's
+going on here so
+it's all about defining the relevant
+spatial and temporal scales i mean if
+your relevant spatial
+and temporal scale is like you know the
+whole city over several weeks then
+obviously the the protesters that gather
+you know and spontaneously form a social
+group wouldn't count as
+you know even having a non-equilibrium
+steady state i mean it just kind of
+forms and dissipates
+but if you're looking over the scale of
+you know minutes to
+maybe hours then it does make sense to
+say well locally
+you know there's something robust here
+it has a statistical independence from
+its environment it seems to be
+you know attracted to the same set of
+states and then it dissipates
+so so it's the same story over and over
+again just a different kind of spatial
+and temporal scale so you're totally
+right i think shannon
+that's right right on point cool let's
+do muddy
+and then stephen uh yeah i just wanted
+to speak to some of the like just to
+give a little bit of intuition so i'm
+kind of
+not super in active research right now
+so these terms i i like
+sharing kind of the way i think about
+them for people who might be listening
+who
+might not be familiar with the like
+ergodicity in general
+so just generally i i and please correct
+me if i'm wrong about this because i'm
+looking to have my understanding probe
+but i view ergodicity or a system that's
+got it
+um my intuition is that if i take a
+sample of a system
+that system is ergodic if that sample is
+representative of the greater dynamics
+of that system
+so that's what maxwell was saying about
+tending to the mean so it doesn't really
+matter if i take my data from here here
+here or here
+as long as the sample i'm taking is
+representative
+um that there's another camera worms it
+should tend to the same mean
+or you know basically represent the same
+dynamics of the underlying
+model and underneath but the way in
+which you define
+ergodicity is actually defined by your
+your measurement
+your sample space it's necessarily
+defined by your sample space so
+you have all of these emergence
+properties which are hard to pin down so
+you have
+like dynamic ergodicity which which are
+you know partials with respect to time
+which
+tend towards some stable value for the
+local and then the actual mean
+versus static ergodicity which is if i
+take a snapshot of my
+system at any one given time so like a
+cloud of gas
+it kind of looks the same but without
+any knowledge of my attractor systems i
+can't say that my system is ergodic
+dynamically over time
+um and then you can think about
+continual ergodicity at different levels
+so um i think the example maxwell gave
+with flat earth is a really really
+beautiful one because if you take a
+local representative sample say
+100 meters by 100 meters
+you you could define every single sample
+by a single function
+uh a stable function which either has
+either a stability maximum point
+or is linear in its nature so at that
+level i have a continuous function which
+defines
+ergodicity across all scales but it's
+part it's nested within a larger system
+which might have
+chaotic dynamics actually and so it's
+it's actually ergodicity i think the
+ambiguity comes in
+when you're actually trying to define
+the problem space itself
+as a concept it's just basically saying
+this sample represents the model i'm
+trying this sample
+of a larger system represents the
+largest system
+at whatever mathematical perspective i
+happen to be looking at it from
+whether it's with respect to time or
+some other variable so i just wanted to
+add that
+in i mean just to play devil's advocate
+thank you buddy for that i agree with
+everything you said uh just to make
+the uh you know put some meat on the
+bones of criticism and the interest of
+fairness
+one of the reasons that you might resist
+the idea that biological systems is
+ergotic is for example
+uh the pretty plain fact that evolution
+isn't going anywhere
+right there doesn't seem to be some kind
+of evolutionary
+kind of attractor basin towards which uh
+all of evolution you know
+uh contra this kind of anthropocentric
+uh you know religious view of you know
+man's place in nature well humans aren't
+all that special um and
+we're uh we're just like one among
+uh you know a series of other
+uh animals um yeah so
+that wait one quick before we go to
+stephen also if your body temperature
+hits a certain very low or very high
+value it's not returning to a steady
+state either
+and so that's like there's a lot of
+reasons to think at a certain scale of
+analysis
+that there's violations of this kind of
+behavior stephen i mean
+very clearly we all die right yeah we
+all dissipate and so
+at long enough time scales nothing is uh
+hasn't
+has like this non-equilibrium steady
+state or is ergodic in that sense right
+like we all
+we all just dissipate you know in some
+sense the
+the the only real ultimate ergotic
+you know end point is the heat death of
+the universe right so
+yeah it's uncanny valley because at a
+short time scale you're stable then at
+the lifelong time scale you dissipate
+and then
+again you're just a flash in the pan so
+very cool
+and highlights that it's important what
+scale we're talking about steven before
+we close out the slide
+yeah i also think that you know we talk
+about the system is the system ergodic
+internally externally but i don't know
+whether this is right but i kind of
+i'm more from a practice perspective
+trying to do the sense making
+of active inference and that kind of the
+dynamics of
+things going backwards and forwards so i
+i'm trying to think of
+the ergodicity as maybe more about the
+process of this noisy
+chaotic like muddy was saying data
+going backwards and forwards or across
+the markov blanket
+and within there there's ergodicity
+in that you know within and then that
+even if the systems i don't know whether
+they are or not ergodic
+of the organism but there's something in
+the data stream that allows you to
+extract information from
+the entropy the sort of the noise so i
+was trying to work out if
+you know that that might be two
+questions here i think it ends up going
+to this bigger question about whether
+the systems are ergodic but i'm not sure
+whether it's about
+the dynamics the non-linear dynamics
+have ergodicity sort of
+tucked away in there yeah just to give
+an ecological example let's think about
+a predator prey relationship
+like a latka volterra model you know the
+cougars and the rabbits or something
+like that
+so it's always changing through time and
+there's a winnerless competition where
+they're always oscillating
+and so from the first pass the first
+moment it's not ergotic it's changing
+at certain time scales but it has what
+muddy was referring to as this dynamical
+stationarity or the dynamical ergodicity
+it's kind of like the more things change
+the more they stay the same
+sometimes when we're talking about these
+higher order relational dynamics
+or rates of change the partial
+derivatives that muddy mentioned
+then it's actually through time at the
+correct time scale of analysis
+that you see see that the predator prey
+relationship is in like this
+higher order ergodicity and then at
+another time scale above that
+the predator and the prey species don't
+even exist so of course it can't be an
+ergotic system so again
+we see that there's time scales where
+systems display ergodicity
+and time skills and spatial scales where
+they don't as well as relying on
+questions about exchange ability
+and other attributes but just in the
+last
+couple minutes this is really awesome
+discussion
+i want to just run through the figures
+give people a little peek
+into some of the formalisms and the
+ideas that we'll be talking about
+further in 7.2
+and this is a quotation about
+how exactly niche construction enters
+the picture
+and especially in terms of epistemic
+resources which relates to the
+technological niche of humans
+as well as the skilled intentionality
+framework
+here's a good quotation about how in the
+multi-scale framework
+active inference is a group behavior
+that's a group activity
+and so this sort of connects the dots
+between active inference and collective
+behavior
+because even when we draw the organismal
+loop with active inference we're talking
+about collectives of neurons or of
+different
+cell types and also ties it back to
+closed causality circular causality
+and synergetics this idea of
+coordinating slower order parameters
+and then rapidly oscillating higher
+order parameters and that's kind of like
+the
+the dynamics of the gas cloud looks
+stationary visibly but if you went down
+there it'd be the seizing
+seething mess and you'd say there's no
+way this is a stationary state but it is
+at a little bit of a higher level
+and then um this last quote was just
+about
+how um at work one's behavior
+acts to justify their sensory states and
+their prior beliefs about them
+and then that kind of reminded me of a
+figure from the paper written with
+alex and sasha and others where we
+talked about that a little bit more
+specifically from a
+technological level um and
+just to quickly walk through the figures
+before we return
+figure one marco blanket it's gotta be
+figure one it's not it's not a ramstead
+paper if it isn't
+figure two is also unpacked a little bit
+in the answering schrodinger's question
+paper and this one there's what you see
+and there's what you don't see
+what you see is the potential
+explanatory scope
+across spatial and temporal scales that
+range over many orders of magnitude
+but what you don't see is that there's
+nothing that's at the for example
+one millisecond and one kilometer scale
+maybe a lightning strike is able to
+dissipate energy
+rapidly at that scale but it doesn't
+coordinate effectively it doesn't have
+that closed
+causality i should say uh but like
+i no longer agree with this figure uh
+casper has been i
+starting may 2018 uh
+i guess uh so casper uh was quick to
+point out that you don't
+you don't need a separate set of time
+scales the
+the spatial scales that we pointed out
+are really
+ontological scales so like the
+subcellular scale
+is a spatial scale and a temporal scale
+uh simultaneously so
+uh you know the cellular processes occur
+over a few milliseconds and
+yeah they have their specific size and
+these these scales like
+uh the the concomitant like
+associated spatial and temporal scales
+really increase along this diagonal
+uh kind of together um so
+i mean another thing that kind of breaks
+this uh apart is where is culture here
+right so culture is very fast uh but
+it's also very large scale
+a process so uh this is not a figure
+that i would
+recommend like learning by heart or
+anything i think it turns out to be
+wrong now but
+science progresses right so yep we were
+wrong
+i still find it interesting especially
+with that caveat that it's not like
+there's small things happening
+at the tiny scale and then there's no um
+relationship with the niche construction
+like niche construction for the cultural
+niche and the communication niche
+is related to cellular processes so
+there's just what's happening
+but then it's interesting to think about
+how the functional levels of
+organization
+do align along this very
+vague qualitative diagonal but not a
+formal approach for sure here figure 3
+is another recap figure having to do
+with i think something about broccoli
+and how it's a fractal now it's about
+markov blankets and about nested systems
+and how markov blankets at one level
+can be thought of as engaging in
+collective behavior at a higher level
+figure four again an example that we've
+seen before
+with looking at how morphology can arise
+as a function of initially equivalent
+cells acting morphologically to reduce
+their surprise about their expectations
+about the extracellular gradients
+and where they are and what that means
+for what the organism is doing
+and then how development and the
+evolution of development could reflect
+beliefs and action generative sequences
+that
+allow the organism to fulfill functional
+morphologies
+figure five i don't think is one that
+we've seen yet
+um but it connects the active inference
+and a ford inside with a free energy
+minimization
+side and there's some mathematics there
+that i hope to be actually going into
+in the coming weeks as we've chosen the
+paper for eight which is going to be
+scaling active inference
+and we'll be looking to have a lot of
+discussion on the mathematics because
+um it's definitely one of the areas we
+want to dive deeper into
+and then the last figure is a partition
+of vector states
+into particles which are the the um the
+sets of balls here and um the blanket
+states
+so i'll go into that a lot next week
+this is probably the key figure
+perfect for the whole thing thanks for
+noting that we'll definitely
+go into this um in the uh last minute
+thanks for participating in this short
+and exciting 7.1
+next time in 7.2 we're going to have
+more time to talk about some of the
+specific
+questions that have been arising as well
+as figure 6 as maxwell pointed out
+everyone live or in replay is welcome to
+send us comments or questions that would
+be cool to unpack
+live today i really appreciate just
+hearing about how these different
+ecosystem conceptualizations and
+ways of thinking about the same
+ecosystem same way of thinking across
+different ecosystems how do they all
+combine
+and we provide follow-up forms to all
+live participants so it's in the
+calendar
+invite and it'd be great if you could
+fill it out we also
+solicit feedback suggestions and
+questions from
+our audience and from our other
+participants who aren't live here
+and uh all we can say to that is
+thanks for the participation thanks
+everyone really
+an awesome discussion and just as always
+it's another
+level of understanding another coat of
+paint on the mural to hear from
+everyone's perspective so i
+deeply appreciate that and great times
+anyone want to give a uh singular
+closing thought to cap out the stream
+long live ergodicity muddy go for it
+oh i was just gonna say no
+exactly can i ask you a question
+that's my observation perfect thanks
+everyone thanks again for listening for
+participating and we will
+see you next time

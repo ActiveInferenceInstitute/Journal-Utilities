@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 065.1 ~ Phoebe Klett, "Towards Bayesian World Models"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 065.1 ~ Phoebe Klett, "Towards Bayesian World Models"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_065 &middot; Episode 1 &middot; Speakers: Phoebe Klett &middot; Duration: 59:47 &middot; Views: 771</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=eMtgUJl68jg">https://www.youtube.com/watch?v=eMtgUJl68jg</a></div>
+<article>
+<p>Hello and welcome. This is Active Inference Guest Stream 65.1. It's December 6th, 2023.</p>
+<p>We'll be hearing from Phoebe Klett and Dan Simpson on Bayesian World Models for Explainable</p>
+<p>Transparent Reasoning. There will be a presentation followed by a discussion.</p>
+<p>So thank you for joining Phoebe. Very much. Looking forward to the presentation. To you.</p>
+<p>Awesome. Thanks for having us. Yeah, I'm really excited to chat with you all about how we might start to integrate today's state-of-the-art language models into more probabilistic machinery and what that might buy us.</p>
+<p>All right. Let's get right into it.</p>
+<p>All right. So some of the things I'm hoping to discuss today include why we might use a language model for something that isn't long-form text generation and how we might do that.</p>
+<p>And then motivate a little bit kind of why we might need a world model, what simple self-organizing world models might look like, and even in the simplest cases, how we might start to use those as effective recommendation engines in the wild today.</p>
+<p>And then a little bit of discussion about kind of where this research is going.</p>
+<p>All right. So what are language models good at?</p>
+<p>Today's especially large language models are trained on next token prediction.</p>
+<p>So this means given a sequence of tokens, we're going to estimate which token is most likely to come next.</p>
+<p>Maybe rephrasing that a little bit. We might also say that language models are trained to estimate which sequences of tokens or words are likely.</p>
+<p>The caveat being likely to appear in the training set.</p>
+<p>But today our training sets are quite extensive.</p>
+<p>So given this simple training objective, it's arguably surprising that we've seen language models do as well as they have in really impressive tasks.</p>
+<p>So they start to demonstrate like really great language understanding, meaning like the semantics of language itself, not just the syntax of kind of like which sentences make sense.</p>
+<p>They've also started to demonstrate some world knowledge.</p>
+<p>So implicitly learning kind of how the world works just through our own human abstraction and how we articulate that.</p>
+<p>We start to see language models falter at tasks which look more like symbolic problem solving.</p>
+<p>So math in particular, we see this in programming, although we're getting better at this.</p>
+<p>And in general, any kind of like long term planning tasks which require abstract reasoning.</p>
+<p>So we see this also in problems that look like this, which are word problems, but which are really about kind of like understanding abstractly how these kind of abstract objects relate to each other.</p>
+<p>And again, this shouldn't be surprising that language models struggle to do to do things like this since it's so far off from their original training objective.</p>
+<p>And in particular, even when we arrive at the right answer in some of these cases, it's really hard to know after the fact kind of the reasoning for how we ended up at the right answer in this particular case.</p>
+<p>And maybe more fundamentally, if we don't know where the abstraction is happening or where the reasoning is happening, it's very hard to guide that process.</p>
+<p>And so this starts to motivate the need for something that looks more like an explicit world model.</p>
+<p>And now to start to borrow some words from Yashua Bengio, this is one of the kind of biggest issues with today's language models is arguably that we're asking the language model to be both the inference machine and the world model implicitly when this doesn't quite make sense.</p>
+<p>And so some things that we might hope for in a world model are to model causal relationships, to be really adept at modeling using uncertainty and to be modular.</p>
+<p>Jan LeCun puts this in a similar way.</p>
+<p>So we might kind of ask a world model to be able to distinguish between which details are important versus irrelevant and to be able to make predictions that can be performed in sort of like this abstract space of representations.</p>
+<p>And so hopefully in the next following slides, we're going to motivate what it might look like to use language models as inference machines in maybe like the simplest case of self-organizing world models.</p>
+<p>And even in those most simple cases, how we start to get something much closer to the kind of explainable reasoning, which I think lots of us are grasping for right now.</p>
+<p>All right.</p>
+<p>All right.</p>
+<p>So in a very simple case, we might think of a world model as simply a collection of hypotheses or remodel confidence over each of those hypotheses.</p>
+<p>And in particular, we care about predictive world models.</p>
+<p>So given some evidence or data that we've observed in the world, we'd like to propose the world models, which best explain the evidence that we've observed.</p>
+<p>And if that language sounded leading, it was indeed.</p>
+<p>We are proposing in this case to use Bayes' rule, which we all know and love, which tells us exactly how to update our beliefs given some new evidence.</p>
+<p>And so when our hypotheses are kind of these Bernoulli random variables, this bottom term can simply be expanded into this equation on the slide.</p>
+<p>And so the real tricky part in this computation is the likelihood piece.</p>
+<p>So given this evidence, given that our hypothesis is true, what's the likelihood that we would have observed the evidence?</p>
+<p>And the claim that we're making is that language models are actually this is this is like a natural task to ask of a language model when our evidence and our hypothesis are both semantic objects.</p>
+<p>As we discussed, language models are kind of trained exactly to understand which sequences of text are likely.</p>
+<p>So asking it to prompting it in a clever way such that we can extract this particular likelihood is actually really natural.</p>
+<p>So how do we do this?</p>
+<p>So we come up with this kind of clever prompting scheme that allows us to extract again exactly how likely is is this to occur?</p>
+<p>So given that our hypothesis is H in this setting and our evidence is this curly E, we only need to change our evidence into the conditional form and then phrase the question like this to the language model.</p>
+<p>So the input sequence of text goes like, given that, you know, potentially if our hypothesis is like Walmart has been severely impacted by COVID-19 pandemic, would we have observed the evidence that Walmart laid off 10 percent of the material stuff?</p>
+<p>So this is the case.</p>
+<p>So this is the case.</p>
+<p>And so either using something like few shot prompting or guidance or some kind of control generation technique, we can ensure that our language model outputs either yes or no and then use the logics from its answer to estimate that probability.</p>
+<p>And again, the claim here is that like this is actually a really natural task to ask of a language model that leverages its like innate reasoning engine better than just kind of allowing it to ramble using using text sometimes.</p>
+<p>And we can even make this updating scheme a bit more sophisticated using things like precision weighting.</p>
+<p>So this will bias our our posterior overhead hypothesis either towards our prior or our evidence that we've observed based on how confident we are in our prior and in our evidence.</p>
+<p>All right.</p>
+<p>So the world models that we've seen so far are fairly simple.</p>
+<p>In particular, we're modeling all our hypotheses as independent from each other.</p>
+<p>And this seems like a large simplifying assumption.</p>
+<p>So how might we support more complex world models where we condition our hypotheses on each other?</p>
+<p>All right.</p>
+<p>So another thing that hopefully will be familiar to this crowd,</p>
+<p>Bayes nets have been around for forever and are often used to model mechanistic failures and enlarged systems and can be understood simply as a distribution where each variable depends on some small number of ancestor variables.</p>
+<p>Perhaps more intuitively, we can also think of these as directed graphs,</p>
+<p>where we have edges between variables which are directed in the sense that the parent is conditioned on the child.</p>
+<p>So let's see an example.</p>
+<p>All right.</p>
+<p>So now we have two different kinds of hypotheses.</p>
+<p>The ones which are kind of parents in our simple setup are kind of qualitatively more abstract than the children.</p>
+<p>So our two children nodes are similar to the hypothesis we saw before.</p>
+<p>Mark a sentiment for Best Buy is poor or Walmart will grow its physical footprint this year.</p>
+<p>And then the more abstract hypothesis being retailers were negatively impacted by COVID-19.</p>
+<p>And so then we specify this conditional structure, either kind of in a classical sense by specifying all of the joint probabilities up front,</p>
+<p>or alternatively learning it given some healthy amount of training data.</p>
+<p>And again, we're proposing that instead of doing that intensive process,</p>
+<p>we can use language models to extract those probabilities in a natural way.</p>
+<p>And so one natural complaint at this point might be like, well, this space is going to start to get very large.</p>
+<p>If we're trying to update these beliefs in real time, given some large data stream,</p>
+<p>this is going to become intractable given our current framework.</p>
+<p>So how might we start to augment that?</p>
+<p>Luckily, there's been a lot of work historically done on this problem.</p>
+<p>And we can start to use things like message passing to update our beliefs in an approximate way.</p>
+<p>So as long as our Bayes net has a tree dependency structure,</p>
+<p>we can use things like the sum product algorithm to update our beliefs.</p>
+<p>And I don't want you to worry too much about the equations on this slide.</p>
+<p>If you've seen this before, this kind of recursive structure will look familiar.</p>
+<p>But if not, the general kind of intuitive idea that we're going to compute these messages from all of the children</p>
+<p>or the neighboring nodes and use those to propagate through the graph to update each independent belief.</p>
+<p>But let's just see an example.</p>
+<p>All right.</p>
+<p>So suppose we observe some new evidence and we'd like to know how should we update the probability</p>
+<p>over hypothesis A, which, as you remember, is the parent node in our graph.</p>
+<p>All right.</p>
+<p>So B here on the left hand side is the belief.</p>
+<p>XA is essentially like just the variable representing the hypothesis A.</p>
+<p>And then the phi and the psi terms are specified by our language model or the Bayes net in the classical sense.</p>
+<p>And so we're summing over all of the variables, all of the values that the variables XB and XC can take,</p>
+<p>which in our case, of course, is just zero and one.</p>
+<p>So if you you might recognize at this point that this is indeed the exact marginal probability for the hypothesis A.</p>
+<p>And that's because our graph is simply connected in this example.</p>
+<p>So in general, this isn't true, but turns out to be the case in our example.</p>
+<p>And again, we can compute these phi and psi terms using the language model itself.</p>
+<p>All right.</p>
+<p>So because we're all lovers of free energy here, I'm going to walk through kind of how this is maybe the first example of a self-evidencing or minimizing free energy kind of model.</p>
+<p>So as we noted, belief propagation isn't exact for more complicated graphs.</p>
+<p>And so it makes sense and might be useful to ask the question, you know, how far apart or when are our beliefs close to the exact marginals?</p>
+<p>And so we often use things like KL divergence to compare the difference between two probability distributions.</p>
+<p>And that is explicated on the right hand side.</p>
+<p>And then those of us who who are like have a background in physics might recognize Boltzmann's law as well.</p>
+<p>So this is just the idea that we might represent the probability of a given state using an energy function.</p>
+<p>And we're not going to accept this as truth.</p>
+<p>Maybe some of us have done in the past, but we are going to just use it as a definition for this energy function.</p>
+<p>Such that when we plug in that term here and expand out, we start to see these first two terms look a lot like the kind of energy and entropy functions which we are used to.</p>
+<p>And indeed, we can just classify those two terms as the Gibbs free energy function.</p>
+<p>Yeah, which makes me happy to see this all coming together.</p>
+<p>And in particular, it might make sense just to note at this point that using world models which are self-organizing in this sense seems to be very compelling since the kind of world model which we want is one which promotes the evidence that we've seen so far.</p>
+<p>Why is it useful to formulate this in terms of free energy besides the fact that we all find it compelling here?</p>
+<p>Well, you can make a lot of progress by constructing analytically tractable approximations of Gibbs free energy often.</p>
+<p>I'm not going to go into the details here, but here are two examples where that's been fruitful.</p>
+<p>All right.</p>
+<p>So now I'm going to chat briefly about kind of how we might use recommendation systems like or how we might use these systems as recommendation systems and indeed in the world today.</p>
+<p>All right.</p>
+
+<p>So one like prime example for where a system like this might be useful is a situation where we have kind of lots of data incoming at very high frequencies.</p>
+<p>And we always want to have some set of like naturally discrete hypotheses that we're modeling beliefs over which are being kept up to date at a very regular cadence.</p>
+<p>And so actually a lot of the muscle here is just reformatting documents or however our data comes in as evidence is.</p>
+<p>This is not always obvious or easy to do.</p>
+<p>But once you've kind of figured out that part and in particular, we've been using things like RAG, retrieval augmented generation or embedding based systems to kind of figure out when data that's incoming is relevant to a given hypothesis.</p>
+<p>Once you've kind of built up that machinery, the actual updating computations, as we've shown already, is actually pretty simple.</p>
+<p>So we do these likelihood computations and we update our beliefs and then at any given time we can query that model for our marginal distribution over any given hypothesis.</p>
+<p>And it turns out that this kind of setup has many practical applications.</p>
+<p>It's also noteworthy that even with very simple systems like these, these are like out of the box, controllable and explainable.</p>
+<p>So just by storing the magnitude and the direction of the update to the posterior for each piece of evidence that we observe, we have a very natural built in explanation for our belief at any given time.</p>
+<p>And that makes kind of like these applications where folks might really like to use a language model, but really require like a robust, like causal relationship between the outputs and the explanation, which you don't get from a language model on its own.</p>
+<p>A system like this can be very appealing in those situations.</p>
+<p>All right, so now on to further work.</p>
+<p>So everything that we've discussed today is early work towards integrating language models into more probabilistic frameworks.</p>
+<p>And there's been a lot of exciting work done in this vein right now.</p>
+<p>Some important questions which are especially interesting to me are which parts of the world model should be learned versus encoded?</p>
+<p>And how do we want intelligence to scale?</p>
+<p>So I mean that both in the sense of composing systems naturally, there should be some very like natural way that we can compose to intelligent systems and also such that we can scale them with compute.</p>
+<p>And I don't mean to restrict myself either to the kinds of compute that we have today.</p>
+<p>We're also working at some exciting new computing paradigms at normal, which might be more compatible with software of this nature.</p>
+<p>And also the two folks that we referenced at the beginning of the talk, Jeff Hinton and Jan LeCun have done really exciting work in this area, which is, yeah, very inspiring.</p>
+<p>And so in particular G flow nets are also probabilistic graphical models, which I think folks will find a natural next step in reading.</p>
+<p>Yeah, if you so desire.</p>
+<p>And that's, that's it for me.</p>
+<p>Awesome.</p>
+<p>Thank you.</p>
+<p>Wow.</p>
+<p>Very cool.</p>
+<p>Dan, do you want to give a first reflection or thought?</p>
+<p>And then meanwhile, anyone who's watching live, please feel free to write questions.</p>
+<p>I'll relay them in.</p>
+<p>Absolutely.</p>
+<p>So hi, I'm Dan.</p>
+<p>I work with Phoebe on this project.</p>
+<p>And yes, the I think the thing that's most exciting about this for me personally is sort of twofold.</p>
+<p>One of them is that it's a way of avoiding sort of having to trust a language model to understand and reason about text.</p>
+<p>Because they're not, it's not that they're bad.</p>
+<p>The thing is that the extremely strange thing about language models is they're quite good at being almost good enough.</p>
+<p>But they're never quite what you could use.</p>
+<p>You could never use a language model to, I don't know, sort of triage, like an important sort of situation where a bunch of different things are coming in.</p>
+<p>You have to make a decision about which is important.</p>
+<p>The reason you can't do that is you simply cannot understand the encoded biases.</p>
+<p>You cannot get it to reliably generate reasoning.</p>
+<p>You can ask it for reasoning, but the thing that it prints out is not the reasoning that it used internally because it doesn't reason.</p>
+<p>Fundamentally, while these have input and output that are natural language, they are not artificially intelligent.</p>
+<p>They are just prediction machines.</p>
+<p>And so we have to be very careful about not anthropomorphizing them.</p>
+<p>So this is a way of using those incredibly powerful prediction machines in a framework where we can make sure that we essentially keep a record of what we're doing so that a human can look at it.</p>
+<p>Because, I mean, there's a lot of talk in this world about sort of post-human AI and those sorts of things.</p>
+<p>The idea that the machines will become intelligent enough or the machines will rise up in a slightly more alarming type of way.</p>
+<p>And that's all great and wonderful, but that's not particularly interesting to us at normal.</p>
+<p>We're much more interested in sort of having, you know, mimicking explicit decision processes so that a human can audit them and can make these things work.</p>
+<p>So that's kind of the like the area that we're sort of coming from.</p>
+<p>Awesome. All right. I'll go to a question from the chat.</p>
+<p>So Josh asks, great talk. Where does hypothesis relevance enter the calculus?</p>
+<p>Is it folded into confidence? Not sure if it ought to be. Just saw hypothesis relevance mentioned.</p>
+<p>Hypothesis relevance. Does that mean like which hypotheses are conditioned on each other?</p>
+<p>Is it possible to ask a clarifying question there? Maybe Dan, you have a better idea.</p>
+<p>They can follow up. But yeah, like I also wondered about this. Like you might know what was relevant.</p>
+<p>Maybe the temperature and the rainfall were relevant. But then how does this approach help us understand when one of those relevant factors no longer is relevant or when a new relevant factor comes into play?</p>
+<p>Hmm. Yeah, these are great questions. So I think in terms of understanding in an automatic sense when two hypotheses are relevant to each other, we can leverage embedding type language models for this kind of thing.</p>
+<p>Also, if we don't have a more kind of like structured human intuitive sense for when two hypotheses are are related in terms of like how those relationships evolve over time, this is something that's really interesting to me.</p>
+<p>And I think looking at the theory behind structure learning or when we propose to add new nodes to the network or propose to add a new edge to the network or things like this is a really exciting research direction.</p>
+<p>Although I don't have like a silver bullet answer to how we should do that.</p>
+<p>Just to like add a little bit more to that. It is like it is a really interesting research direction.</p>
+<p>Like one of one of the things that Phoebe mentioned in the talk is that there is a difficult step that we're not talking about, which is actually translating this natural language into reasonable hypotheses.</p>
+<p>So there is a step in there where you take essentially a chunk of text and you have to decide if this is a hypothesis, if this is a hypothesis we've seen before, if this is a sub hypothesis or a clarification of a hypothesis that we've seen before, and so on and so forth.</p>
+<p>So that's in some sense part of the data processing and it is an important step and one that we are sort of continuing to work on and refine.</p>
+<p>The other thing like a different sort of interpretation of the question around relevance is around sort of is the hypothesis relevant to the thing that you're looking at.</p>
+<p>I mean, we could have a hypothesis that the sky is blue, but if we are deciding to deciding, you know, whether whether or not we need to check that car's oil, like the truth or not of the color of the sky is very irrelevant.</p>
+<p>And that then comes into the nice thing about having your world described as a collection of statements with truth values associated with them in that you can directly reason over them.</p>
+<p>So you can put a classical decision framework over that to take into account both the knowledge you have of the world and also which parts of these worlds are sort of unknown.</p>
+<p>So in that sort of situation, the person using the world model to construct a sort of decision or an output will be responsible in some sense for assigning a weight or a cost to each hypothesis being true.</p>
+<p>And for some of those hypotheses, obviously it will be zero because again, we do not care about the color of the sky if all I want to know is if I need to change the oil in my car.</p>
+<p>So that's the, that's the sort of the other end of the answer.</p>
+<p>So there's a version of the answer at the start of the information flow and there's a version of the answer at the end of the information flow, but it is a tricky point and one that we are sort of continuing to iterate on to try and find sort of good ways on both ends of that.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Well, a lot there.</p>
+<p>Um, it's very interesting how in that presentation and response, I heard both about probability distributions on rules and rules on probability distributions and like wit, which one, whether it's the tail wagging the dog or the horse in the cart, how to design these synthetic intelligence systems that are, you know,</p>
+<p>that appropriately bring together aspects that are more symbolic, more rule-like, and then more probabilistic, more embedding like.</p>
+<p>So where does that land with you or how do you see the design of these systems with mixed symbolic and probabilistic components?</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>That's a great point.</p>
+<p>And I think this really gets it like which parts of the world model should be learned, um, or should be represented in some like more discrete space versus like,</p>
+<p>encoded based on our own human intuition for rules and structure.</p>
+<p>Um, and I, I think like maybe this is.</p>
+<p>Would be fairly represented as a cop-out answer, but I think it depends a lot on the application.</p>
+<p>Uh, I think like when we're developing systems like this and, and just trying to iterate through as many different, um, hypotheses, uh, as you can quickly, um, like choosing an application and, and benchmarking and testing and seeing like what actually works.</p>
+<p>Um, is, is, is, is a go-to strategy for us, uh, in terms of like, well, which parts are, should be fixed and are actually helpful, um, to increase reliability such that like we can use our human intuition for how this particular, you know, system is built.</p>
+<p>Uh, versus like, uh, versus like, well, this is something that we, we want uncertainty over.</p>
+<p>That's like a really important part of the learning process for us in terms of, um, yeah, that kind of iteration.</p>
+<p>Um, so I think, I think it probably depends on the application.</p>
+<p>Um, yeah, it's, um, it, it definitely depends on the application.</p>
+<p>It's also, um, like depends on where the actual challenge points are.</p>
+<p>So we've got like outside of this, we've got sort of a few other things that we've released publicly that kind of look at this idea of there being.</p>
+<p>Um, there being like external rules to the, um, to the, the system and whether or not we can add those in.</p>
+<p>So one of them is something called constrained generation, where we, we sort of force the model to only produce something valid.</p>
+<p>And that's sort of quite a useful way of removing one particular aspect of stress to, from the model, which is that it may make sort of syntactically or sort of in somehow incoherent, um, outputs that don't follow the rules.</p>
+<p>And then we can then focus with the rest of our energy.</p>
+<p>We can then take that as given and focus with the rest of our energy on improving the bit that we don't have rules for.</p>
+<p>Um, so, so those sorts of things and sort of a different version is trying to improve something by saying, no, you broke a rule.</p>
+<p>We need to like go back and make this not sort of true.</p>
+<p>So this kind of, um, sort of chain of thought prompting type of idea.</p>
+<p>Um, so, so yeah, the, uh, the symbolic and the probabilistic, um, I think in our minds live very closely together as two tools that don't completely solve the same problem.</p>
+<p>Um, and I think there's sort of in, in the world of, I'm not sure how familiar anyone in the audience is with language modeling, but like in the world of language modeling,</p>
+<p>the world of language modeling before this sort of explosion of neural networks and artificial intelligence type methods, uh, there was a lot of work on symbolics of language and grammars and all of that sort of stuff.</p>
+<p>And that work pushed quite a long way forward.</p>
+<p>Um, and this work is pushing quite a long way forward.</p>
+<p>And I suspect the next thing is going to involve them joining up again, uh, because they each have good points.</p>
+<p>They each have bad points and you know, who wrongs don't necessarily make a right, but they can make the less wrong.</p>
+<p>Nice. Yeah. Recently we heard from Elliot Murphy and talking about the neuro linguistics and about how the statistics of language are not the rules of language.</p>
+<p>You can always come up with a new expression. That's never been uttered. That's not going to be in the training distribution or any distribution.</p>
+<p>Okay. I'll ask a question in chat from up cycle club. They wrote, what are some of the key challenges associated with developing such Bayesian world models?</p>
+<p>Hmm. I think we've touched on a bunch of them. Um, the ones that are most top of mind for me right now are, are this, the structure learning thing that came up.</p>
+<p>So how do we understand like when to propose new hypotheses and how to integrate those into the models?</p>
+<p>Um, and then, yeah, just figuring out like, yeah, I guess this like proposal and evolution process of the nodes themselves.</p>
+<p>Um, since everything else, like the framework like works pretty automatically and in a reasonable way.</p>
+<p>Uh, thank you base. Thank you to the development of language models.</p>
+<p>Um, but kind of moving from this, like more, uh, discrete case into a continuous case, um, which like more fully represents the space that we're learning over, um, can be challenging.</p>
+<p>Yeah. Um, I would also say that like, it's a sort of a maxism that max, maxism. What on earth did I just say? There's a, there's a common saying, let's go in that direction.</p>
+<p>Uh, there's a common saying in this world that, um, that sort of no model ever survives its first encounter with data.</p>
+<p>Um, and that, that becomes true here as well.</p>
+<p>So there's lots of like, as we've been building these things and using them, we found lots of little spiky edge corners with sort of making sure that the language world is actually doing what we want it to do.</p>
+<p>So there are a lot of questions in building these things around how do you actually test that the, the, the, the components of it are actually working the way you want.</p>
+<p>And then on like a broader level, how do you compare something that is fundamentally trying to solve a different problem, um, to other methods.</p>
+<p>So we are solving a problem under the constraints that we want a fully auditable system.</p>
+<p>Um, we could also solve all of these problems by a thing called in context learning, which is basically putting the context into the prompt of a large language model and asking it the answer.</p>
+<p>And that also works, uh, especially when you've got things like GPT four, which are just wonders and glories.</p>
+<p>Um, it works really well.</p>
+<p>So then we come to the question of how do we actually make the case for this from a, like a bigger picture perspective?</p>
+<p>Can it be more than just a, like, can we find benchmarks that reflect, um, the structural advantages of this approach over something like in context learning, uh, that don't come across as false.</p>
+<p>So that's kind of like a, a, a, a stranger answer because it's not really about like actually developing the world model.</p>
+<p>It's about sort of convincing other people that it's a good idea.</p>
+<p>Um, and that's, you know, that, that is a thing that is true of essentially all of the things on this slide as well.</p>
+<p>They are all quite complex and odd little methods, um, that, you know, there's a, there's a degree to which, well, we definitely can solve this an easier way.</p>
+<p>Um, so what is the thing that, what is the, the, the application or the benchmark where we can say, no, if you do it the easier way, you will fail at this measurable thing.</p>
+<p>Very interesting.</p>
+<p>Um, so you mentioned the self evidencing advantages of using world models that are self evidencing rather than reward maximizing, for example.</p>
+<p>So how do you see that playing out and I can connect it back to active inference, of course, but how do you see this self evidencing centrality play out in the kinds of models described here?</p>
+<p>Yeah.</p>
+<p>Well, I think there are a couple of reasons why it's so compelling to me.</p>
+<p>Uh, and the first just has to do with explainability, right?</p>
+<p>Like it's really convincing to people to say like, well, why, why did we predict this?</p>
+<p>Why do we believe this?</p>
+<p>Well, this is the actual real world data that we've observed such that, you know, this, this is the impact that that's had.</p>
+<p>Uh, and then I think like, uh, I don't know, you hear a lot about like designing these really complicated reward functions, which are often very clever, but which, um, often I feel like are close to being a pitfall because they very easily become like disconnected from like the complex world that we're trying to model.</p>
+<p>And so you end up in like weird local maximums or minimums and, um, yeah, you start like just kind of, uh, solving the problem that you've designed versus like the problem, which actually exists.</p>
+<p>And so, um, I, I just have always loved the idea that what we should be doing is, um, kind of self evidencing and from an intuitive sense, that feels like what.</p>
+<p>It feels like what an intelligence system should do.</p>
+<p>Uh, yeah.</p>
+<p>Yeah.</p>
+<p>I don't have anything interesting to add to that.</p>
+<p>I just agree with baby.</p>
+<p>That explainability and the capacity to explicitly reference previous data, including like leave one out.</p>
+<p>So techniques from nonparametric statistics about the effect of adding in another piece of data or removing a piece of data.</p>
+<p>Um, and then just like to bring it to like a homeostatic setting, which is a commonly considered an active inference.</p>
+<p>Like we're trying to be within a homeostatic temperature range of 37.</p>
+<p>Yes, we could propose reward functions, but as those start to include open-endedness and exploration structure learning, just like you described it, Phoebe, like we're solving the problem as designed rather than the actual question of the homeostatic temperature and the sort of path of least action.</p>
+<p>First principles, first principles, physics grounded intelligence perspective from active inference is like, make it the kind of thing that measures itself at 37.</p>
+<p>And then as long as it is, it is.</p>
+<p>And when it isn't, it's dead.</p>
+<p>And that's the kind of mortal computing crossover, which is like outside of its zone of surprise.</p>
+<p>It, it's not just that it's getting a bad grade in the class.</p>
+<p>That is like a deeper failure signal than that.</p>
+<p>And to understand, okay, when is it a yellow flag?</p>
+<p>When is it a red flag in terms of the new scientific literature coming in?</p>
+<p>Those have plain, straightforward ways to interpret that developing larger, higher order apparatuses will never return to that kind of basal simplicity.</p>
+<p>Yeah, couldn't agree more.</p>
+<p>Yeah, absolutely.</p>
+<p>Yeah, absolutely.</p>
+<p>Yeah, absolutely.</p>
+<p>It also like the other thing that it can do quite well is deal with essentially outlier studies.</p>
+<p>So situations where you have a new piece of information that is strongly conflicting with all the previous pieces of information and trying to sort of work through what that really means.</p>
+<p>And there's a degree to which we can even sort of extend this process to multiple agents that have these belief systems and then look at sort of consensus of experts or weighted consensus of experts.</p>
+<p>So for instance, you could have like a weather vane type of situation where somebody really over indexes to every new piece of information.</p>
+<p>And you would do that with, you know, technically you do that with maybe a power posterior type thing.</p>
+<p>Or you can have somebody who's built in strong priors in a particular direction.</p>
+<p>And you can then like take your consensus of artificial sort of decision making, all of which has within their universe, well reasoned updates to the data.</p>
+<p>And then you can look and try and work out what that swarm of experts can tell you and sort of do very empirical things like try and, you know, work out which of these experts is doing well at a particular moment in time.</p>
+<p>Because, you know, there could be times when the world's very, or the problem that you're solving is very chaotic, in which case, the over indexing expert would probably be a pretty, pretty solid bet.</p>
+<p>While there are other times where sort of things are pretty stable.</p>
+<p>And you probably, it would be possible that the sort of the more conservative expert is more sort of empirically making good decisions and good recommendations.</p>
+<p>So there's like a lot of ways that we can not just like incorporate these sort of homeostasis type ideas, but we can also change what that means for different agents and artificial, like do that artificially and then combine them together to try and get a, almost like a, um,</p>
+<p>like blanking on the word, but, you know, um, a forecast under a sort of a hypothetical set of situations.</p>
+<p>And we can actually sort of bring those ideas of the world forward and see what happens when they sort of meet with actual information.</p>
+
+<p>This angle of mixture of experts, as it's sometimes called more in the language model space or ecosystems of shared intelligence or diverse intelligences in the active infrastructure.</p>
+<p>In the active inference area.</p>
+<p>Like that's very interesting, obviously has connections back to human teams and teams of beyond humans and so on.</p>
+<p>Um, a lot of this is still text based.</p>
+<p>So maybe you did or didn't mention what representation the base graphs are, but they're plain text like, and there was a lot of discussion about.</p>
+<p>A lot of discussion about bringing from natural language, scientific papers, or however it is into a structured form.</p>
+<p>And then the explain method that you showed kind of taking the structured form and just giving a little syntactic fluency.</p>
+<p>So it looks human readable.</p>
+<p>So how do you see that essence coming into play with multimodal models?</p>
+<p>And then with action in the world that isn't just developing the next text token, but a robotic actuator or modifying some other control element of the world.</p>
+<p>Yeah, that's a really good question.</p>
+<p>Um, I honestly haven't thought much about multimodal stuff in this particular context, but I think, um, I think the framework is, is general enough at this point such that it, it's definitely could support lots of different modalities.</p>
+<p>Um, I, um, yeah, I'd be really curious to see how this did with something like audio in particular.</p>
+<p>Uh, yeah.</p>
+<p>And then, um, to your point about like, uh, yeah, this may be like discrete versus continuous, um, relationship.</p>
+<p>I think, I think that's like part of what we're, we're learning is how to go from like these long natural text documents to a system, which is appropriately discretizing, um, our hypotheses.</p>
+<p>Um, such that we, we have these like meaningful explanations, like you mentioned.</p>
+<p>Um, so I think, yeah, I think like continuing to develop like, uh, robust ways of, um, surfacing those explanations is a big part of this as well.</p>
+<p>Um, like over time, we're going to observe lots and lots and lots of evidence.</p>
+<p>Um, how do we make sure like, uh, hypotheses don't get stale and how do we use evidence to know when they are and, and things like this, um, are, are part of that also.</p>
+<p>I don't know if that directly answered your question, but that's some of the stuff that I've been thinking about related to that.</p>
+<p>So in the, I, I mean, in examples, like sort of moving towards robotics and sort of, you know,</p>
+<p>tech, um, video generation and image generation, other sort of audio, other sort of multimodalities.</p>
+<p>Um, to be honest, I think of these processes in general, as enabling us like building a world model to enable a sort of sequential decision process.</p>
+<p>Um, so if that decision process happens to be, should the robot turn left?</p>
+<p>And that's what the sort of the decision process is.</p>
+<p>It's, it's multimodal in like a very classical sense that you can put any type of decision framework over the top, but it's not sort of generatively multimodal.</p>
+<p>I'm not saying write me a song that sounds like Beyonce and a song that sounds like Beyonce comes out.</p>
+<p>I think this, this sort of, this sort of Bayesian world model layer is blocking towards that sort of thing, but that's, that's really not sort of the aim of what we're trying to do.</p>
+<p>It's also like within normal, like our almost, I don't want to, I don't want to say mantra or manifesto cause that sounds culty and no one wants to sound culty, but like our, our basic aim is to always center like humans within our process.</p>
+<p>Um, and so some of this multimodal stuff, it's less clear where the human lives.</p>
+<p>So for instance, like a video generation type thing, where does the human live?</p>
+<p>So keeping it at this abstraction of sequential decision-making, then it's a decision that a, that a human could do, you know, human with their thumbs could be moving, uh, like a robot around and doing that sort of stuff.</p>
+<p>Um, but yeah, it's, it's really all about sort of controllability and auditability for us in sort of a sequential decision process.</p>
+<p>So to the extent that that sort of leads in its multimodal world, that's, um, that, that's sort of part of what we're doing.</p>
+<p>And like to some, some versions of multimodality, um, is we're, we're just not swearing in that particular space.</p>
+<p>Um, yeah, not a great answer, but.</p>
+<p>That's a long one.</p>
+<p>Let them distill it down later.</p>
+<p>Um, in the, um, auditability area, it almost falls out to me to be like a syntax of auditability and a semantics at the syntactic level, just tagging or versioning when a file comes in or when a given computation is executed.</p>
+<p>That is basically transfer across all settings.</p>
+<p>And then where I see you honing in on with, with this work is kind of the semantic auditability, which is actually how we compose our accounts.</p>
+<p>I would have driven, but I decided to walk because this happens.</p>
+<p>And so bringing that different kind of trace to, to systems is going to make it, um, what will it open up in science or education?</p>
+<p>And then, um, what will it open up in science or how do you see this sitting at a console somebody is at now and making this different?</p>
+<p>Like over what timeline?</p>
+<p>Hmm.</p>
+<p>Yeah.</p>
+<p>I mean, it's really quite nice for storytelling because as you said, you can say things precisely like, well, you know, because we observed this thing or because if we had observed something else, you know, like maybe you can even make statements which are, um, yeah.</p>
+<p>Conditional in that sense, uh, I think it does like empower whoever is sitting in front of this data to feel like really sure about again, like that, the reasoning engine that like that went on, uh, which to me is, is pretty different from what it feels like to sit in front of chat GPT, even though it's quite useful often.</p>
+<p>Um, you know, you, you, you try the code and it works or it doesn't work or you like, you know, ask your friend, is this really true?</p>
+<p>Um, and that feels pretty different to me from being able to, to look at the evidences themselves and say like, oh, well actually, if this is the reason you think that I know that that evidence is, is not true.</p>
+<p>Or, you know, like you can bring your own human intuition or world model, uh, in terms of validating or, um, yeah, superimposing what you believe on top of what this system believes.</p>
+<p>And so that makes it really easy to make decisions, um, quickly.</p>
+<p>I think there's also sort of a converse of this, which is that it also makes it clear which evidence was not used to make a decision.</p>
+<p>Um, uh, and that can be quite telling in these situations where you could be worried that a particular type of evidence isn't being weighted correctly or isn't being, um, sort of formatted correctly.</p>
+<p>So again, like if this is a sort of a, uh, like a system that builds an assistant, um, that sort of does surfaces all this information and sort of makes a recommendation with recommendations.</p>
+<p>With reasoning for a person that person can then look and be like, and they know what the data is.</p>
+<p>They can look at the data and say, you know, why didn't you consider the make of the car?</p>
+<p>Or why didn't you consider this?</p>
+<p>Or why didn't you consider that?</p>
+<p>And they can then use.</p>
+<p>Their understanding of what's not being prominently used by the model to sort of sense test.</p>
+<p>Like it's, it's sort of, I mean, in some sense that usage of it is a reformulation of what Phoebe just said, where you use your internal world model.</p>
+<p>But it's like, I think it's, it's important to know when evidence is being used.</p>
+<p>And this is like, I think you simply cannot get, um, from, from like a GPT type thing or any sort of like prompting type method.</p>
+<p>We know for instance, that like, um, the order of the order that you submit your evidence in is probably going to matter for a prompting based method.</p>
+<p>Okay.</p>
+<p>That's obviously not true for a Bayesian update where we have this sort of this, this coherence principle, where if you shuffle your data and enter it in a different way, you will get the same posterior.</p>
+<p>Up to computational artifacts.</p>
+<p>Um, so, so, so all of that is like, in my mind is just as important to audibility as the ability to write a report that says I made this decision for these reasons.</p>
+<p>Yeah.</p>
+<p>Well, that makes me think about this kind of view from the inside interpretability where the rules help.</p>
+<p>And also knowing what evidence is not used is important for compliance and knowing what information like in a healthcare setting was or wasn't used.</p>
+<p>Um, what about thermodynamics?</p>
+<p>We heard about free energy.</p>
+<p>Boltzmann came up.</p>
+<p>How do you see the info thermo nexus?</p>
+<p>What have we learned from the last hundred years of thermodynamics and information theory and all of this and on the software or hardware side, how is that kind of a free energy nexus being used?</p>
+<p>Yeah, I mean, I, I'm really excited about how all of this seems to be coming together.</p>
+<p>Um, I, I think free energy just keeps showing up in all of these exciting areas.</p>
+<p>To me, we have like a book club for singular learning theory and like they talk all about free energy too.</p>
+<p>And I think some of those ideas are really exciting.</p>
+<p>Um, I mean, at normal, I think like the thing that I would highlight is like this idea of software, hardware, co-design, um, which is really special.</p>
+<p>Uh, and so we're trying to do this hard and fun dance towards each other where we're like thinking about these new kinds of systems and how they might support each other and, um, empower each other.</p>
+<p>And, and yeah, how to build full stack systems.</p>
+<p>Um, which is really challenging and also really exciting.</p>
+<p>Um, yeah.</p>
+<p>And I think like from like a first principles thermodynamics perspective, like, like we're all just, uh, yeah, we're all kind of like mathematics and physics people at heart.</p>
+<p>So like going, taking like, uh, you know, all of what people have learned in language modeling and all of that, like, um, very much to heart as well.</p>
+<p>Like I think approaching whatever problem that we're facing from a first principles, how do physical systems work in the world?</p>
+<p>What do we really, what are the assumptions we're really comfortable with?</p>
+<p>Uh, and building up from there, um, is definitely our, our natural mode.</p>
+<p>Uh, so I think that makes it easier to start working together also.</p>
+<p>Um, it's also probably worth saying that we have.</p>
+<p>A sort of a secondary, not secondary, a very different stream of interest in thermodynamics as well, which is the ways that we can use actual physical thermo dynamical principles to build hardware.</p>
+<p>That is specifically has sort of noise in it as a first class citizen.</p>
+<p>And because of that, it is particularly well suited to probabilistic tasks.</p>
+<p>Um, and so we've, we've built, if you, if anyone wants to look, we have a blog, I believe the URL is blog.normalcomputing.ai.</p>
+<p>Um, and amongst other things that are on it, uh, there is the very first demonstration of using physical thermodynamic hardware to actually do computations.</p>
+<p>Um, is the computation, the most vital computation that we will ever do.</p>
+<p>It's inverting an eight by eight matrix.</p>
+<p>So no, we can do that other ways.</p>
+<p>Um, but it, it is sort of building up towards this idea that we can use thermodynamics, not just in our modeling and our understanding of the world, but also in our sort of low energy compute stack to actually realize these things.</p>
+<p>Um, so I think I, it's, I think it would be challenging to find a group of people on this earth who have more investment in thermodynamics and don't work in a physics department.</p>
+<p>Uh, because we have investment all the way through from sort of active inference type things, all the way down to this, like this, this hot thing goes there.</p>
+<p>Which is kind of cool.</p>
+<p>I'm not a physicist.</p>
+<p>So I have, but that's my view.</p>
+<p>That's my understanding of thermodynamics.</p>
+<p>This hot thing goes there.</p>
+<p>Informative thing goes here, hot thing over there.</p>
+<p>Call it a day.</p>
+<p>Um, yep.</p>
+<p>That it's a really cool fusion with the kind of parsimony and elegance and the aesthetic of math and physics.</p>
+<p>And first principles and the different parsimony of pragmatism with the actual material basis, like of a synapse, the size of the synapse and the kind of stochasticity that that size alone entails with like membranes and all of this.</p>
+<p>And then those stochastic aspects are leveraged for the compute.</p>
+<p>The synapse is not simply a variance reducing machine.</p>
+<p>And so it's like both the platonic slash mathematical ish spirit finds a common home in these real simple physical demonstrations.</p>
+<p>And, um, today it feels like there's a big gap between the, um, meso scale computational architectures that you described today that are very much running on the kind of Von Neumann architecture Turing completeness paradigm.</p>
+<p>And yet very tantalizingly close, like to a physical object that has a constrained rule.</p>
+<p>Um, di-facto, like only one thing can come out of this at a time, as long as the funnel is this wide.</p>
+<p>and so bringing the rules and the regularities of what we call physical things</p>
+<p>to bear with the fundamental and the imposed constraints on informational spaces</p>
+<p>it's very cool directions um one other note about just where active inference um an action</p>
+<p>plays a role is um and also you mentioned like the hypotheses going stale or like sort of data being</p>
+<p>over relied on um in the proactive stance where we're using expected free energy or something like</p>
+<p>it to to calculate future courses of action over observations that we haven't seen yet moves that</p>
+<p>haven't been made yet there's an explicit epistemic value and so that can be diagnosed and observed</p>
+<p>as a measure of where a given computation is on the continuum between purely pragmatic value</p>
+<p>just constraint satisficing and realizing preferences and expectations and then the pure epistemic value</p>
+<p>where all outcomes are good and the more information gain the better and then being able to take control</p>
+<p>of that balance and know amidst changing situations again taking probabilistic or rule-based approach there</p>
+<p>to when epistemic and pragmatic like gas and brake kind of come into play these are very basal um</p>
+<p>control knobs or features in active inference that it's just not going to show up at the 50th layer of</p>
+<p>scaling is all you need</p>
+<p>yeah yep cool well do you have any other like thoughts or things you want to add or questions or where things</p>
+<p>are heading for your works</p>
+<p>nothing to add at this moment but certainly uh excited to keep in touch with this community and</p>
+<p>yeah collaborating yeah absolutely um and we sort of share i mean we write papers and stuff but we</p>
+<p>mostly like we share most of what we do uh be it academic in the sort of machine learning space or be it</p>
+<p>in the um sort of the physical hardware space uh on our blog which is blog.normalcomputing.ai</p>
+<p>um and yeah thank you so much for inviting us it's been very fun awesome thank you hope to speak again so</p>
+<p>thank you</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+</article>
+</body>
+</html>

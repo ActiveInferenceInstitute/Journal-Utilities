@@ -1,0 +1,2510 @@
+---
+title: "Active Inference Stream #010.1: "A variational approach to scripts" (2020)"
+duration: "1:23:06"
+url: "https://www.youtube.com/watch?v=3Sg1sAlgQaM"
+views: 264
+exported_at: "2026-02-18T22:37:37.681234+00:00"
+format: markdown
+---
+
+# Active Inference Stream #010.1: "A variational approach to scripts" (2020)
+
+hello everyone
+and welcome to the active inference live
+stream
+this is active inference live stream
+10.1
+and it is december 8th 2020 we are
+really excited to bring you a
+scripted or unscripted not sure maybe
+we'll figure it out
+discussion on some exciting topics so
+let's
+get right into it i will share my screen
+for the participants
+welcome to the active inference lab
+everyone we are an experienced
+experiment and experience i guess in
+online team communication
+learning and practice related to active
+inference
+you can find us at our website on
+twitter
+at our email address our youtube channel
+or
+public key based team and username this
+is a
+recorded and an archived live stream so
+please provide us with feedback so that
+we can improve on our work
+all backgrounds and perspectives are
+welcome here
+and just as far as video etiquette for
+live stream goes
+remember to mute if there's noise in
+your background raise your hand so that
+we can hear from everyone
+on the stack and use respectful speech
+behavior
+also just a logistical note all the rest
+of the meetings
+for 2020 are going to be at 7 30 to 9
+a.m
+pst and today we are in 10.1
+discussing a variational approach to
+scripts next week at the same time
+we're going to be having a follow-up
+discussion 10.2
+and then in the last two weeks of
+december we're
+going to be talking about the paper
+sophisticated effective inference
+and that will be on the december 22nd
+and 29th
+so contact us if you want to participate
+in these discussions or
+in 2021 or if you have an idea for
+something that we could do
+on an active stream today
+in act in stream 10.1 we are going to go
+through
+introductions and warmups and then we'll
+go to template one
+we're going to be discussing the paper a
+variational approach to scripts
+and if you want some background context
+you can check out active stream 10.0
+we're going to talk today about the aims
+and claims
+or the hopes as they were and the
+abstract and the roadmap for the paper
+thankfully with one of the authors on
+board and then we'll talk about some
+different kinds of scripts
+talk about scripts and their uses ask a
+few questions related to that
+and then close with looking through the
+figures and just discussing what they
+might mean
+and next week in 10.2 we're going to be
+on this same paper
+so save and submit your questions or if
+it's after 10.2 just write them in the
+comment section
+and get in touch if you want to
+participate
+for the introductions and warmups let's
+introduce ourselves just by giving a
+short introduction or check-in
+and then we'll pass it to somebody who
+hasn't spoken yet
+so i'll start i'm daniel i'm
+excited for this conversation and i will
+pass it to
+our first time visitor mao
+hi so yes my name is mao alba
+i'm one of the authors on the paper
+along with axel constance maxwell
+ramstead and karl fristen
+i'm a first year phd student in quebec
+and i'm working in cognitive computing
+uh to try to establish how we can
+formalize
+epistemic communities through active
+inference
+cool then we'll pass to another first
+time guest rj
+sure uh so my name is rj corday uh i'm
+in new york
+and i'm currently researching
+organizational dynamics intelligence
+analysis and narrative warfare keep it
+short
+about sasha
+thanks hi i'm sasha i'm based out of
+california
+and i'm also a graduate student studying
+developmental neuroscience
+with that i'll pass it on to blue
+blue muted we can hear you
+awesome thank you i'm blue knight i'm
+from new mexico
+and i am an independent research
+consultant and i'm currently working on
+agent-based modeling and a bunch of
+other random things
+i'll pass it to shannon
+hey i'm shannon i'm typically based out
+of california
+i'm also a phd student i'm interested in
+music neuroscience or i work on music
+neuroscience
+and i'm interested in
+music and social interactions so i was
+really excited
+for that social side of this paper and
+i'll pass it to yvonne
+hello my name is ivan i'm based in
+moscow and
+i'm interested in active inference as it
+goes with the systems engineering
+and i'm very excited about this paper i
+found it
+uh very interesting cool
+thanks everyone for coming out and for
+everybody who's watching it
+live and replay so for the warm-up
+questions
+section everybody is welcome to throw in
+a thought
+i'll put up the uh first two questions
+and just raise your hand so that we can
+hear from anyone the first question
+is what interests you or excites you
+about studying scripts
+so kind of what drew you to this paper
+whether from the active inference side
+or from the social sciences side
+and then what's something that you
+thought about after
+reading the paper so while people are
+raising their hand i'll start
+i think what interested me in uh
+studying scripts
+was just addressing all of these
+different social contexts with one
+integrated framework that's kind of an
+appealing idea
+mao
+well yeah and i think it's also it's
+sort of a road map that links
+internal and external manifestations
+of our general understanding of the
+world and
+systems dynamics that get um
+brought together
+through these islands of negentropy that
+become these scripts
+if that makes any sense cool
+rj um so
+uh after i read the paper what i ended
+up thinking about
+is what what do the conditions look like
+for threshold events for changing
+scripts um
+that's a really interesting to me and
+then um
+what kind of like what what would the
+metadata be and this is something we had
+discussed
+uh before is like what would the
+metadata be if we wanted to catalog
+the scripts that are that are operating
+in a system
+cool and that um bringing up that
+negentropic
+idea the sort of organizing principle of
+scripts
+that's pretty interesting too because uh
+in combining what both of you just said
+how do we change a script from one
+island of
+stability or organizational attractor to
+another organizational attractor
+if we go from one organizing principle
+maybe we don't like some aspects of it
+but if we just go from order to
+pure disorder that's not doing the
+society of service so we want to move
+from order to order
+ideally through order but how is that
+actually going to be
+uh tracked or designed and then just
+the last up shannon go ahead yeah that's
+actually exactly the one question i had
+written on my paper
+um are is what age rj and um
+daniel mentioned like what
+can active inference help us to identify
+like when a critical transition will
+happen or when
+we'll switch scripts um it's really easy
+in
+it's really easy i say but in in music
+we have scripts
+and it's either written on a piece of
+paper or it's
+the cultural transmission of how you
+perform in this genre
+of music alone or with others and
+as long as you know that that's the
+script that you're starting from you
+know how the social interaction will
+transpire
+and then if you want to do an experiment
+you're like you know
+that's the constraints that you have and
+you can pick out the interesting
+features
+that you want to empirically measure
+like whether it's body sway or the
+actual music that's being played
+but um in the example that runs through
+the paper of flirting
+you don't necessarily know the goal of
+the interaction
+if you're observing it or the goal of
+the interaction if you're in it
+because it's not codified in like this
+very formal or traditional framework in
+the same way that
+like a musical interaction is so
+identifying the threshold or identifying
+how those transitions happen
+would be very different in those two
+types of interactions
+cool blue
+so i was excited to really learn more
+about um
+how scripts can interact in a
+hierarchical way
+like just the paper kind of mentioned it
+but didn't really unpack it uh
+thoroughly and i just would like to
+really kind of dive into that
+yeah and the music and the cultural side
+it's uh maybe with a musical ensemble
+they could agree to play a different
+song within the same style or agree to
+play a different style
+and then we could ask the same with
+culture but it's a little bit more
+challenging to
+simply adopt a different cultural regime
+but maybe within a culture there's a lot
+of latitude so there's this question of
+nesting and
+horizontal interactions and about style
+controlled novelty so i think there's a
+lot of cool
+ideas we'll be bringing up any other
+comments here on these warm-up questions
+mal
+up you're me too
+sorry so yeah that's the idea that's the
+goal the um
+eventually measuring where the threshold
+happens um
+we have another paper that's being
+written and that's
+trying to identify how scripts
+tend to become overlapping through in
+interaction in society and when they
+become overlapping they
+they become analogical so um the scripts
+of femininity and masculinity are not as
+segregated as they used to be for
+instance i'm wearing no
+nose sleeves
+in these 1800s but would definitely have
+been acceptable for men
+nowadays it's not a problem anymore both
+men and women can wear it so these
+these scripts have tended to overlap and
+we're seeing that because
+the scripts overlap they become a little
+bit meaningless because they're not
+allowing us to predict anything
+so there's going to be to be a point
+which we're kind of sensing already
+where the concept of gender as a strict
+binary
+is just breaking apart and we're seeing
+new
+uh new concepts emerge new new
+possibilities so this
+this is where the threshold can be
+measured and i think we can definitely
+formalize that
+as far as codification um
+art in general is just a series of codes
+that once you have you get to break it's
+just it's become this sort of script in
+art where
+you have to break the script you you
+have to use what we know
+in order to continually create novelty
+but
+think of all of the hollywood movies
+that depict flirting
+it's pretty much the same like there's
+there's a few scripts that are possible
+but if you look at it abstractly
+it's basically you know you don't you
+don't flirt necessarily
+uh with someone you have zero intention
+of ever ever becoming with
+in hollywood movies or you don't flirt
+with someone by
+hitting them on the head with a flounder
+you know like
+like there's some things that you know
+you're supposed to do and some things
+you know you're not supposed to do
+and the strictness depends on
+how wide one vision of the script
+becomes
+thanks rj i just uh
+something i picked up from what you were
+saying there uh on um
+on flirting in in in cinema like
+i feel like a lot of the comedies i know
+of are actually about
+script breaking so even even like
+outside flirting like something like uh
+there's there's a like common category
+like in in in the uk it's peep show in
+the us it's
+always sunny um where it's most of the
+show is just about
+failing to adapt to cultural scripts so
+i just want to know like i feel like
+there's there's some element there where
+we actually like contrast like exactly
+what it is we're not supposed to do as
+well
+yep there's the exception that proves
+the rule and then there's the
+the chess master who within the
+structure of the rules
+makes an innovation that appears in the
+short term to be breaking the rules
+and then there's this element of the
+media which is showing us for example
+maybe flirting scenes with things that
+wouldn't work in real life
+uh whether for anyone or for subset of
+people but
+often including very for example bold
+maneuvers
+they can't uh convey in the hollywood
+reality meeting somebody getting to know
+them over years
+not as exciting not as a clear
+foreshadowing so
+maybe there are sort of rule or script
+breaking things
+but then when we see that representation
+and maybe even starting to introduce
+some of these
+active ideas we see them in our sensory
+states
+and therefore we perceive them as likely
+or plausible and then we come to embody
+these beliefs about what is likely or
+possible
+or uh preferable in the world and we see
+people
+imitating behavior they see in the media
+so that can be used for
+good and for bad sasha
+yeah this kind of loops back to the
+question that i had after reading the
+paper which is
+um how do individuals convey
+um their
+true state or um their
+you know unique perspective on the
+script while conforming to the social
+script
+because um if we all acted like we were
+in a rom-com
+we would have different lives and
+relationships but clearly we all have
+very unique
+um and uh personalized
+um versions of that
+and i don't think any of us live in a
+rom-com but
+you know please correct me if i'm wrong
+yeah that's kind of the fun it's like
+asking what's the genre what scripts
+will my scripts uh or what genre will my
+scripts be drawn from am i in a tragedy
+am i in a war movie am i in a rom-com so
+that's kind of
+fun it's like what genre would your
+theme music be what kinds of conversants
+are you gonna
+be interacting with um mao did you have
+your hand raised and then aren't you
+yeah
+yeah go ahead so first thing is um
+i think you mentioned the the
+oppositeness and that's a really
+interesting idea like the
+that's also how new scripts emerge is
+that you have these
+these bubbles of counter discourse that
+come
+and that's either embody um embody
+portray something that is real in
+society but
+often invisibilized or something that
+um wants to push back on something that
+feels oppressive to a large swaths of
+society
+so for instance one great study that i
+saw i'm sorry about i i don't have the
+name of it right now but i'll send it to
+whoever wants it
+it was about the portrayal of abject in
+uk society and the point was
+there's all these mako versions that
+show you
+first all these women how they are not
+supposed to be so they take a woman
+and they portray her as very ugly often
+um lower class like they give her all
+the qualities you're not supposed to
+have and then they
+take her through this transition and
+they make over her life and suddenly at
+the end of the show
+she's happy her life is great her
+children love her her husband loves her
+again
+it's great and it's like this this
+movement from the abject that you're not
+supposed to embody to the
+to the ideal that you are supposed to
+embody and on the second note
+what you said i think sasha is that's
+exactly right but the thing is
+you are not the person in the rom-com
+you do not perfectly embody what
+she is even if they try to make her
+relatable
+you are connected through these tendrils
+of semantics to a variety of things
+that make you take what is possible and
+adapt
+all of these possible scripts into this
+new
+version of adapted contextual
+anchored script which is why there is
+variety as well
+cool rj um i was gonna say
+uh mao covered a lot of what i was gonna
+say actually so we're
+we're fairly saying i was just gonna say
+like that um
+i like actually i like the reference to
+like makeover shows i was gonna i was
+gonna talk about um
+a very opposite end uh but
+but uh greek art and stories where where
+it's
+it's very often and this is where like i
+think joseph campbell
+brings up the hero's journey um where
+it's from some state
+which is object negative not where we
+want to be to
+some other state none of us actually
+live in the rom-com like but but the the
+ideal being presented
+um isn't something we're supposed to
+mirror necessarily but
+something that kind of acts as a strange
+attractor um but
+yeah but anyway mal covered most of what
+i was gonna say there yeah rj
+i i wrote down literally hiro's journey
+because the makeover show if it's weight
+loss or
+about um norms for genders or house
+makeover
+or chefs it's always this hero's journey
+and it's a scripted
+hero's journey literally designed
+journey and then the interesting part is
+the policies
+that they undertake thinking about
+active those policies are not
+our affordances they have a team and
+they have a camera person and they have
+a
+coach so then it's like showing you
+the first point and the last point on
+the trajectory
+and saying well now you figure out what
+policy but the only example that you've
+observed the only
+example of what's a plausible affordance
+is something that is defined as being
+inaccessible to basically everyone so
+that's just like such a
+twisted way to play with how people
+actually improve themselves
+yet mao and then rj
+yeah so that's that's exactly right you
+you touched on a very important point is
+that
+take each script as though it was its
+own little like
+market blanket like it's not right but
+imagine
+um there's some parts of the scripts
+that will interact with one another and
+then there's these like blankets
+that move a little slower and through
+the blankets you can go to another part
+of the script and you can do this at all
+the levers so this was touching on the
+idea that
+someone else brought earlier that
+there's layers of scripts and that's
+absolutely true
+you can break down every script into
+smaller smaller scripts what defines
+a script is its edges so entering the
+script
+and leaving the script what happens in
+between can also be scripted but that's
+at a lower level right
+so for me to for me to speak here i had
+to go through a series of things but
+what really matters is that
+i'm here now and that this will be
+recorded but
+um getting here it doesn't really matter
+how right unless i'm coming from it
+as a as an academic so i had a series of
+steps that i did to get there as an
+academic
+the the way that you bring these scripts
+together your
+vectors from where you're coming from
+define
+also what kinds of policies you'll have
+available to you
+inside a given script cool rj and then
+we'll continue
+uh yeah uh oh also um real quick i like
+that that's that's quotable
+what defines the script is its edges um
+but uh
+i just wanted to add real quick uh that
+it's probably
+actually dangerous to optimize too much
+to say like the rom-com
+or the ideal like we don't actually want
+to copy it exactly right like i feel
+like maybe maybe
+uh um there's there's something there
+where
+where we're supposed to actually mutate
+the scripts we're being presented
+over time and that like if we actually
+optimize them exactly like a perfect
+mirror then we actually get instability
+but anyway
+cool well i hope if you're listening
+whether from the active inference side
+hearing about scripts for the first time
+or on the script side hearing about
+active inference you're starting to see
+where we are all getting excited about
+at this intersection the paper that we
+read today
+is a variational approach to scripts and
+the aims claims and hope of the paper
+were addressed
+in 10.0 so feel free to pause this video
+and recursively watch the other one if
+you want
+but mao since you're with us what would
+you say in your own words were the
+aims and claims or the intentions of the
+paper
+so the goal was to bring together
+fields that had different strengths the
+active inference right now is
+trying to move towards the the social
+dynamics
+it's doing a great job but there's still
+some way to go
+and in order to do so it doesn't have to
+reinvent the wheel
+on the other hand social sciences have
+done
+a lot of theorizing but it's it's
+difficult to
+assume causality it's difficult to see
+them the true
+mechanism of things without either doing
+a lot of
+qualitative work which itself has some
+of the
+the author's bias or specifically his
+own expertise into it which takes a lot
+of time
+and it's the the kinds of
+epistemic value you can draw from a lot
+of these studies
+is slightly lower and considered lower
+by all of the formal fields so if we can
+bring together
+all of these fields offer a wonderful
+tool to the social sciences we can bring
+it all together and
+bridge gaps in the in the communication
+of
+interdisciplinarity awesome
+any comments on here but if anyone's
+raising their hand good
+and that reminds me a lot of the sort of
+stem
+the science tech engineering math
+centrism
+or bias it's tied up with reductionism
+and a lot of other ideas
+but then we see initiatives like steam
+like throwing in the a for art or adding
+in
+crafts or maker diy all of these
+different
+things that are at the edges just like
+you brought up at the fringe of the stem
+narrative or at the fringe of the
+accepted mainstream narrative
+and it's people who are making a value
+proposition
+for some of these areas that haven't
+been included in the
+stem conversation so to speak and
+there's various ways that this can
+represent itself complexity science or
+interdisciplinary work
+project-based learning interdisciplinary
+teams
+this is really also why it's so
+important to have different people's
+perspective
+on basically everything because this is
+the shape that we enclose as a group
+is everyone's perspective and that
+includes our training all these
+different
+aspects so it's not just like a
+unilateral uh
+learning relationship where the
+humanities have so much to learn from
+machine learning scientists yes they do
+and it's also
+bi-directional so what does the
+bi-directional
+nexus look like and how are we going to
+make that nexus
+really a clean and accessible location
+instead of just making it a a slide like
+from one part of a playground to another
+all right also in the abstract we uh
+read that in 10.0 but mao again maybe
+what would you
+summarize this or i'm also just curious
+like when you present it to different
+contexts or audiences
+so when you're in front of audience a
+versus b let's say
+what are two different ways that you
+talk about what you're doing
+um i i mean i tend to present it pretty
+straightforwardly to anyone because it's
+it's very simple
+it's essentially just saying that um
+we behave in ways that are predictable
+because
+our cognition about the world and our
+position in the world is
+also predictable through a bayesian
+framework
+most of our cognition is not perfect but
+been that definitely basin and so
+the beauty of active inference is that
+it gives us a way to model
+the different ways in which our
+cognition can be slightly biased
+or let's say not
+classically logical but definitely
+following
+a gradient of optimization towards
+x and this x is like minimization of
+free energy so
+through the scripts that are both um
+let's say simple and
+more formal so scripts that are
+weaker so semantic fields and stronger
+so behavioral links between some of the
+semantic elements
+we can essentially predict the behavior
+and the thought process
+of anyone as long as we have information
+about
+their position in the world
+cool and if i could just build a little
+bit on that
+it's kind of like the scripts are
+archetypes or
+patterns that play out on landscapes and
+that's kind of like water
+on a landscape and the landscape in this
+case is like a landscape of affordances
+a field of affordances
+that's things that we've talked about
+but it's also potentially
+quantitatively a landscape of
+free energy minimization or there are
+entities that we can model as if they're
+doing optimization
+in a variational bayesian framework on
+some
+landscape that we're also inferring
+about as investigators
+and then just like water on the
+landscape there might be
+a marsh where there's a lot of ways to
+go and it's not quite clear it's very
+flat
+there might be other parts that are like
+the grand canyon where if you're
+in the canyon you're totally in the
+canyon and if you're not you're totally
+not
+and so that would be like a very strong
+script in the grand canyon and then a
+marsh or like a flood plain
+would be like a weak script so that's
+one dimension and then the other
+dimension which we're going to come back
+to
+is this internalist versus externalist
+so we'll get to that in a second but
+that's another dimension
+about how active inference can integrate
+scripts
+in 10.0 we also talked about the roadmap
+and it has again the structure that we
+know and love
+where you introduce another field here
+script theory in section two
+and then activate active inference in
+section three
+and then turn in the second part of the
+paper to
+an integrative discussion so if you have
+any comments now about the structuring
+of this
+paper feel free
+um so this is a structuring this very
+natural branstad
+that's this thing um and i think
+i think it works really well because
+we're still at a point where a lot of
+people don't necessarily understand what
+we mean when we talk about active
+inference
+it's it it doesn't feel that esoteric
+but when you read some of the papers
+about it some of the language is a bit
+complicated there's a lot of equations
+so people get like
+okay no this is not for me whereas the
+the the main idea is really simple
+there's an attractor and phenotypes or
+people or
+entities tend to revolve as
+around the attractor in their states the
+attractor moves a little bit so that the
+states are not
+constantly at equilibrium that's really
+that's really
+the extent of what you have to
+understand to go through active
+inference
+cool yep there's so many uh aspects to
+what you just
+added there it's always important to
+provide little mini on-ramp
+in the paper itself to active inference
+without perhaps going into all the
+details
+and also it's important for the
+community to be formalizing and
+developing
+the real frameworks that we can refer
+out to
+so that we can have a short version for
+some papers like this and then have a
+really rich version that people know
+they can always come back to
+let's talk about these two dimensions of
+script variability so here is just one
+slide
+but this is people's life slash career
+slash
+decade long literature fiasco's back and
+forths
+it's great times and we're just gonna
+lay all those
+roughly out on this two by two grid
+and there's some images that kind of
+reflect a few of those dimensions or a
+few of those
+points in the phase space here but now
+just
+you know so much more about scripts than
+us um
+where are some examples of some of
+scripts that people
+might recognize or where has this been
+an especially contentious debate
+or is there a difference between field a
+and field b
+like uh disagreement that stems from one
+having an externalist perspective and
+one having an internalist perspective
+well it's it's not some emotion and
+disagreement it's just that
+depending on what your paradigm is
+you'll tend to focus on externalism
+and another paradigm you're tend to
+focus on internalism like for instance
+behaviorism could never have gone to an
+internalist perspective because it
+literally
+tries to evacuate anything that happens
+inside cognition it's like
+what's the input and the output so this
+would be fundamentally externalist
+um social studies will tend to
+to move through externalist perspectives
+because they don't necessarily also have
+access to
+what the perception from the individual
+is of a certain of a certain fact all
+you have is
+movements of demographics and and how
+these movies
+um manifest in the world so of course
+it's never as simple as that there's
+always
+internal elements and external
+misconceptions and external
+misconception
+elements and internal misconceptions but
+it's it's where you tend to focus
+in our paper we're showing that active
+inference allows us to bring both
+together because a generative model
+is a model of you and the world
+and the beauty of this is through the
+work of axel constant
+and uh samurai vessel we can see that
+the world
+also has a model of view so we have
+this dual connection that's possible
+through internalism and externalism
+a good example of an external script is
+institutions
+uh you you you have to go through
+certain
+um passages in order to get something
+you have to have a passport to go to
+another country
+and in a an internalist script is well
+how do i want to dress up for something
+tonight
+do i know what to wear am i going to
+wear something like
+it's it's probable that i'll get in the
+club if i wear xyz
+and there's some clubs that would stop
+me from going into the club if i don't
+wear the proper clothes this is
+both an internal script that i have as
+an expectation
+of what the club will allow me to do
+given xyz
+the weak script is we have some clusters
+of categories so um i know that
+some colors go with some things i know
+that some words are appropriate in some
+places
+and some words are not appropriate in
+other places but i don't necessarily
+know the order of the words or i don't
+necessarily know the order of the colors
+or
+like i can wear pink up here and yellow
+down here or
+yellow and pink there's no necessary
+order or
+structure to what i have to do so long
+as i stay within these clusters
+a strong script is when you go to
+a wedding there's a series of events
+that will happen only one person wears
+white et cetera et cetera so
+it's way stricter as to where each
+element of the semantic clusters
+happen to fall both in time and in space
+cool thanks for that rj
+uh thank you for that explanation uh
+because i i
+when i first read the paper i was
+thinking that it's not so much
+disagreement as much as it is uh the way
+that the priors that different fields
+are using when they're approaching the
+subject
+and the subjects that they're studying
+so like when i thought about it was like
+externalist week maybe is like io
+psychology
+where it's a strong function of the the
+organizational culture it's much
+but and then maybe extraordinary
+externalist strong
+um would be closer to maybe maybe in the
+realm of geopolitics where it's looking
+at like
+procedures after after regime changes so
+yeah
+yep and also the way um i've thought
+about this like
+internalist and externalist is that
+there's very little disagreement on what
+is
+for example people can say yes there's a
+virus particle that
+consists of lipids and protein and their
+society and people are moving around
+but then somebody who writes a review
+paper from the perspective of a protein
+biologist
+they're going to focus on the proteins
+and so it shouldn't be too surprising
+that because of their regime of
+attention
+and their knowledge affordances they're
+going to recommend
+some type of molecular binding agent
+whereas somebody who studies it from the
+sociological perspective knows that the
+proteins exist
+but then they're going to highlight
+different features and therefore going
+to make different recommendations it
+would just be
+off-key if somebody wrote a sociological
+review paper and then
+went into a conclusion about a protein
+binding molecule
+so that's something that we need to
+really understand that we're all at the
+same table
+but it's our different perspectives that
+can either divide or
+integrate us mal
+yes so what you're bringing is really
+important is the silence of causal links
+so
+the beauty of active inference is that
+it allows us to draw
+um causal chains right or at least what
+we believe is the inference in
+regard to the causal chains where you
+come from
+defines what is salient in order to get
+to a goal
+so that's why scripts are not just like
+a point here
+and you get there however you want right
+that's that would be a very very very
+weak
+version of the script and anyone who is
+in the market blanket of where anyone
+tries to get to this point that's that's
+a very weak script but a strong script
+is well in order to get to this point
+there's
+x element that is salient um as you said
+earlier if
+if someone comes from a different field
+and tells you no no the important causal
+chain
+is through externalist things it doesn't
+matter what's inside your mind that's
+behaviorism right they would say
+it doesn't matter what you think so what
+happens is if you don't do it you won't
+go through
+and the internalists will be well it
+doesn't matter if you go through
+what matters is how you act into the
+world
+but um you're ryan pointing out that if
+you're
+we're all at the same table we have to
+realize that
+there both of these things are kind of
+true what really matters is how they
+causally interact to get to
+um a final product a final point
+great point and here's something to add
+on that is within active inference
+we talk about causal inference uh the
+latent causes in the world as
+are hypotheses about the system and so
+if one person hypothesizes that there's
+a causal link and somebody else says i
+think it's not as important as you think
+it is or i think something else is more
+important
+then what we can say is instead of
+getting into an inference
+duel we can get into an active inference
+collaboration
+where we say great well given your
+hypothesis about the causal network and
+mine
+what's the optimal experiment that we
+can do
+and optimal experimentation entails an
+ethical structure
+nobody says well my optimal experiment
+is that we're gonna uh move a thousand
+people to mars and we're gonna test them
+with this
+device that's not it's not tractable and
+it's not within our affordances and it's
+not ethical
+so then we can say that's actually not
+in the distribution of experiments we're
+going to consider
+gonna download that family of
+experiments and so we can come to the
+table
+and ask what is going to be the most
+informative experiment
+that we can collaborate on specifically
+to reduce our uncertainty
+about our shared world our shared niche
+interesting stuff mao that's exactly
+right like we can come up with new
+models of governance through this by
+understanding that it doesn't have to be
+a zero-sum game
+it can literally be a productive game
+where we're just
+optimizing through the the world of
+possibles that overlap
+and that are meaningful for everyone
+involved so
+if you could model i'm being
+i'm being a little um optimistic here
+but if you could model
+everyone's scripts and we could model a
+shared
+understanding of what would be a um
+a desired state of the world which would
+be like rg
+we have this g then we can find the
+policies that optimize
+for um our our sets of constraints
+that's just that's just beautiful right
+there
+awesome shannon i have
+um the sort of same question i brought
+up earlier
+about in music you know what the goal is
+you know what this um
+goal state is that you want to optimize
+towards in
+social interactions once you categorize
+them you know kind of what the goal
+state
+should be but if you don't know the gold
+state so you just have
+a couple different social interactions
+maybe you filmed them
+and and and you want to figure out can
+active inference if you if you do
+like an active inference model help you
+figure out what kind of
+social interaction the people in this
+video recording are engaging in
+oh okay now go for that so yeah so
+there's two things to this the first is
+because you're embedded in a culture
+that has a set of narratives you
+actually know
+what the what the goal is of given
+social interactions
+whether it's implicit or explicit you
+enter into
+into certain social interactions because
+you wish to enter in the goal or at
+least
+some polysemi of goals
+the second thing is if you are not sure
+you make inferences
+about what that goal might be and then
+you test those inferences by trying to
+you know optimize for a goal you might
+want
+or you um you check if your prediction
+was right and then you update so like
+it's it's this push and pull that allows
+you to get more information so
+um disambiguating reality is something
+that
+is shown in active inference to be
+fundamentally valuable so
+me figuring out whether or not you're
+flirting with me right now
+can be a goal in and of itself even if i
+don't care like i don't want to flirt
+and i don't care that you're flirting
+but i wanna i wanna know though i wanna
+are you flirting is this an
+accurate model of the world that i have
+so that's one thing that active
+inference allows us to
+model in human behavior the second thing
+is
+because we we have scripts that
+lead to certain pathways so certain
+policies policies lead to goals
+we can figure out what kind of policy
+you would sort of be engaged in and
+infer a potential goal you're leading
+towards
+if we're wrong eventually the model will
+update
+so we can see where are the attractors
+in certain behaviors
+which kind of behaviors tend to cluster
+towards something and based on this we
+could infer if we didn't already
+know what is the social goal of a
+specific action
+shannon yeah awesome the
+second part of your of of your answer um
+there's been a lot of like a this flurry
+of papers recently about using
+um the free energy principle in markup
+like it's this kind of thing in a very
+instrumentalist way
+right where where it doesn't mean that
+that group that we're
+looking at is necessarily
+embodying a markov blanket but we can
+predict things about that group if we
+model it that way
+and so if instrumental is reading
+for
+using active inference as a tool i'm
+wondering if
+it's going to keep moving in a similar
+way that machine learning has where this
+is a tool
+everybody has a vague concept of what
+machine learning is what it does
+um and then every company in the world
+has their machine learning algorithms to
+predict all of their customers behavior
+or they want to sell you some machine
+learning algorithm about
+categorizing some people you're
+interacting with or some data you have
+um is there
+maybe i don't have a specific question
+maybe i just wonder what do you see
+would what how do you see
+active inference just in this like i
+guess the social script of how we use
+tools and how industries um adopt tools
+and then how
+just the general public perceives tools
+how do you see active inference compared
+to its percep the perception of
+machine learning wow great
+question get it now sorry sorry
+i'm so glad you asked the question i
+didn't wait like i'm gonna do some
+shameless plugging right here
+i'm organizing a colloquium on this
+exact
+question um the equilibrium is going to
+be about active inference and collective
+intelligence but the real goal is to
+discuss
+the ethical future of
+active inference in terms of social
+justice so a
+can we not make active inference into
+this tool that will mostly serve
+capitalistic aims and that will serve to
+further oppress communities that have
+zero
+hermeneutic power now so that's it oh
+aim number one
+aim number two is to show that active
+inference
+is this wonderful tool because it's not
+opaque it's transparent so we don't have
+a black box where it's like
+all of these layers of nose you're not
+you don't know what they do but it works
+so so
+with active inference we can see the
+parameters of the generated model we can
+see how it evolves
+even if we're using machine learning to
+change the parameters
+we can still see what those para
+parameters are
+so i do see active inference becoming
+the future of predictive technology
+however i also see that because it's
+transparent
+and because we are doing this work
+of trying to bring together fields that
+are thinking about these ethical
+questions such as
+what is the perspective of a an
+oppressed group and how can it inform
+our understanding of social dynamics
+the beauty of active inference is that
+it it
+models your anchored position into the
+world
+this is a fundamental shift because that
+that's
+intersectionality right there if we can
+understand
+how intersectionality evolves in the
+world how how we can model
+a specific person's reality
+understanding it through mechanistic
+terms
+it doesn't have to become this sort of
+statistical noise that we have to move
+away and
+push people into categories you can be
+your own phenomenology we do not have to
+erase you
+and your reality impacts the world in
+certain ways so if we wanted to say to
+highlight a type of reality a lot of
+work is being done with autistic
+children
+or with gender non-binary like there's a
+lot of
+of people out there who whose realities
+are starting to emerge
+because they were erased before through
+active inference we could see like
+there's this island there
+that isn't quite responding like the
+rest can we can we zoom in on that can
+we see what's happening can we maybe
+stop
+thinking of society as well you either
+fit into the society's mold or you're
+you're moved away and
+can we think of society as something
+that has to adapt to its members
+fundamentally thanks for that
+amazing thank you for that thanks for
+this super interesting
+discussion i'll just add a few comments
+so one thing is that the
+instrumentalist reading which means
+using the framework like
+a toolkit rather than a depictor about
+what the world quote is instrumentalism
+and tool building is what allows for a
+plurality of narratives to co-exist
+including social justice and non-social
+justice versions
+so because there's a plurality of
+narratives that means there's going to
+be people who are using the tool who you
+disagree with
+just like linear models and just like
+trains so it's going to be something
+that includes a big tent
+um rj i'll get to you in a second the
+second thing is that the goal of society
+is really as you pointed out it's
+polysemis there's a lot of features to
+it
+and it just made me think what is the
+optimal skydiving height
+and what's the optimal skydiving policy
+and for some people
+because of cognitive diversity it's
+going to be like no just not for me but
+no regulation
+or not for me not for anyone or there
+shouldn't be any regulation and taking
+me to the top or i just like two feet
+tall
+every quadrant is going to exist so
+that is the richness of our culture and
+i am very hesitant as many people should
+be about attempts to quantify goals for
+society
+and the last point is that what active
+inference tools could allow would be
+better definition of institutions public
+private or
+new combinations so for example one
+organization could say our affordances
+are
+this this is our input this is our
+output and this is going to be a
+currency
+arbitrage mechanism that's it we're not
+going to be able to censor this other
+domain of your life on this other issue
+and so modularity and flexibility in
+institutions
+will become increasingly important and
+again that will allow for new
+narratives to diversify and that will be
+challenging as well as
+uh embracing for some rj and then mao
+uh i was gonna say two things um so so
+one um on uh how much transparency it
+offers to
+to give us um i think that from from
+what i've seen and i'm i'm not an expert
+in these areas
+but from what i've seen on on its on the
+approach toward applying active
+inference
+in machine learning models um has been
+that it offers a lot more auditability
+that's that's one thing because the
+causal change and then
+second uh is what's basically echoing
+what dan just said which is that i don't
+know that anybody will have any control
+over
+um other people's use of the tool so i'm
+sure it's already being applied in a lot
+of these models so i'm sure that it will
+end up being
+applied to do things that most of us
+wouldn't like
+but i think that it's commendable that
+you're taking efforts to give
+people on-ramps toward using it in
+positive directions
+awesome mao that's exactly it like while
+you can't stop a
+multi-billion dollar company from using
+the system
+um you can make it so that people who
+usually do not have the means to
+partake in the construction of a tool to
+become salient voices in the field
+one of the things that tends to annoy me
+when i go to a conference
+is mammals like it seems silly right
+but a mantle is just mostly one type of
+perspective
+and it doesn't to people who are on the
+panel it doesn't seem that way to them
+they're all different people
+with different perspectives but the way
+that you came into the world the way
+that you approach the research the way
+that you approach
+paradigms will have some attractive
+attracting commonalities because of your
+position and
+a lot of brilliant work has been done in
+shifting paradigms because new
+perspectives were coming into the field
+intersectionality
+probably could only have been possible
+because of kimberly crenshaw who came
+in in feminism from a very different
+point
+the second idea is that
+we don't have to necessarily control
+what the goal state is at every level
+but we can probably say that um
+there has to be bottom-up and top-down
+communication for things to flow more
+smoothly right now
+highly hierarchical system tend to go
+you know top-down and less
+bottom-up the communication is a bit
+bottlenecked in
+one direction and not the other through
+active inference we could allow
+governance
+choose to um allow a better
+modeling of what is the optimal goal
+state
+of ex actor and how can we
+model our vision of this local world
+to take into consideration all of these
+optimal goal states is it possible for
+us to optimize
+all or a maximum of their goal states um
+given where they are and what we have at
+our disposition
+cool one note there on the bottom up in
+the top down and about
+including people in the conversation is
+that uh
+you're really talking about a
+reimagining of this nexus
+of people and institutions it's a
+multi-scale re-understanding
+about who and what we are and we're not
+going to go into it in this stream but
+active inference and free energy has
+been applied to sub
+organismal things like the brain and
+different organs and physiology so we're
+not going to really talk about that
+but cells are also doing this kind of
+thing so it also allows us to look
+inwards and more internally and outwards
+and more externally
+without falling into some of these traps
+and then as far as um
+how we can make that nexus a better
+place the institutions and the power
+and the money can be pressured to stay
+on the rails and can be uh asked to have
+more transparent modeling or say if
+you're going to use machine learning on
+my preferences then i better
+know x y or z or if you're going to
+regulate water you better make promises
+x y and z
+and then also as far as rising up from
+the bottom and making the bottom up side
+of the communication
+you mentioned governance there's also a
+lot of cool work with digital governance
+related to active inference
+and then also just simply including
+people in
+relationships and conversations and
+teams because
+that is what the social fabric is so to
+not do that
+is to not be doing it and to do it is to
+be doing it
+so that's what i hope would be a cool
+way for people to be able to come
+together and
+talk about through these frameworks and
+linear models
+though they explain some variants in
+some situations you don't get
+this kind of conversation with a linear
+model so even if it does fall to pure
+instrumentalism with active inference
+and it's just a way to degenerative
+models that explain more variation in
+the environment
+and future models might explain even
+more maybe like a super neural network
+that's super next level with a physical
+computer
+it might explain more variation but if
+it can't provide this kind of a
+transdisciplinary discussion then it
+won't be
+as cool as active blue
+hi so just to kind of piggyback on like
+what everybody's like been
+saying so i wonder like active inference
+is more transparent right than say like
+deep
+like neural networks but how is that
+like transparency
+affected when we don't really know like
+at every level
+it's like there's this nested hierarchy
+and so we don't know
+the affordances of all the components at
+every level going upward or downward in
+the chain of command
+and so i just wonder like how we can use
+active inference to maybe
+like when we don't know like maybe
+that's where we find the edges
+of the um scripts
+right like so like if we're looking at
+bottom up or top down is that like
+how we probe those edges for
+transparency when we don't know
+like or without transparency when we
+don't know what's happening at all the
+different levels
+i don't know if that makes sense if that
+was just confusing yeah um
+just rj one and then i'll first though
+the transparent idea that came
+from the active um previous one where we
+talked about transparent concepts in
+philosophy like the ones that are the
+water that we swim in so now it's a
+different concept with the auditability
+of machine learning
+but similarly there's this idea about
+making the invisible visible
+and one suggestion i'd have before rj
+them out would be
+we aren't just coming to terms on the
+inference
+remember also that active means that
+we're coming to terms on optimal
+experimentation
+so we might say all right whatever
+inference you're making about the world
+the danger of some group in
+another country what is the policy
+and what is the experimentation what's
+the info gain we're looking for
+we don't need to go for the ultimate
+teleos goal of society i want this to be
+the case
+you can just say okay given the info on
+the ground
+in this other country what is the policy
+that you and i are going to continue
+and deepen our relationship over and
+that's what's way more important is that
+moving forward together
+on a journey and on a narrative of
+togetherness
+rather than coming to agreement on these
+goals and i get it people want to talk
+about goals but they're also
+things that can prevent us from thinking
+about policy too deeply but justifying
+it so clearly important
+so yeah rj and then uh just
+responding to what blue said uh and it's
+kind of making me rethink what i said
+earlier about auditability
+it sounds like uh from what i've read
+that it's less getting rid of a black
+box and more creating a blanket of black
+boxes
+so we know where the edges between these
+black boxes are but that allows us to
+get a better understanding of what's
+going on in each of them i suppose
+so okay wow
+so yeah so it all depends about in on
+the
+granularity that you're using so if you
+let's say that i started from
+each individual every person i don't
+model
+uh their i don't model their cells or
+their brain i model them
+and their behavior say and then you you
+scale up and up
+and up and up so the level of
+granularity
+of their affordances is going to be
+obvious
+at the individual level and the higher
+you go the more information lost there
+is which also makes it more computable
+right
+like if i if i if i start modeling the
+the behavior of a mark of blanket and
+then i look at all the other marker
+blankets at this level i don't have to
+recompute
+every individual i have the markup like
+it so
+it depends on you and your research if
+you want to start
+by modeling every cell in everybody
+and then try to find the emergent
+complexity
+that's great that's good and you can
+have more affordances based on this i
+think that's why
+scripts are so interesting because they
+allow us to
+um model the likely affordances
+of someone given where they are and
+given a set of parameters
+so even if it's not their absolute
+affordances we can assume that there's
+the probability of them
+going towards x and now if you start
+modeling
+all of the possible scripts and how it
+connects to
+semantic grounding so
+what does it mean for something to be a
+library what what is
+what is the clustering that i can do
+then you can start seeing that
+some clusterings will start overlapping
+in ways that make it more likely for the
+person to you know maybe go in this
+direction
+so for instance um i want to go to the
+library
+but i live far from the library and i
+happen to have a car
+well could i fly there
+it's unlikely right could i walk there i
+mean i
+could but i in the scripts of today's
+world you tend to want to do things
+within
+one or two hours if it takes more than
+that it's like you're wasting your time
+so
+i'm probably going to take a car if i
+don't have a car i'm probably going to
+like either call an
+uber because i happen to be in this shoe
+in in this um
+social demographic or i'll take a bus if
+i'm in a different social demographic
+you can also predict this based on
+whether
+you think i care about the environment
+so the script of someone caring for the
+environment probably won't take a car
+right they'll take like the bus or
+something so like
+you can predict the overlaps based on
+uh the kind of scripts that are um
+manifest and and measurable awesome
+um just a couple comments there as far
+as transparency
+often people want to know more about the
+details of a model and i would just
+offer
+do we really understand a quadratic
+model or addition
+or linear regression credit cards
+bitcoin
+we can use things without quote
+understanding them that's a story we
+tell
+ourselves about the model so i would
+offer that
+transparency could be approached from
+the angle of like
+dashboards and really studying the
+residuals of your model so if you're
+doing an
+online learning system and then you find
+oh
+we had this person in this canyon and
+the feedback surveys that we're asking
+them
+are suggesting they're not getting what
+they need so just
+you know philosophical debates aside how
+are we going to help this person
+at this time and perhaps it isn't that
+large of an intervention that needs to
+be made
+in that case so we can separate the
+perfect
+systems depictions goal from the helping
+real people like
+in the 100 000 people in this town
+there's 500 people who want to go to the
+library and will really benefit a lot
+how are we going to get these 500 and
+then how are we going to make it
+open-ended with a survey so that
+if people aren't part of our predicted
+500 they're still able to contribute
+these are things that are at the
+intersection of the model
+with just some pragmatics and logistics
+so i would say the last mile is going to
+be just the details of the system and
+this
+is like the skeleton wow
+oh i thought you had a second point i
+was waiting for your second point no
+that was it okay well no but that let's
+see again
+this is really beautiful what you said
+because we can promote
+the resilience of a community
+by looking at what is the true goal of
+people so like you said an open-ended
+survey for these people there's 500 who
+want to go to the library
+and the rest don't really so but
+do they all want to go at x times do
+they all live in the same area xyz
+knowing this information and knowing
+what people actually prefer what would
+be their goal state
+allows us to enable them through our
+resource from the top
+to pull down resources that would
+actually serve people's purposes
+i think that's beautiful social aim that
+we could promote through
+a new system of allocating resources
+depending on people's goals and benefits
+yep cool very fun and exciting and
+different
+active stream so i'll just go to a few
+of these
+questions many of which we will have
+already brought up
+in some guys but here we can just put
+them all on one page and just
+think about what are sort of the
+questions that people might have
+again either from the acting community
+looking out or
+from the social sciences or from the
+neurosciences and looking in
+so how does active inference unify the
+disparate
+scripts concept so people can raise
+their hand but all
+emphasize the nestedness and the
+hierarchical
+like the vertical nesting and then the
+heteroarticle the collective behavior
+the horizontal the lateral these two
+dimensions
+and the ways that we can use the
+framework instrumentally
+to distinguish different models that's a
+way that we can
+get the strong versus weak scripts
+variation axis
+and the internalist externalists kind of
+together by just emphasizing
+the coherence or non-coherence
+strongness versus weakness
+of different empirical systems and take
+a look at them
+in this multi-scale way that obviates
+the internal external
+any if people have thoughts just raise
+their hand otherwise i just go
+through the oh yeah now go for it that
+was a lot of questions
+uh the first thing that come that comes
+to mind is you you mentioned
+a hierarchical hierarchical that's kind
+of beautiful so think about it in terms
+of
+um behaviors that lead to goals right
+so imagine that you have these
+hierarchies
+of goals um that both
+are related to time
+and to generality so for instance um
+i want to be a good person which is like
+the highest the largest possible script
+ever
+because like that's that's one thing
+that's like it's kind of binary
+it's like okay good bad person whatever
+then how do i be a good person well
+i can either be a good person in
+relation to
+um norm expectation or to
+values that i myself crafted or values
+that were given to me or like
+there's like it breaks down and then
+within these values set well it breaks
+down again into
+uh societal behavioral scripts etc so
+again see you can see that
+as the higher you go the less your
+script
+is a strong script it's a series of
+strong script that becomes this sort of
+cluster
+now you take your goal at any layer they
+pick
+any of them your goal is where you want
+to get because it happens to be a gate
+to get to like
+the next stage of your of your script
+right
+so to get to this goal there's several
+possibilities at the lower levels that
+lead in this direction
+we can thus unify the different uh the
+different types of scripts and how we
+understanding
+through this um sort of pyramid that
+goes from elements to goal and we can
+cluster which
+script doesn't lead to x goal et cetera
+et cetera and then we can understand how
+um the the individual
+models this system has a clear
+understanding of the system based on
+what they were exposed
+to so their environment is what they
+were exposed to
+their con their their cognition is how
+they brought together this sex position
+internalized it and started behaving
+behaving into the world
+um i feel like i answered the question
+but it was a very large question
+so let me nice that was very
+cool and just one other thought there is
+that the goal seeking
+uh let's not think that that's going to
+put our values
+in the background because goal seeking
+is even more about values
+so this is actually not sidestepping the
+question of coming to
+or stating our values or probable
+preferences for
+policy this is actually censoring it
+and then acting within it so that's the
+inference part all right
+the next question is in which settings
+would an active inference script model
+be
+valuable and kind of related to that
+would be in that setting we can already
+ask
+what would the metadata for the script
+look like and also i'm just curious like
+are there any empirical studies that are
+being done in the scripts framework or
+what
+next steps are you taking in this line
+of research or what would excite you
+out to see like done in a hypothetical
+dream experiment
+so um the first thing that i think of in
+terms of valuable is something that
+relates to
+let me check his name rj mentioned
+we can use
+the the the scripts idea in active
+inference and the way we modeled it
+through weak and
+strong to understand
+how social behaviors tend to radicalize
+or how some policy brought by the top
+will be received by the bottom so
+anything related to politics or to
+social movements would find such a model
+valuable the the i'm not sure what you
+mean by
+metadata so could you be a little more
+precise about that
+yeah rj why don't you go for that and
+maybe give some thoughts what were you
+meaning there sure um so first
+on um using actin this this
+this style model um in political
+atmospheres talk about
+organizations using active inference in
+ways we might not like
+um is is governments watching uh
+extremist ideology
+um so i was i was actually gonna say one
+place where i
+i wouldn't um i know it will be of
+interest to use it but i would love to
+see it used this way is to see
+how people radicalize um specifically
+the scripts we use to react
+to uh extremist content um and because
+i i think that from my understanding um
+that this type of model would be very
+useful in identifying when a person has
+become
+uh what we'll call it like extremist
+audiology friendly where they're no
+longer going to call it out and say you
+know i don't agree with that or i'm not
+comfortable
+with somebody talking about saying like
+domestic terrorism um
+so so i could see it being
+extraordinarily useful for for
+governments in that context
+um when it comes to metadata for scripts
+like this is included
+um so the metadata might be um you know
+so
+so well the data might describe the
+script itself
+um the metadata might describe some some
+key attributes that
+aren't directly related as dan likes to
+say the metadata is the data and this is
+one of these areas where
+like that's definitely there's no the
+blur is is definitely large
+um so for me when i think about um how i
+would
+try to start describing the metadata for
+scripts it would be
+um does this res does this script
+require
+two people to know that it's happening
+so like for example um uh flirting
+it might be you know um one person can
+enact their scripts without the other
+person uh
+enacting it whereas like a script for
+swearing in the president of the united
+states
+that is a script that that's a strong
+script with explicit rules that
+everybody has to be aware of otherwise
+it doesn't work
+um so i i think that there's like
+categorization
+values that might be associated with it
+and then uh yeah but anyway i think
+there's a lot you could go into in that
+so i won't go
+too far down the rabbit hole cool let's
+do blue then
+shannon then mao
+so just to piggyback off of what rj was
+saying about
+radicalization it's interesting like
+when did radicalization
+become a script right and like this is
+what we're talking about finding the
+edges
+and so like where does the script even
+exist is it like an external construct
+like a societal construct this is the
+battle between internalism and
+externalism
+but when is there like a critical mass
+of
+internal scripts that develop that then
+it becomes this external script like you
+can be a radical
+like the first person to become
+radicalized like was just
+radical right like they just took their
+own initiative
+to to you know it was their own script
+it was like an internal construct
+and so where's the like the line really
+like when a script becomes
+an acceptable or even an alternative way
+like there's some kind of critical mass
+that has to accrue before before that
+happens and it's just
+something interesting to think about
+shannon
+then mo and then rj again i have a bit
+of a topic change so maybe you want to
+talk about that first and then ask me a
+question
+okay if it's on the same um idea mao
+then rj
+yeah so exactly so how do we figure out
+when someone is going to radicalize or
+specifically
+what leads to radicalization well the
+truth is radicalization
+tends to happen within clustering
+so it's not just someone who unless this
+person has
+specific like um
+psychological issues which make them go
+off on their own tangent
+away from the cluster it tends to be
+that
+clusters form around narratives right so
+what is
+let's say a meninist group what is a
+meninist narrative well women are
+gaining too many rights and they're
+taking the spot of men and in some men
+in his group
+this narrative becomes women are trying
+to take down men
+to enslave them and then the narrative
+moves forward and it moves
+women are trying to destroy men and then
+what is the acceptable answer to this
+well we must destroy women
+and this is something you can see
+happening through the shift
+of the narrative the the people inside
+these clusters
+start bringing categories together and
+then pinging off each other
+and then i'm giving you this narrative
+and a lot of people
+oh yeah you're right this is the right
+narrative and then somebody else with
+slightly different a little bit more
+narrative keeps pushing on and you get
+this
+cluster and then people build on each
+other and the person on top or at least
+someone who's believing
+so much into this narrative which also
+identifies it with potentially violence
+which
+we could measure based on the type of
+narrative that's being used
+we will possibly be able to identify
+okay well this cluster of people
+and specifically this type of person in
+there is is more likely to do something
+really bad really soon what that means
+for our governments
+that's not up for me to decide ideally i
+think it would be
+um bringing help in this in these areas
+and being like well
+maybe maybe you need to rethink your
+narratives maybe we can help you soften
+whatever it is you're going through
+that's
+pushing you to to get towards these
+narratives
+thanks rj
+uh well now covered a lot of what i was
+going to say um once again
+perfect we're definitely synced um i
+would just add that it is definitely one
+of those areas
+where um uh i think
+we people who are who are working in the
+topic outside
+of governments um to
+try to create the speed bumps
+um so that like like that not not i
+don't want to say speed bumps it's hard
+to articulate like like
+the the like clearly express the
+limitations so that
+um government doesn't go and take this
+and then apply it badly like they've
+done
+with um with machine learning and say
+like the judicial system
+uh we're trying to predict flight risk
+and things like that they applied it
+very quickly
+and didn't really weren't really sure
+what they were doing and they applied it
+before they really understood what they
+were working with and
+obviously did a lot of damage so thanks
+just one last comment on this
+uh radical doesn't mean divergent or
+committed
+radical means from the root so i think
+that radicalization as a discussion
+should refocus us on the seed memes the
+germ memes in the space
+and the ways that generative models
+modelable by script and active inference
+could understand what leads to the
+adoption the phase transition of the
+seed memes
+and then the policy decisions that
+someone engages in are probabilistic
+and can be inferred downstream of these
+seed memetics
+and so those are the premises of the
+narrative so if someone thinks that
+they're in braveheart
+or if they think that they're in batman
+or if they think that they're a
+different role in a movie
+that's really what we're getting at is
+what is the genre
+of culture what kind of movie is it a
+good one short one long one
+what is the cast going to be how are
+they going to treat each other
+we can talk about it that way and that
+is what has been distorted in the public
+eye
+for too long shannon
+and then sasha thanks that was um
+a really informative discussion and that
+metaphor really brought it all together
+at the end daniel
+um so i don't study social
+interactions on that large of a scale i
+bring people in a lab i look at how
+maybe their
+motor activity coordinates in in like
+postural sway so something that you're
+not really aware of happening but it's
+happening all the time
+you're swaying and maybe you're
+mirroring someone um across from you
+and you guys have been having a
+conversation of what the metadata
+looks like um but what is i want what
+does the
+data look like if you were going to use
+this active inference model
+at something as large scale as these
+social movements that you're talking
+about
+um or at smaller scales like i i can see
+that
+the kind of data i would look at in very
+small groups
+would be you know patterns of motor
+activity
+maybe that i'm measuring from filming
+the body
+or motor activity in a brain um but in a
+large
+social group like that would you be
+looking at like gps tracking a phone
+like we've been doing a lot of
+modeling of how people interact in this
+um pandemic
+and where large clusters of people are
+interacting and
+we might have like super spreading
+events for covid19
+um or would these narratives that you've
+been talking about um
+sound like their verbal narrative so
+would you be looking at um
+social media profiles um you know
+twitter facebook
+and how
+honest are those data so i know that the
+data i'm measuring the
+the postural sway data my participant i
+mean unless they're actually
+swaying back and forth um intentionally
+like to beat music they don't have
+control over
+all of these small muscle movements in
+your body that are
+that are controlling your posture um
+it's really a very embodied
+behavior and i know that when i'm
+measuring it i'm getting an honest
+signal
+but if you're looking at um even gps
+data or if you're looking at
+social media narrative data the signal
+could
+like people could be intentionally
+signaling for
+others who share their view or others
+who don't share their view or
+intentionally not signaling because
+they're afraid of
+a response or all of the various things
+that could
+affect and make the make the signal that
+you're measuring not be honest so
+so what would the data look like in your
+that that would make your active
+inference model of this
+large social situation be
+closer to the truth thanks for that
+awesome question we're gonna do sasha
+then then
+rj yeah i guess continuing the
+conversation of
+how um i would like to see this used
+um thinking about scripts and
+stereotypes
+um i guess my my hope for seeing active
+inference as
+a tool is for people to um
+think about it think about their own
+role in
+their active inference story um and that
+instead of just thinking about machine
+learning and like um getting
+recommendations and ads based on your
+preferences
+that you actually um shape your own
+story
+and that you are building your narrative
+which then leads to policies and goals
+and so um taking a more active role
+in the kinds of things that will be
+predicted about us based on our actions
+um and to try to shape that in a way
+that signals um
+something deeper uh like our values
+ooh mao and on the data question two
+yeah so um i'm gonna try and uh if i
+forget a question they were important i
+really don't wanna so if i forget please
+remind me
+the first question was what kind of data
+well you're right social media would be
+super great because what you said about
+the honesty of data is that well
+social reality is manifest reality like
+if you behave a certain way because you
+know your group behaves a certain way
+well it's because you've integrated what
+the group wants and that's the script
+the the way we could see whether or not
+this is something that your cognition is
+entirely geared towards or is just
+fulfilling because xyz
+is how you behave in other groups so
+one of the things that would be
+difficult to highlight
+is if you are let's say um part of a
+cult right
+you're part of a cult and you are of no
+contact with anyone else
+it would be difficult for us to figure
+out whether this type of behavior
+is also being contested inside we could
+maybe
+model this by looking at all of the
+other members and
+what kinds of interactions some people
+who tend to disagree a little bit
+tend to have we can't know for sure and
+that's kind of also
+that's we make inferences about the
+states of our agents
+based on what they put out into the
+world the observations they put out
+you're right that social media data
+would not necessarily be enough though
+because
+um you want to have data about what it
+means to be in the world even outside of
+the virtual world
+so if all you care about is online
+behavior
+then well i mean it doesn't really
+matter how you move but
+if what you care about is scripts as a
+whole in society well
+we would use um narrative data so what
+are the movies
+how do people in the movies behave and
+talk what is literature what are the
+words that are being used in what way
+with what valence
+is the positive or negative then you
+would use um
+your rights data about how people behave
+together to do experiments by connecting
+people and doing hyper scanning data
+like
+there's all of the data that would allow
+us to understand how a specific semantic
+cluster
+tends to be grouped and then tends to be
+connected causally all of this would
+allow us to derive
+scripts it all depends about on where
+you want to apply
+this knowledge what was the second
+question
+i think that covered i think i just sort
+of reworded my original question
+but that was great i think sasha had a
+question and i forgot sasha
+yes sasha
+yeah not so much a question just a
+statement for how can people
+um think about applying scripts and
+active inference to their own behavior
+and
+behave in ways that signal at our true
+goals
+in ways that are script and socially
+acceptable
+okay okay so um this is the really cool
+part
+of having a model that
+can take both higher level and lower
+levels and
+you're right that giving people power
+over their data
+would also help us figure out what their
+true goal is
+right so if you if you're like i want to
+take an active part
+in shaping my reality well essentially
+you're giving us what your true goal
+is so that's good for everyone so you're
+right
+um it would be great for society if
+people had this control
+i think that's where we're trying to get
+towards in ethical circles where we're
+like
+we're not just going to take stuff from
+you and then
+model and then you won't really have any
+benefit from it or if you have a benefit
+we define what that benefit is it's more
+like
+we can show you the data that is yours
+we
+can show you the data that is aggregated
+from you as well
+and you get to decide what kind of
+person you want to be based on this so
+we show you the affordance scape around
+you based on your profile
+well now you can pick what you want to
+do with this affordance escape
+cool and just so interesting about the
+inference
+and then moving towards action and not
+just targeting the ads or just targeting
+the consumption but actually targeting
+the participation as well
+rj and then we'll speed through the
+figures
+oh sure uh i would just add that this is
+definitely an area where it feels like
+the
+the data and the metadata of the
+descriptive data about the data
+uh definitely blur and also uh shannon
+you were talking about
+people not having control over how they
+sway et cetera and i just wanted to
+thank you for making me hyper aware of
+my own posture
+nice um cool well what a fun
+discussion these are the figures and i
+think for next week people can start to
+think about what questions they want to
+address
+and then um for now i would just denote
+we should talk about the figures
+and about how they relate to some of
+these more qualitative things we
+discussed today like maybe we could even
+work through one of these diagrams
+for flirting or for ordering a cup of
+coffee
+um figure two was a layout like a
+graphical layout
+of the internal and the external
+realizer
+and so we could ask where's the markov
+blanket here and what does that say
+about how the world is what does that
+say about how we could model the world
+what are the points where we could
+intervene what are the experiments that
+could be informative
+whose perspective could we include when
+we're thinking about this
+like all these big questions that are
+what should be at the front of our mind
+when we approach a system like this
+so that was pretty cool figure let's
+also come back to that
+and uh that's basically it in our last
+couple minutes we'll hear a final
+note so anyone raise your hand if you
+want to make a short note
+other than that though we will give a
+form for a survey
+and especially for 10.2 questions from
+everyone who's participating
+if you're watching it live or in replay
+just
+add a comment with something we could
+address in 10.2
+and uh stay in communication and other
+than that
+let's hear some last thoughts or what
+was your favorite part of the discussion
+from anyone who wants to talk
+um rj then mao um
+i after after this doug i'm definitely
+all the more interested
+in what kind of threshold events there
+are for
+the creation of scripts and for the
+breaking of them
+awesome okay
+um i'm super excited to see that people
+are interested because
+when i started thinking about this and
+and and started working on it with
+maxwell
+my thought was i'm going to be this
+fringe researcher that no one ever
+quotes because no one cares
+and it has the beautiful side that no
+one will ever criticize what i do
+but but i'm really excited to see that
+people are being um inspired by this
+work people start
+asking questions and they bring in new
+possibilities um people from the field
+of music are interested which means that
+there's gonna be uh way more input from
+a variety of fields which is going to
+make this
+super rich and i'm really thankful for
+your um
+i'm not your administration um
+you you led this discussion really
+really well and that was very pleasant
+to be part of thank you
+action stream has the best norms and the
+best participants
+i have to say no i'm just kidding but
+really thanks everyone
+for making the discussion so excellent
+because that's really what it is
+and uh we hope to see you again in 10.2
+hear anyone else's thoughts see you in
+future active streams so
+thanks and we will talk to you next time

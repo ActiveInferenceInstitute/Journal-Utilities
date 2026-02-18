@@ -1,0 +1,1897 @@
+---
+title: "Active Inference LiveStream 006.0: "A tale of two densities: active inference is enactive..." (2020)"
+category: "Livestream"
+series: "Livestream_006"
+episode: "0"
+duration: "1:02:55"
+url: "https://www.youtube.com/watch?v=jHWCQ1dpoK0"
+views: 494
+exported_at: "2026-02-18T22:37:37.898324+00:00"
+format: markdown
+---
+
+# Active Inference LiveStream 006.0: "A tale of two densities: active inference is enactive..." (2020)
+
+all right i hope we are live
+hello and welcome this is active
+inference live stream
+6.0 it is october 9th
+2020. i am daniel friedman and i'm going
+to be
+doing a solo contextualizing episode
+i guess of active inference live stream
+today
+on the paper tale of two densities
+welcome to
+team com we are an experiment in online
+team communication and learning
+related to active inference you can find
+us on
+twitter at inferenceactive at gmail
+via our public key base team or via
+youtube which is where you may be
+watching us now
+this is a recorded and an archived live
+stream so please provide us with
+feedback
+so we can improve on different aspects
+of our work
+all backgrounds and perspectives are
+welcome here
+and as far as video etiquette goes mute
+if there's noise in the background
+raise your hand etc here we are
+in actim stream 6.0 and the goal of this
+stream
+is really to set the context for the
+upcoming discussion next tuesday on
+6.1 that discussion is going to be
+on the paper a tale of two densities
+active inference is
+an active inference by ramps that at all
+published in 2020 online in 2019
+and what this video is going to do is
+provide context for some of the ideas
+types of models philosophical threads
+and vocabulary
+of the ramstead at all paper in other
+words it will help contextualize
+why this topic is being discussed why
+there's a regime of attention on this
+topic so to speak
+here are the sections of this video
+first
+i'm going to frame the problem as being
+about what the free energy principle
+and active inference say about agents
+and the world and their relationship
+and then to contextualize different ways
+of thinking about that we'll learn about
+bayesian models and inactivism just
+brief brief takes of course you could go
+a lot into depth on different takes here
+i'm just trying to really
+cut in broad strokes and then in the
+last part
+of the discussion today we'll talk a
+little bit about the philosophy of
+science
+as far as the difference between a
+principle a theory and a hypothesis
+within the first in sphere using uh his
+response to an interview question so
+next time
+on uh number 6.1 we're going to discuss
+the paper with anyone who wants to
+participate so
+please save and submit your questions if
+you're interested
+in participating or if you're watching
+it after ask your questions then or if
+it's before
+get in touch with us if you want to
+discuss all right so here it is
+the real topic that we're going to be
+addressing here
+is what does the free energy principle
+and
+active inference say about the
+relationship between the world
+and agents and how we think about this
+formally in terms of how we model it
+with computers or just
+cognitively as well as how we experience
+it
+it's just all important so this is a
+pretty general topic and so
+here's one example of a world and an
+agent but
+world and agent are not only used
+interchangeably as we'll later find out
+because
+one one agent's world is another world's
+agent
+and so on but really just because this
+is a
+pretty general framework of relational
+modeling so
+it doesn't have to be you know the the
+globe or the world as you exactly think
+of it and agent as in a robot agent
+we're going to be probably thinking
+broadly about what it means to be
+connected for two things
+and this video certainly is just an
+introduction
+to the context of some of these ideas
+it's not a review
+or meta-analysis or final word it's just
+as i was reading through the paper it
+was how i structured the information
+and i was how i was uh thinking it might
+make sense
+to read some of the quotes and use those
+as springboards to
+talk about the bigger questions uh
+as usual trying to start from the active
+inference
+perspective and then reach out to the
+broader questions as well as
+uh go the other way i guess and uh
+in this video specifically as it relates
+to free energy
+principle i'll just provide the punch
+the punchline first
+the punch line is that generative models
+are not structures
+they're embodied and enacted regimes of
+policy attention
+and behavior so if it doesn't
+make sense to you yet why that's the
+punch line or why that's
+one of the conclusions essentially of
+this paper
+then just keep listening and learning
+sorry
+so in this talk specifically the
+structure is going to be like this
+first we'll go through the goals of the
+2020 tale of two densities paper
+read through the abstract then we'll
+talk about bayesian
+inference models kind of steel manning
+them putting them in a strong light
+then talk about inactive and action
+models pretty broadly though there's a
+lot of nuance in both of these
+categories then talk about agent world
+modeling
+in fep and active and
+previewing mainly by reading quotes from
+the paper
+and highlighting specific claims um
+highlighting
+how active inference and free energy
+principle build on this
+uh map and territory that are in play
+with bayesianism and activism and again
+that underlying question
+is what do we have to say about how the
+world and asians and agents and agents
+are related to one another
+all right so the paper is called a tale
+of two densities
+a literature reference there active
+inference is an active inference by
+ramstead kirchoff and fristen in the
+journal adaptive behavior in 2020
+and the goal of the paper which i
+believe is the first sentence of
+the article is the aim of this article
+is to clarify how best to interpret some
+of the central constructs that
+underwrite the free energy principle
+fep and its corollary which means
+related theory
+active inference in theoretical
+neuroscience and biology
+namely the role that generative models
+and recognition densities play
+in this theory aiming to unify life and
+mind
+and they'll be a consistent color scheme
+for the generative model
+and the recognition densities because um
+we're going to be looking to integrate
+these two
+different ways of thinking about agent
+world dynamics
+in the bayesian and the inactivist
+worldviews
+and so what we're going to talk the most
+about here are
+what these two densities are so you can
+ask in the book what were the two
+cities here we're going to ask what are
+those two densities
+then we can ask what is this tail that
+integrates
+these two densities what weaves them
+together into one
+narrative which helps us understand and
+uh helps us learn
+so let's go first to the abstract we
+already read the title which is the
+first way that the authors want to
+represent their work now we're going to
+look through the abstract
+and then later on we'll end up defining
+and working through a lot of the words
+specifically but
+starting with the abstract is the first
+thing that you're going to read about
+the paper
+the aim of this article is to clarify
+how best to interpret some of the
+central constructs that underwrite the
+free energy principle
+and its corollary active inference in
+theoretical neuroscience and biology
+that may even be what we already read so
+same meaning there
+namely the role that generative models
+and variational densities play in this
+theory so those are the two
+densities that we're going to be talking
+about we argue
+that these two constructs which are the
+two densities the generative models and
+the variational densities
+have systematically been misrepresented
+in the literature
+because of the conflation between the
+fep and active inference
+that's why at the end we're going to be
+really specific about the difference
+between those two
+on one hand and the distinct albeit
+closely related bayesian formulations
+centered on the brain
+variously known as predictive processing
+predictive
+coding or the prediction error
+minimization framework and we'll return
+to
+how the prediction or the predictive
+brain
+is uh related or different as a
+from a philosophy of science perspective
+and from a
+computational perspective i guess all
+right second part of the abstract
+more specifically we examine two
+contrasting interpretations of these
+active inference
+type models a structural uh or really
+these two
+variational densities the things that
+we're eventually going to see brought
+together an active inference these
+okay i i believe but if it's unclear i'm
+not
+sure a structural representationalist
+and an active
+approach and that's going to be our
+whole main discussion
+we argue that the structural
+representationalist
+interpretation of generative and
+recognition models does not do justice
+to the role these constructs play in
+active inference under the fep
+so the main theme that's going to get
+returned to is that
+the computational side is very tractable
+and
+stable however it misses some
+fundamental
+components that are going to be really
+complementary to the insights that are
+brought from the inactive approach
+we provoke we propose an inactive
+interpretation
+of active inference what might be called
+an active inference
+in active inference under the fep the
+generative and recognition models are
+best cast
+as realizing inference and control the
+self-organizing belief guided selection
+of action policies and do not have the
+properties ascribed by structural
+representationalists so that's just
+saying
+structural representationalists are
+wrong about properties in what they
+think
+because of actually generative models
+being
+basically cybernetic policy selectors
+and
+their claim is that that makes some of
+the
+stances held by structural
+representationalists untenable
+so let's go to the paper here's a quote
+the question that shall occupy us is how
+best to understand the function
+and properties of the generative and
+recognition models in active inference
+under the fep
+what does it mean for one theory to be
+under the other we'll return to that at
+the end
+in light of the active processes
+involved in orchestrating
+maintaining and updating these models in
+particular we examine
+two contrasting interpretations of these
+models a structural representationalist
+that's
+one of the schools of thought here and
+an inactive interpretation so two
+different interpretations
+so we can summarize this up as a
+structural representationalist versus
+inactive whose hot take on systems will
+reign supreme
+so first let's just try to understand
+what each of these
+groups are really bringing to the table
+because uh
+that's really hopefully a
+strong starting point from each of these
+two sides can lead to a better synthesis
+in active inference so in bayesian
+inference it's a big
+area this is just one way of presenting
+it you can definitely watch other
+lectures or learn from a lot of other
+more
+skilled people in this specific area
+about bayesian approaches so
+this is just one representation i was
+trying to
+make a compromise between things that
+were implemented but there's so
+many flavors and colors of what's
+implemented in the literature
+so i just wanted to start with a really
+brief
+overview of the bayesian inference this
+is a
+two level bayesian inference scheme so
+variously
+these two elements are known as priors
+and hyper priors
+or priors in the data but here on the
+left side
+we have data which are reflecting
+sensory observations
+like that of a sensor and then there's a
+generative model
+for example that generates sensor
+readings and so
+the the question that is asked in the
+transformation
+from the sensory observational data the
+lower level model
+on the left side to the generative
+model of the data which is like often
+the higher order parameters in the
+computational model
+the question is how do these
+observations influence
+or update the generative model of the
+world and so
+you can think about that as sort of like
+empirical data coming in
+altering your parameters that represent
+deeper stances about the world so you
+have a sensor that fluctuates more
+rapidly
+and then you're doing some sort of uh
+stabilization
+of the overall readings of the sensor
+and that's like your higher order
+parameter
+just to give one of many samples and
+then the other question that's being
+asked
+in the transformation from how the
+parameters of the higher order model
+influence the data is basically
+what observations are emitted here given
+the generative model of the world or the
+generative parameters of the world which
+includes
+different things like world states
+causes etc so here's some of the
+features
+and advantages of bayesian models so
+first they can extend to basically
+arbitrary
+graphical models which doesn't just mean
+models you can draw it means models that
+you can graph
+so it turns out that a lot of classical
+and uh non-classical statistical
+techniques
+can be reduced down to this type of a
+scheme
+at the highest level statistically
+it's discussed in carl firsten at all's
+textbook related to spm
+how these kind of bayesian inference
+models relate to various
+empirical data sets so potentially of
+interest for people who want to learn
+more about
+that side the next thing that's good
+about these models
+is that they can be used to model
+multi-scale systems so
+through space and time of different
+scales they have very tractable
+computation
+and implementation on hardware so you
+can take
+a data set and basically get
+useful information out of it using this
+type of a scheme so it passes the sort
+of
+utility check it's pretty flexible with
+having sparse or dense multivariate
+data and i'll tie that to the second
+point here which is that
+you can be empirical in the sense that
+you're learning and updating your
+position based upon data but also you're
+formalizing the use of your prior
+information
+you're neither just informally combining
+your prior information
+with your uh newer information naively
+just saying oh well they're both
+equivalent because i have one of each
+one of the past one of the present
+uh it provides more formalized ways of
+dealing with
+with information and depending on how
+much you rely on your prior information
+you may only need very sparse inputs
+from your sensor
+for example you might only need a
+thermometer in a certain location
+to know whether it was in one climate
+regime or another
+these models can also be fit with
+expectation maximization algorithms
+that's also discussed a lot in fristen's
+spm textbook and uh work
+just and in the work of people who have
+done a lot more on expectation
+maximization algorithm
+um learning then i'm going to go into
+detail
+in here but it's a good topic to look
+into and one that i'm
+still learning about too uh kind of as
+stated in a few points
+these models are pretty deeply related
+to statistics
+of various kinds as well as other
+mathematical areas
+so let's just go to the structural
+representationalist interpretation
+first structure i think that there's
+probably wide latitude
+in what the structures mean and there
+were several citations that
+characterize the structural
+representationalist viewpoint so i'll
+let them
+speak to what structural representations
+and structural representationalism
+is i would say structures could
+represent data structures
+it could represent things having
+structure
+in the sense that they're
+distinguishable from something else so
+structure could be pretty broad
+representations that's a whole topic
+that i understand there's
+also a lot of debate over and we've read
+some other
+act inflated papers on representations
+and uh their strengths and weaknesses
+and
+i i just think it is what it is and
+this structural representation is
+holding the views that the authors have
+in their citations
+and that's where we'll sort of end the
+discussion on the bayesian
+inference models and think about these
+are all really good features of the
+model
+what is going to be something that's
+going to complement that from a
+pragmatic and philosophy of science
+perspective
+so the second category of models is this
+inactive
+or active models and here
+it's a lot more focused through a
+tradition
+of being action oriented and ecological
+it's more oriented about the relation
+between the world and asia
+so this comes from a lot of areas like
+systems and ecology so
+the two questions that are being asked
+in the inactivist perspective
+are first off how the world is
+influencing the agent
+is a question about how perception is
+influencing or updating
+the action tendencies of the system and
+then
+the way that the agent is influencing
+the world or that
+causal arrow is kind of asking what
+actions are entertained by internal
+models and entailed through control
+mechanisms of the agent
+so both of the questions are about the
+joint
+niche between the world and the agent
+which will be formalized later
+we'll find as a markov blanket but for
+now we can just think about the world
+and the agent being connected through
+this perception action loop
+so what are the cool parts about the
+inactive
+or the active perspective so it's
+interdisciplinary
+which encompasses a lot of interesting
+work in
+areas like art cybernetics ecology
+psychology
+dynamical systems sociology and tech and
+evolution so kind of
+also things that the bayesian models
+have been applied
+in so it's not unique to this but
+some of the work in these areas is very
+interesting
+there's a qualitative and a relational
+and experiential aspect
+and anything in the computational domain
+it's usually a question about efficiency
+whereas things that are in the
+qualitative domain often it's about
+concordance with our experience or
+potentially even other things
+so uh it's an interesting and different
+development of theory to go down the
+route of more in touch with
+phenomenology phenomenologists
+experience per se
+rather than more implementable on modern
+computational hardware
+it naturally relates to things like
+enculturation
+developmental processes sociality
+because
+one agent the world could be the
+body of another agent or it could be a
+small community or something like that
+it turns out that this
+inactivist perspective is more amenable
+to
+this externalism which we discussed in a
+previous active stream
+and other kind of radical embodied
+cognitive
+theories so i i'll just
+leave that there that's kind of more of
+a connector but again there's more and
+more
+fusion between these two approaches as
+evidenced by the discussion that we're
+having today
+but these inactive approaches have
+definitely a very
+different um literature
+base different citation networks that
+are linking these ideas so
+i'm just phrasing them in a way that's
+not representing
+priority or importance just sort of
+throwing out different features
+to differentiate it strongly from the
+bayesian perspective computational
+perspective
+all right inactive models also
+interestingly
+and this is one of the reasons why
+they've recently received a lot of
+attention
+is that they're amenable to different
+kinds
+of things that maybe people would call
+physical computers in 2020 like ant
+colonies
+slime molds landslides quantum systems
+all these different things that uh do
+what can only be described as special
+types of
+algorithms or computation yet
+they don't do all problems so they're
+they're more like a bitcoin miner
+than a uh turing complete processor and
+computing language
+so they're specialized computers if
+they're computers personally i don't
+think the computational metaphor
+applies so well because i also think
+that this is a
+perspective that takes us beyond
+computationalist metaphors
+of the world sometimes
+but at the very least the inactive
+perspective highlighted
+all these ecological dynamics of
+intelligence that are only now being
+appreciated from a more quantitative
+perspective
+and also these active models as you
+might guess are part of a broader
+tradition of action and pragmatism so
+it's a
+another interesting area that kind of
+intersects there
+so here's the simplification slash uh
+side by side
+first i'm just gonna again try to
+distill it another
+level down without uh
+leaving too many false positives or too
+many false negatives so
+if someone knows better about these
+areas totally i'm
+open to just correcting it and changing
+it i'm just
+as i read through the paper i just mock
+this up to
+try to understand how these theories are
+different and similar
+so a sort of quasi-bayesian structural
+representationalist view
+we can distill down to this we can say
+that there's the data
+parameters and the hyperparameters or
+just the parameters of one model and
+that of another and this can be
+again stacked up multi-level all these
+different things that we discussed
+earlier
+and the way that the data like coming in
+from the sensor
+update the hyper parameters like the
+beliefs about the world
+are through what is going to be called
+the recognition model by that community
+on the other hand the way that the
+predictions about the world state
+are used to generate the data parameters
+is a generative model and that is just
+like
+also considered sensory inference now it
+turns out that there's a lot of model
+and inference being thrown around like
+isn't everything a model and all this
+sort of stuff
+yes it does um get a little confusing
+and so i've tried at a few points to be
+really clear and specific but sometimes
+in quotes
+um they uh will use like model
+or who's doing inference where and we're
+just going to be pretty specific about
+what all the connections and the pieces
+are
+and then hopefully it'll be clear um
+what yeah what's similar and different
+between these two approaches
+so the outcome of the bayesian model
+like a
+successfully converged model that's
+running here on a computer
+it represents a statistical converge
+multi-level model that represents the
+structures of the world
+so let's just think about the data
+parameters like the visual
+field like the sensor data on the retina
+so to speak and the hyper parameters
+being like where objects are
+and so even though there's no color
+vision in the periphery
+and even though there's low resolution
+vision in the periphery still
+i'm able to have a consistent uh
+relationship things look pretty normal
+because
+the sensory data are being generated in
+basic
+non-surprisal with the recognition
+modeled sensory data
+so that would represent a sort of
+bayesian computationalist
+perspective on vision and error
+correction
+and optimization on the other hand we
+can
+side by side with the inactive
+perspective so the inactive perspective
+again situates the agent in the world as
+being linked through perception and
+action
+and the outcome of the inactive
+perspective is an embodied and
+ecological
+action sequence or like some sort of
+niche interplay
+from an embedded agent who makes or is
+behavior
+and this is a lot of the inspiration for
+things like plants
+intelligence or something like that it's
+just oh well what time scale and
+what problems are you asking the system
+to solve and all these things
+that ultimately are the decisions and
+the classifications of the scientists
+or so it said uh are used to talk about
+the different intelligence or
+perception or action capabilities of
+different agents
+so let's try to unite this
+under what is said by free energy
+principle and active inference
+in this gap explanatory and causally
+between the world and the agents so on
+the top
+of this slide there is a figure one from
+the previous paper we discussed in five
+i believe and several other papers
+and it describes this minimal loop
+between the organism
+and the environment so this is the first
+bridge
+uh connector point so if you're on board
+with just
+the questions about the world and the
+agent then we're still
+talking about just exactly that
+and we want to build on the work
+and the perspective of the different
+insights from a few different areas
+first from the schools of action
+learning about things like inactive
+embodied ecological practice
+socio-technical and experiential uh
+aspects of the inactive view that we
+discussed a few of earlier
+from the more inference side again
+there's a lot of directions which
+inference is being used in but it's one
+of the words
+um in active inference and so that's why
+i'm using them
+here and on the more inference side
+we can think about drawing the insights
+from
+bayesian and computational approaches
+statistical approaches
+modeling uh deep learning robots so all
+these kind of
+interesting things that think of the
+world
+whether uh conceptually or just from a
+scientific modeling perspective from a
+computational perspective
+and then also there's uh another level
+that as we'll see is related to the
+roots of active inference in the free
+energy principle
+but there's this whole root layer of
+physics
+and specifically hear things like
+invariant
+sets and manifolds patterns multi-scale
+dynamics collective behavior
+phase transitions as well as potentially
+a bridge to things like unconventional
+computing or more advanced or more
+tractable world modeling
+so here we've gone
+one level deeper into that world agent
+mapping so we still have world on the
+left side
+in the teal and then agent on the right
+side
+in the darker blue except they're
+labeled now as internal
+and external states and they're linked
+through
+these two specific types of states
+called sensory and action
+states so i'm going to go through a list
+of
+just features about the fep and active
+sort of skeleton of how the agent in the
+world
+are related to and then see if that
+covers this
+diagram on the bottom left we'll see so
+internal and external states so that's
+respectively agent in the world
+states are linked through situation and
+model dependent
+blanket states so it's not like there's
+just one
+simple barrier there is a something that
+is contextualized that's a
+functionalized
+barrier in the context of the organism
+or in the context of the scientists
+modeling
+it and so the states can be coarse or
+fine-grained
+and that's really a map territory
+situation
+so uh depending on how
+coarsely grained success in a situation
+can be uh
+basically achieved then even very
+corresponding
+of certain strategies will work for
+example and one thing that we'll return
+to again and again
+is that active inference is about this
+relationship between the sensory input
+and the action selection
+not necessarily just the convergence on
+the hypothetical model it's about the
+action
+so um there's this dual instrumentalism
+and i think it was a really nice
+sequence of points brought up by maxwell
+and others in the one of the five
+discussions about this dual
+instrumentalism and so
+to kind of rehearse what those two
+instrumentalisms are
+so the first usage of these types of
+partitioning models
+is as a scientific framework because any
+system of interest
+you can identify you can identify its
+inputs and its outputs and its internal
+states and its external states
+and you can almost think well what would
+what would make this false how could i
+be outside the system and model it in a
+way where
+there was internal states that um
+influenced external states without
+action
+or vice versa so that might be something
+that we
+don't know how to measure or it could
+happen but if it's a part of your
+model you could specify it with a
+different topology we'll return to the
+question of whether you could specify
+different
+partitioning and have it all work out
+but i'd suffice to say that for now
+we're just thinking about the skeleton
+of this relationship between the
+different states
+and as far as modeling from a scientific
+framework
+perspective goes you can basically
+partition any
+measurable system into this kind of a
+model
+the part that was referred to as
+speculative in the previous paper
+was as to whether this is actually what
+organisms do
+and that's sort of a philosophical area
+that let's touch on
+later on uh and in ongoing discussions
+because i think that's sort of
+one of the areas that we return to uh
+almost every week in acting extreme so
+just
+look at this diagram think about whether
+you agree with the way that states are
+partitioned
+and keeping in mind the multi-scale
+insights from some of the previous
+discussions as well and could there be
+other ways that these are connected
+and then we're going to want to
+specifically draw together the bayesian
+and inactivist ways of thinking about
+action okay
+so here we go to the section where i'll
+read some more quotations from the paper
+and just highlight draw their exact
+argument
+about what the different schools of
+thought bring into play
+so first they characterized the
+structural representationalists as
+having a good take on their own
+models but missing action as
+a fundamental consequence of
+a real far from equilibrium agent
+existing in the world
+so the primacy of action
+means that reading from the second
+paragraph
+we argue that the structural
+representationalist interpretation
+of generative and recognition models
+these two bi-directional arrows
+while providing an accurate description
+of these constructs as they figure in
+some version of bayesian cognitive
+science
+so in other words being a disciplinary
+tool
+does not do justice to the generative
+models and recognition
+densities that figure in active
+inference under the fep
+so in other words the
+interpretation of how those two types of
+models
+agents and world and models and hyper
+models how those two things are related
+uh the computationalist perspective or
+the the so-called structural
+representationalist perspective uh
+it's missing some aspect uh and then
+contrasting with the second red
+underlined part here
+in contrast to these other bayesian i.e
+purely bayesian theories
+which are in effect theories of the
+structure function and dynamics of the
+brain
+active inference is a much broader
+theory of adaptive phenotypes
+that centers on the control of adaptive
+behavior and that emphasizes the tight
+coupling and circular causality between
+perception and action
+so that's the part that draws it more
+naturally to systems thinking
+and to cybernetics
+um all right so structural
+representationalists argue that
+generative models function
+as structural representations so no
+surprises there
+with representational content okay
+a great summary of this view which is a
+nice thing to say about the authors
+reads that predictive coding theory and
+this is being pop
+provided as a specific
+kind of sub model within this bayesian
+brain
+structural representationalist paradigm
+which we'll return to at the end as far
+as their formal relationship
+predictive coding postulates internal
+structures so that's where you get the
+structure apart
+who's functioning inside of a cognitive
+system closely resembles the functioning
+of cartographic
+maps cool it might be said that on the
+proposed interpretation of the theory
+cognitive systems navigate their actions
+so
+is it not action-oriented through the
+use of a sort of causal probabilistic
+maps of the world
+so there is a possible uh
+place for a structure so it's the maps
+are the the representations that are in
+the uh neural system
+these maps play the role of
+representations within the theory
+okay believe it or not i guess it so
+specifically this map like role is
+played by the generative model
+it is the generative models that similar
+to maps constitute action guiding
+detachable
+structural representations that afford
+representational error detection
+so here's what they're proposing they're
+saying that
+generated maps from some sort of map
+generator
+function are used to then do
+policy and agenda setting so action gets
+separated from second layer estimation
+in this way that's characterized as
+detachable
+in that right side of the third line
+from the bottom
+so it's uh that's the
+perspective of the authors of this paper
+characterizing
+hopefully in a positive light the
+structural representation lists
+so those are all interesting things i
+think that are cool
+as well as all the aspects of these
+models that are
+beneficial discussed earlier so on the
+other hand let's look at what inactivism
+brings to the table
+in this section we unpack the
+implications of the pragmatist view for
+understanding the relations between the
+generative model
+the generative process and the
+recognition model according to our
+pragmatist interpretation
+the organism embodies the recognition
+density and entails the generative model
+as a control system
+we then formulate a direct critique of
+the claim that generative models are
+structural representations
+so they're going to say because of
+embodied
+enacted whatever it is
+the generative model is a control system
+and then because of the control system
+and not a map of the world like where
+are the structures not where the
+processes of the world there's no
+google maps for processes yet
+but they're going to formulate a
+critique in the end
+that generative models are not
+structural representations because they
+are control systems and control systems
+are not structural representations
+they're something else process
+realizations or something
+so here's what inactivism ends up adding
+it ends up providing a pretty natural
+pragmatic and action-oriented
+perspective on active inference modeling
+it brings
+all of these 4e 5e cognitive
+perspectives in this is really an
+interesting area of research
+maybe there's other adjectives i can add
+here but
+it just usually is a bunch of ease
+inactivism is something that natural
+systems can carry out
+and it's something that we can grasp at
+least at the atomic level even simulate
+sometimes computationally
+and what is
+being gained by phrasing the entire
+system as a control system
+for action rather than having a
+so-called detachable
+interface like we were seeing in the
+previous approach um by framing
+explicitly about action
+you end up training on small or large
+data sets and
+evolving iterations of systems with an
+eye towards function
+rather than with an eye towards
+structure
+and that can look like a lot of
+different things in different areas so a
+few other
+examples of previous work in the control
+systems area are like cybernetics
+also control systems can include
+elements that are
+game players they can include uh
+elements of control that have to do with
+swarm control as well
+this was an interesting paragraph from a
+technical point of view
+active inference and perceptual
+inference are not
+merely two sides of the same coin
+instead
+active inference is the name of the
+formulation for policy selection
+what advocates of the bayesian brain
+call perceptual inference is just one
+moment
+of the policy selection process in
+active inference under the fep
+namely state estimation so your your
+your big deal is just a parameter in our
+model
+the issue we want to press here repeat
+is that the active inference framework
+implies that perception is a form of
+action
+that is action and perception cannot be
+pulled apart as they sometimes are in
+the bayesian brain framework
+so that's that detachable critique from
+the inactivist to the
+um structuralism they say because you're
+thinking structurally whatever that
+means
+you have some detachability between form
+and function
+we have a non-distinction between form
+and function
+because there's uh all these different
+inactive things happening
+so we're gonna have a better perspective
+because we can already
+computationally model our perspective
+too just like you could
+so closer to the end of the paper
+they write in summary the role of a
+generative model
+is subtle in active inference the
+generative model itself
+never actually exists outside the
+dynamics that is
+outside the adaptive actions and policy
+selection of the organism
+well and so i'll just note there that
+adaptive means that there's a striving
+for
+success but just because something is
+adaptive doesn't mean
+everyone adapts within the dynamics it
+provides
+a point of reference or definition of
+variational free energy
+or more precisely a definition of the
+gradients with respect to internal and
+active states
+given that the vicarious realization of
+the generative model through a
+minimization of the variational free
+energy
+can only be through action and changes
+in internal state
+we can think of the generative model as
+being enacted and of the recognition
+density as being embodied
+so what is being said here is
+because there's sort of this
+thermodynamic forwardness
+that drives the active inference process
+as far as far from equilibrium systems
+doing what they do
+because those two things are enacted and
+embodied
+and because it maps onto some of these
+previous distinctions that were
+raised and at least computationally
+resolved in the computationalist
+paradigm so we want to draw those
+mappings about data
+and about higher order perceptions of
+data map that onto our understanding of
+the world but
+not end up computationalizing the world
+per se that's one implication there's
+probably others
+and then they say this speaks directly
+to embodied
+and inactive approaches in cognitive
+neuroscience
+and provides a computationally tractable
+framework for the metaphors mobilized by
+these paradigms
+so they're again they're saying like
+we'll be able to computationally
+so more attractively do some of the
+stuff that people
+thought philosophically or ecologically
+would be cool
+representationalists argue that
+generative models encode
+exploitable structural information about
+the world
+our analysis suggests that this is false
+indeed in this article we sought to
+underpin the claim that generative
+models do not
+encode anything directly they are rather
+expressed in embodied activity and
+leverage information encoded in the
+recognition density which is an
+approximate posterior belief or best
+guess
+assuming our conclusion is correct and
+why wouldn't you
+our inactive inference proposal serves
+to free us from a standard but flawed
+philosophical assumption
+about the nature and explanatory basis
+of cognition
+and adaptive behavior so that's the
+closing words of the paper
+and they come out hard with the
+implications
+of action on the bayesian
+computationalist worldview
+let's look a little bit about how active
+inference
+steps into that gap between the agent
+world gap and then also between the
+bayesian computationalist and then the
+more inactive
+and embedded approach
+so here's another quote from paper they
+write
+in active inference under the fep which
+we'll again we'll return to
+the generative and recognition models
+are best cast as realizing inference and
+control
+the belief guided selection of action
+policies so again
+more like cybernetics less like image
+classifiers
+and do not have the properties ascribed
+by structural representationalists
+again read them if you want to figure
+out exactly what you think they actually
+are talking about
+we thus provide a philosophical and
+information theoretic justification
+for an inactive view of generative
+models under the fep
+so if you read the paper
+you might learn some more details about
+why they argue that the generative model
+is an activist in active inference
+under the auspices of the fep but here's
+what they end up coming to
+they end up linking these two states now
+i've actually
+not put any labels on either of these
+two nodes to emphasize
+that which the there's a wide range of
+relationships that the nodes can have
+because it's again a general graphical
+model and also it's just going to depend
+on the scientists and
+how it's being modeled um from a
+scientific
+instrumentationalist point of view and
+then if you're talking about organism
+and niche or organism and organism like
+improvisation
+then again it depends on the situation
+and how you're going to be
+measuring it so we'll just leave the
+labels off but
+the model that was like the one that
+goes
+from the um data like the retinal data
+to the higher order model model of the
+world is still in orange on the top
+and that's the generative model or the
+inference
+and then the recognition models
+are um actually this one might be
+flipped i'm not exactly sure
+but so sorry if the colors are messed up
+on this one slide
+but the key aspect is that inference
+is um what's happening from the data
+to the higher order priors of the world
+on the top in orange
+and so that's like a signal processing
+perspective
+which lends itself naturally to
+predictive processing and all these
+other
+things we'll get to and then on the
+bottom
+you have on the recognition models side
+you have control so these models are not
+just being used
+to recognize stimuli in terms of
+making structural representations of the
+world or updating them
+but rather in terms of their embodied
+and inactive control
+policies so because of this inactive
+insight or interface in the pragmatic
+term
+the fep frames itself especially in this
+multi-level
+embedded way as being something that
+integrates the two models by allowing
+for
+hopefully the mathematics to be
+partitioned the way that we
+expect and would hope that these kind of
+well
+behaved bayesian models sometimes can
+behave but also
+have all the richness of the inactivist
+perspective
+and be able to integrate these
+multi-scale models
+so we can think of kind of a few
+generations of the active inference
+development
+and just think what are the
+commonalities here in
+the different waves of the development
+and this is uh
+as per a recent discussion that was
+really helpful hopefully i'm
+representing it roughly accurately with
+uh maxwell
+and axel and axe and alec and uh in the
+early phrasings of active inference
+there was a local
+like a one step you can think
+expectation maximization algorithm
+so only looking one step ahead in time
+led to
+relatively local alignment of the model
+with the sensory data
+a second iteration or increase
+in the nuance of active inference came
+with this paper on inactive inference
+and others
+which introduced temporal depth and
+niche into the equations
+as well as things like planning and
+agent embeddedness and and
+the beginning surveillance and then in
+some of the more
+recent work like of 2019 and 2020
+there's
+work related to agent learning and
+affect and
+these sophisticated or counterfactual
+aspects
+of action and cognition and
+counterfactuals about belief
+um all the stuff that i really would
+love to learn more about so
+in the next and uh last
+part of this stream we're gonna
+talk just first coat of paint about the
+connection between
+a few different topics and a few
+different philosophy of science topics
+so the first set of topics the
+scientific topics
+are the bayesian brain predictive coding
+active inference and the free energy
+principle
+and then we're gonna see how these
+different
+frameworks or theories or principles or
+whatever they are we'll define them
+how are they all linked specifically as
+theories frameworks
+hypotheses and connected by
+falsification or other mechanisms of
+comparison
+and then on the right side is uh this uh
+meme
+and so on the top right this is sort of
+reflected
+uh to get the punch line first here too
+on the bottom
+um is a 2018 alias bulletin
+interview with carl fristin and our
+departed dearly colleague martin forger
+and in this interview there's sort of a
+philosophy of science progression that
+i'm going to walk through a little bit
+of today and lay out
+hopefully to clarify the differences
+between some of these different theories
+or what level of science are they really
+striking at
+and uh in this meme on the top is the
+essentialist and the positivist
+perspective so the essentialist being
+the idea that the uh objects or things
+have meaning
+in themselves not just as in relation
+with other objects
+and positivists being the idea that
+positive claims about
+nature are made through measurement and
+science then in the second panel is the
+utilitarian so defined based upon
+what they perceive their value
+functionally to be and then
+falsificationist
+which as we'll return to is about
+a theory that makes a prediction that
+would make it incorrect
+or make it uh untenable or increasingly
+untenable to hold
+and then the third panel is the
+pluralist and the bayesian
+and so in this world view there's
+understood to be a balance between
+novelty and conservation
+and that a somewhat optimal balance for
+certain types of
+ultimately utilitarian or pluralist
+views a certain value parameters can
+ultimately be
+struck but there's never going to be a
+perfect single value because there's
+still this question about values to
+bring to the table so not to take it to
+world modeling but
+you know you're thinking about these
+issues as bayesians pluralists
+and then in this paper fristen just sort
+of has an
+another level that uh almost merits this
+following chart that i'll show that
+really lays out again what the fep
+and the active are and how they're
+related to specific testable hypotheses
+because i know that's a common thing
+that people
+want to talk about so the green
+is what martin and i had asked we wrote
+in other words what is explained by the
+entropic reduction within the free
+energy principle that is not explained
+by any model parameters in the other
+frameworks so this was in an attempt
+to understand what a lot of people are
+trying to understand which is
+what are we getting above and beyond as
+a value add or
+conceptually or utilitarian perspective
+whatever it is just
+what are we getting by modeling this
+quantity as
+you've laid it out in these certain
+works
+and here's what fristen responded
+i think it is useful to make a
+fundamental distinction at this point
+that we can appeal to later
+the distinction is between a state and a
+process theory
+i.e the difference between a normative
+principle
+that things may or may not conform to in
+a process theory or hypothesis about how
+that principle is realized
+under this distinction the free energy
+principle stands out in stark
+distinction to things like predictive
+coding and the bayesian brain hypothesis
+this is because the free energy
+principle is what it is
+a principle like hamilton's principle of
+stationary action
+it cannot be falsified so that was
+obviously uh
+an almost inflammatory stance for many
+they uh fainted when they heard first
+then say that fap
+cannot be falsified it cannot be
+disproven
+in fact there's not much you can do with
+it uh that's you know the other
+choice sound bite right there's not much
+you can do with it oh well then what are
+we
+doing here right unless you ask whether
+measurable systems conform to the
+principle
+on the other hand hypotheses that the
+brain performs some sort of bayesian
+inference
+or predictive coding are what they are
+hypotheses these hypotheses may or may
+not be supported by empirical evidence
+so i'm going to just lay out this chart
+on this continuum
+to get at the distinction between all
+these different philosophy of science
+terms principle
+theory framework everything so
+this is going to be a continuum on the
+bottom on the x-axis from the left side
+being
+more theoretical or abstract
+moving through the scientific endeavor
+to the statistical and the applied
+so this isn't uh a ranking so much as it
+is a continuum just from abstract
+to uh practice based and individual
+people can
+can collaborate and exist across
+multiple layers
+of wanting to understand how this all
+works
+and as sort of laid out in what i'll
+present as a slightly clarified and i
+believe
+a little bit interpreted uh
+unpacking of what fristen wrote in that
+paragraph
+i'm gonna try to lay it out very clearly
+uh
+there's some gray area but i think this
+is just one way to lay it out
+so towards the most theoretical and
+abstract
+side we have principles which are
+axioms and invariances so these are some
+of the things that you
+can't falsify and
+i thought a lot a lot about that when i
+was thinking about what to
+say about this and one thing that it
+made me think about was girdle
+escherbach
+the 1979 book by hofstetter
+which is a really exciting exploration
+about a lot of these topics related to
+axioms and
+logic and also
+it reminded me of the law of
+conservation of
+stoichiometry in chemistry so not just
+the law of conservation of mass or mass
+energy
+but of stoichiometry and chemistry
+if you'll remember from taking a course
+it's about balancing the equations
+and so it's a rule within a certain
+framework of problem solving
+that equations have to be balanced now
+there's also a slightly stronger more
+general
+belief that there's a conservation
+unless there's a nuclear reaction or an
+alchemical
+transformation that there's a
+conservation of
+uh chemical elements that because
+there's
+such a strong conservation at the nano
+level that there's also some sort of
+generalized
+conservation at a higher level so that's
+a belief in a principle and that
+ends up framing what you see how you see
+it how you measure it how you compare it
+it tends to be normative which means
+using like a should
+or an ought like oh well this motor
+ought to waste heats relative to 100
+efficient motor so i think we can
+pretty much detach from the uh
+some of the emotional psychological
+baggage
+on that and just think about the
+scientific normativity
+and then what it actually says and then
+our response to it which is
+absolutely valid and important is
+something we can
+work with and grow from the principle
+doesn't need to apply to all scales so
+like
+the laws that say the patterns that say
+that the number of molecules in a
+chemical reaction are conserved
+it doesn't need to say everything about
+social interactions so they don't need
+to be at all scales
+sometimes they're sort of incorrectly
+called laws i'm just not really into
+thinking about
+nature is having laws i think laws are
+something that people make and then
+there's patterns
+in nature and whose last name you attach
+to which law
+is just wikipedia url bragging rights
+what matters is the patterns that we're
+discovering so again
+conservation of mass energy pattern law
+and this kind of returns us to this dual
+instrumentalism of principles like the
+free energy principle which is that
+on one hand it can be about the system
+like you can choose to model the system
+as
+neither gaining or losing energy or as
+always decreasing free energy
+or you could make a stronger claim that
+the principle is actually how the system
+is
+in which case you're saying that it is
+the system's functional principle that
+it is under national selection or it
+does follow the second law of
+thermodynamics
+all right so drilling down a little bit
+towards the scientific and the
+statistical
+a theory is a coherent set of ideas
+claims in logic
+and it makes specific testable
+hypotheses that are drawn
+from theory that's upstream and so
+that's sort of the confusing thing is
+from uh abstractness
+uh ranking the principle is the the
+ground uh
+the bedrock of the theory the water
+that theory swims in but it's more on
+the theoretical side
+so theory isn't even the most
+theoretical thing
+and then people say oh yes i do theory
+or something like that and that can mean
+a broad range of things
+from anywhere from the middle to the
+left side
+uh theory when it's partnered with tools
+and approaches
+is a framework also community of
+practice is important but frameworks are
+important too
+and the way that theories are compared
+is often
+through falsification or theory
+comparison so falsification
+is just like the best model in play is
+the one that we go with
+if there's some metaphor out there about
+hunting ducks or something with a
+shotgun i don't know
+and uh there's other mechanisms of
+theory comparison
+theory anarchy all these wild thoughts
+but um the falsificationist worldview
+that like we go with what works and then
+we
+end up having a paradigm shift and
+moving into a new set of dorms around
+a scientific topic like landslide either
+in a little micro
+sense or in a larger macro sense all
+this kind of stuff
+there's a lot of depth i i'm just going
+to briefly just say people have thought
+about these kind of theory comparators
+now in the alias
+interview response firstin mentioned two
+kinds of theories
+he mentioned state theory which he used
+to mean something
+pretty similar to a normative principle
+and
+those were about system states and then
+he combined the normativity with it
+being about the system states so it said
+that there was a normative stance that
+the system will
+conform to a certain way of being and
+it's about the states
+and that was contrasted with the process
+theory um which is about how
+systems change which is why it's called
+a process theory
+all right now to get to a specific
+hypothesis
+a hypothesis is a specific prediction
+about the system that's
+under the auspices of a specific uh
+theory whether it's a state theory or a
+process theory
+and a hypothesis is tested with
+statistical
+approaches it can also be explored with
+visualization
+so the hypothesis is tested
+from a falsificationist paradigm at the
+quantitative level
+so at the confidence level of 0.01 or
+0.001
+or according to this metric those are
+quantitative
+sort of in the trenches falsificationism
+of null hypothesis
+which is that there's no influence of a
+certain treatment for example
+whereas the theory falsificationism
+that's like one layer higher up
+is a little bit more um like logical
+uh battles being fought no single t-test
+brings down a theory but can take down a
+hypothesis and so let's
+break this down for the free energy
+principle specifically so
+as fristen had mentioned the free energy
+principle
+is this principle and i think in future
+times it would be cool to talk about
+what makes it a principle what are the
+assumptions what are the implications
+what are related assumptions
+and for now we'll just say that
+downstream of the free energy principle
+is active inference active inference is
+um a process theory it's a coherent set
+of ideas claims and logic
+about the world it is going to be making
+specifically
+testable hypotheses specifically about
+the structure of action
+and about how agents interact with their
+environment
+and examples of theories that have
+overlap with active inference um for
+example
+licensing the use of the people who are
+structural representationalists
+using the bayesian brain metaphor to
+think about the bayesian brain as a
+theory we can think about the hypotheses
+that are specifically made by that
+theory so for example the claims might
+be something like
+at the first level that the brain can be
+modeled with bayesian stats and then at
+the second level like that the brain
+implements bayesian statistical
+algorithms in what it does
+in nature so that's that dual
+instrumentalism
+and then another area of theories
+that has overlap with active inference
+as well as the bayesian brain just
+didn't want to
+clutter it was predictive coding and
+two hypotheses in predictive coding
+are one would be sense data can be
+analyzed relative to now casted
+predictions now casting and the second
+level would be something like organismal
+sensory relays are predictive so again
+it's the dual instrumentalism
+where there's one level about how the
+scientist
+analyzes the world which is that yes we
+can use this framework
+to understand data even data about
+organisms or data about simulations or
+other
+systems and then at the second level
+it's actually the claim about
+the world and so in both of these cases
+their hypotheses because
+they are under an axiomatic framework
+reflected by the free energy principle
+that's why it keeps on saying
+inactive inference under the free energy
+principle
+and the active inference framework also
+draws on
+not just the bayesian brain predictive
+coding but just to label one more up
+there
+is there's this inactive area that we
+talked a lot about
+today and all the cool insights that
+the inactive side has to bring to the
+table
+so maybe another time we could think
+about what the
+principles underlying and activism are
+or are there fundamentals
+it's an air i'd love to learn more about
+are there
+frameworks for inactive inference i know
+that we've had some
+participants on the active stream who
+had a lot more experience and practice
+with these kinds of things
+so we want to see how we can make active
+inference this
+hub for realizing the ideas and the
+people
+and the projects coming together to kind
+of make it real to show how these
+ideas are all connected and uh yeah
+see where we can kind of take these
+ideas just conceptually
+and from an impact perspective so
+that's the end of 6.0
+thanks for participating we provide
+follow-up forms to live participants
+it'll be pretty easy this one
+any feedback suggestions or questions
+would be totally welcome
+stay in communication with us and
+yeah the next uh live stream will be 6.1
+that is going to be on october 13th
+on the tuesday then we are going to have
+6.2 on the 20th that's going to be a
+follow-up discussion
+so if you're interested in 7 a.m pacific
+time
+for 60 to 90 minutes on october 13th
+or october 20th those are going to be
+discussing this paper a tale of two
+densities
+then on october 27th and november
+3rd both tuesdays same time we're going
+to be
+discussing another paper you can check
+it out on our twitter if you want to
+learn
+more and if you're watching this after
+those dates
+thanks for watching please feel free to
+still
+leave a comment and uh yeah thanks a lot
+for
+watching just let us know if you have
+any thoughts or questions
+but have a good weekend or whenever it
+is you're listening
+bye

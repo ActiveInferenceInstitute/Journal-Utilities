@@ -1,0 +1,851 @@
+Hello and welcome. It is June 3rd, 2024. We're in Active Inference Guest Stream 82.2 with Robert
+Warden. Today we're going to be discussing three-dimensional spatial cognition,
+bees and bats. So thank you, Robert, for joining again. To you for the presentation and looking
+forward to it. Thanks, Dan. Okay, well, as Dan said, I'm talking about three-dimensional spatial
+cognition in small animals, particularly like bees and bats, for examples. And what I'm going to be
+doing is showing you a demonstration program that does this. And so you can find the demonstration
+program at this link at the bottom of the picture, and you can download it and try it yourself. Or you
+can read a couple of papers about this work, which are there on archive at that address.
+So that is the introduction. Let's get straight into it. What this work represents, I think,
+is a challenge for classical neuroscience. And by classical neuroscience, I mean the assumption
+that all that happens in the brain, all cognition, is done by neurons connecting to each other by
+synapses and so on. And the challenge, which I think comes out of this work, is that the main result
+is that neurons are actually not capable of that. They cannot represent three-dimensional space
+because they're too imprecise and too slow. So the resulting challenge for neuroscience is to show
+this idea is wrong. Everybody thinks it's wrong. Everybody thinks neurons do everything.
+So you have to show it's wrong by building a working model of neural computation model of 3D space and
+checking that it really scales and can perform somewhat like animals perform. I think just writing
+papers and talking about it is not enough. You actually got to build a model and show it works.
+And for building that model, the FEP neural process model is the best starting point, I believe.
+So that's where this talk is going. It gets there by
+of 3D spatial cognition. So what is that?
+Spatial cognition, as I first say, is a very important problem.
+The primary task of any animal brain is to control its movements, physical movements, its limbs, in 3D.
+And that's a 3D problem. And it has to do that at all times of the day.
+And for most animals, most of their brain is devoted to this problem.
+And we believe, being Bayesians, that they do this by building and using Bayesian maximum likelihood model
+of three-dimensional space.
+And my previous live stream was about the subject, how animals build models in general.
+But the particular 3D model of space, that's been important since the Cambrian era,
+when animals first started having precise sense data, like good eyes and capable limbs.
+And that there's been huge and sustained selection pressure on all animal species since then to do it well.
+And what we believe is that animals do do it rather well.
+For instance, our own conscious awareness of 3D space must come from something going on in our brains.
+And that is a rather precise model in our conscious awareness of 3D space around us.
+So that must be quite a good model of space in our heads.
+And going from us to small insects, even a small insect can land very skillfully on the room of a coffee cup or any other surface.
+So that's why I say modeling 3D spatial cognition is the top priority for neuroscience.
+And we may look at all sorts of problems in neuroscience.
+This is the one.
+This is the heart of the problem, the thing we really need to get right.
+So how do you do it?
+How do animals build a 3D model of local space around them?
+And the immediate problem is that most of their sense data in their vision is two-dimensional.
+So how do you get from two-dimensional vision to three-dimensional model of space?
+There are some constraints.
+And people obviously think of stereopsis, two eyes where you can tell the depth of things, or proprioception and touch.
+But those constraints only apply to restricted regions of the space around an animal.
+So for the rest of it, what I believe animals do is they build a model of space around them by moving in space.
+And this is a form of active inference, if you like, that you have to move in space to find out about space.
+And this is based on a very strong Bayesian probability that as animals move, most of the things around it do not move.
+So the world is like a big, rigid, moving body around the animal.
+So the animal can compute object locations by what is called structure from motion, SFM.
+And when you build a computational model of this, it's actually a fairly simple computation to do.
+What you can do is fairly simple 3D matrix operations to maximize the likelihood of an object being in a certain position.
+And that's what this program does.
+But if you're doing that, shape from motion, structure from motion, it requires a short-term spatial memory, a working memory, positions of things.
+And that's what this demonstration program does.
+So the demonstration program...
+B is on without vision.
+With some limited, but not very bad resolution.
+Bats have echo location instead.
+That gives them both the echo delay and it gives them a Doppler shift.
+And we'll talk about that later.
+So both of those animals move fast among static objects.
+So this 3D shape from motion is an applicable way of working out where the objects are.
+So the program we're going to show you builds a 3D model of space in three different ways.
+Firstly, it can build an optimal Bayesian shape from model.
+And that is what I call a brute force calculation.
+I've discussed this in my previous live stream.
+And it's very hard for animals to do.
+It's not the way we think animals do it.
+But the interesting thing about it is it gives you the very best possible Bayesian model based on the sense data.
+So that's the first way.
+The second way is by dynamical object tracking where an animal makes an estimate of where each object is in three dimensions.
+And then it keeps updating that estimate every time.
+From every step along the track it takes, it updates that estimate from its sense data.
+From its sense data.
+And the third model is doing that same object tracking, but doing it in the presence of neural memory noise.
+I should say this computational model is built at Mars level, David Mars level two.
+That is, it's not a neural implementation, but I have made it so that you can add simulated neural noise to it.
+So if you want to see this program after you've seen demonstrated, download it from this web address and you can quite simply unzip it and start it running.
+So I will now switch to demonstrating this program.
+So I end the show.
+And there is the program.
+That's what it looks like.
+And what you see is three different windows, left, center and right.
+The left hand window is going to be a three dimensional view of some space in which a bee or a bat is moving.
+The center view is always just help information.
+And it's tries to tell you how to use all these sliders and buttons and controls.
+And the right hand view is just various graphs.
+And we'll see some of those as we go along.
+So what happens when you press the start button is you see some three dimensional space.
+And inside it there on the left hand side is an animal, this time a bee.
+And the colored circles are objects randomly spaced in that space.
+And so the lines going from the bee to the objects are lines of sight.
+And this is a three dimensional view.
+So you can rotate it, see the three dimensions.
+And that's what happens when you rotate it.
+The objects rotate.
+And so there at the moment we've got nothing about the bee's internal model of space.
+We've only got actual space itself shown in the view.
+In order to show the bee's internal model of space, we press the run button.
+And I'll do this and you can see what happens.
+So as you press run, the bee starts moving.
+That's the green line.
+It gets new lines of sight.
+And from the new lines of sight, it estimates the positions of all those objects.
+So I'll restart and do that again.
+And what you'll see this time is that the estimates of the positions appear as small circles with
+error bars.
+So the error bars are the gray lines, the small circles are where the bee thinks the object
+is.
+So you can see the bee is building rather an accurate model of where the objects are from
+its sense data.
+I'll restart again.
+And this time we'll step through it one step at a time to see how the bee's model of space
+evolves with time.
+So one step.
+And you can see in the very early steps, we'll rotate it a bit to show what's going on.
+So the bee starts making really quite good estimates of where the objects are.
+Each little white circle is quite close to the blue circle, but the estimates have error
+bars.
+And the error bars are in three dimensions, showing the uncertainty of the location estimate in
+all those dimensions.
+So those estimates of position that enable the bee to move where it wants to do.
+Suppose these are flowers.
+It can go to the flowers and get pollen or whatever it wants to do.
+Now, I said the program computes three different kinds of model.
+And these three models is always doing this as you go through the steps on the track.
+And these three models are a full Bayesian model.
+And that's what we're showing at the moment.
+Full Bayesian.
+We can switch to a tracking model.
+That's the object dynamic tracking.
+And there, if I switch that, you can see the error bars and the objects hardly move at all.
+They do move a little bit.
+But this is one result of the program that doing that tracking model, which is simpler to do
+them, the full Bayesian model, gives you nearly the same estimates and same error bars.
+And the third model it computes is a tracking model with noise.
+And I switch to this one.
+And again, it's not moving very much, actually.
+But I'll move it on a bit.
+And you'll see that noisy tracking often is very different from tracking without noise.
+So we're on tracking without any noise at the moment.
+We step forward a bit.
+And the bee keeps updating its estimates of these positions as they go.
+And I now switch from tracking to noisy tracking.
+And you can see the noisy tracking is significantly worse than tracking.
+The noisy estimates have drifted away from the true positions of the object.
+That is really the second.
+I'm running this with a fairly small level of neural noise.
+You can adjust the level of neural noise.
+You can adjust the bee's visual acuity.
+You can adjust all sorts of things using these sliders and try running the program again.
+This is running with a fairly small level of noise.
+So I keep stepping.
+And the noisy tracking estimate keeps getting worse.
+But I go back to the tracking estimate.
+The tracking estimate without neural noise is pretty much dead on.
+So I'll restart again.
+And I'll run again.
+Because then we can show the graph at the end of the run.
+And I'll run again.
+So if I run again.
+So if I run again.
+Now you look at the graph on the right.
+And what that is doing is comparing tracking, which is the black curve, versus noisy tracking,
+which is the red curve.
+And these are steps along the bee's track.
+Those are the same steps we saw there.
+But these vertical axis is the level of error in the depth of the bee estimates.
+And you can see that tracking is rather small errors.
+It homes in on true positions of the object.
+Whereas with memory noise, you get much bigger errors.
+And in fact, the errors are very unpredictable.
+If you rerun.
+We'll just rerun it again.
+You find that the errors coming from noisy tracking, they do seem to vary quite a lot from
+one run to the next.
+Noisy tracking is pretty unpredictable, basically.
+So there the errors have gone right up and they've come down again.
+Whereas ordinary tracking without noise is nice convergence towards the true positions.
+So that is really the second key result of the simulation.
+That is that a tracking model is a realistic model of how animals estimate positions of things
+around them.
+But if you add noise to it, even adding a small amount of noise completely messes up
+the tracking model.
+Now there are more things you can show with this model.
+You can show, for instance, how animals use their model to detect what is moving around
+them.
+Because obviously when an animal is moving, it is quite hard for it to detect motion from
+its visual field.
+Because when it's moving, everything is moving in this visual field.
+So it has to use the three dimensional model to work out what is actually moving.
+And if you also plot the efficiency of motion detection, you find that too is very much poorer
+when you add memory noise.
+So I think I'll stop at this point.
+The program also does a simulation of bats, but I won't step straight into that.
+Perhaps we could come back to that at the end of the talk if somebody wants to hear about
+it.
+But for the moment, let's just step back and find what we have concluded from the bees model.
+Now, where is my presentation?
+Now, I've got to resume the presentation.
+How do I do that?
+Yeah, we get back to the presentation.
+So the key points that I think I may have shown you is that in the 3D view, you can see the
+track of the animal.
+You can see its lines of sight.
+You can see, sorry, my phone is ringing.
+I better go and shoot it up.
+I've shown you the three.
+I've shown you where the real objects are.
+Those are the circles, the coloured circles.
+I've shown you the objects as located in the internal model.
+I've shown you shape from motion.
+I've shown you what the error bars are.
+And you can rotate the 3D view.
+I've shown you the three different models of 3D space, the full Bayesian model, the dynamic
+object tracking model, and the tracking model with memory errors.
+As I say, when you run this program, you can change all sorts of parameters to see how it's
+sensitive to the parameters.
+And I've shown you the bees spatial model.
+I've shown you how the error bars are, particularly the depth dimension.
+And I've shown you how memory noise degrades the model.
+So here are the key results.
+The best possible model any animal could build from its sensitivity is a very good model.
+And in fact, it's more precise than the sensitivity, because if the animal can assume that objects
+don't move, then over time, an animal can build a very good understanding of where objects are, better than its raw sense data.
+Animals can't do any better than that.
+But dynamical object tracking works pretty well.
+It's almost as good as the full Bayesian model.
+And it only works if spatial memory has very high precision.
+And I didn't say the levels of precision that I put into the program, which start to spoil the tracking model,
+there are about one part in a hundred.
+And that, I believe, is much more precise than most neural representations of space can give.
+So that's the next part of this talk.
+How do we do that modeling with a neural model of the brain, the classical neural model?
+So how do you build a neural spatial memory?
+And this is a changed quote from Animal Farm, where they said two legs bad, four legs good.
+Two dimensions is easy.
+Three dimensions is hard.
+Because two dimensions, you can easily do a sheet of neurons representing two dimensions.
+Whereas in three dimensions, you don't have that option.
+And there are several possible memory designs.
+You can have a two-dimensional sheet of neurons and you can represent the third dimension by depth.
+Depth by the third.
+Yeah, you can have some other variable representing depth.
+Or you can have a three-dimensional clump of neurons where
+positioning the clump represents a 3D position.
+Or you can represent all three dimensions of an object position by neural firing rates.
+Now, none of these work well for object tracking.
+I think we can quite simply eliminate the 3D clump model.
+But the other two models have a problem with neural error rates.
+And if neural information is encoded as firing rates of neurons,
+typically you have a neuron firing n times in some time interval t.
+And then the precision with which it can represent some real quantity is of the order of one part in square root of n.
+Now, n over t is typically 5 or 50, between 5 and 50 pulses per second on most animal brains.
+But for insects and small mammals, the time they've got to have to update their internal model of space is very small.
+Typically less than a tenth of a second.
+So if the time is a tenth of a second, you get n less than 10.
+And that gives you errors of the order of 30%, which are much bigger than the 1% errors,
+which I said are needed for tracking structure from motion.
+So the conclusion of this is that the neurons, when they represent space,
+there's a tradeoff between speed and precision.
+The faster you have, the less precise it is.
+And this tradeoff is just too hard.
+So I believe there is no working neural model of 3D spatial cognition.
+Now, the three points in blue I've said before,
+they say spatial cognition is very important and animals do it well.
+And we've had this problem for a long time.
+In his book Vision 40 years ago, David Ma identified the challenge and he started work on it.
+He defined what he called a 2.5D sketch and various other models.
+Now, I believe that in terms of building neural models of how spatial cognition works,
+people have really not moved beyond this.
+Why?
+I think the main reason is that the memory problem is just too hard.
+The memory gives them too big errors and is too slow.
+And I suspect that over the years, there have been many people who look at this problem
+and they decide to move on and do something else instead.
+But the result is that spatial cognition is the central problem of neuroscience.
+We don't have a model of it.
+And so this is rather like theory of planetary motion without a sun
+or a theory of the atom with no nucleus.
+So how does this relate to active vision?
+I think active vision is one way to explore this problem.
+Active vision describes how a 3D spatial model can be inferred from vision.
+And there are quite a few papers on it.
+They've focused on various aspects of it.
+They focused on 2D scene classification.
+They focused on the trade-offs between various objectives like the choice of visual saccades.
+They focused on 3D robotics.
+As far as I know, none of them have really focused on how animal brains practically build a 3D model.
+And I believe that existing active vision models do not address the issue of neural error rates.
+One reason for this is that the standard active inference toolkit in MATLAB, I believe it doesn't model neural error rates.
+It assumes, I believe, an abstract perfect neuron with very precise representation of quantities.
+And error rates are actually not an issue for many of these applications.
+They're not an issue for robotics.
+And they're not an issue really for making discrete choices.
+But as I've said in this talk so far, the accuracy of the 3D model really matters.
+And neural error rates are the big problem.
+If we set that problem on one side for a moment, there is the issue of active inference trade-offs.
+And there are many interesting trade-offs you can examine in active vision.
+And the key trade-off, I believe, is one between freezing and moving.
+So, as I've shown in the demonstration, the animal has to move in order to infer the 3D positions and things are rounded by shape from motion.
+It also, of course, has to move to achieve practical goals like feeding and fleeing and mating and so on.
+On the other hand, it can freeze and freezing it may conserve energy.
+It may be able to detect what's moving simply directly from its visual field, which is much
+easier, and it may itself avoid detection.
+So these are very key trade-offs.
+They're absolutely essential for lifetime fitness for many animals.
+Animals have to make this trade-off or these trade-offs any moment of the day.
+And so we've got plenty of empirical data about it, and I think it'll be a very useful area to
+explore.
+Now I'm going to switch to something completely different.
+Having said that neural storage of spatial positions is a very hard problem,
+I'm going to talk about an alternative, a possible alternative way of storing spatial data.
+And so if you assume there's some round region inside the brain of a fairly large diameter D,
+and this holds waves with a minimum wavelength, which I call lambda, and the neurons can couple to the
+waves both as transmitters and receivers, and the wave can persist at least for fractions of a second.
+So the wave can act as a working memory for positions.
+And the number of object positions you can store in the wave can be up to D over lambda cube, and that can be a very large number.
+The spatial precision which one object position is stored can be one part in D over lambda, and I think that D over lambda can be very large.
+So you can easily get precision better than one part in 100, which is what you need to build the spatial model.
+So in summary, wave storage of 3D positions may have a lot of computational benefits.
+It can give a natural fit to the problem.
+It can give high precision and high capability.
+It can give you very fast response times, low spatial distortion, and some other benefits which are described in the papers.
+So apart from its computational benefits, is there any evidence for wave storage in the brain?
+I believe there are two quite powerful lines of evidence, one of which comes from the insect central body.
+The central body of the insect brain is a very small part of the brain in the middle of it,
+and it consists of a fan-shaped body and the elliptical body.
+And it has this shape which is remarkably well conserved across all insect species.
+And there's an insect brain database, and I've gone to the insect brain database and pulled from it.
+The shapes of the central body from a few typical insect species.
+And here you can see the fan-shaped body and the elliptical body.
+And it's very constant across all kinds of insects.
+And you can see it's approximately a round shape.
+So it's well suited to hold three-dimensional waves.
+And it does multi-sensory integration.
+And so it's quite likely, quite probable, that it holds spatial positions.
+And insects have very few neurons in their brain to do it in any other way.
+And what I think is significant is how constant and round the insect central body is compared with
+all the other parts of the insect brain.
+So that's one piece of evidence from the insect central body.
+The other piece of evidence comes from the mammalian thalamus.
+As you may know, the thalamus of most mammals, all mammals, is approximately spherical
+and is connected to all sense data and all cortical regions.
+But the important thing is that the shape of the thalamus
+is highly conserved across all species.
+And there's an important aspect of the thalamus anatomy
+that unless you assume a wave, really doesn't make sense.
+Because the thalamus consists of a number of independent nuclei, like the Polvinar and the LGN
+and so on and so forth. And the connections across within the thalamus between these nuclei
+are very weak or even non-existent.
+So you could have this picture here that the thalamus...
+Where's my pointer?
+Here's my pointer.
+The thalamic nuclei, which are white circles here, they all connect in two ways to the cortex,
+but they don't connect to each other.
+So one thalamic nucleus here could easily start moving out towards the cortex.
+And the length of its axons could decrease.
+And there's other connections. It doesn't need other connections.
+So all the nuclei could migrate outward towards the cortex.
+And you could still have the same neural synaptic connectivity and the same
+computational capability if neurons only compute by synaptic computation.
+So this way you could save a lot of energy in shorter axon lengths.
+So in summary, a compact thalamus only makes sense if all the nuclei need to be immersed in the same wave.
+So we now have three pieces of evidence for a wave in the brain.
+Firstly, there's the computational neuroscience.
+That is a very difficult problem to build a 3D model about it.
+But you can build a 3D spatial model if you assume there's a wave storing positions.
+Secondly, the insect central body is nearly round in all insects, very well suited to hold a wave.
+And it appears to be in the right part of the brain to do that.
+And thirdly, the mammalian thalamus, which again has this round shape, very well suited to hold a wave.
+And the important thing here is that without a wave, the anatomy of the thalamus doesn't make sense.
+So I would like you, if you remember only one thing about this talk, remember this slide.
+There is quite a lot of evidence for a wave in the brain.
+One thing I will say is that the wave is probably not an electromagnetic wave,
+because there's quite a lot of interest in electromagnetic fields in the wave from researchers
+like Miller and McFadden and so on.
+But an electromagnetic field can't play the role that this wave is supposed to, is needed to play.
+In other words, the key thing that this, the wave is supposed to do in this model is to store
+information for a fraction of a second.
+But an electromagnetic field in the wave, and there certainly are, in the brain,
+there certainly are electromagnetic fields in the brain.
+They cannot store information for fractions of a second,
+and they cannot represent 3D space like a hologram.
+And just to say a little more about this, if there's an electromagnetic wave in the brain,
+it has to obey Maxwell's equations.
+So the wavelength times the frequency is equal to speed of light, lambda f equals c.
+And that means that 40 hertz, typical frequencies of these waves, the wavelength is 8,000 kilometers
+as large as half the Earth.
+So the conclusion is that at 40 hertz, electromagnetic field is not a wave, it's a static field,
+and it's driven entirely by neuron firing.
+So it doesn't store the information.
+So in summary, we're looking for something not electromagnetic, and possibly some quantized
+excitation, something a bit exotic in the field of quantum biology.
+I think we shouldn't despair here because we know evolution is a lot smarter than we are
+discovering these things and exploiting them.
+So here are some take-home questions.
+Does 3D spatial cognition use a wave in the brain?
+In other words, in the light of the evidence I've shown you,
+what is the Bayesian probability of that hypothesis being true?
+Now, I say these take-home questions because I didn't expect you to have an answer immediately,
+but perhaps you'd like to look at the papers and see all the evidence
+is and try and assess it in your own mind.
+So what is the reason?
+What is the reason?
+What is the reason?
+And how do brains compute space?
+How do neurons on their own represent 3D space with enough precision?
+On the other hand, if there might be a wave in the brain,
+wouldn't that be a rather exciting and revolutionary development?
+It would actually change the whole of neuroscience,
+and it could address this central unsolved problem of how spatial cognition takes place.
+So I believe that possibility should be explored, particularly for young researchers.
+This is attractive.
+It's greenfield research.
+It's not a well-trodden path of classical neuroscience.
+The classical neuroscience model of McCulloch-Pitt's neurons and Hebbian synapses,
+that's 75 years old now.
+So I would like to encourage people to get out and explore.
+Or again, come back to the earlier slide here, a crisis in neuroscience.
+The result of this work, I think, is that neurons can't represent 3D space
+because they're too imprecise and too slow.
+So the crisis is, can you show this is wrong?
+Can you show it by building a working neural computational model and checking its scales properly?
+So the FEP neural process model is the starting point for that.
+I think it's a good problem to work on because it is a crisis and big advances in science tend to come out of crises.
+So what I'm advocating, and this is my last slide, is a twin-track research program
+to build two different active vision models of 3D spatial cognition.
+One is a pure neural model, which is a classic FEP neural process model.
+Can this be made to work?
+Or are the neural memory errors going to kill it?
+And secondly, to try to build a hybrid wave and neural model.
+And when you're building those models, we can explore the trade-offs that active inference is so good at computing,
+and particularly the trade-off between freezing and moving.
+So there are a couple of candidate projects for the Active Inference Institute.
+Okay, that's it.
+Awesome.
+Thank you, Robert.
+I have some questions, and some people have asked questions in the live chat, so I'll ask them.
+So first, just while I'm re-cropping everything, how would you connect this to the requirements equation earlier work?
+Because you mentioned that there was a requirements equation-driven calibration of the optimal navigation.
+So what does that look like to have the optimal navigation according to the requirements equation?
+Well, to summarize on the requirements equation, you can model how brains evolve.
+And this is the previous live stream.
+And you can show that they evolve towards making a purely Bayesian calculation of their best model of the world from the sense data.
+But that purely Bayesian calculation is rather expensive.
+And it's been well known in FEP that full Bayesian calculations is intractable for most animals.
+And so that is a very expensive calculation.
+And it's probably not the way animals do it.
+But it is.
+It can be done on digital computers.
+And it can be done in this model I've showed you.
+And the first model, the full Bayesian model, is actually computing the requirement equation from the bees or the bats sense data.
+And the second model, the tracking model, is an approximation to that, which is a lot cheaper, but seems to give very nearly the same results.
+Okay, awesome.
+Let us dive into a few mammal and insect neuroanatomy questions.
+So I'll start with a set of questions from the live chat.
+This is going to be about mammal neuroanatomy.
+Okay.
+Okay.
+Tim Ritter asks, do you assume this wave property for all thalamic nuclei, primary and secondary, or for specific ones, e.g. pulvinar or mediodorsal?
+Very good question.
+I don't know the answer.
+I mean, at this stage, I believe the whole thalamus is around spherical, near spherical volume with the wave going through all of it.
+So they are all immersed in that same wave.
+So even the pulvinar, the pulvinar certainly is, even the LGN, which is rather small and is a pass through nucleus.
+I think they all are.
+So I think, for instance, I think people always say the thalamus is a relay.
+Sensata gets to the cortex by thalamus.
+But people don't have a very good reason why it has to go through these relays, nuclei, in order to get there.
+I think it's doing something about locating about, I think the wave has some involvement there, but this is very early days.
+I don't know the answer at all.
+Okay.
+Another question from Tim on mammalian neuroanatomy.
+What about 2D orientation?
+Would you expect similar waves in hippocampal instead of thalamic regions?
+Or is 2D sufficiently easy to get by without?
+Yeah, basically, I believe 2D is easy enough to get by.
+And the hippocampus is by no means suitable to hold a wave.
+They have all sorts of, hippocampi have all sorts of different shapes.
+So.
+Yes, I think that was a core theme between the mammal and insect areas is the conserved shape.
+And then also the allometric differences over evolution, where the size differential of the insect central body changes much less than other primary sensory regions.
+And that was in your paper.
+Yeah, that's right.
+Yeah.
+And that kind of implies that that small size of the central body, it's only a few percent of the whole insect brain, seems to be enough.
+Yeah.
+And that the properties which it hosts or enables might be related to its physical extent or like to its surface area, it's a volume ratio and not a function.
+Like, for example, in the antenna lobe where the olfactory information are coming in, there are these little glomeruli and different species have from several tens to several hundred of these olfactory glomeruli.
+Like ants have many, like ants have many, and they have more olfactory receptors in their genome, and they have more olfactory glomeruli in that region.
+Or insects with more compound eye sections, they have larger optic lobes.
+So the primary sensory regions have very large variation amongst species.
+But then as you get into the central body, you get much more conserved anatomy and size.
+And then the mushroom body on the top part of the brain is something a little bit in between that might have more of an analogy to like mammalian cortex, where there actually is the possibility to scale its cognitive capacities through size changes, because it has some kind of like repetitive or stereotyped layout.
+So, yeah, I mean, there are a load of fascinating questions in neuroanatomy, which relate to this.
+And if you pursue this hypothesis, then there's always interesting questions.
+I'm not an expert on insect or mammalian neuroanatomy, but there's a load of interesting questions in there.
+Cool. So about the bee spatial cognition.
+So we know that bees use a variety of visual cues ranging from the landmark and the landscape recognition to polarization of light and so on.
+And also, as you pointed out, the central body does multisensory integration.
+So how do we think about the possibly complementary or redundant information provided by these different aspects of the visual fields?
+And what does your simulation focus in on?
+Well, I mean, I believe that what the central body and the thalamus both do is multisensory integration.
+In other words, animals should they they need to make the best 3D model of space they can and they need to use all their sensitive to use it apart from possibly smell.
+That's an interesting question. And so both of them do multisensory integration.
+And ideally, one would put in a simulation. One would have things like stereopsis.
+One would have object recognition. One would have light polarization, all sorts of sources.
+So this program only does simple vision or simple echolocation at the moment, but it should do all multicensory integration in a single Bayesian maximum likelihood model of the whole.
+All sensitive coming in at the moment.
+Interesting. Yeah, with sounds or with smells, it would be interesting to see how those come into play.
+And how do you think about in in the simulations presented here, egocentric and allocentric navigation?
+Because you mentioned how the kind of simplifying assumption is that the world is a rigid fixed body.
+So you could have these kind of duality where like I'm moving and the world is fixed and then there's sort of like I'm fixed and the world is moving.
+So how does that relate to that question to that egocentric, allocentric distinction?
+Yeah, very good question. I mean, I think the frame of reference used for the model should be as much allocentric as it can be because the wave has to persist.
+And if the wave just persists, it represents an object at a constant position.
+So you want to have a frame of reference where most objects are at constant positions.
+So I think that makes it allocentric.
+But obviously it has to change from time to time.
+Every few seconds it has to switch because it can't just stay allocentric.
+Hmm. Interesting. So now to connect that to what you brought up about move or stay that kind of fundamental animal or fundamental mobile organismal nervous system question.
+I thought about different body plans where the eyes or the visual component are unable to move separately from the body like a bee could turn its body, but it can't rotate its eyes.
+Whereas in humans, for example, we have optic saccade.
+So there that stay or move. Yes, we have turning our posture and moving through space.
+But also we see like this microcosm where when the gaze is fixed, there's high precision and then movement in the world is associated with movement of objects.
+And then whereas when a eye saccade is dispatched during the saccade, our visual attention is alleviated.
+And then it's because during that time, all the movement of pixels essentially is ascribed to the movement of the eye.
+So we see kind of like a microcosm of the two modes of movement and stability in motion detection in the saccading.
+But for other organisms that don't have eye saccade, the only way that they can get that kind of alternating movement and stability is by moving their body.
+Yeah. Yeah. Yeah. I mean, I always think of eye saccades as particularly predators, if you like, that want some high resolution in some direction, some particular direction.
+Whereas for most insects, as you say, that there is not the option of a high resolution fovea.
+But I think of saccades as being cheap.
+I mean, the freeze move trade off is a real trade off.
+If an animal moves, it can be detected as moving and it can't detect motion itself as well as if it's stationary.
+So that's a real hard trade off an animal has to make.
+Whereas saccades, you can make them cheaply whenever you like.
+Yes. Yes. And also, it's really interesting, like how often the behavioral studies just look at the direction of movement.
+But there's this whole timing of movement.
+And so there's definitely a lot of empirical studies about whether fear based movements like in a predator prey or different kinds of movement choices.
+Where would you say attention comes into play in the sense that the bee or the bat was just kind of taking it all in?
+It didn't have like some restricted scope.
+So that's kind of like a uniform attention across objects and across space and time.
+But then we know that we do have this visual attention phenomena.
+Well, yeah, attention is very important.
+And I think naively, it's a search line model of attention.
+In other words, the wave representation of all space represents all the space around an animal.
+But the animal can focus attention on a region of the space.
+And what that's doing is tuning the receptors in the thalamus.
+So they are sensitive to wave vectors in a certain region.
+So there's a whole load of issues there about how the wave works as to whether it can, how signals are rooted from sensitive inputs to specialist regions of the cortex.
+And I think attention is that routing of information.
+So again, loads of big questions there.
+So this is kind of this kind of ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+differently changes the the the the resting shape of the wave and then that opens up like you're now
+suggesting recurrent connections or or other connections into that wave hosting region
+recurrent connections can modify the shape of the wave potentially and then also the oh yeah the
+resting shape of the wave can route or augments or suppress other sensory information coming in
+that'd be like water kind of dumping to where there's already a high water point
+versus water going to where there's low water yeah yeah i mean i think key role of the wave is to
+persist a background model of all 3d space and then against that background model new center information
+that comes in particularly movement uh is best evaluated a piece of new sense data you evaluate
+it much better if you compare and contrast it with what you had before that is attention
+and it it's it's the thalamus if you like telling the cortex here pay attention to here here's your
+old information from this place in space here's your new information so tell me what's changed
+well this connection with frame differencing is very powerful predictive processing predictive coding
+algorithms were built by computer scientists and and compression engineers looking to make video
+compression work and doing the frame differencing because that's the optimal way to compress video
+and then that got brought also back into neuroscience where there's a lot of focus on things like edge
+detection and these other 2d visual phenomena and then as you're pointing to there's this kind of sun at
+the solar system's center that's not really being discussed which is like okay yes we have neurons in
+different visual regions that are excitable by vertical lines by diagonal lines and so on
+but this is all flat phenomena and the question of not just shape recognition but the question that's most
+proximally relevant for movement and the fitness related decisions for the organism in the niche
+has to do with its spatial navigation not it's like eyesight at the eye doctor yeah
+not only spatial navigation how it moves its limbs you know how where it puts it for its footnecks that sort
+of thing and the 3d model i think does all of that okay i'll read a question from the live chat
+how might the saccade relate to a matrix of inputs versus a human-based visual system movement on the
+matrix may give different spatial dynamics
+uh i'm not sure what we mean by matrix of inputs there but um as you said during a saccade visual input
+is kind of blocked while the eye is getting from a to b uh whereas the wave persists and the 3d spatial
+model stays constant and after a saccade the eye has to update the 3d spatial model in some different
+place so um i'm not i don't think i've answered the question but perhaps you what do you understand my matrix
+it's what you enter um it's making me think about the experiments where the for example the fruit fly
+is placed on a ping pong ball in a harness in a virtual reality setting so it's getting custom visual
+input and its movements on the ping pong ball just kind of scrolls the ball so it's basically fixed
+but it gives a lot of degrees of experimental freedom around the um orienting of the body and what
+visual inputs it gets so i wonder if anywhere there we know about the the time the time scale of
+spatial orientation updating because that would be very critical to understand the nature of
+the wave but if it was something that was um for example closer to the diffusion rate of ions then
+we might be looking more towards like a channel or pore based hypothesis if it was something that was
+faster than neural signaling it would suggest something more like the direct coupling or other kinds of of
+action so what what makes you feel as you suggested that it is not an electromagnetic
+stabilized wave field well as i say the physics i mean for electromagnetic wave we do understand the
+physics and the electromagnetic waves that measured by eeg for instance they are a purely passive consequence of
+neural activity they don't persist in the information for any time at all whereas this wave i'm talking
+about has to persist information for fractions of a second so this constant spatial model is kept
+persisted while the saccades go on while the animal moves while it computes shape from motion
+so a pure electric field we we know the physics is maxwell's equations and it does not store energy
+store information so it's purely a passive reflection of what's going on in the neurons it's not a memory
+so the neurons are especially if we think about the several like thousand to tens of thousand let's say in the
+the insect central body there's too few and they're too sparse and noisy to in a purely connectionist neural
+framework to support the kinds of empirical results that we see on the other hand a purely field-based
+approach has some issues that you just laid out so it's it's very interesting that two at least of the well-known
+mechanisms the local field potential and the firing rate rate coding type models that both of them seem to have some limitations
+and yet there's very strong anatomical evidence for the functional role of that region
+oh yeah it's absolutely vital region um but i believe that just looking at electric fields magnetic fields in the brain
+is not going to give you memory and that's the key thing that i think is needed to do structure promotion you've
+got to have short-term working memory to hold a little model of space for a fraction of a second
+do you see that as a kind of special type of short-term memory or do you think this is the same
+memory pool that like short-term audio memory gets entered into
+oh it's it's special it's different from that yeah definitely
+to say it starts from how do you can how do you compute a 3d spatial model
+how do you do structure promotion you need short-term working memory for that purpose specifically
+interesting interesting um the kind that enables us to
+check for difference in in visually changing systems or what what does this visual working memory
+have
+well basically it's it's not vision because it's 3d and uh checking for difference in the visual field
+is you can do it quicker you can look directly at the visual field whereas this model i think the 3d model
+is um it's um it's maintained by a loop between in in mammals between the thalamus and the cortex and it's a 40 hertz
+cycle that maintains it so it takes time to build the 3d model and it's a bit slower than direct visual change detection
+interesting it's this tension with like visual being what is seen versus kind of a broader imagine
+the imagination of vision um what about action in your model so how were the paths set
+yeah i said that the model was a bit like active inference and the animal has to move in order to
+understand space but it's not really the program has not modeled the kind of active inference choices
+of how should i move to get the best understanding of space and you could do that you could make the
+bee chooses trajectory to get the best understanding of where the flowers are or you you make the bee choosers
+trajectory for all sorts those are the active inference trade-offs that the program has not yet looked at
+and and which can be looked at and i think are very interesting that's awesome yeah it's almost like
+the bee in this situation it's like on a train trying to reduce its uncertainty about the location
+of landmarks but it's just on a it's on a rail it doesn't have policy decision whereas once we start to
+close that loop and ask which direction of movement or none given the costs would reduce uncertainty
+about resolving this kind of spatial relationship then that that's where the perception action starts to like come into play
+in benefit of each other and potentially there's several choice successive moves can greatly reduce uncertainty through active sampling
+just as we see in circadian and all other situations and that would be like a heuristic or strategy that really does work
+yeah i mean any another example that i use somewhere is i believe that predatory birds like hawks when they're approaching their target
+they don't go in a straight line they move on a curve to reduce the uncertainty
+so that they continue to get uh more information can you see the range of of the target
+if they just went straight to the target they wouldn't get a range fix on it
+now what about the difference between the b and the bat whereas a b is simply receiving the
+the reflected photons let's just say the bat is sending out a invisible signal so how is this kind of radar
+echolocation setting similar and different to the vision setting i mean it's very different i could show
+you that with the program if you like um what happens with the bat is from the delay of an
+for a particular insect that the bat is tracking from the delay of the echo it sees the range to the
+insect so it gets the insect constrained on a sphere and it's 3d model then from the doppler shift it
+actually sees the perceives the cosine of the angle between its directional movement and the direction of the
+insect so what it gets there is it constrains the sphere surface of a sphere down to one circle in
+space so what the bat gets is a series of circles in space which constrain the position of the insects
+and i could show that on the program if you like sure okay um well how do i do that how do i share again
+yeah i'm curious is the circle something like is it like a hoop that you could throw a basketball through
+or is it well i'll show you if i like um now i can't get rid of this something on my screen it's the problem
+um i've got a big black screen with a two on it i can't get rid of it
+um end show spelling end show right now am i sharing my screen or not not yet um now how do i find where
+do that how do i find where i am in space yeah
+that's an interesting question also how these mechanisms are google windows somewhere
+uh zoom windows somewhere and i i was zed m that'll be it how are these mechanisms repurposed for digital
+navigation semantic navigation narrative navigation uh just a minute let me find oh god get away
+okay oh share screen to share okay you got that we're back okay so what we do is we change from b to bat
+and we start again so what you have now is the bat and several insects which are colored circles here
+and what the bat has is its echolocation take the blue insect its echolocation constrains it to a sphere in
+space and that's the delay of the echolocation and the doppler shift can strains the sphere down to a circle
+so if you rotate these circles you see that blue insect is on a circle from one point in the bat's
+trajectory so as the bat moves it gets successive circles for the same insect so what we have is the bat is
+moving and all these circles highly confusing and it gradually locates all the insects better and better
+but what if i restart and step again if i step of beast i've restarted right now if i step what i can do is
+focus on one insect if i focus on that insect then i only see the circles from echolocation of that one insect
+and i can step again and get a new circle from a new step and all the time the bat is optimizing the
+position of that insect to get the best fit to all the circles it has for that insect so it's very
+different from vision but it can build a very good 3d model from its echolocation okay so to kind of
+confirm what's happening here there's there's for a given snapshot ping with the sonar what is returned
+is a circle of equiprobable locations that are kind of like the maximum likelihood ridge that's right
+constrains these are really some gaussian's gaussian donuts if you like okay and then successive pings
+enable you to look at the intersection point of the circles to find out yeah through successive
+approximation the likeliest location so this is what's happening here on that light blue insect
+he's got these three circles and that's the most likely they're not very well intersecting but that's
+the most likely intersection point that's like on this back it's it's like a gaussian mixture model
+you have those three peaks and then when you summate those three peaks that the the point that
+interpolates them or just is the the geometric average is the single maximum likelihood estimate
+point that's exactly it yeah and again with the bat i can go from full bayesian model which is this one
+full bayesian tracking or tracking with noise and again the noise tends to have nasty effect
+and then i can see how the circles go so
+how is this how is this similar or different than for example radar navigation algorithms for planes or ships
+maps i think it's quite similar i think yeah i mean they are making maximum likelihood inferences from
+radar signal
+and have you with this software looked at the computational like the runtime complexity or the resource use
+associated with scaling the number of insects or scaling the resolution of vision
+yeah you can scale the number of insects for instance i scale up here there's 30 insects
+the number of insects i can run the model with 30 insects and um it's it runs perfectly well
+so the model is quite efficient because what it has to do for each object
+um and for each time step it simply has to do this gaussian optimization which turns out to be just
+a 3d matrix operation three with three matrices and that's very quick to do
+and so that's one of the advantages of it that if animals are trying to
+track a load of things around them which they probably are it's quite a quick efficient computation
+but this is not the neural implementation the problem is going from here this
+mars level two computational model to a neural implementation that is where i think all the
+interesting problems lie at least you have have this level two model as a kind of starting point
+um and the bayesian model would be trying to implement that in neurons
+yes makes sense this is kind of the as if bayesian algorithmic map and the question is what proximate
+mechanisms are capable of doing these algorithms functionally and neuroanatomy has basically localized
+to the region in mammals and in invertebrates and so now we're in a space of winnowing possibilities
+and leaving the door open for unconventional opportunities for how those regions actually
+do it it's a very targeted specific agenda that that connects a first principles grounding about how
+well the navigation can proceed with the requirements equation on through to the empirical patterns that
+we see those empirical patterns might have some like behavioral experiments well sometimes can be hard
+to interpret as well though for example there's a common experiment where a wall that's shaped like an l
+is set up and then people will use it to test if an animal will go on the hypotenuse to reduce the
+travel distance or whether it will take the the around the wall however even if there was a
+conceptualization of the ability to move on the hypotenuse direction an animal might like prefer to move
+along walls so then by the time you get to the real animals movements it's very tied up with not just
+trying to be the optimal landmark resolving visual algorithm it's actually engaging in all these other
+drives that can make it look like it's lower efficiency or even like supernaturally efficient on a given domain
+yeah i i think there's all sorts of animal experiments one could do but interpreting them is not easy but
+basically if you're looking in these experiments to to measure how good the animal's internal 3d model is
+i would like to with insects for instance how good is their movement detection if it's movement in depth that
+needs the 3d model to resolve it rather than just the visual field that's very interesting especially
+in insects potentially where there's little overlap between their two compound eyes yeah yes um okay i'll read
+a question from the chat as we kind of head towards the end use equal wrote how would perception of ability to
+conceive of other domains of time as a cognitive function change spatial awareness
+um other dimensions of time i'm not sure i understand that question other domains of time domains what's
+other domains of time um well this is all a very short term question it's fractions of a second
+and time outside that interval just doesn't come into it at all really does that answer the question you think
+it might i think it might also be pointing to our awareness of how we handle our perception of time and space
+and what does that open up or enable for example for our perception of space if we have a different perception
+or conception of time well that is a very deep question i mean i think our perception of chronological
+time the long-term time is something completely different from more anything else in the animal kingdom
+i think most animals live in the moment really they're aware of what's happening right now and what they're
+going to do right now and the rest just doesn't matter
+whereas we exit what matters in the moments to ruminate and speculate yeah absolutely
+um well what other directions or or ways are you hoping to take this work well one way that is
+particularly important i think although particularly problematic is theories of consciousness
+in other words consciousness most of our consciousness
+consciousness at any moment is consciousness of the space around us and it seems to come from our
+internal bayesian model of space around us so this work is very related to why we are conscious
+and there's another paper and i'd like to give another live stream just on that subject so i think
+this gives a way forward to a theory of consciousness that can be in many ways more satisfactory than we get from
+purely classical neural models of the brain that's awesome i'm also personally very excited on the empirical
+insect neuroanatomy side to look oh there are a huge number of ways of looking going forward i think
+insects are particularly productive because you know they've got to do it with a really small number of
+neurons so it's really there's a lot of experimental work on insects that can illuminate this question
+yeah absolutely cool yes the brains are fun to dissect you can see it transparently all there and
+no backstage there um and then also this on on the more transferable outside of entomology i think the
+is this is kind of um is known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known
+have um done some other thing and then being able to look at realized empirical trajectories
+and then break those down or look at their component loading according to safety visual
+information gain other kinds of heuristics or or impulses to understand moments or kind of
+fragments of trajectories like something looks to briefly resolve its uncertainty and then it
+doesn't need then the the overall demand to resolve uncertainty drops again and then it continues
+just with inertia and then maybe that's a very simple decision to make and then there's probably
+all kinds of cool patterns and ways to go yeah there's a huge amount to investigate
+another another topic by the way is we've looked at mammals we've looked at insects right at the
+opposite ends of the spectrum there's a whole load of stuff in between i think octopus and squid are
+particularly interesting but there's all the other species one can look at say how do they do space
+they have unique bodies and different bodies but there's also bringing in there the question of
+underwater or space or a fluid media and then that and a bat flies but it has the mammalian neuroanatomy
+so then there could be like bird neuroanatomy with its slight differences from the mammal then
+there could be this question of underwater and maybe there's some mammals that have underwater navigation
+maybe dolphins would be like bats but in another fluid media
+uh i hope people download the dot zip and play around
+so do i
+any last comments
+uh
+not really no i think i said it all thank you thank you robert well i i
+i am greatly enjoying learning about the work and seeing about how the requirements
+equation
+scopes
+a given problem setting and kind of puts a meter stick on whatever the inferential problem is
+inference plus action problem is
+and then from there the mar the marion research program is just kind of laid out you can pursue
+it from the mechanistic or from the algorithmic elements but they all are connected through on one
+hand in theory the requirements equation and on the other hand the empirical results that we actually see
+yeah
+cool so thank you again um i i come back to the fineman quote richard fineman on his blackboard it said if
+you can't build it you don't understand it this is all about building it
+we can't build a bug
+not yet um thank you robert see you for dot three see you bye
+is
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

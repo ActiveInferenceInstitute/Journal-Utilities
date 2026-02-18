@@ -1,0 +1,1423 @@
+---
+title: "ActInf GuestStream 084.1 ~ "The Nature of Habits and Agential Systems", Jesse G"
+category: "GuestStream"
+series: "GuestStream_084"
+episode: "1"
+speakers:
+  - "Jesse G"
+duration: "2:54:22"
+url: "https://www.youtube.com/watch?v=Fc7bUNNdTfY"
+views: 286
+exported_at: "2026-02-18T22:37:37.736487+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 084.1 ~ "The Nature of Habits and Agential Systems", Jesse G
+
+All right, hello and welcome. It's May 30th, 2024, and we're in ActInf Guest Stream 84.1.
+This will be a presentation and a discussion with Jesse G. So Jesse, thank you for joining
+and for your participation. Looking forward to a great presentation, and then we'll check
+the live chat and see where it goes from there. Go for it.
+All right. Thank you so much for letting me do this showcase.
+Largely, what I'm going to go over is basically an overview, debut publication of a series
+of papers that have to do with habits and adaptive learning in regards to agentual systems,
+and basically looking at agentual systems largely from the point of view of biological organisms,
+largely trying to understand, better understand, connecting that with human behavior.
+Largely, the motivation here for this series of publications started with looking at a
+sort of literature review that was data-focused on looking at the, not necessarily addiction
+addiction from a more broad point of view, but from a drug dependency point of view.
+When I reached out to a colleague of mine a number of years ago, well, a little over three
+years ago now in 2021, when I first started this journey. So this whole series of work has been
+undergone for about slightly over three years now. So I started this work in 2021. Originally,
+I was connected indirectly with a group of graduate students associated with a state university,
+and they were looking at data on addiction, not, not really broadly speaking, but dealing with looking
+at a more so drug dependency based addiction. And that was a bit, I was quite disappointed with the effort put into
+the paper. I mean, I understand that the students involved were, were students in data science and informatics. So but at the same time,
+I was a bit dismayed by the approach in the paper, and I provided a critique of their work. And I thought to myself, well, wow, like,
+addiction has some root, there's some root to addiction, we need to better understand. And on and what's also, what was also
+came off quite
+odd to me for a number of years now is just the narrative, looking at the lens of like, what is the root
+of addictive behavior? And that kind of goes back fun, you know, thinking about fundamentals. And
+fundamentally, we think about habits. And when people think about habits, mostly stereotypically, again,
+people think about habits and sort of a bad point of like, you know, habits are bad, or, you know,
+people think about habits, you know, point of view, and, you know, point of view, and again,
+re approaching fundamentals and breaking the stereotypes.
+I think it's important to understand, okay, well, are habits good or bad? What can we say about them? And
+how do we adapt to circumstances that we face as humans, you know, as human beings?
+And so I think it's important to understand, you know, what are the things, more specifically,
+thinking about sort of this idea of not necessarily coping, but reinforcing our fitness,
+in the sense of like, how can we better engage with the world around us and with each other,
+and ourselves, most importantly, over time, over the course of a lifetime.
+And so that's been the general focus of this series of works is trying to look into, in terms of
+adaptive learning, what interventionary approaches, like what primary interventionary approaches,
+which I'll get into a little later, can be leveraged to be reinforcing towards our behavior and
+complement how we engage with the world around us, each other and ourselves, rather than be
+counterintuitive. And looking at habits as sort of like, kind of like an ebb and flow of what,
+where, like how we drive, how we, how we motivate and direct our behaviors. So habits can be good or bad,
+but more so thinking about habits on a spectrum of being reinforcement based, in a sense that it
+complements our, our fitness and how we engage with each other in a constructive way in the world around
+us, of course, as well as ourselves, rather than counterintuitive or maladaptive.
+So anyway, I didn't really give a former, a more formal introduction of who I am, I wanted to kind of
+give, start with a bit of an overview of motivation and drive of the work I'm doing. So I call myself
+an independent researcher, I'm working on a portfolio of works where I spend quite a bit of time
+investigating academic literature. I've had for this series of publications I'm working on, I have,
+I have roughly about close to 1000, maybe a little close to 1000 papers that to work with.
+I have hundreds of papers that I've, I've found that I've read abstracts for that I haven't given a
+good read yet, but I've read quite, I've gone through quite a bit of papers and
+00. It gets to a point where you have so you find so much work to work with that you kind of have to
+figure you kind of have to prioritize, okay, do I have enough content? And anyway, so basically,
+what I'm trying to do with the portfolio of work I'm doing is I look for data. I also find law literature.
+So I think it's important to find not just data, but information criteria that tells a story about
+the data that's out there. And I could go on a tangent about my, you know, the limitations of
+data science oriented, the oriented communities not really telling much of a narrative rather than
+looking at the data. So what what I try to do with the work I'm doing is I try to find a lot enough
+criteria, which I consider to be information or literature. So I find a whole lot of criteria
+that emphasizes on on model building and construction, not just looking at data, but data is
+important. And but more importantly, like connecting, you know, building models, not just about the data,
+but being able to tell a story about the direction in which if we collect data in a sufficient manner,
+where that would go, where, you know, where, you know, the models would tell us, like, you know,
+what does the information tell us in terms of that evaluates the criteria of data and the models that
+we that we build to have an understanding narrative of, you know, what, what we're working with in terms of
+of, in this case, what I'm working on this series of papers, you know, what habits and adaptive learning,
+really getting to the root of the problem domain that we're working with here. And so basically,
+what I'm trying to do, again, is, you know, build models, mainly complex systems based models and
+work with whatever data I can to provide a narrative and provide a means to justify, okay,
+this is the problem domain we're looking at, this is how we should evaluate based on the criteria or
+the literature that has that is elaborated on on on the problem domain, take the converging aspects of
+the literature. So in this case, looking at habits and adaptive learning. And, you know, provide an
+emphasis of like, okay, this is where we can go, based on the problem domain. So that's essentially,
+what I'm trying to do, whether or not, you know, I end up working in academia or industry in some way or
+another. What I feel like I'm doing is more analytical, like analytics based, not necessarily
+engineering focus, although I am working on systems based approaches in terms of interventionary
+means to deal with adaptive learning and habits, which is not the current paper I'm elaborating on,
+although that's, that's going to be the next paper, but I might get into that a little bit,
+a little later. But in a nutshell, even though that might be a bit of an elongated explanation about
+who, you know, who I am, what I'm trying to do, I'm also trying to be agnostic about explaining what
+I'm trying to do. I'm not like, even though I feel like I have an interest leaning into the cognitive
+sciences, given that's largely the arena that this, this paper is, is leaning is geared towards is the cognitive
+sciences domain, and agential systems. I don't want to limit myself in a corner per se, I like to be open
+about my capacities of building models, looking at criteria, looking at data, and providing, you know, an
+evaluation of problem domains we are investigating anyway. So the whole purpose of this talk now
+is to go over my debut publication work, which is an over, more of an overview of understanding habits
+and adaptive learning with regard to agential systems. There are four primary paradigms of
+interventionary approaches to leverage adaptive learning with respect to human behavior. I'll go
+over that a little bit, maybe towards the end of the points I'm making. But what I plan on doing,
+I'll present a base model that I put together and momentarily, but I'm going to step through
+the paper a bit, because there's, there's a lot of context. But I'm going to try and summarize the,
+the points that I make. And for those of you who have looked at my work, I will say that it is quite a
+long paper. So there is this meta analysis approach to, to the work in terms of, you know, looking at a lot
+of literature that talks about habits and talks about agential systems and different models of, of
+understanding perception, action, perception based dynamics, and how we engage with the world around
+us, and how we anticipate, you know, how we anticipate how to leverage engagement over time, based on our
+history of engagement. So anyway, let's, let's, let's start with the abstract and we'll, we'll, we'll build up
+even further. So like I mentioned, this paper presents itself as an overview of looking at understanding the
+nature of the nature of habits and adaptive learning with respect to agential systems. So we can, the best way
+to understand what a habit is, is a persisting composition of behaviors that, that are, that are, that
+couple our, our engagement to, to, to leverage how we reinforce interaction with our environment, with our
+surrounding environment, and with other agents, as well as ourselves, right. So on, on the one hand,
+agents can engage with their environment in a way that's constructive, as well as each other and
+themselves. So we call that reinforcement learning, right, where agents are, are, are engaging in, in a way
+that's constructive to optimize fitness, probably buffer, in the best case, buffer their fitness.
+But on the other hand, agents also can engage with their environment in the, in the means that
+could be deceptive or counterintuitive that, that could not only deceive themselves, but other agents
+in, in, in the environment, right. So that has to do with maladaptive learning. So we can think of
+maladaptive reinforcement learning being on one side of a spectrum, and maladaptive learning being on the
+other side of a spectrum, right. And, and we can say, realistically, that there's no truly completely,
+you know, there's no certain behavior, you know, there's, there's not no, there's no most optimal
+behavior that's going to completely optimize the fitness of an organism, or as, as a multi agent systems.
+Given the problems with cellular, cellular senescence and aging that over time, we engage with the world
+around us more sub optimally, but the challenge there being that to optimize fitness in the face of
+thinking of, of, of aging and cellular senescence, being a problem that we don't, you know, we're
+mortal beings, agents don't last forever, we break down, we decompose, right. So,
+in the face of, of that issue of, like, becoming more suboptimal over time, reinforcement learning
+leverages optimizing it in the moment, and as time goes on, while maladaptive learning is really working
+against, um, the, the, the optimal means in which we leverage fitness. Um, so,
+the paper is pretty comprehensive and, and the reason why is, is, is a bit long is one, like I mentioned,
+it's more, it's looking at a whole bunch of literature connecting ideas. Uh, and, uh, and, uh, so
+I've tried to approach the, the content, the, the contextualization of, uh, of, of the paper in a way
+that, um, is both comp, you know, comprehensive in terms of, uh, the audience that I expect to be a
+more general general audience to, to be, to be reading it. Um, I'm, I'm not too confident in terms
+of like how many actual cognitive scientists or neuroscientists or physicists or whatever are going
+to be looking at the paper as opposed to the more layman type. So I try to be mindful about who's looking
+at, uh, or who is, who's going to be reading the paper. And I try to be comprehensive as much as I can.
+So there, there is some redundancy here and there in terms of my elaborations on, on specific points,
+especially talking about perceiving, acting, and anticipating, uh, the world around us. Like this
+idea of what I call the PAP cycle, which I constantly bring up, uh, in, in my work, uh, well, in this
+particular paper. So we can think of the PAP cycle as perceiving, acting, uh, perception, action,
+priors. So perception has to do with, um, so before elaborating on what I call the PAP cycle, um,
+so as agents, we're constantly like engaging with stimulus. So any, any, anything that, uh,
+anything that provoke anything that provokes engagement for agents. So agents we can think
+of as, um, single, so we can think of the scaling of a gentle systems to be on the one hand, units of
+agents or single agents. Uh, so like single celled organisms, you know, your bacteria and your, and
+different types of cells and all that stuff, like simple cells that don't have much degrees of three
+to make them known to make them known to make them known to make them known to make them known to
+make them known to make them known to make them known to make them known to make them known to make them
+
+
+in the environment that they're embedded in which we'll get more into this idea of how agents are
+existentially bound to an embedded environment in which they co-inhabit. So now on the one hand
+you we have these single agent systems that have simple functions and they serve a certain role
+within the environment they're embedded in and on the other hand we have compositions of single agents
+that make up what make up a multi-cellular system. So in terms of speaking about agency I'm largely
+going to talk about and agential systems in general I'm largely going to focus on biological systems
+and to be frank and I do kind of emphasize this maybe somewhat bluntly in my work
+realistically our most comprehensive and intuitive understanding of agents really is reflective in
+biology in terms of you know they're really you know you could say that there are very simple
+synthetic agential systems being researched by groups like Neil Gershon Feld's lab at MIT for instance
+uh Michael Levin uh Michael Levin's lab uh also investigates uh uh xenobots and and and what have
+you but but but Michael Levin's work is of course more is focused on biological organisms as agents so um
+so I guess the one crutch of understanding agential systems really is that we're kind of limited to the
+scope of understanding agential systems in the scope of biology um so that's kind of the framework that
+uh that I'm focused on here even though I do pay a little mind of like comparing okay well computer
+systems that we built using techno our understanding of technology uh well very briefly I I do touch on that
+as opposed to what we consider to be agential systems um now
+uh okay so what separates a computer you know the idea a computer system from an agential system um is that
+uh compute uh we are constantly engaging with stimulus as I as I mentioned uh now stimulus is is really uh
+uh you know anything that uh you know anything that immediate that that that is directly you know anything
+that directly provokes engagement of the agent right so like whether it's something visual whether um
+that deals with any of the capacity any capacity any modality for the agent to to to to have a capacity to
+develop some kind of develop some kind of sensation as a result of being uh being provoked by the stimulus
+where like you could think of the stimulus as like like constantly bombarding um uh the the agent in
+question right like the stimulus kind of is like this continuous input uh that um where the agent has
+multiple modalities of trying to process that input as sensations and we're going to talk about what I call
+generalizations uh generalizations of sensations so there's kind of multiple layers here in which sensations
+are are processed by the agent uh so in in line with what I call the pap cycle uh perceptions
+actions and priors so perceptions deals with this uh capacity of of enveloping a pers of perceiving the
+stimulus so uh so so so there's this uh initial there's this layer of perceiving stimuli um where the agent
+again you know is you know is constantly um uh yeah so so so the agent within this embedded environment
+that it's existentially bound to is constantly being bombarded by stimulus right there there's constant
+uh uh constant uh exposure to to stimulus stimulus is inevitably uh uh uh directed towards the towards
+the agent and then there's multiple modalities in which the agent then tries to process the stimulus as
+the stimulus is directed towards the agent and and and the agent has a various number of ways to try to
+process that stimulus and what and we can think about those modalities in the human sense as like our
+different senses so vision touch uh auditory taste right um we can think of like like the combination
+of sensory modalities as a means to try to generalize uh uh how to process these sensations in a visceral in
+so in so the generalization of sensations aspect is this visceral uh initially this visceral processing of sensations um so so you can think of like this visceral processing to be the the initial layer
+of which uh of which that um the agent tries to process uh these sensations try to like this is kind of where the agent filters uh what would what it would try to on try to um
+try to uh to distinguish between what is noise in the environment like what what the agent should should or should not prioritize
+attention to uh as opposed to uh as opposed to what what could be significant to the agent like what what what what what are what
+what site what sorts of stimulus that are being fed into the agent's um modalities of processing um you know what stimulus matters and what stimulus doesn't um so this so so through the through through the generalization of sensations there's this filtering of
+okay what what what matters and what does it matter based on my circumstances of of leveraging fitness as an agent moment by moment um you know how do i handle that as an agent um so and um
+um going from there once the agent is able to prioritize once the agent recognizes certain patterns of stimulus that matter then there's this there's this means to categorize
+that stimulus as information so so so now then uh from there the agent might additionally
+uh try to prioritize that information okay what information matters uh you know there might be redundant information
+uh you know there might be redundant information or there might be information that matters to to my fitness right so we we can think about how that the information now that we have that is that went through that general that layer of being generalized as a sensation
+um and differentiating and differentiating and differentiating trying to trying to understand understand whether that sensation is just like noise that can't really be pattern you know we can't be categorized as as something
+that might be redundantly meaningful in some some sense or it's something recognizable to the agent it's not meaningful
+um or uh
+okay right so so from this generalization of sensations we get to the point where um the agent is trying to figure out
+uh trying to figure out uh if there's a pattern to distinguish you know between okay well is this just
+just noise that i can't really comprehend or and it is therefore not meaningful or is there some pattern here that
+uh provides some information about my environment and my circumstances and then by providing some okay now i have information now i have this generalization of information
+uh now i speak of the term generalization because that kind of leads to the problem of uh what i like to call their vertical perception that um
+um and a lot of a lot of uh a lot of uh researchers and what have you talk about illusionism that in the sense that um we can have a more general a more we can develop a general we can always have a generalization that
+it either is more and becomes more intuitive or or becomes counterintuitive to how we leverage circumstance but
+We never have an absolute understanding of the information and as well as our experiences, which is sort of a problem in the philosophy of science with, okay, well, how do we evaluate something to be a theory as opposed to a conjecture, which really has to do with the rigor involved and what have you.
+But the problem with vertical perception is we are always constricted to a relative understanding of reality in which an average, you know, if enough agents agree with a generalization, then that generalization guides, you know, a sufficiently large group of agents.
+And so we can think about the direction of how we develop technologies and how modern civilization got to where it is today.
+And we're going to talk more about interagent dynamics momentarily.
+But the idea is that we're constantly generalizing the world around us.
+And even though we can come up with generalizations, which many, which most of us could largely agree with, those generalizations could be challenged by looking through a different lens of generalizing that criteria.
+So it's sort of a paradox of like, okay, well, how do we evaluate the criteria that we have as knowledge when, you know, we have sort of these best guesstimates, so to speak, of understanding what's happening with the world around us and how we understand reality and how we engage with each other, how we develop technologies.
+But anyway, okay, so going back to understanding habits and what they have to do with, with behavior.
+So, again, I talk about habits being these persistent compositions of behavior.
+And on the one hand, we have dynamics pertaining to nature and of the agent and the nurturing of the agent, right?
+So we think about nature versus nurture now.
+So nature pertains to physiological limitations, while nurture pertains to the exposure over time.
+So we can think of like, you know, the course of a lifetime, an agent is exposed to environmental circumstances.
+And there's this idea of intrinsic and extrinsic variability of circumstances of environment.
+So we can think on the one hand that as multi-agent systems being human beings, we are a whole ecosystem, right?
+We are composed of multiple cells.
+And we have these different anatomical layers that allow us to have this integrated functionality in which we leverage metabolic and cognitive load.
+Now, the key thing to understand here about metabolic and cognitive load is the top down as opposed to bottom up dynamics in which agents facilitate their own integrity.
+And we're speaking largely about multi-agent systems because there's this complexification of behavior that enables the capacity of, for instance, our ability to make decisions because we have a central nervous system.
+Not all organisms have a central nervous system, right?
+So we, especially when we think about the single agent systems, they're much more simple in function.
+They have much lesser degree of agency.
+So, since we're composed of multiple cells and all these different subsystems that regulate functioning that deals with metabolic cost, that gives us a bit more degrees of freedom because there's all these different subsystems engaging with each other that facilitate the capacities we have to engage with the world around us.
+So, on the one hand, thinking from bottom up dynamics, we have the composition of cells that compose of different organ systems, right?
+That regulate metabolic load that enables the possibility from the top down for when we think of cognitive load from the top down, we're thinking about executive function.
+So, so from top down dynamics, we're thinking about how cognitive load is facilitated, where decision making happens.
+And this, we'll talk more about what is fundamental to this decision making momentarily.
+But thinking about nature dynamics, we're thinking about the physiological limitations of the integrity of bodily functions from the bottom up that influence the top down dynamics that facilitate cognitive load leverage, right?
+So, so, so, so, so problems with physiology has, has to do like maybe, maybe with, with problems with, with, with, with, with, you know, from, from the beginning of the agent's life cycle, or at some point, there's some hindrance that, that sticks, that kind of sticks out as, as like a barrier for the agent to leverage.
+
+So, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we, we
+agent leverages how it interacts with its surrounding environment, other agents, and
+intrinsically and extrinsically, of course, thinking about how the agent deals with its own
+internalizations and externalizations as well as considering how it engages with other agents and
+surrounding environment. And the nurture dynamics generally would have the most impact because
+it deals with the full life cycle of the agent. So until the agent ceases to exist, it's going to be
+constantly engaging with an environment in which it's bound to and it's constantly going to engage
+with other agents and the exposure dynamics are what is central to this engagement and
+both intrinsically and extrinsically. Right. And now I was talking about metabolic load.
+And now like every function of the agent, like every process that happens, like every interaction,
+you know, when we think about this, you know, from the single cell level to the multicellular level
+of the integrity of different functions of the agent from the bottom up, sorry, from the top down to the
+bottom up. All that involves metabolic load. And I even argue that the process of having thoughts that
+like even generating thoughts in our head, even in a way that's compulsive or, you know, thoughts that
+that just kind of go in and out or, you know, other processes like that involve perception,
+action and priors, all that comes down to metabolic load processing. And those metabolic dynamics are
+facilitated through, you know, are largely facilitated from the bottom, from, you know, from the bottom up,
+you know, in terms of the integrity at scale. Okay, so let's move on to routines being fundamental. So
+routines, we can think of routines, like, you know, for those of you who are programmers or have a
+programming or engineering background, we can think of a routine as like some kind of instruction or
+some kind of a simple instruction among other instructions that enable behavior to happen,
+right? And we can also think of routines as compositions of, you know, this continual
+we can also think of routines as the enabling of persistence to happen, right? So on the one hand,
+you know, we can think of a routine as, you know, part some aspect of the behavior. On the other hand,
+we can also think of a, more, more so, I contextualize routines to be the means in which the persistence
+of a beat of some compositions that make up a habit, right, to be able to be orchestrated because
+the, because a habit, you can think of a habit to be some routine, some routine characteristic of which the agent is at,
+is leveraging in some procedural orchestrated fashion, right? That some, that either constructively
+optimizes its fitness or maintains its, its, its current state of fitness in a way that,
+right, when we think about optimizing on the reinforcement aspect, in terms of reinforcement
+learning or being counter, you know, routines and like this routine ization of behavior of habits,
+you know, could, could be counterintuitive to the agent too, right? Like this persistence of,
+of behavior could be counterintuitive to, to the behavior, behavior of agents as well. And, and, and,
+and we, this regulation of, of, not, now this regulation of, of behavior, we, we, we can think of is not
+static, right? You know, like it, you know, we're not consistently in the same state when we're engaging
+with our environment because the environment that we are embedded in is not in a fixed state either.
+So the environment as well as ourselves as agents are not in a static state. So we're like these,
+we're, we're, we're these complex, adaptive dynamical systems, complex in the sense that
+we have, you know, we're composed of, you know, like I mentioned, like we're, we're composed of multiple,
+we're these multicellular systems, we're, we're a whole environment, ecosystem have you, but we're,
+we're, we're, we're composed of all these integral, integral functions that regulate an entire system.
+So that's on the complex, complex side. And then adaptive being that the system is trying to compensate
+a way to regulate behavior based on circumstances, right? Whether or not the circumstances
+optimize or, or deceive the organ or deceive the agent.
+So that, that, that's, that's what, what I mean in terms of thinking about, you know,
+agents as complex adaptive systems that, you know, where we are, these, these compositional systems that
+have certain exhibit certain behaviors in a means that try to regulate our capacity to engage with,
+with our environment and in the sense of, you know, thinking intrinsically regulating our own,
+our own bodily functioning and cognitive functioning, as well as, you know, extrinsically as well,
+how we engage with our surrounding environment, as well as other agents, because those other agents are
+part of the surrounding environment, and we're part of the environment as well. Hence, we're, we are embedded
+in this environment, right? So, obviously, we can think of this, you know, the reinforcement learning,
+as opposed to maladaptive learning capacity of agents to be like, sort of a tug of war,
+you know, tussle in terms of like, optimizing, as opposed to deceiving fitness, right? Because,
+on the one hand, there are, there are moments in which we can optimize leverage, in which we can
+strategize certain means, certain, you know, ways to reinforce our behaviors. And those ways could
+themselves become counterintuitive over time, based on how circumstances might change,
+change. Because the environment is not in a static state, it's in this, you know, we're in this,
+we exist within a complex system, as complex systems, right? That are, are, are, are, are changing state
+over time due to, due to, you know, the, you know, the state of which the entire environment, you know,
+like, what, you know, the resources in the environment available to agents to, to utilize,
+you know, whether or not how those resources remain available, how those, you know, those resources
+might change, and how other agents might change their behavior, or conduct themselves, as well as
+ourselves. And so, you know, we're, we're always trying, you know, as agents, we're always trying,
+you know, we're, we're, you know, I don't want to use the word exploit as a bad word, but we, we are
+trying to figure out a way to leverage resources, and, you know, you know, what can we use as resources
+in our environment, optimize metabolism, you know, to, to optimize our bodily functioning capacities from
+the bottom up to the top down, as well as this idea of utilizing certain aspects of the environment as
+tools and developing technologies and communicating with, with other agents, as well. All right, so,
+as agents, we, we have this goal directedness and orientation, and this, this routine behavior,
+like this, like the persistent dynamics of habits, and just kind of like thinking of, of, of, of habits
+as like, like these reoccurring behave ways, or these ways that we repetitively engage with, with,
+with our environment and other agents, and even ourselves, the way we kind of engage with ourselves,
+and like how we start our day, and how we end our day, and how we, you know, we work on tasks, and all
+that, thinking about human behavior. So, and that is like, you know, there, that's aligned with,
+you know, this engagement is, is in line with, you know, this, you know, when we think of goal orientation,
+we're thinking about, you know, how an agent kind of facilitates, you know, thinking about, okay,
+I'm going to do this to achieve this, or, or, or get this resource, you know, like, I want to have this
+resource, I have to do a certain number of things. So goal directedness could be, you know, composed of
+a subset of goals, or there's change in, in, you know, there are dynamics, and, you know, the goals
+themselves are not necessarily static. But in terms of like, instinctual goals, like we have to
+maintain metabolic load, sufficiently for, for our integrity, right? So, so we can think of like,
+there's certain, certain goals that are primary that facilitate, how we optimize fitness, like, you
+know, eating, you know, dieting, exercise, you know, thinking about human behavior, we think about like,
+stuff like dieting, exercise, sleep, drinking water, hydration, like, what, what, you know,
+what are what are fundamental, fundamental goals that are going to regulate, enter, you know, this
+integral, integrated functioning from bottom, facilitating bottom up and, and top down facilitation,
+in which an agent leverages, optimizing fitness, right? So, so when we think about goal directing,
+this, we're really thinking, we're really talking about, okay, how, how is the agent, optimizing its
+integrity, you know, keeping itself alive really is, is, is like most fundamental to instinctual goal
+directedness. And there's, there, there can be other goals that complicate the agent's integrity,
+like obsessions, and like, and how obsessions manifest. And so, you know, like, we can think about,
+oh, right, okay, well, as humans, like, some of us are into sports, some of us are into video games,
+or, or what have you, or, you know, I like to, you know, I'm, I, I like to draw art, art sketches.
+So there's certain things that are, you know, there's certain other goals that might not necessarily
+be directly, or, or, or, or maybe they're tertiary, to, to, to the agent, right? There's certain goals
+that might not necessarily, be, be necessarily, like, I don't, I don't necessarily have to work on
+artwork, you know, I could do, I could both do other things, but, like, goal alignment, especially
+in terms of, like, goals that are not necessarily, uh, uh, uh, uh, vital to, to, to the agent's
+integrity. Like, when we think about, like, food, water, sleep, and what have you, right? Those,
+those are fundamental goals. Like, there, there's, there's also the complication of other goals that,
+uh, kind of, align with the interests of the agent over time, based on exposure dynamic.
+When we think of nurture dynamics, like, you know, like, what, what stimuli ends up directing the agent
+to develop these interests and obsessions and what have you. And now they, they have these goals that
+are, that are aligned with, like, those obsessions, or there are, or those interests, or, or what have
+you. Not to say that interests are obsessions, but, um, just trying to come up with some examples there.
+Okay. Um, so I, I kind of go, uh, I, I, I, uh, in this section over here talking about,
+uh, routine behavior, being integral to, to environment and agent-based dynamics, I kind of
+start off with, like, talking a little bit about, uh, you know, from, from the perspective of, of, of
+thinking about physics and particle interactions, um, and then getting to, uh, of agent-based behavior.
+Um, so we can think about how systems might, um, how, how do, how do, how do, how do systems,
+how, how do agents as, as systems, uh, maintain stability or acknowledging, of course, the problem
+with cellular senescence and aging of systems, like, that system degrade over time, um, due to,
+uh, you know, uh, systems degrade over time after prolonged exposure to, uh, to their environment and,
+and what have you and, and those dynamics, which, um, see,
+which, you know, I don't think it's necessarily necessary for me to talk about entropy and what
+have you, but most systems, you know, uh, degrade from, uh, a, a, a structured, uh, more organized
+state to a more, uh, decomposed chaotic state, um, which, which is, um, which, which that, that kind of
+connects in a sense to, to, to problems with cellular senescence. Like how, as we get older,
+our fitness is more suboptimal, but even though our fitness is more suboptimal, as we get older,
+we still try to, you know, optimize, uh, optimize the integrity of, of, of, of our agency by,
+by, by engaging with, with our environment in ways that are, are, are reinforcing, reinforcement
+based even in light of that suboptimality as opposed to being counterintuitive, uh, to fitness.
+Let's see. Um, and now, um, now resources, I mentioned resources, uh, re resources provide
+a very, uh, variation in which we can leverage our fitness, right? So, uh, resources could be like
+food that allow us to manage metabolic load. They could be, uh, certain aspects of
+the, uh, of the environment that we can use as like, as tools to manipulate, uh, the landscape
+of the environment. Um, so variational constraints in terms of optimizing fitness, uh, in line, uh,
+of, of our agency have to do with not how we, uh, maintain ourselves, but how we engage with each
+other, especially as a means to, to maintain, uh, our fitness.
+And there, and, and the environment can not all, not only presents resources that agents can utilize,
+but there might be barriers in the environment. There might be optimal there, there in, in a sense
+that there's obstacles within the environment that provide constraints in which the agent has,
+has, has, has certain agency to engage, uh, to engage with the environment, uh, more, more intuitively,
+or, or, you know, to, to have better circumstances as opposed to circumstances being, being worse,
+uh, based on certain resources not being available to the agent. So that could, that could be an obstacle,
+whether, like, whether it's certain resources that, that an agent was utilizing, whether it has to do
+with metabolic, uh, metabolic, uh, integrity more directly, uh, in terms of food or whether
+there are, there are certain aspects of the environment that can be utilized as, as, as, like,
+as tool construction or means to communicate, uh, with other agents. Right. Um, so, so the environment,
+um, you know, can pose as a barrier if it can make it, if it, if the environment, uh, makes it that it's
+more difficult rather than more intuitive, uh, for agents to, uh, facilitate, uh, integrity, uh,
+their fitness in terms of how they, uh, how agents engage with each other and, and how they leverage
+their own fitness, uh, uh, um, intrinsically. Um,
+Speaker 2. So we talked to where I think I provided a good overview of goal directed behavior. Now
+what I'm going to talk about, um, so, um, that kind of, so I'm going to talk a bit about, um, this,
+this aspect of regulation, like try and provide more, uh, clarity on like, okay, well, the, the, uh,
+as agents were trying to regulate, uh, we're trying to, to regulate an optimal means of sustaining an
+optimal level of fitness and, and how does that work out? Right. And so, um, maybe a number of you
+aren't familiar with David Wolpert, but, uh, David Wolpert, um, talks about, uh, this, this term known as
+this, this, um, this idea of guided random search optimization. So I'm going to say, say that again,
+it's, uh, uh, uh, an entendre of words, guided, uh, guided random search behavior, which has to do,
+um, so if we think of randomness, we're thinking about like this, this act, this, uh, this, uh, um,
+that, um, uniformity in which, uh, uniformity in which certain outcomes occur, or certain things
+can happen, right? Like that there's no, uh, there's no, uh, there's no, uh, prioritized,
+there's no, there's no prioritizing of, of, of, of certain, um, ways things might occur,
+but there's uniformity in, in which occurrences happen. And we can, and so this uniformity,
+um, especially understood in, in, in, in literature regarding probability theory, uh, and, uh,
+denotes to what randomness means. And now it's not necessarily like a lot, like some people might
+think randomness has to do with spontaneity and what have you, and that might have to deal with
+probably extremities of, of, of, of randomness per se, that that's not necessarily random.
+Um, but, uh, randomness more so has to do with, with uniformity, that there's no, there's no like
+selective favoritism about how outcomes happen, but that, you know, there's, there's, there's,
+there's kind of like this evening out of like how outcomes and circumstances, uh, happen in, in terms
+of thinking about what randomness, um, implies here. And, um, David Wolpert approached this aspect of,
+of thinking about, um, how we, um, develop axiomatic systems.
+David Wolpert approached this aspect of the, um, and, um, how we can think about, um, you know,
+when we think about axioms, we think about really, uh, you know, how we, how, how we, how, um, how behaviors,
+you know, how can, how things are reduced, um, you know, how far can we reduce a, a certain behavior
+or phenomenon. And, and when there are certain components that can't be furthermore reduced,
+but can, can, you can use those components as building blocks to represent, uh, complications
+or complexities of how behavior, uh, how behavior can, can happen with a system. Now, now we're thinking
+about axioms, right? So, um, uh, a good example of, of, of thinking about axioms is thinking about
+how arithmetic happens, right? Like how, how we can add or multiply numbers to get more numbers and we get
+a rate we have, we have inputs of numbers and we, then we have an output of numbers. We have a range of
+numbers. So now we can think about when we're, when we're talking about agential systems and we're
+thinking about axiomatic properties of systems, we're really thinking about, um, you know, how do we
+reduce stimuli and sensations and generalizations in the way, the way, uh, agential systems generalize
+how to engage with stimuli. And, um, um, now, um, I, I just realized that I probably didn't give a,
+give the, give, give, give, give, uh, give, uh, uh, an elaboration on actions and friars as opposed to
+perceptions regarding the path cycle. So let me do that real quick before I go more into what is guided
+random search behavior, um, which then leads to this aspect of guided random search optimization,
+because ultimately, uh, we, as a general systems want to optimize fitness right. Um, now, okay. So
+perception has to do with, uh, perceiving, uh, you know, we're, we, you know, as we're engaging with
+stimulus and processing sensations, we are, you know, we're, we're perceiving, uh, we're, we are
+trying to figure out, okay. Um, how do I engage with this? And, you know, what, what, you know, in
+terms of top down, we, you know, we're talking about top down here when, when we're talking about
+perception actions and friars, um, although, uh, more simple agents, uh, it could be argued that,
+you know, even simpler agents have a means in which they perceive, act and anticipate, even though,
+you know, that their capacity, the capacity, more simple agents to engage with the environment is,
+is less complex because, uh, you know, if we're thinking about, especially single cell systems,
+as compared to, you know, humans, where these multi agent systems, because we're, we're composed of
+multiple cells. And, um, we have these, uh, networks of neurons and glial cells that are facilitating
+engagement and communication with different regions of other neural neural and glial cellular networks
+that are facilitating our capacity to perceive, act, and anticipate. So action has to do with how we're
+responding to the stimulus, right? So we're trying to facilitate a response, uh, to, to, to the stimulus,
+to, to, to how we're engaging with our environment. We're talking about action and then friars or
+anticipation has to do with, uh, like a history, you know, we keep track of a, of a history of our
+perceptions and our actions. And we, then we try to optimize based on that history. We were trying to
+anticipate, uh, what, what, what, what perceptions and actions ought to be optimized going forward.
+So on the one hand with perceptions, uh, uh, you know, we're, we're, we're, you know, we're,
+we're engaging with our environment. We're engaging with stimulus where we're trying to figure out,
+okay, how do I react to this? How do I respond to this? And then next in line, once we, once we,
+once we have a calculation in mind of like, okay, this is going to be my action, this is going to be
+my response to the stimulation. And now when we're thinking about perceptions, actions, and friars,
+um, again, we, we can think about compositions thereof, of, of perceptions, actions, and friars,
+right. You know, we, we think about not only, uh, you know, even, even different modes of perceiving and
+acting and, and at times, uh, they're, you know, perception and actions are, are sort of coupled,
+you know, based on like how different regions of the brain are, are processing sensations and
+information. And, you know, once you process sensations, you, you have information to work
+with, and then you're prioritizing what information matters after you prioritize what sensations matter.
+Um, now, okay, this guided random search. Now we're going back to, to axiomatic systems.
+Um, right. We have this, we have, we have, we, we, we get to this point where we try to reduce, uh, sensations,
+right. We try to, to decompose, you know, like, especially when we're processing sensations and, and we're
+trying to, um, conduct this capacity to perceive, act, and anticipate. Ultimately, we're, we're trying to,
+uh, uh, you know, we're trying to, uh, you know, we're trying to, you know, we're trying to, you know,
+thinking about like that example of arithmetic, we're trying to, to, you know, reduce what the
+sensation to what we tried to reduce to, uh, uh, you know, like sensations only reduce so much yet,
+uh, compositions of those sensations could start to build a picture, right? Like the bare reductions
+of those sensations might not make much sense themselves, but if we take the compositions of
+those sensations over time and how they build up, uh, into something that makes sense for us to,
+you know, in terms of interpreting the stimuli, in terms of perceiving the stimuli, and then acting on the stimuli
+after, uh, you know, facilitating, uh, okay, how, you know, in the, in, in the perceiving of the stimuli,
+what's the best, what's the most optimal manner I can act on the stimuli, and then having a history of,
+okay, well, I, in, I perceived the stimuli this way, and I acted on it this way, this is what happened.
+Okay, well, the outcome might have been good, or might have not been good. So now I'm going to
+anticipate how to perceive and act based on the, the outcome that may or may have not been good.
+And, um, in terms of, of, of how my capacity to evaluate as, you know, uh, you know, when we talk
+about, uh, um, let's see, um, my capacity to evaluate the, the stimuli is reflective of, of like, okay, well,
+uh, I don't want to call it trial and error here, but this is kind of how we're getting to the guided
+random search aspect, right? That there are, there are, there is a combination of ways that we take the,
+the, the, um, that we take the reductions of the sensations that build into information, right? And
+then we, uh, that become information, the, like, this, this reduction of generalizations of sensations
+that become information, uh, based on how we're prioritizing that due to how we, um, select out
+perceptions and actions and priors that optimize, uh, our fitness based on how we're engaging with our
+environment. Um, so like, um, the guided aspect is, uh, prioritizing what's working as opposed to
+what's not working. And the random aspect has to do with, okay, well, the sensations, as we, you know,
+we reduce the, when we reduce the amalgamation of sensations that ultimately, like I mentioned,
+our stimuli that we're being bombarded with, um, though, the, the aspects of those sensations really
+are uniform, um, uh, in, in the sense that, um, those, you know, when we don't really prioritize those,
+since, you know, once like, uh, before those sensations become develop any relevancy as information,
+uh, there's no, you know, the environment doesn't really necessarily dictate what sensation, what
+stimuli have priority. The stimuli just present themselves as stimuli, um, to, to, to our system.
+And then it's up to us based on how we perceive and act and anticipate the stimuli on how to,
+so how to, it's up to us to prioritize, um, that, that stimuli, which, uh, which in, uh, in the bare bones
+aspects of that stimuli outside of our judgment, you know, outside of our own judgment, which involves
+perceiving, acting, and anticipating is random because nature doesn't really care.
+You know, um, nature doesn't really care about, you know, reg, you know, necessarily
+selectively regulating the stimulus outside of the agents, uh, like, like the environment,
+the bare environment doesn't care, but the agents among that environment, you know, are going to
+engage with the environment in a way that prioritizes stimulus and, and, and guides the agents
+to engage with each other in the environment. Right. And, and in that sense, the guided, the guided
+aspect is the prioritization. The random aspect is this uniformity that, that the bare bones stimulus
+is presented in the environment among agents. There's no, there's, you know, until the agents
+start to prioritize the sensations as information, um, there's really, there's really, um, beyond,
+there's really nothing more than this uniformity of this, you know, there's nothing, there's nothing
+really, uh, that, that stands out about the stimuli until the agent, uh, starts to, uh, make selective,
+uh, uh, generalizations once, once they're, once the agent can notice patterns of stimulus
+and those patterns would be information. And then the agent's going to try to prioritize, prioritize those
+patterns. So the search behavior, now the search behavior is recognizing the patterns and then
+built the filtering aspect of the patterns. Right. So like I mentioned, the, the guided aspect has to
+do with the prioritization. The random aspect has to do with, okay, well, there's this uniformity in which
+the stimulus is, is, is provoking the agent to engage with the stimulus. And then it's up to the agent to
+kind of categorize and, and, and, and prioritize the stimulus and, and reduce it to information
+and then prioritize that information based on like what the agent think it thinks is necessary to pay
+attention to. And so the, the search aspect is like this paying attention, like the attentional dynamics
+involved with this prioritization. Um,
+So, um, now there's, like I mentioned, there's constraints within the environment that enable
+agents to, to facilitate, uh, perception action and prior, uh, dynamics, um, in a way that would optimize
+fitness as opposed to, um, deceive fitness or, or be counterintuitive to fitness. And now, okay,
+well, when we talk about homeostasis, uh, again, the environment's not in a fixed, uh, static state
+dynamic, uh, agents aren't in a fixed, uh, fixed state, right? Everything, you know, we have this
+complex adaptive system that is the environment. And we also have this complex, you know, the nature of
+agents is, uh, of agents, uh, invoking agency in the environment or, or trying to compensate for what the
+environment presents to agents as resources or obstacles. Um, homeostasis has to do with then, um, how do
+agents sustain a minimum viable, um, functional integrity that is, that is, that is crucial to
+fitness, to allow the agent to continue, to, to continue to exist rather than, than cease to exist.
+Right. So the, so homeo, so homeostatic regulation, um, is going to have to do with, um, and maybe some
+of you are thinking of the free energy principle, um, in this respect that, um, agents, um, want to
+minimize costs, but maximize on opportunity to, uh, leverage optimizing fitness. Um,
+um, well, at least most agents want to do that. Um, very, it's, um, I mean, there's, there are some
+aspects where, where I think where agents that have the capacity to annihilate themselves, um, which, um,
+I, I don't think, uh, I think agents need a certain level of complexity to make that decision from the top
+down. So, so, so in that respect, the top down dynamics, as opposed to the bottom up dynamics,
+uh, you know, are, are, are much more crucial to facilitating the integrity of an agent because,
+you know, agents with enough sophisticated agency, like human beings can decide to annihilate
+themselves, which is unfortunate, but, uh, in most cases, uh, it, well, I would say it's generally
+unusual for, for, and we're seeing this in the literature too, that it's unusual, but it's interesting,
+um, to, uh, you know, where circumstances arise where an agent makes the evaluation that they
+can't really optimize fitness any more than they have. So they, so the most optimal, the most optimal
+decision for the agent is decide is to decide for them to not exist anymore. Um, which is unfortunate,
+um, but, um, this is not, this also isn't uniquely human either. Um, you know, other, other, other,
+there are other types of agents, other animals out there, you know, when we think, again, we're thinking
+about agents as biological organisms here, um, you know, where an agent makes a decision that, that they can't really optimize
+fitness anymore. And the, the, uh, the, the circumstances in which the environment provides
+any leverage of integrity is not really there. So the most optimal decision an agent can make is,
+is to annihilate itself, but that that's, I'm not going to get really into that. Um, but I think that
+that's sort of an unfortunate circumstance for an agent to find themselves in. And, and this pertains to
+probably, um, I, you know, more sophisticated agents, um, as, as I found in, in, in the literature. Um,
+okay. See, dragging.
+So we, we went over that, we went, went over what stimulus is
+and regarding again, homeostasis that has to, you know, this builds on guided random search
+and the guidedness being the prioritization, the randomness being the uniformity in which stimulus
+provokes the agent and presents itself within the environment. And we acknowledge that stimulus is,
+is really, um, anything that, um, anything that, in that, that is provoking the agent to perceive, act,
+or anticipate anything that, anything that, that innate, that, that provokes an agent to perceive,
+act, or anticipate would be considered a stimulus. Um, and prioritizing, where was I here?
+Um, being able to, to prioritize stimulus and for agents to minimize cost to engage with their
+environment, uh, and maintain, um, um, uh, like a minimal, minimum viable, minimally viable functional
+integrity that, that is crucial to fitness. This has to deal with homeostatic regulation or, or homeostasis.
+Uh, this is what I call homeostasis. And the environment presents means in which,
+uh, on the one hand can be resourceful for agents to, to regulate their fitness. While on the other hand,
+the, the environment might also present obstacles that could be problematic to regulating fitness.
+So we can, so, okay. We're going to talk more about the mechan, like the mechanistic, sort of a mechanistic
+interpret, interpretability, um, explanation of, of the perception, action, and, and prior cycle, or what I call the
+path cycle. So, uh, a lot, so a lot of new programmer types and engineering types are probably familiar, or hopefully are familiar, with the terms
+of ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+and signaling, you know, when we think about how neurons, neural and glial's cellular networks
+work together, the sensor capacities have to do with interpreting a signal and passing that signal
+along to the right networks that then deal with that signal. And then you have this coupled
+capacity of sensory motor actions involved that deal with the stimulus. So actuators have to do with
+acting. So like having an action towards the stimulus. So actuators having this actuation-based
+mechanism has to do with responding to the stimulus while the sensors or the sensory capacities
+signaling, you know, the signaling and communication faculties that enable perceptions and actions
+and anticipation dynamics to be optimized. You know, certain networks of neural, there are
+certain there are neural and glial cellular networks that that interpret sensations and communicate
+what those those sensations are, you know, and they signal to the networks that deal with the
+with acting and responding to the stimulus, right. And, and more so there's more, there's this
+coupled capacity of, you have these coupled sensor actuator based networks that and compositions
+thereof. That deal with handling stimulus and sensations and prioritizing the sensations into information
+and so on and so forth.
+And, and the sensor and actuator based mechanistic capacities, you know, you know, that that we
+reduce this, you know, we, you know, basically, this is this is this is a reduction of like,
+okay, we have these neural and glial networks, uh, networks, that facilitate perception and action
+anticipation. And we're trying to optimize, uh, for metabolic costs, and facilitate cognitive load.
+Uh, that, uh, that leverages fitness wire rather than compromise compromises fitness, um,
+um, over time. Um, and, and, and, and, um, in the most realist, I guess, in the most, uh, pragmatic
+sense, we think about this minimum viable means in which, uh, we facility in which an agent optimizes,
+how it calibrates cost of metabolic load for homeo for in with regard to facilitating, um,
+functional integrity or homeostatic regulation.
+So hopefully that makes sense.
+So we can think of like, when I mentioned goal directed behavior, there's this coordination of
+micro and macro levels of how we as multi agent systems facilitate that, right? So like we think
+from the bottom up, we have metabolic, uh, load handling or, or facilitation. And from the top down,
+we have cognitive load, uh, handling, right? We're, we're thinking about how cognitive load is mitigated
+due to how metabolic load plays out as cognitive load. It really is a subset of metabolic load,
+because you need, you need, you need metabolic costs to facilitate everything that an agent does like
+without being able to, uh, metabolize the, the agent just wouldn't exist. It wouldn't be able to
+continuously engage with, with its environment because it needs resources. Like the agent needs,
+uh, fundamentally one of, one of the fundamental goal, goals of the agent is to consume resources,
+whether that that's food, water, you know, think about human behavior, we think about food, water,
+water, you know, water, you know, water, you know, water, you know, water, you know, water, you know,
+other means like using tools that, um, extensively enable us to better leverage fitness and how we
+engage within our environment and other agents is, is also important, but that's more, more secondary,
+uh, in terms like, um, you know, like tool use and, and, and augmentation and development or of, um,
+is not as crucial as, as maintaining like, uh, metabolic load is in terms of, of, of, of food,
+you know, consumption of, of food and water and being humans like to, to regulate that fundamentally.
+Yeah.
+So we can think of like on the macro level, um, cells represent, you know, as multi-agent systems
+on the macro level, you know, cells can represent or whole organ systems and subsystems that regulate
+from the bottom up as well as the top down. And then from the micro level, we think about how the
+individual cells as individual unit agents engage with each other, because we ourselves,
+even though we are agents, we are a whole environment and ecosystem thereof, of, of agents
+communicating with each other that enables our own agency and our own capacity to communicate the
+environment in which we're embedded. And so we have agents embedded within us, and then we are also
+embedded within an environment in which we have agency. And that is constrained due to, um,
+the resources and obstacles that the, the environment presents, uh, or the, that, that,
+that ex, the, the resources and obstacles that are existent within the environment that, that we have
+constrained access to. And then the, um, there's also the, um, this is not talked about that much in the
+literature, but there's also the mezzo level. So we talked about the micro level where we have the
+individual unit agents within our organism as a multi-agent system, how, how those agents communicate
+with each other, but on the macro level, we have the different subsystems communicating with each
+other. And even on the macro level, we're thinking about the top down dynamics of regulating executive
+function, which also considers the macro level about how networks of, of, of neural and glial cells are
+communicating with each other. But we also have this mezzo level and, um, this mezzo level, we can
+think about how selective, uh, more so when we're thinking about the top down regulation of agency,
+we're thinking about how different sub, sub regions of, uh, of our nervous system or our executive
+functioning are regulating agency, our, our capacity to continuously, uh, engage with our environment in
+optimal fashion. So, um, so, so thinking from the mezzo level, do you think we can think about how
+different regions, regions of the brain are, are working together to evaluate perceptions, actions,
+and priors, like, you know, like the prefrontal cortex, uh, the reticular formation, the, the hippocampus,
+the amygdala, like how are all these subsystems, uh, of neural and glial cellular networks facilitating
+engagement? Um, like we're going from the more macro level of the, of the central nervous system
+to not necessarily the micro level of the individual neurons and glial cells, but we're also talking
+about how different, how, uh, different coupled networks, uh, of these neural glial cells of these
+different regions are facilitating lateral engagement with each other. So I think it's important also
+for those of you who don't necessarily have a neuroscience background, um, or psychology background.
+Um, uh, so no, no one region of the, like one, like all the regions of the brain, first of all, are, are
+communicating laterally in the sense that they're communicating, they're, they're engaging in
+parallel processing stimuli and sensations and what have you and information, right? No one region is
+responsible. Like, you know, the hippocampus, uh, doesn't, doesn't store and, and, you know, even though
+like the hippocampus is largely recognized as the memory storage system, the way it stores and, and
+references information, it, it, it needs to work with the amygdala, the thalamus, it has to work with
+the reticular formation. Um, it has to work with the prefrontal cortex. Um, so, so no one region is
+processing these sensations at one point or momentarily in time, like they're, you know, and we're in, in an
+interesting way we're going to get, get to like, um, what is necessarily interesting about, um, how our
+brains are structured and that's not necessarily, uh, uh, header, it's not necessarily hierarchical,
+although it's, it's mostly hierarchical in the sense of prioritizing stimulus and sensory information, but,
+um, how, uh, how, how that processing and prioritizing builds out over time in terms of how we as organ,
+as these biological organisms, as multi, as, uh, agential multi-agent systems evolved, um, is not
+just hierarchical, but, um, is, uh, there's this other term that is less familiar. Um, so on, on the,
+on the one hand we have this prioritization or, or what can be deemed as hierarchy of like, of, of,
+of prioritizing, uh, uh, of sensations and, and, and what have you. On the other hand, there's the
+tuning aspect, right? Like sort of like as we're prioritizing and selecting out, uh, uh, uh, stimuli
+silos and, and sense, and says, as sensations and information, uh, there's also, uh, this aspect
+of sort of like tuning, you know, like, you know, kind of like, you know, if you think about like, uh,
+uh, like an audio mixer or, or a soundboard, right? You, you want to get the right, you, you kind of want
+to, you, you want to kind of select out the right, uh, channels of how stimuli and sensations are being
+prioritized and this is known as heterarchical processing. H-e-t, uh, heterarchical. H-e-t-e-r
+archical. So I'm not going to spell the whole thing out, but, uh, this is heterarchical processing and,
+and this term is actually brought out in, um, uh, uh, uh, Huebner and Schultz's biological cognition
+paper, which I highly recommend. Uh, and we're going to talk a little bit about, um, this, uh, this,
+this, uh, means of preserving viability, which, um, which is pretty important to how agents engage
+with each other to optimize and leverage fitness. We're, we're going to talk about that momentarily.
+Um, but so there's this, there's this hierarchical capacity in which the regions of our brain are
+prioritizing stimulus, right? And, and, and, um, in that prioritization and selecting out the stimulus,
+there's sort, there's this tuning coming, there's this kind of like this channel tuning, uh, mechanism,
+right? Like trying to just get the, you know, trying to, trying to prioritize the stimulus just
+the right way involves like, sort of like a selective pressuring that's not necessarily hierarchical,
+but it's, it's sort, it's, uh, um, it, it, it's also like, um, a little bit more, it's sort of like,
+there's degrees of freedom in which we, we, we try to calibrate the channels in which those sensations
+uh, are, are being prioritized as information and then, then that information is being selectively
+prioritized. Uh, so this is known as heterarchical processing. Um, but largely speaking, what's
+happening is hierarchical because the, the actual prioritization of sensory modalities, that's
+hierarchical, but that can't happen without calibrating, uh, the sensations and information
+to be processed. And this calibrating aspect is, is heterarchical. Um, or like, kind of like,
+you know, think about a mixing board or a soundboard, like, like, I don't know how many people are, are,
+are into DJing or, or, or producing music or what have you. But if you play with like,
+a soundboard and you're trying to get the right sound to come out and you're, and you're trying to
+get the channel properties, you're trying to tune the channels and all that stuff, uh, this is, this is,
+this is, this is hyper, hyper parameter, hyper parameter, blah, it's a tongue twister, hyper parameterized
+tuning processing of the top down. Right? Like the idea of parameterizing the sensations, right? Like,
+when we're trying to facilitate the parameterization of, okay, the stimuli coming in and are perceiving and
+acting on that stimuli, um, the, the parameter, per, param, param, param, parametric tuning that, that has to
+facilitate the prioritization, that is the heterarchical processing that's happening.
+Okay. So, so there's, there's, um, on the one hand, there's, what, what, what's happening with
+perception actions and prior, and priors is this introspective capacity of, of trying to interpret,
+uh, stimuli, and, and then this reactive capacity, uh, this proprioceptive capacity of aligning our
+perceptions and actions, uh, with, with how we anticipate, right? So, so our, so, so in terms of not
+only our, our, our, um, well, this is in due part to, to the top down functioning, but this, and this,
+this really calibrates, uh, our capacity to, to not only, uh, interpret, but react and, and, and, and,
+and react in a sense, uh, react to stimuli, uh, in a sense of like, uh, uh, of predicting what's going to
+happen, what, what's going to happen going forward, uh, that would be pro, more, more in the proprioceptive
+sense of, of dealing with the stimulus over time to optimize fitness. So on the one hand, there, there's
+this capacity in which, uh, um, especially with decision making, where, uh, we try and make sense
+of what we ought to do, how we, how we, and how we perceive and act on the stimulus, and then
+our continued actions going forward in time has to do with proprioceptive capacities.
+Um, so, so this capacity to, to, uh, the means in which to, to, to, to, to, to regulate perception
+and actions based on anticipations, um, going into the future and, and how, how, how, in terms of bodily
+functioning, like just, just how I engage with the stimulus in, in a way that becomes more, that
+feels more intuitive, um, this is a proprioceptive capacity as opposed to more introspective capacity
+of, uh, uh, of, of, in trying to interpret and understand the stimulus and, and, and, and, and
+making a decision that might be, and making decisions that might reflect, um, uh, what could happen in the
+future, then there is the happening of the future, right? And, and the alignment of that happening
+in the future that, that, that, that, that, um, that is in, that is in line with anticipation
+as to do with proprioception. Okay. Let's see. Um,
+I don't want to speak too confident, confidently about, about the main regions of the brain
+coordinating, uh, coordinating our capacity of perception, actions, and priors, but I'll, I'll,
+I'll, I'll, I'll bring some, some key, some regions that have caught my eye. Um, there's a bit of
+contention in terms of what are the key regions that are, are responsible for our capacity to perceive,
+act and anticipate. Uh, the most evolved capacity, uh, that really sets humans apart, uh, has to do
+with the prefrontal cortex. So that, that deals a lot with planning and, and, and perception that
+there, there, uh, a lot of the modalities in which planning in terms of perception and goal
+directedness has to do with the prefrontal cortex. Um, the anterior cortex has more to do with the
+sensory motor functioning. Um, now, um, less, what's less talked about in the literature,
+um, is the role of the reticular formation. So that's your brainstem. So the reticular formation
+has to do with autonomic arousal. So, so this, like the capacity to even, uh, uh,
+uh, engage with sensations at all, uh, has to do with the reticular formation. And in particular,
+what I, uh, my favorite, uh, part of the brain, uh, is the locus cooleus or also known as the,
+the LCNE system or the, the, the, what regulates norepinephrine. Um, so, so, so autonomic arousal is
+pretty important because without it, like we're, we're, we're not really engaging, you know, um,
+I mean, there's no means for stimulus to, to, to be interpreted and, and facilitated throughout
+the, uh, the brain. So, so, so the norepinephrine system, uh, is, is allowing us to interpret this,
+the stimulus and guide that interpretation in terms of signaling, uh, all these, all the different
+primary primary regions of the brain, uh, that are responsible for perception, action, and anticipation.
+And now what I like to call the neuromorphic interchange is the limbic system. Now the limbic
+system is basically, uh, basically the region that encompasses like basically, uh, the, the key
+regions of executive functioning. So thinking about memory retrieval, emotions, um, land angle directedness,
+um, sensory motor processing. So the prefrontal cortex, uh, at least most of, most of the prefrontal cortex,
+uh, or the neocortex layer, uh, the hippocampus, the amygdala, the, you know, all, all, all those,
+all those really important regions that are, are, are important for, are, for executive functioning
+are guided by the limbic system, right? Uh, well, they're connected together by the limbic system.
+Like they, they facilitate each other's capacity due to, um, being housed into this interchange that
+facilitates their engagement, which I call the limbic system. And, uh, let's see.
+All right, going to the next section. Sensations are fundamental to perception, action, and anticipation.
+I think I covered most of this.
+So this idea of generalizations of sensations, um, is this feeding of stimulus, uh, as inputs into,
+into multiple, our multimodal way of, of engaging with the stimulus, uh, has to do with this generalization
+of sensations in, in which that the stimulus is fed into the system initially. And this is, this is a,
+this is the visceral, uh, this is, this is the visceralness of the stimulus, uh, the, the viscerality,
+I guess viscerality is the right word. Uh, so the means of internalizing the stimulus is this
+generalization of the stimulus itself, right? Which is visceral and natural, right? Like think about,
+like, like, when we think about visceral, like think about how blood flow is just naturally happening,
+like throughout your body or, or certain, like, even metabolic, uh, metabolic processing. Um,
+when we think about, uh, the, uh, uh, the, um, uh, glycolysis and, and all these different behaviors
+that happen that, that regulate metabolic processing, uh, cellular respiration, right?
+All like stuff that's just constantly happening that, that, that regulates metabolic load.
+Uh, this, like that's generally pretty, you know, that, that, that, um, like the, like these behaviors
+that, that aren't really particularly that interesting that, that correlate, uh, directly to,
+to our executive top down functioning, this can be recognized as visceral processing, like, uh, you know,
+uh, uh, uh, like stimulus that, that isn't, that, that's just constantly happening or, or this processing,
+uh, this, this load processing that's constantly happening, that that's not that interesting, but
+it, it, it's, it's, it's kind of fundamental to like our, our continuous engagement with the environment
+as, as, as, as agential systems is regulated. That's what we can denote as, um, a visceral processing.
+And this internalization of, of, of stimulus, uh, with respect to environmental constraints, of course,
+um, has to do with, um, you know, we're, we're, we're filtering the noise in this generalization
+of, of sensations, like this, this capacity of general, uh, of filtering the noise into becoming,
+um, a means in which we can make sense of it. Um, so we prioritize that noise as information.
+And that eventually allows us to anticipate, you know, how should we perceive and act accordingly
+to the stimulus being presented to us. And then we have these recollection of experiences because
+we're able to anticipate based off our, of our history of perceiving and acting to stimuli.
+Now, now here's where things get interesting because I'm about to talk about
+system one and system two, uh, coupled with the rider and the elephant. Uh, so, uh, system one and
+system two, uh, uh, refers to Daniel Kahneman, uh, and, uh, where system one has to do with, uh, uh,
+uh, uh, decisions and the, and ways of act engaging with our environment, uh, from a top down level or
+executive functioning level, which, which is more automatic and less involved while system two
+has to do with, um, non-trivial or problem solving circumstances, which take more effort. So,
+now, uh, that has to do with, with, with, with reasoning, uh, and, and how we optimize engagement
+with our environment. Uh, now, um, we couple this capacity with Jonathan hates the rider and the
+elephant. And the reason why, uh, this is, this is, this is, this is of interest is, um, especially with
+system two processing, we use emotional valence processing, um, or emotions, these, these feelings,
+the feelings we get from, from the general generalization of the sensations that we, we have as
+these embodied, um, uh, as these embodied beings, but like as a general systems, our engagement is
+embodied, right? This, this, this capacity to generalize sensations, um, as agents is, is embodied,
+which this is what really separates us from, from classical machines, or just, just, you know, these
+closed loop circuits. Um, and I would argue additionally that, um, the way that we perceive acting
+and anticipate is not necessarily a, a, a closed loop. Um, uh, it, uh, it, it, it's sort, it's sort of like
+an open system, but it's not, uh, it's like a bounded open system. Um, we'll, we'll, we'll get into
+that a little bit soon. Um, now, um,
+what's interesting about, uh, so talking about the rider and the elephant, I need to elaborate on that.
+So system one, system two, system one is like kind of automatic, doesn't take too much effort to make
+a decision and, and, and, and, and system two, it takes a little bit of effort. It's non-trivial.
+Uh, now the rider and the elephant, the rider is like the voice of reason while the elephant is like
+the experiencing, like, uh, uh, uh, of the, uh, the, the, the feeling states, right? So one can only
+imagine an elephant going rampant in the village, right? Like the rider doesn't have a good grip of
+the, uh, of the elephant and the elephant just go crazy. Um, so I, so I coupled this idea of the
+rider and the elephant with system one and system two because, um, especially with system two, it takes
+some, it takes some, uh, uh, you need a way, you need a, a, a, a non-classical logical, uh, system reduction
+way to, uh, take, uh, uh, uh, feeling states, emotion states in, in, in, where, uh, decisions are not, are not trivial, or, or, or they're not, like, there are these non, there's these non-linear, non-trivial circumstances in which
+we have to make decisions or make predictions or, or, you know, like how we engage with stimulus and how we try to
+make, make anticipations of how should we perceive and act going forward into, especially the distant future, right? That
+it could be a big deal in terms of leveraging fitness.
+So, um, so, um, so, so, so this, uh, so, so we, so what we, so what happens here where decision making is not so intuitive is we can try and figure out a way to have decision weights as criteria to evaluate decisions where there, there is some uncertainty involved, where there is some uncertainty involved, where there is some uncertainty
+where we are not certain where we are not certain how things are going to pan out, and we have to anticipate as agents, like, how, how should we engage optimally with our environment. So, emotions, uh, play a role, uh, in this capacity where, where decision making is non-trivial, non-linear, um, and, um, there's this generalization of feeling states, right? When we, when we're talking about generalization of sensations,
+uh, so, first we have to consider that raw sensations have to be processed by specialized regions, which, uh, of, of, of, of our executive functioning, uh, that deal with memory consolidation, uh, regarding optimizing priors as well as, um, emotional valence processing. So affective processing, uh, is involved here. Um, so since, so what happens is sensations become these streams of information
+that are comprehensible for modes of reasoning and emotion valence weighting that can opt more optimally guide perceptions and actions on priors. Um, now, um, what can be understood as emotions, uh, then would be generalized, this, this valence weight, this emotional valence weighting on generalized feeling states, uh,
+that, um, is, is, is, is separate, but necessarily, uh, is separate, but necessary for optimizing rationale and according, according to decision making. So we have this interwovenness of reasoning and emotions or feelings, right? And, and emotions kind of, um, uh, provide, um, a means to weigh decisions that are especially more difficult,
+um, um, where it's not obvious, um, what we, how we should anticipate, um, what's going to happen in the future, um, and, and just how to guide, uh, our, our behavior, uh, especially in moments of uncertainty, um,
+And it could be argued that consolidation of memories would be largely compromised if emotions did not provide emphasis on how memories are referenced in the first place.
+Because you need a reference pointer and that's what these emotions themselves, like these emotion weights themselves function as like a reference, a point of reference in how we rationalize our perceptions and actions based on how we anticipate.
+So in accordance to that, if we can't, if memories cannot be properly referenced on weighing decisions, then how can we optimize perception and action according to minimizing compromising fitness, right?
+That's quite an existential question.
+We weren't capable of emotions on some level, like how we carry baseline decisions that allow us to effectively anticipate what do we do next based on our environmental circumstances, right?
+Maybe that's not super intuitive, but to me that kind of is.
+So we talked a bit, we talked about system one, system two, and the rider and the elephant.
+We talked a bit about hierarchical and process, hierarchical and heterarchical processing.
+So again, hierarchy has to do with prioritizing stimulus and information.
+And hierarchy has to do with the, like how we parameterize it, how we select it out in the, in association with the, with the prioritization.
+So they're kind of coupled together, but of course, priority is what the priority is, what matters, even though we select out certain perceptions and actions in accordance to how we're optimizing our engagement.
+And hopefully I elaborated that clearly, but I could always go back to that a little bit later if there's questions about that.
+Let's see.
+Relativistic.
+I'm going to skip this section.
+Core regions.
+All right.
+All right.
+So this is, this is probably one of my favorite parts of the paper right here is talking about reality as an interface or reality is an interface.
+And this is kind of, this, this gained a lot of popularity in Don Hoffman's collaborative paper with, with Chris Fields and Chetan Prakash, especially elaborating on like the boundary, you know, we're talking about perceiving and acting and how agents are, you know, agents have a boundary within the environment they're engaging with.
+Right.
+
+But even more interesting that I make the case for is that agents themselves are existentially embedded within the environment that they're engaged in.
+And this can argue, I would say, arguably, this could extend to artificial, artificial agents that they rely on some resource leverage within the environment that they're engaging in for them to continue to exist or function.
+Right.
+And now reality as an interface, we think about this, this, you know, this phenomenal capacity for us to engage with stimuli and react to it.
+Right.
+Right.
+And, and, and this can, this can like very deeply you can really argue reality as an interface, like deep down pat, you know, past the fact of, of organisms and talking about physics and, and, and, and just how space time that the, the, the, the, the, the fabrication of space time maintains itself.
+Is that particles are interacting with each other in some capacity, even though they don't necessarily have any agency.
+But most importantly, we, as agents are constantly engaging with each other, we're constantly interacting with each other, so to speak in, in the phenomenal sense.
+So that really has to deal with reality as an interface and extensive and building on that, we talk, I mentioned axiomatic systems, sort of as the reduction.
+You know, we, we, we, we, we're, we're, we're, we're, we decompose sensations, reductively axiomatically.
+And we can relate that to David Wolpert's argument of talking about, okay, well, we, we base a lot of our, we base our reasoning on mathematics.
+Mathematics is based on axiomatic constructions of systems.
+Mathematics is based on axiomatic constructions of systems.
+Mathematics is based on axiomatic constructions of systems.
+And we have base components that allow us to construct pro, to elaborate on properties of, of systems or construct systems compositionally in a number of ways based on, like, like base base, like baseline rules.
+Like for instance, considering the rules of arithmetic, right.
+Mathematics is based on the, let's see, is there something that I should.
+We talked a bit about guiding random search.
+So this idea of abstract reasoning is rooted axiomatically because making decisions involves, involves again, trying to make sense of the sensations that we're trying to generalize.
+And we're trying to prioritize those sensations as information.
+And then we try and prioritize that information.
+To make sense of the world around us in which we're constantly interfacing and engaging with.
+So, um, now we, uh, come to an interesting dilemma of, uh, when we deal with this understanding of, of, okay, well, we're constantly engaging with the world around us and we can decompose.
+Uh, we can actually embrace our engagement, um, axiomatically so to speak.
+Uh, actually when we, uh, try to reduce sensations and, um.
+Uh, we, we try and figure, figure out how to filter those, uh, sensations into information and prioritize that information based on how we prioritize sensations as information.
+as information then we're prioritizing the information um okay well in mathematics there's
+uh this this this this hole um that is brought about uh due to current girls incompleteness
+uh theorems um not really going to get in that into that but uh what really should be um
+what what should be uh the the moral of the story is uh that uh the lack of consistency um
+in how we construct you know in the sense of how how girdle uses uh uh uh uses uh the action
+uses the axioms of arithmetic as an example and trying to uh map those axioms to how we construct
+the natural numbers um there's uh there's inconsistencies uh that he presents um in that um
+and i guess this this more so uh and you know this sort of preside provides an insight into
+uh the inconsistency in how we generalize sensations as information and then we try and generalize
+information and try and have a consistent interpretation of reality which um in the
+illusionists which in the illusionist sense uh you could argue that we never have a true representation
+of reality but um enough of us can come to an agreement on some representation on of reality based on on how
+we formally rep uh uh how we formally rep uh represent uh how we formally present models of the world around
+us so in terms of making predictions about how certain aspects of reality works how certain aspects of the
+of the environment uh like how how how do we generalize uh ways in which we can engage with the environment
+not for ourselves but to facilitate cooperation with other agents right like if there is there are means in which
+we can collectively come to some agreement that makes sense in the moment and then there's a better way
+to make sense of in the future uh more so the illusionist aspect is that we're not gonna you know we would
+be deluding ourselves if we truly thought like understood reality for what it is rather than really uh generalizing
+uh certain features of it uh certain features of it that uh pertain to optimizing fitness and our survivability
+and our engagement so ultimately we're we're exploring our environment and we're and we're just trying to uh
+uh optimize our fitness with respect to how we engage with each other and ourselves within the environment um
+and uh the uh the inconsistence the inconsistency is is the general the generalizations that we make
+that um become replaced with better models in the future so that's not necessarily uh that's not
+necessarily uh the same exact reasoning that girdle that kurt girdle makes saying well we have this inconsistency of
+mapping the uh properties of uh of arithmetic in which we can we can compose certain uh systems with
+arithmetic uh and map that to natural numbers in which we for which we assign each composition that we come
+up with using arithmetic uh as uh some um iteration within the natural numbers and then we come to some
+property that says that uh this property this proves that this prop uh this property shows that um this isn't true
+uh well uh
+yeah you you come to you come to a property uh that that that shows inconsistency
+um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um um
+that it's escaping me right now.
+But essentially, you bump into a formalization of a contradiction
+within trying to compose conditions that are consistent with the axioms of arithmetic.
+But anyway, that's kind of outside of the scope of this presentation.
+The whole point about inconsistency is that we're constantly generalizing
+how we're engaging with the world around us as agents.
+Okay, you're right.
+So basically, a girl came up with a condition that said,
+like this card proves that this condition proves that it's false.
+Otherwise, it's true.
+Right?
+So you have a condition that proves that something is not untrue.
+But it's also true that it's not true.
+And that's the contradiction in a nutshell.
+That's not exactly how he phrased it.
+But I'm like talking off the top of my head.
+But you basically arrive at a contradiction.
+And it kind of sort of relating that back to how we generalize sensations and information is
+we never have a completely consistent picture of reality,
+especially how we engage with it.
+And we're constantly reforming reformulating how we interpret our reality for what it is.
+And that itself is the illusion, not that reality isn't an illusion,
+but our understanding of reality is elusive because we're constantly generalizing
+what reality really means.
+I think we're ready to talk about preservation of viability.
+Okay.
+So this is where, and I'd spend a lot of time in this paper talking about interagent dynamics
+in terms of like how cooperation is essential for how we even got to modern civilization as humans.
+Like if we didn't cooperate well enough together, we just wouldn't have gotten, you know,
+we wouldn't have Zoom calls.
+We wouldn't have gotten to where we are if there was not some sufficient means in which we did.
+We cooperated with each other effectively as sufficiently large groups of humans.
+And this goes back to this preservation of viability, which really has to do with how we consider trade-offs
+and engaging with our environment while also we consider how we engage with each other and recognize
+and have this awareness of our own degrees of autonomy with respect to other humans as agents.
+But we aren't the only agents that exist within the environment.
+There are other agents that aren't humans that don't have the degrees of autonomy that humans have,
+and we ought to acknowledge their existence as well and try to acknowledge the trade-offs
+and optimizing how we engage with the environment and other agents that aren't humans that I kind of call lesser agents.
+That they don't necessarily have the same degree of autonomy to engage with the environment around them.
+And I'm going to get into that in a moment.
+But really, there's this idea of this optimal ebb and flow of guiding our priors,
+which is not limited to individual fitness of us individually, but also how we engage with each other.
+So there's this idea of interagent coordination that ought to be facilitated.
+And we can think about this in a diplomatic sense of like how we engage with each other.
+And ultimately, this increases the well-being of each other and ourselves and our overall odds of survival.
+And acknowledging that the dynamics of modern society itself,
+where we fluidly communicate with each other through evolution of language, technology and bartering would not be possible
+if we did not rely so much on how we coordinate and cooperate with each other.
+Because that's critical to just how we got to where we are as human civilization.
+And engagement with each other not only increases our chances to optimize fitness,
+but it enables our capacity to further develop our awareness and means of engaging with our environment
+in a way that can become more optimized over time at scale.
+Right? Because more and more of us exist.
+We have to think about scaling problems with scaling and how we collectively engage with each other.
+And consider perception and actions of others, not just our own perception and actions and how we anticipate,
+but as collectively how we all coordinate and cooperate in such a fashion to facilitate that.
+So there's this idea of co-inhabitants and it's not just humans that exist on this planet,
+but there's other organisms that do not have the degree of autonomy that we of agency we have,
+but they serve functional role within the ecosystem for us to exist.
+So I'm talking about all kinds of life, like plant life, you know, not just animals, but plants, fungi, molds, like insects.
+If it wasn't for, you know, the existence of pollinators and all of these different species of organisms,
+if they didn't exist, we wouldn't exist.
+So we have to take, we have to acknowledge that, you know, it, you know, this, that we co-inhabit.
+And actually some literature that came out recently comes up with this term co-evolution that we co-evolved with the,
+with, I don't use the term biosphere in my work other than the abstract,
+but we co-evolved with all these species that we co-inhabit the environment with.
+And we're all embedded.
+We're all essentially embedded within this, this ecosystem that we co-inhabit.
+And so I think there should be more awareness brought to that front in terms with how, you know, there, there's so much,
+there's such an issue with human conflict and just, you know, what I see as like this, this, this bias of not really recognizing at scale that we ought to do more to, to, to work together and symbiotically co-exist with our environment.
+We, we, we, we ought to hold ourselves more accountable as a species because we have this, we have this level, we have such degrees of agency and awareness that,
+that gives us the, that allows us, enables the potential for how we can cooperate and where that can lead us.
+I mean, it got modern, it got humans to modern civilization, which I think is absolutely phenomenal.
+And we're, we're going to get a little bit into that.
+But before I get into that, I want to talk a little bit about uncertainty.
+Um, so this kind of goes back to, uh, leveraging guided random search, um, where, um, there are moments with regarding to calibrating our perceptions with regard to next actions that we take in accordance to the past and present moment.
+Uh, what could unravel in the future regarding optimizing our priors, especially when we're facing moments of uncertainty, right?
+So, um, this hap, this, this has to do with complications that happen with regulating, uh, system two dynamics.
+Um, and, uh, this, uh, when regards to non-triviality, non-linear evaluations of decisions, um, and, uh, this can complicate how we reason about the world around us and regulate our emotions and, um, uh, and how we can persistently act effectively in a re in a way that's reinforcing our emotions.
+In a re in a way that's reinforcing our fitness.
+So, uh, uh, persistent uncertainty, uh, uh, uh, persistent uncertainty with respect to conducting the capacity to perceive and act effectively can hinder the efficiency.
+Um, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in, in
+and figure out ways to how we can calibrate our perceptions
+and our actions with respect to optimizing our priors.
+And that has to do with how we recall, like how we were engaging
+with our environment in the past, right?
+We talk a lot about like anticipation with perspective, perceiving and acting.
+And novelty really, you know, it's not just the improvisation,
+it's kind of being clever and trying to experiment with ways to optimize fitness
+in the face of uncertainty.
+And this can be leveraged in the short term as well as the long term,
+where novelty can be leveraged by considering how we recall experiences
+in dealing with circumstances that are either out of the ordinary
+or just by happenstance making a recollection from some point in the distant
+or not so distant past relative to perception that may aid in improvising
+against optimizing priors.
+And we can consider this an aha moment, like, oh, I figured out what to do.
+So in terms of novelty exploration and, you know, finding yourself dealing with uncertainty,
+that's one aspect of handling uncertainty.
+Another aspect of uncertainty is just be as unfamiliarity, like an agent being unfamiliar
+with circumstances, they're just going to be have this sense of unfamiliarity of what to do.
+And maybe other agents could help facilitate that, that have experience in dealing with those
+circumstances that, that in accordance can help, you know, with cooperation can help the agent optimize
+those moments of uncertainty by becoming familiar or at least developing that familiarity themselves,
+which might be prompted by novelty exploration.
+Now, down here, so there's, there's, there's a couple, there's two primary modes.
+There's two, there's a, how do I say this?
+Let's see.
+Okay.
+So,
+on the one hand, there can be a means in which there's problems interpreting what we can do.
+And from a perceptive point of view, that deals with interpretation.
+Uh,
+and this is, this has to do with, um, now when we consider problems with uncertainty, this is sort of,
+kind of like the halting, I would, I kind of call it the halting problem of agency where an agent doesn't quite know what to do until they figure it out or maybe they don't figure it out.
+And, you know, that kind of dooms the agent.
+But, um, so on, from an interpretive point of view,
+uh,
+we can consider that, uh,
+there's problems with considering what decision to make in terms of, uh,
+uh,
+the determinable,
+the determinable sequence of actions in line with an agent's capacity to perceive their surroundings,
+considering contextual variation of intrinsic and extrinsic value.
+Um,
+so that has to do with interpretation being, uh,
+the problem of, uh, uh, uh,
+of, uh,
+aligning that, that aligns with uncertainty that there's,
+the agent is having a problem interpreting what to do.
+Uh,
+on the other hand,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+on the other hand,
+uh,
+there is this,
+um,
+um,
+so interpretation has to do with problems with the agent perceptively reflecting on
+their priors moment by moment to understand what they ought to do to resolve
+problems with optimizing fitness.
+On the other hand,
+there's problems with functional capacities of dealing with uncertainty where the actions
+determine and where the actions determine and,
+and execute upon moment by moment that fall in line with perception in alignment with priors.
+Um,
+there,
+that there's a problem with,
+um,
+there's a problem with actions being selectively and sequentially carried out with regard to
+context one by moment.
+So on the one hand,
+uh,
+there,
+uh,
+uncertainty could be a problem with inter with perception.
+On the other hand,
+uh,
+uh,
+uncertainty can also be a problem of functional capacities in terms of like,
+not just perception,
+perception,
+but also like how the agent ought to act,
+uh,
+with respect to the,
+the circumstances they're dealing with.
+Uh,
+and selectively carrying out certain sequences of actions moment by moment where they're kind
+of stuck trying to,
+trying to carry out,
+uh,
+uh,
+the action as opposed to,
+uh,
+making a decision on,
+on,
+on what,
+how to interpret the circumstances they're in.
+On the other hand,
+um,
+you know,
+they also have problems with like acting on,
+on the circumstances they're in as well.
+Uh,
+what else should I,
+uh,
+is there something interesting to say on this?
+Uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+
+uh,
+uh,
+that this is like the halting problem in terms of,
+uh,
+um,
+you know,
+um,
+having difficulty perceiving or acting,
+uh,
+for the agent that compromises their fitness.
+Um,
+the traditional sense of the halting problem is when,
+uh,
+there's problems where you condition,
+uh,
+an algorithm,
+uh,
+on certain inputs and,
+and,
+um,
+you don't feed any information for the,
+uh,
+to a system for an algorithm to evaluate it.
+So it,
+it just waits,
+uh,
+for inputs to come in or,
+or rather it just hangs there.
+And it does,
+and it,
+you know,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+uh,
+the halting problem as I condone it to be is problem with dealing with uncertainty
+where the agent just has problems perceiving,
+uh,
+understanding,
+uh,
+you know,
+developing an understanding of,
+uh,
+sense of the circumstances they're in,
+uh,
+in an interpretive point of view.
+On the other hand,
+the agent also can have difficulty,
+uh,
+with,
+under,
+uh,
+with,
+uh,
+action,
+like,
+uh,
+with,
+with,
+with,
+with,
+ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+where the agent is constrained to explore novelty or novelty exploration, but also that the agent might just not be familiar with what to do and they just need to figure out what to do.
+And that might not necessarily be novel for all the agents that have dealt with that circumstance, but it could be just novel for the agent dealing with that circumstance.
+And on the one hand, if they cooperate with another agent that understands what to do and that agent communicates what to do and that resolves that misunderstanding or maybe sort of a novelty exploration sense, the agent figures out themselves.
+So I guess you can call it a novelty exploration case in that sense.
+And this has to do with, you know, these moments of uncertainty deal with error proneness and compromise of system two dynamics, right?
+So let's see.
+And uncertainty itself really arises from moments of ambiguity where information does not present enough clarity for the agent to perceive and act effectively in alignment with priors to optimize fitness.
+And I do kind of compare how that differs between computers, like how, you know, computing systems that we're familiar with is different.
+I'm not going to get too into that.
+So unlike, let's see.
+Okay.
+Perceptions, actions, and alignment of priors become vulnerable to risk-taking behavior with respect to facing ambiguity as behavioral dynamics become a gamble on fitness of the agent in question.
+Risk-taking behavior, however, is not necessarily maladaptive in its nature, but is prone to compromise the agent's fitness in which the risks taken may likely become maladaptive.
+Given complications that happen with regulating rationale capacities and emotion throughput under moments of ambiguity, most especially for us human organisms become vulnerable to experiencing what is commonly known as anxiety.
+So now I'm going to talk real quick about anxiety as a complication of ambiguity.
+And that really has to be, that's really worrying about what's going to happen in the future, largely.
+And being prepared to deal with those circumstances.
+So when an agent is in this dilemma of what it can do regarding future circumstances, then it's dealing with what I like to call anxiety.
+That would be some anxiety.
+Let's see here.
+Anxiety then would be some level of behavioral fixation which permeates due to lingering uncertainty in calibrating perceptions and conducting appropriate next actions.
+This permeation ultimately presents itself as layers of thought-based as well as compulsion-based complexes that complicate perception with respect to generalizing next actions and aligning priors.
+Given that anxiety is largely psychological, the degrees of anxiety permeation are primarily due to nurture dynamics where we consider constraints with regard to environmental exposure that can hinder adaptation, most especially with regard to trauma response.
+And so hypervigilance is also complicates anxiety or rather oversensitivity in processing stimuli as well as overreactivity to responding to stimuli, which can be marginally rooted from physiological constraints.
+Hypervigilance can also arise due to behavioral fixations arising from complications and nurture dynamics.
+More concisely, hypervigilance presents itself as complex behaviors that enable our human organism to act on alert with regard to optimizing our perceptions, actions, and aligning priors.
+Moments of hypervigilance can be useful when circumstances align well with fitness.
+However, hypervigilance may pose to be maladaptive when it becomes compromised, most especially due to problems with upbringing or overexposure to certain environmental stimuli triggers.
+So now we're going to kind of get into hyperarousal as opposed to hypoarousal.
+So sensory processing complications that pose problems in calibrating perception are largely due to moments of noise filtering from generalizations of sensations being over or undercompensated.
+So this overcompensation has to do with hypervigilance, while this undercompensation has to do with hypovigilance or hyperarousal as opposed to hypoarousal.
+And overcompensation of sensory processing should, however, not be confused to be equivalent to some form of anxious behavior, but rather that moments of hyperarousal potentially complicates the permeation of how anxiety takes form and persists.
+And all right.
+Risk-taking behavior with respect to uncertainty.
+So marginal risk is always associated with metabolic load demands and cognitive load demands.
+There's always some risk associated with just engaging with environment and, you know, trying to prioritize resources and dealing with obstacles that, you know, inevitably comes, you know, even risks that we're unaware of, that we're unconscious of.
+And also there's, you know, just given problems with cellular senescence and aging and becoming more suboptimally fit over time and, you know, also presents risks inevitably, right?
+So here's an interesting bit I want to bring up regarding risk-taking.
+There's a fine line between risk-taking behavior associated with uncertainty and risk-taking behavior due to intentionally maladaptive behavior.
+Given that we associate risk-taking with perceptions and action-based gambling on fitness, cognitive biasing is involved with evaluating these gambles.
+Fundamentally speaking, unless there is intention behind a particular agent deceiving itself, we consider such behavior to be risk associated with acting in accordance to uncertainty with respect to the agent in question.
+Clearly, risk is associated with an agent's intentions, be it self-deceptive or otherwise, if there is marginal compromise to be considered in the case of optimizing fitness in some fashion.
+Regardless, risk is inevitable to the well-being of agents as marginal compromise to fitness not only is pertinent based on executive functioning dynamics in System 1 and System 2 processes, but even metabolic load processing dynamics from bottom up that are not necessarily directly associated with executive functioning from the top down.
+And this is the second to last section I have to go over.
+Reinforcement learning.
+See what I can pick out of here.
+This is really getting more really into reinforcement learning with regard to agency.
+Um,
+So, um,
+deterrence, uh, is something I realized didn't really talk about deterrence.
+At least, uh, deterrent mechanisms.
+So,
+this is interesting.
+Uh, given the, the whole point of reinforcement learning behavior is to leverage perceptions, actions, and priors to optimize fitness,
+uh,
+a rather interesting expectation one ought to conjure is that reinforcement has much to do with deterrence from perceiving, acting, and anticipating maladaptively.
+Um,
+deterrence, however, ultimately is not the goal of reinforcement learning based behavior, but rather some reinforcement learning based behaviors provide mechanism that mechanisms of deterrence, but not all.
+ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+to align perceptions and actions with regard to precautionary constraints that alert the aging
+question with regard to priors effectively demonstrates a mode of deterrence.
+Okay, so here's something interesting about deterrence.
+And then I might go a little bit over language and how that's important to how we engage with each other
+in a cooperative fashion that got us as humans to where we are. But so just want to close off deterrence
+here. Let's see. Okay.
+Yeah, I'm going to try and wrap up this whole section. Right. Certain reinforcement learning
+based behaviors may not have precautionary constraints aligned to them although may momentarily are
+leveraged fitness due to opportunities in which the agent in question does not incur fitness
+penalties with regard to assessing metabolic and functional risk that compromise overall integrity.
+Additionally, while agents may be aware of modes of deterrence, they may be intentionally oblivious to
+them. With regard to agents being intentionally self-deceptive towards modes of deterrence,
+the purpose of doing so involves fitness trade-offs, which in large part not only encourages marginal
+risk associated with fitness penalties over time, but also tends to be optimized with regard to
+anticipating a trade-off in which the agent in question is convinced will pay off in the short
+term or long term. Where things go awry with such self-deception and other means of self-deception
+varies with regard to the magnitude of maladaptive behavior being enacted by the agent in question.
+A rather paradoxical remark can be made regarding deterrence. Perhaps there are degrees of
+deterrence associated with reinforcement learning based behaviors as associated with fundamental
+the fundamental alignment of perceptions actions and priors. Such fundamental alignment is variable in
+terms of navigating our environment with respect to what we consider a fitness landscape of associated
+risks and precautionary constraints to consider. These associated risks and precautionary
+constraints enabled an agent in question to leverage optimizing fitness and attentively
+recognizing obstacles and aspects of the environment to be avoidant of in order to furthermore avoid
+incurred fitness penalties that could that would be otherwise obvious to the agent in question.
+So the rest of this section talks about interagent cooperation based dynamics. And then the other section that
+I completed goes over maladaptive learning behavior. So I talked a bit about cooperation of agents and how that's important.
+So what separates us as humans from any other agents that exists is just our capacity to to utilize and develop language to a point where we can take information
+and and and have what we can take that information and turn it into generalized knowledge.
+Usually using language to we can take language and information and make associations that stay consistent over a
+a prolonged period of time with how we can take a prolonged period of time with how we as humans engage with each other and and are able to leverage the resources and constraints of our environment.
+And and that impacts like how we develop social structures and just this this this capacity of cohesiveness in how we utilize language to augment our capacity.
+to better, more optimally engage with our environment to better, more optimally engage with our environment, and furthermore,
+to make generalizations of information and generalize knowledge
+just to get to it um the the capacity to take an incorporated sophisticated length uh structured
+language system and map that to concepts uh using language um becomes generalized knowledge um and
+this is this is really what separates us from other agents and how we got to where we are um
+and so we can think of like mimetic adaptation capacities emphasized through uh celia hay's
+work on imitation learning and metacognition dynamics and more interestingly we can also
+uh consider uh francois chollet's uh conceptualization of intelligence generalization
+on how we make generalizations about our perceptions and actions and anticipate our environment but in
+so in in a collective fashion utilizing this capacity of of structured of of language and how we're able to
+like furthermore augment language as we utilize it and and and incorporate uh mappings to concepts
+that become generalized knowledge because that knowledge enables us to to engage with each other
+in a way that optimizes technology and tool use and in our capacity to engage with each other and make
+abstract uh conceptualizations of the world around us and uh i could get really into that um but i spent a
+lot of time writing about that but uh that that uh that that's really what makes us uniquely human now okay
+maladaptive learning now has to do with error prone habits and now getting to um
+um the real issue with maladaptive learning is what i like to call um
+uh well i don't know how many of you are familiar with anon vadya's work uh anon vadya uh brings up this
+interesting concept known as cognitive strain so we can think of like not just like you know if you
+think about physics and forces and how like applying stress like uh let's say i take a ball and i throw
+it at a wall and if i throw it throw the ball at a wall at the wall enough times it creates a dent in the
+wall right so likewise cognitive strain um we can consider that like the amplitude you know the
+kind of strain could be uh the problematic association of like what really makes maladaptive learning an
+issue um that um this prolonged exposure to stressors that compromises fitness that compromises the
+capacity for agents to have a a consistent world model and to um leverage their capacity to perceive act
+and anticipate in a way that's intuitive and and unfortunately uh like excessive cognitive overload
+uh compromises this so um this goes into like you know uh you know okay how do we facilitate that
+well thinking about basic needs and what have you and due to lack of time i'm not going to get really into
+that but what i will say um about cognitive strain is like you know if if you over if the agent is
+overloaded with with with stressors like prolonged stressors right then that contributes to to trauma
+and we can think of trauma as like being the result of this prolonged exposure
+to to stressors and and that's associated with the amplification and magnification
+of of cognitive strain um i would get more into um
+
+and into and into uh into addiction and and all that stuff and and dealing with addiction
+but I think that's more or less what I've thrown together so far in the body of my work.
+I do, however, plan on talking about free will dynamics.
+So to summarize what I feel about what makes free will relevant,
+my point on free will is probably more on the compatibilist point of view
+where we consider degrees of freedom and willpower to align our perceptions, actions, and priors
+with regard to constraints in our environment that enables us to make choices reflective
+of how we deal with existing circumstances and how those circumstances align in the future.
+And that moments of non-determinism really become resolved when choices reduce or evaluate
+to how certain decisions play out and certain choices align.
+So moments of non-determinism become resolved into deterministic actions over time
+based on how choices play out reflected to present moments of circumstances
+which agents deal with that carry over and align with future scenarios that the agent finds themselves in.
+So that was another, that's the last main, that has to do with the section on free will.
+That's the last main section.
+And then there's the conclusion section of the paper.
+Of course, I also have a modeling section.
+I didn't expect to go over models today, but I kind of elaborated my models would go over.
+But I think that more or less talks about, that more or less covers, you know, there's a lot more I could talk about,
+but more or less covers the work that I've been putting into this specific Goji paper of habits
+and adaptive learning dynamics with respect to agents, agential systems.
+Yeah, I know I can go on and on and thanks for that.
+I just noticed that message in the chat not terribly long ago.
+Yeah.
+Well, thank you, Jesse.
+Let us take a deep breath.
+Okay.
+Yeah.
+You covered a lot of territory.
+I'll just read two questions from the live chat just to note them.
+And then I'll just ask a final question.
+And then you can give a few minute response and then we'll close it.
+Okay.
+So Michael Lennon wrote,
+how would he contrast the modification of individual habits versus habits between paired individuals versus habits of clusters of individuals?
+And Michael's second question was, how might he describe how a moment of novel individual insight becomes collective behavior change?
+How would he do that?
+But just like to close it all out overall, where are you going to take this work and how do you intend to proceed with it?
+Right.
+So reflecting on Michael's questions.
+Let's address those another time.
+I know that you could go into a lot of information.
+Let's just go right to the next steps.
+Yeah.
+Yeah.
+So the next steps is, so this current paper is really an overview of addressing what are habits, what do habits have to do with adaptive learning, and how that ties with agential systems.
+And in the conclusion section, I'm going to bring about what's going to happen with the next couple series of papers.
+But really, I was originally going to go into the interventionary approaches geared towards adaptive learning.
+But so the next steps I want to do with this work is go into the interventionary approaches towards adaptive learning.
+So, okay, how can we use technology?
+How can we, are there different modes in which we can better engage with information?
+What about just how we engage the world around us?
+Like how, like the food we eat, like how do we, like are there ways that we regulate food intake?
+How about better understanding reasoning and emotion?
+Like, like, is there some capacity in which we can better, how we can, how we can better reason with our emotions to have more effective reasoning capacities to deal with circumstances, largely dealing with non-triviality.
+So those are the, those are the four next papers that I consider the four paradigms.
+So the first paradigm has to do with technological interventions.
+Like how can we utilize technology to better facilitate how we engage with the world around us and better benefit not only our own agency, but each other's agency.
+And two would be, and two would be, uh, uh, mode, uh, paradigm two has to do with, okay, how can we better engage with certain objects in the world?
+Like, like using tactile tools, uh, how can we use, uh, different objects to facilitate how we better engage with the world around us?
+Uh, three, uh, three dieting dynamics.
+How, how can we leverage metabolism, um, the most optimal fashion to, to, to, to, to leverage agency and, and, uh, for, of course, uh, uh, reasoning, like, is there some means in which we can better facilitate how we, uh, uh, deal with emotion, uh, affective processing and how that can better be, uh, how reasoning can be better, uh,
+leveraged with better understanding of feeling with, with leveraging affective processing.
+Um, so that, that's the next steps for me, and those are going to be individual papers.
+Although I do have a, uh, I do plan on talking about the different brain regions.
+So like a neuroscientific, uh, more of a neuropsychological, uh, approach in terms of, and going, talking about the different brain regions that are associated with, uh, habits and adaptive learning.
+Um, and agency, but that would be a fifth paper.
+Um, okay.
+Last question.
+How could people contact you or what would you look to ask people for or how they could get involved?
+Um, uh, I, uh, I do have like a business email, but what I, I'll, I'll, I'll, I'll have like an email where that, uh, I'll provide a different email, uh, that I can.
+Have people reach out to me, uh, by it's, it's a Google mail account.
+Um, so, uh, reach out to me, um, and, uh, hopefully, um, uh, you know, I, I would love to try and collaborate with the right parties.
+Um, and see where this work can go.
+I, I mean, I have a lot of, uh, confidence in terms of, especially with, uh, the system model that I'm designing in terms of technological interventions.
+I would love to talk to people about that.
+Uh, cause that's the next main step I'm going with is okay.
+Well, there's a problem with how we interface technology, like with social media and like just a lot of platform, like just a lot of basic technologies right now that.
+Really compromises how we engage with you in the, with the world.
+Like it's addictive, like, like social media is addictive.
+Like people play mobile games on their phone.
+Right.
+Right.
+And that people can waste hours doing all that stuff.
+So how can we better develop systems that compliment rather than compromise our behavior?
+Um, I think that's really important to figure out.
+Um, and I would love to talk to more people about that.
+Um, awesome.
+Well, you covered a ton of scope.
+I hope that people who are studying active inference see a lot of the connections.
+In the terms and topics and systems and good luck in your learning and research.
+Thank you.
+I appreciate it.
+Peace, Jesse.
+Bye.
+Bye.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+....

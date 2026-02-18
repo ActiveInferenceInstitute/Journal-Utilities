@@ -1,0 +1,3512 @@
+---
+title: "ActInf GuestStream 090.1 ~ Benjamin Nelson, "Mechanics of the Mind""
+category: "GuestStream"
+series: "GuestStream_090"
+episode: "1"
+speakers:
+  - "Benjamin Nelson"
+duration: "1:26:03"
+url: "https://www.youtube.com/watch?v=8mGBPhgYGCo"
+views: 258
+exported_at: "2026-02-18T22:37:37.713206+00:00"
+format: markdown
+---
+
+# ActInf GuestStream 090.1 ~ Benjamin Nelson, "Mechanics of the Mind"
+
+Hello and welcome. It's October 31st, 2024. We're in ActInf Guest Stream number 90.1,
+and Benjamin Nelson will be presenting and discussing Mechanics of the Mind. So,
+Benjamin, thank you. See you. Good morning. Today, I would like to discuss the development and
+integration of various cognitive mechanisms within a unified framework I have been developing.
+I am currently competing for the in the art competition, and I'd like to talk about the
+framework I've designed to emulate human cognitive functions and enable advanced decision-making
+most importantly, abstract reasoning in computational systems. I'd like to start,
+of course, by introducing several mechanisms I've designed, each contributing uniquely to the
+system's overall functionality in pre-testing the combination of these mechanisms, which I won't
+be able to get into all of them today, unfortunately, because I've been competing for the archives,
+and it's incredibly challenging and transformative. It's amazing. But the combination of these mechanisms
+have, in pre-testing, so far scored consistently above 85%, which is really encouraging, and I will be
+submitting here shortly. So, the mechanisms we see I have listed here is attentional selection, memory encoding
+and retrieval reinforcement learning, distress dynamics, which is much like emotions in the system,
+and somatic stress, those underlying stresses that kind of fuel those emotions, right? The epsilon control,
+prioritization, optimization, iteration, belief dynamics and adaptation, and very importantly, Robert Ordon's requirement equation.
+It's the requirement for cognition in an equation here reshaped to create like a representational efficiency as a subsystem that's woven throughout the cognitive computing framework.
+Within this framework, and for the purpose of this presentation, I have categorized these functions into somatic and autonomic processes, and I want to talk about briefly, like, kind of what that means. So, one of my favorite thing about active inference, I would say the people, or the amazing amount of democracy,
+the standardized education, or the standardized education, or the innovation, or, I mean, there's just so much, right? But one of my favorite, favorite things is the ability to take these ideas using the high road and low road to the active inference, and pull them out of the, out of just nothing, out of the ethos, out of our thoughts and our conversations, and turn them into something that has substances, tangible.
+And, and, in doing so, I've, I've come across some really amazing things I'm excited about in the papers that I'll be writing later this year. So, the attentional selection, like memory encoding and retrieval, reinforcement learning, belief adaptation, prioritization, optimization, iteration, these conscious processes are reflective of,
+cognitive functions, but there's, there isn't a one-to-one relationship between these things. These are representations, these are confabulations of mine, and how I see these processes, where it's more important for the outcome to be the same, as opposed to the processes to exactly mirror biological functions.
+So, we also have subconscious operations in the system, such as distress, and somatic stress, epsilon control, the, the, it's amazing in these processes, and many of them do not work unless there is entropy.
+
+So, we also have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have to, we have
+framework resource allocation so autonomic functions will manage those baseline operations
+as I said the feedback loops those autonomic functions provide inputs to the somatic functions
+for example the distress dynamics which I'll go into more here in a little bit which for instance
+could influence attention and many other things the well I'll get to that in a second I get ahead
+of myself so the as we see here the we require active processing and deliberate control these
+functions involve conscious decision-making processes where the system actively selects
+stores updates and refines information based on current goals and evidence autonomic functions
+operate without the need for a conscious intervention distress dynamics as and these other mechanisms
+we discussed fall into this category they manage the system's internal states and beliefs based on
+ongoing input so for instance in the Ark price the the tasks the grid tasks that are presented and the
+purpose being to ensure stability and adaptability in response to changing conditions which is necessary
+and kind of an intrinsic property of these dynamic states so one of my favorite things that I have learned
+through this is about the role of Markov arrays so the Markov matrix that is modeling the probabilistic effects of stress
+states states states states states states states states states states states states states states states
+states states states states states states states states states states states states states states states states
+in this very simple illustration here,
+we can see them as
+unique and separate layers
+that are passing values up and down
+if we were to stack them, passing values up and down.
+And the reporting from those rows, columns
+informs the, for instance, the Epsilon control
+just stress-chased belief dynamics,
+the Warden's requirement equation, the subsystem.
+They're to take a massive amount of data,
+tens of thousands of arguments,
+methods and calls and send them
+in a very non-linear fashion through the system
+to dynamically influence every part of the system simultaneously.
+So that the entirety of the system is in play
+and acting simultaneously.
+And we'll talk a little bit more
+about how that works momentarily.
+Here, when we look at this is an older illustration,
+so I apologize,
+but it displays something that I really,
+that I think is really kind of cool,
+how the cognitive landscape in a cognitive computing framework
+can be visualized.
+So when we see these,
+like our internal and external model
+and the information is coming in,
+then these Markov arrays are passing information back and forth.
+They're updating those states and predicting those state transitions.
+And through that,
+like for instance,
+if we include memory encoding and retrieval
+and we were to treat
+these spaces on those grids
+in the same way as nodes,
+like a file folder with compressed data,
+there are groupings of those data over time
+through iterative processes
+that strengthen those beliefs,
+for instance, like prior beliefs.
+So as there is more and more confirmation evidence,
+those nodes for all intents and purposes
+are assigned higher order values
+and those higher order values
+are passed through that system.
+And yeah,
+I think it's really exciting to balance
+what would be a internal model and an external model.
+The predictive capacity,
+I'm really excited about researching this more too,
+because with one or two,
+the probabilistic effects
+and on like cognitive function state transitions,
+it can be inaccurate,
+which is okay.
+It's not meant to be perfect in that way.
+But when you put many of them together,
+that the accuracy of those predictions
+and the temporal element to those predictions
+and that accuracy increases exponentially.
+So I'm excited about exploring that more, certainly.
+So
+these components that are in this system
+that are communicating and carrying information
+or how these Markov arrays are carrying information
+non-linearly through the system
+from these cognitive mechanisms
+and all their components
+operate synchronously and asynchronously.
+So
+it's really, really fascinating.
+There's this,
+there's just a continuous stream of
+simultaneous data
+flowing throughout the entire system.
+The arrays effectively serve as like conduits
+for data flow within the system
+can interconnecting everything
+and allowing everything to operate independently
+and meaningfully,
+which is controlled through the Epsilon control.
+So
+these
+probabilistic,
+like the arrays handling the probabilistic transitions
+between different cognitive states
+effectively ensure the entire system is dynamic
+and we get real-time information processing.
+It's really, really fascinating.
+With the inclusion of Robert Warren's requirement equation,
+the,
+that
+the efficiency,
+the amount of energy required
+for the,
+the amount of computation that occurs is
+significantly reduced.
+It's amazing.
+So
+central to the non-linear communication really is like
+a dynamic state transition model,
+like
+model probabilities of moving between states
+based on internal and external factors
+and they're,
+you know,
+the,
+in data propagation
+where we're facilitating data flow between these mechanisms.
+So
+they enable these complex interactions,
+ensuring the changes in one mechanism appropriately affect another.
+So
+the
+next slide here,
+we kind of see how that works a little bit,
+where
+the distress calculation,
+which is,
+by the way,
+so
+this is one of my favorite things,
+right?
+So
+when coding in Python,
+which I'm not a software engineer,
+or an expert by any means,
+and
+competing in the arc has been one of the most challenging experiences in my life.
+It's really,
+really fun.
+The,
+the,
+the,
+these,
+these equations,
+uh,
+translate,
+uh,
+really,
+really well into Python and give a framework for the ideas that,
+um,
+I have about the way that,
+uh,
+emotions would be represented in computational systems,
+the way that,
+uh,
+evolutionary imperatives would be represented in a system,
+way that,
+um,
+uh,
+subconscious processes would be represented in the system.
+So,
+uh,
+you can,
+the,
+there's like kind of like an unlimited amount of creativity,
+the,
+with Python as,
+uh,
+your medium,
+you can almost do anything.
+It seems seemingly do anything.
+It's,
+it's really,
+really,
+really incredible.
+And,
+um,
+what,
+uh,
+uh,
+an interesting and bizarre form of self-expression.
+I never knew,
+uh,
+that I would engage in.
+It's just absolutely wonderful.
+So we see that the distress calculation is regulating the distress.
+It's updating distress states.
+We see,
+uh,
+coefficients at play.
+These,
+uh,
+individual arguments representative of things like the derivative of time,
+right?
+Or contextual factors,
+um,
+external stimulus.
+Um,
+and those are updated.
+There is,
+uh,
+the somatic stress system that is understanding the,
+the role,
+uh,
+the impact of emotions in guiding the system through,
+um,
+by adjusting things like the cognitive load,
+time pressure,
+for instance,
+when you're taking a test,
+this is specifically for the arc prize,
+which has a time limit.
+So,
+um,
+there's focus intensity for like intentional,
+uh,
+intentional selection when focusing on,
+uh,
+grid tasks and prioritizing what part of that grid or feature of that grid is
+important.
+It needs to be understood.
+Um,
+having errors and error feedback,
+uh,
+very important,
+right?
+Uh,
+how resources are distributed through the system and something I'm really excited to
+talk about later on,
+which demonstrates,
+I think,
+um,
+kind of the flexibility of this in terms of how kind of fun and silly it can be
+and simple.
+And then of course,
+uh,
+we'll talk about how incredibly brilliant and powerful it can be,
+um,
+uh,
+as seen in,
+uh,
+the ordinary subsystem.
+Um,
+the Markov array that you see in the middle,
+that's how I've made them in the system.
+And you see,
+um,
+different arguments feeding into that array with,
+uh,
+predetermined values.
+Those values,
+uh,
+can be tuned,
+uh,
+which is really amazing.
+It's,
+uh,
+the,
+the fine tuning,
+the system is one of the funnest things that,
+uh,
+I do because when the,
+when the nature of the,
+the project changes or the application is different,
+the system can very easily be fine tuned to best meet the,
+uh,
+requirements for that,
+uh,
+task or object or,
+you know,
+undertaking.
+So,
+um,
+with Robert Wharton's requirement equation in the system,
+it maximizes the efficiency of those processes,
+um,
+greatly.
+So,
+um,
+before I move on to that here,
+I wanted to,
+um,
+talk a little bit about Robert Wharton's requirement equation,
+uh,
+which is designed,
+uh,
+in this way to maximize the overall fitness by guiding decision making.
+So,
+um,
+for the,
+uh,
+purpose of the arc test.
+So in a fitness evaluation,
+it effectively assesses outcomes of actions,
+incredibly flexible,
+uh,
+decision guidance,
+recommending actions that maximize fitness.
+And it integrates with other systems such as prioritization,
+optimization,
+and iteration to,
+uh,
+provide optimization criteria,
+um,
+within the Markov array.
+It,
+um,
+adds that,
+uh,
+um,
+dynamic compute expected,
+uh,
+fitness values,
+which,
+uh,
+influence decisions across the,
+across the entirety of the system.
+um,
+the,
+uh,
+let's see here.
+I want to talk about,
+um,
+something really kind of fun because the,
+uh,
+before we talk about some things,
+uh,
+you know,
+in terms of like,
+uh,
+uh,
+why these things are important and what they could potentially mean,
+uh,
+in terms,
+uh,
+of our future,
+right.
+And how these,
+um,
+new intelligence systems,
+uh,
+emerge.
+So the,
+I actually worked on this with a friend of mine who's a carpenter.
+He's,
+uh,
+he makes cabinets and,
+uh,
+I,
+uh,
+I've known him for years.
+He was my boss when I was,
+uh,
+uh,
+just a kid.
+He was kind of my first mentor in a way.
+And he's still a close and,
+and dear friend of mine,
+uh,
+30 years later.
+And,
+uh,
+we were talking about how do we,
+how do we understand,
+um,
+like,
+how would we approach decision-making and how would,
+what are some things that in decision-making that we would think valuable?
+And for me,
+it was like kind of my confidence in whether I'm right or wrong.
+I can't really know.
+Um,
+especially if it's something that I've never seen before.
+And that's kind of the basis of,
+uh,
+uh,
+Francois Cholet's,
+uh,
+ARC prize.
+And the ARC test is that,
+uh,
+he wrote a book called on the measure of intelligence.
+And in that book,
+the,
+he talks about how the,
+the way to really solve like a problem,
+to be an abstract problem solver is to approach the problem,
+uh,
+with no knowledge of a solution,
+no knowledge of the problem and to be able to solve it.
+So in that way,
+uh,
+for me,
+it's a,
+the,
+the only way I could kind of finalize my decision is in terms of my confidence
+that I'm right or wrong.
+And when we look at turning that into a computational framework is really pretty simple.
+As you can see,
+it's,
+um,
+uh,
+you know,
+am I right?
+Am I wrong?
+What's my initial confidence?
+Right.
+Is probably going to be relatively low,
+but as I,
+as I move through the task and I feel like I'm doing well and my emotions are calm.
+And,
+um,
+I,
+you know,
+like,
+uh,
+my beliefs about this based on what I've done so far are confirming that the things look right.
+Um,
+my vision,
+uh,
+is telling me that it looks good and that,
+uh,
+that's what it's supposed to look like.
+And all of those things through,
+uh,
+those Markov arrays are feeding this confidence and increasing or decreasing these values.
+And that initial confidence,
+uh,
+effectively goes to the point where,
+uh,
+you're so confident in the decision that you just go,
+Hey,
+I've solved the problem.
+Right.
+So the model says,
+Hey,
+I've hit,
+uh,
+you know,
+0.996.
+I'm convinced that this is okay.
+So I initially thought that,
+uh,
+the confidence,
+uh,
+if it was right,
+it would be high.
+And if it was wrong,
+it would be low.
+Uh,
+um,
+that is not necessarily the case at all.
+In fact,
+the confidence that,
+uh,
+a confidence or an understanding that you may be wrong should just be,
+uh,
+slightly less than being right.
+And,
+um,
+uh,
+what happens,
+uh,
+in the model is that when it's solving these tasks,
+that it becomes overly confident.
+It was amazing.
+The system becomes,
+uh,
+effectively arrogant and starts just making decisions on what it thinks,
+whether or not it thinks tasks have been resolved.
+And I was not really sure what to do.
+Um,
+I thought that,
+uh,
+the mechanism just might not be effective or that,
+um,
+I may not have,
+uh,
+uh,
+developed it correctly.
+Um,
+it was my dear friend,
+um,
+that I just mentioned who,
+uh,
+noticed that and commented to the,
+to the point that when people are arrogant or when something is,
+uh,
+overly confident,
+it is,
+uh,
+humility that,
+um,
+resets that stage.
+And it was then that I applied,
+uh,
+a decay factor.
+Again,
+the role of entropy in these systems,
+I applied a decay factor to reduce that confidence when,
+uh,
+over time and in response to,
+uh,
+answering questions correctly to,
+to,
+uh,
+reduce that.
+So it,
+it's approaching each new question with,
+uh,
+with a fresh mind without making assumptions about,
+uh,
+uh,
+what's whether or not it's right or wrong,
+the answer.
+So,
+um,
+I thought that was really funny and there's a threshold for understanding when the,
+the system should stop.
+And we see that,
+um,
+um,
+down below as the confidence threshold,
+which is,
+uh,
+just a fraction of a point.
+Um,
+I don't know if I got that,
+right.
+These are things that I just kind of like,
+uh,
+copied and pasted out of,
+uh,
+different code segments from different,
+uh,
+iterations of this,
+uh,
+uh,
+process.
+So,
+um,
+uh,
+conversely something that's,
+uh,
+really,
+really,
+really amazing that is very similar,
+uh,
+but,
+um,
+much more serious in terms of its impact is the,
+requirement for cognition and equation in a computational framework.
+It seems to represent,
+uh,
+to be representative of,
+uh,
+most like a representational efficiency.
+it,
+it,
+it,
+it manages that fitness throughout the system,
+um,
+by
+kind of controlling the flow of energy and how,
+where energy is distributed in the system and why that's important.
+Um,
+it's calculating those state transitions and making predictions about those things and informing the rest of the system.
+So the,
+the amount,
+and I would encourage everybody to explore,
+um,
+the,
+this as,
+um,
+something that is so far incredibly flexible and improves everything that it touches.
+It's,
+uh,
+it's,
+uh,
+I really can't,
+uh,
+overstate how valuable that this has been in being able to produce meaningful results around,
+uh,
+could the cognitive computing frameworks that I've been,
+uh,
+attempting to develop.
+So,
+uh,
+for instance,
+uh,
+when I incorporated distress dynamics,
+uh,
+emotional attenuation into the system,
+um,
+curiosity,
+uh,
+happiness,
+and the,
+the component pieces,
+which I didn't have,
+I do have,
+uh,
+uh,
+visualizations on,
+but I,
+I didn't have a chance to incorporate them this morning.
+So,
+uh,
+my apologies.
+Um,
+but if anybody's interested,
+please reach out to me and I can show you what those wonderful things look like,
+uh,
+where you can see not just the emotions modulating through the system,
+uh,
+over iterations,
+but you can see their components,
+the,
+of those emotions,
+uh,
+modulating through those systems as well.
+Um,
+and not necessarily in,
+in tandem.
+It's,
+uh,
+it's pretty,
+pretty amazing.
+So,
+um,
+the,
+let's see,
+where was I?
+So when I incorporated the distress dynamics into the,
+uh,
+the arc model called the archangel,
+which I actually named after,
+uh,
+Daniel Friedman,
+cause he is,
+uh,
+definitely,
+um,
+uh,
+an angel to me.
+And,
+uh,
+the,
+the,
+the,
+the percentage of correct,
+uh,
+questions,
+the correct predictions about the output grid,
+uh,
+and being reflective of,
+you know,
+an input grid or a training example,
+anything like that,
+uh,
+the test that went up by 30%,
+right?
+Um,
+I could not get above the theoretical maximum of 85%,
+um,
+without Robert Warren's requirement equation,
+no matter how much I complexified the,
+uh,
+the overall,
+uh,
+or individual mechanisms or the overall framework.
+So,
+um,
+to the point of,
+you know,
+more than doubling the,
+uh,
+amount of just code that's in the system,
+complexifying these mechanisms.
+Um,
+and just to see if that would necessarily be the case and,
+uh,
+fascinating and,
+uh,
+and,
+uh,
+um,
+it drives my curiosity.
+Certainly,
+um,
+that was the case.
+So,
+um,
+the effect that the requirement equation,
+for instance,
+has on prioritization,
+iteration,
+uh,
+optimization and iteration,
+like,
+uh,
+uh,
+optimization within the system,
+um,
+increased my score exponentially.
+So the effect that it has,
+not just as a,
+uh,
+in itself,
+but the role it plays in influencing the effectiveness and efficiency of all of the other mechanisms in the system,
+uh,
+created like an aggregate increase that was,
+uh,
+as significant,
+um,
+as,
+uh,
+as those,
+uh,
+the distress dynamics.
+Um,
+the more it,
+uh,
+it seems to be that simplicity is really the key,
+um,
+with the arc contest in some ways that,
+um,
+the,
+the more you add in the,
+the,
+like the more kind of like,
+I guess,
+uh,
+you know,
+it gets computationally like muddy and,
+uh,
+it,
+it seems to be different.
+It's difficult for the model to embrace like the,
+and to move quickly through,
+uh,
+relatively what would be simple tasks for,
+uh,
+you know,
+you and I,
+um,
+the using just simple form and uncomplex for like non-complex forms of these cognitive mechanisms by,
+you know,
+using the equations,
+thread pool,
+uh,
+for parallelization and things like that,
+um,
+speeds up that process and makes the model,
+much,
+much,
+much,
+much more effective to the tune of,
+um,
+in some cases solving tasks within,
+uh,
+for smaller grids within,
+uh,
+one to two,
+uh,
+or three iterations.
+It's very interesting to see a cognitive computing framework get an answer right on the first try.
+Um,
+and,
+uh,
+to see that in real time is really cool and to,
+to have had a part in making that.
+It's like,
+it's amazing.
+So,
+um,
+the,
+there's still like,
+there's so much to do.
+I'm really excited about,
+um,
+submitting,
+um,
+at the art prize and the opportunities that may hold.
+And I am excited about many of the discoveries that,
+uh,
+were kind of emergent,
+uh,
+phenomenon.
+And I don't,
+when I think of coding,
+I think of deterministic systems.
+And maybe you do too,
+uh,
+there not being,
+um,
+any autonomy or,
+um,
+abstraction.
+It's,
+it's everything is dictated.
+It's prescribed.
+And the seeing,
+uh,
+this model operating in that system and making these decisions in these ways where it kind of,
+it gets to take off on its own and its own beliefs about those things,
+dictate what actions it chooses.
+Right.
+So when we like reinforcement learning,
+you know,
+our thoughts,
+uh,
+our experiences,
+our past experiences,
+those inform our beliefs,
+um,
+and our,
+along with our,
+uh,
+you know,
+what we're inferring or foraging,
+right.
+Um,
+those beliefs,
+uh,
+inform our actions and those actions have consequences.
+And in that you see the,
+the beginnings of,
+I think like what would,
+be considered almost like a cognitive trajectory.
+And,
+uh,
+it's going to be really fun to continue to,
+um,
+explore and complexify those things and,
+um,
+look deeper into them and see what can be found.
+So,
+um,
+the,
+I apologize.
+In some ways I didn't have the opportunity to,
+uh,
+prepare as much as I would have liked.
+I've actually never done this before.
+So,
+um,
+I'm really,
+really thrilled to be here,
+uh,
+and to share even a little bit or to contribute in some small way.
+And I hope that,
+um,
+uh,
+my work,
+uh,
+as it,
+as it gets better.
+And,
+uh,
+I continue,
+um,
+uh,
+at the Institute learning from all of the great and amazing minds,
+the scholars there,
+um,
+and the amazing of access to resources that they have that,
+um,
+I'll be able to gauge,
+uh,
+more meaningfully and have opportunities like this again in the future.
+And I hope that,
+uh,
+if you,
+uh,
+find any of this interesting that you'll reach out to me directly and,
+uh,
+I can have,
+uh,
+more detailed conversations and answer questions and things like that.
+Thank you.
+All right.
+For those watching live,
+they can write questions.
+Let's go over what the arc challenge is.
+You didn't show any grids or anything.
+So not everyone may be familiar.
+So could you show any pictures or the code running or what the arc challenge is and walk us through what the system is doing?
+What is the arc task?
+How do cognitive mechanisms relate to what is being done for the arc task?
+Well,
+that's really exciting.
+So,
+um,
+I'm happy to go into that.
+So,
+um,
+I'm a little hesitant to run code,
+uh,
+and I'm a little hesitant to interact with my computer too much.
+So I have a very old laptop.
+Um,
+just show some images that just go to a website where we can see some examples and talk us through how the mechanisms relate to it.
+Fantastic.
+Okay.
+Give me just a moment.
+All right.
+
+Okay.
+All right.
+and should I,
+I imagine I should stop sharing and then just reshare this screen here.
+Okay.
+Give me just a moment.
+Yes.
+So,
+uh,
+this is the arc prize leaderboards where I hope to be,
+uh,
+soon.
+Um,
+and this,
+these are,
+um,
+and this,
+these are,
+um,
+and this,
+these are,
+there are over a thousand teams of the most brilliant people,
+uh,
+around the world,
+
+around the world,
+uh,
+competing for what is,
+uh,
+called the arc prize.
+And the arc is the abstract reasoning corpus.
+It is a way to test computational models on their ability to think abstractly and to solve problems,
+uh,
+to solve for abstract problem solving.
+Right.
+So,
+um,
+when the,
+uh,
+model is,
+uh,
+and here,
+I'll leave that.
+So when the model is,
+uh,
+engaging with the tasks,
+it's presented a series of grids and there are patterns,
+colors,
+um,
+role,
+things that need to be done.
+As you can see in this case here,
+there,
+uh,
+there needs to be one,
+uh,
+yellow field.
+Here,
+there it's feel it's filled in and you see these as they become gradually filled in.
+This would be like an example of what the model would encounter in training data and in the training phase.
+And then,
+uh,
+as you see the last one,
+uh,
+it would say,
+Oh,
+okay,
+well,
+obviously I need to fill in empty space with the yellow squares.
+Right.
+Uh,
+and,
+um,
+that becomes much,
+much,
+much more complex over time,
+uh,
+through the test,
+as I understand it,
+uh,
+when I,
+let me see if I can go here and,
+uh,
+yeah,
+I've,
+we,
+this is like,
+cause humans can take this too.
+Um,
+and my score right now in pre-testing is about the same as a human.
+So about 86 to,
+I think 88% is about what,
+uh,
+a person would score,
+um,
+taking the arc.
+So,
+um,
+the,
+you can see here where it just simple pattern completion,
+the grids range anywhere from one by one to 30 by 30,
+um,
+as stated here,
+uh,
+on the arc website,
+the,
+I can only imagine,
+um,
+that the patterns,
+uh,
+presented in such large grids become really complex.
+I,
+and though you can't see what the model is doing,
+you,
+there are certain things you can see like the computational load,
+like through Kaggle,
+uh,
+where the contest is hosted,
+uh,
+you can see the performance of your system.
+And also I can hear my computer,
+uh,
+as it starts,
+uh,
+sounding like a jet engine going off as it's like trying to,
+you know,
+process and,
+uh,
+with this model.
+So,
+um,
+the,
+uh,
+arc test is,
+I,
+I think I mentioned was,
+uh,
+created by,
+uh,
+and co-founded by,
+uh,
+uh,
+Francois Cholet,
+um,
+who's also the founder of Karis and guys just,
+uh,
+absolutely brilliant.
+I've learned a lot about him since I've been here.
+And,
+um,
+let me see here now,
+um,
+if I can pull up an example of my framework and Daniel,
+if you'll let me know,
+um,
+if whether or not it actually shows up,
+because this is where,
+um,
+the,
+my computer typically wants to start slowing down.
+Um,
+okay.
+So you can see there,
+um,
+I,
+one of the most difficult things that I have encountered for the,
+this entire,
+uh,
+process was the actual generation of the submission folder itself.
+Uh,
+there is,
+um,
+uh,
+as I might've mentioned,
+and I'm not a software engineer by any standards and it,
+uh,
+it can,
+uh,
+there's a lot of really highly technical,
+um,
+and,
+uh,
+let's see here.
+Let's see the full version.
+A lot of highly technical things.
+And for,
+uh,
+brilliant and like experienced innovators and leaders,
+like,
+uh,
+the folks at minds AI,
+um,
+probably not even a hurdle.
+Uh,
+but for me,
+it was like a really,
+really,
+really difficult process.
+And I was able to get,
+uh,
+some help from a very brilliant gentleman.
+And I finally,
+uh,
+was able to generate the,
+um,
+the submission file.
+So now I can,
+I had to tear my model apart to figure out where it was going wrong.
+And then I was able to,
+now I can put it back together and actually submit.
+So,
+um,
+wonderful here.
+Um,
+can you see that Daniel?
+Daniel
+Fantastic.
+So,
+um,
+very boring stuff.
+That's just the imports.
+Um,
+the,
+the model doesn't use the internet.
+It's not allowed to use the internet,
+um,
+because the test answers need to be,
+uh,
+you know,
+they,
+they've got to stay secure.
+So,
+um,
+the,
+the,
+everything that the model does is,
+is internal.
+You have small things that you,
+you know,
+like,
+you know,
+pandas or whatever that,
+uh,
+libraries that you can add,
+access,
+but those are things that,
+um,
+the wonderful people,
+uh,
+behind Kaggle have already loaded and are available in the system for you.
+So,
+um,
+that's really wonderful as part of the notebook.
+So,
+um,
+here,
+um,
+to start,
+you can see there's a combination of two different types of,
+uh,
+of,
+um,
+uh,
+
+kind of like,
+uh,
+frameworks,
+right?
+So there's,
+you know,
+how we have like machine learning and then there's all these other stuff,
+right?
+And then you get down,
+uh,
+to the,
+to the newest one and that's active inference.
+So,
+but active inference on its own for something like this is not necessarily effective,
+especially given the time constraints that I've been,
+uh,
+under having only started and found out about this,
+uh,
+about six weeks ago.
+So,
+um,
+I've included some,
+uh,
+in this process,
+some functionality that is,
+uh,
+more akin to just physical processes,
+like the ability to interact with the objects as if they were physical.
+So there's,
+um,
+uh,
+dimensionality reduction and other,
+uh,
+like for instance,
+feature extraction and,
+um,
+uh,
+different types of tools really,
+um,
+that the model can employ,
+uh,
+to help,
+um,
+navigate and manage those processes.
+So,
+um,
+here we'll see,
+uh,
+prioritization optimization and iteration as an algorithm,
+uh,
+in the process.
+And what this is doing is performing perceptual gating by computing the dot product,
+as you see between the input data and the beliefs.
+So the arguments that we're seeing is that the input data,
+so that's the input sensory data and the agent's beliefs are going to return the gated perceptual output.
+So,
+um,
+when we look at that,
+obviously that's not enough on its own.
+So it's like,
+how do we,
+how do we round out these products and make each mechanism holistic?
+All right.
+I think of it like a circle with circles inside of it.
+Um,
+and you know,
+the more you can fill that operation,
+uh,
+that,
+uh,
+overarching mechanism and complexify it,
+the more effective it will be in some ways,
+right?
+There's obviously a balance,
+but then you have Robert Warren's requirement equation comes into,
+um,
+to drive that efficiency and balance that throughout the system.
+So you get it,
+you can get away with a lot.
+So,
+um,
+we calculate the optimization objective as a Euclidean norm between desired and actual outputs.
+Uh,
+again,
+you can see the arguments,
+um,
+there.
+And,
+uh,
+um,
+these were really fun gradient calculations,
+which,
+um,
+I was able to,
+uh,
+uh,
+based on some,
+uh,
+fluid dynamics,
+uh,
+some maths that I learned from Keith office.
+Um,
+I was able to create gradient calculations that use dimensionality reduction to,
+to,
+um,
+calculate,
+uh,
+a two,
+like a two dimensional space in a one dimensional space.
+And it was,
+uh,
+really cool.
+And we get,
+um,
+basically a waiting system,
+like a more complex waiting system in a simpler environment.
+Um,
+so we have weight with respect to the optimization objective,
+and we have weight with respect to,
+um,
+uh,
+noise in the system and reducing,
+uh,
+noise.
+And,
+um,
+I,
+I'm sure many of you are aware of that computational noise and systems is
+something that slows the process,
+causes mistakes.
+Um,
+and so,
+uh,
+yeah,
+there's,
+uh,
+um,
+we,
+when we're going to,
+uh,
+see here where we're defining the,
+the,
+the algorithm,
+uh,
+and we're implementing it,
+we get,
+uh,
+the input sensory data,
+we get the agent's beliefs,
+our noise parameter,
+the target output,
+the maximum number of iterations,
+and the convergence tolerance,
+right?
+Very important things.
+So,
+um,
+convergence in these systems is,
+um,
+kind of the,
+where all of the things come together and they agree on the task and the
+confidence hits that mark of saying,
+this is now I know it's right.
+And then it,
+the model will submit the answer kind of like the short and sweet to that.
+Um,
+and then,
+um,
+here back,
+this is,
+uh,
+this is just simply some processing.
+Um,
+I don't know what the grids are and I don't know what they look like.
+And I don't know what,
+um,
+like people have done.
+So,
+uh,
+I,
+and I don't think anybody does.
+I haven't actually talked to anybody else,
+uh,
+who's taking,
+who's competing in the arc.
+But,
+um,
+for instance,
+what if there are multiple layers and there are colors hidden underneath the
+layers,
+right?
+So,
+um,
+I,
+for a time,
+had,
+um,
+the,
+had given the model,
+uh,
+the ability to,
+um,
+assess the grids for dimensionality and if necessary,
+vision,
+like visualize them in two and three dimensional spaces,
+um,
+to find out if in fact that was the case and then return,
+uh,
+um,
+that,
+uh,
+to the fun other functions.
+We'll see that scale the grid or resize it.
+Um,
+things like that.
+Here we have our attentional selection,
+uh,
+just our simple attention mechanisms.
+Um,
+we're using,
+uh,
+uh,
+feature dimensions and hidden dimensions,
+um,
+much like we would with,
+uh,
+beliefs,
+um,
+really fun stuff,
+really simple.
+Um,
+nothing too exciting there.
+Now the hop field network,
+how the memory works is actually really fun.
+And I've had a super exciting time playing with this.
+I mean,
+and maybe,
+um,
+you know,
+I might've even taken it too far and almost like,
+uh,
+destroyed my own computer.
+Um,
+hop field networks,
+uh,
+amazingly dynamic.
+in this case,
+um,
+the,
+uh,
+memory encoding and retrieval between the hop field network,
+which works,
+uh,
+under the Atkinson Schiffrin model of memory.
+So we have like a long-term short-term working memory on this hop field network is expanding within that as it is absorbing data,
+collecting patterns,
+
+things like that.
+And,
+uh,
+employing,
+uh,
+Hebeon,
+uh,
+uh,
+equation for that encoding and retrieval.
+And that's been very,
+very effective.
+And it's opened doors to,
+uh,
+some ways to manipulate the hop field network.
+Um,
+that again,
+uh,
+you have to be really careful with cause you,
+you know,
+you might,
+uh,
+uh,
+accidentally set your computer on fire.
+Um,
+so the,
+the things here,
+it's a little dense and I don't know what my time constraints are.
+So I'm going to move past that for now,
+but,
+um,
+I have,
+uh,
+written a research paper,
+um,
+that's,
+uh,
+you can find on my link tree,
+uh,
+about this specifically.
+And I,
+I go into much more detail.
+Um,
+the memory system and capacity,
+you can see the capacity,
+the size of the hop field network.
+These are all defined things.
+You know,
+the hop field network is the hop field network size.
+The memory is done in a deck form where the,
+each max land,
+uh,
+max land will be,
+uh,
+you know,
+uh,
+a number of decks.
+So a max land is 10 decks,
+right?
+So we're going to have whatever that max land is.
+That's our,
+that's going to be our capacity of the total deck.
+So,
+um,
+uh,
+here we see how,
+uh,
+kind of a cool,
+uh,
+condensed refactor of,
+uh,
+complex encoding mechanism.
+And a lot of,
+uh,
+a lot of like,
+try except blocks,
+things like that to,
+uh,
+handle,
+um,
+uh,
+errors in the system,
+things like that.
+Keep it going.
+So here we go.
+You can see,
+um,
+the long-term memory,
+which is not really a play in this system.
+So I haven't really engaged it.
+I don't know if really,
+if it's necessary,
+even because of the way the,
+the hop field network in this system,
+uh,
+will expand and contract.
+It's dynamic to meet the needs of the task.
+I wanted to,
+I didn't want to come in with a memory system that is just holding,
+uh,
+all of this training data and,
+um,
+has like a,
+a really strong prior knowledge of what the tasks are.
+I wanted to kind of stay true to Francois Cholet's,
+as I interpret it,
+um,
+uh,
+perspectives on,
+uh,
+problem,
+abstract problem solving.
+And I want the model to,
+uh,
+use and leverage it's the,
+the full weight of its cognitive mechanisms to solve the problem,
+uh,
+in that way,
+as if it had never seen it before and was unaware of it and a solution,
+but can still,
+uh,
+abstractly resolve the,
+the issue.
+So,
+um,
+you can also see the size of those,
+uh,
+memory systems.
+Um,
+and,
+uh,
+I,
+we passed it already.
+I didn't touch on it,
+but there's also,
+um,
+you know,
+like the amount of beliefs that can be held,
+um,
+in the memory systems.
+And I guess I can,
+um,
+touch on this as well.
+The normally this,
+uh,
+there's a much more complex framework.
+That's my actual cognitive computing framework that I deconstructed,
+uh,
+and decomposed and reconstructed to make Archangel for the art prize.
+Um,
+but that's that physical memory,
+which is,
+uh,
+partitioned into drives is,
+uh,
+short-term,
+long-term and working,
+uh,
+is set up as a,
+uh,
+as a system of nodes and like data is grouped through these encoding
+processes and retrieval processes.
+It's influenced by belief and emotions,
+um,
+like much like,
+uh,
+a hot field network would be and how memory is.
+I'm sure we all can identify with that.
+And those,
+uh,
+there are iterative processes that can continue to organize and to
+strengthen that as new information,
+new data comes in,
+um,
+to form,
+uh,
+priors and to assist with the formation of,
+uh,
+um,
+uh,
+uh,
+posterior beliefs,
+uh,
+and,
+uh,
+in regard to new evidence,
+uh,
+which we see ties in through that same Markovian process,
+uh,
+into,
+uh,
+belief into beliefs.
+Yeah.
+So,
+um,
+those higher order values that are produced when that,
+uh,
+when the new,
+uh,
+information comes in or,
+uh,
+like data is grouped more tightly together,
+uh,
+and compressed into those,
+uh,
+those nodes,
+those higher order values are reported,
+um,
+as,
+uh,
+assumptions about the world,
+things that the model would need a certain amount of evidence to,
+uh,
+override and to change,
+uh,
+its thoughts,
+uh,
+in,
+in regards to that.
+So it's not something that,
+uh,
+that,
+you know,
+that you have to impose on the system in terms of like,
+uh,
+saying if,
+in an,
+if that,
+this,
+uh,
+if this,
+then that relationship,
+it is,
+uh,
+it is automatic.
+It,
+it modulates itself.
+And,
+um,
+it's really cool to see.
+It's really fun to watch.
+And,
+uh,
+I have an,
+uh,
+like a natural language processing version of this cognitive computing framework for,
+you know,
+so I can interact with it,
+have response generation.
+And,
+uh,
+um,
+in that is where you see how those memory,
+that memory system is incredibly effective for,
+um,
+producing,
+uh,
+subtle nuance and contextual data.
+So,
+um,
+the somatic system that you see here,
+this is where we see kind of like the,
+the,
+the,
+the,
+if we were just to distill down,
+like what is happening in the system,
+like you wouldn't a body,
+it's,
+we would look to like,
+uh,
+or I would look to my,
+uh,
+my thoughts and my feelings,
+but my feelings in a subjective way.
+But this deals with those physical processes that are happening more so and how energy is distributed
+through the system carried and influenced by emotions or distress in the system.
+So we have cognitive load,
+right?
+Uh,
+time pressure,
+focus,
+intensity,
+error,
+feedback,
+and the limitations of resources and how those impact,
+uh,
+confidence.
+So,
+um,
+we,
+uh,
+see that we can adjust,
+uh,
+stress levels,
+uh,
+based on,
+uh,
+all kinds of things,
+including task difficulty,
+um,
+how those,
+uh,
+stress levels are managed.
+And in that Markovian process,
+when,
+for instance,
+let's say,
+um,
+I,
+uh,
+encounter a task or the model encounters a task,
+I should say,
+and it gets the answer wrong.
+Uh,
+there will be a redistribution of resources through that system.
+And also,
+uh,
+in synchronously,
+um,
+a redirection of the cognitive load away from,
+uh,
+uh,
+functions that aren't in play or as necessary to,
+uh,
+and kind of guided by Robert Ward's requirement equation to try to maximally,
+like,
+uh,
+uh,
+put the system to the task,
+I should say.
+So,
+uh,
+here we have the epsilon control,
+uh,
+which,
+uh,
+I'm a really big fan of.
+And this is like kind of where we can fine tune those processes,
+um,
+and,
+uh,
+under like create a system here,
+uh,
+for the,
+them to operate autonomously.
+So they,
+there's like automatically,
+they can automatically modulate,
+uh,
+and create,
+you know,
+stability throughout the system.
+Um,
+when things get really dynamic,
+you can also manually fine tune these things,
+but,
+uh,
+here you can see the application of the Markov matrix and its role there,
+um,
+in,
+uh,
+uh,
+catching that distress vector and updating those stress levels.
+And of course,
+again,
+entropy in the system,
+applying decay.
+So,
+um,
+um,
+the cognitive system class that,
+uh,
+you see now,
+um,
+is kind of where all of these things come together,
+uh,
+in,
+and like,
+in,
+not so much to solve the task,
+but for the,
+the,
+like a homogenization of,
+uh,
+of all of these,
+uh,
+necessary operations.
+So for instance,
+we see now,
+um,
+the,
+all of those mini arguments that come together to form,
+what emotions are in the system.
+We see,
+uh,
+three,
+um,
+represented here,
+happiness,
+anxiety,
+and curiosity,
+which I thought would be,
+uh,
+the best for resolving the tasks.
+And of course,
+the,
+uh,
+the,
+that stimuli,
+when we are happy,
+it's reward,
+we have anxiety,
+we feel a penalty and the difference between,
+or the,
+not maybe the opposite,
+but counter to curiosity would be novelty.
+Right.
+Um,
+and,
+uh,
+uh,
+when we are propagating covenant cognitive states through that Markov matrix,
+communicate those things to homogenize all of those things.
+We're going to see the influence of those emotional states on the Markov transition probabilities for how does anxiety affect the system?
+How does it affect decision-making?
+How does happiness influence decision-making?
+These processes are happening,
+uh,
+synchronously and asynchronously.
+So the,
+
+that is a,
+a massive,
+like,
+uh,
+uh,
+spread throughout the system.
+Um,
+you know,
+looking at those processes,
+uh,
+or those,
+um,
+uh,
+mechanisms as like,
+you know,
+uh,
+little circles with circles inside of them throughout all of those things are woven.
+And then these threads of,
+of distress that,
+um,
+influence and the,
+um,
+all of those functions as those cognitive states are propagated,
+um,
+through the Markov matrix.
+So,
+um,
+we get to introduce non-linearity by applying a non-linear transformation here.
+I'm,
+I'm sure,
+uh,
+many of you are probably more,
+uh,
+familiar with,
+uh,
+sigmoid,
+um,
+and cognoid,
+I believe,
+and,
+uh,
+tan,
+uh,
+which,
+uh,
+is something I've been learning about.
+It's very,
+very amazing.
+Um,
+tan is obviously my favorite.
+And I think,
+uh,
+because,
+um,
+as Daniel,
+uh,
+has,
+uh,
+told me many of times,
+it's not,
+uh,
+to stop engaging in hyperbole and,
+uh,
+I'm working on it very much.
+So,
+um,
+now we see some,
+uh,
+action selection.
+So simple,
+just action selection,
+um,
+the evaluating our actions,
+um,
+where we see,
+um,
+the Markov matrix,
+um,
+uh,
+in play for,
+um,
+um,
+the,
+the,
+how like cognitive states are moving through the system and,
+and we're going to assign like rewards and penalties,
+which I basically just picked up from Q learning,
+uh,
+features and for reinforcement learning.
+So the,
+I just kind of taking what I can know and taking what I have,
+what I think will work and trying it.
+So certainly getting,
+uh,
+uh,
+consistently above 86%,
+um,
+in,
+on the arc test,
+even I think in pre-testing,
+um,
+is no small feat.
+The being able to do that is the culmination of tens of thousands of failures.
+Um,
+I could,
+I would love to,
+I'm making a composite of all of the failed code snippets and sections and everything that I've like,
+just kind of,
+that sit in the junk pile and it's massive,
+tens of thousands of lines of code,
+um,
+that have produced from that,
+um,
+hundreds of lines of code that are effective in resolving these issues that,
+um,
+seem to,
+uh,
+as outputs reflect the outputs of,
+uh,
+biological processes and cognition.
+So,
+um,
+iteration,
+always super important.
+Update emotions,
+propagate states,
+select actions,
+evaluate,
+right?
+Um,
+here we see our confidence scoring class,
+um,
+is sorry about the names for some of these things,
+six weeks of 20 hour days,
+uh,
+seven days a week to compete in,
+uh,
+one of the hardest,
+uh,
+and most technologically rigorous,
+uh,
+competition,
+certainly that I've ever been in in my entire life.
+Um,
+and,
+uh,
+but my dedication and self-determination is,
+uh,
+is indomitable.
+So I will,
+I will just work 20 hours a day,
+seven days a week till I either win or lose.
+Uh,
+and fortunately for me,
+that submission deadline is rapidly approaching.
+So I'll be able to sleep for a couple of days and,
+uh,
+get working on writing wonderful research papers,
+which is like my favorite thing,
+you know,
+thinking about all of the wonderful,
+uh,
+uh,
+mysteries of active inference and,
+uh,
+cognition and existence and,
+and,
+uh,
+putting those ideas on paper.
+So again,
+decay,
+um,
+actually named this after my friend,
+his last name is doll.
+So,
+uh,
+I call it the doll factor to introduce humility.
+And,
+um,
+uh,
+I,
+as much as I love him,
+uh,
+he is a very confident person.
+So,
+uh,
+it's,
+uh,
+fitting to,
+uh,
+name humility after him in this system.
+So,
+um,
+many people who are familiar with,
+uh,
+active inference are probably familiar with Q learning.
+Um,
+Q learning is implemented here as a,
+uh,
+almost like an agent,
+uh,
+as what I've been calling it,
+but it has,
+um,
+uh,
+really,
+uh,
+a really,
+really,
+really like,
+uh,
+powerful effect on action selection.
+Um,
+again,
+it's,
+you know,
+the,
+if we are,
+if our beliefs are informed by our experiences,
+our knowledge,
+our assumptions about the world and ourselves,
+um,
+and our actions are informed by our beliefs,
+uh,
+then certainly,
+uh,
+re the reinforcement learning,
+uh,
+which is employing Q learning here would be,
+uh,
+uh,
+would have a large part to play in that.
+So I,
+I spent a lot of time.
+Um,
+the Q learning is also very,
+very,
+uh,
+for anybody who's interested in doing this type of thing or finding out more
+Q learning is very,
+very,
+
+very,
+very touchy.
+It's very sensitive.
+It,
+it,
+it errors and it breaks and it is,
+uh,
+it is fragile.
+And I wonder,
+uh,
+not to engage in hyperbole,
+but how that reflects,
+uh,
+our memory and our assumptions,
+which for all intents and purposes are not real.
+So,
+um,
+uh,
+here we see,
+Robert Warren's,
+uh,
+requirement equation is a subsystem.
+Um,
+the,
+uh,
+uh,
+we're going to get initial representations of,
+uh,
+and of what's happening in the system.
+And that's going to create,
+uh,
+efficiency scores for these things.
+Those efficiency scores are going to be passed and calculated,
+uh,
+all of those things exactly as the equation would,
+which is amazing to be able to,
+um,
+take something that's so brilliant and,
+uh,
+just,
+uh,
+and that's kind of,
+I guess what I was like meaning when I said that it's like,
+uh,
+it's flexible.
+It's,
+you can,
+and it integrates into anything.
+You can just take the equation itself and,
+and write it here and then say,
+you know,
+okay,
+so the sensory input to generate new representations from decision variable,
+action variable,
+probability distribution over states,
+conditional probability over decision given state,
+uh,
+the conditional probability of next state given current state and action and the value function mapping between states and future states for our,
+uh,
+parameters and very,
+very,
+very quickly,
+uh,
+line out,
+uh,
+this,
+these representations,
+these efficiencies and integrate them into,
+uh,
+so many other things,
+uh,
+through the,
+uh,
+use of,
+uh,
+those Markov,
+uh,
+arrays.
+So,
+or Markov matrix,
+um,
+we can calculate the representational efficiency very simply,
+um,
+decision variable,
+action variable,
+probability distribution,
+distribution over states,
+right?
+Value function mapping between state and future state,
+conditional probability of next state given,
+uh,
+current state and action.
+I mean,
+it's just incredible.
+And we see these here,
+um,
+in the same way that you would see notations,
+uh,
+in,
+uh,
+many of the papers that I've read,
+uh,
+through the active inference Institute.
+Um,
+and,
+uh,
+we can calculate fitness,
+uh,
+in the,
+uh,
+the system based on Robert Ward's requirement equation.
+Um,
+as you see here is,
+uh,
+uh,
+same thing,
+decision variable,
+action variable,
+probability distribution over states on and on,
+uh,
+the value function mapping between states and future states.
+So,
+um,
+here's where we get to the,
+where everything,
+both types of,
+uh,
+you know,
+where we see the kind of the mix of,
+uh,
+artificial intelligence,
+intelligence and cognitive computing,
+or at least my attempt at cognitive computing.
+Um,
+this is where they come together in the form of like tools in hand for solving tasks.
+Um,
+and the problem in solving intelligence class.
+Um,
+we,
+uh,
+have our epsilon,
+our distress.
+Um,
+I made,
+uh,
+well,
+I'll talk about the multi-agent plurality,
+um,
+here shortly,
+but we also see,
+um,
+all of our,
+uh,
+uh,
+uh,
+coefficients for the distress dynamic calculations.
+Those values represented our Markov,
+uh,
+matrix,
+uh,
+and,
+uh,
+all of those,
+you know,
+belief history,
+uh,
+somatic stress,
+confidence,
+um,
+the,
+um,
+weights,
+the epsilon control,
+um,
+all of those things coming into play,
+the distress state indices,
+such as,
+uh,
+the cognitive load,
+time pressure,
+focus intensity.
+Um,
+we see the memory system,
+uh,
+here and we,
+uh,
+are,
+uh,
+starting to see now,
+uh,
+some actions and,
+uh,
+things that deal specifically with the tasks themselves.
+So for instance,
+uh,
+something that I found was really interesting,
+um,
+that,
+uh,
+made an impact in terms of how many questions I was getting,
+right,
+was giving the model the ability to think about how hard the task was before it
+started the task.
+And in this simple,
+uh,
+bit of code here,
+uh,
+just a very,
+very simple heuristic.
+We have the size of the grid.
+What are things that are unique about the grid?
+And then,
+uh,
+return the,
+that,
+those values and,
+uh,
+pass it along.
+It's ruined all of a sudden,
+uh,
+the confidence,
+the,
+the effectiveness of the confidence in the system,
+uh,
+works better.
+It's like,
+um,
+the,
+the role of emotions,
+uh,
+has a greater impact on the,
+uh,
+generating the correct task output.
+Um,
+the,
+it's hard not to,
+and I'll be honest with everyone.
+Uh,
+it's hard not to fill this with as much,
+um,
+matplotlib and logging and debugging,
+all,
+everything that you can do,
+because looking inside and seeing the,
+um,
+just thousands and thousands and thousands and thousands of,
+uh,
+contributing forces and factors and variables at play is so cool.
+And,
+uh,
+uh,
+yeah,
+um,
+yeah,
+so it's,
+it's neat to look into,
+uh,
+inside of these and see how these things work specifically.
+Um,
+when even someone like me can,
+uh,
+put pen to paper and make these things without knowing how they will necessarily operate or work.
+Um,
+um,
+
+
+calculating rewards,
+extracting features,
+um,
+reinforcement learning,
+uh,
+and how those things,
+uh,
+play effect the Q value history,
+um,
+state action pairs,
+et cetera.
+Um,
+the,
+I know we're getting to something I really enjoy here.
+Um,
+feature extraction,
+selecting actions based on,
+um,
+you know,
+the,
+um,
+those return Q values,
+the higher the Q value,
+uh,
+the,
+the more often that a,
+uh,
+uh,
+uh,
+the chosen task has been correct.
+So it's,
+the model is going to necessarily try those higher Q values first,
+since they are the most likely to be true,
+uh,
+and then move on to other actions,
+uh,
+including things like rotating the,
+the grid,
+um,
+looking at it,
+flipping it horizontally,
+vertically,
+um,
+reducing it,
+um,
+zooming in.
+So,
+uh,
+to see a better detail.
+Um,
+and,
+uh,
+um,
+here's the scale grid,
+uh,
+and,
+uh,
+let's see here,
+uh,
+the generating the action space.
+So this was a lot of fun to try to figure out,
+um,
+because I had no idea how to do any of this stuff.
+It's like,
+how,
+what even happens when the,
+the model is in the system.
+This is one of the things that,
+uh,
+was so difficult with,
+uh,
+finding out how to even submit the file is because the,
+the model is doing all of the lifting you like,
+we can,
+um,
+interact with the,
+uh,
+we can interact with the model on the outside in tune,
+in terms of like tuning it,
+but once it's inside there,
+you,
+you can't see what's happening.
+So,
+um,
+generating that action space was,
+uh,
+really,
+really,
+really,
+uh,
+interesting to give the agents something to work with inside that space.
+So,
+and here you can see,
+um,
+that I had to disable,
+um,
+many of the trans,
+uh,
+like the transformations because they,
+they weren't effective.
+the,
+they weren't producing,
+um,
+two values effectively and they were increasing the,
+uh,
+the size of the action space so much that they,
+um,
+that they wouldn't meaningfully,
+uh,
+that it was like,
+it bogged down the,
+the system overall computationally.
+So,
+um,
+I,
+uh,
+I just kind of null those.
+Um,
+and here we see resize grid features,
+um,
+solve grid tasks with multi-agent support.
+So I don't know if there's any,
+uh,
+younger people in the audience.
+Um,
+there,
+uh,
+if there is,
+uh,
+maybe you're familiar with,
+uh,
+um,
+a cartoon show called,
+uh,
+Naruto and this character,
+the main character,
+uh,
+one of his,
+his abilities,
+uh,
+they're kind of like superheroes.
+Uh,
+and one of his abilities is to,
+um,
+become,
+uh,
+to clone himself,
+to become like a thousand of himself all at once.
+And he uses that to overpower his enemies kind of thing.
+Um,
+in this case,
+I wasn't sure if it was actually even allowed.
+Um,
+but I figured I would,
+uh,
+give it a try.
+The,
+the,
+when we think about like taking a test,
+I think about,
+um,
+the dialogue that I will have with myself.
+And I have one internal voice,
+like,
+you know,
+that I talked to,
+but it made me think of,
+uh,
+of that,
+um,
+dialogue where you see like,
+you know,
+you have an angel on one shoulder and a devil on the other shoulder,
+or,
+you know,
+the pitchfork guy or whatever it is.
+And they're having a conversation back and forth and presenting counterpoints
+and different ways of looking at things.
+Um,
+certainly that plurality could be,
+uh,
+represented computationally in the form of agents inside of the agent.
+So when the agent gets to a point,
+uh,
+where it is stuck,
+the,
+uh,
+this multi-agent plurality,
+uh,
+is enacted and these agents appear,
+um,
+inside of the agent effectively,
+and they receive their own test grids and they start trying to solve the test
+grid as they look out through the agent at its test grid and at the input test
+grid.
+Um,
+when they can't get an answer right themselves,
+they do something that this is why I wasn't sure if it was,
+uh,
+allowed or not.
+They ask each other.
+They,
+uh,
+um,
+here,
+uh,
+let's see here.
+Where is that?
+Uh,
+well,
+well,
+I,
+oh,
+it's up there in the problem solving class.
+I should have,
+I should have mentioned it,
+but,
+um,
+up there where those,
+uh,
+those classes,
+those different thing,
+the functions are instantiated.
+You see,
+um,
+the number of agents and you can change the number of agents.
+You can,
+it could be a hundred.
+It could be five.
+I,
+I kept it very low.
+I think three to five agents.
+Um,
+and when they get three answers wrong,
+they,
+they raise their hand and they hold up their grids and they say,
+what do you guys have?
+And those agents communicate with each other as we'll see in a second where they say,
+oh,
+I've got this and they go,
+oh,
+okay,
+that you got that one ahead of me.
+So now I know what the right answer is.
+And when the,
+those agents are able to complete a grid collaboratively,
+that grid is then passed to,
+uh,
+the model agent Archangel,
+uh,
+and it's then used or employed to complete the task.
+So,
+um,
+a lot of,
+that was actually really super fun to make.
+Uh,
+I really enjoyed making that.
+Um,
+and I,
+I,
+I kind of organically.
+And one of the first things that I ever,
+uh,
+presented to Daniel,
+and I think I,
+I showed this,
+uh,
+when I very first came to the Institute,
+um,
+and,
+uh,
+was hoping to be let in the door,
+uh,
+was a schema for,
+um,
+what I know now is,
+uh,
+colloquially,
+I guess referred to as a,
+uh,
+multi-agent system.
+So,
+um,
+that,
+uh,
+I haven't gotten a chance to make one really before.
+And I,
+uh,
+had made this one and I've gone and,
+uh,
+further complexified the system,
+uh,
+to make,
+uh,
+what I've so far been calling,
+uh,
+next side,
+which are little,
+uh,
+um,
+little autonomous,
+uh,
+agents.
+Um,
+but,
+uh,
+they are builders as opposed to,
+uh,
+and,
+uh,
+as opposed to,
+um,
+agents that call out to each other with greed.
+They don't have greedy policies.
+So,
+um,
+uh,
+so evaluating the solution really simple.
+It's like for going through the,
+uh,
+training and evaluation phases.
+Um,
+you,
+you want to know how you're doing.
+This is,
+uh,
+uh,
+visualization stuff for me because I love seeing this.
+It's a values,
+rewards,
+epsilon.
+Um,
+and,
+uh,
+this is,
+uh,
+just kind of boring stuff here.
+That's,
+uh,
+not very much fun.
+Um,
+we see,
+um,
+as we're coming up on training and evaluation,
+uh,
+spaces,
+um,
+there are certain like secondary or tertiary cognitive processes within here,
+uh,
+within,
+like the,
+throughout the model.
+So,
+I mean,
+for instance,
+here,
+you'll see,
+um,
+uh,
+how we're handling predicted output shapes,
+mismatching,
+and coming down here to our selecting our actions.
+But we know that these,
+this action selection is heavily influenced by reinforcement learning and the Q learning feature.
+Right?
+So,
+um,
+that continues,
+um,
+as these things,
+uh,
+uh,
+further intertwine.
+Uh,
+here we go.
+Uh,
+here we go.
+As we see it,
+the,
+the reinforcement learning Q learning update,
+um,
+and the reinforcement learning decay and epsilon control decay epsilon.
+So,
+um,
+here in the evaluation,
+um,
+definition,
+um,
+we are evaluating the agent's performance on the provided evaluation data,
+uh,
+that's provided by the arc.
+And this just gives a baseline for,
+is my model actually solving the tasks or is it,
+am I just way off base?
+I mean,
+there has to be,
+um,
+uh,
+some,
+uh,
+which I'm so grateful for them for thinking of this and,
+and the,
+the way that they've structured everything,
+even if it's the hardest thing you've ever done is still absolutely brilliant and,
+uh,
+intentional and,
+uh,
+and it's so easy to see the wisdom of it.
+Once you get into it,
+um,
+they have,
+you know,
+given us the ability to,
+you know,
+create a baseline for,
+okay,
+these systems work,
+these solve tasks.
+Um,
+but will it solve,
+you know,
+uh,
+the test?
+So we'll see.
+Um,
+the,
+uh,
+these are just a lot of,
+uh,
+if that,
+then this kind of things,
+um,
+if error,
+then,
+uh,
+kind of stuff.
+Um,
+and then we get down to the main execution block.
+One thing I want to be clear about,
+then there are,
+there is only a small,
+small fraction of the cognitive mechanisms that just I,
+by myself have,
+uh,
+made that have proven effective in other ways and in different systems and for different
+purposes.
+Um,
+and I'd really like to encourage other people,
+um,
+who are interested to,
+uh,
+really dig in and explore the possibilities there because not only is active inference,
+um,
+amazing and incredibly,
+incredibly challenging.
+Um,
+but the potentials for discoveries,
+it's like,
+there's something around every corner under every rock,
+every single equation that,
+um,
+you come across to hold some hidden and deeper meaning.
+It's almost esoteric.
+And when we,
+when I'm putting them together and seeing how they interoperate,
+um,
+there are things that,
+that become evident or obvious,
+um,
+that can be like with the confidence and the decay factor,
+um,
+that,
+uh,
+we put into introduce humility,
+uh,
+where they can be silly kind of,
+and fun and just thoughtful,
+or they can be something that's deeply meaningful and deeply impactful,
+um,
+and has broad reaching,
+uh,
+technological implications,
+uh,
+for humanity,
+um,
+such as Robert Wharton's requirement equation for cognition.
+Um,
+and,
+uh,
+this is all just the boring stuff here.
+This is,
+um,
+where we're initializing that,
+uh,
+problem solving intelligence.
+Um,
+we're plotting metrics,
+we're calling,
+uh,
+the test files.
+So the JSON formatted files that contain the,
+uh,
+training challenges and the training,
+uh,
+solutions,
+uh,
+yada,
+yada.
+So,
+um,
+I don't spend a lot of time looking at those things,
+um,
+uh,
+because I want to,
+uh,
+kind of maintain,
+uh,
+the,
+um,
+the veracity.
+Like I really want the model to work,
+uh,
+on its own and to do all of the heavy lifting.
+I don't want to bias the,
+uh,
+model by knowing too much about how the competition even works,
+which is,
+uh,
+made something certainly more difficult for me than others.
+Um,
+but,
+uh,
+overall,
+it's like,
+I wouldn't have traded this experience for,
+uh,
+anything.
+And Daniel,
+I'm so grateful to you for,
+um,
+tasking me with this.
+Um,
+definitely,
+um,
+the things that you've always,
+uh,
+given me to do,
+uh,
+and as undertakings are,
+uh,
+I,
+there are things that I don't even think that I didn't even know I didn't,
+I could do.
+And this is one of those things.
+It's just been an absolutely transformative experience that has radically increased,
+uh,
+my abilities and,
+um,
+has given me so much insight,
+uh,
+that,
+uh,
+that has like inspired my curiosity.
+And it's like,
+I can't wait to research and read more and put pen to paper and,
+and,
+uh,
+continue,
+uh,
+coding.
+I never thought I would be doing that.
+So,
+um,
+this,
+as you can see is the Kaggle working submission dot JSON.
+This is what I have been pulling my hair out over,
+uh,
+forever.
+Not this necessarily this file path,
+but actually generating this file path.
+This has always been there since the beginning,
+but this file path would not,
+uh,
+create.
+And this is like,
+for instance,
+um,
+when tearing my model apart to make this,
+which,
+uh,
+unfortunately some of the cool pieces that belong,
+uh,
+as integrations here,
+were not in this,
+um,
+because I had to,
+uh,
+figure out what was preventing that submission file from being
+generated.
+And it was,
+uh,
+turned out a bunch of things,
+just,
+uh,
+my lack of,
+uh,
+familiarity with coding.
+I'm not an expert.
+So,
+um,
+though I may be if I keep up at it,
+uh,
+someday.
+So the,
+um,
+there were things inside and outside of loops and I found,
+uh,
+some functions that had,
+uh,
+basically been rendered,
+uh,
+ineffectual.
+Um,
+as a result in those failures in the system,
+uh,
+were stopping the formation of the,
+of the JSON file,
+uh,
+pathway before it could,
+uh,
+it could be enacted.
+So,
+um,
+here if,
+and I don't know if anybody's interested in this,
+um,
+uh,
+I can,
+I'll quickly scroll down to the bottom and we'll see,
+I don't know if this is one of the,
+um,
+it may take a second to,
+uh,
+so let me leave this alone.
+Uh,
+but here,
+um,
+let me try the logs.
+So here,
+uh,
+in,
+for instance,
+uh,
+this is Archangel 1.0.
+Uh,
+it successfully ran in 3,116.3 seconds,
+uh,
+which is actually pretty slow.
+Um,
+um,
+I don't know what the other people's like,
+what other competitors code looks like.
+Um,
+certainly,
+um,
+uh,
+the,
+um,
+and just let me know if my screen starts lagging.
+Um,
+it usually does when this starts running.
+Um,
+but,
+uh,
+uh,
+I know that they're brilliant.
+They're experts,
+every single one of them,
+and,
+um,
+their models will typically run really fast,
+uh,
+and are very,
+I'm assuming very,
+very,
+very efficient.
+I know I'm assuming probably in under when I first started,
+um,
+before I,
+I really got the cognitive mechanisms in play,
+um,
+and those somatic subsystems and,
+um,
+some of those larger,
+uh,
+calculations that are occurring.
+Um,
+the,
+uh,
+the,
+the model would complete almost instantaneously.
+It was just so quick.
+Um,
+the blink of an eye and 1200,
+uh,
+questions,
+training,
+all of that gone and producing a result.
+Um,
+but the result was not favorable.
+It wasn't,
+uh,
+a score that I would be happy with.
+Daniel,
+I don't believe I,
+if I remember correctly,
+Daniel didn't ask me to,
+um,
+uh,
+get first place.
+He asked me to beat the theoretical maxim.
+Uh,
+so that's what I'm trying to do.
+So here you can see where it says,
+uh,
+does not exist.
+I was so sad.
+Um,
+but let me see if we can get,
+uh,
+uh,
+if there is any scoring to be had.
+Uh,
+no.
+Um,
+so unfortunately,
+uh,
+I picked the one model that,
+um,
+didn't produce a score,
+uh,
+because I was tearing it apart to,
+uh,
+find that submission file,
+which we'll see no op,
+uh,
+no operation,
+none,
+um,
+in the submission file you have,
+you can submit.
+Uh,
+my model only produces one output,
+one correct answer,
+but you can actually choose,
+uh,
+to produce two.
+If you want,
+like you can get two tries and getting the answer,
+right.
+That's how hard the test is.
+Um,
+so my model,
+uh,
+was,
+um,
+there,
+the,
+basically the action selection through a boring series of events,
+um,
+in the generate action space was,
+uh,
+was not selecting a new action.
+And so,
+uh,
+it was defaulting to the error of,
+uh,
+no operation and,
+uh,
+closing the task out completely.
+So in this case,
+the tasks were being prematurely,
+uh,
+ended or were running,
+uh,
+as no operation through their total iterations,
+which in this case,
+it looks like it was set to 500.
+So,
+um,
+I would love to,
+um,
+if I can,
+I don't know if I'll be able to,
+but certainly anybody can,
+uh,
+reach out to me directly,
+um,
+as those log files,
+uh,
+are,
+I download them every time.
+And,
+uh,
+uh,
+you can see that score of,
+uh,
+of 86.4% consistently,
+uh,
+about 84 or 86,
+uh,
+above 86 to 87%.
+What's really interesting is it seems that I'm going to have to,
+um,
+just get out of this,
+uh,
+and because it's,
+uh,
+my,
+sounds like my computer's firing up like a jet engine.
+So the,
+um,
+I wonder,
+and I would love other people's thoughts on this.
+Um,
+if,
+um,
+if there is necessarily there,
+if you cannot get a hundred percent,
+um,
+no matter at like,
+I have seemed to like kind of,
+and it may just be me,
+but unless I,
+uh,
+again,
+the system,
+there's not really a way to get a higher score of that system.
+Naturally,
+even scoring well above the,
+the,
+the maximum,
+uh,
+possible,
+um,
+still won't get every answer right.
+So,
+uh,
+I don't know if that's,
+uh,
+because it has to be that way or if it's,
+uh,
+if it's just my,
+uh,
+my lack of,
+uh,
+familiarity,
+uh,
+with this.
+So,
+um,
+I'm going to try it one more time really quickly to,
+um,
+uh,
+uh,
+uh,
+did,
+did that.
+Oh,
+I don't want to,
+there we go.
+Um,
+to find,
+uh,
+here we go.
+Uh,
+look,
+that's not it.
+That's not it.
+That's it.
+It'd be right here.
+The,
+huh.
+Yeah,
+it must still be running.
+Nope.
+Graph session.
+Uh,
+here we are.
+So one of the things that's,
+uh,
+also been,
+uh,
+fascinating is learning all of the new,
+systems all of the time.
+Um,
+and,
+uh,
+it's like every day I have to learn a new system and it's,
+it's pretty amazing.
+It keeps you on your toes.
+That's for sure.
+So let me edit the,
+oh,
+wait,
+no,
+here logs.
+Oh,
+no.
+Let's see if this pops up really quick.
+Thank you everybody for your patience.
+I appreciate it.
+Okay.
+here we are.
+Let me see.
+We should have.
+Yep.
+This model.
+Okay.
+Oh,
+be able to see that either.
+If it's not going to,
+um,
+yeah,
+I'm sorry guys.
+I,
+I don't want to waste,
+uh,
+too much.
+Uh,
+I don't want to waste like people's time.
+Uh,
+unnecessarily.
+I know everybody is,
+uh,
+how about go show the low road,
+high road,
+and then we'll see if there's any last questions and that will be good for it.
+Oh,
+okay.
+Low road,
+high road.
+Um,
+I'm trying to think.
+Whereas,
+uh,
+I,
+I don't know if I,
+I,
+I'm so disorganized after the,
+uh,
+having like,
+okay.
+Okay.
+Then it's all good.
+Then it's all good.
+Then it's all good.
+I don't know where it is.
+Uh,
+okay.
+Then you can unshare that can be basically the end.
+How is it gonna continue from here?
+So,
+um,
+I,
+uh,
+I have to kind of rebuild the model back up.
+Um,
+and,
+uh,
+but I'm very confident,
+uh,
+based on the model's performance,
+um,
+that,
+uh,
+once the pro like everything's integrated,
+cause that's another thing,
+the mod,
+these models,
+if they're not,
+they,
+they don't just kind of like gradually get the questions or they'll get like 80% one time and 20% another time.
+Um,
+it seems for me at least,
+um,
+that there is,
+uh,
+uh,
+you,
+you're either getting in the,
+you're either getting like 70% with this framework or you're getting 0%.
+Like it has to,
+the,
+there are specific criteria almost whereby the model will be able to,
+uh,
+perform better.
+but it's either better or really not at all.
+Each framework,
+for instance,
+the,
+the model that is producing art,
+like Archangel 1.0 that produces,
+uh,
+uh,
+the 86%,
+uh,
+consistent score,
+right.
+Is not the same model in any way as the model that,
+uh,
+that I first started with that would only produce 30%.
+And the model that produced 48%,
+the model that produced 72%,
+right.
+they're all different and structured differently.
+And each one has been,
+um,
+trial and error,
+100% and,
+and hundreds of hours in the last month and a half.
+I'm like 700 hours in.
+Somebody said,
+told me that my,
+the bags that are,
+my eyes were going into my cheeks.
+Like they were,
+so I thought that was pretty funny.
+Okay.
+Do you have any last comments or ideas?
+Um,
+no,
+I,
+I,
+I think that cognitive computing is so exciting.
+Um,
+that active inference is so exciting.
+There's so much room for discovery here.
+There's so much room for creativity.
+Everything that,
+again,
+that we see and we find is,
+is inspiring in every way.
+And the implications for the,
+how those technologies are employed,
+um,
+has broad and very,
+very,
+very important,
+uh,
+uh,
+like implications for humanity.
+I think,
+I,
+I think it's like the next big thing.
+All right.
+Thank you,
+Benjamin.
+Good luck with getting this,
+submission.
+And I hope that you can reduce people's uncertainty,
+which will surely be the realized efficacy of your scripts.
+Oh,
+well,
+thank you.
+Thank you.
+Bye.
+Bye.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.

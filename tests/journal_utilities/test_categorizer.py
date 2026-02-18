@@ -5,7 +5,7 @@ These tests verify pattern matching for all stream types.
 """
 
 import pytest
-from journal_utilities.categorizer import categorize_name, EventCategory
+from journal_utilities.youtube.categorizer import categorize_name, EventCategory
 
 
 class TestCategorizeName:

@@ -1,95 +1,176 @@
 # AGENTS.md
 
-This file provides guidance to AI coding agents working with this repository.
+> [!IMPORTANT]
+> **READ THIS FILE FIRST** before attempting any changes. This repository follows strict architectural and documentation standards.
 
-## Project Overview
+## 1. Project Overview
 
-Journal-Utilities is a two-pipeline system for processing Active Inference Journal content:
+Journal-Utilities is a modular, config-driven system for processing the Active Inference Institute's digital library.
 
-1. **Transcription Pipeline** (`journal_utilities/`) - WhisperX-based local transcription with SurrealDB storage
-2. **Entity Extraction Pipeline** (`journalrag/`) - Cohere AI-powered entity and relationship extraction
+### Core Pipelines
 
-## Quick Start Commands
+| Pipeline | Source | Key Files | Doc Reference |
+| :--- | :--- | :--- | :--- |
+| **YouTube** | `src/journal_utilities/youtube/` | `channel.py`, `categorizer.py` | [docs/youtube.md](docs/youtube.md) |
+| **Download** | `src/journal_utilities/download/` | `downloader.py` | [docs/youtube_download.md](docs/youtube_download.md) |
+| **Transcription** | `src/journal_utilities/transcribe/` | `transcriber.py` (Mac), `transcribe.py` (GPU) | [docs/transcription.md](docs/transcription.md) |
+| **Data** | `src/journal_utilities/data/` | `database.py`, `importer.py` | [docs/data.md](docs/data.md) |
+| **RAG** | `src/journal_utilities/rag/` | `main.py`, `extractors/` | [docs/rag.md](docs/rag.md) |
+| **Export** | `src/journal_utilities/export/` | `exporter.py` | [docs/export.md](docs/export.md) |
+| **Render** | `src/journal_utilities/render/` | `renderer.py` | [docs/render.md](docs/render.md) |
+| **Interface** | `src/journal_utilities/interface/` | `app.py`, `chat_engine.py` | [docs/web_interface.md](docs/web_interface.md) |
+
+## 2. Agent Guidelines
+
+### General Rules
+
+1. **Configuration First**: Never hardcode paths or settings. Use `config.ini` (via `run.py` config loader).
+2. **Modular Docs**: If you modify a module (e.g., `rag`), you **MUST** update its corresponding doc file (`docs/rag.md`).
+3. **Linting**: Ensure all markdown and python code is lint-free.
+4. **Testing**: Run `uv run pytest` before submitting changes.
+
+### Common Tasks
+
+#### Adding a New Dependency
+
+1. Add to `pyproject.toml` under the correct dependency group (e.g., `[project.optional-dependencies]`).
+2. Run `uv sync`.
+3. Update `AGENTS.md` or the specific module doc if the dependency is significant.
+
+#### Modifying the Database Schema
+
+1. Check `src/journal_utilities/data/database.py`.
+2. If adding a new table, document it in `docs/data.md`.
+3. Ensure `importer.py` audit trails cover the new data.
+
+#### Improving Prompt Engineering
+
+1. Edit `src/journal_utilities/interface/chat_engine.py`.
+2. Test changes with the `gemma3:4b` model (the default).
+3. Document prompt changes in `docs/chat_engine.md`.
+
+## 3. Development Workflow
+
+### Environment
+
+We use `uv` for dependency management.
 
 ```bash
-# Setup
-uv sync --all-extras
-
-# Run tests
-uv run pytest tests/ -v
-
-# Start database
-make db-start
-
-# Complete transcription workflow
-make fetch-coda && make import-sessions && make fetch-metadata && make transcribe && make copy-to-journal
-
-# Entity extraction
-make extract-entities
+uv venv
+source .venv/bin/activate
+uv pip install -e ".[dev]"
 ```
+
+### Running the App
+
+Always use `run.py` as the entry point.
+
+```bash
+python run.py full       # Run full pipeline
+python run.py serve      # Start web UI
+```
+
+## 4. Documentation Standards
+
+- **Format**: GitHub Flavored Markdown.
+- **Diagrams**: Use Mermaid (`mermaid`) for flows and architectures.
+- **Linking**: Use relative links for file references.
+- **Signposting**: `README.md` is the index; `docs/*.md` are the details.
 
 ## Architecture
 
-```
-src/
-├── journal_utilities/     # Transcription pipeline
-│   ├── ingest_db_create_wav.py  # Data ingestion with audit trail
-│   └── transcribe.py            # WhisperX transcription
-└── journalrag/            # Entity extraction pipeline
-    ├── main.py            # Pipeline orchestrator
-    ├── extractors/        # Cohere AI extraction
-    ├── graph/             # SurrealDB client
-    ├── models/            # Pydantic entity models
-    ├── schemas/           # JSON schemas for extraction
-    └── adapters/          # Entity format conversion
+```text
+src/journal_utilities/
+├── youtube/                # YouTube API and data handling
+│   ├── channel.py          # Channel enumeration (yt-dlp --flat-playlist)
+│   ├── playlist.py         # Playlist enumeration and metadata
+│   ├── youtube.py          # URL builder helpers
+│   └── categorizer.py      # Video categorization by series/type
+├── download/               # Download management
+│   └── downloader.py       # Download transcripts/audio/video per-video
+├── transcribe/             # Transcription engines
+│   ├── transcriber.py      # Local Whisper (mlx-whisper)
+│   └── transcribe.py       # WhisperX (GPU/CUDA)
+├── data/                   # Data storage and database
+│   ├── database.py         # Database models and queries
+│   └── importer.py         # Session import with audit trail
+├── interface/              # Web interface (FastAPI SPA)
+│   ├── app.py              # FastAPI server + REST API
+│   ├── data_loader.py      # Video manifest from data/output/
+│   ├── chat_engine.py      # Ollama RAG chat engine
+│   └── static/             # HTML, CSS, JS frontend
+├── rag/                    # Entity extraction pipeline
+│   ├── main.py             # Pipeline orchestrator
+│   ├── extractors/         # Cohere AI extraction
+│   ├── graph/              # SurrealDB graph client
+│   ├── models/             # Pydantic entity models
+│   ├── schemas/            # JSON schemas for extraction
+│   └── adapters/           # Entity format conversion
+├── render/                 # Content rendering
+│   └── renderer.py         # Markdown/HTML rendering
+├── export/                 # Transcript export
+│   └── exporter.py         # Plaintext, PDF, Markdown, JSON, HTML
+├── llm/                    # LLM tool integration (placeholder)
+└── utils/                  # General utilities
 ```
 
 ## Key Entry Points
 
 | Task | Command | Main File |
-|------|---------|-----------|
-| Import sessions | `make import-sessions` | `src/journal_utilities/ingest_db_create_wav.py` |
-| Transcription | `make transcribe` | `src/journal_utilities/transcribe.py` |
-| Entity extraction | `make extract-entities` | `src/journalrag/main.py` |
+| :--- | :--- | :--- |
+| Show config | `python run.py config` | `run.py` + `config.ini` |
+| Export transcripts | `python run.py export` | `export/exporter.py` |
+| Download content | `python run.py download` | `downloader.py` |
+| Start web interface | `python run.py serve` | `interface/app.py` |
+| Run full pipeline | `python run.py full` | `run.py` |
+| Run tests | `python run.py test` | pytest |
+| Enumerate channel | `python scripts/download_channel.py --enumerate-only` | `channel.py` |
+| Local Whisper | `python scripts/transcribe_missing.py` | `transcriber.py` |
+| Entity extraction | `make extract-entities` | `rag/main.py` |
+
+## Configuration
+
+All pipeline options live in `config.ini` (plaintext INI format):
+
+- `[general]` — data directory, log level
+- `[download]` — transcript/audio/video flags, cookies, rate limiting
+- `[transcribe]` — engine, model, max files
+- `[export]` — enabled formats, output directory
+- `[interface]` — host, port
+- `[database]` — SurrealDB connection
 
 ## Testing
 
-- **35 tests** across unit and integration suites
-- Unit tests run without API keys (use mocks where needed)
-- Integration tests require `COHERE_API_KEY` for real API calls
-
-```bash
-# Run all tests
-uv run pytest tests/ -v
-
-# Run only unit tests
-uv run pytest tests/journalrag/unit/ -v
-
-# Run integration tests (requires API key)
-uv run pytest tests/journalrag/integration/ -v -s
-```
+- Tests use real methods (no mocks) wherever possible
+- Run: `uv run pytest tests/ -v`
+- Coverage: `uv run pytest tests/ -v --cov=src --cov-report=term-missing`
 
 ## Environment Variables
 
 Required in `.env` (copy from `.env.example`):
 
-- `HUGGINGFACE_TOKEN` - For WhisperX speaker diarization
-- `API_KEY` - YouTube Data API v3
-- `CODA_API_TOKEN` - Coda session data
-- `COHERE_API_KEY` - Entity extraction
-
-## Database
-
-SurrealDB stores all session and entity data:
-
-```bash
-# Query database
-surreal sql --endpoint http://localhost:8080 --username root --password root --namespace actinf --database actinf
-```
+- `HUGGINGFACE_TOKEN` — WhisperX speaker diarization
+- `CODA_API_TOKEN` — Coda session data
+- `COHERE_API_KEY` — Entity extraction
+- `OLLAMA_MODEL` — Chat model (default: `gemma3:4b`)
+- `OLLAMA_BASE_URL` — Ollama API URL (default: `http://localhost:11434`)
 
 ## Code Patterns
 
+- **Dataclasses & Enums**: Structured results (`DownloadResult`, `TranscriptionResult`, `ExportResult`)
 - **Async-first**: Database operations use `asyncio`
 - **Pydantic models**: Type-safe entity definitions
-- **Structured logging**: Uses `structlog` with rich output
-- **Audit trail**: All imports tracked with rollback capability
+- **Structured logging**: `logging.getLogger(__name__)` throughout
+- **Skip-existing**: All download/transcription/export functions support `skip_existing=True`
+- **Config-driven**: `run.py` reads `config.ini` via `configparser`
+- **User-Agent**: All `yt-dlp` calls MUST use a modern browser User-Agent to avoid 403s
+- **Cookies**: Prefer browser cookies for authenticated YouTube access
+
+## Optional Dependencies
+
+| Group | Install | Purpose |
+| :--- | :--- | :--- |
+| `transcribe-local` | `uv pip install -e ".[transcribe-local]"` | `mlx-whisper` for Apple Silicon |
+| `interface` | `uv pip install -e ".[interface]"` | FastAPI, uvicorn, httpx |
+| `export` | `uv pip install -e ".[export]"` | fpdf2 for PDF export |
+| `dev` | `uv pip install -e ".[dev]"` | Testing, linting, type checking |

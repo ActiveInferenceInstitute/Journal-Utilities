@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Active Inference Institute — Research library with transcripts, audio, and AI-powered chat for Active Inference and Free Energy Principle content.">
+    <title>Active Inference Institute — Research Library</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+
+<body>
+    <div class="app-shell" id="app">
+
+        <!-- ===== Navbar ===== -->
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="navbar__brand">
+                <img src="/static/ActInferServe.png" alt="Active Inference Institute" class="navbar__logo">
+                <div>
+                    <div class="navbar__title">Active Inference Institute</div>
+                    <div class="navbar__subtitle">Research Library</div>
+                </div>
+            </div>
+            <div class="nav-tabs" id="navTabs" role="tablist">
+                <button class="nav-tab nav-tab--active" data-tab="library" role="tab" aria-selected="true"
+                    id="tab-library">
+                    <span class="nav-tab__icon">📚</span> Library
+                </button>
+                <button class="nav-tab" data-tab="knowledge" role="tab" aria-selected="false" id="tab-knowledge">
+                    <span class="nav-tab__icon">🔬</span> Knowledge
+                </button>
+                <button class="nav-tab" data-tab="chat" role="tab" aria-selected="false" id="tab-chat">
+                    <span class="nav-tab__icon">💬</span> Chat
+                </button>
+            </div>
+        </nav>
+
+        <!-- ===== Main Content ===== -->
+        <main class="main-content">
+
+            <!-- ===== Library Tab ===== -->
+            <section class="tab-panel tab-panel--active" id="panel-library" role="tabpanel"
+                aria-labelledby="tab-library">
+                <!-- Stats -->
+                <div class="stats-bar" id="statsBar"></div>
+
+                <!-- Search -->
+                <div class="search-bar">
+                    <span class="search-bar__icon">🔍</span>
+                    <input type="search" class="search-bar__input" id="searchInput"
+                        placeholder="Search transcripts — try 'free energy principle', 'Markov blanket', 'predictive coding'..."
+                        aria-label="Search transcripts">
+                    <button class="search-bar__clear" id="searchClear" aria-label="Clear search">✕</button>
+                </div>
+
+                <!-- Category filters -->
+                <div class="filter-bar" id="filterBar">
+                    <span class="filter-bar__label">Filter:</span>
+                </div>
+
+                <!-- Video grid -->
+                <div class="video-grid" id="videoGrid"></div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination"></div>
+            </section>
+
+            <!-- ===== Video Detail (shown dynamically) ===== -->
+            <section class="tab-panel" id="panel-detail" role="tabpanel">
+                <a href="#" class="btn-back" id="backToLibrary">← Back to Library</a>
+                <div id="videoDetailContent"></div>
+            </section>
+
+            <!-- ===== Knowledge Tab ===== -->
+            <section class="tab-panel" id="panel-knowledge" role="tabpanel" aria-labelledby="tab-knowledge">
+                <h2 class="knowledge-heading">
+                    📊 Channel Knowledge Map
+                </h2>
+                <div class="stats-bar" id="knowledgeStats"></div>
+                <h3 class="knowledge-subheading">
+                    Content by Category
+                </h3>
+                <div class="knowledge-grid" id="categoryGrid"></div>
+            </section>
+
+            <!-- ===== Chat Tab ===== -->
+            <section class="tab-panel" id="panel-chat" role="tabpanel" aria-labelledby="tab-chat">
+                <div class="chat-container" id="chatContainer">
+                    <div class="chat-header">
+                        <div>
+                            <div class="chat-header__title">🧠 Research Assistant</div>
+                            <div class="chat-header__status">
+                                <span class="chat-header__dot" id="chatDot"></span>
+                                <span id="chatStatusText">Checking connection...</span>
+                            </div>
+                        </div>
+                        <div class="chat-header__actions">
+                            <button class="chat-btn" id="chatClear" title="Clear conversation">🗑 Clear</button>
+                            <label class="chat-btn chat-rag-label">
+                                <input type="checkbox" id="ragToggle" checked class="chat-rag-checkbox">
+                                RAG
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-welcome" id="chatWelcome">
+                            <div class="chat-welcome__icon">🧠</div>
+                            <div class="chat-welcome__title">Active Inference Research Assistant</div>
+                            <div class="chat-welcome__desc">
+                                Ask questions about Active Inference, the Free Energy Principle,
+                                or any topic covered in the Institute's video library.
+                                Responses are grounded in real transcript data.
+                            </div>
+                            <div class="chat-welcome__suggestions" id="chatSuggestions">
+                                <button class="chat-suggestion" data-q="What is the Free Energy Principle?">What is the
+                                    Free Energy Principle?</button>
+                                <button class="chat-suggestion"
+                                    data-q="Explain Markov blankets in active inference">Explain Markov
+                                    blankets</button>
+                                <button class="chat-suggestion"
+                                    data-q="What are the latest developments in active inference?">Latest
+                                    developments</button>
+                                <button class="chat-suggestion"
+                                    data-q="How does predictive coding relate to active inference?">Predictive
+                                    coding</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-area">
+                        <textarea class="chat-input" id="chatInput"
+                            placeholder="Ask about Active Inference, Free Energy Principle, or any topic..." rows="1"
+                            aria-label="Chat message"></textarea>
+                        <button class="chat-send" id="chatSend" disabled>Send</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

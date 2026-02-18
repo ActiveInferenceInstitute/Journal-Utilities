@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream 010.1 ~ Building a Drone with RxInfer.jl ~ Bart van Erp, Albert Podusenko</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream 010.1 ~ Building a Drone with RxInfer.jl ~ Bart van Erp, Albert Podusenko</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_010 &middot; Episode 1 &middot; Speakers: Building a Drone with RxInfer.jl ~ Bart van Erp, Albert Podusenko &middot; Duration: 1:03:48 &middot; Views: 696</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=TZNXs5jP9hE">https://www.youtube.com/watch?v=TZNXs5jP9hE</a></div>
+<article>
+<p>Hello and welcome. This is Active Inference Model Stream number 10.1 on April 4th, 2024,</p>
+<p>4-4-24. And we're really excited today to be with Bart Van Earp and Albert Potosenko</p>
+<p>talking about building a drone with RxInfer. We have an ongoing RxInfer learning group at</p>
+<p>the Institute and a lot of participants have been excited to use even early versions of this</p>
+<p>package and connect it to all the exciting math and developments. So thank you both for joining,</p>
+<p>looking forward to this very pragmatic presentation. Awesome. Thanks, Daniel. Thanks for the kind words,</p>
+<p>the nice introduction. Also welcome everyone online. As Daniel mentioned, we're going to build</p>
+<p>a drone today. So last week I didn't know anything about drones whatsoever, but in the meantime,</p>
+<p>I was able to craft one with the help of my colleagues. And I want to kind of transfer</p>
+<p>the learning experience that I obtained over this week to all of you, such that you can leverage</p>
+<p>the power of our toolbox RxInfer in the end to make your own very cool applications, your own drone,</p>
+<p>your own autonomous vehicle, whatever you want. And we will then be there also to support you in this</p>
+<p>journey. But for now, let's get started. How are we going to build a drone with RxInfer? So first of all,</p>
+<p>let me briefly introduce myself. My name is Bart Van Earp. I'm a PhD student and teaching assistant in</p>
+<p>BIOS App, which is the research group here at Eindhoven University of Technology. And together with Albert,</p>
+<p>we will be also live and we'll also be monitoring the chat in case there are any questions pop up</p>
+<p>along the way. We will be your host today together with Daniel. This talk will be supported by Reactive</p>
+<p>Base. So Reactive Base is the overcoupling GitHub organization of RxInfer and all the packages on</p>
+<p>which it's built. At the moment, we're looking for contributors. So if you're interested after this</p>
+<p>talk, please reach out and then definitely we can get you acquainted with the toolbox and with our</p>
+<p>environment there. So we're from BiosLab, the Eindhoven University of Technology. We are located</p>
+<p>here in Eindhoven, also called City of Light. And from here, we're doing very interesting research</p>
+<p>on building agents, probabilistic graphical models and using these to craft all kinds of engineering</p>
+<p>applications, trying to solve real world problems with our engine.</p>
+<p>Our engine, RxInfer, you might have already heard about this, but our engine is a Julia engine,</p>
+<p>which allows us to perform automatic Bayesian inference, specifically through reactive message</p>
+<p>passing. The engine that we have built is completely reactive, which means that it doesn't do anything</p>
+<p>unless there is something to do for it. So it's relatively energy efficient because it doesn't</p>
+<p>consume energy during all the other moments. And we perform message passing, but I'll give a more</p>
+<p>detailed discussion on this. More explanation will follow later in this talk. And we're going to use</p>
+<p>this toolbox in order to craft a drone, a drone that can actually fly using some simplified drone</p>
+<p>mechanics, go from position A to position B. And I'm very eager to show you how this journey, how this</p>
+<p>development journey looks like. So let's get started.</p>
+<p>So what I'm going to talk about are three parts, basically, in this talk. I'm going to first start off with</p>
+<p>the model specification. So in the Bayesian inference methodology, the first part is always that we need</p>
+<p>to craft a model. And this model will include some drone physics. So I'll be taking you back to high school,</p>
+<p>where you learned all these concepts, refresh a couple of them. And based on that, I'm going to construct a</p>
+<p>generative model of how a simplified drone would look like. Furthermore, I'll then continue upon</p>
+<p>the probabilistic inference. So if we have crafted this model, and we want this model actually to do</p>
+<p>something, inference allows us to compute posteriors in this model. And the inference on this model is</p>
+<p>actually the underlying control algorithm that we will be crafting. And this will be automated using our</p>
+<p>toolbox, RxInfer. Then finally, we'll wrap up with some experiments. And then there will be plenty of</p>
+<p>time to answer any questions that you might have. Let's get going. For the model specification, we're</p>
+<p>going to start off with some simplified drones physics. It will be very easy for some, a refresher for others.</p>
+<p>But hopefully, throughout this, throughout these following couple of minutes, you'll have a basic</p>
+<p>understanding of how a drone works. We have greatly simplified it. Because of course, going into the</p>
+<p>details of three, three dimensional drones, with wind, all that kind of stuff, would be a bit too much for</p>
+<p>just a single live stream. But we hope to offer you the tools and maybe the machinery to create these more</p>
+<p>complicated models yourself. So we have this very nice drone here. And what we're interested in is what</p>
+<p>forces act on this drone. So we're going to simplify this a bit. And we're saying that each of the rotors,</p>
+<p>so the left and the right rotor, produce some kind of upward force, pulling this drone from the</p>
+<p>from the ground. Of course, we also walk around on Earth, and we know that there is actually a force that</p>
+<p>opposes this, namely gravity, which tries to pull us to the ground. Well, combining these two forces</p>
+<p>allows us to either increase or decrease the altitude of this drone, and make it fly. That's the entire goal.</p>
+<p>In the end, the goal will be to come up with these forces, these FL and FR, such that our drone flies from</p>
+<p>location A to location B. If we do the computations a bit and see what are the kind of the net force</p>
+<p>forces acting on this drone, is in this case, we see that we have a vertical component, Fy, which is the</p>
+<p>sum of the individual forces created by the motor, minus the force of gravity that's acting upon the drone.</p>
+<p>And in the horizontal direction, because everything is nicely aligned,</p>
+<p>we have a net force of zero. If there would be wind, for example, there would be a contribution there.</p>
+<p>But in the simplified model, I assume that, well, there is no horizontal component as of yet.</p>
+<p>But if we tilt the drone a bit with a certain angle theta, we actually see that this theta</p>
+<p>not only affects, of course, the horizontal or the vertical net force, but also the horizontal one.</p>
+<p>So based on this, we can obtain equations for this horizontal and vertical force acting upon the drone.</p>
+<p>The motors, we assume that they are at a distance r, a radius r from the center of mass. So we</p>
+<p>very simplistically assumed that the center of mass of the drone is at the radius r from its rotor. So the force,</p>
+<p>you can think of it as acting upon an arm, creating a specific moment.</p>
+<p>So the torque that gets generated by these rotors with respect to the center of mass of the drone,</p>
+<p>the difference between the distance r is the difference between these two forces multiplied with the radius r.</p>
+<p>With these three equations, so the net force is acting upon the drone, and this net torque that we can compute</p>
+<p>based on the rotation that the drone wants to go to, we can already construct a big part of the model of this drone.</p>
+<p>So these are kind of the forces that act upon the drone, horizontal, vertical direction, the rotation as given by this torque.</p>
+<p>And we want to convert these forces into motion, because in the end we want to move the drone,</p>
+<p>and we want to figure out what forces are required to move from a position A to a position B.</p>
+<p>So let's see, using Newton's law, we can already know that our force is equal to our mass multiplied with our acceleration.</p>
+<p>In other words, our acceleration is our force divided by our mass. So based on the net forces that we just</p>
+<p>computed, we can also extract equations for the accelerations in the vertical and horizontal direction.</p>
+<p>These accelerations accumulate, so if we integrate over them, we get actually a velocity.</p>
+<p>So an incremental change in our velocity you can think of is actually this acceleration times this incremental change in time,</p>
+<p>which gives us kind of a relationship. So if we increase the acceleration over a period of time,</p>
+<p>then we also know that that will lead to an increase in our velocities in both the horizontal and vertical direction.</p>
+<p>If we take this even a step further, then we can also start to model the actual position of the drone.</p>
+<p>So integrating over this velocity will give us our position in both the X and Y direction.</p>
+<p>Basically every small change in X will be a result of the particular velocity over a small period of time.</p>
+<p>And with this set of equations, it actually becomes possible to extract the movements from these net forces of the drone.</p>
+<p>So that's basically the movement. So how it moves from left to right, up and down.</p>
+<p>So we see this is the acceleration in the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of the direction of</p>
+<p>used for actually angular acceleration.</p>
+<p>Similarly, we can also compute the angular velocity,</p>
+<p>so omega, because a small increment in this angular velocity</p>
+<p>will be our angular acceleration</p>
+<p>times a small fraction of time.</p>
+<p>So integrating over the angular acceleration</p>
+<p>will give us the angular velocity.</p>
+<p>And you might have already guessed this,</p>
+<p>based on this, we can also compute a new angle.</p>
+<p>So the angle is this velocity integrated over time.</p>
+<p>Very similarly, as we derived the equations</p>
+<p>for the actual movement of the drone.</p>
+<p>And together, these net forces,</p>
+<p>these equations for the movement of the drone,</p>
+<p>and these simplified equations for the rotation,</p>
+<p>they constitute the drone dynamics.</p>
+<p>So it might have seemed like a recap from high school,</p>
+<p>but for the simplified example,</p>
+<p>this is all that we actually need</p>
+<p>in order to craft this drone.</p>
+<p>And that's what I'm gonna show you right now.</p>
+<p>Because these equations of motion,</p>
+<p>I'm gonna write down in a function,</p>
+<p>specifically a Julia function,</p>
+<p>because that's the language that RxInfer also uses</p>
+<p>under the hood.</p>
+<p>So we're gonna create this function F,</p>
+<p>and I'm gonna walk you right through it.</p>
+<p>There are just 15 lines of code,</p>
+<p>so I think this should be manageable.</p>
+<p>So we have a function F,</p>
+<p>which accepts the state.</p>
+<p>So you can think of this state as the positions,</p>
+<p>velocities, angle, and angular velocities of the drone.</p>
+<p>The actions, to which we refer to the forces</p>
+<p>on the left and right rotor.</p>
+<p>The particular drone,</p>
+<p>like what are the characteristics of that drone,</p>
+<p>and the environment.</p>
+<p>So are we on Mars?</p>
+<p>Are we on Earth?</p>
+<p>All those attributes that are environment related.</p>
+<p>So in the first three lines,</p>
+<p>what we're gonna do is we're gonna extract some information.</p>
+<p>So we're gonna extract the forces from our actions.</p>
+<p>We're gonna extract the mass,</p>
+<p>the moment of inertia,</p>
+<p>and the radius of the drone,</p>
+<p>because these are properties that correspond</p>
+<p>to the particular drone that we're using,</p>
+<p>and the gravity we're gonna just grab from our environment.</p>
+<p>Because if we would be on Mars,</p>
+<p>we would have very different dynamics, of course.</p>
+<p>Then from the state,</p>
+<p>what we extract are X and Y,</p>
+<p>which are horizontal and vertical positions,</p>
+<p>VX and VY,</p>
+<p>which are velocities in the horizontal and vertical direction,</p>
+<p>data, which was our angle,</p>
+<p>and omega, which was our angular velocity.</p>
+<p>With all these properties, characteristics,</p>
+<p>and states extracted,</p>
+<p>we can actually start implementing the equations</p>
+<p>that we have on the left.</p>
+<p>So FG, which is the force generated by the gravity,</p>
+<p>is simply equal to the mass times the gravitational constant.</p>
+<p>So FY and FX,</p>
+<p>I merely copied from the equations on the left.</p>
+<p>So it's the sum of the forces,</p>
+<p>multiplied with cosine or sine of the angle,</p>
+<p>and for the Y force,</p>
+<p>the net Y force,</p>
+<p>we also subtract the gravity,</p>
+<p>because there it has an influence.</p>
+<p>And for the net torque, we do the similar.</p>
+<p>So we extract the difference between the force</p>
+<p>generated by the left and right rotor,</p>
+<p>and multiply that with the radius,</p>
+<p>in order to get us a torque.</p>
+<p>Then next up is we can, based on these forces,</p>
+<p>we can compute the accelerations in the X and Y direction.</p>
+<p>So F of X divided by M will give us these accelerations,</p>
+<p>or F of Y divided by M for the vertical acceleration.</p>
+<p>We're gonna take a very crude Euler approximation.</p>
+<p>So we're gonna do a linearization</p>
+<p>in order to actually create a new velocity.</p>
+<p>So V X new, which will be the velocity after enforcing the actions,</p>
+<p>will be our previous velocity,</p>
+<p>plus our acceleration,</p>
+<p>times this increment in time,</p>
+<p>is DT.</p>
+<p>And this DT we said beforehand.</p>
+<p>But this is a simplified assumption,</p>
+<p>which of course there are more complicated</p>
+<p>assumptions to be made.</p>
+<p>We could choose</p>
+<p>Euler-Maiwanger,</p>
+<p>and all those other fourth order approximations.</p>
+<p>But for now, let's keep it simple,</p>
+<p>and let's stick to this very simple order approximation.</p>
+<p>Then based on the velocities and accelerations,</p>
+<p>we can also do a similar trick for the new positions.</p>
+<p>So how does our X and Y coordinate change based on their previous coordinates,</p>
+<p>the velocities that we had at the previous moment,</p>
+<p>and the accelerations that we computed?</p>
+<p>Here we have this quadratic term over the accelerations,</p>
+<p>which are merely a matter of fact of the approximation,</p>
+<p>because over DT we also want to kind of integrate over the accelerations.</p>
+<p>So that's odds, the second term basically,</p>
+<p>odds for this effect and makes it a bit more realistic.</p>
+<p>With that out of the way,</p>
+<p>we can do similar things for the rotation.</p>
+<p>So the acceleration, the rotational acceleration,</p>
+<p>is our torque divided by our moment of inertia that we got from the drone.</p>
+<p>We again can update the angular velocity based on this previous angular velocity.</p>
+<p>The acceleration that we just computed and the time interval.</p>
+<p>And based on that, we can also update our angle.</p>
+<p>So what this function does,</p>
+<p>it accepts the state actions and some characteristics of the drone and the environment</p>
+<p>and some discretization over time.</p>
+<p>And it computes and returns a new state.</p>
+<p>So if we would have applied a specific action,</p>
+<p>force FL and FR,</p>
+<p>corresponding to the two rotor engines,</p>
+<p>what would be the new state or approximately the new state that we end up with.</p>
+<p>It's very simplified, but this you can think of as a state transition function.</p>
+<p>With that out of the way, now it's actually time to start with the easy work.</p>
+<p>Because we have now this function F,</p>
+<p>and this function F specifies how we think this internal state of the drone evolves over time.</p>
+<p>Something I forgot to mention, but Julia also supports Unicode.</p>
+<p>So the people who are paying attention might have already seen it.</p>
+<p>I still think it's a great feature,</p>
+<p>but you can actually use Greek symbols,</p>
+<p>which makes this translation going from physics to code way more easy,</p>
+<p>and also allows you to retain this physical interpretation to it.</p>
+<p>But that being said, let's continue with the proper model.</p>
+<p>So just remember now that we have F, which encodes our state transition.</p>
+<p>For our drone, we're going to construct a generative model.</p>
+<p>And here I have drawn it as a so-called Forney-style vector graph.</p>
+<p>But I'm going to talk you right through it.</p>
+<p>So what we have is these boxes.</p>
+<p>And these boxes correspond to factors or functions on how variables relate to each other.</p>
+<p>Which one relates to another one?</p>
+<p>And how are they interconnected through which functions and through which nodes, let's say.</p>
+<p>And the edges, so the arrows here in this case, correspond to the individual variables in our model.</p>
+<p>The variables S in this example correspond to the state of the agent.</p>
+<p>So that contains the position of the agent in both x, y.</p>
+<p>And the velocities also in the x, y direction.</p>
+<p>Furthermore, this state also contains the angle and this angular velocity to make life a bit simpler.</p>
+<p>U in this case corresponds to the actions.</p>
+<p>So the actions that we want in the end to also infer.</p>
+<p>Based on this figure, we can for example see around this function f,</p>
+<p>which was our state transition.</p>
+<p>That we put in the previous state.</p>
+<p>And the actions.</p>
+<p>And we get something out.</p>
+<p>To that we add a bit of Gaussian noise to accommodate for any uncertainties that are maybe in the parameters.</p>
+<p>In the environment because we use simplified drone physics.</p>
+<p>Maybe we want to add a bit of process noise there.</p>
+<p>Just to accommodate for the fact that these dynamics are not perfect.</p>
+<p>And that there will always be internal, external fluctuations that drive this drone.</p>
+<p>And that's the case.</p>
+<p>So we can do that.</p>
+<p>And we can do that.</p>
+<p>If we write this down in a probabilistic manner, we can construct this particular vector graph.</p>
+<p>Where we have these time slices which repeat over time.</p>
+<p>And mathematically we can write that in the equation that's on the slide.</p>
+<p>So we have a prior on the initial state.</p>
+<p>Which we refer to as P of S0.</p>
+<p>Which encodes our starting position, starting velocities, starting angles.</p>
+<p>And all the way at the end of the model, we have our goal prior.</p>
+<p>So P of ST.</p>
+<p>Where capital T promotes the length of our model.</p>
+<p>Also known as our horizon.</p>
+<p>This P of ST describes, okay, where do we actually want the agent to go?</p>
+<p>What do we want its velocity to be at the end?</p>
+<p>What do we want its angle to be at the end?</p>
+<p>All these kind of things.</p>
+<p>So together, P of S0 and P of ST, these two priors,</p>
+<p>de-encodes the starting and end position of our drone respectively.</p>
+<p>Whereas this middle part with the F function, the transition function that we just described.</p>
+<p>And the control U of which we can put a Gaussian prior because we want to infer it.</p>
+<p>Together these encodes the dynamics of the drone, the generative model.</p>
+<p>How does this look like?</p>
+<p>I'm just going to port it directly into RxInfer.</p>
+<p>So over the past couple of months, our colleagues have spent significant amounts of time</p>
+<p>actually improving our modeling language.</p>
+<p>Which makes it now even easier to craft your own probabilistic models in RxInfer.</p>
+<p>And with these effectively four lines, five lines of code, we can construct the model, the graph that we have on the left.</p>
+<p>So what I'm going to do is I'm going to talk you through it.</p>
+<p>And I think at the end, I think, hope all questions or I don't think there will be a lot of questions surrounding this particular model any longer.</p>
+<p>Because it's merely a replication of what's on the left.</p>
+<p>We're going to define this variable S1.</p>
+<p>And S1 in this case actually refers to the first state.</p>
+<p>But Julia indexes with one.</p>
+<p>So that's why it's not S0, but S1 instead.</p>
+<p>And S1, which encodes our starting position, we're going to encode that with a multivariate normal distribution.</p>
+<p>Whose mean is given by some initial state that we provide to the function.</p>
+<p>And whose covariance matrix we assume to be very narrow.</p>
+<p>Because we assume that we know the position of the drone at the initial time step.</p>
+<p>Then inside this for loop, we're going to basically unroll this middle segment of the drone.</p>
+<p>Of the generative model.</p>
+<p>We're going to create a prior on the control.</p>
+<p>So on this U of T.</p>
+<p>And we're going to put there also a multivariate normal because that's nice to work with.</p>
+<p>Whose mean is the mass times the gravitational constant divided by two.</p>
+<p>And then as a vector of two.</p>
+<p>The reason for this is because our prior assumption of this drone is that it exerts a force.</p>
+<p>Because we think it's flying.</p>
+<p>So it would make sense that we assume the force of the engines will be just enough maybe to balance the drone in the air.</p>
+<p>So this mg divided by two, which is actually the force of the left and right rotor respectively.</p>
+<p>They compensate for the force of gravity.</p>
+<p>If the engine or the drone were to be upright.</p>
+<p>So here we provide some additional information that allow us to improve convergence and improve also estimation.</p>
+<p>Because we know that the drone is probably not going to drop out of air.</p>
+<p>We want it actually to kind of stabilize and stay at its position.</p>
+<p>So we do that here by putting this prior on the control.</p>
+<p>Then following that is our state transition.</p>
+<p>So how do we think our state evolves over time?</p>
+<p>And this is where the dynamics of the simplified run that we talked about on the previous slide actually come into play.</p>
+<p>So the mean of the next state will be given by this function f over the previous state and the corresponding actions.</p>
+<p>And the drone, the environment and the discretization over time.</p>
+<p>Together with some noise because of the unknown dynamics.</p>
+<p>Maybe we've got some internal external fluctuations, uncertainties, stochastic behavior.</p>
+<p>So that's all something that we also encode in this multivariate normal distribution.</p>
+<p>So that incorporates this for loop.</p>
+<p>And that this for loop basically unrolls this segment that's on the left containing this p of u, this f, and this norm.</p>
+<p>Then finally we finish up our model by putting this goal prior at the end.</p>
+<p>So at the horizon plus one because of the indexing, we're going to put the multivariate normal,</p>
+<p>which mean is located at the goal containing our goal position, goal, the velocities that we wish to attain at the goal, the angle at the goal, etc., etc.</p>
+<p>And together these couple lines of code, effectively there are just five, they create the generative model that's on the left.</p>
+<p>So that's great.</p>
+<p>We have crafted the model of how we think the drone evolves over time.</p>
+<p>We have derived some simplified equations to model its states dynamics.</p>
+<p>And now we want to do inference.</p>
+<p>So we are interested in computing the marginal distributions over both actions and states.</p>
+<p>Basically, we want to ask our model, okay, it's nice that you have encoded this starting and end position in the model.</p>
+<p>But in order to obtain that, how can we actually reach that?</p>
+<p>How can we actually do that?</p>
+<p>So we're interested in figuring out what is actually the marginal distribution over the actions.</p>
+<p>So this q of u.</p>
+<p>And what is the marginal distribution over the states?</p>
+<p>So what forces do we need to apply to go from position a to position b?</p>
+<p>And how will this trajectory going from a to b look like?</p>
+<p>In the general case, if we were to just try to solve this equation and compute these marginal distributions,</p>
+<p>then we would have to integrate over all other parameters.</p>
+<p>But that's very computationally heavy, because there are a lot of parameters in our model.</p>
+<p>So doing this in a naive way would not be efficient at all.</p>
+<p>But there is luckily a way to make it efficient, namely through message passing.</p>
+<p>So let's dive a bit deeper into how that actually looks like.</p>
+<p>So for this purpose, I've created this simplified factorized model to make sure everyone can kind of follow along.</p>
+<p>So we have the different factors, fa, fb, fc, and fd.</p>
+<p>Each linked to some of the variables from x1 ranging to x6.</p>
+<p>And each factor is only connected to the variables to which it also relates.</p>
+<p>It's a simple case, right?</p>
+<p>Suppose now that we wish to compute the marginal here over the variable x4.</p>
+<p>Doing this naively would require us to integrate out this factorized model over all variables x except for x4.</p>
+<p>However, that's computationally heavy, as I mentioned earlier, because we have five variables to integrate over.</p>
+<p>And that might be a challenge because we're in this very high dimensional space then.</p>
+<p>Luckily, what we can do is we can make use of that these factors are not connected to everything.</p>
+<p>So the factor nodes that are on the left are not connected to each of the variables.</p>
+<p>And this turns out to be very beneficial from an efficiency standpoint.</p>
+<p>So we can effectively split up this large integration over the entire model fx into a set of smaller integrals.</p>
+<p>Simply by making use of this distributive property of integration where we can kind of separate them out, put some parts into brackets.</p>
+<p>And by doing so, this large integration problem actually reduces into a couple smaller integration problems, which are more efficient to solve.</p>
+<p>So we can also give an interpretation to this.</p>
+<p>For example, this fa of x1, x2 integrated over the variable x1.</p>
+<p>You can also think of this as closing the box, as we demonstrate on the left, over that factor fa.</p>
+<p>And this is the result of this we call a message.</p>
+<p>So this message you can think of as a summary of a particular part of that particular graph, of a part of the graph.</p>
+<p>And we can iterate this a couple of times.</p>
+<p>So this message mu of x2, if we propagate that into the next node, this fb, and we solve the corresponding integration with this double integration over now x2 and x3,</p>
+<p>we get a new message mu of x4.</p>
+<p>And we can do this on all the edges and over all the factor nodes here in our model.</p>
+<p>We can integrate over the single node fd, over the node fc, where we have an incoming message mu of x5.</p>
+<p>And what we end up with, and that's the interesting part, is that all these messages are relatively easy to compute.</p>
+<p>They're relatively small because they do not require this huge integration.</p>
+<p>The funny thing here is, is that this marginal, the one that we're interested in, this q of x4, is now simply the product of mu of x4 times the other mu.</p>
+<p>So the messages that are actually colliding on that edge, and then of course renormalized.</p>
+<p>But that marginal distribution can simply be computed on a very local level by multiplying the messages that are flowing over these edges.</p>
+<p>Hence making it very efficient to solve this integration problem.</p>
+<p>And this is also how we actually solve inference in our toolbox.</p>
+<p>So in the probabilistic generative model that we created for the drone, we can use message passing to solve this marginalization in a very efficient manner.</p>
+<p>To give you an example, these are some benchmarking results that we obtained with RxInfer.</p>
+<p>So this is the final step of the model that we've done.</p>
+<p>On the left you can see how long it takes for a simple stage-based model, which is similar to the model that I've shown before.</p>
+<p>But you can think more of this like in a common filter setting for people who have a bit of familiarity with control systems.</p>
+<p>And we can see that the filtering and the smoothing both scale very well.</p>
+<p>They scale very nicely in the number of observation, or in the length of the model.</p>
+<p>So just linearly basically.</p>
+<p>On the right we also do a comparison between RxInfer, so R toolbox, and Turing.</p>
+<p>Turing is another toolbox in Julia, which doesn't use message passing to solve the actual marginalization problem.</p>
+<p>But instead it reverts to sampling.</p>
+<p>So instead of computing everything kind of analytically or mostly analytically or with approximations, it draws a lot of samples and tries to extract statistics from this.</p>
+<p>But as you can see, the left axis is on the log scale.</p>
+<p>So we obtain significant performance improvements in comparison to the sampling-based methods.</p>
+<p>And that's also why we are pushing for RxInfer, because it's just way more efficient to perform these competitions with message passing in comparison to sampling-based methods.</p>
+<p>There is one thing in our model.</p>
+<p>So if you recall these drone dynamics, then our state transition was quite nonlinear.</p>
+<p>So it was very challenging, or it is very challenging, to do exact message passing with this nonlinear node.</p>
+<p>Because if we go from the previous state to the next state, then the distribution of this next state will no longer be nice in Gaussian.</p>
+<p>But it might be a distribution which is outside of the distribution or outside of the family of exponential distributions, let's say.</p>
+<p>So it requires some approximations in order to actually do inference around it.</p>
+<p>So in the experiments, I have used unscented, which we can just specify with the little code block on the right.</p>
+<p>And what this does, it draws a very small but very informative set of samples around the incoming Gaussian distributions,</p>
+<p>which capture the first and second moment of that distribution.</p>
+<p>So the mean and variances of these sigma points, these samples, these are still the same as the statistics of the incoming normal distribution.</p>
+<p>What we then do is we use these very carefully selected samples to propagate through the nonlinearity.</p>
+<p>And based on the transformed sigma points, we then reconstruct what the Gaussian at the output could have looked like.</p>
+<p>So this unscented allows us to make approximations through this nonlinearity.</p>
+<p>With that in place, we can actually perform inference.</p>
+<p>So the code block on the left bottom is all you need in order to get the drone running.</p>
+<p>So inside the in var function, we specify a model, which was the drone model that we specified in one of the previous slides.</p>
+<p>We specify its data.</p>
+<p>Although it's not observing something directly and it's more doing a planning task,</p>
+<p>we can still supply it with the initial state and the goal state.</p>
+<p>Where do we want the agent to move to?</p>
+<p>And this meta object corresponds to the approximations that we wish to take.</p>
+<p>And that's all.</p>
+<p>That's all that's necessary in order to actually get this drone up and running.</p>
+<p>And in order to demonstrate this, we have a very nice experiment created by Dimitri, one of our colleagues,</p>
+<p>where we have this drone moving around.</p>
+<p>But it will be, it's more complicated than, or I would say the plotting is more complicated than what I've shown on the previous slide.</p>
+<p>Because actually getting this plotting to work requires way more code than actually getting our inference to work.</p>
+<p>But what it allows us to do is not only to do this planning, but also to do this really in an online manner.</p>
+<p>So here in this particular example, we have created this video where on the fly we are changing parameters.</p>
+<p>So we're increasing the mass of the drone, making it heavier.</p>
+<p>We're increasing the size of the drone, so it's radius.</p>
+<p>It's engine power, like what are the limits of this drone, what can it obtain?</p>
+<p>Gravity, perhaps you want to move to another planet and test your simulation there.</p>
+<p>But we're changing these characteristics on the fly.</p>
+<p>And with RX and Ferb, we are still able to process kind of this, do this planning task.</p>
+<p>That being said, all the code and the examples that I showed you today,</p>
+<p>they are publicly available on the reactive base organization.</p>
+<p>So in the RX-infer-examples.gl repository, you can find the code required to run actually the drone experiment.</p>
+<p>It will be a simplified experiment, so not the one on the previous slide,</p>
+<p>because that would be way too intense to, that would be just too overwhelming to have a look at.</p>
+<p>But the main characteristics of this particular drone demo are available here.</p>
+<p>And if you have any questions, want to try it out, please let me know after,</p>
+<p>or contact me if you have issues.</p>
+<p>But the code that we developed for this particular live stream is actually publicly available.</p>
+<p>And with that, I would like to thank you, of course, for this very nice opportunity, for this nice audience.</p>
+<p>If you want to have more information, feel free to reach out to any one of us.</p>
+<p>Reactive base, file issue, whatever you've seen deemed pretty.</p>
+<p>You can contact us, research group, BiasLab, our spin-off, LACE Dynamics, for industrial applications.</p>
+<p>But most importantly, for reactive base, I want to say that we are also looking for collaborators.</p>
+<p>So if you got motivated by this talk, got inspired to create your own cool applications,</p>
+<p>please reach out to us and hopefully help us develop RX-infer into the toolbox of the future.</p>
+<p>I think that's something that I would like to strive for.</p>
+<p>So if you're inspired, reach out and we'll make sure that there are amazing opportunities lying ahead.</p>
+<p>And that's all. Thanks a lot for the attention.</p>
+<p>And I hope it was an inspiring talk that got you engaged with RX-infer, got you excited.</p>
+<p>So if you have any questions, please let me know.</p>
+<p>Awesome. Thank you.</p>
+<p>Very cool presentation.</p>
+<p>Albert, do you want to give any first or overview remarks?</p>
+<p>And then Chris and Kovac, we can discuss and ask some questions too.</p>
+<p>Well, not really in a sense that, yeah, it was, although it was the first time I saw this presentation,</p>
+<p>it was a great part.</p>
+<p>I mean, I knew the underlying project behind that and how the drone works,</p>
+<p>but the presentation, I think, was very nice.</p>
+<p>It also connected how, well, the Bayesian inference is basically,</p>
+<p>how is it connected to the goal-driven behavior.</p>
+<p>I think it's really cool.</p>
+<p>Yeah, I just wanted to add along the presentation that Bart was speaking about this noise component</p>
+<p>when he drew, when he has drawn the graph.</p>
+<p>So this noise component also could be seen as basically the compensation</p>
+<p>for our poor approximation of the dynamics, right?</p>
+<p>Because we use this first order linear approximation.</p>
+<p>And, well, that's arguably not the best way of approximating the underlying physics,</p>
+<p>although it worked for this simplified demo.</p>
+<p>And there, well, I think I can just maybe add on how this demo can be extended</p>
+<p>or this model can be extended.</p>
+<p>Well, the first thing to do is, well, just to use a different approximation, right?</p>
+<p>That's one thing that comes to my mind.</p>
+<p>And another thing would be, and I think from the active inference perspective,</p>
+<p>would be to omit some of the parameters in the transition function,</p>
+<p>deem them unknown, and to let the agent figure out it</p>
+<p>through the interaction with the environment.</p>
+<p>So you could achieve that also with RxInfer</p>
+<p>by putting some priors on the metrics</p>
+<p>or putting some prior on the components of this metrics.</p>
+<p>And you can see how fast the agent actually learns the physics of the environment.</p>
+<p>Yeah.</p>
+<p>Awesome.</p>
+<p>I'll ask some quick questions from the live chat,</p>
+<p>and then Chris and Kobus, if you want to ask, feel free.</p>
+<p>Okay.</p>
+<p>So Carlos asks,</p>
+<p>is the reactive part based on events to trigger the pipeline or based on signals?</p>
+<p>Yeah.</p>
+<p>Yeah, go ahead, Bart.</p>
+<p>Yeah.</p>
+<p>So what we, or what Dimitri did when he built it,</p>
+<p>when he started building this RxInfer toolbox,</p>
+<p>is he used a very different computing paradigm.</p>
+<p>So normally you execute code from the top to the bottom.</p>
+<p>But what he did is he used this reactive paradigm.</p>
+<p>So based on events,</p>
+<p>a particular computation is being executed.</p>
+<p>And these events can be various.</p>
+<p>It can change, of course.</p>
+<p>It depends very much on the context what an event is.</p>
+<p>But often the event corresponds to making actual observations.</p>
+<p>So especially for active inference agents,</p>
+<p>if we make a new observation,</p>
+<p>only then re-computations are being executed.</p>
+<p>So basically the entire algorithm does nothing</p>
+<p>unless there is something to compute.</p>
+<p>And I hope that kind of answers the question,</p>
+<p>but I'm not entirely sure.</p>
+<p>So if I was a bit unclear,</p>
+<p>maybe Albert, you can add to it if you have a better.</p>
+<p>Yeah, I'm just not sure which kind of reactive part was meant in the question.</p>
+<p>Because yeah, there is the reactive part of the inference,</p>
+<p>but also the demo itself was reactive, right?</p>
+<p>Like when you are triggering this.</p>
+<p>But basically speaking about how it works,</p>
+<p>indeed it triggers on the event, basically.</p>
+<p>So in the event is that, yeah,</p>
+<p>there are a few things that could be changed, right?</p>
+<p>It's either environmental change,</p>
+<p>something changed in the environment,</p>
+<p>and then we sense this from our sensors,</p>
+<p>and then the inference follows, right?</p>
+<p>So there is, just to add upon what Bart said about this reactive part,</p>
+<p>so message passing is a well-known algorithm.</p>
+<p>I mean, it's been around since Perl,</p>
+<p>or I believe propagation, perhaps later, earlier.</p>
+<p>But then the reactive is a particular implementation of this message passing,</p>
+<p>which is more kind of driven by how the system should work in the field.</p>
+<p>Awesome.</p>
+<p>Yeah, with Magnus Kudal, we explored a lot of the message passing,</p>
+<p>talked a little bit about how all the messages could be passed at once,</p>
+<p>or the reactive paradigm where you could uncouple the rates of updating.</p>
+<p>Okay, I'll ask one more question from the live chat,</p>
+<p>and then Chris or Kobus.</p>
+<p>Fraser asks,</p>
+<p>Fantastic stuff!</p>
+<p>Double exclamation point!</p>
+<p>Uh-oh.</p>
+<p>If somebody wanted to help develop RxInfer with your organization,</p>
+<p>what are the ideal characteristics and backgrounds to have?</p>
+<p>I think we are very open.</p>
+<p>So also within our lab,</p>
+<p>we have a huge variety of backgrounds,</p>
+<p>ranging from computer science to physics,</p>
+<p>electrical engineering for myself, for example.</p>
+<p>So there is a wide variety of backgrounds possible.</p>
+<p>Of course, we assume that,</p>
+<p>or we would like coding to be something that you're good at or willing to learn,</p>
+<p>because I think that's one of the most important things,</p>
+<p>of course, to develop a software engine.</p>
+<p>And all the rest,</p>
+<p>I think we can provide you with excellent materials to get crossed,</p>
+<p>or to get familiar with the methods that we use,</p>
+<p>or get acquainted with the models that we have developed in the past.</p>
+<p>So,</p>
+<p>personally,</p>
+<p>when I started in this group,</p>
+<p>and when I started working on this project,</p>
+<p>I also didn't have any background.</p>
+<p>So I used to be an air electrical engineer.</p>
+<p>I never heard about,</p>
+<p>well,</p>
+<p>I was taught probability theory,</p>
+<p>and then quickly forgot about it.</p>
+<p>So my background was very different.</p>
+<p>And it's maybe a bit difficult to get started,</p>
+<p>started directly with all this probability message passing,</p>
+<p>and all this entire paradigm.</p>
+<p>But it's definitely a very nice ride to learn.</p>
+<p>So,</p>
+<p>I would say,</p>
+<p>if you're willing to learn,</p>
+<p>willing to make a nice contribution,</p>
+<p>then that's always welcome.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Well,</p>
+<p>we are mostly writing stuff in Julia,</p>
+<p>right?</p>
+<p>So Julia is sort of,</p>
+<p>I mean,</p>
+<p>I mean,</p>
+<p>it's learnable language,</p>
+<p>right?</p>
+<p>It's not like,</p>
+<p>if you don't know Julia,</p>
+<p>you can't help us.</p>
+<p>No,</p>
+<p>that's not,</p>
+<p>absolutely not true.</p>
+<p>So we welcome people from different programming backgrounds.</p>
+<p>And besides,</p>
+<p>there are different branches on how you can help within this Rx-Inferrin,</p>
+<p>basically,</p>
+<p>the whole reactive base ecosystem,</p>
+<p>because it consists not only of the inference engine,</p>
+<p>which I must say,</p>
+<p>it's the most difficult part for contributing,</p>
+<p>because there are many intricacies involved within this inference language.</p>
+<p>But there is also GraphPPL,</p>
+<p>right?</p>
+<p>There's also Rocket.</p>
+<p>There are other packages which basically constitute the whole ecosystem.</p>
+<p>And yeah,</p>
+<p>well,</p>
+<p>you don't have to be an expert in Bayesian inference to contribute to Rocket,</p>
+<p>or you don't have to be,</p>
+<p>again,</p>
+<p>an expert in particular approximations to contribute to a model builder.</p>
+<p>So,</p>
+<p>and of course,</p>
+<p>the documentation is something which always needs an update,</p>
+<p>right?</p>
+<p>So we don't dismiss people for contributing to the documentation.</p>
+<p>That's extremely important for the community and for ourselves,</p>
+<p>because we can see,</p>
+<p>okay,</p>
+<p>so where are the parts which we could explain better or actually improve our</p>
+<p>ecosystem?</p>
+<p>Awesome.</p>
+<p>Kopus?</p>
+<p>Very interesting talk.</p>
+<p>Thank you very much.</p>
+<p>I have a question about categorical examples,</p>
+<p>where the control space consists of values from a categorical distribution.</p>
+<p>So,</p>
+<p>does RxInfer have any such examples available?</p>
+<p>We do.</p>
+<p>We do.</p>
+<p>So,</p>
+<p>we do not only support continuous variables in this case,</p>
+<p>but we also support a variety of categorical,</p>
+<p>yeah,</p>
+<p>Renouli distributions,</p>
+
+<p>The categorical distributions themselves.</p>
+<p>We do have a lot of examples.</p>
+<p>So,</p>
+<p>if you visit the website,</p>
+<p>rxinfer.ml,</p>
+<p>there is this huge list of examples,</p>
+<p>use cases,</p>
+<p>some of which feature categorical distributions as well,</p>
+<p>modeling as,</p>
+<p>yeah,</p>
+<p>all the rate,</p>
+<p>ranging from modeling as simple coin tools,</p>
+<p>to more advanced examples.</p>
+<p>But we do offer functionality in both the discrete domain,</p>
+<p>as in the continuous domain.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>Thank you.</p>
+<p>Yes.</p>
+<p>Yeah,</p>
+<p>go ahead.</p>
+<p>Go ahead.</p>
+<p>Now,</p>
+<p>I just wanted to add,</p>
+<p>there is,</p>
+<p>well,</p>
+<p>the most,</p>
+<p>kind of,</p>
+<p>famous example on,</p>
+<p>or,</p>
+<p>hello world examples,</p>
+<p>into the categorical world within,</p>
+<p>I think,</p>
+<p>is,</p>
+<p>is hidden market model.</p>
+<p>And I think we have an example on that.</p>
+<p>I'm not sure that we have incorporated the control within that example.</p>
+<p>That's probably learning the transition matrices for observations and,</p>
+<p>and,</p>
+<p>well,</p>
+<p>the hidden state.</p>
+<p>But there is,</p>
+<p>I think,</p>
+<p>nothing stopping you from introducing the control for,</p>
+<p>for a certain,</p>
+<p>discrete type of Markov model.</p>
+<p>Thank you.</p>
+<p>And then I use VS code.</p>
+<p>And I do have problems with Greek symbols.</p>
+<p>When they contain multiple characters in a superscript or subscript,</p>
+<p>for example.</p>
+<p>So do you guys use VS code at all?</p>
+<p>And if so,</p>
+<p>do you have a best practice to,</p>
+<p>to solve my problem?</p>
+<p>We do use VS code.</p>
+<p>I think our entire lab uses VS code because it does turn out to be a very,</p>
+<p>very nice tool.</p>
+<p>So it's good that you mentioned this.</p>
+<p>Regarding the subscripts and the superscripts that you mentioned is,</p>
+<p>personally,</p>
+<p>I try to avoid them because oftentimes I completely agree that it looks nice to</p>
+<p>have this dot over variable,</p>
+<p>for example,</p>
+<p>to denote the derivative or to draw kind of the index with a superscript.</p>
+<p>But personally,</p>
+<p>to me,</p>
+<p>that clutters it a bit and also makes it more challenging to edit.</p>
+<p>So I just try to refrain from using sub and superscripts in VS code with this</p>
+<p>auto tab,</p>
+<p>although it looks very cool and might be nice for like demo purposes or actually</p>
+<p>experimentation or development.</p>
+<p>I always try to avoid them.</p>
+<p>So not a solution,</p>
+<p>but this is my kind of my take on it.</p>
+<p>Okay.</p>
+<p>Yeah,</p>
+<p>I can understand.</p>
+<p>Yeah,</p>
+<p>because,</p>
+<p>and another possible problem with super and subscripts is they can appear very</p>
+<p>small and I often find myself having to zoom in a bit to,</p>
+<p>you know,</p>
+<p>discriminate between symbols.</p>
+<p>And then my final question,</p>
+<p>to what extent can you guys parallelize within RX infer?</p>
+<p>Are there obvious low hanging fruit choices to,</p>
+<p>to apply parallelization?</p>
+<p>In RX infer?</p>
+<p>Yes.</p>
+<p>So,</p>
+<p>um,</p>
+<p>it's good that you mentioned this because at the moment we have actually a</p>
+<p>master's student who is kind of working on this particular,</p>
+<p>or trying to work on this project,</p>
+<p>uh,</p>
+<p>where we try to parallelize the message passing and the computation,</p>
+<p>for example,</p>
+<p>of the marginals.</p>
+<p>So there are opportunities there to do some sort of parallelization.</p>
+<p>Um,</p>
+<p>in general,</p>
+<p>at the current moment,</p>
+<p>our message passing is all linear,</p>
+<p>unfortunately.</p>
+<p>However,</p>
+<p>there have been papers where they also parallelize that,</p>
+<p>although it seems that it's impossible to do.</p>
+<p>Apparently it's still this,</p>
+<p>uh,</p>
+<p>but that's something perhaps for a future project.</p>
+<p>So at the moment we do not provide a lot of parallelization around RX infer,</p>
+<p>but in the future,</p>
+<p>this is definitely on top of our agenda to make also improvements,</p>
+<p>uh,</p>
+<p>in terms of performance and in computational speed.</p>
+<p>Um,</p>
+<p>uh,</p>
+<p>just one quick question,</p>
+<p>um,</p>
+
+<p>another one,</p>
+
+<p>um,</p>
+<p>have you guys thought of approaching,</p>
+
+<p>big players like Amazon web services,</p>
+<p>for example,</p>
+<p>to,</p>
+
+<p>you know,</p>
+<p>and present this to them and try and get them to incorporate it into their,</p>
+<p>into their tools.</p>
+<p>Um,</p>
+<p>we have been,</p>
+<p>um,</p>
+<p>so with Lace dynamics,</p>
+<p>kind of the spin off company,</p>
+<p>which also uses RX infer to develop real applications,</p>
+<p>let's say for customers,</p>
+<p>we have considered this,</p>
+<p>this option.</p>
+<p>Um,</p>
+<p>but at the moment we have not been in contact to any of these,</p>
+<p>these companies or clients.</p>
+<p>Uh,</p>
+<p>sorry.</p>
+<p>No,</p>
+<p>I just wanted that to,</p>
+<p>we,</p>
+<p>we haven't talked to none of,</p>
+<p>uh,</p>
+<p>Fang.</p>
+
+<p>so that's,</p>
+<p>that's,</p>
+
+<p>yeah,</p>
+<p>we haven't done yet.</p>
+
+<p>we are,</p>
+
+<p>we are in talks.</p>
+<p>There are a few interested parties in the pipeline,</p>
+<p>but,</p>
+
+
+<p>uh,</p>
+<p>no,</p>
+<p>we haven't approached Amazon.</p>
+<p>No,</p>
+<p>not yet.</p>
+<p>Excellent.</p>
+<p>Thank you.</p>
+<p>Kobus.</p>
+<p>I'll ask another question in the chat and then Chris,</p>
+<p>if you have anything,</p>
+<p>Fraser asks,</p>
+<p>what are the largest current challenges to the reactive message passing paradigm</p>
+<p>for doing this kind of approximate Bayesian inference?</p>
+<p>It's a very good question.</p>
+<p>I think it also depends a lot on who you ask this question to,</p>
+<p>to me personally,</p>
+<p>um,</p>
+<p>the message passing,</p>
+<p>I think is a great method in itself.</p>
+<p>And it's also overcomes already a lot of challenges.</p>
+<p>What I think would be the most fruitful next step is to really start working on the actual modeling,</p>
+<p>the modeling aspects.</p>
+<p>So can we create maybe universal models,</p>
+<p>uh,</p>
+<p>hierarchical models?</p>
+<p>How can we do this such that these hierarchical models or similar actually solve more complicated tasks than a simple stage-based model can do.</p>
+<p>Um,</p>
+<p>so for me personally,</p>
+<p>I think that's where we can achieve the biggest gains in this modeling part.</p>
+<p>I'm not sure about what Albert thinks are the most big,</p>
+<p>what is the,</p>
+<p>yeah,</p>
+<p>what the biggest outstanding challenge is,</p>
+<p>but there are,</p>
+<p>I think,</p>
+<p>I think from,</p>
+<p>from,</p>
+<p>yeah,</p>
+<p>totally agree.</p>
+<p>from the,</p>
+<p>from the research perspective,</p>
+<p>the structural adaptation of,</p>
+<p>of the model,</p>
+<p>that's the most,</p>
+<p>I would say,</p>
+
+<p>the hardest and the most interesting,</p>
+<p>uh,</p>
+
+<p>uh,</p>
+<p>from my opinion,</p>
+
+<p>problem.</p>
+<p>That's like hand crafting this model,</p>
+<p>like for,</p>
+<p>for this type of drones,</p>
+
+<p>It's nice.</p>
+<p>It can be easy.</p>
+<p>Sometimes not.</p>
+<p>Well,</p>
+<p>if you go to the three dimensional,</p>
+<p>that's significantly,</p>
+<p>uh,</p>
+<p>more,</p>
+
+<p>complex.</p>
+<p>indeed like having,</p>
+<p>um,</p>
+<p>a machinery.</p>
+<p>Well,</p>
+<p>the thing,</p>
+<p>the interesting thing that we,</p>
+<p>we do have a machinery to,</p>
+<p>to do a structural adaptation,</p>
+<p>uh,</p>
+<p>because,</p>
+<p>uh,</p>
+<p>Rix and Ferb,</p>
+
+<p>does provide the,</p>
+<p>uh,</p>
+<p>an opportunity to extend your model,</p>
+<p>to patch it.</p>
+<p>Uh,</p>
+<p>although how to do that in principle,</p>
+<p>how do you indeed,</p>
+<p>uh,</p>
+<p>grow or,</p>
+<p>or,</p>
+<p>uh,</p>
+<p>shrink your model.</p>
+<p>And so in time while observing and being,</p>
+<p>being in the field,</p>
+<p>uh,</p>
+<p>I think this is the most challenging part indeed.</p>
+<p>And as for,</p>
+<p>well,</p>
+<p>there are certainly,</p>
+<p>uh,</p>
+<p>problems with,</p>
+<p>uh,</p>
+<p>approximations and,</p>
+<p>uh,</p>
+<p>uh,</p>
+<p>well,</p>
+
+<p>universal rules.</p>
+<p>Uh,</p>
+<p>that's something we also,</p>
+<p>I think,</p>
+<p>uh,</p>
+<p>outline in a few demos that,</p>
+<p>well,</p>
+<p>there could be a situation where the rule for computing the message,</p>
+<p>which,</p>
+<p>uh,</p>
+<p>Bart was showing is not,</p>
+<p>is not available.</p>
+<p>Uh,</p>
+<p>so there is always this,</p>
+<p>uh,</p>
+
+<p>right?</p>
+<p>to,</p>
+<p>uh,</p>
+<p>well,</p>
+<p>to commit to a simpler approximation to do it faster.</p>
+<p>You want to commit to,</p>
+<p>uh,</p>
+<p>uh,</p>
+<p>more accurate approximation,</p>
+<p>but it will take more,</p>
+<p>uh,</p>
+<p>resources,</p>
+<p>uh,</p>
+<p>computational resources and how to balance between these two.</p>
+<p>That's,</p>
+<p>that's another interesting,</p>
+<p>uh,</p>
+<p>question.</p>
+<p>How to,</p>
+<p>how to automatically decide.</p>
+<p>Uh,</p>
+<p>I think,</p>
+<p>I think this is,</p>
+<p>uh,</p>
+<p>what I would call,</p>
+<p>um,</p>
+<p>I would also add from our kind of educational and research side that one of the big challenges,</p>
+<p>thankfully one being approached is to develop the documentation and the examples.</p>
+<p>The examples help us learn, but also a lot of us are having good success bringing in code examples into code and language models and using the working examples to template new examples.</p>
+<p>So as the library of open source published models grows, that will become more possible.</p>
+<p>And then also there's a lifelong, fascinating journey of talking about how do you go from seeing a drone in the sky to getting those physics equations down and that kind of like approach to modeling.</p>
+<p>And how do we get to a graph, assuming that that's where the software package can pick up and render it kind of no problem.</p>
+<p>But there's still this very human, very collaborative process, which also could receive a lot of documentation and examples about getting to that kind of a model.</p>
+<p>Chris?</p>
+<p>Yeah, absolutely.</p>
+<p>Yeah, yeah. Chris, do you want to ask anything?</p>
+<p>No, I just wanted to say thank you guys very much. I really enjoyed the presentation.</p>
+<p>I liked, I really enjoyed how you broke down a lot of the top of my head right now is like the integration example.</p>
+<p>It was very intuitive. It made a lot of sense and it really highlighted a lot of the benefits and true power in what you guys have developed.</p>
+<p>So thank you guys. And I really, really appreciate your time and explain this to us.</p>
+<p>Thank you for the kind words.</p>
+<p>If I could also add one comment, just as we've been working on it week by week, a real like arising insight that got us both excited and not daunted,</p>
+<p>but just realizing the scope of the package and the work was in comparing the Rx and FUR active inference examples</p>
+<p>with other active inference simulations like from PyMDP or built kind of custom outside of a package like the In4ANCE examples.</p>
+<p>And we realized that a lot of alternative approaches, people try to go as fast as possible to developing an active inference agent</p>
+<p>and then talk about like the variational free energy or the expected free energy of the agent.</p>
+<p>And so the package serves as a helpful accelerator to get to an agent, but that's not like the general agent.</p>
+<p>And then even making small changes to that scheme can be buried and scattered across different packages.</p>
+<p>And then there's all these other kinds of limitations that one quickly finds themselves encountering like in the education application settings.</p>
+<p>Whereas in Rx and FUR, it's such an engineering driven approach.</p>
+<p>So a lot of the engineers on our team were immediately more comfortable.</p>
+<p>And then a lot of people who had been playing with active inference from a computer science or from a philosophical and mathematical side</p>
+<p>were a little bit surprised because we were getting very low level with the node engineering.</p>
+<p>And then after wiring that up and understanding it, it's just like press play.</p>
+<p>So a lot of the focus on developing an agent was actually that focus was moved to better understanding the graph</p>
+<p>that represents the ecosystem of shared intelligence.</p>
+<p>And there was less upfront focus on merely making it like an agent-based model</p>
+<p>because you could make an agent-based model like the drone,</p>
+<p>or you could develop other kinds of graphs that don't necessarily have an agentic basis.</p>
+<p>So that helped us realize that this is a much broader toolkit than doing active inference or agent-based modeling of any kind,</p>
+<p>but that those are use cases that are benefited greatly by it.</p>
+<p>Definitely.</p>
+<p>I think you are...</p>
+<p>Actually, the main point of our package.</p>
+<p>So RX-Refur allows us to enable or enables us to create these agents very quickly, very adapt, very efficiently.</p>
+<p>So if we compare this, for example, to...</p>
+<p>And you mentioned this already also from your engineers.</p>
+<p>If you would go through a traditional design cycle for an engineering firm, you would create a single model kind of thingy,</p>
+<p>a single algorithm, let's say 50 pages of code or something.</p>
+<p>And that's nice, these 50 pages of code, but it's unmaintainable.</p>
+<p>You need a lot of engineers to actually make improvements upon it.</p>
+<p>Yeah, if something changes, you don't know what's going to happen, right?</p>
+<p>Whereas with RX-Refur, we just have to specify this little piece of code which specifies the model.</p>
+<p>And then inference is automated, as you mentioned, you just press play.</p>
+<p>It isn't that easy, of course, from the actual engine perspective.</p>
+<p>But we try to make the user experience as good as possible to make it as easy on the user to build agents, active inference agents,</p>
+<p>or any other applications where you might need such machinery to actually complete a specific task.</p>
+<p>And hopefully by doing so, by making this user friendliness, one of our priorities is we can also enable active inference</p>
+<p>getting adopted across industries and across research groups.</p>
+<p>Yeah.</p>
+<p>After today, if we have a quick question, is there an email that we could send those questions to?</p>
+<p>I think from the Active Inference Institute, there is a communication channel.</p>
+<p>But Daniel, please correct me if I'm wrong, directly to BiasLab.</p>
+<p>But if you have questions, feel free to start a discussion on GitHub because we actively maintain it.</p>
+<p>We keep also a close watch on what's happening.</p>
+<p>And there might also have been people with similar questions before you.</p>
+<p>So my first hunch would be to create a discussion on GitHub.</p>
+<p>And we will definitely then get involved with one of our colleagues in order to help you out.</p>
+<p>Okay.</p>
+<p>Thanks.</p>
+<p>Well, if you have questions regarding Easy Dynamics venture, then you could use our info at lacedynamics.com as well.</p>
+<p>And also just to dump any other questions you want.</p>
+<p>Yep.</p>
+<p>Cool.</p>
+<p>Well, thank you all again.</p>
+<p>It's really awesome.</p>
+<p>I was thinking about how the packages are kind of factorized and modular and separable, almost like that's a theme that helps ecosystems work.</p>
+<p>So overall, thank you very much for the work and for presenting.</p>
+<p>We've really appreciated the chance to work with a package in our learning groups.</p>
+<p>And we'll look forward to seeing more examples and sharing more also from the projects that people are working on in the Institute.</p>
+<p>Thank you, Daniel.</p>
+<p>Thank you very much.</p>
+<p>It was a pleasure.</p>
+<p>Thank you for having us.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>Great.</p>
+<p>So see you all next time.</p>
+<p>Bye.</p>
+<p>Thank you.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+</article>
+</body>
+</html>

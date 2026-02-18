@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #043.0 ~ "Predictive Coding: a Theoretical and Experimental Review"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #043.0 ~ "Predictive Coding: a Theoretical and Experimental Review"</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_043 &middot; Episode 0 &middot; Duration: 1:39:57 &middot; Views: 934</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=cLe-rBtRXiQ">https://www.youtube.com/watch?v=cLe-rBtRXiQ</a></div>
+<article>
+<p>Hello and welcome everyone.</p>
+<p>It's April 28th, 2022 and we're here in ActInfLab livestream number 43.0 discussing Predictive</p>
+<p>Coding, A Theoretical and Experimental Review.</p>
+<p>Welcome to the ActInfLab.</p>
+<p>We're a participatory online lab that is communicating, learning, and practicing applied active inference.</p>
+<p>You can find us at links here on the slide.</p>
+<p>This is recorded in an archived livestream, so please provide us with feedback so we can</p>
+<p>improve our work.</p>
+<p>All backgrounds and perspectives are welcome and we'll be following video etiquette for</p>
+<p>livestreams.</p>
+<p>Head over to activeinference.org if you want to learn more about how to participate in the</p>
+<p>livestreams or anything else happening in ActInfLab.</p>
+<p>Okay.</p>
+<p>We're here today to learn and discuss the paper Predictive Coding, A Theoretical and Experimental</p>
+<p>Review by Baron Milledge, Anil Seth, and Christopher Buckley.</p>
+<p>The video is just an introduction and a contextualization for some of the ideas and some of the details</p>
+<p>of the paper in the broad sense.</p>
+<p>It's not a review or a final word.</p>
+<p>It's, as with some of these other technical, dense papers, it's like an opening for those</p>
+<p>who have technical questions at the learning side of things or at the more advanced research</p>
+<p>side of things to come get involved because this is a technical paper but also hopefully</p>
+<p>as we'll unpack it has a lot of cool biological and philosophical implications.</p>
+<p>So in 43.0 we're going to say hello and introduce some big questions, then cover the aims and claims</p>
+<p>of the paper, the abstract, and the roadmap.</p>
+<p>And then pretty much just jump right in and we're going to focus a lot on the introduction,</p>
+<p>the context, and the single layer predictive coding model.</p>
+<p>And then we'll go a little bit faster through the later sections of the paper talking about</p>
+<p>some generalizations of predictive coding and some important points that the authors</p>
+<p>raise.</p>
+<p>So if you want to participate in 43.1 or .2 in the coming weeks, just let us know.</p>
+<p>Okay, so we can say hello and give any information that we'd like and also just maybe something</p>
+<p>that we thought was exciting or something that motivated us to get involved in this quite</p>
+<p>involved paper.</p>
+<p>So I'm Daniel.</p>
+<p>I'm a researcher in California and I was curious to learn more about how predictive coding and</p>
+<p>predictive processing related to active inference.</p>
+<p>also just about how different models framed anticipatory systems.</p>
+<p>So over to you, Maria.</p>
+<p>Hello, Daniel and everyone.</p>
+<p>I have a bipolar degree in psychology and I am a master's candidate in philosophy of science</p>
+<p>in the University of Sao Paulo, Brazil.</p>
+<p>And I am researching the relationship between predictive processing and illusionist theories</p>
+<p>of consciousness.</p>
+<p>And I think what brought me here today was my wish to start learning about the formalisms</p>
+<p>because I don't really see it in philosophy.</p>
+<p>And I don't actually need it for my dissertation, but eventually I wanted to continue my work on</p>
+<p>predictive processing.</p>
+<p>So eventually I had to start it and I just thought about maybe that's a good idea to come</p>
+<p>here and minimize my uncertainties.</p>
+<p>Awesome.</p>
+<p>Through inference and or through action.</p>
+<p>And also thanks a lot, Brock, for helping in the dot zero.</p>
+<p>So we'll just start with the big questions.</p>
+<p>And these are the kind of questions that might motivate someone or interest them in this paper</p>
+<p>without even mentioning active inference per se.</p>
+<p>But these are like some big questions that get touched upon.</p>
+<p>What is the formal basis of predictive coding?</p>
+<p>How is predictive coding used or useful?</p>
+<p>What are some areas of current and future development?</p>
+<p>And what is the relationship between predictive coding and active inference?</p>
+<p>And hopefully we'll draw out more questions.</p>
+<p>Anything else to add about this?</p>
+<p>No, not really.</p>
+<p>Cool.</p>
+<p>Here is Predictive Coding, a Theoretical and Experimental Review.</p>
+<p>I think the first version was from 2021, but the second revised version was 22 by Millage,</p>
+<p>Seth and Buckley.</p>
+<p>And just to review the core claim and then some of the aims and directions they set out,</p>
+<p>they write that no comprehensive review of predictive coding theory, and especially of recent developments</p>
+<p>in the field exists.</p>
+<p>That's their claim.</p>
+<p>And then they aim towards providing a comprehensive review both of the core mathematical structure</p>
+<p>and logic of predictive coding.</p>
+<p>So there's a mathematical review and summarization aspect to the paper.</p>
+<p>And then they also review a wide range of classic and recent work within the framework</p>
+<p>ranging from biologically realistic microcircuits that could implement predictive coding to the</p>
+<p>close relationship between predictive coding and the widely used backpropagation of error</p>
+<p>algorithm as well as surveying the close relationship between predictive coding and modern machine</p>
+<p>learning techniques.</p>
+<p>That's how they set out where they want to go.</p>
+<p>So would you like to read the first slide of the abstract?</p>
+<p>Okay.</p>
+<p>So predictive coding offers a potentially unifying account of cortical function, postulating that</p>
+<p>the core function of the brain is to minimize prediction errors with respect to a generative</p>
+<p>model of the world.</p>
+<p>The theory is closely related to the Bayesian brain framework and over the last two decades has</p>
+<p>gained substantial influence in the fields of theoretical and cognitive neuroscience.</p>
+<p>A large body of research has a reason based on both empirically testing, improved and extended</p>
+<p>theoretical and mathematical models of predictive coding, as well as in evaluating their potential</p>
+<p>biological plausibility for implementation in the brain and could create neurophysiological</p>
+<p>and psychological predictions made by the theory.</p>
+<p>Despite this enduring popularity, however, no comprehensive review of predictive coding theory and especially</p>
+<p>of recent developments in this field exists.</p>
+<p>They write, here we provide a comprehensive review of both of the core mathematical structure</p>
+<p>and logic of predictive coding, thus complementing recent tutorials in the literature.</p>
+<p>And we also review a wide range of classic and recent work within the framework, which is what</p>
+<p>we had read previously in the aims.</p>
+<p>So that's how the authors describe their own work.</p>
+<p>And now we're going to see their roadmap, see how they went about getting there.</p>
+<p>And then we're going to jump right into the introduction and then the formalisms.</p>
+<p>So here we see the roadmap and the rough outline of the paper is as follows.</p>
+<p>Section one provides an introduction that contextualizes predictive coding and we'll also be unpacking</p>
+<p>it in a philosophical and historical view.</p>
+<p>Section two provides an initial pass on the one level predictive coding model, sort of the</p>
+<p>kernel or the archetype or the motif of predictive coding and connects it importantly to variational</p>
+<p>inference.</p>
+<p>In one, predictive coding is generalized or extended or elaborated in a few important directions.</p>
+<p>So like in section 2.2, it's generalized into a multi-level case.</p>
+<p>In section 2.3, the concept of generalized coordinates are introduced.</p>
+<p>In section 4, precision is introduced as a concept.</p>
+<p>And in section 2.5, it's connected back to the brain.</p>
+<p>Section 3.5 discusses paradigms of predictive coding, both unsupervised and supervised, and</p>
+<p>also connects it through those sections and others to some research in machine learning.</p>
+<p>And then in section 4, there's connections between predictive coding and some other algorithms.</p>
+<p>Both those algorithms that are common in machine learning and computational statistics, like</p>
+<p>the error backpropagation, linear predictive coding and common filtering and normalizing</p>
+<p>flows and biased competition.</p>
+<p>And then in section 4.5, explicit connection is drawn between predictive coding and active</p>
+<p>inference, which brings in the cost of action as well as the idea of PID control.</p>
+<p>And then the discussion section closes with just a few other thoughts and summaries and</p>
+<p>directions and challenges.</p>
+<p>And there's several appendices.</p>
+<p>So it's a long-ish paper or monograph, but it's an excellent paper.</p>
+<p>And we're just going to cover more of an emphasis on the context and the beginning, and then sort</p>
+<p>of skip over or trail off over a few things.</p>
+<p>But there's a lot to unpack.</p>
+<p>So I hope that we can like learn more in the coming weeks if the authors want to join or</p>
+<p>if anybody else wants to join.</p>
+<p>Anything to add on roadmap or ready for introduction?</p>
+<p>Let's go.</p>
+<p>All right.</p>
+<p>Awesome.</p>
+<p>So, I'll just add some notes from this section of the introduction and then Maria, feel free</p>
+<p>to add anything.</p>
+<p>So how do they introduce predictive coding?</p>
+<p>They introduce predictive coding theory as an influential theory in computational and cognitive</p>
+<p>neurosciences, which proposes a potential unifying theory of cortical function.</p>
+<p>That's like related to the cortex of the brain.</p>
+<p>Namely, that the core function of the brain is to minimize prediction error, where the prediction</p>
+<p>error signals mismatches between predictive input and the input actually received.</p>
+<p>Minimizing the divergence between expectations and observations is going to be a big theme.</p>
+<p>And approaching that minimization, it can be achieved in multiple ways.</p>
+<p>And they're colored differently here.</p>
+<p>Through immediate inference about the hidden states of the world, like, I thought the ball</p>
+<p>was over here.</p>
+<p>I'm getting evidence it's over here.</p>
+<p>So I should just update how I think about the world.</p>
+<p>Which can explain perception, like the perception of a ball moving across the visual field.</p>
+<p>Through updating a global world model to make better predictions, which could explain learning.</p>
+<p>Like learning a little bit higher level than just where the ball is in the visual field,</p>
+<p>but like where balls tend to be in the visual field, or how fast they tend to move around.</p>
+<p>And finally, through action to sample sensory data from the world that conforms to the predictions.</p>
+<p>And that's when we'll introduce action into predictive coding in the latter sections of</p>
+<p>the paper.</p>
+<p>And then just last point, they say that predictive coding boasts an extremely developed and principled</p>
+<p>mathematical framework in terms of variational inference, as well as many empirically tested</p>
+<p>computational models that have close links to machine learning.</p>
+<p>So that's how they introduced this is as a unifying theory that integrates inference as well as</p>
+<p>action, inference of different kinds, more like perceptual and more like learning.</p>
+<p>And they're saying that it has a very rich mathematical framework.</p>
+<p>And it's been connected to insights in biology and in machine learning.</p>
+<p>Anything to add?</p>
+<p>Nope.</p>
+<p>So they write, predictive coding as a theory also offers a single mechanism that accounts</p>
+<p>for diverse perceptual and neurobiological phenomena, such as end stopping by stable perception,</p>
+<p>like illusions, repetition suppression, illusory motions, and attentional modulation of neural</p>
+<p>activity.</p>
+<p>So they're pointing to the integrative nature of this theory or framework to model all of</p>
+<p>these diverse phenomena as being an advantage.</p>
+<p>Like we could have a special theory for just by stable perception, a special theory for just</p>
+<p>repetition suppression, and so on.</p>
+<p>But this is a framework by which those outcomes are occurring as kind of outcomes of an underlying</p>
+<p>framework, predictive coding, rather than needing special theories.</p>
+<p>So that kind of parsimony or consilience is pursued in the areas like cognitive neuroscience.</p>
+<p>And they write, as such, and perhaps uniquely among neuroscientific theories, predictive coding</p>
+<p>encompasses all three layers of Mars hierarchy by providing well-characterized and importantly,</p>
+<p>an empirically supported view of what the brain is doing at all of the computational algorithmic</p>
+<p>and implementational levels.</p>
+<p>So Mars, very influential hierarchy.</p>
+<p>It's kind of like Tinbergen's questions or a little bit like Maslow's hierarchy.</p>
+<p>You can think of it as like an organizing or a sense-making framework.</p>
+<p>Again, to the question, what are brains doing?</p>
+<p>What are brains doing?</p>
+<p>And so we're going to have like three different kinds of answers to what brains are doing.</p>
+<p>There's going to be an answer at the level of computation, algorithm, and implementation.</p>
+<p>And so here with the example of a bird flying, the computational level is like flight.</p>
+<p>It's like the why.</p>
+<p>What is the algorithm doing?</p>
+<p>It's a sorting algorithm.</p>
+<p>What is the brain doing in this situation?</p>
+<p>It's tracking a moving object.</p>
+<p>Then there's the flapping level, which is the algorithm, which is kind of like pseudocode.</p>
+<p>And that's suggesting the what of how that why is realized.</p>
+<p>Like what is happening in this sorting algorithm?</p>
+<p>Well, it's doing this, this, this, this, this.</p>
+<p>What is the flight function being realized by?</p>
+<p>It's being realized by flapping of the wings.</p>
+<p>And then there's the implementation.</p>
+<p>So it's not just the flapping of anything.</p>
+<p>It's the flapping of something specific.</p>
+<p>And so that's the implementational details.</p>
+<p>And those levels of analysis have been helpful and provocative in connecting computational</p>
+<p>cognitive theories to neurobiological theories.</p>
+<p>So it's been a very influential and discussion provoking framework that has helped people connect,</p>
+<p>as well as challenge some of the similarities and differences between like computers and</p>
+<p>brains.</p>
+<p>Great.</p>
+<p>This is still in the introduction.</p>
+<p>And they're going to kind of give us a qualitative perspective on predictive coding.</p>
+<p>And then we're going to be diving into a lot more historical and technical detail.</p>
+<p>But how does predictive coding work?</p>
+<p>The core intuition behind predictive coding is that the brain is composed of a hierarchy</p>
+<p>of layers, which are each making predictions about the activity of the layer immediately</p>
+<p>below them in the hierarchy.</p>
+<p>So there's two directions in this predictive coding multilayer scheme, which we're just introducing</p>
+<p>here as kind of a heuristic.</p>
+<p>And then we're going to zoom in to just what's happening at one level.</p>
+<p>And then we're going to pull back out to kind of recovering this multilevel formalism.</p>
+<p>The downward descending predictions at each level, that's the blue arrow, are compared</p>
+<p>with the activity and inputs of each level to form prediction errors.</p>
+<p>This is the information in each layer, which could not be successfully predicted.</p>
+<p>These prediction errors are then fed upwards, that's the red arrow, to serve as inputs to</p>
+<p>higher levels, which can then be utilized to reduce their own prediction error.</p>
+<p>So that's kind of the bigger picture.</p>
+<p>The idea at the top level is like, I'm tracking a soccer ball that's moving from the left to</p>
+<p>the right.</p>
+<p>And then that gets transduced in certain ways.</p>
+<p>And that is, in this case, resulting in kind of a visual perceptive level prediction about</p>
+<p>what one should expect to see.</p>
+<p>And this is again, just the multilevel predictive coding scheme that is often used.</p>
+<p>But we're going to zoom back to just what's happening at a single level, and then what is</p>
+<p>happening at multiple levels.</p>
+<p>Awesome.</p>
+<p>Here's a fun 2018 paper by Carl Fristen, Does Predictive Coding Have a Future?</p>
+<p>And this is going to provide just a little bit of context, and then we're going to jump</p>
+<p>more into though.</p>
+<p>Carl wrote, in the 20th century, we thought the brain extracted knowledge from sensation.</p>
+<p>That's like the recognition model.</p>
+<p>And that's sort of the incoming sensory processing model.</p>
+<p>The 21st century witnessed a strange inversion in which the brain became an organ of inference,</p>
+<p>actively constructing explanations for what's going on out there beyond its sensory epithelia.</p>
+<p>One paper played a key role in this paradigm shift.</p>
+<p>And Carl goes on to write that a 1999 paper by Rao and Ballard, which we're going to talk more about for him, was one of those papers that's a once in a decade find.</p>
+<p>So we're going to talk more about it, but this is just kind of connecting it early to Carl</p>
+<p>Fristen's line of research, the connection between active inference and predictive coding, and the idea that sometimes it's these early transdisciplinary papers that can stitch two different fields together, and that that can have long-term consequences for essentially perennial questions like how do perception, learning, attention, and sensation all work together, and under what imperative might they work together?</p>
+<p>And then the authors provide a very preliminary discussion that they're going to go into more</p>
+<p>later about how predictive coding matters for machine learning.</p>
+<p>And so they write, predictive coding proposes that using a simple unsupervised lost function,</p>
+<p>such as simply attempting to predict incoming sensory data, is sufficient to develop a complex general and hierarchically rich representations of the world.</p>
+<p>They're suggesting that this has found support in the successes of modern machine learning models that are trained on unsupervised predictive or auto regressive objectives.</p>
+<p>So here's some of the papers that they cite. This is the Brown et al. and the Kaplan et al.</p>
+<p>And these both have to do with the training of what are increasingly becoming important modern machine learning methods, which are the language models.</p>
+<p>In contrast to modern machine learning algorithms, which are trained to end with a global loss at the output.</p>
+<p>So given the total big dataset, give me the lowest total error on the whole dataset.</p>
+<p>In predictive coding, prediction errors are computed at every layer, which means that each layer only has to focus on minimizing local errors than global loss.</p>
+<p>This property potentially enables predictive coding to learn in a biologically plausible way using only local and Hebbian learning rules.</p>
+<p>And this is going to connect to column and filtering and PID control.</p>
+<p>So they're kind of laying out the land and showing where they're going to connect in the introduction very, very qualitatively.</p>
+<p>And then again, we're going to zoom back down to find out what's happening at one level of predictive coding and then try to rebuild some of the formalisms related to column and filtering and PID control.</p>
+<p>And the bigger questions that people might be curious about asking would be like, what does it mean for computation to be biologically inspired?</p>
+<p>What is possible when we're thinking about some of the similarities and differences and complementarities between biological and different kinds of conventional and unconventional computation?</p>
+<p>What is possible in this ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>So, while predictive coding as a neuroscientific theory originated in the 80s and 90s with</p>
+<p>Monfort, Rao and Ballard, Schoeniverson, Laughlin and Dubs, and was first developed into its</p>
+<p>modern mathematical form and comprehensive theory of cortical responses in the mid 2000s with</p>
+<p>Friston, it has deep intellectual antecedents. These precursors include Helmholtz's notion of</p>
+<p>perception as an unconscious inference and Kant's notion that a priority structure is needed to make</p>
+<p>sense of sensory data, okay, and as well as early ideas of compression and feedback control in</p>
+<p>cybernetics and information theory. And on the next slides I will be talking a little bit more about</p>
+<p>history and philosophy of predictive coding and then some core formalisms and various generalizations</p>
+<p>and elaborations of predictive coding. If there is anything you want to say, Daniel, just feel free to</p>
+<p>jump in, okay? So, the historical and philosophical background of perception is huge, okay? However,</p>
+<p>seen in the context of predictive coding framework authors usually come up with a similar reasoning about</p>
+<p>perception. And then we can start thinking with the Greek philosopher Plato on his Allegory of the Cave</p>
+<p>Geord Downs in the Cave, which is known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known</p>
+<p>them would be the real thing and the only thing for these people. They wouldn't believe that</p>
+<p>there is anything outside the cave. So this would be it. These shadows would be the only thing.</p>
+<p>Okay, so what Plato would claim here is that our own conscious perceptions are just like these</p>
+<p>shadows. Okay, meaning that they are indirect reflections of hidden causes that we can never</p>
+<p>directly encounter. And well, a few centuries later, the Arab medieval scholar Al-Hazan wrote</p>
+<p>a lot of interesting notes on visual perception. Actually, he wrote</p>
+<p>six volumes, if I'm not mistaken, of his book of optics, where he explored the view that human</p>
+<p>perception often depends on mechanisms of judgment and inference instead of providing access straight</p>
+<p>to the world. So you can see that very early in our Western thinking, we have this notion that we do not</p>
+<p>have direct access to the world. Okay, that there is some inference going on.</p>
+<p>Okay.</p>
+<p>Great.</p>
+<p>All right. So jumping to the 18th century, we can find two important philosophers. Okay, the English,</p>
+<p>David Hume and the German, Immanuel Kant. Hume in 1739 to 1740, explored the inductive inferences and causation.</p>
+<p>The problem of induction that he brought was an analysis of cause and effect in perception. And the</p>
+<p>conclusion that he gets is that all our mental life could be traced back to the effects of sense experience.</p>
+<p>Because since we do not have direct contact with the world, we could never have one-to-one relationship</p>
+<p>with the objects there. And therefore, it is possible to have one effect with many possible causes and one</p>
+<p>cause with many effects. The solution here would be then extracting statistical regularities and imagining</p>
+<p>what happens when the world is intervening in the pornocontrolled manner, as the philosopher Jacob</p>
+<p>Howey developed in his book, The Predictive Mind, in 2014. Equally important, in the critique of pure</p>
+<p>reason in 1781, Kant will add an important element to this story, among countless other elements to this</p>
+<p>story. He will add that the brain uses existing information regarding space and time to make sense of the chaotic</p>
+<p>sensory data it constantly receives, to provide an organism the perception as they know. So, all of these</p>
+<p>scholars would tell us right in the early ages that we do not have direct access to the things in the world,</p>
+<p>and we need pre-existing information to make sense of all the data we constantly receive. Lots of predictive coding stuff.</p>
+<p>It really makes me wonder why it's sometimes still so ineffable or poorly understood or even seen as</p>
+<p>controversial, some of these perspectives which have been, as you are describing, thought of and</p>
+<p>convergently come to for many thousands of years in different cultures. So really interesting.</p>
+<p>Yes. In the late 19th century, the German scientist Hermann von Helmholtz in 1860 depicted perception as</p>
+<p>involving probabilistic inference. He is one of our gods in the community.</p>
+<p>Yes. And he was really inspired by Kant. Okay. And with that inspiration, he developed the idea of the brain as a hypothesis tester,</p>
+<p>and that perception is a process of unconscious inference. Okay. And more specifically, this idea that he developed</p>
+<p>in experiments was that perception has to be inferred by combining sensory signals with the brain</p>
+<p>expectations and beliefs about their causes. And such inferences happen without the subject's awareness.</p>
+<p>I mean, it has to happen without the subject's awareness. Because, you know, imagine all the chaotic</p>
+<p>sensory data coming and you open your eyes and you have to try to organize everything. I mean, it doesn't</p>
+<p>happen that way. You just open your eyes and everything is still stable. And so,</p>
+<p>it's unconscious and it needs to keep track of the causes in the world by updating perceptual best guesses,</p>
+<p>or you can say hypothesis, as new sensory signals arrive. So here he built</p>
+<p>the idea that we use, we use sensory signals with the brain expectations to, you know, update</p>
+<p>the hypothesis we make upon, we make for the causes of the effects we receive in the world. And this means</p>
+<p>that he somehow turned Humes and Kant's insights scientific, claiming that we can only infer things</p>
+<p>out there in the world behind a sensory veil, which, if I'm not mistaken, will be eventually called Mark of</p>
+<p>the brain. And I'm not sure. Maybe on the world. Helmholtz was crucial to many different works in machine learning,</p>
+<p>one that was even nicely named as Helmholtz machine. He was crucial in psychology, in neuroscience,</p>
+<p>cognitive science, and so on. Particularly in psychology, Helmholtz insights inspired Eurich Neisser in</p>
+<p>1967, and later Richard Gregory in 1980, and Eve Arvin Rock in 1983 to develop the analysis by synthesis</p>
+<p>approach, which is the process that analyzes a signal or image by reproducing it using a model.</p>
+<p>There, there's a picture of NICE's analysis by synthesis approach,</p>
+<p>which some schema available in this link. And in fact, Gregory built some kind of neuro hypothesis</p>
+<p>testing model based on his Helmholtzian understanding of the brain as continually formulating perceptual</p>
+<p>hypotheses about the world and testing them by acquiring data from sensory organs.</p>
+<p>So many things happened after the analysis by synthesis stuff, but I will just jump to what we have in</p>
+<p>philosophy today because we will touch the formalisms and the computation stuff afterwards. Okay, so I'll just</p>
+<p>make a jump and go to what we have in philosophy today. So, uh, recent works in philosophy and cognitive</p>
+<p>neuroscience have contributed to the expansive predictive coding framework and the Bayesian paradigm in the</p>
+<p>brain. And many of the seminar works we have in the field addresses predictive coding as predictive</p>
+<p>processing without, you know, any relevant difference in the first instance. And well, for instance, the philosophy</p>
+<p>Jacob Howey that is based in Monash University, Australia, aimed to the, uh, aimed on the improvement of</p>
+<p>prediction error minimization mechanism and the concept of winning hypothesis for conscious perception. Uh, also,</p>
+<p>he's interested in what PP predictive processing studies can bring to people with mental disorders,</p>
+<p>such as autism and schizophrenia. Actually, the three of them, uh, of the philosophers here are interested</p>
+<p>in what people can bring to, to improvement in psychiatry and medicine, uh, in general. So in 2014, he published</p>
+<p>an important textbook on the matter that is the predictive mind, the red book you can see, where he tries to</p>
+<p>solve the problem of perception inspired on humans induction problem with Bayesian inference and predictive</p>
+<p>processing. Later in 2016, the philosopher Andy Clark based on University of Sussex, England, carefully</p>
+<p>developed what he called action-oriented predictive processing in his book, Surfin uncertainty, where he adds</p>
+<p>and advances the crucial role of action in our perception. And he makes a lot of interesting connections</p>
+<p>between recent works in computational neuroscience and artificial intelligence and his eclectic philosophy of</p>
+<p>mind. And last year, in 2021, the neuroscientist, Aniussef, one of the authors of this paper we're talking here,</p>
+<p>uh, and also based in University of Sussex, uh, made an amazing contribution to the fields with his book,</p>
+<p>Being You, where he claims that we are beast machines whose perception is a controlled hallucination.</p>
+<p>And he improves consciousness descriptions using predictive processing framework and establishing the real</p>
+<p>problem of consciousness that in his own words requires explaining why a particular pattern of brain</p>
+<p>activity or other physical process maps to a particular kind of conscious experience, not merely establishing</p>
+<p>that it's this. To, you know, philosophers and scientists work on. And they, here they are.</p>
+<p>Okay. All right. So, I was talking about predictive coding and then I went to predictive processing. Is there a difference?</p>
+<p>Well, many authors would use the terms freely, okay? But then I found Clark saying in his book,</p>
+<p>uh, the difference that he understands from predictive coding to predictive processing. So he puts, uh, as the fact</p>
+<p>that predictive processing is not simply the use of the data compression strategy known as predictive coding,</p>
+<p>rather it is the use of that strategy in the very special context of hierarchical, multi-level, systems</p>
+<p>deploying probabilistic generative models. Such systems exhibit powerful forms of learning and deliver rich</p>
+<p>forms of context sensitive processing and are able, uh, flexibly to combine top-down and bottom-up flows of</p>
+<p>information within multi-layer cascade. Predictive processing does combine the use within a multi-level,</p>
+<p>bi-directional, bi-directional cascade of top-down probabilistic generative models with the core predictive</p>
+<p>coding strategy of efficient encoding and transmission.</p>
+<p>Okay. Uh, from this, I'm not sure if you agree with me, Daniel, but reading this, this paragraph makes me</p>
+<p>wonder, I mean, okay, predictive coding is a local, uh, bottom-up top-down cascade and stuff, but it also is</p>
+<p>multi-layer. Yes. It also has some hierarchy. So I'm not sure what, what he mean. I mean, I'm not sure if I</p>
+<p>understand the difference between predictive coding and predictive processing as he puts.</p>
+<p>Yeah. Very insightful. And it, it made me think about the difference between like coding, like programming</p>
+<p>and like data coding, like Python coding for data and data processing, which is a little bit like it</p>
+<p>could be multiple computer languages. And so you're really highlighting something important, which is that</p>
+<p>when the data are compressed, according to a strategy where the errors are being transmitted</p>
+<p>rather than the actual sort of estimate itself, that's like that information channel is in a</p>
+<p>predictive coding way. And then this helps us use predictive processing for like the bigger picture</p>
+<p>for systems that implement predictive coding modules, but that's not like the only module they're</p>
+<p>deploying. So that that'll be something cool to like hear people's perspective on really nice, um,</p>
+<p>distinction here though. Yep. And, um, okay. So, uh, I wrote something here that just like you said that maybe,</p>
+<p>uh, coding would be better to use for formalisms and implementations and processing for the philosophical</p>
+<p>understanding that prediction is the basis of, uh, uh, signal interpretation, uh, e.g. as opposed to descriptive.</p>
+<p>Okay. So, uh, jumping back to formalism, uh, predictive coding and information theory and signal processing.</p>
+<p>Okay. So another deep intellectual influence in predictive coding comes from information theory from</p>
+<p>channel in 1948 and especially the minimum redundancy principle of Barlow in 1961, 89, and 61, 2. Uh,</p>
+<p>information theory tells us that information is inseparable from a lack of predictability. If something is</p>
+<p>predictable before observing it, it cannot give us much information. I loved this sentence.</p>
+<p>Conversely, to maximize the rate of information transfer, the message must be minimally predictable</p>
+<p>and hence minimally redundant. Predictive coding as a means to remove redundancy in a signal was first applied</p>
+<p>in signal processing where it was used to reduce transmission bandwidth, uh, for video transmission.</p>
+<p>And do you want to say something? I'll just describe this without reading it. It was a, a common, uh, and</p>
+<p>effective, although it can be improved on by other methods. It's a method for video encoding known as frame</p>
+<p>differencing where basically, uh, one frame gets described and then subsequent frames, only the</p>
+<p>pixels that change have to be described. So that is a lot like an analogy to predictive coding in the sense</p>
+<p>that it's able to connect the differences between subsequent time steps and use that to give really</p>
+<p>only the informative pieces. Like I have a hundred digit number and then I'm just going to tell you the</p>
+<p>third digit changed. Now it's an eight instead of having to repeat the same number and then 99 of those</p>
+<p>digits, they're informative. Like in the sense that they're good info, it's true, but they're not</p>
+<p>informative in the information theory context because they were quite predictable before observing it.</p>
+<p>Okay. And so initial schemes used, uh, a simple approach of subtracting the new to be transmitted frame</p>
+<p>from the old frame. In effect, using a trivial prediction that the new frame is always the same</p>
+<p>as the old frame, which works well in reducing bandwidth in many settings where there are only a</p>
+<p>few objects moving in the video against the static background. And more advanced methods often predict</p>
+<p>each new frame using a number of past frames weighted by some coefficient, an approach known as linear</p>
+<p>predictive coding.</p>
+<p>Okay. So now, predictive coding in the eye and brain. The first concrete discussion of predictive coding in</p>
+<p>the neural system arose as a model of neural properties of the retina with Shrinivacin, 1982.</p>
+<p>Specifically as a model of center-surrounded cells which fire when presented with either a light spot against</p>
+<p>a dark background on center of surround or alternatively a dark spot against a light background of center on</p>
+<p>surround cells. It was argued that this coding scheme helps to minimize redundancy in the visual scheme,</p>
+<p>specifically by removing the spatial redundancy in natural visual scenes. That the intensity of one pixel helps</p>
+<p>predict quite well the intensity of neighboring pixels. And then the first picture related to it.</p>
+<p>Do you want to talk about it?</p>
+<p>We're just going to look at two different tissues of the nervous system that have some predictive elements.</p>
+<p>And this is referring to some of the photosensitive cells that are on the retina.</p>
+<p>And that's work that had been done qualitatively and empirically for hundreds of years, but then was connected to predictive</p>
+<p>perspectives in the 80s. And then we're also going to look, as you'll now unpack, at what's happening in the cortex of the brain amongst different layers.</p>
+<p>With Manfred in 1992 was perhaps the first to extend this theory of the retina and the LGN to a fully fledged</p>
+<p>general theory of cortical function. His theory was motivated by simple observations about the neurophysiology of cortical</p>
+<p>cortical connections, specifically the existence of separate feed forward and feedback paths, where the feed forward path is</p>
+<p>originated in the superficial layers of the cortex and the feedback pathways originated primarily in the deep layers.</p>
+<p>Great. So we kind of had this philosophy development happening over thousands of years.</p>
+<p>And then in the 1900s, people were starting to connect the neuroanatomy and the histology to some of these predictive ideas.</p>
+<p>And then now let's kind of close the loop and bring it back to the critical work that Friston highlighted in his 2018 paper.</p>
+<p>Yep. And now predictive coding in the brain gets computational, mathematical.</p>
+<p>While Manfred's theory contained most aspects of classical predictive coding theory in the cortex,</p>
+<p>it was not accompanied by any simulations or empirical work. And so its potential as a framework for</p>
+<p>understanding the cortex was not fully appreciated. And so again, the similar work of Rao and Ballard in 1999</p>
+<p>had its impact precisely by doing this. And so they created a small predictive coding network according to the</p>
+<p>principles. Oh, sorry.</p>
+<p>Manfred. And empirically investigated its behavior, demonstrating that the complex and dynamic interplay</p>
+<p>of predictions and prediction errors could explain several otherwise perplexing neurophysiological</p>
+<p>phenomena, specifically extra-closico receptive field effects such as and stopping neurons.</p>
+<p>Yeah, this is pretty interesting because even the idea that the neurons that are active while a</p>
+<p>certain stimuli is being presented, that those are neurons that are receptive to that stimuli.</p>
+<p>That's within the paradigm of signal reception. And then it's like there's classical signal</p>
+<p>reception. You know, the pitcher throws the ball, the catcher catches the ball. It's classic. But</p>
+<p>unfortunately, or not, there's all these so-called extra classical effects. And so this paper proposed</p>
+<p>a simple architecture that was able to encompass the so-called classical as well as some of the</p>
+<p>important extra classical effects under this predictive processing framework. And so that really led to</p>
+<p>a lot of developments in neuroscience in the last 20 plus years. And that's exactly what we're going to go</p>
+<p>into now. So thanks for providing that awesome context. Like it really helps, I think, situate some</p>
+<p>of the details that we're about to look into. Okay, so let's get a little technical.</p>
+<p>What happened after Ron Ballard's 1999 synthesis? So remember that Carl Friston said that that was like</p>
+<p>one of those once in a decade papers for him. So how did he change his action selection publication policies</p>
+<p>after reading that paper? Well, anyone can guess. But what Friston did was that he cast the predictive</p>
+<p>coding algorithm as approximate Bayesian inference upon Gaussian generative models. And this is going to be</p>
+<p>connected. This is all in the paper for people to read. But this connects basically all of the previous</p>
+<p>themes that we had been talking about, like the information theory, minimum redundancy, and the</p>
+<p>Helmholtzian idea of perception as inference come together in the Bayesian perspective on the predictive</p>
+<p>coding architecture by Rao and Ballard. So the authors write,</p>
+<p>Friston's approach reformulates the mostly heuristic Rao and Ballard model in the language of</p>
+<p>variational Bayesian inference, which we're going to look more at. And Friston showed that the energy</p>
+<p>function in Rao and Ballard can be understood as a variational free energy of the kind that is</p>
+<p>minimized through variational inference. So that really connected the dots between predictive coding</p>
+<p>architectures and the empirical biological findings to all this work on variational Bayesian inference.</p>
+<p>And those are the 2003, 5, and 8 single author papers by Carl.</p>
+<p>So what is variational and Bayesian and variational Bayesian approaches? And we're just going to look at</p>
+<p>the author's words and there's many, many awesome places to look for educational materials and also check</p>
+<p>out some of the live streams like 26, 32, 34, 37, and 39. So to be brief about it, the authors write,</p>
+<p>Variational inference approximates an intractable inference problem with a tractable optimization problem.</p>
+<p>So like a super hard problem to solve just by thinking about it and then guessing at the right answer</p>
+<p>with a tractable optimization problem. So it's like 20 questions. It's going to be hard to guess on your</p>
+<p>first question, but if you take this iterative optimization approach, maybe there's a way to</p>
+<p>actually resolve it. So it's not exactly like that, but it's like kind of again flipping out something</p>
+<p>that's hard to solve in one shot with an approach and this iterative gradient descent type improvement</p>
+<p>that actually gets you to a good solution. And so this is where we're going to introduce some of the</p>
+<p>variables and the letters that we're going to use. Following a lot of perceptual work in Bayesian</p>
+<p>statistics, we're going to use O for observations, which are like data, either the actual data that the</p>
+<p>sensor provides us or generated data of the kind that we would expect the sensor to give us. And then X</p>
+<p>X are the latent or the unobserved states of the system. So like X would be the temperature in the</p>
+<p>room and O is what the thermometer reading is. And that's sort of a Bayesian approach that helps us</p>
+<p>have a generative model of the data generating process, which is also known as the joint distribution</p>
+<p>because it is jointly over both the observations and the latent states.</p>
+<p>Where variational inference comes into play is hinted at in this paragraph on Bayes. So in order to do</p>
+<p>exact Bayes, one would have to find this normalizing factor. However, that can be intractable because it</p>
+<p>requires basically integrating or summing over all latent variable states. And that's not always easy or</p>
+<p>known. So the approach of the variational method is aiming to approximate the posterior using an auxiliary</p>
+<p>posterior using a different set of parameters Y. So the Q is going to be reflecting like the distribution,</p>
+<p>the variational distribution that we control that is of like a family of functions that is more</p>
+<p>amenable to optimization. So P could be like a super messy function, but Q is going to be constructed</p>
+<p>by the modeler to be a lot simpler. And so it is going to have its own parameters. And those parameters,</p>
+<p>phi are mu and sigma. And so it's kind of like we would be interested in the mean and the variance of the</p>
+<p>x, the actual temperature in the room, given the thermometer. But what if it were too hard to even</p>
+<p>get that? Well, what we might want to do would be imagine that the temperature were normally distributed</p>
+<p>like a Gaussian distribution with this mean mu in the variance sigma. So even if the temperature in the</p>
+<p>room weren't actually Gaussian distributed, maybe it's approximatable enough. And so the variational</p>
+<p>approach to the Bayesian method is to introduce this variational distribution Q that's going to have</p>
+<p>like a lot of good features moving forward. Here's how that Q comes into play. This equation one is</p>
+<p>expressing using the variables that we've seen. It's saying and also introducing this divergence D. So first,</p>
+<p>just the definition of D and then what this formalism says. So D of P and double line Q. So any double</p>
+<p>line means between this and that. D is a function that measures the divergence between two distributions.</p>
+<p>So for example, P and Q. And here, the divergence is going to be calculated as the KL divergence,</p>
+<p>although other divergences are possible. So when the divergence between the one that we simplified and</p>
+<p>controlled Q and that intractable true posterior, if that divergence were minimized to zero, we would be</p>
+<p>like fitting P as well as we could with Q. And this is saying in one, it's saying Q star, the best Q</p>
+<p>of X, the latent states, given the data and the variational parameters. So the best possible room</p>
+<p>temperature prediction given thermometer readings and variational parameters are a minimization over</p>
+<p>all the variational parameters of the divergence between the Q distribution that we control of</p>
+<p>exactly what we want the best answer for and the P generative model of exactly what would be the best to</p>
+<p>compute, like the temperature given the observations on the thermometer. And so that goes a long way</p>
+<p>towards rewriting an inference problem as a divergence problem. But they write, however, merely writing</p>
+<p>the problem this way does not solve it, because the divergence that we need to optimize still contains</p>
+<p>the intractable true posterior. So it's rewritten as a divergence between like something we control and</p>
+<p>something that we kind of set out to do this because we couldn't calculate it. So we have prepared it,</p>
+<p>but still this is intractable, so this is not usable alone. They write, the beauty of variational inference,</p>
+<p>is that it instead optimizes a tractable upper bound on this divergence called the variational free energy,</p>
+<p>VFE. To generate the bound, we apply Bayes' rule to the true posterior to rewrite it in the form of the</p>
+<p>generative model and the evidence. So here's that P of X given O. That's rewritten as now not of X given O,</p>
+<p>but P of O comma X, that's the joint distribution, divided by the observations. So this, by the Bayes' rule,</p>
+<p>P of X given O, is equivalent to this. That's why this is the first line here. They provide some rewritings,</p>
+<p>and then they write, in the third line, the expectation around P of O, so the actual likelihood</p>
+<p>of the observations themselves, like how likely is the thermometer saying 21? It vanishes since the</p>
+<p>expectation is over the variable X, which is not in P of O. So it's like, what is the expectation of</p>
+<p>this coin flip over the temperature tomorrow? It's like, because they're different variables,</p>
+<p>variables, it makes them very easy to separate out if we're only interested in one of them.</p>
+<p>And then they write that this F, the free energy, is a very, is a tractable quantity,</p>
+<p>since it's a divergence between two quantities, we assume that we as the modeler know. The variational</p>
+<p>approximate posterior Q of X given O, that's the distribution that we control, and the generative</p>
+<p>joint distribution P of O comma X. So we traded out this intractable true posterior, where it's like,</p>
+<p>if we knew it, then we would just stop there. But we don't know it, so we've traded it out for a</p>
+<p>divergence between something that we totally control, Q of X conditioned on these other parameters,</p>
+<p>and a joint distribution, which we might have uncertainty over, but at least can be modeled.</p>
+<p>So that's one of the key pieces of variational Bayes, and that's not specific to predictive</p>
+<p>coding, it's just an important way that the authors are introducing it here. Anything to add?</p>
+<p>All right, so let's kind of continue on this theme. Since F is an upper bound, by minimizing F,</p>
+<p>we drive the variational distribution that we control closer to the true posterior. As an additional bonus,</p>
+<p>under certain conditions, F can be used for model selection. So that means it can be used not just to</p>
+<p>kind of fine-tune a model that we've already chosen, but it can actually do choosing from</p>
+<p>parametrically or structurally different models. They write, we can gain an important intuition about</p>
+<p>F by showing it can be decomposed into a likelihood maximization term, and the KL divergence term,</p>
+<p>which penalizes deviation from the Bayesian prior. These terms are often called accuracy and complexity,</p>
+<p>and this decomposition is often used in different machine learning algorithms. So that's one rewriting</p>
+<p>of free energy as this divergence between the Q and the P, and then rewriting that as an accuracy and</p>
+<p>a complexity, which we'll go into maybe more another time. And they write, in many practical cases,</p>
+<p>we must relax the assumption that we know the generative model P of O and X, the joint distribution.</p>
+<p>Luckily, this is not fatal. Instead, it is possible to learn the generative model alongside the</p>
+<p>variational posterior on the fly, and in parallel using expectation maximization.</p>
+<p>So this is basically the alternation shown by Equations 3 of how we can be setting one side of this</p>
+<p>KL divergence fixed and optimizing the other side, and then going back and doing it the other way.</p>
+<p>And so that kind of back and forth expectation maximization,</p>
+<p>we're going to be reducing this divergence from both sides. And so formalism 3 are saying the</p>
+<p>variational parameters phi at the next time step, t plus 1, are an optimization argmin of those parameters</p>
+<p>holding the theta constant. And then the second part of formalism 3 is the exact opposite.</p>
+<p>Now, the generative model parameters theta at t plus 1 are a minimization over</p>
+<p>literally the same thing, but holding the variational parameters constant. So there's a lot more to say</p>
+<p>about expectation maximization, but this is like converging to a small divergence by whittling away at</p>
+<p>both sides and kind of alternating there. So that's how expectation maximization can be used as a</p>
+<p>heuristic algorithm for variational Bayesian optimization.</p>
+<p>How do we go from variational inference, which all of those previous slides are things that we've</p>
+<p>basically talked about before and that are not applying to predictive coding specifically. So how are</p>
+<p>we going to get to predictive coding? They write, having reviewed the general principles of variational</p>
+<p>inference, we can see how they relate to predictive coding. First, to make any variational inference</p>
+<p>algorithm concrete, we must specify the forms of the variational posterior and the generative model.</p>
+<p>It's like if you want to do formalism 3, those are the two pieces you need. You need like the phi stuff</p>
+<p>and the theta stuff. And so they specify it here. N means a normal distribution with like a mean comma</p>
+<p>variance format. And so they're going to define a Gaussian form for the generative model.</p>
+<p>The mean of this likelihood Gaussian is assumed to be some function of hidden states,</p>
+<p>which can be parameterized with theta, while the mean of the prior Gaussian distribution is going to be</p>
+<p>a g of mu. So we're going to have like f of theta and g of mu. The variances of these two Gaussian</p>
+<p>distributions of the generative model are sigma 1 and sigma 2. This is a slight technical detail,</p>
+<p>but they're going to assume that the variational posterior is a Dirac delta, which is like a spiking</p>
+<p>function distribution that's centered at the mean. However, they explore that differently with Laplace</p>
+<p>assumption. So this is basically taking what we discussed about variational inference and preparing</p>
+<p>it to be entered into a predictive coding way. So they're setting up the problem with which parameters</p>
+<p>you're going to want to do variational inference on in order to implement predictive coding.</p>
+<p>And there's of course more to say, but we're just giving a first pass.</p>
+<p>In Appendix A is where they describe the difference between using the Laplacian approximation and the</p>
+<p>Dirac delta. So it's footnote 8, which suggests moving to Appendix A and looking at the Buckley 2017</p>
+<p>for a walkthrough. But this on the bottom right is kind of like a summary of the difference between</p>
+<p>the Dirac delta approach and the Laplace method approach. So the Dirac delta is like we're trying to find</p>
+<p>the spike that's at the mean or the median, there's some other details in play, that is where the bulk of</p>
+<p>the probability distribution mass is. Whereas the Laplace method tries to fit a polynomial, like just a second-degree</p>
+<p>polynomial, like a quadratic, over the probability distribution also in the way that is best fitting.</p>
+<p>So there's some similarities and some differences and it's explored more in the Buckley 2017 paper</p>
+<p>on the FEP for Action Perception Mathematical Review.</p>
+<p>So let's continue with our exploration of how we do variational Bayes and make it a predictive coding model.</p>
+<p>At the top they write, we define the prediction errors epsilon o, that's like the error on observation,</p>
+<p>and epsilon x, that's the error on the mean states. So the epsilon o is like o minus f of some function,</p>
+<p>you know, f of some parameters, and then there's also the epsilon x. So how much prediction error do you have</p>
+<p>about the observation? How much prediction error do you have about the hidden state? Epsilons are the</p>
+<p>prediction errors and they're parameterized by these theta 1 and 2 variances. Given all of this, we can derive</p>
+<p>dynamics for all the variables of interest. So that's the actual underlying hidden state, the temperature in</p>
+<p>the room that we want to be actually predicting, mu, and then with the variational parameter of it,</p>
+<p>and then theta 1 and theta 2, which are the variances. You can think of it as like the variance of the</p>
+<p>room temperature and the variance of the term of the thermometer. I hope that's not wrong or an</p>
+<p>oversimplification, but those are like the two variances and we want the real temperature of the room.</p>
+<p>They write, we can derive dynamics for all these variables of interest by taking the derivatives</p>
+<p>of the variational free energy f. The update rules are as follows. And so this is change in mu, theta 1,</p>
+<p>and theta 2 over time. d mu, dt, d theta 1 over dt, and d theta 2 over dt. And that has some equivalences</p>
+<p>with some f's. So it's going to be going from just the change in the mu estimate through time to</p>
+<p>something involving free energy. And then that's defined more formally. Importantly, these update</p>
+<p>rules are very similar to the ones derived in Rao and Ballard 1999, and therefore can be interpreted as</p>
+<p>recapitulating core predictive coding update rules. For instance, the mu's are typically interpreted as</p>
+<p>rapidly changing neural firing rates, while thetas are slowly changing synaptic weight values. So they're</p>
+<p>weaving together, connecting the biology with the formalisms here. And they write also that that mu can</p>
+<p>be understood as the process of perception. That's like, how hot is it in the room? Since mu is meant to</p>
+<p>correspond to the estimate of the latent state of the environment generating the observations on the</p>
+<p>thermometer. And by contrast, the dynamics of thetas can be thought of as corresponding to learning.</p>
+<p>Since theta effectively defined the mapping between the latent state and the observations.</p>
+<p>So it's like, you think you know how the thermometer is related to the temperature in the room,</p>
+<p>and then you see your thermometer changing, you're changing how hot you think the room is. That happens</p>
+<p>over a shorter timescale. And then over a longer timescale, you might come to learn the variability of</p>
+<p>the temperature or how noisy the thermometer is. But that's more like learning than perception. However,</p>
+<p>they're on a continuum using this model. So actually, this up to formalism 9 completes the core</p>
+<p>formalism of predictive coding, which is it's a variational Bayesian approach to having this ongoing</p>
+<p>prediction error minimizing approach to latent state estimation. That is the heart of predictive coding.</p>
+<p>And now we're going to jump into like a few different elaborations that we're going to be moving</p>
+<p>through a little bit more quickly. Anything to add, Maria? Awesome. The previous examples</p>
+<p>focused on predictive coding with a single level of latent variables, mu1. However, the expressiveness of</p>
+<p>such a scheme is limited. Deep neural networks in machine learning have demonstrated that having</p>
+<p>hierarchical sets of latent variables is a key to enabling methods that learn powerful abstractions,</p>
+<p>and handle intrinsically hierarchical dynamics of the sort that humans intuitively perceive.</p>
+<p>Predictive coding schemes introduced can be straightforwardly extended to handle hierarchical</p>
+<p>dynamics of arbitrary depth, equivalent to deep neural networks in machine learning. This is done through</p>
+<p>postulating multiple layers of latent variables, x sub 1 through x sub l, and then defining the generative</p>
+<p>model as follows. So like p, the generative model is going to be basically over all the layers.</p>
+<p>So just as the generative model and the variational distribution had to be defined for the single layer</p>
+<p>model, here they're going to define the p distribution and now they need the q. We define a separate</p>
+<p>variational posterior for each layer. So they define the p's and the q's just like they did in the single</p>
+<p>layer and then that allows them to calculate the variational free energy, which is a sum of the</p>
+<p>prediction errors of each level. And so this is f, now not just over one layer but multiple levels.</p>
+<p>So the variational posteriors that need to be calculated are partitioned across the layers,</p>
+<p>which allows them to be summed in a very straightforward way. Given that free energy divides nicely into the</p>
+<p>sum of layer-wise prediction errors, it comes as no surprise the dynamics of the mu and the theta are</p>
+<p>similarly separable across layers. That allows different layers of this prediction hierarchy to be like</p>
+<p>precise or imprecise and allow those movements to happen in a way that's uncorrelated.</p>
+<p>which is not just because the real world presents itself with settings where there's like</p>
+<p>confidence at lower and higher and vice versa, but it makes this calculation of the free energy of the</p>
+<p>whole system more like a simple sum. Whereas if there was these like really complex interactions with the</p>
+<p>first layer by the third layer, if the fifth layer is this way, then doing the statistics would be a lot</p>
+<p>more challenging. So visually, here's what that looks like. We have the mu, which is the mean estimate</p>
+<p>of what's happening at that level. And then there's passing of these epsilon error terms.</p>
+<p>So they write, this is the architecture of a in figure one multi-layer predictive coding network</p>
+<p>shown here with two value and error neurons in each layer. The value neurons project to the error neurons of</p>
+<p>the layer below and the error neurons represent the current activity. So this is like starting to walk</p>
+<p>us back towards that cortical layout where there's a cortical column where there's some so-called upwards</p>
+<p>downwards and downwards signaling, but also there's lateral signaling. So this is a graphical model</p>
+<p>that's reflecting the way that predictive coding can be arranged almost like in series and in parallel</p>
+<p>to have like wide models and deep models. Just like you could have a neural network where it was</p>
+<p>four neurons, four neurons, four neurons, four neurons, or you could have 64 and then 64. That would be like a</p>
+<p>shallower but wider model. And so that notion of shallowness and depth is also going to come into play with predictive coding.</p>
+<p>Here we're in Formalism 12 and 13. And so now we're looking at the rate of change, the derivative of mu sub l,</p>
+<p>the estimate of the mean at that layer, and theta l, the variance at that layer. So these are the update rules,</p>
+<p>the gradients for the mean and the variance of different levels, and they're also written as free energy</p>
+<p>functionals of those layers. And the dynamics of the variational means depends only on the prediction errors</p>
+<p>at their layer and the prediction errors on the layer below. So again, we don't have this epsilon at l minus one</p>
+<p>connecting up all the way to mu. It's only through these local connections within and between layers</p>
+<p>by which we're needing to calculate anything. We can think of the mu's as trying to compromise between</p>
+<p>causing error by deviating from the prediction from the layer above and adjusting their own prediction to</p>
+<p>resolve error at the layer below. So it's kind of like a hierarchy of bosses or tasks, and there's like</p>
+<p>top down expectations, and there's the bottom up reality, which might be like ahead or behind schedule. And then it</p>
+<p>puts each person like in this compromise situation. Crucially for conceptual readings of predictive coding. And</p>
+<p>this is where there's like a doorway to the philosophy and some of the broader discussions. This means that sensory data is not</p>
+<p>directly transmitted up through the hierarchy as is assumed in much of perceptual neuroscience.</p>
+<p>And so it totally returns us to these questions like, what is perception? What is cognition? What is action?</p>
+<p>What is coming from the eye to the brain? Or what goes from the brain to the eye? What is the eye doing? What is the</p>
+<p>brain doing with respect to the eye? And how does it relate to predictive coding? Any quick answers on those?</p>
+<p>Naturally. Cool. So after introducing that kernel of the predictive coding formalism and taking it into</p>
+<p>the multilevel context, now we can look at another elaboration or generalization. So they write in 2.3,</p>
+<p>we have considered the modeling of just a single static stimulus O. However, most interesting data that the</p>
+<p>brain receives comes in temporal sequences O bar, which is O through time. To model such temporal sequences,</p>
+<p>it's often useful to split the latent variables into states, which can vary with time, and parameters,</p>
+<p>which cannot. In the case of sequences, instead of minimizing the variational free energy, we must instead</p>
+<p>minimize the free action, which is the path integral of the variational free energy through time.</p>
+<p>We're not going to go into the formalisms related to the generalized coordinates 14, 15, 16, and 17,</p>
+<p>but it's something that we can explore later. And just as a reminder, just to kind of</p>
+<p>excite somebody who might want to explore it, we explored the idea of the generalized coordinates of</p>
+<p>motion a lot in Acton live stream number 26 with DaCosta et al. And so here was a model where we have</p>
+<p>from left to right time at different time steps. And then there's the observables of something. And then</p>
+<p>it is part of this like column of higher derivatives of its motion. So it's like position, it's</p>
+<p>velocity, it's acceleration, and so on. And so at each time step, moving forward, you're computing the</p>
+<p>generalized coordinates of motion for like the movement of a baseball. And that is what ties</p>
+<p>generalized coordinates of motion to PID control, which will also come back at the end, also known as</p>
+<p>integrator chains. And this is all happening within this discussion of Bayesian mechanics. Just like if we</p>
+<p>had been talking about the baseball, we would be talking about physical mechanics or statistical</p>
+<p>mechanics. Well, it's Bayesian. So it's Bayesian mechanics and the physics of action and control.</p>
+<p>That's what they explore in section 2.3. Section 2.4 introduces and goes into a little bit more detail</p>
+<p>on precision. One core aspect of predictive coding absent in the original Rao and Ballard 1999 formulation</p>
+<p>is the notion of precision or inverse variance. So precision and variance are like one over each</p>
+<p>other. So if someone said it's very high precision, that's a very narrow, very sharp distribution,</p>
+<p>and one over the variance is another way to write that. So sometimes it's used with like a beta and a</p>
+<p>gamma in other models. Precision serves to multiplicatively modulate the importance of the prediction errors,</p>
+<p>and thus possess a significant influence in the overall dynamics of the model.</p>
+<p>And so we won't go into every detail with how the precisions are themselves fit, but just wanted to</p>
+<p>note that this big sigma is the free energy being summed over the layers. So big sigma is a multiplicative</p>
+<p>sum. Oh, sorry, it's just a sum. But then this smaller sigma inside is sigma as the precision matrix at a</p>
+<p>given level. So it's kind of like different uses of sigma. But this is a way where the variances and</p>
+<p>the prediction errors at a given level are being summed across levels, and that's helping fit these</p>
+<p>precision terms. Statistical detail, but it's important for making it work in real inference.</p>
+<p>Okay. In section 2.5, they pull back from elaborating on predictive coding, and they talk more about</p>
+<p>how it has some biologically plausible bases. So this was quite interesting. While technically</p>
+<p>predictive coding is simply variational inference and filtering algorithm under Gaussian assumptions,</p>
+<p>from the beginning it has been claimed to be biologically plausible theory of cortical computation,</p>
+<p>and also for other brain regions like the eye and for other cognitive systems.</p>
+<p>The literature has consistently drawn close connections between the theory and potential</p>
+<p>computations that may be performed in brains. For example, Rao and Ballard explicitly claimed to</p>
+<p>model the early visual cortex, and Fristin explicitly proposed predictive coding as a general theory</p>
+<p>of cortical computation. This is like the realism and instrumentalism discussion. Are we just modeling</p>
+<p>these systems and the kind of data that they provide us, and it just fits really well as a model,</p>
+<p>but we're not saying that the architecture of the statistical model has anything to do with the</p>
+<p>architecture of the physical pieces of the brain? Or is it a little bit in the gray zone where it's kind</p>
+<p>of like, wow, that model fits so well, and the anatomy looks so good, maybe there's</p>
+<p>something there to it. And so in this section, they review empirical work that has attempted to</p>
+<p>validate or falsify key tenants of predictive coding in the cortex, as well as some issues with the</p>
+<p>approach. So it's mainly focused on the mammalian brain and the neural cell type, but as always, we can sort</p>
+<p>of think about what is the adjacent here, like what are the roles of other cell types in predictive coding</p>
+<p>in the mammalian brain? And then how might like the insect nervous system or how might other nervous</p>
+<p>systems or non-nervous systems perform predictive coding? And then they just provide one example where</p>
+<p>they take what they had shown in figure one with this multi-level predictive coding scheme that was sort of</p>
+<p>predictively programming, as they say, one to think about cortical cognition, and now they're going to make that</p>
+<p>connection clear in figure two. So on the right side is there, figure two, and that's the canonical</p>
+<p>microcircuit model of Bostos et al, mapped onto the connectivity of a cortical region. And so then in red</p>
+<p>are those parameters that we've been discussing, the mu's and the epsilons, the means and then the</p>
+<p>prediction errors. And then here's just a few other representations of what others have written about</p>
+<p>like that cortical column. So here's like an evolutionary perspective that connects some of the mammalian</p>
+<p>cortex with the avian pallium brain region. And so just the way that people work out these kinds of circuit diagrams,</p>
+<p>like by looking at the actual tissue, like by looking at the actual tissue, and then here's the statistics.</p>
+<p>And so how does the tissue relate to the statistical model? But that's what they explore in figure two.</p>
+<p>Okay, any thoughts?</p>
+<p>Okay. In section three, they continue to review empirical work, but with more of a focus on machine learning</p>
+<p>of the unsupervised and supervised setting. And they're going to also explore how the predictive</p>
+<p>coding architecture can be made more biologically plausible by relaxing certain assumptions implicit</p>
+<p>in this canonical model and introduce action into the picture. Bigger three, they summarize a few</p>
+<p>different what they call paradigms of predictive coding. Summary of the input-output relationships for</p>
+<p>each paradigm of predictive coding. So it's the input and the prediction, the output, of different</p>
+<p>paradigms. So here's the classical predictive coding. Observation data are coming in, predictions about those</p>
+<p>observations are coming out. It's an instantaneous real-time snapshot. The real-time anticipatory unfolding</p>
+<p>is still getting data as input, but it's predicting the observation at the next time step, which is a similar</p>
+<p>problem to predicting at this time step, but it's like a little bit different. That can happen not just</p>
+<p>through time, but also in the context of space with like a spatial predictive coding. And then these two</p>
+<p>on the right, supervised predictive coding in the generative and in the discriminative direction,</p>
+<p>have to do with the relationship with reading in labels and giving out observations,</p>
+<p>and vice versa. Make me a cat. Here's a picture of a cat. Here's a picture. That's a cat. So these are some</p>
+<p>of the ways that predictive coding models have been applied. 3.1, they explore the way that unsupervised</p>
+<p>training relates to predictive coding. So that is machine learning on unlabeled data. Like here's</p>
+<p>a hundred thousand hours of human speaking, learn how to speak. That's like an unsupervised approach.</p>
+<p>Whereas the supervised approach would be, here's a thousand hours of human speaking. Here's a thousand</p>
+<p>hours of a river. Here's a thousand hours of, you know, of some other noise. And so by the label,</p>
+<p>then the algorithm would learn what is speech versus non-speech versus the unsupervised. But there's</p>
+<p>also a lot of like continuum and complexity, and it's a whole topic. In some of the subsections of 3.1,</p>
+<p>they go a little bit deeper into the temporal predictive and the auto-encoding aspects, but we're</p>
+<p>not going to go into those right now. In figure four, in section 3.2, they look at supervised predictive</p>
+<p>coding and look at it in that forwards and backwards direction. And so here they're looking at the</p>
+<p>classic MNIST dataset for evaluation, where there's some pictures of handwritten digits,</p>
+<p>and then it's predicting. And so here's the generative predictive coding and the discriminative</p>
+<p>direction, where here the data are coming in, like the picture of the five with the pixel intensities,</p>
+<p>and that is relating to the more high level estimate of it being a five. So this is observation in,</p>
+<p>label out. That's a five. Here's label in, pixels reflecting it out.</p>
+<p>So that's connecting machine learning to predictive coding.</p>
+<p>In section 3.3, they're also exploring some relaxed predictive coding, and it has to do with relaxing</p>
+<p>certain mathematical assumptions that they had introduced earlier for simplicity and for clarity.</p>
+<p>We're not going to go into it, but it has to do with making it more useful in the real world by</p>
+<p>relaxing certain assumptions. And then in 3.4, they explore deep predictive coding.</p>
+<p>So they write, so far in this review, we've only considered direct variations on the Friston,</p>
+<p>Roud, Bollard models of predictive coding, which are relatively pure, and use only local,</p>
+<p>biologically plausible learning rules. There also exists a small literature experimenting with these</p>
+<p>models often achieve better performance on more challenging tasks than the purer models can</p>
+<p>achieve. So pure again here, meaning that it uses only local, biologically plausible learning rules.</p>
+<p>So only connected entities locally. And so these models, they suggest, provide a vital thread of</p>
+<p>evidence about scaling properties and performance of deep and complex predictive coding networks.</p>
+<p>And they write, the first major work in this area is PREDNET, which uses multiple layers of recurrent</p>
+<p>convolutional LSTMs, neural networks, to implement a deep predictive coding network. So here is what PREDNET looked like.</p>
+<p>This is the original PREDNET architecture. And so they have convolutional LSTMs that are passing information in a top-down,</p>
+<p>way, and in a bottom-up way. So maybe we could look at it more later. And then I also just found this 2019-2020 paper,</p>
+<p>where they also explored whether PREDNET actually is doing predictive coding, but again, a whole other rabbit hole.</p>
+<p>So Section 3 reviewed through Figure 3, and some discussions on the subsections, a few of the different</p>
+<p>paradigms and the ways that this predictive coding architecture has been applied. In Section 4, they're</p>
+<p>going to connect it to other algorithms. So we're going to basically speed through all of the connections,</p>
+<p>except for active inference.</p>
+<p>So first, they connect predictive coding in Section 4.1 to the back propagation of error.</p>
+<p>This is really important for neural network training,</p>
+<p>but we're not going to talk about it here. But it sounds really interesting to discuss.</p>
+<p>One that we'll introduce, but then skip over most of the details, is the relationship between linear</p>
+<p>predictive coding and Kalman filtering. So we can remember that the linear predictive coding is not</p>
+<p>just the frame differencing, it's where there's like that coefficient of how much you should forget</p>
+<p>each of the previous frames. And this is known in signal processing as the Kalman filter.</p>
+<p>The Kalman filter, as this slide shows, is an iterative mathematical process to quickly</p>
+<p>estimate true values, position, and velocity. So that's also like getting towards the generalized</p>
+<p>coordinates of motion. And so the X's are like our observations, that's the thermometer.</p>
+<p>And then here's the red is our Kalman filter temperature unfolding through time.</p>
+<p>So our initial estimate gets quickly corrected. And then even though there's a lot of noise in the</p>
+<p>observations, the Kalman filter is like giving a good prediction on the actual temperature.</p>
+<p>And this has been implemented in a ton of Bayesian approaches. It's a totally standard signal processing</p>
+<p>Bayesian approach. And in the following sections in 4.2, they have a lot of formalisms about the Kalman</p>
+<p>filter. And in Appendix D, they provide even more formalisms on the Kalman filter. So we're not going</p>
+<p>to really go into either of those. In section 4.3, they introduced this idea of normalization and</p>
+<p>normalizing flows. And so they wrote, the deep link between predictive coding and normalization has been</p>
+<p>extended by Merino 2020 by situating predictive coding with a general recipe for building or representing</p>
+<p>a complex distribution from a simple and tractable one. So we encourage people to look at this Merino</p>
+<p>2020 paper if they want to learn more about predictive coding, variational autoencoders, and biological</p>
+<p>connections. But not going to discuss today. One other model that they connect predictive coding to</p>
+<p>is known as the biased competition model. And that is unpacked in 4.4, but I just wanted to pull up</p>
+<p>one example of this biased competition model. And so this is from the Sprottling paper of 2008.</p>
+<p>Within each processing stage, nodes compete to be active in response to the current pattern of</p>
+<p>feedforward activity received from the sensory input or previous processing stage. So it's like</p>
+<p>there's competitions amongst the subunits to be activated by certain kinds of inputs. And then there's</p>
+<p>some technical details. Okay. Now, finally, to active inference as we're near the end of the discussion.</p>
+<p>This will be a little fun to explore also in the coming weeks, of course. So they write in 4.5,</p>
+<p>predictive coding can also be extended to include action,</p>
+<p>allowing for predictive coding agents to undertake adaptive actions without any major change to their</p>
+<p>fundamental algorithms. The key insight is to note there are two ways of minimizing prediction errors.</p>
+<p>The first is to update predictions to match sensory data, which corresponds to classical perception.</p>
+<p>Perception. I thought that the ball was going to be here, but I guess it's over here. Perception.</p>
+<p>The second is to take actions in the world to force the incoming sensory data to match the prediction.</p>
+<p>I'm going to move the ball to where I expect it to be. Or I expected the ball to be in the left side of</p>
+<p>my visual field. So I'm going to move my eyes to the right so that it's in the left side of my visual field.</p>
+<p>So it's action is not always like reaching out and moving the ball. It can also be the action of</p>
+<p>choosing where to look, for example. And this is what is really fascinating because we spent so long</p>
+<p>in the earlier sections in the first 50 equations, you know, without action. So it's like, oh, no,</p>
+<p>are there going to be like another 250 equations with action coming into the picture? But actually,</p>
+<p>it's quite a simple introduction. The basic approach to including action in predictive coding</p>
+<p>is to minimize the variational free energy with respect to action. Although free energy is not</p>
+<p>explicitly a function of action, it can be made so implicitly by noticing the dependence of sensory</p>
+<p>observations on actions. So what you see is going to depend on where you look. We can make this</p>
+<p>implicit dependent dependence explicit using the chain rule of calculus. Active inference,</p>
+<p>its inference about action. So here's the rate of change of action through time is the rate of change</p>
+<p>of a free energy functional of previously, it was of observations and of states through time. And now,</p>
+<p>O is O of A. Observations are a function of action. They're partially or completely dependent on action.</p>
+<p>And that is being understood as a derivative of change in action. O of A over A, partial O of A over A,</p>
+<p>is a forward model which makes explicit the dependence of the observation upon action and must be provided or</p>
+<p>learned by the algorithm. Because that is how do observations, which are a function of action,</p>
+<p>change as actions change. So that is like a layer that hadn't been brought up. So they're saying,</p>
+<p>because you do need to solve that ratio or that derivative, you do need to learn that or be provided</p>
+<p>that. And it's a separate thing to learn in addition to this standard generative model for perception.</p>
+<p>So we tuck action as being like a dependency of observations, which is also what connects active</p>
+<p>inference to perceptual control theory. So that's how we introduce action into the picture, just from a first</p>
+<p>pass. Let's go one more level in and then any thoughts you have would be great. So if we were talking about</p>
+<p>just the inference case, prediction error minimization would be like the picture that we're seeing is</p>
+<p>exactly the one that we're predicting or vice versa. So what does that look like for action?</p>
+<p>The prediction error simply becomes the difference between the current observation and the target or</p>
+<p>set point, already bringing in this kind of homeostasis, allostasis perspective. However, this raises the question</p>
+<p>of where the set points comes from, where do the targets come from, and how are they computed?</p>
+<p>When's priors? A generic answer to the question is that set points can be inherited from evolutionary or</p>
+<p>ontogenetic, which are developmental, imperatives, or supplied by other neural circuits involved in</p>
+<p>goal-directed behavior and planning. For present purposes, we can simply take them as exogenously</p>
+<p>given variables. So what isn't addressed in this review is this big question of priors and learning</p>
+<p>on preferences. Like, how do you know what to prefer? How do you know how much to change how you prefer?</p>
+<p>How tight should your preferences be? Those are like really, really important areas, but they're just</p>
+<p>like opening the door but not going to go into it. In 4.5.1, it's also straightforward to model the</p>
+<p>potential costs of action. In biological organisms, there's different costs of action, and so how can</p>
+<p>that be modeled mathematically? Well, they say by explicitly including action within the generative</p>
+<p>model as follows. And so now they've added in this extra term with a cost of action. So it just shows</p>
+<p>how like once action has been introduced as a dependency of the observation function, then there can be like</p>
+<p>other things that can be calculated related to action. Any thoughts on action or like in your readings,</p>
+<p>where has action been integrated well or not with predictive coding?</p>
+<p>Well, I think that from my perspective, predictive coding wasn't really about action before this text.</p>
+<p>So it was new to me because I always relate action to predictive processing and active inference, not</p>
+<p>really predictive coding. So it was new. And from all of this that we've been through, I found fascinating how</p>
+<p>the complexity grows and how many different applications predictive coding can be found on, especially</p>
+<p>in machine learning and, you know, all of this mathematical</p>
+<p>heaviness brings many, many different solutions to problems that we faced for a long time. So fascinating.</p>
+<p>Nice. Yeah, agreed. It's really interesting. So just one more take on active inference, which we explored in 26 as well.</p>
+<p>So we're going to look at the model. Like predictive coding, PID control optimizes a system towards a set</p>
+<p>point and is ideal for simple regulatory systems like thermostats. Action, A of T. So we're taking that</p>
+<p>same notion of A as being like something that influences observations. So that's how we introduce action into the</p>
+<p>model is we make observations depend on action. Action is determined by three terms. A proportional term,</p>
+<p>which minimizes the distance between the current location and the set point, P. An integral term,</p>
+<p>which minimizes the integral of this error over time, I. And a derivative term, which minimizes the</p>
+<p>derivative of the error, D. The combination of the three terms produces a robust and simple control</p>
+<p>system, which can be applied with some tuning to control almost any simple regulatory process.</p>
+<p>And higher coordinates of motion could do even better. But as we explored in 26, like often the PID is</p>
+<p>sufficient. And so that's a very common engineering method. And so it connects the Bayesian mechanics</p>
+<p>of action and perception and cognition of active inference on generalized coordinates to PID control in the</p>
+<p>engineering setting. And then they provide a bunch of other formalisms. In Appendix B, they give some</p>
+<p>detail on this idea of natural gradients, which I think we could go into in the dot one and in the dot two.</p>
+<p>So we won't talk about it here, but Appendix B is about precision as natural gradients. And Appendix C</p>
+<p>are providing some challenges for the neural implementation of back propagation by predictive</p>
+<p>coding. So also we're not going to explore it here, but those are both really interesting, short,</p>
+<p>and very topical appendices. In Section 5, it's of quite good length, and we're not going to cover</p>
+<p>actually any of it today because it's been a great and long enough dot zero. But in the dot one and the</p>
+<p>dot two and beyond, we hope to unpack the discussion and the future directions. So we have a lot of room</p>
+<p>and space for questions. And I think we both or all walk out of this with more questions than answers.</p>
+<p>So we hope to make this ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>here and I'm really excited about the biological part of predictive coding implementation and</p>
+<p>predictive processing. So as it is not really developed in this paper, I think that the</p>
+<p>author said that it's not really explored actually. I have this idea of looking to it to see what's been</p>
+<p>been doing in the past years. Awesome. Yeah, I think it'll be some fun upcoming discussions.</p>
+<p>Thanks so much for all the help and for this dot zero and to Brock as well. So see you around.</p>
+<p>Thanks a lot. See you. Bye.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+</article>
+</body>
+</html>

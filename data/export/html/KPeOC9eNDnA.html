@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 052.1 ~ A ElSaid, T Desell, A Ororbia "Ant-Based Neural Topology Search"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 052.1 ~ A ElSaid, T Desell, A Ororbia "Ant-Based Neural Topology Search"</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_052 &middot; Episode 1 &middot; Speakers: A ElSaid, T Desell, A Ororbia &middot; Duration: 1:56:55 &middot; Views: 141</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=KPeOC9eNDnA">https://www.youtube.com/watch?v=KPeOC9eNDnA</a></div>
+<article>
+<p>Hello and welcome. This is ACT-INF Guest Room 52.1 on August 10th, 2023. We have Ahmed Elsaid,</p>
+<p>Alexandra Arorbia, and Travis DeSalle. Ahmed's going to give a presentation and following we'll</p>
+<p>have some reflections and discussions. So thank you all for joining and Ahmed to you for the</p>
+<p>presentation. Okay. Thanks so much for having me. Today I'm going to discuss the methods that we</p>
+<p>came up to solve new architecture search and new evolution problems. The methods that are</p>
+<p>end-colony optimization-based solutions. So as the title here is mentioning,</p>
+<p>end-colony optimization for new architecture search and new evolution. This work is a</p>
+<p>collaboration between me, my previous advisor, Dr. Travis DeSalle, and my co-advisor,</p>
+<p>Dr. O'Rourke-Axander Arorbia. I'm currently an assistant professor in University of North</p>
+<p>North Carolina, Wellington. And moving on to the next slide. So as an overview of the things that I'm</p>
+<p>going to discuss today, I'll try to take, give a bird eyes view for what is new evolution, why we need it,</p>
+<p>and from there I'll try to discuss other methods that is, and that is based on end-colony optimization,</p>
+<p>which is called end-based neural topology search, or ENDS for short. And after that, I will discuss</p>
+<p>how we advanced with this idea by introducing a continuous ENDS, or CANDS for short, which is,</p>
+<p>which could thread off this free search space and replace it with a continuous search space. And after</p>
+<p>that, I'm going to also say what we did with the three dimensions and the continuous ENDS to have a</p>
+<p>back-propagation-free CANDS. And later, I'll discuss three of the points that we are considering for future work.</p>
+<p>So, in the machine learning learn, as the structure, the neural network structures get, got deeper and deeper,</p>
+<p>people were trying to optimize the structures to have better performance. And people in different realms,</p>
+<p>or different problem domains, used to borrow the best performing neural architectures or structures,</p>
+<p>and try to modify a little bit to work for their problem. And they tried to tweak some of the features of the structure</p>
+<p>and compare these different tweaks. And then they say that we found the best performing structure.</p>
+<p>But to actually find an absolute optimum structure, concerning that solution, it could be an NP-hard problem,</p>
+<p>because to reach that solution, they had to try all the combinations of the different structural elements.</p>
+<p>And because we have massive structures in these deep neural networks,</p>
+<p>it could be an NP-hard problem, because we don't have computational power or enough time to</p>
+<p>actually train and test all these structures, all these structures constructed from these different</p>
+<p>combinations of structural elements. So, the alternative way to do this is to actually try to do,</p>
+<p>to apply a meta-rearistic method, to converge to a neural-to-op-com solution. That is much better</p>
+<p>than not optimizing the structure or relying on a kind of like a random search, right? A random search</p>
+<p>can get us better performing neural network, but it's not going to give us a near-to-optimal solution,</p>
+<p>or to converge to a near-to-optimal solution. So, a meta-rearistic method would give us an automated</p>
+<p>method and also can converge to a near-to-optimal solution to this structural problem.</p>
+<p>So, the way that people approached NAS was by trying to mimic how optimization is done in nature, right?</p>
+<p>So, the first method, the first way they thought of it was trying to mimic how living organisms evolve in nature,</p>
+<p>using genetic-based algorithms like the Darwinian genetic evolution. And it started with NEAT,</p>
+<p>NEAT, it's a short for Neuroolution of Augmending Topologies, and it relied on genetic algorithms,</p>
+<p>where also that concept was applied for in most of the NAS on neural evolution methods,</p>
+<p>and exam is one of them. Travis came up with this method, and it became one of the state-of-the-art</p>
+<p>methods in NAS. So, in such methods, we tried to again mimic genetic evolution by introducing new</p>
+<p>structural elements or removing structural elements or altering the structure through the evolution</p>
+<p>process through the evolution iterations, through the evolution generations. So, we can apply mutations</p>
+<p>by splitting edges or adding edges or disabling edges. And we display edge, we disable edges or</p>
+<p>disable some structural elements so that we don't lose that component, so that we can later on use it,</p>
+<p>kind of like a dormant gene in a genome, right, so that it can appear in later generations not to get rid</p>
+<p>of totally. So, we can, in mutations, we can disable edges, we can enable them later in later generations if</p>
+<p>we found that we want to try this option. We can also add recurrent edges or remove recurrent, or enable or</p>
+<p>disable recurrent edges. We can split nodes, we can take some of the nodes that in a previous generation,</p>
+<p>and we can just split it to two nodes and then take the edges connected to that node and try to divide</p>
+<p>it between the nodes that were generated from the previous node in the previous generation.</p>
+<p>Also, we can add nodes from, to the structure, to the structure. So, all of these are part of the</p>
+<p>mutation process in the genetic process. We can also disable a node if we don't, if we want to try to,</p>
+<p>to just get rid of one of the nodes and disabling a node or multiple nodes will also disable the edges</p>
+<p>that connected to that node. Besides mutations, we, the other side of a genetic process is to do</p>
+<p>crossovers where we have two of the best performance population made together to bring an offspring,</p>
+<p>and offspring will have collection of the characteristics of coming from their parents.</p>
+<p>So, it will take some of the characteristics from that parent, some other characteristics</p>
+<p>from the other parent, hoping that this will give us a better performing neural network,</p>
+<p>or better performing generation.</p>
+<p>So, the main problem, sorry.</p>
+<p>So, the main problem with, with, um, uh, genetic-based algorithms is that they start with minimal</p>
+<p>structure, like we can see there, meaning that inputs and outputs, and, um, you starting from</p>
+<p>the, the, the optimization with this minimal search space can track the method in a local minima</p>
+<p>through the optimization process. So, we were thinking how to get rid of this obstacle,</p>
+<p>and by having a, a bigger or larger search space to start with, and then we can sample some solutions from</p>
+<p>that, um, uh, larger space. And we were looking around and we, we, we, we, we, we considered end-colony optimization,</p>
+<p>and, and I will, I will say why, that I'll try to introduce, um, the, the method first. So, the method was</p>
+<p>first introduced as, um, graphic optimization method, um, graphic optimization method, sorry, um, it was introduced in</p>
+<p>mid-90s by Marco Durego. Marco Durego applied this method, um, uh, in, on a travel salesman's problem, and the problem is mainly about a travel salesman who wants to visit a number of cities in the country,</p>
+<p>in the country, you think it's Georgia's staff. And concerning this problem, if we have this number, uh, if the number of cities grows,</p>
+<p>then the, the combinations of these numbers, uh, of these cities that we have to consider to find the open solution,</p>
+<p>um, if this number of cities grows, then we will end up having an NPR problem, because we didn't, we won't have enough time or,</p>
+<p>or, or, or computational power to have this, um, this compact, this exclusive, uh, solution, um, done,</p>
+<p>or this exhaustive search done. So, he, he, from his observations, um, um, to, to answer in nature,</p>
+<p>um, he found that he can apply how they forage to find food in nature, and, um, and, and, and then, uh, take this, this, this, this concept,</p>
+<p>that this observation, and apply it in an algorithm to find the, not the optimum path, that leads from, um, from one point,</p>
+<p>and to visit all the cities and in the shortest, shortest path. Um, so the method,</p>
+<p>the, this observation, um, so the, the, the, the slide and the coming slides will just try to go,</p>
+<p>and give us a picture of how, and, um, um, um, um, forage in nature to find food, and then how Marco</p>
+<p>Dorega took, took that concept to apply it, and, uh, in that Charles Hisman's problem. So, um,</p>
+<p>as observers found that, and go out from, from their nest to find food,</p>
+<p>and, um, at the, the, in the different directions, right, um, and when they find food, eventually find</p>
+<p>food, they will take some of that food, and then they will go back to their nest, and in the way</p>
+<p>back, they will deposit some other substance called a furmon, um, that they, so they deposit that</p>
+<p>substance, so that they communicate that path to the food resource with other ants. So, actually, other ants</p>
+<p>do exploit this furmon, uh, other substance, and they, when they sense it, they try, they will,</p>
+<p>they follow the path that the, the, the first ant took from the, uh, from the food resource to the nest,</p>
+<p>and hoping that they will find food at the end of that path, and, and when they actually find food at</p>
+<p>the end of the, the path, they will take some of the food and do the same thing. They will deposit some</p>
+<p>more furmon on the same path, making it more appealing to other ants to take it, so that they</p>
+<p>can bring more food to the nest. So, the, this, in this process shows us the exploitation, uh, behavior</p>
+<p>of ants, but again, from some time, from time to time, other ants also try to exploit some other, uh,</p>
+<p>food resources, potential food resources, and they, they, they kind of resist, uh, following, uh, the,</p>
+<p>the, the formal, uh, traces, uh, and, and they try to find, to go away and find some, um,</p>
+<p>put it, new food resources for the nest. So, they, they are, they are not only, uh, exploiters,</p>
+<p>they also explore them, and these two concepts were, um, used by Marco Durega to kind of, like,</p>
+<p>ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>is not appealing anymore or the food resources are exposed, no more ants will take that path</p>
+<p>or when they take it and reach the food resources that is exposed, they will not take the same</p>
+<p>path to the nest again.</p>
+<p>They will try to wander and to find more new food resources and because they're not going</p>
+<p>that path again and not depositing any furamone on that path, the furamone will eventually</p>
+<p>evaporate and disappears and making it less and less appealing for other ants to take.</p>
+<p>So that's what Marco Dorego was looking at when he thought of the travel salesman's problem.</p>
+<p>He wanted, he applied that for the travel salesman's problem by making one agent try these different</p>
+<p>paths and then comparing each through each iteration.</p>
+<p>So that agent will take a path between the cities, right?</p>
+<p>And then it will compare the length of that path to the previous experience with other</p>
+<p>paths.</p>
+<p>And if it's shorter, it will try to deposit furamones on the segments of that path.</p>
+<p>And eventually he was hoping and he was right about what he was hoping.</p>
+<p>He was hoping that eventually the shorter path and shorter segments that give the ultimate</p>
+<p>shorter path had more and more furamone deposits, making it more and more appealing for the agent</p>
+<p>to take it through the iterations.</p>
+<p>So we thought about this concept and we thought that it's very appealing to apply for an NAS problem</p>
+<p>because the solution was applied for a graph optimization problem and neural networks are</p>
+<p>in their sense directed graphs.</p>
+<p>So we also considered an end client optimization because it's full torrent, decentralized and</p>
+<p>scalable, and it's also easily traceable.</p>
+<p>And going back to being decentralized, it gave us, it made this method a perfect candidate for</p>
+<p>a parallel and high performance computing solution.</p>
+<p>So, which will eventually accelerate the optimization problem.</p>
+<p>And I think in the next slide, the slide after the next one, I'll discuss how we exploited or</p>
+<p>use this characteristic of end-colon optimization to accelerate the solution that we came up with,</p>
+<p>or the method that we came up with, which is ENDS and CAMES.</p>
+<p>So, this scheme or the scheme of ENDS, applying ENDS or ENDS-colon optimization in a neural</p>
+<p>virtual, or sorry, in neural architecture search is depicted in or illustrated in this flowchart.</p>
+<p>So, we start off with a massive search space expressed in superstructure, which expresses or embodies</p>
+<p>a neural network that is massively connected, meaning that each node in that superstructure</p>
+<p>is connected with other nodes through edges and recurrent edges, backward and forward and backward</p>
+<p>recurrent edges.</p>
+<p>So, and then we let a number of agents swarm over the structure from an input node to an output node.</p>
+<p>So, each one of these agents will pick an input node and then it wanders from that node through the connection,</p>
+<p>recurrent edges and recurrent edges, and between the nodes and between the hidden layers,</p>
+<p>till it gets and picks one of the output nodes.</p>
+<p>And then we take all these paths of the different agents and we put them together to form a structure,</p>
+<p>a neural network structure, and we take that structure and train it and test it.</p>
+<p>And then compare its performance to the population of best performing neural networks,</p>
+<p>best performing structures.</p>
+<p>And if it's better than the worst in the population, then we reward the path that the agents took over</p>
+<p>in the superstructure, we work with hormone, and so that it makes these paths appealing for later iterations</p>
+<p>through the evolution process or the optimization process.</p>
+<p>That's if the generated structure is best than the worst in the population.</p>
+<p>If it's not, if it's actually worse than the worst in the population, then we discard that structure or that neural network,</p>
+<p>and we don't reward any of the path that the agents took.</p>
+<p>And also, the thermal evaboration will help us get rid of the thermals that were deposited on the edges</p>
+<p>that are not giving us better and better structures.</p>
+<p>And again, because the end colony is decentralized, we exploited this by having an asynchronous solution or asynchronous evolution.</p>
+<p>We had a main process that took care of generating the new structures and also updating the population,</p>
+<p>the best performing structures and updating the hormone on the superstructure.</p>
+<p>So the main process would generate structures and send them to worker processes.</p>
+<p>The worker processes will train and test the neural network on the data that we have for the problem.</p>
+<p>And then send the results back or the fitness of the neural network to the main process.</p>
+<p>And based on that fitness, the main process will either discard it or we take that this fitness and compare it to the best performing in the population.</p>
+<p>If it's better than the worst, it will reward the path that ends took on the superstructure by the processing motor hormone.</p>
+<p>Or if it's worse than the worst in the population, we'll just discard it.</p>
+<p>And it will keep generating new structures and sending them to processes.</p>
+<p>Because the training which relies on back propagation is the most computationally expensive part in this process.</p>
+<p>If we have a number of worker processes that can work in parallel to train and evaluate these neural networks, these neural structures,</p>
+<p>we can speed up the process by training and evaluating different structures at the same time in parallel in asynchronous evolution scheme.</p>
+<p>This is actually an animation that's not working in this version of the slides because we're using a PDF,</p>
+<p>but it's mainly a structure where you'll see edges or connections between these nodes,</p>
+<p>fading or having darker colors based on the firm on values through the iterations.</p>
+<p>So each frame in this animation is kind of an update for the firm on value of the edges based on the performance of the edges.</p>
+<p>Based on the performance of the version of the neural network that were generated by the agents.</p>
+<p>When they swarm from the start node, taking one of the input nodes in the little layer,</p>
+<p>and then from there going to one of the hidden layers in this one hidden layer that we have here,</p>
+<p>and from there going to the output.</p>
+<p>So that was the concept of applying ATO or end-client optimization in NAS.</p>
+<p>Now I'm going to talk about the actual method that we came up with.</p>
+<p>So it's more generic and more powerful neural textual search methods,</p>
+<p>more comprehensive if I may say that.</p>
+<p>We opted to apply the method on recurrent neural networks because they tend to be potentially larger than other neural networks structures because of their current connections.</p>
+<p>So we thought that if we started this problem, the method or the constant applies to a neural network,</p>
+<p>but applying it to recurrent neural networks made it more appealing challenge to, for, for, for, um,</p>
+<p>measuring the performance of the method that we thought of.</p>
+<p>So this slide in the comment slide will discuss the different heuristics of the methods of ANS.</p>
+<p>The third heuristic is superstructure itself.</p>
+<p>And as we, as I mentioned before, it's, it's a massive search space and as massive as possible to be handled with the,</p>
+<p>the, the, the machine or the hardware that we're working on.</p>
+<p>Um, the superstructure consists of, um, a neural network that is massively connected,</p>
+<p>meaning that every node in that structure is connected to the other nodes</p>
+<p>via, or through edges, uh, forward edges and, uh, recurrent edges, backward, forward recurrent edges and backward recurrent edges.</p>
+<p>Um, this simple structure that we have here represents one of just the concept of the superstructure that we have,</p>
+<p>we apply in, in ANS. Here we have three input nodes, uh, three hidden layers, each have three nodes and one output node in the output layer.</p>
+<p>And we are just showing one node connected to the other nodes through edges,</p>
+<p>which are the ones representing green, uh, green, forward recurrent, sorry, um, the, the edges are, uh, the one in gray,</p>
+<p>and then forward recurrent and backward recurrent in the green, uh, in the red.</p>
+<p>And the concept of recurrent edges, um, might be a little bit confusing if we look at it in this example,</p>
+<p>because how can an edge, um, be recurrent coming in and out from the same node or, or the, the, the nodes in the same time step.</p>
+<p>But this structure might make it more, uh, clear.</p>
+<p>Um, so here we have, um, a structure that's pretty much similar to the ones we saw before,</p>
+<p>but we, here we have three input nodes, two hidden layers, there's three hidden layers,</p>
+<p>each have three nodes, and then the output layer have two nodes.</p>
+<p>Um, and then we have also three time steps, the current time step T here,</p>
+<p>and the previous time step T minus one, the, the one before that T minus two.</p>
+<p>Um, and then the, the, the, the, the solid, uh, black, uh, lines, um, and, and, and, of course, these edges are present in the current time step that is going to propagate through the neural network.</p>
+<p>And then the current, um, connections, these ones are going to bring information, um, or propagate information from the previous time steps, the previous, um, inputs or previous, uh, data that was, um, fired to the nodes in the previous time steps.</p>
+<p>And these are current edges are depicted here in red and orange.</p>
+<p>The four ones are depicted in, in red and orange.</p>
+<p>The reds are coming from T minus one and the orange are coming from T minus two.</p>
+<p>And the backward current edges are the dotted lines, uh, in, uh, blue and green.</p>
+<p>And, um, and we can see that they are going backwards.</p>
+<p>So they cut the, go backward and to backward layers.</p>
+<p>Um, uh, but the, uh, but we, but because they are recurrent, we can do that because they are, they process information.</p>
+<p>They bring information that's already processed.</p>
+<p>So we don't have to worry about propagating information back through time or back through destruction, but we can do that if it's coming from previous time step.</p>
+<p>Um, the second realistic in, in, in answer is then colony weight sharing.</p>
+<p>We wanted to use, um, then, so instead of initial, uh, branding, initialize the weights or the snap that weights and generated, uh, neural networks.</p>
+<p>Uh, we wanted to use the, uh, the train weights to initialize the weights of the, um, newly generated, uh, neural, uh, neural networks.</p>
+<p>We did that by saving these neural networks on the superstructure.</p>
+<p>Uh, we used the last, um, equation here to do this, uh, update.</p>
+<p>So we balance between the weights that were saved previously and the weights that we were, uh, are coming from the train or, uh,</p>
+<p>evaluated neural networks.</p>
+<p>And we also used two strategies to do this update.</p>
+<p>We used, um, a fixed parameter, uh, phi, or we let phi, that I, this, that was the first strategy.</p>
+<p>The second strategy was to get phi by applying these two equations, uh, which relies on the performance of the neural network that was previously generated.</p>
+<p>Sorry, sorry, the previously generated and trained.</p>
+<p>So it relies on the performance of the neural network that was trained and, um, validated or tested.</p>
+<p>So if, um, if it, if the performance is, was good, then we will let this, uh, the weights of that, um, uh, neural network to contribute to the, um, the, uh, to contribute more to the, uh, initialization of the weights of the newly generated RNNs.</p>
+<p>If it's not performing that well, then phi will, this equation will not allow it to contribute that much.</p>
+<p>The third meta heuristic is multiple memory cells.</p>
+<p>So, um, each, at each node, um, uh, when, when, when, when, when an agent or an ant reach to a node in, in, in the superstructure, it will do, um, a local search, um, to pick, uh, the type of the neural network.</p>
+<p>And then you're in the neuron or the type of the node, uh, from these three different types of memory cells.</p>
+<p>So in the generated RNN, um, the generated structure, the nodes in the structure is not all the same.</p>
+<p>They will be different based on the local search that, um, that the agent will do or the ant will do at each node.</p>
+<p>They reach through their path from the input to the output in the superstructure.</p>
+<p>The fourth meta heuristic is the multiple ant species.</p>
+<p>So we applied, uh, different species, uh, or came up with different species for the ants.</p>
+<p>Um, the first species was the ones that will traverse over the edges, only the edges.</p>
+<p>So they would go only forward through the edge, uh, the, the, the edges of, uh, the neural network or the massive, the superstructure.</p>
+<p>And these ones are going to define the number of nodes in the generated structure.</p>
+<p>And also define the types of the nodes, uh, in the superstructure.</p>
+<p>And when they're done with their work, then the social, or the second species, the social ants will traverse between these nodes.</p>
+<p>But they will use, um, uh, the recurrent edges to do the, to do, uh, to move between these nodes.</p>
+<p>So they will create then, uh, the recurrent edges for the newly generated RNA.</p>
+<p>And we have two different species for these social ants, or these two different subtypes of species.</p>
+<p>One is, um, the forward, so for the, so the forward, uh, social ants.</p>
+<p>We, these ones traverse only over the, uh, the forward current connections.</p>
+<p>They go from the input to the output, but over, only over the, the forward recurrent edges.</p>
+<p>And then the backward recurrent edges, or the backward social ants, these ones go, go from the output to the input.</p>
+<p>And they traverse over the recurrent connections.</p>
+<p>And the way, the reason we thought about these different species is that we wanted to control the tendency of the ants to,</p>
+<p>wander in, uh, around, uh, in the superstructure exploiting the, the, the, the convoluted, um, mesh of, um, recurrent connections.</p>
+<p>Um, so we wanted to control that.</p>
+<p>So we came up with this strategy so that we can just define the structure using the explorer ants.</p>
+<p>And then the recurrent connections can be defined after that using the, the social ants.</p>
+<p>So, um, the, the fifth, um, uh, meta-heiristic is the regularization of, uh, formal pavement.</p>
+<p>Again, we wanted to, um, give the ants an incentive to bring, to bring, um, sparser, um, and, um, also well-performing neural networks.</p>
+<p>Um, we, by just penalizing them if they bring, they, if they constructed, um, denser or bigger structures.</p>
+<p>So we added this regularization term and, um, formula that updated the hormone value.</p>
+<p>Uh, and as you see, the, um, the regularization term relies on the performance.</p>
+<p>The data here is the performance of the neural network.</p>
+<p>And it also relies on the size of the structure.</p>
+<p>Um, the last, the second, last one is, um, is, is, is, is jumping ants, jumping ants, which is, we want to experiment with.</p>
+<p>If we let the ants, um, um, if we let the ants, um, jump over layers when they move through them, through them, the, the, the superstructure.</p>
+<p>Um, if we let them jump over these layers to construct the neural networks compared to if we restrict their movement, uh, to jump one layer at a time.</p>
+<p>How would this, uh, end up, um, performance wise, how, if they will give us parser and, the, the, well-performing, uh, structures, or they will, or this jumping will hurt, um, the performance, um, by giving us weaker, uh, uh, structures.</p>
+<p>We could, you know, networks.</p>
+<p>So, um, we, uh, use the time series data, uh, that can belong to coal-fired power plant.</p>
+<p>Uh, we divided the data to have, uh, 7,200, um, records for training and testing.</p>
+<p>And, uh, here the plot shows that the data and we can see that it's nonlinear, uh, um, and it's, um, acyclic and, um, and non-seasonal.</p>
+<p>So it's hard.</p>
+<p>It's a hard problem for a non, um, Newton, uh, neural network solution or regression, linear regression solution.</p>
+<p>So.</p>
+<p>The input consists of 12 parameters.</p>
+<p>We, we, when we, we were trying to predict only one parameter, the flame intensity.</p>
+<p>Experiments covered all of the heuristics of, uh, of hands, um, giving different values for these different parameters.</p>
+<p>Um, the superstructure is, uh, consists of 12 input nodes, three hidden layers, which have 12 nodes, and one, one output node in the output layer.</p>
+<p>Um, the recurrent connections span over, um, three time steps, one, two, and three time steps.</p>
+<p>Um, in total, the superstructure had 49 nodes, uh, 924 edges, and almost 3.5 thousand, um, recurrent edges.</p>
+<p>So if you unroll the structure over 30, uh, 72 time steps, uh, in, in, in back propagation through time, we'll have about, um, 3.5, sorry, 352, uh,</p>
+<p>32, um, thousand nodes, about 6.5 million edges, and 20, about 26 million, uh, recurrent edges.</p>
+<p>We, in the experiments, we also compared performance of ends, uh, using the same data set.</p>
+<p>Uh, we compared it to exam and NEAT.</p>
+<p>So exam is the, the state of the art in, um, neuro, neuro-artificial search, which is, um, genetic-based, um, methods.</p>
+<p>We also compared it to NEAT, because it's, uh, like a benchmark in the neuro-evolution and NAS, uh, realm.</p>
+<p>We, and also we compared it to, uh, fixed structures, unoptimized structures that, uh, were one, two, and three, uh, that had one, two, and three hidden layers, and also, uh, different types of, um, uh, memory-based cells.</p>
+<p>Um, the experiments covered 16 on these experiments to cover all the combinations of the meta-heuristics, of the heuristics of the, of ANS.</p>
+<p>Um, each one of these, uh, experiments was repeated 10 times for, uh, uh, for statistical analysis.</p>
+<p>Um, ANS-gerated, well, 2000 RNNs for each experiment, each train for, uh, 10 APICs.</p>
+<p>In, in total, ANS-gerated about, train, generated, trained and evaluated, um, 32 million RNNs.</p>
+<p>It took a month and, well, uh, a thousand CPUs to finish the experiments.</p>
+<p>Um, the results that we got showed that ANS outperformed, of course, outperformed the unstructured, um, unstructured, uh, structures, uh, unstructured, uh, sorry, unoptimized, unoptimized structures.</p>
+<p>And it also outperformed, uh, NEET.</p>
+<p>And then some of the combinations of ANS outperformed exams.</p>
+<p>So, exam here is the fourth from the left.</p>
+<p>And we can see that, that the, the mean absolute error for some of the versions or the combinations in, of ANS heuristics, uh, outperformed exam.</p>
+<p>So, we, we tried to look, to do some physical, um, study for the results we got from ANS.</p>
+<p>So, we tried to look at, um, the top, uh, performing neural networks coming from, in our results.</p>
+<p>So, we tried to look at the, the top 10, 25, 100, and, uh, 250 and 500 results.</p>
+<p>And we, to look at, um, the contribution of these heuristics and these best performing, uh, neural networks or structures.</p>
+<p>We found that, um, these heuristics contributed effectively, uh, in most of these results.</p>
+<p>Um, but the more, the, the thing that was really, um, um, intriguing for us or, or, or, or surprise us is that, um, the, that we saw that, that the, the, the recurrent connections, um, disappeared in these results.</p>
+<p>Because the best performing neural networks, um, didn't have that much of recurrent connections.</p>
+<p>Um, we, that meant, meant for us that, uh, the, the, the memory-based cells did the job for recurrent information coming from previous time steps.</p>
+<p>But we wanted to, to expand on this later, but, so, it's on our list on discussing, uh, on, on, on our future investigations.</p>
+<p>Uh, so, this is just a summary for, um, the achievements of ANS, based on the results that we got from our experiments.</p>
+<p>So, ANS was the first metaheuristic method to involve, uh, the core of ASTO, or anticholent optimization, and recurrent neural networks, um, NAS, or neuro, and neuroevolution.</p>
+<p>ANS, as heuristics control ANS tendency to wander around superstructure, exploit, exploit, and recurrent connection proved successful.</p>
+<p>Because, um, the, the regularization method component, or the regularization heuristics from, uh, uh, uh,</p>
+<p>it mean, give us better results, uh, showing here in this, um, table.</p>
+<p>Um, and also the jumping ANS, jumping ANS here, gave us better performance compared to non-jumping ANS.</p>
+<p>Okay.</p>
+<p>And, uh, and the regularization also, um, uh, also the, the, the, the, uh, data, the, um, um,</p>
+<p>weight sharing, uh, strategy also proved, um, effective when we, if we look at it, the results here compared to if we don't apply, uh, weight sharing.</p>
+<p>So, all-tropormizing and, and strategies, uh, are generic, are generic.</p>
+<p>So, the, the, the, the, the, the, the strategies that we use are generic enough to apply it for any, um, any problem or solution that is ant colony based, ant colony optimization based.</p>
+<p>Um, the Fremont deposition, uh, that, the method that we came up with is also an evaluation.</p>
+<p>And also, um, it wasn't introduced in any literature, previous literature, um, and the performance of ants compared to the other, uh, benchmark and state of the art in the realm is also, um, remarkable.</p>
+<p>So, going forward, we thought that ant was, did give us a good, good results, but, uh, the main drawback of ants was that the, the, the, the discrete search space.</p>
+<p>Um, so ants worked on that this massively connected, uh, uh, method massively connected superstructure, but it's massive, yes, but it's still, uh, discrete.</p>
+<p>Um, ants can move freely between these, um, nodes and, or, or, or they are forced to move over between these nodes over these, uh, predefined, uh, connections, whether they are, uh, for edges or recurrent edges.</p>
+<p>So, um, we thought of, of removing that continuous search, uh, discrete search space and replacing it with a continuous search space.</p>
+<p>So, we designed a 3D, uh, search space, uh, where, um, the, the, the, the search space had, like, layers representing the lag, the time lags.</p>
+<p>Um, and then ants can jump over between these, uh, these, uh, layers to, uh, have, to give us the, the recurrent connections.</p>
+<p>And on each of these, um, layers, ants will just give us the forward, the forward, uh, sorry, the edges between the nodes and the edges between the nodes.</p>
+<p>Um, so in this slide, in the comic slides, we'll show an example of how ants move in camps or continuous, um, or continuous ants.</p>
+<p>Um, so the, an, an agent or an ant will just start by picking up one of the layers that will move on.</p>
+<p>This is done in a discrete fashion.</p>
+<p>And once this, this is done, it will then decide if it's going to do an exploitation or exploration movement.</p>
+<p>And in this, um, example, we, it decided to do an exploration movement.</p>
+<p>So it will, um, decide the angle and the radius of its next allocation on, on that layer.</p>
+<p>Once that's done, it's going to go forward and to that location, and then decides if it's going to do an exploitation or, if the next move will be exploitation or exploration move.</p>
+<p>And this example is, it will be an exploitation move.</p>
+<p>So it will try to, uh, exploit the pharomone traces, the pharomone that was previously deposited by other ants on, in the search space.</p>
+<p>So it will use its sensing radius.</p>
+<p>That's something that was, is previously defined for each ant.</p>
+<p>And then it will, um, find the center of mass of the pharomone traces.</p>
+<p>And then once it finds that it, when it calculates that center of mass of the pharomone, it will consider it as its next location.</p>
+<p>And then it will move to that spot.</p>
+<p>And then it will decide about if, if, if its next move will be an exploitation, exploration move.</p>
+<p>And it, and, and at each location before it's deciding if about the type of the step, if it's exploitation or exploration, it will also decide if it's, if it's going to stay at the same level,</p>
+<p>at the same time lag or jump on, uh, to a next, uh, time lag.</p>
+<p>Um, if, if, if the jump or the movement is on the same level, um, um, if the, if the movement is, is on the same level, the ant, when, if the ant is doing an exploitation movement, it will only consider the pharomone traces that is, um, um, ahead of it.</p>
+<p>Um, because it can't move backwards on the same time lag.</p>
+<p>Otherwise it will be doing a backwards step, which is not allowed in, in, in your networks.</p>
+<p>But if it's going to, um, um, another time lag, um, above, um, above layer, then it can be, it, then it's going to do a recurrent edge.</p>
+<p>And, and, and, and so, recurrent edges can go back in time.</p>
+<p>Oh, sorry, back in the structure in, in the previous type, uh, uh, layer.</p>
+<p>So now the, the ant can consider all the pharomone traces within its sensing radius, the ones that are ahead of it and the ones that are behind it.</p>
+<p>So in this example, he is going to consider, um, in this step is going to consider all the pharomone traces within its sensing radius, calculate the, the center of mass, and then consider it as its next, um, position.</p>
+<p>And then keep doing, do, it keep doing this till it reaches to, um, the proximity of the output nodes.</p>
+<p>And once this is done, it will consider, it will decide which time, which, uh, output node it will consider as its final, um, position in this path from an input to an output.</p>
+<p>And, um, then, uh, other ants will do the same.</p>
+<p>And, uh, then we'll have different paths from some inputs and some outputs.</p>
+<p>And then accounts will take these paths and then try to convince, condense, um, the nodes so that we don't have so much nodes and, and that are very close to each other.</p>
+<p>So the one nodes that are within certain proximity will be, uh, clustered together using DV scan.</p>
+<p>Um, so have less, less number of nodes.</p>
+<p>And then the path will be, the paths will be taken to, uh, collected and put in a structure, a neural network structure, and, um, then sent to a worker process to train and test and then compare it to the, the population, the best performing, uh, RNNs.</p>
+<p>And the process will be almost the same.</p>
+<p>And from this point, it will be almost the same as ants.</p>
+<p>Once the structure is constructed and the training and testing process, uh, will be the same as the, the ones that we discussed in ants.</p>
+<p>Um, so this is, this was also an animation, which shows, which shows, um, the, how these paths are taken by ants, uh, look, uh, from an input to an output in the 3D space.</p>
+<p>It's 3D search space.</p>
+<p>So ants, if we look at ants, uh, the ants have, uh, only eight, uh, tunable hyperpaneters compared to, when comparing this to ants and the XM, it's half of the number of, uh, hyperpaneters in the other methods.</p>
+<p>These hyperpaneters are the number of layers of the search space, the number of time of ants, how much, how many of them, um, we have in search space.</p>
+<p>Number of agents, number of agents, number of ants, which is similar to what we, similar, we have a similar, uh, hyperpaneter and ants.</p>
+<p>Um, the, the sensing radius of the agents or the ants, um, the, and the agent's probability to create a new node, uh, which, uh, presents the exploration,</p>
+<p>sort of the exploitation of the parameters or the form of, uh, that traces in the, in the space.</p>
+<p>Um, node compensation, um, parameters or, uh, uh, factors that, the, the, the, the, the, the variables that, uh, representing the DB scan are considered also, uh, hyperpaner, hyperpaners in, um, in camps.</p>
+<p>Um, from one updating pattern and from one volatility pattern, and these are also present, present in, um, ants and, and, and ACO based, uh, problems, uh, solutions, sorry.</p>
+<p>Um, the experiments used three time spheres, um, different number of panels and different sizes.</p>
+<p>Um, the results showed that ants, um, um, the, the, the, the results that we got from cans were very, uh, competing with, um, ants and exam.</p>
+<p>Um, they weren't necessarily, um, better, but they competed, they were at the same level.</p>
+<p>Um, but it also, uh, did not, didn't do very well, uh, in one of the database, the, uh, datasets.</p>
+<p>But it, uh, comparing the, the, that was comparing the performance as the mean absolute error, but, uh, comparing cans results, uh, from, um, the, um, sorry.</p>
+<p>Uh, from the size of the new networks that we got from, from cans, we saw that, um, cans, uh, structures were, um, sparser.</p>
+<p>Um, so the performance was competing with, um, ants and exam, but the structures were also, were compared, compared to ants were much, uh, sparser, uh, similar to exam, uh, the, the, the size of the, the structure that we're getting from exam.</p>
+<p>Remember, exam is, um, genetic based, meaning that we start the structure, um, start the optimization process using the minimal structure elements.</p>
+<p>Um, but it was susceptible to, it was susceptible to local minimus.</p>
+<p>Trap, traps, um, ants, tents, is not susceptible to this problem, but it also gave us, um, smaller, uh, structures, uh, with performances that were competing with other methods at exam and ants.</p>
+<p>So, the, the advantages of, uh, cancels is that it's, uh, it has an unbalanced surface compared to ants.</p>
+<p>Um, results, results compared, uh, the results that came out, uh, were good compared to ants and exam.</p>
+<p>Hyperparameters, the tunable hyperparameters are half of the, of these in exam and ants.</p>
+<p>Um, and also, in that they encoded the neural topology to 3D search space.</p>
+<p>So, this is one of, um, maybe, um, the, um, the contributions, um, important contributions of CAMHS.</p>
+<p>Um, then, so, so far, ants and CAMHS are solutions, um, that applied neural, um, uh, to call, uh, architecture search, meaning that they did not optimize the synaptic parameters of the neural networks during the optimization process or during the evolution process.</p>
+<p>Um, we, um, we thought, um, we thought we thought we thought we thought we thought we thought we thought we thought we thought we thought we thought we make ends capable of doing this as well to train the neural network or optimized sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync sync</p>
+<p>in that map these parameters in that new dimension.</p>
+<p>We also wanted the ENDS to be self-aware and try to evolve themselves through the evolution process</p>
+<p>so that they can adapt to the changes or adapt themselves so that they can give us better performance.</p>
+<p>We wanted them to change their behavior of their characteristics like the sensing radius they had before, for example,</p>
+<p>that can be a variable that can change through the iteration thing and evolve through the iterations.</p>
+<p>Each ENDS can change these characteristics as the evolution goes on progress based on the performance of the neural networks that they are generating.</p>
+<p>So the advantage of doing this was that it eliminated the backpropagation process, which is the most computationally expensive part in the evolution process,</p>
+<p>in the methods that we use so far in the XAM, ENDS and CANDS.</p>
+<p>So eliminating the backpropagation gave us much, much faster evolution process.</p>
+<p>The results we got, I will discuss the graph on the right-hand side first,</p>
+<p>which discusses the fitness or the MS main absolute error of the results we got from backpropagation-free CANDS,</p>
+<p>the four dimension CANDS compared to the normal CANDS, the backpropagation CANDS and ENDS.</p>
+<p>So the results showed us that, again, on a particular database, that backpropagation CANDS and backpropagation-free CANDS did a quite similar job,</p>
+<p>but they were both better than ENDS on this particular database.</p>
+<p>But the main contribution or the main advantage of applying CANDS shows up in the graph on the left-hand side,</p>
+<p>because we can see that if you compare the results based on the time of the evolution,</p>
+<p>based on the evolution time, we see that CANDS was much, had, they took much, much less time than the backpropagation version of CANDS and the ENDS.</p>
+<p>using these different number of CANDS.</p>
+<p>Also, this graph shows how fast backpropagation-free CANDS compared to the normal CANDS.</p>
+<p>So, in this figure, the curves in the dotted lines are, shows the time that backpropagation-free CANDS and CANDS took to prepare or generate the neural networks.</p>
+<p>We can see that backpropagation-free CANDS took more time to prepare or generate neural networks compared to backpropagation CANDS or the normal CANDS,</p>
+<p>and that's because it has the fourth dimension also has to evolve the ENDS or the agents through the iteration.</p>
+<p>So, it takes more time to do that.</p>
+<p>But, the other curve, the other two curves in dashed lines here are the lines that shows the time, the amount of time it took for the two methods to validate, train and validate the neural networks.</p>
+<p>So, backpropagation-free CANDS doesn't have to train the neural networks, doesn't do backpropagation.</p>
+<p>So, you can see that the time it took is in an order of magnitude less than the backpropagation version of CANDS.</p>
+<p>And, these solid lines shows the cumulative time it took for both methods.</p>
+<p>And, of course, it shows that backpropagation-free CANDS took much, much less time than backpropagation CANDS.</p>
+<p>The future directions that we are, the future points that we're considering for, sorry, the point that we're considering for future work are to turn CANDS to a complete continuous search space.</p>
+<p>So, as you saw, we, the, the, the, the, the search space for CANDS is not purely continuous because the time lengths are represented by discrete layers.</p>
+<p>We want to replace this with the continuous dimension, continuous layer representing the lag, the time lag in, in RMS.</p>
+<p>However, this is a little bit challenging because the, the time lag has to be known prior to any optimization process because other than that, we, we, we, we will be mapping the whole, we, we, the whole time series as time lags.</p>
+<p>And then picking the time lags from them, which is not feasible.</p>
+<p>So, this is the first thing we, the first point we considering to investigate for in future work.</p>
+<p>The second one is to investigate this finding that we, we, we, we had, we found in, in, in, in, in the results in ANS where the recurrent connections disappeared from the best performing structures.</p>
+<p>And the theory that we have is that the memory based cells replace, replace these connections to give us the information that we need from the past nine steps.</p>
+<p>And so that they were more effective, more efficient in doing this, compared to their connections.</p>
+<p>So we have to do this, get expand on this and this gain more.</p>
+<p>The last thing we want to consider also, I mean, this is one of the top things that we want to see.</p>
+<p>These three points are the, what the top on our list.</p>
+<p>The third one is to actually consider one of the, the, the concepts that was coined in a book by Dr. Deborah Gordon, which we, where she mentioned that the living organism in, in ANS world is not, are not the ANS themselves, but there are the colonies.</p>
+<p>The colonies are, are the organisms that are, the, the, the, they start and they grow and, and they interact with the environment of the ecosystem.</p>
+<p>They interact with them, with, with other colonies and they die at some point.</p>
+<p>And the, the ANS themselves are not the organisms.</p>
+<p>They are the cells of these organisms, these colony organisms.</p>
+<p>So we want to take that concept and apply it in our methods to have number of colonies living together in parallel, evolving and communicating with each other.</p>
+<p>So that we, and we want to see if this would give us a better performance.</p>
+<p>But because after all, we're trying to mimic nature in our, in the, in the, in the solution we, we, we, we, we're trying to investigate.</p>
+<p>So with this I'm done with my presentation.</p>
+<p>And if you have any questions.</p>
+<p>All right.</p>
+<p>Awesome.</p>
+<p>Wow.</p>
+<p>What a great presentation.</p>
+<p>How about Travis and Alexander, either of you, which want to go first, please feel free to give an introduction and any primary remarks that you have on that.</p>
+<p>Okay.</p>
+
+<p>I don't have too much to add.</p>
+<p>I think Abdul Rahman did a pretty good job, you know, calling over the core bits of the work.</p>
+<p>I'm Alex Rodia.</p>
+<p>I'm an assistant professor in computer science, an affiliate faculty, affiliate professor in psychology and affiliate faculty in computational neuroscience at the Rochester Institute of Technology.</p>
+<p>And I work on a lot of stuff, but primarily predictive coding, active inference, variational free energy, a lot of the stuff that's actually of interest to this group.</p>
+<p>And yeah.</p>
+<p>And this was a particularly interesting project for me because a branch of my own research is working in neuro evolutionary methods, or even just nature inspired meta heuristic optimization.</p>
+<p>And, you know, when I got the pleasure of working with all the ramen when he was a PhD student at our IT, you know, we, you know, we talked a lot about the end colony based optimization approaches.</p>
+<p>And I encouraged him to do to look into sort of like the origins and also try to understand actually how physical ants behave.</p>
+<p>So that was always fascinating to me.</p>
+<p>I don't have too much to add in terms of the technical parts.</p>
+<p>I think he covered all the core results.</p>
+<p>The only thing I, I like to think about it and I'm actually more fascinated to, to hear from the active inference Institute, their interest in the end colony methods and particularly what was interesting to them because thinking about what does end colony optimization, how do you view it from like an active inference perspective is I think particularly interesting and thinking.</p>
+<p>And I even had a thought, I don't know if this was a question among the audience is mine.</p>
+<p>Do the little ant agents or the can't agents that I'll go run and described earlier.</p>
+<p>Um, you know, what, is there a way to start to view them as like a multi agent system that's optimizing some variational free energy quantity.</p>
+<p>Uh, and you know, cause you know, a lot of even like Carl's work, I mean, I collaborate with him, you know, sort of touches into this area of like, well, what happens with collective intelligence and societal organization.</p>
+<p>And you can kind of look, look at free energy from these very, very high level viewpoints all the way down to fine grained cellular activity.</p>
+<p>And so, uh, I'm actually more curious to know.</p>
+<p>And Daniel and anyone else in the active inferences who can sort of explain their particular interest in and based optimization and meta heuristic optimization.</p>
+<p>I'm curious to know that, but there could be some interesting viewpoints of, you know, like what is the free energy.</p>
+<p>I think the ants themselves are very simple.</p>
+<p>I mean, we have made them more intelligent.</p>
+<p>I know all the Roman and I talked at length about, well, what if we even made them, for example, have like a reinforcement learning control system.</p>
+<p>And you could even imagine, well, now what if the ants themselves, uh, you know, uh, engage in a form of active inference themselves?</p>
+<p>What would that look like for the system?</p>
+<p>And they are optimizing their own free energy.</p>
+<p>Uh, those are just fun little thought experiments.</p>
+<p>I, we have obviously not worked on them.</p>
+<p>Uh, at least of the Raman was never exposed by me to that part of my world.</p>
+<p>Uh, and, you know, and, uh, biomimetic intelligence.</p>
+<p>So those are my comments.</p>
+<p>I'm not sure if they're particularly helpful, but they're very general.</p>
+<p>Uh, and I'm actually more curious to know from the active inference Institute, uh, their interest in it.</p>
+<p>And, you know, where does that maybe perhaps intersect?</p>
+<p>Or this is just like, oh, we like, you know, interesting topics and intelligence.</p>
+<p>And so, yeah.</p>
+<p>Thank you, Alexander.</p>
+<p>Travis, you want to say hello and give any reflections on the talk?</p>
+<p>Sure.</p>
+<p>You're all coming.</p>
+<p>Hopefully you can see me a little bit.</p>
+<p>My, my jungle here.</p>
+<p>Um, hi, I'm Travis, I'm an associate professor at RIT.</p>
+<p>I'm also, also the graduate program director for our masters in data science.</p>
+<p>So if any of you are interested in any of this or data science, please, you know, shoot me an email.</p>
+<p>Um, no, I thought this work was really very interesting in a lot of ways while Abdul Rahman was working on it.</p>
+<p>Um, I think one of the coolest parts about it is a popular neural evolution algorithm.</p>
+<p>Um, that came after neat is called hyper neat, and it transforms the, um, discrete search space of neural architecture search into a continuous one.</p>
+<p>Um, and it's, it's shown to be pretty, a pretty powerful method.</p>
+<p>Well, this, this version of ant colony optimization, the new one does the same thing that makes the search space continuous.</p>
+<p>But what I found was really cool about it was that, um, as opposed to traditional ant colony optimization, where you have a graph and you just send the ants along the edges of the graph and you can, and you take the best paths and construct a graph after it.</p>
+<p>Um, here the answer actually working like ants in the real world where they'll move a continuous amount of space, not just from point A to point B, um, and actually dropping down pheromones.</p>
+<p>And it's more like a real simulation of how ants would move around in the real world.</p>
+<p>Um, and we're getting better results from it than some of the old, older methods.</p>
+<p>So, um, I think that is, that really made me be kind of happy to see that and thought it made it as very, very interesting work.</p>
+<p>That's awesome.</p>
+<p>Um, Ahmed, want to add anything, or I'm happy to give, give a thought on the ants and ask some questions from the live chat.</p>
+<p>Oh, I'm good.</p>
+<p>Um, Travis, I think covered all of the things that we, I wanted to say, um, about, uh, um, I think just one thing that Alex mentioned.</p>
+<p>That we give higher intelligence to the agent.</p>
+<p>This is something that we discussed and I'm pretty much, uh, open to that.</p>
+<p>I've just started actually to think about it, but I didn't implement anything yet.</p>
+<p>However, the, the, the last thing that I discussed in the future directions is something that I actually started working on, but they didn't start the experimentations yet.</p>
+<p>So hopefully we will see something out of that.</p>
+<p>Awesome.</p>
+<p>Well, there's a ton of ways to go.</p>
+<p>And isn't that kind of one of the fundamental questions like in an interactive setting, either pure agent stigmergy interaction or multi-agent, but ultimately mediated through multiple stigmergies with like reading and writing and error correcting codes.</p>
+<p>So in that communication setting.</p>
+<p>Um, I felt like the work generalizes along multiple dimensions that previously approaches to multi-agent just didn't have those kinds of flexibilities.</p>
+<p>Like the continuous time feature and, and, and several other features.</p>
+<p>Um, I guess with respect to the ants themselves, um, I did five summers of field work with ants in the USA Southwest in Arizona and, uh, observed a lot of foraging activity.</p>
+<p>So that problem or that context or setting is really a fun one and a pervasive one across any kind of living system, anything that's going to be active and, uh, living.</p>
+<p>So why did you pursue foraging type algorithms overall?</p>
+<p>And does this class include the interaction based methods with direct agent contacts that professor Gordon highlights in the ant encounters?</p>
+<p>Yeah.</p>
+<p>I, I, I, I, I, I will try to respond to this, but I, I just wanted to add to mention that the bridge</p>
+<p>thought about this map actually, Travis started this idea about using and colonization and more</p>
+<p>pollution or new art sector search by applying this method in simpler neural networks, uh, Ellen</p>
+<p>and Gordon neural networks, you can learn that.</p>
+<p>And I took the leap from there and started working on my pieces, my, my, my, my PhD pieces.</p>
+<p>So, uh, we, we thought about this idea.</p>
+<p>I think I, I mentioned earlier about why we used, uh, in contact optimization in previous slides,</p>
+<p>but just repeating that for the audience to make sure that I, they got, we thought about</p>
+<p>this idea because, um, and contact optimization was applied for, um, as a graph, uh, graph base,</p>
+<p>uh, graph optimization solution.</p>
+<p>And we thought that why not neural networks since they are in their sense neural networks.</p>
+<p>They are directed graphs.</p>
+<p>Neural networks are directed graphs because the flow of information goes from one direction to another direction.</p>
+<p>So they are directed, but they also are graphed because they are nodes connected with the edges.</p>
+<p>And our ultimate aim or goal is to optimize the structure by removing and adding elements to it so that it gives us better performance.</p>
+<p>Awesome. And what one way that Professor Gordon and others have have talked about that bi-directional learning relationship between the computer science and the math and the analytical formulations and then the fieldwork and the actual behavior is because the thousands of species of ants, they're working amidst a huge range of ecologies with all these different patterns of regularities, all these different resource distributions.</p>
+<p>And foraging, it's amazing how general it is, yet it's also just one of the functionalities that need to occur in terms of these like even slower processes, like allocation of tissue to faster processes, even of like response to alarm pheromone.</p>
+<p>So it's like this one class of algorithms clearly scales across from view.</p>
+<p>Ultimately, one, some of these foraging algorithms are lone foragers.</p>
+<p>They don't leave pheromone trails.</p>
+<p>So it's like even the idea of leaving a single positive pheromone or leaving them then.</p>
+<p>But also there's things models can do that ants can't do, like the time travel pheromone, lossless perception, high dimensional signaling profiles that can't occur just with like finite amounts of molecules.</p>
+<p>And now they are just persisting on their path as active agents within one generation with a variational free energy at the behavioral scale, then across generations with that evolutionary layer and the relationships between the neural network implementation and the active inference model.</p>
+<p>ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail</p>
+<p>I think this might be more of an Alex question, to be honest.</p>
+<p>Well, yeah.</p>
+<p>I mean, if you want to keep it on active inference, but I think, Travis, you're going to need to tag in when you want to get into the very specifics of, like, the actual ant colony details.</p>
+<p>Because, again, I kind of see the ant colony optimization from a more global point of view.</p>
+<p>I would say, so to be clear, I mean, this particular work that of the, so that way of the realm, it's not also completely blindsided by your question, Daniel, even though the name is in the institute itself.</p>
+<p>This isn't an active inference work.</p>
+<p>So, you know, again, while there are, obviously, as you pointed out, lots of interesting elements, like, for example, the fact that the ants, when they conduct their exploration along, let's just think about, like, the recurrent networks and they're figuring out what nodes and what, as Abdelrahman explained, the superstructure, right?</p>
+<p>As they iterate across with the pheromone trails and figure out what nodes I want to recurrently connect, B-forward connect, skip connect, so on and so forth.</p>
+<p>You would say, well, okay, what these ants are doing is they're engaging in epistemic foraging, which is a key concept in active inference, right?</p>
+<p>So that way, Abdelrahman and Travis are not also left behind by jargon, epistemic foraging and active inference.</p>
+<p>It's a big general framework.</p>
+<p>It's like a biological, neurobiological process to RL.</p>
+<p>And epistemic just refers to kind of like the uncertainty, Travis, that you and I work on.</p>
+<p>And the idea is it's saying, well, okay, I want to understand my world.</p>
+<p>And the more that I explore my world, right, there will be things that surprise me less.</p>
+<p>But if I encounter some information that is really weird when I build a generative world model or a predictive world model, that's very surprising.</p>
+<p>I should probably explore that.</p>
+<p>And so, of course, I'm condensing the concept down into sort of like the exploration part of the explore-exploit tradeoff that I know you know, but that characterizes reinforcement learning.</p>
+<p>So that's just what we mean when we say epistemic or epistemic foraging.</p>
+<p>And obviously, Abdelrahman foraging, you know, can be likened to what the ants are doing, right?</p>
+<p>They're exploring their environment.</p>
+<p>And so, I guess with that in mind, so that way everyone's sort of on the same page here, to get to your question about the differences, about how does this work versus like your typical neural-based approaches to active inference.</p>
+<p>And I would fall into that category of, oh, I build neural models, biological process models.</p>
+<p>Those are very much focused, you could say, at the individual level, at least the ones that I am aware of.</p>
+<p>When you're building, for example, even a back-propagation-based partially observable Markov decision process in, you know, active inference, that's like a single agent, right?</p>
+<p>You're trying to build this construct that is trying to, you know, balance the epistemic quantity with its instrumental term, which, by the way, another jargon term for you, Abdelrahman and Travis.</p>
+<p>Because that's just like your reward signal or your prior preference or a prior distribution over goal states.</p>
+<p>And so, the agent, these agents sort of like deal with that trade-off, but at an individual agent level.</p>
+<p>Now, again, I'm sure that there's interpretations of these from other perspectives.</p>
+<p>The ant-based approach, even though I would not argue per se that this has at least an explicit form or a connection, at least that Abdelrahman has made clear to active inference.</p>
+<p>But the idea is that this is like a multi-agent approach to active inference.</p>
+<p>And so, the ants, when they conduct their epistemic foraging, which arguably is a very, very simple model.</p>
+<p>Each ant and of themselves is, you know, essentially a bunch of, you know, coefficients and some hard-coded rules.</p>
+<p>Because their job is essentially to work together with their pheromone trails to figure out, oh, what parts of the superstructure are useful.</p>
+<p>So, I'd say that that's different.</p>
+<p>And it lends itself in some ways.</p>
+<p>Of course, you can make the ants more complicated and lose the benefit.</p>
+<p>And I'm just about to say you could massively parallelize this.</p>
+<p>And this is one of the key strengths that I think is natural.</p>
+<p>And, for example, a lot of actually nature-inspired optimization algorithms and ant colony optimization is one of them.</p>
+<p>You know, Abdelrahman has been using hundreds of CPUs.</p>
+<p>And you can put these ants on their own individual processor.</p>
+<p>And the communication that's, you know, occurring across them as they exchange information is, you know, through the pheromone trails.</p>
+<p>There's an indirect mechanism.</p>
+<p>It's not terribly complex to facilitate.</p>
+<p>And I'm sure that there's even better ways to go about doing, like, asynchronous forms of communication.</p>
+<p>And it further, further optimizes.</p>
+<p>I know Travis, and Travis can add to this, has done things on, like, citizen science and distributed computing through, you know, the, you know, volunteer, volunteer computing.</p>
+<p>And how you can distribute this through a massive global asynchronous network.</p>
+<p>So you can imagine adapting the ant form, sorry, the ant colony optimization approach to some, like, distributed, massively distributed version of active inference.</p>
+<p>Where you essentially have to write down that the variational free energy.</p>
+<p>And I'm putting quotes around this because, again, there is no concrete term written in Abdelrahman's work.</p>
+<p>I mean, because we haven't, at least we haven't viewed this from the active inference perspective directly.</p>
+<p>Each ant is optimizing its own variational free energy.</p>
+<p>But then there's probably a global quantity that sort of is relayed as a function of those pheromone trails to the individual ant agents.</p>
+<p>And then, of course, with the exploitation term or the instrumental or the, you know, what is the reward signal to give an RL term.</p>
+<p>That's sort of driven by the performance of the actual agent on the, each candidate agent on the task, right?</p>
+<p>Abdelrahman, you compute, like, mean squared error when you're doing time series prediction.</p>
+<p>So, in some sense, we have built in, you know, a reward function that we use.</p>
+<p>And, again, for those in the active inference group here, you know, you can use the complete class theorem and look at, you know, the prior preference of saying, oh, well, the reward is actually technically a prior preference, right?</p>
+<p>It's like a log probability.</p>
+<p>So, with that in mind, you could squint at ant colony optimization.</p>
+<p>And I guess the big benefit comes from that massive parallelization that you wouldn't actually very easily, if at all, get with, you know, our single agent neural-based approaches.</p>
+<p>And that might be an interesting place to build on.</p>
+<p>And I'll stop rambling at this point.</p>
+<p>I'm not sure if that was helpful.</p>
+<p>That was awesome.</p>
+<p>Even earlier today, Chris Fields in the Physics as Information Processing course was talking about the classical information inscribed on the blanket, which is, like, the pheromone perception and deposition, pheromone modification and perception, sense-making and action, which we can associate with, like, the Nestmate cognitive system.</p>
+<p>So, then there could be as simple as a pass-through for the Nestmate.</p>
+<p>Could be any arbitrary relationship described by the blanket.</p>
+<p>Simple Nestmate, sophisticated Nestmate.</p>
+<p>Like, another level of time series modeling, whereas there's the environmental time series modeling.</p>
+<p>And that's just in the ants.</p>
+<p>And then the fourth dimension is, like, that quantum rotation, which goes from the lower dimensional classical stigmatic screen into the quantum informational space.</p>
+<p>And so, that's one of the discussions ongoing in ACT-INF right now is about, well, previous approaches to connect quantum formalisms to macro, let's just say, neural phenomena based it upon the plausibility of, like, a molecular electronic bubbling up.</p>
+<p>Whereas, just with research from decision-making and statistics and just multi-perspectival modeling and all the issues associated with the physicality of information transfer, the finiteness of it, the quantum formalism becomes useful just by itself with or without reliance on some other electronic phenomena.</p>
+<p>So, it's just a lot of very interesting connections, like having the degrees of freedom on the blanket, which could be noiseless and forbids, or it could be noisy with this really specific thing.</p>
+<p>But in silico, you get to play it from both sides and scale things up and down and do these meta heuristics on top of that arbitrary space.</p>
+<p>It could be really simple for learning, or it could be however much.</p>
+<p>And then, just like the ant colony algorithm is ultimately federated through embodiment, that property makes it a really useful candidate for biomimicry.</p>
+<p>So, a lot of times when people think about collective behavior, they're thinking about, like, the flock of birds and the school of fish.</p>
+<p>And those are, of course, collective systems and collective behavioral and all these kinds of, like, complex systems properties can be studied in that type of system.</p>
+<p>But it is also neglecting at least an analytical degree of freedom with the stigmagy.</p>
+<p>So, that really opens up that, both the quantum and the classical information, or both niche modification and behavioral and cognitive modeling.</p>
+<p>So, just to add on, because I think, and then also, what the node is could even be heterogeneous or unknown, or fit in different ways, or fixed through design processes.</p>
+<p>So, just like the ant colonies are flexible, enabling them to live in all kinds of places, make all these kinds of nested decisions that interact with each other.</p>
+<p>That flexibility is just like the tip of the iceberg of what we could even just describe.</p>
+<p>Because there would always be real environments we hadn't yet tried with ant colonies.</p>
+<p>So, we really would never know the full extent of, like, all the repertoire and the dynamics of the ant system.</p>
+<p>But then, we can just abduct into new mathematical, statistical, distributional frameworks, pull back to different levels of the learning and the meta-learning process, and just start there.</p>
+<p>And then, almost ironically, or maybe the opposite of that, it could be applied to ant colony video data, or movement data, or foraging activity itself.</p>
+<p>But, it kind of takes inspiration and develops in parallel or in conversation.</p>
+<p>So, it's not, like, balance what real ants can do.</p>
+<p>Or, you could constrain it so that there are properties that real ants have.</p>
+<p>Like, they can only interact within this certain way, or, like, there really are only this many pheromones.</p>
+<p>Do model comparisons.</p>
+<p>So, it's a lot of degrees of freedom.</p>
+<p>I feel like you all are opening up with the ant colony modeling.</p>
+<p>And, also, one of the challenging pieces of multi-agent simulation is kind of, like, the open-endedness with the design space.</p>
+<p>So, then, it's very hard for even creative ideas, like, sometimes to find the right compute resources that, obviously, are still even needed for what you discovered with the analysis here.</p>
+<p>I'll ask a question from Bert in the chat.</p>
+<p>I just want to, before we move on to that, I just want to clarify, just so, make sure that I got the right term.</p>
+<p>And, certainly, Abdulrahman and Travis might want to look it up.</p>
+<p>Is, when you were saying blanket, you were referring to a Markov blanket, correct?</p>
+<p>Yes.</p>
+<p>So, the technical definition of Markov blanket is, when you have a Bayesian graph, where nodes are the variables and edges are relationships amongst these variables,</p>
+<p>for any given node of interest, we'll just call it internal states.</p>
+<p>So, these are not features of the world, it's not tagged on to some tissue of a real nest mate in the world.</p>
+<p>This is something that's tagged on to, or, like, a perspective we could take on any node in a Bayes graph.</p>
+<p>And then, all the nodes that insulate it, and the co-parents, are known as the blanket, in the sense that it's, like, one-layer insulator.</p>
+<p>And there's a lot of more discussion on it, and the philosophical implications, and all of these generalizations of that.</p>
+<p>But, broadly, the Markov blanket is just the inbound dependencies, which we associate with sense-making and perception, learning, attention.</p>
+<p>And then, the outgoing dependencies for the agent, which we associate with, like, action, influence, in some downstream pointing way.</p>
+<p>Thank you.</p>
+<p>I just wanted to clarify that, because I don't think Abdelrahman and Travis might be familiar.</p>
+<p>Just with that terminology, it's very Fristonian, you know, very active inference-y kind of jargon.</p>
+<p>So, I wanted to make sure that they got that from the physics point of view.</p>
+<p>Thanks.</p>
+<p>Yeah.</p>
+<p>Yeah, totally.</p>
+<p>Great point.</p>
+<p>And I'll ask a question now from Bert.</p>
+<p>So, Bert says, very impressive.</p>
+<p>Solving generative models with more generative models sounds very promising.</p>
+<p>What about replacing ANTs with convolutions?</p>
+<p>Joking about, like, a meta-learning algorithm.</p>
+<p>Like having a neural network that learns how to optimize other neural networks.</p>
+<p>Yeah.</p>
+<p>I mean, this concept, I think, is introduced at some point in machine learning lore.</p>
+<p>But we wanted to apply for nature-based method that...</p>
+<p>It's like the mother nature, which is the...</p>
+<p>You know, nature is the most efficient optimization evolution system.</p>
+<p>So, looking at the results that are there in those nature, applying nature-based methods,</p>
+<p>they were superior to any other method.</p>
+<p>And the results we got also, which just pointed out to that...</p>
+<p>Pointed that out, that we saw good performance coming out from these results,</p>
+<p>from our results and previous results from other methods as well.</p>
+<p>So, I'll pop in here a little bit, too.</p>
+<p>In the case of neural architecture research, there's kind of a couple classes of approaches.</p>
+<p>One is constructive.</p>
+<p>So, kind of like where you build larger and larger networks and try and keep your network size minimal</p>
+<p>to try and find your optimal solution.</p>
+<p>Other types of neural architecture search approaches use, like, a superstructure.</p>
+<p>And this is kind of how the earlier iterations of this were, where you have a bound of your search space</p>
+<p>and you try and find the optimal network within that bound.</p>
+<p>So, one is, like, trying to build things from the ground up,</p>
+<p>and the other one's trying to, like, trim down a big network to a small network.</p>
+<p>As to your question about convolutions, there's a type of...</p>
+<p>There's been a fair bit of research lately in what's called graph-based neural networks,</p>
+<p>which can use convolutions over, like, a discrete graph search space</p>
+<p>and can potentially produce other graphs.</p>
+<p>And I believe there's been some neural architecture search work using this.</p>
+<p>But one of the main, and I think cool things about the approach here,</p>
+<p>which is different from those, is that even if you have a graph-based neural network</p>
+<p>and you have your search space defined as some kind of matrix</p>
+<p>where things are off and on depending on which nodes are connected to each other,</p>
+<p>you have a fixed search space, which may not be big enough,</p>
+<p>or it might not be the correct search space for this neural architecture search problem,</p>
+<p>where this method here is all continuous, right?</p>
+<p>So, within this continuous search space, you really have...</p>
+<p>It gives the algorithm a lot of freedom, maybe too much freedom,</p>
+<p>but a really open-ended way of generating a wide variety of neural architectures,</p>
+<p>which, if you pre-constrain your algorithm to work within a fixed, discrete superstructure,</p>
+<p>you may not even find them because they're not even a possibility.</p>
+<p>So, that's one of the reasons we didn't go that route.</p>
+<p>But there are graph-based neural architecture search algorithms out there</p>
+<p>where basically you take the architecture as a graph,</p>
+<p>you train a neural network to spit out another graph that it might think is better.</p>
+<p>And those use convolution sometimes.</p>
+<p>That helps.</p>
+<p>That's awesome.</p>
+<p>So, convolution sounds like yes.</p>
+<p>And one thought on that is,</p>
+<p>yes, the ants solve all these incredible patterns</p>
+<p>and kind of do amazing things amidst informational and physical limitations,</p>
+<p>like we all do.</p>
+<p>Having the ants be able to</p>
+<p>just make trade-offs within a task space</p>
+<p>and then have a dial as modelers</p>
+<p>to make that task space kind of like touching the pheromone distribution</p>
+<p>or metacognitive ants</p>
+<p>or something emulating essentially that</p>
+<p>and, for example, the active inference,</p>
+<p>forward-looking and thinking through other minds,</p>
+<p>that there could be a kind of cognitive colony.</p>
+<p>So, then that enables in silico,</p>
+<p>total thought experiment colonies,</p>
+<p>and through data-driven processes</p>
+<p>also kind of keep continuity with that model,</p>
+<p>perhaps literally continuity with the model,</p>
+<p>and then connect it to empirical,</p>
+<p>which is something that is very hard for agent-based modeling,</p>
+<p>which, as you kind of pointed to,</p>
+<p>often sets certain fixed axes,</p>
+<p>performs like a sweep,</p>
+<p>looks at one mechanism,</p>
+<p>doesn't look at all these possible mechanisms</p>
+<p>of like learning and intra- and intergenerational</p>
+<p>and all these time effects.</p>
+<p>So, how do you see this being used</p>
+<p>in different research or application domains?</p>
+<p>Well, I mean, we were...</p>
+<p>The main use case that we're thinking of</p>
+<p>was New Revolution New Architecture Search.</p>
+<p>That's for...</p>
+<p>To apply for other domains</p>
+<p>other than New Architect Search,</p>
+<p>we didn't figure out that yet.</p>
+<p>I think Alex can expand on that.</p>
+<p>I can hop in a little bit, too.</p>
+<p>I mean, so basically,</p>
+<p>this type of algorithm,</p>
+<p>if you need to generate graphs</p>
+<p>and you don't necessarily have a fixed structure</p>
+<p>for that graph...</p>
+<p>And when I say graph,</p>
+<p>I mean, like, a computer science graph</p>
+<p>where you have nodes and edges.</p>
+<p>So, pretty much anything involving graph construction,</p>
+<p>I think these types of methods...</p>
+<p>No networks kind of under the hood are...</p>
+<p>You know, can be represented as graphs</p>
+<p>and usually are.</p>
+<p>So, I think we're using it for neural networks</p>
+<p>because it's really popular.</p>
+<p>But, you know, there's other algorithms out there,</p>
+<p>like, you know, the traditional traveling salesman.</p>
+<p>There's like routing problems,</p>
+<p>all that, any type of stuff</p>
+<p>where you might need to generate a graph</p>
+<p>in a smart way to do that.</p>
+<p>To your other point, though,</p>
+<p>I think what's really cool here,</p>
+<p>and I don't want to steal outdoor elements thunder,</p>
+<p>but, you know, his last point on future direction is,</p>
+<p>while a particular version</p>
+<p>of this ant colony optimization search</p>
+<p>is running to find an optimal neural network,</p>
+<p>a colony has fixed parameters</p>
+<p>that it operates within.</p>
+<p>But if you think of the colony as an organism,</p>
+<p>as opposed to the ants being an organism,</p>
+<p>you can evolve colonies</p>
+<p>that optimize how the ants themselves act.</p>
+<p>So, you can have evolving colonies</p>
+<p>that, in a smaller sense,</p>
+<p>also evolve or optimize</p>
+<p>what they're doing</p>
+<p>within their prescriptive parameters</p>
+<p>for the agents they're generating.</p>
+<p>So, you can have like a meta meta.</p>
+<p>It's awesome.</p>
+<p>I mean, the evolutionary account</p>
+<p>of a why question for ant behavior today,</p>
+<p>one part of that answer is like,</p>
+<p>because colonies that couldn't</p>
+<p>under that regularity or constraint survive,</p>
+<p>we've had a long, long time</p>
+<p>to wipe those off the table.</p>
+<p>And so, every biological system</p>
+<p>has to have that kind of multi-scale ordering.</p>
+<p>In 2021, we made the Active Emperor Ants paper,</p>
+<p>which was modified</p>
+<p>from an epistemic foraging visual attention task</p>
+<p>about scanning around</p>
+<p>and then learning a saccade policy</p>
+<p>that had to do with epistemic foraging,</p>
+<p>but not leaving a trace.</p>
+<p>And then the main modification</p>
+<p>to bring that active inference,</p>
+<p>epistemic visual foraging model</p>
+<p>into the active inference</p>
+<p>ant setting</p>
+<p>was to add a pheromone rule,</p>
+<p>just like you described,</p>
+<p>even though, of course, again,</p>
+<p>that's not the only pheromone rule,</p>
+<p>but that's just the most simple pheromone rule</p>
+<p>that we can generalize from,</p>
+<p>as you definitely have.</p>
+<p>And there are just many emerging ways</p>
+<p>of modeling those multi-scale active inference models.</p>
+<p>So, composing across layers,</p>
+<p>which we might associate more</p>
+<p>with the kind of laterality</p>
+<p>of things that happen through interactions.</p>
+<p>And then also, as Mike Levin shows,</p>
+<p>with kind of the time diamond systems</p>
+<p>that have a memory retention component</p>
+<p>of some shape, cognitive shape,</p>
+<p>and then a protention awareness</p>
+<p>or agency or other attributes</p>
+<p>you can use to describe that.</p>
+<p>And that that's a statistically amenable way</p>
+<p>to describe things.</p>
+<p>And then there's a variety of implementations</p>
+<p>on a given statistical problem</p>
+<p>or like federated compute architecture.</p>
+<p>It might be the case</p>
+<p>that you're not running</p>
+<p>like the pure matrix multiplications</p>
+<p>that are shown in like the early MATLAB code</p>
+<p>of active inference.</p>
+<p>Different components of machine learning systems</p>
+<p>might be kind of composed together.</p>
+<p>Also ways kind of abiding</p>
+<p>by those patterns of communication.</p>
+<p>But then there's a level of abstraction</p>
+<p>that we can still describe,</p>
+<p>but it doesn't mean active inference</p>
+<p>is going to be like kind of causing it.</p>
+<p>So that's what gives a lot of flexibility.</p>
+<p>And it's really cool that through your background,</p>
+<p>Alexander, and work,</p>
+<p>and these kinds of collaborations</p>
+<p>that like the active inference perspective</p>
+<p>on multi-agent modeling</p>
+<p>with all these other views</p>
+<p>can at least come together comparatively.</p>
+<p>And then that is going to, I think,</p>
+<p>be quite an interesting interchange</p>
+<p>to apply this entire tissue type</p>
+<p>or colony type,</p>
+<p>thinking above and within the models.</p>
+<p>Just a lot of degrees of freedom.</p>
+<p>Like you said, could be too much.</p>
+<p>I mean, and I think there's different ways too.</p>
+<p>I think it depends on how you want to take</p>
+<p>the ant metaphor.</p>
+<p>And, you know, again,</p>
+<p>it's kind of interesting</p>
+<p>some of the questions or comments</p>
+<p>that you're making, Daniel,</p>
+<p>and some from the audience about,</p>
+<p>you know, how does this, you know,</p>
+<p>think about it from a cognitive point of view.</p>
+<p>I mean, I do work in cognitive architectures,</p>
+<p>of course, again,</p>
+<p>kind of from the whole single agent,</p>
+<p>you know, or single entity</p>
+<p>and, you know, modeling a single brain</p>
+<p>in its different regions.</p>
+<p>But I think if you take, you know,</p>
+<p>a nature inspired optimization approach,</p>
+<p>like the ant metaphor</p>
+<p>that Abdelrahman, you know,</p>
+<p>you know, latched onto.</p>
+<p>And that's sort of like the way</p>
+<p>in which he formalizes how,</p>
+<p>or it takes a principle</p>
+<p>of how ants interact with their world,</p>
+<p>interact with each other,</p>
+<p>and then, you know,</p>
+<p>mathematically model</p>
+<p>those particular concepts step by step.</p>
+<p>And I think if you bend the metaphor</p>
+<p>and say, well, okay,</p>
+<p>could the ant colony metaphor</p>
+<p>apply to multi-human agent systems, right?</p>
+<p>Or other entities, does it, does it,</p>
+<p>does the ant necessarily,</p>
+<p>can it be generalized beyond,</p>
+<p>you know, the physical creature</p>
+<p>upon which Abdelrahman</p>
+<p>based his initial metaphor?</p>
+<p>And that's an interesting</p>
+<p>philosophical kind of take to it.</p>
+<p>And then how do you apply that to,</p>
+<p>let's say, building a multi-agent</p>
+<p>cognitive system?</p>
+<p>And then, of course,</p>
+<p>as Travis was discussing with you,</p>
+<p>and you were mentioning metacognition,</p>
+<p>and, you know,</p>
+<p>you could think of ant colonies</p>
+<p>of ant colonies,</p>
+<p>but you could even replace the word ant</p>
+<p>and just say, well,</p>
+<p>we have, you know,</p>
+<p>clusters of, you know,</p>
+<p>intelligent agents,</p>
+<p>or however,</p>
+<p>whatever degree of modeling we're doing.</p>
+<p>Because, again,</p>
+<p>I do want to emphasize</p>
+<p>that at least the Kants</p>
+<p>and Ants agents</p>
+<p>that I have worked with</p>
+<p>in the context of Abdelrahman,</p>
+<p>you know,</p>
+<p>they are not each and of themselves.</p>
+<p>Even, I would argue,</p>
+<p>if nothing else,</p>
+<p>a very extremely simplified</p>
+<p>generative model,</p>
+<p>or a very, very,</p>
+<p>very simple control system,</p>
+<p>there's no neural network</p>
+<p>under each one</p>
+<p>because then you'd have</p>
+<p>to simulate computationally</p>
+<p>each one of these ants</p>
+<p>within the frameworks.</p>
+<p>I think there's always</p>
+<p>that good practical</p>
+<p>machine learning</p>
+<p>kind of viewpoint of,</p>
+<p>well, you know,</p>
+<p>there's always a,</p>
+<p>how do you simulate that?</p>
+<p>And, you know,</p>
+<p>Abdelrahman's working with CPUs.</p>
+<p>It's not like he has</p>
+<p>an army of GPUs</p>
+<p>to replace them</p>
+<p>with convolutional networks.</p>
+<p>Again, if you had the resources,</p>
+<p>this would be awesome.</p>
+<p>But, you know,</p>
+<p>expense and money</p>
+<p>is another constraint</p>
+<p>on this planet.</p>
+<p>But I think there's</p>
+<p>interesting views</p>
+<p>and interesting directions</p>
+<p>one could go</p>
+<p>by taking inspiration</p>
+<p>from the ant metaphor</p>
+<p>and, you know,</p>
+<p>the concept of pheromones</p>
+<p>and translate them</p>
+<p>to other, you know,</p>
+<p>other real world signals</p>
+<p>and how, for example,</p>
+<p>communication patterns</p>
+<p>among, you know,</p>
+<p>other animal entities</p>
+<p>or other human agents.</p>
+<p>And I think that that opens up</p>
+<p>an interesting perspective.</p>
+<p>And if you're constantly</p>
+<p>trying to connect it back</p>
+<p>to, you know,</p>
+<p>free energy minimization</p>
+<p>and trying to say,</p>
+<p>well, how are we balancing,</p>
+<p>you know,</p>
+<p>the terms that you can</p>
+<p>decompose it into</p>
+<p>an epistemic</p>
+<p>and an instrumental</p>
+<p>and how are these</p>
+<p>balancing out</p>
+<p>and how are these</p>
+<p>physical processes</p>
+<p>that we specify,</p>
+<p>you know,</p>
+<p>balancing those terms.</p>
+<p>That's just a very</p>
+<p>interesting place to be.</p>
+<p>And you mentioned,</p>
+<p>you know,</p>
+<p>active inference versions</p>
+<p>of ants</p>
+<p>and that's fascinating</p>
+<p>in and of itself.</p>
+<p>Last comment I have</p>
+<p>is, again,</p>
+<p>the degree of modeling</p>
+<p>and what you are modeling.</p>
+<p>Like if you're modeling</p>
+<p>a society</p>
+<p>or organization,</p>
+<p>you know,</p>
+<p>that's one way</p>
+<p>you could use,</p>
+<p>you know,</p>
+<p>the ant colony framework,</p>
+<p>if you will,</p>
+<p>or optimization</p>
+<p>or meta heuristic</p>
+<p>optimization frameworks</p>
+<p>to, you know,</p>
+<p>then cast,</p>
+<p>you know,</p>
+<p>you know,</p>
+<p>a system,</p>
+<p>any type of complex</p>
+<p>multi-agent system</p>
+<p>as an active inference</p>
+<p>kind of,</p>
+<p>you know,</p>
+<p>engaging process.</p>
+<p>Or you could go</p>
+<p>really low level</p>
+<p>and think about,</p>
+<p>you know,</p>
+<p>cells in a body</p>
+<p>or,</p>
+<p>you know,</p>
+<p>or units that make up</p>
+<p>organs or organelles</p>
+<p>and trying to say,</p>
+<p>well,</p>
+<p>can we use this</p>
+<p>to model that level</p>
+<p>of granularity</p>
+<p>within like a human</p>
+<p>or an animal entity,</p>
+<p>right?</p>
+<p>And I think there's</p>
+<p>some fascinating questions</p>
+<p>about how does this</p>
+<p>metaphor manifest itself</p>
+<p>at different timescales</p>
+<p>and different degrees</p>
+<p>of,</p>
+<p>you know,</p>
+<p>perspective,</p>
+<p>right?</p>
+<p>About how you're modeling,</p>
+<p>what are you looking at?</p>
+<p>What's the picture</p>
+<p>that you want to emulate?</p>
+<p>And of course,</p>
+<p>there's always under the hood</p>
+<p>this practical consideration</p>
+<p>of,</p>
+<p>well,</p>
+<p>okay,</p>
+<p>the computational expense</p>
+<p>that you allocate</p>
+<p>and are you able</p>
+<p>to actually run</p>
+<p>that simulation</p>
+<p>long enough?</p>
+<p>Because I think,</p>
+<p>Abderram,</p>
+<p>and you can correct me</p>
+<p>if I'm wrong,</p>
+<p>you mentioned like</p>
+<p>one of the experiments</p>
+<p>I think was</p>
+<p>for the bigger systems</p>
+<p>took a month,</p>
+<p>right?</p>
+<p>Of course,</p>
+<p>this was on CPUs.</p>
+<p>You know,</p>
+<p>that can get pretty</p>
+<p>prohibitive</p>
+<p>if you want to go</p>
+<p>even bigger than that.</p>
+<p>But again,</p>
+<p>I think it just depends</p>
+<p>on, you know,</p>
+<p>what hardware you have</p>
+<p>to simulate design.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>And also,</p>
+<p>I mean,</p>
+<p>using high-performance</p>
+<p>computing,</p>
+<p>it's not always</p>
+<p>feasible for smaller.</p>
+<p>So if we try</p>
+<p>to model</p>
+<p>the brain of ANS</p>
+<p>like small neural network,</p>
+<p>using a GPU</p>
+<p>might not be</p>
+<p>like feasible solution.</p>
+<p>Travis is a high-performance</p>
+<p>computing specialist</p>
+<p>here,</p>
+<p>an expert,</p>
+<p>tell you,</p>
+<p>but like sending</p>
+<p>data to a GPU</p>
+<p>and getting it back,</p>
+<p>it's very time consuming</p>
+<p>and resources consuming.</p>
+<p>So it will worsen</p>
+<p>the time consumption</p>
+<p>rather than solving it</p>
+<p>because communicating</p>
+<p>between the main memory</p>
+<p>and the GPU</p>
+<p>would have like</p>
+<p>an overhead.</p>
+<p>So it has to be</p>
+<p>a big enough problem</p>
+<p>to actually</p>
+<p>utilize the GPU</p>
+<p>in such solutions.</p>
+<p>Yeah.</p>
+<p>So we've been,</p>
+<p>oh,</p>
+<p>sorry.</p>
+<p>I forgot to cut you off.</p>
+<p>Go ahead.</p>
+<p>Go ahead.</p>
+<p>Yeah.</p>
+<p>So when you have</p>
+<p>like,</p>
+<p>you know,</p>
+<p>the super large language</p>
+<p>models</p>
+<p>or large models</p>
+<p>for computer vision,</p>
+<p>they do a lot</p>
+<p>of just massive</p>
+<p>operations on tensors,</p>
+<p>which are basically</p>
+<p>multidimensional matrices,</p>
+<p>right?</p>
+<p>And when you have</p>
+<p>really big,</p>
+<p>wide tensors,</p>
+<p>you can parallelize</p>
+<p>the operation</p>
+<p>really nicely</p>
+<p>across the GPU.</p>
+<p>A lot of this work</p>
+<p>is based on</p>
+<p>doing like</p>
+<p>the time series</p>
+<p>forecasting,</p>
+<p>time series</p>
+<p>classification</p>
+<p>on sensor data,</p>
+<p>stuff from like</p>
+<p>power systems.</p>
+
+<p>you know,</p>
+<p>the input</p>
+<p>to a large language</p>
+<p>model might be</p>
+<p>a thousand or more,</p>
+<p>you know,</p>
+<p>word embedding,</p>
+<p>length of a word</p>
+<p>embedding,</p>
+<p>which is actually</p>
+<p>not huge,</p>
+<p>but if you go up</p>
+<p>to computer vision model,</p>
+<p>the input image</p>
+<p>may be a thousand</p>
+<p>by a thousand pixels</p>
+<p>and that gives you</p>
+<p>like actually</p>
+<p>a million inputs,</p>
+<p>right?</p>
+<p>When you're working</p>
+<p>with sensor systems</p>
+<p>off of aircraft,</p>
+<p>power plants,</p>
+<p>that type of thing,</p>
+<p>you may have</p>
+<p>50 to 100 inputs.</p>
+<p>And when you're working</p>
+<p>with this type</p>
+<p>of time series data,</p>
+<p>you don't need</p>
+<p>a massive,</p>
+<p>super wide</p>
+<p>neural network.</p>
+<p>And then if you</p>
+<p>add in recurrency</p>
+<p>where you have to do</p>
+<p>backprop over time</p>
+<p>and other things like this,</p>
+<p>you actually can't</p>
+<p>really parallelize it</p>
+<p>nicely on a GPU.</p>
+<p>So for us,</p>
+<p>the CPU is actually</p>
+<p>more efficient.</p>
+<p>We tried,</p>
+<p>Abdulrahman wrote a bunch</p>
+<p>of code a long time ago</p>
+<p>to put this stuff</p>
+<p>on GPUs</p>
+<p>and we found</p>
+<p>it was quite a bit slower.</p>
+<p>So depending on</p>
+<p>what you're doing</p>
+<p>with a neural network,</p>
+<p>a GPU actually</p>
+<p>isn't the right answer.</p>
+<p>But the other cool</p>
+<p>thing about this,</p>
+<p>which I think does have</p>
+<p>maybe even potential</p>
+<p>for there,</p>
+<p>is that,</p>
+<p>you know,</p>
+<p>one of the big</p>
+<p>not talked about</p>
+<p>problems in machine</p>
+<p>learning is that</p>
+<p>backpropagation</p>
+<p>is the fastest</p>
+<p>thing we know,</p>
+<p>but it's inherently</p>
+<p>not scalable.</p>
+<p>Like,</p>
+<p>you can get a bigger,</p>
+<p>better GPU</p>
+<p>to do your bits</p>
+<p>of your network</p>
+<p>in parallel</p>
+<p>to speed things up,</p>
+<p>but that only gets better</p>
+<p>if you have a bigger network.</p>
+<p>If you want to speed up</p>
+<p>the training process,</p>
+<p>you can't just add</p>
+<p>another CPU</p>
+<p>or another GPU</p>
+<p>and make backprop</p>
+<p>go faster.</p>
+<p>You can make</p>
+<p>the forward and backward</p>
+<p>pass through your neural</p>
+<p>network faster,</p>
+<p>but you still have to do</p>
+<p>every epoch</p>
+<p>of backprop iteratively.</p>
+<p>A method like this</p>
+<p>where we generate,</p>
+<p>we're not,</p>
+<p>we're not,</p>
+<p>one,</p>
+<p>it's backprop free,</p>
+<p>so it's not using backprop.</p>
+<p>We can use a nature</p>
+<p>inspire or other method</p>
+<p>to use hundreds</p>
+<p>of computers</p>
+<p>and you can throw</p>
+<p>twice as many computers</p>
+<p>at it and get a result</p>
+<p>back twice as fast,</p>
+<p>whereas backprop,</p>
+<p>you can't do that.</p>
+<p>So if you think about</p>
+<p>actually being able</p>
+<p>to train a neural</p>
+<p>network faster,</p>
+<p>backprop actually,</p>
+<p>you know,</p>
+<p>it's got a pretty,</p>
+<p>pretty low speed limit</p>
+<p>for what we need to do.</p>
+<p>And it's kind of</p>
+<p>a big problem</p>
+<p>of the machine learning</p>
+<p>community that people</p>
+<p>don't like to talk about</p>
+<p>because they're like,</p>
+<p>oh,</p>
+<p>I'll just buy the next</p>
+<p>big NVIDIA GPU</p>
+<p>and that'll do things faster.</p>
+<p>So that's super interesting.</p>
+<p>Does this maybe even</p>
+<p>bring up a kind of</p>
+<p>relationship where</p>
+<p>things like a graphics</p>
+<p>visualization,</p>
+<p>of course,</p>
+<p>a GPU does well.</p>
+<p>And that's like the screen</p>
+<p>changing through time</p>
+<p>with a classical process</p>
+<p>that can be massively</p>
+<p>unfolded.</p>
+<p>and then the cognitive</p>
+<p>models ultimately</p>
+<p>of the nest mates,</p>
+<p>which again can be nested,</p>
+<p>but the thing that's</p>
+<p>more quantum,</p>
+<p>more cognitive model</p>
+<p>like you can do</p>
+<p>in parallel</p>
+<p>because the minds</p>
+<p>are not influencing</p>
+<p>each other</p>
+<p>except through stigmargy.</p>
+<p>So then that is CPU bound,</p>
+<p>the size of the colony.</p>
+<p>And then you could use</p>
+<p>different like graphics,</p>
+<p>techniques,</p>
+<p>like there are colonies,</p>
+<p>organisms.</p>
+<p>So one ant being,</p>
+<p>or it's a philosophical question,</p>
+<p>what is the scale</p>
+<p>at which A exists,</p>
+<p>but all throughout California</p>
+<p>with the Argentine ant,</p>
+<p>for example.</p>
+<p>And so how do we deal</p>
+<p>with those kinds of like</p>
+<p>meshwork,</p>
+<p>cognitive systems,</p>
+<p>all the way on through</p>
+<p>50 in an acorn?</p>
+<p>There's just all these</p>
+<p>different trade-offs</p>
+<p>that are being made</p>
+<p>and like in the</p>
+<p>featureless deserts,</p>
+<p>there's different</p>
+<p>wayfinding,</p>
+<p>pathfinding,</p>
+<p>sensor integration,</p>
+<p>polarization of light,</p>
+<p>like different</p>
+<p>cognitive strategies</p>
+<p>because they might be</p>
+<p>going out</p>
+<p>long distance</p>
+<p>and dragging something home,</p>
+<p>not leaving any pheromone</p>
+<p>because it's not</p>
+<p>any more likely</p>
+<p>to have food there.</p>
+<p>So in that case,</p>
+<p>the stigma G</p>
+<p>is basically minimal</p>
+<p>to essentially none.</p>
+<p>And then in other situations,</p>
+<p>you could have</p>
+<p>something that's</p>
+<p>very adherent</p>
+<p>to distributions</p>
+<p>to the point of being</p>
+<p>like fit</p>
+<p>to very</p>
+<p>like</p>
+<p>kind of</p>
+<p>normative path.</p>
+<p>But that's happening</p>
+<p>at a level</p>
+<p>that allows</p>
+<p>the</p>
+<p>different compute</p>
+<p>architectures,</p>
+<p>different information</p>
+<p>architectures,</p>
+<p>and ultimately</p>
+<p>different biological</p>
+<p>embodiments</p>
+<p>to really</p>
+<p>engage</p>
+<p>fruitfully.</p>
+<p>Again,</p>
+<p>looking at the</p>
+<p>variability,</p>
+<p>the diversity</p>
+<p>of biological</p>
+<p>algorithms</p>
+<p>for collective</p>
+<p>behavior,</p>
+<p>which have been</p>
+<p>studied by</p>
+<p>Professor Gordon</p>
+<p>and others</p>
+<p>in so many</p>
+<p>different angles,</p>
+<p>yet sometimes</p>
+<p>it can feel like</p>
+<p>multi-agent models</p>
+<p>always start</p>
+<p>kind of like</p>
+<p>at square one,</p>
+<p>demonstrate</p>
+<p>some proof</p>
+<p>of concept</p>
+<p>phenomena,</p>
+<p>and that is</p>
+<p>utilized as part</p>
+<p>of like a</p>
+<p>bigger perspective,</p>
+<p>but it's not</p>
+<p>like that</p>
+<p>model was</p>
+<p>ever like</p>
+<p>claimed to</p>
+<p>have been</p>
+<p>tuned to</p>
+<p>maximum</p>
+<p>performance.</p>
+<p>It's like,</p>
+<p>well,</p>
+<p>we got</p>
+<p>decision-making</p>
+<p>behavior.</p>
+<p>You could</p>
+<p>transfer this</p>
+<p>to group</p>
+<p>decision-making</p>
+<p>with honeybee</p>
+<p>decision-making</p>
+<p>or something</p>
+<p>like that.</p>
+<p>But there's</p>
+<p>still like</p>
+<p>a big gap</p>
+<p>there.</p>
+<p>But I think</p>
+<p>what you're</p>
+<p>describing with</p>
+<p>the can'ts,</p>
+<p>which is funny</p>
+<p>because it</p>
+<p>could be</p>
+<p>cannot,</p>
+<p>but also</p>
+<p>the can't</p>
+<p>is the</p>
+<p>dialect,</p>
+<p>which is</p>
+<p>spoken.</p>
+<p>It was</p>
+<p>very funny</p>
+<p>when we</p>
+<p>came up</p>
+<p>with it.</p>
+<p>Great choice.</p>
+<p>And it's</p>
+<p>just like,</p>
+<p>yeah,</p>
+<p>because there's</p>
+<p>multiple</p>
+<p>perspectives to</p>
+<p>swap from</p>
+<p>on the</p>
+<p>classical screen</p>
+<p>because the</p>
+<p>meaning of the</p>
+<p>word is</p>
+<p>something that's</p>
+<p>happening in that</p>
+<p>fourth dimension.</p>
+<p>Cognitively,</p>
+<p>the meaning of</p>
+<p>the word isn't</p>
+<p>to be found</p>
+<p>just on the</p>
+<p>blanket,</p>
+<p>just on the</p>
+<p>interface itself.</p>
+<p>That's just the</p>
+<p>communication.</p>
+<p>And that's</p>
+<p>like a bounded</p>
+<p>system.</p>
+<p>Then if you</p>
+<p>model a cognitive</p>
+<p>system that</p>
+<p>doesn't have</p>
+<p>that kind of</p>
+<p>a constraint,</p>
+<p>so represented</p>
+<p>by a map</p>
+<p>that has</p>
+<p>some kind</p>
+<p>of blanket</p>
+<p>index,</p>
+<p>some kind</p>
+<p>of blanketing,</p>
+<p>if you don't</p>
+<p>embody that</p>
+<p>constraint in</p>
+<p>the statistical</p>
+<p>model,</p>
+<p>the map,</p>
+<p>you're ignoring</p>
+<p>one of the</p>
+<p>fundamental</p>
+<p>constraints</p>
+<p>of modeling</p>
+<p>the way that</p>
+<p>things happen</p>
+<p>in an embodied</p>
+<p>fashion.</p>
+<p>Maybe there's</p>
+<p>some abstract</p>
+<p>space for a</p>
+<p>certain problem</p>
+<p>that's just</p>
+<p>like a total</p>
+<p>slam dunk.</p>
+<p>However,</p>
+<p>for full</p>
+<p>generality,</p>
+<p>at least to</p>
+<p>the space</p>
+<p>that we</p>
+<p>know of</p>
+<p>biological</p>
+<p>life forms</p>
+<p>and their</p>
+<p>engagements</p>
+<p>and like</p>
+<p>ecological</p>
+<p>engagements,</p>
+<p>not just</p>
+<p>like within</p>
+<p>one behavior.</p>
+<p>That space</p>
+<p>is so vast</p>
+<p>and there's</p>
+<p>so much</p>
+<p>to learn</p>
+<p>across</p>
+<p>different</p>
+<p>systems</p>
+<p>and then</p>
+<p>to,</p>
+<p>again,</p>
+<p>to abduce</p>
+<p>away into</p>
+<p>different</p>
+<p>information</p>
+<p>architectures.</p>
+<p>Active</p>
+<p>inference</p>
+<p>being some</p>
+<p>subset or</p>
+<p>type of</p>
+<p>those.</p>
+<p>So it's</p>
+<p>awesome work.</p>
+<p>Do you have</p>
+<p>any last</p>
+<p>comments?</p>
+<p>Well,</p>
+<p>being giving</p>
+<p>ability for</p>
+<p>brands to</p>
+<p>be self-aware</p>
+<p>and aware</p>
+<p>about this</p>
+<p>environment,</p>
+<p>it's actually</p>
+<p>something that</p>
+<p>we implemented</p>
+<p>in our last</p>
+<p>work with</p>
+<p>the BP</p>
+<p>free camps.</p>
+<p>They are</p>
+<p>indirectly aware</p>
+<p>about their</p>
+<p>environment</p>
+<p>and they</p>
+<p>are adapting</p>
+<p>to the</p>
+<p>changes in</p>
+<p>their</p>
+<p>environment</p>
+<p>by inductive</p>
+<p>meaning that</p>
+<p>they are</p>
+<p>evolving using</p>
+<p>a genetic</p>
+<p>based</p>
+<p>algorithm</p>
+<p>to just</p>
+<p>change their</p>
+<p>behavior,</p>
+<p>like how</p>
+<p>they sense</p>
+<p>the world,</p>
+<p>the world,</p>
+<p>the permanence</p>
+<p>when they</p>
+<p>take the</p>
+<p>steps and</p>
+<p>some other</p>
+<p>things or</p>
+<p>some other</p>
+<p>characteristics</p>
+<p>they have.</p>
+<p>So they</p>
+<p>are adapting</p>
+<p>but kind</p>
+<p>of like</p>
+<p>not in</p>
+<p>an intelligent</p>
+<p>way but</p>
+<p>through evolution</p>
+<p>if you want</p>
+<p>to say.</p>
+<p>Actually,</p>
+<p>we consider</p>
+<p>putting a</p>
+<p>brain in</p>
+<p>each one of</p>
+<p>these agents</p>
+<p>but then</p>
+<p>again,</p>
+<p>as Travis</p>
+<p>and Alex</p>
+<p>mentioned,</p>
+<p>we found</p>
+<p>that it</p>
+<p>won't be</p>
+<p>practical.</p>
+<p>Actually,</p>
+<p>it would</p>
+<p>hinder our</p>
+<p>asynchronous</p>
+<p>design because</p>
+<p>we couldn't</p>
+<p>like</p>
+<p>penalize</p>
+<p>that.</p>
+<p>It would</p>
+<p>take time</p>
+<p>to train</p>
+<p>each one</p>
+<p>of these</p>
+<p>brains as</p>
+<p>we evolve</p>
+<p>and your</p>
+<p>networks.</p>
+<p>Awesome.</p>
+<p>Alexander or</p>
+<p>Travis,</p>
+<p>any last</p>
+<p>thoughts?</p>
+<p>Okay.</p>
+<p>Jeez.</p>
+<p>I'm just</p>
+<p>really happy.</p>
+<p>I think</p>
+<p>this work</p>
+<p>is really</p>
+<p>interesting</p>
+<p>and it</p>
+<p>opens up</p>
+<p>a lot</p>
+<p>of pretty</p>
+<p>cool avenues.</p>
+<p>Again,</p>
+<p>if we can</p>
+<p>get to</p>
+<p>the point</p>
+<p>where we're</p>
+<p>evolving</p>
+<p>colonies</p>
+<p>that are</p>
+<p>producing</p>
+<p>ants</p>
+<p>and can</p>
+<p>see where</p>
+<p>that can</p>
+<p>go.</p>
+<p>So one</p>
+<p>of the</p>
+<p>big issues</p>
+<p>in neural</p>
+<p>architecture</p>
+<p>research</p>
+<p>is the</p>
+<p>whole</p>
+<p>question</p>
+<p>of what</p>
+<p>is an</p>
+<p>optimal</p>
+<p>neural</p>
+<p>network.</p>
+<p>And what</p>
+<p>an optimal</p>
+<p>neural</p>
+<p>network</p>
+<p>is</p>
+<p>could be</p>
+<p>different</p>
+<p>for,</p>
+<p>well,</p>
+<p>will be</p>
+<p>different</p>
+<p>for different</p>
+<p>tasks.</p>
+<p>But not</p>
+<p>only that,</p>
+<p>even if</p>
+<p>it's the</p>
+<p>same data</p>
+<p>set,</p>
+<p>how you're</p>
+<p>using that</p>
+<p>neural network</p>
+<p>could lead</p>
+<p>to a less</p>
+<p>optimal,</p>
+<p>less or more</p>
+<p>optimal neural</p>
+<p>network,</p>
+<p>right?</p>
+<p>Depending on</p>
+<p>what you're</p>
+<p>doing with it,</p>
+<p>maybe you</p>
+<p>need one</p>
+<p>that's more</p>
+<p>energy efficient.</p>
+<p>Maybe you</p>
+<p>don't care</p>
+<p>about energy</p>
+<p>efficiency or</p>
+<p>performance and</p>
+<p>you'll take a</p>
+<p>slower neural</p>
+<p>network,</p>
+<p>but you need</p>
+<p>more accuracy.</p>
+<p>So being able</p>
+<p>to have</p>
+<p>algorithms which</p>
+<p>can automate</p>
+<p>this whole</p>
+<p>process for us</p>
+<p>and tune</p>
+<p>them to what</p>
+<p>we actually want</p>
+<p>to use the</p>
+<p>neural network for</p>
+<p>is really</p>
+<p>important.</p>
+<p>And I</p>
+<p>think,</p>
+<p>one,</p>
+<p>just having</p>
+<p>ant colony</p>
+<p>optimization,</p>
+<p>be able to</p>
+<p>optimize the</p>
+<p>network for a</p>
+<p>problem is</p>
+<p>great.</p>
+<p>But two,</p>
+<p>if we can</p>
+<p>make it such</p>
+<p>that the</p>
+<p>algorithm itself</p>
+<p>is self-optimizing,</p>
+<p>it really can</p>
+<p>streamline this</p>
+<p>whole process</p>
+<p>where right</p>
+<p>now if you're</p>
+<p>doing machine</p>
+<p>learning,</p>
+<p>it can be</p>
+<p>kind of</p>
+<p>miserable.</p>
+<p>You make</p>
+<p>a neural</p>
+<p>network</p>
+<p>architecture,</p>
+<p>you try it</p>
+<p>out, see</p>
+<p>how well it</p>
+<p>does.</p>
+<p>Oh, nope,</p>
+<p>that didn't</p>
+<p>do so well.</p>
+<p>Let me tweak</p>
+<p>a couple</p>
+<p>knobs.</p>
+<p>Automating that</p>
+<p>process.</p>
+<p>My whole</p>
+<p>life as a</p>
+<p>computer scientist</p>
+<p>is about being</p>
+<p>lazy but being</p>
+<p>smart about it.</p>
+<p>So whatever I</p>
+<p>can optimize so</p>
+<p>that I don't</p>
+<p>have to do it</p>
+<p>over and over</p>
+<p>again seems</p>
+<p>like a good</p>
+<p>use of my</p>
+<p>time.</p>
+<p>So I'll be</p>
+<p>smart about</p>
+<p>having to do</p>
+<p>as little as</p>
+<p>possible in the</p>
+<p>future.</p>
+<p>And I guess</p>
+<p>I don't have</p>
+<p>too much to</p>
+<p>add to that.</p>
+<p>I think a</p>
+<p>lot of the</p>
+<p>good discussion</p>
+<p>has happened</p>
+<p>already and</p>
+<p>talked about</p>
+<p>various</p>
+<p>implications and</p>
+<p>ways of</p>
+<p>viewing and</p>
+<p>colony optimization</p>
+<p>from other</p>
+<p>perspectives including</p>
+<p>an active</p>
+<p>inference point</p>
+<p>of view.</p>
+<p>So I guess</p>
+<p>really more</p>
+<p>from a</p>
+<p>closing thought</p>
+<p>on my end</p>
+<p>is that it</p>
+<p>will be</p>
+<p>interesting or</p>
+<p>it is an</p>
+<p>interesting</p>
+<p>direction to</p>
+<p>think about</p>
+<p>like I said</p>
+<p>earlier or</p>
+<p>suggested about</p>
+<p>the adaptation</p>
+<p>of the</p>
+<p>metaphor to</p>
+<p>other systems</p>
+<p>and what are</p>
+<p>you trying to</p>
+<p>model and</p>
+<p>what's your</p>
+<p>goals from a</p>
+<p>scientific and</p>
+<p>philosophical point</p>
+<p>of view?</p>
+<p>What are the</p>
+<p>questions you</p>
+<p>seek to answer?</p>
+<p>And I think it</p>
+<p>might be very</p>
+<p>interesting,</p>
+<p>again, given</p>
+<p>other developments</p>
+<p>and computing</p>
+<p>technology and</p>
+<p>ways in which</p>
+<p>you implement</p>
+<p>the parallelization</p>
+<p>that I think</p>
+<p>is that's what</p>
+<p>attracted me the</p>
+<p>most to a lot</p>
+<p>of these</p>
+<p>meta-heuristic</p>
+<p>algorithms,</p>
+<p>even things</p>
+<p>like particle</p>
+<p>swarm.</p>
+<p>And when I</p>
+<p>worked with</p>
+<p>Travis many</p>
+<p>years ago on</p>
+<p>the exam</p>
+<p>algorithms,</p>
+<p>you saw our</p>
+<p>names on that</p>
+<p>and working</p>
+<p>on that type</p>
+<p>of stuff,</p>
+<p>the part that</p>
+<p>always caught</p>
+<p>my attention</p>
+<p>is, again,</p>
+<p>that ability</p>
+<p>to say I</p>
+<p>can put these</p>
+<p>entities on</p>
+<p>different</p>
+<p>computing</p>
+<p>processing resources</p>
+<p>or devices,</p>
+<p>and then they</p>
+<p>will interact</p>
+<p>and exchange</p>
+<p>their results</p>
+<p>in some way</p>
+<p>to try to</p>
+<p>optimize</p>
+<p>some often</p>
+<p>complex</p>
+<p>multi-objective</p>
+<p>cost function.</p>
+<p>And so I</p>
+<p>think the part</p>
+<p>that we'll see</p>
+<p>or that would</p>
+<p>encourage the</p>
+<p>wider spread</p>
+<p>adoption of even</p>
+<p>like meta-heuristic</p>
+<p>algorithms in</p>
+<p>general, not to</p>
+<p>say that they</p>
+<p>aren't used a lot</p>
+<p>in, for example,</p>
+<p>the engineering</p>
+<p>domains, is,</p>
+<p>again, the</p>
+<p>development of</p>
+<p>parallel computing</p>
+<p>processing systems</p>
+<p>and I think</p>
+<p>exploiting things</p>
+<p>like asynchronous</p>
+<p>computing.</p>
+<p>That was, again,</p>
+<p>another angle</p>
+<p>that caught my</p>
+<p>attention from</p>
+<p>Travis.</p>
+<p>He's done a lot</p>
+<p>of work on</p>
+<p>genetic optimization</p>
+<p>and neuroevolution</p>
+<p>from an</p>
+<p>asynchronous point</p>
+<p>of view and</p>
+<p>how can we</p>
+<p>allocate whatever</p>
+<p>resources are</p>
+<p>available and</p>
+<p>distributing them</p>
+<p>across global</p>
+<p>networks.</p>
+<p>I think that</p>
+<p>might be the</p>
+<p>best shot to</p>
+<p>scaling up,</p>
+<p>let's say,</p>
+<p>with what we</p>
+<p>got right now.</p>
+<p>There might be,</p>
+<p>again, you've</p>
+<p>mentioned, Daniel,</p>
+<p>quantum technology,</p>
+<p>quantum</p>
+<p>computing is</p>
+<p>another</p>
+<p>interesting place</p>
+<p>that sort of</p>
+<p>changes the</p>
+<p>game.</p>
+<p>But barring</p>
+<p>technologies that</p>
+<p>we don't</p>
+<p>necessarily have</p>
+<p>exactly at</p>
+<p>their best at</p>
+<p>this moment,</p>
+<p>how can we</p>
+<p>take advantage</p>
+<p>of citizen</p>
+<p>science or</p>
+<p>distributed</p>
+<p>computing or</p>
+<p>peer-to-peer</p>
+<p>type of</p>
+<p>communication and</p>
+<p>building massive</p>
+<p>active inference</p>
+<p>systems that</p>
+<p>embody the</p>
+<p>multi-agent</p>
+<p>metaphor of</p>
+<p>ant-colony</p>
+<p>optimization or</p>
+<p>other nature</p>
+<p>inspired</p>
+<p>frameworks?</p>
+<p>Can this</p>
+<p>system evolve</p>
+<p>over very</p>
+<p>long spans</p>
+<p>of time?</p>
+<p>Just like</p>
+<p>evolution really</p>
+<p>worked.</p>
+<p>Another piece,</p>
+<p>my final</p>
+<p>comment,</p>
+<p>is that why</p>
+<p>I'm interested</p>
+<p>sometimes in</p>
+<p>evolution,</p>
+<p>is that to</p>
+<p>me, it is</p>
+<p>the inductive</p>
+<p>bias that</p>
+<p>provided us</p>
+<p>with structures</p>
+<p>that allow,</p>
+<p>for example,</p>
+<p>a human agent</p>
+<p>to operate</p>
+<p>already.</p>
+<p>Babies can</p>
+<p>already recognize</p>
+<p>faces.</p>
+<p>We have</p>
+<p>certain</p>
+<p>instinctual</p>
+<p>reactions and</p>
+<p>certain mechanisms</p>
+<p>that evolution</p>
+<p>has endowed us</p>
+<p>with.</p>
+<p>A fascinating</p>
+<p>question is,</p>
+<p>what is the</p>
+<p>interplay of</p>
+<p>the idea of</p>
+<p>simulating an</p>
+<p>artificial form of</p>
+<p>evolution, maybe</p>
+<p>building DNA</p>
+<p>structures or</p>
+<p>very, very</p>
+<p>simplified</p>
+<p>computational</p>
+<p>structures, which</p>
+<p>would answer</p>
+<p>Abdel Rahman's</p>
+<p>concern about,</p>
+<p>well, maybe we</p>
+<p>don't want the</p>
+<p>agents to be too</p>
+<p>smart enough</p>
+<p>themselves because</p>
+<p>I can't really</p>
+<p>simulate that unless</p>
+<p>you give me a</p>
+<p>decade to run</p>
+<p>the simulator.</p>
+<p>But you could</p>
+<p>maybe come up</p>
+<p>with a more</p>
+<p>fundamental primitive</p>
+<p>and then use</p>
+<p>that as a</p>
+<p>starting point for</p>
+<p>your neural</p>
+<p>network.</p>
+<p>Let's say,</p>
+<p>Daniel, you</p>
+<p>want to do</p>
+<p>some task in</p>
+<p>image segmentation</p>
+<p>and you're</p>
+<p>like, okay, but</p>
+<p>what can your</p>
+<p>evolutionary framework</p>
+<p>give me?</p>
+<p>Well, I'll say,</p>
+<p>here, here's a</p>
+<p>template to start</p>
+<p>from.</p>
+<p>This is a</p>
+<p>kernel on which</p>
+<p>you build your</p>
+<p>framework and</p>
+<p>it's like a</p>
+<p>DNA structure.</p>
+<p>And this has</p>
+<p>evolved across</p>
+<p>many, many</p>
+<p>years of</p>
+<p>distributed peer</p>
+<p>to peer</p>
+<p>computing.</p>
+<p>And you can</p>
+<p>imagine building</p>
+<p>this mammoth</p>
+<p>evolving,</p>
+<p>continual learning</p>
+<p>style, you</p>
+<p>know, evolutionary</p>
+<p>algorithm, whether</p>
+<p>it is based on</p>
+<p>genetic algorithms</p>
+<p>or ant colony.</p>
+<p>And you can</p>
+<p>imagine that might</p>
+<p>be an interesting</p>
+<p>way to think</p>
+<p>about it.</p>
+<p>And by the</p>
+<p>way, I am</p>
+<p>spitballing and</p>
+<p>generating an</p>
+<p>idea of like how</p>
+<p>I could envision</p>
+<p>a scalable form</p>
+<p>without inventing</p>
+<p>a new computing</p>
+<p>system that I</p>
+<p>don't know will</p>
+<p>or will not</p>
+<p>exist.</p>
+<p>Because quantum</p>
+<p>has a lot of</p>
+<p>problems still to</p>
+<p>solve too, like</p>
+<p>superconducting</p>
+<p>or super</p>
+<p>temperatures or</p>
+<p>trapping photons,</p>
+<p>as I have</p>
+<p>learned.</p>
+<p>So that might be</p>
+<p>an interesting</p>
+<p>direction.</p>
+<p>I think the</p>
+<p>scaling of this,</p>
+<p>especially from</p>
+<p>the practical</p>
+<p>end, is going</p>
+<p>to be the most</p>
+<p>important.</p>
+<p>We're going to</p>
+<p>need to pull</p>
+<p>together all the</p>
+<p>tools that we</p>
+<p>have, as I</p>
+<p>mentioned before.</p>
+<p>So I'll stop</p>
+<p>there too, because</p>
+<p>I'll end up</p>
+<p>rambling more.</p>
+<p>So hopefully</p>
+<p>that made</p>
+<p>sense.</p>
+<p>Well, this was</p>
+<p>very epic and</p>
+<p>inspiring.</p>
+<p>So good luck</p>
+<p>with the work.</p>
+<p>You're all</p>
+<p>welcome to</p>
+<p>suggest another</p>
+<p>piece that we</p>
+<p>might focus on</p>
+<p>or continue the</p>
+<p>discussion however</p>
+<p>you see fit,</p>
+<p>because it's</p>
+<p>super interesting</p>
+<p>direction.</p>
+<p>So thank you.</p>
+<p>Until next time.</p>
+<p>Bye.</p>
+<p>Thank you so</p>
+<p>much,</p>
+<p>Travis.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Bye.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+</article>
+</body>
+</html>

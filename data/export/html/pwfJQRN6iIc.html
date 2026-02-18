@@ -1,0 +1,4171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream 017.1 What's Wrong with Active Inference and How Lazy Dynamics Is Set to Solve It</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream 017.1 What's Wrong with Active Inference and How Lazy Dynamics Is Set to Solve It</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_017 &middot; Episode 1 &middot; Duration: 1:05:47 &middot; Views: 963</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=pwfJQRN6iIc">https://www.youtube.com/watch?v=pwfJQRN6iIc</a></div>
+<article>
+<p>Hello, welcome everyone.</p>
+<p>It's March 21st, 2025, and we are here with a bunch of the developers of RxInfer and LazyDynamics.</p>
+<p>We will be having a presentation followed by a discussion.</p>
+<p>So, looking forward to everyone's comments here on the panel, and to anyone watching live, looking forward to your questions in the live chat.</p>
+<p>Albert, to you for the presentation, and thanks everybody again for joining.</p>
+<p>Hi, hi everyone. Yeah, thanks Daniel for this introduction.</p>
+<p>Yeah, so for everyone, my name is Albert.</p>
+<p>I'm a CEO of LazyDynamics, which is a spin-out from Eindhoven University of Technology.</p>
+<p>And LazyDynamics essentially builds infrastructure for developing adaptive agents, such as active inference agents.</p>
+<p>And today, I'm pleased to have almost full LazyDynamics team here with me.</p>
+<p>So, yeah, let's get started.</p>
+<p>I must say that actually, yeah, this talk is going to be admittedly provocative, perhaps even a clickbait.</p>
+<p>But, yeah, let's just have some fun here.</p>
+<p>And actually, I hope that many of active inference practitioners can relate to the pain point I'm about to discuss.</p>
+<p>So, yeah, now I kind of expect that, yeah, some people won't like the way we pose the question.</p>
+<p>And, yeah, I'm hoping, I'm actually not going to answer in the way that people might anticipate.</p>
+<p>Because, yes, active inference is a theoretical framework, which is very elegant and very powerful.</p>
+<p>But if you look at this from a practitioner perspective, it leaves much to be desired.</p>
+<p>So, from a framework that claims to be superior to reinforcement learning, that promises to revolutionize AI,</p>
+<p>that's supposed to explain actually everything from bacterial behavior to human consciousness,</p>
+<p>what do we see in practice, right?</p>
+<p>What do people who are getting excited actually see in practice?</p>
+<p>Well, look at this.</p>
+<p>Beautiful theory, groundbreaking equations.</p>
+<p>And yet, this is sort of a typical reaction from a developer.</p>
+<p>So, they're literally like running away.</p>
+<p>And I don't think we can actually blame them for that.</p>
+<p>Because, well, we've somehow managed to take one of the most promising frameworks for intelligent systems</p>
+<p>and make it so complex that even a PhD student would think twice before implementing it.</p>
+<p>So, and I just want to draw sort of a parallel and look at what's happening in the rest of AI.</p>
+<p>Yeah?</p>
+<p>So, five lines of code.</p>
+<p>That's all it takes to access the state-of-the-art transformer models.</p>
+<p>So, if you want to analyze satellite imagery, done.</p>
+<p>Want to create a conversational agent, done.</p>
+<p>Want to synthesize a video or audio, done.</p>
+<p>So, half a page of the unique code.</p>
+<p>But meanwhile, implementing an active inference agent.</p>
+<p>Well, let me just walk you through this.</p>
+<p>So, what it takes.</p>
+<p>First, you read through hundreds of pages of dense mathematical theory.</p>
+<p>Then you spend months on implementing some custom algorithms.</p>
+<p>Then you debug some mysterious convergence issues.</p>
+<p>And after all that work.</p>
+<p>What do we have?</p>
+<p>Well, more often than not, it's going to be a T-Maze example.</p>
+<p>Or like maybe a mountain car.</p>
+<p>Yeah?</p>
+<p>I mean, come on.</p>
+<p>What is this?</p>
+<p>You just made me read dozens of pages of heavy math.</p>
+<p>You can solve me with moving pixels on the screen.</p>
+<p>Right?</p>
+<p>So, this is quite a leap between I am better than reinforcement learning.</p>
+<p>And I can do a T-Maze better than reinforcement learning.</p>
+<p>So, I mean, come on.</p>
+<p>So, we are like in 2025 now.</p>
+<p>So, the rest of AI is solving like really interesting world problems.</p>
+<p>And like having really interesting demos.</p>
+<p>And we are still celebrating when our agents can turn left or right.</p>
+<p>So, and truth to be told.</p>
+<p>I mean, I think my personal experience is that, yeah.</p>
+<p>Like each time I'm getting into this active inference literature.</p>
+<p>It's, to put it mildly, not always very much reproducible.</p>
+<p>Or like half of it is not.</p>
+<p>There is not much to reproduce.</p>
+<p>So, the point here is that this needs to be changed.</p>
+<p>So, and not just for convenience.</p>
+<p>But because this complexity is, I think, actively holding back the entire field.</p>
+<p>We are basically limiting the active inference to a tiny group of theoretical specialists.</p>
+<p>When it should be in the hands of every AI developer.</p>
+<p>And the saddest part, actually, of all this.</p>
+<p>That people who used to be passionate about the theory.</p>
+<p>They just give up on it.</p>
+<p>And we just see it all around.</p>
+<p>Like in the community.</p>
+<p>So, how can we fix that?</p>
+<p>How can we actually make this as accessible as transformers?</p>
+<p>So, for starters, we must recognize what makes active inference agent unique.</p>
+<p>Yeah?</p>
+<p>So, well, according to the theory, it's obviously not the inference mechanics.</p>
+<p>Right?</p>
+<p>Because the inference mechanics is same across all agents.</p>
+<p>It's just free energy minimization.</p>
+<p>So, what's left for us, like these three lines of code, is basically the model and constraints.</p>
+<p>So, this is the only unique part.</p>
+<p>This is the only, like, these unique three lines of code, if you wish, which defines the agent.</p>
+<p>So, it should be only about model definition and constraints.</p>
+<p>And that's exactly what we are trying to do with Ericsson-Fur.</p>
+<p>So, here we develop the framework that we are continuously developing.</p>
+<p>This framework that allows you to provide a model, constraints, and run the inference guided by the free energy minimization.</p>
+<p>And I'll talk about this in the next slide a bit more.</p>
+<p>And what we actually can see is that once you have the framework right, or let's say almost right,</p>
+<p>because it's a development project, you can streamline the development of these agents by orders of magnitude.</p>
+<p>And, seriously, like, when I started my PhD, I spent a few years trying to build an audio counterpart of a teammate's demo,</p>
+<p>so that people can now build in just a few hours.</p>
+<p>So, that's kind of the order of magnitude you should think of.</p>
+<p>And, yeah, just to zoom in a little bit on some of the examples.</p>
+<p>Now, basically, if you want to build a drone that does planning through inference,</p>
+<p>it would just take about 10 lines of code to define the drone model and then, like, run inference to get this nice path planning.</p>
+<p>So, here you see, like, two 3D drone examples.</p>
+<p>One is flying in the rainy day, another one is in the sunny day, and another one is, like, 2D drone,</p>
+<p>which I'm more excited about because it actually fills this reactivity aspect of our framework.</p>
+<p>So, you could see that we are changing the environment and the drone doesn't hold.</p>
+<p>It continues to sort of reinfer its policies and its states in order to reach this goal no matter the environmental changes.</p>
+<p>So, yeah, 10 lines of code.</p>
+<p>So, if you want to, yeah, same applies to locomotion control.</p>
+<p>So, there are two examples, one for robotic arm, another one for this, the name for this robot.</p>
+<p>I forgot about basically this swinging monkey robot, right?</p>
+<p>So, let's phrase it this way.</p>
+<p>So, again, define your model, run inference.</p>
+<p>If you want to have multi-agent navigation in a dynamic environment with collision avoidance and speed constraints,</p>
+<p>that would take you, like, 15 lines of code.</p>
+<p>Not thousands, just 15.</p>
+<p>It's quite a boost, I would say.</p>
+<p>So, same, yeah, another just a few demos from our repository.</p>
+<p>Again, if you want to integrate deep learning into the, into a RxNferi, it's also possible.</p>
+<p>You can learn the dynamics and, like, predict the future sequences all in one go.</p>
+<p>So, it's not two separate function calls.</p>
+<p>You just define it.</p>
+<p>You just call the inference within the same model.</p>
+<p>So, eight, yeah, here's, like, about eight lines of code.</p>
+<p>And, yeah, surely, yeah, how could we avoid mentioning a better version of T-MASIS?</p>
+<p>So, that's something not publicly available, though.</p>
+<p>But that's something we've been working on.</p>
+<p>There's kind of an agent that needs to solve a mini-grid.</p>
+<p>So, there is an agent that needs first to locate the key, then take the key,</p>
+<p>then figure out that he needs to open the door and then go to the exit.</p>
+<p>So, that's something that works.</p>
+<p>This is the only example which is not publicly available yet, but it will be soon.</p>
+<p>So, and, yeah, before I go into how we are doing that, I just want to say also that</p>
+<p>these examples themselves, they're hardly as impressive as reinforcement learning demos</p>
+<p>or, to critique, NPC demos.</p>
+<p>But they're better than, I would say, the stigmatized examples of active inference supremacy.</p>
+<p>So, yeah, I think that it's still ongoing, but it's going pretty fast.</p>
+<p>And, yeah, so how we do it?</p>
+<p>What's our approach?</p>
+<p>So, we do it through essentially four key innovations.</p>
+<p>So, the first one is most important is like free energy minimization.</p>
+<p>It's automated.</p>
+<p>No manual derivations needed for a very large class of models.</p>
+<p>And they're like, they're composable.</p>
+<p>But that's basically why we adhere to factor graphs,</p>
+<p>because a factor graphs is a very convenient underlying model representation,</p>
+<p>which allows us to essentially seamlessly combine different models into bigger models</p>
+<p>or the other way around, decompose bigger models into smaller submodels.</p>
+<p>And another thing, yeah, of course, we adhere to asynchronous data</p>
+<p>such that we can handle and facilitate this real-time adaptation to changing environments.</p>
+<p>And the really key thing here is reactive message passing technology.</p>
+<p>And in our opinion, this is the actual key to successful implementation of functional agents</p>
+<p>or like functional active inference agents.</p>
+<p>And the argument here is that, see, the world, the real world,</p>
+<p>I mean, it doesn't start and stop at the agent's convenience.</p>
+<p>So, the agent must react, adapt, act upon environmental data streams.</p>
+<p>So, if something unexpected happens,</p>
+<p>and the world always brings some unexpected things to you,</p>
+<p>and, yeah, you essentially, you have to adapt.</p>
+<p>So, we must compute our policies.</p>
+<p>We must compute our posteriors, no matter the failure.</p>
+<p>So, that was what you could see with that little drone demo.</p>
+<p>And so, this is what our implementation of...</p>
+<p>I think, so, this is something that, like,</p>
+<p>what the other implementation of active inference aren't getting quite right.</p>
+<p>I think, and actually, yeah, to be fair,</p>
+<p>most of the reinforcement learning libraries adhere also</p>
+<p>to these imperative updates of their policies and so on.</p>
+<p>Nevertheless, I don't want to give the impression</p>
+<p>that the current implementation of reactive message passing works</p>
+<p>as we wish it would.</p>
+<p>It's super fast.</p>
+<p>We are, like, beating, in terms of inference, many other frameworks.</p>
+<p>But we also recognize how it can be improved.</p>
+<p>And the truth to be told, it can be improved.</p>
+<p>We can actually make it faster and better.</p>
+<p>That is something we are working on as well.</p>
+<p>So, what's the state of RxInfer today?</p>
+<p>RxInfer was and will remain the open source library</p>
+<p>that has more than now 10 years of cumulative development time.</p>
+<p>We are about 10 active developers from LaceDynamics and BiasLab.</p>
+<p>BiasLab is the laboratory where we spun out from.</p>
+<p>And, of course, ActiveInference Institute,</p>
+<p>who is helping us with the development of the graphical interface,</p>
+<p>with demos.</p>
+<p>Like, there's really lots of help coming from ActiveInference</p>
+<p>that we appreciate.</p>
+<p>So, we have over 730 stars on GitHub</p>
+<p>across reactive-based packages.</p>
+<p>And more than 300 monthly downloads now.</p>
+<p>I mean, these are not the craziest numbers you could think of.</p>
+<p>But I think here's why these numbers actually matter.</p>
+<p>They show that despite all the barriers,</p>
+<p>despite all the complexity,</p>
+<p>despite having to learn Julia,</p>
+<p>despite having to learn probabilistic programming,</p>
+<p>people are still pushing to use ActiveInference.</p>
+<p>They push to use RxInfer in general.</p>
+<p>And we are seeing this...</p>
+<p>And just try to imagine,</p>
+<p>like, if we are seeing that much interest,</p>
+<p>when it is hard,</p>
+<p>I just want you to imagine</p>
+<p>what would happen when we make it easy.</p>
+<p>And that's kind of exactly what we are building towards.</p>
+<p>So, before RxInfer,</p>
+<p>in the early days of my PhD,</p>
+<p>and I think even prior to that,</p>
+<p>I had to write quite some code,</p>
+<p>and actually do quite some math.</p>
+<p>Now, with Bioslab and ReactiveBase community,</p>
+<p>we push it to the one page of model definition,</p>
+<p>and everything else is automated.</p>
+<p>But at LazyDynamics,</p>
+<p>we also recognize that even that is too hard.</p>
+<p>So, even that is really not going to streamline</p>
+<p>the development of ActiveInferenceAsian,</p>
+<p>because there is a huge Python community,</p>
+<p>and, like, people want to integrate</p>
+<p>our models with their models and so forth.</p>
+<p>So, that's where LazyDynamics came in.</p>
+<p>So, we are actually going to hide the complexity</p>
+<p>even further and wrap the models</p>
+<p>into a nice open IP available for Python, Rust, and so on.</p>
+<p>So, we do recognize that model specification</p>
+<p>is still hard for many users.</p>
+<p>So, in the beginning,</p>
+<p>we will provide models for users and developers.</p>
+<p>We will start simple,</p>
+<p>and then we will make it more and more interesting</p>
+<p>and complex with the vision</p>
+<p>that people can actually be able to submit their models,</p>
+<p>host their models,</p>
+<p>and we will just provide the API to trigger those.</p>
+<p>So, a bit of a teaser.</p>
+<p>It's not available for mass use.</p>
+<p>It's just something we are testing internally.</p>
+<p>So, how that's going to look like?</p>
+<p>Well, so, one would basically have to load the model</p>
+<p>from our pool of RxInfer models,</p>
+<p>and then run inference slash planning,</p>
+<p>take actions, and learn.</p>
+<p>So, we will do it now in the separate API calls for clarity,</p>
+<p>but, I mean, the mechanics in the early hood are the same.</p>
+<p>So, it's just free energy minimization.</p>
+<p>We just realized that, yeah,</p>
+<p>people get a hang of it faster if we just pose it like this.</p>
+<p>But, yeah, it's a work in progress.</p>
+<p>We plan to release this API in early Q2.</p>
+<p>So, it won't be as flexible as RxInfer,</p>
+<p>but it will expose endpoints,</p>
+<p>and we will make it better over time.</p>
+<p>Yeah, and this is the team that has this ambition,</p>
+<p>like this is LazyDynamics team.</p>
+<p>But I must say that there are more people behind this now.</p>
+<p>So, there are more people behind RxInfer development.</p>
+<p>This is just solely the LazyDynamics team.</p>
+<p>Yeah, but there are more developers,</p>
+<p>as I said, outside this LazyDynamics team.</p>
+<p>So, yeah, just, yeah, I think last few bytes for me is that,</p>
+<p>yeah, I think that ActiveInference needs to move finally</p>
+<p>from like this beautiful, beyond beautiful theory</p>
+<p>and into practical applications.</p>
+<p>We are showing that it's possible,</p>
+<p>and the framework is indeed revolutionary,</p>
+<p>and I think that now it's time to make it usable.</p>
+<p>So, yeah, thank you for listening,</p>
+<p>and here I'd like to stop</p>
+<p>and actually invite people for questions.</p>
+<p>Awesome. Thank you.</p>
+<p>If any of the others here just would like to go around,</p>
+<p>say hello if they'd like any first thoughts,</p>
+<p>and meanwhile, anyone in the live chat can write questions.</p>
+<p>Which order do you want to go, Daniel?</p>
+<p>I mean, I can start.</p>
+<p>I think it's fantastic what Albert</p>
+<p>and the team is developing.</p>
+<p>I still believe ActiveInference is the future,</p>
+<p>also to reinforcement learning problems,</p>
+<p>and it's the tool set, user-friendly tools that's lacking.</p>
+<p>So this is an initiative, I think,</p>
+<p>that hopefully will get us closer to, yeah,</p>
+<p>to recognition of ActiveInference</p>
+<p>as the underlying framework for future intelligent agents.</p>
+<p>And, yeah, everybody is invited to contribute,</p>
+<p>to critique, to give feedback.</p>
+<p>So, yeah, we're very open in terms of</p>
+<p>how we should develop towards the future,</p>
+<p>because we don't have all the answers ourselves.</p>
+<p>But, yeah, this is our push, first push,</p>
+<p>to make it as simple as working with Transformers.</p>
+<p>Thank you.</p>
+<p>Dimitri, do you want to add a few words</p>
+<p>as a core architect of Rixenferr?</p>
+<p>Well, I can only add that you were a bit wrong</p>
+<p>saying that it's not publicly available.</p>
+<p>Well, actually, the API is almost publicly available.</p>
+<p>We have released the initial version of it.</p>
+<p>We just didn't advertise it as much,</p>
+<p>and it doesn't really have all the models that we have.</p>
+<p>But we are planning to release the API</p>
+<p>that Albert has mentioned for free for now,</p>
+<p>so everyone can experiment</p>
+<p>and everyone can break it as fast as possible,</p>
+<p>because as soon as we fail,</p>
+<p>we know how to fix it.</p>
+<p>So fail fast approach,</p>
+<p>we will deliver new models,</p>
+<p>we will test it, we will fail,</p>
+<p>we will improve.</p>
+<p>And for this,</p>
+<p>we essentially need more people to try it out,</p>
+<p>because we have our internal use cases,</p>
+<p>we tried out,</p>
+<p>it works on our internal cases,</p>
+<p>but there are many other people</p>
+<p>who also want to try this approach.</p>
+<p>So we will co-develop the model,</p>
+<p>so we will release them for free for now</p>
+<p>for the free API,</p>
+<p>and we'll see how it goes.</p>
+<p>And this is just the tip of the iceberg,</p>
+<p>right?</p>
+<p>So I think the team of Lazio Dynamics,</p>
+<p>we have already had the pleasure to work with the API.</p>
+<p>So a year ago,</p>
+<p>we all didn't think it would be possible,</p>
+<p>but especially with a lot of efforts from Dimitri,</p>
+<p>we're now able to call RxCifer from Python.</p>
+<p>So this should integrate very easily</p>
+<p>with existing reinforcement learning toolboxes out there.</p>
+<p>And I've already had the opportunity to play with it.</p>
+<p>I'm playing with it also before this live stream,</p>
+<p>and I'm really enjoying it so far.</p>
+<p>So basically merging the infrastructure</p>
+<p>that's available in Julia</p>
+<p>with everything that's already available in Python.</p>
+<p>And I think that's just the tip of the iceberg.</p>
+<p>There's a lot more in store coming up real quick.</p>
+<p>Yeah.</p>
+<p>So everyone would want to try it out.</p>
+<p>Also just contact us,</p>
+<p>reach out,</p>
+<p>share contact details,</p>
+<p>whatever we want.</p>
+<p>Because I think we should all adopt this approach.</p>
+<p>Maybe just Bart,</p>
+<p>one follow-up question there.</p>
+<p>Like in integrating through Python calls to RxCifer,</p>
+<p>where do you see that plugging in</p>
+<p>for somebody who wants to use it</p>
+<p>amidst the other machine learning methods</p>
+<p>they're already deploying?</p>
+<p>Like what would that look like?</p>
+<p>How would they conceptualize of their pipeline</p>
+<p>and where these kinds of probabilistic models would fit in?</p>
+<p>I think these probabilistic models themselves</p>
+<p>are very important when you are trying to model a process</p>
+<p>that involves uncertainty</p>
+<p>making these autonomous systems.</p>
+<p>So in those regards,</p>
+<p>I think that's where current machine learning framers often lack</p>
+<p>is that usually there's this black box neural network.</p>
+<p>I think personally that having a probabilistic take on specific aspects,</p>
+<p>being just in the latent space of a neural network, right?</p>
+<p>I think that could benefit a lot of enterprises</p>
+<p>and a lot of products,</p>
+<p>making them more reliable and robust.</p>
+<p>And because most of these products have like</p>
+<p>some backend,</p>
+<p>some machine learning models already in Python,</p>
+<p>I think that would be amazing</p>
+<p>to integrate RxCifer from Julia</p>
+<p>into their existing infrastructure.</p>
+<p>Yeah, just on top of that,</p>
+<p>there is an opportunity that we,</p>
+<p>well, not the opportunity,</p>
+<p>there are a few demos people are trying out</p>
+<p>is basically to connect their LLM-based agents</p>
+<p>to connect them to the backend of RxCifer.</p>
+<p>That's also something feasible.</p>
+<p>And apart from it,</p>
+<p>so there are many problems indeed</p>
+<p>that can be tackled</p>
+<p>with probabilistic programming languages, right?</p>
+<p>Like you can,</p>
+<p>there are many at the table,</p>
+<p>like IMC and NumPyro.</p>
+<p>And yeah, people use them as components</p>
+<p>into their bigger like machine learning pipelines.</p>
+<p>And here the,</p>
+<p>well, now you basically can,</p>
+<p>can do it with RxCifer,</p>
+<p>just basically without leaving</p>
+<p>your Python environment,</p>
+<p>you can call RxCifer</p>
+<p>to provide you with some uncertainty estimates</p>
+<p>and yeah, confidence over the answers</p>
+<p>for other of parts</p>
+<p>of your machine learning pipelines.</p>
+<p>You can also add maybe here</p>
+<p>a little bit to expand</p>
+<p>how we can integrate with LLMs</p>
+<p>because we can imagine that LLM</p>
+<p>is a sort of a,</p>
+<p>is a source of noisy data.</p>
+<p>For example,</p>
+<p>you can ask questions to LLM</p>
+<p>to give some numerical answers,</p>
+<p>but you should not really trust it.</p>
+<p>So you may,</p>
+<p>you may think of it</p>
+<p>as the noisy observation</p>
+<p>of a real data.</p>
+<p>So,</p>
+<p>and you can create a model</p>
+<p>that takes into account</p>
+<p>and basically treat this</p>
+<p>as your observations.</p>
+<p>And then the underlying</p>
+<p>probabilistic model</p>
+<p>will infer the real parameters</p>
+<p>of the process.</p>
+<p>So I think,</p>
+<p>yeah,</p>
+<p>RxCifer can be integrated</p>
+<p>very naturally</p>
+<p>in the existing pipeline.</p>
+<p>So it shouldn't really be,</p>
+<p>or it's not necessary</p>
+<p>to have just RxCifer</p>
+<p>in your pipeline.</p>
+<p>And it can be integrated</p>
+<p>with like other data collection libraries</p>
+<p>or the existing machine learning libraries.</p>
+<p>So,</p>
+<p>yeah,</p>
+<p>I think,</p>
+<p>but</p>
+<p>it,</p>
+<p>it excels</p>
+<p>when you really need</p>
+<p>to create a plan</p>
+<p>given a noisy set of observation</p>
+<p>and given the model</p>
+<p>of the process.</p>
+<p>Okay.</p>
+<p>Cool.</p>
+<p>Ismail,</p>
+<p>if you'd like to add anything</p>
+<p>and then</p>
+<p>otherwise,</p>
+<p>maybe to Frasier</p>
+<p>and then we'll go to some</p>
+<p>pre-written questions</p>
+<p>in the live chat.</p>
+<p>Yeah,</p>
+<p>sure.</p>
+<p>I'd like a couple</p>
+<p>of things to say.</p>
+<p>First of all,</p>
+<p>the new</p>
+<p>RxCifer server,</p>
+<p>I think,</p>
+<p>will add</p>
+<p>extraordinary capabilities</p>
+<p>for both Python developers</p>
+<p>and for Julia developers</p>
+<p>that are</p>
+<p>struggling</p>
+<p>find the</p>
+<p>platform</p>
+<p>to develop</p>
+<p>agents</p>
+<p>that are not</p>
+<p>hallucinating.</p>
+<p>Yeah,</p>
+<p>so for that,</p>
+<p>big,</p>
+<p>many thanks to Dimitri</p>
+<p>for</p>
+<p>realizing this.</p>
+<p>And,</p>
+<p>yeah,</p>
+<p>I would like to invite</p>
+<p>everyone</p>
+<p>who is</p>
+<p>keen on learning</p>
+<p>about machine learning</p>
+<p>and developing</p>
+<p>agents</p>
+<p>or developing</p>
+<p>models</p>
+<p>for</p>
+<p>whatever task</p>
+<p>they have in mind.</p>
+<p>to try out</p>
+<p>RxCifer</p>
+<p>and</p>
+<p>engage with us</p>
+<p>their problems</p>
+<p>and</p>
+<p>their experiences,</p>
+<p>whether it's</p>
+<p>negative</p>
+<p>or negative.</p>
+<p>That will be a very valuable</p>
+<p>formation for us.</p>
+<p>And that's</p>
+<p>mostly it.</p>
+<p>something.</p>
+<p>If I can add,</p>
+<p>I see a little bit</p>
+<p>like a big focus</p>
+<p>on Python,</p>
+<p>but Albert didn't really</p>
+<p>focus on that much.</p>
+<p>But</p>
+<p>the way we</p>
+<p>created RxCifer</p>
+<p>server</p>
+<p>is with the</p>
+<p>OpenAPI specification</p>
+<p>that allows</p>
+<p>to use the same</p>
+<p>API from</p>
+<p>any language</p>
+<p>that supports</p>
+<p>OpenAPI,</p>
+<p>which includes</p>
+<p>basically all languages</p>
+<p>that exist,</p>
+<p>including Julia.</p>
+<p>So it is possible</p>
+<p>to use Julia</p>
+<p>for RxCifer</p>
+<p>server</p>
+<p>or Python</p>
+<p>or JavaScript</p>
+<p>or Rust</p>
+<p>or even C.</p>
+<p>And if I'm not mistaken,</p>
+<p>even microcontrollers,</p>
+<p>they do have</p>
+<p>some sort of</p>
+<p>a layer</p>
+<p>between this</p>
+<p>OpenAPI</p>
+<p>specification.</p>
+<p>So it really opens doors</p>
+<p>not just for Python</p>
+<p>developers,</p>
+<p>but</p>
+<p>also from the browser</p>
+<p>we can now use RxCifer</p>
+<p>because JavaScript</p>
+<p>is also supported.</p>
+<p>So it really opens doors</p>
+<p>like</p>
+<p>for experimentation</p>
+<p>in many fields.</p>
+<p>Awesome.</p>
+<p>Brazier,</p>
+<p>you prepared</p>
+<p>some excellent</p>
+<p>comments.</p>
+<p>So</p>
+<p>however you'd like</p>
+<p>to continue,</p>
+<p>go for it.</p>
+<p>Cool.</p>
+<p>Thank you.</p>
+<p>I should just</p>
+<p>clarify,</p>
+<p>I'm not a developer</p>
+<p>on RxCifer.</p>
+<p>I'm an open source</p>
+<p>contributor</p>
+<p>and I'm a PhD student</p>
+<p>at Glasgow,</p>
+<p>but I'm not part</p>
+<p>of the core team.</p>
+<p>So I have,</p>
+<p>I think, Daniel,</p>
+<p>what I'll do</p>
+<p>is I'll condense</p>
+<p>those questions</p>
+<p>I had down into two,</p>
+<p>hopefully just to save</p>
+<p>a bit of time.</p>
+<p>The first question</p>
+<p>is about active inference</p>
+<p>more generally</p>
+<p>because this talk was,</p>
+<p>well, thank you.</p>
+<p>First of all,</p>
+<p>thank you for the talk.</p>
+<p>It was very enlightening.</p>
+<p>It was excellent stuff.</p>
+<p>Thank you, Albert.</p>
+<p>But about active inference,</p>
+<p>the problems</p>
+<p>with active inference</p>
+<p>and how RxCifer</p>
+<p>is kind of addressed</p>
+<p>to solve them.</p>
+<p>It seems to my mind</p>
+<p>basically that we have issues</p>
+<p>with real-time inference.</p>
+<p>We have issues</p>
+<p>with robust inference</p>
+<p>and scalable inference</p>
+<p>and then even beyond</p>
+<p>that scaling,</p>
+<p>say,</p>
+<p>like the generative model</p>
+<p>itself to be able</p>
+<p>to take care</p>
+<p>of more sophisticated</p>
+<p>inference queries.</p>
+<p>Those kind of three things</p>
+<p>seem to me</p>
+<p>to be the current issues</p>
+<p>with active inference</p>
+<p>and making it real-time,</p>
+<p>robust,</p>
+<p>and reliable.</p>
+<p>I mean,</p>
+<p>RxCifer has effectively</p>
+<p>been kind of the best</p>
+<p>tool in the game</p>
+<p>for addressing those concerns</p>
+<p>because of its very nature.</p>
+<p>But can anyone speak</p>
+<p>to, let's say,</p>
+<p>perhaps how continuing</p>
+<p>developments of RxCifer</p>
+<p>are going to assist</p>
+<p>in those three kind of domains?</p>
+<p>And I have a follow-up question</p>
+<p>about RxCifer server.</p>
+<p>So I know it's very broad,</p>
+<p>but alas,</p>
+<p>I had to ask it.</p>
+<p>Dimitri,</p>
+<p>do you want to answer?</p>
+<p>Yeah, I can answer.</p>
+<p>It's a great question.</p>
+<p>So right after RxCifer server,</p>
+<p>what we plan,</p>
+<p>we want to change</p>
+<p>and refactor the core</p>
+<p>of RxCifer</p>
+<p>to make the points</p>
+<p>that you mentioned</p>
+<p>even easier to do,</p>
+<p>even easier to scale</p>
+<p>and faster</p>
+<p>to run inference,</p>
+<p>but also</p>
+<p>to make it easier</p>
+<p>to debug</p>
+<p>and to contribute</p>
+<p>for other people</p>
+<p>because also</p>
+<p>with the experience</p>
+<p>with you,</p>
+<p>we noticed</p>
+<p>that it's quite difficult</p>
+<p>to contribute</p>
+<p>because the,</p>
+<p>first of all,</p>
+<p>it's written in Julia,</p>
+<p>so not all of people</p>
+<p>know Julia,</p>
+<p>but also because</p>
+<p>it has started</p>
+<p>as a PhD project</p>
+<p>and certain parts</p>
+<p>weren't really</p>
+<p>designed very well.</p>
+<p>So we will take</p>
+<p>a step back</p>
+<p>and we'll,</p>
+<p>given all the knowledge</p>
+<p>that we have now</p>
+<p>and given all the feedback</p>
+<p>and given all the goals</p>
+<p>that we and other people</p>
+<p>want to achieve,</p>
+<p>we'll redesign</p>
+<p>the entire core</p>
+<p>of RxFMP</p>
+<p>and this potentially</p>
+<p>will open the doors</p>
+<p>also to run</p>
+<p>the inference</p>
+<p>on GPUs,</p>
+<p>for example.</p>
+<p>So that's</p>
+<p>how transformers</p>
+<p>basically scaled</p>
+<p>themselves, right?</p>
+<p>They started</p>
+<p>to use GPUs at all.</p>
+<p>at large scale.</p>
+<p>So we have</p>
+<p>big plans</p>
+<p>to improve</p>
+<p>the scalability</p>
+<p>even further</p>
+<p>and make the inference</p>
+<p>even faster</p>
+<p>and easier</p>
+<p>to maintain</p>
+<p>and debug</p>
+<p>and contribute</p>
+<p>for other people.</p>
+<p>Excellent.</p>
+<p>That sounds like</p>
+<p>a small,</p>
+<p>you know,</p>
+<p>problem.</p>
+<p>Did I cut someone else</p>
+<p>off there?</p>
+<p>I sensed another voice.</p>
+<p>Yeah,</p>
+<p>well,</p>
+<p>that was me.</p>
+<p>I mean,</p>
+<p>you didn't really</p>
+<p>cut me off.</p>
+<p>But yeah,</p>
+<p>perhaps I can add</p>
+<p>to that a bit.</p>
+<p>I'm more of a big picture</p>
+<p>person.</p>
+<p>And so maybe also</p>
+<p>for people</p>
+<p>that are just wondering</p>
+<p>about active inference</p>
+<p>and are still</p>
+<p>in other areas</p>
+<p>of machine learning</p>
+<p>like reinforcement learning</p>
+<p>or deep learning,</p>
+<p>why would they be</p>
+<p>interested?</p>
+<p>So I think</p>
+<p>most people agree</p>
+<p>that the Bayesian</p>
+<p>inference</p>
+<p>is a correct framework</p>
+<p>for dealing</p>
+<p>with uncertainty.</p>
+<p>But the big thing</p>
+<p>is the computational</p>
+<p>cost</p>
+<p>and that limits</p>
+<p>us in scaling</p>
+<p>this all up.</p>
+<p>Right?</p>
+<p>So people</p>
+<p>have mentioned</p>
+<p>ideas like,</p>
+<p>well,</p>
+<p>maybe we should</p>
+<p>do planning</p>
+<p>as inference.</p>
+<p>This is possible</p>
+<p>with ARX and FERR.</p>
+<p>And we're working</p>
+<p>on stuff</p>
+<p>that we will</p>
+<p>probably reveal</p>
+<p>also in the next</p>
+<p>half year</p>
+<p>where I think</p>
+<p>it will be a nice</p>
+<p>surprise</p>
+<p>in how to do</p>
+<p>planning as inference.</p>
+<p>And then there</p>
+<p>is an even</p>
+<p>more broader</p>
+<p>idea</p>
+<p>that this idea</p>
+<p>that you shouldn't</p>
+<p>do Bayesian inference</p>
+<p>because of the</p>
+<p>computational cost</p>
+<p>which limits</p>
+<p>the scaling.</p>
+<p>I think it's</p>
+<p>almost the opposite</p>
+<p>around.</p>
+<p>By doing</p>
+<p>Bayesian inference,</p>
+<p>you have access</p>
+<p>to where the</p>
+<p>uncertainties are.</p>
+<p>and therefore</p>
+<p>you also</p>
+<p>have access</p>
+<p>to when you</p>
+<p>just should</p>
+<p>stop computing</p>
+<p>because you</p>
+<p>shouldn't compute</p>
+<p>more accurately</p>
+<p>than is needed.</p>
+<p>When your data</p>
+<p>is,</p>
+<p>when you have</p>
+<p>a large variance</p>
+<p>about your data</p>
+<p>or your variables,</p>
+<p>you don't need</p>
+<p>very accurate</p>
+<p>computing.</p>
+<p>So I think</p>
+<p>once we're done</p>
+<p>with Bayesian inference,</p>
+<p>I mean,</p>
+<p>not just lazy</p>
+<p>dynamics,</p>
+<p>but the whole</p>
+<p>community,</p>
+<p>it's going to</p>
+<p>turn out</p>
+<p>that it is</p>
+<p>not,</p>
+<p>that it's going</p>
+<p>to be because</p>
+<p>of doing it,</p>
+<p>doing Bayesian</p>
+<p>inference,</p>
+<p>that we can</p>
+<p>do actually</p>
+<p>scale up</p>
+<p>intelligent agents</p>
+<p>to very large</p>
+<p>problems.</p>
+<p>So Bayesian inference</p>
+<p>will not be</p>
+<p>the hindrance,</p>
+<p>it will be a</p>
+<p>catalyst for</p>
+<p>scaling up.</p>
+<p>So that's</p>
+<p>the,</p>
+<p>I think,</p>
+<p>why people</p>
+<p>should get</p>
+<p>interested</p>
+<p>in active</p>
+<p>inference,</p>
+<p>even if they're</p>
+<p>still in</p>
+<p>just researching</p>
+<p>at this</p>
+<p>moment.</p>
+<p>How is it?</p>
+<p>Excellent.</p>
+<p>Thank you,</p>
+<p>Bart.</p>
+<p>I'm very,</p>
+<p>very,</p>
+<p>very keen</p>
+<p>on the</p>
+<p>entire</p>
+<p>methodology</p>
+<p>here.</p>
+<p>Just my</p>
+<p>last question</p>
+<p>and then</p>
+<p>I'll open</p>
+<p>it up</p>
+<p>to everybody</p>
+<p>else.</p>
+<p>So about</p>
+<p>RxInfer</p>
+<p>server,</p>
+<p>I myself,</p>
+<p>I played</p>
+<p>around creating</p>
+<p>a few active</p>
+<p>inference agents,</p>
+<p>bona fide</p>
+<p>agents with</p>
+<p>RxInfer,</p>
+<p>which is</p>
+<p>currently</p>
+<p>difficult</p>
+<p>because RxInfer,</p>
+<p>you know,</p>
+<p>it specifies</p>
+<p>the inference</p>
+<p>procedure and</p>
+<p>automates</p>
+<p>the way</p>
+<p>that that</p>
+<p>happens.</p>
+<p>The actual</p>
+<p>design of an</p>
+<p>agent is</p>
+<p>kind of</p>
+<p>another thing.</p>
+<p>That's,</p>
+<p>you know,</p>
+<p>the inference</p>
+<p>procedure is</p>
+<p>one part,</p>
+<p>but at the</p>
+<p>moment,</p>
+<p>it has,</p>
+<p>I and</p>
+<p>anybody else</p>
+<p>making an</p>
+<p>agent has</p>
+<p>to do</p>
+<p>everything</p>
+<p>kind of</p>
+<p>ad hoc.</p>
+<p>We have</p>
+<p>to specify,</p>
+<p>well,</p>
+<p>if an</p>
+<p>action happens</p>
+<p>here,</p>
+<p>that affects</p>
+<p>the environment</p>
+<p>in some</p>
+<p>specific way.</p>
+<p>It's all</p>
+<p>very ad hoc</p>
+<p>and so on.</p>
+<p>So my</p>
+<p>understanding</p>
+<p>is that</p>
+<p>the agent</p>
+<p>API,</p>
+<p>as part</p>
+<p>of RxInfer</p>
+<p>server,</p>
+<p>is going</p>
+<p>to perhaps</p>
+<p>ameliorate</p>
+<p>those issues</p>
+<p>or standardize</p>
+<p>the way</p>
+<p>in which</p>
+<p>we talk</p>
+<p>about how</p>
+<p>an action</p>
+<p>influences</p>
+<p>the environment</p>
+<p>and vice</p>
+<p>versa.</p>
+<p>Is that,</p>
+<p>let's say,</p>
+<p>a big focus</p>
+<p>of the API</p>
+<p>or is that</p>
+<p>just now</p>
+<p>a part</p>
+<p>of the API</p>
+<p>in the sense</p>
+<p>that we can</p>
+<p>now do</p>
+<p>much broader</p>
+<p>things like</p>
+<p>have endpoints</p>
+<p>in Python</p>
+<p>and so on.</p>
+<p>So it's kind</p>
+<p>of a larger</p>
+<p>concern than</p>
+<p>just this API.</p>
+<p>So any</p>
+<p>comments?</p>
+<p>Yeah,</p>
+<p>sure.</p>
+<p>I think</p>
+<p>Dmitry would</p>
+<p>definitely add</p>
+<p>upon that.</p>
+<p>Just from</p>
+<p>my side,</p>
+<p>there is</p>
+<p>actually</p>
+<p>ongoing</p>
+<p>discussion</p>
+<p>that I</p>
+<p>forgot</p>
+<p>to mention</p>
+<p>in our</p>
+<p>GitHub</p>
+<p>repository</p>
+<p>about</p>
+<p>the</p>
+<p>standardizing</p>
+<p>API.</p>
+<p>I think</p>
+<p>one of</p>
+<p>the things</p>
+<p>which we</p>
+<p>are also</p>
+<p>striving</p>
+<p>with our</p>
+<p>RxInfer</p>
+<p>server</p>
+<p>and generally</p>
+<p>with</p>
+<p>streamlining</p>
+<p>this</p>
+<p>development</p>
+<p>of</p>
+<p>agents</p>
+<p>is</p>
+<p>actually</p>
+<p>to</p>
+<p>standardize</p>
+<p>how</p>
+<p>the API</p>
+<p>should</p>
+<p>look</p>
+<p>like.</p>
+<p>That</p>
+<p>there</p>
+<p>should</p>
+<p>be</p>
+<p>a</p>
+<p>certain</p>
+<p>function</p>
+<p>that</p>
+<p>should</p>
+<p>be</p>
+<p>triggered</p>
+<p>in</p>
+<p>a</p>
+<p>reactive</p>
+<p>way</p>
+<p>or</p>
+<p>in</p>
+<p>the</p>
+<p>loop</p>
+<p>if</p>
+<p>you</p>
+<p>prefer</p>
+<p>imperative</p>
+<p>style</p>
+<p>coding.</p>
+<p>But</p>
+<p>there</p>
+<p>should</p>
+<p>be</p>
+<p>really</p>
+<p>sort</p>
+<p>of</p>
+<p>we</p>
+<p>want</p>
+<p>to</p>
+<p>impose</p>
+<p>one</p>
+<p>way</p>
+<p>or</p>
+<p>few</p>
+<p>ways</p>
+<p>to</p>
+<p>actually</p>
+<p>doing</p>
+<p>that.</p>
+<p>So</p>
+<p>yeah,</p>
+<p>another</p>
+<p>thing</p>
+<p>is</p>
+<p>just</p>
+<p>want</p>
+<p>to</p>
+<p>welcome</p>
+<p>everyone</p>
+<p>to</p>
+<p>this</p>
+<p>discussion</p>
+<p>on</p>
+<p>RxInfer</p>
+<p>repository</p>
+<p>where</p>
+<p>you,</p>
+<p>Fraser</p>
+<p>and</p>
+<p>other</p>
+<p>people</p>
+<p>from</p>
+<p>Active</p>
+<p>Inference</p>
+<p>Institute</p>
+<p>also</p>
+<p>participated.</p>
+<p>But</p>
+<p>the</p>
+<p>goal</p>
+<p>of</p>
+<p>course</p>
+<p>is</p>
+<p>the</p>
+<p>end</p>
+<p>goal</p>
+<p>is</p>
+<p>to</p>
+<p>bring</p>
+<p>in</p>
+<p>the</p>
+<p>key</p>
+<p>components</p>
+<p>which</p>
+<p>are</p>
+<p>needed</p>
+<p>to</p>
+<p>run</p>
+<p>agents</p>
+<p>in</p>
+<p>the</p>
+<p>way</p>
+<p>we</p>
+<p>run</p>
+<p>transformers</p>
+<p>I mean</p>
+<p>low</p>
+<p>code.</p>
+<p>Okay,</p>
+<p>I see.</p>
+<p>Thank you.</p>
+<p>Well,</p>
+<p>Daniel,</p>
+<p>I'll hand it back</p>
+<p>to you.</p>
+<p>Maybe we can</p>
+<p>look at some</p>
+<p>questions in</p>
+<p>the live</p>
+<p>chat.</p>
+<p>I'd just</p>
+<p>like to</p>
+<p>say thank</p>
+<p>you very</p>
+<p>much.</p>
+<p>This</p>
+<p>is an</p>
+<p>incredible</p>
+<p>project.</p>
+<p>I'm</p>
+<p>very</p>
+<p>enthusiastic</p>
+<p>about</p>
+<p>the</p>
+<p>future.</p>
+<p>Thank</p>
+<p>you.</p>
+<p>Awesome.</p>
+<p>I'll read</p>
+<p>some</p>
+<p>questions</p>
+<p>in the</p>
+<p>live</p>
+<p>chat</p>
+<p>and</p>
+<p>then</p>
+<p>we'll</p>
+<p>see</p>
+<p>if</p>
+<p>we</p>
+<p>have</p>
+<p>time</p>
+<p>for</p>
+<p>some</p>
+<p>of</p>
+<p>the</p>
+<p>more</p>
+<p>pre-discussed</p>
+<p>questions</p>
+<p>or any</p>
+<p>other</p>
+<p>questions</p>
+<p>popping</p>
+<p>up.</p>
+<p>Okay,</p>
+<p>so two</p>
+<p>questions</p>
+<p>on</p>
+<p>computational</p>
+<p>resources.</p>
+<p>Indian</p>
+<p>Goat</p>
+<p>wrote,</p>
+<p>can you</p>
+<p>scale</p>
+<p>to</p>
+<p>large</p>
+<p>data</p>
+<p>sets?</p>
+<p>And</p>
+<p>Jeff</p>
+<p>Beck</p>
+<p>wrote,</p>
+<p>I</p>
+<p>would</p>
+<p>have</p>
+<p>thought</p>
+<p>that</p>
+<p>memory</p>
+<p>costs</p>
+<p>would</p>
+<p>have</p>
+<p>been</p>
+<p>the</p>
+<p>!</p>
+<p>bottleneck</p>
+<p>for</p>
+<p>scaling</p>
+<p>care</p>
+<p>to</p>
+<p>comment?</p>
+<p>And</p>
+<p>so to</p>
+<p>that</p>
+<p>I'll</p>
+<p>just</p>
+<p>sort</p>
+<p>of</p>
+<p>also</p>
+<p>add</p>
+<p>a little</p>
+<p>bit</p>
+<p>of</p>
+<p>my</p>
+<p>own</p>
+<p>computational</p>
+<p>resourcing.</p>
+<p>Just</p>
+<p>how do</p>
+<p>you find</p>
+<p>that</p>
+<p>storage,</p>
+<p>memory,</p>
+<p>and CPU</p>
+<p>cost</p>
+<p>scale?</p>
+<p>Is it</p>
+<p>possible</p>
+<p>to do</p>
+<p>static</p>
+<p>analysis?</p>
+<p>How do</p>
+<p>you find</p>
+<p>that</p>
+<p>resourcing</p>
+<p>scales</p>
+<p>in</p>
+<p>comparison</p>
+<p>with</p>
+<p>alternative</p>
+<p>methods?</p>
+<p>Yeah,</p>
+<p>I can</p>
+<p>start</p>
+<p>and</p>
+<p>maybe</p>
+<p>you</p>
+<p>can</p>
+<p>enroll</p>
+<p>a bit</p>
+<p>on</p>
+<p>this</p>
+<p>VQV8</p>
+<p>for</p>
+<p>example</p>
+<p>how</p>
+<p>can</p>
+<p>we</p>
+<p>scale</p>
+<p>further</p>
+<p>but</p>
+<p>when</p>
+<p>we</p>
+<p>talk</p>
+<p>about</p>
+<p>scaling</p>
+<p>we</p>
+<p>can</p>
+<p>look</p>
+<p>at</p>
+<p>it</p>
+<p>from</p>
+<p>two</p>
+<p>perspectives</p>
+<p>the</p>
+<p>first</p>
+<p>is</p>
+<p>the</p>
+<p>amount</p>
+<p>of</p>
+<p>variables</p>
+<p>we</p>
+<p>have</p>
+<p>in</p>
+<p>the</p>
+<p>model</p>
+<p>right</p>
+<p>so</p>
+<p>we</p>
+<p>have</p>
+<p>a</p>
+<p>million</p>
+<p>of</p>
+<p>variables</p>
+<p>but</p>
+<p>all</p>
+<p>of</p>
+<p>them</p>
+<p>would</p>
+<p>say</p>
+<p>univariate</p>
+<p>variables</p>
+<p>so</p>
+<p>for</p>
+<p>this</p>
+<p>kind</p>
+<p>of</p>
+<p>scaling</p>
+<p>Ericsson</p>
+<p>already</p>
+<p>does</p>
+<p>a</p>
+<p>pretty</p>
+<p>good</p>
+<p>job</p>
+<p>because</p>
+<p>we</p>
+<p>use</p>
+<p>factor</p>
+<p>graphs</p>
+<p>it's</p>
+<p>only</p>
+<p>limited</p>
+<p>by</p>
+<p>memory</p>
+<p>in</p>
+<p>your</p>
+<p>computer</p>
+<p>and</p>
+<p>I</p>
+<p>personally</p>
+<p>I</p>
+<p>run</p>
+<p>inference</p>
+<p>for</p>
+<p>2 million</p>
+<p>univariate</p>
+<p>variables</p>
+<p>and</p>
+<p>it</p>
+<p>has</p>
+<p>been</p>
+<p>done</p>
+<p>under</p>
+<p>like</p>
+<p>5</p>
+<p>minutes</p>
+<p>or so</p>
+<p>it</p>
+<p>was</p>
+<p>pretty</p>
+<p>easy</p>
+<p>but</p>
+<p>another</p>
+<p>aspect</p>
+<p>of</p>
+<p>scalability</p>
+<p>is</p>
+<p>indeed</p>
+<p>the</p>
+<p>dimension</p>
+<p>of</p>
+<p>each</p>
+<p>individual</p>
+<p>variable</p>
+<p>so</p>
+<p>for</p>
+<p>example</p>
+<p>all</p>
+<p>the</p>
+<p>multivariate</p>
+<p>and</p>
+<p>this</p>
+<p>is</p>
+<p>indeed</p>
+<p>this</p>
+<p>is</p>
+<p>still</p>
+<p>a</p>
+<p>hard</p>
+<p>problem</p>
+<p>so</p>
+<p>if</p>
+<p>you</p>
+<p>have</p>
+<p>a</p>
+<p>very</p>
+<p>large</p>
+<p>state</p>
+<p>vector</p>
+<p>then</p>
+<p>indeed</p>
+<p>you</p>
+<p>need</p>
+<p>to</p>
+<p>propagate</p>
+<p>their</p>
+<p>covariances</p>
+<p>if</p>
+<p>they</p>
+<p>are</p>
+<p>Gaussian</p>
+<p>and</p>
+<p>this</p>
+<p>might</p>
+<p>be</p>
+<p>tough</p>
+<p>for</p>
+<p>which</p>
+<p>now</p>
+<p>we</p>
+<p>prefer</p>
+<p>to</p>
+<p>use</p>
+<p>VQVA</p>
+<p>basically</p>
+<p>we</p>
+<p>compress</p>
+<p>the</p>
+<p>state</p>
+<p>into</p>
+<p>a</p>
+<p>smaller</p>
+<p>dimensional</p>
+<p>state</p>
+<p>Albert</p>
+<p>can</p>
+<p>talk</p>
+<p>a</p>
+<p>little</p>
+<p>bit</p>
+<p>more</p>
+<p>about</p>
+<p>that</p>
+<p>or</p>
+<p>for</p>
+<p>example</p>
+<p>we</p>
+<p>use</p>
+<p>techniques</p>
+<p>similar</p>
+<p>to</p>
+<p>mean</p>
+<p>field</p>
+<p>that</p>
+<p>when</p>
+<p>you</p>
+<p>approximate</p>
+<p>the</p>
+<p>covariance</p>
+<p>matrix</p>
+<p>with</p>
+<p>diagonal</p>
+<p>matrix</p>
+<p>which</p>
+<p>also</p>
+<p>reduces</p>
+<p>the</p>
+<p>memory</p>
+<p>requirements</p>
+<p>there</p>
+<p>are</p>
+<p>many</p>
+<p>techniques</p>
+<p>that</p>
+<p>we</p>
+<p>can</p>
+<p>use</p>
+<p>the</p>
+<p>thing</p>
+<p>is</p>
+<p>that</p>
+<p>RxInfer</p>
+<p>doesn't</p>
+<p>really</p>
+<p>choose</p>
+<p>it</p>
+<p>for</p>
+<p>you</p>
+<p>it's</p>
+<p>more</p>
+<p>like</p>
+<p>a</p>
+<p>playground</p>
+<p>for</p>
+<p>a</p>
+<p>user</p>
+<p>for</p>
+<p>now</p>
+<p>where</p>
+<p>they</p>
+<p>can</p>
+<p>choose</p>
+<p>different</p>
+<p>approximation</p>
+<p>methods</p>
+<p>or</p>
+<p>different</p>
+<p>techniques</p>
+<p>but</p>
+<p>RxInfer</p>
+<p>doesn't</p>
+<p>restrict</p>
+<p>you</p>
+<p>here</p>
+<p>you</p>
+<p>can</p>
+<p>even</p>
+<p>try</p>
+<p>your</p>
+<p>own</p>
+<p>approximation</p>
+<p>techniques</p>
+<p>but</p>
+<p>that</p>
+<p>would</p>
+<p>require</p>
+<p>you</p>
+<p>to</p>
+<p>write</p>
+<p>your</p>
+<p>own</p>
+<p>message</p>
+<p>passing</p>
+<p>rules</p>
+<p>which</p>
+<p>we</p>
+<p>again</p>
+<p>we</p>
+<p>noticed</p>
+<p>that</p>
+<p>many</p>
+<p>users</p>
+<p>they</p>
+<p>cannot</p>
+<p>do</p>
+<p>that</p>
+<p>because</p>
+<p>it's</p>
+<p>hard</p>
+<p>it's</p>
+<p>hard</p>
+<p>and</p>
+<p>it</p>
+<p>requires</p>
+<p>a lot</p>
+<p>of</p>
+<p>knowledge</p>
+<p>on</p>
+<p>how</p>
+<p>to</p>
+<p>do</p>
+<p>that</p>
+<p>yeah</p>
+<p>just</p>
+<p>to</p>
+<p>add</p>
+<p>on</p>
+<p>that</p>
+<p>about</p>
+<p>this</p>
+<p>what</p>
+<p>was</p>
+<p>the</p>
+<p>question</p>
+<p>from</p>
+<p>Jeff</p>
+<p>was</p>
+<p>like</p>
+<p>about</p>
+<p>this</p>
+<p>memory</p>
+<p>cost</p>
+<p>yeah</p>
+<p>so</p>
+<p>I'm</p>
+<p>going</p>
+<p>to</p>
+<p>answer</p>
+<p>that</p>
+<p>in</p>
+<p>three</p>
+<p>parts</p>
+<p>so</p>
+<p>the</p>
+<p>first</p>
+<p>one</p>
+<p>is</p>
+<p>to</p>
+<p>use</p>
+<p>sorry</p>
+<p>to</p>
+<p>say</p>
+<p>that</p>
+<p>non</p>
+<p>Bayesian</p>
+<p>techniques</p>
+<p>right</p>
+<p>so</p>
+<p>or</p>
+<p>not</p>
+<p>entirely</p>
+<p>Bayesian</p>
+<p>so</p>
+<p>and</p>
+<p>that's</p>
+<p>something</p>
+<p>like</p>
+<p>actually</p>
+<p>active</p>
+<p>inference</p>
+<p>community</p>
+<p>should</p>
+<p>have</p>
+<p>been</p>
+<p>doing</p>
+<p>like</p>
+<p>earlier</p>
+<p>I</p>
+<p>think</p>
+<p>so</p>
+<p>basically</p>
+<p>what</p>
+<p>you</p>
+<p>could</p>
+<p>do</p>
+<p>to</p>
+<p>scale</p>
+<p>is</p>
+<p>what</p>
+<p>Mitri</p>
+<p>said</p>
+<p>you</p>
+<p>can</p>
+<p>use</p>
+<p>semi</p>
+<p>Bayesian</p>
+<p>approaches</p>
+<p>like</p>
+<p>variation</p>
+<p>auto</p>
+<p>encoders</p>
+<p>to</p>
+<p>compress</p>
+<p>to</p>
+<p>basically</p>
+<p>cast</p>
+<p>your</p>
+<p>high</p>
+<p>dimensional</p>
+<p>vector</p>
+<p>representation</p>
+<p>into</p>
+<p>a</p>
+<p>low</p>
+<p>dimensional</p>
+<p>vector</p>
+<p>right</p>
+<p>so</p>
+<p>that's</p>
+<p>the</p>
+<p>basic</p>
+<p>thing</p>
+<p>you</p>
+<p>can</p>
+<p>actually</p>
+<p>think</p>
+<p>of</p>
+<p>you</p>
+<p>can</p>
+<p>do</p>
+<p>it</p>
+<p>in</p>
+<p>also</p>
+<p>multiple</p>
+<p>levels</p>
+<p>it</p>
+<p>doesn't</p>
+<p>have</p>
+<p>to</p>
+<p>be</p>
+<p>only</p>
+<p>in</p>
+<p>the</p>
+<p>likelihood</p>
+<p>you</p>
+<p>can</p>
+<p>do</p>
+<p>it</p>
+<p>in</p>
+<p>the</p>
+<p>state</p>
+<p>so</p>
+<p>I</p>
+<p>mean</p>
+<p>as</p>
+<p>you</p>
+<p>move</p>
+<p>in</p>
+<p>your</p>
+<p>in</p>
+<p>the</p>
+<p>hierarchy</p>
+<p>of</p>
+<p>your</p>
+<p>model</p>
+<p>you</p>
+<p>can</p>
+<p>embed</p>
+<p>this</p>
+<p>variational</p>
+<p>encoders</p>
+<p>one</p>
+<p>after</p>
+<p>another</p>
+<p>so</p>
+<p>that's</p>
+<p>one</p>
+<p>thing</p>
+<p>and</p>
+<p>another</p>
+<p>thing</p>
+<p>is</p>
+<p>the</p>
+<p>downside</p>
+<p>here</p>
+<p>is</p>
+<p>that</p>
+<p>you</p>
+<p>require</p>
+<p>pre-training</p>
+<p>right</p>
+<p>so</p>
+<p>there</p>
+<p>is</p>
+<p>some</p>
+<p>pre-training</p>
+<p>involved</p>
+<p>not</p>
+<p>cool</p>
+<p>sometimes</p>
+<p>sometimes</p>
+<p>it's</p>
+<p>okay</p>
+<p>another</p>
+<p>way</p>
+<p>of</p>
+<p>tackling</p>
+<p>that</p>
+<p>is</p>
+<p>to</p>
+<p>actually</p>
+<p>use</p>
+<p>hierarchical</p>
+<p>model</p>
+<p>representation</p>
+<p>so</p>
+<p>you</p>
+<p>can</p>
+<p>encode</p>
+<p>your</p>
+<p>state</p>
+<p>see</p>
+<p>in</p>
+<p>as</p>
+<p>a</p>
+<p>sort</p>
+<p>of</p>
+<p>hierarchical</p>
+<p>multi-scale</p>
+<p>model</p>
+<p>right</p>
+<p>so</p>
+<p>you</p>
+<p>don't</p>
+<p>have</p>
+<p>to</p>
+<p>when</p>
+<p>you</p>
+<p>have</p>
+<p>a</p>
+<p>grid</p>
+<p>world</p>
+<p>for</p>
+<p>instance</p>
+<p>you</p>
+<p>don't</p>
+<p>have</p>
+<p>to</p>
+<p>yeah</p>
+<p>basically</p>
+<p>model</p>
+<p>all</p>
+<p>these</p>
+<p>components</p>
+<p>of your</p>
+<p>grid</p>
+<p>into</p>
+<p>one</p>
+<p>state</p>
+<p>right</p>
+<p>so</p>
+<p>like</p>
+<p>it</p>
+<p>will</p>
+<p>end</p>
+<p>up</p>
+<p>yeah</p>
+<p>so</p>
+<p>it</p>
+<p>doesn't</p>
+<p>scale</p>
+<p>well</p>
+<p>so</p>
+<p>we</p>
+<p>know</p>
+<p>a</p>
+<p>few</p>
+<p>frameworks</p>
+<p>that</p>
+<p>adhere</p>
+<p>to</p>
+<p>that</p>
+<p>and</p>
+<p>well</p>
+<p>I</p>
+<p>think</p>
+<p>it</p>
+<p>will</p>
+<p>not</p>
+<p>progress</p>
+<p>much</p>
+<p>but</p>
+<p>if</p>
+<p>you</p>
+<p>actually</p>
+<p>manage</p>
+<p>to</p>
+<p>have</p>
+<p>sort</p>
+<p>of</p>
+<p>multi-scale</p>
+<p>representation</p>
+<p>of</p>
+<p>this</p>
+<p>grid</p>
+<p>world</p>
+<p>right</p>
+<p>so</p>
+<p>you</p>
+<p>can</p>
+<p>have</p>
+<p>sort</p>
+<p>of</p>
+<p>like</p>
+<p>a</p>
+<p>location</p>
+<p>in</p>
+<p>terms</p>
+<p>of</p>
+<p>you</p>
+<p>can</p>
+<p>break</p>
+<p>it</p>
+<p>down</p>
+<p>right</p>
+<p>so</p>
+<p>first</p>
+<p>you</p>
+<p>can</p>
+<p>have</p>
+<p>a</p>
+<p>big</p>
+<p>grid</p>
+<p>world</p>
+<p>which</p>
+<p>you</p>
+<p>can</p>
+<p>divide</p>
+<p>by</p>
+<p>four</p>
+<p>elements</p>
+<p>and</p>
+<p>then</p>
+<p>you</p>
+<p>can</p>
+<p>zoom</p>
+<p>in</p>
+<p>zoom</p>
+<p>in</p>
+<p>zoom</p>
+<p>in</p>
+<p>so</p>
+<p>basically</p>
+<p>you</p>
+<p>would</p>
+<p>have</p>
+<p>sort</p>
+<p>of</p>
+<p>this</p>
+<p>granular</p>
+<p>representation</p>
+<p>of your</p>
+<p>state</p>
+<p>so</p>
+<p>and</p>
+<p>this</p>
+<p>scales</p>
+<p>pretty</p>
+<p>well</p>
+<p>and</p>
+<p>another</p>
+<p>thing</p>
+<p>is</p>
+<p>like</p>
+<p>well</p>
+<p>it's</p>
+<p>kind</p>
+<p>of</p>
+<p>what</p>
+<p>Bert</p>
+<p>touched</p>
+<p>upon</p>
+<p>right</p>
+<p>is</p>
+<p>this</p>
+<p>vision</p>
+<p>going</p>
+<p>forward</p>
+<p>is</p>
+<p>indeed</p>
+<p>like</p>
+<p>to</p>
+<p>use</p>
+<p>this</p>
+<p>reactive</p>
+<p>approach</p>
+<p>to</p>
+<p>solve</p>
+<p>this</p>
+<p>scaling</p>
+<p>once</p>
+<p>and</p>
+<p>forever</p>
+<p>right</p>
+<p>so</p>
+<p>it's</p>
+<p>basically</p>
+<p>the</p>
+<p>idea</p>
+<p>here</p>
+<p>is</p>
+<p>not</p>
+<p>to</p>
+<p>spend</p>
+<p>much</p>
+<p>computational</p>
+<p>resources</p>
+<p>just</p>
+<p>basically</p>
+<p>spend</p>
+<p>as</p>
+<p>much</p>
+<p>as</p>
+<p>you</p>
+<p>can</p>
+<p>so</p>
+<p>but</p>
+<p>yeah</p>
+<p>that's</p>
+<p>something</p>
+<p>work in</p>
+<p>progress</p>
+<p>yeah</p>
+<p>and</p>
+<p>I</p>
+<p>know</p>
+<p>if</p>
+<p>Bert</p>
+<p>you</p>
+<p>want</p>
+<p>to</p>
+<p>add</p>
+<p>something</p>
+<p>on</p>
+<p>top</p>
+<p>of</p>
+<p>it</p>
+<p>about</p>
+<p>this</p>
+<p>computational</p>
+<p>cost</p>
+<p>I</p>
+<p>think</p>
+<p>you</p>
+<p>have</p>
+<p>something</p>
+<p>well</p>
+<p>yeah</p>
+<p>I mean</p>
+<p>we just</p>
+<p>discussed</p>
+<p>that</p>
+<p>right</p>
+<p>I mean</p>
+<p>I think</p>
+<p>ultimately</p>
+<p>a</p>
+<p>Bayesian</p>
+<p>framework</p>
+<p>will help</p>
+<p>computational</p>
+<p>costs</p>
+<p>because</p>
+<p>you have</p>
+<p>access</p>
+<p>to</p>
+<p>how</p>
+<p>much</p>
+<p>precision</p>
+<p>you</p>
+<p>want</p>
+<p>for</p>
+<p>your</p>
+<p>computations</p>
+<p>and</p>
+<p>you</p>
+<p>know</p>
+<p>that</p>
+<p>means</p>
+<p>you</p>
+<p>can</p>
+<p>stop</p>
+<p>early</p>
+<p>you</p>
+<p>can</p>
+<p>the</p>
+<p>nice</p>
+<p>thing</p>
+<p>about</p>
+<p>a</p>
+<p>message</p>
+<p>passing</p>
+<p>process</p>
+<p>is</p>
+<p>reactive</p>
+<p>message</p>
+<p>passing</p>
+<p>is</p>
+<p>that</p>
+<p>you</p>
+<p>can</p>
+<p>interrupt</p>
+<p>it</p>
+<p>at</p>
+<p>any</p>
+<p>time</p>
+<p>and</p>
+<p>take</p>
+<p>the</p>
+<p>result</p>
+<p>as</p>
+<p>it</p>
+<p>is</p>
+<p>and</p>
+<p>if</p>
+<p>you</p>
+<p>wait</p>
+<p>longer</p>
+<p>you</p>
+<p>get</p>
+<p>more</p>
+<p>accurate</p>
+<p>result</p>
+<p>but</p>
+<p>if</p>
+<p>you</p>
+<p>stop</p>
+<p>early</p>
+<p>then</p>
+<p>you</p>
+<p>have</p>
+<p>a</p>
+<p>less</p>
+<p>accurate</p>
+<p>result</p>
+<p>but</p>
+<p>it</p>
+<p>may</p>
+<p>be</p>
+<p>okay</p>
+<p>and</p>
+<p>you</p>
+<p>know</p>
+<p>in</p>
+<p>Bayesian</p>
+<p>framework</p>
+<p>you</p>
+<p>have</p>
+<p>access</p>
+<p>to</p>
+<p>how</p>
+<p>accurately</p>
+<p>you</p>
+<p>want</p>
+<p>to</p>
+<p>compute</p>
+<p>at</p>
+<p>the</p>
+<p>higher</p>
+<p>levels</p>
+<p>in</p>
+<p>these</p>
+<p>in</p>
+<p>these</p>
+<p>hierarchical</p>
+<p>models</p>
+<p>you</p>
+<p>don't</p>
+<p>need</p>
+<p>a</p>
+<p>lot</p>
+<p>of</p>
+<p>accuracy</p>
+<p>right</p>
+<p>if</p>
+<p>I</p>
+<p>want</p>
+<p>to</p>
+<p>park</p>
+<p>my</p>
+<p>car</p>
+<p>I'm</p>
+<p>not</p>
+<p>going</p>
+<p>to</p>
+<p>worry</p>
+<p>about</p>
+<p>the</p>
+<p>centimeters</p>
+<p>of</p>
+<p>where</p>
+<p>I</p>
+<p>actually</p>
+<p>park</p>
+<p>I</p>
+<p>just</p>
+<p>want</p>
+<p>to</p>
+<p>find</p>
+<p>a</p>
+<p>parking</p>
+<p>spot</p>
+<p>right</p>
+<p>so</p>
+<p>that's</p>
+<p>I'm</p>
+<p>talking</p>
+<p>about</p>
+<p>tens</p>
+<p>twenties</p>
+<p>of meters</p>
+<p>right</p>
+<p>so</p>
+<p>it's</p>
+<p>so</p>
+<p>it's</p>
+<p>partly</p>
+<p>in the</p>
+<p>architecture</p>
+<p>and</p>
+<p>it's</p>
+<p>partly</p>
+<p>of</p>
+<p>doing</p>
+<p>smart</p>
+<p>inference</p>
+<p>in</p>
+<p>the</p>
+<p>end</p>
+<p>yeah</p>
+<p>and</p>
+<p>two</p>
+<p>more</p>
+<p>things</p>
+<p>here</p>
+<p>I</p>
+<p>just</p>
+<p>realized</p>
+<p>that</p>
+<p>well</p>
+<p>you</p>
+<p>it's</p>
+<p>so</p>
+<p>I've</p>
+<p>mentioned</p>
+<p>that</p>
+<p>yeah</p>
+<p>you</p>
+<p>can</p>
+<p>use</p>
+<p>non-Bayesian</p>
+<p>approaches</p>
+<p>to</p>
+<p>train</p>
+<p>your</p>
+<p>save</p>
+<p>a</p>
+<p>rational</p>
+<p>but</p>
+<p>actually</p>
+<p>now</p>
+<p>there</p>
+<p>are</p>
+<p>ways</p>
+<p>of</p>
+<p>training</p>
+<p>your</p>
+<p>neural</p>
+<p>networks</p>
+<p>in</p>
+<p>online</p>
+<p>manner</p>
+<p>also</p>
+<p>so</p>
+<p>it's</p>
+<p>not</p>
+<p>inherently</p>
+<p>prohibitive</p>
+<p>to</p>
+<p>actually</p>
+<p>do</p>
+<p>learning</p>
+<p>and</p>
+<p>inference</p>
+<p>in</p>
+<p>the</p>
+<p>goal</p>
+<p>there</p>
+<p>yeah</p>
+<p>there</p>
+<p>are</p>
+<p>some</p>
+<p>developments</p>
+<p>in</p>
+<p>that</p>
+<p>part</p>
+<p>of</p>
+<p>that</p>
+<p>world</p>
+<p>as</p>
+<p>well</p>
+<p>and</p>
+<p>I</p>
+<p>think</p>
+<p>the</p>
+<p>last</p>
+<p>piece</p>
+<p>here</p>
+<p>is</p>
+<p>that</p>
+<p>hardware</p>
+<p>for</p>
+<p>Bayesian</p>
+<p>inference</p>
+<p>is</p>
+<p>also</p>
+<p>emerging</p>
+<p>so</p>
+<p>it's</p>
+<p>something</p>
+<p>that</p>
+<p>people</p>
+<p>are</p>
+<p>also</p>
+<p>working</p>
+<p>on</p>
+<p>it's</p>
+<p>not</p>
+<p>at</p>
+<p>mass</p>
+<p>scale</p>
+<p>yet</p>
+<p>but</p>
+<p>there</p>
+<p>will</p>
+<p>be</p>
+<p>hardware</p>
+<p>breakthroughs</p>
+<p>I</p>
+<p>think</p>
+<p>that</p>
+<p>would</p>
+<p>be</p>
+<p>specifically</p>
+<p>targeting</p>
+<p>this</p>
+<p>applications</p>
+<p>for</p>
+<p>of</p>
+<p>Bayesian</p>
+<p>inference</p>
+<p>if</p>
+<p>there</p>
+<p>are</p>
+<p>no</p>
+<p>other</p>
+<p>comments</p>
+<p>or</p>
+<p>questions</p>
+<p>just</p>
+<p>now</p>
+<p>I</p>
+<p>would</p>
+<p>like</p>
+<p>to</p>
+<p>follow</p>
+<p>up</p>
+<p>on</p>
+<p>this</p>
+<p>issue</p>
+<p>of</p>
+<p>hierarchical</p>
+<p>modeling</p>
+<p>maybe</p>
+<p>we've</p>
+<p>exhausted</p>
+<p>it</p>
+<p>just</p>
+<p>now</p>
+<p>but</p>
+<p>it</p>
+<p>appears</p>
+<p>to me</p>
+<p>as</p>
+<p>it</p>
+<p>does</p>
+<p>to</p>
+<p>many</p>
+<p>people</p>
+<p>that</p>
+<p>this</p>
+<p>issue</p>
+<p>of</p>
+<p>hierarchy</p>
+<p>is</p>
+<p>going</p>
+<p>to</p>
+<p>be</p>
+<p>very</p>
+<p>important</p>
+<p>for</p>
+<p>just</p>
+<p>active</p>
+<p>inference</p>
+<p>going</p>
+<p>forward</p>
+<p>this</p>
+<p>is</p>
+<p>very</p>
+<p>much</p>
+<p>how</p>
+<p>biological</p>
+<p>organisms</p>
+
+<p>are</p>
+<p>arranged</p>
+
+<p>they</p>
+<p>have</p>
+<p>characteristic</p>
+<p>units</p>
+
+<p>that deal</p>
+<p>with</p>
+<p>their</p>
+<p>own</p>
+<p>time</p>
+<p>scales</p>
+<p>and</p>
+<p>they</p>
+<p>are</p>
+<p>connected</p>
+<p>to</p>
+<p>some</p>
+<p>other</p>
+<p>level</p>
+<p>above</p>
+<p>and</p>
+<p>level</p>
+<p>below</p>
+<p>I</p>
+<p>know</p>
+<p>that</p>
+<p>in</p>
+<p>ARX-INFER</p>
+<p>you can</p>
+<p>create</p>
+<p>bonafide</p>
+<p>submodels</p>
+<p>within</p>
+<p>other</p>
+<p>model blocks</p>
+<p>and so</p>
+<p>on</p>
+<p>but</p>
+<p>is</p>
+<p>there</p>
+<p>I'm</p>
+<p>interested</p>
+<p>in</p>
+<p>the</p>
+<p>sort</p>
+<p>of</p>
+<p>landscape</p>
+<p>of</p>
+<p>hierarchical</p>
+<p>modeling</p>
+<p>for</p>
+<p>ARX-INFER</p>
+<p>in</p>
+<p>particular</p>
+<p>are</p>
+<p>there</p>
+<p>things</p>
+<p>that</p>
+<p>you</p>
+<p>guys</p>
+<p>would</p>
+<p>like</p>
+<p>to</p>
+<p>highlight</p>
+<p>or</p>
+<p>emphasize</p>
+<p>in</p>
+<p>that</p>
+<p>regard</p>
+<p>for</p>
+<p>users</p>
+<p>like</p>
+<p>me</p>
+<p>I</p>
+<p>think</p>
+<p>Dmitry</p>
+<p>maybe</p>
+<p>you</p>
+<p>can</p>
+<p>just</p>
+<p>tease</p>
+<p>a</p>
+<p>bit</p>
+<p>about</p>
+<p>this</p>
+<p>idea</p>
+<p>of</p>
+<p>multi</p>
+<p>scale</p>
+<p>or</p>
+<p>hierarchical</p>
+<p>models</p>
+<p>are</p>
+<p>available</p>
+<p>right</p>
+<p>now</p>
+<p>but</p>
+<p>what's</p>
+<p>not</p>
+<p>available</p>
+<p>out</p>
+<p>of</p>
+<p>the</p>
+<p>box</p>
+<p>is</p>
+<p>basically</p>
+<p>as</p>
+<p>you</p>
+<p>said</p>
+<p>different</p>
+<p>updating</p>
+<p>schemes</p>
+<p>for</p>
+<p>different</p>
+<p>levels</p>
+<p>so</p>
+<p>that's</p>
+<p>something</p>
+<p>Dmitry</p>
+<p>can</p>
+<p>elaborate</p>
+<p>that's</p>
+<p>what</p>
+<p>I</p>
+<p>mentioned</p>
+<p>about</p>
+<p>rewriting</p>
+<p>the</p>
+<p>core</p>
+<p>of</p>
+<p>our</p>
+<p>our</p>
+<p>our</p>
+
+
+
+<p>our</p>
+<p>our</p>
+<p>to</p>
+<p>also</p>
+<p>support</p>
+<p>this</p>
+<p>feature</p>
+<p>more</p>
+<p>naturally</p>
+<p>so</p>
+<p>I</p>
+<p>can</p>
+<p>imagine</p>
+<p>indeed</p>
+<p>that</p>
+<p>we</p>
+<p>have</p>
+<p>a</p>
+<p>really</p>
+<p>huge</p>
+<p>model</p>
+<p>with</p>
+<p>big</p>
+<p>hierarchies</p>
+<p>but</p>
+<p>we</p>
+<p>don't</p>
+<p>really</p>
+<p>want</p>
+<p>to</p>
+<p>update</p>
+<p>deep</p>
+<p>hierarchy</p>
+<p>as</p>
+<p>often</p>
+<p>as</p>
+<p>we</p>
+<p>update</p>
+<p>for</p>
+<p>example</p>
+<p>the</p>
+<p>layer</p>
+<p>that</p>
+<p>is</p>
+<p>connected</p>
+<p>directly</p>
+<p>to</p>
+<p>our</p>
+<p>observations</p>
+<p>because</p>
+<p>yeah</p>
+<p>as</p>
+<p>Bert</p>
+<p>mentioned</p>
+<p>for</p>
+<p>certain</p>
+<p>tasks</p>
+<p>!</p>
+<p>we</p>
+
+<p>do</p>
+<p>less</p>
+<p>accurate</p>
+<p>predictions</p>
+<p>but</p>
+<p>in the</p>
+<p>current</p>
+<p>implementation</p>
+<p>it's</p>
+<p>a bit</p>
+<p>hard</p>
+<p>to</p>
+<p>do</p>
+<p>it's</p>
+<p>like</p>
+<p>it</p>
+<p>requires</p>
+<p>a lot</p>
+<p>of</p>
+<p>hacks</p>
+<p>so</p>
+<p>we</p>
+<p>tried</p>
+<p>it</p>
+<p>once</p>
+<p>in</p>
+<p>principle</p>
+<p>it's</p>
+<p>possible</p>
+<p>to</p>
+<p>do</p>
+<p>but</p>
+<p>it's</p>
+<p>like</p>
+<p>user</p>
+<p>unfriendly</p>
+<p>so</p>
+<p>that's</p>
+<p>also</p>
+<p>one</p>
+<p>of</p>
+<p>the</p>
+<p>directions</p>
+<p>that</p>
+<p>want</p>
+<p>to</p>
+<p>improve</p>
+<p>when</p>
+<p>you're</p>
+<p>writing</p>
+<p>a</p>
+<p>XNinfer</p>
+<p>to</p>
+<p>better</p>
+<p>support</p>
+<p>hierarchical</p>
+<p>models</p>
+<p>to</p>
+<p>make it</p>
+<p>easier</p>
+<p>to</p>
+<p>initialize</p>
+<p>hierarchical</p>
+<p>models</p>
+<p>to</p>
+<p>make</p>
+<p>it</p>
+<p>easier</p>
+<p>to</p>
+<p>support</p>
+<p>different</p>
+<p>update</p>
+<p>rates</p>
+<p>for</p>
+<p>different</p>
+<p>hierarchical</p>
+<p>awesome</p>
+<p>I'll</p>
+<p>ask</p>
+<p>a few</p>
+<p>more</p>
+<p>questions</p>
+<p>in</p>
+<p>the</p>
+<p>chat</p>
+<p>so</p>
+<p>Michael</p>
+<p>Lennon</p>
+<p>asks</p>
+<p>the</p>
+<p>difficulty</p>
+<p>of</p>
+<p>implementation</p>
+<p>is a</p>
+<p>great</p>
+<p>provocation</p>
+<p>point</p>
+<p>what</p>
+<p>have</p>
+<p>been</p>
+<p>use</p>
+<p>cases</p>
+<p>where</p>
+<p>you</p>
+<p>have</p>
+<p>seen</p>
+<p>some</p>
+<p>of</p>
+<p>the</p>
+<p>greatest</p>
+<p>benefits</p>
+<p>from</p>
+<p>your</p>
+<p>approach</p>
+<p>and</p>
+<p>what</p>
+<p>have</p>
+<p>been</p>
+<p>your</p>
+<p>most</p>
+<p>surprising</p>
+<p>findings</p>
+<p>great</p>
+<p>question</p>
+<p>I</p>
+<p>think</p>
+<p>if</p>
+<p>what</p>
+<p>are</p>
+<p>the</p>
+<p>greatest</p>
+<p>I</p>
+<p>look</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>technically</p>
+<p>if</p>
+<p>you</p>
+<p>just</p>
+<p>go</p>
+<p>to</p>
+<p>what</p>
+<p>was</p>
+<p>most</p>
+<p>surprising</p>
+<p>I</p>
+<p>think</p>
+<p>it's</p>
+<p>just</p>
+<p>the</p>
+<p>fact</p>
+<p>that</p>
+<p>you</p>
+<p>use</p>
+<p>the</p>
+<p>same</p>
+<p>technique</p>
+<p>same</p>
+<p>inference</p>
+<p>approach</p>
+<p>same</p>
+<p>back</p>
+<p>same</p>
+<p>back</p>
+<p>end</p>
+<p>to</p>
+<p>tackle</p>
+<p>all</p>
+<p>sorts</p>
+<p>of</p>
+<p>different</p>
+<p>problems</p>
+<p>like</p>
+<p>here</p>
+<p>there's</p>
+<p>many</p>
+<p>problems</p>
+<p>on</p>
+<p>control</p>
+<p>of</p>
+<p>course</p>
+<p>but</p>
+<p>like</p>
+<p>it</p>
+<p>goes</p>
+<p>way</p>
+<p>beyond</p>
+<p>that</p>
+<p>right</p>
+<p>so</p>
+<p>there</p>
+<p>are</p>
+<p>like</p>
+<p>some</p>
+<p>more</p>
+<p>classical</p>
+<p>examples</p>
+<p>on</p>
+<p>latent</p>
+<p>autoregressive</p>
+<p>models</p>
+<p>gaussian</p>
+<p>processes</p>
+<p>sensor</p>
+<p>fusion</p>
+<p>and</p>
+<p>missing</p>
+<p>data</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>the</p>
+<p>benefit</p>
+<p>of</p>
+<p>our</p>
+<p>approach</p>
+<p>in</p>
+<p>particular</p>
+<p>like</p>
+<p>first</p>
+<p>of</p>
+<p>is</p>
+<p>that</p>
+<p>it</p>
+<p>works</p>
+<p>close</p>
+<p>to</p>
+<p>real</p>
+<p>time</p>
+<p>and</p>
+<p>certain</p>
+<p>applications</p>
+<p>is</p>
+<p>definitely</p>
+<p>real</p>
+<p>time</p>
+<p>not</p>
+<p>everywhere</p>
+<p>but</p>
+<p>yeah</p>
+<p>I</p>
+<p>think</p>
+<p>just</p>
+<p>the</p>
+<p>like</p>
+<p>the</p>
+<p>fact</p>
+<p>that</p>
+<p>it's</p>
+<p>so</p>
+<p>versatile</p>
+<p>in</p>
+<p>terms</p>
+<p>of</p>
+<p>different</p>
+<p>domains</p>
+<p>while</p>
+<p>kind of</p>
+<p>connecting</p>
+<p>all of</p>
+<p>them</p>
+<p>under</p>
+<p>the</p>
+<p>same</p>
+<p>umbrella</p>
+<p>principle</p>
+<p>right</p>
+<p>so</p>
+<p>that's</p>
+<p>I think</p>
+<p>the most</p>
+<p>powerful</p>
+<p>finding</p>
+<p>of</p>
+<p>RxNinfer</p>
+<p>in</p>
+<p>particular</p>
+<p>yeah</p>
+<p>so</p>
+<p>it's</p>
+<p>also</p>
+<p>a reason</p>
+<p>why</p>
+<p>just</p>
+<p>generally</p>
+<p>this approach</p>
+<p>is not</p>
+<p>super</p>
+<p>popular</p>
+<p>I think</p>
+<p>in engineering</p>
+<p>communities</p>
+<p>right</p>
+<p>of</p>
+<p>inference</p>
+<p>hasn't</p>
+<p>is not</p>
+<p>a big</p>
+<p>name</p>
+<p>in</p>
+<p>the</p>
+<p>engineering</p>
+<p>communities</p>
+<p>because</p>
+<p>as</p>
+<p>engineers</p>
+<p>and we</p>
+<p>are</p>
+<p>an</p>
+<p>engineering</p>
+<p>group</p>
+<p>we</p>
+<p>are</p>
+<p>used</p>
+<p>to</p>
+<p>start</p>
+<p>with</p>
+<p>a</p>
+<p>problem</p>
+<p>and</p>
+<p>then</p>
+<p>you</p>
+<p>go</p>
+<p>to</p>
+<p>the</p>
+<p>literature</p>
+<p>you</p>
+<p>find</p>
+<p>10</p>
+<p>possible</p>
+<p>solutions</p>
+<p>and</p>
+<p>you</p>
+<p>pick</p>
+<p>one</p>
+<p>and</p>
+<p>you</p>
+<p>change</p>
+<p>it</p>
+<p>a bit</p>
+<p>and</p>
+<p>now</p>
+<p>you</p>
+<p>have</p>
+<p>11</p>
+<p>solutions</p>
+<p>approaches</p>
+<p>this</p>
+<p>is</p>
+<p>entirely</p>
+<p>the</p>
+<p>other</p>
+<p>way</p>
+<p>around</p>
+<p>for</p>
+<p>every</p>
+<p>whatever</p>
+<p>the</p>
+<p>problem</p>
+<p>is</p>
+<p>we</p>
+<p>have</p>
+<p>the</p>
+<p>same</p>
+<p>approach</p>
+<p>we</p>
+<p>build</p>
+<p>a</p>
+<p>model</p>
+<p>we</p>
+<p>do</p>
+<p>inference</p>
+<p>it's</p>
+<p>one</p>
+<p>solution</p>
+<p>approach</p>
+<p>to</p>
+<p>any</p>
+<p>model</p>
+<p>any</p>
+<p>problem</p>
+<p>right</p>
+<p>so</p>
+<p>it's</p>
+<p>completely</p>
+<p>the</p>
+<p>opposite</p>
+<p>way</p>
+<p>of</p>
+<p>thinking</p>
+<p>of</p>
+<p>problem</p>
+<p>solving</p>
+<p>for</p>
+<p>an</p>
+<p>engineer</p>
+<p>and</p>
+<p>it's</p>
+<p>very</p>
+<p>hard</p>
+<p>I</p>
+<p>know</p>
+<p>this</p>
+<p>is</p>
+<p>with</p>
+<p>the</p>
+<p>students</p>
+<p>in</p>
+<p>my</p>
+<p>class</p>
+<p>it's</p>
+<p>very</p>
+<p>hard</p>
+<p>to</p>
+<p>make</p>
+<p>that</p>
+<p>switch</p>
+<p>from</p>
+<p>one</p>
+<p>problem</p>
+<p>has</p>
+<p>lots</p>
+<p>of</p>
+<p>possible</p>
+<p>solutions</p>
+<p>to</p>
+<p>we</p>
+<p>have</p>
+<p>one</p>
+<p>solution</p>
+<p>method</p>
+<p>for</p>
+<p>all</p>
+<p>the</p>
+<p>problems</p>
+<p>that</p>
+<p>is</p>
+<p>that's</p>
+<p>very</p>
+<p>hard</p>
+<p>and</p>
+<p>but</p>
+<p>it</p>
+<p>works</p>
+<p>right</p>
+<p>I</p>
+<p>think</p>
+<p>this</p>
+<p>is</p>
+<p>the</p>
+<p>right</p>
+<p>way</p>
+<p>but</p>
+<p>it's</p>
+<p>going</p>
+<p>to</p>
+<p>be</p>
+<p>difficult</p>
+<p>to</p>
+<p>make</p>
+<p>that</p>
+<p>switch</p>
+<p>in</p>
+<p>engineering</p>
+<p>communities</p>
+<p>awesome</p>
+<p>just</p>
+<p>again</p>
+<p>to</p>
+<p>footnote</p>
+<p>and</p>
+<p>include</p>
+<p>some</p>
+<p>of</p>
+<p>these</p>
+<p>great</p>
+<p>questions</p>
+<p>and</p>
+<p>welcome</p>
+<p>people</p>
+<p>into</p>
+<p>this</p>
+<p>continuing</p>
+<p>conversation</p>
+<p>and</p>
+<p>open</p>
+<p>source</p>
+<p>development</p>
+<p>so</p>
+<p>a few</p>
+<p>more</p>
+<p>okay</p>
+<p>urban</p>
+<p>avsec</p>
+<p>wrote</p>
+<p>does</p>
+<p>rx</p>
+<p>infer</p>
+<p>and</p>
+<p>if</p>
+<p>so</p>
+<p>to</p>
+<p>what</p>
+<p>extent</p>
+<p>support</p>
+<p>structure</p>
+<p>and</p>
+<p>parameter</p>
+<p>learning</p>
+<p>to</p>
+<p>train</p>
+<p>and</p>
+<p>improve</p>
+<p>models</p>
+<p>automatically</p>
+<p>okay</p>
+<p>so</p>
+<p>yeah</p>
+<p>that's</p>
+<p>a good</p>
+<p>question</p>
+<p>I wouldn't</p>
+<p>say that</p>
+<p>there is</p>
+<p>automatic</p>
+<p>way of</p>
+<p>doing</p>
+<p>that</p>
+<p>you can</p>
+<p>there are</p>
+<p>I think</p>
+<p>examples</p>
+<p>on</p>
+<p>structure</p>
+<p>learning</p>
+<p>to some</p>
+<p>extent</p>
+<p>and</p>
+<p>look</p>
+<p>so</p>
+<p>one</p>
+<p>thing</p>
+<p>is</p>
+<p>that</p>
+<p>people</p>
+<p>so</p>
+<p>sometimes</p>
+<p>people</p>
+<p>mean</p>
+<p>different</p>
+<p>things</p>
+<p>by</p>
+<p>referring</p>
+<p>to</p>
+<p>structural</p>
+<p>learning</p>
+<p>if</p>
+<p>they're</p>
+<p>talking</p>
+<p>about</p>
+<p>finding</p>
+<p>this</p>
+<p>kind</p>
+<p>of</p>
+<p>this</p>
+<p>discrete</p>
+<p>program</p>
+<p>search</p>
+<p>to</p>
+<p>automatically</p>
+<p>discover</p>
+<p>what is</p>
+<p>the right</p>
+<p>graph</p>
+<p>for your</p>
+<p>particular</p>
+<p>problem</p>
+<p>problem</p>
+<p>it's</p>
+<p>I think</p>
+<p>there's</p>
+<p>a lot</p>
+<p>of</p>
+<p>ongoing</p>
+<p>research</p>
+<p>it's</p>
+<p>not</p>
+<p>set</p>
+<p>in</p>
+<p>stone</p>
+<p>how</p>
+<p>to</p>
+<p>do</p>
+<p>it</p>
+<p>and</p>
+<p>I</p>
+<p>think</p>
+<p>we</p>
+<p>have</p>
+<p>good</p>
+<p>intuition</p>
+<p>we have</p>
+<p>good</p>
+<p>understanding</p>
+<p>on how</p>
+<p>to</p>
+<p>prune</p>
+<p>the</p>
+<p>models</p>
+<p>based</p>
+<p>on</p>
+<p>this</p>
+<p>well</p>
+<p>essentially</p>
+<p>obviously</p>
+<p>Bayesian</p>
+<p>model</p>
+<p>evidence</p>
+<p>approaches</p>
+<p>so you</p>
+<p>can</p>
+<p>definitely</p>
+<p>use</p>
+<p>that</p>
+<p>within</p>
+<p>Rx</p>
+<p>Infer</p>
+<p>but</p>
+<p>how</p>
+<p>do</p>
+<p>you</p>
+<p>extend</p>
+<p>the</p>
+<p>model</p>
+<p>how</p>
+<p>you</p>
+<p>grow</p>
+<p>sort</p>
+<p>of</p>
+<p>your</p>
+<p>graph</p>
+<p>I</p>
+<p>think</p>
+<p>this</p>
+<p>is</p>
+<p>still</p>
+<p>an</p>
+<p>open</p>
+<p>question</p>
+<p>and</p>
+<p>an</p>
+<p>interesting</p>
+<p>one</p>
+<p>and</p>
+<p>as</p>
+<p>for</p>
+<p>another</p>
+<p>way</p>
+<p>of</p>
+<p>looking</p>
+<p>at</p>
+<p>actually</p>
+<p>structured</p>
+<p>learning</p>
+<p>right</p>
+<p>or</p>
+<p>you</p>
+<p>could</p>
+<p>think</p>
+<p>of</p>
+<p>non-parametric</p>
+<p>methods</p>
+<p>including</p>
+<p>Gaussian</p>
+<p>processes</p>
+<p>for instance</p>
+<p>and</p>
+<p>those</p>
+<p>are also</p>
+<p>going</p>
+<p>to be</p>
+<p>integrated</p>
+<p>in</p>
+<p>Rx</p>
+<p>Infer</p>
+<p>I</p>
+<p>think</p>
+<p>yeah</p>
+<p>hopefully</p>
+<p>this</p>
+<p>year</p>
+<p>but</p>
+<p>the</p>
+<p>idea</p>
+<p>is</p>
+<p>that</p>
+<p>yeah</p>
+<p>you</p>
+<p>can</p>
+<p>just</p>
+<p>basically</p>
+<p>discover</p>
+<p>this</p>
+<p>distribution</p>
+<p>over</p>
+<p>your</p>
+<p>over</p>
+<p>the</p>
+<p>functions</p>
+<p>that</p>
+<p>drive</p>
+<p>that</p>
+<p>explain</p>
+<p>the</p>
+<p>dynamics</p>
+<p>of</p>
+<p>the</p>
+<p>environment</p>
+<p>so</p>
+<p>we</p>
+<p>are</p>
+<p>certainly</p>
+<p>working</p>
+<p>on that</p>
+<p>from</p>
+<p>different</p>
+<p>angles</p>
+<p>and</p>
+<p>there</p>
+<p>is</p>
+<p>also</p>
+<p>BiasLab</p>
+<p>that</p>
+<p>BERT is</p>
+<p>leading</p>
+<p>that</p>
+<p>also</p>
+<p>tackles</p>
+<p>some</p>
+<p>of</p>
+<p>these</p>
+<p>issues</p>
+<p>as</p>
+<p>for</p>
+<p>parameter</p>
+<p>learning</p>
+<p>yeah</p>
+<p>I</p>
+<p>think</p>
+<p>this</p>
+<p>is</p>
+<p>sort</p>
+<p>of</p>
+<p>I</p>
+<p>wouldn't</p>
+<p>say</p>
+<p>solved</p>
+<p>right</p>
+<p>nothing</p>
+<p>is</p>
+<p>like</p>
+<p>100%</p>
+<p>solved</p>
+<p>but</p>
+<p>I</p>
+<p>think</p>
+<p>that's</p>
+<p>something</p>
+<p>we</p>
+<p>are</p>
+<p>good</p>
+<p>at</p>
+<p>there</p>
+<p>is</p>
+<p>no</p>
+<p>problem</p>
+<p>with</p>
+<p>parameter</p>
+<p>learning</p>
+<p>and</p>
+<p>as</p>
+<p>I</p>
+<p>said</p>
+<p>pruning</p>
+<p>that's</p>
+<p>available</p>
+<p>yeah</p>
+<p>awesome</p>
+<p>yeah</p>
+<p>and</p>
+<p>batch</p>
+<p>and</p>
+<p>streaming</p>
+<p>inference</p>
+<p>for</p>
+<p>parameter</p>
+<p>learning</p>
+<p>okay</p>
+<p>Andrew</p>
+<p>Pachea</p>
+<p>wrote</p>
+<p>thank</p>
+
+<p>you</p>
+<p>for</p>
+<p>the</p>
+<p>updates</p>
+<p>how</p>
+<p>are</p>
+<p>you</p>
+<p>currently</p>
+<p>handling</p>
+<p>multi</p>
+<p>agent</p>
+<p>agent</p>
+<p>environment</p>
+<p>loops</p>
+<p>iteratively</p>
+<p>e.g.</p>
+<p>creating</p>
+<p>an</p>
+<p>agents</p>
+<p>at</p>
+<p>the</p>
+<p>top</p>
+<p>of</p>
+<p>the</p>
+<p>script</p>
+<p>and</p>
+<p>using</p>
+<p>loops</p>
+<p>or</p>
+<p>functions</p>
+<p>for</p>
+<p>creating</p>
+<p>and</p>
+<p>storing</p>
+<p>them</p>
+<p>as</p>
+<p>opposed</p>
+<p>to</p>
+<p>hard</p>
+<p>coding</p>
+<p>each</p>
+<p>individual</p>
+<p>agents</p>
+<p>so</p>
+<p>what</p>
+<p>kind</p>
+<p>of</p>
+<p>design</p>
+<p>patterns</p>
+<p>have</p>
+<p>you</p>
+<p>been</p>
+<p>working</p>
+<p>with</p>
+<p>or</p>
+<p>do</p>
+<p>you</p>
+<p>think</p>
+<p>are</p>
+<p>relevant</p>
+<p>for</p>
+<p>multi</p>
+<p>agent</p>
+<p>situations</p>
+<p>yeah</p>
+<p>multi</p>
+<p>agent</p>
+<p>yeah</p>
+<p>thanks</p>
+<p>thanks</p>
+<p>for</p>
+<p>the</p>
+<p>question</p>
+<p>multi</p>
+<p>agent</p>
+<p>is</p>
+<p>of course</p>
+<p>like</p>
+<p>the</p>
+<p>pinnacle</p>
+<p>sort</p>
+<p>of</p>
+<p>all</p>
+<p>these</p>
+<p>inference</p>
+<p>problems</p>
+<p>I</p>
+<p>think</p>
+<p>there</p>
+<p>well</p>
+<p>you</p>
+<p>one</p>
+<p>way</p>
+<p>is</p>
+<p>like</p>
+<p>you</p>
+<p>need</p>
+<p>to</p>
+<p>hack</p>
+<p>it</p>
+<p>through</p>
+<p>your</p>
+<p>loop</p>
+<p>another</p>
+<p>way</p>
+<p>is</p>
+<p>actually</p>
+<p>like</p>
+<p>what</p>
+<p>you</p>
+<p>see</p>
+<p>here</p>
+<p>in</p>
+<p>this</p>
+<p>multi</p>
+<p>agent</p>
+<p>path</p>
+<p>planning</p>
+<p>is</p>
+<p>that</p>
+<p>it's</p>
+<p>a</p>
+<p>sort</p>
+<p>of</p>
+<p>super</p>
+<p>agent</p>
+<p>so</p>
+<p>there</p>
+<p>is</p>
+<p>kind</p>
+<p>of</p>
+<p>a</p>
+<p>meta</p>
+<p>agent</p>
+<p>that</p>
+<p>encapsulates</p>
+<p>the</p>
+<p>models</p>
+<p>of</p>
+<p>all</p>
+<p>other</p>
+<p>agents</p>
+<p>and</p>
+<p>then</p>
+<p>they</p>
+<p>share</p>
+<p>this</p>
+<p>information</p>
+<p>now</p>
+<p>the</p>
+<p>problem</p>
+<p>is</p>
+<p>that</p>
+<p>it</p>
+<p>doesn't</p>
+<p>scale</p>
+<p>well</p>
+<p>I</p>
+<p>would</p>
+<p>say</p>
+<p>because</p>
+<p>well</p>
+<p>like</p>
+<p>four</p>
+<p>agents</p>
+<p>five</p>
+<p>agents</p>
+<p>ten</p>
+<p>agents</p>
+<p>fine</p>
+<p>but</p>
+<p>then</p>
+<p>like</p>
+<p>you</p>
+<p>get</p>
+<p>right</p>
+<p>you</p>
+<p>get</p>
+<p>it</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>one</p>
+<p>of</p>
+<p>the</p>
+<p>ways</p>
+<p>I</p>
+<p>mean</p>
+<p>Dmitry</p>
+<p>probably</p>
+<p>can</p>
+<p>can</p>
+<p>also</p>
+<p>add</p>
+<p>upon</p>
+<p>that</p>
+<p>but</p>
+<p>what</p>
+<p>you</p>
+<p>could</p>
+<p>do</p>
+<p>like</p>
+<p>as</p>
+<p>for</p>
+<p>the</p>
+<p>design</p>
+<p>pattern</p>
+<p>is</p>
+<p>you</p>
+<p>run</p>
+<p>your</p>
+<p>agent</p>
+<p>for</p>
+<p>instance</p>
+<p>like</p>
+<p>speaking</p>
+<p>of</p>
+<p>this</p>
+<p>path</p>
+<p>planning</p>
+<p>so</p>
+<p>you</p>
+<p>run</p>
+<p>your</p>
+<p>agent</p>
+<p>into</p>
+<p>the</p>
+<p>you</p>
+<p>let</p>
+<p>it</p>
+<p>go</p>
+<p>into</p>
+<p>your</p>
+<p>environment</p>
+<p>and</p>
+<p>you</p>
+<p>only</p>
+<p>interact</p>
+<p>when</p>
+<p>you</p>
+<p>are</p>
+<p>in</p>
+<p>the</p>
+<p>proximity</p>
+<p>of</p>
+<p>other</p>
+<p>agents</p>
+<p>so</p>
+<p>there</p>
+<p>is</p>
+<p>not</p>
+<p>need</p>
+<p>to</p>
+<p>share</p>
+<p>any</p>
+<p>information</p>
+<p>if</p>
+<p>you</p>
+<p>are</p>
+<p>far</p>
+<p>away</p>
+<p>from</p>
+<p>each</p>
+<p>other</p>
+<p>and</p>
+<p>like</p>
+<p>once</p>
+<p>you</p>
+<p>are</p>
+<p>getting</p>
+<p>closer</p>
+<p>you</p>
+<p>can</p>
+<p>start</p>
+<p>sharing</p>
+<p>the</p>
+<p>information</p>
+<p>you</p>
+<p>can</p>
+<p>sort</p>
+<p>of</p>
+<p>fuse</p>
+<p>the</p>
+<p>models</p>
+<p>figure</p>
+<p>out</p>
+<p>the</p>
+<p>conflict</p>
+<p>and</p>
+<p>then</p>
+<p>just</p>
+<p>like</p>
+<p>depart</p>
+<p>so</p>
+<p>that's</p>
+<p>that's</p>
+<p>one</p>
+<p>of</p>
+<p>the</p>
+<p>things</p>
+<p>I</p>
+<p>can</p>
+<p>suggest</p>
+<p>but</p>
+<p>Andrew's</p>
+<p>question</p>
+<p>there</p>
+<p>is</p>
+<p>no</p>
+<p>we</p>
+<p>we</p>
+<p>didn't</p>
+<p>think</p>
+<p>of</p>
+<p>how</p>
+<p>we</p>
+<p>didn't</p>
+<p>let</p>
+<p>me</p>
+<p>put</p>
+<p>it</p>
+<p>this</p>
+<p>way</p>
+<p>we</p>
+<p>didn't</p>
+<p>standardize</p>
+<p>the</p>
+<p>API</p>
+<p>call</p>
+<p>for</p>
+<p>multi</p>
+<p>agents</p>
+<p>so</p>
+<p>not</p>
+<p>yet</p>
+<p>all</p>
+<p>right</p>
+<p>great</p>
+<p>and</p>
+<p>one</p>
+<p>more</p>
+<p>question</p>
+<p>from</p>
+<p>live</p>
+<p>chat</p>
+<p>Jeff</p>
+<p>back</p>
+<p>wrote</p>
+<p>my</p>
+<p>question</p>
+<p>is</p>
+<p>can</p>
+<p>the</p>
+<p>parameters</p>
+<p>of</p>
+<p>the</p>
+<p>flows</p>
+<p>and</p>
+<p>the</p>
+<p>VAEs</p>
+<p>be</p>
+<p>learned</p>
+<p>in</p>
+<p>Rx</p>
+<p>and</p>
+<p>fur</p>
+<p>or</p>
+<p>are</p>
+<p>they</p>
+<p>imported</p>
+<p>if</p>
+<p>it</p>
+<p>is</p>
+<p>learned</p>
+<p>is</p>
+<p>that</p>
+<p>by</p>
+<p>traditional</p>
+<p>gradient</p>
+<p>descent</p>
+<p>well</p>
+<p>I</p>
+<p>think</p>
+<p>this</p>
+<p>is</p>
+
+<p>if</p>
+<p>Ismael</p>
+<p>is</p>
+<p>you</p>
+<p>you</p>
+<p>can</p>
+<p>yeah</p>
+<p>maybe</p>
+<p>I</p>
+<p>can</p>
+<p>talk</p>
+<p>a bit</p>
+<p>on</p>
+<p>that</p>
+<p>so</p>
+<p>it's</p>
+<p>possible</p>
+<p>to</p>
+<p>update</p>
+<p>weights</p>
+<p>or</p>
+<p>biases</p>
+<p>of</p>
+<p>the</p>
+<p>neural</p>
+<p>network</p>
+<p>that</p>
+<p>is</p>
+<p>parametri</p>
+<p>in</p>
+<p>your</p>
+<p>VAE</p>
+<p>or</p>
+<p>your</p>
+<p>flow</p>
+<p>within</p>
+<p>Rx</p>
+<p>and</p>
+<p>fur</p>
+<p>however</p>
+<p>if</p>
+<p>you</p>
+<p>want</p>
+<p>to</p>
+<p>use</p>
+<p>deep</p>
+<p>and</p>
+<p>wide</p>
+<p>networks</p>
+<p>then</p>
+<p>you</p>
+<p>need</p>
+<p>the</p>
+<p>GPU</p>
+<p>architecture</p>
+<p>that</p>
+<p>Dimitri</p>
+<p>was</p>
+<p>referring</p>
+<p>to</p>
+<p>so</p>
+<p>for</p>
+<p>small</p>
+<p>size</p>
+<p>neural</p>
+<p>networks</p>
+<p>very</p>
+<p>easy</p>
+<p>you</p>
+<p>can</p>
+<p>use</p>
+<p>Rx</p>
+<p>and fur</p>
+<p>to</p>
+<p>tune</p>
+<p>the</p>
+<p>weights</p>
+<p>but</p>
+<p>for</p>
+<p>larger</p>
+<p>scales</p>
+<p>in</p>
+<p>its</p>
+<p>current</p>
+<p>weights</p>
+<p>trained</p>
+<p>outside</p>
+<p>of the</p>
+<p>model</p>
+<p>and</p>
+<p>then</p>
+<p>use</p>
+<p>these</p>
+<p>parameters</p>
+<p>for</p>
+<p>prediction</p>
+<p>purposes</p>
+<p>but</p>
+<p>it is</p>
+<p>certainly</p>
+<p>possible</p>
+<p>to</p>
+<p>incorporate</p>
+<p>the</p>
+<p>training</p>
+<p>of</p>
+<p>neural</p>
+<p>networks</p>
+<p>within</p>
+<p>the</p>
+<p>model</p>
+<p>macros</p>
+<p>awesome</p>
+<p>okay</p>
+<p>in</p>
+<p>sort of</p>
+<p>our</p>
+<p>closing</p>
+<p>round</p>
+<p>here</p>
+<p>one</p>
+<p>of</p>
+<p>the</p>
+<p>pre-written</p>
+<p>questions</p>
+<p>was</p>
+<p>what</p>
+<p>are</p>
+<p>the</p>
+<p>upcoming</p>
+<p>milestones</p>
+<p>of</p>
+<p>lazy</p>
+<p>dynamics</p>
+<p>and</p>
+<p>what</p>
+<p>is</p>
+<p>your</p>
+<p>vision</p>
+<p>so</p>
+<p>just</p>
+<p>on</p>
+<p>that</p>
+<p>though</p>
+<p>or</p>
+<p>however</p>
+<p>else</p>
+<p>you</p>
+<p>want</p>
+<p>to</p>
+<p>give</p>
+<p>some</p>
+<p>last</p>
+<p>thoughts</p>
+<p>if</p>
+<p>each</p>
+<p>of</p>
+<p>the</p>
+<p>developers</p>
+<p>would</p>
+<p>just</p>
+<p>want</p>
+<p>to</p>
+<p>give</p>
+<p>any</p>
+<p>last</p>
+<p>thoughts</p>
+<p>what</p>
+<p>are</p>
+<p>they</p>
+<p>looking</p>
+<p>forward</p>
+<p>to</p>
+<p>this</p>
+<p>year</p>
+<p>where</p>
+<p>might</p>
+<p>we</p>
+<p>be</p>
+<p>by</p>
+<p>the</p>
+<p>mid</p>
+<p>point</p>
+<p>of</p>
+<p>the</p>
+<p>year</p>
+<p>by</p>
+<p>whatever</p>
+
+<p>milestone</p>
+<p>or</p>
+<p>timeline</p>
+<p>you</p>
+<p>want</p>
+<p>to</p>
+<p>point</p>
+<p>to</p>
+<p>and</p>
+<p>that</p>
+<p>will</p>
+<p>be</p>
+<p>a</p>
+<p>great</p>
+<p>closing</p>
+<p>route</p>
+<p>so</p>
+<p>how</p>
+<p>about</p>
+<p>Albert</p>
+<p>and</p>
+<p>then</p>
+<p>continuing</p>
+<p>on</p>
+<p>with</p>
+<p>the</p>
+<p>developers</p>
+<p>to</p>
+
+<p>to</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Thank you.</p>
+<p>Thank you.</p>
+<p>Thank you.</p>
+<p>Sorry.</p>
+<p>That's it was about this approach in particular to enterprise use.</p>
+<p>So we see a lot of opportunities.</p>
+<p>I'm sorry.</p>
+<p>I made it just an audio mistake.</p>
+<p>So people might've lost audio for a few seconds.</p>
+<p>Just, could you just start again?</p>
+<p>Start again?</p>
+<p>Yes.</p>
+<p>Sorry.</p>
+<p>From where?</p>
+<p>Just, just, yeah.</p>
+<p>Yeah.</p>
+<p>Sorry about that.</p>
+<p>Yeah.</p>
+<p>So two things then, like the very first thing is that I definitely want to invite, so LacedDynamics</p>
+<p>is going to support the open source development of RxInfer.</p>
+<p>So that's our priority on the development side.</p>
+<p>We are actually going to, we are planning to run a sort of, not a hackathon, but the development</p>
+<p>event, co-development event probably this summer.</p>
+<p>And yeah, so I just want to invite more developers to help and testers to help with agent development,</p>
+<p>to help with demos.</p>
+<p>even though you are not into RxInfer, sorry, active inference yet, right?</p>
+<p>So everyone is welcome.</p>
+<p>And one thing for us, I think for this year from the development perspective is of course</p>
+<p>to bring, to put RxInfer to the state where it becomes easier to contribute, easier to contribute</p>
+<p>for, to the sort of, to the engine, not just on the kind of this demo side, but also to improve the engine,</p>
+<p>to make it faster, more scalable.</p>
+<p>So that's something we are, yeah, looking for.</p>
+<p>And I want everyone to invite to that venture.</p>
+<p>And then I think from LacedDynamics perspective specifically, yeah, we're inviting the partners</p>
+<p>and like forward thinking people, individuals, right?</p>
+<p>Who just want to connect and want to join us in this adventure of building this, well,</p>
+<p>very scalable Bayesian inference solutions.</p>
+<p>I think there's a lot of opportunities and possibilities for education and the enterprise.</p>
+<p>And yeah, you name it.</p>
+<p>So yeah, that's, that's some closing words from me.</p>
+<p>Okay.</p>
+<p>So from, from the research side, I think a big issue for active inference is the computation of expected free energy</p>
+<p>and computation of policies, but minimizing expected free energy.</p>
+<p>And I think they're making some nice progress there.</p>
+<p>And we, I think we will also release that this year somewhere at the conference and in the package on how to do this with, with our sin for it in efficient way, of course.</p>
+<p>From the development side is, of course, as has been mentioned already, we are releasing a RxNF server for now for everyone to use to play.</p>
+<p>And as soon as it's finished, it's never finished, but of course, improve it.</p>
+<p>But as soon as it has some stable form, we will rewrite the core of RxNF.</p>
+<p>And then we also have other pending topics like integrating Gaussian processes very easily, making it very easy to use mixture models,</p>
+<p>making it easy to introduce hierarchies in the model.</p>
+<p>So yes, we have a lot of plans for the development.</p>
+<p>We also have plans to improve the visualizations, right?</p>
+<p>Since, since, since Fraser helped a lot with that, and we have, we have plans to improve that even further.</p>
+<p>I think all the improvements and milestones were already mentioned.</p>
+<p>So I'm not going to add more to that.</p>
+<p>I think we already have quite a big list.</p>
+<p>Nonetheless, there are a lot of surprises coming up.</p>
+<p>So definitely stay tuned.</p>
+<p>I think we already gave a good impression of what direction we'll be working towards.</p>
+<p>But along the way, there will always be more cool stuff coming.</p>
+<p>So definitely follow us everywhere.</p>
+<p>And I think that's already, yeah, it gives a good impression of what we'll be up to.</p>
+<p>Awesome.</p>
+<p>Ismila?</p>
+<p>Yeah, it's hard to add on top of Albert, Bart, all the team said, but as a personal,</p>
+<p>interest, I'm very interested in stochastic differential equations and continuous time systems.</p>
+<p>And how we numerically approximate these systems, identify their parameters and so on.</p>
+<p>And this is one of the research that we are doing also at RxFIR and how we can integrate them.</p>
+<p>So that's a big research plan for myself.</p>
+<p>And yeah, it's too much on the plate.</p>
+<p>And we could enjoy contribution from everyone to this big plate of ideas.</p>
+<p>So Frasier, where does that take you?</p>
+<p>I just want to say I'm extraordinarily excited about continuing to contribute with you guys and develop the package further.</p>
+<p>Maybe even I could help us in forays into the refactor of the package.</p>
+<p>I know that can be intimidating, but we'll see.</p>
+<p>So, yeah, I look forward to working with you guys in the future.</p>
+<p>I look forward to it all.</p>
+<p>Thank you.</p>
+<p>Thanks, Faisal.</p>
+<p>Awesome.</p>
+<p>Thank you again for joining and just another chapter in the journey</p>
+<p>and in learning and in the application of Active Inference.</p>
+<p>So, until next time.</p>
+<p>Thank you all.</p>
+<p>Thanks, Daniel.</p>
+<p>Thanks, Saul.</p>
+<p>Bye-bye.</p>
+<p>Thank you.</p>
+<p>Bye.</p>
+<p>Bye, Ryan.</p>
+<p>Bye.</p>
+</article>
+</body>
+</html>

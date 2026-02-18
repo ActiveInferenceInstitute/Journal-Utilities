@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream 015.0: Andrew Pashea "Active Agents: Agent-Based Modeling in the Social Sciences"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream 015.0: Andrew Pashea "Active Agents: Agent-Based Modeling in the Social Sciences"</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_015 &middot; Episode 0 &middot; Duration: 1:27:08 &middot; Views: 387</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=wAd-ARzquj8">https://www.youtube.com/watch?v=wAd-ARzquj8</a></div>
+<article>
+<p>hello and welcome this is active model</p>
+<p>stream</p>
+<p>15.0 with Andrew Pasa from ABM to active</p>
+<p>inference inference-based action</p>
+<p>selection so Andrew thank you for</p>
+<p>joining looking forward to this</p>
+<p>presentation and overview so go for</p>
+<p>it awesome thank you so much Daniel uh</p>
+<p>yeah again I'm Andrew a and I uh I am a</p>
+<p>full-time data analyst SL scientist</p>
+<p>engineer uh many roles to fill when</p>
+<p>working in the nonprofit world and uh so</p>
+<p>a couple months ago I gave a uh a</p>
+<p>workshop like a full uh talk on</p>
+<p>constructing active inference agents</p>
+<p>using the pmdp library as we'll be using</p>
+<p>here today um and uh during that talk I</p>
+<p>described</p>
+<p>how we might be able to employ active</p>
+<p>inference agents uh whenever putting</p>
+<p>together agent-based models uh in the</p>
+<p>context of computational social science</p>
+<p>and so you'll see some links in the</p>
+<p>description referring back to that</p>
+<p>tutorial that I gave including my GitHub</p>
+<p>which has all uh tutorial materials uh</p>
+<p>on that page as well as some in browser</p>
+<p>Google collab scripts that run python</p>
+<p>code and so you can actually follow</p>
+<p>along</p>
+<p>um a lot of these uh learning resources</p>
+<p>including this talk I'm giving are sort</p>
+<p>of part of a a personal initiative I've</p>
+<p>taken to try and uh create and develop</p>
+<p>and then share open- Source learning</p>
+<p>resources for applying active inference</p>
+<p>um I see so much potential as someone</p>
+<p>coming from more of a social sciences</p>
+<p>economics oriented background uh you</p>
+<p>know for for applying active inference</p>
+<p>agents in areas where maybe they haven't</p>
+<p>been employed too much before um and as</p>
+<p>active inference is beginning to be</p>
+<p>increasingly applied to uh social</p>
+<p>science research such as uh you know</p>
+<p>attempting to study and and</p>
+<p>simulate uh something like human</p>
+<p>behavior and decision making uh I</p>
+<p>thought that that conference was a was a</p>
+<p>really ripe opportunity to try and uh</p>
+<p>make those kinds of connections for</p>
+<p>people and and just kind of get those</p>
+<p>kinds of dialogues moving um and</p>
+<p>so for me as someone who came to active</p>
+<p>influence with that kind of background</p>
+<p>but also strong interest in cognition um</p>
+<p>I just really wanted to uh kind of do</p>
+<p>some from scratch sort of tutorials on</p>
+<p>how to construct agents um you know as</p>
+<p>someone who's been interning with active</p>
+<p>inference Institute for nearly a year</p>
+<p>now um and I'll also be giving a talk at</p>
+<p>her upcoming posium which itself will be</p>
+<p>a kind of extension of that tutorial I</p>
+<p>gave a couple months ago as well as the</p>
+<p>talk I'll be giving now um yeah I would</p>
+<p>just like to uh really make it plain for</p>
+<p>people sort of the general mechanics</p>
+<p>that go into constructing active</p>
+<p>inference agent uh I would also refer</p>
+<p>people back to the textbook that was</p>
+<p>published a couple of years ago by uh</p>
+<p>pulo par and Carl friston um it's freely</p>
+<p>accessible you'll find links to it in my</p>
+<p>uh slides as well as in the collab</p>
+<p>scripts if you follow the GitHub link um</p>
+<p>a lot of material that I'm using to</p>
+<p>construct these tutorials is actually</p>
+<p>coming from that textbook so anyone</p>
+<p>involved with the Institute uh reading</p>
+<p>group uh where we cover the textbook</p>
+<p>will uh kind of feel hopefully a little</p>
+<p>at home whenever they follow these</p>
+<p>tutorials um so we'll start off now um</p>
+<p>we'll be constructing uh the longer span</p>
+<p>of the tutorial is one uh make the</p>
+<p>connection between active inference and</p>
+<p>agent-based modeling agent based</p>
+<p>modeling is a very common Paradigm in</p>
+<p>computational social science uh that</p>
+<p>said and this is not doing it justice</p>
+<p>but I'm saying this just to keep it</p>
+<p>brief uh in some ways it's very</p>
+<p>traditional in the uh kinds of</p>
+<p>assumptions that it makes more often</p>
+<p>than not about human behavior uh often</p>
+<p>times people rely upon a kind of</p>
+<p>homoeconomicus or or self-centered uh</p>
+<p>utility maximizer kind of a description</p>
+<p>of what defines human decisionmaking and</p>
+<p>um I think that that loses a lot of the</p>
+<p>sort of richness that we find in</p>
+<p>cognitive science neuroscience and and</p>
+<p>Behavioral Studies uh of how people</p>
+<p>might actually make decisions and active</p>
+<p>inference supplies us with you know um a</p>
+<p>rather you know simple assumption it's a</p>
+<p>very complex assumption that being free</p>
+<p>energy minimization whenever you break</p>
+<p>it down but ultimately that's a core key</p>
+<p>assumption that we're making and we</p>
+<p>don't have to make a ton of additional</p>
+<p>assumptions beyond that whenever</p>
+<p>considering how to simulate uh uh human</p>
+<p>behavior Beyond how do we construct our</p>
+<p>model right or how do we construct our</p>
+<p>agent and so um that's that's sort of</p>
+<p>the connection that I'm making here</p>
+<p>between agent based modeling and activ</p>
+<p>inference then after that I describe how</p>
+<p>what I did with that tutorial was I</p>
+<p>recreated uh this kind of paradigmatic</p>
+<p>uh simulation published back in 2007 uh</p>
+<p>by uh by doctors laser and fredman uh</p>
+<p>you'll see links to that paper as well</p>
+<p>at the GitHub site uh through the link</p>
+<p>and uh what they do is that they set up</p>
+<p>what I would deem to be a so-called</p>
+<p>traditional uh social science</p>
+<p>agent-based model</p>
+<p>where um agents are basically</p>
+<p>pre-programmed to do particular things</p>
+<p>um they don't exhibit autonomous</p>
+<p>decision making which is sort of the</p>
+<p>promise of a lot of generative AI today</p>
+<p>uh and I think that active inference</p>
+<p>especially emphasizes that sort of</p>
+<p>autonomy in the sense that these are</p>
+<p>agents who are you know minimizing their</p>
+<p>own free energy and then from there you</p>
+<p>know predicting what should be um the</p>
+<p>next action that they should take or or</p>
+<p>set of actions meaning a policy that</p>
+<p>they should take and uh and so they</p>
+<p>engage in all these kind of cognitive uh</p>
+<p>functions or or mechanisms that we we</p>
+<p>find humans to have related to to</p>
+<p>planning and um uh the idea of having</p>
+<p>habits that you build up over time and</p>
+<p>how those sort of compete with more</p>
+<p>deliberate decision making and um you</p>
+<p>know the kind of uh executive</p>
+<p>functioning in the prefrontal cortex of</p>
+<p>the brain and and finding those kinds of</p>
+<p>connections so um</p>
+<p>without further Ado what we'll do now is</p>
+<p>simply create one agent and um we'll</p>
+<p>I'll go through the steps of how to do</p>
+<p>that and uh this is the agent that</p>
+<p>features in the uh laser Freedman model</p>
+<p>Recreation that I do where I use active</p>
+<p>inference agents uh as opposed to the</p>
+<p>kind of pre-programmed agents that that</p>
+<p>they use um</p>
+<p>so um we'll start with saying again this</p>
+<p>is</p>
+<p>pmdp the link is there we import some</p>
+<p>libraries um It's relatively not too</p>
+<p>many and some of them are just for like</p>
+<p>the plots um the main thing is you can</p>
+<p>pip install</p>
+<p>pmdp uh there'll be mentions later but</p>
+<p>there have been many updates to that</p>
+<p>Library over the past couple of years uh</p>
+<p>and a little bit more context on PDP as</p>
+<p>far as I understand it from a couple</p>
+<p>conversations with the developers is</p>
+<p>that this package is uh directly</p>
+<p>inspired by and in certain ways trying</p>
+<p>to emulate the mechanics of uh the SPM</p>
+<p>package uh developed by by friston at</p>
+<p>all uh in mat lab for for constructing</p>
+<p>active inference agents and environments</p>
+<p>and processes so um it's it's it's sort</p>
+<p>of the Exemplar python library for doing</p>
+<p>active inference as far as I'm aware um</p>
+<p>and</p>
+<p>that said there's so much complexity</p>
+<p>whenever uh these libraries are</p>
+<p>constructed and a lot of you know</p>
+<p>dependencies between different like subl</p>
+<p>libraries and so on so it it becomes</p>
+<p>really useful to find more focused sort</p>
+<p>of snapshots of how to construct say an</p>
+<p>agent and understanding how those</p>
+<p>mechanics work without necessarily</p>
+<p>having to scavenge through the code that</p>
+<p>said uh there are some examples and</p>
+<p>example tutorials given at the PDP</p>
+<p>website it that I've linked there on the</p>
+<p>screen uh so please uh feel free to</p>
+<p>peruse those um and so moving on from</p>
+<p>there uh for anyone familiar with the</p>
+<p>textbook uh it's very useful to refer to</p>
+<p>Chapters six and seven uh chapter six</p>
+<p>refers to uh kind of providing a general</p>
+<p>recipe for constructing uh a agents and</p>
+<p>environments and running</p>
+<p>simulations um and uh then from there</p>
+<p>chapter 7 kind of expands upon those</p>
+<p>ideas by specifically creating partially</p>
+<p>observable markup decisionmaking proces</p>
+<p>processes or uh</p>
+<p>pdps after which pmdp kind of cleverly</p>
+<p>takes its name and um those are the kind</p>
+<p>of discrete time discrete State space uh</p>
+<p>models that we'll be working with that</p>
+<p>is they they uh play out uh in action</p>
+<p>perception Loops uh one time step at a</p>
+<p>time as opposed to it being continuous</p>
+<p>time so you could say you know at time</p>
+<p>step one or t equals 1 uh and then at</p>
+<p>time step two this happens times step</p>
+<p>three this happens and then discrete</p>
+<p>State spaces meaning that uh we're not</p>
+<p>looking at continuous variables from</p>
+<p>continuous distributions per se we're</p>
+<p>looking at uh probability Mass functions</p>
+<p>and you know just more concrete like you</p>
+<p>know there's a hidden State uh Factor</p>
+<p>called color and it has two levels red</p>
+<p>and blue you know these kind kind of</p>
+<p>definitive discreet uh uh factors and</p>
+<p>levels so uh to construct an active</p>
+<p>inference agent uh probably the this is</p>
+<p>the general outline all smashed into one</p>
+<p>slide uh so the first three steps</p>
+<p>defining States defining observations</p>
+<p>defining controls action policies um</p>
+<p>with the nuances for all three of those</p>
+<p>additional terms so States what are our</p>
+<p>agents uncertain about uh what kind of</p>
+<p>you know sets of beliefs do they hold</p>
+<p>that they end up inferring and updating</p>
+<p>potentially learning over time uh and</p>
+<p>then defining observations what do our</p>
+<p>agents observe from their environment</p>
+<p>right um it's not enough to like claim</p>
+<p>that you have an active inference agent</p>
+<p>and throw it into some you know ethereal</p>
+<p>space where it has no</p>
+<p>sensory receptors no sensorium you know</p>
+<p>you need to be able to Define like what</p>
+<p>are uh senses so to speak that the agent</p>
+<p>has available uh the technical phrasing</p>
+<p>being observation modalities so for</p>
+<p>example uh an agent might have um you</p>
+<p>know a visual uh uh observation modality</p>
+<p>where it can take in discrete levels uh</p>
+<p>rain or no rain meaning at any given</p>
+<p>moment it's observing if there's rain or</p>
+<p>no rain uh through its visual</p>
+<p>observation modality or visual sensory</p>
+<p>receptor being able to clearly Define</p>
+<p>those kinds of connections almost as if</p>
+<p>we could view them on a graph which we</p>
+<p>will do momentarily um and then defining</p>
+<p>control action policies for all intents</p>
+<p>and purposes going forward I'm going to</p>
+<p>be relying upon the word actions um</p>
+<p>that's because actions are simply in</p>
+<p>this case discrete actions an agent can</p>
+<p>take at a given time step um there's</p>
+<p>nothing more to it than that uh you can</p>
+<p>walk or you can run or you can sit</p>
+<p>uh those would be three actions that an</p>
+<p>agent could do at any given time step</p>
+<p>right they're not doing multiple of</p>
+<p>those in the same time step and they're</p>
+<p>not uh doing them in any kind of</p>
+<p>deterministic way so to speak um so with</p>
+<p>controls that's a term that comes up</p>
+<p>very frequently in the literature and it</p>
+<p>also relates to other ways of doing say</p>
+<p>uh reinforcement learning related to</p>
+<p>engineering problems or otherwise but</p>
+<p>the the idea of a control is that it's</p>
+<p>just an action with kind of an</p>
+<p>additional Nuance to it that uh it</p>
+<p>relates to the idea of this is an action</p>
+<p>that can actually change or control</p>
+<p>something that something being a hidden</p>
+<p>state or hidden State Factor um so it's</p>
+<p>you know</p>
+<p>whenever kind of putting together the</p>
+<p>matrices involved in constructing PDP</p>
+<p>agents uh there are times where you'll</p>
+<p>need let's say a and we'll I'll clarify</p>
+<p>what some of these words mean for for</p>
+<p>anyone who's who's still new to to uh</p>
+<p>modeling here um but uh so with controls</p>
+<p>like there might be it might be the case</p>
+<p>that you need some kind of subarray like</p>
+<p>a b Matrix or submatrix that um you know</p>
+<p>doesn't really do anything like it might</p>
+<p>be a hidden state for a rat in a teamat</p>
+<p>uh who you know they they know that they</p>
+<p>can control which location of the</p>
+<p>teammates they go to they could go to</p>
+<p>the left arm they could go to the right</p>
+<p>arm but they don't necessarily think</p>
+<p>that they can change the location of the</p>
+<p>reward it's always either on the left or</p>
+<p>it's on the right and you don't know</p>
+<p>until you see it right so it's it's like</p>
+<p>the control there would be choosing the</p>
+<p>left or right arm and the left or right</p>
+<p>arm is the correct option being like the</p>
+<p>uh or rather the the left or right arm</p>
+<p>in state where the rat infers if it's</p>
+<p>gone left or gone right like that is</p>
+<p>something you can control moving on with</p>
+<p>policies policies are sequences of</p>
+<p>actions in this case you could have um</p>
+<p>you know in the teamas you have a rat</p>
+<p>who can choose to go left and then stay</p>
+<p>there it can choose to go right and stay</p>
+<p>there it could choose to go to the queue</p>
+<p>and then go left uh or otherwise but the</p>
+<p>idea is it's just a sequence of actions</p>
+<p>uh and so uh agents can have their own</p>
+<p>sort of hypotheses so to speak about</p>
+<p>individual policies and that's very</p>
+<p>interesting to think about whenever</p>
+<p>we're considering active inference</p>
+<p>agents who you need to engage in kind of</p>
+<p>longer term planning Horizons and and</p>
+<p>who might be used for you know imagine</p>
+<p>uh for people who are into engineering</p>
+<p>or or otherwise might be looking at a</p>
+<p>like a like scheduling problems or you</p>
+<p>know inferring situations where you know</p>
+<p>that you're going to need to do a series</p>
+<p>of actions in a sequence that maybe need</p>
+<p>to have some kind of coherency with one</p>
+<p>another such that it's useful to refer</p>
+<p>to that specific spefic set of actions</p>
+<p>as a policy um so Define States Define</p>
+<p>observations Define your actions after</p>
+<p>that we relate those three components of</p>
+<p>a model uh via a series of uh</p>
+<p>categorical probability distributions</p>
+<p>which are in the a b c d and e uh</p>
+<p>matrices um again all these feature in</p>
+<p>the the textbook and then uh th those</p>
+<p>will comprise the beliefs of the</p>
+<p>agent then we Define our environment</p>
+<p>which here we're not going to uh for</p>
+<p>through the sake of today for the</p>
+<p>shorter uh talk we're we're not going to</p>
+<p>get too far into defining an environment</p>
+<p>uh I will say that common ways of</p>
+<p>defining environments especially</p>
+<p>whenever you're just beginning the</p>
+<p>modeling process is that oftentimes</p>
+<p>people will actually construct another</p>
+<p>PDP which itself represents the</p>
+<p>environment because in that way can take</p>
+<p>in its own observations those being the</p>
+<p>actions of the agent and then it can</p>
+<p>output its own actions those actions</p>
+<p>being the observations for the agent</p>
+<p>that's forming kind of squaring the</p>
+<p>circle on our action perception Loop um</p>
+<p>but uh for the sake of today we'll just</p>
+<p>be looking at a fully deterministic</p>
+<p>environment where I manually have it</p>
+<p>take certain inputs send out certain</p>
+<p>outputs it's still an environment it's</p>
+<p>just not a very complex one</p>
+<p>uh and then after that we just Define</p>
+<p>the active inference Loop run it as a</p>
+<p>simulation runs the full loop agent</p>
+<p>receives observations in first States it</p>
+<p>learns first policies it commits in</p>
+<p>action then after that uh good modeling</p>
+<p>practice if you're actually trying to to</p>
+<p>do something with what you're modeling</p>
+<p>uh and and trying to model some real</p>
+<p>phenomena is that you would look at the</p>
+<p>results of your uh simulation you would</p>
+<p>look at what makes sense to you what</p>
+<p>doesn't Maybe maybe there's some</p>
+<p>parameters that uh don't quite make</p>
+<p>sense that you've set up for the agent</p>
+<p>maybe it's missing an observation</p>
+<p>modality um or or otherwise or uh if</p>
+<p>you're you know using these simulations</p>
+<p>in a in a kind of more productive way to</p>
+<p>to derive insights then the idea is that</p>
+<p>you could tune things and you could</p>
+<p>modify the environment as if you're you</p>
+<p>know um uh uh introducing some kind of</p>
+<p>intervention and then you could see how</p>
+<p>things play out differently right in the</p>
+<p>case of people who are maybe concerned</p>
+<p>with with policy design or or kind of</p>
+<p>analyzing uh agent Behavior under uh</p>
+<p>various kinds of</p>
+<p>conditions uh the agent we'll be</p>
+<p>constructing today is uh an agent whose</p>
+<p>task is to find a good solution to a</p>
+<p>complex task of problem uh the idea is</p>
+<p>that uh the Fuller idea is that they're</p>
+<p>trying to navigate what's called an ink</p>
+<p>landscape which is you know you could</p>
+<p>you could visualize this as a broad set</p>
+<p>of</p>
+<p>solutions and each of them has its own</p>
+<p>Fitness value so we're looking now at a</p>
+<p>fitness landscape at any given point in</p>
+<p>time in the Fuller simulation which I'll</p>
+<p>cover in maybe future talk is that at</p>
+<p>any given time an agent has a solution</p>
+<p>currently um it can for the sake of this</p>
+<p>talk I'll say it as simply as this the</p>
+<p>agent can either at each discrete time</p>
+<p>step during the action perception Loop</p>
+<p>they can either explore meaning they try</p>
+<p>to find a new Solution that's better</p>
+<p>than the one they currently have or they</p>
+<p>can exploit their neighbor which means</p>
+<p>they steal their neighbor answer um this</p>
+<p>is for more context this is useful for</p>
+<p>understanding like if you wanted to uh</p>
+<p>put agents into a network where they</p>
+<p>interact with one another which is</p>
+<p>precisely what my multi-agent simulation</p>
+<p>from the tutorial does again uh review</p>
+<p>the GitHub uh all the code is there for</p>
+<p>doing so uh the rest of the slides in</p>
+<p>this particular slide deck also uh get</p>
+<p>into that but we're only focusing on</p>
+<p>these um so the the agent can explore or</p>
+<p>exploit and a quick note as well that</p>
+<p>let's be cautious not to confuse the use</p>
+<p>the words explore and exploit here with</p>
+<p>how they appear in a lot of the</p>
+<p>literature uh on the explor versus</p>
+<p>exploitation problem um here we're just</p>
+<p>going to say those are the names of the</p>
+<p>agent actions they could be replaced</p>
+<p>with study or cheat right um but I'm</p>
+<p>just I recreated uh the laser Freeman</p>
+<p>model they use explore exploit it makes</p>
+<p>sense in a particular way and so we're</p>
+<p>going to stay with that um after that</p>
+<p>the agent will infer an intention hidden</p>
+<p>State uh that is they'll they'll receive</p>
+<p>observations uh from their environment</p>
+<p>they they they chose to explore or</p>
+<p>exploit they receive observations as a</p>
+<p>response from their environment they'll</p>
+<p>infer a hidden State and then they'll</p>
+<p>learn meaning they'll update the the the</p>
+<p>parameter values of their a matrix or</p>
+<p>likelihood</p>
+<p>Matrix um move to this this is much more</p>
+<p>representative of the process so we can</p>
+<p>start at the top the agent explore or</p>
+<p>exploits</p>
+<p>environment takes in those actions and</p>
+<p>then based on uh based upon whatever</p>
+<p>rules you set for it to have or you</p>
+<p>could again you could construct some</p>
+<p>kind of you know generative model um</p>
+<p>that you know will kind of do it on its</p>
+<p>own uh follow you know you could add</p>
+<p>stochasticity or some kind of you know</p>
+<p>error term or something so that it's you</p>
+<p>know it's it's not entirely</p>
+<p>deterministic however you like um but it</p>
+<p>will generate observations at any time</p>
+<p>step the agent after committing an</p>
+<p>action it being sent the environment the</p>
+<p>environment processing that action the</p>
+<p>environment will send back two</p>
+<p>observations to the agent um these upper</p>
+<p>to Improvement or no improvement showing</p>
+<p>that oh the agent explored for example</p>
+<p>and then saw an improvement in its</p>
+<p>solution to the problem and then or no</p>
+<p>improvement you know and then uh the</p>
+<p>other observation is self or neighbor</p>
+<p>which is a one toone uh uh mapping that</p>
+<p>is if you explore it's going to return</p>
+<p>self if you exploit it's going to return</p>
+<p>neighbored the idea is this agent has</p>
+<p>two observation modalities one of the</p>
+<p>first one relates to the quality of</p>
+<p>their solution uh and and outcome of</p>
+<p>their action uh and and then the second</p>
+<p>observation modality simply is a kind of</p>
+<p>self-reflexive</p>
+<p>uh observation which is who did I attend</p>
+<p>to after that the agent will take those</p>
+<p>observations to infer hidden state it</p>
+<p>only has one hidden State Factor uh that</p>
+<p>contains two levels self and neighbor uh</p>
+<p>there will be again a onetoone mapping</p>
+<p>between self and neighbor if you see the</p>
+<p>outcome you attended to yourself then</p>
+<p>you're going to infer that you attended</p>
+<p>to yourself vice versa for neighbor um</p>
+<p>and then in addition to that inference</p>
+<p>learning occurs uh which uh modifies the</p>
+<p>uh categorical probability distribution</p>
+<p>describing uh the the probability of</p>
+<p>those outcomes given State beliefs and</p>
+<p>the agent from there infer actions or</p>
+<p>policies you should take and carry them</p>
+<p>out and we</p>
+<p>proceed so this and there will be times</p>
+<p>that I might Zoom through particular</p>
+<p>slides um but in this case this is one</p>
+<p>that's good to reflect on um something</p>
+<p>that I think a lot of people Miss uh or</p>
+<p>or maybe struggle with uh having been</p>
+<p>involved with the Institute the reading</p>
+<p>group for some time and having my own</p>
+<p>trials and errors and in learning how</p>
+<p>these things work uh is that there's a</p>
+<p>lot of nestedness we're working with a</p>
+<p>lot of uh</p>
+<p>matrices uh anyone who not only works</p>
+<p>with PDP uh but also math lab and SPM is</p>
+<p>is very familiar that it's it's crucial</p>
+<p>to be able to understand how to</p>
+<p>construct matrices how to construct</p>
+<p>matrices that represent categorical</p>
+<p>probability distributions I.E for the</p>
+<p>agent their beliefs um and uh and so</p>
+<p>it's it's really important to wrap your</p>
+<p>head around that and so I just really</p>
+<p>wanted to spell things out and there's</p>
+<p>an additional collab script that I'm</p>
+<p>currently writing that already has now a</p>
+<p>bunch of markdown cells so that you can</p>
+<p>not run the code uh but you can see like</p>
+<p>full descriptions on how these things</p>
+<p>work um all I'm basically adding more</p>
+<p>things to to that script that that</p>
+<p>weren't available uh to me or or I just</p>
+<p>didn't have time to include uh one of</p>
+<p>our devices initial tutorial um but now</p>
+<p>that we've uh defined our hidden States</p>
+<p>observations and</p>
+<p>controls um we'll link them together</p>
+<p>through the a b c d and e matrices</p>
+<p>and so hidden States uh a clarification</p>
+<p>on</p>
+<p>terminology uh agents will have hidden</p>
+<p>State factors they're they're called</p>
+<p>hidden State factors they'll have uh you</p>
+<p>know say and hidden State factors and uh</p>
+<p>and and so our agent has only one it's</p>
+<p>the attention hidden State Factor</p>
+<p>containing two uh discrete levels uh</p>
+<p>self and neighbor you see the same exact</p>
+<p>kind of nestedness with OB observations</p>
+<p>and observation or sometimes referred to</p>
+<p>as outcome modalities so you'll have M</p>
+<p>observation modalities our agent has two</p>
+<p>of them one of them is for outcomes uh</p>
+<p>which uh the discrete levels of which</p>
+<p>are Improvement and no improvement as I</p>
+<p>showed before um this code actually</p>
+<p>includes a third one called</p>
+<p>unobserved uh it never comes up in any</p>
+<p>of the simulations I run I thought it</p>
+<p>would be interesting though to include</p>
+<p>it if only because it shows that you</p>
+<p>know you can include uh additional</p>
+<p>dimensions in your model even if you</p>
+<p>don't know if they're going to come into</p>
+<p>play at any point the simulation uh it</p>
+<p>can potentially change things depending</p>
+<p>on how you set those initial values in</p>
+<p>in the uh belief</p>
+<p>distributions but uh you know for the</p>
+<p>time being I just wanted to show that uh</p>
+<p>it's possible to do that and finally uh</p>
+<p>controls and control factors uh so</p>
+<p>actions uh you know again as I earlier</p>
+<p>an action is just a discret thing an</p>
+<p>agent can do you could have similarly</p>
+<p>with nestedness you could have a whole</p>
+<p>control factor of different actions an</p>
+<p>agent could take with a total of f</p>
+<p>control factors our agent will only have</p>
+<p>one and it'll contain two discrete</p>
+<p>levels or discrete actions explore and</p>
+<p>exploit as far as defining hidden State</p>
+<p>factors hiden States observation</p>
+<p>modalities observations and then</p>
+<p>controls or actions um this is it this</p>
+<p>is all the code youi um that's part of</p>
+<p>the and I'm following a certain kind of</p>
+<p>Gom clature that PDP uh the developers</p>
+<p>use in their tutorial website it's a</p>
+<p>it's a very clever way of keeping track</p>
+<p>of things um none of these string values</p>
+<p>like self it's uh Improvement none of</p>
+<p>them matter so to speak um they're just</p>
+<p>a good point of reference</p>
+<p>by uh including them in a list so this</p>
+<p>first list attention state names</p>
+<p>represents the hidden State Factor uh</p>
+<p>for attention and it just it the list</p>
+<p>contains two discrete levels self or</p>
+<p>neighbor I included one in this</p>
+<p>simulation to note you have one neighbor</p>
+<p>so neighbor one uh and then from there</p>
+<p>you just store uh the number of states</p>
+<p>uh for each instate Factor uh this is</p>
+<p>appears a little redundant because we</p>
+<p>only have one but I'm just you know this</p>
+<p>if you were to add like say multiple</p>
+<p>hidden State factors this would be more</p>
+<p>interesting um and then tracking the</p>
+<p>number of hi State factors that you have</p>
+<p>um for anyone who unfamiliar with Python</p>
+<p>Programming the lane Len uh method</p>
+<p>allows you to just see what is the</p>
+<p>length of the object that you're</p>
+<p>inputting so we only have uh one hidden</p>
+<p>State Factor which leads us to uh</p>
+<p>one the next small code snippet very</p>
+<p>similarly now we Define each observation</p>
+<p>modality the outcome observation</p>
+<p>modality has three discrete levels</p>
+<p>Improvement no improvement as I</p>
+<p>mentioned earlier</p>
+<p>unobserved the attention observation</p>
+<p>modality contains two discrete</p>
+<p>observations cell for neighbor one so</p>
+<p>recall that in a given time step an</p>
+<p>agent is going to receive one of each of</p>
+<p>these so at uh you know time step four</p>
+<p>the agent could receive Improvement and</p>
+<p>name one or could receive no improvement</p>
+<p>and self or unobserved in s the point is</p>
+<p>that it will receive one of each right</p>
+<p>um again we track those using uh the</p>
+<p>length or Len uh function and then once</p>
+<p>again actions uh we put them we only</p>
+<p>have two actions so I just referred to</p>
+<p>it as the action uh control factor and</p>
+<p>we included our two actions you can</p>
+<p>explore or you can exploit neighbor one</p>
+<p>and we track that the number of controls</p>
+<p>available to the agent um again that</p>
+<p>that's it and and if you can determine</p>
+<p>you know this kind of design for your</p>
+<p>agent early on uh and then begin</p>
+<p>programming I mean as as the authors of</p>
+<p>the textbook acknowledge uh it's quite</p>
+<p>an iterative process whenever it comes</p>
+<p>to to computational modeling of just</p>
+<p>about anything that includes active</p>
+<p>inference agents and and running uh you</p>
+<p>know simulations and and so on so um</p>
+<p>this is a very crucial First Step</p>
+<p>because it'll inform a lot of what you</p>
+<p>do next as well as you know what you</p>
+<p>might end up changing during that</p>
+<p>process of of iteratively you know</p>
+<p>changing your your model of your</p>
+<p>model so the a matrix is the first step</p>
+<p>of linking these things the a matrix</p>
+<p>will link together the observation</p>
+<p>modalities and hidden State factors uh</p>
+<p>that we defined earlier we need one sub</p>
+<p>array for each outcome modality so I</p>
+<p>want to just draw attention to this</p>
+<p>upper right equation um again Matrix</p>
+<p>operations are perhaps the the main</p>
+<p>hurdle in learning how to construct imdp</p>
+<p>um agents or any PDP agents including</p>
+<p>matlb um so a useful rule of thumb is</p>
+<p>just remembering that whenever you</p>
+<p>construct uh a matrix to represent say U</p>
+<p>you know the a matrix the likelihood</p>
+<p>Matrix uh you know that the probability</p>
+<p>of whatever outcome you're looking at</p>
+<p>whatever observation modality you're</p>
+<p>looking at we'll start with the outcome</p>
+<p>one which again uh includes Improvement</p>
+<p>no improvement none observed the</p>
+<p>probability uh of any of those</p>
+<p>observations conditioned</p>
+<p>on every single one of your hid State</p>
+<p>factors which nicely for us is as simple</p>
+<p>as uh the the way it looks to the far</p>
+<p>left which probability observation</p>
+<p>modality outcome uh conditioned on the</p>
+<p>hidden State factor for attention right</p>
+<p>so we're really just uh working with</p>
+<p>these these two Dimensions um it it</p>
+<p>would become threedimensional matrices</p>
+<p>if say we had two hidden State factors</p>
+<p>this would get expanded um so uh the</p>
+<p>typical way of doing this in PDP uh PDP</p>
+<p>contains a subl library utils uh</p>
+<p>containing just different utility</p>
+<p>functions and the the sort of framework</p>
+<p>for constructing these kinds of uh</p>
+<p>beliefs in p M DP is by using what are</p>
+<p>called object arrays which are already</p>
+<p>available in the numpy library uh it's</p>
+<p>effectively a numpy array that allows</p>
+<p>for uh data types aside from float</p>
+<p>values so it's kind of a more flexible</p>
+<p>version of a numpy array um and that</p>
+<p>allows you to do things like say create</p>
+<p>um an a matrix that's your</p>
+<p>representative of your</p>
+<p>overall likelihood Matrix for everything</p>
+<p>all observation modalities and state</p>
+<p>factors and then you can construct</p>
+<p>within it individual</p>
+<p>subarrays one for each observation</p>
+<p>modality and that those subarrays can be</p>
+<p>of different uh dimensionalities from</p>
+<p>one another and so it's it's just again</p>
+<p>wrapping your head around kind of the</p>
+<p>nestedness here um and a lot of these</p>
+<p>things are better represented in the the</p>
+<p>code I've written so might touch on that</p>
+<p>if there's time um uh of course this is</p>
+<p>code I wrote too with the the collab</p>
+<p>script which uh contains code that you</p>
+<p>can run and it has different ways of</p>
+<p>expressing these different matrices but</p>
+<p>you can see the point is that we're now</p>
+<p>that we've defined our hidden States our</p>
+<p>observations our actions we're going to</p>
+<p>start linking them and to represent our</p>
+<p>agent beliefs so uh for this situation I</p>
+<p>print the outputs</p>
+<p>all code that you've seen so far with</p>
+<p>the gray shading that is uh you know at</p>
+<p>the beginning we imported libraries and</p>
+<p>then two slides ago we um we looked at</p>
+<p>defining H State factors observation</p>
+<p>modalities actions now this is our a</p>
+<p>matrix um I'm not getting into the maths</p>
+<p>on this a matrix because it's easier to</p>
+<p>just look at the outcomes um this is how</p>
+<p>we've construct like all this code that</p>
+<p>I've shown so far can just be run like</p>
+<p>in the order that I've shown it thus far</p>
+<p>you'll see that in the collab script um</p>
+<p>here the first subarray again which is</p>
+<p>for the outcome observation modality</p>
+<p>we'll notice for those who are familiar</p>
+<p>with probability Theory</p>
+<p>um probability distribution sum to</p>
+<p>one uh that that's help what's helpful</p>
+<p>is that the utils uh subl library has is</p>
+<p>normalized uh function where you can put</p>
+<p>any object array into it it'll tell you</p>
+<p>if it's normalized or not so helpful</p>
+<p>rule of thumb to ensure that you've done</p>
+<p>everything right before you proceed</p>
+<p>further um and so what this does is that</p>
+<p>it lets us see that if we sum these</p>
+<p>values um each</p>
+<p>outcome uh per pin state level uh we can</p>
+<p>see that it's entirely uniform it's it's</p>
+<p>totally uncertain it's not useful to the</p>
+<p>to the agent there's a third probability</p>
+<p>that they'll see an improvement if they</p>
+<p>attend to</p>
+<p>themsel third probability if of there</p>
+<p>being no improvement if they attended</p>
+<p>themselves there's a third probability</p>
+<p>of seeing an unobserved outcome if they</p>
+<p>attended them um it's very common</p>
+<p>practice if you're attempting to model a</p>
+<p>more realistic um you know phenomena or</p>
+<p>or or organism or human and you have no</p>
+<p>idea what they would do uh it's CA</p>
+<p>practice initialize them with uniform</p>
+<p>priors here I'm just doing it for the</p>
+<p>sake of Simplicity and a in a tutorial</p>
+<p>right um and so uh meanwhile with the</p>
+<p>next subarray as I said earlier uh</p>
+<p>there's one toone mappings between the</p>
+<p>uh attention observation modality and</p>
+<p>the attention hidden State Factor so it</p>
+<p>it's as if the agent has</p>
+<p>completely certain beliefs like the</p>
+<p>polar obosa</p>
+<p>uh about um about who it's attending to</p>
+<p>right so if it sees that it's attending</p>
+<p>to someone um attending to itself then</p>
+<p>it will infer its intend attending to</p>
+<p>itself and vice versa for</p>
+<p>neighbor and that's it uh that's the a</p>
+<p>matrix and then we have the B Matrix</p>
+<p>which I would say is equally complex and</p>
+<p>then Things become immensely simpler</p>
+<p>from</p>
+<p>the B Matrix again equation top right um</p>
+<p>uh we need one subarray uh B Matrix for</p>
+<p>each hidden State Factor this is very</p>
+<p>simple we only have one hidden State</p>
+<p>factor it's the attention hidden State</p>
+<p>Factor um and so our agent wants to be</p>
+<p>able to track um if I'm currently</p>
+<p>attending to let's say myself and I</p>
+<p>choose to explore what will the hidden</p>
+<p>state be at the next time step thus s to</p>
+<p>plus one conditioned on</p>
+<p>sent the hidden State present uh</p>
+<p>combined with pi which is representative</p>
+<p>of the action or policy undertaken in</p>
+<p>the present um this is also going to be</p>
+<p>incredibly simple it's really going to</p>
+<p>be one to one so at any given point in</p>
+<p>time um the agent will</p>
+<p>believe that regardless of what state it</p>
+<p>is</p>
+<p>in uh currently it will transition to</p>
+<p>self if it chooses explore probability</p>
+<p>one if it was in if the current state is</p>
+<p>neighbor it'll transition to self with</p>
+<p>probability one if it chooses explore</p>
+<p>and similarly it always believes that</p>
+<p>it'll transition to the neighbor in</p>
+<p>state if</p>
+<p>um regardless of whatever in state it</p>
+<p>currently believes it is in so uh a a a</p>
+<p>comment that that might come up for</p>
+<p>anyone who is familiar with these things</p>
+<p>this is not terribly uh different from</p>
+<p>just a standard Markov decision-making</p>
+<p>process right it's kind of like well if</p>
+<p>the agent has all these fully certain</p>
+<p>beliefs why create a partially</p>
+<p>observable environment um there there</p>
+<p>there's a certain reason for that and</p>
+<p>then there's another just more direct</p>
+<p>reason for that the direct one is that</p>
+<p>this is how pmdp Works um and then also</p>
+<p>I the the other reason is I think that</p>
+<p>partially observable environments are</p>
+<p>more representative of our reality I</p>
+<p>think it aligns with the idea that we do</p>
+<p>often have noisy sensory receptors uh</p>
+<p>you know whether you have 2020 Vision or</p>
+<p>not uh it doesn't mean that you can uh</p>
+<p>you know see every color that's every uh</p>
+<p>ever existed and it doesn't mean that</p>
+<p>you know you can see perfectly anything</p>
+<p>uh and so the idea of just this noise</p>
+<p>being there and the idea that you have</p>
+<p>to infer you have to rely upon</p>
+<p>observations to infer beliefs and having</p>
+<p>those kinds of Loops you know it all um</p>
+<p>kind of makes sense and then there's</p>
+<p>another aspect uh that will come up soon</p>
+<p>whenever we discuss</p>
+<p>learning for the C Matrix which is uh</p>
+<p>representative of preferences or priors</p>
+<p>over observations</p>
+<p>this is basically denoting uh it's as if</p>
+<p>we're saying uh what are the outcomes</p>
+<p>the agent actually wants to see like or</p>
+<p>observe what are the what are the</p>
+<p>observations it wants to to to see</p>
+<p>happen uh as oppos to those that it</p>
+<p>doesn't right and so this is immensely</p>
+<p>uh easier to construct uh versus the the</p>
+<p>a matrix or the B Matrix um in that</p>
+<p>we're really just effectively creating</p>
+<p>these vectors</p>
+<p>um so we need one subarray for each</p>
+<p>outcome modality or observation modality</p>
+<p>for the first one uh the outcome</p>
+<p>modality the way that we've defined this</p>
+<p>is take a list uh each one of these</p>
+<p>values is indexed to the observation in</p>
+<p>the</p>
+<p>outcome uh observation modality as we</p>
+<p>saw before so recall in order the first</p>
+<p>one is Improvement the second one is no</p>
+<p>improvement and the third one is</p>
+<p>unobserved these line up exactly uh in</p>
+<p>the same way and uh reiterating Again</p>
+<p>The Matrix</p>
+<p>operations uh and and being able to</p>
+<p>grasp like how indexing goes here uh as</p>
+<p>long as everything lines up uh it it'll</p>
+<p>be solvable right the the the free</p>
+<p>energy calculation will be able to be</p>
+<p>carried out as long as everything kind</p>
+<p>of is in its place right so so it's uh</p>
+<p>do your best to never confuse uh you</p>
+<p>know which position each of these</p>
+<p>represents so the reason why these</p>
+<p>values don't sum to one uh common</p>
+<p>practice uh that I've seen a lot in</p>
+<p>previous mat lab scripts and so on is U</p>
+<p>uh people will actually use these like</p>
+<p>whole integers and even negative values</p>
+<p>because it's just kind of a more human</p>
+<p>friendly human interpretable way of of</p>
+<p>experimenting with an agent's</p>
+<p>preferences um whenever you run this</p>
+<p>through the soft Max function uh which</p>
+<p>which is also applied here this</p>
+<p>basically strongly</p>
+<p>amplifies um the the final probability</p>
+<p>distribution that that arises and also</p>
+<p>turns it into a probability distribution</p>
+<p>that does SU to one um and then uh</p>
+<p>before we move on to see what that looks</p>
+<p>like for the second observation modality</p>
+<p>uh the attention observation modality</p>
+<p>we're going to make that entirely</p>
+<p>uniform as well what each of these</p>
+<p>really is saying is that the agent</p>
+<p>strongly prefers to see improvements in</p>
+<p>its solution it dis prefers seeing uh no</p>
+<p>improvement in its current solution and</p>
+<p>it is indifferent to um to the</p>
+<p>unobserved observation it's not exactly</p>
+<p>how the math would play out because of</p>
+<p>the softmax function but it's</p>
+<p>effectively something like that and in</p>
+<p>any case in this simulation we won't be</p>
+<p>uh seeing the the</p>
+<p>unobserved um observation come up at all</p>
+<p>anyway and then for the second one uh</p>
+<p>fully uniform preferences uh that simply</p>
+<p>means that the agent has no particular</p>
+<p>preference towards um whether it's</p>
+<p>attending to itself or to its neighbor</p>
+<p>right so you could experiment with this</p>
+<p>you could see like what what happens</p>
+<p>whenever an agent actually prefers</p>
+<p>to do uh its due diligence and and</p>
+<p>primarily just explore and come up with</p>
+<p>its own answers to the to the solution</p>
+<p>or what if you come up with an agent who</p>
+<p>more so prefers to steal their or</p>
+<p>exploit their neighbors's answer in any</p>
+<p>case here we'll just we'll stay totally</p>
+<p>um agnostic to uh that and just say that</p>
+<p>the agent has uniform preferences so</p>
+<p>those end up looking like this um</p>
+<p>whenever we print them out uh again</p>
+<p>these are normalized uh we see how the</p>
+<p>softmax uh function strongly Amplified</p>
+<p>uh where where where this uh the the</p>
+<p>preference for improvement was a five</p>
+<p>it's now become a</p>
+<p>0998 continuing uh probability and so so</p>
+<p>this relates back to the idea that</p>
+<p>agents are self- evidencing they will uh</p>
+<p>based on how particularly expected free</p>
+<p>energy is computed uh where it includes</p>
+<p>C uh within the pragmatic value term um</p>
+<p>this is what will guide the agent</p>
+<p>towards uh you know towards observations</p>
+<p>that it prefers as opposed to others uh</p>
+<p>making this move Beyond just uh you know</p>
+<p>an agent who's hyperreactive to what's</p>
+<p>going on in the present instead of an</p>
+<p>agent who might uh prefer to uh see</p>
+<p>certain things and therefore act in a</p>
+<p>way to kind of realize what it prefers</p>
+<p>again here uh preference really just</p>
+<p>meaning it being what you expect um and</p>
+<p>then again uniform distribution for um</p>
+<p>for the second uh modality it has no</p>
+<p>particular preference towards observing</p>
+<p>itself or uh observing its neighbor as</p>
+<p>who it's attending</p>
+<p>to then D fortunately for us we only</p>
+<p>have one hidden State Factor so this is</p>
+<p>the shortest description it's similarly</p>
+<p>to how C was a uh you results in a</p>
+<p>probability distribution that uh</p>
+<p>describes the prior over observations</p>
+<p>the D Matrix does the same thing but for</p>
+<p>States and we only have one hidden state</p>
+<p>so we just have one sub array for uh the</p>
+<p>attention hidden State factor and um you</p>
+<p>know so again we just uh and I didn't</p>
+<p>mention this earlier the the np. ons is</p>
+<p>just generating um a vector</p>
+<p>uh equivalent to the number of hidden</p>
+<p>State levels that you have so a vector</p>
+<p>of two ones and then you're normalizing</p>
+<p>it using the utils library right so take</p>
+<p>two ones normalize them you're going to</p>
+<p>end up with</p>
+<p>0.55 the ematrix are your habits uh you</p>
+<p>don't actually necessarily have to</p>
+<p>Define these uh whenever you're you're</p>
+<p>constructing a pmdp agent uh I find it</p>
+<p>to be very useful if either one you</p>
+<p>actually want to uh you know uh run some</p>
+<p>kind of experiment where you think that</p>
+<p>the agent will actually have more of a a</p>
+<p>sort of uh a habit of doing one</p>
+<p>particular action over the other um it's</p>
+<p>also useful if say you're trying to set</p>
+<p>up a different kind of simulation that's</p>
+<p>more focused on uh policies in which</p>
+<p>case you know it might be the case that</p>
+<p>you know you only want uh the agent to</p>
+<p>have a strong prior belief for entire</p>
+<p>particular policy versus another uh and</p>
+<p>and use that as a way to to define the</p>
+<p>agent as having beliefs that you know a</p>
+<p>particular policy won't at all work</p>
+<p>versus one that will such as um you know</p>
+<p>uh dry off and then jump in the pool as</p>
+<p>a kind of an odd thing to do um or or</p>
+<p>you know could come up with some better</p>
+<p>example in the fly but I I think the</p>
+<p>point comes to cross right so in any</p>
+<p>case this is just basically your priors</p>
+<p>over your actions that get Incorporated</p>
+<p>so what did we do uh we we we related</p>
+<p>States and observations in the a matrix</p>
+<p>we related States and actions in the B</p>
+<p>Matrix uh and then C D and E are just</p>
+<p>the priors on States uh excuse me</p>
+<p>observations States and actions</p>
+<p>respectively um also recall uh from the</p>
+<p>from the textbook and elsewhere that the</p>
+<p>agent has a separation from its</p>
+<p>environment uh called the notion of a</p>
+<p>marov blanket and so uh for the for the</p>
+<p>agent UHS like despite certain things</p>
+<p>occurring during free Min energy</p>
+<p>minimization to where uh observations</p>
+<p>and actions do in fact end up</p>
+<p>influencing one another</p>
+<p>vicariously uh we have not expressed a</p>
+<p>probability distribution that actually</p>
+<p>directly links observations and actions</p>
+<p>so it's kind of maintaining the blanket</p>
+<p>States of uh of your active state</p>
+<p>sensory States and and you'll you'll see</p>
+<p>that in the textbook uh reading the the</p>
+<p>section about marov blankets so it's</p>
+<p>just maintaining that that kind of</p>
+<p>Separation then um I will go just a</p>
+<p>little bit longer than what I expected</p>
+<p>um so now that we have our a b c d and e</p>
+<p>um one additional thing that our agent</p>
+<p>will do is that it will learn uh you</p>
+<p>know the idea of learning an active</p>
+<p>inference uh there's plenty of</p>
+<p>literature on this but it can relate to</p>
+<p>you know the idea of for the sake of a</p>
+<p>model what we're doing is that where're</p>
+<p>we're assigning sort of these</p>
+<p>hyperparameters or priors to uh to the</p>
+<p>uh matrices that we just Define</p>
+<p>themselves right so what our more</p>
+<p>specifically what our agent will do is</p>
+<p>it will learn its a matrix the</p>
+<p>likelihood Matrix that we Define first</p>
+<p>out of the those five things a BC D and</p>
+<p>E</p>
+<p>and uh it it will just update it based</p>
+<p>on the new observations it receives and</p>
+<p>the in state that it infers um and it</p>
+<p>will also answer a question as to okay</p>
+<p>why did we have set up hidden States and</p>
+<p>observations and actions in that way why</p>
+<p>are we doing these like identity</p>
+<p>mappings between particular things um by</p>
+<p>learning the a matrix that will allow</p>
+<p>our agent to learn if it's the case that</p>
+<p>when it explores it'll be more likely to</p>
+<p>see an improvement or uh or no</p>
+<p>improvement right this will allow our</p>
+<p>agent to by accumulating observations</p>
+<p>over time in the action perception Loop</p>
+<p>um it will begin to better update uh its</p>
+<p>beliefs about which thing it should do</p>
+<p>and so even though we you know</p>
+<p>previously we defined e as being uniform</p>
+<p>over those two actions to where the</p>
+<p>agent initially had no particular um you</p>
+<p>know bias towards exploring or</p>
+<p>exploiting it will actually probably</p>
+<p>start to bias the agent towards one of</p>
+<p>those directions because it prefers to</p>
+<p>see improvements and that can only occur</p>
+<p>through learning uh without learning and</p>
+<p>modifying internal uh parameters of your</p>
+<p>model you're effectively uh you know</p>
+<p>sort of like a</p>
+<p>pre-programmed uh uh Theros thermostat</p>
+<p>or something right you're</p>
+<p>nonadaptive you just act in the same way</p>
+<p>as you always do and so an agent who</p>
+<p>doesn't learn as the one if we Define an</p>
+<p>agent like we just did but it never</p>
+<p>learns then what it will do is more than</p>
+<p>likely just with a 5050 chance choose to</p>
+<p>explore or exploit just keep going uh</p>
+<p>from there so um the way that we update</p>
+<p>the a matrix for the PDP agent here um</p>
+<p>is that we is quite simple and this is</p>
+<p>it you don't even need all this code you</p>
+<p>only need the code in the upper right</p>
+<p>but it's basically this uh small P</p>
+<p>capital A is the prior that we're</p>
+<p>creating uh what we're doing is that</p>
+<p>we're using that util subl Library this</p>
+<p>de lay like function which basically you</p>
+<p>construct your a send it through the</p>
+<p>deerl like function it'll convert it</p>
+<p>into what is a kind of Exemplar</p>
+<p>conjugate distribution of a categorical</p>
+<p>probability distribution uh that being a</p>
+<p>de lay distribution it it affect</p>
+<p>whenever you print it out you see that</p>
+<p>we set scale to one it looks exactly</p>
+<p>like our a matrix um what that scale</p>
+<p>argument does is that it scales the</p>
+<p>values that's the special thing about</p>
+<p>the Matrix dlay distribution is that</p>
+<p>it's something like an accumulation of</p>
+<p>pseudo counts that will then weigh uh</p>
+<p>you know</p>
+<p>particular um comp parts of the the</p>
+<p>competition of free energy minimization</p>
+<p>uh for example the agent might start to</p>
+<p>see more instances of improvement uh and</p>
+<p>so it might start to upweight uh the the</p>
+<p>likelihood of uh Improvement uh given</p>
+<p>the association that it saw it with you</p>
+<p>know and so the these don't actually</p>
+<p>have to sum to one they're just kind of</p>
+<p>like waiting our any Matrix and they're</p>
+<p>very relatable to the notion of uh</p>
+<p>Precision right like if a if an agent</p>
+<p>hardly has any previous experience uh</p>
+<p>with anything and it's and it's it's</p>
+<p>it's U uh prior over a is highly scaled</p>
+<p>down meaning it it has very few pseudo</p>
+<p>counts of any prior experience uh it's</p>
+<p>the agent is going to be less certain in</p>
+<p>its ability to make connections between</p>
+<p>uh exactly what the a matrix tries to</p>
+<p>model which is the relationship between</p>
+<p>observations and States so um so these</p>
+<p>values can themselves you know be set</p>
+<p>differently and and you can set the</p>
+<p>Precision differently and then they can</p>
+<p>impact the the agent uh</p>
+<p>differently now we have all of that this</p>
+<p>is it for constructing the agent uh it's</p>
+<p>basically just an agent class and so you</p>
+<p>just feed in the arguments they're</p>
+<p>actually many many arguments uh that can</p>
+<p>go into the agent Constructor um it</p>
+<p>might seem like a lot there actually uh</p>
+<p>I think literally a couple dozen more uh</p>
+<p>but that it very much mirrors the</p>
+<p>construction of the mat lab SPM package</p>
+<p>for anyone familiar with that um there's</p>
+<p>a whole script you know that that will</p>
+<p>run through and and try and construct</p>
+<p>your your markup decision- making</p>
+<p>process your agent and it'll check to</p>
+<p>make sure that all these uh you know</p>
+<p>boxes are correct like is the a</p>
+<p>normalized is you know how did you set</p>
+<p>Gamma or some other thing and so it's</p>
+<p>you know in spirit this is very similar</p>
+<p>to that um what's nice is that the the</p>
+<p>PDP package um it has different</p>
+<p>inference algorithms um not many but uh</p>
+<p>as opposed to choosing sort of the</p>
+<p>standard one uh I've chosen</p>
+<p>MMP uh which is marginal message passing</p>
+<p>there's a nice paper on it that uh can</p>
+<p>be found in the speaker notes of the</p>
+<p>tutorial slides I make a brief reference</p>
+<p>to it here part all</p>
+<p>2019 and um so marginal message passing</p>
+<p>basically being a kind of U you know in</p>
+<p>a certain way it's a kind of compromise</p>
+<p>between uh uh overcoming</p>
+<p>intractability and and attaining</p>
+<p>achieving something like computational</p>
+<p>efficiency and approximation that you</p>
+<p>get with variational message passing but</p>
+<p>at the same time um it it it it it</p>
+<p>overcomes some of the issues of not um</p>
+<p>um having certain Precision terms</p>
+<p>involved</p>
+<p>that uh you know that leads to issues</p>
+<p>with VAR variational message passing</p>
+<p>that it it it can be uh it can lead to</p>
+<p>overconfident posteriors in the</p>
+<p>computation and meanwhile belief</p>
+<p>propagation is much more holistic but um</p>
+<p>more computationally expensive sometimes</p>
+<p>tractable depending on the situation so</p>
+<p>MMP is a nice way of striking balance uh</p>
+<p>trying to M find that balance between</p>
+<p>complexity and and and accuracy as we</p>
+<p>are always trying to do right um</p>
+<p>so you you'll notice uh that we plugged</p>
+<p>in everything that we defined so far A B</p>
+<p>CDE e and then the prior over a shows</p>
+<p>MMP just a little bit more explanation</p>
+<p>of what some of these other arguments</p>
+<p>are um but uh given the time and also</p>
+<p>simply the fact that I mean um we would</p>
+<p>have to go into a lot more to look the</p>
+<p>other options available I would say this</p>
+<p>suffices um you know if you want to play</p>
+<p>around with any of these um certainly go</p>
+<p>for it and especially recommend looking</p>
+<p>at inference Horizon in the policy</p>
+<p>length uh arguments um this agent is</p>
+<p>very simple in the sense that it makes</p>
+<p>no future planning steps for for</p>
+<p>constructing policies that go beyond</p>
+<p>just should I explore now or should I</p>
+<p>exploit now um it it can make</p>
+<p>inferences one additional time step into</p>
+<p>the future though so it does in a</p>
+<p>certain way allow it to have this kind</p>
+<p>of forward looking n where it'll not</p>
+<p>just try to anticipate what will happen</p>
+<p>next but it'll try to anticipate what</p>
+<p>will happen next next so you know the</p>
+<p>next time step and the one following</p>
+<p>that um and</p>
+<p>uh yeah I also chose stochastic action</p>
+<p>selection you could choose deterministic</p>
+<p>instead there's a note on how that works</p>
+<p>um basically you know if uh if you're</p>
+<p>posteriors over policies or that uh you</p>
+<p>know U explore has a value of one you'll</p>
+<p>choose that with probability .1 right so</p>
+<p>there's still stochasticity involved um</p>
+<p>but you're just going to be more likely</p>
+<p>to choose the option with the highest</p>
+<p>probability um deterministic means you</p>
+<p>would automatically go for the the</p>
+<p>action that has the highest probability</p>
+<p>assigned in the</p>
+<p>posterior so those things in mind uh</p>
+<p>this is the general process uh that will</p>
+<p>be carried out d in um an active</p>
+<p>inference Loop for our agent it'll infer</p>
+<p>States uh which you know once we've</p>
+<p>constructed our agent uh the agent and</p>
+<p>this is common for other reinforcement</p>
+<p>learning paradigms as well um you you</p>
+<p>have an agent and then that agent will</p>
+<p>have a series of attributes that you can</p>
+<p>access at any given time um this our</p>
+<p>agents have an infer States method which</p>
+<p>can then take in um the</p>
+<p>observation and then after that uh</p>
+<p>whenever it comes to learning uh the the</p>
+<p>PIP install version of imdp has update a</p>
+<p>b and d matrices uh available um there</p>
+<p>are uh I I to briefly hearken back to</p>
+<p>this there have been many updates to the</p>
+<p>PDP Library over the past couple years</p>
+<p>it's very exciting but uh I didn't want</p>
+<p>to give anything too definitive because</p>
+<p>I think many things are still in</p>
+<p>progress but right now they're they're</p>
+<p>acting developing means doing model</p>
+<p>fitting uh which are already there uh</p>
+<p>it's just I can see that they're they're</p>
+<p>kind of cleaning some things up they've</p>
+<p>also you know there there's a there will</p>
+<p>be means of using the Jacks back in to</p>
+<p>speed up a lot of the processes which is</p>
+<p>very exciting and also they've</p>
+<p>implemented a sophisticated inference uh</p>
+<p>which is another way of doing policy</p>
+<p>inference uh using a kind kind of</p>
+<p>optimizing the tree search um but I uh</p>
+<p>in addition to those updates uh they'll</p>
+<p>also be updating the abilities such that</p>
+<p>the agent could learn its preferences or</p>
+<p>its habits uh or other aspect the</p>
+<p>aspects these are just the the PIP</p>
+<p>install versions uh currently available</p>
+<p>methods then agent will infer its</p>
+<p>policies and then it will sample its</p>
+<p>action</p>
+<p>um so inate inference again we're using</p>
+<p>marginal message passing um interesting</p>
+<p>thing about pmdp is that um the only</p>
+<p>time that F variational free energy</p>
+<p>really comes up as far as the code goes</p>
+<p>is that um f gets uh scored across</p>
+<p>policies rather than being the more</p>
+<p>General free energy of the overall</p>
+<p>system per se but in certain ways from</p>
+<p>looking at the raw code that carries</p>
+<p>that out uh it appears that you know</p>
+<p>there are other aspects involved um but</p>
+<p>for the sake of the tutorial we'll just</p>
+<p>say what interesting is that uh free</p>
+<p>energy is the same for both actions at</p>
+<p>any given point in time and I think that</p>
+<p>in part is due to the fact that the</p>
+<p>complexity term uh in uh V defining</p>
+<p>variational free energy for each um</p>
+<p>action or policy um it's dependent on</p>
+<p>this uh the posteriors Over States</p>
+<p>versus uh your your prior which starts</p>
+<p>to look like your be Matrix regarding uh</p>
+<p>State Transitions and the agent has</p>
+<p>fully uh predictable fully uh you know</p>
+<p>identity mapping one to one mapping in</p>
+<p>its B transition matrices and I think</p>
+<p>that's what actually brings this</p>
+<p>complexity term uh down to uh virtually</p>
+<p>zero right uh it's like the the</p>
+<p>posteriors are basically matching what</p>
+<p>it it it knows what state it'll</p>
+<p>transition to and if it doesn't ever</p>
+<p>look learn its B Matrix and never has</p>
+<p>any opportunity otherwise to see</p>
+<p>something different from what it already</p>
+<p>believes then it's as if the agent fully</p>
+<p>believes like okay you know complexity</p>
+<p>is gone all it's left with is accuracy</p>
+<p>and so it's accuracy actually the</p>
+<p>difference between observations and</p>
+<p>States that's what's going to lead to</p>
+<p>the fluctuations in the variational free</p>
+<p>energy but this is all the code you need</p>
+<p>a really important part is the way that</p>
+<p>this OBS Ops uh variable or object is</p>
+<p>defined again it's very important to</p>
+<p>keep track of your indices um at any</p>
+<p>point in time you could you could Define</p>
+<p>an OBS object like this which is a list</p>
+<p>the first element of OBS corresponds to</p>
+<p>the first observation modality which for</p>
+<p>us was outcome and then the the value</p>
+<p>itself refers to the index of the</p>
+<p>particular observation in question so</p>
+<p>what we're saying here is the first</p>
+<p>value representing the observation</p>
+<p>modality outcome modality um that first</p>
+<p>value zero is index to Improvement and</p>
+<p>you can see that same logic uh plays out</p>
+<p>for the second element in the Ops list</p>
+<p>um you know this is for the attention</p>
+<p>observation modality and zero</p>
+<p>representing self as you know what it's</p>
+<p>indexed to and so it's as if the agent</p>
+<p>just observed that it was attending to</p>
+<p>it itself and it saw an</p>
+<p>improvement we simply run that through</p>
+<p>uh the agent. in first States method uh</p>
+<p>and plug into Ops and then the agent</p>
+<p>will update uh it'll find Qs meaning</p>
+<p>it's it's posteriors over hidden States</p>
+<p>and uh those will actually get stored in</p>
+<p>the agent as an attribute as well but um</p>
+<p>but the the method Returns the object</p>
+<p>and so I'm you know we're keeping it</p>
+<p>here Qs and then you can look um we we</p>
+<p>didn't have to explicitly say anything</p>
+<p>about Computing F it's just this INF</p>
+<p>first States um uh run then led to uh an</p>
+<p>internal computation of f in the agent</p>
+<p>that we can now access</p>
+<p>print so this starts getting into um let</p>
+<p>speed through this a little bit but</p>
+<p>because I already touched on various</p>
+<p>things but this is another breakdown you</p>
+<p>know it's very useful to look at the</p>
+<p>different breakdowns of uh variational</p>
+<p>free energy and expected free energy and</p>
+<p>so on um but I'm GNA move through this</p>
+<p>slide and come because we'll get back to</p>
+<p>policy inference shortly</p>
+<p>uh this uh this is to show that Qs the</p>
+<p>posteriors over hidden States uh is</p>
+<p>rather complex whenever you use the</p>
+<p>marginal message</p>
+<p>passing um uh algorithm uh but it's also</p>
+<p>very interesting in that the the way it</p>
+<p>gets broken down itself being a rather</p>
+<p>complex threedimensional matrix it's</p>
+<p>that the First Dimension refers to</p>
+<p>policy um if if we if we kind of open it</p>
+<p>up as it were um and the second one</p>
+<p>where uh is the time step and the third</p>
+<p>is the hidden State Factor so what this</p>
+<p>is saying is that um for the first entry</p>
+<p>uh which relates to explore and then the</p>
+<p>time step if you make you know the first</p>
+<p>entry of that means now and then in</p>
+<p>state Factor we only have one of them so</p>
+<p>the first entry is the only entry the</p>
+<p>attention in state factor that</p>
+<p>effectively means if you print Qs uh 0</p>
+<p>comma 0 comma 0o uh it'll print out this</p>
+<p>first value representing this is what</p>
+<p>the agent believes to be the hidden</p>
+<p>State given the policy um you know given</p>
+<p>the Explorer policy and so we can</p>
+<p>actually extract that out whenever I</p>
+<p>have these slightly out of line um we</p>
+<p>can extract that out and then</p>
+<p>um Thea excuse me um this line here</p>
+<p>agent. Qs uh we can we can uh extract it</p>
+<p>out via Qs action sampled ID Z all that</p>
+<p>means is uh we're grabbing the the</p>
+<p>agent's posterior beliefs given the</p>
+<p>actual hint state that it chose um that</p>
+<p>there's a little bit of complexity and</p>
+<p>it get it's it's much much clearer in</p>
+<p>the Google collab script um that I've</p>
+<p>included so I advise having a look at</p>
+<p>that um but this is the code that allows</p>
+<p>the agent to uh update its a matrix uh</p>
+<p>the only reason why uh we need a couple</p>
+<p>extra lines of code is because of the</p>
+<p>complex structure of the Qs that um</p>
+<p>comes out um of a marginal message</p>
+<p>passing</p>
+<p>agent and</p>
+<p>then we'll look</p>
+<p>at</p>
+<p>um um policy inference you saw that</p>
+<p>there are more slides than what I really</p>
+<p>need to explain it but um this is the</p>
+<p>final step of the action perception Loop</p>
+<p>so for policy inference your posterior</p>
+<p>beliefs over your policies uh in this</p>
+<p>case are um your negative expected free</p>
+<p>energy</p>
+<p>times gamma which uh have a better slide</p>
+<p>to represent</p>
+<p>that here we are um gamma which is your</p>
+<p>action Precision so just as I mentioned</p>
+<p>like um we can we can put these uh hyper</p>
+<p>priors or parameters on our a matrix to</p>
+<p>learn the a matrix and and and that</p>
+<p>scale argument kind of kind of um down</p>
+<p>Tunes or uptunes the Precision on the a</p>
+<p>matrix similarly here um we can we can</p>
+<p>downtune or uptune uh the the Precision</p>
+<p>over G uh expected free energy and since</p>
+<p>expected free energy is what is directly</p>
+<p>involved in real izing one's preferences</p>
+<p>I mentioned earlier with C matrix it's</p>
+<p>kind of like whenever we look at this</p>
+<p>equation is that we're seeing uh a sort</p>
+<p>of balancing act between expected free</p>
+<p>energy related to sort of deliberate</p>
+<p>decision making to realized goals uh you</p>
+<p>know these are very contextual you know</p>
+<p>uh kind of beliefs and and and uh ways</p>
+<p>of computing free energy and then you</p>
+<p>have variational free energy which uh</p>
+<p>you know is sort of like the the free</p>
+<p>energy of the present um and it doesn't</p>
+<p>necessarily take into account anything</p>
+<p>regarding uh preferences uh you know the</p>
+<p>C Matrix and what you say you want to</p>
+<p>see uh it's more about just kind of</p>
+<p>optimizing your model in the moment and</p>
+<p>then uh habits which we already touched</p>
+<p>on earlier um and then those uh we take</p>
+<p>the we actually take the natural log of</p>
+<p>those so that they kind of fit similarly</p>
+<p>on the same scale with expect to free en</p>
+<p>energ and variational free energy so</p>
+<p>it's kind of like you have these three</p>
+<p>different you know you have your habits</p>
+<p>built up from the past you have your</p>
+<p>variational free energy of the present</p>
+<p>and then you have your expected free</p>
+<p>energy of the future all sort of</p>
+<p>contending with one another and then</p>
+<p>being run through this soft Max function</p>
+<p>which as we saw earlier uh when we used</p>
+<p>it for the C Matrix um that converts it</p>
+<p>into something that sums to one and then</p>
+<p>axes our um uh categorical probabilities</p>
+<p>distribution and the number of entries</p>
+<p>will be equivalent to the number of</p>
+<p>actions you have available and so that</p>
+<p>will look like um in the case of G alone</p>
+<p>uh it'll it'll look like this you'll</p>
+<p>have your uh free energy for uh the</p>
+<p>explore action and your free energy for</p>
+<p>the exploit action and recall that uh</p>
+<p>that we want to minimize this quantity</p>
+<p>so it's actually the the quantity with a</p>
+<p>smaller number that's uh better so to</p>
+<p>speak um and then these values will get</p>
+<p>plugged into the policy inference</p>
+<p>equation up top in addition to what we</p>
+<p>already saw earlier the variational free</p>
+<p>energy values we saw and then the habits</p>
+<p>which we programmed even earlier than</p>
+<p>that so we have now all of components</p>
+<p>for constructing an active inference</p>
+<p>agent we have all the components needed</p>
+<p>for doing uh hidden State inference of</p>
+<p>of having our agent receive observations</p>
+<p>that it uses to receive uh to to infer</p>
+<p>hidden States and then to infer policies</p>
+<p>and to to select an action uh that</p>
+<p>that's what this slide represents is the</p>
+<p>ability to uh infer policies um you can</p>
+<p>print out G and have a look at it uh and</p>
+<p>then with sample action this is just</p>
+<p>basically has the agent sample from</p>
+<p>it's posterities over policies and then</p>
+<p>this act this extra code here is simply</p>
+<p>because um you know the whenever you</p>
+<p>have the agent sample in action it</p>
+<p>returns it within a list uh and so we</p>
+<p>need to extract that out of there</p>
+<p>um and</p>
+<p>then these last two slides were to</p>
+<p>represent uh two example simulations</p>
+<p>that I ran um they're I'm sure they look</p>
+<p>rather busy as many of these other</p>
+<p>slides have but there's just so much to</p>
+<p>kind of look at and get into um with</p>
+<p>this figure attempts to do is that you</p>
+<p>can lead it read it from left to right</p>
+<p>uh time like over time steps um from the</p>
+<p>start of a simulation to the end in this</p>
+<p>case it was 30 time steps</p>
+<p>long and then you can also read it from</p>
+<p>top to bottom uh where the agent</p>
+<p>receives an observation it computes</p>
+<p>variational free energy um it learns</p>
+<p>it's a</p>
+<p>matrix it infers policies and the</p>
+<p>expected free energy of each action uh</p>
+<p>it it uh along with that that g then</p>
+<p>gets included along with f and habits to</p>
+<p>compute um posterior beliefs about</p>
+<p>policies and then uh finally the agent</p>
+<p>chooses an action that gets sent in so</p>
+<p>it's kind of like from left right we're</p>
+<p>looking at each time step where a whole</p>
+<p>uh action perception Loop is happening</p>
+<p>and then vertically we're looking at an</p>
+<p>entire uh action perception Loop or you</p>
+<p>could flip that say perception action</p>
+<p>Loop given Ag and is getting getting an</p>
+<p>observation first</p>
+<p>right and so uh in this simulation I'll</p>
+<p>just stick with this one uh but uh you</p>
+<p>know in in this</p>
+<p>simulation</p>
+<p>uh the agent</p>
+<p>um receives an initial observation uh it</p>
+<p>just forced it to say like self and and</p>
+<p>Improvement know it seems good um or</p>
+<p>excuse me it gets initialized with with</p>
+<p>Improvement and neighbor and then for</p>
+<p>the first half the simulation we're in</p>
+<p>what I'll call the neighbor context</p>
+<p>where in that case uh the simulation is</p>
+<p>uh you know it's programmed in a loop so</p>
+<p>the agent will receive um</p>
+<p>it will always receive uh an improvement</p>
+<p>if they exploit and they'll always</p>
+<p>receive a no improvement if they explore</p>
+<p>so you can see this is a very</p>
+<p>deterministic uh and very extreme</p>
+<p>environment where uh you know choosing</p>
+<p>to explore always leads to a bad outcome</p>
+<p>for the agent choosing to exploit always</p>
+<p>leads to a good outcome for the agent</p>
+<p>and so during the first couple steps</p>
+<p>call that our agent starts off with um</p>
+<p>you know these uniform beliefs uh as far</p>
+<p>as its habits go of whether it should</p>
+<p>explore or</p>
+<p>exploit uh and so that's where these red</p>
+<p>and blue lines and this probability uh</p>
+<p>subgraph here subplot uh they line up</p>
+<p>with one another they're 0. 5.5 so</p>
+<p>effectively the agent is just kind of</p>
+<p>randomly choosing one of these two</p>
+<p>options and it just happens it choose to</p>
+<p>explore both times</p>
+<p>whenever it chose to explore both times</p>
+<p>for the next two time steps it saw that</p>
+<p>there were uh no improvement like bad</p>
+<p>outcomes um you know given that and uh</p>
+<p>the the agents free variational free</p>
+<p>energy of the present uh kind of uh kind</p>
+<p>of got jerked downward uh in a in a good</p>
+<p>way it's meaning that it's informative</p>
+<p>to the agent during those time steps to</p>
+<p>see that it's accumulating evidence that</p>
+<p>it's seeing that it it might be learning</p>
+<p>something and in the meantime during the</p>
+<p>second time step the agent learned its a</p>
+<p>matrix right so um that also means that</p>
+<p>there was a lot of updating in its</p>
+<p>internal model uh that has led to</p>
+<p>changes in its free energy as well and</p>
+<p>then over</p>
+<p>time uh things start to diverge the</p>
+<p>agent quickly realizes oh if I exploit I</p>
+<p>receive this green Improvement</p>
+<p>observation again and again so the agent</p>
+<p>proceeds to uh exploit and it actually</p>
+<p>does it all the time as it's doing it</p>
+<p>it's seeing that there's less and less</p>
+<p>expected free energy to just exploit um</p>
+<p>and then similarly in the final policy</p>
+<p>inference it it actually reaches um you</p>
+<p>know a 1.0 probability that the agent</p>
+<p>should exploit to where the agent is</p>
+<p>effectively doing this</p>
+<p>deterministically uh practically given</p>
+<p>that it keeps inferring that and also</p>
+<p>this yellow line is especially</p>
+<p>interesting um and and part of why I</p>
+<p>wanted to do all this in the first place</p>
+<p>what this yellow line is doing is that</p>
+<p>this is me extracting out from it um the</p>
+<p>probability of the agent seeing an</p>
+<p>improvement uh given that it attended to</p>
+<p>its neighbor which links up with</p>
+<p>exploiting so this is teaching the agen</p>
+<p>that uh it should keep exploiting um</p>
+<p>it'll see improvements it'll get What It</p>
+<p>Wants it'll keep going that way right</p>
+<p>this agent is adapting to an environment</p>
+<p>where um you know the that's exactly how</p>
+<p>this world works right and then halfway</p>
+<p>through the</p>
+<p>simulation uh everything is reversed so</p>
+<p>now uh we went from one environmental</p>
+<p>extreme to another in the first case the</p>
+<p>agent saw improvements uh from attending</p>
+<p>to its neighbor now the agent will only</p>
+<p>see improvements from attending to</p>
+<p>itself and it only see no improvements</p>
+<p>when attending to its neighbor and</p>
+<p>because there have been so many</p>
+<p>instances in its past experience of</p>
+<p>seeing beneficial outcomes when it</p>
+<p>exploits its neighbor um the agent now</p>
+<p>actually has to</p>
+<p>unlearn what it is learned right um and</p>
+<p>by the end of the simulation still</p>
+<p>hasn't fully done that um</p>
+<p>and uh we we can see this reflected in</p>
+<p>uh the um expected free energy the it</p>
+<p>starts to rise again for exploit as the</p>
+<p>agent no longer sees any more</p>
+<p>improvements even though uh it's</p>
+<p>continuing to exploit because that's</p>
+<p>what it expects so this is a toy</p>
+<p>simulation in that you might not have</p>
+<p>learning happen after every two times</p>
+<p>steps that's a very arbitrary thing that</p>
+<p>I've chosen to do and it's actually a</p>
+<p>rather rapid learning rate all things</p>
+<p>considered more often than not whenever</p>
+<p>setting up a simulation you'll have an</p>
+<p>agent who might say learn at the end of</p>
+<p>a trial where you run 10 Trials of Three</p>
+<p>Time steps each or something along those</p>
+<p>lines right um it's less common to run</p>
+<p>trials over 30 time steps however uh in</p>
+<p>more traditional agent-based modeling uh</p>
+<p>paradigms because of their Simplicity</p>
+<p>you often do run</p>
+<p>uh you know a simulation over many many</p>
+<p>time steps right and so I want to make</p>
+<p>sure that this code is set up in a way</p>
+<p>that you could run this as long as you</p>
+<p>you know prefer to without without too</p>
+<p>much complexity because I wanted to show</p>
+<p>the value to computational social scien</p>
+<p>as to what they might be able to do um</p>
+<p>with with active inference agents but</p>
+<p>now that we're uh significantly Beyond</p>
+<p>uh you know where where I wanted to wrap</p>
+<p>up um I'll just take one more minute to</p>
+<p>say um you know there again there is um</p>
+<p>you can land at the</p>
+<p>GitHub uh you know website that I made</p>
+<p>it's very short to the point and all the</p>
+<p>links here are uh available for the</p>
+<p>slides that I was just showing there are</p>
+<p>many more slides I tried to be rather</p>
+<p>comprehensive uh given uh you know how</p>
+<p>much material I'm trying to show and</p>
+<p>then uh the two collab scripts with this</p>
+<p>second one being a further development</p>
+<p>of the original code but I'm adding more</p>
+<p>explanatory mark off uh excuse mark off</p>
+<p>uh markdown uh cells that uh kind of</p>
+<p>better describe things uh including</p>
+<p>giving examples of how uh the a matrix</p>
+<p>works and the B Matrix works and</p>
+<p>furthermore again I I repeatedly</p>
+<p>emphasize like being able to get your</p>
+<p>Matrix construction and structuration</p>
+<p>down I actually provided code on here's</p>
+<p>how you create you know an a matrix and</p>
+<p>you can</p>
+<p>manually uh Define the values it's a</p>
+<p>good idea to learn how to manually</p>
+<p>Define the values of the a matrix or of</p>
+<p>the me the B Matrix um it looks rather</p>
+<p>tedious than it is but to be able to do</p>
+<p>them one by one is a great sort of</p>
+<p>dactic means of like learning how to</p>
+<p>construct these including whenever we</p>
+<p>get into these more complex like ways of</p>
+<p>um you know representing probability</p>
+<p>distributions where you have three or</p>
+<p>more Dimensions but once you're able to</p>
+<p>do that you might just at some point</p>
+<p>realize oh there's a loop I could write</p>
+<p>that could do this for me um but you</p>
+<p>don't quite know what that Loop looks</p>
+<p>like until you kind of get a sense of</p>
+<p>what value should be there right so um</p>
+<p>anyway so the it's the point is that</p>
+<p>there are just some additional uh tools</p>
+<p>and information that can be used here</p>
+<p>and then all the code is available for</p>
+<p>say uh printing out like running the</p>
+<p>example simulations and then looking at</p>
+<p>the plots at the end feel afraid to you</p>
+<p>know modify and adapt those um as as</p>
+<p>pleases you so um that's all I have for</p>
+<p>today and I would love in future to give</p>
+<p>another uh talk Andor pre-record</p>
+<p>something that goes into a lot of the</p>
+<p>other material and probably gives a more</p>
+<p>kind of cursory overview of the rest</p>
+<p>especially for people who would be</p>
+<p>interested in um multi-agent simulations</p>
+<p>and um and especially kind of using</p>
+<p>leveraging packages like Network X which</p>
+<p>will allow you to kind of connect agents</p>
+<p>and graphs and Define like sort of like</p>
+<p>the relationships with one another and</p>
+<p>it gives clever ways of of giving them</p>
+<p>actions that are specific to only the</p>
+<p>agents in their Network or other things</p>
+<p>like that so um yeah that uh concludes</p>
+<p>thanks nice great work um why or how</p>
+<p>would somebody use it other than to get</p>
+<p>a good handle on the PDP how would you</p>
+<p>see it being used or adopted for</p>
+<p>research</p>
+<p>cool yeah yeah um so I think uh in</p>
+<p>scenario like this kind of provides a</p>
+<p>general agent who can like do things</p>
+<p>that are defined as exploring or</p>
+<p>exploiting and so</p>
+<p>um what you could do is use it to you</p>
+<p>know create the the ink landscape laser</p>
+<p>Freedman model that I I mentioned</p>
+<p>earlier uh and then and then tweak</p>
+<p>things from there or you could use this</p>
+<p>as a more General template like take out</p>
+<p>the idea that these are attention and</p>
+<p>outcome modalities and stuff swap them</p>
+<p>out for you know whatever you want this</p>
+<p>can have like the template is here for</p>
+<p>including as many observation modalities</p>
+<p>in state factors as you want for example</p>
+<p>uh just change the names and make sure</p>
+<p>you define the ab CDs you know uh to</p>
+<p>your liking and so that that's really</p>
+<p>what I wanted to do just create like</p>
+<p>here here's here's an example agent</p>
+<p>because we need to know what the final</p>
+<p>picture should look like but um you know</p>
+<p>from there just just tear it apart and</p>
+<p>like you know to to your hearts content</p>
+<p>and and make it into to what you want to</p>
+<p>see these agents can be used to you know</p>
+<p>um the idea of autonomous decision</p>
+<p>making that if there are any discrete</p>
+<p>number of things that you'd want to set</p>
+<p>up some kind of agent to do and you know</p>
+<p>what kind of data you want it to read um</p>
+<p>you know and what what should be the</p>
+<p>impact of each of those discrete actions</p>
+<p>it has like you have this as a kind of</p>
+<p>like agent that you can plug into uh</p>
+<p>that that sort of design diagram right</p>
+<p>so big answer it's pretty abstract sorry</p>
+<p>but yeah cool what will be coming up for</p>
+<p>the next several</p>
+<p>weeks cool yeah um so with the Symposium</p>
+<p>I'm looking forward to giving a talk</p>
+<p>that's a little bit more uh to the</p>
+<p>script uh and less focused on coding and</p>
+<p>more on how these kinds of things might</p>
+<p>be applied in social science research uh</p>
+<p>including looking at uh you know some</p>
+<p>other research that has also been done</p>
+<p>uh just to try and give a a sense that</p>
+<p>is in fact a sort of subfield forming</p>
+<p>here and of course we have the the</p>
+<p>course on social science done with the</p>
+<p>with the Institute itself last year and</p>
+<p>um you know different people making</p>
+<p>Headway in that area so um looking</p>
+<p>forward to that and uh who who knows</p>
+<p>what else uh i' very much look forward</p>
+<p>to maybe presenting some other research</p>
+<p>where I'm using agents like this and</p>
+<p>having them interact in kind of</p>
+<p>interesting ways with let's say</p>
+<p>LMS um and you know these become a kind</p>
+<p>of uh fun uh way of trying to imagine</p>
+<p>autonomous decision making whenever it</p>
+<p>comes to things like prompting so</p>
+<p>yeah cool well the video description has</p>
+<p>the</p>
+<p>links and where things will be</p>
+<p>versions and it's a great demo so thank</p>
+<p>you any other comments</p>
+<p>you um not not currently aside from you</p>
+<p>know uh thanks everyone who uh joined</p>
+<p>the textbook group and uh you know over</p>
+<p>the recent reading uh we're currently</p>
+<p>talking through uh other ways that we</p>
+<p>might go about the textbook group going</p>
+<p>forward but we had a really nice wrapup</p>
+<p>conversation yesterday so looking</p>
+<p>forward to Future</p>
+<p>talks cool okay thank you again Andrew</p>
+<p>looking forward to the</p>
+<p>next episodes in the</p>
+<p>series yeah thanks Daniel thank you</p>
+<p>peace take</p>
+<p>care for</p>
+</article>
+</body>
+</html>

@@ -1,0 +1,3292 @@
+---
+title: "ActInf Livestream #022.1 ~ Psychophysical identity and free energy"
+category: "Livestream"
+series: "Livestream_022"
+episode: "1"
+speakers:
+  - "Psychophysical identity"
+  - "free energy"
+duration: "1:50:30"
+url: "https://www.youtube.com/watch?v=v60cQUiu1NE"
+views: 73
+exported_at: "2026-02-18T22:37:37.946091+00:00"
+format: markdown
+---
+
+# ActInf Livestream #022.1 ~ Psychophysical identity and free energy
+
+okay hello
+and welcome everyone to actin flap
+this is the actin flab live stream
+and i'm pretty sure we're live yes we
+are
+it's number 22.1 on may 18
+2021 and this is going to be really
+great discussion so i'm looking forward
+to it and thanks again everyone for
+joining live welcome to
+actin flab we are a participatory online
+lab
+that is communicating learning and
+practicing applied active inference
+you can find us at the links that are
+here on this page
+this is recorded and an archived live
+stream so please provide us with
+feedback
+so that we can improve our work all
+backgrounds and perspectives are welcome
+here and we'll be following
+good live stream etiquette welcome scott
+and
+raising our hands to ask questions and
+hear from everybody because this is
+really going to be a special discussion
+we're here in paper number 22 and on may
+18th today
+and next week on the 25th we're going to
+be having two discussions
+on the paper psychophysical identity and
+free energy
+by alex kiefer so thanks a lot alex for
+joining us live and engaging with the
+dot
+zero video because we gained a lot as a
+lab
+working through that and so we're ready
+to take it to the next level through
+conversation
+with you thank you thank you and today
+we're gonna be
+learning and discussing the papers link
+is here
+and the video is just us unpacking and
+exploring
+raising questions and we're going to be
+also taking notes so that in the dot 2
+we can be following up we're going to
+start with some introductions
+just to introduce ourselves and also
+maybe to raise any thoughts
+or questions that we had at the outset
+about the paper so
+everyone can feel free to write down
+points or write down questions so they
+don't uh forget them
+and we're pretty much just gonna jump
+around to any
+topic or question that drives us along
+and we'll flow with it as people join
+and leave
+and there will be a follow-up discussion
+22 next week
+that brings us to the introductions and
+the warm-ups
+so i'll start and we'll pass it around
+and then end up with alex
+who will provide i think a short
+introduction to the paper
+and then we'll continue the discussion
+from there
+so i'm daniel i'm a postdoc in
+california
+and something i'm excited about today
+was
+something we were just speaking about
+right before was learning about a
+transparent code
+and understanding what that might mean
+i'll pass it to
+scott
+hello i'm scott david i'm at the
+university of washington applied physics
+lab
+where i run a program called the
+information risk and synthetic
+intelligence research initiative
+and i'm delighted to be here today and
+i'll pass it to stephen
+hello i'm stephen i'm based in toronto
+i'm doing a practice-based phd
+at canterbury christchurch and um i'm
+really excited about
+the psychophysical areas being brought
+in with this
+process with energy so i'm intrigued
+because that's
+connects to some of the research i do
+with communities in their landscape
+and how to understand that so thank you
+and i'm going to pass it over to alex
+thanks hi everyone i'm alex watkins
+i'm a researcher in systems management
+school in moscow russia
+and also co-organizer of acting club
+and i pass it to dean
+hi i'm dean i'm up here in calgary
+canada
+i'm retired and i just try to keep up
+with everybody here
+i'll pass it to our special guest today
+alex
+hey dave um no dave is left sorry okay
+continue okay i'll excuse me
+hey thanks uh yeah i'm alex kiefer um
+i'm a researcher in philosophy and
+cognitive science and i do some
+modeling as well um i'm i have an
+affiliation with monash university
+um i'm currently also a lot of my time
+is devoted to working
+for uh nested minds solutions which is
+um
+an enterprise uh started by maxwell
+ramstad and some other people
+uh just recently uh we've already got a
+lot of work
+under our belt um so i'm really happy to
+be here um
+thanks thanks for having me this is like
+i think gonna be a really fun discussion
+um cool maybe just
+while the other participants are
+preparing a thought
+or a question to lead off alex just how
+did you
+come to writing this single author paper
+what yeah in your path led you to write
+it this way
+yeah sure um so uh so this is an idea
+that
+i think first sort of uh came up for me
+in
+2015 or so um
+so i've been fascinated by this formal
+analogy between
+optimization and uh processes and
+thermodynamics and physics
+um for a long time since well not that
+long maybe 2012 2013 when i started
+getting into the neural net literature
+on
+helmholtz machines and things like that
+and um
+so i think this this analogy uh between
+physics and optimization has been
+tempting
+for a lot of people to want to collapse
+these right and this is something that
+people like um
+my friend mel andrews constantly warned
+against is like just taking the physical
+informational description of the system
+to be uh the same
+as as its physical description but i
+thought that there was
+a compelling argument to be made here so
+i wanted to actually articulate not
+necessarily endorse
+right i think the way i couch things in
+the paper is a bit cautious on this but
+i wanted to articulate
+what is the most sort of the simplest
+most kind of perhaps radical perspective
+one could take on this
+the relationship between the cognitive
+dynamics and the physical dynamics
+um that you might be able to defend
+right from a sort of free energy
+principle-ish perspective
+um so i wanted to to um just
+lay that that one way of understanding
+this relationship out that was
+that was as clear as possible um i think
+in the process i ended up writing
+a paper that many people find to be
+quite complicated so this was supposed
+to be an exposition of a simple idea
+so maybe we can see if we can get back
+to that
+awesome so anyone can raise their hand
+and we'll just start but i really liked
+how you said articulate but not
+endorse you've put out an artifact for
+us to
+interact with and to explore and you
+have framed
+the psychophysical identity thesis as a
+hypothesis
+so it's something that evidence can now
+be used
+to support or to disprove and that's
+sort of um
+a nice piece of work that now obviously
+we have
+started the discussion around so we'll
+go to stephen and then scott and then
+anyone else with a raised hand
+one thing i like about what you're doing
+here is you're sort of bringing it into
+the domains where the action is
+happening it's a bit like
+most of the physics around
+thermodynamics is really often used in
+chemistry and a lot like niels bohr was
+actually a chemist
+wasn't a physicist per se he used
+physics so there's an interesting thing
+about how
+these areas get transposed over you know
+and
+may be layered again to biochemistry
+which maybe is trying to look at the
+mechanisms that sit on that
+and xyz so i think that's quite relevant
+to
+some of the questions we've been
+wrestling with with what happens when
+things start to transit
+transition to the ontology like and how
+how can you keep a handle on that when
+you've got people from different
+backgrounds so i i think that's quite
+interesting awesome thank you stephen
+scott and then anyone else with a raised
+hand
+yeah i'd like to just ask about your
+having written the paper and now
+contemplated it discussed it with folks
+what's your impression of the role
+of the observer of difference
+of gaps of differences
+in identifying sources
+of free energy
+um exploitable sources let me let me
+back up
+one i did a paper in uh presentation in
+um
+mit in 2013 called entropy
+and i asserted that carnot's equation
+the hot and cold differentials that are
+reflected there are the same as
+arbitrage equations
+in markets because you and i asserted
+that heat engines were produced by the
+human mind
+observing an attribute because it didn't
+matter that we thought we had a flow of
+caloric
+and it was flowing downhill we actually
+the notion of flow
+was what we asserted in order to convert
+random heat random motion of particles
+which we really only use for warmth
+being able to put that into a cylinder a
+combustion chamber and then perform work
+took thousands of years i wonder if you
+could comment on
+it feels like we're using information
+like the cavemen
+as for warmth and not yet putting it in
+a combustion chamber
+and the combustion is it the fact that
+the processes
+where differentials are captured
+exploited
+utilized i'm not sure what word to use
+here is that a
+night like a reaction chamber are we
+reacting observations and data
+into inference in these reaction
+chambers of mind
+similar to the differentials that we
+exploit
+to in a heat engine for work are we able
+to
+to capture what are the devices of
+capture sorry for the long question
+right
+yeah your hand on your chin makes me
+think that maybe it's an intriguing
+question
+it's definitely intriguing i probably
+can't do justice to it but um
+i'll try um so just on the last point i
+guess i think that the
+um well actually so first to take your
+your question about information
+um whether we're using it um
+so are you sort of like whether we're
+really exploiting it
+up to its maximum possibilities right as
+information
+or just or just treating it as sort of
+you know
+uh something like warmth a source of
+warmth i mean i
+i take it that insofar as we're using
+information
+so i right so it gets to the heart of my
+perspective and to this
+perspective of this paper i guess so i
+said i flowed this thesis as a
+possibility but i
+i do kind of have some sort of
+deep-seated conviction that that
+information can always be looked at
+sort of in terms of what it represents
+and and physically right so any process
+of information
+uh information is literally a process of
+physical change as well as
+as well as a process of some system
+coming to know something
+right so to take the etymology right
+just go back to shannon's original
+framing
+information is just the amount by which
+someone or something has been informed
+in my in my view so um so i think
+insofar as we're treating something as
+information
+we are using it as information um
+right it's not now i don't know what the
+announce maybe i'd love to hear more
+from you on this i don't know what the
+analogy
+would be to using information just as
+heat is it like
+we're aware of something but we're not
+really doing anything with it like in
+terms of inference
+or uh so so i guess
+my my view is that we are in so far as
+we're thinking
+and exploiting information sources for
+inference we're using it to its
+um maybe not maximally efficiently
+always but we're using it
+in a way that's that's intelligent but
+but just one more point in this like
+um the the analogy to combustion engine
+and like
+the the idea of um
+i guess my thesis here is that anytime
+we're performing an inference
+any system is performing an inference
+the physical
+aspect of that is something like
+right it is an actual physical reaction
+so there is always something
+that has precisely that nature behind
+any
+uh use of information um but i think
+everything i just said sounds to me
+completely trivial as i'm saying it so
+um
+that's its power yes perhaps
+what did you mean we can unpack that
+because
+it's known that is um not just simply
+wasted but where there's a heat
+differential
+there can be work and potentially when
+there's an information
+differential there can be an analogy to
+physical work but in the informational
+regime so what motivates that line of
+thinking
+for you yeah it was well and again i'll
+send around the
+slides from 2013 but but the idea was
+that
+it is not by analogy it really is
+a capturing by the mind of an
+attribute of a system right you look at
+a block of iron it has
+spin it has temperature it has color
+there's all sorts of dimensions that it
+has
+that are unexploited um and then we can
+look at them and exploit them for
+different you know magnetism with spin
+and then temper or electronic electrons
+flow through iron same block iron it's
+just sitting there
+but you measure different attributes and
+as you measure different attributes you
+measure them into existence and that
+existence then can be exploited
+and so we did that with heat right they
+thought that heat was caloric they
+actually thought it was a fluid
+right and that it but then the the guy
+who is the cannon borer i forget which
+one the guy who board the brass cannons
+he said wait a second it can't be a
+fluid because it's unlimited it's a
+quality of the material
+so i think what we're talking about in
+information it's a quality not of the
+brain
+of the it's quality of the mind and the
+differential between the brain
+and the individual and the mind there's
+a there's a
+mind out there to be learned let's call
+it an environment if it's animals but if
+it's humans it also involves language
+and when you're born you don't know it
+and then you go learn it
+so your brain has to get tuned into the
+mind so to me the mind is our combustion
+chamber
+and you gotta learn the combustion now
+if you do if you're different learn
+different things if i'm a hunter
+gatherer i'm going to learn different
+things in my environment to combust
+right i'm going to have different cues
+and i'm going to say wow this is
+relevant for me because i got to do this
+and this
+so you the we train i think we train
+our combustion chamber it's symbolic
+right since we're training this thing in
+which to contain
+the differential accomplishment
+of the active inference the beijing
+accomplishment
+and then we trained so it was an article
+in just the last thing i'll shut up
+for a minute there was an article in
+nature magazine a couple years ago they
+said less than 12 month old human
+infants learn in a beijing way if you
+point to it if you tell a
+baby a horse has four legs the
+baby will point to a table a coffee
+table and say horsey
+then you say no
+scott just disappeared it was too much
+of a truth drop with the table
+and the legs so stephen to you and we'll
+return to scott when we can
+okay please sorry okay scott's back
+anyway continue with
+okay continue from the table okay
+yeah anyways bayesian you they beijing
+accumulation you they'll point to a
+table
+then you point say you know let's have
+hair they'll point to a dog and say
+horsey then
+they say no it has to have a main
+they'll point to a horse and say garcia
+so it's a beijing
+the article was about bayesian assembly
+of human knowledge
+and so what if the baby is not really
+assembling the knowledge but just tuning
+their brain into the mind and the mind's
+a combustion chamber
+and the mind we teach we have to learn
+the mind because that's the useful
+combustion we've already
+designed this community mind
+to navigate space and we teach it to our
+offspring in order to make them more fit
+anyway else cool thank you
+any thoughts on that alex well it's
+interesting i
+i don't know if i completely understand
+the way scott's using the term mind here
+but
+i think i kind of can see how something
+that deserves to be called the mind
+would emerge
+through this sort of learning process
+right so so i guess there's a trivial
+sense i think in which
+anything that has energetic properties
+has a mental side
+that's kind of what i'm saying in the
+paper um
+but it's trivial and if you want
+something that really functions
+cognitively
+then you need to have internalized a lot
+of these regularities through
+you know the sorts of learning and
+infant schemes that we're
+familiar with here so um if if that's
+what you
+mean by learning the mind i think scott
+you now guys
+analogized it to the environment at some
+point or maybe it's more than an analogy
+um it's like the the data the the source
+right of the data sensory data that
+you're interpreting um
+so uh yeah i think it's a cool idea
+cool stephen welcome blue
+steven with a question and then anyone
+else with a question or blue you can say
+hello
+yeah one question i'd be interested in
+is um
+do you see maybe more than one um
+type of information processing that may
+be happening at different levels
+so maybe you've got because we've had
+people talking say at the quantum
+level which could be happening
+particularly say the photons coming in
+with the iris
+and things going up and then you've got
+other levels where you've got these
+steady states
+going at different rates and then you've
+got
+some of the things you're talking about
+where maybe it goes into
+this sense of a more averaged closed
+mind idea which would have to be somehow
+created maybe because
+the dynamical nature of the data and the
+noise is not necessarily
+exactly how it is when it first arrives
+at the organism
+but maybe you're you're you're bringing
+back some of that more
+averaged out heat ideas
+um around how energy can be averaged
+over time
+in in some sort of heat form is that
+would that be accurate
+um i'm not sure about the heat piece i'm
+just
+genuinely not sure we can talk more
+about it but like
+as far as multiple types of information
+processing
+i mean i think that's definitely what's
+happening in the
+you know in the brain of course and
+there's all this
+literature on on multi-scale active
+inference and stuff which
+my paper isn't directly about active
+inference but um
+uh i think like there's no so we tend to
+signal out certain processes in the
+brain as like
+processing information but really that's
+going on
+on you know uh in on fine grade levels
+uh and on larger scales as you say um
+i think we tend to just pick out one
+piece to analyze at a time i guess
+the part of the question i don't know
+how to answer is like what
+what are the types of information
+processing in question so
+um i guess i'm skeptical of that type
+distinction not not against it i'm just
+not sure
+what what kind of types we have in mind
+but um
+definitely i think there's a there's a
+rule for averaging uh just in
+if we even if we just stick to neurons
+and don't worry about
+underlying chemistry or physics like uh
+if
+it can't just be that one neuron
+inspiring uh represents
+you know your grandmother because then
+if that neuron's shot then you can't
+represent your grandmother
+so um i think there has to be a
+if we want to associate content with
+brain states for example
+those states are going to have to be
+couched at the level of averages in some
+in some sense or some kind of
+statistical uh property
+um and i i think that comes out clearly
+also in the work that carl firsten and
+uh banyan uh and others have done on
+on the whole markovian modism idea so
+they talk about the fact that it's
+um uh you know it's um it's not
+individual brain states that encode
+information on their view it's it's the
+the mean of the distribution
+uh conditional distribution anyway going
+a bit into the weeds on this but i
+i i do think that um that's important uh
+heat i don't know let's talk more about
+it
+yeah keith we had the what is
+temperature slide which i'll
+just switch to yeah yeah wait stephen do
+you have any other thoughts
+well you know don't slide and maybe just
+as
+just a sort of following from that is
+maybe
+something about the mind and the level
+of the psychophysical
+maybe actually the mind is kind of a
+psychophysical level
+as much we think of as a brain level but
+maybe what you're pointing to is
+something a bit more of an of a dynamic
+um which is kind of interesting yeah
+i mean i i generally sorry i generally
+have trouble seeing distinctions between
+levels so
+so maybe that's what you know you you
+all could help point out
+like why these things are not the same
+uh and it wouldn't would help me
+go ahead hence the psychophysical
+identity thesis
+paper that you wrote right because
+that's the entire topic of this
+discussion
+is what are those relationships and are
+they
+like each other or are they
+overlapping are they isomorphic are they
+one of the same so
+um here on this temperature slide
+you wrote about how increases and
+decreases
+in temperature change the variance of
+distributions
+so maybe just what is temperature or
+in this psychophysical identity mapping
+what does temperature reflect because
+changing the temperature on the brain
+you're not just talking about going into
+a warmer
+room you're talking about something
+related to inference so what is
+happening there
+well right i mean i guess i am saying
+like
+look if if you change the temperature in
+the room and that ends up changing the
+temperature of the brain
+then it's kind of an implication of the
+thesis that
+you are changing the temperature of your
+statistical model as well to some degree
+right probably usually to an
+imperceptible or
+insignificant degree when something like
+walking into a different room
+because now the brain has its own
+internal homeostasis and it's not like
+we're gonna drastically directly affect
+the brain's temp
+internal temperature um by changing the
+room temperature one degree but i really
+am uh
+you know speculating or i'm considering
+the consequences of
+i mean the overall theme here and
+temperature is a special case but the
+overall theme is that
+uh anything that you want like so any of
+the terms in the home holds free energy
+from from physics from thermodynamics
+um should directly this is a transparent
+encoding idea it should directly sort of
+be reflected in the cognitive dynamics
+and so the cognitively speaking what
+temperature means
+like it says here is just um uh
+you know temperature parameters in
+models neural network models and other
+sorts of models um
+i think i've heard this referred to in
+the active inference literature as the
+as the shaky hand parameter
+right so it's like you're reaching for
+something if you increase the
+temperature parameter there's less
+certainty
+and exactly where the motor system will
+end up right so
+that's that's what it means cognitively
+speaking uh
+or if you don't want to call motor
+control low level motor control
+cognitive then
+in terms of of these models of organisms
+what it means is just
+literally just the variability of the
+distribution
+right the variance so um i guess what
+i'm saying is
+yes i think if this thesis is true then
+what encodes that
+is the actual temperature of the system
+that implements the model very
+interesting thank you we'll go to blue
+and then
+scott
+good morning i'm blue knight i'm a
+research consultant
+based out of new mexico and i really
+enjoyed this paper i really enjoyed
+the possibility of having a way to
+separate
+the mind from simulations of the mind i
+think that that's a really
+um relevant and pertinent idea to put
+forward
+but so in in relevance to temperature
+and this is going to like totally throw
+what i just said out the window
+uh you know i i um it dabbled a little
+bit in retail investing right and so
+like the day before or like maybe in the
+morning
+you might like what's called take the
+temperature of the market
+right so you see kind of as things going
+up or things going down like you just
+kind of put your feelers out there
+and take the temperature of what the
+market's going to do
+so i just wonder in terms of cognition
+in terms of active inference if there's
+a way to
+like take the temperature in in maybe
+like more of a
+um of a metaphorical sense
+right does that make sense
+um i'm not sure um
+so just i can elaborate a little bit
+more like what uh
+like in in the political system right
+like
+we get like a temperature like is this
+like a liberal environment or is it like
+a more conservative environment and that
+might influence
+our actions right like the active
+inference loop might be
+influenced by the perception of
+temperature
+in the environment right
+so yeah i mean uh first of all hi thanks
+for joining
+um you you and dean and daniel uh you
+all
+i really enjoyed your discussion but in
+point zero and
+it made me excited to talk about it
+today because it's it's cool how
+just how many different questions or you
+know anyway whatever it's cool
+so um i mean sure you could use
+temperature in a metaphorical way as
+well like
+um i think uh
+it like i i guess in this paper i tend
+to
+i i like i tend to assume that
+when people that that metaphors are are
+not metaphors but identities right as
+they graph
+the ground level assumption and then see
+see where that you're forced to
+distinguish between them
+so like if we're talking about again if
+you're talking about a model of motor
+control where you're literally reaching
+for something
+then i think in that case it's plausible
+that there's some relationship between
+the actual temperature of the pieces of
+the system that are driving the motion
+and the temperature parameter in the
+model but like if you're talking about
+something like
+taking the temperature of the market or
+you know the political
+there still might be partial mappings
+there
+right like but you know if you're
+defining some arbitrary dimensions so if
+the the temperature politically means
+one side of the scale is is conservative
+and the other side is liberal
+then then i wouldn't expect that there
+would be some physical component to that
+um but the same way that your paper was
+uh as you said just putting it out there
+not endorsing the psychophysical
+identity it's almost like
+an econophysical identity thesis
+would be asking whether the thermo-like
+dynamics of markets actually have some
+sort of
+mapping that's more than a metaphor but
+it's something that can be stated and
+blanketed or boxed off and then can be
+understood as being adequate in certain
+situations but maybe inadequate
+in other situations but when we talk
+about the market heating up
+people know what that means in a way
+where you know the market feeling happy
+doesn't really capture it heating up or
+cooling down so
+scott and then anyone else with a raised
+hands
+oops i'm not sure if i should try to
+share my screen i may just screw up so
+let's not do that but let me
+so i just pulled up my slides from 2013
+and so
+i said under the first law of
+thermodynamics temperature has
+two roles first from the perspective of
+a party
+outside the system temperature tells
+whether two or more systems are in
+thermal equilibrium
+same temperature equals equilibrium okay
+from the perspective of a molecule in
+the system
+temperature tells about the distribution
+of various molecules in the system over
+the possible energy states right the
+higher temperature equals a broader
+distribution of molecules in different
+states and a higher boltzmann
+distribution so what i'm
+asserting in this context in the context
+of those earlier slides
+was analogously here
+are we looking within this system of the
+cognitive system and the dynamics of
+components within it
+or vis-a-vis an outside voice
+for that system i think that's a
+relevant question here because when
+you're talking about
+the first law in the in here
+we don't we have um this is um
+um um maxwell's demon is actually
+a person now
+sorry that obscure reference but
+maxwell's demon was a convention
+to plus with the second law of
+thermodynamics a gating function
+um and now we actually have
+the notion of what does a molecule in
+the system think
+in a sense is what i'm inviting here and
+this and so i think the assertion and
+the assertion certainly i'm making that
+context is we can capture
+either one of those dynamics and it's
+info dynamics you're not thermodynamics
+is what i call it
+but essentially first law tells you
+about
+interoperability is what my assertion is
+because
+you can have equilibrium in a symbolic
+way i
+assert is the equivalence of
+interoperability symbolic
+and so that's when you can have a
+beating of the minds you can have shared
+consciousness society
+shared language all that kind of stuff
+is my notion of where the
+first law takes you thanks
+that's really intriguing um i need to
+read
+your work on this please um
+yeah i mean not to give a too hand-wavy
+an answer but i think
+since we're dealing with multiple scales
+here we could talk about neurons
+performing active inference
+people doing it i think both of those
+sort of uses of temperature are relevant
+um
+but exactly yeah um
+we'll get to stephen but maybe just a
+general question where does active
+inference
+come into play and how does it come into
+play
+oh yeah so um right so you
+you guys raised in the point zero that i
+didn't really talk about activations
+that much in fact i only referenced the
+literature on active entrance
+um so this is yeah it's interesting this
+paper isn't really about active
+inference it's not
+really directly about the fep either so
+thank you for having me despite that
+um but it's i mean obviously it's in the
+it's in the very core it's concerned
+with the same core issues right
+but um i don't want to take us
+on this if it's a tangent but the reason
+that i don't write about active infants
+that much is that i think from a
+high enough or meaning abstract enough
+point of view
+um you you don't need i don't know that
+there's really a difference
+to me active influence kind of relates
+to the stuff the way that like dawkins's
+extended phenotype
+proposal relates to more traditional
+ways of thinking about
+um evolution and genetics in that it's a
+new paradigm
+but i don't i don't think that there's a
+system that you can describe using
+active inference
+that you couldn't also describe um using
+say traditional
+representationalist terminology so
+that's obviously controversial
+we could talk about it but um like
+in so far as your as you're concerned
+with analyzing or designing a system
+like right like if you wanna even if you
+want to write an active inference agent
+as a model you only have control over
+its internal states
+you can't directly control it needs yes
+it optimizes
+um its situation by acting and
+intervening on the environment
+but you can't directly control
+how the intervention on the environment
+plays out you can only control the
+expectations for sensory data given
+that you've acted in such a way and so
+um
+that's why i tend to just default to you
+know it's what
+jerry fodor called methodological
+solipsism right which is a
+very different perspective from what
+people i think i'd love to talk about
+this maybe
+maybe they're more similar than i than i
+think too but um
+anyway so so uh like active inference is
+great i think in fact it leads to new
+ideas for technology and new models just
+because it's a different way of thinking
+about things
+but when you're doing like philosophical
+analysis like this
+i don't find that it's for me often
+necessary
+to think in those terms but i would love
+for someone to point out
+something that i'm missing by not doing
+that
+well what we love here in the active lab
+is hearing everyone's perspective
+on active inference and also adjacencies
+and synonyms and other languages and
+other ways of expressing it so thanks
+for
+sharing it the way you did um steven if
+you
+wanted to okay yeah
+so so building on that you you mentioned
+the helmholtz free energy
+rather than the gibbs free energy so you
+sort of the broader sort of
+energy that's available um
+the the i suppose a question i've got
+here is in
+in this in that um actually go back to
+that diagram just one sec with the
+distributions there you've got just
+you you've got both the difference in
+the sort of the size the distribution
+for the different size molecules
+but you've got the average speed is
+higher for
+um hydrogen but yeah hydrogen or
+oxygen it's it's faster it's the speed
+is faster for
+something that's lighter and that may
+have an impact
+at the local level when the actual atoms
+are
+hitting each other at the same
+temperature but
+when you take the average it's all
+around the same energy
+if that makes sense so i just wondered
+if there's any
+particular sort of relationship
+to the way that the speeds
+are happening and the way that might
+change something at a certain scale
+and just helm holds and gives free
+energy
+yeah um so to be honest i mean the
+reason i wrote
+i write about helmholtz free energy is
+um
+just because it's the thing that jeff
+hinton and others
+um used in their um
+when setting up things like the
+helmholtz machine um the gibbs free
+energy
+uh i'm just less familiar with it's it's
+it adds complications that i thought
+weren't relevant but if they are
+relevant
+then let's talk about them um
+yeah could we maybe hear a little bit
+from you just what is free energy
+in the senses that you used it or how
+would you describe it to somebody who
+might be not very familiar with
+thermodynamics
+right um someone such as me for example
+so
+what i would say is well i mean i'm a
+philosopher but um
+uh so free energy in a physical and
+thermodynamic sense as i understand it
+again welcome i welcome any
+uh kings in the other direction um
+but as i understand it it's uh just the
+energy that's available
+for doing work in this
+the system so it's the internal energy
+the all the energy that the system
+harbors just in virtue of its
+configuration
+it's sort of existence at that moment um
+minus all all of the energy that's uh
+not usable because uh it's
+it's tied up with with sort of this
+disorder
+um with with entropy um
+so i'm sure that someone else here could
+maybe articulate that
+more gracefully than i just did but
+that's that's the one term
+and the other term in the in the
+equation here is the variational free
+energy
+which is just um the difference between
+a
+uh the the basically the
+the gen the gener the generative model
+or the the joint distribution that
+defines
+the system's generative model of um
+some kind of statistical model right
+more generally and
+um the approximation to it
+that you've arrived at at a particular
+time step right so if you're doing
+variational inference you're trying to
+fit this q distribution
+uh which i mean you know people this has
+been talked about ad nauseum so it's
+hard for me to get the energy to really
+launch into it because i feel like we
+all
+are familiar with this concept but it's
+it's just the difference between the
+approximating
+distribution the recognition
+distribution or density and the
+degenerative density so so it's so i
+guess the thing to underline there is
+that it's
+it's only defined in terms of these p's
+and q's right q recognition
+p generative that are they're defined in
+terms of the generative model which is a
+model right it's a
+it's a it's a um a mapping between
+like hypotheses right or hidden states
+and
+outcomes so there's obviously no a
+priori connection between that and like
+thermodynamics um
+so it's just important to keep in mind
+that one of these is is
+in terms of how it's defined as
+thoroughly like cognitive has to do with
+belief updating and the other
+has to do with the physical states of
+the system and that mapping
+between the cognitive and the
+inferential and the physical
+is again the entire discussion
+and the entire point of putting out an
+artifact that
+is critiquable or is extendable in the
+ways that you made it
+so scott then stephen and then also
+anyone else
+who's watching live can just put a live
+chat in and we'll ask the question so
+scott
+and then stephen so this is really what
+a great conversation thank you we've got
+a great paper
+so couple things first first of all you
+know i wonder we always talk about it
+being by
+analogy and it's not really
+thermodynamics but von neumann
+said to shannon use the second law of
+thermodynamics for your quantitative
+theory of information
+because in his quote right his quote was
+because the math is identical
+which tells you something it at least
+tells you something about math
+and humans but may not tell you anything
+about the environment but it tells you
+something about math and humans
+but he also said and if you use the word
+entropy in any argument you'll win every
+time because no one will know what the
+hell you're talking about
+so that's good advice on both of those
+points right
+so i always look at it and i go okay so
+let's talk about those differentials and
+you know we took that free energy
+question that we just answered i
+so i deal in policy i'm not a biologist
+i'm a lawyer
+okay in a physics lab and the reason i'm
+interested in this stuff
+is i think you can access the external
+states
+and in fact i think that's all we do as
+social beings
+is we that's what rhetoric is i am
+constantly trying to
+lasso external states of everyone else
+that's what politics is that's
+all the whole misinformation problem
+right now we're setting out
+now in a biological example we kind of
+don't send around memos as much
+now there is there are communications
+obviously in
+in the sciences and in the nature and
+all that but when we get into the
+human populations
+we may have something more going on here
+maybe mind is an emergent phenomenon
+merely of the attempts at harmonically
+coupling with other minds
+maybe a break if we're successful
+in tuning into that local mind we
+survive if i
+am dropped into france and i don't speak
+french then am i going to survive
+now now i will but what if it was 300
+years ago or whatever right
+so you need to if it's if the mind is
+fair
+feral and is trained maybe
+that ability to affect the externality
+is everything
+maybe that's how we are humans in the
+way that we are because we're pretty
+pathetic little organisms on our own
+each one of us right we don't have sharp
+fingernails and our tooth and claw is
+not
+would get bloody but it would take a lot
+of biting because they're kind of blunt
+right so anyway that's a bit of a
+tangent but
+so the question is are we maybe if we
+look at the
+maybe we're not entering another brain
+maybe the mind is where the action
+is and when we're doing this in training
+maybe we're merely tuning into something
+that exists already
+in our in our attempts here at this for
+active inference and we're
+just getting on board with the existing
+mind and so therefore our steady state
+our homeostatic state is the one that is
+most aligned with the externality
+that's drawing us there and as lawyers
+and as policy people
+we create artificial externalities
+that's why i use synthetic intelligence
+in our title
+we're creating synthetic externalities
+and saying hey come on over here we've
+got a good externality over here check
+it out
+this one's resilient sustainable and the
+sdgs in the u.n love it
+right so we're creating realities what
+do you think about that in terms of the
+notion of the uh efficacy
+of the possibility of harmonic coupling
+with other minds and that as
+a another active activity in active
+energy is not just changing your
+internal model
+yes it's extremely interesting so um
+i mean i think this question of how
+exactly the external states get into the
+picture is
+is like pretty fundamental for a lot of
+people who are in this area
+and uh i i think you're right that it's
+it's it's essential but it's essential
+in a strange way where it's completely
+inessential too so like
+if it's it's essential in that the yeah
+the reason that your steady state is
+what it is
+essentially involves the environment
+right so like in the free energy
+principle the
+the nest the non-equilibrium steady
+state is defined with respect to the
+situ
+this you know a sort of a subsystem
+that's embedded in an environment and
+that steady state wouldn't exist without
+both pieces of that
+right and it's the fact that you're
+doing gradient descent on that
+that guarantees that your variational
+inferences is going
+anywhere useful uh and and that's that's
+sort of the
+sort of you know magical seeming
+connection between actual
+accuracy and and all this just churning
+that happens when you're minimizing free
+energy over time
+um but but the the way in which it's
+inessential is
+of course i mean i i just i guess maybe
+i'm
+maybe i've been called a cartesian
+before maybe i am i don't know i didn't
+mean to be but
+um there's a sense in which simply it
+just the datum here is just
+that i can get things wrong and i don't
+see that there's any obvious way of
+limiting the scope of that
+right so just fallablism um so
+i think there has to be some uh subset
+of states of the overall
+universe that you'd identify with you
+and
+your perspective and otherwise right you
+have
+sure the external states are essential
+to this story
+and they drive the dynamics de facto
+but there has to be a difference between
+the actual external state at any moment
+and the external state that i represent
+by my hidden
+states or my my internal states um and
+so
+i think you know
+like the reason any of this works in
+prac in practice
+is because we've internalized the
+structure
+of the external environment and this
+whole point about harmonic
+coupling between minds is really cool um
+it's there's something really cool and
+bootstrappy about that it's like
+right minds are things that harmonize
+with other minds right and
+um i don't just to kind of
+pick out another piece of what you said
+i um
+the way that i tend to think of this
+stuff is in terms of sort of imitation
+so the fundamental term for a lot of
+people in this area is prediction
+but i almost think it's more like we
+just learned to our brains learn to
+imitate
+the the sensory uh right the patterns of
+the processes that produce patterns of
+sensory input but the reason it's not
+just imitation is that
+also the world is just made up of a
+bunch of these generative models that
+each have their own driving right um
+signals so um so that
+i'm not sure i don't know i don't know
+how to tie that up in a nice package but
+it's it's a cool set of questions
+um and uh
+but so so the reason though that i
+stopped short of saying that the
+external
+states are as fundamental
+in understanding cis systems biological
+systems uh
+people etc as the internal states is
+simply
+things like cartesian skepticism so we
+could talk about that
+um well yeah go ahead scott just a
+follow-up
+well it is interesting because it's um
+because our struggles in it
+when we you know i say on this this
+group very often
+the only time you see reality is when
+you see paradox
+right if you're seeing absence of
+paradox you're intrinsically seeing a
+model of some sort
+and so we should embrace a confused
+state and and know that that is a
+reality
+and so that is not just a statement for
+this conversation but in general
+maybe what the mind is doing is the same
+thing that the body does when it's
+standing still you're actually never
+still
+you're always dynamically moving to
+maintain
+a semblance of stasis in a banded
+stillness right
+so maybe we have a banded mind maybe
+it's fully dynamic
+and maybe what we think of as us an
+existential kind of element of it
+is within a band right do people change
+over time it's a ship theseus in a way
+right you're still the same person but
+you're
+some of the stuff has changed out
+swapped out over time um
+so maybe the embodiment helps us with
+mind as a fractal way at any
+level because we can say okay if we have
+a system
+that's doing processing of dynamic
+environment some of that processing may
+be internal some may be external
+i mean that's group formation and you
+know
+part of its genetic and consanguinous in
+terms of performance and some of it is
+people who are similarly situated right
+if you're in a disaster and everyone's
+all of a sudden has the same problems
+people band together
+all of a sudden very easily and their
+mind morphs into that
+organism that is needed for that acute
+situation
+in that stressful environment and so
+they maybe it's always dynamic but that
+we don't
+see the dynamics as much and they seem
+more leisurely when we're studying them
+in the abstract but maybe they're
+highly dynamic in both directions
+especially
+as we become information beings and more
+dependent on symbols
+thanks scott just one thought on the
+dynamics
+is anyone who's recorded a neuron or
+thought about that knows that just to
+keep an idea in your mind
+for a few seconds is being underwritten
+by
+vast numbers of dynamical processes that
+are quite rapid
+and the second point about the
+internalities and the externalities and
+the internal states and external states
+the helmholtz free energy has this u
+internal energy
+and that's like the configuration of the
+molecule
+usually thought of as and then this
+negative ts
+is sort of that those vibratory modes
+that can't be as
+easily harnessed but when you pointed to
+synthetic externalities
+which is the same thing as saying
+reconstructing the internalities
+it's like what if all of a sudden the
+organization of the system
+we could partition it a little bit
+differently so that we had more u
+and a little bit less ts and when you
+think about a vibrating molecule
+u makes it look like the covalent bonds
+and ts is the vibration
+but if you think about an ant colony the
+movement of the pieces
+is still part of the internal dynamics
+and so especially when we're talking
+about information which isn't covalently
+bonded
+atoms internal energy
+is something about the model it's not
+just about how things are touching and
+can be
+broken and reformed so there's a lot of
+awesome
+pieces in what you added there steven
+and then anyone else with a raised hand
+yeah i think building on that you're
+right the there's this in
+this i think you're making the right
+choice here for this paper using the
+helmholtz free energy i think that's a
+um even if gibbs free energies use more
+in active inference
+that adds an extra level of complication
+and i think this is actually
+useful then because you're
+able to look at some of these
+distribution questions and just how
+information is extracted but it's
+actually helpful for me to see you go
+back to
+the helmholtz because it makes me
+realize well
+that gives free energy which is more
+about how action happens how do you know
+what the internal energy change would
+have to do
+if it was trying to also keep within a
+certain constraint of volume
+and pressure which you don't have to
+worry about
+with helmholtz free energy that would
+bring in action that would bring in the
+action part of active influence
+in some ways um but the underlying
+principles
+still hold for what you've got you know
+so i think that's um
+that's helpful so i don't know if you've
+got any thoughts on that yeah
+yeah that is health i would just i would
+just say that that is helpful and um
+uh i would love if if in the future
+anyone
+yeah worked on this same topic and one
+and generally you know
+ex unpacked the the sort of um
+i was going to say generalization but
+it's maybe the opposite um the the
+how this would work out in the case of
+um
+of action more specifically and using
+gibbs free energy and stuff that would
+be really cool
+awesome and taking the temperature of
+a person in terms of going for a checkup
+to the doctor
+and they put the thermometer under your
+tongue and that's a thermal temperature
+and how are you feeling what does it
+look like to take the temperature just
+like
+blue had been suggesting so maybe let's
+go to the transparent code
+um slide that you added alex because
+that was definitely something that we
+were curious about from the dot zero
+and we can just hear your thoughts on
+this talk a little bit about this and
+then also anyone else can just
+write down a question raise their hand
+or ask in the live chat but we'd be
+really curious to hear what you thought
+about this
+yeah sure so um yeah so the reason that
+again that i put this in
+was that dean and um and
+maybe maybe everybody in that point zero
+um discussion had um
+had questions about this and i think uh
+the transparent code
+it ends up sounding like a slogan that
+invites you know
+speculation and it's like it's a mystery
+or something but
+um this might be a case where i'm trying
+to say something so simple that it's
+like
+it's easy to miss right so so all um
+the role let me just first frame this
+the role that this plays in the paper
+is that if you want it to be that
+variational free energy and
+hellhole's free energy in the
+thermodynamic sense um
+are the same quantity then you're going
+to have to
+um explain how
+well both of them are sort of made up of
+probabilities right so you need to
+have a mapping from one set of
+probabilities to the other
+um so uh there has to be a way of
+understanding how
+the probabilities of states this is a
+big distinction in the literature right
+how the probabilities of states
+could represent could represent so the
+probabilities of states in the system
+the cognitive system that you're
+analyzing which is also a physical
+system
+how is it that those could represent um
+the probabilities that are assigned by
+that system to
+the external states right um so
+so the idea of a transparent uh
+neuronal code or any code uh is is just
+that the probability
+of for example so in the on the left
+hand of the diagram here
+if we had a transparent code in the
+sense in which i'm using that term
+then for example the probability of
+neuron b
+firing given that neuron a fire is right
+so if b is postsynaptic
+neuron and a sends a signal to b or a a
+fires and uh there's a certain
+probability of b firing subsequent to a
+firing
+that would represent uh the probability
+of some state of affairs q
+obtaining given that some state of
+affairs p obtains
+where a and this we can we can talk
+about
+where this mapping comes from right but
+the assumption is a
+represents p occurring and b represents
+q occurring
+um so so that's really all i meant by a
+transparent code and it's it's not
+it's a simple idea but it's it's
+definitely controversial right like
+that that would mean that if you think
+that there's a certain conditional
+probability of
+you know the cat being on the mat given
+that the cat
+lives in the apartment um then
+sort of the probability that you would
+represent those things has to be tied up
+with the probability that you assign
+uh to those things occurring and that's
+not at all a
+sort of um uncontroversial statement
+um but it's a simple idea and this is an
+idea
+by the way again that's that's used in
+some of the early connectionist
+literature
+um on um blue mentioned um
+boltzmann machines right so there's an
+early paper on both both of the machines
+uh where this kind of stochastic code is
+proposed
+and the basic one more sentence on this
+the basic idea is that the objective
+probability
+sort of measurable probability of events
+within the system
+uh maps onto the subjective probability
+that the system assigns to
+the states of affairs that are
+represented by those internal states
+interesting and in the context of the
+cognitive
+system of interest we're talking about
+the brain
+it's like we know that we're not going
+to get the transparent coding
+from the photons hitting the retina to
+what is the probability of
+the cat being on the mat so with this
+multi-level
+processing as you've kind of hinted at
+with the multiple layers here
+it could be possible that at some
+neuronal stage or
+at some level of processing there is
+a pattern that maybe represents
+the cat being on the mat
+probabilistically which also invoked the
+whole representation
+questions which we had talked about
+months ago
+um right so it's so fun to see how you
+you delineated where there's controversy
+sometimes even both sides of the
+discussion around a controversy
+and then it's like great here's the
+artifact let's see which way we're gonna
+push it
+if there turns out to be more evidence
+for transparent coding
+then we'll push it that way and if there
+turns out to be less then we can push it
+a different way
+so um scott uh if you're
+there i don't see you yet so stephen
+first and then
+okay stop scott go ahead and then
+stephen um
+i just wanted to mention there was an
+article in nature a couple of years ago
+where there was an assertion made that
+consciousness this is what caught my eye
+consciousness they asserted arose 520
+million years ago
+and they and i was like well that's
+interesting what's the evidence and what
+they found
+was some structures for i think they
+were proto-nodo cords or something
+but basically it was a ganglia kind of
+thing a secondary
+processing and their assertion was that
+because they found
+physical evidence of a neuronal
+structure
+again in in fossils it was some
+eddie karen are able to be preserved in
+shale or something
+but um uh that because it was secondary
+processing beyond the
+the eyeball or the ear or the perception
+apparatus
+that secondary processing they suggested
+meant there was
+consciousness because that was their
+definition but it was interesting
+the reason i raised it here is it's
+interesting that notion of embodiment
+right so we're talking again let's talk
+about reaction chambers we have
+there's stimuli all over the world
+there's things happening
+and then we have perceptions ability to
+detect stimuli
+right in our afford it to us and so
+that comes in but we don't have the
+structure of it is
+tbd right and so then we the the
+the organism embodies morphologically
+certain structures over time eyeballs
+and
+notochords and ganglia and things like
+that right
+and those themselves are information
+structures they just haven't even
+embodied in a morphology so it's
+morphological computing for biological
+organism right because they now can do
+that thing i can't see an ultraviolet
+but bees can that kind of thing or
+infrared that kind of thing um so it's
+so i just wanted to raise that idea
+that assertion that offended me
+originally that consciousness arose 520
+million years ago
+is not so offensive in a way because
+what they're trying to do is grope at
+the notion
+of the layering on of morphology and
+embodiments
+and say look there here was a ratchet
+here's something happened
+here and we think we don't know how much
+more experience it's like julian james
+when he went back and did the
+origin of consciousness and the
+evolution of the bicameral mind book in
+the 70s
+j-a-y-n-e-s and he was asserting from a
+literature search
+that the wernicke's area flashed on
+at one point it was equivalent to
+broca's area language center in the
+other side of the brain
+and his literature search he looked at
+joan of arc he looked at the iliad
+and he said that morphologically
+literature
+embodied that notion of the mind
+actually changing
+ancient literature can see the mind
+turning on that internal voice and so i
+just wanted to raise that
+notion those embodiments of the external
+and internal states
+lying around all over the place right
+and so
+it's your paper does a nice job of
+inviting
+the um treatment of those or those
+those as candidates for looking at the
+mind being assembled particularly
+if the mind is external to the brain and
+the brain is just an antenna tuned into
+the mind
+thanks one one funny little
+synchronicity there is that
+uh julian janes wrote the book that
+scott mentioned
+origin of consciousness in the breakdown
+of the bicameral mind
+but edwin janes was a very famous
+thermodynamics
+researcher who introduced the maximum
+entropy
+interpretation of thermodynamics so
+related like we all are bi were they
+related
+were they related by cons the blood
+aren't we all
+yeah oh come
+yeah just sort of coming to this diagram
+that you've got here um
+so i think um one thing i'd be
+interested in
+unless you say neuronal or other
+internal systemic states so you sort of
+give
+a little bit of latitude to dynamical
+aspects of that
+goes to cognitive states of the system
+beliefs
+and i'm wondering how much
+you're tied to those beliefs being
+um statistical computational
+sort of separate things or how much is
+it
+beliefs on action policies i mean i know
+i'm pushing active information again but
+yeah it's you know it's fun
+yeah what's your thoughts on that yeah i
+mean
+there's all sorts of questions here
+about how we individuate representations
+and such but
+i wouldn't think i don't even i don't
+really think of these as detachable
+uh separate entities at all so that node
+is labeled p
+but i'm one of these functionalists who
+thinks that the reason that
+the label itself does nothing right the
+reason the the label is a useful
+indicator for people outside the system
+to understand
+what it represents but the
+representational function is just the
+role that that node plays in the network
+so um um and that would i think that it
+subsumes and includes um
+connections to action right i just tend
+to think of connections to action as
+the special case where what you're
+generating what your generative model is
+generating are states of the motor
+effectors
+so right i just and i think any any kind
+of planning
+um that that that the organism learns to
+do
+can also be understood as learning sort
+of sensory motor contingencies which
+will
+influence how states of the motor
+effectors are
+generated in tandem with states of the
+perceptual system
+right how perceptual biases occur so um
+basically yeah i don't think that
+that there's any like these don't need
+to be cognitive separable
+features of the these don't need to be
+separable features of the system they're
+just
+like when i say that a state represents
+p
+um because i'm represents for me has
+sort of a functionalist meaning
+i just mean that's just sort of a label
+for uh
+a set of uh ways in which the system can
+behave
+because of its internal structure so
+including sort of internal
+um dynamics right but it's really just a
+label for
+a property of the dynamics of the system
+cool
+and also beyond the action being at the
+gross
+organismal motor level potentially
+internal
+representations or states could be like
+hormonal or neurosecretory
+so the neuron can fire but neurons have
+other affordances
+like the little micro motor behavior
+with the motor proteins like releasing a
+vesicle
+of of a protein that's been transcribed
+and translated
+also tiny little motor behaviors of
+nested
+smaller agents inside of that neuronal
+interface
+so stephen and then anyone else with a
+raised hand
+actually just what you were saying there
+daniel does that mean that you can
+almost
+release hormones through the brain it
+doesn't have to be like through a gland
+in the body but you've got
+smaller scale releases
+neurosecretory cells and neuroendocrine
+biology are large areas so yes
+many kinds of cells pull in and secrete
+molecules and neurons are of various
+subtypes
+secreting specific hormones
+neuropeptides all kinds of hormones
+and signaling molecules short range and
+into the circulation
+okay thanks um and i let that process
+and that's really useful i didn't know
+about that
+and um i supposed just adding on to this
+you you when you mentioned about sensory
+motor contingencies and
+and and being able to um so i'm
+wondering that the scale
+of um consciousness
+you know and things entering into
+consciousness or the phenomenological
+sort of awareness
+do you sense that there may be even if
+active inference is under writing it all
+some other types of like it doesn't have
+to be as pure active inference at that
+scale
+and it could be working with other types
+of
+sort of architectures or process
+architectures
+uh i mean well one thing is that
+consciousness
+so i think scott brought up
+consciousness for the first time here
+that's really interesting i um i sort of
+deliberately didn't say anything about
+it in my paper because i find that it's
+um it's a very thorny topic for me of
+course for many people right
+it's not it's not notoriously not an
+easy problem or maybe it is and it looks
+like a hard problem but anyway
+um yeah so so i'm not sure i i do think
+that like
+all of the cognitive dynamics i'm
+talking about are probably more
+fine-grained
+than what shows up in consciousness so i
+wouldn't say that there's some
+transparent mapping from
+whatever you believe in in the sense of
+belief that's implicitly defined
+here and what you are consciously aware
+of
+um i so we can there's all sorts of
+theories of how consciousness
+relates to this stuff um
+there was a second piece to what you
+said that i wanted to address but i
+don't remember
+what it was well i suppose there's a
+scale but i think you kind of addressed
+it a little bit there
+sorry daniel you're gonna say yeah we'll
+we'll come back to it if you
+remember what it was yeah scott and then
+anyone else with a raised hand
+yeah i wanted to go back to the notion
+of neurotransmitters from a minute ago
+when you're talking about endocrine
+neural function
+a couple of things there's a couple of
+books here just want to hold up this
+cognitive
+um cognitive archaeological
+the cognitive archaeology and human
+evolution kind of an interesting notion
+there's a couple authors there
+here's another one archaeology and
+memory kind of an interesting one
+the reason i raise these is kind of
+interesting when you talk about
+neurotransmitters i remember reading an
+article a few years ago
+that suggested that among all the
+animals in the animal kingdom now the
+animal kingdom is an old
+representation corollas linnaeus thing i
+get it but in any event
+um there's only one animal that doesn't
+share any of the neurotransmitters or
+the rest of the animals like the box
+jellyfish or some kind of jellyfish i
+forget which one it was
+and i thought that was interesting just
+what we were just talking about a minute
+ago daniel was noting about
+neurotransmitters
+well again it's morphological computing
+those are artifacts
+of earlier solutions their practices
+of processing of information by these
+organisms right
+and so the fact that we can go back and
+say
+wow i wonder if these things were
+related given the fact that these don't
+share any neurotransmitters that's kind
+of an ethereal element it's not
+something that you get like bones and
+you know it doesn't fossilize well
+but isn't it interesting that we can
+find the morphology of neurotransmission
+in current organisms and use that to
+understand
+lineage and relationship so in fact
+that's a it's a morphological artifact
+and it's not epigenetic
+right but it's interesting the
+relationship of
+the the uh homeostatic state of
+uh thinking the cognition of a certain
+line of organisms
+and the morphology of its
+neurotransmitters
+i'm interested in you social insects for
+instance
+do people do profiles if anybody here
+knows anything about you social insects
+please type in
+the um do they what's the story with
+neurotransmitter
+analysis among you social insects is
+that a special
+neurotransmitter specially invoked and
+is the morphology of neurotransmitters
+perhaps
+where the organism resides more than
+other physicalities
+thanks great great question scott so
+first on the
+tina four point and then the eu social
+so um the tina four indeed
+it did suggest new evolutionary
+hypotheses
+when people investigated which
+neurotransmitters tenoforms used
+and they convergently utilized some of
+the same simple
+charged amino acid derivatives but they
+use them in different ways for example
+glutamate
+is not used in muscle contraction in
+vertebrates
+we have acetylcholinergic receptors at
+the muscle
+but glutamate was used which supports
+alex's
+point about functional representation
+there's nothing that says
+glutamate means muscle contraction it's
+a functional
+context with a receptor and a muscle
+cell and a neuron that generates the
+contraction
+and potentially for a later day maybe
+when we discuss
+active inference the paper but um we've
+done multiple studies measuring
+neurotransmitter
+metabolism and gene expression in ants
+and there's been a lot of work on
+honeybees as well and just the one
+point i'll make here since it is a large
+area and people can look at the papers
+if they want
+is that the neurotransmitters that are
+involved in the regulation of foraging
+in ants and bees are inherited
+from the neurotransmitters that regulate
+foraging and solitary insects
+like dopamine and octopamine in fruit
+flies where it's been investigated in
+the context of solitary foraging
+but the inputs and the outputs of
+foraging
+for the eu social insects are different
+so whereas in
+drosophila it's like internal hunger
+signals representations maybe some sort
+of neural hormonal
+encoding leads to foraging behavior
+and then that results in the acquisition
+of food that re-enters that bodily
+system
+but an ant forager is foraging
+essentially food for the larvae a
+different part of the colony organism
+so the inputs like the stimuli that lead
+to induced foraging behavior and the
+outputs like where the food goes
+are different but the foraging motor
+behavior is conserved
+and it's that rewiring of the motor
+motif of foraging
+via the same neurotransmitters
+octopamine and dopamine and others
+that actually enable the colony life
+cycle so it's a really awesome area i
+hope we can
+talk more about how that relates to
+active inference
+so um stephen and then scott and then
+anyone else who raises their hands
+yeah i'd like to ask a question
+about which sort of links to that it's a
+it's a kind of a semi theory i've got
+but
+is it feasible with this that the brain
+like an organism basically the cells
+that become the brain
+effectively they mutate and they they
+transform into the unique form that the
+the brain and the nervous system
+basically like another organism growing
+into the main
+organism right so you've got two
+organisms once they differentiate
+and their brain is like the control and
+the
+nervous system is like the control
+organization growing into
+and with the other the fascia of the
+other organism well in a human fascia
+but obviously
+i just wondered if that would be
+plausible and that that would do
+anything with this brain
+organism boundary question that i know
+you
+are kind of connected to in terms of
+wanting to maybe maintain more of that
+potential
+i don't know if that's something that
+other people have talked about or
+whether it's a little bit out there
+and just um yeah biologically or
+from the sort of cognitive philosophical
+sense how that pans out
+yeah yeah i love i love the like
+biology and biochemistry and stuff and
+all this
+you know wonderful fine grain scientific
+um
+life sciences stuff that you guys are
+bringing to the table on this um that's
+that's not as much where i'm coming from
+but i think it's really really cool
+um but so so that steve the idea that
+you just articulated sounds
+sounds out there and plausible to me so
+um i think that like
+uh that's kind of what i would expect
+is that this same story can be told on
+multiple scales internal to the system
+right and so the brain learning sort of
+learning
+growing uh i guess
+i've just been conditioned to think of
+all this as one type of process right so
+i said learning but
+morphological development and growing
+into its into its
+um mature shape is a form of learning
+but so anyway um
+that happening and interfacing with the
+rest of the organism um
+i mean i definitely don't see any reason
+that we need to draw a like
+joint joint in nature around the
+physically
+right the organism that we can perceive
+there are going to be many similar
+joints that we could
+delineate within so um i think that's a
+cool idea
+i don't know much about the details of
+that process so i can't like
+check that validate it but it sounds
+plausible to me
+thanks alex blue and then scott
+so just to kind of maybe um ask steven
+to unpack a little bit what he said so
+i think um in terms of like a
+brain organism like separation or
+duality like
+do you maybe mean like mind organism
+because as
+like in my experience it's like the um
+like the brain is like the control
+center right like i don't know that
+there's necessarily like a
+division between the brain and the and
+the organism but definitely like the
+mind is kind of like this ethereal
+concept so maybe could you just unpack
+that a little bit
+well i was actually thinking partly
+thinking about the work of mike levin
+um mike levine or mike levin and um
+so in a way i my understanding is that
+once a cell becomes a neuronal cell
+if there's no going back like it's kind
+of
+like it so it's in some ways it's um
+it's it's i was curious whether that
+whole
+structure be it from a small organism
+is effectively like we basically have
+two organisms in our body
+because our cells have differentiated
+into the body
+organisms and the neuronal ones and
+they've sort of
+they they work together in this
+symbiotic kind of
+cybernetic loop so that that's the kind
+of thinking
+um about how it pans out i'm you know
+so i just if i could just like speak to
+that a little bit um
+so the neurons can de-differentiate and
+do um in like especially like in neural
+cancer types
+so we do see some some d differentiation
+there it's not as committal as we've
+thought before i mean this it's kind of
+a budding field and the
+the you know antique way of thinking is
+that there is
+it's a set lineage but there's there's
+ways that you can convince them to do
+otherwise
+i think mike levin's thing is the
+bioelectric
+field right and so so he separates the
+the bioelectricity
+of the organism as as maybe
+the overarching control center there but
+i've not seen like a neural
+um phys like a neuron body distinction
+that's why i was just like
+what sorry well one thought on that and
+also to scott's point about the
+emergence of a second level of the
+nervous system
+is to remember from developmental
+biology that
+ectoderm the outer layer of the
+developing embryo turns into
+neuroectoderm
+which is the tissue that gives rise to
+the nervous system and gastrulation in
+the neural tube
+so the nervous system developmentally
+neurons
+share um an affinity and a developmental
+proximity
+to the external layer and so when you
+start nesting
+internal layers inside of that tube
+that's closed
+you start getting higher order nervous
+systems
+and then also the pituitary gland to
+sort of close this with a neuroendocrine
+discussion the pituitary gland is
+actually
+um amalgamated from multiple
+developmental sources and so it's
+interesting that it has such a pivotal
+hormonal position integrating hormones
+and the brain's function and it itself
+is like
+a re-fusion from a tissue perspective
+of multiple branches of the ectoderm
+that had
+branched and then they reformulate a new
+organ which is the pituitary gland
+that serves a very coordinating role in
+organismal development
+so scott and then anyone else with the
+question
+you know this is the best way i can
+spend my day
+with people who say the quote the
+pituitary gland is amalgamated from
+multiple ectoderm sources
+there i'm in the right place man you
+know when you you know
+you know this is the place for me i can
+tell you that
+hey um a couple things let's go back to
+this part in holland dynamic and cancer
+as an organism stuff for a second this
+is uh this is good stuff
+so you know the cancer analysis where
+they start to treat cancer
+as an organism in an ecosystem you know
+some of the framings to think of it that
+way a recruitment of a kind of chaotic
+kind of like having a drunk uncle stay
+at your house is one way of looking at
+cancer right it's a it's a chaotic use
+of resources
+um so that is kind of interesting right
+because
+so we're talking and going back to
+steven's point about the mind being
+different
+so i'm thinking of symbiogenesis here
+lynn margulis stuff and the chloroplast
+in all plant cells and the mitochondria
+and all animal cells were once
+their artifacts of once pre-existing
+bacteria right they migrated on board
+with eukaryotes because it was a better
+deal
+right more leverage more de-risking
+higher levels of engagement with the
+outside right they change their internal
+physicality
+and morphology so they could think at
+way higher levels they could
+access way more complex levels of
+engagement
+than single cell organisms including the
+engagements they could get through
+sexual reproduction which introduced
+additional symbolic novelty so they
+could be more dynamically engaged with
+environments right clonal reproduction
+does not introduce a lot of novelty
+so it's hard to keep up with dynamic
+environments if you're formal
+this is something like intelligent
+design but it's not so
+it's interesting steven in your notion
+of the mind being
+separate because in a way the mind is
+formed
+by the social environment you know i've
+told the story before my sister
+adopting a five-month-old chinese child
+who is now 22
+who is raised in central pennsylvania
+speaks spanish and english does not
+speak chinese does not like chinese food
+does not like chinese music
+and basically looks like a chinese
+person but is not so
+is that mind a chinese mind the problem
+is we don't get have any control groups
+on the mind formation right once you're
+formed you are who you are
+and we say okay that's it but i'd like
+steven where you're going on that notion
+maybe the mind is an independent
+quantity and
+again the brain is an antenna to the
+mind so maybe the body
+contains the antenna components again i
+don't mean a real antenna but sort of
+um and it contained it needs to be tuned
+it's feral and so maybe what's happening
+is the tuning actually creates
+a mind maybe the mind is not resident in
+the brain
+in a child and maybe bayesian inferences
+construct a mind
+and to maybe direct it to alex before we
+go to steven's question
+dean you really focused on this sentence
+it may be for example that biological
+systems
+run an algorithm closer to of divergence
+than to simulated annealing so what does
+that
+mean or what what does that reflect
+on can i indeed maybe
+give a little extra info on that just
+just a quick quick thing
+i want i want to hear stephen and i want
+to hear everybody else
+but i have a question in the background
+sorry i have to say this in the
+background i've got people taking the
+front of my house off
+so i haven't been able to do much other
+than try to control my add
+but i have a big question for alex once
+we get through the
+the part that stephen and scott want to
+have addressing it's
+specifically to what you just raised so
+thank you
+great let's go to steven and then we'll
+return to dean and the contrast of
+divergence
+yeah maybe this will bring this together
+is i suppose what i'm just
+proposing is is that there is some
+structural biological differentiation
+which is will have an impact
+in some ways and how we think about
+extended cognition
+but if we i i'm very much of
+the mind body
+environment dynamical system kind of
+idea
+so i suppose i'm i'm talking about there
+being a difference
+biologically but probably at the macro
+level i'm
+i'm trying anyway to formulate
+approaches which talk about a whole
+system
+and not anything else than that but i
+recognize that
+it may open up some other cans of worms
+but
+um i i know that how i wonder if that's
+something that you're
+does this does this annealing relate to
+the mind-body environment dynamic in
+playing out within that or is
+is it a little bit more separate or
+different to that
+yeah i mean the the use i was making of
+this
+contrast between contrast to divergence
+and simulated annealing here is
+was just was kind of more specific
+um i was just thinking of
+so annealing this process of of
+gradually lowering the temperature
+and simulated annealing was a
+optimization technique that mirrors that
+process
+and um so i mean i guess the answer to
+your question stephen is i
+i wasn't really thinking about system
+environment relations here at all i was
+just thinking of um
+two different sort of internal processes
+and how they might be mapped on to
+um onto these these uh learning
+algorithms and processes and physics but
+so
+so i mean i can wait to go on to that to
+take dean's
+question or yeah or whatever maybe
+let's uh let's go for the divergence
+yeah
+i i'm not predictable
+um i'm going to pull up the paper
+because i need to uh
+explain this so alex in the paper you
+you
+you talked in in the subsection one two
+the role of internal energy
+um let me just find it here
+you talked about the inverse
+relationship between probability and
+energy
+is exploded and most uses of energy as a
+cost function
+and optimization problems so you made
+that clear
+and then a little further down in the
+paper you talked about contrastive
+divergence which in equilibrium
+distribution of a restricted boltzmann
+machine
+and then you got into a little bit more
+about the the comparison is
+the simulated annealing and then you got
+into section two
+and i'm just going to try to find it
+here the ensemble piece
+so here's my here's my question
+um if i were to bring a um
+if i already bring three things and and
+cast the widest
+largest wrist and blanket yet around
+your paper
+because i think that's what your paper
+does if i were to bring a polaroid
+picture a sprinkler and an astronaut
+together so if i were to bring
+identity which is what was the primary
+attractor of your paper to me
+identity astronaut that
+that distribution piece and
+um the first one the
+the the polaroid the isomorphism
+could you explain how you you brought
+these things that are so
+seemingly um distal
+into some sort of a coherence how how
+did when you were sitting down because i
+know you did this on a very
+proximal level but it it has far
+reaching implications based on the
+kinds of questions that stephen has
+asked the ones that scott's asked the
+points that
+lou and daniel have made it it doesn't
+just seem to be local
+it seems to be really distributed as
+well and so
+i'm just really curious you wrote the
+paper but now that you've kind of been
+able to
+step back from it and sort of take it
+into perspective
+that distance must have you really
+really looking at this maybe maybe in uh
+interesting ways because there isn't
+just the stuff on the paper
+there's the stuff now that you've kind
+of reflected on and seen the inversion
+and and wondered holy macro did i open
+up a can of worms or
+what did i what have i done i'm just i'm
+curious about that on a personal level
+right um well just i mean in general
+my the most striking thing about how
+this has played out
+um is that people are really interested
+um so
+blue mentioned this in the discussion
+and um
+i had emails about it too are really
+interested in the distinction between
+um genuine minds and like simulations
+um which was completely an afterthought
+when i wrote this
+it was just like oh yeah i better deal
+with the scope of this and so i should
+put a sentence about that and
+i did put care into it you know i i put
+the best sentence i could and but
+it wasn't my focus but um
+yeah the i mean the the
+the the thing i guess the thing that
+that strikes me about this so it was it
+was
+right i mean it was intended to be this
+it was it was intended to be a very
+fundamental like thesis that i'm
+considering here so
+i do think it has far reaching
+implications i have no idea whether it's
+true but
+right if it did it would have at least
+far-reaching implications i guess what
+i'm
+um what i'm less clear on is well i i
+i'm still i'm still waiting for the
+other shoe to drop i'm waiting for
+someone to say here's an example of a
+biological system in which
+there's no way that you can map the
+cognitive interpretation directly onto
+the physical interpretation
+because um if that's the case and if i
+think if it's a compelling example then
+then i guess i'm wrong so far so far
+that hasn't happened there have been
+some interesting suggestions
+um but so so i guess i'm i don't know if
+i'm directly answering
+your question or dean i'm just
+um to me the the the devil is still very
+much in the details and
+this is essentially a defense of a pop i
+was trying to
+i was trying to show that maybe some
+some a priyary
+prima facie objections to this kind of
+thesis were not
+uh you know were not compelling
+but there could be all sorts of details
+that merge that
+that might question it um
+so i don't know if that really answers
+your question i'm sorry no no it
+and again it was kind of like when i was
+talking with blue and
+daniel in the point oh and i i brought
+up so i i talked to people who
+who very much are in an activist camp
+and you know they want it they want to
+see that
+realistic and then there's the
+statistical camp and they really want to
+have that
+sort of top down where's the channel
+what's going on
+and i i just kind of thought what your
+paper did is it
+it opened both of those perspectives
+i don't know that they even have to
+necessarily merge or overlap i think
+the fact that we can we can
+use both and see both it's just a really
+interesting thing now
+i don't know whether that is disprovable
+or it should be
+uh i guess that would mean that an
+activism is not a thing or
+statistical modeling is not a thing and
+yet we use these things so i
+i mean i guess they can be discounted
+but i don't know that they'll go away
+that's all i so i guess you have
+answered my question we can leave things
+open
+and up and not necessarily have them
+provide everything but but we can't
+just sort of discount something and
+throw it away
+until somebody as you said comes along
+and says no right
+it doesn't work yeah and just one quick
+follow-up on this this
+the one reason i wrote this paper is
+that i think
+what a lot of people find compelling
+about the free energy principle and the
+literature around that is
+the idea that there might be a link
+between physics and
+cognition right that there is a
+fundamental theory kind of emerging
+but it's i think it's very hard to pin
+down what the precise relationship
+it's hard for different people at
+different times it's becoming
+it's becoming clearer this has been
+worked out a little bit in the free
+energy principle literature
+but like it's it's difficult to
+articulate exactly what the
+the deep connection is between
+you know variational inference on the
+one hand and and like
+um the behavior of physical systems so
+i just wanted to i you know i wanted to
+throw out
+here's one um version one possibility of
+what
+the uh supposed to be a clean precise
+brief statement of what that
+relationship
+could be um so that you know it
+yeah it's open-ended but so that it can
+be you know false falsified juxtaposed
+to other
+um other interpretations of that
+relation etc
+thanks alex we'll go to blue and then if
+anyone in the chat
+or if dave has a comment then feel free
+but first blue
+so alex i think that this goes back to
+what you were saying in the very
+beginning about scale right so it's it's
+it's hard right now even to map like
+cognition onto like neural activation i
+mean i mean right now we don't know
+um too much like too many components in
+the system
+are are murky for it to really be
+clear what's happening and i think you
+know as we talk about
+information going from a cell you know
+to from a brain to a neuron to cognition
+to action
+to bodily regulation and these kinds of
+things we don't really know
+is information compressed is it
+integrated like
+what is happening to scale a system
+up or down right i think that that's a
+hard
+problem yeah i mean maybe i'm not sure
+what you mean by scaling the system
+up or down um
+in in this section you talk about the
+scale-free nature
+of free energy dynamics and about how
+global and local free energy
+minimization
+could be understood as subsystems that
+are
+undergoing some sort of uh akin process
+at their own skills
+right um
+yeah so i mean the the thing that
+so i mean the thing that i wanted to
+react to and what blue said was
+um the idea that we don't really know
+what's going on
+in the brain still it's very murky i
+mean i think that's true it's always
+relative right to some
+ideal of how much we could know but i
+mean
+what got me into this whole literature
+in the first place was was i was
+i started i starting again starting with
+the machine learning
+literature around 2012 2013 i started to
+feel like we actually were getting a
+grasp on
+on some of these principles how this
+works quite generally so like
+like the helmholtz machine for example
+um that blue you talked about that in
+the point zero
+um i think that's a model now if the
+model is accurate
+then it seems like what's happening is
+as we
+um you know as signals are sent from one
+neuronal population to another
+um further from the sensory motor
+periphery
+um the information is being compressed
+right so that's a particular hypothesis
+that
+there's a successive compression of
+information
+meaning that things are represented
+using uh you know lower dimensional
+um well vector spaces if you want to
+translate between vector spaces and
+neuronal populations right
+um and and that we have a pretty good
+idea
+right like this this sort of
+architecture explains
+so many things i mean that's this is
+this is what got people so excited about
+the you know
+predictive brain or the bayesian brain
+type hypotheses is that
+there's so many different things from
+different domains in psychology and
+neuroscience that this seems to
+this kind of perspective seems to unify
+um
+you know it's it's it's it's to be
+expected in a sort of helmholtzian
+architecture that like
+you know uh the you can always sort of
+endogenous
+endogenously cause the same sorts of
+states that you could be in
+as a result of perception right and that
+imagination
+and internal generation of states has a
+particular role to play in learning
+and things like this so i'm kind of
+rambling but um
+my my sense is that this um
+this sort of bayesian helmholtzian
+revolution or whatever you want to call
+it
+in recent years has has shown that we we
+do understand
+many principles of how the brain
+functions at the level of like at the
+human scale
+um if the question is about like how to
+how how do other scales fold into this
+i um i mean there's some work that
+maxwell ramstead and casper has been
+people like that have done
+on on understanding their on all
+population dynamics in terms of active
+inference at that scale
+and so that's really interesting um
+uh so like what i would think of as a
+structural like a structural
+representation from the point of view of
+me or you like a human being
+um you can also think of as a process of
+neurons performing active inference
+right at their own scale um but i think
+there's to me the hard question there is
+how do you relate
+uh the contents of the representation at
+the higher scale to the contents of the
+lower scale
+that that's that's the thing that
+bothers me about in this area
+yeah just if i could just respond really
+quick yeah that's exactly
+the the thing i mean we can see how this
+active inference is happening
+at different scales for sure but how
+scaling up and scaling down or
+or the the translation from one scale to
+another happens is very
+like mysterious still yeah totally
+cool so we have about 20 minutes left so
+if anyone has a question in the live
+chat
+otherwise we'll go to scott and then
+stephen and be preparing our thoughts
+for what to continue discussing in point
+two
+so scott so um picking up in the last
+couple of points
+really interesting the i was thinking of
+what was the gentleman's name who
+barrettson who said information is the
+difference that makes a difference what
+was that guy's name is it
+anyway the difference that makes a
+difference and i always thought
+the first difference that he's talking
+about is the
+very um perceptual a perceptual change
+in the environment and the second
+difference is
+is that perceptual change relevant to
+you and so i want to unpack that a
+little bit here because
+contents one of the things that i was
+talking about my mit
+presentation and one of the things i
+noted is shannon tells us
+signal versus noise but it it
+i think but it doesn't tell us if the
+signal is
+a cancer cure or a chocolate chip cookie
+recipe
+right and so the content is left
+undefined
+there now what if so
+so i define living systems as auto
+catalytic
+entropy secreting structures
+notice i don't say they have to be
+embodied in any particular embodiment my
+son said the only reason i came up with
+the definition is i wanted to use the
+word secretion
+because it was juicy but he's right in
+part
+i wanted to make it juicy but the reason
+i raised that here
+is when you look at barrett-center or
+whoever was it barons in any way the
+difference that makes a difference
+um info information really maybe
+is what we cognitive beings call
+relevant differentials that we perceive
+irrelevant differentials are just noise
+and so the difference that makes a
+difference we call it information but
+there's a lot of differentials out there
+in the world
+and that's the reason i'm going there is
+since we're talking to a philosopher
+today
+and what i deal with as a lawyer is
+rhetoric
+and rhetoric is what you do to bring
+together incommensurables
+right and rhetoric is not like crazy
+glue it's like
+it's like um epoxy it doesn't just bring
+things together it also brings them
+together and fills gaps
+so the rhetoric of information
+is our storytelling about
+relevant differentials and we seek to
+sculpt our internal model and then train
+other people's internal models
+because when we entrain other people's
+internal models with our rhetoric
+then it de-risks our externality because
+other people's internal models are my
+externality right so the rhetoric
+is the tool that we use to reduce
+differentials or to increase relevance
+alignment among cognitive systems
+running cognition how's that i wanted to
+try to integrate
+it that seemed to me that last couple of
+comments
+it felt like it may be information is an
+article when we put
+much in seeking information maybe
+information the difference that makes a
+difference
+after the fact we can tell that because
+before the fact we can't tell
+what's relevant for instance suntan
+lotion never existed because we didn't
+know that photons caused skin cancer
+now there's an entire commercial
+factories and areas in the grocery store
+that sell suntan lotion
+now it doesn't mean that the sun became
+carcinogenic
+we just learned that it did so the
+inference we were able to make that
+inference at large scales
+and now influence buying behavior which
+leverages and de-risks future behaviors
+which is the
+reason that we care about information
+that's the difference that makes a
+difference anyways
+a couple of thoughts on this last couple
+of things that's that's really
+cool stuff i mean i i really see things
+similarly i think on a lot of fronts
+there
+um i think uh
+uh so the question of it sounded
+to me like you're kind of saying like we
+don't have to be too
+fixated on this term information because
+it really it means
+differences that make a difference or
+being aware of differentials
+so i mean i i
+agree with that i think um i mean i i
+again i always go back to just the
+the sort of bedrock stuff so like i
+think
+i think shannon's interpretation of
+information was actually a little bit
+unnecessarily epistemic
+i think it could have been just doxastic
+so he says you know
+it's coming to know something it's like
+well
+but we could generalize that and just
+talk about what one comes to believe
+and then i think if we have if we work
+with that notion which isn't information
+anymore
+as shannon defined it because he talked
+about knowledge but whatever that
+generalization of information is called
+um i think that would really um conduct
+the logic thanks um yeah so um
+so that's that's all that i think we're
+getting at with the concept of
+information but what what i think it's
+really interesting and difficult
+philosophically is
+okay so obviously there's there's self
+information right so there's just like
+something pings my retina and or you
+know
+something downstream from that and i
+notice a little flip in my visual field
+right
+and that's that's something i'm aware of
+so that's information about itself
+anyway
+but then the you know the more important
+signals carry all sorts of information
+about other things
+meaning they i guess they lead us to
+predict and expect other differences
+beyond themselves and so and so the
+tricky thing to me is okay so
+i take myself to be this system of
+interacting parts
+neurons and also other things obviously
+that um
+sort of embodies a perspective and the
+information that a signal carries
+depends on
+that whole system and how this signal
+impacts
+it right and and you know one of my
+neurons is a
+entirely different type of system here's
+my daughter
+tell me something what's up you got ice
+cream awesome
+sorry um
+that's awesome um yeah so
+your generative model's on a live stream
+right now i'm sorry
+that's cool yeah um i don't know so i
+was saying something about neurons and
+then now i'm thinking about ice cream
+um basically yeah so so the
+tr like that the question for me is so
+like i think of content right the
+information content of a signal for a
+person as relative to
+the person to the system and so if
+you've got a completely different system
+with a different structure
+i think you can sort of compare the
+structures of the systems to see how
+similar the content is right but i think
+it has to be at that whole level
+of the sort of holistic entire system
+level that you need to make these
+content comparisons
+um so i don't remember whether that
+directly links back to where we started
+this but
+um nice
+in one one quick thought on that is the
+the difference that makes a difference
+which is also a big key term in the
+philosophy of biology
+like the mutation is the difference that
+makes a difference for something
+um in active inference it's the
+difference in
+observation that makes a difference for
+either the generative model updating
+that's inference
+or the difference that makes a
+difference for action so we have a way
+to talk about it and then
+also um the doxastic note
+not my total area but it looks like this
+is how we can work towards pluralism
+across perspectives because if it's
+framed as one person believes that it's
+hot and one person believes that it's
+cold
+if there's only one truth and we're
+gonna play tug of war then
+we have to fight but if it's true that
+one person believes it's hot and it's
+true that one person believes it's cold
+there's no problem there still might be
+differences on what temperature the
+people want the room
+but by framing things about what a
+perspective or a system or an agent
+believes to be true or just believes
+period could be an ironic belief
+all of a sudden we can interact with
+multi-agent systems
+and deal with them in a way that still
+has local logic
+so steven and then anyone else
+so thanks just so closing out i suppose
+in a way
+i'd be curious how this this work with
+beliefs that
+has a nice as as daniel said it bridges
+action orientated approaches and
+pragmatic approaches with more
+epistemic approaches because beliefs
+tend to be beliefs about
+what will happen when something is done
+in the world
+often not necessarily and i'm curious
+how this paper and this kind of
+underpinning relates or helped to
+inform where you were going with a new
+paper that was intriguing about the
+folk psychology and how maybe that that
+there's some sort of that's where one of
+the bridges out
+from this paper into
+you know folk psychology being how we
+kind of intuitively believe the world is
+based on our experiences so there is a
+certain element of like
+whether that's how it's structured in
+the brain it's kind of how
+we might structure it before science
+tells us something else
+in a in a certain socio-cultural sense
+so i'd be interested in
+how that extension plays out with this
+paper
+yeah so so there's definitely a direct
+connection between this paper and
+and that one i mean i wanted to write a
+sort of sequel to this paper where i
+talked about
+specifically desires and how those the
+the sort of
+the way those would be grounded in
+thermodynamics according to this picture
+or co-native states in general like the
+states with a world to mind direction of
+fit um
+and so then i started talking to to ryan
+smith and others about this and we ended
+up
+you know co-authoring a quite different
+paper that
+has some commonality but i still want to
+write um
+i still want to write one that's more on
+the thermodynamic side of things but
+um the connection is in this you know
+the sort of identity thesis
+that at the end of this paper i argue
+for it by way of david lewis who
+who one of the terms in the identity is
+the implicit definition
+that folk psychology gives us of mental
+states
+um so we haven't really gotten into that
+maybe we will next week or something i
+don't know there's ramsay sentences
+i'd love to talk about them we got we
+got the ramsey sentences
+we got the sleep wake simulation yeah
+other topics that we will really look
+forward to exploring
+yeah let's please get into that but um
+like
+basically i mean i don't know if as
+usual
+i feel i always feel like i'm not doing
+an adequate job of answering questions
+i'm sorry
+but um but by folk psychology in this
+context i'm really thinking of just
+our our it's sort of like theory of mind
+right it's like our
+implicit theory of the way people
+including ourselves
+um function so i think that
+that's essential even though it's not
+highly until the end that's essential to
+what i'm doing in this paper because if
+you don't have
+mental states to define then you don't
+have any identity
+relation because that's one of the terms
+in the identity relation although you
+could also i guess
+maybe if you're doing pure bayesian
+modeling you could just write down a
+bunch of states and
+equations for how they update um without
+thinking about spoke psychology at all
+but but i guess the point of this is
+that
+um if one of the terms in this relation
+is the mind
+well i think folk psychology i don't
+actually love that term i mean
+it's okay it's a philosopher's term of
+art right i just mean
+intuitive human psychology i think is
+one of the terms in this relation
+cool scientists are folk too so
+cognitive diversity means that we have
+all different ways of knowing and there
+may not be one
+default or simply intuitive way of
+working or knowing because what's
+intuitive to one person
+will be out of the groove for somebody
+else and that's why the
+movement towards pluralism in terms of
+our understanding of
+ideas and of ecosystems is so
+interesting to talk about and see
+connected to active inference
+any um thoughts or what would be
+something that somebody's excited
+from the conversation today or thinking
+about how we could resolve
+or at least introduce again next week
+i think a few of the things we have
+written down is the sleep wake
+simulation what is that agent doing what
+does it do in terms of your model
+we have the ramsay sentences and where
+does that
+style of logical representation come
+into play we have
+empirical validity what kind of
+experiments
+are you interested in or curious about
+what what else could be interesting
+uh we could still talk about the the
+contrast of divergence versus simulated
+annealing thing
+um i just really briefly wanted to
+follow up and say i
+think when i say intuitive psychology
+i mean i don't mean to suggest that
+there's just one of those i think that
+but i do think we can sort of average
+over different perspectives to get
+that so like uh the individual
+perspectives ultimately are what's real
+but if we want to talk about things at
+an abstract level we could average over
+those and i think that's kind of what
+lewis tries to do so
+maybe this is something we'll get into
+next week um but
+really he when he talks about folk
+psychology
+he he he engineers it so that it doesn't
+have to be that there's just one set of
+state statements that embodies what
+people think about psychology it's like
+a disjunction of different um sets that
+mostly overlap
+um um and just yeah i mean
+pluralism is really i think is um
+is a good idea in many contexts um i
+actually think
+this would be interesting this might be
+controversial i think it's not always
+the goal in science because if you start
+out with pluralism
+then you just don't do anything right
+it's like okay
+everything's fine as it is but i think
+sometimes we're seeking a unifying
+underlying explanation and if you accept
+pluralism at the start then you won't
+get there
+that tension which is okay pluralism
+everybody must be pluralist and this is
+the only way
+it's actually absolutist and singular at
+a higher level
+and so pluralism means that we each do
+have our perspectives and yet there is a
+way of working
+it's not just the same thing as saying
+we have an absolute answer
+and it's that there's no answer that's
+the kind of local logical paradoxes that
+we see all around us
+that's a great point stephen and then
+anyone else
+yes that's that's the um the rabbit hole
+of post-modernism
+oh we don't want to go but it's it's
+it's good
+this is a really rich conversation and
+uh i think like you say it's uh
+to be able to jump from helmholtz to
+some of these trans-cultural things is
+uh you know it shows you that it's
+pretty foundational some of the stuff
+we're touching so that's great
+so thanks for a lovely a lovely talk
+today i really enjoyed it thank you
+yeah thanks a lot any closing notes
+there alex otherwise we're all gonna
+probably
+re-listen and re-read and think about
+what would be good to ask next week
+yeah i know thank thank you all it's
+it's really fascinating and
+fun and i just want to do more of it
+next week i'm
+i'm very uh i'm
+i didn't have anything else to say but i
+kept speaking i'm not sure why
+same way do that do that sometimes it
+happens
+so thanks again everybody who's
+participating live and on live stream
+and we will see you next week

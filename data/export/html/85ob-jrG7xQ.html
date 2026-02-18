@@ -1,0 +1,2805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf GuestStream 115.1 ~ Energy-Based Transformers and the Future of Scaling</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf GuestStream 115.1 ~ Energy-Based Transformers and the Future of Scaling</h1>
+<div class="meta">Category: GuestStream &middot; Series: GuestStream_115 &middot; Episode 1 &middot; Speakers: Energy-Based Transformers, the Future of Scaling &middot; Duration: 1:05:02 &middot; Views: 839</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=85ob-jrG7xQ">https://www.youtube.com/watch?v=85ob-jrG7xQ</a></div>
+<article>
+<p>Hello, welcome. It is July 30th, 2025, and we're in Active Inference Guest Stream 115.1</p>
+<p>with Alexei Gladstone, who will be presenting and discussing energy-based transformers in</p>
+<p>the future of scaling. There will be a presentation followed by a discussion, so if you're watching</p>
+<p>live, please write any questions in the live chat. Otherwise, thank you, Alexei et al.,</p>
+<p>for the paper and the work and for joining, and looking forward to the presentation. Thank you.</p>
+<p>Thanks for having me, Daniel. Excited to start this presentation. So let's go ahead and get started.</p>
+<p>And I'm going to ask a philosophical question at the start of this, just to get everyone thinking.</p>
+<p>And we'll circle back to this at the end of the presentation. But that question is, would you</p>
+<p>trade off 100 times the amount of computation, so burning your GPUs for 100 times longer,</p>
+<p>for 1% better generalization, right? So generalizing 1% better out of distribution,</p>
+<p>tiny amount, right? And you might say, this question sounds absolutely ludicrous. Who in</p>
+<p>their right mind would spend 100 times the amount on computation just to do 1% better? And maybe we're</p>
+<p>already actually seeing it, right? So this is an example with opening ISO 1 and it thinking for a</p>
+<p>very long time to generalize better, albeit maybe not 1% better. But this is kind of the insight that</p>
+<p>I think will lead you into the ideas behind energy-based transformers that we are going to</p>
+<p>dive into now. So to give some contextualization, there's been lots of interest recently in what</p>
+<p>are called thinking and reasoning models broadly in AI, especially in language modeling. So in language</p>
+<p>models, particularly with large language models, we've seen tons of models. In fact, this slide is now</p>
+<p>outdated because Grok 4 and Claude 4 Sonnet have come out. So many models, including open source</p>
+<p>Chinese models, have been used to basically perform this reasoning or thinking for longer during inference.</p>
+<p>And the same thing has actually happened in Visions. There's been lots of interest in scaling</p>
+<p>diffusion models at test time as well for image generation or for video generation. So broad interest</p>
+<p>from the field in basically making models perform better at inference by kind of doing search or</p>
+<p>thinking or reasoning or test time compute, whatever you'd like to call it. But today, I'm going to take</p>
+<p>a perspective on these approaches that these approaches are ultimately unsatisfying in the</p>
+<p>quest for human level intelligence. And you might say, why? These approaches have had widespread success.</p>
+<p>I mean, I use O1 every day and these models have been largely successful in doing great in math and</p>
+<p>coding benchmarks. So why are these approaches unsatisfying? And what is my argument today?</p>
+<p>Well, from the intellectual perspective of achieving human level intelligence,</p>
+<p>we need approaches that are modality agnostic because humans are able to reason and think</p>
+<p>over any modality. And the current approaches do not have that characteristic.</p>
+<p>Another challenge is problem agnosticness. So current approaches very much rely on,</p>
+<p>especially in language, verifiable rewards, i.e. domains or problems such that they can be easily</p>
+<p>verified with a binary reward. An example of this is coding or math, where we can verify very easily</p>
+<p>whether or not a coding or a math solution is correct. And ultimately, this kind of hints at</p>
+<p>another problem, which is the reliance of these approaches on external supervision. So us models,</p>
+<p>or sorry, us humans are able to get to human levels intelligence without any external rewards or</p>
+<p>verifiers or supervision. We're able to learn how to think on any modality or any problem</p>
+<p>without this type of supervision. So I'm going to make an argument today that if we want human level</p>
+<p>intelligence, right, so if we want artificial general intelligence or artificial super intelligence,</p>
+<p>whatever you'd like to call it, we really do need systems that learn to think on their own,</p>
+<p>on any modality problem, and without any additional supervision, just like us humans, right? So you might</p>
+<p>ask, okay, this makes sense. You know, I want my model to be modality agnostic, problem agnostic,</p>
+<p>supervision agnostic, etc, etc. But how can I achieve this, right? The current paradigm is very</p>
+<p>much rely on tons of humans labeling tons of data for verifiable rewards. Same thing with diffusion</p>
+<p>models, they rely on external verifiers kind of labeling how good responses are. So how can we do</p>
+<p>this without external supervision? And the point that this kind of leads to, which our paper Energy</p>
+<p>Based Transformers asks, is how can we learn to think from unsupervised learning? And this is the goal of</p>
+<p>today is to demonstrate to you that we actually can teach models to learn how to think from</p>
+<p>unsupervised learning. And there's a clever way of doing this, right? And we'll kind of go over that</p>
+<p>briefly and describe in detail how that works later on. But the general idea is in order to do thinking,</p>
+<p>we generally need a verifier. So we're going to learn to verify our predictions. And then what we'll do</p>
+<p>is we'll learn to optimize predictions with respect to this verifier, right? So given a verifier,</p>
+<p>it can tell me how good any prediction is with a given context, right? So given a sequence and a</p>
+<p>next distribution prediction for a language model, this verifier can tell me how good that distribution</p>
+<p>is. Or doing classification on ImageNet, given an image and a class, that verifier can tell me how</p>
+<p>good that class is with the image. It turns out that all these ideas can actually kind of be summed up</p>
+<p>in one framework called energy-based modeling. And in the active inference community, I'm sure many of you</p>
+<p>are familiar with this. And the broader AI community, energy-based models have been less popular.</p>
+<p>The general idea is energy-based models frame thinking or system two or reasoning as optimization</p>
+<p>over what is called a learned energy landscape. And we'll talk more in detail about what that means</p>
+<p>to train an energy-based model. So I'm going to make everyone in the next two minutes an expert.</p>
+<p>Okay, so what are feed-forward models? Feed-forward models generally take the form for supervised</p>
+<p>learning of given an input, given an X, predict a Y hat, right? So given an image, predict the image's</p>
+<p>label, or given a sequence of tokens, predict the next token. This is the way language models work,</p>
+<p>classification models work, et cetera, et cetera. The idea behind an energy-based model is that they</p>
+<p>are given an input X and a prediction Y hat. So for example, a context or a sequence of tokens</p>
+<p>and a distribution over next tokens. And they tell you how high energy or low energy those are.</p>
+<p>And the general idea is like low energy is high probability and high energy is low probability.</p>
+<p>So high energy is unlikely or not compatible. And then this ultimately brings about the question of,</p>
+<p>okay, I've trained this energy-based model. How do I predict using my energy-based model, right?</p>
+<p>I have this X and this Y hat. How do I predict this Y hat? Because we ultimately care about using</p>
+<p>these models for prediction. It turns out that there's an elegant way to do this. That's very similar</p>
+<p>to diffusion models. The general idea is this. What we will do is we will start like diffusion</p>
+<p>models with a random prediction. So this Y hat will start as, for example, random noise.</p>
+<p>And what we'll do is we'll input this Y hat into the model and we'll get the energy of this Y hat,</p>
+<p>right? With the context. And ideally this energy will be very high because this Y hat is not compatible</p>
+<p>with the current X. And then what we'll do is we'll get the gradient from this energy to this Y hat</p>
+<p>and iteratively refine this Y hat with respect to this energy. This is actually doing exactly what</p>
+<p>we said earlier, which is learning a verifier, which is this energy scalar, and then learning to</p>
+<p>optimize predictions with respect to this verifier by updating Y iteratively or updating Y hat iteratively.</p>
+<p>And you can kind of visualize this. So for example, if you're training a video model,</p>
+<p>the initial prediction would be a random frame. If you're training a language model,</p>
+<p>the initial prediction would be a random noise distribution. And the idea is what you'll do is</p>
+<p>you'll feed this into the model, you'll get the energy, and then you'll iteratively perform</p>
+<p>energy descent or energy minimization. And you're continuously doing that until convergence.</p>
+<p>So I tell people about this and they often ask me, why do we care about formulating models in this way,</p>
+<p>right? Like feed forward models seem much simpler. With the feed forward model, all we do is input X</p>
+<p>and we get Y. Why do we care about doing this energy minimization thing? And there's a couple</p>
+<p>theoretical perspectives on why this is useful. The first one is flexibility. So energy-based models</p>
+<p>are very broad. It turns out that virtually anything can be, any model can be formulated as an</p>
+<p>implicit energy-based model. And you're really just doing density estimation over all the possible</p>
+<p>variables. So it's very broad. It's also very theoretically sound. So we'll kind of talk about</p>
+<p>this in more detail later. But one of the huge theoretical benefits of these energy-based models</p>
+<p>is that they could potentially be Turing complete per prediction, which means that for predictions</p>
+<p>that require an inherent amount of serial computation, energy-based models could actually solve these</p>
+<p>problems. Whereas a feed forward model cannot because feed forward models have a finite program.</p>
+<p>Energy-based models can also verify predictions with this energy scalar and can learn uncertainty</p>
+<p>in continuous state spaces pretty easily. So it's very much more difficult to do this in</p>
+<p>with feed forward models. And it turns out that energy-based models are a very broad framework. I kind</p>
+<p>of hinted at this earlier. And I like to think about energy-based models under two different perspectives,</p>
+<p>explicit energy-based models and implicit energy-based models to kind of clarify this. And the reason I say</p>
+<p>this is because a lot of models that exist, for example, GANs and diffusion models, can actually</p>
+<p>be seen as implicit energy-based models. So what this means is models where you can implicitly derive an</p>
+<p>energy function, but where this energy function is not an explicit output of the model. So just want</p>
+<p>to clarify that the models that we focus on in this paper are explicit energy-based models, where the</p>
+<p>entire model, given a set of inputs, maps to a single scalar, a scalar field called the energy.</p>
+<p>And implicit energy-based models, you need to do some work to get this scalar energy.</p>
+<p>And it's worth noting that these explicit energy-based models have never really worked well.</p>
+<p>Right? So what I'm telling you about the attraction of these energy-based models for verification and</p>
+<p>prediction and term completeness, it sounds great, but they've never really worked. And the general</p>
+<p>intuition behind practitioners, you know, pursuing energy-based models in AI is like, don't.</p>
+<p>They don't work. They don't scale. They're unstable. There's tons of issues. They're slow,</p>
+<p>etc., etc. So the goal of this work, the TLDR, if I had to give one, would be we want to make energy-based</p>
+<p>models actually work. We want to make them relevant. We want to see how they scale. And we want to make</p>
+<p>them work practically so that we can get these great benefits of dynamic computation and verification,</p>
+<p>etc., etc., at inference. And in order to do that, we need a stable and parallelizable architecture,</p>
+<p>particularly because energy-based models have very much failed to scale because of inherent,</p>
+<p>serialness and computation and non-parallelizability, as well as instability. So when people try and scale</p>
+<p>energy-based models, they tend to be very unstable and have issues with the gradient.</p>
+<p>And it turns out that transformers are a great fit. Transformers have amazing gradient control,</p>
+<p>having a very long residual stream. And there's strong empirical evidence suggesting that transformers</p>
+<p>can scale hugely, widely, and, you know, to multi-trillion parameter scale regimes.</p>
+<p>Okay. So this is why we created energy-based transformers with this natural synergy. And I'd</p>
+<p>like to visualize how energy-based transformers look compared to existing approaches, just to</p>
+<p>understand, like, what are the qualitative differences? And I'd like to think about this</p>
+<p>in the perspective of some of the kind of cognitive facets or abilities we talked about earlier.</p>
+<p>So if you have a feed-forward model, and we're just thinking about autoregressive modeling for now,</p>
+<p>the amount of computation that you have for every prediction made, i.e. with, like, current language</p>
+<p>models, is fixed. So these have finite depth, the program ends, the amount of computation it has</p>
+<p>is equivalent to the amount of depth, and that's it. You can't use any more computation for a specific</p>
+<p>prediction. RNNs generally, the way that they are trained currently, have the same flaw. So because we</p>
+<p>usually train RNNs to only update their hidden state, given new state information, they don't have this</p>
+<p>ability to dynamically compute, at least in the current regime, for most of the popular RNN variants,</p>
+<p>per prediction. Diffusion models, on the other hand, actually do have this capability. So diffusion</p>
+<p>models can have an unbounded amount of computation for every prediction being made. So that means</p>
+<p>essentially that my diffusion model can denoise for an unbounded amount of time, and therefore can be</p>
+<p>potentially turned complete. One of the challenges with diffusion models, in practice, theoretically,</p>
+<p>they have this, but in practice, they don't really, is being able to verify predictions. So let's say</p>
+<p>I generate sample A with my diffusion model, and sample B with my diffusion model. My diffusion model</p>
+<p>has no clue whether sample A or sample B is better. It generally does not work in practice. Energy-based</p>
+<p>models actually can do this. So with an energy-based model, I can generate sample A, generate sample B,</p>
+<p>pass both of these into the model, get a single scalar energy for both of them, and then use the</p>
+<p>argument of the energies to determine which sample is better.</p>
+<p>Okay, so I'm going to dive into quickly kind of the theoretical properties that these models have.</p>
+<p>And feed-forward models, per prediction, don't really have many of the properties that would</p>
+<p>be desirable for making predictions with dynamic compute. So feed-forward models, per prediction,</p>
+<p>are not turned complete, and they also cannot give likelihoods without tricks. So particularly in</p>
+<p>continuous state spaces, if you're using a feed-forward model, you have to resort to stuff like</p>
+<p>elbow or VQ for discretization in order to give like likelihoods, and this results in kind of some</p>
+<p>icky compression and some other undesirable traits. So generally kind of standard vanilla feed-forward</p>
+<p>models can't do many of these things in continuous state spaces. Diffusion models can be turned</p>
+<p>complete because they can have potentially unbounded amount of computation for making predictions,</p>
+<p>but in practice they don't verify or give likelihoods. Energy-based models can do all</p>
+<p>these things. So you can run energy-based inference for longer, giving you this turn completeness from</p>
+<p>a theoretical perspective, and you can also give relative likelihoods with these energy-based models.</p>
+<p>So I think it's also worthwhile to visualize how these energy-based models actually look and how</p>
+<p>they perform inference. So this is an example here of what an energy-based model would learn during</p>
+<p>training, which we call an energy landscape. And the idea is this energy landscape is a high-dimensional</p>
+<p>space spanning your predictions that tells you, it's a scalar field, telling you at each point in this</p>
+<p>prediction space how high or low energy is this, essentially how high or low probability this is,</p>
+<p>based off the prediction, its compatibility with the context. Right? So let's say we have a context of</p>
+<p>the dog-caught-the. If we feed in a random noise distribution prediction, this would likely be high</p>
+<p>energy. And the idea would be what you're doing during inference is you're performing energy minimization</p>
+<p>to get to this local minima, which corresponds to like a local energy minima that is strong and has a</p>
+<p>good prediction. This prediction is a good distribution corresponding to a token that has high likelihood</p>
+<p>under this context. And the idea is like learning this energy landscape allows you to dynamically allocate</p>
+<p>computation, verify predictions, have uncertainty in continuous state spaces, etc., etc. Dynamic computation</p>
+<p>can be performed by performing energy minimization for longer. Prediction verification can be done by</p>
+<p>getting the energy at specific points. And uncertainty can be done with highly multimodal energy landscapes,</p>
+<p>where if there's multiple local minima, you know that the model is uncertain about which prediction is best.</p>
+<p>Okay, so I'm going to dive into how energy-based transformers perform in practice.</p>
+<p>We did a lot of scaling results in this paper to kind of dive into this and to determine whether or not they actually can scale well.</p>
+<p>And generally, the results were very good, right? So we tested on a variety of axes. I'll show parameters scaling and flop scaling later.</p>
+<p>But if you're just holding everything else constant, just changing the amount of data,</p>
+<p>or the batch size, or the depth, energy-based transformers scale faster</p>
+<p>than this strong transformer++ autoregressive baseline.</p>
+<p>And it's worth noting that these are autoregressive energy-based transformers as well.</p>
+<p>They could be bi-directional potentially, but we compared fairly to the transformer++.</p>
+<p>And what we really care about is the slope or the asymptotic down into the right performance.</p>
+<p>And you can see that these energy-based transformers generally have a much higher slope,</p>
+<p>so as much as like almost 36% for data scaling, and perform better down into the right.</p>
+<p>Which is great. That's what really matters when you're scaling these models to foundation model level compute.</p>
+<p>We also did parameter scaling, or these are commonly referred to as scaling laws in NLP.</p>
+<p>And you can see that the trend for energy-based transformers is generally better,</p>
+<p>especially in video, for basically scaling during pre-training.</p>
+<p>We also did downstream inference results, or what I like to call thinking scaling,</p>
+<p>and basically testing the generalization of these models given a similar pre-training performance.</p>
+<p>And you can see that at first the energy-based transformers have more perplexity degradation,</p>
+<p>which corresponds to performing worse.</p>
+<p>But when you basically run these energy-based transformers for longer,</p>
+<p>or have them think for longer, the performance actually gets better.</p>
+<p>So asymptotically, they generalize much better than the transformer++,</p>
+<p>by dynamically allocating more computation.</p>
+<p>And then another thing that's great,</p>
+<p>is like we see many of the metrics that we care about with these energy-based transformers improving during training.</p>
+<p>So verification improves as you train the model for longer,</p>
+<p>which essentially means that if you were to train a foundation model with energy-based transformers,</p>
+<p>the verification would get better and better during training.</p>
+<p>which is great for avoiding adversarial examples,</p>
+<p>or generalizing even better during test time.</p>
+<p>We also compared energy-based transformers to diffusion models,</p>
+<p>and this were bidirectional variants,</p>
+<p>on like a simple image denoising task.</p>
+<p>And we can see that energy-based transformers generally denoise much faster,</p>
+<p>i.e. with less forward passes,</p>
+<p>and have better quality.</p>
+<p>So the downstream metrics are better.</p>
+<p>And one thing that's really important,</p>
+<p>that I think is potentially very impactful,</p>
+<p>is representation learning.</p>
+<p>And representation learning with diffusion models</p>
+<p>has tended to become,</p>
+<p>tend to be very difficult.</p>
+<p>And there are a lot of tricks that you need</p>
+<p>for representation learning with diffusion models.</p>
+<p>With energy-based transformers,</p>
+<p>we've pretty easily seen that they learn decent representations,</p>
+<p>albeit better than diffusion models.</p>
+<p>One other great property that we kind of investigated qualitatively,</p>
+<p>was the ability to learn uncertainty.</p>
+<p>And the idea is like,</p>
+<p>and you could do this in continuous space as well,</p>
+<p>we want the models to know what they don't know.</p>
+<p>And this is a huge challenge,</p>
+<p>and perhaps like why a lot of the current models struggle</p>
+<p>at inference,</p>
+<p>and with hallucination,</p>
+<p>and other stuff like this.</p>
+<p>Because they don't really know what they don't know.</p>
+<p>So generalizing out of distribution</p>
+<p>tends to require knowing what you don't know.</p>
+<p>And we can see here</p>
+<p>that energy-based transformers</p>
+<p>have higher energy for tokens that are hard to predict.</p>
+<p>So for example, a quick brown fox.</p>
+<p>Same thing with research and problem here.</p>
+<p>Whereas tokens that are easier to predict,</p>
+<p>such as is, a, but, period,</p>
+<p>have lower energy.</p>
+<p>So this is very promising</p>
+<p>for principal generalization out of distribution,</p>
+<p>or for teaching models what they don't know.</p>
+<p>And that is one of the general</p>
+<p>kind of theoretical benefits of energy-based models,</p>
+<p>especially in continuous state spaces.</p>
+<p>Okay.</p>
+<p>This wraps up the last of the results.</p>
+<p>Now I'm going to transition the talk a bit,</p>
+<p>and talk a bit about something more reflective,</p>
+<p>and sort of prospective,</p>
+<p>based off a lot of the learnings from this paper.</p>
+<p>Right?</p>
+<p>So I conducted a lot of experimentation for this paper,</p>
+<p>lots of scaling runs,</p>
+<p>and I kind of realized something.</p>
+<p>Realized that there's something deeper going on.</p>
+<p>And particularly,</p>
+<p>something that is kind of,</p>
+<p>the whole field is trending towards.</p>
+<p>And that's what I'm going to talk about.</p>
+<p>So if we ask the question,</p>
+<p>where are we headed?</p>
+<p>Right?</p>
+<p>Where are models headed?</p>
+<p>As we train them longer and longer.</p>
+<p>And there's a trend in all loss plots.</p>
+<p>So if we can imagine</p>
+<p>that we have 10,000 times the amount of computation</p>
+<p>that we have now,</p>
+<p>virtually all models would approach</p>
+<p>approximately zero loss,</p>
+<p>or close to zero loss.</p>
+<p>Right?</p>
+<p>So given 10,000 times the amount of GPUs,</p>
+<p>instead of 10,000 GPUs having,</p>
+<p>I don't know, 100 billion or whatever.</p>
+<p>All models will approach zero loss.</p>
+<p>And this kind of looks like this.</p>
+<p>So all models eventually achieve close to zero loss,</p>
+<p>or whatever the irreducible slash random noise</p>
+<p>or loss corresponding to prediction of random noise is.</p>
+<p>And I kind of like to visualize that</p>
+<p>as a perplexity of one,</p>
+<p>or an MSE of 0.5 here.</p>
+<p>Right?</p>
+<p>And in fact,</p>
+<p>I'd argue that frontier labs</p>
+<p>are already starting to achieve this.</p>
+<p>Right?</p>
+<p>So frontier labs are already very much saying</p>
+<p>that they are not compute bound,</p>
+<p>but rather that they are data bound.</p>
+<p>That data is the main issue.</p>
+<p>And what this kind of signals</p>
+<p>is most of these models</p>
+<p>are achieving close to zero loss.</p>
+<p>Right?</p>
+<p>Or potentially what is called</p>
+<p>the irreducible loss.</p>
+<p>And what this means is that</p>
+<p>we care much less</p>
+<p>when we're not compute bound,</p>
+<p>but rather data bound</p>
+<p>about convergence speed.</p>
+<p>Right?</p>
+<p>So all of these models,</p>
+<p>regardless of the scaling rate,</p>
+<p>even if EBT's do scale faster</p>
+<p>during pre-training,</p>
+<p>reach the same kind of zero loss</p>
+<p>or close to zero loss.</p>
+<p>Right?</p>
+<p>So different journeys,</p>
+<p>but the same destination.</p>
+<p>Okay.</p>
+<p>So what am I getting to?</p>
+<p>Right?</p>
+<p>This is like approximate zero loss,</p>
+<p>irreducible,</p>
+<p>the best models can possibly do,</p>
+<p>et cetera, et cetera.</p>
+<p>What matters here?</p>
+<p>Right?</p>
+<p>If models really are approaching</p>
+<p>this kind of close to zero loss regime,</p>
+<p>what actually matters?</p>
+<p>And I kind of hinted at this earlier,</p>
+<p>but it's not the scaling rate.</p>
+<p>So all models will eventually</p>
+<p>kind of reach close to zero loss,</p>
+<p>all decent models at least.</p>
+<p>So the question is like,</p>
+<p>what matters here?</p>
+<p>And you might say,</p>
+<p>what about inference speed</p>
+<p>or flops or latency?</p>
+<p>And I would also argue</p>
+<p>that these don't matter.</p>
+<p>If we have 10,000 times</p>
+<p>the amount of computation,</p>
+<p>models are already getting close</p>
+<p>to being able to run on device</p>
+<p>with 10,000 times the amount of compute,</p>
+<p>inference speed and flops</p>
+<p>won't really matter.</p>
+<p>So is our job done?</p>
+<p>Right?</p>
+<p>Do we have to do anything else</p>
+<p>in this 10,000 X compute regime</p>
+<p>once our models achieve close to zero loss?</p>
+<p>And today I'm going to argue</p>
+<p>that the answer is no</p>
+<p>and that we have a lot of work left to do.</p>
+<p>And this is the insight that I gained</p>
+<p>from doing this project, right?</p>
+<p>So there's sort of a secret,</p>
+<p>an unspoken secret of AI research</p>
+<p>that a lot of the big tech companies</p>
+<p>don't want the public to know,</p>
+<p>which is that zero training loss</p>
+<p>does not equal real world perfection</p>
+<p>or 100% benchmark saturation</p>
+<p>does not equal real world perfection.</p>
+<p>In other words,</p>
+<p>even if your model achieves 100%</p>
+<p>on every single difficult AI benchmark</p>
+<p>there is</p>
+<p>and does perfect on your validation set,</p>
+<p>this model will still not generalize</p>
+<p>perfectly out of distribution.</p>
+<p>Right?</p>
+<p>So in other words,</p>
+<p>there will always,</p>
+<p>always, always be novel,</p>
+<p>unseen situations</p>
+<p>in the real world</p>
+<p>that your model has to adapt to</p>
+<p>and that it has to generalize too.</p>
+<p>And it turns out that</p>
+<p>humans adapting to this novelty</p>
+<p>is what we are very good at.</p>
+<p>Right?</p>
+<p>So we're able to generalize every day</p>
+<p>to out of distribution scenarios</p>
+<p>that we have never seen in our life.</p>
+<p>In fact,</p>
+<p>I really like this example</p>
+<p>of a counterintuitive fact</p>
+<p>about just how much we generalize.</p>
+<p>So if you just think hypothetically</p>
+<p>for a second</p>
+<p>about training a model</p>
+<p>on all possible human data,</p>
+<p>so all video data</p>
+<p>that humans have ever seen,</p>
+<p>all language data</p>
+<p>that humans have ever spoke,</p>
+<p>all audio data,</p>
+<p>et cetera, et cetera.</p>
+<p>Right?</p>
+<p>The crazy thing about this data</p>
+<p>is that most of it</p>
+<p>will still be out of distribution.</p>
+<p>Most of this data</p>
+<p>will still be</p>
+<p>very much data</p>
+<p>that the model</p>
+<p>has to generalize to.</p>
+<p>In fact,</p>
+<p>something very interesting</p>
+<p>is that</p>
+<p>you can mathematically guarantee</p>
+<p>that this video</p>
+<p>that you have observed</p>
+<p>for the past five minutes,</p>
+<p>this is the first time</p>
+<p>you are seeing in this video.</p>
+<p>In fact,</p>
+<p>this is the first time</p>
+<p>anyone in our universe</p>
+<p>has ever observed</p>
+<p>this past five minute video</p>
+<p>that you're observing.</p>
+<p>Right?</p>
+<p>So this is how high dimensional</p>
+<p>the data we are dealing with is.</p>
+<p>And that's why</p>
+<p>this out of distribution</p>
+<p>generalization problem</p>
+<p>is the core problem</p>
+<p>that we have with AI right now.</p>
+<p>And that we'll have to tackle</p>
+<p>over the next 10 years.</p>
+<p>So what matters</p>
+<p>in the zero loss regime,</p>
+<p>I kind of said this earlier,</p>
+<p>is generalization.</p>
+<p>Right?</p>
+<p>So how your model performs</p>
+<p>on this out of distribution data.</p>
+<p>And I like to refer to this</p>
+<p>as the era of generalization.</p>
+<p>Right?</p>
+<p>So this era</p>
+<p>where all models</p>
+<p>in the frontier labs</p>
+<p>are essentially achieving</p>
+<p>the same performance</p>
+<p>or approximately zero loss.</p>
+<p>What really matters</p>
+<p>is how well</p>
+<p>does your model generalize?</p>
+<p>And this kind of explains</p>
+<p>why there's been</p>
+<p>a lot of interest</p>
+<p>in reasoning</p>
+<p>or thinking models</p>
+<p>because these models</p>
+<p>allow for better generalization</p>
+<p>at test time.</p>
+<p>More adaptability,</p>
+<p>more test time compute,</p>
+<p>more thinking,</p>
+<p>et cetera, et cetera.</p>
+<p>Okay.</p>
+<p>This brings us to the question,</p>
+<p>which is</p>
+<p>if we care about generalization</p>
+<p>instead of just flop scaling,</p>
+<p>how do we measure it?</p>
+<p>Right?</p>
+<p>And today I'm going to propose</p>
+<p>a simple metric</p>
+<p>that I believe</p>
+<p>will be more helpful</p>
+<p>than relying</p>
+<p>on many downstream benchmarks.</p>
+<p>benchmarks.</p>
+<p>And that is because</p>
+<p>downstream benchmarks</p>
+<p>tend to be very high</p>
+<p>bias and variance.</p>
+<p>Right?</p>
+<p>So depending on which</p>
+<p>benchmarks you use</p>
+<p>to measure models,</p>
+<p>they'll look better or worse.</p>
+<p>You can see this</p>
+<p>in the frontier.</p>
+<p>You know,</p>
+<p>the benchmarks</p>
+<p>that different companies use</p>
+<p>show their bench,</p>
+<p>their models being better,</p>
+<p>but oftentimes</p>
+<p>they're worse,</p>
+<p>et cetera, et cetera.</p>
+<p>So I'm going to even</p>
+<p>insight into a potentially</p>
+<p>more useful</p>
+<p>and practical metric</p>
+<p>for generalization,</p>
+<p>which is data efficiency.</p>
+<p>Right?</p>
+<p>And I'll be arguing</p>
+<p>that data efficiency</p>
+<p>is actually a form</p>
+<p>of generalization.</p>
+<p>And the reason for this</p>
+<p>is if I have given you</p>
+<p>three concepts,</p>
+<p>sorry,</p>
+<p>three examples,</p>
+<p>and you were able</p>
+<p>to learn a new concept</p>
+<p>given those three examples,</p>
+<p>but it takes me</p>
+<p>four examples</p>
+<p>to learn such a new concept,</p>
+<p>you have generalized better.</p>
+<p>Right?</p>
+<p>So you have used</p>
+<p>less data</p>
+<p>to achieve</p>
+<p>the same compression rate</p>
+<p>or the same representations</p>
+<p>or potentially better representations</p>
+<p>with less data.</p>
+<p>So that's data efficiency,</p>
+<p>but you've also generalized better.</p>
+<p>So given that you keep</p>
+<p>everything constant,</p>
+<p>same metric,</p>
+<p>same architecture,</p>
+<p>same parameter count</p>
+<p>because you need</p>
+<p>the same compression ratio,</p>
+<p>if you achieve</p>
+<p>the same metric</p>
+<p>during pre-training</p>
+<p>with less data,</p>
+<p>your model is actually</p>
+<p>generalizing better.</p>
+<p>And that's what I'll argue</p>
+<p>for here today.</p>
+<p>Okay.</p>
+<p>So I've claimed</p>
+<p>that data efficiency</p>
+<p>is how we will measure</p>
+<p>generalization</p>
+<p>and that generalization</p>
+<p>is what we should care about.</p>
+<p>So this ultimately brings us</p>
+<p>as researchers</p>
+<p>or engineers</p>
+<p>to the question</p>
+<p>of how do we measure models?</p>
+<p>Right?</p>
+<p>What X axis</p>
+<p>do we use</p>
+<p>to measure model performance?</p>
+<p>And over the last five years,</p>
+<p>it's an X axis</p>
+<p>that makes energy-based</p>
+<p>transformers look very bad,</p>
+<p>which is flop scaling.</p>
+<p>Energy-based transformers</p>
+<p>needing to do MCMC</p>
+<p>or optimization</p>
+<p>during pre-training</p>
+<p>are inherently more expensive,</p>
+<p>although I'm sure</p>
+<p>you can make this better,</p>
+<p>but are inherently</p>
+<p>more expensive</p>
+<p>than feed-forward models,</p>
+<p>right?</p>
+<p>And hence why you see</p>
+<p>that this flop count</p>
+<p>is much higher.</p>
+<p>So you might say,</p>
+<p>okay,</p>
+<p>these models are terrible</p>
+<p>for flop scaling.</p>
+<p>What about the error</p>
+<p>of generalization?</p>
+<p>Right?</p>
+<p>So what about</p>
+<p>when all we really care about</p>
+<p>is generalization?</p>
+<p>If all models</p>
+<p>achieve close to the zero loss</p>
+<p>or close to approximately</p>
+<p>zero loss,</p>
+<p>then what really matters</p>
+<p>is not their flop scaling</p>
+<p>because all models</p>
+<p>will eventually achieve this,</p>
+<p>but actually their data efficiency</p>
+<p>and their generalization.</p>
+<p>And I like to propose</p>
+<p>that we take a look</p>
+<p>at this graph</p>
+<p>and focus more on this</p>
+<p>over the next couple of years</p>
+<p>because generalization</p>
+<p>is becoming the big bottleneck.</p>
+<p>Okay.</p>
+<p>Now I'm going to bring the talk</p>
+<p>back to a question</p>
+<p>from the start,</p>
+<p>which is,</p>
+<p>would you trade off</p>
+<p>100X times</p>
+<p>the amount of compute</p>
+<p>for 1% better generalization?</p>
+<p>So running your GPUs</p>
+<p>for 100 times longer.</p>
+<p>And I hope that</p>
+<p>under this perspective,</p>
+<p>under this perspective</p>
+<p>that potentially we are</p>
+<p>in this era of generalization</p>
+<p>where the bottleneck</p>
+<p>really is just generalizing</p>
+<p>out of distribution</p>
+<p>rather than being</p>
+<p>more flop efficient,</p>
+<p>the answer</p>
+<p>becomes an undoubtable yes</p>
+<p>because generalization</p>
+<p>will be all that we care about.</p>
+<p>That's it for the presentation.</p>
+<p>I'm happy to answer</p>
+<p>any questions</p>
+<p>and thank you very much</p>
+<p>for listening.</p>
+<p>Awesome.</p>
+<p>Great talk.</p>
+<p>Okay.</p>
+<p>While everyone in the live chat</p>
+<p>gets some questions</p>
+<p>ready and enters them,</p>
+<p>which I will read to you,</p>
+<p>could you just give</p>
+<p>a little background?</p>
+<p>How did you come</p>
+<p>to this problem?</p>
+<p>What about grad school?</p>
+<p>What was your trajectory</p>
+<p>to get to this question</p>
+<p>and collaboration?</p>
+<p>Yeah, good question.</p>
+<p>I would say that</p>
+<p>I very much started</p>
+<p>working on energy-based models</p>
+<p>just from a,</p>
+<p>I thought they were</p>
+<p>very intuitive perspective.</p>
+<p>So to me,</p>
+<p>you know,</p>
+<p>if you ask me,</p>
+<p>like,</p>
+<p>is the brain doing</p>
+<p>something more similar</p>
+<p>to energy-based modeling</p>
+<p>or feed-forward modeling?</p>
+<p>And no doubt,</p>
+<p>there's no doubt in my mind</p>
+<p>that it's more similar</p>
+<p>to energy-based modeling,</p>
+<p>at least in some respects,</p>
+<p>particularly with regards</p>
+<p>to like some of the capabilities</p>
+<p>we talked about, right?</p>
+<p>So being able to dynamically</p>
+<p>allocate computation,</p>
+<p>verify predictions.</p>
+<p>But I think one key thing</p>
+<p>is also learning like this</p>
+<p>joint distribution over variables.</p>
+<p>I think that's very important,</p>
+<p>especially when we will</p>
+<p>eventually take these</p>
+<p>to multimodal learning</p>
+<p>to kind of learn</p>
+<p>like this compatibility</p>
+<p>between all the input variables</p>
+<p>and like predictions, right?</p>
+<p>So you don't just learn</p>
+<p>given an image</p>
+<p>to map to a classification head.</p>
+<p>It's not like there's</p>
+<p>some classification head</p>
+<p>in my brain</p>
+<p>that tells me</p>
+<p>the logic value</p>
+<p>for each class</p>
+<p>when you're doing</p>
+<p>image classification.</p>
+<p>No, it doesn't work like that,</p>
+<p>right?</p>
+<p>You learn this joint distribution</p>
+<p>over all the possible images</p>
+<p>in all the possible language</p>
+<p>and then you learn</p>
+<p>how compatible these are, right?</p>
+<p>You know whether this image</p>
+<p>of a dog</p>
+<p>is compatible</p>
+<p>with the word dog.</p>
+<p>You don't just learn</p>
+<p>a distribution</p>
+<p>over the possible classes.</p>
+<p>So to me,</p>
+<p>they were always very intuitive</p>
+<p>and that's kind of</p>
+<p>why I started working on them.</p>
+<p>And then I saw that</p>
+<p>there was lots of room</p>
+<p>for reasoning with them</p>
+<p>and eventually</p>
+<p>started working on them</p>
+<p>during around two years ago</p>
+<p>and yeah,</p>
+<p>I just kept working on them</p>
+<p>for a while</p>
+<p>and making them,</p>
+<p>trying making them work</p>
+<p>and exploring</p>
+<p>and yeah,</p>
+<p>now we're here.</p>
+<p>So that's the journey.</p>
+<p>Very much just curiosity-led.</p>
+<p>Started from the energy maxima,</p>
+<p>now we're here.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>There's so many entry points</p>
+<p>and I'm sure people</p>
+<p>will have interesting questions,</p>
+<p>but you brought up</p>
+<p>one of the advantages</p>
+<p>being the flexibility.</p>
+<p>flexibility.</p>
+<p>So what exactly</p>
+<p>is that energy</p>
+<p>landscape's flexibility?</p>
+<p>What data matters</p>
+<p>and why?</p>
+<p>What could we say</p>
+<p>about what kinds</p>
+<p>of generalization</p>
+<p>would be</p>
+<p>in</p>
+<p>out of distribution scope</p>
+<p>versus out of</p>
+<p>out of distribution scope?</p>
+<p>Like,</p>
+<p>what is it about</p>
+<p>the energy landscape?</p>
+<p>Do you just dump</p>
+<p>random data?</p>
+<p>Is it about</p>
+<p>organic data?</p>
+<p>What is it that</p>
+<p>is about the data</p>
+<p>and what does</p>
+<p>the energy landscape</p>
+<p>reflect</p>
+<p>that</p>
+<p>would or</p>
+<p>does have</p>
+<p>flexibility?</p>
+<p>Yeah.</p>
+<p>Um,</p>
+<p>this is a challenging</p>
+<p>question.</p>
+<p>I would say,</p>
+<p>uh,</p>
+<p>the,</p>
+<p>the general intuition</p>
+<p>is like this energy</p>
+<p>landscape is learned</p>
+<p>over all possible</p>
+<p>values,</p>
+<p>right?</p>
+<p>Based off the data.</p>
+<p>So your data shapes</p>
+<p>this landscape</p>
+<p>that's learned</p>
+<p>over all possible</p>
+<p>prediction values</p>
+<p>and like a feedforward</p>
+<p>model doesn't learn</p>
+<p>this kind of like,</p>
+<p>uh,</p>
+<p>landscape over all</p>
+<p>possible values.</p>
+<p>It learns a single</p>
+<p>point wise estimate</p>
+<p>of the prediction</p>
+<p>and the ability</p>
+<p>to learn kind of</p>
+<p>this estimate</p>
+<p>over all possible</p>
+<p>predictions,</p>
+<p>rather than just</p>
+<p>predicting a single</p>
+<p>prediction,</p>
+<p>like a point wise</p>
+<p>estimate is what</p>
+<p>enables us better</p>
+<p>generalization</p>
+<p>because at test time</p>
+<p>what you can do</p>
+<p>is instead of just</p>
+<p>giving a point wise</p>
+<p>prediction estimate,</p>
+<p>you can search</p>
+<p>over these predictions,</p>
+<p>right?</p>
+<p>So that's what</p>
+<p>you're actually doing</p>
+<p>with energy</p>
+<p>minimization is you're</p>
+<p>searching over the</p>
+<p>prediction space</p>
+<p>and that's why this</p>
+<p>energy landscape is</p>
+<p>great.</p>
+<p>And then with regards</p>
+<p>to your questions</p>
+<p>about data,</p>
+<p>um,</p>
+<p>which data is</p>
+<p>important,</p>
+<p>uh,</p>
+<p>you know,</p>
+<p>where can energy</p>
+<p>based models</p>
+<p>generalize better?</p>
+<p>I would say that in</p>
+<p>general energy based</p>
+<p>models have</p>
+<p>generalized better,</p>
+<p>which we show as</p>
+<p>well as some other</p>
+<p>papers show.</p>
+<p>I think that on</p>
+<p>certain tasks,</p>
+<p>energy based models</p>
+<p>generalize orders of</p>
+<p>magnitude better.</p>
+<p>So there's this other</p>
+<p>paper that we cite</p>
+<p>that shows that for</p>
+<p>some synthetic tasks,</p>
+<p>energy based models</p>
+<p>can generalize like 10</p>
+<p>times better than a</p>
+<p>feed forward model</p>
+<p>because the energy</p>
+<p>function or like this</p>
+<p>verification is very</p>
+<p>well defined.</p>
+<p>So I can give an</p>
+<p>example of this,</p>
+<p>which would be</p>
+<p>solving a maze.</p>
+<p>So if you were to</p>
+<p>generate a solution</p>
+<p>to a maze or the</p>
+<p>feed forward model,</p>
+<p>you could imagine the</p>
+<p>maze is like this and</p>
+<p>solving that.</p>
+<p>You need to be able to</p>
+<p>predict in a single</p>
+<p>forward pass,</p>
+<p>all of the different</p>
+<p>routes or like all</p>
+<p>of the different</p>
+<p>turns and everything</p>
+<p>to solve this maze.</p>
+<p>Whereas an energy</p>
+<p>based model,</p>
+<p>this energy function</p>
+<p>will just learn</p>
+<p>whether or not the</p>
+<p>solution is a valid</p>
+<p>solution.</p>
+<p>That is the solution</p>
+<p>verification.</p>
+<p>And on that problem,</p>
+<p>it's much easier to</p>
+<p>verify than it is to</p>
+<p>generate.</p>
+<p>And because of that,</p>
+<p>I think you could see</p>
+<p>that EBMs would</p>
+<p>generalize much better</p>
+<p>because this energy</p>
+<p>function is very well</p>
+<p>defined.</p>
+<p>So I would say that</p>
+<p>in general,</p>
+<p>EBMs can generalize</p>
+<p>better,</p>
+<p>but there's certain</p>
+<p>problems where they can</p>
+<p>generalize much better.</p>
+<p>And then with regards</p>
+<p>to the question on</p>
+<p>what data can EBMs</p>
+<p>generalize better on,</p>
+<p>I think that in the</p>
+<p>short term,</p>
+<p>we'll see EBMs</p>
+<p>more applicable</p>
+<p>for data that is</p>
+<p>for applications</p>
+<p>where there's limited</p>
+<p>data,</p>
+<p>particularly because of</p>
+<p>this data efficiency</p>
+<p>that we've seen with</p>
+<p>EBMs.</p>
+<p>And you can train them.</p>
+<p>They do require more</p>
+<p>flops,</p>
+<p>at least in the short</p>
+<p>term,</p>
+<p>but you can train them</p>
+<p>such that they kind of</p>
+<p>learn this energy</p>
+<p>landscape over this</p>
+<p>very limited amount</p>
+<p>of data.</p>
+<p>And because you might</p>
+<p>have a limited amount</p>
+<p>of data,</p>
+<p>you have tons of compute</p>
+<p>to work with that data.</p>
+<p>And that essentially</p>
+<p>means that you can</p>
+<p>generalize better</p>
+<p>out of distribution</p>
+<p>by kind of learning</p>
+<p>this huge distribution</p>
+<p>over all possible</p>
+<p>predictions with this</p>
+<p>limited data.</p>
+<p>So I see that as the</p>
+<p>primary use case in the</p>
+<p>short term.</p>
+<p>But in the long term,</p>
+<p>I think that most data</p>
+<p>we could definitely see</p>
+<p>EBMs perform better on.</p>
+<p>So, yeah.</p>
+<p>So in the provocative</p>
+<p>opening question,</p>
+<p>at first when I heard</p>
+<p>it, I was thinking,</p>
+<p>oh, this is kind of</p>
+<p>like a Pascal's wager</p>
+<p>or how many cousins</p>
+<p>to save a brother</p>
+<p>and those kinds of</p>
+<p>questions.</p>
+<p>But then it's like,</p>
+<p>actually,</p>
+<p>we're,</p>
+<p>if,</p>
+<p>as you're describing,</p>
+<p>looking to research</p>
+<p>to where the puck is</p>
+<p>going and head to a</p>
+<p>place,</p>
+<p>if we're not already</p>
+<p>past it,</p>
+<p>where compute isn't</p>
+<p>a limitation.</p>
+<p>And then it's like,</p>
+<p>yes,</p>
+<p>it is worth it to</p>
+<p>spend more compute.</p>
+<p>So that was just,</p>
+<p>that was definitely</p>
+<p>very counterintuitive,</p>
+<p>but also helps</p>
+<p>contextualize.</p>
+<p>And yet,</p>
+<p>out of that</p>
+<p>provocation</p>
+<p>are coming</p>
+<p>models which</p>
+<p>could be</p>
+<p>more</p>
+<p>efficient</p>
+<p>per watt</p>
+<p>and per</p>
+<p>data set.</p>
+<p>So it just</p>
+<p>is like,</p>
+<p>but that</p>
+<p>question</p>
+<p>is the</p>
+<p>entry point</p>
+<p>to understanding</p>
+<p>what we're</p>
+<p>really limited</p>
+<p>in.</p>
+<p>Okay,</p>
+<p>I'll read a</p>
+<p>question from</p>
+<p>the live chat.</p>
+<p>So Tucker</p>
+<p>Chambers wrote,</p>
+<p>do any</p>
+<p>current models</p>
+<p>generalize into</p>
+<p>the real world</p>
+<p>at all?</p>
+<p>Maybe Tesla</p>
+<p>vision-based models</p>
+<p>have a leg or</p>
+<p>a wheel up on</p>
+<p>the competition</p>
+<p>as they're using</p>
+<p>real world data</p>
+<p>in the physically</p>
+<p>embodied sense?</p>
+<p>robots?</p>
+<p>Yeah,</p>
+<p>I think this is</p>
+<p>a debatable</p>
+<p>question that</p>
+<p>depends on who</p>
+<p>you ask.</p>
+<p>I mean,</p>
+<p>I think,</p>
+<p>yes,</p>
+<p>some models</p>
+<p>are generalizing</p>
+<p>to the real</p>
+<p>world.</p>
+<p>The question</p>
+<p>is how well</p>
+<p>are they</p>
+<p>generalizing</p>
+<p>and are they</p>
+<p>generalizing to</p>
+<p>the point</p>
+<p>where they're</p>
+<p>widely useful?</p>
+<p>Robotics is</p>
+<p>very much</p>
+<p>unsolved and</p>
+<p>seems to be</p>
+<p>very far from</p>
+<p>being solved,</p>
+<p>which is one</p>
+<p>of the biggest</p>
+<p>use cases</p>
+<p>of AI.</p>
+<p>Completely</p>
+<p>autonomous</p>
+<p>driving has</p>
+<p>been promised</p>
+<p>to be solved</p>
+<p>for a long</p>
+<p>time,</p>
+<p>but it's still</p>
+<p>unsolved.</p>
+<p>We've still,</p>
+<p>even with</p>
+<p>Waymo,</p>
+<p>there are still</p>
+<p>people watching.</p>
+<p>So I would</p>
+<p>say that some</p>
+<p>models are</p>
+<p>generalizing,</p>
+<p>but they are</p>
+<p>not generalizing</p>
+<p>as well as</p>
+<p>humans would,</p>
+<p>which is the</p>
+<p>core challenge.</p>
+<p>Generalization to</p>
+<p>the same extent</p>
+<p>as humans,</p>
+<p>the same</p>
+<p>performance.</p>
+<p>Ideally,</p>
+<p>given the same</p>
+<p>data, all of</p>
+<p>these models are</p>
+<p>trained on orders</p>
+<p>of magnitude</p>
+<p>thousands of</p>
+<p>times the amount</p>
+<p>of data that</p>
+<p>humans have</p>
+<p>ever seen.</p>
+<p>So,</p>
+<p>yeah,</p>
+<p>I hope that</p>
+<p>answers your</p>
+<p>question.</p>
+<p>So they're</p>
+<p>generalizing,</p>
+<p>but not to the</p>
+<p>extent that we</p>
+<p>would like.</p>
+<p>And then,</p>
+<p>Daniel,</p>
+<p>I want to</p>
+<p>kind of hit</p>
+<p>on what you</p>
+<p>said earlier,</p>
+<p>which is like</p>
+<p>this provocative</p>
+<p>question of,</p>
+<p>is it just a</p>
+<p>trade-off?</p>
+<p>Or, you know,</p>
+<p>in this regime,</p>
+<p>is it really even</p>
+<p>a trade-off</p>
+<p>anymore?</p>
+<p>Because, like,</p>
+<p>if our GPUs</p>
+<p>are just idling,</p>
+<p>if we have</p>
+<p>10,000 times</p>
+<p>the amount of</p>
+<p>GPUs, it</p>
+<p>might not even</p>
+<p>matter, right?</p>
+<p>We might really</p>
+<p>just say,</p>
+<p>okay, we don't</p>
+<p>care about</p>
+<p>burning 100 times</p>
+<p>the amount of</p>
+<p>GPUs, we really</p>
+<p>just care about</p>
+<p>generalization.</p>
+<p>So, yeah,</p>
+<p>I think it's</p>
+<p>interesting, and I</p>
+<p>think that, you</p>
+<p>know, we're</p>
+<p>definitely not</p>
+<p>there, especially</p>
+<p>in academia right</p>
+<p>now, everywhere.</p>
+<p>Maybe the</p>
+<p>frontier labs are</p>
+<p>starting to get</p>
+<p>there, and like</p>
+<p>people have said,</p>
+<p>like OpenAI</p>
+<p>released a video</p>
+<p>where they talk</p>
+<p>about GPT 4.5,</p>
+<p>and they basically</p>
+<p>say that, and I</p>
+<p>actually have this</p>
+<p>on here, that</p>
+<p>we're more data</p>
+<p>bound than we are</p>
+<p>compute bound,</p>
+<p>which is cool.</p>
+<p>So I'm sure that</p>
+<p>many of the</p>
+<p>frontier labs are</p>
+<p>starting to face</p>
+<p>this as well.</p>
+<p>And I think that</p>
+<p>as this happens</p>
+<p>more and more,</p>
+<p>we'll tend to</p>
+<p>see like a shift</p>
+<p>more from like</p>
+<p>flop scaling and</p>
+<p>that being the</p>
+<p>predominant thing</p>
+<p>that people care</p>
+<p>about to like</p>
+<p>data efficiency</p>
+<p>and generalization.</p>
+<p>Because at the</p>
+<p>end of the day,</p>
+<p>what really matters</p>
+<p>is how well does</p>
+<p>your model</p>
+<p>generalize once</p>
+<p>it's gotten to</p>
+<p>this point of</p>
+<p>kind of fitting</p>
+<p>the training set</p>
+<p>already.</p>
+<p>So, yeah.</p>
+<p>Super interesting.</p>
+<p>Again, anyone</p>
+<p>can write more</p>
+<p>questions in the</p>
+<p>live chat, but</p>
+<p>how about a</p>
+<p>little bit on</p>
+<p>the almost</p>
+<p>developer experience</p>
+<p>here?</p>
+<p>Like, what was</p>
+<p>it like getting</p>
+<p>those results?</p>
+<p>Was there a lot</p>
+<p>of under the</p>
+<p>hood and fine</p>
+<p>tuning and what</p>
+<p>kinds of software</p>
+<p>and methods are</p>
+<p>useful and what</p>
+<p>are they like</p>
+<p>today?</p>
+<p>And then what</p>
+<p>kinds of methods</p>
+<p>could unlock the</p>
+<p>amount of attention</p>
+<p>that's currently</p>
+<p>going into</p>
+<p>alternative methods</p>
+<p>to make use of</p>
+<p>what you're</p>
+<p>demonstrating in</p>
+<p>the paper?</p>
+<p>Yeah.</p>
+<p>So, in terms of</p>
+<p>getting the results,</p>
+<p>it was, I would</p>
+<p>say, a very</p>
+<p>difficult journey,</p>
+<p>mostly because</p>
+<p>there's not much</p>
+<p>practical advice on</p>
+<p>how to train</p>
+<p>energy-based models</p>
+<p>online.</p>
+<p>A lot of the</p>
+<p>work that's</p>
+<p>out online is very</p>
+<p>much theoretical</p>
+<p>and also hasn't</p>
+<p>really been tested</p>
+<p>at scale.</p>
+<p>So, a lot of</p>
+<p>work in this paper</p>
+<p>that's kind of not</p>
+<p>necessarily super</p>
+<p>cool but is</p>
+<p>important nonetheless</p>
+<p>for practicality</p>
+<p>is just determining</p>
+<p>what hyperparameters</p>
+<p>are necessary,</p>
+<p>how to tweak</p>
+<p>things so that</p>
+<p>things work,</p>
+<p>what are kind of</p>
+<p>the core challenges</p>
+<p>with stability</p>
+<p>and what tricks</p>
+<p>do you need to</p>
+<p>solve them.</p>
+<p>We have a lot of</p>
+<p>tricks that we</p>
+<p>mentioned in the</p>
+<p>paper and that</p>
+<p>help us with</p>
+<p>stability and can</p>
+<p>help with</p>
+<p>scalability.</p>
+<p>But I think that</p>
+<p>this is one of the</p>
+<p>key challenges</p>
+<p>is just kind of</p>
+<p>like pretty much</p>
+<p>all models now</p>
+<p>rely on tricks</p>
+<p>like diffusion</p>
+<p>models, there's</p>
+<p>tons of tricks,</p>
+<p>flow models,</p>
+<p>there's tons of</p>
+<p>tricks.</p>
+<p>Even on a</p>
+<p>regressive models</p>
+<p>at scale,</p>
+<p>there's tons of</p>
+<p>tricks with</p>
+<p>layer norm and</p>
+<p>all this stuff.</p>
+<p>So, it's all</p>
+<p>about really</p>
+<p>figuring out like</p>
+<p>what are the</p>
+<p>right tricks for</p>
+<p>these models and</p>
+<p>it took a while</p>
+<p>and it was a lot</p>
+<p>of just like kind</p>
+<p>of banging your</p>
+<p>head on the wall</p>
+<p>and just trying</p>
+<p>things out and</p>
+<p>seeing what sticks.</p>
+<p>But I think</p>
+<p>eventually and to</p>
+<p>the point where</p>
+<p>we are now,</p>
+<p>we have hyperparameters</p>
+<p>and general tricks</p>
+<p>that make things</p>
+<p>work more generally</p>
+<p>and we know how</p>
+<p>to scale these</p>
+<p>things.</p>
+<p>So, if you told</p>
+<p>me to train a 7b</p>
+<p>model and you gave</p>
+<p>me the compute,</p>
+<p>we could.</p>
+<p>So, I think that</p>
+<p>once we started</p>
+<p>figuring out</p>
+<p>how to make</p>
+<p>things stable</p>
+<p>and scalable</p>
+<p>and kind of,</p>
+<p>you know,</p>
+<p>look good</p>
+<p>without loss</p>
+<p>spikes or anything</p>
+<p>like that,</p>
+<p>the results</p>
+<p>started to look</p>
+<p>really great</p>
+<p>and that's when</p>
+<p>we started to</p>
+<p>get like really</p>
+<p>great data</p>
+<p>efficiency curves</p>
+<p>and other stuff</p>
+<p>like that and</p>
+<p>it was super</p>
+<p>rewarding having</p>
+<p>worked on just</p>
+<p>kind of tuning</p>
+<p>these tricks for</p>
+<p>a very long time.</p>
+<p>And then with</p>
+<p>regards to</p>
+<p>long-term</p>
+<p>adoption and</p>
+<p>kind of making</p>
+<p>energy-based</p>
+<p>models adopted</p>
+<p>more widely</p>
+<p>as compared to</p>
+<p>something like</p>
+<p>diffusion models</p>
+<p>or pure</p>
+<p>feed-forward</p>
+<p>autoregressive</p>
+<p>models,</p>
+<p>I think that</p>
+<p>there's a couple</p>
+<p>things that need</p>
+<p>to happen.</p>
+<p>I think one is</p>
+<p>like it would be</p>
+<p>great if a</p>
+<p>foundation model,</p>
+<p>energy-based model</p>
+<p>would scale.</p>
+<p>That way people</p>
+<p>can really see</p>
+<p>that these do</p>
+<p>work out foundation</p>
+<p>models scale.</p>
+<p>Our results are</p>
+<p>just that,</p>
+<p>you know,</p>
+<p>given extrapolation</p>
+<p>that things could</p>
+<p>scale well but we</p>
+<p>don't actually know</p>
+<p>because we haven't</p>
+<p>trained them and we</p>
+<p>didn't have the</p>
+<p>computing resources</p>
+<p>to do that.</p>
+<p>So, I think kind</p>
+<p>of at scale</p>
+<p>would be nice.</p>
+<p>Another thing</p>
+<p>that would be</p>
+<p>helpful is just</p>
+<p>like more tricks</p>
+<p>and tuning.</p>
+<p>with diffusion I</p>
+<p>like to bring up</p>
+<p>this example where</p>
+<p>it took lots of</p>
+<p>tricks and papers</p>
+<p>to kind of figure</p>
+<p>out like how do</p>
+<p>I sample from</p>
+<p>this, how do I</p>
+<p>make sampling</p>
+<p>faster, how do I</p>
+<p>make them efficient</p>
+<p>and more practical,</p>
+<p>et cetera, et cetera.</p>
+<p>I have no doubt</p>
+<p>that over the next</p>
+<p>year or two lots</p>
+<p>of effort will go</p>
+<p>into basically just</p>
+<p>having tricks that</p>
+<p>are better for</p>
+<p>these energy-based</p>
+<p>models and kind of</p>
+<p>making it so they're</p>
+<p>faster to train,</p>
+<p>faster during</p>
+<p>inference, et cetera,</p>
+<p>et cetera.</p>
+<p>But I think with</p>
+<p>those things and</p>
+<p>given kind of the</p>
+<p>way that compute is</p>
+<p>headed, there will</p>
+<p>start to be interest</p>
+<p>in the next couple</p>
+<p>of years.</p>
+<p>So I'm very</p>
+<p>hopeful.</p>
+<p>Yeah.</p>
+<p>Tucker asks a</p>
+<p>follow-up question</p>
+<p>there.</p>
+<p>Can EBM be built</p>
+<p>and trained on</p>
+<p>normal civilian</p>
+<p>hardware?</p>
+<p>Or I guess just</p>
+<p>more generally</p>
+<p>like what kind</p>
+<p>of hardware</p>
+<p>resources within</p>
+<p>the von Neumann</p>
+<p>paradigm are most</p>
+<p>relevant and what</p>
+<p>kinds of</p>
+<p>unconventional or</p>
+<p>thermo-informational</p>
+<p>biomimetic computing</p>
+<p>could be a little</p>
+<p>bit on the horizon</p>
+<p>to go even</p>
+<p>beyond that?</p>
+<p>Yeah.</p>
+<p>So I will</p>
+<p>clarify that we</p>
+<p>focus very much on</p>
+<p>energy-based models</p>
+<p>that are, you know,</p>
+<p>sort of efficient on</p>
+<p>von Neumann hardware</p>
+<p>here.</p>
+<p>So that's like</p>
+<p>models with matrix</p>
+<p>multiplications using</p>
+<p>backpropagation.</p>
+<p>There are other</p>
+<p>energy-based models</p>
+<p>or like, for</p>
+<p>example, predictive</p>
+<p>coding, learning</p>
+<p>algorithm that are</p>
+<p>faster to implement</p>
+<p>on other hardware</p>
+<p>that I'm by no</p>
+<p>means an expert.</p>
+<p>So these energy-based</p>
+<p>models are very</p>
+<p>much strong on</p>
+<p>modern von Neumann</p>
+<p>architectures,</p>
+<p>especially GPUs,</p>
+<p>because everything</p>
+<p>is done with</p>
+<p>matrix multiplications</p>
+<p>and is learned</p>
+<p>end-to-end with</p>
+<p>backpropagation,</p>
+<p>which we can</p>
+<p>compute quickly</p>
+<p>on modern</p>
+<p>hardware.</p>
+<p>So, yeah, you</p>
+<p>can definitely</p>
+<p>train these</p>
+<p>energy-based</p>
+<p>transformers on,</p>
+<p>you know,</p>
+<p>smaller GPUs.</p>
+<p>They do take</p>
+<p>more memory</p>
+<p>than a</p>
+<p>feed-forward</p>
+<p>model,</p>
+<p>but, you</p>
+<p>know, most</p>
+<p>of our</p>
+<p>experiments were</p>
+<p>done at very</p>
+<p>small scale</p>
+<p>on smaller</p>
+<p>GPUs, so</p>
+<p>you can</p>
+<p>definitely do</p>
+<p>this on</p>
+<p>potentially laptop</p>
+<p>GPUs or like</p>
+<p>a, you</p>
+<p>know, small</p>
+<p>scale school</p>
+<p>setup that you</p>
+<p>have for the</p>
+<p>smaller scale</p>
+<p>models at least.</p>
+<p>So, yeah,</p>
+<p>very akin to</p>
+<p>modern hardware.</p>
+<p>Can we return</p>
+<p>to the slide</p>
+<p>with the</p>
+<p>architectural</p>
+<p>layouts?</p>
+<p>Yes, of</p>
+<p>course.</p>
+<p>should I</p>
+<p>just do</p>
+<p>this?</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>So, maybe</p>
+<p>just highlight</p>
+<p>what is</p>
+<p>different here</p>
+<p>structurally,</p>
+<p>and then</p>
+<p>possibly take</p>
+<p>that towards</p>
+<p>what would</p>
+<p>that look</p>
+<p>like in</p>
+<p>practice?</p>
+<p>Is this</p>
+<p>the same</p>
+<p>chat GPT</p>
+<p>perplexity</p>
+<p>interface that's</p>
+<p>just doing</p>
+<p>better but</p>
+<p>giving the</p>
+<p>same kind</p>
+<p>result?</p>
+<p>Is this</p>
+<p>like horse</p>
+<p>and buggy</p>
+<p>versus car?</p>
+<p>And we're</p>
+<p>talking about</p>
+<p>different kinds</p>
+<p>of assessments</p>
+<p>like what is</p>
+<p>happening under</p>
+<p>the hood and</p>
+<p>structurally?</p>
+<p>And then is</p>
+<p>that a hot</p>
+<p>swap competing</p>
+<p>on the same</p>
+<p>kinds of</p>
+<p>measures and</p>
+<p>input-output</p>
+<p>structures that</p>
+<p>we see today</p>
+<p>with all the</p>
+<p>zoo of</p>
+<p>available models?</p>
+<p>or what</p>
+<p>other kinds</p>
+<p>of harnesses</p>
+<p>are needed</p>
+<p>or functions</p>
+<p>arise?</p>
+<p>Yeah.</p>
+<p>Yeah, great</p>
+<p>question.</p>
+<p>So, I'll</p>
+<p>start to dive</p>
+<p>into the</p>
+<p>first part,</p>
+<p>which is</p>
+<p>like a</p>
+<p>general</p>
+<p>overview.</p>
+<p>So, with</p>
+<p>feedforward</p>
+<p>models, you'll</p>
+<p>get this input</p>
+<p>X, and you'll</p>
+<p>predict this</p>
+<p>like, just for</p>
+<p>autoregressive</p>
+<p>modeling, this</p>
+<p>X hat of</p>
+<p>T plus one,</p>
+<p>which is like</p>
+<p>the next</p>
+<p>token if you're</p>
+<p>turning a</p>
+<p>language model.</p>
+<p>And then you'll</p>
+<p>backpropagate.</p>
+<p>With an RNN,</p>
+<p>you'll do</p>
+<p>essentially the</p>
+<p>same thing.</p>
+<p>With the</p>
+<p>diffusion model,</p>
+<p>it's a little</p>
+<p>bit different</p>
+<p>where these</p>
+<p>are normally</p>
+<p>not trained</p>
+<p>autoregressively,</p>
+<p>but I kind of</p>
+<p>visualize that</p>
+<p>here for ease</p>
+<p>of visualization.</p>
+<p>But what</p>
+<p>you'll do is</p>
+<p>you will take</p>
+<p>as input</p>
+<p>prediction of</p>
+<p>noise, and</p>
+<p>then you will</p>
+<p>essentially predict</p>
+<p>like this amount</p>
+<p>of noise.</p>
+<p>So, you'll</p>
+<p>start with</p>
+<p>random noise,</p>
+<p>and you'll</p>
+<p>predict based</p>
+<p>off the</p>
+<p>schedule and</p>
+<p>like the</p>
+<p>current time</p>
+<p>of the score</p>
+<p>here, or</p>
+<p>like kind of</p>
+<p>denoising to</p>
+<p>apply to this</p>
+<p>x hat of t</p>
+<p>plus one.</p>
+<p>And you'll</p>
+<p>do this for</p>
+<p>all the</p>
+<p>different x</p>
+<p>hat of t</p>
+<p>plus ones that</p>
+<p>kind of go</p>
+<p>from like pure</p>
+<p>random noise</p>
+<p>to the actual</p>
+<p>data itself.</p>
+<p>With an</p>
+<p>energy-based model,</p>
+<p>it's a lot like a</p>
+<p>diffusion model that</p>
+<p>you initialize</p>
+<p>this x hat of t</p>
+<p>plus one as,</p>
+<p>or this next</p>
+<p>token prediction</p>
+<p>for language models</p>
+<p>as random noise</p>
+<p>or a random</p>
+<p>distribution in this</p>
+<p>case.</p>
+<p>And then instead</p>
+<p>of just predicting</p>
+<p>the noise and</p>
+<p>like subtracting</p>
+<p>out the noise,</p>
+<p>what you'll do</p>
+<p>is you'll predict</p>
+<p>the energy,</p>
+<p>and then you</p>
+<p>will get the</p>
+<p>gradient from</p>
+<p>this energy to</p>
+<p>this prediction,</p>
+<p>right?</p>
+<p>And you'll</p>
+<p>subtract that</p>
+<p>gradient out,</p>
+<p>so it's just</p>
+<p>like gradient</p>
+<p>descent,</p>
+<p>and like you'll</p>
+<p>multiply by step</p>
+<p>size, etc.,</p>
+<p>etc.</p>
+<p>And then you</p>
+<p>will pass this</p>
+<p>back into the</p>
+<p>model, get the</p>
+<p>energy again,</p>
+<p>update it using</p>
+<p>the gradient,</p>
+<p>etc., etc.</p>
+<p>And you continue</p>
+<p>doing this for</p>
+<p>every next token</p>
+<p>at once.</p>
+<p>So it's worth</p>
+<p>noting that we</p>
+<p>train these as</p>
+<p>like GPT-2</p>
+<p>decoder style</p>
+<p>language models.</p>
+<p>So every single</p>
+<p>prediction is made</p>
+<p>at the exact same</p>
+<p>time.</p>
+<p>And that's part of</p>
+<p>a lot of the</p>
+<p>effort that went</p>
+<p>into these like</p>
+<p>decoder-only</p>
+<p>energy-based</p>
+<p>transformers.</p>
+<p>And yeah,</p>
+<p>you're basically</p>
+<p>just predicting</p>
+<p>the gradient of</p>
+<p>every single</p>
+<p>next token</p>
+<p>prediction at</p>
+<p>the exact same</p>
+<p>time using the</p>
+<p>energy scaler</p>
+<p>for each token.</p>
+<p>Yeah, and then</p>
+<p>in terms of</p>
+<p>kind of integrating</p>
+<p>these things from</p>
+<p>a more applied</p>
+<p>perspective on</p>
+<p>actual like</p>
+<p>applications or</p>
+<p>in a UI, I</p>
+<p>see in the short</p>
+<p>term very similar</p>
+<p>applications to</p>
+<p>like what we</p>
+<p>currently see such</p>
+<p>as like chat</p>
+<p>GPT or</p>
+<p>perplexity, where</p>
+<p>you're just doing</p>
+<p>inference with the</p>
+<p>language model.</p>
+<p>I think that the</p>
+<p>in the short term</p>
+<p>you'll especially</p>
+<p>see like hybrid or</p>
+<p>ensembling of like a</p>
+<p>feed-forward model</p>
+<p>with an energy-based</p>
+<p>model, where what</p>
+<p>you do is you</p>
+<p>initialize the</p>
+<p>prediction with this</p>
+<p>feed-forward model,</p>
+<p>like initialize the</p>
+<p>distribution, and</p>
+<p>then you pass this</p>
+<p>into the energy-based</p>
+<p>model and just</p>
+<p>refine this</p>
+<p>distribution, right?</p>
+<p>So you're kind of</p>
+<p>just like amortizing</p>
+<p>a lot of the work</p>
+<p>that's done with</p>
+<p>this energy-based</p>
+<p>model with this</p>
+<p>feed-forward model,</p>
+<p>or you can</p>
+<p>consider ensembling</p>
+<p>these models.</p>
+<p>And then another</p>
+<p>thing that you</p>
+<p>could do is use</p>
+<p>like speculative</p>
+<p>decoding to kind</p>
+<p>of like speed up</p>
+<p>the iterative</p>
+<p>decoding with these</p>
+<p>energy-based</p>
+<p>transformers.</p>
+<p>So instead of</p>
+<p>doing every single</p>
+<p>next token prediction</p>
+<p>with these energy-based</p>
+<p>transformers, have a</p>
+<p>lighter weight model,</p>
+<p>and then just check</p>
+<p>which logits are</p>
+<p>kind of, or sorry,</p>
+<p>which distributions</p>
+<p>are different and</p>
+<p>sample that way.</p>
+<p>So you kind of don't</p>
+<p>have as much</p>
+<p>inference costs because</p>
+<p>they do require more</p>
+<p>flops during inference.</p>
+<p>And then in the long</p>
+<p>term, yeah, I think</p>
+<p>that there's a couple</p>
+<p>of things that you</p>
+<p>could potentially see</p>
+<p>with energy-based</p>
+<p>models that you</p>
+<p>wouldn't be able to</p>
+<p>see with these other</p>
+<p>feed-forward models.</p>
+<p>One thing that's</p>
+<p>exciting is like</p>
+<p>compositionality.</p>
+<p>So there's been a</p>
+<p>lot of work with</p>
+<p>energy-based models and</p>
+<p>compositionality,</p>
+<p>basically like combining</p>
+<p>different models with</p>
+<p>different attributes and</p>
+<p>generalizing to something</p>
+<p>new.</p>
+<p>So this could be</p>
+<p>something like, for</p>
+<p>example, generating</p>
+<p>new images or</p>
+<p>generating new</p>
+<p>languages or whatever</p>
+<p>it is you want to</p>
+<p>do.</p>
+<p>That's one thing that</p>
+<p>you could see in terms</p>
+<p>of applications.</p>
+<p>But I think in the</p>
+<p>short term, from a</p>
+<p>practical perspective,</p>
+<p>most of what you will</p>
+<p>see would just be</p>
+<p>similar to what you</p>
+<p>would see with the</p>
+<p>feed-forward model.</p>
+<p>It might also be that</p>
+<p>the way that you do</p>
+<p>inference with these</p>
+<p>energy-based</p>
+<p>transformers kind of</p>
+<p>gives you like a</p>
+<p>separate way of</p>
+<p>reasoning.</p>
+<p>Where you're kind of</p>
+<p>reasoning through this</p>
+<p>iterative optimization</p>
+<p>rather than in token</p>
+<p>space with next token</p>
+<p>prediction.</p>
+<p>So the current models</p>
+<p>are doing this like</p>
+<p>next token prediction</p>
+<p>iterative reasoning</p>
+<p>rather than doing it</p>
+<p>like in a latent</p>
+<p>space.</p>
+<p>So, yeah.</p>
+<p>What exactly makes a</p>
+<p>transformer a</p>
+<p>transformer such that</p>
+<p>it could be feed-forward,</p>
+<p>diffusive, or energy-based?</p>
+<p>And is that part more</p>
+<p>durable or could</p>
+<p>something else be there</p>
+<p>in that green box?</p>
+<p>Yes.</p>
+<p>Yeah, great question.</p>
+<p>So, I think the</p>
+<p>definition of a</p>
+<p>transformer depends on</p>
+<p>who you ask.</p>
+<p>I would say to me the</p>
+<p>general definition is</p>
+<p>like you have per token</p>
+<p>level computation and</p>
+<p>like global sequence</p>
+<p>mixing via attention.</p>
+<p>so every token is</p>
+<p>operated on independently</p>
+<p>besides for attention</p>
+<p>where you kind of mix</p>
+<p>information globally</p>
+<p>across the sequence.</p>
+<p>And then</p>
+<p>is there different</p>
+<p>architectures you can use?</p>
+<p>Yes, actually.</p>
+<p>I think that</p>
+<p>we just focus on</p>
+<p>transformers because</p>
+<p>it's one of the most</p>
+<p>popular architectures</p>
+<p>that has proven itself</p>
+<p>to be very successful</p>
+<p>across wide</p>
+<p>modalities and domains,</p>
+<p>et cetera, et cetera.</p>
+<p>Ideally, you know,</p>
+<p>you could use any new</p>
+<p>architecture with</p>
+<p>energy-based models</p>
+<p>that comes out.</p>
+<p>So there's like a</p>
+<p>recent paper on</p>
+<p>autoregressive units</p>
+<p>or like I think</p>
+<p>they're also called</p>
+<p>HNets that is like</p>
+<p>essentially a new</p>
+<p>architecture for</p>
+<p>autoregressive modeling.</p>
+<p>And I think it'd be</p>
+<p>great to combine</p>
+<p>these things as well</p>
+<p>as long as these</p>
+<p>other architectures</p>
+<p>are stable and</p>
+<p>scalable and</p>
+<p>parallelizable in</p>
+<p>addition to</p>
+<p>transformers.</p>
+<p>So I don't think</p>
+<p>that energy-based</p>
+<p>models necessarily</p>
+<p>need to be paired</p>
+<p>with transformers.</p>
+<p>It's just there's</p>
+<p>good synergy here</p>
+<p>due to the high</p>
+<p>successive transformers</p>
+<p>and high computational</p>
+<p>efficiency and</p>
+<p>stability.</p>
+
+<p>Makes sense.</p>
+<p>Could you go to</p>
+<p>the energy landscape</p>
+<p>with the dog</p>
+<p>catching the...</p>
+<p>Yes.</p>
+<p>Okay.</p>
+<p>Yeah.</p>
+<p>Okay.</p>
+<p>Bert Berkers asks,</p>
+<p>do EBM get stuck</p>
+<p>in local minima</p>
+<p>during inference?</p>
+<p>Yes.</p>
+<p>Yeah.</p>
+<p>That is a great</p>
+<p>question.</p>
+<p>So the answer is</p>
+<p>yes.</p>
+<p>And unfortunately,</p>
+<p>this is not</p>
+<p>necessarily something</p>
+<p>that is easy to</p>
+<p>avoid.</p>
+<p>But this isn't a</p>
+<p>huge problem because</p>
+<p>in high dimensional</p>
+<p>spaces, there are</p>
+<p>less local minima.</p>
+<p>So it turns out that</p>
+<p>there are less local</p>
+<p>minima and more</p>
+<p>saddle points.</p>
+<p>So it's hard to get</p>
+<p>stuck in local minima</p>
+<p>in very high dimensional</p>
+<p>spaces.</p>
+<p>But you are not</p>
+<p>guaranteed to converge</p>
+<p>to a global minimum</p>
+<p>with these energy-based</p>
+<p>models.</p>
+<p>So part of one of the</p>
+<p>benefits of sampling</p>
+<p>many, many times</p>
+<p>is that you can</p>
+<p>converge two different</p>
+<p>local minima,</p>
+<p>one of which may be</p>
+<p>your global minimum,</p>
+<p>and then you use this</p>
+<p>as your response.</p>
+<p>So I think it would be</p>
+<p>interesting to try and</p>
+<p>kind of enforce some</p>
+<p>constraints to,</p>
+<p>actually, I don't think</p>
+<p>it's possible to enforce</p>
+<p>constraints to have a</p>
+<p>single global minima</p>
+<p>because then you would</p>
+<p>restrict the expressivity</p>
+<p>of your model and you</p>
+<p>wouldn't be able to</p>
+<p>kind of fit very high</p>
+<p>dimensional data.</p>
+<p>But it's very, it's a</p>
+<p>difficult problem.</p>
+<p>And there's lots of</p>
+<p>theoretical work broadly</p>
+<p>on MCMC and kind of</p>
+<p>converging to the best</p>
+<p>minima.</p>
+<p>So, yeah.</p>
+<p>Definitely.</p>
+<p>There's problems slash</p>
+<p>datasets that are easy</p>
+<p>and monotonic, and</p>
+<p>there's ones that are</p>
+<p>wickedly designed.</p>
+<p>You brought up MCMC and</p>
+<p>you mentioned sampling as</p>
+<p>well.</p>
+<p>So how do you see</p>
+<p>sampling-based approaches</p>
+<p>with variational,</p>
+<p>optimization-based,</p>
+<p>incremental approaches?</p>
+<p>Where do sampling,</p>
+<p>particle-based,</p>
+<p>distribution-based methods</p>
+<p>come into play?</p>
+<p>How do we know where to</p>
+<p>use different balances of</p>
+<p>those?</p>
+<p>Yeah.</p>
+<p>I'm not an expert on this</p>
+<p>upper face with that,</p>
+<p>but I think that all of</p>
+<p>these are pretty, like,</p>
+<p>disjoint from this work</p>
+<p>and not disjoint, I</p>
+<p>should say, like,</p>
+<p>compatible with this work</p>
+<p>and sort of adjacent slash</p>
+<p>like, not necessarily in</p>
+<p>conflict to.</p>
+<p>So you can, in principle,</p>
+<p>use particle-based</p>
+<p>approaches or other more</p>
+<p>complex MCMC samplers to</p>
+<p>sample from your EBM.</p>
+<p>Like, one example would be</p>
+<p>using HMC, Hamiltonian,</p>
+<p>Monte Carlo to kind of</p>
+<p>sample better.</p>
+<p>We just use first-order</p>
+<p>information or, like,</p>
+<p>Langevin dynamics.</p>
+<p>But you could, in principle,</p>
+<p>use more complex samplers</p>
+<p>as well as, like,</p>
+<p>particle-based algorithms</p>
+<p>to sample better.</p>
+<p>You can kind of consider</p>
+<p>that what we are doing,</p>
+<p>I'm forgetting the name,</p>
+<p>by sampling many times</p>
+<p>and choosing the minimum</p>
+<p>energy is sort of,</p>
+<p>it's like, there's some</p>
+<p>reference to this in</p>
+<p>statistical physics.</p>
+<p>You can also use many of</p>
+<p>the ideas from statistical</p>
+<p>physics and kind of, like,</p>
+<p>inspiring better inference</p>
+<p>or sampling algorithms</p>
+<p>where you, like,</p>
+<p>anneal the step size</p>
+<p>or you, like, determine</p>
+<p>whether or not the energy</p>
+<p>decreases and then if it</p>
+<p>increased, like,</p>
+<p>decreased the step size</p>
+<p>so you kind of better</p>
+<p>get to local minima.</p>
+<p>There's tons of ways</p>
+<p>you can do it.</p>
+<p>And I think that broadly,</p>
+<p>you know, this work</p>
+<p>and the work on MCMC</p>
+<p>can only help each other,</p>
+<p>basically.</p>
+<p>So they're sort of adjacent</p>
+<p>and can help in tandem.</p>
+<p>Yeah.</p>
+<p>Yeah, I agree with that.</p>
+<p>There's work on</p>
+<p>Stein mixture models</p>
+<p>and particle transport</p>
+<p>and accelerated optimization</p>
+<p>on different kinds</p>
+<p>of information geometries.</p>
+<p>It's kind of just, like,</p>
+<p>exciting how it's all</p>
+<p>coming together.</p>
+<p>So one reflection,</p>
+<p>which I'd be curious</p>
+<p>to hear your thoughts</p>
+<p>seeing from an academia,</p>
+<p>researchy,</p>
+<p>and from an industry side,</p>
+<p>is, like,</p>
+<p>in the data-driven</p>
+<p>or data-based approach,</p>
+<p>there is some</p>
+<p>extant data.</p>
+<p>Maybe you can acquire more,</p>
+<p>but it's about doing</p>
+<p>something</p>
+<p>with that data.</p>
+<p>Whereas on,</p>
+<p>at least in the</p>
+<p>active inference,</p>
+<p>computational psychiatry,</p>
+<p>cognitive modeling space,</p>
+<p>often it's more like</p>
+<p>a priori systems modeling,</p>
+<p>where we're designing</p>
+<p>that joint generative model,</p>
+<p>but an empirical data set</p>
+<p>doesn't actually have</p>
+<p>to come into play.</p>
+<p>You might be interested</p>
+<p>in just</p>
+<p>ab initio modeling</p>
+<p>of a cognitive agent</p>
+<p>and generating synthetic data.</p>
+<p>And then there's methods</p>
+<p>for tuning the parameters</p>
+<p>to recapitulate</p>
+<p>empirical parameters,</p>
+<p>but it's just sort of</p>
+<p>interesting to see</p>
+<p>the difference between</p>
+<p>having an extant data set</p>
+<p>as, like,</p>
+<p>the block of marble</p>
+<p>that you want to do</p>
+<p>the best on.</p>
+<p>Like,</p>
+<p>you have a language corpus</p>
+<p>and you want it to be</p>
+<p>fluent and write</p>
+<p>awesome PhD dissertations,</p>
+<p>but not much</p>
+<p>structural information</p>
+<p>about linguistics</p>
+<p>has to be encoded.</p>
+<p>And that's the sort of</p>
+<p>stochastic parent-type</p>
+<p>critique perspective</p>
+<p>in comparison</p>
+<p>or in complement</p>
+<p>to making models</p>
+<p>models</p>
+<p>who structurally embody</p>
+<p>linguistic constraints</p>
+<p>and using that</p>
+<p>to then meet</p>
+<p>in the middle,</p>
+<p>also you'd hope,</p>
+<p>with reasonable-looking</p>
+<p>linguistic expression,</p>
+<p>but that approach</p>
+<p>wouldn't necessarily</p>
+<p>need to be trained</p>
+<p>from unstructured</p>
+<p>text corpuses.</p>
+<p>So if we're thinking</p>
+<p>about general-purpose</p>
+<p>EBMs</p>
+<p>or domain-specific</p>
+<p>EBMs,</p>
+<p>arbitrarily narrow</p>
+<p>to arbitrarily broad,</p>
+<p>where is that</p>
+<p>going to be</p>
+<p>from just</p>
+<p>dumping a blob</p>
+<p>of data,</p>
+<p>setting the number</p>
+<p>of parameters</p>
+<p>and some other</p>
+<p>aspects,</p>
+<p>kind of like how</p>
+<p>vision neural networks</p>
+<p>might work,</p>
+<p>just,</p>
+<p>here's my data folder,</p>
+<p>here's the architecture,</p>
+<p>now go,</p>
+<p>and where is it</p>
+<p>going to take</p>
+<p>more of a</p>
+<p>scaffolded,</p>
+<p>structured approach</p>
+<p>that</p>
+<p>has a model</p>
+<p>that embodies</p>
+<p>aspects of the</p>
+<p>situation.</p>
+<p>Yeah.</p>
+<p>Yeah,</p>
+<p>that is</p>
+<p>very hard.</p>
+<p>I think that</p>
+<p>it's very dependent</p>
+<p>on the amount</p>
+<p>of data that you</p>
+<p>have and the</p>
+<p>problem.</p>
+<p>I think there</p>
+<p>are certain</p>
+<p>problems where</p>
+<p>you need a</p>
+<p>prior and that</p>
+<p>without this</p>
+<p>prior you sort</p>
+<p>of,</p>
+<p>or some inductive</p>
+<p>bias with your</p>
+<p>model,</p>
+<p>to be more</p>
+<p>data efficient,</p>
+<p>such that without</p>
+<p>this inductive</p>
+<p>bias you will</p>
+<p>not succeed.</p>
+<p>And I think</p>
+<p>that particularly</p>
+<p>we'll see that</p>
+<p>more often on</p>
+<p>domains with</p>
+<p>limited data.</p>
+<p>Right?</p>
+<p>So if you have</p>
+<p>very limited</p>
+<p>data,</p>
+<p>having just a</p>
+<p>model and just</p>
+<p>the data,</p>
+<p>no prior on the</p>
+<p>structure or</p>
+<p>inductive biases</p>
+<p>of your model,</p>
+<p>your model will</p>
+<p>very much overfit</p>
+<p>that data and</p>
+<p>not generalize.</p>
+<p>I think the</p>
+<p>reason that we're</p>
+<p>able to do this</p>
+<p>with language and</p>
+<p>video and audio</p>
+<p>is because we</p>
+<p>have huge amounts</p>
+<p>of data.</p>
+<p>I mean,</p>
+<p>data that is</p>
+<p>on orders of</p>
+<p>magnitude more</p>
+<p>than any human</p>
+<p>will ever read</p>
+<p>or see in</p>
+<p>their lifetime.</p>
+<p>So it may</p>
+<p>very well be</p>
+<p>that when we</p>
+<p>actually care</p>
+<p>about,</p>
+<p>well,</p>
+<p>we do care</p>
+<p>about this,</p>
+<p>but when we</p>
+<p>care very much</p>
+<p>about achieving</p>
+<p>human level</p>
+<p>intelligence,</p>
+<p>given the</p>
+<p>same amount</p>
+<p>of data as</p>
+<p>humans,</p>
+<p>we need</p>
+<p>stronger priors</p>
+<p>on architecture</p>
+<p>and structure,</p>
+<p>et cetera.</p>
+<p>It may also be</p>
+<p>that from a</p>
+<p>practical perspective,</p>
+<p>these are more</p>
+<p>useful on</p>
+<p>specific modalities</p>
+<p>or domains</p>
+<p>where we don't</p>
+<p>have as much</p>
+<p>data as we do</p>
+<p>for language</p>
+<p>or for video.</p>
+<p>So for example,</p>
+<p>for medical data,</p>
+<p>I am not an</p>
+<p>expert on this,</p>
+<p>but I very much</p>
+<p>believe that there</p>
+<p>is many more</p>
+<p>data constraints</p>
+<p>with medical</p>
+<p>data than there</p>
+<p>is with just</p>
+<p>general videos</p>
+<p>online or general</p>
+<p>language online.</p>
+<p>And because of</p>
+<p>this,</p>
+<p>it may be that</p>
+<p>inductive priors</p>
+<p>or kind of</p>
+<p>structures in</p>
+<p>your model that</p>
+<p>are more akin</p>
+<p>to how human</p>
+<p>cognition works</p>
+<p>or however your</p>
+<p>model of psychology</p>
+<p>works are much</p>
+<p>better at making</p>
+<p>decisions and</p>
+<p>performing or</p>
+<p>generalizing.</p>
+<p>so I think</p>
+<p>the key is</p>
+<p>really data.</p>
+<p>You know,</p>
+<p>if you have</p>
+<p>infinite data,</p>
+<p>you don't need</p>
+<p>any priors.</p>
+<p>You just learn</p>
+<p>everything from</p>
+<p>the data.</p>
+<p>If you don't</p>
+<p>have infinite</p>
+<p>data, then</p>
+<p>priors are helpful.</p>
+<p>And this is</p>
+<p>kind of broadly</p>
+<p>what we've</p>
+<p>observed in AI</p>
+<p>in the last</p>
+<p>decade where</p>
+<p>over time,</p>
+<p>the amount of</p>
+<p>priors that these</p>
+<p>models have has</p>
+<p>decreased and</p>
+<p>you really just</p>
+<p>like let the</p>
+<p>model fit the</p>
+<p>data.</p>
+<p>You don't really</p>
+<p>make any</p>
+<p>assumptions.</p>
+<p>10 years ago</p>
+<p>or 15 years</p>
+<p>ago and we</p>
+<p>didn't have that</p>
+<p>much data in</p>
+<p>compute, people</p>
+<p>did a lot of</p>
+<p>hand-tweet things</p>
+<p>and engineering</p>
+<p>and feature</p>
+<p>engineering, etc.</p>
+<p>etc. for their</p>
+<p>vision models to</p>
+<p>make them work</p>
+<p>better.</p>
+<p>And they did</p>
+<p>work better with</p>
+<p>those hand-engineered</p>
+<p>features at the</p>
+<p>time.</p>
+<p>So I think the</p>
+<p>key is like how</p>
+<p>much of a</p>
+<p>bottleneck is your</p>
+<p>data?</p>
+<p>I believe I</p>
+<p>resonate with you</p>
+<p>on that with</p>
+<p>this sort of</p>
+<p>zigzagging,</p>
+<p>forward-moving</p>
+<p>pendulum.</p>
+<p>between expert</p>
+<p>systems-focused,</p>
+<p>so-called, and</p>
+<p>more unstructured.</p>
+<p>And to combine</p>
+<p>the structured and</p>
+<p>the unstructured is</p>
+<p>the chocolate chip</p>
+<p>cookie that has</p>
+<p>these kind of</p>
+<p>neurosymbolic,</p>
+<p>hybrid, synthetic</p>
+<p>intelligence.</p>
+<p>There's just a</p>
+<p>million ways to</p>
+<p>point at these</p>
+<p>architectures that</p>
+<p>have different</p>
+<p>sorts of elements</p>
+<p>ranging from</p>
+<p>logical,</p>
+<p>discrete, to</p>
+<p>interpolated,</p>
+<p>continuous.</p>
+<p>So that's</p>
+<p>awesome.</p>
+<p>Okay, last</p>
+<p>sort of two</p>
+<p>areas that I'd</p>
+<p>love to hear your</p>
+<p>take on, and</p>
+<p>then I'll see if</p>
+<p>there's any final</p>
+<p>comment in the</p>
+<p>live chat, would</p>
+<p>be how would</p>
+<p>somebody who's</p>
+<p>wanting to learn</p>
+<p>and apply get</p>
+<p>onboarded?</p>
+<p>What resources did</p>
+<p>you all provide in</p>
+<p>the repository?</p>
+<p>and what kinds of</p>
+<p>things would</p>
+<p>somebody want to</p>
+<p>learn up on and</p>
+<p>train up on to</p>
+<p>be able to</p>
+<p>replicate and</p>
+<p>extend?</p>
+<p>And then, of</p>
+<p>course, where is</p>
+<p>this all going?</p>
+<p>What is the next</p>
+<p>shoe to drop?</p>
+<p>What is the next</p>
+<p>pheromone that will</p>
+<p>be deposited?</p>
+<p>Yeah, I like that</p>
+<p>last question a lot.</p>
+<p>With the first</p>
+<p>question, yeah, we</p>
+<p>tried to make it a</p>
+<p>little bit easier to</p>
+<p>get started.</p>
+<p>So, at the end</p>
+<p>of the paper, like</p>
+<p>section, I think,</p>
+<p>H and I, there's</p>
+<p>some intro to</p>
+<p>EBM tutorial and</p>
+<p>stuff like that and</p>
+<p>some pseudocode.</p>
+<p>There's also some</p>
+<p>videos by Yannick</p>
+<p>Kilcher.</p>
+<p>He's a YouTuber</p>
+<p>that he made on</p>
+<p>energy-based models</p>
+<p>that I think are</p>
+<p>really great for</p>
+<p>getting started.</p>
+<p>But I recommend</p>
+<p>checking out those</p>
+<p>videos and checking</p>
+<p>out those later</p>
+<p>sections in the</p>
+<p>paper that are</p>
+<p>sort of more</p>
+<p>easily written.</p>
+<p>Because I found</p>
+<p>it, even for me,</p>
+<p>you know, like I've</p>
+<p>been doing EBMs</p>
+<p>for a while, very</p>
+<p>difficult to read</p>
+<p>a lot of the</p>
+<p>literature because</p>
+<p>it's super</p>
+<p>theoretical and</p>
+<p>sort of like maybe</p>
+<p>not catered towards</p>
+<p>beginners.</p>
+<p>So, I think that,</p>
+<p>you know, just</p>
+<p>maybe checking this</p>
+<p>out or checking out</p>
+<p>some intro or</p>
+<p>tutorials on EBMs</p>
+<p>would be great, as</p>
+<p>well as just PyTorch</p>
+<p>in general.</p>
+<p>Yeah, the Yannick</p>
+<p>Kilcher videos are</p>
+<p>great as well.</p>
+<p>And then the second</p>
+<p>question, where</p>
+<p>are we headed?</p>
+<p>Yeah, that is a</p>
+<p>great question.</p>
+<p>I think in the</p>
+<p>long term, like</p>
+<p>what we'll see with</p>
+<p>diffusion models is</p>
+<p>kind of like what</p>
+<p>we saw with</p>
+<p>energy-based models</p>
+<p>is kind of like</p>
+<p>what we saw with</p>
+<p>diffusion models,</p>
+<p>where like at</p>
+<p>first they're kind</p>
+<p>of like, oh,</p>
+<p>these are impractical,</p>
+<p>no one's going to</p>
+<p>use these, to like,</p>
+<p>okay, maybe there's</p>
+<p>some promise, to</p>
+<p>like, okay, these</p>
+<p>have narrow</p>
+<p>applications, to</p>
+<p>like, oh, wow, we</p>
+<p>can apply these to</p>
+<p>almost everything.</p>
+<p>Like now, diffusion</p>
+<p>language models are</p>
+<p>very much becoming</p>
+<p>very popular when it</p>
+<p>used to just be</p>
+<p>image generation.</p>
+<p>And now they're</p>
+<p>used for planning and</p>
+<p>robotics, et cetera,</p>
+<p>et cetera.</p>
+<p>I think we'll see the</p>
+<p>same thing with</p>
+<p>energy-based models,</p>
+<p>where over time they</p>
+<p>will become more and</p>
+<p>more widespread because</p>
+<p>of, you know,</p>
+<p>potentially better</p>
+<p>generalization.</p>
+<p>So I think that that</p>
+<p>is the future.</p>
+<p>I think the question is</p>
+<p>really like how much</p>
+<p>time, how much</p>
+<p>compute do we need,</p>
+<p>and what are the</p>
+<p>kind of core tricks</p>
+<p>and algorithms, you</p>
+<p>know, and the</p>
+<p>improvements that can</p>
+<p>be made.</p>
+<p>So that is what I</p>
+<p>see.</p>
+<p>But I think that if</p>
+<p>you believe that</p>
+<p>generalization will be</p>
+<p>the blocker in the</p>
+<p>next decade, for</p>
+<p>sure energy-based</p>
+<p>models are a good</p>
+<p>way, good bet to</p>
+<p>put your money on.</p>
+<p>So.</p>
+<p>If you generalize</p>
+<p>from your past</p>
+<p>experience to update</p>
+<p>your belief that</p>
+<p>generalization is</p>
+<p>important belief to</p>
+<p>have updated to,</p>
+<p>this is an</p>
+<p>interesting architecture.</p>
+<p>adventure.</p>
+<p>Yeah.</p>
+<p>I'm trying to call you</p>
+<p>along there, but</p>
+<p>yeah.</p>
+<p>Yeah, yeah, yeah,</p>
+<p>yeah.</p>
+<p>I agree with that.</p>
+<p>Any final comments or</p>
+<p>just what's next for</p>
+<p>you and your graduate</p>
+<p>and beyond adventures?</p>
+<p>Not much final</p>
+<p>comments.</p>
+<p>Just thank you guys</p>
+<p>for the interest and</p>
+<p>it's been kind of</p>
+<p>amazing.</p>
+<p>I did not expect as</p>
+<p>many people to be</p>
+<p>interested in the</p>
+<p>paper.</p>
+<p>So it's super,</p>
+<p>super grateful for</p>
+<p>people even listening</p>
+<p>and for giving me the</p>
+<p>time to speak.</p>
+<p>In terms of my</p>
+<p>future, yeah, we'll</p>
+<p>have to see.</p>
+<p>It's hard to know.</p>
+<p>I mean, I definitely</p>
+<p>plan to continue</p>
+<p>working on EBMs, but</p>
+<p>yeah, I have some</p>
+<p>crazy ideas planned in</p>
+<p>the future as well.</p>
+<p>So we'll see how</p>
+<p>those go.</p>
+<p>Amazing.</p>
+<p>Thank you.</p>
+<p>Super informative.</p>
+<p>There's really a</p>
+<p>big community of</p>
+<p>researchers and people</p>
+<p>kind of in the</p>
+<p>engine room.</p>
+<p>And I think also</p>
+<p>broader and broader</p>
+<p>peripheries of</p>
+<p>interest from</p>
+<p>everything AI ethics</p>
+<p>and just the future</p>
+<p>of what is going to</p>
+<p>happen.</p>
+<p>So it's awesome to</p>
+<p>see.</p>
+<p>And I hope we can</p>
+<p>have a follow-up.</p>
+<p>I hope so as well.</p>
+<p>Yeah.</p>
+<p>Thank you so much for</p>
+<p>having me.</p>
+<p>Really appreciate it.</p>
+<p>All right.</p>
+<p>Peace.</p>
+<p>Thank you.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+<p>Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+</body>
+</html>

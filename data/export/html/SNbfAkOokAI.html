@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf Livestream #029.0 ~ “Active Inferants: An Active Inference Framework for Ant Colony Behavior”</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf Livestream #029.0 ~ “Active Inferants: An Active Inference Framework for Ant Colony Behavior”</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_029 &middot; Episode 0 &middot; Duration: 1:36:38 &middot; Views: 124</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=SNbfAkOokAI">https://www.youtube.com/watch?v=SNbfAkOokAI</a></div>
+<article>
+<p>[Music]</p>
+<p>hello everybody welcome to the active</p>
+<p>inference lab this is live stream number</p>
+<p>29.0 on</p>
+<p>september 14th is it september 14th not</p>
+<p>anymore</p>
+<p>september 17</p>
+<p>17.</p>
+<p>at least where we're at</p>
+<p>on september 17 2021</p>
+<p>welcome to the active inference lab</p>
+<p>we are a participatory online lab that</p>
+<p>is communicating learning and practicing</p>
+<p>applied active inference you can find us</p>
+<p>at the links here on this slide</p>
+<p>this is recorded in an archived live</p>
+<p>stream so please provide us with</p>
+<p>feedback so that we can improve our work</p>
+<p>all backgrounds and perspectives are</p>
+<p>welcome and we'll be following good</p>
+<p>video etiquette for live streams</p>
+<p>at the short link on this slide you can</p>
+<p>see the past present and future live</p>
+<p>streams</p>
+<p>and just to call your attention to the</p>
+<p>tabs on the bottom</p>
+<p>the first tab are our regular tuesday</p>
+<p>live streams so for these ones we do the</p>
+<p>zero contextualizing video that's what</p>
+<p>you're watching now and then we have a</p>
+<p>dot one and a dot two where on two</p>
+<p>successive weeks we try to have the</p>
+<p>authors try to have a lot of different</p>
+<p>people on a panel just talking about the</p>
+<p>paper</p>
+<p>the guest stream is sort of a wild card</p>
+<p>slash anything goes we have a lot of</p>
+<p>different topics</p>
+<p>model streams reflect machine learning</p>
+<p>different kinds of modeling and</p>
+<p>walkthroughs of code and the math stream</p>
+<p>is for talking about math and different</p>
+<p>formal frameworks so if you are</p>
+<p>interested in co-organizing or</p>
+<p>presenting for any of these different</p>
+<p>kinds of streams then just get in touch</p>
+<p>with us</p>
+<p>today in active stream 29</p>
+<p>we're going to be having the goal of</p>
+<p>learning and discussing this paper</p>
+<p>active inference and active inference</p>
+<p>framework for ant colony behavior</p>
+<p>by freedman chance ramstead fristen and</p>
+<p>constant</p>
+<p>and just like</p>
+<p>all of the other.0 videos this is just</p>
+<p>an introduction to some of the ideas</p>
+<p>it's not a review</p>
+<p>or a final word</p>
+<p>and it doesn't change too much even when</p>
+<p>the first or any author is on the stream</p>
+<p>we're gonna go over the keywords</p>
+<p>as well as the aims and claims the</p>
+<p>abstract all the usual things that we</p>
+<p>cover in the dot zeros and in the coming</p>
+<p>weeks we're gonna be discussing this</p>
+<p>paper so everybody is welcome to join</p>
+<p>from whatever</p>
+<p>area they're excited about the paper</p>
+<p>from</p>
+<p>just get in touch with us</p>
+<p>so we can begin with a little</p>
+<p>introductions and</p>
+<p>warm-ups</p>
+<p>um</p>
+<p>blue how about you can go first and then</p>
+<p>we'll pass it to the first author</p>
+<p>so i'm blue knight an independent</p>
+<p>research consultant from new mexico and</p>
+<p>i'll pass to daniel friedman the first</p>
+<p>author of this paper</p>
+<p>thanks blue so i'm daniel i'm a</p>
+<p>postdoc researcher in california and</p>
+<p>yeah usually we have everybody except</p>
+<p>for the first author introduce</p>
+<p>themselves and then the first author</p>
+<p>uh steps in and gives a little</p>
+<p>background on the paper so it's fun it's</p>
+<p>the first time that we've discussed one</p>
+<p>of my papers on the stream</p>
+<p>and uh we'll be talking about a bunch of</p>
+<p>different aspects of it and it's awesome</p>
+<p>to have you here blue with a lot of</p>
+<p>expertise in collective behavior and a</p>
+<p>bunch of other areas</p>
+<p>the big question that motivated not just</p>
+<p>this live stream but this whole line of</p>
+<p>research in this paper</p>
+<p>is</p>
+<p>assuming that each agent is a quote from</p>
+<p>the paper assuming that each agent</p>
+<p>nestmate has only limited access to</p>
+<p>incoming information</p>
+<p>how can a group of active inference</p>
+<p>agents solve complex group foraging</p>
+<p>problems</p>
+<p>so in the case of ants that local</p>
+<p>information is going to be the pheromone</p>
+<p>density the chemicals that it can</p>
+<p>perceive its local umvelt but in the</p>
+<p>case of information foraging it's what</p>
+<p>we see or it's our perspective or the</p>
+<p>people who we can communicate to and so</p>
+<p>this is a topic that's come up in many</p>
+<p>different guises which is</p>
+<p>again when you have a multi-agent system</p>
+<p>using active inference to model each</p>
+<p>agents how do we think about the way</p>
+<p>that the</p>
+<p>perceptions and cognition and action of</p>
+<p>each individual active inference agents</p>
+<p>how do those compose or interact so that</p>
+<p>the group can have adaptive or</p>
+<p>interesting behavior the big question of</p>
+<p>the paper and also again just a big open</p>
+<p>question hardly one that gets</p>
+<p>answered in its finished form by the</p>
+<p>paper or by this discussion</p>
+<p>anything you want to add</p>
+<p>only that um i was really excited to i</p>
+<p>actually i picked this paper and i've</p>
+<p>been kind of pressuring daniel to do it</p>
+<p>for a little while maybe three months or</p>
+<p>so since i first read it so um i picked</p>
+<p>this paper because</p>
+<p>complex behavior complex group foraging</p>
+<p>problems it's really linked to my</p>
+<p>interest in collective intelligence and</p>
+<p>in scaling intelligence which is also</p>
+<p>why i'm drawn to active inference so i'm</p>
+<p>just curious to see your insight into</p>
+<p>ants and the deeper like you know when</p>
+<p>we see a paper we see only the surface</p>
+<p>the final product and so it's really</p>
+<p>going to be fun to take a deep dive into</p>
+<p>the little nuanced things that kind of</p>
+<p>maybe led you to the the birth of this</p>
+<p>paper</p>
+<p>great</p>
+<p>visual with sort of what's on the</p>
+<p>surface and what's beneath the surface</p>
+<p>and in fact foraging is such a fun task</p>
+<p>to study not to get ahead of ourselves</p>
+<p>but it's one of the few tasks of the ant</p>
+<p>colony that you can see outside you just</p>
+<p>stand next to the nest entrance just</p>
+<p>like this picture which is taken</p>
+<p>while i was doing field work in arizona</p>
+<p>so there where all the ants are coming</p>
+<p>in and out of this is the nest entrance</p>
+<p>and so this</p>
+<p>species the red harvester ant</p>
+<p>pogonomyrmex barbados</p>
+<p>it's like there are ants coming in and</p>
+<p>out doing some trash work mid-work but</p>
+<p>mostly what you see on the outside is</p>
+<p>foraging</p>
+<p>and so what happens underneath well</p>
+<p>here's this painted ant with the three</p>
+<p>yellow dots so we can take a little</p>
+<p>tracer</p>
+<p>down underneath and we can see what is</p>
+<p>happening beneath the surface of the</p>
+<p>foraging</p>
+<p>the paper is active in france an active</p>
+<p>inference framework for ant colony</p>
+<p>behavior and we read the authors</p>
+<p>previously it was a really awesome</p>
+<p>collaboration so thanks a lot to to alec</p>
+<p>maxwell carl and axel who each brought</p>
+<p>really important insights here</p>
+<p>and</p>
+<p>two of the main aims and claims and then</p>
+<p>blue you can provide any thoughts</p>
+<p>in this paper we develop and implement a</p>
+<p>bayesian simulation model derived from</p>
+<p>the active inference framework that</p>
+<p>captures some of the underlying dynamics</p>
+<p>and emergent phenomena of ant colony</p>
+<p>foraging behavior</p>
+<p>that's what we did and the second point</p>
+<p>is</p>
+<p>by integrating the bayesian ant colony</p>
+<p>perspective</p>
+<p>of hunt and others</p>
+<p>with stigmatic regulation and the</p>
+<p>scale-free formalism of active inference</p>
+<p>fields in glazebrook 2020</p>
+<p>we provide an integrative framework for</p>
+<p>behavioral ecological and evolutionary</p>
+<p>modeling in ants</p>
+<p>such an integrated approach could</p>
+<p>facilitate the transfer of modeling</p>
+<p>insights from ant colonies to human</p>
+<p>design systems</p>
+<p>and i guess back</p>
+<p>so cool aims and claims they weren't</p>
+<p>very forthcoming with or or you guys</p>
+<p>weren't very forthcoming with the aims</p>
+<p>and claims of the paper but i found like</p>
+<p>lots of them like nested like little</p>
+<p>gems in the paper so this is just a</p>
+<p>couple of them but i think that this</p>
+<p>paper was very um you know</p>
+<p>on the bleeding edge we say instead of</p>
+<p>like the leading edge cutting into some</p>
+<p>some novel areas and making some new</p>
+<p>connections that we haven't seen before</p>
+<p>or at least i haven't seen before</p>
+<p>cool there's what we did which is</p>
+<p>write a simulation based upon</p>
+<p>theoretical grounding and then there's</p>
+<p>the fields that were integrated which</p>
+<p>was a sort of bayesian forager</p>
+<p>multi-agent perspective</p>
+<p>stigma g which we'll talk about soon</p>
+<p>and of course active inference</p>
+<p>and that is going to</p>
+<p>hopefully develop field of ant research</p>
+<p>and</p>
+<p>other areas that stand to learn from</p>
+<p>either the bayesian multi-agent</p>
+<p>perspective stigmargy or active</p>
+<p>inference so that is quite a large swath</p>
+<p>do you want to read the first part of</p>
+<p>the abstract</p>
+<p>sure</p>
+<p>in this paper we introduce an active</p>
+<p>inference model of ant colony foraging</p>
+<p>behavior and implement the model in a</p>
+<p>series of in-silico experiments active</p>
+<p>inference is a multi-scale approach to</p>
+<p>behavioral modeling that is being plot</p>
+<p>applied across settings in theoretical</p>
+<p>biology and ethology the ant colony is a</p>
+<p>classic case system in the function of</p>
+<p>distributed systems in terms of</p>
+<p>stigmatic decision making and</p>
+<p>information sharing</p>
+<p>the second half of the abstract is</p>
+<p>here we specify and simulate a markov</p>
+<p>decision process model for ant colony</p>
+<p>foraging we investigate a well-known</p>
+<p>paradigm from laboratory and colony</p>
+<p>behavioral experiments the alternating</p>
+<p>t-maze paradigm to illustrate the</p>
+<p>ability of the model to recover basic</p>
+<p>colony phenomena such as trail formation</p>
+<p>after food location discovery</p>
+<p>we conclude by outlining how the active</p>
+<p>inference ant colony foraging behavioral</p>
+<p>model can be extended and situated</p>
+<p>within a nested multi-scale framework</p>
+<p>and systems approaches to biology more</p>
+<p>generally</p>
+<p>how from that abstract do we forage</p>
+<p>ahead that's why we have a roadmap</p>
+<p>first in the introduction section</p>
+<p>we talk about bayesian multiscale</p>
+<p>modeling and stigmargy</p>
+<p>and then introduce the need and basis of</p>
+<p>an active inference model of the ant</p>
+<p>colony</p>
+<p>in the methods section we talk about the</p>
+<p>foraging task specifically which is the</p>
+<p>alternating teammates but that's really</p>
+<p>just a map it's kind of like</p>
+<p>minecraft or simcity like you can</p>
+<p>specify any kind of map you want we used</p>
+<p>an alternating t-maze for a few reasons</p>
+<p>and then we talk about the active</p>
+<p>inference model for ant colony foraging</p>
+<p>specifically</p>
+<p>we present some results</p>
+<p>and we didn't have any</p>
+<p>live ant recordings in this paper so the</p>
+<p>results are more like schematic</p>
+<p>they suggest what kinds of things can be</p>
+<p>measured and be discussed</p>
+<p>for multi-agent active inference systems</p>
+<p>specifically the colonies foraging</p>
+<p>performance and swarm coherence metrics</p>
+<p>and then in the discussion we talk about</p>
+<p>three scales of analysis and implication</p>
+<p>for the work</p>
+<p>which is at the nest mate the colony and</p>
+<p>the population scale</p>
+<p>and we use those words intentionally</p>
+<p>because they're all</p>
+<p>ants someone says oh there's an ants on</p>
+<p>my windowsill and they mean a little</p>
+<p>six-legged nest mate but</p>
+<p>if the colony is the organism then</p>
+<p>wouldn't the ant be the colony and just</p>
+<p>it's a piece of ant tissue on your</p>
+<p>windowsill</p>
+<p>and then we end with a concluding remark</p>
+<p>so it's a relatively sparse</p>
+<p>road map but maybe we don't need that</p>
+<p>many signposts to get where we're going</p>
+<p>any road map comments</p>
+<p>no good let's forage ahead</p>
+<p>exactly exactly</p>
+<p>um</p>
+<p>the key words were</p>
+<p>ants</p>
+<p>forging just</p>
+<p>why even continue ants foraging active</p>
+<p>environment oh yes that's right</p>
+<p>behavioral modeling collective behavior</p>
+<p>evo eco diva or ecoevo devo different</p>
+<p>people order it differently and</p>
+<p>stigmergy so these are going to be</p>
+<p>keywords that</p>
+<p>open many doors</p>
+<p>so let's go into them</p>
+<p>we'll start with sort of the grand</p>
+<p>gaia level keyword which is eco evo devo</p>
+<p>that's just how i say it but we might</p>
+<p>have done evo eco devo in the paper</p>
+<p>eco evo devo stands for</p>
+<p>ecology evolution and development</p>
+<p>so this is one way to see it with these</p>
+<p>three interacting domains so it's like a</p>
+<p>tri-disciplinary or transdisciplinary</p>
+<p>approach</p>
+<p>that is going to just like the name</p>
+<p>would have you believe just like action</p>
+<p>and inference come together in active</p>
+<p>inference</p>
+<p>evodivo is going to integrate across</p>
+<p>these three fields so what's happening</p>
+<p>as organisms develop</p>
+<p>in their ecosystem and how evolution</p>
+<p>shapes that</p>
+<p>but it's also</p>
+<p>and this is drawn from the gilbert at</p>
+<p>all paper and a good text to read on it</p>
+<p>is the abohif at all 2014 paper</p>
+<p>it's actually a historical lineage</p>
+<p>so those who study the history of</p>
+<p>evolutionary theory might be familiar</p>
+<p>for example with the modern synthesis of</p>
+<p>evolutionary biology</p>
+<p>which happened in the first half of the</p>
+<p>1900s and integrated for example</p>
+<p>population genetics and quantitative</p>
+<p>genetics with evolution well</p>
+<p>here's a cool timeline from the gilbert</p>
+<p>paper</p>
+<p>talking about how from the 1800s with</p>
+<p>darwin as well as</p>
+<p>antecedents</p>
+<p>moved through sequence of really</p>
+<p>important developments after the first</p>
+<p>half of the 1900s so these are</p>
+<p>post-1950s post</p>
+<p>the discovery or elucidation of the</p>
+<p>structure of the dna molecule</p>
+<p>things like symbiosis</p>
+<p>the way that microbial interactions</p>
+<p>shape development</p>
+<p>um a lot of cool things and on the</p>
+<p>bottom here growing awareness of</p>
+<p>beneficial symbioses</p>
+<p>so eco evo devo is referring to a</p>
+<p>historical lineage that is becoming</p>
+<p>increasingly recognized as an important</p>
+<p>integrative take on</p>
+<p>the systems that we're a part of what</p>
+<p>would you have to say about ecoevo blue</p>
+<p>just that it's constantly um</p>
+<p>i mean we're becoming so much more aware</p>
+<p>of</p>
+<p>the the different facets that go into</p>
+<p>eco evo devo and um how interconnected</p>
+<p>and fundamentally important</p>
+<p>they are</p>
+<p>in a triad</p>
+<p>um it's like for me uh the clear like i</p>
+<p>remember being at the neuroscience</p>
+<p>meeting and i don't remember the name of</p>
+<p>the professor but she was a toxicologist</p>
+<p>from johns hopkins and had been working</p>
+<p>in her field for i don't know like 30</p>
+<p>years and this is like when they're</p>
+<p>doing the microbiome sequencing which</p>
+<p>was maybe like 20</p>
+<p>12 20 13 somewhere around there and so</p>
+<p>they're doing like the massive</p>
+<p>microbiome sequencing and she got up and</p>
+<p>said um you know we're gonna have to</p>
+<p>redo all of the toxicology work that uh</p>
+<p>i've done my entire life which it just</p>
+<p>was so um overwhelming and um</p>
+<p>i i it just really blew my mind to hear</p>
+<p>such a renowned professor stand up and</p>
+<p>say you know we don't know what's toxic</p>
+<p>and what's not because we've not</p>
+<p>considered the whole and so in in</p>
+<p>relation to toxicity and ecology and</p>
+<p>evolution and development like we</p>
+<p>consider developing like you know of</p>
+<p>course we consider children eating lead</p>
+<p>paint and so forth and i think we're you</p>
+<p>know we've looked at evolution but but</p>
+<p>really that this the ecology of our own</p>
+<p>survival is something i think that</p>
+<p>people are just starting to to become</p>
+<p>more aware of and attuned to</p>
+<p>and there's a famous quote in biology by</p>
+<p>debzanski nothing in</p>
+<p>life makes sense except in the light of</p>
+<p>evolution it's like but doesn't nothing</p>
+<p>makes sense except in the light of</p>
+<p>development and ecology and physics and</p>
+<p>so on so it's kind of like</p>
+<p>right we should have integrative</p>
+<p>frameworks</p>
+<p>whatever their english titles are so</p>
+<p>that we can understand all the light</p>
+<p>that's being cast on the phenomena that</p>
+<p>we care about</p>
+<p>and i'm reminded of the holobiont too</p>
+<p>that chris fields brought up right all</p>
+<p>of that</p>
+<p>yes</p>
+<p>what are</p>
+<p>some of the ways that we can think about</p>
+<p>the phenomena we care about well one of</p>
+<p>the big key words here is collective</p>
+<p>behavior that's one of the key words of</p>
+<p>the paper so here's a lewis thomas quote</p>
+<p>it is in our collective behavior that we</p>
+<p>are most mysterious</p>
+<p>individuals are collective too</p>
+<p>we were never individuals</p>
+<p>and</p>
+<p>here's a nice map from wikipedia</p>
+<p>of</p>
+<p>complex systems some of the key terms a</p>
+<p>little fractal with complex systems and</p>
+<p>complexity itself and then like a</p>
+<p>palette with the art</p>
+<p>we have the different key terms like</p>
+<p>systems theory and evolution and then</p>
+<p>here's collective behavior up here so</p>
+<p>collective behavior is one of the</p>
+<p>fundamental pillars of complexity</p>
+<p>because collective behavior is just</p>
+<p>studying</p>
+<p>systems interacting</p>
+<p>what do you think about that blue</p>
+<p>uh i want to say it in the next slide</p>
+<p>sounds good</p>
+<p>what is the difference between</p>
+<p>collective behavior and collective</p>
+<p>intelligence</p>
+<p>right and so this is something that um</p>
+<p>you know we've talked about offline but</p>
+<p>really like when you look at collective</p>
+<p>behavior and collective intelligence and</p>
+<p>this was just a map i also pulled from</p>
+<p>wikipedia's definition of collective</p>
+<p>intelligence and so here i mean this is</p>
+<p>clearly you know framed in a human</p>
+<p>situation or is it</p>
+<p>do ants have open source software maybe</p>
+<p>we can talk about that</p>
+<p>um but but collective intelligence you</p>
+<p>know it's these three branches framed in</p>
+<p>this image it's coordination</p>
+<p>and cooperation which both of those come</p>
+<p>into</p>
+<p>the collective behavior</p>
+<p>like play when i think about</p>
+<p>fish schooling or or like you know birds</p>
+<p>flocking right this is like a behavior</p>
+<p>right good that we behave and coordinate</p>
+<p>to to behave collectively uh for for</p>
+<p>each other's mutual benefit and for the</p>
+<p>benefit of the flock or the school or</p>
+<p>whatever</p>
+<p>but the only thing that's left out in</p>
+<p>this triad is cognition and so</p>
+<p>like what is cognition is that input</p>
+<p>output or is is cognition intelligence</p>
+<p>or what's the difference between</p>
+<p>cognition and intelligence so for me</p>
+<p>there's a like a very blurry</p>
+<p>uh boundary between what is collective</p>
+<p>behavior and what is collective</p>
+<p>intelligence um and so i mean we've also</p>
+<p>talked offline and so i just want to</p>
+<p>know you know my thoughts on this are</p>
+<p>evolving</p>
+<p>and i'm curious as to maybe people that</p>
+<p>are listening to this or maybe anybody</p>
+<p>that wants to come onto our next live</p>
+<p>stream and talk about it like if they</p>
+<p>have strong opinions on collective</p>
+<p>behavior versus collective intelligence</p>
+<p>but i'd like to hear if you have any you</p>
+<p>know</p>
+<p>overwhelming thoughts</p>
+<p>it's um</p>
+<p>definitely two different perspectives on</p>
+<p>intelligence and behavior there's sort</p>
+<p>of like</p>
+<p>some who would say that intelligent</p>
+<p>behavior it's defined by its outcome</p>
+<p>and it doesn't matter what's happening</p>
+<p>internally and then there's sort of the</p>
+<p>possibility that intelligence could</p>
+<p>exist in the absence of behavior</p>
+<p>now frameworks like we discussed in live</p>
+<p>stream 28 with mental action</p>
+<p>with mental</p>
+<p>and cognitive processes as themselves</p>
+<p>being action</p>
+<p>and being modeled as action in active</p>
+<p>inference framework that sort of blurs</p>
+<p>the distinction but definitely that's</p>
+<p>gonna be a question like</p>
+<p>is collective behavior the same thing as</p>
+<p>collective intelligence is intelligence</p>
+<p>simply behavior</p>
+<p>and then something i always wondered</p>
+<p>about with collective behavior oh well</p>
+<p>you know collective behavior groups of</p>
+<p>people</p>
+<p>okay but aren't people groups of cells</p>
+<p>so</p>
+<p>if collective doesn't mean anything as</p>
+<p>opposed to individual then we're just</p>
+<p>talking about</p>
+<p>phenomena or behavior so you know let's</p>
+<p>drop the adjectives that don't really</p>
+<p>matter so what are we signaling when</p>
+<p>we're talking about collective behavior</p>
+<p>as opposed to saying yeah i'm talking</p>
+<p>about individual groups you know</p>
+<p>individual crowds of humans for example</p>
+<p>i definitely think that um</p>
+<p>you know there's</p>
+<p>definitely if</p>
+<p>if you could have no</p>
+<p>you could have intelligence without</p>
+<p>behavior of course because babies can't</p>
+<p>do anything but like lay there in bed</p>
+<p>and like observe you know like they just</p>
+<p>you know can suck their fingers or</p>
+<p>something but but there's some</p>
+<p>intelligence there that doesn't have</p>
+<p>necessarily an associated action</p>
+<p>and a tremendous amount of intelligence</p>
+<p>because they're learning and you know</p>
+<p>building their own model of the world um</p>
+<p>and so what is collective and i was</p>
+<p>listening to the um internalism</p>
+<p>externalism live stream like number 5.2</p>
+<p>for anybody who wants to go back in time</p>
+<p>and revisit that with me i was listening</p>
+<p>to that last night and and it's like you</p>
+<p>know what is the preferred level of</p>
+<p>analysis right right like from the noble</p>
+<p>paper like where do we get this you know</p>
+<p>preferential level diagnostic uh and you</p>
+<p>know we are as individuals collectives</p>
+<p>collect collections of human and other</p>
+<p>types of cells so so what is this</p>
+<p>collective behavior versus collective</p>
+<p>intelligence i don't know it's it's</p>
+<p>something that's always mushy to me</p>
+<p>there's a kantian perspective on that</p>
+<p>for another time</p>
+<p>one way that we can talk about a</p>
+<p>specific type of collective behavior is</p>
+<p>by introducing this topic of stigma g so</p>
+<p>sometimes when people talk about</p>
+<p>collective behavior in the first slide</p>
+<p>of their talk they'll say you know</p>
+<p>flocks of birds and here's a group of</p>
+<p>people walking through a landscape and</p>
+<p>those are examples of coordination</p>
+<p>amongst agents but stigma g is actually</p>
+<p>pointing out a really specific and</p>
+<p>important different type of collective</p>
+<p>behavior so here's from the wikipedia</p>
+<p>describing that stigma g was introduced</p>
+<p>by a termite biologist pierre paul</p>
+<p>grasse</p>
+<p>in the 1950s so it's a recent</p>
+<p>term but of course people have seen this</p>
+<p>phenomena before</p>
+<p>and he defined it as</p>
+<p>stimulation of workers by the</p>
+<p>performance they have achieved no not</p>
+<p>performance uh based benefits for jobs</p>
+<p>but more</p>
+<p>deriving from the words mark stigma and</p>
+<p>aragon or work like an error the unit of</p>
+<p>work</p>
+<p>it captures the notion that an agent's</p>
+<p>actions leave signs in the environment</p>
+<p>and signs that it and other agents can</p>
+<p>sense which determine and incite their</p>
+<p>subsequent actions so here we're not</p>
+<p>just looking at sort of interactions</p>
+<p>amongst subunits of the birds looking at</p>
+<p>each other or the school of fish but</p>
+<p>actually the modification of the</p>
+<p>environment through the actions of the</p>
+<p>agents and then the ways that the</p>
+<p>environmental conditions modify how the</p>
+<p>agents behave</p>
+<p>so</p>
+<p>here is like the agents in feedback with</p>
+<p>the environment</p>
+<p>and what grassley was looking at was how</p>
+<p>termites how one termite would pick up a</p>
+<p>little clod of dirt and then put it</p>
+<p>somewhere probabilistically and then</p>
+<p>that would change the likelihood that it</p>
+<p>picks up or puts down certain other</p>
+<p>pieces of dirt later and so you could</p>
+<p>imagine like one termite building a nest</p>
+<p>by itself</p>
+<p>or many happening at the same time</p>
+<p>maybe even moving pieces of dirt in the</p>
+<p>same way so stigmargy is actually a</p>
+<p>mechanism by which extended cognition</p>
+<p>occurs</p>
+<p>and by which cognitive processes can be</p>
+<p>scaled not just by increasing the</p>
+<p>bandwidth or the type of interactions</p>
+<p>laterally amongst agents</p>
+<p>but actually by externalizing</p>
+<p>the work</p>
+<p>to</p>
+<p>marks on the environment</p>
+<p>and in the paper it was written here we</p>
+<p>present the first active inference type</p>
+<p>model of stigma g and the first active</p>
+<p>inference model focusing on insect</p>
+<p>behavior</p>
+<p>so think about that there's been a lot</p>
+<p>of navigation work in active inference</p>
+<p>but when the mouse is moving through the</p>
+<p>team maze for example or when the eyes</p>
+<p>are scanning over the piece of text</p>
+<p>which are active inference models that</p>
+<p>we've seen</p>
+<p>they don't leave traces</p>
+<p>even when there's multi-agent active</p>
+<p>inference simulations the interactions</p>
+<p>have been lateral and the environment</p>
+<p>has been taken as fixed so that's why we</p>
+<p>brought</p>
+<p>ecoevo in</p>
+<p>because now we're thinking about the way</p>
+<p>that agents are in feedback with their</p>
+<p>environments and each other and how</p>
+<p>stigma juice as a topic reflects that</p>
+<p>this is pretty cool you added this</p>
+<p>second slide on stigma g so what does it</p>
+<p>show</p>
+<p>i did so this is another um</p>
+<p>just a image that i pulled off of um</p>
+<p>wikipedia and it's taken from this is</p>
+<p>someone's phd thesis stigmatic</p>
+<p>collaboration a theoretical framework</p>
+<p>for mass collaboration</p>
+<p>and again it shows here coordination</p>
+<p>cooperation and collaboration as opposed</p>
+<p>to cognition</p>
+<p>in this collective</p>
+<p>activity or collective behavior model</p>
+<p>and one of the things that i just really</p>
+<p>thought um</p>
+<p>was cool to point out</p>
+<p>was on the right side under</p>
+<p>collaboration okay</p>
+<p>so collaboration is distinguished by</p>
+<p>co-created emergent shared</p>
+<p>representation</p>
+<p>which manifests as creativity i thought</p>
+<p>that was super interesting because</p>
+<p>creativity applies</p>
+<p>implies novelty in some way to me right</p>
+<p>it implies like either a new use or or</p>
+<p>or you know developing something that's</p>
+<p>entirely new making new connections</p>
+<p>um as well as co-created emergent shared</p>
+<p>representations result in divergent</p>
+<p>production</p>
+<p>and evaluation</p>
+<p>so how does this co-create an emergent</p>
+<p>shared representation result in</p>
+<p>divergence i thought that this was just</p>
+<p>it was an interesting figure and all</p>
+<p>these different like components and end</p>
+<p>results are are just an interesting way</p>
+<p>to think about sigmoidy and like can we</p>
+<p>go through our environment without a</p>
+<p>trace like we've all seen like murder</p>
+<p>mysteries or like i mean how hard is it</p>
+<p>actually to not leave a trace in in the</p>
+<p>environment behind you even if it's</p>
+<p>hairs or or fingerprints or whatever it</p>
+<p>might be</p>
+<p>so so none of us is without this leaving</p>
+<p>a mark on the environment and what how</p>
+<p>does stigmergy contribute to human niche</p>
+<p>construction which were incredibly adept</p>
+<p>at and and how do we learn from that the</p>
+<p>traces that are left by others</p>
+<p>we certainly stigmatically generated</p>
+<p>this</p>
+<p>presentation because i also drew from</p>
+<p>the 2006 work of mark elliott</p>
+<p>and um</p>
+<p>elliott wrote</p>
+<p>many questions arise when confronted</p>
+<p>with the streamlined efficacy and</p>
+<p>apparent lack of organization and</p>
+<p>motivation of these new global</p>
+<p>enterprises like wikipedia and others</p>
+<p>that were being mentioned in 2006.</p>
+<p>not the least of which how does this</p>
+<p>work</p>
+<p>stigmatic collaboration provides a</p>
+<p>hypothesis as to how the collaborative</p>
+<p>process can jump from being untenable</p>
+<p>with numbers above 25</p>
+<p>towards becoming a new driver in global</p>
+<p>society with numbers well over 25 000.</p>
+<p>pre-blockchain</p>
+<p>free bitcoin</p>
+<p>pre whatever it is that we're going</p>
+<p>through now but these four tenants from</p>
+<p>2006 really say a lot which just like</p>
+<p>blue's image reflected</p>
+<p>collaboration depends on communication</p>
+<p>and communication happens in networks so</p>
+<p>that's kind of collective behavior 101</p>
+<p>that's something that you'd see in the</p>
+<p>flock of birds or the school of fish</p>
+<p>collaboration is inherently composed of</p>
+<p>two components without without either of</p>
+<p>which collaboration cannot take place</p>
+<p>social negotiation and creative output</p>
+<p>if there aren't lateral social</p>
+<p>interactions there isn't uh an</p>
+<p>interacting group and without the</p>
+<p>creative output then the productivity is</p>
+<p>low so maybe systems like that can be</p>
+<p>designed but probably not that</p>
+<p>interesting or important</p>
+<p>this is for humans collaboration small</p>
+<p>groups 2 to 25 rely upon social</p>
+<p>negotiation to evolve and guide its</p>
+<p>process in creative output so that's</p>
+<p>like the startup model or the small team</p>
+<p>model</p>
+<p>however</p>
+<p>elliott's proposal</p>
+<p>is that collaboration in large groups 25</p>
+<p>to</p>
+<p>however many</p>
+<p>is dependent upon stigma g</p>
+<p>you need to have if you have 25 or more</p>
+<p>people in a meeting and it's an hour</p>
+<p>meeting it's like everybody can be</p>
+<p>taking notes on a shared document</p>
+<p>everybody can be editing the wiki</p>
+<p>everybody can be typing in the chat</p>
+<p>but if people are talking linearly each</p>
+<p>person's going to only be able to speak</p>
+<p>for two minutes on average so just think</p>
+<p>about how that scales up if you had a</p>
+<p>thousand people working on a project</p>
+<p>each person is only going to be able to</p>
+<p>speak for a few seconds per hour so what</p>
+<p>are the mechanisms by which instead of</p>
+<p>just lateral ephemeral interactions</p>
+<p>amongst agents</p>
+<p>how can we modify</p>
+<p>a single source of truth</p>
+<p>in no sense</p>
+<p>so that productivity can actually occur</p>
+<p>and it's important to note that it's not</p>
+<p>that social negotiation doesn't take</p>
+<p>place when we're doing stigmargy in big</p>
+<p>groups so it's not like wikipedia</p>
+<p>editors aren't aware of each other as</p>
+<p>social entities</p>
+<p>it's just that as elliott wrote</p>
+<p>negotiation takes a back seat in terms</p>
+<p>of the creative drafting process most if</p>
+<p>not all stigmatic wiki collaborations</p>
+<p>have discussions associated with the</p>
+<p>content being developed but it's</p>
+<p>possible to contribute to wikipedia.org</p>
+<p>for instance without discussing what</p>
+<p>you're contributing to or creating so</p>
+<p>that's kind of a cool insight</p>
+<p>anything else to add on stigma yeah just</p>
+<p>the group size is super interesting</p>
+<p>because we are um</p>
+<p>like i'm writing a paper on central</p>
+<p>place foraging right now actually like a</p>
+<p>unrelated paper but um it's interesting</p>
+<p>this large groups of humans because like</p>
+<p>we're looking at hunter-gatherer</p>
+<p>societies and the formation of camps and</p>
+<p>like what did human society kind of look</p>
+<p>like way back um and and really the</p>
+<p>estimate uh that's you know pretty</p>
+<p>agreed upon in the field is you know 500</p>
+<p>people in a camp which it like you know</p>
+<p>it's like 100 families of five is like</p>
+<p>the upper limit and like you know mostly</p>
+<p>like at least um maybe 250 people for a</p>
+<p>camp to</p>
+<p>maintain right for it to stay cohesive</p>
+<p>for it to stay bound together and i</p>
+<p>think it's interesting because what what</p>
+<p>was the stigmargic</p>
+<p>process back in like the hunter-gatherer</p>
+<p>foraging days like what did that look</p>
+<p>like it's just interesting to to wonder</p>
+<p>about and think about if it's dependent</p>
+<p>on sigmergy i mean like now i think</p>
+<p>about we stack rocks right like if you</p>
+<p>you're marking a trail like everybody's</p>
+<p>been out hiking and you see these</p>
+<p>rock stacks it's like what are those</p>
+<p>like when you first start seeing them</p>
+<p>and then you see that they're trail</p>
+<p>markers and you know i don't have to</p>
+<p>know like no one told me that rocks are</p>
+<p>stacked there to mark the trail but it's</p>
+<p>like this is a clearly human signature</p>
+<p>nobody else stacks rocks up that's weird</p>
+<p>right and so you see these stigmatic</p>
+<p>like things that are just left as traces</p>
+<p>in the environment that could be used to</p>
+<p>guide like large large groups of humans</p>
+<p>across time even</p>
+<p>yes and even in the definition of stigma</p>
+<p>tree we saw marks and signs so semiotics</p>
+<p>and biosemiotics comes into play</p>
+<p>let's get</p>
+<p>to the ants and potatoes</p>
+<p>the eusocial insects</p>
+<p>you social is a cool word we're not</p>
+<p>going to go too much into the difference</p>
+<p>of uh what is eusocial versus other</p>
+<p>social forms</p>
+<p>but some of the</p>
+<p>exemplar eu social insects are ants</p>
+<p>all of the around 15 000 ant species in</p>
+<p>the world are eusocial</p>
+<p>so they all live in colonies</p>
+<p>there's no solitary ants and they live</p>
+<p>in colonies where there's</p>
+<p>you could call it a reproductive</p>
+<p>division of labor</p>
+<p>also honeybees are eusocial with a queen</p>
+<p>and worker distinction</p>
+<p>and termites are as well um most bees</p>
+<p>are not eusocial so honeybees are a bit</p>
+<p>of an outlier in that respect and just</p>
+<p>like there are eusocial wasps not all</p>
+<p>wasps are usocial</p>
+<p>and there's sort of six images here</p>
+<p>because i want to show that there's some</p>
+<p>related species like ants and bees and</p>
+<p>wasps are hymenoptera that's an order of</p>
+<p>insects but termites are in a totally</p>
+<p>different order more closely related to</p>
+<p>cockroaches</p>
+<p>and you social insects are able to</p>
+<p>accomplish tremendous feats of stigmargy</p>
+<p>and niche modification</p>
+<p>here's a leafcutter ant colony being</p>
+<p>excavated by tiny little humans big</p>
+<p>colony here's</p>
+<p>a bee hive with honey and the cells and</p>
+<p>the amazing geometry that they can</p>
+<p>construct or that they can work with</p>
+<p>once constructed by humans</p>
+<p>and also very large nests for termites</p>
+<p>so you social insects are really cool</p>
+<p>how do they do what they do</p>
+<p>well</p>
+<p>i wanted to pull from a few slides from</p>
+<p>my phd work which was on ants so these</p>
+<p>are just some fun slides about ants and</p>
+<p>um</p>
+<p>if you want to ever jump in blue then go</p>
+<p>for it but this was from some early work</p>
+<p>um that was</p>
+<p>at in the middle school</p>
+<p>age range talking to people about ants</p>
+<p>so one of the first things about ants is</p>
+<p>there's no leader</p>
+<p>on the left side we see the um</p>
+<p>without getting into sex and gender</p>
+<p>politics there are female</p>
+<p>reproductives called queens usually</p>
+<p>again a whole another topic why and</p>
+<p>should they be called queens there are</p>
+<p>males</p>
+<p>who are sometimes called drones they</p>
+<p>don't play</p>
+<p>as active a role in the day-to-day tasks</p>
+<p>of the colony and then there are sterile</p>
+<p>females which we call worker nest mates</p>
+<p>and the image on the right shows the</p>
+<p>queen laying eggs</p>
+<p>which are being nursed and tended to by</p>
+<p>the nurse task group of workers</p>
+<p>so she can just the queen can just pump</p>
+<p>out eggs and the nurses are taking care</p>
+<p>of it</p>
+<p>and they're also feeding the queen and</p>
+<p>then you have foragers outside of the</p>
+<p>nest</p>
+<p>making decisions for themselves so</p>
+<p>there's no bluetooth there's no</p>
+<p>long-range communication there's no hive</p>
+<p>mind need we just have independent</p>
+<p>agents making decisions for themselves</p>
+<p>locally and there's no leader ant</p>
+<p>how do they do that how does it work</p>
+<p>without a leader</p>
+<p>the way it works is that individual ants</p>
+<p>make probabilistic decisions about</p>
+<p>behavior based upon</p>
+<p>the rate and type of interactions they</p>
+<p>receive</p>
+<p>so here we can start with just this ant</p>
+<p>on the top left and it's walking along</p>
+<p>and it starts encountering a high rate</p>
+<p>of trash and so it thinks or acts as if</p>
+<p>it thinks</p>
+<p>i should start picking up trash maybe</p>
+<p>the next one i see i'm more likely to</p>
+<p>pick up</p>
+<p>encounters a piece of trash can identify</p>
+<p>that by the scent</p>
+<p>picks it up</p>
+<p>and can continue walking until it</p>
+<p>encounters another scent maybe the</p>
+<p>midden pile where there's a bunch of</p>
+<p>trash piled up</p>
+<p>walks along for some more time</p>
+<p>before it doesn't encounter any more</p>
+<p>trash and then reverts to a more</p>
+<p>generally poised state</p>
+<p>so this can be modified with a drift</p>
+<p>diffusion model or response threshold</p>
+<p>model</p>
+<p>there's a lot of mathematical models of</p>
+<p>how different rate and type of</p>
+<p>interactions</p>
+<p>probabilistically can update behavioral</p>
+<p>tendencies but this is just a general</p>
+<p>way that we can look at how different</p>
+<p>ant behaviors play out we can always ask</p>
+<p>what is the individual interacting with</p>
+<p>and how are they responding to that</p>
+<p>interaction</p>
+<p>well how do you go from just responding</p>
+<p>to interactions to adaptive behavior</p>
+<p>the nature and what the adaptive</p>
+<p>behavior looks like is going to depend</p>
+<p>on the ecology</p>
+<p>again eco evo devo</p>
+<p>so here we see two possible ecologies of</p>
+<p>food on the left is a colony where food</p>
+<p>is found sparsely but in very clumpy</p>
+<p>piles this is like a picnic in the</p>
+<p>argentine ants in this case it makes</p>
+<p>sense that there would be a trail</p>
+<p>that might get laid down that helps</p>
+<p>direct nest mates to the location where</p>
+<p>another nest mate previously found the</p>
+<p>food</p>
+<p>however there's also ants that are</p>
+<p>looking for food sources that might be</p>
+<p>mobile like looking for live prey or</p>
+<p>maybe just scattered dead prey but like</p>
+<p>just dead insects in the desert bringing</p>
+<p>them back and in those cases you're not</p>
+<p>any more likely to find food where</p>
+<p>another nest may found it and so in that</p>
+<p>situation you see a lot more independent</p>
+<p>foraging activity and you don't see a</p>
+<p>pheromone trail so just because we're</p>
+<p>talking about pheromones there's a lot</p>
+<p>of different kinds of pheromones there's</p>
+<p>nest marking and queen pheromones and</p>
+<p>larval pheromones it's not just trail</p>
+<p>for pheromones and they're not just</p>
+<p>making these kinds of nests</p>
+<p>though there are ecologies that favor</p>
+<p>these types of collective algorithms</p>
+<p>and then</p>
+<p>across ecologies</p>
+<p>there's this lose it to find it</p>
+<p>component which is the balance</p>
+<p>you know in the sense between explore</p>
+<p>and exploit or between pragmatic and</p>
+<p>epistemic values and goals which we talk</p>
+<p>about in active inference</p>
+<p>because</p>
+<p>if</p>
+<p>every single ant were to follow the</p>
+<p>pheromone trail</p>
+<p>then they could exploit locally but they</p>
+<p>would have a challenge discovering new</p>
+<p>food resources whereas if none of the</p>
+<p>ants followed the pheromone trail</p>
+<p>then it wouldn't be informative and so</p>
+<p>it'd be a totally different game as well</p>
+<p>so there's this balance between</p>
+<p>following</p>
+<p>the traces that i've been made before</p>
+<p>and going off and discovering new</p>
+<p>resources so that applies to seed</p>
+<p>foraging and also information foraging</p>
+<p>which is kind of</p>
+<p>a</p>
+<p>parallel that we'll be looking at again</p>
+<p>and again so those four</p>
+<p>uh pithy little statements there's no</p>
+<p>leader it's about the response to</p>
+<p>interactions and the way it looks</p>
+<p>depends on the inter on ecology the</p>
+<p>interactions with the ecology and that</p>
+<p>across tasks there's this lose it to</p>
+<p>find it balance between explore exploit</p>
+<p>those</p>
+<p>capture a lot of the dynamics of ants</p>
+<p>the life cycle of an individual queen is</p>
+<p>that she is also born as an egg and</p>
+<p>develops into usually a winged</p>
+<p>fertile form that's called a gyne like a</p>
+<p>princess</p>
+<p>she will mate with males and found a</p>
+<p>colony but there's other lifestyles for</p>
+<p>example that don't require mating with</p>
+<p>males or</p>
+<p>in which case the queen doesn't found a</p>
+<p>colony by herself but rather breaks off</p>
+<p>with some workers there's a lot of</p>
+<p>diversity in the ant life cycles but</p>
+<p>once the queen is installed in the</p>
+<p>colony she pretty much just is fed and</p>
+<p>lays eggs many of them dozens to</p>
+<p>thousands or millions depending on the</p>
+<p>species</p>
+<p>the other sexual</p>
+<p>type of ants is the male the male lives</p>
+<p>to breed they have a larval development</p>
+<p>where they're tended to by extinct</p>
+<p>nurses</p>
+<p>and then males usually a little bit</p>
+<p>leaner and meaner</p>
+<p>they try to have sex they sometimes</p>
+<p>succeed and then they die so they only</p>
+<p>live for um</p>
+<p>an adult phase that's very very short so</p>
+<p>these are the two kinds of sexual ants</p>
+<p>the female and the male queen and the</p>
+<p>male</p>
+<p>but what we see when we're looking at</p>
+<p>ants out there in the wild is usually</p>
+<p>the workers</p>
+<p>so workers start their life by being</p>
+<p>born as eggs and they have a different</p>
+<p>developmental trajectory than the queen</p>
+<p>even though they're both diploid females</p>
+<p>in most cases</p>
+<p>and they can live for months to years</p>
+<p>depending on the species</p>
+<p>and there's a process called temporal</p>
+<p>polyethylism by which a worker once it's</p>
+<p>born</p>
+<p>the first tasks that it performs are</p>
+<p>inside of the nest</p>
+<p>and it performs nursing work so it's</p>
+<p>like as if right after being born the</p>
+<p>first thing you did right there in the</p>
+<p>um the neonatal unit was take care of</p>
+<p>other babies that's kind of like how the</p>
+<p>ants work when they're middle aged ants</p>
+<p>they tend to be doing nest work like</p>
+<p>architecture and trash cleanup</p>
+<p>and then</p>
+<p>in their uh elder worker phase they do</p>
+<p>foraging which is the most dangerous</p>
+<p>task as well as the most um</p>
+<p>water loss in certain ecologies so this</p>
+<p>is temporal polyethylene so it's not</p>
+<p>that ants are born into being a nurse or</p>
+<p>born into being a forager all the</p>
+<p>workers progress through a stereotypical</p>
+<p>sequence of tasks</p>
+<p>in fact that progression through a</p>
+<p>stereotypical sequence of tasks by the</p>
+<p>workers as well as the fact that workers</p>
+<p>and queens are both from the same genome</p>
+<p>in many cases a diploid female genome</p>
+<p>is what</p>
+<p>has led many to propose you social</p>
+<p>insects as emerging models for</p>
+<p>behavioral epigenetics</p>
+<p>so we know that they</p>
+<p>display fascinating individual and</p>
+<p>collective behaviors as well as niche</p>
+<p>modification and stigmargy</p>
+<p>ants also display behavioral plasticity</p>
+<p>they can learn and they have memory they</p>
+<p>can also integrate senses like vision</p>
+<p>and olfaction and vibration</p>
+<p>and again this is a rising in the</p>
+<p>context of similar or even identical</p>
+<p>genetic backgrounds because there are</p>
+<p>clonal ants so here's waddington's</p>
+<p>epigenetic landscape</p>
+<p>showing how this developmental ball</p>
+<p>depending on how it bifurcates</p>
+<p>epigenetically can lead to different</p>
+<p>developmental outcomes like this first</p>
+<p>bifurcation is are you gonna go the</p>
+<p>fertile route with developed ovaries and</p>
+<p>a different kind of thorax and wings or</p>
+<p>will you go the sterile route at which</p>
+<p>point about 85 percent of ants have what</p>
+<p>are called monomorphic workers</p>
+<p>whereas the minority of ants have what</p>
+<p>are called polymorphic workers like</p>
+<p>there's two discretely different or more</p>
+<p>types of workers like majors and minors</p>
+<p>so</p>
+<p>a lot could be said on this of course</p>
+<p>blue can i just ask a quick question</p>
+<p>so</p>
+<p>i see like flying ants around all the</p>
+<p>time i'm not seeing like queens but are</p>
+<p>there like species of ants that fly also</p>
+<p>um there aren't flying workers there</p>
+<p>aren't flying workers um but during</p>
+<p>mating flights</p>
+<p>you will see flying ants and those are</p>
+<p>guys and drones flying around</p>
+<p>looking to mate especially in the</p>
+<p>southwest us where you are</p>
+<p>got it okay so that makes sense that i</p>
+<p>see flying ants i'm not crazy like they</p>
+<p>are ants that are flying okay</p>
+<p>just checking</p>
+<p>um</p>
+<p>people have used many different</p>
+<p>approaches</p>
+<p>to study</p>
+<p>how ants work and how it is the case</p>
+<p>that you end up getting all these</p>
+<p>different behaviors out of the same</p>
+<p>genome</p>
+<p>one of the approaches that's been taken</p>
+<p>is just not looking at any of the</p>
+<p>molecular details but purely</p>
+<p>investigating from a behavioral</p>
+<p>ecological approach and</p>
+<p>some of the critical work here has been</p>
+<p>done by my phd advisor professor deborah</p>
+<p>gordon</p>
+<p>and so she has looked for many years at</p>
+<p>the relationship between the statistical</p>
+<p>regularities of the environment</p>
+<p>and the adaptiveness of different</p>
+<p>distributed algorithms so in</p>
+<p>environments that have</p>
+<p>as we talked about earlier like spread</p>
+<p>out food resources you wouldn't expect</p>
+<p>to see</p>
+<p>pheromone trails forming whereas if the</p>
+<p>food resources are distributed like this</p>
+<p>you would expect to see that and another</p>
+<p>example is if it's expensive to forage</p>
+<p>then it's going to be in a default off</p>
+<p>mode until it's stimulated whereas if</p>
+<p>it's cheap to forage and maybe even</p>
+<p>expensive to allow that territory to be</p>
+<p>taken by different species you'd expect</p>
+<p>to see like an on until disruption mode</p>
+<p>and these search algorithms are not just</p>
+<p>idle play things of miramicologists</p>
+<p>they've been proposed to be a bridge</p>
+<p>between organisms evolution and ecology</p>
+<p>bridging the search algorithms that</p>
+<p>exist on the internet on computers with</p>
+<p>the kinds of search algorithms that</p>
+<p>natural systems use because wouldn't it</p>
+<p>be interesting if we could have adaptive</p>
+<p>search algorithms</p>
+<p>that</p>
+<p>make all the trade-offs and succeed that</p>
+<p>species do</p>
+<p>and this is an awesome paper by michelle</p>
+<p>lenon</p>
+<p>um kind of like a meta-analysis</p>
+<p>across</p>
+<p>ants studying the characteristics of</p>
+<p>their environmental niche and then also</p>
+<p>their foraging strategy so this is a</p>
+<p>great work to complement some of</p>
+<p>professor gordon's work</p>
+<p>behavioral ecology again is just looking</p>
+<p>at behavior and ecology together so we</p>
+<p>haven't talked about anything molecular</p>
+<p>but</p>
+<p>indeed people have studied molecular</p>
+<p>components of this</p>
+<p>from</p>
+<p>2016 and well beyond</p>
+<p>we can use evolutionary genomics</p>
+<p>to investigate some of the genetic</p>
+<p>underpinnings of ant behavior</p>
+<p>evolutionary genomics gives us the</p>
+<p>toolkits to compare genomes across</p>
+<p>species so we can look at species that</p>
+<p>have behavior a versus b</p>
+<p>and ask if there are gene families that</p>
+<p>expand or contract in those species</p>
+<p>so that's about the composition of the</p>
+<p>genome like what genes are present</p>
+<p>or not conserved or unconserved gene</p>
+<p>families and sequence changes in the</p>
+<p>genome</p>
+<p>there's also</p>
+<p>transcriptomics so that's gene</p>
+<p>expression analysis</p>
+<p>where we can look at the same tissue or</p>
+<p>different tissues</p>
+<p>and how gene expression is differing</p>
+<p>between the male and females</p>
+<p>as well as between the reproductive and</p>
+<p>the sterile females</p>
+<p>we can use transcriptomics to</p>
+<p>investigate the differences between</p>
+<p>estimates so a common experimental</p>
+<p>protocol is for example to collect the</p>
+<p>brain or</p>
+<p>the antenna from the nurses versus the</p>
+<p>foragers and then ask about how gene</p>
+<p>expression changes are associated with</p>
+<p>differences in behavior</p>
+<p>and tissue specificity is really</p>
+<p>important you can't just blend up an ant</p>
+<p>and then say something about how tissues</p>
+<p>are expressing</p>
+<p>genes</p>
+<p>and then also</p>
+<p>most recently there's been some of the</p>
+<p>techniques developed in other species</p>
+<p>like fruit flies</p>
+<p>rna interference which is like a way to</p>
+<p>knock down the expression of a certain</p>
+<p>gene and the first</p>
+<p>gene express gene</p>
+<p>modifications and ants were published in</p>
+<p>2017 with the mutants are here</p>
+<p>and right now they've only been like</p>
+<p>knock out which is easier to do than</p>
+<p>knock in experiments but</p>
+<p>the future of ant</p>
+<p>genome editing will be quite interesting</p>
+<p>so these are using genetic and</p>
+<p>epigenetic and transcriptomic tools to</p>
+<p>study and behavior</p>
+<p>another approach that relies on neither</p>
+<p>behavioral ecology or genetics although</p>
+<p>of course it's related to them is</p>
+<p>studying physiology</p>
+<p>so in physiology we're interested in</p>
+<p>similar types of questions how are</p>
+<p>species similar and different how are</p>
+<p>the reproductive and steriles uh of</p>
+<p>females similar and different how are</p>
+<p>the different sterile nest mates similar</p>
+<p>and different</p>
+<p>and</p>
+<p>one of the most common approaches here</p>
+<p>has been to study the concentration</p>
+<p>of molecules in the brain like</p>
+<p>neurotransmitters dopamine serotonin</p>
+<p>which are common in us as well as well</p>
+<p>as some neurotransmitters that are trace</p>
+<p>amines and humans but really important</p>
+<p>for invertebrate</p>
+<p>neurophysiological function like</p>
+<p>octopamine and tyramine</p>
+<p>and there's been</p>
+<p>a relatively epic history of drugging</p>
+<p>ants in the lab</p>
+<p>going back to at least the 70s</p>
+<p>giving them opioids hallucinogens</p>
+<p>stimulants thc</p>
+<p>all kinds of drugs and more recently</p>
+<p>some of the first works where we've been</p>
+<p>able to provide ants with drugs in the</p>
+<p>field</p>
+<p>and this is a phylogenetic perspective</p>
+<p>by cami at all</p>
+<p>looking at which neurotransmitters have</p>
+<p>been investigated across which ant</p>
+<p>species so it's pretty sparse so we</p>
+<p>don't have a total</p>
+<p>picture but that's why we do</p>
+<p>evolutionary biology so we can study how</p>
+<p>the same molecules in species a b and c</p>
+<p>play a role and then maybe we can have a</p>
+<p>good hypothesis about how it might work</p>
+<p>for species d</p>
+<p>so clearly i have no background in in</p>
+<p>ant you know species neurotransmission</p>
+<p>but i do know quite a bit about</p>
+<p>neurotransmitters and i'm curious i</p>
+<p>haven't read the paper but um are the</p>
+<p>the use of different neurotransmitters</p>
+<p>species specific in ants or do they all</p>
+<p>pretty much use the same</p>
+<p>neurotransmitters to do the same things</p>
+<p>they have the same</p>
+<p>neurotransmitters but species might</p>
+<p>utilize them differently</p>
+<p>and that would be the whole cool thing</p>
+<p>to study</p>
+<p>let's</p>
+<p>talk about the ant brain</p>
+<p>so on the right side</p>
+<p>is a pogo head and this is what the</p>
+<p>dissected brain looks like it's zoomed</p>
+<p>in</p>
+<p>the brain at the same scale as the head</p>
+<p>is very small</p>
+<p>so ants in their head have a lot of</p>
+<p>muscle for their jaw and a lot of</p>
+<p>glandular tissue and so the brain is</p>
+<p>taking up a relatively small fraction of</p>
+<p>the head let's see this video will play</p>
+<p>um okay i don't think the video is going</p>
+<p>to play but</p>
+<p>sasha</p>
+<p>has made some very beautiful</p>
+<p>immunohistochemical images</p>
+<p>of three-dimensional amp brains</p>
+<p>on the left side we have just one half</p>
+<p>of an aunt's brain</p>
+<p>that a picture that sasha took</p>
+<p>and it's juxtaposed next to a 2014 paper</p>
+<p>that</p>
+<p>developed a new ontology for the brain</p>
+<p>regions of the invertebrate brain</p>
+<p>because invertebrate neuroscience was a</p>
+<p>very discordant field in different</p>
+<p>species people would have different</p>
+<p>names for clearly homologous brain</p>
+<p>regions</p>
+<p>and so this paper in 2014 brought a lot</p>
+<p>of clarity to the field because it gave</p>
+<p>us standard nomenclature for talking</p>
+<p>about different brain regions so</p>
+<p>although the invertebrate brain uses a</p>
+<p>lot of the same chemicals and families</p>
+<p>of neuropeptides that are used in the</p>
+<p>vertebrate brain it's not organized like</p>
+<p>the vertebrate brain so there isn't like</p>
+<p>a brain stem in a limbic system and a</p>
+<p>prefrontal cortex there are different</p>
+<p>brain regions so just to kind of name a</p>
+<p>few</p>
+<p>here's like the optic nerve coming into</p>
+<p>the optic lobe</p>
+<p>so the eye is like this sort of curved</p>
+<p>area that sends signals into the optic</p>
+<p>lobe and then similarly the antennal</p>
+<p>nerve comes up from this side</p>
+<p>and projects into these kind of grape</p>
+<p>looking clusters into the olfactory lobe</p>
+<p>so the layout is very different but</p>
+<p>there are some functional and</p>
+<p>computational analogies to vertebrate</p>
+<p>brains</p>
+<p>and then</p>
+<p>this area up on the top is called the</p>
+<p>mushroom body the middle is called the</p>
+<p>central complex and the mushroom body is</p>
+<p>known to play a very important role in</p>
+<p>route memory</p>
+<p>for example the work in cataclysm which</p>
+<p>is another type of desert ant</p>
+<p>so different brain regions have</p>
+<p>identified functions</p>
+<p>and what's cool about the invert and the</p>
+<p>ant brain is we can almost like</p>
+<p>visualize the whole thing at once</p>
+<p>because it's small</p>
+<p>some neural changes have been found to</p>
+<p>be associated with the</p>
+<p>bio</p>
+<p>uh</p>
+<p>with the biobehavior of foragers so for</p>
+<p>example</p>
+<p>a lot of hormones that have been</p>
+<p>associated with foraging activity and</p>
+<p>solitary insects as well as hunger</p>
+<p>activity in humans</p>
+<p>have been found to be differentially</p>
+<p>expressed in foragers so although</p>
+<p>they're not foraging for themselves</p>
+<p>they're foraging for the colony</p>
+<p>it turns out there are some extremely</p>
+<p>deeply conserved neural circuits and</p>
+<p>peptides related to hunger neuropeptide</p>
+<p>y</p>
+<p>which is i think called neuropeptide ff</p>
+<p>in humans</p>
+<p>there's changes in gene expression which</p>
+<p>again are found analogously in solitary</p>
+<p>insects like fruit fly as well as</p>
+<p>unsurprisingly in humans some of these</p>
+<p>questions about regulating hunger and</p>
+<p>about how the perception the</p>
+<p>enteroception of hunger</p>
+<p>is linked to foraging activity like</p>
+<p>get up and do something if you're hungry</p>
+<p>these are deeply conserved beyond ants</p>
+<p>even beyond invertebrates and in</p>
+<p>invertebrates</p>
+<p>and then</p>
+<p>just like so many other behaviors have</p>
+<p>been found to be the case changes in the</p>
+<p>biogenic amine neurotransmitters in</p>
+<p>their signaling properties and</p>
+<p>metabolism have been established in</p>
+<p>invertebrates</p>
+<p>so these are like tyrosine and dopamine</p>
+<p>over here serotonin octopamine and then</p>
+<p>the enzymes that are kind of like the</p>
+<p>freeways between the neurotransmitters</p>
+<p>that transform them into each other</p>
+<p>synthesizing and degrading</p>
+<p>differences in the expression of these</p>
+<p>enzymes which we determine with</p>
+<p>transcriptomics</p>
+<p>can</p>
+<p>influence the levels so we can use some</p>
+<p>technologies like hplc or gcms to</p>
+<p>measure the amount of neurotransmitters</p>
+<p>in the brain</p>
+<p>and then we can do gene expression</p>
+<p>analysis to look at the receptors and at</p>
+<p>the metabolic enzymes as well</p>
+<p>why does it all matter</p>
+<p>because a forager doesn't know how much</p>
+<p>food the colony needs it doesn't have a</p>
+<p>dashboard telling it how many seeds</p>
+<p>there are or how many larva need to be</p>
+<p>fed or how much food is out there</p>
+<p>and so it is faced with this go no go</p>
+<p>decision stay home or forage which is</p>
+<p>influenced by environmental features</p>
+<p>that it may not have total awareness of</p>
+<p>that decision</p>
+<p>is much like the decision that for</p>
+<p>example an investor might face with</p>
+<p>looking at even when they have total</p>
+<p>information or partial information</p>
+<p>you have to make some sort of decision</p>
+<p>so</p>
+<p>foraging would be easy if you knew where</p>
+<p>the seeds were and you knew exactly when</p>
+<p>to go and you never made a bad decision</p>
+<p>and that's like sort of you know</p>
+<p>buy low sell high like if you knew what</p>
+<p>the price would do</p>
+<p>then</p>
+<p>trading would be really simple but the</p>
+<p>whole question is about decision making</p>
+<p>under uncertainty not under certainty</p>
+<p>and so that</p>
+<p>is the question to forage or not to</p>
+<p>forage</p>
+<p>and that distinction will come up again</p>
+<p>and again</p>
+<p>anything on that blue</p>
+<p>yeah so since you didn't specifically go</p>
+<p>into foraging um i i know we've talked</p>
+<p>offline about um different strategies</p>
+<p>that ants use for foraging and um it's</p>
+<p>the common interest that that we have</p>
+<p>and so ants are central place foragers</p>
+<p>for the most part with a nest but you've</p>
+<p>given um you know where they they go out</p>
+<p>central place foraging just in case</p>
+<p>people don't know is that they leave the</p>
+<p>nest they go get food and then they</p>
+<p>bring it back and share the resources</p>
+<p>with the people that are living in the</p>
+<p>nest and you told me about ants that use</p>
+<p>other kinds of strategies i like you've</p>
+<p>told me about the feed as you go</p>
+<p>ants that don't have a nest but but is</p>
+<p>are they also central place foragers or</p>
+<p>do ants ever use other strategies for</p>
+<p>foraging other than than</p>
+<p>that there are polydomis</p>
+<p>ants so they have multiple nests and</p>
+<p>they will so that's not center place</p>
+<p>because they have multiple places</p>
+<p>they're bringing it back to</p>
+<p>there's ants like army ants that um i</p>
+<p>guess it could be considered a central</p>
+<p>place but it's a moving central place</p>
+<p>um</p>
+<p>nomadic</p>
+<p>yes exactly so lots of kinds of foraging</p>
+<p>behavior</p>
+<p>finally we get to active inference which</p>
+<p>is</p>
+<p>an integrated framework for studying</p>
+<p>perception and action of different</p>
+<p>systems</p>
+<p>this is what was written in the paper</p>
+<p>active inference is a bayesian theory of</p>
+<p>behavior that accounts for perception</p>
+<p>learning decision making and the</p>
+<p>selection of contextually appropriate</p>
+<p>actions</p>
+<p>all of which are cast as a form of</p>
+<p>approximate bayesian or variational</p>
+<p>inference in this framework perception</p>
+<p>is modeled as the formation of posterior</p>
+<p>state estimates</p>
+<p>learning is cast as the process of</p>
+<p>updating of priors</p>
+<p>as well as other parameters</p>
+<p>and decision making and action are</p>
+<p>processes that compare the evidence for</p>
+<p>various models about future states and</p>
+<p>observations under possible courses of</p>
+<p>action</p>
+<p>so we're going to</p>
+<p>continue this thread</p>
+<p>of having a unified framework for</p>
+<p>perception and action</p>
+<p>and we're going to apply that to the ant</p>
+<p>system</p>
+<p>anything on active inference here</p>
+<p>every every week what could we say</p>
+<p>voyage ahead four days so so much to say</p>
+<p>about active inference</p>
+<p>um and the last</p>
+<p>key word before we get into the paper</p>
+<p>more specifically</p>
+<p>is uh the behavioral modeling</p>
+<p>word</p>
+<p>so here was from the paper describing</p>
+<p>how active inference is related to</p>
+<p>behavioral modeling</p>
+<p>active inference framework naturally</p>
+<p>lends itself to modeling behavior of</p>
+<p>different systems across scales</p>
+<p>generally what changes across models</p>
+<p>available in the literature are agent</p>
+<p>action affordances so what what can be</p>
+<p>done by the agent visual scanning versus</p>
+<p>physical movement</p>
+<p>the semantics of the prior beliefs so</p>
+<p>what are the belief distributions over</p>
+<p>and the hyper parameterization the prior</p>
+<p>distribution over beliefs like are those</p>
+<p>fixed or are those learned</p>
+<p>from the point of view of the dynamics</p>
+<p>i.e the message passing and update</p>
+<p>equations all active inference models</p>
+<p>are the same</p>
+<p>and so we've seen all kinds of</p>
+<p>behavioral modeling frameworks and while</p>
+<p>many people have sort of agreed that</p>
+<p>there's like an input output structure</p>
+<p>there's some sort of events from the</p>
+<p>outside world</p>
+<p>that</p>
+<p>go to the system of interest to the</p>
+<p>agent whether it's a computer program or</p>
+<p>animal and behavior outputs that's kind</p>
+<p>of where the agreement stops</p>
+<p>there's many many different ways to</p>
+<p>carry out behavioral modeling and</p>
+<p>totally discordant simulation approaches</p>
+<p>so one of the aims</p>
+<p>of bringing active inference to bear</p>
+<p>here</p>
+<p>is that we could actually have a</p>
+<p>framework that not just integrates the</p>
+<p>perception and action stages</p>
+<p>but puts in</p>
+<p>the ability to specify arbitrary</p>
+<p>generative models in between that</p>
+<p>cognitive sandwich and</p>
+<p>look at the patterns across different</p>
+<p>systems and different scales because</p>
+<p>they would be looking exactly the same</p>
+<p>from a model outline perspective</p>
+<p>so</p>
+<p>just to tack onto that like one of the</p>
+<p>beautiful things about active inference</p>
+<p>is it contextualizes the interaction</p>
+<p>between the agent and the environment so</p>
+<p>there is no</p>
+<p>behavioral modeling like that behavior</p>
+<p>doesn't take place in a vacuum right and</p>
+<p>and so one of the beautiful things about</p>
+<p>active inference is that it's always um</p>
+<p>you know considering like well how does</p>
+<p>this plant grow and it's like well that</p>
+<p>plant grows depending on how much sun</p>
+<p>there is and how much water there is and</p>
+<p>so there's always this perception action</p>
+<p>loop when considering behavior which is</p>
+<p>just um i think probably one of the</p>
+<p>greatest things about the framework</p>
+<p>here's</p>
+<p>the um</p>
+<p>paper</p>
+<p>that we started on</p>
+<p>that we ended up modifying to introduce</p>
+<p>stigma g2</p>
+<p>it's a paper the acquisition of</p>
+<p>culturally patterned attention styles</p>
+<p>under active inference</p>
+<p>so at first glance it's like wait it's</p>
+<p>it's literally a paper about cultural</p>
+<p>styles of creating pottery designs</p>
+<p>so here's like what the pottery designs</p>
+<p>look like</p>
+<p>there's</p>
+<p>um it's kind of black and white art</p>
+<p>on pottery</p>
+<p>and then</p>
+<p>the eye can see a local</p>
+<p>set of cells</p>
+<p>so like the focal point and the</p>
+<p>immediate periphery</p>
+<p>and motifs are visually detected</p>
+<p>by looking just at</p>
+<p>pottery</p>
+<p>and so different kinds of patterns can</p>
+<p>be inferred</p>
+<p>by the visual scanning</p>
+<p>over pottery patterns</p>
+<p>and so</p>
+<p>in the quest to resolve a culturally</p>
+<p>informed uncertainty</p>
+<p>we have these scanning paths</p>
+<p>over motifs</p>
+<p>so here it's like the motif was just</p>
+<p>like this white</p>
+<p>line it's like the eyes moved across and</p>
+<p>it's like hey i'm kind of curious is</p>
+<p>there is it going to be a motif that</p>
+<p>looks like a tetris piece scan up nope</p>
+<p>okay</p>
+<p>and then the scanning happens like that</p>
+<p>whereas other motifs have different</p>
+<p>scanning paths so that's going to be</p>
+<p>a lot like the foraging paths that we're</p>
+<p>going to be looking at</p>
+<p>but there's a few questions that we want</p>
+<p>to consider like how is visual scanning</p>
+<p>similar and different to ant foraging</p>
+<p>in other words</p>
+<p>how does epistemic foraging as well as</p>
+<p>pragmatic foraging differ</p>
+<p>when you have skin in the game or</p>
+<p>exoskeleton in the game you have to move</p>
+<p>your body visually you can scan and then</p>
+<p>go back and then scan and go back and</p>
+<p>you haven't left a mark on your</p>
+<p>environment</p>
+<p>so it's a foraging task</p>
+<p>but it's not stigmatic because your</p>
+<p>vision doesn't modify the object of</p>
+<p>vision</p>
+<p>and so there's the similarities and</p>
+<p>differences between physical foraging</p>
+<p>and visual foraging and then</p>
+<p>there's the question about how these</p>
+<p>visual and bodily foraging</p>
+<p>um</p>
+<p>phenomena</p>
+<p>are similar or different than conceptual</p>
+<p>or informational foraging</p>
+<p>so foraging is kind of this concept that</p>
+<p>links all these different</p>
+<p>pieces from</p>
+<p>an animal physically moving on a</p>
+<p>landscape</p>
+<p>to our sensory modalities like vision</p>
+<p>scanning a landscape to informational</p>
+<p>landscapes and there's similarities and</p>
+<p>differences across these</p>
+<p>so we'll look at the some of the figures</p>
+<p>and formalisms the code and so on</p>
+<p>figure one</p>
+<p>has a layout of the map and the model</p>
+<p>and so the map looks like a t</p>
+<p>at the bottom of the t is the nest so</p>
+<p>this is like the point where the ants</p>
+<p>emanate out of when they start foraging</p>
+<p>and then when they return</p>
+<p>that's their end point of their foraging</p>
+<p>trip</p>
+<p>and in the classical teammates paradigm</p>
+<p>food is placed on one of the arms of the</p>
+<p>tea like the left or the right arm</p>
+<p>in this case we used an alternating tea</p>
+<p>base paradigm so the food would be on</p>
+<p>one end of the tea for some period of</p>
+<p>time and then it would switch to the</p>
+<p>other side of the tea</p>
+<p>so this is the the foraging task that we</p>
+<p>set up but this is just a map you could</p>
+<p>make it look like a labyrinth or it</p>
+<p>could look like anything</p>
+<p>in this simulation</p>
+<p>what happens is the ants start at their</p>
+<p>nest</p>
+<p>and then</p>
+<p>they implement a model which we'll look</p>
+<p>more at soon</p>
+<p>but the ant's action affordances are</p>
+<p>movement it can move in any of the</p>
+<p>directions that are surrounding it so a</p>
+<p>future model could have ant inertia or</p>
+<p>it could only move forward</p>
+<p>to the um sides like a pawn or something</p>
+<p>like that in chess</p>
+<p>it could rotate but we didn't keep track</p>
+<p>of the ants orientation we just said the</p>
+<p>cell is about as big as an ant and they</p>
+<p>can move to any of the adjacent cells</p>
+<p>and the ants able to perceive and act in</p>
+<p>those</p>
+<p>local that local environment</p>
+<p>and then</p>
+<p>we um use the following</p>
+<p>to parameterize the model so here we go</p>
+<p>a little bit blurry but there's a</p>
+<p>generative model which is just like</p>
+<p>in any other active inference model it's</p>
+<p>a generative model of</p>
+<p>outcomes and hidden states</p>
+<p>here the outcomes are the perceived</p>
+<p>pheromone and the hidden states are the</p>
+<p>true concentrations that are being</p>
+<p>inferred of the pheromone</p>
+<p>the um the the factors that go into</p>
+<p>the the markov decision process that's</p>
+<p>happening inside of each ant</p>
+<p>are um</p>
+<p>it's</p>
+<p>prior overhidden states</p>
+<p>the a matrix which maps from the hidden</p>
+<p>state to the outcome the b matrix which</p>
+<p>is describing how hidden states change</p>
+<p>their time</p>
+<p>and then policy which is suggested here</p>
+<p>to be influencing the transition between</p>
+<p>different</p>
+<p>states and the free energy minimization</p>
+<p>which dictates policy selection</p>
+<p>and then um we discretized the pheromone</p>
+<p>into 10 categories so there was 10</p>
+<p>possible concentrations of pheromone in</p>
+<p>this model</p>
+<p>so that's</p>
+<p>kind of setup of the model is food is</p>
+<p>going to be placed and alternating</p>
+<p>between these two sides of the maze</p>
+<p>ants are going to leave the nest and</p>
+<p>diffuse around with no preference for a</p>
+<p>direction</p>
+<p>except when they find a seed they're</p>
+<p>going to start depositing pheromone on</p>
+<p>their return journey and then</p>
+<p>they have a preference for walking</p>
+<p>towards regions of increased pheromone</p>
+<p>and it'll be shown that that is actually</p>
+<p>enough to recapitulate some of the most</p>
+<p>interesting behavior of ants like the</p>
+<p>ability to form a trail to food and just</p>
+<p>one interesting piece that</p>
+<p>differentiates</p>
+<p>the active inference model from</p>
+<p>traditional reinforcement or</p>
+<p>reinforcement driven</p>
+<p>uh notions of foraging is in those</p>
+<p>models the reward would be the seed at</p>
+<p>the end uh the food itself</p>
+<p>and that the cues</p>
+<p>would be the pheromone trail along the</p>
+<p>way the pheromone trail would be seen as</p>
+<p>like a means to an end and the seed</p>
+<p>would be like the goal</p>
+<p>but in active inference the reward in</p>
+<p>other words what the preference is over</p>
+<p>is actually over pheromone density</p>
+<p>and the seed is seen not as a reward but</p>
+<p>rather a semiotic cue</p>
+<p>to switch strategies</p>
+<p>so active inference really inverts the</p>
+<p>situation</p>
+<p>by making the reward about the</p>
+<p>moment-to-moment decision-making of the</p>
+<p>ants</p>
+<p>and then sees what is traditionally seen</p>
+<p>as a reward the food itself as actually</p>
+<p>just a cue to switch behavioral</p>
+<p>strategies</p>
+<p>so that's one of the most interesting</p>
+<p>things that we figured out</p>
+<p>so can i just comment in here really</p>
+<p>quick</p>
+<p>um just that that</p>
+<p>this switching task teammates is like</p>
+<p>it's a very simplified version of the</p>
+<p>switching bandit problem so we discussed</p>
+<p>the multi-arm switching bandit back i</p>
+<p>guess it was maybe 23 i don't know if</p>
+<p>you recall which live stream it was 25</p>
+<p>maybe um but it was back i think before</p>
+<p>the summer so um</p>
+<p>maybe 25 or 23. so</p>
+<p>that that live stream talks more about</p>
+<p>like a stationary band a problem and a</p>
+<p>switching band problem but had</p>
+<p>multi-arms like i think eight arms and</p>
+<p>here there's a link there's only two but</p>
+<p>i just wanted to draw the parallel</p>
+<p>between the two kinds of simulations</p>
+<p>it was um i just looked it up it was 24</p>
+<p>with empirical evaluation of active</p>
+<p>inference and multi-arm bandits this is</p>
+<p>a two-armed bandit it's a two-armed team</p>
+<p>maze but you can imagine</p>
+<p>the different switching dynamics or</p>
+<p>different number of arms so it</p>
+<p>absolutely is related to that</p>
+<p>let's go into a little bit more detail</p>
+<p>on the formalism and the model itself</p>
+<p>so here is describing the process of</p>
+<p>variational inference</p>
+<p>and specifically there's a q</p>
+<p>variational distribution</p>
+<p>that's being uh fit</p>
+<p>as a function of the policy and it's</p>
+<p>looking at the hidden variables</p>
+<p>pheromone density</p>
+<p>through from the beginning of time to a</p>
+<p>given time step</p>
+<p>and of policy so those are the kind of</p>
+<p>pieces that inference is being done over</p>
+<p>and then there's a generative model</p>
+<p>of the outcomes the hidden states and</p>
+<p>the policies so that's what the agent is</p>
+<p>doing variational inference on</p>
+<p>and that model doesn't need to be</p>
+<p>jointly considered all by all it can be</p>
+<p>factorized which makes it very tractable</p>
+<p>to compute</p>
+<p>and then given the factorization</p>
+<p>there can be a free energy minimization</p>
+<p>such that</p>
+<p>actions are selected</p>
+<p>based upon</p>
+<p>the optimization of this variational</p>
+<p>distribution</p>
+<p>in a way that it's</p>
+<p>selecting policies that are expected to</p>
+<p>minimize the free energy</p>
+<p>so that's in the appendix and these are</p>
+<p>some of the formalisms and it is</p>
+<p>minimizing the difference between the q</p>
+<p>variational distribution hidden states</p>
+<p>at time t</p>
+<p>given policy</p>
+<p>the difference between that variational</p>
+<p>distribution and</p>
+<p>this p distribution the actual empirical</p>
+<p>distribution</p>
+<p>which is over outcomes states also</p>
+<p>condition on policy</p>
+<p>so</p>
+<p>there's again so much to say about the</p>
+<p>active inference formalism but really</p>
+<p>importantly</p>
+<p>the calculations are conditioned on</p>
+<p>policy so it's like we don't need to</p>
+<p>calculate the exact momentum or</p>
+<p>trajectory of the car</p>
+<p>we need to pick a policy condition on</p>
+<p>what affordances we have</p>
+<p>and so that in a way</p>
+<p>simplifies and sidesteps a lot of the</p>
+<p>questions about wanting to describe the</p>
+<p>world to the highest possible degree of</p>
+<p>precision because actually what we want</p>
+<p>precision on</p>
+<p>is our policy selection so that's one</p>
+<p>key difference is that conditioning on</p>
+<p>policy</p>
+<p>and then</p>
+<p>this ability to do variational inference</p>
+<p>on a simplified and factorized</p>
+<p>representational distribution q</p>
+<p>and then minimize the divergence the</p>
+<p>expectation of the divergence</p>
+<p>between the q distribution and the</p>
+<p>empirical p distribution including</p>
+<p>outcomes so those are some of the pieces</p>
+<p>of active inference that help make it a</p>
+<p>really scalable and tractable framework</p>
+<p>here's the figure</p>
+<p>in the um</p>
+<p>appendix</p>
+<p>so we talked about the markov decision</p>
+<p>process and what some of these variables</p>
+<p>mean</p>
+<p>but here is like the center point right</p>
+<p>with this is where the ant is located at</p>
+<p>a given time</p>
+<p>and then what it can perceive</p>
+<p>and its action affordances as well</p>
+<p>are the adjacent squares so just like in</p>
+<p>the visual scanning model the i could</p>
+<p>perceive the center point and the</p>
+<p>adjacent cells here it's pretty much the</p>
+<p>same code actually</p>
+<p>that describes how even though there is</p>
+<p>a computational</p>
+<p>um</p>
+<p>[Music]</p>
+<p>object there's a variable that describes</p>
+<p>the actual pheromone density across the</p>
+<p>whole map just like there was an actual</p>
+<p>computational variable that described</p>
+<p>the whole pattern of the pottery</p>
+<p>we're able to</p>
+<p>use um a a remapping matrix</p>
+<p>that zeros out all of the other cells</p>
+<p>that aren't the adjacents</p>
+<p>so that is what ensures that each agent</p>
+<p>is actually doing a purely local</p>
+<p>decision making so we kind of take a per</p>
+<p>agent approach</p>
+<p>to masking</p>
+<p>such that its action and</p>
+<p>perception</p>
+<p>are constrained to only its local</p>
+<p>neighborhood so that could be changed</p>
+<p>you could have ants that are aware of</p>
+<p>ten cells around them but only act</p>
+<p>within one cell</p>
+<p>and those are the kinds of extensions to</p>
+<p>the model that could be done but we</p>
+<p>constrained perception of pheromone and</p>
+<p>action to just adjacencies</p>
+<p>so this is one thing that like i wish</p>
+<p>you guys would have played with um</p>
+<p>because what i would like to see is like</p>
+<p>okay is there something in my immediate</p>
+<p>proximity like i read like in the</p>
+<p>likelihood of remapping</p>
+<p>if there's nothing in the immediate</p>
+<p>proximity then the ant moves around in</p>
+<p>accordance with brownian motion as</p>
+<p>opposed to moving towards the pheromone</p>
+<p>and like i would like to see just an</p>
+<p>extra step of code if there's nothing in</p>
+<p>the nine let's look in the 25 and move</p>
+<p>toward</p>
+<p>the thing with the highest pheromone</p>
+<p>like that's one like because okay it's</p>
+<p>like a just a more distal like well like</p>
+<p>a trace of ascent or something like that</p>
+<p>yes it could be done</p>
+<p>it could be done by modifying the code</p>
+<p>so here's alex github</p>
+<p>and just look alec chance and ants</p>
+<p>probably a coincidence that it's in his</p>
+<p>name the last few letters but you really</p>
+<p>never know these days</p>
+<p>and um the main pieces of code to look</p>
+<p>at are ants dot py python</p>
+<p>that's the main script ants dot pi</p>
+<p>config.pi has a lot of the parameters so</p>
+<p>if you want to explore</p>
+<p>having just two ants in the nest or five</p>
+<p>million ants in the nest</p>
+<p>you can just change a parameter in the</p>
+<p>config file and then when the ants stop</p>
+<p>pi is run it's gonna like look at the</p>
+<p>config file</p>
+<p>to</p>
+<p>run</p>
+<p>and then figure one two and three are</p>
+<p>just for reproducibility to exactly</p>
+<p>reproduce the figures in the paper</p>
+<p>let's talk about the pseudo code</p>
+<p>so we can maybe go over the code during</p>
+<p>one of the dot one of the dot two but</p>
+<p>this is from the paper</p>
+<p>to summarize the computational activity</p>
+<p>of each forager at each time code</p>
+<p>pseudocode is provided here</p>
+<p>see the code for full details</p>
+<p>the active inference model as</p>
+<p>implemented here does not presuppose or</p>
+<p>imply any specific neurocognitive</p>
+<p>architecture for any specific ant</p>
+<p>species</p>
+<p>i believe that was uh some reviewers</p>
+<p>comments</p>
+<p>about what this did or didn't say about</p>
+<p>what was happening inside of each ant</p>
+<p>and again that's why it's so fun to talk</p>
+<p>about active inference and these broader</p>
+<p>philosophical questions while realizing</p>
+<p>that actually we're just looking at how</p>
+<p>sensory information comes in and what</p>
+<p>actions come out and the internal</p>
+<p>generative model can be a hypothesis</p>
+<p>that's informed by cognitive</p>
+<p>architecture but in fact it isn't that</p>
+<p>cognitive architecture it's kind of like</p>
+<p>black box modeling but then we can go</p>
+<p>into the box and start building sub</p>
+<p>boxes and hypotheses about what is</p>
+<p>inside</p>
+<p>but</p>
+<p>we don't need to presuppose any specific</p>
+<p>um cognitive architecture and in this</p>
+<p>case the ant has no memory</p>
+<p>and no anticipation so it's like kind of</p>
+<p>like a one step</p>
+<p>make a move towards the pheromone it's</p>
+<p>not predicting or remembering what's</p>
+<p>happened but what happens at each time</p>
+<p>step is</p>
+<p>it's like you know for each ant</p>
+<p>first the ant perceives the local</p>
+<p>environment that's the pheromone density</p>
+<p>it then updates or optimizes its beliefs</p>
+<p>about pheromone density</p>
+<p>with respect to the variational free</p>
+<p>energy</p>
+<p>it then after updating its</p>
+<p>distributional beliefs about pheromone</p>
+<p>density</p>
+<p>updates its belief</p>
+<p>about action so relatively given the</p>
+<p>affordances moving in different</p>
+<p>directions</p>
+<p>update my beliefs about how different</p>
+<p>action policies will relate to expected</p>
+<p>free energy</p>
+<p>so it's like let's just say there was a</p>
+<p>pheromone above but not as much below</p>
+<p>that would be perceived in in step one</p>
+<p>and updated in step two and then it'd be</p>
+<p>like well moving up</p>
+<p>will exp i can expect</p>
+<p>to be more like in my preferred state</p>
+<p>than if i were to move down</p>
+<p>and then action is sampled</p>
+<p>based upon the relative proportions</p>
+<p>of um</p>
+<p>the the relative free energies</p>
+<p>of the different</p>
+<p>action</p>
+<p>affordances so that action is sampled</p>
+<p>from that belief distribution action</p>
+<p>selection</p>
+<p>and then the agent performs movement</p>
+<p>and</p>
+<p>in the case of</p>
+<p>it carrying a seed so having already</p>
+<p>found the seed it deposits pheromone</p>
+<p>otherwise it doesn't deposit pheromone</p>
+<p>on the way out there are ants that</p>
+<p>sometimes deposit pheromones both ways</p>
+<p>but we were studying um the sort of</p>
+<p>simplified case where the ant only puts</p>
+<p>down pheromone on the way home</p>
+<p>so can i comment really quick on the</p>
+<p>neurocognitive architecture so again</p>
+<p>like after listening to the internalism</p>
+<p>externalism live stream 5.2 i believe it</p>
+<p>was um</p>
+<p>you know somebody asked that question</p>
+<p>and maxwell gave this great answer which</p>
+<p>i thought was was really cool like okay</p>
+<p>so where in the brain is the generative</p>
+<p>model in this like internalism</p>
+<p>externalism debate and that's something</p>
+<p>that we see like with the visual cortex</p>
+<p>mapping etc so where is the generative</p>
+<p>model and maxwell's answer was really</p>
+<p>cool like when you go to machine</p>
+<p>learning and you don't like look inside</p>
+<p>the computer for the generative model</p>
+<p>like where's the print of the generative</p>
+<p>model it's like software it's just</p>
+<p>running so i i always think that that's</p>
+<p>a really neat um</p>
+<p>and sorry sorry maxwell if i like really</p>
+<p>uh paraphrased you horribly because i</p>
+<p>may have but but but there's no need for</p>
+<p>the model to be</p>
+<p>necessarily inside the brain mapping to</p>
+<p>some specific brain region it can just</p>
+<p>be software that's just running</p>
+<p>yes figure two showed an example trace</p>
+<p>of just a simulation</p>
+<p>so the food starts off and um has not</p>
+<p>been discovered yet so like the density</p>
+<p>is low and it sort of starts here</p>
+<p>pure no pheromone then it's it's kind of</p>
+<p>follows like a zigzag and you can see</p>
+<p>like the food was on the right side and</p>
+<p>so there was a pheromone trail that was</p>
+<p>forming</p>
+<p>down</p>
+<p>to the nest starting up on the top right</p>
+<p>with the food</p>
+<p>and then the um it switches to the left</p>
+<p>side and so there starts to be pheromone</p>
+<p>laid down</p>
+<p>going towards the left arm</p>
+<p>but what's reinforced is still the trunk</p>
+<p>because that part is like good to have</p>
+<p>high density on no matter what</p>
+<p>and so that was our</p>
+<p>simulation this was a colony with 70</p>
+<p>nest mates over 2 000 time steps with</p>
+<p>three switches of the food location</p>
+<p>and</p>
+<p>we didn't optimize the parameters</p>
+<p>or try to like find the best performing</p>
+<p>set or</p>
+<p>um</p>
+<p>it was really just to show that this</p>
+<p>phenomena</p>
+<p>of a pheromone trail leading to food</p>
+<p>that can loosely track location of food</p>
+<p>changing due to the natural decay</p>
+<p>of the pheromone</p>
+<p>so informationally this decay rate can</p>
+<p>be thought of as environmental</p>
+<p>perturbation or drift that counteracts</p>
+<p>the reinforcing effects of stigmatic</p>
+<p>convergence or stigmatic tightening</p>
+<p>we were just like this is</p>
+<p>the first pass model</p>
+<p>that displays that phenomena</p>
+<p>and it could be optimized to explore</p>
+<p>how it works differently what if one arm</p>
+<p>is longer or all these different pieces</p>
+<p>but this is kind of what the model</p>
+<p>outputs and then in the supplemental</p>
+<p>videos there's a lot of videos there's</p>
+<p>some some large file size gifs of</p>
+<p>you can see the ants themselves</p>
+<p>diffusing around and then once there</p>
+<p>starts to be a trail they start to like</p>
+<p>really start taking advantage of it</p>
+<p>one of the</p>
+<p>pieces that was most exciting to think</p>
+<p>about was how do we measure foraging</p>
+<p>performance</p>
+<p>and this speaks to a common um</p>
+<p>[Music]</p>
+<p>area in studying collective behavior</p>
+<p>which is like how do we think about the</p>
+<p>relationship between individual level</p>
+<p>behavior and group behavior again we</p>
+<p>know that as we talked about earlier</p>
+<p>like the individuals r groups and so on</p>
+<p>but just looking at a two level model</p>
+<p>where we have like agents and then the</p>
+<p>collective</p>
+<p>what are the difference between</p>
+<p>individual and colony level traits so</p>
+<p>colony level phenotypes also that's why</p>
+<p>we use nest mate and colony level so</p>
+<p>that we don't have to use individual or</p>
+<p>group because nest mate is always just</p>
+<p>going to be an estimate colony means</p>
+<p>colony</p>
+<p>level phenotypes are summary</p>
+<p>measurements of emergent properties</p>
+<p>in that phenotypes do not apply</p>
+<p>to separate nest mates but they're</p>
+<p>enacted by nest mates and these are good</p>
+<p>citations to check out</p>
+<p>for example each nest mate has bodily</p>
+<p>phenotypes like the width of its head</p>
+<p>every nest mate has a head with or has a</p>
+<p>mid-gut gene expression profile</p>
+<p>but colony phenotypes are those that</p>
+<p>only exist at the colony level so</p>
+<p>there's only one measurement of those</p>
+<p>per colony like the total foraging</p>
+<p>performance or the average interest in</p>
+<p>internet estimate distance or the sex</p>
+<p>ratio of larva</p>
+<p>so which sex each larva is is nessmate</p>
+<p>level but this larval sex ratio only</p>
+<p>gets one measurement per colony</p>
+<p>and so we looked at two measures of</p>
+<p>colony foraging</p>
+<p>the number of foraging trips round trip</p>
+<p>completed through time</p>
+<p>and a swarm coherence metric</p>
+<p>so this is just the amount of foraging</p>
+<p>trips completed through time</p>
+<p>showing how as a function of the number</p>
+<p>of nest mates in the colony</p>
+<p>um you get different dynamics so for</p>
+<p>example 70 ants</p>
+<p>finds it faster the first return trip</p>
+<p>happens before the 500 time steps</p>
+<p>finds it faster</p>
+<p>and ends up getting more but potentially</p>
+<p>not you know multiple times is more so</p>
+<p>there's like some sort of a scaling</p>
+<p>relationship between the number of nest</p>
+<p>mates and the performance and then like</p>
+<p>look at 10. like it finds a few seeds</p>
+<p>this blue line but then it kind of</p>
+<p>flattens out</p>
+<p>so maybe the pheromone trail that the</p>
+<p>first few brought home just dissipates</p>
+<p>so then none of the other ones are</p>
+<p>really able to latch onto that trail so</p>
+<p>it has a very qualitatively different</p>
+<p>shape</p>
+<p>than the other ones</p>
+<p>and then this is the swarm distance</p>
+<p>coefficient which is like the average</p>
+<p>distance between the nest mates</p>
+<p>and so</p>
+<p>just interesting that again it could</p>
+<p>change maybe if you run it from work</p>
+<p>time steps or</p>
+<p>you have it in a different structure</p>
+<p>than the team is but it's almost like</p>
+<p>the distance increases as the ants</p>
+<p>spread out</p>
+<p>and then there's almost like a</p>
+<p>stationarity</p>
+<p>where the average distance stays</p>
+<p>relatively similar so these are just a</p>
+<p>few examples of the kind because you</p>
+<p>have in the simulation at least you have</p>
+<p>full information</p>
+<p>on the location of every nest mate so if</p>
+<p>you want to do an individual nest mate</p>
+<p>level</p>
+<p>phenotype</p>
+<p>you can calculate that trivially but</p>
+<p>then also there's this question about</p>
+<p>how do you summarize collective foraging</p>
+<p>performance</p>
+<p>so any thoughts on that</p>
+<p>so the choice to have full information</p>
+<p>on the location of every nest mate is an</p>
+<p>interesting one and um also like i</p>
+<p>wonder if it's a parameter that you guys</p>
+<p>tweaked or played with at all like what</p>
+<p>if you just have knowledge of half of</p>
+<p>the nesting locations</p>
+<p>like you could almost simulate being a</p>
+<p>behavioral ecologist the grad school</p>
+<p>simulator</p>
+<p>where it's like</p>
+<p>the computer is simulating 100 nest</p>
+<p>mates but then you can only see 10 of</p>
+<p>them</p>
+<p>or or each ant can only see</p>
+<p>10 of them so we have full knowledge or</p>
+<p>the ants have full knowledge so that</p>
+<p>that was the question that i um have</p>
+<p>oh here we as simulators have the total</p>
+<p>trace of the simulation</p>
+<p>and one important piece that is not</p>
+<p>included in this was like interactions</p>
+<p>among nest mates they just passed right</p>
+<p>through each other</p>
+<p>in this simulation so that's definitely</p>
+<p>not too realistic</p>
+<p>and in nature</p>
+<p>the way that ants know whether they're</p>
+<p>heading inbound or outbound they can</p>
+<p>look at the polarization of the sun</p>
+<p>their step integration and the memory</p>
+<p>there's visual scene recognition and</p>
+<p>then there's also importantly</p>
+<p>interactions with other nest mates on</p>
+<p>the trail like if you're bumping into</p>
+<p>nest mates</p>
+<p>carrying food</p>
+<p>you're probably heading out</p>
+<p>and if you're holding food bumping into</p>
+<p>empty mandibled nest mates you're</p>
+<p>probably heading in and so they can</p>
+<p>combine all these kinds of sensory</p>
+<p>information to determine a lot more</p>
+<p>information than the kind of</p>
+<p>drift model that we instituted here</p>
+<p>well and and it just reminded me of this</p>
+<p>model that we just built with this</p>
+<p>foraging paper that i'm part of and um</p>
+<p>in that model all the foragers know the</p>
+<p>location of all of the food a priori</p>
+<p>right like so they already know where</p>
+<p>all the food is so so but learning where</p>
+<p>the food is is really like a whole</p>
+<p>different model right like going to get</p>
+<p>the food and modeling interactions like</p>
+<p>you know network formation in foraging</p>
+<p>patterns is different than learning</p>
+<p>where the food is how we learn from</p>
+<p>others this collective like learning and</p>
+<p>that's something maybe that's the</p>
+<p>difference between intelligence and</p>
+<p>behavior like you can just</p>
+<p>follow what other people do that's maybe</p>
+<p>behavioral but but like learning from</p>
+<p>others based on different cues and so</p>
+<p>forth i mean that that's a that's a</p>
+<p>maybe an intelligence metric</p>
+<p>let's return to this</p>
+<p>broader question about stigma g as a</p>
+<p>type of niche modification and how it</p>
+<p>plays a role in extended cognition</p>
+<p>so this is some</p>
+<p>nice writing by axel probably and</p>
+<p>referring to some of his work</p>
+<p>the representation of the environment</p>
+<p>leveraged to solve the tma's problem</p>
+<p>i.e the map</p>
+<p>is not the one entertained by nest mate</p>
+<p>brains</p>
+<p>but rather the one</p>
+<p>that is carved out of the environment</p>
+<p>and leveraged implicitly by each ant as</p>
+<p>they each forage alone together as a</p>
+<p>colony leaving cues that nest mates can</p>
+<p>use adaptively so i like that kind of</p>
+<p>like collective behavior as being alone</p>
+<p>together</p>
+<p>like each nest mate is perceiving its</p>
+<p>own</p>
+<p>umvelt its own local environment is all</p>
+<p>it perceives</p>
+<p>yet the way that the colony approaches</p>
+<p>this problem is truly collective as well</p>
+<p>as truly stigmatic</p>
+<p>in active inference terms the ants are</p>
+<p>endowed with only an extended generative</p>
+<p>model</p>
+<p>an extended generative model is one</p>
+<p>where some of the model parameters are</p>
+<p>encoded</p>
+<p>not by the agent engaging in inference</p>
+<p>itself but by the physical environment</p>
+<p>in which it lives</p>
+<p>so that's kind of like a person maybe</p>
+<p>can have a few numbers in memory but now</p>
+<p>imagine if you're hearing a string of</p>
+<p>numbers and you're writing them down</p>
+<p>and then you're able to go back</p>
+<p>and interact or somebody else could have</p>
+<p>written the numbers down</p>
+<p>you're going back and your generative</p>
+<p>model</p>
+<p>is functionally including things that</p>
+<p>are now part of the environment like</p>
+<p>they're outside of you so that really</p>
+<p>speaks to this integrating internalism</p>
+<p>and externalism</p>
+<p>and it brings up big questions like</p>
+<p>what other kinds of systems</p>
+<p>whether they're currently modeled not in</p>
+<p>the collective behavior framework or</p>
+<p>whether they're being modeled as</p>
+<p>collective behavior but not as stigmatic</p>
+<p>collective behavior what other systems</p>
+<p>can be modeled with stigmatic active</p>
+<p>inference algorithms</p>
+<p>and then</p>
+<p>what kind of individual level nestmate</p>
+<p>level behavioral heuristics contribute</p>
+<p>to adaptive collective behavior</p>
+<p>in the context of what kind of</p>
+<p>statistical regularities in the niche or</p>
+<p>regimes of stigma g because just it's</p>
+<p>not like stigma g equals adaptive you</p>
+<p>could imagine the switching teammates</p>
+<p>where they reinforce it too rapidly and</p>
+<p>then it is inflexible</p>
+<p>as the food changes location</p>
+<p>so it's not like oh collective behavior</p>
+<p>equals it's going to be adaptive or</p>
+<p>stigma g equals adaptive</p>
+<p>there's actually probably only certain</p>
+<p>combinations of parameters certain</p>
+<p>regions of parameter space</p>
+<p>in which specific environmental</p>
+<p>regularities can be capitalized upon</p>
+<p>so</p>
+<p>the idea that um</p>
+<p>the ants are only endowed with the</p>
+<p>extended generative model in the</p>
+<p>environment and i know like that in the</p>
+<p>paper they mentioned that memory is</p>
+<p>something that</p>
+<p>could be played with but i'm reminded of</p>
+<p>the story of hansel and gretel so like</p>
+<p>where hansel leaves a trail of</p>
+<p>breadcrumbs behind them so that they can</p>
+<p>find their way back home but um or a</p>
+<p>trail of pebbles the first time that</p>
+<p>were not eaten so you leave the trail of</p>
+<p>pebbles it's like modification of the</p>
+<p>environment but like if if you</p>
+<p>can just remember the way</p>
+<p>right like like that's that's an</p>
+<p>interesting dynamic between</p>
+<p>knowledge gained from environmental cues</p>
+<p>versus knowledge that's inherent and</p>
+<p>retained and and i know maybe you have</p>
+<p>maybe more to say about</p>
+<p>um ants and ant memory and where maybe</p>
+<p>these memories or or</p>
+<p>if there's some genetic memory for ants</p>
+<p>in different species or in maybe even in</p>
+<p>just single colony right like you've</p>
+<p>talked to me before about colony</p>
+<p>foraging behavior and even in the same</p>
+<p>species the foraging behavior is</p>
+<p>different and so</p>
+<p>i'm curious as as to your thoughts on um</p>
+<p>we don't have to go in right now maybe</p>
+<p>for next week but your thoughts on on</p>
+<p>ant memory and how that may come to play</p>
+<p>an interesting question i think</p>
+<p>species where the foragers head out</p>
+<p>alone for longer distances</p>
+<p>and need to find uh</p>
+<p>pieces of prey</p>
+<p>and bring them back</p>
+<p>we'd expect them to have higher memory</p>
+<p>whereas the extreme case of just the</p>
+<p>pheromone follower</p>
+<p>you know pheromone respecter ant</p>
+<p>maybe there's a very limited role for</p>
+<p>memory and then the question empirically</p>
+<p>would be</p>
+<p>are there morphological differences in</p>
+<p>their brain is the mushroom body smaller</p>
+<p>are there certain genes that have</p>
+<p>differential expression patterns</p>
+<p>how do nurses and forager</p>
+<p>differ in the expression of those genes</p>
+<p>like maybe nurses don't need to have as</p>
+<p>much spatial memory</p>
+<p>but foragers do need spatial memory or</p>
+<p>step integration for example it's been</p>
+<p>shown in multiple species that nurses</p>
+<p>don't have a circadian rhythm they are</p>
+<p>just sort of low-key working and</p>
+<p>chilling 24 hours a day</p>
+<p>whereas foragers have a circadian rhythm</p>
+<p>that's strongly in tuned by the light</p>
+<p>cycle</p>
+<p>so</p>
+<p>how</p>
+<p>does memory sort of</p>
+<p>start</p>
+<p>and then how does</p>
+<p>the temporal polyethyism and the</p>
+<p>trajectory of what the nest mate needs</p>
+<p>to do for the colony</p>
+<p>how does that lead to the development of</p>
+<p>nest mate level cognition</p>
+<p>and then how have the regularities of</p>
+<p>the niche selected for colonies that</p>
+<p>succeed by virtue of being composed of</p>
+<p>certain kinds of estimates that have</p>
+<p>certain kinds of memory</p>
+<p>this returns us to stigmergy so what was</p>
+<p>cool about this</p>
+<p>i just thought it was cool i mean i'm</p>
+<p>always looking for you know intelligence</p>
+<p>and behavior and how these two are</p>
+<p>linked together but but this paper which</p>
+<p>i found like</p>
+<p>self-published on amazon but i think</p>
+<p>it's part of a proceedings anyway it was</p>
+<p>just like a neat kind of um like google</p>
+<p>find uh it says stigmargy an</p>
+<p>intelligence metric for emergent</p>
+<p>distributed behaviors um and i'll just</p>
+<p>read this little piece of it it says the</p>
+<p>complexity of aggregated behavior often</p>
+<p>depends on sigmoidy stigma g occurs when</p>
+<p>behaviors by individuals modify the</p>
+<p>environment while being regulated by the</p>
+<p>environment state stigma has generally</p>
+<p>been studied for the forward problem</p>
+<p>predicting the consequences of local</p>
+<p>behaviors it is also applicable to the</p>
+<p>backward problem synthesizing local</p>
+<p>behaviors to fulfill a global need the</p>
+<p>concept provides provides an objective</p>
+<p>measure of intelligence for natural and</p>
+<p>synthetic systems a system's</p>
+<p>intelligence is measured by its amount</p>
+<p>of effective stigmargy it not only</p>
+<p>adapts to a changing environ environment</p>
+<p>but also modifies the environment to</p>
+<p>suit the system's needs and goals so i</p>
+<p>thought that this was just kind of a</p>
+<p>neat refreshing perspective on a lot of</p>
+<p>the things we've been talking about</p>
+<p>today</p>
+<p>agreed um intelligence is all</p>
+<p>is often thought of as just being like</p>
+<p>inside of a brain or in one</p>
+<p>agent</p>
+<p>when we know that that um</p>
+<p>doesn't take the brain body into account</p>
+<p>doesn't take the social into account and</p>
+<p>then even then</p>
+<p>that's where this paper came in was okay</p>
+<p>so then even social cognition let's say</p>
+<p>you integrate brain and body as well as</p>
+<p>a social</p>
+<p>you're still just in this floating mob</p>
+<p>type simulation</p>
+<p>how do we talk about the way that</p>
+<p>interacting agents modify their</p>
+<p>environment how that updates their</p>
+<p>tendencies</p>
+<p>that's where stigma g comes into play</p>
+<p>and that's why it was an important thing</p>
+<p>to do</p>
+<p>well and we're increasingly seeing the</p>
+<p>links drawn between cultural evolution</p>
+<p>and collective intelligence because as a</p>
+<p>species i mean we're still obviously not</p>
+<p>discovering fire</p>
+<p>and learning how to you know make</p>
+<p>buildings right like we already know how</p>
+<p>to do that that's why we're not like</p>
+<p>living in these camps anymore and so</p>
+<p>we've evolved and you know none of our</p>
+<p>ancestors knew how to use an iphone but</p>
+<p>maybe you know in nine generations none</p>
+<p>of our none of our uh what are they</p>
+<p>called successors that that's what it is</p>
+<p>none of our successors will also know</p>
+<p>how to use an iphone so it's just us</p>
+<p>right now but everything that we do</p>
+<p>we're leaving these stigmargic traces</p>
+<p>behind in our environment that enables</p>
+<p>us as a species to evolve or become more</p>
+<p>intelligent for better or for worse</p>
+<p>anyway big questions so there's some big</p>
+<p>questions for next week that uh i'll</p>
+<p>give you to think about</p>
+<p>are you here</p>
+<p>so what is the relationship between</p>
+<p>collective behavior behavior and</p>
+<p>collective intelligence and i'd love to</p>
+<p>have other people's takes on this</p>
+<p>what are other possible measures of</p>
+<p>group synergy</p>
+<p>or colony synergy how are colony-level</p>
+<p>metrics retained in ants over time</p>
+<p>in this model forgetfulness is critical</p>
+<p>so do you think that the ability to</p>
+<p>forget is as important as memory in</p>
+<p>human or ant behavior</p>
+<p>um is stigma g a measure of intelligence</p>
+<p>or behavior or both maybe</p>
+<p>and then does trust play a role in you</p>
+<p>social insect synergy and i have some</p>
+<p>more but i thought that that was a good</p>
+<p>start</p>
+<p>all great questions i would</p>
+<p>yeah i think i got some dot one</p>
+<p>questions i got some dot two questions</p>
+<p>got some dot three questions but</p>
+<p>um this is an open line of research the</p>
+<p>paper was published only this year in</p>
+<p>2021 so if this is something where you</p>
+<p>think oh i have a theoretical</p>
+<p>contribution or</p>
+<p>i study archaeology and i want to learn</p>
+<p>how stigma g might relate to those kinds</p>
+<p>of models or oh i'm way better at coding</p>
+<p>than this and i could make dot dot</p>
+<p>improvement on the code</p>
+<p>let's do it</p>
+<p>so these will be fun things to discuss</p>
+<p>blue thanks for all the</p>
+<p>help on the xero in this fun</p>
+<p>conversation we hope to see</p>
+<p>many of you on the dot one and dot two</p>
+<p>in the coming weeks on the 21st and on</p>
+<p>the 28th</p>
+<p>and tucker in the chat wrote</p>
+<p>would love to hear and learn more about</p>
+<p>memory and collective systems</p>
+<p>totally agree</p>
+<p>and uh when we think of like the von</p>
+<p>neumann computer architecture it's like</p>
+<p>where's memory it's like i mean there's</p>
+<p>two spots where it can be right it can</p>
+<p>be in the hard drive long term storage</p>
+<p>or it can be in ram short term storage</p>
+<p>and then that has even percolated into</p>
+<p>how we think about short and long-term</p>
+<p>memory in organisms</p>
+<p>but now what about the niche</p>
+<p>modification</p>
+<p>what does it look like and how do we</p>
+<p>think about it is it simply that like</p>
+<p>data a is in short term and data b is</p>
+<p>moved to the environment or</p>
+<p>is something modified about the</p>
+<p>environment and something modified about</p>
+<p>the internal generative model such that</p>
+<p>the information can be recapitulated</p>
+<p>only through interaction with the</p>
+<p>environment</p>
+<p>how would we think about memory in that</p>
+<p>case and that's also um</p>
+<p>why ant colony optimization and swarm</p>
+<p>computation</p>
+<p>are part part of the broader umbrella of</p>
+<p>unconventional computing architectures</p>
+<p>because they do challenge</p>
+<p>or move beyond</p>
+<p>some of the sort of classical notions of</p>
+<p>memory processing bandwidth</p>
+<p>clock speed we didn't have to talk about</p>
+<p>that</p>
+<p>but those are things that</p>
+<p>studying natural systems</p>
+<p>makes us wonder about</p>
+<p>fun times blue</p>
+<p>see you soon</p>
+<p>see you later see everyone next week bye</p>
+</article>
+</body>
+</html>

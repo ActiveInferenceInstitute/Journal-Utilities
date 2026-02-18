@@ -1,0 +1,848 @@
+---
+title: "ActInf Livestream #046.2 ~ "Active inference models do not contradict folk psychology""
+category: "Livestream"
+series: "Livestream_046"
+episode: "2"
+duration: "1:45:20"
+url: "https://www.youtube.com/watch?v=7_YNInrALU8"
+views: 161
+exported_at: "2026-02-18T22:37:37.706511+00:00"
+format: markdown
+---
+
+# ActInf Livestream #046.2 ~ "Active inference models do not contradict folk psychology"
+
+Hello, everyone.
+Welcome to ActInFLAB livestream number 46.2.
+It's June 22, 2022.
+Welcome to the ActInFLAB.
+We're a participatory online lab that is communicating, learning, and practicing applied active inference.
+You can find us at the links on the slide.
+This is a recorded and an archived livestream, so please provide us with feedback so we can
+improve our work.
+All backgrounds and perspectives are welcome and will follow video etiquette for livestreams.
+Head over to activeinference.org to learn about participating in livestreams or in the many
+other ActInFLAB projects.
+We're here in our third discussion on the paper, Active Inference Models Do Not Contradict
+Folk Psychology by Smith, Ramstad, and Kiefer.
+We had a .0 with Ryan joining and Jakob and Dean where we talked through some of the background
+of this paper.
+And last week in the .1, we had a great discussion, went a lot of ways as .1s do, and opened up
+some threads to continue discussing in this .2.
+I know each of you have some things to bring up.
+There's also a few key sections of the paper that we haven't gone into in much detail.
+So there'll be a lot to do in the .2.
+And of course, everybody watching live is also welcome to make comments.
+We'll start with just an introduction and warm-up.
+We can say hi and add anything else that we're looking forward to talking about or to reducing
+our uncertainty about through today's discussion or maybe even if it's not too early, where
+we'd like to be heading as we take off on this .2 and leave the 46 series.
+How does it result in us being different, thinking differently, acting differently in the rest
+of our post-46 lives?
+So I'm Daniel.
+I'm a researcher in California.
+And just a conversation with Dean before we began about some other core concepts other
+than beliefs, desires, and intentions.
+So what other acronym models could we use?
+What other kinds of models are consistent?
+Or where else can active inference be providing us extra information or utility?
+And a few other things.
+And I'll pass it to Dean.
+Thanks, Daniel.
+I'm Dean here in Calgary.
+I think what I'm curious about is a couple of things.
+As I said, I'm curious about things are behaviors that appear to be targeted versus behaviors that
+appear to be non-targeted.
+And there was some reference to that in this paper.
+The other thing, as I said, I'm kind of curious about is this moving to the place of saying
+that active inference has these different types, be it extended or decision-making or motor active
+inference and what the implications of that are.
+The bottom line for me is I think if we can operationalize that word through active inference,
+it shouldn't be difficult to figure out that that applies to behaviors, that there's operations grounding a lot of behaviors.
+So, yeah, that's what I'm kind of curious about today.
+I'll pass it to David.
+Great to be back.
+It's my second time on here.
+Really appreciate this.
+I'm on 33.
+So I've listened through lecture 33.
+So I'm almost caught up to the current.
+I look forward to having Daniel on my channel Friday, 4 p.m. Eastern time.
+There's so much to active inference because it's a useful framework for countless different fields.
+And specifically related to this, I had definitely thoughts.
+And then how do we look at the mechanics of the equation versus, you know, we call folks ecology,
+but I would put that generally into what I would call introspection.
+I have a background in theology.
+And, you know, I've thought a lot about introspection and trying to match what we see through various methods of introspection.
+And, you know, maybe where the science and mathematics is leading us.
+And also, I guess, the field of psychometrics that isn't necessarily introspection, but it may or may not match the equations.
+And then how do we describe the phenomenon?
+You understand them, or maybe they're not descriptible, saying that we describe them with the mathematical equations.
+And there's not really any good way to translate that into words that would be understandable to your folk, common people in that way.
+Awesome. Ali?
+Ali?
+Hi, I'm Ali.
+I'm an independent researcher from Iran.
+I'm very glad to be here.
+And I'm looking forward to learn more about this fascinating paper.
+Especially, I'm interested in exploring phenomenological aspects of BDI, belief, desire and intention.
+And also, to explore somewhat more deeply the philosophical underpinnings of representation versus simulation aspect of modeling BDI in active inference.
+And, yeah, that's it for me.
+Great.
+Let's begin with this more taxonomic question about the types of active inference.
+So, we can think about different types that we've heard about in this paper and elsewhere.
+And then, whether or not we have something to contribute about adding a specific type to this list that will continue to grow.
+What does it mean or entail that we do have these different types?
+So, just to review, in this paper, 46, they make a very clear, upfront distinction between what they characterize as motor active, MAI, and decision active.
+And there's a few differences between motor and decision.
+Who can list one category of difference?
+Well, the motor active inference doesn't typically require that you have to make a decision.
+It's more a reaction or a reflective form as compared to the decision active inference, which does, as the paper say, likely map over to the desired question.
+Yes.
+So, the motor AI was connected to, like, motor reflex.
+Are there decision-making reflex?
+Does, even if that's not a classical usage, like in the reflex arc of the spine or something, moving the hand away from a hot surface, are there cognitive reflexes?
+I'm not really sure.
+I just, I basically was asking in the context of people who are writing these papers now, who are bringing the question down to a motor operational behavior standpoint, how breaking active inference up into different classifications,
+is that in response to a bigger problem, which is the behavior doesn't necessarily,
+behavior doesn't necessarily, isn't something that's necessarily, we're able to conveniently dissolve down to our concentrate down into motor operations, or extensions, or any of those other different things that the writers tend to want to focus on now.
+As opposed to sort of the complexity and the variety and the randomness of behavior as a whole.
+So.
+Yes.
+Great.
+So this is from page 81.
+Oh, yes, Ali, go for it.
+Well, I think the distinction between MAI and DAI is not globally accepted among various researchers.
+For instance, if we look at the work of Alan Bertos, a French neuroscientist, especially his book, I think it was called, The Brain's Sense of Movement.
+In that book, he actually has a famous quote, namely, perception is simulated action.
+And by this, he implies that he implies that perception and motion, motion and perception, or thinking for that matter, are irreducibly interconnected.
+And so the former, the former defines the latter because of the intrinsic matricity of the creatures endowed with nervous systems.
+So I'm not sure if we can distinguish between MAI and DAI in such a clear cut manner.
+Because as we know that most modern, most.
+Mocentricity and modern or actions are also pretty predefined in that perception or many other thought processes.
+Thanks.
+Thanks, David.
+Yeah, so I didn't know enough about the BDI model, or the, you know, I'm still new to the language, especially of the authors of this paper, to the general philosophy.
+But, you know, I was talking a lot about last week about the unified I and higher order rules.
+So if you want to like decision as higher order rules, and they would have some sort of power, like usually when we think of consciousness and a unified I, that makes decisions.
+And we talked about eliminativism and the implications of the equations, are they eliminativistic or not?
+And yours is there, what direction does the evidence take us?
+And so in terms of motor control, like I mentioned, Fodar's modular mind, that it could be that, you know, it's a threshold, it's a free energy principle.
+And it could just be action, reaction, sense perception, and then a module of our mind sends, you know, some perception of what, however we understand consciousness, that makes it appear to us like we made a decision.
+Pardon me, but that may not be accurate, that, you know, the equations might hint that that's not actually what's going on.
+It's simply free energy threshold being reached, the threshold could conceivably have nothing or very little to do with the decision making process.
+And it could be post facto, like the Leibet experiments, that the perception, like we made a decision, actually comes post facto from the threshold.
+Cool. Thank you. Also, I think Adam Safran, who had discussed those Leibet experiments, does find a space for agency, if that's not too coarse of a simplification.
+But there is some interesting ways to think about what that experiment does or doesn't show.
+Maybe we can return to that when we kind of have some figures and details. Dean?
+Yeah, I didn't know what you guys were talking about with this, a limited of this thing, until I went back to the paper, and then I found this.
+And I'll just quote it, we also, this is from the paper, we also motivate a squarely non a limited position with respect to such constructs, and suggest that the set of theoretical primitives out of which the active inference models are built, is sufficient, not only to recover the categories of folks psychology, but also potentially nuance them with more fine grained.
+Dean?
+Dean?
+Dean?
+Dean?
+So the other thing is, I think, of the reasons of what they're saying, is that it is a limit of this. And they'll put a little statement in like it's not a limit of this. But what is the evidence of their models actually say? And can they actually program like a unified eye? And you put the you did they eliminate the unified eye? And it's just a bunch of perceptions, and various factors that reach a threshold. And what does it mean to make a decision?
+
+Dean?
+
+Dean?
+Dean?
+Dean?
+
+Dean?
+
+Dean?
+Dean?
+
+Dean?
+Dean?
+Dean?
+
+Dean?
+Dean?
+Dean?
+Dean?
+
+Dean?
+Dean?
+
+Dean?
+Dean?
+
+
+
+!
+
+
+! Dean?
+
+Dean?
+I'm not I'm not I don't think I'm I don't think I'm leading with this question about are we moving to a place that says that active inference will have different types because I think that there's different math there's a there's math that's used in financial situations those operations. There's math that's used in mechanical situations.
+question about are we moving to a place that says that active inference will have different types
+because I think that there's different math there's a there's math that's used in financial
+situations those operations there's math that's used in mechanical situations those operations
+so I think it's it's a natural byproduct of so how do you make the math work given the circumstance
+I don't think that there's anything about this that's saying active inference doesn't work just
+because you want to make sure that you're applying the proper formula to the thing that you're trying
+to describe but I do think it's interesting that in order to be able to describe it more precisely
+you just can't say active inference you have to kind of figure out what the math is for the specific
+condition that you're trying to analyze yeah definitely makes sense let's now move to this
+lower part of the page on the different adjectives that we've seen so people can probably add or think
+of more or even imagine there's so many adjectives in the in the textbook called the dictionary
+we've talked about extended active inference which was addressing extended cognitive features and
+phenomena where there could be sort of a uh offloading which was when the adaptive active entity is going
+to utilize something that is more like a notepad like it's offloading memory onto the notepad and then the
+entity is holding on to information about how to seek that information or on both sides of the interface
+there could be adaptive active and so that was like the sort of true emergent extended cognitive processes
+deep active inference and and citations could be could be added didn't get them for all uh deep was
+utilized to describe temporal depth in terms of longer and longer time horizons of considerations
+this was really an important development because it moved beyond the sort of one shot
+next step model of active and help manage this trade-off between considering time horizons as well
+as taking action in the time step that the entity is actually in uh sophisticated active inference
+and various other um cousins of it utilized hierarchical modeling which could have temporal depth
+at one or multiple levels but doesn't need to it it it does and it could but this is referring to like the thickness
+or the hierarchical modeling component uh affective active inference which was used by has bet all to refer to
+uncertainty parameters and some of the cognitive interpretations of uncertainty parameters as being related to to valence
+um and then there's others like branching time active infants um it comes to what dean said which is just saying like we use active inference may not reduce uncertainty enough
+any more than we use any more than we use any more than we use any more than we use a linear model
+whether just talking about it casually or writing the paper more information has to be provided and so this is sorting this is
+sorting to uh starting to build the taxonomy and the classifications and the ways of communicating reducing uncertainty okay you went to that hemisphere but was it this continent or that continent was it this coast or was it that coast like zooming in
+ultimately resulting in ultimately resulting in just describing the particulars of the model that was constructed
+elite uh well adding to what uh dean has just said uh well i don't think that these different flavors and versions of active imprints that have recently been uh recently been branched up uh
+uh uh they don't necessarily uh concern themselves with different situations or different niches uh for example that last one branching time active inference uh well that was a very recent uh version of active inference which was uh yes this is the paper uh they introduced that and uh it's basically a more efficient uh computational approach to
+uh active inference uh and it's just the traditional active inference but in a more uh efficient uh with a more efficient algorithm to compute uh the all the parameters needed
+yes sometimes uh these adjectives are describing uh these adjectives are describing heuristics or implementations or algorithms other times they're describing the model structure other times they're referring to the context that the model is being applied to like an extended cognitive system dean
+yeah that's that's what i was going to ask ali about so if i'm saying something more efficient what am i saying it more efficient relative to
+uh well relative to uh the traditional uh approach to active inference uh that has been proposed uh for uh the past decade or two uh and also uh relative to the other uh uh
+uh the other uh the other approaches uh that are similar to active inferences approach but not if not uh exactly equivalent to it uh for instance uh reinforcement reinforcement learning approaches or so on
+okay okay and one other kind of analogy or mapping there would be like when a new variant of a neural network architecture is introduced there's a pomp and circumstance
+to announce the novelty and the relevance of this for somebody who's in that field similarly when there's a new variant or a new focus whether model structure model target or something else related to evolutionary biology
+sometimes a new word will come in but then that new uh target or model structure if it becomes used
+and it's sufficiently close that it's not rejected from the rest of the body of theory
+because it's an incoherent usage of the adjective someone says well i made you know simple active inference
+and it has this totally different structure that might not become incorporated into the the network of active inference models
+whereas if it does become incorporated through its theoretical compatibility or utility and modeling that phenomena or it's presented in terms of a model architecture that does apply elsewhere
+and then the adjective kind of the adjective kind of the adjective kind of gets dropped and then it just goes back to being neural networks back to being active inference back to being evolutionary biology
+and then the field moves on and so the the adjectives are just kind of like another brick in the wall
+stupid
+yeah i also mentioned last week i'm not sure if it would go here in this section is uh the purpose driven act the purpose driven behavior action or even uh perception related to a unified eye and
+even if it's on the pure level of sense perception is it just that we have uh you know these perceivers and they perceive and then how are the signals
+and then how are the signals read and uh i mean it's easier to describe this in a limitivistic way whether we're limitivist or not uh in the for the predictive mind is the main uh struggle so to say between short-term uh goals and long-term goals and then you have to put in what axioms are we making is there some sort of uh you know for the higher order rules if we assume that there's some sort of rule that like an organism
+acts in its own self-interest in its own uh you know sort of say desire to survive or to uh replicate and then you know the only struggle would be between short-term and long-term actions like you know god forbid here we have a mosquito pandemic i was gardening and got you know eaten up by mosquitoes and if it's just a sense you're replying to the environment like i have an itch should i itch it or should i have some longer term that'll go away quicker and then you have to go away
+if uh if uh if i don't itch it and is that uh you know something that's even in the subconscious where just naturally i would have an itch and i would itch it but then i would somehow enter a longer term decision making process
+that uh would uh would uh tell me to act in a different way and even terms for how i'm going to interact
+with the environment in the future let alone something that might have a moral or ethical
+implication so if you have a simplified model of just uh
+where do we need purpose for sense perception to work and for motor control to work even in terms of reflexes
+because i think uh you know just even on the motor control let alone the decision making uh you know
+where does the decision making uh go and what's the purpose uh behind it and then how is that purpose derived
+yes so we can go to uh targeted non-targeted
+um another branch point is i think this important question of mapping from real world phenomena and even
+direct felt experiences like aesthetic or just more generally phenomenological and anything about a
+formalism and i'm not sure if i've quoted too narrowly but they are writing that intentions so just to
+review the uh bdi the beliefs and the desires come together and that is what generates the intention
+there's the desire for the ice cream and there's the belief that there's the ice cream truck and that is
+what generates the intentional behavior of like pursuing the ice cream truck
+intentions map straightforwardly to policies with lowest value for expected free energy which is
+calculated across different policies policies are affordances that can be taken over a given time
+horizon so over time horizon of three it's the combination of affordances of length three
+almost all the variables in the dai model are candidates for traditional psychological beliefs
+if being used to model the right kinds of high level cognitive processes so what are the right
+kinds but then later in footnote five this is distinguishing uh in uh what they characterize as a
+different reading of desire this reading is not the thing that is desired but instead about the transient
+presence of the motivational force to approach the thing we desire
+so it's like why did you go there it was my desire to go there what moved you to go there desire so
+it's almost like desire in the specifics and then also seeing it as a motivating force
+but then they note that habit might not have a direction to fit and it illustrates another reason
+consistent with our broader argument concerning desires
+desires not to assume that probability distributions in the formalism must be mapped onto beliefs at the
+psychological level so they're candidates if we do it right
+but it isn't an assumption that they must be mapped onto beliefs
+beliefs
+uh well i wanted to mention uh the uh a broader sense of the term intentionality uh which i think
+he was referred to because uh you see uh for all the entities defined by uh markov blankets and
+uh defined by uh the existence of their markov blankets and their ergodic behavior uh well we need an entity uh
+who can treat an effect as being about its cause you see an entity who can follow the direction from effect uh
+to cause and um we also need an entity um who can treat an isomorphic map
+uh as being about what it maps uh or let's say as oriented toward what it maps well in both of these cases
+the directionality or orientation uh can be referred to as intentionality in its broad sense
+so just to clarify there so the second piece you mentioned was
+the entity needs to be able to treat some sort of isomorphic or structure preserving mapping
+as having an aboutness of the target like the map of the city translating that into the physical
+movement and then uh there was a a causal inference question entity can trace causes such that they
+understand such that they're doing some kind of causal mapping where agency is the belief that one can
+be the cause of future aspects so is this agency or is this causal modeling that could happen in the absence of
+entity level agency i think it's more it's broader than uh necessarily being a cognitive agent uh you see
+uh it's uh it's any abstract entity uh that can uh uh that can sketch out uh these kind of causal
+relationships uh between uh between the signs and uh their uh either uh icons or their indices so
+it's much broader and more abstract than uh necessarily cognitive agents
+what kind of entities are you thinking of and isn't manipulation and and that kind of logical
+uh juxtaposition nor no the one uh obvious example would be neural networks neural nets uh we don't
+necessarily bestow upon neural networks uh a cognitive agency right but they can uh well match uh the
+at least uh their input patterns uh onto uh their uh output um like uh output indices
+and it's um
+these continuums of agency continuums of cognitive systems it's like easy to forget we're we're
+talking about a cognitive modeling framework albeit one that has a motor cousin mai and motor
+motor modeling history because the mai distinction is um also historical like in terms of what which models
+were developed when
+and uh is this pan cognitivism are we modeling everything as if it is on the continuum of cognitive
+entities like i don't know if it's as controversial to say that a neural network is a cognitive artifact
+it might not be self-perpetuating or embodied or have open-ended agency or all these other features
+that some cognitive systems have but what makes it not cognitive if you meant that
+uh well probably the cognitive here uh it was not a proper proper adjective uh perhaps what i meant was
+uh to be uh i don't know a kind of uh conscious agent or uh but again on the uh the subject of uh
+uh using the adjective cognitive or neural networks uh well there are quite a few uh well uh opponents
+uh to this characterization for neural networks because uh they believe that uh neural networks as agents
+uh don't necessarily uh decide on their cognitive decide on their cognitive basis uh how to
+uh map how to uh you see map between uh the inputs and outputs uh because uh that's the difference between
+representation and simulation if we uh well uh can differentiate between the between those two uh so uh probably yeah
+uh the more suitable adjective here uh should be a conscious agent uh as opposed to cognitive agents
+uh does that not take us extremely far afield out of where we um lose touch with empirical measurements
+for example and enter into important philosophical questions but ones that take us like
+away from our cognitive leg and psychology perhaps even especially folk psychology is sitting at the
+intersection of the intersection of cognitive systems philosophical self-reflexive systems so it's almost
+like a question of this teetering stack of folk psychology which way will it end up falling
+a limit of ism perhaps is saying we'll be able to dispense with classical philosophical debates or some
+aspects of them by just moving everything that was folk psychological into a mathematical cognivist framework
+well what i mean here is that uh well uh the term intentionality here can also be used in uh in abstract
+models of active inference and not necessarily uh well uh in the cases where we uh unambiguously deal with
+conscious entities that's what i mean
+i think one of the takeaways of this paper or one of the implications of this paper would be that if
+the belief intentions in folk psychology are beliefs plus desires hashtag bdi model and beliefs and desires are identifiable quantities in the acadent formalism
+then by constructing entities consistent with the acadent formalism it can be said that they have intentionality
+because it could be said that they have beliefs and desires and so then it would only make sense to call the behaviors arising from beliefs and desires to be intentional
+so doesn't this uh conceptualization of uh intentionality also subsume uh the um a more uh strict or narrow sense of that term
+uh because uh well if uh uh well if we uh well in this sense if we uh uh inferred um from uh the the use of intentionality here uh uh as referring to only conscious agents uh well in that case uh the um
+uh the whole purpose of simulating uh active inference agents uh could potentially uh well raise some questions
+that's well i i'm not sure if i uh could express myself clearly on this matter or not but oh no very interesting um dean and then do it
+um so maybe amongst the three of you you can help me with this because i don't really keep up with the latest
+news on neural nets but if i if i were to look at a neural net i would assume that most of those nets
+are given some kind of a target even if they go out and forage for it there is something about that but
+what i've been always been curious about is especially in the in the context of this paper
+is that if there is a target that's been sort of linked to desire in this paper and if there's
+a curiosity aspect to the agent or the net that's been sort of linked to non-targeting so if that's
+if that's one continuum the orthogonal aspect of that also in the paper is that there's a reward
+seeking component say on the left of that there's an information seeking or an information and ambiguity
+component to the right of that so here's my question if unless we say that curiosity actually is a target
+which this paper says is it's actually a non-target and the operation and the formalism actually points
+that out then how do we set something up like a neural net to actually be curious because we we can
+be curious we can be non-targeting and find reward in that if we go one direction and find information
+gained in that in another direction and they are they are completely different things they're not seen in
+the in the formalism as the same thing so i'm just curious whether we're because as i said i don't
+know enough about neural nets to know but aren't neural nets constantly constrained by having a target
+i think there's many ways to answer that
+i am not sure if it would totally map on to the difference of supervised and unsupervised learning
+like supervised learning being where labels are provided these x-rays belong to this patient
+category these ones belong to the alternate category i want you to get really good but you know
+don't over specify don't over fit that distinction supervised learning unsupervised learning is more along
+the lines of like here's input according to how you're set up embody the statistical regularities and the
+structure of the information that has been input okay and then that representation allows like clustering and
+subsequent analyses or the addition of labels later but it isn't predicated in the training phase
+upon the data or the cases being labels
+does that yeah but the predication is not curiosity is it that's my point is that there is no curiosity in
+what you just described
+what you're saying is that there is no curiosity is not a problem
+right it's like a pipeline that is receiving whatever information is being provided
+and curiosity seems to kind of break out of that and it's like give me more examples
+and then the directed curiosity would be like i'm looking for more examples of the label a
+the undirected curiosity would be more like i just would like more examples right so to ask ali maybe ali is
+it consciousness if it doesn't have curiosity
+uh well uh i don't think so because uh you see uh even in uh unsupervised learnings uh we don't
+necessarily uh well the neural networks uh don't necessarily uh extract the uh uh the the essence
+of their training examples what they do is all what is to extract a statistical prototype of their tokens
+the statistical prototype of their training examples uh so uh actually uh they can't recognize
+uh a dog as a dog they just see patterns they just see statistical patterns which they've learned
+uh through their uh training process uh so they're not uh they're not necessarily conscious of uh the
+object of dog or a cat or whatever uh what what are what they uh try to do is uh and in fact in some cases
+uh well sometimes we see that uh they have in fact inferred uh wrong statistical prototypes uh because of uh
+well insufficient training examples or uh uh well not appropriate training examples or so on uh but
+in any case uh what uh i don't think we can uh say that uh well neural networks because uh because of
+their ability to recognize these patterns they necessarily uh well have consciousness because
+well probably uh in order to achieve consciousness uh well other layers of uh cognitive and even
+perceptual uh mechanisms need to be deployed
+do this
+yeah i had some other points but if you wanted to uh you'll stay on the curiosity topic um and
+you know it's related to what the point i was going to make about belief and desire
+uh you know what clearly defining the words so they're specifically you know you're going to take
+the bdi model and use words like belief and desire to uh you know some relatively obscure scientific model
+versus uh you know like a whole historical review of the etymology and uh you know i mean and how do we
+how are we defining uh beliefs and desire you know does curiosity have a desire to learn something um
+you know for its own purpose that that that means it's not goal uh driven and then how i would
+understand belief and desire in terms of uh you know so desires are biological urges like uh your
+reproduction or uh survival and if of the emotions are maybe all derivative uh how you're going to put
+that out where if you're going to try to uh source all of them from one pure desire and all the other
+desires are derivative or if you're going to have multiple uh desires and then you'd have to have some
+sort of weighting function to uh weight the different desires and then beliefs are self-made
+rules that come from our own cognition and that's where decision making comes comes in and even
+you know i think a rabbinic statement in terms of free will that free will is implying that you have
+the choice to make the less desirous opinion that the less desires choice like as a chess player if you're
+thinking like uh uh candidate moves and analysis trees that in reality our candidate moves are just how
+we control our body and you know do we move our arm up or down or the various controls of our physical
+function uh but uh you know what are the candidate moves and then how would the analysis tree and
+decision making is it you know how would it come that you would make the less desirous uh decision is
+it purely you know it's a short term uh versus uh long term and then the organization of uh you know
+let's take a system like okay i'm a jew i'm a muslim i'm an atheist or i'm a capitalist i'm a communist
+that we have these self-directed uh beliefs that control our behavior and if it's learning to do things
+like i can't steal uh god forbid i can't rape i can't kill and that like my desire if the body tells me
+okay i see attractive woman uh i want to have sexual relations uh but then i have these beliefs
+like uh that there's a system of rules and governance that uh is it purely because i can't
+get away with it that i don't do it we don't rape still and kill because uh uh we can't get away with
+it or is there this self-imposed moralistic uh behavior and that's coming down to uh what belief
+means and then you know also if uh you know so curiosity you'd have to clearly define
+curiosity if you're talking about neural nets that uh you know can computer just learn for its own sake
+uh and even can a human just learn for its own sake that uh you know we're participating in these
+discussions purely because i enjoy figuring things out even if it has no practical implication to uh you
+know some primal directive of a survival or reproduction or however you're going to understand
+these primal directives and then uh you know the equation be similar to a chess algorithm for a
+computer where uh you know it would appear that you could add in weighting factors that you could program
+this into the equations and uh you have some constants that would be weighting factors so if you did have just
+one primal directive of survival or two primal directives of uh reproduction and survival uh and
+then you could give those weighting factors or you could have uh um a feedback mechanism i mean with the
+environment and and then you know as i said where do the belief comes in the self-made rules and then how
+do how are those weighting factors calculated in decision making and what does it mean to make a
+decision is it possible that we make the least desirous decision and if we can't make the less
+desirous decision uh you know do we not have free will thanks so jonathan shock made a great point
+which is that deep neural networks applied to reinforcement learning can include curiosity as
+an explicit factor it guides the agent to states which it has about which it has the most uncertainty
+so it's a term which makes it rewarding to explore currently unexplored states and then just
+um to get provide a recent example here's a way in which a neural network architecture was used
+certainly worthy of more exploration and at a first pass or at least just qualitatively one way to
+think about that and then we'll come to how curiosity was described in the text is in active
+inference we have a imperative for action selection that includes a pragmatic and an epistemic component
+whereas a pragmatic absolutist perspective like reinforcement learning needs to generate these
+modules and alternate architectures such that information seeking curiosity can be coerced into
+a reward framework i mean what is the next question going to be well it's rewarding to gain information
+oh what kind of information how much information how are we going to learn the parameters on our curiosity
+model and so on and so active inference as a first principles approach for this kind of artificially intelligent system
+allows us to include at the base level both an objective uh achieving and a pure curiosity reducing
+element uh dean and then we'll look at how they talk about curiosity
+thanks daniel so as is as is historically been the case for point twos oh he just left and i was going to
+ask him this question okay i guess he's still here um so david when after uh dot one and now just what you
+were just sharing with us here i wondered without putting words in the room up can i get a clarification
+i think one of the things that you're trying to make clear or or at least bring into the conversation
+that prioritization which is the sort of the value weighting aspect of how we see the world is not
+ordering the kind of placing of a formalism down on paper that includes rules like equals and plus and
+minus in the fbp or the sort of extended and variation of three energy pieces is that
+that and that's what's that oversimplifying what you want us to make clear that that having evaluating
+is not the same that kind of prioritization is not the same as being able to formally set down and order
+well i'm a dualist so like i'm i'm trying to i i think i could use these equations for dualistic
+your purposes and you could just factor in a weighting factor for these higher order rules and
+then you know so my system would have some sort of uh um struggle between two separate realms of
+material and spiritual realm so that's you know personally how i'm looking at it but you know i could
+attempt to understand it from uh just the materialistic realm and how the uh equations uh you would apply
+and then if there's competing factors what's the origin of those competing factors so so if you just put
+uh your desires are biological uh animalistic urges and beliefs are self-created uh rules of uh cognition
+and then you want to have a separate function like curiosity where where where curiosity maybe benefits
+the purpose of making beliefs which would later come to become higher order rules um and or if you want
+to have the ability to have behavior that has no purpose that you know i just enjoy understanding
+things uh maybe that understanding will help me make better higher order rules um and you know that's
+saying oh like you're saying for the equation because here we have these equations and it's free energy
+and uh you know so the purpose is to uh minimize minimize uh you know the least action principle or
+to eliminate uh limit energy usage and so if you're looking like well why did i do that was like you know
+dummy didn't you look at the equation it was still it was the free energy principle you did it to uh
+minimize energy usage and uh you know so we're just saying that that uh that's you know the origin of all
+human behavior from an eliminativistic uh sense and uh you know from the folk psychology that's why i said
+i'm taking a dualistic perspective where these higher order rules are coming from a non-material plane
+but i think they could be modeled into the equations thanks um also free energy minimization doesn't
+entail the actual minimal possible energy usage though some people have made that accidentally or
+intentionally a claim it isn't what those equations as they're being used here necessarily represent
+but it could there could be a system that thrives optimally based upon reducing energy usage but also
+there's situations where free energy minimization and the path of least action are not the lowest energy
+consumption um is that short term or long term that they're saying long term it is but it's just
+short term versus long term the decision making in the as opposed to a dualistic uh the predictive
+mind that's saying it's not dualistic spiritual verse material it's a single materialistic in its
+short term versus long term
+okay let's think about that in the context of of curiosity um how they're describing so uh
+uh g expected free energy of policies it's like the policies are enumerated and then g is calculated
+for them reflects the inferred value of each policy based upon beliefs beliefs are p of o sub t
+conditioned on pi so the distribution of outcomes conditioned upon policies if i go left what do i expect
+to see if i go right what do i expect to see that's a belief and the belief distribution about observations
+conditioned upon hidden states of the world if there is food there then what observations will i expect
+to see and desired outcomes which is as we've explored in 37 in user's guide there's this dual
+the actual implication of the p of o distribution and active inference as what is expected as well as preferred
+because we reduce our surprise about the expected slash preferred outcome distribution and that is how
+the desired outcomes are realized not by providing a higher reward or value
+the higher reward or value to increasingly preferred states but rather treating the preference distribution
+as expectations which allows us to use surprisal and surprisal bounding approaches towards achieving
+preferences so how do they talk about desire and curiosity they're suggesting that these drives so this is in
+earlier we talked about there's the two ways to talk about desire the specific target of desire as a desire
+like i desire a cube of tungsten or something and then there's the drive that is associated with desire
+what made the person do it desire in the abstract um curiosity drives discovery of what is not yet known and thus
+has no preconceived target however one could also say that it has a semi-formed concept of target because one could be like
+curious about something and then their curiosity would be satiated by something else something but not
+something else so in that case there was some of something of a prior on what they were looking for
+um the claim that curiosity is not cognitive so desire related might seem suspect on the grounds it could
+also be characterized as simply the desire to learn qualitatively and this in turn could be conceived as the
+desire that one's beliefs are as precise as possible even though especially in the short term learning sometimes feels like it reduces our precision
+however the mathematics allow us to motivate a genuine distinction here
+specifically changing outcomes to minimize the kl divergence in the risk term in efe is a fundamentally
+different sort of process for minimizing the ambiguity term so the kl divergence is on the left side here
+and the ambiguity term is on the right side here here's equation 2.6 from the textbook
+and it's it's in a different order but just to see here's risk with the kl divergence and then here's expected
+ambiguity with the h for the entropy calculation
+um the latter which is the ambiguity term does not care how uncertainty is resolved so long it is resolved
+there's no preference for becoming more confident in one possible belief over another whereas the reduction of uncertainty
+by reducing the kl divergence is what is bringing us into alignment with our preferences slash expectations
+hence that is a much more targeted form of curiosity in that it allows for goal-directed information seeking
+and then they write at a minimum the folk psychological concept of curiosity corresponds to a very different
+type of desire with a distinct counterpart in dai dean yeah that's perfect because what i wanted to say
+was that i think that the curiosity really points to that risk and the reason i say that is because you may find
+that when the ambiguity is removed the prize is a happy one or a not so happy one and i think that's
+that's kind of important here to to see sort of the it's it's hard to say as it says here
+it's however the claim the curiosity is non-conductor might seem suspect on the grounds it could also be
+characterized as simply just the desire to learn well that before the learning you you're you're sort of
+in a in a ambiguous state will it be a happy surprise or will it be an unhappy surprise and so i think this
+this kind of pulls that out you
+you the the ambiguity applies a certain amount of risk but then you have to you have to act
+in the active inference aspect of it to determine whether or not the surprise i'll let the other side of it is actually a
+good or not so good so i think that's where the curiosity arm of this comes to the fore it is non-targeted until
+it actually has been realized or somehow materialized whereas the the targeted stuff the desire stuff can be part of your plan
+i'm not sure whether the curiosity fits as conveniently as the desire does
+and just one short note on that is we we see a conditioning on policy right
+in a few different places so it'd be interesting to think about where does planning to learn come into
+play and in what ways is planning to learn directed or what if you plan to have undirected learning
+or all these other combinations do it yeah i'm not sure if it would exactly fit in with the equation
+but i'm thinking here like maslow's hierarchy of needs uh defined in terms of the free energy principle
+where um you know so to say curiosity requires excess energy so if you're on the first runk of the
+hierarchy that you have limited energy to apply towards curiosity and if you do have energy to
+apply towards curiosity you're going to be best off to be curious about things that will directly apply
+to uh you know your security uh you know your food or the primal uh directives as opposed to uh you
+know if you move up uh up the hierarchy uh at least put this into maslow's hierarchy where there you
+know there's less risk associated with curiosity that maybe you've achieved more leisure activity
+and then and therefore have more um energy to expand towards curiosity that you could reach the
+highest levels of maslow's hierarchy and focus on uh your ideals and uh what is the meaning of truth
+or understanding uh science uh but it would still be uh you however you're defining the free energy
+principle that you have some sort of uh uh conservation of energy and curiosity is an expansion of energy
+that uh is limited uh but uh you have more resources could be allocated so to say energy resources to
+curiosity if it uh makes the whole you know uh unified uh your person more more uh um efficient and you
+know you know they become more secure more safe more social except so on and so on and therefore
+they have more energy to expand towards curiosity thanks ali
+uh i also think uh it might be helpful to uh mention the neural basis for um these surprise appraisals
+because uh you see uh as we know we have two systems of thinking system one system two famously uh sketched out by
+kahneman and toversky uh or fast track and slow track of reacting to stimuli uh so uh in the fast track
+uh well uh the uh stimuli bypass the sensory cortex and go directly from thalamus to amygdala right so uh
+our first reaction our immediate react reaction to every surprise uh would be something quite similar to
+fear but then after uh appraising that stimuli stimulus after going through the sensory cortex and
+then amygdala and then hippocampus uh then we can appraise uh we can evaluate that surprise as being positive or negative
+and uh as a result of that we get a positive or negative
+valence effect uh so uh
+in summary uh well every surprise uh
+uh i mean either positive or negative it could be at first at the very first moment uh be a kind of
+uh negative uh can induce a negative valence emotion in us
+yes i i brought in some of the quotes from this paper um habitual and reflective control in hierarchical
+predictive coding it's uh from 2021 and it's by kinghorn millage and buckley so they directly connect
+hierarchical predictive coding architectures which when they consider action have a lot to do with active
+inference in terms of thinking fast and slow like you had just brought up so they wrote on this view
+fast actions may be triggered using only the lower levels of the hierarchical predictive coding schema
+whereas more deliberative actions need higher layers we demonstrate that hpc can distribute learning
+throughout its hierarchy with higher layers called into use only as required so that is very interesting
+when we think about going back to the mai dai distinction from this paper it's a hybrid model
+albeit one where the motor spatial control is continuous or modeled as continuous
+and then there's a more discrete more mental or cognitive model that's like thinking slow so it's almost like
+there's thinking fast and slow even within the mind and then there's thinking with the body
+and that's like even a lower level i don't think even by thinking fast they weren't talking about the reflex arc
+but there can be hierarchical modeling even there um so it uh
+what are these nested models that are slower how do those develop are they related to the
+physical architecture of our onboard machinery to what extent do they involve so many of our off-sourced or
+extended cognitive phenomena like our our colleagues like our social networks
+our books and learnings our books and learnings the social structures that scaffold our beliefs and so on
+there's a lot of interesting pieces there um
+um what would be a good direction to go in this second half of the dot two um we had targeted non-targeted
+is there anything there that's not covered by the curiosity discussion is there oh unmute dean and then yes go for it
+okay sorry about that yeah i think we pretty much okay wrestled that one to the ground okay do that
+yeah my conception for targeted i'm calling the unified i in terms of uh you know maybe like the ant colony
+uh where uh if you you could look at it like the ants are all functioning personally with their own uh
+uh your directive behavior and uh it just works out that they're directed or or as a unit but even in
+like a human whether there's a unified um of the human cells like even sense perception that you know it's
+easier to look at it like our our um you know like i mentioned we have a hundred like almost a hundred
+million uh cones and rods in our eyes that are receiving photons at every given instant and we just
+look at it like they're active acting in a unified manner um but even that requires some sort of targeted
+behavior that the you know for for even direct motor uh motor control that our cells in our given body are
+acting in a unified manner and could you uh you take the free energy principle to uh a cellular level
+and say well cells will act in a unified way if it's in accordance with the free energy principle but
+if it wasn't in accordance with the free energy principle then cells don't act in a unified targeted
+way and act according to their own levels i'm not sure if you could take that to uh the cellular level for
+even things like sense perception motor control like one arm wants to go this way and one arm wants to
+go that way and how do we have this unified control
+it's it's interesting thing about what would it what would make something concord or not with fep
+because it's a description framework here is where in from live stream 25 with uh professor levin
+here's even in the ant colony example where different subsist and and cancer and and um like other
+situations like biofilms were modeled this way that there can be coherence within each tone so to speak
+uh i don't know if this moves us closer to understanding the experience of the eye
+or whether there is in fundament a unified eye but the cells in the nestmates body can be understood as
+undergoing coherent behavior the nestmates can the colony can and then different people have taken
+different perspectives on what makes one level of analysis more relevant than others like an
+evolutionary perspective is that the unit of selection is granted some special power a information
+processing perspective or integrated information theory might highlight what happens informationally
+within and across levels
+let's look at the air their um dark room experiment we kind of came to it a little bit last time but what
+did anyone think their figure and simulation spoke to how was it adding details or information that weren't
+known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to
+Andrew Klein, Entropy question being resolved, because what I saw was the latter I, I kind of saw that something, something appeared with more information gain or something disappeared if there was no sense that, that the, that the change of an ambiguity state was going to make any difference.
+Andrew Klein, So I'm kind of curious what others, how others interpreted the actual data as it as it laid out post hoc, because this is all post hoc. This is just comparing dot dot seven dot three to dot nine nine zero one.
+Andrew Klein, In terms of the, in terms of the desire strength. And I think they use the term urgency in the paper going up. Right.
+Andrew Klein, Yes.
+Andrew Klein, Yes.
+Andrew Klein, Well, on, on the left side. Okay, so time is, there's a time is moving from left to right.
+Andrew Klein, Yeah.
+Andrew Klein, There's a, an entity that doesn't desire, they don't have a preference for achieving ice cream. And in this simulation run, they observed that they were in the dark room, and they picked the decision to flip a switch.
+Andrew Klein, They then went to the right. And they ended up not finding that they got ice cream.
+Andrew Klein, The weak desire agent first flips a switch. And then, with higher confidence goes to the left. And they end up realizing ice cream.
+Andrew Klein, In this case of the strong desire agent, even though they have uncertainty about going left or right initially, they're in a hurry. Or it's urgent.
+Andrew Klein, And they go left immediately. And that turns out that it does achieve getting the ice cream.
+Andrew Klein, One, one note is like, these are only showing one run of each of those simulations. So it's like, does the no desire entity always go to the right? Or is that a 50 50?
+Andrew Klein, How have people used the BDI to do quantitative modeling of behavior? Are they moving their verbal and formal arguments from above in the paper into a form factor that will be more amenable or palatable to people who are already using these models to do behavioral analysis?
+Andrew Klein, Well, I think the BDI, I mean, strictly from the standpoint of here's what we watched this agent do, it kind of it kind of had a 50 50 choice, it was playing more in the geometry space, how this is represented is more sort of the Bayesian distribution piece.
+Andrew Klein, Right? So you've got a percentage of an area, as you're moving from left to right, that's either darkened or remains agnostic and doesn't it doesn't sort of change what, what the outcome or what the matching of an outcome and the expected free energy are.
+Andrew Klein, So I think that it just brings more information to the to the observation of what's actually going on when, when the lights either do go on or don't go on because that first one, the lights don't go on, I think, and the agent either stumbles to the right place or doesn't.
+Andrew Klein, But they don't care.
+Andrew Klein, But I do think that what what happens is you can have geometry only, or you can have geometry and a proportion or distribution and I think that's what this is kind of laying out for us that you now you've got more information.
+Andrew Klein, And with more information hopefully you've got less less less invariance you've got more variance being described here than you would if you left it at the geometric level alone. Does that make sense?
+Andrew Klein, Yes, and they follow up after the figure that this magnitude mapping, it's giving not just some theoretical detail to this mapping.
+Andrew Klein, And they provide several citations, many recently with Smith and others, where it's used in many different contexts.
+Andrew Klein, And then I kind of found it also interesting in the following sentences after the paragraph that I had just quoted there.
+Andrew Klein, This motivating force could be corresponding to the magnitude of the KL divergence.
+KL divergence between the Q variational distribution of observations conditioned upon policy divergence with the preference distribution p of o within the expected free energy.
+Andrew Klein, So that's one of the terms that we've looked at in the G of pi, i.e. the risk term, not the ambiguity term with the entropy.
+Andrew Klein, This is because stronger preference values over rewarding outcomes in p of o of t increase the KL divergence and lead the agent to seek reward over information gain.
+Andrew Klein, So there's still a knob, maybe multiple that are slightly interacting.
+Andrew Klein, There's a knob by which more pure curiosity, that would be just the ambiguity resolving, but undirected.
+Andrew Klein, Mixtures of pure curiosity and directed curiosity, weak preferences with a lot of openness, and increasingly sharp preference distributions induce increasingly urgent pragmatic value seeking outcomes.
+Andrew Klein, And there's a lot of funny things that come to mind.
+Andrew Klein, Like a question for one person might be a survival question.
+Andrew Klein, For another, it might be a research question.
+Andrew Klein, For another, it might be like a pure curiosity.
+Andrew Klein, Where's the oxygen in this room?
+Andrew Klein, Is that a survival question?
+Andrew Klein, Is that just, you know, again, are you researching oxygen distributions in rooms?
+Andrew Klein, So you have a target to understand that?
+Andrew Klein, Or are you just curious about that thought?
+Andrew Klein, Dean, then do it.
+Dean Dupont, I think that I think Daniel that clearly speaks to what David and Ali were both mentioning in terms of, so what's your timeframe here, right?
+Andrew Klein, So you take off and you have a bird strike and now you don't have enough time to land anywhere on the river?
+Andrew Klein, Is that curiosity?
+Andrew Klein, It's that desire?
+Andrew Klein, Is that what is that in terms of how much time do you have now to manage the risk?
+Andrew Klein, Aspect of this, this situation that you now find yourself under certainly survival.
+Andrew Klein, But yeah, what what what percentages or what proportions of each one of these different parts of the equation are being calculated at any given moment relative to the overall timeframe that you're now constrained under?
+Andrew Klein, Yes, do it.
+Andrew Klein, Yeah, let me just look at the refrigerator, you know, example that, well, okay, had I been curious, you know, earlier during the day, about the layout of the room, I might have remembered how to get to the refrigerator, but I didn't expend that mental energy.
+Andrew Klein, So here I am hungry.
+Andrew Klein, And I don't know my surroundings.
+Andrew Klein, And so you have the level of curiosity could have provided benefit.
+Andrew Klein, But now at this point, you know, you have the risk factor, will I injure myself or eat and that I was thinking, you know, like chess or something like, okay, like,
+Andrew Klein, The Alpha zero is programmed with the, you know, the most powerful computers for hours and hours to just understand the game.
+Andrew Klein, And then later, it's able to take that and win.
+Andrew Klein, So like, as a person, it's like, okay, I really just like thinking about chess and understanding the patterns.
+Andrew Klein, But then you will have to reproduce, I have to see to the success of my children, and the offspring, I have to, you know, make money and survive.
+Andrew Klein, And so you know, maybe I could become a professional chess player, or something like that.
+Andrew Klein, But then you would come in and well, if my goal is to, you know, reproduce and see the success of my offspring, and you'll make money and survive, there's better methods to do that, than becoming a professional chess
+Andrew Klein, even like active inference, that okay, I'm curious about how this stuff works.
+Andrew Klein, But it's probably not going to help me reproduce or make a living.
+Andrew Klein, And if I tried to, you know, take my curiosity about consciousness, and use that to benefit the reproduction or making or making a living, it's unlikely to see that much fruition.
+Andrew Klein, But at the same time, the power of curiosity is you don't know how it's going to benefit you.
+Andrew Klein, So the ice cream example, you know, if we if we had a meeting in the kitchen, you know, during the day, and then we all go back to our rooms to go to sleep, and then we're hungry at night, the person who was just curious about how the room was laid out, is going to be able to, you'll likely retrieve the ice cream without any injury, as where the person who didn't expand the energy to be curious about the layer, layout of the room, may not achieve the ice cream.
+Andrew Klein, That's why I like in my own head, it may not be directly applicable to this paper, but could be in folk psychology.
+Andrew Klein, It would be to map this to something like Maslow's hierarchy of rules, which would be in line with neural neural nets, that there would be some sort of higher order rules, and some sort of ability to put the expansion of more energy like okay, like I thought about chess, and now I'm winning.
+Andrew Klein, And I've achieved a little bit of social standing or you know, one of little prize money, or you know, even school, I was curious about consciousness now I got a bachelor's degree.
+Andrew Klein, And I have enough proficiency to you know, get a job and support a family.
+Andrew Klein, And now I could exhort even more energy to it.
+Andrew Klein, But at the time of the pure curiosity, you don't know how it may you actually benefit you in terms of reward.
+Andrew Klein, Great points that it's almost like jumping through different hoops, what might be best accomplished through pure curiosity.
+Andrew Klein, And again, that survival research and pure curiosity trilemma, there's times where being driven by one or the other helps us move through complex real world situations.
+Andrew Klein, If we knew the whole story from the beginning, then we could just follow along.
+Andrew Klein, But in a highly partial information world, where we don't want our priors to lead to ruin, basically, then pure curiosity and research help bring things within our survivable limit into information gathering spaces that we wouldn't necessarily have.
+Andrew Klein, Limited resources.
+Andrew Klein, Limited resources.
+Andrew Klein, Limited resources.
+Andrew Klein, I don't know if they could program that also into the computer also like the limit of resources and if that if you interpret free energy principle in general to you'll be a definition of limited energy resources.
+Andrew Klein, Ali.
+Andrew Klein, Well, adding to my own previous comments about the subject of consciousness and curiosity, I personally believe that the nature of consciousness is ultimately computational.
+Andrew Klein, So it's amenable to modeling and the simulation, but we're, we're just not there yet.
+Andrew Klein, But, well, one possible approach to achieve such model could be potentially the active inference approach or other related approaches.
+Andrew Klein, But you see, curiosity is just one aspect of consciousness and I think it should, it could probably be helpful to distinguish between the artificial curiosity and the experience of curiosity or the phenomenology of the curiosity.
+Andrew Klein, Because what we see here is the agent that simulates the artificial curiosity and not, it's not exactly.
+Andrew Klein, Isomorphic with the experience we get from our derived to our information seeking drives and.
+Andrew Klein, And, and in fact, in this paper, I think it was in page 28.
+Andrew Klein, Yes, it's in page 28 that they state that.
+Andrew Klein, We have not addressed questions about the structure regenerative model would need in order to account for experiences of beliefs and desires.
+Andrew Klein, So, well, at least in this paper we're not dealing with the actual experience of curiosity.
+Andrew Klein, We're just trying to somehow model and simulate the artificial curiosity.
+Andrew Klein, In fact, this term artificial curiosity is one favored by Carl Preston himself in his various other lectures.
+Andrew Klein, Yes, very good point.
+Andrew Klein, And it relates to kind of the experience view from the inside versus the behavioral modeling view from the outside.
+Andrew Klein, A curious particle or a curious forager might be engaging in some kind of behavior, but that isn't the same thing as the experience of.
+Andrew Klein, But they do provide references to other work, like including work that has been discussed previously on live streams with Christopher White and Ryan Smith on report paradigms of consciousness.
+Andrew Klein, As we kind of head towards the end here.
+Andrew Klein, I thought this was very interesting in the section before the conclusion 11 free energy principle and direction of fit.
+Andrew Klein, And this is kind of a good section to carry out and bring forward into our other discussions on active.
+Andrew Klein, For any organism described by the FEP, the description will contain an implicitly normative state element about the state the organism should be in and can be described as having cognitive desire like direction of fit.
+Andrew Klein, So there's a preference distribution.
+Andrew Klein, And as this paper is building up, it can have an interpretation as desire being a targeted desire.
+Andrew Klein, Even beyond the case of forward looking decision making agents, not all Bayesian beliefs in the FEP formalism are best characterized as doxastic being about belief doxology.
+Andrew Klein, This perspective may expand upon current discussion in the FEP literature, where it is fairly prominent to discuss as if beliefs in simple systems, whether a mere active entity like a pendulum or adaptive active entities, and just say, well, I'm not saying that it really believes that it's acting as if it believes that.
+Andrew Klein, That conform to the FEP.
+Andrew Klein, Here, our point is they can also equally be described as having as if desires.
+Andrew Klein, Belief is known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to be known to
+belief not towards phenomenology but stapling together some of the bayesian distributional
+usage of the term belief with the doxastic being about belief the aboutness of those
+bayesian beliefs is the folk psychological concept of belief by making that mapping and
+connecting the formalism as a whole or at least in the core equations like the f and the g to the
+bdi model it also allows them to identify which bayesian belief distributions map to belief in the
+bdi and which bayesian belief distributions map to d to the desires in the bdi and so to the extent that
+somebody can say a system has an as if belief implicitly in a folk psychological way we can
+also talk about as if desires and that helps um partition but not disregard the discussion around
+what different systems experience the classic you know what is it like to be x but
+it at least according to this argument and perspective authorizes usage of intentions and
+desires intentions arising from basically the combination of the beliefs and the desires in the
+bdi and talking about active systems as if they have desires what is that simulation desirous of
+and then using its beliefs and desires to explain its intentional behavior not the experience of
+intentionality experience of belief experience of desire but using them in this view from the outside
+more deflationary perspective so that's quite interesting and i think something that
+is that will be uh we'll see how it catches on
+are there other sections that people want to talk about or what will they carry forward into their post 46 life
+i think daniel a couple things i think the desire and the think part that you're just talking about there
+i'm not sure that it's specific in nature i think it's more generalizable and sort of that scale free
+um to some of the stuff that duvid brought up um i think that when you when you um
+when you start getting getting to know active infants a little bit more and i'll speak from
+personal experience with a focus on a little bit of sort of personal grooming you become one heck of an
+attractive state and so i think you might not make money off of that but at this point but i think as
+you get more comfortable with the kind of being able to take the information and uh use it across a
+variety of different situations it's um it's actually is quite helpful i don't think i'll i'll ever get rich
+off of it at this point but it it is kind of interesting how it's um i think it is growing in terms of
+the amount of attention that it's getting so that's kind of my my two takes on this so far
+so you're saying it might influence fitness i think it might down the road as long as we have enough
+time scale dude
+yeah and i've been coaching chess for a while and mostly to youth and i'm used to explaining uh
+uh somewhat you know these concepts like you know i i want you to say that uh people who are just
+curious about chess and how the patterns work and how the pieces work often improve much faster than
+people who desire to win and that a lot of times people will reach a certain strength and then uh their
+curiosity diminishes and it's just their desire to win which isn't enough that you know it's just like
+i want to spend my night thinking about these uh patterns uh versus like i really want to you know
+win and have some sort of practical benefit from uh my efforts so uh you know i have my own personal
+you know goals that brought me to active inference because i was looking for my own tools to advance
+my own research and came on to active inference as a a method or tool that even though i you know like
+it appears that you know the majority of people are using it for a different purpose that i would be
+able to rework it for my own purpose but because it's a uh interdisciplinary study and like you know
+i'm an engineer and like engineering usually works that way where someone has professional certification
+they sign off and you could expect that they did their part right and it's going to work and you could
+you know attach that module to your module and both modules are going to do
+uh what they said they're going to do uh and then you know the curiosity well do i really want to
+understand how your module works you know do i really care about dean and ali's research or you
+know do i just uh you know want to trust that their module works and i'm going to be able to attach that
+to my module to uh you know make make something uh more powerful and both are probably true to it you know
+to uh you know limited uh energy uh limited resources that uh you know that i would like to understand
+dean and ali's module to the best of my ability but energy uh time allocation uh resources are are
+limited uh but then you know certainly if you had a module that would help my module and we could plug
+them in together and uh you create a more powerful interface so that i'm bullish about active inference
+and uh as a framework that will benefit uh you know the more and more people who get involved and i'm
+seeing my own direction into my own research how uh you know i think this will be useful and i even
+think uh yeah i got uh jennifer i think joined the discord and i mentioned it to a few other people
+that that might be able to advance their research and then try to understand uh you know the current
+existing modules uh you know that are that are out there you know within the active inference and you
+know as i mentioned the first the importance of interdisciplinary studies for uh you know big issues uh you know none of us are
+going to figure this out it's going to take interdisciplinary studies and none of us are going to be able to
+understand all the disciplines necessary uh to piece together the bigger puzzle
+nice thank you yes interesting point about the uh curiosity driven learning
+and how that can be like a not even paradoxically more successful approach or mentality to set off on a journey a learning journey with um
+i just think about somebody trying to learn organic chemistry which i tutored for many years and people who set
+themselves up for the pragmatic value and said i want this outcome sometimes they achieve the outcome other
+times they didn't but it set up a lot of psychology around not achieving the outcome when it didn't happen on the
+expected timeline and a lot of like secondary cascading failures
+course however there's also the the clear counterpoint which is but if we don't want the higher grade then
+like if we're just going to be curious about learning organic chemistry like my finals in six weeks so how
+are we going to balance the timelines and uh the curiosity and i think maybe even this paper helped us look at
+one way which is keep the preference direction but understand how the urgency of your preference
+influences the way that you take action and just think about what what if you what if your final was
+tomorrow how would you go about it okay now what if the final was in 100 years how would you go about it
+where are we in that continuum do we have time for curiosity and for openness or is this an actual
+emergency situation and then we can triage where there is an emergency organic chemistry situation
+but also hold space for curiosity and openness and even in the emergency there has to be information
+seeking it's just more directed information seeking okay we're going to work through the practice tests
+and that's what we're going to have time for there still is going to be information seeking but not
+of the same kind if we had more time to kind of space out even though in a alternate slash preferable
+world perhaps that's the better way to learn or the more fun way to learn or so on
+any other thoughts
+one of the things i really like about active inference research is the willingness of the researchers in
+this area to seriously address the criticisms instead of just dodging them and their willingness to
+to constantly improve and update the theory in order to fill the fill the gaps and well
+and also address the weakness or any weakness or loophole in the theory and that's very
+you see liberating to see such active area of research going forward in a very determined and also very
+open-minded open-minded way uh and uh well that's one of the things i think is sets it apart from uh
+other some other uh research areas today
+it's what we prefer it's what we expect
+we're curious about it
+okay dean ali duvid thanks a lot for this fun discussion and and ryan maxwell and alex for this
+paper it really capped off a long run of live streams we've had quite a nice sequence going back to
+the beginning of the beginning of this year getting through many many discussions next week we're going
+to have the second quarterly roundtable meeting and then we'll have july off of paper discussions and
+we'll be coming back in august with paper discussions we don't know exactly what they're going to be but
+we know some of them and we have a few guest streams and other streams coming up but um
+yeah it's been a nice run the lab meeting next week will be a great cap to this season slash semester and
+then we'll come back for the end of 2022 with some new changes that i think people will be really
+excited about so thanks everybody and see you later thanks daniel thanks everyone okay thanks a lot
+so
+
+
+
+
+
+
+
+
+thank you
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.

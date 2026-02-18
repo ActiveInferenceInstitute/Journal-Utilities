@@ -1,0 +1,970 @@
+ActInf Livestream #042.1 ~ "Robot navigation as hierarchical active inference"
+==============================================================================
+Category: Livestream
+Series: Livestream_042 (Episode 1)
+Duration: 1:49:34
+URL: https://www.youtube.com/watch?v=UUQIVqcI-yw
+
+some questions that we had from the dot zero, but also new questions arising.
+So we'll just start with an introduction and saying hello, and then it'll be awesome
+to hear the author's initial contextualization. So I'm Daniel, I'm a researcher in California,
+and as explored a little bit in the dot zero with CID, there's a few places that we were
+super curious about ranging from how does one go from a phenomena that they want to model,
+like navigation to the analytical equations, and how is that related to active inference
+and the free energy principle? And then how do we go from that analytical formulation to the actual
+gigabyte of video data and the real time sensing and action? So a lot of exciting topics. And I'll pass
+to Blue. Hi, I'm Blue. I'm a researcher in New Mexico. And this paper was kind of way over my head
+for a lot of reasons. It's just so far out of what I normally do. But I have some questions related
+to the hierarchical modeling and how that is kind of used and how that can be related or cannot be
+related to maybe biological systems that model in a hierarchical way similarly. And I'll pass it off
+to Adam, I guess, if you want to start or introduce yourself and you guys can take it away.
+Adam Pfeiffer, Ph.D.: Hi, I'm Adam. I'm a systems neuroscientist who's currently a research fellow at the Johns Hopkins Center for Psychedelic and Consciousness Research.
+Adam Pfeiffer, Ph.D.: I've been collaborating with Tim and Ozen and others on trying to understand the natures of navigation and the nature and the ways in which the hippocampal and enter
+rhinal system might be relevant and the ways in which this could be used as a means of understanding thought more generally. And it's been awesome and slightly intimidating, except
+Tim is awesome. So that's made it less intimidating.
+Tim Pfeiffer, Ph.D.: So that brings it to me. So I'm Tim. I'm a computer scientist, robotist at Ghent University. And we haven't subscribed to the active
+inference formalism to try to make our robots slightly more intelligent. And this paper was, I think, one of our major accomplishments last year. It was a collaboration with Adam, where we basically look at the problem of navigation from different angles ranging from active inference modeling to an actual implementation on
+Tim Pfeiffer, Ph.D.: On a real robots. And at the same time, looking at how could this work in an actual brain or what other relations and the solutions there. So it's really exciting to have this paper out. But also, this was just as getting started, I'd say that it was basically our first
+Tim Pfeiffer, Ph.D.: Artifacts that we published, we have another one together with Adam in the works. And yeah, I'm pretty sure that we will continue this endeavor for quite some time around. So we're all just only just getting started. So that being said, probably a lot of the questions are also still questions for us.
+Tim Pfeiffer, Ph.D.: So we'll see to what extent we can give an answer as of today already.
+Tim Pfeiffer, Ph.D.: Awesome. Well, we can start with this sort of triad that is highlighted in the paper. And Adam, you said it as understanding the basis of navigation. And we have these three legs to the stool, kind of three threads that intertwine in the paper with it analytical formulation of navigation, which is what Blue mentioned with a higher
+Tim Pfeiffer, Ph.D.: hierarchical generative model and the implementation in robotic and in biological systems. So maybe a first question is, how has this intersection of modeling navigation with robotics and biology been conceptualized? And what brought you to apply active inference in this way? And what does it add?
+Tim Pfeiffer, Ph.D.: Okay.
+Tim Pfeiffer, Ph.D.: Who should go first?
+Tim Pfeiffer, Ph.D.: So maybe my perspective here is that
+Tim Pfeiffer, Ph.D.: We basically got started from
+Tim Pfeiffer, Ph.D.: from a robotics perspective, like looking at the navigation problem and looking at the ways that it's being solved right now
+Tim Pfeiffer, Ph.D.: and implemented right now.
+Tim Pfeiffer, Ph.D.: And at the same time, we already had quite some experience with active inference, but more like
+Tim Pfeiffer, Ph.D.: Oh yeah.
+Tim Pfeiffer problems, let's say, or first
+Tim Pfeiffer, Ph.D.: or first experiments were more on these kind of mountain car environment or a car racer.
+Tim Pfeiffer, Ph.D.: But it was always our goal to kind of try to scale it up to
+Tim Pfeiffer, Ph.D.: yeah, to real world robots.
+Tim Pfeiffer, Ph.D.: And so
+Tim Pfeiffer, Ph.D.: We got started by drawing and seeing parallels between
+Tim Pfeiffer, Ph.D.: current implementations out there
+Tim Pfeiffer, Ph.D.: that seem to match with
+Tim Pfeiffer, Ph.D.: how we would look at it from an active inference perspective.
+Tim Pfeiffer, Ph.D.: And kind of work our way from both ways, so the one went try to get some implementation running and on the other hand, seeing how we could formalize it and actually make the mouth work in the active inference framework.
+Tim Pfeiffer, Ph.D.: And
+Tim Pfeiffer, Ph.D.: What we found out was that actually the the best matching.
+Tim Pfeiffer, Ph.D.: implementation from a robotics perspective was actually one that was quite bio inspired, so it was basically the the red flag model from milford at all where they had these.
+Tim Pfeiffer, Ph.D.: heavy inspiration from grid cells, play cells and these things and yeah of course.
+Tim Pfeiffer, Ph.D.: It was not really a surprise, given the the fact how active inference is also grounded in neuroscience and so that's where we reached out to to add them.
+Tim Pfeiffer, Ph.D.: To basically show off like okay this is our trajectory this is our plan, this is our current implementation and how we think the math could work.
+Tim Pfeiffer, Ph.D.: And then add them with this infinite knowledge on how the the the the the the the it could work in the rain he gave like all kind of phone just like okay, but this is interesting because what you implemented here is actually.
+Tim Pfeiffer, Ph.D.: looking a lot of a lot of like this kind of system and what you're doing here is actually very much like these kind of things and then we just said okay let's let's begin this further and and and and we basically.
+Tim Pfeiffer, Ph.D.: started on covering out.
+Tim Pfeiffer, Ph.D.: thing coming like okay if this is how it's done in the brain and maybe we can make something more similar in in the mouth or in the implementation vice versa.
+Tim Pfeiffer, Ph.D.: And the paper is basically a first step where we had like.
+Tim Pfeiffer, Ph.D.: The three bits kind of in place, but we know where the open issues are.
+Tim Pfeiffer, Ph.D.: But it actually has something working on on and sensible on all three levels, I'd say, and that's that's that's where we we we are we are at this moment.
+Tim Pfeiffer, Ph.D.: awesome Thank you, Adam anything you add to that.
+Adam Pfeiffer, Ph.D.: I guess what I would add is and increasingly.
+Adam Pfeiffer, Ph.D.: compelled by the idea that.
+Adam Pfeiffer, Ph.D.: robotics as a touchstone and basis for understanding different aspects of mind is like it might be the most powerful kind of.
+Adam Pfeiffer, Ph.D.: grounded empiricism we can do and I think it's both because it's like the like a lot of times like that Feynman quote of like what I cannot build I cannot understand is like mentioned.
+Adam Pfeiffer, Ph.D.: But this is actually building systems that this is.
+Adam Pfeiffer, Ph.D.: That have to work and and but these problems like in going through them and looking at the different solutions like the kind of understanding you get, I think, is really unique.
+Adam Pfeiffer, Ph.D.: But also, I think it's particularly apps because of what our minds other than control cybernetic control systems for bodies that have to move through the world.
+Adam Pfeiffer, Ph.D.: And so this idea that like the way roboticists are approaching it like it's.
+Adam Pfeiffer, Ph.D.: And that is the exact problem that nature had to solve, but natural selection has itself another question was it the same.
+Adam Pfeiffer, Ph.D.: It might be in some cases because you'd expect you know within you know bonds not nature to be a fairly clever blind designer.
+Adam Pfeiffer, Ph.D.: In terms of what it might discover and so just this going back and forth between the the robotics perspective.
+Adam Pfeiffer, Ph.D.: And the how it might work in biology and then this abstract ways that they're the the the abstract algorithmic implementations of them for the robots and seeing how those can mutually inform each other it's for me it's a.
+Adam Pfeiffer, Ph.D.: This is how I basically want like all my thinking about the mind to be from now on like I feel like this is just like this is how it does this is the most powerful way of thinking on it that back and forth.
+Adam Pfeiffer, Ph.D.: Let's enter in the biological door or blue do you have a question.
+Adam Pfeiffer, Ph.D.: Okay, so Adam what.
+Adam Pfeiffer, Ph.D.: Even though of course it's a deep area and there's writing in the paper and citations and so on, what is so interesting about the structuring of the grid cells through space and time and what can we learn from that about effective ways of navigating.
+Adam Pfeiffer, Ph.D.: So.
+Adam Pfeiffer, Ph.D.: In latent slam.
+Adam Pfeiffer, Ph.D.: We have these pose cells and actually I think.
+Adam Pfeiffer, Ph.D.: Probably better for Tim to talk about that, like the exact ways in which these cells function within the robotic system.
+Adam Pfeiffer, Ph.D.: I think that actually brings more clarity than the more mysterious like so there's lots of ideas been going around in like computational neuroscience of like what the grid cells might do.
+Adam Pfeiffer, Ph.D.: But I actually think the greatest clarity comes from like well how would the analogs work in the robotic system so I'm gonna kick that to Tim what do you think Tim.
+Tim Pfeiffer, Ph.D.: yeah so I think that in.
+Tim Pfeiffer, Ph.D.: You know current implementation, the.
+Tim Pfeiffer, Ph.D.: The parallel with grid cells is kind of.
+Tim Pfeiffer, Ph.D.: Part wired in the limitations kind of this by design, you have something that looks.
+Tim Pfeiffer, Ph.D.: If you screen your eyes a lot.
+Tim Pfeiffer, Ph.D.: It looks a bit like grid cell.
+Tim Pfeiffer, Ph.D.: I think that's in.
+Tim Pfeiffer, Ph.D.: You know current implementation, the.
+Tim Pfeiffer, Ph.D.: The parallel with grid cells is kind of.
+Tim Pfeiffer, Ph.D.: Part wired in the limitations kind of this by design, you have something that looks.
+Tim Pfeiffer, Ph.D.: If you screen your eyes a lot.
+Tim Pfeiffer, Ph.D.: It looks a bit like grid cell I wouldn't say that we actually have.
+Tim Pfeiffer, Ph.D.: Grit cells in here.
+Tim Pfeiffer, Ph.D.: Because to me the grid cell is basically.
+Tim Pfeiffer, Ph.D.: It should be an abstract.
+Tim Pfeiffer, Ph.D.: It should be.
+Tim Pfeiffer, Ph.D.: Given you a way of.
+Tim Pfeiffer, Ph.D.: Of.
+Tim Pfeiffer, Ph.D.: Modeling movement in an abstract space basically.
+Tim Pfeiffer, Ph.D.: And in the case of navigation.
+Tim Pfeiffer, Ph.D.: The space by accident maps to.
+Tim Pfeiffer, Ph.D.: The real world.
+Tim Pfeiffer, Ph.D.: And the grid cell activation is just the.
+Tim Pfeiffer, Ph.D.: The computer way of.
+Tim Pfeiffer, Ph.D.: And coding.
+Tim Pfeiffer, Ph.D.: Where you are in space.
+Tim Pfeiffer, Ph.D.: Without.
+Tim Pfeiffer, Ph.D.: Without just giving you the x y coordinates basically.
+Tim Pfeiffer, Ph.D.: With a more kind of.
+Tim Pfeiffer, Ph.D.: Higher dimensional.
+Tim Pfeiffer, Ph.D.: More robust representation of.
+Tim Pfeiffer, Ph.D.: Where are you on in this on this grid and how do you if if I now move.
+Tim Pfeiffer, Ph.D.: How does how does your.
+Tim Pfeiffer, Ph.D.: Location in in in this reference frame or the.
+Tim Pfeiffer, Ph.D.: Gifts change.
+Tim Pfeiffer, Ph.D.: And so in our in our implementation we basically just said okay, we know that we are in a roughly flat surface world, so the main coordinates that we need to track and integrate over are the x x y position and.
+Tim Pfeiffer, Ph.D.: The head direction, these are basically the main things and I mean we use this thing called the continuous attractor network to kind of represent.
+Tim Pfeiffer, Ph.D.: These three coordinates and.
+Tim Pfeiffer, Ph.D.: We basically.
+Tim Pfeiffer, Ph.D.: We inject the knowledge that if you move forward, then.
+Tim Pfeiffer, Ph.D.: You will also move forward to within this.
+Tim Pfeiffer, Ph.D.: The tractor network location and.
+Tim Pfeiffer, Ph.D.: Roughly, this this corresponds to doing kind of ball integration and i'm pretty sure that grid cells are.
+Tim Pfeiffer, Ph.D.: Giving you similar functionality.
+Tim Pfeiffer, Ph.D.: In the brain, that I would not say that our current implementation actually has grid cells, I think the parallel is more with play cells.
+Tim Pfeiffer, Ph.D.: Because there we do have kind of we do learn representations from visual sensory inputs that kind of give you an estimate of this is a particular location.
+Tim Pfeiffer, Ph.D.: And if you see a similar pattern, then.
+Tim Pfeiffer, Ph.D.: It is likely that you are visiting the same location again.
+Tim Pfeiffer, Ph.D.: And it.
+Tim Pfeiffer, Ph.D.: At the same time, you happen to have a very similar X, Y and head direction as in your.
+Tim Pfeiffer, Ph.D.: As in your previous time, you you kind of saw something still like that.
+Tim Pfeiffer, Ph.D.: Then you have pretty good evidence that you are actually in the same spot and then this is what you then call loop closure and then you kind of reorient yourself as if you were at the same location.
+Tim Pfeiffer, Ph.D.: So that's kind of how I would.
+Tim Pfeiffer, Ph.D.: Think of the grid cells and play cells in our current in our current group.
+Tim Pfeiffer, Ph.D.: Thank you blue do you have any questions, yes, please go for it.
+Tim Pfeiffer, Ph.D.: So i'm curious as to the role, if any, or how the system may change if you included proprio reception, which is like the sense of where your body is in space.
+Tim Pfeiffer, Ph.D.: And so like this is partially modeled through the visual system at play cells, grid cells, etc. But it's it's not always right.
+Tim Pfeiffer, Ph.D.: So it includes other senses like balance and you know where's my hand and these kinds of things and i'm just curious if your model includes that in any way or only or not or how it may change if it did give it give it kind of like a more embodied.
+Tim Pfeiffer, Ph.D.: yeah so so basically in our case the proprioception is limited to.
+Tim Pfeiffer, Ph.D.: Basically, the the the velocity commands that you that you issued to the to the robot, it also observes these again, so it assumes that it knows which command sending and it then these are also kind of.
+Tim Pfeiffer, Ph.D.: That back to the model as kind of a sensor, so if you say drive forward or turn left or turn right with these kind of angular velocities this information is also sent.
+Tim Pfeiffer, Ph.D.: into the model and this is then what we call the action so everywhere where in the especially in the low level model you see the action pop up this is basically you can you can see this is kind of a proprioception.
+Tim Pfeiffer, Ph.D.: thing.
+Tim Pfeiffer, Ph.D.: And so everything.
+Tim Pfeiffer, Ph.D.: kind of predicts what will happen given.
+Tim Pfeiffer, Ph.D.: Given what I I sense that I was doing basically.
+Tim Pfeiffer, Ph.D.: And and we do it both for the for the visual sensor like what would I see if I if I'm turning left or right to go for but also for.
+Tim Pfeiffer, Ph.D.: tracking the the pose and doing the pattern integration like if I move forward and my heading was zero angle, then I will probably just move forward in the x direction of the of the.
+Tim Pfeiffer, Ph.D.: of the.
+Tim Pfeiffer, Ph.D.: of the.
+Tim Pfeiffer, Ph.D.: of the.
+Tim Pfeiffer, Ph.D.: of the.
+Tim Pfeiffer, Ph.D.: of the.
+Tim Pfeiffer, Ph.D.: of the.
+Tim Pfeiffer, Ph.D.: And that introduction of counterfactuals and anticipation, what would happen if I did this is very interesting area.
+Tim Pfeiffer, Ph.D.: And also it it speaks to the composability and the flexibility of the active inference model like said highlighted that only the visual data were being used here with RGB values of video, but there are other kinds of sensors.
+Tim Pfeiffer, Ph.D.: that could be used as another sense state and that would kind of increase the dimensionality of the model.
+Tim Pfeiffer, Ph.D.: Maybe it is a value add maybe it's not, but it doesn't require.
+Tim Pfeiffer, Ph.D.: rewriting it's like more like plugging in a different hard drive than it is like having a different computer.
+Tim Pfeiffer, Ph.D.: So you mentioned a higher dimensional robust representation of location.
+Tim Pfeiffer, Ph.D.: And that's definitely one of the advantages and and aspects of the model that will be important to explore more like in the dot zero we explored this paper.
+Tim Pfeiffer, Ph.D.: Are we ready for service robots that showed how sometimes even trivial changes to environments can result in the robot getting lost because it has referenced to something like a chair that's no longer at the same location.
+Tim Pfeiffer, Ph.D.: So how does this model.
+Tim Pfeiffer, Ph.D.: Provide a higher dimensional robust representation of location.
+Tim Pfeiffer, Ph.D.: And how did you go from thinking about that to the actual way that the generative model is framed.
+Tim Pfeiffer, Ph.D.: That's the first question, and then the second part is going to be about how do you go from the framing to the actual computational implementation.
+Tim Pfeiffer, Ph.D.: But just the first stage of this pipeline, how do we go from wishing upon a star that we could have biologically inspired resilient navigation to writing down the formalisms as you had them.
+Tim Pfeiffer, Ph.D.: So.
+Tim Pfeiffer, Ph.D.: To get back at your at your first at the problems that you that you mentioned on the on the service robot like so basically the major problem in in in robotic slam.
+Tim Pfeiffer, Ph.D.: Is that indeed if your environment changes slightly a bit, then then the same location doesn't look the same anymore in whatever sense for what you're using.
+Tim Pfeiffer, Ph.D.: And that can be problematic, especially if you if you want to model the environment as like a metric system where you basically define this is my origin.
+Tim Pfeiffer, Ph.D.: So this is zero zero in the coordinate system and now I will.
+Tim Pfeiffer, Ph.D.: For every obstacle or thing that I approach I will love my estimation of the X Y coordinates and and then suddenly when your chair moves, of course, yeah.
+Tim Pfeiffer, Ph.D.: Everything breaks but here and in this system, we actually get rid of being grounded in in in in a metric space. The only thing that matters is that.
+Tim Pfeiffer, Ph.D.: This location looks very similar to something I visited before, it also seems likely given the the pet integrated.
+Tim Pfeiffer, Ph.D.: trajectory, I assume I was following. So this might be the same spot. And if you think that or if the chair moves.
+Tim Pfeiffer, Ph.D.: In the place.
+Tim Pfeiffer, Ph.D.: That's fine, then you just say okay, maybe it's a different spot. It doesn't matter.
+Tim Pfeiffer, Ph.D.: At some point, you will have a kind of a queue that is stable, right? So and that's actually what we also do as humans that you want to navigate, you just look for the the the queues that you are that you know that are pretty stable.
+Tim Pfeiffer, Ph.D.: If you visit the new town, you will look for the church tower because you know it will not move.
+Tim Pfeiffer, Ph.D.: You will not orient yourself based on the color of the cars that are parked somewhere. So I think by by using the active inference principle as as like starting point, you can you can get rid of all a lot of these these problems because your agent will automatically.
+Tim Pfeiffer, Ph.D.: Look for the stable use and if suddenly the environment changes, but just accept this and just model it as like, okay, I think I mean I'm revisiting this same trajectory, but now it looks different. So maybe I just have to model it as such as this is kind of a trajectory that can change often.
+Tim Pfeiffer, Ph.D.: And maybe this implied that if you plan the next time you draw a prefer a different trajectory where you know that everything is stable, right? So this is the same as as reducing your ambiguity.
+Tim Pfeiffer, Ph.D.: So I think that getting rid of everything's to be structured in this x y location in the metric space and else I don't know what's going on just by getting rid of that and and just assume anything can happen anything can change and if it does not change.
+Tim Pfeiffer, Ph.D.: I prefer I prefer I like it better. This helps a lot to circumvent a lot of the traditional problems that say
+Tim Pfeiffer, Ph.D.: Cool. Adam anything to add on that.
+Adam Pfeiffer, Ph.D.: I mean, so one of the things that we've been working on is so like in this paper, it's like trying to say like, okay, so to what degree are the principles of the
+Adam Pfeiffer, Ph.D.: Are the principles of what we understand about like the natures of like the hippocampal and entorhinal system being reflected in this simultaneous localization and mapping problem and latent slam.
+Adam Pfeiffer, Ph.D.: And some of the other work we're doing is also going reverse direction of
+Adam Pfeiffer, Ph.D.: What you know what can these principles of the slam principles use for autonomous navigation.
+Adam Pfeiffer, Ph.D.: What can they tell us about the brain functioning as a cybernetic system. And so what one idea in general is that each of these operations, in addition to having this fundamental significance of the basics of being able to move through the world, this, you know.
+Adam Pfeiffer, Ph.D.: Task that any active inferential system that's
+Adam Pfeiffer, Ph.D.: going to survive and do what it needs to do has to handle but
+Adam Pfeiffer, Ph.D.: To what extent.
+Adam Pfeiffer, Ph.D.: Were these same principles repurposed for sophisticated inference more generally and they're actually and to what degree is sophisticated inference structured according to slam principles.
+Adam Pfeiffer, Ph.D.: And so.
+Adam Pfeiffer, Ph.D.: So if you're talking about like these like loop closure events like this finding this highly familiar state and where you think you know where you are by this.
+Adam Pfeiffer, Ph.D.: convergence of like your trajectory information and your pose.
+Adam Pfeiffer, Ph.D.: Well, this question would be like this is a model potentially for the feeling of insight or discovering of like causal accounts.
+Adam Pfeiffer, Ph.D.: Is this.
+Adam Pfeiffer, Ph.D.: And is this actually a intern intra individual source of inter individual differences, which would be fairly fundamental like how familiar do you think things are or not.
+Adam Pfeiffer, Ph.D.: How much do you update on accounting or encountering these highly familiar situations and so like.
+Adam Pfeiffer, Ph.D.: So me personally i've been wondering is okay so to what extent like of all the details.
+Adam Pfeiffer, Ph.D.: So towards degree so re representing the biological details in terms of the kinds of descriptions that TIM is giving here and also though thinking of cognition more generally as navigation.
+Adam Pfeiffer, Ph.D.: And so thinking of like each of these things, what are the analogs at the level of thought.
+Adam Pfeiffer, Ph.D.: As a kind of navigation through generalized space.
+Adam Pfeiffer, Ph.D.: Awesome.
+Adam Pfeiffer, Ph.D.: Matt there's been a navigation group.
+Adam Pfeiffer, Ph.D.: A lot of interesting work on exploration exploitation in mind and space hills at all 2015.
+Adam Pfeiffer, Ph.D.: And on thinking about planning and the evolution of planning as being related to spatial as well as cognitive foraging blue.
+Adam Pfeiffer, Ph.D.: So it's interesting to think about cognition as navigation like I think about the feeling that I have when I'm like searching for a thought a word a name of a person like it literally feels like a.
+Adam Pfeiffer, Ph.D.: Like you're scrolling through a filing cabinet like physically looking for this like piece of information in your brain and I know that like.
+Adam Pfeiffer, Ph.D.: Different neurons like store different pieces of information like the Jennifer Aniston neuron and and these kinds of things.
+Adam Pfeiffer, Ph.D.: So I wonder what um.
+Adam Pfeiffer, Ph.D.: Can you just elaborate maybe a little bit more on that Adam about like cognition as navigation is it like literally navigating to find the right like neuron that goes ding ding ding ding ding like that's the one I wanted.
+Adam Pfeiffer, Ph.D.: So like.
+Adam Pfeiffer, Ph.D.: To some degree, it could be in that like.
+Adam Pfeiffer, Ph.D.: It's like two ways I might think of it as one of like you were talking or.
+Adam Pfeiffer, Ph.D.: Before you really bring up like memory palaces.
+Adam Pfeiffer, Ph.D.: And I think that'd be like one example of thought is navigate navigation, which is like with this like art of memory in terms of like it can be like part of the way we.
+Adam Pfeiffer, Ph.D.: Access and organize.
+Adam Pfeiffer, Ph.D.: The information we work with when we're thinking is through a kind of spatialization often and actually like to the extent that we show like really great for true awesome memory it's through an explicit process of spatializing and navigating through domain.
+Adam Pfeiffer, Ph.D.: And that gives us like the best purchase we have on.
+Adam Pfeiffer, Ph.D.: You know, remembering these building constructing and accessing these complex structures.
+Adam Pfeiffer, Ph.D.: But in terms of what you're describing of like something kind of like Jennifer Anderson or like neurons are like kind of finding.
+Adam Pfeiffer, Ph.D.: The thing that's coming to mind there is like foraging theory and so what you might be foraging for like when you're like looking for like something that fits.
+Adam Pfeiffer, Ph.D.: It is a certain amount of like familiarity or like some amount of like, you know, it could take different forms like you know some sort of.
+Adam Pfeiffer, Ph.D.: Maybe maybe it's a interoceptive code and it's like like a visceral feeling of like compelling this or maybe it's like a more of like a proprioceptive code and it's like tension in the body.
+Adam Pfeiffer, Ph.D.: I don't know what it might be, but this like you're there's some sort of greed you're having on are you finding what you're looking for.
+Adam Pfeiffer, Ph.D.: And so then the idea would be like you're foraging for it and so you might spend a little bit of time in some area of conceptual space and you're kind of moving around in there like trying out different permutations.
+Adam Pfeiffer, Ph.D.: And then you're like, no, I'm not finding it and then you might do like a different tack and then move to another area of semantic or conceptual space and you're searching around there and so like in forging theory, these would be called I believe levy flights.
+Adam Pfeiffer, Ph.D.: And so there's like something called the marginal value theorem, which is like if you're trying to be an optimal forager.
+Adam Pfeiffer, Ph.D.: You're trying to like balance expiration exploitation and so you don't want to spend too long in a given like patch.
+Adam Pfeiffer, Ph.D.: If it's not having what you want, but you you don't want to leave a patch prematurely if it's a good patch to be exploited.
+Adam Pfeiffer, Ph.D.: And so the idea is like if you're looking for like searching for a name or something that fits it might take the form of this kind of like general.
+Adam Pfeiffer, Ph.D.: Foraging but instead of you like locomoting through spaces you're actually spending different amounts of time and semantic spaces and then shifting based on whether you think you're actually it's like a juicy patch.
+Adam Pfeiffer, Ph.D.: And so like with the marginal value team it says like if your current rate of foraging drops below the historical return then you should.
+Adam Pfeiffer, Ph.D.: Then you should then you should go.
+Adam Pfeiffer, Ph.D.: And so this like there might be different like inductive biases in the brain that would represent this like the campus system.
+Adam Pfeiffer, Ph.D.: This might look like, for instance, like the way by plan is like you might get like this.
+Adam Pfeiffer, Ph.D.: Pretty pretty pretty pretty pretty pretty drops below a certain amount or goes past a certain amount.
+Adam Pfeiffer, Ph.D.: And then the hippocampal system like ramps up with a lot of her current activity is called like a ripple and then it resets itself and like retiles space and like stimulates cortex like a new like set of operative policies and spatializations.
+Adam Pfeiffer, Ph.D.: Might occur and so like this would be like an example like a mechanism like hippocampal system might have like a built in mechanism for like these like attentional shift and shifts in these imaginative shifts when you're doing foraging.
+Adam Pfeiffer, Ph.D.: It might be reflected also in like other ways like like dopamine.
+Adam Pfeiffer, Ph.D.: So there's like some thoughts on my thinking like Nathaniel Dahl will talk about like one way of interpreting opponents between like phasic and tonic dopamine would be like the tonic would tell you like what's your average return basically.
+Adam Pfeiffer, Ph.D.: And there seems to be like a kind of functional I don't know if it's not quite antagonism, but like the more your tonic is high, the more your the less impactful any phasic event is.
+Adam Pfeiffer, Ph.D.: And so it would be kind of like if you're foraging like what would occasion a shift or not, you might actually see this like playing out like in the way neuromodulators work.
+Adam Pfeiffer, Ph.D.: And so I don't know if I like helps you know, but the idea is like this is the sort of like thinking in terms of forging or navigation through generalized spaces as basically being.
+Adam Pfeiffer, Ph.D.: So the reason like, you know, so I guess there's like a kind of like a priori reason like you would expect it to be.
+Adam Pfeiffer, Ph.D.: Generally good, which is doesn't everything like most of the things we encounter do indeed exist in spaces and then most things the way we understand them is by like spatializing them.
+Adam Pfeiffer, Ph.D.: Let's like we graph them we we do like multi dimensional scale and we do different things to try to like it's just like a way we understand things.
+Adam Pfeiffer, Ph.D.: But it also seems like this was probably both evolutionarily and developmentally like this was the original challenge that had to be solved where the systems were paying their weight and that this would then involve like a repurposing and a redeploying for more abstract domains.
+Adam Pfeiffer, Ph.D.: So like there's some other like I think it's Burgess has done some good work, right, finding like, for instance, like we might create like a morpho space and we're like looking like.
+Adam Pfeiffer, Ph.D.: Like they'll create like these generative like birds with like different like neck lengths and you're trying to do like categories over like what the different kinds of birds are and there's like there's evidence that the way we do the categorization as well create a spatialization of this task structure.
+Adam Pfeiffer, Ph.D.: And there's some other stuff that the capital system is we're navigating through that in dealing with these categories.
+Adam Pfeiffer, Ph.D.: I know so that's that was a lot of rambling but like I don't know if that got it with any of that land or.
+Danielle Pletka, Ph.D.: Yeah, lots of it landed is very cool.
+Thank you.
+
+Adam Pfeiffer, Ph.D.: One note that will I'm sure be exploring going forward optimal foraging theory is often put in the context of utility, which is a.
+Adam Pfeiffer, Ph.D.: Which is just the pragmatic component in active inference in terms of policy selection.
+Adam Pfeiffer, Ph.D.: So optimal active inference foraging is like when the epistemic and the pragmatic gain are being considered.
+Adam Pfeiffer, Ph.D.: So that's quite interesting.
+Adam Pfeiffer, Ph.D.: And then also there's as you brought up individual and collective navigation.
+Adam Pfeiffer, Ph.D.: So one case is sort of the sovereign robot, no Wi-Fi onboard computation alone in the warehouse.
+Adam Pfeiffer, Ph.D.: But then in the case of, for example, an ant colony where there's stigmergy and modification of the environment,
+Adam Pfeiffer, Ph.D.: that might be possible or even facilitated by different onboard cognition and different outsourced or offloaded,
+Adam Pfeiffer, Ph.D.: which brings us to extended cognitive discussions.
+Adam Pfeiffer, Ph.D.: But let's return to this question about going from this resiliency of navigation that a biologist knows exists, a roboticist might want to see.
+Adam Pfeiffer, Ph.D.: How did you then go to that third space and actually have a hierarchical model?
+Adam Pfeiffer, Ph.D.: So here in figure two or wherever else you suggest, what is happening here and how did this graphical structure come to be,
+Adam Pfeiffer, Ph.D.: as opposed to potentially like other graphical structures that could have been used?
+Adam Pfeiffer, Ph.D.: Okay, so basically, let me first maybe explain what all the variables mean in this figure.
+Adam Pfeiffer, Ph.D.: So going from the bottom to up, at the bottom we have the O's, OTs, which are basically observations.
+Adam Pfeiffer, Ph.D.: So these are like the visual inputs, what the robot T's basically.
+Adam Pfeiffer, Ph.D.: And then we have two latent variables, S and P, where S is basically an estimation of all the latent factors that give rise to the observation.
+Adam Pfeiffer, Ph.D.: So this is, it's kind of a latent space that confines all possible visual observations.
+Adam Pfeiffer, Ph.D.: And P, on the other hand, is the latent variable that has a representation of your pose, which is then basically,
+Adam Pfeiffer, Ph.D.: in this case, your x, y position and head direction.
+Adam Pfeiffer, Ph.D.: And then we go, we have one more, which is the A, the action.
+Adam Pfeiffer, Ph.D.: And so that's what I hinted at previously.
+Adam Pfeiffer, Ph.D.: This is basically your proprioception.
+Adam Pfeiffer, Ph.D.: You know, you know what you have been doing.
+Adam Pfeiffer, Ph.D.: So there, therefore, up until the past, the 80s are also shaded.
+Adam Pfeiffer, Ph.D.: So it means that you basically have access to what you have been doing.
+Adam Pfeiffer, Ph.D.: Like the low level action, like move forward to this velocity or turn left or turn right.
+Adam Pfeiffer, Ph.D.: But then for the future, this becomes an unobserved thing and you basically want to infer potential actions you should be doing in the future.
+Adam Pfeiffer, Ph.D.: And then for the future, a number of actions can be just summarized as pi, which is then the policy.
+Adam Pfeiffer, Ph.D.: So the policy is no more than a sequence of future actions that you that you that you want to do or that you intend to do.
+Adam Pfeiffer, Ph.D.: And then we move up a level in hierarchy.
+Adam Pfeiffer, Ph.D.: And there we have two more variables. One is the location L, and this is then basically kind of a more coarse grained.
+Adam Pfeiffer, Ph.D.: Yeah, look representation of location where am I, but it's not really it's not necessarily tight to a metric space.
+Adam Pfeiffer, Ph.D.: It's just like identify this is a location and then we have also an action space at this level, but this is the more.
+Adam Pfeiffer, Ph.D.: We call this moves or M and the move is basically kind of moving from one location to another.
+Adam Pfeiffer, Ph.D.: So locations can just be more coarse grains like what you what you define as like a separate location in in in your environment.
+Adam Pfeiffer, Ph.D.: Whereas at the lower level, the the the states, if you move from one states to the other, it's basically just saying, Okay, what would be the next frame of my camera sensor be like.
+Adam Pfeiffer, Ph.D.: And so it's also crucial to know that these two levels operate on different kind of time scales.
+Adam Pfeiffer, Ph.D.: So the the lowest level time scale is basically a very fine fine grained action perception loop by I send the motor commands to the robots and I read out my camera and this can go to.
+Adam Pfeiffer, Ph.D.: I think we implemented it at like 10 hertz, so 10 times per second to get a new camera frames and updated the motor command.
+Adam Pfeiffer, Ph.D.: Whereas locations just like and moving from a location to another can can take you maybe 10 or more time steps at the lower level.
+Adam Pfeiffer, Ph.D.: And then, of course, one of the crucial bits is then when when do you how do you then how do you identify a location.
+Adam Pfeiffer, Ph.D.: And so basically how how it comes to be is that if you you you you you basically observe your your your space to the camera images, we infer this abstract state space s and then we look at what what is the surprise of being in the states versus what I predicted and if this surpasses like a certain threshold.
+Adam Pfeiffer, Ph.D.: So yeah, yeah, so this is pretty complex to explain, but I'll do my best so so every time every time step you get basically a new camera image and you can calculate like what is what is the KL divergence between what I was thinking about the state previously and how does it how did the shift.
+Adam Pfeiffer, Ph.D.: With my new observation is then basically your kind of the patient surprise that you have from seeing this observation and every time step we accumulate like this number.
+Adam Pfeiffer, Ph.D.: And once we suppose certain threshold, which is kind of a hyper parameter, we just fix it that something that seems to work.
+Adam Pfeiffer, Ph.D.: So if you suppose this threshold to basically say okay, this is now distinct enough from and thanks to before.
+Adam Pfeiffer, Ph.D.: So it must be something new, it must be a new kind of location in my net and then you add this thing as a distinct distinct location in your map and you add like a link from the previous location to this one.
+Adam Pfeiffer, Ph.D.: And you start and then you continue further on building the map and this is how you then kind of create this more course great.
+Adam Pfeiffer, Ph.D.: Map of your environment and.
+Adam Pfeiffer, Ph.D.: And you can then reason like how should I move from this location to another and you then can you can basically use your.
+Adam Pfeiffer, Ph.D.: Your previously visit locations and moves to kind of have a model of how can I move in this space, but at the more course great level moving from one location to another and it also means that.
+Adam Pfeiffer, Ph.D.: By by using this surprise on the third lane space that that we infer from from visual input.
+Adam Pfeiffer, Ph.D.: It means that it it's not not every edge has the same distance in real space necessarily so if you're if you're the robot is traversing.
+Adam Pfeiffer, Ph.D.: A white hallway where the walls are perfectly white and everything that everything is the same.
+Adam Pfeiffer, Ph.D.: Then it will take a long time for this special to be be reached and it will only.
+Adam Pfeiffer, Ph.D.: At larger distances, make a new note because everything looks the same anyway, so there's no extra information that I need to put in the map, but if you then suddenly.
+Adam Pfeiffer, Ph.D.: See a door, for example, then you suddenly reach your threshold and you add a new.
+Adam Pfeiffer, Ph.D.: location in your map and so it's basically the locations in the map are basically defined off on what is the information I got by looking at this thing, rather than.
+Adam Pfeiffer, Ph.D.: How much meters that I traverse in this in this time and that makes it a really interesting way of representing maps because it's more like how much information.
+Adam Pfeiffer, Ph.D.: Is there in this particular location rather than which XY look position is here.
+Adam Pfeiffer, Ph.D.: Does it make sense.
+Adam Pfeiffer, Ph.D.: Yeah, and it feels to map onto the distinction between like chronos and kairos like in this analogy here.
+Adam Pfeiffer, Ph.D.: Chronos is the chronometer.
+Adam Pfeiffer, Ph.D.: It's the watch time.
+Adam Pfeiffer, Ph.D.: It's the geometry.
+Adam Pfeiffer, Ph.D.: It's the XY grid.
+Adam Pfeiffer, Ph.D.: It's one meter.
+Adam Pfeiffer, Ph.D.: And then kairos is like the timeliness of action and the time it takes to complete an action.
+Adam Pfeiffer, Ph.D.: And then something being like boring.
+Adam Pfeiffer, Ph.D.: That's going through a low information hallway in the cognitive foraging.
+Adam Pfeiffer, Ph.D.: It's like, are we there yet driving through this featureless landscape where the salience is low because my predictions are basically being met almost too well.
+Adam Pfeiffer, Ph.D.: And there's a lot of other ways to go with it.
+Adam Pfeiffer, Ph.D.: Adam, anything to add?
+Adam Pfeiffer, Ph.D.: And also, again, I'm just kind of curious, like, what is the space of the possible graphical structures?
+Adam Pfeiffer, Ph.D.: Do you think that this is the only or the sort of grandfather graphical model for hierarchical navigation?
+Adam Pfeiffer, Ph.D.: Like, how do we go from imagining this tactics and strategy multi-level model to a graphical model that we believe will be consistent with active inference and amenable to message passing?
+Adam Pfeiffer, Ph.D.: And maybe so to add on this last question.
+Adam Pfeiffer, Ph.D.: I think Kristen has a paper on deep temporal hierarchical models where he basically lays out more generic.
+So like if you're looking at the ultimate generic hierarchical model, you'll find it there where it's basically just an aggregation of states that give rise to observations.
+Adam Pfeiffer, Ph.D.: That go from one state to another given an action, and then you can add the level on top and level on top and you can keep on adding levels.
+Adam Pfeiffer, Ph.D.: And that's kind of the prototypical hierarchical model, I would say.
+Adam Pfeiffer, Ph.D.: And what you see here is kind of particular instantiation where we took some domain knowledge like okay for navigation, what would be sensible levels to think about?
+Adam Pfeiffer, Ph.D.: And what would these latent states then what should they represent?
+Adam Pfeiffer, Ph.D.: And then, of course, you easily end up like okay at the lowest level, I need to have some state that represents my camera images and at the higher level.
+Adam Pfeiffer, Ph.D.: I want to have some locations in the map.
+Adam Pfeiffer, Ph.D.: And how do they then relate?
+Adam Pfeiffer, Ph.D.: Okay, I probably also want this this this fault integration, so maybe I I need to have a special special first class citizens here in the form of my force.
+Adam Pfeiffer, Ph.D.: And that's how you basically build up the model from first looking at this prototypical hierarchical model then looking at yeah but in my case, what do I think is sensible?
+Adam Pfeiffer, Ph.D.: What could these things mean and then try to figure out like okay.
+Adam Pfeiffer, Ph.D.: At this at this stage, we kind of converge on the one hand from top down like does the math work out to bottom up does this math match with my implementation?
+Adam Pfeiffer, Ph.D.: And then at some point, we converge to do this basically.
+Adam Pfeiffer, Ph.D.: So the high road and the low road, they do lead to Rome after all.
+Adam Pfeiffer, Ph.D.: Exactly.
+Adam Pfeiffer, Ph.D.: Adam, what would you add in there?
+Adam Pfeiffer, Ph.D.: Well, first I didn't.
+Adam Pfeiffer, Ph.D.: I love that metaphor just now.
+Adam Pfeiffer, Ph.D.: Another thing I would add is.
+Adam Pfeiffer, Ph.D.: So like, you know, on my end, like, I'm trying to use this as a way.
+Adam Pfeiffer, Ph.D.: Abstractions for understanding, you know, aspects of like brain functioning.
+So let's say we're talking about these.
+Adam Pfeiffer, Ph.D.: You know, this top level.
+Adam Pfeiffer, Ph.D.: This is one way of interpreting like the hippocampal place cells.
+Adam Pfeiffer, Ph.D.: And these, whether you create a new note or not, based on what threshold
+of familiarity or surprise.
+Adam Pfeiffer, Ph.D.: This would potentially be like an example, I think, of an extremely
+Adam Pfeiffer, Ph.D.: powerful source of individual differences.
+Adam Pfeiffer, Ph.D.: Like, maybe you could think of this in terms of like Piagetian like assimilation
+or accommodation.
+Adam Pfeiffer, Ph.D.: But you could see like if your thresholds are too low or too high, you
+Adam Pfeiffer, Ph.D.: could end up representing a domain in ways with, you know, that are either like,
+Adam Pfeiffer, Ph.D.: you can get things that are like excessively granular or insufficiently granular to
+Adam Pfeiffer, Ph.D.: represent the domain and you can get different types of errors associated with it.
+Adam Pfeiffer, Ph.D.: And so this, for instance, could define even things like more like some people will
+Adam Pfeiffer, Ph.D.: talk about like autism to schizophrenia spectrums and to accept there could be like kind of
+Adam Pfeiffer, Ph.D.: underlying predispositions for this.
+Adam Pfeiffer, Ph.D.: And it might actually be, I think that's an oversimplification, but you could think of these thresholds as
+Adam Pfeiffer, Ph.D.: some cognitive spectrums might just fall out of them as you get different types of minds.
+Adam Pfeiffer, Ph.D.: If you have like a more granular, like an overly inclusive or an underly inclusive category structure.
+Adam Pfeiffer, Ph.D.: But some other things like just trying on this would be like if we're talking about this, you know, lower level.
+Adam Pfeiffer, Ph.D.: And if we're thinking of like these entorhino grid cells as well, not quite being well, the posts here aren't quite grid cells, but this idea of like this.
+Adam Pfeiffer, Ph.D.: mapping of your.
+Adam Pfeiffer, Ph.D.: What your body position is and where you're oriented and then having this conjoined with what's in your visual field and then using these sources of information.
+Adam Pfeiffer, Ph.D.: To mutually constrain each other and using where you are in space.
+Adam Pfeiffer, Ph.D.: And these all being necessary, like, for instance, this seems to be, you know, fundamentally what was needed to get the robots to work and we have not so dissimilar sensors and effectors.
+Adam Pfeiffer, Ph.D.: And so while one thought is.
+Adam Pfeiffer, Ph.D.: You know, I think it's.
+Adam Pfeiffer, Ph.D.: Giamme Duba has just messed up his name.
+Adam Pfeiffer, Ph.D.: But.
+Adam Pfeiffer, Ph.D.: He has this interesting paper and like default mode system as it's called a dark control and thinking of it is doing like tree search.
+Adam Pfeiffer, Ph.D.: But to loop it around this pose information, it's possible that some of the posterior nodes of the DMN are actually helping to encode this information.
+Adam Pfeiffer, Ph.D.: Like if you go like to the bridal portions that actually might be where is my body where it's reflected and then if you're going like to these midline portions of it.
+Adam Pfeiffer, Ph.D.: You know what's in my visual field or what am I imagining.
+Adam Pfeiffer, Ph.D.: And then, if you want to go for like this future part that might be like the anterior portions so like the DMN or the.
+Adam Pfeiffer, Ph.D.: Dorsal medial prefrontal cortex, maybe coupling with the hippocampus, the anterior hippocampus, but basically it would seem that like the stream.
+Adam Pfeiffer, Ph.D.: These core aspects of the model might be ways of functionally understanding the core aspects of an agent architecture.
+Adam Pfeiffer, Ph.D.: Used for mental simulation.
+Adam Pfeiffer, Ph.D.: That there seems to be a striking amount of conversions between the things that people like Tim are identifying as just like what's necessary.
+Adam Pfeiffer, Ph.D.: How do we solve the problem and the features of neuronal organization?
+Adam Pfeiffer, Ph.D.: That wouldn't be these.
+Adam Pfeiffer, Ph.D.: Defaults or canonical processes that you're seeing it as a.
+Adam Pfeiffer, Ph.D.: As really just fundamentally, you know, we call it the default focuses active all the time.
+Adam Pfeiffer, Ph.D.: What's it doing?
+Adam Pfeiffer, Ph.D.: Maybe part of what it's doing is it's allowing us to do this kind of navigation through space and time.
+Adam Pfeiffer, Ph.D.: Yeah, those are some thoughts.
+Adam Pfeiffer, Ph.D.: Navigation through space and time in the sort of territory sense would be clock time and metric space.
+Adam Pfeiffer, Ph.D.: What is your X, Y, Z, T and then navigation through mental space and time might have some resonances or analogies, but it's not a piece of grid paper.
+Adam Pfeiffer, Ph.D.: So what is it and how does it become realized through ecology, evolution and development?
+Adam Pfeiffer, Ph.D.: So awesome points.
+Thank you.
+Adam Pfeiffer, Ph.D.: Real quickly in terms of the time issue, it seems like there's these multiple ways that time comes in.
+Adam Pfeiffer, Ph.D.: It's like one sense of like the sense of time is you might be doing like accumulation based on like the the frequency with which you're having like meaningful informational events.
+Adam Pfeiffer, Ph.D.: Like, but Craig calls it these like global emotional moments.
+Adam Pfeiffer, Ph.D.: But and and Neil and others have some I think that Murray Shanahan have some interesting models like the sense of time in terms of like the amount of like information flux through your sensors.
+Adam Pfeiffer, Ph.D.: But then there's like another kind of time that might actually involve like overt spatialization of a trajectory.
+Adam Pfeiffer, Ph.D.: And you might be using something like path integration in terms of like how you're doing some types of duration estimation, not necessarily just like accumulating like like a sense of accumulation, but some of it might be like, where am I in navigating through a timeline?
+Adam Pfeiffer, Ph.D.: And I think you'll see this reflected in like the way people talk and we could like dismiss this and say, I go, that's just mere metaphor.
+Adam Pfeiffer, Ph.D.: No, I think that that metaphor is how we're actually constructing some sense of time, which actually gives us like forms of control that we would not have otherwise, were we not able to actually extend our minds metaphorically in that way.
+Adam Pfeiffer, Ph.D.: And then be able to basically navigate through spatialized time to keep track of some longer time sequences if we want to plan with respect to them.
+Adam Pfeiffer, Ph.D.: Awesome. Thank you, Stephen.
+Stephen B.: Hello, great to see you all.
+Stephen B.: Yeah, I was curious in terms of time. Well, one of the things is, do you think time is or this process is distributed around different parts of the sensor and processing because different sensor and have different speeds or different rates or different abilities.
+Stephen B.: And then the other thing coming back to time as well as people can be going through time.
+Stephen B.: They can be like or they can be time can come towards them or time can be sort of developing around them, which often happens in Asian cultures. It's a time is seen more as a something that's around them. So I'm curious, like how these these ideas of temporality might might link to the ways that we imagine ourselves with ourselves.
+Stephen B.: We are sensor.
+Stephen B.: I mean, this is indeed the case that some forms of the spatialization of it, if it is the case of spatializing time, you know, the spatialization of the spatialization of the spatialization time.
+Stephen B.: Um, is happening both. Um, in some cases through some some fairly abstract metaphorical linguistic instructions, then this would imply that you should be able to get meaningful cultural information.
+Stephen B.: ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail ail
+constraints and affordances of our language are constraints and affordances on the way we think.
+There's like stronger and weaker versions of that hypothesis.
+Thank you. Blue?
+So it's interesting because as we've been talking about like spatial maps and spatial context,
+like spatial representation, navigating through space, I have been thinking a lot about
+semantic navigation also, like when we're looking for a thought, when we're looking for
+navigating foraging for information or in these context-rich domains.
+And I just wonder, is the semantic navigation related to, linked to, is there overlap in the
+brain and the way that we process semantic orientation and representation and space also?
+So I was just curious.
+Hashtag maps of meaning.
+Yeah, maybe I can respond on this from my perspective.
+And then I'll probably have to leave you guys.
+But so I think one of the most important things, at least to me, of how this whole endeavor of
+constructing this and doing this together with Adam is that we basically, we start off with
+robot navigation, which is from a roboticist perspective, it's really like about X and Y
+position and about X and seconds.
+But what we do here is we, by creating this model, we basically get rid of this close tie of being
+grounded in seconds and meters, basically.
+And I think this is one of the most crucial aspects of our model, because it shows that,
+well, on the one hand, I think we all agree that we don't get born measuring time in seconds
+and measuring space in meters.
+So that we actually get at least a framework that also gets rid of these metrics and just
+learns to navigate in this more abstract space.
+And if we can get it to work for navigation, per se, moving through actual physical space,
+then I'm pretty sure that we can also extend the model further to navigate any abstract space.
+Because in the end, once we get the level above our sensory inputs, then everything is, in our case,
+just a learned latent thing, basically.
+So if we can make this work for physical navigation, I think we are already a big step closer to making
+it work for any navigation, then indeed we come to the realm of like, okay, I have lots of memories,
+these are tied together somehow, because how these memories just came to be, can I now navigate this space
+towards the memory that I'm looking for?
+Or if you are solving a math problem, how do you navigate the space of math equations to get a solution for this thing?
+I think, once we get rid of the time and space that are so tight for your sensorium, and move towards a more abstract space,
+and be able to navigate that, this is the crucial bit here, I would say.
+And so with that, I'd like to thank you for the discussion till now, I'll try to be there next week as well.
+And I enjoyed the discussion further.
+Thank you, Tim.
+See you.
+Cool.
+Very interesting.
+And also speaking to that cultural basis, there was the inch, foot, pound paradigm.
+And that has, in certain places, also co-existed or been complementary or contradictory with the centimeters, grams, second, based upon something different.
+And what would happen if a larva was born and the little one, the second, was like what we call three seconds?
+Is that just a more chill larva?
+Because every one of its moments is taking a few more heartbeats.
+It can actually take a breath per little one.
+So there's a lot that we probably don't even know how much we don't know until we're in feedback with these models
+that both fully realize, not just in the equations, but in the actual robotics, grounding us in those actual observations of red, green, blue, pixel intensities,
+which is like what Adam was saying, that robotics are an empirical platform to be studying the nature of cognition and brain and mind.
+And then here is where we move into a different space and time.
+And so that is an excellent point by Tim.
+Stephen?
+Yeah, so following on from what you're saying, Daniel, is I know Tim just mentioned about, you know, have the abstracted ideas.
+But there's also maybe the grounded, you mentioned grounded ways of knowing.
+So it might be that the future we abstract out what we think it might be.
+And then there may be ways where we feel what's right, what feels.
+So you hit a door and you feel there's an information affordance and it can ground.
+So I was wondering how much that can.
+That supports not needing to have the metrics, like you say, and maybe the metrics that we've created, like the second,
+are partly because they're at that kind of sweet spot or somehow close to a sweet spot of what sort of makes sense.
+You know, someone had to decide on a foot or a hand, you know.
+So was it the small person's hand or was it the big person's hand?
+And they sort of said, well, what about John?
+And maybe it was the king, I don't know, but it got decided somehow.
+So I think this is a good question about grounding versus abstraction.
+I don't know what the thoughts are on that.
+Yes.
+This higher level in a purely metric model, it could be like, well, on the bottom level,
+we're dealing with centimeters and 100 milliseconds frames.
+And the core screening is at the level of 100 times the spatial distance and 100 times the temporal distance.
+What this model is doing is something different.
+And I think that is, again, this biological inspiration,
+which is that what is happening in the level that the action perception loop is nested within
+is not just a bigger version.
+Well, it both is and isn't because it has some resonance graphical structures
+that support the composability and attractability of act-inf models.
+Yet also it's doing something that's categorically different,
+which is navigating in a more topological space rather than the more geometric space down the bottom.
+What are you thinking about, Adam?
+Adam Chapnick, M.D.: It seems like with the, well, I guess one is, I suspect it is no coincidence that seconds
+are about the time extent that they are.
+And that we have like the metric units we use, like a foot or a meter or a yard in terms of like,
+in terms of grounding and in terms of connection to affordance.
+So like a second for maybe, you know, a relation to a certain, maybe like heart rate or certain like
+biophysical pattern generators or like the scope of working memory being an iconic memory,
+being stable on different scales or like a yard or a meter, like the, basically the reach
+that you'd have of your arm, like, like peripersonal space and like a field of affordances
+around your body where it's particularly concentrated.
+And so, you know, these are ways in which like, for instance, like the granularity of our modeling
+would be influenced by language or their language would reflect it and maybe to different extents
+influence it. But you would have like this other kind of granularity of space that might be different
+for different species, but also within a species and with an individual.
+Like for instance, like these like tilings of, so like, like the hippocampus system will like lay out
+these like tilings of space for a task domain and they'll have like a kind of, they'll be refreshed,
+like maybe it looks like every like three seconds or so. But if you're in like a big space,
+but this tiling will actually affect of hexagonal arrays or hexagonal time,
+it'll fill whatever space it's in and it'll have different levels of granularity.
+And so if you're in like a big space, it's going to necessarily be less granular.
+And if you're in a small space, it'll be probably be more granular, but there, and there's other
+things that will influence the granularity also, like there's like brainstem locomotor nuclei,
+they're like detecting how fast are you moving? And then this will influence the granularity of like your
+kind of, you know, kind of the, you know, some of this, what is relevant, some of this, this,
+our greening of a domain, some of it will be reflected by like these, basically innate, like by architectural,
+inductive biases and some of them will be more like socio-culturally constructed.
+One thing I just, we're moving on is I thought to say, I like how Tim, you know, as he left,
+like that was, that was one hell of a mic drop because, you know, the thing is like basically,
+you know, so he's already solved like in terms of kinds of grounding, like not only is this like
+potentially a way of having an architecture capable of navigating conceptual domains and abstractions,
+basically what Benji calls like system two AI, or what some would call like strong AI.
+But it's also grounding in that it actually works as a control system for an embodied embedded agent.
+And so now you might have a single system capable of both giving you symbol grounding by
+allowing something to be in the world alongside other agents and have actual, actual semantics,
+in terms of pointing to things in the world, like seeing, you can have like a semantic network,
+just like symbols pointing at symbols, but ultimately these, such a system would allow you to ground
+out your semantic network in things in the world and shared symbols. And so, I mean, ultimately this
+is a path to, you know, who knows how far, you know, anyone working on it today gets, but this is
+ultimately a path to AGI built that takes on an activist principles of what you would need to do so,
+which is more than a little exciting, I think.
+Oh, I'm starting to see why people are interested in this.
+Excellent point about the symbolic semantics and logic and how that connects to the inactive
+insight, the pragmatic turn, ecological psychology, biosemiosis, like all of these features that get
+left on the cutting block if we take a computational linguistics approach only. And computational
+linguistics plus the mouth movement, already one has incorporated that pragmatic turn and that embodiment
+element. And that's quite a different model than just the substrate independent symbol manipulator.
+Stephen?
+Yeah, I think it's exciting indeed, because it can open up a lot of, I'm really interested in mental
+space psychology and peripersonal space and working with space as an instrument. And well, I'm more than
+interested in it. That's my main focus in many ways. And, but what's really been the challenge is
+giving it a plausible bridge, right? Because they're working primarily, you're looking at what action
+policies are and what has been enacted. And it's very hard to go back to observations because you're
+coming from the other direction. So I think it'd be really interesting to see what this robot, whether
+you could actually see, well, what kind of robot is this robot? What's it like? What kind of story
+patterning gets triggered by this robot? And maybe if I, it grew up with a slightly heavier wheel on one
+side or something, it has a slightly different character, you know? So I mean, I wonder if there's
+a kind of an actual, a way that the action policies themselves start to encode a certain personality
+based on the physicality and sensorium that get weighted.
+I mean, that would be like, in terms of this like generalization of SLAM principles as like a way of
+understanding cognition, where generally, I think that would be like a great test case. And that like,
+those are the kinds of hypotheses you would look for. I think your, if your wheel is like weighted more
+heavily on one side or the other, that could have all sorts of things. Like for instance, like,
+like what Tim was describing, like this node creation, where it's not just a function of like a metrics,
+but on information. And the, and so this creates like a distorted space, but an adaptively distorted
+space, you would expect usually because multiple forms of value are influencing the granularity
+of this sort of space, like not necessarily as like a map. It's like space is a graph, but, but a graph
+being shaped by multiple kinds of value. And so you would expect things like, like that kind of real
+asymmetry you're talking about to result in different kinds of graph spaces. And this could then potentially
+have some transfer more generally across more than just physical spaces in theory. Also, you know,
+coming back to like that granularity issue, like, let's say like the way you move through the world
+is quicker or slower, that itself then might have transferred, not just to, well, how is it that I'm
+representing the space I'm physically moving through, but that then can get reflected in cognitive styles,
+in terms of like the way you, you relate to like semantic spaces, in terms of the way you,
+you're going to forge through them, what you consider to be near or far connections. So like,
+this is the kind of like, that would be like a whole research program, which would be, but using this
+as like a source of bridging principles of like, so some connection between embodied experience and
+then more abstract thinking, well, maybe this is a source of some of the ways in which concrete
+and body experiences go on to shape, basically thought on the more abstract level as well.
+Very, very interesting. And especially when we think about the mental action
+papers that we've read, like live stream number 25 with Sanved Smith et al. about metacognition as
+mental action. And so in this two level robotics case, we're talking about the sort of lower level
+motion and then the higher level navigation of locations where we can say, I want to go to the
+post office and then the grocery store, but then we have this more tactical taking a step
+timescale. That's a lot faster. If this bottom layer is based upon cognition and perception,
+also this higher level is not just navigation in the warehouse. That's actually like, where do I want
+to be in my regime of attention? Or what would I like to be considering from a metacognitive perspective?
+How do I navigate to a place where I prefer what's healthy for me? So there's all kinds of other
+questions about navigation in parameter spaces that are not just like topologically, the cousin of the
+warehouse space, but truly in the mental space fully. Blue, and then Steven.
+So since we brought up hierarchical, here in the paper, it looks like, and I mean, I can hold this
+for Tim, Adam, too, if you don't feel like comfortable talking about it, but maybe you're good.
+In the hierarchical space, it seems that it's just a core screening, like in this paper, right? So like,
+you know, the higher level is just like a coarse grained version of what happens at the lower level.
+And it's easy to see how that takes place or take shape in like a topographical way. It doesn't leave
+a lot of room for emergence. And I wonder, like, if we jump to thinking about a semantic space,
+you know, we have words and we've got the relationships with words to each other, proximity,
+you know, how close do you expect to find, you know, there to was or whatever. So how linked are
+the words together in a semantic space? But I wonder if, you know, you can go into topic modeling,
+and that gives you like a kind of a coarse graining. But like, is there more room for emergence in that
+kind of space, maybe? Or like, what other like, how do you I don't know, how would you just allow
+for emergent things to come through in this kind of hierarchical modeling or mapping?
+I think when Tim comes back, it could be worth it for him to go into more detail on the parameters
+that go into node creation or not. Because I feel like, to the extent that you're getting
+some flexibility in ways of understanding like emergence, that would be your models of emergence.
+And where that would be like where you would basically create this coarse grained ontology of
+different levels of granularity. What, what constitutes like an occasion for coarse graining of what kinds?
+It seems like the node creation would be where your assumptions about that, of what kinds of
+emergence you might be dealing with. That's where we'd come into this kind of model.
+Is it rich enough to account for like all of, I wouldn't quite say that, in terms of like, you know,
+all the different forms of emergence you can get. So some of it, you know, but that is for, but for,
+by enough, I mean, you know, enough to be, you know, a full on general intelligence. But,
+but, but, but I do think there is room for some, some flexibility there at that parameterization of,
+of, of Tim's model. But you, he would explain it better than I would.
+Tim Cynova
+Tim Cynova
+I'll, I'll make a comment and then ask a question in the chat and then also see you, Steven. So,
+it was mentioned that there is the embodiment of certain prior information in the continuous
+attractor network. Like if my position is this and I move forward, then that is putting me into this
+different position in the can. And blue asked about topic modeling and semantic spaces. So that territory is
+different. So the maps should be appropriately different. And so we could say, for example, like
+California is nested within the United States that is not violating any geographical priors. But what
+about a paper that's interdisciplinary that might be at the intersection of two different topics, or
+depending on how those topic models are generated, one could think of every paper as existing across
+100 different topics to different quantitative amounts. And so it actually does bring us to this
+question, which Sid has asked, which is we're hearing a lot in, in the paper, in the natural speech,
+and so on different complementarities, lower and higher. So here where the lower model is the finer
+scale and the red, I'm, I'm trying not to mix metaphors, but lower and higher is sometimes used with
+inner and outer or finer and coarser, coarse graining, more specific, more general. So
+what is that restaurant where those are the dishes?
+How could it something be above or below and you get it, but it could also be more like a kernel and
+more like the fruit and you get it. And it could be more like sand or more like gravel and you would get
+it. What does that mean or say? We'll think and then allow Adam to speak first.
+Adam Smith
+I think that's a deep and complex question. And there's a couple levels or a couple of entry points
+there. But one thing is like you mentioned, like inner and outer is another way of describing it,
+suppose higher and lower. And there's a, I think connection between this arc, this latent
+slam architecture and like, and meta learning where you're having like a more fine grained process
+for like, that's more task specific and for like adaptive fine grain couplings, but then you nest that
+further, you create like an outer loop, which is like a slower aggregation process that's coarser,
+but then allows for sharing of information across episodes.
+Adam Smith
+So it's a kind of like, so this is basically a kind of meta learning system and giving you this divide
+and conquer approach of like levels of granularity. I don't think anyone quite knows yet what the
+significance of this is. But one interesting thing about the grid cells is they seem to have
+a multi scale hierarchy in their organization in terms of there's this axis, I believe as you go,
+within entorhinal cortex, as you go more, like more dorsal to ventral or more superior to inferior,
+it you'll get these like discrete cutoffs of potentially implying some kind of
+harmonic nesting of scales, maybe even coupling with like multi scale, like synchronous dynamics and cortex
+unclear. But there does seem to be these like multiple scales reflected in the grid scales and internal crystals
+having different levels of granularity of their spatial representations.
+Adam Smith
+And the thing that's interesting, I'm curious about is like, what are the one thing I'm curious about is like,
+to what degree, for instance, do different like neuromodulator systems like some of the ways in which
+like, they could be understood in terms of like them having their functions, is maybe like influencing which
+granularity is most present, like moving into like, now in a situation of like attending to like the fine
+granules, and or this is a situation where we're going to really go coarse and just ignore those details.
+And that some neuromodulatory systems there, and their effects on like neural dynamics
+might actually be best explained, might be well explained in terms of this like adaptive changing of the
+adaptive changing of the granularity.
+Adam Smith
+Very cool. And we see that in teamwork, where sometimes it's time to control paste, and just fill
+out the spreadsheet. Other times it's time to add a column to the spreadsheet. Other times there are this
+open endedness to the task and including the local objectives, and also even broader mission and one's
+own relationship to the team and the project. So perhaps if there's a similar biological substrate,
+then it would stand to reason that there could be multiple representations that are emitted from some
+kind of common generative model. Stephen?
+Stephen
+
+
+
+
+
+
+
+Stephen
+
+
+
+I think that's the same thing that we're going to do with the central complex. And I feel like that's
+like, an area like I'm looking to look into next is like, to really understand these things, not just
+looking at the mammal case, but I want to look at the insect case with the central complex and see the
+similarities and differences, you know, what, what special adaptations were there? What, to what extent are
+the functions realized by similar means or different means, but this, in terms of like a way of
+understanding things like, like that neuromodulator hypothesis of like influencing the granularity of
+spatial modeling, it's possible, although I wouldn't, you know, necessarily, um, that on it, based on
+conversations with you, David, but like, um, it's possible that you're getting like extensive homology
+and common significances for things like flexible, influencing the granularity of the forging parameters,
+it's possible those are like remarkably conserved, and that you might actually see them.
+That being said, like you also were alluding to though, the SLAM instance is different in insects,
+that this is a, this is a multi-SLAM. Um, in general, there's a lot of multi-SLAM happening,
+you know, invertebrates also, but I think not to the same degree and that, so you might expect some
+potentially substantial differences there as a result of the SLAM problem being, having that
+additional weights, additional set of challenges and, um, sources of information it can leverage.
+David Plylari I can't wait for solitary WASP SLAM and
+eusocial colony SLAM. Stephen?
+Stephen From what I'm hearing, you could, you could correlate these multi-SLAMs to regimes of
+attention in many ways because that, that could dictate the nature of these granularities and where
+they are in the space, in the place, in the body. So, um, because we often assume, I think when Blue
+was saying there about there's, there's inner outer and the, some of those are also false assumptions that,
+that rolls out over everything that we assume. So in the sense that inner, um, is purer and higher is purer,
+but often, um, that might depend on the multi-SLAM that's being dunked at the time.
+Stephen Yeah. Like, um, one note then Blue, like coarser and finer, slower and faster. So one interpretation would be that the slower time scale is the coarser graining,
+uh, in the sense that it's like seconds, not milliseconds. And the finer is the faster.
+But there's also maybe an interpretation where actually the, uh, if you're clicking up mile by mile,
+instead of foot by foot, that is actually moving faster and it's coarser. And if you're counting grains of
+sand at a time, it's finer and slower. So I think even sometimes the direction that one interprets
+is not there, but it doesn't remove the dialectical nature or the intermodal nature, but the, the way that, um, is it going to be like, um,
+a sugar with all the OHs pointing down or all the OHs pointing up or some blend has to go one way or the other, but maybe it doesn't have to be any one specific way. Blue.
+Blue. So I am wondering, and this is also interesting in terms of the insect case,
+if there's some kind of, um, maybe like a generic, free installed, like readily adaptable coarse grained
+version of a place cell, like that's just kind of there as like a generic representation. So like a
+perfect example. I mean, when you're thinking about coarse graining, like a map at a location,
+like, you know, where everything is in your house, like, you know, where your bathroom is and you know
+where all the things are, but you know, when you travel, you have an expectation, even if you've
+never been to the hotel before, you have the expectation of what the elevator is going to sound
+like, how the carpet all looks the same with that funky, weird pattern and the hallways twist and turn.
+And like, when you get into the hotel room, there's going to be a bathroom and there's going to be a
+window and there's going to be a bed and a TV and a remote. So you have this like pre generic
+supposition of how the hotel is going to look. Does that live in a place cell somewhere that just like
+morphs into, oh, the bathroom's here and the lights here so that you're not stumbling around in the
+middle of the night. Like, and similarly, like there's all kinds of, when you go hiking, you know,
+you expect there to be trees and rocks and stuff outside. And so do you just like mash your map
+onto like some preexisting generic place holder, a place cell placeholder. It's interesting to think
+about.
+It's like a prior for the abstract space. So prior distribution over hotel rooms, which is totally
+in cultured and totally based upon experience. And then either one is surprised or not, just as with
+when any other prior meets sense. Adam, what do you think of that, Steve?
+I mean, these are details that are definitely like, after beyond the edge of anything, I or maybe anyone
+knows, but the I guess just like these, how many different, so one way that these place fields are
+sometimes modeled is in terms of like these like chain detractors. And so like within the hippocampus
+system, like you can get like this highly recurrent activity, especially in some of the subfields.
+And you can set up like this set of these densities of recurrent activity. And then you can have like
+information kind of moving between them as a like predictive map, not just of like, not just like,
+here's the things, but, you know, people debate how the best things like Gershman talks about
+successor representations, but that there's a transition structure of which attractor will
+activate, which of the places will activate first in the sequence. And so I guess the question,
+the question I'm wondering is like, so like, you know, you're encountering like a new scene and
+you're like laying down like a set of landmarks or a tiling of space, like, to what degree
+is this information encoded in, in what circumstances, and to what degree is it encoded in like the local
+connectivity within the hippocampus system and whether you're getting like this set of schemas
+that you're going to like draw up like the most similar one based on some degree of similarity will
+cause like one attractor network to get pulled up over another. And now this is the timeline you're working
+within and this is like the policies, the policy set you're like would be pulling from, and this is
+your framing of the domain. Or to what degree is it relying more heavily on like the moment to moment,
+like cortical dynamics and like the mental simulation that might be happening. And like to which extent,
+like is it constrained by the history of plasticity within the hippocampus, what schemas are going to be
+operative? And to what degree is it more of a negotiation, where it's going to be more ad hoc,
+more determined by the moment to moment contingencies and this funneling through the whole like cortical
+virtual reality machinery or whatever you want to think of it. And to what degree is this, there's not
+one answer, this varies both across and within individuals, that this is actually like a core aspect
+of cybernetic functioning is actually leaning more heavily on the priors or the current of established
+over more, more learning ethics or leaning more on like the situationally specific factors.
+Like how much do you shoehorn what's going on into your existing schemas? How much do you simulate?
+How much do you accommodate? And that this being potentially like a flexible parameter,
+like a flexible parameter, like a flexible parameter, like a flexible parameter, like a flexible parameter.
+And maybe some of that flexibility is like baked into the logic of neuromodulators, like actually
+flexibly influencing this. I'm clear, but like, yeah, so I know, very edge of anything I know,
+but it's very much like part of the excitement for me is like wondering like, is this like,
+does this provide like a functional and algorithmic significance for like this, like otherwise,
+like just mess of like biological details? Like do some of them have like elegant cybernetic
+understandings by virtue of like thinking of these kinds of questions?
+Can I just respond really quick? Awesome. Yes, please, Lou.
+Um, so that made me think a whole bunch about like, maybe we don't need a map, a place cell for each
+individual hotel room, but it's like a node when we were discussing nodes earlier, like a coarse grained,
+just an attractor space, like dump all of the hotel room maps into this little nodule so that when you
+get to a hotel room, it's all the same thing. Like it's okay. I've been here before, even if you've
+never been to that kind of place. And that would kind of explain things like deja vu. Like when you
+get to a place like I've been here before, when did I come here? Like when you're driving down the
+street, didn't I just drive down the street? You, it just is lumped over there into that little
+attractor mesh node that that's not necessarily a specific place, but just like a squishy ball of
+similar places. And also I really love how we spoke about some of these things, Adam and your
+collaboration with Colin de Young, cybernetic big five in live stream number 13, I think at the
+beginning of 2021, and now we're revisiting same, but different more things change, the more they stay
+the same. And this idea of like modulatory features of cybernetic systems as being important for
+variation within and among individuals is just such an essential point. And it's so true that a lot of
+the details are yet to be resolved. Steven? Yeah, you could go a bit further still, because what if you don't
+have maps put to one side, but there's action policies, actually I'm interested in how much this
+is feasible, but action policies that recapitulate something like a map. So like by an embodiment,
+by an inactive chain of or initiation of some actions at different scales, it basically recapitulates
+some sort of nascent starting point. So you don't have to have any representations there. And like when the
+door is engaged, the set of actions that that does that creates could open up an effectively a map.
+So I don't know how much between I mean, I know in this model, it does start to create a network of
+attractors, but I'm wondering whether how much things could be sparked off from
+engage in a particular affordance, a particular meaningfulness in something.
+Steven Moffitts Yeah, I mean, there's actually like, like a live debate about like, the extent to
+which it's like, Tolman initially was talking about the hippocampal cognitive map. And part of the reason
+people like to talk about maps is because of the flexibility they give you in terms of if you
+like the map serves as a generative model, and that it like it gives you like a I can flexibly access it
+to generate trajectories. But you can do that with a well structured graph also, but there's like a
+spectrum of interpretations of people thinking that you're dealing with more things that are more map-like
+specific and things that are more context specific and graph-like and flexible and more dynamically
+constructed. And it seems like you know, like, it's kind of a cop up in general, like, I always like
+take every debate, I'm like, you're probably both right. And so it's like, you want like, for the sake of,
+I guess, maybe stability, or for the sake of potential greater transfer of understandings and
+inferential power across episodes, you might want something more map-like. But if you go to map-like,
+you're losing like, the ability to deal like the nuances of like specific contexts. And so, you know,
+so this, again, is like, you like different perspectives on the same thing that that tend to converge with
+trade-offs. Like, you could have more context sensitive, or more situationally invariant
+representations. And these could reflect cognitive styles, and maybe like fundamental axes of variation
+for cognition and sense making. Yeah, the one thing that's in terms of like cybernetics,
+like, Daniel, I pointed out like, earlier, like, you know, like, Jordan Peterson, like part of like,
+it's actually interesting that maps of meeting, Peterson's book was actually heavily informed by
+Yacht-Pangsept's affective neuroscience, and ecological models more generally, like, based on things like
+animal foraging. So I actually think that's where Jordan Peterson got that rhetoric about maps,
+is actually from doing a kind of affective neuroscience perspective grounded,
+and this ecological perspective of foraging animals. And so, yeah, I think that's where actually where
+that came from. Yes, very nice. And I think I agree, we may have even explored as such. In one paper,
+Reimagining Maps, that I wrote with RJ and a colleague, Mikkel, we learned about this historical
+distinction between archival maps and itinerary maps. And today, we just think about maps as being like
+one more lumpy category. But there's many differences between the map that actually is like a multi-map,
+or mega map, and holds a lot of information, potentially in a metric way, versus the itinerary
+map, head straight until you see the two big trees, then you're going to want to take a left,
+that type of more conversational or casual or navigable map that is highly contextual.
+And with current map systems, that's one of the challenges. Because we have that mega map,
+it's downloadable, but it's not going to fit on your phone. So what is the projection that's
+contextual and situational that's actually going to enable effective action that is also going to be
+perceived as map-like by the user? Yes, Blue?
+So this is like a personal attacking question. So anybody who spent any kind of time with Daniel
+knows that he's constantly drawing or writing, or writing things down, like all the time taking
+notes, taking notes, taking notes. And I wonder, can you take your notes as a mental map of where you
+were at that time that you were making that drawing? Like, does it like, recapitulate your
+conversations that you're having, the ideas that were running through your head? Like,
+can you use these drawings that you're always doing as like a kind of conversational, like mental space map?
+If anything, it's the opposite. I just leave the thought behind. And if we look at this, I think,
+okay, something happened by which we wrote this down. It would be awesome if there was many people
+with a regime of attention on taking live notes. I know that's not an approach for everybody,
+but then we could all look at that shared pheromone distribution and then make it new again.
+And maybe we remember our exact previous thought, though that's impossible or unlikely, but instead
+we can make the relationship with the material and with those notes like new again. Steven?
+Yes, maybe a little harder to categorize with language, but in a way, it's the traces of
+your action policies, even if it was capturing the interpretation. So one thing I'm very interested in
+is how we realign things to action, because we've kind of been enculturated to think it's all about
+thoughts and feelings, right? And because action, active inference puts it in this other domain. Well,
+what does that mean? And how do we talk about active inference when we're enculturated to think through
+other natural ways of using English? I'm finding that a big challenge myself. But I think,
+as you're laying down those traces, are you showing your action policies of how to record something
+rather than your thoughts, if that makes sense? And is your thoughts always slightly hidden?
+Yeah, great question. Just like we were thinking about earlier with a sort of
+substrate, implicit, agnostic, ignored, linguistic, symbolic models, like a Turing tape. It has infinite
+space and it can just make infinite grammar. And so that's sort of purely symbolic approach to language.
+And then its relationship to thought and experience is one question. But when we think about finite,
+actual sequences of language use and deployment as action, either keyboard typing or assisted typing
+technology, or speaking as also a motor action, it totally changes the game. Because we're not just in
+this forest of infinite plausible grammars, but rather one realized and preferred action sequence. And
+then of course, thoughts are unobserved, but the actions are not. And that's the whole quantum
+reference frame and shared generative model and rhetorical nature and narrative nature of cognition.
+And so indeed the action insight, I think is going to be something that we'll keep returning to.
+We'll have a final closing the plane or whatever. And I'll also just give a little preview,
+which is that next week we're going to be having a guest stream with Adam. So if it relates at all,
+Adam, how does it relate? What is the guest stream going to be about? And then perhaps in your absence,
+what would be exciting to discuss in 42.2?
+Oh, you're right. There is a guest stream. Now, a quick thought though. So like Blue, you were suggesting
+like Daniel's notes could serve almost like a kind of memory palace and accessible map. And then,
+Daniel, you're saying it's more like a stigma, just stick mechanism for coordination, like the pointing
+and cueing. And that's interesting. I wonder if like when people are reading books, like the ability to
+like use the book is like as a map slash palace, like gives you better retention than something like a
+kindle. Like the book is like a physical object. So, um, oh yeah, uh, free will. And so, okay. So for next
+week, uh, I would say that basically, so, so my like over hypothesis is that like all of the details or
+other that many of the details that Tim is using for these systems will end up being, um, relevant
+as abstract interpretations of the core, um, parameters of us as active inferential cybernetic
+systems, both with respect to basically the basics of a, let's us be in the world in a embodied way as,
+uh, as, uh, living, living robots, but, um, also in terms of their extension to, um, high level cognition,
+scaling active inference to more complex domains. And so like in general, like, um, you know, I'm,
+I'm trying to understand, you know, with limited success, as many details as I can of Tim's work,
+because I think it's just some of the most promising sources of like constraints we have on
+inference interpretations and sources of hypotheses. So basically whatever details Tim is willing to get
+into, uh, I think it would be, uh, well, well worthwhile to try to grok those. And, uh, that's
+what I'm, that's what I'm doing. Um, in terms of, uh, next week, uh, so some of this is relevant in that,
+the basic idea would be that, um, these, uh, LeBay phenomenon, these studies in which people are seeing
+these slowly building potentials leading up to action that have predictive information, but where they peak,
+um, in advance of people claiming that they have decided to take actions and where these studies
+are interpreted as evidence that people don't have free will, and we can get into, you know, all sorts
+of, uh, conversations about, you know, how we, what makes, how it makes sense to think of free will in
+different ways, whatever makes sense to talk about it all, but that these studies are usually interpreted
+as saying that your, um, consciously experienced mental states cannot enter causal streams leading to
+action. And so what I'm suggesting is that is not the case and that there's multiple ways in which
+your subjective states are meaningfully causal. If we think of what's leading up to something like
+deciding to move your hand and like a LeBay experiment, if that is reflecting a buildup of model evidence
+over your proprioceptive pose or of you deciding to take that action, um, this kind of evidence
+accumulation, if it's occurring via sophisticated affective inference, um, that this would be a way
+of understanding it. And that, um, part of what would influence how much buildup or not you get
+would be the specifics of this basically deep tree search from sophisticated, that we would, might
+understand a sophisticated affective inference as being orchestrated by the hippocampal and
+enteral rhino system as iterative mental simulation, where you're sampling out these different
+possibilities of, Hmm, what would it be like if I move my arm or not? And then you're then evaluating
+that and you're plant, you're spinning, peeling off these different counterfactuals. And that if across
+these, um, you get enough, um, affective charge associated with going down some of these forks,
+eventually this results in threshold cross. But the idea would be that this would be relevant to some of the
+hippocampal, uh, slam work. And that you can think of this, uh, imaginative planning stage leading up to
+even seemingly spontaneous actions. You can think of this like imaginative phase as being largely
+orchestrated by the hippocampal system, which might be best understood as a general system for,
+or a system for generalized foraging and mapping. I don't know if that made sense, but that's like some of the
+connections. Wow. If you still want to come for the guest stream, you're welcome to do so. Um, no,
+that thanks for the awesome summary. And I know that we'll be able to unpack it a lot more next week.
+Um, blue or Steven, what are some like last thoughts? What was exciting or interesting to you in where we've
+been and where shall we forage next? So I can go, I, I was really interested in taking this into like
+semantic space and I wonder what other kinds of spaces that we can maybe think about mapping out, um,
+how we build, how we construct maps, cognitive space and so forth. And I'm excited to, um, talk to
+Tim about where, where emergence fits into the hierarchical model. Awesome. Thank you, blue Steven.
+Yeah, I think keeping the, the idea of keeping things clean, keeping things nascent and deflatory,
+even in this case here is, is really something I think to continue looking at. And I, I, I'm really
+curious about what happens when we see that door and that door says, you can go down that corridor.
+Am I going to go down into a different regime of attention? I'm going to stay where I am. So I'm,
+I, I think, um, that, that ability to take these principles and say, okay, what is it that happens
+when I encounter something and it triggers something, how much is that significant in terms of making things
+happen? And I'm curious then how that can marry with a lot of the mental space work that I do,
+building out metaphor landscapes or actually letting someone explore spatially. And one last thing,
+actually, that came up and someone said to me that the other day is, that he's really curious why when
+he picks up his plastic pencil, it doesn't mean as much to him as when he holds a shell. So there's
+something about like, when that door has got some prior, there's something that you know about being
+in the woodland versus being somewhere which is dead. And even that itself could explain a lot about
+how navigating those places, the eco psychology of going into a wooded space, a living place,
+actually can be important for people in, just in a, in a wellness, what might seem a very woo woo
+type of stuff actually could be somehow linked to what we're talking about here. So yeah, brilliant. Thanks.
+Awesome. Yeah. Very exciting and fun discussion.
+Awesome. I really liked that last piece, which is what I know I'm going to carry forward and hopefully
+reflect on next week. How will we build that colony? Is it a memory palace blueprint? Is it stigmatic
+coordination, but how? And so somewhere between the mental palace cathedral and the sort of picking up
+pebbles and having no bigger picture is where we are in our cognitive and social maps. And so
+that's quite an area and out of the central complex modeling, I can't wait. So thank you all for joining.
+Thanks Tim also. So Adam, Steven and blue and Sid and Dean in the chat. So thanks everybody and see you next time.
+Missou,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.

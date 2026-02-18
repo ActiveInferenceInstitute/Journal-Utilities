@@ -1,0 +1,4727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Active Inference LiveStream 056.2 Neural Generative Coding, Active Inference, and Mortal Computation</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Active Inference LiveStream 056.2 Neural Generative Coding, Active Inference, and Mortal Computation</h1>
+<div class="meta">Category: Livestream &middot; Series: Livestream_056 &middot; Episode 2 &middot; Duration: 2:07:30 &middot; Views: 393</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=0CY0fTqtdHo">https://www.youtube.com/watch?v=0CY0fTqtdHo</a></div>
+<article>
+<p>All right. Hello and welcome everyone. It's November 21st, 2023. We're here in ActInf</p>
+<p>livestream number 56.2 discussing a quartet of papers with Alex Arurbia. This is the third</p>
+<p>discussion we've had. We had a .0 giving some background and context.</p>
+<p>Great. Hello and welcome everyone. It's November 21st, 2022. We're in ActInf livestream.</p>
+<p>Empirical demonstration of the feedback delay of livestreaming. So let's just jump in. Perhaps</p>
+<p>Blue, if you have any initial kind of remarks or questions, then to Alex. And also if anyone's</p>
+<p>watching live, they can of course write a question and I'll check it out. So go for it, Blue, and we'll</p>
+<p>just jump in. So for me today, I think I'm really excited to get into the cognitive model. So like</p>
+<p>the last paper was my favorite and it was I think maybe like the most zoomed out. So I'm really kind</p>
+<p>of looking forward to getting into that and then maybe exploring what that would look like</p>
+<p>like in a non-human system. So that's I mean, I kind of always want to go there, but I'm still I still want to go there.</p>
+<p>Cool. What figure should we jump to or what part of the paper should we jump to, Alex?</p>
+<p>Alex. I mean, whichever one caught, I think yours and Blue's interest, I guess we could go to the</p>
+<p>architecture one. Oh, I do want to, if you don't mind, a tiny shameless plug that I just want to take</p>
+<p>the moment right now. I'm going to post this link in the chat because it relates to our conversation</p>
+<p>we had in point one. So this is a paper that just came out the end of last week.</p>
+<p>I just want to add that as contextualization, especially Blue, you might find it interesting</p>
+<p>because this was work I worked on. I think I even alluded to it over the like the last seven months.</p>
+<p>This is why I was talking about inactive and embodied cognition. And there's a lot more. So now,</p>
+<p>now it's out there. I don't have to pretend like, oh, it's a secret project. That was it. So that's my</p>
+<p>only shameless plug. Let's go back. I should start with this. So the, the, um, the as not to steal the</p>
+<p>thunders of 56.1 were this paper that came out in the time between. Yeah. It literally came out last</p>
+<p>end of last week. Yeah. Wow. So, I mean, maybe just while we're here, like, could you just, you</p>
+<p>don't have to review it. I've already had some, you already have so many papers, but it might be worth it.</p>
+<p>Yeah. Like, could you just give us like the elevator pitch about this paper and, um,</p>
+<p>like maybe your favorite figure? Cause I mean, we were really excited for your comments last week.</p>
+<p>Okay. So scroll up, Daniel. Uh, it's, it's actually early. There's, there's cool stuff, but go to the,</p>
+<p>it's a very long paper. Yeah. That picture. It has, it also has an appendix or supplement, but,</p>
+<p>uh, so, and it was a longer original paper too. Uh, just that way, again, I don't steal a thunder of</p>
+<p>this particular podcast cause our focus was different. Um, now the, the general idea is, uh,</p>
+<p>my, my thesis or Carl and my Cthist thesis is about a moral computation, which was a phrase that</p>
+<p>Jeffrey Hinton, uh, introduced, uh, very briefly, like in about like two sentences or a small paragraph</p>
+<p>in his paper in December. Uh, and I have written at length about it in a couple of my own papers,</p>
+<p>end of December of last year and January and February. Um, so this is sort of like, uh, the big,</p>
+<p>uh, deep dive into what does it mean to make a computer that is not immortal, which is what we</p>
+<p>have in computer science today. Uh, the computer is inextricably bound or rather the software is</p>
+<p>inextricably bound to the hardware. Uh, sorry, not bound to the hardware. I'm just making a mistake</p>
+<p>there. So if for example, we can copy our software or machine intelligence program across any amount of</p>
+<p>computers and it doesn't really matter. Um, and, uh, it's also extremely energy inefficient. And then</p>
+<p>the opposite side of that is mortal computation, which is essentially drawing inspiration from life</p>
+<p>itself. Uh, for example, uh, when any one of us dies, a human dies, uh, your computations, your memories,</p>
+<p>your quirks, the things that define who you are, are essentially gone, right? Because it's unique to you</p>
+<p>and that is because you're an embodied inactive agent. Um, and so what's kind of nice about this</p>
+<p>diagram is it's, it's a really colorful, pretty diagram, but it's in, it sort of synthesizes two</p>
+<p>out of the three perspectives in this paper. So, uh, Carl and I investigated biophysics, uh, which is</p>
+<p>sort of like the intersection of physics, physiology, biology, chemistry, and the ideas that have echoed over,</p>
+<p>I mean, essentially the last century. Uh, and that's the top half. The bottom half is a classical and</p>
+<p>very interesting domain called cybernetics, which is like the intersection of, uh, computer science,</p>
+<p>control theory, also physics, and a bunch of other domains and information theory. And it also has</p>
+<p>similar ideas and everything centers around this idea of homeostasis and all the millions of, uh,</p>
+<p>variations and higher order, uh, you know, uh, concepts that build on that. And the ideas that, uh,</p>
+<p>our intelligence and, uh, essentially is driven by our, our per desire to persist and to survive in an</p>
+<p>environment. And so this actually takes my comments from the last point one podcast with you guys, uh, to</p>
+<p>its natural conclusion, which is, I don't just believe you need a body, you need an environment, you need,</p>
+<p>essentially a drive to persist and to fight, uh, thermodynamic dissolution or dissipation into the</p>
+<p>environment or disintegration is a better word. Um, so we are essentially applying the biological</p>
+<p>second law of thermodynamics, which is why it's also about free energy. Uh, and so then, uh, we,</p>
+<p>and then there's another person, but it's also, that it's a later diagram, cognitive science.</p>
+<p>And, uh, Carl and I, uh, propose 5E cognitive theory, which is just taking the classical 4E theory.</p>
+<p>Um, I don't remember if I said this to you last time, but embedded, uh, extended, uh, inactive,</p>
+<p>and, uh, you know, the, uh, yeah, embedded, oh, embodied, the 4E, the traditional 4Es, we added</p>
+<p>something called elementary cognition, which I did say to you guys, basal cognition last time. So</p>
+<p>this kind of like ties these three areas together, as well as the philosophy of life and death and</p>
+<p>existentialism and kinds of combines them together into a unified framework. And then, uh, we, we dive</p>
+<p>into Markov blankets. Uh, I, I think they're a beautiful and elegant formalism for tying these</p>
+<p>ideas together and getting us a step towards, uh, you know, the mortal computation, mortal computer design.</p>
+<p>And then we, we, we talk about the free energy principle underpinnings that essentially the,</p>
+<p>the mortal, uh, computer embodies. And we review, uh, a couple of existing mortal computers, which do</p>
+<p>exist. So, uh, organoids or microphysiological intelligence is a beautiful example of this.</p>
+<p>Uh, even, uh, we talk about fungal computers, also Michael Levin's work on xenobots. So we have like a</p>
+<p>nice little table and then there's an appendix with a little bit of expansion on that. Uh, also we have to</p>
+<p>give credit to, uh, Ashby, uh, who's a really well-known and, or, uh, a very important cybernetical scientist,</p>
+<p>cyber cybernetic, cybernetician, um, and his homeostat, which is also an example of an in-silicon</p>
+<p>moral computer. So long story short, uh, we, if we want one path to artificial general intelligence</p>
+<p>is not going to be the way we have it now. Uh, it's not through just bigger and bigger transformers,</p>
+<p>which are extremely energy efficient. They're labeled in the domain of AI itself, red AI. If we</p>
+<p>want green AI, we want edge computing, we want neuro robots, uh, that are also able to do human-like</p>
+<p>actions and, uh, enact in human-like behavior, uh, because we think for example, the human model or</p>
+<p>even animal models, right, are a good template for how we can interact and engage in our environment.</p>
+<p>Um, then the idea is that we need to transition to this idea of mortal computation and leave behind,</p>
+<p>my last point here, uh, the tool oriented view of artificial general intelligence, because the way</p>
+<p>we treat AGI today, and we say this towards the end of the paper, um, that while it's very important</p>
+<p>and very helpful for humanity, uh, to build artificial intelligence systems that are very, very narrow and</p>
+<p>very tool-centric, they are more to support something for a particular task. If we want to build general</p>
+<p>intelligence, uh, then, uh, Carl and I put forth the mortal computation thesis as one possible pathway,</p>
+<p>uh, to go into the future. So this is sort of also a call for researchers across all these different</p>
+<p>domains to come together, ranging from biophysics to biology to computer science and machine learning,</p>
+<p>to computational neuroscience, cognitive science, it's pretty much, and cybernetics, of course,</p>
+<p>all of them kind of converging, perhaps build, uh, a different pathway to what we call the mortal</p>
+<p>computer. And so I think that wasn't quite a good elevator pitch. That was a little bit longer, but</p>
+<p>I'm going to stop there because I think then you can just read the paper. It's, it's, it's fun.</p>
+<p>Well, it's a tall elevator. There's a lot of floors in the bunker.</p>
+<p>I think there's a perfect articulation there. 56.2, let's focus on living, functioning, cognitive</p>
+<p>frameworks, but it's really cool that you're going into the life and death elements that way. So,</p>
+<p>I do think that the paper that Blue wants to talk about, there's a compliment to it because we do</p>
+<p>mention very briefly in this paper, cognitive architectures, like the common, and also the</p>
+<p>common model of cognition blueprint that we also talked about in point one, which is the center basis</p>
+<p>for the paper that, uh, Blue was going to ask some questions about. I think, uh, it's mentioned here</p>
+<p>briefly in that we also talked about as that being, uh, a potential, maybe we don't say it this way.</p>
+<p>I said it in conversation to someone, but a, uh, a car, an inductive bias, which you did write,</p>
+<p>uh, you wrote basis. I also talk about it as like the idea of cognitive architecture and modules of mind</p>
+<p>serve sort of like as a prior, and that is, uh, produced by evolution. And, uh, we also talk in the</p>
+<p>paper too, the moral computing paper evolution is important. Natural selection is an important</p>
+<p>ingredient. Uh, and if we don't use that, uh, then we have to design the results of evolution. So,</p>
+<p>I think the common model of cognition, which can help segue into the paper now, um, is a beautiful bias.</p>
+<p>It is one of our best bets for how do we emulate the modules of mind and how things interact. Um,</p>
+<p>and this would get at the, the neural computation component of a mortal computer. Obviously,</p>
+<p>it does not say anything about the body, about the niche, about other agents, but, you know, you can imagine</p>
+<p>it is a little block that would go into this framework and that would be one step towards a</p>
+<p>mortal computer. So. So can I just temporarily derail us? I just have to ask a follow-up question.</p>
+<p>I have to ask. I fall for derailing at the beginning. Um, so just in terms when you're,</p>
+<p>when you're talking about mortal computing, I mean, I just couldn't help but go to quantum computing,</p>
+<p>where the computation itself is so heavily dependent on the substrate and the modality of the hardware,</p>
+<p>right? Like the, the computation, the hardware and the computation are like really inextricably linked</p>
+<p>there. Um, and, and in the same way that like, you know, I can write a paper, you can write a paper,</p>
+<p>all of these things will outlast us. Like, so some of our computations will survive beyond like the</p>
+<p>point where we're biologically dead. Right? So in a quantum computer, similarly, all of those computations can</p>
+<p>then be taken and translated and put into Python and all, all of the things. Right. Um, but I, I just</p>
+<p>wonder to what, um, extent, and like, I know, I, I kind of know where quantum computers and artificial</p>
+<p>intelligence like meet, you know, like everything's gotta go into the cubo and then the answer comes out.</p>
+<p>And so then we take the answer and put it back into Python and do regular AI things with it or in some</p>
+<p>language, right? Not always Python, but sometimes, right? So where do you think can a quantum computer</p>
+<p>or can we ever get quantum computation or what is the role of quantum computation? How can that</p>
+<p>intermingle with artificial intelligence and then become a mortal computer? Or is that just like</p>
+<p>too far fetched? We're not going to think about that.</p>
+<p>Well, so the paper doesn't go into that specifically. However, we touch on a little bit because, uh,</p>
+<p>a little bit of the paper and we, we cited plenty, uh, Carl's work with Chris Fields, which I know he's</p>
+<p>been on, you guys have been doing a series with him on quantum computing, quantum information theory.</p>
+<p>Um, he had a paper, uh, neuromorphic computing induces the free energy principle or some version</p>
+<p>of that title. I read that many times as well. And in there I think is the way that quantum computing</p>
+<p>or quantum information theory would interact with the mortal computer. And so I don't see,</p>
+<p>I see it as another perspective. There could have been a fourth perspective in this already long paper.</p>
+<p>Um, and, uh, I did originally have some ambition to write something about that. And we distilled it</p>
+<p>to just the concept that Chris Fields introduces, which was the interface. So I think the quantum</p>
+<p>information theoretic interpretation of the brain and the body, uh, especially like as presented in that</p>
+<p>paper and related work could be a better way to deal with the Markov blanket formalism that, uh, Carl and I,</p>
+<p>uh, constructed in this paper, this paper, uh, which is largely grounded by also my educational background too,</p>
+<p>because I only have, uh, you know, some moderate knowledge in, you know, quantum mechanics. Uh, and it</p>
+<p>was a while since I studied that, but, um, in there we are treating the paper is like a classical</p>
+<p>interpretation, or you could say almost the Newtonian interpretation of the free energy principle.</p>
+<p>And, uh, and Carl and I discussed this many times as we were working on this paper, um, that, that has a</p>
+<p>limitation. It's not necessarily that you can't build a more. I think this paper gives you all the</p>
+<p>foundation you need to literally build a mortal computer or get started. It's a, like a theoretical</p>
+<p>mathematical conceptualization. However, um, there are some weird things about the thermodynamic</p>
+<p>energy exchange between the internal states of your agent, your entity, and the environment. And</p>
+<p>originally I had a different diagram of the Markov blanket so that there is later in the paper,</p>
+<p>you'll see it. And I really liked that diagram because it really made it. Yeah. You probably</p>
+<p>saw it. It was there towards the end. It looked like a spider almost. Um, yeah, that. So this</p>
+<p>originally had a different version where I had these, uh, extra states, uh, because I like to take old</p>
+<p>concepts and extend them myself. And I had these thermodynamic states in there and I had them tried</p>
+<p>and I had probabilistic arcs that wired them. All these arcs are designed carefully to make sure that it adheres to</p>
+<p>the Markov blanket principles of like, you know, the dependency relationships between children and</p>
+<p>parents and the children of children or the children of parents, um, and how they relate together. So I had</p>
+<p>embedded extra states and Carl said that I should remove those because it's, uh, it violates the</p>
+<p>classical interpretation of the free energy principle. And long story short is that you have this energy</p>
+<p>exchange in the diagram and you can represent that as dissipation, but it's not a state that the agent</p>
+<p>would have like access to in the Markov blanket. So now back to the Chris Fields interpretation.</p>
+<p>If you go to the interface, uh, I think he calls it like a quantum interface. He added me or, um,</p>
+<p>he had a name for it. It has like this really fancy symbol in the, in the paper. Um, if you use that,</p>
+<p>you get access, it's not like you have access to manipulate it, but you can sort of perceive it</p>
+<p>from the perspective of the agent. You see the sensory and the action states or the, uh, the partitions</p>
+<p>of that field. Um, and I'm probably butchering his language, Chris's language, but, and then you also</p>
+<p>have like the thermodynamic exchange portion or partition of that field. Uh, and like, it's like, uh,</p>
+<p>the non-manipulatable and manipulable portions of it. And so I think that interpretation could be a</p>
+<p>more powerful way to, like you said, blue earlier that quantum information theory and quantum, uh,</p>
+<p>sorry, quantum information, theoretic and quantum computing interpretations lend themselves to that</p>
+<p>natural entanglement that this, that this paper, uh, takes from. So again, we surveyed work all the way</p>
+<p>back to Descartes, uh, and Emmanuel Kahn, but you know, and tying all their ideas together. Cause by the</p>
+<p>way, even though we're putting forth the phrase mortal computation, the mortal computation thesis,</p>
+<p>uh, and trying to essentially establish that as our foundation for all of science to build on,</p>
+<p>uh, it's kind of been echoed, right? Uh, brilliant minds, thinkers, theoreticians,</p>
+<p>engineers have existed forever. So, uh, it's kind of like, uh, a synthesis and unification of already</p>
+<p>wonderful ideas across vast parts of all the domains. Um, but I think the quantum information</p>
+<p>theoretic way could be the next step, the fourth perspective to quantum computing, and it could lend</p>
+<p>itself to maybe easier implementation, especially if you have access to a quantum computer. Obviously</p>
+<p>this is the joke we had last time, uh, when we talked about evolution and why I specifically might</p>
+<p>not directly work in that. Although I have some work in, uh, genetic algorithms and neuroevolutionary with,</p>
+<p>uh, Travis Dessel, who was on here for the ant colony optimization work that was presented. Um,</p>
+<p>it's compute, right? I don't have access to the quantum computers of our time or maybe the simulator. And of</p>
+<p>course the knowledge to perhaps use that effectively. However, I think that someone who does could</p>
+<p>perhaps take the principles that are put forth here, take the Chris Fields, uh, uh, interface</p>
+<p>interpretation. And he goes into a lot more detail. Like he talks about, he had something called like a</p>
+<p>T-D-N-N or something. It was like the quantum neural network and they were trying to come up with the</p>
+<p>morphology. But the, uh, the principles there are echoed in some sense here too. And we cite that word,</p>
+<p>but, um, obviously, but, uh, Carl's on there too, but, uh, the, the, uh, the principles of morphology,</p>
+<p>uh, which are like essentially, and we originally had another word in the title called morphic, uh,</p>
+<p>because the idea is that intelligence should ultimately, you can't divorce it from any form of</p>
+<p>instantiation. You got to choose something. You're going to be brittle, but you're going to be thermodynamically</p>
+<p>efficient. And I think if you could interpret it from that perspective, the quantum information</p>
+<p>theoretic that might lend itself to a more powerful implementation, uh, the last comment I'll make,</p>
+<p>and I'm already long-winded on this. So the final point is we do also briefly mention in the conclusion</p>
+<p>of this paper, you know, we haven't even talked about the papers that, uh, we wanted to about today,</p>
+<p>but in the conclusion, uh, I also mentioned quantum computing, but in a weird way. So I hope it doesn't</p>
+<p>feel too contradictory to that. I just said that if you take the quantum information,</p>
+<p>theoretic interpretation of mortal computing or build your own interpretation, because we don't</p>
+<p>really do it much for you here, uh, except mention the, the, the interface, um, while that could be a</p>
+<p>powerful and perhaps the best way, who knows, to implement it, we also mentioned quantum computation</p>
+<p>as sort of like, okay, others have been looking at this in AI. And for example, saying like we can do,</p>
+<p>if we have a properly developed, uh, quantum computer, we can do big brute force search, right?</p>
+<p>We can do simulated annealing faster than our minds ever could have conceived with classical computing.</p>
+<p>And that's kind of just been in what's we can do machine learning better. Um, and we, we sort of argue</p>
+<p>a little tiny bit against it, uh, not against the interpretation, but rather the, the fact that</p>
+<p>quantum computing plus machine learning is just another way to do what we currently do, which is</p>
+<p>narrow AI brute force search better and faster. And so that's essentially, it keeps alive immortal</p>
+<p>computation, right? Because what are we going to probably do? I, I, I, I not, uh, not pretending to be</p>
+<p>a seer. I'm not pretending to predict the future. There's no way I can know of all</p>
+<p>people, but, um, the way we're going about it is that, oh, we're going to try to put chat GPT or</p>
+<p>some transformer like model in a quantum computer. And yeah, it's going to work a lot faster. It might</p>
+<p>be more efficient, but at the end of the day, we're going to be programming that quantum computer</p>
+<p>at a separation level, right? We're going to try, try to deal with it. Like we do in a normal</p>
+<p>operating system. Maybe we all have to learn a little quantum mechanics to do it. Um, and we write</p>
+<p>our code and we write our software, and then we just hope that the quantum computer can execute it</p>
+<p>really fast. That's not the premise that I would want a quantum computer to be used. That's still</p>
+<p>immortal computation just done in an accelerated faster way. So we do warn or rather are rather even</p>
+<p>just more like slightly common that while quantum computing will be important and, uh, we, there is, uh,</p>
+<p>promise there to even speed up the computations we do today. It's not necessarily its current use,</p>
+<p>or the way we sort of project to use it is not the right path to AGI either. So, or biomimetic</p>
+<p>intelligence, which is really what the paper's trying to say. If we want to build biomimetic AGI,</p>
+<p>maybe there's other types of AGI. And I don't mean like animal, because animals are definitely a part</p>
+<p>of this paper, uh, organisms, anything that maintains homeostasis to some level. That's what this paper</p>
+<p>says is the, the pathway to that style of AGI. There might be something else. Again, I don't want</p>
+<p>to comment on whether or not, uh, large language models and transformers and these new architectures,</p>
+<p>there might be something alien that I can't foresee. And maybe quantum computing will make that,</p>
+<p>uh, you know, more energy efficient in some way or faster. It's still going to carry forward though,</p>
+<p>the premise of tool-based AI and, uh, you know, AI, uh, in the way that we do a narrow AI. I don't think</p>
+<p>it's going to lend itself to the path that we would really want general intelligence and general</p>
+<p>intelligence really is tied, uh, at least if we use organisms as our exemplar, it's tied to the fact that</p>
+<p>we, we don't have forever, right? Uh, that we, we know to some degree, whether we're conscious or</p>
+<p>unconsciously aware of the fact that I am at odds with my environment, I'm going to behave in this</p>
+<p>way in service of that. And of course, evolution, uh, encode some of that knowledge going into it.</p>
+<p>Um, so I just want to comment that I, I think that it's, it depends on how you use the quantum</p>
+<p>perspective. Like if you use it from like the Chris Fields quantum information,</p>
+<p>theoretic interpretation of the markup blanket, that might be a really excellent way for someone</p>
+<p>to even follow up on this and add the fourth perspective that Carl and I kind of just dance</p>
+<p>around a little bit or an implementation. I think there could be some really fascinating things here,</p>
+<p>but if you're just using quantum computing, uh, to accelerate your normal run, it's current day</p>
+<p>machine learning, the current approaches that we have, uh, then you're just still carrying forward</p>
+<p>the banner of immortal computation. And again, too, I want to make one last comment just because we</p>
+<p>talked about it. Um, this paper says we need mortal computation and, uh, it was weird. There isn't, uh,</p>
+<p>much more than Jeff's one mention of it in his 2022 forward forward learning paper. Then my paper had a</p>
+<p>little bit longer section, the predictive forward forward algorithm. And then I had the spiking</p>
+<p>version of the forward forward, uh, the, the pioneered that idea. And we had like an introduction,</p>
+<p>like about a page about mortal computation. And then there's this one with Carl, which is, you know,</p>
+<p>a really, really long, uh, doozy of a paper. Um, so aside from that, I've only seen mortal computation</p>
+<p>sort of discussed, Oh, I see a little bit of mortal combat appearing. Um, I see discussions like brief</p>
+<p>mentions of mortal computation, but there was something that Jeff mentioned somewhere along the</p>
+<p>line, or maybe it was an interpretation of it. I don't also think mortal computation completely</p>
+<p>replace immortal computation. I think both have a place in society. We just need to understand that</p>
+<p>they both do different things and they both have different purposes. If we want, you know,</p>
+<p>intelligent agents and neuro robots, I'm on the camp. You need mortal computation to do it, right?</p>
+<p>But, uh, if we want that type of general behavior, but immortal computation is not going to go away.</p>
+<p>It's just more like we understand it has a very high thermodynamic cost because we have to deal with</p>
+<p>the von Neumann bottleneck, the memory bottleneck. We're not using a memory processing. Um, maybe quantum</p>
+<p>computing will speed that up too. And then immortal computation can live side by side and we'll have</p>
+<p>those as tools. So I also want to make that clear for anyone that ever watches, you know, this recording</p>
+<p>later, uh, that the mortal computation thesis isn't to say it's the only way to do computation. It's just,</p>
+<p>we should shake up the roots of computer science at its foundation and say, maybe there's another way to</p>
+<p>do it and we should have both live side by side and Hey, this one might lend itself to AGI. Um,</p>
+<p>which by the way, some people might disagree with that as well. I don't, again, I, we do offer it very</p>
+<p>humbly in the paper as one possible pathway, not V because again, I could be completely wrong. There</p>
+<p>could be a better way to do this, but, um, yeah. So, well, that was a really good answer and you</p>
+<p>really articulated like what I was trying to ask about. And I think, um, it's actually really easy</p>
+<p>to get access to a quantum computer, but it's not, it's really easy to get access to the interface</p>
+<p>to a quantum computer. And I think that what you, what you keyed in on is like, you need the morphology,</p>
+<p>you need the structure. Like, so in order to play with a quantum computer and program the quantum</p>
+<p>computer to do mortal computation, you actually have to play with the substrate itself and not just</p>
+<p>have access to the computer through some interface network. Right. Yep. That was key. Bingo.</p>
+<p>To kind of bring us towards the non-human cognitive modeling slash fourth paper,</p>
+<p>something coming up in that was all the different ways that we talk about interface and also the</p>
+<p>different ways we represent it. Like this is really creative and I've never seen the, um,</p>
+<p>blanket represented this way with a, with a zone and which connects nicely to the blanket index, but</p>
+<p>whether we're talking about the kind of strict analytical base graph Markov blanket or the quantum</p>
+<p>interface or just an engineering interface, input output, or flow diagram systems dynamics,</p>
+<p>or the kind of perhaps most general or accounting system of them all like applied category theory,</p>
+<p>we're describing these different facets of the interface. So that's one place to begin when modeling</p>
+<p>a non-human or a human cognitive architecture is its interfaces. It's like, if those aren't accounted for,</p>
+<p>we're either speculating information that we're measuring or observing or interacting with this</p>
+<p>cognitive thing, whether speculating about what we could do or about what we could measure,</p>
+<p>or we're missing things that we actually can intervene with and measure. So maybe how do we go about</p>
+<p>before even wondering about which formalism it's going to be described as, how do we think about the</p>
+<p>interface of a cognitive system? Well, I think that's, yeah. Well, you just brought up a really</p>
+<p>good point. I just want to point out that you said, uh, if we don't design, you know, the interface</p>
+<p>between let's say the internal states of the agent, which just to connect it to the cognitive modeling</p>
+<p>paper, you could think of the common model of cognition as the design of the internal states, right?</p>
+<p>It's the brain, right? And, uh, let's just keep it like the organizational principles of the brain.</p>
+<p>Because again, I think of CMC common model of cognition as a blueprint and, you know, cog engine,</p>
+<p>which is what that paper is about is a physical, well, it is a computational instantiation of some</p>
+<p>pieces of CMC. Um, and even that is still only a part of the puzzle. So, but you could think of that,</p>
+<p>that's going to be what's inside the Markov blanket. All right. Uh, and then of course,</p>
+<p>inside of it could be more Markov blankets. Cause we also talk about Markov blankets of Markov blankets</p>
+<p>of Markov blankets. And there's a recursive assembly kind of, but, uh, you brought up Daniel, if you don't</p>
+<p>design, uh, it could also be an engineered, you know, uh, permeable boundary with pumps and things that,</p>
+<p>you know, for example, remove toxins from the internals of the agent and brings in nutrients</p>
+<p>and energy, which we do talk about as well in the, in the mortal computation paper. Um,</p>
+<p>regardless of the formalism, you're all, if you don't account for it and you don't, so while cog</p>
+<p>engine does not account for it, it's still one of those like, well, we're going to just say,</p>
+<p>we're looking at some very, very specific internal states and we're going to probe it in a very specific</p>
+<p>way. Although we kind of have an agent cause we do use the gym mini grid. So there is a body,</p>
+<p>but it's like a really, really, really simplified body. Uh, you're missing out on a lot of intelligence</p>
+<p>and cognition that the boundary itself will give you. So even in cells, right? So this is to take</p>
+<p>what you said, Daniel, and you know, Jack, uh, boost it even higher. The boost, the signal, uh, is that</p>
+<p>I also believe a lot of the intelligent computations that we do can be, are offloaded,</p>
+<p>right? This is the embodiment thesis of cognitive science. The, the, even the permeable cell boundary,</p>
+<p>right? Of just single celled organisms or multicellular organisms. Uh, it does a lot of</p>
+<p>beautiful things that the internal states are not doing like, uh, consciously or directly with effort.</p>
+<p>May I should be careful with consciousness at different levels, but, um, the, that boundary,</p>
+<p>the Markov blanket offloads some of that compute that the brain or the internal states need to</p>
+<p>worry about. Um, and it can, they can sort of rely on what the boundary does. Now, of course,</p>
+<p>there's more to that story that even the Markov blanket doesn't necessarily need to address it.</p>
+<p>Uh, but there's the fact that there's also autopiesis. So the idea is that the system reproduces,</p>
+<p>it's self-reproducing. That's where, why there's a lot more, it's a paper that very much is like an</p>
+<p>iceberg. You can read the beginning and be like, that's a beautiful phrase. And then what's underneath</p>
+<p>it is this extremely deep. And I don't even think I, Carl and I have properly even captured all the</p>
+<p>facets that you could add to this. There's more like we just talked about the quantum interpretations</p>
+<p>as well. Um, so assuming that we have everything taken care of, that things self heal, self repair,</p>
+<p>uh, the, the boundary itself is in, you know, constant reconstruction, uh, you, you have this nice power</p>
+<p>or nice advantage that you not only account for how energy flows in and out of the system and things</p>
+<p>that you would normally not account for in our traditional agents that we designed today. Um, but</p>
+<p>you would also have the ability to offload cognition. There's even a domain. We mentioned it in the paper</p>
+<p>too, but, uh, you might've heard of morphological robotics. Um, and there's even classical ideas going</p>
+<p>back to even, I believe even Rodney Brooks mentioned aspects of this as well. And some of his early work,</p>
+<p>if you study the way that we move our joints and our arms, uh, you know, there's a lot of, uh, cognition</p>
+<p>offloaded into that act. And you can also get that in terms of robotics too. And just saying by</p>
+<p>understanding the, you know, kinematics that drive an arm, then now the robotic brain, if you will,</p>
+<p>the neuro robot only needs to say, I need to move my hand to this point. And then it can sort of trust</p>
+<p>its digital nervous system or rather the actual constructs and the robotic hardware to move the</p>
+<p>rest of the arm. Like he doesn't have to think consciously about moving the elbow, just needs to move</p>
+<p>the point. If you know from computer graphics, inverse kinematics, right? You only need to move</p>
+<p>the point of the hand to where you want to go. And then the rest takes care of the motion. And it looks,</p>
+<p>you know, it doesn't break the constraints of how like the bones are structured and the skeletal</p>
+<p>structure of the armature of the character. So, uh, I think you, you, there's even more to just model,</p>
+<p>not just, so we do talk about modeling too, because some of us, uh, or a lot of us might not have access</p>
+<p>to the hardware as well. Right. I think it's in the appendix. I think it had to be moved to the</p>
+<p>supplement of the paper because it was already very long. Uh, yeah, it is in the supplement,</p>
+<p>but we have this problem called the body niche problem. Uh, and besides the fact, it's a nice</p>
+<p>sounding philosophical problem. There's this issue that, uh, robotic hardware or even organoid, you know,</p>
+<p>constructs or biological substrates or chimeric won't be available to everyone. So if we want a</p>
+<p>democratize things, we're going to probably need to model these digitally. And so we have this concept</p>
+<p>called a digital morphology. So maybe we can take whatever principles of physics and other aspects</p>
+<p>of thermodynamics. Maybe we can construct bodies that we can simulate for cheap so that we people</p>
+<p>can work on mortal computers simulated. Right. Uh, although the ultimate would be you just like</p>
+<p>blue brought up earlier about the best way to use them, a quantum computer would be to literally have</p>
+<p>access to the more quantum computer and then design your internal states, your software that would run</p>
+<p>run it, uh, literally on chip, right. Or on, on quantum computer, whatever the right word for that would be,</p>
+<p>but they're entangled. So you're completely, uh, you're only paying the cost, the thermodynamic cost of</p>
+<p>reading and writing to the memory right on the chips or right on the actual platform itself,</p>
+<p>uh, rather than having these separations, right. Even including like operating systems and the</p>
+<p>transfer of memory and a hierarchy. And so having the actual hardware would be the best. And I think</p>
+<p>that's where, uh, you know, even the work kind of says this is where the future really lies, but</p>
+<p>probably along the way we could probably work with digital morphologies as well. So long answer,</p>
+<p>but just to say that your point is great and we could boost it even further by offloading cognition</p>
+<p>to the body. And I also think, cause you said, what formalism would you choose? And I don't think</p>
+<p>any one formalism is, you know, like superior per se, they give you different things. I think the</p>
+<p>Markov blanket is nice because it connects to a Bayesian probability, and then you can kind of</p>
+<p>at least characterize the relationships between states. Um, but from an engineering point of view,</p>
+<p>I don't think you like directly have to design the exact Markov blanket because now you're dealing with</p>
+<p>a graphical model and what would you do? What do we usually do? We usually choose discrete states and</p>
+<p>the world's continuous. I've thought about this. Like I thought, okay, now that this paper has come out,</p>
+<p>how do I build my own mortal computer, right? To show how we could do this. Uh, but you know,</p>
+<p>I think Michael Levin has a great example, uh, with the Xenobots. Like that's one way to do it,</p>
+<p>although it's very biological artificial. Um, but I think just designing boundaries</p>
+<p>and sort of clearly explaining or accounting for the thermodynamic exchange and understanding like,</p>
+<p>what are the resources that we have at hand, even in a very controlled environment might be the way</p>
+<p>to design the Markov blanket, because then you get for free. If you have like, and I think we talked</p>
+<p>last time about like a quadruped neuro robot, like spot or something and, you know, have it outside,</p>
+<p>right? If you already choose your body and you put it in an environment, you've already now dealt with the</p>
+<p>boundary and the niche. You just need to understand the properties of that, which is where we can leverage the,</p>
+<p>the wonderful knowledge across domains like physics and biology and chemistry,</p>
+<p>understand the properties of that body, right? Understand the properties of that niche.</p>
+<p>And then all we have to work on is the internal state design. And how does that interact with</p>
+<p>maintaining persistence, right? For example, battery level, power level, that's a homeostatic variable</p>
+<p>or a metabolic variable. There you go. Now you can build your agent about keeping that variable,</p>
+<p>uh, in within a certain range, right? Because homeostasis is about a set point.</p>
+<p>So may have a target or actually the, we changed the word to something more powerful,</p>
+<p>hormiohesis, which is homeostasis over time, right? Because set points might change like</p>
+<p>in flux to the environment. Um, so that's, that's a kind of a cool concept as well. There's like a word for</p>
+<p>everything I learned when writing this paper. So many concepts already exist. All we have to do</p>
+<p>is just stitch them together. And this is one way to stitch them together into</p>
+<p>a nice little framework. Um, so did that make sense?</p>
+<p>Yeah. I'll, I'll make a note and then blue, I'll be curious to see what you think about this. I think</p>
+<p>with what you've just described, you've, you've almost given some of the most specific ways to think</p>
+<p>about what is offloadable. We've talked about extended cognition and about having passive artifacts</p>
+<p>in the niche like paper and pen, and then having active artifacts in the niche like autonomous agents,</p>
+<p>or whether they're material or, or just digitalized. So it's interesting that by putting certain</p>
+<p>computation on the boundary or on the interface broadly conceived with both, uh, material thermodynamic</p>
+<p>and a informational semantic component, then it's like, yeah, the nucleus doesn't decide about the</p>
+<p>cell morphology. And so it's like, how many layers can you put in between in between so that the</p>
+<p>computation goes out to the interfaces everywhere's an interface from somewhere. And that's where the work</p>
+<p>is really done. And then there's just so many other great points, but what do you think about this</p>
+<p>kind of conclusion to 2023 live streams after long arcs with thinking about embodied cognition and</p>
+<p>cognitive architectures?</p>
+<p>Um, so, wow, what is offloadable? Uh, I have a lot to say about that. Um, uh, so like in terms of what</p>
+<p>the body does, um, and let me know if my internet cuts out and I'll shut my video off. Um, but in terms</p>
+<p>of what the body does, like, it's like, you think about things that are automatic, right? Like the</p>
+<p>heartbeat and the breath, um, and stuff that like we just ignore. And like, I mean, if you really, you</p>
+<p>could do biofeedback and slow your heart heart rate and like breathing, you can definitely control.</p>
+<p>I mean, it's very obvious that you can control it. Um, but, but like, I wonder about these things,</p>
+<p>like what is offloaded to the body that we're ignoring, right? Like if you offload too much,</p>
+<p>you know, like we have like gut reactions to things like, like, you know, these like sensations,</p>
+<p>and there's like a lot of computation happening within our own morphological structure that maybe</p>
+<p>we're not conscious of. Like, so a lot is, is unconscious, but then like, are we overlooking</p>
+<p>stuff that we should then be paying attention to? Like, like, I wonder what is the price of, of offloading?</p>
+<p>Hmm. I mean, that's a great question. Um, I mean, I don't know. To be fair, I can't say I know the</p>
+<p>exact sweet spot, because that would also mean that I have, uh, the exact instantiation of the</p>
+<p>mortal computer that I wish to build, right? Um, you know, the answer is we need to study that.</p>
+<p>Uh, that's the short answer, the slightly longer answer. How do I say this without letting myself ramble?</p>
+<p>Well, so maybe there is a point where we cross, where we have, let's say humans, uh, animals, even any,</p>
+<p>any entity has failed to find the sweet spot. Like you just said, Blue, uh, even we humans,</p>
+<p>humans, when we do something, you know, we have a gut reaction and we might tend to listen to that gut</p>
+<p>reaction rather than doing some other type of processing, like thinking critically or logically</p>
+<p>and counteracting it. We also have emotions, which I think is very important, which we don't really</p>
+<p>quite have that, uh, in today's AI, but, uh, we do kind of have a little bit of some good work has been</p>
+<p>done in cognitive science and cognitive architectures, but I think that we might have already</p>
+<p>crossed the sweet spot because some of us listen more to our guts and our emotions than logical,</p>
+<p>logic or reasoning, or, you know, planning things out more carefully or listing pros and cons.</p>
+<p>Some of us might not listen enough to our gut feelings and we listen too much. So I think the</p>
+<p>diversity, uh, in even within any entity such as a human is vast. And so maybe someone has the optimal</p>
+<p>sweet spot. I don't know who does it varies, but it doesn't matter. So it's kind of interesting.</p>
+<p>We it's, it's, it's an interesting question to quantify and worth looking at, but at the same time</p>
+<p>in designing a mortal computer, let's say I failed to design the one that has the right balance. Let's</p>
+<p>say I designed a computer that mortal computer that leaned more heavily towards gut reactions, uh, than</p>
+<p>not. Well, I would still be thrilled that we built such a computer because while it would be great to</p>
+<p>find and characterize these set points or sorry, these boundaries and regions, um, we would still have</p>
+<p>the premise that look, life is built on these hierarchical or rather layers of complexity.</p>
+<p>So homeostasis, homeo, sorry, homeorhesis and homeostasis, which sit at sort of the bottom of</p>
+<p>what we talk about in the paper. Um, and then underneath that are like, you gotta be careful a little bit,</p>
+<p>but they're like metabolic pathways or what we, or Carl and I call essential primitives or variables,</p>
+<p>which are kind of like the materials and the, the very base constructs that maybe we, you know,</p>
+<p>manipulate to survive with. But above that are things like allostasis and complex processing.</p>
+<p>And of course we put at the top of our hierarchy, uh, auto pieces, but technically, uh, the idea is</p>
+<p>that everything would be self-repairing and healing. But if we put the growth and dynamic change aside for</p>
+<p>just a minute, our allostasis can be argued, and it has been argued to be all kinds of things. It can be,</p>
+<p>uh, oh, we have little neural circuits that try to, uh, predict when homeostatic processes are going to</p>
+<p>need resources. And so this is where you can see it in animals and, uh, insects and other types of, uh,</p>
+<p>creatures that, oh, I know that, uh, the seasons are going to change. Like birds, they fly to another,</p>
+<p>and they, so they have these kinds of instincts built in, or they have some sensors in circuit</p>
+<p>processing and say, I should probably go somewhere else where I'm not going to die for the winter.</p>
+<p>And so then they flock away, right. Or they fly away. So there's already some higher level</p>
+<p>behavior built on there. The reason I bring up that, just to tie it back to that balance point</p>
+<p>that you bring blue is that we would have the opportunity to design those neural processes</p>
+<p>that could override, for example, your gut reaction or your more primitive instincts. And so this is</p>
+<p>what's kind of nice about the mortal computer is we would want that ability to do planning,</p>
+<p>to do higher level thinking. And this is again, what connects nicely to the cognitive architecture,</p>
+<p>right? If we have a more developed, let's say brain region area, right? We have different types of</p>
+<p>memory, like procedural declarative memory. Um, now we're able to start to think at a higher level.</p>
+<p>That's not just purely driven by our instincts. And so the 5d cognitive theory, uh, in the paper,</p>
+<p>elementary cognition, I don't think is the only thing you need. That would be like, I only rely on</p>
+<p>my gut instincts. I am primitive in the sense primal. I only want to live and I will do whatever it takes</p>
+<p>to live. But for example, if you live in a society of mortal computers, which is one way you could think</p>
+<p>of humans, I'm not going to start calling my friends mortal computers, but we live in a, in a relationship.</p>
+<p>We have a, we are a complex system in ourselves. Well, now we're not just only thinking about, uh,</p>
+<p>exactly like I, I don't want to die right now. Right. Cause if that's how we live, then, you know,</p>
+<p>we go back to, uh, kill or be killed law of the jungle, right? We are just sort of fighting amongst</p>
+<p>each other. So I think while it's hard to answer what's the sweet spot or the balance point, I would</p>
+<p>still think having a mortal computer that even has the ability to engender those primal gut instincts</p>
+<p>would be very powerful. And then we could work on thinking, well, what are the right neural processes</p>
+<p>to counteract that? Right. To add the critical logical thinking, what constructs would have</p>
+<p>evolution evolved to allow us to counteract that? Um, does that make sense? Cause I think like,</p>
+<p>it's almost like it's a good question to ask, but I don't think it's, uh, it's more like it would be,</p>
+<p>it would be profound if we had something that leaned a little too heavily on its gut instinct. And we say,</p>
+<p>okay, but now we have these allostatic processes. We're just missing more of that higher level</p>
+<p>behavior to counteract that, uh, because we humans are able to, for example, ignore even sometimes</p>
+<p>our primal needs, our desire, not maybe completely desire to persist because some of that's very deep,</p>
+<p>low level. Um, but like we even have the act of like heroism, right? You know, like I'm going to go</p>
+<p>save someone that I care about and that will end your persistence. You will thermodynamically</p>
+<p>disintegrate when, you know, I go into the fire. Right. So we have these higher level cognitive processes.</p>
+<p>We're going to need to design those two or let some evolutionary process, let those emerge. So,</p>
+<p>um, I would still, we just don't have the low level either. And we, we might not have the full</p>
+<p>picture of the higher level, but right now, a lot of artificial intelligence doesn't even have that,</p>
+<p>that primal persistence. Right. So I think I would be thrilled to have that problem and say, oh,</p>
+<p>we might make this real real real real real real real real real real real real real real real real</p>
+
+<p>real real real real real real real real real real real real real real real real real real real real real</p>
+<p>he talks about the entanglement of thought and emotion,</p>
+<p>which I think like thinking about quantum computing and quantum entanglement,</p>
+<p>like the entanglement between thought and emotion is just like a really</p>
+<p>interesting concept to me,</p>
+<p>or just an interesting way to think about like who wins or like,</p>
+<p>can you have one without the other or one always knows what the other one is</p>
+<p>doing or yeah.</p>
+<p>And the problem we have in,</p>
+<p>I agree we have that entanglement and it's fascinating the problem in</p>
+<p>artificial systems or technological artifacts, which by the way,</p>
+<p>another theme of this paper,</p>
+<p>and we sort of wrap it up is it's like a path to,</p>
+<p>it's going to sound a little odd,</p>
+<p>artificial sentience.</p>
+<p>And then that also opens up the whole moral issues and ethical dilemmas.</p>
+<p>But, but to even get there,</p>
+<p>I would argue we're missing the half of your entanglement, right?</p>
+<p>We're missing more the emotional side,</p>
+<p>which I think also stems from,</p>
+<p>you know,</p>
+<p>even the lower level processes that kind of give rise to the emotional states.</p>
+<p>And, you know,</p>
+<p>there's,</p>
+<p>there's a lot of physiology and a lot of physiological connections between like</p>
+<p>the chemicals and things in our body that also help drive those emotions.</p>
+<p>And I think we need them.</p>
+<p>And I think artificial,</p>
+<p>technological artifacts are missing at least.</p>
+<p>I'm not going to say if we've tackled sufficiently the higher level cognitive</p>
+<p>behavior,</p>
+<p>because,</p>
+<p>you know,</p>
+<p>there's still the work being done in cognitive architectures and cognitive modeling.</p>
+<p>Although I also think that we're,</p>
+<p>because we're missing half,</p>
+<p>which is the emotional side of things and the biophysical drives and manipulations,</p>
+<p>we're missing that entanglement.</p>
+<p>So the design of our intelligence system is sort of like detached.</p>
+<p>We're still in many ways in AI.</p>
+<p>And we also mentioned this in that paper.</p>
+<p>You might've heard of brain in a vat,</p>
+<p>right?</p>
+<p>Which is the idea of what you can think of intuitively.</p>
+<p>It's an old cognitive,</p>
+<p>it no one really ever said it.</p>
+<p>It's more of like a criticism of old cognitive science,</p>
+<p>which is to say that neural processing,</p>
+<p>our mental representations,</p>
+<p>our decisions and that we make and our plans that we make and our complex logical order processing</p>
+<p>are completely divorced of the body,</p>
+<p>right?</p>
+<p>It's the extreme.</p>
+<p>It's essentially mortal,</p>
+<p>immortal computation,</p>
+<p>which is kind of another fun thing we pointed out.</p>
+<p>But in the cognitive sciences and philosophy of mind realm,</p>
+<p>and because we've been designing things from that perspective for so long,</p>
+<p>we're missing that entanglement.</p>
+<p>And I think there's some of the roadblocks we will face in the future,</p>
+<p>some of the things we can't necessarily build,</p>
+<p>maybe the holy grails that still remain,</p>
+<p>like,</p>
+<p>you know,</p>
+<p>higher order logical reasoning and complex planning that,</p>
+<p>you know,</p>
+<p>transformers and the big neural models can't really quite do today,</p>
+<p>despite claims that are being made from the public relations of different companies.</p>
+<p>I think that we're missing that other piece of the equation that could have helped inform and make those processes that we design better,</p>
+<p>but we're also missing that relationship.</p>
+<p>So that entanglement blue is inherently not there,</p>
+<p>which is there in,</p>
+<p>for example,</p>
+<p>human entities and animals and,</p>
+<p>or in living beings,</p>
+<p>right?</p>
+<p>We have that interplay,</p>
+<p>and then we have the ability to decide if we want to override it,</p>
+<p>but technological artifacts don't have that.</p>
+<p>There's nothing to override,</p>
+<p>right?</p>
+<p>So,</p>
+<p>um,</p>
+<p>at least I'm going to make that claim.</p>
+<p>I'm sure that there's probably,</p>
+<p>there is this world called effective computing.</p>
+<p>Um,</p>
+<p>but I'm not a hundred percent clear if whether or not that has all the ingredients that I would say need to be in place to build that 50% of the entanglement of emotion to higher level cognition and reasoning and non-emotional reasoning.</p>
+<p>Um,</p>
+<p>so,</p>
+<p>and we need that.</p>
+<p>So I would love to have that.</p>
+<p>And then we could then quantify that entanglement,</p>
+<p>right?</p>
+<p>And talk about the relationship or proportion of emotional processing,</p>
+<p>or even low level biological processing to higher level or cognitive processing and planning and decision making.</p>
+<p>I don't know if blue heard that,</p>
+<p>but I see her thing green.</p>
+<p>So,</p>
+<p>okay.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>Wow.</p>
+<p>I brought up an image.</p>
+<p>This is a figure 1.2 from the textbook with a high road and the low road.</p>
+<p>So,</p>
+<p>the low road,</p>
+<p>how it's constructed and that's Bayesian,</p>
+<p>but we could consider other ways that things are actually built like JF Cloud,</p>
+<p>you're working on the symbolic active inference.</p>
+<p>So programs from the bottom up,</p>
+<p>or there could be different heterogeneous elements.</p>
+<p>We talked about quantum and neuromorphic.</p>
+<p>So,</p>
+<p>we talked about quantum and neuromorphic.</p>
+<p>So,</p>
+<p>as many material substrates as there are material substrates to be inclusive of what ecosystems actually consist of.</p>
+<p>And then first principles thinking.</p>
+<p>First principles approaches,</p>
+<p>including the free energy principle or unified through consideration with the free energy principle.</p>
+<p>all of these terms that include complex systems,</p>
+<p>phenomena,</p>
+<p>self-organization,</p>
+<p>autopoiesis,</p>
+<p>like you mentioned,</p>
+<p>and how the current narrow or whatever it is,</p>
+<p>computer science that we continue to ride inertia and acceleration on from the kind of von Neumann architecture and scaling in materials with a lot of costs.</p>
+<p>Like that is almost missing these two complements.</p>
+<p>One of them is the top-down organizing principle,</p>
+<p>though there are organizational principles within computer science.</p>
+<p>Of course,</p>
+<p>it's a formal field,</p>
+<p>but unified principle.</p>
+<p>And then almost like in a,</p>
+<p>in a very interesting relation that,</p>
+<p>that I hope people can explore later is this other complimentary relationship between,</p>
+<p>I mean,</p>
+<p>to put it coarsely,</p>
+<p>like the heart and the brain and the integration with the hands and about pragmatic value and the affective,</p>
+<p>value.</p>
+<p>And blue,</p>
+<p>you asked like,</p>
+<p>what if we're,</p>
+<p>what if we're like least aware of what we offloaded?</p>
+<p>It's like,</p>
+<p>that's,</p>
+<p>we're,</p>
+<p>we're only aware of what we're not offloaded.</p>
+<p>So every,</p>
+<p>every,</p>
+<p>if we just take a,</p>
+<p>a mental survey of what we know,</p>
+<p>that's the remainder of what we don't know.</p>
+<p>And that's a very different,</p>
+<p>very integrated,</p>
+<p>compressible perspective that then can unroll a lot of different ways.</p>
+<p>That isn't just like,</p>
+<p>we have to do what we're doing now,</p>
+<p>but just more.</p>
+<p>Well,</p>
+<p>and just a quick point.</p>
+<p>There's also this beautiful concept called,</p>
+<p>and it's being embraced in cognitive science more recently,</p>
+<p>because it was even the theme of COG-Sci,</p>
+<p>I believe last year,</p>
+<p>cognitive diversity,</p>
+<p>you know?</p>
+<p>And so,</p>
+<p>and that's the beautiful part of embodiment,</p>
+<p>the embodiment thesis in cognitive science,</p>
+<p>which is,</p>
+<p>it can give you an explanation of all the different ways in which we might</p>
+<p>have something more offloaded than,</p>
+<p>you know,</p>
+<p>not into the different varying degrees.</p>
+<p>And so even maybe the question sometimes isn't what's optimal,</p>
+<p>but rather,</p>
+<p>can we capture the wide array of different amounts of cognitive offloading?</p>
+<p>Because if you change the body,</p>
+<p>you change the cognition.</p>
+<p>And that's like the embodiment thesis in its natural,</p>
+<p>and this paper echoes that extreme kind of view a bit,</p>
+<p>that if you change the body,</p>
+<p>you're going to change the thinking and fundamentally,</p>
+<p>and you,</p>
+<p>we know this even,</p>
+<p>even internally within the same body,</p>
+<p>if you are feeling sick,</p>
+<p>if you are feeling hungry,</p>
+<p>or you have your,</p>
+<p>even if you,</p>
+<p>you can fight these things with a top-down approach to some degree,</p>
+<p>but it will affect,</p>
+<p>for example,</p>
+<p>your focus.</p>
+<p>If you're sick,</p>
+<p>it's harder sometimes to write a paper.</p>
+<p>You have something called brain fog,</p>
+<p>right?</p>
+<p>And so that's where the body is so intimately involved in our biophysics and our physiology,</p>
+<p>so intimately involved in our everyday processing that,</p>
+<p>and different people are affected to different degrees.</p>
+<p>I mean,</p>
+<p>I'm sure there's someone out there who's like,</p>
+<p>no,</p>
+<p>I'm maybe they had,</p>
+<p>for example,</p>
+<p>a really bad cold.</p>
+<p>And they're like,</p>
+<p>no,</p>
+<p>I was able to get the same amount of work done as always.</p>
+<p>Right.</p>
+<p>I mean,</p>
+<p>and that would also show you that it's going to be vastly different,</p>
+<p>even within the same type of entity.</p>
+<p>And so that,</p>
+<p>that's something cognitive diversity,</p>
+<p>I think gets captured by this type of thinking.</p>
+<p>And it could be really interesting,</p>
+<p>you know,</p>
+<p>from using the premise of a mortal computer to sort of construct systems that are like that.</p>
+<p>And by the way,</p>
+<p>the mortal computer rests on that dice diagram that you have there,</p>
+<p>you know,</p>
+<p>with the active inference and the free energy,</p>
+<p>it sort of tries to hit most of those main points and sort of like,</p>
+<p>agglomerate them into,</p>
+<p>well,</p>
+<p>we even propose a definition,</p>
+<p>right?</p>
+<p>I mean,</p>
+<p>is it a complete definition?</p>
+<p>I'm sure there's extensions.</p>
+<p>There's probably corollaries to add to the mortal computation thesis.</p>
+<p>But I just wanted to throw that point in there because I think that that's where it's that,</p>
+<p>that how much we offload will also change,</p>
+<p>even if it's like,</p>
+<p>maybe not optimal,</p>
+<p>but you know,</p>
+<p>that would be more dictated by an evolutionary process.</p>
+<p>Um,</p>
+<p>but you have different entities and different organisms that offload to different degrees.</p>
+<p>And depending on your body and what affordances it gives you,</p>
+<p>what,</p>
+<p>what abilities it offers you to interact with affordances in the environment and tools and things like that.</p>
+<p>Um,</p>
+<p>if I had eight legs,</p>
+<p>I'm going to be able to do drastically different things than,</p>
+<p>you know,</p>
+<p>with my bipedal body right now.</p>
+<p>And morphological robotics usually explores some of that.</p>
+<p>Um,</p>
+<p>what can different bodies,</p>
+<p>beyond the humanoid style,</p>
+<p>uh,</p>
+<p>provide in,</p>
+<p>for example,</p>
+<p>quadruped robots,</p>
+<p>which they take,</p>
+<p>you know,</p>
+<p>another thing in nature,</p>
+<p>like,</p>
+<p>oh,</p>
+<p>let's say animals like dogs and cats,</p>
+<p>but they're wonderful for like search and rescue,</p>
+<p>right?</p>
+<p>Whereas a bipedal system might struggle to get into certain spots.</p>
+<p>But if we had a quad,</p>
+<p>and there we've changed the body and hence we've changed the cognition and the mental neural processing.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>A lot,</p>
+<p>a lot,</p>
+<p>just even from the outside of robotics,</p>
+<p>I hear about cognitive robotics.</p>
+<p>So the adjective is saying,</p>
+<p>well,</p>
+<p>we're pulling back to consider cognitive architectures.</p>
+<p>And then there's another layer,</p>
+<p>which is like,</p>
+<p>well,</p>
+<p>how does it get there?</p>
+<p>What's the developmental trajectory?</p>
+<p>And then what is the ecology of similar or different minds and,</p>
+<p>and bodies?</p>
+<p>And then what's the evolutionary process?</p>
+<p>You can keep the,</p>
+<p>like you,</p>
+<p>you,</p>
+<p>you,</p>
+<p>again,</p>
+<p>in,</p>
+<p>in,</p>
+<p>in kind of distinction,</p>
+<p>describe the immortal.</p>
+<p>It's designed as if immortal,</p>
+<p>but of course,</p>
+<p>in reality,</p>
+<p>the Linux operating system or any given language model is mortal.</p>
+<p>You just unplug it because it's energy resources aren't accounted for.</p>
+<p>So it's kept in this suspended bare life state where it's at the behest of something,</p>
+<p>else.</p>
+<p>And so then that like unsustainability propagates through a system causing externalities.</p>
+<p>So ensuring that the externalities can be understood where they are,</p>
+<p>it leads.</p>
+<p>So we expect to scalable,</p>
+<p>interpretable systems that don't just hide the semantic ambiguity and the material</p>
+<p>components.</p>
+<p>They're so abstractly considered.</p>
+<p>And it's so unintegratable with emotive components that it feels like a dead end.</p>
+<p>So,</p>
+<p>I hate to keep talking about mortal computation,</p>
+<p>but we're doing it.</p>
+<p>Well,</p>
+<p>it's your,</p>
+<p>it's your guys podcast.</p>
+<p>I'm happy to lab about anything.</p>
+<p>I just want to make sure that if you wanted to talk about those papers,</p>
+<p>by the way,</p>
+<p>we did talk about those papers last time too,</p>
+<p>and they're integrated,</p>
+<p>right?</p>
+<p>Maybe we can relate some of them.</p>
+<p>Like I keep bringing the cog engine paper,</p>
+<p>not because it of itself is mortal,</p>
+<p>but I argue that it is a piece of that puzzle.</p>
+<p>Like if I were to go,</p>
+<p>yeah,</p>
+<p>that architecture there,</p>
+<p>that's not a mortal computer.</p>
+<p>However,</p>
+<p>it is a cognitive architecture.</p>
+<p>And I think it plays a role in the design of systems,</p>
+<p>right?</p>
+<p>For example,</p>
+<p>maybe blue,</p>
+<p>it helps.</p>
+<p>It would help us,</p>
+<p>for example,</p>
+<p>to design higher level processing to counteract some of the lower level emotive,</p>
+<p>you know,</p>
+<p>decisions that an agent would want to make.</p>
+<p>So I just want to make a mention.</p>
+<p>I'm fine with talking about whatever.</p>
+<p>I'm the one that shamelessly plugged it.</p>
+<p>I just actually wanted to plug it.</p>
+<p>And then,</p>
+<p>you know,</p>
+<p>we could go from there.</p>
+<p>If you,</p>
+<p>but they're,</p>
+<p>they're,</p>
+<p>they're intertwined.</p>
+<p>Right.</p>
+<p>It's not like my thinking is,</p>
+<p>Oh,</p>
+<p>when I work on cog engine,</p>
+<p>I turn off the mortal computer.</p>
+<p>It's like,</p>
+<p>no,</p>
+<p>they're all,</p>
+<p>they're all swirling around.</p>
+<p>It's all part of the same thought.</p>
+<p>So if you want to keep talking about it,</p>
+<p>be my guest,</p>
+<p>I'm your guest.</p>
+<p>So I just,</p>
+<p>I just have a question about like,</p>
+<p>when we talk about scalability and interpretability,</p>
+<p>I wonder how much interpretability is due to the fact that,</p>
+<p>you know,</p>
+<p>we're missing that emotive.</p>
+<p>Setup.</p>
+<p>Right.</p>
+<p>Like,</p>
+<p>so if we have some kind of interplay between like persistence,</p>
+<p>emotion,</p>
+<p>thought,</p>
+<p>like if there's some kind of,</p>
+<p>you know,</p>
+<p>struggle,</p>
+<p>like who's winning the war when we make a decision,</p>
+<p>when we choose to act,</p>
+<p>are we going to lose interpretability when we just start to design mortal computation?</p>
+<p>Like,</p>
+<p>or is there a way that we can keep interpretability?</p>
+<p>I mean,</p>
+<p>I guess we do all the programming.</p>
+<p>So,</p>
+<p>you know,</p>
+<p>you keep there,</p>
+<p>is,</p>
+<p>is it going to end up being more black box?</p>
+<p>If we have like,</p>
+<p>I mean,</p>
+<p>a human is way,</p>
+<p>like,</p>
+<p>I don't know what's good.</p>
+<p>Like I just compute,</p>
+<p>you know,</p>
+<p>I don't know what's going on.</p>
+<p>I mean,</p>
+<p>I can try to check in and like,</p>
+<p>where's this coming from?</p>
+<p>Is this my logical brain?</p>
+<p>Or is this from my heart?</p>
+<p>Or is it just like,</p>
+<p>you know,</p>
+<p>a motor like kinesthetic memory or that's driving me to act in a certain way?</p>
+<p>Like I can try to dissect it,</p>
+<p>but even it's hard to know my own like computational process.</p>
+<p>So when we're looking at like designing an artificial system,</p>
+<p>are we going to lose that interpretability in,</p>
+<p>in the design?</p>
+<p>Is that like built in?</p>
+<p>Well,</p>
+<p>fascinating point or fascinating premise.</p>
+<p>I think it depends not to bust up,</p>
+<p>the famous,</p>
+<p>it depends answer.</p>
+<p>And any of my students listening will be like,</p>
+<p>well,</p>
+<p>there he goes under the shield of it depends,</p>
+<p>but it really does.</p>
+<p>And I think it depends on what interpretability you're looking for.</p>
+<p>And I'm also going to mix,</p>
+<p>and it is different to some degree,</p>
+<p>explainability.</p>
+<p>And I'm going to bring in that word here because there,</p>
+<p>there's those that work in like interpretable AI versus explainable AI.</p>
+<p>And they can get pretty mad if you like say,</p>
+<p>oh,</p>
+<p>it's the same thing.</p>
+<p>And it's not quite.</p>
+<p>So in designing,</p>
+<p>let's say a mortal computer,</p>
+<p>let's even say like a con.</p>
+<p>So in the paper,</p>
+<p>we also have sort of like the beginnings,</p>
+<p>because by the way,</p>
+<p>we are encouraging everyone to contribute.</p>
+<p>We have sort of like a low level or what we call a homeoheetic or homeostatic</p>
+<p>mortal computer.</p>
+<p>And then things that have other processes are allostatic.</p>
+<p>And things that are at the top level,</p>
+<p>the complex computer would be autopetic.</p>
+<p>And that would be like the ideal.</p>
+<p>That would be like,</p>
+<p>oh,</p>
+<p>well,</p>
+<p>there we have a human,</p>
+<p>right?</p>
+<p>We have an animal.</p>
+<p>We have at least a sentient organoid.</p>
+<p>Yeah.</p>
+<p>If you're looking for Daniel,</p>
+<p>it's like after it's in section five,</p>
+<p>under the definition.</p>
+<p>But if you wanted to see that little,</p>
+<p>it's like it's sort of a taxonomy.</p>
+<p>And then we use it to evaluate modern day mortal computers.</p>
+<p>No,</p>
+<p>scroll.</p>
+<p>It's not a picture.</p>
+<p>No,</p>
+<p>no,</p>
+<p>no.</p>
+<p>It's under the definition.</p>
+<p>It's,</p>
+<p>it's a bullet point.</p>
+<p>Scroll down.</p>
+<p>You were close.</p>
+<p>It's weird.</p>
+<p>All right.</p>
+<p>Yeah.</p>
+<p>Go down.</p>
+<p>That's the definition.</p>
+<p>And then you scroll down right there.</p>
+<p>So there,</p>
+<p>yeah,</p>
+<p>we,</p>
+<p>you had it,</p>
+<p>you had it right there.</p>
+<p>Scroll up a little more.</p>
+<p>No,</p>
+<p>a little more.</p>
+<p>Scroll a little more.</p>
+<p>Homeostatic,</p>
+<p>allostatic,</p>
+<p>autopedic.</p>
+<p>So we sort of give a little bit of a characterization of like mortal computers of varying complexity.</p>
+<p>So I'm referring to this just in answering Blue's question.</p>
+<p>If I designed the ideal MC,</p>
+<p>mortal computer,</p>
+<p>autopedic,</p>
+<p>right?</p>
+<p>So it has all the ingredients we want.</p>
+<p>And then you're saying,</p>
+<p>is it interpretable?</p>
+<p>Do we lose some interpreting?</p>
+<p>I would argue not completely.</p>
+<p>You will from a,</p>
+<p>so the,</p>
+<p>the parts of interpretability you preserve,</p>
+<p>and I think it's even better in some ways than your run of the mill transformers and large neural models that are in operation today,</p>
+<p>is when,</p>
+<p>is when,</p>
+<p>for example,</p>
+<p>chat GPT or GPT-5 or stable diffusion does something really interesting,</p>
+<p>like,</p>
+<p>oh,</p>
+<p>it can do this downstream task that I never expected to do,</p>
+<p>like zero shot learning,</p>
+<p>which,</p>
+<p>you know,</p>
+<p>arguably is very interesting and promising that these models can do some elements of this type of adaptation.</p>
+<p>We can't answer why that happens.</p>
+<p>The best answer we have is,</p>
+<p>well,</p>
+<p>it's because we keep throwing more and more parameters at these models,</p>
+<p>more neurons,</p>
+<p>more synapses that connect them.</p>
+<p>And so if I toss more Legos at this,</p>
+<p>it'll just emerge,</p>
+<p>you know,</p>
+<p>through emergence,</p>
+<p>create complex behavior,</p>
+<p>and we get these nice little properties.</p>
+<p>And it's interesting because that does relate to complex system,</p>
+<p>complex adaptive systems theory,</p>
+<p>like John Holland's work in the 90s and the Santa Fe Institute,</p>
+<p>and other people that have worked on dynamical systems and complexity theory and how you get complex structures that emerge from these very simple structures.</p>
+<p>And self-organization was actually on Daniel's hierarchy.</p>
+<p>It was like a one piece of an organizing principle.</p>
+<p>So that part is like the part where it might be hard to completely interpret.</p>
+<p>Why does this behavior emerge?</p>
+<p>Because it is this complex,</p>
+<p>multi-level interaction of parts.</p>
+<p>And you could at least say it comes from like,</p>
+<p>and we do talk about it too in the paper,</p>
+<p>because we do talk about self-organization.</p>
+<p>You can't without,</p>
+<p>if you're going to talk about any living system,</p>
+<p>you have to go into self-organization.</p>
+<p>Upward causation and downward causation.</p>
+<p>So upward causation is like,</p>
+<p>the little parts give rise to complex emergent parts,</p>
+<p>and then their relationships to each other.</p>
+<p>And then the top-down causation is,</p>
+<p>you have these higher level parts that have now laws and physical relationships</p>
+<p>and implicit relationships with each other that exert like a modulation,</p>
+<p>modulatory effect on the lower level parts.</p>
+<p>And so that's why you have top-down, bottom-up,</p>
+<p>like causation,</p>
+<p>arrows of causation and interaction and constraint.</p>
+<p>So to give rise to a complex system.</p>
+<p>And so you can point to those pieces and say,</p>
+<p>well, that's the reason why certain behaviors probably emerged.</p>
+<p>But then you get into non-linear systems,</p>
+<p>and it's very, very hard to even, you know,</p>
+<p>mathematically analyze them,</p>
+<p>let alone, you know,</p>
+<p>come up with intuitive qualitative pictures of what's going on.</p>
+<p>But the part that you also get in designing a mortal computer</p>
+<p>and like the cog engine architecture that Daniel has here on the slide</p>
+<p>is you get interpretability in terms,</p>
+<p>at least the structure and some roles,</p>
+<p>especially if we're talking about like the internal states.</p>
+<p>Like the reason I like the common model of cognition,</p>
+<p>and there's other, you know,</p>
+<p>theories and blueprints out there.</p>
+<p>It's not to say it's the only one.</p>
+<p>But the reason I really like it</p>
+<p>is it sort of cuts up or cleaves the mind</p>
+<p>up into these general blobs of responsibilities</p>
+<p>and has some relationships.</p>
+<p>It doesn't commit you to any implementation,</p>
+<p>as we talked about at the podcast point one,</p>
+<p>but it sort of tells you like,</p>
+<p>oh, procedural memory,</p>
+<p>it's going to be doing this very specific thing, right?</p>
+<p>It's going to learn how to memorize sequences of actions,</p>
+<p>kind of like a reactive, physiological, physical, reactive components.</p>
+<p>And, you know, the way I interpret it</p>
+<p>was the transition dynamics model of active inference,</p>
+<p>or let me build a predictive coding little structure</p>
+<p>that tries to guess latent states.</p>
+<p>But then you have like declarative memory,</p>
+<p>and it stores the facts of the world,</p>
+<p>things that, you know,</p>
+<p>I bind the name of a person to their face,</p>
+<p>and, you know, I'm storing these little bits of knowledge</p>
+<p>into my representations and declarative memory.</p>
+<p>So you get the interpretability,</p>
+<p>at least at the level of,</p>
+<p>I know what these modules are doing.</p>
+<p>I probably could investigate and probe,</p>
+<p>in even a computational fashion,</p>
+<p>the contents of memory,</p>
+<p>cognitive architectures in general.</p>
+<p>And so that's the part that I like.</p>
+<p>They bring at least a level of interpretability</p>
+<p>because you have this organizational principles,</p>
+<p>you have responsibilities for different modules,</p>
+<p>and even classical cognitive architectures</p>
+<p>have things like production systems,</p>
+<p>and you can encode knowledge into them.</p>
+<p>There's good work on like, you know,</p>
+<p>if-then statements,</p>
+<p>and you can kind of break up knowledge</p>
+<p>into at least bits and pieces of logic,</p>
+<p>and we can very easily inspect that, right?</p>
+<p>And so the,</p>
+<p>while that might not be computational</p>
+<p>in the most efficient way,</p>
+<p>we could probably do mappings</p>
+<p>between the neural representations,</p>
+<p>since they're essentially mimicking</p>
+<p>what like ACDR and SOAR</p>
+<p>and very classic prominent cognitive architectures</p>
+<p>are trying to do to these production systems.</p>
+<p>There's been good work,</p>
+<p>even from Yahshua's group.</p>
+<p>He had a paper,</p>
+<p>neural production systems,</p>
+<p>which I kind of like that idea</p>
+<p>about how do we emulate that piece of cognitive architectures</p>
+<p>with, you know, just neural networks.</p>
+<p>And so we can take advantage of that mapping,</p>
+<p>and we could probably get some decoding going on</p>
+<p>and interpret some pieces of our agent system,</p>
+<p>mortal computer.</p>
+<p>And also, by the way,</p>
+<p>the very design of the mortal computer,</p>
+<p>you actually would have a clear picture of like,</p>
+<p>well, these are the essential variables</p>
+<p>or the metabolic pathways.</p>
+<p>Here are the homeostatic processes.</p>
+<p>These are the things I defined</p>
+<p>that define the life of this system,</p>
+<p>or otherwise it will die, right?</p>
+<p>And then the allostatic processes live above that.</p>
+<p>And so that's what that like cool picture</p>
+<p>that I really like in the middle of the paper,</p>
+<p>the biophysics,</p>
+<p>shows you like the hierarchy</p>
+<p>of different types of processing</p>
+<p>that would happen from biology.</p>
+<p>And then the cybernetics tells you,</p>
+<p>what is it going to do</p>
+<p>from like an analysis point of view?</p>
+<p>It's trying to find stable states.</p>
+<p>It wants to be ultra stable,</p>
+<p>to use Ashby's and the cyberneticist's old terms, right?</p>
+<p>And that's, you know,</p>
+<p>I'm able to very quickly satisfy my constraints</p>
+<p>so I can keep living and not, you know, die.</p>
+<p>And essentially preserve</p>
+<p>or have enough internal variety</p>
+<p>to counterbalance my external variety.</p>
+<p>And that's the cybernetician's</p>
+<p>kind of framing of what's going on</p>
+<p>in organizing systems.</p>
+<p>And so you get that interpretability</p>
+<p>in terms of the design.</p>
+<p>You know the parts,</p>
+<p>the mechanisms behind it,</p>
+<p>but you will lose the piece of,</p>
+<p>like, why did that behavior</p>
+<p>specifically come about?</p>
+<p>It's going to be a nonlinear process.</p>
+<p>So you will lose it.</p>
+<p>And I don't think you can get all of that back.</p>
+<p>Here's the last point.</p>
+<p>I said at the very beginning, explainability.</p>
+<p>Now this is different than interpretability.</p>
+<p>And the way I,</p>
+<p>it's going to be my digested version</p>
+<p>of explainability.</p>
+<p>So Blue, you were saying to me earlier,</p>
+<p>I might be able to inspect</p>
+<p>the contents of my mind</p>
+<p>and come up with a reasoning</p>
+<p>for why I did something.</p>
+<p>And then you mentioned that,</p>
+<p>well, it could be wrong</p>
+<p>or, you know,</p>
+<p>I might not completely capture it.</p>
+<p>And I agree because we do this</p>
+<p>in all the fields, right?</p>
+<p>Like, especially anything about the mind.</p>
+<p>I try to think about the contents</p>
+<p>of why I did something</p>
+<p>or what was going on in my brain</p>
+<p>or break down my process</p>
+<p>and then try to turn that</p>
+<p>into a computational model</p>
+<p>that then explains like the actual entity.</p>
+<p>And it might be wrong.</p>
+<p>It might be biased.</p>
+<p>However, there's something cool</p>
+<p>about what you doing that.</p>
+<p>That's the explainable part.</p>
+<p>You Blue might not know the true reason,</p>
+<p>the real reason of the universe</p>
+<p>or the biological reasoning</p>
+<p>or the thermodynamic cognitive reasoning</p>
+<p>of why you did something specifically.</p>
+<p>However, you can provide an explanation</p>
+<p>or a rationalization of why</p>
+<p>why you did it.</p>
+<p>And while it might not be perfect</p>
+<p>and we shouldn't, you know,</p>
+<p>take the account as wholesale</p>
+<p>the exact truth,</p>
+<p>you are able to communicate</p>
+<p>the basis of your decision.</p>
+<p>So you are able to use your construct,</p>
+<p>your biology,</p>
+<p>your neural processing</p>
+<p>to formulate.</p>
+<p>And then, of course,</p>
+<p>we also have this thing</p>
+<p>called communication.</p>
+<p>You use the other parts of your body</p>
+<p>to transmit those sound waves</p>
+<p>to me and Daniel</p>
+<p>across a tool, Zoom.</p>
+<p>And we hear what you're saying</p>
+<p>and you say,</p>
+<p>oh, when I wanted to solve this problem,</p>
+<p>I did X, Y, and Z.</p>
+<p>And what we would find is then</p>
+<p>if we did X, Y, and Z,</p>
+<p>maybe that's not exactly</p>
+<p>the true explanation why you did it,</p>
+<p>but I would be able</p>
+<p>to solve the problem now.</p>
+<p>And we teach, right?</p>
+<p>We pass on this knowledge.</p>
+<p>And so the explainable part</p>
+<p>might arise.</p>
+<p>I think that might counterbalance</p>
+<p>the lack of interpretability.</p>
+<p>So while we might not be able</p>
+<p>to say exactly 100%,</p>
+<p>I still argue we have</p>
+<p>more interpretability</p>
+<p>than monolith structures</p>
+<p>like transformers today</p>
+<p>where we just say,</p>
+<p>eh, it emerged.</p>
+<p>And that's cool, right?</p>
+<p>I mean, there is probably analysis.</p>
+<p>I don't want to like</p>
+<p>completely dismiss transformers.</p>
+<p>There probably is interesting work</p>
+<p>on maybe identifying</p>
+<p>what parts of the network.</p>
+<p>But from the design principles</p>
+<p>or the inductive bias</p>
+<p>that evolution gave us,</p>
+<p>I think a cognitive architecture</p>
+<p>gives you some interpretability</p>
+<p>in a structural way.</p>
+<p>But then you're going to get</p>
+<p>a mortal computer</p>
+<p>that would probably be able</p>
+<p>to explain to you</p>
+<p>why did it do this?</p>
+<p>Because why?</p>
+<p>The 5e cognition theory</p>
+<p>that Carl and I have</p>
+<p>doesn't, it absorbs</p>
+<p>or expands 4e cognitive theory,</p>
+<p>which includes embedded.</p>
+<p>And the embedded cognition</p>
+<p>is really important</p>
+<p>because that's part of that</p>
+<p>like other diagram I had</p>
+<p>where I had the slices</p>
+<p>of a pie of cognition</p>
+<p>in a mortal computer.</p>
+<p>And among there,</p>
+<p>it's saying,</p>
+<p>I have to interact with other,</p>
+<p>well, I had other neural robots,</p>
+<p>but I'm talking to you, Blue.</p>
+<p>And that means that</p>
+<p>I have to be able</p>
+<p>to communicate</p>
+<p>some approximation</p>
+<p>of why I did something.</p>
+<p>And there is an explainable,</p>
+<p>you know, there's explainability.</p>
+<p>And I communicate</p>
+<p>this reasoning to you,</p>
+<p>you give me feedback,</p>
+<p>and, you know,</p>
+<p>we kind of come up with</p>
+<p>a solution to the problem</p>
+<p>or a better understanding</p>
+<p>of something.</p>
+<p>And I think that's where</p>
+<p>the mortal computer</p>
+<p>in its full glory</p>
+<p>would give you, right?</p>
+<p>Because it would be able</p>
+<p>to tell you why.</p>
+<p>It would interact with you</p>
+<p>because it also needs to.</p>
+<p>Because you're part of its niche.</p>
+<p>You affect its survival.</p>
+<p>So it can't sort of like,</p>
+<p>oh, okay,</p>
+<p>I'm just going to ignore you</p>
+<p>because actually</p>
+<p>it might be really important.</p>
+<p>You might be important</p>
+<p>for it to achieve its goals,</p>
+<p>which could be</p>
+<p>to allow it to get more power</p>
+<p>if we go back</p>
+<p>to the primal connection.</p>
+<p>There's a lot of jumping around</p>
+<p>going on here.</p>
+<p>But you are an essential part.</p>
+<p>We, humans,</p>
+<p>all of us,</p>
+<p>are an essential part</p>
+<p>of what a true</p>
+<p>mortal computer would be.</p>
+<p>This is what makes it</p>
+<p>artificially sentient too, right?</p>
+<p>And it has to live</p>
+<p>in its niche</p>
+<p>and the niche,</p>
+<p>you know,</p>
+<p>can get very complex.</p>
+<p>It's not going to be</p>
+<p>a laboratory</p>
+<p>that I put it</p>
+<p>in a little white-walled room</p>
+<p>and, you know,</p>
+<p>oh, okay,</p>
+<p>I've emulated life.</p>
+<p>No, ultimately,</p>
+<p>you would want this</p>
+<p>to integrate</p>
+<p>with human society</p>
+<p>and to interact with us</p>
+<p>because there's things</p>
+<p>that you get</p>
+<p>that with a group,</p>
+<p>with a collective,</p>
+<p>with social norms,</p>
+<p>that you don't get</p>
+<p>living in pure isolation.</p>
+<p>And so you're going</p>
+<p>to get that.</p>
+<p>It's not interpretability,</p>
+<p>but it's explainability.</p>
+<p>And I think that</p>
+<p>that communication</p>
+<p>and that part</p>
+<p>might counterbalance</p>
+<p>the fact that</p>
+<p>we're dealing with,</p>
+<p>as you rightly point out,</p>
+<p>Blue,</p>
+<p>an extremely nonlinear,</p>
+<p>complex system</p>
+<p>that it's going</p>
+<p>to be very hard</p>
+<p>to say exactly</p>
+<p>why did it do</p>
+<p>what it did</p>
+<p>based on inspection</p>
+<p>of its contents,</p>
+<p>even if we designed it.</p>
+<p>So the explainable part,</p>
+<p>I think,</p>
+<p>will counterbalance</p>
+<p>that to some degree.</p>
+<p>Wow.</p>
+<p>Sounds like psychotherapy.</p>
+<p>Psychotherapy</p>
+<p>for the mortal computer.</p>
+<p>There you go.</p>
+<p>Yes, we need it.</p>
+<p>There's so many pieces</p>
+<p>to add in.</p>
+<p>I barely know</p>
+<p>where to go.</p>
+<p>Yeah.</p>
+<p>Yeah.</p>
+<p>It's a lot you brought out.</p>
+<p>I think the connection</p>
+<p>to complexity science</p>
+<p>is very good</p>
+<p>because that's where</p>
+<p>we can ask</p>
+<p>and have a laboratory</p>
+<p>for like,</p>
+<p>well,</p>
+<p>what's the account</p>
+<p>you can give</p>
+<p>of this double pendulum?</p>
+<p>What's the account</p>
+<p>you can give</p>
+<p>of Wolfram's Rule 30?</p>
+<p>And by that,</p>
+<p>we can contextualize,</p>
+<p>yeah,</p>
+<p>how many experiments</p>
+<p>of what type</p>
+<p>would we expect</p>
+<p>before we could understand</p>
+<p>a fruit flies decision</p>
+<p>in a T-Maze?</p>
+<p>What about a human</p>
+<p>in this or that?</p>
+<p>And then this tension,</p>
+<p>but fundamental,</p>
+<p>so we can quickly</p>
+<p>come to adapt to it,</p>
+<p>that there's things</p>
+<p>we do and don't know about.</p>
+<p>It's one of the quotes</p>
+<p>beginning a chapter</p>
+<p>in the 2022 textbook.</p>
+<p>I think it's like</p>
+<p>a Minsky quote.</p>
+<p>We're aware of least</p>
+<p>what our brains do best.</p>
+<p>And so that whole</p>
+<p>like searching</p>
+<p>under the street light</p>
+<p>with the light</p>
+<p>of attention</p>
+<p>that every agent</p>
+<p>is only engaged in</p>
+<p>as a fundamental constraint.</p>
+<p>That's one constraint</p>
+<p>is the attentional,</p>
+<p>informational.</p>
+<p>Another constraint</p>
+<p>is the material,</p>
+<p>physical niche,</p>
+<p>which is always actual.</p>
+<p>And that's,</p>
+<p>that's connected</p>
+<p>to the environment</p>
+<p>totally fundamentally.</p>
+<p>Like there can't be</p>
+<p>a discussion of what</p>
+<p>ant colony foraging</p>
+<p>strategy works best.</p>
+<p>Even for one field location,</p>
+<p>there's going to be</p>
+<p>different ant species</p>
+<p>with different</p>
+<p>total strategies</p>
+<p>and different nest mates</p>
+<p>with sub strategies</p>
+<p>as modeled by.</p>
+<p>So you've embarked</p>
+<p>on a wildly</p>
+<p>fundamental task</p>
+<p>that combines</p>
+<p>a lot of the</p>
+<p>discussions happening</p>
+<p>in active inference</p>
+<p>with the broader</p>
+<p>cognitive sciences,</p>
+<p>broader complex systems.</p>
+<p>and it's definitely</p>
+<p>interesting and relevant.</p>
+<p>So I really appreciate</p>
+<p>that you share it this way.</p>
+<p>I'm happy you guys</p>
+<p>took to it so well.</p>
+<p>And I certainly want</p>
+<p>that idea out there.</p>
+<p>So now,</p>
+<p>now that there's a,</p>
+<p>what do you call it?</p>
+<p>A proper treatment,</p>
+<p>an initial treatment</p>
+<p>of moral computation,</p>
+<p>please spread the word.</p>
+<p>You know,</p>
+<p>I want,</p>
+<p>I want to hear other people</p>
+<p>come back to me like,</p>
+<p>oh yeah,</p>
+<p>I heard about</p>
+<p>the mortal computer</p>
+<p>and I'd love to see</p>
+<p>you guys</p>
+<p>and everyone else</p>
+<p>try to take a whack</p>
+<p>at designing</p>
+<p>even the most</p>
+<p>primitive versions of it.</p>
+<p>Because I think</p>
+<p>this is like,</p>
+<p>I don't know</p>
+<p>if it's quite that,</p>
+<p>but it almost feels like,</p>
+<p>uh,</p>
+<p>like a little baby step.</p>
+<p>This paper is,</p>
+<p>uh,</p>
+<p>is,</p>
+<p>uh,</p>
+<p>intensive as it has been,</p>
+<p>uh,</p>
+<p>and informative</p>
+<p>and so fun</p>
+<p>working with Carl on it.</p>
+<p>Um,</p>
+<p>it is just a step</p>
+<p>in a big direction,</p>
+<p>as you just said,</p>
+<p>Daniel,</p>
+<p>and it's a wild,</p>
+<p>wild place.</p>
+<p>And it also goes</p>
+<p>at odds with a lot of,</p>
+<p>like,</p>
+<p>maybe this group here,</p>
+<p>you know,</p>
+<p>we're a lot more,</p>
+<p>uh,</p>
+<p>what do you say,</p>
+<p>receptive</p>
+<p>and excited</p>
+<p>by these prospects,</p>
+<p>but it does go</p>
+<p>even to challenge</p>
+<p>a lot of</p>
+<p>what we hold dear</p>
+<p>and near and dear</p>
+<p>to ourselves,</p>
+<p>which is the,</p>
+<p>we really do like</p>
+<p>our immortal computers.</p>
+<p>And,</p>
+<p>you know,</p>
+<p>there,</p>
+<p>there's,</p>
+<p>there's gonna be</p>
+<p>trade-offs to that.</p>
+<p>And the paper does</p>
+<p>talk about that.</p>
+<p>It even starts by</p>
+<p>trying to address</p>
+<p>the reader</p>
+<p>by saying,</p>
+<p>the reader might ask,</p>
+<p>you know,</p>
+<p>themselves,</p>
+<p>you know,</p>
+<p>why do I really want this?</p>
+<p>Because it's also</p>
+<p>very brittle.</p>
+<p>I'm gonna just be</p>
+<p>clear too.</p>
+<p>But then again,</p>
+<p>humans and animals</p>
+<p>and organisms</p>
+<p>are also brittle as well.</p>
+<p>Um,</p>
+<p>but why do I want</p>
+<p>this?</p>
+<p>Right.</p>
+<p>And,</p>
+<p>you know,</p>
+<p>and then we had,</p>
+<p>and we motivate this</p>
+<p>with like,</p>
+<p>uh,</p>
+<p>three kind of stabs,</p>
+<p>which is thermodynamic,</p>
+<p>which is the most important.</p>
+<p>And by the way,</p>
+<p>the free energy principle,</p>
+<p>um,</p>
+<p>and physicists in the room</p>
+<p>might say,</p>
+<p>well,</p>
+<p>wait a minute,</p>
+<p>free energy,</p>
+<p>that's thermodynamic.</p>
+<p>Why?</p>
+<p>This is not quite the same thing.</p>
+<p>There's the mixture</p>
+<p>of information theory</p>
+<p>in here as well.</p>
+<p>But,</p>
+<p>you know,</p>
+<p>the thermodynamic free energy</p>
+<p>is a really important</p>
+<p>piece to this puzzle.</p>
+<p>And the,</p>
+<p>the way that computers</p>
+<p>are organized</p>
+<p>is sort of what</p>
+<p>this challenge is.</p>
+<p>And,</p>
+<p>you know,</p>
+<p>it also,</p>
+<p>we have tools</p>
+<p>to attack this,</p>
+<p>like neuromorphic chips.</p>
+<p>Wonderful,</p>
+<p>wonderful platform,</p>
+<p>uh,</p>
+<p>for,</p>
+<p>uh,</p>
+<p>you know,</p>
+<p>a mortal computer.</p>
+<p>Uh,</p>
+<p>and we do talk about it</p>
+<p>in the supplement.</p>
+<p>It got moved to the supplement</p>
+<p>because,</p>
+<p>again,</p>
+<p>it was already</p>
+<p>a little bit too long.</p>
+<p>Um,</p>
+<p>so I talk about,</p>
+<p>uh,</p>
+<p>neuromorphic architectures</p>
+<p>and the,</p>
+<p>also neuromimetic algorithms,</p>
+<p>which kind of connect</p>
+<p>to the papers too,</p>
+<p>like predictive coding.</p>
+<p>It isn't like front</p>
+<p>and center.</p>
+<p>I don't,</p>
+<p>we don't try to like</p>
+<p>throw it in your face,</p>
+<p>uh,</p>
+<p>even though it is a,</p>
+<p>uh,</p>
+<p>one way of thinking,</p>
+<p>uh,</p>
+<p>a consequence</p>
+<p>of free energy minimization.</p>
+<p>But,</p>
+<p>um,</p>
+<p>and so we talk about</p>
+<p>these things,</p>
+<p>but I think</p>
+<p>it challenged,</p>
+<p>we also talk,</p>
+<p>it also challenges</p>
+<p>and gets us to think</p>
+<p>about existentialism,</p>
+<p>uh,</p>
+<p>and life and philosophy</p>
+<p>of life and death</p>
+<p>because,</p>
+<p>uh,</p>
+<p>we,</p>
+<p>there was even citations</p>
+<p>to Heidegger,</p>
+<p>uh,</p>
+<p>and,</p>
+<p>uh,</p>
+<p>and all kinds,</p>
+<p>and Sorin,</p>
+<p>and all,</p>
+<p>all kinds of wonderful thinkers</p>
+<p>too that have just thought</p>
+<p>about philosophy of mind</p>
+<p>and how,</p>
+<p>uh,</p>
+<p>our identities</p>
+<p>and our,</p>
+<p>our thought processes</p>
+<p>are just naturally</p>
+<p>influenced by the fact</p>
+<p>that we know,</p>
+<p>uh,</p>
+<p>that,</p>
+<p>you know,</p>
+<p>things are going</p>
+<p>to possibly end,</p>
+<p>um,</p>
+<p>and wonderful thinkers</p>
+<p>and there's also been</p>
+<p>this concept of like,</p>
+<p>and again,</p>
+<p>and this is a little</p>
+<p>Heideggerian,</p>
+<p>but,</p>
+<p>uh,</p>
+<p>you know,</p>
+<p>your,</p>
+<p>your being,</p>
+<p>there's,</p>
+<p>you know,</p>
+<p>this famous book</p>
+<p>being in time</p>
+<p>and you think about,</p>
+<p>well,</p>
+<p>you know,</p>
+<p>at the end of time</p>
+<p>you,</p>
+<p>you have to understand</p>
+<p>when you live,</p>
+<p>you're projecting</p>
+<p>your being to there</p>
+<p>and then going backwards</p>
+<p>and so there's a quote</p>
+<p>that kind of starts</p>
+<p>the paper from</p>
+<p>Sorin Kaikago</p>
+<p>about,</p>
+<p>uh,</p>
+<p>you know,</p>
+<p>we,</p>
+<p>we look at life</p>
+<p>backwards,</p>
+<p>but we must live it forwards</p>
+<p>and there's that interaction</p>
+<p>with knowing</p>
+<p>that this,</p>
+<p>this rodeo is,</p>
+<p>this play</p>
+<p>is not going to last forever,</p>
+<p>um,</p>
+<p>which is a motivator</p>
+<p>for why we do a lot of things,</p>
+<p>including teaching</p>
+<p>and passing on,</p>
+<p>uh,</p>
+<p>to the next generation.</p>
+<p>And the other part</p>
+<p>was again,</p>
+<p>cognitive science.</p>
+<p>I think cognitive science</p>
+<p>got a little bit</p>
+<p>of a spotlight,</p>
+<p>uh,</p>
+<p>because it needed to.</p>
+<p>I think the embodiment thesis</p>
+<p>inactive cognition</p>
+<p>and then Kirchhoff's</p>
+<p>and,</p>
+<p>and,</p>
+<p>and,</p>
+<p>and his,</p>
+<p>and his collaborators</p>
+<p>life,</p>
+<p>mind,</p>
+<p>continuity thesis</p>
+<p>needed to sort of</p>
+<p>be foregrounded</p>
+<p>a little bit,</p>
+<p>um,</p>
+<p>because I think that's</p>
+<p>another piece of this puzzle.</p>
+<p>Uh,</p>
+<p>and it kind of ties</p>
+<p>everything together</p>
+<p>about how to think</p>
+<p>about minds and brains,</p>
+<p>but it all challenges</p>
+<p>what things we're,</p>
+<p>we're very used to.</p>
+<p>We're very used to</p>
+<p>when we design,</p>
+<p>especially artificial intelligence.</p>
+<p>Okay.</p>
+<p>I,</p>
+<p>I trust this hardware is good.</p>
+<p>I'm going to try</p>
+<p>to build some software</p>
+<p>and I believe that I can</p>
+<p>design all my processes,</p>
+<p>uh,</p>
+<p>from,</p>
+<p>you know,</p>
+<p>from scratch</p>
+<p>without even accounting</p>
+<p>for maybe what,</p>
+<p>you know,</p>
+<p>evolution might've given us,</p>
+<p>uh,</p>
+<p>we are seeing some of that,</p>
+<p>especially Bayesian,</p>
+<p>uh,</p>
+<p>framings have some of that</p>
+<p>in there,</p>
+<p>right?</p>
+<p>The idea of a prior,</p>
+<p>uh,</p>
+<p>I think is important,</p>
+<p>but a lot of modern day</p>
+<p>neural systems</p>
+<p>don't 100%,</p>
+<p>I think,</p>
+<p>foreground that,</p>
+<p>uh,</p>
+<p>and play how important</p>
+<p>these priors are</p>
+<p>to sort of like</p>
+<p>driving your behavior.</p>
+<p>And so that's,</p>
+<p>what's going to be interesting</p>
+<p>is that this is truly</p>
+<p>a weird place to be.</p>
+<p>And it also really says</p>
+<p>you gotta have a body.</p>
+<p>You gotta have an environment.</p>
+<p>So you're not done.</p>
+<p>If you say,</p>
+<p>I have this wonderful algorithm</p>
+<p>that I think emulates</p>
+<p>some piece of intelligence,</p>
+<p>that's wonderful,</p>
+<p>but that's not going to be</p>
+<p>the end of the story.</p>
+<p>In fact,</p>
+<p>you're far from the end</p>
+<p>of the story.</p>
+<p>You need to be integrating</p>
+<p>that into a brittle body</p>
+<p>where that process</p>
+<p>that you've designed</p>
+<p>is also going to be shaped</p>
+<p>now by the substrate,</p>
+<p>right?</p>
+<p>And it's interactions,</p>
+<p>it's thermodynamic exchange</p>
+<p>with the environment.</p>
+<p>and the environment itself</p>
+<p>is going to change</p>
+<p>how it works.</p>
+<p>And so you sort of get</p>
+<p>this malleable,</p>
+<p>flexible kind of framing</p>
+<p>of AI as well</p>
+<p>that intelligence is,</p>
+<p>you just no longer</p>
+<p>can divorce it</p>
+<p>from the mechanics</p>
+<p>of interaction</p>
+<p>with interacting</p>
+<p>with the world.</p>
+<p>You cannot divorce it</p>
+<p>from the thermodynamic exchange.</p>
+<p>That's how we're going</p>
+<p>to get energy efficient AI.</p>
+<p>I think that's like</p>
+<p>the other main message,</p>
+<p>but it's challenging,</p>
+<p>right?</p>
+<p>And others will say,</p>
+<p>well,</p>
+<p>I have quantum computing</p>
+<p>and it is very promising.</p>
+<p>It's not any dismissal of it.</p>
+<p>I'm just going to do</p>
+<p>the same AI</p>
+<p>I've always done,</p>
+<p>but faster.</p>
+<p>And do I really need</p>
+<p>to look at,</p>
+<p>you know,</p>
+<p>how life emerges?</p>
+<p>Do I really need to look</p>
+<p>at how neurons</p>
+<p>really do things?</p>
+<p>You know,</p>
+<p>it'll be interesting.</p>
+<p>If nothing else,</p>
+<p>it might be a little bit</p>
+<p>of a race going forward.</p>
+<p>Maybe it'll be</p>
+<p>the mortal computing</p>
+<p>still,</p>
+<p>you know,</p>
+<p>on its pedestal</p>
+<p>being the dominant paradigm</p>
+<p>and mortal computing</p>
+<p>being rather niche</p>
+<p>for a while.</p>
+<p>I mean,</p>
+<p>it's kind of the same thing</p>
+<p>with the free energy principle</p>
+<p>and active inference.</p>
+<p>I like to think of</p>
+<p>the mortal computation</p>
+<p>as,</p>
+<p>you know,</p>
+<p>another,</p>
+<p>a big expansion</p>
+<p>of free energy</p>
+<p>and active inference</p>
+<p>because,</p>
+<p>you know,</p>
+<p>active inference</p>
+<p>is a corollary</p>
+<p>of the free energy principle</p>
+<p>and at its,</p>
+<p>mortal computer's heart</p>
+<p>is the free energy principle,</p>
+<p>right?</p>
+<p>It talks about</p>
+<p>the non-equilibrium</p>
+<p>steady state,</p>
+<p>the mess</p>
+<p>and that's kind of</p>
+<p>like at the core</p>
+<p>and we cast,</p>
+<p>there's the other parts</p>
+<p>of the paper,</p>
+<p>there's a lot of parts</p>
+<p>of the paper</p>
+<p>about inference,</p>
+<p>learning,</p>
+<p>and structure</p>
+<p>and you cannot ignore</p>
+<p>any of those pieces</p>
+<p>if you're going</p>
+<p>to build a proper</p>
+<p>and that's actually</p>
+<p>part of our definition.</p>
+<p>There's an entanglement</p>
+<p>there.</p>
+<p>That's a whole</p>
+<p>another conversation</p>
+<p>but,</p>
+<p>you know,</p>
+<p>it's like an expansion</p>
+<p>of the free energy principle.</p>
+<p>It says,</p>
+<p>you know,</p>
+<p>what would,</p>
+<p>where does this go next?</p>
+<p>And it's really like</p>
+<p>how free energy</p>
+<p>often is used</p>
+<p>in the literature</p>
+<p>to explain</p>
+<p>other phenomenon</p>
+<p>and like,</p>
+<p>for example,</p>
+<p>Carl and many others</p>
+<p>try to use that</p>
+<p>to do things</p>
+<p>in neuroscience</p>
+<p>and neurophysiology</p>
+<p>and computational psychiatry.</p>
+<p>This is what would happen</p>
+<p>if you take</p>
+<p>the free energy principle</p>
+<p>and you merge it</p>
+<p>with hardware considerations</p>
+<p>and morphology</p>
+<p>and place it</p>
+<p>in the world of AI</p>
+<p>and,</p>
+<p>you know,</p>
+<p>say,</p>
+<p>what if our goal</p>
+<p>is for in silico</p>
+<p>artificial sentience,</p>
+<p>not sentience,</p>
+<p>artificial sentience</p>
+<p>and our artifacts,</p>
+<p>well,</p>
+<p>this is where</p>
+<p>it's like natural consequence.</p>
+<p>So,</p>
+<p>I like to think of it</p>
+<p>as like an extension</p>
+<p>in like placing a pathway</p>
+<p>if you come from</p>
+<p>that line of thinking.</p>
+<p>So,</p>
+<p>all of you guys,</p>
+<p>the Active Inference Institute</p>
+<p>is like,</p>
+<p>perfect candidates,</p>
+<p>right?</p>
+<p>Because you're,</p>
+<p>you're studying deeply</p>
+<p>the free energy principle.</p>
+<p>So,</p>
+<p>I think mortal computation</p>
+<p>is just like</p>
+<p>the next step,</p>
+<p>right?</p>
+<p>It's like,</p>
+<p>okay,</p>
+<p>well,</p>
+<p>that's another piece</p>
+<p>to this puzzle.</p>
+<p>It's where you go</p>
+<p>if you want to build</p>
+<p>technological artifacts</p>
+<p>with what we would</p>
+<p>consider sentience,</p>
+<p>if that makes sense.</p>
+<p>Lou,</p>
+<p>want to add anything?</p>
+<p>Sure.</p>
+<p>I mean,</p>
+<p>I have millions</p>
+<p>of questions,</p>
+<p>but nothing pressing.</p>
+<p>But this one,</p>
+<p>I think,</p>
+<p>maybe goes back</p>
+<p>to you talking</p>
+<p>about cognitive diversity</p>
+<p>and then Daniel</p>
+<p>mentioning like shining</p>
+<p>the light of attention.</p>
+<p>And just as we're,</p>
+<p>as we're thinking</p>
+<p>about like attention</p>
+<p>as maybe like</p>
+<p>the foundation</p>
+<p>for cognitive diversity,</p>
+<p>because like,</p>
+<p>while we are all</p>
+<p>fundamentally have</p>
+<p>the same programming,</p>
+<p>the same like voluntary</p>
+<p>and involuntary consciousness,</p>
+<p>right?</p>
+<p>I guess we'll say it like that,</p>
+<p>like my heartbeat</p>
+<p>and kind of the,</p>
+<p>my self-sustaining system.</p>
+<p>we can kind of make that conscious.</p>
+<p>Like I've mentioned the breathing,</p>
+<p>but also like just through</p>
+<p>like motor control,</p>
+<p>like you can activate</p>
+<p>motor circuits.</p>
+<p>Like we all have different,</p>
+<p>like some people</p>
+<p>can spread their toes out</p>
+<p>and some people cannot.</p>
+<p>Like if you've never tried</p>
+<p>to do that,</p>
+<p>like it's hard</p>
+<p>and you have to like</p>
+<p>practice,</p>
+<p>practice,</p>
+<p>practice.</p>
+<p>But then like</p>
+<p>through constantly</p>
+<p>paying attention</p>
+<p>to those like neural connections,</p>
+<p>neuromuscular connections,</p>
+<p>you,</p>
+<p>you gain like a different</p>
+<p>perspective</p>
+<p>than others.</p>
+<p>And so just</p>
+<p>in terms of cognitive diversity</p>
+<p>for humans,</p>
+<p>it's going to look</p>
+<p>really different,</p>
+<p>like within</p>
+<p>like intraspecies</p>
+<p>and interspecies</p>
+<p>diversity</p>
+<p>is going to be crazy,</p>
+<p>right?</p>
+<p>Like,</p>
+<p>you know,</p>
+<p>a tardigrade</p>
+<p>doesn't even have a toe</p>
+<p>to spread.</p>
+<p>Maybe they do.</p>
+<p>I don't know.</p>
+<p>I don't think they have toes,</p>
+<p>but,</p>
+<p>but just across</p>
+<p>the different species,</p>
+<p>maybe we,</p>
+<p>this is the time</p>
+<p>to kind of look</p>
+<p>a little closer</p>
+<p>at like procedural memory,</p>
+<p>long-term memory,</p>
+<p>like at what,</p>
+<p>like what is long-term memory,</p>
+<p>right?</p>
+<p>Like if,</p>
+<p>you know,</p>
+<p>when you're looking</p>
+<p>at something like an insect</p>
+<p>that doesn't really have a brain,</p>
+<p>definitely doesn't have</p>
+<p>like a hippocampus</p>
+<p>to store the long-term memory,</p>
+<p>do you get</p>
+<p>long-term memory?</p>
+<p>Does it go into</p>
+<p>the generative model?</p>
+<p>Like,</p>
+<p>or where does it go?</p>
+<p>Like,</p>
+<p>I mean,</p>
+<p>you think about it,</p>
+<p>they just have like</p>
+<p>the working buffer memory,</p>
+<p>or if you were to try</p>
+<p>to design</p>
+<p>one of these</p>
+<p>cognitive kernels</p>
+<p>for a non-human,</p>
+<p>like maybe</p>
+<p>you don't have to go</p>
+<p>to a plant,</p>
+<p>but like,</p>
+<p>where would you</p>
+<p>start to kind of</p>
+<p>add or subtract</p>
+<p>things like long-term memory?</p>
+<p>Because we know</p>
+<p>that that's really different</p>
+<p>just even in the animal kingdom.</p>
+<p>Mm-hmm.</p>
+<p>Well,</p>
+<p>I,</p>
+<p>first of all,</p>
+<p>I agreed with most</p>
+<p>of what you were saying</p>
+<p>at the beginning.</p>
+<p>That just resonated</p>
+<p>with cognitive diversity.</p>
+<p>If,</p>
+<p>talking about like,</p>
+<p>how would I design like,</p>
+<p>or begin to think</p>
+<p>about something</p>
+<p>like a fruit fly</p>
+<p>as opposed to,</p>
+<p>you know,</p>
+<p>a human,</p>
+<p>again,</p>
+<p>the mortal computation</p>
+<p>definition</p>
+<p>and like the general framing.</p>
+<p>And let's,</p>
+<p>just again,</p>
+<p>for the audience members</p>
+<p>that might join in</p>
+<p>and say,</p>
+<p>wait,</p>
+<p>what are they talking about?</p>
+<p>That's not in any</p>
+<p>of the four papers</p>
+<p>we're mentioning.</p>
+<p>Let's just think</p>
+<p>of the mortal computation</p>
+<p>thesis as subsuming</p>
+<p>all of these</p>
+<p>because I think</p>
+<p>of all those,</p>
+<p>just as a quick point too,</p>
+<p>all of that work,</p>
+<p>I think,</p>
+<p>is in service of this.</p>
+<p>Even though this was written</p>
+<p>far more recently</p>
+<p>and I know,</p>
+<p>Blue,</p>
+<p>you were going to ask</p>
+<p>at one time,</p>
+<p>what was the history</p>
+<p>of the ordering</p>
+<p>of these papers?</p>
+<p>But obviously,</p>
+<p>they're not in a</p>
+<p>strict sequence.</p>
+<p>So it's like,</p>
+<p>mortal computation</p>
+<p>is like,</p>
+<p>one way to do</p>
+<p>a synthesis</p>
+<p>of all these ideas.</p>
+<p>Now,</p>
+<p>to build like something</p>
+<p>like a fruit fly,</p>
+<p>mortal computation</p>
+<p>just says</p>
+<p>you need</p>
+<p>at least at its heart</p>
+<p>a generative model,</p>
+<p>right?</p>
+<p>Everything's a generative model,</p>
+<p>but the form</p>
+<p>of that generative model</p>
+<p>is not,</p>
+<p>you know,</p>
+<p>it's not specified</p>
+<p>because there's</p>
+<p>the principles</p>
+<p>like,</p>
+<p>for example,</p>
+<p>in that paper</p>
+<p>brings up</p>
+<p>the cybernetic ideas</p>
+<p>of like</p>
+<p>the good regulator theorem.</p>
+<p>I'm sure you guys</p>
+<p>have encountered this too</p>
+<p>because the Utena,</p>
+<p>Arl,</p>
+<p>especially in any discussion</p>
+<p>with those</p>
+<p>with free energy,</p>
+<p>they always borrow</p>
+<p>from cybernetics.</p>
+<p>It's impossible.</p>
+<p>So law of requisite variety</p>
+<p>and the good regulator theorem</p>
+<p>are like kind of like</p>
+<p>the most well-known.</p>
+<p>That paper talks about</p>
+<p>a lot of other ones</p>
+<p>that I don't think</p>
+<p>get enough attention.</p>
+<p>So all the axioms</p>
+<p>of cybernetics</p>
+<p>are kind of in that paper.</p>
+<p>But the good regulator theorem</p>
+<p>and the principle</p>
+<p>of model internal control,</p>
+<p>which is not as popular</p>
+<p>as good regulator,</p>
+<p>but you sort of need those</p>
+<p>at the formation</p>
+<p>of any of these entities.</p>
+<p>And so as long</p>
+<p>as you're able</p>
+<p>to design</p>
+<p>the body</p>
+<p>of that fly</p>
+<p>and you are,</p>
+<p>I'm assuming</p>
+<p>you're going to study</p>
+<p>the object in reality,</p>
+<p>right?</p>
+<p>So you're going to study</p>
+<p>the actual fruit fly</p>
+<p>and hopefully extract principles</p>
+<p>because again,</p>
+<p>this is biomimetic.</p>
+<p>So the title</p>
+<p>of the paper says</p>
+<p>we are mimicking</p>
+<p>or performing mimicry</p>
+<p>of biology</p>
+<p>or the things</p>
+<p>that we perceive</p>
+<p>in our real world,</p>
+<p>the physiological organisms.</p>
+<p>And so if you're able</p>
+<p>to study the fruit fly,</p>
+<p>I would imagine</p>
+<p>you're constructing a body</p>
+<p>that's very similar to it,</p>
+<p>tries to adhere</p>
+<p>to as many of its physics</p>
+<p>and physical principles</p>
+<p>that govern how it moves</p>
+<p>and interacts</p>
+<p>and its exchange</p>
+<p>with materials.</p>
+<p>If you have all that part,</p>
+<p>I think you're almost there.</p>
+<p>Believe it or not,</p>
+<p>that's the kind of</p>
+<p>the fun part</p>
+<p>of the mortal computer</p>
+<p>is designing</p>
+<p>that Markov blanket</p>
+<p>and implicitly,</p>
+<p>explicitly,</p>
+<p>however you want</p>
+<p>to go about it</p>
+<p>and placing in a niche</p>
+<p>gets you really close</p>
+<p>because again,</p>
+<p>embodiment offloads</p>
+<p>a lot of that cognition</p>
+<p>because that fruit fly</p>
+<p>does a lot of what it does</p>
+<p>based on reactions</p>
+<p>and its interactions</p>
+<p>with its niche.</p>
+<p>And that is where</p>
+<p>in like the 5e cognitive theory</p>
+<p>of the paper,</p>
+<p>the bottom,</p>
+<p>the most,</p>
+<p>let's say,</p>
+<p>you need this</p>
+<p>because it influences</p>
+<p>everything else</p>
+<p>is called,</p>
+<p>well,</p>
+<p>Carl and I did introduce</p>
+<p>it's a rewrapping</p>
+<p>of basal cognition.</p>
+<p>You need elementary cognition,</p>
+<p>which you could just,</p>
+<p>if you want to call it</p>
+<p>basal cognition,</p>
+<p>that's also fine.</p>
+<p>We cite the heck</p>
+<p>out of that</p>
+<p>in Michael Evans' group</p>
+<p>and many other biologists.</p>
+<p>So you would be</p>
+<p>implementing that level.</p>
+<p>So you'd say,</p>
+<p>if I'm going to build</p>
+<p>the fruit fly,</p>
+<p>I'm not going to be building,</p>
+<p>you know,</p>
+<p>you know,</p>
+<p>embodied,</p>
+<p>well,</p>
+<p>you're going to get</p>
+<p>embodied cognition</p>
+<p>from that,</p>
+<p>but you're not going to be</p>
+<p>building these complex processes.</p>
+<p>You're going to focus</p>
+<p>on that slice.</p>
+<p>That's what's kind of nice</p>
+<p>about 5e theory</p>
+<p>is you can slice it up</p>
+<p>and say,</p>
+<p>I'm going to design</p>
+<p>at this level.</p>
+<p>Obviously,</p>
+<p>the bottom level</p>
+<p>affects the upper level,</p>
+<p>so you sort of do</p>
+<p>have to account for that.</p>
+<p>And so you would be saying,</p>
+<p>well,</p>
+<p>what are the basal</p>
+<p>cognitive functions</p>
+<p>that define</p>
+<p>something like</p>
+<p>a fruit fly?</p>
+<p>What does it do?</p>
+<p>What would evolution</p>
+<p>have given it?</p>
+<p>Because if you're not</p>
+<p>going to simulate evolution,</p>
+<p>which would give you</p>
+<p>those things,</p>
+<p>if, you know,</p>
+<p>properly done</p>
+<p>and with enough compute,</p>
+<p>you're going to design</p>
+<p>those inductive biases,</p>
+<p>you're going to hopefully</p>
+<p>study the fruit fly</p>
+<p>and then its internal</p>
+<p>cognitive model</p>
+<p>will not be</p>
+<p>the common model</p>
+<p>of cognition</p>
+<p>because the common model</p>
+<p>of cognition</p>
+<p>is sort of like,</p>
+<p>okay,</p>
+<p>that was the product</p>
+<p>of the human evolutionary track,</p>
+<p>right?</p>
+<p>And that's what evolution</p>
+<p>gave us</p>
+<p>is like our organizing</p>
+<p>principle of the brain.</p>
+<p>But other animals</p>
+<p>don't necessarily have</p>
+<p>that to the same degree.</p>
+<p>And creatures,</p>
+<p>as you get smaller</p>
+<p>and smaller</p>
+<p>and simple,</p>
+<p>let's say,</p>
+<p>different on the spectrum,</p>
+<p>especially as you move</p>
+<p>towards things</p>
+<p>that are a little bit simpler</p>
+<p>like single cell organisms,</p>
+<p>they're going to have</p>
+<p>a lot less of that functionality.</p>
+<p>But still under the hood</p>
+<p>is that generative model.</p>
+<p>It just might not be</p>
+<p>a generative model</p>
+<p>as in like,</p>
+<p>oh, I have a neural circuit</p>
+<p>that's trying to predict</p>
+<p>the next state</p>
+<p>of the environment</p>
+<p>like a fantasy</p>
+<p>or a dream sequence</p>
+<p>that I unroll out.</p>
+<p>Like we humans</p>
+<p>can sort of like,</p>
+<p>oh, let me think about</p>
+<p>what's going to happen</p>
+<p>if I close my eyes</p>
+<p>and I knock over the computer.</p>
+<p>We can use our</p>
+<p>internal physics simulation</p>
+<p>to figure out</p>
+<p>what it's going to do</p>
+<p>and say,</p>
+<p>nah, I'm not going to do that.</p>
+<p>Whereas a flute fly</p>
+<p>might have some sense of physics,</p>
+<p>but it might not be like,</p>
+<p>oh, I'm rolling out</p>
+<p>over a long-term trajectory.</p>
+<p>So I'm not going to be building,</p>
+<p>for example,</p>
+<p>a procedural memory</p>
+<p>or an episodic memory</p>
+<p>quite like what I do</p>
+<p>in the common model</p>
+<p>of cognition.</p>
+<p>And I might only need</p>
+<p>very simple</p>
+<p>little neural circuits</p>
+<p>because again,</p>
+<p>the number of neurons</p>
+<p>and for example,</p>
+<p>like insects</p>
+<p>is really, really, really small.</p>
+<p>And that's why</p>
+<p>we can study them better too.</p>
+<p>That's also why</p>
+<p>people study that.</p>
+<p>Or even like,</p>
+<p>it's not necessarily</p>
+<p>the same as a fruit fly.</p>
+<p>It's a lot simpler,</p>
+<p>but still fascinating</p>
+<p>is C. elegans, right?</p>
+<p>It's been studied a lot</p>
+<p>because we can map out</p>
+<p>every single bit</p>
+<p>of its neural circuits</p>
+<p>and that in and of itself</p>
+<p>is rather complex.</p>
+<p>So I would argue</p>
+<p>that the fruit fly</p>
+<p>cognitive model</p>
+<p>will be simpler.</p>
+<p>And it will be dictated</p>
+<p>by what we decide</p>
+<p>are the elementary</p>
+<p>cognitive functions</p>
+<p>that make</p>
+<p>its mortal computer</p>
+<p>it a mortal computer.</p>
+<p>And we won't need,</p>
+<p>you know,</p>
+<p>these complex modules</p>
+<p>interacting in the way</p>
+<p>we do</p>
+<p>in, for example,</p>
+<p>you know,</p>
+<p>a human model</p>
+<p>or let's say</p>
+<p>an animal model.</p>
+<p>I think that's,</p>
+<p>but again,</p>
+<p>that's grounded</p>
+<p>in something like</p>
+<p>you understand</p>
+<p>your mimicking.</p>
+<p>So if you go</p>
+<p>with the route</p>
+<p>of biomimicry,</p>
+<p>you should probably</p>
+<p>be studying the fruit fly</p>
+<p>or at least understand</p>
+<p>what we understand</p>
+<p>about it</p>
+<p>and dissect that</p>
+<p>and bring back</p>
+<p>what are its base functions</p>
+<p>and then how am I</p>
+<p>emulating that?</p>
+<p>And then,</p>
+<p>you know,</p>
+<p>you build your little</p>
+<p>cognitive internal states,</p>
+<p>right,</p>
+<p>inside the Markov blanket</p>
+<p>that maintain,</p>
+<p>for example,</p>
+<p>what are the essential variables</p>
+<p>that the fruit fly</p>
+<p>needs to maintain?</p>
+<p>It's not going to be</p>
+<p>the same biochemical</p>
+<p>processes</p>
+<p>that dictate a human,</p>
+<p>right?</p>
+<p>Like, for example,</p>
+<p>when we have blood,</p>
+<p>we're looking at like</p>
+<p>pH level</p>
+<p>and temperature.</p>
+<p>The fruit fly</p>
+<p>might be looking</p>
+<p>at a little bit</p>
+<p>different essential variables,</p>
+<p>right?</p>
+<p>Certain chemical concentrations</p>
+<p>matter to it more.</p>
+<p>You'd want to model that.</p>
+<p>And I think that that,</p>
+<p>by the way,</p>
+<p>when you talk about</p>
+<p>the basal cognition</p>
+<p>in designing it,</p>
+<p>my thought on this</p>
+<p>is that you are</p>
+<p>approaching it</p>
+<p>from what are those</p>
+<p>life-sustaining variables</p>
+<p>that characterize that?</p>
+<p>Start from there</p>
+<p>and then you say,</p>
+<p>okay,</p>
+<p>well,</p>
+<p>does that explain</p>
+<p>some of the things</p>
+<p>that I observe,</p>
+<p>you know,</p>
+<p>let's say,</p>
+<p>again,</p>
+<p>we're modeling</p>
+<p>at this point,</p>
+<p>but, you know,</p>
+<p>what the fruit fly does,</p>
+<p>like, for example,</p>
+<p>flying around,</p>
+<p>why does it fly around?</p>
+<p>Well,</p>
+<p>maybe it's because</p>
+<p>it needs to,</p>
+<p>you know,</p>
+<p>reach this particular nutrient</p>
+<p>and so it knows</p>
+<p>if I go to this region,</p>
+<p>I am more likely</p>
+<p>to achieve it.</p>
+<p>That might be</p>
+<p>an allostatic process,</p>
+<p>right?</p>
+<p>And you'd say,</p>
+<p>oh, okay,</p>
+<p>there's something</p>
+<p>that I need.</p>
+<p>And this could also be</p>
+<p>like a bottom-up design,</p>
+<p>right?</p>
+<p>If you don't think</p>
+<p>that you need,</p>
+<p>like,</p>
+<p>the inductive bias</p>
+<p>that's provided</p>
+<p>by the common model,</p>
+<p>you sort of build</p>
+<p>your little functions</p>
+<p>as needed</p>
+<p>and now you build</p>
+<p>your little internal</p>
+<p>generative model,</p>
+<p>your good regulator,</p>
+<p>right,</p>
+<p>into the fruit fly</p>
+<p>based on the key functions</p>
+<p>it needs to satisfy</p>
+<p>so that it does not die,</p>
+<p>right?</p>
+<p>And ultimately,</p>
+<p>the best way</p>
+<p>to probably do this</p>
+<p>is then you simulate evolution,</p>
+<p>right,</p>
+<p>and maybe you let</p>
+<p>some natural selection happen</p>
+<p>because if you don't want</p>
+<p>to design those processes,</p>
+<p>then you'd want to simulate,</p>
+<p>you know,</p>
+<p>the origins of it.</p>
+<p>And by the way,</p>
+<p>mortal computation</p>
+<p>doesn't ignore evolution here.</p>
+<p>It doesn't talk about designing it</p>
+<p>because, you know,</p>
+<p>that's a whole realm</p>
+<p>in and of itself,</p>
+<p>but even the life-mind</p>
+<p>continuity thesis</p>
+<p>from Kirchhoff's group,</p>
+<p>they talk about</p>
+<p>you need a selection history</p>
+<p>and I think the only way</p>
+<p>to get around</p>
+<p>the selection history</p>
+<p>is then you say,</p>
+<p>well, okay,</p>
+<p>if I'm not going to simulate</p>
+<p>the selection history</p>
+<p>and let, you know,</p>
+<p>these primitives emerge</p>
+<p>into the structures</p>
+<p>that make, for example,</p>
+<p>fruit fly work,</p>
+<p>you need to figure out,</p>
+<p>well, what was those,</p>
+<p>what was the product</p>
+<p>of our current</p>
+<p>non-selection history, right?</p>
+<p>What did evolution do</p>
+<p>to give the fruit fly as is?</p>
+<p>So you've got, like,</p>
+<p>two choices.</p>
+<p>Study the real thing</p>
+<p>and try to emulate</p>
+<p>some of those</p>
+<p>very basic principles,</p>
+<p>like identifying</p>
+<p>its essential variables,</p>
+<p>identifying allostatic processes</p>
+<p>that might service</p>
+<p>those essential variables</p>
+<p>and the homeostasis</p>
+<p>of them</p>
+<p>or the homeohesis</p>
+<p>of them</p>
+<p>or talk about</p>
+<p>some very basic primitives</p>
+<p>and then say,</p>
+<p>I'm going to simulate</p>
+<p>a population of these</p>
+<p>and that might be</p>
+<p>more difficult</p>
+<p>because if you're</p>
+<p>dealing with the actual,</p>
+<p>like, let's say</p>
+<p>you have a little</p>
+<p>fruit fly robot</p>
+<p>since we're talking</p>
+<p>about substrates,</p>
+<p>that might be</p>
+<p>not very cheap to do</p>
+<p>where it might be easier</p>
+<p>to do it in simulation</p>
+<p>and doing it</p>
+<p>with a digital morphology</p>
+<p>and that's another</p>
+<p>can of worms.</p>
+<p>So I don't know</p>
+<p>if that kind of</p>
+<p>gives you something blue.</p>
+<p>No, it definitely does.</p>
+<p>And, like, yeah,</p>
+<p>so, sorry,</p>
+<p>my brain works</p>
+<p>faster than my tongue.</p>
+<p>Sometimes insects</p>
+<p>definitely have brains,</p>
+<p>just nothing like our brains.</p>
+<p>They just definitely</p>
+<p>don't have brains</p>
+<p>like ours, right?</p>
+<p>Like, so nothing</p>
+<p>that we can map</p>
+<p>analogously over,</p>
+<p>although some</p>
+<p>of the neurotransmitters</p>
+<p>and things still work,</p>
+<p>but just in a different</p>
+<p>functional way</p>
+<p>to my knowledge.</p>
+<p>Also, Andrew Barron</p>
+<p>is building, like,</p>
+<p>a tremendous model</p>
+<p>of the honeybee brain</p>
+<p>that is just so super cool,</p>
+<p>I think,</p>
+<p>if you don't know his work.</p>
+<p>It's really, really neat.</p>
+<p>Oh, give me a link to that.</p>
+<p>I'd love to see that.</p>
+<p>That sounds awesome.</p>
+<p>Yeah, it's way cool.</p>
+<p>Has him running around</p>
+<p>in mazes</p>
+<p>and doing all kinds</p>
+<p>of learning, like,</p>
+<p>how to tell a Van Gogh</p>
+<p>apart from a Monet.</p>
+<p>I mean, they're really doing</p>
+<p>some pretty complex stuff,</p>
+<p>and that's why, like,</p>
+<p>it, you know,</p>
+<p>it always makes me wonder,</p>
+<p>like, where does this stuff go?</p>
+<p>Like, where is the memory there?</p>
+<p>And it's just such a</p>
+<p>fascinating process to me</p>
+<p>how memories are created</p>
+<p>and stored</p>
+<p>and, like,</p>
+<p>how they map into the brain</p>
+<p>and, like, sometimes</p>
+<p>I can pull something up</p>
+<p>right away</p>
+<p>and, like, sometimes</p>
+<p>it'll take me four days</p>
+<p>to remember someone's name.</p>
+<p>Like, what was the name of that?</p>
+<p>And, like, I'll remember it.</p>
+<p>I'll be just driving</p>
+<p>down the road.</p>
+<p>Like, it was whatever.</p>
+<p>And, like, it's just, like,</p>
+<p>how many layers</p>
+<p>of circuitry</p>
+<p>did I have to, like,</p>
+<p>transgress</p>
+<p>to get from A to B,</p>
+<p>you know?</p>
+<p>And, like, yeah,</p>
+<p>how do different kinds</p>
+<p>of animals do that</p>
+<p>is always really fascinating</p>
+<p>to me.</p>
+<p>I think a piece of that, too,</p>
+<p>is evolution</p>
+<p>also has a memory, right?</p>
+<p>And I think that selection history</p>
+<p>is what goes into things</p>
+<p>like, for example,</p>
+<p>the fruit fly, right?</p>
+<p>So there's</p>
+<p>its predecessors,</p>
+<p>you know,</p>
+<p>you know,</p>
+<p>maybe they did</p>
+<p>certain other behaviors</p>
+<p>that were not conducive</p>
+<p>to their survival.</p>
+<p>I think there's that, too,</p>
+<p>that implicit kind of memory.</p>
+<p>And then that gets encoded</p>
+<p>in the morphology, right?</p>
+<p>And this is where</p>
+<p>it goes back to</p>
+<p>where I just said</p>
+<p>if you want it,</p>
+<p>like, your collaborator</p>
+<p>or your friend</p>
+<p>that you mentioned</p>
+<p>about designing,</p>
+<p>like, the honeybees,</p>
+<p>it's kind of the same principles.</p>
+<p>You say, well, okay,</p>
+<p>what did evolution give it?</p>
+<p>Let me design that.</p>
+<p>You're just skipping</p>
+<p>the evolutionary phase.</p>
+<p>And I think there's some memory</p>
+<p>in the structure, too.</p>
+<p>So this is where</p>
+<p>the body...</p>
+<p>Now, of course,</p>
+<p>with your example</p>
+<p>about you retrieving it,</p>
+<p>there's layers</p>
+<p>of intricacy there.</p>
+<p>I'm not complaining about that.</p>
+<p>But even, like,</p>
+<p>the fruit fly,</p>
+<p>why does it remember</p>
+<p>to do certain things?</p>
+<p>Or why does it seem</p>
+<p>to have certain patterns?</p>
+<p>And that's also</p>
+<p>what the moral computation thesis</p>
+<p>does account for,</p>
+<p>or at least tries to,</p>
+<p>by saying that</p>
+<p>it is because</p>
+<p>that body changes</p>
+<p>and it's, you know,</p>
+<p>subject to a selection history,</p>
+<p>because it's constantly</p>
+<p>in this eternal change</p>
+<p>of repair and maintenance</p>
+<p>in the face of disintegration,</p>
+<p>because it's always</p>
+<p>the threat of disintegration.</p>
+<p>Your identity will cease</p>
+<p>when you die.</p>
+<p>And so because of that</p>
+<p>things get encoded</p>
+<p>in that memory,</p>
+<p>and that's also</p>
+<p>this beautiful piece</p>
+<p>of, like,</p>
+<p>the interplay</p>
+<p>of physics and cybernetics.</p>
+<p>This is without ever</p>
+<p>getting into</p>
+<p>the probably wonderful</p>
+<p>quantum interpretations</p>
+<p>I'm sure Chris Fields</p>
+<p>could enlighten us all about.</p>
+<p>But, you know,</p>
+<p>the idea that</p>
+<p>information or variety</p>
+<p>gets encoded</p>
+<p>into these interact...</p>
+<p>through its interactions,</p>
+<p>gets encoded</p>
+<p>into the morphology.</p>
+<p>The very organization</p>
+<p>and structural manifestation</p>
+<p>of that organization</p>
+<p>because organization</p>
+<p>is not structure.</p>
+<p>It is the relationships</p>
+<p>of the parts</p>
+<p>and it can exist</p>
+<p>independent of the manifestation</p>
+<p>and the manifestation</p>
+<p>is like,</p>
+<p>oh, okay,</p>
+<p>here's the body</p>
+<p>that embodies</p>
+<p>those principles.</p>
+<p>That also encodes.</p>
+<p>That is a memory.</p>
+<p>Because, for example,</p>
+<p>an organism that understands</p>
+<p>a particular chemical interaction</p>
+<p>might say,</p>
+<p>well, look,</p>
+<p>I need to filter out</p>
+<p>this toxin</p>
+<p>or I'm going to die</p>
+<p>and I need to pump</p>
+<p>in these nutrients.</p>
+<p>That's a memory.</p>
+<p>It's just not</p>
+<p>a retrievable memory.</p>
+<p>It's just like</p>
+<p>an implicit memory.</p>
+<p>But that's why,</p>
+<p>for example,</p>
+<p>it's able to conduct</p>
+<p>the actions that it does.</p>
+<p>And this is why</p>
+<p>mortal computation</p>
+<p>really tries to...</p>
+<p>And this is where</p>
+<p>I think it's very</p>
+<p>forward-thinking</p>
+<p>or very far ahead</p>
+<p>of what we can</p>
+<p>probably even do easily,</p>
+<p>which is,</p>
+<p>it really says</p>
+<p>you do need</p>
+<p>to understand the body.</p>
+<p>The substrate</p>
+<p>is so important</p>
+<p>and understanding</p>
+<p>how that will then</p>
+<p>affect the internal states</p>
+<p>and how you do</p>
+<p>this processing.</p>
+<p>That has to be</p>
+<p>at the front and center</p>
+<p>of your story,</p>
+<p>of whatever you build.</p>
+<p>And then the niche,</p>
+<p>you can't escape the niche.</p>
+<p>You're kind of,</p>
+<p>by having a body,</p>
+<p>you're like,</p>
+<p>well, okay,</p>
+<p>but the body only existed</p>
+<p>because it was in response</p>
+<p>to the environment</p>
+<p>and it was,</p>
+<p>you know,</p>
+<p>it has evolved</p>
+<p>or it has adapted</p>
+<p>because of the perturbations</p>
+<p>the environment</p>
+<p>has subjected it to.</p>
+<p>And so I think</p>
+<p>that that's why</p>
+<p>I like the thesis so much</p>
+<p>is it's kind of say</p>
+<p>we need to flip</p>
+<p>our thinking a bit.</p>
+<p>Not, okay,</p>
+<p>we're going to design</p>
+<p>the brain</p>
+<p>and someday in the future</p>
+<p>we'll have good bodies</p>
+<p>for it.</p>
+<p>I think that</p>
+<p>that was valuable</p>
+<p>and it has produced</p>
+<p>some interesting things,</p>
+<p>but it can only get you so far.</p>
+<p>And then you miss</p>
+<p>at least 50% of the puzzle</p>
+<p>that could also inform</p>
+<p>that design</p>
+<p>where we talked earlier</p>
+<p>about like emotions</p>
+<p>and, you know,</p>
+<p>I don't,</p>
+<p>I wouldn't argue</p>
+<p>that the systems</p>
+<p>that we have today</p>
+<p>despite the media claims</p>
+<p>and, you know,</p>
+<p>there's the stuff</p>
+<p>with OpenAI</p>
+<p>and I saw some comments</p>
+<p>about, oh, well,</p>
+<p>you know,</p>
+<p>Alten and others,</p>
+<p>they have some secret</p>
+<p>AGI program,</p>
+<p>but I've heard conspiracies</p>
+<p>about that stuff</p>
+<p>all the time.</p>
+<p>So I don't,</p>
+<p>I put too much credence</p>
+<p>to it.</p>
+<p>I don't think</p>
+<p>that they've cracked</p>
+<p>the emotional nut,</p>
+<p>the biophysical nut.</p>
+<p>I think it's more like</p>
+<p>we've had lots of people</p>
+<p>either argue,</p>
+<p>study very specific</p>
+<p>slices of it,</p>
+<p>but those voices</p>
+<p>need to be echoed,</p>
+<p>right?</p>
+<p>And so that's what I think</p>
+<p>the moral computation</p>
+<p>is an echo as well</p>
+<p>of at least</p>
+<p>like a century of thought</p>
+<p>and it's saying</p>
+<p>this is how we can approach</p>
+<p>artificial general intelligence.</p>
+<p>And then it can account</p>
+<p>for things</p>
+<p>like the fruit fly.</p>
+<p>Actually,</p>
+<p>you said Andrew</p>
+<p>was his name</p>
+<p>on the work</p>
+<p>on like honeys.</p>
+<p>That to me</p>
+<p>is an example</p>
+<p>of if,</p>
+<p>you know,</p>
+<p>he's got a learning component</p>
+<p>and an inferential component</p>
+<p>and there is some organizing,</p>
+<p>he has a body,</p>
+<p>he has a niche,</p>
+<p>you know,</p>
+<p>that's very close</p>
+<p>to an in silico version</p>
+<p>of a mortal computer,</p>
+<p>right?</p>
+<p>You know,</p>
+<p>the only other components</p>
+<p>that it might be more</p>
+<p>like an allostatic MC.</p>
+<p>So,</p>
+<p>and again,</p>
+<p>in the paper,</p>
+<p>we have a table</p>
+<p>and Carl did want that</p>
+<p>to stay,</p>
+<p>I was going to move it</p>
+<p>to the appendix again,</p>
+<p>length.</p>
+<p>So,</p>
+<p>we made a compressed table</p>
+<p>of different types</p>
+<p>of mortal computers</p>
+<p>and we kind of characterize them.</p>
+<p>There's a few</p>
+<p>that are autopedic.</p>
+<p>They actually do have very,</p>
+<p>like,</p>
+<p>organoids</p>
+<p>really,</p>
+<p>really close</p>
+<p>to what you would want,</p>
+<p>right?</p>
+<p>But they're all biophysical.</p>
+<p>So,</p>
+<p>there's not like a,</p>
+<p>oh,</p>
+<p>I designed something</p>
+<p>on a neuromorphic chip</p>
+<p>with predictive coding,</p>
+<p>like what I would do.</p>
+<p>This is,</p>
+<p>you know,</p>
+<p>oh,</p>
+<p>look,</p>
+<p>we're using stem cells</p>
+<p>to construct</p>
+<p>this microphysiological</p>
+<p>architectures.</p>
+<p>I do think</p>
+<p>that has a place,</p>
+<p>a super important role</p>
+<p>going forward</p>
+<p>and I would only hope</p>
+<p>that there's some</p>
+<p>democratization</p>
+<p>of an exchange</p>
+<p>of ideas</p>
+<p>between this wonderful,</p>
+<p>really new world</p>
+<p>and machine intelligence</p>
+<p>to learn</p>
+<p>and study</p>
+<p>organoids</p>
+<p>but also fungal</p>
+<p>and mold-based computing.</p>
+<p>Really interesting</p>
+<p>place to be as well</p>
+<p>and to think about</p>
+<p>how does that</p>
+<p>biophysical organization</p>
+<p>give rise</p>
+<p>to community</p>
+<p>and those are examples</p>
+<p>of mortal computers.</p>
+<p>Ashby's homeostat</p>
+<p>deserves a lot of love</p>
+<p>and attention</p>
+<p>because it's the oldest</p>
+<p>and really the most</p>
+<p>prominent example</p>
+<p>of what I would argue</p>
+<p>is a true in silico</p>
+<p>mortal computer</p>
+<p>but it's homeostatic.</p>
+<p>A little bit allostatic</p>
+<p>depending on what you've done.</p>
+<p>There's variations to it</p>
+<p>but like</p>
+<p>the xenobots</p>
+<p>really interesting.</p>
+<p>I think the xenobots</p>
+<p>are an example</p>
+<p>of something</p>
+<p>that they use</p>
+<p>frog cells</p>
+<p>like cells</p>
+<p>and pieces of frogs</p>
+<p>to actually</p>
+<p>instantiate</p>
+<p>these little tiny</p>
+<p>robots</p>
+<p>that can self-heal</p>
+<p>and repair</p>
+<p>and I think</p>
+<p>that's going to be</p>
+<p>the part where</p>
+<p>we have</p>
+<p>autopedic computers</p>
+<p>already in front of us</p>
+<p>like organoids</p>
+<p>and xenobots</p>
+<p>are some of the most</p>
+<p>interesting</p>
+<p>I think</p>
+<p>profound examples</p>
+<p>of how you get</p>
+<p>this computer</p>
+<p>and then for example</p>
+<p>Andrew's work</p>
+<p>would have</p>
+<p>you know</p>
+<p>maybe the missing</p>
+<p>component</p>
+<p>so his would be</p>
+<p>more allostatic</p>
+<p>so mid-level</p>
+<p>kind of mortal computers</p>
+<p>and I'd have to read</p>
+<p>more about them</p>
+<p>but just from your</p>
+<p>explanation</p>
+<p>but the structural</p>
+<p>selection</p>
+<p>the evolution</p>
+<p>of the morphology</p>
+<p>the self-replication</p>
+<p>part of the story</p>
+<p>which we also</p>
+<p>talk about as well</p>
+<p>is more</p>
+<p>in like the xenobots</p>
+<p>and so I think</p>
+<p>it's interesting</p>
+<p>how do those</p>
+<p>two worlds interact</p>
+<p>and how do you get</p>
+<p>those properties</p>
+<p>of self-repair</p>
+<p>self-replication</p>
+<p>which by the way</p>
+<p>if you add a mutation</p>
+<p>to self-replication</p>
+<p>you get reproduction</p>
+<p>because now</p>
+<p>that creates</p>
+<p>a new system</p>
+<p>that's now subject</p>
+<p>to natural selection</p>
+<p>and now you've</p>
+<p>you know</p>
+<p>essentially done reproduction</p>
+<p>and now we have</p>
+<p>an account</p>
+<p>your computer</p>
+<p>has all the pieces</p>
+<p>that you know</p>
+<p>complex organisms</p>
+<p>do to also</p>
+<p>ensure their persistence</p>
+<p>which is</p>
+<p>we have offspring</p>
+<p>right</p>
+<p>you know</p>
+<p>that's another way</p>
+<p>we project ourselves</p>
+<p>into the future</p>
+<p>in an indirect way</p>
+<p>so it'd be kind of cool</p>
+<p>to take like</p>
+<p>the honeybee model</p>
+<p>and think about</p>
+<p>what are the ways</p>
+<p>in which we can have</p>
+<p>its morphology</p>
+<p>be damaged</p>
+<p>and conduct self-repair</p>
+<p>and that gets into</p>
+<p>the real nitty-gritty</p>
+<p>and even</p>
+<p>it might be difficult</p>
+<p>to do right</p>
+<p>and that's where</p>
+<p>I think</p>
+<p>this is where</p>
+<p>the grand challenge</p>
+<p>right</p>
+<p>it's got</p>
+<p>an open</p>
+<p>pathway</p>
+<p>that I don't think</p>
+<p>like any one of us</p>
+<p>has an exact candidate</p>
+<p>you know</p>
+<p>for okay</p>
+<p>it already exists</p>
+<p>because then</p>
+<p>there'd be really</p>
+<p>no point in writing</p>
+<p>the paper</p>
+<p>I do think</p>
+<p>the xenobots</p>
+<p>and organoids</p>
+<p>can teach us</p>
+<p>a tremendous amount</p>
+<p>about</p>
+<p>structural selection</p>
+<p>morphogenesis</p>
+<p>and self-repair</p>
+<p>and then</p>
+<p>maybe</p>
+<p>build like</p>
+<p>you know</p>
+<p>a synthetic</p>
+<p>you know</p>
+<p>honeybee</p>
+<p>mortal computer</p>
+<p>that also</p>
+<p>is autopetic</p>
+<p>right</p>
+<p>it's able to</p>
+<p>constantly</p>
+<p>repair itself</p>
+<p>to some degree</p>
+<p>I mean</p>
+<p>that would be</p>
+<p>very interesting</p>
+<p>so</p>
+<p>the fact that</p>
+<p>you brought that up</p>
+<p>was kind of like</p>
+<p>oh that's</p>
+<p>probably another</p>
+<p>example of</p>
+<p>an in silico</p>
+<p>mortal computer</p>
+<p>versus a biophysical</p>
+<p>we have</p>
+<p>some good examples</p>
+<p>of biophysical</p>
+<p>not as many</p>
+<p>in silico</p>
+<p>to my knowledge</p>
+<p>even like robots</p>
+<p>today</p>
+<p>they're not</p>
+<p>mortal</p>
+<p>right</p>
+<p>they</p>
+<p>there might be</p>
+<p>some interesting</p>
+<p>things I'm not</p>
+<p>aware of</p>
+<p>but</p>
+<p>largely</p>
+<p>they're like</p>
+<p>they have</p>
+<p>all the parts</p>
+<p>they have</p>
+<p>the ingredients</p>
+<p>I think</p>
+<p>for</p>
+<p>mortal computers</p>
+<p>but</p>
+<p>they're not</p>
+<p>they're not</p>
+<p>completely there yet</p>
+<p>and so</p>
+<p>I think</p>
+<p>that</p>
+<p>making a robot</p>
+<p>inherently</p>
+<p>whatever the robot</p>
+<p>system</p>
+<p>it could be</p>
+<p>the honeybee</p>
+<p>it could be</p>
+<p>a creature</p>
+<p>that we come up</p>
+<p>with</p>
+<p>it could be</p>
+<p>humanoid</p>
+<p>making it</p>
+<p>inherently</p>
+<p>driven</p>
+<p>by just</p>
+<p>this fundamental</p>
+<p>process of</p>
+<p>persistence</p>
+<p>is the starting</p>
+<p>point</p>
+<p>and then thinking</p>
+<p>about what are</p>
+<p>those essential</p>
+<p>variables</p>
+<p>and like we</p>
+<p>talked about</p>
+<p>the fruit fly</p>
+<p>designing all</p>
+<p>of those</p>
+<p>principles</p>
+<p>from the ground</p>
+<p>up</p>
+<p>and then at one</p>
+<p>point you've</p>
+<p>got to say</p>
+<p>is this supposed</p>
+<p>to be human</p>
+<p>like</p>
+<p>am I going to</p>
+<p>be able to</p>
+<p>evolve</p>
+<p>you know</p>
+<p>a population</p>
+<p>of these</p>
+<p>or am I</p>
+<p>going to</p>
+<p>need to</p>
+<p>employ</p>
+<p>inductive</p>
+<p>biases</p>
+<p>like a</p>
+<p>common</p>
+<p>model of</p>
+<p>cognition</p>
+<p>and I like</p>
+<p>to think</p>
+<p>of cognitive</p>
+<p>architectures</p>
+<p>as a</p>
+<p>possible bias</p>
+<p>and say</p>
+<p>well okay</p>
+<p>I'm going to</p>
+<p>design a</p>
+<p>brain based</p>
+<p>on these</p>
+<p>principles</p>
+<p>it could be</p>
+<p>the wrong</p>
+<p>bias</p>
+<p>but you know</p>
+<p>what</p>
+<p>we</p>
+<p>it's probably</p>
+<p>capturing a lot</p>
+<p>in you know</p>
+<p>cognitive architectures</p>
+<p>are fit to a</p>
+<p>lot of human</p>
+<p>data so</p>
+<p>they do</p>
+<p>explain a lot</p>
+<p>of different</p>
+<p>effects</p>
+<p>so I</p>
+<p>would say</p>
+<p>it's a</p>
+<p>pretty good</p>
+<p>bet</p>
+<p>and you</p>
+<p>bring in</p>
+<p>those biases</p>
+<p>and now you</p>
+<p>design the</p>
+<p>internal states</p>
+<p>and now you</p>
+<p>have a</p>
+<p>very complicated</p>
+<p>mortal computer</p>
+<p>but you know</p>
+<p>the future</p>
+<p>will be a</p>
+<p>very interesting</p>
+<p>place and</p>
+<p>hopefully</p>
+<p>more interesting</p>
+<p>mortal computers</p>
+<p>will emerge</p>
+<p>in the future</p>
+<p>thank you</p>
+<p>Alex these</p>
+<p>are really</p>
+<p>great points</p>
+<p>in closing</p>
+<p>blue first</p>
+<p>as much as</p>
+<p>you'd like to</p>
+<p>add and</p>
+<p>then Alex</p>
+<p>any closing</p>
+<p>thoughts that</p>
+<p>you want to</p>
+<p>kind of leave</p>
+<p>it with</p>
+<p>um just I</p>
+<p>don't know</p>
+<p>that Andrew</p>
+<p>Baron is</p>
+<p>building a</p>
+<p>robot</p>
+<p>B that</p>
+<p>would be</p>
+<p>super cool</p>
+<p>um he's</p>
+<p>just modeling</p>
+<p>the real</p>
+<p>actual biological</p>
+<p>honeybee brain</p>
+<p>which does</p>
+<p>some level</p>
+<p>of mortal</p>
+<p>computing</p>
+<p>I guess</p>
+<p>it is a</p>
+<p>mortal computer</p>
+<p>right like</p>
+<p>the the</p>
+<p>but it's</p>
+<p>not it's</p>
+<p>in vivo</p>
+<p>not in</p>
+<p>silico</p>
+<p>um but</p>
+<p>Alex thank</p>
+<p>you so much</p>
+<p>for um</p>
+<p>entertaining</p>
+<p>all of my</p>
+<p>fun questions</p>
+<p>and for you</p>
+<p>know trancing</p>
+<p>us down</p>
+<p>this like</p>
+<p>super fun</p>
+<p>path toward</p>
+<p>mortal computing</p>
+<p>I'm super</p>
+<p>excited to</p>
+<p>read your</p>
+<p>paper um</p>
+<p>and appreciate</p>
+<p>your time</p>
+<p>on the</p>
+<p>stream</p>
+<p>yeah</p>
+<p>thank you</p>
+<p>uh</p>
+<p>thank you</p>
+<p>blue</p>
+<p>and thank</p>
+<p>you</p>
+<p>daniel</p>
+<p>for inviting</p>
+<p>me</p>
+<p>this was</p>
+<p>a really</p>
+<p>thrilling</p>
+<p>discussion</p>
+<p>I really</p>
+<p>like your</p>
+<p>your guys</p>
+<p>podcast</p>
+<p>series</p>
+<p>and uh</p>
+<p>and I</p>
+<p>think it's</p>
+<p>it's great</p>
+<p>that you guys</p>
+<p>are pushing</p>
+<p>for the</p>
+<p>narrative of</p>
+<p>free energy</p>
+<p>and active</p>
+<p>inference</p>
+<p>and trying</p>
+<p>to educate</p>
+<p>the the</p>
+<p>greater public</p>
+<p>on it</p>
+<p>so my</p>
+<p>students as</p>
+<p>I already</p>
+<p>told you</p>
+<p>are fans</p>
+<p>of your</p>
+<p>channel</p>
+<p>so I</p>
+<p>was uh</p>
+<p>it was</p>
+<p>my pleasure</p>
+<p>to be</p>
+<p>on here</p>
+<p>um</p>
+<p>I hope</p>
+<p>you guys</p>
+<p>enjoy the</p>
+<p>paper</p>
+<p>um</p>
+<p>and I</p>
+<p>guess</p>
+<p>as a</p>
+<p>one final</p>
+<p>comment</p>
+<p>I guess</p>
+<p>it's now</p>
+<p>sort of</p>
+<p>our own</p>
+<p>private</p>
+<p>running</p>
+<p>joke</p>
+<p>uh</p>
+<p>again for</p>
+<p>those that</p>
+<p>tuned in</p>
+<p>hoping to</p>
+<p>like have</p>
+<p>a deep</p>
+<p>dive into</p>
+<p>I think</p>
+<p>you guys</p>
+<p>did a good</p>
+<p>job on</p>
+<p>point zero</p>
+<p>going through</p>
+<p>all four of</p>
+<p>those papers</p>
+<p>to be fair</p>
+<p>I think</p>
+<p>that captured</p>
+<p>their essence</p>
+<p>and then</p>
+<p>last time</p>
+<p>uh</p>
+<p>at the</p>
+<p>end of</p>
+<p>point one</p>
+<p>I gave</p>
+<p>like a crash</p>
+<p>course on</p>
+<p>the NGC</p>
+<p>predictive</p>
+<p>coding</p>
+<p>um</p>
+<p>so just</p>
+<p>to make</p>
+<p>a final</p>
+<p>comment</p>
+<p>to sort</p>
+<p>of like</p>
+<p>tie</p>
+<p>everything</p>
+<p>together</p>
+<p>to today's</p>
+<p>I didn't</p>
+<p>actually expect</p>
+<p>I</p>
+<p>it's my</p>
+<p>fault</p>
+<p>for introducing</p>
+<p>the paper</p>
+<p>but it</p>
+<p>may it</p>
+<p>was a</p>
+<p>welcome</p>
+<p>uh</p>
+<p>derailment</p>
+<p>uh</p>
+<p>going down</p>
+<p>mortal</p>
+<p>computer</p>
+<p>but I</p>
+<p>think</p>
+<p>those</p>
+<p>four</p>
+<p>papers</p>
+<p>um</p>
+<p>you</p>
+<p>could</p>
+<p>argue</p>
+<p>are like</p>
+<p>building</p>
+<p>blocks</p>
+<p>as well</p>
+<p>there are</p>
+<p>other pieces</p>
+<p>to the</p>
+<p>puzzle</p>
+<p>of mortal</p>
+<p>computation</p>
+<p>for example</p>
+<p>my</p>
+<p>my</p>
+<p>preference</p>
+<p>or my</p>
+<p>thoughts</p>
+<p>are</p>
+<p>predictive</p>
+<p>coding</p>
+<p>which is</p>
+<p>a</p>
+<p>manifestation</p>
+<p>of</p>
+<p>free</p>
+<p>energy</p>
+<p>or</p>
+<p>variational</p>
+<p>free</p>
+<p>energy</p>
+<p>minimization</p>
+<p>that's</p>
+<p>going to</p>
+<p>be an</p>
+<p>important</p>
+<p>piece</p>
+<p>your</p>
+<p>neural</p>
+<p>circuitry</p>
+<p>should</p>
+<p>probably</p>
+<p>adhere</p>
+<p>to that</p>
+<p>because I</p>
+<p>think</p>
+<p>it's</p>
+<p>very</p>
+<p>friendly</p>
+<p>to a</p>
+<p>lot</p>
+<p>of</p>
+<p>hardware</p>
+<p>like</p>
+<p>neuromorphic</p>
+<p>chips</p>
+<p>so that's</p>
+<p>kind of</p>
+<p>like</p>
+<p>where all</p>
+<p>the</p>
+<p>predictive</p>
+<p>coding</p>
+<p>stuff</p>
+<p>just</p>
+<p>to</p>
+<p>think</p>
+<p>about</p>
+<p>my</p>
+<p>papers</p>
+<p>they're</p>
+<p>like</p>
+<p>oh</p>
+<p>okay</p>
+<p>that's</p>
+<p>how</p>
+<p>that</p>
+<p>relates</p>
+<p>it's</p>
+<p>probably</p>
+<p>building</p>
+<p>circuits</p>
+<p>there</p>
+<p>and</p>
+<p>building</p>
+<p>little</p>
+<p>modules</p>
+<p>like</p>
+<p>we</p>
+<p>do</p>
+<p>in</p>
+<p>cog</p>
+<p>engine</p>
+<p>the</p>
+<p>cog</p>
+<p>engine</p>
+<p>paper</p>
+<p>is</p>
+<p>we</p>
+<p>have</p>
+<p>talked</p>
+<p>about</p>
+<p>it</p>
+<p>even</p>
+<p>if</p>
+<p>it's</p>
+<p>not</p>
+<p>about</p>
+<p>it</p>
+<p>specifically</p>
+<p>the</p>
+<p>common</p>
+<p>model</p>
+<p>of</p>
+<p>cognition</p>
+<p>is</p>
+<p>a</p>
+<p>wonderful</p>
+<p>bias</p>
+<p>if you</p>
+<p>want</p>
+<p>to</p>
+<p>skip</p>
+<p>ahead</p>
+<p>rather</p>
+<p>than</p>
+<p>evolve</p>
+<p>from</p>
+<p>the</p>
+<p>ground</p>
+<p>up</p>
+<p>to</p>
+<p>human</p>
+<p>cognition</p>
+<p>and</p>
+<p>if</p>
+<p>we</p>
+<p>want</p>
+<p>to</p>
+<p>build</p>
+<p>a</p>
+<p>moral</p>
+<p>computer</p>
+<p>that</p>
+<p>has</p>
+<p>aspects</p>
+<p>of</p>
+<p>human</p>
+<p>behavior</p>
+<p>we</p>
+<p>should</p>
+<p>maybe</p>
+<p>appeal</p>
+<p>to</p>
+<p>that</p>
+<p>type</p>
+<p>of</p>
+<p>bias</p>
+<p>there's</p>
+<p>a lot</p>
+<p>more</p>
+<p>in the</p>
+<p>world</p>
+<p>and I</p>
+<p>encourage</p>
+<p>viewers</p>
+<p>to go</p>
+<p>into the</p>
+<p>world</p>
+<p>of</p>
+<p>cognitive</p>
+<p>science</p>
+<p>and</p>
+<p>computational</p>
+<p>neuroscience</p>
+<p>and</p>
+<p>dig</p>
+<p>into</p>
+<p>the</p>
+<p>eternal</p>
+<p>well</p>
+<p>that</p>
+<p>is</p>
+<p>of</p>
+<p>the</p>
+<p>knowledge</p>
+<p>there</p>
+<p>so</p>
+<p>I</p>
+<p>recommend</p>
+<p>that</p>
+<p>and</p>
+<p>that's</p>
+<p>how</p>
+<p>that</p>
+<p>paper</p>
+<p>relates</p>
+<p>the</p>
+<p>spiking</p>
+<p>predictive</p>
+<p>coding</p>
+<p>and</p>
+<p>the</p>
+<p>convolutional</p>
+<p>which</p>
+<p>we</p>
+<p>only</p>
+<p>touched</p>
+<p>on</p>
+<p>them</p>
+<p>briefly</p>
+<p>I'll</p>
+<p>just</p>
+<p>comment</p>
+<p>that</p>
+<p>the</p>
+<p>convolutional</p>
+<p>predictive</p>
+<p>coding</p>
+<p>paper</p>
+<p>which</p>
+<p>was</p>
+<p>the</p>
+<p>second</p>
+<p>one</p>
+<p>that</p>
+<p>you</p>
+<p>guys</p>
+<p>talked</p>
+<p>about</p>
+<p>is</p>
+<p>like</p>
+<p>an</p>
+<p>extension</p>
+<p>of</p>
+<p>the</p>
+<p>nature</p>
+<p>paper</p>
+<p>in</p>
+<p>NGC</p>
+<p>and</p>
+<p>it</p>
+<p>just</p>
+<p>says</p>
+<p>how</p>
+<p>do</p>
+<p>we</p>
+<p>do</p>
+<p>vision</p>
+<p>processing</p>
+<p>I</p>
+<p>consider</p>
+<p>that</p>
+<p>as</p>
+<p>another</p>
+<p>version</p>
+<p>of</p>
+<p>the</p>
+<p>same</p>
+<p>building</p>
+<p>block</p>
+<p>that</p>
+<p>would</p>
+<p>go</p>
+<p>into</p>
+<p>a</p>
+<p>mortal</p>
+<p>computer</p>
+<p>and</p>
+<p>the</p>
+<p>spiking</p>
+<p>predictive</p>
+<p>coding</p>
+<p>I</p>
+<p>think</p>
+<p>is</p>
+<p>really</p>
+<p>interesting</p>
+<p>it</p>
+<p>says</p>
+<p>well</p>
+<p>if</p>
+<p>I'm</p>
+<p>going</p>
+<p>to</p>
+<p>try</p>
+<p>to</p>
+<p>get</p>
+<p>as</p>
+<p>close</p>
+<p>as</p>
+<p>I</p>
+<p>can</p>
+<p>to</p>
+<p>biophysical</p>
+<p>real</p>
+<p>neurons</p>
+<p>do</p>
+<p>so</p>
+<p>it's</p>
+<p>kind</p>
+<p>of</p>
+<p>like</p>
+<p>we're</p>
+<p>building</p>
+<p>the</p>
+<p>neuron</p>
+<p>as</p>
+<p>a</p>
+<p>little</p>
+<p>mortal</p>
+<p>computer</p>
+<p>and</p>
+<p>of</p>
+<p>itself</p>
+<p>and</p>
+<p>we</p>
+<p>know</p>
+<p>that</p>
+<p>they</p>
+<p>communicate</p>
+<p>with</p>
+<p>spikes</p>
+<p>and</p>
+<p>so</p>
+<p>the</p>
+<p>spiking</p>
+<p>predictive</p>
+<p>coding</p>
+<p>is</p>
+<p>like</p>
+<p>one</p>
+<p>way</p>
+<p>there's</p>
+<p>other</p>
+<p>ways</p>
+<p>to</p>
+<p>emulate</p>
+<p>predictive</p>
+<p>coding</p>
+<p>at</p>
+<p>a</p>
+<p>very</p>
+<p>fine</p>
+<p>coarse</p>
+<p>fine</p>
+<p>grained</p>
+<p>dynamics</p>
+<p>level</p>
+<p>and</p>
+<p>I</p>
+<p>would</p>
+<p>imagine</p>
+<p>that</p>
+<p>would</p>
+<p>probably</p>
+<p>be</p>
+<p>a</p>
+<p>great</p>
+<p>way</p>
+<p>to</p>
+<p>build</p>
+<p>a</p>
+<p>neuromorphic</p>
+<p>chip</p>
+<p>based</p>
+<p>mortal</p>
+<p>computer</p>
+<p>so</p>
+<p>the</p>
+<p>idea</p>
+<p>is</p>
+<p>if</p>
+<p>you</p>
+<p>get</p>
+<p>into</p>
+<p>neuromorphics</p>
+<p>and</p>
+<p>the</p>
+<p>mortal</p>
+<p>computing</p>
+<p>paper</p>
+<p>does</p>
+<p>talk</p>
+<p>about</p>
+<p>it</p>
+<p>not</p>
+<p>in</p>
+<p>great</p>
+<p>detail</p>
+<p>it</p>
+<p>talks</p>
+<p>about</p>
+<p>even</p>
+<p>my</p>
+<p>other</p>
+<p>work</p>
+<p>that's</p>
+<p>beyond</p>
+<p>predictive</p>
+<p>coding</p>
+<p>like</p>
+<p>forward</p>
+<p>forward</p>
+<p>predictive</p>
+<p>forward</p>
+<p>forward</p>
+<p>only</p>
+<p>learning</p>
+<p>and</p>
+<p>other</p>
+<p>variants</p>
+<p>and</p>
+<p>also</p>
+<p>spike</p>
+<p>timing</p>
+<p>dependent</p>
+<p>plasticity</p>
+<p>and</p>
+<p>how</p>
+<p>did</p>
+<p>all</p>
+<p>those</p>
+<p>relate</p>
+<p>to</p>
+<p>the</p>
+<p>mortal</p>
+<p>computer</p>
+<p>and</p>
+<p>that's</p>
+<p>in</p>
+<p>a</p>
+<p>supplement</p>
+<p>so</p>
+<p>if</p>
+<p>you</p>
+<p>are</p>
+<p>really</p>
+<p>a</p>
+<p>glutton</p>
+<p>for</p>
+<p>punishment</p>
+<p>and</p>
+<p>you</p>
+<p>can't</p>
+<p>get</p>
+<p>enough</p>
+<p>there's</p>
+<p>an</p>
+<p>appendix</p>
+<p>with</p>
+<p>a</p>
+<p>couple</p>
+<p>sections</p>
+<p>and</p>
+<p>it's</p>
+<p>talked</p>
+<p>about</p>
+<p>there</p>
+<p>and</p>
+<p>so</p>
+<p>I</p>
+<p>think</p>
+<p>that</p>
+<p>you</p>
+<p>can</p>
+<p>just</p>
+<p>for</p>
+<p>the</p>
+<p>viewers</p>
+<p>of</p>
+<p>this</p>
+<p>podcast</p>
+<p>this</p>
+<p>closing</p>
+<p>podcast</p>
+<p>you</p>
+<p>can</p>
+<p>be</p>
+<p>like</p>
+<p>well</p>
+<p>that's</p>
+<p>how</p>
+<p>it</p>
+<p>all</p>
+<p>relates</p>
+<p>really</p>
+<p>it</p>
+<p>was</p>
+<p>all</p>
+<p>parts</p>
+<p>of</p>
+<p>a</p>
+<p>mortal</p>
+<p>computer</p>
+<p>and</p>
+<p>we</p>
+<p>can</p>
+<p>all</p>
+<p>pretend</p>
+<p>that</p>
+<p>from</p>
+<p>the</p>
+
+<p>beginning</p>
+<p>I</p>
+<p>had</p>
+<p>envisioned</p>
+<p>a</p>
+<p>mortal</p>
+<p>just</p>
+<p>like</p>
+<p>Daniel</p>
+<p>brought</p>
+<p>up</p>
+<p>the</p>
+<p>whole</p>
+<p>framework</p>
+<p>of</p>
+<p>active</p>
+<p>inference</p>
+<p>and</p>
+<p>the</p>
+<p>free</p>
+<p>energy</p>
+<p>principle</p>
+<p>Bayesianism</p>
+<p>they're</p>
+<p>all</p>
+<p>tools</p>
+<p>that</p>
+<p>might</p>
+<p>help</p>
+<p>you</p>
+<p>build</p>
+<p>you</p>
+<p>know</p>
+<p>very</p>
+<p>powerful</p>
+<p>and</p>
+<p>interesting</p>
+<p>mortal</p>
+<p>computers</p>
+<p>whether</p>
+<p>they are</p>
+<p>simulated</p>
+<p>or</p>
+<p>whether</p>
+<p>they're</p>
+<p>real</p>
+<p>world</p>
+<p>and</p>
+<p>then</p>
+<p>as</p>
+<p>we</p>
+<p>brought</p>
+<p>up</p>
+<p>in</p>
+<p>this</p>
+<p>one</p>
+<p>you</p>
+<p>guys</p>
+<p>have</p>
+<p>and</p>
+<p>I</p>
+<p>think</p>
+<p>it's</p>
+<p>a</p>
+<p>compliment</p>
+<p>to</p>
+<p>some</p>
+<p>of</p>
+<p>Chris</p>
+<p>Field's</p>
+<p>teachings</p>
+<p>and</p>
+<p>some</p>
+<p>of</p>
+<p>his</p>
+<p>work</p>
+<p>there's</p>
+<p>also</p>
+<p>the</p>
+<p>whole</p>
+<p>quantum</p>
+<p>interpretation</p>
+<p>not</p>
+<p>quantum</p>
+<p>computing</p>
+<p>as a</p>
+<p>solution</p>
+<p>but</p>
+<p>rather</p>
+<p>a</p>
+<p>mortal</p>
+<p>computer</p>
+<p>and</p>
+<p>a</p>
+<p>neuromorphic</p>
+<p>system</p>
+<p>which</p>
+<p>that's</p>
+<p>what</p>
+<p>Carl</p>
+<p>and</p>
+<p>Chris</p>
+<p>did</p>
+<p>and</p>
+<p>Carl</p>
+<p>and</p>
+<p>I</p>
+<p>did</p>
+<p>in</p>
+<p>mortal</p>
+<p>computation</p>
+<p>the</p>
+<p>interpretation</p>
+<p>from</p>
+<p>the</p>
+<p>quantum</p>
+<p>information</p>
+<p>theoretic</p>
+<p>could</p>
+<p>be</p>
+<p>a</p>
+<p>very</p>
+<p>promising</p>
+<p>way</p>
+<p>of</p>
+<p>formulating</p>
+<p>it</p>
+<p>and</p>
+<p>that</p>
+<p>might</p>
+<p>open</p>
+<p>up</p>
+<p>the</p>
+<p>doors</p>
+<p>to</p>
+<p>an</p>
+<p>extremely</p>
+<p>powerful</p>
+<p>form</p>
+<p>like</p>
+<p>quantum</p>
+<p>computing</p>
+<p>so</p>
+<p>I think</p>
+<p>there's</p>
+<p>a lot</p>
+<p>of</p>
+<p>wonderful</p>
+<p>wild</p>
+<p>out</p>
+<p>there</p>
+<p>places</p>
+<p>to</p>
+<p>go</p>
+<p>but</p>
+<p>they're</p>
+<p>not</p>
+<p>too</p>
+<p>out</p>
+<p>there</p>
+<p>that's</p>
+<p>my</p>
+<p>last</p>
+<p>point</p>
+<p>that</p>
+<p>I</p>
+<p>want</p>
+<p>to</p>
+<p>make</p>
+<p>they're</p>
+<p>out</p>
+<p>there</p>
+<p>they go</p>
+<p>against</p>
+<p>a lot</p>
+<p>of</p>
+<p>our</p>
+<p>like</p>
+<p>I</p>
+<p>said</p>
+<p>earlier</p>
+<p>held</p>
+<p>beliefs</p>
+<p>especially</p>
+<p>those tied</p>
+<p>to</p>
+<p>immortal</p>
+<p>computation</p>
+<p>but I</p>
+<p>also</p>
+<p>think</p>
+<p>that</p>
+<p>they</p>
+<p>kind</p>
+<p>of</p>
+<p>build</p>
+<p>on</p>
+<p>intuitions</p>
+<p>and</p>
+<p>ideas</p>
+<p>that</p>
+<p>have</p>
+<p>existed</p>
+<p>in</p>
+<p>other</p>
+<p>places</p>
+<p>like</p>
+<p>if</p>
+<p>we</p>
+<p>take</p>
+<p>biology</p>
+<p>and</p>
+<p>biochemistry</p>
+<p>and</p>
+<p>biophysics</p>
+<p>seriously</p>
+<p>and we</p>
+<p>know</p>
+<p>that</p>
+<p>these</p>
+<p>things</p>
+<p>work</p>
+<p>so</p>
+<p>it's</p>
+<p>not</p>
+<p>like</p>
+<p>oh</p>
+<p>I'm</p>
+<p>going</p>
+<p>to</p>
+<p>do</p>
+<p>something</p>
+<p>drastically</p>
+<p>strange</p>
+<p>and</p>
+<p>controversial</p>
+<p>it's</p>
+<p>just</p>
+<p>saying</p>
+<p>let's</p>
+<p>take</p>
+<p>a little</p>
+<p>bit</p>
+<p>deeper</p>
+<p>inspiration</p>
+<p>from</p>
+<p>the</p>
+<p>world</p>
+<p>around</p>
+<p>us</p>
+<p>and</p>
+<p>living</p>
+<p>entities</p>
+<p>to</p>
+<p>build</p>
+<p>what</p>
+<p>could</p>
+<p>arguably</p>
+<p>be</p>
+<p>one</p>
+<p>way</p>
+<p>to</p>
+<p>do</p>
+<p>artificial</p>
+<p>general</p>
+<p>intelligence</p>
+<p>and</p>
+<p>ultimately</p>
+<p>artificial</p>
+<p>sentience</p>
+<p>which I</p>
+<p>think</p>
+<p>is</p>
+<p>kind</p>
+<p>of</p>
+<p>the</p>
+<p>final</p>
+<p>end</p>
+<p>goal</p>
+<p>right</p>
+<p>and</p>
+<p>then</p>
+<p>yeah</p>
+<p>and</p>
+<p>we</p>
+<p>end</p>
+<p>up</p>
+<p>there</p>
+<p>so</p>
+<p>thank</p>
+<p>you</p>
+<p>guys</p>
+<p>again</p>
+<p>it</p>
+<p>was</p>
+<p>so</p>
+<p>much</p>
+<p>fun</p>
+<p>talking</p>
+<p>thank</p>
+<p>you</p>
+<p>for</p>
+<p>letting</p>
+<p>me</p>
+<p>at</p>
+<p>some</p>
+<p>points</p>
+<p>ramble</p>
+<p>I hope</p>
+<p>my rambling</p>
+<p>was useful</p>
+<p>but</p>
+<p>you know</p>
+<p>thank you</p>
+<p>I'll give a short</p>
+<p>closing remark</p>
+<p>so first</p>
+<p>thank you</p>
+<p>blue for</p>
+<p>working on</p>
+<p>the dot</p>
+<p>zero</p>
+<p>diligently</p>
+<p>and</p>
+<p>thank you</p>
+<p>Alex</p>
+<p>for like</p>
+<p>suggesting</p>
+<p>to take</p>
+<p>on the</p>
+<p>challenge</p>
+<p>and</p>
+<p>reading</p>
+<p>between</p>
+<p>and among</p>
+<p>the</p>
+<p>citations</p>
+<p>is like</p>
+<p>always</p>
+<p>what it's</p>
+<p>about</p>
+<p>and the</p>
+<p>engagement</p>
+<p>and the</p>
+<p>developments</p>
+<p>in the</p>
+<p>real</p>
+<p>world</p>
+<p>so</p>
+<p>it's</p>
+<p>just</p>
+<p>epic</p>
+<p>it's</p>
+<p>fun</p>
+<p>and</p>
+<p>it's</p>
+<p>lived</p>
+<p>the</p>
+<p>research</p>
+<p>program</p>
+<p>is</p>
+<p>lived</p>
+<p>forward</p>
+<p>but</p>
+<p>experienced</p>
+<p>backwards</p>
+<p>or</p>
+<p>however</p>
+<p>it</p>
+<p>was</p>
+<p>definitely</p>
+<p>very</p>
+<p>excited</p>
+<p>for</p>
+<p>everything</p>
+<p>you've</p>
+<p>described</p>
+<p>and on</p>
+<p>all these</p>
+<p>topics</p>
+<p>I hope</p>
+<p>we can</p>
+<p>continue</p>
+<p>to discuss</p>
+<p>and that</p>
+<p>people</p>
+<p>will be</p>
+<p>excited</p>
+<p>to</p>
+<p>step</p>
+<p>up</p>
+<p>and</p>
+<p>do</p>
+<p>like</p>
+<p>a</p>
+<p>56.3</p>
+<p>and we</p>
+<p>can just</p>
+<p>continue</p>
+<p>working</p>
+<p>together</p>
+<p>in</p>
+<p>1790</p>
+<p>Immanuel Kant</p>
+<p>makes the</p>
+<p>famous statement</p>
+<p>in his</p>
+<p>critique of</p>
+<p>judgment</p>
+<p>there will</p>
+<p>never be</p>
+<p>a</p>
+<p>Newton</p>
+<p>of</p>
+<p>the</p>
+<p>blade</p>
+<p>of</p>
+<p>grass</p>
+<p>because</p>
+<p>human</p>
+<p>science</p>
+<p>will</p>
+<p>never</p>
+<p>be</p>
+<p>able</p>
+<p>to</p>
+<p>explain</p>
+<p>how</p>
+<p>a</p>
+<p>living</p>
+<p>being</p>
+<p>can</p>
+<p>originate</p>
+<p>from</p>
+<p>inanimate</p>
+<p>matter</p>
+<p>the</p>
+<p>German</p>
+<p>naturalist</p>
+<p>Ernst</p>
+<p>Hegel</p>
+<p>about</p>
+<p>70</p>
+<p>years</p>
+<p>later</p>
+<p>celebrates</p>
+<p>Charles</p>
+<p>Darwin</p>
+<p>to be</p>
+<p>such</p>
+<p>a</p>
+<p>Newton</p>
+<p>of</p>
+<p>the</p>
+<p>grass</p>
+<p>blade</p>
+<p>Hegel's</p>
+<p>enthusiasm</p>
+<p>about</p>
+<p>Darwin</p>
+<p>was not</p>
+<p>shared</p>
+<p>among</p>
+<p>his</p>
+<p>contemporaries</p>
+<p>and is</p>
+<p>not too</p>
+<p>widespread</p>
+<p>today</p>
+<p>although</p>
+<p>the</p>
+<p>path-breaking</p>
+<p>role of</p>
+<p>Darwin's</p>
+<p>scholarly</p>
+<p>work</p>
+<p>is not</p>
+<p>the least</p>
+<p>doubted</p>
+<p>or questioned</p>
+
+<p>The American</p>
+<p>philosopher,</p>
+<p>physicist,</p>
+<p>and molecular</p>
+<p>biologist</p>
+<p>Evelyn Fox</p>
+
+<p>Keller</p>
+<p>says that</p>
+<p>considering</p>
+<p>Darwin</p>
+<p>as the</p>
+<p>Newton</p>
+<p>of</p>
+<p>biology</p>
+<p>is</p>
+<p>simply</p>
+<p>wrong</p>
+<p>Darwin</p>
+<p>himself</p>
+<p>has</p>
+<p>systematically</p>
+<p>avoided</p>
+<p>!</p>
+<p>natural</p>
+<p>selection</p>
+<p>begins</p>
+<p>with a</p>
+<p>living</p>
+<p>cell</p>
+<p>and I</p>
+<p>think it's</p>
+<p>actually</p>
+<p>this</p>
+<p>nexus</p>
+<p>that you're</p>
+<p>addressing</p>
+<p>with the</p>
+<p>1900s and</p>
+<p>early 2000s</p>
+<p>in mind</p>
+<p>that is</p>
+<p>a big</p>
+<p>one</p>
+<p>so</p>
+<p>thank you</p>
+<p>again for</p>
+<p>undertaking</p>
+<p>the project</p>
+<p>and for</p>
+<p>joining these</p>
+<p>streams</p>
+<p>and talk to</p>
+<p>you next</p>
+<p>time</p>
+<p>yeah</p>
+<p>thank you</p>
+<p>for having</p>
+<p>me again</p>
+<p>looking forward</p>
+<p>to the next</p>
+<p>time</p>
+<p>bye</p>
+<p>bye</p>
+<p>to</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+</body>
+</html>

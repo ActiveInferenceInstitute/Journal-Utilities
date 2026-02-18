@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dmitry Bagaev: “RxInfer.jl updates and development“</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>Dmitry Bagaev: “RxInfer.jl updates and development“</h1>
+<div class="meta">Duration: 54:06 &middot; Views: 242</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=geITY8aJJEA">https://www.youtube.com/watch?v=geITY8aJJEA</a></div>
+<article>
+<p>hello we're back and with Dimitri beov</p>
+<p>and the RX and fur developers in</p>
+<p>community so thank you for letting us</p>
+<p>peek and join into your meeting really</p>
+<p>appreciative for all the collaboration</p>
+<p>and learning that we've had with RX</p>
+<p>Ander this year and looking forward to</p>
+<p>your</p>
+<p>updates uh thanks for Hing us yes so</p>
+<p>yeah usually we have update meetings</p>
+<p>about the development for R and fur but</p>
+<p>since we have now active INF syposium</p>
+<p>and we also have a new PhD students in</p>
+<p>our lab I decided to make it a bit</p>
+<p>special and today we so brief I will</p>
+<p>briefly introduce arer again for people</p>
+<p>who are not familiar maybe it and then</p>
+<p>we will discuss actual recent</p>
+<p>developments of it and we it's just uh</p>
+<p>basically an open discussion right you</p>
+<p>can you can stop me at any moment with</p>
+<p>some questions I for don't see YouTube</p>
+<p>so if there are some questions on</p>
+<p>YouTube just stop me and and I'll</p>
+<p>discuss um so okay so arxon fur uh is a</p>
+<p>library for scalable probabilistic</p>
+<p>program right uh and but what what is a</p>
+<p>probabilistic programming by</p>
+<p>itself uh and let's let's imine we want</p>
+<p>to build an age like a drone right and</p>
+<p>we want to build a program for it</p>
+<p>and write some code and usually what we</p>
+<p>do is we take some data and uh we fit it</p>
+<p>into our algorithm and we get the result</p>
+<p>for example we find the P right but in</p>
+<p>reality it's much more complicated</p>
+<p>because we don't really have precise</p>
+<p>data precise measurements of our sensors</p>
+<p>or maybe we have some wind uh outside so</p>
+<p>our formula is not really correct in</p>
+<p>this conditions and</p>
+<p>basically we don't have exact values but</p>
+<p>we have some uncertainty around our</p>
+<p>parameters and how do we actually</p>
+<p>compute the result given the uncertainty</p>
+<p>around the parameters that's the first</p>
+<p>question uh but more interesting</p>
+<p>question is actually uh the backward</p>
+<p>question so given the</p>
+<p>observations of our path for for our</p>
+<p>agent what were the conditions under</p>
+<p>which it has been operated right and</p>
+<p>usually it's also so it's cing around</p>
+<p>some</p>
+<p>uncertainties uh and in the in the</p>
+<p>context of active inference uh we can go</p>
+<p>even uh further so we can say Okay given</p>
+<p>the desired observations like given what</p>
+<p>we want to</p>
+<p>see uh what actions we actually should</p>
+<p>take given that we we don't also know</p>
+<p>the the conditions under which we</p>
+<p>operate so this is what essentially</p>
+<p>probabilistic programming is</p>
+<p>about uh and it's it's very challenging</p>
+<p>but good news is that we have the</p>
+<p>solution for it we we already have it we</p>
+<p>we we know how to solve it uh and this</p>
+<p>is this is the formula that solves</p>
+<p>everything essentially and this is the</p>
+<p>base</p>
+<p>rule uh and it looks pretty simple right</p>
+<p>it's just like one multiplication</p>
+<p>one uh not a big deal but</p>
+<p>it turns out that uh so this formula is</p>
+<p>is really really challenging it's</p>
+<p>extremely challenging to apply real</p>
+<p>situation uh and uh why is</p>
+<p>that well okay we we can I can I can</p>
+<p>demonstrate why so if we have a simple</p>
+<p>program uh with not a lot of parameters</p>
+<p>this this formula indeed is quite simple</p>
+<p>so you can actually solve it on a piece</p>
+<p>of paper uh and you will get the exact</p>
+<p>result uh and it's all fine but in real</p>
+<p>situations uh we actually have much more</p>
+<p>parameters and this formula it explodes</p>
+<p>pretty quickly and as soon as you add</p>
+<p>more parameters to your model uh you</p>
+<p>realize that it's no longer feasible to</p>
+<p>solve it on a piece of paper uh actually</p>
+<p>you need to write like an entire article</p>
+<p>about how to solve it for like some</p>
+<p>specific specific</p>
+<p>case uh but we we we want even more</p>
+<p>right so we want to not just have</p>
+<p>parameters but we want to have some</p>
+<p>constraints in our system uh like for</p>
+<p>example physical constraints like maybe</p>
+<p>we have an engine power constraint and</p>
+<p>like we have some trees around in the</p>
+<p>environment so when we deal with such a</p>
+<p>complex system the map behind is just uh</p>
+<p>you cannot even comprehend it at this</p>
+<p>point right and actually in my opinion</p>
+<p>this is a very big problem in so active</p>
+<p>INF community in general is that math is</p>
+<p>pretty difficult um to to read uh and to</p>
+<p>like to double check and and to</p>
+<p>implement right so uh usually In</p>
+<p>Articles we have a lot of formulas and</p>
+<p>they they work in theory but as soon as</p>
+<p>we start implementing it uh we make</p>
+<p>mistakes uh our programs have bucks and</p>
+<p>then uh it just takes a lot of time to</p>
+<p>iterate through</p>
+<p>that uh but ideally we we don't even</p>
+<p>want to to think about it right we we</p>
+<p>want to design an agent and all of this</p>
+<p>math under good is known so this</p>
+<p>Bas uh and what we want to do is we want</p>
+<p>to have as many components as we want we</p>
+<p>want to press a button uh and we want to</p>
+<p>compile with this map we wantest works</p>
+<p>and just deploy right and it should</p>
+<p>result in a robust systems that makes</p>
+<p>reasonable actions under uncertainty and</p>
+<p>unpredictable unpredict</p>
+<p>environment and if you think that's too</p>
+<p>much to ask I would uh actually draw an</p>
+<p>analogy with uh just a regular</p>
+<p>programming so we now talking about</p>
+<p>probalistic programming uh but regular</p>
+<p>programming also</p>
+<p>started um or has the same path so in</p>
+<p>the beginning uh like a bunch of high</p>
+<p>level professionals phds they were</p>
+<p>designing the very very first algorithms</p>
+<p>uh and it was error prone they they</p>
+<p>spent months designing a very simple</p>
+<p>program spent months designing a</p>
+<p>computer uh but nowaday uh every yeah</p>
+<p>student or even in schools you can just</p>
+<p>download Python and write simple</p>
+<p>programs you don't you don't need think</p>
+<p>think about how computers work to do you</p>
+<p>just express your ideas in in some sort</p>
+<p>of high level programming language uh</p>
+<p>and compiler does the have Lifting for</p>
+<p>you so essentially what we want to</p>
+<p>achieve here is to have a language for</p>
+<p>uh solving</p>
+<p>probabilistic programming right and you</p>
+<p>don't have to think about math you only</p>
+<p>want to think about your application you</p>
+<p>want to design your draw or maybe it's a</p>
+<p>vum cleaner or or maybe something even</p>
+<p>more</p>
+<p>complex</p>
+<p>uh any questions so</p>
+<p>far maybe from</p>
+<p>YouTube not yet thank you</p>
+<p>though okay so uh okay so this is kind</p>
+<p>of the but how do we uh approach it how</p>
+<p>how can we approach it uh and in a sense</p>
+<p>there are lot of similar</p>
+<p>projects uh in in various programming</p>
+<p>languages as well and they try to solve</p>
+<p>the same problem in a slightly different</p>
+<p>ways right so and given that even in</p>
+<p>this slide there are like eight</p>
+<p>Solutions but in reality there are more</p>
+<p>why do we need a new</p>
+<p>one why why did we decide to write AR</p>
+<p>firm where there are so many solutions</p>
+<p>already developing well um the idea here</p>
+<p>is that um for um autonomous agents we</p>
+<p>have um a pretty unique set of</p>
+<p>requirements so if we want to operate in</p>
+<p>real world uh we want to have a very big</p>
+<p>program because a program of a real</p>
+<p>world is is quite complicated has a lot</p>
+<p>of parameters so it should</p>
+<p>scale uh it also should be low power</p>
+<p>because our autonomous agents they</p>
+<p>usually operate on battery</p>
+<p>and you don't really want to uh have an</p>
+<p>empty battery soon right so it should it</p>
+<p>should preserve energy in the most</p>
+<p>efficient way uh it should it should be</p>
+<p>able to adapt to changes in the</p>
+<p>environment because the the real</p>
+<p>environment is</p>
+<p>chaotic uh it may change maybe you</p>
+<p>didn't account for something your model</p>
+<p>so you should be able to change the</p>
+<p>model fly should work in real time</p>
+<p>should be um yeah as efficient as</p>
+<p>possible in terms of performance and it</p>
+<p>also must be</p>
+<p>robust uh so we we basically are not</p>
+<p>allowed to stop our</p>
+<p>computation it should run and should</p>
+<p>react the</p>
+<p>circumstances uh and this is what arir</p>
+<p>is essentially about and what it tries</p>
+<p>to achieve uh and in order to achieve</p>
+<p>this uh it combines the three main</p>
+<p>ideas um also in the L right Factor</p>
+<p>graphs variational inference and</p>
+<p>reactive message passing so this these</p>
+<p>are the three key</p>
+<p>elements uh and we basically try to</p>
+<p>understand here if if we combine them uh</p>
+<p>can we can we have these properties that</p>
+<p>I</p>
+<p>mentioned um and so to to talk a little</p>
+<p>bit about each of them so a factor graph</p>
+<p>is essentially a graph representation of</p>
+<p>a problemistic</p>
+<p>model uh and a good thing about fun</p>
+<p>graphs is that they are explainable and</p>
+<p>they're not a black box right uh so we</p>
+<p>can in we we can clearly see the</p>
+<p>structure of the model and dependencies</p>
+<p>in different parameters or hidden States</p>
+<p>and also</p>
+<p>observations uh and it's also modular</p>
+<p>vocal we can reuse certain pieces and we</p>
+<p>can write specialized computations for</p>
+<p>certain</p>
+<p>um so in arer we have a special language</p>
+<p>to write such programs so have this at</p>
+<p>model macro that take textual</p>
+<p>description of a veristic</p>
+<p>model uh and basically creates a factor</p>
+<p>graph under the so I user I should not</p>
+<p>create those graphs uh by hand and this</p>
+<p>is</p>
+<p>optimate uh and we can also create</p>
+<p>like sub module sub models and we can</p>
+<p>reuse them in the bigger</p>
+<p>context and as I mentioned uh we can for</p>
+<p>example do some local optimizations in</p>
+<p>our model because we clearly know the</p>
+<p>structure</p>
+<p>of um so variation inference I assume</p>
+<p>that most of you may be familiar but for</p>
+<p>those of you who are not that's</p>
+<p>basically an optimization procedure that</p>
+<p>approximate base rule so base rule in</p>
+<p>many situations is very challenging to</p>
+<p>solve</p>
+<p>directly uh so operational inference is</p>
+<p>is a very clever technique to trade off</p>
+<p>accuracy and maybe solve the task a bit</p>
+<p>easier at the cost of curac yeah and</p>
+<p>also it's it's faster because uh you</p>
+<p>don't have to solve the original problem</p>
+<p>exactly um so the formula actually looks</p>
+<p>a bit more complex than base rule</p>
+<p>itself um but yeah the math is sometimes</p>
+<p>strange and in practice it's actually</p>
+<p>easier to solve this problem than the</p>
+<p>original</p>
+<p>one uh so instead of solving the Bas R</p>
+<p>directly we approximate the result with</p>
+<p>a simpler set of distributions from</p>
+<p>exponential family for example which</p>
+<p>makes it</p>
+<p>simp and we have</p>
+<p>also language for for constraints for</p>
+<p>the variational inut right so sometimes</p>
+<p>we want to make a meanfield over our</p>
+<p>hidden States and maybe for some</p>
+<p>specific States B the ation so a user</p>
+<p>also can specify different constraints</p>
+<p>for</p>
+<p>proced um and the last thing in our</p>
+<p>recipe is reactive message</p>
+<p>passing which is a central part of the</p>
+<p>the project so and uh each message</p>
+<p>carries a small piece of information</p>
+<p>required to solve this very complex math</p>
+<p>behind uh the inference</p>
+<p>procedure uh and</p>
+<p>um essentially in traditional message</p>
+<p>passing algorithms they require fixed</p>
+<p>Global shule uh which has a lot of</p>
+<p>downsides and in our recent fur we allow</p>
+<p>messages to flow asynchronously and each</p>
+<p>not note in the graph simply reacts on</p>
+<p>changes uh in nebor would and computes</p>
+<p>the result</p>
+<p>loly uh and it's more robust because if</p>
+<p>part of the system doesn't work we</p>
+<p>simply stop react on it uh but uh also</p>
+<p>it in principle supports variable update</p>
+<p>rates for different variables for</p>
+<p>example</p>
+<p>um audio signals they may update at a</p>
+<p>higher rate than</p>
+<p>video uh do we have any questions so</p>
+<p>far yeah I I can ask one now and you</p>
+<p>could go for it or address it later Arun</p>
+<p>asked what has been the biggest yeah</p>
+<p>Arun asked what has been the biggest</p>
+<p>challenge building RX and fur so</p>
+<p>far uh oh uh that's a very good question</p>
+<p>so the biggest challenge um I I may say</p>
+<p>that</p>
+<p>uh the as as I mentioned where the math</p>
+<p>behind all of it is quite</p>
+<p>complex uh but the implementation side</p>
+<p>is also complex so in order to build</p>
+<p>such a system you need an expert in both</p>
+<p>you need to understand both math and a</p>
+<p>high level uh programming to make it</p>
+<p>efficient so the the the the combination</p>
+<p>of both of this</p>
+<p>elements um is I would say</p>
+<p>unique uh and without understanding one</p>
+<p>or another it's it's it's basically</p>
+<p>impossible to be to build such a system</p>
+<p>any other</p>
+<p>questions</p>
+<p>okay um okay</p>
+<p>so uh basically to write the</p>
+<p>problemistic program we need to specify</p>
+<p>our model or a program if you would like</p>
+<p>uh we need to specify our variational</p>
+<p>distribution uh and we also need to</p>
+<p>specify how do we compute</p>
+<p>posteriors uh so we can Define mod in</p>
+<p>our package we can Define variational</p>
+<p>distribution and for the minimization we</p>
+<p>use free energy minimization</p>
+<p>rationalization just a s single call to</p>
+<p>INF function that combines both model</p>
+<p>and</p>
+<p>constraints and runs the</p>
+<p>algorithm and it supports both static</p>
+<p>data sets but uh as I mentioned the</p>
+<p>whole idea about F reactivity and it</p>
+<p>also accepts reactive streams of data</p>
+<p>sets from external</p>
+<p>sources uh and this is basically we</p>
+<p>believe that these three key elements uh</p>
+<p>they do have properties which I</p>
+<p>mentioned earlier and they do allow us</p>
+<p>to um Implement all of</p>
+<p>those uh and arur uh yeah is free it's</p>
+<p>available on GitHub we have a website we</p>
+<p>have a</p>
+<p>documentation uh we also presented</p>
+<p>various conferences and also on YouTube</p>
+<p>uh um so yeah you are we we invite you</p>
+<p>to check it out essentially and see yeah</p>
+<p>what it can do for</p>
+<p>you uh yeah so if we have any other</p>
+<p>questions right now we can</p>
+<p>uh no because we just had</p>
+<p>questions but again yeah free free to um</p>
+<p>stop me at any moment free so okay but</p>
+<p>the question is does it actually work uh</p>
+<p>so I this example of uh the</p>
+<p>Drone and basically if you want to</p>
+<p>implement drone inent we Define the</p>
+<p>Dynamics of the Drone how for example</p>
+<p>different parameters should influence</p>
+<p>its position and velocity and speed and</p>
+<p>then we Define a model n and ver uh and</p>
+<p>then basically we create an environment</p>
+<p>for it uh and see how the Drone would</p>
+<p>infer the action given its current space</p>
+<p>and the go right so in this experiment</p>
+<p>uh our drone is instructed to fly to the</p>
+<p>red dop and it actively tries to infer</p>
+<p>uh its current position and the</p>
+<p>trajectory that it needs to take to</p>
+<p>reach the goal and and also on the</p>
+<p>bottom side of the screen you see that</p>
+<p>we change the parameters of the world</p>
+<p>and also the parameters of the Drone uh</p>
+<p>reactively and yeah the system still uh</p>
+<p>operates uh and actually to honest it</p>
+<p>was much more difficult to create the</p>
+<p>environment for this drone than the</p>
+<p>Drone itself so first simplified this</p>
+<p>stas but the environment was still a</p>
+<p>challenge but for that we also work on a</p>
+<p>solution so which is called Aris</p>
+<p>environments which essentially would</p>
+<p>also hide all of this complexity of</p>
+<p>building environments for uh different</p>
+<p>engion and we also we have a a set of</p>
+<p>other uh examples uh both for static</p>
+<p>data sets or preactive data sets uh yeah</p>
+<p>just feel free to check out our</p>
+<p>documentation uh and yeah we have</p>
+<p>reproduced many interesting patient</p>
+<p>inference tasks they a good performance</p>
+<p>and scalability so we we are obviously</p>
+<p>not solving all problems in this world</p>
+<p>uh but the set of um possibilities is is</p>
+<p>really uh other</p>
+<p>questions yeah I I'll ask a few from the</p>
+<p>chat so Discovery block wrote for the</p>
+<p>Drone would RX infer be able to manage</p>
+<p>actual image input to infer the position</p>
+<p>or velocity of the Drone instead of</p>
+<p>assuming the observation corresponds to</p>
+<p>real values with random</p>
+<p>error uh okay it's a good question not</p>
+<p>out of the box uh it depends on your</p>
+<p>model so in principle it's supposed to</p>
+<p>design a model that would process images</p>
+<p>but uh we didn't try that so uh but arer</p>
+<p>by itself is indifferent</p>
+<p>on on the input right so the in the the</p>
+<p>problem with uh images as input is that</p>
+<p>they are pretty high</p>
+<p>dimensional uh and since RX works on</p>
+<p>distributions this this image must be</p>
+<p>processed as a distribution so this</p>
+<p>might be quite challenging in practice</p>
+<p>but that's a direction to go with the</p>
+<p>composition of these systems so the</p>
+<p>Drone kernel could be designed with an</p>
+<p>app model taking in beliefs about</p>
+<p>position or about other features and</p>
+<p>then hypothetically like an RX infer or</p>
+<p>alternative approach to image processing</p>
+<p>could be brought in and concatenated and</p>
+<p>used and then the the kernel belief</p>
+<p>would remain the same</p>
+<p>uh exactly yes you you're</p>
+<p>correct okay and one more question from</p>
+<p>Frasier what is the largest remaining</p>
+<p>theoretical difficulty with this</p>
+<p>approach real time inference Universal</p>
+<p>inference um okay it's a good question</p>
+<p>so uh the limitations we we will talk</p>
+<p>actually a little bit about it in the</p>
+<p>current developments but I can already</p>
+<p>hint that indeed Universal inference is</p>
+<p>quite difficult because uh in order to</p>
+<p>execute the inference procedure we need</p>
+<p>to compute</p>
+<p>messages uh and we we can we can compute</p>
+<p>them in many</p>
+<p>situations but in many situations it is</p>
+<p>still um way too</p>
+<p>challenging and we are actively working</p>
+<p>on that uh but yeah message computation</p>
+<p>is one of the main challenging</p>
+<p>components</p>
+<p>too awesome and one last question Bert</p>
+<p>and Arun both asked have you considered</p>
+<p>hierarchical or nested models or any of</p>
+<p>the</p>
+<p>renormalization type models we've been</p>
+<p>exploring uh great question yes we did</p>
+<p>and actually we last year we</p>
+<p>reimplemented completely the the</p>
+<p>language that we use for models to</p>
+<p>support hierarchical models and this is</p>
+<p>one of the directions that we are</p>
+<p>approaching currently in bab as well</p>
+<p>uh to support to support more complex</p>
+<p>hierar models and also recent</p>
+<p>developments in active imprints</p>
+<p>literature</p>
+<p>yes questions no not</p>
+<p>on yeah these are good questions but we</p>
+<p>can</p>
+<p>continue uh so uh what about our current</p>
+<p>development</p>
+<p>um I can so I will talk about two and</p>
+<p>then I will give a stage to vter uh so</p>
+<p>we have an external collaboration with</p>
+<p>active inference Institute about graph</p>
+<p>visualization that paid the texal</p>
+<p>description of the model and actually</p>
+<p>display the graph so we have a data</p>
+<p>structure for the graph but we don't</p>
+<p>have a function that would create a nice</p>
+<p>PNG out of it like picture uh and we</p>
+<p>have an ongoing project to um for the</p>
+<p>universal inference essentially for uh</p>
+<p>for to support more</p>
+<p>models so for uh graph visualization as</p>
+<p>I mentioned it's an external</p>
+<p>collaboration uh and it goes really well</p>
+<p>so we have an open pool</p>
+<p>request uh and for example for this</p>
+<p>simple model for a simple Point model</p>
+<p>point to model I can generate this nice</p>
+<p>graph that will will show uh the</p>
+<p>dependencies between variables in this</p>
+<p>model uh and I can also</p>
+<p>generate uh more complex models or</p>
+<p>graphs for more complex</p>
+<p>structures uh and uh if uh yeah so and</p>
+<p>we have also Fraser and Chris joined our</p>
+<p>meeting so if you Fraser or Chris you</p>
+<p>want to talk uh something uh here you</p>
+<p>can yeah you can do that basically</p>
+<p>yeah I'll just can anyone can everyone</p>
+<p>hear me is that uh is this coming</p>
+<p>through yes yes</p>
+<p>yeah uh yeah just really quickly so I'm</p>
+<p>I'm Fraser I'm the guy in the top right</p>
+<p>bubble there so along with Chris and</p>
+<p>cobus EST hoisen we have a project</p>
+<p>effectively at the Active inference</p>
+<p>Institute as Demitri said in</p>
+<p>collaboration with the bias lab to to</p>
+<p>visualize these models to be able to get</p>
+<p>some handle on on what they look like</p>
+<p>and ultimately to be able to even debug</p>
+<p>where certain messages are and and you</p>
+<p>know where issues are with respect to</p>
+<p>actual message computations um there is</p>
+<p>a there's a page essentially at the um I</p>
+<p>I could show where this is but um</p>
+<p>there's a very a publicly available page</p>
+<p>where you can kind of see our progress</p>
+<p>track you know what's happening and even</p>
+<p>reach out to to to join us and</p>
+<p>collaborate what where you will so it's</p>
+<p>very much open for um for collaborators</p>
+<p>and and participation</p>
+<p>absolutely Chris is there anything you'd</p>
+<p>like to say</p>
+<p>nope I think you covered it all thank</p>
+<p>you excellent back to you</p>
+<p>Demetri uh thank you uh Chris uh or or</p>
+<p>if you don't want to add anything we can</p>
+<p>just</p>
+<p>continue please continue okay that's uh</p>
+<p>great</p>
+<p>thanks uh and thanks for your effort by</p>
+<p>the way this is a really cool stuff so I</p>
+<p>was playing with to prepare for the</p>
+<p>presentation uh and it essentially just</p>
+<p>works yeah so there are some yeah I</p>
+<p>suggested some</p>
+<p>improvement uh but yeah I think it's</p>
+<p>it's all good even in the current stage</p>
+<p>and also uh for example</p>
+<p>other um probabilistic programming</p>
+<p>libraries uh in Python for example they</p>
+<p>do similar approach uh in their modeling</p>
+<p>and also dis uh yeah how they display</p>
+<p>models</p>
+<p>um okay</p>
+<p>so um so the next thing that I want to</p>
+<p>talk about is um yeah Universal inter</p>
+<p>essentially and we already had a</p>
+<p>question about</p>
+<p>it so suppose we have this model that</p>
+<p>essentially tells us that we have</p>
+<p>observations why that are coming from a</p>
+<p>gou and and the mean of this gaan is</p>
+<p>modeled as a beta distribution and by</p>
+<p>Beta is because the variable that is</p>
+<p>modeled as a beta distribution is</p>
+<p>constrained to be from 0 to</p>
+<p>one uh so basically I say here that my</p>
+<p>observations are constrained from 0 to</p>
+<p>one uh and I also say that the Precision</p>
+<p>of my observations is an exponent of R</p>
+<p>and R is also from0 to one so it's</p>
+<p>essentially it's a pretty simple model</p>
+<p>uh at a GL but the reality is that this</p>
+<p>is an extremely challenging model for uh</p>
+<p>message</p>
+<p>passing uh because the messages that are</p>
+<p>uh yeah that we need to compute are not</p>
+<p>easy to</p>
+<p>compute um so</p>
+<p>and the problem is that that the result</p>
+<p>those computation is essentially a say a</p>
+<p>bad distribution</p>
+<p>um so it has a it has a very strange</p>
+<p>form that is not parametric or cannot be</p>
+<p>easily described as a parametric</p>
+<p>distribution so we can always describe</p>
+<p>those distributions as a set of</p>
+<p>samples but drawing a set of samples is</p>
+<p>uh</p>
+<p>costly uh and U it's essentially very</p>
+<p>difficult to make it real</p>
+<p>time so the idea here is that okay we we</p>
+<p>want a nice distribution parametric and</p>
+<p>it's us usually from exponential</p>
+<p>family and the question is here okay how</p>
+<p>how to find this best</p>
+<p>approximation uh and essentially aricen</p>
+<p>fur supports algorithms or</p>
+<p>approximations that would allow you to</p>
+<p>specify how you would find how you like</p>
+<p>to find those approximations and one of</p>
+<p>the recent uh algorith is um uh</p>
+<p>projections</p>
+<p>so this is a is a very very new feature</p>
+<p>so what we can do is we can specify or</p>
+<p>instruct AR</p>
+<p>F to use the projection algorithm to</p>
+<p>Beta or to other distributions from</p>
+<p>exponential</p>
+<p>family uh and it also works around the</p>
+<p>terministic nodes or just for individual</p>
+<p>variables uh and if we combine these</p>
+<p>specifications so it's a little bit more</p>
+<p>complex than the original example but</p>
+<p>given this specification we can solve uh</p>
+<p>inference in this</p>
+<p>model um and the result is pretty so I</p>
+<p>here I just display um uh yeah generated</p>
+<p>some data set and I tried to infer the</p>
+<p>parameters okay so as I mentioned in the</p>
+<p>very very beginning we have a set of</p>
+<p>observations and we want to know the</p>
+<p>parameters with which those observations</p>
+<p>were</p>
+<p>generated uh and you can see that uh the</p>
+<p>inert or projected distributions they</p>
+<p>are extremely close to the the ones that</p>
+<p>I use to actually generate data</p>
+<p>set uh and it scales pretty well</p>
+<p>comparing to other publicistic</p>
+<p>programming</p>
+<p>libraries um so here on the left side</p>
+<p>bottom left side which ches sampling uh</p>
+<p>and it takes up to three times</p>
+<p>or yeah real execution time to do this</p>
+<p>task and on the bottom part we have a</p>
+<p>automatic differentiation variation</p>
+<p>inference algorithm which is</p>
+<p>faster but uh we basically uh because</p>
+<p>it's a new feature we still try to</p>
+<p>improve the performance and the</p>
+<p>performance is not uh ideal at the</p>
+<p>moment and we already know uh yeah how</p>
+<p>to improve it essentially we have a PhD</p>
+<p>student that works on this project and</p>
+<p>it goes really well and like around the</p>
+<p>week ago had yet a better uh performance</p>
+<p>which is not reflected on this slide but</p>
+<p>U since it's like just last week we</p>
+<p>didn't have really time to investigate</p>
+<p>properly uh any questions so</p>
+<p>far</p>
+<p>what stand for</p>
+<p>n um n it's something like no urn</p>
+<p>sampler</p>
+<p>uh and urn is a is a yeah term that they</p>
+<p>use to describe their</p>
+<p>algorithm uh the yeah it stands for no</p>
+<p>new turn</p>
+<p>S it's it's practically as far as I</p>
+<p>understand one of the best sampers right</p>
+<p>now to draw from an unnormalized</p>
+<p>distribution and those timings by the</p>
+<p>way uh so</p>
+<p>uh we Implement recent in jully and</p>
+<p>those timings are from a</p>
+<p>different Library also written in</p>
+<p>jully so these timings are from</p>
+<p>tuing um okay</p>
+<p>so we have also we had already question</p>
+<p>about General influence models and here</p>
+<p>I will give stage to</p>
+<p>V hello everyone my name is V I'm also a</p>
+<p>PG student in by lab and I'm I'm going</p>
+<p>to have a short uh discussion about</p>
+<p>generalized inference in discrete models</p>
+<p>so in active inference we really like to</p>
+<p>work with pdps partially observable Mark</p>
+<p>of decision</p>
+<p>processes and the simple PDP or the</p>
+<p>vanilla PP you can see on the slide so a</p>
+<p>joint distribution Over States</p>
+<p>observations and transition</p>
+<p>matrices and we see um that we have</p>
+<p>transition uh distri distributions both</p>
+<p>for the observation model and the state</p>
+<p>transition distribution okay you</p>
+<p>click so both this uh this observation</p>
+<p>distribution and this transition</p>
+<p>distribution they're both categorical</p>
+<p>transition distributions but they're</p>
+<p>slightly different right because the the</p>
+<p>observation model just depends on one</p>
+<p>categorical distribution or categorical</p>
+<p>variable only the state whereas the</p>
+<p>transition model depends on both the</p>
+<p>state and the control</p>
+<p>right so if we draw the factor graph</p>
+<p>representations of both these uh these</p>
+<p>these nodes you can see that they're</p>
+<p>they're extremely similar but they're</p>
+<p>slightly different now if we want to go</p>
+<p>towards this generalized inference</p>
+<p>there's two things we can do the first</p>
+<p>is we just implement this new node this</p>
+<p>uh two categoricals in one categorical</p>
+<p>out uh and we can just be done with it</p>
+<p>and uh we we could do control in in</p>
+<p>discrete environments but it it wouldn't</p>
+<p>be very general and since these</p>
+<p>transition distributions are very</p>
+<p>similar their functional forms are very</p>
+<p>similar the inference rules are also</p>
+<p>very similar so what I investigating</p>
+<p>right now is how we can generalize this</p>
+<p>inference in these discrete models such</p>
+<p>that we can have an arbitrary number of</p>
+<p>categoricals coming in a transition to a</p>
+<p>categorical variable coming out so this</p>
+<p>would give us a general contingency</p>
+<p>tables are General uh discrete</p>
+<p>categorical transition</p>
+<p>distributions uh in RX</p>
+<p>f um there are some problems with this</p>
+<p>because this B Matrix um has a rank</p>
+<p>which is proportional to the amount of</p>
+<p>categorical interfaces so for the</p>
+<p>observation model we just have a</p>
+<p>transition Matrix but if we want to do</p>
+<p>discrete control then we already have a</p>
+<p>transition tensor which map States and</p>
+<p>controls to new States currently in arer</p>
+<p>we only support these rank one or rank</p>
+<p>two D distributions so this is something</p>
+<p>that we're working on right now to</p>
+<p>generalize this uh this</p>
+<p>inference so what we are currently doing</p>
+<p>is together with Rafael we are working</p>
+<p>to replace the rank one rank two Matrix</p>
+<p>DeRay implementation in ARs and F with</p>
+<p>the general arbitrary rank tensor</p>
+<p>implementation um the the working name</p>
+<p>for now is a multi-d l we're very much</p>
+<p>open to</p>
+<p>suggestions um I am currently deriving</p>
+<p>rules for this General uh transition</p>
+<p>node so T is already in this Des</p>
+<p>dissertation has the rules for the rank</p>
+<p>one and rank two uh 10 uh factors and</p>
+<p>matrices and I generalize them to</p>
+<p>arbitrary Rank tensors and then I will</p>
+<p>make this new transition node which</p>
+<p>takes an arbitrary number of</p>
+<p>interfaces so what can we do with this</p>
+<p>with this we can do control in discrete</p>
+<p>models so uh you can see on this slide</p>
+<p>that we have an agent which is</p>
+<p>navigating a maze and this is the type</p>
+<p>of stuff that will be possible with the</p>
+<p>because we will have categorical States</p>
+<p>coming in with categorical controls</p>
+<p>coming in um and a categorical State</p>
+<p>coming out of this so we would be able</p>
+<p>to go towards building um agents in</p>
+<p>discrete environments with discrete</p>
+<p>controls so we can go ahead and solve on</p>
+<p>the PS as soon as we're done with</p>
+<p>this uh thanks</p>
+<p>Al uh and here it is here's the the</p>
+<p>entire presentation that hope gives an</p>
+<p>idea of what ARX project is about uh and</p>
+<p>what we are currently trying to</p>
+<p>develop uh and yeah maybe we were a bit</p>
+<p>too fast but we have a plenty time for</p>
+<p>plenty of time for</p>
+<p>discussions do I have more questions</p>
+<p>online</p>
+<p>or racer if you want to ask your</p>
+<p>question</p>
+<p>directly one but he also in</p>
+<p>the yeah just uh I was interested uh I'm</p>
+<p>relative I'm very very interested I did</p>
+<p>mathematics and computer science for my</p>
+<p>actual degree very interested in the the</p>
+<p>mathematics of the generalized inference</p>
+<p>and and node constraints and all of that</p>
+<p>to what to what extent does message</p>
+<p>passing per se the the process of</p>
+<p>message passing um to what extent does</p>
+<p>that does that influence issues around</p>
+<p>non-conjugate inference is it</p>
+<p>effectively kind of only dependent on</p>
+<p>the content of the messages or does does</p>
+<p>the actual process of message passing</p>
+<p>have some kind of non-trivial effect on</p>
+<p>uh on on the resulting inference I'm</p>
+<p>just curious about that so uh the</p>
+<p>problem with nonon non- conjugate</p>
+<p>inference in message</p>
+<p>passing uh lies in the fact that in</p>
+<p>order to compute a message we need to</p>
+<p>compute an</p>
+<p>integral uh and in general computing an</p>
+<p>integral is not possible on a computer</p>
+<p>I'm talking about indefinite integrals</p>
+<p>that has no boundaries so for an</p>
+<p>integral that has a boundary from Like A</p>
+<p>to B say you inte from A to B you can</p>
+<p>yeah indeed decompose it into regions uh</p>
+<p>and then solve this um integral</p>
+<p>numerically but for unbounded integrals</p>
+<p>that take from minus infinity to</p>
+<p>Infinity uh basically it is impossible</p>
+<p>right because we have finite memory of</p>
+<p>computers and you can always create a</p>
+<p>counter example where it doesn't work uh</p>
+<p>and it's even worse in um in</p>
+<p>multi-dimensional spaces so soal Cur</p>
+<p>cursive</p>
+<p>dimensionality so and this is why people</p>
+<p>are coming with u many clever methods to</p>
+<p>take those integrals via sampling so</p>
+<p>sampling is essentially an algorithm to</p>
+<p>take an integral so with non conjugate</p>
+<p>inference uh so let me phrase the other</p>
+<p>way around so with conjugate inference</p>
+<p>those integrals they can actually be</p>
+<p>simplified to um an exact</p>
+<p>formula so you don't really need to</p>
+<p>solve the original integral you solve as</p>
+<p>much simpler problem because you can</p>
+<p>rearrange some terms and something just</p>
+<p>canceled out and you get the exact</p>
+<p>answer the non conjugate inference you</p>
+<p>cannot do that in general so you need to</p>
+<p>actually solve this integral and here is</p>
+<p>why you need those approximation methods</p>
+<p>like sampling or projection which</p>
+<p>essentially uh try to solve this problem</p>
+<p>but at the cost of accuracy because we</p>
+<p>cannot</p>
+<p>afford um yeah infinite memory in our</p>
+<p>computer awesome I see so if I just just</p>
+<p>try and so effectively it boils down to</p>
+<p>clever ways to compute integrals in in</p>
+<p>ways that you know it's not going to</p>
+<p>take too long okay exactly exactly and</p>
+<p>you you also have to remember about uh</p>
+<p>dimensionality of your problem so uh for</p>
+<p>example as I mentioned one of the recent</p>
+<p>developments that we just uh included in</p>
+<p>our X fur would allow you to project a</p>
+<p>high dimensional gausian</p>
+<p>distributions uh because before um so a</p>
+<p>gaan distribution can be described with</p>
+<p>its mean and with its ciance</p>
+<p>Matrix so which means that for high</p>
+<p>dimensional G and distribution The</p>
+<p>ciance Matrix is quite large so it</p>
+<p>grows uh and we recently added a</p>
+<p>simplified version of a gaou that</p>
+<p>doesn't store the entire coari Matrix</p>
+<p>but only the diagonal of it and only the</p>
+<p>same element on the entire</p>
+<p>diag so the number of parameters is</p>
+<p>essentially linear to the dimensionality</p>
+<p>and it scales much much better and it</p>
+<p>allows you to yet again solve bigger</p>
+<p>problems um yeah in in general in</p>
+<p>general this um this is a quite</p>
+<p>difficult</p>
+<p>problem I I'll ask a couple questions</p>
+<p>from live chat if that's</p>
+<p>okay okay</p>
+<p>okay Arun asked is rx and fur being used</p>
+<p>in production right</p>
+<p>now uh well we we actually have been</p>
+<p>contacted in the past yes but I'm not</p>
+<p>I'm not aware of uh uh yeah any company</p>
+<p>actively using it we we uh actually we</p>
+<p>have a spin out from uh Technical</p>
+<p>University of bank that we yeah we</p>
+<p>founded a startup uh from bab Group</p>
+<p>which is called lazy Dynamics which uh</p>
+<p>the the entire idea is to commercialize</p>
+<p>Ren F to make it a professional toolbox</p>
+<p>with a really good support I mean it's</p>
+<p>it's always uh going to be free for</p>
+<p>research uh but uh yeah lazy Dynamics</p>
+<p>will uh</p>
+<p>create uh ice Tools around AR fur to</p>
+<p>make process of uh creating models</p>
+<p>easier making process of deploying those</p>
+<p>models easier debugging models easier U</p>
+<p>but essentially aroner is free and</p>
+<p>perhaps someone is already using it in</p>
+<p>production but uh we may not know</p>
+<p>it cool great okay next question from</p>
+<p>Dean tickles he wrote do your rules</p>
+<p>self-organize or do they remain constant</p>
+<p>does the rule recognize its own limits</p>
+<p>of applicability and adjust accordingly</p>
+<p>I'm just wondering if these rules can</p>
+<p>morph into heris</p>
+<p>sixs uh uh sorry you were glitching a</p>
+<p>bit can you repeat the question yeah do</p>
+<p>your rules self-organize or do they</p>
+<p>remain constant does the rule recognize</p>
+<p>its own limits of applicability and</p>
+<p>adjust accordingly I'm just wondering if</p>
+<p>these rules can morph into heris</p>
+<p>sixs uh no like message buing is if uh</p>
+<p>the questions about message passing</p>
+<p>update rules they work</p>
+<p>independently uh and this is also one of</p>
+<p>the main ideas of this approach is to</p>
+<p>not have any sort of global</p>
+<p>variables uh and yeah the graph is</p>
+<p>essentially each each message is unaware</p>
+<p>of any other message or computations</p>
+<p>such that we can run them</p>
+<p>asynchronously uh and do not have any</p>
+<p>sort of shling mechanism</p>
+<p>uh that would yeah decide how the</p>
+<p>messages should be computed or how they</p>
+<p>should</p>
+<p>cooperate awesome okay next question</p>
+<p>from Bert he wrote is it possible to add</p>
+<p>a deep learning encoder and train it</p>
+<p>using</p>
+<p>messages Yeah we actually have I think</p>
+<p>we have an example in documentation</p>
+<p>where we use a neural network uh and we</p>
+<p>also use a normalizing flows inside the</p>
+<p>F so yeah that's</p>
+<p>definitely we also have an example where</p>
+<p>we use differential</p>
+<p>equations uh to infer parameters of</p>
+<p>differential</p>
+<p>equations maybe questions from students</p>
+<p>about the</p>
+<p>approach</p>
+<p>H okay okay that's good</p>
+<p>what what do you all usually do in the</p>
+<p>meetings or like how does it go and how</p>
+<p>are you going to be taking things in the</p>
+<p>coming</p>
+<p>months well we usually yeah we we</p>
+<p>already discussed the recent</p>
+<p>developments and already showed that</p>
+<p>yeah we we do exactly that we go through</p>
+<p>the current developments and we try to</p>
+<p>yeah see what we can do next so uh maybe</p>
+<p>here if someone in the chat I would just</p>
+<p>post what for example they want to do</p>
+<p>right like what kind of</p>
+<p>applications they try to solve with</p>
+<p>active</p>
+<p>inference that would help us also to</p>
+<p>change our agenda because we have some</p>
+<p>certain things in our agenda so we want</p>
+<p>to continue with graph</p>
+<p>visualizations know that for example in</p>
+<p>the current version uh we don't have</p>
+<p>constraints visualization but</p>
+<p>constraints are pretty</p>
+<p>important uh for the inference so this</p>
+<p>is the next step in our agenda to also</p>
+<p>Implement constraints</p>
+<p>visualization uh we also have non-</p>
+<p>conjugate posterior computation in our</p>
+<p>agenda have generalized inference in our</p>
+<p>agenda but for example people can also</p>
+<p>comment on their uses or they can also</p>
+<p>for example open arfer GitHub repos</p>
+<p>itory and open discussions right so</p>
+<p>maybe not right now maybe if someone</p>
+<p>watches this in the recording or maybe</p>
+<p>someone who is online but still uh don't</p>
+<p>have a concrete uh example you can</p>
+<p>always go to GitHub uh open discussions</p>
+<p>uh and just drop your ideas there and</p>
+<p>you can discuss and maybe we uh</p>
+<p>adjust uh yeah our goals of the project</p>
+<p>together and we are also looking for</p>
+<p>collaborators right so uh again Fraser</p>
+<p>and grease were super helpful things uh</p>
+<p>but if more people want collaborate it's</p>
+<p>a it's an open project you can always</p>
+<p>just join the organization on GitHub and</p>
+<p>drop your ideas and</p>
+<p>collaborate awesome also I wanted to</p>
+<p>highlight kass's examples at learnable</p>
+<p>Loop and also the documentation that you</p>
+<p>all maintain</p>
+<p>and just looking back at our meeting</p>
+<p>notes from the beginning of the year and</p>
+<p>uh looking at the version history of RX</p>
+<p>and fur it's something really new it's</p>
+<p>really been one of the highlights of the</p>
+<p>year and seeing how it's all developing</p>
+<p>and a coin TOS I mean never has a such a</p>
+<p>simple seemingly simple statistical</p>
+<p>situation been such an amazing</p>
+<p>learning opening and it it uh it's just</p>
+<p>just exciting to see how the examples</p>
+<p>start to flow</p>
+<p>in and then those are useful for</p>
+<p>Learning and they're also useful for</p>
+<p>training code models and the the the</p>
+<p>Paradigm difference with RX infer which</p>
+<p>I think you very quickly move through</p>
+<p>with the app model declaration and</p>
+<p>reactive message passing is is really</p>
+<p>distinct from the script-like flow of</p>
+<p>essentially all other active</p>
+<p>implementations so it's just really</p>
+<p>exciting to see and and also that this</p>
+<p>isn't just about action perception</p>
+<p>modeling we also see in the examples</p>
+<p>more conventional statistical models so</p>
+<p>that helps bring continuity between the</p>
+<p>joint distributional modeling modeling</p>
+<p>of active inference and all of these</p>
+<p>more standard statistical</p>
+<p>problems uh I also no just uh because I</p>
+<p>stopped presenting I have the chat</p>
+<p>YouTube and I see a question what's the</p>
+<p>best way to get started with</p>
+<p>aringer uh and I think the best way to</p>
+<p>get started is to go to the dation that</p>
+<p>is to the page is called getting</p>
+<p>started but yeah so basically to start</p>
+<p>with the</p>
+<p>documentation uh that goes for the</p>
+<p>process of installing the library</p>
+<p>running and first</p>
+<p>models uh and then um we have also a big</p>
+<p>collection of</p>
+<p>examples as I already mentioned maybe</p>
+<p>some of the some of the applications you</p>
+<p>can already find here uh we have we have</p>
+<p>also examples about active inference uh</p>
+<p>but not</p>
+<p>only uh we so This Global parameters</p>
+<p>loation uses neural network under the</p>
+<p>hood so with lstm driven dynamic</p>
+<p>something something is brok live stream</p>
+<p>issues we need to open the issue</p>
+<p>back but um but basically yeah this this</p>
+<p>example uses ban neural network uh to</p>
+<p>train parameters and then L mus it and</p>
+<p>we have also external examples from</p>
+<p>kobus we have also series of tutorials</p>
+<p>uh on our on YouTube from Toco to jail</p>
+<p>jail</p>
+<p>uh from Theory point of view I really</p>
+<p>like the book that is called uh model</p>
+<p>based machine learning by John wi by</p>
+<p>John win so this is also a very good uh</p>
+<p>starting</p>
+<p>point it also explains the concept of uh</p>
+<p>yeah Factor graphs stochastic nodes</p>
+<p>deterministic nodes the Run inference</p>
+<p>but also it it uh it explains the</p>
+<p>concept of uh running inference</p>
+<p>essentially yeah I have a question</p>
+<p>actually so the the project of um no</p>
+<p>conjugate postor computation M S sim to</p>
+<p>the variational inference so how is that</p>
+<p>created so uh variational inference uh</p>
+<p>is is a very very good question so</p>
+<p>variational inference uh indeed reframes</p>
+<p>the original</p>
+<p>as an optimization problem and you can</p>
+<p>solve it as a black box indeed so you</p>
+<p>you parameterize your distribution you</p>
+<p>take uh yeah gradients and you do a</p>
+<p>simple optimization problem and actually</p>
+<p>it does already solve many problems but</p>
+<p>uh in in our per case we actually do not</p>
+<p>treat models as black boxes we decompose</p>
+<p>those computations in a series of</p>
+<p>smaller computations</p>
+<p>uh which in a sense helps us because we</p>
+<p>don't need to run this big Global</p>
+<p>optimization</p>
+<p>procedure but uh in the result of the</p>
+<p>result of this decomposition so this</p>
+<p>individual computations messages they</p>
+<p>still may be</p>
+<p>difficult uh and this projection</p>
+<p>algorithm is indeed uh yeah sort of a</p>
+<p>variational inference but at a smaller</p>
+<p>scale okay yeah but uh what what you</p>
+<p>maybe refer I can also refer to this ad</p>
+<p>algorithm that I also showed in my</p>
+<p>slides automatic differentiation</p>
+<p>variational</p>
+<p>inference which yeah takes the entire</p>
+<p>model as a black box just just</p>
+<p>differentiates through it and yeah it</p>
+<p>doesn't care about</p>
+<p>contribu thank you for this any last</p>
+<p>short comments from any of the RX</p>
+<p>team okay thank you again for for</p>
+<p>letting us kind of wander into your lab</p>
+<p>meeting and really looking forward to</p>
+<p>the collaborations that will</p>
+<p>continue okay yeah thank you thank you</p>
+<p>again for inviting us uh and yeah we are</p>
+<p>looking</p>
+<p>forward all right till next time bye</p>
+</article>
+</body>
+</html>

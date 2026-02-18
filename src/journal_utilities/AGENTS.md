@@ -2,25 +2,44 @@
 
 ## Module Purpose
 
-Transcription pipeline for Active Inference Journal videos using WhisperX.
+Transcription pipeline, playlist enumeration, and course scaffolding for Active Inference Journal videos.
 
 ## Key Files
 
 | File | Purpose |
-|------|---------|
-| `ingest_db_create_wav.py` | Data import, metadata, file organization |
-| `transcribe.py` | WhisperX transcription service |
-| `fix_scheduled_dates.py` | Date correction utility |
+| --- | --- |
+| `data/database.py` | Database connection, audit trails |
+| `data/importer.py` | Session import with audit logging |
+| `transcribe/transcribe.py` | WhisperX transcription service (GPU) |
+| `transcribe/transcriber.py` | Local Whisper transcription (Apple Silicon) |
+| `youtube/playlist.py` | Playlist enumeration, manifest management |
+| `render/renderer.py` | Course scaffolding, module.md rendering |
+| `download/downloader.py` | YouTube download logic |
+| `interface/app.py` | FastAPI web server + REST API |
+| `interface/data_loader.py` | Video manifest builder from `data/output/` |
+| `interface/chat_engine.py` | Ollama RAG chat engine |
+| `export/exporter.py` | Multi-format transcript export |
+| `rag/main.py` | Entity extraction pipeline orchestrator |
 
 ## Entry Points
 
 ```bash
-# Via Makefile (recommended)
+# Channel Download (New)
+python scripts/download_channel.py --transcripts --audio --resume --transcribe-missing
+
+# Local Transcription (Standalone)
+python scripts/transcribe_missing.py
+
+# Legacy Operations (via Makefile)
 make fetch-coda        # Get Coda data
 make import-sessions   # Import to DB
 make fetch-metadata    # YouTube metadata
-make transcribe        # Run transcription
+make transcribe        # Run WhisperX transcription (GPU)
 make copy-to-journal   # Export transcripts
+
+# Web Interface
+uv run python run.py serve  # http://localhost:8000
+# Or: journal-ui
 ```
 
 ## Database Operations
@@ -55,5 +74,12 @@ uv run pytest tests/journal_utilities/ -v
 
 Tests cover:
 
-- Audit trail functions
+- Database and audit trail functions
+- Web interface endpoints (FastAPI)
+- Data loader and search index
+- Chat engine (Ollama RAG)
 - Transcription output formatting
+- Playlist enumeration and manifest persistence
+- Course scaffolding and module.md rendering
+- Multi-format export (plaintext, PDF, Markdown, JSON, HTML)
+- Video categorization

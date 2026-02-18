@@ -1,0 +1,2723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActInf ModelStream #004.1 ~ "Implementing Active Inference by Message Passing in a Factor Graph"</title>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 0.5rem;
+    color: #0a0a0a;
+  }
+  p { margin: 0.6rem 0; }
+  .meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .meta a { color: #457b9d; }
+</style>
+</head>
+<body>
+<h1>ActInf ModelStream #004.1 ~ "Implementing Active Inference by Message Passing in a Factor Graph"</h1>
+<div class="meta">Category: ModelStream &middot; Series: ModelStream_004 &middot; Episode 1 &middot; Duration: 1:40:11 &middot; Views: 649</div>
+<div class="meta"><a href="https://www.youtube.com/watch?v=uePR4DQv0yI">https://www.youtube.com/watch?v=uePR4DQv0yI</a></div>
+<article>
+<p>a signal processing group</p>
+<p>and so i designed</p>
+<p>my training</p>
+<p>sorry actually i i just one thing</p>
+<p>changed could you just restart that but</p>
+<p>go for it</p>
+<p>okay</p>
+<p>uh thanks for the introduction then my</p>
+<p>name is bertie fries i'm a professor in</p>
+<p>eindhoven at eindhoven</p>
+<p>university of technology in the</p>
+<p>netherlands</p>
+<p>i'll be a part of</p>
+<p>an electrical engineering department in</p>
+<p>a signal processing group so we designed</p>
+<p>signal processing algorithms and about</p>
+<p>six seven years ago i read</p>
+<p>for the first time a paper by carl</p>
+<p>fiston it was called a rough guide to</p>
+<p>the brain</p>
+<p>and struck me that this could be</p>
+<p>fantastic for signal processing so since</p>
+<p>then i'm really trying to work with</p>
+<p>people in my lab</p>
+<p>on realizing realizing agents that will</p>
+<p>design will automate the design process</p>
+<p>of signal processing algorithms and as</p>
+<p>you know we're doing this by message</p>
+<p>passing and we want to talk about that</p>
+<p>today</p>
+<p>uh thais</p>
+<p>yeah um my name is tyson i'm a poster</p>
+<p>with bird's lab i did my phd also an</p>
+<p>active inference on how to automate</p>
+<p>those processes and uh also together</p>
+<p>with michael cox and all the colleagues</p>
+<p>from the lab we built the toolbox called</p>
+<p>fornilab and i'll be talking and walking</p>
+<p>you through um how we apply that in an</p>
+<p>active infra con inference context um</p>
+<p>and do some cool things with that</p>
+<p>and so that's for later</p>
+<p>yeah hello everyone so my name is nitri</p>
+<p>bhagav i'm a phd candidate in bias lab</p>
+<p>also in hue in university and yeah my</p>
+<p>work is mostly about reactive message</p>
+<p>pricing based bayesian inference</p>
+<p>that we hope will help with active</p>
+<p>inference as well but that's also for</p>
+<p>later i will talk about it</p>
+<p>on my</p>
+<p>uh time yeah my slot</p>
+<p>cool thank you</p>
+<p>okay um</p>
+<p>shall i uh go then and do a little</p>
+<p>introduction a few slides</p>
+<p>let's see that</p>
+<p>yeah okay um</p>
+<p>let's see if i can share my</p>
+<p>slide</p>
+<p>yep looks good</p>
+<p>yeah okay</p>
+<p>so</p>
+<p>the</p>
+<p>first slide is uh eindhoven</p>
+<p>um because you may wonder where is i</p>
+<p>know in relation to amsterdam well it's</p>
+<p>about</p>
+<p>100 kilometers south of amsterdam close</p>
+<p>to the belgian border and not so far</p>
+<p>away from germany either</p>
+<p>um</p>
+<p>so it's a it's sort of a high-tech city</p>
+<p>phillips</p>
+<p>originated and opened on the right</p>
+<p>bottom you see a picture of the center</p>
+<p>and the right top is a view of the</p>
+<p>campus of our</p>
+<p>university of technology</p>
+<p>here's an aerial view of groups</p>
+<p>going through five here's an aerial view</p>
+<p>of our campus</p>
+<p>and uh so</p>
+<p>here let's see if i can share a pointer</p>
+<p>yeah so uh this is the building for</p>
+<p>electrical engineering so this is where</p>
+<p>we are</p>
+<p>ios lab is short for bayesian</p>
+<p>intelligent autonomous systems that's</p>
+<p>what we try to build</p>
+<p>we have about three</p>
+<p>let's say staff members faculty members</p>
+<p>and currently six phd students dmitry is</p>
+<p>one of those pc students</p>
+<p>and we have open positions if there are</p>
+<p>people watching that are interested in</p>
+<p>probabilistic programming or how to make</p>
+<p>active inference work</p>
+<p>then what are we trying to do this is a</p>
+<p>picture that's probably familiar to</p>
+<p>everybody in this uh forum right this is</p>
+<p>uh this wants to show that well the only</p>
+<p>thing that's really going on in the</p>
+<p>brain is</p>
+<p>for energy minimization or expected free</p>
+<p>energy minimization</p>
+<p>to do everything</p>
+<p>and that's a huge inspiration to us to</p>
+<p>us engineers so what we try to do is</p>
+<p>basically this we want to put this in an</p>
+<p>iphone or on a raspberry pi</p>
+<p>and let a robot</p>
+<p>learn how to ride a bike</p>
+<p>but the beauty of this framework for</p>
+<p>engineering purposes is that it's almost</p>
+<p>one solution approach to to to any</p>
+<p>problem so</p>
+<p>if we can do it you could teach a robot</p>
+<p>how to write a</p>
+<p>energy minimization probably we can also</p>
+<p>apply this in virtual reality and design</p>
+<p>algorithms for hearing aids or even</p>
+<p>self-driving cars</p>
+<p>the the big</p>
+<p>let's say</p>
+<p>promise or the attractiveness for</p>
+<p>engineering is that it it's just one</p>
+<p>always the same thing you just have to</p>
+<p>propose a model and minimize the free</p>
+<p>energy</p>
+<p>no matter what the application is but</p>
+<p>it's very uh</p>
+<p>appealing</p>
+<p>the problem for engineering is that this</p>
+<p>energy functional</p>
+<p>is a function of observations and</p>
+<p>observations are streaming data coming</p>
+<p>usually</p>
+<p>well could be at</p>
+<p>every millisecond so it's a highly time</p>
+<p>varying function</p>
+<p>and the number of latent variables let's</p>
+<p>say the space of latent variables is</p>
+<p>usually very high so we have a very high</p>
+<p>dimensional function that is time</p>
+<p>varying</p>
+<p>and</p>
+<p>we want to minimize that now the brain</p>
+<p>is very good at it right the brain has</p>
+<p>uh what is a 10 to the power of 14</p>
+<p>synapses 100 billion euros</p>
+<p>but a normal</p>
+<p>optimization library and model up or</p>
+<p>python will not cut it you cannot</p>
+<p>minimize a time varying function of</p>
+<p>thousand variables in</p>
+<p>matlab it's not going to work</p>
+<p>so we need something quite radical here</p>
+<p>and the idea we go with is not that</p>
+<p>radical again we just take inspiration</p>
+<p>from the brain right the brain is a</p>
+<p>network of message passing and turns out</p>
+<p>in my own field</p>
+<p>in signal processing</p>
+<p>or information theory to be exact</p>
+<p>this has been formalized there's a paper</p>
+<p>here by</p>
+<p>dave forney in 2001</p>
+<p>codes on graphs normal realizations he</p>
+<p>called it normal factor graphs but in</p>
+<p>honor of david forney there today</p>
+<p>they're called forney style factory</p>
+<p>graphs</p>
+<p>and</p>
+<p>so this is the origin of the factor</p>
+<p>graphs that we are talking about and a</p>
+<p>few years later</p>
+<p>hans andreia luliger at the university</p>
+<p>in series</p>
+<p>uh i have made this</p>
+<p>popular in the signal processing</p>
+<p>community and already around 2007 you</p>
+<p>see in in his papers these uh</p>
+<p>yeah these typical structures like this</p>
+<p>that we will show also later these are</p>
+<p>kalman filters</p>
+<p>this is really also what tristan talks</p>
+<p>about these kinds of structures so</p>
+<p>um this is uh</p>
+<p>what we want to do in our language is to</p>
+<p>combine what</p>
+<p>active inference from the inspire</p>
+<p>inspiration from the neuroscience</p>
+<p>community and combine it with what we</p>
+<p>know in signal processing and</p>
+<p>information theory about factor graphs</p>
+<p>and use these tools to to implement this</p>
+<p>uh so today</p>
+<p>we have two presentations one by text</p>
+<p>from the line</p>
+<p>uh on how to do message passing by</p>
+<p>forney lab forney lab is the toolbox</p>
+<p>that we wrote</p>
+<p>uh you know</p>
+<p>the name of course refers to the forney</p>
+<p>uh and thais will show how to do active</p>
+<p>influence with this toolbox</p>
+<p>then we're also working on a new version</p>
+<p>it's called reactive message passing and</p>
+<p>dmitry is the main person there and</p>
+<p>dimitri also</p>
+<p>i'll talk about that a bit</p>
+<p>and that's all for me</p>
+<p>um i'll give it back to you dan or maybe</p>
+<p>uh</p>
+<p>can continue what is your preference</p>
+<p>i'll</p>
+<p>stop sharing my screen</p>
+<p>see</p>
+<p>super interesting thanks a lot for the</p>
+<p>context and</p>
+<p>it will be awesome to hear from the</p>
+<p>authors with maybe any reflections on</p>
+<p>those general points you raised and how</p>
+<p>it gets applied in a really specific way</p>
+<p>because you brought up a ton of topics</p>
+<p>that we talk about all the time like the</p>
+<p>simplicity of one unified approach and</p>
+<p>the challenges of ongoing optimization</p>
+<p>problems and drawing inspiration from</p>
+<p>nature so great things i think we can</p>
+<p>just jump to whichever</p>
+<p>of the presentation</p>
+<p>you all prefer</p>
+<p>all right then i'll go ahead and try to</p>
+<p>share my screen</p>
+<p>see if that works</p>
+<p>[Music]</p>
+<p>select windows screen entire screen okay</p>
+<p>a lot more</p>
+<p>practical streams i think you can see my</p>
+<p>screen now yep</p>
+<p>you can make it look just large on your</p>
+<p>side and i'll resize it there we go</p>
+<p>looks great</p>
+<p>there we go all right</p>
+<p>well thanks again for having us can you</p>
+<p>click away i will be giving a little</p>
+<p>introduction sorry where it says you're</p>
+<p>sharing your um screen you could hide</p>
+<p>that little jitsi thing</p>
+<p>um and it's gone</p>
+<p>thank you</p>
+<p>so um yeah i'll be giving a little</p>
+<p>introduction on how to</p>
+<p>do message passing with phony lab in the</p>
+<p>context of active inference</p>
+<p>and to give a little bit of motivation</p>
+<p>for this talk um this is kind of the</p>
+<p>situation where we're interested in so</p>
+<p>we have some kind of an environment</p>
+<p>and we have an environmental process</p>
+<p>that's running in that environment and</p>
+<p>we want to develop an agent that has</p>
+<p>some purpose or does some purposeful</p>
+<p>task within that environment</p>
+<p>and the agent is allowed to</p>
+<p>send actions to the environment and</p>
+<p>manipulate that environment and it will</p>
+<p>receive observations</p>
+<p>and in the environment process there is</p>
+<p>some</p>
+<p>function rt that is running there and it</p>
+<p>might be simulation that we run that we</p>
+<p>interact with that or it might be even a</p>
+<p>real world process of which of course we</p>
+<p>don't really know what rt is running in</p>
+<p>the real world and somehow we want to</p>
+<p>build an agent that does something</p>
+<p>in that world</p>
+<p>so where do you start with that</p>
+<p>there's this paper from conant and ashby</p>
+<p>in the 1970s</p>
+<p>and they have an interesting theorem</p>
+<p>that says that</p>
+<p>every good regulator of a system must be</p>
+<p>a model of that system</p>
+<p>so</p>
+<p>that actually means that if you want to</p>
+<p>build an agent</p>
+<p>that regulates or</p>
+<p>manipulates our system the environment</p>
+<p>then we have to model that system</p>
+<p>so as an</p>
+<p>engineer we are in the business</p>
+<p>of building models</p>
+<p>generative models to be precise</p>
+<p>and this model represents our belief</p>
+<p>about</p>
+<p>how observations</p>
+<p>follow from our manipulations</p>
+<p>we represented by a function f that is a</p>
+<p>function of y the observations</p>
+<p>the controls u</p>
+<p>and also some latent state hidden</p>
+<p>variables x</p>
+<p>that act as intermediate between</p>
+<p>observations and controls</p>
+<p>now</p>
+<p>reasoning forward is one thing but in</p>
+<p>the end what we want to do is observe</p>
+<p>things and then propose controls that</p>
+<p>lead us to favorable states</p>
+<p>and that is where</p>
+<p>the idea of the free energy principle</p>
+<p>and active inference comes in</p>
+<p>so if we want</p>
+<p>to see this is the hypothesis so that if</p>
+<p>we want to build an agent that does</p>
+<p>something purposeful then we can do that</p>
+<p>by minimizing a free energy bound on</p>
+<p>surprise</p>
+<p>so we want to build an agent that avoids</p>
+<p>surprises and by that we can do bayesian</p>
+<p>inferences about that environment</p>
+<p>so we have to build some kind of free</p>
+<p>energy functional</p>
+<p>for the agent to optimize</p>
+<p>and by that duration inferences for</p>
+<p>actions and controls</p>
+<p>[Music]</p>
+<p>and we defined as for energy functional</p>
+<p>as a kl divergence between the</p>
+<p>generative model that we have</p>
+<p>and some kind of an approximate</p>
+<p>posterior that we postulate that we here</p>
+<p>define q t</p>
+<p>and minimizing this energy functional</p>
+<p>will then allow us to reason backwards</p>
+<p>from observations towards controls</p>
+<p>that's kind of the general idea</p>
+<p>and</p>
+<p>having postulated this i have choices to</p>
+<p>make</p>
+<p>so for example one big choice that i</p>
+<p>want to make is how do i choose my model</p>
+<p>how do i choose my f</p>
+<p>in such a way that</p>
+<p>is useful to me</p>
+<p>and also how do i choose my qut</p>
+<p>how do i choose the factorization of</p>
+<p>that</p>
+<p>such that i can make my inferences</p>
+<p>and</p>
+<p>that process is kind of a thing of trial</p>
+<p>and error</p>
+<p>and um</p>
+<p>as an engineer i want of course to build</p>
+<p>the best model that i possibly can</p>
+<p>but how how do i go as quickly as</p>
+<p>possible through a process of trial and</p>
+<p>error that gives me the best mark the</p>
+<p>best model</p>
+<p>and this is where the idea of a model</p>
+<p>design cycle comes in</p>
+<p>and this was again made popular by david</p>
+<p>bly</p>
+<p>in his paper in 2014 built compute</p>
+<p>critique repeat</p>
+<p>and he proposes a cycle where an</p>
+<p>engineer proposes a model</p>
+<p>and then with that model you want to</p>
+<p>infer your quantities of interest given</p>
+<p>data</p>
+<p>and if you have infer the model like</p>
+<p>that you want to criticize it</p>
+<p>and based upon</p>
+<p>well the performance that you have</p>
+<p>evaluated you want to reiterate rebuild</p>
+<p>your model</p>
+<p>infer</p>
+<p>again</p>
+<p>and see how well it then performs</p>
+<p>until you're satisfied and you can apply</p>
+<p>it in your agent in in practice maybe in</p>
+<p>a real world setting</p>
+<p>and then the challenge becomes then how</p>
+<p>do i go through this design cycle as</p>
+<p>quickly as possible</p>
+<p>so we want to be flexible we want to</p>
+<p>automate things</p>
+<p>and making model proposals itself is</p>
+<p>something</p>
+<p>that well you have to do as an as an</p>
+<p>engineer you have to come up with a</p>
+<p>proposal of</p>
+<p>how you believe the world functions</p>
+<p>but once you have that</p>
+<p>everything else can be automated</p>
+<p>you can infer these quantities by</p>
+<p>probabilistic programming you can</p>
+<p>evaluate the free energy as a measure of</p>
+<p>model performance</p>
+<p>[Music]</p>
+<p>and</p>
+<p>automating this cycle will be the key to</p>
+<p>making model proposals for an agent that</p>
+<p>will be useful in practice so you want</p>
+<p>to go through this as quickly as</p>
+<p>possible</p>
+<p>so that's why we choose a specific</p>
+<p>method we choose vector graphs</p>
+<p>to represent our factorized models</p>
+<p>because</p>
+<p>in a graph you can do manipulations you</p>
+<p>can add nodes delete nodes you can</p>
+<p>rewire things very</p>
+<p>quickly and once you have a graphical</p>
+<p>representation of your model you can do</p>
+<p>message passing on that graph in order</p>
+<p>to automate the inference</p>
+<p>and you can even evaluate free energy by</p>
+<p>local contributions in that</p>
+<p>graph so that is why we choose a</p>
+<p>graphical representation and that is why</p>
+<p>we want to do message passing because we</p>
+<p>want to design models quickly</p>
+<p>so that we can design effective agents</p>
+<p>now how do these graphs</p>
+<p>kind of work right how do you build an</p>
+<p>effective graph or what does that look</p>
+<p>like</p>
+<p>so we choose a specific representation</p>
+<p>of our model</p>
+<p>and this is an example where we have a</p>
+<p>generative model of five variables x1</p>
+<p>through x5</p>
+<p>and we have three factors f a b and c</p>
+<p>and here on the picture on the right is</p>
+<p>the graphical representation of that</p>
+<p>model</p>
+<p>and as you can see the edges correspond</p>
+<p>to the variables and the nodes</p>
+<p>correspond to the vectors</p>
+<p>and the edges are connected to the nodes</p>
+<p>of which</p>
+<p>the vectors are in arguments so here you</p>
+<p>see node fa which connects edges x1 and</p>
+<p>x2 well that is because x1 and x2 are</p>
+<p>arguments of fa</p>
+<p>same for fb and fc</p>
+<p>now</p>
+<p>how do we do inference in this graph</p>
+<p>so suppose that we observe x5</p>
+<p>which is indicated by this little solid</p>
+<p>square</p>
+<p>and we want to compute our belief over</p>
+<p>x2 given x5</p>
+<p>well what do you do well you marginalize</p>
+<p>everything and</p>
+<p>by marginalization i mean you integrate</p>
+<p>out every variable</p>
+<p>except the one that you're interested in</p>
+<p>so accept x2</p>
+<p>you integrate everything out and you you</p>
+<p>add this constraint that you observe x5</p>
+<p>now if you have a big model</p>
+<p>then this integration becomes very</p>
+<p>cumbersome because this here is</p>
+<p>you have here four variables of which to</p>
+<p>integrate</p>
+<p>so</p>
+<p>this room this this integration space</p>
+<p>that really explodes if you want to do</p>
+<p>this naively</p>
+<p>but you can be smart about this</p>
+<p>you can</p>
+<p>you can</p>
+<p>re-shuffle these integrals according to</p>
+<p>their respective terms</p>
+<p>so for example</p>
+<p>this integration over x5</p>
+<p>well there is only one factor where x5</p>
+<p>is an argument of</p>
+<p>so i can use the distributive rule to</p>
+<p>bring this integral inside</p>
+<p>so that i divide these integrals up into</p>
+<p>smaller parts which are manageable</p>
+<p>and this is where message passing comes</p>
+<p>from</p>
+<p>message passing is essentially solving</p>
+<p>these integrations one by one</p>
+<p>so i can first integra integrate out x</p>
+<p>x one here for example</p>
+<p>which</p>
+<p>as we say summarizes all the information</p>
+<p>inside this orange box and it gives us a</p>
+<p>message first message here that exits</p>
+<p>this orange box</p>
+<p>then it can continue for the bottom so</p>
+<p>integra integrate out x5</p>
+<p>and i get a second message</p>
+<p>and i can use this second message</p>
+<p>in the computation of the third message</p>
+<p>so this way you get</p>
+<p>a nested solution approach</p>
+<p>where i use the the the solution that i</p>
+<p>have for the message two in the</p>
+<p>computation of message three</p>
+<p>and you see that in the end</p>
+<p>the multiplication of these two</p>
+<p>colliding messages on the edge for x2</p>
+<p>will give me</p>
+<p>my proportional belief my proportional</p>
+<p>posterior</p>
+<p>over x2 given what i have observed</p>
+<p>so to give a little example of</p>
+<p>a specific node how that works</p>
+<p>here's an equality constraint node</p>
+<p>which we use</p>
+<p>as</p>
+<p>as a constraint</p>
+<p>to</p>
+<p>to constrain the beliefs upon the the</p>
+<p>adjacent edges to be equal</p>
+<p>um and what that does is that they will</p>
+<p>follow if we if we go through the math</p>
+<p>here</p>
+<p>um</p>
+<p>this is what the node function looks</p>
+<p>like so i say okay it's a function of</p>
+<p>three variables x y and z</p>
+<p>and i constrain z</p>
+<p>to be x and i constrain z also to be y</p>
+<p>so</p>
+<p>then x will also be y if i constrain</p>
+<p>those two to be the same</p>
+<p>so let's see if we can derive messages</p>
+<p>based on this</p>
+<p>so</p>
+<p>if i want to summarize the information</p>
+<p>into this orange box</p>
+<p>i can use the sub-product rule for that</p>
+<p>i have the two messages coming in here</p>
+<p>from the left and from the bottom</p>
+<p>message one and message 2.</p>
+<p>i multiplied that by the node function</p>
+<p>of the equality node and i want to</p>
+<p>perform this integration</p>
+<p>now i substitute</p>
+<p>this</p>
+<p>this node function here with dividing</p>
+<p>integration and then i can use the</p>
+<p>shifting property</p>
+<p>to</p>
+<p>kind of replace the arguments here of x</p>
+<p>and y with</p>
+<p>the arguments of z</p>
+<p>so what i have essentially done here is</p>
+<p>saying i can compute this message</p>
+<p>three by multiplying the two messages</p>
+<p>that are incoming from the left and from</p>
+<p>the bottom</p>
+<p>now if you squint your eyes a bit and</p>
+<p>you look uh you look through your eyes</p>
+<p>you can kind of recognize</p>
+<p>a proportional base rule in here</p>
+<p>so essentially you can say well if</p>
+<p>message three here represents my</p>
+<p>posterior</p>
+<p>then message one can represent my prior</p>
+<p>a message to my likelihood</p>
+<p>and then i have a proportional posterior</p>
+<p>message three and then i can pass on to</p>
+<p>the rest of my model</p>
+<p>and this node is also often used to kind</p>
+<p>of combine information that's coming</p>
+<p>from the left and from the bottom</p>
+<p>um</p>
+<p>so this is a very quick introduction to</p>
+<p>do message passing</p>
+<p>um we have derived lots of rules also</p>
+<p>from the literature also implemented a</p>
+<p>lot of rules that are already derived</p>
+<p>into uh into phony lab which is</p>
+<p>basically</p>
+<p>well a software problem programming</p>
+<p>suite that</p>
+<p>does the scheduling and</p>
+<p>this message computation for you</p>
+<p>so you don't have to think about that</p>
+<p>too much how to redistribute these</p>
+<p>integrals and how to derive</p>
+<p>well a lot of updates for specific nodes</p>
+<p>um so that's kind of</p>
+<p>the things that that we can we can</p>
+<p>automate</p>
+<p>uh on that side of the uh of the design</p>
+<p>cycle</p>
+<p>now</p>
+<p>other any questions about this because</p>
+<p>i'm going through this very quickly and</p>
+<p>what i'm going to do next is kind of</p>
+<p>want to walk through an example</p>
+<p>so maybe this is kind of a natural point</p>
+<p>where people have questions that they</p>
+<p>can kind of stop me and think hey you're</p>
+<p>going to fast here</p>
+<p>i think it'll be good to see the example</p>
+<p>and then we have some questions in the</p>
+<p>live chat and also anyone's welcome to</p>
+<p>add more</p>
+<p>all right sure sure</p>
+<p>so how do you do this in practice</p>
+<p>in an active inference context so this</p>
+<p>is a little example it's called the</p>
+<p>bayesian thermostat</p>
+<p>where we have an environment environment</p>
+<p>so</p>
+<p>where we have a heat source here on the</p>
+<p>left and we have a little car that can</p>
+<p>move around it can move away from the</p>
+<p>heat source or it can move towards the</p>
+<p>heat source</p>
+<p>now the position relative to heat source</p>
+<p>is what we call x</p>
+<p>and at every position there is a</p>
+<p>specific temperature</p>
+<p>um</p>
+<p>and temperature that we measure at a</p>
+<p>specific position is what we call y</p>
+<p>and we have a preference of being at a</p>
+<p>temperature of four</p>
+<p>y four i don't know it's something we</p>
+<p>choose</p>
+<p>now we control control this car by</p>
+<p>moving it left or right and our control</p>
+<p>this is the velocity that we move left</p>
+<p>or right with and it's called</p>
+<p>u</p>
+<p>so this is our environment</p>
+<p>and we want to build a model for that</p>
+<p>so</p>
+<p>in active interference what we want to</p>
+<p>do is</p>
+<p>we want to reason</p>
+<p>from states where we would like to be</p>
+<p>towards controls that we have to apply</p>
+<p>at this current at this current time in</p>
+<p>order to get there in the future</p>
+<p>so what we want to do is we want to</p>
+<p>reason forward from the current time</p>
+<p>time t</p>
+<p>up into</p>
+<p>some time horizon big t</p>
+<p>and</p>
+<p>in the future we want to consider</p>
+<p>how the agent will move</p>
+<p>and where we want that agent to be at</p>
+<p>that time and in the end we will want to</p>
+<p>be at a temperature of four</p>
+<p>and that's a state space model that</p>
+<p>represents our belief for how this agent</p>
+<p>will</p>
+<p>will</p>
+<p>move itself through the world</p>
+<p>so at time t we have an observation</p>
+<p>coming in of a specific temperature</p>
+<p>and maybe we have already made an action</p>
+<p>um and</p>
+<p>we say that</p>
+<p>the current state xt relates to the</p>
+<p>previous state and action that we have</p>
+<p>by by adding so basically ut here is a</p>
+<p>velocity that we add to our current</p>
+<p>position</p>
+<p>um in in one time step and then we get</p>
+<p>kind of our next position</p>
+<p>by just adding that and also applying</p>
+<p>some gaussian noise</p>
+<p>and so we have a state transition that</p>
+<p>is this additive with uh</p>
+<p>with duty saying i want to move forward</p>
+<p>to the left or four to the right um and</p>
+<p>then we add some gaussian noise saying</p>
+<p>okay we're kind of uncertain about</p>
+<p>um how this agent might move in the</p>
+<p>environment</p>
+<p>we have an idea about that but let's add</p>
+<p>some variants in order to</p>
+<p>account for some uncertainties</p>
+<p>and then we say here with this vertical</p>
+<p>line that if we have</p>
+<p>um an observation</p>
+<p>or if we have a position then it relates</p>
+<p>to an observation of the temperature</p>
+<p>well</p>
+<p>-1 it's kind of a rough guess it's just</p>
+<p>saying well</p>
+<p>if i move to the right if i move away</p>
+<p>from my heat source then my temperature</p>
+<p>will decline</p>
+<p>with a slope of minus one</p>
+<p>and it's kind of a really rough guess in</p>
+<p>the real world there will be a very nice</p>
+<p>temperature gradient that maybe will</p>
+<p>move like</p>
+<p>will move very slowly downwards</p>
+<p>um but we're just saying hey we don't</p>
+<p>really know what that is let's make a</p>
+<p>rough guess we have a belief this is our</p>
+<p>generative model our belief about the</p>
+<p>world let's just say that temperature</p>
+<p>decreases with position</p>
+<p>and again we're not very certain about</p>
+<p>that so let's again add</p>
+<p>some gaussian noise</p>
+<p>and now i extend this</p>
+<p>into the future so i say actually well i</p>
+<p>believe that in the future my</p>
+<p>environment will also evolve</p>
+<p>according to this</p>
+<p>but</p>
+<p>i also have some ideas about where i</p>
+<p>want to be</p>
+<p>and this is where gold priors come in</p>
+<p>that constrain my future observations of</p>
+<p>the temperature to be around this</p>
+<p>desired temperature of four</p>
+<p>and i'm saying then here with some added</p>
+<p>noise well um</p>
+<p>i want to be around four right it</p>
+<p>doesn't have to be exactly but i want to</p>
+<p>be pretty certain that um i will be</p>
+<p>around four at time t plus 1 and i will</p>
+<p>continue</p>
+<p>to remain there</p>
+<p>until</p>
+<p>sometime in the future</p>
+<p>now we have regenerative model</p>
+<p>and</p>
+<p>we can define our energy functional and</p>
+<p>we can solve this for energy functional</p>
+<p>by message passing on this graph</p>
+<p>and we pass these messages towards</p>
+<p>our next control</p>
+<p>because we're interested in inferring</p>
+<p>what we have to do next like from from</p>
+<p>from the next time</p>
+<p>um and this is where we can do message</p>
+<p>passing we can summarize all the</p>
+<p>information that we have from</p>
+<p>from the past so this will be an</p>
+<p>estimate of the current state of the</p>
+<p>agent</p>
+<p>and it will be biased by our beliefs</p>
+<p>about the future saying where we want to</p>
+<p>be</p>
+<p>and that will influence or determine</p>
+<p>which control that we will take</p>
+<p>at the present time</p>
+<p>or at the next time</p>
+<p>all the details of that this are</p>
+<p>are described in</p>
+<p>this paper from 2019</p>
+<p>by</p>
+<p>you can also see kind of how we apply</p>
+<p>that</p>
+<p>within the action perception loop</p>
+<p>and things like that</p>
+<p>because you will have to do this at</p>
+<p>every time t</p>
+<p>because your state estimate will change</p>
+<p>the word will change according to your</p>
+<p>actions so you will for every time you</p>
+<p>will have to recompute a new action for</p>
+<p>what you're going to do next</p>
+<p>um and this is kind of the</p>
+<p>the main idea now of course we don't</p>
+<p>want to do everything</p>
+<p>of this by hand so what we want to do is</p>
+<p>well we want to use a tool for that</p>
+<p>so now</p>
+<p>i'm going to show a little demo of how</p>
+<p>you would implement this</p>
+<p>um using the the formula probabilistic</p>
+<p>programming tool</p>
+<p>so let's see if i can</p>
+<p>open our little demo so this is uh</p>
+<p>this is readable actually or should i</p>
+<p>zoom in more</p>
+<p>um</p>
+<p>you can zoom in a little bit more</p>
+<p>maybe like this</p>
+<p>uh yeah i can resize it</p>
+<p>um</p>
+<p>that that's pretty good</p>
+<p>oh that's perfect</p>
+<p>that's pretty good yep thank you</p>
+<p>so this is um so so it's kind of set</p>
+<p>what what we want to do</p>
+<p>but so this is kind of our definition of</p>
+<p>the environment itself so this is the</p>
+<p>the real world</p>
+<p>well we have this this temperature</p>
+<p>gradient which is a very nice function</p>
+<p>so very smooth function</p>
+<p>where at the heat source we have a</p>
+<p>temperature of 100</p>
+<p>and it</p>
+<p>it goes down with</p>
+<p>with with position from the heat source</p>
+<p>[Music]</p>
+<p>so this is a real world we don't really</p>
+<p>know this so this is the one that we're</p>
+<p>going to approximate with this</p>
+<p>very rough minus one and then</p>
+<p>we'll see whether that will work on it</p>
+<p>now this is my wonderful ascii art that</p>
+<p>has now been resized of basically the</p>
+<p>model that i've just shown in the slides</p>
+<p>um</p>
+<p>and this here is our model definition so</p>
+<p>actually i have to zoom out a bit to</p>
+<p>make it more readable</p>
+<p>yeah so we want to build a graph for</p>
+<p>this right so um here we have our</p>
+<p>observation states controls</p>
+<p>and we define a prior belief</p>
+<p>about t minus one so where have we been</p>
+<p>which we're going to say is a gaussian</p>
+<p>and with some mean and some variance</p>
+<p>and then for every time into the future</p>
+<p>from uh from one until the horizon</p>
+<p>we will have a prior belief about</p>
+<p>controls which basically says well</p>
+<p>what am i allowed to do when i say okay</p>
+<p>well</p>
+<p>um</p>
+<p>i have a i'll have a gaucho prior about</p>
+<p>controls with</p>
+<p>a mean of zero</p>
+<p>i'll substitute that there and then</p>
+<p>maybe some variance</p>
+<p>and um</p>
+<p>here i say well i have my position of</p>
+<p>the agent it relates to my controls by</p>
+<p>just</p>
+<p>this addition</p>
+<p>um</p>
+<p>with some added precision gamma so this</p>
+<p>is our transition model</p>
+<p>this is horizontal</p>
+<p>line</p>
+<p>and this is our observation model which</p>
+<p>is very</p>
+<p>rough estimate minus one of the</p>
+<p>temperature gradient</p>
+<p>times current state and also some</p>
+<p>some some precision</p>
+<p>conservation precision</p>
+<p>and this represents my goal prior</p>
+<p>so note that i haven't really put in any</p>
+<p>specific values here yet i've just have</p>
+<p>placeholders for actual statistics and</p>
+<p>values that i'm going to put in</p>
+<p>because the actual derivation of my</p>
+<p>algorithm doesn't really depend upon the</p>
+<p>statistics it's just something that</p>
+<p>we can we can put in later</p>
+<p>so this is what i want to do build a</p>
+<p>free energy functional and the phony lab</p>
+<p>is actually just</p>
+<p>basically four lines of code</p>
+<p>um so this stereo factorization that</p>
+<p>defines my factorization for q</p>
+<p>saying that um</p>
+<p>i'm just going to have</p>
+<p>a joint variational distribution</p>
+<p>um over the entire graph</p>
+<p>i don't really subdivide it into a</p>
+<p>structure into a structured</p>
+<p>factorization some people are familiar</p>
+<p>with that</p>
+<p>um but just saying okay i just have this</p>
+<p>stereo factorization of the variational</p>
+<p>distribution to be my entire graph</p>
+<p>and never just one command</p>
+<p>i can derive a message passing algorithm</p>
+<p>that propagates all the messages towards</p>
+<p>control u2 which which which is the</p>
+<p>control for the next</p>
+<p>time step t plus one</p>
+<p>and i want to evaluate my free energy so</p>
+<p>also give me at the same time an</p>
+<p>algorithm that i can i can execute in</p>
+<p>order to evaluate my free energy</p>
+<p>and this line will convert this</p>
+<p>to</p>
+<p>two source code that i can then load in</p>
+<p>my environment</p>
+<p>and what this does is it builds a</p>
+<p>message passing algorithm for us</p>
+<p>so this is this this is the code that</p>
+<p>executes the message passing on our</p>
+<p>graph</p>
+<p>and here you can see that it computes</p>
+<p>all these messages</p>
+<p>by some product rules and other rules</p>
+<p>there we have pre-derived and we have</p>
+<p>implemented in fornilab</p>
+<p>and you can see that these messages they</p>
+<p>depend upon the statistics so this is</p>
+<p>for example the mean of</p>
+<p>of our prior</p>
+<p>over states and variance of a prior</p>
+<p>overstates</p>
+<p>and we have other messages that depend</p>
+<p>upon previous messages</p>
+<p>in the way that i explained message</p>
+<p>passing</p>
+<p>and this builds an entire list of in</p>
+<p>this case 26 messages</p>
+<p>and in the end we're interested in the</p>
+<p>marginal beliefs so the posterior</p>
+<p>marginal beliefs about about for example</p>
+<p>or controls</p>
+<p>and you get these beliefs by multiplying</p>
+<p>messages together so for example to get</p>
+<p>a new belief over the following control</p>
+<p>you multiply</p>
+<p>messages 9 and 25</p>
+<p>and you also recognize this from a</p>
+<p>little introduction past introduction</p>
+<p>where you have colliding messages on the</p>
+<p>edge that you multiply in order to get</p>
+<p>your posterior beliefs</p>
+<p>and that's what we return in the end</p>
+<p>that's what we're interested in</p>
+<p>so this is the execution of that</p>
+<p>algorithm</p>
+<p>and notice that we've made an entire</p>
+<p>schedule here and</p>
+<p>they can be very cumbersome</p>
+<p>can be very long very long schedule and</p>
+<p>so that makes it expensive maybe to load</p>
+<p>and to execute</p>
+<p>and dimitri has the solution for that</p>
+<p>and he'll explain that in a minute</p>
+<p>um so i'm very happy about building</p>
+<p>schedules</p>
+<p>and um dimitri not so much uh</p>
+<p>and he tries to find uh find a solution</p>
+<p>for them get rid of them</p>
+<p>um because in the end that will be the</p>
+<p>fastest</p>
+<p>to really don't</p>
+<p>have a schedule that not really had</p>
+<p>recipe but just cook by whatever is</p>
+<p>given to you</p>
+<p>so now we execute this algorithm in</p>
+<p>practice so this is our action</p>
+<p>perception loop for every time step</p>
+<p>we want to</p>
+<p>we want to act we want to evoke an</p>
+<p>action from the agent we want to execute</p>
+<p>that that that action in</p>
+<p>the uh in the environment so this is</p>
+<p>sending the action towards actual real</p>
+<p>world or kind of simulated world in this</p>
+<p>case and what we get from that is an</p>
+<p>observation</p>
+<p>and from our action observation we want</p>
+<p>to infer</p>
+<p>infer our new action</p>
+<p>and also return</p>
+<p>the variation of free energy</p>
+<p>um</p>
+<p>and then prepare for the next step so in</p>
+<p>every step we propose an action to the</p>
+<p>environment it actually gets executed we</p>
+<p>observe a new outcome</p>
+<p>we we infer new action</p>
+<p>um and we evaluate how well we did with</p>
+<p>that action</p>
+<p>and then you get well nice plots like</p>
+<p>this so</p>
+<p>this is the velocity of our agent</p>
+<p>we start at zero and you can see that it</p>
+<p>moves very quickly to the right</p>
+<p>um</p>
+<p>and then</p>
+<p>it also moves back a little bit um until</p>
+<p>the end comes to a stationary point more</p>
+<p>or</p>
+<p>less um and you can see actually here</p>
+<p>what it does so it starts out at a</p>
+<p>temperature of 20</p>
+<p>then it moves very quickly to the right</p>
+<p>away from the heat source</p>
+<p>it overshoots its mark</p>
+<p>and then it actually goes back and then</p>
+<p>it settles around this desired</p>
+<p>temperature of four that we have uh</p>
+<p>encoded by by our goal priors</p>
+<p>um so why does overshoot well our model</p>
+<p>of the environment wasn't perfect right</p>
+<p>we had this very rough estimate of minus</p>
+<p>minus one</p>
+<p>um and in the real world was this very</p>
+<p>nice smooth kind of complicated function</p>
+<p>um</p>
+<p>that has this kind of bell shape</p>
+<p>so even though</p>
+<p>our generative model of the environment</p>
+<p>wasn't perfect</p>
+<p>um in the end we paid by that pay for</p>
+<p>that by overshooting a little bit but</p>
+<p>still we were able to get to our desired</p>
+<p>state at the temperature of four so in</p>
+<p>the end</p>
+<p>it kind of worked pretty well</p>
+<p>and you can also see that the free</p>
+<p>energy of the agent also decreases with</p>
+<p>time so we start off at around a</p>
+<p>thousand so the scale's logarithmic here</p>
+<p>and it decreases very quickly um to our</p>
+<p>sum value it's</p>
+<p>rather rather low right and then we have</p>
+<p>some noise that that induces some</p>
+<p>unexpected changes or some unexpected</p>
+<p>surprises</p>
+<p>um so that's why you have these little</p>
+<p>ripples these little ripples here but in</p>
+<p>the end we're minimizing free energy and</p>
+<p>it's going it's decreasing drastically</p>
+<p>so we actually have this free energy</p>
+<p>minimizing agent</p>
+<p>um</p>
+<p>and yeah that's uh that's basically</p>
+<p>all i have the story and</p>
+<p>and the demo</p>
+<p>that was awesome thank you very much we</p>
+<p>can uh with screen share on or not ask a</p>
+<p>few of the questions from the live chat</p>
+<p>and also give people a few seconds to</p>
+<p>type more so</p>
+<p>i'm just going to jump into the</p>
+<p>questions</p>
+<p>first let me stop my screenshot</p>
+<p>great so we're still sharing the screen</p>
+<p>story um we see just the jitsies so go</p>
+<p>just click the screen share button again</p>
+<p>in jitsi</p>
+<p>so awesome thank you so the first</p>
+<p>question</p>
+<p>is from john and john writes how does</p>
+<p>the factor graph approach work if the</p>
+<p>graph structure is not known beforehand</p>
+<p>is structure learning possible</p>
+<p>uh yeah so so that's a good that's a</p>
+<p>good question so is structural learning</p>
+<p>possible in graphs like these</p>
+<p>um</p>
+<p>so that is actually something that is</p>
+<p>still an active</p>
+<p>field of research that would be awesome</p>
+<p>if you can automate also the structure</p>
+<p>learning of the graph itself</p>
+<p>but there are a lot of challenges there</p>
+<p>so how do you parameterize this graph</p>
+<p>structure um or and and how do you do</p>
+<p>how do you do that actually right what</p>
+<p>is your search space in terms of graphs</p>
+<p>how do you how do you learn node</p>
+<p>functions if you don't have a node</p>
+<p>function given for your graph right so</p>
+<p>these are all very difficult questions</p>
+<p>and you don't have a straightforward</p>
+<p>answer</p>
+<p>so so that's why</p>
+<p>this actual model design step in the</p>
+<p>design</p>
+<p>cycle itself</p>
+<p>is still kind of a creative process</p>
+<p>there is an engineer that has to come up</p>
+<p>with a model</p>
+<p>and as an engineer you also have to</p>
+<p>think about how to adjust that model if</p>
+<p>you're not satisfied with it</p>
+<p>so if free energy is still high after</p>
+<p>you run your agent well something is</p>
+<p>going on something is wrong with your</p>
+<p>model it's not an accurate</p>
+<p>representation of what is</p>
+<p>the environment and then you might</p>
+<p>adjust that how do you adjust that well</p>
+<p>currently it's still just trial and</p>
+<p>error so maybe you can say okay i think</p>
+<p>here is still something that i can</p>
+<p>improve maybe remove a node maybe the</p>
+<p>model is too complex</p>
+<p>[Music]</p>
+<p>but structure running in itself is um</p>
+<p>it is something that is</p>
+<p>also it can be addressed so there are</p>
+<p>there are methods like um like nested</p>
+<p>model comparison and things like that</p>
+<p>that you can do in fact graph so you can</p>
+<p>for example if you have a nested model</p>
+<p>compute savage dickey ratio and then</p>
+<p>kind of prune your model based upon that</p>
+<p>and so those are things that you can do</p>
+<p>to find a complex model and see what you</p>
+<p>can cut away</p>
+<p>but adding to that model is still</p>
+<p>difficult so once you've cut it away</p>
+<p>well how do you add yeah i i don't i</p>
+<p>don't really know so that's that's a</p>
+<p>good question and uh i don't have a very</p>
+<p>straightforward and switch you can</p>
+<p>from my rattling so yeah</p>
+<p>perhaps i can say something about it um</p>
+<p>i mean i i totally agree with uh with</p>
+<p>taste i mean generally</p>
+<p>when you design a</p>
+<p>system or signal processing system you</p>
+<p>have to design the</p>
+<p>structure uh you have to estimate the</p>
+<p>parameters and then you have to infer</p>
+<p>states right the states change very fast</p>
+<p>uh it leads to a common filter and and</p>
+<p>that's very</p>
+<p>well known in factor graphs</p>
+<p>then the next stage would be can we also</p>
+<p>over the long term learn parameters</p>
+<p>and our effectographs can do that pretty</p>
+<p>well</p>
+<p>now the the next stage in biology i mean</p>
+<p>we know the structure is also alert over</p>
+<p>even longer times right</p>
+<p>and so that's not working at the moment</p>
+<p>in formula you can compare like tests i</p>
+<p>says if you have two examples you can</p>
+<p>compare the free energy and just pick</p>
+<p>the best one</p>
+<p>but we are working on that and this is i</p>
+<p>mean we're taking again the lead by uh</p>
+<p>from carl's idea on bayesian model</p>
+<p>reduction but how to implement that in a</p>
+<p>factor graph is a research project so</p>
+<p>we're we're we're</p>
+<p>working on that and i'm not sure where</p>
+<p>that will end but that's our goal did</p>
+<p>you have phd position available bert so</p>
+<p>uh</p>
+<p>also to bring it back to the example of</p>
+<p>the</p>
+<p>motor car getting to an optimal</p>
+<p>temperature it's like if every hour you</p>
+<p>notice that there was a bump in the free</p>
+<p>energy then you go back to the drawing</p>
+<p>board and you you go to the people who</p>
+<p>are on that car in that area and ask</p>
+<p>well what happens every hour or maybe we</p>
+<p>do need to include this other source of</p>
+<p>information but the model that you had</p>
+<p>does its job so you could include the</p>
+<p>wallpaper and other features the room</p>
+<p>but that's kind of this art and science</p>
+<p>of engineering and that's why it's</p>
+<p>always interesting to work because</p>
+<p>often in research it's like let's finish</p>
+<p>the analysis</p>
+<p>but really there's this cycle that the</p>
+<p>entire</p>
+<p>model is embedded within</p>
+<p>that helps us always keep an eye out for</p>
+<p>those patterns that are</p>
+<p>precluding being captured by our current</p>
+<p>models</p>
+<p>here's just</p>
+<p>here's a second question from the chat</p>
+<p>how does the factor graph approach work</p>
+<p>if the goal temperature in this example</p>
+<p>is not defined beforehand can the goal</p>
+<p>be abstract so kind of a similar</p>
+<p>question but rather than structure</p>
+<p>learning how does preference and goal</p>
+<p>orientation arise</p>
+<p>again excellent question</p>
+<p>so</p>
+<p>that kind of</p>
+<p>relates to the question well who sets</p>
+<p>the goals</p>
+<p>or how do you set goals</p>
+<p>so</p>
+<p>yeah</p>
+<p>the plain answer to that is well it's an</p>
+<p>engineer that defines that</p>
+<p>um but it can also be a higher level</p>
+<p>agent</p>
+<p>that does inference and sets to his</p>
+<p>goals</p>
+<p>so then you get to kind of</p>
+<p>turtles all the way down</p>
+<p>argument in the sense well you can put</p>
+<p>layer upon layer upon layer upon layer</p>
+<p>and layers set goals and other layers as</p>
+<p>the goals for that layer etc etc</p>
+<p>um</p>
+<p>so how that will work in practice um</p>
+<p>yeah that's still again um</p>
+<p>active research area</p>
+<p>um</p>
+<p>but in the end it should come down to</p>
+<p>minimizing free energy</p>
+<p>so so that's kind of the central theme</p>
+<p>of this we want to we want to minimize</p>
+<p>free energy</p>
+<p>we do it by perception we do it by model</p>
+<p>learning</p>
+<p>um but also learning of the goals</p>
+<p>should be driven by minimizing free</p>
+<p>energy so you should choose the goals</p>
+<p>that minimize for energy well how do you</p>
+<p>do that</p>
+<p>i don't know</p>
+<p>you tell me right</p>
+<p>yeah</p>
+<p>one more question that was asked was how</p>
+<p>or does this integrate with graph</p>
+<p>databases</p>
+<p>or with large data sets is this</p>
+<p>something that scales or is already</p>
+<p>integrated to work with that kind of</p>
+<p>empirical data or</p>
+<p>what</p>
+<p>um i think it depends on what you mean</p>
+<p>by large data sets</p>
+<p>um</p>
+<p>so</p>
+<p>when i hear large data sets i usually</p>
+<p>think about big data things like that</p>
+<p>um</p>
+<p>so um</p>
+<p>this toolbox is specifically built for</p>
+<p>dynamic modeling</p>
+<p>right so</p>
+<p>now in the sense that you have a lot of</p>
+<p>features in your data but it's signal</p>
+<p>processing so data might come in very</p>
+<p>quickly</p>
+<p>and you have a model of how these data</p>
+<p>change over time</p>
+<p>so</p>
+<p>in that sense you want to do processing</p>
+<p>quickly so you want a lot you want</p>
+<p>velocity it's it's based on</p>
+<p>processing with velocity</p>
+<p>not processing with with volume as for</p>
+<p>example other problems programming</p>
+<p>toolboxes are excellent at like um</p>
+<p>by torch and things like that right</p>
+<p>sampling base toolboxes</p>
+<p>adword</p>
+<p>all great toolboxes if you have a volume</p>
+<p>in terms of data and you have for</p>
+<p>example an iid model that you want to uh</p>
+<p>that you want to fit</p>
+<p>um in our sense if we talk about large</p>
+<p>data we talk about volume so data that</p>
+<p>come in very quickly and we try to be</p>
+<p>good at that um phony lab</p>
+<p>is not yet that good at it to be</p>
+<p>honest um but reactive message passing</p>
+<p>is going to be</p>
+<p>the bomb</p>
+<p>at those kind of of data sets</p>
+<p>there's there's also a bit of that</p>
+<p>what we we really try to build these</p>
+<p>toolbox to build active influence agents</p>
+<p>and the idea that you just put these</p>
+<p>agents in an environment they make</p>
+<p>actions they select their own data</p>
+<p>so we don't really</p>
+<p>try to build a toolbox that is really</p>
+<p>good at just doing machine learning for</p>
+<p>a fixed set database</p>
+<p>but rather we try to build</p>
+<p>models that</p>
+<p>let's say dynamic models that can adapt</p>
+<p>and that can make actions and that can</p>
+<p>in real time process streaming data and</p>
+<p>and in that sense over time if you wait</p>
+<p>long enough yeah there's a lot of data</p>
+<p>streaming through it</p>
+<p>but it was sort of generated by you or</p>
+<p>at least affected by the agent itself</p>
+<p>right</p>
+<p>we don't try to optimize for</p>
+<p>for big fixed databases rather for just</p>
+<p>streaming data in an environment</p>
+<p>it's a really fascinating point because</p>
+<p>there's a lot of time dependent tasks</p>
+<p>like autonomous driving where it's like</p>
+<p>okay here's the 500 terabytes of video</p>
+<p>or here's this now give me the best</p>
+<p>possible score</p>
+<p>in a time snapshot and it's it's</p>
+<p>every single time with an active</p>
+<p>inference agent we're always including</p>
+<p>action and policy selection in the loop</p>
+<p>and so</p>
+<p>how how are we going to deal with that</p>
+<p>but that's why the inspiration from</p>
+<p>biological systems becomes so important</p>
+<p>it's kind of like when people go oh well</p>
+<p>the brain must have this processing</p>
+<p>power and then if it were a light bulb</p>
+<p>or if it was this kind of a silicone</p>
+<p>computer it would take up this much</p>
+<p>energy ergo's efficiency is such and</p>
+<p>such but it's predicated upon</p>
+<p>the kind of computers that we're used to</p>
+<p>seeing instead of kind of starting with</p>
+<p>what already exists and then looking for</p>
+<p>an answer that</p>
+<p>rests in that rather than how do we make</p>
+<p>lower power transistors so that we can</p>
+<p>fit them into the brain</p>
+<p>so</p>
+<p>awesome topics i think we're ready for</p>
+<p>the next presentation</p>
+<p>yeah hello everyone let me also share my</p>
+<p>screen uh for a second</p>
+<p>i hope it should work now looks good</p>
+<p>so can you see my slides now yes</p>
+<p>so okay so yeah hello again my name is</p>
+<p>mitri bhagav and i want to introduce you</p>
+<p>like this new reactive message passing</p>
+<p>based framework for bayesian imprints in</p>
+<p>july that we called reactive mp it's</p>
+<p>more like our future vision on solutions</p>
+<p>for active inference fornilab.jl is like</p>
+<p>more like mature</p>
+<p>framework it works and reactive mp is</p>
+<p>our research project for now</p>
+<p>and we are going to start with a</p>
+<p>question</p>
+<p>what is actually reactive message</p>
+<p>busting</p>
+<p>and in a</p>
+<p>in most senses it's the same message</p>
+<p>passing as a formula but re-implemented</p>
+<p>in reactive paradigm so basically the</p>
+<p>major issue with traditional approaches</p>
+<p>in porn lab</p>
+<p>is that enable in order to run inference</p>
+<p>for our model we need to create this</p>
+<p>shadow of messages in advance</p>
+<p>so we need to pre-analyze our graph we</p>
+<p>need to analyze everything basically and</p>
+<p>we do we need to do it every time we</p>
+<p>change our graph structure</p>
+<p>and if graph is big this graph analysis</p>
+<p>time and shadow creation may take a lot</p>
+<p>of extra time</p>
+<p>and it might be not a big issue but as</p>
+<p>an engineer you may want to test a lot</p>
+<p>of models until you're satisfied with</p>
+<p>the performance and this extra delays</p>
+<p>and shuttle creation times that they may</p>
+<p>be just a bit of annoying and reactive</p>
+<p>message passing last allows us to</p>
+<p>eliminate this predefined shadow and</p>
+<p>also it gives us a lot of other benefits</p>
+<p>and possible future research directions</p>
+<p>so instead of having instead of having a</p>
+<p>fixed shadow we cast our graph to like</p>
+<p>an event-based system</p>
+<p>where everything can react on its</p>
+<p>neighbor environment</p>
+<p>and in terms of message passing</p>
+<p>nodes react on incoming messages</p>
+<p>and also it reacts on updated posterior</p>
+<p>marginals over our parameters</p>
+<p>and the whole model becomes reactive we</p>
+<p>can also react on changes in this system</p>
+<p>and basically do whatever we want so we</p>
+<p>may perform some action</p>
+<p>based on new updated posterior marginals</p>
+<p>it also in message passing a natural</p>
+<p>starting point uh is uh our data or</p>
+<p>observations and the model itself reacts</p>
+<p>on changes in our data or in our priors</p>
+<p>and it also changes posteriors</p>
+<p>accordingly</p>
+<p>so here i outlined some extra benefits</p>
+<p>from the active message passive</p>
+<p>implementation so first of all we may</p>
+<p>outline biological plausibility</p>
+<p>because in nature we probably don't have</p>
+<p>any predefined scheduler for our</p>
+<p>information flowing on neurons in our</p>
+<p>brain for example</p>
+<p>uh they they are driven like by some</p>
+<p>chemistry like physics and in sense it's</p>
+<p>like also reactive system it constantly</p>
+<p>adapts the changes in an environment</p>
+<p>and also it reacts only if needed</p>
+<p>and in terms of message passing based</p>
+<p>inference it may be unnecessary to even</p>
+<p>react in some events like some messages</p>
+<p>if they aren't really important</p>
+<p>uh a fixed predefined shadow you're</p>
+<p>forced to do all computations even if</p>
+<p>you don't really need them</p>
+<p>uh another great benefit of craft</p>
+<p>message busting is that it scales very</p>
+<p>nicely for very big graph so it's more</p>
+<p>like an answer for previous question</p>
+<p>uh so it supports like hundreds of</p>
+<p>thousands of factor notes even millions</p>
+<p>are possible uh i will show you an</p>
+<p>example in a couple of minutes but just</p>
+<p>to give you a bit of context so in this</p>
+<p>plot we met we modeled just some moving</p>
+<p>objects with known line linear dynamics</p>
+<p>and the idea was to estimate the sedan</p>
+<p>states given noisy observations</p>
+<p>in this example i used kalman smoother</p>
+<p>with 50 000</p>
+<p>observations and this model contains</p>
+<p>roughly about 150 000 factor nodes</p>
+<p>so bayesian inference on this kind of a</p>
+<p>model is impossible on sampling based</p>
+<p>inference</p>
+<p>but with reactive message passing it</p>
+<p>takes only about like</p>
+<p>eight seconds on just a home macbook</p>
+<p>laptop</p>
+<p>so we can go further a bit and make</p>
+<p>reactive system robust and tolerant to</p>
+<p>some let's say failing nodes or missing</p>
+<p>data</p>
+<p>from let's say failed sensor</p>
+<p>we fix predefined shadow if something</p>
+<p>like this happens we need to do</p>
+<p>everything from scratch</p>
+<p>we need to recreate our model we need to</p>
+<p>again make a shadow</p>
+<p>and it will just take some time</p>
+<p>with reactive message busting we may</p>
+<p>just stop reacting on some missing data</p>
+<p>or maybe failing sensor</p>
+<p>and we can just wait for them to be</p>
+<p>available again</p>
+<p>it makes it very robust in that sense it</p>
+<p>also gives us an opportunity to change</p>
+<p>our graph structure in runtime</p>
+<p>and still perform inference without</p>
+<p>stopping</p>
+<p>so there's a slide about how we actually</p>
+<p>do that</p>
+<p>we use julia's main programming language</p>
+<p>in our lab roughly about a year and a</p>
+<p>half i believe ago</p>
+<p>we wrote the library for reactive</p>
+<p>programming in julia so it's completely</p>
+<p>unrelated to message passing in just a</p>
+<p>general framework for event based</p>
+<p>systems</p>
+<p>but that allowed us at the later point</p>
+<p>to build reactive mp.jl package</p>
+<p>and it implements free energy</p>
+<p>minimization by message passing</p>
+<p>we also introduced graphpl.gel package</p>
+<p>that is a high level and user friendly</p>
+<p>probabilistic model specification</p>
+<p>language that we use in our demos</p>
+<p>um yeah here i'm i</p>
+<p>want to show you an example</p>
+<p>just in a second</p>
+<p>so you can you can see my screen right</p>
+<p>yep maybe</p>
+<p>one little size larger or two</p>
+<p>i hope it will not break</p>
+<p>yeah make it a little larger and then if</p>
+<p>it looks unexpected you can pull back</p>
+<p>okay here we go</p>
+<p>better yep thank you</p>
+<p>so here is our example so assume we have</p>
+<p>some</p>
+<p>moving object uh</p>
+<p>it has some hidden states and just</p>
+<p>assume that we know it's linear dynamics</p>
+<p>for simplicity and we don't we don't</p>
+<p>have a direct access to its location but</p>
+<p>we have a noisy observation of this</p>
+<p>moving object</p>
+<p>and we wish to estimate the true</p>
+<p>location of this moving object by only</p>
+<p>observing its noisy measurements</p>
+<p>and we may use a linear multivariate</p>
+<p>gaussian state space model</p>
+<p>like equations looks like this these are</p>
+<p>equivalent notations they're the same</p>
+<p>and basically here we say that uh okay</p>
+<p>we have a state x at time step k</p>
+<p>and it depends only on the previous time</p>
+<p>step</p>
+<p>through some linear operator a and we</p>
+<p>also have a transition noise which is a</p>
+<p>gaussian with covariance matrix b and</p>
+<p>our observations are</p>
+<p>uh</p>
+<p>basically modeled also as a gaussian</p>
+<p>with</p>
+<p>covariance matrix q</p>
+<p>so basically this is our model</p>
+<p>and we can simply create a factor graph</p>
+<p>out of it</p>
+<p>and as you can see</p>
+<p>that</p>
+<p>our model specification resembles very</p>
+<p>closely to the equations defined above</p>
+<p>so here we have</p>
+<p>our state xk and it's modeled as like a</p>
+<p>gaussian over previous state with some</p>
+<p>let's say known covariance matrices</p>
+<p>and this is how we build our model</p>
+<p>and under the hood this</p>
+<p>code it generates factor graph</p>
+<p>uh and we can we can all later on use</p>
+<p>reactive</p>
+<p>mp.jail api to estimate hidden states of</p>
+<p>our system but here's our example it</p>
+<p>looks a bit off</p>
+<p>probably because i zoomed in a bit</p>
+<p>but it's fine i believe</p>
+<p>and in this example i perform a kalman</p>
+<p>smoother for 500 points and i just</p>
+<p>decomposed the</p>
+<p>trajectory of this moving object into</p>
+<p>two axis x-axis and y-axis</p>
+<p>and we can see that</p>
+<p>common smoother predicted</p>
+<p>like the real hidden states of our</p>
+<p>system correctly</p>
+<p>even though we have a lot of noise in</p>
+<p>our system so these blue dots it's like</p>
+<p>our noisy observations</p>
+<p>and we go we can go further with this so</p>
+<p>because our system is reactive we can we</p>
+<p>can estimate uh our our states in real</p>
+<p>time</p>
+<p>so here's our example let me try to run</p>
+<p>it</p>
+<p>uh i hope it looks smoothly on my</p>
+<p>computer it's actually very smooth like</p>
+<p>but i i know that maybe</p>
+<p>recording is not that smooth like screen</p>
+<p>sharing but here in this example what we</p>
+<p>see is that okay we have an infinite</p>
+<p>data stream of a moving object the blue</p>
+<p>is a real one and the red is an</p>
+<p>estimated one and we can see that uh</p>
+<p>yeah let me reload it because it's kind</p>
+<p>of off</p>
+<p>and we can see that</p>
+<p>reactive mp is able to perform and</p>
+<p>bayesian inference in real time</p>
+<p>and it actually adapts to changes in the</p>
+<p>environment and also changes the</p>
+<p>posterior over the current estimated</p>
+<p>state</p>
+<p>and we can go even further you probably</p>
+<p>notice this orange line here just</p>
+<p>inactive for now but we can also</p>
+<p>incorporate a prediction</p>
+<p>for this model so we can just we can</p>
+<p>just extend a little bit our graph</p>
+<p>and we can also predict future state of</p>
+<p>our system</p>
+<p>like this</p>
+<p>so now in this example i</p>
+<p>do bayesian inference in real time and i</p>
+<p>also predict the future state of my</p>
+<p>system like in orange</p>
+<p>and you can see that prediction also</p>
+<p>adapts to the new observations</p>
+<p>and yeah it changes basically its future</p>
+<p>beliefs</p>
+<p>over future states</p>
+<p>uh yeah</p>
+<p>let me stop it and continue with the</p>
+<p>presentation</p>
+<p>so um</p>
+<p>yeah i'm going to talk about</p>
+<p>like when reactive message passing is</p>
+<p>available actually it's already working</p>
+<p>uh we have a fully working stable</p>
+<p>backhand and api for exact and</p>
+<p>variational bayesian inference we also</p>
+<p>support expectation propagation but that</p>
+<p>api is not yet stable so it may change</p>
+<p>we support for now only conjugate models</p>
+<p>from exponential family</p>
+<p>we support extra constraints for</p>
+<p>variation optimization procedure</p>
+<p>such that form or factorization</p>
+<p>constraint</p>
+<p>so rocket.jl library it naturally</p>
+<p>supports infinite data streams for</p>
+<p>example from an internet or from some</p>
+<p>sensor</p>
+<p>and framework itself is able to handle</p>
+<p>missing data</p>
+<p>but that</p>
+<p>api is also not yet stable</p>
+<p>here</p>
+<p>some of our future plans for this</p>
+<p>platform so we want to extend it to</p>
+<p>support non-conjugate models as well</p>
+<p>basically foreign lab already supports</p>
+<p>it</p>
+<p>we just need to carefully port all of</p>
+<p>the available existing functionality</p>
+<p>from foreign lab to reactive mp</p>
+<p>and we also want to integrate with other</p>
+<p>probabilistic programming libraries that</p>
+<p>exists in july community</p>
+<p>reactive message passing gives us an</p>
+<p>opportunity to</p>
+<p>try to integrate parallel inference</p>
+<p>and react in different parts of the</p>
+<p>graph simultaneously using like</p>
+<p>multi-core capabilities of our cpus</p>
+<p>uh</p>
+<p>we want to extend</p>
+<p>graph ppl to support modular model</p>
+<p>specification for now it's unfortunately</p>
+<p>not possible</p>
+<p>also reactive message passing naturally</p>
+<p>gives us an opportunity</p>
+<p>to run inference where different data</p>
+<p>streams have different update rates</p>
+<p>um what</p>
+<p>that what i was talking about in the</p>
+<p>very beginning about robustness but it's</p>
+<p>also interesting how far can we push it</p>
+<p>and maybe in it's possible to</p>
+<p>automatically adapt model's graph</p>
+<p>structure in runtime based on free</p>
+<p>energy</p>
+<p>but it's like a research project we</p>
+<p>don't really know if it's possible or</p>
+<p>not for now</p>
+<p>uh we we have some ideas about</p>
+<p>interactive visualization for message</p>
+<p>passing based algorithms</p>
+<p>and free energy minimization</p>
+<p>visualization</p>
+<p>and eventually we we are planning to</p>
+<p>release this new platform as a stable</p>
+<p>version of formula possibly</p>
+<p>in 2.0</p>
+<p>and that basically is everything i</p>
+<p>wanted to show you in my slides and</p>
+<p>thank you for your attention i would</p>
+<p>have be happy to answer your questions</p>
+<p>awesome first question was is there a</p>
+<p>paper on this</p>
+<p>reactivemp.jl or how does that work</p>
+<p>there is but it's in progress so</p>
+<p>it's not publicly available but</p>
+<p>we are working on that so there will be</p>
+<p>eventually paper about all of this</p>
+<p>approach i will describe everything how</p>
+<p>it works and how we use it so yeah i</p>
+<p>mean of course if anybody writes us an</p>
+<p>email who wants an early copy of the</p>
+<p>paper i'll be happy to share it if it</p>
+<p>stays</p>
+<p>confidential i'd be happy to share it</p>
+<p>it's very</p>
+<p>interesting</p>
+<p>development maybe to the other authors</p>
+<p>like</p>
+<p>what</p>
+<p>other um</p>
+<p>epochs of forney lab were there</p>
+<p>um</p>
+<p>how did we get with to this reactive</p>
+<p>programming paradigm and also it seems</p>
+<p>like you did a lot of the foundational</p>
+<p>work in the lab</p>
+<p>on the reactive programming</p>
+<p>was that just in the julia</p>
+<p>implementation or in the more conceptual</p>
+<p>grounding</p>
+<p>um</p>
+<p>yeah we did actually really a lot of</p>
+<p>work to support reactive programming in</p>
+<p>julia basically julia is is like a young</p>
+<p>language and it has no</p>
+<p>like good capabilities to run reactive</p>
+<p>based like systems so basically we build</p>
+<p>it from scratch</p>
+<p>yeah but we we used a lot of uh like</p>
+<p>let's say</p>
+<p>ideas from other programming languages</p>
+<p>that we had experience with</p>
+<p>i mean i know that the active influence</p>
+<p>community uh</p>
+<p>matlab and matlab is fantastic</p>
+<p>but for</p>
+<p>for really for if you want real time</p>
+<p>processing of streaming data then julia</p>
+<p>is a very good</p>
+<p>is a better option because julia is</p>
+<p>almost has the syntax of matlab from a</p>
+<p>user's</p>
+<p>viewpoint</p>
+<p>but out of the box it's almost as fast</p>
+<p>as c</p>
+<p>and so it was a better combination for</p>
+<p>if you are in engineering and you</p>
+<p>actually want to build</p>
+<p>systems that run in real time you want</p>
+<p>to make demos and julia is a better</p>
+<p>language also uh dimitri also makes use</p>
+<p>of some really advanced stuff in julia</p>
+<p>it's called multiple dispatch but it</p>
+<p>doesn't matter</p>
+<p>what it is but it's it's quite advanced</p>
+<p>and it's not</p>
+<p>uh available in in matlab but it's</p>
+<p>extremely useful for what we do</p>
+<p>for do with the</p>
+<p>toolbox it's it seems to be</p>
+<p>if you look at a graph and message</p>
+<p>passing it see it seems to be like oh</p>
+<p>this is actually not so hard to</p>
+<p>implement</p>
+<p>but there's a reason why there are</p>
+<p>extremely few toolboxes for factor</p>
+<p>graphs okay microsoft has built one</p>
+<p>infer.net and it's it's great but it's</p>
+<p>not really a real-time toolbox</p>
+<p>um and so as far as we know we are</p>
+<p>there's not much competition at the</p>
+<p>moment for us</p>
+<p>not that our toolbox is very advanced</p>
+<p>yet but</p>
+<p>um i don't see a lot of people working</p>
+<p>on this i see a lot of people working on</p>
+<p>multicarter sampling but multi-car</p>
+<p>sampling will not work for the</p>
+<p>sizes of systems and for the real-time</p>
+<p>data streams that we want to do with</p>
+<p>active inference right we are</p>
+<p>working with systems where we want to</p>
+<p>make actions and influence our data</p>
+<p>so this is a real time system</p>
+<p>um</p>
+<p>and so we have to go to</p>
+<p>want to actually scale up we have to go</p>
+<p>to</p>
+<p>build a really high quality professional</p>
+<p>toolbox</p>
+<p>that automates message passing i hope</p>
+<p>this will be uh one of those toolboxes</p>
+<p>and hopefully will also be other</p>
+<p>toolboxes but</p>
+<p>yeah that's why we're doing this</p>
+<p>very interesting answer</p>
+<p>how has the</p>
+<p>dialogue between</p>
+<p>the math and programming and computer</p>
+<p>science side and then the active</p>
+<p>inference side been like what has</p>
+<p>each side kind of contributed because it</p>
+<p>sounds like some of those real time</p>
+<p>insights of active inference are kind of</p>
+<p>propagating back to the design of</p>
+<p>algorithms and then</p>
+<p>we we see both directions so how has</p>
+<p>that played out maybe for any of each or</p>
+<p>each of you</p>
+<p>i can also answer maybe this question</p>
+<p>from my point of view i mostly like</p>
+<p>doing programming uh</p>
+<p>but i still learn something new every</p>
+<p>time because we like in this constant uh</p>
+<p>dialogue with</p>
+<p>math guys in our lab let's say and i</p>
+<p>learn something new every day and of</p>
+<p>course it reflects like our design</p>
+<p>choices for our software as well</p>
+<p>so it's kind of but sometimes it's it's</p>
+<p>very hard to fit this high level</p>
+<p>mathematical ideas to the actual</p>
+<p>implementation</p>
+<p>and also it's very hard to make it</p>
+<p>efficient</p>
+<p>so</p>
+<p>yeah we are not uh we're not done with</p>
+<p>this um i mean the toolbox is available</p>
+<p>for anybody and and</p>
+<p>all the nice territory examples the</p>
+<p>basic thermostat the tic tac toe and it</p>
+<p>all works very smooth</p>
+<p>um</p>
+<p>our</p>
+<p>hope is that with reactive message</p>
+<p>passing we can actually</p>
+<p>you know get a</p>
+<p>path to scaling this up to to serious</p>
+<p>applications</p>
+<p>and that i mean that's real i mean we're</p>
+<p>an engineering group we want to build</p>
+<p>systems that really do something</p>
+<p>useful i also work for a hearing aid</p>
+<p>company so i want to build real time</p>
+<p>audio processing algorithms</p>
+<p>and</p>
+<p>and others may want to use this for</p>
+<p>robotics so</p>
+<p>yeah but and that's not going to work in</p>
+<p>in real time model up it's not going to</p>
+<p>work</p>
+<p>um yeah a bit with all the multi-card or</p>
+<p>something so</p>
+<p>this is our effort</p>
+<p>and it's quite</p>
+<p>it's takes a long time because it's very</p>
+<p>multidisciplinary efforts right we have</p>
+<p>in in my group we have a mathematicians</p>
+<p>and</p>
+<p>neuroscientists and</p>
+<p>computer scientists because it's it's</p>
+<p>it's it's difficult</p>
+<p>there's a lot of different</p>
+<p>expertises</p>
+<p>that that you need to build a good</p>
+<p>toolbox for active inference</p>
+<p>i think because it's so difficult there</p>
+<p>is a lot of like</p>
+<p>um like cross</p>
+<p>fertilization between the active</p>
+<p>inference community and the engineering</p>
+<p>that we do</p>
+<p>the community is mostly interested in</p>
+<p>explaining biological systems right the</p>
+<p>the energy principle and active</p>
+<p>inference as</p>
+<p>a model for biology</p>
+<p>and i think that's very interesting</p>
+<p>because while nature has a certain way</p>
+<p>of doing things</p>
+<p>efficiently um</p>
+<p>and if this is a model for that</p>
+<p>then it's also a good idea to take that</p>
+<p>to engineering</p>
+<p>and that's kind of our recommend so we</p>
+<p>kind of take the ideas that are</p>
+<p>available in the active inference</p>
+<p>community and where they explain brains</p>
+<p>and think about brains</p>
+<p>and think hey how can we take these</p>
+<p>ideas</p>
+<p>and</p>
+<p>use them to build an engineering system</p>
+<p>and i think that's kind of the main</p>
+<p>yeah the main interaction between it and</p>
+<p>hopefully then we build tools that</p>
+<p>the community can also use then in their</p>
+<p>research eventually</p>
+<p>what that made me think about was</p>
+<p>it's really a reframing of some of the</p>
+<p>main challenges like seeing signal</p>
+<p>processing as a real-time event or</p>
+<p>seeing</p>
+<p>the causal relationships between action</p>
+<p>and future data all these kinds of</p>
+<p>reframings of the problem it's not like</p>
+<p>the active inference</p>
+<p>algorithms</p>
+<p>take massive matrix uh calculations to</p>
+<p>do per se they can be very simple or not</p>
+<p>but it's actually that reframing in the</p>
+<p>the embedding of action within every</p>
+<p>step</p>
+<p>that then ends up solving the scaling</p>
+<p>some of the scaling challenges some of</p>
+<p>the resilience challenges because like</p>
+<p>resilience of a</p>
+<p>transportation network in a city they</p>
+<p>would do</p>
+<p>sampling or they would take something</p>
+<p>that's an unfolding dynamic process and</p>
+<p>then try to roll out a million</p>
+<p>iterations of it statically</p>
+<p>so it's again it's not that the</p>
+<p>calculations</p>
+<p>inside of the loop have to be</p>
+<p>challenging it's just a reframing of</p>
+<p>prioritizing action</p>
+<p>ended up</p>
+<p>going down these roads of scaling and</p>
+<p>real-time capacity</p>
+<p>yeah i i like that</p>
+<p>the thought um perhaps i can say</p>
+<p>something about it in the</p>
+<p>context of what i work on because i work</p>
+<p>on designing basically i'm a hearing aid</p>
+<p>engineer i work on</p>
+<p>[Music]</p>
+<p>and if you ask a hearing aid engineer</p>
+<p>signal processing engineer so what is</p>
+<p>your task</p>
+<p>well our task is to build the best</p>
+<p>hearing aid algorithm</p>
+<p>and</p>
+<p>so</p>
+<p>then what happens is that</p>
+<p>a hearing aid client goes to the store</p>
+<p>and buys a hearing aid usually</p>
+<p>it's very happy and goes out and then</p>
+<p>two weeks later sits in the restaurant i</p>
+<p>cannot understand</p>
+<p>her conversation partner because</p>
+<p>there's noise and this wasn't expected</p>
+<p>and there's nothing she can do</p>
+<p>because you can't ask a client a hearing</p>
+<p>aid client to</p>
+<p>to</p>
+<p>fiddle with hearing aid parameters so if</p>
+<p>this happens</p>
+<p>a few times</p>
+<p>um then she throws or she puts her</p>
+<p>hearing aid in the drawer and this uh</p>
+<p>indeed about 10 20 percent of hearing</p>
+<p>aids end up in the drawer they're very</p>
+<p>expensive and</p>
+<p>[Music]</p>
+<p>20</p>
+<p>ends up not being used a really</p>
+<p>sad statistic</p>
+<p>so rather</p>
+<p>you can you can turn it around and say</p>
+<p>okay what is the real hearing aid design</p>
+<p>problem the real hearing aid design</p>
+<p>problem is send somebody out with any</p>
+<p>hearing aid but what do you do when</p>
+<p>she's unhappy in the field</p>
+<p>at in the restaurant</p>
+<p>and what we want to build is an agent</p>
+<p>that will</p>
+<p>then so she just slaps her wrist raceway</p>
+<p>i'm happy and now this agent needs to</p>
+<p>make an action and give her new</p>
+<p>parameter settings that are</p>
+<p>the most interesting for her and and and</p>
+<p>and the in the best</p>
+<p>compromise between information seeking</p>
+<p>and goal-driven gold riven being making</p>
+<p>her happy</p>
+<p>so</p>
+<p>hearing a design from my viewpoint now</p>
+<p>is just build an agent that will</p>
+<p>make actions make hearing aid proposals</p>
+<p>when she's unhappy</p>
+<p>and if she</p>
+<p>right she's unhappy and then hearing a</p>
+<p>mixed proposal says no that's not good</p>
+<p>well the agent gives another proposal</p>
+<p>and that is okay that's better and then</p>
+<p>we move on and maybe a week later the</p>
+<p>same event and this goes on continually</p>
+<p>but there is at least</p>
+<p>a procedure to keep moving on to keep</p>
+<p>improving over time right</p>
+<p>so that's</p>
+<p>the the real thing of design is the is</p>
+<p>then the the action in the field in c2</p>
+<p>which is very different from what's</p>
+<p>currently happening which is hearing aid</p>
+<p>engineers sitting at the desk</p>
+<p>with model up not in the environment</p>
+<p>so that's a it's it's a paradigm shift</p>
+<p>and active inference agents</p>
+<p>can maybe make that happen and could</p>
+<p>really</p>
+<p>i think uh</p>
+<p>create a pivoting point for something</p>
+<p>like signal processing design</p>
+<p>which is uh</p>
+<p>you know it's not something that you</p>
+<p>think about when you're a neuroscientist</p>
+<p>but this could really mean something big</p>
+<p>for engineering</p>
+<p>and not just for signal processing but</p>
+<p>also in different engineering</p>
+<p>disciplines and</p>
+<p>so that's why i think over time you'll</p>
+<p>see more and more people coming from</p>
+<p>different fields</p>
+<p>getting an interest in this uh</p>
+<p>active inference and the free energy</p>
+<p>principle</p>
+<p>uh even even uh non</p>
+<p>the not neuroscientists right but</p>
+<p>engineers yeah</p>
+<p>yeah cool we hope so and and that really</p>
+<p>reminds me of the pragmatic turn</p>
+<p>which is it's a little bit like a</p>
+<p>horseshoe theory with the engineers and</p>
+<p>the philosophers</p>
+<p>often talking about pragmatism</p>
+<p>in different ways different communities</p>
+<p>different tools</p>
+<p>and now there's a way to kind of close</p>
+<p>that gap or at least map across it</p>
+<p>where we can embed some of those</p>
+<p>insights about</p>
+<p>really an activism the role of design</p>
+<p>science anticipatory design science with</p>
+<p>take it or leave it philosophy or</p>
+<p>there's the toolkit to develop</p>
+<p>maybe it's interesting five years after</p>
+<p>working with a toolkit or maybe five</p>
+<p>years of philosophy and then you're</p>
+<p>curious about the toolkit</p>
+<p>so one</p>
+<p>question was</p>
+<p>how do these graphs account for</p>
+<p>temporally deep models how are those</p>
+<p>specified</p>
+<p>or what</p>
+<p>make what is different about the graph</p>
+<p>because it's just calculating the next</p>
+<p>action to take in the examples that you</p>
+<p>provided</p>
+<p>maybe guys you can show your graph again</p>
+<p>how how the future is represented</p>
+<p>um and how do you add temporal thickness</p>
+<p>to that for example that's kind of so if</p>
+<p>you have if you have a graph</p>
+<p>like</p>
+<p>chair screen yes</p>
+<p>if you have a graph like this then how</p>
+<p>do you add temporal thickness for</p>
+<p>example</p>
+<p>um that's that's just about adding</p>
+<p>layers</p>
+<p>so</p>
+<p>what is shown here is one layer</p>
+<p>and this layer</p>
+<p>it acts</p>
+<p>at a certain clock time you know</p>
+<p>observations come in discretely</p>
+<p>um</p>
+<p>but you might have a layer above this</p>
+<p>that is somehow connected to this layer</p>
+<p>below</p>
+<p>that acts at a higher temporal time</p>
+<p>scale</p>
+<p>so it evolves slower</p>
+<p>but it regulates or influences the</p>
+<p>parameters</p>
+<p>of for example a transition model here</p>
+<p>or an observation model here</p>
+<p>so you get a time varying</p>
+<p>observation model that is influenced</p>
+<p>by</p>
+<p>a slower evolving layer</p>
+<p>on top of that you can get an even</p>
+<p>slower evolving layer right and that's</p>
+<p>that's the way</p>
+<p>you can build hierarchies</p>
+<p>um</p>
+<p>and actually there's um also a pg</p>
+<p>student in our group ismael senos who</p>
+<p>has done some very interesting work on</p>
+<p>that and he has investigated how you</p>
+<p>make hierarchical</p>
+<p>gaussian filters um so hierarchical</p>
+<p>gaussian systems where you have one top</p>
+<p>layer influencing the variance</p>
+<p>of the transition model of the layer</p>
+<p>below</p>
+<p>and</p>
+<p>you can see that you can get</p>
+<p>can model very natural signals with that</p>
+<p>so so in nature you have you have</p>
+<p>signals that are time varying the</p>
+<p>statistics there their time varying and</p>
+<p>the statistics of those models</p>
+<p>are time varying</p>
+<p>so a hierarchical model in that sense</p>
+<p>can be very useful for that and of</p>
+<p>course that's that's yeah of course</p>
+<p>also how our brains are structured so</p>
+<p>again there you have this inspiration</p>
+<p>from nature</p>
+<p>um on how to structure</p>
+<p>the models that we try to build</p>
+<p>um</p>
+<p>with vector graphs</p>
+<p>at least in theory they should be pretty</p>
+<p>easy</p>
+<p>because you can just connect them you</p>
+<p>can connect layer on top of that and and</p>
+<p>see how it behaves</p>
+<p>and eventually the complexity of your</p>
+<p>model will become very high and you will</p>
+<p>get penalized for that automatically so</p>
+<p>there will be a cutoff point</p>
+<p>um given your data and that will be the</p>
+<p>optimal amount of layers that you need</p>
+<p>in order to explain away all the</p>
+<p>variants</p>
+<p>that you observe</p>
+<p>so so that's kind of how we think about</p>
+<p>temporal thickness</p>
+<p>and and</p>
+<p>time dependence and dynamical models</p>
+<p>like these</p>
+<p>then can i share my screen also yep</p>
+<p>sure okay yeah let's see</p>
+<p>because this um awesome</p>
+<p>yeah</p>
+<p>this is a graph from a paper</p>
+<p>a few years back uh in frontiers</p>
+<p>um it's called i think uh</p>
+<p>deep temporal models inspect factor</p>
+<p>graphs or something</p>
+<p>and here you see a three layer system i</p>
+<p>mean don't bother about the details now</p>
+<p>but here you see at the top layer just</p>
+<p>just basically has one one section one</p>
+<p>time step</p>
+<p>and in that time step at the top layer</p>
+<p>you have</p>
+<p>two</p>
+<p>observations or two steps at the</p>
+<p>middleware</p>
+<p>i need uh yeah</p>
+<p>i'm not sure if you can see my uh</p>
+<p>okay and then again for the let's say</p>
+<p>the third layer whenever the middle</p>
+<p>layer tips takes one step we have two</p>
+<p>steps here so so there is sort of a</p>
+<p>finer granularity</p>
+<p>at each layer right and so we can build</p>
+<p>hierarchical</p>
+<p>uh models really and uh so we're doing</p>
+<p>that also in uh i mean also yeah if you</p>
+<p>you</p>
+<p>you look at some of the papers on our</p>
+<p>website you'll find a lot of babies on</p>
+<p>the hierarchical gaussian filter from</p>
+<p>chris matisse we've implemented that</p>
+<p>in in</p>
+<p>but also um</p>
+<p>i mean you can also do it for active</p>
+<p>influence things like uh and it will</p>
+<p>look</p>
+<p>like this uh</p>
+<p>thomas pyre has also graphs like this in</p>
+<p>some of his papers</p>
+<p>very interesting and we see a lot of the</p>
+<p>same variables like g</p>
+<p>d b</p>
+<p>like we can it's kind of a different</p>
+<p>representation of active inference so</p>
+<p>yeah</p>
+<p>this is kind of also going back i think</p>
+<p>to the earlier frontiers paper what are</p>
+<p>some of the big equivalencies</p>
+<p>or kind of like airtight mappings</p>
+<p>from into</p>
+<p>forney factor graphs</p>
+<p>because there's probably some broad</p>
+<p>areas of application</p>
+<p>that could almost be hot swapped for</p>
+<p>this underlying it perhaps</p>
+<p>so what like are the equivalencies with</p>
+<p>just bayesian graphs in general versus</p>
+<p>factor graphs versus other</p>
+<p>topics at that level</p>
+<p>i think a foreign style vector graph or</p>
+<p>a bipartite graph or a beijing network</p>
+<p>they aren't really different</p>
+<p>they can be used as</p>
+<p>they're just a representation</p>
+<p>of a factorized model</p>
+<p>and the way you represent that</p>
+<p>can have an impact about how you think</p>
+<p>about those models</p>
+<p>so for example if you choose a 4-install</p>
+<p>effective graph representation it's very</p>
+<p>suited for signal processing because you</p>
+<p>kind of can see these messages as</p>
+<p>signals that flow over your graph</p>
+<p>so for us as engineers</p>
+<p>this is a very intuitive representation</p>
+<p>in bayesian networks it's a bit more</p>
+<p>the model representation itself is more</p>
+<p>compact in that sense that you only have</p>
+<p>variable notes and you see how they</p>
+<p>relate so it gives you a good idea of</p>
+<p>model structure</p>
+<p>so it can be very nice to</p>
+<p>have a quick overview of model like that</p>
+<p>and then you have for example a</p>
+<p>bipartite graph which also shows a</p>
+<p>relation between variables as an</p>
+<p>additional kind of</p>
+<p>vector node in between</p>
+<p>um and it goes it gives you a bit more</p>
+<p>granularity on how these are connected</p>
+<p>and gives you room to talk about well</p>
+<p>what is the relationship between these</p>
+<p>variables</p>
+<p>and so in the end they're equivalent</p>
+<p>you can take one model and represent it</p>
+<p>in three different ways maybe even more</p>
+<p>but i think it does impact the way how</p>
+<p>you think</p>
+<p>or how you think about these models so</p>
+<p>um</p>
+<p>that</p>
+<p>that usually comes up when writing a</p>
+<p>paper</p>
+<p>and then you have to think okay what is</p>
+<p>actually the best representation for my</p>
+<p>idea</p>
+<p>sometimes it's about budget graph</p>
+<p>sometimes it's a visual network</p>
+<p>sometimes it's for install photograph</p>
+<p>um</p>
+<p>it just depends by your story yeah</p>
+<p>hopefully</p>
+<p>i do find though i mean in my experience</p>
+<p>when we think about systems and a whole</p>
+<p>set of equations if you read that in a</p>
+<p>paper</p>
+<p>or if you write it down um it gives more</p>
+<p>insight if you draw to me it gives more</p>
+<p>insight if i draw the graph</p>
+<p>and</p>
+<p>there is an x</p>
+<p>there must be an exact correspondence</p>
+<p>between the</p>
+<p>the graph and the equations and very</p>
+<p>often if you draw the graph and then you</p>
+<p>write down the equations there's not an</p>
+<p>x-axis corresponding so you learn from</p>
+<p>it you you you basically you know there</p>
+<p>must be an exact correspondence and</p>
+<p>basically you you often find out you</p>
+<p>have an error in your equations or in</p>
+<p>your graph</p>
+<p>but i think uh</p>
+<p>like the the end goal the end goal uh</p>
+<p>is of to make the toolbox a toolbox for</p>
+<p>let's say for the community to design</p>
+<p>their own active influence agents and</p>
+<p>what i</p>
+<p>envisioned there is something like</p>
+<p>simulink i'm not sure or labview i'm not</p>
+<p>sure if people are familiar with that</p>
+<p>but um</p>
+<p>these are graphical models you want to</p>
+<p>actually also define them graphically</p>
+<p>and you want to have a palette with</p>
+<p>notes and just</p>
+<p>draw your graph and say this is my model</p>
+<p>and now go run</p>
+<p>you don't want to worry about the</p>
+<p>inference the inference is under the</p>
+<p>root dependence passing should be done</p>
+<p>by</p>
+<p>the designers of the toolbox but you</p>
+<p>should just be thinking about your</p>
+<p>graphical structure that's the uh</p>
+<p>and this one and connect it</p>
+<p>with your mouse to your microphone of</p>
+<p>your computer or to your camera</p>
+<p>and maybe to uh</p>
+<p>you know there's also connectors in the</p>
+<p>toolbox for robots and then</p>
+<p>it should just go right</p>
+<p>that's going to be the bob ross of</p>
+<p>graphs</p>
+<p>that's how you want to design i think</p>
+<p>right you just want to draw the brain</p>
+<p>and at least the generative model of the</p>
+<p>brain and just let it go</p>
+<p>and don't worry about how inference</p>
+<p>takes place</p>
+<p>what what you just said there about</p>
+<p>viewing the equation and then maybe</p>
+<p>going from the pen and paper to the</p>
+<p>programming language to the graphical</p>
+<p>representation and then kind of</p>
+<p>cross-checking it's like when you</p>
+<p>reverse translate languages and you're</p>
+<p>when you lock in where two words map</p>
+<p>back to each other you know you've</p>
+<p>you've made a map but if you're on this</p>
+<p>infinite loop you're you're lost in the</p>
+<p>word space so when you move across</p>
+<p>sectors like that or across modalities</p>
+<p>with the</p>
+<p>analytical the simulations on the</p>
+<p>computer and then the graphical it kind</p>
+<p>of embeds action</p>
+<p>in what otherwise might be seen as a</p>
+<p>knowledge</p>
+<p>product a product of inference and then</p>
+<p>a final action</p>
+<p>and that's a similar fallacy to</p>
+<p>train the dynamic process in a snapshot</p>
+<p>and then expect that it's going to work</p>
+<p>in real time so it's like embedding this</p>
+<p>real time flow</p>
+<p>in that the production of knowledge yeah</p>
+<p>yes yes we are important yeah yeah</p>
+<p>um yeah we're implementing active</p>
+<p>insurance while we are trying to design</p>
+<p>this stuff that's true yeah</p>
+<p>yeah one one general question was just</p>
+<p>about factorization</p>
+<p>so</p>
+<p>the factorization the</p>
+<p>way we go about it is starting with our</p>
+<p>intuition and looking for residuals or</p>
+<p>how of all the ways to factorize a model</p>
+<p>do we find one that works</p>
+<p>yeah there's two kinds of factorizations</p>
+<p>there's a factorization in let's say in</p>
+<p>the generative model</p>
+<p>right that's the graph that we draw</p>
+<p>and so i mean let's say most people</p>
+<p>uh or the most common models are these</p>
+<p>these</p>
+<p>these markov models right where you you</p>
+<p>kind of retain a current state that</p>
+<p>summarizes everything that happens in</p>
+<p>the past</p>
+<p>uh and you use that current state to</p>
+<p>basically to yeah to summarize the past</p>
+<p>and then that's all the information have</p>
+<p>about the past so you don't need to</p>
+<p>remember the past you just remember your</p>
+<p>state</p>
+<p>and with that and you did make a new</p>
+<p>observation you combine the information</p>
+<p>make a new state</p>
+<p>and so forth there so hidden markov</p>
+<p>models</p>
+<p>palmdps all these models have that same</p>
+<p>structure these these this</p>
+<p>microstructure so that's for the</p>
+<p>generative model of these dynamic</p>
+<p>systems</p>
+<p>then there is a second question if we</p>
+<p>now do inference</p>
+<p>um and um yeah then there's often what</p>
+<p>we call the mean field assumption for</p>
+<p>the variational posterior but there are</p>
+<p>also</p>
+<p>variants on that structured green field</p>
+<p>so you can you can</p>
+<p>still decide if you want your posterior</p>
+<p>to be even more structured or let's say</p>
+<p>even more factorized than the</p>
+<p>generative model</p>
+<p>but in the end yeah it's a</p>
+<p>it's a proposal</p>
+<p>uh</p>
+<p>you just run it and if you have another</p>
+<p>proposal you just run it and the one</p>
+<p>that has the lowest free energy wins</p>
+<p>that's uh that's it right the challenge</p>
+<p>is to automate that process</p>
+<p>go from the</p>
+<p>let's say the poorer structure to the</p>
+<p>better structures</p>
+<p>just by failing to minimization just by</p>
+<p>message passing in real time without</p>
+<p>stopping the whole process doing an</p>
+<p>analysis</p>
+<p>right it should just keep moving right</p>
+<p>it should just just structure adaptation</p>
+<p>should be like state estimation it just</p>
+<p>keeps moving over time there's no</p>
+<p>resetting</p>
+<p>maybe there's a bit of a</p>
+<p>thing like</p>
+<p>a dreaming stage right but</p>
+<p>the principle time moves on</p>
+<p>and that's the challenge and we don't</p>
+<p>know that in our factory class but yeah</p>
+<p>we</p>
+<p>i mean</p>
+<p>we have one hd student who is currently</p>
+<p>looking into that</p>
+<p>yeah like as an engineer i think um the</p>
+<p>question is well what what do you start</p>
+<p>out with what will be your initial model</p>
+<p>proposal uh so if you talk about</p>
+<p>factorizations of your generative model</p>
+<p>you think uh every factor then it kind</p>
+<p>of represents a prior distribution or</p>
+<p>conditional distribution and that's how</p>
+<p>you kind of build up your model</p>
+<p>where do you start</p>
+<p>and it starts with how you believe</p>
+<p>the world generates observations</p>
+<p>in that sense you think about</p>
+<p>what is the causal structure</p>
+<p>of the environment and you might have</p>
+<p>some idea about how physics works</p>
+<p>um or how</p>
+<p>states transition in in your environment</p>
+<p>or at least how you believe this</p>
+<p>transition and that's kind of where you</p>
+<p>start</p>
+<p>and you think okay well</p>
+<p>maybe let's try a very coarse note this</p>
+<p>minus one for example in my talk let's</p>
+<p>try that here because i don't really</p>
+<p>know what i want to put there but i have</p>
+<p>to put something let's try something</p>
+<p>and see how that works it kind of models</p>
+<p>how i believe the world works</p>
+<p>and that's that's how you start out</p>
+<p>and then you start thinking well i</p>
+<p>actually know a bit more about it i'm</p>
+<p>not satisfied with how this model</p>
+<p>proposed how this model works um and i</p>
+<p>can change this minus one for example</p>
+<p>with uh with something that's a bit more</p>
+<p>complex because i know the physics i</p>
+<p>know how</p>
+<p>these uh</p>
+<p>how temperature integrates with distance</p>
+<p>for example and i can build that in</p>
+<p>um so that's how you go to a second</p>
+<p>proposal</p>
+<p>and it's always inspired by</p>
+<p>uh how you believe</p>
+<p>the causal structure of the world is um</p>
+<p>is uh yeah is</p>
+<p>how that works so in that sense it's</p>
+<p>kind of theory building you're building</p>
+<p>a theory or an explanation of your</p>
+<p>environment</p>
+<p>and</p>
+<p>well maybe if you're really really good</p>
+<p>if you have an excellent model then you</p>
+<p>can find something that</p>
+<p>kind of improves upon the state of the</p>
+<p>art because you can always improve</p>
+<p>just find something that gives you a</p>
+<p>lower free energy or better model</p>
+<p>performance in that sense</p>
+<p>um and you can keep tweaking and</p>
+<p>tweaking</p>
+<p>um</p>
+<p>these models and these factorizations</p>
+<p>and</p>
+<p>things like that</p>
+<p>yeah</p>
+<p>free energy</p>
+<p>minimization</p>
+<p>has been described or just as a way to</p>
+<p>rank the different models and as an</p>
+<p>imperative on these multiple different</p>
+<p>fronts how do we know that</p>
+<p>free energy minimization is making the</p>
+<p>policy</p>
+<p>that</p>
+<p>is going to be like resilient is there a</p>
+<p>way where similar to a local</p>
+<p>optimization getting trapped somewhere</p>
+<p>in a bigger optimization space</p>
+<p>there might be some avenue of free</p>
+<p>energy minimization that</p>
+<p>makes the system just like break down</p>
+<p>like we'll get there faster let's just</p>
+<p>accelerate and then</p>
+<p>there's some</p>
+<p>kind of one-time failure of the system</p>
+<p>i'm just wondering how can one</p>
+<p>metric that's a number you know and can</p>
+<p>be sorted how can it evaluate such</p>
+<p>radically different</p>
+<p>chess strategies or driving</p>
+<p>approaches at the end it's just</p>
+<p>probability theory and probability is</p>
+<p>also just a number right</p>
+<p>and the energy kind of</p>
+<p>it approximates your evidence which is</p>
+<p>the probability according to your model</p>
+<p>of observing the data so if you make a</p>
+<p>model that gives you the best evidence</p>
+<p>then it's a good explanation for for</p>
+<p>your for your data</p>
+<p>so in the end it's just</p>
+<p>you try to do</p>
+<p>approximate probability theory</p>
+<p>um</p>
+<p>and free energy</p>
+<p>is then bound upon your evidence and it</p>
+<p>also takes into account</p>
+<p>this posterior divergence term which</p>
+<p>kind of</p>
+<p>says the price that you pay for</p>
+<p>approximating bayesian inference</p>
+<p>so it has two parts to it it has</p>
+<p>um the model evidence part</p>
+<p>and it has the posterior divergence part</p>
+<p>and both play a role one says okay um</p>
+<p>this is</p>
+<p>the quality of my solution it's it's how</p>
+<p>well</p>
+<p>uh</p>
+<p>your model explains the data that you</p>
+<p>observe you can get you can get a number</p>
+<p>for that the surprise or the negative</p>
+<p>log modal evidence</p>
+<p>and you have the other part of stereo</p>
+<p>divergence that says</p>
+<p>well this is the price and information</p>
+<p>that you pay for making this</p>
+<p>approximation you can also put a number</p>
+<p>on that</p>
+<p>it's just a chaotic versions that you</p>
+<p>evaluate</p>
+<p>um and then you add those two and you</p>
+<p>get a number</p>
+<p>um</p>
+<p>so yeah so the question is how can one</p>
+<p>number kind of</p>
+<p>represent</p>
+<p>everything in terms of quality</p>
+<p>well you might care about different</p>
+<p>things than how well your model predicts</p>
+<p>or evaluates the observations right</p>
+<p>and then if you care about other things</p>
+<p>um</p>
+<p>then then</p>
+<p>yep then then you might use different</p>
+<p>number but</p>
+<p>um in our in our sense in our in our uh</p>
+<p>in our work</p>
+<p>yeah we're kind of</p>
+<p>uh</p>
+<p>we want to have this bayesian measure of</p>
+<p>quality</p>
+<p>yeah</p>
+<p>i don't know if that really answers your</p>
+<p>question but it's it's it's still a good</p>
+<p>question it's um</p>
+<p>it's kind of is is free energy or that</p>
+<p>number that you get is that enough</p>
+<p>right</p>
+<p>that's that's kind of what's behind this</p>
+<p>and probability theory says yes but if</p>
+<p>you apply it in practice then you care</p>
+<p>about maybe other things you care about</p>
+<p>how many people survive before how many</p>
+<p>you know</p>
+<p>how many how many mistakes you uh you</p>
+<p>you cash from from something and if you</p>
+<p>care about that well then you should use</p>
+<p>that as a performance metric</p>
+<p>i i think right i mean it's uh</p>
+<p>the energy of course has has has many</p>
+<p>decompositions right in in in</p>
+<p>complexity minus accuracy and</p>
+<p>and and surprise minus uh</p>
+<p>minus the kl divergence</p>
+<p>um but</p>
+<p>to</p>
+<p>i'm not sure if i interpret the question</p>
+<p>correctly but if you say like how do you</p>
+<p>know that it does well</p>
+<p>in in practice in the field</p>
+<p>well you don't right um</p>
+<p>the</p>
+<p>and look the only uh</p>
+<p>thing you can say is that i mean what</p>
+<p>the system does it will look for</p>
+<p>a configuration that minimizes free</p>
+<p>energy but you don't know what you don't</p>
+<p>know you don't know if there is another</p>
+<p>model that would do better if we haven't</p>
+<p>simulated that model then we don't know</p>
+<p>and um</p>
+<p>the only learning opportunities there</p>
+<p>are</p>
+<p>is to generate errors so um</p>
+<p>the only way to really improve the model</p>
+<p>is to actually</p>
+<p>hit indeed um let's say situations where</p>
+<p>it's not working</p>
+<p>and then you need to adapt your</p>
+<p>parameters and and</p>
+<p>and even more over time you have to</p>
+<p>structure so</p>
+<p>yeah it's uh</p>
+<p>i mean building a good system is a</p>
+<p>process</p>
+<p>right it's not a</p>
+<p>matter of uh just</p>
+<p>you have to be extremely lucky if you</p>
+<p>just</p>
+<p>build a system that and it completely</p>
+<p>works right</p>
+<p>uh</p>
+<p>it's what this</p>
+<p>this between this orbitals active</p>
+<p>influence describes is a process towards</p>
+<p>a better</p>
+<p>systems but not</p>
+<p>it doesn't describe a system that</p>
+<p>doesn't make mistakes in fact it needs</p>
+<p>the mistakes to learn</p>
+<p>and it describes the process</p>
+<p>awesome points it's that operational</p>
+<p>insight that if you're getting 100 on</p>
+<p>the test like something is</p>
+<p>at the very best less than informative</p>
+<p>at the very worst you're you're way down</p>
+<p>the wrong path and um and then it</p>
+<p>reminded me of like a grocery store is</p>
+<p>it that we're ranking the different</p>
+<p>objects according to one measure</p>
+<p>no not really it's like balancing</p>
+<p>strategies</p>
+<p>for</p>
+<p>finding preference and that's where all</p>
+<p>of these assumptions like the</p>
+<p>factorization and the mean field and</p>
+<p>it's not guaranteed to give you the best</p>
+<p>object every time and there's still the</p>
+<p>stochasticity of the real world and the</p>
+<p>ability of the grocery store to change</p>
+<p>like it's not the end of the story</p>
+<p>it's actually just</p>
+<p>a practice in a process that</p>
+<p>has some of those features of reactive</p>
+<p>graphs and biological systems</p>
+<p>that's right yeah</p>
+<p>well um if any of you have any final</p>
+<p>comments this was just really one of the</p>
+<p>coolest times to learn about this</p>
+<p>but</p>
+<p>you're always welcome back to join any</p>
+<p>time as a participant or to present and</p>
+<p>if you have any final comments you can</p>
+<p>note them</p>
+<p>well it was a</p>
+<p>real pleasure to be here and uh</p>
+<p>if we have new stuff we would love to</p>
+<p>come back i think it's a fantastic</p>
+<p>fantastic show here or show it's a</p>
+<p>forum or whatever it's properly called</p>
+<p>but i really enjoy it and we really</p>
+<p>enjoyed being part of it</p>
+<p>and uh thanks a lot for the discussion</p>
+<p>some some food for thought there as well</p>
+<p>it's really cool</p>
+<p>good question for every opportunity to</p>
+<p>present yes</p>
+<p>great</p>
+<p>okay until next time bye</p>
+</article>
+</body>
+</html>
